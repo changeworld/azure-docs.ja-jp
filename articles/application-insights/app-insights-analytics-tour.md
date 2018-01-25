@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
 ms.author: mbullwin
-ms.openlocfilehash: a33fedd765acde666eef280ba7dfa72536bf1bd2
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 271ccc126eeb9411646b68b32fd30ce32b5eef5c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -134,7 +134,7 @@ ms.lasthandoff: 11/13/2017
 
 ![](./media/app-insights-analytics-tour/change-time-range.png)
 
-時間範囲をオーバーライドするには、where 句で `timestamp` にメンションするクエリを記述します。 次に例を示します。
+時間範囲をオーバーライドするには、where 句で `timestamp` にメンションするクエリを記述します。 例: 
 
 ```AIQL
 
@@ -502,7 +502,7 @@ requests
 ```
 
 
-### <a name="functions"></a>関数
+### <a name="functions"></a>Functions
 
 *Let* を使用して関数を定義します。
 
@@ -538,7 +538,7 @@ requests
 
 たとえば、アプリに以下が含まれているものとします。
 
-```C#
+```csharp
 
     var dimensions = new Dictionary<string, string>
                      {{"p1", "v1"},{"p2", "v2"}};
@@ -611,7 +611,7 @@ Web アプリとセグメントに対する HTTP 要求をページ名別にカ�
 
 アプリ コードに次の行が含まれている例を見てみましょう。
 
-```C#
+```csharp
 
     telemetry.TrackEvent("Query",
        new Dictionary<string,string> {{"query", sqlCmd}},
@@ -629,7 +629,7 @@ Web アプリとセグメントに対する HTTP 要求をページ名別にカ�
 ![カスタム イベントの表示率](./media/app-insights-analytics-tour/analytics-custom-events-dimensions.png)
 
 ### <a name="custom-metrics-table"></a>カスタム メトリック テーブル
-[TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) を使用して独自のメトリック値を送信すると、**customMetrics** ストリームでその結果がわかります。 次に例を示します。  
+[TrackMetric()](app-insights-api-custom-events-metrics.md#trackmetric) を使用して独自のメトリック値を送信すると、**customMetrics** ストリームでその結果がわかります。 例:   
 
 ![Application Insights Analytics のカスタム メトリック](./media/app-insights-analytics-tour/analytics-custom-metrics.png)
 
@@ -709,7 +709,7 @@ TrackTrace() を使用してアプリが送信したテレメトリ、または 
 > [!VIDEO https://channel9.msdn.com/Events/Build/2016/P591/player]
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Analytics 言語リファレンス](app-insights-analytics-reference.md)
 * [SQL ユーザーのチート シート](https://aka.ms/sql-analytics)では、最も一般的な言語の対応付けを確認できます。
 

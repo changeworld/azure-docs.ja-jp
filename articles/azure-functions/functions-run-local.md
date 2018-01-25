@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 081da55bb956db2879d7f2c5c91d25f5c36d5507
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 3fd392a3f5b48d6b8d19af530c949d91cd461099
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -216,7 +216,7 @@ Functions ホストの起動時、HTTP によってトリガーされる関数�
 Found the following functions:
 Host.Functions.MyHttpTrigger
 
-ob host started
+Job host started
 Http Function MyHttpTrigger: http://localhost:7071/api/MyHttpTrigger
 ```
 

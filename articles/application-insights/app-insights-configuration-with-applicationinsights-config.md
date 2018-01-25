@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 87eed377528db60724ba2f37bc22d916dfd7c0eb
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 980b297db87c2829f3c393ae867780f263f8d87c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>ApplicationInsights.config または .xml を使った Application Insights SDK の構成
 Application Insights .NET SDK は、いくつかの NuGet パッケージで構成されます。 [コア パッケージ](http://www.nuget.org/packages/Microsoft.ApplicationInsights) は、テレメトリを Application Insights に送信するための API を提供します。 [その他のパッケージ](http://www.nuget.org/packages?q=Microsoft.ApplicationInsights)は、アプリケーションとそのコンテキストからテレメトリを自動的に追跡するためのテレメトリ *モジュール*と*初期化子*を提供します。 構成ファイルを調整することによって、テレメトリ モジュールと初期化子を有効または無効にしたり、その中のいくつかのモジュールのパラメーターを設定したりできます。
@@ -237,7 +237,7 @@ SDK のメモリー内ストレージに格納できるテレメトリ項目の�
 
 TelemetryClient のすべてのインスタンスのキーを設定するには (標準のテレメトリ モジュールを含む)、TelemetryConfiguration.Active でキーを設定します。 ASP.NET サービスの global.aspx.cs など、初期化メソッドでキーの設定を行います。
 
-```C#
+```csharp
 
     protected void Application_Start()
     {
@@ -250,7 +250,7 @@ TelemetryClient のすべてのインスタンスのキーを設定するには 
 
 特定のイベント セットを異なるリソースに送信する場合、特定の TelemetryClient のキーを設定できます。
 
-```C#
+```csharp
 
     var tc = new TelemetryClient();
     tc.Context.InstrumentationKey = "----- my key ----";

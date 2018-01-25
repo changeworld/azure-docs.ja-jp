@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: xpouyat;anilmur;juliako
-ms.openlocfilehash: 7dc149f55c2caf4c3ab3a4782fd71affde0694ca
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: a55d6dc212da05d7c14679579258e28921fecdc8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Premium Encoder での複数の入力ファイルとコンポーネント プロパティの使用
 ## <a name="overview"></a>概要
@@ -47,7 +47,7 @@ ms.lasthandoff: 11/07/2017
 
 ファイルから XML 構成を読み取り、正しいビデオ ファイル名で更新し、ジョブ内のタスクに渡す C# コードを次に示します。
 
-```c#
+```csharp
 string premiumConfiguration = ReadAllText(@"D:\home\site\wwwroot\Presets\SetRuntime.xml").Replace("VideoFileName", myVideoFileName);
 
 // Declare a new job.
@@ -415,7 +415,7 @@ AAC エンコーダーを設定し、オーディオ形式の変換/プリセッ
 
 .NET SDK を使用してタスクを作成および実行する場合、この XML データは、構成文字列として渡す必要があります。
 
-```c#
+```csharp
 public ITask AddNew(string taskName, IMediaProcessor mediaProcessor, string configuration, TaskOptions options);
 ```
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: 05318f85997111fd3301d819084115fef6d00f6a
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: d4ea43cb7ca5e9fa50202561c71d6bfb298e2452
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Azure API Management、Event Hubs、Runscope を使用した API の監視
 [API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 ただし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは発行者ポータル ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
@@ -166,7 +166,7 @@ Azure Event Hubs からのイベントは、 [AMQP プロトコル](http://www.a
 ### <a name="ieventprocessor"></a>IEventProcessor
 `EventProcessorHost` を使用する場合は、`ProcessEventAsync` メソッドを含む `IEventProcessor` インターフェイスの実装を作成することが中心的な考え方になります。 このメソッドの最も重要な部分を次に示します。
 
-```c#
+```csharp
 async Task IEventProcessor.ProcessEventsAsync(PartitionContext context, IEnumerable<EventData> messages)
 {
 
@@ -193,7 +193,7 @@ EventData オブジェクトのリストがメソッドに渡されます。こ�
 ### <a name="httpmessage"></a>HttpMessage
 `HttpMessage` インスタンスには、3 つのデータが格納されます。
 
-```c#
+```csharp
 public class HttpMessage
 {
    public Guid MessageId { get; set; }
@@ -216,7 +216,7 @@ public class HttpMessage
 
 `IHttpMessageProcessor` の実装は次のようになります。
 
-```c#
+```csharp
 public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 {
    private HttpClient _HttpClient;
@@ -270,10 +270,10 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 
 ![Demonstration of request being forwarded to Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 Azure API Management サービスでは、API を経由して送受信される HTTP トラフィックをキャプチャするための理想的な場所が用意されています。 Azure Event Hubs は、そのトラフィックをキャプチャして、ログ記録、監視、その他の高度な分析用のセカンダリ処理システムに供給するための、非常にスケーラブルで低コストのソリューションです。 数十行のコードを書くだけで、Runscope のようなサード パーティ製のトラフィック監視システムに簡単に接続できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure Event Hubs の詳細
   * [Azure Event Hubs の使用](../event-hubs/event-hubs-c-getstarted-send.md)
   * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)

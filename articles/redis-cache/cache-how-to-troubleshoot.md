@@ -3,8 +3,8 @@ title: "Azure Redis Cache のトラブルシューティング方法 | Microsoft
 description: "Azure Redis Cache の一般的な問題を解決する方法について説明します。"
 services: redis-cache
 documentationcenter: 
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: 
 ms.assetid: 928b9b9c-d64f-4252-884f-af7ba8309af6
 ms.service: cache
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: sdanie
-ms.openlocfilehash: 2e9d1b644f1e80c7d916a261a6c47fcc11a1ffe0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: a88adc300e52c74f2a1fcd2e546ab879000d877e
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-troubleshoot-azure-redis-cache"></a>Azure Redis Cache のトラブルシューティング方法
 この記事では、次のカテゴリの Azure Redis Cache の問題をトラブルシューティングする場合のガイダンスを提供します。
@@ -189,12 +189,12 @@ StackExchange.Redis では、同期操作に `synctimeout` という名前の構
 | qs |実行中の操作のうち 67 個はサーバーに送信されていますが、まだ応答されていません。 応答は `Not yet sent by the server` または `sent by the server but not yet processed by the client.` の場合があります。 |
 | qc |実行中の操作のうち 0 個が返信されているようですが、完了ループで待機しているため、まだ完了のマークは付けられていません。 |
 | wr |アクティブなライターがあります (6 個の未送信要求は無視されていないことを意味します)。これは、"バイト数/アクティブなライター数" で表されます。 |
-| という名前で、 |アクティブなリーダーはなく、NIC で読み取ることができるバイト数はゼロです。これは、"バイト数/アクティブなリーダー数" で表されます。 |
+| in |アクティブなリーダーはなく、NIC で読み取ることができるバイト数はゼロです。これは、"バイト数/アクティブなリーダー数" で表されます。 |
 
 ### <a name="steps-to-investigate"></a>調査手順
 1. ベスト プラクティスとして、StackExchange.Redis クライアントの使用時に接続する場合に以下のパターンを使用していることを確認します。
 
-    ```c#
+    ```csharp
     private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
     {
         return ConnectionMultiplexer.Connect("cachename.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");

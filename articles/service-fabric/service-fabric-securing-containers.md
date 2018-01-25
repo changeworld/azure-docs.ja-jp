@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 7c18c2b3b0d271f2dbe4f247c132850b49d8f1d9
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.openlocfilehash: 7ebec89e1481ccc232403426c04bed0ffd6f4fe7
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="container-security"></a>コンテナーのセキュリティ
 
@@ -53,7 +53,7 @@ Linux クラスターの場合、証明書 (PEM) は X509StoreName で指定さ�
 
 コンテナーへの証明書ファイルのインポートは、コンテナー サービスまたはプロセスによって行われます。 証明書をインポートするには、`setupentrypoint.sh` スクリプトを使うか、コンテナー プロセス内でカスタム コードを実行します。 PFX ファイルをインポートする C# のサンプル コードは次のとおりです。
 
-```c#
+```csharp
     string certificateFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_PFX");
     string passwordFilePath = Environment.GetEnvironmentVariable("Certificates_MyServicePackage_NodeContainerService.Code_MyCert1_Password");
     X509Store store = new X509Store(StoreName.My, StoreLocation.CurrentUser);
@@ -78,7 +78,7 @@ gMSA (グループの管理されたサービス アカウント) を設定す�
   </ContainerHostPolicies>
 </Policies>
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)
 * [Linux 上での Service Fabric への Docker コンテナーのデプロイ](service-fabric-get-started-containers-linux.md)

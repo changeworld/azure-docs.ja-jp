@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 9b00faa06684be353cfcf5f67f182a56511210c5
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: d29f2d180df93f45202e881336e492c45587b276
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
@@ -76,7 +76,7 @@ Azure Storage に対して、REST や SMB などのすべてのネットワー�
 Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Deny
 ```    
 
-4. 既定でネットワーク アクセスを許可する既定のルールを設定します。
+4. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
 ```PowerShell
 Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" -Name "mystorageaccount" -DefaultAction Allow
 ```    
@@ -93,7 +93,7 @@ az storage account show --resource-group "myresourcegroup" --name "mystorageacco
 az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Deny
 ```
 
-4. 既定でネットワーク アクセスを許可する既定のルールを設定します。
+4. 既定でネットワーク アクセスを許可するする既定のルールを設定します。
 ```azurecli
 az storage account update --name "mystorageaccount" --resource-group "myresourcegroup" --default-action Allow
 ```
@@ -106,7 +106,7 @@ az storage account update --name "mystorageaccount" --resource-group "myresource
 各ストレージ アカウントは、[IP ネットワーク ルール](#grant-access-from-an-internet-ip-range)と合わせて最大 100 個の仮想ネットワーク ルールをサポートできます。
 
 ### <a name="available-virtual-network-regions"></a>使用可能な仮想ネットワークのリージョン
-一般に、サービス エンドポイントは、同じ Azure リージョンの仮想ネットワークとサービス インスタンス間で機能します。  サービス エンドポイントが Azure Storage で使用されている場合、このスコープは[ペアのリージョン](/azure/best-practices-availability-paired-regions)を含めるように拡張されます。  これにより、リージョンのフェールオーバー時の継続性とともに、読み取り専用の geo 冗長ストレージ (RA-GRS) インスタンスへのシームレスなアクセスを実現します。  仮想ネットワークからストレージ アカウントへのアクセスを許可するネットワーク ルールでは、任意の RA-GRS インスタンスへのアクセスも許可します。
+一般に、サービス エンドポイントは、同じ Azure リージョンの仮想ネットワークとサービス インスタンス間で機能します。  サービス エンドポイントが Azure Storage で使用されている場合、このスコープは[ペアのリージョン](/azure/best-practices-availability-paired-regions)を含めるように拡張されます。  これにより、リージョンのフェールオーバー時の継続性とともに、読み取り専用の geo 冗長ストレージ (RA-GRS) インスタンスへのシームレスなアクセスを実現します。  仮想ネットワークからストレージ アカウントへのアクセスを許可するネットワー ルールでは、任意の RA-GRS インスタンスへのアクセスも許可します。
 
 リージョンの障害時にディザスター リカバリーを計画する場合、ペアのリージョンに仮想ネットワークを事前にプロビジョニングしておく必要があります。 Azure Storage のサービス エンドポイントを有効にして、geo 冗長ストレージ アカウントに対して、これらの代替の仮想ネットワークからのアクセスを許可するネットワーク ルールを適用する必要があります。
 
@@ -300,7 +300,6 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 |Azure DevTest Labs|Microsoft.DevTestLab|カスタム イメージの作成とアーティファクトのインストール  [詳細情報](https://docs.microsoft.com/azure/devtest-lab/devtest-lab-overview)。|
 |Azure Event Grid|Microsoft.EventGrid|Blob Storage イベントの発行を有効にする  [詳細情報](https://docs.microsoft.com/azure/event-grid/overview)。|
 |Azure Event Hubs|Microsoft.EventHub|Event Hubs Capture を使用したアーカイブ データのキャプチャ  [詳細情報](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
-|Azure HDInsight|Microsoft.HDInsight|クラスターのプロビジョニングおよびインストール  [詳細情報](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-use-blob-storage)。|
 |Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析  [詳細情報](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview)。|
 ||||
 

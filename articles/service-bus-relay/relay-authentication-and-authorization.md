@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 4ef8cbf22f2fcd7017af16083240608e5ca0fb5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86a9cf2c1106180ba5c8c65849042784bfd2afcd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-authentication-and-authorization"></a>Azure Relay の認証と承認
 
 アプリケーションは、Shared Access Signature (SAS) 認証を使用して Azure Relay に対して認証できます。 アプリケーションは SAS 認証により、Relay 名前空間で構成されたアクセス キーを使用して Azure Relay サービスへの認証を行うことができます。 次に、このキーを使用して、クライアントがリレー サービスに対する認証に使用できる Shared Access Signature トークンを生成できます。
 
 ## <a name="shared-access-signature-authentication"></a>Shared Access Signature 認証
+
 [SAS 認証](../service-bus-messaging/service-bus-sas.md)により、特定の権限で Azure Relay リソースにアクセスできるようになります。 SAS 認証を使用するには、リソースに対する関連した権限を使用して暗号化キーを構成する必要があります。 これにより、クライアントは SAS トークンを提示してリソースへのアクセス権を取得できます。このトークンは、アクセスされるリソース URI と、構成されたキーで署名された有効期限から成ります。
 
 SAS のキーは Relay 名前空間で構成できます。 Service Bus メッセージングとは異なり、[Relay ハイブリッド接続](relay-hybrid-connections-protocol.md)では、許可されていない送信者や匿名の送信者がサポートされます。 ポータルの次のスクリーン ショットに示すように、エンティティの作成時に、そのエンティティの匿名アクセスを有効することができます。
@@ -44,7 +45,8 @@ SAS を使用するには、Relay 名前空間で、次の要素で構成され�
 
 Azure Relay の SAS 認証サポートは、Azure .NET SDK バージョン 2.0 以降に含まれています。 SAS には、 [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule)のサポートが含まれています。 接続文字列をパラメーターとして受け取るすべての API では、SAS 接続文字列がサポートされています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
+
 - SAS の詳細については、「[Shared Access Signature による Service Bus の認証](../service-bus-messaging/service-bus-sas.md)」を引き続きお読みください。
 - ハイブリッド接続機能の詳細については、[Azure Relay ハイブリッド接続プロトコル ガイド](relay-hybrid-connections-protocol.md)を参照してください。
 - Service Bus メッセージングの認証と承認についての対応する情報については、「[Service Bus の認証と承認](../service-bus-messaging/service-bus-authentication-and-authorization.md)」を参照してください。 

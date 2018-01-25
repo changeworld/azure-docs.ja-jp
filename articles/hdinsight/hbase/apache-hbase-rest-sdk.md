@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: ashishth
-ms.openlocfilehash: 2175a009f084b07c10ca3a32d43c2df216cd3c2f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 083150fe5f8787ba791d3d692db73c5156f11e55
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-the-hbase-net-sdk"></a>HBase .NET SDK の使用
 
@@ -38,12 +38,12 @@ HBase .NET SDK は NuGet パッケージとして提供され、Visual Studio �
 
 SDK を使用するには、`Uri` で構成される `ClusterCredentials` をクラスターに渡す新しい `HBaseClient` オブジェクト、Hadoop ユーザー名、およびパスワードをインスタンス化します。
 
-```c#
+```csharp
 var credentials = new ClusterCredentials(new Uri("https://CLUSTERNAME.azurehdinsight.net"), "USERNAME", "PASSWORD");
 client = new HBaseClient(credentials);
 ```
 
-CLUSTERNAME を HDInsight HBase クラスター名に、また、USERNAME と PASSWORDを、クラスター作成時に指定された Hadoop 資格情報に置き換えます。 既定の Hadoop ユーザー名は **admin** です。
+CLUSTERNAME を HDInsight HBase クラスターの名前に、USERNAME と PASSWORD をクラスター作成時に指定した Hadoop 資格情報に、それぞれ置き換えます。 既定の Hadoop ユーザー名は **admin** です。
 
 ## <a name="create-a-new-table"></a>新しいテーブルを作成する
 
@@ -53,7 +53,7 @@ HBase ではテーブルにデータが格納されます。 テーブルは *Ro
 
 新しいテーブルを作成するには、`TableSchema` と列を指定します。 次のコードでは、"RestSDKTable" テーブルが既に存在するかどうかを確認し、存在しない場合は、そのテーブルを作成します。
 
-```c#
+```csharp
 if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 {
     // Create the table
@@ -71,7 +71,7 @@ if (!client.ListTablesAsync().Result.name.Contains("RestSDKTable"))
 
 テーブルを削除するには:
 
-```c#
+```csharp
 await client.DeleteTableAsync("RestSDKTable");
 ```
 
@@ -79,7 +79,7 @@ await client.DeleteTableAsync("RestSDKTable");
 
 データを挿入するには、一意の行キーを行識別子として指定します。 すべてのデータが `byte[]` 配列に格納されます。 `title`、`director`、および `release_date` 列は最も頻繁にアクセスされるため、次のコードで、これらの列を定義し、t1 列ファミリに追加します。 `description` と `tagline` 列は、t2 列ファミリに追加されます。 データは、必要に応じて、列ファミリにパーティション分割できます。
 
-```c#
+```csharp
 var key = "fifth_element";
 var row = new CellSet.Row { key = Encoding.UTF8.GetBytes(key) };
 var value = new Cell
@@ -127,7 +127,7 @@ HBase では BigTable が実装されるため、データ形式は次のよう�
 
 HBase テーブルからデータを読み取るには、テーブル名と行キーを `GetCellsAsync` メソッドに渡して、`CellSet` を返します。
 
-```c#
+```csharp
 var key = "fifth_element";
 
 var cells = await client.GetCellsAsync("RestSDKTable", key);
@@ -141,7 +141,7 @@ Console.WriteLine(Encoding.UTF8.GetString(cells.rows[0].values
 
 ここでは、一意キーに対して 1 つの行しか存在しないため、コードは最初の一致行のみを返します。 戻り値は、`byte[]` 配列から `string` 形式に変更されます。 映画のリリース日を示す整数型など、他の型に値を変換することもできます。
 
-```c#
+```csharp
 var releaseDateField = cells.rows[0].values
     .Find(c => Encoding.UTF8.GetString(c.column) == "t1:release_date");
 int releaseDate = 0;
@@ -158,7 +158,7 @@ Console.WriteLine(releaseDate);
 
 HBase では `scan` を使用して、1 つ以上の行を取得します。 この例では 10 行単位で複数の行を要求し、キー値が 25 ～ 35 のデータを取得します。 すべての行を取得したら、スキャナーを削除して、リソースをクリーンアップします。
 
-```c#
+```csharp
 var tableName = "mytablename";
 
 // Assume the table has integer keys and we want data between keys 25 and 35

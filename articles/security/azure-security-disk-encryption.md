@@ -3,9 +3,9 @@ title: "Windows および Linux IaaS VM の Azure Disk Encryption | Microsoft Do
 description: "この記事では、Windows および Linux IaaS VM の Microsoft Azure Disk Encryption の概要を示します。"
 services: security
 documentationcenter: na
-author: YuriDio
-manager: swadhwa
-editor: TomSh
+author: DevTiw
+manager: avibm
+editor: barclayn
 ms.assetid: d3fac8bb-4829-405e-8701-fa7229fb1725
 ms.service: security
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
-ms.author: kakhan
-ms.openlocfilehash: 0ed575283807137f60eca005262cff27388c140f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
+ms.openlocfilehash: d6a19334b369c54ff6bad3404b4cf2ffe3b47c70
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows および Linux IaaS VM の Azure ディスク暗号化
 Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。 そのため、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 このドキュメントでは、"Windows および Linux IaaS VM の Azure Disk Encryption" という新しいテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。 ここでは、サポートされているシナリオやユーザー エクスペリエンスを含む、Azure Disk Encryption 機能の使用方法に関する詳細なガイダンスを提供します。

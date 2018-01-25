@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 6/29/2017
 ms.author: mcoskun
-ms.openlocfilehash: c6a53d851510ed5e6eec1f3ac0f636ad034a6d4c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b8a0aad23c6c4ceaf23dd3fbde5daef3519fdcf
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="reliable-services-notifications"></a>Reliable Services の通知
 通知により、クライアントは対象となるオブジェクトの変更を追跡できます。 通知をサポートするオブジェクトには、*Reliable State Manager* と *Reliable Dictionary* の 2 種類があります。
@@ -47,11 +47,11 @@ Reliable State Manager のコレクションは、次の 3 つの状況で再構
 
 * 回復: レプリカは、起動時にディスクから以前の状態を回復します。 回復の最後に、回復された Reliable State のセットを含む **NotifyStateManagerChangedEventArgs** を使用して、イベントを発生させます。
 * 完全コピー: レプリカが構成セットに参加できるようにするには、レプリカを構築しておく必要があります。 場合によっては、プライマリ レプリカの Reliable State Manager の状態の完全コピーを、アイドル状態のセカンダリ レプリカに適用する必要があります。 セカンダリ レプリカの Reliable State Manager は、プライマリ レプリカから取得した Reliable State のセットを含む **NotifyStateManagerChangedEventArgs** を使用して、イベントを発生させます。
-* 復元: 障害復旧シナリオでは、 **RestoreAsync**を介して、レプリカの状態をバックアップから復元できます。 そうした場合、プライマリ レプリカの Reliable State Manager は、バックアップから復元した Reliable State のセットを含む **NotifyStateManagerChangedEventArgs** を使用して、イベントを発生させます。
+* 復元: ディザスター リカバリー シナリオでは、**RestoreAsync** を介して、レプリカの状態をバックアップから復元できます。 そうした場合、プライマリ レプリカの Reliable State Manager は、バックアップから復元した Reliable State のセットを含む **NotifyStateManagerChangedEventArgs** を使用して、イベントを発生させます。
 
 トランザクション通知または State Manager 通知を登録するには、Reliable State Manager で **TransactionChanged** イベントまたは **StateManagerChanged** イベントに登録する必要があります。 これらのイベント ハンドラーに登録する一般的な場所は、ステートフル サービスのコンストラクターです。 コンストラクターで登録すると、 **IReliableStateManager**の有効期間中の変更によって発生した通知を見落とすことがなくなります。
 
-```C#
+```csharp
 public MyService(StatefulServiceContext context)
     : base(MyService.EndpointName, context, CreateReliableStateManager(context))
 {
@@ -69,7 +69,7 @@ public MyService(StatefulServiceContext context)
 
 **TransactionChanged** イベント ハンドラーの例を次に示します。
 
-```C#
+```csharp
 private void OnTransactionChangedHandler(object sender, NotifyTransactionChangedEventArgs e)
 {
     if (e.Action == NotifyTransactionChangedAction.Commit)
@@ -91,7 +91,7 @@ private void OnTransactionChangedHandler(object sender, NotifyTransactionChanged
 
 **StateManagerChanged** 通知ハンドラーの例を次に示します。
 
-```C#
+```csharp
 public void OnStateManagerChangedHandler(object sender, NotifyStateManagerChangedEventArgs e)
 {
     if (e.Action == NotifyStateManagerChangedAction.Rebuild)
@@ -117,7 +117,7 @@ Reliable Dictionary は、次のイベントの通知を提供します。
 Reliable Dictionary の通知を取得するには、**IReliableDictionary** で **DictionaryChanged** イベント ハンドラーに登録する必要があります。 これらのイベント ハンドラーに登録する一般的な場所は、 **ReliableStateManager.StateManagerChanged** の追加通知内です。
 **IReliableDictionary** を **IReliableStateManager** に追加するときに登録すると、通知を見落とすことがなくなります。
 
-```C#
+```csharp
 private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChangedEventArgs e)
 {
     var operation = e as NotifyStateManagerSingleEntityChangedEventArgs;
@@ -142,7 +142,7 @@ private void ProcessStateManagerSingleEntityNotification(NotifyStateManagerChang
 
 前のコードでは、**IReliableNotificationAsyncCallback** インターフェイスと **DictionaryChanged** を設定しています。 **NotifyDictionaryRebuildEventArgs** には、非同期で列挙する必要がある **IAsyncEnumerable** インターフェイスが含まれているので、再構築通知は **OnDictionaryChangedHandler** ではなく、**RebuildNotificationAsyncCallback** によって発生します。
 
-```C#
+```csharp
 public async Task OnDictionaryRebuildNotificationHandlerAsync(
     IReliableDictionary<TKey, TValue> origin,
     NotifyDictionaryRebuildEventArgs<TKey, TValue> rebuildNotification)
@@ -171,7 +171,7 @@ public async Task OnDictionaryRebuildNotificationHandlerAsync(
 * **NotifyDictionaryChangedAction.Update**: **NotifyDictionaryItemUpdatedEventArgs**
 * **NotifyDictionaryChangedAction.Remove**: **NotifyDictionaryItemRemovedEventArgs**
 
-```C#
+```csharp
 public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEventArgs<TKey, TValue> e)
 {
     switch (e.Action)
@@ -202,7 +202,7 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 }
 ```
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 * *します* 。
 * *しないでください* 。
 * *します* 。 今後、新しい Action の種類が追加される可能性があります。
@@ -215,7 +215,7 @@ public void OnDictionaryChangedHandler(object sender, NotifyDictionaryChangedEve
 * トランザクションに複数の操作が含まれている場合、操作はプライマリ レプリカでユーザーから受信した順序で適用されます。
 * 誤った進行の処理の一環として、一部の操作が元に戻されることがあります。 レプリカの状態を安定したポイントにロールバックするこのような元に戻す操作では、通知が発生します。 元に戻す通知の重要な違いの 1 つは、重複するキーを持つイベントが集約されることです。 たとえば、トランザクション T1 を元に戻すと、ユーザーには Delete(X) の通知だけが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Reliable Collection](service-fabric-work-with-reliable-collections.md)
 * [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
 * [Reliable Service のバックアップと復元 (障害復旧)](service-fabric-reliable-services-backup-restore.md)

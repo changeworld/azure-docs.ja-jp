@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d6dc1cddd6228d2841e1e77b6f2800f788e5e1bb
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: fd24881444846d3905f8db61356656960698b7eb
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。
@@ -40,10 +40,10 @@ worker ロールと同様に、Web ロールもステートレス ワークロ�
 
 | **アプリケーション** | **サポートされています** | **移行パス** |
 | --- | --- | --- |
-| ASP.NET Web Forms |いいえ |ASP.NET Core 1 MVC への変換 |
+| ASP.NET Web Forms |いいえ  |ASP.NET Core 1 MVC への変換 |
 | ASP.NET MVC |移行あり |ASP.NET Core 1 MVC にアップグレードする |
 | ASP.NET Web API |移行あり |自己ホスト型サーバーまたは ASP.NET Core 1 を使用する |
-| ASP.NET Core 1 |あり |該当なし |
+| ASP.NET Core 1 |[はい] |該当なし |
 
 ## <a name="entry-point-api-and-lifecycle"></a>エントリ ポイントの API とライフサイクル
 worker ロールと Service Fabric サービス API には、同様のエントリ ポイントが用意されています。 
@@ -56,7 +56,7 @@ worker ロールと Service Fabric サービス API には、同様のエント�
 | クライアント要求に対するリスナーを開く |該当なし |<ul><li> ステートレスの場合、次のようになります。`CreateServiceInstanceListener()`</li><li>ステートフルの場合、次のようになります。`CreateServiceReplicaListener()`</li></ul> |
 
 ### <a name="worker-role"></a>worker ロール
-```C#
+```csharp
 
 using Microsoft.WindowsAzure.ServiceRuntime;
 
@@ -81,7 +81,7 @@ namespace WorkerRole1
 ```
 
 ### <a name="service-fabric-stateless-service"></a>Service Fabric のステートレス サービス
-```C#
+```csharp
 
 using System.Collections.Generic;
 using System.Threading;
@@ -138,7 +138,7 @@ VM ロールの構成設定が Cloud Services に設定され、その VM ロー
 #### <a name="cloud-services"></a>Cloud Services
 ServiceConfiguration.*.cscfg の構成設定には、 `RoleEnvironment`を介してアクセスできます。 この構成設定は、同じ Cloud Service デプロイ内のすべてのロール インスタンスでグローバルに使用できます。
 
-```C#
+```csharp
 
 string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 
@@ -149,7 +149,7 @@ string value = RoleEnvironment.GetConfigurationSettingValue("Key");
 
 構成設定には、サービスの `CodePackageActivationContext`を介して各サービス インスタンス内でアクセスします。
 
-```C#
+```csharp
 
 ConfigurationPackage configPackage = this.Context.CodePackageActivationContext.GetConfigurationPackageObject("Config");
 
@@ -170,7 +170,7 @@ using (StreamReader reader = new StreamReader(Path.Combine(configPackage.Path, "
 #### <a name="cloud-services"></a>Cloud Services
 `RoleEnvironment.Changed` イベントは、環境内で変化 (構成の変更など) が発生したときに、すべてのロール インスタンスに通知するために使用されます。 また、ロール インスタンスのリサイクルや worker プロセスの再起動を伴うことなく、構成の更新を利用するために使われます。
 
-```C#
+```csharp
 
 RoleEnvironment.Changed += RoleEnvironmentChanged;
 
@@ -191,7 +191,7 @@ Code、Config、Data というサービス内の 3 つの各パッケージに�
 
 これらのイベントを使用すると、サービス インスタンスを再起動することなく、サービス パッケージの変更を利用することができます。
 
-```C#
+```csharp
 
 this.Context.CodePackageActivationContext.ConfigurationPackageModifiedEvent +=
                     this.CodePackageActivationContext_ConfigurationPackageModifiedEvent;
@@ -251,7 +251,7 @@ Service Fabric のスタートアップ エントリ ポイントは、ServiceMa
 ## <a name="a-note-about-development-environment"></a>開発環境に関する注意事項
 Cloud Services と Service Fabric は、いずれもプロジェクト テンプレートで Visual Studio と統合され、デバッグ、構成、ローカルと Azure 両方へのデプロイがサポートされています。 また、Cloud Services と Service Fabric のいずれにも、ローカル開発ランタイム環境が用意されています。 違いは、Cloud Services 開発ランタイムは、実行されている Azure 環境をエミュレートしますが、Service Fabric は、エミュレーターを使用しない点です。Service Fabric は、完全な Service Fabric ランタイムを使用します。 ローカル開発コンピューターで実行している Service Fabric 環境は、運用時に実行する環境と同じです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Service Fabric の全機能を活用できるように、Service Fabric の Reliable Services の詳細と、Cloud Services と Service Fabric アプリケーション アーキテクチャの違いについて説明します。
 
 * [Service Fabric の Reliable Services の概要](service-fabric-reliable-services-quick-start.md)

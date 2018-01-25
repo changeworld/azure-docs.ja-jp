@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/15/2017
+ms.date: 01/10/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: ccc0755385d2f170939e5c19f32b168132b6839b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d9e7b1d020a99e939ea01c43c7e5e935188b212e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Portal および PowerShell を使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 このセクションでは、データセット スライスの状態がどのように移行するかについても説明します。   
 
 ### <a name="navigate-to-your-data-factory"></a>Data Factory に移動する
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで、**[データ ファクトリ]** をクリックします。 表示されない場合は、**[その他のサービス >]** をクリックし、**[インテリジェンス + 分析]** カテゴリの下にある **[データ ファクトリ]** をクリックします。
 
    ![[すべて参照] > [データ ファクトリ]](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
@@ -86,7 +86,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 
 <table>
 <tr>
-    <th align="left">状態</th><th align="left">下位状態</th><th align="left">Description</th>
+    <th align="left">State</th><th align="left">下位状態</th><th align="left">[説明]</th>
 </tr>
 <tr>
     <td rowspan="8">待機中</td><td>ScheduleTime</td><td>スライスを実行する時刻になっていません。</td>
@@ -120,7 +120,7 @@ Azure Portal を使用すると、次の操作を行うことができます。
 <td>スライスの処理中です。</td>
 </tr>
 <tr>
-<td rowspan="4">Failed</td><td>TimedOut</td><td>アクティビティで許可されている実行時間を超過しました。</td>
+<td rowspan="4">失敗</td><td>TimedOut</td><td>アクティビティで許可されている実行時間を超過しました。</td>
 </tr>
 <tr>
 <td>Canceled</td><td>スライスがユーザーの操作によって取り消されました。</td>
@@ -177,7 +177,7 @@ Azure PowerShell を使用してパイプラインを管理できます。 た�
 ```powershell
 Suspend-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-For example:
+例: 
 
 ```powershell
 Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -188,7 +188,7 @@ Suspend-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName produ
 ```powershell
 Resume-AzureRmDataFactoryPipeline [-ResourceGroupName] <String> [-DataFactoryName] <String> [-Name] <String>
 ```
-For example:
+例: 
 
 ```powershell
 Resume-AzureRmDataFactoryPipeline -ResourceGroupName ADF -DataFactoryName productrecgamalbox1dev -Name PartitionProductsUsagePipeline
@@ -220,7 +220,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     ```powershell   
     Get-AzureRmDataFactorySlice [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime] <DateTime> [[-EndDateTime] <DateTime> ] [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```   
-   For example:
+   例: 
 
     ```powershell   
     Get-AzureRmDataFactorySlice -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime 2014-05-04 20:00:00
@@ -234,7 +234,7 @@ Azure Data Factory では、パイプラインをデバッグおよびトラブ�
     <DateTime> [-Profile <AzureProfile> ] [ <CommonParameters>]
     ```
 
-    For example:
+    例: 
 
     ```powershell   
     Get-AzureRmDataFactoryRun -ResourceGroupName ADF -DataFactoryName LogProcessingFactory -DatasetName EnrichedGameEventsTable -StartDateTime "5/5/2014 12:00:00 AM"
@@ -368,11 +368,11 @@ Azure イベントは、Azure のリソースで何が起きているのかを�
 
 | 操作の名前 | 状態 | 副状態 |
 | --- | --- | --- |
-| RunStarted |開始済み |Starting |
-| RunFinished |Failed / Succeeded |FailedResourceAllocation<br/><br/>Succeeded<br/><br/>FailedExecution<br/><br/>TimedOut<br/><br/><Canceled<br/><br/>FailedValidation<br/><br/>Abandoned |
+| RunStarted |開始済み |開始中 |
+| RunFinished |Failed / Succeeded |FailedResourceAllocation<br/><br/>成功<br/><br/>FailedExecution<br/><br/>TimedOut<br/><br/><Canceled<br/><br/>FailedValidation<br/><br/>Abandoned |
 | OnDemandClusterCreateStarted |開始済み | |
-| OnDemandClusterCreateSuccessful |Succeeded | |
-| OnDemandClusterDeleted |Succeeded | |
+| OnDemandClusterCreateSuccessful |成功 | |
+| OnDemandClusterDeleted |成功 | |
 
 この例で使用する JSON 要素の詳細については、「[Create Alert Rule (アラート ルールの作成)](https://msdn.microsoft.com/library/azure/dn510366.aspx)」を参照してください。
 

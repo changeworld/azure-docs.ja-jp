@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.openlocfilehash: 3a90057b43e3f2074e72f3d0f896b35b4884368b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a2cba85a553f20040d2fb118b35859b05870e361
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナントの有効化
 
@@ -81,7 +81,7 @@ $guestDirectoryTenantName = "fabrikam.onmicrosoft.com"
 
 Register-AzSWithMyDirectoryTenant `
  -TenantResourceManagerEndpoint $tenantARMEndpoint `
- -DirectoryTenantName $guestDirectoryTenantName ` 
+ -DirectoryTenantName $guestDirectoryTenantName `
  -Verbose 
 ````
 ## <a name="direct-users-to-sign-in"></a>ユーザーをサインインに誘導する
@@ -89,7 +89,7 @@ Register-AzSWithMyDirectoryTenant `
 
 メアリーは、Fabrikam ディレクトリの[外部プリンシパル](../active-directory/active-directory-understanding-resource-access.md) (つまり、fabrikam.onmicrosoft.com のサフィックスを持たない Fabrikam ディレクトリのユーザー) はすべて、https://portal.local.azurestack.external/fabrikam.onmicrosoft.com を使用してサインインするよう誘導します。この URL を使用しなかった場合、これらのユーザーは既定のディレクトリ (Fabrikam) に送られ、管理者による同意がないことを示すエラーが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [委任されたプロバイダーの管理](azure-stack-delegated-provider.md)
 - [Azure Stack の主要概念](azure-stack-key-features.md)

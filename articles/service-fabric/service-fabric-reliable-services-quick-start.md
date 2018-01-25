@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: f67b69e7ad1f7588280de82669040bad5ec6172b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 101ea717816fa2eb9fa9ae25cef21df67cf6ef9c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
 > [!div class="op_single_selector"]
-> * [Windows での C# ](service-fabric-reliable-services-quick-start.md)
+> * [Windows での C#](service-fabric-reliable-services-quick-start.md)
 > * [Linux での Java](service-fabric-reliable-services-quick-start-java.md)
 > 
 > 
@@ -128,7 +128,7 @@ Service Fabric には、新しい種類のステートフルなサービスが�
 
 ![Service Fabric アプリケーションにサービスを追加します。](media/service-fabric-reliable-services-quick-start/hello-stateful-NewService.png)
 
-**[ステートフル サービス]** を選択し、 *HelloWorldStateful*という名前を付けます。 **[OK]**をクリックします。
+**[ステートフル サービス]** を選択し、 *HelloWorldStateful*という名前を付けます。 Click **OK**.
 
 ![[新しいプロジェクト] ダイアログを使用して新しい Service Fabric のステートフル サービスを作成する](media/service-fabric-reliable-services-quick-start/hello-stateful-NewProject.png)
 
@@ -188,7 +188,7 @@ Reliable Collection にはカスタム型を含むすべての .NET 型を格納
 Reliable Collection の管理は Reliable State Manager が行います。 サービス内のどの場所でも、Reliable Collection の名前を指定することで、Reliable State Manager に Reliable Collection をいつでも要求できます。 Reliable State Manager により、参照を確実に取得できます。 Reliable Collection インスタンスへの参照をクラス メンバー変数やプロパティに保存することはお勧めしません。 サービスのライフサイクル中、参照が常にインスタンスに設定されていることを保証するために特に注意を払う必要があります。 この作業は Reliable State Manager によって処理され、繰り返されるアクセスのために最適化されます。
 
 ### <a name="transactional-and-asynchronous-operations"></a>トランザクション処理と非同期処理
-```C#
+```csharp
 using (ITransaction tx = this.StateManager.CreateTransaction())
 {
     var result = await myDictionary.TryGetValueAsync(tx, "Counter-1");
@@ -215,7 +215,7 @@ Reliable Collection の操作は *トランザクション*であるため、複
 
 ![Visual Studio で診断イベントを表示する](media/service-fabric-reliable-services-quick-start/hello-stateful-Output.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Visual Studio での Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
 [はじめに: OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)

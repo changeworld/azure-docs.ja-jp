@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/25/2017
 ms.author: yoelh
-ms.openlocfilehash: d65d94bb5c807abfd6cbb1fae786a02f179e93d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0d4594f5e7c0a13d50993dd42d4780c1ba703140
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>HTTP 基本認証を使用して RESTful サービスをセキュリティで保護する
 [関連する Azure AD B2C の記事](active-directory-b2c-custom-rest-api-netfw.md)では、Azure Active Directory B2C (Azure AD B2C) のユーザー体験を認証なしで統合する RESTful サービス (Web API) を作成しました。 
@@ -76,7 +76,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 3. *App_Start\ClientAuthMiddleware.cs* ファイルを開き、ファイルの内容を次のコードに置き換えます。
 
-    ```C#
+    ```csharp
     
     using Microsoft.Owin;
     using System;
@@ -194,7 +194,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb
 
 2. *Startup.cs* ファイルを開き、ファイルの内容を次のコードに置き換えます。
 
-    ```C#
+    ```csharp
     using Microsoft.Owin;
     using Owin;
     
@@ -338,10 +338,10 @@ RESTful サービスがクライアント ID (ユーザー名) とシークレ�
     }
     ```
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(省略可能) 完全なポリシー ファイルとコードをダウンロードする
+## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
 * [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw-secure-basic)が提供されています。
 * 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/Contoso.AADB2C.API)からダウンロードできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [クライアント証明書を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 

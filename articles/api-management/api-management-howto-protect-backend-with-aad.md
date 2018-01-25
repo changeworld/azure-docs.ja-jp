@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 32adec024b2ee2649f2631cfa72ee575094aa0c0
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 603a22059dcf07c68f4c6576ea1df97d810eacf3
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
 次のビデオでは、Web API バックエンドをビルドし、Azure Active Directory と API Management で OAuth 2.0 プロトコルを使用して保護する方法を示します。  この記事では、ビデオで説明する手順の概要と追加情報を紹介します。 この 24 分間のビデオでは、次の手順について説明しています。
@@ -81,13 +81,13 @@ Azure へのサインインを求めるメッセージが表示され、Web ア�
 
 `CalcInput.cs` ファイルの先頭に次の `using` ステートメントを追加します。
 
-```c#
+```csharp
 using Newtonsoft.Json;
 ```
 
 生成されたクラスを次のコードで置き換えます。
 
-```c#
+```csharp
 public class CalcInput
 {
     [JsonProperty(PropertyName = "a")]
@@ -104,7 +104,7 @@ public class CalcInput
 
 `CalcController.cs` ファイルの先頭に次の `using` ステートメントを追加します。
 
-```c#
+```csharp
 using System.IO;
 using System.Web;
 using APIMAADDemo.Models;
@@ -112,7 +112,7 @@ using APIMAADDemo.Models;
 
 生成されたコントローラー クラスを次のコードで置き換えます。 このコードは、Basic Calculator API の操作である `Add`、`Subtract`、`Multiply`、`Divide` を実装します。
 
-```c#
+```csharp
 [Authorize]
 public class CalcController : ApiController
 {
@@ -188,7 +188,7 @@ Azure AD アプリケーションが API Management 開発者ポータルに構�
 ## <a name="import-the-web-api-into-api-management"></a>API Management に Web API をインポートする
 API は、API パブリッシャー ポータルから構成されます。このポータルには、Azure Portal からアクセスします。 パブリッシャー ポータルにアクセスするには、API Management サービスのツール バーの **[パブリッシャー ポータル]** をクリックします。 API Management サービス インスタンスをまだ作成していない場合は、「[Azure API Management での最初の API の管理][Manage your first API]」チュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」をご覧ください。
 
-![パブリッシャー ポータル][api-management-management-console]
+![発行者ポータル][api-management-management-console]
 
 操作は [API に手動で追加する](api-management-howto-add-operations.md)ことも、インポートすることもできます。 このビデオでは、操作は 6:40 から始まる Swagger 形式でインポートされます。
 
@@ -364,11 +364,11 @@ API がインポートされると、API の概要ページがパブリッシャ
 
 **[試用版]**をクリックします。
 
-![試してみる][api-management-dev-portal-try-it]
+![[試用版]][api-management-dev-portal-try-it]
 
 **[送信]** をクリックすると、応答ステータスに 「**401 認証エラー**」と表示されます。
 
-![送信][api-management-dev-portal-send-401]
+![Send][api-management-dev-portal-send-401]
 
 バックエンド API が Azure Active Directory によって保護されているため、要求は承認されていません。 API を正常に呼び出すには、OAuth 2.0 を使用して開発者を承認するよう、開発者ポータルを構成する必要があります。 このプロセスについては以降のセクションで説明します。
 
@@ -436,7 +436,7 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 
 **クライアント シークレット**を取得するには、**[キー]** セクションで **[時間の選択]** ドロップダウンをクリックし、期間を指定します。 この例では 1 年間を使用します。
 
-![[クライアント ID]][api-management-aad-client-id]
+![クライアント ID][api-management-aad-client-id]
 
 **[保存]** をクリックして構成を保存し、キーを表示します。 
 
@@ -510,7 +510,7 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 
 このポリシーの構成と使用についての別のデモは、「 [「Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 」を 13:50 まで早送りしてご覧ください。 15:00 まで早送りし、ポリシー エディターで構成されるポリシーをご覧いただいた後、開発者ポータルから操作を呼び出す方法について、必要な認証トークンを使用した場合と使用しない場合の両方のデモを 18:50 からご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。
 * バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」をご覧ください。
 

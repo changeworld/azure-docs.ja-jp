@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
 ms.author: mikerou
-ms.openlocfilehash: 3d123a3d06420194d2918b71c98152cd2ea03457
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 1744e3c49ac06abe9e1067d507fd56d694201ffc
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
@@ -57,7 +57,7 @@ Service Fabric クラスター自体を操作するには、[System.Fabric.Fabri
 
 fluent コンピューティング ライブラリは、次のとおり、これらの資格情報を使用してログインできます (`IAzure` などのコアの fluent Azure タイプは [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) パッケージにあります)。
 
-```C#
+```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
                 ClientId = AzureClientId,
                 ClientSecret = 
@@ -79,7 +79,7 @@ else
 ## <a name="scaling-out"></a>スケールアウト
 fluent Azure コンピューティング SDK を使用すると、数度の呼び出しだけでインスタンスを仮想マシン スケール セットに追加できます。
 
-```C#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
@@ -95,7 +95,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 ノードのシャットダウンを準備する際は、削除するノード (最後に追加されたノード) を探して非アクティブ化する必要があります。 非シード ノードの場合、`NodeInstanceId` と比較することで新しいノードを検出できます。 
 
-```C#
+```csharp
 using (var client = new FabricClient())
 {
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
@@ -109,7 +109,7 @@ using (var client = new FabricClient())
 
 削除するノードが見つかったら、非アクティブ化し、削除します。これには前に使ったのと同じ `FabricClient` インスタンスと `IAzure` インスタンスを使用します。
 
-```C#
+```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
 
 // Remove the node from the Service Fabric cluster
@@ -134,7 +134,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 スクリプティングの方が適している場合は、スケールアウトと同様に、仮想マシン スケール セット容量を変更するために PowerShell コマンドレットを使用することもできます。 仮想マシン インスタンスを削除したら、Service Fabric ノードの状態を削除することができます。
 
-```C#
+```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 ```
 
@@ -144,7 +144,7 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 Service Fabric のスケーリングの方法は、シナリオによって異なります。 スケーリングが頻繁でなければ、ノードを手動で追加または削除する機能だけでおそらく十分です。 さらに複雑なシナリオの場合は、自動スケール ルールと、プログラムでスケーリングを行う機能を公開している SDK が強力な代替手段となります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 自動スケールのロジックを独自に実装するには、次の概念と、便利な API をご確認ください。
 

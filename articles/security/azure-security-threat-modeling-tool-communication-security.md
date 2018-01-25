@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 68bf128824a40afb25b3e088965f38a4cb4d1332
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 71bbe53595f2afab50d6220f335d615ada957a85
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信セキュリティの | 対応策 
 | 製品/サービス | 記事 |
@@ -173,7 +173,7 @@ ms.lasthandoff: 10/11/2017
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -184,7 +184,7 @@ ms.lasthandoff: 10/11/2017
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - BLOB |
@@ -206,7 +206,7 @@ ms.lasthandoff: 10/11/2017
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック、Windows Phone |
 | **属性**              | 該当なし  |
@@ -214,7 +214,7 @@ ms.lasthandoff: 10/11/2017
 | **手順** | <p>証明書のピン留めは Man-In-The-Middle (MITM) 攻撃に対する防御策で、 ホストを、予想される X509 証明書または公開キーに関連付けます。 ホストに認識または表示された証明書や公開キーは、そのホストに関連付けられます。つまり、"ピン留め" されます。 </p><p>SSL ハンドシェイク中に 敵が SSL MITM 攻撃を実行しようとしたとき、攻撃者のサーバーのキーが、ピン留めされた証明書のキーが異なっていると、その要求は破棄されます。したがって、MITM 証明書のピン留めを回避するには、ServicePointManager の `ServerCertificateValidationCallback` 委任を実装します。</p>|
 
 ### <a name="example"></a>例
-```C#
+```csharp
 using System;
 using System.Net;
 using System.Net.Security;
@@ -343,7 +343,7 @@ string GetData(int value);
 
 ### <a name="example"></a>例 
 次のコードは、SSL をチェックする Web API 認証フィルターを示しています。 
-```C#
+```csharp
 public class RequireHttpsAttribute : AuthorizationFilterAttribute
 {
     public override void OnAuthorization(HttpActionContext actionContext)
@@ -363,7 +363,7 @@ public class RequireHttpsAttribute : AuthorizationFilterAttribute
 }
 ```
 このフィルターを、SSL を必要とする Web API アクションすべてに追加します。 
-```C#
+```csharp
 public class ValuesController : ApiController
 {
     [RequireHttps]

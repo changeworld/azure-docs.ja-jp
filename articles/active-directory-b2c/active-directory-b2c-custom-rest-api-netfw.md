@@ -14,19 +14,19 @@ ms.topic: article
 ms.devlang: na
 ms.date: 09/30/2017
 ms.author: yoelh
-ms.openlocfilehash: b7ce383b5297b0973f2999e7310fad94a0abe7dd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: fd9c95ae78590aa772fde10c8c80914c905767a8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
-Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework を使用すると、ユーザー体験における RESTful API と統合することができます。 このチュートリアルでは、Azure AD B2C と .NET Framework RESTful サービス (Web API) がどのように対話するかを学習します。
+Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework を使用すると、ユーザー体験における RESTful API と統合することができます。 このチュートリアルでは、Azure AD B2C と .NET Framework RESTful サービス (Web API) がどのようなやり取りをするかを学習します。
 
 ## <a name="introduction"></a>はじめに
 Azure AD B2C を使用すると、自分の RESTful サービスを呼び出すことで、独自のビジネス ロジックをユーザー体験に追加できます。 Identity Experience Framework は、*入力要求*コレクションでデータを RESTful サービスに送信し、*出力要求*コレクションで RESTful から返されたデータを受信します。 RESTful サービスの統合により、次の操作を実行できます。
 
-* **ユーザー入力データの検証**: このアクションは、不適切なデータが Azure AD に保持されるのを防ぎます。 ユーザーが入力した値が有効でない場合、RESTful サービスは、入力し直すようユーザーに指示するエラー メッセージを返します。 たとえば、ユーザーによって入力されたメール アドレスが顧客データベースに存在するかどうかを確認できます。
+* **ユーザー入力データの検証**: このアクションは、不適切なデータが Azure AD に保持されるのを防ぎます。 ユーザーが入力した値が有効でない場合、ユーザーに入力を指示するエラー メッセージがご利用の RESTful サービスによって返されます。 たとえば、ユーザーによって入力されたメール アドレスが顧客データベースに存在するかどうかを確認できます。
 * **入力要求の上書き**: たとえば、ユーザーが名をすべて小文字または大文字で入力した場合に、最初の文字だけを大文字にするように書式設定できます。
 * **企業の基幹業務アプリケーションとの統合強化によるユーザー データの向上**: RESTful サービスは、ユーザーのメール アドレスを受け取り、顧客データベースにクエリを実行して、ユーザーのロイヤルティ番号を Azure AD B2C に返すことができます。 返された要求は、ユーザーの Azure AD アカウントに保存するか、次の*オーケストレーション手順*で評価するか、アクセス トークンに含めることができます。
 * **カスタム ビジネス ロジックの実行**: プッシュ通知の送信、企業データベースの更新、ユーザーの移行プロセスの実行、アクセス許可の管理、データベースの監査、およびその他のアクションを実行できます。
@@ -77,7 +77,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 ## <a name="step-2-prepare-the-rest-api-endpoint"></a>手順 2: REST API エンドポイントを準備する
 
 ### <a name="step-21-add-data-models"></a>手順 2.1: データ モデルを追加する
-モデルは、RESTful サービスの入力要求と出力要求のデータを表します。 コードは、入力要求モデルを JSON 文字列から C# オブジェクト (使用しているモデル) に逆シリアル化することで、入力データを読み取ります。 ASP.NET Web API では、出力要求モデルが JSON に自動的に逆シリアル化された後、シリアル化されたデータが、HTTP 応答メッセージの本文に書き込まれます。 
+モデルは、RESTful サービスの入力要求と出力要求のデータを表します。 入力要求モデルを JSON 文字列から C# オブジェクト (使用しているモデル) に逆シリアル化することで、ご利用のコードによって入力データが読み取られます。 ASP.NET Web API では、出力要求モデルが JSON に自動的に逆シリアル化された後、シリアル化されたデータが、HTTP 応答メッセージの本文に書き込まれます。 
 
 次の手順を実行して、入力要求を表すモデルを作成します。
 
@@ -88,7 +88,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 
 3. クラス `InputClaimsModel` に名前を付けて、次のプロパティを `InputClaimsModel` クラスに追加します。
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class InputClaimsModel
@@ -102,7 +102,7 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
 
 4. 新しいモデル `OutputClaimsModel` を作成し、次のプロパティを `OutputClaimsModel` クラスに追加します。
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class OutputClaimsModel
@@ -112,9 +112,9 @@ Azure AD B2C を使用すると、自分の RESTful サービスを呼び出す�
     }
     ```
 
-5. 入力の検証エラー メッセージをスローするために使用する、もう 1 つのモデル `B2CResponseContent` を作成します。 次のプロパティを `B2CResponseContent` クラスに追加し、不明な参照を指定して、ファイルを保存します。
+5. 入力の検証エラー メッセージをスローするために使用する、もう 1 つのモデル `B2CResponseContent` を作成します。 次のプロパティを `B2CResponseContent` クラスに追加し、欠落している参照に入力して、ファイルを保存します。
 
-    ```C#
+    ```csharp
     namespace Contoso.AADB2C.API.Models
     {
         public class B2CResponseContent
@@ -140,7 +140,7 @@ Web API では、_コントローラー_は、HTTP 要求を処理するオブ�
 
     ![新しいコントロールの追加](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-1.png)
 
-2. **[スキャフォールディングの追加]** ウィンドウで **[Web API コントローラー - 空]** を選択し、**[追加]** を選択します。
+2. **[スキャフォールディングを追加]** ウィンドウで **[Web API コントローラー - 空]** を選択し、**[追加]** を選択します。
 
     ![[Web API 2 コントローラー - 空] の選択](media/aadb2c-ief-rest-api-netfw/aadb2c-ief-rest-api-netfw-add-controller-2.png)
 
@@ -152,7 +152,7 @@ Web API では、_コントローラー_は、HTTP 要求を処理するオブ�
 
 4. *IdentityController.cs* ファイルがまだ開いていない場合は、それをダブルクリックして、ファイル内のコードを次のコードに置き換えます。
 
-    ```C#
+    ```csharp
     using Contoso.AADB2C.API.Models;
     using Newtonsoft.Json;
     using System;
@@ -378,9 +378,9 @@ XML スニペットには、次の 2 つの技術プロファイルを持つク�
 }
 ```
 
-## <a name="optional-download-the-complete-policy-files-and-code"></a>(省略可能) 完全なポリシー ファイルとコードをダウンロードする
+## <a name="optional-download-the-complete-policy-files-and-code"></a>完全なポリシー ファイルとコードをダウンロードする (省略可能)
 * [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)チュートリアルの完了後に、独自のカスタム ポリシー ファイルを使用してシナリオを構築することをお勧めします。 参照用に[サンプルのポリシー ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw)が提供されています。
-* 完全なコードは、[参照用のVisual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)からダウンロードできます。
+* 完全なコードは、[参照用の Visual Studio ソリューションのサンプル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-rest-api-netfw/)からダウンロードできます。
     
 ## <a name="next-steps"></a>次のステップ
 * [基本認証 (ユーザー名とパスワード) を使用して RESTful API をセキュリティで保護する](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)

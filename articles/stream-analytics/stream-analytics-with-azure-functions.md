@@ -14,16 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/19/2017
 ms.author: sngun
-ms.openlocfilehash: ab095827dc9dbfee19284abfbac353b16d3239a7
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f2f4a8d8cda752dc6ed197b8402119f7cbcaf58f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="run-azure-functions-with-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブを使用した Azure Functions の実行 
- 
-> [!IMPORTANT]
-> この機能はプレビュー状態です。
 
 Azure Stream Analytics で Azure Functions を実行するには、Stream Analytics ジョブへの出力シンクの 1 つとして Functions を構成します。 Functions はイベント ドリブン型コンピューティング オンデマンド エクスペリエンスであり、これにより、Azure またはサード パーティのサービスで発生するイベントによってトリガーされるコードを実装できます。 トリガーに応答する Azure Functions の機能によって、それは Azure Stream Analytics への自然な出力になります。
 
@@ -62,7 +59,7 @@ Stream Analytics では、HTTP トリガーを使用して Functions を呼び�
 
 2. **run.csx** 関数を参照します。 これを以下のコードで更新します  (“\<your redis cache connection string goes here \> (ここに、ご利用の Redis Cache 接続文字列が入ります)” を前のセクションで取得した Azure Redis Cache のプライマリ接続文字列に必ず置き換えます)。  
 
-   ```c#
+   ```csharp
    using System;
    using System.Net;
    using System.Threading.Tasks;
@@ -113,7 +110,7 @@ Stream Analytics では、HTTP トリガーを使用して Functions を呼び�
 
    Stream Analytics では、関数から "HTTP 要求エンティティが大きすぎる" という例外を受け取ると、Functions に送信するバッチのサイズを削減します。 関数内では、次のコードを使用して、Stream Analytics からサイズ超過のバッチが送信されていないことを確認します。 関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。
 
-   ```c#
+   ```csharp
    if (dataArray.ToString().Length > 262144)
       {        
         return new HttpResponseMessage(HttpStatusCode.RequestEntityTooLarge);

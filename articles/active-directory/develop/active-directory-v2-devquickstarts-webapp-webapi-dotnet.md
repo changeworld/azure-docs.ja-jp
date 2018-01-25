@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 185780da206e4d0ed0d8e5f8b24a546e3d9b3800
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f59c9e2c523db319565c1cca13eb85f809b2bdd6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="calling-a-web-api-from-a-net-web-app"></a>.NET Web アプリから Web API を呼び出す
 v2.0 エンドポイントを使用すると、Microsoft の個人アカウントと職場/学校アカウントの両方に対応した Web アプリと Web API に認証をすばやく追加できます。  ここでは、OpenID Connect と Microsoft の OWIN ミドルウェアを使用してユーザーのサインイン処理を行う MVC Web アプリを構築します。  この Web アプリは、OAuth 2.0 によってセキュリティ保護された Web API 用の OAuth 2.0 アクセス トークンを取得し、指定したユーザーの "To-Do List" 項目の作成、読み取り、削除を可能にします。
@@ -68,7 +68,7 @@ PM> Install-Package Microsoft.Owin.Host.SystemWeb -ProjectName TodoList-WebApp
 * `App_Start\Startup.Auth.cs` ファイルを開き、前記のライブラリの `using` ステートメントを追加します。
 * 同じファイルに、 `ConfigureAuth(...)` メソッドを実装します。  `OpenIDConnectAuthenticationOptions` で提供されたパラメーターは、アプリが Azure AD と通信するための調整役として機能します。
 
-```C#
+```csharp
 public void ConfigureAuth(IAppBuilder app)
 {
     app.SetDefaultSignInAsAuthenticationType(CookieAuthenticationDefaults.AuthenticationType);
@@ -116,7 +116,7 @@ public void ConfigureAuth(IAppBuilder app)
 * MSAL 用の `App_Start\Startup.Auth.cs` ファイルにもう 1 つの `using` ステートメントを追加します。
 * 新しいメソッドとして `OnAuthorizationCodeReceived` イベント ハンドラーを追加します。  このハンドラーは、MSAL を使用して To-Do List API へのアクセス トークンを取得し、後で使用できるように MSAL のトークン キャッシュに格納します。
 
-```C#
+```csharp
 private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotification notification)
 {
         string userObjectId = notification.AuthenticationTicket.Identity.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
@@ -144,7 +144,7 @@ private async Task OnAuthorizationCodeReceived(AuthorizationCodeReceivedNotifica
     `using Microsoft.Identity.Client;`
 * `Index` アクションで MSAL の `AcquireTokenSilentAsync` メソッドを使用して access_token を取得します。これは、To-Do List サービスからデータを読み取るのに使用できます。
 
-```C#
+```csharp
 // ...
 string userObjectID = ClaimsPrincipal.Current.FindFirst("http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value;
 string tenantID = ClaimsPrincipal.Current.FindFirst("http://schemas.microsoft.com/identity/claims/tenantid").Value;
@@ -160,7 +160,7 @@ result = await app.AcquireTokenSilentAsync(new string[] { Startup.clientId });
 * 次に、作成されたトークンを `Authorization` ヘッダーとして HTTP GET 要求に追加します。To-Do List サービスはこれを使って要求を認証します。
 * To-Do List サービスから `401 Unauthorized` 応答が返された場合、MSAL の access_tokens が何らかの理由で無効になっています。  この場合、MSAL キャッシュから access_tokens をドロップし、サインインし直す必要があることを示すメッセージをユーザーに表示する必要があります。これにより、トークンの取得フローが再起動されます。
 
-```C#
+```csharp
 // ...
 // If the call failed with access denied, then drop the current access token from the cache,
 // and show the user an error indicating they might need to sign-in again.
@@ -175,7 +175,7 @@ if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
 
 * 同様に、MSAL が何らかの理由で access_token を返せない場合、ユーザーにサインインし直すよう指示する必要があります。  これは、`MSALException` のキャッチと同様に簡単です。
 
-```C#
+```csharp
 // ...
 catch (MsalException ee)
 {
@@ -191,7 +191,7 @@ catch (MsalException ee)
 
 参照用の完全なサンプル (構成値を除く) が、 [ここ](https://github.com/AzureADQuickStarts/AppModelv2-WebApp-WebAPI-OpenIdConnect-DotNet/archive/complete.zip)で提供されています。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 その他のリソースについては、以下を参照してください。
 
 * [v2.0 開発者向けガイド >>](active-directory-appmodel-v2-overview.md)

@@ -3,8 +3,8 @@ title: "Managed Cache Service アプリケーションの Redis への移行 - A
 description: "Managed Cache Service アプリケーションおよび In-Role Cache アプリケーションを Azure Redis Cache に移行する方法の説明"
 services: redis-cache
 documentationcenter: na
-author: steved0x
-manager: douge
+author: wesmc7777
+manager: cfowler
 editor: tysonn
 ms.assetid: 041f077b-8c8e-4d7c-a3fc-89d334ed70d6
 ms.service: cache
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 05/30/2017
-ms.author: sdanie
-ms.openlocfilehash: 0fbfb945c66926794721f2ce8cc183dac51ecb27
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: wesmc
+ms.openlocfilehash: 0d52454ae1c2159814d4601d07259aba319e8598
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrate-from-managed-cache-service-to-azure-redis-cache"></a>Managed Cache Service から Azure Redis Cache への移行
 Azure Managed Cache Service を使用するアプリケーションの Azure Redis Cache への移行は、キャッシュ アプリケーションで使用されている Managed Cache Service の機能によっては、最小限の変更をアプリケーションに対して行うだけで実現できます。 API はまったく同じではありませんがよく似ており、Managed Cache Service を使用してキャッシュにアクセスする既存コードの多くは最小限の変更で再利用できます。 このトピックでは、Managed Cache Service アプリケーションを Azure Redis Cache を使用するように移行するために必要な構成とアプリケーションの変更を行う方法、および Azure Redis Cache の機能を使用して Managed Cache Service キャッシュの機能を実装する方法について説明します。
@@ -125,7 +125,7 @@ Managed Cache Service では、キャッシュへの接続は `DataCacheFactory`
 
 キャッシュにアクセスするファイルの先頭に、次の using ステートメントを追加します。
 
-```c#
+```csharp
 using StackExchange.Redis
 ```
 
@@ -138,7 +138,7 @@ using StackExchange.Redis
 
 Azure Redis Cache インスタンスに接続するには、静的メソッド `ConnectionMultiplexer.Connect` を呼び出して、エンドポイントとキーを渡します。 アプリケーション内の `ConnectionMultiplexer` インスタンスを共有する方法の 1 つに、次の例のように、接続されたインスタンスを返す静的プロパティを設定する方法があります。 これにより、接続された 1 つの `ConnectionMultiplexer` インスタンスだけがスレッドセーフな方法で初期化されます。 この例では、 `abortConnect` が false に設定されており、キャッシュへの接続が確立されていない場合でも呼び出しが成功します。 `ConnectionMultiplexer` の主な機能の 1 つは、ネットワーク問題などの原因が解決されると、キャッシュへの接続が自動的に復元されることです。
 
-```c#
+```csharp
 private static Lazy<ConnectionMultiplexer> lazyConnection = new Lazy<ConnectionMultiplexer>(() =>
 {
     return ConnectionMultiplexer.Connect("contoso5.redis.cache.windows.net,abortConnect=false,ssl=true,password=...");
@@ -157,7 +157,7 @@ public static ConnectionMultiplexer Connection
 
 接続が確立されたら、 `ConnectionMultiplexer.GetDatabase` メソッドを呼び出して Redis Cache データベースへの参照を取得します。 `GetDatabase` メソッドから返されるオブジェクトは、手付かずで受け渡しされる軽量のオブジェクトであり、保存する必要はありません。
 
-```c#
+```csharp
 IDatabase cache = Connection.GetDatabase();
 
 // Perform cache operations using the cache object...
@@ -178,7 +178,7 @@ StackExchange.Redis クライアントは、キャッシュ内のアイテムの
 
 キャッシュ内の項目の有効期限を指定するには、`StringSet` の `TimeSpan` パラメーターを使用します。
 
-```c#
+```csharp
 cache.StringSet("key1", "value1", TimeSpan.FromMinutes(90));
 ```
 
@@ -187,6 +187,6 @@ Azure Redis Cache はプリミティブ データ型に加え、.NET オブジ�
 ## <a name="migrate-aspnet-session-state-and-output-caching-to-azure-redis-cache"></a>ASP.NET のセッション状態と出力キャッシュを Azure Redis Cache に移行する
 Azure Redis Cache には、ASP.NET セッション状態とページ出力キャッシュの両方に対するプロバイダーがあります。 これらのプロバイダーの Managed Cache Service バージョンを使用するアプリケーションを移行するには、まず web.config から既存のセクションを削除した後、Azure Redis Cache バージョンのプロバイダーを構成します。 Azure Redis Cache ASP.NET プロバイダーの使用方法については、「[Azure Redis Cache の ASP.NET セッション状態プロバイダー](cache-aspnet-session-state-provider.md)」および「[Azure Redis Cache の ASP.NET 出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Redis Cache ドキュメント](https://azure.microsoft.com/documentation/services/cache/) のチュートリアル、サンプル、ビデオ、その他をご覧ください。
 

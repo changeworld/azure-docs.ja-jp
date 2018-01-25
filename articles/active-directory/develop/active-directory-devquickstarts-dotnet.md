@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e1ca92b1d1ae015add539ef03a358f7a53bc3a6d
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 9b1118b0159437e179b09b179571ed1460c3daf6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-net-desktop-wpf-getting-started"></a>Azure AD .NET Desktop (WPF) の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -74,7 +74,7 @@ ADAL を使用することの基本的なメリットは、アプリがアクセ
 
 * `DirectorySearcher` プロジェクトで、`MainWindow.xaml.cs` を開き、`MainWindow()` メソッドを見つけます。  最初の手順は、アプリの `AuthenticationContext` (ADAL のプライマリ クラス) を初期化することです。  ここでは、ADAL が Azure AD と通信し、トークンをキャッシュする方法を通知するために必要な調整項目を ADAL に渡します。
 
-```C#
+```csharp
 public MainWindow()
 {
     InitializeComponent();
@@ -87,7 +87,7 @@ public MainWindow()
 
 * 次に、`Search(...)` メソッドを見つけます。このメソッドは、ユーザーがアプリの UI で [検索] ボタンをクリックすると呼び出されます。  このメソッドは、指定された検索用語で UPN が始まるユーザーをクエリするための、Azure AD Graph API に対する GET 要求を実行します。  ただし、Graph API をクエリするためには、要求の `Authorization` ヘッダーに access_token を含める必要があります。この処理を ADAL が実行します。
 
-```C#
+```csharp
 private async void Search(object sender, RoutedEventArgs e)
 {
     // Validate the Input String
@@ -121,7 +121,7 @@ private async void Search(object sender, RoutedEventArgs e)
 * `AuthenticationResult` オブジェクトには、アプリが必要とする可能性のある情報を収集するために使用される `UserInfo` オブジェクトが含まれていることに注意してください。  DirectorySearcher で、 `UserInfo` は、ユーザーの ID を使用してアプリの UI をカスタマイズするために使用されます。
 * ユーザーが [サインアウト] ボタンをクリックした場合、次の `AcquireTokenAsync(...)` への呼び出しでは、ユーザーにサインインするように要求する必要があります。  ADAL を使用すると、この操作は、トークン キャッシュをクリアするのと同じくらい容易に達成できます。
 
-```C#
+```csharp
 private void SignOut(object sender = null, RoutedEventArgs args = null)
 {
     // Clear the token cache
@@ -133,7 +133,7 @@ private void SignOut(object sender = null, RoutedEventArgs args = null)
 
 * ただし、ユーザーが [サインアウト] ボタンをクリックしていない場合、ユーザーが次に DirectorySearcher を実行するときに備えて、ユーザーのセッションを維持する必要があります。  アプリが起動したら、既存のトークン用の ADAL のトークン キャッシュをチェックし、必要に応じて UI を更新できます。  `CheckForCachedToken()` メソッドで `AcquireTokenAsync(...)` に対して別の呼び出しを行います。その際に `PromptBehavior.Never` パラメーターを渡します。  `PromptBehavior.Never` は ADAL に対して、トークンを返せない場合、ユーザーにサインイン用の認証情報の入力を求めるのではなく、代わりに ADAL は例外をスローする必要があることを通知します。
 
-```C#
+```csharp
 public async void CheckForCachedToken() 
 {
     // As the application starts, try to get an access token without prompting the user.  If one exists, show the user as signed in.

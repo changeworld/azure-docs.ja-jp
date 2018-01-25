@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: e3d0a07323189599cb86dd2bf1347c2107efa842
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 94a7d35115420d455fe94e1173abf76622172f6f
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-xamarin-getting-started"></a>Azure AD Xamarin の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -98,7 +98,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 
 1. DirectorySearcher.cs を開いて新しいパラメーターを `SearchByAlias(...)` メソッドに追加します。 `IPlatformParameters` はコンテキスト パラメーターであり、認証を実行するために ADAL が必要とするプラットフォーム固有のオブジェクトをカプセル化しています。
 
-    ```C#
+    ```csharp
     public static async Task<List<User>> SearchByAlias(string alias, IPlatformParameters parent)
     {
     ```
@@ -107,7 +107,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 この操作では、ADAL が Azure AD と通信するために必要な調整項目が ADAL に渡されます。
 3. `AcquireTokenAsync(...)` を呼び出します。このメソッドは `IPlatformParameters` オブジェクトを受け取り、アプリにトークンを返すために必要な認証フローを呼び出します。
 
-    ```C#
+    ```csharp
     ...
         AuthenticationResult authResult = null;
         try
@@ -126,7 +126,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
     `AcquireTokenAsync(...)` は最初に、ユーザーに資格情報の入力を求めずに、古いトークンのキャッシュまたは更新によって、要求されたリソース (この場合は Graph API) 用のトークンを返そうとします。 要求されたトークンの取得にサインインが必要な場合は、Azure AD のサインイン ページがユーザーに表示されます。
 4. Graph API 要求の **Authorization** ヘッダーにアクセス トークンを設定します。
 
-    ```C#
+    ```csharp
     ...
         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
     ...
@@ -137,12 +137,12 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 ### <a name="android"></a>Android
 1. MainActivity.cs で、ボタン クリック ハンドラーに `SearchByAlias(...)` の呼び出しを追加します。
 
-    ```C#
+    ```csharp
     List<User> results = await DirectorySearcher.SearchByAlias(searchTermText.Text, new PlatformParameters(this));
     ```
 2. `OnActivityResult` ライフサイクル メソッドをオーバーライドして、認証リダイレクトを適切なメソッドに転送します。 ADAL には、Android でこれを行うためのヘルパー メソッドが用意されています。
 
-    ```C#
+    ```csharp
     ...
     protected override void OnActivityResult(int requestCode, Result resultCode, Intent data)
     {
@@ -155,7 +155,7 @@ Xamarin アプリから、保護されたリソースにアクセスする必要
 ### <a name="windows-desktop"></a>Windows デスクトップ
 MainWindow.xaml.cs で、デスクトップの `PlatformParameters` オブジェクトに `WindowInteropHelper` を渡し、`SearchByAlias(...)` を呼び出します。
 
-```C#
+```csharp
 List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
@@ -164,7 +164,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 #### <a name="ios"></a>iOS
 DirSearchClient_iOSViewController.cs で、iOS の `PlatformParameters` オブジェクトはビュー コントローラーへの参照を受け取ります。
 
-```C#
+```csharp
 List<User> results = await DirectorySearcher.SearchByAlias(
   SearchTermText.Text,
   new PlatformParameters(PromptBehavior.Auto, this.Handle));
@@ -173,7 +173,7 @@ List<User> results = await DirectorySearcher.SearchByAlias(
 ### <a name="windows-universal"></a>Windows ユニバーサル
 Windows ユニバーサルで MainPage.xaml.cs を開いてから、`Search` メソッドを実装します。 このメソッドでは、共有プロジェクトのヘルパー メソッドが使用され、必要に応じて UI が更新されます。
 
-```C#
+```csharp
 ...
 List<User> results = await DirectorySearcherLib.DirectorySearcher.SearchByAlias(SearchTermText.Text, new PlatformParameters(PromptBehavior.Auto, false));
 ...

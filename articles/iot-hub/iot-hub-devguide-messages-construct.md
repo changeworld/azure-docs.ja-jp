@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: b88567616e0a8c46494ae0af367f4deb4506be43
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c57ceb83951341d4a7bf368e209ba0f88825672c
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/12/2017
 * 一連の *アプリケーション プロパティ*。 メッセージ本文を逆シリアル化しなくてもアプリケーションが定義してアクセスできる、文字列プロパティのディクショナリです。 IoT Hub によってこれらのプロパティが変更されることはありません。
 * 非透過的なバイナリ本文。
 
-以下の場合は、プロパティ名と値に含めることができるのは、ASCII 英数字と ``{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` のみです。  
+以下の場合は、プロパティ名と値に含めることができるのは、ASCII 英数字と ```{'!', '#', '$', '%, '&', "'", '*', '+', '-', '.', '^', '_', '`', '|', '~'}``` のみです。  
 
 * HTTPS プロトコルを使用して device-to-cloud メッセージを送信します。
 * クラウドからデバイスへのメッセージを送信します。
@@ -37,11 +37,11 @@ ms.lasthandoff: 12/12/2017
 
 次のテーブルは、IoT Hub メッセージ内の一連のシステム プロパティです。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | MessageId |要求/応答パターンに使用する、メッセージのユーザー設定 ID。 形式: ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':',’.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 |
 | Sequence number |IoT Hub によって各 C2D メッセージに割り当てられる数値 (デバイスとキューごとに一意)。 |
-| To |[C2D][lnk-c2d] メッセージで指定される宛先。 |
+| ターゲット |[C2D][lnk-c2d] メッセージで指定される宛先。 |
 | ExpiryTimeUtc |メッセージの有効期限の日時。 |
 | EnqueuedTime |IoT Hub が[クラウドからデバイス][lnk-c2d]へのメッセージを受信した日時。 |
 | CorrelationId |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 |
@@ -61,7 +61,7 @@ IoT Hub では、メッセージのサイズは、プロトコルに関係なく
 
 プロパティの名前と値は ASCII 文字に制限されているため、文字列の長さがバイト単位のサイズと等しくなります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Hub でのメッセージ サイズの制限については、[IoT Hub のクォータと調整][lnk-quotas]に関するページをご覧ください。
 
