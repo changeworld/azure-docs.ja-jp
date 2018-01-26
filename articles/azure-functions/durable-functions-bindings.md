@@ -1,4 +1,4 @@
----
+﻿---
 title: "Durable Functions のバインド - Azure"
 description: "Azure Functions の Durable Functons 拡張機能のトリガーとバインドの使用方法。"
 services: functions

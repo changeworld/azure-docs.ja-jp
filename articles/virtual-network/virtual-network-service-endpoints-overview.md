@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure 仮想ネットワークのサービス エンドポイント | Microsoft Docs"
 description: "サービス エンドポイントを使って仮想ネットワークから Azure リソースへの直接アクセスを有効にする方法を説明します。"
 services: virtual-network

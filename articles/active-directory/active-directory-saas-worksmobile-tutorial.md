@@ -1,4 +1,4 @@
----
+﻿---
 title: "チュートリアル: Azure Active Directory と LINE WORKS の統合 | Microsoft Docs"
 description: "Azure Active Directory と LINE WORKS の間のシングル サインオンを構成する方法について説明します。"
 services: active-directory
@@ -111,7 +111,7 @@ LINE WORKS で Azure AD のシングル サインオンを構成してテスト�
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サインオン URL]** ボックスに、`https://auth.worksmobile.com/d/login/{domain}/?userId={ID@domain}` のパターンを使用して URL を入力します。
 
     b. **[識別子]** テキストボックスに、値として「`worksmobile.com`」を入力します。
-
+    
     > [!NOTE] 
     > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[LINE WORKS クライアント サポート チーム](mailto:dl_ssoinfo@worksmobile.com)にお問い合わせください。
 
