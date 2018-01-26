@@ -1,4 +1,4 @@
----
+﻿---
 title: "Stream Analytics の一般的使用状況パターンのクエリ例 | Microsoft Docs"
 description: "一般的な Azure Stream Analytics クエリのパターン"
 keywords: "クエリ例"

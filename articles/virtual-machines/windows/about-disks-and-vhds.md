@@ -1,4 +1,4 @@
----
+﻿---
 title: "Microsoft Azure Windows VM 用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージについて | Microsoft Docs"
 description: "Azure での Windows 仮想マシン用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージの基本について説明します。"
 services: virtual-machines

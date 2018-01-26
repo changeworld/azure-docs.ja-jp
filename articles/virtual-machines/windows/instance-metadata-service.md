@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Instance Metadata Service | Microsoft Docs
 description: "Windows VM のコンピューティング、ネットワーク、および今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。"
 services: virtual-machines-windows
@@ -37,7 +37,7 @@ Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.micr
 リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
 [一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 |
 [Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02
 

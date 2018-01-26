@@ -1,4 +1,4 @@
----
+﻿---
 title: "Microsoft Trust Center および Azure セキュリティ情報 | Microsoft Docs"
 description: "Microsoft Trust Center は、サービスを実行する Azure プラットフォームが安全であることを確信できるために必要な情報を提供します。"
 services: security
@@ -20,8 +20,8 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 11/22/2017
 ---
-# <a name="microsoft-trust-center"></a>Microsoft Trust Center 
-Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。 Microsoft Trust Center では、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
+# <a name="microsoft-trust-center"></a>Microsoft Trust Center
+Azure.com の Azure セキュリティ情報サイトでは、クラウド ソリューションを安全に計画、設計、デプロイ、構成、管理するための情報を提供します。 Microsoft Trust Center は、サービスを実行する Azure プラットフォームの安全性を確保するために必要な情報も提供します。
 
 Azure にアプリケーションとデータを委託するときには、さまざまな疑問があるでしょう。 場所はどこなのか。 だれがアクセスできるのか。 Microsoft は保護のために何をしているのか。 Microsoft が説明どおりに実行していることをどうすれば確認できるのか。
 
@@ -36,6 +36,6 @@ Microsoft Trust Center では、次のような情報を提供しています。
 * [製品とサービス](https://aka.ms/tcproductsservices) – すべての Microsoft Cloud 製品とサービスの一覧を確認できます。
 * [サービス セキュリティ ポータル](https://aka.ms/tcservicetrportal) – Microsoft クラウド サービスの独立監査レポート、リスク評価、セキュリティ ベスト プラクティス、および関連資料のコピーを入手できます。
 * [最新情報](https://aka.ms/tcwhatsnew) – Microsoft Cloud セキュリティの最新情報を確認できます。
-* [リソース](https://aka.ms/tcresources) – Microsoft Trust Center にあるホワイト ペーパー、ビデオ、およびケース スタディを入手できます。
+* [リソース](https://aka.ms/tcresources) – Microsoft セキュリティ センターにあるホワイト ペーパー、ビデオ、およびケース スタディを入手できます。
 
-[Microsoft Trust Center](https://www.microsoft.com/trustcenter) には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。
+[Microsoft セキュリティ センター](https://www.microsoft.com/trustcenter) には、Microsoft Cloud をセキュリティで保護するために Microsoft が何をしているかを理解するために必要な情報があります。

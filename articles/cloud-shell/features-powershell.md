@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Cloud Shell (プレビュー) での PowerShell の機能 | Microsoft Docs"
 description: "Azure Cloud Shell での PowerShell の機能の概要"
 services: Azure
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/13/2018
 > [!TIP]
 > [Bash](features.md) の機能とツールも利用できます。
 
-Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` 上で実行されます。
+Cloud Shell (プレビュー) での PowerShell は `Windows Server 2016` で実行します。
 
 ## <a name="features"></a>機能
 
@@ -37,7 +37,7 @@ Cloud Shell (プレビュー) での PowerShell は、Azure PowerShell のアカ
 
 ### <a name="files-persistence-across-sessions"></a>セッション間でのファイルの永続化
 
-セッション間でファイルを保持するために、Cloud Shell の初回起動時に、Microsoft Azure ファイル共有のアタッチについて案内されます。
+セッション間でファイルを保持する場合、Cloud Shell の初回起動時に、Microsoft Azure ファイル共有のアタッチについてのチュートリアルがあります。
 完了すると、今後すべてのセッションで、ストレージが自動的にアタッチされます (`$home\clouddrive` としてマウントされます) 。
 Cloud Shell ではそれぞれの要求に応じて一時的なマシンが割り当てられるため、`$home\clouddrive` 外のファイルやマシンの状態は、セッション間で保持されません。
 
@@ -74,7 +74,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 
 ### <a name="extensible-model"></a>拡張可能なモデル
 
-[PowerShellGet](https://docs.microsoft.com/powershell/module/powershellget) を使うと、[PowerShell ギャラリー](https://www.powershellgallery.com)からカスタム モジュールとスクリプトを簡単にインストール (および更新) できます。
+-[PowerShellGet](https://docs.microsoft.com/powershell/module/powershellget) を使うと、[PowerShell ギャラリー](https://www.powershellgallery.com)からカスタム モジュールとスクリプトを簡単にインストール (および更新) できます。
 インストール後、モジュールは自動的に Cloud Shell セッション間で永続化されます。
 
 > [!TIP]

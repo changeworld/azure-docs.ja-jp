@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service の PremiumV2 レベルの構成 |Microsoft ドキュメント"
 description: "新しい PremiumV2 価格レベルにスケーリングすることによって、Azure App Service で Web、モバイル、および API アプリのパフォーマンスを向上させる方法について説明します。"
 keywords: "App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
