@@ -41,7 +41,7 @@ Azure ユーザーは 1 か月あたり 25,000 通の電子メールを無料で
 1. **[Manage]**をクリックします。
 
     ![manage][manage]
-2. SendGrid のダッシュボードの左側のメニューで、**[設定]**、**[API キー]** の順に選択します。
+2. SendGrid のダッシュボードの左側のメニューで、**[Settings]**、**[API Keys]** の順に選択します。
 
     ![api-keys][api-keys]
 

@@ -1,6 +1,6 @@
 ---
 title: "機密データ - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威の軽減策"
+description: "Threat Modeling Tool で公開されている脅威への対応"
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 60fcb24ffe813d7fb633c5398252dc8ea7d7a19f
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8d7189ea4b01d43cea709e3300d8ed71d266f5c9
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-sensitive-data--mitigations"></a>セキュリティ フレーム: 機密データ | 軽減策 
 | 製品/サービス | 記事 |
@@ -96,7 +96,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="example"></a>例
 これは、フィルターによって実装できます。 次の例を使うことができる場合があります。 
-```C#
+```csharp
 public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             if (filterContext == null || (filterContext.HttpContext != null && filterContext.HttpContext.Response != null && filterContext.HttpContext.Response.IsRequestBeingRedirected))
@@ -144,7 +144,7 @@ public override void OnActionExecuting(ActionExecutingContext filterContext)
 | **手順** | autocomplete 属性は、フォームがオートコンプリートをオンまたはオフにするかどうかを指定します。 オートコンプリートがオンのとき、ブラウザーは前にユーザーが入力した値に基づいて値を自動的に完成させます。 たとえば、新しい名前とパスワードがフォームに入力されて、フォームが送信されるとき、ブラウザーはパスワードを保存する必要があるかどうかを尋ねます。その後、フォームが表示されるとき、名前とパスワードは自動的に入力されるか、または名前が入力されると完成されます。 ローカルにアクセスできる攻撃者は、ブラウザーのキャッシュからクリア テキストのパスワードを入手する可能性があります。 既定ではオートコンプリートは有効なので、明示的に無効にする必要があります。 |
 
 ### <a name="example"></a>例
-```C#
+```csharp
 <form action="Login.aspx" method="post " autocomplete="off" >
       Social Security Number: <input type="text" name="ssn" />
       <input type="submit" value="Submit" />    
@@ -322,7 +322,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - BLOB |
@@ -333,7 +333,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -353,7 +353,7 @@ cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not
 
 ### <a name="example"></a>例
 Intune は、機密データを保護するように次のセキュリティ ポリシーで構成できます。 
-```C#
+```csharp
 Require encryption on mobile device    
 Require encryption on storage cards
 Allow screen capture
@@ -361,7 +361,7 @@ Allow screen capture
 
 ### <a name="example"></a>例
 アプリケーションがエンタープライズ アプリケーションではない場合は、ファイル システムに対して実行できる暗号化操作を使い、プラットフォームが提供するキーストアとキーチェーンを使って暗号化キーを保存します。 次のコード スニペットでは、xamarin を使ってキーチェーンからキーにアクセスする方法を示します。 
-```C#
+```csharp
         protected static string EncryptionKey
         {
             get

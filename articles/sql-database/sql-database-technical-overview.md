@@ -17,11 +17,11 @@ ms.date: 12/13/2017
 ms.workload: Active
 ms.author: carlrab
 ms.reviewer: carlrab
-ms.openlocfilehash: fef35e8c100bb6a9e96f16b81fe44e9ae9e504d0
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 7e487ac4b11e4b323cfaed5492c7603776cc98bb
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
@@ -156,10 +156,10 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 - [DBA Stack Exchange](https://dba.stackexchange.com/questions/tagged/sql-server): データベースの管理に関するご質問はこちらへ
 - [Stack Overflow](http://stackoverflow.com/questions/tagged/sql-server): 開発に関する質問はこちらへ
 - [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?category=sqlserver): 技術的なご質問はこちらへ
-- [Microsoft Connect](https://connect.microsoft.com/SQLServer/Feedback): バグの報告や機能リクエスト
+- [フィードバック](http://aka.ms/sqlfeedback): バグの報告や機能リクエスト
 - [Reddit](https://www.reddit.com/r/SQLServer/): SQL Server についての意見交換
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 単一データベースとエラスティック プールのコストの比較と計算ツールについては、[価格に関するページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください。
 

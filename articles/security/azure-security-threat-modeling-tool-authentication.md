@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: e547469dc61eddd1d772571ab0919532ac91f128
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1ac614156755b9b29db7c968c708a5cff706f7a8
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-authentication--mitigations"></a>セキュリティ フレーム: 認証 | 対応策 
 | 製品/サービス | 記事 |
@@ -374,7 +374,7 @@ ms.lasthandoff: 10/11/2017
 | **手順** | <p>TokenReplayCache プロパティを使用すると、開発者がトークン リプレイ キャッシュ (複数回使用できるトークンが存在しないことを確認する目的でのトークン保存に使用できるストア) を定義できます。</p><p>これは、一般的な攻撃、つまり、サインイン時に送信されたトークンを攻撃者が傍受し、そのトークンをアプリに再送信 ("リプレイ") して新しいセッションを確立しようとする、トークン リプレイ攻撃への対抗手段です。 たとえば、OIDC コード付与フローでは、ユーザー認証に成功した後、証明書利用者の "/signin oidc" エンドポイントへの要求が、"id_token"、"code"、および "state" パラメーターを使用して行われます。</p><p>証明書利用者はこの要求を検証し、新しいセッションを確立します。 敵がこの要求をキャプチャし、リプレイすると、セッションを確立し、ユーザーになりすますことができます。 OpenID Connect に nonce が存在すると、攻撃された環境を制限できますが、完全には排除できません。 アプリケーションを保護するために、開発者は ITokenReplayCache を実装し、インスタンスを TokenReplayCache に割り当てることができます。</p>|
 
 ### <a name="example"></a>例
-```C#
+```csharp
 // ITokenReplayCache defined in ADAL
 public interface ITokenReplayCache
 {
@@ -385,7 +385,7 @@ bool TryFind(string securityToken);
 
 ### <a name="example"></a>例
 ITokenReplayCache インターフェイスの実装例を次に示します  (カスタマイズして、プロジェクト固有のキャッシュ フレームワークを実装してください)
-```C#
+```csharp
 public class TokenReplayCache : ITokenReplayCache
 {
     private readonly ICacheProvider cache; // Your project-specific cache provider
@@ -409,7 +409,7 @@ public class TokenReplayCache : ITokenReplayCache
 }
 ```
 実装されたキャッシュは、次のように "TokenValidationParameters" プロパティを使用して、OIDC オプションで参照する必要があります。
-```C#
+```csharp
 OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 {
     AutomaticAuthenticate = true,
@@ -457,7 +457,7 @@ OpenIdConnectOptions openIdConnectOptions = new OpenIdConnectOptions
 | **手順** | <ul><li>**ジェネリック:** トランスポート層セキュリティ (TLS) または IPSec を使ってデバイスを認証します。 完全な非対称暗号を扱うことのできないデバイスでは、インフラストラクチャが事前共有キー (PSK) の使用をサポートしている必要があります。 Azure AD の OAuth をご利用ください。</li><li>**C#:** DeviceClient インスタンスを作成するとき、既定では、Create メソッドは、IoT Hub と通信するために AMQP プロトコルを使用する DeviceClient インスタンスを作成します。 HTTPS プロトコルを使用するには、プロトコルを引数として受け取る、Create メソッドのオーバーライドを使用します。 HTTPS プロトコルを使用する場合は、`Microsoft.AspNet.WebApi.Client` NuGet パッケージをプロジェクトに追加して、`System.Net.Http.Formatting` 名前空間を含める必要もあります。</li></ul>|
 
 ### <a name="example"></a>例
-```C#
+```csharp
 static DeviceClient deviceClient;
 
 static string deviceKey = "{device key}";
@@ -560,7 +560,7 @@ await deviceClient.SendEventAsync(message);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - BLOB |
@@ -571,7 +571,7 @@ await deviceClient.SendEventAsync(message);
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし |

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 114666d0c173786373e3bdd025027eb217922749
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f3de9ba6615a9b2232cca237a822b308d89426d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-configuration-management--mitigations"></a>セキュリティ フレーム: 構成管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="example"></a>例
 サンプル ポリシー: 
-```C#
+```csharp
 Content-Security-Policy: default-src 'self'; script-src 'self' www.google-analytics.com 
 ```
 このポリシーにより、Web アプリケーションのサーバーと Google Analytics サーバーからのみ、スクリプトを読み込むことができます。 その他のサイトから読み込まれたスクリプトは拒否されます。 Web サイトで CSP を有効にすると、XSS 攻撃を軽減するために次の機能が自動的に無効になります。 
@@ -111,7 +111,7 @@ Example: var str="alert(1)"; eval(str);
 
 ### <a name="example"></a>例
 X-FRAME-OPTIONS ヘッダーを設定するには、IIS web.config を使用します。フレーミングが許可されないサイトの Web.config コード スニペットは次のとおりです。 
-```C#
+```csharp
     <system.webServer>
         <httpProtocol>
             <customHeader>
@@ -123,7 +123,7 @@ X-FRAME-OPTIONS ヘッダーを設定するには、IIS web.config を使用し�
 
 ### <a name="example"></a>例
 同じドメイン内のページによってのみフレーミングされるサイトの Web.config コードは次のとおりです。 
-```C#
+```csharp
     <system.webServer>
         <httpProtocol>
             <customHeader>
@@ -158,7 +158,7 @@ Web.config にアクセスできる場合、CORS は、次のコードを使用�
 
 ### <a name="example"></a>例
 Web.config にアクセスできない場合、CORS を構成するには、次の CSharp コードを追加します。 
-```C#
+```csharp
 HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example.com")
 ```
 
@@ -226,7 +226,7 @@ HttpContext.Response.AppendHeader("Access-Control-Allow-Origin", "http://example
 
 ### <a name="example"></a>例
 グローバルな Application\_BeginRequest を使用してヘッダーを追加します 
-```C#
+```csharp
 void Application_BeginRequest(object sender, EventArgs e)
 {
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
@@ -235,7 +235,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ### <a name="example"></a>例
 カスタム HTTP モジュールを実装します 
-```C#
+```csharp
 public class XContentTypeOptionsModule : IHttpModule
 {
 #region IHttpModule Members
@@ -262,7 +262,7 @@ application.Response.Headers.Add("X-Content-Type-Options ", "nosniff");
 ### <a name="example"></a>例
 この必須のヘッダーを特定のページでのみ有効にするには、ヘッダーを個々の応答に追加します。 
 
-```C#
+```csharp
 this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 ```
 
@@ -301,7 +301,7 @@ this.Response.Headers["X-Content-Type-Options"] = "nosniff";
 
 ### <a name="example"></a>例
 App_Start/WebApiConfig.cs で、次のコードを WebApiConfig.Register メソッドに追加します 
-```C#
+```csharp
 using System.Web.Http;
 namespace WebService
 {
@@ -325,7 +325,7 @@ namespace WebService
 ### <a name="example"></a>例
 EnableCors 属性は、次のように、コント ローラーのアクション メソッドに適用できます。 
 
-```C#
+```csharp
 public class ResourcesController : ApiController
 {
   [EnableCors("http://localhost:55912", // Origin
@@ -365,7 +365,7 @@ public class ResourcesController : ApiController
 
 ### <a name="example"></a>例
 クラスの特定のメソッドで CORS を無効にするには、次に示すように DisableCors 属性を使用できます。 
-```C#
+```csharp
 [EnableCors("http://example.com", "Accept, Origin, Content-Type", "POST")]
 public class ResourcesController : ApiController
 {
@@ -399,7 +399,7 @@ public class ResourcesController : ApiController
 
 ### <a name="example"></a>例
 1 つ目は、ラムダで UseCors を呼び出す方法です。 ラムダは CorsPolicyBuilder オブジェクトを受け取ります。 
-```C#
+```csharp
 public void Configure(IApplicationBuilder app)
 {
     app.UseCors(builder =>
@@ -411,7 +411,7 @@ public void Configure(IApplicationBuilder app)
 
 ### <a name="example"></a>例
 2 つ目は、1 つ以上の名前付き CORS ポリシーを定義し、実行時に名前によってポリシーを選択する方法です。 
-```C#
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddCors(options =>
@@ -434,7 +434,7 @@ public void Configure(IApplicationBuilder app)
 
 ### <a name="example"></a>例
 アクションごと: 特定のアクションに対して CORS ポリシーを指定するには、EnableCors 属性をそのアクションに追加します。 ポリシー名を入力してください。 
-```C#
+```csharp
 public class HomeController : Controller
 {
     [EnableCors("AllowSpecificOrigin")] 
@@ -446,7 +446,7 @@ public class HomeController : Controller
 
 ### <a name="example"></a>例
 コントローラーごと: 
-```C#
+```csharp
 [EnableCors("AllowSpecificOrigin")]
 public class HomeController : Controller
 {
@@ -454,7 +454,7 @@ public class HomeController : Controller
 
 ### <a name="example"></a>例
 グローバル: 
-```C#
+```csharp
 public void ConfigureServices(IServiceCollection services)
 {
     services.AddMvc();
@@ -468,7 +468,7 @@ public void ConfigureServices(IServiceCollection services)
 
 ### <a name="example"></a>例
 コント ローラーまたはアクションに対して CORS を無効にするには、DisableCors 属性を使用します。 
-```C#
+```csharp
 [DisableCors]
     public IActionResult About()
     {
@@ -579,7 +579,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | デプロイ |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -590,7 +590,7 @@ public void ConfigureServices(IServiceCollection services)
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |

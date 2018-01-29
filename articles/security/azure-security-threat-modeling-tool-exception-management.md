@@ -1,6 +1,6 @@
 ---
 title: "例外管理 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威の軽減策"
+description: "Threat Modeling Tool で公開されている脅威への対応"
 services: security
 documentationcenter: na
 author: RodSan
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: bbf357b902474a1812eb7a5a2c914d0c8b91934b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a8e0154faccca356c7fb8ce93e43ce67cc0aae2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-exception-management--mitigations"></a>セキュリティ フレーム: 例外管理 | 対応策 
 | 製品/サービス | 記事 |
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="example"></a>例
 API によって返されるこれらの状態コードを制御するために、次に示すように `HttpResponseException` を使用することができます。 
-```C#
+```csharp
 public Product GetProduct(int id)
 {
     Product item = repository.Get(id);
@@ -89,7 +89,7 @@ public Product GetProduct(int id)
 
 ### <a name="example"></a>例
 例外の応答でさらなる制御を行うために、次に示すように `HttpResponseMessage` クラスを使用することができます。 
-```C#
+```csharp
 public Product GetProduct(int id)
 {
     Product item = repository.Get(id);
@@ -109,7 +109,7 @@ public Product GetProduct(int id)
 
 ### <a name="example"></a>例
 `NotImplementedException` 例外を HTTP 状態コード `501, Not Implemented` に変換するフィルターを次に示します。 
-```C#
+```csharp
 namespace ProductStore.Filters
 {
     using System;
@@ -137,7 +137,7 @@ Web API 例外フィルターを登録する方法はいくつかあります。
 
 ### <a name="example"></a>例
 特定のアクションにフィルターを適用するには、フィルターをアクションに属性として追加します。 
-```C#
+```csharp
 public class ProductsController : ApiController
 {
     [NotImplExceptionFilter]
@@ -150,7 +150,7 @@ public class ProductsController : ApiController
 ### <a name="example"></a>例
 `controller` のすべてのアクションにフィルターを適用するには、フィルターを `controller` クラスに属性として追加します。 
 
-```C#
+```csharp
 [NotImplExceptionFilter]
 public class ProductsController : ApiController
 {
@@ -160,14 +160,14 @@ public class ProductsController : ApiController
 
 ### <a name="example"></a>例
 すべての Web API コントローラーにグローバルにフィルターを適用するには、フィルターのインスタンスを `GlobalConfiguration.Configuration.Filters` コレクションに追加します。 このコレクション内の例外フィルターは、任意の Web API コントローラー アクションに適用されます。 
-```C#
+```csharp
 GlobalConfiguration.Configuration.Filters.Add(
     new ProductStore.NotImplExceptionFilterAttribute());
 ```
 
 ### <a name="example"></a>例
 モデルの検証のために、モデルの状態を次のように CreateErrorResponse メソッドに渡すことができます。 
-```C#
+```csharp
 public HttpResponseMessage PostProduct(Product item)
 {
     if (!ModelState.IsValid)
@@ -189,7 +189,7 @@ ASP.Net Web API での例外処理とモデルの検証の詳細については�
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>一般的なエラー メッセージは、機密性の高いアプリケーション データを含まずに、ユーザーに直接提供されます。 機密データの例は次のとおりです。</p><ul><li>サーバー名</li><li>接続文字列</li><li>ユーザー名</li><li>パスワード</li><li>SQL プロシージャ</li><li>動的 SQL エラーの詳細</li><li>スタック トレースとコード行</li><li>メモリに格納された変数</li><li>ドライブとフォルダーの場所</li><li>アプリケーションのインストール ポイント</li><li>ホスト構成設定</li><li>その他の内部アプリケーションの詳細</li></ul><p>IIS 内でのカスタム エラーを有効にするだけでなく、アプリケーション内のすべてのエラーをトラップし、一般的なエラー メッセージを提供すると、情報漏えいを防ぐことができます。 SQL Server データベースと .NET の例外処理は、その他のエラー処理アーキテクチャの中でも特に詳細であり、アプリケーションをプロファイリングする悪意のあるユーザーにとっては非常に便利なものです。 .NET 例外クラスから派生するクラスの内容は、直接表示しないでください。また、予期しない例外がユーザーに誤って直接表示されることがないように、適切な例外処理が行われることを確認してください。</p><ul><li>例外またはエラーのメッセージで直接検出される特定の詳細情報を除いた、一般的なエラー メッセージをユーザーに直接提供します。</li><li>.NET 例外クラスの内容をユーザーに直接表示しないでください。</li><li>すべてのエラー メッセージをトラップし、適切な場合はアプリケーション クライアントに送信される一般的なエラー メッセージを使用して、ユーザーに通知します。</li><li>例外クラスの内容、特に `.ToString()` からの戻り値あるいは Message または StackTrace プロパティの値をユーザーに直接公開しないでください。 この情報は安全な方法でログ記録し、ユーザーにはより当たり障りのメッセージを表示します。</li></ul>|
+| **手順** | <p>一般的なエラー メッセージは、機密性の高いアプリケーション データを含まずに、ユーザーに直接提供されます。 機密データの例は次のとおりです。</p><ul><li>サーバー名</li><li>Connection strings</li><li>ユーザー名</li><li>パスワード</li><li>SQL プロシージャ</li><li>動的 SQL エラーの詳細</li><li>スタック トレースとコード行</li><li>メモリに格納された変数</li><li>ドライブとフォルダーの場所</li><li>アプリケーションのインストール ポイント</li><li>ホスト構成設定</li><li>その他の内部アプリケーションの詳細</li></ul><p>IIS 内でのカスタム エラーを有効にするだけでなく、アプリケーション内のすべてのエラーをトラップし、一般的なエラー メッセージを提供すると、情報漏えいを防ぐことができます。 SQL Server データベースと .NET の例外処理は、その他のエラー処理アーキテクチャの中でも特に詳細であり、アプリケーションをプロファイリングする悪意のあるユーザーにとっては非常に便利なものです。 .NET 例外クラスから派生するクラスの内容は、直接表示しないでください。また、予期しない例外がユーザーに誤って直接表示されることがないように、適切な例外処理が行われることを確認してください。</p><ul><li>例外またはエラーのメッセージで直接検出される特定の詳細情報を除いた、一般的なエラー メッセージをユーザーに直接提供します。</li><li>.NET 例外クラスの内容をユーザーに直接表示しないでください。</li><li>すべてのエラー メッセージをトラップし、適切な場合はアプリケーション クライアントに送信される一般的なエラー メッセージを使用して、ユーザーに通知します。</li><li>例外クラスの内容、特に `.ToString()` からの戻り値あるいは Message または StackTrace プロパティの値をユーザーに直接公開しないでください。 この情報は安全な方法でログ記録し、ユーザーにはより当たり障りのメッセージを表示します。</li></ul>|
 
 ## <a id="default"></a>既定のエラー処理ページを実装する
 
@@ -225,7 +225,7 @@ ASP.Net Web API での例外処理とモデルの検証の詳細については�
 | **手順** | アプリケーションは安全に失敗する必要があります。 特定の意思決定に基づいてブール値を返すすべてのメソッドでは、例外ブロックを慎重に作成する必要があります。 十分に検討せずに例外ブロックを記述すると、セキュリティの問題が潜在する多くの論理エラーが発生します。|
 
 ### <a name="example"></a>例
-```C#
+```csharp
         public static bool ValidateDomain(string pathToValidate, Uri currentUrl)
         {
             try

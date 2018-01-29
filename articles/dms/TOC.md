@@ -1,10 +1,11 @@
 # 概要
 ## [Database Migration Service について](dms-overview.md)
+## [前提条件の概要](pre-reqs.md)
 
 # クイック スタート
 ## [サービスの作成 - ポータル](quickstart-create-data-migration-service-portal.md)
 
-# Tutorials (チュートリアル)
+# チュートリアル
 ## [SQL Server を Azure SQL DB に移行する](tutorial-sql-server-to-azure-sql.md)
 
 # ハウツー ガイド
@@ -16,3 +17,4 @@
 ## [データベース移行ガイド](https://aka.ms/datamigration)
 ## [Data Migration Assistant](https://aka.ms/dma)
 ## [料金](https://aka.ms/dms-pricing)
+## [FAQ](faq.md)

@@ -10,15 +10,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: go
 ms.topic: quickstart
-ms.date: 09/22/2017
-ms.openlocfilehash: 1f18a35a3c22ecdc379bdffa1ecacb931c62a59d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/24/2018
+ms.openlocfilehash: 4aca7c4c0c096082d03c0514ce714cfd3624249b
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-database-for-mysql-use-go-language-to-connect-and-query-data"></a>Azure Database for MySQL: Go 言語を使用した接続とデータの照会
-このクイックスタートでは、Windows、Ubuntu Linux、Apple macOS の各プラットフォームから、[Go](https://golang.org/) 言語で記述されたコードを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、Go を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、Windows、Ubuntu Linux、Apple macOS の各プラットフォームから、[Go](https://golang.org/) 言語で記述されたコードを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Go を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -26,15 +26,15 @@ ms.lasthandoff: 10/11/2017
 - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-go-and-mysql-connector"></a>Go と MySQL コネクタのインストール
-ご使用のコンピューターに [Go](https://golang.org/doc/install) および [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation) をインストールします。 プラットフォームに応じて、該当するセクションの手順に従ってください。
+ご使用のコンピューターに [Go](https://golang.org/doc/install) および [go-sql-driver for MySQL](https://github.com/go-sql-driver/mysql#installation) バージョン 1.3 以上をインストールします。 プラットフォームに応じて、該当するセクションの手順に従ってください。
 
 ### <a name="windows"></a>Windows
 1. Go for Microsoft Windows を[ダウンロード](https://golang.org/dl/)し、[インストール手順](https://golang.org/doc/install)に従ってインストールします。
 2. スタート メニューからコマンド プロンプトを起動します。
-3. プロジェクトのフォルダーを作成します。 `mkdir  %USERPROFILE%\go\src\mysqlgo`」を参照してください。
+3. プロジェクトのフォルダーを作成します。 `mkdir  %USERPROFILE%\go\src\mysqlgo`
 4. ディレクトリをプロジェクト フォルダーに変更します (例: `cd %USERPROFILE%\go\src\mysqlgo`)。
-5. GOPATH の環境変数がソース コード ディレクトリをポイントするように設定します。 `set GOPATH=%USERPROFILE%\go`」を参照してください。
-6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
+5. GOPATH の環境変数がソース コード ディレクトリをポイントするように設定します。 `set GOPATH=%USERPROFILE%\go`
+6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。 バージョン 1.3 は、最小限必要なバージョンです。
 
    まとめると、Go をインストールしてから、コマンド プロンプトで以下のコマンドを実行します。
    ```cmd
@@ -50,7 +50,7 @@ ms.lasthandoff: 10/11/2017
 3. プロジェクトのフォルダーを自分のホーム ディレクトリに作成します (例: `mkdir -p ~/go/src/mysqlgo/`)。
 4. ディレクトリをこのフォルダーに変更します (例: `cd ~/go/src/mysqlgo/`)。
 5. GOPATH 環境変数に有効なソース ディレクトリを設定します (現在のホーム ディレクトリの go フォルダーなど)。 Bash シェルで `export GOPATH=~/go` を実行し、現在のシェル セッションの GOPATH として go ディレクトリを追加します。
-6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
+6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。 バージョン 1.3 は、最小限必要なバージョンです。
 
    まとめると、以下の Bash コマンドを実行します。
    ```bash
@@ -67,7 +67,7 @@ ms.lasthandoff: 10/11/2017
 3. プロジェクトのフォルダーを自分のホーム ディレクトリに作成します (例: `mkdir -p ~/go/src/mysqlgo/`)。
 4. ディレクトリをこのフォルダーに変更します (例: `cd ~/go/src/mysqlgo/`)。
 5. GOPATH 環境変数に有効なソース ディレクトリを設定します (現在のホーム ディレクトリの go フォルダーなど)。 Bash シェルで `export GOPATH=~/go` を実行し、現在のシェル セッションの GOPATH として go ディレクトリを追加します。
-6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
+6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。 バージョン 1.3 は、最小限必要なバージョンです。
 
    まとめると、Go をインストールしてから、以下の Bash コマンドを実行します。
    ```bash
@@ -351,6 +351,6 @@ func main() {
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)
