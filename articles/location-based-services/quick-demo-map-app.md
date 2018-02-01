@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 0edca9e5eb709eb3e1b42b45e5a41ac7a5ba1e75
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: bfc31553c32ac4dbfde55aa30b33025b579f6139
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Azure Location Based Services (プレビュー) によるデモ版対話型マップ検索を開始する
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 12/14/2017
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -38,13 +38,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![ポータルで Location Based Services アカウントを作成する](./media/quick-demo-map-app/create-lbs-account.png)
 
-5. アカウントが正常に作成されたら、アカウントを開いて、アカウントの **[設定]** に移動します。 **[キー]** をクリックしてアカウントのプライマリおよびセカンダリ サブスクリプション キーを取得します。 次のセクションで使用する **[主キー]** の値をローカルのクリップボードにコピーします。 
+5. アカウントが正常に作成されたら、アカウントを開いて、アカウントの **[設定]** に移動します。 **[キー]** をクリックして、Azure Location Based Services アカウントの主キーとセカンダリ キーを取得します。 次のセクションで使用する **[主キー]** の値をローカルのクリップボードにコピーします。 
 
 ## <a name="download-the-demo-application-for-azure-maps"></a>Azure Maps のデモ アプリケーションをダウンロードする
 
 1. [interactiveSearch.html](https://github.com/Azure-Samples/location-based-services-samples/blob/master/src/interactiveSearch.html) ファイルの内容をコピーまたはダウンロードします。
 2. このファイルの内容を **AzureMapDemo.html** としてローカルに保存し、テキスト エディターで開きます。
-3. 文字列 **&#60;insert-key&#62;** を検索し、前のセクションで取得した**主キー**の値で置換します。 
+3. 文字列 `<insert-key>` を検索し、前のセクションで取得した、**主キー**の値で置換します。 
 
 
 ## <a name="launch-the-demo-application-for-azure-maps"></a>Azure Maps のデモ アプリケーションを起動する
@@ -64,7 +64,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **AzureMapDemo.html** Web アプリケーションを実行しているブラウザーを閉じます。
 2. Azure ポータルの左側のメニューにある **[すべてのリソース]** をクリックし、LBS アカウントを選択します。 **[すべてのリソース]** ブレードの上部にある **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure LBS アカウントを作成し、そのアカウントを使用してデモ アプリを起動しました。 Azure Location Based Services API を使用して、独自のアプリケーションを作成する方法を学習するには、次のチュートリアルにお進みください。
 

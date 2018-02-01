@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 82b2bcf5b05288888714339af15ff2796d9660bd
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 66fc8bac46decacdd2214475e94980c447045935
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>Azure での Linux VM 接続問題に関する SSH の詳細なトラブルシューティングの手順
 SSH クライアントは、さまざまな理由で VM 上の SSH サービスに到達できない可能性があります。 [SSH のトラブルシューティングの一般的な手順](troubleshoot-ssh-connection.md)に従った場合は、接続の問題について詳細なトラブルシューティングを行う必要があります。 この記事では、詳細なトラブルシューティング手順を説明し、SSH 接続に失敗した場所の特定とその解決方法を確認します。
@@ -120,7 +120,7 @@ NSG 構成の検証に IP Verify を使用することもできます。 詳細�
 
 ![Linux ベースの Azure 仮想マシンを示す図](./media/detailed-troubleshoot-ssh-connection/ssh-tshoot5.png)
 
-[Linux ベースの仮想マシンのパスワードまたは SSH をリセットする](classic/reset-access.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)手順をまだ実行していない場合は、仮想マシンでその手順に従います。
+[Linux ベースの仮想マシンのパスワードをリセットする](reset-password.md)手順をまだ実行していない場合は、仮想マシンでその手順に従います。
 
 もう一度、コンピューターから接続を試みてください。 引き続き接続できない場合は、以下の問題が考えられます。
 

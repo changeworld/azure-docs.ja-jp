@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 8/20/2017
+ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: e1fd3cf826915b128039e3d9fe20c309f20ad2c6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6ad3b294e1d53d03f6ceb61048c8f657d8b471c0
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>マルチテナント ホスティング権限を使用して Azure 上で Windows 10 をデプロイする方法 
 接続ユーザーごとに Windows 10 Enterprise E3/E5 または Windows Virtual Desktop Access (ユーザー サブスクリプション ライセンスまたはアドオン ユーザー サブスクリプション ライセンス) をご利用中のお客様は、Windows 10 のマルチテナント ホスティング権限により、他のライセンスを購入することなく、Windows 10 ライセンスをクラウドに移行し、Azure 上で Windows 10 Virtual Machines を実行することができます。 詳細については、[Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関するページを参照してください。
 
 > [!NOTE]
-> この記事では、Windows 10 デスクトップ イメージのライセンス特典を実装する方法について説明します。 Windows Server イメージの Azure Hybrid Use Benefit については、[こちら](hybrid-use-benefit-licensing.md)を参照してください。
+> この記事では、Azure Marketplace の Windows 10 Pro デスクトップ イメージのライセンス特典を実装する方法について説明します。
+> - MSDN サブスクリプションを対象とした Azure Marketplace の Windows 7、8.1、10 Enterprise (x64) イメージについては、[Azure での Windows クライアントを用いた開発およびテスト シナリオ](client-images.md)に関するページをご覧ください。
+> - Windows Server のライセンス特典については、[Windows Server イメージの Azure ハイブリッド使用特典](hybrid-use-benefit-licensing.md)に関するページをご覧ください。
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Azure Marketplace から Windows 10 イメージをデプロイする 
@@ -34,6 +36,8 @@ PowerShell、CLI、および Azure Resource Manager テンプレートでのデ�
 |:----------|:-------------:|:------|:------|
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
+| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 VHD を Azure にアップロードする
 汎用化された Windows 10 VHD をアップロードする場合、Windows 10 ではビルトイン Administrator アカウントが既定で有効になっていないことにご注意ください。 ビルトイン Administrator アカウントを有効にするには、カスタム スクリプト拡張機能の一部として次のコマンドを含めます。
@@ -107,7 +111,7 @@ LicenseType              :
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Windows 10 の VDAの構成](https://docs.microsoft.com/windows/deployment/vda-subscription-activation)に関する詳細情報を確認します
 - [Windows 10 のマルチテナント ホスティング](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx)に関する詳細情報を確認します
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/08/2018
 ms.author: maheshu
-ms.openlocfilehash: 5fe36241efc11cbb85231137649f7b97e23cc0a5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0956476931396c6455bf3e4fc7582da3bf3deb33
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -122,6 +122,7 @@ Domain Services could not be enabled in this Azure AD tenant. (この Azure AD �
 
 このエラーを解決するには、このアプリケーションを有効にしてから、Azure AD テナントの Domain Services を有効にします。
 
+
 ## <a name="users-are-unable-to-sign-in-to-the-azure-ad-domain-services-managed-domain"></a>ユーザーが Azure AD ドメイン サービスの管理対象ドメインにサインインできない
 Azure AD テナントの 1 人または複数のユーザーが、新しく作成された管理対象ドメインにサインインすることができない場合、次のトラブルシューティングの手順を実行します。
 
@@ -145,12 +146,17 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
     2. net start 'Microsoft Azure AD Sync'
 * **クラウド専用のアカウント**: 影響を受けているユーザー アカウントがクラウド専用のユーザー アカウントの場合は、Azure AD ドメイン サービスを有効にした後でユーザーが自分のパスワードを変更していることを確認します。 この手順によって、Azure AD ドメイン サービスに必要な資格情報ハッシュが生成されます。
 
+## <a name="there-are-one-or-more-alerts-on-your-managed-domain"></a>管理対象ドメインに 1 つまたは複数のアラートがある
+
+管理対象ドメインでのアラートの解決方法については、[アラートのトラブルシューティング](active-directory-ds-troubleshoot-alerts.md)に関する記事をご覧ください。
+
 ## <a name="users-removed-from-your-azure-ad-tenant-are-not-removed-from-your-managed-domain"></a>Azure AD テナントから削除されたユーザーが管理対象ドメインから削除されない
 Azure AD では、ユーザー オブジェクトが誤って削除されないように保護されています。 Azure AD テナントからユーザー アカウントを削除すると、対応するユーザー オブジェクトはごみ箱に移動されます。 この削除操作が管理対象ドメインに同期されると、対応するユーザー アカウントは無効としてマークされます。 この機能により、後でユーザー アカウントを回復する (削除を取り消す) ことができます。
 
 ユーザー アカウントは、Azure AD ディレクトリで同じ UPN でユーザー アカウントを再作成した場合でも、管理対象ドメイン内で無効な状態のままです。 管理対象ドメインからユーザー アカウントを削除するには、Azure AD テナントからユーザーを強制的に削除する必要があります。
 
 管理対象ドメインからユーザー アカウントを完全に削除するには、Azure AD テナントからユーザーを完全に削除します。 [この MSDN の記事](https://msdn.microsoft.com/library/azure/dn194132.aspx)で説明されているように、`Remove-MsolUser` PowerShell コマンドレットを使って `-RemoveFromRecycleBin` オプションを指定します。
+
 
 ## <a name="contact-us"></a>お問い合わせ
 [フィードバックの共有およびサポートについては](active-directory-ds-contact-us.md)、Azure Active Directory Domain Services 製品チームにお問い合わせください。

@@ -6,6 +6,10 @@
 # クイック スタート
 
 ## [作成と接続 - ポータル](create-data-warehouse-portal.md)
+## コンピューティングの一時停止と再開
+### [ポータル](pause-and-resume-compute-portal.md)
+### [PowerShell](pause-and-resume-compute-powershell.md)
+
 
 # チュートリアル
 ## [1 - BLOB からデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)

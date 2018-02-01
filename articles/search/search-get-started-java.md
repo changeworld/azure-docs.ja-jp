@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
-ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 8b253ef1eccfbc6ca703657b124d17d1482c2eed
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Azure Search へのすべての REST API 呼び出しで、サービスの URL �
 5. サービスの URL と管理者キーをコピーします。 後で **config.properties** ファイルに追加するときに必要になります。
 
 ## <a name="download-the-sample-files"></a>サンプル ファイルのダウンロード
-1. GitHub で [AzureSearchJavaDemo](https://github.com/AzureSearch/AzureSearchJavaIndexerDemo) に移動します。
+1. GitHub の [search-java-indexer-demo](https://github.com/Azure-Samples/search-java-indexer-demo) に移動します。
 2. **[Download ZIP]**をクリックして .zip ファイルをディスクに保存した後、すべてのファイルをコンテナーに抽出します。 後でプロジェクトを探しやすいように、Java ワークスペースにファイルを抽出してください。
 3. サンプル ファイルは読み取り専用です。 フォルダーのプロパティを右クリックし、読み取り専用の属性をオフにします。
 
@@ -159,7 +159,7 @@ USGS データ セットには、ロードアイランド州に関連するレ�
 * Pembroke
 * goose +cape
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これは、Java と USGS データセットに基づく最初の Azure Search チュートリアルです。 カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
 
 Azure Search についての知識が既にある場合は、このサンプルを基にして、さらに調べることができます。[検索ページ](search-pagination-page-layout.md)を変更したり、[ファセット ナビゲーション](search-faceted-navigation.md)を実装したりしてみてください。 また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。

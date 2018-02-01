@@ -3,7 +3,7 @@ title: "SQL Data Warehouse システム ビュー| Microsoft Docs"
 description: "SQL Data Warehouse のシステム ビュー コンテンツへのリンク。"
 services: sql-data-warehouse
 documentationcenter: NA
-author: kevinvngo
+author: barbkess
 manager: jhubbard
 editor: 
 ms.assetid: 21ec594b-d270-4202-a8cd-bb150e5ae12c
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 07/12/2017
-ms.author: kevin;barbkess
-ms.openlocfilehash: a9327388f8789e548610a7d4f140c492afd88fef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/22/2018
+ms.author: barbkess
+ms.openlocfilehash: 9c686c9cd4f9baf4f2c13194e58aadc9ebec0a24
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="system-views"></a>システム ビュー
 ## <a name="sql-data-warehouse-catalog-views"></a>SQL Data Warehouse カタログ ビュー
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/11/2017
 * [sys.dm_pdw_sql_requests](http://msdn.microsoft.com/library/mt203889.aspx)
 * [sys.dm_pdw_sys_info](http://msdn.microsoft.com/library/mt203900.aspx)
 * [sys.dm_pdw_wait_stats](http://msdn.microsoft.com/library/mt203909.aspx)
-* [sys.dm_pdw_waits](http://msdn.microsoft.com/library/mt203909.aspx)
+* [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql)
 
 ## <a name="sql-server-dmvs-applicable-to-sql-data-warehouse"></a>SQL Data Warehouse に適用可能な SQL Server DMV
 次の DMV は、SQL Data Warehouse に適用できますが、 **マスター** データベースに接続して実行する必要があります。
@@ -137,16 +137,14 @@ ms.lasthandoff: 10/11/2017
 ## <a name="sql-server-dmvs-available-in-sql-data-warehouse"></a>SQL Data Warehouse で使用可能な SQL Server DMV
 SQL Data Warehouse では、多くの SQL Server 動的管理ビュー (DMV) が公開されています。 これらのビューは、SQL Data Warehouse でクエリされると、ディストリビューションで実行されている SQL Database の状態を報告します。
 
-SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づいて構築されているため、SQL Data Warehouse と Analytics Platform System の Parallel Data Warehouse (PDW) はどちらも、同じシステム ビューを使用します。
-
-このため、これらの各 DMV には pdw_node_id という名前の特定の列があります。 これは、コンピューティング ノードの識別子です。 PDW では、コンピューティング ノードはアーキテクチャのより強力な概念です。 SQL Data Warehouse では、アーキテクチャはディストリビューションにさらに大きく依存します。
+SQL Data Warehouse と Analytics Platform System の Parallel Data Warehouse (PDW) はどちらも、同じシステム ビューを使用します。 各 DMV には pdw_node_id という列があります。これは、コンピューティング ノードの識別子です。 
 
 > [!NOTE]
 > これらのビューを使用するには、次の表に示すように "pdw_nodes_" を名前に挿入します。
 > 
 > 
 
-| SQL Data Warehouse での DMV 名 | MSDN の SQL Server Transact-SQL のトピックへのリンク |
+| SQL Data Warehouse での DMV 名 | SQL Server Transact-SQL の記事|
 |:--- |:--- |
 | sys.dm_pdw_nodes_db_column_store_row_group_physical_stats | [sys.dm_db_column_store_row_group_physical_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-physical-stats-transact-sql)| 
 | sys.dm_pdw_nodes_db_column_store_row_group_operational_stats | [sys.dm_db_column_store_row_group_operational_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-column-store-row-group-operational-stats-transact-sql)| 
@@ -233,7 +231,7 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 * [VIEW_TABLE_USAGE](https://msdn.microsoft.com/library/ms173869.aspx)
 * [VIEWS](http://msdn.microsoft.com/library/ms181381.aspx)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細な参照情報については、[SQL Data Warehouse のリファレンス概要][SQL Data Warehouse reference overview]に関するページをご覧ください。
 
 <!--Image references-->

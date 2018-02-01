@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: f69cbbab19acbc4e71445012d262896275a7d768
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 9a08495c1b395871c04c0c2b06a6efbdb4bfeaa2
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="questions-about-the-azure-vm-backup-service"></a>Azure VM バックアップ サービスについての質問
 この記事では、Azure VM バックアップの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -69,6 +69,13 @@ Azure の完全 VM 復元を簡易的な作成方法の 1 つと考えてくだ�
   
 ### <a name="can-i-use-backups-of-unmanaged-disk-vm-to-restore-after-i-upgrade-my-disks-to-managed-disks"></a>ディスクを管理対象ディスクにアップグレードした後で、非管理対象ディスク VM のバックアップを使用して復元することはできますか。
 はい、ディスクを非管理対象から管理対象に移行する前に作成したバックアップを使用することができます。 既定では、VM の復元ジョブは、非管理対象ディスクで VM を作成します。 ディスクの復元機能を使用して、ディスクを復元し、管理対象ディスク上の VM の作成に使用することができます。 
+
+### <a name="what-is-the-procedure-to-restore-a-vm-to-a-restore-point-taken-before-the-conversion-from-unmanaged-to-managed-disks-was-done-for-a-vm"></a>VM の管理対象外ディスクから管理対象ディスクへの変換前に作成された復元ポイントに VM を復元するには、どういった手順で行いますか?
+このシナリオでは、VM の復元ジョブは、管理対象外ディスクで VM を作成します (既定)。 管理対象ディスクで VM を作成するには、次の手順に従います。
+1. [管理対象外のディスクに復元する](tutorial-restore-disk.md#restore-a-vm-disk)
+2. [復元したディスクを管理対象ディスクに変換する](tutorial-restore-disk.md#convert-the-restored-disk-to-a-managed-disk)
+3. [管理対象ディスクで VM を作成する](tutorial-restore-disk.md#create-a-vm-from-the-restored-disk) <br>
+Powershell コマンドレットについては、[こちら](backup-azure-vms-automation.md#restore-an-azure-vm)をご覧ください。
 
 ## <a name="manage-vm-backups"></a>VM バックアップの管理
 ### <a name="what-happens-when-i-change-a-backup-policy-on-vms"></a>VM のバックアップ ポリシーを変更した場合どうなりますか。

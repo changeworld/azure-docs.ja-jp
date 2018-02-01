@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Azure StorSimple データ マネージャーの概要 | Microsoft Docs"
-description: "StorSimple データ マネージャー サービスの概要を示します (プライベート プレビュー)"
+description: "StorSimple Data Manager サービスの概要について説明します"
 services: storsimple
 documentationcenter: NA
 author: vidarmsft
@@ -12,63 +12,75 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/22/2016
+ms.date: 01/16/2018
 ms.author: vidarmsft
-ms.openlocfilehash: aedb44610fe57055851538b9dbdb810e66e58d73
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b0ff2c100878e568e0a4c67e79864006512bd78
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
-# <a name="storsimple-data-manager-overview-private-preview"></a>StorSimple データ マネージャーの概要 (プライベート プレビュー)
+# <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
-Microsoft Azure StorSimple は、ファイル共有でよく使用される複雑な非構造データに対応できるハイブリッド クラウド ストレージ ソリューションです。 StorSimple では、クラウド ストレージがオンプレミス ソリューションの拡張機能として使用され、オンプレミス ストレージとクラウド ストレージをまたがってデータが自動的に階層化されます。 ローカル スナップショットおよびクラウド スナップショットを使用した統合型データ保護により、ストレージ インフラストラクチャを拡大する必要がなくなります。 アーカイブと障害復旧も、オフサイトの場所として機能するクラウドでシームレスに行うことができます。
+Microsoft Azure StorSimple では、クラウド ストレージがオンプレミス ソリューションの拡張として使われ、オンプレミス ストレージとクラウドをまたがってデータが自動的に階層化されます。 最大の効率性とコスト削減のため、データは重複除去および圧縮された形式でクラウドに格納されます。 データは StorSimple 形式で格納されるため、ユーザーが使う可能性のある他のクラウド アプリケーションですぐに利用することはできません。
 
-このドキュメントで紹介するデータ変換サービスにより、クラウド内の StorSimple データにシームレスにアクセスできます。 このサービスの API は、StorSimple からデータを抽出し、そのデータを、すぐに使用できる形式で他の Azure サービスに提供します。 このプレビューでサポートされている形式は、Azure BLOB と Azure Media Services 資産です。 この変換により、Azure Media Services、Azure HDInsight、Azure Machine Learning、Azure Search などのサービスを容易に接続して、StorSimple 8000 シリーズのオンプレミス デバイスでデータを操作できます。
+StorSimple Data Manager を使うと、クラウドの StorSimple 形式のデータにシームレスにアクセスして使うことができます。 そのために、Data Manager は StorSimple 形式をネイティブな BLOB とファイルに変換します。これらは、Azure Media Services、Azure HDInsights、Azure Machine Learning などの他のサービスで使うことができます。
 
-その概要を次のブロック図に示します。
+この記事では、StorSimple Data Manager ソリューションの概要について説明します。 また、このサービスを使用して、StorSimple データおよびその他の Azure サービスをクラウドで使用するアプリケーションを作成する方法についても説明します。
 
-![概要図](./media//storsimple-data-manager-overview/high-level-diagram.png)
+## <a name="how-it-works"></a>動作のしくみ
 
-このドキュメントでは、このサービスのプライベート プレビューにサインアップする方法について説明します。 また、このサービスを使用して、StorSimple データおよびその他の Azure サービスをクラウドで使用するアプリケーションを作成する方法についても説明します。
+StorSimple Data Manager サービスは、StorSimple 8000 シリーズのオンプレミス デバイスからクラウド内の StorSimple データを識別します。 クラウド内の StorSimple データは、重複除去および圧縮された StorSimple 形式になっています。 Data Manager サービスでは、StorSimple 形式のデータを抽出して、Azure BLOB や Azure Files などの他の形式に変換するための API が提供されています。 この変換されたデータは、Azure HDInsight および Azure Media Services ですぐに利用できます。 したがって、データ変換により、これらのサービスは、StorSimple 8000 シリーズ オンプレミス デバイスからの変換された StorSimple データで動作できます。 次の図はこの流れを示したものです。
 
-## <a name="sign-up-for-data-manager-preview"></a>データ マネージャー プレビューにサインアップする
-データ マネージャー サービスにサインアップする前に、次の前提条件を確認します。
-
-### <a name="prerequisites"></a>前提条件
-
-この演習では、以下のことを前提としています
-* 有効な Azure サブスクリプション。
-* 登録済み StorSimple 8000 シリーズ デバイスへのアクセス
-* StorSimple 8000 シリーズ デバイスに関連付けられているすべてのキー。
-
-### <a name="sign-up"></a>サインアップ
-
-StorSimple データ マネージャーはプライベート プレビュー段階にあります。 このサービスのプライベート プレビューにサインアップするには、次の手順を実行します。
-
-1.  StorSimple データ マネージャー拡張機能を備えた Azure Portal ([https://aka.ms/HybridDataManager](https://aka.ms/HybridDataManager)) にログインします。 ログインには Azure 資格情報を使用してください。
-
-2.  **+** アイコンをクリックして、サービスを作成します。 **[ストレージ]** をクリックし、表示されたブレードで **[すべて表示]** をクリックします。
-
-    ![StorSimple データ マネージャー アイコンを検索](./media/storsimple-data-manager-overview/search-data-manager-icon.png)
-
-3. StorSimple データ マネージャー アイコンが表示されます。
-
-    ![StorSimple データ マネージャー アイコンを選択](./media/storsimple-data-manager-overview/select-data-manager-icon.png)
-
-4. StorSimple データ マネージャー アイコンをクリックし、**[作成]** をクリックします。 プライベート プレビューに対して有効にするサブスクリプションを選択し、**[Sign me up (サインアップ)]** をクリックします。
-
-    ![サインアップ](./media/storsimple-data-manager-overview/sign-me-up.png)
-
-5. これにより、利用開始要求が送信されます。 ユーザーができるだけ早く開始できるように要求が処理されます。 サブスクリプションが有効になると、StorSimple データ マネージャー サービスを作成できます。
-
-6. StorSimple データ マネージャー サービスに簡単にアクセスするには、星のアイコンをクリックして、お気に入りにピン留めします。
-
-    ![StorSimple データ マネージャーにアクセス](./media/storsimple-data-manager-overview/access-data-managers.png)
+![概要図](./media/storsimple-data-manager-overview/storsimple-data-manager-overview2.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="data-manager-use-cases"></a>Data Manager のユース ケース
+
+Azure Functions、Azure Automation、Azure Data Factory で Data Manager を使うと、StorSimple に渡されるデータに対してワークフローを実行できます。 StorSimple に格納したメディア コンテンツを Azure Media Services で処理したり、そのデータに対して機械学習アルゴリズムを実行したり、Hadoop クラスターを起動して StorSimple に格納したデータを分析したりすることができます。 Azure で利用可能な広範なサービスと StorSimple のデータを組み合わせることで、データの持つ力を解放できます。
+
+
+## <a name="region-availability"></a>利用可能なリージョン
+
+StorSimple Data Manager は、次の 7 つのリージョンで利用できます。
+
+ - 東南アジア
+ - 米国東部
+ - 米国西部
+ - 米国西部 2
+ - 米国中西部
+ - 北ヨーロッパ
+ - 西ヨーロッパ
+
+ただし、StorSimple Data Manager は、以下のリージョンのデータの変換に使うことができます。 
+
+![データに利用可能なリージョン](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions.png)
+
+上のいずれかのリージョンにリソースを展開すると、下の一覧のリージョンで変換処理を開始できるため、下のセットの方が大きくなっています。 そのため、26 のリージョンのいずれかにデータが存在すれば、このサービスを使ってデータを変換できます。
+
+
+## <a name="choosing-a-region"></a>リージョンの選択
+
+推奨事項は次のとおりです。
+ - ソース ストレージ アカウント (StorSimple デバイスに関連付けられているアカウント) とターゲット ストレージ アカウント (ネイティブ形式のデータを格納するアカウント) を、同じ Azure リージョンにします。
+ - StorSimple のストレージ アカウントが含まれているリージョンで、Data Manager とジョブ定義を起動します。 それが不可能な場合は、最も近い Azure リージョンで Data Manager を起動した後、StorSimple のストレージ アカウントと同じリージョンでジョブ定義を作成します。 
+
+    StorSimple のストレージ アカウントが、ジョブ定義の作成をサポートしている 26 のリージョンにない場合は、StorSimple Data Manager を実行しないことをお勧めします。待機時間が長くなり、送信料金が高額になる可能性があります。
+
+## <a name="security-considerations"></a>セキュリティに関する考慮事項
+
+StorSimple Data Manager では、StorSimple 形式からネイティブ形式に変換するためにサービス データ暗号化キーが必要です。 サービス データ暗号化キーは、最初のデバイスを StorSimple サービスに登録するときに生成されます。 このキーについて詳しくは、[StorSimple のセキュリティ](storsimple-8000-security.md) に関するページをご覧ください。
+
+入力として提供されるサービス データ暗号化キーは、Data Manager を作成するときに作成されるキー コンテナーに格納されます。 コンテナーは、StorSimple Data Manager と同じ Azure リージョンに存在します。 Data Manager サービスを削除すると、このキーも削除されます。
+
+このキーは、変換を実行するためにコンピューティング リソースで使われます。 これらのコンピューティング リソースは、ジョブ定義と同じ Azure リージョンに配置されます。 このリージョンは、Data Manager を起動するリージョンと同じ場合も異なる場合もあります。
+
+Data Manager のリージョンがジョブ定義のリージョンと異なる場合は、これらの各リージョンにどのようなデータ/メタデータが存在するかを理解しておくことが重要です。 次の図では、Data Manager とジョブ定義が異なるリージョンにある場合の影響を示します。
+
+![異なるリージョンのサービスとジョブ定義](./media/storsimple-data-manager-overview/data-manager-job-different-regions.png)
+
+## <a name="next-steps"></a>次の手順
 
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。

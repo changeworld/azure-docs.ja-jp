@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 8cbe60ad3eb26aa1152f8eec3bdc36b8006cf242
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: bd93b3473143f425b47f141efb3af3007614794f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -45,6 +45,7 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 * 最初の Connect Health エージェントに、少なくとも 1 つの Azure AD Premium ライセンスが必要です。
 * 追加登録されるエージェントごとに、25 個の追加 Azure AD Premium ライセンスが必要です。
 * エージェントの数は、監視対象のすべての役割 (AD FS、Azure AD Connect、AD DS) で登録されるエージェントの合計数に相当します。
+* AAD Connect Health のライセンスでは、特定のユーザーにライセンスを割り当てる必要はありません。 必要な数の有効なライセンスを用意することだけが必要です。
 
 ライセンスの情報については、[Azure AD の料金に関するページ](https://aka.ms/aadpricing)もご覧ください。
 
@@ -84,6 +85,7 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 
 **Q: Azure AD Connect Health エージェントのインストール時にサーバーを再起動する必要はありますか。**
 
+
 いいえ。 エージェントをインストールする場合、サーバーを再起動する必要はありません。 ただし、前提条件の一部のインストール手順では、サーバーの再起動が必要です。
 
 たとえば、Windows Server 2008 R2 では、.NET Framework 4.5 をインストールする際にサーバーの再起動が必要です。
@@ -100,6 +102,7 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 3. HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、**[詳細設定]** を選択します。
 
 **Q: Azure AD Connect Health では、HTTP プロキシに接続するときの基本認証がサポートされていますか。**
+
 
 いいえ。 基本認証に対して任意のユーザー名とパスワードを指定するメカニズムは、現在サポートされていません。
 

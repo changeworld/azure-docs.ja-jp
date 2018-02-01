@@ -515,7 +515,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 IP アドレスは指定したサブネットから選択されます。 
 
-仮想マシン スケール セットに対する IP アドレスの割り当て方法は常に "動的" ですが、これらの IP アドレスが変わるわけではありません。 この場合の "動的" とは、あくまで PUT 要求での IP アドレスの指定が手動ではないということです。 サブネットを使用して静的なセットを指定してください。 
+仮想マシン スケール セットに対する IP アドレスの割り当て方法は常に "動的" ですが、これらの IP アドレスが変わるというわけではありません。 この場合の "動的" とは、あくまで PUT 要求での IP アドレスの指定が手動ではないということです。 サブネットを使用して静的なセットを指定してください。 
     
 ### <a name="how-do-i-deploy-a-virtual-machine-scale-set-to-an-existing-azure-virtual-network"></a>既存の Azure 仮想ネットワークに仮想マシン スケール セットをデプロイするにはどうすればよいですか。 
 

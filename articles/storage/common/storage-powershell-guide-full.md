@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: d3f70880e58a21a1ae61577b04e3155c5fec6552
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: f94febfa1610795cd46b4315bbbbe56aa2bca861
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -44,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ストレージ アカウントの詳細については、「[Microsoft Azure Storage の概要](storage-introduction.md)」および「[Azure ストレージ アカウントについて](storage-create-storage-account.md)」を参照してください。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 `Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
@@ -133,7 +133,7 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 
 * ストレージ アカウントに割り当てられている**タグ**。 多くの場合、タグは課金のためのリソースの分類に使用されます。
 
-* **SKU** は、LRS (ローカル冗長ストレージ) など、ストレージ アカウントのレプリケーション設定です。 たとえば、Standard\_LRS を Standard\_GRS または Standard\_RAGRS に変更できます。 Standard ZRS や Premium LRS をその他の SKU に変更したり、その他の SKU を Standard ZRS や Premium LRS に変更したりすることはできません。 
+* **SKU** は、LRS (ローカル冗長ストレージ) など、ストレージ アカウントのレプリケーション設定です。 たとえば、Standard\_LRS を Standard\_GRS または Standard\_RAGRS に変更できます。 Standard\_ZRS や Premium\_LRS をその他の SKU に変更したり、その他の SKU を Standard_ZRS や Premium_LRS に変更したりすることはできません。
 
 * Blob Storage アカウントの**アクセス層**。 アクセス層の値は**ホット**または**クール**に設定されます。この値を使用すると、ストレージ アカウントの使用方法に合致したアクセス層を選択してコストを最小限に抑えることができます。 詳細については、「[Azure Blob Storage: ホット、クール、およびアーカイブ (プレビュー) ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
 
@@ -168,7 +168,7 @@ New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
 > 運用環境のストレージ アカウントのキーを再生成する前には、入念な計画が必要です。 一方または両方のキーを再生成すると、再生成されたキーを使用するアプリケーションのアクセスが無効になります。 詳しくは、「[ストレージ アクセス キーの再生成](storage-create-storage-account.md#regenerate-storage-access-keys)」をご覧ください。
 
 
-### <a name="delete-a-storage-account"></a>ストレージ アカウントの削除 
+### <a name="delete-a-storage-account"></a>ストレージ アカウントを削除する 
 
 ストレージ アカウントを削除するには、[Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount) を使用します。
 
@@ -223,9 +223,9 @@ Azure Cosmos DB Table API は、ターンキー グローバル配布、低待�
 * 詳細については、「[Azure Cosmos DB Table API](../../cosmos-db/table-introduction.md)」を参照してください。 
 * PowerShell を使用して Azure Cosmos DB Table API 操作を実行する方法については、「[PowerShell を使用した Azure Cosmos DB Table API 操作の実行](../../cosmos-db/table-powershell.md)」を参照してください。
 
-## <a name="azures-independently-deployed-clouds"></a>Azure の独立してデプロイされるクラウド
+## <a name="independent-cloud-deployments-of-azure"></a>Azure の独立したクラウドのデプロイ
 
-ほとんどの人は、グローバルな Azure のデプロイに Azure Public Cloud を使用します。 主権などの理由から、Microsoft Azure の独立したデプロイもいくつかあります。 これらの独立したデプロイを「環境」と呼びます。 利用可能な環境を次に示します。
+ほとんどの人は、グローバルな Azure のデプロイに Azure パブリック クラウドを使用します。 主権などの理由から、Microsoft Azure の独立したデプロイもいくつかあります。 これらの独立したデプロイを「環境」と呼びます。 利用可能な環境を次に示します。
 
 * [Azure Government クラウド](https://azure.microsoft.com/features/gov/)
 * [中国の 21Vianet が運営する Azure China Cloud](http://www.windowsazure.cn/)
@@ -240,7 +240,7 @@ PowerShell でこれらのクラウドとそのストレージにアクセスす
 ```powershell
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このハウツー記事では、管理プレーンのコマンドレットを使用してストレージ アカウントを管理する際の一般的な操作について説明します。 以下の方法について学習しました。 
 

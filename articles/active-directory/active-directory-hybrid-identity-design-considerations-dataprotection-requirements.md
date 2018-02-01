@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - データ保護要件の決定 | Microsoft Docs"
+title: "ハイブリッド ID 設計 - データ保護要件 - Azure | Microsoft Docs"
 description: "ハイブリッド ID ソリューションを計画する場合、ビジネスのデータ保護要件と、その要件に最適な選択肢を特定します。"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 77b773f4cd1c4d0ff0a4566fa76fd1d002d15993
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 1a2feca8d24fabda4c191b5a181ab6606c912657
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="plan-for-enhancing-data-security-through-strong-identity-solution"></a>強力な ID ソリューションによりデータ セキュリティを強化するための計画を立てる
 データを保護するための最初の手順は、データにアクセスできるユーザーを特定することです。また、そのプロセスの一環で、認証機能と承認機能を提供するシステムと統合できる ID ソリューションが必要になります。 認証と承認は混同され、その役割が誤解されることがよくあります。 次の図のように、実際はまったく異なります。
@@ -79,7 +80,7 @@ IT が各段階でデータ自体を保護できるようにする技術制御�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  [コンテンツ管理要件の決定](active-directory-hybrid-identity-design-considerations-contentmgt-requirements.md)
 
 ## <a name="see-also"></a>関連項目

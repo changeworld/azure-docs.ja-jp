@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: kumud
-ms.openlocfilehash: c6b89cb473f6b7a14bd9de88dfb72a2a42d915f5
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ddcbe895bdaa6eaa49e8ed129fe92b415f2600ef
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure Load Balancer Standard の概要 (プレビュー)
 
@@ -68,12 +68,12 @@ Load Balancer Standard は、リージョンの仮想ネットワーク内の任
 
 Load Balancer Standard には、パブリックおよび内部ロード バランサー構成の新しい多次元診断機能が用意されています。 Azure Monitor (プレビュー) によって次の新しいメトリックが提供されます。これらのメトリックでは、ダウンストリーム コンシューマーと統合するための機能など、関連するすべての機能を利用します。
 
-| メトリック | 説明 |
+| メトリック | [説明] |
 | --- | --- |
 | VIP 可用性 | Load Balancer Standard は、リージョン内から Load Balancer フロントエンドを経て、VM をサポートする SDN スタックに至るまでのデータ パスを継続的に学習します。 正常なインスタンスが保持されていれば、測定ではアプリケーションの負荷分散されたトラフィックと同じパスに従います。 顧客が使用しているデータ パスも検証されます。 測定はアプリケーションには見えないので、他の操作と干渉することはありません。|
 | DIP 可用性 | Load Balancer Standard では、構成設定に従ってアプリケーション エンドポイントの正常性を監視する、分散型の正常性プローブ サービスを使用します。 このメトリックは、Load Balancer プールの個々のインスタンス エンドポイントの集計ビューまたはエンドポイントごとのフィルター ビューを提供します。  正常性プローブ構成で示されているアプリケーションの正常性を、Load Balancer がどのように表示するのかを確認できます。
-| SYN パケット | Load Balancer Standard が TCP 接続を終了したり、TCP または UDP パケット フローと対話したりすることはありません。 フローとハンドシェイクは、常にソースと VM インスタンスの間で発生します。 TCP プロトコルのシナリオのトラブルシューティングを適切に行うために、SYN パケットを使用して TCP 接続試行の数を把握できます。 このメトリックは、受信済みの TCP SYN パケットの数を報告します。 このメトリックは、クライアントによるサービスへの接続確立試行を反映している可能性もあります。|
-| SNAT 接続 | Load Balancer Standard は、パブリック IP アドレス フロントエンドにマスカレードされた送信接続の数を報告します。 SNAT ポートは有限のリソースです。 このメトリックはアプリケーションが送信接続で SNAT にどれくらい依存しているかを示すことができます。|
+| SYN パケット | Load Balancer Standard が TCP 接続を終了したり、TCP または UDP パケット フローと対話したりすることはありません。 フローとハンドシェイクは、常にソースと VM インスタンスの間で発生します。 TCP プロトコルのシナリオのトラブルシューティングを適切に行うために、SYN パケット カウンターを使用して TCP 接続試行の数を把握できます。 このメトリックは、受信済みの TCP SYN パケットの数を報告します。|
+| SNAT 接続 | Load Balancer Standard は、パブリック IP アドレス フロントエンドにマスカレードされた送信フローの数を報告します。 SNAT ポートは有限のリソースです。 このメトリックはアプリケーションが送信フローで SNAT にどれくらい依存しているかを示すことができます。  成功した送信 SNAT フローと失敗した送信 SNAT フローのカウンターがレポートされるので、送信フローの正常性について、トラブルシューティングしたり、理解したりするのに役立てることができます。|
 | バイト カウンター | Load Balancer Standard は、フロントエンドごとに処理されたデータを報告します。|
 | パケット カウンター | Load Balancer Standard は、フロントエンドごとに処理されたパケットを報告します。|
 
@@ -217,7 +217,7 @@ NSG と、ネットワーク セキュリティ グループをシナリオに�
 
 Load Balancer Standard の新しいアルゴリズムでは、各 VM の NIC に SNAT ポートを事前に割り当てます。 NIC がプールに追加されると、プール サイズに基づいて SNAT ポートが事前に割り当てられます。 次の表は、6 レベルのバックエンド プール サイズに対するポートの事前割り当てを示しています。
 
-| プール サイズ (VM インスタンス) | 事前に割り当てられる SNAT ポート |
+| プール サイズ (VM インスタンス) | 事前に割り当てられている SNAT ポート数 |
 | --- | --- |
 | 1 - 50 | 1024 |
 | 51 - 100 | 512 |
@@ -339,7 +339,7 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 次の表では、Load Balancer の Basic SKU と Standard SKU の制限と機能を比較しています。
 
-| Load Balancer | 基本 | 標準 |
+| Load Balancer | Basic | 標準 |
 | --- | --- | --- |
 | バックエンド プールのサイズ | 最大 100 | 最大 1,000 |
 | バックエンド プールの境界 | 可用性セット | 仮想ネットワーク、リージョン |
@@ -355,7 +355,7 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 次の表では、パブリック IP の Basic SKU と Standard SKU の制限と機能を比較しています。
 
-| パブリック IP | 基本 | 標準 |
+| パブリック IP | Basic | 標準 |
 | --- | --- | --- |
 | 可用性ゾーンのシナリオ | ゾーン ベースのみ | ゾーン冗長 (既定)、ゾーン ベース (オプション) | 
 | 高速 IP モビリティ | サポートされていません | 使用可能 |
@@ -452,7 +452,7 @@ Load Balancer Basic SKU は、引き続き無料でご利用いただけます�
 - 可用性ゾーンのコンテキストでは、ゾーンのパブリック IP アドレスをゾーン間で移動することはできません。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Load Balancer Basic](load-balancer-overview.md) の詳細を確認する。
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を学習する。

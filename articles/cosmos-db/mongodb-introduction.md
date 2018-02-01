@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2017
 ms.author: anhoh
-ms.openlocfilehash: 9acc3268bc6a043852cadfafa40c0a54ecc66e59
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: d39ca60438ce5f49ed411eded22583438706dc8c
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB の概要: MongoDB 用 API
 
-[Azure Cosmos DB](../cosmos-db/introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間、[明確に定義された 5 種類の整合性レベル](consistency-levels.md)を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 
+[Azure Cosmos DB](../cosmos-db/introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間、[明確に定義された 5 種類の整合性レベル](consistency-levels.md)を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 
 
 ![Azure Cosmos DB: MongoDB API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
@@ -58,12 +58,12 @@ MongoDB のクイックスタートに従って、Azure Cosmos DB アカウン�
 * [.NET と Azure Portal による MongoDB API Web アプリの構築](create-mongodb-dotnet.md)
 * [Java と Azure Portal による MongoDB API コンソール アプリの構築](create-mongodb-java.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Cosmos DB の MongoDB API に関する情報は、Azure Cosmos DB ドキュメント全体に組み込まれていますが、開始するためのいくつかのヒントを次に示します。
 
 * [MongoDB アカウントへの接続](connect-mongodb-account.md)に関するチュートリアルに従って、アカウントの接続文字列の情報を取得する方法について学習します。
-* [Azure Cosmos DB での MongoChef の使用](mongodb-mongochef.md)に関するチュートリアルに従って、MongoChef で Azure Cosmos DB データベースと MongoDB アプリの接続を作成する方法について学習します。
+* 「[Azure Cosmos DB での Studio 3T (MongoChef) の使用](mongodb-mongochef.md)」のチュートリアルに従って、Studio 3T で Azure Cosmos DB データベースと MongoDB アプリの間の接続を作成する方法を学習します。
 * [MongoDB のプロトコル対応 Azure Cosmos DB へのデータ移行](mongodb-migrate.md) に関するチュートリアルに従って、データを MongoDB データベース用 API にインポートします。
 * [Robomongo](mongodb-robomongo.md) を使用して、MongoDB 用 API アカウントに接続します。
 * [GetLastRequestStatistics コマンドと Azure Portal のメトリック](request-units.md#GetLastRequestStatistics)を使用して、操作で使用している RU の数を確認する方法について学習します。

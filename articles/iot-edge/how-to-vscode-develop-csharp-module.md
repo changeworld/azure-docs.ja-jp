@@ -6,14 +6,14 @@ keywords:
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 12/06/2017
+ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 269f77e5015175e45e0078926ef06699811889a4
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: cad28b4e6d4e46058641da19795cd71efdbd0c92
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="use-visual-studio-code-to-develop-c-module-with-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge で C# モジュールを開発する
 この記事では、主要開発ツールとして [Visual Studio Code](https://code.visualstudio.com/) を使用して、IoT Edge モジュールを開発およびデプロイする手順について詳しく説明します。 
@@ -48,21 +48,37 @@ VS Code で IoT ハブ デバイスの一覧を表示する方法は 2 つあり
 1. コマンド パレット (F1 キーまたは Ctrl + Shift + P キー) で、「**Azure: Sign in\(Azure: サインイン\)**」と入力して選択します。 ポップアップで **[Copy* & Open]\(コピー & 開く)** をクリックします。 ブラウザーにコードを貼り付け (Ctrl + V キー)、[続行] ボタンをクリックします。 次に、Azure アカウントを使用してログインします。 VS Code のステータス バーにアカウント情報が表示されます。
 2. コマンド パレット (F1 キーまたは Ctrl + Shift + P キー) で、「**IoT: Select IoT Hub\(IoT: IoT ハブの選択\)**」と入力して選択します。 まず、前のチュートリアルで IoT ハブを作成したサブスクリプションを選択します。 次に、IoT Edge デバイスを含む IoT ハブを選択します。
 
+    ![Device list](./media/how-to-vscode-develop-csharp-module/device-list.png)
 
 #### <a name="set-iot-hub-connection-string"></a>IoT ハブ接続文字列を設定する
-1. コマンド パレット (F1 キーまたは Ctrl + Shift + P キー) で、「**IoT: Set IoT Hub Connection String\(IoT: IoT ハブ接続文字列の設定\)**」と入力して選択します。 必ず、**iothubowner** ポリシーの接続文字列を貼り付けます (このポリシーは、Azure Portal の IoT ハブの共有アクセス ポリシーにあります)。
+コマンド パレット (F1 キーまたは Ctrl + Shift + P キー) で、「**IoT: Set IoT Hub Connection String\(IoT: IoT ハブ接続文字列の設定\)**」と入力して選択します。 必ず、**iothubowner** ポリシーの接続文字列を貼り付けます (このポリシーは、Azure Portal の IoT ハブの共有アクセス ポリシーにあります)。
  
-
 左側のサイド バーにある IoT Hub Device Explorer にデバイスの一覧が表示されます。
 
 ### <a name="start-your-iot-edge-runtime-and-deploy-a-module"></a>IoT Edge ランタイムを開始してモジュールをデプロイする
 Azure IoT Edge ランタイムをデバイスにインストールして開始します。 また、テレメトリ データを IoT ハブに送信するシミュレートされたセンサー モジュールをデプロイします。
 1. コマンド パレットで、**[Edge: Setup Edge]\(Edge: Edge のセットアップ\)** を選択し、IoT Edge デバイス ID を選択します。 または、デバイス一の覧で Edge デバイス ID を右クリックし、**[Setup Edge]\(Edge のセットアップ\)** を選択します。
+
+    ![Edge ランタイムをセットアップする](./media/how-to-vscode-develop-csharp-module/setup-edge.png)
+
 2. コマンド パレットで、**[Edge: Start Edge]\(Edge: Edge の開始\)** を選択して Edge ランタイムを開始します。 対応する出力が統合ターミナルに表示されます。
+
+    ![Edge ランタイムを開始する](./media/how-to-vscode-develop-csharp-module/start-edge.png)
+
 3. Docker エクスプローラーで Edge ランタイムの状態を確認します。 緑色は実行中であることを示しています。 IoT Edge ランタイムが正常に開始されました。
-4. 現在、Edge ランタイムが実行されています。これは、PC が Edge デバイスをシミュレートしていることを意味します。 次に、Edge デバイスにメッセージを送信し続ける sensorthing をシミュレートします。 コマンド パレットで、「**Edge: Generate Edge configuration file\(Edge: Edge 構成ファイルの生成\)**」と入力して選択します。 このファイルを作成するフォルダーを選択します。 生成された deployment.json ファイルで、"<registry>/<image>:<tag>" 行を `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` に置き換えます。
+
+    ![Edge ランタイムが実行している](./media/how-to-vscode-develop-csharp-module/edge-runtime.png)
+
+4. 現在、Edge ランタイムが実行されています。これは、PC が Edge デバイスをシミュレートしていることを意味します。 次に、Edge デバイスにメッセージを送信し続ける sensorthing をシミュレートします。 コマンド パレットで、「**Edge: Generate Edge configuration file\(Edge: Edge 構成ファイルの生成\)**」と入力して選択します。 このファイルを作成するフォルダーを選択します。 生成された deployment.json ファイルで、内容 `<registry>/<image>:<tag>` を `microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview` に置き換えて、ファイルを保存します。
+
+    ![センサー モジュール](./media/how-to-vscode-develop-csharp-module/sensor-module.png)
+
 5. **[Edge: Create deployment for Edge device]\(Edge: Edge デバイスのデプロイの作成\)** を選択し、Edge デバイス ID を選択して新しいデプロイを作成します。 または、デバイスの一覧で Edge デバイス ID を右クリックし、**[Create deployment for Edge device]\(Edge デバイスのデプロイの作成\)** を選択することもできます。 
-6. シミュレートされたセンサーで IoT Edge の実行が開始されたことを Docker エクスプローラーで確認する必要があります。 Docker エクスプローラーでコンテナーを右クリックします。 各モジュールの Docker ログを確認できます。
+
+6. シミュレートされたセンサーで IoT Edge の実行が開始されたことを Docker エクスプローラーで確認する必要があります。 Docker エクスプローラーでコンテナーを右クリックします。 各モジュールの Docker ログを確認できます。 また、デバイスの一覧でモジュールの一覧を見ることができます。
+
+    ![モジュール一覧](./media/how-to-vscode-develop-csharp-module/module-list.png)
+
 7. Edge デバイス ID を右クリックし、VS Code で D2C メッセージを監視できます。
 8. IoT Edge ランタイムとセンサー モジュールを停止するには、コマンド パレットで「**Edge: Stop Edge\(Edge: Edge の停止\)**」と入力して選択します。
 
@@ -97,12 +113,18 @@ docker run -d -p 5000:5000 --name registry registry:2
  
 3. **[ファイル]** > **[フォルダーを開く]** を選択します。
 4. **FilterModule** フォルダーに移動し、**[フォルダーの選択]** をクリックして、VS Code でプロジェクトを開きます。
-5. VS Code エクスプローラーで **[Program.cs]** をクリックして開きます。
+5. VS Code エクスプローラーで **[Program.cs]** をクリックして開きます。 **program.cs** の先頭で、次の名前空間をインクルードします。
+   ```csharp
+   using Microsoft.Azure.Devices.Shared;
+   using System.Collections.Generic;  
+   using Newtonsoft.Json;
+   ```
+
 6. `temperatureThreshold` 変数を **Program** クラスに追加します。 この変数により、データが IoT Hub に送信される基準値が設定されます。データは、測定温度がこの値を超えると送信されます。 
 
-    ```csharp
-    static int temperatureThreshold { get; set; } = 25;
-    ```
+   ```csharp
+   static int temperatureThreshold { get; set; } = 25;
+   ```
 
 7. `MessageBody`、`Machine`、および `Ambient` クラスを **Program** クラスに追加します。 これらのクラスは、受信メッセージの本文に対して予期されるスキーマを定義します。
 
@@ -225,16 +247,22 @@ docker run -d -p 5000:5000 --name registry registry:2
     }
     ```
 
-11. プロジェクトをビルドするには、エクスプローラーで **FilterModule.csproj** ファイルを右クリックし、**[Build IoT Edge module]\(IoT Edge モジュールのビルド\)** をクリックします。 このプロセスにより、モジュールがコンパイルされ、バイナリとその依存関係が、Docker イメージの作成に使用するフォルダーにエクスポートされます。
+11. プロジェクトをビルドするには、エクスプローラーで **FilterModule.csproj** ファイルを右クリックし、**[Build IoT Edge module]\(IoT Edge モジュールのビルド\)** をクリックします。 このプロセスにより、モジュールがコンパイルされ、バイナリとその依存関係が、Docker イメージの作成に使用するフォルダーにエクスポートされます。 
 
+    ![モジュールをビルドする](./media/how-to-vscode-develop-csharp-module/build-module.png)
 
 ### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Docker イメージを作成してレジストリに発行する
 
 1. VS Code エクスプローラーで、**Docker** フォルダーを展開します。 次に、コンテナー プラットフォームのフォルダー、**linux-x64** または **windows-nano** を展開します。
 2. **[Dockerfile]** ファイルを右クリックし、**[Build IoT Edge module Docker image] (IoT Edge モジュール Docker イメージのビルド)** をクリックします。 
+
+    ![Docker イメージをビルドする](./media/how-to-vscode-develop-csharp-module/build-docker-image.png)
+
 3. **[フォルダーの選択]** ウィンドウで、`./bin/Debug/netcoreapp2.0/publish` を参照するか入力します。 **[Select Folder as EXE_DIR] (EXE_DIR としてフォルダーを選択)** をクリックします。
 4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 たとえば、「 `<your container registry address>/filtermodule:latest`」のように入力します。 ローカル レジストリにデプロイする場合は、`localhost:5000/filtermodule:latest` のようになります。
-5. イメージを Docker リポジトリにプッシュします。 **[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** コマンドを使用し、VS Code ウィンドウの上部にあるポップアップ テキスト ボックスにイメージの URL を入力します。 前の手順で使用したイメージの URL を使用してください。
+5. イメージを Docker リポジトリにプッシュします。 **[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** コマンドを使用し、VS Code ウィンドウの上部にあるポップアップ テキスト ボックスにイメージの URL を入力します。 前の手順で使用したイメージの URL を使用してください。 コンソール ログをチェックし、イメージが正常にプッシュされたことを確認します。
+
+    ![Docker イメージをプッシュする](./media/how-to-vscode-develop-csharp-module/push-image.png)![プッシュされた Docker イメージ](./media/how-to-vscode-develop-csharp-module/pushed-image.png)
 
 ### <a name="deploy-your-iot-edge-modules"></a>IoT Edge モジュールをデプロイする
 
@@ -264,21 +292,26 @@ docker run -d -p 5000:5000 --name registry registry:2
 
 2. **routes** セクションを次の内容に置き換えます。
     ```json
-    {
-        "routes": {
-            "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
-            "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
-        }
-    }
+    "sensorToFilter": "FROM /messages/modules/tempSensor/outputs/temperatureOutput INTO BrokeredEndpoint(\"/modules/filtermodule/inputs/input1\")",
+    "filterToIoTHub": "FROM /messages/modules/filtermodule/outputs/output1 INTO $upstream"
     ```
    > [!NOTE]
    > それらのメッセージが流れる場所は、ランタイム内の宣言型ルールによって定義されます。 このチュートリアルでは、2 つのルートが必要です。 1 つ目のルートは、"input1" エンドポイント経由で温度センサーからフィルター モジュールにメッセージを転送します。このエンドポイントは、FilterMessages ハンドラーで構成したものです。 2 つ目のルートは、フィルター モジュールから IoT ハブにメッセージを転送します。 このルートでは、上流は、IoT ハブにメッセージを送信するよう Edge Hub に指示する特別な転送先です。
 
 3. このファイルを保存します。
 4. コマンド パレットで、**[Edge: Create deployment for Edge device]\(Edge: Edge デバイスのデプロイの作成\)** を選択します。 次に、IoT Edge デバイス ID を選択してデプロイを作成します。 または、デバイスの一覧でデバイス ID を右クリックし、**[Create deployment for Edge device]\(Edge デバイスのデプロイの作成\)** を選択します。
+
+    ![Create deployment](./media/how-to-vscode-develop-csharp-module/create-deployment.png)
+
 5. 更新した `deployment.json` を選択します。 出力ウィンドウに、デプロイの対応する出力が表示されます。
+
+    ![デプロイメント成功](./media/how-to-vscode-develop-csharp-module/deployment-succeeded.png)
+
 6. コマンド パレットで Edge ランタイムを開始します  (**[Edge: Start Edge]\(Edge: Edge の開始\)**)。
 7. シミュレートされたセンサーとフィルター モジュールで IoT Edge ランタイムの実行が開始されたことを Docker エクスプローラーで確認できます。
+
+    ![IoT Edge ソリューションが実行している](./media/how-to-vscode-develop-csharp-module/solution-running.png)
+
 8. Edge デバイス ID を右クリックし、VS Code で D2C メッセージを監視できます。
 
 

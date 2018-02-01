@@ -2,9 +2,9 @@
 title: "Key Vault .NET 2.x API リリース ノート| Microsoft Docs"
 description: ".NET 開発者はこの API を使用して Azure Key Vault のコーディングを行います。"
 services: key-vault
-author: BrucePerlerMS
+author: lleonard-msft
 manager: mbaldwin
-editor: bruceper
+editor: alleonar
 ms.assetid: 1cccf21b-5be9-4a49-8145-483b695124ba
 ms.service: key-vault
 ms.devlang: CSharp
@@ -12,27 +12,25 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/02/2017
-ms.author: bruceper
-ms.openlocfilehash: 5b03f5092ee4236ca3e7b12db37dc47bd6d3a309
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.author: alleonar
+ms.openlocfilehash: a7735f8c1c4332bf2472bc83c0c37baf49019004
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - リリース ノートおよび移行ガイド
-Azure Key Vault .NET / C# ライブラリを使用する開発者のための注意事項とガイダンスを次に説明します。 バージョン 1.0 からバージョン 2.0 への移行においていくつもの更新が行われており、**Key Vault 証明書**のサポートなど、機能の改善や追加の恩恵を受けるためにはコードの移行作業が必要になります。
+次の情報は、C# および .NET 対応の Azure Key Vault ライブラリ 2.0 バージョンに移行するのに役立ちます。  以前のバージョン用に記述されたアプリは、最新バージョンをサポートするように更新する必要があります。  これらの変更では、**Key Vault 証明書**など、改善後の新機能を完全にサポートする必要があります。
 
 ## <a name="key-vault-certificates"></a>Key Vault 証明書
 
-Key Vault 証明書のサポートにより、x509 証明書が管理されるようになります。動作は次のとおりです。  
+Key Vault 証明書では x509 証明書を管理し、次の動作をサポートします。  
 
-* 証明書の所有者が、Key Vault 作成プロセスを介して、または既存の証明書をインポートして、証明書を作成できます。 これには、自己署名証明書と証明機関によって生成された証明書の両方が含まれます。
-* Key Vault 証明書の所有者は、秘密キー マテリアルを操作せずに、X509 証明書のセキュリティ保護されたストレージと管理を実装できます。  
-* 証明書所有者が、証明書のライフサイクルを管理するように Key Vault が指示するポリシーを作成できます。  
-* 証明書所有者が、証明書の失効や更新のライフサイクル イベントを通知するために証明書の連絡先情報を指定できます。  
-* 選択した発行者 (Key Vault パートナー X509 証明書プロバイダーまたは証明機関) による自動更新をサポートします。
-  
-  * 注意 - パートナーではないプロバイダー/証明機関も許可されますが、自動更新機能はサポートされません。
+* Key Vault 作成プロセス経由で証明書を作成するか、または既存の証明書をインポートします。 これには、自己署名と証明機関 (CA) によって生成された証明書の両方が含まれます。
+* 秘密キー マテリアルを使用した操作を伴わずに、x509 証明書ストレージを安全に保存および管理します。  
+* 証明書のライフ サイクルを管理するには、Key Vault を指示するポリシーを定義します。  
+* 期限切れの警告や更新通知など、ライフサイクル イベントに関するお問い合わせ先を提示します。  
+* 選択されている発行元 (Key Vault パートナー X509 証明書発行元および証明機関) で証明書を自動的に更新します。* その他の発行元 (非パートナー) や証明機関 (自動更新をサポートしていない) からの証明書をサポートします。  
 
 ## <a name="net-support"></a>.NET のサポート
 
@@ -44,7 +42,10 @@ Key Vault 証明書のサポートにより、x509 証明書が管理される�
 
 * **モデル**の名前空間は、**Microsoft.Azure.KeyVault** から **Microsoft.Azure.KeyVault.Models** に変更されます。
 * **Microsoft.Azure.KeyVault.Internal** 名前空間は削除されます。
-* Azure SDK 依存関係の名前空間は、**Hyak.Common** と **Hyak.Common.Internals** から **Microsoft.Rest** と **Microsoft.Rest.Serialization** に変更されます。
+* 次の Azure SDK 依存関係の名前空間は、以下を含みます。 
+
+    - **Hyak.Common** は現在、**Microsoft.Rest**です。
+    - **Hyak.Common.Internals** は現在、**Microsoft.Rest.Serialization** です。
 
 ## <a name="type-changes"></a>型の変更
 
@@ -55,8 +56,8 @@ Key Vault 証明書のサポートにより、x509 証明書が管理される�
 
 ## <a name="return-types"></a>戻り値の型
 
-* **KeyList** と **SecretList** は、*ListKeysResponseMessage* ではなく *IPage<T>* を返します。
-* 生成される **BackupKeyAsync** は *Value* (バックアップ BLOB) を含む *BackupKeyResult* を返します。 メソッドがラップされる前に、値のみを返します。
+* **KeyList** と **SecretList** は現在、*ListKeysResponseMessage* ではなく *IPage<T>* を返します。
+* 生成される **BackupKeyAsync** は現在、*Value* (バックアップ BLOB) を含む *BackupKeyResult* を返します。 以前は、メソッドがラップされ、値のみが返されました。
 
 ## <a name="exceptions"></a>例外
 
@@ -70,24 +71,24 @@ Key Vault 証明書のサポートにより、x509 証明書が管理される�
 
 ## <a name="downloaded-packages"></a>ダウンロードされるパッケージ
 
-クライアントが Key Vault に関する依存関係を処理しているとき、次のパッケージがダウンロードされています。
+クライアントが Key Vault の依存関係を処理するとき、次のパッケージがダウンロードされます。
 
 ### <a name="previous-package-list"></a>以前のパッケージ リスト
 
-* package id="Hyak.Common" version="1.0.2" targetFramework="net45"
-* package id="Microsoft.Azure.Common" version="2.0.4" targetFramework="net45"
-* package id="Microsoft.Azure.Common.Dependencies" version="1.0.0" targetFramework="net45"
-* package id="Microsoft.Azure.KeyVault" version="1.0.0" targetFramework="net45"
-* package id="Microsoft.Bcl" version="1.1.9" targetFramework="net45"
-* package id="Microsoft.Bcl.Async" version="1.0.168" targetFramework="net45"
-* package id="Microsoft.Bcl.Build" version="1.0.14" targetFramework="net45"
-* package id="Microsoft.Net.Http" version="2.2.22" targetFramework="net45"
+* `package id="Hyak.Common" version="1.0.2" targetFramework="net45"`
+* `package id="Microsoft.Azure.Common" version="2.0.4" targetFramework="net45"`
+* `package id="Microsoft.Azure.Common.Dependencies" version="1.0.0" targetFramework="net45"`
+* `package id="Microsoft.Azure.KeyVault" version="1.0.0" targetFramework="net45"`
+* `package id="Microsoft.Bcl" version="1.1.9" targetFramework="net45"`
+* `package id="Microsoft.Bcl.Async" version="1.0.168" targetFramework="net45"`
+* `package id="Microsoft.Bcl.Build" version="1.0.14" targetFramework="net45"`
+* `package id="Microsoft.Net.Http" version="2.2.22" targetFramework="net45"`
 
 ### <a name="current-package-list"></a>現在のパッケージ リスト
 
-* package id="Microsoft.Azure.KeyVault" version="2.0.0-preview" targetFramework="net45"
-* package id="Microsoft.Rest.ClientRuntime" version="2.2.0" targetFramework="net45"
-* package id="Microsoft.Rest.ClientRuntime.Azure" version="3.2.0" targetFramework="net45"
+* `package id="Microsoft.Azure.KeyVault" version="2.0.0-preview" targetFramework="net45"`
+* `package id="Microsoft.Rest.ClientRuntime" version="2.2.0" targetFramework="net45"`
+* `package id="Microsoft.Rest.ClientRuntime.Azure" version="3.2.0" targetFramework="net45"`
 
 ## <a name="class-changes"></a>クラスの変更
 
@@ -100,9 +101,9 @@ Key Vault 証明書のサポートにより、x509 証明書が管理される�
 
 ## <a name="microsoftazuremanagementkeyvault-nuget"></a>Microsoft.Azure.Management.KeyVault NuGet
 
-* "*コンテナー*" を返した操作の場合、以前の戻り型は Vault プロパティを含むクラスでした。 現在、戻り型が *Vault* です。
+* "*コンテナー*" を返した操作の場合、以前の戻り値の型は **Vault** プロパティを含むクラスでした。 現在、戻り型が *Vault* です。
 * *PermissionsToKeys* と *PermissionsToSecrets* は現在は *Permissions.Keys* と *Permissions.Secrets* です。
-* 戻り型の変更の一部は、コントロールプレーンにも適用されます。
+* 特定の戻り値の型の変更は、コントロールプレーンにも適用されます。
 
 ## <a name="microsoftazurekeyvaultextensions-nuget"></a>Microsoft.Azure.KeyVault.Extensions NuGet
 

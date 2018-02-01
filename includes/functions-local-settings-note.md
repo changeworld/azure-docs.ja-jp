@@ -1,2 +1,2 @@
 >[!Note]
-> ローカルな開発では、Azure Functions ツールによる Azure ストレージ エミュレーターの使用はサポートされません。
+> 関数アプリでは、プロジェクトに必要な **AzureWebJobsStorage** および **AzureWebJobsDashboard** 接続設定に Azure Storage エミュレーターを使用できます。 エミュレーターを使用するには、これらのキーの値を `UseDevelopmentStorage=true` に設定します。 

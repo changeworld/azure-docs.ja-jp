@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: 2944021cbaf777137512f4bfe0eb4cf5e6f996dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e33186b189394172cba6cf550c01954db941c19
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
@@ -57,11 +57,12 @@ Azure で作成されるすべてのリソースは、世界各地の複数の[�
 
 次の表に、利用可能な場所の一覧を取得する方法の一部を示します。
 
-| メソッド | 説明 |
+| 方法 | [説明] |
 | --- | --- |
 | Azure ポータル |VM を作成するときに一覧から場所を選択します。 |
 | Azure PowerShell |[Get-AzureRmLocation](/powershell/module/azurerm.resources/get-azurermlocation) コマンドを使用します。 |
 | REST API |[場所の一覧表示](https://docs.microsoft.com/rest/api/resources/subscriptions#Subscriptions_ListLocations)操作を使用します。 |
+| Azure CLI |[az account list-locations](https://docs.microsoft.com/en-us/cli/azure/account?view=azure-cli-latest#az_account_list_locations) 操作を使用します。 |
 
 ### <a name="vm-size"></a>VM サイズ
 使用する VM の[サイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)は、実行するワークロードによって決まります。 さらに、選択したサイズによって、処理能力、メモリ、ストレージの容量などの要素が決まります。 Azure では、さまざまな種類の使用をサポートするために、さまざまなサイズを用意しています。
@@ -78,11 +79,12 @@ Azure には、Windows Server オペレーティング システムのさまざ�
 
 次の表に、イメージに関する情報を見つける方法をいくつか示します。
 
-| メソッド | 説明 |
+| 方法 | [説明] |
 | --- | --- |
 | Azure ポータル |値は、使用するイメージを選択する際に自動的に指定されます。 |
 | Azure PowerShell |[Get-AzureRMVMImagePublisher](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimagepublisher) -Location "場所"<BR>[Get-AzureRMVMImageOffer](https://docs.microsoft.com/powershell/resourcemanager/azurerm.compute/v2.5.0/get-azurermvmimageoffer) -Location "場所" -Publisher "発行元名"<BR>[Get-AzureRMVMImageSku](/powershell/module/azurerm.compute/get-azurermvmimagesku) -Location "場所" -Publisher "発行元名" -Offer "プラン名" |
 | REST API |[イメージ発行元の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publishers)<BR>[イメージ プランの一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offers)<BR>[イメージ SKU の一覧表示](https://docs.microsoft.com/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) |
+| Azure CLI |[az vm image list-publishers](https://docs.microsoft.com/en-us/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_publishers) --location "場所"<BR>[az vm image list-offers](https://docs.microsoft.com/en-us/cli/azure/vm/image?view=azure-cli-latest#az_vm_image_list_offers) --location "場所" --publisher "発行元名"<BR>[az vm image list-skus](https://docs.microsoft.com/en-us/cli/azure/vm?view=azure-cli-latest#az_vm_list_skus) --location "場所" --publisher "発行元名" --offer "プラン名"|
 
 [独自のイメージをアップロードして使用](upload-generalized-managed.md#upload-the-vhd-to-your-storage-account)することができますが、そのとき、発行元名、プラン、SKU は使用されません。
 
@@ -98,27 +100,28 @@ VM の[拡張機能](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwi
 ### <a name="related-resources"></a>関連リソース
 次の表のリソースは VM によって使用されるため、VM の作成時に存在するか、作成する必要があります。
 
-| リソース | 必須 | Description |
+| リソース | 必須 | [説明] |
 | --- | --- | --- |
-| [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |はい |VM は、リソース グループに含まれる必要があります。 |
-| [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |はい |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
-| [Virtual Network](../../virtual-network/virtual-networks-overview.md) |はい |VM は、仮想ネットワークのメンバーである必要があります。 |
-| [パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |いいえ |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
-| [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |はい |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
-| [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |なし |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
+| [[リソース グループ]](../../azure-resource-manager/resource-group-overview.md) |[はい] |VM は、リソース グループに含まれる必要があります。 |
+| [ストレージ アカウント](../../storage/common/storage-create-storage-account.md) |[はい] |VM には、その仮想ハード ディスクを格納するストレージ アカウントが必要です。 |
+| [Virtual Network](../../virtual-network/virtual-networks-overview.md) |[はい] |VM は、仮想ネットワークのメンバーである必要があります。 |
+| [パブリック IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |いいえ  |VM には、リモートでアクセスするためのパブリック IP アドレスを割り当てることができます。 |
+| [ネットワーク インターフェイス](../../virtual-network/virtual-network-network-interface.md) |[はい] |VM には、ネットワークで通信するためのネットワーク インターフェイスが必要です。 |
+| [データ ディスク](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |いいえ  |VM には、ストレージ容量を拡張するためのデータ ディスクを含めることができます。 |
 
 ## <a name="how-do-i-create-my-first-vm"></a>最初の VM の作成方法
 VM を作成する際、いくつかの選択肢があります。 どの選択肢を利用するかは、環境によって異なります。 
 
 次の表は、VM の作成を開始するうえでの情報を提供します。
 
-| メソッド | 記事 |
+| 方法 | 記事 |
 | --- | --- |
 | Azure ポータル |[ポータルを使用して Windows を実行する仮想マシンを作成する](../virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | テンプレート |[リソース マネージャー テンプレートで Windows 仮想マシンを作成する](ps-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | Azure PowerShell |[PowerShell を使用して Windows VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | クライアント SDK |[C# を使用した Azure リソースのデプロイ](csharp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |
 | REST API |[VM の作成または更新](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-create-or-update) |
+| Azure CLI |[Azure CLI を使用した VM の作成](https://docs.microsoft.com/en-us/azure/virtual-machines/scripts/virtual-machines-windows-cli-sample-create-vm) |
 
 起こってほしくはないものの、問題が発生することもあります。 そのような場合は、[Azure での Windows 仮想マシンの作成に伴う Resource Manager デプロイメントの問題のトラブルシューティング](troubleshoot-deployment-new-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
@@ -128,12 +131,13 @@ VM は、ブラウザーベースのポータル、スクリプトがサポー�
 ### <a name="get-information-about-a-vm"></a>VM に関する情報の取得
 次の表に、VM に関する情報の取得方法の一部を示します。
 
-| メソッド | 説明 |
+| 方法 | [説明] |
 | --- | --- |
 | Azure ポータル |ハブ メニューの **[仮想マシン]** をクリックし、一覧から VM を選択します。 その VM のブレードで、概要情報を確認したり、値の設定やメトリックの監視を実行したりできます。 |
 | Azure PowerShell |PowerShell を使用して VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 |
 | REST API |[VM 情報の取得](https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-get)操作を使用して、VM に関する情報を取得します。 |
 | クライアント SDK |C# を使用して VM を管理する方法については、「[Azure Resource Manager と C# を使用した Azure 仮想マシンの管理](csharp-manage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 |
+| Azure CLI |Azure CLI を使用して VM を管理する方法については、[Azure CLI リファレンス](https://docs.microsoft.com/en-us/cli/azure/vm)を参照してください。 |
 
 ### <a name="log-on-to-the-vm"></a>VM へのログオン
 Azure Portal の [接続] ボタンを使用して、[リモート デスクトップ (RDP) セッション](connect-logon.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を開始します。 リモート接続の使用を試みているときに、問題が発生することがあります。 その場合は、[Windows を実行する Azure 仮想マシンへの Remote Desktop 接続のトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
@@ -146,6 +150,6 @@ Microsoft が VM に設けている 99.95% というサービス レベル ア�
 ### <a name="back-up-the-vm"></a>VM のバックアップ
 [Recovery Services コンテナー](../../backup/backup-introduction-to-azure-backup.md)は、Azure Backup サービスと Azure Site Recovery サービスの両方でデータと資産を保護するために使用されます。 Recovery Services コンテナーを使用すれば、[Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理できます](../../backup/backup-azure-vms-automation.md)。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Linux VM を使用する場合は、「[Azure と Linux](../linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 * インフラストラクチャのセットアップに関するガイドラインの詳細については、「[サンプルの Azure インフラストラクチャによるチュートリアル](infrastructure-example.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。

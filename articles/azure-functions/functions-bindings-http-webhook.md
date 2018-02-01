@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 080712e0a6c05348e7163f3c8e2055e6ff2806b2
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: fe0958b8a548e72df17f257e5700c28d3ebae79c
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
 
@@ -527,6 +527,10 @@ webhook の承認は、HTTP トリガーの一部である webhook レシーバ�
 
 - **クエリ文字列**: プロバイダーが `clientid` クエリ文字列パラメーターでキー名を渡します (`https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>` など)。
 - **要求ヘッダー**: プロバイダーが `x-functions-clientid` ヘッダーでキー名を渡します。
+
+## <a name="trigger---limits"></a>トリガー - 制限
+
+HTTP 要求の長さは 100 K (102,400) バイトに、URL の長さは 4 K (4,096) バイトに制限されています。 これらの制限は、ランタイムの [Web.config ファイル](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config)の `httpRuntime` 要素で指定されています。
 
 ## <a name="trigger---hostjson-properties"></a>トリガー - host.json のプロパティ
 

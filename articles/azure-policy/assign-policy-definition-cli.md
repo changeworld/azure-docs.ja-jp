@@ -5,27 +5,27 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 12/06/2017
+ms.date: 01/17/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 88ceb47d46b66e716c6c263098d5b9458e4aff22
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 76725f3ebeaf5af4f2ab8aadb303d862fa111ecb
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Azure CLI を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 
-Azure のコンプライアンスを理解する第一歩は、自分の現在のリソースの状態を把握することです。 このクイックスタートでは、ポリシー割り当てを作成して、管理ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
+Azure のコンプライアンスを理解する第一歩は、リソースの状態を特定することです。 このクイックスタートでは、ポリシー割り当てを作成して、管理ディスクを使用していない仮想マシンを特定するプロセスについて順を追って説明します。
 
-このプロセスを終了すると、管理ディスクを使用していない、つまり "*非準拠*" の仮想マシンを適切に特定できるようになります。
+このプロセスを終了すると、管理ディスクを使用していない仮想マシンを適切に特定できるようになります。 これらはポリシー割り当てに*準拠していません*。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
+このクイック スタートでは、CLI をローカルにインストールして使用するために、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-a-policy-assignment"></a>ポリシー割り当てを作成する
 
@@ -33,29 +33,41 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 次の手順で新しいポリシー割り当てを作成します。
 
-すべてのポリシー定義を表示し、"管理ディスクのない仮想マシンを監査" ポリシー定義を見つけます。
+1. サブスクリプションがリソース プロバイダーで確実に動作するようにするには、Policy Insights リソース プロバイダーを登録します。 リソース プロバイダーを登録するには、リソース プロバイダーのアクションの登録操作を実行するためのアクセス許可が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。
 
-```azurecli
+    次のコマンドを実行して、リソース プロバイダーを登録します。
+
+    ```azurecli
+    az provider register --namespace Microsoft.PolicyInsights
+    ```
+
+    登録が進行中であることを示すメッセージが返されます。
+
+    サブスクリプション内にリソース プロバイダーからのリソースの種類がある場合、そのリソース プロバイダーの登録を解除することはできません。 リソース プロバイダーの登録と表示の詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」を参照してください。
+
+2. すべてのポリシー定義を表示し、"*管理ディスクのない仮想マシンを監査*" ポリシー定義を見つけます。
+
+    ```azurecli
 az policy definition list
 ```
 
-Azure Policy には、使用できる組み込みのポリシー定義があらかじめ含まれています。 次のような組み込みのポリシー定義が表示されます。
+    Azure Policy には、使用できる組み込みのポリシー定義があらかじめ含まれています。 次のような組み込みのポリシー定義が表示されます。
 
-- Enforce tag and its value (タグとその値を強制する)
-- タグとその値を適用
-- Require SQL Server Version 12.0 (SQL Server バージョン 12.0 が必要)
+    - Enforce tag and its value (タグとその値を強制する)
+    - タグとその値を適用
+    - Require SQL Server Version 12.0 (SQL Server バージョン 12.0 が必要)
 
-次に、以下の情報を入力し、次のコマンドを実行してポリシー定義を割り当てます。
+3. 次に、以下の情報を入力し、次のコマンドを実行してポリシー定義を割り当てます。
 
-- ポリシー割り当ての表示用の**名前**。 ここでは、"*管理ディスクのない仮想マシンを監査*" を使用しましょう。
-- **ポリシー** - 割り当ての作成に使用している基のポリシー定義です。 ここでは、"*管理ディスクのない仮想マシンを監査*" というポリシー定義です
-- **スコープ** - スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。
+    - ポリシー割り当ての表示用の**名前**。 ここでは、"*管理ディスクのない仮想マシンを監査*" を使用しましょう。
+    - **ポリシー** - 割り当ての作成に使用している基のポリシー定義です。 ここでは、"*管理ディスクのない仮想マシンを監査*" というポリシー定義です
+    - **スコープ** - スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。
 
-  以前に登録したサブスクリプション (またはリソース グループ) を使います。 この例では、**bc75htn-a0fhsi-349b-56gh-4fghti-f84852** というサブスクリプション ID と、**FabrikamOMS** というリソース グループ名を使っています。 これらの値は、実際に使用するサブスクリプションの ID とリソース グループの名前に変更してください。
+    以前に登録したサブスクリプション (またはリソース グループ) を使います。 この例では、**bc75htn-a0fhsi-349b-56gh-4fghti-f84852** というサブスクリプション ID と、**FabrikamOMS** というリソース グループ名を使っています。 これらの値は、実際に使用するサブスクリプションの ID とリソース グループの名前に変更してください。
 
-コマンドは次のようになります。
+    コマンドは次のようになります。
 
-```azurecli
+    ```azurecli
 az policy assignment create --name Audit Virtual Machines without Managed Disks Assignment --policy Audit Virtual Machines without Managed Disks --scope /subscriptions/
 bc75htn-a0fhsi-349b-56gh-4fghti-f84852/resourceGroups/FabrikamOMS
 ```
@@ -71,7 +83,7 @@ bc75htn-a0fhsi-349b-56gh-4fghti-f84852/resourceGroups/FabrikamOMS
 
    ![ポリシーのコンプライアンス](media/assign-policy-definition/policy-compliance.png)
 
-   この新しい割り当てに準拠していない既存のリソースがある場合、上図のように **[Non-compliant resources]\(準拠していないリソース\)** タブに表示されます。
+   新しい割り当てに準拠していない既存のリソースは、**[準拠していないリソース]** タブに表示されます。上の図は、準拠していないリソースの例を示しています。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -81,7 +93,7 @@ bc75htn-a0fhsi-349b-56gh-4fghti-f84852/resourceGroups/FabrikamOMS
 az policy assignment delete –name  Assignment --scope /subscriptions/ bc75htn-a0fhsi-349b-56gh-4fghti-f84852 resourceGroups/ FabrikamOMS
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、ポリシー定義を割り当てて、Azure 環境内で準拠していないリソースを特定しました。
 

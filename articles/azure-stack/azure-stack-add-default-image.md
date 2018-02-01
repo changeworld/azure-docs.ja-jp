@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/10/2017
+ms.date: 1/23/2018
 ms.author: mabrigg
-ms.openlocfilehash: f88ac4da58279ea9642bd93ac5f971d8047e310b
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: b0b0a4af1d852de516d387697afb2760b967db43
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Windows Server 2016 VM イメージの Azure Stack Marketplace への追加
 
@@ -135,19 +135,23 @@ ms.lasthandoff: 01/10/2018
 
 Windows Server 2016 VM イメージに最新の累積的更新プログラムを確実に適用するには、`New-AzsServer2016VMImage` コマンドレットの実行時に `IncludeLatestCU` パラメーターを含めます。 `New-AzsServer2016VMImage` コマンドレットで許可されるパラメーターの詳細については、「[パラメーター](#parameters)」を参照してください。 イメージを Azure Stack Marketplace に公開するには、1 時間ほどかかります。 
 
-## <a name="parameters"></a>parameters
+## <a name="parameters-for-new-azsserver2016vmimage"></a>New-AzsServer2016VMImage のパラメーター
 
-|New-AzsServer2016VMImage パラメーター|必須|[説明]|
-|-----|-----|------|
-|ISOPath|[はい]|ダウンロードした Windows Server 2016 ISO の完全修飾パス。|
-|Net35|いいえ |Windows Server 2016 イメージに .NET 3.5 ランタイムをインストールします。 既定では、この値は **true** に設定されます。|
-|バージョン|いいえ |**Core**、**Full**、**Both** のいずれかの Windows Server 2016 イメージを指定します。 既定では、この値は **Full** に設定されます。|
-|VHDSizeInMB|いいえ |Azure Stack 環境に追加する VHD イメージのサイズ (MB 単位) を設定します。 既定では、この値は 40,960 MB に設定されます。|
-|CreateGalleryItem|いいえ |Windows Server 2016 イメージの Marketplace 項目を作成するかどうかを指定します。 既定では、この値は **true** に設定されます。|
-|location |いいえ  |Windows Server 2016 イメージを公開する場所を指定します。|
-|IncludeLatestCU|いいえ |最新の Windows Server 2016 の累積的な更新プログラムを新しい VHD に適用します (スクリプトで最新の更新プログラムが指定されていることを確認するか、次の 2 つのオプションのいずれかを使用してください)。 |
-|CUUri |いいえ  |Windows Server 2016 累積的更新プログラムを特定の URI から実行するように設定します。 |
-|CUPath |いいえ  |Windows Server 2016 累積的更新プログラムをローカル パスから実行するように設定します。 このオプションは、接続が切断された環境で Azure Stack インスタンスをデプロイしている場合に便利です。|
+### <a name="new-azsserver2016vmimage"></a>New-AzsServer2016VMImage 
+
+新しい Server 2016 Core または完全なイメージを作成してアップロードし、そのイメージ用の Marketplace 項目を作成します。
+
+| parameters | 必須 | 例 | [説明] |
+|-----|-----|------|---- |
+|ISOPath|[はい]| N:\ISO\en_windows_16_x64_dvd | ダウンロードした Windows Server 2016 ISO の完全修飾パス。|
+|Net35|いいえ | True | Windows Server 2016 イメージに .NET 3.5 ランタイムをインストールします。 既定では、この値は **true** に設定されます。|
+|バージョン|いいえ | 完全 |  **Core**、**Full**、**Both** のいずれかの Windows Server 2016 イメージを指定します。 既定では、この値は **Full** に設定されます。|
+|VHDSizeInMB|いいえ | 40,960 | Azure Stack 環境に追加する VHD イメージのサイズ (MB 単位) を設定します。 既定では、この値は 40,960 MB に設定されます。|
+|CreateGalleryItem|いいえ | True | Windows Server 2016 イメージの Marketplace 項目を作成するかどうかを指定します。 既定では、この値は **true** に設定されます。|
+|location |いいえ  | D:\ | Windows Server 2016 イメージを公開する場所を指定します。|
+|IncludeLatestCU|いいえ | False | 最新の Windows Server 2016 累積的更新プログラムを新しい VHD に適用します。 スクリプトで最新の更新プログラムが指定されていることを確認するか、次の 2 つのオプションのいずれかを使用してください。 |
+|CUUri |いいえ  | https://yourupdateserver/winservupdate2016 | Windows Server 2016 累積的更新プログラムを特定の URI から実行するように設定します。 |
+|CUPath |いいえ  | C:\winservupdate2016 | Windows Server 2016 累積的更新プログラムをローカル パスから実行するように設定します。 このオプションは、接続が切断された環境で Azure Stack インスタンスをデプロイしている場合に便利です。|
 
 ## <a name="next-steps"></a>次の手順
 

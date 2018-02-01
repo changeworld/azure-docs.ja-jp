@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: f2750b652b7de3c7a41ac5712071999c97d435db
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: d1ebda145b7e355bd9763025dece742d2a23239b
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -65,12 +65,15 @@ Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-a
     アクセスが制限されたコンピューターでスクリプトを実行する場合は、以下にアクセスできることを確認します。
 
     - download.microsoft.com
-    - Azure VM のバックアップで使用された Azure エンドポイント
+    - [Azure VM のバックアップで使用された Azure エンドポイント](backup-azure-arm-vms-prepare.md#establish-network-connectivity)
     - 送信ポート 3260
 
-   Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するコンピューターに目的のコンポーネントが存在しない場合は、コンポーネントをインストールするためのアクセス許可をスクリプトから求められます。 同意して、必要なコンポーネントをインストールします。  
-         
-   バックアップされた VM と同じ (または互換性のある) オペレーティング システムを使用する任意のマシンでスクリプトを実行できます。 互換性のあるオペレーティング システムについては、「[互換性のある OS](backup-azure-restore-files-from-vm.md#system-requirements)」の表を参照してください。 保護されている Azure 仮想マシンで Windows 記憶域スペース (Windows Azure VM の場合) または LVM/RAID アレイ (Linux VM の場合) を使用している場合、その仮想マシンで実行可能ファイルまたはスクリプトを実行することはできません。 代わりに、互換性のあるオペレーティング システムを使用する他のマシンで実行可能ファイルまたはスクリプトを実行します。
+    Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するコンピューターに目的のコンポーネントが存在しない場合は、コンポーネントをインストールするためのアクセス許可をスクリプトから求められます。 同意して、必要なコンポーネントをインストールします。
+    
+    スクリプトを実行するコンピューターと復旧ポイントのデータの間にセキュリティで保護されたチャネルを構築するために使われるコンポーネントをダウンロードするには、download.microsoft.com へのアクセスが必要です。         
+
+    バックアップされた VM と同じ (または互換性のある) オペレーティング システムを使用する任意のマシンでスクリプトを実行できます。 互換性のあるオペレーティング システムについては、「[互換性のある OS](backup-azure-restore-files-from-vm.md#system-requirements)」の表を参照してください。 保護されている Azure 仮想マシンで Windows 記憶域スペース (Windows Azure VM の場合) または LVM/RAID アレイ (Linux VM の場合) を使用している場合、その仮想マシンで実行可能ファイルまたはスクリプトを実行することはできません。 代わりに、互換性のあるオペレーティング システムを使用する他のマシンで実行可能ファイルまたはスクリプトを実行します。
+ 
 
 ### <a name="identifying-volumes"></a>ボリュームの識別
 

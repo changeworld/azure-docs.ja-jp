@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: 8c564c0dcbb2f9be286917b2f4d8a40da5406fae
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cc29a8ac6369560d37466d69fad272cef2337732
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Azure Portal を使用して Service Fabric アプリケーションとマイクロ サービスを評価する
 
 > [!div class="op_single_selector"]
-> * [リソース マネージャー](log-analytics-service-fabric-azure-resource-manager.md)
+> * [Resource Manager](log-analytics-service-fabric-azure-resource-manager.md)
 > * [PowerShell](log-analytics-service-fabric.md)
 >
 >
@@ -37,7 +37,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 ソリューションを開始するには、Service Fabric クラスターを Log Analytics ワークスペースに接続する必要があります。 この場合、3 つのシナリオが考えられます。
 
 1. Service Fabric クラスターをデプロイしていない場合は、「***Log Analytics のワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順を使用して新しいクラスターをデプロイし、Log Analytics をレポートするように構成します。
-2. ホストからパフォーマンス カウンターを収集して Service Fabric クラスターでセキュリティなどの他の OMS ソリューションを使用する必要がある場合は、「***VM 拡張機能がインストールされている Log Analytics ワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順に従います。
+2. Service Fabric クラスター上でセキュリティなどの他の管理ソリューションを使用するためにホストからパフォーマンス カウンターを収集する必要がある場合は、「 ***VM 拡張機能がインストールされている Log Analytics ワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順に従います。
 3. 既に Service Fabric クラスターをデプロイしてあり、Log Analytics に接続する場合は、「***Log Analytics への既存のストレージ アカウントの追加***」の手順に従います。
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Log Analytics ワークスペースに接続されている Service Fabric クラスターをデプロイします。
@@ -86,7 +86,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 - 左側のウィンドウの [設定] に移動して、[データ]、[Windows パフォーマンス カウンター] の順に選択して [選選択したパフォーマンス カウンターを追加する] で ![Service Fabric](./media/log-analytics-service-fabric/7.png) を選択します。
 - [ログ検索] で、次のクエリを使用してノードに関する主要なメトリックを詳しく調べます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 過去 1 時間におけるすべてのノードの平均 CPU 使用率を比較して、どのノードで問題が発生し、どの期間にノードの使用率が急上昇しているかを確認します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 過去 1 時間におけるすべてのノードの平均 CPU 使用率を比較して、どのノードで問題が発生し、どの期間にノードの使用率が急上昇しているかを確認します。
 
     ```
     Type=Perf ObjectName=Processor CounterName="% Processor Time"|measure avg(CounterValue) by Computer Interval 1HOUR.
@@ -152,7 +152,7 @@ Log Analytics でのパフォーマンス メトリックの詳細について�
 
 次の表は、Service Fabric のデータ収集手段とデータ収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  |  | &#8226; |  |  |10 分 |
 
@@ -161,6 +161,6 @@ Log Analytics でのパフォーマンス メトリックの詳細について�
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な Service Fabric イベント データを確認してください。

@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - アクセス制御要件の決定 | Microsoft Docs"
+title: "ハイブリッド ID 設計 - アクセス制御要件 - Azure | Microsoft Docs"
 description: "ID の柱と、ハイブリッド環境内のユーザーのリソースのアクセス要件について説明します。"
 documentationcenter: 
 services: active-directory
@@ -14,16 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 069c83a0bbbb21ba85aea07375c186fe0b11c781
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 161820e69b0c9d0dc376a62cecceb9cc5e83c8ce
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-access-control-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのアクセス制御要件の決定
 組織がハイブリッド ID ソリューションを設計する場合、その機会に、ユーザーに使用できるようにする予定のリソースについて、アクセス要件を見直すこともできます。 データは、次に示す ID の 4 本の柱全体にかかっています。
 
-* 管理
+* [管理]
 * 認証
 * 承認
 * 監査
@@ -74,7 +75,7 @@ ms.lasthandoff: 12/11/2017
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## <a name="see-also"></a>関連項目

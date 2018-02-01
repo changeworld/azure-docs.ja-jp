@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ディレクトリ同期要件の決定 | Microsoft Docs"
+title: "ハイブリッド ID 設計 - ディレクトリ同期要件 - Azure | Microsoft Docs"
 description: "企業のオンプレミスとクラウド間で、すべてのユーザーを同期するために必要な要件を特定します。"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 00e9ecf39c386b7c1295bfca9ebf45fa40ae7e82
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 475b35c767fcc9c42b828dd2219a14890e05f779
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-directory-synchronization-requirements"></a>ディレクトリ同期要件の決定
 同期とは、ユーザーのオンプレミス ID に基づいてクラウドに ID を提供することです。 認証またはフェデレーション認証のために同期されたアカウントを使用するかどうかにかかわらず、ユーザーはクラウドに ID を持つ必要があります。  この ID は保守し、定期的に更新する必要があります。  更新プログラムには、タイトルの変更からパスワードの変更まで、さまざまな形式があります。  
@@ -68,7 +69,7 @@ ms.lasthandoff: 12/11/2017
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [多要素認証要件の決定](active-directory-hybrid-identity-design-considerations-multifactor-auth-requirements.md)
 
 ## <a name="see-also"></a>関連項目

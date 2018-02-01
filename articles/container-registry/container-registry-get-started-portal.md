@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 12/06/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: c6ce1c16a3f7d5b52a3fcb47213618eb75183149
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: eaf935c1060e53673351936111083d8bb44f05e7
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Azure Portal を使用したコンテナー レジストリの作成
 
@@ -47,7 +47,7 @@ Azure Portal (https://portal.azure.com) にサインインします。
 
 * ログイン サーバー
 * ユーザー名
-* パスワード
+* password
 
 Docker CLI を使用してレジストリを使用する場合は、次の手順で以下の値を使用します。
 
@@ -110,9 +110,9 @@ ACR インスタンスのイメージ一覧を表示するには、ポータル�
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-08]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure CLI を使用して Azure Container Registry を作成しました。 Azure Container Instances と一緒に Azure Container Registry を使用する場合は、Azure Container Instances のチュートリアルに進みます。
+このクイック スタートでは、Azure Portal を使用して Azure Container Registry を作成しました。 Azure Container Instances と一緒に Azure Container Registry を使用する場合は、Azure Container Instances のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル][container-instances-tutorial-prepare-app]

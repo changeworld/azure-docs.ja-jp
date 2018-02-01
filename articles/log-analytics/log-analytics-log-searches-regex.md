@@ -1,5 +1,5 @@
 ---
-title: "OMS Log Analytics のログ検索における正規表現 | Microsoft Docs"
+title: "Azure Log Analytics のログ検索における正規表現 | Microsoft Docs"
 description: "Log Analytics のログ検索で RegEx キーワードを使用すると、正規表現に基づいて結果をフィルター処理できます。  この記事では、正規表現の構文と例を示します。"
 services: log-analytics
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 01/18/2018
 ms.author: bwren
-ms.openlocfilehash: 28b2402cefa38ef3bfca68f2ff70e56b649c72f5
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 8915e0e35951871ff10fd84453d55bd5102e97df
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>正規表現を使用した Log Analytics のログ検索のフィルター処理
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 10/16/2017
 > この記事では、レガシ クエリ言語を使用した Log Analytics の正規表現について説明します。  ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[言語ドキュメントの正規表現](https://docs.loganalytics.io/docs/Language-Reference/References/Regular-Expressions-syntax)に関するページをご覧ください。
 
 
-[ログ検索](log-analytics-log-searches.md)を使用すると、Log Analytics リポジトリから情報を抽出できます。  [フィルター式](log-analytics-search-reference.md#filter-expressions)を使用すると、特定の条件に従って検索結果をフィルター処理できます。  **RegEx** キーワードを使用すると、そのフィルターの正規表現を指定できます。  
+[ログ検索](log-analytics-log-searches.md)を使用すると、Log Analytics ワークスペースから情報を抽出できます。  [フィルター式](log-analytics-search-reference.md#filter-expressions)を使用すると、特定の条件に従って検索結果をフィルター処理できます。  **RegEx** キーワードを使用すると、そのフィルターの正規表現を指定できます。  
 
 この記事では、Log Analytics で使用される正規表現の構文について詳しく説明します。
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/16/2017
 ## <a name="characters"></a>文字
 さまざまな文字を指定します。
 
-| Character | Description | 例 | 一致の例 |
+| Character | [説明] | 例 | 一致の例 |
 |:--|:--|:--|:--|
 | a | この文字が 1 回出現することを表します。 | Computer=RegEx("srv01.contoso.com") | srv01.contoso.com |
 | に関するページを参照してください。 | 任意の 1 文字を表します。 | Computer=RegEx("srv...contoso.com") | srv01.contoso.com<br>srv02.contoso.com<br>srv03.contoso.com |
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/16/2017
 ## <a name="multiple-occurences-of-character"></a>文字の複数回の出現
 特定の文字の出現回数を指定します。
 
-| Character | Description | 例 | 一致の例 |
+| Character | [説明] | 例 | 一致の例 |
 |:--|:--|:--|:--|
 | a{n} |  この文字が *n* 回出現することを表します。 | Computer=RegEx("bw-win-sc01{3}.bwren.lab") | bw-win-sc0111.bwren.lab |
 | a{n,} |  この文字が *n* 回以上出現することを表します。 | Computer=RegEx("bw-win-sc01{3,}.bwren.lab") | bw-win-sc0111.bwren.lab<br>bw-win-sc01111.bwren.lab<br>bw-win-sc011111.bwren.lab<br>bw-win-sc0111111.bwren.lab |
@@ -85,7 +85,7 @@ ms.lasthandoff: 10/16/2017
 ## <a name="logical-expressions"></a>論理式
 複数の値の中から選択します。
 
-| Character | Description | 例 | 一致の例 |
+| Character | [説明] | 例 | 一致の例 |
 |:--|:--|:--|:--|
 | &#124; | 論理 OR。  いずれかの式で一致する場合に結果を返します。 | Type=Alert AlertSeverity=RegEx("Warning&#124;Error") | 警告<br>エラー |
 | & | 論理 AND。  両方の式で一致する場合に結果を返します。 | EventData=regex("(Security.\*&.\*success.\*)") | Security auditing successful |
@@ -94,11 +94,11 @@ ms.lasthandoff: 10/16/2017
 ## <a name="literals"></a>リテラル
 特殊文字をリテラル文字に変換します。  これには、?-\*^\[\]{}\(\)+\|.& などの正規表現に機能を提供する文字が含まれます。
 
-| Character | Description | 例 | 一致の例 |
+| Character | [説明] | 例 | 一致の例 |
 |:--|:--|:--|:--|
 | \\ | 特殊文字をリテラルに変換します。 | Status_CF=\\[Error\\]@<br>Status_CF=Error\\-@ | [Error]File not found.<br>Error-File not found. |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-* [ログ検索](log-analytics-log-searches.md)を使用して、Log Analytics リポジトリ内のデータを表示および分析します。
+* [ログ検索](log-analytics-log-searches.md)を使用して、Log Analytics ワークスペース内のデータを表示および分析します。

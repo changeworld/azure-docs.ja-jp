@@ -6,14 +6,14 @@ author: stevelas
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 11/05/2017
+ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 278c343124e776ccaee71f472f0889e784e0e935
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: fc29d9a57f1dd452d2b4b77a53f52a5b66a25416
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
 
@@ -63,6 +63,8 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 
 インストールされている Docker のバージョンによっては、`--password-stdin` パラメーターの使用を勧めるセキュリティの警告が表示される場合があります。 このパラメーターの使用について、ここでは説明していませんが、このベスト プラクティスに従うことをお勧めします。 詳細については、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドのリファレンスを参照してください。
 
+サービス プリンシパルを用いた ACR へのヘッドレス認証の詳細については、「[Azure Container Registry authentication with service principals (サービス プリンシパルによる Azure Container Registry 認証)](container-registry-auth-service-principal.md)」をご覧ください。
+
 ## <a name="admin-account"></a>管理者アカウント
 
 各コンテナー レジストリには管理者ユーザー アカウントが含まれており、このアカウントは既定で無効になっています。 [Azure Portal](container-registry-get-started-portal.md#create-a-container-registry) または Azure CLI を使用して、管理者ユーザーを有効にし、その資格情報を管理できます。
@@ -71,7 +73,7 @@ docker login myregistry.azurecr.io -u xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -p my
 > 管理者アカウントは、主にテストのために、1 人のユーザーがレジストリにアクセスすることを目的としています。 管理者アカウントの資格情報を複数のユーザーと共有しないようにすることをお勧めします。 管理者アカウントで認証するすべてのユーザーが、レジストリへのプル/プッシュアクセス権を持つ 1 人のユーザーとして表示されます。 このアカウントを変更したり、無効にしたりすると、その資格情報を使用するすべてのユーザーのレジストリ アクセスが無効になります。 ユーザーおよびヘッドレス シナリオ用のサービス プリンシパルには、個人 ID を使用することをお勧めします。
 >
 
-管理者アカウントには、再生成できる 2 つのパスワードを指定します。 2 つのパスワードにより、一方のパスワードを再生成している間に、もう一方のパスワードを使用してレジストリへの接続を維持できます。 管理者アカウントが有効になっている場合、ユーザー名とどちらかのパスワードを `docker login` コマンドに渡して、レジストリに対する基本認証を実行できます。 For example:
+管理者アカウントには、再生成できる 2 つのパスワードを指定します。 2 つのパスワードにより、一方のパスワードを再生成している間に、もう一方のパスワードを使用してレジストリへの接続を維持できます。 管理者アカウントが有効になっている場合、ユーザー名とどちらかのパスワードを `docker login` コマンドに渡して、レジストリに対する基本認証を実行できます。 例: 
 
 ```
 docker login myregistry.azurecr.io -u myAdminName -p myPassword1
@@ -89,7 +91,7 @@ Azure Portal で管理者ユーザーを有効にするには、レジストリ�
 
 ![Azure Portal の管理者ユーザーを有効にする UI][auth-portal-01]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure CLI を使用した最初のイメージのプッシュ](container-registry-get-started-azure-cli.md)
 

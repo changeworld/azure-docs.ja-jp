@@ -3,20 +3,20 @@ title: "Azure DNS を Azure リソースと統合する | Microsoft Docs"
 description: "Azure DNS を使用して Azure リソースに DNS を提供する方法を説明します。"
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
-ms.author: gwallace
-ms.openlocfilehash: 41c1649bfff035bc641d7c1f5d7803cd105e8297
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 1/19/2018
+ms.author: kumud
+ms.openlocfilehash: cbc769cd7356b3057fd2aae295071b04d2e40d91
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="use-azure-dns-to-provide-custom-domain-settings-for-an-azure-service"></a>Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する
 
@@ -26,7 +26,7 @@ Azure DNS は、カスタム ドメインをサポートする、または完全
 
 カスタム ドメインのために Azure DNS を使用するには、まずドメインを Azure DNS に委任する必要があります。 ネーム サーバーを委任のために構成する方法については、[Delegate a domain to Azure DNS](./dns-delegate-domain-azure-dns.md)を参照してください。 Azure DNS ゾーンにドメインを委任した後、必要な DNS レコードを構成できます。
 
-[Azure Function App](#azure-function-app)、[Azure IoT](#azure-iot)、[パブリック IP アドレス](#public-ip-address)、[App Service (Web Apps)](#app-service-web-apps)、[BLOB ストレージ](#blob-storage)、および [Azure CDN](#azure-cdn) 用のバニティまたはカスタム ドメインを構成できます。
+[Azure Function App](#azure-function-app)、[パブリック IP アドレス](#public-ip-address)、[App Service (Web Apps)](#app-service-web-apps)、[BLOB ストレージ](#blob-storage)、および [Azure CDN](#azure-cdn) 用のバニティまたはカスタム ドメインを構成できます。
 
 ## <a name="azure-function-app"></a>Azure Function App
 
@@ -42,10 +42,10 @@ Azure Function App 用のカスタム ドメインを構成するために、Fun
 
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
-|プロパティ  |値  |Description  |
+|プロパティ  |値  |[説明]  |
 |---------|---------|---------|
-|名前     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|型     | CNAME        | CNAME レコードを別名として使用します。        |
+|Name     | myfunctionapp        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | adatumfunction.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Function App によって提供される adatumfunction.azurewebsites.net という DNS 名です。        |
@@ -55,27 +55,6 @@ Function App に戻り、**[Platform features] \(プラットフォーム機能)
 **[Add hostname] \(ホスト名の追加)** ブレードで、CNAME レコードを **[hostname] \(ホスト名)** テキスト フィールドに入力して **[Validate] \(検証)** をクリックします。 レコードが見つからなかった場合、**[Add hostname] \(ホスト名の追加)** ボタンが表示されます。 **[Add hostname] \(ホスト名の追加)** をクリックして別名を追加します。
 
 ![Function App のホスト名追加ブレード](./media/dns-custom-domain/functionaddhostname.png)
-
-## <a name="azure-iot"></a>Azure IoT
-
-Azure IoT には、サービス自体で必要なカスタマイズは何もありません。 IoT Hub でカスタム ドメインを使用するには、リソースを指示した CNAME レコードだけが必要です。
-
-**[Internet of Things] \(モノのインターネット)** > **[IoT Hub]** に移動し、IoT Hub を選択します。 **[Overview] \(概要)** ブレードで、IoT Hub の FQDN をメモします。
-
-![IoT hub blade](./media/dns-custom-domain/iot.png)
-
-次に、DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set]\(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
-
-
-|プロパティ  |値  |Description  |
-|---------|---------|---------|
-|名前     | myiothub        | この値とドメイン名ラベルを合わせたものが、IoT Hub の FQDN です。        |
-|型     | CNAME        | CNAME レコードを別名として使用します。
-|TTL     | 1        | 1 時間には 1 を使用します        |
-|TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
-|エイリアス     | adatumIOT.azure-devices.net        | 別名を作成している DNS 名。この例では、IoT Hub によって提供される adatumIOT.azure-devices.net というホスト名です。
-
-レコードが作成されたら、`nslookup` を使用して CNAME レコードによる名前解決をテストします。
 
 ## <a name="public-ip-address"></a>パブリック IP アドレス
 
@@ -88,10 +67,10 @@ Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Clas
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
-|プロパティ  |値  |Description  |
+|プロパティ  |値  |[説明]  |
 |---------|---------|---------|
-|名前     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|型     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
+|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|type     | A        | リソースは IP アドレスなので、A レコードを使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |IP アドレス     | <your ip address>       | パブリック IP アドレス。|
@@ -115,10 +94,10 @@ A レコードが作成されたら、`nslookup` を実行してレコードの�
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
-|プロパティ  |値  |Description  |
+|プロパティ  |値  |[説明]  |
 |---------|---------|---------|
-|名前     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|型     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
+|Name     | mywebserver        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|type     | CNAME        | CNAME レコードを別名として使用します。 リソースが IP アドレスを使用していた場合、A レコードが使用されます。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | webserver.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Web アプリに与えられる webserver.azurewebsites.net という DNS 名です。        |
@@ -149,10 +128,10 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
-|プロパティ  |値  |Description  |
+|プロパティ  |値  |[説明]  |
 |---------|---------|---------|
-|名前     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|型     | CNAME        | CNAME レコードを別名として使用します。        |
+|Name     | asverify.mystorageaccount        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる asverify.adatumfunctiona9ed.blob.core.windows.net という DNS 名です。        |
@@ -177,10 +156,10 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
-|プロパティ  |値  |Description  |
+|プロパティ  |値  |[説明]  |
 |---------|---------|---------|
-|名前     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
-|型     | CNAME        | CNAME レコードを別名として使用します。        |
+|Name     | cdnverify.mycdnendpoint        | この値とドメイン名ラベルを合わせたものが、カスタム ドメイン名の FQDN です。        |
+|type     | CNAME        | CNAME レコードを別名として使用します。        |
 |TTL     | 1        | 1 時間には 1 を使用します        |
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | cdnverify.adatumcdnendpoint.azureedge.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる cdnverify.adatumcdnendpoint.azureedge.net という DNS 名です。        |
@@ -189,6 +168,6 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 この手順が完了したら、DNS ゾーンに戻り、cdnverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。 CDN の詳細と、中間登録手順なしでカスタム ドメインを構成する方法については、[カスタム ドメインへの Azure CDN コンテンツのマッピング](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure でホストされているサービスの逆引き DNS を構成する](dns-reverse-dns-for-azure-services.md)方法について説明します。

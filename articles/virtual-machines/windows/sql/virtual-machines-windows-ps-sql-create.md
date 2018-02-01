@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/29/2017
 ms.author: jroth
-ms.openlocfilehash: 5babea628180501e959387f80dac55618051f552
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: e6d1f36d998ac8726e3a74b31772a5dd5a24bd58
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-create-sql-server-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用して SQL Server VM を作成する
 
@@ -246,7 +246,7 @@ $Credential = Get-Credential -Message "Type the name and password of the local a
 ```
 
 ### <a name="set-the-operating-system-properties-for-the-virtual-machine"></a>仮想マシンに使用するオペレーティング システムのプロパティ設定
-[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) コマンドレットを使用して、仮想マシンで使用するオペレーティング システムのプロパティを指定します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../classic/agents-and-extensions.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
+[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem) コマンドレットを使用して、仮想マシンで使用するオペレーティング システムのプロパティを指定します。オペレーティング システムの種類に Windows を指定し、[仮想マシン エージェント](../agent-user-guide.md)のインストールを要求すると共に、自動更新を有効にします。仮想マシン名、コンピューター名、資格情報は、先ほど初期化した変数で設定しています。
 
 次のコマンドレットを実行することで、仮想マシンに使用するオペレーティング システムのプロパティが設定されます。
 
@@ -307,7 +307,7 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
 これで仮想マシンが作成されました。
 
 > [!NOTE]
-> Bot 診断に関するエラーは無視することができます。 仮想マシンのディスク用に指定したストレージ アカウントが Premium Storage アカウントであるため、ブート診断用に Standard Storage アカウントが作成されることに注意してください。
+> ブート診断に関するエラーは無視できます。 仮想マシンのディスク用に指定したストレージ アカウントが Premium Storage アカウントであるため、ブート診断用に Standard Storage アカウントが作成されることに注意してください。
 
 ## <a name="install-the-sql-iaas-agent"></a>SQL Iaas Agent のインストール
 SQL Server 仮想マシンでは、[SQL Server IaaS エージェントの拡張機能](virtual-machines-windows-sql-server-agent-extension.md)を使用して自動管理機能をサポートします。 新しい VM にエージェントをインストールするには、VM の作成後に次のコマンドを実行します。
@@ -394,7 +394,7 @@ New-AzureRmVM -ResourceGroupName $ResourceGroupName -Location $Location -VM $Vir
 Set-AzureRmVMSqlServerExtension -ResourceGroupName $ResourceGroupName -VMName $VMName -name "SQLIaasExtension" -version "1.2" -Location $Location
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで仮想マシンが作成され、以下のことを実行できます。
 
 - リモート デスクトップ (RDP) を使用して仮想マシンに接続します。

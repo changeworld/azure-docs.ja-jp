@@ -13,30 +13,21 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: security
-ms.date: 08/21/2017
+ms.date: 01/16/2018
 ms.author: rortloff;barbkess
-ms.openlocfilehash: f851c82ebeaa647f663d499a4d327c3479e36121
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5400f29d8c7579809ef7b2a084115473df7baa85
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="auditing-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での監査
-> [!div class="op_single_selector"]
-> * [監査](sql-data-warehouse-auditing-overview.md)
-> * [脅威の検出](sql-data-warehouse-security-threat-detection.md)
-> 
-> 
 
-SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、詳細なレポートと分析が容易になります。
+SQL Data Warehouse の監査により、Azure Storage アカウントの監査ログにデータベースのイベントを記録できます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 また SQL Data Warehouse の監査を Microsoft Power BI と統合することにより、レポートと分析が容易になります。
 
-監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。 標準準拠をサポートする Azure プログラムの詳細については、「<a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Microsoft Azure のトラスト センター</a>」を参照してください。
+監査ツールは、標準準拠を強化し促進しますが、準拠を保証するものではありません。 標準準拠をサポートする Azure プログラムの詳細については、 <a href="http://azure.microsoft.com/support/trust-center/compliance/" target="_blank">Azure セキュリティ センター</a>のページを参照してください。
 
-* [データベース監査の基本]
-* [データベースに対する監査を設定する]
-* [監査ログとレポートを分析する]
-
-## <a id="subheading-1"></a>Azure SQL Data Warehouse データベース監査の基本
+## <a id="subheading-1"></a>監査の基本
 SQL Data Warehouse データベース監査により、以下のことが可能になります。
 
 * **保持** 。 監査するデータベース活動のカテゴリを定義できます。
@@ -65,13 +56,13 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 ## <a id="subheading-2"></a>データベースに対する監査を設定する
 1. <a href="https://portal.azure.com" target="_blank">Azure ポータル</a>を開きます。
-2. 監査する SQL Database または SQL Data Warehouse の **[設定]** ブレードに移動します。 **[設定]** ブレードで、**[監査と脅威の検出]** を選択します。
+2. 監査する SQL Data Warehouse の **[設定]** に移動します。 **[監査と脅威検出]** を選びます。
    
     ![][1]
 3. 次に、 **[オン]** ボタンをクリックして監査を有効にします。
    
     ![][3]
-4. 監査構成ブレードで、**[ストレージの詳細]** を選択して [監査ログ ストレージ] ブレードを選択します。 ログを保存する Azure ストレージ アカウントを選択し、保持期間を選択します。 
+4. 監査構成パネルで、**[容量の詳細]** を選んで [監査ログの容量] パネルを開きます。 ログの Azure ストレージ アカウントと、リテンション期間を選びます。 
 >[!TIP]
 >すべての監査済みデータベースに同じストレージ アカウントを使用して、事前に構成したレポートのテンプレートを活用します。
    
@@ -79,7 +70,7 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 5. **[OK]** ボタンをクリックして、記憶域の詳細構成を保存します。
 6. **[イベントごとのログ記録]** で、**[成功]** および **[失敗]** を、すべてのイベントについて、または個別のイベント カテゴリについて記録します。
 7. データベースの監査を構成している場合は、データの監査が正しくキャプチャされるように、クライアントの接続文字列を変更する必要がある場合があります。 ダウンレベル クライアントの接続については、 [接続文字列でのサーバーの FDQN の変更](sql-data-warehouse-auditing-downlevel-clients.md) に関するトピックを参照してください。
-8. **[OK]**をクリックします。
+8. Click **OK**.
 
 ## <a id="subheading-3"></a>監査ログとレポートを分析する
 監査ログは、設定時に選択した Azure ストレージ アカウントで、 **SQLDBAuditLogs** というプレフィックスを使用してストア テーブルのコレクションに集計されます。 <a href="http://azurestorageexplorer.codeplex.com/" target="_blank">Azure ストレージ エクスプローラー</a>などのツールを使用してログ ファイルを表示できます。
@@ -91,11 +82,12 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 ## <a id="subheading-4"></a>ストレージ キーの再生成
 運用環境では、ストレージ キーを最新の情報に定期的に更新することが推奨されます。 鍵を最新の情報に更新する場合は、ポリシーを保存する必要があります。 このプロセスは次のとおりです。
 
-1. 監査構成ブレードで (監査を設定する前セクションの説明を参照してください)、**[ストレージ アクセス キー]** を、*[プライマリ]* から *[セカンダリ]* に切り替え、**[保存]** をクリックします。
+1. 監査構成パネル (前の監査設定セクションで説明されています) で、**[ストレージ アクセス キー]** を *[プライマリ]* から *[セカンダリ]* に変更して、**[保存]** をクリックします。
 
    ![][4]
-2. ストレージ構成ブレードに移動し、 **プライマリ アクセス キー** を *再生成*します。
-3. 監査構成ブレードに戻り、**[ストレージ アクセス キー]** を *[セカンダリ]* から *[プライマリ]* に切り替え、**[保存]** をクリックします。
+2. ストレージ構成パネルに移動し、"*プライマリ アクセス キー*" を**再生成**します。
+3. 監査構成パネルに戻り、 
+4. **[ストレージ アクセス キー]** を *[セカンダリ]* から *[プライマリ]* に切り替えて、**[保存]** をクリックします。
 4. ストレージの UI に戻り、 **セカンダリ アクセス キー** を *再生成* (次のキー更新サイクルの準備として) します。
 
 ## <a id="subheading-5"></a>Automation (PowerShell / REST API)
@@ -103,18 +95,41 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 
 * **PowerShell コマンドレット**:
 
-   * [Get-AzureRMSqlDatabaseAuditingPolicy][101]
-   * [Get-AzureRMSqlServerAuditingPolicy][102]
-   * [Remove-AzureRMSqlDatabaseAuditing][103]
-   * [Remove-AzureRMSqlServerAuditing][104]
-   * [Set-AzureRMSqlDatabaseAuditingPolicy][105]
-   * [Set-AzureRMSqlServerAuditingPolicy][106]
-   * [Use-AzureRMSqlServerAuditingPolicy][107]
+   * [Get-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy)
+   * [Get-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy)
+   * [Remove-AzureRMSqlDatabaseAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing)
+   * [Remove-AzureRMSqlServerAuditing](/powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing)
+   * [Set-AzureRMSqlDatabaseAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy)
+   * [Set-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy)
+   * [Use-AzureRMSqlServerAuditingPolicy](/powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy)
+
+
+## <a name="downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>監査と動的データ マスキングのためのダウンレベル クライアントのサポート
+監査は TDS リダイレクションに対応する SQL クライアントと連動します。
+
+TDS 7.4 を実装するクライアントもリダイレクトをサポートします。 この例外には一部のリダイレクション機能に対応していない JDBC 4.0 とリダイレクションが実装されていない Tedious for Node.JS があります。
+
+TDS バージョン 7.3 以前をサポートする "ダウンレベル クライアント" の場合、次のようにして接続文字列のサーバー FQDN を変更します。
+
+- 接続文字列の元のサーバー FQDN: <*server name*>.database.windows.net
+- 接続文字列の変更後のサーバー FQDN: <*server name*>.database.**secure**.windows.net
+
+「ダウンレベル クライアント」には次が含まれます。
+
+* .NET 4.0 以前
+* ODBC 10.0 以前
+* JDBC (JDBC は TDS 7.4 対応ですが、一部の TDS リダイレクション機能に対応していません。)
+* Tedious (Node.JS 用)
+
+**注釈:** 上のサーバー FDQN 変更は SQL サーバー レベル監査ポリシーの適用にも役に立ちます。データベースごとの構成が必要ありません (一時的な軽減)。     
+
+
+
 
 <!--Anchors-->
-[データベース監査の基本]: #subheading-1
-[データベースに対する監査を設定する]: #subheading-2
-[監査ログとレポートを分析する]: #subheading-3
+[Database Auditing basics]: #subheading-1
+[Set up auditing for your database]: #subheading-2
+[Analyze audit logs and reports]: #subheading-3
 
 
 <!--Image references-->
@@ -125,11 +140,3 @@ SQL Data Warehouse データベース監査により、以下のことが可能�
 [5]: ./media/sql-data-warehouse-auditing-overview/sql-data-warehouse-auditing-dashboard.png
 
 
-<!--Link references-->
-[101]: /powershell/module/azurerm.sql/get-azurermsqldatabaseauditingpolicy
-[102]: /powershell/module/azurerm.sql/Get-AzureRMSqlServerAuditingPolicy
-[103]: /powershell/module/azurerm.sql/Remove-AzureRMSqlDatabaseAuditing
-[104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
-[105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditingPolicy
-[106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditingPolicy
-[107]: /powershell/module/azurerm.sql/Use-AzureRMSqlServerAuditingPolicy

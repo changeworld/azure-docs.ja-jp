@@ -358,6 +358,8 @@
           href: spark-connector.md
         - name: Spark GraphX に接続する
           href: spark-connector-graph.md
+        - name: HDInsight での Kafka と Spark を使用したストリーミング
+          href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md
         - name: Azure App Service で Web アプリをデプロイする
           href: create-website.md
         - name: Logic Apps を使用したアプリケーション ログ記録

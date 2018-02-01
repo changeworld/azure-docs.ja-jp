@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: mbullwin
-ms.openlocfilehash: 3e13cc70dc09dd795bb0df57a4bbb29c8fcddb9e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1818e564acb0e9b5fa620d6f38db141811ca9777
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="data-collection-retention-and-storage-in-application-insights"></a>Application Insights でのデータの収集、保持、保存
 
@@ -99,11 +99,12 @@ Web ページの場合、ブラウザーのデバッグ ウィンドウを開き
 Microsoft は、お客様にサービスを提供する目的でのみデータを使用します。
 
 ## <a name="where-is-the-data-held"></a>データが保持されている場所はどこですか。
-* 米国またはヨーロッパです。 新しい Application Insights リソースを作成するときに場所を選択できます。 
+* 米国、ヨーロッパ、または東南アジアです。 新しい Application Insights リソースを作成するときに場所を選択できます。 
 
 
-#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-or-europe"></a>それは、アプリを米国またはヨーロッパでホストする必要があるという意味ですか。
-* いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
+#### <a name="does-that-mean-my-app-has-to-be-hosted-in-the-usa-europe-or-southeast-asia"></a>それは、アプリを米国、ヨーロッパ、または東南アジアでホストする必要があるという意味ですか。
+* 
+いいえ。 アプリは、独自のオンプレミスのホストでもクラウドでも、場所を問わず実行できます。
 
 ## <a name="how-secure-is-my-data"></a>データのセキュリティは保たれますか。
 Application Insights は Azure サービスのひとつです。 セキュリティ ポリシーについては、[Azure のセキュリティ、プライバシー、およびコンプライアンスに関するホワイト ペーパー](http://go.microsoft.com/fwlink/?linkid=392408)をご覧ください。
@@ -158,15 +159,15 @@ SDK はプラットフォームごとに異なり、インストールできる�
 #### <a name="classes-of-data-sent-in-different-scenarios"></a>さまざまなシナリオで送信されるデータのクラス
 | 操作 | 収集されるデータのクラス (次の表を参照) |
 | --- | --- |
-| [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>要求数<br/>**Exceptions**<br/>Session<br/>users |
+| [Application Insights SDK を .NET Web プロジェクトに追加する][greenbrown] |ServerContext<br/>Inferred<br/>Perf counters<br/>Requests<br/>**Exceptions**<br/>Session<br/>users |
 | [Status Monitor を IIS にインストールする][redfield] |依存関係<br/>ServerContext<br/>Inferred<br/>Perf counters |
 | [Application Insights SDK を Java Web アプリに追加する][java] |ServerContext<br/>Inferred<br/>要求<br/>Session<br/>users |
 | [JavaScript SDK を Web ページに追加する][client] |ClientContext  <br/>Inferred<br/>ページ<br/>ClientPerf<br/>Ajax |
 | [既定のプロパティを定義する][apiproperties] |**Properties** (すべての標準イベントおよびカスタム イベント) |
-| [TrackMetric を呼び出す][api] |数値<br/>**プロパティ** |
-| [Track* を呼び出す][api] |イベント名<br/>**プロパティ** |
-| [TrackException を呼び出す][api] |**例外**<br/>Stack dump<br/>**プロパティ** |
-| SDK はデータを収集できません。 次に例を示します。 <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子で例外が発生した |SDK diagnostics |
+| [TrackMetric を呼び出す][api] |数値<br/>**Properties** |
+| [Track* を呼び出す][api] |イベント名<br/>**Properties** |
+| [TrackException を呼び出す][api] |**Exceptions**<br/>Stack dump<br/>**Properties** |
+| SDK はデータを収集できません。 例:  <br/> - パフォーマンス カウンターにアクセスできない<br/> - テレメトリ初期化子で例外が発生した |SDK diagnostics |
 
 [他のプラットフォームの SDK][platforms] については、該当するドキュメントを参照してください。
 
@@ -184,7 +185,7 @@ SDK はプラットフォームごとに異なり、インストールできる�
 | PageViews |URL とページ名または画面名 |
 | Client perf |URL/ページ名、ブラウザーの読み込み時間 |
 | Ajax |Web ページからサーバーへの HTTP 呼び出し |
-| 要求数 |URL、期間、応答コード |
+| Requests |URL、期間、応答コード |
 | 依存関係 |種類 (SQL、HTTP、...)、接続文字列または URI、同期または非同期、期間、成功、SQL ステートメント (Status Monitor による) |
 | **Exceptions** |種類、 **メッセージ**、呼び出し履歴、ソース ファイルと行の番号、スレッド ID |
 | Crashes |プロセス ID、親プロセスの ID、クラッシュ スレッドの ID。アプリケーションの修正プログラム、ID、ビルド。例外の種類、アドレス、理由。難読化されたシンボルとレジスタ、バイナリの開始アドレスと終了アドレス、バイナリ名とパス、CPU の種類 |

@@ -140,6 +140,8 @@
           href: data-prep-python-extensibility-overview.md
         - name: サポートされるデータ ソース
           href: data-prep-appendix2-supported-data-sources.md
+        - name: データ ソースとして Azure Cosmos DB を読み込む
+          href: data-prep-load-azure-cosmos-db.md
         - name: サポートされるインスペクター
           href: data-prep-appendix4-supported-inspectors.md
         - name: サポートされるデータ変換先

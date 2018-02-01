@@ -72,6 +72,21 @@
             - name: HDInsight アプリを Azure Marketplace に発行する
               href: ../hdinsight-apps-publish-applications.md
               maintainContext: true
+            - name: 発行したアプリのインストール - Cask Data Application Platform (CDAP)
+              href: ../hdinsight-apps-install-cask.md
+              maintainContext: true
+            - name: 発行したアプリのインストール - Dataiku
+              href: ../hdinsight-apps-install-dataiku.md
+              maintainContext: true
+            - name: 発行したアプリのインストール - Datameer
+              href: ../hdinsight-apps-install-datameer.md
+              maintainContext: true
+            - name: 発行したアプリのインストール - H2O
+              href: ../hdinsight-apps-install-h2o.md
+              maintainContext: true
+            - name: 発行したアプリのインストール - Streamsets
+              href: ../hdinsight-apps-install-streamsets.md
+              maintainContext: true
     - name: セキュリティ保護
       items:
         - name: HDInsight で SSH を使用する
@@ -165,6 +180,8 @@
         - name: HDInsight クラスターを新しいバージョンにアップグレードする
           href: ../hdinsight-upgrade-cluster.md
           maintainContext: true
+        - name: HBase クラスターを新しいバージョンに移行する
+          href: apache-hbase-migrate-new-version.md
         - name: HDInsight クラスター用の OS の修正プログラム
           href: ../hdinsight-os-patching.md
           maintainContext: true
@@ -227,11 +244,15 @@
           href: apache-hbase-provision-vnet.md
         - name: Azure VNet での HBase クラスター レプリケーション
           href: apache-hbase-replication.md
+        - name: HBase および Phoenix のバックアップとレプリケーションの設定
+          href: apache-hbase-backup-replication.md
     - name: OMS を使用した監視
       items:
         - name: Azure Log Analytics の使用
           href: ../hdinsight-hadoop-oms-log-analytics-tutorial.md
           maintainContext: true
+        - name: OMS による HBase の監視
+          href: apache-hbase-monitor-with-oms.md
         - name: クラスター固有のダッシュボード
           href: ../hdinsight-hadoop-oms-log-analytics-management-solutions.md
           maintainContext: true
@@ -241,6 +262,8 @@
         - name: クラスター パフォーマンスの監視
           href: ../hdinsight-key-scenarios-to-monitor.md
           maintainContext: true
+        - name: Phoenix のパフォーマンスのベスト プラクティス
+          href: apache-hbase-phoenix-performance.md
 - name: リファレンス
   items:
     - name: コード サンプル

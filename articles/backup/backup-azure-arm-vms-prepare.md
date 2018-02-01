@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/3/2017
+ms.date: 1/21/2017
 ms.author: markgal;trinadhk;sogup;
-ms.openlocfilehash: 3c2ea9e5872454b0bac67c39362a1f94b6fa47b8
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 7d7b81a585ba8b10c60062c5d5274c45335cab68
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
 
@@ -54,7 +54,7 @@ Resource Manager でデプロイされた仮想マシンの保護またはバッ
 * データ ディスクのサイズが 1,023GB を超える仮想マシンはバックアップできません。
 
   > [!NOTE]
-  > 1 TB 以上の非管理対象ディスクがある VM のバックアップをサポートするためのプライベート プレビューがあります。 詳細については、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページを参照してください。
+  > 1 TB を超えるディスクが存在する VM のバックアップをサポートするためのプライベート プレビューがあります。 詳細については、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページを参照してください。
   >
 
 * 予約済み IP アドレスはあるがエンドポイントが定義されていない仮想マシンのバックアップはサポートされません。
@@ -181,7 +181,7 @@ Azure Portal の*シナリオ*は、Recovery Services コンテナーに何を�
 仮想マシンの登録に問題がある場合は、VM エージェントのインストールやネットワーク接続に関するこの後の情報を参照してください。 Azure によって作成された仮想マシンを保護している場合、次の情報はおそらく必要ないでしょう。 ただし、仮想マシンを Azure に移行した場合は、VM エージェントを正しくインストールしていることと、仮想マシンが仮想ネットワークで通信できることを確認してください。
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>仮想マシンに VM エージェントをインストールする
-バックアップ拡張機能を動作させるには、Azure [VM エージェント](../virtual-machines/windows/classic/agents-and-extensions.md#azure-vm-agents-for-windows-and-linux)を Azure 仮想マシンにインストールする必要があります。 VM を Azure Marketplace から作成した場合、VM エージェントは既に仮想マシンに存在します。 
+バックアップ拡張機能を動作させるには、Azure [VM エージェント](../virtual-machines/windows/agent-user-guide.md)を Azure 仮想マシンにインストールする必要があります。 VM を Azure Marketplace から作成した場合、VM エージェントは既に仮想マシンに存在します。 
 
 Azure Marketplace から作成した VM を*使用していない*状況のために、以下の情報が提供されています。 たとえば、オンプレミスのデータセンターから VM を移行したとします。 このような場合、仮想マシンを保護するためには VM エージェントをインストールする必要があります。
 
@@ -219,7 +219,7 @@ Azure データ センターの IP 範囲をホワイトリストに登録する
 ![リージョンのストレージ タグが与えられた NSG](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
 > [!WARNING]
-> ストレージ タグは特定のリージョンでのみ利用できます。また、これはプレビュー版です。 リージョンの一覧については、「[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)」を参照してください。
+> ストレージ サービス タグは特定のリージョンでのみ利用できます。また、これはプレビュー版です。 リージョンの一覧については、「[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)」を参照してください。
 
 ### <a name="use-an-http-proxy-for-vm-backups"></a>VM のバックアップに HTTP プロキシを使用する
 VM をバックアップする際、バックアップ拡張機能は HTTPS API を使用してスナップショット管理コマンドを Azure Storage に送信します。 パブリック インターネットにアクセスできるように構成されたコンポーネントは HTTP プロキシのみであるため、HTTP プロキシ経由でバックアップ拡張機能のトラフィックをルーティングします。

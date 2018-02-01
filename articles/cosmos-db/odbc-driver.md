@@ -13,24 +13,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 01/16/2018
 ms.author: mimig
-ms.openlocfilehash: 2df792c00b7a789dbefa64bfe0245f1ad73c3faa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3892f698ec2b0b45f71dc38491687897559821ba
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>BI 分析ツールと ODBC ドライバーを使用して Azure Cosmos DB に接続する
 
 Azure Cosmos DB の ODBC ドライバーを使用すると、SQL Server Integration Services、Power BI Desktop、Tableau などの BI 分析ツールを使って Azure Cosmos DB に接続できるため、これらのソリューションで Azure Cosmos DB データを分析したり視覚化したりできます。
 
-Azure Cosmos DB の ODBC ドライバーは ODBC 3.8 に準拠し、ANSI SQL-92 構文をサポートしています。 ODBC ドライバーは、Azure Cosmos DB でデータを再正規化するために役立つ豊富な機能を提供します。 このドライバーを使うと、Azure Cosmos DB のデータを表やビューで表示できます。 またドライバーによって、表やビューに対して、挿入、更新、削除などのクエリを含む SQL 操作を実行できます。
+Azure Cosmos DB の ODBC ドライバーは ODBC 3.8 に準拠していて、ANSI SQL-92 構文をサポートしています。 ODBC ドライバーは、Azure Cosmos DB でデータを再正規化するために役立つ豊富な機能を提供します。 このドライバーを使うと、Azure Cosmos DB のデータを表やビューで表示できます。 またドライバーによって、表やビューに対して、挿入、更新、削除などのクエリを含む SQL 操作を実行できます。
 
 ## <a name="why-do-i-need-to-normalize-my-data"></a>データを正規化すべき理由
 Azure Cosmos DB はスキーマレス データベースであるため、アプリケーションがデータ モデルを迅速に反復し、スキーマの厳しい制約を受けないようにすることで、アプリの迅速な開発を実現します。 1 つの Azure Cosmos DB データベースに、さまざまな構造の JSON ドキュメントを格納できます。 これは迅速なアプリケーション開発には最適ですが、データ分析と BI ツールを使ってデータを分析し、レポートを作成する場合は、通常データをフラット化して特定のスキーマに準拠させる必要があります。
 
-ここで役立つのが ODBC ドライバーです。 ODBC ドライバーを使うと、Azure Cosmos DB のデータをデータ分析やレポート作成のニーズに合った表やビューに再正規化することができます。 再正規化されたスキーマが元になるデータに影響を与えることはなく、開発者はスキーマに準拠する制約を受けずに、ODBC 準拠のツールを活用してデータに簡単にアクセスできます。 Azure Cosmos DB データベースは開発者チームにとって便利なだけでなく、データ アナリストも満足することでしょう。
+ここで役立つのが ODBC ドライバーです。 ODBC ドライバーを使うと、Azure Cosmos DB のデータをデータ分析やレポート作成のニーズに合った表やビューに再正規化することができます。 再正規化されたスキーマが元になるデータに影響を与えることはなく、開発者はスキーマに準拠する制約を受けずに、ODBC に準拠しているツールを活用してデータに簡単にアクセスできます。 Azure Cosmos DB データベースは開発者チームにとって便利なだけでなく、データ アナリストも満足することでしょう。
 
 それでは、ODBC ドライバーを使ってみましょう。
 
@@ -38,9 +38,11 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
 
 1. お使いの環境用のドライバーをダウンロードします。
 
-    * [Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) (64 ビット Windows 用)
-    * [Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/documentdb-odbc-32x64) (64 ビット上の 32 ビット Windows 用)
-    * [Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) (32 ビット Windows 用)
+    | インストーラー | サポートされているオペレーティング システム| 
+    |---|---| 
+    |[Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/documentdb-odbc-64x64) (64 ビット Windows 用)| Windows 8.1 以降、Windows 8、Windows 7、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 の 64 ビット バージョン。| 
+    |[Microsoft Azure Cosmos DB ODBC 32x64-bit.msi](https://aka.ms/documentdb-odbc-32x64) (64 ビット上の 32 ビット Windows 用)| Windows 8.1 以降、Windows 8、Windows 7、Windows XP、Windows Vista、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2、Windows Server 2003 の 64 ビット バージョン。| 
+    |[Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/documentdb-odbc-32x32) (32 ビット Windows 用)|Windows 8.1 以降、Windows 8、Windows 7、Windows XP、Windows Vista の 32 ビット バージョン。|
 
     msi ファイルをローカルで実行すると、**Microsoft Azure Cosmos DB ODBC ドライバーのインストール ウィザード**が開始されます。 
 2. 既定の入力を使用して ODBC ドライバーをインストールし、インストール ウィザードを完了します。
@@ -58,9 +60,9 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
     ![Azure Cosmos DB ODBC ドライバーの DSN セットアップ ウィンドウ](./media/odbc-driver/odbc-driver-dsn-setup.png)
     - **データ ソース名**: ODBC DSN の独自のフレンドリ名。 この名前は Azure Cosmos DB アカウントに対して一意なので、複数のアカウントがある場合は適切に名前を付けてください。
     - **説明**: データ ソースの簡単な説明。
-    - **ホスト**: Azure Cosmos DB アカウントの URI。 Azure Portal の [Azure Cosmos DB キー] ブレードから取得できます。次のスクリーン ショットを参照してください。 
-    - **アクセス キー**: Azure Portal の [Azure Cosmos DB キー] ブレードから、プライマリまたはセカンダリ、読み取り/書き込みまたは読み取り専用のキーを選択します。次のスクリーン ショットを参照してください。 DSN を読み取り専用のデータ処理とレポート作成に使用する場合は、読み取り専用キーを使用することをお勧めします。
-    ![[Azure Cosmos DB キー] ブレード](./media/odbc-driver/odbc-driver-keys.png)
+    - **ホスト**: Azure Cosmos DB アカウントの URI。 Azure Portal の [Azure Cosmos DB キー] ページから取得できます。次のスクリーンショットをご覧ください。 
+    - **アクセス キー**: Azure Portal の [Azure Cosmos DB キー] ページから、プライマリまたはセカンダリ、読み取り/書き込みまたは読み取り専用のキーを選びます。次のスクリーンショットをご覧ください。 DSN を読み取り専用のデータ処理とレポート作成に使用する場合は、読み取り専用キーを使用することをお勧めします。
+    ![[Azure Cosmos DB キー] ページ](./media/odbc-driver/odbc-driver-keys.png)
     - **Encrypt Access Key for** (アクセスキーの暗号化): このコンピューターのユーザーに基づいた最適な選択肢を選びます。 
 4. **[テスト]** ボタンをクリックして、Azure Cosmos DB アカウントに接続できることを確認します。 
 5. **[詳細オプション]** をクリックして、次の値を設定します。
@@ -104,12 +106,12 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
     **[スキーマを生成する]** ウィンドウに、Azure Cosmos DB アカウントのすべてのコレクションが表示されます。 
 3. **[サンプル ビュー]** タブでコレクションを選択し、コレクションの**[マッピング定義]** 列で **[編集]** をクリックします。 次に **[マッピング定義]** ウィンドウで **[Table Delimiters]**(テーブル区切り記号) の方法を選択します。 次に、次を実行します。
 
-    a. **[属性]** ボックスに、区切り記号のプロパティ名を入力します。 これは、サンプリングのスコープを設定するドキュメントのプロパティ (例：市区町村) です。次に Enter キーを押します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性]** ボックスに、区切り記号のプロパティ名を入力します。 これは、サンプリングのスコープを設定するドキュメントのプロパティ (例：市区町村) です。次に Enter キーを押します。 
 
     b. サンプリングのスコープを入力した属性の特定の値に設定する場合は、[選択] ボックスで属性を選択し、**[値]** ボックスに値 (例：シアトル) を入力して Enter キーを押します。 引き続き属性に複数の値を追加できます。 値を入力するときは、適切な属性が選択されていることを確認してください。
 
     たとえば、市区町村の**属性**値を含めて、テーブルにニューヨークとドバイの都市の値の行のみを含めるよう制限する場合は、[属性] ボックスに「市区町村」と入力し、**[値]** ボックスには「ニューヨーク」と「ドバイ」を入力します。
-4. **[OK]**をクリックします。 
+4. Click **OK**. 
 5. サンプリングするコレクションのマッピング定義が完了したら、**[スキーマ エディター]** ウィンドウで **[サンプル]** をクリックします。
      列ごとに、列の SQL 名、SQL 型、SQL の長さ (該当する場合)、スケール (該当する場合)、有効桁数 (該当する場合)、Null 許容を変更できます。
     - クエリ結果から列を除外したい場合は、**[列の非表示]** を **true** に設定できます。 [列の非表示] が true でマークされた列は、まだスキーマの一部ではあるものの、選択やプロジェクションでは返されません。 たとえば、Azure Cosmos DB のシステムで必要な "_" で始まるすべてのプロパティを非表示にすることができます。
@@ -128,7 +130,7 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
 
 ## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>手順 5: Power BI Desktop などの BI ツールでデータを表示する
 
-新しい DSN を使用して、DocumentDB を ODBC 準拠のツールと接続できます。この手順では、Power BI Desktop に接続して Power BI を視覚化する方法について簡単に説明します。
+新しい DSN を使用して、DocumentDB を ODBC に準拠しているツールと接続できます。この手順では、Power BI Desktop に接続して Power BI を視覚化する方法について簡単に説明します。
 
 1. Power BI Desktop を開きます。
 2. **[データの取得]** をクリックします。
@@ -146,6 +148,6 @@ Azure Cosmos DB はスキーマレス データベースであるため、アプ
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-Azure Cosmos DB の詳細については、[Azure Cosmos DB](introduction.md) に関するページを参照してください。
+Azure Cosmos DB の詳細については、「[Azure Cosmos DB の概要](introduction.md)」を参照してください。

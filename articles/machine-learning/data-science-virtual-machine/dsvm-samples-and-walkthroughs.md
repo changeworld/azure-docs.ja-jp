@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 89bb5d255db9ab266d04169a3101e2b694236029
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb9a7e900c489b3d22594dfcb6e1faa736c3c490
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>データ サイエンス仮想マシン (DSVM) に関するサンプル
 
@@ -28,13 +28,13 @@ DSVM には、Jupyter Notebook 形式の完全に動作するサンプルと、J
 > DSVM で Jupyter Notebook を有効にするには、「[Access Jupyter (Jupyter にアクセスする)](#access-jupyter)」セクションを参照してください。
 
 ## <a name="quick-reference-of-samples"></a>サンプルのクイックリファレンス
-| サンプル カテゴリ | Description | 場所 |
+| サンプル カテゴリ | [説明] | 場所 |
 | ------------- | ------------- | ------------- |
 | **R** 言語  | **R** のサンプルでは、Azure クラウド データ ストアとの接続、オープン ソースの R と Microsoft R の比較、Microsoft R Server または SQL Server での操作可能化モデルなどのシナリオを説明します。 <br/> [スクリーンショット](#r-language) | <br/>`~notebooks` <br/> <br/> `~samples/MicrosoftR` <br/> <br/> `~samples/RSqlDemo` <br/> <br/> `~samples/SQLRServices`<br/> <br/>|
 | **Python** 言語  | **Python** のサンプルで、Azure クラウド データ ストアとの接続や、**Azure Machine Learning** の操作などのシナリオを説明します。  <br/> [スクリーンショット](#python-language) | <br/>`~notebooks` <br/><br/>|
 | **Julia** 言語  | **Julia** 内のサンプルで、Julia でのプロット、Julia でのディープ ラーニング、Julia からの C や Python の呼び出しなどを詳しく説明します。 <br/> [スクリーンショット](#julia-language) |<br/> **Windows**:<br/> `~notebooks/Julia_notebooks`<br/><br/>`~notebooks`<br/><br/> **Linux**:<br/> `~notebooks/julia`<br/><br/> |
 | **CNTK** <br/> (Microsoft Cognitive Toolkit)  | Microsoft の Cognitive Toolkit チームによって公開されているディープ ラーニング サンプル。  <br/> [スクリーンショット](#cntk) | <br/>**Windows**:<br/> `~notebooks/CNTK/Tutorials`<br/><br/>`~/samples/CNTK-Samples-2-0/Examples`<br/><br/> **Linux**:<br/> `~notebooks/CNTK`<br/> <br/>|
-| **MXnet** ノートブック  | ニューラル ネットワークに基づいて **MXnet** を利用したディープ ラーニング サンプル。 初心者から高度なシナリオまでのさまざまなノートブックがあります。  <br/> [スクリーンショット](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
+| **MXnet** ノートブック  | **MXNet** ベースのニューラル ネットワークを利用したディープ ラーニング サンプル。 初心者から高度なシナリオまでのさまざまなノートブックがあります。  <br/> [スクリーンショット](#mxnet) | <br/>`~notebooks/mxnet`<br/> <br/>|
 | **Azure Machine Learning** AzureML  | クラウドベースのスコアリング ワークフローのために、ローカルでトレーニングしたモデルから、**Azure Machine Learning** Studio と対話し、Web サービス エンドポイントを作成します。 <br/> [スクリーンショット](#azureml) | <br/>`~notebooks/azureml`<br/> <br/>|
 | **caffe2** | ニューラル ネットワークに基づいて **caffe2** を利用したディープ ラーニング サンプル。 イメージの前処理、データセット作成、回帰、事前トレーニング済みモデルの使用などの例を含め、caffe2 とその効果的な使用方法をユーザーに理解してもらうために設計された、複数のノートブックがあります。 <br/> [スクリーンショット](#caffe2) | <br/>`~notebooks/caffe2`<br/><br/> |
 | **H2O**   | さまざまな現実世界のシナリオの問題に対して **H2O** を利用する、Python ベースのサンプル。 <br/> [スクリーンショット](#h2o) | <br/>`~notebooks/h2o`<br/><br/> |
@@ -83,7 +83,7 @@ DSVM のログインと同じパスワードでサインインします。
 <br/>![CNTK サンプル](./media/cntk-samples2.png)<br/>
 <br/>![CNTK サンプル](./media/cntk-samples.png)<br/>
 
-## <a name="mxnet"></a>MXnet
+## <a name="mxnet"></a>MXNet
 <br/>![MXnet サンプル](./media/mxnet-samples.png)<br/>
 
 ## <a name="azureml"></a>AzureML 

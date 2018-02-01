@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 12/06/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 01d321dce439e153b494dfd0de52c100dab78f39
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 1ab67cd8aaf59cde3157fcb877ce13f10cb432bb
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="use-visual-studio-code-to-debug-c-module-with-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge で C# モジュールをデバッグする
 この記事では、主要開発ツールとして [Visual Studio Code](https://code.visualstudio.com/) を使用して、IoT Edge モジュールをデバッグする手順について詳しく説明します。
@@ -32,6 +32,9 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="build-your-iot-edge-module-for-debugging-purpose"></a>デバッグのために IoT Edge モジュールをビルドする
 1. デバッグを開始するには、**dockerfile.debug** を使用して Docker イメージをリビルドし、Edge ソリューションをもう一度配置する必要があります。 VS Code エクスプローラーで、Docker フォルダーをクリックして開きます。 次に、`linux-x64` フォルダーをクリックし、**Dockerfile.debug** を右クリックして、**[Build IoT Edge module Docker image]\(IoT Edge モジュール Docker イメージのビルド\)** をクリックします。
+
+    ![デバッグ イメージのビルド](./media/how-to-debug-csharp-module/build-debug-image.png)
+
 3. **[フォルダーの選択]** ウィンドウで、`./bin/Debug/netcoreapp2.0/publish` を参照するか入力します。 **[Select Folder as EXE_DIR] (EXE_DIR としてフォルダーを選択)** をクリックします。
 4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 たとえば、「 `<your container registry address>/filtermodule:latest`」のように入力します。 ローカル レジストリにデプロイする場合は、`localhost:5000/filtermodule:latest` のようになります。
 5. イメージを Docker リポジトリにプッシュします。 **[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** コマンドを使用し、VS Code ウィンドウの上部にあるポップアップ テキスト ボックスにイメージの URL を入力します。 前の手順で使用したイメージの URL を使用してください。
@@ -39,9 +42,18 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="start-debugging-in-vs-code"></a>VS Code でデバッグを開始する
 1. VS Code デバッグ ウィンドウに移動します。 **F5** キーを押し、**[IoT Edge(.Net Core)]** を選択します。
+
+    ![F5 キーを押す](./media/how-to-debug-csharp-module/f5-debug-option.png)
+
 2. `launch.json` で、**Debug IoT Edge Custom Module (.NET Core)** セクションに移動し、`pipeArgs` の下に `<container_name>` を入力します。このチュートリアルでは、`filtermodule` になります。
+
+    ![pipeArgs を変更する](./media/how-to-debug-csharp-module/f5-debug-option.png)
+
 3. Program.cs に移動します。 `method static async Task<MessageResponse> FilterModule(Message message, object userContext)` にブレークポイントを追加します。
 4. もう一度 **F5** キーを押します。 アタッチするプロセスを選択します。 このチュートリアルでは、プロセス名は `FilterModule.dll` になります。
+
+    ![アタッチ プロセス](./media/how-to-debug-csharp-module/attach-process.png)
+
 5. VS Code デバッグ ウィンドウの左側のパネルに変数が表示されます。 
 
 > [!NOTE]

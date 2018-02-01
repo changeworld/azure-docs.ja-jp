@@ -12,20 +12,20 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 01/22/2018
 ms.author: cenkd;juliako
-ms.openlocfilehash: 5512be8ce5b9cf28bceb3468ec6032c0778156f4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d3c7cfad5ce9b25c88aa11b53194b6e06b1cc034
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
 Media Services のリリース 2.17 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は**動的マニフェスト**によってアーカイブされます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
-このトピックでは、顧客にとってフィルターを使用することが非常に効果的である一般的なシナリオを示し、プログラムによるフィルターの作成方法を説明するトピックへのリンクを示します (現時点では、フィルターは REST API でのみ作成できます)。
+このトピックでは、顧客にとってフィルターを使用することが非常に効果的である一般的なシナリオを示し、プログラムによるフィルターの作成方法を説明するトピックへのリンクを示します。
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 この目標を達成するために、次の操作を行います。
 
 * ストリームをマルチビットレート ([アダプティブ ビットレート](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
@@ -67,14 +67,14 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
     </SmoothStreamingMedia>
 
 ### <a name="dynamic-manifests"></a>動的マニフェスト
-アセットの既定のマニフェスト ファイルに記述されている情報よりも、さらに高い柔軟性をクライアントが必要とする [シナリオ](media-services-dynamic-manifest-overview.md#scenarios) があります。 次に例を示します。
+アセットの既定のマニフェスト ファイルに記述されている情報よりも、さらに高い柔軟性をクライアントが必要とする [シナリオ](media-services-dynamic-manifest-overview.md#scenarios) があります。 例: 
 
 * デバイスに固有: コンテンツの再生に使用するデバイスでサポートしている演奏や言語のトラックのみを指定して配信する場合 (「演奏フィルタ―処理」) 
 * マニフェストを減らして、ライブ イベントのサブクリップのみを表示する場合 (「サブクリップ フィルター処理」)
 * ビデオの開始をトリミングする場合 (「ビデオのトリミング」)
 * プレゼンテーション ウィンドウ (DVR) を調整し、プレーヤーの DVR ウィンドウの長さを限定する場合 (「プレゼンテーション ウィンドウの調整」)
 
-このような柔軟性を実現するために、Media Services では定義済みの **フィルター** に基づいた [動的マニフェスト](media-services-dynamic-manifest-overview.md#filters)を用意しています。  フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーミングできるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) (HLS、MPEG DASH、スムーズ ストリーミング) でサポートされるアダプティブ ビットレート ストリーミング プロトコルに適用できます。 For example:
+このような柔軟性を実現するために、Media Services では定義済みの **フィルター** に基づいた [動的マニフェスト](media-services-dynamic-manifest-overview.md#filters)を用意しています。  フィルターを定義しておくと、クライアントはそのフィルターを使用して、ビデオの特定の演奏やサブクリップをストリーミングできるようになります。 ストリーミング URL にフィルターを指定することもできます。 フィルターは、[ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) (HLS、MPEG DASH、スムーズ ストリーミング) でサポートされるアダプティブ ビットレート ストリーミング プロトコルに適用できます。 例: 
 
 フィルターを使用した MPEG DASH URL
 

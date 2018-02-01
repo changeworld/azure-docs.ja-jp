@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 12/14/2017
+ms.date: 01/23/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: fae88e44ee763a0c59b4ad2c731d77db379aa1ee
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 839fc3a326dca8b60c6750231b06d2369c3de2fc
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>環境内でホストされている Linux コンピューターからデータを収集する
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、物理的または仮想的な Linux コンピューターおよびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Linux コンピューターを構成し、データを収集する方法を示します。  Azure Linux VM の場合は、次のトピック「[Collect data about Azure Virtual Machines](log-analytics-quick-collect-azurevm.md)」 (Azure Virtual Machines に関するデータを収集する) を参照してください。  
@@ -75,7 +75,7 @@ OMS エージェント for Linux をインストールする前に、Log Analyti
 
 ## <a name="configure-agent-to-communicate-with-a-proxy-server"></a>プロキシ サーバーと通信するエージェントを構成する
 
-Linux コンピューターがプロキシ サーバー経由で Log Analytics と通信するようにする場合は、次の手順を実行します。  プロキシ構成の値には次の構文があります。`[protocol://][user:password@]proxyhost[:port]`
+Linux コンピューターがプロキシ サーバー経由で Log Analytics と通信するようにする場合は、次の手順を実行します。  プロキシ構成の値には次の構文があります。`[protocol://][user:password@]proxyhost[:port]`  *proxyhost* プロパティは、プロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。    
 
 1. 次のコマンドを実行してファイル `/etc/opt/microsoft/omsagent/proxy.conf` を編集し、値を固有の設定に変更します。
 

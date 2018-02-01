@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 01/17/2018
 ms.author: dobett
-ms.openlocfilehash: c9854c68a95c2c1cc584503eb2f0b0dba6091016
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 4606cb676c3ab7c8c8511579f43d251ff7d2ae8a
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="deploy-an-edge-gateway-for-the-connected-factory-preconfigured-solution-on-windows-or-linux"></a>コネクテッド ファクトリ事前構成済みソリューション用のエッジ ゲートウェイを Windows または Linux 上にデプロイします
 
@@ -57,7 +57,7 @@ Docker for Windows のセットアップ時に、Docker と共有するホスト
 ![Docker for Windows のインストール](./media/iot-suite-connected-factory-gateway-deployment/image1.png)
 
 > [!NOTE]
-> この手順は、Docker のインストール後に **[設定]** ダイアログから実行することもできます。 Windows システム トレイの **[Docker]** アイコンを右クリックし、**[設定]** を選択します。
+> この手順は、Docker のインストール後に **[設定]** ダイアログから実行することもできます。 Windows システム トレイの **[Docker]** アイコンを右クリックし、**[設定]** を選択します。 Windows のメジャー アップデート (Windows Fall Creators アップデートなど) がシステムに展開された場合は、ドライブをいったん共有解除してから再び共有して、アクセス権を更新します。
 
 Linux を使用している場合は、ファイル システムへのアクセスを有効にするために必要な追加構成はありません。
 
@@ -65,7 +65,7 @@ Windows では Docker と共有したドライブにフォルダーを作成し�
 
 Docker コマンドで `<SharedFolder>` を参照するときは、必ずオペレーティング システムの正しい構文を使用してください。 Windows 用と Linux 用の 2 つの例を次に示します。
 
-- Windows で `D:\shared` フォルダーを `<SharedFolder>` として使用する場合、Docker コマンドの構文は `//d/shared` になります。
+- Windows で `D:\shared` フォルダーを `<SharedFolder>` として使用する場合、Docker コマンドの構文は `d:/shared` になります。
 
 - Linux で `/shared` フォルダーを `<SharedFolder>` として使用する場合、Docker コマンドの構文は `/shared` になります。
 
@@ -108,30 +108,16 @@ docker run --rm -it -v <SharedFolder>:/docker -v x509certstores:/root/.dotnet/co
 
 - `<IoTHubOwnerConnectionString>` は、Azure Portal の **iothubowner** 共有アクセス ポリシーの接続文字列です。 この接続文字列は、前の手順でコピーしています。 この接続文字列は、OPC Publisher の初回の実行時にのみ必要です。 セキュリティ リスクがあるため、以降の実行時は省略する必要があります。
 
-- 使用する `<SharedFolder>`とその構文については、「[Docker をインストールして構成する](#install-and-configure-docker)」セクションで説明されています。 OPC Publisherは、`<SharedFolder>` を使用して OPC Publisher 構成ファイルを読み取り、ログ ファイルに書き込み、コンテナーの外部から両方のファイルを使用できるようにします。
+- 使用する `<SharedFolder>`とその構文については、「[Docker をインストールして構成する](#install-and-configure-docker)」セクションで説明されています。 OPC Publisherは、`<SharedFolder>` を使って、OPC Publisher 構成ファイルの読み取りと書き込みを行い、ログ ファイルに書き込み、コンテナーの外部から両方のファイルを使用できるようにします。
 
-- OPC Publisher は、その構成を **publishednodes.json** ファイルから読み取ります。このファイルは `<SharedFolder>/docker` フォルダーに置く必要があります。 この構成ファイルは、OPC Publisher がサブスクライブする必要がある OPC UA サーバー上の OPC UA ノード データを定義します。
-
-- OPC UA サーバーが OPC Publisher にデータの変更を通知するたびに、新しい値が IoT Hub に送信されます。 バッチ処理の設定によっては、OPC Publisher は、データを蓄積した後で IoT Hub にデータをバッチ送信する場合があります。
-
-- **publishednodes.json** ファイルの完全な構文については、GitHub の [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) ページで説明されています。
-
-    次のスニペットは、**publishednodes.json** ファイルの簡単な例を示しています。 この例は、ホスト名 **win10pc** の OPC UA サーバーから **CurrentTime** 値を公開する方法を示しています。
+- OPC Publisher は、その構成を **publishednodes.json** ファイルから読み取ります。このファイルは、`<SharedFolder>/docker` フォルダーで読み書きされます。 この構成ファイルは、OPC Publisher がサブスクライブする必要がある OPC UA サーバー上の OPC UA ノード データを定義します。 **publishednodes.json** ファイルの完全な構文については、GitHub の [OPC Publisher](https://github.com/Azure/iot-edge-opc-publisher) ページで説明されています。 ゲートウェイを追加するときは、空の **publishednodes.json** をフォルダーに置きます。
 
     ```json
     [
-      {
-        "EndpointUrl": "opc.tcp://win10pc:48010",
-        "OpcNodes": [
-          {
-            "ExpandedNodeId": "nsu=http://opcfoundation.org/UA/;i=2258"
-          }
-        ]
-      }
     ]
     ```
 
-    **Publishednodes.json** ファイルでは、OPC UA サーバーはエンドポイント URL によって指定されます。 前の例のように、IP アドレスの代わりにホスト名ラベル (**win10pc** など) を使用してホスト名を指定する場合は、コンテナーでのネットワーク アドレスの解決で、このホスト名ラベルが IP アドレスに解決できるようにする必要があります。
+- OPC UA サーバーが OPC Publisher にデータの変更を通知するたびに、新しい値が IoT Hub に送信されます。 バッチ処理の設定によっては、OPC Publisher は、データを蓄積した後で IoT Hub にデータをバッチ送信する場合があります。
 
 - Docker は、NetBIOS 名の解決はサポートしません。DNS 名の解決のみをサポートします。 ネットワークに DNS サーバーがない場合は、前のコマンド ラインの例に示されている回避策を使用できます。 前のコマンド ラインの例では、`--add-host` パラメーターを使用して、コンテナーのホスト ファイルにエントリを追加します。 このエントリによって、特定の `<OpcServerHostname>` のホスト名検索が可能になり、IP アドレス `<IpAddressOfOpcServerHostname>` に解決されます。
 
@@ -169,11 +155,16 @@ OPC Proxy は、インストール中に接続文字列を保存します。 セ
 
 独自の OPC UA サーバーをコネクテッド ファクトリの事前構成済みソリューションに追加するには:
 
-1. コネクテッド ファクトリ ソリューション ポータルの **[独自の OPC UA サーバーを接続する]** ページに移動します。 前のセクションの手順に従って、コネクテッド ファクトリ ポータルと OPC UA サーバーの間の信頼関係を確立します。
+1. コネクテッド ファクトリ ソリューション ポータルの **[独自の OPC UA サーバーを接続する]** ページに移動します。
 
-    ![ソリューション ポータル](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
+    1. 接続する OPC UA サーバーを起動します。 コンテナーで実行している OPC Publisher および OPC Proxy から OPC UA サーバーに到達できることを確認します (名前解決に関する前記のコメントを参照してください)。
+    1. OPC UA サーバーのエンドポイント URL (`opc.tcp://<host>:<port>`) を入力して、**[接続]** をクリックします。
+    1. 接続のセットアップの一環として、コネクテッド ファクトリ ポータル (OPC UA クライアント) と接続しようとしている OPC UA サーバーの間に、信頼関係が確立されます。 コネクテッド ファクトリ ダッシュボードで、"**接続先のサーバーの証明書を確認できません**" という警告が表示されます。 証明書の警告が表示されたら、**[続行]** をクリックします。
+    1. 接続しようとしている OPC UA サーバーの証明書の構成は、セットアップがさらに困難です。 PC ベースの OPC UA サーバーでは、ダッシュボードの警告ダイアログに対して確認するだけで済む場合があります。 埋め込まれた OPC UA サーバー システムの場合は、お使いの OPC UA サーバーのドキュメントを参照して、このタスクの実行方法を確認してください。 このタスクを完了するには、コネクテッド ファクトリ ポータルの OPC UA クライアントの証明書が必要になる場合があります。 管理者は、この証明書を **[独自の OPC UA サーバーを接続する]** ページでダウンロードできます。
 
-1. OPC UA サーバーの OPC UA ノード ツリーに移動します。コネクテッド ファクトリに送信する OPC ノードを右クリックし、**[発行]** をクリックします。
+        ![ソリューション ポータル](./media/iot-suite-connected-factory-gateway-deployment/image4.png)
+
+1. OPC UA サーバーの OPC UA ノード ツリーに移動します。コネクテッド ファクトリに値を送信する OPC ノードを右クリックし、**[発行]** を選びます。
 
 1. これでテレメトリがゲートウェイ デバイスから送られてくるようになります。 テレメトリは、コネクテッド ファクトリ ポータルの **[ファクトリの場所]** ビューにある **[新しいファクトリ]** で確認できます。
 

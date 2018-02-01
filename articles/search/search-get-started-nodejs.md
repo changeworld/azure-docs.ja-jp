@@ -14,11 +14,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: evboyle
-ms.openlocfilehash: 32865ed986f5eea961ef2c3813dcc6531498c90a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 511f3327972672deaa321fb34bc5f91d355370a2
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="get-started-with-azure-search-in-nodejs"></a>Node.js での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/18/2017
 ## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Azure Search サービスのサービス名と API キーの取得
 サービスを作成したら、ポータルに戻って URL または `api-key`を取得します。 Search サービスに接続するには、URL に加えて、呼び出しを認証するための `api-key` が必要になります。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ジャンプ バーで、**[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
 3. 使用するサービスを選択します。
 4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。
@@ -57,7 +57,7 @@ ms.lasthandoff: 12/18/2017
 ## <a name="download-the-sample-files"></a>サンプル ファイルのダウンロード
 次のいずれかの方法を使用してサンプルをダウンロードします。
 
-1. [AzureSearchNodeJSIndexerDemo](https://github.com/AzureSearch/AzureSearchNodejsIndexerDemo)に移動します。
+1. [search-node-indexer-demo](https://github.com/Azure-Samples/search-node-indexer-demo) に移動します。
 2. **[Download ZIP]**をクリックして .zip ファイルを保存した後、すべてのファイルをコンテナーに抽出します。
 
 以降のすべてのファイル変更および実行ステートメントは、このフォルダー内のファイルに対して行われます。
@@ -101,7 +101,7 @@ USGS データ セットには、ロードアイランド州に関連するレ�
 * Pembroke
 * goose +cape
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これは、Node.js と USGS データセットに基づく最初の Azure Search チュートリアルです。 カスタム ソリューションで使用できる他の検索機能を紹介できるように、時間をかけてこのチュートリアルを拡張する予定です。
 
 Azure Search についての知識が既にある場合は、このサンプルを基にして、サジェスター (先行入力またはオートコンプリート クエリ)、フィルター、ファセット ナビゲーションなどを試すことができます。 また、件数を追加してドキュメントを一括処理することで検索結果の表示を改善し、ユーザーが結果をページ移動できるようにすることもできます。

@@ -3,6 +3,7 @@
 > * [C#/Node.js](../articles/iot-hub/iot-hub-csharp-node-twin-getstarted.md)
 > * [C#](../articles/iot-hub/iot-hub-csharp-csharp-twin-getstarted.md)
 > * [Java](../articles/iot-hub/iot-hub-java-java-twin-getstarted.md)
+> * [Python](../articles/iot-hub/iot-hub-python-twin-getstarted.md)
 
 デバイス ツインは、デバイスの状態に関する情報 (メタデータ、構成、状態) を格納する JSON ドキュメントです。 IoT Hub は、IoT Hub に接続する各デバイスにデバイス ツインを保持します。
 
@@ -14,7 +15,7 @@
 * デバイス メタデータ、構成、または状態を照会する。
 
 > [!NOTE]
-> デバイス ツインは、同期のほか、デバイスの構成と状態の照会に対応しています。 デバイス ツインを使用するタイミングの詳細については、「[デバイス ツインについて][lnk-twins]」を参照してください。
+> デバイス ツインは、同期のほか、デバイスの構成と状態の照会に対応しています。 デバイス ツインを使用するタイミングの詳細については、[デバイス ツインの理解][lnk-twins]に関するドキュメントを参照してください。
 
 デバイス ツインは IoT ハブに格納され、次のものを含みます。
 

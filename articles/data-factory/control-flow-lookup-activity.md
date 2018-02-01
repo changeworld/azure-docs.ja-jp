@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 01/10/2018
 ms.author: spelluru
-ms.openlocfilehash: 3c4f401682e5d1789c6e15597ced145a230bbcd6
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 02e4d7cd062364cae2edad0c76e3a009bb6c1bda
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 ルックアップ アクティビティを使用して、任意の外部ソースからレコード、テーブル名、または値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。 
@@ -36,6 +36,8 @@ ms.lasthandoff: 01/04/2018
 - Azure SQL Data Warehouse (クエリから変換された JSON データ)
 - SQL Server (クエリから変換された JSON データ)
 - Azure Table Storage (クエリから変換された JSON データ)
+
+ルックアップ アクティビティによって返される最大行数は **5000** であり、サイズは最大 **10MB** です。
 
 ## <a name="syntax"></a>構文
 
@@ -58,7 +60,7 @@ ms.lasthandoff: 01/04/2018
 ```
 
 ## <a name="type-properties"></a>型のプロパティ
-名前 | [説明] | type | 必須
+Name | [説明] | type | 必須
 ---- | ----------- | ---- | --------
 dataset | ルックアップ用のデータセット参照を提供します。 現在サポートされているデータセットの種類は次のとおりです。<ul><li>[Azure Blob Storage ](connector-azure-blob-storage.md#dataset-properties)の場合 `AzureBlobDataset` (ソースとして)</li><li>[ファイル システム](connector-file-system.md#dataset-properties)の場合 `FileShareDataset` (ソースとして)</li><li>[Azure SQL Database](connector-azure-sql-database.md#dataset-properties) または [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#dataset-properties) の場合 `AzureSqlTableDataset` (ソースとして)</li><li>[SQL Server](connector-sql-server.md#dataset-properties) の場合 `SqlServerTable` (ソースとして)</li><li>[Azure Table Storage](connector-azure-table-storage.md#dataset-properties) の場合 `AzureTableDataset` (ソースとして)</li> | キーと値のペア | [はい]
 source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「コピー アクティビティのプロパティ」セクションから詳細を取得します。 | キーと値のペア | [はい]

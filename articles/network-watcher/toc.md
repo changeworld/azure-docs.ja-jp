@@ -7,7 +7,7 @@
 ## [セキュリティ グループ ビュー](network-watcher-security-group-view-overview.md)
 ## [次ホップ](network-watcher-next-hop-overview.md)
 ## [VPN 接続のトラブルシューティング](network-watcher-troubleshoot-overview.md)
-## [接続のチェック](network-watcher-connectivity-overview.md)
+## [接続のトラブルシューティング](network-watcher-connectivity-overview.md)
 ## [サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
 
 # 作業の開始
@@ -46,7 +46,7 @@
 ### [Azure CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
 ### [Azure CLI](network-watcher-security-group-view-cli.md)
 ### [REST](network-watcher-security-group-view-rest.md)
-## 接続をテストする
+## 接続のトラブルシューティング
 ### [Azure Portal](network-watcher-connectivity-portal.md)
 ### [Azure PowerShell](network-watcher-connectivity-powershell.md)
 ### [Azure CLI](network-watcher-connectivity-cli.md)

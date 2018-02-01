@@ -11,11 +11,11 @@ ms.workload: integration
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: apimpm
-ms.openlocfilehash: cf8a3eb502a808945e97822e10e44d38137d1161
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: 0f1c9e8e8298647721f16962d3f6756c74f8c8ef
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="configure-a-custom-domain-name"></a>カスタム ドメイン名の構成 
 
@@ -55,7 +55,7 @@ API Management (APIM) インスタンスを作成すると、Azure によって 
 1. [適用] をクリックします。
 
     >[!NOTE]
-    >証明書を割り当てる処理は、15 分程度かかります。
+    >証明書を割り当てる処理は、デプロイのサイズによっては、15 分以上かかる場合があります。 Developer SKU にはダウンタイムがありますが、Basic SKU と上位の SKU にはダウンタイムはありません。
 
 [!INCLUDE [api-management-custom-domain](../../includes/api-management-custom-domain.md)]
 

@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 818f6513625a2677668dd6b6869ef969fe015bf7
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c283fb4d1a390de88b425ce51a312b5404503f0d
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する
 
 > [!div class="op_single_selector"]
-> - [Azure ポータル](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [CLI 1.0](network-watcher-packet-capture-manage-cli-nodejs.md)
 > - [CLI 2.0](network-watcher-packet-capture-manage-cli.md)
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/21/2017
 
 Network Watcher のパケット キャプチャを使用すると、仮想マシンとの間で送受信されるトラフィックを追跡するキャプチャ セッションを作成できます。 必要なトラフィックのみを確実にキャプチャするためにキャプチャ セッション用のフィルターが用意されています。 パケット キャプチャは、事後と事前に、ネットワークの異常を診断するのに役立ちます。 その他の用途には、ネットワーク統計の収集、ネットワークへの侵入に関する情報を取得などがあり、クライアント サーバー間の通信のデバッグなどに役立ちます。 パケット キャプチャをリモートでトリガーすることができることで、この機能によってパケット キャプチャを手動で、目的のマシン上で実行する負荷が軽減されて、貴重な時間の節約になります。
 
-この記事では、パケット キャプチャで現在利用できるさまざまな管理作業を見ていきます。
+この記事では、パケット キャプチャで現在利用できるさまざまな管理作業について説明します。
 
 - [**パケット キャプチャを開始する**](#start-a-packet-capture)
 - [**パケット キャプチャを停止する**](#stop-a-packet-capture)
@@ -46,7 +46,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 - パケット キャプチャ拡張機能が有効になっている仮想マシン
 
 > [!IMPORTANT]
-> パケット キャプチャには `AzureNetworkWatcherExtension` 仮想マシン拡張機能が必要です。 Windows VM の拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事を参照してください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事を参照してください。
+> パケット キャプチャには仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
 
 ### <a name="packet-capture-agent-extension-through-the-portal"></a>ポータルを通じたパケット キャプチャ エージェント拡張機能のインストール
 
@@ -83,7 +83,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 - **[ストレージ アカウント]** - パケット キャプチャをストレージ アカウントに保存するかどうかを決定します。
 - **[ファイル]** - パケット キャプチャをローカルの仮想マシンに保存するかどうかを決定します。
 - **[ストレージ アカウント]** - パケット キャプチャの保存先として選択されたストレージ アカウントです。 既定の保存先は、https://{storage account name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription id}/resourcegroups/{resource group name}/providers/microsoft.compute/virtualmachines/{virtual machine name}/{YY}/{MM}/{DD}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap です  (**[ストレージ アカウント]** を選択した場合にのみ有効です)。
-- **[ローカル ファイル パス]** - パケット キャプチャを保存する、仮想マシン上のローカル パスです  (**[ファイル]** を選択した場合にのみ有効です)。 有効なパスを指定する必要があります。
+- **[ローカル ファイル パス]** - パケット キャプチャを保存する、仮想マシン上のローカル パスです  (**[ファイル]** を選択した場合にのみ有効です)。 有効なパスを指定する必要があります。 Linux 仮想マシンの場合、パスの冒頭は */var/captures* にする必要があります。
 - **[1 パケットあたりの最大バイト数]** - 各パケットからキャプチャされるバイト数です。空白のままの場合、すべてのバイトがキャプチャされます。
 - **[1 セッションあたりの最大バイト数]** - キャプチャされるバイト数の合計値です。この値に達すると、パケット キャプチャが停止します。
 - **[制限時間 (秒)]** - パケット キャプチャを停止するまでの制限時間を設定します。 既定値は 18,000 秒です。
@@ -134,7 +134,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する
 

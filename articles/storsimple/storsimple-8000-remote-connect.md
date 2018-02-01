@@ -4,7 +4,7 @@ description: "リモート管理用にデバイスを構成する方法と、HTT
 services: storsimple
 documentationcenter: 
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/07/2017
+ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ff76884f020a0fb8a1b48bd371c419bd65e85fd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9414d9c93fe463910ffa6fce72aada6a0d720464
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスにリモート接続する
 
@@ -84,7 +84,10 @@ Azure Portal で、次の手順に従って、HTTP 経由でのリモート管�
 クライアントで、次の手順を実行して、リモート管理を有効にします。
 
 #### <a name="to-prepare-the-client-for-remote-connection"></a>リモート接続用のクライアントを準備するには
-1. Windows PowerShell セッションを管理者として開始します。
+1. Windows PowerShell セッションを管理者として開始します。 Windows 10 クライアントを使用している場合、Windows リモート管理サービスは、既定で手動に設定されています。 サービスを起動するには、次を入力してください。
+
+    `Start-Service WinRM`
+    
 2. 次のコマンドを入力して、StorSimple デバイスの IP アドレスをクライアントの信頼されたホストの一覧に追加します。
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
@@ -138,7 +141,7 @@ Azure Portal で、次の手順に従って、HTTPS 経由でのリモート管�
 2. **[セキュリティの設定]** ブレードで **[リモート管理]** をクリックします。
 3. **[リモート管理を有効にする]** を **[はい]** に設定します。
 4. これで、HTTPS を使用した接続を選択できるようになります  (既定の設定は HTTPS 経由での接続です)。HTTPS が選択されていることを確認します。
-5. ...をクリックし、**リモート管理証明書をダウンロードする** をクリックします。 このファイルを保存する場所を指定します。 この証明書を、デバイスに接続するために使用するクライアントまたはホスト コンピューターにインストールする必要があります。
+5. [...] をクリックし、**[リモート管理証明書をダウンロードする]** をクリックします。 このファイルを保存する場所を指定します。 この証明書を、デバイスに接続するために使用するクライアントまたはホスト コンピューターにインストールする必要があります。
 6. **[保存]** をクリックし、確認を求められたら **[はい]** をクリックします。
 
 ### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>シリアル コンソールを使用して HTTPS 経由でのリモート管理を有効にする
@@ -212,7 +215,10 @@ Windows PowerShell と SSL を使用して、リモート ホストまたはク�
 Windows PowerShell のリモート接続元にするコンピューターで次の手順を実行します。
 
 #### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>Windows PowerShell と SSL を使用してデバイスの SSAdmin セッションに移行するには
-1. Windows PowerShell セッションを管理者として開始します。
+1. Windows PowerShell セッションを管理者として開始します。 Windows 10 クライアントを使用している場合、Windows リモート管理サービスは、既定で手動に設定されています。 サービスを起動するには、次を入力してください。
+
+    `Start-Service WinRM`
+
 2. 次のように入力して、クライアントの信頼されたホストにデバイスの IP アドレスを追加します。
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
@@ -230,14 +236,14 @@ Windows PowerShell のリモート接続元にするコンピューターで次�
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
     コマンドレットの -ComputerName パラメーターには、<*ターゲット デバイスのシリアル番号*> を指定します。 このシリアル番号は、リモート ホストの hosts ファイルで、DATA 0 の IP アドレスにマップしたものです。たとえば、次の図に示す **SHX0991003G44MT** です。
-5. 次のコマンドを入力します。
+5. 次のコマンドを入力します: 
    
      `Enter-PSSession $session`
 6. 数分間待機する必要があります。その後、HTTPS 経由の SSL でデバイスに接続されます。 デバイスに接続されたことを示すメッセージが表示されます。
    
     ![HTTPS と SSL を使用した PowerShell リモート処理](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Windows PowerShell を使用した StorSimple デバイスの管理](storsimple-8000-windows-powershell-administration.md)の詳細を確認する。
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)の詳細を確認する。

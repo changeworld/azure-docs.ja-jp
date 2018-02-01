@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 9ea5be818cfc104c243ce31cc0e2d0f10135259f
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: e1d110aea526c4632219ef8fd2a9681b1b6c330f
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="create-container-images-for-service-fabric"></a>Service Fabric のコンテナー イメージを作成する
 
@@ -58,7 +58,7 @@ git clone https://github.com/Azure-Samples/service-fabric-containers.git
 cd service-fabric-containers/Linux/container-tutorial/
 ```
 
-ソリューションには 2 つのフォルダーと ' docker-compse.yml' ファイルが含まれています。 'azure-vote'フォルダーには、イメージのビルドに使用される Dockerfile と共に Python フロントエンド サービスが格納されています。 'Voting' ディレクトリには、クラスターにデプロイされる Service Fabric アプリケーション パッケージが含まれています。 これらのディレクトリには、このチュートリアルに必要な資産が含まれています。  
+ソリューションには 2 つのフォルダーと 'docker-compose.yml' ファイルが含まれています。 'azure-vote'フォルダーには、イメージのビルドに使用される Dockerfile と共に Python フロントエンド サービスが格納されています。 'Voting' ディレクトリには、クラスターにデプロイされる Service Fabric アプリケーション パッケージが含まれています。 これらのディレクトリには、このチュートリアルに必要な資産が含まれています。  
 
 ## <a name="create-container-images"></a>コンテナー イメージを作成する
 

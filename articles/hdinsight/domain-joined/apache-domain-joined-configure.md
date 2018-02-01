@@ -4,7 +4,7 @@ description: "ドメイン参加済み HDInsight クラスターのセットア�
 services: hdinsight
 documentationcenter: 
 author: saurinsh
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 tags: 
 ms.assetid: 0cbb49cc-0de1-4a1a-b658-99897caf827c
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/10/2018
+ms.date: 01/24/2018
 ms.author: saurinsh
-ms.openlocfilehash: 4921e329c2ec8ce3d5bbf8a0851146e13d5f6cd3
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 6284b246c071fb99a8b47845aca34b6262e5b856
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>ドメイン参加済み HDInsight サンドボックス環境を構成する
 
@@ -29,7 +29,6 @@ Azure HDInsight クラスターとスタンドアロンの Active Directory お�
 
 -   Azure IaaS 上で実行しているスタンドアロンの Active Directory。
 -   Azure Active Directory。
--   お客様のオンプレミス環境で実行している Active Directory。
 
 この記事では、Azure IaaS 上で実行しているスタンドアロンの Active Directory を使う方法について説明します。 これは、HDInsight 上でのマルチユーザー サポートを実現するためにお客様が利用できる最も簡単なアーキテクチャです。 この記事では、この構成の 2 つの方法を説明します。
 
@@ -71,9 +70,10 @@ Azure HDInsight クラスターとスタンドアロンの Active Directory お�
     - **[管理ユーザー名]**: ドメイン管理者のユーザー名を入力します。
     - **[管理パスワード]**: ドメイン管理者のパスワードを入力します。
     - **[ドメイン名]**: 既定の名前は *contoso.com* です。ドメイン名を変更する場合は、**[セキュリティで保護された LDAP 証明書]** フィールドと **[Organizational Unit DN]\(組織単位 DN\)** フィールドも更新する必要があります。
+    - **DNS プレフィックス**: Load Balancer によって使用されるパブリック IP アドレスの DNS プレフィックスを入力します。
     - **[クラスター名]**: HDInsight クラスターの名前を入力します。
     - **[クラスターの種類]**: この値は変更しないでください。 クラスターの種類を変更する場合は、最後のステップで対応するテンプレートを使います。
-
+    - **[Secure LDAP Certificate Password]\(Secure LDAP 証明書のパスワード\)**: Secure LDAP 証明書フィールドを変更する場合を除き、既定値を使用します。
     一部の値は、テンプレートにハードコーディングされています (たとえば、worker ノードのインスタンス数は 2)。  ハード コーディングされた値を変更するには、**[テンプレートの編集]** をクリックします。
 
     ![HDInsight のドメイン参加済みクラスターのテンプレートの編集](./media/apache-domain-joined-configure/hdinsight-domain-joined-edit-template.png)

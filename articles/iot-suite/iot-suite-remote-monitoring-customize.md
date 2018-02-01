@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 11/10/2017
+ms.date: 01/17/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 886a4412ac348869563a03d697f4363cb3dea8f9
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: f5d38091b59110859d4376a5cd16a19f24dad65b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="customize-the-remote-monitoring-preconfigured-solution"></a>リモート監視の構成済みソリューションのカスタマイズ
 
@@ -24,6 +24,10 @@ ms.lasthandoff: 11/10/2017
 
 * ソース コードと構成済みソリューションを構成するマイクロサービスのリソースが保存されている GitHub リポジトリ。
 * 新しいデバイスの種類を追加するなどの一般的なカスタマイズのシナリオ。
+
+次のビデオでは、リモート監視構成済みソリューションをカスタマイズするためのオプションの概要が説明されています。
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/How-to-customize-the-Remote-Monitoring-Preconfigured-Solution-for-Azure-IoT/Player]
 
 ## <a name="project-overview"></a>プロジェクトの概要
 
@@ -42,7 +46,7 @@ ms.lasthandoff: 11/10/2017
 
 <!-- please add links for each of the repos in the table, you can find them here https://github.com/Azure/azure-iot-pcs-team/wiki/Repositories-->
 
-| マイクロサービス      | Description | Java | .NET |
+| マイクロサービス      | [説明] | Java | .NET |
 | ----------------- | ----------- | ---- | ---- |
 | Web UI            | リモート監視ソリューション向け Web アプリ。 React.js フレームワークを使用して UI を実装します。 | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) | [N/A(React.js)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-webui) |
 | IoT Hub マネージャー   | IoT Hub との通信を処理します。        | [使用可能](https://github.com/Azure/iothub-manager-java) | [使用可能](https://github.com/Azure/iothub-manager-dotnet)   |
@@ -78,7 +82,7 @@ ms.lasthandoff: 11/10/2017
     CONTOSO: 'Contoso',
     ```
 
-1. `Contoso` を自分の会社名に置き換えます。 For example:
+1. `Contoso` を自分の会社名に置き換えます。 例: 
 
     ```js
     CONTOSO: 'YourCo',
@@ -96,7 +100,7 @@ ms.lasthandoff: 11/10/2017
     import ContosoIcon from '../../../assets/icons/Contoso.svg';
     ```
 
-1. `Contoso.svg` を自分のロゴ ファイルの名前に置き換えます。 For example:
+1. `Contoso.svg` を自分のロゴ ファイルの名前に置き換えます。 例: 
 
     ```js
     import ContosoIcon from '../../../assets/icons/YourCo.svg';
@@ -108,7 +112,7 @@ ms.lasthandoff: 11/10/2017
     alt="ContosoIcon"
     ```
 
-1. `ContosoIcon` を自分の `alt` テキストに置き換えます。 For example:
+1. `ContosoIcon` を自分の `alt` テキストに置き換えます。 例: 
 
     ```js
     alt="YourCoIcon"
@@ -249,7 +253,7 @@ The default storage service for logs is Cosmos DB. See the [Customize log storag
 * [ストレージ アダプター (.NET)](https://github.com/Azure/pcs-storage-adapter-dotnet)
 * [ストレージ アダプター (Java)](https://github.com/Azure/pcs-storage-adapter-java)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、構成済みソリューションのカスタマイズを容易にするために使用できるリソースについて説明します。
 

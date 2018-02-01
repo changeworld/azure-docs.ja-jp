@@ -1,6 +1,6 @@
 ---
-title: "ILB ASE を Azure Application Gateway と統合する"
-description: "ILB ASE のアプリを Azure Application Gateway と統合する方法に関するチュートリアル"
+title: "ILB App Service Environment をアプリケーション ゲートウェイと統合する"
+description: "ILB App Service Environment のアプリをアプリケーション ゲートウェイと統合する方法についてのチュートリアルです"
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -13,90 +13,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: ccompy
-ms.openlocfilehash: eedad8824add7fe425d34975dab640fbee82c2bc
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: d56eab79c3b3f6b37dc39d8e4bea0d5b7759631a
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 01/18/2018
 ---
-# <a name="integrating-your-ilb-ase-with-an-application-gateway"></a>ILB ASE を Application Gateway と統合する #
+# <a name="integrate-your-ilb-app-service-environment-with-an-application-gateway"></a>ILB App Service Environment をアプリケーション ゲートウェイと統合する #
 
-[Azure App Service Environment (ASE)](./intro.md) は、ユーザーの Azure Virtual Network のサブネットに Azure App Service をデプロイしたものです。 これは、アプリにアクセスするためのパブリック エンドポイントまたはプライベート エンドポイントを使用してデプロイできます。 プライベート エンドポイントを使用した ASE のデプロイは、ILB ASE と呼ばれます。  
-Azure Application Gateway は、レイヤー 7 負荷分散、SSL オフロード、および WAF 保護を提供する仮想アプライアンスです。 これは、パブリック IP アドレスでリッスンし、トラフィックをアプリケーション エンドポイントにルーティングします。 次の情報は、WAF で構成された Application Gateway を ILB ASE のアプリと統合する方法について説明します。  
+[PowerApps 用の App Service Environment](./intro.md) は、ユーザーの Azure 仮想ネットワークのサブネットに Azure App Service を展開したものです。 これは、アプリにアクセスするためのパブリック エンドポイントまたはプライベート エンドポイントを使用してデプロイできます。 プライベート エンドポイント (つまり、内部ロード バランサー) を使う App Service Environment の展開は、ILB App Service Environment と呼ばれます。  
 
-Application Gateway と ILB ASE の統合は、アプリ レベルで行われます。  Application Gateway を ILB ASE で構成する場合、ILB ASE の特定のアプリで行うことになります。 これにより、セキュリティで保護されたマルチ テナント アプリケーションを 1 つの ILB ASE でホストできます。  
+Azure Application Gateway は、レイヤー 7 負荷分散、SSL オフロード、および Web アプリケーション ファイアウォール (WAF) 保護を提供する仮想アプライアンスです。 これは、パブリック IP アドレスでリッスンし、トラフィックをアプリケーション エンドポイントにルーティングします。 
 
-![ILB ASE 上のアプリを指す Application Gateway][1]
+以下では、WAF で構成されたアプリケーション ゲートウェイを ILB App Service Environment のアプリと統合する方法について説明します。  
+
+アプリケーション ゲートウェイと ILB App Service Environment の統合は、アプリ レベルで行われます。 アプリケーション ゲートウェイを ILB App Service Environment で構成する場合、ILB App Service Environment の特定のアプリに対して行うことになります。 この手法を使うと、単一の ILB App Service Environment で、セキュリティ保護されたマルチテナント アプリケーションをホストできます。  
+
+![ILB App Service Environment 上のアプリを指すアプリケーション ゲートウェイ][1]
 
 このチュートリアルでは次を行います。
 
-* Application Gateway を作成する
-* ILB ASE 上のアプリを指すように Application Gateway を構成する
-* カスタム ドメイン名を優先するようにアプリを構成する
-* Application Gateway を指すパブリック DNS ホスト名を編集する
+* アプリケーション ゲートウェイを作成します。
+* ILB App Service Environment 上のアプリを指すようにアプリケーション ゲートウェイを構成します。
+* カスタム ドメイン名を優先するようにアプリを構成します。
+* アプリケーション ゲートウェイを指すパブリック DNS ホスト名を編集します。
 
-Application Gateway を ILB ASE と統合するには、次が必要です。
+## <a name="prerequisites"></a>前提条件
 
-* ILB ASE
-* ILB ASE で実行されているアプリ
-* ILB ASE のアプリで使用するインターネット ルーティング可能なドメイン名
-* ILB ASE が使用する ILB アドレス (これは、**[設定] -> [IP アドレス]** の ASE ポータルにあります)
+アプリケーション ゲートウェイを ILB App Service Environment と統合するには、次のものが必要です。
 
-    ![ILB ASE が使用する IP アドレス][9]
+* ILB App Service Environment。
+* ILB App Service Environment で実行するアプリ。
+* ILB App Service Environment のアプリで使うインターネット ルーティング可能なドメイン名。
+* ILB App Service Environment が使う ILB アドレス。 この情報は、App Service Environment ポータルの **[設定]** > **[IP アドレス]** にあります。
+
+    ![ILB App Service Environment で使われる IP アドレスの一覧の例][9]
     
-* 後でアプリケーション ゲートウェイを指すために使用されるパブリック DNS 名 
+* 後でアプリケーション ゲートウェイを指すために使われるパブリック DNS 名。 
 
-ILB ASE を作成する方法の詳細については、ドキュメント「[ILB ASE の作成と使用][ilbase]」を参照してください
+ILB App Service Environment の作成方法について詳しくは、[ILB App Service Environment の作成と使用][ilbase]に関するページをご覧ください。
 
-このガイドでは、Application Gateway を ASE がデプロイされているのと同じ Azure Virtual Network で使用することを前提としています。 Application Gateway の作成を開始する前に、Application Gateway をホストするために使用するサブネットを選択するか、または作成します。 GatewaySubnet という名前ではないサブネット、または ILB ASE で使用されるサブネットを使用する必要があります。
-Application Gateway を GatewaySubnet に配置した場合、後で 仮想ネットワーク ゲートウェイを作成することはできません。 また、ILB ASE で使用されるサブネットに Application Gateway を配置することもできません。これは、このサブネットには ASE しか含めることができないためです。
+この記事では、App Service Environment が展開されているのと同じ Azure 仮想ネットワークにアプリケーション ゲートウェイを作成するものとします。 アプリケーション ゲートウェイの作成を始める前に、ゲートウェイをホストするために使うサブネットを選択または作成します。 
 
-## <a name="steps-to-configure"></a>構成する手順 ##
+GatewaySubnet という名前ではないサブネットを使う必要があります。 アプリケーション ゲートウェイを GatewaySubnet に配置した場合、後で仮想ネットワーク ゲートウェイを作成できなくなります。 
 
-1. Azure ポータル内で、**[新規] > [ネットワーク] > [Application Gateway]** に移動します 
-    1. 次を指定します。
-        1. Application Gateway の名前
-        1. WAF の選択
-        1. ASE VNet に使用するのと同じサブスクリプションの選択
-        1. リソース グループの作成または選択
-        1. ASE VNet を配置する場所の選択
+また、ILB App Service Environment が使っているサブネットにゲートウェイを配置することもできません。 このサブネット内に存在できるのは App Service Environment だけです。
 
-    ![新しいアプリケーション ゲートウェイの作成の基礎][2]   
-    1. [設定] 領域で次を設定します。
-        1. ASE VNet
-        1. Application Gateway をデプロイする必要があるサブネット。 VPN ゲートウェイを作成できなくなるため、GatewaySubnet は使用しないでください。
-        1. パブリックの選択
-        1. パブリック IP アドレスを選択します。 アドレスが 1 つもない場合は、この時点で 1 つ作成します。
-        1. HTTP または HTTPS を構成します。 HTTPS を構成する場合は、PFX 証明書を提供する必要があります。
-        1. Web アプリケーション ファイアウォールの設定を選択します。 ここで、ファイアウォールを有効にして、必要に応じて検出または防止に設定することもできます。
+## <a name="configuration-steps"></a>構成の手順 ##
 
-    ![新しいアプリケーション ゲートウェイの作成の設定][3]
+1. Azure Portal で、**[新規]** > **[ネットワーク]** > **[アプリケーション ゲートウェイ]** に移動します。
+
+2. **[基本]** 領域で次のように設定します。
+
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** に、アプリケーション ゲートウェイの名前を入力します。
+
+   b. **[レベル]** で、**[WAF]** を選びます。
+
+   c. **[サブスクリプション]** で、App Service Environment の仮想ネットワークが使っているものと同じサブスクリプションを選びます。
+
+   d. **[リソース グループ]** で、リソース グループを作成または選択します。
+
+   e. **[場所]** で、App Service Environment 仮想ネットワークの場所を選びます。
+
+   ![新しいアプリケーション ゲートウェイの作成の基礎][2]
+
+3. **[設定]** 領域で次のように設定します。
+
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[仮想ネットワーク]** で、App Service Environment の仮想ネットワークを選びます。
+
+   b. **[サブネット]** で、アプリケーション ゲートウェイを展開する必要があるサブネットを選びます。 GatewaySubnet は使わないでください。VPN ゲートウェイを作成できなくなります。
+
+   c. **[IP アドレスの種類]** で、**[パブリック]** を選びます。
+
+   d. **[パブリック IP アドレス]** で、パブリック IP アドレスを選びます。 パブリック IP アドレスがない場合は、ここで作成します。
+
+   e. **[プロトコル]** で、**[HTTP]** または **[HTTPS]** を選びます。 HTTPS を構成する場合は、PFX 証明書を提供する必要があります。
+
+   f. **[Web アプリケーション ファイアウォール]** では、ファイアウォールを有効にすることができ、必要に応じて **[検出]** または **[防止]** に設定することもできます。
+
+   ![新しいアプリケーション ゲートウェイの作成の設定][3]
     
-    1. [概要] セクションを確認し、**[OK]** を選択します。 Application Gateway のセットアップの完了には、30 分あまりかかる可能性があります。  
+4. **[概要]** セクションで設定を確認し、**[OK]** を選びます。 アプリケーション ゲートウェイのセットアップが完了するまでに、30 分少々かかる可能性があります。  
 
-2. Application Gateway のセットアップが完了したら、Application Gateway ポータルに移動します。 **[バックエンド プール]** を選択します。  ILB ASE の ILB アドレスを追加します。
+5. アプリケーション ゲートウェイのセットアップが完了したら、アプリケーション ゲートウェイ ポータルに移動します。 **[バックエンド プール]** を選択します。 ILB App Service Environment の ILB アドレスを追加します。
 
-    ![バックエンド プールを構成する][4]
+   ![バックエンド プールを構成する][4]
 
-3. バックエンド プールを構成する処理が完了したら、**[正常性プローブ]** を選択します。 アプリに使用するドメイン名の正常性プローブを作成します。 
+6. バックエンド プールの構成処理が完了した後、**[正常性プローブ]** を選びます。 アプリに使うドメイン名の正常性プローブを作成します。 
 
-    ![正常性プローブを構成する][5]
+   ![正常性プローブを構成する][5]
     
-4. 正常性プローブを構成する処理が完了したら、**[HTTP 設定]** を選択します。  既存の設定をここで編集し、**[カスタム プローブの使用]** を選択し、構成したプローブを選択します。
+7. 正常性プローブの構成処理が完了した後、**[HTTP 設定]** を選びます。 既存の設定を編集し、**[カスタム プローブの使用]** を選んで、構成したプローブを選びます。
 
-    ![HTTP 設定を構成する][6]
+   ![HTTP 設定を構成する][6]
     
-5. Application Gateway の **[概要]** に移動し、Application Gateway に使用するパブリック IP アドレスをコピーします。  その IP アドレスをアプリ ドメイン名の A レコードとして設定するか、CNAME レコードでそのアドレスの DNS 名を使用します。  パブリック IP アドレスを選択して、それをパブリック IP アドレスの UI にコピーするほうが、Application Gateway の [概要] セクションのリンクからコピーするよりも簡単です。 
+8. アプリケーション ゲートウェイの **[概要]** セクションに移動し、アプリケーション ゲートウェイが使うパブリック IP アドレスをコピーします。 その IP アドレスをアプリ ドメイン名の A レコードとして設定するか、CNAME レコードでそのアドレスの DNS 名を使用します。 パブリック IP アドレスを選んで、それをパブリック IP アドレスの UI にコピーするほうが、アプリケーション ゲートウェイの **[概要]** セクションのリンクからコピーするより簡単です。 
 
-    ![Application Gateway ポータル][7]
+   ![アプリケーション ゲートウェイ ポータル][7]
 
-6. アプリのカスタム ドメイン名を ILB ASE に設定します。  ポータルのアプリに移動し、[設定] で **[カスタム ドメイン]** を選択します。
+9. アプリのカスタム ドメイン名を ILB App Service Environment に設定します。 ポータルでアプリに移動し、**[設定]** の **[カスタム ドメイン]** を選びます。
 
-![アプリでカスタム ドメイン名を設定する][8]
+   ![アプリでカスタム ドメイン名を設定する][8]
 
-Web アプリのカスタム ドメイン名の設定に関する情報は、「[Web アプリのカスタム ドメイン名を設定する][custom-domain]」にあります。 ILB ASE のアプリとこのドキュメントでのアプリの違いは、ドメイン名の検証が行われないということです。  アプリ エンドポイントを管理する DNS を所有しているため、必要なものをすべて自由に配置できます。 ここで追加するカスタム ドメイン名は、DNS 内に配置する必要はありませんが、アプリで構成する必要はあります。 
+Web アプリのカスタム ドメイン名の設定について詳しくは、[Web アプリのカスタム ドメイン名の設定][custom-domain]に関するページをご覧ください。 ただし、ILB App Service Environment 内のアプリの場合は、ドメイン名についての検証は何もありません。 アプリ エンドポイントを管理する DNS を所有しているため、必要なものをすべて自由に配置できます。 ここで追加するカスタム ドメイン名は、DNS 内に配置する必要はありませんが、アプリで構成する必要はあります。 
 
-セットアップが完了し、DNS 変更を反映するまで少しの時間待機すると、作成したカスタム ドメイン名でアプリにアクセスできるようになります。 
+セットアップが完了した後、DNS の変更が反映されるまでしばらく待つと、作成したカスタム ドメイン名を使ってアプリにアクセスできます。 
 
 
 <!--IMAGES-->

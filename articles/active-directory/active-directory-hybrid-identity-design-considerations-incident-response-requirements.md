@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - インシデント対応要件の決定 | Microsoft Docs"
+title: "ハイブリッド ID 設計 - インシデント対応要件 - Azure | Microsoft Docs"
 description: "潜在的な脅威を特定し、軽減するための措置を行うために IT が活用できるハイブリッド ID ソリューションの監視と報告の機能を決定します"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: dd612c0634782ed758835b8bf264fcc884c428fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 1521c3c7353d206df8a95b2cce1f3358c22fc438
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-incident-response-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのインシデント対応要件の決定
 大規模または中規模の組織は、多くの場合、[セキュリティ インシデント対応](https://technet.microsoft.com/library/cc700825.aspx)を配備し、インシデントのレベルに基づく IT 措置を支援します。 ID 管理システムはインシデント対応プロセスの重要な構成要素です。ID 管理システムを利用し、ターゲットに対して特定のアクションを実行した人物を特定できるからです。 ハイブリッド ID ソリューションでは、潜在的な脅威を特定し、軽減するための措置を行うために IT が活用できる監視と報告の機能を備えている必要があります。 典型的なインシデント対応計画では、計画の一部として次のフェーズが与えられます。
@@ -60,7 +61,7 @@ ID 管理システムには、IT 管理者がこのような疑わしい行動�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [データ保護戦略の定義](active-directory-hybrid-identity-design-considerations-data-protection-strategy.md)
 
 ## <a name="see-also"></a>関連項目

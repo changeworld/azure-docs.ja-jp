@@ -4,8 +4,8 @@ description: "料金所ブースを例に Stream Analytics を使った基本的
 keywords: "IOT ソリューション, ウィンドウ関数"
 documentationcenter: 
 services: stream-analytics
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
@@ -13,15 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: a93693ef7d40025fa96846594a8eb525a50b6885
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/12/2018
+ms.author: sngun
+ms.openlocfilehash: cc84a34a410a750ddf2acb8f19b3bb809d269098
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
+
 ## <a name="introduction"></a>はじめに
 このチュートリアルでは、データに隠された知見を Azure Stream Analytics を使ってリアルタイムで突き止める方法を説明します。 開発者は、データのストリーム (クリック ストリーム、ログ、デバイスによって生成されたイベントなど) に履歴レコードや参照データを簡単に組み合わせて、ビジネスに関する知見を導き出すことができます。 Azure Stream Analytics は、Microsoft Azure の徹底した管理によってホストされたリアルタイム ストリーム計算処理サービスであるため、高い障害回復力とスケーラビリティ、低遅延が実現され、短時間での立ち上げが可能となっています。
 
@@ -54,7 +55,7 @@ ms.lasthandoff: 10/11/2017
 ### <a name="entry-data-stream"></a>入口データ ストリーム
 入口データ ストリームは、料金所に入る車両の情報を含んでいます。
 
-| TollID | EntryTime | LicensePlate | 状態 | 保存する | モデル | VehicleType | VehicleWeight | Toll | タグ |
+| TollID | EntryTime | LicensePlate | State | Make | モデル | VehicleType | VehicleWeight | Toll | タグ |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -65,13 +66,13 @@ ms.lasthandoff: 10/11/2017
 
 次に、それぞれの列について簡単に説明します。
 
-| 分割 | Description |
+| 分割 | [説明] |
 | --- | --- |
 | TollID |料金所を一意に識別する料金所 ID |
 | EntryTime |車両が料金所ブースに入った日時 (UTC) |
 | LicensePlate |車両のナンバー プレートの番号 |
-| 状態 |米国の州 |
-| 保存する |自動車の製造元 |
+| State |米国の州 |
+| Make |自動車の製造元 |
 | モデル |自動車の型式 |
 | VehicleType |1 (乗用車) または 2 (商用車) |
 | WeightType |車両重量 (トン)。乗用車の場合は 0 |
@@ -92,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 
 次に、それぞれの列について簡単に説明します。
 
-| 分割 | Description |
+| 分割 | [説明] |
 | --- | --- |
 | TollID |料金所を一意に識別する料金所 ID |
 | ExitTime |車両が料金所ブースから出た日時 (UTC) |
@@ -112,7 +113,7 @@ ms.lasthandoff: 10/11/2017
 
 次に、それぞれの列について簡単に説明します。
 
-| 分割 | Description |
+| 分割 | [説明] |
 | --- | --- |
 | LicensePlate |車両のナンバー プレートの番号 |
 | RegistrationId |車両の登録 ID |
@@ -175,26 +176,13 @@ ps1 ファイル、.dll ファイル、.exe ファイルは Windows によって
 この時点で Azure Portal に、リソースが表示されます。 <https://portal.azure.com> にアクセスし、アカウントの資格情報でサインインします。 現在、一部の機能ではクラシック ポータルを利用しています。 その手順を以下に示します。
 
 ### <a name="azure-event-hubs"></a>Azure Event Hubs
-Azure Portal で、左側の管理ウィンドウの下部にある **[その他のサービス]** をクリックします。 表示されたフィールドに「**Event hubs**」と入力し、**[イベント ハブ]** をクリックします。 新しいブラウザー ウィンドウが起動され、**クラシック ポータル**に **[Service Bus]** 領域が表示されます。 ここで、Setup.ps1 スクリプトによって作成されたイベント ハブを確認できます。
 
-![Service Bus](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image8.png)
-
-*tolldata* で始まるものをクリックします。 **[イベント ハブ]** タブをクリックします。この名前空間に作成された *entry* と *exit* という 2 つのイベント ハブが表示されます。
-
-![クラシック ポータルの [イベント ハブ] タブ](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image9.png)
+Azure Portal で、左側の管理ウィンドウの下部にある **[その他のサービス]** をクリックします。 表示されるフィールドに「**Event hubs**」と入力すると、**tolldata** で始まる新しい Event Hubs 名前空間を確認できます。 この名前空間は、Setup.ps1 スクリプトによって作成されます。 この名前空間に作成された **entry** と **exit** という 2 つのイベント ハブが表示されます。
 
 ### <a name="azure-storage-container"></a>Azure Storage コンテナー
-1. Azure Portal が表示されている、ブラウザーの先ほどのタブに戻ります。 Azure Portal の左側にある **[ストレージ]** をクリックすると、チュートリアルで使用する Azure Storage コンテナーが表示されます。
-   
-    ![Storage menu item](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image11.png)
-2. *tolldata* で始まるものをクリックします。 **[コンテナー]** タブをクリックすると、作成されたコンテナーが表示されます。
-   
-    ![Containers tab in the Azure portal](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image10.png)
-3. **[tolldata]** コンテナーをクリックし、車両の登録データが含まれる、アップロード済みの JSON ファイルを表示します。
-   
-    ![Screenshot of the registration.json file in the container](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image12.png)
+Azure Portal でストレージ アカウントを参照すると、**tolldata** で始まるストレージ アカウントが表示されます。 **[tolldata]** コンテナーをクリックし、車両の登録データが含まれる、アップロード済みの JSON ファイルを表示します。
 
-### <a name="azure-sql-database"></a>Azure SQL Database
+### <a name="azure-sql-database"></a>の接続文字列
 1. ブラウザーで表示されている最初のタブで Azure Portal に戻ります。 Azure Portal の左側にある **[SQL データベース]** をクリックしてチュートリアルで使う SQL データベースを表示し、**tolldatadb** をクリックします。
    
     ![Screenshot of the created SQL database](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image15.png)
@@ -216,7 +204,7 @@ Azure Portal で、左側の管理ウィンドウの下部にある **[その他
 6. **[データベース名の選択または入力]** をクリックし、データベースとして **[TollDataDB]** を選択します。
    
     ![Add Connection dialog box](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image17.jpg)
-7. **[OK]**をクリックします。
+7. Click **OK**.
 8. [サーバー エクスプローラー] を開きます。
    
     ![Server Explorer](media/stream-analytics-build-an-iot-solution-using-stream-analytics/image18.png)

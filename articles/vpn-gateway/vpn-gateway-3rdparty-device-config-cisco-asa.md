@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.openlocfilehash: 080f83a67674ab059404870f6ec0e7470cfcceff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbe22b70b4fe3463ffc7b0e9a7ebd683f681117d
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="sample-configuration-cisco-asa-device-ikev2no-bgp"></a>サンプル構成: Cisco ASA デバイス (IKEv2/BGP なし)
 この記事では、Cisco Adaptive Security Appliance (ASA) デバイスを Azure VPN ゲートウェイに接続するためのサンプル構成を紹介します。 この例は、ボーダー ゲートウェイ プロトコル (BGP) を使用せずに IKEv2 を実行する Cisco ASA デバイスに適用されます。 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 | テスト済みのモデル           | ASA 5505                          |
 | テスト済みのバージョン         | 9.2                               |
 | IKE バージョン            | IKEv2                             |
-| BGP                    | いいえ                                |
+| BGP                    | いいえ                                 |
 | Azure VPN ゲートウェイの種類 | ルートベースの VPN ゲートウェイ           |
 |                        |                                   |
 
@@ -98,10 +98,7 @@ Azure の構成を作成する具体的な手順については、[単一の VPN
 
 * DH グループおよび PFS グループのグループ 5 以降のサポートには ASA バージョン 9.x が必要です。
 
-* AES-GCM による IPsec の暗号化と、SHA-256、SHA-384、SHA-512 との IPsec の整合性のサポートには、ASA パージョン 9.x が必要です。 より新しい ASA デバイスには、このサポート要件が当てはまります。
-
-    > [!NOTE]
-    > ASA デバイス モデル 5505、5510、5520、5540、5550、5580 はサポートされません。 これらのアルゴリズムが VPN デバイスのモデルとファームウェア バージョンでサポートされていることを、ご使用の VPN デバイスの仕様で確認してください。
+* AES-GCM による IPsec の暗号化と、SHA-256、SHA-384、SHA-512 との IPsec の整合性のサポートには、ASA パージョン 9.x が必要です。 より新しい ASA デバイスには、このサポート要件が当てはまります。 公開時点では、ASA モデル 5505、5510、5520、5540、5550、および 5580 は、これらのアルゴリズムはサポートされていません。 これらのアルゴリズムが VPN デバイスのモデルとファームウェア バージョンでサポートされていることを、ご使用の VPN デバイスの仕様で確認してください。
 
 
 ### <a name="sample-device-configuration"></a>デバイスのサンプル構成
@@ -310,5 +307,5 @@ sysopt connection tcpmss 1350
     show run tunnel-group
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 アクティブ/アクティブのクロスプレミス接続と VNet 間接続を構成する方法については、[アクティブ/アクティブの VPN ゲートウェイの構成](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。

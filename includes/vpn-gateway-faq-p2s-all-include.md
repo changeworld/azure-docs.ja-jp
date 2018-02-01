@@ -53,9 +53,23 @@ VPN トンネルのスループットを正確に一定レベルに維持する�
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure は、Windows で IKEv2 VPN をサポートしていますか。
 
-ユーザーは、IKEv2 をサポートしている組み込みの Windows VPN クライアントを使用して Azure に接続できます。 ただし、次のシナリオでは、Windows デバイスからの IKEv2 接続は機能しません。
+IKEv2 は、Windows 10 および Windows Server 2016 でサポートされています。 ただし、IKEv2 を使用するには、更新プログラムをインストールして、ローカルでレジストリ キーの値を設定する必要があります。 Windows 10 以前の OS バージョンはサポートされておらず、それらのバージョンで使用できるのは SSTP のみになります。
 
-  ユーザーのデバイスに多くの信頼されたルート証明書が含まれていると、インターネット キー交換中のメッセージ ペイロードのサイズが大きくなり、IP レイヤーの断片化が発生します。 フラグメントは Azure エンドで拒否されるため、接続の失敗につながります。 この問題を引き起こす証明書の正確な数は、予測が困難です。 その結果、Windows デバイスからの IKEv2 接続が機能するかは保証されません。 Windows デバイスと Mac デバイスが混在する環境で SSTP と IKEv2 の両方を構成すると、Windows VPN プロファイルは必ず最初に IKEv2 トンネルを試行します。 これがここで説明した問題が原因で失敗すると、SSTP にフォールバックします。
+Windows 10 または Windows Server 2016 を IKEv2 用に準備するには:
+
+1. 更新プログラムをインストールします。
+
+  | OS バージョン | 日付 | 数/リンク |
+  |---|---|---|---|
+  | Windows Server 2016<br>Windows 10 バージョン 1607 | 2018 年 1 月 17 日 | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
+  | Windows 10 バージョン 1703 | 2018 年 1 月 17 日 | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
+  |  |  |  |  |
+
+2. レジストリ キーの値を設定します。 レジストリの "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload" REG_DWORD キーを作成するか、または 1 に設定します。
+
+### <a name="what-happens-when-i-configure-both-sstp-and-ikev2-for-p2s-vpn-connections"></a>P2S VPN 接続に対して SSTP と IKEv2 の両方を構成した場合、何が起こりますか。
+
+Windows デバイスと Mac デバイスが混在する環境で SSTP と IKEv2 の両方を構成すると、Windows VPN クライアントは必ず最初に IKEv2 トンネルを試行します。ただし、IKEv2 接続が成功しなかった場合 SSTP にフォールバックします。 MacOSX は IKEv2 経由のみで接続します。
 
 ### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Windows と Mac 以外に、Azure が P2S VPN 向けにサポートしている他のプラットフォームはありますか。
 

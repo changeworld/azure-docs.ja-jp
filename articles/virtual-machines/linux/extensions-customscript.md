@@ -15,28 +15,33 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: danis
-ms.openlocfilehash: 53a241f12373acdb5d40575915d8d6c2f3c86b9a
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 53adef0f512c54e036a981dbaa0d08453db6b194
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="using-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Azure カスタム スクリプト拡張機能と Linux 仮想マシンの使用
-カスタム スクリプト拡張機能は、Azure 仮想マシンでスクリプトをダウンロードし、実行します。 この拡張機能は、デプロイ後の構成、ソフトウェアのインストール、その他の構成や管理タスクに役立ちます。 スクリプトは、Azure ストレージやその他のアクセス可能なインターネットの場所からダウンロードできます。また、実行時に拡張機能に提供することもできます。 カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合されており、Azure CLI、PowerShell、Azure Portal、または Azure 仮想マシン REST API を使用して実行することもできます。
+# <a name="use-the-azure-custom-script-extension-with-linux-virtual-machines"></a>Linux 仮想マシンで Azure カスタム スクリプト拡張機能を使用する
+カスタム スクリプト拡張機能は、スクリプトをダウンロードし、Azure 仮想マシンで実行します。 この拡張機能は、展開後の構成、ソフトウェアのインストール、その他の構成タスクや管理タスクに役立ちます。 スクリプトは、Azure Storage や他のアクセス可能なインターネットの場所からダウンロードできます。または、実行時に拡張機能に提供することもできます。 
 
-このドキュメントでは、Azure CLI からカスタム スクリプト拡張機能を使用する方法と、Azure Resource Manager テンプレートを使用する方法について詳しく説明します。また、Linux システムでのトラブルシューティング手順についても詳しく説明します。
+カスタム スクリプト拡張機能は Azure Resource Manager テンプレートと統合します。 また、Azure CLI、PowerShell、Azure Portal、または Azure Virtual Machines REST API を使って実行することもできます。
+
+この記事では、Azure CLI からカスタム スクリプト拡張機能を使う方法と、Azure Resource Manager テンプレートを使って拡張機能を実行する方法について説明します。 また、Linux システムでのトラブルシューティング手順も示します。
 
 ## <a name="extension-configuration"></a>拡張機能の構成
-カスタム スクリプト拡張機能の構成では、スクリプトの場所や、実行するコマンドなどを指定します。 この構成は、コマンド ラインで指定する構成ファイルや、Azure Resource Manager テンプレートに格納できます。 機密データは、保護された構成に格納できます。この構成は暗号化され、仮想マシン内だけで復号化されます。 保護された構成は、実行コマンドにパスワードなどの機密情報が含まれている場合に便利です。
+カスタム スクリプト拡張機能の構成では、スクリプトの場所や、実行するコマンドなどを指定します。 この構成は、構成ファイルに格納したり、コマンド ラインで指定したり、Azure Resource Manager テンプレートで指定したりできます。 
+
+機微なデータは、保護された構成に格納できます。この構成は暗号化され、仮想マシン内だけで復号化されます。 保護された構成は、実行コマンドにパスワードなどの機密情報が含まれている場合に便利です。
 
 ### <a name="public-configuration"></a>パブリック構成
-スキーマ:
+パブリック構成のスキーマを次に示します。
 
-**注記** - これらのプロパティ名では大文字と小文字が区別されます。 デプロイに関する問題を回避するために下記のような名前を使用します。
+>[!NOTE]
+>これらのプロパティ名では大文字と小文字が区別されます。 展開の問題を回避するには、次のような名前を使います。
 
-* **commandToExecute**: (必須、文字列) 実行するエントリ ポイント スクリプト
-* **fileUris**: (省略可能、文字列の配列) ダウンロードするファイルの URL。
-* **timestamp** : (省略可能、整数) このフィールドの値を変更してスクリプトの再実行をトリガーする場合にだけ、このフィールドを使用します。
+* **commandToExecute** (必須、文字列): 実行するエントリ ポイント スクリプト。
+* **fileUris** (省略可能、文字列の配列): ダウンロードするファイルの URL。
+* **timestamp** (省略可能、整数): スクリプトのタイムスタンプ。 このフィールドの値は、スクリプトの再実行をトリガーする必要がある場合にのみ変更してください。
 
 ```json
 {
@@ -46,13 +51,14 @@ ms.lasthandoff: 01/10/2018
 ```
 
 ### <a name="protected-configuration"></a>保護された構成
-スキーマ:
+保護された構成のスキーマを次に示します。
 
-**注記** - これらのプロパティ名では大文字と小文字が区別されます。 デプロイに関する問題を回避するために下記のような名前を使用します。
+>[!NOTE]
+>これらのプロパティ名では大文字と小文字が区別されます。 展開の問題を回避するには、次のような名前を使います。
 
-* **commandToExecute**: (省略可能、文字列) 実行するエントリ ポイント スクリプト。 コマンドにパスワードなどの機密情報が含まれている場合は、代わりにこのフィールドを使用します。
-* **storageAccountName**: (省略可能、文字列) ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべての fileUris が Azure BLOB の URL である必要があります。
-* **storageAccountKey**: (省略可能、文字列) ストレージ アカウントのアクセス キー。
+* **commandToExecute** (省略可能、文字列): 実行するエントリ ポイント スクリプト。 コマンドにパスワードなどの機密情報が含まれている場合は、このフィールドを使います。
+* **storageAccountName** (省略可能、文字列): ストレージ アカウントの名前。 ストレージの資格情報を指定する場合は、すべてのファイル URI が Azure BLOB の URL である必要があります。
+* **storageAccountKey** (省略可能、文字列): ストレージ アカウントのアクセス キー。
 
 ```json
 {
@@ -63,13 +69,13 @@ ms.lasthandoff: 01/10/2018
 ```
 
 ## <a name="azure-cli"></a>Azure CLI
-カスタム スクリプト拡張機能を実行するために Azure CLI を使用している場合は、少なくともファイルの URI およびスクリプト実行コマンドが含まれている構成ファイルを作成します。
+Azure CLI を使ってカスタム スクリプト拡張機能を実行するときは、1 つまたは複数の構成ファイルを作成します。 構成ファイルには、少なくとも、ファイルの URI とスクリプト実行コマンドが含まれます。
 
 ```azurecli
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-必要に応じて、コマンドから JSON 形式の文字列として設定を指定することもできます。 そのようにすると、実行中に構成を指定することができ、個別の構成ファイルが不要になります。
+必要に応じて、コマンドで JSON 形式の文字列として設定を指定できます。 そのようにすると、実行中に構成を指定することができ、個別の構成ファイルが不要になります。
 
 ```azurecli
 az vm extension set '
@@ -82,7 +88,7 @@ az vm extension set '
 
 ### <a name="azure-cli-examples"></a>Azure CLI の例
 
-**例 1** - スクリプト ファイルを持つパブリック構成。
+#### <a name="public-configuration-with-script-file"></a>スクリプト ファイルのあるパブリック構成
 
 ```json
 {
@@ -97,7 +103,7 @@ Azure CLI コマンド:
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-**例 2** - スクリプト ファイルを持たないパブリック構成。
+#### <a name="public-configuration-with-no-script-file"></a>スクリプト ファイルのないパブリック構成
 
 ```json
 {
@@ -111,7 +117,9 @@ Azure CLI コマンド:
 az vm extension set --resource-group myResourceGroup --vm-name myVM --name customScript --publisher Microsoft.Azure.Extensions --settings ./script-config.json
 ```
 
-**例 3** - スクリプト ファイルの URI を指定するためにパブリック構成ファイルを使用し、実行するコマンドを指定するために、保護された構成ファイルを使用します。
+#### <a name="public-and-protected-configuration-files"></a>保護されたパブリック構成ファイル
+
+スクリプト ファイルの URI を指定するには、パブリック構成ファイルを使います。 実行するコマンドを指定するには、保護された構成ファイルを使います。
 
 パブリック構成ファイル:
 
@@ -136,10 +144,11 @@ az vm extension set --resource-group myResourceGroup --vm-name myVM --name custo
 ```
 
 ## <a name="resource-manager-template"></a>Resource Manager テンプレート
-Azure カスタム スクリプト拡張機能は、Resource Manager テンプレートを使用して、仮想マシンのデプロイ時に実行できます。 そうするには、適切な形式の JSON をデプロイ テンプレートに追加します。
+Resource Manager テンプレートを使うことで、仮想マシンの展開時に Azure カスタム スクリプト拡張機能を実行できます。 そうするには、適切な形式の JSON をデプロイ テンプレートに追加します。
 
 ### <a name="resource-manager-examples"></a>Resource Manager の例
-**例 1** - パブリック構成。
+
+#### <a name="public-configuration"></a>パブリック構成
 
 ```json
 {
@@ -168,7 +177,7 @@ Azure カスタム スクリプト拡張機能は、Resource Manager テンプ�
 }
 ```
 
-**例 2** - 保護された構成内の実行コマンド。
+#### <a name="execution-command-in-protected-configuration"></a>保護された構成内の実行コマンド
 
 ```json
 {
@@ -199,7 +208,7 @@ Azure カスタム スクリプト拡張機能は、Resource Manager テンプ�
 }
 ```
 
-完全な例については、 [.Net Core Music Store Demo](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)を参照してください。
+完全な例については、[.NET Music Store のデモ](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux)をご覧ください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 カスタム スクリプト拡張機能を実行すると、スクリプトが次の例のようなディレクトリに作成されるかダウンロードされます。 コマンドの出力も、このディレクトリの `stdout` および `stderr` ファイルに保存されます。
@@ -208,13 +217,13 @@ Azure カスタム スクリプト拡張機能は、Resource Manager テンプ�
 /var/lib/waagent/custom-script/download/0/
 ```
 
-Azure スクリプト拡張機能ではログが生成され、そのログもここに保存されます。
+Azure スクリプト拡張機能が生成するログも、ここにあります。
 
 ```bash
 /var/log/azure/custom-script/handler.log
 ```
 
-カスタム スクリプト拡張機能の実行状態も、Azure CLI で取得できます。
+また、Azure CLI を使って、カスタム スクリプト拡張機能の実行状態を取得できます。
 
 ```azurecli
 az vm extension list -g myResourceGroup --vm-name myVM
@@ -233,5 +242,5 @@ info:    vm extension get command OK
 ```
 
 ## <a name="next-steps"></a>次の手順
-他の VM スクリプト拡張機能については、[Linux 用の Azure スクリプト拡張機能の概要](extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+他の VM スクリプト拡張機能については、[Linux 用の Azure スクリプト拡張機能の概要](extensions-features.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 

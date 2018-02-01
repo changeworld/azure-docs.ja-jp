@@ -7,15 +7,15 @@ manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 12/12/2017
+ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: c97e1b5115a8a97b8d9345c02d12b55b1d7a58fd
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 926b78bbe1ec8efaf6529a084af47747325f6096
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="create-a-new-storage-account"></a>新しいストレージ アカウントの作成
+# <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
 Azure ストレージ アカウントは、Azure Storage 内のデータ オブジェクトの格納およびアクセスのために、クラウド内の一意の名前空間を提供します。 ストレージ アカウントには、そのアカウントの下に作成する BLOB、ファイル、キュー、テーブル、およびディスクが含まれます。 
 
@@ -138,9 +138,19 @@ az account list-locations \
 
 ---
 
-# <a name="create-a-general-purpose-storage-account"></a>汎用ストレージ アカウントの作成
+## <a name="create-a-general-purpose-storage-account"></a>汎用ストレージ アカウントの作成
 
-汎用ストレージ アカウントでは、Azure Storage サービス (BLOB、ファイル、キュー、およびテーブル) のすべてにアクセスできます。 汎用ストレージ アカウントは、Standard 階層または Premium 階層のいずれかで作成できます。 この記事の例では、Standard 階層 (既定) で汎用ストレージ アカウントを作成する方法を示します。 ストレージ アカウントのオプションの詳細については、「[Microsoft Azure Storage の概要](storage-introduction.md)」をご覧ください。
+汎用ストレージ アカウントでは、Azure Storage サービス (BLOB、ファイル、キュー、およびテーブル) のすべてにアクセスできます。 汎用ストレージ アカウントは、Standard 階層または Premium 階層のいずれかで作成できます。 この記事の例では、Standard 階層 (既定) で汎用ストレージ アカウントを作成する方法を示します。
+
+Azure Storage には、2 種類の汎用ストレージ アカウントがあります。
+
+- 汎用 v2 アカウント 
+- 汎用 v1 アカウント。 
+
+> [!NOTE]
+> 新しいストレージ アカウントを**汎用 v2 アカウント**として作成して、このアカウントで利用できる新しい機能を活用することをお勧めします。  
+
+ストレージ アカウントの種類の詳細については、「[Azure Storage アカウントのオプション](storage-account-options.md)」を参照してください。
 
 ストレージ アカウントに名前を付けるときは、次の規則に注意してください。
 
@@ -149,43 +159,72 @@ az account list-locations \
 
 # <a name="portaltabportal"></a>[ポータル](#tab/portal)
 
-Azure Portal で汎用ストレージ アカウントを作成するには、次の手順に従います。
+Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
 1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[その他のサービス]** を選択します。 次に、下へスクロールして **[ストレージ]** の **[ストレージ アカウント]** を選択します。 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
 2. ストレージ アカウントの名前を入力します。
-3. **[デプロイ モデル]**、**[アカウントの種類]**、**[パフォーマンス]**、**[レプリケーション]**、**[安全な転送が必須]** の各フィールドは、既定値の設定のままにします。
-4. ストレージ アカウントを作成するサブスクリプションを選択します。
-5. **[リソース グループ]** セクションで、**[既存のものを使用]** を選択してから、前のセクションで作成したリソース グループを選択します。
-6. 新しいストレージ アカウントの場所を選択します。
-7. **[作成]** をクリックしてストレージ アカウントを作成します。      
+3. **[アカウントの種類]** フィールドで **[StorageV2 (汎用 v2)]** を設定します。
+4. **[レプリケーション]** フィールドは **[ローカル冗長ストレージ (LRS)]** のままにします。 または、**[ゾーン冗長ストレージ (ZRS プレビュー)]**、**[地理冗長ストレージ (GRS)]**、または **[読み取りアクセス地理冗長ストレージ (RA-GRS)]** を選択することもできます。
+5. **[デプロイ モデル]**、**[パフォーマンス]**、**[安全な転送が必須]** の各フィールドは、既定値の設定のままにします。
+6. ストレージ アカウントを作成するサブスクリプションを選択します。
+7. **[リソース グループ]** セクションで、**[既存のものを使用]** を選択してから、前のセクションで作成したリソース グループを選択します。
+8. 新しいストレージ アカウントの場所を選択します。
+9. **[作成]** をクリックしてストレージ アカウントを作成します。      
 
 ![Azure Portal でのストレージ アカウントの作成を示したスクリーンショット](./media/storage-quickstart-create-account/create-account-portal.png)
 
 # <a name="powershelltabpowershell"></a>[PowerShell](#tab/powershell)
 
-汎用ストレージ アカウントを PowerShell から作成するには、[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) コマンドを使用します。 
+ローカル冗長ストレージ (LRS) を使用して汎用 v2 ストレージ アカウントを PowerShell から作成するには、[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) コマンドを使用します。 
 
 ```powershell
 New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name "storagequickstart" `
   -Location $location `
   -SkuName Standard_LRS `
-  -Kind Storage 
+  -Kind StorageV2 
 ```
+
+ゾーン冗長ストレージ (ZRS プレビュー)、geo 冗長ストレージ (GRS)、または読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用して汎用 v2 ストレージ アカウントを作成するには、**SkuName** パラメーターの値を以下の表の該当する値で置き換えます。 
+
+|レプリケーション オプション  |SkuName パラメーター  |
+|---------|---------|
+|ローカル冗長ストレージ (LRS)     |Standard_LRS         |
+|ゾーン冗長ストレージ (ZRS)     |Standard_ZRS         |
+|geo 冗長ストレージ (GRS)     |Standard_GRS         |
+|読み取りアクセス geo 冗長ストレージ (GRS)     |Standard_RAGRS         |
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-汎用ストレージ アカウントを Azure CLI から作成するには、[az storage account create](/cli/azure/storage/account#create) コマンドを使用します。
+ローカル冗長ストレージを使用して汎用 v2 ストレージ アカウントを Azure CLI から作成するには、[az storage account create](/cli/azure/storage/account#create) コマンドを使用します。
 
 ```azurecli-interactive
 az storage account create \
     --name storagequickstart \
     --resource-group storage-quickstart-resource-group \
     --location westus \
-    --sku Standard_LRS 
+    --sku Standard_LRS \
+    --kind StorageV2
 ```
 
+ゾーン冗長ストレージ (ZRS プレビュー)、geo 冗長ストレージ (GRS)、または読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用して汎用 v2 ストレージ アカウントを作成するには、**sku** パラメーターの値を以下の表の該当する値で置き換えます。 
+
+|レプリケーション オプション  |sku パラメーター  |
+|---------|---------|
+|ローカル冗長ストレージ (LRS)     |Standard_LRS         |
+|ゾーン冗長ストレージ (ZRS)     |Standard_ZRS         |
+|geo 冗長ストレージ (GRS)     |Standard_GRS         |
+|読み取りアクセス geo 冗長ストレージ (GRS)     |Standard_RAGRS         |
+
 ---
+
+> [!NOTE]
+> [ゾーン冗長ストレージ](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-zone-redundant-storage/preview/)は現在プレビュー段階で、次の場所でのみ使用できます。
+>    - 米国東部 2
+>    - 米国中部
+>    - フランス中部 (このリージョンは現在プレビュー段階です。 アクセスするには、「[Microsoft Azure preview with Azure Availability Zones now open in France (Azure 可用性ゾーンを使用できる Microsoft Azure プレビューがフランスで提供開始)](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france)」をご覧ください)。
+    
+使用可能なさまざまなタイプのレプリケーションの詳細については、[ストレージのレプリケーション オプション](storage-redundancy.md)に関するページを参照してください。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

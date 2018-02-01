@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 0edec15c7f14ee5338555b03700b7be32c3a1023
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 437c45891d1d20f5fadca8a58954185a3aef56ac
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -37,7 +37,7 @@ Azure Application Insights は、アプリケーションの運用とパフォ�
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。
 - アプリケーションに対する[Application Insights プロファイラーの有効化](app-insights-profiler.md#installation)を実行します。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
 
 ## <a name="identify-slow-server-operations"></a>低速のサーバー操作を識別する
@@ -46,7 +46,7 @@ Application Insights は、アプリケーションのさまざまな操作に�
 1. **[Application Insights]** を選択し、サブスクリプションを選択します。  
 1. **[パフォーマンス]** パネルを開くには、**[調査]** メニューの **[パフォーマンス]** を選択するか、**[サーバー応答時間]** グラフをクリックします。
 
-    ![パフォーマンス](media/app-insights-tutorial-performance/performance.png)
+    ![[パフォーマンス]](media/app-insights-tutorial-performance/performance.png)
 
 2. **[パフォーマンス]** パネルには、アプリケーションの各操作の数と平均実行時間が表示されます。  この情報を使用して、ユーザーに最も影響を与えている操作を識別できます。 この例では、**GET Customers/Details** と **GET Home/Index** が相対的に実行時間が長く、呼び出し数が多いため、調査対象に適しています。  他にも実行時間が長い操作がありますが、呼び出し回数が少ないため、それらを改善しても効果はごくわずかである可能性があります。  
 
@@ -63,6 +63,14 @@ Application Insights は、アプリケーションのさまざまな操作に�
 5.  この例では、かなりの数の要求で、その処理時間が 1 秒を超えていることがわかります。 **[操作の詳細]** をクリックすることで、この操作の詳細を確認できます。
 
     ![操作の詳細](media/app-insights-tutorial-performance/operation-details.png)
+
+    > [!NOTE]
+    要求、依存関係、例外、トレース、イベントなど、関連するサーバー側のテレメトリを一括して全画面表示で確認するには、[Unified details: E2E Transaction Diagnostics]\(詳細の一覧: E2C トランザクションの診断\) [プレビュー エクスペリエンス](app-insights-previews.md)を有効にします。 
+
+    このプレビューを有効にすると、依存関係呼び出しにかかった時間を、エラーや例外と一緒に 1 つの画面で確認できます。 コンポーネント間のトランザクションについては、ガント チャートと詳細ウィンドウを見ると、根本原因となっているコンポーネント、依存関係、または例外をすばやく診断できます。 選択したコンポーネント操作に関して収集されたトレースやイベントの時系列を確認する場合には、最下部のセクションを展開します。 [この新しいエクスペリエンスの詳細を確認する](app-insights-transaction-diagnostics.md)  
+
+    ![トランザクションの診断](media/app-insights-tutorial-performance/e2e-transaction-preview.png)
+
 
 6.  ここまでに収集した情報は、パフォーマンスの低下があることを確認しているだけであり、根本的原因を突き止めるためにはほとんど役に立っていません。  **プロファイラー**は、操作を実行するために使用された実際のコードと、各ステップを実行するために要求された時間を示すことで、これを支援します。 プロファイラーは定期的に実行されるため、一部の操作はトレースされていない場合があります。  時間の経過と共に、より多くの操作がトレースされます。  操作に対してプロファイラーを起動するには、**[プロファイラーのトレース]** をクリックします。
 5.  トレースは、各操作の個別のイベントを示すため、操作全体の実行時間の長さの根本原因を診断できます。  上の例の最も実行時間が長い操作をクリックします。
@@ -85,7 +93,7 @@ Application Insights Analytics には、Application Insights によって収集�
 
 2. Application Insights Analytics が、それぞれのビューのクエリと共にパネルに表示されます。  これらのクエリをそのまま実行するか、要件に合わせて変更できます。  最初のクエリは、この操作の一定期間の実行時間を示します。
 
-    ![分析](media/app-insights-tutorial-performance/server-analytics.png)
+    ![[分析]](media/app-insights-tutorial-performance/server-analytics.png)
 
 
 ## <a name="identify-slow-client-operations"></a>低速のクライアント操作を識別する
@@ -113,14 +121,14 @@ Application Insights では、サーバーのパフォーマンス データの�
 
 2. Application Insights Analytics が、それぞれのビューのクエリと共にパネルに表示されます。 最初のクエリは、一定期間のさまざまなページ ビューの実行時間を示します。
 
-    ![分析](media/app-insights-tutorial-performance/client-analytics.png)
+    ![[分析]](media/app-insights-tutorial-performance/client-analytics.png)
 
 3.  スマート診断は、データの一意のパターンを識別する Application Insights Analytics の機能です。  折れ線グラフのスマート診断ドットをクリックすると、異常の原因となったレコードを除外して同じクエリが実行されます。  これらのレコードの詳細がクエリの セクションに表示されるため、過剰な実行時間の原因となっているページ ビューのプロパティを識別できます。
 
     ![スマート診断](media/app-insights-tutorial-performance/client-smart-diagnostics.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここでは、ランタイムの例外を識別する方法を学習しました。次のチュートリアルに進んで、エラーに応答してアラートを作成する方法を学習してください。
 
 > [!div class="nextstepaction"]

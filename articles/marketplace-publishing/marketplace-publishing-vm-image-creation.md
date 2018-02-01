@@ -14,11 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: e37c55dbcc8de49aee32272b2f51b0792bef132c
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 126c5a5b3abd48b350c7d11a038a5d94e40280a0
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
 この記事 ( **手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。 VHD は SKU の基礎です。 プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。 この記事では、両方のシナリオについて説明します。 このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
@@ -58,7 +58,7 @@ SKU は、VM イメージの取引名です。 VM イメージには、1 個の�
 3. Windows ベースの SKU を使用する場合、表示されたリンクに従って、Windows Server の承認されたバージョンを取得します。
 
 ## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2.Azure と互換性のある VHD の作成 (Linux ベース)
-このセクションでは、Azure Marketplace 用 Linux ベースの VM イメージを作成するためのベスト プラクティスについて説明します。 詳細な手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
+このセクションでは、Azure Marketplace 用 Linux ベースの VM イメージを作成するためのベスト プラクティスについて説明します。 ステップ バイ ステップ チュートリアルについては、「[Create a custom Linux VM image (カスタム Linux VM イメージを作成する)](../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」のドキュメントを参照してください。
 
 ## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>手順 3.Azure と互換性のある VHD の作成 (Windows ベース)
 このセクションでは、Azure Marketplace 用の Windows Server に基づいて SKU を作成するためのステップについて説明します。
@@ -91,7 +91,7 @@ Microsoft Azure ポータルから承認された基本イメージに基づい�
     ![図][img-portal-vm-create]
 4. デプロイする VM のサイズを選択します。
 
-    a.    VHD をオンプレミスで開発する場合は、サイズの選択は必要ありません。 小さいサイズの VM を使用することを検討してください。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。    VHD をオンプレミスで開発する場合は、サイズの選択は必要ありません。 小さいサイズの VM を使用することを検討してください。
 
     b.    Azure でイメージを開発する場合は、選択したイメージに推奨される VM サイズを使用することを検討してください。
 
@@ -100,14 +100,14 @@ Microsoft Azure ポータルから承認された基本イメージに基づい�
     ![図][img-portal-vm-size]
 5. プロパティを設定します。
 
-    a.    迅速にデプロイするには、**[オプションの構成]** と **[リソース グループ]** のプロパティの既定値をそのまま使用します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。    迅速にデプロイするには、**[オプションの構成]** と **[リソース グループ]** のプロパティの既定値をそのまま使用します。
 
     b.    必要に応じて、**[ストレージ アカウント]** でオペレーティング システム VHD を格納するストレージのアカウントを選択できます。
 
     c.    必要に応じて、**[リソース グループ]** で VM を配置する論理グループを選択できます。
 6. デプロイメントの **[場所]** を選択します。
 
-    a.    VHD をオンプレミスで開発する場合は、後でイメージを Azure にアップロードするため、場所を指定する必要はありません。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。    VHD をオンプレミスで開発する場合は、後でイメージを Azure にアップロードするため、場所を指定する必要はありません。
 
     b.    Azure でイメージで開発する場合は、最初から US ベースの Microsoft Azure リージョンのいずれかを使用することを検討してください。 これにより認定でイメージを送信した際に、お客様に代わりマイクロソフトが実行することで VHD コピー プロセスが高速化されます。
 
@@ -344,7 +344,7 @@ Azure Storage Explorer を使用して SAS URL を生成するための手順を
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_09.png)
 
-    a. **[アクセス許可開始]**: UTC 時刻を保護するため、現在の日付の前日を選択します。 たとえば、今日が 2014 年 10 月 6 日の場合は、2014 年 10 月 5 を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アクセス許可開始]**: UTC 時刻を保護するため、現在の日付の前日を選択します。 たとえば、今日が 2014 年 10 月 6 日の場合は、2014 年 10 月 5 を選択します。
 
     b. **[アクセス許可終了]**: **[アクセス許可開始]** の日付より少なくとも 3 週間後の日付を選択します。
 
@@ -354,7 +354,7 @@ Azure Storage Explorer を使用して SAS URL を生成するための手順を
 
     e. **[署名の生成]** をクリックします。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[このコンテナーの生成された Shared Access Signature URI]** で、上の図で強調表示されている部分について以下をチェックします。
+    f. **[このコンテナーの生成された Shared Access Signature URI]** で、上の図で強調表示されている部分について以下をチェックします。
 
        - イメージ ファイル名および **".vhd"** が URI に含まれることを確認します。
        - 署名の末尾に **"=rl"** があることを確認します。 これは、読み取りおよび一覧アクセスが正常に提供されたことを示します。
@@ -392,7 +392,7 @@ Microsoft Azure Storage Explorer を使用して SAS URL を生成するため�
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_13.png)
 
-    a.  **[開始時刻]:** UTC 時刻を保護するため、現在の日付の前日を選択します。 たとえば、今日が 2014 年 10 月 6 日の場合は、2014 年 10 月 5 を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[開始時刻]:** UTC 時刻を保護するため、現在の日付の前日を選択します。 たとえば、今日が 2014 年 10 月 6 日の場合は、2014 年 10 月 5 を選択します。
 
     b.  **[有効期限]:** **[開始時刻]** の日付から少なくとも 3 週間後の日付を選択します。
 
@@ -440,7 +440,7 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
 
     上記の次のパラメーターを更新します。
 
-    a. **`<StorageAccountName>`**: ストレージ アカウント名を指定します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **`<StorageAccountName>`**: ストレージ アカウント名を指定します。
 
     b. **`<Storage Account Key>`**: ストレージ アカウント キーを指定します。
 

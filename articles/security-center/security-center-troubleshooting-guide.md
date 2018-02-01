@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2018
+ms.date: 01/22/2018
 ms.author: yurid
-ms.openlocfilehash: e471f04a86cde73bbdb333826a5e0d25684a4547
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 8c5c999d7c9924726804ccd18183d8e383a037cc
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center トラブルシューティング ガイド
 このガイドは、所属組織が Azure Security Center を使用しており、Security Center に関連する問題のトラブルシューティングを必要としている情報技術 (IT) プロフェッショナル、情報セキュリティ アナリスト、クラウド管理者を対象としています。
@@ -76,7 +76,7 @@ Security Center では、Microsoft Monitoring Agent を使用して、仮想マ�
 | インストールに失敗しました - ローカル エージェントが既にインストールされています | Microsoft Monitoring Agent のインストールに失敗しました。 ローカル エージェント (OMS または SCOM) が VM にインストール済みであることが Security Center によって検出されました。 1 つの VM が 2 つの異なるワークスペースの管理下に置かれるマルチホーム構成を避けるために、Microsoft Monitoring Agent のインストールは停止されました。 | これには 2 とおりの解決方法があります。1 つは、[拡張機能を手動でインストール](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)して、それを目的のワークスペースに接続する方法です。 もう 1 つは、目的のワークスペースを既定のワークスペースとして設定し、エージェントの自動プロビジョニングを有効にする方法です。  [自動プロビジョニングの有効化](security-center-enable-data-collection.md)に関するページを参照してください。 |
 | エージェントがワークスペースに接続できません | Microsoft Monitoring Agent はインストールされましたが、ネットワーク接続が原因で正しく機能していません。  エージェントに関して、インターネット アクセスがあること、または有効な HTTP プロキシが構成されていることを確認してください。 | [監視エージェントのネットワーク要件](#troubleshooting-monitoring-agent-network-requirements)に関するページを参照してください。 |
 | エージェントの接続先ワークスペースが存在しないか不明です | VM にインストールされている Microsoft Monitoring Agent が、接続先ワークスペースにアクセスできないことを Security Center が検出しました。 | この原因として 2 つのケースが考えられます。 まず、ワークスペースが削除されて現在は存在していないことが考えられます。 適切なワークスペースを備えたエージェントを再インストールするか、またはエージェントをアンインストールして、Security Center による自動プロビジョニング インストールが作動するようにしてください。 もう 1 つは、そのワークスペースを含んでいるサブスクリプションへのアクセス許可が Security Center にないケースです。 Microsoft Security Resource Provider にサブスクリプションへのアクセスを許可するためには、Security Center にそのサブスクリプションが必要です。 その対策として、Microsoft Security Resource Provider のサブスクリプションを登録します。 この作業は、API や PowerShell、ポータルから行うことができるほか、Security Center の **[概要]** ダッシュボードから、目的のサブスクリプションにフィルターを適用するだけでも実行できます。 詳細については、「[リソース プロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md#portal)」を参照してください。 |
-| エージェントが応答しないか、ID がありません | エージェントがインストールされているにもかかわらず、VM からスキャンされたセキュリティ データを Security Center が取得できません。 | エージェントからデータ (ハート ビートも含む) がまったく報告されていません。 エージェントが破損しているか、何らかの原因でトラフィックがブロックされています。 または、エージェントからはデータが報告されているものの、Azure リソース ID が欠落しているために、データを Azure VM と突き合わせることができません。 |
+| エージェントが応答しないか、ID がありません | エージェントがインストールされているにもかかわらず、VM からスキャンされたセキュリティ データを Security Center が取得できません。 | エージェントからデータ (ハート ビートも含む) がまったく報告されていません。 エージェントが破損しているか、何らかの原因でトラフィックがブロックされています。 または、エージェントからはデータが報告されているものの、Azure リソース ID が欠落しているために、データを Azure VM と突き合わせることができません。 Linux のトラブルシューティングについては、「[Troubleshooting Guide for OMS Agent for Linux (OMS エージェント for Linux のトラブルシューティング ガイド)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md#im-not-seeing-any-linux-data-in-the-oms-portal)」を参照してください。 Windows のトラブルシューティングについては、「[Troubleshooting Windows Virtual Machines (Windows 仮想マシンのトラブルシューティング)](https://github.com/MicrosoftDocs/azure-docs/blob/8c53ac4371d482eda3d85819a4fb8dac09996a89/articles/log-analytics/log-analytics-azure-vm-extension.md#troubleshooting-windows-virtual-machines)」を参照してください。 |
 | エージェントがインストールされていません | データ収集が無効になっています。 | セキュリティ ポリシーでデータ収集を有効にするか、Microsoft Monitoring Agent を手動でインストールしてください。 |
 
 

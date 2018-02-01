@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/30/2017
+ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 535ea21a2c08be5f676ee24269b323a415b92607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f655becfac05acfacfeef12edd68b37835420bf
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="service-fabric-networking-patterns"></a>Service Fabric のネットワーク パターン
 Azure Service Fabric クラスターを Azure の他のネットワーク機能と統合できます。 この記事では、次の機能を使用するクラスターを作成する方法について説明します。
@@ -36,7 +36,7 @@ Service Fabric リソース プロバイダーからポート 19080 にアクセ
 
 ## <a name="templates"></a>テンプレート
 
-[1 つのダウンロード ファイル](https://msdnshared.blob.core.windows.net/media/2016/10/SF_Networking_Templates.zip)にすべての Service Fabric テンプレートが含まれています。 次の PowerShell コマンドを使用して、テンプレートをそのままデプロイできます。 既存の Azure Virtual Network テンプレートまたは静的パブリック IP テンプレートをデプロイする場合は、まず、この記事の「[初期セットアップ](#initialsetup)」をお読みください。
+すべての Service Fabric テンプレートが [GitHub](https://github.com/Azure/service-fabric-scripts-and-templates/tree/master/templates/networking) に存在します。 次の PowerShell コマンドを使用して、テンプレートをそのままデプロイできます。 既存の Azure Virtual Network テンプレートまたは静的パブリック IP テンプレートをデプロイする場合は、まず、この記事の「[初期セットアップ](#initialsetup)」をお読みください。
 
 <a id="initialsetup"></a>
 ## <a name="initial-setup"></a>初期セットアップ
@@ -73,7 +73,7 @@ DnsSettings              : {
 
 ### <a name="service-fabric-template"></a>Service Fabric テンプレート
 
-この記事の例では、Service Fabric template.json を使用します。 クラスターを作成する前に、標準のポータル ウィザードを使用してポータルからテンプレートをダウンロードできます。 [テンプレート ギャラリー](https://azure.microsoft.com/en-us/documentation/templates/?term=service+fabric)のテンプレート ([5 ノード Service Fabric クラスター](https://azure.microsoft.com/en-us/resources/templates/service-fabric-secure-cluster-5-node-1-nodetype/)など) を使用することもできます。
+この記事の例では、Service Fabric template.json を使用します。 クラスターを作成する前に、標準のポータル ウィザードを使用してポータルからテンプレートをダウンロードできます。 また、[サンプル テンプレート](https://github.com/Azure-Samples/service-fabric-cluster-templates)のいずれか ([セキュリティ保護された 5 ノード Service Fabric クラスター](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Windows-1-NodeTypes-Secure)など) を使用こともできます。
 
 <a id="existingvnet"></a>
 ## <a name="existing-virtual-network-or-subnet"></a>既存の仮想ネットワークまたはサブネット
@@ -596,5 +596,5 @@ DnsSettings              : {
 
 デプロイが完了すると、リソース グループに 2 つのロード バランサーが表示されます。 ロード バランサーを参照すると、パブリック IP アドレスと、パブリック IP アドレスに割り当てられている管理エンドポイント (ポート 19000 と 19080) を確認できます。 また、静的内部 IP アドレスと、内部ロード バランサーに割り当てられているアプリケーション エンドポイント (ポート 80) も確認できます。 ロード バランサーはどちらも同じ仮想マシン スケール セットのバックエンド プールを使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [クラスターの作成](service-fabric-cluster-creation-via-arm.md)

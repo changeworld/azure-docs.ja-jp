@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 010/19/2017
+ms.date: 01/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 0e31d58de113f737a48b6d3091650226f04ec69a
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 708027b6cea8ac6a2fe7f713f5c6639fc6f8258a
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="about-point-to-site-vpn"></a>ポイント対サイト VPN について
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/20/2017
 Windows デバイスと Mac デバイスが混在するクライアント環境の場合、SSTP と IKEv2 の両方を構成してください。
 
 >[!NOTE]
->P2S 用 IKEv2 は現在プレビューの段階で、Resource Manager デプロイメント モデルについてのみ使用できます。
+>P2S 用 IKEv2 は、Resource Manager デプロイメント モデルでのみご利用いただけます。 クラシック デプロイメント モデルではご利用になれません。
 >
 
 ## <a name="authentication"></a>P2S VPN クライアントの認証方法
@@ -57,28 +57,40 @@ AD ドメイン認証では、ユーザーは組織のドメイン資格情報�
 
 RADIUS サーバーは、他の外部 ID システムと統合することもできます。 これにより、多要素認証のオプションなど、P2S VPN 向けの多数の認証オプションを利用できるようになります。
 
->[!NOTE]
->P2S 用 RADIUS 認証は現在プレビューの段階です。
->
-
 ![ポイント対サイト]](./media/point-to-site-about/p2s.png "ポイント対サイト")
 
 ### <a name="configuration-requirements-for-client-devices"></a>クライアント デバイスの構成要件
 
 ユーザーは、P2S 用の Windows デバイスと Mac デバイスでネイティブ VPN クライアントを使用します。 これらのネイティブ クライアントが Azure に接続するために必要な設定が含まれた VPN クライアント構成 zip ファイルは、Azure に用意されています。
 
-  * Windows デバイスの場合、VPN クライアント構成は、ユーザーがデバイスにインストールするインストーラー パッケージで構成されています。
-  * Mac デバイスの場合、これは、ユーザーがデバイスにインストールする mobileconfig ファイルで構成されています。
+* Windows デバイスの場合、VPN クライアント構成は、ユーザーがデバイスにインストールするインストーラー パッケージで構成されています。
+* Mac デバイスの場合、これは、ユーザーがデバイスにインストールする mobileconfig ファイルで構成されています。
 
 zip ファイルでは、Azure 側のいくつかの重要な設定の値も指定されており、この値を使用することで、これらのデバイス用に独自のプロファイルを作成できます。 このような値には、VPN ゲートウェイ アドレス、構成されたトンネルの種類、ルート、ゲートウェイ検証用のルート証明書などがあります。
 
-### <a name="which-gateway-skus-support-p2s-vpn"></a>P2S VPN がサポートされるゲートウェイ SKU の種類
+>[!NOTE]
+>Windows クライアントの場合、クライアント デバイスから Azure に VPN 接続を開始するには、クライアント デバイスで管理権限が必要です。
+>
+
+### <a name="gwsku"></a>P2S VPN がサポートされるゲートウェイ SKU の種類
 
 [!INCLUDE [p2s-skus](../../includes/vpn-gateway-table-point-to-site-skus-include.md)]
 
 * 合計スループット ベンチマークは、1 つのゲートウェイから集計された複数のトンネルの測定値に基づいています。 インターネットのトラフィックの状況とアプリケーションの動作に依存するため、これは保証されたスループットではありません。
 * 料金情報については、価格に関するページをご覧ください。 
 * SLA (サービス レベル アグリーメント) 情報は SLA のページで確認できます。
+
+>[!NOTE]
+>Basic SKU では、IKEv2 と RADIUS 認証はサポートされません。
+>
+
+## <a name="configure"></a>P2S 接続の構成方法
+
+P2S 構成で必要な手順には、特有のものが非常に多くあります。 次の記事では、P2S 構成の詳細な手順と、VPN クライアント デバイスの構成方法のリンクをご紹介します。
+
+* [P2S 接続の構成 - RADIUS 認証](point-to-site-how-to-radius-ps.md)
+
+* [P2S 接続の構成 - Azure ネイティブ証明書認証](vpn-gateway-howto-point-to-site-rm-ps.md)
 
 ## <a name="faqcert"></a>ネイティブ Azure 証明書認証に関する FAQ
 
@@ -88,8 +100,8 @@ zip ファイルでは、Azure 側のいくつかの重要な設定の値も指�
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[P2S 接続の構成 - RADIUS 認証](point-to-site-how-to-radius-ps.md)
+* [P2S 接続の構成 - RADIUS 認証](point-to-site-how-to-radius-ps.md)
 
-[P2S 接続の構成 - Azure ネイティブ証明書認証](vpn-gateway-howto-point-to-site-rm-ps.md)
+* [P2S 接続の構成 - Azure ネイティブ証明書認証](vpn-gateway-howto-point-to-site-rm-ps.md)

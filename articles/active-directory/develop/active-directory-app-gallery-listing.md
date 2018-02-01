@@ -4,7 +4,7 @@ description: "シングル サインオンをサポートするアプリケー�
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
-manager: mtillman
+manager: mbaldwin
 editor: 
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
@@ -12,86 +12,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 01/09/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 0c324829469b9babe6608480204bd46691f84228
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: feb09aa8f8e22ad6fbda6a490d251c500bedf3ee
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示
-Azure Active Directory でのシングル サインオンをサポートするアプリケーション一覧を [Azure AD ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)に表示するには、まず次の統合モードのいずれかをアプリケーションに実装する必要があります。
 
-* **OpenID Connect** - 認証には OpenID Connect を使用し、構成には Azure AD Consent API を使用して Azure AD と直接統合します。 統合を始めたばかりで、アプリケーションが SAML をサポートしていない場合、このモードが推奨されます。
-* **SAML** - SAML プロトコルを使用してサードパーティの ID プロバイダーを構成する機能が既にアプリケーションにある場合に選択します。
 
-各モードの要件は次のとおりです。
+##  <a name="what-is-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーとは
 
-## <a name="openid-connect-integration"></a>OpenID Connect 統合
-アプリケーションを Azure AD と統合するには、 [開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。 また、次の情報を記載し、waadpartners@microsoft.com に送信してください。
+Azure AD は、クラウド ベースの ID サービスです。 [Azure AD アプリ ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/) は、シングル サインオンおよびユーザー プロビジョニング用のすべてのアプリケーション コネクタが公開されている共通ストアです。 ID プロバイダーとして Azure AD を使用している共通のお客様が、ここに公開されているさまざまな SaaS アプリケーション コネクタを検索します。 IT 管理者は、アプリ ギャラリーからコネクタを追加し、構成して、シングル サインオンおよびプロビジョニングに使用します。 Azure AD では、シングル サインオンに対応する SAML 2.0、OpenID Connect、OAuth、WS-Fed などの主要なフェデレーション プロトコルをすべてサポートします。 
 
-* Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
-* [Azure AD Consent フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を使用して Azure AD チームがサインインし、Azure AD のインスタンスをアプリケーションに接続する手順を説明してください。 
-* Azure AD チームがアプリケーションでシングル サインオンをテストするために必要な詳細な手順があれば、説明してください。 
-* 次の情報を入力してください。
+## <a name="what-are-the-benefits-of-listing-the-application-in-the-gallery"></a>ギャラリーにアプリケーションを公開する利点とは
 
-> 会社名:
-> 
-> 会社の Web サイト:
-> 
-> アプリケーション名:
-> 
-> アプリケーションの説明 (200 文字以内):
-> 
-> アプリケーションの Web サイト (情報):
-> 
-> アプリケーションのテクニカル サポートの Web サイト、または連絡先情報:
-> 
-> https://portal.azure.com でアプリケーションの詳細に示す、アプリケーションのアプリケーション ID:
-> 
-> 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
-> 
-> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、Azure Active Directory Marketplace を参照してください)。
-> 
-> アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
-> 
-> アプリケーションの大きいアイコン (PNG ファイル、215 x 215px、単色の背景色) を添付してください:
-> 
-> アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
-> 
-> 
+*  考えられる最良のシングル サインオン エクスペリエンスを顧客に提供します。
 
-## <a name="saml-integration"></a>SAML の統合
-SAML 2.0 をサポートするすべてのアプリケーションは、 [この手順](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)を使用して Azure AD テナントと直接統合し、カスタム アプリケーションを追加できます。 アプリケーションと Azure AD の統合をテストし終わったら、次の情報を <mailto:waadpartners@microsoft.com>に送信してください。
+*  アプリケーションの構成をシンプルかつ単純にします。
 
-* Azure AD チームが統合のテストに使用できるアプリケーションのテスト テナントまたはアカウントの資格情報を記載してください。  
-* [ここ](../application-config-sso-how-to-configure-federated-sso-non-gallery.md)の説明に従って、アプリケーションの SAML サインオン URL (エンティティ ID) と Reply URL (Assertion Consumer Service) 値を記載してください。 通常、SAML メタデータ ファイルの一部としてこれらの値を入力している場合は、それも送信してください。
-* SAML 2.0 を使用してアプリケーションの ID プロバイダーとして Azure AD を構成する方法を簡単に説明してください。 セルフサービス管理ポータルで ID プロバイダーとしての Azure AD の構成がアプリケーションでサポートされている場合、前述の資格情報にそれを設定する機能を含めてください。
-* 次の情報を入力してください。
+*  顧客がアプリケーションをギャラリーで検索して見つけることができます。 
 
-> 会社名:
-> 
-> 会社の Web サイト:
-> 
-> アプリケーション名:
-> 
-> アプリケーションの説明 (200 文字以内):
-> 
-> アプリケーションの Web サイト (情報):
-> 
-> アプリケーションのテクニカル サポートの Web サイト、または連絡先情報:
-> 
-> 顧客がアプリケーションにサインアップしたり、アプリケーションを購入したりする際にアクセスする、アプリケーションのサインアップ URL:
-> 
-> アプリケーションを表示するカテゴリを最大 3 つ選択してください (使用できるカテゴリについては、 [Azure Active Directory Marketplace](https://azure.microsoft.com/marketplace/active-directory/)をご覧ください):
-> 
-> アプリケーションの小さいアイコン (PNG ファイル、45 x 45px、単色の背景色) を添付してください:
-> 
-> アプリケーションの大きいアイコン (PNG ファイル、215 x 215px、単色の背景色) を添付してください:
-> 
-> アプリケーションのロゴ (PNG ファイル、150 x 122px、透明の背景色) を添付してください:
-> 
-> 
+*  すべての顧客が、Azure AD SKU (Free、Basic、Premium) に関係なく、この統合を使用できます。
+
+*  共通の顧客向けの詳細な構成手順チュートリアルがあります。
+
+*  SCIM を使用している場合、同じアプリのユーザー プロビジョニングを有効にできます。
+
+
+##  <a name="what-are-the-pre-requisites"></a>前提条件
+
+Azure AD ギャラリー内のアプリケーションの一覧を表示するには、まず、アプリケーションに Azure AD でサポートされているフェデレーション プロトコルのいずれかを実装する必要があります。 ここから、Azure AD アプリケーション ギャラリーの使用条件をご覧ください。 使っているプロトコル: 
+
+*   **OpenID Connect** - Azure AD でマルチ テナント アプリケーションを作成し、アプリケーションの [Azure AD の同意フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受信したテナント ID とユーザーの UPN に基づいて顧客のユーザー アクセスを制御できます。 アプリケーションを Azure AD と統合するには、[開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。
+
+*   **SAML 2.0 または WS-Fed** - アプリケーションに、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能が必要です。 SAML 2.0 をサポートするすべてのアプリケーションは、[この手順](../active-directory-saas-custom-apps.md)を使用して Azure AD テナントと直接統合し、カスタム アプリケーションを追加できます。
+
+*   [パスワード SSO](../active-directory-appssoaccess-whatis.md) - HTML サインイン ページがある Web アプリケーションを作成して、**パスワード ベースのシングル サインオン** を構成します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。 
+
+## <a name="process-for-submitting-the-request-in-the-portal"></a>ポータルで要求を送信するためのプロセス
+
+アプリケーションの統合が Azure AD で動作することをテストしたら、[アプリケーション ネットワーク ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)へのアクセスを求める要求を送信する必要があります。 Office 365 アカウントがある場合は、これを使ってこのポータルにログインできます。ない場合は、Microsoft ID (Live ID、Outlook、Hotmail など) を使ってログインします。 アクセスを要求する次のページが表示されます。 テキスト ボックスに業務の妥当性を入力し、**[アクセスの要求]** をクリックします。 Microsoft のチームが、すべての詳細を確認し、適宜アクセスを付与します。 その後に、ポータルにログオンして、アプリケーションの詳細な要求を送信できるようになります。
+
+アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
+
+![SharePoint ポータルでのアクセス要求](./media/active-directory-app-gallery-listing/accessrequest.png)
+
+## <a name="timelines"></a>タイムライン
+    
+*   ギャラリーに SAML 2.0 または WS-Fed アプリケーションを公開するプロセス - **7 営業日から 10 営業日**
+
+   ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/active-directory-app-gallery-listing/timeline.png)
+
+*   ギャラリーに OpenID Connect アプリケーションを公開するプロセス - **2 営業日から 5 営業日**
+
+   ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/active-directory-app-gallery-listing/timeline2.png)
+
+## <a name="escalations"></a>エスカレーション
+
+いずれのエスカレーションでも、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)に電子メールを送信するとすぐに Microsoft から連絡があります。
 

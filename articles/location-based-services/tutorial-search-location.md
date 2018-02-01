@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: e033b1005902a9639fc352ffb9af91cb20875bee
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 8da7d9112c9527945ab4b524625603faa84cf00d
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Azure Location Based Services を使用して近くの目的地を検索する
 
@@ -24,13 +24,13 @@ ms.lasthandoff: 12/14/2017
 
 > [!div class="checklist"]
 > * Azure Location Based Services でアカウントを作成する
-> * アカウントのサブスクリプション キーを取得する
+> * Azure Location Based Services アカウントの主キーを確認する
 > * マップ コントロール API を使って新しい Web ページを作成する
 > * Search Service を使って近くの目的地を検索する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-# <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+# <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 [Azure Portal](https://portal.azure.com) にログインします。
 
 <a id="createaccount"></a>
@@ -55,7 +55,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 <a id="getkey"></a>
 
-## <a name="get-the-subscription-key-for-your-account"></a>アカウントのサブスクリプション キーを取得する
+## <a name="get-the-primary-key-for-your-account"></a>アカウントの主キーを取得する
 
 Location Based Services アカウントが正常に作成された後、次の手順のようにしてアカウントをマップ検索 API にリンクします。
 
@@ -113,16 +113,16 @@ Azure マップ コントロール API は、Azure Location Based Services を W
     ``` 
     HTML ヘッダーに、Azure マップ コントロール ライブラリによってホストされる CSS および JavaScript のリソース ファイルが含まれることに注意してください。 HTML ファイルの *body* に追加された *script* セグメントに注意してください。 このセグメントには、Azure Location Based Service の API にアクセスするためのインライン JavaScript コードが含まれます。
  
-3.  次の JavaScript コードを、HTML ファイルの *script* ブロックに追加します。 プレースホルダー *<insert-key>* は、ご自分の Location Based Services アカウントの主キーに置き換えます。 
+3.  次の JavaScript コードを、HTML ファイルの *script* ブロックに追加します。 Location Based Services アカウントの主キーをスクリプトで使用します。 
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
-    このセグメントは、お使いのサブスクリプション キーに対するマップ コントロール API を開始します。 **atlas** は、Azure マップ コントロール API および関連するビジュアル コンポーネントを含む名前空間です。 **atlas.Map** は、ビジュアルと対話型 Web マップに対するコントロールを提供します。 ブラウザーで HTML ページを開くと、マップの表示を確認できます。 
+    このセグメントは、Azure Location Based Services アカウント キーに対するマップ コントロール API を開始します。 **atlas** は、Azure マップ コントロール API および関連するビジュアル コンポーネントを含む名前空間です。 **atlas.Map** は、ビジュアルと対話型 Web マップに対するコントロールを提供します。 ブラウザーで HTML ページを開くと、マップの表示を確認できます。 
 
 4. 次の JavaScript コードを *script* ブロックに追加して、検索ピンのレイヤーをマップ コントロールに追加します。
 
@@ -193,7 +193,7 @@ Azure マップ コントロール API は、Azure Location Based Services を W
     var url = "https://atlas.microsoft.com/search/fuzzy/json?";
     url += "&api-version=1.0";
     url += "&query=gasoline%20station";
-    url += "&subscription-key=" + subscriptionKey;
+    url += "&subscription-key=" + LBSAccountKey;
     url += "&lat=47.6292";
     url += "&lon=-122.2337";
     url += "&radius=100000";
@@ -201,7 +201,7 @@ Azure マップ コントロール API は、Azure Location Based Services を W
     xhttp.open("GET", url, true);
     xhttp.send();
     ``` 
-    このスニペットは、**あいまい検索**と呼ばれる、Search Service の基本的な検索 API を使います。 住所または *POI* トークンの任意の組み合わせを扱う入力のほとんどのあいまいさを処理します。 特定の緯度と経度の住所、および指定した半径内で、近くにある**ガソリン スタンド**を検索します。 前にサンプル ファイルで提供されたお使いのアカウントのサブスクリプション キーを使って、Location Based Services への呼び出しを行います。 結果は、見つかった場所の緯度/経度のペアとして返されます。 ブラウザーで HTML ページを開くと、検索ピンの表示を確認できます。 
+    このスニペットは、**あいまい検索**と呼ばれる、Search Service の基本的な検索 API を使います。 住所または *POI* トークンの任意の組み合わせを扱う入力のほとんどのあいまいさを処理します。 特定の緯度と経度の住所、および指定した半径内で、近くにある**ガソリン スタンド**を検索します。 前にサンプル ファイルで提供されたお使いのアカウントの主キーを使って、Location Based Services への呼び出しを行います。 結果は、見つかった場所の緯度/経度のペアとして返されます。 ブラウザーで HTML ページを開くと、検索ピンの表示を確認できます。 
 
 3. 次の行を *script* ブロックに追加して、Search Service によって返される目的地のポップアップを作成します。
 
@@ -239,12 +239,12 @@ Azure マップ コントロール API は、Azure Location Based Services を W
     ![Azure マップ コントロールと Search Service](./media/tutorial-search-location/lbs-map-search.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Location Based Services でアカウントを作成する
-> * アカウントのサブスクリプション キーを取得する
+> * アカウントの主キーを取得する
 > * マップ コントロール API を使って新しい Web ページを作成する
 > * Search Service を使って近くの目的地を検索する
 

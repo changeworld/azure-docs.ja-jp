@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: a594f31c002556f9a5fddaa17fb19273065eed47
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: c33639723657d3c2875ed9607a887775d558be16
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
@@ -58,7 +58,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
 
         ![ディスクの管理 MMC の [ディスクの初期化] メニューのスクリーン ショット](media/storage-files-deployment-guide/transferdata-importexport-1.PNG)
 
-    - ディスクにドライブ文字を割り当てるには、オンラインで初期化されているディスクの「未割り当て」の空き領域を右クリックし、新しいシンプル ボリュームをクリックします。 これにより、ドライブ文字を割り当てることができます。 ボリュームは後でフォーマットされるため、ここでフォーマットする必要はありません。
+    - ディスクにドライブ文字を割り当てるには、オンラインで初期化されているディスクの「未割り当て」の空き領域を右クリックし、[新しいシンプル ボリューム] をクリックします。 これにより、ドライブ文字を割り当てることができます。 ボリュームは後でフォーマットされるため、ここでフォーマットする必要はありません。
 
         ![ディスクの管理 MMC の新しいシンプル ボリューム ウィザードのスクリーン ショット](media/storage-files-deployment-guide/transferdata-importexport-2.png)
 
@@ -145,15 +145,15 @@ $computer | ForEach-Object { Invoke-Command -ComputerName $_ -ScriptBlock { net 
 ### <a name="linux"></a>Linux
 単純な bash スクリプトと SSH を組み合わせると、次の例のように同じ結果が得られます。 `$computer` 変数は、同様に左からユーザーが入力します。
 
-```PowerShell
+```
 computer = ("MyComputer1" "MyComputer2" "MyComputer3" "MyComputer4")
-for item in "${dur[@]}"
+for item in "${computer[@]}"
 do
     ssh $item "sudo bash -c 'echo \"//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino\" >> /etc/fstab'", "sudo mount -a"
 done
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)
 - [Azure Files のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)
 - [Azure Files のトラブルシューティング - Linux](storage-troubleshoot-linux-file-connection-problems.md)

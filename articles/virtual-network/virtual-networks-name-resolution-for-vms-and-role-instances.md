@@ -3,8 +3,8 @@ title: "VM とロール インスタンスの解決"
 description: "Azure IaaS、ハイブリッド ソリューション、異なるクラウド サービス間、Active Directory、および独自 DNS サーバーの使用に関係する名前解決シナリオです  "
 services: virtual-network
 documentationcenter: na
-author: GarethBradshawMSFT
-manager: carmonm
+author: jimdial
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 5d73edde-979a-470a-b28c-e103fcf07e3e
 ms.service: virtual-network
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/06/2016
-ms.author: telmos
-ms.openlocfilehash: 479cf8cf358d0b242d8ce030d8639b493e4767d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jdial
+ms.openlocfilehash: 5a298f535308cff90ddd249594b7bb5e36909867
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="name-resolution-for-vms-and-role-instances"></a>VM とロール インスタンスの名前解決
 Azure を使用して IaaS、PaaS、ハイブリッド ソリューションをホストする方法によっては、作成する VM とロール インスタンスが互いに通信するように許可することが必要になる場合があります。 IP アドレスを使用してこの通信を行うこともできますが、簡単に記憶できて変更されない名前を使用する方が、はるかに簡単です。 
@@ -35,6 +35,7 @@ Azure でホストされているロール インスタンスと VM がドメイ
 | **シナリオ** | **ソリューション** | **サフィックス** |
 | --- | --- | --- |
 | 同じクラウド サービスまたは仮想ネットワーク内に存在するロール インスタンスまたは VM 間での名前解決 |[Azure で提供される名前解決](#azure-provided-name-resolution) |ホスト名または FQDN |
+| VNET 統合を使用した Azure App Service (Web App、Function、Bot など) から同じ仮想ネットワーク上に配置されたロール インスタンスまたは VM への名前解決 |Azure で解決するために VNet 間でクエリを転送するユーザーが管理する DNS サーバー (DNS プロキシ)。  「 [独自の DNS サーバーを使用する名前解決](#name-resolution-using-your-own-dns-server) |FQDN のみ |
 | 異なる仮想ネットワーク内に存在するロール インスタンスまたは VM 間での名前解決 |Azure で解決するために VNet 間でクエリを転送するユーザーが管理する DNS サーバー (DNS プロキシ)。  「 [独自の DNS サーバーを使用する名前解決](#name-resolution-using-your-own-dns-server) |FQDN のみ |
 | Azure 内のロール インスタンスまたは VM からのオンプレミスのコンピューターとサービスの名前解決 |ユーザーが管理する DNS サーバー (例: オンプレミスのドメイン コントローラー、ローカルの読み取り専用のドメイン コントローラー、ゾーン転送を使用して同期する DNS セカンダリ)。  See [独自の DNS サーバーを使用する名前解決](#name-resolution-using-your-own-dns-server) |FQDN のみ |
 | オンプレミスのコンピューターからの Azure のホスト名解決 |対応する VNet 内のユーザーが管理する DNS プロキシ サーバーにクエリを転送し、プロキシ サーバーが解決するために Azure にクエリを転送します。 See [独自の DNS サーバーを使用する名前解決](#name-resolution-using-your-own-dns-server) |FQDN のみ |
@@ -42,7 +43,7 @@ Azure でホストされているロール インスタンスと VM がドメイ
 | 仮想ネットワーク内ではなく、異なるクラウド サービスに存在する VM またはロール インスタンス間での名前解決 |適用不可。 異なるクラウド サービス内にある VM とロール インスタンス間の接続は、仮想ネットワークの外側ではサポートされません。 |該当なし |
 
 ## <a name="azure-provided-name-resolution"></a>Azure で提供される名前解決
-Azure では、パブリック DNS 名の解決と共に、同じ仮想ネットワークまたはクラウド サービス内に存在する VM とロール インスタンス用に内部の名前解決が提供されます。  クラウド サービスで VM またはインスタンスは同じ DNS サフィックスを共有しますが (そのため、ホスト名だけで十分)、従来の仮想ネットワークでは、クラウド サービスごとに DNS サフィックスが異なるため、異なるクラウド サービス間で名前を解決するには、FQDN が必要です。  Resource Manager デプロイ モデルの仮想ネットワークでは、DNS サフィックスは仮想ネットワーク間で共通であり (そのため、FQDN は必要ありません)、DNS 名は NIC と VM に割り当てることができます。 Azure 提供の名前解決ではどのような構成も不要ありませんが、前の表で示すように、すべてのデプロイメント シナリオに適しているわけではありません。
+Azure では、パブリック DNS 名の解決と共に、同じ仮想ネットワークまたはクラウド サービス内に存在する VM とロール インスタンス用に内部の名前解決が提供されます。  クラウド サービスで VM またはインスタンスは同じ DNS サフィックスを共有しますが (そのため、ホスト名だけで十分)、従来の仮想ネットワークでは、クラウド サービスごとに DNS サフィックスが異なるため、異なるクラウド サービス間で名前を解決するには、FQDN が必要です。  Resource Manager デプロイ モデルの仮想ネットワークでは、DNS サフィックスは仮想ネットワーク間で共通であり (そのため、FQDN は必要ありません)、DNS 名は NIC と VM に割り当てることができます。 Azure 提供の名前解決ではどのような構成も必要ありませんが、前の表で示すように、すべてのデプロイメント シナリオに適しているわけではありません。
 
 > [!NOTE]
 > Web ロールおよび Worker ロールの場合は、Azure Service Management REST API を使用して、ロール名とインスタンス番号に基づいてロール インスタンスの内部 IP アドレスにアクセスすることもできます。 詳細については、「 [サービス管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/ee460799.aspx)」を参照してください。
@@ -65,7 +66,7 @@ Azure では、パブリック DNS 名の解決と共に、同じ仮想ネット
 * 独自のレコードを手動で登録することはできません。
 * WINS と NetBIOS はサポートされません  (Windows エクスプローラーで VM を参照することはできません)
 * ホスト名は DNS 互換である必要があります (使用できる文字は 0 ～ 9、a ～ z、'-' のみであり、最初または最後の文字として '-' は使用できません。 RFC 3696 セクション 2 を参照してください)。
-* DNS クエリ トラフィックは VM ごとに調整されます。 このことは、ほとんどのアプリケーションには影響がありません。  要求の調整が発生した場合は、クライアント側のキャッシュが有効になっていることを確認します。  詳細については、「 [Azure で提供される名前解決から最大限の効果を得る](#Getting-the-most-from-Azure-provided-name-resolution)」を参照してください。
+* DNS クエリ トラフィックは VM ごとに調整されます。 このことは、ほとんどのアプリケーションには影響がありません。  要求の調整が発生した場合は、クライアント側のキャッシュが有効になっていることを確認します。  詳しくは、「[Azure で提供される名前解決から最大限の効果を得る](#Getting-the-most-from-Azure-provided-name-resolution)」をご覧ください。
 * 最初の 180 のクラウド サービス内の VM だけが、クラシック デプロイ モデルの各仮想ネットワークに対して登録されます。 これは、Resource Manager デプロイ モデルの仮想ネットワークには当てはまりません。
 
 ### <a name="getting-the-most-from-azure-provided-name-resolution"></a>Azure で提供される名前解決から最大限の効果を得る
@@ -75,7 +76,7 @@ DNS クエリには、ネットワーク経由で送信する必要がないも�
 
 既定の Windows DNS クライアントには、組み込みの DNS キャッシュがあります。  Linux ディストリビューションの一部では、既定でキャッシュは含まれていません。(ローカル キャッシュが既に存在していないことを確認後) 各 Linux VM にキャッシュを追加することをお勧めします。
 
-dnsmasq など、多様な DNS キャッシュ パッケージを利用できます。ここでは、最も一般的なディストリビューションに dnsmasq をインストールする手順を示します。
+多数のさまざまな DNS キャッシュ パッケージが使用できます。 たとえば、dnsmasq です。 次の手順は、最も一般的な distros に dnsmasq をインストールする方法を示しています。
 
 * **Ubuntu (resolvconf を使用)**:
   * dnsmasq パッケージをインストールする ("sudo apt-get install dnsmasq")
@@ -104,7 +105,7 @@ DNS では、主に UDP プロトコルが使用されます。  UDP プロト�
 * Windows オペレーティング システムでは、1 秒後に再試行されます。その後、2 秒後、4 秒後に再試行され、さらにもう一度その 4 秒後に再試行されます。 
 * 既定の Linux の設定では、5 秒後に再試行されます。  1 秒間隔で 5 回再試行するよう、この設定を変更することをお勧めします。  
 
-Linux VM の現在の設定を確認するには、次に示す 'cat/etc/resolv.conf' の 'options' 行を確認します。
+'cat /etc/resolv.conf' コマンドを使用して Linux VM の現在の設定を確認するには、次に示す 'options' 行を確認します。
 
     options timeout:1 attempts:5
 
@@ -121,13 +122,13 @@ resolv.conf ファイルは、通常は自動生成され、編集する必要�
   * 'service network restart' を実行して更新する
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>独自 DNS サーバー使用の名前解決
-名前解決のニーズが Azure で提供される機能の範囲を超えるさまざまな状況があります。たとえば、Active Directory ドメインを使用する場合や、仮想ネットワーク (VNet) 間で DNS 解決を必要とする場合です。  これらのシナリオを可能にするために、Azure では独自の DNS サーバーを使用する機能を提供します。  
+名前解決のニーズが Azure で提供される機能の範囲を超えるさまざまな状況があります。たとえば、Active Directory ドメインを使用する場合や、仮想ネットワーク間で DNS 解決を必要とする場合です。  これらのシナリオを可能にするために、Azure では独自の DNS サーバーを使用する機能を提供します。  
 
 仮想ネットワーク内の DNS サーバーは、その仮想ネットワーク内のホスト名を解決するために、Azure の再帰的競合回避モジュールに DNS クエリを転送することができます。  たとえば、Azure で実行しているドメイン コントローラー (DC) は、そのドメインに対する DNS クエリに応答し、他のすべてのクエリを Azure に転送することができます。  これにより、VM はオンプレミスのリソース (DC 経由) と Azure で提供されるホスト名 (フォワーダー経由) の両方を参照できます。  Azure の再帰的競合回避モジュールへのアクセスは、仮想 IP 168.63.129.16 を通じて提供されます。
 
-また、DNS の転送は、VNET 間の DNS 解決も可能にし、オンプレミスのマシンが Azure で提供されるホスト名を解決できるようにします。  VM のホスト名を解決するために、DNS サーバー VM は、同じ仮想ネットワークに存在し、Azure にホスト名のクエリを転送するように構成する必要があります。  DNS サフィックスは VNet ごとに異なるため、条件付きの転送ルールを使用し、解決するために正しい VNet に DNS クエリを送信します。  次の図は、2 つの VNet と、このメソッドを使用して VNet 間 DNS 解決を行うオンプレミスのネットワークを示しています。  DNS フォワーダーの例は、[Azure クイック スタート テンプレートのギャラリー](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/)と [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) で確認できます。
+また、DNS の転送は、仮想ネットワーク間の DNS 解決も可能にし、オンプレミスのマシンが Azure で提供されるホスト名を解決できるようにします。  VM のホスト名を解決するために、DNS サーバー VM は、同じ仮想ネットワークに存在し、Azure にホスト名のクエリを転送するように構成する必要があります。  DNS サフィックスは VNet ごとに異なるため、条件付きの転送ルールを使用し、解決するために正しい VNet に DNS クエリを送信します。  次の図は、2 つの仮想ネットワークと、このメソッドを使用して仮想ネットワーク間 DNS 解決を行うオンプレミスのネットワークを示しています。  DNS フォワーダーの例は、[Azure クイック スタート テンプレートのギャラリー](https://azure.microsoft.com/documentation/templates/301-dns-forwarder/)と [GitHub](https://github.com/Azure/azure-quickstart-templates/tree/master/301-dns-forwarder) で確認できます。
 
-![VNET 間 DNS](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
+![仮想ネットワーク間の DNS](./media/virtual-networks-name-resolution-for-vms-and-role-instances/inter-vnet-dns.png)
 
 Azure で提供される名前解決を使用すると、内部 DNS サフィックス (*.internal.cloudapp.net) が DHCP を使用して各 VM に提供されます。  これにより、ホスト名のレコードが internal.cloudapp.net ゾーン内にあるため、ホスト名を解決できます。  独自の名前解決のソリューションを使用している場合、IDNS サフィックスは他の DNS アーキテクチャに干渉するため (ドメイン参加シナリオなど)、VM には提供されません。  代わりに、機能していないプレース ホルダー (reddog.microsoft.com) が提供されます。  
 
@@ -165,7 +166,7 @@ Resource Manager デプロイメント モデルを使用している場合は�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Resource Manager デプロイ モデル:
 
 * [Create or update a virtual network (仮想ネットワークの作成または更新)](https://msdn.microsoft.com/library/azure/mt163661.aspx)

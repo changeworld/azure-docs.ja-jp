@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 01/18/2018
 ms.author: tamram
-ms.openlocfilehash: 2c1534dcbb0e26ecdff7c057efb5094c60b5c5b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4c6d47511acdae7afaf4a535c24c6fcc7e389b1
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-use-blob-storage-from-ruby"></a>Ruby から BLOB ストレージを使用する方法
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -35,33 +35,36 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Ruby アプリケーションの作成
-Ruby アプリケーションを作成します。 手順については、「[Azure VM での Ruby on Rails Web アプリケーション](../../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)」をご覧ください。
+Ruby アプリケーションを作成します。 手順については、「[App Service on Linux での Ruby アプリの作成](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby)」を参照してください。
+
 
 ## <a name="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 Azure Storage を使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
 
 ### <a name="use-rubygems-to-obtain-the-package"></a>RubyGems を使用してパッケージを取得する
 1. **PowerShell** (Windows)、**ターミナル** (Mac)、**Bash** (Unix) などのコマンド ライン インターフェイスを使用します。
-2. コマンド ウィンドウに「gem install azure」と入力して、gem と依存関係をインストールします。
+2. コマンド ウィンドウに「gem install azure-storage-blob」と入力して、gem と依存関係をインストールします。
 
 ### <a name="import-the-package"></a>パッケージをインポートする
 任意のテキスト エディターを使用して、ストレージを使用するアプリケーションの Ruby ファイルの先頭に次のコードを追加します。
 
 ```ruby
-require "azure"
+require "azure/storage/blob"
 ```
 
 ## <a name="set-up-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
-azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** と **AZURE\_STORAGE\_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、 **Azure::Blob::BlobService** を使用する前に、次のコードを使用してアカウント情報を指定する必要があります。
+azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 **AZURE\_STORAGE\_ACCOUNT** と **AZURE\_STORAGE\_ACCESS_KEY** を読み取ります。 これらの環境変数が設定されていない場合は、**Azure::Blob::BlobService::create** を使って次のコードでアカウント情報を指定する必要があります。
 
 ```ruby
-Azure.config.storage_account_name = "<your azure storage account>"
-Azure.config.storage_access_key = "<your azure storage access key>"
+blob_client = Azure::Storage::Blob::BlobService.create(
+    storage_account_name: account_name,
+    storage_access_key: account_key
+    )
 ```
 
 Azure ポータルでクラシックまたは Resource Manager ストレージ アカウントからこれらの値を取得するには:
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. 右側の [設定] ブレードで、 **[アクセス キー]**をクリックします。
 4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。
@@ -70,12 +73,12 @@ Azure ポータルでクラシックまたは Resource Manager ストレージ �
 ## <a name="create-a-container"></a>コンテナーを作成する
 [!INCLUDE [storage-container-naming-rules-include](../../../includes/storage-container-naming-rules-include.md)]
 
-**Azure::Blob::BlobService** オブジェクトを使用して、コンテナーと BLOB を操作できます。 コンテナーを作成するには、**create\_container()** メソッドを使用します。
+**Azure::Storage::Blob::BlobService** オブジェクトを使って、コンテナーと BLOB を操作できます。 コンテナーを作成するには、**create\_container()** メソッドを使用します。
 
 次のコード例では、コンテナーを作成し、既に存在している場合はエラーを出力します。
 
 ```ruby
-azure_blob_service = Azure::Blob::BlobService.new
+azure_blob_service = Azure::Storage::Blob::BlobService.create_from_env
 begin
     container = azure_blob_service.create_container("test-container")
 rescue
@@ -119,17 +122,19 @@ puts blob.name
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 コンテナーの一覧を取得するには、**list_containers()** メソッドを使用します。
-コンテナー内の BLOB の一覧を取得するには、**list\_blobs()** メソッドを使用します。
+コンテナー内の BLOB の一覧を取得するには、**list\_blobs()** メソッドを使用します。 コンテナー内のすべての BLOB を一覧表示するには、サービスによって返される継続トークンに従い、このトークンでの list_blobs の実行を継続する必要があります。 詳しくは、「[List Blobs REST API](https://docs.microsoft.com/rest/api/storageservices/list-blobs)」をご覧ください。
 
-次のコードでは、アカウントのすべてのコンテナーからすべての BLOB の URL を出力します。
+次のコードは、コンテナー内のすべての BLOB を出力します。
 
 ```ruby
-containers = azure_blob_service.list_containers()
-containers.each do |container|
-    blobs = azure_blob_service.list_blobs(container.name)
+nextMarker = nil
+loop do
+    blobs = azure_blob_service.list_blobs(container_name, { marker: nextMarker })
     blobs.each do |blob|
-    puts blob.name
+        puts "\tBlob name #{blob.name}"
     end
+    nextMarker = blobs.continuation_token
+    break unless nextMarker && !nextMarker.empty?
 end
 ```
 
@@ -150,10 +155,10 @@ File.open("download.png","wb") {|f| f.write(content)}
 azure_blob_service.delete_blob(container.name, "image-blob")
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 さらに複雑なストレージ タスクの詳細については、次のリンク先をご覧ください。
 
-* [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-* [Azure SDK for Ruby](https://github.com/WindowsAzure/azure-sdk-for-ruby) リポジトリ
+* [Azure のストレージ チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
+* GitHub の [Azure Storage SDK for Ruby](https://github.com/azure/azure-storage-ruby) リポジトリ
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 

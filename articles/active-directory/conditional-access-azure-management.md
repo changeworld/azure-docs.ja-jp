@@ -3,7 +3,7 @@ title: "Azure Active Directory での条件付きアクセスを使用して Azu
 description: "Azure AD での条件付きアクセスを使用して、Azure 管理へのアクセスを管理する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: skwan
+author: daveba
 manager: mtillman
 editor: bryanla
 ms.assetid: 0adc8b11-884e-476c-8c43-84f9bf12a34b
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/22/2017
 ms.author: skwan
-ms.openlocfilehash: 6b5ca97c0a6360a250bc3e91f6a8ece179a7725f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 22d0e53c201853e2c316089479ffbd4d9e5d92be
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="manage-access-to-azure-management-with-conditional-access"></a>条件付きアクセスを使用して Azure 管理へのアクセスを管理する
 
@@ -30,7 +30,7 @@ Azure 管理のポリシーを作成するには、ポリシーを適用する�
 
 ![Azure 管理の条件付きアクセス](./media/conditional-access-azure-mgmt.png)
 
-作成したポリシーは、従来の Azure ポータル、Azure ポータル、Azure Resource Manager のプロバイダー、従来の Service Management API、および PowerShell を含む、すべての Azure 管理エンドポイントに適用されます。
+作成したポリシーは、従来の Azure Portal、Azure Portal、Azure Resource Manager のプロバイダー、従来の Service Management API、および Azure PowerShell を含む、すべての Azure 管理エンドポイントに適用されます。
 
 > [!CAUTION]
 > Azure 管理へのアクセスを管理するポリシーを設定する前に、条件付きアクセスのしくみについて理解しておくようにしてください。 ポータルへのアクセスをブロックする条件を作成しないようにしてください。

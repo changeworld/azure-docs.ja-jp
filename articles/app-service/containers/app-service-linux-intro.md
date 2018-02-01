@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 89cb7dc488da42724f212d13f8550064ff8b9188
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: dea6b137fb12467a881afaa9a3e6985b584f5559
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -73,7 +73,7 @@ Azure Portal では、Web App for Containers で現在使用できる機能の�
 App Service on Linux は [Basic および Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 App Service on Linux には、次の重要な制限もあります。
 
 * Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。
-* Web App for Containers を非 Linux Web Apps が含まれているリソース グループに作成する場合は、既存の App Service プランとは別のリージョンに App Service プランを作成する必要があります。
+* Web App for Containers を非 Linux Web Apps が含まれているリソース グループに作成する場合は、既存の App Service プランとは別のリソース グループに App Service プランを作成する必要があります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -86,7 +86,7 @@ App Service on Linux は [Basic および Standard](https://azure.microsoft.com/
 
 SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Inactive
-ms.date: 09/15/2017
+ms.date: 01/23/2018
 ms.author: genemi
-ms.openlocfilehash: 9f58ea34dad5d4436c13b64653040bd2a57c299e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8c27f22657f7f8d04aab96fbc2ee25aa19cebd9f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-powershell-to-create-a-virtual-service-endpoint-and-rule-for-azure-sql-database"></a>PowerShell を使用して、Azure SQL Database 用の仮想サービス エンドポイントと規則を作成します。
 
@@ -48,7 +48,8 @@ ms.lasthandoff: 10/31/2017
 
 4. [Set-AzureRmVirtualNetwork](https://docs.microsoft.com/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork): ご利用の仮想ネットワークに加えられる更新を継続します。
 
-5. **New-AzureRmSqlServerVirtualNetworkRule**: ご利用のサブネットがエンドポイントになった後に、そのサブネットを仮想ネットワーク規則として、ご利用の Azure SQL Database サーバーの ACL に追加します。
+5. [New-AzureRmSqlServerVirtualNetworkRule](https://docs.microsoft.com/powershell/module/azurerm.sql/new-azurermsqlservervirtualnetworkrule): ご利用のサブネットがエンドポイントになった後に、そのサブネットを仮想ネットワーク規則として、ご利用の Azure SQL Database サーバーの ACL に追加します。
+    - Azure RM PowerShell モジュール バージョン 5.1.1 以降では、パラメーター **-IgnoreMissingVnetServiceEndpoint** が用意されています。
 
 #### <a name="prerequisites-for-running-powershell"></a>PowerShell を実行するための前提条件
 

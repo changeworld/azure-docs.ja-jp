@@ -1,6 +1,6 @@
 ---
-title: "インターネットに接続するロード バランサーの作成 - Azure CLI | Microsoft Docs"
-description: "Azure CLI を使用して、リソース マネージャーでインターネットに接続するロード バランサーを作成する方法について説明します"
+title: "パブリック ロード バランサーの作成 - Azure CLI | Microsoft Docs"
+description: "Azure CLI を使用してパブリック ロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 8baf065a7aac0a38624197f8f6a1f6a84aaab2a8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: bd8c2703a1b43834e1c82e0776e2dee807bb3192
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="creating-an-internet-load-balancer-using-the-azure-cli"></a>Azure CLI を使用したインターネット ロード バランサーの作成
+# <a name="creating-a-public-load-balancer-using-the-azure-cli"></a>Azure CLI を使用したパブリック ロード バランサーの作成
 
 > [!div class="op_single_selector"]
 > * [ポータル](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -34,13 +34,13 @@ ms.lasthandoff: 12/18/2017
 
 [!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
 
-この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [従来のデプロイを使用してインターネットに接続するロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)
+この記事では、リソース マネージャーのデプロイ モデルについて説明します。 [従来のデプロイを使用してパブリック ロード バランサーを作成する方法](load-balancer-get-started-internet-classic-portal.md)についても説明します
 
 [!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
 
 ## <a name="deploying-the-solution-using-the-azure-cli"></a>Azure CLI を使用したソリューションのデプロイ
 
-次の手順では、CLI で Azure Resource Manager を使用して、インターネットに接続するロード バランサーを作成する方法を示します。 Azure Resource Manager では、それぞれのリソースは個別に作成され構成された後、リソースを作成するためにまとまられます。
+次の手順では、CLI で Azure Resource Manager を使用してパブリック ロード バランサーを作成する方法を示します。 Azure Resource Manager では、それぞれのリソースは個別に作成され構成された後、リソースを作成するためにまとまられます。
 
 ロード バランサーをデプロイするには、次のオブジェクトを作成して構成する必要があります。
 
@@ -304,7 +304,7 @@ azure network lb rule create --resource-group nrprg --lb-name nrplb --name lbrul
 azure network lb delete --resource-group nrprg --name nrplb
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)
 
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)

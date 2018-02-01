@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.openlocfilehash: cb46c3f2809fa86fea7a8370d4c417f04040b74c
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -309,7 +309,7 @@ AzCopy ツールの使用の詳細については、「 [AzCopy コマンド ラ
 1. すべての VHD ディスクのコピーが完了するまで待ちます。
 2. 移行先のリージョンで Premium Storage が利用可能であることを確認します。
 3. 使用する新しい VM シリーズを決定します。 Premium Storage に対応している必要があり、サイズはリージョンでの可用性やニーズに応じたものにする必要があります。
-4. 使用する正確な VM サイズを決定します。 VM サイズは、所有するデータ ディスクの数がサポートされるように十分な大きさにする必要があります。 例: データ ディスクが 4 つある場合、VM には 2 つ以上のコアが必要です。 さらに、処理能力、メモリ、ネットワーク帯域幅のニーズについても検討します。
+4. 使用する正確な VM サイズを決定します。 VM サイズは、所有するデータ ディスクの数がサポートされるように十分な大きさにする必要があります。 例:  データ ディスクが 4 つある場合、VM には 2 つ以上のコアが必要です。 さらに、処理能力、メモリ、ネットワーク帯域幅のニーズについても検討します。
 5. 移行先のリージョンで Premium Storage アカウントを作成します。 これが新しい VM に使用するアカウントです。
 6. 現在の VM の詳細 (ディスクの一覧や対応する VHD BLOB など) を手元に用意します。
 
@@ -753,14 +753,14 @@ Update-AzureVM  -VM $vm
 ディスク パフォーマンス向上のためにアプリケーションをチューニングする場合は、「[アプリケーションのパフォーマンスの最適化](../../virtual-machines/windows/premium-storage-performance.md#optimizing-application-performance)」をご覧ください。
 
 ### <a name="application-migrations"></a>アプリケーションの移行
-データベースやその他の複雑なアプリケーションを移行する場合は、アプリケーションの提供元が指定する特別な手順が必要になることがあります。 各アプリケーションのドキュメントを参照してください。 例: 通常、データベースは、バックアップと復元を使用して移行できます。
+データベースやその他の複雑なアプリケーションを移行する場合は、アプリケーションの提供元が指定する特別な手順が必要になることがあります。 各アプリケーションのドキュメントを参照してください。 例:  通常、データベースは、バックアップと復元を使用して移行できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 仮想マシンの移行に関する具体的なシナリオについては、次のリソースを参照してください。
 
 * [ストレージ アカウント間での Azure 仮想マシンの移行](https://azure.microsoft.com/blog/2014/10/22/migrate-azure-virtual-machines-between-storage-accounts/)
-* [Windows Server VHD の作成と Azure へのアップロード](../../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
-* [Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Windows Server VHD の作成と Azure へのアップロード](../../virtual-machines/windows/upload-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Linux VHD の作成と Azure へのアップロード](../../virtual-machines/linux/create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Amazon AWS から Microsoft Azure への仮想マシンの移行](http://channel9.msdn.com/Series/Migrating-Virtual-Machines-from-Amazon-AWS-to-Microsoft-Azure)
 
 また、Azure Storage と Azure Virtual Machines の詳細については、次のリソースもご覧ください。

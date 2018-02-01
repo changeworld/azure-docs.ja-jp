@@ -14,11 +14,11 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: 8fe080aabe3079f571f5979245adfc453dfcd459
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d7624d47a6924a5c8dec66b47ac0887ff493879
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Ruby から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-ruby-application"></a>Ruby アプリケーションの作成
-Ruby アプリケーションを作成します。 手順については、「 [Azure VM での Ruby on Rails Web アプリケーション](../../virtual-machines/linux/classic/virtual-machines-linux-classic-ruby-rails-web-app.md)」を参照してください。
+Ruby アプリケーションを作成します。 手順については、「[App Service on Linux での Ruby アプリの作成](https://docs.microsoft.com/azure/app-service/containers/quickstart-ruby)」を参照してください。
 
 ## <a name="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 Azure ストレージを使用するには、Ruby azure パッケージをダウンロードして使用する必要があります。このパッケージには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
@@ -60,7 +60,7 @@ Azure.config.storage_access_key = "<your Azure storage access key>"
 
 Azure ポータルでクラシックまたは Resource Manager ストレージ アカウントからこれらの値を取得するには:
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。
+1. [Azure Portal](https://portal.azure.com) にログインします。
 2. 使用するストレージ アカウントを表示します。
 3. 右側の [設定] ブレードで、 **[アクセス キー]**をクリックします。
 4. 表示される [アクセス キー] ブレードに、アクセス キー 1 とアクセス キー 2 が表示されます。 このいずれかを使用できます。 
@@ -153,7 +153,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 azure_queue_service.delete_queue("test-queue")
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)

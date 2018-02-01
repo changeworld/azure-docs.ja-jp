@@ -123,6 +123,8 @@
           href: site-recovery-create-recovery-plans.md
         - name: 復旧計画に Azure Runbook を追加する
           href: site-recovery-runbook-automation.md
+        - name: 復旧計画に VMM スクリプトを追加する
+          href: site-recovery-how-to-add-vmmscript.md
         - name: フェールオーバー
           items:
             - name: フェールオーバーについて

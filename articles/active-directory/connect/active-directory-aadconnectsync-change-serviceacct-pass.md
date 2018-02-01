@@ -4,7 +4,7 @@ description: "このトピックでは、暗号化キーの詳細と、パスワ
 services: active-directory
 keywords: "Azure AD 同期サービス アカウント, パスワード"
 documentationcenter: 
-author: cychua
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 0e4f143779a33bc2511974884fa16894611050f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c22dd91f236454c774c00371bff668da245d45c6
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Azure AD Connect 同期サービス アカウントのパスワードの変更
 Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
@@ -43,7 +43,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 次のようなエラーが表示されます。
 
 - Windows サービス コントロール マネージャーで同期サービスを開始しようとすると、暗号化キーを取得できないため、"ローカル コンピューターで Microsoft Azure AD Sync サービスを開始できませんでした。 詳細情報はシステム イベント ログを参照してください。 これが Microsoft 以外のサービスである場合は、サービスの製造元に問い合わせてください。その際、サービス固有のエラー コードが **-21451857952**** であることを伝えてください。” というエラーが表示され失敗します。
-- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、*“**The server encryption key cannot be accessed.**” (サーバー暗号化キーにアクセスできませんでした。)* というエラー メッセージが記録されます。
+- Windows イベント ビューアーでは、アプリケーション イベント ログに**イベント ID 6028** のエラーと、*"**The server encryption key cannot be accessed.**"* (サーバー暗号化キーにアクセスできませんでした) というエラー メッセージが記録されます。
 
 これらのエラーが表示されないようにするために、パスワードの変更時には「[Azure AD Connect 同期の暗号化キーの破棄](#abandoning-the-azure-ad-connect-sync-encryption-key)」の手順に従ってください。
  
@@ -107,7 +107,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 1. Windows サービス コントロール マネージャーにアクセスします ([スタート]、[サービス] の順に移動します)。
 2. **[Microsoft Azure AD Sync] \(Microsoft Azure AD 同期)** を選択して [再起動] をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 **概要トピック**
 
 * [Azure AD Connect sync: 同期を理解してカスタマイズする](active-directory-aadconnectsync-whatis.md)

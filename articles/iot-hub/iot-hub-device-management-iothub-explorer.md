@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/12/2017
 ms.author: xshi
-ms.openlocfilehash: 5b7a5057bdfb5920fbb5759bed1f5561cfa1d7e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02d3241ae4ae515a8c2deaa14f50b5b7dbd4766f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="use-iothub-explorer-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイス管理用の iothub-explorer を使用する
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 [iothub-explorer](https://github.com/azure/iothub-explorer) は、デバイス ID をIoT Hub レジストリで管理するためにホスト コンピューター上で実行する CLI ツールです。 さまざまなタスクを実行するために使用できる管理オプションが付属しています。
 
 | 管理オプション          | タスク                                                                                                                            |
-|----------------------------|---------------------------------------------------------------------------------------------------------------------------------|
+|----------------------------|------------------------------------------------------------------------------------------------------------------------------|
 | ダイレクト メソッド             | メッセージの送信開始や停止、デバイスの再起動などの機能をデバイスに実行させます。                                        |
 | デバイス ツインの必要なプロパティ    | デバイスを特定の状態にします (LED を緑に設定したり、テレメトリの送信間隔を 30 分に設定したりします)。         |
 | デバイス ツインの報告されるプロパティ   | デバイスの報告される状態を取得します。 たとえば、デバイスは、現在 LED が点滅していることを報告します。                                    |
@@ -54,9 +54,9 @@ iothub-explorer をさまざまな管理オプションで実行します。
 ## <a name="what-you-need"></a>必要なもの
 
 - 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
-  - 有効な Azure サブスクリプション
-  - サブスクリプションの Azure IoT Hub。
-  - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
+- 有効な Azure サブスクリプション
+- サブスクリプションの Azure IoT Hub。
+- Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 - このチュートリアルの実行時にクライアント アプリケーションでデバイスが実行されていることを確認します。
 - iothub-explorer (開発コンピューターに [iothub-explorer をインストールします](https://github.com/azure/iothub-explorer))。
 
@@ -114,7 +114,6 @@ iothub-explorer get-twin <your device id>
 
 ```bash
 iothub-explorer update-twin <your device id> "{\"tags\":{\"role\":\"temperature&humidity\"}}"
-
 ```
 
 ## <a name="use-iothub-explorer-with-cloud-to-device-messages"></a>iothub-explorer と cloud-to-device メッセージを使用する
@@ -141,7 +140,7 @@ iothub-explorer query-twin "SELECT * FROM devices WHERE tags.role = 'temperature
 iothub-explorer query-twin "SELECT * FROM devices WHERE tags.role != 'temperature&humidity'"
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 iothub-explorer をさまざまな管理オプションで使用する方法を学習しました。
 

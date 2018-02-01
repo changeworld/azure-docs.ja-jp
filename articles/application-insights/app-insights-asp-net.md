@@ -11,78 +11,74 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/15/2017
+ms.date: 01/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: d94abbd24aee5217cc460e0c48df177aaff80920
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8922759295928a59114fcea55470d113d59b9387
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="set-up-application-insights-for-your-aspnet-website"></a>ASP.NET Web サイトに Application Insights を設定する
 
-この手順では、[Azure Application Insights](app-insights-overview.md) サービスにテレメトリを送信するように ASP.NET Web アプリを構成します。 このサービスは、IIS サーバーまたはクラウドでホストされる ASP.NET アプリに対して機能します。 アプリのパフォーマンスと利用状況の把握に役立つグラフと強力なクエリ言語が提供され、エラーやパフォーマンスの問題に対する自動アラート機能も備えられています。 多くの開発者にとって、これらの機能はそのままでも便利ですが、必要に応じてテレメトリを拡張したりカスタマイズしたりすることもできます。
+この手順では、[Azure Application Insights](app-insights-overview.md) サービスにテレメトリを送信するように ASP.NET Web アプリを構成します。 このサービスは、オンプレミスの IIS サーバーまたはクラウドでホストされる ASP.NET アプリに対して機能します。 アプリのパフォーマンスと利用状況の把握に役立つグラフと強力なクエリ言語が提供され、エラーやパフォーマンスの問題に対する自動アラート機能も備えられています。 多くの開発者にとって、これらの機能はそのままでも便利ですが、必要に応じてテレメトリを拡張したりカスタマイズしたりすることもできます。
 
 セットアップは、Visual Studio でクリック操作を数回行うだけで済みます。 テレメトリの量を制限して、課金を回避するオプションもあります。 そうすることで、ユーザーがそれほど多くないサイトを実験してデバッグしたり、監視したりすることができます。 運用サイトに移行し、監視することに決定した場合は、後で制限を簡単に引き上げることができます。
 
-## <a name="before-you-start"></a>開始する前に
-必要なもの:
+## <a name="prerequisites"></a>前提条件
+ASP.NET Web サイトに Application Insights を追加するうえで必要なことは次のとおりです。
 
-* Visual Studio 2013 Update 3 以降。 より新しいバージョンが適しています。
-* [Microsoft Azure](http://azure.com) サブスクリプション。 チームまたは組織で Azure サブスクリプションを取得している場合、所有者は [Microsoft アカウント](http://live.com)を使用してあなたを追加できます。
+- 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
+    - ASP.NET および Web の開発
+    - Azure の開発
 
-関心をお持ちの場合は、他にも次のようなトピックをご覧いただけます。
-
-* [実行時の Web アプリのインストルメント化](app-insights-monitor-performance-live-website-now.md)
-* [Azure Cloud Services](app-insights-cloudservices.md)
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="ide"></a>手順 1: Application Insights SDK を追加する
 
-ソリューション エクスプローラーで Web アプリのプロジェクトを右クリックし、**[追加]** > **[Application Insights Telemetry...]** または **[Application Insights の構成]** の順に選択します。
+ソリューション エクスプローラーで Web アプリ名を右クリックし、**[Application Insights の構成]** を選択します。
 
-![[追加] と [Application Insights Telemetry...] が強調表示された、ソリューション エクスプローラーのスクリーンショット](./media/app-insights-asp-net/appinsights-03-addExisting.png)
+![[Application Insights の構成] が強調表示された、ソリューション エクスプローラーのスクリーンショット](./media/app-insights-asp-net/0001-configure-application-insights.png)
 
-(Visual Studio 2015 でも、[新しいプロジェクト] ダイアログに、Application Insights を追加するオプションがあります。)
+(Application Insights SDK のバージョンに応じて、最新の SDK リリースへのアップグレードを促すメッセージが表示されることがあります。 メッセージが表示されたら、**[SDK の更新]** を選択します。)
 
-Application Insights の構成ページに進みます。
+![スクリーンショット: Microsoft Application Insights SDK の新しいバージョンがあります。 [SDK の更新] が強調表示されています](./media/app-insights-asp-net/0002-update-sdk.png)
 
-![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/app-insights-asp-net/visual-studio-register-dialog.png)
+Application Insights の構成画面:
 
-**a.** Azure へのアクセスに使用するアカウントとサブスクリプションを選択します。
+**[開始 (無料)]** を選択します。
 
-**b.** Azure のリソースを選択します。このリソースのデータをアプリに表示します。 通常は、次のようにします。
+![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/app-insights-asp-net/0004-start-free.png)
 
-* 単一のアプリケーションの[さまざまなコンポーネント用の 1 つのリソース](app-insights-monitor-multi-role-apps.md)を使用します。 
-* 関係性のない各アプリケーション用に個別のリソースを作成します。
- 
 データを格納するリソース グループまたは場所を設定するには、**[設定の構成]** をクリックします。 リソース グループは、データへのアクセスの制御に使用されます。 たとえば、同じシステムの一部を構成する複数のアプリがある場合、そのアプリに関する Application Insights のデータを同じリソース グループ内に配置することができます。
 
-**c.** 課金を回避するために、無料のデータ ボリュームの範囲で上限を設定します。 Application Insights では、一定の量までのテレメトリが無料で提供されます。 リソースが作成された後、ポータルで **[機能と価格設定]** > **[データ管理]** > **[日次ボリューム上限]** の順に開いて選択内容を変更することができます。
+ **[登録]** を選択します。 
 
-**d.** **[登録]** をクリックして、Web アプリ向けに Application Insights を構成します。 デバッグ時と、アプリを発行した後に、[Azure Portal](https://portal.azure.com) にテレメトリが送信されます。
+![[アプリを Application Insights に登録します] ページのスクリーンショット](./media/app-insights-asp-net/0005-register-ed.png)
 
-**e.** デバッグ中はポータルにテレメトリを送信しない場合は、Application Insights SDK をアプリに追加するだけにして、ポータルのリソースの構成は行いません。 デバッグ中は、Visual Studio でテレメトリを表示することができます。 この構成ページには後で戻ってくることができます。また、アプリがデプロイされ、[実行時のテレメトリが有効にされる](app-insights-monitor-performance-live-website-now.md)まで待つこともできます。
-
+ デバッグ時と、アプリを発行した後に、[Azure Portal](https://portal.azure.com) にテレメトリが送信されます。
+> [!NOTE]
+> デバッグ中はポータルにテレメトリを送信しない場合は、Application Insights SDK をアプリに追加するだけにして、ポータルのリソースの構成は行いません。 デバッグ中は、Visual Studio でテレメトリを表示することができます。 この構成ページには後で戻ってくることができます。また、アプリがデプロイされ、[実行時のテレメトリが有効にされる](app-insights-monitor-performance-live-website-now.md)まで待つこともできます。
 
 ## <a name="run"></a>手順 2: アプリを実行する
 F5 キーを押して、アプリを実行します。 ある程度のテレメトリを生成するために、複数のページを開きます。
 
-Visual Studio で、ログに記録されたイベントの数が表示されます。
+Visual Studio で、ログに記録されたイベント数が表示されます。
 
-![Visual Studio のスクリーンショット。 デバッグ中に表示される [Application Insights] ボタン。](./media/app-insights-asp-net/54.png)
+![Visual Studio のスクリーンショット。 デバッグ中に表示される [Application Insights] ボタン。](./media/app-insights-asp-net/0006-Events.png)
 
 ## <a name="step-3-see-your-telemetry"></a>手順 3: テレメトリの確認
 Visual Studio または Application Insights Web ポータルで、テレメトリを確認できます。 Visual Studio でテレメトリを検索し、アプリのデバッグに役立てます。 システムを稼働させたら、Web ポータルでパフォーマンスと使用状況を監視します。 
 
 ### <a name="see-your-telemetry-in-visual-studio"></a>Visual Studio でのテレメトリの表示
 
-Visual Studio で、[Application Insights] ウィンドウを開きます。 **[Application Insights]** ボタンをクリックするか、ソリューション エクスプローラーでプロジェクトを右クリックし、**[Application Insights]** を選択してから **[ライブ テレメトリの検索]** をクリックします。
+Visual Studio で Application Insights のデータを表示するには、  **[ソリューション エクスプローラー]** > **[接続済みサービス]** の順に選択してから **[Application Insights]** を右クリックし、続いて **[ライブ テレメトリの検索]** をクリックします。
 
-Visual Studio の [Application Insights の検索] ウィンドウの **[Data from Debug session (デバッグ セッションからのデータ)]** ビューで、アプリのサーバー側で生成されたテレメトリを確認します。 フィルターを試したり、任意のイベントをクリックして詳細を表示したりしてみましょう。
+Visual Studio の [Application Insights の検索] ウィンドウに、アプリのサーバー側で生成されたテレメトリについて、アプリケーションのデータが表示されます。 フィルターを試したり、任意のイベントをクリックして詳細を表示したりしてみましょう。
 
 ![[Application Insights] ウィンドウの [Data from Debug session (デバッグ セッションからのデータ)] ビューのスクリーンショット。](./media/app-insights-asp-net/55.png)
 
-> [!NOTE]
+> [!Tip]
 > データが何も表示されない場合は、時間の範囲が正しいかどうかを確認し、検索アイコンをクリックします。
 
 [Visual Studio の Application Insights ツールの詳細については、こちらを参照してください](app-insights-visual-studio.md)。
@@ -92,12 +88,7 @@ Visual Studio の [Application Insights の検索] ウィンドウの **[Data fr
 
 Application Insights Web ポータルでもテレメトリを確認できます (SDK のみをインストールする場合を除く)。 ポータルには、Visual Studio より多くのグラフ、分析ツール、クロスコンポーネント ビューが用意されています。 ポータルには、アラートも用意されています。
 
-Application Insights リソースを開きます。 [Azure Portal](https://portal.azure.com/) にサインインすると、そこに表示されます。または、Visual Studio でプロジェクトを右クリックし、メニューから表示します。
-
-![Application Insights ポータルを開く方法を示した Visual Studio のスクリーンショット](./media/app-insights-asp-net/appinsights-04-openPortal.png)
-
-> [!NOTE]
-> アクセス エラーが発生した場合: Microsoft 資格情報のセットが複数あり、間違ったセットでサインインしていませんか。 ポータルでサインアウトし、もう一度サインインしてください。
+Application Insights リソースを開きます。 [Azure Portal](https://portal.azure.com/) にサインインするか、**ソリューション エクスプローラー** > **[接続済みサービス]** > **[Application Insights]** を右クリック > **[Application Insights ポータルを開く]** の順に選択すると、そこに表示されます。
 
 ポータルを開くと、アプリのテレメトリが表示されます。
 
@@ -121,7 +112,7 @@ Application Insights ポータルにはテレメトリが蓄積されており�
 
 ## <a name="land"></a>設定の完了
 
-ご利用ありがとうございます。 Application Insights パッケージをアプリにインストールし、Azure の Application Insights サービスにテレメトリを送信するように構成しました。
+お疲れさまでした。 Application Insights パッケージをアプリにインストールし、Azure の Application Insights サービスにテレメトリを送信するように構成しました。
 
 ![テレメトリの移動のダイアグラム](./media/app-insights-asp-net/01-scheme.png)
 
@@ -129,7 +120,7 @@ Application Insights ポータルにはテレメトリが蓄積されており�
 
 
 ## <a name="upgrade-to-future-sdk-versions"></a>新しいバージョンの SDK にアップグレードする
-[SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)にアップグレードするには、**NuGet パッケージ マネージャー**をもう一度開き、インストールされているパッケージに対してフィルターを実行します。 **[Microsoft.ApplicationInsights.Web]**、**[アップグレード]** の順に選択します。
+[SDK の新しいリリース](https://github.com/Microsoft/ApplicationInsights-dotnet-server/releases)にアップグレードするには、**NuGet パッケージ マネージャー**を開き、インストールされているパッケージに対してフィルターを実行します。 **[Microsoft.ApplicationInsights.Web]**、**[アップグレード]** の順に選択します。
 
 ApplicationInsights.config をカスタマイズしている場合は、アップグレードする前にコピーを保存しておきます。 その後、新しいバージョンに変更をマージします。
 
@@ -137,7 +128,12 @@ ApplicationInsights.config をカスタマイズしている場合は、アッ�
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
+
+関心をお持ちの場合は、他にも次のようなトピックをご覧いただけます。
+
+* [実行時の Web アプリのインストルメント化](app-insights-monitor-performance-live-website-now.md)
+* [Azure Cloud Services](app-insights-cloudservices.md)
 
 ### <a name="more-telemetry"></a>テレメトリの追加
 

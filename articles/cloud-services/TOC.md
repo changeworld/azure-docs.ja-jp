@@ -44,12 +44,12 @@
 ### [カスタム ドメイン コントローラーに接続する](cloud-services-connect-to-custom-domain.md)
 
 ## サービスの管理
-### [予測実行の軽減](mitigate-se.md)
 ### [一般的な管理タスク](cloud-services-how-to-manage-portal.md)
 ### [クラウド サービスの構成](cloud-services-how-to-configure-portal.md)
 ### [Azure Automation を使用したクラウド サービスの管理](automation-manage-cloud-services.md)
 ### [自動スケーリングの構成](cloud-services-how-to-scale-portal.md)
 ### [Python を使用した Azure リソースの管理](cloud-services-python-how-to-use-service-management.md)
+### [予測実行の軽減](mitigate-se.md)
 
 ### [ゲスト OS の修正プログラム](cloud-services-guestos-msrc-releases.md)
 ### ゲスト OS の提供終了

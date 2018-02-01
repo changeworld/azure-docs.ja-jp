@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 06/05/2017
+ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 26cb1a5dd9b290366307e4026686e65f7afc0523
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 81f96c223fb5ad2c37bd0679743f14980a5885b0
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL Database 接続アーキテクチャ 
 
@@ -71,7 +71,7 @@ Azure 外から接続する場合、接続には既定で**プロキシ**の接�
 | 米国中央部 | 23.99.160.139 | 13.67.215.62 |
 | 東アジア | 191.234.2.139 | 52.175.33.150 |
 | 米国東部 1 | 191.238.6.43 | 40.121.158.30 |
-| 米国東部 2 | 191.239.224.107 | 40.79.84.180 |
+| 米国東部 2 | 191.239.224.107 | 40.79.84.180 * |
 | インド中部 | 104.211.96.159  | |
 | インド南部 | 104.211.224.146  | |
 | インド西部 | 104.211.160.80 | |
@@ -92,6 +92,8 @@ Azure 外から接続する場合、接続には既定で**プロキシ**の接�
 | 米国西部 1 | 23.99.34.75 | 104.42.238.205 |
 | 米国西部 2 | 13.66.226.202  | |
 ||||
+
+\* **注:** *米国東部 2* には、`52.167.104.0` の第 3 IP アドレスもあります。
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database 接続ポリシーを変更する
 
@@ -183,7 +185,7 @@ az resource update --ids $id --set properties.connectionType=Proxy
 
 </pre>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変更する方法については、「[Create or Update Server Connection Policy using the REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx)」 (REST API を利用してサーバーの接続ポリシーを作成または更新します) を参照してください。
 - ADO.NET 4.5 以降のバージョンを使用するクライアントの Azure SQL Database 接続動作については、「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。

@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect の同期: userCertificate 属性が原因で発生した LargeObject エラーの処理 |Microsoft ドキュメント"
+title: "Azure AD Connect - userCertificate 属性が原因で発生した LargeObject エラー | Microsoft Docs"
 description: "このトピックでは、userCertificate 属性が原因で発生した LargeObject エラーの修復方法を説明します。"
 services: active-directory
 documentationcenter: 
-author: cychua
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 146ad5b3-74d9-4a83-b9e8-0973a19828d9
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: fa824448288059aaad164035743982a2c9f20b9c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 73c79e26b2962368f33bbb0d52d6c243b93a3026
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-ad-connect-sync-handling-largeobject-errors-caused-by-usercertificate-attribute"></a>Azure AD Connect の同期: userCertificate 属性が原因で発生した LargeObject エラーの処理
 
@@ -113,8 +114,8 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
 
     | Attribute | 値 | 詳細 |
     | --- | --- | --- |
-    | 名前 | *名前を入力します* | 例、 *「Out to AAD – Custom override for userCertificate」* |
-    | Description | *説明を入力します* | 例、*「userCertificate attribute に 15 を超える値が含まれる場合、NULL をエクスポートする」* |
+    | Name | *名前を入力します* | 例、 *「Out to AAD – Custom override for userCertificate」* |
+    | [説明] | *説明を入力します* | 例、*「userCertificate attribute に 15 を超える値が含まれる場合、NULL をエクスポートする」* |
     | 接続先システム | *Azure AD Connector を選択する* |
     | 接続先システム オブジェクトの種類 | **user** | |
     | メタバース オブジェクトの種類 | **person** | |
@@ -177,6 +178,6 @@ userCertificate 属性が原因で発生した LargeObject エラーを解決す
 > [!Note]
 > 上記の手順は、組み込みスケジューラが含まれる Azure AD Connect の新しいバージョン (1.1.xxx.x) にのみ適用できます。 Windows タスク スケジューラを使用する Azure AD Connect の以前のバージョン (1.0.xxx.x) を使用しているか、独自のカスタム スケジューラ (一般的ではない) を使用して定期的な同期をトリガーしている場合は、それぞれを無効にする必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
 

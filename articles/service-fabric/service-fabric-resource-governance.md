@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: ada26a303013139f182721360aaf125ac5b94310
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 974fb5bfa8b10cb5497220825b2a83ca96161b0c
+ms.sourcegitcommit: a0d2423f1f277516ab2a15fe26afbc3db2f66e33
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="resource-governance"></a>リソース ガバナンス 
 
@@ -115,8 +115,7 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 ```xml
 <?xml version='1.0' encoding='UTF-8'?>
 <ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
-  <Parameters>
-  </Parameters>
+
   <!--
   ServicePackageA has the number of CPU cores defined, but doesn't have the MemoryInMB defined.
   In this case, Service Fabric sums the limits on code packages and uses the sum as 
@@ -137,6 +136,54 @@ Service Fabric では、[サービス パッケージ](service-fabric-applicatio
 つまり、この例では、コアの 3 分の 2 を CodeA1 が、コアの 3 分の 1 を CodeA2 が取得しています (ソフト保証予約は同じです)。 コード パッケージに CpuShares が指定されていない場合、Service Fabric は均等にコアを分割します。
 
 Memory の制限は絶対的であるため、コード パッケージのメモリは両方とも 1024 MB に制限されます (ソフト保証予約は同じです)。 コード パッケージ (コンテナーまたはプロセス) は、この制限を超えてメモリを割り当てることはできず、割り当てようとするとメモリ不足の例外が発生します。 リソース制限の強制を機能させるには、サービス パッケージ内のすべてのコード パッケージでメモリ制限を指定する必要があります。
+
+### <a name="using-application-parameters"></a>アプリケーション パラメーターの使用
+
+リソース ガバナンスを指定するときは、[アプリケーション パラメーター](service-fabric-manage-multiple-environment-app-configuration.md)を使って複数のアプリ構成を管理できます。 次の例では、アプリケーション パラメーターの使い方を示します。
+
+```xml
+<?xml version='1.0' encoding='UTF-8'?>
+<ApplicationManifest ApplicationTypeName='TestAppTC1' ApplicationTypeVersion='vTC1' xsi:schemaLocation='http://schemas.microsoft.com/2011/01/fabric ServiceFabricServiceModel.xsd' xmlns='http://schemas.microsoft.com/2011/01/fabric' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+
+  <Parameters>
+    <Parameter Name="CpuCores" DefaultValue="4" />
+    <Parameter Name="CpuSharesA" DefaultValue="512" />
+    <Parameter Name="CpuSharesB" DefaultValue="512" />
+    <Parameter Name="MemoryA" DefaultValue="2048" />
+    <Parameter Name="MemoryB" DefaultValue="2048" />
+  </Parameters>
+
+  <ServiceManifestImport>
+    <ServiceManifestRef ServiceManifestName='ServicePackageA' ServiceManifestVersion='v1'/>
+    <Policies>
+      <ServicePackageResourceGovernancePolicy CpuCores="[CpuCores]"/>
+      <ResourceGovernancePolicy CodePackageRef="CodeA1" CpuShares="[CpuSharesA]" MemoryInMB="[MemoryA]" />
+      <ResourceGovernancePolicy CodePackageRef="CodeA2" CpuShares="[CpuSharesB]" MemoryInMB="[MemoryB]" />
+    </Policies>
+  </ServiceManifestImport>
+```
+
+この例では、既定のパラメーター値が運用環境に対して設定され、各サービス パッケージは 4 個のコアと 2 GB のメモリになります。 アプリケーション パラメーター ファイルで既定値を変更することができます。 この例では、1 つのパラメーター ファイルをアプリケーションのローカルなテストに使うことができ、運用環境より少ないリソースが設定されます。 
+
+```xml
+<!-- ApplicationParameters\Local.xml -->
+
+<Application Name="fabric:/TestApplication1" xmlns="http://schemas.microsoft.com/2011/01/fabric">
+  <Parameters>
+    <Parameter Name="CpuCores" DefaultValue="2" />
+    <Parameter Name="CpuSharesA" DefaultValue="512" />
+    <Parameter Name="CpuSharesB" DefaultValue="512" />
+    <Parameter Name="MemoryA" DefaultValue="1024" />
+    <Parameter Name="MemoryB" DefaultValue="1024" />
+  </Parameters>
+</Application>
+```
+
+> [!IMPORTANT] 
+> アプリケーション パラメーターによるリソース ガバナンスの指定は、Service Fabric バージョン 6.1 以降で利用できます。<br> 
+>
+> アプリケーション パラメーターを使ってリソース ガバナンスを指定すると、Service Fabric をバージョン 6.1 より前のバージョンにダウングレードできなくなります。 
+
 
 ## <a name="other-resources-for-containers"></a>コンテナー用の他のリソース
 CPU とメモリに加え、コンテナー用の他のリソース制限を指定できます。 これらの制限は、コード パッケージ レベルで指定され、コンテナーが開始されたときに適用されます。 CPU とメモリとは異なり、クラスター リソース マネージャーはこれらのリソースを認識せず、それらの容量チェックも負荷分散も実行しません。 
@@ -160,6 +207,6 @@ CPU とメモリに加え、コンテナー用の他のリソース制限を指�
     </ServiceManifestImport>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * クラスター リソース マネージャーの詳細については、「[Service Fabric クラスター リソース マネージャーの概要](service-fabric-cluster-resource-manager-introduction.md)」をご覧ください。
 * アプリケーション モデル、サービス パッケージ、コード パッケージ、およびこれらにレプリカをマップする方法の詳細については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」をご覧ください。

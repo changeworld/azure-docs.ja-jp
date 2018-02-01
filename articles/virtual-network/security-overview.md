@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: 142b9e052e09f88826ae8ea3866316444a5d7acc
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 89a4a165690c7a308d5bc7222b8a5a9716d22785
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -119,7 +119,7 @@ ms.lasthandoff: 01/17/2018
 * **VirtualNetwork** (*Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**): このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、および[ピアリングされた](virtual-network-peering-overview.md)仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワークが含まれます。
 * **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**): このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブが開始される [Azure データセンター IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)に変換されます。 Azure Load Balancer を使っていない場合は、この規則を上書きできます。
 * **Internet** (Resource Manager) (クラシックの場合は **INTERNET**): このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
-* **AzureTrafficManager** (Resource Manager のみ): このタグは、Azure Traffic Manager サービスの IP アドレス空間を表します。
+* **AzureTrafficManager** (Resource Manager のみ): このタグは、Azure Traffic Manager プローブ IP の IP アドレス空間を表します。 Traffic Manager プローブ IP の詳細については、[Azure Traffic Manager の FAQ](https://docs.microsoft.com/en-us/azure/traffic-manager/traffic-manager-faqs) に関するページを参照してください。
 * **Storage** (Resource Manager のみ): このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージに対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure Storage へのアクセスのみを許可する場合は、サービス タグとして *Storage.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。
 * **Sql** (Resource Manager のみ): このタグは、Azure SQL Database サービスおよび Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 値として *Sql* を指定した場合、SQL へのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)の SQL へのアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の SQL データベースや SQL サーバーは表しません。
 

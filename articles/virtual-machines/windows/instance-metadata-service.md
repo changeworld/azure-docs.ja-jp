@@ -1,4 +1,4 @@
-﻿---
+---
 title: Azure Instance Metadata Service | Microsoft Docs
 description: "Windows VM のコンピューティング、ネットワーク、および今後のメンテナンス イベントに関する情報を取得するための RESTful インターフェイスです。"
 services: virtual-machines-windows
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 5a09895f32d5cc559cda9ec8794c3ce982d99774
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 2694c25b0db7a4a0b9f527ec67e62fede5de6a80
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -37,7 +37,7 @@ Azure Instance Metadata Service は、[Azure Resource Manager](https://docs.micr
 リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
 [一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 |
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02
 [Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02
 
@@ -48,12 +48,12 @@ Instance Metadata Service を試すには、上記のリージョンで [Azure R
 ## <a name="usage"></a>使用法
 
 ### <a name="versioning"></a>バージョン管理
-インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須であり、Global Azure の現在のバージョンは `2017-08-01` です。 現在サポートされているバージョンは ( 2017-04-02、2017-08-01 ) です。
+インスタンス メタデータ サービスはバージョン管理されています。 バージョンは必須であり、Global Azure の現在のバージョンは `2017-08-01` です。 現在サポートされているバージョンは (2017-04-02、2017-08-01) です。
 
 > [!NOTE] 
 > スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後廃止される予定です。
 
-新しいバージョンが追加されても、特定のデータ形式への依存関係がスクリプトにある場合、互換性を確保するために古いバージョンにもアクセスできます。 ただし、サービスが一般公開されると、以前のプレビュー バージョン (2017-03-01) は使用できなくなる可能性があることに注意してください。
+新しいバージョンが追加されても、特定のデータ形式への依存関係がスクリプトにある場合、互換性を確保するために古いバージョンにもアクセスできます。 ただし、サービスが一般公開されると、以前のプレビュー バージョン (2017-03-01) は使用できなくなる可能性があります。
 
 ### <a name="using-headers"></a>ヘッダーの使用
 Instance Metadata Service のクエリを実行するときは、要求が意図せずリダイレクトされないように、`Metadata: true` ヘッダーを指定する必要があります。
@@ -62,7 +62,7 @@ Instance Metadata Service のクエリを実行するときは、要求が意図
 
 インスタンス メタデータは、[Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) を使用して作成/管理されている実行中の VM で使用できます。 仮想マシン インスタンスのすべてのデータ カテゴリにアクセスするには、次の要求を使用します。
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02"
 ```
 
@@ -80,7 +80,7 @@ API | 既定のデータ形式 | その他の形式
 
 既定以外の応答形式にアクセスするには、要求のクエリ文字列パラメーターとして要求の形式を指定します。 次に例を示します。
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-04-02&format=text"
 ```
 
@@ -89,7 +89,7 @@ Instance Metadata Service エンドポイントには、実行中の仮想マシ
 また、実際の要求が意図しないリダイレクトの一部として行われたのではなく、直接意図されたものであったことを明確に示すために、要求に `Metadata: true`ヘッダーを含める必要があります。 
 
 ### <a name="error"></a>エラー
-見つからないデータ要素または無効な形式の要求がある場合、Instance Metadata Service は標準 HTTP エラーを返します。 For example:
+見つからないデータ要素または無効な形式の要求がある場合、Instance Metadata Service は標準 HTTP エラーを返します。 次に例を示します。
 
 HTTP 状態コード | 理由
 ----------------|-------
@@ -109,7 +109,7 @@ HTTP 状態コード | 理由
 
 **要求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-version=2017-08-01"
 ```
 
@@ -118,7 +118,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 > [!NOTE] 
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
 
-```
+```json
 {
   "interface": [
     {
@@ -148,7 +148,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network?api-vers
 
 #### <a name="retrieving-public-ip-address"></a>パブリック IP アドレスの取得
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interface/0/ipv4/ipAddress/0/publicIpAddress?api-version=2017-04-02&format=text"
 ```
 
@@ -156,7 +156,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 
 **要求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017-08-01"
 ```
 
@@ -165,7 +165,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 > [!NOTE] 
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
 
-```
+```json
 {
   "compute": {
     "location": "westus",
@@ -217,13 +217,13 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2017
 
 インスタンス メタデータは、Windows で Powershell ユーティリティ `curl` を使用して取得できます。 
 
-```
+```bash
 curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2017-04-02 | select -ExpandProperty Content
 ```
 
 または、`Invoke-RestMethod` コマンドレットを使用して取得できます。
     
-```
+```powershell
 Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2017-04-02 -Method get 
 ```
 
@@ -232,7 +232,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 > [!NOTE] 
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
 
-```
+```json
 {
   "compute": {
     "location": "westus",
@@ -279,7 +279,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 ## <a name="instance-metadata-data-categories"></a>インスタンス メタデータのデータ カテゴリ
 Instance Metadata Service を通して次のデータ カテゴリを使用できます。
 
-データ | Description | 導入されたバージョン 
+データ | 説明 | 導入されたバージョン 
 -----|-------------|-----------------------
 location | VM を実行中の Azure リージョン | 2017-04-02 
 name | VM の名前 | 2017-04-02
@@ -302,7 +302,7 @@ subnet/address | VM のサブネット アドレス | 2017-04-02
 subnet/prefix | サブネットのプレフィックス (24 など) | 2017-04-02 
 ipv6/ipAddress | VM のローカル IPv6 アドレス | 2017-04-02 
 macAddress | VM の mac アドレス | 2017-04-02 
-scheduledevents | 現在パブリック プレビュー段階です。[スケジュールされたイベント](scheduled-events.md)に関するページを参照してください。 | 2017-03-01
+scheduledevents | 現在、パブリック プレビュー段階にあります。 [スケジュールされたイベント](scheduled-events.md)に関する記事を参照してください。 | 2017-03-01
 
 ## <a name="example-scenarios-for-usage"></a>使用に関するシナリオ例  
 
@@ -312,7 +312,7 @@ scheduledevents | 現在パブリック プレビュー段階です。[スケジ
 
 **要求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api-version=2017-04-02&format=text"
 ```
 
@@ -329,7 +329,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/vmId?api
 
 **要求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platformFaultDomain?api-version=2017-04-02&format=text" 
 ```
 
@@ -345,7 +345,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/platform
 
 **要求**
 
-```
+```bash
 curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-04-02"
 ```
 
@@ -354,7 +354,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 > [!NOTE] 
 > 応答は JSON 文字列です。 次の例の応答は、読みやすくするために整えられています。
 
-```
+```json
 {
   "compute": {
     "location": "CentralUS",

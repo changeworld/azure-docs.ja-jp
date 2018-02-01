@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 29362ea94fb86f86f7ff85be81cbf33fef6accce
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 95abba4fd293e2d04a58f0d07f955aca808434b7
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure Automation の一般的な問題のトラブルシューティング 
 この記事では、Azure Automation で発生することがある一般的なエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
@@ -152,7 +152,7 @@ ms.lasthandoff: 01/06/2018
   * PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、 **Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
 ### <a name="scenario-no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a>シナリオ: 構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
-**エラー:** DSC のコンパイル ジョブが中断され、「Compilation completed successfully, but no node configuration .mofs were generated (コンパイルは正常に完了しましたが、ノード構成 .mof は生成されませんでした)」というエラーが表示されます。
+**エラー:** DSC のコンパイル ジョブが中断され、"Compilation completed successfully, but no node configuration .mofs were generated" (コンパイルは正常に完了しましたが、ノード構成 .mof は生成されませんでした) というエラーが表示されます。
 
 **エラーの理由:** DSC 構成の **Node** キーワードに続く式の評価結果が `$null` の場合、ノード構成は生成されません。
 
@@ -190,6 +190,16 @@ ms.lasthandoff: 01/06/2018
 **トラブルシューティングのヒント:**
 
 そのソリューションに対するクエリを削除し、ソリューションを再オンボードすることができます。その際にクエリが再生成されます。 クエリはワークスペース内の、**[保存された検索条件]** にあります。 クエリの名前は **MicrosoftDefaultComputerGroup** です。また、クエリのカテゴリは、このクエリに関連付けられたソリューションの名前です。 複数のソリューションが有効な場合は、**MicrosoftDefaultComputerGroup** が複数回 **[保存された検索条件]** に表示されます。
+
+### <a name="policyviolation"></a>PolicyViolation
+
+**エラーの理由:**
+
+このエラー コードは、ポリシー違反でデプロイが失敗したことを示します。
+
+**トラブルシューティングのヒント:**
+
+Azure Portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、**[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure ポリシーの詳細については、[Azure ポリシーの概要](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

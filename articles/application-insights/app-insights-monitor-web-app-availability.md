@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: sdash
-ms.openlocfilehash: 6932802e7852efa90551c27f9145f7ca6e685d7e
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: c9dd60170e93722cab8e8d5eb5b4202b71bbb8e4
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Web サイトの可用性と応答性の監視
 いずれかのサーバーに Web アプリまたは Web サイトをデプロイした後、テストを設定して、その可用性と応答性を監視できます。 [ Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
@@ -30,6 +30,12 @@ ms.lasthandoff: 12/15/2017
 * [複数ステップ Web テスト](#multi-step-web-tests): Visual Studio Enterprise で作成してポータルにアップロードします。
 
 アプリケーション リソースごとに最大 100 個の可用性テストを作成できます。
+
+
+> [!NOTE] 
+> * 最近、可用性テストの場所は Azure データセンターに移行しました。 この移行により、Microsoft は Azure データセンターのネットワークの拡大に伴って場所を追加できます。  
+> * テストを更新する必要はありません。 すべてのテストは移行され、新しい場所から実行されています。 
+>* 詳細については、[サービスの更新](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/01/24/application-insights-availability-monitoring-test-locations-updated/)に関するページを参照してください。
 
 ## <a name="create"></a>可用性テスト レポートのリソースを開く
 
@@ -118,7 +124,8 @@ URL の順序に関連するシナリオを監視することができます。 
 複数手順のテストを作成するには、Visual Studio Enterprise を使用してシナリオを記録してから、その記録を Application Insights にアップロードします。 Application Insights は周期的にそのシナリオを再生し、応答を確認します。
 
 > [!NOTE]
-> テストでは、コード化された機能またはループは使用できません。 テストは .webtest スクリプトに完全に含まれている必要があります。 ただし、標準的なプラグインは使用できます。
+> * テストでは、コード化された機能またはループは使用できません。 テストは .webtest スクリプトに完全に含まれている必要があります。 ただし、標準的なプラグインは使用できます。
+> * 複数ステップ Web テストでは、英語文字のみがサポートされます。 他の言語で Visual Studio を使用している場合、Web テスト定義ファイルを更新して、英語以外の文字を翻訳/除外してください。
 >
 
 #### <a name="1-record-a-scenario"></a>1.シナリオを記録する
@@ -160,7 +167,7 @@ Web セッションを記録するには、Visual Studio Enterprise を使用し
 
     ping テストについても同様に、テストの場所、頻度、アラートのパラメーターを設定してください。
 
-#### <a name="3-see-the-results"></a>3.結果を確認する
+#### <a name="3-see-the-results"></a>手順 3.結果を確認する
 
 単一 URL のテストと同じように、テストの結果とエラーを表示します。
 
@@ -248,7 +255,7 @@ Web サイトに対してロード テストを実行できます。 可用性�
 > パフォーマンス テストの影響を観察するには、[Live Stream](app-insights-live-stream.md) と [Profiler](app-insights-profiler.md) を使用します。
 >
 
-## <a name="automation"></a>オートメーション
+## <a name="automation"></a>Automation
 * [PowerShell スクリプトを使用して、可用性テストを自動的に設定します](app-insights-powershell.md#add-an-availability-test)。
 * アラートが発生したときに呼び出される [webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) を設定する。
 
@@ -269,7 +276,8 @@ Web サイトに対してロード テストを実行できます。 可用性�
     サーバー側のアプリケーションに対して Application Insights を設定している場合は、[サンプリング](app-insights-sampling.md)操作中のためである可能性があります。
 * *Web テストからコードを呼び出すことはできますか。*
 
-    いいえ。 テストの手順は、.webtest ファイルに含まれている必要があります。 他の Web テストの呼び出しまたはループの使用は許可されていません。 ただし、役に立つさまざまなプラグインがあります。
+    
+いいえ。 テストの手順は、.webtest ファイルに含まれている必要があります。 他の Web テストの呼び出しまたはループの使用は許可されていません。 ただし、役に立つさまざまなプラグインがあります。
 * *HTTPS はサポートされていますか。*
 
     TLS 1.1 と TLS 1.2 がサポートされています。

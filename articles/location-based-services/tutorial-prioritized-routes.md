@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 19cf9da839d9d3a1ec78c8d1f6994628684f4e31
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 78e911d17fe8c468cf89ec1477f1c5144e6669b6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Azure Location Based Services を使用してさまざまなトラベルのモードのルートを見つけます
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-先に進む前に、[Azure Location Based Services アカウントを作成](./tutorial-search-location.md#createaccount)し、[アカウントのサブスクリプション キーを取得](./tutorial-search-location.md#getkey)してください。 マップ コントロールと Search Service API の使用方法については、チュートリアル「[Search nearby point of interest using Azure Location Based Services](./tutorial-search-location.md)」(Azure Location Based Services を使用して近い目的地を検索する) を参照してください。また、Route Service API の基本的な使用方法については、チュートリアル「[Route to a point of interest using Azure Location Based Services](./tutorial-route-location.md)」(Azure Location Based Services を使用して目的地までのルートを検索する) を参照してください。
+先に進む前に、[Azure Location Based Services アカウントを作成](./tutorial-search-location.md#createaccount)し、[アカウントのキーを取得](./tutorial-search-location.md#getkey)してください。 マップ コントロールと Search Service API の使用方法については、チュートリアル「[Search nearby point of interest using Azure Location Based Services](./tutorial-search-location.md)」(Azure Location Based Services を使用して近い目的地を検索する) を参照してください。また、Route Service API の基本的な使用方法については、チュートリアル「[Route to a point of interest using Azure Location Based Services](./tutorial-route-location.md)」(Azure Location Based Services を使用して目的地までのルートを検索する) を参照してください。
 
 
 <a id="queryroutes"></a>
@@ -80,9 +80,9 @@ ms.lasthandoff: 01/02/2018
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
     **atlas.Map** は、ビジュアルと対話型 Web マップのためのコントロールを提供し、Azure マップ コントロール API のコンポーネントです。
@@ -195,7 +195,7 @@ ms.lasthandoff: 01/02/2018
 
     var truckRouteUrl = "https://atlas.microsoft.com/route/directions/json?";
     truckRouteUrl += "&api-version=1.0";
-    truckRouteUrl += "&subscription-key=" + subscriptionKey;
+    truckRouteUrl += "&subscription-key=" + LBSAccountKey;
     truckRouteUrl += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
     truckRouteUrl += "&travelMode=truck";
@@ -209,7 +209,7 @@ ms.lasthandoff: 01/02/2018
     ```
     このコード スニペットは、[XMLHttpRequest](https://xhr.spec.whatwg.org/) を作成し、受信した応答を解析するためのイベント ハンドラーを追加します。 成功応答の場合、返されたルートの座標の配列が作成され、マップの `truckRouteLayerName` レイヤーが追加されます。 
     
-    また、このコード スニペットで、Route Service に対してクエリが送信され、アカウントのサブスクリプション キーに指定された起点と終点のルートが取得されます。 次の省略可能なパラメーターは、大型トラックのルートを示すために使用します。パラメーター `travelMode=truck` で、トラベルのモードを *truck* と指定します。 サポートされる他のトラベルのモードは、*taxi*、*bus*、*van*、*motorcycle*、既定の *car* です。  
+    また、このコード スニペットで、Route Service に対してクエリが送信され、アカウントのキーに指定された起点と終点のルートが取得されます。 次の省略可能なパラメーターは、大型トラックのルートを示すために使用します。パラメーター `travelMode=truck` で、トラベルのモードを *truck* と指定します。 サポートされる他のトラベルのモードは、*taxi*、*bus*、*van*、*motorcycle*、既定の *car* です。  
         - パラメーター `vehicleWidth`、`vehicleHeight`、`vehicleLength` で、車両の寸法 (メートル) を指定します。これらのパラメーターは、トラベルのモードが *truck* の場合にのみ考慮されます。  
         - `vehicleLoadType` は、積み荷を一部の道路で危険であり制限されるものと分類します。 現在、このパラメーターも *truck* モードの場合にのみ考慮されます。  
 
@@ -238,7 +238,7 @@ ms.lasthandoff: 01/02/2018
 
     var carRouteUrl = "https://atlas.microsoft.com/route/directions/json?";
     carRouteUrl += "&api-version=1.0";
-    carRouteUrl += "&subscription-key=" + subscriptionKey;
+    carRouteUrl += "&subscription-key=" + LBSAccountKey;
     carRouteUrl += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
 
@@ -247,7 +247,7 @@ ms.lasthandoff: 01/02/2018
     ```
     このコード スニペットで、別の [XMLHttpRequest](https://xhr.spec.whatwg.org/) を作成し、受信した応答を解析するためのイベント ハンドラーを追加します。 成功応答の場合、返されたルートの座標の配列が作成され、マップの `carRouteLayerName` レイヤーが追加されます。 
     
-    また、このコード スニペットで、Route Service に対してクエリが送信され、アカウントのサブスクリプション キーに指定された起点と終点のルートが取得されます。 他のパラメーターは使用されていないので、既定のトラベルのモードである *car* のルートが返されます。 
+    また、このコード スニペットで、Route Service に対してクエリが送信され、アカウントのキーに指定された起点と終点のルートが取得されます。 他のパラメーターは使用されていないので、既定のトラベルのモードである *car* のルートが返されます。 
 
 3. **MapTruckRoute.html** ファイルをローカルに保存してから、好みの Web ブラウザーで開き、結果を確認します。 Location Based Services の API と正常に接続できると、次のようなマップが表示されます。 
 

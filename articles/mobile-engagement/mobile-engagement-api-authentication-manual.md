@@ -1,5 +1,5 @@
 ---
-title: "Mobile Engagement REST API を使用した認証 - 手動の設定"
+title: "Mobile Engagement REST API を使用した認証: 手動の設定"
 description: "Mobile Engagement REST API の認証を手動で設定する方法について説明します"
 services: mobile-engagement
 documentationcenter: mobile
@@ -14,89 +14,92 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3b678acbae225c28223a2ee76e5be2462a529362
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 0b4a999c6778040e71f862d3a010b6635e84b26e
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>Mobile Engagement REST API を使用した認証 - 手動の設定
-これは、「[Mobile Engagement REST API での認証](mobile-engagement-api-authentication.md)」の付録のドキュメントです。 このドキュメントを先に読み、内容を把握してください。
-このドキュメントでは、Azure Portal を使用して Mobile Engagement REST API の認証を設定するために 1 回限りの設定を行う代替の方法について説明します。
+# <a name="authenticate-with-mobile-engagement-rest-apis-manual-setup"></a>Mobile Engagement REST API を使用した認証: 手動の設定
+このドキュメントは、「[Mobile Engagement REST API での認証](mobile-engagement-api-authentication.md)」の付録です。 コンテキストを理解するために、まずこの記事をお読みください。 Azure Portal を使用して、Mobile Engagement REST API のワンタイム認証を設定する別の方法についても説明しています。
 
 > [!NOTE]
-> 以下の手順はこの [Active Directory ガイド](../azure-resource-manager/resource-group-create-service-principal-portal.md) に基づいており、Mobile Engagement API の認証に必要なものに対応してカスタマイズしています。 そのため、以下の手順を詳しく理解したい場合は、このガイドを参照してください。
+> 以下の手順は、[こちらの Active Directory ガイド](../azure-resource-manager/resource-group-create-service-principal-portal.md)に基づいています。 これらの手順は Mobile Engagement API 用の認証要件のためにカスタマイズされています。 以下の手順を詳しく理解したい場合、これらの要件を参照してください。
 
-1. [Azure Portal](https://portal.azure.com/) で Azure アカウントにログインします。
+1. [Azure Portal](https://portal.azure.com/) で Azure アカウントにサインインします。
 2. 左側のペインで **[Active Directory]** を選択します。
 
-     ![Active Directory の選択][1]
+   ![Active Directory の選択][1]
 
-3. ディレクトリ内のアプリケーションを表示するには、**[アプリの登録]** をクリックします。
+3. ディレクトリ内でアプリケーションを表示するには、**[アプリの登録]** を選択します。
 
-     ![アプリケーションの表示][3]
+   ![アプリケーションの表示][3]
 
-4. **[新しいアプリケーションの登録]** をクリックします。
+4. **[新しいアプリケーションの登録]** を選択します。
 
-     ![[アプリケーションの追加]][4]
+   ![[アプリケーションの追加]][4]
 
-5. アプリケーションの名前を入力し、アプリケーションの種類を **[Web アプリ/API]** のままにして、[次へ] ボタンをクリックします。 **[サインオン URL]** にはダミーの URL を指定できます。サインオン URL はこのシナリオでは使用されず、URL 自体は検証されません。
-6. 完了すると、指定した名前の Azure AD アプリが表示されます。 これは **AD\_APP\_NAME** です。書き留めておいてください。
+5. アプリケーションの名前を入力します。 アプリケーションの種類を **[Web アプリ/API]** のままにして、**[次へ]** ボタンを選択します。 **[サインオン URL]** に任意のダミー URL を指定できます。 このシナリオではこれらを使用せず、URL 自体は検証されません。
 
-     ![アプリケーション名][8]
+   完了すると、指定した名前の Azure Active Directory (Azure AD) アプリを使用できるようになります。 これは **AD\_APP\_NAME** なので、メモしておきます。
 
-7. アプリ名をクリックします。
-8. **[アプリケーション ID]** を見つけて書き留めておきます。API 呼び出しの **CLIENT\_ID** として使用される CLIENT ID になります。
+   ![アプリの名前][8]
 
-     ![アプリケーションの構成][10]
+7. アプリの名前を選択します。
+
+8. **[アプリケーション ID]** を検索し、その値をメモしておきます。 これは、API 呼び出しの **CLIENT\_ID** として使用されるクライアント ID です。
+
+   ![アプリケーション ID の検索][10]
 
 9. 右側の **[キー]** セクションを見つけます。
 
-     ![アプリケーションの構成][11]
+   ![[キー] セクション][11]
 
-10. 新しいキーを作成し、すぐにコピーして保存し、後で使用できるようにします。 このキーは再表示されません。
+10. 新しいキーを作成し、すぐにコピーします。 これは再表示されません。
 
-     ![アプリケーションの構成][12]
+    ![キー ウィンドウとキーの詳細][12]
 
     > [!IMPORTANT]
-    > このキーは、指定した期間の最後に期限切れになるため、そのときには更新してください。そうしないと、API 認証が機能しなくなります。 このキーが侵害されていると思われる場合は、削除して、再作成することもできます。
+    > このキーは、指定した期間の終わりに有効期限が切れます。 時期が来たら更新してください。そうしないと、API 認証が機能しなくなります。 このキーが侵害されている懸念がある場合は、キーを削除して再作成できます。
     >
-    >
-11. ページの上部にある **[エンドポイント]** ボタンをクリックし、**[OAuth 2.0 トークン エンドポイント]** をコピーします。
+    
+11. ページの上部にある **[エンドポイント]** ボタンを選択します。 **[OAuth 2.0 トークン エンドポイント]** をコピーします。
 
-    ![][14]
+    ![エンドポイントのコピー][14]
 
-16. このエンドポイントは、次の形式になります。ここで、URL の GUID は **TENANT_ID** であるため、これを書き留めておきます。`https://login.microsoftonline.com/<GUID>/oauth2/token`
-17. ここで、このアプリケーションのアクセス許可の構成に進みます。 このために、 [Azure ポータル](https://portal.azure.com)を開く必要があります。 
-18. **[リソース グループ]** をクリックし、**[Mobile Engagement]** リソース グループを見つけます。
+16. このエンドポイントは次の形式になります。URL の GUID は **TENANT_ID** を表します。`https://login.microsoftonline.com/<GUID>/oauth2/token`
 
-    ![][15]
+17. 次に、このアプリのアクセス許可を構成します。 プロセスを開始するには、[Azure Portal](https://portal.azure.com) にアクセスします。
 
-19. **[Mobile Engagement]** リソース グループをクリックして、ここの **[設定]** セクションに移動します。
+18. **[リソース グループ]** を選択し、**[MobileEngagement]** リソース グループを探します。
 
-    ![][16]
+    ![MobileEngagement を探す][15]
 
-20. [設定] セクションの **[ユーザー]** をクリックし、**[追加]** をクリックして、ユーザーを追加します。
+19. **[MobileEngagement]** リソース グループを選択し、**[すべての設定]** を選択します。
 
-    ![][17]
+    ![MobileEngagement の設定に移動する][16]
+
+20. **[設定]** セクションで **[ユーザー]** を選択します。 ユーザーを追加するには、**[追加]** を選択します。
+
+    ![ユーザーの追加][17]
 
 21. **[ロールの選択]** をクリックします。
 
-    ![][18]
+    ![ロールを選択する][18]
 
-22. **[所有者]** をクリックします。
+22. **[所有者]** を選択します。
 
-    ![][19]
+    ![ロールとして [所有者] を選択する][19]
 
-23. 検索ボックスで、アプリケーションの名前 **AD\_APP\_NAME** を検索します。 既定では、これは表示されません。 見つかったら、それを選択し、セクションの下部の **[選択]** をクリックします。
+23. 検索ボックスで、アプリケーションの名前 **AD\_APP\_NAME** を検索します。 この名前は既定ではここにありません。 検索したら、それを選択します。 次に、セクションの下部にある **[選択]** をクリックします。
 
-    ![][20]
+    ![名前を選択する][20]
 
-24. **[アクセスを追加]** セクションで、それが **1 ユーザー、0 グループ**と表示されます。 このセクションの **[OK]** をクリックして変更を確認します。
+24. **[アクセスを追加]** セクションで、これが **1 ユーザー、0 グループ**と表示されます。 変更を確定するには、**[OK]** を選択します。
 
-    ![][21]
+    ![追加されたユーザーを確定する][21]
 
-これで必要な Azure AD 構成が完了し、API を呼び出すためにすべて設定されました。
+これで必要な Azure AD 構成が完了し、API を呼び出す準備が完了しました。
 
 <!-- Images -->
 [1]: ./media/mobile-engagement-api-authentication-manual/active-directory.png

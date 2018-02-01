@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ID 要件の決定 | Microsoft Docs"
+title: "ハイブリッド クラウド ID 設計の ID 要件 - Azure | Microsoft Docs"
 description: "ハイブリッド ID 設計の要件を定義するための会社のビジネス ニーズを特定します。"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: d88648731ef021f2705a15a544d23359e65c64f6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 90c65ca22ff384bd22819eb589b3f781f8992a4e
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
 ハイブリッド ID ソリューションを設計する上で最初の手順は、このソリューションを利用するビジネス組織の要件を決定することです。  ハイブリッド ID は脇役から始まり (認証を提供することでその他すべてのクラウド ソリューションをサポートします)、ユーザーに対して新しいワークロードを解除するという、新しく興味深い機能を提供するようになります。  こうしたユーザー向けに採用する予定のワークロードまたはサービスは、ハイブリッド ID の設計の要件に影響があります。  これらのサービスとワークロードは、オンプレミスとクラウドの両方でハイブリッド ID を利用する必要があります。  
@@ -103,7 +104,7 @@ ms.lasthandoff: 12/11/2017
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ディレクトリ同期要件の決定](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
 
 ## <a name="see-also"></a>関連項目

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: 63cfa92feb08f32081fe02d4202fa6256c7b99dc
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: c65013fefe6750e82c71cb3d201a3195acd64127
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="azure-cosmos-db-mongodb-api-documentation"></a>Azure Cosmos DB: MongoDB API のドキュメント
 
@@ -44,13 +44,13 @@ Azure Cosmos DB の MongoDB API の学習を開始するにあたり、次のト
 - [Go + Azure ポータル + Go](create-mongodb-golang.md)
 - [Python + Flask + Azure Portal](create-mongodb-flask.md)
 
-## <a name="tutorials"></a>Tutorials (チュートリアル)
+## <a name="tutorials"></a>チュートリアル
 
 チュートリアルには、クイック スタートよりも詳細な説明が記載されています。 こうしたチュートリアルでは、アプリをゼロから構築し、コードをコピーしてアプリに貼り付けます。 また、データのインポートや照会のほか、データベースをグローバルに配布する方法についても説明します。
 
 ### <a name="create-a-console-app"></a>コンソール アプリを作成する
 
-- [Node.JS](mongodb-samples.md) 
+- [Node.js](mongodb-samples.md) 
 - [.NET](tutorial-develop-mongodb.md)
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
@@ -69,5 +69,5 @@ Azure Cosmos DB の MongoDB API の学習を開始するにあたり、次のト
 
 ## <a name="developers-guide"></a>開発者向けガイド
 
-- [MongoChef の使用](mongodb-mongochef.md)
+- [Studio 3T の使用 (MongoChef)](mongodb-mongochef.md)
 - [Robomongo の使用](mongodb-robomongo.md)

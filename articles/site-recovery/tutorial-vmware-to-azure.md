@@ -5,18 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 12/11/2017
+ms.topic: tutorial
+ms.date: 01/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 5810ff908d48fc4ff742d734e7c2457fdfe8cb03
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8acc8deff8b635c97e8722d65a728aebf0e49bb3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -24,7 +21,7 @@ ms.lasthandoff: 12/11/2017
 
 > [!div class="checklist"]
 > * レプリケーションのソースとターゲットを指定する。
-> * ソースのレプリケーション環境 (オンプレミスの Site Recovery コンポーネントなど) と、ターゲットのレプリケーション環境を設定する。
+> * ソースのレプリケーション環境 (オンプレミスの Site Recovery コンポーネントなど) と、ターゲットのレプリケーション環境を設定します。
 > * レプリケーション ポリシーを作成する
 > * VM のレプリケーションを有効にする
 
@@ -46,115 +43,75 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
 
-ソース環境を設定するには、Site Recovery 統合セットアップ ファイルをダウンロードします。 セットアップを実行して、オンプレミスの Site Recovery コンポーネントをインストールし、VMware サーバーをコンテナーに登録し、オンプレミスの VM を検出します。
-
-### <a name="verify-on-premises-site-recovery-requirements"></a>オンプレミスの Site Recovery の要件を確認する
-
-オンプレミスの Site Recovery コンポーネントをホストするには、オンプレミスの高可用性 VMware VM が 1 つ必要です。 コンポーネントには、構成サーバー、プロセス サーバー、マスター ターゲット サーバーが含まれます。
+ソース環境をセットアップするには、オンプレミスの Site Recovery コンポーネントをホストするためのオンプレミスの高可用性マシンが 1 つ必要です。 コンポーネントには、構成サーバー、プロセス サーバー、マスター ターゲット サーバーが含まれます。
 
 - 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
 - プロセス サーバーはレプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。 また、プロセス サーバーは、レプリケートする VM へのモビリティ サービスのインストールや、オンプレミスの VMware VM の自動検出も行います。
 - マスター ターゲット サーバーは、Azure からのフェールバック中にレプリケーション データを処理します。
 
-VM は次の要件を満たしている必要があります。
+構成サーバーを高可用性 VMware VM としてセットアップするには、用意されている OVF テンプレートをダウンロードし、そのテンプレートを VMware にインポートして VM を作成します。 構成サーバーのセットアップ後、そのサーバーをコンテナーに登録します。 登録すると、Site Recovery によってオンプレミスの VMware VM が検出されます。
 
-| **要件** | **詳細** |
-|-----------------|-------------|
-| CPU コアの数| 8 |
-| RAM | 12 GB |
-| ディスクの数 | 3-OS ディスク、プロセス サーバーのキャッシュ ディスク、リテンション ドライブ (フェールバック用) |
-| ディスクの空き領域 (プロセス サーバー キャッシュ) | 600 GB |
-| ディスクの空き領域 (リテンション ディスク) | 600 GB |
-| オペレーティング システムのバージョン | Windows Server 2012 R2 |
-| オペレーティング システムのロケール | 英語 (en-us) |
-| VMware vSphere PowerCLI のバージョン | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0") |
-| Windows Server の役割 | Active Directory Domain Services、インターネット インフォメーション サービス、Hyper-V のロールは有効にしないでください。 |
-| NIC の種類 | VMXNET3 |
-| IP アドレスの種類 | 静的 |
-| ポート | 443 (コントロール チャネルのオーケストレーション)<br/>9443 (データ転送)|
+### <a name="download-the-vm-template"></a>VM テンプレートをダウンロードする
 
-加えて次の作業を行います。 
-- VM のシステム クロックがタイム サーバーと同期されていることを確認します。 時刻の同期は 15 分以内に行う必要があります。 それより大きい場合、セットアップは失敗します。
-。
-- 構成サーバーの VM が次の URL にアクセスできることを確認します。
+1. コンテナーで、**[インフラストラクチャの準備]** > **[ソース]** の順に移動します。
+2. **[ソースの準備]** で、**[+ 構成サーバー]** をクリックします。
+3. **[サーバーの追加]** で、**[サーバーの種類]** に **[VMware の構成サーバー]** が表示されていることを確認します。
+4. 構成サーバー用の Open Virtualization Format (OVF) テンプレートをダウンロードします。
 
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
-- IP アドレスベースのファイアウォール規則で Azure への通信が許可されていることを確認します。
-    - [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)、ポート 443 (HTTPS)、およびポート 9443 (データ レプリケーション) を許可します。
-    - ご利用のサブスクリプションの Azure リージョンと米国西部の IP アドレス範囲を許可します (Access Control と ID 管理に使用されます)。
+  > [!TIP]
+  構成サーバー テンプレートの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードできます。
+
+## <a name="import-the-template-in-vmware"></a>VMware にテンプレートをインポートする
+
+1. VMWare vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにログオンします。
+2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択して、Deploy OVF Template (OVF テンプレートのデプロイ) ウィザードを起動します。  
+
+     ![OVF テンプレート](./media/tutorial-vmware-to-azure/vcenter-wizard.png)
+
+3. **[Select source]\(ソースの選択\)** で、ダウンロードした OVF の場所を指定します。
+4. **[Review details]\(詳細の確認\)** で、**[Next]\(次へ\)** をクリックします。
+5. **[Select name and folder]\(名前とフォルダーの選択\)** および **[Select configuration]\(構成の選択\)** は、既定の設定のままにします。
+6. **[Select storage]\(ストレージの選択\)** で、パフォーマンスを最大にするために、**[Select virtual disk format]\(仮想ディスクの形式の選択\)** の **[Thick Provision Eager Zeroed]\(シック プロビジョニング Eager Zeroed\)** を選択します。
+4. ウィザードの残りのページでは、既定の設定をそのまま使用します。
+5. **[Ready to complete]\(完了の準備\)** で、次の操作を行います。
+  - 既定の設定で VM をセットアップするには、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** > **[Finish]\(完了\)** の順に選択します。
+  - 追加のネットワーク インターフェイスを追加する場合は、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** をオフにし、**[Finish]\(完了\)** を選択します。 既定では構成サーバー テンプレートが 1 つの NIC でデプロイされますが、デプロイ後にさらに NIC を追加することができます。
+
+  
+## <a name="add-an-additional-adapter"></a>さらにアダプターを追加する
+
+構成サーバーにさらに NIC を追加する場合は、サーバーをコンテナーに登録する前に追加します。 登録後のアダプターの追加はサポートされていません。
+
+1. vSphere Client インベントリで VM を右クリックし、**[Edit Settings]\(設定の編集\)** を選択します。
+2. **[Hardware]\(ハードウェア\)** で、**[Add]\(追加\)** > **[Ethernet Adapter]\(イーサネット アダプター\)** の順にクリックします。 その後、 **[次へ]**をクリックします。
+3. アダプターの種類およびネットワークを選択します。 
+4. VM がオンになったときに仮想 NIC を接続するには、**[Connect at power on]\(電源をオンにしたときに接続する\)** をオンにします。 **[Next]\(次へ\)** > **[Finish]\(完了\)** 順にクリックし、**[OK]** をクリックします。
 
 
-### <a name="download-the-site-recovery-unified-setup-file"></a>Site Recovery 統合セットアップ ファイルをダウンロードする
+## <a name="register-the-configuration-server"></a>構成サーバーを登録する 
 
-1. コンテナーの **[インフラストラクチャの準備]** で、**[ソース]** をクリックします。
-1. **[ソースの準備]** で、**[+ 構成サーバー]** をクリックします。
-2. **[サーバーの追加]** で、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
-3. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
-4. コンテナー登録キーをダウンロードします。 このキーは、統合セットアップを実行するときに必要になります。 キーは生成後 5 日間有効です。
+1. VMWare vSphere Client のコンソールで、VM をオンにします。
+2. VM が Windows Server 2016 のインストール エクスペリエンスで起動します。 使用許諾契約書に同意し、管理者パスワードを指定します。
+3. インストールの完了後に、管理者として VM にログオンします。
+4. 初めてログオンすると、Azure Site Recovery 構成ツールが起動されます。
+5. 構成サーバーを Site Recovery に登録するために使用する名前を指定します。 その後、 **[次へ]**をクリックします。
+6. このツールは、VM が Azure に接続できることを確認します。 接続が確立された後、**[サインイン]** をクリックして、自分の Azure サブスクリプションにログインします。 この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。
+7. ツールがいくつかの構成タスクを実行した後、再起動されます。
+8. マシンにもう一度ログオンします。 構成サーバーの管理ウィザードが自動的に起動されます。
 
-   ![Set up source](./media/tutorial-vmware-to-azure/source-settings.png)
+### <a name="configure-settings-and-connect-to-vmware"></a>設定を構成し、VMware に接続する
 
-### <a name="set-up-the-configuration-server"></a>構成サーバーを設定する
+1. 構成サーバーの管理ウィザードで **[接続の設定]** を選択し、レプリケーション トラフィックを受信する NIC を選択します。 その後、 **[保存]**をクリックします。 構成後、この設定を変更することはできません。
+2. **[Recovery Services コンテナーを選択する]** で、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選択します。
+3. **[サードパーティ製ソフトウェアのインストール]** で使用許諾契約書に同意し、**[ダウンロードしてインストール]** をクリックして MySQL Server をインストールします。
+4. **[Install VMware PowerLCI]\(VMware PowerLCI のインストール\)** をクリックします。 この操作を行う前に、すべてのブラウザー ウィンドウを閉じてください。 次に、**[続行]** をクリックします。
+5. **[アプライアンス構成の検証]** で、続行する前に前提条件が検証されます。
+6. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを指定します。 サーバーがリッスンしているポートと、コンテナーで VMware サーバーのために使用するフレンドリ名を指定します。
+7. VMware サーバーに接続するために構成サーバーによって使用される資格情報を指定します。 Site Recovery はこれらの資格情報を使用して、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順にクリックします。
+8. **[仮想マシンの資格情報の構成]** で、レプリケーションが有効になったときにモビリティ サービスをマシンに自動的にインストールするために使用されるユーザー名とパスワードを指定します。 Windows マシンの場合、このアカウントは、レプリケートするマシンに対するローカル管理者特権を持っている必要があります。 Linux の場合は、ルート アカウントの詳細を指定します。
+9. **[構成の確定]** をクリックして、登録を完了します。 
+10. 登録が完了したら、Azure Portal で、構成サーバーおよび VMware サーバーがコンテナーの **[ソース]** ページの一覧に表示されていることを確認します。 その後、**[OK]** をクリックして、ターゲットの設定を構成します。
 
-1. 統合セットアップ インストール ファイルを実行します。
-2. **[開始する前に]** で、**[Install the configuration server and process server]\(構成サーバーとプロセス サーバーをインストールする\)** を選択して **[次へ]** をクリックします。
-
-3. **[Third-Party Software License]\(サードパーティ製ソフトウェア ライセンス\)** で、**[同意する]** をクリックして MySQL をダウンロードおよびインストールし、**[次へ]** をクリックします。
-
-4. **[登録]** で、コンテナーからダウンロードした登録キーを選択します。
-
-5. **[インターネット設定]** で、構成サーバーで実行されているプロバイダーがインターネット経由で Azure Site Recovery に接続する方法を指定します。
-
-   - マシンで現在セットアップされているプロキシを使用して接続する場合は、**[プロキシ サーバーを使用して Azure Site Recovery に接続する]** を選択します。
-   - プロバイダーから直接接続するように指定する場合は、**[プロキシを使用せずに直接 Azure Site Recovery に接続する]** を選択します。
-   - 既存のプロキシで認証が必要な場合、またはプロバイダー接続にカスタム プロキシを使用する場合は、**[Connect with custom proxy setting]\(カスタム プロキシ設定を使用して接続する\)** を選択して、アドレス、ポート、資格情報を指定します。
-
-   ![ファイアウォール](./media/tutorial-vmware-to-azure/combined-wiz4.png)
-
-6. **[前提条件の確認]** では、インストールを実行できることを確認するためのチェックが実行されます。 **グローバル時刻の同期チェック**に関する警告が表示された場合は、システム クロックの時刻 (**[日付と時刻]** 設定) がタイム ゾーンと同じであることを確認します。
-
-   ![前提条件](./media/tutorial-vmware-to-azure/combined-wiz5.png)
-
-7. **[MySQL Configuration (MySQL の構成)]** で、インストールする MySQL サーバー インスタンスにログオンするための資格情報を作成します。
-
-8. **[環境の詳細]** で、VMware VM の保護で **[はい]** を選択します。 セットアップで PowerCLI 6.0 がインストールされていることが確認されます。
-
-9. **[インストール場所]** で、バイナリをインストールしキャッシュを格納する場所を選択します。 選択するドライブには使用可能なディスク領域が 5 GB 以上必要ですが、600 GB 以上の空き領域があるキャッシュ ドライブを使用することをお勧めします。
-
-10. **[ネットワークの選択]** で、構成サーバーがレプリケーション データを送受信するリスナー (ネットワーク アダプターと SSL ポート) を指定します。 既定では、ポート 9443 がレプリケーション トラフィックの送受信用に使用されます。このポート番号は、実際の環境の要件に合わせて変更できます。 ポート 443 も開きます。このポートは、レプリケーション操作を調整するために使用されます。 ポート 443 はレプリケーション トラフィックの送受信用に使用しないでください。
-
-11. **[概要]** で情報を確認し、**[インストール]** をクリックします。 セットアップで構成サーバーがインストールされ、Azure Site Recovery サービスに登録されます。
-
-    ![概要](./media/tutorial-vmware-to-azure/combined-wiz10.png)
-
-    インストールが完了すると、パスフレーズが生成されます。 このパスフレーズは、レプリケーションを有効にするときに必要になるので、コピーしてセキュリティで保護された場所に保管してください。 このサーバーは、コンテナーの **[設定]** > **[サーバー]** ウィンドウに表示されます。
-
-### <a name="configure-automatic-discovery"></a>自動検出を構成する
-
-VM を検出するには、構成サーバーがオンプレミス VMware サーバーに接続している必要があります。 このチュートリアルの目的を達成するために、vCenter サーバーまたは vSphere ホストを追加して、サーバーで管理者特権を持つアカウントを使用します。 このアカウントは、[前のチュートリアル](tutorial-prepare-on-premises-vmware.md)で作成しました。 
-
-アカウントを追加するには:
-
-1. 構成サーバーの VM で、**CSPSConfigtool.exe** を起動します。 これはデスクトップにショートカットがあり、*<インストール場所>*\home\svsystems\bin フォルダーに保存されています。
-
-2. **[アカウントの管理]** > **[アカウントの追加]** の順にクリックします。
-
-   ![[アカウントの追加]](./media/tutorial-vmware-to-azure/credentials1.png)
-
-3. **[アカウントの詳細]** で、自動検出に使用するアカウントを追加します。
-
-   ![詳細](./media/tutorial-vmware-to-azure/credentials2.png)
-
-VMware サーバーを追加するには:
-
-1. [Azure Portal](https://portal.azure.com) を開いて **[すべてのリソース]** をクリックします。
-2. **ContosoVMVault** という名前の Recovery Service コンテナーをクリックします。
-3. **[Site Recovery]** > **[インフラストラクチャの準備]** > **[ソース]** の順にクリックします。
-4. **[+ vCenter]** を選んで、vCenter サーバーまたは vSphere ESXi ホストに接続します。
-5. **[Add vCenter]\(vCenter の追加\)** で、サーバーのフレンドリ名を指定します。 次に、IP アドレスまたは FQDN を指定します。
-6. VMware サーバーが別のポートで要求をリッスンする場合を除き、ポートは 443 のままにしておきます。
-7. サーバーへの接続で使用するアカウントを選択します。 **[OK]**をクリックします。
 
 Site Recovery は指定された設定を使用して VMware サーバーに接続し、VM を検出します。
 
@@ -169,7 +126,7 @@ Site Recovery は指定された設定を使用して VMware サーバーに接�
 2. ターゲット デプロイ モデルを Resource Manager ベースとクラシック モードのどちらにするかを指定します。
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
-   ![[ターゲット]](./media/tutorial-vmware-to-azure/storage-network.png)
+   ![ターゲット](./media/tutorial-vmware-to-azure/storage-network.png)
 
 ## <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
 
@@ -181,11 +138,11 @@ Site Recovery は指定された設定を使用して VMware サーバーに接�
 6. **[復旧ポイントのリテンション期間]** では、各復旧ポイントのリテンション期間に既定値の 24 時間が使用されます。 このチュートリアルでは 72 時間を選択します。 レプリケートされた VM は、期間内の任意の時点に復旧できます。
 7. **[アプリ整合性スナップショットの頻度]** では、アプリ整合性スナップショットの作成頻度に既定値の 60 分が使用されます。 **[OK]** をクリックしてポリシーを作成します。
 
-   ![[ポリシー]](./media/tutorial-vmware-to-azure/replication-policy.png)
+   ![ポリシー](./media/tutorial-vmware-to-azure/replication-policy.png)
 
 このポリシーは自動的に構成サーバーに関連付けられます。 既定でフェールバックの照合ポリシーが自動的に作成されます。 たとえば、レプリケーション ポリシーが **rep-policy** の場合、フェールバック ポリシーは **rep-policy-failback** になります。 このポリシーは、Azure からフェールバックを開始するまで使用されません。
 
-## <a name="enable-replication"></a>Enable replication
+## <a name="enable-replication"></a>レプリケーションを有効にする
 
 VM のレプリケーションを有効にすると、Site Recovery がモビリティ サービスをインストールします。 変更が反映されてポータルに表示されるまで 15 分以上かかる場合があります。
 
@@ -210,7 +167,7 @@ VM のレプリケーションを有効にすると、Site Recovery がモビリ
 追加する VM を監視するには、**[構成サーバー]** で VM の最終検出時刻を確認します。
 > **最後の使用**。 定期検出を待たずに VM を追加するには、構成サーバーを強調表示し (クリックしないでください)、**[更新]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [ディザスター リカバリーのテストを実行する](site-recovery-test-failover-to-azure.md)

@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ハイブリッド ID 導入戦略の定義 | Microsoft Docs"
+title: "ハイブリッド ID 設計 - 導入戦略 - Azure | Microsoft Docs"
 description: "条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 28d10cd6be93226c93bda98c88cee454ec5cb2c7
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 238f8451f1d00b14563486ca5df9e77612a32654
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -178,11 +179,11 @@ ms.lasthandoff: 12/11/2017
 
 | セキュリティで保護する資産 | クラウドでの MFA | オンプレミスでの MFA |
 | --- | --- | --- |
-| Microsoft アプリ |○ |○ |
-| アプリ ギャラリー内の SaaS アプリ |○ |○ |
-| Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション  |○ |○ |
-| Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |× |○ |
-| VPN、RDG などのリモート アクセス |× |○ |
+| Microsoft アプリ |はい |はい |
+| アプリ ギャラリー内の SaaS アプリ |はい |はい |
+| Azure AD アプリケーション プロキシ経由で公開される IIS アプリケーション  |はい |はい |
+| Azure AD アプリケーション プロキシ経由で公開されない IIS アプリケーション |× |はい |
+| VPN、RDG などのリモート アクセス |× |はい |
 
 戦略のソリューションが決定した場合でも、さらに上記の評価を使用して、ユーザーの配置を検討する必要があります。  これにより、ソリューションが変更される可能性があります。  次の表を使用すると、この決定に役立ちます。
 
@@ -207,7 +208,7 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [データ保護要件の決定](active-directory-hybrid-identity-design-considerations-dataprotection-requirements.md)
 
 ## <a name="see-also"></a>関連項目

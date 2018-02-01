@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: powerbi
-ms.date: 09/28/2017
+ms.date: 01/19/2018
 ms.author: asaxton
-ms.openlocfilehash: e1ab6a2f52fa56f1e04c6c327796587daf43596e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7eb64cce37f2655b72ab9b5fadedf7581fe007fb
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>Power BI Embedded 容量の拡大縮小
 
@@ -26,7 +26,8 @@ ms.lasthandoff: 10/11/2017
 
 この記事は、Power BI Embedded 容量を作成済みという前提で説明します。 まだ作成していない場合は、まず「[Create Power BI Embedded capacity in the Azure portal](create-capacity.md)」(Azure Portal で Power BI Embedded 容量を作成する) を参照してください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
+> [!NOTE]
+> 拡大縮小操作は、約 1 分かかることがあります。 この時間の間、容量を使用できません。 埋め込みコンテンツは読み込みに失敗することがあります。
 
 ## <a name="scale-a-capacity"></a>容量の拡大縮小
 
@@ -58,7 +59,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![現在のレベルの確認](media/scale-capacity/azure-portal-confirm-tier.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 容量を一時停止または開始するには、「[Pause and start your Power BI Embedded capacity in the Azure portal](pause-start.md)」(Azure Portal での Power BI Embedded 容量の一時停止と開始) を参照してください。
 

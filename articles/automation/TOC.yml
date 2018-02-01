@@ -67,6 +67,14 @@
           href: automation-runbook-types.md
         - name: Runbook を作成およびインポートする
           href: automation-creating-importing-runbook.md
+        - name: グラフィカル Runbook を作成する
+          href: automation-first-runbook-graphical.md
+        - name: PowerShell Runbook を作成する
+          href: automation-first-runbook-textual-powershell.md
+        - name: PowerShell Workflow Runbook を作成する
+          href: automation-first-runbook-textual.md
+        - name: Python Runbook を作成する
+          href: automation-first-runbook-textual-python2.md
         - name: テキスト形式の Runbook を編集する
           href: automation-edit-textual-runbook.md
         - name: グラフィック Runbook を編集する

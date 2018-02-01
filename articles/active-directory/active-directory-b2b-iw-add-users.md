@@ -1,5 +1,5 @@
 ---
-title: "インフォメーション ワーカーが B2B コラボレーション ユーザーを Azure Active Directory に追加する方法 | Microsoft Docs"
+title: "インフォメーション ワーカーとして B2B コラボレーション ユーザーを追加する - Azure Active Directory | Microsoft Docs"
 description: "B2B コラボレーションを使用すると、インフォメーション ワーカーは組織のユーザーがアクセスできるように Azure AD に追加することができます"
 services: active-directory
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
 ms.author: sasubram
-ms.openlocfilehash: 255ee5c11aa7e76fec23837d3bdccf2175c2f9fc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e02f23c055af24b42fd41394b26a4df827cb0fc8
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="how-do-information-workers-add-b2b-collaboration-users-to-azure-active-directory"></a>インフォメーション ワーカーが B2B コラボレーション ユーザーを Azure Active Directory に追加する方法
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/11/2017
 > B2B コラボレーション ユーザーを、動的グループ、またはオンプレミスの Active Directory と同期しているグループに追加することはできません。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure AD B2B コラボレーションに関する他の記事を参照してください。
 

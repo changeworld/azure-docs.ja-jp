@@ -4,7 +4,7 @@ description: "Azure Active Directory と Grovo の間にシングル サイン�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.reviewer: joflore
 ms.assetid: 399cecc3-aa62-4914-8b6c-5a35289820c1
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/30/2017
+ms.date: 01/12/2018
 ms.author: jeedes
-ms.openlocfilehash: 9deb4c9bd6719e7cf86883fba1306c435de0ebb9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4bb050e96d3e8d9da4666f5418ac3e444f6212d
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-grovo"></a>チュートリアル: Azure Active Directory と Grovo の統合
 
@@ -64,7 +64,7 @@ Azure AD への Grovo の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![エンタープライズ アプリケーション][2]
+    ![[エンタープライズ アプリケーション] ブレード][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
@@ -108,47 +108,51 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 
     ![[Grovo のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url.png)
 
-    a. **[識別子]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/metadata` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/metadata` の形式で URL を入力します。
 
     b. **[応答 URL]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/saml-assertion` のパターンを使用して URL を入力します。
 
-4.  **[詳細な URL 設定の表示]** をオンにして、次の手順を実行します。  
+4. **[詳細な URL 設定の表示]** をオンにして、次の手順を実行します。
 
     ![[Grovo のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url1.png)
 
-    a. **[リレー状態]** ボックスに、`https://<subdomain>.grovo.com` のパターンで URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リレー状態]** ボックスに、`https://<subdomain>.grovo.com` のパターンで URL を入力します。
 
     b. **SP** 開始モードでアプリケーションを構成する場合は、次の手順を実行します。
 
     ![[Grovo のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_url2.png)
-
+    
     **[サインオン URL]** ボックスに、`https://<subdomain>.grovo.com/sso/saml2/saml-assertion` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL、リレー状態でこれらの値を更新します。 これらの値を取得するには、[Grovo サポート チーム](https://www.grovo.com/contact-us)にお問い合わせください。
  
-5. Grovo アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
+5. Grovo アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 **[ユーザー識別子]** を **[User.mail]** でマップし、その他の属性を次のスクリーンショットのように構成してください。
     
-    ![シングル サインオン属性の構成](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_attribute.png)
+    ![シングル サインオンの構成の属性](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_attribute.png)
     
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
     | ------------------- | -------------------- |    
-    | 名              | User.givenname |
-    | 姓               | User.surname |
+    | 名          | User.givenname |
+    | 姓           | User.surname |
+    | 電子メール アドレス       | User.mail    |
+    | employeeID          | user.employeeid |
 
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![シングル サインオン属性の構成](./media/active-directory-saas-grovo-tutorial/tutorial_attribute_04.png)
+    ![シングル サインオンの構成の追加](./media/active-directory-saas-grovo-tutorial/tutorial_attribute_04.png)
 
-    ![シングル サインオン属性の構成](./media/active-directory-saas-grovo-tutorial/tutorial_attribute_05.png)
+    ![シングル サインオンの構成の属性の追加](./media/active-directory-saas-grovo-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
+
+    d. **[名前空間]**は空白のままにします。
     
-    d. **[OK]**をクリックします。
+    e. **[OK]**をクリックします。
 
 
 7. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
@@ -177,7 +181,7 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
 
     ![Grovo 構成](./media/active-directory-saas-grovo-tutorial/tutorial_grovo_saml.png)
 
-    a. **[エンティティ ID]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[エンティティ ID]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
     b. **[Single sign on service endpoint]\(シングル サインオン サービス エンドポイント\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
@@ -188,7 +192,7 @@ Grovo で Azure AD のシングル サインオンを構成してテストする
     e. **[次へ]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 

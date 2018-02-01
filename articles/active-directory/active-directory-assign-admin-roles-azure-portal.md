@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory の管理者ロールの割り当て | Microsoft Docs"
-description: "管理者ロールでは、ユーザーを作成または編集したり、他のユーザーに管理者ロールを割り当てたり、ユーザー パスワードをリセットしたり、ユーザー ライセンスを管理したり、ドメインを管理したりできます。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持ちます。"
+description: "管理者ロールは、ユーザーの追加、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持ちます。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,20 +12,27 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 01/23/2018
 ms.author: curtand
-ms.reviewer: Vince.Smith
+ms.reviewer: vincesm
 ms.custom: it-pro;
-ms.openlocfilehash: 66df4d709b60f2eb80329b8527b2a6edeb123168
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 918e1c535ea8779a8aff3d94c6f1ef2cb2a17fd5
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 
 Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。 管理者は、Azure Portal 内のさまざまな機能にアクセスでき、ロールに応じて、ユーザーの作成や編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 Office 365 ポータルや Azure Portal 内で割り当てたのか、または Windows PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。
 
+## <a name="details-about-the-global-administrator-role"></a>全体管理者ロールの詳細
+全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 他の管理者ロールを割り当てることができるのは全体管理者だけです。
+
+## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
+Azure Active Directory でユーザーに管理者ロールを割り当てる方法については、「[Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください。
+
+## <a name="available-roles"></a>使用可能なロール
 次の管理者ロールを使用できます。
 
 * **課金管理者**: 購入、サブスクリプションの管理、サポート チケットの管理、サービス正常性の監視を行います。
@@ -48,7 +55,7 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 * **Exchange サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
-* **グローバル管理者/会社の管理者**: このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory とフェデレーションするサービス (Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのは全体管理者だけです。 会社に複数の全体管理者が存在してかまいません。 グローバル管理者は、すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
+* **グローバル管理者/会社の管理者**: このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory とフェデレーションするサービス (Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのは全体管理者だけです。 会社に複数の全体管理者が存在してかまいません。 すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
@@ -56,6 +63,8 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
   >
 
 * **ゲスト招待元**: このロールが割り当てられたユーザーは、"メンバーは招待ができる" ユーザー設定が "いいえ" に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーション プレビューについて](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
+
+* **Information Protection 管理者**: このロールが割り当てられたユーザーは、Azure Portal で Azure Information Protection にアクセスできます。 また、Azure Information Protection ポリシーのラベルの構成、保護テンプレートの管理、および保護のアクティブ化を行うことができます。
 
 * **Intune サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。
 
@@ -65,7 +74,7 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 
 * **Partner Tier 2 サポート**: 使用しないでください。 このロールは廃止されており、将来的に Azure AD から削除されます。 このロールは少数の Microsoft 再販パートナーを対象としており、一般的な使用を目的としたものではありません。
 
-* **パスワード管理者/ヘルプデスク管理者**: このロールが割り当てられたユーザーは、パスワードのリセット、サービス要求の管理、サービス正常性の監視を行うことができます。 パスワード管理者がリセットできるのは、ユーザーと他のパスワード管理者のパスワードだけです。
+* **パスワード管理者/ヘルプデスク管理者**: このロールが割り当てられたユーザーは、パスワードの変更、サービス要求の管理、サービス正常性の監視を行うことができます。 ヘルプデスク管理者が変更できるのは、ユーザーと他のヘルプデスク管理者のパスワードだけです。 
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、および Azure AD PowerShell では、このロールは "ヘルプデスクの管理者" として識別されます。 [Azure Portal](https://portal.azure.com/) では、"パスワード管理者" になります。
@@ -75,6 +84,8 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 * **Power BI サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Power BI 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。また、サポート チケットを管理し、サービス正常性を監視できます。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d?ui=en-US&rs=en-001&ad=US)」をご覧ください。
 
 * **特権ロール管理者**: このロールが割り当てられたユーザーは、Azure Active Directory と Azure AD Privileged Identity Management 内でロールの割り当てを管理できます。 また、このロールは Privileged Identity Management の全側面を管理できます。
+
+* **レポート リーダー**: このロールが割り当てられたユーザーは、Office 365 管理センターで使用状況のレポート データとレポート ダッシュボードを表示できます。また、Power BI で導入コンテキスト パックを表示できます。 さらに、Azure AD のサインオン レポートとアクティビティ、および Microsoft Graph レポート API から返されるデータにもアクセスできます。 レポート リーダー ロールが割り当てられたユーザーは、関連する使用状況と導入メトリックにのみアクセスできます。 製品固有の管理センター (Exchange など) の設定を構成したり、アクセスしたりする管理者アクセス許可はありません。 
 
 * **セキュリティ管理者**: このロールが割り当てられたユーザーは、セキュリティ閲覧者ロールのすべての読み取り専用アクセス許可を持ち、セキュリティ関連サービス (Azure Active Directory Identity Protection、Azure Information Protection、Privileged Identity Management、Office 365 セキュリティ/コンプライアンス センター) の構成を管理することもできます。 Office 365 のアクセス許可の詳細については、「[Office 365 セキュリティ/コンプライアンス センターでのアクセス許可](https://support.office.com/article/Permissions-in-the-Office-365-Security-Compliance-Center-d10608af-7934-490a-818e-e68f17d0e9c1)」をご覧ください。
 
@@ -91,7 +102,7 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
   >
   >
 
-* **ユーザー アカウント管理者**: このロールが割り当てられたユーザーは、ユーザーとグループを作成し、全側面を管理できます。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視できます。 ただし、いくつかの制限が適用されます。 たとえば、このロールはグローバル管理者を削除することはできません。また、管理者以外のパスワードは変更できますが、グローバル管理者または他の特権管理者のパスワードを変更することはできません。
+* **ユーザー アカウント管理者**: このロールが割り当てられたユーザーは、ユーザーとグループを作成し、全側面を管理できます。 さらに、このロールはサポート チケットを管理し、サービス正常性を監視できます。 ただし、いくつかの制限が適用されます。 たとえば、このロールはグローバル管理者を削除できません。 ユーザー アカウント管理者は、ユーザー、ヘルプデスク管理者、およびその他のユーザー アカウント管理者についてのみ、パスワードを変更できます。
 
 ## <a name="administrator-permissions"></a>管理者の権限
 
@@ -107,25 +118,26 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 | --- | --- |
 |<p>会社情報とユーザー情報の表示</p><p>条件付きアクセスの設定の管理</p> |<p>ユーザー パスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>監査ログの表示</p>|
 
-### <a name="global-administrator"></a>グローバル管理者
+### <a name="global-administrator"></a>全体管理者
 | できること | できないこと |
 | --- | --- |
 |<p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>Office 製品の課金および購入操作の実行</p><p>ユーザー パスワードのリセット</p><p>他の管理者のパスワードのリセット</p> <p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p><p>監査ログの表示</p> |該当なし |
 
-### <a name="password-administrator"></a>パスワード管理者
+### <a name="password-administrator--helpdesk-administrator"></a>パスワード管理者/ヘルプデスク管理者
 | できること | できないこと |
 | --- | --- |
-| <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>ユーザー パスワードのリセット</p> <p>他の管理者のパスワードのリセット</p>|<p>Office 製品の課金操作と購入操作の実行</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>レポートを表示する</p>|
+| <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>パスワードの変更 (ユーザーおよび他のヘルプデスク管理者のみ)</p>|<p>Office 製品の課金および購入操作の実行</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>レポートを表示する</p>|
 
-### <a name="service-administrator"></a>サービス管理者
-| できること | できないこと |
-| --- | --- |
-| <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p> |<p>ユーザー パスワードのリセット</p><p>Office 製品の課金操作と購入操作の実行</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>監査ログの表示</p> |
-
-### <a name="user-administrator"></a>ユーザー管理者
-| できること | できないこと |
-| --- | --- |
-| <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>ユーザー パスワードのリセット (制限付き)。</p><p>他の管理者のパスワードのリセット</p><p>他のユーザーのパスワードのリセット</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理 (制限付き)。 グローバル管理者を削除することも、他の管理者を作成することもできません。</p> |<p>Office 製品の課金操作と購入操作の実行</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p><p>監査ログの表示</p> |
+### <a name="information-protection-administrator"></a>Information Protection 管理者 
+イン | できること
+-------- | ---------
+Azure Information Protection | * グローバルな、範囲指定したポリシーおよびラベルの構成<br>* 保護テンプレートの管理、構成、更新<br>* 使用する保護のアクティブ化 
+Privileged Identity Management | * 読み取りアクセス許可<br>* Azure AD ロールのメンバーシップまたは設定を管理することはできません。
+ 
+### <a name="reports-reader"></a>レポート リーダー 
+できること | できないこと
+------ | ----------
+Azure AD サインイン レポートと監査ログの表示<br>会社情報とユーザー情報の表示<br>Office 365 使用状況ダッシュボードへのアクセス | ユーザー ビューの作成と管理<br>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理<br>他のユーザーへの管理者ロールの委任<br>会社情報の管理
 
 ### <a name="security-reader"></a>セキュリティ リーダー
 | イン | できること |
@@ -141,8 +153,15 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
 | Privileged Identity Management |<ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>Azure AD ロールのメンバーシップまたは設定を管理することは**できません**。 |
 | <p>Office 365 サービス正常性の監視</p><p>Office 365 セキュリティ/コンプライアンス センター |<ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>Advanced Threat Protection 機能 (マルウェアおよびウイルス防止、悪意のある URL の構成、URL 追跡など) のすべての設定を構成することができます。 |
 
-## <a name="details-about-the-global-administrator-role"></a>グローバル管理者ロールの詳細
-全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。
+### <a name="service-administrator"></a>サービス管理者
+| できること | できないこと |
+| --- | --- |
+| <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p> |<p>ユーザー パスワードのリセット</p><p>Office 製品の課金操作と購入操作の実行</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>監査ログの表示</p> |
+
+### <a name="user-account-administrator"></a>ユーザー アカウント管理者
+| できること | できないこと |
+| --- | --- |
+| <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>ユーザー、ヘルプデスク管理者、およびその他のユーザー アカウント管理者についてのみ、パスワードを変更できます</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理 (制限付き)。 グローバル管理者を削除することも、他の管理者を作成することもできません。</p> |<p>Office 製品の課金および購入操作の実行</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>Multi-Factor Authentication の有効化または無効化</p><p>監査ログの表示</p> |
 
 ### <a name="to-add-a-colleague-as-a-global-administrator"></a>全体管理者として同僚を追加するには
 
@@ -158,9 +177,6 @@ Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別�
  
 5. [ディレクトリ ロール] ブレードで **[全体管理者]** ロールを選択し、保存します。
 
-## <a name="assign-or-remove-administrator-roles"></a>管理者ロールの割り当てまたは削除
-Azure Active Directory のユーザーに管理者ロールを割り当てる方法については、「[Azure Active Directory プレビューでユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)」を参照してください。
-
 ## <a name="deprecated-roles"></a>非推奨のロール
 
 次のロールは使用しないでください。 これらは廃止されており、将来的に Azure AD から削除されます。
@@ -172,7 +188,7 @@ Azure Active Directory のユーザーに管理者ロールを割り当てる方
 * デバイス ユーザー
 * デバイスの社内参加
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing-add-change-azure-subscription-administrator.md)
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)

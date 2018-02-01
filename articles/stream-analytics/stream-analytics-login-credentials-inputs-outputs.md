@@ -4,8 +4,8 @@ description: "Stream Analytics の入力と出力の資格情報を更新する�
 keywords: "ログイン資格情報"
 services: stream-analytics
 documentationcenter: 
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: 42ae83e1-cd33-49bb-a455-a39a7c151ea4
 ms.service: stream-analytics
@@ -13,236 +13,82 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: a1a927fa9c34b38e54fdb22782e80fd13bf430c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/11/2018
+ms.author: sngun
+ms.openlocfilehash: c1aded8fefc7b56acd2e9ff36bb2c9641665db76
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
-# <a name="rotate-login-credentials-for-inputs-and-outputs-in-stream-analytics-jobs"></a>Stream Analytics ジョブでの入力と出力のログイン資格情報の交換
-## <a name="abstract"></a>要約
-現在、Azure Stream Analytics では、ジョブの実行中に入力/出力の資格情報を置き換えることができません。
+# <a name="rotate-login-credentials-for-inputs-and-outputs-of-a-stream-analytics-job"></a>Stream Analytics ジョブの入力と出力のログイン資格情報の交換
 
-Azure Stream Analytics では、最後の出力からのジョブの再開がサポートされていますが、ジョブを停止して開始し、ログイン資格情報を交換するまでの遅延を最小限に抑えるためのプロセス全体を共有することを考えました。
+Stream Analytics ジョブの入力または出力のための資格情報を再生成したときは常に、新しい資格情報でジョブを更新する必要があります。 資格情報を更新する前に、ジョブを停止する必要があります。ジョブの実行中に資格情報を置き換えることはできません。 ジョブを停止してから再び開始するまでの時間を短縮するため、Stream Analytics は最後の出力からのジョブの再開をサポートしています。 このトピックでは、ログイン資格情報を交換し、新しい資格情報でジョブを再開するプロセスについて説明します。
 
-## <a name="part-1---prepare-the-new-set-of-credentials"></a>パート 1: 新しい資格情報セットの準備
-このパートは、次の入力/出力に適用できます。
+## <a name="regenerate-new-credentials-and-update-your-job-with-the-new-credentials"></a>新しい資格情報を再生成し、新しい資格情報でジョブを更新する 
 
-* BLOB ストレージ
-* Event Hubs
-* SQL Database
-* Table Storage
-
-その他の入力/出力の場合は、パート2 へ進んでください。
+このセクションでは、Blob Storage、Event Hubs、SQL Database、Table Storage の資格情報を再生成する手順を説明します。 
 
 ### <a name="blob-storagetable-storage"></a>BLOB ストレージとテーブル ストレージ
-1. Azure 管理ポータルで [ストレージ] 拡張に移動します。  
-   ![graphic1][graphic1]
-2. ジョブで使用されているストレージを見つけ、そこに移動します。  
-   ![graphic2][graphic2]
-3. [アクセス キーの管理] コマンドをクリックします。  
-   ![graphic3][graphic3]
-4. [プライマリ アクセス キー] と [セカンダリ アクセス キー] の間で、 **ジョブで使用されていないキーを選択**します。
-5. [再生成] をクリックします。  
-   ![graphic4][graphic4]
-6. 新しく生成されたキーをコピーします。  
-   ![graphic5][graphic5]
-7. パート 2 に進みます。
+1. Azure Portal にサインインし、Stream Analytics ジョブの入力/出力として使ったストレージ アカウントを参照します。    
+2. 設定セクションで **[アクセス キー]** を開きます。 2 つの既定のキー (key1、key2) のうち、ジョブによって使われていない方を選んで再生成します。  
+   ![ストレージ アカウントのキーを再生成する](media/stream-analytics-login-credentials-inputs-outputs/image1.png)
+3. 新しく生成されたキーをコピーします。    
+4. Azure Portal で Stream Analytics ジョブを参照し、**[停止]** を選んで、ジョブが停止するまで待ちます。    
+5. 資格情報を更新する Blob/Table Storage の入力/出力を見つけます。    
+6. **[ストレージ アカウント キー]** フィールドに新しく生成されたキーを貼り付けて、**[保存]** をクリックします。    
+7. 変更内容を保存すると、接続テストが自動的に開始され、[通知] タブでそれを確認できます。2 つの通知が表示されます。1 つは更新の保存に対応し、もう 1 つは接続のテストに対応します。  
+   ![キーを編集した後の通知](media/stream-analytics-login-credentials-inputs-outputs/image4.png)
+8. 「[最終停止時刻からジョブを開始する](#start-your-job-from-the-last-stopped-time)」セクションに進みます。
 
 ### <a name="event-hubs"></a>Event Hubs
-1. Azure 管理ポータルで [Service Bus] 拡張に移動します。  
-   ![graphic6][graphic6]
-2. ジョブで使用されている Service Bus 名前空間を見つけ、そこに移動します。  
-   ![graphic7][graphic7]
-3. ジョブが Service Bus 名前空間で共有アクセス ポリシーを使用している場合は、手順 6. に進みます。  
-4. [イベント ハブ] タブに移動します。  
-   ![graphic8][graphic8]
-5. ジョブで使用されているイベント ハブを見つけ、そこに移動します。  
-   ![graphic9][graphic9]
-6. [構成] タブに移動します。  
-   ![graphic10][graphic10]
-7. [ポリシー名] ボックスの一覧で、ジョブで使用されている共有アクセス ポリシーを見つけます。  
-   ![graphic11][graphic11]
-8. [プライマリ キー] と [セカンダリ キー] の間で、 **ジョブで使用されていないキーを選択**します。  
-9. [再生成] をクリックします。  
-   ![graphic12][graphic12]
-10. 新しく生成されたキーをコピーします。  
-   ![graphic13][graphic13]
-11. パート 2 に進みます。  
+
+1. Azure Portal にサインインし、Stream Analytics ジョブの入力/出力として使ったイベント ハブを参照します。    
+2. [設定] セクションで **[共有アクセス ポリシー]** を開き、必要なアクセス ポリシーを選びます。 **[プライマリ キー]** と **[セカンダリ キー]** のうち、ジョブによって使われていない方を選んで再生成します。  
+   ![イベント ハブのキーを再生成する](media/stream-analytics-login-credentials-inputs-outputs/image2.png)
+3. 新しく生成されたキーをコピーします。    
+4. Azure Portal で Stream Analytics ジョブを参照し、**[停止]** を選んで、ジョブが停止するまで待ちます。    
+5. 資格情報を更新するイベント ハブの入力/出力を見つけます。    
+6. **[イベント ハブ ポリシー キー]** フィールドに新しく生成されたキーを貼り付けて、**[保存]** をクリックします。    
+7. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。    
+8. 「[最終停止時刻からジョブを開始する](#start-your-job-from-the-last-stopped-time)」セクションに進みます。
 
 ### <a name="sql-database"></a>SQL Database
-> [!NOTE]
-> 注: SQL Databse サービスに接続する必要があります。 Azure 管理ポータルで管理機能を使用して実行する方法を説明しますが、SQL Server Management Studio などのクライアント側のツールを使用することもできます。
->
-> 
 
-1. Azure 管理ポータルで [SQL データベース] 拡張に移動します。  
-   ![graphic14][graphic14]
-2. ジョブで使用されている SQL Database を見つけ、同じ行にある**サーバーのリンクをクリック**します。  
-   ![graphic15][graphic15]
-3. [管理] コマンドをクリックします。  
-   ![graphic16][graphic16]
-4. [データベース] に「Master」と入力します。  
-   ![graphic17][graphic17]
-5. ユーザー名、パスワードを入力し、[ログオン] をクリックします。  
-   ![graphic18][graphic18]
-6. 新しいクエリをクリックします。  
-   ![graphic19][graphic19]
-7. 次のクエリを入力し、<login_name> をユーザー名、<enterStrongPasswordHere> を自分の新しいパスワードに置き換えます。  
-   `CREATE LOGIN <login_name> WITH PASSWORD = '<enterStrongPasswordHere>'`
-8. [実行] をクリックします。  
-   ![graphic20][graphic20]
-9. 手順 2 に戻り、今回はデータベースをクリックします。  
-   ![graphic21][graphic21]
-10. [管理] コマンドをクリックします。  
-   ![graphic22][graphic22]
-11. ユーザー名、パスワードを入力し、[ログオン] をクリックします。  
-   ![graphic23][graphic23]
-12. 新しいクエリをクリックします。  
-   ![graphic24][graphic24]
-13. 次のクエリを入力し、<user_name> を、このデータベースのコンテキストでこのログインを識別するために使用する名前 (たとえば、<login_name> に指定したものと同じ値を入力できます) に置き換え、<login_name> を新しいユーザー名に置き換えます。  
-   `CREATE USER <user_name> FROM LOGIN <login_name>`
-14. [実行] をクリックします。  
-   ![graphic25][graphic25]
-15. ここで、元のユーザーと同じロールと権限を持つ新しいユーザーを指定する必要があります。
-16. パート 2 に進みます。
+既存ユーザーのログイン資格情報を更新するには、SQL データベースに接続する必要があります。 Azure Portal または SQL Server Management Studio などのクライアント側ツールを使って、資格情報を更新することができます。 このセクションでは、Azure Portal を使って資格情報を更新する手順を示します。
 
-## <a name="part-2-stopping-the-stream-analytics-job"></a>パート 2: Stream Analytics ジョブの停止
-1. Azure 管理ポータルで [Stream Analytics] 拡張に移動します。  
-   ![graphic26][graphic26]
-2. ジョブを見つけ、それに移動します。  
-   ![graphic27][graphic27]
-3. 入力時と出力時のどちらで資格情報を交換するかに基づいて、[入力] タブまたは [出力] タブに移動します。  
-   ![graphic28][graphic28]
-4. [停止] コマンドをクリックし、ジョブが停止されたことを確認します。  
-   ![graphic29][graphic29] ジョブが停止するまで待機します。
-5. 資格情報を交換する入力/出力を見つけ、そこに移動します。  
-   ![graphic30][graphic30]
-6. パート 3 に進みます。
+1. Azure Portal にサインインし、Stream Analytics ジョブの出力として使った SQL データベースを参照します。    
+2. **データ エクスプローラー**でデータベースにログイン/接続し、[承認の種類] として **[SQL Server 認証]** を選び、**[ログイン]** と **[パスワード]** の詳細を入力して、**[OK]** を選びます。  
+   ![SQL データベースの資格情報を再生成する](media/stream-analytics-login-credentials-inputs-outputs/image3.png)
 
-## <a name="part-3-editing-the-credentials-on-the-stream-analytics-job"></a>パート 3: Stream Analytics ジョブの資格情報の編集
-### <a name="blob-storagetable-storage"></a>BLOB ストレージとテーブル ストレージ
-1. [ストレージ アカウント キー] フィールドを見つけ、新しく生成されたキーをそこに貼り付けます。  
-   ![graphic31][graphic31]
-2. [保存] コマンドをクリックし、変更内容の保存を確定します。  
-   ![graphic32][graphic32]
-3. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
-4. パート 4 に進みます。
+3. クエリ タブで、次のクエリを実行して、いずれかのユーザーのパスワードを変更します (`<user_name>` はお使いのユーザー名に、`<new_password>` は新しいパスワードに置き換えてください)。  
 
-### <a name="event-hubs"></a>Event Hubs
-1. [イベント ハブ ポリシー キー] フィールドを見つけ、新しく生成されたキーをそこに貼り付けます。  
-   ![graphic33][graphic33]
-2. [保存] コマンドをクリックし、変更内容の保存を確定します。  
-   ![graphic34][graphic34]
-3. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
-4. パート 4 に進みます。
+   ```SQL
+   Alter user `<user_name>` WITH PASSWORD = '<new_password>'
+   Alter role db_owner Add member `<user_name>`
+   ```
+
+4. 新しいパスワードを書き留めておきます。    
+5. Azure Portal で Stream Analytics ジョブを参照し、**[停止]** を選んで、ジョブが停止するまで待ちます。    
+6. 資格情報を交換する SQL データベースの出力を探します。 パスワードを更新して変更を保存します。    
+7. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。    
+8. 「[最終停止時刻からジョブを開始する](#start-your-job-from-the-last-stopped-time)」セクションに進みます。
 
 ### <a name="power-bi"></a>Power BI
-1. [承認の更新] をクリックします。  
+1. Azure Portal にサインインして Stream Analytics ジョブを参照し、**[停止]** を選んで、ジョブが停止するまで待ちます。    
+2. 資格情報を更新する Power BI 出力を選び、**[承認の更新]** をクリックし (成功メッセージを確認します)、**[保存]** をクリックして変更を保存します。    
+3. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。    
+4. 「[最終停止時刻からジョブを開始する](#start-your-job-from-the-last-stopped-time)」セクションに進みます。
 
-   ![graphic35][graphic35]
-2. 次の確認メッセージが表示されます。  
+## <a name="start-your-job-from-the-last-stopped-time"></a>最後に停止した時刻からジョブを開始する
 
-   ![graphic36][graphic36]
-3. [保存] コマンドをクリックし、変更内容の保存を確定します。  
-   ![graphic37][graphic37]
-4. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。
-5. パート 4 に進みます。
+1. ジョブの **[概要]** ウィンドウに移動し、**[開始]** を選んでジョブを開始します。    
+2. **[最終停止時刻]** を選び、**[開始]** をクリックします。 [最終停止時刻] オプションは、以前にジョブを実行して何らかの出力が生成された場合にのみ表示されることに注意してください。 最後の出力値の時刻に基づいてジョブが再び開始されます。
+   ![ジョブを開始する](media/stream-analytics-login-credentials-inputs-outputs/image5.png)
 
-### <a name="sql-database"></a>SQL Database
-1. [ユーザー名] フィールドと [パスワード] のフィールドを見つけ、新しく作成された資格情報セットをそこに貼り付けます。  
-   ![graphic38][graphic38]
-2. [保存] コマンドをクリックし、変更内容の保存を確定します。  
-   ![graphic39][graphic39]
-3. 変更内容を保存すると、接続テストが自動的に開始され、テストに成功したことを確認します。  
-4. パート 4 に進みます。
-
-## <a name="part-4-starting-your-job-from-last-stopped-time"></a>パート 4: 最後に停止した時刻からのジョブの開始
-1. 入力/出力から移動します。  
-   ![graphic40][graphic40]
-2. [開始] コマンドをクリックします。  
-   ![graphic41][graphic41]
-3. [最後に停止した時刻] を選択し、[OK] をクリックします。  
-   ![graphic42][graphic42]
-4. パート 5 に進みます。  
-
-## <a name="part-5-removing-the-old-set-of-credentials"></a>パート 5: 以前の資格情報セットの削除
-このパートは、次の入力/出力に適用できます。
-
-* BLOB ストレージ
-* Event Hubs
-* SQL Database
-* Table Storage
-
-### <a name="blob-storagetable-storage"></a>BLOB ストレージとテーブル ストレージ
-ジョブで以前に使用されていたアクセス キーに対してパート 1 を繰り返し、現在未使用のアクセス キーを更新します。
-
-### <a name="event-hubs"></a>Event Hubs
-ジョブで以前に使用されていたキーに対してパート 1 を繰り返し、現在未使用のキーを更新します。
-
-### <a name="sql-database"></a>SQL Database
-1. パート 1 の手順 7 のクエリ ウィンドウに戻り、次のクエリを入力して、<previous_login_name> を、以前ジョブで使用されていたユーザー名に置き換えます。  
-   `DROP LOGIN <previous_login_name>`  
-2. [実行] をクリックします。  
-   ![graphic43][graphic43]  
-
-次の確認メッセージが表示されます。 
-
-    Command(s) completed successfully.
-
-## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
-[graphic1]: ./media/stream-analytics-login-credentials-inputs-outputs/1-stream-analytics-login-credentials-inputs-outputs.png
-[graphic2]: ./media/stream-analytics-login-credentials-inputs-outputs/2-stream-analytics-login-credentials-inputs-outputs.png
-[graphic3]: ./media/stream-analytics-login-credentials-inputs-outputs/3-stream-analytics-login-credentials-inputs-outputs.png
-[graphic4]: ./media/stream-analytics-login-credentials-inputs-outputs/4-stream-analytics-login-credentials-inputs-outputs.png
-[graphic5]: ./media/stream-analytics-login-credentials-inputs-outputs/5-stream-analytics-login-credentials-inputs-outputs.png
-[graphic6]: ./media/stream-analytics-login-credentials-inputs-outputs/6-stream-analytics-login-credentials-inputs-outputs.png
-[graphic7]: ./media/stream-analytics-login-credentials-inputs-outputs/7-stream-analytics-login-credentials-inputs-outputs.png
-[graphic8]: ./media/stream-analytics-login-credentials-inputs-outputs/8-stream-analytics-login-credentials-inputs-outputs.png
-[graphic9]: ./media/stream-analytics-login-credentials-inputs-outputs/9-stream-analytics-login-credentials-inputs-outputs.png
-[graphic10]: ./media/stream-analytics-login-credentials-inputs-outputs/10-stream-analytics-login-credentials-inputs-outputs.png
-[graphic11]: ./media/stream-analytics-login-credentials-inputs-outputs/11-stream-analytics-login-credentials-inputs-outputs.png
-[graphic12]: ./media/stream-analytics-login-credentials-inputs-outputs/12-stream-analytics-login-credentials-inputs-outputs.png
-[graphic13]: ./media/stream-analytics-login-credentials-inputs-outputs/13-stream-analytics-login-credentials-inputs-outputs.png
-[graphic14]: ./media/stream-analytics-login-credentials-inputs-outputs/14-stream-analytics-login-credentials-inputs-outputs.png
-[graphic15]: ./media/stream-analytics-login-credentials-inputs-outputs/15-stream-analytics-login-credentials-inputs-outputs.png
-[graphic16]: ./media/stream-analytics-login-credentials-inputs-outputs/16-stream-analytics-login-credentials-inputs-outputs.png
-[graphic17]: ./media/stream-analytics-login-credentials-inputs-outputs/17-stream-analytics-login-credentials-inputs-outputs.png
-[graphic18]: ./media/stream-analytics-login-credentials-inputs-outputs/18-stream-analytics-login-credentials-inputs-outputs.png
-[graphic19]: ./media/stream-analytics-login-credentials-inputs-outputs/19-stream-analytics-login-credentials-inputs-outputs.png
-[graphic20]: ./media/stream-analytics-login-credentials-inputs-outputs/20-stream-analytics-login-credentials-inputs-outputs.png
-[graphic21]: ./media/stream-analytics-login-credentials-inputs-outputs/21-stream-analytics-login-credentials-inputs-outputs.png
-[graphic22]: ./media/stream-analytics-login-credentials-inputs-outputs/22-stream-analytics-login-credentials-inputs-outputs.png
-[graphic23]: ./media/stream-analytics-login-credentials-inputs-outputs/23-stream-analytics-login-credentials-inputs-outputs.png
-[graphic24]: ./media/stream-analytics-login-credentials-inputs-outputs/24-stream-analytics-login-credentials-inputs-outputs.png
-[graphic25]: ./media/stream-analytics-login-credentials-inputs-outputs/25-stream-analytics-login-credentials-inputs-outputs.png
-[graphic26]: ./media/stream-analytics-login-credentials-inputs-outputs/26-stream-analytics-login-credentials-inputs-outputs.png
-[graphic27]: ./media/stream-analytics-login-credentials-inputs-outputs/27-stream-analytics-login-credentials-inputs-outputs.png
-[graphic28]: ./media/stream-analytics-login-credentials-inputs-outputs/28-stream-analytics-login-credentials-inputs-outputs.png
-[graphic29]: ./media/stream-analytics-login-credentials-inputs-outputs/29-stream-analytics-login-credentials-inputs-outputs.png
-[graphic30]: ./media/stream-analytics-login-credentials-inputs-outputs/30-stream-analytics-login-credentials-inputs-outputs.png
-[graphic31]: ./media/stream-analytics-login-credentials-inputs-outputs/31-stream-analytics-login-credentials-inputs-outputs.png
-[graphic32]: ./media/stream-analytics-login-credentials-inputs-outputs/32-stream-analytics-login-credentials-inputs-outputs.png
-[graphic33]: ./media/stream-analytics-login-credentials-inputs-outputs/33-stream-analytics-login-credentials-inputs-outputs.png
-[graphic34]: ./media/stream-analytics-login-credentials-inputs-outputs/34-stream-analytics-login-credentials-inputs-outputs.png
-[graphic35]: ./media/stream-analytics-login-credentials-inputs-outputs/35-stream-analytics-login-credentials-inputs-outputs.png
-[graphic36]: ./media/stream-analytics-login-credentials-inputs-outputs/36-stream-analytics-login-credentials-inputs-outputs.png
-[graphic37]: ./media/stream-analytics-login-credentials-inputs-outputs/37-stream-analytics-login-credentials-inputs-outputs.png
-[graphic38]: ./media/stream-analytics-login-credentials-inputs-outputs/38-stream-analytics-login-credentials-inputs-outputs.png
-[graphic39]: ./media/stream-analytics-login-credentials-inputs-outputs/39-stream-analytics-login-credentials-inputs-outputs.png
-[graphic40]: ./media/stream-analytics-login-credentials-inputs-outputs/40-stream-analytics-login-credentials-inputs-outputs.png
-[graphic41]: ./media/stream-analytics-login-credentials-inputs-outputs/41-stream-analytics-login-credentials-inputs-outputs.png
-[graphic42]: ./media/stream-analytics-login-credentials-inputs-outputs/42-stream-analytics-login-credentials-inputs-outputs.png
-[graphic43]: ./media/stream-analytics-login-credentials-inputs-outputs/43-stream-analytics-login-credentials-inputs-outputs.png
-

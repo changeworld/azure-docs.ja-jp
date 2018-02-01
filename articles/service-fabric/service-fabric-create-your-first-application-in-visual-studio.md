@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/04/2017
+ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 70d365910569a2acb1c230c803fdfca5cb6b35af
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: bdabdbbb3037f3325c107a4e6148873a923b4ded
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>C# で最初の Service Fabric ステートフル リライアブル サービス アプリケーションを作成する
 
@@ -82,7 +82,7 @@ Visual Studio で `F5` キーを押して、デバッグ用にアプリケーシ
    
 ![診断イベント ビューアー][5]
 
-このクイックスタートで使用したステートフル サービス テンプレートでは、**MyStatefulService.cs** の `RunAsync` メソッドでインクリメントされているカウンター値のみが表示されます。
+このクイックスタートで使用したステートフル サービス テンプレートでは、**MyStatefulService.cs** の `RunAsync` メソッドでインクリメントされているカウンター値が表示されます。
 
 コードが実行されているノードなど、詳細を確認するには、イベントのいずれかを展開します。 この例では、\_Node\_0 になっていますが、使用するマシンによって異なる可能性があります。
    
@@ -129,7 +129,7 @@ Visual Studio で `F5` キーを押して、デバッグ用にアプリケーシ
 
 このオプションを選択すると、次にアプリケーションを実行したときに、クラスターが再デプロイされます。 しばらくの間ローカル クラスターを使用しない場合や、リソースを解放する必要がある場合に、このオプションを選択してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Reliable Services の詳細については、[こちら](service-fabric-reliable-services-introduction.md)を参照してください。
 <!-- Image References -->
 

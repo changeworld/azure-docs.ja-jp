@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: 5eb326dfd89d9cc64eb0e05286e64c87e090e0a1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 0be2391268e11593802cb0f455e8c4553f0d4731
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
@@ -78,7 +78,7 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>指定されたディスク構成がサポートされていません
 
 > [!NOTE]
-> 1 TB を超える非管理対象ディスクがある VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください。
+> 1 TB を超えるディスクが存在する VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください。
 >
 >
 
@@ -97,11 +97,14 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 ####  <a name="solution"></a>解決策
 この問題を解決するには、次の方法のいずれかを試してください。
-##### <a name="allow-access-to-the-azure-datacenter-ip-ranges"></a>Azure データセンターの IP 範囲へのアクセスを許可する
+##### <a name="allow-access-to-the-azure-storage-corresponding-to-the-region"></a>リージョンに対応する Azure Storage へのアクセスを許可する
 
-1. アクセスを許可する [Azure データセンターの IP の一覧](https://www.microsoft.com/download/details.aspx?id=41653)を取得します。
-2. 管理者特権の PowerShell ウィンドウで、Azure VM 内で **New-NetRoute** コマンドレットを実行して、IP のブロックを解除します。 コマンドレットは、管理者として実行してください。
-3. IP へのアクセスを許可するには、規則をネットワーク セキュリティ グループに追加します (ネットワーク セキュリティ グループがある場合)。
+[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、特定のリージョンのストレージに接続できます。 ストレージ アカウントへのアクセスを許可するルールが、インターネット アクセスをブロックするルールよりも優先度が高いことを確認してください。 
+
+![リージョンのストレージ タグが与えられた NSG](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+> [!WARNING]
+> ストレージ サービス タグは特定のリージョンでのみ利用できます。また、これはプレビュー版です。 リージョンの一覧については、「[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)」を参照してください。
 
 ##### <a name="create-a-path-for-http-traffic-to-flow"></a>フローに対する HTTP トラフィック用のパスを作成する
 
@@ -166,8 +169,6 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 | --- | --- |
 | VM で SQL Server のバックアップが構成されている。 | 既定では、VM のバックアップは Windows VM で VSS 完全バックアップとして実行されます。 SQL Server ベースのサーバーを実行し、SQL Server のバックアップが構成されている VM では、スナップショットの実行の遅延が発生する場合があります。<br><br>スナップショットに関する問題により Backup エラーが発生する場合は、次のレジストリ キーを設定してください。<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | VM が RDP でシャットダウンされているため、VM の状態が正しく報告されない。 | リモート デスクトップ プロトコル (RDP) で VM をシャットダウンした場合は、ポータルでその VM の状態が正しいかどうかを確認します。 正しくない場合は、VM のダッシュボードの **[シャットダウン]** オプションを使用して、ポータルで VM をシャットダウンします。 |
-| 同じクラウド サービスから多数の VM が同時にバックアップするように構成されている。 | 同じクラウド サービスの VM については、バックアップ スケジュールを分散させることをお勧めします。 |
-| VM の CPU またはメモリの使用率が高くなっている。 | VM の CPU 使用率が高い (90% を超える) 場合、またはメモリ使用率が高い場合、スナップショット タスクがキューに配置され、遅延し、最終的にタイムアウトになります。この場合は、オンデマンド バックアップを試してください。 |
 | VM が DHCP からホスト/ファブリック アドレスを取得できない。 | IaaS VM バックアップが正しく機能するには、ゲスト内で DHCP が有効になっている必要があります。  VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。 静的プライベート IP が必要な場合は、プラットフォームを通じて構成する必要があります。 VM 内の DHCP オプションは有効のままにしておいてください。 詳細については、[静的内部プライベート IP の設定](../virtual-network/virtual-networks-reserved-private-ip.md)に関するページをご覧ください。 |
 
 ### <a name="the-backup-extension-fails-to-update-or-load"></a>バックアップ拡張機能の更新または読み込みに失敗した
@@ -192,24 +193,6 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 6. **[アンインストール]** をクリックします。
 
 この手順により、次回のバックアップ時に拡張機能が再インストールされます。
-
-### <a name="azure-classic-vms-may-require-additional-step-to-complete-registration"></a>Azure クラシック VM で登録を完了するために追加の手順が必要な可能性がある
-バックアップ サービスへの接続を確立し、バックアップを開始するには、エージェントを Azure クラシック VM に登録する必要があります
-
-#### <a name="solution"></a>解決策
-
-VM ゲスト エージェントのインストール後に、Azure PowerShell を起動します <br>
-1. 次のコマンドを使用して Azure アカウントにログインします <br>
-       `Login-AzureAsAccount`<br>
-2. 次のコマンドで、VM の ProvisionGuestAgent プロパティが True に設定されているかどうかを確認します <br>
-        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
-        `$vm.VM.ProvisionGuestAgent`<br>
-3. プロパティが FALSE に設定されている場合は、次のコマンドで TRUE に設定します<br>
-        `$vm = Get-AzureVM –ServiceName <cloud service name> –Name <VM name>`<br>
-        `$vm.VM.ProvisionGuestAgent = $true`<br>
-4. 次のコマンドを実行して VM を更新します <br>
-        `Update-AzureVM –Name <VM name> –VM $vm.VM –ServiceName <cloud service name>` <br>
-5. バックアップを開始してみます。 <br>
 
 ### <a name="backup-service-does-not-have-permission-to-delete-the-old-restore-points-due-to-resource-group-lock"></a>リソース グループのロックが原因で、Backup サービスに古い復元ポイントを削除するためのアクセス許可がない
 この問題は、ユーザーがリソース グループをロックし、Backup サービスが古い復元ポイントを削除でない管理対象 VM に固有です。 バックエンドから最大 18 個の復元ポイントの制限が課されているため、これにより新しいバックアップの開始が失敗します。

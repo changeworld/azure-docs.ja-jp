@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/3/2017
+ms.date: 1/16/2017
 ms.author: jeedes
-ms.openlocfilehash: b4d96df72fd7f8f817140e7599e22a63ddd79910
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 8d77215fd2923e22a9cc87e469cb135d035d22d9
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>チュートリアル: Azure Active Directory と Amazon Web Services (AWS) の統合
 
@@ -122,7 +122,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     >[!TIP]
     >AWS コンソールからすべてのロールをフェッチするには、Azure AD でユーザー プロビジョニングを構成する必要があります。 次のプロビジョニングの手順をご覧ください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_04.png)
 
@@ -131,6 +131,8 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
+
+    d. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
     
     d. **[OK]**をクリックします。
 
@@ -160,7 +162,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
    
     ![シングル サインオンの構成ダイアログ][14]
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Provider Type]** として **[SAML]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Provider Type]** として **[SAML]** を選択します。
 
     b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
@@ -180,7 +182,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![シングル サインオン名の構成][17] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Role Name]** ボックスにロール名を入力します (例: *TestUser*)。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Role Name]** ボックスにロール名を入力します (例: *TestUser*)。 
 
     b. ページの下部にある **[Next Step]**」を参照してください。
 
@@ -188,7 +190,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![シングル サインオンのロールの種類の構成][18] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Role For Identity Provider Access]** を選択します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Role For Identity Provider Access]** を選択します。 
 
     b. **[Grant Web Single Sign-On (WebSSO) access to SAML providers]** セクションで、**[Select]** をクリックします。
 
@@ -196,7 +198,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![シングル サインオンの信頼の構成][19] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 SAML プロバイダーとして、先ほど作成した SAML プロバイダーを選択します (例: *WAAD*) 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 SAML プロバイダーとして、先ほど作成した SAML プロバイダーを選択します (例: *WAAD*) 
   
     b. ページの下部にある **[Next Step]**」を参照してください。
 
@@ -212,13 +214,13 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ![シングル サインオンの構成の確認][34] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Create Role]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Create Role]** をクリックします。
 
     b. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
 
 21. Azure AD ユーザー プロビジョニングの AWS アカウントからロールをフェッチするには、AWS サービス アカウントの資格情報を使用します。 そのためには、AWS コンソール ホームを開きます。
 
-22. **[Services]** -> **[Security,Identity& Compliance]** -> **[IAM]** をクリックします。
+22. **[Services]** -> **[Security, Identity& Compliance]** -> **[IAM]** をクリックします。
 
     ![AWS アカウントからのロールのフェッチ](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole1.png)
 
@@ -230,19 +232,13 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![新しいポリシーの作成](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
  
-25. AWS アカウントからすべてのロールをフェッチする独自のポリシーを作成します。 **[Create your own policy]** セクションで、**[選択]** をクリックします。
-    
+25. 以下の手順を実行して、AWS アカウントからすべてのロールをフェッチする独自のポリシーを作成します。
+
     ![新しいポリシーの作成](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
-26. 以下の手順を実行して新しいポリシーを定義します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ポリシーの作成]** セクションで、**[JSON]** タブをクリックします。
 
-    ![新しいポリシーの定義](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
-
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Policy Name]** として **AzureAD_SSOUserRole_Policy** を指定します。
-
-    b. ポリシーの **[Description]** には、「**This policy will allow to fetch the roles from AWS accounts**」を指定できます。
-    
-    c. ポリシー ドキュメントで、次の JSON を追加します。
+    b. ポリシー ドキュメントで、次の JSON を追加します。
     
     ```
     
@@ -271,16 +267,24 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     }
     
     ```
+
+    c. **[ポリシーの確認] ボタン**をクリックして、ポリシーを検証します。
+
+    ![新しいポリシーの定義](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
+
+26. 以下の手順を実行して**新しいポリシー**を定義します。
+
+    ![新しいポリシーの定義](./media/active-directory-saas-amazon-web-service-tutorial/policy2.png)
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Policy Name]** として **AzureAD_SSOUserRole_Policy** を指定します。
+
+    b. ポリシーの **[Description]** には、「**This policy will allow to fetch the roles from AWS accounts**」を指定できます。
     
-    d. **[Use autoformatting for policy editing]** をオンにします。
-    
-    e. 下部にある **[Validate Policy]** をクリックします。
-    
-    f. ポリシーが正しく検証されたら、**[Create Policy]** をクリックします。
-    
+    c. **[ポリシーの作成]** ボタンをクリックします。
+        
 27. 次の手順を実行して、AWS IAM サービスで新しいユーザー アカウントを作成します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 AWS IAM コンソールで **[Users]** ナビゲーションをクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 AWS IAM コンソールで **[Users]** ナビゲーションをクリックします。
 
     ![新しいポリシーの定義](./media/active-directory-saas-amazon-web-service-tutorial/policy3.png)
     
@@ -302,7 +306,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Attach existing policies directly]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Attach existing policies directly]** をクリックします。
 
     b. [フィルター] セクションで、新しく作成されたポリシー **AzureAD_SSOUserRole_Policy** を検索します。
     
@@ -312,7 +316,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/adduser3.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 ユーザー名、アクセスの種類、ユーザーにマップされているポリシーを確認します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザー名、アクセスの種類、ユーザーにマップされているポリシーを確認します。
     
     b. 右下隅にある **[Create user]** をクリックしてユーザーを作成します。
 
@@ -320,7 +324,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 ユーザーの **[Access key ID]** と **[Secret access key]** をコピーします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザーの **[Access key ID]** と **[Secret access key]** をコピーします。
     
     b. これらの資格情報を Azure AD の [ユーザー プロビジョニング] セクションに入力して、AWS コンソールからロールをフェッチします。
     
@@ -334,7 +338,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 AWS ユーザーのアクセス キーを **[clientsecret]/(clientsecret/)** フィールドに入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 AWS ユーザーのアクセス キーを **[clientsecret]/(clientsecret/)** フィールドに入力します。
     
     b. AWS ユーザー シークレットを **[シークレット トークン]** フィールドに入力します。
     

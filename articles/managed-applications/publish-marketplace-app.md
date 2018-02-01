@@ -3,18 +3,18 @@ title: "Marketplace の Azure マネージ アプリケーション | Microsoft 
 description: "Marketplace を介して利用できる Azure マネージ アプリケーションについて説明します。"
 services: azure-resource-manager
 author: tfitzmac
-manager: rjmax
+manager: timlt
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/08/2017
+ms.date: 01/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: e643c86bfd5a78f21f6d96051e4395168cb7d6e0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: fccc2dbb7623f4ceb0d3decc7037f75a05858910
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージ アプリケーション
 
@@ -36,26 +36,18 @@ ms.lasthandoff: 01/12/2018
 * Azure Marketplace 参加ポリシーと発行者契約の条項に同意します。
 * 使用条件、Microsoft のプライバシーに関する声明、および Microsoft Azure 認定プログラム契約に従うことに同意します。
 
-## <a name="set-up-your-account-for-publishing-portal"></a>発行ポータルのアカウントを設定する
+## <a name="become-a-publisher"></a>発行元になる
 
-発行ポータルは、プランの発行と管理に使用されます。 Marketplace アプリケーションを発行するには、Azure Marketplace の承認済みの Microsoft 開発者アカウントが必要です。 承認済みのアカウントを登録していない場合は、「[Microsoft 開発者アカウントの作成](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md)」をご覧ください。
+Azure Marketplace の発行元になるには、次のことを行う必要があります。
 
-承認済みの **Microsoft デベロッパー センター** アカウントを持っていても、[Azure 発行ポータル](https://cloudpartner.azure.com/)をこれまで使用したことがない場合は、発行ポータルに登録する必要があります。
-
-1. 新しい Chrome Incognito または Internet Explorer InPrivate ブラウズ セッションを開き、個人用アカウントにサインインしていないことを確認します。
-2. [https://cloudpartner.azure.com/](https://cloudpartner.azure.com/) に移動します。
-3. 新規ユーザーが発行ポータルに初めてサインインする場合は、デベロッパー センター アカウントと同じ電子メール ID でサインインする必要があります。 現在、デベロッパー センター アカウントと発行ポータル アカウントはリンクされています。
-
-発行ポータルで、会社の他のメンバーを後で[共同管理者](../marketplace-publishing/marketplace-publishing-accounts-creation-registration.md#4-steps-to-add-a-co-admin-in-the-publishing-portal)として追加できます。 発行ポータルで共同管理者として追加されている場合は、共同管理者アカウントでサインインできます。
-
-> [!TIP]
-> 参加ポリシーについては、 [Azure Web サイト](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)を参照してください。
->
->
+1. Microsoft ID を作成する - 個人ではなく会社のドメインに属する電子メール アドレスを使用して、Microsoft アカウントを作成します。 この電子メール アドレスは、Microsoft デベロッパー センターと Cloud パートナー ポータルの両方で使用されます。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
+1. [Azure Marketplace Nomination Form (Azure Marketplace 申請フォーム)](https://aka.ms/ampnomination) を送信する - **[Solution that you intend to publish?]\(公開したいソリューション\)** で、**[Managed Application]\(マネージ アプリケーション\)** を選択します。 フォームが送信されると、Marketplace オンボード チームによって申し込みが確認され、申請が検証されます。 この承認プロセスには 1 ～ 3 日かかります。 申請が承認されると、お客様にご利用コードが送信されます。このコードを使用すると、デベロッパー センターの登録料金が免除されます。 Marketplace Nomination Form (Marketplace 申請フォーム) に入力**しない**場合、99 ドルの登録料金の支払いを求められます。
+1. [デベロッパー センター](https://developer.microsoft.com)に登録する - Microsoft により、お客様の組織が、登録先の国の有効な税 ID を持つ合法的な法人であることが検証されます。 この承認プロセスには 5 ～ 10 日かかります。 登録料金の支払い免除を受けるには、申請プロセスの電子メールで受け取ったご利用コードを使用します。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
+1. [Cloud パートナー ポータル](https://cloudpartner.azure.com)にログインする - 発行プロファイルで、お客様のデベロッパー センター アカウントを Marketplace Publisher プロファイルに関連付けます。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
 
 ## <a name="create-a-new-azure-application-offer"></a>新しい Azure アプリケーション プランの作成
 
-前提条件を満たしたら、マネージ アプリケーション プランを作成できます。
+パートナー ポータル アカウントを作成したら、マネージ アプリケーション プランを作成できます。
 
 ### <a name="set-up-an-offer"></a>プランの設定
 
@@ -65,11 +57,7 @@ ms.lasthandoff: 01/12/2018
 
 1. 左側のナビゲーション バーで、**[+ 新しいプラン]** > **[Azure Applications]\(Azure アプリケーション\)** を選択します。
 
-   ![新しいプラン](./media/publish-marketplace-app/newOffer.png)
-
 1. **[エディター]** ビューに必要なフォームが表示されます。 各フォームについては、この記事の後半で説明します。
-
-   ![プラン設定](./media/publish-marketplace-app/newOffer_OfferSettings.png)
 
 ## <a name="offer-settings-form"></a>[プランの設定] フォーム
 
@@ -95,13 +83,9 @@ SKU は、Marketplace では親プランの下に表示されます。 Azure Por
 
 1. **[SKU]** > **[新しい SKU]** を選択します。
 
-   ![新しい SKU を選択する](./media/publish-marketplace-app/newOffer_skus.png)
-
 1. **SKU ID** を入力します。 SKU ID は、プラン内の SKU を表す一意識別子です。 この ID は、製品 URL、Resource Manager テンプレート、課金レポートに表示されます。 小文字の英数字またはハイフン (-) のみで構成できます。 ID の末尾にはダッシュを使用できず、最大 50 文字に制限されます。 プランの運用が開始されると、このフィールドはロックされます。 プラン内の SKU を複数にすることができます。 発行するイメージごとに SKU が必要です。
 
 1. 次のフォームの **[SKU Details]\(SKU の詳細\)** セクションに入力します。
-
-   ![新しい SKU を指定する](./media/publish-marketplace-app/sku-settings.png)
 
    次のフィールドに入力します。
 
@@ -110,14 +94,9 @@ SKU は、Marketplace では親プランの下に表示されます。 Azure Por
    * **説明**: SKU に関する詳細な説明を入力します。
    * **SKU の種類**: 使用できる値は、*[Managed Application]\(マネージ アプリケーション\)* と *[ソリューション テンプレート]* です。 この場合は、*[Managed Application]\(マネージ アプリケーション\)* を選択します。
    * **提供先の国/地域**: マネージ アプリケーションを利用できる国を選択します。
-
-      ![国を選択する](./media/publish-marketplace-app/select-country.png)
-
    * **価格**: アプリケーションを管理するための価格を指定します。 価格を設定する前に利用可能な国を選択します。
 
 1. 新しいパッケージを追加します。 次のフォームの **[パッケージの詳細]** セクションに入力します。
-
-   ![パッケージ](./media/publish-marketplace-app/new-package.png)
 
    次のフィールドに入力します。
 

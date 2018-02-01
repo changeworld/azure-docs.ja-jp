@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect による Active Directory フェデレーション サービスの管理とカスタマイズ | Microsoft Docs"
+title: "Azure AD Connect - AD FS の管理とカスタマイズ | Microsoft Docs"
 description: "Azure AD Connect を使用した AD FS の管理と、Azure AD Connect および PowerShell を使用したユーザー AD FS サインイン エクスペリエンスのカスタマイズ。"
 keywords: "AD FS, ADFS, AD FS 管理, AAD Connect, Connect, サインイン, AD FS カスタマイズ, 信頼の修復, O365, フェデレーション, 証明書利用者"
 services: active-directory
@@ -15,16 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: e024dd13c6bf25697dbea67ae240a100c27454b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 49acea5c08a10ba3b60d0db5f05e30d573f5e507
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="manage-and-customize-active-directory-federation-services-by-using-azure-ad-connect"></a>Azure AD Connect を使用した Active Directory フェデレーション サービスの管理とカスタマイズ
 この記事では、Azure Active Directory (Azure AD) Connect を使用して、Active Directory フェデレーション サービス (AD FS) を管理およびカスタマイズする方法について説明します。 また、AD FS ファームの完全な構成のために必要となる可能性のある他の一般的な AD FS タスクについても説明します。
 
-| トピック | 内容 |
+| Topic | 内容 |
 |:--- |:--- |
 | **AD FS の管理** | |
 | [信頼を修復する](#repairthetrust) |Office 365 とのフェデレーション信頼を修復する方法 |
@@ -48,7 +49,7 @@ Azure AD Connect を使用して、AD FS と Azure AD の信頼の現在の正�
    ![[AAD と ADFS 信頼を修復します]](media/active-directory-aadconnect-federation-management/RepairADTrust1.PNG)
 
 2. **[Azure AD に接続]** ページで、Azure AD の全体管理者の資格情報を入力し、**[次へ]** をクリックします。
-   ![Azure への接続](media/active-directory-aadconnect-federation-management/RepairADTrust2.PNG)
+   ![Connect to Azure AD](media/active-directory-aadconnect-federation-management/RepairADTrust2.PNG)
 
 3. **[リモート アクセスの資格情報]** ページで、ドメイン管理者の資格情報を入力します。
 
@@ -60,7 +61,7 @@ Azure AD Connect を使用して、AD FS と Azure AD の信頼の現在の正�
 
     **[構成の準備完了]** ページに、信頼を修復するために実行されるアクションの一覧が表示されます。
 
-    ![[構成の準備完了]](media/active-directory-aadconnect-federation-management/RepairADTrust5.PNG)
+    ![構成の準備完了](media/active-directory-aadconnect-federation-management/RepairADTrust5.PNG)
 
 4. **[インストール]** をクリックして信頼を修復します。
 
@@ -144,7 +145,7 @@ AD FS 用の代替ログイン ID の構成は、主に 2 つの手順で構成�
 
 6. **[構成の準備完了]** ページに、実行されるアクションの一覧が表示されます。
 
-   ![[構成の準備完了]](media/active-directory-aadconnect-federation-management/WapServer7.PNG)
+   ![構成の準備完了](media/active-directory-aadconnect-federation-management/WapServer7.PNG)
 
 7. **[インストール]** をクリックして構成を終了します。 構成が完了すると、サーバーへの接続を確認するためのオプションが表示されます。 **[確認]** をクリックして接続を確認します。
 
@@ -269,5 +270,5 @@ Azure AD Connect では、オブジェクトが Azure AD に同期されると�
 
     => issue(Type = “http://schemas.microsoft.com/ws/2008/06/identity/claims/issuerid“, Value = regexreplace(c.Value, “^((.*)([.|@]))?(?<domain>[^.]*[.].*)$”, “http://${domain}/adfs/services/trust/“));
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ユーザー サインイン オプション](active-directory-aadconnect-user-signin.md)の詳細を確認します。

@@ -15,15 +15,14 @@ ms.workload: na
 ms.date: 10/19/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f0520e97a8b4f218b87683464d342bf7a08b2383
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 243845139c7ae0389333d7490098ef73f95dceac
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 IoT Hub には、クラウドからデバイス上のダイレクト メソッドを呼び出す機能が備わっています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 このアプローチは、デバイスがオフラインの場合に SMS ウェイクアップを送信するような、デバイスが応答できるかによって、一連の即時のアクションが異なってくるシナリオで便利です (SMS はメソッドの呼び出しよりもコストがかかります)。
-
 各デバイス メソッドは、1 つのデバイスをターゲットとします。 [Jobs][lnk-devguide-jobs] を使用すると、複数のデバイス上のダイレクト メソッドを呼び出すことができ、接続されていないデバイスに対するメソッドの呼び出しをスケジュール設定できます。
 
 IoT Hub で**サービス接続**のアクセス許可を持っていれば、誰でもデバイスでメソッドを呼び出すことができます。
@@ -44,7 +43,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 ダイレクト メソッドは、クラウド側からは HTTPS のみに、デバイス側からは MQTT または AMQP になります。
 
-メソッドの要求および応答のペイロードは、最大 8 KB の JSON ドキュメントになります。
+メソッドの要求および応答のペイロードは、最大 128 KB の JSON ドキュメントになります。
 
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>バックエンド アプリからダイレクト メソッドを呼び出す
 ### <a name="method-invocation"></a>メソッドの呼び出し

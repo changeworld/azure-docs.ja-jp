@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 11/13/2017
+ms.date: 01/23/2018
 ms.author: genemi
-ms.openlocfilehash: ce223fbd6a69bc789f902f9478b5255edfd44844
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 6294216568e1d4c50ef6e6b6d2348a2a221406b0
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -184,6 +184,15 @@ PolyBase は、ストレージ アカウントから Azure SQLDW にデータを
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB の BLOB 監査
 BLOB 監査では、監査ログをユーザー独自のストレージ アカウントにプッシュします。 このストレージ アカウントが VENT サービス エンドポイント機能を使用している場合、Azure SQLDB からストレージ アカウントへの接続は切断されます。
+
+
+## <a name="adding-a-vnet-firewall-rule-to-your-server-without-turning-on-vnet-service-endpoints"></a>VNET サービス エンドポイントをオンにすることなく VNET ファイアウォール規則をサーバーに追加する
+
+この機能が強化される以前は、ライブ VNet ルールをファイアウォールに実装するには、VNet サービス エンドポイントをオンにする必要がありました。 エンドポイントが特定の VNet サブネットを Azure SQL Database に関連付けていました。 しかし、2018 年 1 月現在からは、**IgnoreMissingServiceEndpoint** フラグを設定することでこの要件を回避できます。
+
+単にファイアウォール規則を設定するだけでは、サーバーのセキュリティ保護には役立ちません。 セキュリティを有効にするには、VNet サービス エンドポイントをオンにする必要もあります。 サービス エンドポイントをオンにする場合、オフからオンへの切り替えが完了するまで VNet サブネットでダウンタイムが発生します。 これは、大規模 VNet のコンテキストに特に当てはまります。 **IgnoreMissingServiceEndpoint** フラグを使用すると、切り替え中のダウンタイムを軽減または除去できます。
+
+PowerShell を使用することで、**IgnoreMissingServiceEndpoint** フラグを設定できます。 詳細については、「[PowerShell を使用して、Azure SQL Database 用の仮想サービス エンドポイントと規則を作成する][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
 
 
 ## <a name="errors-40914-and-40615"></a>エラー 40914 および 40615

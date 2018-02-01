@@ -3,7 +3,7 @@ title: "Azure AD Connect 同期: ディレクトリ拡張機能 | Microsoft Docs
 description: "このトピックでは、Azure AD Connect のディレクトリ拡張機能について説明します。"
 services: active-directory
 documentationcenter: 
-author: AndKjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 995ee876-4415-4bb0-a258-cca3cbb02193
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 3ab8b02ad30315de23e5d8e7370cc385a53ecf3a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9abd035b13a0d51c534eb8cac50c045012399a69
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="azure-ad-connect-sync-directory-extensions"></a>Azure AD Connect 同期: ディレクトリ拡張機能
 ディレクトリ拡張機能を使用すると、オンプレミスの Active Directory から独自の属性を使用して、Azure AD のスキーマを拡張できます。 この機能により、独自に構築した LOB アプリで利用する属性を引き続きオンプレミスで管理することが可能です。 これらの属性は、[Azure AD Graph ディレクトリ拡張機能](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)または [Microsoft Graph](https://graph.microsoft.io/) を通じて利用できます。 それぞれ [Azure AD Graph Explorer](https://graphexplorer.azurewebsites.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/en-us/graph/graph-explorer) を使用して、利用可能な属性を表示できます。
@@ -44,12 +44,22 @@ Azure AD のオブジェクトは、最大で 100 個のディレクトリ拡張
 これらの属性が利用できるアプリケーションは、Azure AD Connect のインストール中に登録されます。 このアプリケーションは、Azure Portal で確認できます。  
 ![Schema Extension App](./media/active-directory-aadconnectsync-feature-directory-extensions/extension3new.png)
 
-これで、これらの属性を Graph を通じて利用できるようになりました。  
-![Graph](./media/active-directory-aadconnectsync-feature-directory-extensions/extension4.png)
-
 属性には、extension\_{AppClientId}\_ というプレフィックスが付きます。 AppClientId の値は、ご使用の Azure AD テナントに存在するすべての属性で同じになります。
 
-## <a name="next-steps"></a>次のステップ
+これで、これらの属性を **Azure AD Graph** を通じて利用できるようになりました。
+
+Azure AD Graph エクスプ ローラー経由で Azure AD Graph を照会できます ([https://graphexplorer.azurewebsites.net/](https://graphexplorer.azurewebsites.net/))。
+
+![Graph](./media/active-directory-aadconnectsync-feature-directory-extensions/extension4.png)
+
+または、**Microsoft Graph API** を通じて利用できます。
+
+Microsoft Graph エクスプローラー経由で Microsoft Graph API を照会できます ([https://developer.microsoft.com/en-us/graph/graph-explorer#](https://developer.microsoft.com/en-us/graph/graph-explorer#)) 
+
+>[!NOTE]
+> 属性が返されるように、明示的に要求する必要があります。 次のように明示的に属性を選択することで、これを行います。https://graph.microsoft.com/beta/users/abbie.spencer@fabrikamonline.com?$select=extension_9d98ed114c4840d298fad781915f27e4_employeeID,extension_9d98ed114c4840d298fad781915f27e4_division 詳細については、[Microsoft Graph でのクエリ パラメーターの使用](https://developer.microsoft.com/en-us/graph/docs/concepts/query_parameters#select-parameter)に関するページをご覧ください。
+
+## <a name="next-steps"></a>次の手順
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

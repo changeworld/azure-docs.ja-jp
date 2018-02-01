@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2017
+ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b2388626dd68ea1911cdfb3d6a84e70f6bf3cc6
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: e2036da052e998797d860db2eadfd2ac5c968aae
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを OMS 管理ソリューションに追加する (プレビュー)
 
@@ -45,17 +45,14 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 ## <a name="log-analytics-api-version"></a>Log Analytics API バージョン
 Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。  このバージョンは、[レガシおよびアップグレードされたクエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)を使用するリソースで異なります。  
 
- 次の表は、レガシおよびアップグレードされたワークスペースの Log Analytics API バージョンと、それぞれに異なる構文を指定したサンプル クエリを示しています。 
+ 次の表では、レガシ ワークスペースとアップグレードされたワークスペースでの保存された検索条件に対する Log Analytics API のバージョンを指定します。 
 
-| ワークスペースのバージョン | API バージョン | サンプル クエリ |
+| ワークスペースのバージョン | API バージョン | クエリ |
 |:---|:---|:---|
-| v1 (レガシ)   | 2015-11-01-preview | Type=Event EventLevelName=error             |
-| v2 (アップグレード) | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
+| v1 (レガシ)   | 2015-11-01-preview | レガシ形式。<br> 例: Type=Event EventLevelName = Error  |
+| v2 (アップグレード) | 2015-11-01-preview | レガシ形式。  インストール時にアップグレードされた形式に変換されます。<br> 例: Type=Event EventLevelName = Error<br>変換後: Event &#124; where EventLevelName == "Error"  |
+| v2 (アップグレード) | 2017-03-03-preview | アップグレード形式。 <br>例: Event &#124; where EventLevelName == "Error"  |
 
-異なるバージョンでどのワークスペースがサポートされるかに関しては、次の点に注意してください。
-
-- レガシ クエリ言語を使用するテンプレートは、レガシまたはアップグレードされたワークスペースにインストールできます。  アップグレードされたワークスペースにインストールした場合、ユーザーによって実行されるときに、クエリはまとめて新しい言語に変換されます。
-- アップグレードされたクエリ言語を使用するテンプレートは、アップグレードされたワークスペースにしかインストールできません。
 
 
 ## <a name="saved-searches"></a>保存された検索条件
@@ -82,11 +79,11 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表は、保存された検索条件の各プロパティについて説明しています。 
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
 | カテゴリ | 保存された検索条件のカテゴリです。  同じソリューション内の保存された検索条件は、1 つのカテゴリを共有することが多いため、コンソールではグループ化されています。 |
 | displayname | ポータルでの保存された検索条件の表示名です。 |
-| query | 実行するクエリ。 |
+| クエリ | 実行するクエリ。 |
 
 > [!NOTE]
 > JSON として解釈される可能性のある文字が含まれる場合、クエリではエスケープ文字を使うことが必要になる場合があります。  たとえば、**Type:AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"** というクエリの場合、ソリューション ファイルには **Type:AzureActivity OperationName:\"Microsoft.Compute/virtualMachines/write\"** と書き込まれる必要があります。
@@ -128,11 +125,11 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表では、スケジュール リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
-| 有効       | はい | 作成時点でアラートが有効かどうかを指定します。 |
-| interval      | はい | クエリを実行する間隔です (分単位)。 |
-| queryTimeSpan | はい | 結果を評価する期間です (分単位)。 |
+| 有効       | [はい] | 作成時点でアラートが有効かどうかを指定します。 |
+| interval      | [はい] | クエリを実行する間隔です (分単位)。 |
+| queryTimeSpan | [はい] | 結果を評価する期間です (分単位)。 |
 
 スケジュール リソースは保存された検索条件に依存するので、スケジュールの前に作成する必要があります。
 
@@ -187,21 +184,21 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 
 次の表では、アラート アクション リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
-| 種類 | はい | アクションの種類。  これは、アラート アクションの**アラート**です。 |
-| 名前 | はい | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
-| Description | なし | アラートに関する省略可能な説明です。 |
-| Severity | はい | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **Critical**<br>**Warning**<br>**Informational** |
+| type | [はい] | アクションの種類。  これは、アラート アクションの**アラート**です。 |
+| Name | [はい] | アラートの表示名。  これは、コンソールに表示されるアラート ルールの名前です。 |
+| [説明] | いいえ  | アラートに関する省略可能な説明です。 |
+| Severity | [はい] | アラート レコードの重大度であり、次のいずれかの値です。<br><br> **Critical**<br>**Warning**<br>**Informational** |
 
 
 ##### <a name="threshold"></a>しきい値
 このセクションは必須です。  アラートのしきい値のプロパティを定義します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
-| 演算子 | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| 値 | はい | 結果を比較する値です。 |
+| 演算子 | [はい] | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| 値 | [はい] | 結果を比較する値です。 |
 
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
@@ -210,37 +207,37 @@ Resource Manager テンプレートで定義された Log Analytics リソース
 > [!NOTE]
 > メトリック測定アラートは現在パブリック プレビュー中です。 
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
-| TriggerCondition | はい | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
-| 演算子 | はい | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
-| 値 | はい | アラートをトリガーするために必要な、条件が満たされた回数です。 |
+| TriggerCondition | [はい] | しきい値が、違反の合計数に対するものか、または連続する違反の数に対するものかを、次の値で指定します。<br><br>**Total<br>Consecutive** |
+| 演算子 | [はい] | 比較のための演算子であり、次のいずれかの値です。<br><br>**gt = より大きい<br>lt = より小さい** |
+| 値 | [はい] | アラートをトリガーするために必要な、条件が満たされた回数です。 |
 
 ##### <a name="throttling"></a>調整
 このセクションは省略可能です。  同じルールからのアラートを、アラート作成後の一定期間にわたって抑制する場合に、このセクションを指定します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
 | DurationInMinutes | Throttling 要素が含まれる場合は Yes です。 | アラートが作成された後、それと同じアラート ルールからにアラートを抑制する分数です。 |
 
 ##### <a name="emailnotification"></a>EmailNotification
  このセクションは省略可能です。アラートで 1 人以上の受信者にメールを送信する場合に指定します。
 
-| 要素名 | 必須 | Description |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
-| Recipients | あり | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| [件名] | はい | メールの件名です。 |
-| 添付ファイル | なし | 添付ファイルは現在はサポートされていません。  この要素を指定する場合は、**None** にする必要があります。 |
+| Recipients | [はい] | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| 件名 | [はい] | メールの件名です。 |
+| 添付ファイル | いいえ  | 添付ファイルは現在はサポートされていません。  この要素を指定する場合は、**None** にする必要があります。 |
 
 
 ##### <a name="remediation"></a>修復
 このセクションは省略可能です。アラートに対して Runbook を開始する場合に指定します。 |
 
-| 要素名 | 必須 | 説明 |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
-| RunbookName | はい | 開始する Runbook の名前です。 |
-| WebhookUri | はい | Runbook に対する webhook の URI です。 |
-| Expiry | いいえ | 修復が期限切れになる日付と時刻です。 |
+| RunbookName | [はい] | 開始する Runbook の名前です。 |
+| WebhookUri | [はい] | Runbook に対する webhook の URI です。 |
+| Expiry | いいえ  | 修復が期限切れになる日付と時刻です。 |
 
 #### <a name="webhook-actions"></a>Webhook アクション
 
@@ -266,12 +263,12 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
 
 次の表では、Webhook アクション リソースのプロパティについて説明します。
 
-| 要素名 | 必須 | 説明 |
+| 要素名 | 必須 | [説明] |
 |:--|:--|:--|
-| type | はい | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
-| name | はい | アクションの表示名です。  コンソールには表示されません。 |
-| wehookUri | はい | webhook の URI です。 |
-| customPayload | いいえ | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
+| 型 | [はい] | アクションの種類。  これは、webhook アクションの **Webhook** です。 |
+| name | [はい] | アクションの表示名です。  コンソールには表示されません。 |
+| wehookUri | [はい] | webhook の URI です。 |
+| customPayload | いいえ  | Webhook に送信するカスタム ペイロード。 形式は、Webhook で想定される内容によって異なります。 |
 
 
 
@@ -520,7 +517,7 @@ Webhook アクションは、URL を呼び出し、送信されるペイロー�
     }
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 管理ソリューションに[ビューを追加する](operations-management-suite-solutions-resources-views.md)。
 * 管理ソリューションに [Automation Runbook とその他のリソースを追加する](operations-management-suite-solutions-resources-automation.md)。
 

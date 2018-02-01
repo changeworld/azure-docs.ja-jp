@@ -1,5 +1,5 @@
 ---
-title: "Azure AD Connect: Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新 | Microsoft Docs"
+title: "Azure AD Connect - AD FS ファームの SSL 証明書の更新 | Microsoft Docs"
 description: "このドキュメントでは、Azure AD Connect を使って AD FS ファームの SSL 証明書を更新する手順について詳しく説明します。"
 services: active-directory
 keywords: "Azure AD Connect, AD FS SSL の更新, AD FS 証明書の更新, 変更、AD FS 証明書, 新しい AD FS 証明書, AD FS 証明書, 更新、AD FS SSL 証明書, 更新、SSL 証明書、AD FS, 構成、AD FS SSL 証明書, AD FS, SSL, 証明書, AD FS サービス通信証明書, 更新、フェデレーション, 構成、フェデレーション, AAD Connect"
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: anandy
-ms.openlocfilehash: 2bd3d537761ec78ebcaab722e7928a88e90498d8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: b31a4d178d287eba275a0072936b4222a2c84346
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 
@@ -102,7 +103,7 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
     Azure AD Connect の一覧からサーバーを削除しても、AD FS の構成では削除されません。 Azure AD Connect は、AD FS (Windows Server 2016 以降) を参照して、ファームに関するあらゆる情報を取得します。 サーバーが AD FS の構成に存在する場合は、再び一覧に表示されます。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure AD Connect とフェデレーション](active-directory-aadconnectfed-whatis.md)
 - [Azure AD Connect による Active Directory フェデレーション サービスの管理とカスタマイズ](active-directory-aadconnect-federation-management.md)

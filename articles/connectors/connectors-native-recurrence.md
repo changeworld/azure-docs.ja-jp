@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 77567302c529e6e06e58534ffc9db44c9a85bdb7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 9384752c7f12074aae6ff165241e954eb2a4a01e
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="schedule-tasks-and-workflows-that-run-regularly-with-logic-apps"></a>定期的に実行されるタスクとワークフローをロジック アプリでスケジューリングする
 
-定期的に実行されるタスク、アクション、ワークロード、プロセスをスケジューリングするには、**[スケジュール - 繰り返し]** [トリガー](../logic-apps/logic-apps-what-are-logic-apps.md#logic-app-concepts)で開始するロジック アプリ ワークフローを作成します。 このトリガーを使用すると、タスクの実行の繰り返しを開始する日時と繰り返しのスケジュールを設定できます。たとえば、次のような例があります。
+定期的に実行されるタスク、アクション、ワークロード、プロセスをスケジューリングするには、**[スケジュール - 繰り返し]** [トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)で開始するロジック アプリ ワークフローを作成します。 このトリガーを使用すると、タスクの実行の繰り返しを開始する日時と繰り返しのスケジュールを設定できます。たとえば、次のような例があります。
 
 * 内部データを取得する: 毎日 [SQL ストアド プロシージャを実行](../connectors/connectors-create-api-sqlazure.md)する。
 * 外部データを取得する: NOAA から 15 分ごとに天気予報を取り込む。
@@ -46,11 +46,11 @@ ms.lasthandoff: 11/02/2017
 
 * Azure サブスクリプション。 Azure サブスクリプションがない場合は、[無料の Azure アカウントで作業を開始](https://azure.microsoft.com/free/)できます。 また、[従量課金のサブスクリプションにサインアップ](https://azure.microsoft.com/pricing/purchase-options/)することもできます。
 
-* [ロジック アプリの作成方法](../logic-apps/logic-apps-create-a-logic-app.md)に関する基本的な知識 
+* [ロジック アプリの作成方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する基本的な知識 
 
 ## <a name="add-a-recurrence-trigger-to-your-logic-app"></a>ロジック アプリへの繰り返しトリガーの追加
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。 空のロジック アプリを作成します。[空のロジック アプリを作成する方法](../logic-apps/logic-apps-create-a-logic-app.md)に関するページを参照してください。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 空のロジック アプリを作成します。[空のロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
 2. Logic Apps デザイナーが表示されたら、検索ボックスにフィルターとして「繰り返し」と入力します。 **[スケジュール - 繰り返し]** トリガーを選択します。 
 
@@ -96,15 +96,15 @@ ms.lasthandoff: 11/02/2017
 
 繰り返しトリガーに関して構成できるプロパティは次のとおりです。
 
-| 名前 | 必須 | プロパティ名 | 型 | Description | 
+| Name | 必須 | プロパティ名 | type | [説明] | 
 |----- | -------- | ------------- | ---- | ----------- | 
-| **頻度** | あり | frequency | String | 繰り返しの時間の単位。**秒**、**分**、**時**、**日**、**週**、**月**のいずれかになります。 | 
-| **間隔** | あり | interval | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 <p>既定の間隔は 1 です。 間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- 秒: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 | 
-| **タイム ゾーン** | いいえ | timeZone | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 | 
-| **開始時刻** | いいえ | startTime | String | 開始時刻を次の形式で指定します。 <p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日の 2:00 PM とする場合、「2017-09-18T14:00:00」と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除いた [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)で、[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従って入力する必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](#start-time)" | 
-| **設定曜日** | いいえ | weekDays | 文字列または文字列配列 | [週] を選択した場合、**月曜日**、**火曜日**、**水曜日**、**木曜日**、**金曜日**、**土曜日**、**日曜日**の中から、ワークフローを実行する曜日を 1 つまたは複数選択できます。 | 
-| **設定時刻 (時間)** | いいえ | hours | 整数または整数配列 | [日] または [週] を選択した場合、ワークフローを実行する時刻 (時) として 0 ～ 23 の整数を選択できます (複数選択可)。 <p>たとえば "10"、"12"、"14" を指定した場合、時の要素として 10 AM、12 PM、2 PM が設定されます。 | 
-| **設定時刻 (分)** | いいえ | minutes | 整数または整数配列 | [日] または [週] を選択した場合、ワークフローを実行する時刻 (分) として 0 ～ 59 の整数を選択できます (複数選択可)。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 | 
+| **頻度** | [はい] | frequency | String | 繰り返しの時間の単位。**秒**、**分**、**時**、**日**、**週**、**月**のいずれかになります。 | 
+| **間隔** | [はい] | interval | 整数 | ワークフローの実行間隔を、[頻度] に指定された単位に基づいて表す正の整数。 <p>既定の間隔は 1 です。 間隔の最小値と最大値は次のとおりです。 <p>- month: 1 ～ 16 か月 </br>- day: 1 ～ 500 日 </br>- hour: 1 ～ 12,000 時間 </br>- minute: 1 ～ 72,000 分 </br>- 秒: 1 ～ 9,999,999 秒<p>たとえば間隔が 6 で、頻度が "月" である場合は、繰り返しは 6 か月ごとになります。 | 
+| **タイム ゾーン** | いいえ  | timeZone | String | 開始時刻を指定したときに限り適用されます。このトリガーに [UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を指定することはできないためです。 適用するタイム ゾーンを選択してください。 | 
+| **開始時刻** | いいえ  | startTime | String | 開始時刻を次の形式で指定します。 <p>YYYY-MM-DDThh:mm:ss (タイム ゾーンを選択した場合) <p>または <p>YYYY-MM-DDThh:mm:ssZ (タイム ゾーンを選択しなかった場合) <p>たとえば、2017 年 9 月 18 日の 2:00 PM とする場合、「2017-09-18T14:00:00」と指定し、太平洋標準時などのタイム ゾーンを選択します。 または、タイム ゾーンなしで「2017-09-18T14:00:00Z」と指定します。 <p>**注:** この開始時刻は、[UTC オフセット](https://en.wikipedia.org/wiki/UTC_offset)を除いた [UTC 日時形式](https://en.wikipedia.org/wiki/Coordinated_Universal_Time)で、[日付と時刻に関する ISO 8601 規格](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)に従って入力する必要があります。 タイム ゾーンを選択しない場合は、末尾にスペースを入れず、アルファベットの "Z" を追加してください。 この "Z" は、同等の[航海時間](https://en.wikipedia.org/wiki/Nautical_time)を表します。 <p>単純なスケジュールでは、開始時刻と最初の実行時刻が一致するのに対して、複雑なスケジュールでは、トリガーが作動するのは開始時刻以降となります。 "[*開始日時の使用方法を具体的に教えてください*](#start-time)" | 
+| **設定曜日** | いいえ  | weekDays | 文字列または文字列配列 | [週] を選択した場合、**月曜日**、**火曜日**、**水曜日**、**木曜日**、**金曜日**、**土曜日**、**日曜日**の中から、ワークフローを実行する曜日を 1 つまたは複数選択できます。 | 
+| **設定時刻 (時間)** | いいえ  | hours | 整数または整数配列 | [日] または [週] を選択した場合、ワークフローを実行する時刻 (時) として 0 ～ 23 の整数を選択できます (複数選択可)。 <p>たとえば "10"、"12"、"14" を指定した場合、時の要素として 10 AM、12 PM、2 PM が設定されます。 | 
+| **設定時刻 (分)** | いいえ  | minutes | 整数または整数配列 | [日] または [週] を選択した場合、ワークフローを実行する時刻 (分) として 0 ～ 59 の整数を選択できます (複数選択可)。 <p>たとえば上の例で指定した時を使用し、分の要素に「30」を指定した場合、実行時刻は 10:30 AM、12:30 PM、2:30 PM となります。 | 
 ||||| 
 
 ## <a name="json-example"></a>JSON の例
@@ -200,7 +200,7 @@ ms.lasthandoff: 11/02/2017
 
 したがってこのシナリオでは、開始時刻としてどれだけ古い日付 (2017-09-**05** の 2:00 PM や 2017-09-**01** の 2:00 PM など) を指定したとしても、初回実行時刻は変わりません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ワークフローのアクションとトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)
 * [コネクタ](../connectors/apis-list.md)

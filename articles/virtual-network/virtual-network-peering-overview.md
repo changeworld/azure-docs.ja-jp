@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: df1d316654bdfd282965000966f79543e0d5124c
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: f43c95753e2cb190270a25fecd4c490e6fb0ed34
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/20/2017
 
 ## <a name="requirements-constraints"></a>要件と制約
 
-* 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン間での仮想ネットワーク ピアリングは現在プレビュー段階にあり、米国中西部、カナダ中部、および米国西部 2 で提供されています。 別のリージョンにある仮想ネットワークをピアリングする前に、最初にプレビュー版用に[サブスクリプションを登録する](virtual-network-create-peering.md#register)必要があります。 プレビュー版用の登録を完了していないと、異なるリージョンの仮想ネットワーク間でピアリングを作成する試みは失敗します。
+* 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン内の仮想ネットワーク ピアリングは、現在、米国中西部、カナダ中部、米国西部 2、韓国南部、英国南部、英国西部、カナダ東部、インド南部、インド中部、およびインド西部でプレビューになっています。 別のリージョンにある仮想ネットワークをピアリングする前に、最初にプレビュー版用に[サブスクリプションを登録する](virtual-network-create-peering.md#register)必要があります。 プレビュー版用の登録を完了していないと、異なるリージョンの仮想ネットワーク間でピアリングを作成する試みは失敗します。
     > [!WARNING]
     > リージョン間で作成された仮想ネットワーク ピアリングでは、一般公開リリースにおけるピアリングと同じレベルの可用性と信頼性が得られない可能性があります。 また、一部の機能が制限されている場合があります。一部の Azure リージョンではご利用いただけない場合もあります。 この機能の可用性とステータスに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)に関するページをご覧ください。
 
@@ -93,9 +93,9 @@ ms.lasthandoff: 12/20/2017
 
 |Virtual Network|デプロイメント モデル|役割|アクセス許可|
 |---|---|---|---|
-|myVirtualNetworkA|リソース マネージャー|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
-| |クラシック|[従来のネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
-|myVirtualNetworkB|リソース マネージャー|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
+|myVirtualNetworkA|リソース マネージャー|[Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+| |クラシック|[Classic Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
+|myVirtualNetworkB|リソース マネージャー|[Network Contributor](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||クラシック|[従来のネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 ## <a name="monitor"></a>監視

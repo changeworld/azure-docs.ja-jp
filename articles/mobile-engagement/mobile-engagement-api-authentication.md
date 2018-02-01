@@ -14,25 +14,25 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/05/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 66bcd738b86f846eae3499b289a6629323009a44
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 574e699a1cfca2caef0cf20872570bbb8650117b
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis"></a>Mobile Engagement REST API での認証
 
 ## <a name="overview"></a>概要
 
-このドキュメントでは、有効な Azure AD Oauth トークンを取得して Mobile Engagement REST API で認証を行う方法について説明します。
+このドキュメントでは、有効な Azure Active Directory (Azure AD) OAuth トークンを取得して Mobile Engagement REST API で認証を行う方法について説明します。
 
-有効な Azure サブスクリプションを持っており、いずれかの [開発者チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を使用して Mobile Engagement アプリを作成してあることが前提です。
+この手順では、有効な Azure サブスクリプションを持っており、いずれかの [開発者チュートリアル](mobile-engagement-windows-store-dotnet-get-started.md)を使用して Mobile Engagement アプリを作成済みであることを前提としています。
 
 ## <a name="authentication"></a>認証
 
 認証には、Microsoft Azure Active Directory ベースの OAuth トークンを使用します。 
 
-API の要求を認証するには、すべての要求に Authorization ヘッダーが追加されている必要があります。次のような形式です。
+API の要求を認証するには、すべての要求に Authorization ヘッダーが追加されている必要があります。 Authorization ヘッダーは次の形式です。
 
     Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGmJlNmV2ZWJPamg2TTNXR1E...
 
@@ -43,56 +43,69 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
 
 トークンを入手するにはいくつかの方法があります。 API はクラウド サービスから呼び出されるので、API キーを使用します。 Azure の用語では、API キーはサービス プリンシパル パスワードと呼ばれます。 次の手順では、手動で設定する方法について説明します。
 
-### <a name="one-time-setup-using-script"></a>1 回限りのセットアップ (スクリプトを使用)
+### <a name="one-time-setup-using-a-script"></a>1 回限りのセットアップ (スクリプトを使用)
 
-以下の説明に従って PowerShell スクリプトを使用してセットアップを実行するとセットアップにかかる時間は最短になりますが、許容できるほとんどの既定値を使用することになります。 あるいは、 [手動セットアップ](mobile-engagement-api-authentication-manual.md) の手順に従って Azure ポータルから直接行えば、さらにきめ細かく構成できます。
+PowerShell スクリプトを使用してセットアップを実行するには、次の手順を実行します。 PowerShell スクリプトではセットアップにかかる時間が最短になりますが、許容されるほとんどの既定値を使用します。 
 
-1. Azure PowerShell の最新バージョンを [こちら](http://aka.ms/webpi-azps)から入手します。 ダウンロードの手順の詳細については、この [リンク](/powershell/azure/overview)を参照してください。
-2. Azure PowerShell をインストールした後は、次のコマンドを使用して、 **Azure モジュール** がインストールされていることを確認します。
+あるいは、[手動セットアップ](mobile-engagement-api-authentication-manual.md)の手順に従って Azure Portal から直接行うこともできます。 Azure Portal から設定する場合は、さらに詳細に構成できます。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 使用可能なモジュールのリストで Azure PowerShell モジュールが使用可能であることを確認します。
+1. Azure PowerShell の最新バージョンを[ダウンロード](http://aka.ms/webpi-azps)して入手します。 ダウンロードの手順の詳細については、[この概要](/powershell/azure/overview)を参照してください。
+
+2. PowerShell をインストールした後は、次のコマンドを使用して、**Azure モジュール** がインストールされていることを確認します。
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 使用可能なモジュールのリストで Azure PowerShell モジュールが使用可能であることを確認します。
 
         Get-Module –ListAvailable
 
     ![利用可能な Azure モジュール][1]
 
-    b. 上のリストで Azure PowerShell モジュールが見つからない場合は、次を実行する必要があります。
+    b. 前のリストで Azure PowerShell モジュールが見つからない場合は、次を実行する必要があります。
 
         Import-Module Azure
-3. PowerShell で次のコマンドを実行し、Azure アカウントのユーザー名とパスワードを指定して、Azure Resource Manager にログインします。 
+3. 次のコマンドを実行して、PowerShell から Azure Resource Manager にサインインします。 Azure アカウントのユーザー名とパスワードを入力します。 
 
         Login-AzureRmAccount
-4. 複数のサブスクリプションがある場合は、次を実行する必要があります。
+4. 複数のサブスクリプションがある場合は、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 すべてのサブスクリプションのリストを取得し、使用するサブスクリプションの SubscriptionId をコピーします。 このサブスクリプションが、API を使用して対話する Mobile Engagement アプリのものと同じであることを確認します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 すべてのサブスクリプションの一覧を取得します。 次に、使用するサブスクリプションの **SubscriptionId** をコピーします。 このサブスクリプションに Mobile Engagement アプリが含まれていることを確認します。 このアプリを使用して、API を操作します。 
 
         Get-AzureRmSubscription
 
-    b. SubscriptionId を指定して次のコマンドを実行し、使用するサブスクリプションを構成します。
+    b. 次のコマンドを実行します。 **SubscriptionId** を指定して、使用するサブスクリプションを構成します。
 
         Select-AzureRmSubscription –SubscriptionId <subscriptionId>
-5. [New-AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) スクリプトのテキストをローカル コンピューターにコピーし、PowerShell コマンドレットとして (例: `APIAuth.ps1`) 保存して、`.\APIAuth.ps1` を実行します。
-6. **principalName**の入力を求められます。 Active Directory アプリケーションの作成に使用する適切な名前を指定します (例: APIAuth)。 
-7. スクリプトが完了すると、プログラムを使用して AD で認証を行うために必要な次の 4 つの値が表示されるので、それらをコピーしておきます。 
+5. [New-AzureRmServicePrincipalOwner.ps1](https://raw.githubusercontent.com/matt-gibbs/azbits/master/src/New-AzureRmServicePrincipalOwner.ps1) スクリプトのテキストをローカル コンピューターにコピーします。 次に、PowerShell コマンドレット (例: `APIAuth.ps1`) として保存して、実行します。
 
-    **TenantId**、**SubscriptionId**、**ApplicationId**、**Secret** です。
+         `.\APIAuth.ps1`.
 
-    `{TENANT_ID}` として TenantId を、`{CLIENT_ID}` として ApplicationId を、`{CLIENT_SECRET}` として Secret を使用します。
+6. **principalName** の入力を求められます。 Active Directory アプリケーションに使用する適切な名前を指定します (例: APIAuth)。 
+
+7. スクリプトの実行が完了した後、次の 4 つの値が表示されます。 これらの値を必ずをコピーしてください。Active Directory でのプログラムによる認証に必要となります。 
+
+   - **TenantId**
+   - **SubscriptionId**
+   - **ApplicationId**
+   - **シークレット**
+
+   `{TENANT_ID}` として TenantId を、`{CLIENT_ID}` として ApplicationId を、`{CLIENT_SECRET}` として Secret を使用します。
 
    > [!NOTE]
-   > 既定のセキュリティ ポリシーにより、PowerShell スクリプトの実行がブロックされる可能性があります。 その場合は、次のコマンドを使用してスクリプトの実行を許可する実行ポリシーを一時的に構成します。
+   > 既定のセキュリティ ポリシーにより、PowerShell スクリプトの実行がブロックされる可能性があります。 その場合は、次のコマンドを使用して、スクリプトの実行を許可する実行ポリシーを一時的に構成します。
    > 
    > Set-ExecutionPolicy RemoteSigned
-8. PS コマンドレットは次のようになります。
-    ![][3]
-9. Azure Portal で [Active Directory] に移動し、**[アプリの登録]** をクリックしてアプリが存在することを確認します。![][4]
+8. 一連の PowerShell コマンドレットがどのように表示されるかを次に示します。
+    ![PowerShell コマンドレット][3]
+9. Azure Portal で [Active Directory] に移動し、**[アプリの登録]** を選択し、アプリを検索して存在することを確認します。
+    ![アプリの検索][4]
 
 ### <a name="steps-to-get-a-valid-token"></a>有効なトークンを取得する手順
 
-1. 次のパラメーターで API を呼び出します。TENANT\_ID、CLIENT\_ID、CLIENT\_SECRET を実際の値に置き換えます。
+1. 次のパラメーターを指定して API を呼び出します。 **TENANT\_ID**、**CLIENT\_ID**、および **CLIENT\_SECRET** は必ず置き換えてください。
    
    * **要求 URL**: `https://login.microsoftonline.com/{TENANT_ID}/oauth2/token`
+
    * **HTTP Content-Type ヘッダー**: `application/x-www-form-urlencoded`
+   
    * **HTTP 要求の本文**: `grant_type=client\_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&resource=https%3A%2F%2Fmanagement.core.windows.net%2F`
      
     要求の例を次に示します。
@@ -103,7 +116,7 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
     grant_type=client_credentials&client_id={CLIENT_ID}&client_secret={CLIENT_SECRET}&reso
     urce=https%3A%2F%2Fmanagement.core.windows.net%2F
     ```
-    次は応答の例です。
+    応答の例を次に示します。
     ```
     HTTP/1.1 200 OK
     Content-Type: application/json; charset=utf-8
@@ -122,18 +135,19 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
    
         Authorization: Bearer {ACCESS_TOKEN}
    
-    401 ステータス コードが返される場合は、応答本文を確認します。トークンの有効期限が切れている可能性があります。 その場合は、新しいトークンを取得します。
+    要求が 401 ステータス コードを返す場合は、応答本文を確認してください。 トークンの期限が切れていることを示している可能性があります。 その場合は、新しいトークンを取得します。
 
-## <a name="using-the-apis"></a>API の使用
+## <a name="use-the-apis"></a>API の使用
 有効なトークンが手に入ったので、API 呼び出しを行う準備ができました。
 
-1. 各 API 要求では、前のセクションで取得した有効な期限が切れていないトークンを渡す必要があります。
-2. アプリケーションを示す URI にいくつかのパラメーターを組み込む必要があります。 要求 URI は次のようになります。
+1. 各 API 要求では、期限が切れていない有効なトークンを渡す必要があります。 期限が切れていないトークンは、前のセクションで取得しました。
+
+2. アプリケーションを示す要求 URI にいくつかのパラメーターを組み込みます。 要求 URI は次のコードのようになります。
    
         https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/
         providers/Microsoft.MobileEngagement/appcollections/{app-collection}/apps/{app-resource-name}/
    
-    パラメーターを取得するには、アプリケーション名をクリックして [ダッシュボード] をクリックすると、次のようなページに 3 つのパラメーターがすべて表示されます。
+    パラメーターを取得するには、アプリケーション名を選択します。 次に、**[ダッシュボード]** を選択します。 次のようなページに 3 つのパラメーターがすべて表示されます。
    
    * **1** `{subscription-id}`
    * **2** `{app-collection}`
@@ -141,10 +155,9 @@ API の要求を認証するには、すべての要求に Authorization ヘッ�
    * **4** リソース グループ名は、新しく作成したのでない限り **MobileEngagement** です。 
 
 > [!NOTE]
-> <br/>
+> API ルート アドレスは以前の API 用であるため、無視してください。
 > 
-> 1. API ルート アドレスは以前の API 用であるため、無視してください。<br/>
-> 2. Azure Portal を使用してアプリを作成した場合は、アプリケーション名自体とは異なるアプリケーション リソース名を使用する必要があります。 Azure Portal でアプリを作成した場合は、アプリ名自体を使用する必要があります (アプリケーション リソース名と、新しいポータルで作成したアプリのアプリ名に違いはありません)。  
+> Azure Portal を使用してアプリを作成した場合は、アプリ名自体とは異なるアプリケーション リソース名を使用する必要があります。 Azure Portal でアプリを作成した場合は、アプリ名を使用する必要があります。 (アプリケーション リソース名と、新しいポータルで作成したアプリのアプリ名に違いはありません)。
 > 
 > 
 

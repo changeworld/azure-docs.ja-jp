@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/14/2017
 ms.author: saurinsh
-ms.openlocfilehash: eca019fa5e7866ed6281e8cfee105ba1d99249bc
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c5e6381e7abb18c01031e4168c64cfe9aafec7ae
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>HDInsight で Azure のドメイン参加済み Hadoop クラスターを計画する
 
@@ -47,16 +47,13 @@ HDInsight を Active Directory と統合すると、HDInsight クラスター �
 
 ![ドメイン参加済み HDInsight クラスターの OU](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png)が必要です。
 
-### <a name="three-ways-of-bringing-your-own-active-directory-domain-controllers"></a>独自の Active Directory ドメイン コントローラーを導入する 3 とおりの方法
+### <a name="two-ways-of-bringing-your-own-active-directory-domain-controllers"></a>独自の Active Directory ドメイン コントローラーを導入する 2 通りの方法
 
-Active Directory ドメイン コントローラーを独自に導入してドメイン参加済み HDInsight クラスターを作成する方法は 3 とおりあります。 
+Active Directory ドメイン コントローラーを独自に導入してドメイン参加済み HDInsight クラスターを作成する方法は 2 通りあります。 
 
 - **Azure Active Directory Domain Services**: このサービスでは、Windows Server Active Directory と完全に互換性のある管理対象の Active Directory ドメインが提供されます。 Microsoft は、AD ドメインの管理、修正プログラムの適用、および監視を行います。 ドメイン コントローラーの管理について心配することなく、クラスターをデプロイすることができます。 ユーザー、グループおよびパスワードは、ユーザーが会社の資格情報を使ってクラスターにサインインできるように、Azure Active Directory から同期されます。 詳細については、「[Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する](./apache-domain-joined-configure-using-azure-adds.md)」を参照してください。
 
 - **Azure IaaS VM の Active Directory:** Azure IaaS VM で独自の Windows Server Active Directory ドメインをデプロイして管理する方法です。 詳細については、[ドメイン参加済みサンドボックス環境の構成](./apache-domain-joined-configure.md)に関するページを参照してください。
-
-- **オンプレミス Active Directory**: オンプレミスの Active Directory ドメイン コントローラーに HDInsight を統合する方法です。
-
 
 ## <a name="next-steps"></a>次の手順
 * ドメイン参加済み HDInsight クラスターを構成するには、[ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure.md)に関する記事をご覧ください。

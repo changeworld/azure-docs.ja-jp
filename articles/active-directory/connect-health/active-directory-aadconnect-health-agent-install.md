@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: ad61870b49f7a8753e4dbd2e34847daf14b793a0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 85a12cbfdad4a1b8fbc7c3e3ea15b91c5267d7c8
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 このドキュメントでは、Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。 エージェントは [こちら](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent)からダウンロードできます。
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="requirements"></a>必要条件
 次の表に、Azure AD Connect Health を使用するための要件の一覧を示します。
 
-| 要件 | Description |
+| 要件 | [説明] |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health は Azure AD Premium の機能です。使用するためには Azure AD Premium が必要となります。 </br></br>詳細については、「[Azure AD Premium の概要](../active-directory-get-started-premium.md)」を参照してください。 </br>30 日間無料試用版をすぐにご利用の場合は、[こちら](https://azure.microsoft.com/trial/get-started-active-directory/)のページにアクセスしてください。 |
 | Azure AD Connect Health の使用を開始するには、Azure AD のグローバル管理者であること |既定では、Azure AD Connect Health の使用を開始してポータルにアクセスし、操作を実行するために Health エージェントのインストールと構成を行うことができるのは、グローバル管理者のみです。 詳細については、[Azure AD ディレクトリの管理](../active-directory-administer.md)に関するページを参照してください。 <br><br> ロールベースのアクセス制御を使用して、Azure AD Connect Health へのアクセスを組織の他のユーザーに許可できます。 詳細については、[Azure AD Connect Health のロールベースのアクセス制御](active-directory-aadconnect-health-operations.md#manage-access-with-role-based-access-control)に関するセクションを参照してください。 </br></br>**重要:** エージェントのインストール時に使用するアカウントは、職場または学校アカウントである必要があります。 Microsoft アカウントを使用することはできません。 詳細については、「[Azure への組織としてのサインアップ](../sign-up-organization.md)」を参照してください。 |
@@ -103,32 +103,38 @@ Windows Server 2008 R2 サーバーでの手順:
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS 2.0 サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
 4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
-5. **ローカル セキュリティ ポリシー**を閉じて、**AD FS 管理**スナップインを開きます。 AD FS 管理スナップインを開くには、**[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[AD FS 2.0 管理]** をクリックします。
-6. **操作**ウィンドウで、**[フェデレーション サービス プロパティの編集]** をクリックします。
-7. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
-8. **[成功の監査]** チェック ボックスと **[失敗の監査]** チェック ボックスをオンにします。
-9. **[OK]**をクリックします。
+5. **[ローカル セキュリティ ポリシー]** を閉じます。
+<br>   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- </br>
+6. **AD FS 管理**スナップインを開きます。 AD FS 管理スナップインを開くには、**[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[AD FS 2.0 管理]** をクリックします。
+7. **操作**ウィンドウで、**[フェデレーション サービス プロパティの編集]** をクリックします。
+8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
+9. **[成功の監査]** チェック ボックスと **[失敗の監査]** チェック ボックスをオンにします。
+10. Click **OK**.
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2012-r2"></a>Windows Server 2012 R2 で AD FS の監査を有効にするには
 1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
 4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。```auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable```
-5. **[ローカル セキュリティ ポリシー]** を閉じて、**AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS 管理] を選択します)。
-6. 操作ウィンドウで、 **[フェデレーション サービス プロパティの編集]**をクリックします。
-7. [フェデレーション サービス プロパティ] ダイアログ ボックスの **[イベント]** タブをクリックします。
-8. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、**[OK]** をクリックします。
+5. **[ローカル セキュリティ ポリシー]** を閉じます。
+<br>   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- </br>
+6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
+7. **操作**ウィンドウで、**[フェデレーション サービス プロパティの編集]** をクリックします。
+8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
+9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、**[OK]** をクリックします。
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2016"></a>Windows Server 2016 で AD FS の監査を有効にするには
 1. スタート画面の **[サーバー マネージャー]** またはデスクトップのタスク バーにある [サーバー マネージャー] を開いて **[ローカル セキュリティ ポリシー]** を開き、**[ツール]、[ローカル セキュリティ ポリシー]** の順にクリックします。
 2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックして AD FS サービス アカウントをリストに追加し、**[OK]** をクリックします。
 4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable.</code>
-5. **[ローカル セキュリティ ポリシー]** を閉じて、**AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS 管理] を選択します)。
-6. 操作ウィンドウで、 **[フェデレーション サービス プロパティの編集]**をクリックします。
-7. [フェデレーション サービス プロパティ] ダイアログ ボックスの **[イベント]** タブをクリックします。
-8. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、**[OK]** をクリックします。 これは既定で有効になっています。
-9. PowerShell ウィンドウを開き、次のコマンドを実行します。```Set-AdfsProperties -AuditLevel Verbose```
+5. **[ローカル セキュリティ ポリシー]** を閉じます。
+<br>   -- **次の手順は、プライマリ AD FS サーバーにのみ必要です。** -- </br>
+6. **AD FS 管理**スナップインを開きます (サーバー マネージャーの [ツール] をクリックし、[AD FS の管理] を選択します)。
+7. **操作**ウィンドウで、**[フェデレーション サービス プロパティの編集]** をクリックします。
+8. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
+9. **[成功の監査] チェック ボックスと [失敗の監査] チェック ボックス**をオンにし、**[OK]** をクリックします。 これは既定で有効になっています。
+10. PowerShell ウィンドウを開き、次のコマンドを実行します。```Set-AdfsProperties -AuditLevel Verbose```
 
 既定では "basic" 監査レベルが有効になっていることに注意してください。 詳細については、[Windows Server 2016 での AD FS 監査の強化](https://technet.microsoft.com/en-us/windows-server-docs/identity/ad-fs/operations/auditing-enhancements-to-ad-fs-in-windows-server-2016)に関する記事をご覧ください。
 
@@ -211,7 +217,7 @@ Azure AD Connect が正常にインストールされた後で、Azure AD Connec
 ![Verify Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnect-health-adds-agent-install5.png)
 
 
-### <a name="agent-registration-using-powershell"></a>PowerShell を使用したエージェントの登録
+## <a name="agent-registration-using-powershell"></a>PowerShell を使用したエージェントの登録
 適切なエージェントの setup.exe をインストールしたら、ロールに応じて以下の PowerShell コマンドを使用して、エージェントの登録手順を実行できます。 PowerShell ウィンドウを開き、適切なコマンドを実行します。
 
 ```

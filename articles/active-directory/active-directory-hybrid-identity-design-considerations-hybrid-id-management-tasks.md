@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory ハイブリッド ID の設計上の考慮事項 - ハイブリッド ID 管理タスクの決定 | Microsoft Docs"
+title: "ハイブリッド ID 設計 - 管理タスク - Azure | Microsoft Docs"
 description: "条件を利用してアクセスを制御する Azure Active Directory は、ユーザーの認証時、アプリケーションにアクセスを与える前に、選択された特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。"
 documentationcenter: 
 services: active-directory
@@ -14,11 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 3257b5b9c714103773dfe646093cb632f500d459
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: ed683f1b96172b71cc3dfae2511607e50071739f
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>ハイブリッド ID ライフサイクルの計画を立てる
 ID はエンタープライズ モビリティとアプリケーション アクセスの戦略基盤の 1 つです。 モバイル デバイスにサインオンする場合でも、SaaS アプリにサインオンする場合でも、ID があらゆるアクセスを得るための鍵となります。 ID 管理ソリューションとは、概して、ID リポジトリ間の統一と同期であり、その中にリソースのプロビジョニングというプロセスの自動化と集中化が含まれます。 ID ソリューションはオンプレミスとクラウドにわたり ID を一元化するものでなければならず、また、何らかの形式の ID フェデレーションを利用し、認証を一元化し、外部のユーザーや企業と安全に共有し、共同作業するものです。 リソースは、オペレーティング システムやアプリケーションから組織内のユーザーや関連組織まで多岐にわたります。 組織構造を変更し、プロビジョニングのポリシーと手続を調整できます。
@@ -61,7 +62,7 @@ ID マネージャーの目標の 1 つは、あらゆる ID プロバイダー�
 •    どのようなシングル サインオン機能が利用できますか。
 •    B2B と B2C の間の ID フェデレーションにはどのような選択肢がありますか。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ハイブリッド ID 管理の導入戦略の決定](active-directory-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md)
 
 ## <a name="see-also"></a>関連項目

@@ -1,6 +1,6 @@
 ---
-title: "Azure のインターネットに接続するロード バランサーの作成 - PowerShell | Microsoft Docs"
-description: "Resource Manager で PowerShell を使用してインターネットに接続するロード バランサーを作成する方法について説明します"
+title: "パブリック ロード バランサーの作成 - PowerShell | Microsoft Docs"
+description: "PowerShell を使用して、Resource Manager でパブリック ロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d11ad8ff7f3d3357d1af276a9643b7a74e6c3f6d
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 15e1c868a72a61d9721b96032d304fdec6d6e213
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="get-started"></a>Resource Manager で PowerShell を使用したインターネットに接続するロード バランサーの作成
+# <a name="get-started"></a>PowerShell を使用した Resource Manager でのパブリック ロード バランサーの作成
 
 > [!div class="op_single_selector"]
 > * [ポータル](../load-balancer/load-balancer-get-started-internet-portal.md)
@@ -36,9 +36,9 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="deploying-the-solution-by-using-azure-powershell"></a>Azure PowerShell を使用したソリューションのデプロイ
 
-以下の手順では、PowerShell で Azure Resource Manager を使用して、インターネットに接続するロード バランサーを作成する方法について説明します。 Azure Resource Manager では、それぞれのリソースは個別に作成されて構成された後、ロード バランサーを作成するためにまとめられます。
+以下の手順では、PowerShell で Azure Resource Manager を使用して、パブリック ロード バランサーを作成する方法について説明します。 Azure Resource Manager では、それぞれのリソースは個別に作成されて構成された後、ロード バランサーを作成するためにまとめられます。
 
-ロード バランサーをデプロイするには、次のオブジェクトを作成して構成する必要があります:
+ロード バランサーをデプロイするには、次のオブジェクトを作成して構成する必要があります。
 
 * フロント エンド IP 構成: 受信ネットワーク トラフィックのパブリック IP (PIP) アドレスが含まれます。
 * バック エンド アドレス プール: ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
@@ -306,7 +306,7 @@ Remove-AzureRmLoadBalancer -Name NRP-LB -ResourceGroupName NRP-RG
 > [!NOTE]
 > オプションのスイッチ **-Force** を使用することで、削除のためのプロンプトを回避できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 

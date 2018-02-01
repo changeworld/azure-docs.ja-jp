@@ -14,17 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: juluk
-ms.openlocfilehash: 78b539136971aa282e5447d7882ecb02f73f346b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 3ceddb94336fc2703e6f916f05ab1ec3676cb50d
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="embed-azure-cloud-shell"></a>Azure Cloud Shell の埋め込み
 
 Cloud Shell を埋め込むことで、開発者やコンテンツ作成者は専用の URL ([shell.azure.com](https://shell.azure.com)) から直接 Cloud Shell を開くことができます。これにより、Cloud Shell の認証、ツール、および最新の Azure CLI/Azure PowerShell ツールを、フル機能で即座にユーザーに提供することができます。
 
+標準サイズのボタン
+
 [![](https://shell.azure.com/images/launchcloudshell.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
+
+大きいサイズのボタン
+
+[![](https://shell.azure.com/images/launchcloudshell@2x.png "Azure Cloud Shell を起動する")](https://shell.azure.com)
 
 ## <a name="how-to"></a>操作方法
 

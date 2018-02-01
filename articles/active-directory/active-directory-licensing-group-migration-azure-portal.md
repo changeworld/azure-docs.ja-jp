@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory で個別にライセンスを付与されたユーザーをグループに移行する方法 | Microsoft Docs"
+title: "Azure Active Directory でユーザー ライセンス ユーザーをグループベースのライセンスに移行する | Microsoft Docs"
 description: "Azure Active Directory を使用して個別のユーザー ライセンスをグループベースのライセンスに切り替える方法"
 services: active-directory
 keywords: "Azure AD のライセンス"
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/05/2017
+ms.date: 01/14/2018
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 08bcde92ecc3c834d4c6a36e73a720c170b8fcf2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 47d7bf5a41c140c6d6769b549163a3dadfa5ef1c
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Azure Active Directory でライセンスを付与するためにライセンスを持つユーザーをグループに追加する方法
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 12/11/2017
   ![直接付与されたライセンスの削除](media/active-directory-licensing-group-migration-azure-portal/direct-licenses-removed.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 グループによるライセンス管理の他のシナリオについては、以下をご覧ください。
 

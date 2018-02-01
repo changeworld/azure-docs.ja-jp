@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/11/2017
+ms.date: 01/16/2018
 ms.author: bwren
-ms.openlocfilehash: 533b5564a805e0b41f2b1a4ad92e12b133220952
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c103ee748446c4819b7925af04d90c22225a21a3
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="views-in-operations-management-suite-oms-management-solutions-preview"></a>Operations Management Suite (OMS) 管理ソリューションのビュー (プレビュー)
 > [!NOTE]
@@ -75,11 +75,10 @@ ms.lasthandoff: 10/11/2017
 
 次の変数をソリューション ファイルの variables 要素に追加して、値をソリューションの値に置き換えます。
 
-    "LogAnalyticsApiVersion": "2015-11-01-preview",
+    "LogAnalyticsApiVersion": "<api-version>",
     "ViewAuthor": "Your name."
     "ViewDescription": "Optional description of the view."
     "ViewName": "Provide a name for the view here."
-
 
 エクスポートした ビュー ファイルからビュー リソースがすべてコピーされる場合がありますが、ソリューションで動作するには次の変更を行う必要があることに注意してください。  
 
@@ -89,6 +88,18 @@ ms.lasthandoff: 10/11/2017
 * **DisplayName** プロパティをビューに追加する必要があります。  **Id**、**Name**、および **DisplayName** は、すべて一致する必要があります。
 * パラメーター名は、必要な一連のパラメーターに一致するように変更する必要があります。
 * 変数はソリューションで定義され、適切なプロパティで使用する必要があります。
+
+### <a name="log-analytics-api-version"></a>Log Analytics API バージョン
+Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。  このバージョンは、[レガシおよびアップグレードされたクエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)を使うクエリのあるビューでは異なります。  
+
+ 次の表では、レガシ ワークスペースとアップグレードされたワークスペースでのビューに対する Log Analytics API のバージョンを指定します。 
+
+| ワークスペースのバージョン | API バージョン | クエリ |
+|:---|:---|:---|
+| v1 (レガシ)   | 2015-11-01-preview | レガシ形式。<br> 例: Type=Event EventLevelName = Error  |
+| v2 (アップグレード) | 2015-11-01-preview | レガシ形式。  インストール時にアップグレードされた形式に変換されます。<br> 例: Type=Event EventLevelName = Error<br>変換後: Event &#124; where EventLevelName == "Error"  |
+| v2 (アップグレード) | 2017-03-03-preview | アップグレード形式。 <br>例: Event &#124; where EventLevelName == "Error"  |
+
 
 ## <a name="add-the-view-details"></a>ビューの詳細を追加する
 エクスポートしたビュー ファイル内のビュー リソースには、**properties** 要素に、ビューの詳細な構成を含む 2 つの要素 (**Dashboard** と **OverviewTile**) が含まれています。  これら 2 つの要素とその内容を、ソリューション ファイル内のビュー リソースの **properties** 要素にコピーします。
@@ -176,6 +187,6 @@ ms.lasthandoff: 10/11/2017
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [管理ソリューション](operations-management-suite-solutions-creating.md)の作成についての詳細を参照する。
 * [Automation Runbook を管理ソリューションに](operations-management-suite-solutions-resources-automation.md)含める。

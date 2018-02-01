@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: 913bd917ae7c2b44df097ead9c3e35841338905c
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: b454720dd5bd2df036a400c8bfc1c383de5af542
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の PowerShell のクイックスタート
 
@@ -263,6 +263,63 @@ mywebapp2       Running  MyResourceGroup2   {mywebapp2.azurewebsites.net...   We
 mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   South Central US
 
 ```
+
+## <a name="ssh"></a>SSH
+
+[Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) は、PowerShell CloudShell で使うことができます。
+SSH を使ってサーバーまたは VM に対する認証を行うには、CloudShell で公開/秘密キー ペアを生成して、リモート コンピューター上の `authorized_keys` (`/home/user/.ssh/authorized_keys` など) に公開キーを発行します。
+
+> [!NOTE]
+> `ssh-keygen` を使って SSH の公開/秘密キーを作成し、CloudShell でそれらを `$env:USERPROFILE\.ssh` に発行できます。
+
+### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>カスタム プロファイルを使って GiT と SSH の設定を保持する
+
+サインアウトするとセッションは保持されないので、`$env:USERPROFILE\.ssh` フォルダーを `CloudDrive` に保存するか、CloudShell の起動時にシンボリック リンクを作成します。
+CloudDrive へのシンボリック リンクを作成するには、profile.ps1 に次のコード スニペットを追加します。
+
+``` Powershell
+# Check if the ssh folder exists
+if( -not (Test-Path $home\CloudDrive\.ssh){
+    mkdir $home\CloudDrive\.ssh
+}
+
+# .ssh path relative to this script
+$script:sshFolderPath = Join-Path $PSScriptRoot .ssh
+
+# Create a symlink to .ssh in user's $home
+if(Test-Path $script:sshFolderPath){
+   if(-not (Test-Path (Join-Path $HOME .ssh ))){
+        New-Item -ItemType SymbolicLink -Path $HOME -Name .ssh -Value $script:sshFolderPath
+   }
+}
+
+```
+
+### <a name="using-ssh"></a>SSH の使用
+
+[こちら](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-powershell)の説明に従い、AzureRM コマンドレットを使って新しい VM 構成を作成します。
+`New-AzureRMVM` を呼び出してデプロイを始める前に、SSH 公開キーを VM の構成に追加します。
+新しく作成される VM には `~\.ssh\authorized_keys` にある公開キーが含まれ、それにより VM への資格情報不要の SSH セッションが有効になります。
+
+``` Powershell
+
+# Create VM config object - $vmConfig using instructions on linked page above
+
+# Generate SSH Keys in CloudShell
+ssh-keygen -t rsa -b 2048 -f $HOME\.ssh\id_rsa 
+
+# Ensure VM config is updated with SSH Keys
+$sshPublicKey = Get-Content "$env:USERPROFILE\.ssh\id_rsa.pub"
+Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azureuser/.ssh/authorized_keys"
+
+# Create a virtual machine
+New-AzureRmVM -ResourceGroupName <yourResourceGroup> -Location <vmLocation> -VM $vmConfig
+
+# ssh to the VM
+ssh azureuser@MyVM.Domain.Com
+
+```
+
 
 ## <a name="list-available-commands"></a>使用可能なコマンドを一覧表示する
 

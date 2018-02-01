@@ -1,6 +1,6 @@
 ---
-title: "Operations Management Suite (OMS) アラート管理ソリューション | Microsoft Docs"
-description: "管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  OMS 内で生成されたアラートを一元管理できるほか、接続されている System Center Operations Manager 管理グループからのアラートを Log Analytics にインポートすることができます。"
+title: "Azure Log Analytics の Alert Management ソリューション | Microsoft Docs"
+description: "管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  これは Log Analytics 内で生成されたアラートの統合に加えて、接続されている System Center Operations Manager 管理グループからのアラートを Log Analytics にインポートします。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/13/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4ec80fccdf4521792ff6be115ec66227f0fe1ed2
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c34916913915331020d9fc9789221f790b75a070
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/22/2018
 ---
-# <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) アラート管理ソリューション
+# <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
 ![Alert Management icon](media/log-analytics-solution-alert-management/icon.png)
 
@@ -34,10 +34,10 @@ Log Analytics リポジトリ内のアラートはすべて、アラート管理
 - System Center Operations Manager のアラートの場合は、[Log Analytics ワークスペースに Operations Manager 管理グループを接続](log-analytics-om-agents.md)します。  System Center Operations Manager で作成されたすべてのアラートが Log Analytics にインポートされます。  
 
 ## <a name="configuration"></a>構成
-[ソリューションの追加](log-analytics-add-solutions.md)に関するページの手順に従って、アラート管理ソリューションを OMS ワークスペースに追加します。  さらに手動で構成する必要はありません。
+「[Add solutions (ソリューションの追加)](log-analytics-add-solutions.md)」で説明されているプロセスを使用して、Log Analytics ワークスペースに Alert Management ソリューションを追加します。  さらに手動で構成する必要はありません。
 
 ## <a name="management-packs"></a>管理パック
-System Center Operations Manager 管理グループが OMS ワークスペースに接続されている場合、このソリューションを追加したときに次の管理パックが System Center Operations Manager にインストールされます。  これらの管理パックに伴う構成や保守は不要です。  
+System Center Operations Manager 管理グループが Log Analytics ワークスペースに接続されている場合は、このソリューションを追加したときに次の管理パックが System Center Operations Manager にインストールされます。  これらの管理パックに伴う構成や保守は不要です。  
 
 * Microsoft System Center Advisor Alert Management (Microsoft.IntelligencePacks.AlertManagement)
 
@@ -47,11 +47,11 @@ System Center Operations Manager 管理グループが OMS ワークスペース
 ### <a name="agents"></a>エージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続されているソース | サポート | 説明 |
+| 接続先ソース | サポート | [説明] |
 |:--- |:--- |:--- |
-| [Windows エージェント](log-analytics-windows-agent.md) | なし |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | いいえ |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
-| [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) |あり |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
+| [Windows エージェント](log-analytics-windows-agent.md) | いいえ  |直接の Windows エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Windows エージェントによって収集されたイベントやパフォーマンス データから生成されます。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | いいえ  |直接の Linux エージェントでは、アラートは生成されません。  Log Analytics のアラートは、Linux エージェントによって収集されたイベントやパフォーマンス データから生成されます。  Nagios と Zabbix のアラートは、Linux エージェントを必要とするこれらのサーバーから収集されます。 |
+| [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) |[はい] |Operations Manager エージェントで生成されたアラートは管理グループに配信された後、Log Analytics に転送されます。<br><br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 アラート データは管理グループから Log Analytics リポジトリに転送されます。 |
 
 
 ### <a name="collection-frequency"></a>収集の頻度
@@ -59,13 +59,13 @@ System Center Operations Manager 管理グループが OMS ワークスペース
 - アラート データは 3 分おきに Operations Manager 管理グループから Log Analytics に送信されます。  
 
 ## <a name="using-the-solution"></a>ソリューションの使用
-OMS ワークスペースに Alert Management ソリューションを追加すると、OMS ダッシュボードに **[Alert Management]** タイルが追加されます。  このタイルには、過去 24 時間に生成された現在アクティブなアラートの数とグラフが表示されます。  この時間範囲を変更することはできません。
+Log Analytics ワークスペースに Alert Management ソリューションを追加すると、ダッシュボードに **[Alert Management]** タイルが追加されます。  このタイルには、過去 24 時間に生成された現在アクティブなアラートの数とグラフが表示されます。  この時間範囲を変更することはできません。
 
 ![Alert Management tile](media/log-analytics-solution-alert-management/tile.png)
 
 **[Alert Management]** (アラート管理) タイルをクリックすると、**[Alert Management]** (アラート管理) ダッシュボードが表示されます。  ダッシュボードには、次の表に示した列が存在します。  それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。  ログ検索を実行してアラート全件を取得するには、列の一番下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
-| 分割 | 説明 |
+| 分割 | [説明] |
 |:--- |:--- |
 | 重大なアラート |重大度が "重大" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
 | 警告アラート |重大度が "警告" であるすべてのアラートがその名前別に表示されます。  アラート名をクリックするとログの検索が実行され、そのアラートに該当するすべてのレコードが返されます。 |
@@ -82,9 +82,9 @@ OMS ワークスペースに Alert Management ソリューションを追加す�
 
 アラートは System Center Operations Manager からインポートされ、タイプを **Alert**、SourceSystem を **OpsManager** として、それぞれ対応するレコードが作成されます。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 型 |*アラート:* |
+| type |*アラート:* |
 | SourceSystem |*OpsManager* |
 | AlertContext |アラートが生成されるきっかけとなったデータ項目の詳細 (XML 形式)。 |
 | AlertDescription |アラートの詳しい説明。 |
@@ -108,7 +108,7 @@ OMS ワークスペースに Alert Management ソリューションを追加す�
 ## <a name="sample-log-searches"></a>サンプル ログ検索
 以下の表は、このソリューションによって収集されたアラート レコードを探すログ検索の例です。 
 
-| クエリ | 説明 |
+| クエリ | [説明] |
 |:--- |:--- |
 | Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR |過去 24 時間以内に発生した重大なアラート |
 | Type=Alert AlertSeverity=warning TimeRaised>NOW-24HOUR |過去 24 時間以内に発生した警告アラート |
@@ -122,7 +122,7 @@ OMS ワークスペースに Alert Management ソリューションを追加す�
 >[!NOTE]
 > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、上記のクエリは次のように変更されます。
 >
->| クエリ | 説明 |
+>| クエリ | [説明] |
 |:---|:---|
 | Alert &#124; where SourceSystem == "OpsManager" and AlertSeverity == "error" and TimeRaised > ago(24h) |過去 24 時間以内に発生した重大なアラート |
 | Alert &#124; where AlertSeverity == "warning" and TimeRaised > ago(24h) |過去 24 時間以内に発生した警告アラート |
@@ -133,5 +133,5 @@ OMS ワークスペースに Alert Management ソリューションを追加す�
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; sort by RepeatCount desc |過去 1 日以内に発生したアラートを RepeatCount の値で並べ替え |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Log Analytics におけるアラートの生成について詳しくは、 [Log Analytics のアラート](log-analytics-alerts.md) に関するページを参照してください。

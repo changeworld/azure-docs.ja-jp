@@ -1,9 +1,9 @@
 ---
-title: "Azure RBAC のトラブルシューティング | Microsoft Docs"
+title: "ロールベースのアクセス制御 Azure RBAC のトラブルシューティング | Microsoft Docs"
 description: "ロール ベースの Access Control のリソースに関する問題や質問に関する支援を得ることができます。"
 services: azure-portal
 documentationcenter: na
-author: andredm7
+author: curtand
 manager: mtillman
 ms.assetid: df42cca2-02d6-4f3c-9d56-260e1eb7dc44
 ms.service: active-directory
@@ -11,22 +11,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: andredm
+ms.date: 01/14/2018
+ms.author: curtand
 ms.reviewer: rqureshi
-ms.openlocfilehash: b7155ed7613d46329229d8e572c75400041022ce
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.custom: seohack1
+ms.openlocfilehash: 8ca6c53b24c3e708d4631becabcedc523d436d6b
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/17/2018
 ---
-# <a name="role-based-access-control-troubleshooting"></a>ロールベースのアクセス制御のトラブルシューティング
+# <a name="troubleshooting-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のトラブルシューティング 
 
 この記事では、ロールで付与される特定のアクセス権に関する一般的な質問に答えて、Azure Portal でロールを使ったときに予想されることをユーザーが理解し、アクセスの問題をトラブルシューティングできるようにします。 次の 3 つのロールは、すべてのリソースの種類に対応しています。
 
-* 所有者  
-* 共同作成者  
-* 閲覧者  
+* Owner  
+* Contributor  
+* Reader  
 
 所有者と共同作成者には管理操作に対するフル アクセス許可がありますが、共同作成者は、他のユーザーやグループにアクセス権を付与できません。 閲覧者のロールはさらに興味深いので、以下で詳しく考慮します。 アクセス権を付与する方法の詳細については、「 [Azure のロールベースのアクセス制御](role-based-access-control-configure.md) 」をご覧ください。
 

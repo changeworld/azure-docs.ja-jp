@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/11/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: d679ca7a01a96bd398b26e6a545e33674ae33390
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: aa4608d37b06db88819e6175dcf8f94a7e13f04a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Log Analytics でログ検索を使用してデータを探す
 
@@ -30,7 +30,7 @@ Log Analytics の中心にあるのは、環境内のさまざまなソースか
 
 検索クエリは [検索] ページで作成できます。検索結果は、ファセット コントロールを使用してフィルタリングすることができます。 検索結果に対して変換やフィルター処理、レポート作成などを実行する高度なクエリを作成することもできます。
 
-ほとんどのソリューション ページに、一般的な検索クエリが表示されます。 OMS コンソールで、タイルをクリックするか他の項目にドリルインし、ログ検索を使用して項目の詳細を表示できます。
+ほとんどのソリューション ページに、一般的な検索クエリが表示されます。 OMS ポータルで、タイルをクリックするか他の項目にドリルインし、ログ検索を使用して項目の詳細を表示できます。
 
 このチュートリアルでは、ログ検索を使用するときの基礎について、そのすべてを例を通じて説明します。
 
@@ -39,7 +39,7 @@ Log Analytics の中心にあるのは、環境内のさまざまなソースか
 検索テクニックが十分身に付いたら、「 [Log Analytics log search reference (Log Analytics のログ検索リファレンス)](log-analytics-search-reference.md)」を参照してください。
 
 ## <a name="use-basic-filters"></a>基本的なフィルターを使用する
-最初に知るべきことは検索クエリの先頭部分、つまり "|" 縦棒パイプ文字の前は常に *フィルター* であることです。 それは TSQL での WHERE 句と考えることができ、OMS データ ストアから引き出すデータのサブセットは *何か* を決定します。 データ ストアでの検索は、ほとんどが抽出するデータの特性を指定することに関係するため、クエリが WHERE 句から始まるのは自然なことです。
+最初に知るべきことは検索クエリの先頭部分、つまり "|" 縦棒パイプ文字の前は常に *フィルター* であることです。 それは TSQL での WHERE 句と考えることができ、Log Analytics ワークスペースから引き出すデータのサブセットは "*何か*" を決定します。 データ ストアでの検索は、ほとんどが抽出するデータの特性を指定することに関係するため、クエリが WHERE 句から始まるのは自然なことです。
 
 使用できる最も基本的なフィルターは、'error'、'timeout'、コンピューター名などの *キーワード* です。 通常、この種の単純なクエリでは、同じ結果セットの中にさまざまな形のデータが返ります。 Log Analytics がシステム内に異なる *種類* のデータを持っているのはこのためです。
 
@@ -80,7 +80,7 @@ CounterName="% Processor Time" InstanceName="_Total"
 
 たとえば、`Type=Event EventLog="Windows PowerShell"` というクエリは `Type=Event AND EventLog="Windows PowerShell"` と同じです。 それは、Windows PowerShell イベント ログに記録され、収集されたすべてのイベントを返します。 同じファセットを繰り返し選択することで 1 つのフィルターを複数回追加しても、問題は見た目の問題だけです。検索バーが読み取りにくくなりますが、暗黙的な AND 演算子は常に存在するため、同じ結果が返ります。
 
-暗黙的な AND 演算子は NOT 演算子を明示的に使用することで簡単に逆転させることができます。 次に例を示します。
+暗黙的な AND 演算子は NOT 演算子を明示的に使用することで簡単に逆転させることができます。 例: 
 
 `Type:Event NOT(EventLog:"Windows PowerShell")` またはそれと同等である `Type=Event EventLog!="Windows PowerShell"` は、Windows PowerShell ログではない (NOT) 他のすべてのログからすべてのイベントを返します。
 
@@ -126,7 +126,7 @@ EventLog=Application OR EventLog=System AND Computer=SERVER1.contoso.com
 (EventLog=Application OR EventLog=System) AND Computer=SERVER1.contoso.com
 ```
 
-イベント ログのフィールドと同じように、OR を追加することで、特定のコンピューターのデータだけを取得できます。 次に例を示します。
+イベント ログのフィールドと同じように、OR を追加することで、特定のコンピューターのデータだけを取得できます。 例: 
 
 ```
 (EventLog=Application OR EventLog=System) AND (Computer=SERVER1.contoso.com OR Computer=SERVER2.contoso.com OR Computer=SERVER3.contoso.com)
@@ -259,7 +259,7 @@ Type=Event EventID=600 | Top 1
 
 上記の図では、EventID が 600 であるレコードが 358,000 個あります。 左側のフィールド、ファセット、およびフィルターには、クエリのパイプ文字の前の部分である "*フィルター部分によって*" 返された結果についての情報が常に表示されます。 **[結果]** パネルには最新の結果が 1 つだけ返されます。これは、コマンドによって結果が成形され、変換されたためです。
 
-### <a name="select"></a>Select
+### <a name="select"></a>elect
 Select コマンドは、PowerShell の Select-Object のように動作します。 それはフィルター処理された結果を返し、結果に元のプロパティがすべて含まれることはありません。 代わりに、指定したプロパティのみが選択されます。
 
 #### <a name="to-run-a-search-using-the-select-command"></a>Select コマンドを使用して検索を実行するには
@@ -322,7 +322,7 @@ Type=Event | Measure count() by EventID | Select EventID | Sort EventID asc
 ## <a name="use-the-max-and-min-functions-with-the-measure-command"></a>Measure コマンドで Max 関数と Min 関数を使用する
 **Measure Max()** と **Measure Min()** は、さまざまな状況で役に立ちます。 ただし、これらの関数は逆の動作をするため、ここでは Max() について説明します。Min() については自分で試すことができます。
 
-セキュリティ イベントのクエリを行う場合、イベントには値が異なる可能性がある **Level** プロパティがあります。 次に例を示します。
+セキュリティ イベントのクエリを行う場合、イベントには値が異なる可能性がある **Level** プロパティがあります。 例: 
 
 ```
 Type=SecurityEvent
@@ -355,7 +355,7 @@ Type=ConfigurationChange | Measure Max(TimeGenerated) by Computer
 ## <a name="use-the-avg-function-with-the-measure-command"></a>Measure コマンドで Avg 関数を使用する
 Measure で使用される Avg() 統計関数では、あるフィールドの平均値を計算でき、結果を同じフィールドまたは別のフィールド別にグループ化できます。 これは、パフォーマンス データなどのさまざまなケースで役立ちます。
 
-パフォーマンス データから始めます。 現在 OMS では、Windows マシンと Linux マシンの両方のパフォーマンス カウンターが収集されます。
+パフォーマンス データから始めます。 現在 Log Analytics では、Windows マシンと Linux マシンの両方のパフォーマンス カウンターが収集されます。
 
 *すべての* パフォーマンス データを検索するための最も基本的なクエリは次のとおりです。
 
@@ -414,7 +414,7 @@ Type=Perf InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Process
 Type=Perf InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Processor Time") OR (ObjectName="LogicalDisk" AND CounterName="% Free Space")) AND TimeGenerated>NOW-4HOURS AND (Computer="AzureMktg01" OR Computer="AzureMktg02" OR Computer="AzureMktg03")
 ```
 
-非常に具体的な選択を行っているため、 **Measure Avg()** コマンドは、コンピューター別ではなく、ファーム全体の平均を、CounterName でグループ化して返すことができます。 次に例を示します。
+非常に具体的な選択を行っているため、 **Measure Avg()** コマンドは、コンピューター別ではなく、ファーム全体の平均を、CounterName でグループ化して返すことができます。 例: 
 
 ```
 Type=Perf  InstanceName:_Total  ((ObjectName:Processor AND CounterName:"% Processor Time") OR (ObjectName="LogicalDisk" AND CounterName="% Free Space")) AND TimeGenerated>NOW-4HOURS AND (Computer="AzureMktg01" OR Computer="AzureMktg02" OR Computer="AzureMktg03") | Measure Avg(CounterValue) by CounterName
@@ -448,7 +448,7 @@ Type:Perf ObjectName=LogicalDisk CounterName="Current Disk Queue Length" Compute
 ## <a name="use-the-where-command"></a>Where コマンドを使用する
 Where コマンドはフィルターのように機能しますが、パイプライン内で適用して、クエリの先頭でフィルター処理される生データではなく、Measure コマンドによって生成された集計結果をさらにフィルター処理できます。
 
-次に例を示します。
+例: 
 
 ```
 Type=Perf  CounterName="% Processor Time"  InstanceName="_Total" | Measure Avg(CounterValue) as AVGCPU by Computer
@@ -592,7 +592,7 @@ Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ログの検索の詳細については、次のトピックを参照してください。
 
 * ログの検索を拡張するには、 [Log Analytics でカスタム フィールド](log-analytics-custom-fields.md) を使用します。

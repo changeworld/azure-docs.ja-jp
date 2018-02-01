@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/17/2018
 ms.author: jeedes
-ms.openlocfilehash: fc0d7223cdc15cd7f17a4983d2c2ac46c5d1669b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5f1ca40b5ca490644a3af2c9d727026c1a18a2eb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="tutorial-configuring-workplace-by-facebook-for-user-provisioning"></a>チュートリアル: ユーザー プロビジョニングのための Workplace by Facebook の構成
 
@@ -75,7 +75,7 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を W
 
     ![プロビジョニング](./media/active-directory-saas-workplacebyfacebook-provisioning-tutorial/provisioning.png)
 
-5. **[管理者資格情報]** セクションの下で、Workplace by Facebook 管理者のシークレット トークンとテナント URL を入力します。
+5. **[管理者資格情報]** セクションの下で、Workplace by Facebook 管理者のシークレット トークンを入力し、テナント URL の値を `https://www.facebook.com/scim/v1/`に設定します。
 
 6. Azure Portal で、**[テスト接続]** をクリックして Azure AD が Workplace by Facebook アプリに接続できることを確認します。 接続が失敗した場合、使用中の Workplace by Facebook アカウントに Team Admin アクセス許可があることを確認してください。
 
@@ -100,4 +100,3 @@ Azure AD は、割り当てられたユーザーのアカウントの詳細を W
 * [エンタープライズ アプリのユーザー アカウント プロビジョニングの管理](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 * [シングル サインオンの構成](active-directory-saas-workplacebyfacebook-tutorial.md)
-

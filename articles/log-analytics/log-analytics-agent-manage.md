@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/08/2017
+ms.date: 01/23/2018
 ms.author: magoedte
-ms.openlocfilehash: e917b64c32c2f99c9a8b0397e70a32b2dbb2e3cf
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: a17418142fb5f52a93d7a56cb2e6e6e97a250002
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
@@ -111,7 +111,7 @@ $healthServiceSettings.SetProxyInfo($ProxyDomainName, $ProxyUserName, $cred.GetN
 ```  
 
 ### <a name="linux-agent"></a>Linux エージェント
-Linux コンピューターがプロキシ サーバーまたは OMS ゲートウェイ経由で Log Analytics と通信する必要がある場合は、次の手順を実行します。  プロキシ構成の値には次の構文があります。`[protocol://][user:password@]proxyhost[:port]`
+Linux コンピューターがプロキシ サーバーまたは OMS ゲートウェイ経由で Log Analytics と通信する必要がある場合は、次の手順を実行します。  プロキシ構成の値には次の構文があります。`[protocol://][user:password@]proxyhost[:port]`  *proxyhost* プロパティは、プロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。
 
 1. 次のコマンドを実行してファイル `/etc/opt/microsoft/omsagent/proxy.conf` を編集し、値を固有の設定に変更します。
 
@@ -178,6 +178,6 @@ System Center Operations Manager 管理グループにレポートするよう�
 2. `httpsport=` で始まる行にポート 1270 が定義されていることを確認します  (例: `httpsport=1270`)。
 3. `sudo /opt/omi/bin/service_control restart` で OMI サーバーを再起動します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 エージェントのインストールまたは管理中に問題が発生した場合は、[Linux エージェントのトラブルシューティング](log-analytics-agent-linux-support.md)に関する記事を参照してください。  

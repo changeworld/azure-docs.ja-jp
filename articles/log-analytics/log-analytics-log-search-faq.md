@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: 1ec815a12cea98228dd4b7ac7361fe5e3554b5d3
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 6dfee26d7585c8ec295a1f0ea1bd0bc14a34cc5a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics の新しいログ検索についての FAQ と既知の問題
 
@@ -162,13 +162,12 @@ ms.lasthandoff: 11/04/2017
 一般公開の前は、ワークスペースをアップグレード後に、元に戻すことができました。  現在では新しい言語が一般公開となり、レガシ プラットフォームの廃止が開始されているため、この機能は削除されています。
 
 
-
 ## <a name="views"></a>ビュー
 
 ### <a name="question-how-do-i-create-a-new-view-with-view-designer"></a>質問: ビュー デザイナーで新しいビューを作成するにはどうすればいいですか。
-アップグレードの前に、メインのダッシュボードのタイルから、ビュー デザイナーで新しいビューを作成できます。  ワークスペースがアップグレードされると、このタイルは削除されます。  左側のメニュー ボタンで緑色の + ボタンをクリックすると、OMS ポータルのビュー デザイナーで新しいビューを作成できます。
+アップグレードの前に、OMS ポータル内のメイン ダッシュボードのタイルから、ビュー デザイナーで新しいビューを作成できます。  ワークスペースがアップグレードされると、このタイルは削除されます。  左側のメニュー ボタンで緑色の + ボタンをクリックすると、OMS ポータルのビュー デザイナーで新しいビューを作成できます。  ビュー デザイナー タイルをクリックして、引き続き Azure Portal で新しいビューを作成します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [新しい Log Analytics クエリ言語へのワークスペースのアップグレード](log-analytics-log-search-upgrade.md)について確認します。

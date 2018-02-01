@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/23/2017
+ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: 0cef360de3b7a9be01536b0ebe90769c89e7c432
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -36,7 +36,7 @@ Script Action は、Azure がクラスター ノードで実行して、構成�
 
 | この方法を使用してスクリプトを適用する... | クラスター作成時... | 実行中のクラスターで... |
 | --- |:---:|:---:|
-| Azure Portal |✓  |✓ |
+| Azure ポータル |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure CLI |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -118,7 +118,7 @@ Systemd と Upstart の違いを理解するには、「[Systemd for Upstart use
 > [!IMPORTANT]
 > 使用されるストレージ アカウントは、クラスターの既定のストレージ アカウントかその他のストレージ アカウントにおける読み取り専用のパブリック コンテナーのいずれかにする必要があります。
 
-たとえば、Microsoft から提供されるサンプルは、[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) ストレージ アカウントに格納されています。 これは、HDInsight チームによって管理されている、読み取り専用のパブリック コンテナーです。
+たとえば、Microsoft から提供されるサンプルは、[https://hdiconfigactions.blob.core.windows.net/](https://hdiconfigactions.blob.core.windows.net/) ストレージ アカウントに格納されています。 この場所は、HDInsight チームによって管理されている、読み取り専用のパブリック コンテナーです。
 
 ### <a name="bPS4"></a>プリコンパイル済みリソースの使用
 
@@ -156,13 +156,13 @@ HDInsight のログは、STDOUT と STDERR に書き込まれた出力を記述�
 > [!NOTE]
 > Ambari は、クラスターが正常に作成された場合にのみ使用できます。 クラスターの作成時にスクリプト アクションを使用して作成に失敗した場合は、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting) に関するトラブルシューティング セクションで、ログに記録された情報にアクセスする他の方法を確認してください。
 
-ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 For example:
+ほとんどのユーティリティとインストール パッケージは STDOUT および STDERR に情報を書き込みますが、ログ記録を追加したい場合もあります。 STDOUT にテキストを送信するには、`echo` を使用します。 例: 
 
 ```bash
 echo "Getting ready to install Foo"
 ```
 
-既定では、`echo` は STDOUT に文字列を送信します。 STDERR に転送するには、`echo` の前に `>&2` を追加します。 For example:
+既定では、`echo` は STDOUT に文字列を送信します。 STDERR に転送するには、`echo` の前に `>&2` を追加します。 例: 
 
 ```bash
 >&2 echo "An error occurred installing Foo"
@@ -230,7 +230,7 @@ wget -O /tmp/HDInsightUtilities-v01.sh -q https://hdiconfigactions.blob.core.win
 
 次のヘルパーがスクリプトで使用できます。
 
-| ヘルパーの使用 | 説明 |
+| ヘルパーの使用 | [説明] |
 | --- | --- |
 | `download_file SOURCEURL DESTFILEPATH [OVERWRITE]` |元の URI から指定されたファイルのパスに、ファイルをダウンロードします。 既定では、既存のファイルは上書きされません。 |
 | `untar_file TARFILE DESTDIR` |tar ファイルを (`-xf`を使用して) インストール先ディレクトリに抽出します。 |
@@ -314,7 +314,7 @@ fi
 
 ## <a name="deployScript"></a>スクリプト アクションのデプロイ用チェックリスト
 
-スクリプトのデプロイを準備する際に実行した手順を次に示します。
+スクリプトのデプロイを準備するときの手順を次に示します。
 
 * カスタム スクリプトが含まれているファイルを、デプロイ時にクラスター ノードからアクセス可能な場所に配置します。 たとえば、クラスターの既定のストレージ。 ファイルは、パブリックに読み取り可能なホスティング サービスにも格納できます。
 * スクリプトがべき等であることを確認します。 これにより、スクリプトを同じノードで複数回実行できるようになります。
@@ -325,9 +325,9 @@ fi
 
 次のメソッドを使用して HDInsight クラスターをカスタマイズする場合、スクリプト アクションを使用できます。
 
-* Azure Portal
+* Azure ポータル
 * Azure PowerShell
-* Azure リソース マネージャーのテンプレート
+* Azure Resource Manager のテンプレート
 * HDInsight .NET SDK
 
 各メソッドの使用に関する詳細については、「[スクリプト アクションの使用方法](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。

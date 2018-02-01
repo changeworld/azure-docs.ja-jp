@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 004e7b0299763be9d31b1df22df2a423dc7c52cf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -33,7 +33,6 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 * [API Management インスタンスはプログラムで管理できますか。](#can-i-manage-my-api-management-instance-programmatically)
 * [ユーザーを Administrators グループに追加するにはどうすればよいですか。](#how-do-i-add-a-user-to-the-administrators-group)
 * [追加するポリシーがポリシー エディターで利用できないのはなぜですか。](#why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor)
-* [API Management で API のバージョン管理を使用するにはどうすればよいですか。](#how-do-i-use-api-versioning-in-api-management)
 * [1 つの API で複数の環境をセットアップするにはどうすればよいですか。](#how-do-i-set-up-multiple-environments-in-a-single-api)
 * [API Management で SOAP を使用することはできますか。](#can-i-use-soap-with-api-management)
 * [API Management ゲートウェイ IP アドレスは一定ですか。それをファイアウォール ルールで使用できますか。](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)
@@ -59,15 +58,15 @@ Azure API Management についてよく寄せられる質問の回答、パタ�
 機能がプレビュー段階にあるとき、Microsoft ではその機能がユーザーにどのように役立っているかについてフィードバックを積極的に求めています。 プレビュー段階の機能は機能的に完成していますが、お客様からのフィードバックに応じて大きな変更を加える可能性があります。 そのため、プレビュー段階にある機能は運用環境では使用しないことをお勧めします。 プレビュー段階の機能に関するご意見やご感想がありましたら、「[Microsoft Azure API Management チームに質問するにはどうすればよいですか。](#how-can-i-ask-the-microsoft-azure-api-management-team-a-question)」に記載された連絡方法のいずれかを使用してお知らせください。
 
 ### <a name="how-can-i-secure-the-connection-between-the-api-management-gateway-and-my-back-end-services"></a>API Management ゲートウェイとバックエンド サービス間の接続をセキュリティで保護するにはどうすればよいですか。
-API Management ゲートウェイとバックエンド サービス間の接続は複数の方法で保護できます。 そのための方法は次のとおりです。
+API Management ゲートウェイとバックエンド サービス間の接続は複数の方法で保護できます。 次のようにすることができます。
 
 * HTTP 基本認証を使用します。 詳細については、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」を参照してください。
 * 「[Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法](api-management-howto-mutual-certificates.md)」の説明に従って、SSL 相互認証を使用します。
-* バックエンド サービスで IP ホワイトリストを使用します。 Standard レベルまたは Premium レベルの API Management インスタンスを使用している場合は、ゲートウェイの IP アドレスが変わることはありません。 この IP アドレスを許可するようにホワイトリストを設定できます。 API Management インスタンスの IP アドレスは、Azure Portal のダッシュボードで取得できます。
+* バックエンド サービスで IP ホワイトリストを使用します。 API Management のすべてのレベルで、ゲートウェイの IP アドレスは一定のままですが、いくつか[注意事項](#is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules)があります。 この IP アドレスを許可するようにホワイトリストを設定できます。 API Management インスタンスの IP アドレスは、Azure Portal のダッシュボードで取得できます。
 * API Management インスタンスを Azure Virtual Network に接続します。
 
 ### <a name="how-do-i-copy-my-api-management-service-instance-to-a-new-instance"></a>新しいインスタンスに API Management サービス インスタンスをコピーするにはどうすればよいですか。
-複数の方法で API Management インスタンスを新しいインスタンスにコピーできます。 そのための方法は次のとおりです。
+複数の方法で API Management インスタンスを新しいインスタンスにコピーできます。 次のようにすることができます。
 
 * API Management のバックアップと復元の機能を使用します。 詳細については、「[Azure API Management でサービスのバックアップと復元を使用してディザスター リカバリーを実装する方法](api-management-howto-disaster-recovery-backup-restore.md)」を参照してください。
 * [API Management REST API](https://msdn.microsoft.com/library/azure/dn776326.aspx) を使用して独自のバックアップと復元の機能を作成します。 REST API を使用すると、任意のサービス インスタンスからエンティティを保存して復元できます。
@@ -97,15 +96,8 @@ API Management ゲートウェイとバックエンド サービス間の接続�
 ### <a name="why-is-the-policy-that-i-want-to-add-unavailable-in-the-policy-editor"></a>追加するポリシーがポリシー エディターで利用できないのはなぜですか。
 追加するポリシーがポリシー エディターで薄く表示されたり網掛けになったりしている場合は、そのポリシー用の正しいスコープが選択されていることを確認してください。 各ポリシー ステートメントは、特定のスコープおよびポリシー セクションで使用するように設計されています。 ポリシーのポリシー セクションとスコープを確認するには、「[API Management policies (API Management ポリシー)](https://msdn.microsoft.com/library/azure/dn894080.aspx)」で、目的のポリシーの「Usage (使用方法)」セクションを参照してください。
 
-### <a name="how-do-i-use-api-versioning-in-api-management"></a>API Management で API のバージョン管理を使用するにはどうすればよいですか。
-API Management では API のバージョン管理を複数の方法で使用できます。
-
-* API Management では、バージョンが異なる複数の API を構成できます。 たとえば、MyAPIv1 と MyAPIv2 という 2 つの API を構成できます。 こうすれば、開発者は自分でバージョンを選ぶことができます。
-* バージョン セグメントを含まないサービス URL で API を構成することもできます (例: https://my.api )。 その後で、各操作の[書き換え URL](https://msdn.microsoft.com/library/azure/dn894083.aspx#RewriteURL) テンプレートでバージョン セグメントを構成できます。 
-* API のサービス URL 内に "既定" のバージョン セグメントを保持する場合は、選択した操作に対して、[バックエンド サービスの設定](https://msdn.microsoft.com/library/azure/dn894083.aspx#SetBackendService) ポリシーを使用してバックエンド要求パスを変更するポリシーを設定できます。
-
 ### <a name="how-do-i-set-up-multiple-environments-in-a-single-api"></a>1 つの API で複数の環境をセットアップするにはどうすればよいですか。
-テスト環境と運用環境など、複数の環境を 1 つの API でセットアップする方法は 2 つあります。 そのための方法は次のとおりです。
+テスト環境と運用環境など、複数の環境を 1 つの API でセットアップする方法は 2 つあります。 次のようにすることができます。
 
 * 同じテナントで複数の API をホストする。
 * 異なるテナントで同じ API をホストする。
@@ -114,7 +106,7 @@ API Management では API のバージョン管理を複数の方法で使用で
 [SOAP パススルー](http://blogs.msdn.microsoft.com/apimanagement/2016/10/13/soap-pass-through/)がサポートされるようになりました。 管理者が SOAP サービスの WSDL をインポートすると、Azure API Management によって SOAP フロント エンドが作成されます。 開発者ポータル ドキュメント、テスト コンソール、ポリシーと分析を、SOAP サービスで利用できます。
 
 ### <a name="is-the-api-management-gateway-ip-address-constant-can-i-use-it-in-firewall-rules"></a>API Management ゲートウェイ IP アドレスは一定ですか。 それをファイアウォール ルールで使用できますか。
-Standard レベルと Premium レベルでは、API Management テナントのパブリック IP アドレス (VIP) は、テナントの有効期間中、静的です。ただし、いくつかの例外があります。 IP アドレスは次の状況では変化します。
+API Management のすべてのレベルでは、API Management テナントのパブリック IP アドレス (VIP) は、テナントの有効期間中、静的です。ただし、いくつかの例外があります。 IP アドレスは次の状況では変化します。
 
 * サービスが削除された後、再作成された。
 * サービスのサブスクリプションが (未払いなどの理由により) [中断](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)または[警告あり](https://github.com/Azure/azure-resource-manager-rpc/blob/master/v1.0/subscription-lifecycle-api-reference.md#subscription-states)となり、その後復元された。

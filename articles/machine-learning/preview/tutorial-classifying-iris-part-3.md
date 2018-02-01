@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: b8e245f13af1dd011a92bbf0584b1689a1a0399f
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 97cd46819a4547ec743270871bcb6b4eef3eb365
+ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/20/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -134,37 +134,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
    現在のプロジェクト フォルダーの場所 (**c:\temp\myIris>**) でコマンド ライン プロンプトが開きます。
 
-2. Azure リソースプロバイダー **Microsoft.ContainerRegistry** がサブスクリプションに登録されていることを確認します。 手順 3. で環境を作成するには、このリソース プロバイダーを登録しておく必要があります。 登録済みであるかどうかは、次のコマンドを使って確認できます。
-   ``` 
-   az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table 
-   ``` 
-
-   次のような出力結果が表示されます。 
-   ```
-   Provider                                  Status 
-   --------                                  ------
-   Microsoft.Authorization                   Registered 
-   Microsoft.ContainerRegistry               Registered 
-   microsoft.insights                        Registered 
-   Microsoft.MachineLearningExperimentation  Registered 
-   ... 
-   ```
-   
-   **Microsoft.ContainerRegistry** が登録されていない場合は、次のコマンドを使用して登録できます。
-   ``` 
-   az provider register --namespace Microsoft.ContainerRegistry 
-   ```
-   登録には数分かかる場合があります。 登録の状態は、前出の **az provider list** コマンドまたは次のコマンドを使用して確認できます。
-   ``` 
-   az provider show -n Microsoft.ContainerRegistry 
-   ``` 
-
-   出力の 3 行目に **"registrationState": "Registering"** と表示されます。 出力に **"registrationState": "Registered"** と表示されるまで、しばらく待ってから **show** コマンドを繰り返します。
-
-   >[!NOTE] 
-   ACS クラスターにデプロイする場合は、まったく同じ方法を使って、**Microsoft.ContainerService** リソース プロバイダーも登録する必要があります。
-
-3. 環境を作成します。 この手順は、環境ごとに 1 回実行する必要があります。 たとえば開発環境で 1 回、運用環境で 1 回実行します。 この最初の環境には "_ローカル モード_" を使います  後から "_クラスター モード_" で環境を設定してみる場合は、次のコマンドで `-c` スイッチまたは `--cluster` スイッチを指定してください。
+2. 環境を作成します。 この手順は、環境ごとに 1 回実行する必要があります。 たとえば開発環境で 1 回、運用環境で 1 回実行します。 この最初の環境には "_ローカル モード_" を使います  後から "_クラスター モード_" で環境を設定してみる場合は、次のコマンドで `-c` スイッチまたは `--cluster` スイッチを指定してください。
 
    次の setup コマンドを実行するには、サブスクリプションの共同作成者のアクセス権が必要です。 このアクセス権がない場合、最低でも、デプロイ先のリソース グループに対する共同作成者のアクセス権が必要となります。 後者の場合、setup コマンドで `-g` フラグを使用し、リソース グループの名前を指定する必要があります。 
 
@@ -176,25 +146,25 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    
    クラスター名によって環境を識別できます。 場所には、Azure Portal で作成したモデル管理アカウントと同じ場所を指定する必要があります。
 
-4. モデル管理アカウントを作成します。 (これは 1 回限りの作業です)。  
+3. モデル管理アカウントを作成します。 (これは 1 回限りの作業です)。  
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
    ```
    
-5. モデル管理アカウントを設定します。  
+4. モデル管理アカウントを設定します。  
    ```azurecli
    az ml account modelmanagement set -n <youracctname> -g <yourresourcegroupname>
    ```
 
-6. 環境を設定します。
+5. 環境を設定します。
 
-   設定が完了したら、環境の運用化に必要な環境変数を次のコマンドで設定します。 環境名には、前の手順 4. で使用した名前を使用します。 リソース グループ名には、セットアップ プロセスが完了したときにコマンド ウィンドウに出力された名前を使用します。
+   設定が完了したら、環境の運用化に必要な環境変数を次のコマンドで設定します。 環境名には、前の手順 2. で使用した名前を使用します。 リソース グループ名には、セットアップ プロセスが完了したときにコマンド ウィンドウに出力された名前を使用します。
 
    ```azurecli
    az ml env set -n <deployment environment name> -g <existing resource group name>
    ```
 
-7. ローカル Web サービスのデプロイ用に運用可能にした環境が適切に構成されていることを確認するには、次のコマンドを入力します。
+6. ローカル Web サービスのデプロイ用に運用可能にした環境が適切に構成されていることを確認するには、次のコマンドを入力します。
 
    ```azurecli
    az ml env show

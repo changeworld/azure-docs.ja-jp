@@ -4,7 +4,7 @@ description: "Azure Search のセキュリティは、SOC 2 コンプライア�
 services: search
 documentationcenter: 
 author: HeidiSteen
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 
 ms.service: search
@@ -12,23 +12,19 @@ ms.devlang:
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/14/2017
+ms.date: 01/19/2018
 ms.author: heidist
-ms.openlocfilehash: 23616c70a5fd336b743f5acfad2601a6c3e23fc4
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: c3aa4883e33b1f3494f8502fe7f8b12f7d64a72f
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 01/23/2018
 ---
-# <a name="data-security-and-controlled-access-to-azure-search-operations"></a>Azure Search 操作でのデータ セキュリティとアクセス制御
+# <a name="security-and-controlled-access-in-azure-search"></a>Azure Search のセキュリティとアクセス制御
 
 Azure Search は [SOC 2 に準拠](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)しており、物理的なセキュリティ、伝送の暗号化、ストレージの暗号化、プラットフォーム全体のソフトウェア保護にまたがった包括的なセキュリティ アーキテクチャを備えています。 運用上、Azure Search は認証された要求のみを受け入れます。 必要に応じて、コンテンツに対してユーザーごとのアクセス制御を追加できます。 この記事では、各層のセキュリティについて触れますが、主に Azure Search でデータと操作がどのようにセキュリティ保護されるのかについて重点的に説明します。
 
 ![セキュリティ層のブロック図](media/search-security-overview/azsearch-security-diagram.png)
-
-Azure Search には Azure プラットフォームの保護とセーフガードが継承されている一方で、サービス自体で使用される基本的なメカニズムは、アクセスのレベルがキーの種類によって決まるキー ベースの認証です。 キーは、管理者キーまたは読み取り専用アクセスに使用されるクエリ キーです。
-
-サービスへのアクセスは、(完全または読み取り専用の) キーによって伝えられるさまざまなアクセス許可のほか、操作のスコープを定義するコンテキストに基づきます。 すべての要求は必須のキー、操作、オブジェクトで構成されます。 2 つのアクセス許可レベルとコンテキストを組み合わせれば、サービス操作に対して全範囲のセキュリティを実現できます。 
 
 ## <a name="physical-security"></a>物理的なセキュリティ
 
@@ -38,11 +34,17 @@ Azure Search には Azure プラットフォームの保護とセーフガード
 
 ## <a name="encrypted-transmission-and-storage"></a>伝送とストレージの暗号化
 
-Azure Search は HTTPS ポート 443 をリッスンします。 プラットフォーム全体で、Azure サービスへの接続が暗号化されます。 
+暗号化は、接続から、伝送、Azure Search に格納されているインデックス付きデータまで、インデックス作成のパイプライン全体に拡張されています。
 
-Azure Search では、インデックスや他のコンストラクトに使用されるバックエンド ストレージでこれらのプラットフォームの暗号化機能が利用されます。 Azure Search を提供するすべてのデータ センターにおいて、すべて (新規および既存) の検索サービスで完全な [AICPA SOC 2 コンプライアンス](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html)が利用可能です。 完全なレポートを確認するには、[Azure - Azure Government SOC 2 タイプ II レポート](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)をご覧ください。
+| セキュリティ レイヤー | [説明] |
+|----------------|-------------|
+| 転送中の暗号化 | Azure Search は HTTPS ポート 443 をリッスンします。 プラットフォーム全体で、Azure サービスへの接続が暗号化されます。 |
+| 保存時の暗号化 | 暗号化はインデックス作成処理に完全に含まれ、完了までの時間やインデックス サイズにはほぼ影響しません。 完全に暗号化されていないインデックス (2018 年 1 月より前に作成されたインデックス) の増分更新を含め、すべてのインデックス作成で自動的に行われます。<br><br>内部的には、暗号化は [Azure Storage Service Encryption](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) に基づいており、[256 ビットの AES 暗号化](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)を使用しています。|
+| [SOC 2 への準拠](https://www.aicpa.org/interestareas/frc/assuranceadvisoryservices/aicpasoc2report.html) | Azure Search を提供するすべてのデータ センターで、すべての検索サービスは AICPA SOC 2 に完全に準拠しています。 完全なレポートを確認するには、[Azure - Azure Government SOC 2 タイプ II レポート](https://servicetrust.microsoft.com/ViewPage/MSComplianceGuide?command=Download&downloadType=Document&downloadId=93292f19-f43e-4c4e-8615-c38ab953cf95&docTab=4ce99610-c9c0-11e7-8c2c-f908a777fa4d_SOC%20%2F%20SSAE%2016%20Reports)をご覧ください。 |
 
-暗号化は透過的であり (暗号化キーは内部で管理されます)、汎用的に適用されます。 特定の検索サービスまたはインデックスで無効にすることができないほか、キーを直接管理したり独自のキーを提供したりすることもできません。 
+暗号化は Azure Search の内部で行われ、Microsoft が内部的に管理する証明書と暗号化キーが使用され、汎用的に適用されます。 暗号化のオン/オフの切り替え、独自のキーの管理または代替、ポータル内またはプログラムによる暗号化設定の表示を行うことはできません。 
+
+保存時の暗号化は、2018 年 1 月 24 日に発表され、すべてのリージョンで、共有 (無料) サービスを含むすべてのサービス層に適用されています。 完全な暗号化を行うには、この日付より前に作成されたインデックスを削除し、再構築する必要があります。 そうしないと、1 月 24 日の後に追加された新しいデータのみが暗号化されます。
 
 ## <a name="azure-wide-logical-security"></a>Azure 全体の論理的なセキュリティ
 
@@ -53,15 +55,15 @@ Azure Search では、インデックスや他のコンストラクトに使用�
 
 ロールベースのアクセス制御 (RBAC) はすべての Azure サービスでサポートされており、すべてのサービスで一貫してアクセスのレベルを設定できます。 たとえば、機微なデータ (管理者キーなど) の表示は所有者ロールと共同作成者ロールに制限されるのに対し、サービスの状態はすべてのロールのメンバーが表示できます。 RBAC には所有者、共同作成者、閲覧者のロールがあります。 既定では、すべてのサービス管理者が、所有者ロールのメンバーです。
 
-## <a name="service-authentication"></a>サービス認証
+## <a name="service-access-and-authentication"></a>サービス アクセスと認証
 
-Azure Search には独自の認証方法があります。 認証は各要求に対して行われ、操作のスコープを決定するアクセス キーに基づきます。 有効なアクセス キーは、要求が信頼されたエンティティのものであることの証明と見なされます。 
+Azure Search は Azure プラットフォームのセキュリティ保護機能を継承しますが、独自のキーベースの認証も提供しています。 キーの種類 (管理者またはクエリ) によって、アクセスのレベルが決まります。 有効なキーの送信は、要求が信頼されたエンティティのものであることの証明と見なされます。 
 
-サービスごとの認証には、完全な権限とクエリのみの 2 つのレベルがあります。 キーの種類によって、有効なアクセスのレベルが決定されます。
+要求ごとに認証が必要です。この各要求は必須のキー、操作、およびオブジェクトで構成されています。 2 つのアクセス許可レベル (完全または読み取り専用) とコンテキストを組み合わせれば、サービス操作に対して全範囲のセキュリティを実現できます。 
 
 |キー|[説明]|制限|  
 |---------|-----------------|------------|  
-|[Admin]|サービスの管理のほか、**インデックス**、**インデクサー**、**データ ソース**の作成と削除など、すべての操作に対する完全な権限を付与します。<br /><br /> ポータルの 2 つの管理者 **API キー** ("*プライマリ キー*" および "*セカンダリ キー*" と呼ばれる) はサービスの作成時に生成され、要求に応じて個別に再生成できます。 キーが 2 つあることで、サービスへの継続的なアクセスに 1 つのキーを使用している間に、もう 1 つのキーをロールオーバーできます。<br /><br /> 管理者キーは、HTTP 要求ヘッダーでのみ指定されます。 管理者 **API キー**を URL に加えることはできません。|最大でサービスあたり 2 つ|  
+|[Admin]|サービスの管理のほか、インデックス、インデクサー、データ ソースの作成と削除など、すべての操作に対する完全な権限を付与します。<br /><br /> ポータルの 2 つの管理者 **API キー** ("*プライマリ キー*" および "*セカンダリ キー*" と呼ばれる) はサービスの作成時に生成され、要求に応じて個別に再生成できます。 キーが 2 つあることで、サービスへの継続的なアクセスに 1 つのキーを使用している間に、もう 1 つのキーをロールオーバーできます。<br /><br /> 管理者キーは、HTTP 要求ヘッダーでのみ指定されます。 管理者 API キーを URL に加えることはできません。|最大でサービスあたり 2 つ|  
 |クエリ|インデックスとドキュメントに対する読み取り専用アクセスを付与するものであり、通常は、検索要求を発行するクライアント アプリケーションに配布されます。<br /><br /> クエリ キーは要求に応じて作成されます。 これらはポータルで手動で作成できるほか、[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) を通じてプログラムで作成できます。<br /><br /> クエリ キーは、検索、推奨、または参照の操作に使用するために HTTP 要求ヘッダーで指定できます。 または、クエリ キーは URL 上のパラメーターとして渡すことができます。 クライアント アプリケーションが要求を作成する方法によっては、キーをクエリ パラメーターとして渡すほうが簡単な場合があります。<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01&api-key=A8DA81E03F809FE166ADDB183E9ED84D`|サービスあたり 50 個|  
 
  管理者キーとクエリ キーに見た目の違いはありません。 どちらのキーも、ランダムに生成された 32 個の英数字からなる文字列です。 アプリケーションで指定されているキーの種類がわからなくなった場合、[ポータルでキーの値を確認](https://portal.azure.com)したり、[REST API](https://docs.microsoft.com/rest/api/searchmanagement/) を使用して値とキーの種類を返したりできます。  

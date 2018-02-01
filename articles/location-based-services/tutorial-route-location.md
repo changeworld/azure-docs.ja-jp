@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f2be9ca98330866ac8b6fb12efd56efdc711eedf
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 7303347444952d9c09dc6c04eea5b962e18729b4
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="route-to-a-point-of-interest-using-azure-location-based-services"></a>Azure Location Based Services を使用して目的地までのルートを検索する
 
@@ -77,13 +77,13 @@ ms.lasthandoff: 12/14/2017
     ```
     CSS のリソースの場所および Azure Location Based Services ライブラリの JavaScript ファイルが HTML ヘッダーにどのように埋め込まれているのかに注意してください。 また、HTML ファイルの本体の *script* セグメントにも注意してください。このセグメントには、Azure Location Based Services の API にアクセスするためのインライン JavaScript コードが含まれます。
 
-3. 次の JavaScript コードを、HTML ファイルの *script* ブロックに追加します。 プレースホルダー *<insert-key>* は、ご自分の Location Based Services アカウントの主キーに置き換えます。
+3. 次の JavaScript コードを、HTML ファイルの *script* ブロックに追加します。 Location Based Services アカウントの主キーをスクリプトで使用します。
 
     ```JavaScript
     // Instantiate map to the div with id "map"
-    var subscriptionKey = "<insert-key>";
+    var LBSAccountKey = "<_your account key_>";
     var map = new atlas.Map("map", {
-        "subscription-key": subscriptionKey
+        "subscription-key": LBSAccountKey
     });
     ```
     **atlas.Map** は、ビジュアルと対話型 Web マップのためのコントロールを提供し、Azure マップ コントロール API のコンポーネントです。
@@ -179,21 +179,21 @@ ms.lasthandoff: 12/14/2017
     ```JavaScript
     var url = "https://atlas.microsoft.com/route/directions/json?";
     url += "&api-version=1.0";
-    url += "&subscription-key=" + subscriptionKey;
+    url += "&subscription-key=" + LBSAccountKey;
     url += "&query=" + startPoint.coordinates[1] + "," + startPoint.coordinates[0] + ":" +
         destinationPoint.coordinates[1] + "," + destinationPoint.coordinates[0];
 
     xhttp.open("GET", url, true);
     xhttp.send();
     ```
-    上の要求では必要なパラメーターが示されており、お使いのアカウントのサブスクリプション キーと、特定の順序になった起点と終点の座標です。 
+    上の要求には、必要なパラメーター、つまりアカウント キーと起点と終点の座標が特定の順序で示されています。 
 
 3. **MapRoute.html** ファイルをローカルに保存した後、任意の Web ブラウザーで開いて結果を確認します。 Location Based Services の API と正しく接続された場合、次のようなマップが表示されます。 
 
     ![Azure マップ コントロールと Route Service](./media/tutorial-route-location/lbs-map-route.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]

@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 11/06/2017
+ms.date: 01/17/2018
 ms.author: juluk
-ms.openlocfilehash: 65a5c40ce0a4d0cfdc0a325476bea6e8ccebe8c6
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 7e498582d78d2807070c943dfd838dd9efeb4ed2
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -56,7 +56,9 @@ Cloud Shell は対話型のユース ケースを想定しています。 その
 ### <a name="user-permissions"></a>ユーザーのアクセス許可
 
 権限は、sudo アクセスのない、通常のユーザーとして設定されます。 `$Home` ディレクトリ外のインストールはすべて失われます。
-`clouddrive` ディレクトリ内の `git clone` などの特定のコマンドには適切なアクセス許可がありませんが、`$Home` ディレクトリにはアクセス許可があります。
+
+### <a name="clouddrive-smb-limited-permissions"></a>Clouddrive SMB の制限されたアクセス許可
+`clouddrive` ディレクトリ内の特定のコマンド (`git clone` など) には、特定のファイルを読み書きするための適切なアクセス許可がありません。 この問題が発生する場合は、SMB の制限がない `$Home` ディレクトリからもう一度やり直してください。
 
 ### <a name="editing-bashrc"></a>.bashrc の編集
 
@@ -84,7 +86,7 @@ Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間�
 
 Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Login-AzureRMAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Cloud Shell のトラブルシューティング](troubleshooting.md) <br>
 [Bash のクイックスタート](quickstart.md) <br>

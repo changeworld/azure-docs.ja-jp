@@ -3,7 +3,7 @@
 
 実稼働ワークロードを実行している Azure VM のバックアップには、Azure Backup をご利用ください。 Azure Backup では、Windows VM と Linux VM のアプリケーション整合性バックアップをサポートしています。 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体を復元するか、特定のファイルだけを復元することができます。 
 
-Azure Backup を使って Azure VM をバックアップする実際の手順については、Windows 仮想マシンのバックアップに関するチュートリアル ([Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) 用または [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md) 用) で簡単に紹介しています。
+Azure VM のための Azure Backup の簡単で、実践的な紹介については、[Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) または [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md) 用の「Back up Azure virtual machines (Azure 仮想マシンのバックアップ)」チュートリアルを参照してください。
 
 Azure Backup のしくみの詳細については、「[Azure における VM バックアップ インフラストラクチャの計画を立てる](../articles/backup/backup-azure-vms-introduction.md)」を参照してください。
 
@@ -27,5 +27,5 @@ Azure Site Recovery を使えば、大きな自然災害や広範囲にわたる
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Windows 仮想マシンのバックアップに関するチュートリアル ([Linux](../articles/virtual-machines/linux/tutorial-backup-vms.md) 用または [Windows](../articles/virtual-machines/windows/tutorial-backup-vms.md) 用) に従って、Azure Backup を試してみてください。

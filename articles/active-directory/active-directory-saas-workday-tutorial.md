@@ -4,20 +4,21 @@ description: "Azure Active Directory と Workday の間でシングル サイン
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
+ms.reviewer: joflore
 ms.assetid: e9da692e-4a65-4231-8ab3-bc9a87b10bca
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 01/23/2018
 ms.author: jeedes
-ms.openlocfilehash: 5e4d46f9a3954698fbbe3c80fd8a95f4cd87465b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1dfe319e708e6a4e815413da1a7bf635f4d0a53d
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workday"></a>チュートリアル: Azure Active Directory と Workday の統合
 
@@ -25,9 +26,9 @@ ms.lasthandoff: 12/11/2017
 
 Workday と Azure AD の統合には、次の利点があります。
 
-- Workday にアクセスする Azure AD ユーザーを制御できます
-- ユーザーが自分の Azure AD アカウントで自動的に Workday にサインオン (シングル サインオン) できるようにします
-- 1 つの中央サイト (Azure Portal) でアカウントを管理できます
+- Workday にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Workday にサインオン (シングル サインオン) できるようにします。
+- 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
@@ -44,7 +45,7 @@ Workday と Azure AD の統合を構成するには、次のものが必要で�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -59,40 +60,37 @@ Azure AD への Workday の統合を構成するには、ギャラリーから�
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Active Directory][1]
+    ![Azure Active Directory のボタン][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[エンタープライズ アプリケーション] ブレード][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「 **Workday**」と入力します。
+4. 検索ボックスに「**Workday**」と入力し、結果ウィンドウで **[Workday]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workday-tutorial/tutorial_workday_search.png)
+    ![結果一覧の Workday](./media/active-directory-saas-workday-tutorial/tutorial_workday_addfromgallery.png)
 
-5. 結果ウィンドウで **Workday** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workday-tutorial/tutorial_workday_addfromgallery.png)
-
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Workday で Azure AD のシングル サインオンを構成し、テストします。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Workday ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Workday の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-このリンク関係を確立するには、Azure AD の **[ユーザー名]** の値を Workday の **[Username]\(ユーザー名\)** の値として割り当てます。
+Workday で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
 
 Workday で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Workday テスト ユーザーの作成](#creating-a-workday-test-user)** - Workday で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. **[Workday テスト ユーザーの作成](#create-a-workday-test-user)** - Workday で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
-### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
+### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Workday アプリケーションでシングル サインオンを構成します。
 
@@ -100,101 +98,103 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **Workday** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-workday-tutorial/tutorial_workday_samlbase.png)
+    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-workday-tutorial/tutorial_workday_samlbase.png)
 
 3. **[Workday のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-workday-tutorial/tutorial_workday_url.png)
+    ![[Workday のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-workday-tutorial/tutorial_workday_url.png)
 
-    a. **[サインオン URL]** テキストボックスに、「`https://impl.workday.com/<tenant>/login-saml2.htmld`」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml2.htmld` のパターンを使用して URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml.htmld` のパターンを使用して URL を入力します。
+    b. **[識別子]** ボックスに次の URL を入力します。`http://www.workday.com`
 
+4. **[詳細な URL 設定の表示]** をオンにして、次の手順を実行します。
+
+    ![[Workday のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-workday-tutorial/tutorial_workday_url1.png)
+
+    **[応答 URL]** ボックスに、`https://impl.workday.com/<tenant>/login-saml.htmld` のパターンを使用して URL を入力します。
+     
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 応答 URL には必ずサブドメインを入れます (例: www、wd2、wd3、wd3-impl、wd5、wd5-impl)。 " *http://www.myworkday.com* " のようなものは動作しますが、" *http://myworkday.com* " は動作しません。 これらの値を取得するには、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせてください。 
- 
+    > これらは実際の値ではありません。 実際のサインオン URL と応答 URL でこれらの値を更新してください。 応答 URL には必ずサブドメインを入れます (例: www、wd2、wd3、wd3-impl、wd5、wd5-impl)。 " *http://www.myworkday.com* " のようなものは動作しますが、" *http://myworkday.com* " は動作しません。 これらの値を取得するには、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせてください。  
 
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
+5. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-workday-tutorial/tutorial_workday_certificate.png) 
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-workday-tutorial/tutorial_workday_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-workday-tutorial/tutorial_general_400.png)
+    ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-workday-tutorial/tutorial_general_400.png)
+    
+7. **[Workday 構成]** セクションで、**[Workday の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-6. **[Workday 構成]** セクションで、**[Workday の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+    ![Workday の構成](./media/active-directory-saas-workday-tutorial/tutorial_workday_configure.png) 
 
-    ![シングル サインオンを構成する](./media/active-directory-saas-workday-tutorial/tutorial_workday_configure.png) 
-<CS>
-7. 別の Web ブラウザー ウィンドウで、Workday 企業サイトに管理者としてログインします。
+8. 別の Web ブラウザー ウィンドウで、Workday 企業サイトに管理者としてログインします。
 
-8. **[メニュー]\>[ワークベンチ]** に移動します。
-   
-    ![ワークベンチ](./media/active-directory-saas-workday-tutorial/IC782923.png "Workbench")
-
-9. **[アカウント管理]**に移動します。
-   
-    ![Account Administration](./media/active-directory-saas-workday-tutorial/IC782924.png "Account Administration")
-
-10. **[テナントのセットアップの編集 – セキュリティ]**に移動します。
+9. ホーム ページの左上にある **[Search]\(検索\)** ボックスで、「**Edit Tenant Setup – Security**」(テナントのセットアップの編集 - セキュリティ) という名前を検索します。
    
     ![テナントのセキュリティの編集](./media/active-directory-saas-workday-tutorial/IC782925.png "Edit Tenant Security")
 
-11. **[リダイレクト URL]** セクションで、次の手順を実行します。
+10. **[リダイレクト URL]** セクションで、次の手順を実行します。
    
     ![リダイレクト URL](./media/active-directory-saas-workday-tutorial/IC7829581.png "Redirection URLs")
    
-    a. **[行の追加]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[行の追加]** をクリックします。
    
     b. **[Login Redirect URL]\(ログイン リダイレクト URL\)** ボックスと **[Mobile Redirect URL]\(モバイル リダイレクト URL\)** ボックスに、Azure Portal の **[Workday のドメインと URL]** セクションで入力した**サインオン URL** を入力します。
    
     c. Azure Portal の **[サインオンの構成]** ウィンドウで **[サインアウト URL]** をコピーし、**[Logout Redirect URL]\(ログアウト リダイレクト URL\)** ボックスに貼り付けます。
-   
-    d.  **[環境]** テキスト ボックスに、環境の名前を入力します。  
+
+    d. **[Used for Environments]\(環境に使用\)** テキストボックスで、環境名を選択します。  
 
     >[!NOTE]
     > [環境] 属性の値が、テナント URL の値に関連付けられます。  
     >- Workday テナント URL のドメイン名が impl で始まる場合 (例: *https://impl.workday.com/\<テナント\>/login-saml2.htmld*)、**[Environment]\(環境\)** 属性を [Implementation]\(実装\) に設定する必要があります。  
     >- ドメイン名が impl 以外で始まる場合は、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に問い合わせて、対応する **[Environment]\(環境\)** の値を取得してください。
 
-12. **[SAML 設定]** セクションで、次の手順を実行します。
+11. **[SAML 設定]** セクションで、次の手順を実行します。
    
     ![SAML のセットアップ](./media/active-directory-saas-workday-tutorial/IC782926.png "SAML Setup")
    
-    a.  **[Enable SAML Authentication]**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[Enable SAML Authentication]**を選択します。
    
     b.  **[行の追加]** をクリックします。
 
-13. [SAML ID プロバイダー] セクションで、次の手順に従います。
+12. **[SAML Identity Providers]\(SAML ID プロバイダー\)** セクションで、次の手順を実行します。
    
     ![SAML ID プロバイダー](./media/active-directory-saas-workday-tutorial/IC7829271.png "SAML Identity Providers")
    
-    a. [Identity Provider Name]\(ID プロバイダー名\) テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Identity Provider Name]\(ID プロバイダー名\)** テキスト ボックスに、プロバイダー名を入力します (例: *SPInitiatedSSO*)。
    
     b. Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML エンティティ ID]** の値をコピーし、**[Issuer]\(発行者\)** ボックスに貼り付けます。
+
+    ![SAML ID プロバイダー](./media/active-directory-saas-workday-tutorial/IC7829271(1).png "SAML Identity Providers")
    
     c. **[Enable Workday Initiated Logout]\(Workday 始動ログアウトを有効にする\)** をオンにします。
    
-    d. Azure Portal の **[サインオンの構成]** ウィンドウで **[サインアウト URL]** の値をコピーし、**[Logout Request URL]\(ログアウト要求 URL\)** ボックスに貼り付けます。
+    d. Azure Portal の **[サインオンの構成]** ウィンドウで **[サインアウト URL]** の値をコピーし、**[Logout Response URL]\(ログアウト応答 URL\)** テキストボックスに貼り付けます。
 
-    e. **[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。 
+    e. Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML シングル サインオン サービスの URL]** の値をコピーし、**[IdP SSO Service URL]\(IdP SSO サービス URL\)** ボックスに貼り付けます。
+
+    f. **[Used for Environments]\(環境に使用\)** テキストボックスで、環境名を選択します。
+
+    g. **[ID プロバイダーの公開鍵証明書]** をクリックし、**[作成]** をクリックします。 
 
     ![作成](./media/active-directory-saas-workday-tutorial/IC782928.png "作成")
 
-    f. **[x509 公開鍵の作成]** をクリックします。 
+    h. **[x509 公開鍵の作成]** をクリックします。 
 
     ![作成](./media/active-directory-saas-workday-tutorial/IC782929.png "作成")
 
-
-14. **[x509 公開鍵の表示]** セクションで、次の手順を実行します。 
+13. **[x509 公開鍵の表示]** セクションで、次の手順を実行します。 
    
     ![x509 公開鍵の表示](./media/active-directory-saas-workday-tutorial/IC782930.png "x509 公開鍵の表示") 
    
-    a. **[Name]\(名前\)** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Name]\(名前\)** テキスト ボックスに、証明書の名前を入力します (例: *PPE\_SP*)。
    
     b. **[有効期間の開始日]** テキスト ボックスに、証明書の有効期間の開始日を示す属性の値を入力します。
    
@@ -209,76 +209,68 @@ Workday で Azure AD のシングル サインオンを構成してテストす�
    
     e.  **[証明書]** テキスト ボックスに、クリップボードの内容を貼り付けます。
    
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。  **[OK]**をクリックします。
+    f.  Click **OK**.
 
-15. 次の手順に従います。 
+14. 次の手順に従います。 
    
     ![SSO 構成](./media/active-directory-saas-workday-tutorial/WorkdaySSOConfiguratio.png "SSO configuration")
    
-    a.  **[x509 秘密鍵のペア]** を有効にします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[サービス プロバイダー ID]** テキスト ボックスに「**http://www.workday.com**」と入力します。
    
-    b.  **[サービス プロバイダー ID]** テキスト ボックスに「**http://www.workday.com**」と入力します。
+    b. **[SP によって開始された認証要求を圧縮しない]** を選択します。
    
-    c.  **[SP によって開始された SAML 認証を有効にする]** を選択します。
-   
-    d.  Azure Portal の **[サインオンの構成]** ウィンドウで **[SAML シングル サインオン サービスの URL]** の値をコピーし、**[IdP SSO Service URL]\(IdP SSO サービス URL\)** ボックスに貼り付けます。
-   
-    e. **[SP によって開始された認証要求を圧縮しない]** を選択します。
-   
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[認証要求署名方法]** として **[SHA256]** を選択します。 
+    c. **[認証要求署名方法]** として **[SHA256]** を選択します。 
    
     ![認証要求署名方法](./media/active-directory-saas-workday-tutorial/WorkdaySSOConfiguration.png "Authentication Request Signature Method") 
    
-    g. **[OK]**をクリックします。 
+    d. Click **OK**. 
    
     ![OK](./media/active-directory-saas-workday-tutorial/IC782933.png "OK")
-<CE>
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
->
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 
-### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
+
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
 
-![Azure AD ユーザーの作成][100]
+   ![Azure AD のテスト ユーザーの作成][100]
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
+1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workday-tutorial/create_aaduser_01.png) 
+    ![Azure Active Directory のボタン](./media/active-directory-saas-workday-tutorial/create_aaduser_01.png)
 
-2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
-    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workday-tutorial/create_aaduser_02.png) 
+2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
 
-3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workday-tutorial/create_aaduser_03.png) 
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-workday-tutorial/create_aaduser_02.png)
 
-4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
- 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-workday-tutorial/create_aaduser_04.png) 
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+
+    ![[追加] ボタン](./media/active-directory-saas-workday-tutorial/create_aaduser_03.png)
+
+4. **[ユーザー]** ダイアログ ボックスで、次の手順に従います。
+
+    ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-workday-tutorial/create_aaduser_04.png)
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
-    b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
+    b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
-    c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
+    c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
     d. **Create** をクリックしてください。
  
-### <a name="creating-a-workday-test-user"></a>Workday テスト ユーザーの作成
+### <a name="create-a-workday-test-user"></a>Workday テスト ユーザーの作成
 
-Workday にテスト ユーザーをプロビジョニングするには、[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)に連絡する必要があります。
-[Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)にユーザーを作成してもらいます。
+このセクションでは、Workday で Britta Simon というユーザーを作成します。 [Workday クライアント サポート チーム](https://www.workday.com/en-us/partners-services/services/support.html)と連携し、Workday プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
-### <a name="assigning-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
+### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Workday へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
-![ユーザーの割り当て][200] 
+![ユーザー ロールを割り当てる][200] 
 
 **Britta Simon を Workday に割り当てるには、次の手順を実行します。**
 
@@ -288,15 +280,15 @@ Workday にテスト ユーザーをプロビジョニングするには、[Work
 
 2. アプリケーションの一覧で **[Workday]**を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-workday-tutorial/tutorial_workday_app.png) 
+    ![アプリケーションの一覧の Workday のリンク](./media/active-directory-saas-workday-tutorial/tutorial_workday_app.png)  
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![ユーザーの割り当て][202] 
+    ![[ユーザーとグループ] リンク][202]
 
 4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][203]
+    ![[割り当ての追加] ウィンドウ][203]
 
 5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
@@ -304,15 +296,17 @@ Workday にテスト ユーザーをプロビジョニングするには、[Work
 
 7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
     
-### <a name="testing-single-sign-on"></a>シングル サインオンのテスト
+### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
-シングル サインオンの設定をテストする場合は、アクセス パネルを開きます。 アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。
+このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
+
+アクセス パネルで [Workday] タイルをクリックすると、自動的に Workday アプリケーションにサインオンします。
+アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-* [[ユーザー プロビジョニングの構成]](active-directory-saas-workday-inbound-tutorial.md)
 
 
 

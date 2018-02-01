@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: tomfitz
-ms.openlocfilehash: 5a28914d967e77d6c8881cd6e56b798269d3df3e
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -102,11 +102,10 @@ ms.lasthandoff: 10/18/2017
 
 * API Management
 * App Service アプリ (Web Apps) - 「 [App Service の制限事項](#app-service-limitations)
-* Application Insights
+* アプリケーション インサイト
 * Automation
 * Azure Cosmos DB
 * Batch
-
 * Bing Maps
 * CDN
 * Cloud Services - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
@@ -123,7 +122,7 @@ ms.lasthandoff: 10/18/2017
 * Key Vault
 * ロード バランサー
 * Logic Apps
-* Machine Learning
+* 機械学習
 * Media Services
 * Mobile Engagement
 * Notification Hubs
@@ -132,7 +131,7 @@ ms.lasthandoff: 10/18/2017
 * Power BI
 * Redis Cache
 * Scheduler
-* Search
+* 検索
 * Server Management
 * Service Bus
 * Service Fabric
@@ -209,7 +208,7 @@ App Service アプリを使用している場合、App Service プランのみ�
 
 これ以外の組み合わせでは、App Service プランの移動時に、残しておくことができないリソースの種類 (すべての種類の App Service リソース) が残されます。
 
-Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を 2 段階で行う必要があります。 次に例を示します。
+Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を 2 段階で行う必要があります。 例: 
 
 * **web-group** に存在する **web-a**
 * **plan-group** に存在する **plan-a**
@@ -312,9 +311,15 @@ App Service 証明書は、新しいリソース グループまたはサブス�
 
 ## <a name="recovery-services-limitations"></a>Recovery Services の制限事項
 
-Azure Site Recovery では、障害復旧の設定に使用されるストレージ リソース、ネットワーク リソース、またはコンピューティング リソースは移動できません。
+Azure Site Recovery では、ディザスター リカバリーの設定に使用されるストレージ リソース、ネットワーク リソース、またはコンピューティング リソースは移動できません。
 
 たとえば、ストレージ アカウント (Storage1) へのオンプレミス コンピューターのレプリケーションが設定済みで、Azure へのフェールオーバー後、保護されたコンピューターを、Azure 仮想ネットワーク (Network1) に接続された仮想マシン (VM1) として使用する必要があるとします。 こうした Azure リソース、つまり Storage1、VM1、および Network1 はどれも、同じサブスクリプション内のリソース グループ間、またはサブスクリプション間で移動することはできません。
+
+**Azure Backup** に登録された VM をリソース グループ間で移動するには:
+ 1. バックアップを一時的に停止し、バックアップ データを保持します
+ 2. VM をターゲット リソース グループに移動します
+ 3. 同じコンテナーまたは新しいコンテナーで VM を再び保護します。ユーザーは、移動操作の前に作成された使用可能な復元ポイントから復元できます。
+バックアップした VM をサブスクリプション間で移動する場合、手順 1 と手順 2 は同じです。 手順 3 では、ターゲット サブスクリプションに存在する、または作成した新しいコンテナーで、VM を保護する必要があります。Recovery Services では、異なるサブスクリプション間のバックアップはサポートされていません。
 
 ## <a name="hdinsight-limitations"></a>HDInsight の制限事項
 
@@ -381,7 +386,7 @@ POST https://management.azure.com/subscriptions/{source-subscription-id}/resourc
 
 要求の本文で、ターゲット リソース グループと、移動するリソースを指定します。 REST による移動操作の詳細については、「 [リソースの移動](/rest/api/resources/Resources/MoveResources)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * サブスクリプションを管理するための PowerShell コマンドレットについては、「 [Resource Manager での Azure PowerShell の使用](powershell-azure-resource-manager.md)」を参照してください。
 * サブスクリプションを管理するための Azure CLI コマンドについては、「 [リソース マネージャーでの Azure CLI の使用](xplat-cli-azure-resource-manager.md)」を参照してください。

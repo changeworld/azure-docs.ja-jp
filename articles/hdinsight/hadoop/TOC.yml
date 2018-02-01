@@ -207,6 +207,21 @@
             - name: HDInsight アプリを Azure Marketplace に発行する
               href: ../hdinsight-apps-publish-applications.md
               maintainContext: true
+            - name: 発行したアプリのインストール - Cask Data Application Platform (CDAP)
+              href: ../hdinsight-apps-install-cask.md
+              maintainContext: true
+            - name: 発行したアプリのインストール - Dataiku
+              href: ../hdinsight-apps-install-dataiku.md
+              maintainContext: true
+            - name: 発行したアプリのインストール - Datameer
+              href: ../hdinsight-apps-install-datameer.md
+              maintainContext: true
+            - name: 発行したアプリのインストール - H2O
+              href: ../hdinsight-apps-install-h2o.md
+              maintainContext: true
+            - name: 発行したアプリのインストール - Streamsets
+              href: ../hdinsight-apps-install-streamsets.md
+              maintainContext: true
     - name: セキュリティ保護
       items:
         - name: HDInsight で SSH を使用する

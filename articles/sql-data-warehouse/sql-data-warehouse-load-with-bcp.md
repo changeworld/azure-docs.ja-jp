@@ -13,33 +13,26 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 10/31/2016
+ms.date: 01/22/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: 7596eac10fdf53380d85128265430ce07b551fe3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 55211e29149cd334421bd8723d47278a19afbfbb
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="load-data-with-bcp"></a>bcp を使用したデータの読み込み
-> [!div class="op_single_selector"]
-> * [Redgate](sql-data-warehouse-load-with-redgate.md)  
-> * [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)  
-> * [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)  
-> * [BCP](sql-data-warehouse-load-with-bcp.md)
-> 
-> 
 
-**[bcp][bcp]** はコマンド ライン形式の一括読み込みユーティリティの一種であり、これを使用して SQL Server、データ ファイル、および SQL Data Warehouse の間でデータをコピーできます。 bcp を使用して SQL Data Warehouse のテーブルに多数の行をインポートしたり、SQL Server のテーブルからデータ ファイルにデータをエクスポートしたりします。 queryout オプションと併用する場合を除き、bcp を使用するときに Transact-SQL の知識は必要ありません。
+**[bcp](/sql/tools/bcp-utility.md)** はコマンド ライン形式の一括読み込みユーティリティの一種であり、これを使用して SQL Server、データ ファイル、および SQL Data Warehouse の間でデータをコピーできます。 bcp を使用して SQL Data Warehouse のテーブルに多数の行をインポートしたり、SQL Server のテーブルからデータ ファイルにデータをエクスポートしたりします。 queryout オプションと併用する場合を除き、bcp を使用するときに Transact-SQL の知識は必要ありません。
 
-bcp を使用すれば、すばやく、簡単に SQL Data Warehouse データベースとの間で小規模なデータ セットを読み込み/抽出できます。 bcp を使用して読み込み/抽出する場合に推奨される正確なデータ量は、Azure データ センターへのネットワーク接続によって異なります。  一般に、ディメンション テーブルは bcp で簡単に読み込んで抽出できますが、bcp は大量のデータの読み込みや抽出にはお勧めできません。  大量のデータの読み込みと抽出に適したツールは、Polybase です。SQL Data Warehouse の大量並列処理アーキテクチャをうまく活用できます。
+bcp を使用すれば、すばやく、簡単に SQL Data Warehouse データベースとの間で小規模なデータ セットを読み込み/抽出できます。 bcp を使用して読み込み/抽出する場合に推奨される正確なデータ量は、Azure へのネットワーク接続によって異なります。  小さなディメンション テーブルは、bcp を使用して簡単に読み込みおよび抽出できます。 ただし、大量のデータの読み込みと抽出を行うためのツールとしては、bcp ではなく Polybase をお勧めします。 PolyBase は、SQL Data Warehouse の超並列処理アーキテクチャ向けに設計されています。
 
 bcp では次のことができます。
 
-* 簡単なコマンド ライン ユーティリティを使用して、SQL Data Warehouse にデータを読み込みます。
-* 簡単なコマンド ライン ユーティリティを使用して、SQL Data Warehouse からデータを抽出します。
+* コマンド ライン ユーティリティを使用して、SQL Data Warehouse にデータを読み込みます。
+* コマンド ライン ユーティリティを使用して、SQL Data Warehouse からデータを抽出します。
 
-ここでは、次の操作方法について説明します。
+このチュートリアルの内容:
 
 * bcp in コマンドを使用してテーブルにデータをインポートする
 * bcp out コマンドを使用してテーブルからデータをエクスポートする
@@ -52,13 +45,12 @@ bcp では次のことができます。
 このチュートリアルを進めるには、次が必要です。
 
 * SQL Data Warehouse データベース
-* インストールされた bcp コマンド ライン ユーティリティ
-* インストールされた SQLCMD コマンド ライン ユーティリティ
+* bcp および sqlcmd コマンド ラインユーティリティ。 これらは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=36433)からダウンロードできます。 
 
-> [!NOTE]
-> bcp ユーティリティと sqlcmd ユーティリティは [Microsoft ダウンロード センター][Microsoft Download Center]からダウンロードできます。
-> 
-> 
+### <a name="data-in-ascii-or-utf-16-format"></a>ASCII または UTF-16 形式のデータ
+自身のデータを使ってこのチュートリアルを試す場合、bcp では UTF-8 がサポートされないため、データには ASCII または UTF-16 エンコードを使用する必要があります。 
+
+PolyBase では UTF-8 がサポートされていますが、UTF-16 はまだサポートされていません。 bcp をデータのエクスポート用に使用し、PolyBase をデータの読み込み用に使用するには、SQL Server からエクスポートしたデータを UTF-8 に変換する必要があります。 
 
 ## <a name="import-data-into-sql-data-warehouse"></a>SQL Data Warehouse へのデータのインポート
 このチュートリアルでは、Azure SQL Data Warehouse でテーブルを作成し、そのデータをテーブルにインポートします。
@@ -82,10 +74,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-> [!NOTE]
-> SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルの概要][Table Overview]に関する記事または [CREATE TABLE 構文][CREATE TABLE syntax]に関するページを参照してください。
-> 
-> 
+テーブルの作成の詳細については、[テーブルの概要](sql-data-warehouse-tables-overview.md)に関するページまたは [CREATE TABLE](/sql/t-sql/statements/create-table-azure-sql-data-warehouse.md) 構文を参照してください。
+ 
 
 ### <a name="step-2-create-a-source-data-file"></a>手順 2: ソース データ ファイルを作成する
 メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。
@@ -123,7 +113,7 @@ sqlcmd を使用して次のクエリを実行すると、データが読み込�
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-これにより、次の結果が得られます。
+このクエリにより、次の結果が得られます。
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -141,9 +131,8 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151201 |4 |2 |
 
 ### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しくロードしたデータの統計を作成する
-Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。 クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の詳細については、開発トピック グループの[統計][Statistics]に関するトピックを参照してください。 この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
+データを読み込んだ後、最後の手順として、統計を作成または更新します。 この手順は、クエリのパフォーマンスを向上させるのに役立ちます。 詳細については、[統計](sql-data-warehouse-tables-statistics.md)に関する記事を参照してください。 次の sqlcmd の例では、新しく読み込まれたデータを含むテーブルの統計を作成しています。
 
-sqlcmd プロンプトから次の CREATE STATISTICS ステートメントを実行します。
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -154,7 +143,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 ## <a name="export-data-from-sql-data-warehouse"></a>SQL Data Warehouse からのデータのエクスポート
-このチュートリアルでは SQL Data Warehouse 内のテーブルからデータ ファイルを作成します。 上記で作成したデータを DimDate2_export.txt という名前の新しいデータ ファイルにエクスポートします。
+このチュートリアルでは、SQL Data Warehouse 内のテーブルからデータ ファイルを作成します。 前のセクションでインポートしたデータをエクスポートします。 結果は DimDate2_export.txt という名前のファイルに保存されます。
 
 ### <a name="step-1-export-the-data"></a>手順 1: データをエクスポートする
 bcp ユーティリティを使用して、次のコマンドでデータに接続し、エクスポートできます。値は適宜置き換えて使用してください。
@@ -184,22 +173,14 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
-読み込みの概要については、[SQL Data Warehouse へのデータの読み込み][Load data into SQL Data Warehouse]に関するページを参照してください。
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。
+## <a name="next-steps"></a>次の手順
+読み込みプロセスを設計するには、[読み込みの概要](sql-data-warehouse-design-elt-data-loading)に関するページを参照してください。  
 
-<!--Image references-->
 
-<!--Article references-->
-
-[Load data into SQL Data Warehouse]: ./sql-data-warehouse-overview-load.md
-[SQL Data Warehouse development overview]: ./sql-data-warehouse-overview-develop.md
-[Table Overview]: ./sql-data-warehouse-tables-overview.md
-[Statistics]: ./sql-data-warehouse-tables-statistics.md
 
 <!--MSDN references-->
-[bcp]: https://msdn.microsoft.com/library/ms162802.aspx
-[CREATE TABLE syntax]: https://msdn.microsoft.com/library/mt203953.aspx
+
+
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433

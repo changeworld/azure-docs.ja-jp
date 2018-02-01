@@ -93,7 +93,7 @@ Azure へのバックアップ データのアップロードが完了した後�
 ### <a name="prepare-a-sata-drive-and-create-an-azure-import-job-by-using-the-azure-disk-preparation-tool"></a>Azure Disk Preparation ツールを使用して SATA ドライブを準備し、Azure インポート ジョブを作成する
 Azure Disk Preparation ツールは、次のパスにある Recovery Services エージェント (更新プログラム 2016 年 8 月以降) のインストール ディレクトリに含まれています。
 
-   *\Microsoft* *Azure* *Recovery* *Services* *Agent\Utils\*
+   *\Microsoft* *Azure* *Recovery* *Services* \*Agent\Utils\*
 
 1. このディレクトリに移動し、 **AzureOfflineBackupDiskPrep** ディレクトリを、準備するドライブがマウントされているコピー用コンピューターにコピーします。 コピー用コンピューターについて、次を確認します。
 

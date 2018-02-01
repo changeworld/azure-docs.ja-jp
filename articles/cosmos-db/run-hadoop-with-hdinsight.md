@@ -12,17 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 06/08/2017
+ms.date: 01/19/2018
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e69edcae53b9e6614cb02932abd1e2022c558a14
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 181954e4657166db8aa94021ad093437d8c7abfd
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Azure Cosmos DB と HDInsight を使用した Apache Hive、Pig、または Hadoop ジョブの実行
 このチュートリアルでは、Azure Cosmos DB の Hadoop コネクタを使用して、[Apache Hive][apache-hive]、[Apache Pig][apache-pig]、および [Apache Hadoop][apache-hadoop] MapReduce の各ジョブを Azure HDInsight 上で実行する方法について説明します。 Cosmos DB の Hadoop コネクタを使用すると、Cosmos DB が Hive、Pig、および MapReduce の各ジョブに対してソースとシンクの両方として機能します。 このチュートリアルでは、Hadoop ジョブのデータ ソースと出力先の両方に Cosmos DB を使用します。
+
+> [!IMPORTANT] 
+> Spark-Azure Cosmos DB コネクタは、Azure HDInsight を Azure Cosmos DB に接続するための推奨されるオプションです。 詳細については、「[Spark-Azure Cosmos DB コネクタによるリアルタイムのビッグ データ分析の高速化](spark-connector.md)」を参照してください。
 
 このチュートリアルを完了すると、次の項目について説明できるようになります。
 
@@ -89,7 +92,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
         <tr><td>サブスクリプション名</td>
             <td>複数の Azure サブスクリプションがある場合は、HDInsight クラスターをホストするサブスクリプションを選択します。 </td></tr>
     </table>
-5. [クラスターの種類の選択] ** をクリックし、以下のプロパティを、指定された値に設定します。
+5. [クラスターの種類の選択] **** をクリックし、以下のプロパティを、指定された値に設定します。
 
     <table border='1'>
         <tr><td>クラスターの種類</td><td><strong>Hadoop</strong></td></tr>

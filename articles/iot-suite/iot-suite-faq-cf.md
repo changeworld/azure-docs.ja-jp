@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 16685787b04d26f09e2b8778faac257571162aac
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: ab72152fc937e3c4552147fce29c95ea0efcadf4
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="frequently-asked-questions-for-iot-suite-connected-factory-preconfigured-solution"></a>Azure IoT Suite コネクテッド ファクトリ事前構成済みソリューションに関してよく寄せられる質問
 
@@ -117,7 +117,7 @@ www.azureiotsuite.com からソリューションをデプロイした場合は�
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) または [iothub-explorer](https://github.com/azure/iothub-explorer) ツールを使用すると、ソリューションが使用している IoT ハブに、どのデバイスが登録されているかを確認できます。 これらのツールを使用するには、デプロイ環境の IoT ハブ用の接続文字列が必要になります。
+[DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) または [Azure CLI 2.0 向け IoT 拡張機能](https://github.com/Azure/azure-iot-cli-extension)ツールを使うと、ソリューションが使っている IoT ハブに、どのデバイスが登録されているかを確認できます。 Device Explorer を使うには、デプロイ環境の IoT ハブ用の接続文字列が必要になります。 Azure CLI 2.0 向け IoT 拡張機能を使うには、IoT Hub の名前が必要です。
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>シミュレーション コンポーネントからログ データを取得するにはどうすればいいですか
 
@@ -146,7 +146,13 @@ IoT Hub に送信されるデータが表示されない場合は、シミュレ
 
 ### <a name="how-do-i-enable-an-interactive-map-in-my-connected-factory-solution"></a>コネクテッド ファクトリ ソリューションでインタラクティブ マップを有効にするにはどうすればいいですか
 
-コネクテッド ファクトリ ソリューションでインタラクティブ マップを有効にするには、事前に Bing Maps API for Enterprise プランを取得する必要があります。 既に Bing Maps API for Enterprise プランがある場合は、www.azureiotsuite.com からコネクテッド ファクトリ ソリューションをデプロイすると、インタラクティブ マップが自動的に有効化されます。
+コネクテッド ファクトリ ソリューションでインタラクティブ マップを有効にするには、事前に Bing Maps API for Enterprise プランを取得する必要があります。
+
+[www.azureiotsuite.com](http://www.azureiotsuite.com) から展開すると、展開プロセスはサブスクリプションに有効な Bing Maps API for Enterprise プランがあることを検証し、コネクテッド ファクトリにインタラクティブ マップを自動的に展開します。 このようにならない場合でも、次のようにして展開でインタラクティブ マップを有効にすることができます。
+
+コネクテッド ファクトリの GitHub リポジトリの `build.ps1` スクリプトを使ってデプロイを行い、Bing Maps API for Enterprise プランがある場合は、ビルド ウィンドウの環境変数 `$env:MapApiQueryKey` をプランのクエリ キーに設定します。 このようにすると、インタラクティブ マップが自動的に有効になります。
+
+Bing Maps API for Enterprise プランがない場合は、[www.azureiotsuite.com](http://www.azureiotsuite.com) から、または `build.ps1` スクリプトを使って、コネクテッド ファクトリ ソリューションを展開します。 その後、「[Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか](#how-do-i-create-a-bing-maps-api-for-enterprise-account)」で説明したように、Bing Maps API for Enterprise プランをサブスクリプションに追加します。 「[Bing Maps API for Enterprise の QueryKey を取得するにはどうすればいいですか](#how-to-obtain-your-bing-maps-api-for-enterprise-querykey)」の説明に従ってこのアカウントのクエリ キーを検索し、このキーを保存します。 Azure Portal に移動し、コネクテッド ファクトリの展開の App Service リソースにアクセスします。 **[アプリケーション設定]** に移動し、**[アプリの設定]** セクションを探します。 **[MapApiQueryKey]** に取得したクエリ キーを設定します。 設定を保存した後、**[概要]** に移動して、App Service を再起動します。
 
 ### <a name="how-do-i-create-a-bing-maps-api-for-enterprise-account"></a>Bing Maps API for Enterprise アカウントを作成するにはどうすればいいですか
 

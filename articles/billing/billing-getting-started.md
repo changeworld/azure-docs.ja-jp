@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 01/24/2018
 ms.author: tonguyen
-ms.openlocfilehash: 4bbb13f31c42a57815dca176408d5c2e82feb5e0
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 885dcbc0e0d3d9490d745a07ade5d9dece7ff3d6
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で想定外の料金を防ぐ
 
@@ -157,6 +157,7 @@ Enterprise コスト ビューは、現在、パブリック プレビューの�
 - サブスクリプションのコストは、使用量に基づいて計算されており、前払い額、超過、含まれる数量、調整、および税は考慮されません。 実際の料金は、登録レベルで計算されます。 
 - Azure ポータルに表示される金額は、エンタープライズ ポータル内の値に比較して遅れる可能性があります。  
 - コストが表示されない場合は、次の理由のいずれかが原因として考えられます。
+    - サブスクリプション レベルで、必要な RBAC アクセス許可がない。 エンタープライズ コスト ビューを表示するには、課金データ閲覧者、閲覧者、共同作業者、所有者のいずれかのサブスクリプション レベルである必要があります。
     - お客様はアカウント所有者であり、登録管理者が、"AO ビュー料金" 設定を無効にした。  登録管理者に問い合わせて、コストにアクセスできるように設定してもらってください。 
     - お客様は部門管理者者であり、登録管理者が、"DA ビュー料金" 設定を無効にした。  登録管理者に問い合わせて、アクセスできるように設定してもらってください。 
     - チャネル パートナーを通して Azure を購入し、パートナーが価格情報を公開していない。  

@@ -2,23 +2,18 @@
 title: "VMware から Azure への Azure Site Recovery のトラブルシューティング | Microsoft Docs"
 description: "Azure 仮想マシンのレプリケート時に発生するエラーのトラブルシューティングを行います"
 services: site-recovery
-documentationcenter: 
 author: anoopkv
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 12/12/2017
+ms.date: 01/11/2018
 ms.author: anoopkv
-ms.openlocfilehash: df8234ad79439245025cb7ecf87a2050960958b2
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c5566ec44a8bfed0a3e7207c2cebf21517573541
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
@@ -74,7 +69,7 @@ ms.lasthandoff: 12/13/2017
 
 **エラー コード** | **考えられる原因** | **エラー固有の推奨事項**
 --- | --- | ---
-95108 </br>**メッセージ:** ソース マシンに対するモビリティ サービスのプッシュ インストールが、エラー コード **EP0859** で失敗しました。 <br>| モビリティ サービスをインストールするために指定された資格情報が正しくないか、ユーザー アカウントに十分な権限がありません。 <br>| 指定された資格情報が**ルート** アカウントの資格情報であることを確認します。 [ユーザー資格情報を追加/編集](site-recovery-vmware-to-azure-manage-configuration-server.md#modify-user-accounts-and-passwords)するには、構成サーバーに移動して、デスクトップにある "Cspsconfigtool" ショートカット アイコンをクリックします。 [アカウントの管理] をクリックして資格情報を追加/編集します。|
+95108 </br>**メッセージ:** ソース マシンに対するモビリティ サービスのプッシュ インストールが、エラー コード **EP0859** で失敗しました。 <br>| モビリティ サービスをインストールするために指定された資格情報が正しくないか、ユーザー アカウントに十分な権限がありません。 <br>| 指定された資格情報が**ルート** アカウントの資格情報であることを確認します。 ユーザー資格情報を追加/編集するには、構成サーバーに移動して、デスクトップにある "Cspsconfigtool" ショートカット アイコンをクリックします。 [アカウントの管理] をクリックして資格情報を追加/編集します。|
 
 ## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>エラー 95265 - 保護を有効にできませんでした (EP0902)
 
@@ -92,13 +87,14 @@ ms.lasthandoff: 12/13/2017
 ## <a name="resource-to-troubleshoot-push-installation-problems"></a>プッシュ インストールの問題をトラブルシューティングするためのリソース
 
 #### <a name="troubleshoot-file-and-print-sharing-issues"></a>ファイルと印刷の共有の問題をトラブルシューティングする
-*  [グループ ポリシーを使用してファイルの共有を有効または無効にする](https://technet.microsoft.com/en-us/library/cc754359(v=ws.10).aspx)
-* [Windows ファイアウォールを介してファイルおよび印刷の共有を有効にする方法](https://technet.microsoft.com/en-us/library/ff633412(v=ws.10).aspx)
+*  [グループ ポリシーを使用してファイルの共有を有効または無効にする](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
+* [Windows ファイアウォールを介してファイルおよび印刷の共有を有効にする方法](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
 
 #### <a name="troubleshoot-wmi-issues"></a>WMI の問題のトラブルシューティング
 * [基本的な WMI テスト](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
-* [WMI のトラブルシューティング](https://msdn.microsoft.com/en-us/library/aa394603(v=vs.85).aspx)
-* [WMI スクリプトと WMI サービスに関する問題のトラブルシューティング](https://technet.microsoft.com/en-us/library/ff406382.aspx#H22)
+* [WMI のトラブルシューティング](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
+* [WMI スクリプトと WMI サービスに関する問題のトラブルシューティング](https://technet.microsoft.com/library/ff406382.aspx#H22)
 
-## <a name="next-steps"></a>次のステップ
-- [VMware 仮想マシンのレプリケーションを有効にする](vmware-walkthrough-enable-replication.md)
+## <a name="next-steps"></a>次の手順
+
+VMware VM のディザスター リカバリーを設定する[方法を確認する](tutorial-vmware-to-azure.md)

@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2017
+ms.date: 01/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 71d740107eb2082e3f112941e1d4abd715d25807
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 63290127b298efced14ad34e9223840f3229f046
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>オンプレミス マシンのレプリケーションために Azure リソースを準備する
 
@@ -46,9 +46,9 @@ Azure Portal (http://portal.azure.com) にログインします。
 レプリケートされたマシンのイメージは Azure Storage に保存されます。 オンプレミスから Azure にフェールオーバーするとき、ストレージから Azure VM が作成されます。
 
 1. [Azure Portal](https://portal.azure.com) メニューで、**[新規]** -> **[ストレージ]** -> **[ストレージ アカウント]** の順にクリックします。
-2. ストレージ アカウントの名前を入力します。 この一連のチュートリアルでは、**contosovmsacct1910171607** という名前を使用します。 名前は Azure 内で一意にする必要があります。長さは 3 から 24 文字で、使用できるのは数字と小文字のみです。
+2. **[ストレージ アカウントの作成]** で、アカウントの名前を入力します。 この一連のチュートリアルでは、**contosovmsacct1910171607** という名前を使用します。 名前は Azure 内で一意にする必要があります。長さは 3 から 24 文字で、使用できるのは数字と小文字のみです。
 3. **Resource Manager** デプロイメント モデルを使用する。
-4. **[汎用]**、 > **[標準]** の順に選択します。
+4. **[汎用]**、 > **[標準]** の順に選択します。 Blob ストレージを選択しないでください。
 5. ストレージの冗長性には既定の **[RA-GRS]** を選択します。
 6. 新しいストレージ アカウントを作成するサブスクリプションを選択します。
 7. 新しいリソース グループを指定します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この一連のチュートリアルでは、**ContosoRG** という名前を使用します。

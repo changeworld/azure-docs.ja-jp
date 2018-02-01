@@ -14,11 +14,11 @@ ms.devlang: javascript
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: crdun
-ms.openlocfilehash: c4fd425ab479121fff80bb2c2eef016662ec3bfe
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 05fa692f9331cf6b5178c3e9dca60ad2598dc609
+ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="add-push-notifications-to-your-apache-cordova-app"></a>Apache Cordova アプリへのプッシュ通知の追加
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -79,6 +79,7 @@ Apache Cordova アプリケーションでは、デバイスやネットワー�
 
 2. インストール元の横にある矢印をクリックします。
 3. Google デベロッパー コンソール プロジェクト用のプロジェクト ID (数値) を既に所有している場合は、**SENDER_ID** のボックスに追加できます。 それ以外の場合は、777777 などのプレースホルダーの値を入力します。  Android を対象としている場合は、後からこの値を config.xml で更新することができます。
+     Version 2.0.0 現在、SENDER_ID はインストール時から削除されており、google-services.json をプロジェクトのルート フォルダーにインストールする必要があります。  詳細については、[こちら](https://github.com/phonegap/phonegap-plugin-push/blob/master/docs/INSTALLATION.md)を参照してください。
 4. **[追加]**をクリックします。
 
 これでプッシュ プラグインがインストールされました。

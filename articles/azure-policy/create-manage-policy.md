@@ -5,19 +5,19 @@ services: azure-policy
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/03/2018
+ms.date: 01/18/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 882cf3cde71f5154efcd88f055984e72463b3099
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: d6a588e1d8a20ffba555461cf98009f3894ed761
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
-Azure でポリシーを作成および管理する方法を理解することは、企業の標準とサービス レベル アグリーメントへの準拠を維持するために重要です。 このチュートリアルでは、Azure Policy を使用して、次のように、組織全体のポリシーの作成、割り当て、および管理に関連する一般的なタスクをいくつか実行します。
+Azure でポリシーを作成および管理する方法を理解することは、企業の標準とサービス レベル アグリーメントへの準拠を維持するために重要です。 このチュートリアルでは、Azure Policy を使用して、組織全体のポリシーの作成、割り当て、および管理に関連する次のような一般的なタスクをいくつか実行します。
 
 > [!div class="checklist"]
 > * 今後作成するリソースに条件を強制するポリシーを割り当てる
@@ -25,7 +25,7 @@ Azure でポリシーを作成および管理する方法を理解すること�
 > * 準拠していないリソースまたは拒否されたリソースを解決する
 > * 組織全体で新しいポリシーを実施する
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+既存のリソースの現在のコンプライアンス状態を識別するためのポリシーを割り当てる方法については、クイック スタートの記事で詳しく説明しています。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="assign-a-policy"></a>ポリシーを割り当てる
 
@@ -40,20 +40,21 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
    ![ポリシー定義を割り当てる](media/create-manage-policy/select-assign-policy.png)
 
-4. **[Assign Policy]\(ポリシーの割り当て\)** ページで、**[ポリシー]** フィールドの横にある![ポリシー定義ボタン](media/assign-policy-definition/definitions-button.png)をクリックして、使用できる定義の一覧を開きます。
+4. **[Assign Policy]\(ポリシーの割り当て\)** ページで、**[ポリシー]** フィールドの横にある![ポリシー定義ボタン](media/assign-policy-definition/definitions-button.png)をクリックして、使用できる定義の一覧を開きます。 ポリシー定義の **[種類]** を *[BuiltIn]* でフィルター処理して、すべてを表示し、その説明を読むことができます。
 
    ![使用できるポリシー定義を開く](media/create-manage-policy/open-policy-definitions.png)
 
-5. **[Require SQL Server Version 12.0]\(SQL Server バージョン 12.0 が必要\)** を選択します。
+5. **[Require SQL Server Version 12.0]\(SQL Server バージョン 12.0 が必要\)** を選択します。 すぐに見つからない場合は、検索ボックスに「**Require SQL Server Version 12.0**」と入力し、Enter キーを押します。
 
    ![ポリシーを選択する](media/create-manage-policy/select-available-definition.png)
 
-6. ポリシー割り当ての表示用の **[名前]** を入力します。 この例では、"*SQL Server バージョン 12.0 が必要*" を名前として使用してみましょう。 必要に応じて、**説明**を追加することもできます。 この説明には、このポリシー割り当てで、この環境内に作成されるすべての SQL Server をバージョン 12.0 にする方法について詳しく入力します。
+6. **[名前]** は自動的に設定されますが、変更することができます。 この例では、"*SQL Server バージョン 12.0 が必要*" を名前として使用します。 必要に応じて、**説明**を追加することもできます。 この説明には、このポリシー割り当てで、この環境内に作成されるすべての SQL Server をバージョン 12.0 にする方法について詳しく入力します。
+
 7. このポリシーを確実に既存のリソースに適用するには、価格レベルを **Standard** に変更します。
 
-   Azure Policy 内には、*Free* と *Standard* という 2 つの価格レベルがあります。 Free レベルでは、今後のリソースにのみポリシーを強制することができます。Standard では、既存のリソースにも強制して、コンプライアンスの状態に対する理解を深めることができます。 制限付きプレビュー段階なので、価格モデルはまだリリースされていないません。したがって、*[Standard]* を選択しても、請求が発生することはありません。 価格の詳細については、[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy)に関するページをご覧ください。
+   Azure Policy 内には、*Free* と *Standard* という 2 つの価格レベルがあります。 Free レベルでは、今後のリソースにのみポリシーを強制することができます。Standard では、既存のリソースにも強制して、コンプライアンスの状態に対する理解を深めることができます。 Azure Policy はプレビュー段階であるため、価格モデルはまだリリースされていません。したがって、*[Standard]* を選択しても、請求が発生することはありません。 価格の詳細については、[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy)に関するページをご覧ください。
 
-8. **[スコープ]** を選びます。スコープは、以前に登録したサブスクリプション (またはリソース グループ) です。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループの範囲が含まれる可能性があります。
+8. **[スコープ]** を選びます。スコープは、以前に登録したサブスクリプション (またはリソース グループ) です。 スコープによって、ポリシー割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。
 
    この例では、**Azure Analytics Capacity Dev** サブスクリプションを使用しています。 お客様によってサブスクリプションは異なります。
 
@@ -61,7 +62,7 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
 ## <a name="implement-a-new-custom-policy"></a>新しいカスタム ポリシーを実施する
 
-ポリシー定義を割り当てたので、次は、環境全体で G シリーズで VM を作成できないようにすることでコストを節約する新しいポリシーを作成します。 この例では、組織内のユーザーが G シリーズで VM を作成しようとするたびに、要求は拒否されます。
+組み込みのポリシー定義を割り当てたので、Azure Policy でさらに多くのことを行うことができます。 次に、環境全体で VM を G シリーズで作成できないようにすることでコストを節約する新しいカスタム ポリシーを作成します。 そのようにすると、組織内のユーザーが G シリーズで VM を作成しようとするたびに、要求が拒否されます。
 
 1. 左側のウィンドウで **[Authoring]\(作成\)** の **[Definition]\(定義\)** を選択します。
 
@@ -72,7 +73,8 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 
    - ポリシー定義の名前 - *G シリーズよりも小さい VM SKU を必須にする*
    - そのポリシー定義の目的の説明 - このポリシー定義では、コストを削減するために、このスコープ内で作成するすべての VM が、G シリーズよりも小さい SKU を使用することを強制しています。
-   - このポリシー定義を有効にするサブスクリプション - この例では、**Advisor Analytics Capacity Dev** サブスクリプションでこのポリシー定義を使用します。 お客様によってサブスクリプション一覧は異なります。
+   - ポリシー定義が存在するサブスクリプション。 この場合、ポリシー定義は **Advisor Analytics Capacity Dev** に存在しています。 お客様によってサブスクリプション一覧は異なります。
+   - 既存のオプションから選択するか、このポリシー定義用の新しいカテゴリを作成します。
    - 次の JSON コードをコピーし、必要に応じて以下のものを使用して更新します。
       - ポリシー パラメーター。
       - ポリシー ルール/条件。この例では、VM SKU サイズが G シリーズと同じサイズです。
@@ -102,7 +104,9 @@ Azure Policy でコンプライアンスを強制する最初の手順は、ポ�
 }
     ```
 
-    JSON コードのサンプルを確認するには、「[Azure Policy のテンプレート](json-samples.md)」をご覧ください。
+    ポリシー規則の "*field プロパティ*" の値は、Name、Type、Location、Tags、またはエイリアスでなければなりません。 たとえば、「`"Microsoft.Compute/VirtualMachines/Size"`」のように入力します。
+
+    JSON コードの他のサンプルについては、「[Azure Policy のテンプレート](json-samples.md)」を参照してください。
 
 4. **[保存]** を選択します。
 
@@ -333,22 +337,22 @@ az policy definition list
 2. ページの上部にある **[Initiative Definition]\(イニシアチブ定義\)** を選択します。**[Initiative Definition]\(イニシアチブ定義\)** フォームが表示されます。
 3. イニシアチブの名前と説明を入力します。
 
-   この例では、セキュリティ保護に関するポリシー定義にリソースが準拠するように、イニシアチブに「**Get Secure**」(セキュリティ保護) という名前を付け、「**This initiative has been created to handle all policy definitions associated with securing resources**」(このイニシアチブは、リソースのセキュリティ保護に関連するすべてのポリシー定義を処理するために作成されました) という説明を入力します。
+   この例では、セキュリティ保護に関するポリシー定義にリソースが準拠していることを確認します。 そのため、イニシアチブに「**Get Secure**」(セキュリティ保護) という名前を付け、「**This initiative has been created to handle all policy definitions associated with securing resources**」(このイニシアチブは、リソースのセキュリティ保護に関連するすべてのポリシー定義を処理するために作成されました) という説明を入力します。
 
    ![イニシアチブ定義](media/create-manage-policy/initiative-definition.png)
 
-4. **[Available Definitions]\(使用できる定義\)** の一覧から、そのイニシアチブに追加するポリシー定義を選択します。 作成した **[Get secure]\(セキュリティ保護\)** イニシアチブのために、次の組み込みのポリシー定義を追加します。
+4. **[Available Definitions]\(使用できる定義\)** の一覧から、そのイニシアチブに追加するポリシー定義を選択します。 作成した **[Get secure]\(セキュリティ保護\)** イニシアチブのために、次の組み込みのポリシー定義を**追加**します。
    - SQL Server バージョン 12.0 が必要
-   - Monitor unprotected web applications in the security center (Security Center で保護されていない Web アプリケーションを監視する)。
+   - Monitor unprotected web applications in Security Center (Security Center で保護されていない Web アプリケーションを監視する)。
    - Monitor permissive network across in Security Center (Security Center 全体で制限の緩やかなネットワークを監視する)。
    - Monitor possible app Whitelisting in Security Center (Security Center でアプリケーションのホワイトリスト登録処理の可能性を監視する)。
    - Monitor unencrypted VM Disks in Security Center (Security Center で暗号化されていない VM ディスクを監視する)。
 
    ![イニシアチブ定義](media/create-manage-policy/initiative-definition-2.png)
 
-   一覧からポリシー定義を選択すると、上図のように **[Policies and parameters]\(ポリシーとパラメーター\)** に表示されます。
+   一覧からポリシー定義を選択すると、上の図のように **[Policies and parameters]\(ポリシーとパラメーター\)** に表示されます。
 
-5. **[作成]**を選択します。
+5. **[定義の場所]** を使用して、定義を格納するサブスクリプションを選択します。 **[保存]** を選択します。
 
 ### <a name="assign-an-initiative-definition"></a>イニシアチブ定義を割り当てる
 
@@ -358,27 +362,27 @@ az policy definition list
 
    ![定義を割り当てる](media/create-manage-policy/assign-definition.png)
 
-4. **[Assignment]\(割り当て\)** フォームに次のように入力します。
-   - [name]\(名前\): Get secure assignment (セキュリティ保護の割り当て)
-   - [description]\(説明\): this initiative assignment is tailored towards enforcing this group of policy definitions in the **Azure Advisor Capacity Dev** subscription (このイニシアチブの割り当ては、Azure Advisor Capacity Dev サブスクリプションでこのポリシー定義グループを強制するために調整されています)
-   - [pricing tier]\(価格レベル\): Standard
-   - [scope you would like this assignment applied to]\(この割り当てを適用するスコープ\): **Azure Advisor Capacity Dev**
+4. **[割り当て]** フォームに、以下のサンプル情報を入力します。 独自の情報を使用することもできます。
+   - 名前: Get secure assignment (セキュリティ保護の割り当て)
+   - 説明: This initiative assignment is tailored to enforce this group of policy definitions in the **Azure Advisor Capacity Dev** subscription (このイニシアチブの割り当ては、Azure Advisor Capacity Dev サブスクリプションでこのポリシー定義グループを強制するために調整されています)
+   - 価格レベル: Standard
+   - この割り当てを適用するスコープ: **Azure Advisor Capacity Dev** 独自のサブスクリプションとリソース グループを選択できます。
 
 5. **[割り当て]** を選択します。
 
 ## <a name="resolve-a-non-compliant-or-denied-resource"></a>準拠していないリソースまたは拒否されたリソースを解決する
 
-上の例に従って、SQL Server バージョン 12.0 を必須にするポリシー定義を割り当てると、別バージョンで作成された SQL サーバーは拒否されます。 このセクションでは、別バージョンで SQL サーバーを作成しようとして拒否された場合に、除外を要求して解決する手順について説明します。
+上の例に従って、SQL Server バージョン 12.0 を必須にするポリシー定義を割り当てると、別バージョンで作成された SQL サーバーは拒否されます。 このセクションでは、別バージョンで SQL サーバーを作成しようとして拒否された場合に、除外を要求して解決する手順について説明します。 除外は、基本的にはポリシーの強制を行わないようにします。 除外をリソース グループに適用することも、個々のリソースだけに絞り込むこともできます。
 
 1. 左側のウィンドウの **[割り当て]** を選択します。
-2. すべてのポリシー割り当て一覧から、*[Require SQL Server Version 12.0]\(SQL Server バージョン 12.0 が必要\)* 割り当てを開始します。
-3. SQL サーバーを作成するリソース グループについて、除外を要求します。 この例では、Microsoft.Sql/servers/databases の *baconandbeer/Cheetos* と *baconandbeer/Chorizo* を除外します。
+2. すべてのポリシー割り当て一覧から、*[Require SQL Server version 12.0]\(SQL Server バージョン 12.0 が必要\)* 割り当てを開きます。
+3. SQL サーバーを作成するリソース グループ内のリソースについて、除外を**選択**します。 この例では、Microsoft.Sql/servers/databases: *azuremetrictest/testdb* および *azuremetrictest/testdb2* を除外します。
 
    ![除外を要求する](media/create-manage-policy/request-exclusion.png)
 
    拒否されたリソースを解決する他の方法として、作成した SQL サーバーが必要であるという強い理由がある場合はポリシーに関連付けられた連絡先に連絡する方法と、ポリシーにアクセス権を持っている場合は直接編集する方法があります。
 
-4. **[保存]** を選択します。
+4. **[割り当て]** をクリックします。
 
 このセクションでは、バージョン 12.0 で SQL サーバーを作成しようとして拒否された場合に、リソースの除外を要求して解決しました。
 

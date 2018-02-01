@@ -14,25 +14,25 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: 6268cff5f6c87d269f431dcdf5e6a1ee2e2bcf1f
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: fb47ceb63d45a3e896d55d8c304562cc667d0414
+ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート
 
-この記事には、Azure Storage Explorer 0.9.3 (プレビュー) のリリース ノート、および以前のバージョンのリリース ノートが含まれています。
+この記事には、Azure Storage Explorer 0.9.4 (プレビュー) リリースのリリース ノート、および以前のバージョンのリリース ノートが含まれています。
 
 [Microsoft Azure ストレージ エクスプローラー (プレビュー)](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
-## <a name="version-093"></a>バージョン 0.9.3
-12/08/2017
+## <a name="version-094--093"></a>バージョン 0.9.4/0.9.3
+2018/01/21
 
-### <a name="download-azure-storage-explorer-093-preview"></a>Azure Storage Explorer 0.9.3 (プレビュー) をダウンロードする
-- [Windows 用 Azure Storage Explorer 0.9.3 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure Storage Explorer 0.9.3 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure Storage Explorer 0.9.3 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-094-preview"></a>Azure Storage Explorer 0.9.4 (プレビュー) をダウンロードする
+- [Windows 用 Azure Storage Explorer 0.9.4 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 0.9.4 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 0.9.4 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新規
 * 既存の Storage Explorer ウィンドウは以下の場合に再利用されます。
@@ -44,6 +44,7 @@ ms.lasthandoff: 01/09/2018
     * Mac の場合は、アプリケーション メニューに [新規ウィンドウ] オプションがあります。
 
 ### <a name="fixes"></a>修正
+* セキュリティの問題を修正しました。 できるだけ早く 0.9.4 にアップグレードしてください。
 * 古いアクティビティが適切にクリーンアップされませんでした。 これは長時間実行ジョブのパフォーマンスに影響していました。 現在は適切にクリーンアップされるようになっています。
 * 大量のファイルとディレクトリに関連するアクションによって、Storage Explorer がフリーズすることがありました。 Azure へのファイル共有の要求は、システム リソースの使用を制限するように調節されるようになりました。
 
@@ -94,7 +95,7 @@ ms.lasthandoff: 01/09/2018
 
 ### <a name="new"></a>新規
 * Azure Cosmos DB のプレビューのサポート:
-    * [オンライン ドキュメント](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * [オンライン ドキュメント](./cosmos-db/storage-explorer.md)
     * データベースとコレクションの作成
     * データの操作
     * ドキュメントの照会、作成、または削除
@@ -174,7 +175,7 @@ ms.lasthandoff: 01/09/2018
 10/20/2017
 ### <a name="new"></a>新規
 * Azure Cosmos DB のプレビューのサポート:
-    * [オンライン ドキュメント](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
+    * [オンライン ドキュメント](./cosmos-db/storage-explorer.md)
     * データベースとコレクションの作成
     * データの操作
     * ドキュメントの照会、作成、または削除

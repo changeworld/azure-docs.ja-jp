@@ -3,7 +3,7 @@ title: "Azure AD Connect: インストールの種類の選択 | Microsoft Docs"
 description: "このトピックでは、Azure AD Connect で使用するインストールの種類を選択する方法について説明します"
 services: active-directory
 documentationcenter: 
-author: andkjell
+author: billmath
 manager: mtillman
 editor: 
 ms.assetid: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 99b97de182ddbfa8b490c15b2a6a38cc69421283
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9b7bcd5856ec94367edd586c28c781ac9569a792
+ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択
 Azure AD Connect には、簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
@@ -71,5 +71,5 @@ Azure AD Sync を使用している場合は、Connect を新しいバージョ�
 ## <a name="migrate-from-fim2010-or-mim2016"></a>FIM2010 または MIM2016 からの移行
 Azure AD コネクタで Forefront Identity Manager 2010 または Microsoft Identity Manager 2016 を使用している場合、唯一のオプションは移行です。 [スウィング移行](active-directory-aadconnect-upgrade-previous-version.md#swing-migration)に関するトピックで説明されている手順に従ってください。 この手順の Azure AD Sync の部分すべてを、FIM2010/MIM2016 に置き換えます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 使用するオプションに応じて、左側の目次を使用して、詳細な手順が示されている記事を見つけてください。

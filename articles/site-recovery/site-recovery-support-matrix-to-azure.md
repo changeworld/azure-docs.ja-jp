@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 10/30/2017
 ms.author: rajanaki
-ms.openlocfilehash: 98f3b1fe5a0f1d7518e8f0ef6f2a478f59559139
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: a72c9104dc2df0c8a874f757c100a19dc26c1564
+ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>オンプレミスから Azure へのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
@@ -154,8 +154,8 @@ Virtual Networks のサービス エンドポイント (Azure Storage ファイ�
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | --- | ---
-NFS | VMware = はい<br/><br/> 物理サーバー = いいえ | N/A
-SMB 3.0 | N/A | [はい]
+NFS | VMware = はい<br/><br/> 物理サーバー = いいえ | 該当なし
+SMB 3.0 | 該当なし | [はい]
 SAN (ISCSI) | [はい] | [はい]
 マルチパス (MPIO)<br></br>テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON | [はい] | [はい]
 
@@ -163,15 +163,15 @@ SAN (ISCSI) | [はい] | [はい]
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---
-VMDK | [はい] | N/A
-VHD/VHDX | N/A | [はい]
-第 2 世代 VM | N/A | [はい]
-EFI/UEFI| いいえ  | [はい]
+VMDK | [はい] | 該当なし
+VHD/VHDX | 該当なし | [はい]
+第 2 世代 VM | 該当なし | [はい]
+EFI/UEFI| Windows Server 2012 以降の Azure への移行のみ。 </br></br> ** この表の下部の注意事項をご覧ください。  | [はい]
 共有クラスター ディスク | いいえ  | いいえ 
 暗号化されたディスク | いいえ  | いいえ 
-NFS | いいえ  | N/A
+NFS | いいえ  | 該当なし
 SMB 3.0 | いいえ  | いいえ 
-RDM | [はい]<br/><br/> 物理サーバー = 該当なし | N/A
+RDM | [はい]<br/><br/> 物理サーバー = 該当なし | 該当なし
 1 TB より大きいディスク | [はい]<br/><br/>最大 4095 GB | [はい]<br/><br/>最大 4095 GB
 4K 論理および 4K 物理セクター サイズのディスク | [はい] | Generation 1 VM の場合はサポートされません<br/><br/>Generation 2 VM の場合はサポートされません
 4K 論理および 512 バイトの物理セクター サイズのディスク | [はい] |  [はい]
@@ -179,7 +179,13 @@ RDM | [はい]<br/><br/> 物理サーバー = 該当なし | N/A
 記憶域 | いいえ  | [はい]
 ディスクのホット アド/削除 | いいえ  | いいえ 
 ディスクの除外 | [はい] | [はい]
-マルチパス (MPIO) | N/A | [はい]
+マルチパス (MPIO) | 該当なし | [はい]
+
+> [!NOTE]
+> ** VMware 仮想マシンまたは Windows Server 2012 以降を実行する物理サーバーの UEFI ブートは、Azure に移行できます。 次の制限事項が適用されます。
+> - Azure への移行のみ。 オンプレミスの VMware サイトへのフェールバックはサポートされていません。
+> - サーバーの OS ディスクでサポートされるパーティションは、4 つまでです。
+> - バージョン 9.13 以降の Azure Site Recovery Mobility サービスが必要です。
 
 **Azure Storage** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---

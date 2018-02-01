@@ -3,7 +3,7 @@ title: "共有スナップショット (プレビュー) を操作する| Micros
 description: "共有スナップショットは、Azure Files 共有の読み取り専用バージョンであり、共有をバックアップする手段として特定の時点で取得されます。"
 services: storage
 documentationcenter: .net
-author: renash
+author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: 5212866bda9ff775d32ebb57874b3d58e11f1eb3
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: c4a5f7d28601867c383b8b348568e4bb580a81eb
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="work-with-share-snapshots-preview"></a>共有スナップショット (プレビュー) を操作する
 共有スナップショット (プレビュー) は、ある時点で取得された Azure Files 共有の読み取り専用バージョンです。 作成された共有スナップショットは、読み取り、コピー、削除はできますが、変更はできません。 共有スナップショットは、共有のある時点の内容をそのままバックアップするための手段を提供します。 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/26/2017
 
 
 ### <a name="create-a-share-snapshot-by-using-azure-cli-20"></a>Azure CLI 2.0 を使用して共有スナップショットを作成する
-次のように、`az storage share snapshot` コマンドを使用して、共有スナップショットを作成できます。
+次のように、`az storage share snapshot` コマンドを使用して、共有スナップショットを削除できます。
 
 ```azurecli-interactive
 az storage share snapshot -n <share name>
@@ -59,7 +59,7 @@ az storage share snapshot -n <share name>
 ```
 
 ### <a name="create-a-share-snapshot-by-using-powershell"></a>PowerShell を使用して共有スナップショットを作成する
-次のように、`$share.Snapshot()` コマンドを使用して、共有スナップショットを作成できます。
+次のように、`$share.Snapshot()` コマンドを使用して、共有スナップショットを削除できます。
 
 ```powershell
 $connectionstring="DefaultEndpointsProtocol=http;FileEndpoint=http:<Storage Account Name>.file.core.windows.net /;AccountName=:<Storage Account Name>;AccountKey=:<Storage Account Key>"
@@ -246,7 +246,46 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 }
 ```
 
+<<<<<<< HEAD
+### <a name="file-share-snapshot-operations-in-azure-powershell"></a>Azure PowerShell でのファイル共有スナップショットの操作
+Azure PowerShell を使用して、共有スナップショットの一覧表示、共有スナップショット コンテンツの参照、共有スナップショットからのファイルの復元またはダウンロード、共有スナップショットの削除などの同じ操作を実行できます。
+
+#### <a name="list-share-snapshots"></a>共有スナップショットの一覧表示
+
+`Get-AzureStorageShare` を使用して、特定の共有の共有スナップショットを一覧表示することができます
+
+```powershell
+Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+```
+
+#### <a name="browse-share-snapshots"></a>共有スナップショットの参照
+特定の共有スナップショットを参照して、そのスナップショットを指示する `-Share` の値と共に `Get-AzureStorageFile` を使用してコンテンツを表示することもできます。
+
+```powershell
+$snapshot = Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+Get-AzureStorageFile -Share $snapshot
+```
+
+#### <a name="restore-from-share-snapshots"></a>共有スナップショットからの復元
+
+`Get-AzureStorageFileContent` コマンドを使用して、共有スナップショットからファイルをコピーまたはダウンロードすることで、ファイルを復元できます。
+
+```powershell
+$download='C:\Temp\Download'
+Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $download
+```
+
+```powershell
+$snapshot = Get-AzureStorageShare -Name "ContosoShare06" -SnapshotTime "6/16/2017 9:48:41 AM +00:00"
+$directory = Get-AzureStorageFile -ShareName "ContosoShare06" -Path "ContosoWorkingFolder" | Get-AzureStorageFile
+Get-AzureStorageFileContent -Share $snapshot -Path $file -Destination $directory
+```
+
+
+## <a name="delete-azure-files-share-snapshot"></a>Azure ファイル共有スナップショットの削除
+=======
 ## <a name="delete-a-share-snapshot"></a>共有スナップショットの削除
+>>>>>>> 6a1833e10031fbf1ab204bb1f30cb54cf5fbcada
 
 Azure ポータル、PowerShell、CLI、REST API、または任意のストレージ SDK を使用して、共有スナップショットを削除できます。 次のセクションでは、Azure ポータル、CLI、および PowerShell を使用して共有スナップショットを削除する方法を説明します。
 
@@ -294,6 +333,6 @@ Remove-AzureStorageShare -Share $snapshot
 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [スナップショットの概要](storage-snapshots-files.md)
 * [スナップショットに関してよく寄せられる質問](storage-files-faq.md)

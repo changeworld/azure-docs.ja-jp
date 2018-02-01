@@ -1,10 +1,10 @@
 ---
-title: "Service Fabric Explorer を使用したクラスターの視覚化 | Microsoft Docs"
-description: "Service Fabric Explorer は、Microsoft Azure Service Fabric クラスター内のクラウド アプリケーションとノードを検査および管理するための Web ベースのツールです。"
+title: "Azure Service Fabric Explorer を使用したクラスターの視覚化 | Microsoft Docs"
+description: "Service Fabric Explorer は、Microsoft Azure Service Fabric クラスター内のクラウド アプリケーションとノードを検査および管理するためのアプリケーションです。"
 services: service-fabric
 documentationcenter: .net
-author: rwike77
-manager: timlt
+author: mikkelhegn
+manager: msfussell
 editor: 
 ms.assetid: c875b993-b4eb-494b-94b5-e02f5eddbd6a
 ms.service: service-fabric
@@ -12,25 +12,58 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2017
-ms.author: ryanwi
-ms.openlocfilehash: 965ffc0f8cec26cccbe6e6459731afc234111f4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/08/2018
+ms.author: mikhegn
+ms.openlocfilehash: 34e00058591bc5a0a02bc408cfc3fcc11010f17c
+ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
-Service Fabric Explorer は、Azure Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 Service Fabric クラスター内で直接ホストされているので、ローカル クラスターが実行されている場所に関係なく、いつでも使用できます。
+
+Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検査および管理するためのオープン ソース ツールです。 Service Fabric Explorer は、Windows および Linux 用のデスクトップ アプリケーションです。 MacOS のサポートは近日対応予定です。
+
+## <a name="service-fabric-explorer-download"></a>Service Fabric Explorer のダウンロード
+
+デスクトップ アプリケーションとして Service Fabric Explorer をダウンロードするには、次のリンクを使ってください。
+
+- Windows
+  - https://aka.ms/sfx-windows
+
+- Linux
+  - https://aka.ms/sfx-linux-x86
+  - https://aka.ms/sfx-linux-x64
+
+> [!NOTE]
+> Service Fabric Explorer のデスクトップ バージョンでは、クラスター サポートより機能が多い場合や少ない場合があります。 クラスターに展開される Service Fabric Explorer バージョンにフォールバックすることで、完全な機能の互換性が保証されます。
+>
+>
+
+### <a name="running-service-fabric-explorer-from-the-cluster"></a>クラスターからの Service Fabric Explorer の実行
+
+Service Fabric Explorer は、Service Fabric クラスターの HTTP 管理エンドポイントでもホストされています。 Web ブラウザーで SFX を起動するには、任意のブラウザーからクラスターの HTTP 管理エンドポイント (例: https://clusterFQDN:19080) を参照します。
+
+開発者ワークステーションのセットアップでは、http://localhost:19080/Explorer に移動することにより、ローカル クラスターで Service Fabric Explorer を起動できます。 詳しくは、「[開発環境を準備する](service-fabric-get-started.md)」をご覧ください。
+
+## <a name="connect-to-a-service-fabric-cluster"></a>Service Fabric クラスターに接続する
+Service Fabric クラスターに接続するには、クラスター管理エンドポイント (FQDN/IP) と HTTP 管理エンドポイント ポート (既定では 19080) が必要です。 たとえば、https://mysfcluster.westus.cloudapp.azure.com:19080 などです。 ワークステーションでローカル クラスターに接続するには、[ローカルホストに接続] チェック ボックスを使います。
+
+### <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
+証明書または Azure Active Directory (AAD) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。
+
+セキュリティで保護されたクラスターに接続する場合は、クラスターの構成に応じて、クライアント証明書を提示するか、AAD を使ってログインする必要があります。
 
 ## <a name="video-tutorial"></a>ビデオ チュートリアル
 
 Service Fabric Explorer の使用方法については、次の Microsoft Virtual Academy のビデオをご覧ください。
 
-[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
+> [!NOTE]
+> このビデオで示されている Service Fabric Explorer は、デスクトップ バージョンではなく、Service Fabric クラスターでホストされています。
+>
+>
 
-## <a name="connect-to-service-fabric-explorer"></a>Service Fabric Explorer への接続
-[開発環境を準備する](service-fabric-get-started.md)手順に従った場合は、http://localhost:19080/Explorer に移動することで、ローカル クラスター上で Service Fabric Explorer を起動できます。
+[<center><img src="./media/service-fabric-visualizing-your-cluster/SfxVideo.png" WIDTH="360" HEIGHT="244"></center>](https://mva.microsoft.com/en-US/training-courses/building-microservices-applications-on-azure-service-fabric-16747?l=bBTFg46yC_9806218965)
 
 ## <a name="understand-the-service-fabric-explorer-layout"></a>Service Fabric Explorer のレイアウトについて
 左側のツリーを使用して、Service Fabric Explorer 内を移動できます。 ツリーのルートでは、クラスター ダッシュボードにクラスターの概要 (アプリケーションとノードの正常性の概要など) が表示されます。
@@ -68,25 +101,6 @@ Service Fabric Explorer では、クラスター内のノード、アプリケ�
 > [!TIP]
 > 同じ操作を実行するには、各要素の横にある省略記号をクリックします。
 >
->
-
-次の表に、各エンティティに対して実行できるアクションを示します。
-
-| **エンティティ** | **アクション** | **説明** |
-| --- | --- | --- |
-| アプリケーションの種類 |種類のプロビジョニング解除 |アプリケーション パッケージをクラスターのイメージ ストアから削除します。 その種類のすべてのアプリケーションを先に削除する必要があります。 |
-| アプリケーション |アプリケーションの削除 |アプリケーションを削除します。サービスと状態もすべて削除されます (存在する場合)。 |
-| サービス |サービスの削除 |サービスと状態を削除します (存在する場合)。 |
-| ノード |アクティブ化 |ノードをアクティブ化します。 |
-| ノード | 非アクティブ化 (一時停止) | 現在の状態でノードを一時停止します。 サービスは引き続き実行されますが、Service Fabric は、障害やデータの不整合を回避する必要がない限り、移動を積極的に行いません。 通常、このアクションは、特定のノードでのデバッグ サービスを有効にして、検査中に移動が発生しないようにするために使用されます。 | |
-| ノード | 非アクティブ化 (再開) | ノードからメモリ内のすべてのサービスを安全に移動し、永続的なサービスを終了します。 通常は、ホスト プロセスまたはコンピューターの再起動が必要な場合に使用されます。 | |
-| ノード | 非アクティブ化 (データを削除) | 十分なレプリカを作成した後、ノードで実行されているすべてのサービスを安全に閉じます。 通常は、ノード (または少なくともそのストレージ) が完全にコミットの対象から除外された場合に使用されます。 | |
-| ノード | ノードの状態の削除 | ノードのレプリカの知識をクラスターから削除します。 通常は、既に障害が発生したノードを回復不能と判断したときに使用されます。 | |
-| ノード | 再起動 | ノードを再起動することによって、ノード障害をシミュレートします。 詳細情報は[こちら](/powershell/module/servicefabric/restart-servicefabricnode?view=azureservicefabricps)です | |
-
-多くの操作は破壊的であるため、アクションを実行する前に確認を求められることがあります。
-
-> [!TIP]
 > Service Fabric Explorer を使用して実行できる操作はすべて、PowerShell または REST API を使用して実行し、自動化することもできます。
 >
 >
@@ -96,27 +110,11 @@ Service Fabric Explorer を使用して、特定のアプリケーションの�
 ![Service Fabric Explorer でのアプリケーション インスタンスの作成][sfx-create-app-instance]
 
 > [!NOTE]
-> Service Fabric Explorer を使って作成されたアプリケーション インスタンスは現在パラメーター化できません。 これらは、既定のパラメーター値を使用して作成されます。
+> アプリケーション インスタンスを作成するとき、Service Fabric Explorer ではパラメーターはサポートされません。 アプリケーション インスタンスは、既定のパラメーター値を使います。
 >
 >
 
-## <a name="connect-to-a-remote-service-fabric-cluster"></a>リモート Service Fabric クラスターへの接続
-クラスターのエンドポイントがわかっていて、かつ十分なアクセス許可があれば、任意のブラウザーから Service Fabric Explorer にアクセスできます。 これは、Service Fabric Explorer がクラスター内で実行されている別のサービスであるからです。
-
-### <a name="discover-the-service-fabric-explorer-endpoint-for-a-remote-cluster"></a>リモート クラスターの Service Fabric Explorer エンドポイントを検出する
-特定のクラスターの Service Fabric Explorer にアクセスするには、ブラウザーで次の場所にアクセスします。
-
-http://&lt;your-cluster-endpoint&gt;:19080/Explorer
-
-Azure クラスターの場合、完全な URL は Azure Portal の [Cluster Essentials] ウィンドウにもあります。
-
-### <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
-証明書または Azure Active Directory (AAD) を使用して、クライアントによる Service Fabric クラスターへのアクセスを制御できます。
-
-セキュリティで保護されたクラスターで Service Fabric Explorer に接続する場合、クラスターの構成に応じて、クライアント証明書を提示するか、AAD を使用してログインする必要があります。
-
-## <a name="next-steps"></a>次のステップ
-* [Testability の概要](service-fabric-testability-overview.md)
+## <a name="next-steps"></a>次の手順
 * [Visual Studio での Service Fabric アプリケーションの管理](service-fabric-manage-application-in-visual-studio.md)
 * [PowerShell を使用した Service Fabric アプリケーションのデプロイメント](service-fabric-deploy-remove-applications.md)
 

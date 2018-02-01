@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 23f111bef6a68115e4474f3c13e91d69d7e89e1c
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 7562e43f58f303ea34a08b8b9e056a0c3d0c10d0
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -135,6 +135,8 @@ Reset-StorageSyncServer
 
     > [!NOTE]
     > Azure File Sync は、開いているハンドルがあるファイルを同期するために VSS スナップショットを定期的に取得します。
+
+現在、別のサブスクリプションへのリソースの移動、または異なる Azure AD テナントへの移動は、サポートされていません。  サブスクリプションが別のテナントに移動すると、所有権が変化するためにサービスは Azure ファイル共有にアクセスできなくなります。 テナントが変更された場合は、サーバー エンドポイントとクラウド エンドポイントを削除し (再利用される Azure ファイル共有のクリーニング方法に関する同期グループ管理のセクションを参照)、同期グループを再作成する必要があります。
 
 ## <a name="cloud-tiering"></a>クラウドの階層化 
 クラウドの階層化の障害パスは 2 つあります。

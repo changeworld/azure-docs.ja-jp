@@ -11,17 +11,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: f13f8aa0ca8686c0582bed77d047c9e6b39f7aa2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b4523747b57ee7a3d48211c9bb7fba1123fe4ce
+ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/17/2018
 ---
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory での SQL Server ストアド プロシージャ アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - GA](v1/data-factory-stored-proc-activity.md)
+> * [バージョン 1 - 一般公開](v1/data-factory-stored-proc-activity.md)
 > * [バージョン 2 - プレビュー](transform-data-using-stored-procedure.md)
 
 
@@ -34,7 +34,7 @@ Data Factory [パイプライン](concepts-pipelines-activities.md)のデータ�
 
 ストアド プロシージャ アクティビティを使用して、社内または Azure 仮想マシン (VM) 上の次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。 
 
-- Azure SQL Database
+- の接続文字列
 - Azure SQL Data Warehouse
 - SQL Server データベース  SQL Server を使用している場合は、データベースをホストしているコンピューター、またはデータベースにアクセスできる別のコンピューターにセルフホステッド統合ランタイムをインストールします。 セルフホステッド統合ランタイムは、管理された確実な方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[セルフホステッド統合ランタイム](create-self-hosted-integration-runtime.md)に関する記事をご覧ください。
 
@@ -70,16 +70,16 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 
 次の表に、JSON のプロパティを示します。
 
-| プロパティ                  | 説明                              | 必須 |
+| プロパティ                  | [説明]                              | 必須 |
 | ------------------------- | ---------------------------------------- | -------- |
-| name                      | アクティビティの名前                     | はい      |
-| 説明               | アクティビティの用途を説明するテキストです。 | なし       |
-| type                      | ストアド プロシージャ アクティビティの場合、アクティビティの種類は SqlServerStoredProcedure です。 | あり      |
-| 既定のコンテナー         | Data Factory のリンクされたサービスとして登録されている Azure SQL Database、Azure SQL Data Warehouse、または SQL Server への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | あり      |
-| storedProcedureName       | 出力テーブルで使用するリンクされたサービスで表される Azure SQL Database、Azure SQL Data Warehouse、または SQL Server データベースのストアド プロシージャの名前を指定します。 | あり      |
-| storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 `"param1": { "value": "param1Value","type":"param1Type" }` を使用して、パラメーター値と、データ ソースでサポートされるパラメーター値のネイティブ型を渡します。 パラメーターで null を渡す必要がある場合は、*"param1": { "value": null }* (すべて小文字) を使用します。 | いいえ       |
+| name                      | アクティビティの名前                     | [はい]      |
+| 説明               | アクティビティの用途を説明するテキストです。 | いいえ        |
+| 型                      | ストアド プロシージャ アクティビティの場合、アクティビティの種類は **SqlServerStoredProcedure** です | [はい]      |
+| 既定のコンテナー         | Data Factory のリンクされたサービスとして登録されている **Azure SQL Database**、**Azure SQL Data Warehouse**、または **SQL Server** への参照。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。 | [はい]      |
+| storedProcedureName       | 呼び出すストアド プロシージャの名前を指定します。 | [はい]      |
+| storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 パラメーター値と、データ ソースでサポートされるパラメーター値の型を渡すには、`"param1": { "value": "param1Value","type":"param1Type" }` を使います。 パラメーターで null を渡す必要がある場合は、`"param1": { "value": null }` (すべて小文字) を使います。 | いいえ        |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)

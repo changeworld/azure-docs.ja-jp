@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 10c8b708cad245f4ac0304489beb36dcf63cd4b1
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: fcd79f25dee4ccaf674594222a6465fda137fd7a
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 01/19/2018
 ---
 # <a name="manage-registered-servers-with-azure-file-sync-preview"></a>Azure File Sync (プレビュー) に登録されたサーバーの管理
 Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -42,6 +42,26 @@ Azure ファイル同期 (プレビュー) を使用すると、オンプレミ�
 
     > [!Note]  
     > サーバーの登録と登録解除には、最新バージョンの AzureRM PowerShell モジュールを使用することをお勧めします。 AzureRM パッケージがこのサーバーにインストールされていたことがあり、そのサーバー上の PowerShell バージョンが 5.* 以降の場合、`Update-Module` コマンドレットを使用してそのパッケージを更新することができます。 
+* お使いの環境でネットワーク プロキシ サーバーを使用する場合、同期エージェントが使用するサーバー上のプロキシ設定を構成します。
+    1. プロキシ IP アドレスとポート番号を決定します。
+    2. 以下の 2 つのファイルを編集します。
+        * C:\Windows\Microsoft.NET\Framework64\v4.0.30319\Config\machine.config
+        * C:\Windows\Microsoft.NET\Framework\v4.0.30319\Config\machine.config
+    3. 上記 2 ファイルの /System.ServiceModel 下に図 1 (このセクションの下) の行を追加します。127.0.0.1:8888 は適正な IP アドレス (127.0.0.1 を置き換える) と適正なポート番号 (8888 を置き換える) に変更します。
+    4. コマンド ライン経由で以下の WinHTTP プロキシ設定を設定します。
+        * プロキシを表示する:   netsh winhttp show proxy
+        * プロキシを設定する:    netsh winhttp set proxy 127.0.0.1:8888
+        * プロキシをリセットする:   netsh winhttp show proxy
+        * エージェントのインストール後にこれが設定された場合に、同期エージェントを再起動する:   net stop filesyncsvc
+    
+```XML
+    Figure 1:
+    <system.net>
+        <defaultProxy enabled="true" useDefaultCredentials="true">
+            <proxy autoDetect="false" bypassonlocal="false" proxyaddress="http://127.0.0.1:8888" usesystemdefault="false" />
+        </defaultProxy>
+    </system.net>
+```    
 
 ### <a name="register-a-server-with-storage-sync-service"></a>サーバーをストレージ同期サービスに登録する
 Azure File Sync の "*同期グループ*" で、サーバーを "*サーバー エンドポイント*" として使用するには、"*ストレージ同期サービス*" にサーバーを登録しておく必要があります。 サーバーを登録できるストレージ同期サービスは、一度に 1 つに限られます。

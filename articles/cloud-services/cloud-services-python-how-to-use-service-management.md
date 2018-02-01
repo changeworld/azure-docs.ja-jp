@@ -14,11 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: lmazuel
-ms.openlocfilehash: a55a38df765dcd1947312e729dbd37e3284876cf
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: ca6e892e9f40204682be4ed00c413696f2022622
+ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/22/2018
 ---
 # <a name="how-to-use-service-management-from-python"></a>Python からサービス管理を使用する方法
 このガイドでは、Python から一般的なサービス管理タスクをプログラムで実行する方法について説明します。 [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python) の **ServiceManagementService** クラスは、[Azure Portal][management-portal] で使用できるサービス管理関連の機能 (**クラウド サービス、デプロイメント、データ管理サービスおよび仮想マシンの作成、更新、削除など**) の多くへのプログラムによるアクセスをサポートしています。 この機能は、サービス管理へのプログラムによるアクセスが必要なアプリケーションをビルドするために役立つ場合があります。
@@ -394,9 +394,9 @@ VM イメージをキャプチャするには、まず、**capture\_vm\_image** 
         role_size='Small',
         vm_image_name = image_name)
 
-Linux 仮想マシンをキャプチャする方法の詳細については、[Linux 仮想マシンをキャプチャする方法](../virtual-machines/linux/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)に関するページを参照してください。
+クラシック デプロイ モデルで Linux 仮想マシンをキャプチャする方法について詳しくは、[Linux 仮想マシンをキャプチャする方法](../virtual-machines/linux/classic/capture-image-classic.md)に関するページをご覧ください。
 
-Windows 仮想マシンをキャプチャする方法の詳細については、[Windows 仮想マシンをキャプチャする方法](../virtual-machines/windows/classic/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
+クラシック デプロイ モデルで Windows 仮想マシンをキャプチャする方法について詳しくは、[Windows 仮想マシンをキャプチャする方法](../virtual-machines/windows/classic/capture-image-classic.md)に関するページをご覧ください。
 
 ## <a name="What's Next"> </a>次のステップ
 これで、サービス管理の基本を学習できました。[Azure Python SDK の完全な API のリファレンス ドキュメント](http://azure-sdk-for-python.readthedocs.org/)にアクセスして、複雑なタスクを簡単に実行することにより、Python アプリケーションを管理できます。

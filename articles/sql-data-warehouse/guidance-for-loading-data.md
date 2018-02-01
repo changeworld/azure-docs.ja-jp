@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/13/2017
 ms.author: barbkess
-ms.openlocfilehash: 10d06fd29640a350c5522c00c4c9ebd9c6b24c89
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 80974f7660696887783e97b674e2d9921fe2feac
+ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/18/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータ読み込みのベスト プラクティス
 Azure SQL Data Warehouse へのデータの読み込みに関する推奨事項とパフォーマンスの最適化。 
@@ -31,7 +31,7 @@ Azure SQL Data Warehouse へのデータの読み込みに関する推奨事項�
 ## <a name="preparing-data-in-azure-storage"></a>Azure Storage のデータの準備
 待ち時間を最小限に抑えるには、ストレージ層とデータ ウェアハウスを併置します。
 
-ORC ファイル形式にデータをエクスポートする場合、テキストが多く使用されている列は、java のメモリ不足エラーにより、わずか 50 列に制限される可能性があります。 この制限を回避するには、列のサブセットのみをエクスポートします。
+ORC ファイル形式でデータをエクスポートすると、大きなテキスト列がある場合に、Java のメモリ不足エラーが発生することがあります。 この制限を回避するには、列のサブセットのみをエクスポートします。
 
 PolyBase には、1,000,000 バイトを超えるデータを含む行を読み込むことができません。 Azure BLOB ストレージまたは Azure Data Lake Store のテキスト ファイルにデータを保存する場合、データは 1,000,000 バイトよりも少なくする必要があります。 テーブル スキーマには関係なく、このバイト制限はあります。
 
@@ -45,14 +45,22 @@ PolyBase には、1,000,000 バイトを超えるデータを含む行を読み�
 
 適切なコンピューティング リソースで読み込みを実行するには、読み込みを実行するように指定された読み込みユーザーを作成します。 特定のリソース クラスに各読み込みユーザーを割り当てます。 読み込みを実行するには、いずれかの読み込みユーザーとしてログインし、読み込みを実行します。 読み込みは、ユーザーのリソース クラスで実行されます。  この方法は、現在のリソース クラスのニーズに合わせてユーザーのリソース クラスを変更しようとするより簡単です。
 
-このコードは、staticrc20 リソース クラスの読み込みユーザーを作成します。 データベースに対する制御アクセス許可をユーザーに付与してから、そのユーザーを staticrc20 データベース ロールのメンバーとして追加します。 staticRC20 リソース クラスのリソースで読み込みを実行するには、単に LoaderRC20 としてログインし、読み込みを実行します。 
+### <a name="example-of-creating-a-loading-user"></a>読み込みユーザーの作成の例
+この例では、staticrc20 リソース クラスの読み込みユーザーを作成します。 まず、**マスターに接続**し、ログインを作成します。
 
-    ```sql
-    CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
-    CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-    GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-    EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
-    ```
+```sql
+   -- Connect to master
+   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+```
+データ ウェアハウスに接続し、ユーザーを作成します。 次のコードは、mySampleDataWarehouse という名前のデータベースに接続していることを前提としています。 LoaderRC20 という名前のユーザーを作成し、そのユーザーにデータベースに対するアクセス許可の制御を与える方法を示します。 その後、ユーザーを staticrc20 データベース ロールのメンバーとして追加します。  
+
+```sql
+   -- Connect to the database
+   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
+   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
+   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+```
+staticRC20 リソース クラスのリソースで読み込みを実行するには、単に LoaderRC20 としてログインし、読み込みを実行します。
 
 動的リソース クラスではなく、静的リソース クラスで読み込みを実行します。 静的リソース クラスを使用すると、[サービス レベル](performance-tiers.md#service-levels)に関係なく、必ず同じリソースが使用されます。 動的リソース クラスを使用すると、サービス レベルによってリソースが変わります。 動的クラスの場合、サービス レベルが低いと、おそらく読み込みユーザー用により大きなリソース クラスを使用する必要があります。
 
@@ -123,8 +131,8 @@ Azure Storage のアカウント キーを切り替えるには:
 3. Azure にログインし、次回の切り替えに備えてプライマリ アクセス キーを再生成します。
 
 
-## <a name="next-steps"></a>次のステップ
-読み込み処理の監視については、「[DMV を利用してワークロードを監視する](sql-data-warehouse-manage-monitor.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
+データの読み込みの監視については、「[DMV を利用してワークロードを監視する](sql-data-warehouse-manage-monitor.md)」を参照してください。
 
 
 

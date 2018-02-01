@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 529ddd23d144ef8edf7f3ec7c91da60a7ca8ac01
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: d5364dbc1a155c7852b5581d563e4938ad116402
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core Web アプリの作成
 
@@ -140,11 +140,11 @@ Web ブラウザーを使用して、デプロイされたアプリケーショ�
 http://<app_name>.azurewebsites.net
 ```
 
-Node.js のサンプル コードが、組み込みイメージを使用する Web アプリで実行されています。
+.NET Core のサンプル コードが、組み込みイメージを使用する Web アプリで実行されています。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
-**お疲れさまでした。** App Service on Linux に初めての Node.js アプリをデプロイしました。
+**お疲れさまでした。** App Service on Linux に初めての .NET Core アプリをデプロイしました。
 
 ## <a name="update-and-redeploy-the-code"></a>コードを更新して再デプロイする
 

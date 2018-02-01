@@ -1,10 +1,10 @@
 ---
 title: "Microsoft Azure StorSimple データ マネージャー ジョブに .NET SDK を使用する | Microsoft Docs"
-description: ".NET SDK を使用して StorSimple データ マネージャー ジョブを起動する方法について説明します (プライベート プレビュー)"
+description: ".NET SDK を使用して StorSimple データ マネージャー ジョブを起動する方法について説明します。"
 services: storsimple
 documentationcenter: NA
-author: vidarmsft
-manager: syadav
+author: alkohli
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,31 +12,40 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 11/22/2016
-ms.author: vidarmsft
-ms.openlocfilehash: 44d243a034b20b99faf284c8615e470bc6f9d020
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/16/2018
+ms.author: alkohli
+ms.openlocfilehash: d15a5cbda2f0c2a363b40e94c38fed6631aa81b5
+ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/19/2018
 ---
-# <a name="use-the-net-sdk-to-initiate-data-transformation-private-preview"></a>.Net SDK を使用してデータ変換を開始する (プライベート プレビュー)
+# <a name="use-the-net-sdk-to-initiate-data-transformation"></a>.Net SDK を使用してデータ変換を開始する
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 
-この記事では、StorSimple データ マネージャー サービスでデータ変換機能を使用して、StorSimple デバイス データを変換する方法について説明します。 変換されたデータは、クラウド内の他の Azure サービスによって使用されます。 この記事では、データ変換ジョブの開始と、そのジョブの完了を追跡するサンプル .NET コンソール アプリケーションを作成するためのチュートリアルも紹介します。
+この記事では、StorSimple データ マネージャー サービスでデータ変換機能を使用して、StorSimple デバイス データを変換する方法について説明します。 変換されたデータは、クラウド内の他の Azure サービスによって使用されます。
+
+次の 2 つの方法で、データ変換ジョブを起動することができます。
+
+ - .NET SDK を使用する
+ - Azure Automation Runbook を使用する
+ 
+ この記事では、データ変換ジョブを開始し、そのジョブの完了を追跡するサンプル .NET コンソール アプリケーションを作成する方法を詳しく説明します。 Automation 経由でデータ変換を開始する方法の詳細については、[Azure Automation Runbook を使用したデータ変換ジョブのトリガー](storsimple-data-manager-job-using-automation.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
 開始する前に、次の要件が満たされていることを確認します。
-*   Visual Studio 2012、2013、2015、または 2017 がインストールされている。
-*   Azure Powershell がインストールされている。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
-*   データ変換ジョブを初期化するための構成設定 (この設定を取得する手順については、ここで説明します)。
-*   リソース グループ内のハイブリッド データ リソースでジョブ定義が正しく構成されている。
-*   すべての必須 dll。 この dll は [GitHub リポジトリ](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)からダウンロードします。
-*   GitHub リポジトリの `Get-ConfigurationParams.ps1` [スクリプト](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)。
+*   コンピューターで、以下が実行されている。
 
-## <a name="step-by-step"></a>詳細な手順:
+    - Visual Studio 2012、2013、2015、または 2017。
+
+    - Azure Powershell。 [Azure PowerShell のダウンロード](https://azure.microsoft.com/documentation/articles/powershell-install-configure/)。
+*   リソース グループ内で StorSimple Data Manager に正しく構成されたジョブ定義。
+*   すべての必須 dll。 この dll は [GitHub リポジトリ](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls)からダウンロードします。
+*   GitHub リポジトリの [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)スクリプト。
+
+## <a name="step-by-step-procedure"></a>詳細な手順
 
 .NET を使用してデータ変換ジョブを開始する手順を次に示します。
 
@@ -49,28 +58,37 @@ ms.lasthandoff: 10/11/2017
          ```
         ActiveDirectoryKey と AppName のすべての値を渡すことができます。
 
-
 2. このスクリプトは､次の値を出力します｡
-    * [クライアント ID]
+    * クライアント ID
     * テナント ID
     * Active Directory キー (上記で入力したものと同じ)
     * サブスクリプション ID
 
+        ![構成パラメーター スクリプトの出力](media/storsimple-data-manager-dotnet-jobs/get-config-parameters.png)
+
 3. Visual Studio 2012、2013、または 2015 を使用して、C# .NET コンソール アプリケーションを作成します。
 
     1. **Visual Studio 2012/2013/2015**を起動します。
-    1. **[ファイル]** をクリックし、**[新規作成]** をポイントして、**[プロジェクト]** をクリックします。
-    2. **[テンプレート]** を展開し、**[Visual C#]** を選択します。
-    3. 右側にあるプロジェクトの種類の一覧から **[コンソール アプリケーション]** を選択します。
-    4. **名前**として「**DataTransformationApp**」を入力します。
-    5. **場所**として「**C:\DataTransformation**」を入力します。
+    1. **[ファイル] > [新規] > [プロジェクト]** を選択します。
+
+        ![プロジェクト 1 の作成](media/storsimple-data-manager-dotnet-jobs/create-new-project-7.png)        
+    2. **[インストール済み] > [テンプレート] > [Visual C#] > [コンソール アプリケーション]** の順にクリックします。
+    3. **名前**として「**DataTransformationApp**」を入力します。
+    4. **場所**として「**C:\DataTransformation**」を入力します。
     6. **[OK]** をクリックしてプロジェクトを作成します。
 
-4.  ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての DLL を、作成したプロジェクトに**参照**として追加します。 dll ファイルをダウンロードするには、次の操作を行います。
+        ![プロジェクト 2 の作成](media/storsimple-data-manager-dotnet-jobs/create-new-project-1.png)
+
+4.  ここで、[dlls](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls) フォルダーに存在するすべての dll を、作成したプロジェクトに**参照**として追加します。 dll ファイルを追加するには、次の手順を実行します。
 
     1. Visual Studio で、**[表示] > [ソリューション エクスプ ローラー]** の順に移動します。
-    1. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、**[参照の追加]** を右クリックします。
-    2. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、**[追加]**、**[OK]** の順にクリックします。
+    2. データ変換アプリ プロジェクトの左側にある矢印をクリックします。 **[参照]** をクリックし、**[参照の追加]** を右クリックします。
+    
+        ![dlls の追加 1](media/storsimple-data-manager-dotnet-jobs/create-new-project-4.png)
+
+    3. パッケージ フォルダーの場所に移動し、すべての DLL を選択して、**[追加]**、**[OK]** の順にクリックします。
+
+        ![dlls の追加 2](media/storsimple-data-manager-dotnet-jobs/create-new-project-6.png)
 
 5. 次の **using** ステートメントをプロジェクト内のソース ファイル (Program.cs) に追加します。
 
@@ -82,9 +100,8 @@ ms.lasthandoff: 10/11/2017
     using Microsoft.Internal.Dms.DmsWebJob;
     using Microsoft.Internal.Dms.DmsWebJob.Contracts;
     ```
-
-
-6. 次のコードでは、データ変換ジョブ インスタンスを初期化します。 これを **Main メソッド**に追加します。 先ほど取得した構成パラメーターの値を置き換えます。 **リソース グループ名**と**ハイブリッド データ リソース名**の値をプラグインします。 **リソース グループ名**は、ジョブ定義が構成されたハイブリッド データ リソースをホストするリソース グループの名前です。
+    
+6. 次のコードでは、データ変換ジョブ インスタンスを初期化します。 これを **Main メソッド**に追加します。 先ほど取得した構成パラメーターの値を置き換えます。 **リソース グループ名**と **ResourceName** の値をプラグインします。 **ResourceGroupName** は、ジョブ定義が構成された StorSimple Data Manager に関連付けられています。 **ResourceName** は、お使いの StorSimple Data Manager サービスの名前です。
 
     ```
     // Setup the configuration parameters.
@@ -100,16 +117,14 @@ ms.lasthandoff: 10/11/2017
 
     // Initialize the Data Transformation Job instance.
     DataTransformationJob dataTransformationJob = new DataTransformationJob(configParams);
-
     ```
-
+   
 7. ジョブ定義を実行するときに使用するパラメーターを指定します
 
     ```
     string jobDefinitionName = "job-definition-name";
 
     DataTransformationInput dataTransformationInput = dataTransformationJob.GetJobDefinitionParameters(jobDefinitionName);
-
     ```
 
     (または)
@@ -139,7 +154,6 @@ ms.lasthandoff: 10/11/2017
         // Name of the volume on StorSimple device on which the relevant data is present. 
         VolumeNames = volumeNames
     };
-    
     ```
 
 8. 初期化したら、次のコードを追加して、ジョブ定義でデータ変換ジョブをトリガーします。 適切な**ジョブ定義名**をプラグインします。
@@ -149,12 +163,17 @@ ms.lasthandoff: 10/11/2017
     int retryAfter;
     string jobId = dataTransformationJob.RunJobAsync(jobDefinitionName, 
     dataTransformationInput, out retryAfter);
+    Console.WriteLine("jobid: ", jobId);
+    Console.ReadLine();
 
     ```
+    コードを貼り付けたら、ソリューションをビルドします。 データ変換ジョブ インスタンスを初期化するコード スニペットのスクリーンショットを次に示します。
 
-9. このジョブでは、StorSimple ボリュームのルート ディレクトリの一致するファイルを、指定されたコンテナーにアップロードします。 ファイルがアップロードされると、ジョブ定義と同じ名前の、(コンテナーと同じストレージ アカウントにある) キュー内のメッセージが破棄されます。 このメッセージは、ファイルの追加処理を開始するトリガーとして使用できます。
+   ![データ変換ジョブを初期化するコード スニペット](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet-1.png)
 
-10. ジョブが開始されたら、次のコードを追加して、ジョブの完了を追跡します。
+9. このジョブは、StorSimple ボリューム内のルート ディレクトリおよびファイル フィルターと一致するデータを変換し、指定された container/file 共有に配置します。 ファイルが変換されると、ジョブ定義と同じ名前のストレージ キュー (container/file 共有と同じストレージ アカウントにある) にメッセージが追加されます。 このメッセージは、ファイルの追加処理を開始するトリガーとして使用できます。
+
+10. ジョブがトリガーされたら、次のコードを使用して、ジョブの完了を追跡します。 このコードの追加は、ジョブの実行のために必須ではありません。
 
     ```
     Job jobDetails = null;
@@ -176,8 +195,10 @@ ms.lasthandoff: 10/11/2017
     Console.Read();
 
     ```
+ .NET を使用してジョブをトリガーするために使用するコード サンプル全体のスクリーン ショットを次に示します。
 
+ ![.NET ジョブをトリガーするコードのスニペット全体](media/storsimple-data-manager-dotnet-jobs/start-dotnet-job-code-snippet.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。
