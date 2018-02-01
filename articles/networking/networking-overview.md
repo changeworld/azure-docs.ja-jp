@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
-ms.openlocfilehash: 7ed018c8c9759bc497c5fea129257486f6128531
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0de4aa816d7decab1831449f855ab01b101db3a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
@@ -35,7 +35,7 @@ Azure には、単独でまたは組み合わせて使用できるさまざま�
 
 ## <a name="Connectivity"></a>Azure リソースの間の接続
 
-Azure リソース (Virtual Machines、Cloud Services、Virtual Machines スケール セット、Azure App Service Environment など) は、Azure Virtual Network (VNet) を介してプライベートに相互通信を行うことができます。 特定の[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json)専用に論理上、Azure クラウドを分離したものが VNet です。 各 Azure サブスクリプションと Azure [リージョン](https://azure.microsoft.com/regions)内に複数の VNet を実装できます。 VNet どうしは分離されています。 各 VNet では、次のことを実行できます。
+Azure リソース (Virtual Machines、Cloud Services、Virtual Machines スケール セット、Azure App Service Environment など) は、Azure Virtual Network (VNet) を介してプライベートに相互通信を行うことができます。 特定の[サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fnetworking%2ftoc.json)専用に論理上、Azure クラウドを分離したものが VNet です。 各 Azure サブスクリプションと Azure [リージョン](https://azure.microsoft.com/regions)内に複数の VNet を実装できます。 VNet 同士は分離されています。 各 VNet では、次のことを実行できます。
 
 - パブリックおよびプライベート (RFC 1918) アドレスを使用して、カスタム プライベート IP アドレス空間を指定する。 Azure は、VNet に接続されているリソースに、割り当てたアドレス空間のプライベート IP アドレスを割り当てます。
 - VNet を 1 つ以上のサブネットに分割し、各サブネットに VNet のアドレス空間の一部を割り当てる。
@@ -157,8 +157,8 @@ Azure のネットワーク リソースのデプロイと構成は、以下の�
 
 Azure ネットワーク サービスには、料金がかかるものと無料で利用できるものがあります。 詳細については、[Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network)、[VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway)、[Application Gateway](https://azure.microsoft.com/en-us/pricing/details/application-gateway/)、[ロード バランサー](https://azure.microsoft.com/pricing/details/load-balancer)、[Network Watcher](https://azure.microsoft.com/pricing/details/network-watcher)、[DNS](https://azure.microsoft.com/pricing/details/dns)、[Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager)、[ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) の価格に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- 「[最初の仮想ネットワークの作成](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json)」の手順を実行して、最初の VNet を作成し、その VNet にいくつかの VM を接続します。
+- 「[最初の仮想ネットワークの作成](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)」の手順を実行して、最初の VNet を作成し、その VNet にいくつかの VM を接続します。
 - [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事の手順を実行して、コンピューターを VNet に接続します。
 - [インターネットに接続するロード バランサーの作成](../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事の手順を実行して、インターネット トラフィックをパブリック サーバーに負荷分散します。

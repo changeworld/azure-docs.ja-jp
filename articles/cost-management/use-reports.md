@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/29/2017
+ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: 92bb4f2a6458057613bdbcb749026781111a778d
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 0a4f6a5940ccffe897a5609b837ddaeea98d87aa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-cost-management-reports"></a>Cost Management レポートの使用
 
@@ -160,6 +160,6 @@ Cloudyn では、会計アフィニティを適用して、リンク付けされ
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Cost Management の最初のチュートリアルをまだ完了していない場合は、「[使用状況とコストを確認する](tutorial-review-usage.md)」をご覧ください。

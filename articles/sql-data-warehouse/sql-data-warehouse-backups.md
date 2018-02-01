@@ -15,11 +15,11 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/23/2017
 ms.author: jrj;barbkess
-ms.openlocfilehash: e76349ef7a2afa02d4f9e5295f299bb8084d1e08
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 159a1d34caba829750da33dbc4ad403fb21cd147
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="backup-and-restore-in-sql-data-warehouse"></a>SQL Data Warehouse でのバックアップおよび復元
 この記事では、SQL Data Warehouse のバックアップの詳細について説明します。 データ ウェアハウスのバックアップを使用して、プライマリ リージョンにデータベース スナップショットを復元したり、geo ペア リージョンに geo バックアップを復元したりします。 
@@ -42,7 +42,7 @@ order by run_id desc
 ## <a name="geo-backups"></a>geo バックアップ
 SQL Data Warehouse は、1 日に 1 回、[ペアのデータ センター](../best-practices-availability-paired-regions.md)に geo バックアップを実行します。 geo 復元の RPO は 24 時間です。 geo ペア リージョン内のサーバーに geo バックアップを復元できます。 geo バックアップにより、プライマリ リージョンのスナップショットにアクセスできない場合でも、データ ウェアハウスを復元できます。
 
-geo バックアップは既定で有効です。 データ ウェアハウスが弾力性に合わせて最適化されている場合、必要に応じて[オプトアウト](https://docs.microsoft.com/powershell/resourcemanager/Azurerm.sql/v2.1.0/Set-AzureRmSqlDatabaseGeoBackupPolicyredirectedfrom=msdn)できます。 コンピューティング パフォーマンス レベルに合わせて最適化されている場合、geo バックアップをオプトアウトすることはできません。
+geo バックアップは既定で有効です。 データ ウェアハウスが弾力性に合わせて最適化されている場合、必要に応じて[オプトアウト](/powershell/module/azurerm.sql/set-azurermsqldatabasegeobackuppolicy)できます。 コンピューティング パフォーマンス レベルに合わせて最適化されている場合、geo バックアップをオプトアウトすることはできません。
 
 ## <a name="backup-costs"></a>バックアップのコスト
 Azure の課金には、Azure Premium Storage の明細項目と geo 冗長ストレージの明細項目があることがわかります。 Premium Storage の料金は、スナップショットを含む、プライマリ リージョンでのデータの格納コストの合計です。  geo 冗長の料金には、geo バックアップを格納するコストが含まれます。  
@@ -72,7 +72,7 @@ SQL Data Warehouse の価格の詳細については、「[SQL Data Warehouse �
 > 論理的な SQL Server インスタンスを削除すると、そのインスタンスに属するデータベースもすべて削除されます。これを回復することはできません。 削除されたサーバーを復元することはできません。
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Data Warehouse を復元するには、「[Azure SQL Data Warehouse の復元](sql-data-warehouse-restore-database-overview.md)」をご覧ください。
 
 ビジネス継続性の概要については、「[Azure SQL Database によるビジネス継続性の概要](../sql-database/sql-database-business-continuity.md)」をご覧ください。

@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/08/2017
+ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: c828a7b63e70669ed38ecea898442a3978e67ba7
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 5510d64b518e4694caa8e35140907b55c01ecd8a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="run-pig-jobs-using-the-net-sdk-for-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Hadoop を使用した Pig ジョブの実行
 
@@ -53,7 +53,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
    | ------ | ------ |
    | カテゴリ | テンプレート/Visual C#/Windows |
    | テンプレート | コンソール アプリケーション |
-   | 名前 | SubmitPigJob |
+   | Name | SubmitPigJob |
 
 3. **[OK]** をクリックしてプロジェクトを作成します。
 
@@ -70,7 +70,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
     using Microsoft.Azure.Management.HDInsight.Job.Models;
     using Hyak.Common;
 
-    namespace SubmitHDInsightJobDotNet
+    namespace SubmitPigJob
     {
         class Program
         {
@@ -122,7 +122,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 8. アプリケーションを終了するには、**Enter** キーを押します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 HDInsight での Pig について詳しくは、「[HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)」をご覧ください。
 

@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/27/2017
+ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: df2108a6e2a01195340a09eacf1c56f9d738c923
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 38c1313f42a58403e158cad9c2930b6541da5adc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understanding-cost-reports"></a>コスト レポートについて
 
@@ -132,6 +132,6 @@ ms.lasthandoff: 11/28/2017
 
     [アクション] を使用して、レポートを保存、エクスポート、またはスケジュールします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- Cost Management の 1 番目のチュートリアルをまだ完了していない場合は、「[使用状況とコストを確認する](tutorial-review-usage.md)」をご覧ください。
+- Cost Management の最初のチュートリアルをまだ完了していない場合は、「[使用状況とコストを確認する](tutorial-review-usage.md)」をご覧ください。

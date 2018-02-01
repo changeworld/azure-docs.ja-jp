@@ -15,11 +15,11 @@ ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 490112417870fb3bfdb75abdb82f9adfff550f0a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2b568bd22858a42178e2821e0e97a3b4ebdfccd5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-to-azure-app-service-with-jenkins-and-the-azure-cli"></a>Jenkins と Azure CLI を使用して Azure App Service にデプロイする
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](https://jenkins.io/doc/book/pipeline/)で Azure CLI を使用します。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -62,7 +62,7 @@ Azure CLI を実行するには、Azure の資格情報が必要です。
 
 ## <a name="create-an-azure-app-service-for-deploying-the-java-web-app"></a>Java Web アプリをデプロイするための Azure App Service の作成
 
-[az appservice plan create](/cli/azure/appservice/plan#create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
+[az appservice plan create](/cli/azure/appservice/plan#az_appservice_plan_create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -121,7 +121,7 @@ Web アプリ定義の準備が完了すると、Azure CLI によって次の例
 
 ### <a name="configure-java"></a>Java を構成する 
 
-[az appservice web config update](/cli/azure/appservice/web/config#update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
+[az appservice web config update](/cli/azure/appservice/web/config#az_appservice_web_config_update) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
 
 次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
 
@@ -135,7 +135,7 @@ az webapp config set \
 ```
 
 ## <a name="prepare-a-github-repository"></a>GitHub レポジトリを準備する
-[Azure 用のシンプルな Java Web アプリ](https://github.com/azure-devops/javawebappsample) レポジトリを開きます。 自身の GitHub アカウントにレポジトリをフォークするには､右上隅の **[Fork]** ボタンをクリックします｡
+[Azure 用のシンプルな Java Web アプリ](https://github.com/azure-devops/javawebappsample) レポジトリを開きます。 自身の GitHub アカウントにリポジトリをフォークするには､右上隅の **[Fork]** ボタンをクリックします｡
 
 * GitHub Web UI で、**Jenkinsfile** ファイルを開きます。 鉛筆アイコンをクリックしてこのファイルを編集します。20 行目と 21 行目にある、リソース グループと Web アプリの名前をそれぞれ更新します。
 
@@ -153,7 +153,7 @@ withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
 ## <a name="create-jenkins-pipeline"></a>Jenkins パイプラインを作成する
 Web ブラウザーで Jenkins を開き、**[新しい項目]** をクリックします。 
 
-* ジョブの名前を指定し、**[パイプライン]** を選択します。 **[OK]**をクリックします。
+* ジョブの名前を指定し、**[パイプライン]** を選択します。 Click **OK**.
 * **[パイプライン]** タブをクリックします。 
 * **[定義]** で、**[Pipeline script from SCM]\(SCM からのパイプライン スクリプト\)** を選択します。
 * **[SCM]** で、**[Git]** を選択します。
@@ -221,7 +221,7 @@ Azure Web App on Linux はデプロイを行う別の方法をサポートして
 
     http://&lt;app_name>.azurewebsites.net/api/calculator/add?x=&lt;x>&y=&lt;y> (&lt;x> と &lt;y> は任意の数字に置き換える) に移動して、x と y の合計を取得します
     
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、GitHub レポジトリのソース コードをチェックアウトする Jenkins パイプラインを構成しました。 Maven を実行して war ファイルを構築し、Azure CLI を使用して Azure App Service をデプロイしました。 以下の方法について学習しました。
 
 > [!div class="checklist"]

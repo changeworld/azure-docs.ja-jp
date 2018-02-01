@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: nini
-ms.openlocfilehash: cc29a8ac6369560d37466d69fad272cef2337732
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 10c5394935c59b21139c0e141c348ce20a7c0800
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Azure Portal を使用して Service Fabric アプリケーションとマイクロ サービスを評価する
 
@@ -79,7 +79,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 ノードからパフォーマンス データを表示するには、次の処理を行います。
 
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 - Azure Portal から Log Analytics ワークスペースを起動します。
   ![Service Fabric](./media/log-analytics-service-fabric/6.png)
@@ -152,7 +152,7 @@ Log Analytics でのパフォーマンス メトリックの詳細について�
 
 次の表は、Service Fabric のデータ収集手段とデータ収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |  |  | &#8226; |  |  |10 分 |
 

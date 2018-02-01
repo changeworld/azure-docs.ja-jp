@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: c1f543d3379b7f6a29cb57b5d41825abaacabfc3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: e3ff3d9c667e00995daa2023a7137870247b9ab3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) の Application Insights Connector ソリューション (プレビュー)
 
@@ -37,12 +37,12 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 他のほとんどの Log Analytics ソリューションとは異なり、Application Insights Connector 用のデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
-| 接続されているソース | サポートの有無 | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agent.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | なし | ソリューションでは、Linux エージェントの情報は収集しません。 |
-| [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
-| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |
+| [Windows エージェント](log-analytics-windows-agent.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
+| [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ  | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | ソリューションでは、Azure Storage の情報は収集しません。 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,7 +55,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. OMS ポータルで、**[設定]** &gt; **[データ]** &gt; **[Application Insights]** をクリックします。
 3. **[サブスクリプションの選択]** で、Application Insights リソースを所有するサブスクリプションを選択し、**[アプリケーション名]**で、1 つまたは複数のアプリケーションを選択します。
-4. **[保存]** をクリックします。
+4. **[Save]** をクリックします。
 
 約 30 分でデータが使用可能となり、次の図のように、[Application Insights] タイルがデータで更新されます。
 
@@ -84,7 +84,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ダッシュボードには、次の表に示すブレードが含まれます。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 ブレードの一番下にある **[すべて表示]** をクリックするかブレード ヘッダーをクリックすると、すべてのレコードを返すログ検索を実行できます。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **列** | **説明** |
 | --- | --- |
@@ -119,7 +119,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 **Application Insights Connector** ダッシュボードで何かをクリックしているかどうかに関係なく、**[検索]** ページでは、Application Insights データを返すすべてのクエリで Application Insights パースペクティブが表示されます。 たとえば、Application Insights データを表示する場合、**&#42;**クエリでも、次の図のように、パースペクティブ タブが表示されます。
 
-![Application Insights ](./media/log-analytics-app-insights-connector/app-insights-search.png)
+![アプリケーション インサイト ](./media/log-analytics-app-insights-connector/app-insights-search.png)
 
 パースペクティブ コンポーネントは、検索クエリに応じて更新されます。 つまり、結果を任意の検索フィールドを使用してフィルター処理することで、以下のデータを表示することができます。
 
@@ -158,7 +158,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 - 可用性
 - 例外
-- 要求数
+- Requests
 - ページ ビュー: ワークスペースでページ ビューを受信するには、その情報を収集するようにアプリを構成する必要があります。 詳細については、「[ページ ビュー](../application-insights/app-insights-api-custom-events-metrics.md#page-views)」を参照してください。
 - カスタム イベント: ワークスペースでページ ビューを受信するには、その情報を収集するようにアプリを構成する必要があります。 詳細については、「[TrackEvent](../application-insights/app-insights-api-custom-events-metrics.md#trackevent)」を参照してください。
 
@@ -170,7 +170,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 ### <a name="generic-fields"></a>一般的なフィールド
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | Type | ApplicationInsights |
 | ClientIP |   |
@@ -196,7 +196,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 ### <a name="availability-specific-fields"></a>可用性に固有のフィールド
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | TelemetryType | 可用性 |
 | AvailabilityTestName | Web テストの名前 |
@@ -221,7 +221,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 ### <a name="exception-specific-fields"></a>例外に固有のフィールド
 
-| 型 | ApplicationInsights |
+| type | ApplicationInsights |
 | --- | --- |
 | TelemetryType | 例外 |
 | ExceptionType | 例外の種類 |
@@ -238,7 +238,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 ### <a name="request-specific-fields"></a>要求に固有のフィールド
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | Type | ApplicationInsights |
 | TelemetryType | 要求 |
@@ -261,6 +261,6 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 このソリューションには、ダッシュボードに表示されるサンプル ログ検索のセットはありません。 ただし、サンプル ログ検索クエリとその説明が「[Application Insights Connector 情報を表示する](#view-application-insights-connector-information)」セクションに示されています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [ログ検索](log-analytics-log-searches.md)を使用して Application Insights アプリの詳細情報を表示します。

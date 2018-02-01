@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 30ab325488684a26a6ef442e7c8241526a66aa4c
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: a9be9011062f07d59842d417bf6761ec81c39275
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Azure Stack 上の App Service: インフラストラクチャまたは worker ロールを追加する
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*  
 
 ここでは、Azure Stack インフラストラクチャおよび worker ロールでの App Service を拡大縮小する手順について説明します。 任意のサイズのアプリケーションをサポートする追加の worker ロールを作成する手順について説明します。
 
@@ -40,15 +41,15 @@ Azure Stack 上の Azure App Service では、仮想マシン スケール セ�
 2. **[App Services]** を参照します。
 
     ![](media/azure-stack-app-service-add-worker-roles/image01.png)
-  
+
 3. **[ロール]** をクリックします。 デプロイされているすべての App Service ロールの内訳が表示されます。
 
 4. 拡大縮小する種類の行を右クリックし、**[ScaleSet]** をクリックします。
 
     ![](media/azure-stack-app-service-add-worker-roles/image02.png)
-  
+
 5. **[拡大縮小]** をクリックし、拡大縮小するインスタンス数を選択し、**[保存]** をクリックします。
-    
+
     ![](media/azure-stack-app-service-add-worker-roles/image03.png)
 
 6. Azure Stack 上の App Service によって、VM が追加および構成され、必要なすべてのソフトウェアがインストールされ、プロセスの完了時には準備完了とマークされます。 このプロセスには約 80 分かかる可能性があります。
@@ -64,6 +65,6 @@ Azure Stack 上の Azure App Service では、仮想マシン スケール セ�
 
 管理、フロントエンド、またはパブリッシャー ロールをスケール アウトするには、適切なロールの種類を選択して同じ手順を実行してください。 コントローラーはスケール セットとしてデプロイされていないため、すべての運用デプロイでインストール時に 2 つをデプロイする必要があります。
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 
 [デプロイ ソースを構成する](azure-stack-app-service-configure-deployment-sources.md)

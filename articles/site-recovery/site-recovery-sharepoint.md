@@ -12,15 +12,15 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/31/2017
+ms.date: 12/23/2017
 ms.author: sutalasi
-ms.openlocfilehash: 55323df68715c80d5e8535199cd739921a3baad9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3610409691b71fcce0c36a3af94184dbe6db8661
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用して障害復旧の多層 SharePoint アプリケーションをレプリケートする
+# <a name="replicate-a-multi-tier-sharepoint-application-for-disaster-recovery-using-azure-site-recovery"></a>Azure Site Recovery を使用してディザスター リカバリーの多層 SharePoint アプリケーションをレプリケートする
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して SharePoint アプリケーションを保護する方法の詳細を説明します。
 
@@ -29,11 +29,11 @@ ms.lasthandoff: 10/11/2017
 
 Microsoft SharePoint は、グループあるいは部署が情報を整理、コラボレート、および共有するのに役立つ強力なアプリケーションです。 SharePoint は、イントラネット ポータルや、ドキュメントおよびファイル管理、コラボレーション、ソーシャル ネットワーク、エクストラネット、web サイト、エンタープライズ検索、およびビジネス インテリジェンスを提供できます。 また、システム統合やプロセス統合、ワークフロー自動化機能もあります。 通常 組織は、ダウンタイムやデータ損失が重視される第 1 層アプリケーションとみなされます。
 
-現在、Microsoft SharePoint には、既製の災害復旧機能はありません｡ 災害の種類と規模に関係なく、復旧では待機データ センターが使用され、ファームを復旧することができます。 一次データセンター側の機能停止からローカルの冗長システムやバックアップを回復できない場合は、待機データ センターが必要です。
+現在、Microsoft SharePoint には、既製のディザスター リカバリー機能はありません｡ 災害の種類と規模に関係なく、復旧では待機データ センターが使用され、ファームを復旧することができます。 一次データセンター側の機能停止からローカルの冗長システムやバックアップを回復できない場合は、待機データ センターが必要です。
 
-災害復旧ソリューションでは、SharePoint などの複雑なアプリケーション アーキテクチャを中心に復旧計画のモデリングを行えるようにすべきです。 また、さまざまな階層間のアプリケーション マッピングを処理する独自のステップを追加する機能も用意し、災害発生時はわずかな RTO でクリック 1 回でのフェイルオーバーを提供できるようにします。
+ディザスター リカバリー ソリューションでは、SharePoint などの複雑なアプリケーション アーキテクチャを中心に復旧計画のモデリングを行えるようにすべきです。 また、さまざまな階層間のアプリケーション マッピングを処理する独自のステップを追加する機能も用意し、災害発生時はわずかな RTO でクリック 1 回でのフェイルオーバーを提供できるようにします。
 
-この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して SharePoint アプリケーションを保護する方法の詳細を説明します。 また、3 層の SharePoint アプリケーションを Azure にレプリケートするさいのベスト プラクティスや、災害復旧訓練の実施方法、アプリケーションを Azure にフェールオーバーする方法についても説明します。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) を使用して SharePoint アプリケーションを保護する方法の詳細を説明します。 また、3 層の SharePoint アプリケーションを Azure にレプリケートするさいのベスト プラクティスや、ディザスター リカバリー訓練の実施方法、アプリケーションを Azure にフェールオーバーする方法についても説明します。
 
 下記は、Azure への複数層アプリケーションの回復を扱ったビデオです。
 
@@ -68,9 +68,10 @@ SharePoint は階層型トポロジーとサーバー ロールを使用して 1
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | はい | はい
-**VMware** | はい | はい
-**物理サーバー** | はい | あり
+**Hyper-V** | [はい] | [はい]
+**VMware** | [はい] | [はい]
+**物理サーバー** | [はい] | [はい]
+**Azure** | 該当なし | [はい]
 
 ### <a name="sharepoint-versions"></a>SharePoint のバージョン
 次の SharePoint Server のバージョンがサポートされています。
@@ -211,5 +212,5 @@ SQL Always ON 可用性グループに対するテスト フェールオーバ�
 3.  [フェールオーバー] をクリックします。
 4.  フェールオーバー プロセスを開始する復旧ポイントを選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Site Recovery を利用した他のアプリケーションのレプリケーションについては](site-recovery-workload.md)､他の場所でも説明しています｡

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tdykstra
-ms.openlocfilehash: 80996c8bc6e40665201057ed185700ddaeea170a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 53ba5eaf3272746bd107efbcbae4b5d5889a197f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインドに固有の詳細を学習する前に、それらすべてに適用されるこの概要をお読みください。
@@ -53,9 +53,9 @@ function.json ファイルは、関数バインドとその他の構成設定を
 
 | プロパティ | 値/型 | 説明 |
 | --- | --- | --- |
-| `type` |string |バインドの種類。 たとえば、「 `queueTrigger`」のように入力します。 |
+| `type` |文字列 |バインドの種類。 たとえば、「 `queueTrigger`」のように入力します。 |
 | `direction` |"in"、"'out" |バインドが関数への受信データか、関数からの送信データかを示します。 |
-| `name` |string |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
+| `name` |文字列 |関数のバインドされたデータに使用される名前。 C# の場合は引数の名前です。JavaScript の場合はキー/値リストのキーです。 |
 
 ## <a name="function-app"></a>関数アプリ
 関数アプリは、Azure App Service でまとめて管理される 1 つまたは複数の個々の関数で構成されます。 関数アプリ内のすべての関数は、同じ料金プラン、継続的なデプロイ、およびランタイムのバージョンを共有します。 複数の言語で記述された関数は、同じ関数アプリをすべて共有できます。 関数を整理し、まとめて管理する方法として関数アプリを考えてください。 
@@ -102,7 +102,7 @@ Azure ポータルに組み込まれている関数エディターでは、 *fun
 
 ## <a name="functions-runtime-versioning"></a>Functions ランタイムのバージョン管理
 
-`FUNCTIONS_EXTENSION_VERSION` アプリ設定を使用して、Functions ランタイムのバージョンを構成できます。 たとえば、「~1」の値は、Function App がそのメジャー バージョンとして 1 を使用することを示します。 Function App は、リリースされたときにそれぞれの新しいマイナー バージョンにアップグレードされます。 お使いの関数アプリの正確なバージョンを表示する方法など、詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](functions-versions.md)」をご覧ください。
+`FUNCTIONS_EXTENSION_VERSION` アプリ設定を使用して、Functions ランタイムのバージョンを構成できます。 たとえば、「~1」の値は、Function App がそのメジャー バージョンとして 1 を使用することを示します。 Function App は、リリースされたときにそれぞれの新しいマイナー バージョンにアップグレードされます。 お使いの関数アプリの正確なバージョンを表示する方法など、詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](set-runtime-version.md)」をご覧ください。
 
 ## <a name="repositories"></a>リポジトリ
 Azure Functions のコードはオープン ソースであり、GitHub リポジトリに保存されています。
@@ -121,7 +121,7 @@ Azure Functions のコードはオープン ソースであり、GitHub リポ�
 ## <a name="reporting-issues"></a>問題の報告
 [!INCLUDE [Reporting Issues](../../includes/functions-reporting-issues.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.openlocfilehash: 3686cfffd2c29461213b2866665e59336f037fa0
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: a241199ff8441d76d48d297b69af05a604d2a423
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
@@ -1364,7 +1364,7 @@ public class HTMLOutputter : IOutputter
     }
 
     // The Close method is used to write the footer to the file. It's executed only once, after all rows
-    public override void Close().
+    public override void Close()
     {
     //Reference to IO.Stream object - g_writer
     StreamWriter streamWriter = new StreamWriter(g_writer, this.encoding);

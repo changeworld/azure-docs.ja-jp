@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: 9cf5b1227e69ada46bc0b1e5ff01cc12e73598f7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: de1e8ec1b712aeb5572c7972b22412f2ae90b7b9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 
@@ -32,7 +32,7 @@ Draft は、すべての Docker イメージ レジストリと、ローカル�
       az group create --name draft --location eastus
       ```
 
-2. [az acr create](/cli/azure/acr#create) を使用して ACR イメージ レジストリを作成し、`--admin-enabled` オプションが `true` に設定されていることを確認します。
+2. [az acr create](/cli/azure/acr#az_acr_create) を使用して ACR イメージ レジストリを作成し、`--admin-enabled` オプションが `true` に設定されていることを確認します。
       ```azurecli
       az acr create --resource-group draft --name draftacs --sku Basic
       ```
@@ -40,7 +40,7 @@ Draft は、すべての Docker イメージ レジストリと、ローカル�
 
 ## <a name="create-an-azure-container-service-with-kubernetes"></a>Kubernetes を使用して Azure Container Service をデプロイする
 
-これで、[az acs create](/cli/azure/acs#create) を使用し、Kubernetes を `--orchestrator-type` の値として、ACS クラスターを作成する準備が整いました。
+これで、[az acs create](/cli/azure/acs#az_acs_create) を使用し、Kubernetes を `--orchestrator-type` の値として、ACS クラスターを作成する準備が整いました。
 ```azurecli
 az acs create --resource-group draft --name draft-kube-acs --dns-prefix draft-cluster --orchestrator-type kubernetes --generate-ssh-keys
 ```
@@ -220,7 +220,7 @@ Draft によって、作成される各 Helm チャート (作業対象の各ア
     ```
 
 2. ドメインの DNS ゾーンを作成します。
-[az network dns zone create](/cli/azure/network/dns/zone#create) コマンドを使用して、ドメインに関して DNS の制御を Azure DNS に委任するネームサーバーを取得します。
+[az network dns zone create](/cli/azure/network/dns/zone#az_network_dns_zone_create) コマンドを使用して、ドメインに関して DNS の制御を Azure DNS に委任するネームサーバーを取得します。
     ```azurecli
     az network dns zone create --resource-group squillace.io --name squillace.io
     {
@@ -280,7 +280,7 @@ Hello World, I'm Java!
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、ACS Kubernetes クラスターが用意されました。[Azure Container Registry](../../container-registry/container-registry-intro.md) を使用して調査し、このシナリオのさまざまなデプロイを作成できます。 たとえば、特定の ACS デプロイの深い階層のサブドメインの処理を制御する、draft._basedomain.toplevel_ ドメイン DNS レコードセットを作成できます。
 

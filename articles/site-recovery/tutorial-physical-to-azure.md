@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: raynew
-ms.openlocfilehash: ceb4b13e326b24360799c1a7a25fe48f213fabd7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1761da23c669d5370d12e5619e09b56c8b00c9a6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -62,15 +62,15 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 
 
-### <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップする
+### <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
 
-[Azure ネットワーク](../virtual-network/virtual-network-get-started-vnet-subnet.md)をセットアップします。
+[Azure ネットワーク](../virtual-network/quick-create-portal.md)をセットアップします。
 
 - Azure VM は、フェールオーバー後に作成されたときに、このネットワークに配置されます。
 - ネットワークは、Recovery Services コンテナーと同じリージョンにある必要があります。
 
 
-## <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントを設定
+## <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントの設定
 
 [Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)を設定します。
 
@@ -142,7 +142,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 2. ターゲットのデプロイ モデルを指定します。
 3. Site Recovery によって、互換性のある Azure ストレージ アカウントとネットワークが 1 つ以上あるかどうかが確認されます。
 
-   ![[ターゲット]](./media/tutorial-physical-to-azure/network-storage.png)
+   ![ターゲット](./media/tutorial-physical-to-azure/network-storage.png)
 
 
 ## <a name="create-a-replication-policy"></a>レプリケーション ポリシーを作成する
@@ -158,7 +158,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 このポリシーは自動的に構成サーバーに関連付けられます。 既定でフェールバックの照合ポリシーが自動的に作成されます。 たとえば、レプリケーション ポリシーが **rep-policy** の場合、フェールバック ポリシー **rep-policy-failback** が作成されます。 このポリシーは、Azure からフェールバックを開始するまで使用されません。
 
-## <a name="enable-replication"></a>Enable replication
+## <a name="enable-replication"></a>レプリケーションを有効にする
 
 各サーバーのレプリケーションを有効にします。
 
@@ -181,6 +181,6 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 追加したサーバーを監視する目的で、サーバーの最終検出時刻を **[構成サーバー]** の  > **[前回のアクセス]** で確認できます。 定期検出を待たずにマシンを追加するには、構成サーバーを強調表示し (クリックしないでください)、**[更新]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)

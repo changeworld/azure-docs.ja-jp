@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 10/24/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6f7ef46d9c40138c211427845423783fefde5dc3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6533ab205e07243e2f757ea0a66028e1d140c52b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="install-a-sql92iis92net-stack-in-azure"></a>Azure SQL、IIS、および .NET スタックを Azure にインストールします。
 
@@ -32,7 +32,9 @@ ms.lasthandoff: 10/31/2017
 > * SQL Server を実行する VM を作成する
 > * SQL Server 拡張機能をインストールする
 
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.1.1 以降が必要になります。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
 ## <a name="create-a-iis-vm"></a>IIS の仮想マシンを作成する 
 
@@ -41,9 +43,10 @@ ms.lasthandoff: 10/31/2017
 コード ブロックの右上にある **[試してみる]** ボタンをクリックすると、このウィンドウで Cloud Shell を起動できます。 コマンド プロンプト で仮想マシンの資格情報を入力するよう求められます。
 
 ```azurepowershell-interactive
+$vmName = "IISVM$(Get-Random)"
 $vNetName = "myIISSQLvNet"
 $resourceGroup = "myIISSQLGroup"
-New-AzVm -Name myIISVM -ResourceGroupName $resourceGroup -VirtualNetworkName $vNetName 
+New-AzureRMVm -Name $vmName -ResourceGroupName $resourceGroup -VirtualNetworkName $vNetName 
 ```
 
 カスタム スクリプト拡張機能を使用して、IIS および .NET framework をインストールします。
@@ -52,7 +55,7 @@ New-AzVm -Name myIISVM -ResourceGroupName $resourceGroup -VirtualNetworkName $vN
 
 Set-AzureRmVMExtension -ResourceGroupName $resourceGroup `
     -ExtensionName IIS `
-    -VMName myIISVM `
+    -VMName $vmName `
     -Publisher Microsoft.Compute `
     -ExtensionType CustomScriptExtension `
     -TypeHandlerVersion 1.4 `
@@ -109,7 +112,7 @@ New-AzureRmVM -ResourceGroupName $resourceGroup -Location eastus -VM $vmConfig
 Set-AzureRmVMSqlServerExtension -ResourceGroupName $resourceGroup -VMName mySQLVM -name "SQLExtension"
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure PowerShell を使用して Azure SQL、IIS、および .NET スタックをインストールしました。 以下の方法について学習しました。
 

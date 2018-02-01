@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: 9772e4c1022cf8609e52ccfe16376959b67e92eb
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 5832d46636cce5ceeda7f42d2e87b5a3a633bfe5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="getting-started-with-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite のセキュリティと監査ソリューションの概要
 このドキュメントでは、Operations Management Suite (OMS) のセキュリティと監査ソリューションの機能をすぐに利用できるように、各オプションについて詳しく説明します。
@@ -72,7 +72,7 @@ OMS のセキュリティと監査ダッシュボードは、次の 4 つの主�
 
 このタイルをクリックすると、**[検索]** ブレードが開き、次のように過去 7 日間のデータを含む**セキュリティ イベント** (Type=SecurityEvents) のクエリ結果が表示されます。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![Security records over time](./media/oms-security-getting-started/oms-getting-started-fig3.JPG)
 

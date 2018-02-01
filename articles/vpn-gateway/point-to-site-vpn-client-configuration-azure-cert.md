@@ -13,21 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/27/2017
+ms.date: 01/29/2018
 ms.author: cherylmc
-ms.openlocfilehash: 7fe8d5e473e2c8281b1d6c8d7d5423294c428678
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: efe5d3db16db83568bb844894198b59a6b39f626
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
 VPN クライアント構成ファイルは、ZIP ファイルに含まれています。 構成ファイルでは、Windows または Mac のネイティブ IKEv2 VPN クライアントが、ネイティブ Azure 証明書認証を使用するポイント対サイト接続を介して VNet に接続するために必要な設定を提供します。
-
->[!NOTE]
->P2S 用 IKEv2 は現在プレビューの段階です。
->
 
 ### <a name="workflow"></a>P2S ワークフロー
 
@@ -116,6 +112,6 @@ Azure では、ネイティブの Azure 証明書の認証用の mobileconfig �
   ![apply](./media/point-to-site-vpn-client-configuration-azure-cert/applyconnect.png)
 8. **[ネットワーク]** ダイアログで、**[適用]** をクリックしてすべての変更を保存します。 次に、**[接続]** をクリックして、Azure VNet への P2S 接続を開始します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [P2S 構成を完了する](vpn-gateway-howto-point-to-site-rm-ps.md)ための記事に戻ります。

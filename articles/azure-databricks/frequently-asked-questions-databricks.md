@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: nitinme
-ms.openlocfilehash: b56253e7b9c9ab144ebc4006511631756de4f89b
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
@@ -36,7 +36,7 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 2. Data Lake Store のサービス プリンシパルに必要なアクセス許可を割り当てます。
 3. Data Lake Store 内のファイルにアクセスするには、Notebook でこのサービス プリンシパルの資格情報を使います。
 
-詳細については、[Azure Databricks での Data Lake Store の使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-storage.html#azure-data-lake-store)に関するページを参照してください。
+詳細については、[Azure Databricks での Data Lake Store の使用](https://docs.azuredatabricks.net/spark/latest/data-sources/azure/azure-datalake.html)に関するページを参照してください。
 
 ## <a name="fix-common-problems"></a>一般的な問題の修正
 

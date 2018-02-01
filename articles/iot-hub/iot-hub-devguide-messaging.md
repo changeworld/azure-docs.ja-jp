@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4a7f545f1af2904f47808fe8b1d7d3aab3afff84
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 7fd89bebf9d7497ad5b13c438b362256d3408219
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>IoT Hub における device-to-cloud と cloud-to-device のメッセージング
 
@@ -38,7 +38,7 @@ IoT Hub の機能の概要については、「[Azure とモノのインター�
 * device-to-cloud メッセージ、報告プロパティ、またはファイルのアップロードのどれを使用するべきか不明な場合は、「[device-to-cloud 通信に関するガイダンス][lnk-d2c-guidance]」をご覧ください。
 * cloud-to-device メッセージ、必要とされるプロパティ、またはダイレクト メソッドのどれを使用するべきか不明な場合は、「[cloud-to-device 通信に関するガイダンス][lnk-c2d-guidance]」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * IoT Hub の [device-to-cloud メッセージング][lnk-d2c]についてご確認ください。
 * IoT Hub の [cloud-to-device メッセージング][lnk-c2d]についてご確認ください。

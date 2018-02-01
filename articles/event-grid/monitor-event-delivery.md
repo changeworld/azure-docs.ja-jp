@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 1552174589e91c370c3b85a9af7b5cc1106cbb90
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: f726959a10eb6bf57153746a901cbba747a68e5f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Event Grid メッセージ配信の監視 
 

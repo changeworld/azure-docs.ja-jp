@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 01/16/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e2036da052e998797d860db2eadfd2ac5c968aae
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 9e25ad9b9be6d02550b4be9c09496021cd7fe2d2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを OMS 管理ソリューションに追加する (プレビュー)
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 01/17/2018
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
-Log Analytics のすべてのリソースは、[ワークスペース](../log-analytics/log-analytics-manage-access.md)に含まれています。  「[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions.md#oms-workspace-and-automation-account)」で説明されているように、ワークスペースは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
+Log Analytics のすべてのリソースは、[ワークスペース](../log-analytics/log-analytics-manage-access.md)に含まれています。  「[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)」で説明されているように、ワークスペースは管理ソリューションに含まれていませんが、ソリューションのインストール前に追加する必要があります。  このアカウントが含まれていない場合、ソリューションのインストールは失敗します。
 
 ワークスペースの名前は、各 Log Analytics リソースの名前に含まれます。  これは、次の savedsearch リソースの例で示すように **workspace** パラメーターをソリューションで指定することにより行います。
 

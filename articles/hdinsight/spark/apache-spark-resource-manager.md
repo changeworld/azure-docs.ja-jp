@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 639f8540be289c03abc8d352f4bd9150c945625e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: e37abf9bbcf8f98c969a32d8eb37b9a7a6ddeb14
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターのリソースの管理 
 
@@ -76,7 +76,7 @@ Spark クラスターで現在実行されているアプリケーションを�
 3 つの構成パラメーターは、クラスター レベルで (クラスター上で動作するすべてのアプリケーションに対して) 構成できるほか、個々のアプリケーションに対して指定することもできます。
 
 ### <a name="change-the-parameters-using-ambari-ui"></a>Ambari UI を使用したパラメーターの変更
-1. Ambari UI から **[Spark]**、**[Configs]\(構成\)** の順にクリックし、**[Custom spark-defaults]** を展開します。
+1. Ambari UI から **[Spark]**、**[Configs (構成)]** の順にクリックし、**[Custom spark-defaults]** を展開します。
 
     ![Set parameters using Ambari](./media/apache-spark-resource-manager/set-parameters-using-ambari.png)
 2. 一連の既定値は、クラスター上で 4 つの Spark アプリケーションを同時実行することを想定して決められています。 次のスクリーンショットに示すように、これらの値をユーザー インターフェイスから変更できます。

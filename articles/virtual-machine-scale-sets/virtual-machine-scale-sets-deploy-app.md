@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 7e03d5e2bbdb1b3b206fa7fa455f7dce7951f02b
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: 288bcdf6628f60d0b08fe151e630784d665db56f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 スケール セット内の仮想マシン (VM) インスタンスでアプリケーションを実行する　には、まず、アプリケーション コンポーネントと必要なファイルをインストールする必要があります。 この記事では、スケール セット内のインスタンス用にカスタム VM イメージを構築する、または既存の VM インスタンスにインストール スクリプトを自動的に実行する方法について説明します。 また、スケール セットのアプリケーションまたは OS 更新プログラムを管理する方法についても説明します。
@@ -103,7 +103,7 @@ Update-AzureRmVmss `
 }
 ```
 
-[az vmss 拡張機能セット](/cli/azure/vmss/extension#set)を使用して、カスタム スクリプト拡張機能構成をスケール セット内の VM インスタンスに適用します。 次の例では、*customConfig.json* 構成を *myResourceGroup* という名前のリソース グループ内の *myScaleSet* VM インスタンスに適用します。 独自の名前を次のように入力します。
+[az vmss 拡張機能セット](/cli/azure/vmss/extension#az_vmss_extension_set)を使用して、カスタム スクリプト拡張機能構成をスケール セット内の VM インスタンスに適用します。 次の例では、*customConfig.json* 構成を *myResourceGroup* という名前のリソース グループ内の *myScaleSet* VM インスタンスに適用します。 独自の名前を次のように入力します。
 
 ```azurecli
 az vmss extension set \
@@ -172,7 +172,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 詳細については、*cloud-init.txt* ファイルの例を含む「[Use cloud-init to customize Azure VMs](../virtual-machines/linux/using-cloud-init.md)」(cloud-init を使用して Azure VM をカスタマイズする) を参照してください。
 
-スケール セットを作成して cloud-init ファイルを使用するには、[az vmss create](/cli/azure/vmss#create) コマンドに `--custom-data` パラメーターを追加し、cloud-init ファイルの名前を指定します。 次の例では、*myScaleSet* という名前のスケール セットを *myResourceGroup* に作成し、*cloud-init.txt* という名前のファイルを使用して VM インスタンスを構成します。 独自の名前を次のように入力します。
+スケール セットを作成して cloud-init ファイルを使用するには、[az vmss create](/cli/azure/vmss#az_vmss_create) コマンドに `--custom-data` パラメーターを追加し、cloud-init ファイルの名前を指定します。 次の例では、*myScaleSet* という名前のスケール セットを *myResourceGroup* に作成し、*cloud-init.txt* という名前のファイルを使用して VM インスタンスを構成します。 独自の名前を次のように入力します。
 
 ```azurecli
 az vmss create \
@@ -222,5 +222,5 @@ OS の新しいリリースが使用できる場合は、新しいカスタム �
 アプリケーションが事前にインストールされているカスタム VM イメージを使用すると、アプリケーションの更新プログラムをデプロイメント パイプラインに統合して新しいイメージを構築し、スケール セット全体に OS のアップグレードを展開することができます。 この方法を使用すると、パイプラインが最新のアプリケーション ビルドを選択し、VM を作成および認証し、スケール セットの VM インスタンスをアップグレードできます。 複数のカスタム VM イメージ間にわたってアプリケーション更新プログラムを構築し展開するデプロイメント パイプラインを実行するには、[Visual Studio Team Services](https://www.visualstudio.com/team-services/)、[Spinnaker](https://www.spinnaker.io/) または [Jenkins](https://jenkins.io/) を使用できます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 アプリケーションを構築してスケール セットに展開します。[スケール セットの設計の概要](virtual-machine-scale-sets-design-overview.md)を参照してください。 スケール セットの管理方法の詳細については、[PowerShell を使用してスケール セットを管理する](virtual-machine-scale-sets-windows-manage.md)を参照してください。

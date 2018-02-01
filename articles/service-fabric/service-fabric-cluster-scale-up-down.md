@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
-ms.openlocfilehash: 249fb4903c7b2de3ce290850a7759a4793f10aa7
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 4813276ea8180aa8bdd385da289e6073f08d400e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>自動スケール ルールを使用した Service Fabric クラスターのスケールインとスケールアウト
 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure コンピューティング リソースです。 Service Fabric クラスターで定義されているすべてのノード タイプは、個別の仮想マシン スケール セットとしてセットアップされます。 各ノードの種類は、個別にスケールインまたはスケールアウトでき、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 詳細については、 [Service Fabric のノードの種類](service-fabric-cluster-nodetypes.md) に関するドキュメントを参照してください。 クラスター内の Service Fabric のノードの種類はバックエンドの仮想マシン スケール セットで構成されるため、ノードの種類/仮想マシン スケール セットごとに自動スケール ルールを設定する必要があります。
@@ -91,7 +91,7 @@ Get-AzureRmVmss -ResourceGroupName <RGname> -VMScaleSetName <Virtual Machine sca
 4. 必要に応じて手順 1. ～ 3. を繰り返します。ただし、プライマリ ノードの種類のインスタンス数を、信頼性レベルで保証するよりも少ない数にスケールダウンしないでください。 [こちらの信頼性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください。
 
 ## <a name="behaviors-you-may-observe-in-service-fabric-explorer"></a>Service Fabric Explorer で確認できる動作
-クラスターをスケールアップすると、Service Fabric Explorer に、クラスターの一部であるノード (仮想マシン スケール セット インスタンス) の数が反映されます。  ただし、クラスターをスケールダウンすると、適切なノードの名前を指定して [Remove-ServiceFabricNodeState cmd](https://msdn.microsoft.com/library/mt125993.aspx) を呼び出さない限り、削除されたノード/VM インスタンスが異常状態を示したまま表示されます。   
+クラスターをスケールアップすると、Service Fabric Explorer に、クラスターの一部であるノード (仮想マシン スケール セット インスタンス) の数が反映されます。  ただし、クラスターをスケールダウンすると、適切なノードの名前を指定して [Remove-ServiceFabricNodeState cmd](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricnodestate?view=azureservicefabricps) を呼び出さない限り、削除されたノード/VM インスタンスが異常状態を示したまま表示されます。   
 
 この動作についての説明を次に示します。
 
@@ -109,7 +109,7 @@ VM が削除されたときに、ノードが削除されるようにするに�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次を確認して、クラスター容量の計画、クラスターのアップグレード、およびサービスのパーティション分割についても学習してください。
 
 * [クラスター容量の計画](service-fabric-cluster-capacity.md)

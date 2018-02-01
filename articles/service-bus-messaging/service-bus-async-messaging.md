@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: d36360f3fb46adf96f53976584987590791b07d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e48e95d99847e68bdb218b341ad2fbcd44eb31f4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="asynchronous-messaging-patterns-and-high-availability"></a>非同期メッセージング パターンと高可用性
 
@@ -130,7 +130,7 @@ if (sendAvailabilityOptions.BacklogQueueCount < 1)
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Service Bus での非同期メッセージングの基本についての説明は以上です。詳細については、[ペアの名前空間][paired namespaces]に関するページをご覧ください。
 
 [ServerBusyException]: /dotnet/api/microsoft.servicebus.messaging.serverbusyexception

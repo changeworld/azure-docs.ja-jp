@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: 254f1913f1b9cb1a165d007a1f4204f7783472c1
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: eaceab7d0dba7719452000cc4e1bd19baa28af9e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -137,7 +137,7 @@ Dropbox、Salesforce、ServiceNow などの SaaS アプリケーションで、�
 | 機能の説明と、一般的な質問に対する回答 |[Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md) |
 | Azure AD と SaaS アプリ間で情報を照合する方法の構成 |[属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)<br><br>[属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md) |
 | SCIM プロトコルをサポートしている任意のアプリへの自動プロビジョニングを有効にする方法 |[SCIM を使用して、Azure Active Directory からアプリケーションへのユーザーとグループの自動プロビジョニングを有効にする](active-directory-scim-provisioning.md) |
-| ユーザー プロビジョニングについてのレポートとトラブルシューティングの方法 |[自動ユーザー プロビジョニングについてのレポート](active-directory-saas-provisioning-reporting.md)<br><br>[プロビジョニング通知](active-directory-saas-account-provisioning-notifications.md)<br><br>[ユーザー プロビジョニングのトラブルシューティング](active-directory-application-provisioning-content-map.md) |
+| ユーザー プロビジョニングについてのレポートとトラブルシューティングの方法 |[自動ユーザー プロビジョニングについてのレポート](active-directory-saas-provisioning-reporting.md)<br><br>[ユーザー プロビジョニングのトラブルシューティング](active-directory-application-provisioning-content-map.md) |
 | 属性値に基づいて、アプリケーションにプロビジョニングされるユーザーを制限する |[スコープ フィルターを使用する属性ベースのアプリ プロビジョニング](active-directory-saas-scoping-filters.md) |
 
 自動化されたユーザー プロビジョニングは、Azure AD のすべてのエディションで、ユーザー 1 人につき最大 10 個のアプリに使用できます。 [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) では、サポートされるアプリケーション数に制限はありません。 所属する組織が [Azure AD Basic](https://azure.microsoft.com/pricing/details/active-directory/) または [Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) を所有している場合は、[プロビジョニングの対象となるユーザーの管理にグループを使用](#managing-access-to-applications)できます。

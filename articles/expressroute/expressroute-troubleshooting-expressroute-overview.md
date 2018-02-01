@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: e52e53255a1462522f297d8918eb1c347a460f77
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 74b6589a7e06570d978dfe40c5f5bf140e092cc6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
@@ -216,12 +216,12 @@ Azure プライベート ピアリング構成の詳細を取得するには、�
 Azure パブリック ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
+    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt
 
 Microsoft ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
-    Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -Circuit $ckt
+     Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 
 ピアリングが構成されていない場合は、エラー メッセージが表示されます。 記述されているピアリング (この例では Azure パブリック ピアリング) が回線内で構成されていない場合の応答のサンプルは次のとおりです。
 
@@ -384,7 +384,7 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
         + CategoryInfo          : CloseError: (:) [Get-AzureDedicatedCircuitStats], CloudException
         + FullyQualifiedErrorId : Microsoft.WindowsAzure.Commands.ExpressRoute.GetAzureDedicatedCircuitPeeringStatsCommand
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細やヘルプについては、次のリンク先を確認してください。
 
 - [Microsoft サポート][Support]

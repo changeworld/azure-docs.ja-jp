@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 01/12/2018
+ms.date: 01/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 13641b190c3c157f5b302314f88a42a160a1f2e0
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 531b162f2c3d6165c3ca8a54a5822bc10e7c0eff
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限
 
@@ -122,7 +122,7 @@ P11 および P15 データベースで 1 TB を超える最大サイズは、�
 - データベースまたエラスティック プールのパフォーマンス レベルを上げて、より多くの DTU または eDTU をデータベースに提供します。 「[単一データベース: DTU を変更する](#single-database-change-dtus)」および「[エラスティック プール: eDTU を変更する](#elastic-pool-change-edtus)」をご覧ください。
 - クエリを最適化して、各クエリのリソース使用率を引き下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 使用済みのデータベース容量が最大サイズの上限に達すると、データのサイズが増えるデータベースの挿入および更新は失敗し、クライアントは[エラー メッセージ](sql-database-develop-error-messages.md)を受け取ります。 データベースの SELECTS と DELETES は引き続き成功します。
 

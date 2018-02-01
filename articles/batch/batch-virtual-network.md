@@ -2,17 +2,17 @@
 title: "仮想ネットワークで Azure Batch プールをプロビジョニングする | Microsoft Docs"
 description: "ファイル サーバーなど、ネットワーク内の他の VM と計算ノードが安全に通信できるように、仮想ネットワークで Batch プールを作成できます。"
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: article
 ms.date: 10/16/2017
-ms.author: v-dotren
-ms.openlocfilehash: f34647afc600b72704859952d0a40edad4a3b40f
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: danlep
+ms.openlocfilehash: 647a123e403b0ed6458bc26e7b26a73f3c1f8e91
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -67,7 +67,7 @@ VNet を作成し、それにサブネットを割り当てたら、その VNet 
 
 ![ユーザー定義のルート](./media/batch-virtual-network/user-defined-route.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
 - ユーザー定義ルートの作成の詳細については、「[Azure Portal を使用してユーザー定義ルートを作成する](../virtual-network/create-user-defined-route-portal.md)」を参照してください。

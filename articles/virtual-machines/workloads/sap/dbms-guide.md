@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 87c4573ce3b688cdc63b3a342bbc0bebb416ad36
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1191,7 +1191,7 @@ Azure ページ BLOB Storage または Managed Disks をベースとするディ
 バックアップと復元機能については、SAP BR*Tools for Oracle が標準の Windows Server オペレーティング システムと Hyper-V と同様にサポートされています。 ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
 #### <a name="high-availability"></a>高可用性
-高可用性と障害復旧を目的として Oracle Data Guard がサポートされています。 詳しくは、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントをご覧ください。
+高可用性とディザスター リカバリーを目的として Oracle Data Guard がサポートされています。 詳しくは、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントをご覧ください。
 
 #### <a name="other"></a>その他
 このドキュメントの最初の 3 つの章で説明したように、Oracle Database を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
@@ -1229,7 +1229,7 @@ Azure ページ BLOB Storage または Managed Disks をベースとするディ
 バックアップと復元機能については、SAP BR*Tools for Oracle がベア メタルおよび Hyper-V と同様にサポートされています。 ディスクへのバックアップとディスクからの復元については Oracle Recovery Manager (RMAN) もサポートされます。
 
 #### <a name="high-availability"></a>高可用性
-高可用性と障害復旧を目的として Oracle Data Guard がサポートされています。 詳しくは、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントをご覧ください。
+高可用性とディザスター リカバリーを目的として Oracle Data Guard がサポートされています。 詳しくは、[この][virtual-machines-windows-classic-configure-oracle-data-guard]ドキュメントをご覧ください。
 
 #### <a name="other"></a>その他
 このドキュメントの最初の 3 つの章で説明したように、Oracle Database を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
@@ -1442,11 +1442,11 @@ IBM DB2 for LUW のバックアップ/復元機能は、標準の Windows Server
 #### <a name="high-availability-and-disaster-recovery"></a>高可用性と障害復旧
 Microsoft Cluster Server (MSCS) はサポートされていません。
 
-DB2 の高可用性と障害復旧 (HADR) がサポートされています。 HA 構成の仮想マシンで名前解決が機能している場合、Azure でのセットアップはオンプレミスで行われるセットアップとまったく変わりません。 IP 解決のみに依存することはお勧めしません。
+DB2 の高可用性とディザスター リカバリー (HADR) がサポートされています。 HA 構成の仮想マシンで名前解決が機能している場合、Azure でのセットアップはオンプレミスで行われるセットアップとまったく変わりません。 IP 解決のみに依存することはお勧めしません。
 
 データベース ディスクを格納するストレージ アカウントでは、geo レプリケーションを使用しないでください。 詳しくは、「[Microsoft Azure Storage][dbms-guide-2.3]」の章と「[Azure VM の高可用性とディザスター リカバリー][dbms-guide-3]」の章をご覧ください。
 
-#### <a name="other"></a>他の
+#### <a name="other"></a>その他
 このドキュメントの最初の 3 つの章で説明したように、IBM DB2 for LUW を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。 
 
 「[Azure での一般的な SAP 用 SQL Server の概要][dbms-guide-5.8]」の章をご覧ください。
@@ -1496,11 +1496,11 @@ IBM DB2 for LUW のバックアップ/復元機能は、オンプレミスの標
 * バックアップの書き込み先として複数のターゲット ディレクトリを使用する
 
 #### <a name="high-availability-and-disaster-recovery"></a>高可用性と障害復旧
-DB2 の高可用性と障害復旧 (HADR) がサポートされています。 HA 構成の仮想マシンで名前解決が機能している場合、Azure でのセットアップはオンプレミスで行われるセットアップとまったく変わりません。 IP 解決のみに依存することはお勧めしません。
+DB2 の高可用性とディザスター リカバリー (HADR) がサポートされています。 HA 構成の仮想マシンで名前解決が機能している場合、Azure でのセットアップはオンプレミスで行われるセットアップとまったく変わりません。 IP 解決のみに依存することはお勧めしません。
 
 データベース ディスクを格納するストレージ アカウントでは、geo レプリケーションを使用しないでください。 詳しくは、「[Microsoft Azure Storage][dbms-guide-2.3]」の章と「[Azure VM の高可用性とディザスター リカバリー][dbms-guide-3]」の章をご覧ください。
 
-#### <a name="other"></a>他の
+#### <a name="other"></a>その他
 このドキュメントの最初の 3 つの章で説明したように、IBM DB2 for LUW を使用した VM のデプロイについては Azure 可用性セットまたは SAP の監視などその他のすべての一般的なトピックが適用されます。
 
 「[Azure での一般的な SAP 用 SQL Server の概要][dbms-guide-5.8]」の章をご覧ください。

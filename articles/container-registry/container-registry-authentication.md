@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc29d9a57f1dd452d2b4b77a53f52a5b66a25416
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 70758f938718aef160670bc023aff5fc0c9fb92a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>プライベート Docker コンテナー レジストリによる認証
 
@@ -45,7 +45,7 @@ az acr login --name <acrName>
 
 サービス プリンシパルを使用すると、次のようなプッシュ シナリオとプル シナリオでレジストリへのヘッドレス接続が可能になります。
 
-  * "*閲覧者*": レジストリからオーケストレーション システム (Kubernetes、DC/OS、Docker Swarm など) へのコンテナーのデプロイ。 また、コンテナー レジストリから、[AKS](../aks/index.yml)、[App Service](../app-service/index.yml)、[Batch](../batch/index.md)、[Service Fabric](/azure/service-fabric/) などの関連する Azure サービスにプルすることもできます。
+  * "*閲覧者*": レジストリからオーケストレーション システム (Kubernetes、DC/OS、Docker Swarm など) へのコンテナーのデプロイ。 また、コンテナー レジストリから、[AKS](../aks/index.yml)、[App Service](../app-service/index.yml)、[Batch](../batch/index.yml)、[Service Fabric](/azure/service-fabric/) などの関連する Azure サービスにプルすることもできます。
 
   * "*共同作成者*": コンテナー イメージを作成してレジストリにプッシュする、継続的インテグレーションおよびデプロイ ソリューション (Visual Studio Team Services (VSTS) や Jenkins など)。
 

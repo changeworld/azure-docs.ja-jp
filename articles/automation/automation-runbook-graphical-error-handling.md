@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/26/2016
 ms.author: magoedte
-ms.openlocfilehash: afe7043e31c05444dded089dc02689a3b0c94659
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 86d62ba7fb12b09a2c19b4689af38bb8c121880b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Automation のグラフィカル Runbook におけるエラー処理
 
@@ -40,7 +40,7 @@ Azure Automation グラフィカル Runbook は、機能が向上して、エラ
 
 エラーまたは例外をスローする重大なアクティビティが存在する場合は、Runbook 内の次のアクティビティが処理されないようにして、エラーを適切に処理することが重要です。 これは特に、Runbook がビジネス操作プロセスまたはサービス操作プロセスをサポートしている場合に重要です。
 
-Runbook の作成者は、エラーが発生する可能性のある各アクティビティに、他の任意のアクティビティを指すエラー リンクを追加できます。  リンク先アクティビティとしては、コード アクティビティ、コマンドレットの呼び出し、別の Runbook の呼び出しなど、任意の種類のアクティビティを指定できます。
+Runbook の作成者は、エラーが発生する可能性のある各アクティビティに、他の任意のアクティビティを指すエラー リンクを追加できます。 リンク先アクティビティとしては、コード アクティビティ、コマンドレットの呼び出し、別の Runbook の呼び出しなど、任意の種類のアクティビティを指定できます。
 
 また、リンク先アクティビティにもさらに出力方向のリンクを追加することができます。 それらのリンクは、通常のリンクにすることもエラー リンクにすることもできます。 つまり、Runbook の作成者は、コード アクティビティに頼らずに複雑なエラー処理ロジックを実装できます。 一般的な機能を備えた専用のエラー処理 Runbook を作成することをお勧めしますが、必須ではありません。 PowerShell コード アクティビティでのエラー処理ロジックは、唯一のオプションではありません。  
 
@@ -63,7 +63,7 @@ Runbook の作成者は、エラーが発生する可能性のある各アクテ
 
 次の例では、Runbook が仮想マシンのコンピューター名を含む変数を取得します。 その後、次のアクティビティで、仮想マシンの起動を試みます。<br><br> ![Automation Runbook のエラー処理の例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling.png)<br><br>      
 
-**Get-AutomationVariable** アクティビティと **Start-AzureRmVm** は、例外をエラーに変換するように構成されています。  変数の取得や VM の起動に関する問題がある場合には、エラーが生成されます。<br><br> ![Automation Runbook のエラー処理アクティビティの設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
+**Get-AutomationVariable** アクティビティと **Start-AzureRmVm** は、例外をエラーに変換するように構成されています。 変数の取得や VM の起動に関する問題がある場合には、エラーが生成されます。<br><br> ![Automation Runbook のエラー処理アクティビティの設定](media/automation-runbook-graphical-error-handling/activity-blade-convertexception-option.png)
 
 エラー リンクは、これらのアクティビティから単一の**エラー管理**アクティビティ (コード アクティビティ) にリンクされています。 このアクティビティは単純な PowerShell の式で構成されており、*Throw* キーワードで処理を停止し、*$Error.Exception.Message* で現在の例外に関するメッセージを取得するようになっています。<br><br> ![Automation Runbook のエラー処理コードの例](media/automation-runbook-graphical-error-handling/runbook-example-error-handling-code.png)
 

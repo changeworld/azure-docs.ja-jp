@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 23008d3619af4606703bca41f370e14cf020a16a
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 7576077ede7c1c18bcba3853b3b4a2ee0b561968
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
 この記事では、IoT Hub の記事で使用される一般的な用語の一部を示します。
@@ -51,7 +51,7 @@ Azure リソースのプロビジョニングと管理は、[Microsoft Azure Por
 ## <a name="azure-service-bus"></a>Azure Service Bus
 [Service Bus](../service-bus/index.md) は、エンタープライズ メッセージングと中継通信の機能を持つクラウド対応通信で、オンプレミスのソリューションをクラウドに接続するのに役立ちます。 一部の IoT Hub チュートリアルでは、Service Bus [キュー](../service-bus-messaging/service-bus-messaging-overview.md)を利用します。
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Storage (Azure Storage)
 [Azure Storage](../storage/common/storage-introduction.md) は、クラウド ストレージ ソリューションです。 非構造化オブジェクト データの格納に使用できる Blob Storage サービスが含まれています。 一部の IoT Hub チュートリアルでは、Blob Storage を使用します。
 
 ## <a name="back-end-app"></a>バックエンド アプリ

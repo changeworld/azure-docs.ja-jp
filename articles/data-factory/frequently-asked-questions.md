@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: cf98bb7fab4942955287e8e211e98b9da59472f6
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: dd2475d5940927c65cae4d12b9697cbe535b69a8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事は、Azure Data Factory サービスのバージョン 2 に適用されます。 Data Factory についてよく寄せられる質問とその回答を紹介します。  
@@ -68,7 +68,7 @@ Azure Data Factory バージョン 2 は、元の Azure Data Factory のデー�
 詳細については、[制御フローのチュートリアル](tutorial-control-flow.md)に関するページを参照してください。
 
 ### <a name="deploy-ssis-packages-to-azure"></a>SSIS パッケージを Azure にデプロイする 
-SSIS ワークロードを移動する場合は、Data Factory バージョン 2 を作成し、Azure-SSIS 統合ランタイムをプロビジョニングできます。 Azure-SSIS 統合ランタイムは、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) の完全に管理されたクラスターです。 詳しい手順については、「[SSIS パッケージを Azure にデプロイする](tutorial-deploy-ssis-packages-azure.md)」チュートリアルを参照してください。 
+SSIS ワークロードを移動する場合は、Data Factory バージョン 2 を作成し、Azure-SSIS 統合ランタイムをプロビジョニングできます。 Azure-SSIS 統合ランタイムは、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) の完全に管理されたクラスターです。 詳しい手順については、「[SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」チュートリアルを参照してください。 
  
 
 ### <a name="sdks"></a>SDK
