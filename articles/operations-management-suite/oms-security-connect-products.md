@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
-ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f95ee94d1b86b6409fc5ecce14ed3e068a635b3d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Operations Management Suite (OMS) のセキュリティと監査ソリューションへのセキュリティ製品の接続 
 このドキュメントでは、お使いのセキュリティ製品を OMS のセキュリティと監査ソリューションに接続する方法について説明します。 次のソースがサポートされています。
@@ -95,7 +95,7 @@ OMS セキュリティでは、Syslog と [Cisco ASA](https://blogs.technet.micr
 
 ## <a name="reviewing-collected-security-events"></a>収集したセキュリティ イベントの確認
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE [log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 構成が完了したら、OMS セキュリティによるセキュリティ イベントの取り込みが開始されます。 取り込んだイベントを視覚化するには、ログ検索を開き、検索フィールドに「*Type=CommonSecurityLog*」と入力して、Enter キーを押します。 次の例は、このコマンドの結果を示しています。この例では既に OMS セキュリティによって複数のベンダーからセキュリティ ログが取り込まれています。
    

@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: bdca9d4968e9e68314f350787907f15e417821f7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: db1ed08c4d4c9e9abd525ec13f5511da82ee1fe4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -56,7 +56,8 @@ Azure Monitor は、すべての Azure リソースを監視するための単�
 
 アクティビティ ログを表示するには、次の手順に従います。
 
-1. **API Management** インスタンスで、**[アクティビティ ログ]** をクリックします。
+1. APIM サービス インスタンスを選びます。
+2. **[アクティビティ ログ]** をクリックします。
 
 ## <a name="view-diagnostic-logs"></a>診断ログを表示する
 
@@ -64,7 +65,8 @@ Azure Monitor は、すべての Azure リソースを監視するための単�
 
 診断ログにアクセスするには、次の手順に従います。
 
-1. **API Management** インスタンスで、**[診断ログ]** をクリックします。
+1. APIM サービス インスタンスを選びます。
+2. **[診断ログ]** をクリックします。
 
 ## <a name="view-metrics-of-your-apis"></a>API のメトリックを表示する
 
@@ -108,7 +110,7 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
 
     ![アラートのセットアップ](./media/api-management-azure-monitor/set-up-alert.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

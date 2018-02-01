@@ -14,11 +14,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: magoedte;gwallace
-ms.openlocfilehash: e8b7d0d38f59589cbe6f82798b4e725af7b20e23
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 45afb09f09e754e37ae8dba02e1e16b3fde1e408
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC の使用
 この記事では、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。 Azure Automation DSC の概要については、「 [Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。 DSC のドキュメントについては、「 [Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/PowerShell/dsc/overview)」を参照してください。
@@ -69,23 +69,23 @@ ms.lasthandoff: 12/14/2017
 ## <a name="importing-a-configuration-into-azure-automation"></a>Azure Automation に構成をインポートする
 次に、この構成を Automation アカウントにインポートします。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
-4. **[DSC 構成]** ブレードで、**[構成を追加]** をクリックします。
-5. **[構成のインポート]** ブレードで、コンピューター上の `TestConfig.ps1` ファイルを参照します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **[Automation アカウント]** ページで、**[構成管理]** の **[DSC 構成]** を選択します。
+4. **[DSC 構成]** ページで、**[+ 構成を追加]** をクリックします。
+5. **[構成のインポート]** ページで、コンピューター上の `TestConfig.ps1` ファイルを参照します。
    
     ![**[構成のインポート]** ブレードのスクリーンショット](./media/automation-dsc-getting-started/AddConfig.png)
-6. **[OK]**をクリックします。
+6. Click **OK**.
 
 ## <a name="viewing-a-configuration-in-azure-automation"></a>Azure Automation で構成を表示する
 インポートした構成は、Azure ポータルで表示できます。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
-4. **[DSC 構成]** ブレードで、**[TestConfig]** (前の手順でインポートした構成の名前) をクリックします。
-5. **[TestConfig の構成]** ブレードで、**[構成ソースの表示]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **[Automation アカウント]** ページで、**[構成管理]** の **[DSC 構成]** を選択します。
+4. **[DSC 構成]** ページで、**[TestConfig]** (前の手順でインポートした構成の名前) をクリックします。
+5. **[TestConfig の構成]** ページで、**[構成ソースの表示]** をクリックします。
    
     ![Screenshot of the TestConfig configuration blade](./media/automation-dsc-getting-started/ViewConfigSource.png)
    
@@ -94,13 +94,13 @@ ms.lasthandoff: 12/14/2017
 ## <a name="compiling-a-configuration-in-azure-automation"></a>Azure Automation で構成をコンパイルする
 目的の状態をノードに適用する前に、その状態を定義する DSC 構成を 1 つ以上のノード構成 (MOF ドキュメント) にコンパイルし、Automation DSC プル サーバーに配置する必要があります。 Azure Automation DSC での構成のコンパイルの詳細については、「 [Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md)」を参照してください。 構成のコンパイルの詳細については、「 [DSC 構成](https://msdn.microsoft.com/PowerShell/DSC/configurations)」を参照してください。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
-4. **[DSC 構成]** ブレードで、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
-5. **[TestConfig の構成]** ブレードで **[コンパイル]** をクリックし、**[はい]** をクリックします。 これにより、コンパイル ジョブが開始されます。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **[Automation アカウント]** ページで、**[構成管理]** の **[DSC 構成]** をクリックします。
+4. **[DSC 構成]** ページで、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
+5. **[TestConfig の構成]** ページで **[コンパイル]** をクリックし、**[はい]** をクリックします。 これにより、コンパイル ジョブが開始されます。
    
-    ![Screenshot of the TestConfig configuration blade highlighting compile button](./media/automation-dsc-getting-started/CompileConfig.png)
+    ![[コンパイル] ボタンが強調表示されている [TestConfig の構成] ページのスクリーンショット](./media/automation-dsc-getting-started/CompileConfig.png)
 
 > [!NOTE]
 > Azure Automation で構成をコンパイルすると、作成されたノード構成 MOF すべてが自動的にプル サーバーにデプロイされます。
@@ -110,19 +110,19 @@ ms.lasthandoff: 12/14/2017
 ## <a name="viewing-a-compilation-job"></a>コンパイル ジョブを表示する
 コンパイルを開始すると、**[構成]** ブレードの **[コンパイル ジョブ]** タイルでコンパイル ジョブを確認できます。 **[コンパイル ジョブ]** タイルには、現在実行中のジョブ、完了したジョブ、失敗したジョブが表示されます。 コンパイル ジョブのブレードを開くと、ジョブに関する情報が表示されます。これには、発生したエラーと警告、構成で使用されている入力パラメーター、コンパイル ログが含まれています。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC 構成]** をクリックします。
-4. **[DSC 構成]** ブレードで、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
-5. **[TestConfig の構成]** ブレードの **[コンパイル ジョブ]** タイルで、表示されているジョブのいずれかをクリックします。 コンパイル ジョブの開始日付のラベルが付いた **[コンパイル ジョブ]** ブレードが開きます。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **[Automation アカウント]** ページで、**[構成管理]** の **[DSC 構成]** をクリックします。
+4. **[DSC 構成]** ページで、**[TestConfig]** (前にインポートした構成の名前) をクリックします。
+5. **[コンパイル ジョブ]** で、表示するコンパイル ジョブを選択します。 コンパイル ジョブの開始日付のラベルが付いた **[コンパイル ジョブ]** ページが開きます。
    
-    ![Screenshot of the Compilation Job blade](./media/automation-dsc-getting-started/CompilationJob.png)
-6. **[コンパイル ジョブ]** ブレードで任意のタイルをクリックすると、そのジョブの詳細が表示されます。
+    ![[コンパイル ジョブ] ページのスクリーンショット](./media/automation-dsc-getting-started/CompilationJob.png)
+6. **[コンパイル ジョブ]** ページで任意のタイルをクリックすると、そのジョブの詳細が表示されます。
 
 ## <a name="viewing-node-configurations"></a>ノード構成を表示する
 コンパイル ジョブが正常に完了すると、1 つ以上の新しいノード構成が作成されます。 ノード構成とは、プル サーバーにデプロイされ、1 つ以上のノードがプルして適用できるようになる MOF ドキュメントです。 **[DSC ノード構成]** ブレードでは、Automation アカウントのノード構成を確認できます。 ノード構成の名前は、*ConfigurationName*.*NodeName* という形式です。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
 3. **[Automation アカウント]** ブレードで、**[DSC ノード構成]** をクリックします。
    
@@ -132,21 +132,20 @@ ms.lasthandoff: 12/14/2017
 Azure Automation DSC を使用すると、Azure VM (クラシックと Resource Manager の両方)、オンプレミスの VM、Linux マシン、AWS VM、オンプレミスの物理マシンを管理できます。 この記事では、Azure Resource Manager VM をオンボードする方法のみを説明します。 他の種類のマシンのオンボードの詳細については、「 [Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>Azure Automation DSC を使用して管理のために Azure Resource Manager VM をオンボードするには
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC ノード]** をクリックします。
-4. **[DSC ノード]** ブレードで、**[Azure VM の追加]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **Automation アカウント**ページで、**[構成管理]** の **[DSC ノード]** をクリックします。
+4. **[DSC ノード]** ページで、**[Azure VM の追加]** をクリックします。
    
-    ![Screenshot of the DSC Nodes blade highlighting the Add Azure VM button](./media/automation-dsc-getting-started/OnboardVM.png)
-5. **[Azure VM の追加]** ブレードで、**[オンボードする仮想マシンの選択]** をクリックします。
-6. **[VM の選択]** ブレードで、オンボードする VM を選択し、**[OK]** をクリックします。
+    ![[Azure VM の追加] ボタンが強調表示された [DSC ノード] ページのスクリーンショット](./media/automation-dsc-getting-started/OnboardVM.png)
+5. **[仮想マシン]** ページで、自分の VM を選択します。  **[Azure VM の追加]** ページで、**[オンボードする仮想マシンの選択]** をクリックします。
+6. **[接続]**をクリックします。
    
    > [!IMPORTANT]
    > これは、Windows Server 2008 R2 以降を実行している Azure Resource Manager VM である必要があります。
    > 
    > 
-7. **[Azure VM の追加]** ブレードで、**[登録データの構成]** をクリックします。
-8. **[登録]** ブレードの **[ノード構成名]** ボックスに、VM に適用するノード構成の名前を入力します。 これは、Automation アカウントのノード構成の名前と正確に一致する必要があります。 この時点では、名前の入力は省略可能です。 ノードのオンボード後に、割り当てられたノード構成を変更できます。
+1. **[登録]** ページの **[ノード構成名]** ボックスに、VM に適用するノード構成の名前を入力します。 これは、Automation アカウントのノード構成の名前と正確に一致する必要があります。 この時点では、名前の入力は省略可能です。 ノードのオンボード後に、割り当てられたノード構成を変更できます。
    **[必要に応じてノードを再起動する]** チェック ボックスをオンにし、**[OK]** をクリックします。
    
     ![Screenshot of the Registration blade](./media/automation-dsc-getting-started/RegisterVM.png)
@@ -159,17 +158,18 @@ Azure によって VM のオンボード処理が開始されます。 処理が
 ## <a name="viewing-the-list-of-dsc-nodes"></a>DSC ノードの一覧を表示する
 管理のためにオンボードされたすべてのマシンの一覧を Automation アカウントの **[DSC ノード]** ブレードで表示できます。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC ノード]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
 
 ## <a name="viewing-reports-for-dsc-nodes"></a>DSC ノードのレポートを表示する
-Azure Automation DSC が管理対象ノードの整合性チェックを実行するたびに、ノードはプル サーバーに状態レポートを送信します。 これらのレポートは、そのノードのブレードに表示できます。
+Azure Automation DSC が管理対象ノードの整合性チェックを実行するたびに、ノードはプル サーバーに状態レポートを送信します。 これらのレポートは、そのノードのページに表示できます。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC ノード]** をクリックします。
-4. **[レポート]** タイルで、一覧にあるレポートのいずれかをクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
+4. **DSC ノード**の一覧で、表示するノードを選択します。
+5. **[ノード]** ページの **[レポート]** で、表示するレポートをクリックします。
    
     ![Screenshot of the Report blade](./media/automation-dsc-getting-started/NodeReport.png)
 
@@ -190,25 +190,25 @@ Azure Automation DSC が管理対象ノードの整合性チェックを実行�
 ## <a name="reassigning-a-node-to-a-different-node-configuration"></a>別のノード構成にノードを再割り当てする
 最初に割り当てたものとは別のノード構成を使用するようにノードを割り当てることができます。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC ノード]** をクリックします。
-4. **[DSC ノード]** ブレードで、再割り当てするノードの名前をクリックします。
-5. そのノードのブレードで、 **[Assign node (ノードの割り当て)]**をクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
+4. **[DSC ノード]** ページで、再割り当てするノードの名前をクリックします。
+5. そのノードのページで、**[Assign node]\(ノードの割り当て\)**をクリックします。
    
     ![Screenshot of the Node blade highlighting the Assign Node button](./media/automation-dsc-getting-started/AssignNode.png)
-6. **[ノード構成の割り当て]** ブレードで、ノードの割り当て先となるノード構成を選択し、**[OK]** をクリックします。
+6. **[ノード構成の割り当て]** ページで、ノードの割り当て先となるノード構成を選択し、**[OK]** をクリックします。
    
     ![Screenshot of the Assign Node Configuration blade](./media/automation-dsc-getting-started/AssignNodeConfig.png)
 
 ## <a name="unregistering-a-node"></a>ノードの登録を解除する
 ノードを Azure Automation DSC で管理する必要がなくなった場合は、ノードの登録を解除することができます。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューの **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **[Automation アカウント]** ブレードで、**[DSC ノード]** をクリックします。
-4. **[DSC ノード]** ブレードで、登録解除するノードの名前をクリックします。
-5. そのノードのブレードで、 **[登録解除]**をクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
+3. **[Automation アカウント]** ページで、**[DSC ノード]** をクリックします。
+4. **[DSC ノード]** ページで、登録解除するノードの名前をクリックします。
+5. そのノードのページで、**[登録解除]**をクリックします。
    
     ![Screenshot of the Node blade highlighting the Unregister button](./media/automation-dsc-getting-started/UnregisterNode.png)
 

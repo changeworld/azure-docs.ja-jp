@@ -15,26 +15,26 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: d7496b0578301713ebae7381e9a54642e226eb96
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: cb9d20bcb4b863736229bb920f5d4615b2c28c94
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Azure でパーティ クラスターにアプリケーションをデプロイする
 このチュートリアルはシリーズの第 2 部です。Azure でパーティ クラスターに Azure Service Fabric アプリケーションをデプロイする方法について説明します。
 
 シリーズの第 2 部で学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする
-> * Service Fabric Explorer を使用してクラスターからアプリケーションを削除する
-
-このチュートリアル シリーズで学習する内容は次のとおりです。
-> [!div class="checklist"]
 > * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)
 > * アプリケーションをリモート クラスターにデプロイする
 > * [Visual Studio Team Services を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
+
+このチュートリアル シリーズで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする
+> * Service Fabric Explorer を使用してクラスターからアプリケーションを削除する
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に
@@ -102,7 +102,7 @@ Service Fabric のアプリケーション モデルの詳細については、�
 
 これでチュートリアルは終了します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]

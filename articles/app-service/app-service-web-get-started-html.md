@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 10/26/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: ee3b53f9e68a739a39478045debbb45dff9d7ed9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: bca5757c971f15279ed6ee9b41f415cd347d91b3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Azure で静的な HTML Web アプリを作成する
 
@@ -29,13 +29,13 @@ ms.lasthandoff: 11/22/2017
 
 以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 前提条件のインストールを終えてから、以降の手順を完了するまでに約 5 分かかります。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
 
 - <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -138,7 +138,7 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)

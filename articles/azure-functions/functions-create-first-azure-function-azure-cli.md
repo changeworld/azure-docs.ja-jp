@@ -12,11 +12,11 @@ ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 4356d00b2694224f52a9359cd4a57d3a70a34d18
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 22eb9989f24bb61638410a0c5361c0a888076e3c
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-your-first-function-using-the-azure-cli"></a>Azure CLI での初めての関数の作成
 
@@ -44,7 +44,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-関数の実行をホストするための Function App が存在する必要があります。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#create) コマンドを使用します。 
+関数の実行をホストするための Function App が存在する必要があります。 Function App は、関数コードのサーバーレス実行の環境を提供します。 Function App を使用すると、リソースの管理、デプロイ、共有を容易にするためのロジック ユニットとして関数をグループ化できます。 Function App の作成には、[az functionapp create](/cli/azure/functionapp#az_functionapp_create) コマンドを使用します。 
 
 次のコマンドでは、`<app_name>` プレースホルダーを一意の Function App 名で、`<storage_name>` をストレージ アカウント名で置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 _deployment-source-url_ パラメーターは、HTTP によってトリガーされる "Hello World" 関数を含む GitHub のサンプル リポジトリです。
 

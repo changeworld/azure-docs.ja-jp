@@ -1,6 +1,6 @@
 ---
-title: "Log Analytics のカスタム フィールド | Microsoft Docs"
-description: "Log Analytics のカスタム フィールド機能を使用すると、収集済みレコードのプロパティに追加される OMS データから独自の検索可能なフィールドを作成できます。  この記事では、カスタム フィールドを作成するプロセスと、サンプル イベントの詳細なチュートリアルについて説明します。"
+title: "Azure Log Analytics のカスタム フィールド | Microsoft Docs"
+description: "Log Analytics のカスタム フィールド機能を使用すると、収集済みレコードのプロパティに追加される Log Analytics レコードから独自の検索可能なフィールドを作成できます。  この記事では、カスタム フィールドを作成するプロセスと、サンプル イベントの詳細なチュートリアルについて説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/18/2016
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 9e02094f155eaade9bc5fb49c4fbb798e546e989
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0f3311f35f954f81560cad21e7f0e3bc850a094
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics のカスタム フィールド
-Log Analytics の **カスタム フィールド** 機能を使用すると、独自の検索可能なフィールドを追加して、OMS リポジトリの既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
+Log Analytics の**カスタム フィールド**機能を使用すると、独自の検索可能なフィールドを追加して、Log Analytics の既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。
 
 ![カスタム フィールドの概要](media/log-analytics-custom-fields/overview.png)
 
@@ -40,8 +40,7 @@ Log Analytics の **カスタム フィールド** 機能を使用すると、�
 以下のセクションでは、カスタム フィールドを作成する手順について説明します。  サンプル抽出のチュートリアルについては、この記事の末尾を参照してください。
 
 > [!NOTE]
-> カスタム フィールドは、指定した条件に一致するレコードが OMS データ ストアに追加されるときに設定されます。そのため、カスタム フィールドの作成後に収集されたレコードのデータのみが表示されます。  カスタム フィールドの作成時にデータ ストアに既にあったレコードには、カスタム フィールドは追加されません。
-> 
+> カスタム フィールドは、指定した条件に一致するレコードが Log Analytics に追加されるときに設定されます。このため、カスタム フィールドの作成後に収集されたレコードのデータのみが表示されます。  カスタム フィールドの作成時にデータ ストアに既にあったレコードには、カスタム フィールドは追加されません。
 > 
 
 ### <a name="step-1--identify-records-that-will-have-the-custom-field"></a>手順 1 - カスタム フィールドを追加するレコードを指定する
@@ -72,7 +71,7 @@ Log Analytics の **カスタム フィールド** 機能を使用すると、�
 7. 他のレコードのプロパティと同様に、カスタム フィールドを使用します。  カスタム フィールドを使用してデータを集計してグループ化できます。また、カスタム フィールドを使用して新しい分析を行うこともできます。
 
 ## <a name="viewing-custom-fields"></a>カスタム フィールドを表示する
-OMS ダッシュボードの **[設定]** タイルから、管理グループのすべてのカスタム フィールドを一覧表示することができます。  **[データ]** を選択し、ワークスペースのすべてのカスタム フィールドの一覧について **[カスタム フィールド]** を選択します。  
+Azure Portal で Log Analytics ワークスペースの **[詳細設定]** メニューから、管理グループのカスタム フィールドの一覧を表示できます。  **[データ]** を選択し、ワークスペースのすべてのカスタム フィールドの一覧について **[カスタム フィールド]** を選択します。  
 
 ![カスタム フィールド](media/log-analytics-custom-fields/list.png)
 
@@ -138,7 +137,7 @@ DPMRA サービスを含むレコードまでスクロールし、同じプロ�
 
 ![クエリによるグループ化](media/log-analytics-custom-fields/query-group.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 基準のカスタム フィールドを使用してクエリを作成するための、 [ログ検索](log-analytics-log-searches.md) について説明します。
 * カスタム フィールドを使用して解析対象の[カスタム ログ ファイル](log-analytics-data-sources-custom-logs.md)を監視します。
 

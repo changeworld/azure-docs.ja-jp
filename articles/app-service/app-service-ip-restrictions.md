@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: byvinyal
-ms.openlocfilehash: 5fbd308e9f037038ad867f3d242da6573bc67081
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 22e05af889b4e792dcc6f6fc438e8a58674b9f0e
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Azure App Service 静的 IP 制限 #
 

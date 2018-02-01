@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: dobett
-ms.openlocfilehash: a038a46c98af5b434456e1bb979fc6cd8e009d76
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 43917e4fe4ce7643ea034d128f303a5397dbcdc2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -130,10 +130,10 @@ IoT Hub では、[X.509][lnk-x509] 証明書を使用して IoT Hub でデバイ
 
 考えられる値を次に示します。
 
-| 値 | 説明 |
+| 値 | [説明] |
 | --- | --- |
 | {signature} |HMAC-SHA256 署名文字列 (形式: `{URL-encoded-resourceURI} + "\n" + expiry`)。 **重要**: キーは base64 からデコードされ、HMAC-SHA256 計算を実行するためのキーとして使用されます。 |
-| {resourceURI} |IoT Hub のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、 `myHub.azure-devices.net/devices/device1` |
+| {resourceURI} |IoT Hub のホスト名 (プロトコルなし) で始まる、このトークンを使用してアクセスできるエンドポイントの (セグメント単位の) URI プレフィックス。 たとえば、`myHub.azure-devices.net/devices/device1` のように指定します。 |
 | {expiry} |1970 年 1 月 1 日の 00 時 00 分 00 秒 UTC からのエポック秒で表される UTF8 文字列。 |
 | {URL-encoded-resourceURI} |小文字のリソース URI の小文字の URL エンコード |
 | {policyName} |このトークンの参照先となる共有アクセス ポリシーの名前。 トークンがデバイス レジストリ資格情報を参照する場合は存在しません。 |
@@ -193,7 +193,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 
 セキュリティ トークンを生成する C# の機能を下に示します。
 
-```C#
+```csharp
 using System;
 using System.Globalization;
 using System.Net;
@@ -268,7 +268,7 @@ var token = generateSasToken(endpoint, deviceKey, null, 60);
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> .NET の[デバイス エクスプローラー][lnk-device-explorer] ツールまたはクロスプラットフォームでノードベースの [iothub-explorer][lnk-iothub-explorer] コマンドライン ユーティリティを使って、SAS トークンを生成できます。
+> .NET の[デバイス エクスプローラー][lnk-device-explorer] ツールまたはクロスプラットフォームで Python ベースの [Azure CLI 2.0 の IoT 拡張機能][lnk-IoT-extension-CLI-2.0]コマンドライン ユーティリティを使って、SAS トークンを生成できます。
 
 ### <a name="use-a-shared-access-policy"></a>共有アクセス ポリシーを使用する
 
@@ -441,7 +441,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [IoT Hub のクエリ言語][lnk-query]: IoT Hub からデバイス ツインとジョブに関する情報を取得する際に使用できるクエリ言語について説明します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 開発者ガイドのトピックもご覧ください。
 
@@ -487,7 +487,7 @@ IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 
 [lnk-service-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/service
 [lnk-client-sdk]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device
 [lnk-device-explorer]: https://github.com/Azure/azure-iot-sdk-csharp/blob/master/tools/DeviceExplorer
-[lnk-iothub-explorer]: https://github.com/azure/iothub-explorer
+[lnk-IoT-extension-CLI-2.0]: https://github.com/Azure/azure-iot-cli-extension
 
 [lnk-getstarted-tutorial]: iot-hub-csharp-csharp-getstarted.md
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md

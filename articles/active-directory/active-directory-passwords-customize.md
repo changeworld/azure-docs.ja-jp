@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
-ms.custom: it-pro
-ms.openlocfilehash: 6d8a2f2106e57bdf84bc3bead70d379691b79742
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.custom: it-pro;seohack1
+ms.openlocfilehash: 526286c7f6b62d165af43487ca63fe9055623d0c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
 
@@ -74,31 +74,7 @@ AD FS サインイン ページにリンクを追加するには、AD FS サー�
     * パスワード リセット ページに *whr* パラメーターを渡すことによって (例: "https://login.microsoftonline.com/?whr=contoso.com")
     * パスワード リセット ページに *username* パラメーターを渡すことによって (例: "https://login.microsoftonline.com/?username=admin@contoso.com")
 
-### <a name="graphics-details"></a>グラフィックスの詳細
-
-次の設定を使用して、サインイン ページの表示特性を変更できます。 **[Azure Active Directory]** > **[会社のブランド]** > **[会社のブランドを編集する]** に移動します。
-
-* サインイン ページのイメージは、1420 x 1200 ピクセルで 500 KB 未満の .png ファイルまたは .jpg ファイルにする必要があります。 最良の結果を得るために、200 KB 程度に維持することをお勧めします。
-* サインイン ページの背景色は接続の待機時間が長い場合に使用され、RGB 16 進形式でなければなりません。
-* バナー イメージは、60 x 280 ピクセルで 10 KB 以内の .png ファイルまたは .jpg ファイルにする必要があります。
-* 正方形のロゴ (標準および濃色のテーマ) は、240 x 240 (サイズ変更可能) ピクセルで 10 KB 以内の .png ファイルまたは .jpg ファイルにする必要があります。
-
-### <a name="sign-in-text-options"></a>サインイン テキストのオプション
-
-次の設定を使用して、組織に関連するテキストをサインイン ページに追加することができます。 **[Azure Active Directory]** > **[会社のブランド]** > **[会社のブランドを編集する]** に移動します。
-
-* **ユーザー名のヒント**: *someone@example.com* のテキスト例をユーザーにより適したものに置き換えます。 内部ユーザーと外部ユーザーをサポートする場合は、既定のヒントのままにしておくことをお勧めします。
-* **サインイン ページのテキスト**: 最大 256 文字の長さまで指定できます。 このテキストは、ユーザーがオンラインでサインインする任意の場所と、Windows 10 の Azure AD Workplace 参加エクスペリエンスに表示されます。 このテキストは、使用条件、手順、およびヒントをユーザーに示すために使用します。 
-
-   >[!IMPORTANT]
-   >サインイン ページは誰でも表示できるため、ここには機密情報を入れないでください。
-   >
-
-### <a name="the-keep-me-signed-in-disabled-setting"></a>"[サインインしたままにする] は無効" 設定
-
-**[サインインしたままにする] は無効**オプションを使用すると、ユーザーは、ブラウザー ウィンドウを閉じて開き直した場合でもサインインしたままにできます。 このオプションはセッションの有効期間には影響しません。 **[Azure Active Directory]** > **[会社のブランド]** > **[会社のブランドを編集する]** に移動します。
-
-SharePoint Online と Office 2010 の一部の機能は、ユーザーのこのチェック ボックスを選択する機能に依存します。 このオプションが非表示の場合は、ユーザーに追加の予期しないサインイン画面が表示されることがあります。
+会社のブランドを構成する方法の詳細については、[Azure AD のサインイン ページへの会社のブランドの追加](customize-branding.md)に関する記事を参照してください。
 
 ### <a name="directory-name"></a>ディレクトリ名
 

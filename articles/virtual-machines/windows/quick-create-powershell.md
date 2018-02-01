@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c6193c63e6efaa4b6472b7de1a042dc4f58b42d3
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: ba0a0c336fbdab91121f5c4bff00b24c1088bd8a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-powershell"></a>PowerShell で Windows 仮想マシンを作成する
 
@@ -34,7 +34,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 
 
 
-## <a name="create-resource-group"></a>リソース グループの作成
+## <a name="create-resource-group"></a>Create resource group
 
 [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
@@ -52,7 +52,7 @@ New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```azurepowershell-interactive
 New-AzureRmVm `
     -ResourceGroupName "myResourceGroup" `
-    -Name "myVM" `
+    -Name "myVM$(Get-Random)" `
     -Location "East US" `
     -VirtualNetworkName "myVnet" `
     -SubnetName "mySubnet" `
@@ -99,7 +99,7 @@ IIS をインストールし、VM のポート 80 をインターネットから
 Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、単純な仮想マシンとネットワーク セキュリティ グループの規則をデプロイし、Web サーバーをインストールしました。 Azure 仮想マシンの詳細については、Windows VM のチュートリアルを参照してください。
 

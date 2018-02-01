@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: jgao
-ms.openlocfilehash: 18f495864befafd26e7adafb5c01612222d2cfdf
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 074415ba50ecdb1799093a3ead3bdd22fd02cc15
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="apache-spark-bi-using-data-visualization-tools-with-azure-hdinsight"></a>Azure HDInsight のデータ視覚化ツールを使用する Apache Spark BI
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-* **「[HDInsight Spark クラスターに対して対話型クエリを実行する](./apache-spark-load-data-run-query.md)」を完了する**。
+* **記事「[HDInsight で Spark クラスターに対して対話型クエリを実行する](./apache-spark-load-data-run-query.md)」を完了する**。
 * **Power BI**: [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/) と [Power BI 試用版サブスクリプション](https://app.powerbi.com/signupredirect?pbi_source=web) (省略可能)。
 * **Tableau**: [Tableau Desktop](http://www.tableau.com/products/desktop) と [Microsoft Spark ODBC ドライバー](http://go.microsoft.com/fwlink/?LinkId=616229)。
 
@@ -225,7 +225,7 @@ Power BI サービスを使用すると、組織全体でレポートとダッ�
     ![Spark データ視覚化の Tableau 出力](./media/apache-spark-use-bi-tools/spark-data-visualization-tableau-output.png "Spark データ視覚化の Tableau 出力")
 9. **[保存]** をクリックしてワークシートを保存します。 ダッシュボードを作成して 1 つまたは複数のシートを追加できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これまでに、クラスターを作成し、データを照会するための Spark データ フレームを作成し、BI ツールからそのデータにアクセスする方法を学習しました。 次は、クラスターのリソースを管理し、HDInsight Spark クラスターで実行されているジョブをデバッグする方法を見ていきましょう。
 

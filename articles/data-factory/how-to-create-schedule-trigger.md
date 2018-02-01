@@ -1,5 +1,5 @@
 ---
-title: "Azure Data Factory でスケジュール トリガーを作成する方法 | Microsoft Docs"
+title: "Azure Data Factory でのスケジュール トリガーの作成 | Microsoft Docs"
 description: "スケジュールでパイプラインを実行するトリガーを Azure Data Factory で作成する方法について説明します。"
 services: data-factory
 documentationcenter: 
@@ -11,24 +11,255 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 01/23/2018
 ms.author: shlo
-ms.openlocfilehash: 6b92e8402d372e29e264dc70b128124973d66bb9
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 51e2dddbe66ca372d89fc8efeb24bdab9fe6a442
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="how-to-create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールでパイプラインを実行するトリガーを作成する方法
-この記事では、スケジュール トリガーと、トリガーの作成、開始、および監視の手順について説明します。 他の種類のトリガーについては、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。
+# <a name="create-a-trigger-that-runs-a-pipeline-on-a-schedule"></a>スケジュールどおりにパイプラインを実行するトリガーの作成
+この記事では、スケジュール トリガーの概要と、スケジュール トリガーを作成、起動、監視する手順について説明します。 他の種類のトリガーについては、[パイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md)に関するページを参照してください。
+
+スケジュール トリガーを作成するときは、トリガーのスケジュール (開始日、繰り返し、終了日など) を指定し、パイプラインと関連付けます。 パイプラインとトリガーには多対多の関係があります。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。
 
 > [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
+> この記事は、現在プレビュー段階にある Azure Data Factory バージョン 2 に適用されます。 一般公開 (GA) されている Azure Data Factory バージョン 1 を使用している場合は、[Azure Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
 
-### <a name="schedule-trigger-json-definition"></a>スケジュール トリガー JSON 定義
-スケジュール トリガーを作成するときには、このセクションの例に示されているように、JSON を使用してスケジュールと繰り返しを指定できます。
+以下のセクションでは、さまざまな方法でスケジュール トリガーを作成する手順を説明します。 
 
-スケジュール トリガーにパイプライン実行を開始させるには、特定のパイプラインのパイプライン参照をトリガー定義に組み込みます。 パイプラインとトリガーには多対多の関係があります。 複数のトリガーが 1 つのパイプラインを開始することができます。 1 つのトリガーが複数のパイプラインを開始することもできます。
+## <a name="data-factory-ui"></a>Data Factory UI
+**スケジュール トリガー** を作成して、パイプラインを定期的 (毎時、毎日など) に実行するようにスケジュールできます。 
+
+> [!NOTE]
+> パイプラインとスケジュール トリガーの作成、トリガーとパイプラインの関連付け、およびパイプラインの実行と監視の完全なチュートリアルについては、[Data Factory UI を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-portal.md)をご覧ください。
+
+1. **[編集]** タブに切り替えます。 
+
+    ![[編集] タブに切り替える](./media/how-to-create-schedule-trigger/switch-edit-tab.png)
+1. メニューの **[トリガー]** をクリックし、**[New/Edit]\(新規作成/編集\)** をクリックします。 
+
+    ![新しいトリガーのメニュー](./media/how-to-create-schedule-trigger/new-trigger-menu.png)
+2. **[Add Triggers]\(トリガーの追加\)** ページで、**[Choose trigger...]\(トリガーの選択...\)**、**[新規]** の順にクリックします。 
+
+    ![トリガーの追加 - 新しいトリガー](./media/how-to-create-schedule-trigger/add-trigger-new-button.png)
+3. **[新しいトリガー]** ページで、次の手順を実行します。 
+
+    1. **[種類]** で **[スケジュール]** が選択されていることを確認します。 
+    2. **[開始日 (UTC)]** にトリガーの開始日時を指定します。 これは、既定で現在の日時に設定されています。 
+    3. トリガーの**繰り返し**を指定します。 ドロップダウン リストから値のいずれか (分単位、時間単位、日単位、週単位、月単位) を選択します。 テキスト ボックスに乗数を入力します。 たとえば、15 分に 1 回トリガーを実行する場合は、**[1 分ごと]** を選択し、テキスト ボックスに「**15**」と入力します。 
+    4. トリガーの終了日時を指定しない場合は、**[終了]** フィールドで **[終了日指定なし]** を選択します。 終了日時を指定するには、**[指定日]** を選択し、終了日時を指定して、**[適用]** をクリックします。 各パイプライン実行に関連したコストがかかります。 テストする場合は、パイプラインが数回だけトリガーされるように設定してください。 ただし、発行時から終了時刻までにパイプラインを実行できる十分な時間があるようにします。 トリガーは、UI でトリガーを保存したときではなく、Data Factory にソリューションを発行した後で有効になります。
+
+        ![トリガー設定](./media/how-to-create-schedule-trigger/trigger-settings.png)
+4. **[新しいトリガー]** ウィンドウで、**[アクティブ化]** をオンにし、**[次へ]** をクリックします。 このチェック ボックスを使用して、トリガーを後で非アクティブ化できます。 
+
+    ![トリガーの設定 - [次へ] ボタン](./media/how-to-create-schedule-trigger/trigger-settings-next.png)
+5. **[新しいトリガー]** ページで警告メッセージを確認し、**[完了]** をクリックします。
+
+    ![トリガーの設定 - [完了] ボタン](./media/how-to-create-schedule-trigger/new-trigger-finish.png)
+6. **[発行]** をクリックして、変更を Data Factory に発行します。 変更を Data Factory に発行するまで、トリガーはパイプライン実行のトリガーを開始しません。 
+
+    ![[発行] ボタン](./media/how-to-create-schedule-trigger/publish-2.png)
+8. 左側で **[監視]** タブに切り替えます。 **[最新の情報に更新]** をクリックして、リストを更新します。 スケジュールされたトリガーによってトリガーされたパイプライン実行が表示されます。 **[トリガー元]** 列の値に注意してください。 **[Trigger Now]\(今すぐトリガー\)** を使用すると、一覧に手動のトリガー実行が表示されます。 
+
+    ![トリガーされた実行を監視する](./media/how-to-create-schedule-trigger/monitor-triggered-runs.png)
+9. **[Pipeline Runs]\(パイプラインの実行\)** の横にある下向き矢印をクリックして、**[Trigger Runs]\(トリガーの実行\)** ビューに切り替えます。 
+
+    ![トリガーの実行を監視する](./media/how-to-create-schedule-trigger/monitor-trigger-runs.png)
+
+## <a name="azure-powershell"></a>Azure PowerShell
+このセクションでは、Azure PowerShell を使用してスケジュール トリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認する場合は、[Azure PowerShell を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-powershell.md)を最初にご覧ください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
+
+1. 次の内容が含まれた **MyTrigger.json** という名前の JSON ファイルを C:\ADFv2QuickStartPSH\ フォルダーに作成します。
+
+    > [!IMPORTANT]
+    > JSON ファイルを保存する前に、**startTime** 要素の値を現在の UTC 時間に設定します。 **endTime** 要素の値を現在の UTC 時間の 1 時間後に設定します。
+
+    ```json   
+    {
+        "properties": {
+            "name": "MyTrigger",
+            "type": "ScheduleTrigger",
+            "typeProperties": {
+                "recurrence": {
+                    "frequency": "Minute",
+                    "interval": 15,
+                    "startTime": "2017-12-08T00:00:00",
+                    "endTime": "2017-12-08T01:00:00"
+                }
+            },
+            "pipelines": [{
+                    "pipelineReference": {
+                        "type": "PipelineReference",
+                        "referenceName": "Adfv2QuickStartPipeline"
+                    },
+                    "parameters": {
+                        "inputPath": "adftutorial/input",
+                        "outputPath": "adftutorial/output"
+                    }
+                }
+            ]
+        }
+    }
+    ```
+
+    JSON スニペットにおける設定は以下のとおりです。
+    - トリガーの **type** 要素が "ScheduleTrigger" に設定されています。
+    - **frequency** 要素が "Minute" に設定され、**interval** 要素が 15 に設定されています。 そのため、トリガーは開始時刻と終了時刻の間で 15 分ごとにパイプラインを実行します。
+    - **endTime** 要素は、**startTime** 要素の値の 1 時間後になっています。 そのため、トリガーは開始時刻の 15 分後、30 分後、45 分後にパイプラインを実行します。 必ず、開始時刻を現在の UTC 時間に更新し、終了時刻を開始時刻の 1 時間後に更新してください。 
+    - トリガーは、**Adfv2QuickStartPipeline** パイプラインに関連付けられます。 複数のパイプラインをトリガーに関連付けるには、**pipelineReference** セクションを追加します。
+    - クイック スタートのパイプラインは、**inputPath** と **outputPath** の 2 つの**パラメーター**の値を受け取ります。 そのため、これらのパラメーターの値をトリガーから渡します。
+
+2. **Set-AzureRmDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
+
+    ```powershell
+    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
+    ```
+
+3. **Get-AzureRmDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Stopped** であることを確認します。
+
+    ```powershell
+    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    ```
+
+4. **Start-AzureRmDataFactoryV2Trigger** コマンドレットを使用してトリガーを起動します。
+
+    ```powershell
+    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    ```
+
+5. **Get-AzureRmDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Started** であることを確認します。
+
+    ```powershell
+    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
+    ```
+
+6.  **Get-AzureRmDataFactoryV2TriggerRun** コマンドレットを使用して、Azure PowerShell でトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行します。 トリガー定義の値に合わせて、**TriggerRunStartedAfter** と **TriggerRunStartedBefore** の値を更新します。
+
+    ```powershell
+    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
+    ```
+    
+    Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
+
+
+## <a name="net-sdk"></a>.NET SDK
+このセクションでは、.NET SDK を使用してトリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認する場合は、[.NET SDK を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-dot-net.md)を最初にご覧ください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイック スタートの一環として作成する **Adfv2QuickStartPipeline** という名前のパイプラインに関連付けられます。
+
+15 分ごとに実行されるスケジュール トリガーを作成して起動するには、メイン メソッドに次のコードを追加します。
+
+```csharp
+            // Create the trigger
+            Console.WriteLine("Creating the trigger");
+
+            // Set the start time to the current UTC time
+            DateTime startTime = DateTime.UtcNow;
+
+            // Specify values for the inputPath and outputPath parameters
+            Dictionary<string, object> pipelineParameters = new Dictionary<string, object>();
+            pipelineParameters.Add("inputPath", "adftutorial/input");
+            pipelineParameters.Add("outputPath", "adftutorial/output");
+
+            // Create a schedule trigger
+            string triggerName = "MyTrigger";
+            ScheduleTrigger myTrigger = new ScheduleTrigger()
+            {
+                Pipelines = new List<TriggerPipelineReference>()
+                {
+                    // Associate the Adfv2QuickStartPipeline pipeline with the trigger
+                    new TriggerPipelineReference()
+                    {
+                        PipelineReference = new PipelineReference(pipelineName),
+                        Parameters = pipelineParameters,
+                    }
+                },
+                Recurrence = new ScheduleTriggerRecurrence()
+                {
+                    // Set the start time to the current UTC time and the end time to one hour after the start time
+                    StartTime = startTime,
+                    TimeZone = "UTC",
+                    EndTime = startTime.AddHours(1),
+                    Frequency = RecurrenceFrequency.Minute,
+                    Interval = 15,
+                }
+            };
+
+            // Now, create the trigger by invoking the CreateOrUpdate method
+            TriggerResource triggerResource = new TriggerResource()
+            {
+                Properties = myTrigger
+            };
+            client.Triggers.CreateOrUpdate(resourceGroup, dataFactoryName, triggerName, triggerResource);
+
+            // Start the trigger
+            Console.WriteLine("Starting the trigger");
+            client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
+```
+
+トリガー実行を監視するには、サンプルの最後の `Console.WriteLine` ステートメントの前に次のコードを追加します。
+
+```csharp
+            // Check that the trigger runs every 15 minutes
+            Console.WriteLine("Trigger runs. You see the output every 15 minutes");
+
+            for (int i = 0; i < 3; i++)
+            {
+                System.Threading.Thread.Sleep(TimeSpan.FromMinutes(15));
+                List<TriggerRun> triggerRuns = client.Triggers.ListRuns(resourceGroup, dataFactoryName, triggerName, DateTime.UtcNow.AddMinutes(-15 * (i + 1)), DateTime.UtcNow.AddMinutes(2)).ToList();
+                Console.WriteLine("{0} trigger runs found", triggerRuns.Count);
+
+                foreach (TriggerRun run in triggerRuns)
+                {
+                    foreach (KeyValuePair<string, string> triggeredPipeline in run.TriggeredPipelines)
+                    {
+                        PipelineRun triggeredPipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, triggeredPipeline.Value);
+                        Console.WriteLine("Pipeline run ID: {0}, Status: {1}", triggeredPipelineRun.RunId, triggeredPipelineRun.Status);
+                        List<ActivityRun> runs = client.ActivityRuns.ListByPipelineRun(resourceGroup, dataFactoryName, triggeredPipelineRun.RunId, run.TriggerRunTimestamp.Value, run.TriggerRunTimestamp.Value.AddMinutes(20)).ToList();
+                    }
+                }
+            }
+```
+
+Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
+
+
+## <a name="python-sdk"></a>Python SDK
+このセクションでは、Python SDK を使用してトリガーを作成、起動、監視する方法について説明します。 このサンプルの動作を確認する場合は、[Python SDK を使用したデータ ファクトリの作成に関するクイック スタート](quickstart-create-data-factory-python.md)を最初にご覧ください。 次に、Python スクリプトの "パイプライン実行を監視する" コード ブロックの後に次のコード ブロックを追加します。 このコードは、指定された開始時刻と終了時刻の間で 15 分ごとに実行するスケジュールのトリガーを作成します。 **start_time** 変数を現在の UTC 時間に更新し、**end_time** 変数を現在の UTC 時間の 1 時間後に更新します。
+
+```python
+    # Create a trigger
+    tr_name = 'mytrigger'
+    scheduler_recurrence = ScheduleTriggerRecurrence(frequency='Minute', interval='15',start_time='2017-12-12T04:00:00', end_time='2017-12-12T05:00:00', time_zone='UTC')
+    pipeline_parameters = {'inputPath':'adftutorial/input', 'outputPath':'adftutorial/output'}
+    pipelines_to_run = []
+    pipeline_reference = PipelineReference('copyPipeline')
+    pipelines_to_run.append(TriggerPipelineReference(pipeline_reference, pipeline_parameters))
+    tr_properties = ScheduleTrigger(description='My scheduler trigger', pipelines = pipelines_to_run, recurrence=scheduler_recurrence)    
+    adf_client.triggers.create_or_update(rg_name, df_name, tr_name, tr_properties)
+
+    # Start the trigger
+    adf_client.triggers.start(rg_name, df_name, tr_name)
+```
+
+Azure Portal でトリガー実行とパイプライン実行を監視するには、[パイプライン実行の監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)に関するセクションをご覧ください。
+
+## <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
+Azure Resource Manager テンプレートを使用してトリガーを作成できます。 詳しい手順については、[Resource Manager テンプレートを使用した Azure データ ファクトリの作成](quickstart-create-data-factory-resource-manager-template.md)に関する記事をご覧ください。  
+
+## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>トリガーの開始時刻をパイプラインに渡す
+Azure Data Factory バージョン 1 では、**SliceStart**、**SliceEnd**、**WindowStart**、**WindowEnd** の各システム変数を使用することによって、パーティション分割されたデータの読み取りと書き込みをサポートします。 Azure Data Factory バージョン 2 では、パイプライン パラメーターを使用してこの動作を実現できます。 トリガーの開始時刻とスケジュールされた時刻を、パイプライン パラメーターの値として設定します。 次の例では、トリガーのスケジュールされた時刻が、**scheduledRunTime** パイプライン パラメーターに値として渡されます。
+
+```json
+"parameters": {
+    "scheduledRunTime": "@trigger().scheduledTime"
+}
+```    
+
+詳細については、[パーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)に関する記事をご覧ください。
+
+## <a name="json-schema"></a>JSON スキーマ
+次の JSON 定義は、スケジュールと繰り返しを指定してスケジュール トリガーを作成する方法を示しています。
 
 ```json
 {
@@ -37,11 +268,11 @@ ms.lasthandoff: 01/05/2018
     "typeProperties": {
       "recurrence": {
         "frequency": <<Minute, Hour, Day, Week, Month>>,
-        "interval": <<int>>,             // optional, how often to fire (default to 1)
+        "interval": <<int>>,             // Optional, specifies how often to fire (default to 1)
         "startTime": <<datetime>>,
         "endTime": <<datetime - optional>>,
         "timeZone": "UTC"
-        "schedule": {                    // optional (advanced scheduling specifics)
+        "schedule": {                    // Optional (advanced scheduling specifics)
           "hours": [<<0-23>>],
           "weekDays": : [<<Monday-Sunday>>],
           "minutes": [<<0-59>>],
@@ -75,282 +306,102 @@ ms.lasthandoff: 01/05/2018
 ```
 
 > [!IMPORTANT]
->  **parameters** プロパティは、**pipelines** 内の必須プロパティです。 パイプラインがパラメーターを受け取らない場合でも、parameters に空の json を含めます。それは、このプロパティを必ず指定する必要があるためです。
+>  **parameters** プロパティは、**pipelines** 要素の必須プロパティです。 パイプラインがパラメーターを受け取らない場合、**parameters** プロパティの空の JSON 定義を含める必要があります。
 
 
-### <a name="overview-schedule-trigger-schema"></a>概要: スケジュール トリガーのスキーマ
-次の表に、トリガーでの繰り返しとスケジュール設定に関連する主要な要素の概要を示します。
+### <a name="schema-overview"></a>スキーマの概要
+次の表に、トリガーの繰り返しとスケジュール設定に関連する主要なスキーマ要素の概要を示します。
 
-JSON プロパティ |     [説明]
-------------- | -------------
-startTime | startTime は、日付/時刻です。 単純なスケジュールでは、startTime は最初の発生日時です。 複雑なスケジュールでは、トリガーは startTime になるとすぐに起動します。
-endTime | トリガーの終了日付/時刻を指定します。 トリガーはこの時刻より後には実行されません。 過去の日時を endTime に指定するのは無効です。 これは省略可能なプロパティです。
-timeZone | 現時点では、UTC のみがサポートされています。
-recurrence | recurrence オブジェクトは、トリガーの繰り返し規則を指定します。 この recurrence オブジェクトは、frequency、interval、endTime、count、schedule という要素をサポートします。 recurrence を定義する場合は、frequency が必要です。recurrence の他の要素は省略可能です。
-frequency | トリガーが繰り返す頻度の単位を表します。 サポートされる値は `minute`、`hour`、`day`、`week`、`month` です。
-interval | interval は正の整数です。 トリガーを実行する頻度を決定する frequency の間隔を示します。 たとえば、interval が 3 で frequency が "week" の場合は、トリガーは 3 週間ごとに繰り返されます。
-schedule | トリガーに頻度を指定すると、繰り返しのスケジュールに基づいて、そのジョブの繰り返しを変更できます。 schedule には、分、時間、曜日、月の日、週番号に基づいた変更を指定します。
-
-
-### <a name="overview-schedule-trigger-schema-defaults-limits-and-examples"></a>概要: スケジュール トリガーのスキーマの既定値、制限、例
-
-JSON での名前 | 値の型 | 必須 | 既定値 | 有効な値 | 例
---------- | ---------- | --------- | ------------- | ------------ | -------
-startTime | String | [はい] | なし | ISO-8601 の日付/時刻 | ```"startTime" : "2013-01-09T09:30:00-08:00"```
-recurrence | オブジェクト | [はい] | なし | recurrence オブジェクト | ```"recurrence" : { "frequency" : "monthly", "interval" : 1 }```
-interval | Number | いいえ  | 1 | 1 ～ 1000。 | ```"interval":10```
-endTime | String | [はい] | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"`
-schedule | オブジェクト | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }`
-
-### <a name="deep-dive-starttime"></a>詳細情報: startTime
-次の表では、startTime による、トリガーの実行の制御方法を説明しています。
-
-startTime の値 | スケジュールなしの繰り返し | スケジュールありの繰り返し
---------------- | --------------------------- | ------------------------
-開始時刻が過去に設定されている | 開始時刻より後の将来の最初の実行時刻を計算し、その時点で実行します。<p>2 回目以降のジョブは、最後の実行時刻から計算して実行します。</p><p>この表の後の例を参照してください。</p> | トリガーは、指定した開始時刻_になるとすぐに_開始します。 最初は、開始時刻から計算したスケジュールに基づいて実行します。 <p>2 回目以降のジョブは、繰り返しのスケジュールに基づいて実行</p>
-開始時刻が将来または現在に設定されている | 指定した開始時刻に 1 回実行します。 <p>2 回目以降のジョブは、最後の実行時刻から計算して実行します。</p> | トリガーは、指定した開始時刻_になるとすぐに_開始します。 最初は、開始時刻から計算したスケジュールに基づいて実行します。<p>2 回目以降のジョブは、繰り返しのスケジュールに基づいて実行します。</p>
-
-ここでは、startTime が過去であり、recurrence を設定し、schedule を設定していない場合についての動作の例を説明します。 現在の時刻が `2017-04-08 13:00`、startTime が `2017-04-07 14:00` で、recurrence は 2 日ごと (frequency に day、interval に 2 を指定) であると仮定します。startTime が過去、つまり現在の時刻よりも前であることにご注意ください。
-
-この条件では、最初の実行は `2017-04-09 at 14:00` になります。 Scheduler エンジンは、開始時刻から実行を計算します。 過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。 したがって、この場合は、startTime が `2017-04-07 at 2:00pm` となり、次回のインスタンスは 2 日後、つまり `2017-04-09 at 2:00pm` となります。
-
-startTime が `2017-04-05 14:00` または `2017-04-01 14:00` であっても、最初の実行時間は同じです。 最初の実行後、後続の実行はスケジュールを使用して計算されます。 したがって、`2017-04-11 at 2:00pm`、`2017-04-13 at 2:00pm`、そして `2017-04-15 at 2:00pm` などとなります。
-
-最後に、トリガーにスケジュールが設定されている場合に、スケジュールに時/分 (一方または両方) が設定されていないと、既定では、最初の実行に指定した時/分が、それぞれ使用されます。
-
-### <a name="deep-dive-schedule"></a>詳細情報: schedule
-一方で、schedule は、トリガーの実行回数を制限できます。 たとえば、frequency が "month" のトリガーに、31 日にのみ実行する schedule を設定すると、トリガーは 31 日がある月にのみ実行されます。
-
-他方、schedule によりトリガーの実行回数を増やすこともできます。 たとえば、frequency が "month" のトリガーに、月の 1 日と 2 日に実行する schedule を設定すると、トリガーは、月に 1 回ではなく、毎月 1 日と 2 日に実行されます。
-
-schedule の要素を複数指定した場合は、評価の順序は大きい要素から小さい要素の順序となります。つまり、週番号、月の日、曜日、時間、分という順序です。
-
-schedule の要素を次の表に詳しく示します。
+| JSON プロパティ | [説明] |
+|:--- |:--- |
+| **startTime** | 日付/時刻の値。 単純なスケジュールの場合、**startTime** プロパティの値が最初の発生日時に適用されます。 複雑なスケジュールの場合、指定した **startTime** 値になるとすぐにトリガーが起動します。 |
+| **endTime** | トリガーの終了日時。 指定した終了日時を過ぎると、トリガーは実行されません。 このプロパティの値に過去の日時を指定することはできません。 このプロパティは省略可能です。 |
+| **timeZone** | タイム ゾーン。 現在、サポートされているタイム ゾーンは UTC のみです。 |
+| **recurrence** | トリガーの繰り返し規則を指定する recurrence オブジェクト。 この recurrence オブジェクトは、**frequency**、**interval**、**endTime**、**count**、**schedule** の各要素をサポートします。 recurrence オブジェクトを定義する場合、**frequency** 要素は必須です。 recurrence オブジェクトの他の要素は省略できます。 |
+| **frequency** | トリガーが繰り返される頻度の単位。 サポートされる値には、"minute"、"hour"、"day"、"week"、"month" があります。 |
+| **interval** | トリガーの実行頻度を決定する、**frequency** 値の間隔を示す正の整数。 たとえば、**interval** が 3 で **frequency** が "week" の場合、トリガーは 3 週間ごとに繰り返されます。 |
+| **schedule** | トリガーの繰り返しのスケジュール。 **frequency** 値が指定されたトリガーは、繰り返しのスケジュールに基づいて繰り返しが変更されます。 **schedule** プロパティには、分、時間、曜日、日にち、週番号に基づいた繰り返しの変更を指定します。
 
 
-JSON での名前 | [説明] | 有効な値
---------- | ----------- | ------------
-minutes | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
-hours | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul>
-weekDays | トリガーを実行する曜日。 週単位の頻度だけを指定できます。 | <ul><li>Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday</li><li>任意の値の配列 (最大配列サイズは 7)</li></p>大文字/小文字は区別されません</p>
-monthlyOccurrences | トリガーを実行する月の日にちを指定します。 月単位の頻度だけを指定できます。 | monthlyOccurence オブジェクトの配列: `{ "day": day,  "occurrence": occurence }`。 <p> day はトリガーを実行する曜日です。たとえば、`{Sunday}` は、月の毎週日曜日という意味です。 必須。<p>occurrence は、月の第何週に実行するかを表します。たとえば、`{Sunday, -1}` は月の最終日曜日という意味です。 省略可能。
-monthDays | トリガーが実行される月の日にち。 月単位の頻度だけを指定できます。 | <ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li><li>値の配列。</li>
+### <a name="schema-defaults-limits-and-examples"></a>スキーマの既定値、制限、例
+
+| JSON プロパティ | type | 必須 | 既定値 | 有効な値 | 例 |
+|:--- |:--- |:--- |:--- |:--- |:--- |
+| **startTime** | String | [はい] | なし | ISO-8601 の日付/時刻 | `"startTime" : "2013-01-09T09:30:00-08:00"` |
+| **recurrence** | オブジェクト | [はい] | なし | recurrence オブジェクト | `"recurrence" : { "frequency" : "monthly", "interval" : 1 }` |
+| **interval** | Number | いいえ  | 1 | 1 ～ 1,000 | `"interval":10` |
+| **endTime** | String | [はい] | なし | 将来の時刻を表す日付/時刻の値 | `"endTime" : "2013-02-09T09:30:00-08:00"` |
+| **schedule** | オブジェクト | いいえ  | なし | schedule オブジェクト | `"schedule" : { "minute" : [30], "hour" : [8,17] }` |
+
+### <a name="starttime-property"></a>startTime プロパティ
+次の表に、**startTime** プロパティでトリガー実行を制御する方法を示します。
+
+| startTime の値 | スケジュールなしの繰り返し | スケジュールありの繰り返し |
+|:--- |:--- |:--- |
+| 開始時刻が過去に設定されている | 開始時刻より後の将来の最初の実行時刻を計算し、その時刻に実行されます。<br/><br/>以降は、前回の実行時刻からの計算に基づいて実行されます。<br/><br/>この表の後の例を参照してください。 | 指定した開始時刻になると "_すぐに_" トリガーが起動します。 最初の発生は、開始時刻から計算されたスケジュールに基づきます。<br/><br/>以降は、繰り返しのスケジュールに基づいて実行されます。 |
+| 開始時刻が将来または現在に設定されている | 指定した開始時刻に 1 回実行されます。<br/><br/>以降は、前回の実行時刻からの計算に基づいて実行されます。 | 指定した開始時刻になると "_すぐに_" トリガーが起動します。 最初の発生は、開始時刻から計算されたスケジュールに基づきます。<br/><br/>以降は、繰り返しのスケジュールに基づいて実行されます。 |
+
+ここでは、開始時刻が過去であり、スケジュールなしの繰り返しが設定されている場合の動作の例を説明します。 現在の時刻が `2017-04-08 13:00`、開始時刻が `2017-04-07 14:00`、繰り返しが 2 日ごとであると仮定します  (**recurrence** 値を定義するには、**frequency** プロパティを "day"、**interval** プロパティを 2 に設定します)。**startTime** 値が過去であり、現在の時刻よりも前であることに注意してください。
+
+この条件では、最初の実行は `2017-04-09 at 14:00` になります。 Scheduler エンジンは、開始時刻から実行を計算します。 過去のインスタンスはすべて破棄されます。 エンジンは、将来発生する次回のインスタンスを使用します。 このシナリオでは、開始時刻が `2017-04-07 at 2:00pm` であるため、次のインスタンスはその 2 日後、つまり、`2017-04-09 at 2:00pm` になります。
+
+**startTime** 値が `2017-04-05 14:00` または `2017-04-01 14:00` であっても、最初の実行時刻は同じです。 最初の実行後、以降の実行はスケジュールを使用して計算されます。 したがって、以降の実行は、`2017-04-11 at 2:00pm`、`2017-04-13 at 2:00pm`、`2017-04-15 at 2:00pm` (以降も同様) になります。
+
+最後に、トリガーのスケジュールに時間または分が設定されていない場合は、最初の実行の時間または分が既定値として使用されます。
+
+### <a name="schedule-property"></a>schedule プロパティ
+schedule を使用することで、トリガーの実行回数を制限できます。 たとえば、月単位の頻度を指定したトリガーを 31 日にのみ実行するようにスケジュールすると、トリガーは 31 日がある月にのみ実行されます。
+
+他方、schedule によりトリガーの実行回数を増やすこともできます。 たとえば、月単位の頻度を指定したトリガーを月の 1 日と 2 日に実行するようにスケジュールすると、トリガーは月に 1 回ではなく、月の 1 日と 2 日に実行されます。
+
+**schedule** の複数の要素を指定した場合、最も大きいスケジュール設定から最も小さいスケジュール設定の順序で評価されます。 まず週番号が評価され、日にち、曜日、時間、分の順に評価されます。
+
+次の表に、**schedule** の要素の詳細を示します。
 
 
-## <a name="examples-recurrence-schedules"></a>例: 繰り返しのスケジュール
-このセクションでは、schedule オブジェクトとそのサブ要素に注目して、さまざまな繰り返しの例を示します。
-
-スケジュール例では、間隔が 1 に設定されていると仮定します。 また、schedule の値に合った適切な頻度が指定されていると仮定します。たとえば、frequency に "day" を使用し、schedule に "monthDays" の変更を指定することはできません。 これらの制限は、前のセクションの表で説明されています。
-
-例 | [説明]
-------- | -----------
-`{"hours":[5]}` | 毎日午前 5 時に実行
-`{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行
-`{"minutes":[15], "hours":[5,17]}` | 毎日午前 5 時 15 分と午後 5 時 15 分に実行
-`{"minutes":[15,45], "hours":[5,17]}` | 毎日午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行
-`{"minutes":[0,15,30,45]}` | 15 分ごとに実行
-`{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | 1 時間ごとに実行。 このトリガーは 1 時間おきに実行されます。 分は、指定されている場合は startTime によって制御されます。指定されていない場合は、作成時刻によって制御されます。 たとえば、開始時刻または作成時刻が午後 12 時 25 分である場合 (どちらが適用される場合でも)、トリガーは 0 時 25 分、1 時 25 分、2 時 25 分...23 時 25 分に実行されます。 このスケジュールは、frequency に "hour"、interval に 1 を指定して、schedule を指定しないトリガーと同等です。 両者の違いは、このスケジュールは、frequency と interval を変えることで、他のトリガーの作成に使用できる点にあります。 たとえば、frequency が "month" の場合には、月 1 回だけ実行されます。frequency が "day" の場合には、スケジュールは毎日実行されます。
-`{"minutes":[0]}` | 毎正時に実行。 このトリガーも 1 時間ごとに実行されますが、正時に実行されます。(例: 午前 0 時、午前 1 時、午前 2 時)。 この設定は、frequency に "hour"、startTime に 0 分を設定し、さらに頻度が "day" であれば、schedule を設定しなかったトリガーと同等です。ただし、頻度が "week" または "month" の場合は、このスケジュールは、それぞれ週に 1 日だけ、または月に 1 日だけ実行します。
-`{"minutes":[15]}` | 毎正時から 15 分経過後に実行。 1 時間ごとに実行。午前 0 時 15 分から開始し、午前 1 時 15 分、午前 2 時 15 分午後 10 時 15 分と続き、最後に午後 11 時 15 分に実行します。
-`{"hours":[17], "weekDays":["saturday"]}` | 毎週土曜日の午後 5 時に実行
-`{"hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | 毎週月曜日、水曜日、金曜日の午後 5 時に実行
-`{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | 毎週月曜日、水曜日、金曜日の午後 5 時 15 分と午後 5 時 45 分に実行
-`{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | 平日に 15 分ごとに実行
-`{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | 平日の午前 9 時と午後 4 時 45 分の間、15 分ごとに実行
-`{"weekDays":["tuesday", "thursday"]}` | 火曜日と木曜日の指定された開始時刻に実行。
-`{"minutes":[0], "hours":[6], "monthDays":[28]}` | 毎月 28 日の午前 6 時に実行 (頻度を月と仮定した場合)
-`{"minutes":[0], "hours":[6], "monthDays":[-1]}` | 月の最終日の午前 6 時に実行。 月の最終日にトリガーを実行する場合は、28、29、30、31 という日にちではなく -1 を使用します。
-`{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` | 毎月の最初と最後の日の午前 6 時に実行
-`{monthDays":[1,14]}` | 毎月 1 日と 14 日の指定された開始時刻に実行。
-`{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` | 毎月の最初の金曜日の午前 5 時に実行
-`{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` | 毎月の最初の金曜日の指定された開始時刻に実行。
-`{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` | 毎月、月の最後から 3 番目の金曜日の開始時刻に実行
-`{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | 毎月の最初と最後の金曜日の午前 5 時 15 分に実行
-`{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | 毎月の最初と最後の金曜日の指定された開始時刻に実行
-`{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` | 毎月の第 5 金曜日の開始時刻に実行。 第 5 金曜日にのみ実行するスケジュールとなっているため、月に第 5 金曜日がない場合は、パイプラインは実行されません。  月の最終金曜日にトリガーを実行する場合は、occurrence に 5 ではなく -1 を使用することをご検討ください。
-`{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` | 月の最終金曜日に 15 分ごとに実行。
-`{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | 毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行。
+| JSON 要素 | [説明] | 有効な値 |
+|:--- |:--- |:--- |
+| **分** | トリガーを実行する時刻 (分)。 | <ul><li>整数</li><li>整数の配列</li></ul>
+| **hours** | トリガーを実行する時刻 (時)。 | <ul><li>整数</li><li>整数の配列</li></ul> |
+| **weekDays** | トリガーが実行される曜日。 この値を指定できるのは、頻度が週単位の場合のみです。 | <ul><li>Monday、Tuesday、Wednesday、Thursday、Friday、Saturday、Sunday</li><li>曜日の値の配列 (配列の最大サイズは 7)</li><li>曜日の値の大文字小文字は区別されません</li></ul> |
+| **monthlyOccurrences** | トリガーが実行される月の特定曜日。 この値を指定できるのは、頻度が月単位の場合のみです。 | <ul><li>**monthlyOccurence** オブジェクトの配列: `{ "day": day,  "occurrence": occurence }`。</li><li>**day** 属性は、トリガーが実行される曜日を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値が `{Sunday}` の場合、月の毎週日曜日を意味します。 **day** 属性は必須です。</li><li>**occurrence** 属性は、月の指定した **day** の出現を表します。 たとえば、**monthlyOccurrences** プロパティの **day** 値と **occurrence** 値が `{Sunday, -1}` の場合、月の最後の日曜日を意味します。 **occurrence** 属性は省略可能です。</li></ul> |
+| **monthDays** | トリガーが実行される日にち。 この値を指定できるのは、頻度が月単位の場合のみです。 | <ul><li>-1 以下かつ -31 以上の任意の値</li><li>1 以上かつ 31 以下の任意の値</li><li>値の配列</li></ul> |
 
 
-## <a name="use-azure-powershell"></a>Azure PowerShell の使用
-ここでは、Azure PowerShell を使用してスケジューラ トリガーを作成、起動、および監視する方法について説明します。 このサンプルの動作を確認する場合は、「[PowerShell を使用した Azure データ ファクトリの作成](quickstart-create-data-factory-powershell.md)」を最初にご覧ください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイックスタートの一環として作成するパイプライン (**Adfv2QuickStartPipeline**) に関連付けられます。
+## <a name="examples-of-trigger-recurrence-schedules"></a>トリガーの繰り返しのスケジュールの例
+このセクションでは、**schedule** オブジェクトとその要素に注目して、繰り返しのスケジュールの例を示します。
 
-1. 以下の内容を記述した MyTrigger.json という名前の JSON ファイルを C:\ADFv2QuickStartPSH\ フォルダー内に作成します。
+各例は、**interval** 値が 1 であり、schedule の定義に従って **frequency** に適切な値が指定されていることを前提としています。 たとえば、**frequency** 値に "day" を指定し、**schedule** オブジェクトで "monthDays" の変更を指定することはできません。 このような制限事項は、前のセクションの表に記載されています。
 
-    > [!IMPORTANT]
-    > JSON ファイルを保存する前に、**startTime** を現在の UTC 時間に設定し、**endTime** を現在の UTC 時間の 1 時間後に設定してください。
+| 例 | [説明] |
+|:--- |:--- |
+| `{"hours":[5]}` | 毎日午前 5 時に実行されます。 |
+| `{"minutes":[15], "hours":[5]}` | 毎日午前 5 時 15 分に実行されます。 |
+| `{"minutes":[15], "hours":[5,17]}` | 毎日午前 5 時 15 分と午後 5 時 15 分に実行されます。 |
+| `{"minutes":[15,45], "hours":[5,17]}` | 毎日午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行されます。 |
+| `{"minutes":[0,15,30,45]}` | 15 分ごとに実行されます。 |
+| `{hours":[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23]}` | 1 時間ごとに実行されます。 このトリガーは 1 時間おきに実行されます。 **startTime** 値が指定されている場合、分はこの値によって制御されます。 値が指定されていない場合は、作成時刻によって制御されます。 たとえば、開始時刻または作成時刻が (どちらが適用される場合でも) 午後 12 時 25 分の場合、トリガーは 0 時 25 分、1 時 25 分、2 時 25 分...23 時 25 分に実行されます。<br/><br/>このスケジュールは、**frequency** 値に "hour"、**interval** 値に 1 を指定し、**schedule** を指定しないトリガーに相当します。  **frequency** と **interval** に別の値を指定してこのスケジュールを使用すると、他のトリガーを作成できます。 たとえば、**frequency** 値が "month" の場合は、月に 1 回だけ実行され、**frequency** 値が "day" の場合は、毎日実行されます。 |
+| `{"minutes":[0]}` | 毎正時に実行されます。 このトリガーは、毎正時 (午前 0 時、午前 1 時、午前 2 時 (以降も同様)) に実行されます。<br/><br/>このスケジュールは、**frequency** 値に "hour"、**startTime** 値に 0 分を指定したトリガー、または **schedule** を設定せずに **frequency** 値に "day" を指定したトリガーに相当します。 **frequency** 値が "week" または "month" の場合、スケジュールはそれぞれ週に 1 日または月に 1 日だけ実行されます。 |
+| `{"minutes":[15]}` | 毎正時から 15 分後に実行されます。 このトリガーは、毎正時から 15 分後 (午前 0 時 15 分、午前 1 時 15 分、午前 2 時 15 分 (以降も同様)、最後が午後 11 時 15 分) に実行されます。 |
+| `{"hours":[17], "weekDays":["saturday"]}` | 毎週土曜日の午後 5 時に実行されます。 |
+| `{"hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | 毎週月曜日、水曜日、金曜日の午後 5 時に実行されます。 |
+| `{"minutes":[15,45], "hours":[17], "weekDays":["monday", "wednesday", "friday"]}` | 毎週月曜日、水曜日、金曜日の午後 5 時 15 分と午後 5 時 45 分に実行されます。 |
+| `{"minutes":[0,15,30,45], "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | 平日に 15 分ごとに実行されます。 |
+| `{"minutes":[0,15,30,45], "hours": [9, 10, 11, 12, 13, 14, 15, 16] "weekDays":["monday", "tuesday", "wednesday", "thursday", "friday"]}` | 平日の午前 9 時から午後 4 時 45 分まで 15 分ごとに実行されます。 |
+| `{"weekDays":["tuesday", "thursday"]}` | 火曜日と木曜日の指定された開始時刻に実行されます。 |
+| `{"minutes":[0], "hours":[6], "monthDays":[28]}` | 毎月 28 日の午前 6 時に実行されます (**frequency** 値が "month" であることが前提)。 |
+| `{"minutes":[0], "hours":[6], "monthDays":[-1]}` | 月の最終日の午前 6 時に実行されます。 月の最終日にトリガーを実行するには、28、29、30、31 という日にちではなく -1 を使用します。 |
+| `{"minutes":[0], "hours":[6], "monthDays":[1,-1]}` | 毎月最初と最後の日の午前 6 時に実行されます。 |
+| `{monthDays":[1,14]}` | 毎月 1 日と 14 日の指定された開始時刻に実行されます。 |
+| `{"minutes":[0], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` | 毎月最初の金曜日の午前 5 時に実行されます。 |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1}]}` | 毎月最初の金曜日の指定された開始時刻に実行されます。 |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":-3}]}` | 毎月、月の最後から 3 番目の金曜日の指定された開始時刻に実行されます。 |
+| `{"minutes":[15], "hours":[5], "monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | 毎月最初と最後の金曜日の午前 5 時 15 分に実行されます。 |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":1},{"day":"friday", "occurrence":-1}]}` | 毎月最初と最後の金曜日の指定された開始時刻に実行されます。 |
+| `{"monthlyOccurrences":[{"day":"friday", "occurrence":5}]}` | 毎月第 5 金曜日の指定された開始時刻に実行されます。 第 5 金曜日にのみ実行するようにスケジュールされているため、月に第 5 金曜日がない場合、パイプラインは実行されません。 月の最後の金曜日にトリガーを実行する場合は、**occurrence** 値に 5 ではなく -1 を使用することを検討してください。 |
+| `{"minutes":[0,15,30,45], "monthlyOccurrences":[{"day":"friday", "occurrence":-1}]}` | 月の最後の金曜日に 15 分ごとに実行されます。 |
+| `{"minutes":[15,45], "hours":[5,17], "monthlyOccurrences":[{"day":"wednesday", "occurrence":3}]}` | 毎月第 3 水曜日の午前 5 時 15 分、午前 5 時 45 分、午後 5 時 15 分、午後 5 時 45 分に実行されます。 |
 
-    ```json   
-    {
-        "properties": {
-            "name": "MyTrigger",
-            "type": "ScheduleTrigger",
-            "typeProperties": {
-                "recurrence": {
-                    "frequency": "Minute",
-                    "interval": 15,
-                    "startTime": "2017-12-08T00:00:00",
-                    "endTime": "2017-12-08T01:00:00"
-                }
-            },
-            "pipelines": [{
-                    "pipelineReference": {
-                        "type": "PipelineReference",
-                        "referenceName": "Adfv2QuickStartPipeline"
-                    },
-                    "parameters": {
-                        "inputPath": "adftutorial/input",
-                        "outputPath": "adftutorial/output"
-                    }
-                }
-            ]
-        }
-    }
-    ```
-
-    JSON スニペットにおける設定は以下のとおりです。
-    - トリガーの **type** が **ScheduleTrigger** に設定されます。
-    - **frequency** が **Minute** に設定され、**interval** が **15** に設定されます。 そのため、トリガーは開始時刻と終了時刻の間で 15 分ごとにパイプラインを実行します。
-    - **endTime** は **startTime** の 1 時間後であるため、トリガーは startTime の 15 分後、30 分後、45 分後にパイプラインを実行します。 必ず startTime を現在の UTC 時間に更新し、endTime を startTime の 1 時間後に更新してください。  
-    - トリガーは、**Adfv2QuickStartPipeline** パイプラインに関連付けられます。 複数のパイプラインをトリガーに関連付けるには、**pipelineReference** セクションを追加します。
-    - このクイックスタートのパイプラインは 2 つの**パラメーター**を受け取ります。 そのため、これらのパラメーターの値をトリガーから渡します。
-2. **Set-AzureRmDataFactoryV2Trigger** コマンドレットを使用してトリガーを作成します。
-
-    ```powershell
-    Set-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger" -DefinitionFile "C:\ADFv2QuickStartPSH\MyTrigger.json"
-    ```
-3. **Get-AzureRmDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Stopped** であることを確認します。
-
-    ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
-    ```
-4. **Start-AzureRmDataFactoryV2Trigger** コマンドレットを使用してトリガーを起動します。
-
-    ```powershell
-    Start-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
-    ```
-5. **Get-AzureRmDataFactoryV2Trigger** コマンドレットを使用して、トリガーの状態が **Started** であることを確認します。
-
-    ```powershell
-    Get-AzureRmDataFactoryV2Trigger -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -Name "MyTrigger"
-    ```
-6.  **Get-AzureRmDataFactoryV2TriggerRun** コマンドレットを使用して、PowerShell によるトリガー実行を取得します。 トリガー実行に関する情報を取得するには、次のコマンドを定期的に実行してください。トリガー定義の値に合わせて **TriggerRunStartedAfter** と **TriggerRunStartedBefore** の値を更新します。
-
-    ```powershell
-    Get-AzureRmDataFactoryV2TriggerRun -ResourceGroupName $ResourceGroupName -DataFactoryName $DataFactoryName -TriggerName "MyTrigger" -TriggerRunStartedAfter "2017-12-08T00:00:00" -TriggerRunStartedBefore "2017-12-08T01:00:00"
-    ```
-
-    Azure Portal でトリガー実行/パイプライン実行を監視するには、「[パイプラインの監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)」をご覧ください。
-
-## <a name="use-net-sdk"></a>.NET SDK の使用
-ここでは、.NET SDK を使用してトリガーを作成、起動、および監視する方法について説明します。 このコードの動作を確認する場合は、「[.NET SDK を使用してデータ ファクトリとパイプラインを作成する](quickstart-create-data-factory-dot-net.md)」を最初にご覧ください。 続いて、メインのメソッドに以下のコードを追加します。このコードは、15 分ごとに実行するスケジュールのトリガーを作成して起動します。 このトリガーは、クイックスタートの一環として作成するパイプライン (**Adfv2QuickStartPipeline**) に関連付けられます。
-
-```csharp
-            //create the trigger
-            Console.WriteLine("Creating the trigger");
-
-            // set the start time to the current UTC time
-            DateTime startTime = DateTime.UtcNow;
-
-            // specify values for the inputPath and outputPath parameters
-            Dictionary<string, object> pipelineParameters = new Dictionary<string, object>();
-            pipelineParameters.Add("inputPath", "adftutorial/input");
-            pipelineParameters.Add("outputPath", "adftutorial/output");
-
-            // create a schedule trigger
-            string triggerName = "MyTrigger";
-            ScheduleTrigger myTrigger = new ScheduleTrigger()
-            {
-                Pipelines = new List<TriggerPipelineReference>()
-                {
-                    // associate the Adfv2QuickStartPipeline pipeline with the trigger
-                    new TriggerPipelineReference()
-                    {
-                        PipelineReference = new PipelineReference(pipelineName),
-                        Parameters = pipelineParameters,
-                    }
-                },
-                Recurrence = new ScheduleTriggerRecurrence()
-                {
-                    // set the start time to current UTC time and the end time to be one hour after.
-                    StartTime = startTime,
-                    TimeZone = "UTC",
-                    EndTime = startTime.AddHours(1),
-                    Frequency = RecurrenceFrequency.Minute,
-                    Interval = 15,
-                }
-            };
-
-            // now, create the trigger by invoking CreateOrUpdate method.
-            TriggerResource triggerResource = new TriggerResource()
-            {
-                Properties = myTrigger
-            };
-            client.Triggers.CreateOrUpdate(resourceGroup, dataFactoryName, triggerName, triggerResource);
-
-            //start the trigger
-            Console.WriteLine("Starting the trigger");
-            client.Triggers.Start(resourceGroup, dataFactoryName, triggerName);
-
-```
-
-トリガー実行を監視するには、最後の `Console.WriteLine` ステートメントの前に次のコードを追加します。
-
-```csharp
-            // Check the trigger runs every 15 minutes
-            Console.WriteLine("Trigger runs. You see the output every 15 minutes");
-
-            for (int i = 0; i < 3; i++)
-            {
-                System.Threading.Thread.Sleep(TimeSpan.FromMinutes(15));
-                List<TriggerRun> triggerRuns = client.Triggers.ListRuns(resourceGroup, dataFactoryName, triggerName, DateTime.UtcNow.AddMinutes(-15 * (i + 1)), DateTime.UtcNow.AddMinutes(2)).ToList();
-                Console.WriteLine("{0} trigger runs found", triggerRuns.Count);
-
-                foreach (TriggerRun run in triggerRuns)
-                {
-                    foreach (KeyValuePair<string, string> triggeredPipeline in run.TriggeredPipelines)
-                    {
-                        PipelineRun triggeredPipelineRun = client.PipelineRuns.Get(resourceGroup, dataFactoryName, triggeredPipeline.Value);
-                        Console.WriteLine("Pipeline run ID: {0}, Status: {1}", triggeredPipelineRun.RunId, triggeredPipelineRun.Status);
-                        List<ActivityRun> runs = client.ActivityRuns.ListByPipelineRun(resourceGroup, dataFactoryName, triggeredPipelineRun.RunId, run.TriggerRunTimestamp.Value, run.TriggerRunTimestamp.Value.AddMinutes(20)).ToList();
-                    }
-                }
-            }
-```
-
-Azure Portal でトリガー実行/パイプライン実行を監視するには、「[パイプラインの監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)」をご覧ください。
-
-## <a name="use-python-sdk"></a>Python SDK の使用
-ここでは、Python SDK を使用してトリガーを作成、起動、および監視する方法について説明します。 このコードの動作を確認する場合は、「[Python を使用してデータ ファクトリとパイプラインを作成する](quickstart-create-data-factory-python.md)」を最初にご覧ください。 続いて、Python スクリプトの "パイプライン実行を監視する" コード ブロックの後に次のコード ブロックを追加します。 このコードは、指定された開始時刻と終了時刻の間で 15 分ごとに実行するスケジュールのトリガーを作成します。 start_time を現在の UTC 時間に更新し、end_time を現在の UTC 時間の 1 時間後に更新してください。
-
-```python
-    # Create a trigger
-    tr_name = 'mytrigger'
-    scheduler_recurrence = ScheduleTriggerRecurrence(frequency='Minute', interval='15',start_time='2017-12-12T04:00:00', end_time='2017-12-12T05:00:00', time_zone='UTC')
-    pipeline_parameters = {'inputPath':'adftutorial/input', 'outputPath':'adftutorial/output'}
-    pipelines_to_run = []
-    pipeline_reference = PipelineReference('copyPipeline')
-    pipelines_to_run.append(TriggerPipelineReference(pipeline_reference, pipeline_parameters))
-    tr_properties = ScheduleTrigger(description='My scheduler trigger', pipelines = pipelines_to_run, recurrence=scheduler_recurrence)    
-    adf_client.triggers.create_or_update(rg_name, df_name, tr_name, tr_properties)
-
-    # start the trigger
-    adf_client.triggers.start(rg_name, df_name, tr_name)
-```
-Azure Portal でトリガー実行/パイプライン実行を監視するには、「[パイプラインの監視](quickstart-create-data-factory-resource-manager-template.md#monitor-the-pipeline)」をご覧ください。
-
-## <a name="use-resource-manager-template"></a>Resource Manager テンプレートの使用
-Azure Resource Manager テンプレートを使用してトリガーを作成できます。 詳しい手順については、「[チュートリアル: Azure Resource Manager テンプレートを使用した Azure データ ファクトリの作成](quickstart-create-data-factory-resource-manager-template.md)」をご覧ください。  
-
-## <a name="pass-the-trigger-start-time-to-a-pipeline"></a>トリガーの開始時刻をパイプラインに渡す
-Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 バージョン 2 では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 次の例では、トリガーのスケジュールされた時刻が scheduledRunTime パイプライン パラメーターに値として渡されます。
-
-```json
-"parameters": {
-    "scheduledRunTime": "@trigger().scheduledTime"
-}
-```    
-詳しくは、「[Azure Data Factory バージョン 2 に対してパーティション分割されたデータの読み取りまたは書き込みを行う方法](how-to-read-write-partitioned-data.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 トリガーについて詳しくは、「[Azure Data Factory でのパイプラインの実行とトリガー](concepts-pipeline-execution-triggers.md#triggers)」をご覧ください。

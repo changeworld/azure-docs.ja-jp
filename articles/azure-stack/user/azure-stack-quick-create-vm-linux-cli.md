@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: ea0bc72c03c7c51f79b838493eb2f6d3efe4f8f7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 160893f5b2e9c78bd62355782c279fb08f7f6b48
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Azure Stack で Azure CLI を使用して Linux 仮想マシンを作成する
 
@@ -37,7 +37,7 @@ Azure CLI は、コマンドラインで Azure Stack リソースを作成およ
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、[az group create](/cli/azure/group#create) コマンドを実行してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。 次の例では、myResourceGroup という名前のリソース グループをローカルの場所に作成します。
+リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、[az group create](/cli/azure/group#az_group_create) コマンドを実行してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。 次の例では、myResourceGroup という名前のリソース グループをローカルの場所に作成します。
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -45,7 +45,7 @@ az group create --name myResourceGroup --location local
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#create) コマンドを使用して VM を作成します。 次の例では、myVM という名前の VM を作成します。 この例では、管理ユーザーの名前に Demouser、パスワードに Demouser@123 を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、仮想マシンに接続する際に必要です。
+[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用して VM を作成します。 次の例では、myVM という名前の VM を作成します。 この例では、管理ユーザーの名前に Demouser、パスワードに Demouser@123 を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、仮想マシンに接続する際に必要です。
 
 ```cli
 az vm create \
@@ -98,13 +98,13 @@ NGINX をインストールし、VM のポート 80 をインターネットか�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
+必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```cli
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、単純な Linux 仮想マシンをデプロイしました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。
 

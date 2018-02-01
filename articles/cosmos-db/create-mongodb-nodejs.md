@@ -15,15 +15,15 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: mimig
-ms.openlocfilehash: 335c271f3e46d3b6b23e1fcac53e39b89ece796c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e6e8e2c1c3a65aa88dae75fcb8a7d670d6f4c278
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: 既存の Node.js MongoDB Web アプリを移行する 
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
 このクイック スタートでは、Node.js で記述された既存の [MongoDB](mongodb-introduction.md) アプリを使用して Azure Cosmos DB データベースに接続する方法を示します。これは MongoDB のクライアント接続をサポートしています。 言い換えると、Node.js アプリケーションは、MongoDB API を使用して MongoDB データベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
 
@@ -65,9 +65,9 @@ npm start
 ```
 アプリケーションは、MongoDB ソースに接続しようとして失敗しますが、そのまま続けてください。出力結果から "[MongoError: connect ECONNREFUSED 127.0.0.1:27017]" が返されたらアプリケーションを終了します。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
-インストールされた Azure CLI を使用する場合は、[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
+インストールされた Azure CLI を使用する場合は、[az login](/cli/azure/#az_login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 Azure Cloud Shell を使用する場合は、この手順を省略できます。
 
 ```azurecli
 az login 
@@ -81,7 +81,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) で[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az_group_create) で[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例は、西ヨーロッパ リージョンにリソース グループを作成します。 リソース グループには一意の名前を選択します。
 
@@ -93,7 +93,7 @@ az group create --name myResourceGroup --location "West Europe"
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
-[az cosmosdb create](/cli/azure/cosmosdb#create) コマンドを使用して Azure Cosmos DB アカウントを作成します。
+[az cosmosdb create](/cli/azure/cosmosdb#az_cosmosdb_create) コマンドを使用して Azure Cosmos DB アカウントを作成します。
 
 次のコマンドの `<cosmosdb-name>` プレースホルダーを独自の一意の Cosmos DB アカウント名に置き換えます。 この一意の名前は、Azure Cosmos DB エンドポイント (`https://<cosmosdb-name>.documents.azure.com/`) の一部として使用されます。そのため、この名前は Azure のすべての Azure Cosmos DB アカウントで一意である必要があります。 
 
@@ -238,7 +238,7 @@ git commit -m "configured MongoDB connection string"
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用して MongoDB コレクションを作成する方法を学習しました。 これで、MongoDB データを Azure Cosmos DB に移行できます。  
 

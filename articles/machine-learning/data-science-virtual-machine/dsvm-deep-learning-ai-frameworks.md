@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 46662c15374f781a6527bb1435d883ae060c63f4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6dba433536e07970ad5ce338e33b5d19f4532b2
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](http://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。 
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 | サポートされている DSVM エディション      | Windows、Linux     |
 | DSVM での構成/インストール方法  | Keras は Python 2.7 (_root_) および Python 3.5 (_py35_) 環境にインストールされます。   |
 | サンプルへのリンク      | https://github.com/fchollet/keras/tree/master/examples      |
-| DSVM 上の関連ツール      | Microsoft Cognitive Toolkit、TensorLlow、Theano      |
+| DSVM 上の関連ツール      | Microsoft Cognitive Toolkit、TensorFlow、Theano      |
 | 使用/実行方法    | Github の場所からサンプルをダウンロードして ~/notebooks 配下のディレクトリにコピーし、Jupyter で開きます   |
 
 
@@ -117,7 +117,7 @@ jupyter notebook
 | サポートされている DSVM エディション      | Linux     |
 | DSVM での構成/インストール方法  | Deep Water は `/dsvm/tools/deep_water` にインストールされます。   |
 | サンプルへのリンク      | サンプルは Deep Water サーバー経由で入手できます。      |
-| DSVM 上の関連ツール      | H2o、Sparkling Water      |
+| DSVM 上の関連ツール      | H2O、Sparkling Water      |
 
 ### <a name="how-to-use--run-it"></a>使用/実行方法  
 

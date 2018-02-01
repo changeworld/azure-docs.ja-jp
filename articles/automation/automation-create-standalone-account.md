@@ -1,6 +1,6 @@
 ---
 title: "スタンドアロン Azure Automation アカウントを作成する | Microsoft Docs"
-description: "Azure Automation のセキュリティ プリンシパル認証の作成、テスト、使用例をわかりやすく説明しています。"
+description: "この記事では、Azure Automation のセキュリティ プリンシパル認証のサンプルを作成、テスト、使用する手順をわかりやすく説明します。"
 services: automation
 documentationcenter: 
 author: georgewallace
@@ -14,75 +14,91 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: magoedte
-ms.openlocfilehash: 0397b45753ea64d1a33916d5e0dff12d6e1d80aa
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4a6946f34babfd63a2b9a12818761c6d6c74bc15
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="create-a-standalone-azure-automation-account"></a>スタンドアロン Azure Automation アカウントを作成する
-このトピックでは、Azure Automation の評価および学習を目的として、Azure Portal から Automation アカウントを作成する方法について説明します。Runbook ジョブの高度な監視を実現する管理ソリューションの追加や OMS Log Analytics との統合は含まれていません。  そうした管理ソリューションの追加や Log Analytics との統合は、後からいつでも行うことができます。  Automation アカウントを使うと、Runbook の認証を行い、Azure Resource Manager または Azure クラシック デプロイメントのリソースを管理できます。
+この記事では、Azure Automation アカウントを Azure Portal で作成する方法について説明します。 ポータルの Automation アカウントを使用すると、追加の管理ソリューションを使用したり Operations Management Suite (OMS) の Azure Log Analytics と統合することなく、Automation について評価し、学ぶことができます。 このような管理ソリューションの追加や Log Analytics との統合は、Runbook ジョブを詳細に監視するために、後からいつでも行うことができます。 
 
-Azure Portal で Automation アカウントを作成すると、次のものが自動的に作成されます。
+Automation アカウントを使うと、Azure Resource Manager またはクラシック デプロイメント モデルでリソースを管理することで、Runbook を認証できます。
 
-* Azure Active Directory の新しいサービス プリンシパルと証明書を作成し、ロールベースのアクセス制御 (RBAC) の共同作成者ロールを割り当てる実行アカウント。この共同作成者ロールは、Runbook を使用した Resource Manager のリソースの管理に使用されます。   
-* クラシック実行アカウント。クラシック リソースを Runbook で管理する際に使用する管理証明書をアップロードすることで作成されます。  
+Azure Portal で Automation アカウントを作成すると、次のアカウントが自動的に作成されます。
 
-これによって必要な作業が単純化され、オートメーションのニーズを満たす Runbook をすぐに作成し、デプロイすることができます。  
+* **実行アカウント**。 このアカウントは、次のタスクを実行します。
+  - Azure Active Directory (Azure AD) にサービス プリンシパルを作成します。
+  - 証明書を作成します。
+  - Runbook を使用して Azure Resource Manager リソースを管理する、共同作成者のロールベースのアクセス制御 (RBAC) を割り当てます。
+* **クラシック実行アカウント**。 このアカウントは、管理証明書をアップロードします。 この証明書は、Runbook を使用してクラシック リソースを管理します。
 
-## <a name="permissions-required-to-create-automation-account"></a>Automation アカウントを作成するために必要なアクセス許可
-Automation アカウントを作成したり更新したりするには、このトピックの作業で要求される以下に記載した特権とアクセス許可が必要となります。   
- 
-* Automation アカウントを作成するためには、ご利用の AD ユーザー アカウントが、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」の記事に記載されている Microsoft.Automation リソースの所有者ロールに相当するアクセス許可を備えたロールに追加されている必要があります。  
-* [アプリの登録] が **[はい]** に設定されている場合、Azure AD テナントの非管理者ユーザーが [AD アプリケーションを登録](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)できます。  [アプリの登録] が **[いいえ]** に設定されている場合、この操作を行うユーザーは、Azure AD の全体管理者であることが必要です。 
+これらのアカウントが作成されると、オートメーションのニーズを満たす Runbook の作成とデプロイをすばやく開始することができます。  
 
-サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションの全体管理者/共同管理者ロールに追加された場合、Active Directory にゲストとして追加されることになります。 この場合、"…を作成するためのアクセス許可がありません" という 警告が **[Automation アカウントの追加]** ブレードに表示されます。 先に全体管理者/共同管理者ロールに追加されていたユーザーは、サブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザーとして再度追加できます。 このような状況を検証するには、Azure Portal の **[Azure Active Directory]** ウィンドウで、**[ユーザーとグループ]**、**[すべてのユーザー]**、特定のユーザー、**[プロファイル]** の順に選択します。 ユーザーのプロファイルの下部にある **[ユーザー タイプ]** 属性の値は、**[ゲスト]** と一致しないようにする必要があります。
+## <a name="permissions-required-to-create-an-automation-account"></a>Automation アカウントを作成するために必要なアクセス許可
+Automation アカウントを作成または更新したり、この記事で説明されているタスクを完了したりするには、次の特権とアクセス許可が必要です。 
 
-## <a name="create-a-new-automation-account-from-the-azure-portal"></a>Azure Portal から新しい Automation アカウントを作成する
-このセクションでは、以下の手順に従って、Azure Portal で Azure Automation アカウントを作成します。    
+* Automation アカウントを作成するには、Azure AD ユーザー アカウントが、**Microsoft.Automation** リソースの所有者ロールに相当するアクセス許可を持つロールに追加されている必要があります。 詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。  
+* Azure Portal の **[Azure Active Directory]** > **[管理]** > **[アプリの登録]** で、(**[アプリの登録]** が **[はい]** に設定されている場合)、Azure AD テナント内の管理者以外のユーザーは [Active Directory アプリケーションを登録](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)できます。 **[アプリの登録]** が **[いいえ]** に設定されている場合、このアクションを実行するユーザーは Azure AD 内のグローバル管理者である必要があります。 
 
-1. サブスクリプション管理ロールのメンバーかつサブスクリプションの共同管理者であるアカウントを使用して、Azure Portal にサインインします。
-2. **[新規]**をクリックします。<br><br> ![Azure Portal での [新規] オプションの選択](media/automation-offering-get-started/automation-portal-martketplacestart.png)<br>  
-3. **Automation** を検索し、検索結果から **[Automation & Control]** を選択します。<br><br> ![Marketplace からの Automation の検索と選択](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
-3. [Automation アカウント] ブレードで **[追加]** をクリックします。<br><br>![[Automation アカウントの追加]](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションのグローバル管理者/共同管理者ロールに追加された場合、Active Directory にはゲストとして追加されます。 このシナリオでは、**[Automation アカウントの追加]** ページに "作成するためのアクセス許可がありません" というメッセージが表示されます。 
 
+ユーザーが先にグローバル管理者/共同管理者ロールに追加された場合は、そのユーザーをサブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザー ロールに再度追加できます。
 
-   > [!NOTE]
-   > お使いのアカウントが、サブスクリプション管理ロールのメンバーではなく、サブスクリプションの共同管理者でもない場合、**[Automation アカウントの追加]** ブレードに次の警告が表示されます。<br><br>![Add Automation Account Warning](media/automation-create-standalone-account/create-account-without-perms.png)
-   > 
-   > 
-4. **[Automation アカウントの追加]** ブレードの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
-5. 複数のサブスクリプションがある場合は、新しいアカウントに対して 1 つのサブスクリプションを指定し、新規または既存の**リソース グループ**と、Azure データ センターの**場所**を指定します。
-6. **[Azure 実行アカウントの作成]** オプションで **[はい]** が選択されていることを確認し、**[作成]** ボタンをクリックします。  
-   
-   > [!NOTE]
-   > 実行アカウントを作成しなかった場合 (先ほどのオプションで **[いいえ]** を選択した場合)、**[Automation アカウントの追加]** ブレードに警告メッセージが表示されます。  Azure Portal でアカウントを作成している間は、クラシック サブスクリプションまたは Resource Manager サブスクリプションのディレクトリ サービスには対応する認証 ID が割り当てられず、サブスクリプション内のリソースにアクセスすることはできません。  そのため、このアカウントを参照する Runbook は認証を通過できず、これらのデプロイメント モデルのリソースに対するタスクを実行することができません。
-   > 
-   > ![Add Automation Account Warning](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)<br>
-   > サービス プリンシパルが作成されていない場合、共同作成者ロールは割り当てられません。
-   > 
+ユーザー ロールを確認するには
+1. Azure Portal で、**[Azure Active Directory]** ウィンドウに移動します。
+2. **[ユーザーとグループ]** を選択します。
+3. **[すべてのユーザー]** を選択します。 
+4. 特定のユーザーを選択した後、**[プロファイル]** を選択します。 ユーザーのプロファイルの下にある **[ユーザー タイプ]** 属性の値が **[ゲスト]** であってはいけません。
 
-7. Azure によって Automation アカウントが作成されている間、メニューの **[通知]** で進行状況を追跡できます。
+## <a name="create-a-new-automation-account-in-the-azure-portal"></a>Azure Portal で新しい Automation アカウントを作成する
+Azure Portal で Azure Automation アカウントを作成するには、以下の手順を実行します。    
+
+1. サブスクリプション管理者ロールのメンバーであり、かつサブスクリプションの共同管理者であるアカウントを使用して Azure Portal にサインインします。
+2. **[+ リソースの作成]** を選択します。
+3. 「**Automation**」を検索します。 検索結果で、**[Automation]** を選択します。<br><br> ![Azure Marketplace で [Automation & Control] を検索して選択する](media/automation-create-standalone-account/automation-marketplace-select-create-automationacct.png)<br> 
+4. 次の画面で **[作成]** を選択します。
+  ![Automation アカウントの追加](media/automation-create-standalone-account/automation-create-automationacct-properties.png)
+  
+  > [!NOTE]
+  > **[Automation アカウントの追加]** ウィンドウに次のメッセージが表示された場合、お使いのアカウントは、サブスクリプションの管理者ロールのメンバーではなく、サブスクリプションの共同管理者でもありません。
+  >
+  > ![[Automation アカウントの追加] の警告](media/automation-create-standalone-account/create-account-without-perms.png)
+  >
+5. **[Automation アカウントの追加]** ウィンドウの **[名前]** ボックスに、新しい Automation アカウントの名前を入力します。
+6. 複数のサブスクリプションがある場合は、**[サブスクリプション]** ボックスで、新しいアカウントで使用するサブスクリプションを指定します。 
+7. **[リソース グループ]** に、新しいリソース グループを入力するか既存のリソース グループを選択します。 
+8. **[場所]** で、Azure データセンターの場所を選択します。
+9. **[Azure 実行アカウントの作成]** オプションで、**[はい]** が選択されていることを確認し、**[作成]** を選択します。
+    
+  > [!NOTE]
+  > **[Azure 実行アカウントの作成]** で **[いいえ]** を選択して、実行アカウントを作成しなかった場合、**[Automation アカウントの追加]** ウィンドウにメッセージが表示されます。 Azure Portal でアカウントが作成されますが、このアカウントは、クラシック デプロイメント モデル内または Azure Resource Manager サブスクリプションのディレクトリ サービス内に対応する認証 ID を持ちません。 その結果、この Automation アカウントは、ご使用のサブスクリプションのリソースへのアクセス権を持ちません。 そのため、このアカウントを参照する Runbook は認証を通過できず、これらのデプロイメント モデルのリソースに対するタスクを実行することができません。
+  >
+  > ![[Automation アカウントの追加] の警告](media/automation-create-standalone-account/create-account-decline-create-runas-msg.png)
+  >
+  > サービス プリンシパルが作成されていない場合、共同作成者ロールは割り当てられません。
+  >
+10. Automation アカウントの作成の進行状況を追跡するには、メニューで **[通知]** を選択します。
 
 ### <a name="resources-included"></a>含まれるリソース
-Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。  実行アカウントのリソースを次の表に示します。<br>
+Automation アカウントが正常に作成されると、いくつかのリソースが自動的に作成されます。 実行アカウントのリソースを次の表に示します。
 
 | リソース | [説明] |
 | --- | --- |
-| AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルのグラフィカルな Runbook。 |
-| AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法と、すべての Resource Manager リソースの取得方法を示す、サンプルの PowerShell Runbook。 |
-| AzureAutomationTutorialPython2 Runbook |実行アカウントを使って認証を行い、指定したサブスクリプション内のリソース グループを一覧表示するサンプル Python Runbook。 |
-| AzureRunAsCertificate |Automation アカウントの作成時または既存のアカウント用に下の PowerShell スクリプトを使用した場合に自動的に作成される、証明書資産。  これにより、Azure を使用して認証を行い、Runbook から Azure Resource Manager リソースを管理できるようになります。  この証明書には、1 年の有効期間があります。 |
-| AzureRunAsConnection |Automation アカウントの作成時または既存のアカウント用に下の PowerShell スクリプトを使用した場合に自動的に作成される、接続資産。 |
+| AzureAutomationTutorial Runbook |実行アカウントを使用した認証の方法を示す、サンプルのグラフィカルな Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
+| AzureAutomationTutorialScript Runbook |実行アカウントを使用した認証の方法を示す、サンプルの PowerShell Runbook。 この Runbook は、すべての Resource Manager リソースを取得します。 |
+| AzureAutomationTutorialPython2 Runbook |実行アカウントを使用した認証の方法を示す、サンプルの Python Runbook。 この Runbook には、サブスクリプション内に存在するすべてのリソース グループが一覧表示されます。 |
+| AzureRunAsCertificate |Automation アカウントの作成時に自動的に作成される証明書資産、または既存のアカウント用に PowerShell スクリプトを使用して作成される証明書資産。 この証明書は、Runbook から Azure Resource Manager リソースを管理できるよう、Azure に対する認証を行います。 この証明書には、1 年の有効期間があります。 |
+| AzureRunAsConnection |Automation アカウントの作成時に自動的に作成される接続資産、または既存のアカウント用に PowerShell スクリプトを使用して作成される接続資産。 |
 
-クラシック実行アカウントのリソースを次の表に示します。<br>
+クラシック実行アカウントのリソースを次の表に示します。
 
 | リソース | [説明] |
 | --- | --- |
-| AzureClassicAutomationTutorial Runbook |クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルのグラフィカルな Runbook。 |
-| AzureClassicAutomationTutorial Script Runbook |クラシック実行アカウント (証明書) を使用してサブスクリプション内のすべてのクラシック VM を取得し、VM の名前と状態を出力するサンプルの PowerShell Runbook。 |
-| AzureClassicRunAsCertificate |Runbook から Azure のクラシック リソースを管理できるように、Azure を使用した認証に使用される、自動的に作成される証明書資産。  この証明書には、1 年の有効期間があります。 |
-| AzureClassicRunAsConnection |Runbook から Azure のクラシック リソースを管理できるように、Azure を使用した認証に使用される、自動的に作成される接続資産。 |
+| AzureClassicAutomationTutorial Runbook |サンプルのグラフィカル Runbook。 Runbook は、クラシック実行アカウント (証明書) を使用して、サブスクリプション内のすべてのクラシック VM を取得します。 その後、VM の名前と状態が表示されます。 |
+| AzureClassicAutomationTutorial Script Runbook |サンプルの PowerShell Runbook。 Runbook は、クラシック実行アカウント (証明書) を使用して、サブスクリプション内のすべてのクラシック VM を取得します。 その後、VM の名前と状態が表示されます。 |
+| AzureClassicRunAsCertificate |自動的に作成される証明書資産。 この証明書は、Runbook から Azure クラシック リソースを管理できるように、Azure に対する認証を行います。 この証明書には、1 年の有効期間があります。 |
+| AzureClassicRunAsConnection |自動的に作成される接続資産。 この資産は、Runbook から Azure クラシック リソースを管理できるように、Azure に対する認証を行います。 |
 
 
 ## <a name="next-steps"></a>次の手順

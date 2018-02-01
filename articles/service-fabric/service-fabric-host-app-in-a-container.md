@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
-ms.openlocfilehash: 31c1cee5ddc4c8893da729af884ae7b7b8a58093
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: cd1c3b063132ae549bfbf1e059667c5056c91046
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Windows コンテナー内の .NET アプリケーションを Azure Service Fabric にデプロイする
 
@@ -209,7 +209,7 @@ _ソリューション エクスプ ローラー_で、**ソリューション**
 
 Fabrikam Call Center ソリューションをコンテナー化してデプロイしたため、[Azure Portal][link-azure-portal] を開いて Service Fabric でアプリケーションが実行されていることを確認できます。 アプリケーションをテストするには、Web ブラウザーを開いて Service Fabric クラスターの URL にアクセスします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

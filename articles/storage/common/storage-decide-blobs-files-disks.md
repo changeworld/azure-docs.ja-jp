@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: tamram
-ms.openlocfilehash: 9e8808a50e86e40af4991a6054a55ef57f744aae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b9c7913d1e95693a5ec72b24cf020928d67f0133
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Azure BLOB、Azure Files、Azure ディスクの使い分け
 
@@ -28,7 +28,7 @@ Microsoft Azure の Azure Storage には、クラウドにデータを格納し�
 
 次の表は、Azure Files、Azure BLOB、Azure ディスクの比較と、それぞれの機能に適したシナリオの例です。
 
-| 機能 | Description | 使用時の注意 |
+| Feature | [説明] | いつ使用するか |
 |--------------|-------------|-------------|
 | **Azure Files** | 格納されているファイルにどこからでもアクセスできる [REST インターフェイス](/rest/api/storageservices/file-service-rest-api)、SMB インターフェイス、クライアント ライブラリを備えています。 | 既にネイティブ ファイル システム API を使用し、Azure で稼働している他のアプリケーションとの間でデータを共有しているアプリケーションをクラウドに "リフト アンド シフト" する。<br/><br/>多くの仮想マシンからアクセスする必要のある開発ツールとデバッグ ツールを格納する。 |
 | **Azure BLOB** | 大規模な非構造化データをブロック BLOB に格納してアクセスできる [REST インターフェイス](/rest/api/storageservices/blob-service-rest-api)とクライアント ライブラリを備えています。 | アプリケーションでストリーミングとランダム アクセスのシナリオに対応する。<br/><br/>アプリケーションのデータにどこからでもアクセスできるようにする。 |
@@ -41,14 +41,14 @@ Microsoft Azure の Azure Storage には、クラウドにデータを格納し�
 ||||  
 |-|-|-|  
 |**属性**|**Azure BLOB**|**Azure Files**|  
-|持続性オプション|LRS、ZRS、GRS (さらに高い可用性に対応した RA-GRS も含む)|LRS、GRS|  
+|持続性オプション|LRS、ZRS、GRS、RA-GRS|LRS、ZRS、GRS|  
 |アクセシビリティ|REST API|REST API<br /><br /> SMB 2.1 と SMB 3.0 (標準的なファイル システムの API)|  
 |接続|REST API -- ワールドワイド|REST API -- ワールドワイド<br /><br /> SMB 2.1 -- リージョン内<br /><br /> SMB 3.0 -- ワールドワイド|  
 |エンドポイント|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |ディレクトリ|フラットな名前空間|純粋なディレクトリ オブジェクト|  
 |名前の大文字と小文字の区別|大文字小文字は区別される|大文字小文字は区別されないが、保持される|  
-|容量|最大 500 TB のコンテナー|5 TB のファイル共有|  
-|スループット|ブロック BLOB あたり最大 60 MB/秒|共有あたり最大 60 MB/秒|  
+|Capacity|最大 500 TB のコンテナー|5 TB のファイル共有|  
+|Throughput|ブロック BLOB あたり最大 60 MB/秒|共有あたり最大 60 MB/秒|  
 |オブジェクト サイズ|ブロック BLOB あたり最大 200 GB|ファイルあたり最大 1 TB|  
 |課金対象の容量|書き込みバイト数に基づく|ファイル サイズに基づく|  
 |クライアント ライブラリ|複数言語|複数言語|  
@@ -62,20 +62,20 @@ Azure Files は Azure ディスクを補完するものです。 ディスクは
 ||||  
 |-|-|-|  
 |**属性**|**Azure ディスク**|**Azure Files**|  
-|スコープ|1 台の仮想マシン限定|複数の仮想マシンの間で共有アクセス|  
-|スナップショットとコピー|あり|いいえ|  
+|Scope (スコープ)|1 台の仮想マシン限定|複数の仮想マシンの間で共有アクセス|  
+|スナップショットとコピー|[はい]|いいえ |  
 |構成|仮想マシンの起動時に接続|仮想マシンの起動後に接続|  
-|認証|ビルトイン|net use で設定|  
+|認証|組み込み|net use で設定|  
 |クリーンアップ|自動|マニュアル|  
 |REST を使用したアクセス|VHD 内のファイルにはアクセス不可|共有場所に格納されたファイルにアクセス可|  
 |最大サイズ|4 TB ディスク|5 TB のファイル共有と 1 TB のファイル (共有内)|  
 |最大 8 KB IOPS|500 IOPS|1,000 IOPS|  
-|スループット|ディスクあたり最大 60 MB/秒|ファイル共有あたり最大 60 MB/秒|  
+|Throughput|ディスクあたり最大 60 MB/秒|ファイル共有あたり最大 60 MB/秒|  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 データの格納方法とアクセス方法を決めるときには、それに伴うコストも考慮する必要があります。 詳細については、[Azure Storage の価格](https://azure.microsoft.com/pricing/details/storage/)に関するページを参照してください。
   
 一部の SMB 機能はクラウドでは利用できません。 詳細については、「[Features not supported by the Azure File service (Azure File Service でサポートされていない機能)](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)」を参照してください。
   
-ディスクの詳細については、[ディスクとイメージの管理](../../virtual-machines/windows/about-disks-and-vhds.md)に関するページと[データ ディスクを Windows 仮想マシンにアタッチする方法](../../virtual-machines/windows/classic/attach-disk.md)に関するページを参照してください。
+ディスクの詳細については、[ディスクとイメージの管理](../../virtual-machines/windows/about-disks-and-vhds.md)に関するページと[データ ディスクを Windows 仮想マシンにアタッチする方法](../../virtual-machines/windows/attach-managed-disk-portal.md)に関するページを参照してください。

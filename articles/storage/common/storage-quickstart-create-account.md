@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: 926b78bbe1ec8efaf6529a084af47747325f6096
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: f9692156fa2c1eaf9d3a617d339cdbc210bf6dd1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -120,7 +120,7 @@ $location = "westus"
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Azure CLI で新しいリソース グループを作成するには、[az group create](/cli/azure/group#create) コマンドを使用します。 
+Azure CLI で新しいリソース グループを作成するには、[az group create](/cli/azure/group#az_group_create) コマンドを使用します。 
 
 ```azurecli-interactive
 az group create \
@@ -128,7 +128,7 @@ az group create \
     --location westus
 ```
 
-`--location` パラメーターに指定するリージョンがわからない場合は、[az account list-locations](/cli/azure/account#list) コマンドで、サブスクリプションに対してサポートされているリージョンの一覧を取得できます。
+`--location` パラメーターに指定するリージョンがわからない場合は、[az account list-locations](/cli/azure/account#az_account_list) コマンドで、サブスクリプションに対してサポートされているリージョンの一覧を取得できます。
 
 ```azurecli-interactive
 az account list-locations \
@@ -196,7 +196,7 @@ New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-ローカル冗長ストレージを使用して汎用 v2 ストレージ アカウントを Azure CLI から作成するには、[az storage account create](/cli/azure/storage/account#create) コマンドを使用します。
+ローカル冗長ストレージを使用して汎用 v2 ストレージ アカウントを Azure CLI から作成するには、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドを使用します。
 
 ```azurecli-interactive
 az storage account create \
@@ -248,7 +248,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 # <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-リソース グループと関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[az group delete](/cli/azure/group#delete) コマンドを使用します。
+リソース グループと関連付けられているリソース (新しいストレージ アカウントを含む) を削除するには、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

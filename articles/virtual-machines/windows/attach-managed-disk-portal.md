@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 1c57ea841080fd87c7014e4e4520f17ccf15b156
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 603d1c423ff2039915bdd3d5ed4a79b78d491edc
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-attach-a-managed-data-disk-to-a-windows-vm-in-the-azure-portal"></a>Azure Portal で Windows VM に管理対象のデータ ディスクを接続する方法
 
-この記事では、Azure Portal を使用して新規の管理対象データ ディスクを Windows 仮想マシンに接続する方法について示します。 接続する前に、次のヒントを確認してください。
+この記事では、Azure Portal で新規の管理対象データ ディスクを Windows 仮想マシンに接続する方法について示します。 接続する前に、次のヒントを確認してください。
 
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md)」を参照してください。
 * 新しいディスクの場合、接続時に Azure で自動的に作成されるので、最初に作成する必要はありません。

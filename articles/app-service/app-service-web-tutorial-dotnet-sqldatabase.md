@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: db3be8068ef9e560614daa0e7f0dcf62467fd338
-ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
+ms.openlocfilehash: bd5aa5186bdec84e1943887ef0980fa50cd26324
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>SQL Database を使用して Azure に ASP.NET アプリを作成する
 
@@ -37,6 +37,8 @@ ms.lasthandoff: 10/27/2017
 > * Azure からターミナルにログをストリーミングする
 > * Azure Portal でアプリを管理する
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
@@ -46,8 +48,6 @@ ms.lasthandoff: 10/27/2017
   - **Azure 開発**
 
   ![ASP.NET および Web 開発と Azure 開発 ([Web & Cloud\(Webとクラウド\)] 下)](media/app-service-web-tutorial-dotnet-sqldatabase/workloads.png)
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -146,7 +146,7 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 ![SQL Server インスタンスを作成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database-server.png)
 
-**[OK]**をクリックします。 **[SQL Database の構成]** ダイアログはまだ閉じないでください。
+Click **OK**. **[SQL Database の構成]** ダイアログはまだ閉じないでください。
 
 ### <a name="create-a-sql-database"></a>SQL Database の作成
 
@@ -168,7 +168,7 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 ![Azure Web アプリで発行された ASP.NET アプリケーション](./media/app-service-web-tutorial-dotnet-sqldatabase/azure-app-in-browser.png)
 
-ご利用ありがとうございます。 データ主導の ASP.NET アプリケーションを Azure App Services でライブ実行することができました。
+お疲れさまでした。 データ主導の ASP.NET アプリケーションを Azure App Services でライブ実行することができました。
 
 ## <a name="access-the-sql-database-locally"></a>SQL データベースにローカルでアクセスする
 
@@ -367,7 +367,7 @@ Azure Web アプリを右クリックし、**[ストリーミング ログの表
 
 Azure Web アプリを再度右クリックし、**[表示の設定]** を選択します。
 
-**[Application Logging (File System) (アプリケーションのログ記録 (ファイル システム))]** ボックスの一覧の **[詳細]** をクリックします。 [ **Save**] をクリックします。
+**[Application Logging (File System) (アプリケーションのログ記録 (ファイル システム))]** ボックスの一覧の **[詳細]** をクリックします。 **[Save]** をクリックします。
 
 ![トレース レベルを [詳細] に変更する](./media/app-service-web-tutorial-dotnet-sqldatabase/trace-level-verbose.png)
 
@@ -413,7 +413,7 @@ Web アプリのページが表示されます。
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 
@@ -423,7 +423,7 @@ Web アプリのページが表示されます。
 > * Azure にアプリケーションをデプロイする
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure からターミナルにログをストリーミングする
-> * Azure ポータルでアプリを管理する
+> * Azure Portal でアプリを管理する
 
 次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
 

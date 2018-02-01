@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/21/2017
+ms.date: 01/30/2018
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bfbcded98814500a03b2b79b0248c84f8f043dc0
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 804b50d6ba054bbb0eb60b659c98f161ea5272ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-costs-by-using-azure-cost-management"></a>Azure Cost Management を使用したコスト管理
 
@@ -30,7 +30,7 @@ Azure Cost Management by Cloudyn では、タグに基づいてコストを配�
 
 ## <a name="use-custom-tags-to-allocate-costs"></a>カスタム タグを使用してコストを配賦する
 
-コスト配賦を始めるにあたって最初に行うことは、コスト モデルを使用して範囲を定義することです。 コスト モデルは、コストを変更するものではなく、コストを配分するものです。 コスト モデルを作成するときは、コスト エンティティやアカウント、サブスクリプションのほか、さまざまなタグごとにデータを分けます。 たとえば一般的なタグとして、請求コード、コスト センター、グループ名が挙げられます。 さらにタグは、組織の他の部署にショーバックまたはチャージバックを実施するのにも役立ちます。
+コスト配賦を始めるにあたって最初に行うことは、コスト モデルを使用してスコープを定義することです。 コスト モデルは、コストを変更するものではなく、コストを配分するものです。 コスト モデルを作成するときは、コスト エンティティやアカウント、サブスクリプションのほか、さまざまなタグごとにデータを分けます。 たとえば一般的なタグとして、請求コード、コスト センター、グループ名が挙げられます。 さらにタグは、組織の他の部署にショーバックまたはチャージバックを実施するのにも役立ちます。
 
 カスタム コスト配賦モデルを作成するには、レポートのメニューで **[Cost]\(コスト\)** &gt; **[Cost Management]\(コスト管理\)** &gt; **[Cost Allocation 360°]\(コスト配賦 360 度\)** の順に選択します。
 

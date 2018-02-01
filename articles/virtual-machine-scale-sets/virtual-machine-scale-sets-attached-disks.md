@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: negat
-ms.openlocfilehash: 355865b963c313097f7f5900007f341dba92bf67
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 88d4012145172bcd393070904980898d9923ea1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-and-attached-data-disks"></a>Azure 仮想マシン スケール セットと接続されたデータ ディスク
 Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)で、接続されたデータ ディスクを備えた仮想マシンがサポートされるようになりました。 データ ディスクは、Azure Managed Disks で作成したスケール セットのストレージ プロファイルに定義できます。 以前は、スケール セット内の VM で使用できる直接接続されたストレージのオプションは、OS ドライブと一時ドライブだけでした。
@@ -28,14 +28,14 @@ Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets
 >  接続されたデータ ディスクが定義されたスケール セットを作成する場合、(スタンドアロン型の Azure VM と同様に) ディスクを使用する VM 内からディスクをマウントおよびフォーマットする必要があります。 このプロセスを完了するには、標準スクリプトを呼び出して VM 上のすべてのデータ ディスクをパーティション化およびフォーマットするカスタム スクリプト拡張機能を使用する方法が便利です。
 
 ## <a name="create-a-scale-set-with-attached-data-disks"></a>接続されたデータ ディスクを備えたスケール セットの作成
-接続されたデータ ディスクを備えたスケール セットを作成するには、[az vmss create](/cli/azure/vmss#create) コマンドを使う方法が簡単です。 次の例では、Azure リソース グループと、それぞれ 50 GB と 100 GB の 2 つの接続されたデータ ディスクを備えた 10 台の Ubuntu VM の仮想マシン スケール セットを作成します。
+接続されたデータ ディスクを備えたスケール セットを作成するには、[az vmss create](/cli/azure/vmss#az_vmss_create) コマンドを使う方法が簡単です。 次の例では、Azure リソース グループと、それぞれ 50 GB と 100 GB の 2 つの接続されたデータ ディスクを備えた 10 台の Ubuntu VM の仮想マシン スケール セットを作成します。
 
 ```bash
 az group create -l southcentralus -n dsktest
 az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --data-disk-sizes-gb 50 100
 ```
 
-[az vmss create](/cli/azure/vmss#create) コマンドでは、構成値を指定しない場合に既定で特定の構成値が使用されます。 上書きできる使用可能なオプションを表示するには、次のように入力します。
+[az vmss create](/cli/azure/vmss#az_vmss_create) コマンドでは、構成値を指定しない場合に既定で特定の構成値が使用されます。 上書きできる使用可能なオプションを表示するには、次のように入力します。
 
 ```bash
 az vmss create --help

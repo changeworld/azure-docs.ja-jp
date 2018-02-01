@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/24/2018
 ms.author: makromer
-ms.openlocfilehash: 83065e6cacd784a3914cfac3ff2552a712688366
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 673bc4e0d1609e445e3d18e7cf516ad532be4bc2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="compare-azure-data-factory-v1-and-v2"></a>Azure Data Factory の V1 と V2 の比較
 この記事では、Azure Data Factory の V2 を V1 と比較します。 V1 の概要については、「[Azure Data Factory の概要](v1/data-factory-introduction.md)」を参照してください。 V2 の概要については、[Data Factory (V2 - プレビュー) の概要](introduction.md)に関するページを参照してください。
@@ -86,7 +86,7 @@ SSIS ワークロードをクラウドに移動し、V2 を使用してデータ
 
 Azure-SSIS Integration Runtime は、クラウドでの SSIS パッケージの実行専用の、Azure VM (ノード) の完全に管理されたクラスターです。 Azure-SSIS Integration Runtime のプロビジョニング後は、SSIS パッケージをオンプレミスの SSIS 環境にデプロイするために使用していたのと同じツールを使用できます。 
 
-たとえば、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SSIS パッケージをデプロイできます。 手順については、チュートリアル「[SQL Server Integration Services パッケージを Azure にデプロイする](tutorial-deploy-ssis-packages-azure.md)」を参照してください。 
+たとえば、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SSIS パッケージをデプロイできます。 手順については、チュートリアル「[SQL Server Integration Services パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md)」を参照してください。 
 
 ## <a name="flexible-scheduling"></a>柔軟なスケジュール設定
 Data Factory V2 では、データセットの可用性スケジュールを定義する必要はありません。 クロック スケジューラ パラダイムからパイプラインをスケジュールできるトリガー リソースを定義できます。 柔軟なスケジュール設定および実行モデルのために、トリガーからパイプラインにパラメーターを渡すこともできます。 

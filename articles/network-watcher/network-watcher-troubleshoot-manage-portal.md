@@ -1,6 +1,6 @@
 ---
-title: "Azure 仮想ネットワーク ゲートウェイと接続のトラブルシューティング - PowerShell | Microsoft Docs"
-description: "このページでは、Azure Network Watcher を使用して PowerShell コマンドレットのトラブルシューティングを行う方法を説明します。"
+title: "Azure Virtual Network ゲートウェイと接続のトラブルシューティング - ポータル | Microsoft Docs"
+description: "このページでは Azure Network Watcher を使用してポータルのトラブルシューティングを行う方法を説明します"
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: c3fa22bd599026b0838b134e26062d9837df703e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: fb8f60eea0eaa24649f584ae4183aa8e552a433e
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-powershell"></a>Azure Network Watcher PowerShell を使用した仮想ネットワーク ゲートウェイと接続のトラブルシューティング
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-network-watcher-from-azure-portal"></a>Azure Portal での Network Watcher を使用した Virtual Network ゲートウェイと接続のトラブルシューティング
 
 > [!div class="op_single_selector"]
 > - [ポータル](network-watcher-troubleshoot-manage-portal.md)
@@ -33,7 +33,7 @@ Network Watcher は、Azure 内のネットワーク リソースの把握に関
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関する記事の手順に従って Network Watcher を作成済みであることを前提としています。
+このシナリオは、[Network Watcher の作成](network-watcher-create.md)に関するページの手順を参照して、Network Watcher を作成済みであることを前提としています。
 
 サポートされるゲートウェイの種類の一覧については、「[Supported Gateway types (サポートされるゲートウェイの種類)](network-watcher-troubleshoot-overview.md#supported-gateway-types)」を参照してください。
 
@@ -60,11 +60,11 @@ Network Watcher は、Azure 内のネットワーク リソースの把握に関
 
 ウィンドウの **[詳細]** セクションの **[Status]\(ステータス\)** タブには、選択したリソースに対して最近実行したトラブルシューティングのステータスが表示されます。 最新の診断結果は、最後の実行から xx 分後に表示されます。
 
-|プロパティ  |Description  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |リソース     | リソースへのリンク。        |
 |ストレージ パス     |  ログが格納されているストレージ アカウントとコンテナーのパス (実行中にログが生成された場合)。 この設定は、ポータルにとどまっている間だけ維持されます。        |
-|概要     | リソース正常性の概要。        |
+|まとめ     | リソース正常性の概要。        |
 |詳細     | リソース正常性に関する詳しい情報。        |
 |最終実行日時     | トラブルシューティングが最後に実行された時刻。        |
 
@@ -72,7 +72,7 @@ Network Watcher は、Azure 内のネットワーク リソースの把握に関
 問題を解決する方法の一般的なガイダンスは **[アクション]** タブに表示されます。 問題に対してアクションを実施できる場合は、追加のガイダンスのリンクが提供されます。 追加のガイダンスがない場合は、サポート ケースを開くための URL が応答で提供されます。  応答のプロパティと内容の詳細については、[Network Watcher のトラブルシューティングの概要](network-watcher-troubleshoot-overview.md)に関するページを参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 設定が変更されて VPN 接続が停止される場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関する記事を参照して、問題がある可能性のあるネットワーク セキュリティ グループとセキュリティ規則を詳しく調べます。
 

@@ -1,4 +1,4 @@
-ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 この Azure リモートは、「[Web アプリを作成する](#create-a-web-app)」で作成されたものです。
+ローカル ターミナル ウィンドウで、ローカル Git リポジトリに Azure リモートを追加します。 _&lt;paste\_copied\_url\_here>_ を、「[Web アプリを作成する](#create)」で保存した Git リモートの URL に置き換えます。
 
 ```bash
 git remote add azure <deploymentLocalGitUrl-from-create-step>

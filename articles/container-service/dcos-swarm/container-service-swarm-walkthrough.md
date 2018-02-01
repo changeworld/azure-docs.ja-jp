@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 08/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 180a476445760930ab4f3505e0e6e9474e404445
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 05e6dbfbae3efd1dee39b87f32440b73da069f91
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-docker-swarm-cluster"></a>Docker Swarm クラスターのデプロイ
 
@@ -25,7 +25,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。
 
 次の例では、*myResourceGroup* という名前のリソース グループを場所 *westus* に作成します。
 
@@ -50,7 +50,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm クラスターの作成
 
-[az acs create](/cli/azure/acs#create) コマンドを使用して Azure Container Service に Docker Swarm クラスターを作成します。 
+[az acs create](/cli/azure/acs#az_acs_create) コマンドを使用して Azure Container Service に Docker Swarm クラスターを作成します。 
 
 次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*mySwarmCluster* という名前のクラスターを作成します。
 
@@ -58,7 +58,7 @@ az group create --name myResourceGroup --location westus
 az acs create --name mySwarmCluster --orchestrator-type Swarm --resource-group myResourceGroup --generate-ssh-keys
 ```
 
-制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#create) コマンドに追加して、既定のエージェント数を減らします。 
+制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az_acs_create) コマンドに追加して、既定のエージェント数を減らします。 
 
 数分してコマンドが完了すると、このクラスターに関する情報が json 形式で表示されます。
 
@@ -145,7 +145,7 @@ Azure Vote アプリケーションをテストするために、ブラウザー
 ![Azure Vote にブラウザーでアクセスしたところ](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
 
 ## <a name="delete-cluster"></a>クラスターを削除する
-クラスターが必要なくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除できます。
+クラスターが必要なくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、コンテナー サービス、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
@@ -157,7 +157,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Docker Swarm クラスターをデプロイし、そこに複数コンテナー アプリケーションをデプロイしました。
 

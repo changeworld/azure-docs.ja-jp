@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/11/2017
+ms.date: 01/30/2018
 ms.topic: overview
 ms.service: cost-management
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 969340080bfe2b04704367c2225895728773119e
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: f09bb135d4521325ab3e3e12af2f69d862434b75
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Azure Cost Management とは
 
@@ -49,7 +49,7 @@ Cost Management を利用すると、VM の最適な使用状況を判断し、�
 
 AWS 予約済みインスタンスをプロビジョニングした場合、最適化レポートで予約済みインスタンスの使用率を向上できます。最適化レポートでは、購入の推奨事項を表示し、未使用の予約を変更し、プロビジョニングを計画することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Cost Management について学びました。次は、クラウド環境を登録して、データの探索を始めてください。
 

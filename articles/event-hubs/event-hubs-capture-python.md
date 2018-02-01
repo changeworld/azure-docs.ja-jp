@@ -14,143 +14,143 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: sethm
-ms.openlocfilehash: cdbb2baea2bc6c45908369ff821c264b66053d95
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 97cadbde2ddedade1a8688f1380b9ff9194613e7
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture チュートリアル: Python
 
-Event Hubs Capture は Event Hubs の機能で、任意の Azure Blob Storage アカウントに、イベント ハブ内のストリーミング データを自動的に配布できます。 この機能により、リアルタイムのストリーミング データを容易にバッチ処理することができます。 この記事では、Event Hubs Capture を Python で使用する方法について説明します。 Event Hubs Capture の詳細については、[概要の記事](event-hubs-capture-overview.md)をご覧ください。
+Capture は Azure Event Hubs の機能です。 これを使用すると、任意の Azure BLOB ストレージ アカウントに、イベント ハブ内のストリーミング データを自動的に配布できます。 この機能により、リアルタイムのストリーミング データを容易にバッチ処理することができます。 この記事では、Event Hubs Capture を Python で使用する方法について説明します。 Event Hubs Capture の詳細については、[概要の記事](event-hubs-capture-overview.md)をご覧ください。
 
-このサンプルでは、[Azure Python SDK](https://azure.microsoft.com/develop/python/) を使用して、Capture の機能を試してみます。 Sender.py プログラムは、シミュレートされた環境のテレメトリを JSON 形式で Event Hubs に送信します。 イベント ハブは、Capture 機能を使用して、このデータを数回に分けて Blob Storage に書き込むように構成されています。 その後、capturereader.py アプリがこれらの BLOB を読み取り、デバイスごとに追加ファイルを作成し、データを .csv ファイルに書き込みます。
+このサンプルでは、[Azure Python SDK](https://azure.microsoft.com/develop/python/) を使用して、Capture の機能を試してみます。 Sender.py プログラムは、シミュレートされた環境のテレメトリを JSON 形式で Event Hubs に送信します。 イベント ハブは、Capture 機能を使用して、このデータを数回に分けて Blob Storage に書き込むように構成されています。 capturereader.py アプリは、こうした BLOB を読み取り、デバイスごとに追加ファイルを作成します。 その後、アプリはデータを .csv ファイルに書き込みます。
 
-## <a name="what-will-be-accomplished"></a>作業内容
+## <a name="what-youll-accomplish"></a>作業内容
 
-1. Azure Portal を使用して Azure Blob Storage アカウントと BLOB コンテナーを作成します。
-2. Azure Portal を使用して Event Hub 名前空間を作成します。
+1. Azure Portal を使用して Azure BLOB ストレージ アカウントと BLOB コンテナーを作成します。
+2. Azure Portal を使用して Event Hubs 名前空間を作成します。
 3. Azure Portal を使用して Capture 機能が有効なイベント ハブを作成します。
 4. Python スクリプトを使用してイベント ハブへデータを送信します。
-5. キャプチャからファイルを読み取り、別の Python スクリプトで処理します。
+5. キャプチャからファイルを読み取り、別の Python スクリプトを使用して処理します。
 
 ## <a name="prerequisites"></a>前提条件
 
 - Python 2.7.x
 - Azure サブスクリプション
-- アクティブな [Event Hubs 名前空間とイベント ハブ。](event-hubs-create.md)
+- アクティブな [Event Hubs 名前空間とイベント ハブ](event-hubs-create.md)
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
-1. [Azure Portal][Azure portal] にログオンします。
-2. ポータルの左側のナビゲーション ウィンドウで **[新規]** をクリックし、**[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。
-3. ストレージ アカウントのブレードで、フィールドを入力し、**[作成]** をクリックします。
+## <a name="create-an-azure-blob-storage-account"></a>Azure BLOB ストレージ アカウントを作成する
+1. [Azure Portal][Azure portal] にサインインします。
+2. ポータルの左側のウィンドウで **[新規]** > **[ストレージ]** > **[ストレージ アカウント]** の順に選択します。
+3. **[ストレージ アカウントの作成]** ウィンドウで情報を選択し、**[作成]** を選択します。
    
-   ![][1]
-4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウント名をクリックし、**[要点]** ブレードで **[BLOB]** をクリックします。 **[Blob service]** ブレードが開いたら、上部にある **[+ Container (+ コンテナー)]** をクリックします。 コンテナーの**キャプチャ**に名前を付け、**[Blob service]** ブレードを閉じます。
-5. 左のブレードにある **[アクセス キー]** をクリックして、ストレージ アカウントの名前と **[key1]** の値をコピーします。 これらの値をメモ帳などに一時的に保存します。
+   ![[ストレージ アカウントの作成] ウィンドウ][1]
+4. **[デプロイメントが成功しました]** メッセージが表示されたら、新しいストレージ アカウントの名前を選択し、**[要点]** ウィンドウで **[BLOB]** を選択します。 **[Blob service]** ウィンドウが開いたら、上部にある **[+ コンテナー]** を選択します。 コンテナーの**キャプチャ**に名前を付け、**[Blob service]** ウィンドウを閉じます。
+5. 左側のウィンドウにある **[アクセス キー]** を選択し、ストレージ アカウントの名前と **[key1]** の値をコピーします。 これらの値をメモ帳などに一時的に保存します。
 
 ## <a name="create-a-python-script-to-send-events-to-your-event-hub"></a>イベントをイベント ハブに送信する Python スクリプトを作成する
 1. [Visual Studio Code][Visual Studio Code] など、お使いの Python エディターを開きます。
 2. **sender.py**という名前のスクリプトを作成します。 このスクリプトでは、200 のイベントをイベント ハブに送信します。 これらは、JSON で送信される単純な環境の測定値です。
 3. 以下のコードを sender.py に貼り付けます:
    
-  ```python
-  import uuid
-  import datetime
-  import random
-  import json
-  from azure.servicebus import ServiceBusService
+   ```python
+   import uuid
+   import datetime
+   import random
+   import json
+   from azure.servicebus import ServiceBusService
    
-  sbs = ServiceBusService(service_namespace='INSERT YOUR NAMESPACE NAME', shared_access_key_name='RootManageSharedAccessKey', shared_access_key_value='INSERT YOUR KEY')
-  devices = []
-  for x in range(0, 10):
-      devices.append(str(uuid.uuid4()))
+   sbs = ServiceBusService(service_namespace='INSERT YOUR NAMESPACE NAME', shared_access_key_name='RootManageSharedAccessKey', shared_access_key_value='INSERT YOUR KEY')
+   devices = []
+   for x in range(0, 10):
+       devices.append(str(uuid.uuid4()))
    
-  for y in range(0,20):
-      for dev in devices:
-          reading = {'id': dev, 'timestamp': str(datetime.datetime.utcnow()), 'uv': random.random(), 'temperature': random.randint(70, 100), 'humidity': random.randint(70, 100)}
-          s = json.dumps(reading)
-          sbs.send_event('INSERT YOUR EVENT HUB NAME', s)
-      print y
-  ```
+   for y in range(0,20):
+       for dev in devices:
+           reading = {'id': dev, 'timestamp': str(datetime.datetime.utcnow()), 'uv': random.random(), 'temperature': random.randint(70, 100), 'humidity': random.randint(70, 100)}
+           s = json.dumps(reading)
+           sbs.send_event('INSERT YOUR EVENT HUB NAME', s)
+       print y
+   ```
 4. 名前空間の名前、キーの値、および Event Hubs の名前空間を作成したときに取得したイベント ハブの名前を使用するように、上記のコードを更新します。
 
 ## <a name="create-a-python-script-to-read-your-capture-files"></a>Capture ファイルを読み取る Python スクリプトを作成する
 
-1. ブレードに入力し、 **[作成]**をクリックします。
+1. ウィンドウに情報を入力し、**[作成]** を選択します。
 2. **capturereader.py** という名前のスクリプトを作成します。 このスクリプトはキャプチャされたファイルを読み取り、それぞれのデバイスにのみデータを書き込むようにデバイスごとのファイルを作成します。
 3. 以下のコードを capturereader.py に貼り付けます。
    
-  ```python
-  import os
-  import string
-  import json
-  import avro.schema
-  from avro.datafile import DataFileReader, DataFileWriter
-  from avro.io import DatumReader, DatumWriter
-  from azure.storage.blob import BlockBlobService
+   ```python
+   import os
+   import string
+   import json
+   import avro.schema
+   from avro.datafile import DataFileReader, DataFileWriter
+   from avro.io import DatumReader, DatumWriter
+   from azure.storage.blob import BlockBlobService
    
-  def processBlob(filename):
-      reader = DataFileReader(open(filename, 'rb'), DatumReader())
-      dict = {}
-      for reading in reader:
-          parsed_json = json.loads(reading["Body"])
-          if not 'id' in parsed_json:
-              return
-          if not dict.has_key(parsed_json['id']):
-              list = []
-              dict[parsed_json['id']] = list
-          else:
-              list = dict[parsed_json['id']]
-              list.append(parsed_json)
-      reader.close()
-      for device in dict.keys():
-          deviceFile = open(device + '.csv', "a")
-          for r in dict[device]:
-              deviceFile.write(", ".join([str(r[x]) for x in r.keys()])+'\n')
+   def processBlob(filename):
+       reader = DataFileReader(open(filename, 'rb'), DatumReader())
+       dict = {}
+       for reading in reader:
+           parsed_json = json.loads(reading["Body"])
+           if not 'id' in parsed_json:
+               return
+           if not dict.has_key(parsed_json['id']):
+               list = []
+               dict[parsed_json['id']] = list
+           else:
+               list = dict[parsed_json['id']]
+               list.append(parsed_json)
+       reader.close()
+       for device in dict.keys():
+           deviceFile = open(device + '.csv', "a")
+           for r in dict[device]:
+               deviceFile.write(", ".join([str(r[x]) for x in r.keys()])+'\n')
    
-  def startProcessing(accountName, key, container):
-      print 'Processor started using path: ' + os.getcwd()
-      block_blob_service = BlockBlobService(account_name=accountName, account_key=key)
-      generator = block_blob_service.list_blobs(container)
-      for blob in generator:
-          #content_length == 508 is an empty file, so only process content_length > 508 i.e. skip  empty files
-          if blob.properties.content_length > 508:
-              print('Downloaded a non empty blob: ' + blob.name)
-              cleanName = string.replace(blob.name, '/', '_')
-              block_blob_service.get_blob_to_path(container, blob.name, cleanName)
-              processBlob(cleanName)
-              os.remove(cleanName)
-          block_blob_service.delete_blob(container, blob.name)
-  startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
-  ```
-4. 呼び出しでのストレージ アカウント名とキーには必ず適切な値を `startProcessing`に貼り付けます。
+   def startProcessing(accountName, key, container):
+       print 'Processor started using path: ' + os.getcwd()
+       block_blob_service = BlockBlobService(account_name=accountName, account_key=key)
+       generator = block_blob_service.list_blobs(container)
+       for blob in generator:
+           #content_length == 508 is an empty file, so only process content_length > 508 (skip empty files)
+           if blob.properties.content_length > 508:
+               print('Downloaded a non empty blob: ' + blob.name)
+               cleanName = string.replace(blob.name, '/', '_')
+               block_blob_service.get_blob_to_path(container, blob.name, cleanName)
+               processBlob(cleanName)
+               os.remove(cleanName)
+           block_blob_service.delete_blob(container, blob.name)
+   startProcessing('YOUR STORAGE ACCOUNT NAME', 'YOUR KEY', 'capture')
+   ```
+4. `startProcessing` の呼び出しで、ストレージ アカウントの名前とキーの適切な値を貼り付けます。
 
 ## <a name="run-the-scripts"></a>スクリプトの実行
 1. Python をパス設定した状態でコマンド プロンプトを開き、これらのコマンドを実行してPython の前提条件となるパッケージをインストールします:
    
-  ```
-  pip install azure-storage
-  pip install azure-servicebus
-  pip install avro
-  ```
+   ```
+   pip install azure-storage
+   pip install azure-servicebus
+   pip install avro
+   ```
    
-  Azure ストレージまたは Azure の以前のバージョンを使用する場合は、**--upgrade** オプションの使用が必要になることがあります。
+   **azure-storage** または **azure** の以前のバージョンを使用する場合は、**--upgrade** オプションの使用が必要になることがあります。
    
-  また、次のことを実行する場合もあります (ほとんどのシステムでは必要ありません):
+   また、次のコマンドの実行が必要になる場合もあります (ほとんどのシステムでは必要ありません):
    
-  ```
-  pip install cryptography
-  ```
+   ```
+   pip install cryptography
+   ```
 2. ディレクトリを sender.py と capturereader.py を保存した場所に変更し、このコマンドを実行します:
    
-  ```
-  start python sender.py
-  ```
+   ```
+   start python sender.py
+   ```
    
-  このコマンドにより、新しい Python プロセスが起動して sender を実行します。
+   このコマンドにより、新しい Python プロセスが起動して sender を実行します。
 3. キャプチャが実行されるまで、数分間待ちます。 元のコマンド ウィンドウに、次のコマンドを入力します。
    
    ```
@@ -161,7 +161,7 @@ Event Hubs Capture は Event Hubs の機能で、任意の Azure Blob Storage �
 
 ## <a name="next-steps"></a>次の手順
 
-Event Hubs の詳細については、次のリンク先を参照してください:
+Event Hubs の詳細については、次のリンクを使用してください。
 
 * [Event Hubs Capture の概要][Overview of Event Hubs Capture]
 * [Event Hubs を使用するサンプル アプリケーション](https://github.com/Azure/azure-event-hubs/tree/master/samples)

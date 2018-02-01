@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 56471d8ef68eacacb3ecebad5056d7e7a9f3ca40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24bd0e8eff616920dba0eb5353f983444e3161cd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-session-management--articles"></a>セキュリティ フレーム: セッション管理 | 記事 
 | 製品/サービス | 記事 |
@@ -43,13 +43,13 @@ ms.lasthandoff: 10/11/2017
 | **手順** | アプリケーションが Azure AD によって発行されたアクセス トークンに依存する場合、ログアウト イベント ハンドラーを呼び出す必要があります。 |
 
 ### <a name="example"></a>例
-```C#
+```csharp
 HttpContext.GetOwinContext().Authentication.SignOut(OpenIdConnectAuthenticationDefaults.AuthenticationType, CookieAuthenticationDefaults.AuthenticationType)
 ```
 
 ### <a name="example"></a>例
 Session.Abandon() メソッドを呼び出して、ユーザーのセッションを破棄する必要もあります。 次のメソッドでは、ユーザー ログアウトの安全な実装を示します。
-```C#
+```csharp
     [HttpPost]
         [ValidateAntiForgeryToken]
         public void LogOff()
@@ -100,7 +100,7 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 | **手順** | アプリケーションが ADFS によって発行された STS トークンに依存する場合、ログアウト イベント ハンドラーは WSFederationAuthenticationModule.FederatedSignOut() メソッドを呼び出してユーザーをログアウトさせる必要があります。 また、現在のセッションを破棄し、セッション トークンの値をリセットして無効にする必要があります。|
 
 ### <a name="example"></a>例
-```C#
+```csharp
         [HttpPost, ValidateAntiForgeryToken]
         [Authorization]
         public ActionResult SignOut(string redirectUrl)
@@ -160,7 +160,7 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 | **手順** | 通常、cookie はそれがスコープ指定されたドメインからのみアクセスできます。 残念ながら、"domain" の定義にはプロトコルが含まれないため、HTTPS 経由で作成された cookie に HTTP 経由でアクセスできます。 "secure" 属性は、cookie を HTTPS 経由でのみ使用できるようにする必要があることをブラウザーに示します。 HTTPS で設定されるすべての cookie が、**secure** 属性を使うようにする必要があります。 この要件は、web.config ファイルで requireSSL 属性を true に設定することによって適用できます。 これは、コードを変更することなく、現在および将来のすべての cookie に **secure** 属性を強制できるので、推奨される方法です。|
 
 ### <a name="example"></a>例
-```C#
+```csharp
 <configuration>
   <system.web>
     <httpCookies requireSSL="true"/>
@@ -179,7 +179,7 @@ Session.Abandon() メソッドを呼び出して、ユーザーのセッショ�
 | **手順** | Web アプリケーションが証明書利用者で、IdP が ADFS サーバーである場合、web.config の `system.identityModel.services` セクションで requireSSL を True に設定することにより、FedAuth トークンの secure 属性を構成できます。|
 
 ### <a name="example"></a>例
-```C#
+```csharp
   <system.identityModel.services>
     <federationConfiguration>
       <!-- Set requireSsl=true; domain=application domain name used by FedAuth cookies (Ex: .gdinfra.com); -->
@@ -273,7 +273,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 | **手順** | CSRF 対策フォームと ASP.NET MVC フォーム - ビューの `AntiForgeryToken` ヘルパー メソッドを使う、`Html.AntiForgeryToken()` をフォームに設定する、など。|
 
 ### <a name="example"></a>例
-```C#
+```csharp
 @using (Html.BeginForm("UserProfile", "SubmitUpdate")) { 
     @Html.ValidationSummary(true) 
     @Html.AntiForgeryToken()
@@ -281,7 +281,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 ```
 
 ### <a name="example"></a>例
-```C#
+```csharp
 <form action="/UserProfile/SubmitUpdate" method="post">
     <input name="__RequestVerificationToken" type="hidden" value="saTFWpkKN0BYazFtN6c4YbZAmsEwG0srqlUqqloi/fVgeV2ciIFVmelvzwRZpArs" />
     <!-- rest of form goes here -->
@@ -289,7 +289,7 @@ cookie を使うすべての HTTP ベースのアプリケーションでは、w
 ```
 
 ### <a name="example"></a>例
-同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 For example:
+同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 例: 
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()
@@ -304,7 +304,7 @@ public ViewResult SubmitUpdate()
 
 ### <a name="example"></a>例
 CSRF 対策と AJAX: AJAX 要求は HTML フォーム データではなく JSON データを送信する場合があるため、フォーム トークンは AJAX 要求に対して問題である可能性があります。 1 つの解決策は、カスタム HTTP ヘッダーでトークンを送信することです。 次のコードでは、Razor 構文を使ってトークンを生成した後、AJAX 要求にトークンを追加しています。 
-```C#
+```csharp
 <script>
     @functions{
         public string TokenHeaderValue()
@@ -329,7 +329,7 @@ CSRF 対策と AJAX: AJAX 要求は HTML フォーム データではなく JSON
 
 ### <a name="example"></a>例
 要求を処理するときは、要求ヘッダーからトークンを抽出します。 その後、AntiForgery.Validate メソッドを呼び出してトークンを検証します。 トークンが有効ではない場合、Validate メソッドは例外をスローします。
-```C#
+```csharp
 void ValidateRequestHeader(HttpRequestMessage request)
 {
     string cookieToken = "";
@@ -360,7 +360,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 ### <a name="example"></a>例
 次に示すコードを、すべてのページに組み込む必要があります。
-```C#
+```csharp
 void Page_Init (object sender, EventArgs e) {
    ViewStateUserKey = Session.SessionID;
    :
@@ -428,7 +428,7 @@ void Page_Init (object sender, EventArgs e) {
 
 ### <a name="example"></a>例
 また、ADFS サーバーで次の PowerShell コマンドを実行して、ADFS が発行した SAML 要求トークンの有効期間を 15 分に設定する必要があります。
-```C#
+```csharp
 Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProviderName @(“Active Directory”) -TokenLifetime 15 -AlwaysRequireAuthentication $true
 ```
 
@@ -488,7 +488,7 @@ Set-ADFSRelyingPartyTrust -TargetName “<RelyingPartyWebApp>” -ClaimsProvider
 
 ### <a name="example"></a>例
 要求を処理するときは、要求ヘッダーからトークンを抽出します。 その後、AntiForgery.Validate メソッドを呼び出してトークンを検証します。 トークンが有効ではない場合、Validate メソッドは例外をスローします。
-```C#
+```csharp
 void ValidateRequestHeader(HttpRequestMessage request)
 {
     string cookieToken = "";
@@ -510,7 +510,7 @@ void ValidateRequestHeader(HttpRequestMessage request)
 
 ### <a name="example"></a>例
 CSRF 対策フォームと ASP.NET MVC フォーム - ビューの AntiForgeryToken ヘルパー メソッドを使う、Html.AntiForgeryToken() をフォームに設定する、など。
-```C#
+```csharp
 @using (Html.BeginForm("UserProfile", "SubmitUpdate")) { 
     @Html.ValidationSummary(true) 
     @Html.AntiForgeryToken()
@@ -520,7 +520,7 @@ CSRF 対策フォームと ASP.NET MVC フォーム - ビューの AntiForgeryTo
 
 ### <a name="example"></a>例
 上記の例の出力は、次のようになります。
-```C#
+```csharp
 <form action="/UserProfile/SubmitUpdate" method="post">
     <input name="__RequestVerificationToken" type="hidden" value="saTFWpkKN0BYazFtN6c4YbZAmsEwG0srqlUqqloi/fVgeV2ciIFVmelvzwRZpArs" />
     <!-- rest of form goes here -->
@@ -528,7 +528,7 @@ CSRF 対策フォームと ASP.NET MVC フォーム - ビューの AntiForgeryTo
 ```
 
 ### <a name="example"></a>例
-同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 For example:
+同時に、Html.AntiForgeryToken() は、上で示したランダムな非表示値と同じ値を含む __RequestVerificationToken という名前の cookie を訪問者に渡します。 次に、受信したフォーム投稿を検証するため、[ValidateAntiForgeryToken] フィルターを対象のアクション メソッドに追加します。 例: 
 ```
 [ValidateAntiForgeryToken]
 public ViewResult SubmitUpdate()

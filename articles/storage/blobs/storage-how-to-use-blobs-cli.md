@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/15/2017
 ms.author: tamram
-ms.openlocfilehash: bd96cf7eb1c0c7f51b110da848a8df7914ad85c7
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: d47d85af7412def342437aedf35c3d129662451d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="perform-blob-storage-operations-with-azure-cli"></a>Azure CLI を使用して Blob Storage の操作を実行する
 
@@ -44,7 +44,7 @@ Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこから�
 
 コンテナーはコンピューター上のディレクトリに似ており、ディレクトリ内のファイルを整理するように、コンテナー内の BLOB のグループを整理することができます。 ストレージ アカウントは、任意の数のコンテナーを持つことができます。 コンテナーには最大 500 TB (ストレージ アカウントの最大データ サイズ) の BLOB データを格納できます。
 
-BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container#create) コマンドで作成します。
+BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container#az_storage_container_create) コマンドで作成します。
 
 ```azurecli-interactive
 az storage container create --name mystoragecontainer
@@ -64,7 +64,7 @@ az storage container create --name mystoragecontainer
 
 `blob` または `container` に対するパブリック アクセスを設定するときは、インターネット上の全員に読み取り専用アクセスを有効にします。 たとえば、Web サイトに BLOB として格納されている画像を表示する場合、パブリック読み取りアクセスを有効にする必要があります。 読み取り/書き込みアクセスを有効にする場合は、代わりに [Shared Access Signature (SAS)](#create-a-shared-access-signature-sas) を使用する必要があります。
 
-[az storage container set-permission](/cli/azure/storage/container#create) コマンドを使用して、コンテナーのパブリック読み取りアクセスを有効にします。
+[az storage container set-permission](/cli/azure/storage/container#az_storage_container_create) コマンドを使用して、コンテナーのパブリック読み取りアクセスを有効にします。
 
 ```azurecli-interactive
 az storage container set-permission \
@@ -76,7 +76,7 @@ az storage container set-permission \
 
 Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 ブロック BLOB は、Azure Storage に格納される最も一般的な種類の BLOB です。 追加 BLOB は、ログ記録などのため、既存のコンテンツを変更することなく既存の BLOB にデータを追加する必要がある場合に使います。 ページ BLOB は、IaaS 仮想マシンの VHD ファイルをバックアップします。
 
-この例では、最後のステップで [az storage blob upload](/cli/azure/storage/blob#upload) コマンドを使って作成したコンテナーに BLOB をアップロードします。
+この例では、最後のステップで [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) コマンドを使って作成したコンテナーに BLOB をアップロードします。
 
 ```azurecli-interactive
 az storage blob upload \
@@ -89,7 +89,7 @@ az storage blob upload \
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB を一覧表示するには、[az storage blob list](/cli/azure/storage/blob#list) コマンドを使います。
+コンテナー内の BLOB を一覧表示するには、[az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) コマンドを使います。
 
 ```azurecli-interactive
 az storage blob list \
@@ -111,7 +111,7 @@ dir1/file1.txt  BlockBlob        6700  application/octet-stream  2017-04-21T18:3
 
 ## <a name="download-a-blob"></a>BLOB をダウンロードする
 
-前の手順でアップロードした BLOB を [az storage blob download](/cli/azure/storage/blob#download) コマンドを使用してダウンロードします。
+前の手順でアップロードした BLOB を [az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) コマンドを使用してダウンロードします。
 
 ```azurecli-interactive
 az storage blob download \
@@ -155,7 +155,7 @@ az storage blob copy start \
 
 ## <a name="delete-a-blob"></a>BLOB を削除する
 
-[az storage blob delete](/cli/azure/storage/blob#delete) コマンドを使用して、コンテナーから BLOB を削除します。
+[az storage blob delete](/cli/azure/storage/blob#az_storage_blob_delete) コマンドを使用して、コンテナーから BLOB を削除します。
 
 ```azurecli-interactive
 az storage blob delete \
@@ -177,9 +177,9 @@ az storage blob update
 
 ## <a name="display-and-modify-blob-properties-and-metadata"></a>BLOB のプロパティとメタデータを表示および変更する
 
-各 BLOB にはサービスで定義されたプロパティがいくつかあり、[az storage blob show](/cli/azure/storage/blob#show) コマンドを使用して表示できます。たとえば、名前、種類、長さなどのプロパティがあります。 [az storage blob metadata update](/cli/azure/storage/blob/metadata#update) コマンドでプロパティとその値を指定して、BLOB を構成することもできます。
+各 BLOB にはサービスで定義されたプロパティがいくつかあり、[az storage blob show](/cli/azure/storage/blob#az_storage_blob_show) コマンドを使用して表示できます。たとえば、名前、種類、長さなどのプロパティがあります。 [az storage blob metadata update](/cli/azure/storage/blob/metadata#az_storage_blob_metadata_update) コマンドでプロパティとその値を指定して、BLOB を構成することもできます。
 
-この例では、まずサービスで定義された BLOB のプロパティを表示し、次に独自のメタデータ プロパティのうち 2 つを使用して BLOB を更新します。 最後に、[az storage blob metadata show](/cli/azure/storage/blob/metadata#show) コマンドを使用して、BLOB のメタデータ プロパティとその値を表示します。
+この例では、まずサービスで定義された BLOB のプロパティを表示し、次に独自のメタデータ プロパティのうち 2 つを使用して BLOB を更新します。 最後に、[az storage blob metadata show](/cli/azure/storage/blob/metadata#az_storage_blob_metadata_show) コマンドを使用して、BLOB のメタデータ プロパティとその値を表示します。
 
 ```azurecli-interactive
 # Show properties of a blob
@@ -218,7 +218,7 @@ az storage container set-permission \
 
 ### <a name="verify-private-access"></a>プライベート アクセスを検証する
 
-そのコンテナー内の BLOB に対してパブリック読み取りアクセスがないことを検証するには、[az storage blob url](/cli/azure/storage/blob#url) コマンドを使用して、BLOB のいずれかに対する URL を取得します。
+そのコンテナー内の BLOB に対してパブリック読み取りアクセスがないことを検証するには、[az storage blob url](/cli/azure/storage/blob#az_storage_blob_url) コマンドを使用して、BLOB のいずれかに対する URL を取得します。
 
 ```azurecli-interactive
 az storage blob url \
@@ -231,7 +231,7 @@ az storage blob url \
 
 ### <a name="create-a-sas-uri"></a>SAS URI を作成する
 
-ここでは、BLOB へのアクセスを許可する SAS URI を作成します。 次の例では、まず [az storage blob url](/cli/azure/storage/blob#url) コマンドを使用して、変数に BLOB の URL を設定します。次に、[az storage blob generate-sas](/cli/azure/storage/blob#generate-sas) コマンドを使用して生成された SAS トークンを別の変数に設定します。 最後に、`?` クエリ文字列の区切り文字で区切られた 2 つの要素を連結して、BLOB の完全な SAS URI を出力します。
+ここでは、BLOB へのアクセスを許可する SAS URI を作成します。 次の例では、まず [az storage blob url](/cli/azure/storage/blob#az_storage_blob_url) コマンドを使用して、変数に BLOB の URL を設定します。次に、[az storage blob generate-sas](/cli/azure/storage/blob#az_storage_blob_generate_sas) コマンドを使用して生成された SAS トークンを別の変数に設定します。 最後に、`?` クエリ文字列の区切り文字で区切られた 2 つの要素を連結して、BLOB の完全な SAS URI を出力します。
 
 ```azurecli-interactive
 # Get UTC datetimes for SAS start and expiry (Example: 1994-11-05T13:15:30Z)
@@ -266,7 +266,7 @@ URL の期限が切れるまで (この例では 2 分間) 十分待ってから
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このチュートリアルで作成したストレージ アカウントや、アップロードした BLOB など、リソース グループのリソースが不要になった場合は、[az group delete](/cli/azure/group#delete) コマンドでリソース グループを削除します。
+このチュートリアルで作成したストレージ アカウントや、アップロードした BLOB など、リソース グループのリソースが不要になった場合は、[az group delete](/cli/azure/group#az_group_delete) コマンドでリソース グループを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

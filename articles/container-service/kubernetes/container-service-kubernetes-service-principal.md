@@ -9,11 +9,11 @@ ms.topic: get-started-article
 ms.date: 11/30/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0c7e05525f1c6d11c17b4b36946dd797a7a95d08
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 4114093802d7e56eaeb64c0998d3fc675d9baa87
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="set-up-an-azure-ad-service-principal-for-a-kubernetes-cluster-in-container-service"></a>Container Service の Kubernetes クラスター用の Azure AD サービス プリンシパルをセットアップする
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 12/06/2017
 Azure Container Service で Kubernetes クラスターを使用するには、Azure API と対話するための [Azure Active Directory サービス プリンシパル](../../active-directory/develop/active-directory-application-objects.md)が必要です。 サービス プリンシパルは、[ユーザー定義のルート](../../virtual-network/virtual-networks-udr-overview.md)や[レイヤー 4 の Azure Load Balancer](../../load-balancer/load-balancer-overview.md) などのリソースを動的に管理するために必要です。
 
 
-この記事では、Kubernetes クラスターのサービス プリンシパルをセットアップするためのさまざまなオプションを紹介します。 たとえば、[Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールしてセットアップした場合は、[`az acs create`](/cli/azure/acs#create) コマンドを実行して、Kubernetes クラスターとサービス プリンシパルを同時に作成できます。
+この記事では、Kubernetes クラスターのサービス プリンシパルをセットアップするためのさまざまなオプションを紹介します。 たとえば、[Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールしてセットアップした場合は、[`az acs create`](/cli/azure/acs#az_acs_create) コマンドを実行して、Kubernetes クラスターとサービス プリンシパルを同時に作成できます。
 
 
 ## <a name="requirements-for-the-service-principal"></a>サービス プリンシパルの要件
@@ -95,7 +95,7 @@ Kubernetes クラスターを作成するときに、既存のサービス プ�
 
 ## <a name="option-2-generate-a-service-principal-when-creating-the-cluster-with-az-acs-create"></a>オプション 2: `az acs create` でクラスターを作成するときにサービス プリンシパルを生成する
 
-[`az acs create`](/cli/azure/acs#create) コマンドを実行して Kubernetes クラスターを作成する場合は、サービス プリンシパルを自動的に生成させることができます。
+[`az acs create`](/cli/azure/acs#az_acs_create) コマンドを実行して Kubernetes クラスターを作成する場合は、サービス プリンシパルを自動的に生成させることができます。
 
 他の Kubernetes クラスター作成オプションと同様に、`az acs create` を実行するときに、既存のサービス プリンシパルのパラメーターを指定できます。 ただし、これらのパラメーターを省略すると、Azure CLI は Container Service で使用するために 1 つのサービス プリンシパルを自動的に作成します。 これは、デプロイ中に透過的に行われます。
 
@@ -164,7 +164,7 @@ az ad sp reset-credentials --name <appId>
 
 次に、すべてのクラスター ノードの `/etc/kubernetes/azure.json` を新しい資格情報で更新し、ノードを再起動します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * コンテナー サービス クラスターで [Kubernetes を使ってみます](container-service-kubernetes-walkthrough.md)。
 

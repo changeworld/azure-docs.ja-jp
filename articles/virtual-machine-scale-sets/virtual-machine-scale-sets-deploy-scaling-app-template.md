@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/16/2017
 ms.author: iainfou
-ms.openlocfilehash: 614c7c82aabab212753529a21d7a770b7a02027e
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 201b752c2a79362f2e049d2e0f0b953d77aaedfe
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 この入門記事では、Azure Resource Manager テンプレートを使用して仮想マシン スケール セットを作成します。 スケール セットは、[Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)、または [Azure ポータル](virtual-machine-scale-sets-create-portal.md)を使用して作成することもできます。
@@ -36,12 +36,12 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 
 | プロパティ                     | プロパティの説明                                  | テンプレート値の例                    |
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
-| type                         | 作成する Azure リソースの種類                            | Microsoft.Compute/virtualMachineScaleSets |
+| 型                         | 作成する Azure リソースの種類                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | スケール セットの名前                                       | myScaleSet                                |
-| location                     | スケール セットを作成する場所                     | East US                                   |
+| location                     | スケール セットを作成する場所                     | 米国東部                                   |
 | sku.name                     | 各スケール セット インスタンスの VM サイズ                  | Standard_A1                               |
 | sku.capacity                 | 最初に作成する VM インスタンスの数           | 2                                         |
-| upgradePolicy.mode           | 変更が発生した場合の VM インスタンスのアップグレード モード              | Automatic                                 |
+| upgradePolicy.mode           | 変更が発生した場合の VM インスタンスのアップグレード モード              | 自動                                 |
 | imageReference               | VM インスタンスに使用するプラットフォームまたはカスタム イメージ | Canonical Ubuntu Server 16.04-LTS         |
 | osProfile.computerNamePrefix | 各 VM インスタンス名のプレフィックス                     | myvmss                                    |
 | osProfile.adminUsername      | 各 VM インスタンスのユーザー名                        | azureuser                                 |
@@ -175,7 +175,7 @@ az group deployment create \
     --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vmss-bottle-autoscale/azuredeploy.json
 ```
 
-アプリが動いていることを確認するには、次のように [az network public-ip show](/cli/azure/network/public-ip#show) を使用してロード バランサーのパブリック IP アドレスを取得します。
+アプリが動いていることを確認するには、次のように [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用してロード バランサーのパブリック IP アドレスを取得します。
 
 ```azurecli-interactive
 az network public-ip list \
@@ -213,7 +213,7 @@ Get-AzureRmPublicIpAddress -ResourceGroupName myResourceGroup | Select IpAddress
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-必要がなくなったら、次のように [az group delete](/cli/azure/group#delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。
+必要がなくなったら、次のように [az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

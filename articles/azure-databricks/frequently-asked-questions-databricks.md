@@ -11,13 +11,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 01/22/2018
 ms.author: nitinme
-ms.openlocfilehash: fb77ec001f9f52e0a974f8765f458f831fb63908
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b56253e7b9c9ab144ebc4006511631756de4f89b
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
@@ -42,7 +42,7 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 
 ここでは、Databricks で発生する可能性がある問題について説明します。
 
-### <a name="this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>このサブスクリプションは名前空間 "Microsoft.Databricks" を使うように登録されない
+### <a name="issue-this-subscription-is-not-registered-to-use-the-namespace-microsoftdatabricks"></a>問題: このサブスクリプションが名前空間 ‘Microsoft.Databricks’ を使用するように登録されていない
 
 #### <a name="error-message"></a>エラー メッセージ
 
@@ -55,7 +55,7 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 3. リソース プロバイダーの一覧で、**[Microsoft.Databricks]** に対して **[登録]** を選びます。 リソース プロバイダーを登録するには、サブスクリプションの共同作成者または所有者のロールが必要です。
 
 
-### <a name="your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>アカウント (電子メール アドレス) に、Azure Portal の Databricks ワークスペース リソースの所有者または共同作成者ロールがない
+### <a name="issue-your-account-email-does-not-have-the-owner-or-contributor-role-on-the-databricks-workspace-resource-in-the-azure-portal"></a>問題: アカウント (電子メール アドレス) に、Azure Portal の Databricks ワークスペース リソースの所有者または共同作成者ロールがない
 
 #### <a name="error-message"></a>エラー メッセージ
 
@@ -69,9 +69,9 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 
 * このエラーは、電子メール ドメイン名が Azure AD の複数のディレクトリに割り当てられている場合にも発生する可能性があります。 この問題を回避するには、Databricks ワークスペースを持つサブスクリプションを含むディレクトリで新しいユーザーを作成します。
 
-    a. Azure Portal で、Azure AD に移動します。 **[ユーザーとグループ]** > **[ユーザーの追加]** の順に選びます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal で、Azure AD に移動します。 **[ユーザーとグループ]** > **[ユーザーの追加]** の順に選びます。
 
-    b. `@<your_domain>` というメール アドレスの代わりに、`@<tenant_name>.onmicrosoft.com` のメール アドレスでユーザーを追加します。 このアドレスは、Azure Portal の Azure AD の **[カスタム ドメイン]** で確認できます。
+    b. `@<your_domain>` というメール アドレスの代わりに、`@<tenant_name>.onmicrosoft.com` のメール アドレスでユーザーを追加します。 このオプションは、Azure Portal の Azure AD の **[カスタム ドメイン]** で確認できます。
     
     c. この新しいユーザーに Databricks ワークスペース リソースの**共同作成者**ロールを付与します。
     
@@ -80,13 +80,13 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
     e. このユーザーとして Databricks ワークスペースを起動します。
 
 
-### <a name="your-account-email-has-not-been-registered-in-databricks"></a>アカウント (メール アドレス) が Databricks に登録されていない 
+### <a name="issue-your-account-email-has-not-been-registered-in-databricks"></a>問題: アカウント (電子メール) が Databricks に登録されていない 
 
 #### <a name="solution"></a>解決策
 
 自分でワークスペースを作成していなくて、ユーザーとして追加された場合は、ワークスペースを作成した担当者に問い合わせてください。 そのユーザーに、Azure Databricks 管理者コンソールを使って追加してもらいます。 手順については、「[Adding and managing users (ユーザーの追加と管理)](https://docs.azuredatabricks.net/administration-guide/admin-settings/users.html)」を参照してください。 自分が作成したワークスペースでこのエラーが引き続き表示される場合は、Azure Portal で **[ワークスペースの初期化]** を再度選びます。
 
-### <a name="cloud-provider-launch-failure-while-setting-up-the-cluster"></a>クラスターのセットアップ中のクラウド プロバイダーの起動エラー
+### <a name="issue-cloud-provider-launch-failure-while-setting-up-the-cluster-publicipcountlimitreached"></a>問題: クラスターのセットアップ中にクラウド プロバイダー起動エラーが発生する (PublicIPCountLimitReached)
 
 #### <a name="error-message"></a>エラー メッセージ
 
@@ -96,7 +96,7 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 
 Databricks クラスターは、ノードごとに 1 つのパブリック IP アドレスを使用します。 サブスクリプションがすべてのパブリック IP を既に使用している場合は、[クォータを増やすよう要求](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request)する必要があります。 **[問題の種類]** として **[クォータ]** を選び、**[クォータの種類]** として **[ネットワーク: ARM]** を選びます。 **[詳細]** で、パブリック IP アドレスのクォータの増量を要求します。 たとえば現在の上限が 60 で、100 個のノード クラスターを作成する場合は、上限を 160 に増やすよう要求します。
 
-### <a name="a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster"></a>クラスターのセットアップ中のクラウド プロバイダーの起動エラーの 2 番目の種類
+### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>問題: クラスターのセットアップ中に 2 番目の種類のクラウド プロバイダー起動エラーが発生する (MissingSubscriptionRegistration)
 
 #### <a name="error-message"></a>エラー メッセージ
 
@@ -111,7 +111,17 @@ Azure のエラー コード: MissingSubscriptionRegistration Azure エラー �
 
 詳細な手順については、「[リソースプロバイダーと種類](../azure-resource-manager/resource-manager-supported-services.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>問題: 組織のリソースにアクセスするためのアクセス許可が Azure Databricks に必要だが、そのアクセス許可は管理者しか付与できない。
+
+#### <a name="background"></a>バックグラウンド
+
+Azure Databricks は、Azure AD に完全に統合されています。 これにより、Azure AD からユーザーを指定することで、Azure Databricks 内 (たとえば、ノートブックまたはクラスター上) でアクセス許可を設定できます。 Azure Databricks が Azure AD からユーザーの名前の一覧を表示できるようにするには、その情報への読み取りアクセス許可が必要です。 これには、同意が必要です。 同意をまだ得られていない場合は、エラーが表示されます。
+
+#### <a name="solution"></a>解決策
+
+グローバル管理者として Azure Portal にログインします。 Azure Active Directory で、**[ユーザー設定]** タブに移動し、**[ユーザーはアプリが自身の代わりに会社のデータにアクセスすることを許可できます]** が **[はい]** に設定されていることを確認します。
+
+## <a name="next-steps"></a>次の手順
 
 - [クイックスタート: Azure Databricks の使用を開始する](quickstart-create-databricks-workspace-portal.md)
 - [Azure Databricks とは](what-is-azure-databricks.md)

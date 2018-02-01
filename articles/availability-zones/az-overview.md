@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 11/16/2017
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: c3a1758ab965d22eabfe44a410e9f72420e0148b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: a0e654637bc4aca4230c56cc7c1706f5cd73622e
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="overview-of-availability-zones-in-azure-preview"></a>Azure の可用性ゾーン (プレビュー) の概要
 
@@ -31,6 +31,7 @@ ms.lasthandoff: 01/08/2018
 ## <a name="regions-that-support-availability-zones"></a>可用性ゾーンをサポートしているリージョン
 
 - 米国東部 2
+- 米国中部
 - 西ヨーロッパ
 - フランス中部
 
@@ -40,14 +41,15 @@ ms.lasthandoff: 01/08/2018
 
 - Linux 仮想マシン
 - Windows 仮想マシン
-- Zonal Virtual Machine Scale Sets
+- Virtual Machine Scale Sets
 - Managed Disks
 - Load Balancer
 - パブリック IP アドレス
+- ゾーン冗長ストレージ
 
 ## <a name="get-started-with-the-availability-zones-preview"></a>可用性ゾーン (プレビュー) の使用を開始する
 
-可用性ゾーン (プレビュー) は、米国東部 2、西ヨーロッパ、フランス中部のリージョンの特定の Azure サービスでのみ利用できます。 
+可用性ゾーン (プレビュー) は、米国東部 2、米国中部、西ヨーロッパ、フランス中部のリージョンで特定の Azure サービスでのみ利用できます。 
 
 1. [可用性ゾーン (プレビュー) にサインアップします](http://aka.ms/azenroll) 
 2. Azure サブスクリプションにサインインします。

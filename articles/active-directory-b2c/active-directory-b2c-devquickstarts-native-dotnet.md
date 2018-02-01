@@ -1,5 +1,5 @@
 ---
-title: Azure Active Directory B2C | Microsoft Docs
+title: "認証、サインアップ、プロファイル編集: .NET: Azure Active Directory B2C | Microsoft Docs"
 description: "Azure Active Directory B2C を使用してサインイン、サインアップ、プロファイル管理を行う Windows デスクトップ アプリケーションを構築する方法。"
 services: active-directory-b2c
 documentationcenter: .net
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
-ms.openlocfilehash: 7b6bd5c95c909cf4ed4c67cd33d09170f670c275
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.custom: seohack1
+ms.openlocfilehash: 5d4664e87ca0a45d59d976f6415fce858bc51dcd
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-ad-b2c-build-a-windows-desktop-app"></a>Azure AD B2C: Windows デスクトップ アプリを作成する
 Azure Active Directory (Azure AD) B2C を使用すると、強力なセルフサービス方式の ID 管理機能を、わずかな手順でデスクトップ アプリに追加できます。 この記事では、ユーザーのサインアップ、サインイン、プロファイル管理などの処理を含む .NET Windows Presentation Foundation (WPF) の "To-Do List" アプリの作成方法について説明します。 このアプリには、ユーザー名または電子メールを使用したサインアップとサインインのサポートが含まれます。 また、Facebook や Google などのソーシャル アカウントを使用したサインアップとサインインのサポートも含まれます。
@@ -71,7 +72,7 @@ PM> Install-Package Microsoft.Identity.Client -IncludePrerelease
 ### <a name="enter-your-b2c-details"></a>B2C の詳細情報を入力する
 `Globals.cs` ファイルを開き、各プロパティ値を実際の値に置き換えます。 このクラスは、共通に使用される値を参照するために `TaskClient` 全体で使用されます。
 
-```C#
+```csharp
 public static class Globals
 {
     ...
@@ -92,7 +93,7 @@ public static class Globals
 ### <a name="create-the-publicclientapplication"></a>PublicClientApplication を作成する
 MSAL のプライマリ クラスは `PublicClientApplication`です。 このクラスは、Azure AD B2C システム内のアプリケーションを表します。 アプリの初期化時に、`MainWindow.xaml.cs` 内の `PublicClientApplication` のインスタンスを作成します。 これは、ウィンドウ全体で使用できます。
 
-```C#
+```csharp
 protected async override void OnInitialized(EventArgs e)
 {
     base.OnInitialized(e);
@@ -110,7 +111,7 @@ protected async override void OnInitialized(EventArgs e)
 ### <a name="initiate-a-sign-up-flow"></a>サインアップ フローを開始する
 ユーザーがサインアップを選択した場合、作成したサインアップ ポリシーを使用するサインアップ フローを開始します。 MSAL を使用するので、 `pca.AcquireTokenAsync(...)`を呼び出すだけです。 `AcquireTokenAsync(...)` に渡すパラメーターにより、受け取るトークン、認証要求で使用されるポリシーなどが決まります。
 
-```C#
+```csharp
 private async void SignUp(object sender, RoutedEventArgs e)
 {
     AuthenticationResult result = null;
@@ -161,7 +162,7 @@ private async void SignUp(object sender, RoutedEventArgs e)
 ### <a name="initiate-a-sign-in-flow"></a>サインイン フローを開始する
 サインアップ フローの開始と同じ方法で、サインイン フローを開始できます。 ユーザーがサインインしたら、MSAL に対して同じ呼び出しを行いますが、ここではサインイン ポリシーを使用します。
 
-```C#
+```csharp
 private async void SignIn(object sender = null, RoutedEventArgs args = null)
 {
     AuthenticationResult result = null;
@@ -176,7 +177,7 @@ private async void SignIn(object sender = null, RoutedEventArgs args = null)
 ### <a name="initiate-an-edit-profile-flow"></a>プロファイル編集フローを開始する
 ここでも、同じ方法でプロファイル編集ポリシーを実行できます。
 
-```C#
+```csharp
 private async void EditProfile(object sender, RoutedEventArgs e)
 {
     AuthenticationResult result = null;
@@ -192,7 +193,7 @@ private async void EditProfile(object sender, RoutedEventArgs e)
 ### <a name="check-for-tokens-on-app-start"></a>アプリの起動時にトークンを確認する
 MSAL は、ユーザーのサインイン状態の追跡にも使用することができます。  このアプリでは、ユーザーがアプリを閉じて再度開いたときにも、ユーザーのサインイン状態をそのまま維持する必要があります。  `OnInitialized` オーバーライド内に戻り、キャッシュされたトークンを確認するために MSAL の `AcquireTokenSilent` メソッドを使用します。
 
-```C#
+```csharp
 AuthenticationResult result = null;
 try
 {
@@ -231,7 +232,7 @@ catch (MsalException ex)
 ## <a name="call-the-task-api"></a>タスク API を呼び出す
 ここまでは、ポリシーを実行してトークンを取得するために MSAL を使用しました。  取得したトークンのいずれかを使用してタスク API を呼び出す場合は、ここでも MSAL の `AcquireTokenSilent` メソッドを使用して、キャッシュされたトークンを確認します。
 
-```C#
+```csharp
 private async void GetTodoList()
 {
     AuthenticationResult result = null;
@@ -276,7 +277,7 @@ private async void GetTodoList()
 
 `AcquireTokenSilentAsync(...)` の呼び出しが成功し、トークンがキャッシュ内に見つかった場合、トークンを HTTP 要求の `Authorization` ヘッダーに追加します。 タスク Web API では、このヘッダーを使用してユーザーの To-Do List の読み取り要求を認証します。
 
-```C#
+```csharp
     ...
     // Once the token has been returned by MSAL, add it to the http authorization header, before making the call to access the To Do list service.
     httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.Token);
@@ -289,7 +290,7 @@ private async void GetTodoList()
 ## <a name="sign-the-user-out"></a>ユーザーのサインアウト
 ユーザーが **サインアウト**を選択した場合は、MSAL を使用して、アプリでのユーザーのセッションを終了することができます。MSAL を使用してこの処理を実現するには、トークン キャッシュからすべてのトークンをクリアします。
 
-```C#
+```csharp
 private void SignOut(object sender, RoutedEventArgs e)
 {
     // Clear any remnants of the user's session.

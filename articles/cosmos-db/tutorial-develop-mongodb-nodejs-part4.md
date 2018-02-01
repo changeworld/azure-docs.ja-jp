@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 09/05/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 60154b9f0a27b1255022f455453cbc88bec63baf
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: e1d96fe8cb06be08863bbcd1885080aaca8fbd61
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 4: Azure CLI を使って Azure Cosmos DB アカウントを作成する
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
 
-Azure Cosmos DB アカウントは、[`az cosmosdb create`](/cli/azure/cosmosdb#create) コマンドで作成します。
+Azure Cosmos DB アカウントは、[`az cosmosdb create`](/cli/azure/cosmosdb#az_cosmosdb_create) コマンドで作成します。
 
 ```azurecli-interactive
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
@@ -74,7 +74,7 @@ Azure Cosmos DB アカウントの作成後、次の手順を実行します。
 
     ![Azure Portal の新しい Azure Cosmos DB アカウント](./media/tutorial-develop-mongodb-nodejs-part4/azure-cosmos-db-replicate-portal.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 本チュートリアルのこのパートでは、次の手順を行いました。
 

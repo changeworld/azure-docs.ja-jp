@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c9c8ad6dfd6df0e99f9e41eaf1da12ebeb2a2da6
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 9d5486b3ac7ca0ef0f5824660ee8278de3f6fe80
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-and-use-azure-container-registry"></a>Azure Container Registry をデプロイして使用する
 
@@ -38,13 +38,13 @@ Azure Container Registry (ACR) は、Docker コンテナー イメージ用の A
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 この例では、`myResourceGroup` という名前のリソース グループが `westeurope` リージョンに作成されます。
 
 ```azurecli
 az group create --name myResourceGroup --location westeurope
 ```
 
-[az acr create](/cli/azure/acr#create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
+[az acr create](/cli/azure/acr#az_acr_create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
 
 ```azurecli
 az acr create --resource-group myResourceGroup --name <acrName> --sku Basic
@@ -123,7 +123,7 @@ docker push <acrLoginServer>/azure-vote-front:redis-v1
 
 ## <a name="list-images-in-registry"></a>レジストリ内のイメージの一覧表示
 
-Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
+Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#az_acr_repository_list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
 ```azurecli
 az acr repository list --name <acrName> --output table
@@ -153,7 +153,7 @@ redis-v1
 
 チュートリアル完了時には、コンテナー イメージがプライベートの Azure Container Registry インスタンスに格納されています。 このイメージは、以降のチュートリアルで、ACR から Kubernetes クラスターにデプロイされます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、ACS Kubernetes クラスターで使用するための Azure Container Registry が準備されました。 次の手順を完了しました。
 

@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 10/26/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a17ff3ca73a824f4aa4b45a7cae9428a0fbc96d4
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 34e26e9dfdf53536c21023b9519209c474253b25
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-python-web-app-in-azure"></a>Azure に Python Web アプリを作成する
 
@@ -29,14 +29,14 @@ ms.lasthandoff: 11/22/2017
 
 以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 前提条件のインストールを終えてから、以降の手順を完了するまでに約 5 分かかります。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
 * <a href="https://git-scm.com/" target="_blank">Git をインストールする</a>
 * <a href="https://www.python.org/downloads/" target="_blank">Python をインストールする</a>
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
@@ -187,7 +187,7 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)

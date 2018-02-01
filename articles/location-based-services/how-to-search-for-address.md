@@ -8,19 +8,19 @@ ms.author: philmea
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: 31011dfddaa99881b58ee447502d55acad5ec940
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: cacaaab869d3a7752b5a750f01bbfbdaf79814f7
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Azure Location Based Services (プレビュー) Search サービスを使用して住所を見つける方法
 Search サービスは、開発者が住所、場所、関心地点、事業所一覧、およびその他の地理情報を検索するために設計した RESTful API のセットです。 Search サービスでは、特定の住所、交差点、地理的特徴、関心地点に対して緯度/経度を割り当てます。 Search サービスの API から返される緯度と経度の値は、経路および交通量に関する API など、他の Azure Location Based Services のパラメーターとして使用できます。
 
 ## <a name="prerequisites"></a>前提条件
-[Postman アプリ](https://www.getpostman.com/apps)をインストールしていること。
+* [Postman アプリ](https://www.getpostman.com/apps)をインストールしていること。
 
-Azure Location Based Services アカウントおよびサブスクリプション キー。 アカウントを作成して、サブスクリプション キーを取得する方法については、「[How to manage your Azure Location Based Services account and keys (Azure Location Based Services のアカウントおよびキーを管理する方法)](how-to-manage-account-keys.md)」をご覧ください。 
+* Azure Location Based Services アカウントとキーがあること。 アカウントを作成し、キーを取得する方法については、「[Azure Location Based Services アカウントとキーを管理する方法](how-to-manage-account-keys.md)」をご覧ください。 
 
 ## <a name="using-fuzzy-search"></a>あいまい検索の使用
 
@@ -53,7 +53,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     | キー | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | サブスクリプション キー | *"サブスクリプション キー"* |
+    | サブスクリプション キー | \<Azure Location Based Services キー\> |
     | クエリ | pizza |
 
 4. **[送信]** をクリックして、応答の本体を確認します。 
@@ -103,7 +103,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     | キー | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | サブスクリプション キー | *"サブスクリプション キー"* |
+    | サブスクリプション キー | \<Azure Location Based Services キー\> |
     | クエリ | 400 Broad St, Seattle, WA 98109 |
     
 3. **[送信]** をクリックして、応答の本体を確認します。 
@@ -143,7 +143,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     | キー | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | サブスクリプション キー | *"サブスクリプション キー"* |
+    | サブスクリプション キー | \<Azure Location Based Services キー\> |
     | クエリ | 47.59093,-122.33263 |
     
 3. **[送信]** をクリックして、応答の本体を確認します。 
@@ -209,7 +209,7 @@ Search サービスの既定の API はあいまい検索であり、住所ま�
     | キー | 値 |
     |------------------|-------------------------|
     | api-version | 1.0 |
-    | サブスクリプション キー | *"サブスクリプション キー"* |
+    | サブスクリプション キー | \<Azure Location Based Services キー\> |
     | クエリ | 47.59093,-122.33263 |
     
 4. **[送信]** をクリックして、応答の本体を確認します。 

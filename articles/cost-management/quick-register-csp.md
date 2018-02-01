@@ -5,20 +5,20 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 11/13/2017
+ms.date: 01/30/2018
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 84f2fec61f791d4fc9264eaa01e24180696da853
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: 0e5e247182335b88f109aa6624a40bc782975b97
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 
-CSP パートナーであれば、Cloudyn の Azure Cost Management に登録できます。 登録すると、Cloudyn ポータルにアクセスできます。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
+CSP パートナーであれば、Cloudyn の Azure Cost Management に登録できます。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
 
 
 >[!NOTE]
@@ -30,7 +30,7 @@ CSP パートナーであれば、Cloudyn の Azure Cost Management に登録で
 >
 >CSP 間接リセラーは、CSP 間接プロバイダーが Cloudyn に登録した後で、Cloudyn にアクセスできるようになります。 その後、CSP 間接リセラーは、Cloudyn アクセスを Azure のお客様とサブスクリプションに提供できます。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 - Azure Portal (http://portal.azure.com) にログインします。
 
@@ -69,7 +69,7 @@ CSP パートナーであれば、Cloudyn の Azure Cost Management に登録で
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、CSP 情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn の Azure Cost Management については、Cost Management のチュートリアルで続きを説明します。
 

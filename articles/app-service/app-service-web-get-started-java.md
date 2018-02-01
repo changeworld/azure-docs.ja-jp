@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/08/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: d44fff1e59198d662356c4d7739c05e538ba57b9
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: de72b97051daef675ceae7c7af08fb04e21cf849
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
@@ -29,14 +29,14 @@ ms.lasthandoff: 11/22/2017
 
 !["Hello Azure!" Web アプリの例](./media/app-service-web-get-started-java/browse-web-app-1.png)
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下をインストールします。
 
 * 無料の <a href="http://www.eclipse.org/downloads/" target="_blank">Eclipse IDE for Java EE Developers</a>。 このクイック スタートでは Eclipse Neon を使用します。
 * <a href="/java/azure/eclipse/azure-toolkit-for-eclipse-installation" target="_blank">Azure Toolkit for Eclipse</a>。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-dynamic-web-project-in-eclipse"></a>Eclipse で動的 Web プロジェクトを作成する
 
@@ -165,7 +165,7 @@ Azure Toolkit によって Web アプリが作成され、進行状況を示す�
 
 変更を保存します。
 
-プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > **[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、**Azure** > 、**Azure Web アプリとして発行\** の順にクリックします。
 
 **[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。ボックスには、以前に作成したアプリ サービスが表示されています。 
 
@@ -197,7 +197,7 @@ Web アプリ (上の画像の **webapp-170602193915**) を選択します。
 
 [!INCLUDE [clean-up-section-portal-web-app](../../includes/clean-up-section-portal-web-app.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/17/2017
 ms.author: v-masebo
-ms.openlocfilehash: e6a22e9989bfe7064ead1c5598e9c68d4a929b07
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e5d57e087e5f4dc1e0abf112001218aa7390a4f7
+ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/23/2018
 ---
 # <a name="routing-messages-with-iot-hub-node"></a>IoT Hub (ノード) でのメッセージのルーティング
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/08/2017
 
 * [SimulatedDevice] に関するチュートリアルで完成させたアプリ。
 * Node.js バージョン 4.0.x 以降。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [Azure Storage] と [Azure Service Bus] の記事も読むことをお勧めします。
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 12/08/2017
     };
     ```
    
-    このメソッドは、デバイスによって送信されたメッセージに `"level": "critical"` と `"level": "storage"` のプロパティをランダムに追加して、アプリケーションのバックエンドによる早急な対応を必要とするメッセージまたは永続的に保存する必要があるメッセージをシミュレートします。 アプリケーションは、この情報を、メッセージの本文ではなくメッセージのプロパティに渡して、IoT Hub がそのメッセージを適切な送信先にルーティングできるようにします。
+    このメソッドは、デバイスによって送信されたメッセージに `"level": "critical"` と `"level": "storage"` のプロパティをランダムに追加して、アプリケーションのバックエンドによる早急な対応を必要とするメッセージまたは永続的に保存する必要があるメッセージをシミュレートします。 アプリケーションは、メッセージ本文に基づいたメッセージのルーティングをサポートしています。
    
    > [!NOTE]
    > メッセージのプロパティを使用したメッセージのルーティングは、ここで示すホット パスの例に加え、コールド パス処理などのさまざまなシナリオで使用できます。
@@ -222,7 +222,7 @@ ms.lasthandoff: 12/08/2017
 
 1. Azure Portal でストレージ アカウントに移動し、**[Blob service]** の **[BLOB の参照...]** をクリックします。お使いのコンテナーを選択して移動し、JSON ファイルをクリックします。次に **[ダウンロード]** をクリックしてデータを表示します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、IoT Hub のメッセージ ルーティング機能を使用して、デバイスからクラウドへのメッセージを確実にディスパッチする方法について説明しました。
 

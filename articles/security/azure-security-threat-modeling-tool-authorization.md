@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.openlocfilehash: 9fc92916b4164990059010645daa29e72b7143cb
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: b9ad3ceeb77a4adc2c47b262aa40a48c14423198
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="security-frame-authorization--mitigations"></a>セキュリティ フレーム: 承認 | 対応策 
 | 製品/サービス | 記事 |
@@ -274,7 +274,7 @@ WHERE userID=:id < - session var
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | StorageType - テーブル |
@@ -285,7 +285,7 @@ WHERE userID=:id < - session var
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
-| **コンポーネント**               | Azure Storage (Azure Storage) | 
+| **コンポーネント**               | Azure Storage | 
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
@@ -400,7 +400,7 @@ return result;
 | **手順** | <p>アプリケーションが Azure AD または ADFS 要求を ID プロバイダーとして使用している場合、アプリケーション ユーザーのロール情報は、その Azure AD または ADFS 要求から派生していることがあります。また、アプリケーション自体がその情報を提供している場合もあります。 いずれの場合も、カスタム承認の実装によって、ユーザー ロール情報を検証する必要があります。</p><p>アプリケーションが Azure AD または ADFS 要求を ID プロバイダーとして使用している場合、アプリケーション ユーザーのロール情報は、その Azure AD または ADFS 要求から派生していることがあります。また、アプリケーション自体がその情報を提供している場合もあります。 いずれの場合も、カスタム承認の実装によって、ユーザー ロール情報を検証する必要があります。</p>
 
 ### <a name="example"></a>例
-```C#
+```csharp
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, Inherited = true, AllowMultiple = true)]
 public class ApiAuthorizeAttribute : System.Web.Http.AuthorizeAttribute
 {
@@ -431,7 +431,7 @@ public bool ValidateRoles(actionContext)
 }
 ```
 保護する必要があるすべてのコント ローラーおよびアクション メソッドは、上記の属性で修飾する必要があります。
-```C#
+```csharp
 [ApiAuthorize]
 public class CustomController : ApiController
 {

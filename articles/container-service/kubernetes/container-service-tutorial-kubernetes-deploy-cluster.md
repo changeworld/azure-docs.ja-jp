@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c91eea3734820239187bcf7b497fb06d7fd5f7ef
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 6ef789bc017e670566d25dd9d167698515e88349
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Azure Container Service で Kubernetes クラスターをデプロイする
 
@@ -34,7 +34,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
 
-[az acs create](/cli/azure/acs#create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 
+[az acs create](/cli/azure/acs#az_acs_create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 
 
 次の例では、`myK8sCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル](./container-service-tutorial-kubernetes-prepare-acr.md)で作成しました。
 
@@ -42,7 +42,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
-制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#create) コマンドに追加して、既定のエージェント数を減らします。 
+制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az_acs_create) コマンドに追加して、既定のエージェント数を減らします。 
 
 数分してデプロイが完了すると、この ACS デプロイに関する情報が JSON 形式で表示されます。
 
@@ -86,7 +86,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 
 チュートリアルが完了し、ACS Kubernetes クラスターはワークロードで使用できるようになりました。 後のチュートリアルでは、マルチコンテナー アプリケーションのクラスターへのデプロイ、スケールアウト、更新、監視を行います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Container Service の Kubernetes クラスターをデプロイしました。 次の手順を完了しました。
 

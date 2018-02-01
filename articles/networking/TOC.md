@@ -24,7 +24,7 @@
 ### [オンプレミスへの接続 - 専用](../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # 作業開始
-## [最初の仮想ネットワークの作成](../virtual-network/virtual-network-get-started-vnet-subnet.md?toc=%2fazure%2fnetworking%2ftoc.json)
+## [最初の仮想ネットワークの作成](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 # 方法
 ## インターネット接続
@@ -52,7 +52,7 @@
 ### [Azure CLI](cli-samples.md)
 ### [Azure PowerShell](powershell-samples.md)
 
-## Tutorials (チュートリアル)
+## チュートリアル
 ### [VM の負荷分散](../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [仮想ネットワークへのコンピューターの接続](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
@@ -60,8 +60,8 @@
 ## [Azure CLI](https://docs.microsoft.com/cli/azure/network)
 ## [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.network/?view=azurermps-3.8.0)
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.network?view=azuremgmtnetwork-9.1.0-preview)
-## [Node.JS](https://azure.microsoft.com/develop/nodejs/#azure-sdk)
-## [REST ()](https://msdn.microsoft.com/library/mt163658.aspx)
+## [Node.js](https://azure.microsoft.com/develop/nodejs/#azure-sdk)
+## [REST](https://msdn.microsoft.com/library/mt163658.aspx)
 
 # リソース
 ## [テンプレートの作成](/azure/azure-resource-manager/resource-group-authoring-templates?toc=%2fazure%2fnetworking%2ftoc.json)

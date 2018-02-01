@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5ecaa3a79270e29ac002e91065f7df4f7e8914e7
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 34b08111863df99dc05a7b269464ce65a916a171
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="update-an-application-in-kubernetes"></a>Kubernetes でアプリケーションを更新する
 
@@ -79,7 +79,7 @@ docker-compose up --build -d
 
 コンテナー レジストリの loginServer で `azure-vote-front` イメージにタグを付けます。 
 
-[az acr list](/cli/azure/acr#list) コマンドを使用して、ログイン サーバー名を取得します。
+[az acr list](/cli/azure/acr#az_acr_list) コマンドを使用して、ログイン サーバー名を取得します。
 
 ```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
@@ -156,7 +156,7 @@ kubectl get service azure-vote-front
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated-external.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、アプリケーションを更新し、この更新を Kubernetes クラスターにロールアウトしました。 次のタスクを完了しました。
 

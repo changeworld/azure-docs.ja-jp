@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
+ms.date: 01/23/2018
 ms.author: sethm
-ms.openlocfilehash: 58451bae409c74c319f41c38a1cec5f051619e0c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa1863a44f00ae17f63b02c7c247b2c9fd9925f6
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="azure-relay-hybrid-connections-net-standard-api-overview"></a>Azure Relay ハイブリッド接続 .NET Standard API の概要
 
 この記事は主要な Azure Relay ハイブリッド接続 .NET Standard [クライアント API](/dotnet/api/microsoft.azure.relay) についてまとめてあります。
   
-## <a name="relay-connection-string-builder"></a>Relay 接続文字列ビルダー
+## <a name="relay-connection-string-builder-class"></a>Relay 接続文字列ビルダー クラス
 
 [RelayConnectionStringBuilder][RelayConnectionStringBuilder] クラスは、Relay ハイブリッド接続固有の接続文字列の書式を設定します。 このクラスを使用して、接続文字列の形式を確認することや、最初から接続文字列を作成することができます。 例については、次のコードを参照してください。
 
 ```csharp
-var endpoint = "{Relay namespace}";
-var entityPath = "{Name of the Hybrid Connection}";
-var sharedAccessKeyName = "{SAS key name}";
-var sharedAccessKey = "{SAS key value}";
+var endpoint = "[Relay namespace]";
+var entityPath = "[Name of the Hybrid Connection]";
+var sharedAccessKeyName = "[SAS key name]";
+var sharedAccessKey = "[SAS key value]";
 
 var connectionStringBuilder = new RelayConnectionStringBuilder()
 {
@@ -46,7 +46,7 @@ var connectionStringBuilder = new RelayConnectionStringBuilder()
 `RelayConnectionStringBuilder` メソッドに接続文字列を直接渡すこともできます。 この操作では、接続文字列が有効な形式であることを確認できます。 いずれかのパラメーターが無効の場合、コンストラクターが `ArgumentException` を生成します。
 
 ```csharp
-var myConnectionString = "{RelayConnectionString}";
+var myConnectionString = "[RelayConnectionString]";
 // Declare the connectionStringBuilder so that it can be used outside of the loop if needed
 RelayConnectionStringBuilder connectionStringBuilder;
 try
@@ -61,12 +61,14 @@ catch (ArgumentException ae)
 ```
 
 ## <a name="hybrid-connection-stream"></a>ハイブリッド接続ストリーム
+
 [HybridConnectionStream][HCStream] クラスは、[HybridConnectionClient][HCClient] または [HybridConnectionListener][HCListener] のどちらを使用している場合でも、Azure Relay エンドポイントとの間でデータを送受信するために使用される主要オブジェクトです。
 
 ### <a name="getting-a-hybrid-connection-stream"></a>ハイブリッド接続ストリームの取得
 
 #### <a name="listener"></a>リスナー
-[HybridConnectionListener][HCListener] を使用して、次のように `HybridConnectionStream` オブジェクトを取得できます。
+
+[HybridConnectionListener][HCListener] オブジェクトを使用して、次のように `HybridConnectionStream` オブジェクトを取得できます。
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -78,7 +80,8 @@ var hybridConnectionStream = await listener.AcceptConnectionAsync();
 ```
 
 #### <a name="client"></a>クライアント
-[HybridConnectionClient][HCClient] を使用して、次のように `HybridConnectionStream` オブジェクトを取得できます。
+
+[HybridConnectionClient][HCClient] オブジェクトを使用して、次のように `HybridConnectionStream` オブジェクトを取得できます。
 
 ```csharp
 // Use the RelayConnectionStringBuilder to get a valid connection string
@@ -88,6 +91,7 @@ var hybridConnectionStream = await client.CreateConnectionAsync();
 ```
 
 ### <a name="receiving-data"></a>データの受信
+
 [HybridConnectionStream][HCStream] クラスでは、双方向の通信が可能です。 ほとんどの場合、継続的にストリームから受信します。 ストリームからテキストを読み取る場合は、[StreamReader](https://msdn.microsoft.com/library/system.io.streamreader(v=vs.110).aspx) オブジェクトも使用できます。これを使用すると、データを容易に解析できます。 たとえば、`byte[]` としてではなく、テキストとしてデータを読み取ることができます。
 
 次のコードは、取り消しが要求されるまで、ストリームから個々のテキスト行を読み取ります。
@@ -114,6 +118,7 @@ while (!cancellationToken.IsCancellationRequested)
 ```
 
 ### <a name="sending-data"></a>データの送信
+
 接続が確立されたら、リレー エンドポイントにメッセージを送信することができます。 接続オブジェクトは [Stream](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) を継承するため、データを `byte[]` として送信します。 以下の例は、その方法を示しています。
 
 ```csharp
@@ -129,7 +134,8 @@ var textWriter = new StreamWriter(hybridConnectionStream);
 await textWriter.WriteLineAsync("hello");
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
+
 Azure Relay の詳細については、次のリンク先を参照してください。
 
 * [Microsoft.Azure.Relay リファレンス](/dotnet/api/microsoft.azure.relay)

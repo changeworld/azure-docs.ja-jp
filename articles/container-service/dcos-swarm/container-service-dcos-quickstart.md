@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 08/04/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 69f8f415ce851a5d8034d8196ab541e8491dc417
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: b81dc61e61f97e34ace21c1239681c1254efb7be
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-a-dcos-cluster"></a>DC/OS クラスターのデプロイ
 
@@ -23,9 +23,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-## <a name="log-in-to-azure"></a>Azure へのログイン 
+## <a name="log-in-to-azure"></a>Azure にログインする 
 
-[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+[az login](/cli/azure/#az_login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
 
 ```azurecli
 az login
@@ -33,7 +33,7 @@ az login
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -43,7 +43,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-dcos-cluster"></a>DC/OS クラスターの作成
 
-[az acs create](/cli/azure/acs#create) コマンドを使用して DC/OS クラスターを作成します。
+[az acs create](/cli/azure/acs#az_acs_create) コマンドを使用して DC/OS クラスターを作成します。
 
 次の例では、*myDCOSCluster* という名前の DC/OS クラスターを作成し、まだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
@@ -51,7 +51,7 @@ az group create --name myResourceGroup --location eastus
 az acs create --orchestrator-type dcos --resource-group myResourceGroup --name myDCOSCluster --generate-ssh-keys
 ```
 
-制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#create) コマンドに追加して、既定のエージェント数を減らします。 
+制限付き試用版を使用する場合など、Azure サブスクリプションによって Azure リソースへのアクセスが制限される場合もあります。 使用可能なコア数が限られているためにデプロイが失敗した場合は、`--agent-count 1` を [az acs create](/cli/azure/acs#az_acs_create) コマンドに追加して、既定のエージェント数を減らします。 
 
 数分してコマンドが完了すると、デプロイに関する情報が返されます。
 
@@ -156,13 +156,13 @@ az network public-ip list --resource-group myResourceGroup --query "[?contains(n
 
 ## <a name="delete-dcos-cluster"></a>DC/OS クラスターの削除
 
-必要がなくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、DC/OS クラスター、およびすべての関連リソースを削除できます。
+必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、DC/OS クラスター、およびすべての関連リソースを削除できます。
 
 ```azurecli
 az group delete --name myResourceGroup --no-wait
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、DC/OS クラスターをデプロイし、このクラスター上で単純な Docker コンテナーを実行しました。 Azure Container Service をより深く学習するには、ACS チュートリアルに進んでください。
 

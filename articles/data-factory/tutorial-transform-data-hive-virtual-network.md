@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shengc
-ms.openlocfilehash: 30456a30c12d39ceb14dec6cd60015916cb7ae27
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 04323e5f6b729cdadf5ede748a1178dfa9460cd2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 このチュートリアルでは、Azure PowerShell を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
@@ -38,7 +38,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 - **Azure Storage アカウント**。 Hive スクリプトを作成し、Azure ストレージにアップロードします。 Hive スクリプトからの出力は、このストレージ アカウントに格納されます。 このサンプルでは、この Azure ストレージ アカウントがプライマリ ストレージとして HDInsight クラスターによって使用されます。 
-- **Azure Virtual Network。** Azure 仮想ネットワークを持っていない場合は、[こちらの手順](../virtual-network/virtual-network-get-started-vnet-subnet.md)に従って作成してください。 このサンプルでは、HDInsight は Azure 仮想ネットワーク内にあります。 Azure Virtual Network の構成例を次に示します。 
+- **Azure Virtual Network。** Azure 仮想ネットワークを持っていない場合は、[こちらの手順](../virtual-network/quick-create-portal.md)に従って作成してください。 このサンプルでは、HDInsight は Azure 仮想ネットワーク内にあります。 Azure Virtual Network の構成例を次に示します。 
 
     ![Create virtual network](media/tutorial-transform-data-using-hive-in-vnet/create-virtual-network.png)
 - **HDInsight クラスター。** HDInsight クラスターを作成し、前の手順で作成した仮想ネットワークに参加させます。手順については、「[Azure Virtual Network を使用した Azure HDInsight の拡張](../hdinsight/hdinsight-extend-hadoop-virtual-network.md)」を参照してください。 仮想ネットワークでの HDInsight の構成例を次に示します。 
@@ -150,7 +150,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    }
    ```
     **AuthKey1** の値をメモしておきます。引用符は含めません。 
-3. Azure VM を作成し、HDInsight クラスターが含まれている仮想ネットワークに参加させます。 詳細については、[仮想マシンの作成方法](../virtual-network/virtual-network-get-started-vnet-subnet.md#create-vms)に関するページを参照してください。 Azure 仮想ネットワークに参加させます。 
+3. Azure VM を作成し、HDInsight クラスターが含まれている仮想ネットワークに参加させます。 詳細については、[仮想マシンの作成方法](../virtual-network/quick-create-portal.md#create-virtual-machines)に関するページを参照してください。 Azure 仮想ネットワークに参加させます。 
 4. Azure VM で、[セルフホステッド統合ランタイム](https://www.microsoft.com/download/details.aspx?id=39717)をダウンロードします。 前の手順で取得した認証キーを使用して、セルフホステッド統合ランタイムを手動で登録します。 
 
    ![統合ランタイムの登録](media/tutorial-transform-data-using-hive-in-vnet/register-integration-runtime.png)

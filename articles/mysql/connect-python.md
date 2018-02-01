@@ -6,16 +6,16 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: mysql
+ms.service: mysql-database
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 09/22/2017
-ms.openlocfilehash: 40108e0c60a60da412ab521d467a07b8f0540140
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0daf8b48f9cc767b0e6cf5339eff2e4e371c23fb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Python を使用した接続とデータの照会
 このクイックスタートでは、[Python](https://python.org) を使用して Azure Database for MySQL に接続する方法を紹介します。 Mac OS、Ubuntu Linux、Windows の各プラットフォームから、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除しています。 このトピックでは、Python を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **myserver4demo**) を検索します。
 3. サーバー名 **[myserver4demo]** をクリックします。
 4. サーバーの **[プロパティ]** ページを選択します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
@@ -265,6 +265,6 @@ else:
   print("Done.")
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)

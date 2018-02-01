@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 07/05/2017
+ms.date: 01/23/2018
 ms.author: jroth
-ms.openlocfilehash: f7664291c2f45c422d52f682d08dbb67ab32b099
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 81910dd9c2743484ca65bd21e400a1a52e961a19
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)
 > [!div class="op_single_selector"]
-> * [リソース マネージャー](../sql/virtual-machines-windows-sql-automated-backup.md)
+> * [Resource Manager](../sql/virtual-machines-windows-sql-automated-backup.md)
 > * [クラシック](../classic/sql-automated-backup.md)
 > 
 > 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/21/2017
 自動バックアップでは、SQL Server 2014 Standard または Enterprise を実行する Azure VM 上の既存のデータベースと新しいデータベースのすべてを対象に、 [Microsoft Azure へのマネージ バックアップ](https://msdn.microsoft.com/library/dn449496.aspx) が自動的に構成されます。 これにより、永続的な Azure BLOB ストレージを利用した日常的なデータベース バックアップを構成できます。 自動バックアップは、 [SQL Server IaaS Agent 拡張機能](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に依存します。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの Azure Virtual Machines での SQL Server の自動バックアップ](../sql/virtual-machines-windows-sql-automated-backup.md)に関する記事をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 この記事の Resource Manager バージョンを確認するには、[Resource Manager バージョンの Azure Virtual Machines での SQL Server の自動バックアップ](../sql/virtual-machines-windows-sql-automated-backup.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 自動バックアップを使用するには、次の前提条件を検討してください。
@@ -48,9 +48,7 @@ ms.lasthandoff: 12/21/2017
 * SQL Server 2014 Enterprise
 
 > [!NOTE]
-> SQL Server 2016 は、自動バックアップでまだサポートされていません。
-> 
-> 
+> SQL Server 2016 の自動バックアップは、Resource Manager 仮想マシンでサポートされています。 詳細については、「[SQL Server 2016 Azure Virtual Machines の自動バックアップ v2 (Resource Manager)](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sql/virtual-machines-windows-sql-automated-backup-v2)」を参照してください。
 
 **データベースの構成**:
 
@@ -64,10 +62,10 @@ ms.lasthandoff: 12/21/2017
 
 * [SQL Server IaaS 拡張機能をインストールします](../classic/sql-server-agent-extension.md)。
 
-## <a name="settings"></a>Settings
+## <a name="settings"></a>[設定]
 自動バックアップで構成できるオプションを次の表に示します。 クラシック VM の場合は、PowerShell を使用してこれらの設定を構成する必要があります。
 
-| Setting | 範囲 (既定値) | 説明 |
+| 設定 | 範囲 (既定値) | [説明] |
 | --- | --- | --- |
 | **自動化されたバックアップ** |有効/無効 (無効) |SQL Server 2014 Standard または Enterprise を実行している Azure VM で、自動バックアップを有効または無効にします。 |
 | **保有期間** |1 ～ 30 日 (30 日) |バックアップを保持する日数。 |
@@ -106,7 +104,7 @@ SQL Server IaaS エージェントのインストールと構成には数分か�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 自動バックアップでは、Azure VM でマネージ バックアップが構成されます。 そのため、 [マネージ バックアップに関するドキュメント](https://msdn.microsoft.com/library/dn449496.aspx) を見直して、動作と影響を理解することが重要です。
 
 Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、「 [Azure の仮想マシンにおける SQL Server のバックアップと復元](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json)」をご覧ください。

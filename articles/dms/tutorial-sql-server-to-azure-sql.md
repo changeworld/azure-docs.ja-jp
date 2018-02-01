@@ -10,12 +10,12 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 11/17/2017
-ms.openlocfilehash: 3e7e80d58a3eb27920736a1594633021b90014e9
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.date: 01/24/2018
+ms.openlocfilehash: 06d7023f225698400509449e59bdcb827becc644
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrate-sql-server-to-azure-sql-database"></a>SQL Server を Azure SQL Database に移行する
 Azure Database Migration Service を使用して、オンプレミスの SQL Server インスタンスから Azure SQL Database にデータベースを移行することができます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server 2016 (以上) のオンプレミス インスタンスに復元された**Adventureworks2012** データベースを、Azure SQL Database に移行します。
@@ -34,13 +34,15 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 - [SQL Server 2016 以降](https://www.microsoft.com/sql-server/sql-server-downloads) (任意のエディション) をダウンロードしてインストールします。
 - SQL Server Express のインストール時に既定では無効になっている TCP/IP プロトコルを有効にします。有効にする手順については、[サーバー ネットワーク プロトコルの有効化または無効化](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure)に関する記事を参照してください。
-- [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
 - Azure SQL Database インスタンスを作成します。作成する場合は「[Azure Portal で Azure SQL データベースを作成する](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal)」の手順に従います。
 - [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v3.3 以降をダウンロードしてインストールします。
 - Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。
+- Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、通信ポート 443、53、9354、445、12000 がブロックされていないことを確認します。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg)」を参照してください。
+- [データベース エンジン アクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
+- Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。
+- Azure SQL Database サーバーのサーバー レベルの[ファイアウォール規則](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-firewall-configure)を作成して、Azure Database Migration Service がターゲット データベースにアクセスできるようにします。 Azure Database Migration Service に使用される VNET のサブネット範囲を指定します。
 - ソースの SQL Server インスタンスへの接続に使用される資格情報に、[CONTROL SERVER](https://docs.microsoft.com/sql/t-sql/statements/grant-server-permissions-transact-sql) アクセス許可を含めます。
 - ターゲットの Azure SQL Database インスタンスへの接続に使用される資格情報に、ターゲットの Azure SQL データベースに対する CONTROL DATABASE アクセス許可を含めます。
-- Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。
 
 ## <a name="assess-your-on-premises-database"></a>オンプレミス データベースを評価する
 オンプレミスの SQL Server インスタンスから Azure SQL Database にデータを移行する前に、SQL Server データベースを評価して、移行を妨げる問題がないかどうか確認する必要があります。 Data Migration Assistant v3.3 以降で、[SQL Server の移行評価の実行](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)に関するページの手順を実行して、オンプレミス データベースの評価を完了してください。 必要な手順の概要は次のとおりです。

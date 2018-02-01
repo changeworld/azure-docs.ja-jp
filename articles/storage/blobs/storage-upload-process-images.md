@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.openlocfilehash: 8d187e51cbb391ee1f34fb5934c8ae1868bb6244
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: eae23bed2792e41f73c22658d238e2b03beba17b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Azure Storage を使用してクラウドに画像データをアップロードする
 
@@ -42,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成 
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
  
 次の例では、`myResourceGroup` という名前のリソース グループを作成します。
  
@@ -69,7 +69,7 @@ az storage account create --name <blob_storage_account> \
  
 アプリでは、BLOB ストレージ アカウント内の 2 つのコンテナーを使用します。 コンテナーはフォルダーに似ており、BLOB の格納に使用します。 "_images_" コンテナーは、アプリが高解像度のイメージをアップロードする場所です。 このシリーズの後半で、Azure 関数アプリで、サイズ変更した画像を "_thumbs_" コンテナーにアップロードします。 
 
-[az storage account keys list](/cli/azure/storage/account/keys#list) コマンドを使用して、ストレージ アカウント キーを取得します。 次に、[az storage container create](/cli/azure/storage/container#az_storage_container_create) コマンドでこのキーを使用して、2 つのコンテナーを作成します。  
+[az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) コマンドを使用して、ストレージ アカウント キーを取得します。 次に、[az storage container create](/cli/azure/storage/container#az_storage_container_create) コマンドでこのキーを使用して、2 つのコンテナーを作成します。  
  
 ここでは、`<blob_storage_account>` は、作成した BLOB ストレージ アカウントの名前です。 "_images_" コンテナーのパブリック アクセスは `off` に、_thumbs_ コンテナーのパブリック アクセスは `container` に設定されます。 `container` パブリック アクセス設定は、Web ページにアクセスしたユーザーに対してサムネイルを表示できるようにします。
  

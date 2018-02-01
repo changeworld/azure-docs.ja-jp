@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/27/2017
+ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 163ac33af43a8cb7a23742f6336efca5fe7c4b4e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: e687a1ee8ac4f565062e57b07cdfa9ac5e6bbf4f
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="import-azure-log-analytics-data-into-power-bi"></a>Power BI への Azure Log Analytics データのインポート
 
@@ -86,12 +86,12 @@ Power BI で作成されたデータセットには、前に Power BI Desktop �
 ![Power BI への Log Analytics](media/log-analytics-powerbi/overview-legacy.png)
 
 ### <a name="power-bi-schedules"></a>Power BI スケジュール
-*Power BI スケジュール* には、OMS リポジトリから Power BI の対応するデータセットにデータのセットをエクスポートするログ検索と、この検索を実行してデータセットを最新のまま保持する頻度を定義するスケジュールが含まれます。
+"*Power BI スケジュール*" には、Log Analytics の一連のデータを、Power BI の対応するデータセットにエクスポートするログ検索と、この検索を実行してデータセットを最新に保持する頻度を定義するスケジュールが含まれます。
 
 データセットのフィールドは、ログ検索によって返されるレコードのプロパティと一致します。  検索によってさまざまな種類のレコードが返される場合、データセットには、含まれているレコードの各種類のプロパティがすべて含まれます。  
 
-### <a name="connecting-oms-workspace-to-power-bi"></a>OMS ワークスペースを Power BI に接続する
-Log Analytics から Power BI にエクスポートする前に、次の手順に従って、OMS ワークスペースを Power BI アカウントに接続する必要があります。  
+### <a name="connecting-log-analytics-workspace-to-power-bi"></a>Log Analytics ワークスペースを Power BI に接続する
+Log Analytics から Power BI にエクスポートする前に、次の手順に従って、ワークスペースを Power BI アカウントに接続する必要があります。  
 
 1. OMS コンソールで **[設定]** タイルをクリックします。
 2. **[アカウント]**を選択します。
@@ -106,9 +106,9 @@ Log Analytics から Power BI にエクスポートする前に、次の手順�
 3. ページの上部にある **[Power BI]** ボタンをクリックして、**[Power BI]** ダイアログ ボックスを開きます。
 4. 次の表にある情報を入力して、 **[保存]**をクリックします。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 名前 |Power BI スケジュールの一覧を表示するときにスケジュールを識別する名前。 |
+| Name |Power BI スケジュールの一覧を表示するときにスケジュールを識別する名前。 |
 | 保存する検索条件 |実行するログ検索。  現在のクエリを選択するか、またはドロップダウン ボックスから既存の保存された検索を選択します。 |
 | スケジュール |保存された検索を実行して Power BI データセットにエクスポートする頻度。  値は 15 分～ 24 時間の範囲で指定する必要があります。 |
 | データセット名 |Power BI のデータセットの名前。  存在しない場合は作成し、存在する場合は更新します。 |
@@ -169,6 +169,6 @@ Log Analytics から Power BI にエクスポートする前に、次の手順�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ログ検索](log-analytics-log-searches.md) について学習し、Power BI にエクスポートできるクエリを作成します。
 * [Power BI](http://powerbi.microsoft.com) について詳しく学習し、Log Analytics のエクスポートに基づく視覚エフェクトを作成します。

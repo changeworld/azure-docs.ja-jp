@@ -14,11 +14,11 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 624dd416f37aacdb3d2f6e59afdc2efe646e610b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0467707a46709674d3f5de3346ad242af5c9dcb8
+ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
 ## <a name="introduction"></a>はじめに
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="how-to-change-the-built-in-php-version"></a>方法: ビルトインの PHP バージョンを変更する
-既定では、App Service Web アプリを作成すると PHP 5.5 がインストールされ、直ちに使用できる状態になります。 使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()] 関数を呼び出すスクリプトをデプロイします。
+既定では、App Service Web アプリを作成すると PHP 5.6 がインストールされ、直ちに使用できる状態になります。 使用可能なリリース リビジョン、既定の構成、および有効な拡張機能を確認するには、 [phpinfo()] 関数を呼び出すスクリプトをデプロイします。
 
 PHP 5.6 および PHP 7.0 も使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
 
@@ -178,7 +178,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
    
     ![Azure での Composer 自動化を使用した Git デプロイ](./media/web-sites-php-configure/composer-extension-success.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、 [PHP デベロッパー センター](/develop/php/)を参照してください。
 
 > [!NOTE]

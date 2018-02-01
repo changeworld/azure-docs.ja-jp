@@ -14,14 +14,14 @@
 
 # 方法
 ## サイト対サイト接続の構成
-### [Azure ポータル](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+### [Azure Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
 
 ## ポイント対サイト接続の構成 - ネイティブの Azure 証明書認証
 ### P2S VPN の構成
-#### [Azure ポータル](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+#### [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 #### [Azure PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 #### [Azure Portal (クラシック)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 ### 自己署名証明書の生成
@@ -36,17 +36,17 @@
 ### [VPN クライアント構成ファイルの作成とインストール](point-to-site-vpn-client-configuration-radius.md)
 
 ## VNet 間の接続の構成
-### [Azure ポータル](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
+### [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
 ### [Azure PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 ### [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 ## デプロイメント モデル間の VNet 間接続の構成
-### [Azure ポータル](vpn-gateway-connect-different-deployment-models-portal.md)
+### [Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 ### [Azure PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 ## サイト対サイトおよび ExpressRoute の共存接続の構成
 ### [Azure PowerShell](../expressroute/expressroute-howto-coexist-resource-manager.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 ## 複数のサイト対サイト接続
-### [Azure ポータル](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
+### [Azure Portal](vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md)
 ### [Azure PowerShell (クラシック)](vpn-gateway-multi-site.md)
 ## 複数のポリシーベース VPN デバイスの接続
 ### [Azure PowerShell](vpn-gateway-connect-multiple-policybased-rm-ps.md)
@@ -61,13 +61,13 @@
 ### [Azure PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [Azure PowerShell (クラシック)](vpn-gateway-about-forced-tunneling.md)
 ## ローカル ネットワーク ゲートウェイの設定を変更する
-### [Azure ポータル](vpn-gateway-modify-local-network-gateway-portal.md)
+### [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-modify-local-network-gateway.md)
 ### [Azure CLI](vpn-gateway-modify-local-network-gateway-cli.md)
 ## [VPN Gateway 接続の確認](vpn-gateway-verify-connection-resource-manager.md)
 ## [VPN Gateway のリセット](vpn-gateway-resetgw-classic.md)
 ## VPN ゲートウェイの削除
-### [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
+### [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [Azure PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 ## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
@@ -76,7 +76,7 @@
 ### [概要と Azure の構成](vpn-gateway-3rdparty-device-config-overview.md)
 ### [サンプル: Cisco ASA デバイス (IKEv2/BGP なし)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## [クラシックから Resource Manager への移行](vpn-gateway-classic-resource-manager-migration.md)
-## トラブルシューティング
+## [トラブルシューティング](vpn-gateway-troubleshoot.md)
 ### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 ### [コミュニティで推奨される VPN またはファイアウォール デバイスの設定](vpn-gateway-third-party-settings.md)
 ### [ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
@@ -87,7 +87,7 @@
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)
 ## [Azure PowerShell (クラシック)](/powershell/module/azure/?view=azuresmps-3.7.0#networking)
-## [REST ()](/rest/api/network/virtualnetworkgateways)
+## [REST](/rest/api/network/virtualnetworkgateways)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/jj154113)
 ## [Azure CLI](/cli/azure/network/vnet-gateway)
 

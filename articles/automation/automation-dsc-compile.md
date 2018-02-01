@@ -13,17 +13,17 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; gwallace
-ms.openlocfilehash: 96702fb1b377861c3692358a5754e73475cee84d
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 63120614f2a2ef6b366bc2d92ec9a0dd430a3fb4
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC での構成のコンパイル
 
 Azure Automation を使用して、Desired State Configuration (DSC) 構成をコンパイルする方法は、2 通りあります。Azure Portal で行う方法と、Windows PowerShell を使用する方法です。 次の表は、各方法の特徴に基づいて、どちらの方法をどのような場合に使用するか決定するのに役立ちます。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure ポータル
 
 * 対話型ユーザー インターフェイスを使用する、最も簡単な方法
 * フォームに単純なパラメーター値を入力する
@@ -299,7 +299,7 @@ Azure の外部でコンパイルしたノード構成 (MOF) をインポート�
 
 ### <a name="importing-a-node-configuration-in-the-azure-portal"></a>Azure Portal でのノード構成のインポート
 
-1. Automation アカウントから、**[DSC ノード構成]** をクリックします。
+1. Automation アカウントから、**[構成管理]** の **[DSC ノード構成]** をクリックします。
 
     ![DSC ノード構成](./media/automation-dsc-compile/node-config.png)
 2. **[DSC ノード構成]** ブレードで、**[Add a NodeConfiguration (ノード構成を追加)]** をクリックします。
@@ -307,7 +307,7 @@ Azure の外部でコンパイルしたノード構成 (MOF) をインポート�
 
     ![ローカル ファイルの参照](./media/automation-dsc-compile/import-browse.png)
 4. **[構成名]** テキスト ボックスに名前を入力します。 この名前は、ノード構成のコンパイル元の構成の名前と一致する必要があります。
-5. **[OK]**をクリックします。
+5. Click **OK**.
 
 ### <a name="importing-a-node-configuration-with-powershell"></a>PowerShell でのノード構成のインポート
 

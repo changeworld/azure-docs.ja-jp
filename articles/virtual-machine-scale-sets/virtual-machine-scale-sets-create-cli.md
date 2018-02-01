@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
-ms.openlocfilehash: 222bfa1c3070fa4634cf5c48d934a6387c48a4b0
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 8794ea7d998293e7ea88ba780f67ef8a021f2298
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 この入門記事では、Azure CLI 2.0 を使用して仮想マシン スケール セットを作成します。 スケール セットは、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)または [Azure ポータル](virtual-machine-scale-sets-create-portal.md)を使用して作成することもできます。
@@ -32,13 +32,13 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
-スケール セットを作成する前に、[az group create](/cli/azure/group#create) を使ってリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+スケール セットを作成する前に、[az group create](/cli/azure/group#az_group_create) を使ってリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-ここでは、[az vmss create](/cli/azure/vmss#create) を使って仮想マシン スケール セットを作成します。 次の例では、*myScaleSet* という名前のスケール セットを作成し、存在しない場合は SSH キーを生成します。
+ここでは、[az vmss create](/cli/azure/vmss#az_vmss_create) を使って仮想マシン スケール セットを作成します。 次の例では、*myScaleSet* という名前のスケール セットを作成し、存在しない場合は SSH キーを生成します。
 
 ```azurecli-interactive 
 az vmss create \
@@ -70,7 +70,7 @@ az vmss extension set \
 
 
 ## <a name="allow-web-traffic"></a>Web トラフィックを許可する
-トラフィックが Web サーバーに到達できるようにするには、[az network lb rule creat](/cli/azure/network/lb/rule#create) を使用してロード バランサー ルールを作成します。 次の例では、*myLoadBalancerRuleWeb* という名前の規則を作成します。
+トラフィックが Web サーバーに到達できるようにするには、[az network lb rule creat](/cli/azure/network/lb/rule#az_network_lb_rule_create) を使用してロード バランサー ルールを作成します。 次の例では、*myLoadBalancerRuleWeb* という名前の規則を作成します。
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -86,7 +86,7 @@ az network lb rule create \
 
 
 ## <a name="test-your-web-server"></a>Web サーバーをテストする
-Web サーバーが動いていることを確認するには、[az network public-ip show](/cli/azure/network/public-ip#show) でロード バランサーのパブリック IP アドレスを取得します。 次の例では、スケール セットの一部として作成された *myScaleSetLBPublicIP* の IP アドレスを取得します。
+Web サーバーが動いていることを確認するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) でロード バランサーのパブリック IP アドレスを取得します。 次の例では、スケール セットの一部として作成された *myScaleSetLBPublicIP* の IP アドレスを取得します。
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -102,7 +102,7 @@ az network public-ip show \
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-必要がなくなったら、次のように [az group delete](/cli/azure/group#delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。
+必要がなくなったら、次のように [az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

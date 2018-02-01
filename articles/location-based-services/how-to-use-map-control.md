@@ -9,17 +9,17 @@ ms.date: 11/22/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: 06743640aae5e06d0160105458d9a3cfa35d5040
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 494a8308a5ed4ae37ed9561d051155e7433e6193
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="how-to-use-the-azure-location-based-services-map-control"></a>Azure Location Based Services のマップ コントロールを使用する方法
 マップ コントロール クライアント側 JavaScript ライブラリを使うと、マップと埋め込まれた Azure Location Based Services の機能を、Web アプリケーションまたはモバイル アプリケーションにレンダリングできます。 
 
 ## <a name="prerequisites"></a>前提条件
-Azure Location Based Services アカウントおよびサブスクリプション キー。 アカウントを作成して、サブスクリプション キーを取得する方法については、「[How to manage your Azure Location Based Services account and keys](how-to-manage-account-keys.md)」(Azure Location Based Services のアカウントおよびキーを管理する方法) をご覧ください。 
+Azure Location Based Services アカウントとキー。 アカウントを作成し、キーを取得する方法については、「[Azure Location Based Services アカウントとキーを管理する方法](how-to-manage-account-keys.md)」をご覧ください。 
 
 ## <a name="create-a-new-map-in-a-web-page-using-the-map-control-api"></a>マップ コントロール API を使用して Web ページに新しいマップを作成する
 マップ コントロール クライアント側 JavaScript ライブラリを使って、Web ページにマップを埋め込むことができます。
@@ -42,19 +42,19 @@ Azure Location Based Services アカウントおよびサブスクリプショ�
             }
     ``` 
     
-4. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 Azure Location Based Services アカウントのご自分のサブスクリプション キーを使います。 
+4. マップ コントロールを初期化するには、html 本文に新しいセクションを定義し、スクリプトを作成します。 スクリプトで独自の Azure Location Based Services アカウント キーを使用します。 
 
     ```html
     <div id="map">
         <script>
-            var subscriptionKey = "<_subscriptionKey_>";
+            var LBSAccountKey = "<_your account key_>";
             var map = new atlas.Map("map", {
-                "subscription-key": subscriptionKey,
+                "subscription-key": LBSAccountKey,
                 center: [47.59093,-122.33263],
                 zoom: 12
             });
-        <script>
-    <div>
+        </script>
+    </div>
     ```
     
 5. Web ブラウザーでファイルを開き、レンダリングされたマップを表示します。

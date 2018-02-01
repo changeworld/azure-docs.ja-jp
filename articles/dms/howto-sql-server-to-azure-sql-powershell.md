@@ -10,12 +10,12 @@ ms.service: database-migration
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
-ms.date: 12/13/2017
-ms.openlocfilehash: 9eebe8352d6a447df520c194b9906df8c2c9a83f
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.date: 01/24/2018
+ms.openlocfilehash: 8569bf65d04f677a45935284dc61d68879014c10
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Azure PowerShell を使用して オンプレミスの SQL Server を Azure SQL DB に移行する
 この記事では、Microsoft Azure PowerShell を使用して、SQL Server 2016 以上のオンプレミス インスタンスに復元された **Adventureworks2012** データベースを Azure SQL Database に移行します。 データベースをオンプレミスの SQL Server インスタンスから Azure SQL Database に移行するには、Microsoft Azure PowerShell で `AzureRM.DataMigration` モジュールを使用します。
@@ -63,22 +63,25 @@ New-AzureRmResourceGroup -ResourceGroupName myResourceGroup -Location EastUS
 - *SKU*。 このパラメーターは、DMS SKU 名に対応します。 現在サポートされている SKU 名は、*Basic_1vCore*、*Basic_2vCores*、*GeneralPurpose_4vCores* です。
 - *仮想サブネット識別子*。 [New-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig?view=azurermps-4.4.1) コマンドレットを使用して、サブネットを作成できます。 
 
-次の例では、*MySubnet* という仮想サブネットを使用して、*米国東部*リージョンにあるリソース グループ *MyDMSResourceGroup* 内に *MyDMS* という名前のサービスが作成されます。
+次の例では、*MyVNET* という仮想ネットワークと *MySubnet* というサブネットを使用して、*米国東部*リージョンにあるリソース グループ *MyDMSResourceGroup* に *MyDMS* という名前のサービスを作成します。
 
 ```powershell
+ $vNet = Get-AzureRmVirtualNetwork -ResourceGroupName MyDMSResourceGroup -Name MyVNET
+
+$vSubNet = Get-AzureRmVirtualNetworkSubnetConfig -VirtualNetwork $vNet -Name MySubnet
+
 $service = New-AzureRmDms -ResourceGroupName myResourceGroup `
   -ServiceName MyDMS `
   -Location EastUS `
   -Sku Basic_2vCores `  
-  -VirtualSubnetId
-$vnet.Id`
+  -VirtualSubnetId $vSubNet.Id`
 ```
 
 ## <a name="create-a-migration-project"></a>移行プロジェクトを作成する
 Azure Database Migration Service インスタンスを作成した後、移行プロジェクトを作成します。 Azure Database Migration Service プロジェクトでは、ソースとターゲットの両方のインスタンスの接続情報に加え、プロジェクトの一部として移行するデータベースの一覧が必要です。
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>ソースとターゲットの接続用のデータベース接続情報オブジェクトを作成する
-データベース接続情報オブジェクトを作成するには、`New-AzureRmDmsConnInfo` コマンドレットを使用します。  このコマンドレットでは、次のパラメーターが必要です。
+データベース接続情報オブジェクトを作成するには、`New-AzureRmDmsConnInfo` コマンドレットを使用します。 このコマンドレットでは、次のパラメーターが必要です。
 - *ServerType*。 要求するデータベース接続の種類 (SQL、Oracle、MySQL など)。 SQL Server と SQL Azure には SQL を使用します。
 - *DataSource*。 SQL インスタンスや SQL Azure サーバーの名前または IP アドレス。
 - *AuthType*。 接続の認証の種類。SqlAuthentication または WindowsAuthentication を指定できます。
@@ -166,9 +169,9 @@ $selectedDbs = New-AzureRmDmsSqlServerSqlDbSelectedDB -Name AdventureWorks2016 `
 ### <a name="create-and-start-a-migration-task"></a>移行タスクを作成して開始する
 
 移行タスクを作成して開始するには、`New-AzureRmDataMigrationTask` コマンドレットを使用します。 このコマンドレットでは、次のパラメーターが必要です。
-- *TaskType*。  作成する移行タスクの種類。SQL Server から SQL Azure への移行では、*MigrateSqlServerSqlDb* が必要です。 
+- *TaskType*。 作成する移行タスクの種類。SQL Server から SQL Azure への移行では、*MigrateSqlServerSqlDb* が必要です。 
 - *ResourceGroupName*。 タスクを作成する Azure リソース グループの名前。
-- *ServiceName*。  タスクを作成する Azure Database Migration Service インスタンス。
+- *ServiceName*。 タスクを作成する Azure Database Migration Service インスタンス。
 - *ProjectName*。 タスクを作成する Azure Database Migration Service プロジェクトの名前。 
 - *TaskName*。 作成するタスクの名前。 
 - *SourceConnection*。 ソース接続を表す AzureRmDmsConnInfo オブジェクト。
@@ -202,5 +205,5 @@ if (($mytask.ProjectTask.Properties.State -eq "Running") -or ($mytask.ProjectTas
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 「[Microsoft Database Migration Guide](https://datamigration.microsoft.com/)」にある移行ガイドを確認する。

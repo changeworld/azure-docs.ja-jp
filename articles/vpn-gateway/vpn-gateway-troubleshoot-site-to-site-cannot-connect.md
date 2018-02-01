@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/13/2017
 ms.author: genli
-ms.openlocfilehash: 55cfba5e9730b123bba20dfdc5d10c1157352a35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96a1705d651b9a2d17a466b9c43721bec7b4972c
+ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/24/2018
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>トラブルシューティング: Azure サイト間 VPN が動作を停止して接続できない
 
@@ -87,12 +87,12 @@ Azure Resource Manager デプロイメント モデルの場合:
 
 ### <a name="step-6-verify-that-the-subnets-match-exactly-azure-policy-based-gateways"></a>手順 6. サブネットが完全に一致することを確認する (Azure のポリシー ベースのゲートウェイ)
 
--   Azure 仮想ネットワークの定義とオンプレミスの定義でサブネットが完全に一致することを確認します。
+-   Azure 仮想ネットワークとオンプレミスの定義で、仮想ネットワーク アドレス空間が完全に一致することを確認します。
 -   **ローカル ネットワーク ゲートウェイ**とオンプレミス ネットワークのオンプレミス定義との間でサブネットが完全に一致することを確認します。
 
 ### <a name="step-7-verify-the-azure-gateway-health-probe"></a>手順 7. Azure ゲートウェイの正常性プローブを確認する
 
-1. [正常性プローブ](https://&lt;YourVirtualNetworkGatewayIP&gt;:8081/healthprobe)に移動します。
+1. 正常性プローブに移動します。
 
 2. 証明書の警告を無視して続行します。
 3. 応答を受け取った場合、VPN ゲートウェイは正常であると考えられます。 応答を受け取らない場合、ゲートウェイが正常な状態にないか、またはゲートウェイ サブネット上の NSG が問題の原因になっている可能性があります。 応答のサンプル テキストを次に示します。
@@ -103,7 +103,7 @@ Azure Resource Manager デプロイメント モデルの場合:
 
 接続切断の問題は、Perfect Forward Secrecy 機能によって引き起こされる可能性があります。 VPN デバイスで Perfect Forward Secrecy が有効になっている場合は、その機能を無効にしてください。 その後、VPN ゲートウェイの IPsec ポリシーを更新します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 -   [仮想ネットワークへのサイト間接続を構成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 -   [サイト間 VPN 接続の IPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
-ms.openlocfilehash: b07bdd0739dabb05ef7012051b7ac28af3aaddaf
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 16e9c0b30710d711ef2789f7781b17e72889d4da
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-linux-virtual-machine-scale-set-with-an-azure-template"></a>Azure テンプレートを使用して Linux 仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 この入門記事では、Azure Resource Manager テンプレートを使用して Linux 仮想マシン スケール セットを作成します。 スケール セットは、[Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md)、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)、または [Azure ポータル](virtual-machine-scale-sets-create-portal.md)を使用して作成することもできます。
@@ -42,7 +42,7 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 |------------------------------|----------------------------------------------------------|-------------------------------------------|
 | 型                         | 作成する Azure リソースの種類                            | Microsoft.Compute/virtualMachineScaleSets |
 | name                         | スケール セットの名前                                       | myScaleSet                                |
-| location                     | スケール セットを作成する場所                     | East US                                   |
+| location                     | スケール セットを作成する場所                     | 米国東部                                   |
 | sku.name                     | 各スケール セット インスタンスの VM サイズ                  | Standard_A1                               |
 | sku.capacity                 | 最初に作成する VM インスタンスの数           | 2                                         |
 | upgradePolicy.mode           | 変更が発生した場合の VM インスタンスのアップグレード モード              | 自動                                 |
@@ -135,7 +135,7 @@ Azure Resource Manager テンプレートを使用して、関連するリソー
 
 [![テンプレートを Azure にデプロイする](media/virtual-machine-scale-sets-create-template/deploy-button.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-vmss-bottle-autoscale%2Fazuredeploy.json)
 
-次のように Azure CLI 2.0 で [az group deployment create](/cli/azure/group/deployment#create) を使用して、Python HTTP サーバーを Linux にインストールすることもできます。
+次のように Azure CLI 2.0 で [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して、Python HTTP サーバーを Linux にインストールすることもできます。
 
 ```azurecli-interactive
 # Create a resource group
@@ -151,7 +151,7 @@ az group deployment create \
 
 
 ## <a name="test-your-sample-application"></a>サンプル アプリケーションをテストする
-アプリが動いていることを確認するには、次のように [az network public-ip show](/cli/azure/network/public-ip#show) を使用してロード バランサーのパブリック IP アドレスを取得します。
+アプリが動いていることを確認するには、次のように [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用してロード バランサーのパブリック IP アドレスを取得します。
 
 ```azurecli-interactive
 az network public-ip list \
@@ -165,7 +165,7 @@ az network public-ip list \
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-必要がなくなったら、次のように [az group delete](/cli/azure/group#delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。
+必要がなくなったら、次のように [az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループ、スケール セット、およびすべての関連リソースを削除できます。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup

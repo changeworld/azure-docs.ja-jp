@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: tamram
-ms.openlocfilehash: 7313df35baadf7aa6d476f44b113dc60e6845f4b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 1bb55c75c9929d995fc3ac0795fd1777d7fe4c5f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>Azure CLI を使用して Azure Blob Storage との間でオブジェクトを転送する
 
@@ -37,7 +37,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 BLOB は常にコンテナーにアップロードされます。 コンピューター上のファイルをフォルダーで整理するように、BLOB のグループを整理できます。
 
-BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container#create) コマンドで作成します。
+BLOB を格納するコンテナーは、[az storage container create](/cli/azure/storage/container#az_storage_container_create) コマンドで作成します。
 
 ```azurecli-interactive
 az storage container create --name mystoragecontainer
@@ -50,7 +50,7 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
 まず、BLOB にアップロードするファイルを作成します。
 Azure Cloud Shell を使用している場合は、次の手順を使用してファイルを作成します。`vi helloworld` を実行し、ファイルが開いたら、**Insert** キーを押して、"Hello world" と入力し、**Esc** キーを押して、`:x` を入力し **Enter** キーを押します。
 
-この例では、最後のステップで [az storage blob upload](/cli/azure/storage/blob#upload) コマンドを使って作成したコンテナーに BLOB をアップロードします。
+この例では、最後のステップで [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) コマンドを使って作成したコンテナーに BLOB をアップロードします。
 
 ```azurecli-interactive
 az storage blob upload \
@@ -70,11 +70,11 @@ az storage blob upload \
 
 この操作では、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。 続行する前に、希望する数のファイルをアップロードします。
 
-同時に複数のファイルをアップロードするには、[az storage blob upload-batch](/cli/azure/storage/blob#upload-batch) コマンドを使用できます。
+同時に複数のファイルをアップロードするには、[az storage blob upload-batch](/cli/azure/storage/blob#az_storage_blob_upload_batch) コマンドを使用できます。
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
-コンテナー内の BLOB を一覧表示するには、[az storage blob list](/cli/azure/storage/blob#list) コマンドを使います。
+コンテナー内の BLOB を一覧表示するには、[az storage blob list](/cli/azure/storage/blob#az_storage_blob_list) コマンドを使います。
 
 ```azurecli-interactive
 az storage blob list \
@@ -84,7 +84,7 @@ az storage blob list \
 
 ## <a name="download-a-blob"></a>BLOB をダウンロードする
 
-前にアップロードした BLOB をダウンロードするには、[az storage blob download](/cli/azure/storage/blob#download) コマンドを使います。
+前にアップロードした BLOB をダウンロードするには、[az storage blob download](/cli/azure/storage/blob#az_storage_blob_download) コマンドを使います。
 
 ```azurecli-interactive
 az storage blob download \
@@ -109,7 +109,7 @@ azcopy \
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイック スタートで作成したストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、[az group delete](/cli/azure/group#delete) コマンドでリソース グループを削除します。
+このクイック スタートで作成したストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、[az group delete](/cli/azure/group#az_group_delete) コマンドでリソース グループを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
