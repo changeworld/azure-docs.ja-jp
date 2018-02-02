@@ -19,7 +19,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 01/19/2018
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>PowerShell を使用して Azure Network Watcher で接続を確認する
+# <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>PowerShell を使用した Azure Network Watcher による接続のトラブルシューティング
 
 > [!div class="op_single_selector"]
 > - [ポータル](network-watcher-connectivity-portal.md)
