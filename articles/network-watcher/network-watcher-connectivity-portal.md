@@ -19,7 +19,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 12/21/2017
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Azure REST API を使用して Azure Network Watcher で接続を確認する
+# <a name="check-connectivity-with-azure-network-watcher-using-the-azure-portal"></a>Azure Portal を使用した Azure Network Watcher による接続のトラブルシューティング
 
 > [!div class="op_single_selector"]
 > - [ポータル](network-watcher-connectivity-portal.md)
