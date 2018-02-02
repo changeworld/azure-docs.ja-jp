@@ -91,7 +91,7 @@
 #### [App Service 環境内でのアプリのスケーリング](../app-service/environment/app-service-web-scale-a-web-app-in-an-app-service-environment.md)
 #### [App Service 環境内での自動スケール](../app-service/environment/app-service-environment-auto-scale.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## 管理
+## [管理]
 ### [構成](../app-service/web-sites-configure.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### カスタム ドメイン
 #### [カスタム ドメインを購入して構成する](../app-service/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -100,7 +100,7 @@
 
 ### [既存のアプリを複製する](../app-service/app-service-web-app-cloning.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure Virtual Network](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
-### [リソース グループ](../app-service/app-service-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
+### [リソース グループ](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json#app-service-limitations)
 #### [Web ジョブでバックグラウンド タスクを実行する](../app-service/web-sites-create-web-jobs.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
 #### [構成](../app-service/environment/app-service-web-configure-an-app-service-environment.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -135,7 +135,7 @@
 #### [レイヤード セキュリティ アーキテクチャを実装する](../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [バックエンド リソースへの安全な接続](../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## バックアップ
+## Backup
 ### [Azure でのアプリのバックアップ](../app-service/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure でのアプリの復元](../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 

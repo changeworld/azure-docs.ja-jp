@@ -20,8 +20,6 @@
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
 ### [複数のインスタンスの作成](resource-group-create-multiple.md)
 ### [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource)
-### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
-
 
 ## デプロイ
 ### Azure PowerShell
@@ -80,7 +78,7 @@
 #### [Windows デプロイの問題](../virtual-machines/windows/troubleshoot-deploy-vm.md)
 ### [デプロイ エラーについて](resource-manager-troubleshoot-tips.md)
 
-# 参照
+# リファレンス
 ## [テンプレートの形式](/azure/templates/)
 ## [テンプレート関数](resource-group-template-functions.md)
 ### [配列とオブジェクトの関数](resource-group-template-functions-array.md)
