@@ -1,0 +1,1 @@
+MSI を使い慣れていない場合は、[管理対象サービス ID の概要](~/articles/active-directory/pp/msi-overview.md)に関するページを確認してください。また、**[システム割り当て MSI とユーザー割り当て MSI の違い](~/articles/active-directory/pp/msi-overview.md#how-does-it-work)を確認してください**。 まだ Azure アカウントを持っていない場合は、[無料のアカウントにサインアップ](https://azure.microsoft.com/free/)してから先に進んでください。
