@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: danha; mbullwin
 ms.openlocfilehash: 0ca5c8b19f4699548a8551ec673e4a067d4e5fad
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-analytics-in-application-insights"></a>Application Insights の Analytics の使用
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。
@@ -99,7 +99,7 @@ IntelliSense によって、使用できる演算子と、式の要素が示さ�
 
     ただし、ドロップダウン メニューを使用して時間範囲フィルターを変更できます。
 
-    または、クエリに独自の [`where  ... timestamp ...` 句](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)を含めることによって自動範囲をオーバーライドできます。 次に例を示します。
+    または、クエリに独自の [`where  ... timestamp ...` 句](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)を含めることによって自動範囲をオーバーライドできます。 例: 
 
     `requests | where timestamp > ago('2d')`
 
@@ -133,7 +133,7 @@ Analytics Diagnostics の詳細については、[こちら](app-insights-analyt
 
 ![Analytics Diagnostics](./media/app-insights-analytics-using/analytics-diagnostics.png)
 
-## <a name="pin-to-dashboard"></a>ダッシュボードにピン留めする
+## <a name="pin-to-dashboard"></a>[ダッシュボードにピン留めする]
 ピン アイコンをクリックするだけで、いずれかの[共有ダッシュボード](app-insights-dashboards.md)にダイアグラムまたはテーブルをピン留めすることができます。 
 
 ![ピンのクリック](./media/app-insights-analytics-using/pin-01.png)
@@ -196,7 +196,7 @@ Analytics UI とは異なり、REST API は、タイムスタンプ制限をク�
 
 
 
-## <a name="import-data"></a>データのインポート
+## <a name="import-data"></a>Import data
 
 CSV ファイルからデータをインポートすることができます。 一般的な使用方法は、テーブルと結合できる静的データをテレメトリからインポートすることです。 
 

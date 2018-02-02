@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: 998956d00ae6d3be605163b566f5667a3bb95f38
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: a208e0709c152ea889e6d5262add71b55cb83aa5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Azure 仮想マシンのネットワーク スループットの最適化
 
@@ -95,7 +95,7 @@ Azure Linux カーネルにアップグレードすることで、スループ�
 uname -r
 
 #sample output on Azure kernel:
-#4.11.0-1014-azure
+#4.13.0-1007-azure
 ```
 
 VM に Azure カーネルがない場合は、通常、バージョン番号は "4.4" で始まります。 VM に Azure カーネルがない場合は、ルートとして次のコマンドを実行します。
@@ -142,10 +142,10 @@ sudo yum install microsoft-hyper-v
 新規および既存の VM は、最新の Linux Integration Services (LIS) のインストールによりメリットを得られます。 スループットの最適化は、LIS の 4.2 以降に含まれています。 次のコマンドを実行して、LIS をダウンロードしてインストールします。
 
 ```bash
-mkdir lis4.2.3-1
-cd lis4.2.3-1
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-1.tar.gz
-tar xvzf lis-rpms-4.2.3-1.tar.gz
+mkdir lis4.2.3-4
+cd lis4.2.3-4
+wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-4.tar.gz
+tar xvzf lis-rpms-4.2.3-4.tar.gz
 cd LISISO
 install.sh #or upgrade.sh if prior LIS was previously installed
 ```
@@ -154,5 +154,5 @@ Linux Integration Services Version 4.2 for Hyper-V の詳細については、[�
 
 ## <a name="next-steps"></a>次の手順
 * 自分のシナリオで [Azure VM をテストする帯域幅/スループット](virtual-network-bandwidth-testing.md)の最適化された結果を確認します。
-* [仮想マシンに帯域幅が割り当てられる](virtual-machine-network-throughput.md)方法について確認します。
+* [仮想マシンに帯域幅が割り当てられる] (virtual-machine-network-throughput.md) 方法についてご覧ください
 * 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照してください。

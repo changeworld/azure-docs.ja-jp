@@ -12,21 +12,22 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 522e5a334b5165344b66524d03f0d85468b81332
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 6851fd46d243fcdce4f69811495c74dfe8311478
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>App Service リソース プロバイダーを Azure Stack に追加する
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack クラウド オペレーターとして、Web および API アプリケーションを作成する機能をユーザーに提供できます。 そのためには、まずこの記事の説明に従って、Azure Stack デプロイに [App Service リソースプロバイダー](azure-stack-app-service-overview.md)を追加する必要があります。 App Service リソースプロバイダーをインストールすると、これをオファーやプランに含めることができます。 ユーザーはサブスクライブしてサービスを取得し、アプリケーションの作成を開始できます。
 
 > [!IMPORTANT]
 > インストーラーを実行する前に、[開始する前](azure-stack-app-service-before-you-get-started.md)に関するページのガイダンスに従っていることを確認してください。
-> 
+>
 >
 
 
@@ -59,7 +60,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 6. 次のページで、次の操作を行います。
     1. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスの横にある **[接続]** をクリックします。
         - Azure Active Directory (Azure AD) を使っている場合は、Azure Stack のデプロイ時に指定した、Azure AD の管理者アカウントとパスワードを入力します。 **[サインイン]**をクリックします。
-        - Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、「 cloudadmin@azurestack.local」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
+        - Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、「cloudadmin@azurestack.local」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
     2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、自分のサブスクリプションを選びます。
     3. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
     4. ご利用の App Service デプロイの **[リソース グループ名]** を入力します。 既定では、**[APPSERVICE\<REGION\>]**\(APPSERVICEREGION\) に設定されています。
@@ -101,7 +102,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     > [!NOTE]
     > 運用環境デプロイの場合は、「[Azure Stack での Azure App Service サーバー ロールの容量計画](azure-stack-app-service-capacity-planning.md)」のガイダンスに従ってください。
-    > 
+    >
     >
 
     | 役割 | インスタンスの最小値 | SKU の最小値 | メモ |
@@ -183,7 +184,7 @@ Web アプリ、API アプリ、Azure Functions アプリを作るには、テ�
 
 3. SQL Server リソース プロバイダーもデプロイした場合は、Marketplace から DNN Web サイトをデプロイできます。 データベース パラメーターを求められたら、使用しているリソース プロバイダーに接続された SQL Server を実行しているコンピューター内のデータベースを選びます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 その他の [Platform as a Service (PaaS) サービス](azure-stack-tools-paas-services.md)を試してみることもできます。
 

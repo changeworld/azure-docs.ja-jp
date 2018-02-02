@@ -176,6 +176,16 @@
 ##### [レジストリ設定の更新](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 ##### [セキュリティとプライバシーについて](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
+### [SaaS アプリへのユーザーのプロビジョニングとプロビジョニング解除](active-directory-saas-app-provisioning.md)
+#### [アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
+#### [SCIM 対応アプリへのプロビジョニングの自動化](active-directory-scim-provisioning.md)
+#### [属性マッピングのカスタマイズ](active-directory-saas-customizing-attribute-mappings.md)
+#### [属性マッピングの式の書き方](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+#### [スコープ フィルターの使用](active-directory-saas-scoping-filters.md)
+#### [自動ユーザー プロビジョニングについてのレポート](active-directory-saas-provisioning-reporting.md)
+#### [ユーザー プロビジョニングのトラブルシューティング](active-directory-application-provisioning-content-map.md)
+
+
 
 ### [アプリ プロキシを使用してリモートでアプリにアクセスする](active-directory-application-proxy-get-started.md)
 #### 作業開始
@@ -219,7 +229,7 @@
 #### [SAML アプリの詳細な証明書署名](active-directory-enterprise-apps-advance-certificate-options.md)
 #### [ユーザーのエクスペリエンスからアプリケーションを非表示にする](active-directory-coreapps-hide-third-party-app.md)
 ### [HRD ポリシーを使用してサインイン自動アクセラレーションを構成する](active-directory-auto-acceleration-using-hrd.md)
-
+### [AD FS アプリを Azure AD に移行する](migrate-adfs-apps-to-azure.md)
 ### [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
 #### [SSO アクセス](active-directory-appssoaccess-whatis.md)
 #### [SSO の証明書](active-directory-sso-certs.md)
@@ -264,7 +274,8 @@
 
 ## リソースへのアクセスを委任する
 ### [管理者ロール](active-directory-assign-admin-roles-azure-portal.md)
-#### [管理者ロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
+#### [ユーザーに管理者ロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
+#### [メンバーとゲスト ユーザーのアクセス許可の比較](users-default-permissions.md)
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 ### [緊急アクセス用管理者アカウントを管理する](active-directory-admin-manage-emergency-access-accounts.md)
@@ -284,7 +295,7 @@
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
 #### [場所の条件](active-directory-conditional-access-locations.md)
-#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
@@ -306,7 +317,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [作業の開始](active-directory-certificate-based-authentication-get-started.md)
+#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)
@@ -321,8 +332,8 @@
 #### [Microsoft Graph](active-directory-identityprotection-graph-getting-started.md)
 ### [Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
-## [他のサービスを Azure AD と統合する]()
-### [LinkedIn の統合を有効にする](linkedin-integration.md)
+## Azure AD と他のサービスのと統合
+### [LinkedIn を Azure AD と統合する](linkedin-integration.md)
 
 ## [Azure VM に AD DS をデプロイする](virtual-networks-windows-server-active-directory-virtual-machines.md)
 ### [Azure VM 上の Windows Server Active Directory](active-directory-deploying-ws-ad-guidelines.md)

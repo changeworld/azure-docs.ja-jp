@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jdial
-ms.openlocfilehash: 6cc7035e798ef72f69958a7536a741f80939d4fe
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 55aece3f20ee98d21d7bb2b96cb3d039d4849f8f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-virtual-network"></a>Azure Virtual Network
 
@@ -48,7 +48,7 @@ Microsoft Azure Virtual Network サービスでは、Azure リソースを利用
 
 インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスの詳細については、「[パブリック IP アドレス](virtual-network-public-ip-address.md)」を参照してください。
 
-## Azure リソース間の安全な通信
+## <a name="within-vnet"></a>Azure リソース間の安全な通信
 
 仮想ネットワーク内に仮想マシンをデプロイできます。 仮想マシンは、ネットワーク インターフェイス経由で仮想ネットワークの他のリソースと通信します。 ネットワーク インターフェイスの詳細については、「[ネットワーク インターフェイス](virtual-network-network-interface.md)」をご覧ください。
 
@@ -56,11 +56,11 @@ Azure App Service Environment や Azure Virtual Machine Scale Sets などの仮�
 
 一部のリソースは仮想ネットワークにデプロイできませんが、リソースへの通信を仮想ネットワーク内だけに制限することはできます。 リソースへのアクセスを制限する方法について詳しくは、「[仮想ネットワークのサービス エンドポイント](virtual-network-service-endpoints-overview.md)」をご覧ください。 
 
-## 仮想ネットワークを接続する
+## <a name="connect-vnets"></a>仮想ネットワークを接続する
 
 いずれかの仮想ネットワーク内のリソースが仮想ネットワークのピアリングを使用して相互に通信することで、仮想ネットワークを相互に接続できます。 異なる仮想ネットワークにあるリソース間の通信の帯域幅と待機時間は、リソースが同じ仮想ネットワーク内にある場合と同じです。 ピアリングの詳細については、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」を参照してください。
 
-## オンプレミスのネットワークに接続する
+## <a name="connect-on-premises"></a>オンプレミス ネットワークに接続する
 
 オンプレミス ネットワークを仮想ネットワークに接続するには、次のオプションを組み合わせて使用します。
 - **ポイント対サイト仮想プライベート ネットワーク (VPN):** ネットワーク内の仮想ネットワークと 1 台の PC の間で確立されます。 仮想ネットワークとの接続を確立する各 PC では、個別に接続を構成する必要があります。 この接続の種類は、既存のネットワークへの変更をほとんどまたはまったく必要としないため、Azure を使い始めたばかりのユーザーまたは開発者に適しています。 接続は、SSTP プロトコルを使用して、PC と仮想ネットワーク間にインターネット経由の暗号化された通信を提供します。 トラフィックがインターネットを経由するため、ポイント対サイト VPN の待ち時間は予測できません。
@@ -69,12 +69,12 @@ Azure App Service Environment や Azure Virtual Machine Scale Sets などの仮�
 
 ここまでに説明したすべての接続オプションについて詳しくは、「[接続トポロジの図](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)」をご覧ください。
 
-## ネットワーク トラフィックをフィルター処理する
+## <a name="filtering"></a>ネットワーク トラフィックをフィルター処理する
 次のオプションのいずれかまたは両方を使用して、サブネット間のネットワーク トラフィックをフィルター処理できます。
 - **ネットワーク セキュリティ グループ:** 各ネットワーク セキュリティ グループには、送信元と送信先の IP アドレス、ポート、およびプロトコルでトラフィックをフィルター処理できるようにする受信と送信のセキュリティ規則を複数含めることができます。 ネットワーク セキュリティ グループは、仮想マシン内の各ネットワーク インターフェイスに適用できます。 また、ネットワーク セキュリティ グループは、ネットワーク インターフェイスや他の Azure リソースが含まれているサブネットにも適用できます。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)に関するページをご覧ください。
 - **ネットワーク仮想アプライアンス:** ネットワーク仮想アプライアンスとは、ファイアウォールなどのネットワーク機能を実行するソフトウェアが動作している仮想マシンです。 利用可能なネットワーク仮想アプライアンスの一覧については、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/networking?page=1&subcategories=appliances) で確認してください。 WAN の最適化やその他のネットワーク トラフィック機能を提供するネットワーク仮想アプライアンスも入手できます。 通常、ネットワーク仮想アプライアンスは、ユーザー定義ルートまたは BGP ルートで使用されます。 また、ネットワーク仮想アプライアンスを使用して、仮想ネットワーク間のトラフィックをフィルター処理することもできます。
 
-## ネットワーク トラフィックをルーティングする
+## <a name="routing"></a>ネットワーク トラフィックをルーティングする
 
 Azure では、仮想ネットワーク内の任意のサブネットに接続されている複数のリソースの相互通信とインターネット通信を可能にするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートを上書きできます。
 - **ユーザー定義ルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートの詳細については、[ユーザー定義ルート](virtual-networks-udr-overview.md#user-defined)に関するページをご覧ください。
@@ -88,8 +88,8 @@ Azure では、仮想ネットワーク内の任意のサブネットに接続�
 
 Azure Virtual Network についてよく寄せられる質問を確認するには、[Virtual Network の FAQ](virtual-networks-faq.md) に関する記事を参照してください。
 
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
-- 「[最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)」の手順を実行して、最初の仮想ネットワークを作成し、そこにいくつかの仮想ネットワークをデプロイします。
+- 「[最初の仮想ネットワークの作成](quick-create-portal.md)」の手順を実行して、最初の仮想ネットワークを作成し、そこにいくつかの仮想ネットワークをデプロイします。
 - [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの手順を実行して、仮想ネットワークへのポイント対サイト接続を作成します。
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)について参照してください。

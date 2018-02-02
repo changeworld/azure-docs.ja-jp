@@ -3,8 +3,8 @@ title: "Azure Batch 用のサービスのクォータと制限 | Microsoft Docs"
 description: "既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します"
 services: batch
 documentationcenter: 
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 editor: 
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
 ms.service: batch
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 210ba4a90f24ce9b0b55c4565028232c2b7fd7cc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 06445845ef8f93a06cb4b52e07108965cc3b7f8a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -78,7 +78,7 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
 2. **[新しいサポート要求]** > **[基本]** の順にクリックします。
 3. **[基本]** で次のようにします。
    
-    a. **[問題の種類]** > **[クォータ]**
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[問題の種類]** > **[クォータ]**
    
     b. サブスクリプションを選択します。
    
@@ -89,14 +89,14 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
     **[次へ]** をクリックします。
 4. **[問題]** で次のようにします。
    
-    a. [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
    
     b. **[詳細]** で、変更する個々のクォータ、Batch アカウント名、および新しい制限値を指定します。
    
     **[次へ]** をクリックします。
 5. **[連絡先情報]** で次のようにします。
    
-    a. **希望連絡方法**を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **希望連絡方法**を選択します。
    
     b. 必要な連絡先情報を確認および入力します。
    

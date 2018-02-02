@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 01/17/2018
 ms.author: banders
 ms.custom: mvc
-ms.openlocfilehash: 783a6bd8c665f1e08d94d2712a581955be8501e9
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19641f3b1f2781cf23955743bf65172ff84fb544
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="templates-for-azure-policy"></a>Azure Policy のテンプレート
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 01/18/2018
 | [許可されたロード バランサーの SKU](scripts/allowed-lb-skus.md) | 承認された SKU がロード バランサーで使用される必要があります。 許可された SKU の配列を指定します。 |
 | [ER ネットワークへのネットワーク ピアリングがない](scripts/no-peering-er-net.md) | 指定されたリソース グループ内のネットワークに、ネットワーク ピアリングを関連付けることを禁止します。 集中管理されているネットワーク インフラストラクチャとの接続を防ぐために使用します。 関連付けを防ぐリソース グループの名前を指定します。 |
 | [ユーザー定義ルート テーブルがない](scripts/no-user-def-route-table.md)  |仮想ネットワークがユーザー定義のルート テーブルを使ってデプロイされることを禁止します。 |
-| [許可された仮想ネットワーク ゲートウェイ SKU](scripts/no-user-def-route-table.md) | 仮想ネットワーク ゲートウェイが適切な SKU とゲートウェイの種類を使用する必要があります。 承認された SKU の配列と、承認されたゲートウェイの種類の配列を指定します。 |
+| [許可された仮想ネットワーク ゲートウェイ SKU](scripts/allowed-vn-gate-sku.md) | 仮想ネットワーク ゲートウェイが適切な SKU とゲートウェイの種類を使用する必要があります。 承認された SKU の配列と、承認されたゲートウェイの種類の配列を指定します。 |
 | [VM ネットワーク インターフェイスでの承認されたサブネットの使用](scripts/use-approved-subnet-vm-nics.md) | 承認されたサブネットがネットワーク インターフェイスで使用される必要があります。 承認されたサブネットの ID を指定します。 |
 | [VM ネットワーク インターフェイスでの承認された vNet の使用](scripts/use-approved-vnet-vm-nics.md) | 承認された仮想ネットワークがネットワーク インターフェイスで使用される必要があります。 承認された仮想ネットワークの ID を指定します。 |
 |**タグ**||

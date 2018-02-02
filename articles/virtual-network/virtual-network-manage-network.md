@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.openlocfilehash: 74aace2136136c25bc56327d38cfbab168265401
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d3f4a83b654315a5ff9344594323c5dcb801e77
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 
 この記事に記載されているタスクを開始する前に、次の前提条件を満たしてください。
 
-- 仮想ネットワークを初めて使用する場合は、[最初の Azure 仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)に関するページの演習を確認することをお勧めします。 この演習は、仮想ネットワークを理解するのに役立ちます。
+- 仮想ネットワークを初めて使用する場合は、[最初の Azure 仮想ネットワークの作成](quick-create-portal.md)に関するページの演習を確認することをお勧めします。 この演習は、仮想ネットワークを理解するのに役立ちます。
 - 仮想ネットワークの制限については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
 - Azure アカウントを使用して、Azure Portal、Azure コマンドライン ツール (Azure CLI)、または Azure PowerShell にサインインします。 Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - PowerShell のコマンドを使用してこの記事に記載されたタスクを行う場合は、最初に [Azure PowerShell をインストールして構成する](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)必要があります。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 サンプルの PowerShell コマンドのヘルプを表示するには、「`get-help <command> -full`」と入力します。
@@ -138,7 +138,7 @@ ms.lasthandoff: 10/11/2017
 5. アドレス空間のブレードで、次のオプションのいずれかを実行します。
     - **アドレス空間の追加**: 新しいアドレス空間を入力します。 この仮想ネットワークに定義されている既存のアドレス空間と重複するアドレス空間を追加することはできません。
     - **アドレス空間の削除**: アドレス空間を右クリックして、**[削除]** をクリックします。 アドレス空間にサブネットが存在する場合は、アドレス空間を削除することはできません。 アドレス空間を削除するには、まず、アドレス空間内にあるすべてのサブネット (およびサブネットに接続されているすべてのリソース) を削除する必要があります。
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 
 **コマンド**
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 10/11/2017
 
 仮想ネットワークに接続されている VM はすべて、その仮想ネットワークに指定した DNS サーバーに登録されます。 また、指定した DNS サーバーを名前解決に使用します。 VM 内のネットワーク インターフェイス (NIC) ごとに独自の DNS サーバー設定を構成できます。 NIC に独自の DNS サーバー設定を構成すると、仮想ネットワークの DNS サーバー設定が上書きされます。 NIC DNS 設定の詳細については、[ネットワーク インターフェイスのタスクと設定](virtual-network-network-interface.md#change-dns-servers)に関する記事を参照してください。 Azure Cloud Services での VM とロール インスタンスの名前解決の詳細については、「[VM とロール インスタンスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。 DNS サーバーを追加、変更、削除するには、次のようにします。
 
-1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
+1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当ての詳細については、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」をご覧ください。
 2. ポータルの検索ボックスに、「**仮想ネットワーク**」と入力します。 検索結果で、**[仮想ネットワーク]** を選択します。
 3. **[仮想ネットワーク]** ブレードで、DNS 設定を変更する仮想ネットワークをクリックします。
 4. 仮想ネットワーク ブレードの **[設定]** で **[DNS サーバー]** をクリックします。
@@ -162,7 +162,7 @@ ms.lasthandoff: 10/11/2017
         - **アドレスの削除**: 削除するサーバーの横にある **[X]** をクリックします。サーバーを削除しても、この仮想ネットワークの一覧からサーバーが削除されるだけです。 DNS サーバーは、他の仮想ネットワークで使用するために Azure に登録されたままになります。
         - **DNS サーバーのアドレスの並べ替え**: 環境に適した順序で DNS サーバーが一覧表示されていることを確認することが重要です。 DNS サーバーの一覧は指定された順序で使用されます。 ラウンド ロビン設定のようには機能しません。 一覧の先頭にある DNS サーバーに到達できる場合、クライアントはその DNS サーバーが正しく動作しているかどうかに関係なく、その DNS サーバーを使用します。 一覧表示されたすべての DNS サーバーを削除してから、希望する順序で再度追加します。
         - **アドレスの変更**: 一覧で DNS サーバーを強調表示し、新しい名前を入力します。
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 7. 新しい DNS サーバー設定が割り当てられるように、仮想ネットワークに接続されている VM を再起動します。 再起動されるまで、VM は現在の DNS 設定を使用し続けます。
 
 **コマンド**
@@ -176,7 +176,7 @@ ms.lasthandoff: 10/11/2017
 
 接続されているリソースがない場合にのみ、仮想ネットワークを削除できます。 仮想ネットワーク内のいずれかのサブネットに接続されているリソースがある場合は、最初に、仮想ネットワーク内のすべてのサブネットに接続されているリソースを削除する必要があります。 リソースを削除する方法は、リソースによって異なります。 サブネットに接続されているリソースを削除する方法については、削除するリソースの種類に応じたドキュメントを参照してください。 仮想ネットワークを削除するには、次のようにします。
 
-1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
+1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当ての詳細については、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」をご覧ください。
 2. ポータルの検索ボックスに、「**仮想ネットワーク**」と入力します。 検索結果で、**[仮想ネットワーク]** をクリックします。
 3. **[仮想ネットワーク]** ブレードで、削除する仮想ネットワークをクリックします。
 4. [仮想ネットワーク] ブレードで、仮想ネットワークに接続されているデバイスがないことを確認するために、**[設定]** の **[接続されているデバイス]** をクリックします。 接続されているデバイスがある場合は、先にそのデバイスを削除してから仮想ネットワークを削除する必要があります。 接続されているデバイスがない場合は、**[概要]** をクリックします。
@@ -194,7 +194,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-- VM を作成して仮想ネットワークに接続する場合は、[仮想ネットワークの作成と VM の接続](virtual-network-get-started-vnet-subnet.md#create-vms)に関するページを参照してください。
+- VM を作成して仮想ネットワークに接続する場合は、[仮想ネットワークの作成と VM の接続](quick-create-portal.md#create-virtual-machines)に関するページを参照してください。
 - 仮想ネットワーク内のサブネット間のネットワーク トラフィックをフィルター処理する場合は、[ネットワーク セキュリティ グループの作成](virtual-networks-create-nsg-arm-pportal.md)に関する記事を参照してください。
 - 仮想ネットワークを別の仮想ネットワークにピアリングする場合は、[仮想ネットワーク ピアリングの作成](virtual-network-create-peering.md#portal)に関する記事を参照してください。
 - オンプレミスのネットワークに仮想ネットワークを接続するためのオプションの詳細については、[VPN Gateway の概要](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)に関する記事を参照してください。

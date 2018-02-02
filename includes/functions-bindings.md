@@ -1,9 +1,10 @@
 次の表は、Azure Functions の 2 つのメジャー バージョンのランタイムでサポートされているバインディングを示します。
 
-| 型 | 1.x | 2.x | トリガー | 入力 | 出力 |  
+| type | 1.x | 2.x | トリガー | 入力 | 出力 |  
 | ---- | :-: | :-: | :------: | :---: | :----: |
 | [Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)          |✔|✔|✔|✔|✔|  
 | [Cosmos DB](../articles/azure-functions/functions-bindings-documentdb.md)               |✔|✔<sup>1</sup>|✔|✔|✔|  
+| [Event Grid](../articles/azure-functions/functions-bindings-event-grid.md)              |✔|✔|✔| | |  
 | [Event Hubs](../articles/azure-functions/functions-bindings-event-hubs.md)              |✔|✔|✔| |✔|  
 | [外部ファイル](../articles/azure-functions/functions-bindings-external-file.md) <sup>2</sup>    |✔|| |✔|✔|  
 | [外部テーブル](../articles/azure-functions/functions-bindings-external-table.md) <sup>2</sup>  |✔|| |✔|✔|  

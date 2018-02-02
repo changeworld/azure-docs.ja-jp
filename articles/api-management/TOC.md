@@ -4,7 +4,7 @@
 # クイック スタート
 ## [インスタンスの作成 - ポータル](get-started-create-service-instance.md)
 ## [インスタンスの作成 - PowerShell](powershell-create-service-instance.md)
-# Tutorials (チュートリアル)
+# チュートリアル
 ## [1 - 最初の API のインポート](import-and-publish.md)
 ## [2 - 成果物の作成と発行](api-management-howto-add-products.md)
 ## [3 - API の応答の模擬テスト](mock-api-responses.md)
@@ -42,7 +42,7 @@
 ## キャッシュ
 ### [パフォーマンス向上のためにキャッシュを追加する](api-management-howto-cache.md)
 ## バックエンドをセキュリティで保護する
-### [AAD で Web API バックエンドを保護する](api-management-howto-protect-backend-with-aad.md)
+### [Azure AD で Web API バックエンドを保護する](api-management-howto-protect-backend-with-aad.md)
 ### [仮想ネットワークに接続する](api-management-using-with-vnet.md)
 ### [内部仮想ネットワークに接続する](api-management-using-with-internal-vnet.md)
 ### [内部 VNET で Application Gateway を統合する](api-management-howto-integrate-internal-vnet-appgateway.md)
@@ -50,8 +50,8 @@
 ## 開発者エクスペリエンスをカスタマイズする
 ### [ページのコンテンツとレイアウトを変更する](api-management-modify-content-layout.md)
 ### [テンプレートを使用してシステム ページをカスタマイズする](api-management-developer-portal-templates.md)
-### [AAD による認証](api-management-howto-aad.md)
-### [AAD B2C による認証](api-management-howto-aad-b2c.md)
+### [Azure AD での認証](api-management-howto-aad.md)
+### [Azure AD B2C での認証](api-management-howto-aad-b2c.md)
 ### [委任された認証](api-management-howto-setup-delegation.md)
 ### [電子メール通知とテンプレート](api-management-howto-configure-notifications.md)
 ### [コンソール OAuth サポートを有効にする](api-management-howto-oauth2.md)
@@ -95,7 +95,7 @@
 #### [チュートリアル](../service-fabric/service-fabric-tutorial-deploy-api-management.md)
 # リファレンス
 ## [Azure PowerShell](/powershell/azure/overview)
-## [REST ()](/rest/api/apimanagement/)
+## [REST](/rest/api/apimanagement/)
 ## [REST (オリジナル)](/rest/api/apimanagement/ApiManagementREST/api-management-REST)
 # リソース
 ## [FAQ](api-management-faq.md)

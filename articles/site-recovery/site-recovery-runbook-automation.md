@@ -14,16 +14,16 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 11/28/2017
 ms.author: ruturajd@microsoft.com
-ms.openlocfilehash: af5de1c262bc55b1aa7513ca91b68eb50b44dbb7
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 986c3b62426949f1e4c2009aabbfec2f1130f821
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
 この記事では、復旧計画の拡張に役立てるために Azure Site Recovery と Azure Automation をどのように統合するかについて説明します。 復旧計画では、Site Recovery で保護される VM の復旧を調整できます。 復旧計画は、セカンダリ クラウドへのレプリケーションと Azure へのレプリケーションの両方に対して機能します。 復旧計画はまた、復旧を**常に正確で**、**繰り返し可能**、さらに**自動化される**ようにするのにも役立ちます。 VM を Azure にフェールオーバーする場合、Azure Automation との統合によって復旧計画が拡張されます。 それを使用して、強力な自動化タスクを提供する Runbook を実行できます。
 
-Azure Automation が初めての場合は、[サインアップ](https://azure.microsoft.com/services/automation/)し、[サンプル スクリプトをダウンロード](https://azure.microsoft.com/documentation/scripts/)できます。 詳細について、および[復旧計画](https://azure.microsoft.com/blog/?p=166264)を使用して Azure への復旧を調整する方法を学習するには、「[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)」を参照してください。
+Azure Automation が初めての場合は、[サインアップ](https://azure.microsoft.com/services/automation/)し、[サンプル スクリプトをダウンロード](https://azure.microsoft.com/documentation/scripts/)できます。 詳細について、および[復旧計画](./site-recovery-create-recovery-plans.md)を使用して Azure への復旧を調整する方法を学習するには、「[Azure Site Recovery](https://azure.microsoft.com/services/site-recovery/)」を参照してください。
 
 この記事では、復旧計画に Azure Automation Runbook を統合する方法について説明します。 ここでは、以前は手動の介入を必要とした基本的なタスクを自動化する例を使用します。 また、複数手順の復旧を 1 回のクリックでの復旧アクションに変換する方法についても説明します。
 
@@ -256,8 +256,10 @@ workflow AddPublicIPAndNSG {
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/One-click-failover-of-a-2-tier-WordPress-application-using-Azure-Site-Recovery/player]
 
 
-
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure Automation サービスの実行アカウント](../automation/automation-sec-configure-azure-runas-account.md)
+* [Azure Automation サービスの実行アカウント](../automation/automation-create-runas-account.md)
 * [Azure Automation の概要](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation の概要")
 * [Azure Automation のサンプル スクリプト](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation のサンプル スクリプト")
+
+## <a name="next-steps"></a>次の手順
+フェールオーバーの実行については、[こちら](site-recovery-failover.md)を参照してください。

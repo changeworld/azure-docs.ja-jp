@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: fd2d355b2556faddb06acf2998b54ffcc9aa7919
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f3f0add4cf48ebcb4235fb05aa8bfa0b5365848c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="app-service-on-azure-stack-overview"></a>Azure Stack 上の App Service の概要
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure App Service on Azure Stack は、Azure Stack で利用できる Microsoft Azure の、サービスとしてのプラットフォーム (PaaS) サービスです。 このサービスにより、お客様の (内部または外部の) ユーザーはあらゆるプラットフォームやデバイス用の Web、API、Azure Functions アプリケーションを作成できるようになります。 お客様のアプリとオンプレミスのアプリケーションを統合し、ビジネス プロセスを自動化できます。 Azure Stack クラウドの運用者は、指定した共有仮想マシン (VM) リソースまたは専用 VM を使用して、完全に管理された VM 上でユーザーのアプリを実行できます。
 
@@ -59,7 +60,7 @@ Azure には、共有ワーカーと専用ワーカーがあります。 共有�
 
 Azure Stack 上の App Service では、Azure App Service と同じ UI が使用されます。これはバックエンドに当てはまります。 Azure Stack では一部の機能が無効になり、機能しません。 Azure Stack では、このような機能に必要な Azure 固有の期待値やサービスはまだ使用できません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 
 - [Azure Stack 上の App Service を開始する前に](azure-stack-app-service-before-you-get-started.md)

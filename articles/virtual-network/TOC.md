@@ -15,7 +15,9 @@
 ### [アクセス制御リスト](virtual-networks-acl.md)
 
 # 作業の開始
-## [最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)
+## [仮想ネットワークの作成 - ポータル](quick-create-portal.md)
+## [仮想ネットワークの作成 - PowerShell](quick-create-powershell.md)
+## [仮想ネットワークの作成 - Azure CLI](quick-create-cli.md)
 
 # 方法
 ## 計画と設計

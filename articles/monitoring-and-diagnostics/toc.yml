@@ -2,8 +2,8 @@
   href: index.yml
 - name: 概要
   items:
-    - name: Azure Monitor
-      href: monitoring-overview-azure-monitor.md
+    - name: Azure での監視
+      href: monitoring-overview.md
 - name: クイック スタート
   expanded: true
   items:
@@ -11,7 +11,7 @@
       href: monitor-quick-resource-metric-alert-portal.md
     - name: サブスクリプションのアクティビティに基づくアラート
       href: monitor-quick-audit-notify-action-in-subscription.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: パフォーマンスとスケジュールに基づく自動スケール
       href: monitor-tutorial-autoscale-performance-schedule.md
@@ -27,8 +27,8 @@
       href: monitoring-partners.md
     - name: その他の概要
       items:
-        - name: Azure の監視ツール
-          href: monitoring-overview.md
+        - name: Azure Monitor
+          href: monitoring-overview-azure-monitor.md
         - name: メトリック
           href: monitoring-overview-metrics.md
         - name: アラート
@@ -37,7 +37,7 @@
           href: monitoring-overview-unified-alerts.md
         - name: ログ アラート
           href: monitor-alerts-unified-log.md
-        - name: 自動スケール
+        - name: Autoscale
           href: monitoring-overview-autoscale.md
         - name: アクティビティ ログ
           href: monitoring-overview-activity-logs.md

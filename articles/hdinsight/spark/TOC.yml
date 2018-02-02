@@ -84,10 +84,14 @@
       items:
         - name: Data Lake Store を使用する
           href: apache-spark-use-with-data-lake-store.md
+        - name: Azure SQL Database に接続する
+          href: apache-spark-connect-to-sql-database.md
     - name: Spark ストリーミング
       items:
         - name: 概要
           href: apache-spark-streaming-overview.md
+        - name: YARN で可用性の高い Spark ストリーミング ジョブを作成する
+          href: apache-spark-streaming-high-availability.md
         - name: ストリーミング イベントを処理する
           href: apache-spark-eventhub-streaming.md
         - name: Event Hubs を使用した構造化ストリーミング
@@ -101,6 +105,8 @@
         - name: Kafka を使った Spark ストリーミング (DStream)
           href: ../hdinsight-apache-spark-with-kafka.md
           maintainContext: true
+        - name: イベント処理を 1 回のみ伴う Spark ストリーミング ジョブの作成
+          href: apache-spark-streaming-exactly-once.md
     - name: Spark と Machine Learning
       items:
         - name: HVAC パフォーマンスを予測する
@@ -198,6 +204,8 @@
           maintainContext: true
     - name: '[管理]'
       items:
+        - name: Spark の設定の構成
+          href: apache-spark-settings.md
         - name: Spark ジョブの最適化
           href: apache-spark-perf.md
         - name: クラスターの容量計画

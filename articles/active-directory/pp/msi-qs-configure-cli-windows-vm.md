@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: bryanla
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 4b6f4e2b0e42724276448fd4726c8326de8ea6ee
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 98683af2ca35b687f918647602a561d37dd42b11
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-a-user-assigned-managed-service-identity-msi-for-a-vm-using-azure-cli"></a>Azure CLI を使用して、VM のユーザーによって割り当てられた管理対象サービス ID (MSI) を構成する
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/09/2018
 このチュートリアルの CLI スクリプトの例を実行するには、次の 2 つの方法があります。
 
 - Azure Portal から、または各コード ブロックの右上隅にある [試してみる] ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
-- ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 次に、[az login](/cli/azure/#login) を使用して Azure にサインインします。 ユーザー割り当て MSI と VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+- ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 次に、[az login](/cli/azure/#az_login) を使用して Azure にサインインします。 ユーザー割り当て MSI と VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
 
    ```azurecli
    az login
@@ -45,7 +45,7 @@ ms.lasthandoff: 01/09/2018
 
 このセクションでは、VM を作成する方法と、ユーザー割り当て MSI を VM に割り当てる方法について説明します。 使用する VM が既にある場合は、このセクションをスキップして次のセクションに進んでください。
 
-1. 使用するリソース グループが既にある場合は、この手順をスキップできます。 [az group create](/cli/azure/group/#create) を使用して、MSI の包含およびデプロイ用の[リソース グループ](~/articles/azure-resource-manager/resource-group-overview.md#terminology)を作成します。 `<RESOURCE GROUP>` と `<LOCATION>` のパラメーターの値は、必ず実際の値に置き換えてください。 :
+1. 使用するリソース グループが既にある場合は、この手順をスキップできます。 [az group create](/cli/azure/group/#az_group_create) を使用して、MSI の包含およびデプロイ用の[リソース グループ](~/articles/azure-resource-manager/resource-group-overview.md#terminology)を作成します。 `<RESOURCE GROUP>` と `<LOCATION>` のパラメーターの値は、必ず実際の値に置き換えてください。 :
 
    ```azurecli-interactive 
    az group create --name <RESOURCE GROUP> --location <LOCATION>
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/09/2018
    }
    ```
 
-3. [az vm create](/cli/azure/vm/#create) を使用して VM を作成します。 次の例では、`--assign-identity` パラメーターで指定された新しいユーザー割り当て MSI に関連付けられている VM を作成します。 前の手順で作成した `<RESOURCE GROUP>`、`<VM NAME>`、`<USER NAME>`、`<PASSWORD>`、および `<`MSI ID>` のパラメーターの値は、必ず実際の値に置き換えてください。`` parameter values with your own values. For `<MSI ID>`, use the user-assigned MSI's resource `` の値には、前の手順で作成したユーザー割り当て MSI のリソース`id` プロパティを使用してください。 
+3. [az vm create](/cli/azure/vm/#az_vm_create) を使用して VM を作成します。 次の例では、`--assign-identity` パラメーターで指定された新しいユーザー割り当て MSI に関連付けられている VM を作成します。 前の手順で作成した `<RESOURCE GROUP>`、`<VM NAME>`、`<USER NAME>`、`<PASSWORD>`、および `<`MSI ID>` のパラメーターの値は、必ず実際の値に置き換えてください。`` parameter values with your own values. For `<MSI ID>`, use the user-assigned MSI's resource `` の値には、前の手順で作成したユーザー割り当て MSI のリソース`id` プロパティを使用してください。 
 
    ```azurecli-interactive 
    az vm create --resource-group <RESOURCE GROUP> --name <VM NAME> --image UbuntuLTS --admin-username <USER NAME> --admin-password <PASSWORD> --assign-identity <MSI ID>

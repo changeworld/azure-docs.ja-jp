@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 65a9e4267c8883db5c8d8bfc5e0167577cd969d3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9f3b6425f3c13080985fb168f46ea1f6be5d18ee
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>CentOS Linux 仮想マシンを管理対象ドメインに参加させる
 この記事では、Azure 内の CentOS Linux 仮想マシンを Azure AD Domain Services の管理対象ドメインに参加させる方法について説明します。
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="provision-a-centos-linux-virtual-machine"></a>CentOS Linux 仮想マシンをプロビジョニングする
 次のいずれかの方法を使用して、Azure で CentOS 仮想マシンをプロビジョニングします。
-* [Azure ポータル](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -82,11 +82,11 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
     sudo realm discover CONTOSO100.COM
     ```
 
-      > [!NOTE]
-      > **トラブルシューティング:** *realm discover* で管理対象ドメインが見つからない場合:
-        * Ensure that the domain is reachable from the virtual machine (try ping).
-        * Check that the virtual machine has indeed been deployed to the same virtual network in which the managed domain is available.
-        * Check to see if you have updated the DNS server settings for the virtual network to point to the domain controllers of the managed domain.
+    > [!NOTE]
+    > **トラブルシューティング:** *realm discover* で管理対象ドメインが見つからない場合:  
+      * ドメインに仮想マシンからアクセスできることを確認します (ping の試行)。  
+      * 仮想マシンが、管理対象ドメインが利用可能な同じ仮想ネットワークにデプロイされていることを確認します。 
+      * 管理対象ドメインのドメイン コントローラーを指すように、仮想ネットワークの DNS サーバー設定を更新したかどうかを確認します。  
       >
 
 2. Kerberos を初期化します。 SSH ターミナルで、次のコマンドを入力します。

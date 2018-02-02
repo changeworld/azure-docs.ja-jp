@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: e38d2b751090cfdc078de4e8c683c6bb9b48fac3
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: f166b420dcd424b38f89275e1befd42a505b5785
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
 
@@ -51,20 +51,20 @@ Automation で使用できる変数の型の一覧を次に示します。
 * ブール
 * Null
 
-## <a name="scripting-the-creation-and-management-of-variables"></a>変数の作成および管理のスクリプト作成
+## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
+AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。  これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview) に付属しています。
 
-Windows PowerShell で Automation 変数を作成および管理するには、次のテーブルのコマンドレットを使用します。 これらは、Automation Runbook および DSC 構成で使用できる [Azure PowerShell モジュール](../powershell-install-configure.md) に付属しています。
-
-|コマンドレット|[説明]|
+| コマンドレット | [説明] |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)|既存の変数の値を取得します。|
 |[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx)|新しい変数を作成し、その値を設定します。|
 |[Remove-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt619354.aspx)|既存の変数を削除します。|
 |[Set-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603601.aspx)|既存の変数の値を設定します。|
 
-次のテーブルのワークフロー アクティビティは、Runbook で Automation 変数にアクセスするために使用されます。 これらは、Runbook または DSC 構成でのみ使用できるものであり、Azure PowerShell モジュールには付属していません。
+## <a name="activities"></a>アクティビティ
+次の表のアクティビティは、Runbook および DSC 構成で資格情報にアクセスするために使用されます。
 
-|ワークフロー アクティビティ|[説明]|
+| アクティビティ | [説明] |
 |:---|:---|
 |Get-AutomationVariable|既存の変数の値を取得します。|
 |Set-AutomationVariable|既存の変数の値を設定します。|
@@ -205,4 +205,3 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 * グラフィカル作成でアクティビティを接続する方法については、 [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md) 
-

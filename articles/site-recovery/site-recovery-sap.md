@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: manayar
-ms.openlocfilehash: 5a47acab598e113ef7ed968dd3a6429ac3bc1ec3
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 96dc9bc81b8889e2e962c9c2dbf119ee985ec2f1
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 SAP NetWeaver アプリケーションのデプロイを保護する
 
@@ -81,7 +81,7 @@ Azure Site Recovery は、(A)SCS などのアプリケーション レイヤー�
 復旧計画では、多層アプリケーションのさまざまな階層のフェールオーバーをシーケンス処理できるため、アプリケーションの整合性が維持されます。 [こちら](site-recovery-create-recovery-plans.md)の手順に従って、多層 Web アプリケーションの復旧計画を作成します。
 
 ### <a name="adding-scripts-to-the-recovery-plan"></a>復旧計画へのスクリプトの追加
-フェールオーバーまたはテスト フェールオーバーの後にアプリケーションが正常に機能するように、Azure の仮想マシンに対して操作を実行することが必要な場合があります。 DNS エントリの更新、バインドと接続の変更などのフェールオーバー後の操作は、[この記事](site-recovery-create-recovery-plans.md#add-scripts)の説明に従って、対応するスクリプトを復旧計画に追加することで自動化できます。
+フェールオーバーまたはテスト フェールオーバーの後にアプリケーションが正常に機能するように、Azure の仮想マシンに対して操作を実行することが必要な場合があります。 DNS エントリの更新、バインドと接続の変更などのフェールオーバー後の操作は、[この記事](site-recovery-how-to-add-vmmscript.md)の説明に従って、対応するスクリプトを復旧計画に追加することで自動化できます。
 
 ### <a name="dns-update"></a>DNS の更新
 動的 DNS 更新用に DNS が構成されている場合は、通常、仮想マシンの起動後に、新しい IP で DNS を更新します。 仮想マシンの新しい IP で DNS を更新する明示的な手順を追加する場合、この [DNS の IP を更新するスクリプト](https://aka.ms/asr-dns-update)を復旧計画グループの事後アクションとして追加します。  
@@ -114,7 +114,7 @@ Azure Site Recovery は、(A)SCS などのアプリケーション レイヤー�
 3.  [フェールオーバー] をクリックします。
 4.  フェールオーバー プロセスを開始する復旧ポイントを選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Site Recovery を使用して、SAP NetWeaver デプロイ用のディザスター リカバリー ソリューションを構築する方法については、[こちらのホワイトペーパー](http://aka.ms/asr-sap)を参照してください。 このホワイトペーパーでは、さまざまな SAP アプリケーションに関する推奨事項、Azure 上の SAP でサポートされるアプリケーションと VM の種類、ディザスター リカバリー ソリューションに適したテスト計画についても説明しています。
 
 [Site Recovery を使用した他のワークロードのレプリケートに関する記事](site-recovery-workload.md)を参照してください。

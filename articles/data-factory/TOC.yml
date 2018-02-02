@@ -37,7 +37,7 @@
           href: tutorial-copy-data-tool.md
         - name: ユーザー インターフェイス (UI)
           href: tutorial-copy-data-portal.md
-        - name: Azure PowerShell
+        - name: .NET
           href: tutorial-copy-data-dot-net.md
     - name: 3 - オンプレミスのデータをクラウドにコピーする
       items:
@@ -90,7 +90,7 @@
       items:
         - name: ユーザー インターフェイス (UI)
           href: tutorial-control-flow-portal.md
-        - name: Azure PowerShell
+        - name: .NET
           href: tutorial-control-flow.md
 - name: サンプル
   items:
@@ -350,6 +350,8 @@
           href: configure-azure-ssis-integration-runtime-performance.md
         - name: ストアド プロシージャ アクティビティを使用した SSIS パッケージの呼び出し
           href: how-to-invoke-ssis-package-stored-procedure-activity.md
+        - name: Azure-SSIS 統合ランタイムのスケジュール設定
+          href: how-to-schedule-azure-ssis-integration-runtime.md
     - name: トリガーの作成
       items:
         - name: スケジュール トリガーの作成

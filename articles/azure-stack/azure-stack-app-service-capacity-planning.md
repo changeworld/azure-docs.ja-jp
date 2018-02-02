@@ -12,15 +12,16 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/27/2017
+ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 4ad91def00ca73f91f0ffd8e57afa442a93176f6
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 93e10235e3de4ecea4d0e356bb4b52922c8afac8
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="capacity-planning-for-azure-app-service-server-roles-in-azure-stack"></a>Azure Stack での Azure App Service サーバー ロールの容量計画
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 稼働準備済みの Azure App Service on Azure Stack のデプロイをプロビジョニングするには、システムでサポートする容量について計画する必要があります。  運用環境のデプロイで使用すべき最小限のインスタンス数とコンピューティング SKU に関するガイダンスを次に示します。
 
@@ -97,6 +98,6 @@ Azure App Service 管理ロールは、App Service Azure Resource Manager およ
 - ファイル サーバー クラスター
 - NAS (ネットワーク接続ストレージ) デバイス。詳しくは、[ファイル サーバーのプロビジョニング](azure-stack-app-service-before-you-get-started.md#prepare-the-file-server)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Stack 上の App Service を開始する前に](azure-stack-app-service-before-you-get-started.md)

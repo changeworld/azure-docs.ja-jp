@@ -3,7 +3,7 @@ title: "ドメイン参加済み Azure HDInsight のアーキテクチャ | Micr
 description: "ドメイン参加済み HDInsight を計画する方法について説明します。"
 services: hdinsight
 documentationcenter: 
-author: saurinsh
+author: bhanupr
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/14/2017
-ms.author: saurinsh
-ms.openlocfilehash: c5e6381e7abb18c01031e4168c64cfe9aafec7ae
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.author: bprakash
+ms.openlocfilehash: 5285199d22528ed6b9fa3b7dbc85e382e7b28569
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>HDInsight で Azure のドメイン参加済み Hadoop クラスターを計画する
 

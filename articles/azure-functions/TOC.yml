@@ -25,7 +25,7 @@
           href: functions-create-storage-blob-triggered-function.md
         - name: Azure Cosmos DB
           href: functions-create-cosmos-db-triggered-function.md
-        - name: タイマー
+        - name: Timer
           href: functions-create-scheduled-function.md
         - name: 汎用 webhook
           href: functions-create-generic-webhook-triggered-function.md
@@ -35,7 +35,7 @@
           href: functions-create-storage-queue-triggered-function.md
     - name: 統合
       items:
-        - name: Storage
+        - name: ストレージ
           href: functions-integrate-storage-queue-output-binding.md
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -63,6 +63,8 @@
       href: functions-cli-samples.md
 - name: 概念
   items:
+    - name: 1.x と 2.x の比較
+      href: functions-versions.md
     - name: スケールとホスティング
       href: functions-scale.md
     - name: トリガーとバインド
@@ -146,7 +148,7 @@
         - name: 関数アプリの管理
           href: functions-how-to-use-azure-function-app-settings.md
         - name: ランタイム バージョンの設定
-          href: functions-versions.md
+          href: set-runtime-version.md
     - name: 監視
       href: functions-monitoring.md
     - name: 統合
@@ -175,7 +177,7 @@
           href: durable-functions-counter.md
         - name: 人による操作
           href: durable-functions-phone-verification.md
-- name: 参照
+- name: リファレンス
   items:
     - name: バインド
       items:
@@ -183,6 +185,8 @@
           href: functions-bindings-storage-blob.md
         - name: Azure Cosmos DB
           href: functions-bindings-cosmosdb.md
+        - name: Event Grid
+          href: functions-bindings-event-grid.md
         - name: Event Hubs
           href: functions-bindings-event-hubs.md
         - name: 外部ファイル
@@ -205,7 +209,7 @@
           href: functions-bindings-service-bus.md
         - name: テーブル ストレージ
           href: functions-bindings-storage-table.md
-        - name: タイマー
+        - name: Timer
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md

@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 12/02/2017
 ms.author: nepeters
-ms.openlocfilehash: 133e36179a500dc65c3a543266a7afcf9988b87d
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 915f90fd5d969d5544d56e5bec754b799f349015
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
@@ -33,9 +33,9 @@ webhook 要求の詳細については、「[Azure Container Registry webhook �
 1. webhook ツールバーで **[追加]** を選択します。
 1. 次の情報を利用して、*[webhook の作成]* フォームを完成させます。
 
-| 値 | Description |
+| 値 | [説明] |
 |---|---|
-| 名前 | Webhook に付与する名前。 使用できる文字は英小文字と数字のみです。文字数は 5 ～ 50 文字にする必要があります。 |
+| Name | Webhook に付与する名前。 使用できる文字は英小文字と数字のみです。文字数は 5 ～ 50 文字にする必要があります。 |
 | サービス URI | Webhook が POST 通知を送信する URI。 |
 | カスタム ヘッダー | POST 要求と共に渡すヘッダー。 "キー: 値" の形式にする必要があります。 |
 | トリガー アクション | Webhook をトリガーするアクション。 現在、webhook はイメージのプッシュまたは削除アクションによってトリガーできます。 |
@@ -48,7 +48,7 @@ Webhook フォームの例 :
 
 ## <a name="create-webhook-azure-cli"></a>Azure CLI での Webhook の作成
 
-Azure CLI を使用して Webhook を作成するには、[az acr webhook create](/cli/azure/acr/webhook#create) コマンドを使用します。
+Azure CLI を使用して Webhook を作成するには、[az acr webhook create](/cli/azure/acr/webhook#az_acr_webhook_create) コマンドを使用します。
 
 ```azurecli-interactive
 az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --actions delete --uri http://webhookuri.com
@@ -68,7 +68,7 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Azure CLI を使用して ACR Webhook をテストするには、[az acr webhook ping](/cli/azure/acr/webhook#ping) コマンドを使用します。
+Azure CLI を使用して ACR Webhook をテストするには、[az acr webhook ping](/cli/azure/acr/webhook#az_acr_webhook_ping) コマンドを使用します。
 
 ```azurecli-interactive
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01
@@ -92,6 +92,6 @@ Azure Portal で webhook を選択してから **[削除]** ボタンをクリ�
 az acr webhook delete --registry mycontainerregistry --name myacrwebhook01
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Container Registry webhook スキーマ リファレンス](container-registry-webhook-reference.md)

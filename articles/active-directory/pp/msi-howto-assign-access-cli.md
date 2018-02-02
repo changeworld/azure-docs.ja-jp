@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: bryanla
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 732fc1981bdf95e7548ea0ebe0ca8ece00f483ce
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 6e3bab5356812c256cfd147e42f065f381e0f63d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="assign-a-user-assigned-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Azure CLI を使用してリソースにユーザー割り当ての管理対象サービス ID (MSI) アクセスを割り当てる
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 12/22/2017
 このチュートリアルの CLI スクリプトの例を実行するには、次の 2 つの方法があります。
 
 - Azure Portal から、または各コード ブロックの右上隅にある [試してみる] ボタンを使用して、[Azure Cloud Shell](~/articles/cloud-shell/overview.md) を使用します。
-- ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 次に、[az login](/cli/azure/#login) を使用して Azure にサインインします。 ユーザー割り当て MSI と VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+- ローカル CLI コンソールを使用する場合は、[CLI 2.0 の最新バージョン (2.0.23 以降) をインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)します。 次に、[az login](/cli/azure/#az_login) を使用して Azure にサインインします。 ユーザー割り当て MSI と VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
 
    ```azurecli
    az login

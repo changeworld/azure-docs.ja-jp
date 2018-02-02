@@ -13,7 +13,7 @@
       href: quick-register-ea.md
     - name: コスト データの表示 - CSP
       href: quick-register-csp.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: 1 - 使用状況とコストを確認する
       href: tutorial-review-usage.md
@@ -29,6 +29,10 @@
       href: understading-cost-reports.md
 - name: ハウツー ガイド
   items:
+    - name: Azure サブスクリプションとアカウントのアクティブ化
+      href: activate-subs-accounts.md
+    - name: VM の拡張メトリックの追加
+      href: azure-vm-extended-metrics.md
     - name: Cost Management レポートの使用
       href: use-reports.md
 - name: リソース

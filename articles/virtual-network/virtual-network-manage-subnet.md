@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.openlocfilehash: 85ba6ef3e51c339a77eb9b4198c4f87e2a64cf09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 413ec2ef4fcc7752b95984a209818eeba535746e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="add-change-or-delete-a-virtual-network-subnet"></a>仮想ネットワーク サブネットの追加、変更、削除
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/11/2017
 
 この記事に記載されているタスクを開始する前に、次の前提条件を満たしてください。
 
-- 仮想ネットワークを初めて使用する場合は、[最初の Azure 仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)に関するページの演習を確認することをお勧めします。 この演習は、仮想ネットワークを理解するのに役立ちます。
+- 仮想ネットワークを初めて使用する場合は、[最初の Azure 仮想ネットワークの作成](quick-create-portal.md)に関するページの演習を確認することをお勧めします。 この演習は、仮想ネットワークを理解するのに役立ちます。
 - 仮想ネットワークの制限については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
 - Azure アカウントを使用して、Azure Portal、Azure コマンドライン ツール (Azure CLI)、または Azure PowerShell にサインインします。 Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - PowerShell のコマンドを使用してこの記事に記載されたタスクを行う場合は、最初に [Azure PowerShell をインストールして構成する](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)必要があります。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 サンプルの PowerShell コマンドのヘルプを表示するには、「`get-help <command> -full`」と入力します。
@@ -78,7 +78,7 @@ ms.lasthandoff: 10/11/2017
 3. **[仮想ネットワーク]** ブレードで、サブネットのアドレス範囲を変更する仮想ネットワークをクリックします。
 4. アドレス範囲を変更するサブネットをクリックします。
 5. サブネット ブレードの **[アドレス範囲]** ボックスに、新しいアドレス範囲を入力します。 範囲は仮想ネットワークのアドレス空間内で一意である必要があります。 仮想ネットワーク内の他のサブネット アドレス範囲と重複することはできません。 アドレス空間は、CIDR 表記で指定する必要があります。 たとえば、アドレス空間が 10.0.0.0/16 の仮想ネットワークでは、10.0.0.0/24 のサブネット アドレス空間を定義できます。 指定できる最小範囲は、/29 です。これでサブネットに 8 つの IP アドレスを使用できます。 Azure では、サブネットごとに、最初と最後のアドレスがプロトコルに準拠するために予約されています。 そのほか、3 つのアドレスが Azure サービスの使用のために予約されています。 そのため、/29 のアドレス範囲が設定されたサブネットで使用できる IP アドレスは 3 つです。 仮想ネットワークを VPN ゲートウェイに接続する場合は、ゲートウェイ サブネットを作成する必要があります。 詳細については、[ゲートウェイ サブネットに指定するアドレス範囲の考慮事項](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)に関する記事を参照してください。 特定の条件下でのみ、サブネットの作成後にアドレス範囲を変更できます。 サブネット アドレス範囲を変更する方法については、この記事の「[サブネット設定の変更](#change-subnet)」をご覧ください。
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 
 **コマンド**
 
@@ -107,4 +107,4 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-サブネットに仮想マシンを作成する方法については、[仮想ネットワークの作成とサブネットへの VM のデプロイ](virtual-network-get-started-vnet-subnet.md#create-vms)に関するページをご覧ください。
+サブネットに仮想マシンを作成する方法については、[仮想ネットワークの作成とサブネットへの VM のデプロイ](quick-create-portal.md#create-virtual-machines)に関するページをご覧ください。

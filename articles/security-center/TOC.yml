@@ -42,7 +42,7 @@
           href: security-center-policies.md
         - name: 電子メール通知
           href: security-center-provide-security-contact-details.md
-        - name: 価格レベル
+        - name: '[価格レベル] '
           href: security-center-pricing.md
         - name: セキュリティ構成
           href: security-center-customize-os-security-config.md
@@ -146,6 +146,8 @@
           href: security-center-search.md
     - name: Azure ログ統合
       href: security-center-integrating-alerts-with-log-integration.md
+    - name: SIEM へのデータ エクスポート
+      href: security-center-export-data-to-siem.md
     - name: シナリオ
       items:
         - name: インシデント対応
@@ -154,7 +156,7 @@
           href: security-center-using-recommendations.md
     - name: トラブルシューティング
       href: security-center-troubleshooting-guide.md
-- name: 参照
+- name: リファレンス
   items:
     - name: REST API
       href: 'https://msdn.microsoft.com/library/mt704034(Azure.100).aspx'

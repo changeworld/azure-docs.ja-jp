@@ -1,0 +1,76 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Batch のドキュメント"
+metadata:
+  title: "Batch のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
+  description: "Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。"
+  services: batch
+  author: czeumault
+  manager: carolz
+  ms.service: batch
+  ms.tgt_pltfrm: na
+  ms.devlang: na
+  ms.topic: landing-page
+  ms.date: 11/30/2017
+  ms.author: carolz
+  ms.openlocfilehash: 9e9a160762ae31087a2be36734ca528f65723818
+  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/01/2018
+abstract:
+  description: "Batch を使用すると、大規模な並列コンピューティングやハイパフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行することができます。 インフラストラクチャを手動で構成または管理することなく、アプリケーションを並列で実行したり大規模に実行したりするように Azure コンピューティング リソースを定義します。 コンピューティング集中型のタスクのスケジュールを設定し、要件に基づいてコンピューティング リソースを動的に追加または削除します。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Batch の使用方法を確認してください。"
+sections:
+- title: "5 分間のクイック スタート"
+  items:
+  - type: paragraph
+    text: "Azure で最初の Batch ジョブを実行する方法を学習します。"
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/i_cligeneric.svg
+      text: Azure CLI
+      href: quick-create-cli
+    - image:
+        src: https://docs.microsoft.com/en-us/media/common/i_portal.svg
+      text: Azure Portal
+      href: quick-create-portal
+    - image:
+        src: https://docs.microsoft.com/en-us/media/logos/logo_NET.svg
+      text: .NET
+      href: quick-run-dotnet
+    - image:
+        src: https://docs.microsoft.com/en-us/media/logos/logo_python.svg
+      text: Python
+      href: quick-run-python
+- title: "ステップバイステップのチュートリアル"
+  items:
+  - type: paragraph
+    text: "Batch でコンピューティング集中型ワークロードを実行する方法を学習します。"
+  - type: list
+    style: ordered
+    items:
+    - html: "<a href=\"tutorial-parallel-dotnet\">.NET SDK を使用したファイルの並列処理</a>"
+    - html: "<a href=\"tutorial-parallel-python\">Python SDK を使用したファイルの並列処理</a>"
+    - html: "<a href=\"tutorial-rendering-cli\">Arnold を使用したシーンのレンダリング</a>"
+    - html: "<a href=\"tutorial-r-doazureparallel\">並列 R シミュレーション</a>"
+- title: "サンプル"
+  items:
+  - type: list
+    style: unordered
+    className: spaced noBullet
+    items:
+    - html: <a href="cli-samples">Azure CLI</a>
+- title: "リファレンス"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: "コマンド ライン"
+      html: <p><a href="/cli/azure/batch">Azure CLI</a></p><p><a href="/powershell/module/azurerm.batch">Azure PowerShell</a></p>
+    - title: "言語"
+      html: <p><a href="/dotnet/api/microsoft.azure.batch">.NET</a></p><p><a href="/java/api/com.microsoft.azure.batch">Java</a></p><p><a href="/nodejs/api/overview/azure/batch">Node.js</a></p><p><a href="/python/api/overview/azure/batch">Python</a></p>
+    - title: REST ()
+      html: <p><a href="/rest/api/batchservice">Batch Service REST API</a></p><p><a href="/rest/api/batchmanagement/">Batch Management REST API</a></p>

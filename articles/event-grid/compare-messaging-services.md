@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 94771578d94b5b9bc23451049a78506e80c87d26
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: e082b9014e3734b554d3dae1cf8aecbaed65a28a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="choose-between-azure-services-that-deliver-messages"></a>メッセージを配信する Azure サービスの選択
 
@@ -28,7 +28,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 イベント配信サービスとメッセージ配信サービスの間には、注意が必要な重要な相違点があります。
 
-### <a name="event"></a>イベント
+### <a name="event"></a>Event
 
 イベントは、アクションまたは状態変更の軽量な通知です。 イベント データには、発生した事象に関する情報は含まれますが、イベントをトリガーしたデータは含まれていません。 たとえば、あるイベントはサブスクライバーにファイルが作成されたことを通知します。 このイベントにファイルに関する一般情報が含まれることはありますが、ファイル自体は含まれません。 通常、イベントはリアルタイムで動作するイベント ハンドラーをトリガーします。
 
@@ -38,7 +38,7 @@ Azure には、ソリューション全体にわたるイベント メッセー�
 
 ## <a name="comparison-of-services"></a>サービスの比較
 
-| サービス | 目的 | 型 | 使用時の注意 |
+| サービス | 目的 | type | いつ使用するか |
 | ------- | ------- | ---- | ----------- |
 | Event Grid | リアクティブ プログラミング | イベントの配信 | 状態の変更に反応する |
 | Event Hubs | ビッグ データのパイプライン | イベントのストリーミング | テレメトリと分散データ ストリーミング |
@@ -84,7 +84,7 @@ Service Bus はブローカー メッセージング システムです。 使�
 
 ![データ ストリーミングの概要](./media/compare-messaging-services/overview.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure のメッセージング サービスの詳細については、ブログ記事「[Events, Data Points, and Messages - Choosing the right Azure messaging service for your data (イベント、データ ポイント、メッセージ - データに適した Azure メッセージング サービスの選択)](https://azure.microsoft.com/blog/events-data-points-and-messages-choosing-the-right-azure-messaging-service-for-your-data/)」を参照してください。
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

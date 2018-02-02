@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: b8c181282dd28582a8fb02f611424ffd608fd1ec
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 47b8e43d1da031bdbe356917fd950ae106f8d96f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -93,7 +93,7 @@ ms.lasthandoff: 01/09/2018
     <outbound>  
         <base />  
         <choose>  
-            <when condition="@(context.GetValueOrDefault<bool>("isMobile"))">  
+            <when condition="@(context.Variables.GetValueOrDefault<bool>("isMobile"))">  
                 <xml-to-json kind="direct" apply="always" consider-accept-header="false"/>  
             </when>  
         </choose>  
@@ -289,8 +289,8 @@ ms.lasthandoff: 01/09/2018
   
 |Attribute|[説明]|必須|既定値|  
 |---------------|-----------------|--------------|--------------|  
-|key|文字列。 式を使用できます。 同時実行スコープを指定します。 複数のポリシーで共有できます。|[はい]|N/A|  
-|max-count|整数。 ポリシーに入力できる要求の最大数を指定します。|[はい]|N/A|  
+|key|文字列。 式を使用できます。 同時実行スコープを指定します。 複数のポリシーで共有できます。|[はい]|該当なし|  
+|max-count|整数。 ポリシーに入力できる要求の最大数を指定します。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -438,11 +438,11 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Attribute|[説明]|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
-|condition|再試行を停止する (`false`) か続行する (`true`) かを指定するブール型リテラルまたは[式](api-management-policy-expressions.md)。|[はい]|N/A|  
-|count|最大再試行回数を指定する正の数。|[はい]|N/A|  
-|interval|再試行の間の待機間隔を指定する正の数 (秒単位)。|[はい]|N/A|  
-|max-interval|再試行の間の最大待機間隔を指定する正の数 (秒単位)。 指数再試行アルゴリズムを実装するために使用されます。|いいえ |N/A|  
-|delta|待機間隔の増分値を指定する正の数 (秒単位)。 線形再試行アルゴリズムと指数再試行アルゴリズムを実装するために使用されます。|いいえ |N/A|  
+|condition|再試行を停止する (`false`) か続行する (`true`) かを指定するブール型リテラルまたは[式](api-management-policy-expressions.md)。|[はい]|該当なし|  
+|count|最大再試行回数を指定する正の数。|[はい]|該当なし|  
+|interval|再試行の間の待機間隔を指定する正の数 (秒単位)。|[はい]|該当なし|  
+|max-interval|再試行の間の最大待機間隔を指定する正の数 (秒単位)。 指数再試行アルゴリズムを実装するために使用されます。|いいえ |該当なし|  
+|delta|待機間隔の増分値を指定する正の数 (秒単位)。 線形再試行アルゴリズムと指数再試行アルゴリズムを実装するために使用されます。|いいえ |該当なし|  
 |first-fast-retry|`true` に設定した場合、最初の再試行がすぐに実行されます。|いいえ |`false`|  
   
 > [!NOTE]
@@ -564,7 +564,7 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribute|[説明]|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ |新規|  
-|name|設定するヘッダーの名前を指定します。|[はい]|N/A|  
+|name|設定するヘッダーの名前を指定します。|[はい]|該当なし|  
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|  
   
 ### <a name="usage"></a>使用法  
@@ -643,10 +643,10 @@ status code and media type. If no example or schema found, the content is empty.
 |Attribute|[説明]|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ |新規|  
-|response-variable-name="文字列"|存在しない場合、`context.Response` が使用されます。|いいえ |N/A|  
+|response-variable-name="文字列"|存在しない場合、`context.Response` が使用されます。|いいえ |該当なし|  
 |timeout="整数"|URL の呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。|いいえ |60|  
 |ignore-error|true に設定され、要求の結果がエラーになった場合:<br /><br /> - response-variable-name が指定されている場合、null 値を格納します。<br />- response-variable-name が指定されていない場合、context.Request は更新されません。|いいえ |false|  
-|name|設定するヘッダーの名前を指定します。|[はい]|N/A|  
+|name|設定するヘッダーの名前を指定します。|[はい]|該当なし|  
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|いいえ |override|  
   
 ### <a name="usage"></a>使用法  
@@ -684,9 +684,9 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Attribute|[説明]|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
-|url="string"|http://host:port の形式のプロキシ URL。|[はい]|N/A|  
-|username="string"|プロキシで認証に使用するユーザー名。|いいえ |N/A|  
-|password="string"|プロキシで認証に使用するパスワード。|いいえ |N/A|  
+|url="string"|http://host:port の形式のプロキシ URL。|[はい]|該当なし|  
+|username="string"|プロキシで認証に使用するユーザー名。|いいえ |該当なし|  
+|password="string"|プロキシで認証に使用するパスワード。|いいえ |該当なし|  
 
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -784,8 +784,8 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Attribute|[説明]|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
-|code="整数"|返される HTTP 状態コード。|[はい]|N/A|  
-|reason="文字列"|状態コードを返す理由の説明。|[はい]|N/A|  
+|code="整数"|返される HTTP 状態コード。|[はい]|該当なし|  
+|reason="文字列"|状態コードを返す理由の説明。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
@@ -886,7 +886,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 |Attribute|[説明]|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
-|source|メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。|[はい]|N/A|  
+|source|メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。|[はい]|該当なし|  
   
 ### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  

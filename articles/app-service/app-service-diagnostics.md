@@ -14,17 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: jennile
-ms.openlocfilehash: f027e7fbc5866a85e7f55460192a1c99a71e368e
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 9526817ce7969edcd5e9c56ec153bb4e3ebaa501
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="azure-app-service-diagnostics-overview"></a>Azure App Service 診断の概要 
 
 Web アプリケーションを実行するに当たっては、500 エラーが発生したり、サイトがダウンした場合に向けての準備体制が重要になります。 App Service 診断は、Web アプリのトラブルシューティングをインテリジェントな対話型のエクスペリエンスで支援する、構成不要のツールです。 Web アプリに問題が発生した場合、App Service 診断は問題点を指摘し、その問題をすばやく簡単に解決するための適切な情報へとユーザーをガイドします。 
  
 この機能は Web アプリの問題発生時刻が過去 24 時間以内である場合に特に役立ちますが、いずれの診断グラフも、任意の時点を対象に分析を実行することができます。 右側の列には、追加のトラブルシューティング ツールと、役立つドキュメントやフォーラムへのリンクが表示されます。
+
+## <a name="open-app-service-diagnostics"></a>App Service 診断を開く
+
+App Service 診断にアクセスするには、[Azure ポータル](https://portal.azure.com)で App Service Web アプリに移動します。 
+
+左側のナビゲーションで、**[問題の診断と解決]** をクリックします。
 
 ![ホームページ](./media/app-service-diagnostics/Homepage1.png)
 
@@ -50,8 +56,3 @@ Web アプリのどこに問題があるのかわからない場合や、問題�
 
 ![診断レポート](./media/app-service-diagnostics/DiagnosticReport5.png)
 
-## <a name="open-app-service-diagnostics"></a>App Service 診断を開く
-
-App Service 診断にアクセスするには、[Azure ポータル](https://portal.azure.com)で App Service Web アプリに移動します。 
-
-左側のナビゲーションで、**[問題の診断と解決]** をクリックします。

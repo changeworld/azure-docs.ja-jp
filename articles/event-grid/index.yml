@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Event Grid のドキュメント
+title: "Azure Event Grid のドキュメント"
 metadata:
-  title: Azure Event Grid のドキュメント - チュートリアル、API リファレンス
-  description: Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。
+  title: "Azure Event Grid のドキュメント - チュートリアル、API リファレンス"
+  description: "Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。"
   services: event-grid
   author: czeumault
   manager: carolz
@@ -13,47 +13,65 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/10/2017
   ms.author: carolz
+  ms.openlocfilehash: 494cd1b862169998a15786b70a6c7d88f830613e
+  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+  ms.translationtype: HT
+  ms.contentlocale: ja-JP
+  ms.lasthandoff: 02/01/2018
 abstract:
-  description: Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。
+  description: "Azure Event Grid は、パブリッシュ/サブスクライブ モデルを使用した画一的なイベントの使用を可能にする、完全に管理されたインテリジェントなイベント ルーティング サービスです。 Azure Event Grid を使用すると、Azure のサービスと Azure 以外のサービス両方で関連イベントにほぼリアルタイムで対応できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Event Grid の使用方法を確認してください。"
 sections:
-  - title: 5 分間のクイック スタート
+- title: "5 分間のクイック スタート"
+  items:
+  - type: paragraph
+    text: "カスタム イベントを作成してサブスクライブする方法を学習します。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: カスタム イベントを作成してサブスクライブする方法を学習します。
-      - type: list
-        style: icon48
-        items:
-          - image:
-              src: /azure/event-grid/media/index/cli.svg
-            text: Azure CLI
-            href: /azure/event-grid/custom-event-quickstart
-          - image:
-              src: /azure/event-grid/media/index/logo_powershell.svg
-            text: Azure PowerShell
-            href: /azure/event-grid/custom-event-quickstart-powershell
-          - image:
-              src: /azure/event-grid/media/index/portal.svg
-            text: Azure Portal
-            href: /azure/event-grid/custom-event-quickstart-portal
-  - title: ステップバイステップのチュートリアル
+    - image:
+        src: /azure/event-grid/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/event-grid/custom-event-quickstart
+    - image:
+        src: /azure/event-grid/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/event-grid/custom-event-quickstart-powershell
+    - image:
+        src: /azure/event-grid/media/index/portal.svg
+      text: Azure Portal
+      href: /azure/event-grid/custom-event-quickstart-portal
+  - type: paragraph
+    text: "Blob Storage イベントのルーティング方法を学習します。"
+  - type: list
+    style: icon48
     items:
-      - type: paragraph
-        text: イベントに対応するアプリケーションを開発する方法を学習します。
-      - type: list
-        style: ordered
-        items:
-          - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">ロジック アプリを使用して VM への変更を監視する</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">アップロードされたイメージをサイズ変更する</a>
-          - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Azure Automation を Event Grid と統合する</a>
-  - title: リファレンス
+    - image:
+        src: /azure/event-grid/media/index/cli.svg
+      text: Azure CLI
+      href: /azure/storage/blobs/storage-blob-event-quickstart?toc=%2fazure%2fevent-grid%2ftoc.json
+    - image:
+        src: /azure/event-grid/media/index/logo_powershell.svg
+      text: Azure PowerShell
+      href: /azure/storage/blobs/storage-blob-event-quickstart-powershell?toc=%2fazure%2fevent-grid%2ftoc.json
+- title: "ステップバイステップのチュートリアル"
+  items:
+  - type: paragraph
+    text: "イベントに対応するアプリケーションを開発する方法を学習します。"
+  - type: list
+    style: ordered
     items:
-      - type: list
-        style: cards
-        className: cardsD
-        items:
-          - title: コマンド ライン
-            html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
-          - title: REST API
-            html: <p><a href="/rest/api/eventgrid">REST ()</a></p>
-          - title: スキーマ
-            html: <p><a href="/azure/event-grid/subscription-creation-schema ">サブスクリプション スキーマ</a></p><p><a href="/azure/event-grid/event-schema">イベント スキーマ</a></p>
+    - html: "<a href=\"/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app\">ロジック アプリを使用して VM への変更を監視する</a>"
+    - html: "<a href=\"/azure/event-grid/resize-images-on-storage-blob-upload-event\">アップロードされたイメージをサイズ変更する</a>"
+    - html: "<a href=\"/azure/event-grid/ensure-tags-exists-on-new-virtual-machines\">Azure Automation を Event Grid と統合する</a>"
+- title: "リファレンス"
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: "コマンド ライン"
+      html: <p><a href="/cli/azure/eventgrid">Azure CLI</a></p><p><a href="/powershell/module/azurerm.eventgrid">PowerShell</a></p>
+    - title: REST API
+      html: <p><a href="/rest/api/eventgrid">REST</a></p>
+    - title: "スキーマ"
+      html: "<p><a href=\"/azure/event-grid/subscription-creation-schema \">サブスクリプション スキーマ</a></p><p><a href=\"/azure/event-grid/event-schema\">イベント スキーマ</a></p>"

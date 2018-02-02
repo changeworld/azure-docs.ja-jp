@@ -3,20 +3,21 @@ title: "Azure AD アプリケーション プロキシの構成に関する問�
 description: "Azure AD アプリケーション プロキシの構成に関する問題\""
 services: active-directory
 documentationcenter: 
-author: ajamess
+author: MarkusVi
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 4741d8f8e684fff616f90982ec2d10d447138ab8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 01/31/2018
+ms.author: markvi
+ms.reviewer: harshja
+ms.openlocfilehash: 06b4116291c0adb2bb7b13b681a090cb68189dc3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="problems-configuring-the-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシの構成に関する問題
 

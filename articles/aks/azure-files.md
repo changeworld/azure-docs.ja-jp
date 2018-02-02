@@ -10,10 +10,10 @@ ms.date: 11/17/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.openlocfilehash: b6267dd2bc1b29229b2e8016e2429ed88b7bf676
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="using-azure-files-with-kubernetes"></a>Kubernetes での Azure Files の使用
 

@@ -31,7 +31,7 @@
 ### [ストリーミング エンドポイント](media-services-streaming-endpoints-overview.md)
 #### [Azure Portal](media-services-portal-manage-streaming-endpoints.md)
 #### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
-### Storage
+### ストレージ
 #### [ストレージ アクセス キーをローリングした後に Media Services を更新する](media-services-roll-storage-access-keys.md)
 #### [複数のストレージ アカウントで資産を管理する](meda-services-managing-multiple-storage-accounts.md)
 ### [クォータと制限](media-services-quotas-and-limitations.md)
@@ -117,6 +117,7 @@
 ### [オンプレミス エンコーダーをクラウド エンコーダーと使用するための構成](media-services-live-encoders-overview.md)
 #### [Elemental Live エンコーダー](media-services-configure-elemental-live-encoder.md)
 #### [FMLE エンコーダー](media-services-configure-fmle-live-encoder.md)
+#### [Haivision KB エンコーダー](media-services-configure-kb-live-encoder.md)
 #### [NewTek TriCaster エンコーダー](media-services-configure-tricaster-live-encoder.md)
 #### [Wirecast エンコーダー](media-services-configure-wirecast-live-encoder.md)
 ### [長時間にわたって実行される操作の処理](media-services-dotnet-long-operations.md)

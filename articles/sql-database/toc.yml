@@ -4,6 +4,8 @@
   items:
     - name: SQL DB について
       href: sql-database-technical-overview.md
+    - name: PaaS または IaaS
+      href: sql-database-paas-vs-sql-server-iaas.md
 - name: クイック スタート
   expanded: true
   items:
@@ -59,7 +61,7 @@
       href: sql-database-powershell-samples.md
 - name: 概念
   items:
-    - name: サービスの機能
+    - name: データベース サービス
       items:
         - name: サーバーとデータベース
           href: sql-database-servers-databases.md
@@ -73,42 +75,22 @@
           href: sql-database-elastic-pool.md
         - name: 接続のアーキテクチャ
           href: sql-database-connectivity-architecture.md
-        - name: ファイアウォール規則
-          href: sql-database-firewall-configure.md
-        - name: ファイアウォールの仮想ネットワーク ルール
-          href: sql-database-vnet-service-endpoint-rule-overview.md
         - name: DTU と eDTU
           href: sql-database-what-is-a-dtu.md
         - name: DTU ベンチマーク
           href: sql-database-benchmark-overview.md
-        - name: PaaS または IaaS
-          href: sql-database-paas-vs-sql-server-iaas.md
-        - name: 監査
-          href: sql-database-auditing.md
-        - name: 脅威の検出
-          href: sql-database-threat-detection.md
-        - name: データベースのバックアップ
-          href: sql-database-automated-backups.md
-        - name: バックアップ保有期間
-          href: sql-database-long-term-retention.md
-        - name: フェールオーバー グループ
-          href: sql-database-geo-replication-overview.md
-        - name: エラスティック クライアント ライブラリ
-          href: sql-database-elastic-database-client-library.md
-        - name: エラスティック クエリ
-          href: sql-database-elastic-query-overview.md
-        - name: エラスティック トランザクション
-          href: sql-database-elastic-transactions-overview.md
-        - name: エラスティック ジョブ
-          href: sql-database-elastic-jobs-overview.md
-        - name: SQL の脆弱性評価
-          href: sql-vulnerability-assessment.md
         - name: SQL Server の共通機能
           href: sql-database-features.md
+    - name: 高可用性
+      href: sql-database-high-availability.md
     - name: セキュリティ
       items:
         - name: 概要
           href: sql-database-security-overview.md
+        - name: ファイアウォール規則
+          href: sql-database-firewall-configure.md
+        - name: ファイアウォールの仮想ネットワーク ルール
+          href: sql-database-vnet-service-endpoint-rule-overview.md
         - name: アクセス制御
           href: sql-database-control-access.md
         - name: Azure AD
@@ -117,16 +99,28 @@
           href: sql-database-manage-logins.md
         - name: 多要素認証
           href: sql-database-ssms-mfa-authentication.md
+        - name: 監査
+          href: sql-database-auditing.md
+        - name: 脅威の検出
+          href: sql-database-threat-detection.md
         - name: テーブルの監査と TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
-        - name: データ マスク
+        - name: 動的データ マスク
           href: sql-database-dynamic-data-masking-get-started.md
-    - name: 高可用性
-      href: sql-database-high-availability.md
+        - name: 脆弱性評価
+          href: sql-vulnerability-assessment.md
+        - name: データの検出と分類
+          href: sql-database-data-discovery-and-classification.md
     - name: ビジネス継続性
       items:
         - name: 概要
           href: sql-database-business-continuity.md
+        - name: データベースのバックアップ
+          href: sql-database-automated-backups.md
+        - name: バックアップ保有期間
+          href: sql-database-long-term-retention.md
+        - name: フェールオーバー グループ
+          href: sql-database-geo-replication-overview.md
         - name: データベースの回復
           href: sql-database-recovery-using-backups.md
         - name: セキュリティを構成する
@@ -185,6 +179,14 @@
       items:
         - name: 概要
           href: sql-database-elastic-scale-introduction.md
+        - name: エラスティック クライアント ライブラリ
+          href: sql-database-elastic-database-client-library.md
+        - name: エラスティック クエリ
+          href: sql-database-elastic-query-overview.md
+        - name: エラスティック トランザクション
+          href: sql-database-elastic-transactions-overview.md
+        - name: エラスティック ジョブ
+          href: sql-database-elastic-jobs-overview.md
         - name: シャード マップ
           href: sql-database-elastic-scale-shard-map-management.md
         - name: クエリのルーティング
@@ -299,6 +301,8 @@
           href: sql-database-advisor-portal.md
         - name: 自動チューニングの有効化
           href: sql-database-automatic-tuning-enable.md
+        - name: 電子メール通知の自動チューニング
+          href: sql-database-automatic-tuning-email-notifications.md
         - name: Intelligent Insights のパフォーマンスのトラブルシューティング
           href: sql-database-intelligent-insights-troubleshoot-performance.md
         - name: DMV を使用したパフォーマンスの監視

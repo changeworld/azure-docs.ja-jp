@@ -3,7 +3,7 @@
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)
 
-# [作業の開始](iot-hub-get-started.md)
+# [作業開始](iot-hub-get-started.md)
 
 ## デバイスのセットアップ
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
@@ -44,6 +44,7 @@
 ### [ソリューションをスケール調整する](iot-hub-scaling.md)
 ### [高可用性と障害復旧](iot-hub-ha-dr.md)
 ### [その他のプロトコルのサポート](iot-hub-protocol-gateway.md)
+### [メッセージ ルーティングとイベント ルーティングの比較](iot-hub-event-grid-routing-comparison.md)
 ## [開発](iot-hub-how-to.md)
 ### [開発者ガイド](iot-hub-devguide.md)
 #### [デバイスからクラウドの機能ガイド](iot-hub-devguide-d2c-guidance.md)
@@ -51,6 +52,7 @@
 #### [メッセージを送受信する](iot-hub-devguide-messaging.md)
 ##### [デバイスからクラウドへのメッセージを IoT Hub に送信する](iot-hub-devguide-messages-d2c.md)
 ##### [デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る](iot-hub-devguide-messages-read-builtin.md)
+##### [IoT Hub イベントへの対応](iot-hub-event-grid.md)
 ##### [デバイスからクラウドへのメッセージにカスタム エンドポイントとルーティング ルールを使用する](iot-hub-devguide-messages-read-custom.md)
 ##### [クラウドからデバイスへのメッセージを IoT Hub から送信する](iot-hub-devguide-messages-c2d.md)
 ##### [IoT Hub メッセージを作成し、読み取る](iot-hub-devguide-messages-construct.md)

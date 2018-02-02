@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 01/30/2018
 ms.author: larryfr
-ms.openlocfilehash: 440133da32f4565aa247b273984b3affe18379ec
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 6fcb925829e33704c94c96209a61346b0404e13b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="analyze-logs-for-apache-kafka-on-hdinsight"></a>HDInsight で Apache Kafka のログを分析する
 
@@ -62,7 +62,7 @@ HDInsight の Log Analytics を有効にする手順は、すべての HDInsight
 
     また、`*` を入力して、記録されているすべてのタイプを検索することもできます。 現在、クエリには、次のログを使用できます。
 
-    | ログのタイプ | Description |
+    | ログのタイプ | [説明] |
     | ---- | ---- |
     | log\_kafkaserver\_CL | Kafka ブローカーの server.log |
     | log\_kafkacontroller\_CL | Kafka ブローカーの controller.log |
@@ -70,7 +70,7 @@ HDInsight の Log Analytics を有効にする手順は、すべての HDInsight
 
     ![CPU 使用率検索の画像](./media/apache-kafka-log-analytics-operations-management/kafka-cpu-usage.png)
  
- ## <a name="next-steps"></a>次のステップ
+ ## <a name="next-steps"></a>次の手順
 
 ログ分析の詳細については、「[Log Analytics ワークスペースを使って作業を開始する](../../log-analytics/log-analytics-get-started.md)」をご覧ください。
 
