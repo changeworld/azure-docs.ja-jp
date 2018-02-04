@@ -1,7 +1,5 @@
 # 概要
 ## [開発者ガイド](azure-developer-guide.md) 
-## [Azure サービスの概要](../../fundamentals-introduction-to-azure.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
-## [Portal の概要](../../azure-portal-overview.md?toc=%2fazure%2fguides%2fdeveloper%2ftoc.json)
 ## [SDK とツール](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # クイック スタート
@@ -93,7 +91,7 @@
 ### [Windows VM のスケール](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-create-vmss)
 
 # リファレンス
-## [REST ()](https://docs.microsoft.com/rest/api/)
+## [REST](https://docs.microsoft.com/rest/api/)
 ## SDK
 ### [.NET](https://go.microsoft.com/fwlink/?linkid=834925)
 ### [Java](https://docs.microsoft.com/java/api/)

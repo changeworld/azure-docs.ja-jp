@@ -9,6 +9,10 @@
 ## コンピューティングの一時停止と再開
 ### [ポータル](pause-and-resume-compute-portal.md)
 ### [PowerShell](pause-and-resume-compute-powershell.md)
+## コンピューティングのスケーリング
+### [ポータル](quickstart-scale-compute-portal.md)
+### [PowerShell](quickstart-scale-compute-powershell.md)
+### [T-SQL](quickstart-scale-compute-tsql.md)
 
 
 # チュートリアル
@@ -113,8 +117,6 @@
 ### [ワークロードの分析](analyze-your-workload.md)
 
 ## スケールアウト
-### [コンピューティングの管理 - ポータル](sql-data-warehouse-manage-compute-portal.md)
-### [コンピューティングの管理 - PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [コンピューティングの管理 - REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [コンピューティング レベルの自動化](manage-compute-with-azure-functions.md)
 
