@@ -313,8 +313,8 @@ Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン
 
 | |インストール アカウント<br/> |sqlserver-0 <br/>SQL Server と SQL エージェント サービス アカウント |sqlserver-1<br/>SQL Server と SQL エージェント サービス アカウント
 | --- | --- | --- | ---
-|**名** |[インストール] |SQLSvc1 | SQLSvc2
-|**ユーザー SAM アカウント名** |[インストール] |SQLSvc1 | SQLSvc2
+|**First Name** | Install |SQLSvc1 | SQLSvc2
+|**User SamAccountName** | Install |SQLSvc1 | SQLSvc2
 
 次の手順に従って、各アカウントを作成します。
 
