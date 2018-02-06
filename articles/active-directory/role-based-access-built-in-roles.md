@@ -371,7 +371,7 @@ DNS ゾーンとレコードを保護できます。
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/\* |サポート チケットの作成と管理 |
 
-### <a name="documentdb-account-contributor"></a>Document DB アカウント共同作成者
+### <a name="documentdb-account-contributor"></a>DocumentDB Account Contributor
 Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。
 
 | **アクション** |  |
@@ -453,7 +453,7 @@ New Relic Application Performance Management アカウントおよびアプリ�
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 | NewRelic.APM/accounts/* |New Relic Application Performance Management アカウントの作成と管理 |
 
-### <a name="owner"></a>所有者
+### <a name="owner"></a>Owner
 アクセス権を含めすべてを管理できます
 
 | **アクション** |  |
