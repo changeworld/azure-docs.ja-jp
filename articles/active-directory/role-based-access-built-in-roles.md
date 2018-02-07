@@ -371,7 +371,7 @@ DNS ゾーンとレコードを保護できます。
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/\* |サポート チケットの作成と管理 |
 
-### <a name="documentdb-account-contributor"></a>Document DB アカウントの共同作業者
+### <a name="documentdb-account-contributor"></a>DocumentDB Account Contributor
 Azure Cosmos DB アカウントを管理できます。 Azure Cosmos DB は以前は DocumentDB と呼ばれていました。
 
 | **アクション** |  |
