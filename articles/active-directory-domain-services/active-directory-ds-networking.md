@@ -27,7 +27,7 @@ ms.lasthandoff: 01/18/2018
 ### <a name="type-of-azure-virtual-network"></a>Azure 仮想ネットワークの種類
 * **Resource Manager の仮想ネットワーク**: Azure AD Domain Services は、Azure Resource Manager を使って作成された仮想ネットワーク上で有効にできます。
 * 従来の Azure 仮想ネットワークで Azure AD Domain Services を有効にすることはできません。
-* Azure AD Domain Services が有効になっている仮想ネットワークに他の仮想ネットワークを接続することはできません。 詳細については、「[ネットワーク接続](active-directory-ds-networking.md#network-connectivity)」を参照してください。
+* Azure AD Domain Services が有効になっている仮想ネットワークに他の仮想ネットワークを接続することができます。 詳細については、「[ネットワーク接続](active-directory-ds-networking.md#network-connectivity)」を参照してください。
 
 ### <a name="azure-region-for-the-virtual-network"></a>仮想ネットワークの Azure リージョン
 * Azure AD Domain Services の管理対象ドメインは、サービスを有効にすることを選択した仮想ネットワークと同じ Azure リージョンにデプロイされます。
