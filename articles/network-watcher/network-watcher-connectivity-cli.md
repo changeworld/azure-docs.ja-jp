@@ -1,10 +1,10 @@
 ---
-title: "Azure Network Watcher で接続を確認する - Azure CLI 2.0 | Microsoft Docs"
-description: "このページは、Azure CLI 2.0 を使用して Azure Network Watcher で接続チェックを使用する方法について説明します。"
+title: "Azure Network Watcher との接続のトラブルシューティング - Azure CLI 2.0 | Microsoft Docs"
+description: "Azure CLI 2.0 を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。"
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,31 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 507ec614e54b035d5470ec34bcfd8e71cf98083c
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: dfe77b0a9620ccb8ac91fa8843d01d1cb7bdc44f
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Network Watcher で接続を確認する
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用した Azure Network Watcher との接続のトラブルシューティング
 
 > [!div class="op_single_selector"]
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-仮想マシンから指定されたエンドポイントへの直接の TCP 接続が確立されたかどうかを確認するために、接続を使用する方法について説明します。
+仮想マシンから指定されたエンドポイントへの直接の TCP 接続が確立されたかどうかを確認するために、接続のトラブルシューティングを使用する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
 この記事では、次のリソースがあることを前提としています。
 
-* 接続を確認するリージョンの Network Watcher のインスタンス。
-
-* 接続を確認する仮想マシン。
+* 接続のトラブルシューティングを行うリージョンの Network Watcher のインスタンス。
+* 接続のトラブルシューティングを行う仮想マシン。
 
 > [!IMPORTANT]
-> 接続チェックには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
+> 接続のトラブルシューティングには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>仮想マシンへの接続を確認する
 

@@ -5,19 +5,17 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: article
-ms.date: 12/12/2017
-ms.author: mabrigg
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 642ed3298eec0bab5515df117c0310786358e417
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 2f15e130859272a729fb0ad6e0b718d4724f2103
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
-
-*適用対象: Azure Stack 統合システム*
-
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
 
 次の表は、2 つの ID の選択間の違いを示します。
@@ -26,7 +24,7 @@ Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure A
 |---------|---------|---------|
 |課金|容量ベース<br> Enterprise Agreement (EA) のみ|容量ベースまたは従量課金制<br>EA または Cloud Solution Provider (CSP)|
 |ID|AD FS|Azure AD または AD FS|
-|Marketplace シンジケーション|現在、利用できません|サポートされています<br>ライセンス持ち込み (BYOL)|
+|Marketplace シンジケーション|サポートされています<br>ライセンス持ち込み (BYOL)|サポートされています<br>ライセンス持ち込み (BYOL)|
 |登録|推奨、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|自動|
 |パッチと更新プログラム|必須、リムーバブル メディアと<br> 別途接続されているデバイスが必要。|更新プログラム パッケージはインターネットから<br> Azure Stack に直接ダウンロード可能。|
 
@@ -64,7 +62,7 @@ Graph の構成には、既存の Active Directory に対する読み取りア�
 自動化パラメーターの入力として、次の情報が必要です。
 
 
-|パラメーター|Description|例|
+|パラメーター|[説明]|例|
 |---------|---------|---------|
 |CustomADGlobalCatalog|統合する対象の Active Directory<br>フォレストの FQDN|Contoso.com|
 |CustomADAdminCredentials|LDAP の読み取りアクセス許可を持つユーザー|YOURDOMAIN\graphservice|
@@ -105,7 +103,7 @@ Graph の構成には、既存の Active Directory に対する読み取りア�
 
 Azure Stack の Graph サービスは、次のプロトコルとポートを使用して、対象の Active Directory と通信します。
 
-|型|Port|プロトコル|
+|type|Port|プロトコル|
 |---------|---------|---------|
 |LDAP|389|TCP と UDP|
 |LDAP SSL|636|TCP|
@@ -116,7 +114,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 
 自動化パラメーターの入力として、次の情報が必要です。
 
-|パラメーター|Description|例|
+|パラメーター|[説明]|例|
 |---------|---------|---------|
 |CustomAdfsName|クレーム プロバイダーの名前。<cr>AD FS のランディング ページにそのように表示されます。|Contoso|
 |CustomAD<br>FSFederationMetadataEndpointUri|フェデレーション メタデータのリンク|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
@@ -155,7 +153,7 @@ Azure Stack の Graph サービスは、次のプロトコルとポートを使�
 自動化パラメーターの入力として、次の情報が必要です。
 
 
-|パラメーター|Description|例|
+|パラメーター|[説明]|例|
 |---------|---------|---------|
 |CustomAdfsName|クレーム プロバイダーの名前。 AD FS のランディング ページにそのように表示されます。|Contoso|
 |CustomADFSFederationMetadataFile|フェデレーション メタデータ ファイル|https://ad01.contoso.com/federationmetadata/2007-06/federationmetadata.xml|
@@ -333,6 +331,6 @@ SPN の作成について詳しくは、「[AD FS のサービス プリンシ�
    ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[Azure Stack とデータセンターの統合 - エンドポイントの公開](azure-stack-integrate-endpoints.md)
+[Azure Stack の登録](azure-stack-registration.md)

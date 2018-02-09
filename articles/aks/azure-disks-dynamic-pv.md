@@ -6,13 +6,13 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 1/12/2018
+ms.date: 1/25/2018
 ms.author: nepeters
-ms.openlocfilehash: a4e4ce6a23f9f8a99d8ae5f9e4e2084e3b749017
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e1f5b68d5d39dd846ebec525d1e83a6c0ef4971a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="persistent-volumes-with-azure-disks---dynamic-provisioning"></a>Azure ディスクを含む永続ボリューム - 動的プロビジョニング
 
@@ -51,13 +51,14 @@ parameters:
   storageaccounttype: Standard_LRS
 ```
 
-
-
 ## <a name="create-persistent-volume-claim"></a>永続ボリューム要求の作成
 
 永続ボリューム要求は、ストレージ クラス オブジェクトを使って、ストレージの一部を動的にプロビジョニングします。 Azure ディスクを使うと、AKS リソースと同じリソース グループにディスクが作成されます。
 
 このマニフェストの例では、`azure-managed-disk` ストレージ クラスを使って、サイズが `5GB` でアクセス許可が `ReadWriteOnce` であるディスクを作成するための永続ボリューム要求が作成されます。 PVC アクセス モードについて詳しくは、[アクセス モード][access-modes]に関するページをご覧ください。
+
+> [!NOTE]
+> Azure ディスクは、アクセス モードの種類を ReadWriteOnce としてのみマウントでき、この場合、ディスクの利用は、単一の AKS ノードに限られます。 複数のノード間で固定ボリュームを共有する必要がある場合は、[Azure Files][azure-files-pvc] の使用を検討してください。 
 
 ```yaml
 apiVersion: v1
@@ -110,4 +111,5 @@ Azure ディスクを使った Kubernetes 永続ボリュームについて、�
 [kubernetes-volumes]: https://kubernetes.io/docs/concepts/storage/persistent-volumes/
 
 <!-- LINKS - internal -->
+[azure-files-pvc]: azure-files-dynamic-pv.md
 [premium-storage]: ../virtual-machines/windows/premium-storage.md

@@ -12,54 +12,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 57a4cb560825e0c05ac49df26ac12ee52da52c3c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d4559007aece8850b4c2d707686effd706ec468c
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-cloud-services"></a>Azure VM、Service Fabric、および Cloud Services で Application Insights Profiler を有効にする
 
-この記事では、Azure コンピューティング リソースによってホストされる ASP.NET アプリケーションで Azure Application Insights Profiler を有効にする方法を示します。 
+この記事では、Azure コンピューティング リソースによってホストされる ASP.NET アプリケーションで Azure Application Insights Profiler を有効にする方法を示します。
 
 この記事の例には、Azure Virtual Machines、仮想マシン スケール セット、Azure Service Fabric、および Azure Cloud Services のサポートが含まれています。 例は、[Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) デプロイ モデルをサポートするテンプレートを活用しています。  
 
 
 ## <a name="overview"></a>概要
 
-次の図は、Application Insights Profiler が Azure リソースとどのように連携するかを示しています。 図では、例として、Azure 仮想マシンを使用しています。
+次の図は、Application Insights Profiler が Azure コンピューティング リソースとどのように連携するかを示しています。 Azure コンピューティング リソースには、Virtual Machines、Virtual Machine Scale Sets、Cloud Services、Service Fabric クラスターなどがあります。 図では、例として、Azure 仮想マシンを使用しています。  
 
   ![概要](./media/enable-profiler-compute/overview.png)
 
 Profiler を完全に有効にするには、3 つの場所で構成を変更する必要があります。
 
-* Azure ポータルの Application Insights インスタンス ウィンドウ。
+* Azure Portal の Application Insights インスタンス ブレード。
 * アプリケーションソース コード (例: ASP.NET Web アプリケーション)。
-* 環境デプロイ定義ソース コード (例: VM デプロイ テンプレート .json ファイル)。
+* 環境デプロイ定義ソース コード (例: .json ファイル形式の Azure Resource Manager テンプレート)。
 
 
 ## <a name="set-up-the-application-insights-instance"></a>Application Insights インスタンスを設定する
 
-Azureポータルで、Application Insights インスタンスを作成するか、使用するインスタンスに移動します。 インスタンスのインストルメンテーション キーを書き留めます。 このインストルメンテーション キーは、他の構成手順で使用します。
+[新しい Application Insights リソースを作成](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-create-new-resource)するか、または既存の Application Insights リソースを選択します。
+Application Insights リソースに移動して、インストルメンテーション キーをコピーしてください。
 
   ![インストルメンテーション キーの場所](./media/enable-profiler-compute/CopyAIKey.png)
 
-このインスタンスは、アプリケーションと同じである必要があります。 要求ごとにテレメトリ データを送信するように構成されています。
-このインスタンスで、Profiler の結果を使用することもできます。  
-
-Azure ポータルで、「[プロファイラーを有効にする](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler)」の手順を完了して、Profiler 用の Application Insights インスタンスの設定を完了します。 この記事の例では、Web アプリをリンクする必要はありません。 ポータルで Profiler が有効になっていることだけを確認してください。
+次に、「[プロファイラーを有効にする](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler)」の手順を完了して、Profiler 用の Application Insights インスタンスの設定を完了します。 Web アプリをリンクさせる必要はありません。その手順は、App Services リソースでのみ必要となります。 プロファイラーの *[構成]* ブレードで、プロファイラーが有効になっていることだけを確認してください。
 
 
 ## <a name="set-up-the-application-source-code"></a>アプリケーションのソース コードを設定する
 
+### <a name="aspnet-web-applications-cloud-services-web-roles-or-service-fabric-aspnet-web-frontend"></a>ASP.NET Web アプリケーション、Cloud Services Web ロール、Service Fabric ASP.NET Web フロントエンド
 `Request` 操作ごとに、テレメトリ データを Application Insights インスタンスに送信するようにアプリケーションを設定します。  
 
-1. [Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) をアプリケーション プロジェクトに追加します。 NuGet パッケージが次のバージョンであることを確認します。  
+[Application Insights SDK](https://docs.microsoft.com/azure/application-insights/app-insights-overview#get-started) をアプリケーション プロジェクトに追加します。 NuGet パッケージが次のバージョンであることを確認します。  
   - ASP.NET アプリケーションの場合: [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 以降。
   - ASP.NET Core アプリケーションの場合: [Microsoft.ApplicationInsights.AspNetCore](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/) 2.1.0 以降。
   - 他の .NET および .NET Core アプリケーションの場合 (例: Service Fabric ステートレス サービスや Cloud Services worker ロール): [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) または [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) 2.3.0 以降。  
 
-2. アプリケーションが ASP.NET または ASP.NET Core アプリケーション*ではない*場合 (例: Cloud Services worker ロールや Service Fabric Stateless API の場合)、追加で次のインストルメンテーションの設定が必要です。  
+### <a name="cloud-services-worker-roles-or-service-fabric-stateless-backend"></a>Cloud Services worker ロールまたは Service Fabric Stateless バックエンド
+アプリケーションが ASP.NET または ASP.NET Core アプリケーション "*ではない*" 場合 (例: Cloud Services worker ロールや Service Fabric Stateless API の場合)、前出の手順に加え、次のインストルメンテーションの設定が必要です。  
 
   1. アプリケーションの有効期間の初期に次のコードを追加します。  
 
@@ -85,7 +85,7 @@ Azure ポータルで、「[プロファイラーを有効にする](https://doc
     }
     ```
 
-  別の `StartOperation<RequestTelemetry>` スコープ内で `StartOperation<RequestTelemetry>` を呼び出すことはサポートされません。 代わりに、入れ子にしたスコープで `StartOperation<DependencyTelemetry>` を使用できます。 For example:  
+  別の `StartOperation<RequestTelemetry>` スコープ内で `StartOperation<RequestTelemetry>` を呼び出すことはサポートされません。 代わりに、入れ子にしたスコープで `StartOperation<DependencyTelemetry>` を使用できます。 例:   
 
     ```csharp
     using (var getDetailsOperation = client.StartOperation<RequestTelemetry>("GetProductDetails"))
@@ -204,7 +204,7 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
   ```
 
 2. [IIS](https://www.microsoft.com/web/platform/server.aspx) 経由で目的のアプリケーションが実行されている場合は、`IIS Http Tracing` Windows 機能を有効にします。  
-  
+
   1. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All
@@ -217,11 +217,11 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
 ## <a name="enable-the-profiler-on-on-premises-servers"></a>オンプレミス サーバーで Profiler を有効にする
 
-オンプレミス サーバーでの Profiler の有効化は、別名 Application Insights Profiler のスタンドアロン モードでの実行と言います (Azure 診断拡張機能の変更と関連付けられていません)。 
+オンプレミス サーバーでの Profiler の有効化は、別名 Application Insights Profiler のスタンドアロン モードでの実行と言います (Azure 診断拡張機能の変更と関連付けられていません)。
 
 オンプレミス サーバー向けに Profiler を公式にサポートする予定はありません。 このシナリオを実験したい場合は、[サポート コードをダウンロード](https://github.com/ramach-msft/AIProfiler-Standalone)できます。 Microsoft では、このコードを保守したり、このコードに関連する問題と機能リクエストに対応したりする責任を*負いません*。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - アプリケーションへのトラフィックを生成します (たとえば、[可用性テスト](https://docs.microsoft.com/azure/application-insights/app-insights-monitor-web-app-availability)を起動します)。 その後、Application Insights インスタンスへのトレースの送信が開始されるまで 10 ～ 15 分待機します。
 - Azure ポータルで [Profiler トレース](https://docs.microsoft.com/azure/application-insights/app-insights-profiler#enable-the-profiler)を表示します。

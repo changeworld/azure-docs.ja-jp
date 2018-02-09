@@ -7,7 +7,7 @@
 `<deployment_user>` プレースホルダーは、展開資格情報のユーザー名に置き換えます。 cURL によって要求されたら、パスワードを入力します。 アプリの展開資格情報を設定する方法については、「[ユーザー レベルの資格情報の設定とリセット](../articles/app-service/app-service-deployment-credentials.md#userscope)」をご覧ください。   
 
 ```bash
-curl POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
+curl -X POST -u <deployment_user> --data-binary @"<zip_file_path>" https://<app_name>.scm.azurewebsites.net/api/zipdeploy
 ```
 
 この要求により、アップロードされた .zip ファイルからのプッシュ展開がトリガーされます。 次の cURL の例で示すように、https://<アプリ名>.scm.azurewebsites.net/api/deployments エンドポイントを使うことにより、現在および過去の展開を確認できます。 やはり、`<app_name>` はアプリの名前に置き換え、`<deployment_user>` は展開資格情報のユーザー名に置き換えます。

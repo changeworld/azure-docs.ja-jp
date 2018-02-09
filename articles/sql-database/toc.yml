@@ -237,6 +237,10 @@
           href: sql-database-use-batching-to-improve-performance.md
         - name: 接続のガイダンス
           href: sql-database-connectivity-issues.md
+        - name: DNS エイリアスの概要
+          href: dns-alias-overview.md
+        - name: DNS エイリアスの PowerShell
+          href: dns-alias-powershell.md
         - name: ポート - ADO.NET
           href: sql-database-develop-direct-route-ports-adonet-v12.md
 - name: ハウツー ガイド

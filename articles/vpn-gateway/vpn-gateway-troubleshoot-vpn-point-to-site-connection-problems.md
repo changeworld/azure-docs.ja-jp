@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2017
+ms.date: 12/14/2017
 ms.author: genli
-ms.openlocfilehash: 76ab1600903705aad7f18f48f41cb7119c3c09bf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69d363b5ff0b94884cf6d13ae0260f3747e4e69a
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -263,3 +263,52 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 ### <a name="solution"></a>解決策
 
 この問題を解決するには、**C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。
+
+## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>ポイント対サイト VPN クライアントがローカル ドメイン内のリソースの FQDN を解決できません
+
+### <a name="symptom"></a>症状
+
+クライアントがポイント対サイト VPN 接続を使用して Azure に接続するとき、ローカル ドメイン内のリソースの FQND を解決できません。
+
+### <a name="cause"></a>原因
+
+ポイント対サイト VPN クライアントは、Azure 仮想ネットワーク内に構成されている Azure DNS サーバーを使用します。 Azure DNS サーバーはクライアント内に構成されているローカル DNS サーバーに優先するため、すべての DNS クエリは Azure DNS サーバーに送信されます。 Azure DNS サーバーにローカル リソースのレコードがない場合、クエリは失敗します。
+
+### <a name="solution"></a>解決策
+
+問題を解決するには、Azure 仮想ネットワークで使用する Azure DNS サーバーがローカル リソースの DNS レコードを解決できることを確認します。 これを行うには、DNS フォワーダーまたは条件付きフォワーダーを使用できます。 詳細については、「[独自 DNS サーバー使用の名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)」を参照してください。
+
+## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>ポイント対サイト VPN 接続は確立されるが Azure リソースに接続できません 
+
+### <a name="cause"></a>原因
+
+この問題は、VPN クライアントが Azure VPN ゲートウェイからのルートを取得していない場合に発生する可能性があります。
+
+### <a name="solution"></a>解決策
+
+この問題を解決するには、[Azure VPN ゲートウェイをリセット](vpn-gateway-resetgw-classic.md)します。
+
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>エラー: "失効サーバーがオフラインであったため、失効関数が失効を確認できませんでした。(エラー 0x80092013)"
+
+### <a name="causes"></a>原因
+このエラー メッセージは、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr. にアクセスできない場合に発生します。失効を確認するには、この 2 つのサイトにアクセスする必要があります。  この問題は、通常は、プロキシ サーバーが構成されているクライアントで発生します。 一部の環境では、要求がプロキシ サーバーを経由しない場合はエッジ ファイアウォールで拒否されます。
+
+### <a name="solution"></a>解決策
+
+プロキシ サーバーの設定を調べて、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr. にアクセスできることを確認します。
+
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN クライアント エラー: RAS/VPN サーバーに構成されたポリシーにより、接続できませんでした。 (エラー 812)
+
+### <a name="cause"></a>原因
+
+このエラーは、VPN クライアントを認証するために使用する RADIUS サーバーの設定が正しくない場合に発生します。 
+
+### <a name="solution"></a>解決策
+
+RADIUS サーバーが正しく構成されていることを確認します。 詳細については、「[RADIUS 認証と Azure Multi-Factor Authentication Server の統合](../multi-factor-authentication/multi-factor-authentication-get-started-server-radius.md)」を参照してください。
+
+## <a name="error-405-when-you-download-root-certificate-from-vpn-gateway"></a>VPN Gateway からルート証明書をダウンロードするときに "エラー 405" が発生します
+
+### <a name="cause"></a>原因
+
+ルート証明書がインストールされていません。 ルート証明書は、クライアントの**信頼された証明書**ストアにインストールされます。

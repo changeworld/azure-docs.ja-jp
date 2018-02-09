@@ -3,7 +3,7 @@ title: "Azure IoT Hub ジョブについて | Microsoft Docs"
 description: "開発者ガイド - IoT Hub に接続されている複数のデバイスで実行するジョブのスケジュール設定。 ジョブはタグと必要なプロパティを更新でき、複数のデバイス上でダイレクト メソッドを呼び出すことができます。"
 services: iot-hub
 documentationcenter: .net
-author: juanjperez
+author: dominicbetts
 manager: timlt
 editor: 
 ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/24/2017
-ms.author: juanpere
-ms.openlocfilehash: f90ecb70ad12ed05d5d40f8b26a0a4e461c9f835
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 01/29/2018
+ms.author: dobett
+ms.openlocfilehash: 7e0af40b2fd5bbb12d5565765aae4026922aec5c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 
@@ -109,7 +109,7 @@ ContinuationToken は、応答から提供されます。
 | **type** |ジョブの種類: |
 | | **scheduledUpdateTwin**: 必要なプロパティまたはタグを更新するために使用するジョブ。 |
 | | **scheduledDeviceMethod**: デバイス ツインでデバイス メソッドを呼び出すために使用するジョブ。 |
-| **状態** |ジョブの現在の状態。 状態の可能値: |
+| **status** |ジョブの現在の状態。 状態の可能値: |
 | | **pending**: スケジュールが設定され、ジョブ サービスによって選択されるために待機しています。 |
 | | **scheduled**: 将来の時刻のスケジュールが設定されています。 |
 | | **running**: 現在アクティブなジョブです。 |
@@ -130,11 +130,11 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [IoT Hub エンドポイント][lnk-endpoints]: 各 IoT Hub でランタイムと管理の操作のために公開される、さまざまなエンドポイントについて説明します。
 * [調整とクォータ][lnk-quotas]: IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
 * [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
-* [デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語][lnk-query]: デバイス ツインとジョブに関する情報を IoT Hub から取得するために使用できる IoT Hub クエリ言語について説明します。
+* [デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語][lnk-query]: IoT Hub クエリ言語について説明します。 このクエリ言語を使用して、IoT Hub からデバイス ツインとジョブに関する情報を取得します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次のステップ
-この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
+## <a name="next-steps"></a>次の手順
+この記事で説明した概念を試すには、次の IoT Hub のチュートリアルをご覧ください。
 
 * [Schedule and broadcast jobs (ジョブのスケジュールとブロードキャスト)][lnk-jobs-tutorial]
 

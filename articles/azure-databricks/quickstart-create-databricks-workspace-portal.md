@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: c471baa287c3a51e9787cc2103b23c2bab458db2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 8a91e92e0e535b047ddfcfeff53de72d769f05c7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 
@@ -146,7 +146,7 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-Spark クラスターを作成するときに **[Terminate after ___ minutes of activity]\(アクティビティが ___ 分ない場合は終了する\)** チェック ボックスをオンにした場合、非アクティブ状態で指定した時間が経過すると、クラスターは自動的に終了します。
+Spark クラスターを作成するときに **[Terminate after __ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにした場合、非アクティブ状態で指定した時間が経過すると、クラスターは自動的に終了します。
 
 チェック ボックスをオンにしなかった場合は、クラスターを手動で終了する必要があります。 そのためには、Azure Databricks ワークスペースの左側のウィンドウで、**[クラスター]** をクリックします。 終了するクラスターで、**[Actions]\(アクション\)** 列の下にある省略記号をポイントし、**[Terminate]\(終了\)** アイコンをクリックします。
 

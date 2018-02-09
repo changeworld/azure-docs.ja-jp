@@ -42,6 +42,9 @@
 ### [Azure PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
 ## リダイレクトを構成する
 ### [Azure PowerShell](application-gateway-configure-redirect-powershell.md)
+## 外部リダイレクトの構成
+### [Azure PowerShell](tutorial-external-site-redirect-cli.md)
+### [Azure CLI](tutorial-external-site-redirect-powershell.md)
 ## Web アプリをバックエンド プールのメンバーとして構成する
 ### [Azure PowerShell](application-gateway-web-app-powershell.md)
 ## 正常性プローブを構成する

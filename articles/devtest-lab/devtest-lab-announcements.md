@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 1/29/2018
 ms.author: v-craic
-ms.openlocfilehash: d376909a46da11ac1b6b1fa968e53ebef8f3dbf7
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 99b0938d5f4c8b022ead3473a0367de5d75cd6ff
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="post-an-announcement-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs のラボへお知らせを投稿する
 
@@ -47,6 +47,13 @@ ms.lasthandoff: 01/02/2018
 
 1. このラボのユーザーへのメッセージを作成するには **[有効]** を **[はい]** に設定します。
 
+1. **有効期限日**を入力して、その日を過ぎると通知がユーザーに表示されないようにできます。 有効期限日を入力しない場合、通知は無効にするまで残ります。
+
+   > [!NOTE]
+   > 有効期限日が過ぎた通知は、ユーザーに表示されなくなります。ただし、**[ラボのお知らせ]** ウィンドウには残ります。 それを編集または再有効化して、再度アクティブにすることができます。
+   >
+   >
+
 1. **[お知らせのタイトル]** と **[お知らせのテキスト]** を入力します。
 
    タイトルは 100 文字まで入力でき、ラボの [概要] ページに表示されます。 ユーザーがタイトルを選択すると、お知らせのテキストが表示されます。
@@ -58,7 +65,7 @@ ms.lasthandoff: 01/02/2018
 
 1. お知らせを投稿する準備ができたら、**[保存]** を選択します。
 
-このお知らせをラボのユーザーに表示する必要がなくなったら、**[Lab announcement]\(ラボのお知らせ\)** ページに戻り、**[有効]** を **[いいえ]** に設定します。
+このお知らせをラボのユーザーに表示する必要がなくなったら、**[Lab announcement]\(ラボのお知らせ\)** ページに戻り、**[有効]** を **[いいえ]** に設定します。 有効期限日を指定した場合は、その日付を過ぎると通知が自動的に無効になります。
 
 ## <a name="steps-for-users-to-view-an-announcement"></a>ユーザーがお知らせを表示するための手順
 

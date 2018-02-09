@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: 504010a39a4012b9a9edb60bb9a5b33ac20499c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e1f6177ccacf24955763982189bcdb1ef69c788
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-expiration-time-to-live"></a>メッセージの有効期限 (Time to Live)
 
@@ -25,11 +25,11 @@ ms.lasthandoff: 10/11/2017
 
 キューおよびトピックがアプリケーションの部分的実行、またはアプリケーションの一部の実行の文脈で使用されることが多い開発およびテスト環境では、次のテストを何もない状態で開始できるよう、保留中のテスト メッセージをガベージ コレクションで自動的に回収する必要もあります。
 
-各メッセージの有効期限は、相対的な期間を指定する、[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) システム プロパティを設定することで制御できます。 メッセージがエンティティにエンキューされると、有効期限は、絶対瞬間になります。 その時点で、[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) プロパティに [**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) の値が設定されます。
+各メッセージの有効期限は、相対的な期間を指定する、[TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) システム プロパティを設定することで制御できます。 メッセージがエンティティにエンキューされると、有効期限は、絶対瞬間になります。 その時点で、[ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc) プロパティに [(**EnqueuedTimeUtc**](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.enqueuedtimeutc#Microsoft_ServiceBus_Messaging_BrokeredMessage_EnqueuedTimeUtc) + [**TimeToLive**)](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) の値が設定されます。
 
 **ExpiresAtUtc** 瞬間を過ぎると、メッセージは取得できなくなります。 有効期限設定は、現在配信がロックされているメッセージには影響しません。これらのメッセージは、引き続き正常に処理されます。 ロックの有効期限が切れた、またはメッセージが破棄されると、有効期限切れは直ちに有効になります。
 
-メッセージがロックされている状態では、有効期限が切れたとされたメッセージをアプリケーションが所有している可能性があります。 アプリケーションがメッセージの処理を進めるか、メッセージを破棄するかは、実装によって異なります。
+メッセージがロックされている状態では、有効期限が切れたメッセージをアプリケーションが所有している可能性があります。 アプリケーションがメッセージの処理を進めるか、メッセージを破棄するかは、実装によって異なります。
 
 ## <a name="entity-level-expiration"></a>エンティティ レベルの有効期限
 
@@ -51,10 +51,10 @@ Service Bus のキュー、トピック、およびサブスクリプション�
 
 この機能は、[autoDeleteOnIdle](/azure/templates/microsoft.servicebus/namespaces/queues) プロパティを使用して有効にでき、このプロパティはエンティティがアイドル状態 (未使用) であり続けると自動的に削除される期間を設定します。 最小時間は、5 分です。
  
-プロパティは、Azure Resource Manager を操作して、または .NET Framework クライアント [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 経由で設定する必要があります。 ポータルからは設定できません。
+**autoDeleteOnIdle** プロパティは、Azure Resource Manager を操作して、または .NET Framework クライアント [NamespaceManager](/dotnet/api/microsoft.servicebus.namespacemanager) API 経由で設定する必要があります。 ポータルからは設定できません。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

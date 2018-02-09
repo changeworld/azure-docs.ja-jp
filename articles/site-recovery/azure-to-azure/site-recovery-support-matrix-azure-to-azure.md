@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.openlocfilehash: 46ca545cc73d7b8118aae4662c31965c7db87df5
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 0d55b1f4224ba25b6d6dc109cc7e47d21b1fa98e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure 間でのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
@@ -149,7 +149,7 @@ OS ディスクの最大サイズ | 2048 GB | ｢[VM で使用されるディス
 データ ディスクの最大サイズ | 4095 GB | ｢[VM で使用されるディスク](../../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)」を参照してください。
 データ ディスクの数 | 特定の Azure VM サイズでサポートされている最大数 64 | [Azure 仮想マシンのサイズ](../../virtual-machines/windows/sizes.md)に関するページをご覧ください
 一時ディスク | 常にレプリケーションから除外 | 一時ディスクは常にレプリケーションから除外されます。 Azure ガイダンスに従って、一時ディスクには永続データを配置しないでください。 詳細については、[Azure VM の一時ディスク](../../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)に関する記事をご覧ください。
-ディスク上のデータの変更率 | ディスクあたり最大 6 MBps | ディスク上の平均データ変更率が継続的に 6 MBps を超えると、レプリケーションが追いつきません。 ただし、データの急激な増加が時折しか発生せず、データ変更率が一時的に 6 MBps を超えてから低下する場合は、レプリケーションは追いつきます。 この場合、復旧ポイントは、少し後ろにずれることがあります。
+ディスク上のデータの変更率 | 最大値は、Premium ストレージの場合はディスクあたり 10 MBps、Standard ストレージの場合はディスクあたり 2 MBps です | ディスク上の平均データ変更率が継続的に 10 MBps (Premium の場合) と 2 MBps (Standard の場合) を超えると、レプリケーションは追いつかなくなります。 ただし、データの急激な増加が時折しか発生せず、データ変更率が一時的に 10 MBps (Premium の場合) と 2 MBps (Standard の場合) を超えてから低下する場合、レプリケーションは追いつきます。 この場合、復旧ポイントは、少し後ろにずれることがあります。
 Standard Storage アカウントのディスク | サポートされています |
 Premium Storage アカウントのディスク | サポートされています | VM のディスクが Premium Storage アカウントと Standard Storage ストレージ アカウントに分散している場合は、ディスクごとに異なるターゲット ストレージ アカウントを選択して、ターゲット リージョンのストレージ構成を確実に同じできます。
 Standard 管理ディスク | サポートされていません |  
@@ -164,7 +164,7 @@ GRS | サポートされています |
 RA-GRS | サポートされています |
 ZRS | サポートされていません |  
 クールおよびホット ストレージ | サポートされていません | 仮想マシン ディスクは、クールおよびホット ストレージではサポートされません
-Virtual Networks のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク)  | いいえ | レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされていません。 
+Virtual Networks のサービス エンドポイント (Azure Storage ファイアウォールおよび仮想ネットワーク)  | いいえ  | レプリケートされたデータの格納に使用するキャッシュ ストレージ アカウントで、特定の Azure 仮想ネットワークへのアクセスを許可することはサポートされていません。
 
 >[!IMPORTANT]
 > パフォーマンスの問題を回避するために、[Linux](../../virtual-machines/linux/disk-scalability-targets.md) または [Windows](../../virtual-machines/windows/disk-scalability-targets.md) 仮想マシンの VM ディスクのスケーラビリティおよびパフォーマンスのターゲットを確認してください。 既定の設定に従うと、Site Recovery により、ソース構成に基づいて必要なディスクとストレージ アカウントが作成されます。 設定をカスタマイズして独自の設定を選択する場合は、ソース VM のディスクのスケーラビリティおよびパフォーマンスのターゲットに従ってください。
@@ -190,6 +190,6 @@ Azure 管理 DNS | サポートされています |
 VNet 間接続 | サポートされています | [ネットワーク ガイダンスのドキュメント](site-recovery-azure-to-azure-networking-guidance.md)を参照してください。  
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure VM のレプリケートに関するネットワーク ガイダンス](site-recovery-azure-to-azure-networking-guidance.md)の詳細を確認する
 - [Azure VM をレプリケート](azure-to-azure-quickstart.md)してワークロードの保護を開始する

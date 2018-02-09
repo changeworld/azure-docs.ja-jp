@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: Workday を構成し、オンプレミスの Active Directory および Azure Active Directory による自動ユーザー プロビジョニングを行う | Microsoft Docs"
+title: "チュートリアル: Workday を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
 description: "Workday を Active Directory および Azure Active Directory の ID データのソースとして使用する方法について説明します。"
 services: active-directory
 author: asmalser-msft
@@ -11,15 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/26/2017
+ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: f267a59fadb7f402ac81f43b5465b6ac1f28943e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3a84a7ae7572145df8154ec5cbccf9f97e81866b
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configure-workday-for-automatic-user-provisioning-with-on-premises-active-directory-and-azure-active-directory"></a>チュートリアル: Workday を構成し、オンプレミスの Active Directory および Azure Active Directory による自動ユーザー プロビジョニングを行う
+# <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
+
 このチュートリアルでは、Workday から Active Directory と Azure Active Directory の両方にユーザーをインポートするために必要な手順と、Workday にいくつかの属性を書き戻すオプションについて説明します。 
 
 
@@ -176,7 +177,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 1. 検索ボックスにドメインのセキュリティ ポリシーを入力し、**[機能領域のドメイン セキュリティ ポリシー]** リンクをクリックします。  
    
     ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "ドメイン セキュリティ ポリシー")  
-2. システムを検索し、 **システム** の機能領域を選択します。  **[OK]**をクリックします。  
+2. システムを検索し、 **システム** の機能領域を選択します。  Click **OK**.  
    
     ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750987.png "ドメイン セキュリティ ポリシー")  
 3. システム機能領域のセキュリティ ポリシーの一覧で、**[セキュリティ管理]** を展開し、ドメイン セキュリティ ポリシーの **[External Account Provisioning]** を選択します。  
@@ -456,7 +457,7 @@ Powershell コマンドで指定された Active Directory または Azure Activ
 
 6. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
-![Azure Portal](./media/active-directory-saas-workday-inbound-tutorial/WD_3.PNG)
+![Azure ポータル](./media/active-directory-saas-workday-inbound-tutorial/WD_3.PNG)
 
 
 ## <a name="configuring-user-provisioning-to-azure-active-directory"></a>Azure Active Directory へのユーザー プロビジョニングの構成
@@ -553,7 +554,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **この属性を使用してオブジェクトを照合する** – このマッピングを使用して、Workday と Azure AD 間でユーザーを一意に識別するかどうかを示します。 これは、通常、Workday の Worker ID フィールドで設定され、一般的に Azure AD の従業員 ID 属性 (新規) または拡張属性にマッピングされます。
 
-   * **照合の優先順位** – 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
+   * **照合の優先順位** - 一致させる属性を複数設定できます。 複数の場合は、このフィールドで定義された順序で評価されます。 1 件でも一致が見つかると、一致する属性の評価はそれ以上行われません。
 
    * **このマッピングを適用する**
 
@@ -648,6 +649,6 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: df31e5b0dfd3b41f5fc125bf3a59cfd6e8e5f4e1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 5d624735a91d0828c4ac3796bde6c17acf6e131a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="split-column-by-example-transformation"></a>[Split Column by Example] (例による列の分割) 変換
 この変換は、ユーザーが入力することなく、予測して、意味のある境界上で列のコンテンツを分割します。 分割アルゴリズムが、列のコンテンツを分析した後で境界を選択します。 これらの境界は以下の項目によって定義できます
@@ -52,6 +52,11 @@ ms.lasthandoff: 12/18/2017
 ユーザーは、分割の例を提供するために、あるセルから別のセルに値をコピーして貼り付けることができます。
 
 ユーザーは、変換エディターでリンクをクリックして、**基本モード**と**詳細モード**を切り替えられます。
+
+### <a name="transform-editor-send-feedback"></a>変換エディター: フィードバックの送信
+
+**[フィードバックの送信]** リンクをクリックすると、**[フィードバック]** ダイアログ ボックスが開き、パラメーターの選択内容とユーザー入力例があらかじめ設定されたコメント蘭が表示されます。 ユーザーは、コメント蘭の内容を確認し、問題の理解に役立つ詳細を入力する必要があります。 データを Microsoft と共有しない場合は、あらかじめ入力されているサンプル データを削除してから、**[フィードバックの送信]** をクリックする必要があります。 
+
 
 ### <a name="editing-an-existing-transformation"></a>既存の変換の編集
 
@@ -160,7 +165,7 @@ ms.lasthandoff: 12/18/2017
 
 ### <a name="splitting-weights-with-units"></a>単位付きの重量の分割
 
-|重量|Weight_1|Weight_2|
+|Weight|Weight_1|Weight_2|
 |:-----|:-----|:-----|
 |2.27KG|2.27|KG|
 |1L|1|L|

@@ -1,6 +1,22 @@
-Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) コマンドを使用して App Service プランを作成します。
+---
+title: "インクルード ファイル"
+description: "インクルード ファイル"
+services: app-service
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 02/02/2018
+ms.author: cephalin
+ms.custom: include file
+ms.openlocfilehash: f0aae1b368e30263d6846f507ae03f87d010295f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/03/2018
+---
+Cloud Shell で [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) コマンドを使用して、App Service プランを作成します。
 
-[!INCLUDE [app-service-plan](app-service-plan.md)]
+<!-- [!INCLUDE [app-service-plan](app-service-plan.md)] -->
 
 次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
 

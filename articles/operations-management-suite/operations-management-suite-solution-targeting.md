@@ -1,6 +1,6 @@
 ---
-title: "OMS でのソリューションのターゲット設定 | Microsoft Docs"
-description: "ソリューションのターゲット設定は Operations Management Suite (OMS) 管理ソリューションの機能で、この機能により、管理ソリューションを特定のエージェント セットに制限することができます。  この記事では、スコープの構成を作成して、ソリューションに適用する方法について説明します。"
+title: "Azure での管理ソリューションのターゲット設定 | Microsoft Docs"
+description: "管理ソリューションのターゲット設定を行うことで、管理ソリューションを特定のエージェント セットに制限できます。  この記事では、スコープの構成を作成して、ソリューションに適用する方法について説明します。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: cb73a2d7ae57a5a11869259dbe913ae83ffb2b01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e24a7540a67f842b8229223bf6602cd9e0ee5dbd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-solution-targeting-in-operations-management-suite-oms-to-scope-management-solutions-to-specific-agents-preview"></a>Operations Management Suite (OMS) のソリューションのターゲット設定を使用して、管理ソリューションのスコープを特定のエージェントに制限する (プレビュー)
-ソリューションを OMS に追加すると、既定では、そのソリューションは、Log Analytics ワークスペースに接続されているすべての Windows エージェントおよび Linux エージェントに自動的にデプロイされます。  ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。  この記事では、OMS の機能、**ソリューションのターゲット設定**を使用する方法について説明します。この機能を使用すると、ソリューションにスコープを適用することができます。
+# <a name="targeting-management-solutions-in-azure-preview"></a>Azure での管理ソリューションのターゲット設定 (プレビュー)
+サブスクリプションに管理ソリューションを追加すると、ソリューションは、既定では Log Analytics ワークスペースに接続されているすべての Windows エージェントと Linux エージェントに自動的にデプロイされます。  ソリューションを特定のエージェント セットに制限することで、コストを管理し、ソリューション用に収集されるデータの量を制限することもできます。  この記事では、**ソリューションのターゲット設定**を使用する方法について説明します。この機能を使用すると、ソリューションにスコープを適用することができます。
 
 ## <a name="how-to-target-a-solution"></a>ソリューションにターゲットを設定する方法
-ソリューションにターゲットを設定するには、次のセクションで説明する 3 つの手順に従います。  それぞれの手順に OMS ポータルと Azure Portal の両方が必要です。
+ソリューションにターゲットを設定するには、次のセクションで説明する 3 つの手順に従います。 
 
 
 ### <a name="1-create-a-computer-group"></a>1.コンピューター グループの作成
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 ワークスペースにコンピューター グループが作成されたら、1 つ以上のソリューションに適用できるスコープ構成に、そのグループを追加します。
  
  
- ### <a name="2-create-a-scope-configuration"></a>手順 2.スコープ構成の作成
+ ### <a name="2-create-a-scope-configuration"></a>2.スコープ構成の作成
  1 つ以上のコンピューター グループが含まれる**スコープ構成**を、1 つ以上のソリューションに適用できます。 
  
  次のプロセスを使用して、スコープ構成を作成します。  
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
  6. **[OK]** をクリックして、スコープ構成を作成します。 
 
 
- ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>3.ソリューションへのスコープ構成の適用。
+ ### <a name="3-apply-the-scope-configuration-to-a-solution"></a>手順 3.ソリューションへのスコープ構成の適用。
 作成したスコープ構成は、1 つ以上のソリューションに適用できます。  1 つのスコープ構成を複数のソリューションで使用することはできますが、ソリューションが使用できるスコープ構成は、ソリューションごとに 1 つだけです。
 
 次のプロセスを使用して、スコープ構成を適用します。  
@@ -72,6 +72,6 @@ ms.lasthandoff: 10/11/2017
 
 - エージェントの正常性評価
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 「[Azure Log Analytics 管理ソリューションをワークスペースに追加する](../log-analytics/log-analytics-add-solutions.md)」で管理ソリューション (環境にインストールできるソリューションなど) について学習する。
 - 「[Log Analytics のログ検索におけるコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)」でコンピューター グループの作成について学習する。

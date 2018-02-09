@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sdash
-ms.openlocfilehash: b090699cf90c74af8480b811901b6e3078b007b3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8c1d8600b7f4aaa1e95f4acfbbdd55fdbfebb8fb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/23/2018
 
 ## <a name="what-does-component-mean-in-the-context-of-application-insights"></a>Application Insights のコンテキストにおけるコンポーネントの意味
 
-コンポーネントは、分散/マイクロサービス アプリケーションの、個別にデプロイできる部分です。 開発者と運用チームには、これらのアプリケーション コンポーネントによって生成されたテレメトリに対して、コード レベルの可視性またはアクセスがあります。 
+コンポーネントは、分散/マイクロサービス アプリケーションの、個別にデプロイできる部分です。 開発者と運用チームには、これらのアプリケーション コンポーネントによって生成されたテレメトリに対して、コード レベルの可視性またはアクセスがあります。
 
 * コンポーネントは、チームや組織が (コードやテレメトリに) アクセスできない可能性がある SQL や EventHub などの "観察される" 外部依存関係とは異なります。
 * コンポーネントは、任意の数のサーバー/ロール/コンテナーのインスタンス上で実行されます。
@@ -40,11 +40,11 @@ ms.lasthandoff: 01/23/2018
 
 ![プレビューの有効化](media/app-insights-e2eTxn-diagnostics/previews.png)
 
-現在、このプレビューはサーバー側の要求、依存関係、例外に対して使用可能です。 **[検索結果]**、**[パフォーマンス]**、または **[失敗]** トリアージ エクスペリエンスから新しいエクスペリエンスにアクセスできます。 プレビューでは対応する従来の詳細ブレードが置き換えられます。 
+現在、このプレビューはサーバー側の要求、依存関係、例外に対して使用可能です。 **[検索結果]**、**[パフォーマンス]**、または **[失敗]** トリアージ エクスペリエンスから新しいエクスペリエンスにアクセスできます。 プレビューでは対応する従来の詳細ブレードが置き換えられます。
 
 ![パフォーマンスのサンプル](media/app-insights-e2eTxn-diagnostics/performanceSamplesClickThrough.png)
 
-## <a name="transaction-diagnostics-experience"></a>トランザクションの診断エクスペリエンス 
+## <a name="transaction-diagnostics-experience"></a>トランザクションの診断エクスペリエンス
 このビューには 3 つの重要な部分があります。コンポーネント間のトランザクションのグラフ、特定のコンポーネント操作から送信されるすべてのテレメトリの時系列順の一覧、左側で選択されたテレメトリ項目の詳細ウィンドウです。
 
 ![重要な部分](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
@@ -77,6 +77,10 @@ ms.lasthandoff: 01/23/2018
 ## <a name="profiler-and-snapshot-debugger"></a>Profiler とスナップショット デバッガー
 
 [Application Insights Profiler](app-insights-profiler.md) または[スナップショット デバッガー](app-insights-snapshot-debugger.md)は、パフォーマンスと障害の問題をコード レベルで診断するのに役立ちます。 このエクスペリエンスを使用して、任意のコンポーネントからの Profiler トレースやスナップショットをシングル クリックで表示できます。
+
+プロファイラーが機能しない場合は、**serviceprofilerhelp@microsoft.com** までお問い合わせください。
+
+スナップショット デバッガーが機能しない場合は、**snapshothelp@microsoft.com** までお問い合わせください。
 
 ![デバッガーの統合](media/app-insights-e2eTxn-diagnostics/debugSnapshot.png)
 

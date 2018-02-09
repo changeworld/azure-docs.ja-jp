@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 8d709936bfba5c89091d7f26449d165bddb930de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 49e22c5136da67f62a43374817fb1e462fcbcaf0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Web サービスのスループットを管理するためのクラスターのスケーリング
 
@@ -67,12 +67,12 @@ Kubernetes レプリカ ポッドの詳細については、[Kubernetes ポッ�
 
 CLI を使用したクラスターのスケーリングには 2 つの方法があります。
 
-- 自動スケール
+- Autoscale
 - 静的スケール
 
 自動スケールは、サービスの作成時に既定でアクティブになり、ほとんどの状況で推奨されるスケーリング方法です。
 
-##### <a name="autoscale"></a>自動スケール
+##### <a name="autoscale"></a>Autoscale
 
 次のコマンドでは、自動スケールを有効にし、サービスのレプリカの最小数と最大数を設定します。
 
@@ -85,7 +85,7 @@ az ml service update realtime -i <service id> --autoscale-enabled true --autosca
 
 | パラメーター名 | 型 | 説明 |
 |--------------------|--------------------|--------------------|
-| `autoscale-enabled` | boolean | 自動スケールを有効にするかどうかを指定します。 既定値: true |
+| `autoscale-enabled` | ブール値 | 自動スケールを有効にするかどうかを指定します。 既定値: true |
 | `autoscale-min-replicas` | integer | ポッドの最小数を指定します。 0 以上にする必要があります。 既定値: 1 |
 | `autoscale-max-replicas` | integer | ポッドの最大数を指定します。 1 以上にする必要があります。 autoscale-max-replicas が autoscale-min-replicas より小さい場合は、autoscale-max-replicas が無視されます。 既定値: 10 |
 | `autoscale-refresh-period-seconds` | integer | 自動スケールの更新間隔を秒単位で指定します。 既定値: 1 |
@@ -159,6 +159,6 @@ Starting to serve on 127.0.0.1:8010
 
 ダッシュボードのメイン画面で、左側のナビゲーション バーの **[Deployments]\(デプロイ\)** をクリックします。 ナビゲーション ウィンドウが表示されない場合は、左上のこのアイコン ![3 つの短い水平線からなるメニュー](media/how-to-scale-clusters/icon-hamburger.png) を選択してください。
 
-変更するデプロイを見つけて、右側のこのアイコン ![縦に並んだ 3 つのドットからなるメニュー アイコン](media/how-to-scale-clusters/icon-kebab.png) を右クリックし、**[View/edi YAML]\(YAML の表示/編集\)** をクリックします。
+変更するデプロイを見つけて、右側のこのアイコン ![縦に並んだ 3 つのドットからなるメニュー アイコン](media/how-to-scale-clusters/icon-kebab.png) を右クリックし、**[YAML の表示]/[YAML の編集]** をクリックします。
 
 デプロイの編集画面で、*[spec]\(仕様\)* ノードを見つけ、*[replicas]\(レプリカ数\)* の値を変更して **[Update]\(更新\)** をクリックします。

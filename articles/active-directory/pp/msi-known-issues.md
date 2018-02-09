@@ -3,7 +3,7 @@ title: "Azure Active Directory の管理対象サービス ID (MSI) の FAQ と�
 description: "Azure Active Directory の管理対象サービス ID の既知の問題です。"
 services: active-directory
 documentationcenter: 
-author: BryanLa
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/15/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7a71010567a76569da969db3d53f71535f96f2d0
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 8820691f5b7c6dbd2c15faede75de123f779b167
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="faq-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題
 
@@ -57,6 +57,23 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 各値の説明: 
 - Windows の拡張機能の名前と種類: ManagedIdentityExtensionForWindows
 - Linux の拡張機能の名前と種類: ManagedIdentityExtensionForLinux
+
+### <a name="are-there-rbac-roles-for-user-assigned-identities"></a>ユーザー割り当て ID に対する RBAC ロールはありますか。
+はい:
+1. MSI Contributor: 
+
+- 可能: CRUD ユーザー割り当て ID。 
+- 不可能: ユーザー割り当て ID のリソースへの割り当て  (ID の VM への割り当てなど)。
+
+2. MSI Operator: 
+
+- 可能: ユーザー割り当て ID のリソースへの割り当て  (ID の VM への割り当てなど)。
+- 不可能: CRUD ユーザー割り当て ID。
+
+注: 組み込みの共同作成者ロールは、上記のすべてのアクションを実行できます。 
+- CRUD ユーザー割り当て ID
+- ユーザー割り当て ID のリソースへの割り当て  (ID の VM への割り当てなど)。
+
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -104,10 +121,9 @@ az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 
 - すべてのユーザー割り当て MSI を削除する唯一の方法は、システム割り当て MSI を有効にすることです。 
 - VM に対する VM 拡張機能のプロビジョニングは、DNS 検索エラーが原因で失敗することがあります。 VM を再起動して、もう一度やり直してください。 
-- Azure CLI: `Az resource show` および `Az resource list` は、ユーザー割り当て MSI を備えた VM 上では失敗します。 この問題を回避するには、`az vm/vmss show` を使用してください。
+- '存在しない' MSI を追加すると、VM が失敗します。 *注: MSI が存在しない場合の ID 割り当ての失敗に対する修正プログラムがロールアウトされています*
 - Azure Storage チュートリアルは、現時点では米国中部 EUAP のみで利用できます。 
-- ユーザー割り当て MSI にリソースへのアクセスが付与されると、そのリソースの IAM ブレードに "データにアクセスできません" と表示されます。 この問題を回避するには、CLI を使用してそのリソースに対するロールの割り当てを表示および編集してください。
-- ユーザー割り当て MSI の名前にアンダースコアを使用することは、サポートされていません。
+- 名前に特殊文字 (アンダースコアなど) が含まれるユーザー割り当て MSI の作成はサポートされていません。
 - 2 番目のユーザー割り当て ID を追加すると、clientID はこの ID に対するトークンを要求できなくなる場合があります。 この問題を軽減するには、次の 2 つのバッシュ コマンドを使用して、MSI VM 拡張機能を再起動します。
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler disable"`
  - `sudo bash -c "/var/lib/waagent/Microsoft.ManagedIdentity.ManagedIdentityExtensionForLinux-1.0.0.8/msi-extension-handler enable"`

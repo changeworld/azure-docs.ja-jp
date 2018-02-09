@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: a88b5da8fa504e0528caa7fa212d4cec26d1cf66
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: 0dd3533ab1556b334c09ba69d096b06c8be85cc8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>.NET Standard で EventProcessorHost を使用したメッセージ受信を開始する
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/28/2017
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成  
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。  
+1. [Azure Portal](https://portal.azure.com) にサインインします。  
 2. ポータルの左側のナビゲーション ウィンドウで **[新規]** をクリックし、**[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。  
 3. ストレージ アカウント ウィンドウのフィールドを入力して、**[作成]** をクリックします。
 
@@ -212,9 +212,9 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 4. プログラムを実行し、エラーがないことを確認します。
 
-ご利用ありがとうございます。 イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受信しました。
+お疲れさまでした。 イベント プロセッサ ホストを使用して、イベント ハブからメッセージを受信しました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

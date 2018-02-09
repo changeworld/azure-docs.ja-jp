@@ -1,22 +1,22 @@
 ---
 title: "Java リモート監視ソリューションのデプロイ - Azure | Microsoft Docs"
-description: "このチュートリアルでは、リモート監視の事前構成済みソリューション Java マイクロサービスを CLI を使用してプロビジョニングする方法について説明します。"
+description: "このチュートリアルでは、CLI を使用してリモート監視の事前構成済みソリューションをプロビジョニングする方法について説明します。"
 services: 
 suite: iot-suite
 author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 01/29/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: ea3764299d07f548abbc2857a3adbfb4dc50dec8
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 94c3db3286623264e9df7873962d10dd5cc662d4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="deploy-the-remote-monitoring-preconfigured-solution-using-the-cli"></a>CLI を使用してリモート監視の構成済みソリューションをデプロイする
 
@@ -52,10 +52,12 @@ pcs login
 
 構成済みのソリューションをデプロイするときに、デプロイ プロセスを構成するいくつかのオプションがあります。
 
-| オプション | 値 | 説明 |
+| オプション | 値 | [説明] |
 | ------ | ------ | ----------- |
-| SKU    | `basic`、`standard` | _基本_デプロイは、テストおよびデモを目的としており、すべてのマイクロサービスを単一の仮想マシンにデプロイします。 _標準_デプロイは、実稼働を目的としており、マイクロサービスを複数の仮想マシンにデプロイします。 |
+| SKU    | `basic`、`standard`、`local` | _基本_デプロイは、テストおよびデモを目的としており、すべてのマイクロサービスを単一の仮想マシンにデプロイします。 _標準_デプロイは、実稼働を目的としており、マイクロサービスを複数の仮想マシンにデプロイします。 _ローカル_ デプロイは、ローカル コンピューターでマイクロサービスを実行するように Docker コンテナーを構成し、クラウドで Azure サービス (ストレージや Cosmos DB など) を使用します。 |
 | ランタイム | `dotnet`、`java` | マイクロサービスの言語の実装を選択します。 |
+
+ローカル デプロイの使用方法の詳細については、「[Running the remote monitoring solution locally](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Running-the-Remote-Monitoring-Solution-Locally#deploy-azure-services-and-set-environment-variables)」(リモート監視ソリューションのローカルでの実行) をご覧ください。
 
 ## <a name="deploy-the-preconfigured-solution"></a>構成済みソリューションのデプロイ
 
@@ -94,7 +96,7 @@ pcs -h
 
 CLI の詳細については、[CLI の使用方法](https://github.com/Azure/pcs-cli/blob/master/README.md)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

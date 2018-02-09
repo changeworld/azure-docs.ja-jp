@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/06/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 6dd9045d7aa8d4dc8b3a1acbe6f927e232d9b505
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b01412202b5091ad3ae420089049bf456f9a30b
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
 
@@ -31,12 +31,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="current-architecture"></a>現在のアーキテクチャ
 Service Bus では、複数のメッセージング ストアを使用して、キューまたはトピックに送信されたメッセージを格納します。 パーティション分割されていないキューまたはトピックは 1 つのメッセージング ストアに割り当てられます。 このメッセージング ストアを使用できない場合、そのキューまたはトピックに対するすべての操作が失敗します。
 
-Service Bus のメッセージング エンティティ (キュー、トピック、リレー) はすべて、データセンターと連携する 1 つのサービスの名前空間に存在します。 Service Bus では、データの自動 geo レプリケーションを有効にすることや、名前空間が複数のデータセンターにまたがることを許可していません。
-
-## <a name="protecting-against-acs-outages"></a>ACS の障害に対する保護
-ACS の資格情報を使用している場合に ACS を使用できなくなると、クライアントはトークンを取得できなくなります。 ACS が停止した時点でトークンを取得済みのクライアントは、トークンの期限が切れるまで引き続き Service Bus を使用できます。 トークンの既定の有効期間は 3 時間です。
-
-ACS の障害から保護するには、Shared Access Signature (SAS) トークンを使用します。 この場合、クライアントはシークレット キー付きの自主生成したトークンに署名することで、Service Bus に対して直接認証します。 ACS の呼び出しは必要ありません。 SAS トークンについて詳しくは、「[Service Bus 認証][Service Bus authentication]」をご覧ください。
+Service Bus のメッセージング エンティティ (キュー、トピック、リレー) はすべて、データセンターと連携する 1 つのサービスの名前空間に存在します。 Service Bus は、名前空間のレベルで、[*geo ディザスター リカバリー*と *geo レプリケーション*](service-bus-geo-dr.md)の両方をサポートするようになりました。
 
 ## <a name="protecting-queues-and-topics-against-messaging-store-failures"></a>メッセージング ストアのエラーからキューおよびトピックを保護する
 パーティション分割されていないキューまたはトピックは 1 つのメッセージング ストアに割り当てられます。 このメッセージング ストアを使用できない場合、そのキューまたはトピックに対するすべての操作が失敗します。 一方、パーティション分割されたキューは複数のフラグメントで構成されます。 各フラグメントは異なるメッセージング ストアに格納されます。 パーティション分割されたキューまたはトピックにメッセージが送信されると、Service Bus はそのメッセージをいずれかのフラグメントに割り当てます。 対応するメッセージング ストアを使用できない場合は、可能であれば Service Bus はメッセージを別のフラグメントに書き込みます。 パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
@@ -82,9 +77,14 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
 
 [Service Bus の仲介型メッセージを使用した geo レプリケーション][Geo-replication with Service Bus Brokered Messages] のサンプルでは、メッセージング エンティティのパッシブ レプリケーションについて説明しています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="geo-replication"></a>geo レプリケーション
+
+Service Bus は、名前空間のレベルで、geo ディザスター リカバリーと geo レプリケーションをサポートします。 詳細については、「[Azure Service Bus の geo ディザスター リカバリー](service-bus-geo-dr.md)」を参照してください。 [Premium SKU](service-bus-premium-messaging.md) でのみ利用できるディザスター リカバリー機能は、メタデータの災害復旧を実装しており、一次および二次障害復旧の名前空間に依存しています。
+
+## <a name="next-steps"></a>次の手順
 ディザスター リカバリーの詳細については、次の記事を参照してください。
 
+* [Azure Service Bus の geo ディザスター リカバリー](service-bus-geo-dr.md)
 * [Azure SQL Database の継続性][Azure SQL Database Business Continuity]
 * [回復性に優れた Azure 用アプリケーションの設計][Azure resiliency technical guidance]
 

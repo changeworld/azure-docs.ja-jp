@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: rogirdh
-ms.openlocfilehash: 9878936b5dd76730633dec16b1c3a3eaac78e95a
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: fb6db6555171b65767a715c6b4c8ff37f42c94ef
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-cosmos-db-using-the-mongoose-framework-with-azure-cosmos-db"></a>Azure Cosmos DB: Azure Cosmos DB で Mongoose フレームワークを使用する
 
@@ -55,7 +55,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 1. 次の ```npm install``` オプションのいずれかを使用して、必要なパッケージをインストールします。
     * Mongoose: ```npm install mongoose --save```
     * Dotenv (.env ファイルからシークレットを読み込む場合): ```npm install dotenv --save```
-    
+
     >[!Note]
     > ```--save``` フラグによって、package.json ファイルに依存関係が追加されます。
 
@@ -86,7 +86,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     > ここで、環境変数は、'dotenv' npm パッケージを使用して process.env.{variableName} によって読み込まれます。
 
     Azure Cosmos DB に接続したら、Mongoose でのオブジェクト モデルのセットアップを開始できます。
-    
+
 ## <a name="caveats-to-using-mongoose-with-azure-cosmos-db"></a>Azure Cosmos DB での Mongoose の使用に関する注意事項
 
 Mongoose では、ユーザーが作成するモデルごとに、新しい MongoDB コレクションが自動的に作成されます。 ただし、Azure Cosmos DB のコレクションごとの課金モデルの場合に、データがほとんど移入されていない複数のオブジェクト モデルがあると、最もコスト効果の高い方法にならない可能性があります。
@@ -181,7 +181,7 @@ Mongoose には、[ディスクリミネーター](http://mongoosejs.com/docs/di
 
 1. ここで、Azure Portal に移動すると、Azure Cosmos DB に 2 つのコレクションが作成されていることがわかります。
 
-    ![Node.js チュートリアル - Azure Cosmos DB アカウントを示し、コレクション名が強調表示されている Azure Portal のスクリーン ショット - Node データベース][alldata]
+    ![Node.js チュートリアル - Azure Cosmos DB アカウントを示し、複数のコレクション名が強調表示されている Azure Portal のスクリーン ショット - Node データベース][mutiple-coll]
 
 1. 最後に、Azure Cosmos DB からデータを読み取ります。 既定の Mongoose 処理モデルを使用しているため、読み取り方法は Mongoose の他の読み取りと同じです。
 
@@ -286,7 +286,7 @@ Mongoose には、[ディスクリミネーター](http://mongoosejs.com/docs/di
 
 1. ここで、Azure Portal に戻ると、```alldata``` というコレクションが 1 つだけがあり、'Family' と 'VacationDestinations' 両方のデータが含まれていることがわかります。
 
-    ![Node.js チュートリアル - Azure Cosmos DB アカウントを示し、コレクション名が強調表示されている Azure Portal のスクリーン ショット - Node データベース][mutiple-coll]
+    ![Node.js チュートリアル - Azure Cosmos DB アカウントを示し、コレクション名が強調表示されている Azure Portal のスクリーン ショット - Node データベース][alldata]
 
 1. また、各オブジェクトには ```__type``` と呼ばれる別の属性があることも確認できます。これが 2 つの異なるオブジェクト モデルを区別するために使用されます。
 

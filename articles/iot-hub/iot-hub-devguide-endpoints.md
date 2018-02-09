@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: dc983549aea53ed29859205102d6308a3367bec7
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 54491d0ca1f515786af07146d83ef65fc7d46f11
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -81,7 +81,12 @@ IoT Hub でメッセージのルーティングを機能させるには、これ
 
 ### <a name="when-using-azure-storage-containers"></a>Azure Storage コンテナーを使うとき
 
-IoT Hub は、Azure Storage コンテナーに [Apache Avro](http://avro.apache.org/) 形式で BLOB としてデータを書き込む処理のみをサポートしています。 IoT Hub は、メッセージが特定のサイズに達するか、一定の時間が経過した時点で (どちらか先に発生した方)、メッセージを一括して BLOB にデータを書き込みます。 書き込むデータがない場合、IoT Hub は空の BLOB を書き込みません。
+IoT Hub は、Azure Storage コンテナーに [Apache Avro](http://avro.apache.org/) 形式で BLOB としてデータを書き込む処理のみをサポートしています。 IoT Hub は、メッセージをバッチ処理し、以下に該当する場合にデータを BLOB に書き込みます。
+
+* バッチが特定のサイズに達したとき。
+* または一定の時間が経過したとき。
+
+書き込むデータがない場合、IoT Hub は空の BLOB を書き込みます。
 
 IoT Hub の既定のファイル名前付け規則は次のとおりです。
 

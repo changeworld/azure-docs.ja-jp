@@ -1,5 +1,5 @@
 ---
-title: "OMSManagement ソリューションのベスト プラクティス | Microsoft Docs"
+title: "Azure の管理ソリューションのベスト プラクティス | Microsoft Docs"
 description: 
 services: operations-management-suite
 documentationcenter: 
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2017
 ms.author: bwren
-ms.openlocfilehash: b3d07ad3164609a5628c0d9805de55a32870ab94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 155a7117f4c02bafcf66d0f7abca7dd97dc1236f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="best-practices-for-creating-management-solutions-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューション作成のベスト プラクティス (プレビュー)
+# <a name="best-practices-for-creating-management-solutions-in-azure-preview"></a>Azure の管理ソリューションの作成に関するベスト プラクティス (プレビュー)
 > [!NOTE]
-> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
+> 本記事は、現在プレビュー段階である Azure の管理ソリューションの作成に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
 
-この記事では、Operations Management Suite (OMS) での[管理ソリューション ファイル作成](operations-management-suite-solutions-solution-file.md)のベスト プラクティスを紹介します。  この情報は、追加のベスト プラクティスに合わせて更新されます。
+この記事では、Azure の[管理ソリューション ファイル作成](operations-management-suite-solutions-solution-file.md)のベスト プラクティスを紹介します。  この情報は、追加のベスト プラクティスに合わせて更新されます。
 
 ## <a name="data-sources"></a>データ ソース
 - データソースは、[Resource Manager テンプレートで構成](../log-analytics/log-analytics-template-workspace-configuration.md)できますが、ソリューション ファイルには含めないでください。  現在データソースの構成はべき等ではなく、ユーザーのワークスペースにある既存のソリューションが、上書きされる可能性があるためです。<br><br>たとえば、アプリケーション イベント ログの警告イベントおよびエラー イベントが必要なソリューションがあるとします。  これをソリューションのデータソースとして指定し、さらに、これがユーザーによってワークスペースで構成されていると、情報イベントを削除してしまう可能性があります。  すべてのイベントを含めると、ユーザーのワークスペースで収集の対象となる情報イベントが多くなりすぎることがあります。
@@ -48,7 +48,7 @@ ms.lasthandoff: 10/11/2017
 - アラート ルールを[参照](operations-management-suite-solutions-solution-file.md#solution-resource)するようにソリューションを構成して、ユーザーがその構成を変更できるようにします。  受信者リストやアラートのしきい値を変更したり、アラート ルールを無効にしたりできます。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [管理ソリューションの設計および構築](operations-management-suite-solutions-creating.md)の基本的なプロセスを順を追って確認する。
 * [ソリューション ファイルの作成](operations-management-suite-solutions-solution-file.md)方法を確認する。
 * 管理ソリューションに、[保存した検索とアラートを追加する](operations-management-suite-solutions-resources-searches-alerts.md)。

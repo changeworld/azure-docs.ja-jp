@@ -1,6 +1,6 @@
 ---
-title: "OMS Log Analytics のカスタム ログの収集 | Microsoft Docs"
-description: "Log Analytics は、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。  この記事では、OMS リポジトリで作成したレコードの新しいカスタム ログと詳細を定義する方法について説明します。"
+title: "Azure Log Analytics のカスタム ログの収集 | Microsoft Docs"
+description: "Log Analytics は、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。  この記事では、Log Analytics ワークスペースで作成したレコードの新しいカスタム ログと詳細を定義する方法について説明します。"
 services: log-analytics
 documentationcenter: 
 author: bwren
@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 12/14/2017
 ms.author: bwren
-ms.openlocfilehash: addb1c8f4c71bb1979229c597665fd301dfb9fdf
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 401fbb39194a24721274f55f0fc2a4cdc235a32b
+ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 12/20/2017
 ---
 # <a name="custom-logs-in-log-analytics"></a>Log Analytics のカスタム ログ
-Log Analytics のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。  収集後、Log Analytics の [カスタム フィールド](log-analytics-custom-fields.md) 機能を利用し、ログの各レコードを個別のフィールドに解析できます。
+Log Analytics のカスタム ログ データ ソースでは、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。 多くのアプリケーションは、Windows イベント ログや Syslog などの標準のログ記録サービスの代わりに、テキスト ファイルに情報を記録します。  収集後、Log Analytics の [カスタム フィールド](log-analytics-custom-fields.md)機能を利用し、ログの各レコードを個別のフィールドに解析できます。
 
 ![カスタム ログの収集](media/log-analytics-data-sources-custom-logs/overview.png)
 
@@ -42,10 +42,10 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 次の手順でカスタム ログ ファイルを定義できます。  この記事の最後にカスタム ログ追加のサンプル チュートリアルがあります。
 
 ### <a name="step-1-open-the-custom-log-wizard"></a>手順 1. カスタム ログ ウィザードを開く
-カスタム ログ ウィザードは OMS ポータルで実行され、収集する新しいカスタム ログを定義できます。
+カスタム ログ ウィザードは Azure Portal で実行され、収集する新しいカスタム ログを定義できます。
 
-1. OMS ポータルで、 **[設定]**に進みます。
-2. **[データ]** をクリックし、**[カスタム ログ]** をクリックします。
+1. Azure Portal で、**[Log Analytics]**、目的のワークスペース、**[詳細設定]** の順に選択します。
+2. **[データ]** > **[カスタム ログ]** をクリックします。
 3. 既定では、すべての構成変更はすべてのエージェントに自動的にプッシュされます。  Linux エージェントの場合、構成ファイルが Fluentd データ コレクターに送信されます。  各 Linux エージェントでこのファイルを手動で変更する場合、 *[Apply below configuration to my Linux machines (Linux コンピューターに以下の構成を適用する)]*チェック ボックスのチェックを外します。
 4. **[追加+]** をクリックし、カスタム ログ ウィザードを開きます。
 
@@ -54,7 +54,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 **改行**が既定の区切り記号であり、1 行につき 1 エントリのログ ファイルに利用されます。  利用可能な形式の 1 つで表現された日付と時刻で行が始まるとき、区切り記号として**タイムスタンプ**を指定できます。その場合、1 行以上のエントリに対応します。
 
-区切り記号としてタイムスタンプが使用されるとき、OMS に保存される各レコードの TimeGenerated プロパティに、ログ ファイルでそのエントリに指定された日付/時刻が入力されます。  区切り記号として改行が使用される場合、Log Analytics がエントリを収集した日付と時刻が TimeGenerated に入力されます。
+区切り記号としてタイムスタンプが使用されるとき、Log Analytics に保存される各レコードの TimeGenerated プロパティに、ログ ファイルでそのエントリに指定された日付/時刻が入力されます。  区切り記号として改行が使用される場合、Log Analytics がエントリを収集した日付と時刻が TimeGenerated に入力されます。
 
 
 1. **[閲覧]** をクリックし、サンプル ファイルを表示します。  一部のブラウザーでは、このボタンのラベルは **[ファイルの選択]** になっていることがあります。
@@ -86,7 +86,7 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 1. ログの名前を入力します。  **\_CL** が接尾辞として自動的に追加されます。
 2. 任意で **[説明]**を追加します。
-3. **[ 次へ ]** をクリックし、カスタム ログ定義を保存します。
+3. **[次へ]** をクリックし、カスタム ログ定義を保存します。
 
 ### <a name="step-5-validate-that-the-custom-logs-are-being-collected"></a>手順 5. カスタム ログが収集されていることを確認する
 新しいカスタム ログの最初のデータが Log Analytics に表示されるまで最大 1 時間かかることがあります。  指定されたパスにあるログからエントリの収集が始まります。カスタム ログに定義されているポイントから開始されます。  カスタム ログ作成中にアップロードしたエントリは保持されませんが、ログ ファイルに既に存在するエントリが収集されます。
@@ -103,13 +103,12 @@ Log Analytics がカスタム ログから収集を始めると、そのレコ�
 
 カスタム ログ エントリを解析するための詳しい手順はここでは紹介しません。  その情報については、 [カスタム フィールド](log-analytics-custom-fields.md) 文書をご覧ください。
 
-## <a name="disabling-a-custom-log"></a>カスタム ログを無効にする
-カスタム ログの定義は、一度作成したら削除できませんが、そのコレクション パスをすべて削除することで無効にすることはできます。
+## <a name="removing-a-custom-log"></a>カスタム ログの削除
+Azure Portal で次のプロセスを使用して、これまでに定義したカスタム ログを削除します。
 
-1. OMS ポータルで、 **[設定]**に進みます。
-2. **[データ]** をクリックし、**[カスタム ログ]** をクリックします。
-3. 無効にするカスタム ログ定義の横にある **[詳細]** をクリックします。
-4. カスタム ログ定義の各コレクション パスを削除します。
+1. ワークスペースの **[詳細設定]** 内の **[データ]** メニューから **[カスタム ログ]** を選択して、すべてのカスタム ログを一覧表示します。
+2. 削除するカスタム ログの横にある **[削除]** をクリックします。
+
 
 ## <a name="data-collection"></a>データ収集
 Log Analytics は約 5 分おきに各カスタム ログから新しいエントリを収集します。  エージェントは、収集元の場所を各ログ ファイルに記録します。  エージェントが一定時間オフラインになった場合、Log Analytics は中止した箇所からエントリを回収し、オンラインの間に作成されたエントリも回収されます。
@@ -127,11 +126,11 @@ Log Analytics は約 5 分おきに各カスタム ログから新しいエン�
 | ManagementGroupName |System Center Operations Manager エージェントの管理グループの名前。  その他のエージェントの場合、これは AOI-\<workspace ID\> です。 |
 
 ## <a name="log-searches-with-custom-log-records"></a>カスタム ログ レコードとログ検索
-カスタム ログのレコードは、他のデータ ソースのレコードと同様に、OMS リポジトリに格納されます。  ログを定義したときに指定した名前に一致する種類が与えられます。検索でこの [種類] プロパティを利用し、特定のログから収集したレコードを取得できます。
+カスタム ログのレコードは、他のデータ ソースのレコードと同様に、Log Analytics ワークスペースに格納されます。  ログを定義したときに指定した名前に一致する種類が与えられます。検索でこの [種類] プロパティを利用し、特定のログから収集したレコードを取得できます。
 
 次の表は、カスタム ログからレコードを取得するログ検索のさまざまな例をまとめたものです。
 
-| クエリ | Description |
+| クエリ | 説明 |
 |:--- |:--- |
 | MyApp_CL |MyApp_CL という名前のカスタム ログからのすべてのイベント |
 | MyApp_CL &#124。ここで Severity_CF=="error" |MyApp_CL という名前のカスタム ログに含まれ、*Severity_CF* という名前のカスタム フィールドの値が *error* になっているすべてのイベント。 |
@@ -171,6 +170,6 @@ Log Analytics は約 5 分おきに各カスタム ログから新しいエン�
 
 ![カスタム フィールドのあるログ クエリ](media/log-analytics-data-sources-custom-logs/query-02.png)
 
-## <a name="next-steps"></a>次のステップ
-* [カスタム フィールド](log-analytics-custom-fields.md)を使用し、カスタム ログのエントリを個別のフィールドに解析します。
+## <a name="next-steps"></a>次の手順
+* [カスタム フィールド](log-analytics-custom-fields.md)を使用して、カスタム ログのエントリを個別のフィールドに解析します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。

@@ -12,86 +12,54 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: mbullwin
-ms.openlocfilehash: f8ba1a6308dfe234fff700d363fb9252b94570e2
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 5f691fb88c6764309bf012dfc65b561ec87afede
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Application Insights を使用してライブ Azure Web アプリをプロファイルする
 
 "*Application Insights のこの機能は Azure App Service で一般公開されており、Azure コンピューティング リソースではプレビュー段階です。*"
 
-[Application Insights Profiler](app-insights-overview.md) を使用して、ライブ Web アプリの各メソッドにどれくらい時間がかかっているかを確認できます。 Application Insights プロファイル ツールにより、アプリで処理された要求の詳細なプロファイルがライブ表示され、最も多くの時間がかかっている "*ホット パス*" が強調表示されます。 プロファイラーにより、さまざまな応答時間を含むサンプルが自動的に選択され、さまざまな手法によりオーバーヘッドが最小化されます。
+[Application Insights](app-insights-overview.md) を使用するときにライブ Web アプリの各メソッドにどれくらい時間がかかっているかを確認できます。 Application Insights プロファイル ツールにより、アプリで処理された要求の詳細なプロファイルがライブ表示され、最も多くの時間がかかっている "*ホット パス*" が強調表示されます。 さまざまな応答時間の要求がサンプリングごとにプロファイルされます。 アプリケーションのオーバーヘッドが、さまざまな手法を使用して最小化されます。
 
-このプロファイラーは、現在、Azure App Service で Basic サービス階層以上で実行されている ASP.NET Web アプリに対して使用できます。
+このプロファイラーは、現在、Azure App Service で **Basic** サービス レベル以上で実行されている ASP.NET Web アプリおよび ASP.NET Core Web アプリに対して使用できます。
 
-## <a id="installation"></a>プロファイラーを有効にする
+## <a id="installation"></a>App Service Web アプリのプロファイラーを有効にする
+アプリを App Service に既に発行したが、Application Insights を使用するためにソース コードで何もしていない場合は、Azure Portal で [App Services] ウィンドウに移動して **[監視]、[Application Insights]** の順に移動し、ウィンドウの指示に従って、Web アプリを監視する Application Insights リソースを新しく作成するか、既存のものを選択します。 Profiler は、**Basic** App Service プランまたはそれ以上でのみ機能します。
 
-コードに [Application Insights をインストール](app-insights-asp-net.md)します。 既にインストールされている場合は、バージョンが最新であることを確認します  最新バージョンであることを確認するには、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** > **[更新]** > **[すべてのパッケージを更新する]** を選択します。 次に、アプリを再デプロイします。
+![App Service ポータルで App Insights を有効にする][appinsights-in-appservices]
 
-*ASP.NET Core を使用している場合は、[こちら](#aspnetcore)から詳細をご確認ください。*
+プロジェクト ソース コードにアクセスできる場合は、[Application Insights をインストール](app-insights-asp-net.md)します。 既にインストールされている場合は、バージョンが最新であることを確認します  最新バージョンであることを確認するには、ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** > **[更新]** > **[すべてのパッケージを更新する]** を選択します。 次に、アプリをデプロイします。
+
+ASP.NET Core アプリケーションでは、Microsoft.ApplicationInsights.AspNetCore NuGet パッケージ 2.1.0-beta6 以降をインストールして、プロファイラーと共に使用する必要があります。 2017 年 6 月 27 日時点では、これより前のバージョンはサポートされていません。
 
 [Azure Portal](https://portal.azure.com) で、Web アプリの Application Insights リソースを開きます。 **[パフォーマンス]** > **[Application Insights Profiler を有効にする]** を選択します。
 
 ![プロファイラーの有効化バナーを選択する][enable-profiler-banner]
 
-また、**[構成]** を選択して状態を表示し、プロファイラーを有効または無効にすることもできます。
+また、**[プロファイラー]** 構成を選択して状態を表示し、プロファイラーを有効または無効にすることもできます。
 
-![[パフォーマンス] の [構成] を選択する][performance-blade]
+![[パフォーマンス] の [プロファイラー] 構成を選択する][performance-blade]
 
-Application Insights で構成されている Web アプリの一覧が **[構成]** の下に表示されます。 必要に応じて、手順に従ってプロファイラー エージェントをインストールします。 Application Insights で Web アプリが構成されていない場合は、**[リンクされたアプリの追加]** を選択します。
+Application Insights で構成されている Web アプリの一覧が **[プロファイラー]** 構成ウィンドウに表示されます。 上記の手順を実行した場合は、プロファイラーのエージェントが既にインストールされています。 **[プロファイラー]** 構成ウィンドウで **[プロファイラーの有効化]** を選択します。
 
-リンクされたすべての Web アプリでプロファイラーを制御するには、**[構成]** ウィンドウで **[プロファイラーの有効化]** または **[プロファイラーの無効化]** を選択します。
+必要に応じて、手順に従ってプロファイラー エージェントをインストールします。 Application Insights で Web アプリが構成されていない場合は、**[リンクされたアプリの追加]** を選択します。
 
 ![[構成] ウィンドウのオプション][linked app services]
 
 App Service プランでホストされる Web アプリとは異なり、Azure コンピューティング リソースでホストされるアプリケーション (Azure Virtual Machines、仮想マシン スケール セット、Azure Service Fabric、Azure Cloud Services など) は、Azure で直接管理されません。 この場合、リンク先 Web アプリはありません。 アプリにリンクするのではなく、**[Profiler の有効化]** を選択します。
 
-## <a name="disable-the-profiler"></a>Profiler を無効にする
-個々の App Service インスタンスのプロファイラーを停止または再起動するには、**[Web ジョブ]** で App Service リソースに移動します。 プロファイラーを削除するには **[拡張機能]** に移動します。
-
-![Web ジョブのプロファイラーを無効にする][disable-profiler-webjob]
-
-パフォーマンスの問題をできるだけ早く検出するために、すべての Web アプリでプロファイラーを有効にすることをお勧めします。
-
-Web アプリに対する変更を WebDeploy を使用してデプロイする場合は、デプロイ中の削除対象から App_Data フォルダーを除外してください。 そうしないと、次に Web アプリを Azure にデプロイするときに、プロファイラーの拡張機能のファイルが削除されます。
-
-### <a name="using-profiler-with-azure-vms-and-azure-compute-resources-preview"></a>Azure VM およびコンピューティング リソースでのプロファイラーの使用 (プレビュー)
-
-[実行時の Azure App Service に対して Application Insights を有効](app-insights-azure-web-apps.md#run-time-instrumentation-with-application-insights)にすると、Application Insights Profiler が自動的に使用できるようになります。 リソースに対して既に Application Insights を有効にしている場合は、構成ウィザードを使用した最新バージョンへの更新が必要になる可能性があります。
+### <a name="enable-the-profiler-for-azure-compute-resources-preview"></a>Azure コンピューティング リソースのプロファイラーを有効にする (プレビュー)
 
 [Azure コンピューティング リソース用のプロファイラーのプレビュー バージョン](https://go.microsoft.com/fwlink/?linkid=848155)に関する情報をご確認ください。
 
-
-## <a name="limitations"></a>制限事項
-
-既定のデータ リテンション期間は 5 日です。 また、1 日あたり最大 10 GB のデータを取り込むことができます。
-
-プロファイラー サービスの使用料金は発生しません。 プロファイラー サービスを使用するには、Web アプリは、少なくとも App Service の Basic レベルでホストする必要があります。
-
-## <a name="overhead-and-sampling-algorithm"></a>オーバーヘッドとサンプリング アルゴリズム
-
-プロファイラーは、プロファイラーのトレース キャプチャが有効なアプリをホストする各仮想マシンで、1 時間ごとに 2 分間ランダムに実行されます。 プロファイラーの実行中は、サーバーに 5 ～ 15% の CPU オーバーヘッドが加わります。
-アプリをホスト可能なサーバーの数が多くなるほど、プロファイラーがアプリのパフォーマンス全体に与える影響は低下します。 これは、サンプリング アルゴリズムにより、プロファイラーが常にサーバーの実行時間の 5% しか実行されないためです。 Web 要求の処理に利用できるサーバーが増えると、プロファイラーを実行することにより発生するサーバー オーバーヘッドは低下します。
-
-
 ## <a name="view-profiler-data"></a>プロファイラー データを表示する
 
-**[パフォーマンス]** ウィンドウに移動し、操作の一覧が表示されるまで下へスクロールします。
+**アプリケーションがトラフィックを受信していることを確認します。** 実験を実行している場合、[Application Insights パフォーマンス テスト](https://docs.microsoft.com/en-us/vsts/load-test/app-service-web-app-performance-test)を使用して、Web アプリへの要求を生成できます。 新たにプロファイラーを有効にした場合は、約 15 分間の短いロード テストを実行することができ、プロファイラー トレースを取得できます。 プロファイラーを少し前に有効にしている場合、プロファイラーは 1 時間ごとに 2 回ランダムに実行され、実行のたびに 2 分かかる事に注意してください。 確実にサンプル プロファイラー トレースを取得できるように、1 時間のロード テストを実行することを推奨します。
 
-![Application Insights の [パフォーマンス] ウィンドウの例: 列][performance-blade-examples]
-
-操作テーブルには次の列が表示されます。
-
-* **カウント**: **[カウント]** ウィンドウの時間の範囲における要求の数。
-* **中央値**: アプリが要求に応答するのに要する標準的な時間。 全応答の半数が、この値より短い時間で行われました。
-* **95 パーセンタイル**: 応答の 95% が、この値より短い時間で行われました。 この値と中央値との差が非常に大きい場合は、アプリに断続的に問題が発生している可能性があります  (または、キャッシュなどの設計特性が原因である可能性があります)。
-* **PROFILER TRACES\(Profiler トレース\)**: アイコンは、プロファイラーがこの操作のスタック トレースをキャプチャしたことを示します。
-
-**[表示]** を選択すると、トレース エクスプローラーが開きます。 このエクスプローラーには、プロファイラーがキャプチャしたいくつかのサンプルが応答時間ごとに分類されて表示されます。
-
-**[Preview Performance]\(パフォーマンスのプレビュー\)** ウィンドウを使用している場合は、プロファイラーのトレースを表示するために、ページの **[Take Actions]\(アクションの実行\)** セクションに移動します。 **[Profiler トレース]** を選択します。
+アプリケーションがある程度のトラフィックを受信したら、**[パフォーマンス]** ブレードに移動し、そのページの **[Take Actions]\(アクションの実行\)** セクションに移動してプロファイラー トレースを参照します。 **[Profiler トレース]** を選択します。
 
 ![Application Insights の [パフォーマンス] ウィンドウの Profiler トレースのプレビュー][performance-blade-v2-examples]
 
@@ -113,7 +81,7 @@ Microsoft サービス プロファイラーでは、アプリのパフォーマ
 タイムライン ビューに表示される呼び出し履歴は、サンプリングとインストルメンテーションの結果です。 スレッドの呼び出し履歴全体がキャプチャされるため、各サンプルには、Microsoft .NET Framework と、参照している他のフレームワークのコードが含まれます。
 
 ### <a id="jitnewobj"></a>オブジェクトの割り当て (clr!JIT\_New または clr!JIT\_Newarr1)
-**clr!JIT\_New** と **clr!JIT\_Newarr1** は、マネージ ヒープからメモリを割り当てる .NET Framework のヘルパー関数です。 **clr!JIT\_New** は、オブジェクトが割り当てられるときに呼び出されます。 **clr!JIT\_Newarr1** は、オブジェクト配列が割り当てられるときに呼び出されます。 これら 2 つの関数は、通常は非常に高速で、比較的短時間で完了します。 タイムライン上で **clr!JIT\_New** または **clr!JIT\_Newarr1** に長い時間がかかっている場合は、コードが多くのオブジェクトを割り当て、大量のメモリを消費している可能性があることを示します。
+**clr!JIT\_New** と **clr!JIT\_Newarr1** は、マネージ ヒープからメモリを割り当てる .NET Framework のヘルパー関数です。 **clr!JIT\_New** は、オブジェクトが割り当てられるときに呼び出されます。 **clr!JIT\_Newarr1** は、オブジェクト配列が割り当てられるときに呼び出されます。 これら 2 つの関数は、通常は高速で、比較的短時間で完了します。 タイムライン上で **clr!JIT\_New** または **clr!JIT\_Newarr1** に長い時間がかかっている場合は、コードが多くのオブジェクトを割り当て、大量のメモリを消費している可能性があることを示します。
 
 ### <a id="theprestub"></a>コードの読み込み (clr!ThePreStub)
 **clr!ThePreStub** は、初めて実行するコードを準備する .NET Framework のヘルパー関数です。 これには一般的に、Just-In-Time (JIT) コンパイルなどが含まれます (ただし、これに限定されません)。 C# の各メソッドでは、プロセスの有効期間中に **clr!ThePreStub** が最大 1 回呼び出されます。
@@ -151,6 +119,26 @@ Microsoft サービス プロファイラーでは、アプリのパフォーマ
 
 ### <a id="when"></a>[When (実行期間)] 列
 **[When]\(実行期間\)** 列は、ノードについて収集された包括的なサンプルが時間の経過と共にどのように変化するかを視覚化したものです。 要求の範囲全体は 32 個のタイム バケットに分割されます。 そのノードの包括的なサンプルは、その 32 個のバケットに蓄積されます。 各バケットはバーとして表されます。 バーの長さは、調整された値を表します。 ノードに **CPU_TIME** または **BLOCKED_TIME** と表示されている場合、リソース (CPU、ディスク、スレッド) の消費という明確な関係があるため、バーはそのバケットの期間にリソースのいずれかを消費していることを表しています。 こうしたメトリックでは、複数のリソースを消費することによって値が 100% を超える可能性があります。 たとえば、特定の期間に平均して 2 つの CPU を使用する場合、CPU 使用率は 200% になります。
+
+## <a name="limitations"></a>制限事項
+
+既定のデータ リテンション期間は 5 日です。 また、1 日あたり最大 10 GB のデータを取り込むことができます。
+
+プロファイラー サービスの使用料金は発生しません。 プロファイラー サービスを使用するには、Web アプリは、少なくとも App Service の Basic レベルでホストする必要があります。
+
+## <a name="overhead-and-sampling-algorithm"></a>オーバーヘッドとサンプリング アルゴリズム
+
+プロファイラーは、プロファイラーのトレース キャプチャが有効なアプリをホストする各仮想マシンで、1 時間ごとに 2 分間ランダムに実行されます。 プロファイラーの実行中は、サーバーに 5 ～ 15% の CPU オーバーヘッドが加わります。
+アプリをホスト可能なサーバーの数が多くなるほど、プロファイラーがアプリのパフォーマンス全体に与える影響は低下します。 これは、サンプリング アルゴリズムにより、プロファイラーが常にサーバーの実行時間の 5% しか実行されないためです。 Web 要求の処理に利用できるサーバーが増えると、プロファイラーを実行することにより発生するサーバー オーバーヘッドは低下します。
+
+## <a name="disable-the-profiler"></a>Profiler を無効にする
+個々の App Service インスタンスのプロファイラーを停止または再起動するには、**[Web ジョブ]** で App Service リソースに移動します。 プロファイラーを削除するには **[拡張機能]** に移動します。
+
+![Web ジョブのプロファイラーを無効にする][disable-profiler-webjob]
+
+パフォーマンスの問題をできるだけ早く検出するために、すべての Web アプリでプロファイラーを有効にすることをお勧めします。
+
+Web アプリに対する変更を WebDeploy を使用してデプロイする場合は、デプロイ中の削除対象から App_Data フォルダーを除外してください。 そうしないと、次に Web アプリを Azure にデプロイするときに、プロファイラーの拡張機能のファイルが削除されます。
 
 
 ## <a id="troubleshooting"></a>トラブルシューティング
@@ -229,7 +217,7 @@ Web アプリを、プロファイラーが有効な App Service リソースに
 9. Web アプリを再起動します。
 
 ## <a id="profileondemand"></a> 手動でプロファイラーをトリガーする
-プロファイラーを開発したとき、アプリ サービスでプロファイラーをテストできるようにコマンド ライン インターフェイスを追加しました。 このインターフェイスを使用して、ユーザーがプロファイラーの起動方法をカスタマイズすることもできます。 大まかに言うと、プロファイラーは、App Service の Kudu システムを使用して、バックグラウンドでプロファイルを管理します。 Application Insights 拡張機能をインストールすると、プロファイラーをホストする継続的な Web ジョブが作成されます。 これと同じテクノロジが、ニーズに合わせてカスタマイズできる新しい Web ジョブを作成するときに使用されます。
+プロファイラーを開発したとき、アプリ サービスでプロファイラーをテストできるようにコマンド ライン インターフェイスを追加しました。 これらのインターフェイスを使用して、ユーザーがプロファイラーの起動方法をカスタマイズすることもできます。 大まかに言うと、プロファイラーは、App Service の Kudu システムを使用して、バックグラウンドでプロファイルを管理します。 Application Insights 拡張機能をインストールすると、プロファイラーをホストする継続的な Web ジョブが作成されます。 これと同じテクノロジが、ニーズに合わせてカスタマイズできる新しい Web ジョブを作成するときに使用されます。
 
 このセクションでは、次の方法について説明します。
 
@@ -259,7 +247,7 @@ Web アプリを、プロファイラーが有効な App Service リソースに
 2.  抽出された [ApplicationInsightProfiler2] フォルダーから、この新しいフォルダーにファイルをコピーします。
 3.  新しい run.cmd ファイルを作成します  (便宜上、開始前にこの作業フォルダーを vs コードで開きました)。
 4.  `ApplicationInsightsProfiler.exe start --engine-mode immediate --single --immediate-profiling-duration 120` コマンドを追加し、ファイルを保存します。
-a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。  `start` コマンドは、プロファイラーを起動するように指示します。
+a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  `start` コマンドは、プロファイラーを起動するように指示します。
 b.  `--engine-mode immediate` は、プロファイルを直ちに開始する必要があることをプロファイラーに伝えます。
 c.  `--single` は、自動的に実行し、停止します。  `--immediate-profiling-duration 120` は、プロファイラーを 120 秒間、つまり 2 分間実行します。
 5.  このファイルを保存します。
@@ -301,17 +289,11 @@ c.  `--single` は、自動的に実行し、停止します。  `--immediate-pr
 3.  App Services の Web ジョブ機能は、Web ジョブを実行するときに、プロセスの環境変数とアプリ設定が、Web サイトのものと確実に同じになるという点で独特です。 つまり、コマンド ラインを使用してインストルメンテーション キーをプロファイラーに渡す必要がありません。インストルメンテーション キーは環境から選択されます。 ただし、App Services 外の開発ボックスまたは マシンでプロファイラーを実行する場合は、インストルメンテーション キーを指定する必要があります。 これを行うには、引数 `--ikey <instrumentation-key>` を渡します。 この値は、アプリケーションが使用しているインストルメンテーション キーと一致する必要があることに注意してください。 プロファイラーのログ出力には、プロファイラーの起動に使用された ikey と、プロファイル中にそのインストルメンテーション キーからアクティビティが検出されたかどうかが示されます。
 4.  手動でトリガーされた Web ジョブは、実際は webhook でトリガーできます。 この URL を取得するには、ダッシュボードで Web ジョブを右クリックしてプロパティを表示するか、テーブルから Web ジョブを選択した後にツールバーでプロパティを選択します。 これに関する記事はオンラインで多数見つかるため、詳しくは説明しませんが、これにより CI/CD パイプライン (VSTS など) や、Microsoft Flow (https://flow.microsoft.com/ja-jp/) などからプロファイラーをトリガーできる可能性が出てきます。 どのくらい手の込んだ run.cmd にしたいか、また、どれを run.ps1 にできるかに応じて、さまざまな可能性があります。  
 
-
-
-
-## <a id="aspnetcore"></a>ASP.NET Core のサポート
-
-ASP.NET Core アプリケーションでは、Microsoft.ApplicationInsights.AspNetCore NuGet パッケージ 2.1.0-beta6 以降をインストールして、プロファイラーと共に使用する必要があります。 2017 年 6 月 27 日時点では、これより前のバージョンはサポートされていません。
-
 ## <a name="next-steps"></a>次の手順
 
 * [Visual Studio での Application Insights の操作](https://docs.microsoft.com/azure/application-insights/app-insights-visual-studio)
 
+[appinsights-in-appservices]:./media/app-insights-profiler/AppInsights-AppServices.png
 [performance-blade]: ./media/app-insights-profiler/performance-blade.png
 [performance-blade-examples]: ./media/app-insights-profiler/performance-blade-examples.png
 [performance-blade-v2-examples]:./media/app-insights-profiler/performance-blade-v2-examples.png

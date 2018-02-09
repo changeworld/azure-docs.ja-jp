@@ -165,7 +165,7 @@ Log Analytics の評価ソリューションを使用するには、ソリュー
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
 1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
-3. [Log Analytics subscriptions] (Log Analytics サブスクリプション) ペインで、ワークスペースを選択し、**[概要]** タイルをクリックします。  
+3. [Log Analytics subscriptions] \(Log Analytics サブスクリプション) ペインで、ワークスペースを選択し、**[概要]** タイルをクリックします。  
 4. **[概要]** ページで、**[SQL 正常性チェック]** タイルをクリックします。 
 5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![SQL 正常性チェックの推奨事項の画像](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>

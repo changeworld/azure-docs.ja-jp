@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/15/2017
+ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: c9c23462f80533a224c3c2ac3658b9630f1798f9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e2242851d51dee56679231b9f34c8b474ba6578d
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイントの構成
 
@@ -67,7 +67,7 @@ Azure アカウントを使用して Azure にログインします。 Azure ア
 
 設定 | 値
 ------- | -----
-名前    | myVnet
+Name    | myVnet
 アドレス空間 | 10.0.0.0/16
 サブネット名|mySubnet
 サブネットのアドレス範囲|10.0.0.0/24
@@ -75,7 +75,7 @@ Azure アカウントを使用して Azure にログインします。 Azure ア
 場所|サポートされているリージョン (たとえば、オーストラリア東部など)
 [サブスクリプション]|サブスクリプションを選択します。
 __ServiceEndpoints__|有効
-__サービス__ | 1 つまたはすべての利用可能なサービスを選択します。 プレビュー時点でサポートされているサービスは __"Microsoft.Storage"、"Microsoft.Sql"__ です。
+__サービス__ | 1 つまたはすべての利用可能なサービスを選択します。 サポートされているサービスは __"Microsoft.Storage"、"Microsoft.Sql"__ です。
 
 エンドポイントのサービスの選択: ![サービス エンドポイントのサービスの選択](media/virtual-network-service-endpoints-portal/vnet-create-flow-services.png)
 
@@ -136,7 +136,7 @@ Get-AzureRmVirtualNetworkAvailableEndpointService -location eastus
 ```
 
 出力: 
-名前 | ID | 型
+Name | ID | type
 -----|----|-------
 Microsoft.Storage|/subscriptions/xxxx-xxx-xxx/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Storage|Microsoft.Network/virtualNetworkEndpointServices
 Microsoft.Sql|/subscriptions/xxxx-xxx-xxx/providers/Microsoft.Network/virtualNetworkEndpointServices/Microsoft.Sql|Microsoft.Network/virtualNetworkEndpointServices
@@ -387,9 +387,9 @@ Azure サービス リソースへのアクセスを VNet に限定するには�
 
 [組み込みロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)と、特定のアクセス許可を[カスタム ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-control-custom-roles)に割り当てる方法の詳細をご覧ください。
 
-Vnet と Azure サービス リソースは、同じまたは異なるサブスクリプションで使用できます。 このプレビュー時点では、異なるサブスクリプションの場合、リソースが同じ Active Directory (AD) テナントに存在する必要があります。
+Vnet と Azure サービス リソースのサブスクリプションは、同じでも異なっていてもかまいません。 異なるサブスクリプションの場合、リソースが同じ Active Directory (AD) テナントに存在する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 VNet にサービス リソースを結び付ける詳細な手順については、以下のリンクをご覧ください。
 

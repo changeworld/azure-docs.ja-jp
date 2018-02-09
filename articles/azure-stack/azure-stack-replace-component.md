@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/20/2017
+ms.date: 1/29/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4937b7725c8f39314ccc41584a8646b7197f6bdf
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: 7018f0122ab1ef11d64cce8a9adf58419d0e9ba7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="replace-a-hardware-component-on-an-azure-stack-scale-unit-node"></a>Azure Stack スケール ユニット ノードのハードウェア コンポーネントを交換する
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/10/2018
 
 ## <a name="review-alert-information"></a>アラート情報を見直す
 
-Azure Stack の正常性および監視システムは、記憶域スペース ダイレクトによって制御されているネットワーク アダプターとデータ ドライブの正常性を追跡します。 その他のハードウェア コンポーネントは追跡しません。 その他のすべてのハードウェア コンポーネントでは、ハードウェア ライフサイクル ホスト上で実行されているベンダー固有のハードウェア監視ソリューションでアラートが発生します。
+Azure Stack の正常性および監視システムは、記憶域スペース ダイレクトによって制御されているネットワーク アダプターとデータ ドライブの正常性を追跡します。 その他のハードウェア コンポーネントは追跡しません。 その他のすべてのハードウェア コンポーネントでは、ハードウェア ライフサイクル ホスト上で実行されているベンダー固有のハードウェア監視ソリューションでアラートが発生します。  
 
 ## <a name="component-replacement-process"></a>コンポーネント交換プロセス
 
@@ -60,7 +60,7 @@ Azure Stack の正常性および監視システムは、記憶域スペース �
    > いずれの場合も、S2D (記憶域スペース ダイレクト) を中断せずに一度にドレインして電源をオフにできるノードは 1 つだけです。
 
 2. スケール ユニット ノードがメンテナンス モードに入ったら、[電源オフ](azure-stack-node-actions.md#scale-unit-node-actions) アクションを使用します。 このアクションは、ハードウェアの物理的な状態によっては必須でありません。
- 
+
    > [!NOTE]
    > 可能性は低いですが、電源オフ アクションが機能しない場合は、代わりに BMC (Baseboard Management Controller) Web インターフェイスを使用します。
 
@@ -74,4 +74,3 @@ Azure Stack の正常性および監視システムは、記憶域スペース �
 
 - ホットスワップ可能物理ディスクの交換については、[ディスクの交換](azure-stack-replace-disk.md)に関する記事を参照してください。
 - 物理ノードを交換する方法については、[スケール ユニット ノードの交換](azure-stack-replace-node.md)に関する記事を参照してください。
-- 

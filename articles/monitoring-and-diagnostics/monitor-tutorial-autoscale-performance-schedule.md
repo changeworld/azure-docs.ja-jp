@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: e56b637858af27f9a09f70867e455d06dd122d92
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 012183b8e6c15d62eda2534985bf73140187d7af
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>パフォーマンス データまたはスケジュールに基づいて自動スケール設定を作成する
 
@@ -35,11 +35,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 [Azure Portal](https://portal.azure.com/) にログインします。
 
 ## <a name="create-a-web-app-and-app-service-plan"></a>Web アプリおよび App Service プランを作成する
-左側のナビゲーション ウィンドウで **[新規]** オプションをクリックします。
+1. 左側のナビゲーション ウィンドウで **[新規]** オプションをクリックします。
 
-*[Web アプリ]* 項目を検索して選択し、**[作成]** をクリックします。
+2. *[Web アプリ]* 項目を検索して選択し、**[作成]** をクリックします。
 
-*MyTestScaleWebApp* のようなアプリ名を選択します。 新しいリソース グループ 'myResourceGroup' を作成し、選択したリソース グループに配置します。
+3. *MyTestScaleWebApp* のようなアプリ名を選択します。 新しいリソース グループ *myResourceGroup* を作成し、選択したリソース グループに配置します。
 
 数分以内に、リソースがプロビジョニングされます。 このチュートリアルの残りの部分では、この Web アプリとそれに対応する App Service プランを使用します。
 

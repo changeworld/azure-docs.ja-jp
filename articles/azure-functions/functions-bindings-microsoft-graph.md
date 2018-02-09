@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 63b94c0a9b77a3f3a6fd394a130bf8f132d51369
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 5d0f266047e1b083cdf23f8d1c55950a46406f61
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions における Microsoft Graph のバインド
 
@@ -43,7 +43,7 @@ Microsoft Graph のバインドは、_バインド拡張機能_から入手で�
 
 バインド拡張機能は、Azure Functions 2.0 プレビューでのみ使用できます。 
 
-Functions ランタイムのプレビュー版の 2.0 バージョンを使用するように関数アプリを設定する方法については、「[バージョン 2.0 ランタイムをターゲットにする](functions-versions.md#target-the-version-20-runtime)」をご覧ください。
+Functions ランタイムのプレビュー版の 2.0 バージョンを使用するように関数アプリを設定する方法については、「[How to target Azure Functions runtime versions](set-runtime-version.md)」(Azure Functions ランタイム バージョンをターゲットにする方法) を参照してください。
 
 ### <a name="installing-the-extension"></a>拡張機能のインストール
 
@@ -999,7 +999,7 @@ Microsoft Graph webhook トリガーを使用すると、関数は、Microsoft G
 
 #### <a name="webhook-trigger---c-script-example"></a>webhook トリガー - C# スクリプトの例
 
-次の例では、Outlook の受信メッセージの webhook を処理します。 webhook トリガーを使用するには、[サブスクリプションを作成](#webhook-output---example)し、期限切れにならないように[サブスクリプションを更新](#webhook-subscription-refresh)します。
+次の例では、Outlook の受信メッセージの webhook を処理します。 webhook トリガーを使用するには、[サブスクリプションを作成](#webhook-output---example)して、期限切れにならないように[サブスクリプションを更新](#webhook-subscription-refresh)します。
 
 *function.json* ファイルは、webhook トリガーを定義します。
 

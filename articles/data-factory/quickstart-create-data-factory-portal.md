@@ -9,13 +9,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
-ms.date: 01/16/2018
+ms.date: 02/01/2018
 ms.author: jingwang
-ms.openlocfilehash: 0973a7ae8316d413244367f5407a89d1ba809847
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f17dc18825c929a75169875594c7b1a13ba1f6d7
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -133,7 +133,7 @@ ms.lasthandoff: 01/25/2018
 
    c. 名前として「**OutputDataset**」と指定します。
 
-   d. フォルダーとして「**adftutorial/output**」と入力します。 出力フォルダーがない場合は、コピー アクティビティによって作成されます。
+   d. フォルダーとして「**adftutorial/output**」と入力します。 **output** フォルダーが存在しない場合、コピー アクティビティにより実行時に作成されます。
 
    e. ファイル名に「`@CONCAT(pipeline().RunId, '.txt')`」と入力します。 
    
@@ -180,7 +180,7 @@ ms.lasthandoff: 01/25/2018
 ## <a name="trigger-the-pipeline-manually"></a>パイプラインを手動でトリガーする
 この手順では、Azure Data Factory にエンティティ (リンクされたサービス、データセット、パイプライン) をデプロイします。 次に、パイプラインの実行を手動でトリガーします。 エンティティを自分の Visual Studio Team Services Git リポジトリに発行することもできます。これについては、[別のチュートリアル](tutorial-copy-data-portal.md?#configure-code-repository)で説明します。
 
-1. パイプラインをトリガーする前に、エンティティを Data Factory に発行する必要があります。 発行するには、左側のウィンドウで **[発行]** を選択します。 
+1. パイプラインをトリガーする前に、エンティティを Data Factory に発行する必要があります。 発行するには、左側のウィンドウで **[すべて発行]** を選択します。 
 
    ![[発行] ボタン](./media/quickstart-create-data-factory-portal/publish-button.png)
 2. パイプラインを手動でトリガーするには、ツール バーの **[トリガー]** を選択し、**[Trigger Now]\(今すぐトリガー\)** を選択します。 
@@ -224,9 +224,9 @@ ms.lasthandoff: 01/25/2018
 5. 警告メッセージを確認し、**[完了]** を選択します。
 
    ![警告と [完了] ボタン](./media/quickstart-create-data-factory-portal/new-trigger-finish.png)
-6. **[発行]** をクリックして、変更を Data Factory に発行します。 
+6. **[すべて発行]** をクリックして、変更を Data Factory に発行します。 
 
-   ![[発行] ボタン](./media/quickstart-create-data-factory-portal/publish-2.png)
+   ![[発行] ボタン](./media/quickstart-create-data-factory-portal/publish-button.png)
 8. 左側で **[監視]** タブに切り替えます。 **[最新の情報に更新]** を選択して、一覧を更新します。 発行時刻から終了時刻まで、毎分 1 回パイプラインが実行されることがわかります。 
 
    **[トリガー元]** 列の値に注意してください。 手動のトリガー実行は、前に行った手順 (**[Trigger Now]\(今すぐトリガー\)**) によるものでした。 

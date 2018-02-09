@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 36eee42b7b10dfb62e569d665f62a94fc94365be
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: cee0619df4e2ed2e31becc764dd64dafef6e97d5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語スキーマ
 
@@ -42,14 +42,14 @@ ms.lasthandoff: 11/06/2017
 > [!NOTE]
 > ロジック アプリのワークフローを作成および管理する方法については、[ワークフロー管理 REST API](https://docs.microsoft.com/rest/api/logic/workflows) のドキュメントをご覧ください。
   
-|要素名|必須|説明|  
+|要素名|必須|[説明]|  
 |------------------|--------------|-----------------|  
-|$schema|いいえ|定義言語のバージョンが記述されている JSON スキーマ ファイルの場所を指定します。 この場所は、外部の定義を参照する場合に必要です。 このドキュメントの場所は次のとおりです。 <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#`|  
-|contentVersion|いいえ|定義のバージョンを指定します。 定義を使ってワークフローをデプロイするとき、この値を使って、正しい定義が確実に使われるようにすることができます。|  
-|parameters|なし|定義へのデータの入力に使うパラメーターを指定します。 最大 50 個のパラメーターを定義することができます。|  
-|トリガー|いいえ|ワークフローを開始するトリガーの情報を指定します。 最大 10 個のトリガーを定義できます。|  
-|actions|いいえ|フローの実行時に行うアクションを指定します。 最大 250 個のアクションを定義できます。|  
-|outputs|いいえ|デプロイされるリソースに関する情報を指定します。 最大 10 個の出力を定義できます。|  
+|$schema|いいえ |定義言語のバージョンが記述されている JSON スキーマ ファイルの場所を指定します。 この場所は、外部の定義を参照する場合に必要です。 このドキュメントの場所は次のとおりです。 <p>`https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json`|  
+|contentVersion|いいえ |定義のバージョンを指定します。 定義を使ってワークフローをデプロイするとき、この値を使って、正しい定義が確実に使われるようにすることができます。|  
+|parameters|いいえ |定義へのデータの入力に使うパラメーターを指定します。 最大 50 個のパラメーターを定義することができます。|  
+|トリガー|いいえ |ワークフローを開始するトリガーの情報を指定します。 最大 10 個のトリガーを定義できます。|  
+|アクション|いいえ |フローの実行時に行うアクションを指定します。 最大 250 個のアクションを定義できます。|  
+|outputs|いいえ |デプロイされるリソースに関する情報を指定します。 最大 10 個の出力を定義できます。|  
   
 ## <a name="parameters"></a>parameters
 
@@ -68,12 +68,12 @@ ms.lasthandoff: 11/06/2017
 }
 ```
 
-|要素名|必須|説明|  
+|要素名|必須|[説明]|  
 |------------------|--------------|-----------------|  
-|type|はい|**型**: string <p> **宣言**: `"parameters": {"parameter1": {"type": "string"}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: securestring <p> **宣言**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: int <p> **宣言**: `"parameters": {"parameter1": {"type": "int"}}` <p> **指定**: `"parameters": {"parameter1": {"value" : 5}}` <p> **型**: bool <p> **宣言**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **指定**: `"parameters": {"parameter1": { "value": true }}` <p> **型**: array <p> **宣言**: `"parameters": {"parameter1": {"type": "array"}}` <p> **指定**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **型**: object <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **型**: secureobject <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **注:** `securestring` 型と `secureobject` 型は、`GET` 操作では返されません。 すべてのパスワード、キー、シークレットで、この型を使う必要があります。|  
-|defaultValue|いいえ|リソース作成時に値が指定されないときの、パラメーターの既定値を指定します。|  
-|allowedValues|いいえ|パラメーターに許可される値の配列を指定します。|  
-|metadata|いいえ|読み取り可能な説明や、Visual Studio または他のツールによって使われる設計時データなど、パラメーターに関する追加情報を指定します。|  
+|型|[はい]|**型**: string <p> **宣言**: `"parameters": {"parameter1": {"type": "string"}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: securestring <p> **宣言**: `"parameters": {"parameter1": {"type": "securestring"}}` <p> **指定**: `"parameters": {"parameter1": {"value": "myparamvalue1"}}` <p> **型**: int <p> **宣言**: `"parameters": {"parameter1": {"type": "int"}}` <p> **指定**: `"parameters": {"parameter1": {"value" : 5}}` <p> **型**: bool <p> **宣言**: `"parameters": {"parameter1": {"type": "bool"}}` <p> **指定**: `"parameters": {"parameter1": { "value": true }}` <p> **型**: array <p> **宣言**: `"parameters": {"parameter1": {"type": "array"}}` <p> **指定**: `"parameters": {"parameter1": { "value": [ array-of-values ]}}` <p> **型**: object <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **型**: secureobject <p> **宣言**: `"parameters": {"parameter1": {"type": "object"}}` <p> **指定**: `"parameters": {"parameter1": { "value": { JSON-object } }}` <p> **注:** `securestring` 型と `secureobject` 型は、`GET` 操作では返されません。 すべてのパスワード、キー、シークレットで、この型を使う必要があります。|  
+|defaultValue|いいえ |リソース作成時に値が指定されないときの、パラメーターの既定値を指定します。|  
+|allowedValues|いいえ |パラメーターに許可される値の配列を指定します。|  
+|metadata|いいえ |読み取り可能な説明や、Visual Studio または他のツールによって使われる設計時データなど、パラメーターに関する追加情報を指定します。|  
   
 次の例では、アクションの body セクションでパラメーターを使う方法を示します。  
   
@@ -103,21 +103,21 @@ outputs では、ワークフローの実行から返すことができる情報
 } 
 ```
 
-|要素名|必須|Description|  
+|要素名|必須|[説明]|  
 |------------------|--------------|-----------------|  
-|key1|はい|出力のキー ID を指定します。 **key1** は、出力の識別に使う名前に置き換えます。|  
-|値|はい|出力の値を指定します。|  
-|type|はい|指定した値の型を指定します。 指定できる値の型は次のとおりです。 <ul><li>`string`</li><li>`securestring`</li><li>`int`</li><li>`bool`</li><li>`array`</li><li>`object`</li></ul>|
+|key1|[はい]|出力のキー ID を指定します。 **key1** は、出力の識別に使う名前に置き換えます。|  
+|value|[はい]|出力の値を指定します。|  
+|型|[はい]|指定した値の型を指定します。 指定できる値の型は次のとおりです。 <ul><li>`string`</li><li>`securestring`</li><li>`int`</li><li>`bool`</li><li>`array`</li><li>`object`</li></ul>|
   
 ## <a name="expressions"></a>式  
 
-定義の JSON 値には、リテラル、または定義使用時に評価される式を、使うことができます。 次に例を示します。  
+定義の JSON 値には、リテラル、または定義使用時に評価される式を、使うことができます。 例:   
   
 ```json
 "name": "value"
 ```
 
- または  
+ or  
   
 ```json
 "name": "@parameters('password') "
@@ -135,7 +135,7 @@ outputs では、ワークフローの実行から返すことができる情報
 |"@@"|"@" を含む 1 文字の文字列が返されます。|  
 |" @"|" @" を含む 2 文字の文字列が返されます。|  
   
-"*文字列の補間*" により、式が `@{ ... }` にラップされている文字列の内部で式を使うこともできます。 For example: <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
+"*文字列の補間*" により、式が `@{ ... }` にラップされている文字列の内部で式を使うこともできます。 例:  <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
 結果は常に文字列であり、この機能は `concat` 関数に似ています。 `myNumber` が `42`、`myString` が `sampleString` と定義されているものとします。  
   
@@ -155,12 +155,12 @@ outputs では、ワークフローの実行から返すことができる情報
   
 |演算子|Description|  
 |--------------|-----------------|  
-|に関するページを参照してください。|ドット演算子を使うと、オブジェクトのプロパティを参照できます。|  
+|が必要です。|ドット演算子を使うと、オブジェクトのプロパティを参照できます。|  
 |?|疑問符演算子を使うと、実行時エラーを発生させずに、オブジェクトの null プロパティを参照できます。 たとえば、次の式を使って、null トリガー出力を処理できます。 <p>`@coalesce(trigger().outputs?.body?.property1, 'my default value')`|  
 |'|単一引用符は、文字列リテラルをラップする唯一の方法です。 式の内部で二重引用符を使うことはできません。この区切り記号は、式全体をラップする JSON の引用符と競合するためです。|  
 |[]|角かっこは、配列から特定のインデックスの値を取得するために使うことができます。 たとえば、`range(0,10)` を `forEach` 関数に渡すアクションがある場合、次の関数を使って配列から項目を取得できます。  <p>`myArray[item()]`|  
   
-## <a name="functions"></a>関数  
+## <a name="functions"></a>Functions  
 
 式の中で関数を呼び出すこともできます。 次の表では、式の中で使うことができる関数を示します。  
   
@@ -176,11 +176,11 @@ outputs では、ワークフローの実行から返すことができる情報
 
 これらの関数を使うと、ロジック アプリ内の他のアクションからの出力や、ロジック アプリの作成時に渡された値を、参照することができます。 たとえば、あるステップからのデータを参照して、別のステップで使うことができます。  
   
-|関数名|Description|  
+|関数名|[説明]|  
 |-------------------|-----------------|  
 |parameters|定義で定義されているパラメーター値を返します。 <p>`parameters('password')` <p> **パラメーター番号**: 1 <p> **名前**: Parameter <p> **説明**: 必須。 値が必要なパラメーターの値の名前です。|  
 |action|式で、他の JSON の名前と値のペアから、または現在の実行時アクションの出力から、値を導出することができます。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、アクション オブジェクト全体を参照します。 この関数は、アクションの do-until 条件の中でのみ使うことができます。 <p>`action().outputs.body.propertyPath`|  
-|actions|式で、他の JSON の名前と値のペアから、または実行時アクションの出力から、値を導出することができます。 これらの式では、1 つのアクションが別のアクションに依存することを明示的に宣言します。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、アクション オブジェクト全体を参照します。 この要素または conditions 要素のいずれかを使って依存関係を指定できますが、同じ依存リソースに両方の要素を使う必要はありません。 <p>`actions('myAction').outputs.body.propertyPath` <p> **パラメーター番号**: 1 <p> **名前**: Action name <p> **説明**: 必須。 値が必要なアクションの値の名前です。 <p> アクション オブジェクトでは次のプロパティを使用できます。 <ul><li>`name`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>これらのプロパティについて詳しくは、[Rest API に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=850646)をご覧ください。|
+|アクション|式で、他の JSON の名前と値のペアから、または実行時アクションの出力から、値を導出することができます。 これらの式では、1 つのアクションが別のアクションに依存することを明示的に宣言します。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、アクション オブジェクト全体を参照します。 この要素または conditions 要素のいずれかを使って依存関係を指定できますが、同じ依存リソースに両方の要素を使う必要はありません。 <p>`actions('myAction').outputs.body.propertyPath` <p> **パラメーター番号**: 1 <p> **名前**: Action name <p> **説明**: 必須。 値が必要なアクションの値の名前です。 <p> アクション オブジェクトでは次のプロパティを使用できます。 <ul><li>`name`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>これらのプロパティについて詳しくは、[Rest API に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=850646)をご覧ください。|
 |trigger|式で、他の JSON の名前と値のペアから、または実行時トリガーの出力から、値を導出することができます。 次の例で propertyPath によって表されるプロパティは省略可能です。 propertyPath を指定しないと、トリガー オブジェクト全体を参照します。 <p>`trigger().outputs.body.propertyPath` <p>トリガーの入力の中で使うと、関数は前の実行の出力を返します。 一方、トリガーの条件の中で使うと、`trigger` 関数は現在の実行の出力を返します。 <p> トリガー オブジェクトでは次のプロパティを使用できます。 <ul><li>`name`</li><li>`scheduledTime`</li><li>`startTime`</li><li>`endTime`</li><li>`inputs`</li><li>`outputs`</li><li>`status`</li><li>`code`</li><li>`trackingId`</li><li>`clientTrackingId`</li></ul> <p>これらのプロパティについて詳しくは、[Rest API に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=850644)をご覧ください。|
 |actionOutputs|この関数は、`actions('actionName').outputs` の短縮形です。 <p> **パラメーター番号**: 1 <p> **名前**: Action name <p> **説明**: 必須。 値が必要なアクションの値の名前です。|  
 |actionBody、body|これらの関数は、`actions('actionName').outputs.body` の短縮形です。 <p> **パラメーター番号**: 1 <p> **名前**: Action name <p> **説明**: 必須。 値が必要なアクションの値の名前です。|  
@@ -192,7 +192,7 @@ outputs では、ワークフローの実行から返すことができる情報
 
 これらの関数はコレクションで動作し、一般に、配列や文字列、場合によっては辞書に適用します。  
   
-|関数名|説明|  
+|関数名|[説明]|  
 |-------------------|-----------------|  
 |contains|ディクショナリにキーが含まれる場合、リストに値が含まれる場合、または文字列に部分文字列が含まれる場合、true を返します。 たとえば、次の関数は `true` を返します。 <p>`contains('abacaba','aca')` <p> **パラメーター番号**: 1 <p> **名前**: Within collection <p> **説明**: 必須。 その中で検索を行うコレクションです。 <p> **パラメーター番号**: 2 <p> **名前**: Find object <p> **説明**: 必須。 **Within collection** 内で検索するオブジェクトです。|  
 |length|配列または文字列内の要素の数を返します。 たとえば、次の関数は `3` を返します。  <p>`length('abc')` <p> **パラメーター番号**: 1 <p> **Name**: Collection <p> **説明**: 必須。 長さを取得する対象のコレクションです。|  
@@ -209,12 +209,12 @@ outputs では、ワークフローの実行から返すことができる情報
 
 次の関数は、文字列にのみ適用されます。 文字列には一部のコレクション関数を使うこともできます。  
   
-|関数名|説明|  
+|関数名|[説明]|  
 |-------------------|-----------------|  
 |concat|任意の数の文字列を結合します。 たとえば、パラメーター 1 が `p1` の場合、次の関数は `somevalue-p1-somevalue` を返します。 <p>`concat('somevalue-',parameters('parameter1'),'-somevalue')` <p> **パラメーター番号**: 1 ... *n* <p> **名前**: String *n* <p> **説明**: 必須。 1 つの文字列に結合する文字列です。|  
 |substring|文字列から文字のサブセットを返します。 たとえば、次の関数は `abc` を返します。 <p>`substring('somevalue-abc-somevalue',10,3)` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 部分文字列を取得する文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: Start index <p> **説明**: 必須。 パラメーター 1 で取得する部分文字列の開始位置のインデックスです。 <p> **パラメーター番号**: 3 <p> **名前**: Length <p> **説明**: 必須。 部分文字列の長さです。|  
 |replace|文字列を指定された文字列に置き換えます。 たとえば、次の関数は `the new string` を返します。 <p>`replace('the old string', 'old', 'new')` <p> **パラメーター番号**: 1 <p> **名前**: string <p> **説明**: 必須。 この文字列内でパラメーター 2 を検索し、見つかった場合は、パラメーター 3 に置き換えます。 <p> **パラメーター番号**: 2 <p> **名前**: Old string <p> **説明**: 必須。 この文字列をパラメーター 1 で検索し、一致するものが見つかった場合はパラメーター 3 に置き換えます。 <p> **パラメーター番号**: 3 <p> **名前**: New string <p> **説明**: 必須。 パラメーター 1 でパラメーター 2 と一致する文字列が見つかった場合、この文字列に置き換えます。|  
-|guid|この関数は、グローバルに一意の文字列 (GUID) を生成します。 たとえば、次の関数は `c2ecc88d-88c8-4096-912c-d6f2e2b138ce` という GUID を生成できます。 <p>`guid()` <p> **パラメーター番号**: 1 <p> **名前**: Format <p> **説明**: 省略可能。 [この GUID の値の書式設定方法](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx)を示す単一の書式設定指定子です。 指定できる書式設定パラメーターは、"N"、"D"、"B"、"P"、"X" です。 指定しないと、"D" が使われます。|  
+|GUID|この関数は、グローバルに一意の文字列 (GUID) を生成します。 たとえば、次の関数は `c2ecc88d-88c8-4096-912c-d6f2e2b138ce` という GUID を生成できます。 <p>`guid()` <p> **パラメーター番号**: 1 <p> **名前**: Format <p> **説明**: 省略可能。 [この GUID の値の書式設定方法](https://msdn.microsoft.com/library/97af8hh4%28v=vs.110%29.aspx)を示す単一の書式設定指定子です。 指定できる書式設定パラメーターは、"N"、"D"、"B"、"P"、"X" です。 指定しないと、"D" が使われます。|  
 |toLower|文字列を小文字に変換します。 たとえば、次の関数は `two by two is four` を返します。 <p>`toLower('Two by Two is Four')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 小文字に変換する文字列です。 文字列内の文字に小文字に相当する文字がない場合、変更されないまま返されます。|  
 |toUpper|文字列を大文字に変換します。 たとえば、次の関数は `TWO BY TWO IS FOUR` を返します。 <p>`toUpper('Two by Two is Four')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 大文字に変換する文字列です。 文字列内の文字に大文字に相当する文字がない場合、変更されないまま返されます。|  
 |indexof|文字列内で値のインデックスを探します。大文字と小文字は区別されません。 たとえば、次の関数は `7` を返します。 <p>`indexof('hello, world.', 'world')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 値を含む可能性のある文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: String <p> **説明**: 必須。 インデックスを探す値です。|  
@@ -227,7 +227,7 @@ outputs では、ワークフローの実行から返すことができる情報
 
 これらの関数は条件の中で役に立ち、ロジックの種類の評価に使うことができます。  
   
-|関数名|Description|  
+|関数名|[説明]|  
 |-------------------|-----------------|  
 |equals|2 つの値が等しい場合、true を返します。 たとえば、パラメーター 1 が someValue の場合、次の関数は `true` を返します。 <p>`equals(parameters('parameter1'), 'someValue')` <p> **パラメーター番号**: 1 <p> **名前**: Object 1 <p> **説明**: 必須。 **Object 2** と比較するオブジェクトです。 <p> **パラメーター番号**: 2 <p> **名前**: Object 2 <p> **説明**: 必須。 **Object 1** と比較するオブジェクトです。|  
 |less|1 番目の引数が 2 番目の引数より小さい場合、true を返します。 値として指定できる型は integer、float、string だけであることに注意してください。 たとえば、次の関数は `true` を返します。 <p>`less(10,100)` <p> **パラメーター番号**: 1 <p> **名前**: Object 1 <p> **説明**: 必須。 **Object 2** より小さいかどうかを調べるオブジェクトです。 <p> **パラメーター番号**: 2 <p> **名前**: Object 2 <p> **説明**: 必須。 **Object 1** より大きいかどうかを調べるオブジェクトです。|  
@@ -243,13 +243,13 @@ outputs では、ワークフローの実行から返すことができる情報
 
 これらの関数は、言語の各ネイティブ型の間の変換に使われます。  
   
-- string  
+- 文字列  
   
 - integer  
   
 - float  
   
-- boolean  
+- ブール値  
   
 - arrays  
   
@@ -257,10 +257,10 @@ outputs では、ワークフローの実行から返すことができる情報
 
 -   forms  
   
-|関数名|Description|  
+|関数名|[説明]|  
 |-------------------|-----------------|  
 |int|パラメーターを整数に変換します。 たとえば、この関数は 100 を文字列ではなく数値として返します。 <p>`int('100')` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 整数に変換する値です。|  
-|string|パラメーターを文字列に変換します。 たとえば、次の関数は `'10'` を返します。 <p>`string(10)` <p>オブジェクトを文字列に変換することもできます。 たとえば、`myPar` パラメーターが 1 つつのプロパティ `abc : xyz` を含むオブジェクトの場合、この関数は `{"abc" : "xyz"}` を返します。 <p>`string(parameters('myPar'))` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 文字列に変換する値です。|  
+|文字列|パラメーターを文字列に変換します。 たとえば、次の関数は `'10'` を返します。 <p>`string(10)` <p>オブジェクトを文字列に変換することもできます。 たとえば、`myPar` パラメーターが 1 つつのプロパティ `abc : xyz` を含むオブジェクトの場合、この関数は `{"abc" : "xyz"}` を返します。 <p>`string(parameters('myPar'))` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 文字列に変換する値です。|  
 |json|パラメーターを JSON 型の値に変換します。`string()` の逆です。 たとえば、この関数は `[1,2,3]` を文字列ではなく配列として返します。 <p>`json('[1,2,3]')` <p>同様に、文字列をオブジェクトに変換することもできます。 たとえば、次の関数は `{ "abc" : "xyz" }` を返します。 <p>`json('{"abc" : "xyz"}')` <p> **パラメーター番号**: 1 <p> **名前**: String <p> **説明**: 必須。 ネイティブな型の値に変換する文字列です。 <p>`json()` 関数は、XML の入力もサポートします。 たとえば、次のようなパラメーター値があるものとします。 <p>`<?xml version="1.0"?> <root>   <person id='1'>     <name>Alan</name>     <occupation>Engineer</occupation>   </person> </root>` <p>これは、次の JSON に変換されます。 <p>`{ "?xml": { "@version": "1.0" },   "root": {     "person": [     {       "@id": "1",       "name": "Alan",       "occupation": "Engineer"     }   ]   } }`|  
 |float|パラメーター引数を浮動小数点数に変換します。 たとえば、次の関数は `10.333` を返します。 <p>`float('10.333')` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 浮動小数点数に変換する値です。|  
 |bool|パラメーターをブール値に変換します。 たとえば、次の関数は `false` を返します。 <p>`bool(0)` <p> **パラメーター番号**: 1 <p> **名前**: Value <p> **説明**: 必須。 ブール値に変換する値です。|  
@@ -292,7 +292,7 @@ outputs では、ワークフローの実行から返すことができる情報
  
 これらの関数は、XML およびオブジェクトに適用されます。
  
-|関数名|Description|  
+|関数名|[説明]|  
 |-------------------|-----------------| 
 |coalesce|渡された引数で最初の null 以外のオブジェクトを返します。 **注**: 空の文字列は null ではありません。 たとえば、パラメーター 1 と 2 が定義されていない場合、この関数は `fallback` を返します。  <p>`coalesce(parameters('parameter1'), parameters('parameter2') ,'fallback')` <p> **パラメーター番号**: 1 ... *n* <p> **名前**: Object*n* <p> **説明**: 必須。 null かどうか調べるオブジェクトです。|
 |addProperty|追加のプロパティを持つオブジェクトを返します。 実行時にプロパティが既に存在する場合は、エラーがスローされます。 たとえば、次の関数はオブジェクト `{ "abc" : "xyz", "def": "uvw" }` を返します。 <p>`addProperty(json('{"abc" : "xyz"}'), 'def', 'uvw')` <p> **パラメーター番号**: 1 <p> **名前**: Object <p> **説明**: 必須。 新しいプロパティを追加するオブジェクト。 <p> **パラメーター番号**: 2 <p> **名前**: Property Name <p> **説明**: 必須。 新しいプロパティの名前。 <p> **パラメーター番号**: 3 <p> **名前**: Value <p> **説明**: 必須。 新しいプロパティに割り当てる値。|
@@ -304,7 +304,7 @@ outputs では、ワークフローの実行から返すことができる情報
 
 これらの関数は、**integer** 型および **float** 型の値に使うことができます。  
   
-|関数名|説明|  
+|関数名|[説明]|  
 |-------------------|-----------------|  
 |追加|2 つの数値を加算した結果を返します。 たとえば、次の関数は `20.333` を返します。 <p>`add(10,10.333)` <p> **パラメーター番号**: 1 <p> **名前**: Summand 1 <p> **説明**: 必須。 **Summand 2** に加算する値です。 <p> **パラメーター番号**: 2 <p> **名前**: Summand 2 <p> **説明**: 必須。 **Summand 1** に加算する値です。|  
 |sub|2 つの数値を減算した結果を返します。 たとえば、次の関数は `-0.333` を返します。 <p>`sub(10,10.333)` <p> **パラメーター番号**: 1 <p> **名前**: Minuend <p> **説明**: 必須。 **Subtrahend** を減算する値です。 <p> **パラメーター番号**: 2 <p> **名前**: Subtrahend <p> **説明**: 必須。 **Minuend** から減算する値です。|  
@@ -318,7 +318,7 @@ outputs では、ワークフローの実行から返すことができる情報
  
 ### <a name="date-functions"></a>データ関数  
 
-|関数名|Description|  
+|関数名|[説明]|  
 |-------------------|-----------------|  
 |utcnow|現在のタイムスタンプを文字列として返します (例: `2017-03-15T13:27:36Z`)。 <p>`utcnow()` <p> **パラメーター番号**: 1 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |addseconds|渡されたタイムスタンプ文字列に秒数を表す整数を追加します。 秒数は正でも負でもかまいません。 書式指定子を指定しない場合の既定値は、ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T13:27:00Z` <p>`addseconds('2015-03-15T13:27:36Z', -36)` <p> **パラメーター番号**: 1 <p> **名前**: Timestamp <p> **説明**: 必須。 時刻を表す文字列です。 <p> **パラメーター番号**: 2 <p> **名前**: Seconds <p> **説明**: 必須。 追加する秒の値です。 負の値にして秒数を減算できます。 <p> **パラメーター番号**: 3 <p> **名前**: Format <p> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
@@ -338,11 +338,11 @@ outputs では、ワークフローの実行から返すことができる情報
 
 以下の関数を使うと、実行時にワークフロー自体に関する情報を取得できます。  
   
-|関数名|Description|  
+|関数名|[説明]|  
 |-------------------|-----------------|  
 |listCallbackUrl|トリガーまたはアクションを開始するために呼び出す文字列を返します。 <p> **注**: この関数は **httpWebhook** および **apiConnectionWebhook** においてのみ使うことができ、**manual**、**recurrence**、**http**、**apiConnection** では使えません。 <p>たとえば、`listCallbackUrl()` 関数は次の値を返します。 <p>`https://prod-01.westus.logic.azure.com:443/workflows/1235...ABCD/triggers/manual/run?api-version=2015-08-01-preview&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=xxx...xxx` |  
 |workflow|この関数は、実行時のワークフロー自体の詳細をすべて返します。 <p> ワークフロー オブジェクトでは次のプロパティを使用できます。 <ul><li>`name`</li><li>`type`</li><li>`id`</li><li>`location`</li><li>`run`</li></ul> <p> `run` プロパティの値は、次のプロパティを持つオブジェクトです。 <ul><li>`name`</li><li>`type`</li><li>`id`</li></ul> <p>これらのプロパティについて詳しくは、[Rest API に関するページ](http://go.microsoft.com/fwlink/p/?LinkID=525617)をご覧ください。<p> たとえば、現在の実行の名前を取得するには、`"@workflow().run.name"` 式を使用します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ワークフローのアクションとトリガー](logic-apps-workflow-actions-triggers.md)

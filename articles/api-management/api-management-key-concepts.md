@@ -14,11 +14,11 @@ ms.topic: overview
 ms.date: 11/15/2017
 ms.author: apimpm
 ms.custom: mvc
-ms.openlocfilehash: 727be96828b9217f89214722f474abfc220b0b3c
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 010c4619a2a4d8ae477ebd6e66747c55cde0fc08
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="what-is-api-management"></a>API Management とは
 
@@ -30,7 +30,7 @@ Azure API Management の概要や、API Management を使用して最小限の�
 > 
 > 
 
-このトピックでは、APIM に関連する一般的なシナリオの概要について説明します。  また、APIM システムの主要コンポーネントの概要についても説明します。 さらに、各コンポーネントの詳細な概要を示します。
+この記事では、APIM に関連する一般的なシナリオの概要について説明します。  また、APIM システムの主要コンポーネントの概要についても説明します。 さらに、各コンポーネントの詳細な概要を示します。
 
 ## <a name="overview"></a>概要
 
@@ -50,14 +50,14 @@ API Management を使用するには、管理者が API を作成します。 AP
   * コードを変更せずにその場で API を変換します。
   * セットアップ時にバックエンドの応答をキャッシュします。
   * 分析目的で呼び出しメタデータを記録します。
-* **パブリッシャー ポータル** は、API プログラムをセットアップする管理インターフェイスです。 このインターフェイスを使用して、次の操作を行います。
+* **Azure Portal** は、API プログラムをセットアップする管理インターフェイスです。 このインターフェイスを使用して、次の操作を行います。
   
   * API スキーマを定義またはインポートします。
   * API を製品にパッケージします。
   * API のクォータや変換などのポリシーを設定します。
   * 分析から洞察を得ます。
   * ユーザーを管理します。
-* **開発者ポータル** は、開発者用のメイン Web として機能し、次の操作を実行できます。
+* **開発者ポータル**は、開発者用のメイン Web として機能し、次の操作を実行できます。
   
   * API のドキュメントを読みます。
   * 対話型コンソールを使用して API を試します。
@@ -104,7 +104,7 @@ API Management サービス インスタンスの基礎となるのは API で�
 詳細については、[開発者を作成または招待する方法][How to create or invite developers]に関するページと、[グループを開発者に関連付ける方法][How to associate groups with developers]に関するページを参照してください。
 
 ## <a name="policies"> </a> ポリシー
-ポリシーは、発行者がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
+ポリシーは、Azure Portal がその構成を通じて API の動作を変更できる、API Management の強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 代表的なステートメントとしては、XML 形式から JSON 形式への変換や、(開発者からの呼び出しの回数を制限する) 呼び出しレート制限が挙げられ、他にも数多くのポリシーが利用できます。
 
 ポリシーの式は、ポリシーで特に指定されていない限り、任意の API Management ポリシーで属性値またはテキスト値として使用できます。 [制御フロー](https://msdn.microsoft.com/library/azure/dn894085.aspx#choose) ポリシーや[変数の設定](https://msdn.microsoft.com/library/azure/dn894085.aspx#set-variable)ポリシーなど、一部のポリシーはポリシーの式に基づいています。 詳細については、「[詳細なポリシー](https://msdn.microsoft.com/library/azure/dn894085.aspx#AdvancedPolicies)」と「[ポリシーの式](https://msdn.microsoft.com/library/azure/dn910913.aspx)」をご覧ください。
 

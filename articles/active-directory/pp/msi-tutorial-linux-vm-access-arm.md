@@ -3,9 +3,9 @@ title: "Linux VM ユーザー割り当て MSI を使用した Azure Resource Man
 description: "Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。"
 services: active-directory
 documentationcenter: 
-author: bryanLa
+author: daveba
 manager: mtillman
-editor: bryanla
+editor: daveba
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: arluca
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: bebdccb616a4677fdf36ac257ac36f1827958af7
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 350b20dbff306221fbedd069ef378f11e2ec1415
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-resource-manager"></a>Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスする
 
@@ -79,7 +79,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
     az identity create -g <RESOURCE GROUP> -n <MSI NAME>
     ```
 
-    応答には、次の例のように、作成されたユーザー割り当て MSI の詳細が含まれています。 次の手順で `id` 値を使用するので、MSI のこの値をメモに記録します。
+    応答には、次の例のように、作成されたユーザー割り当て MSI の詳細が含まれています。 次の手順で `id` の値を使用するため、この値をメモに記録します。
 
     ```json
     {
@@ -110,10 +110,10 @@ az vm assign-identity -g <RESOURCE GROUP> -n <VM NAME> --identities "/subscripti
 
 MSI は、Azure AD 認証をサポートするリソース API に対して認証するためのアクセス トークンをコードに提供します。 このチュートリアルでは、コードで Azure Resource Manager API にアクセスできるようにします。 
 
-コードで API にアクセスできるようにするには、事前に MSI の ID に Azure Resource Manager のリソースへのアクセスを許可する必要があります。 このケースでは、VM が含まれているリソース グループが対象になります。 `<CLIENT ID>`、`<SUBSCRIPTION ID>`、および `<RESOURCE GROUP>` の各パラメーターの値は、必ず実際の値に置き換えてください。 `<CLIENT ID>` を、「[ユーザー割り当て MSI を作成する](#create-a-user-assigned-msi)」の `az identity create` コマンドによって返された `clientId` プロパティで置き換えます。 
+コードで API にアクセスできるようにするには、事前に MSI の ID に Azure Resource Manager のリソースへのアクセスを許可する必要があります。 このケースでは、VM が含まれているリソース グループが対象になります。 使用する環境に合わせて、`<SUBSCRIPTION ID>` と `<RESOURCE GROUP>` の値を更新します。 さらに、`<MSI PRINCIPALID>` を、「[ユーザー割り当て MSI を作成する](#create-a-user-assigned-msi)」の `az identity create` コマンドによって返された `principalId` プロパティで置き換えます。
 
 ```azurecli-interactive
-az role assignment create --assignee <CLIENT ID> --role ‘Reader’ --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP> "
+az role assignment create --assignee <MSI PRINCIPALID> --role 'Reader' --scope "/subscriptions/<SUBSCRIPTION ID>/resourcegroups/<RESOURCE GROUP> "
 ```
 
 応答には、次の例のように、作成されたロールの割り当ての詳細が含まれています。

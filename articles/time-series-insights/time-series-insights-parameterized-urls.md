@@ -12,11 +12,11 @@ ms.devlang: rest-api
 ms.topic: get-started-article
 ms.workload: big-data
 ms.date: 11/21/2017
-ms.openlocfilehash: b7c58697323ec12ac08575916cb3ac5b38cc39c1
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ffa8e96ab9a5344c924400fe55b4d1e6aee95f06
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="share-a-custom-view-using-a-parameterized-url"></a>パラメーター化 URL を使用してカスタム ビューを共有する
 
@@ -63,14 +63,16 @@ JavaScript における日付のミリ秒表現については、「[Epoch & Uni
 
 `timeSeriesDefinitions=<collection of term objects>` パラメーターは、Time Series Insights ビューの期間を指定します。
 
-- `name=<string>`
+- "name":"<string>"
   - "*期間*" の名前。
-- `splitBy=<string>`
+- "splitBy":"<string>"
   - "*分割基準*" となる列名。
-- `measureName=<string>`
+- "measureName":"<string>"
   - "*メジャー*" の列名。
-- `predicate=<string>`
+- "predicate":"<string>"
   - サーバー側フィルター処理の *where* 句。
+-  "useSum":"true"
+  - これは、メジャーの合計を使用することを指定する省略可能なパラメーターです。  選択されたメジャーが "Events" の場合、既定で count が選択されることに注意してください。  "Events" が選択されていない場合、既定で average が選択されます。  
 
 'multiChartStack=<true/false>' パラメーターを使用すると、グラフの積み重ねが有効になります。また、'multiChartSameScale=<true/false>' パラメーターを使用すると、オプションのパラメーター内の期間全体で同じ Y 軸のスケールが有効になります。  
 
@@ -118,5 +120,5 @@ https://insights.timeseries.azure.com/samples?environmentId=10000000-0000-0000-0
 
 ![グラフ ビュー](media/parameterized-url/url2.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [C# を使用してデータのクエリを実行する](time-series-insights-query-data-csharp.md)

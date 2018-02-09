@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/22/2018
 ms.author: v-masebo
-ms.openlocfilehash: 24c556c8ea585a522c890dab16ae9fb96dc51c22
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: f467437afb4bf89e77668cfd3e8a824bfbde9e10
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="routing-messages-with-iot-hub-python"></a>IoT Hub でのメッセージのルーティング (Python)
 
@@ -117,6 +117,9 @@ ms.lasthandoff: 01/23/2018
 このセクションでは、Service Bus キューとストレージ アカウントの両方を作成して IoT hub に接続し、メッセージのプロパティの有無に基づいてこのキューにメッセージを送信し、すべてのメッセージをストレージ アカウントに送信するように IoT hub を構成します。 Service Bus キューのメッセージを処理する方法については、[キューの概要][lnk-sb-queues-node]に関するページを参照してください。また、ストレージの管理方法については、[Azure Storage の概要][Azure Storage] に関するページを参照してください。
 
 1. 「[Service Bus キューの使用][lnk-sb-queues-node]」の説明に従って、Service Bus キューを作成します。 名前空間とキューの名前をメモしておきます。
+
+    > [!NOTE]
+    > IoT Hub エンドポイントとして使用される Service Bus のキューとトピックでは、**セッション**または**重複データ検出**が有効になっていてはいけません。 これらのオプションのいずれかが有効になっている場合、エンドポイントは Azure Portal に**到達不能**として表示されます。
 
 1. Azure Portal で、IoT Hub を開き、**[エンドポイント]** をクリックします。
 

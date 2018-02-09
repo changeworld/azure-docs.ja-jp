@@ -4,7 +4,7 @@ description: "Azure Batch プールで RDMA 対応または GPU 対応の VM サ
 services: batch
 documentationcenter: 
 author: dlepow
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: batch
@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/31/2017
+ms.date: 01/05/2018
 ms.author: danlep
-ms.openlocfilehash: 26cab5ba892d892e035bd94c52cacabd23eebd0c
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: dc28c3a9d46baa8e8d2136ffccbb4e7ff6675b1e
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Batch プールでの RDMA 対応または GPU 対応インスタンスの使用
 
@@ -50,10 +50,10 @@ ms.lasthandoff: 01/19/2018
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
-| [NC シリーズ*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 9.0 ドライバー | 該当なし | 
+| [NC、NCv2、ND シリーズ*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU (シリーズによって異なります) | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 9.1 ドライバー | 該当なし | 
 | [NV シリーズ](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA GRID 4.3 ドライバー | 該当なし |
 
-*NC24r VM の RDMA 接続は、Intel MPI がインストールされた Ubuntu 16.04 LTS または CentOS-based 7.3 HPC (Azure Marketplace から入手) でサポートされます。
+*NC24r、NC24r_v2、および ND24r VM の RDMA 接続は、Intel MPI がインストールされた Ubuntu 16.04 LTS または CentOS-based 7.3 HPC (Azure Marketplace から入手) でサポートされます。
 
 
 
@@ -62,10 +62,10 @@ ms.lasthandoff: 01/19/2018
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2 または<br/>Windows Server 2012 (Azure Marketplace) | Microsoft MPI 2012 R2 以降または<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 拡張機能 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
-| [NC シリーズ*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla K80 GPU | Windows Server 2016 または <br/>Windows Server 2012 R2 (Azure Marketplace) | NVIDIA Tesla ドライバーまたは CUDA Toolkit 9.0 ドライバー| 該当なし | 
+| [NC、NCv2、ND シリーズ*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Windows Server 2016 または <br/>Windows Server 2012 R2 (Azure Marketplace) | NVIDIA Tesla ドライバーまたは CUDA Toolkit 9.1 ドライバー| 該当なし | 
 | [NV シリーズ](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 または<br/>Windows Server 2012 R2 (Azure Marketplace) | NVIDIA GRID 4.3 ドライバー | 該当なし |
 
-*NC24r VM の RDMA 接続は、HpcVMDrivers 拡張機能と Microsoft MPI または Intel MPI がインストールされた Windows Server 2012 R2 (Azure Marketplace から入手) でサポートされます。
+*NC24r、NC24r_v2、および ND24r VM の RDMA 接続は、HpcVMDrivers 拡張機能と Microsoft MPI または Intel MPI がインストールされた Windows Server 2012 R2 (Azure Marketplace から入手) でサポートされます。
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows プール - クラウド サービス構成
 

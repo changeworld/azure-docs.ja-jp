@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 01/25/2018
 ms.author: sethm
-ms.openlocfilehash: b0bc1ef7570ccac07975e2560a1d0501d3cde2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 124c4592a41bf9f3e2a148ba5c3b928bb051d160
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-browsing"></a>メッセージの読み取り
 
-通常は診断とデバッグの目的で、クライアントは、メッセージを読み取る ("ピーク") ことにより、キューまたはメッセージにあるすべてのメッセージを列挙できます。
+Service Bus クライアントは、メッセージを読み取る ("ピーク") ことにより、通常は診断とデバッグの目的で、キューまたはサブスクリプションにあるすべてのメッセージを列挙できます。
 
-ピーク操作では、*Receive()* または *OnMessage()* ループで即時に取得できるメッセージだけでなく、キューまたはサブスクリプション メッセージ ログにあるすべてのメッセージが返されます。 各メッセージの *State* プロパティは、メッセージがアクティブか (受信可能)、遅延 (遅延 [TBD リンク] 参照) またはスケジュール済み (スケジュールされたメッセージ [TBD リンク] 参照) かを示します。
+ピーク操作では、`Receive()` または `OnMessage()` ループで即時に取得できるメッセージだけでなく、キューまたはサブスクリプション メッセージ ログにあるすべてのメッセージが返されます。 各メッセージの `State` プロパティによって、メッセージがアクティブか (受信可能)、[遅延](message-deferral.md)、または[スケジュール済み](message-sequencing.md)かが分かります。
 
-消費され、有効期限の切れたメッセージは、非同期 "ガベージ コレクション" を実行することよって消去されますが、この操作はメッセージの有効期限が切れると同時に実行されるとは限らないため、ピークは実際にはすでに有効期限が切れ、キューまたはサブスクリプションで受信操作が次回呼び出されたときに削除または配信不能キューに入れられるメッセージを返す可能性もあります。
+消費され、有効期限の切れたメッセージは、非同期 "ガベージ コレクション" を実行することよって消去されますが、この操作はメッセージの有効期限が切れると同時に実行されるとは限らないため、`Peek` は実際には既に有効期限が切れ、キューまたはサブスクリプションで受信操作が次回呼び出されたときに削除または配信不能キューに入れられるメッセージを返す可能性もあります。
 
 このことに留意することは、特に、キューから遅延メッセージを回復しようとする場合に重要になります。 [ExpiresAtUtc](/dotnet/api/microsoft.azure.servicebus.message.expiresatutc#Microsoft_Azure_ServiceBus_Message_ExpiresAtUtc) インスタントが渡したメッセージは、ピークによって返された場合でも、他の方法では通常の取得ができなくなります。 ピークはログの現在の状態を反映する診断ツールであるため、これらのメッセージの返しは意図的に実行されます。
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 
 [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) を使用してメソッドのオーバー ロードをシードを設定して開始し、パラメーターなしでメソッドのオーバーロードを呼び出してさらに列挙することもできます。 **PeekBatch** 関数も同様に機能しますが、一度にすべてのメッセージ セットを取得します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

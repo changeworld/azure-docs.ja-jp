@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 01/24/2018
 ms.author: cherylmc
-ms.openlocfilehash: 37951a04bbfd266717490dd1752d0be04d2231a5
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 838065287279f1c17e7f294bc919c4a0421e2a58
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする
 
@@ -56,7 +56,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 コマンドを実行すると、リンクが返されます。 このリンクをコピーして Web ブラウザーに貼り付け、"VpnClientConfiguration.zip" をダウンロードします。 そのファイルを解凍して、次のフォルダーを表示します。 
  
 * **WindowsAmd64** および **WindowsX86**。これらのフォルダーにはそれぞれ、Windows の 64 ビットと 32 ビットのインストーラー パッケージが含まれています。 
-* **GenericDevice**。このフォルダーには、独自の VPN クライアント構成の作成に使用される全般的な情報が含まれています。 このフォルダーは、ユーザー名/パスワード認証の構成には不要です。
+* **Generic**。このフォルダーには、独自の VPN クライアント構成の作成に使用される全般的な情報が含まれています。 このフォルダーは、ユーザー名/パスワード認証の構成には不要です。
 * **Mac**。仮想ネットワーク ゲートウェイの作成時に IKEv2 を構成した場合は、**mobileconfig** というファイルを含む "Mac" という名前のフォルダーが表示されます。 このファイルは、Mac クライアントの構成に使用されます。
 
 クライアント構成ファイルを既に作成してある場合は、"Get-AzureRmVpnClientConfiguration" コマンドレットを使用して取得できます。 ただし、VPN プロトコルの種類や認証の種類など、P2S VPN 構成に変更を加えた場合、構成は自動的に更新されません。 "New-AzureRmVpnClientConfiguration" コマンドレットを実行して新しい構成ダウンロードを作成する必要があります。
@@ -125,7 +125,7 @@ EAP-TLS プロトコルを使用する RADIUS 証明書認証用の VPN クラ�
 証明書認証で使用する VPN クライアント構成ファイルを生成します。 VPN クライアント構成ファイルの生成には、次のコマンドを使用します。
  
 ```powershell
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root>
+New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root> | fl
 ```
 
 コマンドを実行すると、リンクが返されます。 このリンクをコピーして Web ブラウザーに貼り付け、"VpnClientConfiguration.zip" をダウンロードします。 そのファイルを解凍して、次のフォルダーを表示します。
@@ -138,7 +138,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 以前に生成されたクライアント構成ファイルを取得するには、次のコマンドを使用します。
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
+Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" | fl
 ```
  
 ## <a name="setupusername"></a> 2.Windows と Mac の VPN クライアントの構成

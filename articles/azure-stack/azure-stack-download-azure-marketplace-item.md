@@ -3,8 +3,8 @@ title: "Azure から Marketplace の項目をダウンロードする | Microsof
 description: "Azure から Azure Stack のデプロイに Marketplace の項目をダウンロードすることができます。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -12,23 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/30/2017
-ms.author: erikje
-ms.openlocfilehash: 33b7be4a85723ab03e4c656a8dd28632ad854e29
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.date: 01/30/2018
+ms.author: brenduns
+ms.openlocfilehash: 58f8287e5675e1134cb2fcceef9a9128ef97207c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+
 
 Azure Stack Marketplace に含めるコンテンツを決定するときは、Azure Marketplace から利用可能なコンテンツを検討する必要があります。 Azure Stack 上で動くことがテスト済みの Azure Marketplace の項目の精選された一覧からダウンロードすることができます。 一覧には新しいアイテムが頻繁に追加されるので、ときどき新しいコンテンツを確認してください。
 
 ## <a name="download-marketplace-items-in-a-connected-scenario-with-internet-connectivity"></a>接続されているシナリオでの Marketplace アイテムのダウンロード (インターネット接続を使用)
 
-1. Marketplace の項目をダウンロードするには、最初に [Azure Stack を Azure に登録](azure-stack-register.md)します。 
+1. Marketplace の項目をダウンロードするには、最初に [Azure Stack を Azure に登録](azure-stack-register.md)します。
 2. Azure Stack 管理ポータル (https://portal.local.azurestack.external) にサインインします。
 3. Marketplace アイテムの中には大きいものがあります。 **[リソース プロバイダー]** > **[ストレージ]** をクリックして、システムに十分な領域があることを確認してください。
 
@@ -51,7 +52,7 @@ Azure Stack Marketplace に含めるコンテンツを決定するときは、Az
 
 ## <a name="download-marketplace-items-in-a-disconnected-or-a-partially-connected-scenario-with-limited-internet-connectivity"></a>接続が切断されたシナリオまたは部分的に接続されているシナリオでの Marketplace アイテムのダウンロード (制限付きのインターネット接続を使用)
 
-Azure Stack を非接続モード (インターネット接続なし) でデプロイする場合、Azure Stack ポータルを使用して Marketplace アイテムをダウンロードすることはできません。 ただし、マーケットプレース シンジケーション ツールを使用して、インターネットに接続されたマシンに Marketplace アイテムをダウンロードしてから、Azure Stack 環境に転送することができます。 
+Azure Stack を非接続モード (インターネット接続なし) でデプロイする場合、Azure Stack ポータルを使用して Marketplace アイテムをダウンロードすることはできません。 ただし、マーケットプレース シンジケーション ツールを使用して、インターネットに接続されたマシンに Marketplace アイテムをダウンロードしてから、Azure Stack 環境に転送することができます。
 
 ### <a name="prerequisites"></a>前提条件
 マーケットプレース シンジケーション ツールを使用する前に、[自分の Azure サブスクリプションで登録済みの Azure Stack](azure-stack-register.md) があることを確認してください。  
@@ -132,12 +133,12 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
     -Version "2017.09.25" `
     -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Microsoft.WindowsServer2016DatacenterServerCore-ARM-Eval.2017.09.25.vhd" `
     -CreateGalleryItem $False `
-    -Location Local 
+    -Location Local
    ```
 
 4. ポータルを使用して Marketplace アイテム (.Azpkg) を Azure Stack BLOB ストレージにアップロードします。 ローカルの Azure Stack ストレージへのアップロード、または Azure Storage へのアップロードができます。 (パッケージの一時的な場所です。)BLOB がパブリックにアクセスできることを確認し、URI を書き留めておきます。  
 
-5. **Add-AzureRMGalleryItem** を使用して、Marketplace アイテムを Azure Stack に発行します。 For example:
+5. **Add-AzsGalleryItem** を使用して、Marketplace アイテムを Azure Stack に発行します。 例: 
 
    ```powershell
    Add-AzsGalleryItem `
@@ -149,6 +150,6 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
 
    ![Marketplace](./media/azure-stack-download-azure-marketplace-item/image06.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)

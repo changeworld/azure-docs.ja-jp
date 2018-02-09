@@ -1,11 +1,24 @@
- ---
-タイトル: Azure Media Services REST 呼び出しのための Postman 環境のインポート 説明: このトピックでは、Azure Media Services REST 呼び出しの Postman 環境の定義について説明します。
-services: media-services documentationcenter: '' author: Juliako manager: cfowler editor: ''
-
-ms.service: media-services ms.workload: media ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 01/04/2017 ms.author: juliako
-
 ---
-
+title: "Azure Media Services REST 呼び出し用の Postman 環境のインポート"
+description: "このトピックでは、Azure Media Services REST 呼び出し用の Postman 環境の定義を示します。"
+services: media-services
+documentationcenter: 
+author: Juliako
+manager: cfowler
+editor: 
+ms.service: media-services
+ms.workload: media
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 01/04/2018
+ms.author: juliako
+ms.openlocfilehash: aa3e1bb4c6ae53e24e3153dd55f6a6d07e29e091
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/01/2018
+---
 # <a name="import-the-postman-environment"></a>Postman 環境のインポート 
 
 この記事には、Media Services REST API を呼び出す、グループ化された HTTP 要求を含む [Postman コレクション](postman-collection.md)で使用される **Postman** 環境変数の定義が示されています。 環境およびコレクション ファイルは「[Configure Postman for Media Services REST API calls (Media Services REST API のための Postman の構成)](media-rest-apis-with-postman.md)」チュートリアルで使用されます。

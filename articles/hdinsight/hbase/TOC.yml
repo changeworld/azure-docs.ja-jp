@@ -145,6 +145,9 @@
             - name: Ambari REST API を使用する
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: HDInsight クラスターのスケーリングを行う
+          href: ../hdinsight-scaling-best-practices.md
+          maintainContext: true
         - name: HDInsight クラスターのログを管理する
           href: ../hdinsight-log-management.md
           maintainContext: true

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 5923cea82fbae25fa670556ae27f6cba77a73940
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 8918d6d53d7dd04e2a685707979526230ebfbc42
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-docker-volume-plug-ins-and-logging-drivers-in-your-container"></a>コンテナーで Docker ボリューム プラグインとログ ドライバーを使用する
 Azure Service Fabric では、コンテナー サービスへの [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)および [Docker ログ ドライバー](https://docs.docker.com/engine/admin/logging/overview/)の指定がサポートされています。 コンテナーが別のホストに移動または再開された場合でも、[Azure Files](https://azure.microsoft.com/services/storage/files/) にデータを維持できます。
@@ -41,7 +41,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 ```
 
 > [!NOTE]
-> Windows Server 2016 Datacenter は、ホスト上の SMB マウントをサポートしていません ([Windows Server バージョン 1709 でのみサポートされます](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage))。 そのため、Azure Files ボリューム ドライバーなどの特定のボリューム ドライバーは使用できません。 代わりに、**net use** を使用して、コンテナー内で直接、共有をマウントすることができます。 
+> Windows Server 2016 Datacenter は、SMB マウントのコンテナーへのマッピングをサポートしていません ([Windows Server バージョン 1709 でのみサポートされています](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage))。 そのため、1709 より古いバージョンでは、ネットワーク ボリュームのマッピングと Azure Files ボリューム ドライバーを使用できません。 
 >   
 
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 01/30/2018
 ms.author: mimig
-ms.openlocfilehash: 0019858e1142c1f7e7b6fedea5c2ec97518548c9
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: f95d66950feb8729a7edcad3e02ea9a932123e16
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-with-azure-table-storage-using-net"></a>.NET を使用して Azure Table Storage を使用する
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
@@ -29,14 +29,18 @@ Azure Table Storage は、NoSQL の構造化データをクラウド内に格納
 Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、サービスに必要なその他の種類のメタデータなど、柔軟なデータセットを格納できます。 ストレージ アカウントの容量の上限を超えない限り、テーブルには任意の数のエンティティを保存でき、ストレージ アカウントには任意の数のテーブルを含めることができます。
 
 ### <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルでは、Azure Table Storage の一般的な用途における [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の使い方について説明します。 そうした用途の中で、テーブルの作成と削除、テーブル データの挿入、更新、削除、クエリを実行する例を C# を使って紹介しています。
+このチュートリアルでは、Azure Table Storage の一般的な用途における [.NET 用 Microsoft Azure CosmosDB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)の使い方について説明します。 パッケージの名前は、Azure Cosmos DB で使用することを示していますが、パッケージは Azure Cosmos DB と Azure Tables ストレージの両方に使用できます。また、各サービスは一意のエンドポイントを持っています。 次の方法を示す C# の例を使用して、これらのシナリオについて説明します。
+* テーブルの作成と削除
+* 行の挿入、更新、削除
+* テーブルの照会
 
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルの作業を行うためには、次のものが必要になります。
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)
+* [.NET 用 Azure Storage Common ライブラリ (プレビュー)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)。 運用環境でサポートされている必須のプレビュー パッケージです。 
+* [.NET 用 Microsoft Azure CosmosDB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)
 * [.NET 用 Azure Configuration Manager](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)
 * [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)
 
@@ -47,17 +51,120 @@ Table Storage を使用したその他の例については、「 [Getting Start
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
 
-[!INCLUDE [storage-development-environment-include](../../includes/storage-development-environment-include.md)]
+Azure Table ストレージまたは Azure Cosmos DB を使用してテーブルを操作できます。 サービスによる違いの詳細については、「[Table のサービス](table-introduction.md#table-offerings)」を参照してください。 使用するサービスのアカウントを作成する必要があります。 
+
+### <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
+最初の Azure ストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+
+Azure Storage アカウントは、[Azure PowerShell](../storage/common/storage-powershell-guide-full.md)、[Azure CLI](../storage/common/storage-azure-cli.md)、または [.NET 用ストレージ リソース プロバイダー クライアント ライブラリ](/dotnet/api/microsoft.azure.management.storage)を使用して作成することもできます。
+
+現時点でストレージ アカウントを作成しない場合は、Azure ストレージ エミュレーターを使用して、ローカル環境でコードの実行とテストを行うこともできます。 詳細については、「 [開発とテストのための Azure のストレージ エミュレーター使用](../storage/common/storage-use-emulator.md)」を参照してください。
+
+### <a name="create-an-azure-cosmos-db-table-api-account"></a>Azure Cosmos DB Table API アカウントを作成する
+
+Azure Cosmos DB Table API アカウントの作成手順については、[Table API アカウントの作成](create-table-dotnet.md#create-a-database-account)に関するセクションを参照してください。
+
+## <a name="set-up-your-development-environment"></a>開発環境を設定する
+次に、このガイドのコード例を試すことができるように、Visual Studio で開発環境を設定します。
+
+### <a name="create-a-windows-console-application-project"></a>Windows コンソール アプリケーション プロジェクトの作成
+Visual Studio で、新しい Windows コンソール アプリケーションを作成します。 次の手順では、Visual Studio 2017 でコンソール アプリケーションを作成する方法を説明します。 この手順は Visual Studio の他のバージョンでも同様です。
+
+1. **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
+2. **[インストール済み]** > **[Visual C#]** > **[Windows クラシック デスクトップ]** の順に選択します。
+3. **[コンソール アプリ (.NET Framework)]** を選択します。
+4. **[名前]** フィールドに、アプリケーションの名前を入力します。
+5. **[OK]**を選択します。
+
+このチュートリアルのすべてのコード例は、コンソール アプリケーションの `Program.cs` ファイルの `Main()` メソッドに追加できます。
+
+Azure クラウド サービス、Azure Web アプリ、デスクトップ アプリケーション、モバイル アプリケーションなど、どの種類の .NET アプリケーションでも Azure CosmosDB Table ライブラリを使用できます。 このガイドでは、わかりやすくするためにコンソール アプリケーションを使用します。
+
+### <a name="use-nuget-to-install-the-required-packages"></a>NuGet を使用した必要なパッケージのインストール
+このチュートリアルを完了するには、プロジェクトで参照する必要があるパッケージが 3 つあります。
+
+* [.NET 用 Azure Storage Common ライブラリ (プレビュー)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)。 
+* [.NET 用 Microsoft Azure CosmosDB Table ライブラリ](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.Table)。 このパッケージを使用すると、Azure Table ストレージ アカウントまたは Azure Cosmos DB Table API アカウント内のデータ リソースにプログラムでアクセスできます。
+* [.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/): このパッケージには、アプリケーションの実行場所に関係なく、構成ファイルの接続文字列を解析するためのクラスが用意されています。
+
+NuGet を使って両方のパッケージを取得できます。 次の手順に従います。
+
+1. **ソリューション エクスプローラー**でプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+2. 「Microsoft.Azure.Storage.Common」をオンラインで検索し、**[インストール]** を選択して .NET 用 Azure Storage Common ライブラリ (プレビュー) とその依存関係をインストールします。 これはプレビュー パッケージなので、**[プレリリースを含める]** チェックボックスをオンにします。
+3. 「Microsoft.Azure.CosmosDB.Table」をオンラインで検索し、**[インストール]** を選択して Microsoft Azure CosmosDB Table ライブラリをインストールします。
+4. "WindowsAzure.ConfigurationManager" をオンラインで検索し、**[インストール]** を選択して Microsoft Azure Configuration Manager ライブラリをインストールします。
+
+> [!NOTE]
+> .NET 用 Storage Common ライブラリの ODataLib 依存は、WCF Data Services ではなく、NuGet で入手できる ODataLib パッケージで解決されます。 ODataLib ライブラリは、直接ダウンロードすることも、NuGet を使用してコード プロジェクトで参照することもできます。 ストレージ クライアント ライブラリで使用される ODataLib パッケージは、[OData](http://nuget.org/packages/Microsoft.Data.OData/)、[Edm](http://nuget.org/packages/Microsoft.Data.Edm/)、[Spatial](http://nuget.org/packages/System.Spatial/) です。 これらのライブラリが Azure Table ストレージ クラスで使用されるときは、Storage Common ライブラリを使用したプログラミングの必須の依存関係です。
+> 
+> 
+
+### <a name="determine-your-target-environment"></a>ターゲット環境の決定
+このガイドの例を実行するための環境オプションとして次の 2 つがあります。
+
+* クラウド内の Azure ストレージ アカウントに対してコードを実行できます。 
+* クラウド内の Azure Cosmos DB アカウントに対してコードを実行できます。
+* Azure ストレージ エミュレーターに対してコードを実行できます。 ストレージ エミュレーターは、クラウド内の Azure ストレージ アカウントをエミュレートするローカル環境です。 エミュレーターを使用すると、アプリケーションの開発中にコードのテストとデバッグを無料で実行できます。 エミュレーターでは既知のアカウントとキーを使用します。 詳細については、「[Azure ストレージ エミュレーターを使用した開発とテスト](../storage/common/storage-use-emulator.md)」を参照してください。
+
+クラウドのストレージ アカウントをターゲットにする場合は、Azure Portal からストレージ アカウントのプライマリ アクセス キーをコピーします。 詳細については、「 [ストレージ アクセス キーの表示とコピー](../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
+
+> [!NOTE]
+> ストレージ エミュレーターをターゲットにすると、Azure Storage に関連する利用料金の発生を回避できます。 ただし、クラウド内の Azure ストレージ アカウントをターゲットとしても、このチュートリアルを実行するための利用料金はごくわずかです。
+> 
+> 
+
+Azure Cosmos DB アカウントをターゲットにする場合は、Azure Portal から Table API アカウントのプライマリ アクセス キーをコピーします。 詳細については、「[接続文字列を更新する](create-table-dotnet.md#update-your-connection-string)」を参照してください。
+
+### <a name="configure-your-storage-connection-string"></a>ストレージ接続文字列の構成
+.NET 用 Azure Storage Common ライブラリでは、ストレージ接続文字列を使用して、ストレージ サービスにアクセスするためのエンドポイントおよび資格情報を構成できます。 ストレージ接続文字列を管理するには、構成ファイルの中に保持することをお勧めします。 
+
+接続文字列の詳細については、[Azure Storage の接続文字列の構成](../storage/common/storage-configure-connection-string.md)に関するページを参照してください。
+
+> [!NOTE]
+> アカウント キーは、ストレージ アカウントの root パスワードに似ています。 ストレージ アカウント キーは常に慎重に保護してください。 このキーを他のユーザーに配布したり、ハードコーディングしたり、他のユーザーがアクセスできるプレーン テキスト ファイルに保存したりしないでください。 キーが侵害されたと思われる場合は、Azure Portal を使用してキーを再生成してください。
+> 
+> 
+
+接続文字列を構成するには、Visual Studio のソリューション エクスプローラーから `app.config` ファイルを開きます。 次に示す `<appSettings>` 要素の内容を追加します。 `account-name` をアカウントの名前に置き換え、`account-key` をアカウントのアクセス キーに置き換えます。
+
+```xml
+<configuration>
+    <startup> 
+        <supportedRuntime version="v4.0" sku=".NETFramework,Version=v4.6.1" />
+    </startup>
+    <appSettings>
+        <add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=account-name;AccountKey=account-key" />
+    </appSettings>
+</configuration>
+```
+
+たとえば、Azure Storage アカウントを使用している場合は、次のように構成設定が表示されます。
+
+```xml
+<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=storagesample;AccountKey=GMuzNHjlB3S9itqZJHHCnRkrokLkcSyW7yK9BRbGp0ENePunLPwBgpxV1Z/pVo9zpem/2xSHXkMqTHHLcx8XRA==" />
+```
+
+Azure Cosmos DB アカウントを使用している場合は、次のように構成設定が表示されます。
+
+```xml
+<add key="StorageConnectionString" value="DefaultEndpointsProtocol=https;AccountName=tableapiacct;AccountKey=GMuzNHjlB3S9itqZJHHCnRkrokLkcSyW7yK9BRbGp0ENePunLPwBgpxV1Z/pVo9zpem/2xSHXkMqTHHLcx8XRA==;TableEndpoint=https://tableapiacct.table.cosmosdb.azure.com:443/;" />
+```
+
+ストレージ エミュレーターをターゲットとする場合、既知のアカウントの名前とキーにマップされるショートカットを使用できます。 この場合、接続文字列の設定は次のようになります。
+
+```xml
+<add key="StorageConnectionString" value="UseDevelopmentStorage=true;" />
+```
 
 ### <a name="add-using-directives"></a>using ディレクティブを追加する
 次の **using** ディレクティブを `Program.cs` ファイルの先頭に追加します。
 
 ```csharp
 using Microsoft.Azure; // Namespace for CloudConfigurationManager
-using Microsoft.WindowsAzure.Storage; // Namespace for CloudStorageAccount
-using Microsoft.WindowsAzure.Storage.Table; // Namespace for Table storage types
+using Microsoft.Azure.Storage.Common; // Namespace for StorageAccounts
+using Microsoft.Azure.CosmosDB.Table; // Namespace for Table storage types
 ```
 
 ### <a name="parse-the-connection-string"></a>接続文字列を解析する

@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: event-hubs
 ms.devlang: na
-ms.topic: article
+ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/10/2017
+ms.date: 02/01/2018
 ms.author: sethm
-ms.openlocfilehash: 5cf01580b53b551064a46282b9005ade6afe9604
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f59f88d47bfcb3e761f509a3d87c6d068f44e0db
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="get-started-sending-messages-to-azure-event-hubs-in-net-standard"></a>.NET Standard で Azure Event Hubs へのメッセージ送信を開始する
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 * Azure サブスクリプション。
 * イベント ハブ名前空間。
 
-イベント ハブにメッセージを送信するために、Visual Studio を使って C# コンソール アプリケーションを記述します。
+このチュートリアルでは、イベント ハブにメッセージを送信するために、Visual Studio を使って C# コンソール アプリケーションを記述します。
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
 
@@ -77,8 +77,8 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
     private static async Task MainAsync(string[] args)
     {
         // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-        // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-        // we are using the connection string from the namespace.
+        // Typically, the connection string should have the entity path in it, but this simple scenario
+        // uses the connection string from the namespace.
         var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
         {
             EntityPath = EhEntityPath
@@ -151,8 +151,8 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
             private static async Task MainAsync(string[] args)
             {
                 // Creates an EventHubsConnectionStringBuilder object from the connection string, and sets the EntityPath.
-                // Typically, the connection string should have the entity path in it, but for the sake of this simple scenario
-                // we are using the connection string from the namespace.
+                // Typically, the connection string should have the entity path in it, but this simple scenario
+                // uses the connection string from the namespace.
                 var connectionStringBuilder = new EventHubsConnectionStringBuilder(EhConnectionString)
                 {
                     EntityPath = EhEntityPath
@@ -195,10 +195,10 @@ Visual Studio を起動します。 **[ファイル]** メニューの **[新規
 
 6. プログラムを実行し、エラーがないことを確認します。
 
-ご利用ありがとうございます。 メッセージをイベント ハブに送信しました。
+お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
-## <a name="next-steps"></a>次のステップ
-Event Hubs の詳細については、次のリンク先を参照してください:
+## <a name="next-steps"></a>次の手順
+Event Hubs の詳細については、次のリンク先を参照してください。
 
 * [Event Hubs からイベントを受信する](event-hubs-dotnet-standard-getstarted-receive-eph.md)
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)

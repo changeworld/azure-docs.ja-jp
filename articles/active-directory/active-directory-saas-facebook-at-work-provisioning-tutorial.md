@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: ユーザー プロビジョニングのための Workplace by Facebook の構成 | Microsoft Docs"
+title: "チュートリアル: Workplace by Facebook を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
 description: "Azure AD から Workplace by Facebook に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 77f5f33044b1915fbda7b86c6b07882c0e1e7554
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 70686a48585d83ca5de78fdded99ae46e90cc20c
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configure-workplace-by-facebook-for-user-provisioning"></a>チュートリアル: ユーザー プロビジョニングのための Workplace by Facebook の構成
+# <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>チュートリアル: Workplace by Facebook を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure Active Directory (Azure AD) から Workplace by Facebook にユーザー アカウントを自動的にプロビジョニングおよびプロビジョニング解除するために必要な手順を説明します。
 

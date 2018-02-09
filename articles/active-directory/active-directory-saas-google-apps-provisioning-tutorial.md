@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: Google Apps を構成し、Azure での自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
+title: "チュートリアル: Google Apps を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
 description: "Azure AD から Google Apps に対してユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除する方法を説明します。"
 services: active-directory
 documentationCenter: na
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: a77b5b1fff670ed7698d0ef48fa63f8a8f9be819
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 0a0dd38fda35b1eee1fdce196a3ed15f6e73dde6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Google Apps を構成する
 
@@ -71,7 +71,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
       
 4. まだ Azure Active Directory にカスタム ドメイン名を追加していない場合は、次の手順に従います。
   
-    a. [Azure ポータル](https://portal.azure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** を選択します。 ディレクトリの一覧で、ディレクトリを選択します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Azure ポータル](https://portal.azure.com)の左側のナビゲーション ウィンドウで、**[Active Directory]** を選択します。 ディレクトリの一覧で、ディレクトリを選択します。 
 
     b. 左のナビゲーション ウィンドウで **[ドメイン名]** を選択し、**[追加]** を選択します。
      
@@ -97,7 +97,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. すべてのドメインを Azure AD で確認したので、Google Apps でも確認する必要があります。 Google Apps にまだ登録されていない各ドメインに対して、次の手順を実行します。
    
-    a. [Google Apps の管理コンソール](http://admin.google.com/)で、**[ドメイン]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [Google Apps の管理コンソール](http://admin.google.com/)で、**[ドメイン]** をクリックします。
      
      ![ドメインを選択する][20]
 

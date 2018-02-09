@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/05/2017
-ms.author: sethm; babanisa
-ms.openlocfilehash: 236d49b7d8104b410e2a4c768820c3c9ebcdce96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/30/2018
+ms.author: sethm
+ms.openlocfilehash: 9b7be70d726edfa9dbda3719d431e532106724b6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="what-is-event-hubs"></a>Event Hubs とは
 
@@ -44,7 +44,7 @@ Event Hubs はメッセージ ストリーム処理機能を備えています�
 
 ## <a name="event-hubs-features"></a>Event Hubs の機能
 
-Event Hubs の主な要素を以下に示します。
+Event Hubs が備える主な要素を以下に示します。
 
 - [**イベント生成元/発行元**](event-hubs-features.md#event-publishers): イベント ハブにデータを送信するエンティティ。 イベントは AMQP 1.0 または HTTPS を介して発行されます。
 - [**Capture**](event-hubs-features.md#capture): Event Hubs ストリーミング データをキャプチャし、Azure BLOB ストレージ アカウントに格納できるようになります。
@@ -56,7 +56,7 @@ Event Hubs の主な要素を以下に示します。
 
 これらの機能や Event Hubs の他の機能の技術的な詳細については、「[Event Hubs features overview (Event Hubs の機能の概要)](event-hubs-features.md)」を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Event Hubs の価格の詳細については、「[Event Hubs の価格](https://azure.microsoft.com/pricing/details/event-hubs/)」を参照してください。
 

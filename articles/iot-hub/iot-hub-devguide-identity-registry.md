@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 653c31fb1115c79216f882a52484cd37303e0322
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 05b1f11158233a7c02950320741b405429a08d50
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -74,9 +74,9 @@ ID レジストリで ID の **status** プロパティを更新することに�
 
 ## <a name="import-and-export-device-identities"></a>デバイス ID のインポートとエクスポート
 
-[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT ハブの ID レジストリからデバイス ID を一括エクスポートできます。 エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジストリから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
+IoT ハブの ID レジストリからデバイス ID を一括エクスポートするには、[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用します。 エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジストリから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
 
-[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT ハブの ID レジストリにデバイス ID を一括インポートできます。 インポートは、顧客が指定した BLOB コンテナー内のデータを使用してデバイス ID データを ID レジストリに書き込む、長時間実行ジョブです。
+IoT ハブの ID レジストリにデバイス ID を一括インポートするには、[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用します。 インポートは、顧客が指定した BLOB コンテナー内のデータを使用してデバイス ID データを ID レジストリに書き込む、長時間実行ジョブです。
 
 インポート API とエクスポート API の詳細については、[IoT Hub のリソースプロバイダー REST API][lnk-resource-provider-apis] に関する記事を参照してください。 インポートおよびエクスポート ジョブの実行方法の詳細については、[IoT Hub デバイス ID の一括管理][lnk-bulk-identity]に関するページを参照してください。
 
@@ -105,7 +105,7 @@ IoT Hub は、デバイスのライフサイクルの通知を送信すること
 
 プロパティ: メッセージ システム プロパティは `'$'` 記号で始まります。
 
-| 名前 | 値 |
+| Name | 値 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  通知が送信された時刻 |
@@ -180,7 +180,7 @@ IoT ハブの ID レジストリの使用方法を理解できたら、次の Io
 * [デバイスでダイレクト メソッドを呼び出す][lnk-devguide-directmethods]
 * [複数デバイスでのジョブをスケジュール設定する][lnk-devguide-jobs]
 
-この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
+この記事で説明した概念を試すには、次の IoT Hub のチュートリアルをご覧ください。
 
 * [Azure IoT Hub を使ってみる][lnk-getstarted-tutorial]
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: cherylmc
-ms.openlocfilehash: 6a03986288fdb6acaf234a8abf690f728d160fd7
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 63160bc8f334b975ade8b35ce809578ad3a5b3fa
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute-preview"></a>ExpressRoute に使用する Network Performance Monitor の構成 (プレビュー)
 
@@ -46,6 +46,7 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
 * 西ヨーロッパ 
 * 米国東部 
 * 東南アジア 
+* オーストラリア南東部
 
 ## <a name="workflow"></a>ワークフロー
 
@@ -174,16 +175,13 @@ Azure 内の監視エージェント サーバーについては、NPM の代理
 
 NSG の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-create-nsg-arm-portal.md)に関するページを参照してください。
 
-## <a name="whitelist"></a>手順 4. ワークスペースをホワイトリストに登録するよう依頼する
-
 >[!NOTE]
 >この手順に進む前に、エージェント (オンプレミス サーバー エージェントと Azure サーバー エージェントの両方) がインストール済みであること、また PowerShell スクリプトを実行済みであることを確認してください。
 >
 >
 
-NPM の ExpressRoute 監視機能を使用するには、ワークスペースをホワイトリストに登録するようあらかじめ依頼しておく必要があります。 [こちらをクリックして表示されるページで、依頼フォームに入力してください](https://aka.ms/npmcohort)。 (ヒント: このリンクは、新しいウィンドウまたは新しいタブで開けます)。 ホワイトリストへの登録プロセスには、1 営業日以上かかることがあります。 ホワイトリストへの登録が完了したら、こちらからメールにてご連絡いたします。
 
-## <a name="setupmonitor"></a>手順 5. ExpressRoute 監視用に NPM を構成する
+## <a name="setupmonitor"></a>手順 4. ExpressRoute 監視用に NPM を構成する
 
 >[!WARNING]
 >ワークスペースがホワイトリストに登録されて確認のメールが届くまで、この先の手順は実行しないでください。
@@ -208,7 +206,7 @@ NPM の ExpressRoute 監視機能を使用するには、ワークスペース�
 
   ![監視タイル](.\media\how-to-npm\15.png)
 
-## <a name="explore"></a>手順 6. 監視タイルを表示する
+## <a name="explore"></a>手順 5. 監視タイルを表示する
 
 ### <a name="dashboard"></a>[Network Performance Monitor] ページ
 

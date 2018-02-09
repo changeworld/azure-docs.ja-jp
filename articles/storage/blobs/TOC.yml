@@ -22,6 +22,8 @@
       href: storage-quickstart-blobs-java.md
     - name: BLOB の使用 - Python
       href: storage-quickstart-blobs-python.md
+    - name: BLOB の使用 - Go
+      href: storage-quickstart-blobs-go.md
     - name: BLOB の使用 - Ruby
       href: storage-quickstart-blobs-ruby.md
     - name: BLOB の使用 - Node.js

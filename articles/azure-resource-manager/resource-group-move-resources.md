@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: ea0c2487e24fcb924632d3277163b7732442b414
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -53,7 +53,10 @@ ms.lasthandoff: 01/22/2018
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  移動元と移動先のサブスクリプションのテナント ID が同じでない場合、新しいテナントにリソースを移動するには、[サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)に問い合わせる必要があります。
+  移動元と移動先のサブスクリプションのテナント ID が同じでない場合、次の方法でテナント ID を調整する必要があります。 
+
+  * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)
+  * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)
 
 2. サービスでリソースの移動機能を有効にする必要があります。 この記事で、リソースの移動を有効にするサービスと、リソースの移動を有効にしないサービスを示します。
 3. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
@@ -93,7 +96,7 @@ ms.lasthandoff: 01/22/2018
 
 次の操作を実行する必要がある場合は、[サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)にお問い合わせください。
 
-* リソースを新しい Azure アカウント (および Azure Active Directory テナント) に移動する。
+* リソースを新しい Azure アカウント (および Azure Active Directory テナント) に移動するにあたり、前出のセクションの手順に関して支援が必要。
 * クラシック リソースを移動するときに制限事項に関連する問題が発生した。
 
 ## <a name="services-that-enable-move"></a>移動が可能なサービス
@@ -135,7 +138,7 @@ ms.lasthandoff: 01/22/2018
 * Server Management
 * Service Bus
 * Service Fabric
-* Storage
+* ストレージ
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
 * SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。
@@ -319,7 +322,7 @@ Azure Site Recovery では、ディザスター リカバリーの設定に使�
  1. バックアップを一時的に停止し、バックアップ データを保持します
  2. VM をターゲット リソース グループに移動します
  3. 同じコンテナーまたは新しいコンテナーで VM を再び保護します。ユーザーは、移動操作の前に作成された使用可能な復元ポイントから復元できます。
-バックアップした VM をサブスクリプション間で移動する場合、手順 1 と手順 2 は同じです。 手順 3 では、ターゲット サブスクリプションに存在する、または作成した新しいコンテナーで、VM を保護する必要があります。Recovery Services では、異なるサブスクリプション間のバックアップはサポートされていません。
+バックアップした VM をサブスクリプション間で移動する場合、手順 1 と手順 2 は同じです。 手順 3 では、ターゲット サブスクリプションに存在する、または作成した新しいコンテナーで、VM を保護する必要があります。 Recovery Services では、異なるサブスクリプション間のバックアップはサポートされていません。
 
 ## <a name="hdinsight-limitations"></a>HDInsight の制限事項
 

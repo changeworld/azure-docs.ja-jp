@@ -13,27 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/16/2017
+ms.date: 01/24/2018
 ms.author: yushwang
-ms.openlocfilehash: a9f71b566ffdb163f95634835f64589a700d712f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41cca764335f21bed60fe968288bc8b8274f3215
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-active-active-s2s-vpn-connections-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイで、アクティブ/アクティブ S2S VPN 接続を構成する
 
 この記事では、Resource Manager デプロイメント モデルと PowerShell を使用して、アクティブ/アクティブのクロスプレミス接続と VNet 間接続を作成にする手順について説明します。
 
 ## <a name="about-highly-available-cross-premises-connections"></a>高可用性のクロスプレミス接続について
-クロスプレミスと VNet 間接続で高可用性を実現するには、複数の VPN ゲートウェイをデプロイし、ネットワークと Azure 間に複数の並列接続を確立する必要があります。 接続オプションとトロポジの概要については、「 [高可用性のクロスプレミス接続および VNet 間接続](vpn-gateway-highlyavailable.md) 」をご覧ください。
+クロスプレミスと VNet 間接続で高可用性を実現するには、複数の VPN ゲートウェイをデプロイし、ネットワークと Azure 間に複数の並列接続を確立する必要があります。 接続オプションとトロポジの概要については、「[高可用性のクロスプレミス接続および VNet 間接続](vpn-gateway-highlyavailable.md)」をご覧ください。
 
 この記事では、アクティブ/アクティブの VPN 接続と、2 つの仮想ネットワーク間のアクティブ/アクティブ接続を設定する詳細な手順を説明します。
 
 * [パート 1 - Azure VPN ゲートウェイをアクティブ/アクティブ モードで作成、構成する](#aagateway)
 * [パート 2 - アクティブ/アクティブのクロスプレミス接続を確立する](#aacrossprem)
 * [パート 3 - アクティブ/アクティブの VNet 間接続を確立する](#aav2v)
-* [パート 4 - アクティブ/アクティブとアクティブ/スタンバイで既存のゲートウェイを更新する](#aaupdate)
+
+既に VPN Gateway がある場合は、次のことを実現できます。
+* [既存の VPN Gateway をアクティブ/スタンバイからアクティブ/アクティブ (またはその逆) に更新する](#aaupdate)
 
 これらを組み合わせると、ニーズに合わせて、より複雑で可用性の高いネットワーク トポロジを構築できます。
 
@@ -97,8 +99,8 @@ Select-AzureRmSubscription -SubscriptionName $Sub1
 New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
-#### <a name="3-create-testvnet1"></a>3.TestVNet1 を作成する
-下の例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネットを作成します。サブネットの名前は GatewaySubnet、FrontEnd、Backend です。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、接続を作成できません。
+#### <a name="3-create-testvnet1"></a>手順 3.TestVNet1 を作成する
+下の例では、TestVNet1 という名前の仮想ネットワークと 3 つのサブネットを作成します。サブネットの名前は GatewaySubnet、FrontEnd、Backend です。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -129,7 +131,7 @@ TestVNet1 用の仮想ネットワーク ゲートウェイを作成します。
 New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gw1ipconf1,$gw1ipconf2 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN -EnableActiveActiveFeature -Debug
 ```
 
-#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>3.ゲートウェイのパブリック IP アドレスと BGP ピア IP アドレスを取得する
+#### <a name="3-obtain-the-gateway-public-ip-addresses-and-the-bgp-peer-ip-address"></a>手順 3.ゲートウェイのパブリック IP アドレスと BGP ピア IP アドレスを取得する
 ゲートウェイが作成されたら、Azure VPN ゲートウェイの BGP ピア IP アドレスを取得する必要があります。 オンプレミス VPN デバイスの BGP ピアとして Azure VPN ゲートウェイを構成するには、このアドレスが必要です。
 
 ```powershell
@@ -141,26 +143,25 @@ $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $R
 次のコマンドレットを使用し、VPN ゲートウェイに割り当てられる 2 つのパブリック IP アドレスを表示し、各ゲートウェイ インスタンスに対応する BGP ピア IP アドレスを表示します。
 
 ```powershell
+PS D:\> $gw1pip1.IpAddress
+40.112.190.5
 
-    PS D:\> $gw1pip1.IpAddress
-    40.112.190.5
+PS D:\> $gw1pip2.IpAddress
+138.91.156.129
 
-    PS D:\> $gw1pip2.IpAddress
-    138.91.156.129
-
-    PS D:\> $vnet1gw.BgpSettingsText
-    {
-      "Asn": 65010,
-      "BgpPeeringAddress": "10.12.255.4,10.12.255.5",
-      "PeerWeight": 0
-    }
+PS D:\> $vnet1gw.BgpSettingsText
+{
+  "Asn": 65010,
+  "BgpPeeringAddress": "10.12.255.4,10.12.255.5",
+  "PeerWeight": 0
+}
 ```
 
 ゲートウェイ インスタンスのパブリック IP アドレスの順序と、対応する BGP ピアリング アドレスの順序は同じです。 この例では、パブリック IP が 40.112.190.5 の VM はその BGP ピアリング アドレスに 10.12.255.4 を使用し、138.91.156.129 のゲートウェイは 10.12.255.5 を使用します。 この情報は、アクティブ/アクティブ ゲートウェイに接続するオンプレミス VPN デバイスを設定する際に必要です。 下図のゲートウェイは、すべてのアドレスとともに表示されています。
 
 ![active-active gateway](./media/vpn-gateway-activeactive-rm-powershell/active-active-gw.png)
 
-ゲートウェイが作成されたら、このゲートウェイを使用して、アクティブ/アクティブのクロスプレミス接続または VNet 間接続を確立できます。 以降のセクションでは、演習を終了する手順について説明します。
+ゲートウェイが作成されたら、このゲートウェイを使用して、アクティブ/アクティブのクロスプレミス接続または VNet 間接続を確立できます。 以降のセクションでは、手順を確認して演習を完了します。
 
 ## <a name ="aacrossprem"></a>パート 2 - アクティブ/アクティブのクロスプレミス接続を確立する
 クロスプレミス接続を確立するには、オンプレミス VPN デバイスを表すローカル ネットワーク ゲートウェイと、Azure VPN ゲートウェイをローカル ネットワーク ゲートウェイにつなげる接続を作成する必要があります。 この例では、Azure VPN ゲートウェイがアクティブ/アクティブ モードになっています。 その結果、オンプレミス デバイスが 1 つだけで (ローカル ネットワーク ゲートウェイ)、接続リソースが 1 つの場合であっても、両方の Azure VPN ゲートウェイ インスタンスによって、オンプレミス デバイスで S2S VPN トンネルが構築されます。
@@ -204,24 +205,27 @@ $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $
 $lng5gw1 = Get-AzureRmLocalNetworkGateway  -Name $LNGName51 -ResourceGroupName $RG5
 ```
 
-#### <a name="2-create-the-testvnet1-to-site5-connection"></a>手順 2.TestVNet1 から Site5 への接続を作成する
+#### <a name="2-create-the-testvnet1-to-site5-connection"></a>2.TestVNet1 から Site5 への接続を作成する
 この手順では、"EnableBGP" を $True に設定して TestVNet1 から Site5_1 への接続を作成します。
 
 ```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection151 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw1 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>3.オンプレミス VPN デバイスの VPN と BGP パラメーター
+#### <a name="3-vpn-and-bgp-parameters-for-your-on-premises-vpn-device"></a>手順 3.オンプレミス VPN デバイスの VPN と BGP パラメーター
 次の例では、この演習用のオンプレミス VPN デバイスの BGP 構成セクションに入力するパラメーターの一覧を表示します。
 
-    - Site5 ASN            : 65050
-    - Site5 BGP IP         : 10.52.255.253
-    - Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
-    - Azure VNet ASN       : 65010
-    - Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
-    - Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
-    - Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5                        Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
-    - eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+```
+- Site5 ASN            : 65050
+- Site5 BGP IP         : 10.52.255.253
+- Prefixes to announce : (for example) 10.51.0.0/16 and 10.52.0.0/16
+- Azure VNet ASN       : 65010
+- Azure VNet BGP IP 1  : 10.12.255.4 for tunnel to 40.112.190.5
+- Azure VNet BGP IP 2  : 10.12.255.5 for tunnel to 138.91.156.129
+- Static routes        : Destination 10.12.255.4/32, nexthop the VPN tunnel interface to 40.112.190.5
+                         Destination 10.12.255.5/32, nexthop the VPN tunnel interface to 138.91.156.129
+- eBGP Multihop        : Ensure the "multihop" option for eBGP is enabled on your device if needed
+```
 
 接続は数分後に確立されます。IPsec 接続が確立されると、BGP ピアリング セッションが開始されます。 この例では、以下の図のようにオンプレミス デバイスが 1 つだけ構成されています。
 
@@ -238,7 +242,9 @@ $LNGName52 = "Site5_2"
 $LNGPrefix52 = "10.52.255.254/32"
 $LNGIP52 = "131.107.72.23"
 $BGPPeerIP52 = "10.52.255.254"
+```
 
+```powershell
 New-AzureRmLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Location $Location5 -GatewayIpAddress $LNGIP52 -AddressPrefix $LNGPrefix52 -Asn $LNGASN5 -BgpPeeringAddress $BGPPeerIP52
 ```
 
@@ -247,11 +253,13 @@ New-AzureRmLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5 -Locatio
 
 ```powershell
 $lng5gw2 = Get-AzureRmLocalNetworkGateway -Name $LNGName52 -ResourceGroupName $RG5
+```
 
+```powershell
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection152 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng5gw2 -Location $Location1 -ConnectionType IPsec -SharedKey 'AzureA1b2C3' -EnableBGP True
 ```
 
-#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>3.2 番目のオンプレミス VPN デバイスの VPN と BGP パラメーター
+#### <a name="3-vpn-and-bgp-parameters-for-your-second-on-premises-vpn-device"></a>手順 3.2 番目のオンプレミス VPN デバイスの VPN と BGP パラメーター
 同様に、一覧の下にあるのは、2 番目のデバイスに入力するパラメーターです。
 
 ```
@@ -366,17 +374,17 @@ New-AzureRmVirtualNetworkGatewayConnection -Name $Connection21 -ResourceGroupNam
 
 ![active-active-v2v](./media/vpn-gateway-activeactive-rm-powershell/vnet-to-vnet.png)
 
-## <a name ="aaupdate"></a>パート 4 - アクティブ/アクティブとアクティブ/スタンバイで既存のゲートウェイを更新する
-最後のセクションでは、Azure VPN ゲートウェイをアクティブ/アクティブ モードからアクティブ/スタンバイ モード (またはその逆) に構成する方法を説明します。
+## <a name ="aaupdate"></a>既存の VPN Gateway を更新する
 
-> [!NOTE]
-> このセクションには、作成済みの VPN ゲートウェイのレガシ SKU (古い SKU) のサイズを Standard から HighPerformance に変更する手順が含まれます。 この手順によって、古いレガシ SKU が新しい SKU にアップグレードされることはありません。
-> 
-> 
+このセクションでは、既存の Azure VPN Gateway をアクティブ/スタンバイ モードからアクティブ/アクティブ モード (またはその逆) に変更する方法を説明します。
 
-### <a name="configure-an-active-standby-gateway-to-active-active-gateway"></a>アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブ ゲートウェイに構成する
-#### <a name="1-gateway-parameters"></a>1.ゲートウェイ パラメーター
-次の例では、アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブ ゲートウェイに変換します。 別のパブリック IP アドレスを作成し、2 番目のゲートウェイの IP 構成を追加する必要があります。 以下に、使用するパラメーターを示します。
+### <a name="change-an-active-standby-gateway-to-an-active-active-gateway"></a>アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブ ゲートウェイに変更する
+
+次の例では、アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブ ゲートウェイに変換します。 アクティブ/スタンバイ ゲートウェイをアクティブ/アクティブに変更するときは、新たにパブリック IP アドレスを作成して、第 2 のゲートウェイ IP 構成を追加します。
+
+#### <a name="1-declare-your-variables"></a>1.変数を宣言する
+
+次の例に使用されているパラメーターは、実際の構成に必要な設定に置き換えたうえで、変数を宣言してください。
 
 ```powershell
 $GWName = "TestVNetAA1GW"
@@ -384,7 +392,11 @@ $VNetName = "TestVNetAA1"
 $RG = "TestVPNActiveActive01"
 $GWIPName2 = "gwpip2"
 $GWIPconf2 = "gw1ipconf2"
+```
 
+必要な変数を宣言したら、次の例をコピーして PowerShell コンソールに貼り付けてください。
+
+```powershell
 $vnet = Get-AzureRmVirtualNetwork -Name $VNetName -ResourceGroupName $RG
 $subnet = Get-AzureRmVirtualNetworkSubnetConfig -Name 'GatewaySubnet' -VirtualNetwork $vnet
 $gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
@@ -398,29 +410,40 @@ $gwpip2 = New-AzureRmPublicIpAddress -Name $GWIPName2 -ResourceGroupName $RG -Lo
 Add-AzureRmVirtualNetworkGatewayIpConfig -VirtualNetworkGateway $gw -Name $GWIPconf2 -Subnet $subnet -PublicIpAddress $gwpip2
 ```
 
-#### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>3.アクティブ/アクティブ モードを有効にし、ゲートウェイを更新する
-実際に更新を開始するには、PowerShell でゲートウェイ オブジェクトを設定する必要があります。 以前に Standard として作成されているため、仮想ネットワーク ゲートウェイの SKU を HighPerformance に変更 (サイズ変更) する必要もあります。
+#### <a name="3-enable-active-active-mode-and-update-the-gateway"></a>手順 3.アクティブ/アクティブ モードを有効にし、ゲートウェイを更新する
+
+この手順では、アクティブ/アクティブ モードを有効にし、ゲートウェイを更新します。 この例の VPN Gateway で現在使用しているのは従来の Standard SKU です。 しかし、アクティブ/アクティブでは Standard SKU がサポートされません。 実際に使用するサポート対象のレガシ SKU を指定すれば、対応した SKU (このケースでは HighPerformance) にサイズ変更することができます。
+
+* この手順では、従来の SKU を新しい SKU に変更することはできません。 サポートされている SKU へのサイズ変更は、従来の SKU の範囲内でのみ行うことができます。 たとえば VpnGw1 はアクティブ/アクティブに対応していますが、Standard から VpnGw1 に SKU を変更することはできません。Standard は従来の SKU で、VpnGw1 は最新の SKU であるためです。 SKU のサイズ変更と移行の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
+
+* 最新の SKU のサイズを変更する場合 (VpnGw1 から VpnGw3 に変更する場合など) は、どちらの SKU も同じ SKU ファミリーに属しているため、この手順で対処できます。 その場合は、```-GatewaySku VpnGw3``` という値を使用することになるでしょう。
+
+実際の環境で、ゲートウェイのサイズ変更が不要である場合、-GatewaySku を指定する必要はありません。 この手順で、実際に更新を開始するには、PowerShell でゲートウェイ オブジェクトを設定する必要があることに注意してください。 ゲートウェイのサイズ変更を行わない場合でも、この更新には 30 分から 45 分かかることがあります。
 
 ```powershell
 Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -EnableActiveActiveFeature -GatewaySku HighPerformance
 ```
 
-更新には 30 ～ 45 分かかる場合があります。
+### <a name="change-an-active-active-gateway-to-an-active-standby-gateway"></a>アクティブ/アクティブ ゲートウェイをアクティブ/スタンバイ ゲートウェイに変更する
+#### <a name="1-declare-your-variables"></a>1.変数を宣言する
 
-### <a name="configure-an-active-active-gateway-to-active-standby-gateway"></a>アクティブ/アクティブ ゲートウェイをアクティブ/スタンバイ ゲートウェイに構成する
-#### <a name="1-gateway-parameters"></a>1.ゲートウェイ パラメーター
-上述のパラメーターを使用し、削除する IP 構成の名前を取得します。
+次の例に使用されているパラメーターは、実際の構成に必要な設定に置き換えたうえで、変数を宣言してください。
 
 ```powershell
 $GWName = "TestVNetAA1GW"
 $RG = "TestVPNActiveActive01"
+```
 
+変数を宣言したら、削除する IP 構成の名前を取得します。
+
+```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 $ipconfname = $gw.IpConfigurations[1].Name
 ```
 
 #### <a name="2-remove-the-gateway-ip-configuration-and-disable-the-active-active-mode"></a>2.ゲートウェイの IP 構成を削除して、アクティブ/アクティブ モードを無効にします。
-同様に、実際に更新を開始するには、PowerShell でゲートウェイ オブジェクトを設定する必要があります。
+
+この例では、ゲートウェイの IP 構成を削除して、アクティブ/アクティブ モードを無効にします。 実際に更新を開始するには、PowerShell でゲートウェイ オブジェクトを設定する必要があることに注意してください。
 
 ```powershell
 Remove-AzureRmVirtualNetworkGatewayIpConfig -Name $ipconfname -VirtualNetworkGateway $gw
@@ -429,5 +452,5 @@ Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -DisableActiveActive
 
 更新には最大で 30 ～ 45 分かかります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。

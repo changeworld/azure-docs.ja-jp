@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: dc3870e81edd47a9932db86d347290451c4f1eb8
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 528d7ff5f74948fd1ae7b829d4b2fc38fa2f1109
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="combine-columns-by-example-transformation"></a>[Combine Columns by Example] (例による列の結合) 変換
 ユーザーはこの変換を使用して、複数の列から値を結合して新しい列を追加することができます。 ユーザーは、区切り記号を指定したり、結合された値の例を提示したりして、この変換を実行できます。 ユーザーが結合の例を提供すると、変換は、**[Derive Column by Example] (例による列の派生)** 変換で使用されているものと同じ **[By Example] (例による)** エンジンで処理されます。
@@ -37,6 +37,10 @@ ms.lasthandoff: 12/18/2017
 **[Combine Columns by] (列の結合方法)** の下で **[Examples] (例)** を選択すると、ユーザーは結合した値の例を提供できます。 例としての行のレベルを上げるには、グリッド内で行をダブルクリックします。 レベルを上げた行に対して、テキスト ボックスに、予想される出力を入力します。 **[Separator] \(区切り記号)** テキスト ボックスからタブで移動して、データ グリッドで結果をプレビューします。 **[OK]** を押して、変換をコミットします。 
 
 ユーザーは、変換エディターでリンクをクリックして、**基本モード**と**詳細モード**を切り替えられます。
+
+### <a name="transform-editor-send-feedback"></a>変換エディター: フィードバックの送信
+
+**[フィードバックの送信]** リンクをクリックすると、**[フィードバック]** ダイアログ ボックスが開き、ユーザー入力例があらかじめ設定されたコメント蘭が表示されます。 ユーザーは、コメント蘭の内容を確認し、問題の理解に役立つ詳細を入力する必要があります。 データを Microsoft と共有しない場合は、あらかじめ入力されているサンプル データを削除してから、**[フィードバックの送信]** をクリックする必要があります。 
 
 ### <a name="editing-existing-transformation"></a>既存の変換の編集
 
