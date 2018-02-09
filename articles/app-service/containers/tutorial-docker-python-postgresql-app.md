@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/28/2018
 ms.author: beverst;cephalin
 ms.custom: mvc
-ms.openlocfilehash: 01320b93920ae04c72ed80f6a6090232c673f228
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 070f69cab63525c3209380bc5f7121812be4a899
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Azure で Docker Python と PostgreSQL アプリを構築する
 
@@ -33,7 +33,7 @@ Web App for Containers では、高度にスケーラブルな自己適用型の
 > * データ モデルを更新し、アプリを再デプロイする
 > * Azure Portal でアプリを管理する
 
-以下に示すのは MacOS での手順です。 Linux および Windows でも手順はほとんど同じですが、このチュートリアルでは相違点について詳しく説明していません。
+この記事の手順は macOS で実行できます。 Linux および Windows でも手順はほとんど同じですが、このチュートリアルでは相違点について詳しく説明していません。
  
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

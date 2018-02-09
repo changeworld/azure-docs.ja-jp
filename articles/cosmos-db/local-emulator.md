@@ -15,8 +15,8 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: danoble
-ms.openlocfilehash: daaa628fae3e495a0c9c7a3c74e643caa56fb18b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 40d7b8a52f67d116ab764b9716c917d5c7865467
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
@@ -359,9 +359,16 @@ Starting interactive shell
 
 クライアントで応答からのエンドポイントとマスター キーを使用し、SSL 証明書をホストにインポートします。 SSL 証明書をインポートするには、admin コマンド プロンプトから以下を実行します。
 
-```
+コマンドラインから:
+```cmd 
 cd %LOCALAPPDATA%\CosmosDBEmulatorCert
 powershell .\importcert.ps1
+```
+
+PowerShell から:
+```powershell
+cd $env:LOCALAPPDATA\CosmosDBEmulatorCert
+.\importcert.ps1
 ```
 
 Emulator の起動後に対話型シェルを閉じると、Emulator のコンテナーがシャットダウンします。

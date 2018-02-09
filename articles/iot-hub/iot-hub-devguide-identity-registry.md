@@ -15,8 +15,8 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05b1f11158233a7c02950320741b405429a08d50
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 50020f007096b45b843515ff765e40c550fcf4e3
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
@@ -146,7 +146,7 @@ iothub-message-schema | deviceLifecycleNotification |
 
 | プロパティ | オプション | [説明] |
 | --- | --- | --- |
-| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`)。 |
+| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , = @ $ '`)。 |
 | generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
 | etag |必須、読み取り専用 |[RFC7232][lnk-rfc7232] に準拠した、デバイス ID の弱い ETag を表す文字列。 |
 | auth |省略可能 |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
