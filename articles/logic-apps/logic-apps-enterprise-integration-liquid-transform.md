@@ -86,7 +86,7 @@ Azure Logic Apps は、**Compose** や **Parse JSON** などのネイティブ�
 
 2. ロジック アプリに [Request トリガー](../connectors/connectors-native-reqres.md#use-the-http-request-trigger)を追加します。
 
-3. **[+ 新しいステップ] > [アクションの追加]** を選択します。 検索ボックスに「*liquid*」と入力し、**[Liquid - Transform JSON to JSON] (Liquid - JSON から JSON への変換)** を選択します。
+3. **[+ 新しいステップ] > [アクションの追加]** を選択します。 検索ボックスに「*liquid*」と入力し、**[Liquid - Transform JSON to JSON] \(Liquid - JSON から JSON への変換)** を選択します。
 
    ![Liquid アクションを見つけて選択する](./media/logic-apps-enterprise-integration-liquid-transform/search-action-liquid.png)
 
