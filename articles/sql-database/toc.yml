@@ -359,6 +359,8 @@
           items:
             - name: サンプル アプリのデプロイ
               href: saas-standaloneapp-get-started-deploy.md
+            - name: テナントのプロビジョニング
+              href: saas-standaloneapp-provision-and-catalog.md
         - name: テナントごとのデータベース
           href: saas-dbpertenant-wingtip-app-overview.md
           items:

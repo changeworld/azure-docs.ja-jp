@@ -3,7 +3,7 @@
 ## [Event Hubs の機能](event-hubs-features.md)
 ## [FAQ](event-hubs-faq.md)
 
-# 作業の開始
+# クイック スタート
 ## [イベント ハブの作成](event-hubs-create.md)
 ## 送信イベント
 ### [.NET Standard](event-hubs-dotnet-standard-getstarted-send.md)

@@ -2,10 +2,10 @@
 ## [リレーとは](relay-what-is-it.md)
 ## [FAQ](relay-faq.md)
 
-# 作業の開始
+# クイック スタート
 ## [名前空間を作成する](relay-create-namespace-portal.md)
 ## [ハイブリッド オンプレミス/クラウド アプリケーションを作成する](service-bus-dotnet-hybrid-app-using-service-bus-relay.md)
-## Hybrid Connections
+## ハイブリッド接続と
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Node](relay-hybrid-connections-node-get-started.md)
 ## [WCF リレー](relay-wcf-dotnet-get-started.md)
@@ -21,14 +21,14 @@
 ### [利用可能な API](relay-api-overview.md)
 #### [.NET](relay-hybrid-connections-dotnet-api-overview.md)
 #### [Node](relay-hybrid-connections-node-ws-api-overview.md)
-## 管理
+## [管理]
 ### [Azure 監視による Azure Relay の監視](relay-metrics-azure-monitor.md)
 
 # リファレンス
 ## .NET
 ### [Microsoft.Azure.Relay](/dotnet/api/microsoft.azure.relay)
 ### [Microsoft.ServiceBus](/dotnet/api/Microsoft.ServiceBus)
-## [例外](relay-exceptions.md)
+## [Exceptions](relay-exceptions.md)
 ## [ポートの設定](relay-port-settings.md)
 
 # リソース
