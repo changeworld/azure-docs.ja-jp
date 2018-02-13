@@ -3,7 +3,7 @@
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)
 
-# [作業開始](iot-hub-get-started.md)
+# [概要](iot-hub-get-started.md)
 
 ## デバイスのセットアップ
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
@@ -37,6 +37,9 @@
 ### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
 ### [Azure CLI 2.0 の IoT 拡張機能を使用したデバイス管理](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [Logic Apps を使用したリモートの監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+
+## MXChip IoT DevKit の使用
+### [リモート監視での Azure IoT Suite の使用](iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 
 # ハウツー ガイド
 ## プラン
@@ -76,12 +79,12 @@
 ### メッセージのルーティング
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.JS](iot-hub-node-node-process-d2c.md)
+#### [Node.js](iot-hub-node-node-process-d2c.md)
 #### [Python](iot-hub-python-python-process-d2c.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
-#### [Node.JS](iot-hub-node-node-c2d.md)
+#### [Node.js](iot-hub-node-node-c2d.md)
 #### [Python](iot-hub-python-python-c2d.md)
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
@@ -104,6 +107,7 @@
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-device-management-get-started.md)
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-device-management-get-started.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-device-management-getstarted.md)
+#### [Python バックエンド/Python デバイス](iot-hub-python-python-device-management-get-started.md)
 ### ツインのプロパティの使用方法
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-how-to-configure.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-how-to-configure.md)

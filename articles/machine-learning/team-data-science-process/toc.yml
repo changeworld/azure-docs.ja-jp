@@ -1,4 +1,5 @@
 - name: Team Data Science Process のドキュメント
+  href: index.yml
 - name: 概要
   href: overview.md
 - name: ライフサイクル

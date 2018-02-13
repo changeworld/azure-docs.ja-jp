@@ -35,28 +35,38 @@
       href: container-service-quotas.md
 - name: ハウツー ガイド
   items:
-    - name: AKS クラスターのスケーリング
-      href: scale-cluster.md
-    - name: AKS クラスターのアップグレード
-      href: upgrade-cluster.md
-    - name: ACR での認証
-      href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
-    - name: Helm を使用したアプリケーションの実行
-      href: kubernetes-helm.md
-    - name: Draft を使用したアプリケーションの開発
-      href: kubernetes-draft.md
-    - name: OSBA を使用した Azure との統合
-      href: integrate-azure.md
-    - name: Kubernetes ダッシュボードの使用
-      href: kubernetes-dashboard.md
-    - name: サービス プリンシパルの作成
-      href: kubernetes-service-principal.md
+    - name: クラスターの操作
+      items:
+        - name: AKS クラスターのスケーリング
+          href: scale-cluster.md
+        - name: AKS クラスターのアップグレード
+          href: upgrade-cluster.md
+        - name: AKS クラスターの削除
+          href: delete-cluster.md
     - name: データ ボリュームの構成
       items:
         - name: Azure ディスク - 永続的なボリューム
           href: azure-disks-dynamic-pv.md
         - name: Azure Files - 永続的なボリューム
           href: azure-files-dynamic-pv.md
+    - name: セキュリティと認証
+      items:
+        - name: サービス プリンシパルの作成
+          href: kubernetes-service-principal.md
+        - name: ACR での認証
+          href: ../container-registry/container-registry-auth-aks.md?toc=%2fazure%2faks%2ftoc.json
+    - name: アプリケーションの開発と実行
+      items:
+        - name: Helm を使用したアプリケーションの実行
+          href: kubernetes-helm.md
+        - name: Draft を使用したアプリケーションの開発
+          href: kubernetes-draft.md
+        - name: OSBA を使用した Azure との統合
+          href: integrate-azure.md
+    - name: Kubernetes の基本
+      items:
+        - name: Kubernetes ダッシュボードの使用
+          href: kubernetes-dashboard.md
 - name: リファレンス
   items:
     - name: Azure CLI

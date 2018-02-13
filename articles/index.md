@@ -5,11 +5,11 @@ title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags:
 - clicktale
-ms.openlocfilehash: 88c99f7aa0af914210e760d498bb4fb514798207
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0eb89abcd31756a2147ac3df49d0c3fffb574eec
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -189,7 +189,7 @@ ms.lasthandoff: 02/03/2018
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
-                                                <h4>ストレージ</h4>
+                                                <h4>Storage</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
                                                 </ul>
@@ -792,12 +792,12 @@ ms.lasthandoff: 02/03/2018
                             </li>
                             <li>
                                 <div class="group">
-                                    <h3>ストレージ</h3>
+                                    <h3>Storage</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/storage/">
                                                 <img src="media/index/Storage.svg" alt="" />
-                                                <p>ストレージ</p>
+                                                <p>Storage</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1693,7 +1693,7 @@ ms.lasthandoff: 02/03/2018
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>ストレージ</h3>
+                                                    <h3>Storage</h3>
                                                     <p>耐久性があり、高度にスケーラブルな高可用性クラウド ストレージ</p>
                                                 </div>
                                             </div>
@@ -3912,7 +3912,7 @@ ms.lasthandoff: 02/03/2018
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/javascript/azure/node-sdk-azure-get-started">Node.js 用 Azure ライブラリの入手</a>
+                                                    <a href="/nodejs/azure/">Node.js 用 Azure ライブラリの入手</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/javascript/azure/">作業開始</a>
@@ -4263,12 +4263,12 @@ SQL ツール </h3>
                             <li>
                                 <div class="container intro">
                                     <p>
-クラウド アプリケーションに推奨される一連のアーキテクチャ。 各アーキテクチャには、推奨事例、規範となる手順、および推奨事項を取り入れた実行可能なコンポーネントが含まれています。
+Azure アーキテクチャ センターには、Microsoft Azure でのエンドツーエンド ソリューションの構築に関するガイダンスが含まれています。 ここには、参照アーキテクチャ、ベスト プラクティス、設計パターン、シナリオのガイド、リファレンスの実装があります。
                                     </p>
                                 </div>
                             </li>
                             <li>
-                                <a href="/azure/architecture/guide/">
+                                <a href="/azure/architecture/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -4278,8 +4278,27 @@ SQL ツール </h3>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
+                                                    <h3>Azure アーキテクチャ センター</h3>
+                                                    <p>Microsoft Azure でのエンドツーエンド ソリューションの構築に関するガイダンス。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/architecture/guide/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/index/azure_best-practices.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
                                                     <h3>Azure アプリケーション アーキテクチャ ガイド</h3>
-                                                    <p>クラウドで成功するための基本的な知識。 クラウドまたは Azure を初めてご利用になる場合は、ここから開始してください。</p>
+                                                    <p>このガイドは、Azure においてスケーラブルで回復力がある高可用性のアプリケーションを設計するための体系化された方法を示します。 顧客エンゲージメントから学んだ実証済みのプラクティスに基づいています。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4318,27 +4337,6 @@ SQL ツール </h3>
                                                 <div class="cardText">
                                                     <h3>クラウドの設計パターン</h3>
                                                     <p>クラウドの設計パターン。 各パターンでは、問題、その問題を解決するパターン、Azure に基づく例を説明します。</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/azure/architecture/best-practices/api-design">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/index/azure_best-practices.svg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>クラウド アプリケーションのベスト プラクティス</h3>
-                                                    <p>
-自動スケール、キャッシュ、データのパーティション分割、API 設計、監視などの側面について説明する、クラウド アプリケーションの一連のベスト プラクティス。
-                                                    </p>
                                                 </div>
                                             </div>
                                         </div>

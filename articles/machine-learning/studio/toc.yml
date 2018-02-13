@@ -1,5 +1,5 @@
 - name: Machine Learning Studio のドキュメント
-  href: index.md
+  href: index.yml
 - name: 概要
   expanded: true
   items:

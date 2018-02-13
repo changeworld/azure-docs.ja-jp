@@ -29,6 +29,8 @@
       href: apache-kafka-mirroring.md
     - name: Kafka ログの分析
       href: apache-kafka-log-analytics-operations-management.md
+    - name: Azure Container Service での Kafka の使用
+      href: apache-kafka-azure-container-services.md
     - name: ストリーミング パイプラインを作成する
       items:
         - name: Kafka と Spark (構造化ストリーミング)
