@@ -37,6 +37,8 @@
   items:
     - name: クラスターの操作
       items:
+        - name: AKS クラスターの作成
+          href: create-cluster.md
         - name: AKS クラスターのスケーリング
           href: scale-cluster.md
         - name: AKS クラスターのアップグレード
@@ -45,10 +47,14 @@
           href: delete-cluster.md
     - name: データ ボリュームの構成
       items:
-        - name: Azure ディスク - 永続的なボリューム
+        - name: Azure ディスク
           href: azure-disks-dynamic-pv.md
-        - name: Azure Files - 永続的なボリューム
+        - name: Azure Files
           href: azure-files-dynamic-pv.md
+    - name: ネットワークを構成する
+      items:
+        - name: 静的 IP アドレス
+          href: static-ip.md
     - name: セキュリティと認証
       items:
         - name: サービス プリンシパルの作成

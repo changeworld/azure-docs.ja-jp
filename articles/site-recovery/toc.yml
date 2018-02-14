@@ -54,35 +54,37 @@
         - name: AWS インスタンスを Azure に移行する
           href: tutorial-migrate-aws-to-azure.md
         - name: Azure VM を別のリージョンに移行する
-          href: tutorial-migrate-azure-to-azure.md
+          href: azure-to-azure-tutorial-migrate.md
 - name: 概念
   items:
-    - name: Azure から Azure へのアーキテクチャ
-      href: concepts-azure-to-azure-architecture.md
-    - name: VMware から Azure へのアーキテクチャ
-      href: concepts-vmware-to-azure-architecture.md
-    - name: Hyper-V から Azure へのアーキテクチャ
-      href: concepts-hyper-v-to-azure-architecture.md
-    - name: 物理から Azure へのアーキテクチャ
-      href: concepts-physical-to-azure-architecture.md
-    - name: Hyper-V からセカンダリ サイトへのアーキテクチャ
-      href: concepts-hyper-v-to-secondary-architecture.md
-    - name: Azure から Azure へのサポート マトリックス
-      href: site-recovery-support-matrix-azure-to-azure.md
-    - name: VMware から Azure へのサポート マトリックス
-      href: support-matrix-vmware-to-azure.md
-    - name: Hyper-V から Azure へのサポート マトリックス
-      href: support-matrix-hyper-v-to-azure.md
-    - name: オンプレミスから Azure へのサポート マトリックス
-      href: site-recovery-support-matrix-to-azure.md
-    - name: オンプレミスからセカンダリ サイトへのサポート マトリックス
-      href: site-recovery-support-matrix-to-sec-site.md
-    - name: フェールバックの種類
-      href: concepts-types-of-failback.md
-    - name: ワークロードのディザスター リカバリー
-      href: site-recovery-workload.md
-    - name: Azure への移行
-      href: site-recovery-migrate-to-azure.md
+    - name: アーキテクチャ
+      items:
+        - name: Azure から Azure へのアーキテクチャ
+          href: azure-to-azure-architecture.md
+        - name: VMware から Azure へのアーキテクチャ
+          href: concepts-vmware-to-azure-architecture.md
+        - name: Hyper-V から Azure へのアーキテクチャ
+          href: concepts-hyper-v-to-azure-architecture.md
+        - name: 物理から Azure へのアーキテクチャ
+          href: concepts-physical-to-azure-architecture.md
+        - name: Hyper-V からセカンダリ サイトへのアーキテクチャ
+          href: concepts-hyper-v-to-secondary-architecture.md
+    - name: サポート要件のマトリックス
+      items:
+        - name: Azure から Azure へのサポート マトリックス
+          href: azure-to-azure-support-matrix.md
+        - name: VMware から Azure へのサポート マトリックス
+          href: support-matrix-vmware-to-azure.md
+        - name: Hyper-V から Azure へのサポート マトリックス
+          href: support-matrix-hyper-v-to-azure.md
+        - name: オンプレミスから Azure へのサポート マトリックス
+          href: site-recovery-support-matrix-to-azure.md
+        - name: オンプレミスからセカンダリ サイトへのサポート マトリックス
+          href: site-recovery-support-matrix-to-sec-site.md
+        - name: ワークロードのディザスター リカバリー
+          href: site-recovery-workload.md
+        - name: Azure への移行
+          href: site-recovery-migrate-to-azure.md
     - name: ロールベースのアクセス許可
       href: site-recovery-role-based-linked-access-control.md
     - name: FAQ
@@ -92,9 +94,9 @@
     - name: ネットワーク
       items:
         - name: Azure VM ディザスター リカバリーのネットワークを設定する
-          href: site-recovery-azure-to-azure-networking-guidance.md
+          href: azure-to-azure-about-networking.md
         - name: Azure VM ディザスター リカバリーのネットワーク マッピングを設定する
-          href: site-recovery-network-mapping-azure-to-azure.md
+          href: azure-to-azure-network-mapping.md
         - name: Azure VM ディザスター リカバリーの IP を保持する (プレビュー)
           href: site-recovery-retain-ip-azure-vm-failover.md
         - name: Azure への Hyper-V VM レプリケーションのネットワーク マッピングを準備する
@@ -108,7 +110,7 @@
     - name: ディザスター リカバリー
       items:
         - name: Azure への移行後の Azure VM のディザスター リカバリー
-          href: site-recovery-azure-to-azure-after-migration.md
+          href: azure-to-azure-replicate-after-migration.md
         - name: Azure への物理サーバーのディザスター リカバリー
           href: tutorial-physical-to-azure.md
         - name: Hyper-V VM をセカンダリ サイトにレプリケート
@@ -142,7 +144,7 @@
         - name: フェールオーバー後にマシンを再保護する
           items:
             - name: Azure セカンダリ リージョンからプライマリへの再保護
-              href: site-recovery-how-to-reprotect-azure-to-azure.md
+              href: azure-to-azure-how-to-reprotect.md
             - name: Azure からオンプレミスへの再保護
               href: site-recovery-how-to-reprotect.md
         - name: Azure からのフェールバック
@@ -153,6 +155,12 @@
               href: site-recovery-failback-from-azure-to-hyper-v.md
         - name: フェールバック用の Linux マスター ターゲット サーバーの設定
           href: site-recovery-how-to-install-linux-master-target.md
+    - name: 移行
+      items:
+        - name: 移行について
+          href: site-recovery-migrate-to-azure.md
+        - name: 別のリージョンへの移行後に Azure VM をレプリケートする
+          href: azure-to-azure-replicate-after-migration.md
     - name: 容量とスケーリング
       items:
         - name: Azure への VMware レプリケーションのための容量計画
@@ -210,7 +218,7 @@
         - name: レプリケーションを有効にする
           items:
             - name: Azure から Azure へのレプリケーションを有効にする
-              href: site-recovery-replicate-azure-to-azure.md
+              href: azure-to-azure-how-to-enable-replication.md
             - name: VMware から Azure へのレプリケーションを有効にする
               href: site-recovery-replicate-vmware-to-azure.md
         - name: VMware 用にモビリティ サービスをデプロイする
@@ -272,7 +280,7 @@
     - name: 監視とトラブルシューティング
       items:
         - name: Azure から Azure へのレプリケーションの問題
-          href: site-recovery-azure-to-azure-troubleshoot-errors.md
+          href: azure-to-azure-troubleshoot-errors.md
         - name: オンプレミスから Azure へのレプリケーションの問題
           href: site-recovery-vmware-to-azure-protection-troubleshoot.md
         - name: モビリティ サービスの問題

@@ -24,8 +24,6 @@
       href: tutorial-deploy-machine-learning.md
     - name: Azure Functions のデプロイ
       href: tutorial-deploy-function.md
-    - name: Azure CLI 2.0 の IoT 拡張機能を使用した IoT Edge のデプロイの作成
-      href: tutorial-create-deployment-with-cli-iot-extension.md
 - name: ハウツー ガイド
   items:
     - name: ゲートウェイの作成
@@ -34,6 +32,8 @@
           href: how-to-create-transparent-gateway.md
         - name: Modbus ゲートウェイ
           href: deploy-modbus-gateway.md
+    - name: Azure CLI 2.0 向け IoT 拡張機能の使用
+      href: tutorial-create-deployment-with-cli-iot-extension.md
     - name: 大規模なデプロイと監視
       href: how-to-deploy-monitor.md
     - name: IoT Core デバイスのプロビジョニング
