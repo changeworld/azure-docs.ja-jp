@@ -12,19 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: sdash
-ms.openlocfilehash: 8c1d8600b7f4aaa1e95f4acfbbdd55fdbfebb8fb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1c7eaafe99717324ad03287a1f1e0699d77cc74f
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="unified-cross-component-transaction-diagnostics"></a>統合されたコンポーネント間のトランザクションの診断
 
 *このエクスペリエンスは現在プレビュー段階であり、サーバー側の要求、依存関係、および例外に対する既存の診断ブレードを置き換えます。*
 
-プレビューでは、Application Insights に監視されるすべてのコンポーネントからのサーバー側テレメトリを単一ビューに関連付ける、新しい統合診断エクスペリエンスが導入されます。 個別のインストルメンテーション キーを持つ複数のリソースがあるかどうかは重要ではありません。Application Insights では基になる関係が検出され、トランザクションの速度低下または障害の原因となったアプリケーション コンポーネント、依存関係、または例外を、簡単に診断することができます。
+プレビューでは、Application Insights に監視されるすべてのコンポーネントからのサーバー側テレメトリを単一ビューに関連付ける、新しい統合診断エクスペリエンスが導入されます。 インストルメンテーション キーが個別に設定されたリソースが複数あっても問題ありません。 Application Insights によって基になる関係が検出されるため、トランザクションの速度低下または障害の原因となったアプリケーション コンポーネント、依存関係、または例外を簡単に診断することができます。
 
-## <a name="what-does-component-mean-in-the-context-of-application-insights"></a>Application Insights のコンテキストにおけるコンポーネントの意味
+## <a name="what-is-a-component"></a>コンポーネントとは
 
 コンポーネントは、分散/マイクロサービス アプリケーションの、個別にデプロイできる部分です。 開発者と運用チームには、これらのアプリケーション コンポーネントによって生成されたテレメトリに対して、コード レベルの可視性またはアクセスがあります。
 
@@ -32,10 +32,12 @@ ms.lasthandoff: 02/01/2018
 * コンポーネントは、任意の数のサーバー/ロール/コンテナーのインスタンス上で実行されます。
 * コンポーネントは、個別の Application Insights インストルメンテーション キーである場合も (サブスクリプションが異なる場合も)、単一の Application Insights インストルメンテーション キーにレポートするさまざまなロールである場合もあります。 新しいエクスペリエンスでは、その設定方法に関係なく、すべてのコンポーネントの詳細が表示されます。
 
-> [!Tip]
-> 最良の結果を得るには、すべてのコンポーネントが最新の Application Insights の安定板 SDK でインストルメント化されていることを確認します。 別の Application Insights リソースがある場合は、そのテレメトリを表示する適切な権限があることを確認します。
+> [!NOTE]
+> * **関連項目のリンクが見つからない場合**: サーバー側の要求、依存関係、および例外に関連するテレメトリはすべて、左側の[上部](#cross-component-transaction-chart)セクションと[下部](#all-telemetry-related-to-the-selected-component-operation)セクションにあります。 
+> * [上部](#cross-component-transaction-chart)セクションは、すべてのコンポーネントのトランザクションに関連しています。 最良の結果を得るには、すべてのコンポーネントが最新の Application Insights の安定板 SDK でインストルメント化されていることを確認します。 別の Application Insights リソースがある場合は、そのテレメトリを表示する適切な権限があることを確認します。
+> * 左側の[下部](#all-telemetry-related-to-the-selected-component-operation)セクションには、選択したコンポーネントからの要求に関連するトレースとイベントを含む**すべて**のテレメトリが表示されます。
 
-## <a name="enable-and-access"></a>有効化してアクセス
+## <a name="enable-transaction-diagnostics-experience"></a>トランザクションの診断エクスペリエンスの有効化
 [プレビューの一覧](app-insights-previews.md)から [Unified details: E2E Transaction Diagnostics]\(詳細の一覧: E2C トランザクションの診断\) を有効化します
 
 ![プレビューの有効化](media/app-insights-e2eTxn-diagnostics/previews.png)
@@ -49,7 +51,7 @@ ms.lasthandoff: 02/01/2018
 
 ![重要な部分](media/app-insights-e2eTxn-diagnostics/3partsCrossComponent.png)
 
-### <a name="1-cross-component-transaction-chart"></a>[1] コンポーネント間のトランザクションのグラフ
+## <a name="cross-component-transaction-chart"></a>コンポーネント間のトランザクションのグラフ
 
 このグラフでは、タイムラインに要求の継続時間を表す横棒と、コンポーネント間の依存関係が示されます。 また、収集されたすべての例外も、タイムライン上でマークされます。
 
@@ -57,20 +59,20 @@ ms.lasthandoff: 02/01/2018
 * 外部依存関係の呼び出しは、すべてシンプルな折りたたみ不可の行で表され、アイコンは依存関係の種類を表します。
 * その他のコンポーネントの呼び出しは、折りたたみ可能な行で表されます。 各行は、コンポーネントで呼び出される特定の操作に対応します。
 * 既定では、最初に選択した要求、依存関係、例外がグラフに表示されます。
-* 行を選択すると、その詳細が右側に表示されます。 対応する詳細ウィンドウで、[Open profiler traces]\(Profiler トレースを開く\) または [デバッグ スナップショットを開く] をクリックして、コード レベルの診断を行います。
+* 行を選択すると、その[詳細が右側に](#details-of-the-selected-telemetry)表示されます。 
 
 > [!NOTE]
 その他のコンポーネントの呼び出しは 2 つの行で表されます。呼び出しコンポーネントからの送信呼び出し (依存関係) を表す行と、呼び出されたコンポーネントの受信要求に対応する行です。 先頭のアイコンと継続時間バーの個別のスタイルは、これらを区別するのに役立ちます。
 
-### <a name="2-time-sequenced-telemetry-of-the-selected-component-operation"></a>[2] 選択したコンポーネント操作の時系列順のテレメトリ
+## <a name="all-telemetry-related-to-the-selected-component-operation"></a>選択したコンポーネント操作に関するすべてのテレメトリ
 
-コンポーネント間のトランザクションのグラフで選択されている任意の行は、特定のコンポーネントで呼び出される操作に関連します。 この選択したコンポーネント操作は、下部のセクションのタイトルに反映されます。 このセクションを開くと、その特定の操作に関連するすべてのテレメトリのフラットな時系列が表示されます。 この一覧の任意のテレメトリ項目を選択して、対応する詳細を右側に表示できます。
+コンポーネント間のトランザクションのグラフで選択されている任意の行は、特定のコンポーネントで呼び出される操作に関連します。 この選択したコンポーネント操作は、下部のセクションのタイトルに反映されます。 このセクションを開くと、その特定の操作に関連するすべてのテレメトリのフラットな時系列が表示されます。 この一覧の任意のテレメトリ項目を選択して、対応する[詳細を右側に](#details-of-the-selected-telemetry)表示できます。
 
 ![すべてのテレメトリの時系列](media/app-insights-e2eTxn-diagnostics/allTelemetryDrawerOpened.png)
 
-### <a name="3-details-pane"></a>[3] 詳細ウィンドウ
+## <a name="details-of-the-selected-telemetry"></a>選択したテレメトリの詳細
 
-このウィンドウでは、左側の 2 つのセクションのいずれかから選択された項目の詳細が表示されます。 [すべて表示] では、収集されたすべての標準属性が一覧表示されます。 カスタム属性は標準セットの下に個別に一覧表示されます。
+このウィンドウでは、左側の 2 つのセクションのいずれかから選択された項目の詳細が表示されます。 [すべて表示] では、収集されたすべての標準属性が一覧表示されます。 カスタム属性は標準セットの下に個別に一覧表示されます。 対応する詳細ウィンドウで、[Open profiler traces]\(Profiler トレースを開く\) または [デバッグ スナップショットを開く] をクリックして、コード レベルの診断を行います。
 
 ![例外の詳細](media/app-insights-e2eTxn-diagnostics/exceptiondetail.png)
 

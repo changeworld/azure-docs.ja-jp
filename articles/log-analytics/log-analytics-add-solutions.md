@@ -1,6 +1,6 @@
 ---
 title: "Azure Log Analytics 管理ソリューションの追加 | Microsoft Docs"
-description: "Operations Management Suite (OMS) / Log Analytics 管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。"
+description: "Azure の管理ソリューションには、特定の問題点に関するメトリックを提供するロジックや視覚化、データ取得規則が集約されています。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d951387882a5a8f5e0ebdc01841bb8384e4848ee
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 6c7d8d6946d89e4c6541636287e3022c444e0eb8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Azure Log Analytics 管理ソリューションをワークスペースに追加する
 
-Log Analytics 管理ソリューションには、特定の問題点に関するメトリックを提供する**ロジック**や**視覚化**、**データ取得規則**が集約されています。 この記事では、Log Analytics でサポートされている管理ソリューションの一覧を示し、Azure Portal を使用してワークスペースのソリューションを追加および削除する方法について説明します。 ソリューション ギャラリーを使用して、OMS ポータルでソリューションを追加することもできます。
+Log Analytics 管理ソリューションには、特定の問題点に関するメトリックを提供する**ロジック**や**視覚化**、**データ取得規則**が集約されています。 この記事では、Log Analytics でサポートされている管理ソリューションの一覧を示し、Azure Portal を使用してワークスペースのソリューションを追加および削除する方法について説明します。
 
 管理ソリューションを使用すると、次の点についてより深い知識が得られます。
 
@@ -34,9 +34,9 @@ Log Analytics 管理ソリューションには、特定の問題点に関する
 > [!NOTE]
 > Log Analytics にはログ検索機能が含まれているため、ログ検索を有効にするために管理ソリューションをインストールする必要はありません。 ただし、管理ソリューションをワークスペースに追加することで、データの視覚化、検索候補、洞察を得ることができます。
 
-この記事では、Azure Portal の Marketplace を使用して管理ソリューションをワークスペースに追加します。 ソリューションを追加すると、データはインフラストラクチャのサーバーから収集され、OMS サービスに送信されます。 OMS サービスによる処理には、通常、数分から 1 時間かかります。 サービスによってデータが処理されると、OMS でそのデータを表示できます。
+この記事では、Azure Portal の Marketplace を使用して管理ソリューションをワークスペースに追加します。 ソリューションを追加すると、データはインフラストラクチャのサーバーから収集され、Log Analytics に送信されます。 通常、処理には数分から 1 時間かかります。 サービスによってデータが処理されると、Log Analytics でそのデータを表示できます。
 
-不要になった管理ソリューションは、簡単に削除できます。 管理ソリューションを削除すると、そのデータは OMS に送信されません。 ソリューションを削除するとデータ量を削減できるので、Free 価格レベルの場合は 1 日のデータ使用量をクォータ内に抑えるのに役立ちます。
+不要になった管理ソリューションは、簡単に削除できます。 管理ソリューションを削除すると、そのデータは Log Analytics に送信されません。 ソリューションを削除するとデータ量を削減できるので、Free 価格レベルの場合は 1 日のデータ使用量をクォータ内に抑えるのに役立ちます。
 
 ## <a name="view-available-management-solutions"></a>使用できる管理ソリューションの表示
 
@@ -126,14 +126,14 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 ## <a name="data-collection-details"></a>データ収集の詳細
 次の表は、Log Analytics 管理ソリューションとデータ ソースにおけるデータの収集に関して、その手段と各種情報をまとめたものです。 この表は、[サブスクリプション価格レベル](https://go.microsoft.com/fwlink/?linkid=827926)に対応するソリューションのプラン別に分類されています。 アクティビティ ログ分析ソリューションは、すべての価格レベルで無料で使用できます。
 
-Log Analytics Windows エージェントと System Center Operations Manager エージェントは基本的には同じものですが、 Windows エージェントには別途、OMS ワークスペースに接続し、プロキシ経由でルーティングするための機能が備わっています。 Operations Manager エージェントを使用する場合、OMS とやり取りするためには、その Operations Manager エージェントを OMS エージェントとしてターゲット指定する必要があります。 この表の Operations Manager エージェントは、Operations Manager に接続された OMS エージェントです。 既存の Operations Manager 環境を OMS に接続する方法については、「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
+Log Analytics Windows エージェントと System Center Operations Manager エージェントは基本的には同じものですが、 Windows エージェントには別途、Log Analytics ワークスペースに接続し、プロキシ経由でルーティングするための機能が備わっています。 Operations Manager エージェントを使用する場合、Log Analytics とやり取りするためには、その Operations Manager エージェントを OMS エージェントとしてターゲット指定する必要があります。 この表の Operations Manager エージェントは、Operations Manager に接続された OMS エージェントです。 既存の Operations Manager 環境を Log Analytics に接続する方法については、「[Operations Manager を Log Analytics に接続する](log-analytics-om-agents.md)」を参照してください。
 
 > [!NOTE]
-> データがどのように OMS に送信されるかは、使用するエージェントの種類によって異なります。また、以下の条件によっても左右されます。
+> データがどのように Log Analytics に送信されるかは、使用するエージェントの種類によって異なります。また、以下の条件によっても左右されます。
 > - 使用するのは、Windows エージェントか、Operations Manager に接続された OMS エージェントのどちらか一方です。
-> - Operations Manager が必要なときは、ソリューションの Operations Manager エージェントのデータは常に Operations Manager 管理グループを使用して OMS に送信されます。 またこのとき、ソリューションによって使用されるのは Operations Manager エージェントだけです。
-> - Operations Manager が不要であり、なおかつ管理グループを使用して Operations Manager エージェント データが OMS に送信されることが以下の表に示されているときは、Operations Manager エージェント データが常に管理グループを使用して OMS に送信されます。 Windows エージェントは、管理グループをバイパスして、そのデータを直接 OMS に送信します。
-> - Operations Manager エージェント データの送信に管理グループが使用されないときは、データが直接 OMS に送信され、管理グループはバイパスされます。
+> - Operations Manager が必要なときは、ソリューションの Operations Manager エージェントのデータは常に Operations Manager 管理グループを使用して Log Analytics に送信されます。 またこのとき、ソリューションによって使用されるのは Operations Manager エージェントだけです。
+> - Operations Manager が不要であり、なおかつ管理グループを使用して Operations Manager エージェント データが Log Analytics に送信されることが以下の表に示されているときは、Operations Manager エージェント データが常に管理グループを使用して Log Analytics に送信されます。 Windows エージェントは、管理グループをバイパスして、そのデータを直接 Log Analytics に送信します。
+> - Operations Manager エージェント データの送信に管理グループが使用されないときは、データが直接 Log Analytics に送信され、管理グループはバイパスされます。
 
 ### <a name="insight--analytics--log-analytics"></a>Insight & Analytics / Log Analytics
 
@@ -242,7 +242,7 @@ Microsoft では、新しい機能や管理ソリューションに力を入れ�
 * 必ずしも適切に動作するとは限りません。
   * 問題は、少し不快に感じる程度ものから、まったく動作しないものまでさまざまです。
 * プレビューによってシステムや環境が悪影響を受ける可能性があります。
-  * OMS で使用しているシステムに悪影響が出ないように努めていますが、予期しない問題が発生することがあります。
+  * システムに悪影響が出ないように努めていますが、予期しない問題が発生することがあります。
 * データの損失や破損が発生する可能性があります。
 * 問題のトラブルシューティングに役立つ、診断ログなどのデータの収集を依頼する場合があります。
 * 機能やソリューションは (一時的または永続的に) 削除される可能性があります。

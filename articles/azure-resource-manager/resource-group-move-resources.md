@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: ea0c2487e24fcb924632d3277163b7732442b414
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3f8b5e8b8af4be85e830bde8eb0587c632a9dd1f
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
@@ -134,11 +134,11 @@ ms.lasthandoff: 02/01/2018
 * Power BI
 * Redis Cache
 * Scheduler
-* 検索
+* Search
 * Server Management
 * Service Bus
 * Service Fabric
-* ストレージ
+* Storage
 * Storage (クラシック) - 「 [クラシック デプロイメントの制限事項](#classic-deployment-limitations)
 * Stream Analytics - 実行中状態の Stream Analytics ジョブは移動できません。
 * SQL Database サーバー - データベースとサーバーは同じリソース グループ内に存在する必要があります。 SQL Server を移動すると、そのデータベースもすべて移動されます。
@@ -190,43 +190,29 @@ Marketplace のリソースから作成された仮想マシンは、サブス�
 
 ## <a name="app-service-limitations"></a>App Service の制限事項
 
-App Service アプリを使用している場合、App Service プランのみを移動することはできません。 App Service アプリを移動するには、次のオプションがあります。
+App Service のリソースを移動することに関しての制限事項は、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。
 
-* App Service プランとそのリソース グループ内の他のすべての App Service リソースを、まだ App Service リソースが含まれていない新しいリソース グループに移動する。 この要件により、App Service プランに関連付けられていない App Service リソースも移動する必要があります。
-* アプリを別のリソース グループに移動し、元のリソース グループにも App Service プランをすべて保持する。
+### <a name="moving-within-the-same-subscription"></a>同じサブスクリプション内で移動する場合
 
-アプリが正常に動作するために、App Service プランがそのアプリと同じリソース グループ内に存在する必要はありません。
+Web アプリを_同じサブスクリプション内_で移動する場合には、アップロードした SSL 証明書は移動できません。 ただし、アップロードした SSL 証明書を移動せずに Web アプリを新しいリソース グループに移動することはできます。その場合でも、アプリの SSL 機能は引き続き機能します。 
 
-たとえば、リソース グループに次のものが含まれているとします。
+SSL 証明書を Web アプリと共に移動したい場合は、次の手順に従います。
 
-* **plan-a** に関連付けられた **web-a**
-* **plan-b** に関連付けられた **web-b**
+1.  アップロードした証明書を Web アプリから削除します。
+2.  Web アプリを移動します。
+3.  移動した Web アプリに証明書をアップロードします。
 
-オプションは次のとおりです。
+### <a name="moving-across-subscriptions"></a>サブスクリプション間で移動する場合
 
-* **web-a**、**plan-a**、**web-b**、**plan-b** を移動する
-* **web-a** と **web-b** を移動する
-* **web-a**
-* **web-b**
+Web App を_サブスクリプション間_で移動する場合には、次の制限事項が適用されます。
 
-これ以外の組み合わせでは、App Service プランの移動時に、残しておくことができないリソースの種類 (すべての種類の App Service リソース) が残されます。
-
-Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を 2 段階で行う必要があります。 例: 
-
-* **web-group** に存在する **web-a**
-* **plan-group** に存在する **plan-a**
-* **web-a** と **plan-a** を **combined-group** に配置しようとしている
-
-この移動を実行するには、次の順序で 2 つの移動操作を個別に実行します。
-
-1. **web-a** を **plan-group** に移動します
-2. **web-a** と **plan-a** を **combined-group** に移動します
-
-App Service 証明書は、新しいリソース グループまたはサブスクリプションに問題なく移動できます。 ただし、お使いのアプリに、外部から購入してアップロードした SSL 証明書が含まれている場合は、Web アプリを移動する前に証明書を削除する必要があります。 たとえば、次の手順を実行できます。
-
-1. アップロードした証明書を Web アプリから削除します
-2. Web アプリを移動します
-3. Web アプリに証明書をアップロードします
+- 移動先のリソース グループに既存の App Service リソースが含まれていてはいけません。 App Service リソースには次のものがあります。
+    - Web Apps
+    - App Service プラン
+    - アップロードまたはインポートした SSL 証明書
+    - App Service Environment
+- リソース グループ内のすべての App Service リソースを一緒に移動する必要があります。
+- App Service リソースは、最初に作成されたときのリソース グループからのみ移動できます。 App Service リソースが元のリソース グループから移動されている場合は、まず元のリソース グループに戻してから、サブスクリプション間の移動を行うことができます。 
 
 ## <a name="classic-deployment-limitations"></a>クラシック デプロイメントの制限事項
 

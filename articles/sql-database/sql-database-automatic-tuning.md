@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 11/08/2017
+ms.date: 11/09/2017
 ms.author: jovanpop
-ms.openlocfilehash: 50d1548637ecc6862f680f73e333e8d7f8d20e39
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: dcea2c34ab26349c6f937c582bfe35d7a42f24a6
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 
@@ -75,9 +75,10 @@ Azure SQL Database は、データベースを最適化できる **CREATE INDEX*
 
 自動チューニング オプションをデータベースごとに個別にオンまたはオフにすることも、論理サーバーで構成し、サーバーから設定を継承するすべてのデータベースに適用することもできます。 サーバーでの自動チューニング オプションの構成と、サーバーのデータベースでの設定の継承は、自動チューニングを構成するための推奨される方法です。この方法では、多数のデータベースでの自動チューニング オプションの管理が簡素化されるためです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Azure SQL Database で自動チューニングを有効にするには、「[自動チューニングの有効化](sql-database-automatic-tuning-enable.md)」をご覧ください。
 - 自動チューニングの推奨設定を手動で確認して適用するには、「[パフォーマンスに関する推奨事項の検索と適用](sql-database-advisor-portal.md)」をご覧ください。
+- 自動チューニングの推奨情報に関するメール通知の作成については、「[自動チューニングの電子メール通知](sql-database-automatic-tuning-email-notifications.md)」を参照してください。
 - 自動チューニングに使用されている組み込みインテリジェンスの詳細については、「[人工知能による Azure SQL Database のチューニング](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)」をご覧ください。
 - Azure SQL Database と SQL server 2017 における自動チューニングの動作の詳細については、[SQL Server の自動チューニング](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)に関する記事をご覧ください。

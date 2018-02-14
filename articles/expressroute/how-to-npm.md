@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/13/2017
-ms.author: cherylmc
-ms.openlocfilehash: 63160bc8f334b975ade8b35ce809578ad3a5b3fa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 01/31/2018
+ms.author: pareshmu
+ms.openlocfilehash: 269c2e8a7867521b34128980e33ed97aa7b62a04
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
@@ -43,7 +43,8 @@ Network Performance Monitor (NPM) は、Azure クラウド デプロイとオン
 
 ExpressRoute 回線は、世界中どこにあっても、次のいずれかのリージョンにホストされているワークスペースで監視することができます。
 
-* 西ヨーロッパ 
+* 西ヨーロッパ
+* 米国中西部
 * 米国東部 
 * 東南アジア 
 * オーストラリア南東部
@@ -57,14 +58,13 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
     * オンプレミス サーバーと Azure VM に監視エージェントをインストールします。
     * 監視エージェントが通信を行うことができるように、監視エージェント サーバー上の設定を構成します  (ファイアウォール ポートを開放するなど)。
 3. Azure VM にインストールされている監視エージェントがオンプレミスの監視エージェントと通信を行うことができるようにネットワーク セキュリティ グループ (NSG) 規則を構成します。
-4. NPM ワークスペースをホワイトリストに登録するよう依頼します。
-5. 監視の設定を行います。NPM で表示可能なネットワークを自動検出して管理します。
+4. 監視の設定を行います。NPM で表示可能なネットワークを自動検出して管理します。
 
 既に Network Performance Monitor を使用して他のオブジェクトやサービスを監視しており、かつワークスペースが既に、サポートされているいずれかのリージョンに存在する場合は、手順 1. と手順 2. を省略し、手順 3. で構成を始めてください。
 
-## <a name="configure"></a>手順 1. ワークスペースを作成する
+## <a name="configure"></a>手順 1: (ExpressRoute 回線にリンクされた VNET を含んだサブスクリプションに) ワークスペースを作成する
 
-1. [Azure Portal](https://portal.azure.com) で、**[Marketplace]** のサービス一覧で "Network Performance Monitor" を検索します。 検索結果で **[Network Performance Monitor]** をクリックしてそのページを開きます。
+1. ExpressRoute 回線に VNET がピアリングされているサブスクリプションを [Azure Portal](https://portal.azure.com) で選択します。 **[Marketplace]** のサービス一覧で "Network Performance Monitor" を検索します。 検索結果で **[Network Performance Monitor]** をクリックしてそのページを開きます。
 
   ![ポータル](.\media\how-to-npm\3.png)<br><br>
 2. **[Network Performance Monitor]** メイン ページの一番下にある **[作成]** をクリックして **[Network Performance Monitor - 新しいソリューションの作成]** ページを開きます。 **[OMS ワークスペース - ワークスペースを選択します]** をクリックしてワークスペース ページを開きます。 **[+ 新しいワークスペースの作成]** をクリックしてワークスペース ページを開きます。
@@ -105,7 +105,7 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
 
   ![PowerShell スクリプト](.\media\how-to-npm\7.png)
 
-### <a name="installagent"></a>2.2. 各監視サーバーに監視エージェントをインストールする
+### <a name="installagent"></a>2.2: (監視対象となるすべての VNET の) 各監視サーバーに監視エージェントをインストールする
 
 冗長性のため、ExpressRoute 接続 (つまり、オンプレミス、Azure Vnet) の両側に、少なくとも 2 つのエージェントをインストールすることをお勧めします。 次の手順を使用してエージェントをインストールします。
 
@@ -127,6 +127,8 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
 6. **[インストールの準備完了]** ページで、設定内容を確認し、**[インストール]** をクリックします。
 7. **[構成は正常に終了しました]** ページで **[完了]** をクリックします。
 8. 完了すると、コントロール パネルに Microsoft Monitoring Agent が表示されます。 そこでは構成を検証して、エージェントが Operational Insights (OMS) に接続されていることを確認できます。 OMS に接続されると、"**Microsoft Monitoring Agent は Microsoft Operations Management Suite サービスに正常に接続しました**" というメッセージがエージェントにより表示されます。
+
+9. 監視対象となるすべての VNET に対してこの作業を繰り返してください。
 
 ### <a name="proxy"></a>2.3. プロキシ設定の構成 (省略可能)
 
@@ -165,7 +167,7 @@ Network Performance Monitor に必要なレジストリ キーを作成したり
 >
 >
 
-エージェント サーバー上で、管理特権で PowerShell ウィンドウを開きます。 あらかじめダウンロードしておいた PowerShell スクリプト [EnableRules](https://gallery.technet.microsoft.com/OMS-Network-Performance-04a66634) を実行します。 パラメーターは一切使用しません。
+エージェント サーバー上で、管理特権で PowerShell ウィンドウを開きます。 あらかじめダウンロードしておいた PowerShell スクリプト [EnableRules](https://aka.ms/npmpowershellscript) を実行します。 パラメーターは一切使用しません。
 
   ![PowerShell_Script](.\media\how-to-npm\script.png)
 
@@ -183,12 +185,7 @@ NSG の詳細については、[ネットワーク セキュリティ グルー�
 
 ## <a name="setupmonitor"></a>手順 4. ExpressRoute 監視用に NPM を構成する
 
->[!WARNING]
->ワークスペースがホワイトリストに登録されて確認のメールが届くまで、この先の手順は実行しないでください。
->
->
-
-これまでのセクションが完了し、ホワイトリストへの登録が確認できたら、監視の設定作業に入ることができます。
+これまでのセクションが完了したら、監視の設定作業に入ることができます。
 
 1. **[すべてのリソース]** ページに移動し、ホワイトリストに登録された NPM ワークスペースをクリックして、Network Performance Monitor の概要タイルに移動します。
 

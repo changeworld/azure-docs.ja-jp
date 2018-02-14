@@ -14,8 +14,8 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 8918d6d53d7dd04e2a685707979526230ebfbc42
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cbe7e338ac7da9dc7e8d03cb1bb07a69af70cb17
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
@@ -41,7 +41,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 ```
 
 > [!NOTE]
-> Windows Server 2016 Datacenter は、SMB マウントのコンテナーへのマッピングをサポートしていません ([Windows Server バージョン 1709 でのみサポートされています](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage))。 そのため、1709 より古いバージョンでは、ネットワーク ボリュームのマッピングと Azure Files ボリューム ドライバーを使用できません。 
+> Windows Server 2016 Datacenter は、SMB マウントのコンテナーへのマッピングをサポートしていません ([Windows Server バージョン 1709 でのみサポートされています](https://docs.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/container-storage))。 この制約があるため、1709 より古いバージョンでは、ネットワーク ボリュームのマッピングと Azure Files ボリューム ドライバーを使用できません。 
 >   
 
 
@@ -53,8 +53,9 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 <ApplicationManifest ApplicationTypeName="WinNodeJsApp" ApplicationTypeVersion="1.0" xmlns="http://schemas.microsoft.com/2011/01/fabric" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <Description>Calculator Application</Description>
     <Parameters>
-        <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>
+      <Parameter Name="ServiceInstanceCount" DefaultValue="3"></Parameter>
       <Parameter Name="MyCpuShares" DefaultValue="3"></Parameter>
+      <Parameter Name="MyStorageVar" DefaultValue="c:\tmp"></Parameter>
     </Parameters>
     <ServiceManifestImport>
         <ServiceManifestRef ServiceManifestName="NodeServicePackage" ServiceManifestVersion="1.0"/>
@@ -66,7 +67,7 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
           <DriverOption Name="test" Value="vale"/>
         </LogConfig>
         <Volume Source="c:\workspace" Destination="c:\testmountlocation1" IsReadOnly="false"></Volume>
-        <Volume Source="d:\myfolder" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
+        <Volume Source="[MyStorageVar]" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
         <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="azure" IsReadOnly="true">
            <DriverOption Name="share" Value="models"/>
         </Volume>
@@ -83,6 +84,8 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 
 **Volume** 要素の **Source** タグは、ソース フォルダーを示します。 ソース フォルダーには、コンテナーまたは永続的なリモート ストアをホストする VM 内のフォルダーを指定できます。 **Destination** タグは、実行中のコンテナー内で **Source** がマップされている場所です。 そのため、Destination としてコンテナー内の既存の場所を指定することはできません。
 
+前述のマニフェスト スニペットに示したように、ボリュームに関してはアプリケーションのパラメーターがサポートされます (使用例については `MyStoreVar` を探してください)。
+
 ボリューム プラグインを指定すると、Service Fabric は指定されたパラメーターを使って自動的にボリュームを作成します。 **Source** タグはボリュームの名前を示し、**Driver** タグはボリュームのドライバー プラグインを指定します。 次のように、**DriverOption** タグを使ってオプションを指定できます。
 
 ```xml
@@ -93,4 +96,4 @@ docker plugin install --alias azure --grant-all-permissions docker4x/cloudstor:1
 Docker ログ ドライバーを指定する場合は、クラスター内のログを処理するエージェント (またはコンテナー) をデプロイする必要があります。 **DriverOption** タグを使って、ログ ドライバーのオプションを指定できます。
 
 ## <a name="next-steps"></a>次の手順
-Service Fabric クラスターにコンテナーをデプロイする方法については、[Service Fabric へのコンテナーのデプロイ](service-fabric-deploy-container.md)に関するページをご覧ください。
+Service Fabric クラスターにコンテナーをデプロイする方法については、[Service Fabric へのコンテナーのデプロイ](service-fabric-deploy-container.md)に関する記事をご覧ください。

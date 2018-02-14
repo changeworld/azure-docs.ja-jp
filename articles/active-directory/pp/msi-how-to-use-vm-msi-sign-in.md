@@ -3,7 +3,7 @@ title: "Azure VM の管理対象サービス ID を使用してサインイン�
 description: "スクリプト クライアント サインインおよびリソース アクセスに Azure VM の MSI サービス プリンシパルを使用する方法の例と詳しい手順を説明します。"
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,17 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/05/2018
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: c5f71d27a9e07cc6d6a260b809e91aaa2a50270c
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: c5c1be01947dba8b7f4ef8aa54aa6aedfb191d32
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="sign-in-using-a-vm-user-assigned-managed-service-identity-msi"></a>VM ユーザーが割り当てられた Managed Service Identity (MSI) を使用したサインイン
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)] この記事は、ユーザーが割り当てられた MSI のサービス プリンシパルを使用してサインインするための CLI スクリプトの例を示し、エラー処理などの重要なトピックに関するガイダンスを提供します。
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+この記事は、ユーザーが割り当てられた MSI のサービス プリンシパルを使用してサインインするための CLI スクリプトの例を示し、エラー処理などの重要なトピックに関するガイダンスを提供します。
 
 ## <a name="prerequisites"></a>前提条件
 

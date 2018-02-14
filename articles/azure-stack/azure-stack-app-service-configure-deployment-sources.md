@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 3738ca8ce8dfe0e5375779e9273a3d10baf8861a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e73a607a7f8ad948ab821b0aeda164418509f076
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="configure-deployment-sources"></a>デプロイ ソースを構成する
 *適用先: Azure Stack 統合システムと Azure Stack Development Kit*
@@ -49,8 +49,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 2. **[アプリケーション名]** を入力します (例: App Service on Azure Stack)。
 3. **[Homepage URL (ホームページの URL)]**を入力します。 ホームページの URL は、Azure Stack ポータルのアドレスである必要があります。 たとえば、https://portal.local.azurestack.external です。
 4. **[アプリケーションの説明]**.を入力します。
-5. **[Authorization callback URL (認証コールバック エンドポイント URL)]** を入力します。  Azure Stack の既定のデプロイでは、URL は https://portal.local.azurestack.external/tokenauthorize です。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。
-    ![GitHub - 新しいアプリケーションの登録と値の入力][4]
+5. **[Authorization callback URL (認証コールバック エンドポイント URL)]** を入力します。  Azure Stack の既定のデプロイでは、URL は https://portal.local.azurestack.external/tokenauthorize の形式になっています。別のドメインで実行している場合は、local.azurestack.external をそのドメインに置き換えてください。![GitHub - 新しいアプリケーションの入力値での登録][4]
 6. **[Register application (アプリケーションを登録する)]**をクリックします。  アプリケーションの **[Client ID (クライアント ID)]** と **[Client Secret (クライアント シークレット)]** を示すページが表示されます。
     ![GitHub - 完了したアプリケーション登録][5]
 7.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。

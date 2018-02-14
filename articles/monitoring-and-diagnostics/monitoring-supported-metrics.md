@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/31/2018
 ms.author: ancav
-ms.openlocfilehash: a7d28de33090995b0a036d528fb82f9e0d7335bf
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: bc25f58070d8871a92df249a2d48f27de0bc9498
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。
@@ -667,6 +667,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ObservedCapacity|実際の容量|Count|平均|実行時に自動スケールに報告された容量。|ディメンションなし|
 |ScaleActionsInitiated|スケール アクション開始|Count|合計|スケール操作の指示。|ScaleDirection|
 
+## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
+
+|メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
+|---|---|---|---|---|---|
+|ServiceApiHit|サービス API ヒット数の合計|Count|カウント、合計|サービス API ヒット数の合計|ActivityType、ActivityName|
+|ServiceApiLatency|サービス API の全体的な待機時間|ミリ秒|カウント、平均、最小値、最大値|サービス API 要求の全体的な待機時間|ActivityType、ActivityName、StatusCode|
+|ServiceApiResult|サービス API 結果数の合計|Count|カウント、合計|サービス API 結果数の合計|ActivityType、ActivityName、StatusCode|
+
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
@@ -853,7 +861,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|[説明]|ディメンション|
 |---|---|---|---|---|---|
-|QueryDuration||Count|平均||ディメンションなし|
+|QueryDuration|クエリ実行時間|Count|平均|最後の間隔における DAX クエリの実行時間|ディメンションなし|
 |QueryPoolJobQueueLength|スレッド: クエリ プール ジョブ キューの長さ|Count|平均|クエリ スレッド プールのキューに登録されているジョブの数。|ディメンションなし|
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft.Relay/namespaces

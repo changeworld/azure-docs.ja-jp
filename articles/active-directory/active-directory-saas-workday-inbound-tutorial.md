@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 3a84a7ae7572145df8154ec5cbccf9f97e81866b
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: ed35a703774fdb2f2896414b6022b6f13fb7a307
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -164,13 +164,17 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
     ![システム セキュリティ グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "システム セキュリティ グループ")  
 
 ### <a name="configure-security-group-options"></a>セキュリティ グループ オプションの構成
-この手順では、新しいセキュリティ グループに対して、次のドメイン セキュリティ ポリシーによってセキュリティ保護されるオブジェクトへの **Get** 操作と **Put** 操作の権限を付与します。
+この手順では、次のドメイン セキュリティ ポリシーによって保護されているワーカー データのアクセス許可をドメイン セキュリティ ポリシーに付与します。
 
-* 外部アカウントのプロビジョニング
-* Worker Data: Public Worker Reports
-* Worker Data: All Positions
-* Worker Data: Current Staffing Information
-* Worker Data: Business Title on Worker Profile
+
+| 操作 | ドメイン セキュリティ ポリシー |
+| ---------- | ---------- | 
+| Get と Put |  外部アカウントのプロビジョニング |
+| Get と Put | Worker Data: Public Worker Reports |
+| Get と Put | Worker Data: All Positions |
+| Get と Put | Worker Data: Current Staffing Information |
+| Get と Put | Worker Data: Business Title on Worker Profile |
+| 表示と変更 | Worker Data: Work Email |
 
 **セキュリティ グループ オプションを構成するには、次の手順に従います。**
 
@@ -348,7 +352,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 | **AddressLineData**    |  streetAddress  |     |   作成時 + 更新時 |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | 作成時 + 更新時 |
 | **BusinessTitle**   |  title     |     |  作成時 + 更新時 |
-| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | 作成時 + 更新時                                                   
+| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | 作成時のみ書き込まれる                                                   
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  作成時 + 更新時 |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>パート 3: オンプレミスの同期エージェントの構成
@@ -638,11 +642,121 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
 5. プロビジョニングが完了すると、次に示すように、**[プロビジョニング]** タブに監査概要レポートが書き込まれます。
 
+
+## <a name="customizing-the-list-of-workday-user-attributes"></a>Workday のユーザー属性リストをカスタマイズする
+Active Directory と Azure AD の Workday プロビジョニング アプリにはどちらも、Workday のユーザー属性の選択元となる既定のリストが含まれています。 ただしこれらのリストは、必要な情報をすべてカバーしているわけではありません。 Workday は、想定されるさまざまなユーザー属性を数多くサポートしていますが、それらのユーザー属性には、標準の属性と特定の Workday テナントに固有の属性とがあります。 
+
+Azure AD プロビジョニング サービスは、このリスト (Workday 属性) をカスタマイズできるようになっており、Human Resources API の [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Get_Workers.html) 操作に公開されている属性であれば、どのような属性でも含めることができます。
+
+そのためには、使用する属性の XPath 式を [Workday Studio](https://community.workday.com/studio-download) を使って抽出し、Azure Portal の高度な属性エディターを使ってそれらをプロビジョニング構成に追加する必要があります。
+
+**Workday のユーザー属性に使用する XPath 式を取得するには**
+
+1. [Workday Studio](https://community.workday.com/studio-download) をダウンロードしてインストールします。 インストーラーにアクセスするには、Workday コミュニティ アカウントが必要です。
+
+2. Workday Human_Resources WDSL ファイルをダウンロードします。URL は https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Human_Resources.wsdl です。
+
+3. Workday Studio を起動します。
+
+4. コマンド バーから **[Workday] > [Test Web Service in Tester]\(Tester で Web サービスをテストする\)** オプションを選択します。
+
+5. **[External]\(外部\)** を選択し、手順 2. でダウンロードした Human_Resources WSDL ファイルを選択します。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio1.PNG)
+
+6. **[Location]\(場所\)** フィールドを `https://IMPL-CC.workday.com/ccx/service/TENANT/Human_Resources` に設定します。ただし、"IMPL-CC" の部分は実際のインスタンス タイプに、"TENANT" の部分は実際のテナント名に置き換えてください。
+
+7. **[Operation]\(操作\)** を **[Get_Workers]** に設定します。
+
+8.  [Request/Response]\(要求/応答\) ウィンドウの下に小さく表示された **[configure]\(構成\)** リンクをクリックして、Workday の資格情報を設定します。 **[Authentication]\(認証\)** チェック ボックスをオンにし、Workday 統合システム アカウントのユーザー名とパスワードを入力します。 ユーザー名は必ず name@tenant の形式で指定し、**[WS-Security UsernameToken]** オプションはオンのままにしてください。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio2.PNG)
+
+9. **[OK]**を選択します。
+
+10. **[Request]\(要求\)** ウィンドウに以下の XML を貼り付けます。**Employee_ID** には、ご使用の Workday テナントに存在する実際のユーザーの従業員 ID を設定してください。 抽出対象となる属性が設定されているユーザーを選択します。
+
+    ```
+    <?xml version="1.0" encoding="UTF-8"?>
+    <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+      <env:Body>
+        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v28.0">
+          <wd:Request_References wd:Skip_Non_Existing_Instances="true">
+            <wd:Worker_Reference>
+              <wd:ID wd:type="Employee_ID">21008</wd:ID>
+            </wd:Worker_Reference>
+          </wd:Request_References>
+        </wd:Get_Workers_Request>
+      </env:Body>
+    </env:Envelope>
+    ```
+ 
+11. **[Send Request]\(要求を送信する\)** (緑色の矢印) をクリックしてコマンドを実行します。 成功した場合、その応答が **[Response]\(応答\)** ウィンドウに表示されます。 エラーではなく、入力したユーザー ID のデータが応答に含まれていることを確認します。
+
+12. 成功した場合は、**[Response]\(応答\)** ウィンドウから XML をコピーし、XML ファイルとして保存します。
+
+13. Workday Studio のコマンド バーで **[File]\(ファイル\) > [Open File]\(ファイルを開く\)** を選択し、先ほど保存した XML ファイルを開きます。 Workday Studio の XML エディターにファイルが表示されます。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio3.PNG)
+
+14. ファイル ツリーで、**[/env:Envelope] > [env:Body] > [wd:Get_Workers_Response] > [wd:Response_Data] > [wd:Worker]** の順に移動して、該当するユーザーのデータを特定します。 
+
+15. **[wd:Worker]** から、追加する属性を探して選択します。
+
+16. 選択した属性の XPath 式を **[Document Path]\(ドキュメント パス\)** フィールドからコピーします。
+
+17. コピーした式から **/env:Envelope/env:Body/wd:Get_Workers_Response/wd:Response_Data/** プレフィックスを削除します。 
+
+18. コピーした式の最後の項目がノード (例: "/wd:Birth_Date") である場合、式の末尾に **/text()** を付加します。 最後の項目が属性 (例: "/@wd:type") である場合、この手順は不要です。
+
+19. 最終的には、`wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()` のようになっている必要があります。 これを Azure Portal にコピーすることになります。
+
+
+**プロビジョニング構成に Workday のカスタム ユーザー属性を追加するには**
+
+1. このチュートリアルで前述した説明に従い、[Azure Portal](https://portal.azure.com) を起動して、対象の Workday プロビジョニング アプリケーションの [プロビジョニング] セクションに移動します。
+
+2. **[プロビジョニングの状態]** を **[オフ]** に設定し、**[保存]** を選択します。 こうすることで、準備が整った段階でのみ、変更を反映することができます。
+
+3. **[マッピング]** で **[Synchronize Workers to OnPremises]\(ワーカーをオンプレミスと同期\)** または **[Synchronize Workers to Azure AD]\(ワーカーを Azure AD と同期\)** を選択します。
+
+4. 次の画面の一番下までスクロールして **[詳細オプションを表示する]** を選択します。
+
+5. **[Edit attribute list for Workday]\(Workday の属性リストの編集\)** を選択します。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD1.PNG)
+
+6. 属性リストの一番下にある入力フィールドまでスクロールします。
+
+7. **[名前]** に、属性の表示名を入力します。
+
+8. **[Type]\(型\)** には、対象となる属性にふさわしい型を選択します (通常は **String** が一般的)。
+
+9. **[API Expression]\(API 式\)** には、Workday Studio からコピーした XPath 式を入力します。 例: `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
+
+10. **[属性の追加]** を選択します。
+
+    ![Workday Studio](./media/active-directory-saas-workday-inbound-tutorial/WDstudio_AAD2.PNG)
+
+11. 上の **[保存]** を選択し、ダイアログで **[はい]** を選択します。 [属性マッピング] 画面をまだ開いている場合は閉じてください。
+
+12. メインの **[プロビジョニング]** タブに戻り、**[Synchronize Workers to OnPremises]\(ワーカーをオンプレミスと同期\)** または **[Synchronize Workers to Azure AD]\(ワーカーを Azure AD と同期\)** を再び選択します。
+
+13. **[新しいマッピングの追加]** を選択します。
+
+14. **[ソース属性]** リストに新しい属性が表示されます。
+
+15. 必要に応じて新しい属性のマッピングを追加します。
+
+16. 完了したら、忘れずに **[プロビジョニングの状態]** を **[オン]** に設定してから保存してください。
+
+
 ## <a name="known-issues"></a>既知の問題
 
 * PowerShell コマンド **Add-ADSyncAgentAzureActiveDirectoryConfiguration** の実行中、グローバル管理者がカスタム ドメイン (例: admin@contoso.com) を使用すると、その管理者の資格情報が動作しません。これは既知の問題です。 この問題を回避するには、onmicrosoft.com ドメインで Azure AD のグローバル管理者アカウント (例: admin@contoso.onmicrosoft.com) を作成し、使用します。
 
 * EU の Azure AD テナントに監査ログが表示されないという以前の問題は解決されています。 ただし、EU のAzure AD テナントには追加エージェント構成が必要です。 詳細については、「[パート 3: オンプレミスの同期エージェントの構成](#Part 3: Configure the on-premises synchronization agent)」を参照してください
+
 
 ## <a name="additional-resources"></a>その他のリソース
 * [チュートリアル: Workday と Azure Active Directory の間のシングル サインオンの構成](active-directory-saas-workday-tutorial.md)

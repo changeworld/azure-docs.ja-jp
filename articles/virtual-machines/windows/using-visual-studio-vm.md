@@ -15,11 +15,11 @@ ms.prod: vs-devops-alm
 ms.date: 01/30/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: 813022f1778e2c7f3174e11192b845c2c33ad219
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 599a890be4d014d22bae899be4cf6e281c4109d4
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a id="top"> </a> Azure 上の Visual Studio のイメージ
 事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築する最も簡単かつ迅速な方法です。  さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://portal.azure.com/) で入手できます。 VM を起動するだけで、使用を開始できます。
@@ -27,14 +27,14 @@ ms.lasthandoff: 02/01/2018
 Azure を利用するのが初めてであれば、 [無料の Azure アカウントを作成します](https://azure.microsoft.com/free)。
 
 ## <a name="what-configurations-and-versions-are-available"></a>どんな構成とバージョンを使用できますか。
-Azure Marketplace で、最新のメジャー バージョンである Visual Studio 2017 および Visual Studio 2015 のイメージを検索します。  メジャー バージョンごとに、最初にリリースされたバージョン ('RTW' と記載) と "最新" の更新バージョンが表示されます。  これらの異なるバージョンそれぞれについて、Visual Studio Enterprise と Visual Studio Community エディションを検索します。
+Azure Marketplace で、最新のメジャー バージョンである Visual Studio 2017 および Visual Studio 2015 のイメージを検索します。  メジャー バージョンごとに、最初にリリースされたバージョン ('RTW' と記載) と "最新" の更新バージョンが表示されます。  これらの異なるバージョンそれぞれについて、Visual Studio Enterprise と Visual Studio Community エディションを検索します。  これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。  イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンとその時点のイメージの日付が記載されます。
 
-|               リリース バージョン              |          エディション            |    製品バージョン    |
-|:------------------------------------------:|:----------------------------:|:---------------------:|
-| Visual Studio 2017 - 最新 (バージョン 15.5) |    Enterprise、Community     |     Version 15.5.3    |
-|         Visual Studio 2017 - RTW           |    Enterprise、Community     |     Version 15.0.7    |
-|   Visual Studio 2015 - 最新 (Update 3)   |    Enterprise、Community     | Version 14.0.25431.01 |
-|         Visual Studio 2015 - RTW           | なし (サービスの有効期限切れ) |          ---          |
+|               リリース バージョン              |          エディション            |     製品バージョン     |
+|:------------------------------------------:|:----------------------------:|:-----------------------:|
+| Visual Studio 2017 - 最新 (バージョン 15.5) |    Enterprise、Community     |      Version 15.5.3     |
+|         Visual Studio 2017 - RTW           |    Enterprise、Community     |      Version 15.0.7     |
+|   Visual Studio 2015 - 最新 (Update 3)   |    Enterprise、Community     |  Version 14.0.25431.01  |
+|         Visual Studio 2015 - RTW           |              なし            | (サービスの有効期限切れ) |
 
 > [!NOTE]
 > Microsoft サービス ポリシーに従って、最初にリリースされた Visual Studio 2015 のバージョン ('RTW' と記載) のサービスは、期限切れになりました。  そのため、Visual Studio 2015 Update 3 は、Visual Studio 2015 製品ラインに提供されているそれ以外のバージョンだけです。
@@ -52,20 +52,32 @@ Azure Marketplace で、最新のメジャー バージョンである Visual St
 
 以下は、イメージを作成するときに、Visual Studio のインストールに使用するコマンド ラインです。
 
-   * vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
-   * add Microsoft.Net.Component.4.7.SDK ^
-   * add Microsoft.Net.Component.4.7.TargetingPack ^ 
-   * add Microsoft.Net.Component.4.6.2.SDK ^
-   * add Microsoft.Net.Component.4.6.2.TargetingPack ^
-   * add Microsoft.Net.ComponentGroup.4.7.DeveloperTools ^
-   * add Microsoft.VisualStudio.Component.FSharp ^
-   * add Component.GitHub.VisualStudio ^
-   * add Microsoft.VisualStudio.Component.LinqToSql
+```
+    vs_enterprise.exe --allWorkloads --includeRecommended --passive ^
+       add Microsoft.Net.Component.4.7.SDK ^
+       add Microsoft.Net.Component.4.7.TargetingPack ^ 
+       add Microsoft.Net.Component.4.6.2.SDK ^
+       add Microsoft.Net.Component.4.6.2.TargetingPack ^
+       add Microsoft.Net.ComponentGroup.4.7.DeveloperTools ^
+       add Microsoft.VisualStudio.Component.FSharp ^
+       add Component.GitHub.VisualStudio ^
+       add Microsoft.VisualStudio.Component.LinqToSql
+```
 
 イメージに必要な Visual Studio 機能が含まれていない場合は、フィードバック ツール (ページの右上隅) からフィードバックを提供してください。
 
 ## <a name="what-size-vm-should-i-choose"></a>どの VM サイズを選択すればいいですか。
-新しい仮想マシンのプロビジョニングは簡単であり、Azure では仮想マシンの全範囲のサイズを提供しています。  何らかのハードウェアを取得する場合と同様に、パフォーマンスとコストのバランスを考えます。  Visual Studio は強力なマルチスレッド アプリケーションなので、2 つ以上のプロセッサと 7 GB 以上のメモリを含む VM サイズを検討します。  最新のマシン サイズについては、「[ Azure の Windows 仮想マシンのサイズ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes)」をご覧ください。
+新しい仮想マシンのプロビジョニングは簡単であり、Azure では仮想マシンの全範囲のサイズを提供しています。  何らかのハードウェアを取得する場合と同様に、パフォーマンスとコストのバランスを考えます。  Visual Studio は強力なマルチスレッド アプリケーションなので、2 つ以上のプロセッサと 7 GB 以上のメモリを含む VM サイズを検討します。  Visual Studio のイメージに推奨される VM サイズは以下のとおりです。
+
+   * Standard_D2_v3
+   * Standard_D2s_v3
+   * Standard_D4_v3
+   * Standard_D4s_v3
+   * Standard_D2_v2
+   * Standard_D2S_v2
+   * Standard_D3_v2
+    
+最新のマシン サイズについては、「[ Azure の Windows 仮想マシンのサイズ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes)」をご覧ください。
 
 Azure の場合、最初の選択にとらわれることはありません。VM サイズをもう一度変更して、最初の選択のバランスを再調整できます。  より適切なサイズの新しい VM をプロビジョニングするか、または既存の VM のサイズを別の基本ハードウェアへ変更することが可能です。  詳細については、「[Windows VM のサイズ変更](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/resize-vm)」をご覧ください。
 

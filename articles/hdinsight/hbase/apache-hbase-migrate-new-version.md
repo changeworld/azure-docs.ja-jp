@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: ashishth
-ms.openlocfilehash: bc7df6957c0a8d9d40c5e8e5f9d274e0d1aa40bd
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 15d23d0ccf816ca355103ad7fd0d6124f1c5c226
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="migrate-an-hbase-cluster-to-a-new-version"></a>HBase クラスターを新しいバージョンに移行する
 
@@ -222,4 +222,4 @@ HBase の詳細と HDInsight クラスターのアップグレードについて
 * [HDInsight クラスターを新しいバージョンにアップグレードする](../hdinsight-upgrade-cluster.md)
 * [Ambari Web UI を使用して Azure HDInsight を監視および管理する](../hdinsight-hadoop-manage-ambari.md)
 * [Hadoop のコンポーネントとバージョン](../hdinsight-component-versioning.md)
-<!--  * [Optimizing configurations using Ambari](hdinsight-changing-configs-via-ambari.md#hbase-optimization-with-the-ambari-web-ui)  -->
+* [Ambari を使用した構成の最適化](../hdinsight-changing-configs-via-ambari.md#hbase-optimization-with-the-ambari-web-ui)

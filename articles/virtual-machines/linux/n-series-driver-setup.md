@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/12/2018
+ms.date: 02/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de82062f605d060dc388022cdb8ee9d5c09b2b89
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 421e594f7bd4df1bc1c5faedc2c8bfab0540ca61
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
@@ -101,18 +101,21 @@ sudo apt-get install cuda-drivers
 sudo reboot
 ```
 
-### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
+### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS または Red Hat Enterprise Linux 7.3 または 7.4
 
-1. Hyper-V の最新の Linux Integration Services をインストールします。
+1. カーネルを更新します。
 
-  > [!IMPORTANT]
-  > NC24r VM に CentOS ベースの HPC イメージをインストールしている場合は、手順 3 に進みます。 Azure RDMA ドライバーと Linux Integration Services は、HPC イメージにプレインストールされているため、LIS はアップグレードされません。また、既定でカーネルの更新は無効になっています。
-  >
+  ```
+  sudo yum install kernel kernel-tools kernel-headers kernel-devel
+  
+  sudo reboot
+
+2. Install the latest Linux Integration Services for Hyper-V.
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
  
-  tar xvzf lis-rpms-4.2.3-2.tar.gz
+  tar xvzf lis-rpms-4.2.3-5.tar.gz
  
   cd LISISO
  
@@ -124,8 +127,6 @@ sudo reboot
 3. VM に再接続し、次のコマンドを使用してインストールを続行します。
 
   ```bash
-  sudo yum install kernel-devel
-
   sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
   sudo yum install dkms
@@ -162,20 +163,22 @@ GPU デバイスの状態を照会するには、VM に SSH 接続し、ドラ�
 ![NVIDIA デバイスの状態](./media/n-series-driver-setup/smi.png)
 
 
-
 ## <a name="rdma-network-connectivity"></a>RDMA ネットワーク接続
 
 RDMA ネットワーク接続は、同じ可用性セットにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA ネットワークは、Intel MPI 5.x 以降のバージョンで実行しているアプリケーションに対して、Message Passing Interface (MPI) トラフィックをサポートしています。 その他の要件は次のとおりです。
 
 ### <a name="distributions"></a>ディストリビューション
 
-RDMA 接続をサポートする Azure Marketplace で、次のイメージの 1 つから RDMA 対応の N シリーズ VM をデプロイします。
+Azure Marketplace で、N シリーズ VM の RDMA 接続をサポートするイメージから RDMA 対応の N シリーズ VM をデプロイします。
   
-* **Ubuntu** - Ubuntu Server 16.04 LTS。 VM で RDMA ドライバーを構成し、Intel に登録して Intel MPI をダウンロードします。
+* **Ubuntu 16.04 LTS** - VM で RDMA ドライバーを構成し、Intel に登録して Intel MPI をダウンロードします。
 
   [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
 
-* **CentOS-based HPC** - CentOS ベースの 7.3 HPC。 RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。 
+> [!NOTE]
+> CentOS ベースの HPC イメージは現在、N シリーズ VM の RDMA 接続には推奨されません。 NVIDIA の GPU をサポートする最新の CentOS 7.4 カーネルでは、RDMA がサポートされません。
+> 
+
 
 ## <a name="install-grid-drivers-for-nv-vms"></a>NV VM 用の GRID ドライバーのインストール
 
@@ -237,7 +240,7 @@ NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM 
 9. VM を再起動して、インストールの確認に進みます。
 
 
-### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
+### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS または Red Hat Enterprise Linux 
 
 1. カーネルと DKMS を更新します。
  
@@ -262,9 +265,9 @@ NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM 
 3. VM を再起動して再接続し、HYPER-V の最新の Linux Integration Services をインストールします。
  
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-2.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
 
-  tar xvzf lis-rpms-4.2.3-2.tar.gz
+  tar xvzf lis-rpms-4.2.3-5.tar.gz
 
   cd LISISO
 
@@ -343,8 +346,6 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 このファイルは、`/etc/rc.d/rc3.d` でそのファイルのエントリを作成することで、起動時にルートとして呼び出すことができます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-
-* Ubuntu 16.04 LTS で 4.4.0-75 Linux カーネルを実行している、Azure N シリーズ VM の CUDA ドライバーには既知の問題があります。 以前のカーネル バージョンからアップグレードする場合は、カーネル バージョン 4.4.0-77 以上にアップグレードします。
 
 * カードを照会する必要があるときにコマンドがより高速に出力されるように、`nvidia-smi` を使って永続化モードを設定できます。 永続化モードを設定するには、`nvidia-smi -pm 1` を実行します。 VM を再起動すると、モード設定は消失することに注意してください。 常にスタートアップ時に実行するように、モード設定をスクリプト処理できます。
 

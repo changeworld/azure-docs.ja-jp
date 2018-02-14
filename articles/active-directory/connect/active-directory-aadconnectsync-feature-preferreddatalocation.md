@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 01/31/2018
 ms.author: billmath
-ms.openlocfilehash: 8a36fc45334a2f1d12e6eabbfb16731ccc9998bf
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 021f009e66e57665a2252646b210f0e6dc55d33c
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-ad-connect-sync-configure-preferred-data-location-for-office-365-resources"></a>Azure AD Connect 同期: Office 365 リソースの優先されるデータの場所の構成
-このトピックの目的は、Azure AD Connect 同期の PreferredDataLocation を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。
+このトピックの目的は、Azure AD Connect 同期の PreferredDataLocation を構成する方法について説明することです。Office 365 で Multi-Geo 機能を使用するときに、この属性を使用して、ユーザーの Office 365 データの地理的な場所を指定します。 **リージョン**と **Geo** という用語は、どちらも同じ意味で使用することができます。
 
 > [!IMPORTANT]
 > Multi-Geo は現在プレビュー段階です。 プレビュー プログラムへの参加を希望する場合は、マイクロソフトの担当者にお問い合わせください。
@@ -29,36 +29,41 @@ ms.lasthandoff: 02/01/2018
 >
 
 ## <a name="enable-synchronization-of-preferreddatalocation"></a>PreferredDataLocation の同期の有効化
-既定では、ユーザーの Office 365 リソースは、Azure AD テナントと同じリージョンにあります。 たとえば、テナントが北米にある場合、ユーザーの Exchange メールボックスも北米にあります。 多国籍組織にとっては、これが最適でないことがあります。 preferredDataLocation 属性 を設定すると、ユーザーのリージョンを定義できます。
+既定では、ユーザーの Office 365 リソースは、Azure AD テナントと同じ geo にあります。 たとえば、テナントが北米にある場合、ユーザーの Exchange メールボックスも北米にあります。 多国籍組織にとっては、これが最適でないことがあります。 preferredDataLocation 属性を設定すると、ユーザーの geo を定義できます。
 
-この属性を設定することで、ユーザーの Office 365 リソース (メールボックスや OneDrive など) をユーザーと同じリージョンに配置しながら、組織全体で 1 つのテナントを維持できます。
+この属性を設定することで、ユーザーの Office 365 リソース (メールボックスや OneDrive など) をユーザーと同じ geo に配置しながら、組織全体で 1 つのテナントを維持できます。
 
 > [!IMPORTANT]
 > Multi-Geo を利用するには、Office 365 サブスクリプションに少なくとも 5000 のライセンスを所有している必要があります。
 >
 >
 
-Multi-Geo で使用できる Office 365 のリージョンを次に示します。
+Office 365 の全 geo の一覧については「[データの保管場所](https://aka.ms/datamaps)」で確認できます。
 
-| リージョン | 説明 |
+Multi-Geo で使用できる Office 365 の geo を次に示します。
+
+| ジオ (主要地域)  | preferredDataLocation 値 |
 | --- | --- |
-| NAM | 北米 |
-| EUR | ヨーロッパ |
-| APC | アジア太平洋 |
-| JPN | 日本 |
-| AUS | オーストラリア |
-| CAN | カナダ |
-| GBR | 英国 |
-| LAM | ラテン アメリカ |
+| アジア太平洋 | APC |
+| オーストラリア | AUS |
+| カナダ | CAN |
+| 欧州連合 | EUR |
+| インド | IND |
+| 日本 | JPN |
+| 韓国 | KOR |
+| 英国 | GBR |
+| 米国 | NAM |
 
-すべての Office 365 ワークロードで、ユーザーのリージョン設定の使用がサポートされているわけではありません。
+* この表に掲載されていない geo (南米など) は、Multi-Geo には使用できません。
+* インドと韓国の geo を利用できるのは、請求先住所とライセンス購入先がそれらの geo に該当するユーザーだけです。
+* すべての Office 365 ワークロードで、ユーザーの geo 設定の使用がサポートされているわけではありません。
 
 バージョン 1.1.524.0 以降の Azure AD Connect には、**ユーザー** オブジェクトの **PreferredDataLocation** 属性を同期する機能が備わっています。 具体的には、以下の変更が行われています。
 
 * Azure AD コネクタで、**User** オブジェクト タイプのスキーマが拡張され、PreferredDataLocation 属性 (単一値の文字列型) が追加されました。
 * メタバースで、**Person** オブジェクト タイプのスキーマが拡張され、PreferredDataLocation 属性 (文字列型、単一値) が追加されました。
 
-既定では、PreferredDataLocation 属性は、同期に対して有効になっていません。 この機能は大規模な組織を対象としており、誰もがメリットを得られるわけではありません。 オンプレミスの Active Directory には PreferredDataLocation 属性が存在しないため、ユーザーの Office 365 リージョンを保持するための属性も識別する必要があります。 これは、組織ごとに異なります。
+既定では、PreferredDataLocation 属性は、同期に対して有効になっていません。 この機能は大規模な組織を対象としており、誰もがメリットを得られるわけではありません。 オンプレミスの Active Directory には PreferredDataLocation 属性が存在しないため、ユーザーの Office 365 geo を保持するための属性も識別する必要があります。 これは、組織ごとに異なります。
 
 > [!IMPORTANT]
 > 現在、Azure AD では、同期されたユーザー オブジェクトとクラウドのユーザー オブジェクトの両方の PreferredDataLocation 属性を、Azure AD PowerShell を使って直接構成できるようになっています。 いったん PreferredDataLocation 属性の同期を有効にしたら、**同期されたユーザー オブジェクト**の属性を Azure AD PowerShell で構成することはやめてください。Azure AD PowerShell で構成した属性の値は、Azure AD Connect での同期元となるオンプレミス Active Directory の属性の値に基づいて上書きされます。
@@ -130,10 +135,10 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 3. **[新しいルールの追加]** ボタンをクリックして受信方向の規則を新規作成します。
 4. **[説明]** タブで次の構成を指定します。
 
-    | 属性 | 値 | 詳細 |
+    | Attribute | 値 | 詳細 |
     | --- | --- | --- |
-    | 名前 | *名前を入力します* | 例: "*In from AD - User PreferredDataLocation*" |
-    | 説明 | "*ユーザー設定の説明を入力します*" |  |
+    | Name | *名前を入力します* | 例: "*In from AD - User PreferredDataLocation*" |
+    | [説明] | "*ユーザー設定の説明を入力します*" |  |
     | 接続先システム | "*オンプレミス AD コネクタを選択します*" |  |
     | 接続先システム オブジェクトの種類 | **User** |  |
     | メタバース オブジェクトの種類 | **Person** |  |
@@ -145,7 +150,7 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    |直接 | PreferredDataLocation | ソース属性を選択します | オフ | 更新 |
+    |直接 | PreferredDataLocation | ソース属性を選択します | オフ | プライマリの |
 
 7. **[追加]** をクリックして受信方向の規則を作成します。
 
@@ -159,10 +164,10 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 3. **[新しいルールの追加]** ボタンをクリックします。
 4. **[説明]** タブで次の構成を指定します。
 
-    | 属性 | 値 | 詳細 |
+    | Attribute | 値 | 詳細 |
     | ----- | ------ | --- |
-    | 名前 | *名前を入力します* | 例: "Out to AAD - User PreferredDataLocation" |
-    | 説明 | *説明を入力します* ||
+    | Name | *名前を入力します* | 例: "Out to AAD - User PreferredDataLocation" |
+    | [説明] | *説明を入力します* ||
     | 接続先システム | "*AAD コネクタを選択します*" ||
     | 接続先システム オブジェクトの種類 | User ||
     | メタバース オブジェクトの種類 | **Person** ||
@@ -171,7 +176,7 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 
 5. **[Scoping filter]\(スコープ フィルター\)** タブに移動し、**次の 2 つの句を使って単一のスコープ フィルター グループ**を追加します。
 
-    | 属性 | 演算子 | 値 |
+    | Attribute | 演算子 | 値 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
@@ -182,7 +187,7 @@ PreferredDataLocation 属性の同期を有効にする大まかな手順は次�
 
     | フローの種類 | ターゲット属性 | ソース | 1 度だけ適用する | マージの種類 |
     | --- | --- | --- | --- | --- |
-    | 直接 | PreferredDataLocation | PreferredDataLocation | オフ | 更新 |
+    | 直接 | PreferredDataLocation | PreferredDataLocation | オフ | プライマリの |
 
 7. **[追加]** をクリックして送信方向の規則を作成します。
 
@@ -245,13 +250,13 @@ AD のスキーマと Azure AD コネクタのスキーマに新しい属性を�
 ## <a name="step-8-verify-the-result"></a>手順 8: 結果を確認する
 次に、構成を確認し、ユーザーに対して有効にします。
 
-1. ユーザーに対して選択した属性にリージョンを追加します。 使用できるリージョンの一覧は、[こちらの表](#enable-synchronization-of-preferreddatalocation)を参照してください。  
+1. ユーザーに対して選択した属性に geo を追加します。 使用できる geo の一覧については、[こちらの表](#enable-synchronization-of-preferreddatalocation)を参照してください。  
 ![ユーザーに追加される AD 属性](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-adattribute.png)
 2. 属性が Azure AD に同期されるまで待ちます。
 3. Exchange Online PowerShell を使用して、メールボックスのリージョンが適切に設定されていることを確認します。  
 ![Exchange Online でユーザーに設定されたメールボックスのリージョン](./media/active-directory-aadconnectsync-feature-preferreddatalocation/preferreddatalocation-mailboxregion.png)  
-テナントがこの機能を使用できるように設定されていることを前提として、メールボックスが適切なリージョンに移動されます。 これは、メールボックスが配置されているサーバー名を調べることで確認できます。
-4. この設定が多数のメールボックスで有効であることを確認するには、[Technet ギャラリー](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e)のスクリプトを使用します。 このスクリプトには、すべての Office 365 データセンターのサーバーのプレフィックスと、サーバーが配置されているリージョンの一覧も含まれます。 前の手順のメールボックスの場所を確認するためのリファレンスとして、それを使用できます。
+テナントがこの機能を使用できるように設定されていることを前提として、メールボックスが適切な geo に移動されます。 これは、メールボックスが配置されているサーバー名を調べることで確認できます。
+4. この設定が多数のメールボックスで有効であることを確認するには、[Technet ギャラリー](https://gallery.technet.microsoft.com/office/PowerShell-Script-to-a6bbfc2e)のスクリプトを使用します。 このスクリプトには、すべての Office 365 データセンターのサーバーのプレフィックスと、サーバーが配置されている geo の一覧も含まれます。 前の手順のメールボックスの場所を確認するためのリファレンスとして、それを使用できます。
 
 ## <a name="next-steps"></a>次の手順
 

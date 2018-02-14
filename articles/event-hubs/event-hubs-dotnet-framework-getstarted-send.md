@@ -11,14 +11,14 @@ ms.service: event-hubs
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
-ms.date: 10/10/2017
+ms.topic: article
+ms.date: 02/01/2018
 ms.author: sethm
-ms.openlocfilehash: 16da4e1732445b2480daf18130ea74935c6e6c49
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: feb4332f8f6b5ab26067b5c80a376cdee62c7739
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="send-events-to-azure-event-hubs-using-the-net-framework"></a>.NET Framework を使用して Azure Event Hubs にイベントを送信する
 
@@ -31,7 +31,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
 * [Microsoft Visual Studio 2015 以上](http://visualstudio.com)。 このチュートリアルのスクリーンショットには、Visual Studio 2017 が使用されています。
-* アクティブな Azure アカウント。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、無料アカウントを数分で作成できます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/free/)を参照してください。
 
 ## <a name="create-an-event-hubs-namespace-and-an-event-hub"></a>Event Hubs 名前空間とイベント ハブを作成する
 
@@ -89,7 +89,7 @@ Event Hubs は、接続されているデバイスとアプリケーションか
   ```
    
   このメソッドは、200 ミリ秒の遅延時間でイベント ハブにイベントを継続的に送信します。
-7. 最後に、 **Main** メソッドに次の行を追加します。
+7. 最後に、**Main** メソッドに次の行を追加します。
    
   ```csharp
   Console.WriteLine("Press Ctrl-C to stop the sender process");
@@ -99,9 +99,9 @@ Event Hubs は、接続されているデバイスとアプリケーションか
   ```
 8. プログラムを実行し、エラーがないことを確認します。
   
-ご利用ありがとうございます。 メッセージをイベント ハブに送信しました。
+お疲れさまでした。 メッセージをイベント ハブに送信しました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 イベント ハブを作成し、データを送信する実用的なアプリケーションが構築できたので、次のシナリオに移動します。
 
 * [イベント プロセッサ ホストを使用してイベントを受信する](event-hubs-dotnet-framework-getstarted-receive-eph.md)

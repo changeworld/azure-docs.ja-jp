@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 02/02/2018
 ms.author: magoedte
-ms.openlocfilehash: d12743b752c42e6a7373e9c15df6dac71b7f9d27
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 85fde471f0d99b976e319d552c6a031d63854cf4
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Azure Log Analytics を使用して環境内のコンピューターからデータを収集する
 
@@ -60,17 +60,17 @@ Windows エージェントが Log Analytics と通信するために必要なプ
 
 | エージェントのリソース | ポート | バイパス HTTPS 検査|
 |----------------|-------|------------------------|
-|*.ods.opinsights.azure.com |443 | あり |
-|*.oms.opinsights.azure.com | 443 | あり | 
-|*.blob.core.windows.net | 443 | あり | 
-|*.azure-automation.net | 443 | あり | 
+|*.ods.opinsights.azure.com |443 | [はい] |
+|*.oms.opinsights.azure.com | 443 | [はい] | 
+|*.blob.core.windows.net | 443 | [はい] | 
+|*.azure-automation.net | 443 | [はい] | 
 
 ### <a name="linux-operating-systems"></a>Linux オペレーティング システム
-次の Linux ディストリビューションは公式にサポートされています。  ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。
+次の Linux ディストリビューションは公式にサポートされています。  ただし、Linux エージェントは、ここに記載されていないディストリビューションでも動作する可能性があります。  記載されている各メジャー バージョンのマイナー リリースは、特に記載がない限りすべてサポートされます。  
 
 * Amazon Linux 2012.09 ～ 2015.09 (x86/x64)
-* CentOS Linux 5、6、および 7 (x86/x64)
-* Oracle Linux 5、6、および 7 (x86/x64)
+* CentOS Linux 5、6、および 7 (x86/x64)  
+* Oracle Linux 5、6、および 7 (x86/x64) 
 * Red Hat Enterprise Linux Server 5、6、および 7 (x86/x64)
 * Debian GNU/Linux 6、7、および 8 (x86/x64)
 * Ubuntu 12.04 LTS、14.04 LTS, 16.04 LTS (x86/x64)
@@ -95,13 +95,13 @@ Linux エージェントは、HTTPS プロトコルを使用したプロキシ �
 > [!NOTE]
 > プロキシ サーバーで認証が不要な場合でも、Linux エージェントは擬似ユーザー/パスワードの指定を必要とします。 これは、どのようなユーザー名とパスワードでもかまいません。
 
-|プロパティ| 説明 |
+|プロパティ| [説明] |
 |--------|-------------|
 |プロトコル | https |
 |user | プロキシ認証のオプションのユーザー名 |
 |password | プロキシ認証のオプションのパスワード |
 |proxyhost | プロキシ サーバー/OMS ゲートウェイのアドレスまたは FQDN |
-|port | プロキシ サーバー/OMS ゲートウェイのオプションのポート番号 |
+|ポート | プロキシ サーバー/OMS ゲートウェイのオプションのポート番号 |
 
 次に例を示します。`https://user01:password@proxy01.contoso.com:30443`
 
@@ -111,7 +111,7 @@ Linux エージェントは、HTTPS プロトコルを使用したプロキシ �
 ## <a name="install-and-configure-agent"></a>エージェントをインストールして構成する 
 オンプレミス コンピューターの Log Analytics への直接接続は、要件に応じて、さまざまな方法で実現できます。 次の表は、どの方法が組織で最も効果的であるかを判断できるように、各方法について説明しています。
 
-|ソース | 方法 | 説明|
+|ソース | 方法 | [説明]|
 |-------|-------------|-------------|
 | Windows コンピューター|- [手動インストール](log-analytics-agent-windows.md)<br>- [Azure Automation DSC](log-analytics-agent-windows.md#install-the-agent-using-dsc-in-azure-automation)<br>- [Azure Stack を使用する Azure Resource Manager テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/MicrosoftMonitoringAgent-ext-win) |コマンド ラインから、または Azure Automation DSC や [System Center Configuration Manager](https://docs.microsoft.com/sccm/apps/deploy-use/deploy-applications) などの自動化された方法を使用して、Microsoft Monitoring エージェントをインストールします。データセンターに Microsoft Azure Stack が配置されている場合は、Azure Resource Manager テンプレートも使用できます。| 
 |Linux コンピューター| [手動インストール](log-analytics-quick-collect-linux-computer.md)|GitHub でホストされているラッパー スクリプトを呼び出して Linux エージェントをインストールします。 | 

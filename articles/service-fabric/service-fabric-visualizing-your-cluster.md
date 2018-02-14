@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/08/2018
+ms.date: 02/02/2018
 ms.author: mikhegn
-ms.openlocfilehash: 34e00058591bc5a0a02bc408cfc3fcc11010f17c
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: dc71bf8045abf72953f678dc9295346dc9204e59
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="visualize-your-cluster-with-service-fabric-explorer"></a>Service Fabric Explorer を使用したクラスターの視覚化
 
@@ -35,6 +35,9 @@ Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検�
   - https://aka.ms/sfx-linux-x86
   - https://aka.ms/sfx-linux-x64
 
+- macOS
+  - https://aka.ms/sfx-macos
+
 > [!NOTE]
 > Service Fabric Explorer のデスクトップ バージョンでは、クラスター サポートより機能が多い場合や少ない場合があります。 クラスターに展開される Service Fabric Explorer バージョンにフォールバックすることで、完全な機能の互換性が保証されます。
 >
@@ -44,7 +47,7 @@ Service Fabric Explorer (SFX) は、Azure Service Fabric クラスターを検�
 
 Service Fabric Explorer は、Service Fabric クラスターの HTTP 管理エンドポイントでもホストされています。 Web ブラウザーで SFX を起動するには、任意のブラウザーからクラスターの HTTP 管理エンドポイント (例: https://clusterFQDN:19080) を参照します。
 
-開発者ワークステーションのセットアップでは、http://localhost:19080/Explorer に移動することにより、ローカル クラスターで Service Fabric Explorer を起動できます。 詳しくは、「[開発環境を準備する](service-fabric-get-started.md)」をご覧ください。
+開発者ワークステーションのセットアップでは、https://localhost:19080/Explorer に移動することにより、ローカル クラスターで Service Fabric Explorer を起動できます。 詳しくは、「[開発環境を準備する](service-fabric-get-started.md)」をご覧ください。
 
 ## <a name="connect-to-a-service-fabric-cluster"></a>Service Fabric クラスターに接続する
 Service Fabric クラスターに接続するには、クラスター管理エンドポイント (FQDN/IP) と HTTP 管理エンドポイント ポート (既定では 19080) が必要です。 たとえば、https://mysfcluster.westus.cloudapp.azure.com:19080 などです。 ワークステーションでローカル クラスターに接続するには、[ローカルホストに接続] チェック ボックスを使います。

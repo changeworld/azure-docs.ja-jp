@@ -64,7 +64,7 @@ Azure ではカスタム HPC アプリケーションや商用 HPC アプリケ�
 
 ### <a name="graphics-and-rendering"></a>グラフィックとレンダリング
 
-* Azure Batch での [Autodesk Maya、3ds Max、Arnold](../articles/batch/batch-rendering-service.md) (プレビュー)
+* Azure Batch での [Autodesk Maya、3ds Max、Arnold](../articles/batch/batch-rendering-service.md) 
 
 ### <a name="ai-and-deep-learning"></a>AI とディープ ラーニング
 
@@ -103,11 +103,12 @@ SaaS のプロバイダーやデベロッパーは、Batch の SDK とツール�
 
 以下の項目について説明します。
 
-* [Batch を使った初めての開発](../articles/batch/batch-dotnet-get-started.md)
+* [Batch を使った初めての開発](../articles/batch/quick-run-dotnet.md)
 * [Azure Batch のコード サンプルを使用する](https://github.com/Azure/azure-batch-samples)
 * [Batch で優先順位の低い VM を使用する](../articles/batch/batch-low-pri-vms.md)
 * [Batch Shipyard を使ってコンテナー化した HPC ワークロードを実行する](https://github.com/Azure/batch-shipyard)
 * [Batch で R 言語を使用する](https://github.com/Azure/doAzureParallel)
+* [Batch で Azure Distributed Data Engineering Toolkit を実行する](https://github.com/Azure/aztk)
 
 ## <a name="workload-managers"></a>ワークロード マネージャー
 
@@ -127,23 +128,27 @@ Azure のインフラストラクチャで実行できるクラスターおよ�
 詳細情報:
 
 * [Azure での HPC ストレージの並列ファイル システム](https://blogs.msdn.microsoft.com/azurecat/2017/03/17/parallel-file-systems-for-hpc-storage-on-azure/)
+* [Avere](http://www.averesystems.com/about-us/about-avere) (現在は [Microsoft が買収](https://blogs.microsoft.com/blog/2018/01/03/microsoft-to-acquire-avere-systems-accelerating-high-performance-computing-innovation-for-media-and-entertainment-industry-and-beyond/)) が提供するハイ パフォーマンス クラウド ストレージ ソリューション
 
 
 ## <a name="related-azure-services"></a>関連する Azure サービス
 
 Azure の仮想マシン、仮想マシン スケール セット、Batch、およびこれらに関連するコンピューティング サービスは、Azure のほとんどの HPC ソリューションの基盤となっています。 もっとも、お使いのソリューションでも Azure の関連サービスの多くを利用できます。 その一部を以下に紹介します。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
 * [Blob、Table、Queue Storage](../articles/storage/storage-introduction.md)
 * [File Storage](../articles/storage/storage-files-introduction.md)
 
 ### <a name="data-and-analytics"></a>データと分析
-* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md) (Azure 上の Hadoop クラスター用)
+* [HDInsight](../articles/hdinsight/hadoop/apache-hadoop-introduction.md)
 * [Data Factory](../articles/data-factory/introduction.md)
 * [Data Lake Store](../articles/data-lake-store/data-lake-store-overview.md)
 * [Machine Learning](../articles/machine-learning/machine-learning-what-is-machine-learning.md)
 * [SQL Database](../articles/sql-database/sql-database-technical-overview.md)
+
+### <a name="ai-and-cognitive-services"></a>AI と Cognitive Services
+* [Batch AI](../articles/batch-ai/overview.md)
 
 ### <a name="networking"></a>ネットワーク
 * [Virtual Network](../articles/virtual-network/virtual-networks-overview.md)
@@ -172,7 +177,7 @@ Azure HPC ソリューションを使ってビジネスの問題を解決した�
 * [Towers Watson](https://customers.microsoft.com/story/insurance-tech-provider-delivers-disruptive-solutions)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [エンジニアリング シミュレーション](https://simulation.azure.com/)、[レンダリング](https://simulation.azure.com/)、[銀行業および資本市場](https://finance.azure.com/)、および[ゲノミクス](https://enterprise.microsoft.com/en-us/industries/health/genomics/)向けの大規模コンピューティング ソリューションの詳細については、それぞれのトピックを参照してください。
 * 最新情報については、[Microsoft HPC と Batch のチーム ブログ](http://blogs.technet.com/b/windowshpc/)と[Azure ブログ](https://azure.microsoft.com/blog/tag/hpc/)をご覧ください。
 

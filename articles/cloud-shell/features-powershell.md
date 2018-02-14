@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: damaerte
-ms.openlocfilehash: 5a2a5095f6418cf188c5d5d5f3b14049f889a272
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 9f089b5c5d573bf469d6920f9144b7cc5c97c03a
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/01/2018
@@ -53,7 +53,6 @@ Azure リソースに対するすべての変更は、Azure Portal で直接行�
 ![](media/features-powershell/azure-drive.png)
 
 #### <a name="contextual-awareness"></a>コンテキストの認識
-
 - **リソース グループのスコープ**: Azure ドライブ (`Azure:`) のリソース グループ パスのコンテキスト内にいるときは、リソース グループ名が自動的に Azure PowerShell コマンドレットに渡されます。
 
     ![](media/features-powershell/resource-group-autocomplete.png)
@@ -104,7 +103,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 |------------|-----------|
 |.NET        |4.6        |
 |Node.js     |6.10       |
-|PowerShell  |5.1 および [6.0 (ベータ)](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell  |5.1 および [6.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>次の手順
