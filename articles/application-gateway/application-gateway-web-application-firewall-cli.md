@@ -1,162 +1,188 @@
 ---
-title: "Web アプリケーション ファイアウォールの構成: Azure Application Gateway | Microsoft Docs"
-description: "この記事では、既存または新規のアプリケーション ゲートウェイで Web アプリケーション ファイアウォールの使用を開始する方法について説明します。"
-documentationcenter: na
+title: "Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs"
+description: "Azure CLI を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する方法について説明します。"
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 670b9732-874b-43e6-843b-d2585c160982
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: e60bfc89378569b154f4f973d1dceb683fa58482
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 611e9b27baeddf61531421d7ad2bed20188ad279
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="configure-a-web-application-firewall-on-a-new-or-existing-application-gateway-with-azure-cli"></a>Azure CLI を使用して新規または既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを構成する
+# <a name="create-an-application-gateway-with-a-web-application-firewall-using-the-azure-cli"></a>Azure CLI を使用して Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
 
-> [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-web-application-firewall-portal.md)
-> * [PowerShell](application-gateway-web-application-firewall-powershell.md)
-> * [Azure CLI](application-gateway-web-application-firewall-cli.md)
+[Web アプリケーション ファイアウォール](application-gateway-web-application-firewall-overview.md) (WAF) と[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用した[アプリケーション ゲートウェイ](application-gateway-introduction.md)を Azure CLI で作成することができます。 WAF は、[OWASP](https://www.owasp.org/index.php/Category:OWASP_ModSecurity_Core_Rule_Set_Project) ルールを使用してアプリケーションを保護します。 こうしたルールには、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの攻撃に対する保護が含まれます。 
 
-Web アプリケーション ファイアウォール (WAF) 対応のアプリケーション ゲートウェイを作成する方法について説明します。 既存のアプリケーション ゲートウェイに WAF を追加する方法についても説明します。
+この記事では、次のことについて説明します:
 
-Azure Application Gateway の WAF は、SQL インジェクション、クロスサイト スクリプティング攻撃、セッション ハイジャックなどの一般的な Web ベースの攻撃から Web アプリケーションを保護します。
+> [!div class="checklist"]
+> * ネットワークのセットアップ
+> * WAF 対応のアプリケーション ゲートウェイの作成
+> * 仮想マシン スケール セットを作成する
+> * ストレージ アカウントの作成と診断の構成
 
- Application Gateway はレイヤー 7 のロード バランサーです。 クラウドでもオンプレミスでも、異なるサーバー間のフェールオーバーと HTTP 要求のパフォーマンス ルーティングを提供します。 Application Gateway は、多数のアプリケーション配信コントローラー (ADC) 機能を備えています。
+![Web アプリケーション ファイアウォールの例](./media/application-gateway-web-application-firewall-cli/scenario-waf.png)
 
- * HTTP の負荷分散 
- * Cookie ベースのセッション アフィニティ 
- * Secure Sockets Layer (SSL) のオフロード 
- * カスタム正常性プローブ 
- * マルチサイト機能のサポート
- 
- サポートされている機能の完全な一覧については、「[Application Gateway の概要](application-gateway-introduction.md)」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-この記事では、[Web アプリケーション ファイアウォールを既存のアプリケーション ゲートウェイに追加する](#add-web-application-firewall-to-an-existing-application-gateway)方法を示します。 [Web アプリケーション ファイアウォールを使用するアプリケーションゲートウェイを作成する](#create-an-application-gateway-with-web-application-firewall)方法についても示します。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![シナリオのイメージ][scenario]
+CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>前提条件: Azure CLI 2.0 のインストール
+## <a name="create-a-resource-group"></a>リソース グループの作成
 
-この記事の手順を実行するには、[Mac、Linux、Windows 用の Azure コマンドライン インターフェイス (Azure CLI) をインストールする](https://docs.microsoft.com/cli/azure/install-az-cli2)必要があります。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#az_group_create) を使用して *myResourceGroupAG* という名前の Azure リソース グループを作成します。
 
-## <a name="waf-configuration-differences"></a>WAF の構成上の相違点
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
+```
 
-[Azure CLI を使用した Application Gateway の作成](application-gateway-create-gateway-cli.md)に関する記事をお読みであれば、アプリケーション ゲートウェイを作成するときに構成する SKU の設定はご存じのとおりです。 WAF には、アプリケーション ゲートウェイで SKU を構成するときに定義する追加の設定があります。 アプリケーション ゲートウェイ自体に加える変更はありません。
+## <a name="create-network-resources"></a>ネットワーク リソースを作成する
 
-| **設定** | **詳細**
-|---|---|
-|**SKU** |WAF が追加されていない通常のアプリケーション ゲートウェイでは、**Standard\_Small**、**Standard\_Medium**、および **Standard\_Large** の各サイズがサポートされています。 WAF を導入すると、2 つの SKU (**WAF\_Medium** と **WAF\_Large**) が追加されます。 小規模なアプリケーション ゲートウェイでは、WAF はサポートされません。|
-|**モード** | この設定は WAF のモードです。 使用できる値は **[検出]** と **[防止]** です。 WAF を **[検出]** モードで設定すると、すべての脅威がログ ファイルに記録されます。 **[防止]** モードでイベントはログに記録されますが、攻撃者はアプリケーション ゲートウェイから "403 許可されていません" 応答を受信します。|
-
-## <a name="add-a-web-application-firewall-to-an-existing-application-gateway"></a>既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを追加する
-
-次のコマンドは、既存の標準的なアプリケーション ゲートウェイを WAF 対応のアプリケーション ゲートウェイに変更します。
+仮想ネットワークとサブネットは、アプリケーション ゲートウェイとその関連リソースにネットワーク接続を提供するために使用されます。 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) と [az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) で、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 *myAGPublicIPAddress* という名前のパブリック IP アドレスを [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) で作成します。
 
 ```azurecli-interactive
-#!/bin/bash
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myBackendSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myAGSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
 
+## <a name="create-an-application-gateway-with-a-waf"></a>WAF を含んだアプリケーション ゲートウェイの作成
+
+[az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myPublicIPSddress* に割り当てます。
+
+```azurecli-interactive
+az network application-gateway create \
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGSubnet \
+  --capacity 2 \
+  --sku WAF_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 80 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress
 az network application-gateway waf-config set \
   --enabled true \
-  --firewall-mode Prevention \
-  --gateway-name "AdatumAppGateway" \
-  --resource-group "AdatumAppGatewayRG"
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --firewall-mode Detection \
+  --rule-set-version 3.0
 ```
 
-このコマンドは、アプリケーション ゲートウェイを WAF で更新します。 アプリケーション ゲートウェイのログの表示方法を理解するには、[Application Gateway の診断](application-gateway-diagnostics.md)に関する記事を参照してください。 WAF のセキュリティの性質により、ログを定期的に確認して Web アプリケーションのセキュリティ状況を把握してください。
+アプリケーション ゲートウェイの作成には数分かかる場合があります。 アプリケーション ゲートウェイを作成すると、新たに次の機能が確認できます。
 
-## <a name="create-an-application-gateway-with-a-web-application-firewall"></a>Web アプリケーション ファイアウォールのあるアプリケーション ゲートウェイを作成する
+- *appGatewayBackendPool* - アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
+- *appGatewayBackendHttpSettings* - 通信に使用するポート 80 と HTTP プロトコルを指定します。
+- *appGatewayHttpListener* - *appGatewayBackendPool* に関連付けられている既定のリスナー。
+- *appGatewayFrontendIP* -*myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
+- *rule1* - *appGatewayHttpListener* に関連付けられている既定のルーティング規則。
 
-次のコマンドは、WAF のあるアプリケーション ゲートウェイを作成します。
+## <a name="create-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
+
+この例では、アプリケーション ゲートウェイのバックエンド プールに 2 つのサーバーを提供する仮想マシン スケール セットを作成します。 スケール セット内の仮想マシンは、*myBackendSubnet* サブネットに関連付けます。 スケール セットを作成するには、[az vmss create](/cli/azure/vmss#az_vmss_create) を使用します。
 
 ```azurecli-interactive
-#!/bin/bash
-
-az network application-gateway create \
-  --name "AdatumAppGateway2" \
-  --location "eastus" \
-  --resource-group "AdatumAppGatewayRG" \
-  --vnet-name "AdatumAppGatewayVNET2" \
-  --vnet-address-prefix "10.0.0.0/16" \
-  --subnet "Appgatewaysubnet2" \
-  --subnet-address-prefix "10.0.0.0/28" \
- --servers "10.0.0.5 10.0.0.4" \
-  --capacity 2 
-  --sku "WAF_Medium" \
-  --http-settings-cookie-based-affinity "Enabled" \
-  --http-settings-protocol "Http" \
-  --frontend-port "80" \
-  --routing-rule-type "Basic" \
-  --http-settings-port "80" \
-  --public-ip-address "pip2" \
-  --public-ip-address-allocation "dynamic" \
-  --tags "cli[2] owner[administrator]"
+az vmss create \
+  --name myvmss \
+  --resource-group myResourceGroupAG \
+  --image UbuntuLTS \
+  --admin-username azureuser \
+  --admin-password Azure123456! \
+  --instance-count 2 \
+  --vnet-name myVNet \
+  --subnet myBackendSubnet \
+  --vm-sku Standard_DS2 \
+  --upgrade-policy-mode Automatic \
+  --app-gateway myAppGateway \
+  --backend-pool-name appGatewayBackendPool
 ```
 
-> [!NOTE]
-> 基本的な WAF の構成で作成されたアプリケーション ゲートウェイは、CRS 3.0 の保護で構成されます。
-
-## <a name="get-an-application-gateway-dns-name"></a>アプリケーション ゲートウェイの DNS 名を取得する
-
-ゲートウェイを作成した後の次の手順は通信用にフロントエンドを構成することです。 パブリック IP を使用する場合、アプリケーション ゲートウェイには、動的に割り当てられたフレンドリではない DNS 名が必要です。 エンド ユーザーがアプリケーション ゲートウェイを確実にヒットできるように、CNAME レコードを使用して、アプリケーション ゲートウェイのパブリック エンドポイントを参照します。 詳細については、「[Azure クラウド サービスのカスタム ドメイン名の構成](../cloud-services/cloud-services-custom-domain-name-portal.md)」を参照してください。 
-
-CNAME レコードを構成するには、アプリケーション ゲートウェイに接続されている PublicIPAddress 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 アプリケーション ゲートウェイの DNS 名を使用して、2 つの Web アプリケーションがこの DNS 名を指すように CNAME レコードを作成します。 VIP はアプリケーション ゲートウェイが再起動するときに変更されることがあるため、A レコードの使用はお勧めしません。
+### <a name="install-nginx"></a>NGINX のインストール
 
 ```azurecli-interactive
-#!/bin/bash
+az vmss extension set \
+  --publisher Microsoft.Azure.Extensions \
+  --version 2.0 \
+  --name CustomScript \
+  --resource-group myResourceGroupAG \
+  --vmss-name myvmss \
+  --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"],"commandToExecute": "./install_nginx.sh" }'
+```
 
+## <a name="create-a-storage-account-and-configure-diagnostics"></a>ストレージ アカウントの作成と診断の構成
+
+このチュートリアルでは、アプリケーション ゲートウェイは、検出および防止の目的で、ストレージ アカウントを使用してデータを格納します。 Log Analytics またはイベント ハブを使用して、データを記録することもできます。 
+
+### <a name="create-a-storage-account"></a>ストレージ アカウントの作成
+
+*myagstore1* という名前のストレージ アカウントを [az storage account create](/cli/azure/storage/account?view=azure-cli-latest#az_storage_account_create) で作成します。
+
+```azurecli-interactive
+az storage account create \
+  --name myagstore1 \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --sku Standard_LRS \
+  --encryption blob
+```
+
+### <a name="configure-diagnostics"></a>診断の構成
+
+ApplicationGatewayAccessLog、ApplicationGatewayPerformanceLog、および ApplicationGatewayFirewallLog ログにデータが記録されるように診断を構成します。 `<subscriptionId>` を実際のサブスクリプション ID に置き換えて、[az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az_monitor_diagnostic_settings_create) で診断を構成します。
+
+```azurecli-interactive
+appgwid=$(az network application-gateway show --name myAppGateway --resource-group myResourceGroupAG --query id -o tsv)
+storeid=$(az storage account show --name myagstore1 --resource-group myResourceGroupAG --query id -o tsv)
+az monitor diagnostic-settings create --name appgwdiag --resource $appgwid \
+  --logs '[ { "category": "ApplicationGatewayAccessLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayPerformanceLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } }, { "category": "ApplicationGatewayFirewallLog", "enabled": true, "retentionPolicy": { "days": 30, "enabled": true } } ]' \
+  --storage-account $storeid
+```
+
+## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
+
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用します。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
+
+```azurepowershell-interactive
 az network public-ip show \
-  --name pip2 \
-  --resource-group "AdatumAppGatewayRG"
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
 ```
 
-```
-{
-  "dnsSettings": {
-    "domainNameLabel": null,
-    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
-    "reverseFqdn": null
-  },
-  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
-  "idleTimeoutInMinutes": 4,
-  "ipAddress": "40.121.167.250",
-  "ipConfiguration": {
-    "etag": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
-    "name": null,
-    "privateIpAddress": null,
-    "privateIpAllocationMethod": null,
-    "provisioningState": null,
-    "publicIpAddress": null,
-    "resourceGroup": "AdatumAppGatewayRG",
-    "subnet": null
-  },
-  "location": "eastus",
-  "name": "pip2",
-  "provisioningState": "Succeeded",
-  "publicIpAddressVersion": "IPv4",
-  "publicIpAllocationMethod": "Dynamic",
-  "resourceGroup": "AdatumAppGatewayRG",
-  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
-  "tags": {
-    "cli[2] owner[administrator]": ""
-  },
-  "type": "Microsoft.Network/publicIPAddresses"
-}
-```
+![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-web-application-firewall-cli/application-gateway-nginxtest.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-WAF ルールのカスタマイズ方法については、「[Azure CLI 2.0 を使用した Web アプリケーション ファイアウォール ルールのカスタマイズ](application-gateway-customize-waf-rules-cli.md)」を参照してください。
+このチュートリアルで学習した内容は次のとおりです。
 
-[scenario]: ./media/application-gateway-web-application-firewall-cli/scenario.png
+> [!div class="checklist"]
+> * ネットワークのセットアップ
+> * WAF 対応のアプリケーション ゲートウェイの作成
+> * 仮想マシン スケール セットを作成する
+> * ストレージ アカウントの作成と診断の構成
+
+アプリケーション ゲートウェイとその関連リソースの詳細を確認するには、ハウツー記事に進みます。

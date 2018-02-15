@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 95abba4fd293e2d04a58f0d07f955aca808434b7
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 76a3096595d07916159b3a50da0793c653a490a0
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure Automation の一般的な問題のトラブルシューティング 
 この記事では、Azure Automation で発生することがある一般的なエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
@@ -195,11 +195,19 @@ ms.lasthandoff: 01/24/2018
 
 **エラーの理由:**
 
-このエラー コードは、ポリシー違反でデプロイが失敗したことを示します。
+このエラー コードは、1 つ以上のポリシーの違反でデプロイが失敗したことを示します。
 
 **トラブルシューティングのヒント:**
 
-Azure Portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、**[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure ポリシーの詳細については、[Azure ポリシーの概要](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)に関するページを参照してください。
+ソリューションを正常にデプロイするには、指定されたポリシーの変更を検討する必要があります。 定義可能なポリシーが多数あるため、必要になる具体的な変更は、違反しているポリシーによって異なります。 たとえば、リソース グループ内の特定の種類のリソースの内容を変更する権限を拒否するようにポリシーがそのリソース グループで定義されている場合、次のような操作を実行できます。
+
+*   ポリシーを完全に削除する
+* 別のリソース グループへのオンボードを試す
+* ポリシーを変更する。例:
+   * ポリシーの対象を特定のリソースに設定し直す (特定の Automation アカウントなど)。
+   * 拒否するようにポリシーが構成されているリソースのセットを変更する
+
+Azure Portal の右上にある通知を確認するか、Automation アカウントを含むリソース グループに移動し、**[設定]** の **[デプロイ]** を選択して、失敗したデプロイメントを表示します。 Azure Policy の詳細については、[Azure Policy の概要](../azure-policy/azure-policy-introduction.md?toc=%2fazure%2fautomation%2ftoc.json)に関するページを参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

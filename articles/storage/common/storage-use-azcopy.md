@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2017
+ms.date: 01/29/2018
 ms.author: seguler
-ms.openlocfilehash: 3d4a7ceabc8cdb97fc8a0f29756d7648d253fe21
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 7d875a1e43908f49424f4e40fe923639cfa02385
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
@@ -750,7 +750,7 @@ AzCopy にコマンドが発行されるたびに、AzCopy は既定のフォル
 
 ### <a name="y"></a>/Y
 
-AzCopy のすべての確認プロンプトを表示しません。
+AzCopy のすべての確認プロンプトを表示しません。 このオプションは、/XO および /XN が指定されていいない場合、データ アップロード シナリオでの書き込み専用 SAS トークンの使用も許可します。
 
 **適用対象:** BLOB、ファイル、テーブル
 

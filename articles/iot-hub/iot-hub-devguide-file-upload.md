@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: 75a6b9bc3ecfe6d6901bb38e312d62333f38daf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7bf1ba333f36dcfa8959320566bcb771f37cfe22
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="upload-files-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
 
@@ -30,7 +30,7 @@ IoT Hub 自体を介してメッセージをやり取りする代わりに、IoT
 
 その後、デバイスは、[アップロードを開始][lnk-initialize]し、アップロードの完了時に [IoT Hub に通知][lnk-notify]できます。 必要に応じて、デバイスがアップロードの完了を IoT Hub に通知するときに、サービスによって[通知メッセージ][lnk-service-notification]を生成できます。
 
-### <a name="when-to-use"></a>使用時の注意
+### <a name="when-to-use"></a>いつ使用するか
 
 ファイルのアップロードを使用して、断続的に接続されたデバイスでアップロードされた、または帯域幅を節約するために圧縮されたメディア ファイルや大容量のテレメトリ バッチを送信します。
 
@@ -100,7 +100,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 「[エンドポイント][lnk-endpoints]」で説明したように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/fileuploadnotifications**) 経由でメッセージとしてファイルのアップロード通知を配信します。 ファイルのアップロード通知の受信セマンティクスは Cloud-to-device メッセージの場合と同様であり、[メッセージのライフサイクル][lnk-lifecycle]も同じです。 ファイルのアップロード通知エンドポイントから取得した各メッセージは、次のプロパティを持つ JSON レコードです。
 
-| プロパティ | Description |
+| プロパティ | 説明 |
 | --- | --- |
 | EnqueuedTimeUtc |通知が作成された日時を示すタイムスタンプ。 |
 | deviceId |**DeviceId** 。 |
@@ -126,7 +126,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 各 IoT Hub では、ファイルのアップロード通知用に次の構成オプションを公開しています。
 
-| プロパティ | Description | 範囲と既定値 |
+| プロパティ | 説明 | 範囲と既定値 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |ファイルのアップロード通知をファイル通知エンドポイントに書き込むかどうかを制御します。 |ブール値。 既定値: True。 |
 | **fileNotifications.ttlAsIso8601** |ファイルのアップロード通知の既定の TTL。 |最大 48 時間の ISO_8601 書式による間隔 (最小 1 分)。 既定値: 1 時間。 |
@@ -143,7 +143,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [IoT Hub のクエリ言語][lnk-query]: IoT Hub からデバイス ツインとジョブに関する情報を取得する際に使用できるクエリ言語について説明します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Hub を使用してデバイスからファイルをアップロードする方法を理解できたら、次の IoT Hub 開発者ガイドのトピックも参考にしてください。
 
@@ -153,7 +153,7 @@ IoT Hub を使用してデバイスからファイルをアップロードする
 * [デバイスでダイレクト メソッドを呼び出す][lnk-devguide-directmethods]
 * [複数デバイスでのジョブをスケジュール設定する][lnk-devguide-jobs]
 
-この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
+この記事で説明した概念を試すには、次の IoT Hub のチュートリアルをご覧ください。
 
 * [IoT Hub でデバイスからクラウドにファイルをアップロードするには][lnk-fileupload-tutorial]
 

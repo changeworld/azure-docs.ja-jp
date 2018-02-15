@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 653c31fb1115c79216f882a52484cd37303e0322
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 50020f007096b45b843515ff765e40c550fcf4e3
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -74,9 +74,9 @@ ID レジストリで ID の **status** プロパティを更新することに�
 
 ## <a name="import-and-export-device-identities"></a>デバイス ID のインポートとエクスポート
 
-[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT ハブの ID レジストリからデバイス ID を一括エクスポートできます。 エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジストリから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
+IoT ハブの ID レジストリからデバイス ID を一括エクスポートするには、[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用します。 エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジストリから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
 
-[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT ハブの ID レジストリにデバイス ID を一括インポートできます。 インポートは、顧客が指定した BLOB コンテナー内のデータを使用してデバイス ID データを ID レジストリに書き込む、長時間実行ジョブです。
+IoT ハブの ID レジストリにデバイス ID を一括インポートするには、[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用します。 インポートは、顧客が指定した BLOB コンテナー内のデータを使用してデバイス ID データを ID レジストリに書き込む、長時間実行ジョブです。
 
 インポート API とエクスポート API の詳細については、[IoT Hub のリソースプロバイダー REST API][lnk-resource-provider-apis] に関する記事を参照してください。 インポートおよびエクスポート ジョブの実行方法の詳細については、[IoT Hub デバイス ID の一括管理][lnk-bulk-identity]に関するページを参照してください。
 
@@ -105,7 +105,7 @@ IoT Hub は、デバイスのライフサイクルの通知を送信すること
 
 プロパティ: メッセージ システム プロパティは `'$'` 記号で始まります。
 
-| 名前 | 値 |
+| Name | 値 |
 | --- | --- |
 $content-type | application/json |
 $iothub-enqueuedtime |  通知が送信された時刻 |
@@ -146,7 +146,7 @@ iothub-message-schema | deviceLifecycleNotification |
 
 | プロパティ | オプション | [説明] |
 | --- | --- | --- |
-| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`)。 |
+| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- . + % _ # * ? ! ( ) , = @ $ '`)。 |
 | generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
 | etag |必須、読み取り専用 |[RFC7232][lnk-rfc7232] に準拠した、デバイス ID の弱い ETag を表す文字列。 |
 | auth |省略可能 |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
@@ -180,7 +180,7 @@ IoT ハブの ID レジストリの使用方法を理解できたら、次の Io
 * [デバイスでダイレクト メソッドを呼び出す][lnk-devguide-directmethods]
 * [複数デバイスでのジョブをスケジュール設定する][lnk-devguide-jobs]
 
-この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
+この記事で説明した概念を試すには、次の IoT Hub のチュートリアルをご覧ください。
 
 * [Azure IoT Hub を使ってみる][lnk-getstarted-tutorial]
 

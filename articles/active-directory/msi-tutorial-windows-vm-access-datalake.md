@@ -3,7 +3,7 @@ title: "Windows VM 管理対象サービス ID (MSI) を使用して Azure Data 
 description: "Windows VM 管理対象サービス ID (MSI) を使用して Azure Data Lake Store にアクセスする方法を説明するチュートリアルです。"
 services: active-directory
 documentationcenter: 
-author: skwan
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/20/2017
 ms.author: skwan
-ms.openlocfilehash: ad9b92f11571b013f371eb36c0676afb3e9e5213
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 367008c41aee6ee31811f7fa7ee4be69120b8851
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-data-lake-store"></a>Windows VM 管理対象サービス ID (MSI) を使用した Azure Data Lake Store へのアクセス
 
@@ -205,7 +205,7 @@ Azure Data Lake Store は Azure AD 認証をネイティブにサポートする
 
 その他の Data Lake Store ファイルシステムの API を使用すると、ファイルへの追加、ファイルのダウンロードなどができます。
 
-ご利用ありがとうございます。  VM の MSI を使用して、Data Lake Store ファイルシステムに認証されました。
+お疲れさまでした。  VM の MSI を使用して、Data Lake Store ファイルシステムに認証されました。
 
 ## <a name="related-content"></a>関連コンテンツ
 

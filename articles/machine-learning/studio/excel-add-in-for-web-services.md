@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/14/2017
+ms.date: 2/1/2018
 ms.author: tedway;garye
-ms.openlocfilehash: 4dbb1779bf36be74ee83aeed8e4940902915603a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cec26a5ccd4620dd0dabc92f4655f5fdfaf62e20
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="excel-add-in-for-azure-machine-learning-web-services"></a>Azure Machine Learning Web サービスの Excel アドイン
 Excel を使用すると、コードを作成することなく、直接 Web サービスを簡単に呼び出すことができます。

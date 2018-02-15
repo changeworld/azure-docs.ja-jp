@@ -3,7 +3,7 @@ title: "ワークフローでのループとスコープの作成またはデー
 description: "Azure Logic Apps で、ループを作成してデータを反復処理したり、アクションをスコープにグループ化したり、データを分割処理して複数のワークフローを開始したりします。"
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: jeffhollan
+author: ecfan
 manager: anneta
 editor: 
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 9cdbe4a12a0b16341a1e52f176901045baf327b5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: LADocs; estfan
+ms.openlocfilehash: 64b8f414efe8cd886589084f05e04486c9a0d05c
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Logic Apps のループ、スコープ、分割処理
   

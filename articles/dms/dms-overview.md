@@ -10,11 +10,11 @@ ms.service: database-migration
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/13/2017
-ms.openlocfilehash: 80ec9e177e5c1408eb28338c0c0acae9c672eeb1
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 2aae105b7454209131db79c60d74740ce97c21ce
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="what-is-the-azure-database-migration-service-preview"></a>Azure Database Migration Service プレビューとは何ですか
 Azure Database Migration Service は、複数のデータベース ソースから Azure データ プラットフォームへのシームレスな移行を最小限のダウンタイムで実現できるように設計された、完全管理型のサービスです。 このサービスは現在、パブリック プレビューとして提供されており、次の点に重点を置いて開発が進められています。
@@ -34,6 +34,11 @@ Azure Database Migration Service では、Microsoft の既存のツールやサ�
 - ブラジル南部
 - 西ヨーロッパ
 - 北ヨーロッパ
+- 東南アジア
+- インド西部
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure Portal を使用して Azure Database Migration Service のインスタンスを作成します](quickstart-create-data-migration-service-portal.md)。
+- [SQL Server を Azure SQL Database に移行する](tutorial-sql-server-to-azure-sql.md)
+- [Azure Database Migration Service を使用するための前提条件の概要](pre-reqs.md)
+- [Azure Database Migration Service の使用に関する FAQ](faq.md)

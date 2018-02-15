@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte;banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6919b40ac6edff289f3eb171e88ca6d76288f2a3
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: a8f6cfc678d0b6443ac1aa440941eb2b5c664564
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Log Analytics で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
@@ -108,9 +108,7 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
-2. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
-3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルをクリックします。  
+3. Azure Portal の Log Analytics ワークスペースの **[概要]** タイルをクリックします。
 4. **[概要]** ページで、**[Active Directory 正常性チェック]** タイルをクリックします。 
 5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![正常性チェックの推奨事項の画像](./media/log-analytics-ad-assessment/ad-healthcheck-dashboard-02.png)
@@ -124,13 +122,8 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 2. 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。
 
     ```
-    Type=ADAssessmentRecommendation RecommendationResult=Failed | select Computer, RecommendationId, Recommendation | sort Computer
+    ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-    >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
-    >
-    > `ADAssessmentRecommendation | where RecommendationResult == "Failed" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
-
     ログ検索のクエリを示すスクリーン ショットを次に示します。<br><br> ![失敗した推奨事項](./media/log-analytics-ad-assessment/ad-failed-recommendations.png)
 
 3. 無視する推奨事項を選択します。 次の手順で RecommendationId の値を使用します。
@@ -149,12 +142,8 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 1. 次のログ検索クエリを使用して、無視されるすべての推奨事項の一覧を表示します。
 
     ```
-    Type=ADAssessmentRecommendation RecommendationResult=Ignored | select  Computer, RecommendationId, Recommendation | sort  Computer
+    ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation
     ```
-    >[!NOTE]
-    > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
-    >
-    > `ADAssessmentRecommendation | where RecommendationResult == "Ignored" | sort by Computer asc | project Computer, RecommendationId, Recommendation`
 
 2. 無視された推奨事項を表示することを後で決定する場合は、IgnoreRecommendations.txt ファイルを削除します。また、そのファイルから RecommendationID を削除することもできます。
 
@@ -195,5 +184,5 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 
 * はい。前のセクション「[推奨事項を無視する](#ignore-recommendations)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Log Analytics のログ検索](log-analytics-log-searches.md)を使用して、詳細な Active Directory 正常性チェック データと推奨事項を分析する方法を学びます。

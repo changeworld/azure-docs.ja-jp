@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 68aaf0fda2e60c5736ab020c15e516144e11d68e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31254788b840ccc1f1017df3c533e84b9c99f10d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="how-to-configure-on-premises-encoders-when-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用してマルチビットレートのストリームを作成するときにオンプレミス エンコーダーを構成する方法
 このトピックには、ライブ イベントをキャプチャし、単一ビットレート ライブ ストリームを (Live Encoding が有効になっている) AMS チャネルに送信してさらに処理を行うために使用できるオンプレミス ライブ エンコーダーがリストされています。 このトピックには、リストされているエンコーダーを構成する方法を示すチュートリアルへのリンクもあります。
@@ -28,6 +28,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="flash-media-live-encoder"></a>Flash Media Live Encoder
 単一ビットレート ライブ ストリームが AMS チャネルに送信されるように [Flash Media Live Encoder](http://www.adobe.com/products/flash-media-encoder.html) (FMLE) エンコーダーを構成する方法については、[FMLE の構成](media-services-configure-fmle-live-encoder.md)に関するページをご覧ください。
+
+## <a name="haivision-kb-encoder"></a>Haivision KB エンコーダー
+単一ビットレート ライブ ストリームが AMS チャネルに送信されるように [Haivision KB Encoder](https://www.haivision.com/products/kb-series/) エンコーダーを構成する方法については、[Haivision KB エンコーダーの構成](media-services-configure-kb-live-encoder.md)に関するページをご覧ください。
 
 ## <a name="telestream-wirecast"></a>Telestream Wirecast
 単一ビットレート ライブ ストリームが AMS チャネルに送信されるように [Telestream Wirecast](http://www.telestream.net/wirecast/overview.htm) エンコーダーを構成する方法については、[Wirecast の構成](media-services-configure-wirecast-live-encoder.md)に関するページをご覧ください。

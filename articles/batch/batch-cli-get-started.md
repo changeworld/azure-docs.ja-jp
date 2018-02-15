@@ -3,8 +3,8 @@ title: "Batch 用の Azure CLI の概要 | Microsoft Docs"
 description: "Azure Batch サービスのリソースを管理するために使用できる Azure CLI の Batch コマンドの概要を簡単に説明します。"
 services: batch
 documentationcenter: 
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 editor: 
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
 ms.service: batch
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 09/28/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 763a8884b65f64b4807cd42c937f43b2f5517ed5
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 11fad18c7b51625a29c58058aebd412cbf8cffdd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -40,7 +40,7 @@ Azure CLI をインストールするには、「[Azure CLI 2.0 のインスト�
 
 ## <a name="command-help"></a>コマンドのヘルプ
 
-Azure CLI のどのコマンドでも、コマンドの後ろに `-h` を付加すると、ヘルプ テキストを表示できます。 他のオプションは指定しないでください。 For example:
+Azure CLI のどのコマンドでも、コマンドの後ろに `-h` を付加すると、ヘルプ テキストを表示できます。 他のオプションは指定しないでください。 例: 
 
 * `az` コマンドのヘルプを表示するには、「`az -h`」と入力します。
 * CLI のすべての Batch コマンドの一覧を取得するには、「`az batch -h`」と入力します。
@@ -62,14 +62,14 @@ Batch で Azure CLI を使用するには、ログインと認証を行う必要
 1. **Azure にログインします。** Azure にログインすると、[Batch 管理サービス](batch-management-dotnet.md) コマンドも含め、Azure Resource Manager コマンドにアクセスできるようになります。  
 2. **Batch アカウントにログインします。** Batch アカウントにログインすると、Batch サービス コマンドにアクセスできるようになります。   
 
-### <a name="log-in-to-azure"></a>Azure へのログイン
+### <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure にログインするには、いくつかの方法があります。詳細については、「[Azure CLI 2.0 を使用してログインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)」で説明しています。
 
 1. [対話形式でログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_interactive_log_in)。 コマンド ラインから Azure CLI コマンドを実行しているときに、対話形式でログインします。
 2. [サービス プリンシパルでログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_logging_in_with_a_service_principal)。 スクリプトまたはアプリケーションから Azure CLI コマンドを実行しているときに、サービス プリンシパルでログインします。
 
-この記事の目的上、対話形式で Azure にログインする方法を示します。 コマンド ラインで「[az login](https://docs.microsoft.com/cli/azure/#login)」と入力します。
+この記事の目的上、対話形式で Azure にログインする方法を示します。 コマンド ラインで「[az login](https://docs.microsoft.com/cli/azure/#az_login)」と入力します。
 
 ```azurecli
 # Log in to Azure and authenticate interactively.
@@ -78,7 +78,7 @@ az login
 
 `az login` コマンドは、次のように、認証に使用するトークンを返します。 示された指示に従って、Web ページを開き、Azure にトークンを送信します。
 
-![Azure へのログイン](./media/batch-cli-get-started/az-login.png)
+![Azure にログインする](./media/batch-cli-get-started/az-login.png)
 
 「[サンプル シェル スクリプト](#sample-shell-scripts)」セクションの一覧にある例も、対話形式で Azure にログインして Azure CLI セッションを開始する方法を示しています。 ログインしたら、コマンドを呼び出して、Batch アカウント、キー、アプリケーション パッケージ、クォータなどの Batch 管理リソースを操作することができます。  
 
@@ -120,20 +120,13 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
 
 Azure CLI を使用すると、コードを記述せずに、エンド ツー エンドで Batch ジョブを実行できます。 Batch テンプレート ファイルでは、Azure CLI を使用したプール、ジョブ、およびタスクの作成がサポートされます。 Azure CLI を使用すると、ジョブ入力ファイルを Batch アカウントに関連付けられた Azure ストレージ アカウントにアップロードし、そこからジョブの出力ファイルをダウンロードすることもできます。 詳しくは、「[Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)](batch-cli-templates.md)」を参照してください。
 
-## <a name="sample-shell-scripts"></a>サンプル シェル スクリプト
+## <a name="script-examples"></a>スクリプトの例
 
-次の表に示すサンプル スクリプトは、Batch サービスと Batch 管理サービスで Azure CLI コマンドを使用して一般的なタスクを実行する方法を示しています。 これらのサンプル スクリプトでは、Batch 用の Azure CLI で使用できるコマンドの多くがカバーされています。 
-
-| スクリプト | メモ |
-|---|---|
-| [Batch アカウントを作成する](./scripts/batch-cli-sample-create-account.md) | Batch アカウントを作成し、ストレージ アカウントに関連付けます。 |
-| [アプリケーションを追加する](./scripts/batch-cli-sample-add-application.md) | アプリケーションを追加して、パッケージ化されたバイナリをアップロードします。|
-| [Batch プールを管理する](./scripts/batch-cli-sample-manage-pool.md) | プールの作成、サイズ変更、および管理の方法を示します。 |
-| [Batch でジョブとタスクを実行する](./scripts/batch-cli-sample-run-job.md) | ジョブの実行とタスクの追加を説明します。 |
+Batch で一般的なタスクを実行する [CLI スクリプトの例](cli-samples.md)を参照してください。 これらの例では、Batch でアカウント、プール、ジョブ、タスクを作成して管理するために Azure CLI で使用できるコマンドの多くがカバーされています。 
 
 ## <a name="json-files-for-resource-creation"></a>リソースを作成するための JSON ファイル
 
-プールやジョブなどの Batch リソースを作成する際、コマンド ライン オプションとしてパラメーターを渡す代わりに、新しいリソースの構成を含む JSON ファイルを指定できます。 For example:
+プールやジョブなどの Batch リソースを作成する際、コマンド ライン オプションとしてパラメーターを渡す代わりに、新しいリソースの構成を含む JSON ファイルを指定できます。 例: 
 
 ```azurecli
 az batch pool create my_batch_pool.json
@@ -163,7 +156,7 @@ az batch task list --job-id job001
 
 次の表では、Batch サービスでサポートされている OData 句について説明します。
 
-| 句 | Description |
+| 句 | [説明] |
 |---|---|
 | `--select-clause [select-clause]` | 各エンティティのプロパティのサブセットを返します。 |
 | `--filter-clause [filter-clause]` | 指定された OData 式に一致するエンティティのみを返します。 |
@@ -183,7 +176,7 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 * [Batch フォーラム][batch_forum]は、Batch チーム メンバーによって監視されています。 問題が発生した場合や、特定の操作についてアドバイスが欲しい場合は、質問を投稿できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)を参照してください。
 * Batch リソースの詳細については、[開発者向けの Azure Batch の概要](batch-api-basics.md)に関するページを参照してください。

@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 84596041284139b8243287ba6ad719c7c8f7b47b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7d245c2222b1ad9ba71c6f5dbdde66e56e1aa6ab
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 
@@ -94,7 +94,7 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
         ![Azure SQL Database のリンクされたサービス](./media/how-to-invoke-ssis-package-stored-procedure-activity/azure-sql-database-linked-service-settings.png)
 5. プロパティ ウィンドウで **[SQL アカウント]** タブから **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
 
-    1. **[ストアド プロシージャ名]** フィールドに、`sp_executesql` を入力します。 
+    1. **[ストアド プロシージャ名]** フィールドに、「`sp_executesql`」と入力します。 
     2. **[ストアド プロシージャ パラメーター]** セクションで **[+ 新規]** をクリックします。 
     3. パラメーターの **[名前]** に、「**stmt**」と入力します。 
     4. パラメーターの **[型]** に、「**String**」と入力します。 
@@ -133,7 +133,9 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 
     ![パッケージの実行を確認する](./media/how-to-invoke-ssis-package-stored-procedure-activity/verify-package-executions.png)
 
-また、パイプラインがスケジュール上で実行されるように (時間単位、日次など)、お使いのパイプラインのスケジュールされたトリガーを作成します。 例については、「[Create a data factory - Data Factory UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)」 (データ ファクトリの作成 - データ ファクトリ UI ) リンクをご確認ください。
+
+> [!NOTE]
+> また、パイプラインがスケジュール上で実行されるように (時間単位、日次など)、お使いのパイプラインのスケジュールされたトリガーを作成します。 例については、「[Create a data factory - Data Factory UI](quickstart-create-data-factory-portal.md#trigger-the-pipeline-on-a-schedule)」 (データ ファクトリの作成 - データ ファクトリ UI ) リンクをご確認ください。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 このセクションでは、Azure PowerShell を使用して、SSIS パッケージを呼び出すストアド プロシージャ アクティビティを含む Data Factory パイプラインを作成します。 

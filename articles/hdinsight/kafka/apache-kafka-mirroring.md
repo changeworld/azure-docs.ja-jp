@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 01/31/2018
 ms.author: larryfr
-ms.openlocfilehash: a7063375ac4a2f9f172b5c380c2d5472a12e1bfb
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 87b5912e7f9244dc1be74ac357200122b194dbdc
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>MirrorMaker を使用して HDInsight 上の Kafka に Apache Kafka トピックをレプリケートする
 
@@ -210,6 +210,41 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
     プロデューサーの構成の詳細については、「[Producer Configs (プロデューサーの構成)](https://kafka.apache.org/documentation#producerconfigs)」(kafka.apache.org) を参照してください。
 
+5. 次のコマンドを使用して、移行先クラスターの Zookeeper ホストを見つけます。
+
+    ```bash
+    # Install jq if it is not installed
+    sudo apt -y install jq
+    # get the zookeeper hosts for the source cluster
+    export DEST_ZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
+    ```
+
+    `$CLUSTERNAME` を移行先クラスターの名前に置き換えます。 プロンプトが表示されたら、クラスターのログイン (管理者) アカウントのパスワードを入力します。
+
+7. HDInsight の Kafka に使用される既定の構成では、トピックの自動作成が許可されません。 ミラーリング プロセスを開始する前に、次のいずれかの方法を選択する必要があります。
+
+    * **移行先クラスターにトピックを作成する**: この方法を選択した場合、パーティション数とレプリケーション係数も設定することができます。
+
+        次のコマンドを使用して事前にトピックを作成することができます。
+
+        ```bash
+        /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 2 --partitions 8 --topic testtopic --zookeeper $DEST_ZKHOSTS
+        ```
+
+        `testtopic` は、作成するトピックの名前に置き換えます。
+
+    * **トピックを自動的に作成するようにクラスターを構成する**: この方法を選択した場合、MirrorMaker によって自動的にトピックが作成されます。ただし、トピックと共に作成されるパーティションの数またはレプリケーション係数が、移行元のトピックとは異なる場合があります。
+
+        トピックを自動的に作成するように移行先クラスターを構成するには、次の手順を実行します。
+
+        1. [Azure Portal](https://portal.azure.com) から、移行先の Kafka クラスターを選択します。
+        2. クラスターの概要から __[クラスター ダッシュボード]__ を選択します。 次に、__[HDInsight クラスター ダッシュボード]__ を選択します。 認証を求められたら、クラスターのログイン (管理者) 資格情報を使用して認証を行います。
+        3. ページの左側にあるリストから __Kafka__ サービスを選択します。
+        4. ページ中央の __[Configs]\(構成\)__ を選択します。
+        5. __[フィルター]__ フィールドに `auto.create` の値を入力します。 プロパティの一覧にフィルターが適用されて `auto.create.topics.enable` 設定が表示されます。
+        6. `auto.create.topics.enable` の値を true に変更して __[保存]__ を選択します。 ノートを追加して、もう一度 __[保存]__ を選択します。
+        7. __Kafka__ サービスを選択し、__[Restart]\(再起動\)__ を選択して、__[Restart all affected]\(影響を受けるものをすべて再起動\)__ を選択します。 メッセージが表示されたら、__[Confirm restart all]\(すべて再起動\)__ を選択します。
+
 ## <a name="start-mirrormaker"></a>MirrorMaker の開始
 
 1. **移行先**クラスターに SSH で接続してから、次のコマンドを使用して MirrorMaker プロセスを開始します。
@@ -247,11 +282,9 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
      カーソル付きの空白行が表示されたら、テキスト メッセージを数個入力します。 これらのメッセージは、**移行元**クラスター上のトピックに送信されます。 操作が完了したら、**Ctrl + C** キーを使用してプロデューサーのプロセスを終了します。
 
-3. **移行先**クラスターに SSH で接続してから、**Ctrl + C** キーを使用して MirrorMaker プロセスを終了します。 トピックとメッセージが移行先にレプリケートされたことを確認するには、次のコマンドを使います。
+3. **移行先**クラスターに SSH で接続してから、**Ctrl + C** キーを使用して MirrorMaker プロセスを終了します。 このプロセスは、終了までに数秒かかる場合があります。 メッセージが移行先にレプリケートされたことを確認するには、次のコマンドを使います。
 
     ```bash
-    DEST_ZKHOSTS=`curl -sS -u admin -G https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2`
-    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --list --zookeeper $DEST_ZKHOSTS
     /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $DEST_ZKHOSTS --topic testtopic --from-beginning
     ```
 
@@ -265,7 +298,7 @@ Azure 仮想ネットワークと Kafka クラスターは手動で作成でき�
 
 このドキュメントの手順では両方のクラスターを同じ Azure リソース グループに作成したため、Azure Portal でこのリソース グループを削除するだけで済みます。 リソース グループを削除すると、このドキュメントに従って作成したすべてのリソース、Azure Virtual Network、クラスターで使用したストレージ アカウントが削除されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、MirrorMaker を使用して Kafka クラスターのレプリカを作成する方法について説明しました。 次のリンクを使用することで、Kafka のその他の活用方法を知ることができます。
 

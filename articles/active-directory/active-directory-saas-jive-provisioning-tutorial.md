@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: Azure Active Directory と Jive の統合 | Microsoft Docs"
+title: "チュートリアル: Jive を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
 description: "Azure Active Directory と Jive の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 930b64d8c119f468a18ab5736983365aaf5f03c4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 67bbf48c0ce67b0fef5cc2b1c61e3612e0201534
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-jive-for-user-provisioning"></a>チュートリアル: ユーザー プロビジョニングのための Jive の構成
+# <a name="tutorial-configure-jive-for-automatic-user-provisioning"></a>チュートリアル: Jive を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Jive にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Jive と Azure AD で実行する必要がある手順について説明します。
 
@@ -69,7 +69,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. **[管理者資格情報]** セクションに次の構成設定を指定します。
    
-    a. **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の**システム管理者**プロファイルが割り当てられている Jive アカウント名を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[JIVE 管理ユーザー名]** テキストボックスに、Jive.com の**システム管理者**プロファイルが割り当てられている Jive アカウント名を入力します。
    
     b. **[JIVE 管理パスワード]** テキストボックスに、このアカウントのパスワードを入力します。
    

@@ -43,11 +43,11 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** を選択します。
 3. ページの右側の矢印を使用して、**Microsoft Azure Virtual Machines** が表示されるまで発行オプションをスクロールします。  
 
-   ![[発行] ページ - 右矢印]
+   ![発行 ページ - 右矢印]
 
 4. **Microsoft Azure Virtual Machines** アイコンを選択し、**[発行]** を選択します。
 
-   ![[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]
+   ![発行 ページ - Microsoft Azure Virtual Machine Services アイコン]
 
 5. (仮想マシンに接続されている Azure サブスクリプション) の適切なアカウントを選択します。  
    - Visual Studio にサインインしている場合は、アカウントの一覧に、認証されたすべてのアカウントが表示されます。  
@@ -91,17 +91,17 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 - メッセージが表示されたら、ユーザー名とパスワードを入力します。  
 - 発行はすぐに開始されます。
 
-![[発行] ページ - [発行] ボタン]
+![発行 ページ - 発行 ボタン]
 
 ### <a name="modify-publish-profile-settings"></a>発行プロファイル設定の変更
 
 発行プロファイルを表示して設定を変更するには、**[設定]** を選択します。  
 
-![[発行] ページ - [設定] ボタン]
+![発行 ページ - 設定 ボタン]
 
 結果は次のようになります。  
 
-![発行設定 - [接続] ページ]
+![発行設定 - 接続 ページ]
 
 #### <a name="save-user-name-and-password"></a>ユーザー名とパスワードの保存
 - 発行するたびに認証情報を入力しなくてもすむように、**[ユーザー名]** と **[パスワード]** フィールドに入力して、**[パスワードを保存する]** をオンにできます。
@@ -113,7 +113,7 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 
 - 警告: この設定を使用して発行すると、Web サーバー (wwwroot ディレクトリ) に存在するすべてのファイルが削除されます。 このオプションを有効にして発行する前に、必ずマシンの状態を確認してください。 
 
-![発行設定 - [設定] ページ]
+![発行設定 - 設定 ページ]
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -124,14 +124,14 @@ Visual Studio Team Service に継続的な配信のパイプラインを設定�
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
-[[発行] ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[発行 ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[発行 ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
 [Azure アカウント セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
 [Azure VM セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [WebDeploy ログイン]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
 [証明書のエラー]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
-[出力ウィンドウ]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
-[[発行] ページ - [発行] ボタン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
-[[発行] ページ - [設定] ボタン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
-[発行設定 - [接続] ページ]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
-[発行設定 - [設定] ページ]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png
+[Output Window]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
+[発行 ページ - 発行 ボタン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
+[発行 ページ - 設定 ボタン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
+[発行設定 - 接続 ページ]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png
+[発行設定 - 設定 ページ]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsSettingsPage.png

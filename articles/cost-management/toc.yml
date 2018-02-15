@@ -33,6 +33,10 @@
       href: activate-subs-accounts.md
     - name: VM の拡張メトリックの追加
       href: azure-vm-extended-metrics.md
+    - name: Google アカウントの接続
+      href: connect-google-account.md
+    - name: AWS アカウントの接続
+      href: connect-aws-account.md
     - name: Cost Management レポートの使用
       href: use-reports.md
 - name: リソース

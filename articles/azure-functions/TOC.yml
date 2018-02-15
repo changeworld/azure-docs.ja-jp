@@ -35,7 +35,7 @@
           href: functions-create-storage-queue-triggered-function.md
     - name: 統合
       items:
-        - name: ストレージ
+        - name: Storage
           href: functions-integrate-storage-queue-output-binding.md
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -133,6 +133,8 @@
           href: functions-run-local.md
         - name: Visual Studio 開発
           href: functions-develop-vs.md
+        - name: エラー処理
+          href: functions-bindings-error-pages.md
     - name: デプロイ
       items:
         - name: 継続的なデプロイ
@@ -167,7 +169,7 @@
           href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
     - name: Durable Functions
       items:
-        - name: '[インストール]'
+        - name: Install
           href: durable-functions-install.md
         - name: チェーン
           href: durable-functions-sequence.md

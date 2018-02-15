@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: 85be79261d5fc214ab4b46fa5d7b4d0a5b13db27
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d05492425381649a7893b872c4b1c49e9f241b50
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -161,7 +161,7 @@ BGP を使用して Azure とルートを交換すると、仮想ネットワー
         - ネットワーク アドレス変換を実行し、転送することができる。または、サブネット内の宛先リソースへのトラフィックをプロキシし、トラフィックをインターネットに送信できる。 
     - **仮想ネットワーク ゲートウェイ**: ゲートウェイが ExpressRoute 仮想ネットワーク ゲートウェイの場合、インターネットに接続されたオンプレミスのデバイスは、ネットワーク アドレス変換を実行し、転送することができます。また、ExpressRoute の[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-private-peering)を使用して、サブネット内の宛先リソースへのトラフィックをプロキシすることもできます。 
 
-  インターネットと Azure 間で仮想ネットワーク ゲートウェイおよび仮想アプライアンスを使用する場合の実装の詳細については、[Azure とオンプレミス データセンターの間の DMZ](/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事および [Azure とインターネットの間の DMZ](/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事をご覧ください。
+  インターネットと Azure 間で仮想ネットワーク ゲートウェイおよび仮想アプライアンスを使用する場合の実装の詳細については、[Azure とオンプレミス データセンターの間の DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事および [Azure とインターネットの間の DMZ](/azure/architecture/reference-architectures/dmz/secure-vnet-dmz?toc=%2fazure%2fvirtual-network%2ftoc.json) に関する記事をご覧ください。
 
 ## <a name="routing-example"></a>ルーティングの例
 

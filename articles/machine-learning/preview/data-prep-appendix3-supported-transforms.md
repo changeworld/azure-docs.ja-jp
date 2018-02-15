@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 10/09/2017
-ms.openlocfilehash: 062143ae34450484cd66cd7364fb8839d697e483
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: d91985849bd2483e8a28a01d63d253960190829d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-data-transforms-for-data-preparation-in-azure-machine-learning"></a>Azure Machine Learning でデータ変換をデータの準備に使用する
 

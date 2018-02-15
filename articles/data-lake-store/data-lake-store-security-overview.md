@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 52e176711f512e8a3788309a58011c8484821a1e
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: d65341ae79a8894d054503e0b0807dee3e4cca8c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Azure Data Lake Store のセキュリティ
 多くの企業が、ビッグ データの分析によってビジネスに関する洞察を獲得し、それを意思決定に活かしています。 ただ、一部の組織はユーザーが多様化し、その数も増加の一途を辿っているばかりか、各種の規制が存在する複雑な環境に直面しています。 このため、重要なビジネス データはこれまで以上に強固なセキュリティをもって保管すると同時に、個々のユーザーには適切な水準のアクセス権を付与することがきわめて重要になっています。 Azure Data Lake Store は、このようなセキュリティ要件を満たすことを目指して設計されています。 この記事では、以下に示す Data Lake Store のセキュリティ機能について説明します。
@@ -55,15 +55,15 @@ Data Lake Store には既定で基本のロールが 4 つ定義されていま�
 | ロール | 管理権限 | データ アクセス権限 | 説明 |
 | --- | --- | --- | --- |
 | ロールの割り当てなし |なし |ACL によって管理 |Azure ポータルまたは Azure PowerShell コマンドレットを使って Data Lake Store を参照することはできません。 ユーザーは、コマンドライン ツールのみ使用できます。 |
-| 所有者 |すべて |すべて |所有者ロールは、スーパーユーザーです。 このロールではあらゆるものを管理できるほか、データに対するフル アクセスが認められます。 |
-| 閲覧者 |読み取り専用 |ACL によって管理 |閲覧者ロールでは、どのユーザーがどのロールに割り当てられているかなど、アカウント管理に関するあらゆる情報を表示できます。 ただし、閲覧者ロールでは変更を加えることはできません。 |
-| 共同作成者 |ロールの追加と削除を除くすべて |ACL によって管理 |共同作業者ロールでは、デプロイ、アラートの作成と管理など、アカウントの一部の側面を管理できます。 共同作業者ロールでは、ロールを追加または削除することはできません。 |
-| ユーザーアクセスの管理者 |ロールの追加と削除 |ACL によって管理 |ユーザー アクセス管理者ロールでは、アカウントへのユーザー アクセスを管理できます。 |
+| Owner |すべて |すべて |所有者ロールは、スーパーユーザーです。 このロールではあらゆるものを管理できるほか、データに対するフル アクセスが認められます。 |
+| Reader |読み取り専用 |ACL によって管理 |閲覧者ロールでは、どのユーザーがどのロールに割り当てられているかなど、アカウント管理に関するあらゆる情報を表示できます。 ただし、閲覧者ロールでは変更を加えることはできません。 |
+| Contributor |ロールの追加と削除を除くすべて |ACL によって管理 |共同作業者ロールでは、デプロイ、アラートの作成と管理など、アカウントの一部の側面を管理できます。 共同作業者ロールでは、ロールを追加または削除することはできません。 |
+| User Access Administrator |ロールの追加と削除 |ACL によって管理 |ユーザー アクセス管理者ロールでは、アカウントへのユーザー アクセスを管理できます。 |
 
 手順については、「 [ユーザーまたはセキュリティ グループを Azure Data Lake Store アカウントに割り当てる](data-lake-store-secure-data.md#assign-users-or-security-groups-to-azure-data-lake-store-accounts)」をご覧ください。
 
 ### <a name="using-acls-for-operations-on-file-systems"></a>ACL を使用したファイル システムでの操作
-Data Lake Store は Hadoop 分散ファイル システム (HDFS) と同じく階層構造を備えたファイル システムであり、 [POSIX ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)をサポートしています。 所有者ロール、所有者グループ、その他のユーザーおよびグループのリソースに対する読み取り (r)、書き込み (w) および実行 (x) のアクセス許可を制御します。 Data Lake Store パブリック プレビュー (現在のリリース) では、ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Store のコンテキストにおける ACL のしくみの詳細については、[Data Lake Store のアクセス制御](data-lake-store-access-control.md)に関する記事をご覧ください。
+Data Lake Store は Hadoop 分散ファイル システム (HDFS) と同じく階層構造を備えたファイル システムであり、 [POSIX ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)をサポートしています。 所有者ロール、所有者グループ、その他のユーザーおよびグループのリソースに対する読み取り (r)、書き込み (w) および実行 (x) のアクセス許可を制御します。 Data Lake Store では、ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Store のコンテキストにおける ACL のしくみの詳細については、[Data Lake Store のアクセス制御](data-lake-store-access-control.md)に関する記事をご覧ください。
 
 複数ユーザーを対象に ACL を定義するときは、 [セキュリティ グループ](../active-directory/active-directory-groups-create-azure-portal.md)を使うことをお勧めします。 ユーザーをセキュリティ グループに追加し、ファイルまたはフォルダーの ACL をそのセキュリティ グループに割り当てます。 カスタム アクセスで追加できるエントリは 9 個までという制約があるため、カスタム アクセスを使用する場合には、この機能が便利です。 Azure Active Directory のセキュリティ グループを使用して Data Lake Store に保存されているデータのセキュリティを強化する方法について詳しくは、「 [ユーザーまたはセキュリティ グループを ACL として Azure Data Lake Store ファイル システムに割り当てる](data-lake-store-secure-data.md#filepermissions)」をご覧ください。
 
@@ -105,7 +105,7 @@ Azure ポータル (の [診断設定]) でデータ アクセスの監査証跡
 
 Azure Data Lake Store の診断ログの利用について詳しくは、「 [Azure Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)」を参照してください。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 企業顧客は、セキュリティで保護された使いやすいデータ分析クラウド プラットフォームを求めています。 Azure Data Lake Store は、Azure Active Directory の統合による ID 管理と認証、ACL ベースの承認、ネットワークの分離、転送中のデータの暗号化と保存データの暗号化 (将来提供)、および監査によって、これらの要件に対処するように設計されています。
 
 Data Lake Store に追加を希望する機能がある場合には、 [Data Lake Store UserVoice フォーラム](https://feedback.azure.com/forums/327234-data-lake)からフィードバックをお送りください。

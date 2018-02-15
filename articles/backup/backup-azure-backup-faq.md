@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: 66c2f1c5e8ba26d5c50cf60b7f448406814408b0
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: d6ee96b17c6bc85a2278bbe98867a579ff9c550a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Azure Backup サービスについての質問
 この記事では、Azure Backup のコンポーネントについてよくある質問の回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 Azure Backup について質問するには、**[コメント]** (右側) をクリックします。 コメントは、この記事の下部に表示されます。 コメントするには、Livefyre アカウントが必要です。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/18/2018
 はい。 2016 年 9 月の時点では、サブスクリプションあたり 25 個の Recovery Services コンテナーを作成できます。 各サブスクリプションでサポートされている Azure Backup のリージョンごとに、最大 25 個の Recovery Services コンテナーを作成できます。 コンテナーがさらに必要な場合は、追加のサブスクリプションを作成してください。
 
 ### <a name="are-there-limits-on-the-number-of-serversmachines-that-can-be-registered-against-each-vault-br"></a>各コンテナーに登録できるサーバーやマシンの数に制限はありますか。 <br/>
-はい。コンテナーにつき最大 50 のコンピューターを登録できます。 Azure IaaS 仮想マシンの場合、コンテナーあたりの VM の上限は 200 です。 さらにコンピューターを登録する必要がある場合は、別のコンテナーを作成してください。
+コンテナーあたり最大 200 の Azure 仮想マシンを登録できます。 MAB エージェントを使用している場合は、コンテナーあたり、最大 50 の MAB エージェントを登録できます。 1 つのコンテナーには、50 の MAB サーバー/DPM サーバーを登録できます。
 
 ### <a name="if-my-organization-has-one-vault-how-can-i-isolate-one-servers-data-from-another-server-when-restoring-databr"></a>組織で所有しているコンテナーが 1 つの場合、データを復元する際に特定のサーバーのデータを別のサーバーから分離するには、どうすればよいですか。<br/>
 同じコンテナーに登録されたサーバーはどれもが、 *同じパスフレーズを使用する*他のサーバーによってバックアップされたデータを復元できます。 サーバーのバックアップ データを組織内の他のサーバーから分離する必要がある場合は、これらのサーバーごとに指定したパスフレーズを使用します。 たとえば、人事部門のサーバーで特定の暗号化パスフレーズを使用し、経理部門のサーバーで 2 番目、ストレージ サーバーで 3 番目の暗号化パスフレーズを使用することができます。
@@ -166,6 +166,9 @@ Azure Backup からの回復の数に制限はありません。
 ### <a name="when-restoring-data-do-i-pay-for-the-egress-traffic-from-azure-br"></a>データを復元している間に発生する Azure からのエグレス トラフィックには料金が発生するのでしょうか。 <br/>
 
 いいえ。 回復は無料ですので、送信トラフィックに対しては課金されません。
+
+### <a name="what-happens-when-i-change-my-backup-policy"></a>バックアップ ポリシーを変更した場合どうなりますか。
+新しいポリシーが適用されると、新しいポリシーのスケジュールとリテンション期間が適用されます。 リテンション期間が延長された場合、既にある復旧ポイントは、新しいポリシーに従って保存するようにマーキングされます。 リテンション期間が短縮された場合、次回のクリーンアップ ジョブで排除対象としてマーキングされて、その後削除されます。
 
 ## <a name="azure-backup-encryption"></a>Azure Backup の暗号化
 ### <a name="is-the-data-sent-to-azure-encrypted-br"></a>Azure に送信されるデータは暗号化されますか。 <br/>

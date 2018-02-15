@@ -14,17 +14,19 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 01/23/2018
 ms.author: jgao
-ms.openlocfilehash: 22a3d220966fef77e131fbeb3ea46a1f81a9ada5
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 74dcd368d8696df26c5ad294c5657161fbe7f408
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="build-apache-spark-machine-learning-applications-on-azure-hdinsight"></a>Azure HDInsight で Apache Spark Machine Learning アプリケーションを作成する
 
 HDInsight で Spark クラスターを使用して Apache Spark Machine Learning アプリケーションを作成する方法を説明します。 この記事では、クラスターで使用できる Jupyter Notebook を使用して、このアプリケーションを作成およびテストする方法を説明します。 このアプリケーションでは、すべてのクラスターにおいて既定で利用可能なサンプル HVAC.csv データを使用します。
+
+[MLlib](https://spark.apache.org/docs/1.1.0/mllib-guide.html) は、分類、回帰、クラスタリング、協調フィルタリング、次元縮小、基になっている最適化プリミティブなど、一般的な学習アルゴリズムとユーティリティで構成された Spark のスケーラブル Machine Learning ライブラリです。
 
 **前提条件:**
 
@@ -33,165 +35,154 @@ HDInsight で Spark クラスターを使用して Apache Spark Machine Learning
 * HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。 
 
 ## <a name="data"></a>データ セットを理解する
-アプリケーションの作成を始める前に、作成するアプリケーションの対象となるデータの構造およびデータに対して実行する分析の種類を説明します。 
 
-この記事では、HDInsight クラスターに関連付けた Azure Storage アカウントで使用できる、サンプルの **HVAC.csv** データ ファイルを使用します。 このファイルは、ストレージ アカウントの **\HdiSamples\HdiSamples\SensorSampleData\hvac** にあります。 CSV ファイルをダウンロードして開き、データのスナップショットを取得します。  
+次のデータは、HVAC (Heating, Ventilating, Air Conditioning: 冷暖房空調設備) システムがインストールされているいくつかのビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、**[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。 このチュートリアルでは、このデータを使用し、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測します。
 
 ![Spark Machine Learning サンプルで使用されるデータのスナップショット](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-understand-data.png "Spark Machine Learning サンプルで使用されるデータのスナップショット")
 
-データは、HVAC システムがインストールされているビルの目標温度と実際の温度を示します。 **[System]** 列はシステム ID を表し、**[SystemAge]** 列は HVAC システムがビルに設置されてからの年数を表します。
-
-このデータを使用し、システム ID とシステム使用年数から得られる目標温度を基にしてビルが暑すぎるか寒すぎるかを予測します。
+データ ファイル (**HVAC.csv**) は、すべての HDInsight クラスター上の **\HdiSamples\HdiSamples\SensorSampleData\hvac** にあります。
 
 ## <a name="app"></a>Spark MLlib を使用した Spark Machine Learning アプリケーションの作成
-このアプリケーションでは、Spark ML パイプラインを使用して、ドキュメントの分類を実行します。 パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。 アプリケーションを作成するには、次の手順を実行します。
+このアプリケーションでは、Spark [ML パイプライン](https://spark.apache.org/docs/2.2.0/ml-pipeline.html)を使用して、ドキュメントの分類を実行します。 ML パイプラインでは、実用的な機械学習パイプラインの作成および調整に役立つデータ フレームを基盤とする、統一された高レベルの API 一式が提供されます。 パイプラインでは、ドキュメントを単語に分割し、単語を数値特徴ベクトルに変換して、最後に特徴ベクトルとラベルを使用して予測モデルを作成します。 アプリケーションを作成するには、次の手順を実行します。
 
-1. [Azure Portal](https://portal.azure.com/) のスタート画面で Spark クラスターのタイルをクリックします (スタート画面にピン留めしている場合)。 **[すべて参照]** > **[HDInsight クラスター]** でクラスターに移動することもできます。   
-2. Spark クラスター ブレードから **[クラスター ダッシュボード]** をクリックし、**[Jupyter Notebook]** をクリックします。 入力を求められたら、クラスターの管理者資格情報を入力します。
+1. PySpark カーネルを使用して Jupyter Notebook を作成します。 手順については、[Jupyter Notebook の作成](./apache-spark-jupyter-spark-sql.md#create-a-jupyter-notebook)に関するページをご覧ください。
+2. このシナリオに必要な型をインポートします。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。 
+
+    ```PySpark
+    from pyspark.ml import Pipeline
+    from pyspark.ml.classification import LogisticRegression
+    from pyspark.ml.feature import HashingTF, Tokenizer
+    from pyspark.sql import Row
+
+    import os
+    import sys
+    from pyspark.sql.types import *
+
+    from pyspark.mllib.classification import LogisticRegressionWithSGD
+    from pyspark.mllib.regression import LabeledPoint
+    from numpy import array
+    ```
+3. データ (hvac.csv) を読み込み、解析し、それを使用してモデルをトレーニングします。 
+
+    ```PySpark
+    # Define a type called LabelDocument
+    LabeledDocument = Row("BuildingID", "SystemInfo", "label")
+
+    # Define a function that parses the raw CSV file and returns an object of type LabeledDocument
+    def parseDocument(line):
+        values = [str(x) for x in line.split(',')]
+        if (values[3] > values[2]):
+            hot = 1.0
+        else:
+            hot = 0.0        
+
+        textValue = str(values[4]) + " " + str(values[5])
+
+        return LabeledDocument((values[6]), textValue, hot)
+
+    # Load the raw HVAC.csv file, parse it using the function
+    data = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+
+    documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
+    training = documents.toDF()
+    ```
+
+    このコード スニペットでは、実際の温度と目標温度とを比較する関数を定義します。 実際の温度の方が高い場合、ビルは暑く、値 **1.0**で示されます。 それ以外の場合、ビルは寒く、値 **0.0** で示されます。 
+
+4. トークナイザー、hashingTF、lr という 3 つのステージで構成される Spark 機械学習パイプラインを構成します。 
+
+    ```PySpark
+    tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
+    hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol="features")
+    lr = LogisticRegression(maxIter=10, regParam=0.01)
+    pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
+    ```
+
+    パイプラインの概要と機能について詳しくは、<a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機械学習に関するページ</a>をご覧ください。
+
+5. パイプラインをトレーニング ドキュメントに適合させます。
    
-   > [!NOTE]
-   > ブラウザーで次の URL を開き、クラスターの Jupyter Notebook にアクセスすることもできます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
-   > 
-   > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
-   > 
-   > 
-3. 新しい Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
+    ```PySpark
+    model = pipeline.fit(training)
+    ```
+
+6. トレーニング ドキュメントを検証してアプリケーションでの進行状況をチェックポイントします。
    
-    ![Spark Machine Learning サンプルの Jupyter Notebook の作成](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-create-notebook.png "Spark Machine Learning サンプルの Jupyter Notebook の作成")
-4. Untitled.pynb という名前の新しい Notebook が作成されて開かれます。 上部の Notebook 名をクリックし、わかりやすい名前を入力します。
-   
-    ![Spark Machine Learning サンプルの Notebook 名の指定](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-notebook-name.png "Spark Machine Learning サンプルの Notebook 名の指定")
-5. PySpark カーネルを使用して Notebook を作成したため、コンテキストを明示的に作成する必要はありません。 最初のコード セルを実行すると、Spark および Hive コンテキストが自動的に作成されます。 このシナリオに必要な種類をインポートすることから始めることができます。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。 
-   
-        from pyspark.ml import Pipeline
-        from pyspark.ml.classification import LogisticRegression
-        from pyspark.ml.feature import HashingTF, Tokenizer
-        from pyspark.sql import Row
-   
-        import os
-        import sys
-        from pyspark.sql.types import *
-   
-        from pyspark.mllib.classification import LogisticRegressionWithSGD
-        from pyspark.mllib.regression import LabeledPoint
-        from numpy import array
-6. ここで、データ (hvac.csv) を読み込み、解析し、それを使用してモデルをトレーニングする必要があります。 そのためには、ビルの実際の温度が目標温度より高いかどうかを確認する関数を定義します。 実際の温度の方が高い場合、ビルは暑く、値 **1.0**で示されます。 実際の温度の方が低い場合、ビルは寒く、値 **0.0**で示されます。 
-   
-    次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
-
-        # List the structure of data for better understanding. Because the data will be
-        # loaded as an array, this structure makes it easy to understand what each element
-        # in the array corresponds to
-
-        # 0 Date
-        # 1 Time
-        # 2 TargetTemp
-        # 3 ActualTemp
-        # 4 System
-        # 5 SystemAge
-        # 6 BuildingID
-
-        LabeledDocument = Row("BuildingID", "SystemInfo", "label")
-
-        # Define a function that parses the raw CSV file and returns an object of type LabeledDocument
-
-        def parseDocument(line):
-            values = [str(x) for x in line.split(',')]
-            if (values[3] > values[2]):
-                hot = 1.0
-            else:
-                hot = 0.0        
-
-            textValue = str(values[4]) + " " + str(values[5])
-
-            return LabeledDocument((values[6]), textValue, hot)
-
-        # Load the raw HVAC.csv file, parse it using the function
-        data = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
-
-        documents = data.filter(lambda s: "Date" not in s).map(parseDocument)
-        training = documents.toDF()
-
-
-1. トークナイザー、hashingTF、lr という 3 つのステージで構成される Spark 機械学習パイプラインを構成します。 パイプラインの概要と機能について詳しくは、<a href="http://spark.apache.org/docs/latest/ml-guide.html#how-it-works" target="_blank">Spark 機械学習に関するページ</a>をご覧ください。
-   
-    次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
-   
-        tokenizer = Tokenizer(inputCol="SystemInfo", outputCol="words")
-        hashingTF = HashingTF(inputCol=tokenizer.getOutputCol(), outputCol="features")
-        lr = LogisticRegression(maxIter=10, regParam=0.01)
-        pipeline = Pipeline(stages=[tokenizer, hashingTF, lr])
-2. パイプラインをトレーニング ドキュメントに適合させます。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
-   
-        model = pipeline.fit(training)
-3. トレーニング ドキュメントを検証してアプリケーションでの進行状況をチェックポイントします。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
-   
-        training.show()
+    ```PySpark
+    training.show()
+    ```
    
     出力は次のようになります。
-   
-        +----------+----------+-----+
-        |BuildingID|SystemInfo|label|
-        +----------+----------+-----+
-        |         4|     13 20|  0.0|
-        |        17|      3 20|  0.0|
-        |        18|     17 20|  1.0|
-        |        15|      2 23|  0.0|
-        |         3|      16 9|  1.0|
-        |         4|     13 28|  0.0|
-        |         2|     12 24|  0.0|
-        |        16|     20 26|  1.0|
-        |         9|      16 9|  1.0|
-        |        12|       6 5|  0.0|
-        |        15|     10 17|  1.0|
-        |         7|      2 11|  0.0|
-        |        15|      14 2|  1.0|
-        |         6|       3 2|  0.0|
-        |        20|     19 22|  0.0|
-        |         8|     19 11|  0.0|
-        |         6|      15 7|  0.0|
-        |        13|      12 5|  0.0|
-        |         4|      8 22|  0.0|
-        |         7|      17 5|  0.0|
-        +----------+----------+-----+
 
-    戻り、生の CSV ファイルに対して出力を確認します。 たとえば、CSV ファイルの最初の行のデータは次のとおりです。
+    ```
+    +----------+----------+-----+
+    |BuildingID|SystemInfo|label|
+    +----------+----------+-----+
+    |         4|     13 20|  0.0|
+    |        17|      3 20|  0.0|
+    |        18|     17 20|  1.0|
+    |        15|      2 23|  0.0|
+    |         3|      16 9|  1.0|
+    |         4|     13 28|  0.0|
+    |         2|     12 24|  0.0|
+    |        16|     20 26|  1.0|
+    |         9|      16 9|  1.0|
+    |        12|       6 5|  0.0|
+    |        15|     10 17|  1.0|
+    |         7|      2 11|  0.0|
+    |        15|      14 2|  1.0|
+    |         6|       3 2|  0.0|
+    |        20|     19 22|  0.0|
+    |         8|     19 11|  0.0|
+    |         6|      15 7|  0.0|
+    |        13|      12 5|  0.0|
+    |         4|      8 22|  0.0|
+    |         7|      17 5|  0.0|
+    +----------+----------+-----+
+    ```
+
+    生の CSV ファイルと照らして出力を比較します。 たとえば、CSV ファイルの最初の行のデータは次のとおりです。
 
     ![Spark Machine Learning サンプルの出力データ スナップショット](./media/apache-spark-ipython-notebook-machine-learning/spark-machine-learning-output-data.png "Spark Machine Learning サンプルの出力データ スナップショット")
 
     実際の温度は目標温度より低く、ビルが寒いことを示します。 そのため、トレーニングの出力では、最初の行の **label** の値は **0.0** であり、ビルが暑くないことを意味します。
 
-1. トレーニング済みのモデルを実行するようにデータ セットを準備します。 そのためには、システム ID とシステム経過年数 (トレーニング出力では **SystemInfo** として示されます) を渡し、モデルはそのシステム ID とシステム経過年数のビルが暑すぎるか (1.0 で示されます) または寒すぎるか (0.0 で示されます) を予測します。
+7. トレーニング済みのモデルを実行するようにデータ セットを準備します。 そのためには、システム ID とシステム経過年数 (トレーニング出力では **SystemInfo** として示されます) を渡し、モデルはそのシステム ID とシステム経過年数のビルが暑すぎるか (1.0 で示されます) または寒すぎるか (0.0 で示されます) を予測します。
    
-   次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
+    ```PySpark   
+    # SystemInfo here is a combination of system ID followed by system age
+    Document = Row("id", "SystemInfo")
+    test = sc.parallelize([(1L, "20 25"),
+                    (2L, "4 15"),
+                    (3L, "16 9"),
+                    (4L, "9 22"),
+                    (5L, "17 10"),
+                    (6L, "7 22")]) \
+        .map(lambda x: Document(*x)).toDF() 
+    ```
+8. 最後に、テスト データで予測を行います。 
    
-       # SystemInfo here is a combination of system ID followed by system age
-       Document = Row("id", "SystemInfo")
-       test = sc.parallelize([(1L, "20 25"),
-                     (2L, "4 15"),
-                     (3L, "16 9"),
-                     (4L, "9 22"),
-                     (5L, "17 10"),
-                     (6L, "7 22")]) \
-           .map(lambda x: Document(*x)).toDF() 
-2. 最後に、テスト データで予測を行います。 次のスニペットを空のセルに貼り付けて、 **Shift + Enter**キーを押します。
-   
-        # Make predictions on test documents and print columns of interest
-        prediction = model.transform(test)
-        selected = prediction.select("SystemInfo", "prediction", "probability")
-        for row in selected.collect():
-            print row
-3. 次のような出力が表示されます。
-   
-       Row(SystemInfo=u'20 25', prediction=1.0, probability=DenseVector([0.4999, 0.5001]))
-       Row(SystemInfo=u'4 15', prediction=0.0, probability=DenseVector([0.5016, 0.4984]))
-       Row(SystemInfo=u'16 9', prediction=1.0, probability=DenseVector([0.4785, 0.5215]))
-       Row(SystemInfo=u'9 22', prediction=1.0, probability=DenseVector([0.4549, 0.5451]))
-       Row(SystemInfo=u'17 10', prediction=1.0, probability=DenseVector([0.4925, 0.5075]))
-       Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
+    ```PySpark
+    # Make predictions on test documents and print columns of interest
+    prediction = model.transform(test)
+    selected = prediction.select("SystemInfo", "prediction", "probability")
+    for row in selected.collect():
+        print row
+    ```
+
+    次のような出力が表示されます。
+
+    ```   
+    Row(SystemInfo=u'20 25', prediction=1.0, probability=DenseVector([0.4999, 0.5001]))
+    Row(SystemInfo=u'4 15', prediction=0.0, probability=DenseVector([0.5016, 0.4984]))
+    Row(SystemInfo=u'16 9', prediction=1.0, probability=DenseVector([0.4785, 0.5215]))
+    Row(SystemInfo=u'9 22', prediction=1.0, probability=DenseVector([0.4549, 0.5451]))
+    Row(SystemInfo=u'17 10', prediction=1.0, probability=DenseVector([0.4925, 0.5075]))
+    Row(SystemInfo=u'7 22', prediction=0.0, probability=DenseVector([0.5015, 0.4985]))
+    ```
    
    予測の 1 行目からは、ID が 20 でシステム経過年数が 25 年の HVAC システムではビルが暑い (**prediction=1.0**) ことがわかります。 DenseVector の 1 番目の値 (0.49999) は予測 0.0 に対応し、2 番目の値 (0.5001) は予測 1.0 に対応します。 出力では、2 番目の値はわずかに高いだけですが、モデルは **prediction=1.0**を示します。
-4. アプリケーションの実行が完了したら、Notebook をシャットダウンしてリソースを解放する必要があります。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
+10. Notebook をシャットダウンしてリソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。 これにより、Notebook がシャットダウンされ、閉じられます。
 
 ## <a name="anaconda"></a>Spark Machine Learning での Anaconda scikit-learn ライブラリの使用
 HDInsight の Apache Spark クラスターには、Anaconda ライブラリが含まれます。 これには、機械学習用の **scikit-learn** ライブラリも含まれます。 ライブラリには、Jupyter Notebook からサンプル アプリケーションを直接作成するために使用できるさまざまなデータ セットも含まれます。 scikit-learn ライブラリの使用例については、[http://scikit-learn.org/stable/auto_examples/index.html](http://scikit-learn.org/stable/auto_examples/index.html) をご覧ください。

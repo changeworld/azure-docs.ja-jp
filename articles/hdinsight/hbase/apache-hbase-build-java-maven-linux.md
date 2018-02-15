@@ -4,7 +4,7 @@ description: "Apache Maven を使用して Java ベースの Apache HBase アプ
 services: hdinsight
 documentationcenter: 
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: 
 ms.assetid: 1d1ed180-e0f4-4d1c-b5ea-72e0eda643bc
 ms.service: hdinsight
@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 07f6d49b6d5c0a5b77ef5a7a7395a37e79419955
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 7f5e4cd36b32ae86bc6f498c81d5a558ca6974d2
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Apache HBase 向けの Java アプリケーションの構築
 
@@ -642,7 +642,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     Add-HDInsightFile -localPath target\hbaseapp-1.0-SNAPSHOT.jar -destinationPath example/jars/hbaseapp-1.0-SNAPSHOT.jar -clusterName hdinsightclustername
     ```
 
-    `hdinsightclustername` をクラスターの名前に置き換えます。 このコマンドは、`hbaseapp-1.0-SNAPSHOT.jar` をクラスターのプライマリ ストレージの `example/jars` の場所にアップロードします。
+    `hdinsightclustername` をクラスターの名前に置き換えます。 プロンプトが表示されたら、クラスターのログイン (管理者) 名とパスワードを入力します。 このコマンドは、`hbaseapp-1.0-SNAPSHOT.jar` をクラスターのプライマリ ストレージの `example/jars` の場所にアップロードします。
 
 5. `hbaseapp` を使用してテーブルを作成するには、次のコマンドを使用します。
 
@@ -650,7 +650,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     Start-HBaseExample -className com.microsoft.examples.CreateTable -clusterName hdinsightclustername
     ```
 
-    `hdinsightclustername` をクラスターの名前に置き換えます。
+    `hdinsightclustername` をクラスターの名前に置き換えます。 プロンプトが表示されたら、クラスターのログイン (管理者) 名とパスワードを入力します。
 
     このコマンドにより、HDInsight クラスターでの HBase に **people** という名前のテーブルが作成されます。 このコマンドを実行しても、コンソール ウィンドウに出力結果は表示されません。
 
@@ -660,7 +660,7 @@ Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作
     Start-HBaseExample -className com.microsoft.examples.SearchByEmail -clusterName hdinsightclustername -emailRegex contoso.com
     ```
 
-    `hdinsightclustername` をクラスターの名前に置き換えます。
+    `hdinsightclustername` をクラスターの名前に置き換えます。 プロンプトが表示されたら、クラスターのログイン (管理者) 名とパスワードを入力します。
 
     このコマンドは `SearchByEmail` クラスを使用して、`contactinformation` の列ファミリの `email` 列に文字列 `contoso.com` が含まれている行を検索します。 次の結果が表示されます。
 
@@ -689,6 +689,6 @@ __Azure PowerShell から__:
 
 `Start-HBaseExample -className com.microsoft.examples.DeleteTable -clusterName hdinsightclustername`
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [HBase で SQuirreL SQL を使用する方法を確認しましょう。](apache-hbase-phoenix-squirrel-linux.md)

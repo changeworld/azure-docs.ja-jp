@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 01/26/2018
 ms.author: sethm
-ms.openlocfilehash: f84b870de4b79399d5edc90284c9c56222156b5d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bece2be88a020610dfd3d22f15f7d276d99bb153
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="message-deferral"></a>メッセージ遅延
 
@@ -35,13 +35,13 @@ API は、.NET Framework クライアントの [BrokeredMessage.Defer](/dotnet/a
 
 遅延メッセージは、すべての他のアクティブなメッセージと共にメイン キューに留まります (サブキューに含まれる配達不能メッセージとは異なります)。ただし、これらの遅延メッセージは、通常の Receive/ReceiveAsync 関数を使用して受信することができなくなります。 アプリケーションが遅延メッセージを追跡できなくなった場合、[メッセージ参照](message-browsing.md)を使用して検出できます。
 
-遅延メッセージを取得するには、"所有者" がそれを遅延させる際に [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) を記憶しておく必要があります。 遅延メッセージの **SequenceNumber** がわかっている受信者は、後に Receive(sequenceNumber) で明示的にメッセージを受信できます。
+遅延メッセージを取得するには、所有者がそれを遅延させる際に [SequenceNumber](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) を記憶しておく必要があります。 遅延メッセージのシーケンス番号がわかっている受信者は、後ほど `Receive(sequenceNumber)` で明示的にメッセージを受信できます。
 
-メッセージを処理する特定のリソースが一時的に使用できないためにそのメッセージを処理できないものの、メッセージの処理をすぐに中断できない場合があります。このような場合、数分間そのメッセージを確保する良い方法は、数分以内に投稿される[スケジュール済みメッセージ](message-sequencing.md)の **SequenceNumber** を記憶しておき、スケジュールされたメッセージが到着したときに遅延メッセージを取得し直すことです。 メッセージ ハンドラーですべての操作についてデータベースが使用されており、そのデータベースが一時的に使用できない場合は、遅延を使用しないように注意してください。その代わり、データベースが再び使用できるようになるまで、メッセージの受信を完全に中断してください。
+メッセージを処理する特定のリソースが一時的に使用できないためにそのメッセージを処理できないものの、メッセージの処理をすぐに中断できない場合があります。このような場合、数分間そのメッセージを確保する方法は、数分以内に投稿される[スケジュール済みメッセージ](message-sequencing.md)の **SequenceNumber** を記憶しておき、スケジュールされたメッセージが到着したときに遅延メッセージを取得し直すことです。 メッセージ ハンドラーですべての操作についてデータベースが使用されており、そのデータベースが一時的に使用できない場合は、遅延を使用しないように注意してください。その代わり、データベースが再び使用できるようになるまで、メッセージの受信を完全に中断してください。
 
 メッセージの遅延は、メッセージの有効期限に影響しません。つまり、遅延メッセージの有効期限は最初にスケジュールされた時間のままであり、構成されている場合は配達不能キューに移動されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

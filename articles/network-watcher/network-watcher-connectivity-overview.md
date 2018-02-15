@@ -1,10 +1,10 @@
 ---
-title: "Azure Network Watcher の接続チェックの概要 | Microsoft Docs"
-description: "このページでは、Network Watcher の接続機能の概要を説明します。"
+title: "Azure Network Watcher との接続のトラブルシューティングの概要 | Microsoft Docs"
+description: "このページでは、Network Watcher の接続のトラブルシューティング機能の概要を説明します。"
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,24 +13,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 16ceef9c923b6a933a5caf752991b466346e0ebc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f8825af71620722065c03a28c93e113876c5aa71
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="introduction-to-connectivity-check-in-azure-network-watcher"></a>Azure Network Watcher の接続チェックの概要
+# <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Azure Network Watcher の接続のトラブルシューティングの概要
 
-Network Watcher の接続機能を使用すると、仮想マシンから仮想マシン (VM)、完全修飾ドメイン名 (FQDN)、URI、または IPv4 アドレスへの直接 TCP 接続を確認できます。 ネットワークのシナリオは複雑であり、ネットワーク セキュリティ グループ、ファイアウォール、ユーザー定義ルート、および Azure が提供するリソースを使用して実装されます。 構成が複雑であるため、接続に関する問題のトラブルシューティングは困難です。 Network Watcher を使用すると、接続に関する問題を検出するまでの時間を減らすのに役立ちます。 返される結果は、接続に関する問題がプラットフォームによるものか、ユーザーの構成が問題であるかの洞察を提供します。 接続は、[PowerShell](network-watcher-connectivity-powershell.md)、[Azure CLI](network-watcher-connectivity-cli.md)、および [REST API](network-watcher-connectivity-rest.md) を使用してチェックできます。
+Network Watcher の接続のトラブルシューティング機能を使用すると、仮想マシンから仮想マシン (VM)、完全修飾ドメイン名 (FQDN)、URI、または IPv4 アドレスへの直接 TCP 接続を確認できます。 ネットワークのシナリオは複雑であり、ネットワーク セキュリティ グループ、ファイアウォール、ユーザー定義ルート、および Azure が提供するリソースを使用して実装されます。 構成が複雑であるため、接続に関する問題のトラブルシューティングは困難です。 Network Watcher を使用すると、接続に関する問題を検出するまでの時間を減らすのに役立ちます。 返される結果は、接続に関する問題がプラットフォームによるものか、ユーザーの構成が問題であるかの洞察を提供します。 接続は、[PowerShell](network-watcher-connectivity-powershell.md)、[Azure CLI](network-watcher-connectivity-cli.md)、および [REST API](network-watcher-connectivity-rest.md) を使用してチェックできます。
 
 > [!IMPORTANT]
-> 接続チェックには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
+> 接続のトラブルシューティングには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
 
-## <a name="response"></a>応答
+## <a name="response"></a>Response
 
-次の表には、接続チェックの実行が完了したときに返されるプロパティを示します。
+次の表には、接続のトラブルシューティングの実行が完了したときに返されるプロパティを示します。
 
-|プロパティ  |Description  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |ConnectionStatus     | 接続チェックの状態。 結果は **Reachable** か **Unreachable** のいずれかです。        |
 |AvgLatencyInMs     | 接続チェック中の平均待機時間 (ミリ秒)。 (チェックの状態が Reachable の場合にのみ表示されます)        |
@@ -71,9 +71,9 @@ Network Watcher の接続機能を使用すると、仮想マシンから仮想�
 ```
 ## <a name="fault-types"></a>障害の種類
 
-接続チェックでは、接続に関する障害の種類が返されます。 次の表は、返された現在の障害の種類の一覧を示します。
+接続のトラブルシューティングでは、接続に関する障害の種類が返されます。 次の表は、返された現在の障害の種類の一覧を示します。
 
-|型  |Description  |
+|type  |[説明]  |
 |---------|---------|
 |CPU     | CPU の使用率が高くなっています。       |
 |メモリ     | メモリの使用率が高くなっています。       |
@@ -82,10 +82,6 @@ Network Watcher の接続機能を使用すると、仮想マシンから仮想�
 |NetworkSecurityRule    | トラフィックが NSG ルールによりブロックされています (ルールが返されている)        |
 |UserDefinedRoute|ユーザー定義またはシステム ルートによりトラフィックがドロップしました。 |
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 
-リソースの接続を確認する方法については、[Azure Network Watcher による接続のチェック](network-watcher-connectivity-powershell.md)に関する記事をご覧ください。
-
-<!--Image references-->
-[1]: ./media/network-watcher-next-hop-overview/figure1.png
-
+[Azure Portal](network-watcher-connectivity-portal.md)、[PowerShell](network-watcher-connectivity-powershell.md)、[Azure CLI](network-watcher-connectivity-cli.md)、または [REST API](network-watcher-connectivity-rest.md) を使用して接続をトラブルシューティングする方法を説明します。

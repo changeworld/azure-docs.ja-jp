@@ -3,8 +3,9 @@ title: "Azure SQL Database のセキュリティの概要 | Microsoft Docs"
 description: "Azure SQL Database と SQL Server のセキュリティについて説明します。クラウドとオンプレミス SQL Server の違いなどが含まれます。"
 services: sql-database
 documentationcenter: 
-author: tmullaney
-manager: jhubbard
+author: giladm
+manager: shaik
+ms.reviewer: carlrab
 editor: 
 ms.assetid: a012bb85-7fb4-4fde-a2fc-cf426c0a56bb
 ms.service: sql-database
@@ -13,13 +14,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 07/05/2017
-ms.author: thmullan;jackr
-ms.openlocfilehash: 14a7fdb304e90aec10bee9167817f564870cd6c1
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 01/29/2018
+ms.author: giladm
+ms.openlocfilehash: cf105dbc366b96dbb49484bffce9b81960cf41f4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="securing-your-sql-database"></a>SQL Database の保護
 
@@ -28,21 +29,32 @@ ms.lasthandoff: 12/14/2017
 SQL のすべてのエディションで使用できるセキュリティ機能の概要については、 [SQL Server Database Engine と Azure SQL Database のセキュリティ センター](https://msdn.microsoft.com/library/bb510589)を参照してください。 [セキュリティと Azure SQL Database のテクニカル ホワイト ペーパー](https://download.microsoft.com/download/A/C/3/AC305059-2B3F-4B08-9952-34CDCA8115A9/Security_and_Azure_SQL_Database_White_paper.pdf) (PDF) でも追加情報を参照できます。
 
 ## <a name="protect-data"></a>データの保護
-SQL Database は、データを暗号化することでデータのセキュリティを保護します。移動中のデータには[トランスポート層セキュリティ](https://support.microsoft.com/kb/3135244)を使用し、保存データには [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用し、使用中のデータには [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) を使用します。 
+
+### <a name="encryption"></a>暗号化
+SQL Database は、暗号化によってデータのセキュリティを保護します。移動中のデータには[トランスポート層セキュリティ](https://support.microsoft.com/kb/3135244)を使用し、保存データには [Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) を使用し、使用中のデータには [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) を使用します。 
 
 > [!IMPORTANT]
->データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 アプリケーションの接続文字列内に、接続を暗号化し、サーバー証明書を信頼*しない*ようにするためのパラメーターを指定する必要があります (Azure Portal から接続文字列をコピーすると、この操作は自動的に実行されます)。この操作を実行しないと、接続時にサーバーの ID が検証されず、"man-in-the-middle" 攻撃を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、**Encrypt=True** と **TrustServerCertificate=False** です。 
+>データがデータベースとの間で "送受信中" である間は、常に Azure SQL Database への接続をすべて (SSL/TLS を使用して) 暗号化する必要があります。 アプリケーションの接続文字列で、接続を暗号化するパラメーターを指定する必要があります。サーバーの証明書は、信頼*しないで*ください (Azure Portal から接続文字列をコピーする場合は、自動的にこのようになります)。そうしないと、接続でサーバーの ID が検証されず、"man-in-the-middle" 攻撃を受けやすくなります。 たとえば ADO.NET ドライバーの場合、これらの接続文字列のパラメーターは、**Encrypt=True** と **TrustServerCertificate=False** です。 
 
 その他の方法でデータを暗号化するには、次を検討してください。
 
 * [セルレベルの暗号化](https://msdn.microsoft.com/library/ms179331.aspx) により、暗号化キーが異なるデータの特定の列またはセルを暗号化できます。
 * ハードウェア セキュリティ モジュールか、暗号化キー階層のサーバーの中央管理が必要な場合は、 [Azure VM で Azure Key Vault と SQL Server](http://blogs.technet.com/b/kv/archive/2015/01/12/using-the-key-vault-for-sql-server-encryption.aspx)を併用することを検討してください。
 
+### <a name="data-discovery--classification"></a>データの検出と分類
+データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの検出、分類、ラベル付け、保護を行う高度な機能が用意されます。 最も機微なデータの検出と分類 (ビジネス/金融、医療、PII など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
+
+- さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
+- 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
+- データのプライバシー基準および規制のコンプライアンス要件を満たす支援。
+
+詳細については、[SQL DB データの検出と分類の概要](sql-database-data-discovery-and-classification.md)に関するページを参照してください。 
+
 ## <a name="control-access"></a>アクセスの制御
 SQL Database では、ファイアウォール規則、ユーザーに ID の入力を求める認証メカニズム、データに対する承認 (ロール ベースのメンバーシップとアクセス許可のほか、行レベルのセキュリティと動的データ マスクを使用) を使用して、データベースへのアクセスを制限することで、データを保護します。 SQL Database でのアクセス制御機能の使用については、[アクセス制御](sql-database-control-access.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> Azure でのデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 このトピックの詳細については、「[Azure Portal でのロール ベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)」を参照してください。
+> Azure でのデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロール割り当てによって制御されます。 この記事の詳細については、「[Azure Portal でのロール ベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)」を参照してください。
 >
 
 ### <a name="firewall-and-firewall-rules"></a>ファイアウォールとファイアウォール規則
@@ -60,7 +72,7 @@ SQL データベース認証とは、データベースへの接続時に ID を
 ### <a name="row-level-security"></a>行レベルのセキュリティ
 行レベルのセキュリティを使用すると、クエリを実行しているユーザーの特性 (たとえば、グループ メンバーシップや実行コンテキストなど) に基づいて、データベース テーブル内の行へのアクセスを制御できます。 詳細については、「[行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131)」を参照してください。
 
-### <a name="data-masking"></a>データ マスク 
+### <a name="dynamic-data-masking"></a>動的データ マスク 
 SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。 動的データ マスクは、Azure SQL Database 内で機密の可能性があるデータを自動的に検出し、アプリケーション層への影響を最小限に抑えながらそれらのフィールドをマスクするための具体的な推奨事項を提示します。 指定されたデータベース フィールドに対するクエリの結果セットに含まれる機密データを難読化しますが、データベース内のデータは変更しません。 詳細については、[SQL Database 動的データ マスクの使用](sql-database-dynamic-data-masking-get-started.md)に関するページを参照してください。機密データの公開を制限するために使用できます。
 
 ## <a name="proactive-monitoring"></a>プロアクティブな監視
@@ -70,15 +82,12 @@ SQL Database には、データのセキュリティを保護するために、�
 SQL Database Auditing は、データベース イベントを Azure Storage アカウントの監査ログに記録することによって、データベース アクティビティを追跡し、規制の遵守を維持できるようにします。 Auditing を使用すると、実行中のデータベース アクティビティを把握し、過去のアクティビティを分析および調査して、潜在的な脅威、不正使用の可能性、およびセキュリティ違反を特定することができます。 詳細については、「[SQL Database 監査の使用](sql-database-auditing.md)」を参照してください。  
 
 ### <a name="threat-detection"></a>脅威の検出
-脅威の検出では、Azure SQL Database サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、監査を補完します。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作を検出します。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについては、アラートが送信されます。 脅威の検出のアラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。 脅威の検出の料金は、15 ドル/サーバー/月です。 最初の 60 日間は無料です。 詳細については、「 [SQL Database 脅威の検出の概要](sql-database-threat-detection.md)」をご覧ください。
- 
-### <a name="data-masking"></a>データ マスク 
-SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。 動的データ マスクは、Azure SQL Database 内で機密の可能性があるデータを自動的に検出し、アプリケーション層への影響を最小限に抑えながらそれらのフィールドをマスクするための具体的な推奨事項を提示します。 指定されたデータベース フィールドに対するクエリの結果セットに含まれる機密データを難読化しますが、データベース内のデータは変更しません。 詳細については、「[SQL Database の動的データ マスク](sql-database-dynamic-data-masking-get-started.md)」を参照してください。
+脅威の検出では、Azure SQL Database サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、監査を補完します。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作を検出します。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 脅威の検出のアラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。 脅威の検出の料金は、15 ドル/サーバー/月です。 最初の 60 日間は無料です。 詳細については、「 [SQL Database 脅威の検出の概要](sql-database-threat-detection.md)」をご覧ください。
  
 ## <a name="compliance"></a>コンプライアンス
 アプリケーションがさまざまなセキュリティ要件を満たすために役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - SQL Database でのアクセス制御機能の使用については、[アクセス制御](sql-database-control-access.md)に関するページを参照してください。
 - データベース監査については、[SQL Database の監査に関する記事](sql-database-auditing.md)をご覧ください。

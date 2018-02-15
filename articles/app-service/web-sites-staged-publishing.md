@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: b69f6b2190362b970420ba81450978ac9faecd86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55c023e8f6b41c17e85ba441f862a7682b2f2599
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -244,7 +244,7 @@ Azure CLI には、App Service デプロイ スロットの管理のサポート
 * Azure CLI で Azure App Service に使用できるコマンドの一覧を表示するには、 `azure site -h`を呼び出してください。
 
 > [!NOTE] 
-> デプロイ スロット用の [Azure CLI 2.0](https://github.com/Azure/azure-cli) コマンドについては、「[az appservice web deployment slot](/cli/azure/appservice/web/deployment/slot)」(az appservice Web デプロイ スロット) をご覧ください。
+> デプロイ スロット用の [Azure CLI 2.0](https://github.com/Azure/azure-cli) コマンドについては、「[az webapp deployment slot](/cli/azure/webapp/deployment/slot)」をご覧ください。
 
 - - -
 ### <a name="azure-site-list"></a>azure site list
@@ -280,7 +280,7 @@ Azure CLI には、App Service デプロイ スロットの管理のサポート
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure App Service Web アプリ – 非運用デプロイメント スロットへの Web アクセスのブロック](http://ruslany.net/2014/04/azure-web-sites-block-web-access-to-non-production-deployment-slots/)
 [App Service on Linux の概要](../app-service/containers/app-service-linux-intro.md)
 [Microsoft Azure 無料試用版](https://azure.microsoft.com/pricing/free-trial/)

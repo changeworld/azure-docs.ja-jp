@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 80959ee589a1cfcf317a98c3bafd7f92c796fc2d
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 9fdc8816d8db88d4f1fd7b6ce722b7d2763eeaeb
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-event-hubs"></a>Azure Event Grid の Event Hubs 用のイベント スキーマ
 
@@ -44,39 +44,43 @@ Event Hubs は、キャプチャ ファイルが作成されたときに、種�
             "lastSequenceNumber": 3899,
             "firstEnqueueTime": "2017-08-31T19:12:14.674Z",
             "lastEnqueueTime": "2017-08-31T19:12:44.309Z"
-        }
+        },
+        "dataVersion": "",
+        "metadataVersion": "1"
     }
 ]
 ```
 
 ## <a name="event-properties"></a>イベントのプロパティ
 
-イベントには、次の最上位レベルのデータがあります。
+イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | [説明] |
 | -------- | ---- | ----------- |
-| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 |
-| subject | string | 発行元が定義したイベントの対象のパス。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
-| data | object | Event Hub イベントのデータ。 |
+| トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
+| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | 文字列 | イベントの一意識別子。 |
+| data | オブジェクト | Event Hub イベントのデータ。 |
+| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | [説明] |
 | -------- | ---- | ----------- |
-| fileUrl | string | キャプチャ ファイルのパス。 |
-| fileType | string | キャプチャ ファイルのファイルの種類。 |
-| partitionId | string | シャード ID。 |
+| fileUrl | 文字列 | キャプチャ ファイルのパス。 |
+| fileType | 文字列 | キャプチャ ファイルのファイルの種類。 |
+| partitionId | 文字列 | シャード ID。 |
 | sizeInBytes | integer | ファイル サイズ。 |
 | eventCount | integer | ファイル内のイベントの数。 |
 | firstSequenceNumber | integer | キューの最小のシーケンス番号。 |
 | lastSequenceNumber | integer | キューの最後のシーケンス番号。 |
-| firstEnqueueTime | string | キューの最初の時間。 |
-| lastEnqueueTime | string | キューの最後の時間。 |
+| firstEnqueueTime | 文字列 | キューの最初の時間。 |
+| lastEnqueueTime | 文字列 | キューの最後の時間。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

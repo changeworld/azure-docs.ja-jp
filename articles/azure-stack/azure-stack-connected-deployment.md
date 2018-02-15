@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: c1a3b2107abdc3ef19a314616518c494687d81bf
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: a2d4efc3a3e1480de71528144ae3f025f4879f07
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure に接続されたデプロイ計画の決定
 [Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-deployment-decisions.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
@@ -57,9 +57,8 @@ CSP サブスクリプションを使用する場合は、厳密な CSP シナ�
 
 |シナリオ|ドメインおよびサブスクリプション オプション|
 |-----|-----|
-|ユーザーは直接または間接 CSP パートナーであり、Azure Stack を操作します|CSL (Common Service Layer) サブスクリプションを使用します。|
-|ユーザーは直接または間接 CSP パートナーであり、Azure Stack を操作します|パートナー センターで、わかりやすい名前を持つ Azure AD テナント (<your organization>CSPAdmin など) と、それに関連付けられた Azure CSP サブスクリプションを作成します。|
-|ユーザーは間接 CSP リセラーであり、Azure Stack を操作します|パートナー センターを使用して、間接 CSP プロバイダーに組織の Azure AD テナントと、それに関連付けられた Azure CSP サブスクリプションを作成するよう依頼します。|
+|ユーザーは**直接 CSP パートナー**または**間接 CSP プロバイダー**であり、Azure Stack を操作します|CSL (Common Service Layer) サブスクリプションを使用します。<br>     or<br>パートナー センターで、わかりやすい名前の Azure AD テナントを作成します  (例: &lt;組織>CSPAdmin とそれに関連付けられた Azure CSP サブスクリプション)。|
+|ユーザーは**間接 CSP リセラー**であり、Azure Stack を操作します|パートナー センターを使用して、間接 CSP プロバイダーに、組織の Azure AD テナントとそれに関連付けられた Azure CSP サブスクリプションを作成するよう依頼します。|
 
 ### <a name="capacity-based-billing"></a>容量ベースの課金
 容量課金モデルを使用することにした場合は、システムの容量に基づいて Azure Stack 容量プラン SKU を購入する必要があります。 正しい数量を購入するには、Azure Stack 内の物理コアの数がわかっている必要があります。 
@@ -70,3 +69,6 @@ CSP サブスクリプションを使用する場合は、厳密な CSP シナ�
 - ユース ケース、購入、パートナー、OEM ハードウェア ベンダーの詳細については、[Azure Stack](https://azure.microsoft.com/overview/azure-stack/) の製品ページを参照してください。
 - Azure Stack 統合システムのロードマップと地理的な可用性については、ホワイト ペーパー「[Azure Stack: An extension of Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)」 (Azure Stack: Azure の拡張機能) を参照してください。 
 - Microsoft Azure Stack のパッケージと価格の詳細については、[.pdf をダウンロードしてください](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)。 
+
+## <a name="next-steps"></a>次の手順
+[データセンターのネットワーク統合](azure-stack-network.md)

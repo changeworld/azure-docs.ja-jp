@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL Data Warehouse の作成 - Azure Portal | Microsoft Docs"
+title: "クイック スタート: Azure SQL データ ウェアハウスの作成 - Azure Portal | Microsoft Docs"
 description: "Azure Portal で、Azure SQL Data Warehouse 用に SQL サーバー、サーバーレベルのファイアウォール規則、およびデータ ウェアハウスを作成します。 次にそのクエリを実行します。"
 keywords: "SQL Data Warehouse チュートリアル、SQL Data Warehouse の作成"
 services: sql-database
@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/20/2017
 ms.author: barbkess
-ms.openlocfilehash: 65c1344aa9d5a997e4917191978f5d12da5eb0db
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 9b904190e7a799d480446fcdcd57316a21051d1e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Azure Portal で Azure SQL Data Warehouse を作成し、クエリを実行する
+# <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>クイック スタート: Azure Portal で Azure SQL データ ウェアハウスを作成し、クエリを実行する
 
 Azure Portal を使用すると、Azure SQL Data Warehouse を簡単に作成し、クエリを実行することができます。
 
@@ -33,7 +33,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-[Azure ポータル](https://portal.azure.com/)にサインインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-data-warehouse"></a>データ ウェアハウスの作成
 
@@ -49,7 +49,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 3. SQL Data Warehouse のフォームで、次の情報を入力します。   
 
-    | 設定 | 推奨値 | Description | 
+    | 設定 | 推奨値 | [説明] | 
     | ------- | --------------- | ----------- | 
     | **[データベース名]** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 データ ウェアハウスはデータベースの一種です。| 
     | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -61,7 +61,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-    | Setting | 推奨値 | Description | 
+    | 設定 | 推奨値 | [説明] | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
     | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -126,7 +126,7 @@ SQL Data Warehouse サービスでは、外部のアプリケーションやツ�
 
 Azure Portal で、SQL サーバーの完全修飾サーバー名を取得します。 後でサーバーに接続するときに、完全修飾名を使います。
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。 この例の完全修飾名は mynewserver-20171113.database.windows.net です。 
 
@@ -140,7 +140,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | 設定       | 推奨値 | Description | 
+   | 設定       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | たとえば、**mynewserver-20171113.database.windows.net** です。 |
@@ -202,7 +202,7 @@ SQL Data Warehouse はクエリ言語として T-SQL を使用しています。
 4. リソース グループを削除するには、**myResourceGroup** をクリックして、**[リソース グループの削除]** をクリックします。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここではデータ ウェアハウスを作成し、ファイアウォール規則を作成し、データ ウェアハウスに接続していくつかのクエリを実行しました。 Azure SQL Data Warehouse の詳細については、データの読み込みに関するチュートリアルを参照してください。
 > [!div class="nextstepaction"]
 >[SQL Data Warehouse にデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)

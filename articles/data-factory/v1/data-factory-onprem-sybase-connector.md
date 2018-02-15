@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: e7694b2b5703175e4b83a84869ba2964bad7671e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 26c0f3216014afdaaa6556537f15f23c844e4c19
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -42,7 +42,9 @@ Sybase データベースが Azure IaaS VM でホストされている場合で�
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で Sybase データベースに接続するには、[Sybase iAnywhere.Data.SQLAnywhere のデータ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846)の 16 以降を Data Management Gateway と同じシステムにインストールする必要があります。 Sybase バージョン 16 以降がサポートされています。
+Data Management Gateway で Sybase データベースに接続するには、[Sybase iAnywhere.Data.SQLAnywhere のデータ プロバイダー](http://go.microsoft.com/fwlink/?linkid=324846)の 16 以降を Data Management Gateway と同じシステムにインストールする必要があります。 
+
+SAP Sybase SQL Anywhere (ASA) バージョン 16 以降がサポートされます。IQ および ASE はサポートされません。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティでパイプラインを作成できます。 

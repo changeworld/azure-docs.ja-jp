@@ -31,7 +31,7 @@
 ### [ストリーミング エンドポイント](media-services-streaming-endpoints-overview.md)
 #### [Azure Portal](media-services-portal-manage-streaming-endpoints.md)
 #### [.NET](media-services-dotnet-manage-streaming-endpoints.md)
-### ストレージ
+### Storage
 #### [ストレージ アクセス キーをローリングした後に Media Services を更新する](media-services-roll-storage-access-keys.md)
 #### [複数のストレージ アカウントで資産を管理する](meda-services-managing-multiple-storage-accounts.md)
 ### [クォータと制限](media-services-quotas-and-limitations.md)
@@ -171,6 +171,7 @@
 #### [Face Redactor のチュートリアル](media-services-redactor-walkthrough.md)
 ### [Video Thumbnails による処理](media-services-video-summarization.md)
 ### [OCR による処理](media-services-video-optical-character-recognition.md)
+### [Content Moderator による処理](media-services-content-moderation.md)
 
 ## [テレメトリの構成](media-services-telemetry-overview.md)
 ###[.NET](media-services-dotnet-telemetry.md)

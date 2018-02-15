@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 54ca65ac6fa794c542fc07cd64458b17c327d56d
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -280,7 +280,7 @@ Azure CLI をご利用いただけます。
 
 -   読み取りアクセス GRS を使用している場合は、セカンダリ リージョンのデータにいつでもアクセスできます。 次のいずれかの方法を使用します。  
       
-    - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 For example:  
+    - **AzCopy**: **-secondary** を URL のストレージ アカウント名の後に追加して、セカンダリ エンドポイントにアクセスします。 例:   
      
       https://storageaccountname-secondary.blob.core.windows.net/vhds/BlobName.vhd
 
@@ -296,6 +296,10 @@ Azure CLI をご利用いただけます。
 FTP を使用してストレージ アカウントに直接アクセスする方法はありません。 ただし、Azure 仮想マシンをセットアップし、仮想マシンに FTP サーバーをインストールできます。 FTP サーバーを使用して、Azure Files 共有上、または仮想マシンで使用できるデータ ディスク上にファイルを保存できます。
 
 Storage Explorer などのアプリケーションを使用せずに、データのダウンロードのみ実行する場合は、SAS トークンを使用できます。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+
+**2 つのストレージ アカウント間で BLOB を移行するにはどうすればよいですか?**
+
+ [BLOB 移行スクリプト](../scripts/storage-common-transfer-between-storage-accounts.md)を用意しておりますのでご利用ください。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

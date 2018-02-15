@@ -11,26 +11,26 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: d1e22a4378caf69d2077d79f78682c4d438dbcd2
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: a40fa94260b488e9c01ac09b22da8c0677d73968
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
-IoT Hub では、メッセージ プロパティに基づいて、IoT Hub サービス向けのエンドポイントに [device-to-cloud メッセージ][lnk-device-to-cloud]をルーティングできます。 ルーティング ルールによってメッセージ送信を柔軟に実行できるため、メッセージを処理するためにサービスを追加したり、追加のコードを記述したりする必要はありません。 各ルーティング ルールには、次のプロパティがあります。
+IoT Hub では、メッセージ プロパティに基づいて、IoT Hub サービス向けのエンドポイントに [device-to-cloud メッセージ][lnk-device-to-cloud]をルーティングできます。 ルーティング ルールによってメッセージ送信を柔軟に実行できるため、メッセージにサービスやカスタム コードを追加する必要はありません。 各ルーティング ルールには、次のプロパティがあります。
 
-| プロパティ      | Description |
+| プロパティ      | [説明] |
 | ------------- | ----------- |
 | **名前**      | ルールを識別する一意の名前。 |
 | **ソース**    | 処理するデータ ストリームの元データ。 たとえば、デバイス テレメトリです。 |
-| **Condition** | メッセージのヘッダーと本文に対して実行され、エンドポイントと一致するかどうかの確認のために使用されるルーティング ルールのクエリ式。 ルート条件の構築の詳細については、[リファレンス - デバイス ツインとジョブのクエリ言語][lnk-devguide-query-language]に関する記事を参照してください。 |
+| **Condition** | メッセージのヘッダーと本文に対して実行され、エンドポイントと一致するかどうかを確認するルーティング ルールのクエリ式。 ルート条件の構築の詳細については、[リファレンス - デバイス ツインとジョブのクエリ言語][lnk-devguide-query-language]に関する記事を参照してください。 |
 | **エンドポイント**  | IoT Hub が条件に一致するメッセージを送信するエンドポイントの名前。 エンドポイントは、IoT Hub と同じリージョン内に存在する必要があり、そうでない場合は、リージョン間の書き込みに対して課金されるおそれがあります。 |
 
-1 つのメッセージが複数のルーティング ルールの条件と一致することがあり、その場合、IoT Hub は一致する各ルールに関連するエンドポイントにメッセージを送信します。 IoT Hub はメッセージ配信の重複を自動的に排除するため、あるメッセージが複数のルールに一致し、それらのルールの配信先がすべて同じであった場合は、配信先には 1 度のみメッセージが配信されます。
+1 つのメッセージが複数のルーティング ルールの条件と一致することがあり、その場合、IoT Hub は一致する各ルールに関連するエンドポイントにメッセージを送信します。 IoT Hub はメッセージ配信の重複を自動的に排除するため、あるメッセージが複数のルールに一致し、それらのルールの配信先が同じであった場合は、配信先には 1 度のみメッセージが書き込まれます。
 
 IoT hub は、既定の[組み込みのエンドポイント][lnk-built-in]を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
 
@@ -51,7 +51,7 @@ IoT Hub でのカスタム エンドポイントの作成の詳細について�
 * [Service Bus キュー][lnk-getstarted-queue]から読み取ります。
 * [Service Bus トピック][lnk-getstarted-topic]から読み取ります。
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 
 IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-devguide-endpoints]に関するページをご覧ください。
 

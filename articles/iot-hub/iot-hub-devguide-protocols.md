@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 37602bf78f7a43fb8255ddc0aad21f24095cb43c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f115d1e7313d2c9d378129c021a37489674fe81f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="reference---choose-a-communication-protocol"></a>リファレンス - 通信プロトコルの選択
 
@@ -66,7 +66,7 @@ IoT Hub によって、デバイスはデバイス側の通信に次のプロト
 Azure リージョンに IoT Hub を作成すると、その IoT Hub は IoT Hub の存続期間中同じ IP アドレスを保持します。 ただし、サービス品質を維持するため、Microsoft によって IoT Hub が別のスケール ユニットに移動されると、新しい IP アドレスが割り当てられます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Hub による MQTT プロトコルの実装方法の詳細については、「[MQTT プロトコルを使用した IoT Hub との通信][lnk-mqtt-support]」をご覧ください。
 

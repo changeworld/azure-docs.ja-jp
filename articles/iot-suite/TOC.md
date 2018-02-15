@@ -30,7 +30,7 @@
 #### シミュレートされたデバイスの接続
 ##### [Windows 上の C](iot-suite-v1-connecting-devices.md)
 ##### [Linux 上の C](iot-suite-v1-connecting-devices-linux.md)
-##### [Node.JS](iot-suite-v1-connecting-devices-node.md)
+##### [Node.js](iot-suite-v1-connecting-devices-node.md)
 #### [ロジック アプリをリモート監視ソリューションへに接続する](iot-suite-v1-logic-apps-tutorial.md)
 #### [構成済みソリューションのカスタマイズ](iot-suite-v1-guidance-on-customizing-preconfigured-solutions.md)
 #### [リモート監視ソリューションでの動的テレメトリを使用する](iot-suite-v1-dynamic-telemetry.md)
@@ -58,7 +58,9 @@
 ### [ルールを使用した問題の検出](iot-suite-remote-monitoring-automate.md)
 ### [デバイスの管理](iot-suite-remote-monitoring-manage.md)
 ### [デバイスの問題のトラブルシューティング](iot-suite-remote-monitoring-maintain.md)
-### [シミュレートされたデバイスの使用](iot-suite-remote-monitoring-test.md)
+### [デバイス モデル スキーマの確認](iot-suite-remote-monitoring-device-schema.md)
+### [デバイス モデル動作の確認](iot-suite-remote-monitoring-device-behavior.md)
+### [新しいシミュレートされたデバイスの作成](iot-suite-remote-monitoring-test.md)
 ### [ソリューションのカスタマイズ](iot-suite-remote-monitoring-customize.md)
 ### [CLI を使用したデプロイ](iot-suite-remote-monitoring-deploy-cli.md)
 ### 物理デバイスの接続

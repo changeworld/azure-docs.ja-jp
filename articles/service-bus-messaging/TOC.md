@@ -4,7 +4,7 @@
 ## [Service Bus のアーキテクチャ](service-bus-architecture.md)
 ## [FAQ](service-bus-faq.md)
 
-# 作業の開始
+# クイック スタート
 ## [名前空間を作成する](service-bus-create-namespace-portal.md)
 ## キューの使用
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)

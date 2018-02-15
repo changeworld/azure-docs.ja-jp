@@ -15,21 +15,25 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/20/2017
 ms.author: kumud
-ms.openlocfilehash: d71e2391b6415b2403447479dea4fd0a3b818ed0
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 4613e152336eda7ce7cdc4c44b0c6b5e96abac10
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="get-started-with-azure-dns-private-zones-using-powershell"></a>PowerShell で Azure DNS プライベート ゾーンの使用を開始する
 
 この記事では、Azure PowerShell を使用して最初のプライベート DNS ゾーンとレコードを作成する手順について説明します。
 
+[!INCLUDE [private-dns-preview-notice](../../includes/private-dns-preview-notice.md)]
+
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 仮想ネットワークにプライベート DNS ゾーンを発行するには、そのゾーン内のレコードを解決することが認められた仮想ネットワークの一覧を指定します。  それらを "解決ネットワーク" と呼ぶことにします。  VM が作成されたときや IP が変更されたとき、または VM が破棄されたときに絶えず Azure DNS によってホスト名レコードが維持される一連の仮想ネットワークを指定することもできます。  それらを "登録ネットワーク" と呼ぶことにします。
 
-この機能は管理プレビュー中であるため、プレビューの PowerShell モジュールが提供されます。
+この機能は管理プレビュー中です。[AzureDNS-PrivateZone@microsoft.com](mailto:AzureDNS-PrivateZone@microsoft.com) 宛てにメールすると、プレビューの PowerShell モジュールが提供されます。
 
-[!INCLUDE [private-dns-preview-notice](../../includes/private-dns-preview-notice.md)]
+## <a name="get-the-preview-powershell-module"></a>プレビュー PowerShell モジュールの入手
+
+PowerShell を使用してプライベート DNS ゾーンを作成するには、[AzureDNS-PrivateZone@microsoft.com](mailto:AzureDNS-PrivateZone@microsoft.com) 宛てにメールを送信して、プレビュー版の PowerShell モジュールを入手してください。
 
 ## <a name="create-the-resource-group"></a>リソース グループの作成
 
@@ -83,7 +87,7 @@ Get-AzureRmDnsRecordSet -ZoneName contoso.local -ResourceGroupName MyResourceGro
 Remove-AzureRMResourceGroup -Name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 プライベート DNS ゾーンの詳細については、「[Using Azure DNS for private domains (プライベート ドメインでの Azure DNS の使用)](private-dns-overview.md)」をご覧ください。
 

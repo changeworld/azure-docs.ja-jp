@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: a98e9ad891fcfaf02ca7df5d10d5b310445c9d34
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 4f5bc49bf58773a1510b552ce6fc20aa61076348
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Service Fabric リライアブル サービスでの ASP.NET Core
 
@@ -26,7 +26,7 @@ ASP.NET Core は新しいオープンソースのクロスプラットフォー�
 
 この記事は、NuGet パッケージの **Microsoft.ServiceFabric.AspNetCore.*** セットを使用して、Service Fabric Reliable Services で ASP.NET Core サービスをホスティングするための詳細なガイドです。
 
-Service Fabric の ASP.NET Core の入門チュートリアルと、開発環境のセットアップ方法については、「[ASP.NET Core を使用したアプリケーション用の Web サービス フロントエンドの構築](service-fabric-add-a-web-frontend.md)」を参照してください。
+Service Fabric の ASP.NET Core の入門チュートリアルと、開発環境のセットアップ方法については、[.NET アプリケーションの作成](service-fabric-tutorial-create-dotnet-app.md)に関するページを参照してください。
 
 この記事の残りの部分では、読者が ASP.NET Core に慣れているものと想定しています。 慣れていない場合は、[ASP.NET Core の基礎](https://docs.microsoft.com/aspnet/core/fundamentals/index)に関するページを読むことをお勧めします。
 
@@ -347,7 +347,7 @@ new KestrelCommunicationListener(serviceContext, (url, listener) => ...
 | ポート構成 | 動的割り当て | ステートフル サービスの複数のレプリカがホスト プロセスまたはホスト オペレーティング システムを共有することができるため、一意のポートが必要になります。 |
 | ServiceFabricIntegrationOptions | UseUniqueServiceUrl | 動的なポート割り当てでこの設定を行うことにより、前述の誤った ID に関する問題を防ぐことができます。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Visual Studio による Service Fabric アプリケーションのデバッグ](service-fabric-debugging-your-application.md)
 
 <!--Image references-->

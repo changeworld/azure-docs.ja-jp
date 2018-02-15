@@ -1,6 +1,6 @@
 ---
-title: "Azure Management API 証明書のアップロード | Microsoft Docs"
-description: "Azure Portal の Management API 証明書をアップロードする方法について説明します。"
+title: "Azure サービス管理証明書のアップロード | Microsoft Docs"
+description: "Azure Portal のサービス管理証明書をアップロードする方法について説明します。"
 services: cloud-services
 documentationcenter: .net
 author: Thraka
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
-ms.openlocfilehash: ad55d71a56657e9cf33c1d33e09c58295206a2ae
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e74a3e918a7c7426c743447e23ede9938ce3f63e
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="upload-an-azure-management-api-management-certificate"></a>Azure Management API Management 証明書のアップロード
+# <a name="upload-an-azure-service-management-certificate"></a>Azure サービス管理証明書のアップロード
 管理証明書を使用することにより、Azure のクラシック デプロイメント モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 
 
 > [!WARNING]
@@ -37,7 +37,7 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
 ## <a name="upload-a-management-certificate"></a>管理証明書のアップロード
 管理証明書 (公開キーのみを含んだ .cer ファイル) を作成したら、それをポータルにアップロードできます。 ポータルで証明書が使用可能な場合は、対になる証明書 (秘密キー) を持つすべての人が、Management API を経由して接続し、サブスクリプションに関連付けられているリソースにアクセスすることができます。
 
-1. [Azure ポータル](http://portal.azure.com)にログインします。
+1. [Azure Portal](http://portal.azure.com) にログインします。
 2. Azure サービスの一覧の下部にある **[その他のサービス]** をクリックし、_[全般]_ サービス グループの **[サブスクリプション]** を選択します。
 
     ![サブスクリプション メニュー](./media/azure-api-management-certs/subscriptions_menu.png)
@@ -54,5 +54,5 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
 
     ![設定](./media/azure-api-management-certs/certificate_details.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイメント モデル REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。

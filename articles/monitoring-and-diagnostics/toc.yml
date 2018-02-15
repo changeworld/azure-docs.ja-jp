@@ -41,6 +41,8 @@
           href: monitoring-overview-autoscale.md
         - name: アクティビティ ログ
           href: monitoring-overview-activity-logs.md
+        - name: アクティビティ ログ アラート (プレビュー)
+          href: monitoring-activity-log-alerts-new-experience.md
         - name: アクション グループ
           href: monitoring-action-groups.md
         - name: 診断ログ
@@ -84,8 +86,8 @@
           href: insights-alerts-command-line-interface.md
         - name: Azure PowerShell でアラートを構成する
           href: insights-alerts-powershell.md
-        - name: メトリック アラートで webhook を呼び出す
-          href: insights-webhooks-alerts.md
+        - name: ログ アラートの webhook アクション
+          href: monitor-alerts-unified-log-webhook.md
         - name: Resource Manager テンプレートでのメトリック アラートの作成
           href: monitoring-enable-alerts-using-template.md
     - name: 自動スケールの使用

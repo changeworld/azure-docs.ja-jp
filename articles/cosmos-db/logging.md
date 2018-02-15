@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2017
+ms.date: 01/29/2018
 ms.author: mimig
-ms.openlocfilehash: 835f6ffce9b2e1bb4b6cfd7476bb3fdb24a4f092
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: b8f92953634f9294805521d8b925ed67d121a17d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/06/2018
 
 ## <a name="what-is-logged"></a>ログに記録される内容
 
-* 認証されたすべての REST SQL API 要求がログ記録されます。これには、アクセス許可がないため、システム エラーのため、または不正な要求の結果として、失敗した要求が含まれます。 MongoDB、Graph、および Table API は現在サポートされていません。
+* すべての API で認証されたバックエンド要求 (TCP / REST) がすべて記録されます。たとえば、アクセス許可、システム エラー、または不正な要求の結果として失敗した要求などが記録されます。 ユーザーが開始した Graph、Cassandra、および Table API 要求のサポートは現在使用できません。
 * データベース自体に対する操作。すべてのドキュメント、コンテナー、およびデータベースに対する CRUD 操作が含まれます。
 * アカウント キーに対する操作。これらのキーの作成、変更、または削除が含まれます。
 * 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。
@@ -54,8 +54,8 @@ ms.lasthandoff: 01/06/2018
     * **[ストレージ アカウントへのアーカイブ]**。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 Portal で新しいストレージ アカウントを作成するには、[ストレージ アカウントの作成に関するページ](../storage/common/storage-create-storage-account.md)を参照し、Resource Manager の汎用アカウントの作成手順を実行します。 Portal でこのページに戻り、ストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
     * **イベント ハブにストリーミングします**。 このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 Event Hubs 名前空間を作成するには、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」を参照してください。 Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
     * **[Log Analytics への送信]**。     このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 Log Analytics でログを表示する方法については、「[Azure Cosmos DB 診断ログ](#view-in-loganalytics)」を参照してください。
-    * **DataPlaneRequests をログに記録します**。 SQL、Graph、Table API アカウントの診断をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
-    * **[Log MongoRequests]\(MongoRequests をログに記録する\)**。 MongoDB API アカウントの診断をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **DataPlaneRequests をログに記録します**。 SQL、Graph、MongoDB、Cassandra、および Table API アカウントについて、Azure Cosmos DB の基礎となる分散プラットフォームからのバックエンド要求をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **[Log MongoRequests]\(MongoRequests をログに記録する\)**。 MongoDB API アカウントにサービスを提供するためにユーザーが Azure Cosmos DB のフロントエンドから開始した要求をログに記録するには、このオプションを選択します。  ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
     * **[Metric Requests]\(メトリック要求\)**。 [Azure メトリックス](../monitoring-and-diagnostics/monitoring-supported-metrics.md)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
 3. **[Save]** をクリックします。

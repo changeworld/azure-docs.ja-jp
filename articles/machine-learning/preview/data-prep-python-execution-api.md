@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/12/2017
-ms.openlocfilehash: 488fe5697992bf21f9b748d272a6bda50eb1eb90
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: 6c4f96ee34d59102ae289e99733216fe0b145e93
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="execute-data-sources-and-data-preparations-packages-from-python"></a>Python からのデータ ソースおよびデータ準備パッケージの実行
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 0af3f6bc6e074fae4d830f163419d6437d04e2df
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: e037d0e291384849739825ae7ad59064a135db95
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="event-hubs-samples"></a>Event Hubs サンプル 
 
@@ -60,10 +60,6 @@ ms.lasthandoff: 12/20/2017
 ### <a name="scale-out-event-processing"></a>イベント処理のスケールアウト 
 
 [イベント処理のスケール アウト](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)のサンプルは、[イベント プロセッサ ホスト](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を使用して、Event Hubs ストリーム消費のワークロードを分散する方法を示しています。 **EventProcessor** と **EventProcessorFactory** オブジェクトを実装して、イベント ストリームを管理する方法を示します。 
-
-###  <a name="pull-data-from-sql-into-an-event-hub"></a>イベント ハブへの SQL データのプル
-
-[SQL データのプル](https://github.com/Azure-Samples/event-hubs-dotnet-import-from-sql)のサンプルは、SQL テーブルからデータをプルし、それをイベント ハブにプッシュしたうえで、ダウン ストリーム分析アプリケーションの入力として使用する方法を示しています。
 
 ### <a name="pull-web-data-into-an-event-hub"></a>イベント ハブへの Web データのプル 
 

@@ -11,15 +11,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 
+ms.date: 01/29/2018
 ms.author: jingwang
-ms.openlocfilehash: 80892d5f87c1f7a588023e4baa5de79bd73329a5
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: fb4802a6a3bed163f0d2bba04cf9d80a917ba7ba
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
+# <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-hdfs-connector.md)
 > * [バージョン 2 - プレビュー](connector-hdfs.md)
@@ -42,7 +42,7 @@ HDFS から、サポートされている任意のシンク データ ストア�
 
 ## <a name="prerequisites"></a>前提条件
 
-パブリックにアクセスできない HDFS をコピー元またはコピー先としてデータをコピーするには、セルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](concepts-integration-runtime.md)に関する記事をご覧ください。
+パブリックにアクセスできない HDFS からデータをコピーするには、セルフホステッド統合ランタイムを設定する必要があります。 詳細については、[セルフホステッド統合ランタイム](concepts-integration-runtime.md)に関する記事をご覧ください。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -151,7 +151,7 @@ HDFS からデータをコピーするには、データセットの type プロ
 
 ## <a name="copy-activity-properties"></a>コピー アクティビティのプロパティ
 
-アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、HDFS のソースとシンクでサポートされるプロパティの一覧を示します。
+アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、HDFS ソースでサポートされるプロパティの一覧を示します。
 
 ### <a name="hdfs-as-source"></a>ソースとしての HDFS
 

@@ -1,211 +1,186 @@
 ---
-title: "アプリケーション ゲートウェイの作成 - Azure CLI 2.0 | Microsoft Docs"
-description: "Resource Manager で Azure CLI 2.0 を使用して、アプリケーション ゲートウェイを作成する方法について説明します。"
+title: "アプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs"
+description: "Azure CLI を使用してアプリケーション ゲートウェイを作成する方法について説明します。"
 services: application-gateway
-documentationcenter: na
 author: davidmu1
 manager: timlt
 editor: 
 tags: azure-resource-manager
-ms.assetid: c2f6516e-3805-49ac-826e-776b909a9104
 ms.service: application-gateway
 ms.devlang: azurecli
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 01/25/2018
 ms.author: davidmu
-ms.openlocfilehash: beb2dab177d021fee1dbbe630f8b6854a7d94f68
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bf7e22e86e593045d25a9f31166aebe992caeb45
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="create-an-application-gateway-by-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用してアプリケーション ゲートウェイを作成する
+# <a name="create-an-application-gateway-using-the-azure-cli"></a>Azure CLI を使用してアプリケーション ゲートウェイを作成する
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](application-gateway-create-gateway-portal.md)
-> * [Azure Resource Manager の PowerShell](application-gateway-create-gateway-arm.md)
-> * [Azure クラシック PowerShell](application-gateway-create-gateway.md)
-> * [Azure Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
-> * [Azure CLI 1.0](application-gateway-create-gateway-cli.md)
-> * [Azure CLI 2.0](application-gateway-create-gateway-cli.md)
+Azure CLI を使用して、コマンドラインやスクリプトからアプリケーション ゲートウェイを作成または管理できます。 このクイック スタートでは、ネットワーク リソース、バックエンド サーバー、およびアプリケーション ゲートウェイを作成する方法について説明します。
 
-Azure Application Gateway は、アプリケーション配信コントローラー (ADC) をサービスとして提供する専用仮想アプライアンスで、さまざまなレイヤー 7 負荷分散機能をアプリケーションで利用できるようにします。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="cli-versions"></a>CLI のバージョン
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-次のコマンド ライン インターフェイス (CLI) バージョンのいずれかを使用して、アプリケーション ゲートウェイを作成できます。
+CLI をローカルにインストールして使用する場合、このクイックスタートでは、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
-* [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md): クラシック デプロイメント モデルと Azure Resource Manager デプロイメント モデル用の Azure CLI
-* [Azure CLI 2.0](application-gateway-create-gateway-cli.md): Resource Manager デプロイメント モデル用の次世代 CLI
+## <a name="create-a-resource-group"></a>リソース グループの作成
 
-## <a name="prerequisite-install-the-azure-cli-20"></a>前提条件: Azure CLI 2.0 のインストール
+[az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
-この記事の手順を実行するには、[macOS、Linux、Windows 用の Azure CLI をインストールする](https://docs.microsoft.com/cli/azure/install-az-cli2)必要があります。
+次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
 
-> [!NOTE]
-> アプリケーション ゲートウェイを作成するには、Azure アカウントが必要です。 お持ちでない場合は、 [無料試用版](../active-directory/sign-up-organization.md)にサインアップしてください。
-
-## <a name="scenario"></a>シナリオ
-
-このシナリオでは、Azure Portal を使用してアプリケーション ゲートウェイを作成する方法について説明します。
-
-このシナリオで、以下の作業を行います。
-
-* 2 つのインスタンスを持つ中規模のアプリケーション ゲートウェイを作成します。
-* 予約済み CIDR ブロック 10.0.0.0/16 を持つ、AdatumAppGatewayVNET という名前の仮想ネットワークを作成します。
-* CIDR ブロックとして 10.0.0.0/28 を使用する Appgatewaysubnet という名前のサブネットを作成します。
-
-> [!NOTE]
-> カスタムの正常性プローブ、バックエンド プール アドレス、追加規則など、アプリケーション ゲートウェイの追加の構成は、初めてデプロイしている間ではなく、アプリケーション ゲートウェイが作成された後で行われます。
-
-## <a name="before-you-begin"></a>開始する前に
-
-アプリケーション ゲートウェイには、専用のサブネットが必要です。 仮想ネットワークを作成している場合は、複数のサブネットのための十分なアドレス空間を残しておいてください。 アプリケーション ゲートウェイをサブネットにデプロイした後、そのサブネットには、追加のアプリケーション ゲートウェイのみをデプロイできます。
-
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
-
-**Microsoft Azure コマンド プロンプト**を開き、サインインします。
-
-```azurecli-interactive
-az login -u "username"
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
 ```
 
-> [!NOTE]
-> aka.ms/devicelogin でのコード入力が必要なデバイス ログインのスイッチを用いずに、`az login` を使用することもできます。
+## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-上記のコマンドを入力した後、コードが表示されます。 ブラウザーで https://aka.ms/devicelogin に移動して、サインイン プロセスを続行します。
-
-![デバイスのログインを表示するコマンド プロンプト][1]
-
-ブラウザーで、受け取ったコードを入力します。 これにより、サインイン ページにリダイレクトされます。
-
-![ブラウザーにコードを入力][2]
-
-コードを入力してサインインし、ブラウザーを閉じて続行します。
-
-![正常にサインイン][3]
-
-## <a name="create-the-resource-group"></a>リソース グループの作成
-
-アプリケーション ゲートウェイを作成する前に、そのアプリケーション ゲートウェイの追加先となるリソース グループを作成します。 次のコマンドを使用します。
+[az network vnet create](/cli/azure/vnet#az_vnet_create) を使用して、仮想ネットワークとサブネットを作成します。 パブリック IP アドレスは、[az network public-ip create](/cli/azure/public-ip#az_public_ip_create) を使用して作成します。
 
 ```azurecli-interactive
-az group create --name myresourcegroup --location "eastus"
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myAGSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myBackendSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet   \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
+
+## <a name="create-backend-servers"></a>バックエンド サーバーの作成
+
+この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、NGINX を仮想マシンにインストールして、アプリケーション ゲートウェイが正常に作成されたことを確認します。
+
+### <a name="create-two-virtual-machines"></a>2 つの仮想マシンの作成
+
+cloud-init 構成ファイルを使って、NGINX をインストールし、Linux 仮想マシンで "Hello World" Node.js アプリを実行することができます。 現在のシェルで、cloud-init.txt という名前のファイルを作成し、次の構成をコピーして、そのシェルに貼り付けます。 cloud-init ファイル全体 (特に最初の行) を、確実かつ正確にコピーしてください。
+
+```yaml
+#cloud-config
+package_upgrade: true
+packages:
+  - nginx
+  - nodejs
+  - npm
+write_files:
+  - owner: www-data:www-data
+  - path: /etc/nginx/sites-available/default
+    content: |
+      server {
+        listen 80;
+        location / {
+          proxy_pass http://localhost:3000;
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection keep-alive;
+          proxy_set_header Host $host;
+          proxy_cache_bypass $http_upgrade;
+        }
+      }
+  - owner: azureuser:azureuser
+  - path: /home/azureuser/myapp/index.js
+    content: |
+      var express = require('express')
+      var app = express()
+      var os = require('os');
+      app.get('/', function (req, res) {
+        res.send('Hello World from host ' + os.hostname() + '!')
+      })
+      app.listen(3000, function () {
+        console.log('Hello world app listening on port 3000!')
+      })
+runcmd:
+  - service nginx restart
+  - cd "/home/azureuser/myapp"
+  - npm init
+  - npm install express -y
+  - nodejs index.js
+```
+
+[az network nic create](/cli/azure/network/nic#az_network_nic_create) で、ネットワーク インターフェイスを作成します。 [az vm create](/cli/azure/vm#az_vm_create) で、仮想マシンを作成します。
+
+```azurecli-interactive
+for i in `seq 1 2`; do
+  az network nic create \
+    --resource-group myResourceGroupAG \
+    --name myNic$i \
+    --vnet-name myVNet \
+    --subnet myBackendSubnet
+  az vm create \
+    --resource-group myResourceGroupAG \
+    --name myVM$i \
+    --nics myNic$i \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --custom-data cloud-init.txt
+done
 ```
 
 ## <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-ご利用のバックエンド サーバーの IP アドレスのバックエンド IP アドレスを使用します。 バックエンド サーバーに該当する仮想ネットワーク内のプライベート IP、パブリック IP、または完全修飾ドメイン名を指定してください。 次の例では、HTTP 設定、ポート、および規則に関する追加の構成を持つアプリケーション ゲートウェイを作成します。
+[az network application-gateway create](/cli/azure/application-gateway#az_application_gateway_create) を使用して、アプリケーション ゲートウェイを作成します。 Azure CLI を使用してアプリケーション ゲートウェイを作成するときに、容量、SKU、HTTP 設定などの構成情報を指定します。 ネットワーク インターフェイスのプライベート IP アドレスは、アプリケーション ゲートウェイのバックエンド プールにサーバーとして追加されます。
 
 ```azurecli-interactive
+address1=$(az network nic show --name myNic1 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
+address2=$(az network nic show --name myNic2 --resource-group myResourceGroupAG | grep "\"privateIpAddress\":" | grep -oE '[^ ]+$' | tr -d '",')
 az network application-gateway create \
---name "AdatumAppGateway" \
---location "eastus" \
---resource-group "myresourcegroup" \
---vnet-name "AdatumAppGatewayVNET" \
---vnet-address-prefix "10.0.0.0/16" \
---subnet "Appgatewaysubnet" \
---subnet-address-prefix "10.0.0.0/28" \
---servers 10.0.0.4 10.0.0.5 \
---capacity 2 \
---sku Standard_Small \
---http-settings-cookie-based-affinity Enabled \
---http-settings-protocol Http \
---frontend-port 80 \
---routing-rule-type Basic \
---http-settings-port 80 \
---public-ip-address "pip2" \
---public-ip-address-allocation "dynamic" \
-
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --capacity 2 \
+  --sku Standard_Medium \
+  --http-settings-cookie-based-affinity Enabled \
+  --public-ip-address myAGPublicIPAddress \
+  --vnet-name myVNet \
+  --subnet myAGSubnet \
+  --servers "$address1" "$address2"
 ```
 
-前の例では、アプリケーション ゲートウェイの作成中は必要でない複数のプロパティが示されています。 次のコード例は、必要な情報を持つアプリケーション ゲートウェイを作成します。
+アプリケーション ゲートウェイの作成には数分かかる場合があります。 アプリケーション ゲートウェイを作成すると、その機能として次を確認できます。
 
-```azurecli-interactive
-az network application-gateway create \
---name "AdatumAppGateway" \
---location "eastus" \
---resource-group "myresourcegroup" \
---vnet-name "AdatumAppGatewayVNET" \
---vnet-address-prefix "10.0.0.0/16" \
---subnet "Appgatewaysubnet" \
---subnet-address-prefix "10.0.0.0/28" \
---servers "10.0.0.5"  \
---public-ip-address pip
+- *appGatewayBackendPool* - アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
+- *appGatewayBackendHttpSettings* - 通信に使用するポート 80 と HTTP プロトコルを指定します。
+- *appGatewayHttpListener* - *appGatewayBackendPool* に関連付けられている既定のリスナー。
+- *appGatewayFrontendIP* -*myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
+- *rule1* - *appGatewayHttpListener* に関連付けられている既定のルーティング規則。
+
+## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
+
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用します。 パブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。
+
+```azurepowershell-interactive
+az network public-ip show \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
+``` 
+
+![アプリケーション ゲートウェイのテスト](./media/application-gateway-create-gateway-cli/application-gateway-nginxtest.png)
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、アプリケーション ゲートウェイ、およびすべての関連リソースを削除できます。
+
+```azurecli-interactive 
+az group delete --name myResourceGroupAG
 ```
  
-> [!NOTE]
-> 作成中に使用するパラメーターのリストを表示するには、`az network application-gateway create --help` コマンドを実行します。
+## <a name="next-steps"></a>次の手順
 
-この例では、リスナー、バックエンド プール、バックエンド HTTP 設定、規則の既定の設定を持つ基本的なアプリケーション ゲートウェイを作成しています。 プロビジョニングが成功したら、独自のデプロイに合わせて、これらの設定を変更することができます。
+このクイック スタートでは、リソース グループ、ネットワーク リソース、およびバックエンド サーバーを作成しました。 その後、そのリソースを使用して、アプリケーション ゲートウェイを作成しました。 アプリケーション ゲートウェイとその関連リソースの詳細を確認するには、ハウツー記事に進みます。
 
-前の手順でバックエンド プールに対して Web アプリケーションを定義した場合、ここで負荷分散が開始されます。
-
-## <a name="get-the-application-gateway-dns-name"></a>アプリケーション ゲートウェイの DNS 名の取得
-ゲートウェイを作成したら、次は通信用にフロントエンドを構成します。 パブリック IP を使用している場合、アプリケーション ゲートウェイには、動的に割り当てられたフレンドリではない DNS 名が必要です。 ユーザーがアプリケーション ゲートウェイを確実にヒットできるように、CNAME レコードを使用して、アプリケーション ゲートウェイのパブリック エンドポイントを参照します。 詳細については、「[Azure DNS を使用して Azure サービス用のカスタム ドメイン設定を提供する](../dns/dns-custom-domain.md)」をご覧ください。
-
-別名を構成するには、アプリケーション ゲートウェイに接続されている PublicIPAddress 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 アプリケーション ゲートウェイの DNS 名を使用して、2 つの Web アプリケーションがこの DNS 名を指すように CNAME レコードを作成します。 アプリケーション ゲートウェイの再起動時に VIP が変更される可能性があるため、A レコードは使用しません。
-
-
-```azurecli-interactive
-az network public-ip show --name "pip" --resource-group "AdatumAppGatewayRG"
-```
-
-```
-{
-  "dnsSettings": {
-    "domainNameLabel": null,
-    "fqdn": "8c786058-96d4-4f3e-bb41-660860ceae4c.cloudapp.net",
-    "reverseFqdn": null
-  },
-  "etag": "W/\"3b0ac031-01f0-4860-b572-e3c25e0c57ad\"",
-  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/publicIPAddresses/pip2",
-  "idleTimeoutInMinutes": 4,
-  "ipAddress": "40.121.167.250",
-  "ipConfiguration": {
-    "etag": null,
-    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/AdatumAppGatewayRG/providers/Microsoft.Network/applicationGateways/AdatumAppGateway2/frontendIPConfigurations/appGatewayFrontendIP",
-    "name": null,
-    "privateIpAddress": null,
-    "privateIpAllocationMethod": null,
-    "provisioningState": null,
-    "publicIpAddress": null,
-    "resourceGroup": "AdatumAppGatewayRG",
-    "subnet": null
-  },
-  "location": "eastus",
-  "name": "pip2",
-  "provisioningState": "Succeeded",
-  "publicIpAddressVersion": "IPv4",
-  "publicIpAllocationMethod": "Dynamic",
-  "resourceGroup": "AdatumAppGatewayRG",
-  "resourceGuid": "3c30d310-c543-4e9d-9c72-bbacd7fe9b05",
-  "tags": {
-    "cli[2] owner[administrator]": ""
-  },
-  "type": "Microsoft.Network/publicIPAddresses"
-}
-```
-
-## <a name="delete-all-resources"></a>すべてのリソースの削除
-
-この記事で作成したすべてのリソースを削除するには、次のコマンドを実行します。
-
-```azurecli-interactive
-az group delete --name AdatumAppGatewayRG
-```
- 
-## <a name="next-steps"></a>次のステップ
-
-カスタムの正常性プローブを作成する方法については、「[ポータルを使用して Application Gateway 用カスタム プローブを作成する](application-gateway-create-probe-portal.md)」をご覧ください。
-
-SSL オフロードを構成してコストがかかる SSL 暗号化解除をご利用の Web サーバーから切り離す方法については、「[Azure リソース マネージャーを使用した SSL オフロード用の Application Gateway の構成](application-gateway-ssl-arm.md)」をご覧ください。
-
-<!--Image references-->
-
-[scenario]: ./media/application-gateway-create-gateway-cli/scenario.png
-[1]: ./media/application-gateway-create-gateway-cli/figure1.png
-[2]: ./media/application-gateway-create-gateway-cli/figure2.png
-[3]: ./media/application-gateway-create-gateway-cli/figure3.png

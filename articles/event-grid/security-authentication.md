@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: e2f48b6e72072ce6bf019b3adc138ae83c162f25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dda0e2efa72356f00b0372e4f6ce961719946b8d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -46,7 +46,9 @@ SubscriptionValidationEvent の例を以下に示します。
     "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
   },
   "eventType": "Microsoft.EventGrid.SubscriptionValidationEvent",
-  "eventTime": "2017-08-06T22:09:30.740323Z"
+  "eventTime": "2018-01-25T22:12:19.4556811Z",
+  "metadataVersion": "1",
+  "dataVersion": "1"
 }]
 ```
 
@@ -234,6 +236,6 @@ az role definition create --role-definition @<file path>
 az role assignment create --assignee <user name> --role "<name of role>"
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 01/26/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: 6b454ed7257e8d3f91e585cee2b559c54371fb15
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: f9d79746dcf307cf434ee78d9b1514f5886d9fb6
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="configure-expiration-for-office-365-groups-preview"></a>Office 365 グループの有効期限の構成 (プレビュー)
 
@@ -34,11 +34,21 @@ Office 365 グループの有効期限機能を設定して、そのライフサ
 
 Azure AD PowerShell コマンドレットをダウンロードしてインストールする方法については、「[Azure Active Directory PowerShell for Graph - Public Preview Release 2.0.0.137 (Azure Active Directory PowerShell for Graph - パブリック プレビュー リリース 2.0.0.137)](https://www.powershellgallery.com/packages/AzureADPreview/2.0.0.137)」を参照してください。
 
+## <a name="roles-and-permissions"></a>ロールとアクセス許可
+Azure AD で Office 365 グループの有効期限を構成および使用できるロールを次に示します。
+
+役割 | アクセス許可
+-------- | --------
+グローバル管理者<br>ユーザー アカウント管理者 | Office 365 グループの有効期限ポリシー設定の作成、読み取り、更新、または削除が可能です
+User | 所有する Office 365 グループを更新できます<br>所有する Office 365 グループを復元できます
+
+削除したグループを復元するためのアクセス許可の詳細については、[削除した Office 365 グループの復元](active-directory-groups-restore-azure-portal.md)に関するページをご覧ください。
+
 ## <a name="set-group-expiration"></a>グループの有効期限の設定
 
 1. Azure AD テナントのグローバル管理者のアカウントを使用して、[Azure AD 管理センター](https://aad.portal.azure.com) を開きます。
 
-2. Azure AD を開き、**[ユーザーとグループ]** を選択します。
+2. **[ユーザーとグループ]** を選択します。
 
 3. **[グループ設定]** を選択し、**[有効期限]** を選択して有効期限の設定画面を開きます。
   
@@ -48,7 +58,7 @@ Azure AD PowerShell コマンドレットをダウンロードしてインスト
 
   * グループの有効期間を日数で設定する。 プリセット値かカスタム値 (31 日以上である必要があります) のいずれかを選択する。 
   * グループに所有者がいない場合に、更新と有効期限の通知を送信する電子メール アドレスを指定する。 
-  * どの Office 365 グループを有効期限切れにするかを選択する。 **[すべて]** の Office 365 グループに対して有効期限を有効にするか、Office 365 グループの中から選択するか、**[なし]** を選択してすべてのグループに対して有効期限を無効にすることができます。
+  * どの Office 365 グループを有効期限切れにするかを選択する。 **[すべて]** を選択してすべての Office 365 グループの有効期限を有効にするか、**[選択済み]** を選択して、選択された Office 365 グループのみを有効にするか、**[なし]** を選択してすべてのグループの有効期限を無効にできます。
   * **[保存]** を選択して完了し、設定を保存する。
 
 

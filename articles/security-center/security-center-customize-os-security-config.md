@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2018
+ms.date: 01/25/2018
 ms.author: terrylan
-ms.openlocfilehash: d42dd4ba150a28109d6bb3f7c2281d07b21a366e
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: f12441a960db9f1c45bca2a5b95f3669923c7e3d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="customize-os-security-configurations-in-azure-security-center-preview"></a>Azure Security Center での OS セキュリティ構成のカスタマイズ (プレビュー)
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/25/2018
 
 ## <a name="what-are-os-security-configurations"></a>OS セキュリティ構成とは
 
-Azure Security Center は、ファイアウォール、監査、パスワード ポリシーなどに関連する規則を含め、OS を強化するための 150 を超える推奨の規則のセットを適用して、セキュリティ構成を監視します。 脆弱な構成を持つマシンが見つかった場合、Security Center はセキュリティに関する推奨事項を生成します。
+Azure Security Center は、ファイアウォール、監査、パスワード ポリシーなどに関連する規則を含め、OS を強化するための [150 を超える推奨の規則](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335)のセットを適用して、セキュリティ構成を監視します。 脆弱な構成を持つマシンが見つかった場合、Security Center はセキュリティに関する推奨事項を生成します。
 
 規則をカスタマイズすることで、どの構成オプションが環境により適しているかを組織がコントロールできます。 カスタマイズされた評価ポリシーを設定してから、それをサブスクリプション内のすべての該当するマシンに適用することができます。
 
@@ -60,8 +60,8 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
 3.  カスタマイズを実行するサブスクリプションを選びます。
 
 4. **[ポリシー コンポーネント]** で、**[セキュリティ構成の編集]** を選択します。  
-    **[セキュリティ構成の編集]** ウィンドウが開きます。 
-    
+    **[セキュリティ構成の編集]** ウィンドウが開きます。
+
     ![[セキュリティ構成の編集] ウィンドウ](media/security-center-customize-os-security-config/blade.png)
 
 5. 右側のウィンドウで、変更されたファイルのダウンロード、編集、アップロードの手順を実行します。
@@ -70,7 +70,7 @@ Security Center で既定の OS セキュリティ構成をカスタマイズす
    > 既定では、ダウンロードする構成ファイルは *json* 形式です。 このファイルの変更に関する手順については、「[構成ファイルのカスタマイズ](#customize-the-configuration-file)」をご覧ください。
    >
 
-   ファイルを正常に保存すると、サブスクリプションの下にあるすべてのワークスペースに接続されたすべての VM とコンピューターにその構成が適用されます。 このプロセスには通常数分かかりますが、インフラストラクチャの規模によってはそれ以上に時間がかかることがあります。 
+   ファイルを正常に保存すると、サブスクリプションの下にあるすべてのワークスペースに接続されたすべての VM とコンピューターにその構成が適用されます。 このプロセスには通常数分かかりますが、インフラストラクチャの規模によってはそれ以上に時間がかかることがあります。
 
 6. 変更をコミットするには、**[保存]** を選択します。 そうしないと、ポリシーは保存されません。
 

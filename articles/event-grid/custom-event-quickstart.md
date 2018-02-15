@@ -3,23 +3,23 @@ title: "CLI を使用した Azure Event Grid のカスタム イベント | Micr
 description: "Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。"
 services: event-grid
 keywords: 
-author: djrosanova
-ms.author: darosa
-ms.date: 01/19/2018
+author: tfitzmac
+ms.author: tomfitz
+ms.date: 01/30/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 867953c0aef877b1f1c07d910a8e9350ec2f2176
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 77ef5c5048952dc7ac233fd2b826caf2eed8719d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>Azure CLI と Event Grid を使用したカスタム イベントの作成とルーティング
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI からカスタム トピックを作成してトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常、webhook や Azure Functions など、イベントに応答するエンドポイントが、イベントの送信先になります。 ただし、この記事では、単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、[RequestBin](https://requestb.in/) というオープン ソースのサードパーティ ツールを使用して作成します。
+Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI からカスタム トピックを作成してトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常、webhook や Azure Functions など、イベントに応答するエンドポイントが、イベントの送信先になります。 ただし、この記事では、単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サードパーティ ツール ([RequestBin](https://requestb.in/) または [Hookbin](https://hookbin.com/)) を使用して作成します。
 
 >[!NOTE]
->**RequestBin** は、高いスループットが要求される用途を意図したオープン ソース ツールではありません。 ここでは、あくまでデモンストレーションを目的としてこのツールを使用しています。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
+>**RequestBin** と **Hookbin** は、高スループットの使用を目的にしていません。 これらのツールの使用は、あくまでデモンストレーションが目的です。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
 
 最後に、イベント データがエンドポイントに送信されたことを確認します。
 
@@ -29,13 +29,13 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-この記事で、CLI をローカルにインストールして使用する場合、最新バージョンの Azure CLI (2.0.24 以降) が実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
+CLI をローカルにインストールして使用することを選択した場合、この記事では、最新バージョンの Azure CLI (2.0.24 以降) が実行されている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
 
 次の例では、*gridResourceGroup* という名前のリソース グループを *westus2* の場所に作成します。
 
@@ -45,7 +45,7 @@ az group create --name gridResourceGroup --location westus2
 
 ## <a name="create-a-custom-topic"></a>カスタム トピックの作成
 
-トピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 次の例では、リソース グループにトピックを作成します。 `<topic_name>` は、トピックの一意の名前に置き換えてください。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 プレビュー リリースの Event Grid では、**westus2** と **westcentralus** の場所がサポートされます。
+トピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 次の例では、リソース グループにトピックを作成します。 `<topic_name>` は、トピックの一意の名前に置き換えてください。 トピック名は、DNS エントリによって表されるため、一意である必要があります。
 
 ```azurecli-interactive
 az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
@@ -53,18 +53,18 @@ az eventgrid topic create --name <topic_name> -l westus2 -g gridResourceGroup
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
-トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin は、エンドポイントを作成してそこに送信された要求を確認することができるオープン ソースのサードパーティ ツールです。 [RequestBin](https://requestb.in/) にアクセスし、**[Create a RequestBin]\(RequestBin の作成\)** をクリックします。  Bin URL をコピーしてください。トピックをサブスクライブするときにこの URL が必要になります。
+トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin と Hookbin は、エンドポイントを作成し、そこに送信された要求を表示できるサードパーティ ツールです。 [RequestBin](https://requestb.in/) に移動して **[Create a RequestBin]\(RequestBin の作成\)** をクリックします。または、[Hookbin](https://hookbin.com/) に移動して **[Create New Endpoint]\(新しいエンドポイントの作成\)** をクリックします。  Bin URL をコピーしてください。トピックをサブスクライブするときにこの URL が必要になります。
 
 ## <a name="subscribe-to-a-topic"></a>トピックのサブスクライブ
 
-どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したトピックをサブスクライブし、RequestBin からの URL をイベント通知のエンドポイントとして渡しています。 `<event_subscription_name>` は、実際のサブスクリプションの一意の名前に、`<URL_from_RequestBin>` は、前のセクションで得た値に置き換えてください。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 `<topic_name>` には、先ほど作成した値を使用します。 
+どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したトピックをサブスクライブし、RequestBin または Hookbin からの URL をイベント通知のエンドポイントとして渡しています。 `<event_subscription_name>` は、実際のサブスクリプションの一意の名前に、`<endpoint_URL>` は、前のセクションで得た値に置き換えてください。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 `<topic_name>` には、先ほど作成した値を使用します。 
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
   -g gridResourceGroup \
   --topic-name <topic_name> \
   --name <event_subscription_name> \
-  --endpoint <URL_from_RequestBin>
+  --endpoint <endpoint_URL>
 ```
 
 ## <a name="send-an-event-to-your-topic"></a>トピックへのイベントの送信
@@ -90,7 +90,7 @@ CURL は、HTTP 要求を行うユーティリティです。 この記事では
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成した RequestBin URL にブラウザーでアクセスします。 または、開いている RequestBin ブラウザーで、最新の情報に更新するボタンをクリックしてください。 先ほど送信したイベントが表示されます。 
+以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成したエンドポイント URL にブラウザーでアクセスします。 または、開いているブラウザーで、最新の情報に更新するボタンをクリックしてください。 先ほど送信したイベントが表示されます。 
 
 ```json
 [{
@@ -102,6 +102,8 @@ curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
     "make": "Ducati",
     "model": "Monster"
   },
+  "dataVersion": "1.0",
+  "metadataVersion": "1",
   "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
 }]
 ```

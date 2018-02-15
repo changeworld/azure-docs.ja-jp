@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: banders
-ms.openlocfilehash: e3ff3d9c667e00995daa2023a7137870247b9ab3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 49a78faa98bd7eb3da16dc069f65ef39b5e092af
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
-# <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) の Application Insights Connector ソリューション (プレビュー)
+# <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー) 
 
 ![Application Insights シンボル](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
 
-Application Insights Connector ソリューションを使用すると、[Application Insights](../application-insights/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 OMS でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを OMS と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
+Application Insights Connector ソリューションを使用すると、[Application Insights](../application-insights/app-insights-overview.md) でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。 Log Analytics でも Application Insights で開発者に表示されるものと同じアプリケーション テレメトリのビューを使用できます。 しかし、Application Insights アプリを Log Analytics と統合すると、運用データとアプリケーション データを 1 か所にまとめることによってアプリケーションの可視性が向上します。 同じビューの表示は、アプリ開発者との共同作業を支援します。 共通のビューによって、アプリケーションの問題とプラットフォームの問題の両方を検出して解決するための時間を短縮できます。
 
 このソリューションを使用して、次の操作を実行できます。
 
 - 複数の Azure サブスクリプションに属している場合でも、すべての Application Insights アプリを 1 か所に表示する
 - インフラストラクチャ データとアプリケーション データを相互に関連付ける
 - ログ検索でパースペクティブを使用してアプリケーション データをグラフ化する
-- OMS ポータルと Azure ポータルで、Log Analytics データから Application Insights アプリにピボットする
+- Azure Portal で、Log Analytics データから Application Insights アプリにピボットする
 
 ## <a name="connected-sources"></a>接続先ソース
 
@@ -63,8 +63,8 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 その他の留意点:
 
-- Application Insights アプリは、1 つの OMS ワークスペースにのみリンクできます。
-- [Standard または Premium の Application Insights リソース](https://azure.microsoft.com/pricing/details/application-insights)は、OMS Log Analytics にのみリンクできます。 ただし、Log Analytics の Free レベルを使用することができます。
+- Application Insights アプリは、1 つの Log Analytics ワークスペースにのみリンクできます。
+- [Standard または Premium の Application Insights リソース](https://azure.microsoft.com/pricing/details/application-insights)は、Log Analytics にのみリンクできます。 ただし、Log Analytics の Free レベルを使用することができます。
 
 ## <a name="management-packs"></a>管理パック
 
@@ -129,7 +129,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="pivot-to-an-app-in-the-azure-portal"></a>Azure ポータルでアプリにピボットする
 
-[Application Insights Connector] ブレードは、"*OMS ポータルを使用しているときに*"、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、OMS 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
+[Application Insights Connector] ブレードは、"*OMS ポータルを使用しているときに*"、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、Log Analytics 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
 
 ピボットするには、各行の最後に表示される省略記号 (**…**) をクリックし、**[Application Insights で開く]** を選択します。
 
@@ -140,7 +140,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 
 ### <a name="sample-corrected-data"></a>サンプリング補正データ
 
-Application Insights では、"*[サンプリング補正](../application-insights/app-insights-sampling.md)*" によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と OMS の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
+Application Insights では、"*[サンプリング補正](../application-insights/app-insights-sampling.md)*" によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と Log Analytics の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
 
 ログ検索クエリでのサンプリング補正の例を次に示します。
 
@@ -162,7 +162,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 - ページ ビュー: ワークスペースでページ ビューを受信するには、その情報を収集するようにアプリを構成する必要があります。 詳細については、「[ページ ビュー](../application-insights/app-insights-api-custom-events-metrics.md#page-views)」を参照してください。
 - カスタム イベント: ワークスペースでページ ビューを受信するには、その情報を収集するようにアプリを構成する必要があります。 詳細については、「[TrackEvent](../application-insights/app-insights-api-custom-events-metrics.md#trackevent)」を参照してください。
 
-データは、使用可能になると、OMS によって Application Insights から受信されます。
+データは、使用可能になると、Log Analytics によって Application Insights から受信されます。
 
 ## <a name="output-data"></a>出力データ
 

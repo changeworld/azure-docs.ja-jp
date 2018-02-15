@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: ede1a974b32227edf44464ed56ae85a1ea7ee97b
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: c668dde33b3571436711c6c5e5289993a9edf1a2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -37,14 +37,14 @@ Azure Toolkit for Eclipse の HDInsight Tools を使用して Scala で記述さ
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight 上の Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* HDInsight 上の Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 * Eclipse IDE ランタイムで使用される Oracle Java Development Kit Version 8。 [Oracle の Web サイト](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からダウンロードできます。
 * Eclipse IDE。 この記事では、Eclipse Neon を使用します。 [Eclipse の Web サイト](https://www.eclipse.org/downloads/)からインストールできます。
 
 
 
 ## <a name="install-hdinsight-tools-in-azure-toolkit-for-eclipse-and-the-scala-plug-in"></a>Azure Toolkit for Eclipse の HDInsight ツールおよび Scala プラグインをインストールする
-### <a name="install-hdinsight-toolsazure-toolkit-for"></a>azure-toolkit-for の HDInsight ツール をインストールする
+### <a name="install-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse をインストールする
 Eclipse 用の HDInsight Tools は、Azure Toolkit for Eclipse に付属しています。 インストール手順については、「[Azure Toolkit for Eclipse のインストール](https://docs.microsoft.com/java/azure/eclipse/azure-toolkit-for-eclipse-installation)」を参照してください。
 ### <a name="install-the-scala-plug-in"></a>Scala プラグインをインストールする
 Eclipse の起動時に、Scala プラグインがインストールされているかどうかを HDInsight ツールが自動的に検出します。 **[OK]** を選択して続行し、指示に従って Eclipse Marketplace からプラグインをインストールします。
@@ -118,7 +118,7 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
         }
 5. HDInsight Spark クラスターでアプリケーションを実行します。
    
-   a. Package Explorer で、プロジェクト名を右クリックし、**[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択します。        
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Package Explorer で、プロジェクト名を右クリックし、**[Submit Spark Application to HDInsight]\(HDInsight への Spark アプリケーションの送信\)** を選択します。        
    b. **[Spark Submission]\(Spark 送信\)** ダイアログ ボックスで、次の値を入力し、**[Submit]\(送信\)** を選択します。
       
       * **[Cluster Name (クラスター名)]**で、アプリケーションを実行する HDInsight Spark クラスターを選択します。
@@ -224,7 +224,7 @@ Azure Data Lake クラスターを選択して、任意のサインイン方法�
 ### <a name="scenarios"></a>シナリオ
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
+* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
 * [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](../hdinsight-apache-spark-eventhub-streaming.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
 

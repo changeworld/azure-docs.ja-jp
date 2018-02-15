@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/14/2017
 ms.author: ashishth
-ms.openlocfilehash: 47c2d129cb296f6387142e03b14356bcd83ad698
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 8b55bafee83dd43d535f9ebb0488134b5c7b3446
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>大規模な抽出、変換、および読み込み (ETL)
 
@@ -42,9 +42,7 @@ ETL プロセスでの HDInsight の使用は、次のパイプラインにま�
 
 Apache Oozie は、Hadoop ジョブを管理するワークフロー調整システムです。 Oozie は HDInsight クラスター内で実行され、Hadoop スタックと統合されます。 Oozie は、Apache MapReduce、Apache Pig、Apache Hive、および Apache Sqoop の Hadoop ジョブをサポートします。 Oozie は、Java プログラムやシェル スクリプトのような、システム特有のジョブのスケジュールを設定するのに使用することもできます。
 
-詳細については、[HDInsight での Oozie と Hadoop を使用したワークフローの定義と実行](../hdinsight-use-oozie-linux-mac.md)に関する記事を参照してください。
-
-<!-- For a deep dive showing how to use Oozie to drive an end-to-end pipeline, see [Operationalize the Data Pipeline](hdinsight-operationalize-data-pipeline.md). -->
+詳細については、[HDInsight で Oozie と Hadoop を使用してワークフローを定義して実行する方法](../hdinsight-use-oozie-linux-mac.md)に関するページを参照してください。Oozie を使用してエンド ツー エンドのパイプラインを動作させる方法について、さらに詳しい情報については、[データ パイプラインの運用化](../hdinsight-operationalize-data-pipeline.md)に関するページを参照してください。 
 
 ### <a name="azure-data-factory"></a>Azure Data Factory
 
@@ -62,7 +60,7 @@ Azure Data Factory の詳細については、[こちらのドキュメント](.
 
 ソース データ ファイルは、通常、Azure Storage または Azure Data Lake Store 内の場所に読み込まれます。 任意の形式のファイルを使用できますが、通常は CSV などのフラット ファイルが使用されます。 
 
-### <a name="azure-storage"></a>Azure Storage 
+### <a name="azure-storage"></a>Azure Storage (Azure Storage) 
 
 [Azure Storage](https://azure.microsoft.com/services/storage/blobs/) には、[固有のスケーラビリティ ターゲット](../../storage/common/storage-scalability-targets.md)があります。  大半の分析ノードでは、Azure Storage は、多数の小さなファイルを処理する場合に最善のスケーリングを行います。  Azure Storage は、ファイルの数やサイズが制限内である限り、数やサイズに関係なく、同等のパフォーマンスを保証します。  つまり、テラバイトのデータを格納し、そのデータのサブセットを使用する場合でもすべてを使用する場合でも、一貫性のあるパフォーマンスを得ることができます。
 
@@ -145,4 +143,4 @@ Apache Flume は、Azure HDInsight では使用できません。  オンプレ�
 ## <a name="next-steps"></a>次の手順
 
 * [HDInsight での Pig と Hadoop の使用](hdinsight-use-pig.md)
-<!-- * [Using Apache Hive as an ETL Tool](hdinsight-using-apache-hive-as-an-etl-tool.md) -->
+* [ETL ツールとして Apache Hive を使用する](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

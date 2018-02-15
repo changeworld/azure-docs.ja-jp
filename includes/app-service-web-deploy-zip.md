@@ -1,9 +1,23 @@
-## <a name="deploy-uploaded-zip-file"></a>アップロードされた ZIP ファイルをデプロイする
+---
+title: "インクルード ファイル"
+description: "インクルード ファイル"
+services: app-service
+author: cephalin
+ms.service: app-service
+ms.topic: include
+ms.date: 02/02/2018
+ms.author: cephalin
+ms.custom: include file
+ms.openlocfilehash: 917f8cc4a22199351614d101f1300b80052ee9a9
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/03/2018
+---
+## <a name="deploy-zip-file"></a>ZIP ファイルのデプロイ
 
-Cloud Shell で、[az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) コマンドを使用して、アップロードされた ZIP ファイルを Web アプリにデプロイします。 必ず *\<app_name>* をお使いの Web アプリの名前に置き換えてください。
+ブラウザーで `https://<app_name>.scm.azurewebsites.net/ZipDeploy` にアクセスします。
 
-```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResouceGroup --name <app_name> --src clouddrive/myAppFiles.zip
-```
+「[プロジェクトの ZIP ファイルを作成する](#create-a-project-zip-file)」で作成した ZIP ファイルを、Web ページ上のエクスプローラー領域にドラッグしてアップロードします。
 
-このコマンドは、ファイルとディレクトリを ZIP ファイルから既定の App Service アプリケーション フォルダー (`\home\site\wwwroot`) にデプロイし、アプリを再起動します。 任意の追加のカスタム ビルド プロセスが構成されている場合、そのプロセスも実行されます。
+デプロイの進行中、右上隅のアイコンにその進行状況がパーセンテージで表示されます。 また、ページのエクスプローラー領域の下に、操作に関する詳細なメッセージも表示されます。 完了すると、最後のデプロイ メッセージに "`Deployment successful`" と表示されます。

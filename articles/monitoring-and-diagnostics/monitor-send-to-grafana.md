@@ -33,7 +33,7 @@ Azure Marketplace から Grafana サーバーを設定し、Azure Monitor およ
 5. 概要を表示し、使用条件を受け入れた後、**[作成]** を選択します。
 
 ## <a name="log-in-to-grafana"></a>Grafana にログインする
-1. デプロイが完了したら、**[Go to Resource Group] (リソース グループに移動する)** を選択します。 新しく作成されたリソースの一覧が表示されます。 
+1. デプロイが完了したら、**[Go to Resource Group] \(リソース グループに移動する)** を選択します。 新しく作成されたリソースの一覧が表示されます。 
 
     ![Grafana リソース グループ オブジェクト](.\media\monitor-how-to-grafana\grafana1.png) 
 
@@ -74,7 +74,7 @@ Grafana は Azure Active Directory サービス プリンシパルを使用し�
 
 1. ホームに移動し、**[新しいダッシュボード]** を選択します。
 
-2. 新しいダッシュボードで、**[Graph] (グラフ)** を選択します。 他のチャート作成オプションを試すこともできますが、この記事では *[Graph] (グラフ)* を例として使用します。 
+2. 新しいダッシュボードで、**[Graph] \(グラフ)** を選択します。 他のチャート作成オプションを試すこともできますが、この記事では *[Graph] \(グラフ)* を例として使用します。 
 
     ![Grafana の新しいダッシュボード](.\media\monitor-how-to-grafana\grafana5.png) 
 

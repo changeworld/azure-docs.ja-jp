@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/22/2017
+ms.date: 1/26/2018
 ms.author: pkc
-ms.openlocfilehash: 0e4a2aa0ed7327a8ed19e9a716b0bd97abc71d5c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 970f1ff59560beaf898f22eb4e701088a6d5902a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
 
@@ -76,14 +76,15 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
 | 5.5.* | 5.4.164.* |バージョン 2.5 以前 |2017 年 8 月 10 日    |
 | 5.6.* | 5.4.164.* |バージョン 2.6 以前 |2017 年 10 月 13 日   |
 | 5.7.* | 5.4.164.* |バージョン 2.7 以前 |2017 年 12 月 15 日  |
-| 6.0.* | 5.6.205.* |バージョン 2.8 以前 |最新バージョンのため、終了日はありません |
+| 6.0.* | 5.6.205.* |バージョン 2.8 以前 |2018 年 3 月 30 日     | 
+| 6.1.* | 5.7.221.* |バージョン 3.0 以前 |最新バージョンのため、終了日はありません |
 
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric プレビュー バージョン - 運用環境で使用がサポートされていません。
 時折、フィードバックをいただきたい重要な機能を持つバージョンをプレビューとしてリリースします。 これらのプレビュー バージョンは、テスト目的でのみ使用するようにしてください。 運用環境のクラスターは常に、サポートされていて、安定した Service Fabric のバージョンを実行する必要があります。 プレビュー バージョンのメジャーおよびマイナーのバージョン番号は常に 255 で始まります。 たとえば、Service Fabric 255.255.5703.949 のバージョンを参照すると、このリリース バージョンはテスト クラスター内のみで使用されるべきであり、プレビュー段階です。 これらのプレビュー リリースは、[Service Fabric チームのブログ](https://blogs.msdn.microsoft.com/azureservicefabric)でも発表され、含まれる機能の詳細情報があります。
 
 これらのプレビュー リリースの有償サポート オプションはありません。 [Azure Service Fabric の問題を報告する](https://docs.microsoft.com/azure/service-fabric/service-fabric-support#report-azure-service-fabric-issues)に含まれるオプションのいずれかを使用して、質問またはフィードバックを提供してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure クラスターで Service Fabric のバージョンをアップグレードする](service-fabric-cluster-upgrade.md)
 - [スタンドアロンの Windows Server クラスターで Service Fabric のバージョンをアップグレードする](service-fabric-cluster-upgrade-windows-server.md)

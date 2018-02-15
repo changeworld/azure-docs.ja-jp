@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: davidmu
-ms.openlocfilehash: c29ff60a50e68c75b4e8f62713d6d1fffd2123d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d093af064bca46aa1f454b61b1099f47f61ccd33
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="application-gateway-support-for-multi-tenant-back-ends"></a>Application Gateway によるマルチテナント バックエンドのサポート
 
-Azure Application Gateway では、仮想マシン スケール セット、ネットワーク インターフェイス、パブリック/プライベート IP、または完全修飾ドメイン名 (FQDN) が、バックエンド プールの一部としてサポートされます。 既定では、クライアントからの受信 HTTP ホスト ヘッダーは、変更されることなくそのままバックエンドに送信されます。 [Azure Web Apps](../app-service/app-service-web-overview.md) や [API Management](../api-management/api-management-key-concepts.md) など、多くのサービスが本質的にマルチテナントであり、適切なエンドポイントに解決するために特定のホスト ヘッダーまたは SNI 拡張機能を使用します。 Application Gateway では、バックエンド HTTP 設定に基づいて受信 HTTP ホスト ヘッダーを上書きできるようになりました。 これにより、マルチテナント バックエンドの Azure Web Apps と API Management がサポートされます。 この機能は、Standard SKU と WAF SKU の両方で利用できます。 マルチテナント バックエンドのサポートはさらに、SSL 終了とエンド ツー エンド SSL のシナリオにも対応しています。
+Azure Application Gateway では、仮想マシン スケール セット、ネットワーク インターフェイス、パブリック/プライベート IP、または完全修飾ドメイン名 (FQDN) が、バックエンド プールの一部としてサポートされます。 既定では、クライアントからの受信 HTTP ホスト ヘッダーは、変更されることなくそのままバックエンドに送信されます。 [Azure Web Apps](../app-service/app-service-web-overview.md) など、多くのサービスが本質的にマルチテナントであり、適切なエンドポイントに解決するために特定のホスト ヘッダーまたは SNI 拡張機能を使用します。 Application Gateway では、バックエンド HTTP 設定に基づいて受信 HTTP ホスト ヘッダーを上書きできるようになりました。 これにより、マルチテナント バックエンドの Azure Web Apps と API Management がサポートされます。 この機能は、Standard SKU と WAF SKU の両方で利用できます。 マルチテナント バックエンドのサポートはさらに、SSL 終了とエンド ツー エンド SSL のシナリオにも対応しています。
 
 ![Web アプリのシナリオ](./media/application-gateway-web-app-overview/scenario.png)
 
@@ -36,6 +36,6 @@ Azure Application Gateway では、仮想マシン スケール セット、ネ�
 
 顧客はこの機能を使用して、HTTP 設定とカスタム プローブのオプションを適切な構成に指定します。 さらに、この設定は、ルールを使用してリスナーとバックエンド プールに関連付けられます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 アプリケーション ゲートウェイを設定して Web アプリケーションをバックエンド プール メンバーにする方法を学習するために、「[Application Gateway を使用した App Service Web Apps の構成](application-gateway-web-app-powershell.md)」を参照してください。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2017
 ms.author: mimig
-ms.openlocfilehash: aeef39294bbf3ad4192fe116c6972e52bfa1c816
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 297f8929ec11b37a2cbbfb79bb442da75b4368a8
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Azure Functions を使用したサーバーレス データベース コンピューティング
 
@@ -101,7 +101,7 @@ IoT 実装では、接続されている車のエンジンのチェック ラン
 
 **実装:** 1 つの接続をリッスンする複数の Azure Cosmos DB トリガー
 
-1. 複数の Azure 関数を作成するには、それぞれに Azure Cosmos DB トリガーを追加します。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。
+1. 複数の Azure 関数を作成するには、それぞれに Azure Cosmos DB トリガーを追加します。これらはすべて、ショッピング カート データの同じ変更フィードをリッスンします。 複数の関数が同じ変更フィードをリッスンする際は、各関数に新しいリース コレクションが必要になることに注意してください。 リース コレクションの詳細については、「[Change Feed Processor ライブラリの概要](change-feed.md#understand-cf)」を参照してください。
 2. 新しい項目がユーザーのショッピング カートに追加されるたびに、各関数はショッピング カート コンテナーの変更フィードから個別に呼び出されます。
     * 1 つの関数で現在のバスケットの内容を使用して、ユーザーが関心を持つ可能性がある他の項目の表示を変更することができます。
     * 別の関数で在庫の合計を更新できます。

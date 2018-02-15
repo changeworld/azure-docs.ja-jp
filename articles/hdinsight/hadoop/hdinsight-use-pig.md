@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 01/29/2018
 ms.author: larryfr
-ms.openlocfilehash: 5f5b34c6610a1c07687f0681480f7422986d6f20
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: ca68391db99d882887e41005928a30610c7cb930
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-pig-with-hadoop-on-hdinsight"></a>HDInsight での Pig と Hadoop の使用
 
@@ -34,7 +34,6 @@ Pig は、*Pig Latin* という手続き型言語を使用して Hadoop 用の�
 | [REST API](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux または Windows |Windows (現時点) |
 | [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
-| [リモート デスクトップ](apache-hadoop-use-pig-remote-desktop.md) (HDInsight 3.2 および 3.3) |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -104,7 +103,6 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 | [Curl](apache-hadoop-use-pig-curl.md) |&nbsp; |✔ |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [.NET SDK for Hadoop](apache-hadoop-use-pig-dotnet-sdk.md) |&nbsp; |✔ |Linux または Windows |Windows (現時点) |
 | [Windows PowerShell](apache-hadoop-use-pig-powershell.md) |&nbsp; |✔ |Linux または Windows |Windows |
-| [リモート デスクトップ](apache-hadoop-use-pig-remote-desktop.md) (HDInsight 3.2 および 3.3) |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/07/2017
-ms.openlocfilehash: 50d2d481b91199630bbfbf3cfdd21a1bf3062ff0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.date: 02/01/2018
+ms.openlocfilehash: 18db3caf487375252ca50f3942d7bdf538367ba6
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="supported-data-exports-for-this-preview"></a>このプレビューでサポートしているデータ エクスポート 
 いくつかの異なる形式にエクスポートすることができます。 これらの形式を使用して、Machine Learning ワークフローの残りの部分に結果を統合する前にデータ準備の中間結果を保持できます。

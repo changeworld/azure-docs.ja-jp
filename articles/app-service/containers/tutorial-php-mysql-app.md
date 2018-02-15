@@ -2,7 +2,7 @@
 title: "Azure App Service on Linux で PHP と MySQL Web アプリを構築する | Microsoft Docs"
 description: "Azure で動作し、MySQL データベースに接続する PHP アプリの入手方法を説明します。"
 services: app-service\web
-documentationcenter: nodejs
+documentationcenter: 
 author: cephalin
 manager: erikre
 ms.service: app-service-web
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 11/28/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: cf398d18091a008afc24cbe583001fd538039db2
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 9212e2a0063446cc6f1fd5faeb7ee61888fc0ecf
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux で PHP と MySQL Web アプリを構築する
 
@@ -38,6 +38,8 @@ ms.lasthandoff: 01/04/2018
 > * Azure から診断ログをストリーミングする
 > * Azure Portal でアプリを管理する
 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
@@ -47,8 +49,6 @@ ms.lasthandoff: 01/04/2018
 * [Composer をインストールする](https://getcomposer.org/doc/00-intro.md)
 * Laravel で必要な PHP 拡張機能 (OpenSSL、PDO-MySQL、Mbstring、Tokenizer、XML) を有効にする
 * [MySQL をインストールして起動する](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prepare-local-mysql"></a>ローカル MySQL を準備する
 
@@ -159,12 +159,12 @@ PHP を停止するには、ターミナルで `Ctrl + C` キーを押します�
 
 ### <a name="create-a-mysql-server"></a>MySQL サーバーを作成する
 
-[az mysql server create](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL (Preview) にサーバーを作成します。
+[`az mysql server create`](/cli/azure/mysql/server?view=azure-cli-latest#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL (プレビュー) でサーバーを作成します。
 
 次のコマンドで、_&lt;mysql_server_name>_ プレースホルダーを MySQL サーバー名に置き換えます (有効な文字は `a-z`、`0-9`、および `-` です)。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.database.windows.net`) の一部であるため、グローバルに一意である必要があります。
 
 ```azurecli-interactive
-az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd! --ssl-enforcement Disabled
+az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user adminuser --admin-password My5up3r$tr0ngPa$w0rd!
 ```
 
 MySQL サーバーが作成されると、Azure CLI によって、次の例のような情報が表示されます。
@@ -184,7 +184,7 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
-[az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーのクライアントへの接続を許可するファイアウォール ルールを作成します。
+[`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule?view=azure-cli-latest#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -247,8 +247,8 @@ DB_HOST=<mysql_server_name>.mysql.database.azure.com
 DB_DATABASE=sampledb
 DB_USERNAME=phpappuser@<mysql_server_name>
 DB_PASSWORD=MySQLAzure2017
+MYSQL_SSL=true
 ```
-<!-- MYSQL_SSL=true -->
 
 変更を保存します。
 
@@ -256,27 +256,23 @@ DB_PASSWORD=MySQLAzure2017
 > MySQL の接続情報を保護するために、このファイルは既に Git リポジトリから除外されています (リポジトリのルートで _.gitignore_ を参照してください)。 後で、App Service の環境変数を構成して Azure Database for MySQL (Preview) のデータベースに接続する方法を学習します。 環境変数を構成するので、App Service には *.env* ファイルは必要ありません。
 >
 
-<!-- ### Configure SSL certificate
+### <a name="configure-ssl-certificate"></a>SSL 証明書を構成する
 
-By default, Azure Database for MySQL enforces SSL connections from clients. To connect to your MySQL database in Azure, you must use a _.pem_ SSL certificate.
+既定では、Azure Database for MySQL はクライアントからの SSL 接続を強制します。 Azure で MySQL データベースに接続するには、[Azure Database for MySQL から提供された _.pem_ 証明書](../../mysql/howto-configure-ssl.md)を使用する必要があります。
 
-Open _config/database.php_ and add the _sslmode_ and _options_ parameters to `connections.mysql`, as shown in the following code.
+_config/database.php_ を開き、次のコードに示すように _sslmode_ パラメーターと _options_ パラメーターを `connections.mysql` に追加します。
 
 ```php
 'mysql' => [
     ...
     'sslmode' => env('DB_SSLMODE', 'prefer'),
     'options' => (env('MYSQL_SSL')) ? [
-        PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/certificate.pem', 
+        PDO::MYSQL_ATTR_SSL_KEY    => '/ssl/BaltimoreCyberTrustRoot.crt.pem', 
     ] : []
 ],
 ```
 
-To learn how to generate this _certificate.pem_, see [Configure SSL connectivity in your application to securely connect to Azure Database for MySQL](../../mysql/howto-configure-ssl.md).
-
-> [!TIP]
-> The path _/ssl/certificate.pem_ points to an existing _certificate.pem_ file in the Git repository. This file is provided for convenience in this tutorial. For best practice, you should not commit your _.pem_ certificates into source control. 
-> -->
+このチュートリアルでは、便宜上、証明書 `BaltimoreCyberTrustRoot.crt.pem` がリポジトリに用意されています。 
 
 ### <a name="test-the-application-locally"></a>ローカルでアプリケーションをテストする
 
@@ -321,6 +317,13 @@ git commit -m "database.php updates"
 
 この手順では、MySQL に接続される PHP アプリケーションを Azure App Service にデプロイします。
 
+Laravel アプリケーションは、_/public_ ディレクトリから起動されます。 App Service の既定の PHP Docker イメージでは Apache が使用されていて、Laravel 用に `DocumentRoot` をカスタマイズすることはできません。 ただし、`.htaccess` を使用して、ルート ディレクトリではなく _/public_ を指すようにすべての要求を書き換えることができます。 リポジトリ ルートには、この目的のために既に `.htaccess` が追加されています。 これにより、Laravel アプリケーションをすぐにデプロイできます。
+
+> [!NOTE] 
+> _.htaccess_ の書き換えを行わない場合は、代わりに [カスタム Docker イメージ](quickstart-custom-docker-image.md)を使用して Laravel アプリケーションをデプロイできます。
+>
+>
+
 ### <a name="configure-a-deployment-user"></a>デプロイ ユーザーを構成する
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user-no-h.md)]
@@ -335,14 +338,13 @@ git commit -m "database.php updates"
 
 ### <a name="configure-database-settings"></a>データベース設定を構成する
 
-App Service では、[az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
+App Service で、[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用して、環境変数を "_アプリ設定_" として設定します。
 
 次のコマンドでは、アプリ設定 `DB_HOST`、`DB_DATABASE`、`DB_USERNAME`、および `DB_PASSWORD` を構成します。 プレースホルダーの _&lt;appname>_ と _&lt;mysql_server_name>_ を置き換えます。
 
 ```azurecli-interactive
-az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.database.windows.net" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017"
+az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings DB_HOST="<mysql_server_name>.database.windows.net" DB_DATABASE="sampledb" DB_USERNAME="phpappuser@<mysql_server_name>" DB_PASSWORD="MySQLAzure2017" MYSQL_SSL="true"
 ```
- <!-- MYSQL_SSL="true" -->
 
 PHP [getenv](http://www.php.net/manual/function.getenv.php) メソッドを使用して、これらの設定にアクセスできます。 Laravel コードでは、PHP `getenv` に対して [env](https://laravel.com/docs/5.4/helpers#method-env) ラッパーが使用されます。 たとえば、_config/database.php_ の MySQL 構成は次のコードのようになります。
 
@@ -367,25 +369,13 @@ Laravel には App Service のアプリケーション キーが必要です。 
 php artisan key:generate --show
 ```
 
-[az webapp config appsettings set](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用して、App Service Web アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;appname>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
+[`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) コマンドを使用して、App Service Web アプリにアプリケーション キーを設定します。 プレースホルダーの _&lt;appname>_ と _&lt;outputofphpartisankey:generate>_ を置き換えます。
 
 ```azurecli-interactive
 az webapp config appsettings set --name <app_name> --resource-group myResourceGroup --settings APP_KEY="<output_of_php_artisan_key:generate>" APP_DEBUG="true"
 ```
 
 `APP_DEBUG="true"` は、デプロイした Web アプリでエラーが発生した場合にデバッグ情報を返すように Laravel に指示します。 運用アプリケーションを実行するときは、`false` に設定してセキュリティを強化します。
-
-### <a name="set-the-virtual-application-path"></a>仮想アプリケーション パスを設定する
-
-Web アプリの仮想アプリケーション パスを設定します。 この手順が必要なのは、[Laravel アプリケーション のライフサイクル](https://laravel.com/docs/5.4/lifecycle)がアプリケーションのルート ディレクトリではなく_パブリック_ ディレクトリから始まるためです。 ライフ サイクルがルート ディレクトリから始まる PHP フレームワークは、仮想アプリケーション パスの手動での構成なしで動作できます。
-
-[az resource update](/cli/azure/resource?view=azure-cli-latest#az_resource_update) コマンドを使用して、仮想アプリケーション パスを設定します。 _&lt;appname>_ プレースホルダーを置き換えます。
-
-```azurecli-interactive
-az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
-```
-
-既定では、Azure App Service は、デプロイされたアプリケーション ファイルのルート ディレクトリ (_sites\wwwroot_) に対して仮想アプリケーションのルート パス (_/_) をポイントします。
 
 ### <a name="push-to-azure-from-git"></a>Git から Azure へのプッシュ
 

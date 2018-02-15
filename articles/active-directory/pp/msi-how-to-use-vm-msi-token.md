@@ -3,7 +3,7 @@ title: "ユーザー割り当ての管理対象サービス ID を使用して V
 description: "Azure VM からユーザー割り当て MSI を使用して OAuth アクセス トークンを取得するための詳細な手順と例。"
 services: active-directory
 documentationcenter: 
-author: BryanLa
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,17 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/22/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5c9bf052ecb2e9c79e0eb627a0fd709d587125cd
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: a9513a59ec4540c6d63236519873c6e1e177b65a
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>ユーザー割り当ての管理対象サービス ID (MSI) で VM のアクセス トークンを取得する
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]この記事では、トークンの取得に使用する各種コードとスクリプトの例を提供するほか、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスも提供します。
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+この記事では、トークンの取得に使用する各種コードとスクリプトの例を提供するほか、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスも提供します。
 
 ## <a name="prerequisites"></a>前提条件
 

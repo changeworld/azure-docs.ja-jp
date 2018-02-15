@@ -1,4 +1,4 @@
----
+﻿---
 title: "フェールオーバー グループとアクティブ geo レプリケーション - Azure SQL Database | Microsoft Docs"
 description: "アクティブ geo レプリケーションで自動フェールオーバー グループを使用して、障害発生時に 自動フェイル オーバーを実行できるようにします。"
 services: sql-database
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: ef9463e464928b8fa8e64019037a41711cb77830
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 7d731865ae8da9e1ae9e9f11eef814b86fc10c64
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>概要: フェールオーバー グループとアクティブ geo レプリケーション
 アクティブ geo レプリケーションにより、同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。 セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合のクエリとフェールオーバーに使用できます。 フェールオーバーはユーザーのアプリケーションによって手動で開始する必要があります。 フェールオーバー後、新しいプライマリには別の接続エンドポイントが設定されます。 
@@ -92,8 +92,8 @@ Azure SQL Database の自動フェールオーバー グループ (プレビュ�
    > フェールオーバー グループの一部でないサーバーにセカンダリ データベースが既に存在するデータベースを追加すると、セカンダリ サーバーに新しいセカンダリが作成されます。 
    >
 
-* **フェールオーバー グループの読み取り/書き込みリスナー**: 現在のプライマリ サーバーの URL を示す **&lt;failover-group-name&gt;.database.windows.net** という形式の DNS の CNAME レコードです。 これにより、フェールオーバー後にプライマリが変更されたときに、読み取り/書き込み SQL アプリケーションがプライマリ データベースに透過的に再接続できます。 
-* **フェールオーバー グループの読み取り専用リスナー**: セカンダリ サーバーの URL を示す **&lt;failover-group-name&gt;.secondary.database.windows.net** という形式の DNS の CNAME レコードです。 これにより、指定した負荷分散規則を使用して、読み取り専用 SQL アプリケーションがセカンダリ データベースに等価的に接続できます。 必要に応じて、セカンダリ サーバーが利用できないときに、読み取り専用トラフィックをプライマリ サーバーに自動的にリダイレクトするように指定できます。
+* **フェールオーバー グループの読み取り/書き込みリスナー**: 現プライマリ サーバーの URL を示す **&lt;failover-group-name&gt;.database.windows.net** という形式の DNS の CNAME レコードです。 これにより、フェールオーバー後にプライマリが変更されたときに、読み取り/書き込み SQL アプリケーションがプライマリ データベースに透過的に再接続できます。 
+* **フェールオーバー グループの読み取り/書き込みリスナー**: セカンダリ サーバーの URL を示す **&lt;failover-group-name&gt;.secondary.database.windows.net** という形式の DNS の CNAME レコードです。 これにより、指定した負荷分散規則を使用して、読み取り専用 SQL アプリケーションがセカンダリ データベースに等価的に接続できます。 必要に応じて、セカンダリ サーバーが利用できないときに、読み取り専用トラフィックをプライマリ サーバーに自動的にリダイレクトするように指定できます。
 * **自動フェールオーバー ポリシー**: 既定では、フェールオーバー グループは自動フェールオーバー ポリシーを使用して構成されます。 システムは、エラーが検出されるとすぐにフェールオーバーをトリガーします。 アプリケーションからフェールオーバー ワークフローを制御するには、自動フェールオーバーをオフにします。 
 * **手動フェールオーバー**: 自動フェールオーバー構成に関係なくいつでも手動でフェールオーバーを開始することができます。 自動フェールオーバー ポリシーが構成されていない場合、フェールオーバー グループ内のデータベースの復元には手動フェールオーバーが必要です。 強制フェールオーバーまたはフレンドリ フェールオーバーを開始できます (データは完全に同期されます)。 後者は、アクティブ サーバーをプライマリ リージョンに再配置する場合に使用できます。 フェールオーバーが完了すると、正しいサーバーに接続されるように DNS レコードが自動的に更新されます。
 * **データ消失の猶予期間**: プライマリ データベースとセカンダリ データベースは非同期レプリケーションを使用して同期されるため、フェールオーバーによりデータが消失する場合があります。 アプリケーションのデータ消失の許容範囲を反映するように、自動フェールオーバー ポリシーをカスタマイズできます。 **GracePeriodWithDataLossHours** を構成することで、データ消失につながる可能性があるフェールオーバーの開始までにシステムが待機する時間を制御できます。 
@@ -140,7 +140,7 @@ DR リージョン内のアプリケーションで使う接続文字列を変�
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>Transact-SQL を使用して SQL データベース フェールオーバーを管理する
 
-| コマンド | Description |
+| コマンド | [説明] |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |FAILOVER または FORCE_FAILOVER_ALLOW_DATA_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
@@ -153,7 +153,7 @@ DR リージョン内のアプリケーションで使う接続文字列を変�
 
 ## <a name="manage-sql-database-failover-using-powershell"></a>PowerShell を使用して SQL データベース フェールオーバーを管理する
 
-| コマンドレット | 説明 |
+| コマンドレット | [説明] |
 | --- | --- |
 | [Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) |1 つまたは複数のデータベースを取得します。 |
 | [New-AzureRmSqlDatabaseSecondary](/powershell/module/azurerm.sql/new-azurermsqldatabasesecondary) |既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
@@ -172,7 +172,7 @@ DR リージョン内のアプリケーションで使う接続文字列を変�
 >
 
 ## <a name="manage-sql-database-failover-using-the-rest-api"></a>REST API を使用して SQL データベース フェールオーバーを管理する
-| API | Description |
+| API | [説明] |
 | --- | --- |
 | [Create または Update Database (createMode=Restore)](/rest/api/sql/Databases/CreateOrUpdate) |プライマリまたはセカンダリ データベースを作成、更新、または復元します。 |
 | [Get Create or Update Database Status](/rest/api/sql/Databases/CreateOrUpdate) |復元操作中にステータスを返します。 |
@@ -190,12 +190,12 @@ DR リージョン内のアプリケーションで使う接続文字列を変�
 | [Update Failover Group](/rest/api/sql/failovergroups/update) | フェールオーバー グループを更新します。 |
 |  | |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * サンプル スクリプトは、以下を参照してください。
    - [アクティブ geo レプリケーションを使用して、単一のデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)
    - [アクティブ geo レプリケーションを使用して、プールされているデータベースを構成およびフェールオーバーする](scripts/sql-database-setup-geodr-and-failover-pool-powershell.md)
    - [単一のデータベースのフェールオーバー グループを構成およびフェールオーバーする (プレビュー)](scripts/sql-database-setup-geodr-failover-database-failover-group-powershell.md)
-* ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)
+* ビジネス継続性の概要およびシナリオについては、[ビジネス継続性の概要](sql-database-business-continuity.md)を参照してください。
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関する記事を参照してください。
 * 新しいプライマリ サーバーとデータベースの認証要件については、 [障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関する記事を参照してください。

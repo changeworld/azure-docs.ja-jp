@@ -55,6 +55,7 @@
 ### [パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD サービス アカウント](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [インストール ウィザード](active-directory-aadconnectsync-installation-wizard.md)
+### [UserPrincipalName が設定される方法](active-directory-aadconnect-userprincipalname.md)
 ### [既定の構成の変更](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)
 ### [フィルター処理の構成](active-directory-aadconnectsync-configure-filtering.md)
 ### [Scheduler](active-directory-aadconnectsync-feature-scheduler.md)

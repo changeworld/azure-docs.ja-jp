@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
-ms.openlocfilehash: 0d1e3c826e61b8dee264e1c01fd2d54ba7ebb636
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 8186e86bd7a441fcefb0759d75ded6f063a4722f
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>Azure App Service での ClearDB MySql データベースの使用に関してよく寄せられる質問 (FAQ)
 この FAQ では、Azure Web Apps での ClearDB MySQL データベースの使用と購入に関してよく寄せられる質問に答えます。
@@ -74,13 +74,14 @@ Web Apps には Basic 以上の価格レベルを使用してください。 Cle
 データベース関連の問題については、 [ClearDB のサポート](https://www.cleardb.com/developers/help/support) にお問い合わせください。 その際、Azure サブスクリプションの情報を提供できるよう準備しておいてください。
 
 ## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>ClearDB MySQL データベース クラスター ソリューションに追加ユーザーを作成できますか。
+
 いいえ。 追加ユーザーを作成することはできません。ただし、ClearDB データベース クラスターに追加のデータベースを作成することはできます。  
 
 ## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>Basic/Pro シリーズのデータベースを、Planetary プランと同様、ClearDB ポータルですぐにインプレース アップグレードできますか。
 はい、Basic シリーズのデータベースはインプレース アップグレードできます (Basic 60 ～ Basic 500)。 Pro シリーズも、Pro 60 を除き、インプレース アップグレードできます (Pro 125 ～ Pro 1000)。 現在、Pro 60 データベースのアップグレードはサポートされていません。 
 
 ## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>サブスクリプションから別のサブスクリプションにリソースを移行すると、ClearDB MySQL データベースも移行されますか。
-サブスクリプション間でリソースの移行を実行する場合、いくつかの [制限事項](app-service/app-service-move-resources.md) が適用されます。 ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。 Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。 事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。 
+サブスクリプション間でリソースの移行を実行する場合、いくつかの [制限事項](azure-resource-manager/resource-group-move-resources.md#app-service-limitations) が適用されます。 ClearDB MySQL データベースは、サード パーティのサービスであるため、Azure サブスクリプションの移行時にこのデータベースは移行されません。 Azure リソースを移行する前に MySQL データベースの移行に対処していない場合、ClearDB MySQL データベースが無効化される可能性があります。 事前に手動でデータベースを移行してから、Web アプリの Azure サブスクリプションを移行してください。 
 
 ## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>サブスクリプションで使用制限に達しました。 制限を削除し、App Service はオンラインになっていますが、データベースにアクセスできません。 ClearDB データベースを再有効化するには、どうしたらいいですか。
 データベースを再有効化するには、[ClearDB サポート](https://www.cleardb.com/developers/help/support)にお問い合わせください。 その際、Azure サブスクリプションの情報とデータベース名をサポートに提供してください。

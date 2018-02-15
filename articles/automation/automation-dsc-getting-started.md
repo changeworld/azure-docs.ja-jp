@@ -14,16 +14,16 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: magoedte;gwallace
-ms.openlocfilehash: 45afb09f09e754e37ae8dba02e1e16b3fde1e408
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: ff23b4f5022597763728ccf301966c34c5423b34
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC の使用
 この記事では、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。 Azure Automation DSC の概要については、「 [Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。 DSC のドキュメントについては、「 [Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/PowerShell/dsc/overview)」を参照してください。
 
-この記事では、Azure Automation DSC を使用するための詳しい手順を示しています。 この記事で説明されている手順を実行せずに、既に設定されているサンプル環境を使用する場合は、次の [Resource Manager テンプレート](https://github.com/azureautomation/automation-packs/tree/master/102-sample-automation-setup)を使用できます。 このテンプレートを使用すると、Azure Automation DSC で管理される Azure VM を含む、完成した Azure Automation DSC 環境が設定されます。
+この記事では、Azure Automation DSC を使用するための詳しい手順を示しています。 この記事で説明される手順を実行せずに、既に設定済みのサンプル環境を使用する場合は、次の Resource Manager テンプレートを使用できます。このテンプレートでは、Azure Automation DSC によって管理される Azure VM を含む、完成した Azure Automation DSC 環境が設定されます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事の例を完了するには、次のものが必要です。
@@ -134,11 +134,11 @@ Azure Automation DSC を使用すると、Azure VM (クラシックと Resource 
 ### <a name="to-onboard-an-azure-resource-manager-vm-for-management-by-azure-automation-dsc"></a>Azure Automation DSC を使用して管理のために Azure Resource Manager VM をオンボードするには
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側の **[すべてのリソース]** をクリックし、使用している Automation アカウントの名前をクリックします。
-3. **Automation アカウント**ページで、**[構成管理]** の **[DSC ノード]** をクリックします。
+3. **Automation アカウント** ページで、**[構成管理]** の **[DSC ノード]** をクリックします。
 4. **[DSC ノード]** ページで、**[Azure VM の追加]** をクリックします。
    
     ![[Azure VM の追加] ボタンが強調表示された [DSC ノード] ページのスクリーンショット](./media/automation-dsc-getting-started/OnboardVM.png)
-5. **[仮想マシン]** ページで、自分の VM を選択します。  **[Azure VM の追加]** ページで、**[オンボードする仮想マシンの選択]** をクリックします。
+5. [仮想マシン] ページで、自分の VM を選択します。 **[Azure VM の追加]** ページで、**[オンボードする仮想マシンの選択]** をクリックします。
 6. **[接続]**をクリックします。
    
    > [!IMPORTANT]

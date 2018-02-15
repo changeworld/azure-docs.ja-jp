@@ -29,4 +29,4 @@ Microsoft Graph API には、ユーザーのプロファイルを読み取るた
 
 <!--end-collapse-->
 
-[!INCLUDE  [Help and support](active-directory-develop-help-support-include.md)]
+[!INCLUDE [Help and support](active-directory-develop-help-support-include.md)]

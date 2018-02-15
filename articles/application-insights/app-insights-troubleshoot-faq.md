@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9f6cf019d681ce6e844481ca58de1ff472b3d32c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 
@@ -152,7 +152,7 @@ Web クライアントの IP アドレス (IPv4 または IPv6) の検索に [Ge
 
 コードでそのようなデータを送信する場合は可能性があります。 また、スタック トレース内の変数に PII が含まれている場合にも、送信される可能性があります。 その PII の処理が適切に行われるように、開発チームでリスク評価を実施する必要があります。 [こちら](app-insights-data-retention-privacy.md)から、データ リテンション期間とプライバシーについての詳細を確認してください。
 
-クライアントの Web アドレスの最終オクテットは、ポータルでの取り込み後に必ず 0 に設定されます。
+geo ロケーション属性の検索後、クライアント Web アドレスの**すべて**のオクテットは常に 0 に設定されます。
 
 ## <a name="my-ikey-is-visible-in-my-web-page-source"></a>Web ページのソースに自分の iKey が表示されます。 
 

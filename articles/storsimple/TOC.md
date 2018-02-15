@@ -71,7 +71,7 @@
 #### [ベスト プラクティス](https://gallery.technet.microsoft.com/Azure-StorSimple-8000-72b01b68)
 
 
-### [インストール]
+### Install
 #### [安全性を確認する](storsimple-8000-safety.md)
 #### [8100 を開梱、ラック設置、ケーブル接続する](storsimple-8100-hardware-installation.md)
 #### [8600 を開梱、ラック設置、ケーブル接続する](storsimple-8600-hardware-installation.md)
@@ -236,6 +236,7 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [マーケティング ブログ](http://blogs.technet.com/b/cis/)
 ## [マーケティング](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
+## [StorSimple サポート オプション](storsimple-8000-support-options.md)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
 ## [料金](https://azure.microsoft.com/pricing/details/storsimple/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

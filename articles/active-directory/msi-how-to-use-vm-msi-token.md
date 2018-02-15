@@ -3,7 +3,7 @@ title: "アクセス トークンの取得に Azure VM の管理対象サービ�
 description: "Azure VM の MSI を使用して OAuth アクセス トークンを取得するための詳細な手順と例。"
 services: active-directory
 documentationcenter: 
-author: bryanla
+author: daveba
 manager: mtillman
 editor: 
 ms.service: active-directory
@@ -12,12 +12,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/01/2017
-ms.author: bryanla
-ms.openlocfilehash: 6a02b52e7103c9b6e60b09617026fbf6010e76c8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.author: daveba
+ms.openlocfilehash: 3d9d4d682a25d11129e81855a6bf149ac1d5cff0
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-token-acquisition"></a>トークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法 
 
@@ -60,7 +60,7 @@ GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.
 Metadata: true
 ```
 
-| 要素 | 説明 |
+| 要素 | [説明] |
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
 | `http://localhost:50342/oauth2/token` | 構成可能な MSI エンドポイント。既定のポートは 50342 です。 |
@@ -83,7 +83,7 @@ Content-Type: application/json
 }
 ```
 
-| 要素 | 説明 |
+| 要素 | [説明] |
 | ------- | ----------- |
 | `access_token` | 要求されたアクセス トークン。 セキュリティで保護された REST API を呼び出すとき、トークンは `Authorization` 要求ヘッダー フィールドに "ベアラー" トークンとして埋め込まれ、API が呼び出し元を認証できるようにします。 | 
 | `refresh_token` | MSI では使用されません。 |
@@ -253,7 +253,7 @@ MSI エンドポイントは、HTTP 応答メッセージのヘッダーに含�
 
 エラーが発生すると、対応する HTTP 応答本文に、JSON とエラーの詳細が含まれます。
 
-| 要素 | 説明 |
+| 要素 | [説明] |
 | ------- | ----------- |
 | error   | エラー識別子。 |
 | error_description | エラーの詳細な説明。 **エラーの説明は、予告なく変更になる場合があります。エラーの説明に含まれる値に基づいて分岐するコードを作成しないでください。**|

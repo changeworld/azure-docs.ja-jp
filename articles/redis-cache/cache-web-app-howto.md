@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 05/09/2017
 ms.author: wesmc
-ms.openlocfilehash: c0cf5baa71ce599cd5c20d34c42bd2c578114efe
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 98750c4f8d2449fb4fdf68b03a00d846e636a93a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="how-to-create-a-web-app-with-redis-cache"></a>Redis Cache で Web アプリを作成する方法
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/24/2018
 
 このチュートリアルでは、Visual Studio 2017 を使用して ASP.NET Web アプリケーションを作成し Azure App Service の Web アプリにデプロイする方法を紹介します。 サンプル アプリケーションでは、チームの一連の統計情報をデータベースから取得して表示します。また Azure Redis Cache を使用して、キャッシュにデータを保存したりキャッシュからデータを取得したりするための各種の方法を紹介しています。 チュートリアルの最後には、実際にデータベースの読み取りと書き込みを行う Web アプリが完成します。Web アプリは、Azure Redis Cache を使って最適化され、Azure でホストされます。
 
-学習内容:
+学習内容は、次のとおりです。
 
 * ASP.NET MVC 5 Web アプリケーションを Visual Studio で作成する方法。
 * Entity Framework を使用してデータベースのデータにアクセスする方法。
@@ -84,7 +84,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
 ### <a name="add-the-entity-framework-nuget-package"></a>Entity Framework NuGet パッケージの追加
 
-1. **[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+1. Visual Studio で、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。
 2. **[パッケージ マネージャー コンソール]** ウィンドウで、次のコマンドを実行します。
     
     ```
@@ -185,15 +185,15 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 1. **ソリューション エクスプローラー**で、**web.config** をダブルクリックして開きます。
    
     ![web.config][cache-web-config]
-2. 次の `connectionStrings` セクションを追加します。 接続文字列の名前は、Entity Framework のデータベース コンテキスト クラス ( `TeamContext`) の名前と一致している必要があります。
+2. 次の `connectionStrings` セクションを `configuration` セクション内に追加します。 接続文字列の名前は、Entity Framework のデータベース コンテキスト クラス ( `TeamContext`) の名前と一致している必要があります。
 
     ```xml
     <connectionStrings>
-        <add name="TeamContext" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True"     providerName="System.Data.SqlClient" />
+        <add name="TeamContext" connectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\Teams.mdf;Integrated Security=True" providerName="System.Data.SqlClient" />
     </connectionStrings>
     ```
 
-    次の例に示すように、`configSections` の後に続けて、新しい `connectionStrings` セクションを追加できます。
+    次の例は、`configuration` セクションの `configSections` の後に続く新しい `connectionStrings` セクションを示しています。
 
     ```xml
     <configuration>
@@ -275,7 +275,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 ![Starter application][cache-starter-application]
 
 ## <a name="configure-the-application-to-use-redis-cache"></a>Redis Cache を使用するようにアプリケーションを構成する
-このセクションでは、 [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) キャッシュ クライアントを使用して、Azure Redis Cache インスタンスで Contoso チームの統計情報を格納したり、取得したりするようにサンプル アプリケーションを構成します。
+このセクションでは、[StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) キャッシュ クライアントを使用して、Azure Redis Cache インスタンスで Contoso チームの統計情報を格納したり、取得したりするようにサンプル アプリケーションを構成します。
 
 * [StackExchange.Redis を使用するようにアプリケーションを構成する](#configure-the-application-to-use-stackexchangeredis)
 * [キャッシュまたはデータベースから結果を返すように TeamsController クラスを更新する](#update-the-teamscontroller-class-to-return-results-from-the-cache-or-the-database)
@@ -283,7 +283,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 * [キャッシュと連動するように Teams Index ビューを更新する](#update-the-teams-index-view-to-work-with-the-cache)
 
 ### <a name="configure-the-application-to-use-stackexchangeredis"></a>StackExchange.Redis を使用するようにアプリケーションを構成する
-1. Visual Studio で StackExchange.Redis NuGet パッケージを使用してクライアント アプリケーションを構成するには、**[ツール]** メニューで **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+1. Visual Studio で [StackExchange.Redis](https://github.com/StackExchange/StackExchange.Redis) NuGet パッケージを使用してクライアント アプリケーションを構成するには、**[ツール]、[NuGet パッケージ マネージャー]、[パッケージ マネージャー コンソール]** の順にクリックします。
 2. [`Package Manager Console`] ウィンドウで、次のコマンドを実行します。
     
     ```
@@ -322,14 +322,15 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 
 6. コンピューター上に `WebAppPlusCacheAppSecrets.config` という名前のファイルを作成し、サンプル アプリケーションのソース コードでチェックインされない場所に配置します (どこかにチェックインすることを決めた場合)。 この例では、`AppSettingsSecrets.config` ファイルを `C:\AppSecrets\WebAppPlusCacheAppSecrets.config` に配置しています。
    
-    `WebAppPlusCacheAppSecrets.config` ファイルを編集し、次の内容を追加します。 この情報は、アプリケーションをローカルで実行する場合に、Azure Redis Cache インスタンスへの接続に使用されます。 このチュートリアルの後半で、Azure Redis Cache インスタンスをプロビジョニングし、キャッシュの名前とパスワードを更新します。 Azure にデプロイした場合、キャッシュ接続情報は、このファイルからではなく Web アプリのアプリケーション設定から取得されます。したがってサンプル アプリケーションをローカルで実行することを予定していない場合は、このファイルの作成およびこのファイルを参照する後続の手順を省略してかまいません。 `WebAppPlusCacheAppSecrets.config` は、アプリケーションと一緒に Azure にデプロイするものではないため、アプリケーションをローカルで実行する場合以外は必要ありません。
+    `WebAppPlusCacheAppSecrets.config` ファイルを編集し、次の内容を追加します。
 
     ```xml
     <appSettings>
-      <add key="CacheConnection" value="MyCache.redis.cache.windows.net,abortConnect=false,ssl=true,password=..."/>
+      <add key="CacheConnection" value="YourCacheName.redis.cache.windows.net,abortConnect=false,ssl=true,password=YourAccessKey"/>
     </appSettings>
     ```
 
+    この情報は、アプリケーションをローカルで実行する場合に、Azure Redis Cache インスタンスへの接続に使用されます。 このチュートリアルの後半で、Azure Redis Cache インスタンスをプロビジョニングし、キャッシュの名前とパスワードを更新します。 Azure にデプロイした場合、キャッシュ接続情報は、このファイルからではなく Web アプリのアプリケーション設定から取得されます。したがってサンプル アプリケーションをローカルで実行することを予定していない場合は、このファイルの作成およびこのファイルを参照する後続の手順を省略してかまいません。 `WebAppPlusCacheAppSecrets.config` は、アプリケーションと一緒に Azure にデプロイするものではないため、アプリケーションをローカルで実行する場合以外は必要ありません。
 
 1. **ソリューション エクスプローラー**で、**web.config** をダブルクリックして開きます。
    
@@ -338,7 +339,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
    
    * 変更前: `<appSettings>`
    * 変更後: ` <appSettings file="C:\AppSecrets\WebAppPlusCacheAppSecrets.config">`
-     
+  
    `<appSettings>` 要素内のマークアップは、ASP.NET ランタイムによって外部ファイルの内容と結合されます。 指定したファイルが見つからない場合、このファイル属性は無視されます。 このアプリケーションのソース コードにシークレット (キャッシュへの接続文字列) は含まれていません。 Web アプリを Azure にデプロイするときに、`WebAppPlusCacheAppSecrests.config` ファイルはデプロイされません (それが目的です)。 Azure には、これらのシークレットを指定する方法がいくつかあります。このチュートリアルでは、以降の手順で [Azure リソースをプロビジョニング](#provision-the-azure-resources)するときに自動的にシークレットが構成されます。 Azure におけるシークレットの扱いの詳細については、「[Best practices for deploying passwords and other sensitive data to ASP.NET and Azure App Service (ASP.NET および Azure App Service にパスワードや機密データをデプロイするためのベスト プラクティス)](http://www.asp.net/identity/overview/features-api/best-practices-for-deploying-passwords-and-other-sensitive-data-to-aspnet-and-azure)」を参照してください。
 
 ### <a name="update-the-teamscontroller-class-to-return-results-from-the-cache-or-the-database"></a>キャッシュまたはデータベースから結果を返すように TeamsController クラスを更新する
@@ -576,7 +577,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
 ### <a name="update-the-create-edit-and-delete-methods-to-work-with-the-cache"></a>キャッシュと連動するように Create、Edit、Delete の各メソッドを更新する
 このサンプルの過程で生成されたスキャフォールディング コードには、チームの追加、編集、削除を行うメソッドが含まれています。 キャッシュ内のデータは、チームが追加、編集、削除されるたびに古くなります。 このセクションでは、キャッシュされたチームを消去することによってキャッシュとデータベースの同期状態を維持するように、この 3 つのメソッドに変更を加えます。
 
-1. `TeamsController` クラスの `Create(Team team)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
+1. `TeamsController` クラスの `Create(Team team)` メソッドに移動します。 次の例のように、`ClearCachedTeams` メソッドの呼び出しを追加します。
 
     ```csharp
     // POST: Teams/Create
@@ -601,7 +602,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ```
 
 
-1. `TeamsController` クラスの `Edit(Team team)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
+1. `TeamsController` クラスの `Edit(Team team)` メソッドに移動します。 次の例のように、`ClearCachedTeams` メソッドの呼び出しを追加します。
 
     ```csharp
     // POST: Teams/Edit/5
@@ -625,7 +626,7 @@ Visual Studio 2013 を持っている場合は、 [最新の Azure SDK for Visua
     ```
 
 
-1. `TeamsController` クラスの `DeleteConfirmed(int id)` メソッドに移動します。 次の例のように、 `ClearCachedTeams` メソッドの呼び出しを追加します。
+1. `TeamsController` クラスの `DeleteConfirmed(int id)` メソッドに移動します。 次の例のように、`ClearCachedTeams` メソッドの呼び出しを追加します。
 
     ```csharp
     // POST: Teams/Delete/5
@@ -704,7 +705,7 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 * App Service Web Apps
 * SQL Database
 
-新しいリソース グループまたは既存のリソース グループにこれらのサービスをデプロイするには、次の **[Deploy to Azure (Azure へのデプロイ)]** ボタンをクリックします。
+新しいリソース グループまたは既存のリソース グループにこれらのサービスをデプロイするには、次の **[Deploy to Azure]\(Azure へのデプロイ\)** ボタンをクリックします。
 
 [![Azure へのデプロイ][deploybutton]](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-web-app-redis-cache-sql-database%2Fazuredeploy.json)
 
@@ -804,11 +805,11 @@ Azure でアプリケーションをホストするにはまず、アプリケ�
 使用するキャッシュを選択または作成したら、Azure Portal でそのキャッシュの保存先を参照し、キャッシュの[ホスト名](cache-configure.md#properties)と[アクセス キー](cache-configure.md#access-keys)を取得します。 手順については、「 [Redis Cache の設定の構成](cache-configure.md#configure-redis-cache-settings)」を参照してください。
 
 1. このチュートリアルの「[Redis Cache を使用するようにアプリケーションを構成する](#configure-the-application-to-use-redis-cache)」の手順で作成した `WebAppPlusCacheAppSecrets.config` ファイルを任意のエディターで開きます。
-2. `value` 属性の `MyCache.redis.cache.windows.net` を実際のキャッシュの[ホスト名](cache-configure.md#properties)に置き換え、そのキャッシュの[プライマリ キーまたはセカンダリ キー](cache-configure.md#access-keys)をパスワードとして指定します。
+2. `value` 属性の `YourCacheName.redis.cache.windows.net` を実際のキャッシュの[ホスト名](cache-configure.md#properties)に置き換え、`YourAccessKey` をパスワードとしてそのキャッシュの[プライマリ キーまたはセカンダリ キー](cache-configure.md#access-keys)に置き換えます。
 
     ```xml
     <appSettings>
-      <add key="CacheConnection" value="MyCache.redis.cache.windows.net,abortConnect=false,ssl=true,password=..."/>
+      <add key="CacheConnection" value="YourCacheName.redis.cache.windows.net,abortConnect=false,ssl=true,password=YourAccessKey"/>
     </appSettings>
     ```
 

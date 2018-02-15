@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 12/13/2017
 ms.author: cephalin;cfowler
 ms.custom: mvc
-ms.openlocfilehash: 9a41c08868de853ba82874a63b80316ec834858a
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: e38c8e7d6211c7c7b6bbf3a501ce53c2808ee0fc
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-a-php-web-app-in-azure"></a>Azure に PHP Web アプリを作成する
 
 > [!NOTE]
-> この記事では、Windows 上の App Service にアプリを展開します。 _Linux_ 上の App Service に展開するには、「[App Service on Linux での PHP Web アプリの作成](./containers/quickstart-php.md)」をご覧ください。
+> この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service に展開するには、「[App Service on Linux での PHP Web アプリの作成](./containers/quickstart-php.md)」をご覧ください。
 >
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に PHP アプリをデプロイする方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Cloud Shell で Web アプリを作成し、[ZIP ファイル](app-service-deploy-zip.md)を使って Web アプリに PHP のサンプル コードを展開します。
@@ -33,13 +33,13 @@ ms.lasthandoff: 12/15/2017
 
 以下の手順は、Mac、Windows、または Linux コンピューターを使って実行できます。 前提条件のインストールを終えてから、以降の手順を完了するまでに約 5 分かかります。
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>前提条件
 
 このクイック スタートを完了するには、以下が必要です。
 
 * <a href="https://php.net" target="_blank">PHP をインストールする</a>
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="download-the-sample-locally"></a>サンプルをローカルでダウンロードする
 
@@ -67,17 +67,15 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Upload zip file](../../includes/app-service-web-upload-zip.md)]
-
 [!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)]
 
 [!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)]
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
 
-Cloud Shell で [az webapp create](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使って、`myAppServicePlan` App Service プランに Web アプリを作成します。 
+Cloud Shell で [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用して、`myAppServicePlan` App Service プランに Web アプリを作成します。 
 
-次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) を実行します。 
+次の例では、`<app_name>` をグローバルに一意のアプリ名に置き換えてください (有効な文字は `a-z`、`0-9`、`-`)。 ランタイムは `PHP|7.0` に設定されています。 サポートされているすべてのランタイムを確認するには、[`az webapp list-runtimes`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_list_runtimes) を実行します。 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app_name> --runtime "PHP|7.0"
@@ -105,15 +103,17 @@ Web アプリが作成されると、Azure CLI によって次の例のような
 http://<app name>.azurewebsites.net
 ```
 
+新しい Web アプリは次のようになります。
+
 ![空の Web アプリ ページ](media/app-service-web-get-started-php/app-service-web-service-created.png)
 
-[!INCLUDE [Deploy uploaded ZIP file](../../includes/app-service-web-deploy-zip.md)]
+[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 
 ## <a name="browse-to-the-app"></a>アプリの参照
 
 Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。
 
-```bash
+```
 http://<app_name>.azurewebsites.net
 ```
 
@@ -141,13 +141,7 @@ zip -r myUpdatedAppFiles.zip .
 Compress-Archive -Path * -DestinationPath myUpdatedAppFiles.zip
 ``` 
 
-「[ZIP ファイルのアップロード](#upload-the-zip-file)」と同じ手順を使って、Cloud Shell にこの新しい ZIP ファイルをアップロードします。
-
-次に、Cloud Shell で、アップロードした ZIP ファイルを再び展開します。
-
-```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResouceGroup --name <app_name> --src clouddrive/myUpdatedAppFiles.zip
-```
+「[ZIP ファイルのアップロード](#upload-the-zip-file)」と同じ手順を使って、App Service にこの新しい ZIP ファイルをデプロイします。
 
 「**アプリの参照**」の手順で開いたブラウザー ウィンドウに戻り、ページを更新します。
 

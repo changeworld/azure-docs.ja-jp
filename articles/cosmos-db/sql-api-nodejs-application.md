@@ -15,11 +15,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: mimig
-ms.openlocfilehash: 043de0e8a934a2fd92522eeb70261203afac180e
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 2c64c1dfa558576b47f47c718a80d46ad6687e6e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="_Toc395783175"></a>Azure Cosmos DB を使用した Node.js Web アプリケーションの作成
 > [!div class="op_single_selector"]
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/18/2017
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Node.js][Node.js] バージョン v0.10.29 以降
+* [Node.js][Node.js] バージョン v0.10.29 以降 Node.js 6.10 以降をお勧めします。
 * [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 * [Git][Git]。
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 12/18/2017
    
     ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-express.png)
 
-    次に、アプリケーションを停止するために、ターミナル ウィンドウで Ctrl + C キーを押し、**[y]** をクリックして、バッチ ジョブを終了します。
+    次に、アプリケーションを停止するために、ターミナル ウィンドウで Ctrl + C キーを押します。(Windows コンピューターのみ) **[y]** をクリックして、バッチ ジョブを終了します。
 
 ## <a name="_Toc395783179"></a>手順 3: 追加モジュールのインストール
 **package.json** ファイルは、プロジェクトのルートに作成されるファイルの 1 つです。 このファイルには、Node.js アプリケーションで必要な追加モジュールのリストが含まれます。 このファイルは、後でこのアプリケーションを Azure Websites にデプロイするときに、アプリケーションのサポートのために Azure にインストールする必要があるモジュールを判断するために使用されます。 このチュートリアルでは、追加で 2 つのパッケージをインストールする必要があります。
@@ -91,29 +91,6 @@ ms.lasthandoff: 12/18/2017
 2. npm で **documentdb** モジュールをインストールします。 このモジュールで、Azure Cosmos DB のすべての操作を行います。
    
         npm install documentdb --save
-3. アプリケーションの **package.json** ファイルを簡単に確認すると、追加モジュールが表示されます。 このファイルは、アプリケーションの実行時にどのパッケージをダウンロードし、インストールする必要があるかを Azure に伝えます。 表示される内容は以下の例のようになります。
-   
-        {
-          "name": "todo",
-          "version": "0.0.0",
-          "private": true,
-          "scripts": {
-            "start": "node ./bin/www"
-          },
-          "dependencies": {
-            "async": "^2.1.4",
-            "body-parser": "~1.15.2",
-            "cookie-parser": "~1.4.3",
-            "debug": "~2.2.0",
-            "documentdb": "^1.10.0",
-            "express": "~4.14.0",
-            "jade": "~1.11.0",
-            "morgan": "~1.7.0",
-            "serve-favicon": "~2.3.0"
-          }
-        }
-   
-    これにより、アプリケーションがこれらの追加モジュールに依存していることが Node に (後で Azure にも) 通知されます。
 
 ## <a name="_Toc395783180"></a>手順 4: ノード アプリケーションで Azure Cosmos DB サービスを使用する
 最初の設定と構成を行った後は、いよいよ Azure Cosmos DB を使ってコードを作成する作業に入ります。
@@ -384,13 +361,13 @@ ms.lasthandoff: 12/18/2017
    
         var config = {}
    
-        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
-        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys page on http://portal.azure.com]";
+        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys page on http://portal.azure.com]";
         config.databaseId = "ToDoList";
         config.collectionId = "Items";
    
         module.exports = config;
-3. [Microsoft Azure Portal](https://portal.azure.com) の Azure Cosmos DB アカウントの [キー] ブレードにある値を使用して、**config.js** ファイルの HOST および AUTH_KEY の値を更新します。
+3. [Microsoft Azure Portal](https://portal.azure.com) の Azure Cosmos DB アカウントの [キー] ページにある値を使用して、**config.js** ファイルの HOST および AUTH_KEY の値を更新します。
 4. **config.js** ファイルを保存して閉じます。
 
 ### <a name="modify-appjs"></a>app.js の変更
@@ -513,7 +490,7 @@ ms.lasthandoff: 12/18/2017
 3. ページが更新され、ToDo リストに新しく作成された項目が表示されます。
    
     ![ToDo リストに新しい項目があるアプリケーションのスクリーン ショット](./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png)
-4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]**をクリックします。 既に作成したドキュメントが更新されます。
+4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]**をクリックします。 既に作成したドキュメントが更新され、ビューから削除されます。
 
 5. アプリケーションを停止するために、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、**[Y]** をクリックしてバッチ ジョブを終了します。
 

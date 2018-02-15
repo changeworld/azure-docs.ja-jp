@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: bdc64733b75fd809cf0245986aa96370343c1a34
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: d0a8a3726ac3c33668d8ad91c97c35937c299b46
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>Azure Event Grid の Blob Storage 用のイベント スキーマ
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 11/11/2017
 
 Blob Storage から出力されるイベントの種類は次のとおりです。
 
-| イベントの種類 | Description |
+| イベントの種類 | [説明] |
 | ---------- | ----------- |
 | Microsoft.Storage.BlobCreated | BLOB が作成されたときに発生します。 |
 | Microsoft.Storage.BlobDeleted | BLOB が削除されたときに発生します。 |
@@ -51,7 +51,9 @@ Blob Storage から出力されるイベントの種類は次のとおりです�
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
@@ -74,7 +76,9 @@ Blob Storage から出力されるイベントの種類は次のとおりです�
     "storageDiagnostics": {
       "batchId": "b68529f3-68cd-4744-baa4-3c0498ec19f0"
     }
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
  
@@ -82,31 +86,33 @@ Blob Storage から出力されるイベントの種類は次のとおりです�
 
 イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | [説明] |
 | -------- | ---- | ----------- |
-| トピック | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 |
-| subject | string | 発行元が定義したイベントの対象のパス。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
+| トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
+| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | 文字列 | イベントの一意識別子。 |
 | data | オブジェクト | Blob Storage イベントのデータ。 |
+| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 型 | Description |
+| プロパティ | type | [説明] |
 | -------- | ---- | ----------- |
-| api | string | イベントのトリガーとなった操作。 |
-| clientRequestId | string | クライアントによって生成される opaque 値 (文字数の上限は 1 KB)。 Storage Analytics のログを有効にすると、Analytics のログに記録されます。 |
-| requestId | string | 要求の一意の識別子。 要求のトラブルシューティングに使用されます。 |
-| eTag | string | この値を使用することで、条件に応じて操作を実行することができます。 |
-| contentType | string | BLOB に関して指定されたコンテンツの種類。 |
+| api | 文字列 | イベントのトリガーとなった操作。 |
+| clientRequestId | 文字列 | クライアントによって生成される opaque 値 (文字数の上限は 1 KB)。 Storage Analytics のログを有効にすると、Analytics のログに記録されます。 |
+| requestId | 文字列 | 要求の一意の識別子。 要求のトラブルシューティングに使用されます。 |
+| eTag | 文字列 | この値を使用することで、条件に応じて操作を実行することができます。 |
+| contentType | 文字列 | BLOB に関して指定されたコンテンツの種類。 |
 | contentLength | integer | BLOB のサイズ (単位: バイト)。 |
-| blobType | string | BLOB の種類。 |
-| url | string | BLOB へのパス。 |
-| sequencer | string | ユーザーによって制御される値。要求を追跡する際に使用できます。 |
+| blobType | 文字列 | BLOB の種類。 有効な値は "BlockBlob" または "PageBlob" です。 |
+| url | 文字列 | BLOB へのパス。 |
+| sequencer | 文字列 | ユーザーによって制御される値。要求を追跡する際に使用できます。 |
 | storageDiagnostics | オブジェクト | ストレージ診断に関する情報。 |
  
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

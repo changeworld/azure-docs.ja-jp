@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/09/2017
+ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: 335928776e1e62caf2855cd5a5684ccaf37f73cd
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: a9a062ebb8d6e3b37d917064209eda618d0dd308
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="device-to-cloud-communications-guidance"></a>device-to-cloud 通信に関するガイダンス
 デバイス アプリからソリューション バック エンドに情報を送信する場合、IoT Hub では、次の 3 つのオプションを公開します。

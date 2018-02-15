@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 01/31/2018
 ms.author: sethm
-ms.openlocfilehash: f927aa7a33a650354abd090b6280795875ab693f
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: efcfad2834c2d6775c6693f5c705a0531b2650d6
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="service-bus-messaging-exceptions"></a>Service Bus メッセージングの例外
 この記事では、Microsoft Azure Service Bus のメッセージング API によって生成される例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
 
 ## <a name="exception-categories"></a>例外のカテゴリ
-メッセージング API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。 例外の意味と原因は、メッセージング エンティティの種類 (キュー/トピックまたは Event Hubs) によって異なる場合があります。
+メッセージング API で生成される例外をカテゴリ別に分類し、修復のために実行できる関連するアクションと共に以下に示します。 例外の意味と原因は、メッセージング エンティティの種類によって異なる場合があります。
 
 1. ユーザー コードのエラー ([System.ArgumentException](https://msdn.microsoft.com/library/system.argumentexception.aspx)、[System.InvalidOperationException](https://msdn.microsoft.com/library/system.invalidoperationexception.aspx)、[System.OperationCanceledException](https://msdn.microsoft.com/library/system.operationcanceledexception.aspx)、[System.Runtime.Serialization.SerializationException](https://msdn.microsoft.com/library/system.runtime.serialization.serializationexception.aspx))。 一般アクション: 処理を実行する前にコードの修正を試みます。
 2. セットアップ/構成エラー ([Microsoft.ServiceBus.Messaging.MessagingEntityNotFoundException](/dotnet/api/microsoft.azure.servicebus.messagingentitynotfoundexception)、[System.UnauthorizedAccessException](https://msdn.microsoft.com/library/system.unauthorizedaccessexception.aspx))。 一般アクション: 構成を確認し、必要に応じて変更します。
@@ -66,7 +66,7 @@ ms.lasthandoff: 10/23/2017
 ### <a name="queues-and-topics"></a>キューとトピック
 キューとトピックは、通常、キューのサイズに関連します。 エラー メッセージのプロパティには、次の例のようにさらに詳しい情報が含まれます。
 
-```
+```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException
 Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-xxx-xxx’. 
     Size of entity in bytes:1073742326, Max entity size in bytes:
@@ -77,9 +77,9 @@ Message: The maximum entity size has been reached or exceeded for Topic: ‘xxx-
 
 ### <a name="namespaces"></a>名前空間
 
-名前空間の場合、[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) はアプリケーションが名前空間への最大接続数を超えたことを示す場合があります。 次に例を示します。
+名前空間の場合、[QuotaExceededException](/dotnet/api/microsoft.azure.servicebus.quotaexceededexception) はアプリケーションが名前空間への最大接続数を超えたことを示す場合があります。 例: 
 
-```
+```Output
 Microsoft.ServiceBus.Messaging.QuotaExceededException: ConnectionsQuotaExceeded for namespace xxx.
 <tracking-id-guid>_G12 ---> 
 System.ServiceModel.FaultException`1[System.ServiceModel.ExceptionDetail]: 
@@ -94,9 +94,6 @@ ConnectionsQuotaExceeded for namespace xxx.
     この問題を解決するには、他のキューの場合と同様に、配信不能キューからメッセージを読み取り、完了します。 配信不能キューのパスのフォーマットに役立つ [FormatDeadLetterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formatdeadletterpath) メソッドを使用できます。
 2. **受信者の停止** 受信者によるキューまたはサブスクリプションからのメッセージの受信が停止されています。 これを特定するには、メッセージの完全な詳細情報を表示する [QueueDescription.MessageCountDetails](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails) プロパティを確認します。 [ActiveMessageCount](/dotnet/api/microsoft.servicebus.messaging.messagecountdetails.activemessagecount) プロパティ値が大きいか増えている場合は、メッセージが読み取られる速度が書き込まれる速度に追いついていません。
 
-### <a name="event-hubs"></a>Event Hubs
-Event Hubs には、Event Hub あたり 20 個のコンシューマー グループという上限があります。 それ以上作成しようとすると、 [QuotaExceededException](/dotnet/api/microsoft.servicebus.messaging.quotaexceededexception)が発生します。 
-
 ## <a name="timeoutexception"></a>TimeoutException
 [TimeoutException](https://msdn.microsoft.com/library/system.timeoutexception.aspx) は、ユーザーが開始した操作が操作タイムアウトより時間がかかっていることを示します。 
 
@@ -107,7 +104,7 @@ Event Hubs には、Event Hub あたり 20 個のコンシューマー グルー
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus の詳細な .NET API リファレンスについては、「[Azure .NET API reference](/dotnet/api/overview/azure/service-bus)」(Azure .NET API リファレンス) を参照してください。
 

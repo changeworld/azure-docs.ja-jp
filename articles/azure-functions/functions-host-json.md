@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: tdykstra
-ms.openlocfilehash: 522d0590595b0fc0fef503599f1677658f223bd8
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 58fc58049e346d60c0882a91bd04485746a15cbd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions の host.json のリファレンス
 
@@ -49,6 +49,13 @@ ms.lasthandoff: 11/30/2017
     },
     "functions": [ "QueueProcessor", "GitHubWebHook" ],
     "functionTimeout": "00:05:00",
+    "healthMonitor": {
+        "enabled": true,
+        "healthCheckInterval": "00:00:10",
+        "healthCheckWindow": "00:02:00",
+        "healthCheckThreshold": 6,
+        "counterThreshold": 0.80
+    },
     "http": {
         "routePrefix": "api",
         "maxOutstandingRequests": 20,
@@ -160,6 +167,30 @@ ms.lasthandoff: 11/30/2017
     "functionTimeout": "00:05:00"
 }
 ```
+
+## <a name="healthmonitor"></a>healthMonitor
+
+[ホストの正常性監視](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Host-Health-Monitor)を行うための構成設定です。
+
+```
+{
+    "healthMonitor": {
+        "enabled": true,
+        "healthCheckInterval": "00:00:10",
+        "healthCheckWindow": "00:02:00",
+        "healthCheckThreshold": 6,
+        "counterThreshold": 0.80
+    }
+}
+```
+
+|プロパティ  |既定値 | 説明 |
+|---------|---------|---------| 
+|有効|true|機能が有効になっているかどうか。 | 
+|healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
+|healthCheckWindow|2 分|`healthCheckThreshold` 設定と組み合わせて使用するスライド時間枠。| 
+|healthCheckThreshold|6|正常性チェックの最大失敗回数。この回数を超えると、ホスト リサイクルが開始されます。| 
+|counterThreshold|0.80|パフォーマンス カウンターが異常とみなされるしきい値。| 
 
 ## <a name="http"></a>http
 
@@ -298,7 +329,7 @@ ms.lasthandoff: 11/30/2017
 タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](durable-functions-task-hubs.md)に関するページをご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [host.json ファイルを更新する方法について説明します](functions-reference.md#fileupdate)。

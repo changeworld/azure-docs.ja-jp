@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.openlocfilehash: 2ee66e0f41868d7d5411605596a22c00b5712896
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02656c5bb4d2acd944f565d1397984ce94ced0bd
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure 診断の 1.3 以降の構成スキーマ
 > [!NOTE]
@@ -380,7 +380,7 @@ Azure 診断の詳細については、[Azure 診断拡張機能](azure-diagnost
 http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration  
 
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**PublicConfig**|必須。 このページの他の場所の説明を参照してください。|  
 |**PrivateConfig**|省略可能。 このページの他の場所の説明を参照してください。|  
@@ -391,7 +391,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  パブリック診断構成について説明します。  
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**WadCfg**|必須。 このページの他の場所の説明を参照してください。|  
 |**StorageAccount**|データを格納する Azure ストレージ アカウントの名前。 Set-AzureServiceDiagnosticsExtension コマンドレットを実行するときに、パラメーターとして指定することもできます。|  
@@ -409,14 +409,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  必須 
 
-|属性|Description|  
+|属性|[説明]|  
 |----------------|-----------------|  
-| **overallQuotaInMB** | Azure 診断によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 5120 MB です。<br />
+| **overallQuotaInMB** | Azure 診断によって収集された、さまざまな種類の診断データで使用できるローカル ディスク領域の最大量。 既定の設定は 4096 MB です。<br />
 |**useProxyServer** | IE 設定で設定したプロキシ サーバー設定を使用するように Azure 診断を構成します。|  
 
 <br /> <br />
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**CrashDumps**|このページの他の場所の説明を参照してください。|  
 |**DiagnosticInfrastructureLogs**|Azure 診断によって生成されたログの収集を有効にします。 診断インフラストラクチャ ログは、診断システム自体のトラブルシューティングに役に立ちます。 オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - 収集されたログの最小重大度レベルを構成します。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/schema/schema_dtypes_date.asp) です。 |  
@@ -434,13 +434,13 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
  
  クラッシュ ダンプの収集を有効にします。  
 
-|属性|Description|  
+|属性|[説明]|  
 |----------------|-----------------|  
 |**containerName**|省略可能。 クラッシュ ダンプの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|  
 |**crashDumpType**|省略可能。  Azure 診断を、小さいクラッシュ ダンプまたはフル クラッシュ ダンプを収集するように構成します。|  
 |**directoryQuotaPercentage**|省略可能。  VM でのクラッシュ ダンプ用に予約する **overallQuotaInMB** の割合を構成します。|  
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|必須。 各プロセスの構成値を定義します。<br /><br /> 次の属性も必須です。<br /><br /> **processName** - Azure 診断でクラッシュ ダンプを収集するプロセスの名前。|  
 
@@ -451,7 +451,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  オプションの **scheduledTransferPeriod** 属性。 前の説明を参照してください。  
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**IISLogs**|この要素を構成に含めることで、IIS ログの収集を有効にします。<br /><br /> **containerName** - IIS ログの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|   
 |**FailedRequestLogs**|この要素を構成に含めることで、IIS サイトまたはアプリケーションへの失敗要求に関するログの収集を有効にします。 また、**Web.config** の **system.WebServer** でトレース オプションを有効にする必要もあります。|  
@@ -465,7 +465,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  監視するディレクトリの一覧。  
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**DirectoryConfiguration**|必須。 必須属性: <br /><br /> **containerName** - ログ ファイルの保存に使用する Azure ストレージ アカウント内の BLOB コンテナーの名前。|  
 
@@ -478,7 +478,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  **Absolute** 要素または **LocalResource** 要素のいずれかを含めることができます。ただし、両方を含めることができません。  
 
-|子要素|Description|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**Absolute**|監視するディレクトリの絶対パス。 次の属性は必須です。<br /><br /> - **Path** - 監視するディレクトリの絶対パス。<br /><br /> - **expandEnvironment** - Path で環境変数を展開するかどうかを構成します。|  
 |**LocalResource**|監視するローカル リソースの相対パス。 必須属性は次のとおりです。<br /><br /> - **Name** - 監視するディレクトリを含むローカル リソース<br /><br /> - **relativePath** - 監視するディレクトリを含む名前の相対パス|  
@@ -490,7 +490,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  EventSource や ETW マニフェスト ベースのプロバイダーからの ETW イベントの収集を構成します。  
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**EtwEventSourceProviderConfiguration**|[EventSource クラス](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。 必須属性: <br /><br /> **provider** - EventSource イベントのクラス名。<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/schema/schema_dtypes_date.asp) です。 |  
 |**EtwManifestProviderConfiguration**|必須属性: <br /><br /> **provider** - イベント プロバイダーの GUID<br /><br /> オプションの属性は次のとおりです。<br /><br /> - **scheduledTransferLogLevelFilter** - ストレージ アカウントへの転送の最小重大度レベル。<br /><br /> - **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/schema/schema_dtypes_date.asp) です。 |  
@@ -502,7 +502,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  [EventSource クラス](http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource\(v=vs.110\).aspx)から生成されたイベントの収集を構成します。  
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br/><br/> **eventDestination** - イベントを保存するテーブルの名前|  
 |**Event**|必須属性: <br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
@@ -512,7 +512,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 ## <a name="etwmanifestproviderconfiguration-element"></a>EtwManifestProviderConfiguration 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - EtwProviders - EtwManifestProviderConfiguration*
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**DefaultEvents**|オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
 |**Event**|必須属性: <br /><br /> **id** - イベントの ID。<br /><br /> オプションの属性:<br /><br /> **eventDestination** - イベントを保存するテーブルの名前|  
@@ -526,7 +526,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  **resourceId** 属性は必須です。  Azure 診断プログラムのデプロイ先仮想マシンまたは仮想マシン スケール セットのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。  
 
-|子要素|Description|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**MetricAggregation**|必須属性: <br /><br /> **scheduledTransferPeriod** - ストレージへのスケジュールされている転送の間隔。最も近い分単位に切り上げられます。 値は [XML "Duration Data Type"](http://www.w3schools.com/schema/schema_dtypes_date.asp) です。 |  
 
@@ -541,9 +541,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  オプションの **scheduledTransferPeriod** 属性。 前の説明を参照してください。
 
-|子要素|説明|  
+|子要素|[説明]|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「 `\Processor(_Total)\% Processor Time`」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。|  
+|**PerformanceCounterConfiguration**|次の属性は必須です。<br /><br /> - **counterSpecifier** - パフォーマンス カウンターの名前。 たとえば、「`\Processor(_Total)\% Processor Time`」のように入力します。 ホストでカウンター パフォーマンスの一覧を取得するには、`typeperf` コマンドを実行します。<br /><br /> - **sampleRate** - カウンターをサンプリングする頻度。<br /><br /> オプションの属性:<br /><br /> **unit** - カウンターの測定単位。|  
 
 
 
@@ -555,7 +555,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  オプションの **scheduledTransferPeriod** 属性。 前の説明を参照してください。  
 
-|子要素|説明|  
+|子要素|[説明]|  
 |-------------------|-----------------|  
 |**DataSource**|収集する Windows イベント ログ。 必須属性: <br /><br /> **name** - 収集する Windows イベントについて説明する XPath クエリ。 例:<br /><br /> `Application!*[System[(Level <=3)]], System!*[System[(Level <=3)]], System!*[System[Provider[@Name='Microsoft Antimalware']]], Security!*[System[(Level <= 3)]`<br /><br /> すべてのイベントを収集するには、"*" を指定します。|  
 
@@ -569,7 +569,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  基本的な Azure ログのバッファー構成を定義します。  
 
-|属性|型|説明|  
+|Attribute|type|[説明]|  
 |---------------|----------|-----------------|  
 |**bufferQuotaInMB**|**unsignedInt**|省略可能。 指定されたデータに使用できるファイル システム ストレージの最大量を指定します。<br /><br /> 既定値は 0 です。|  
 |**scheduledTransferLogLevelFilterr**|**string**|省略可能。 転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
@@ -581,7 +581,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  1.9 で追加。
 
-|要素名|説明|  
+|要素名|[説明]|  
 |------------------|-----------------|  
 |**Stats**|Docker コンテナーの統計情報を収集するようにシステムに通知します。|  
 
@@ -590,7 +590,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  診断データの送信先の一覧と、その場所に関連付けられている構成。  
 
-|要素名|説明|  
+|要素名|[説明]|  
 |------------------|-----------------|  
 |**シンク**|このページの他の場所の説明を参照してください。|  
 
@@ -601,14 +601,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  診断データの送信先を定義します。 Application Insights サービスなど。  
 
-|属性|型|説明|  
+|Attribute|type|[説明]|  
 |---------------|----------|-----------------|  
-|**name**|string|シンク名を特定する文字列。|  
+|**name**|文字列|シンク名を特定する文字列。|  
 
-|要素|種類|説明|  
+|要素|type|[説明]|  
 |-------------|----------|-----------------|  
-|**Application Insights**|string|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
-|**Channels**|string|追加フィルタリングごとに 1 つ|  
+|**Application Insights**|文字列|データを Application Insights に送信するときにのみ使用されます。 アクセス先のアクティブな Application Insights アカウントのインストルメンテーション キーが含まれます。|  
+|**Channels**|文字列|追加フィルタリングごとに 1 つ|  
 
 ## <a name="channels-element"></a>Channels 要素  
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels*
@@ -617,9 +617,9 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  シンクを通過するログ データのストリームのフィルターを定義します。  
 
-|要素|種類|説明|  
+|要素|type|[説明]|  
 |-------------|----------|-----------------|  
-|**Channel**|string|このページの他の場所の説明を参照してください。|  
+|**Channel**|文字列|このページの他の場所の説明を参照してください。|  
 
 ## <a name="channel-element"></a>Channel 要素
  *ツリー: ルート - DiagnosticsConfiguration - PublicConfig - WadCFG - SinksConfig - Sink - Channels - Channel*
@@ -628,7 +628,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  診断データの送信先を定義します。 Application Insights サービスなど。  
 
-|属性|種類|説明|  
+|属性|種類|[説明]|  
 |----------------|----------|-----------------|  
 |**logLevel**|**string**|転送されるログ エントリの最小重大度レベルを指定します。 既定値は **Undefined** で、すべてのログを転送します。 他の有効値は、(情報量が多いものから順に) **Verbose**、**Information**、**Warning**、**Error**、**Critical** となります。|  
 |**name**|**string**|参照するチャネルの一意の名前|  
@@ -643,7 +643,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  ストレージ アカウントのプライベート詳細 (名前、キー、およびエンドポイント) を保存します。 この情報は仮想マシンに送信されますが、その仮想マシンから取得することはできません。  
 
-|子要素|説明|  
+|子要素|[説明]|  
 |--------------------|-----------------|  
 |**StorageAccount**|使用するストレージ アカウント。 次の属性は必須です<br /><br /> - **name** - ストレージ アカウントの名前。<br /><br /> - **key** - ストレージ アカウントへのキー。<br /><br /> - **endpoint** - ストレージ アカウントにアクセスするためのエンドポイント。 <br /><br /> -**sasToken** (1.8.1 で追加) - ストレージ アカウント キーの代わりに SAS トークンをプライベート構成に指定できます。指定した場合、ストレージ アカウント キーは無視されます。 <br />SAS トークンの要件: <br />- アカウントの SAS トークンのみをサポートします。 <br />- *b**t* のサービスの種類が必要です。 <br /> - *a**c**u**w* のアクセス許可が必要です。 <br /> - *c**o* のリソースの種類が必要です。 <br /> - HTTPS プロトコルのみをサポートします。 <br /> - 開始時刻と有効期限を有効にする必要があります。|  
 

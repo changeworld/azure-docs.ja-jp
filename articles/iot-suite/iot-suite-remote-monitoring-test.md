@@ -12,11 +12,11 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 0bf1cff4058bfe46b54f3f0b6836ede3e04ed5dd
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 4bdcd6d57989df3d1b67c87d56b8c57035ef2f63
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="test-your-solution-with-simulated-devices"></a>デバイスのシミュレーションを利用したソリューションのテスト
 
@@ -78,6 +78,10 @@ ms.lasthandoff: 01/24/2018
 > * 新しいデバイスの種類をダッシュ ボードに追加する
 > * 既存のデバイスの種類からカスタム テレメトリを送信する
 
+次のビデオでは、シミュレートされたデバイスと実際のデバイスをリモート監視ソリューションに接続する手順を示します。
+
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Part-38-Customizing-Azure-IoT-Suite-solution-and-connect-a-real-device/Player]
+
 ## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを実行するには、次が必要です。
@@ -127,24 +131,24 @@ ms.lasthandoff: 01/24/2018
 1. 仮想マシンの SSH アクセスを有効にするには、前の手順のネットワーク セキュリティ グループの名前を使用して、次のコマンドを実行します。
 
     ```sh
-    az network nsg rule create --name SSH --nsg-name your-network-security-group --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
+    az network nsg rule create --name SSH --nsg-name YOUR-NETWORK-SECURITY-GROUP --priority 101 --destination-port-ranges 22 --access Allow --protocol TCP
     ```
 
     ネットワークの受信規則の一覧を表示するには、次のコマンドを実行します。
 
     ```sh
-    az network nsg rule list --nsg-name Contoso-01-nsg -o table
+    az network nsg rule list --nsg-name YOUR-NETWORK-SECURITY-GROUP -o table
     ```
 
 1. 仮想マシンのパスワードを自分だけが知るパスワードに変更するには、次のコマンドを実行します。 前にメモしておいた仮想マシンの名前と、任意のパスワードを使用してください。
 
     ```sh
-    az vm user update --name your-vm-name --username azureuser --password your-password
+    az vm user update --name YOUR-VM-NAME --username azureuser --password YOUR-PASSWORD
     ```
 1. 仮想マシンの IP アドレスを見つけるには、次のコマンドを使用します。パブリック IP アドレスを書き留めておいてください。
 
     ```sh
-    az vm list-ip-addresses --name your-vm-name
+    az vm list-ip-addresses --name YOUR-VM-NAME
     ```
 
 1. これで SSH を使用して仮想マシンに接続できます。 `ssh` コマンドは、Cloud Shell に事前にインストールされています。 前の手順のパブリック IP アドレスを使用し、メッセージが表示されたら、仮想マシンに対して構成したパスワードを入力します。

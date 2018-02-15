@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
-ms.date: 09/07/2017
-ms.openlocfilehash: 3c3864480d2fcba4f6d388d4e0d00b917cb62d2b
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.date: 02/01/2018
+ms.openlocfilehash: 76ed1a93af22620ccc2074168b3ff20f6bb4c37d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="data-preparations-python-extensions"></a>データ準備の Python 拡張機能
 組み込み機能間の機能性ギャップを埋める方法として、Azure Machine Learning データ準備には複数のレベルの拡張機能が含まれています。 このドキュメントでは、Python スクリプトを介して拡張機能を説明します。 
@@ -125,7 +125,7 @@ or
 `./pip install <libraryname>`
 
 ## <a name="use-custom-modules"></a>カスタム モジュールの使用
-データ フローの変換 (スクリプト) で、次のような python コードを記述します。
+データ フローの変換 (スクリプト) で、次の Python コードを記述します。
 
 ```python
 import sys
@@ -135,7 +135,7 @@ from UserModule import ExtensionFunction1
 df = ExtensionFunction1(df)
 ```
 
-列の追加 (スクリプト) で、コード ブロックの種類をモジュールに設定し、次の python コードを記述します。
+列の追加 (スクリプト) で、コード ブロックの種類をモジュールに設定し、次の Python コードを記述します。
 
 ```python 
 import sys
@@ -146,7 +146,7 @@ from UserModule import ExtensionFunction2
 def newvalue(row):
     return ExtensionFunction2(row)
 ```
-異なる実行コンテキスト (ローカル、docker spark など) の場合は、適切な場所への絶対パスをポイントします。 このパスは、“os.getcwd() + relativePath” を使用して調べることができます。
+異なる実行コンテキスト (ローカル、Docker、Spark など) の場合は、適切な場所への絶対パスをポイントします。 このパスは、“os.getcwd() + relativePath” を使用して調べることができます。
 
 
 ## <a name="column-data"></a>列のデータ 

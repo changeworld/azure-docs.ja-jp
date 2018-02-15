@@ -1,27 +1,27 @@
 ---
-title: "Azure Blob Storage のイベントをカスタム Web エンドポイントにルーティングする (プレビュー) | Microsoft Docs"
+title: "Azure Blob Storage イベントをカスタム Web エンドポイントにルーティングする | Microsoft Docs"
 description: "Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。"
 services: storage,event-grid
 keywords: 
 author: cbrooksmsft
 ms.author: cbrooks
-ms.date: 01/19/2018
+ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 50a6126f065b1b4d851f53b5cb3096c130314450
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 4f10d9b26cb75bee8103d986b7fa1197168c692f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="route-blob-storage-events-to-a-custom-web-endpoint-preview"></a>Blob Storage のイベントをカスタム Web エンドポイントにルーティングする (プレビュー)
+# <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-azure-cli"></a>Azure CLI で Blob Storage のイベントをカスタム Web エンドポイントにルーティングする
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI を使用して Blob Storage のイベントをサブスクライブし、イベントをトリガーして結果を表示します。 
 
-通常、webhook や Azure 関数など、イベントに応答するエンドポイントが、イベントの送信先になります。 この記事では、紹介している例を単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、[RequestBin](https://requestb.in/) と呼ばれるオープンソースのサードパーティ ツールを使用して作成します。
+通常、webhook や Azure 関数など、イベントに応答するエンドポイントが、イベントの送信先になります。 この記事では、紹介している例を単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サード パーティ製ツール ([RequestBin](https://requestb.in/) または [Hookbin](https://hookbin.com/)) を使用して作成します。
 
 > [!NOTE]
-> **RequestBin** は、高スループットの使用を目的にしていないオープンソース ツールです。 ここでは、あくまでデモンストレーションを目的としてこのツールを使用しています。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
+> **RequestBin** と **Hookbin** は、高いスループットでの使用を目的としていません。 ここでは、デモンストレーションのためにこれらのツールを使用します。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
 
 この記事の手順の最後に、イベント データがエンドポイントに送信済みであることを確認できます。
 
@@ -39,7 +39,7 @@ Cloud Shell を使用していない場合は、先に `az login` でサイン�
 
 Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
 
 次の例では、`<resource_group_name>` という名前のリソース グループを場所 *westcentralus* に作成します。  `<resource_group_name>` を、リソース グループの一意の名前に置き換えます。
 
@@ -47,14 +47,12 @@ Event Grid のトピックは Azure リソースであり、Azure リソース �
 az group create --name <resource_group_name> --location westcentralus
 ```
 
-## <a name="create-a-blob-storage-account"></a>BLOB ストレージ アカウントの作成
+## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-Azure Storage を使用するには、ストレージ アカウントが必要です。  Blob Storage のイベントは現在、BLOB ストレージ アカウントでのみ利用できます。
-
-BLOB ストレージ アカウントとは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 BLOB ストレージ アカウントは、既存の汎用ストレージ アカウントと同様で、現在使用されているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。
+Blob ストレージ イベントを使用するには、[Blob ストレージ アカウント](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)または[汎用 v2 ストレージ アカウント](../common/storage-account-options.md#general-purpose-v2)のどちらかが必要です。 **汎用 v2 (GPv2)** は、BLOB、Files、Queues、Tables をはじめとする全ストレージ サービスに関して、すべての機能をサポートするストレージ アカウントです。 **BLOB ストレージ アカウント**とは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。 
 
 > [!NOTE]
-> Event Grid は現在プレビュー段階であり、**westcentralus** リージョンと **westus2** リージョンのストレージ アカウントに対してのみ使用可能です。
+> Storage イベントの可用性は Event Grid の[可用性](../../event-grid/overview.md)に関連付けられており、Event Grid で利用可能にすると、Storage イベントは他のリージョンで利用可能になります。
 
 `<storage_account_name>` は、ご利用のストレージ アカウントの一意の名前に、`<resource_group_name>` は、先ほど作成したリソース グループに置き換えてください。
 
@@ -70,11 +68,11 @@ az storage account create \
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
-BLOB ストレージ アカウントからのイベントをサブスクライブする前に、イベント メッセージのエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin は、エンドポイントを作成し、そこに送信された要求を表示できるオープンソースのサードパーティ ツールです。 [RequestBin](https://requestb.in/) にアクセスし、**[Create a RequestBin]\(RequestBin の作成\)** をクリックします。  Bin URL をコピーしてください。トピックをサブスクライブするときにこの URL が必要になります。
+トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin と Hookbin は、エンドポイントの作成と、エンドポイントに送信された要求の表示を可能にする、サード パーティ製のツールです。 [RequestBin](https://requestb.in/) に移動して **[Create a RequestBin]\(RequestBin の作成\)** をクリックします。または、[Hookbin](https://hookbin.com/) に移動して **[Create New Endpoint]\(新しいエンドポイントの作成\)** をクリックします。  Bin URL をコピーしてください。トピックをサブスクライブするときにこの URL が必要になります。
 
-## <a name="subscribe-to-your-blob-storage-account"></a>BLOB ストレージ アカウントのサブスクライブ
+## <a name="subscribe-to-your-storage-account"></a>ストレージ アカウントをサブスクライブする
 
-どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成した BLOB ストレージ アカウントをサブスクライブし、RequestBin からの URL をイベント通知のエンドポイントとして渡しています。 `<event_subscription_name>` は、実際のイベント サブスクリプションの一意の名前に、`<URL_from_RequestBin>` は、前のセクションで得た値に置き換えてください。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 `<resource_group_name>` と `<storage_account_name>` には、先ほど作成した値を使用します。 
+どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したストレージ アカウントをサブスクライブし、RequestBin または Hookbin からの URL をイベント通知のエンドポイントとして渡します。 `<event_subscription_name>` は、実際のイベント サブスクリプションの一意の名前に、`<endpoint_URL>` は、前のセクションで得た値に置き換えてください。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 `<resource_group_name>` と `<storage_account_name>` には、先ほど作成した値を使用します。  
 
 ```azurecli-interactive
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -82,12 +80,12 @@ storageid=$(az storage account show --name <storage_account_name> --resource-gro
 az eventgrid event-subscription create \
   --resource-id $storageid \
   --name <event_subscription_name> \
-  --endpoint <URL_from_RequestBin>
+  --endpoint <endpoint_URL>
 ```
 
 ## <a name="trigger-an-event-from-blob-storage"></a>Blob Storage からのイベントのトリガー
 
-では、イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 まず、ストレージ アカウントの名前とキーを構成し、コンテナーを作成したら、ファイルを作成してアップロードします。 ここでも、`<storage_account_name>` と `<resource_group_name>` には、先ほど作成した値を使用します。
+では、イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 まず、ストレージ アカウントの名前とキーを構成します。次にコンテナーを作成し、ファイルを作成してアップロードします。 ここでも、`<storage_account_name>` と `<resource_group_name>` には、先ほど作成した値を使用します。
 
 ```azurecli-interactive
 export AZURE_STORAGE_ACCOUNT=<storage_account_name>
@@ -99,7 +97,7 @@ touch testfile.txt
 az storage blob upload --file testfile.txt --container-name testcontainer --name testfile.txt
 ```
 
-以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成した RequestBin URL にブラウザーでアクセスします。 または、開いている RequestBin ブラウザーで、最新の情報に更新するボタンをクリックしてください。 先ほど送信したイベントが表示されます。 
+以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成したエンドポイント URL に移動します。 または、開いているブラウザーで [更新] をクリックします。 先ほど送信したイベントが表示されます。 
 
 ```json
 [{

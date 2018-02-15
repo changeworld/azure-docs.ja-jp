@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/02/2017
+ms.date: 01/25/18
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 9d3d15c63055f3eeb0e6cb292d75a8c42b33f7fe
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 4043c600dcc79cc85b66d66051416218507432af
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Service Fabric の Windows コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -79,24 +79,44 @@ ApplicationManifest.xml ファイルの `ContainerHostPolicies` 内にある `Po
 ApplicationManifest.xml の完全なサンプル ファイルは、この記事の最後にあります。
 
 ## <a name="create-a-cluster"></a>クラスターの作成
-Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターを作成する方法と、パーティ クラスターを使用する方法とがあります。
+Azure のクラスターにアプリケーションをデプロイする場合、パーティ クラスターに参加するか、または[独自のクラスターを Azure に作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)できます。
 
-パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。  
+パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 このクラスターでは、ノード間のセキュリティおよびクライアントとノードの間のセキュリティに単一の自己署名証明書が使用されます。 
 
-独自のクラスターの作成については、[Azure での Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)に関するページをご覧ください。
+サインインし、[Windows クラスターに参加](http://aka.ms/tryservicefabric)します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 証明書と **[接続のエンドポイント]** の値は、次の手順で使用します。
 
-接続エンドポイントは書き留めておいてください。次の手順で使用します。  
+![PFX と接続エンドポイント](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+
+Windows コンピューターで、*CurrentUser\My* 証明書ストアに PFX をインストールします。
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+  PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+次の手順のために拇印を覚えておいてください。  
 
 ## <a name="deploy-the-application-to-azure-using-visual-studio"></a>Visual Studio を使用してアプリケーションを Azure にデプロイする
 これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。
 
 ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
 
-![[発行] ダイアログ](./media/service-fabric-quickstart-dotnet/publish-app.png)
+パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、次の情報を入力します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順でインストールした証明書の拇印に一致する必要があります。 
 
-**[接続のエンドポイント]** フィールドにクラスターの接続エンドポイントを入力します。 パーティ クラスターにサインアップすると、ブラウザーに接続エンドポイントが提供されます (例: `winh1x87d1d.westus.cloudapp.azure.com:19000`)。  **[発行]** をクリックすると、アプリケーションがデプロイされます。
+![[発行] ダイアログ](./media/service-fabric-quickstart-containers/publish-app.png)
 
-ブラウザーを開き、http://winh1x87d1d.westus.cloudapp.azure.com:80 に移動します。 IIS の既定の Web ページが表示されます。![IIS の既定の Web ページ][iis-default]
+**[発行]**をクリックします。
+
+クラスター内の各アプリケーションには、一意の名前が必要です。  パーティ クラスターはパブリックの共有環境ですが、既存のアプリケーションと競合している可能性があります。  名前の競合が発生している場合は、Visual Studio プロジェクトの名前を変更し、もう一度デプロイします。
+
+ブラウザーを開き、http://zwin7fh14scd.westus.cloudapp.azure.com:80 に移動します。 IIS の既定の Web ページが表示されます。![IIS の既定の Web ページ][iis-default]
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェストの完全な例
 このクイックスタートで使用される完全なサービス マニフェストとアプリケーション マニフェストは次のとおりです。
@@ -167,6 +187,7 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
         <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
       </ContainerHostPolicies>
     </Policies>
+
   </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 
@@ -183,7 +204,7 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
 </ApplicationManifest>
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、次の方法について説明しました。
 > [!div class="checklist"]
 > * Docker イメージ コンテナーをパッケージ化する

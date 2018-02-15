@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 36a08cab2b1d409d2de382a07cfd7259a1c94e13
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 3bb54f7897876d656da6f1a4b349c9db202a142d
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-log-analytics-upgrade-to-new-log-search"></a>新しいログ検索への Azure Log Analytics のアップグレード
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 12/11/2017
 変換された場合、ワークスペースには次のような変更が加えられます。
 
 - 保存したすべての検索、アラート ルール、およびビュー デザイナーで作成したビューが、新しい言語に自動的に変換されます。  ソリューションに含まれる検索は自動的には変換されませんが、検索を開いた時点ですぐに変換されます。  
-- [マイ ダッシュボード](log-analytics-dashboards.md)は非推奨となり、今後は[ビュー デザイナー](log-analytics-view-designer.md)と [Azure ダッシュボード](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards.md)で置き換えられます。  マイ ダッシュボードに追加したタイルは引き続き利用できますが、読み取り専用です。
+- [マイ ダッシュボード](log-analytics-dashboards.md)は非推奨となり、今後は[ビュー デザイナー](log-analytics-view-designer.md)と [Azure ダッシュボード](../azure-portal/azure-portal-dashboards.md)で置き換えられます。  マイ ダッシュボードに追加したタイルは引き続き利用できますが、読み取り専用です。
 - [Power BI 統合](log-analytics-powerbi.md)は、新しいプロセスで置き換えられます。  作成した既存の Power BI スケジュールは無効になるため、新しいプロセスで置き換える必要があります。
 - webhook と Runbook を使用した[アラート アクション](log-analytics-alerts-actions.md)からの応答には新しい形式が採用されているため、これに応じてアラート ルールの更新が必要になる場合があります。
 - アップグレードに関する一般的な質問については、[ログ検索の FAQ](log-analytics-log-search-faq.md) に関するページをご覧ください。
@@ -95,7 +95,7 @@ ms.lasthandoff: 12/11/2017
 ![言語コンバーター](media/log-analytics-log-search-upgrade/language-converter.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [新しい言語のチュートリアル](https://go.microsoft.com/fwlink/?linkid=856078)を確認します。
 - 新しいクエリ言語で[ログ検索ポータルを使用したチュートリアル](log-analytics-log-search-log-search-portal.md)を実行します。
 - 新しい[高度な分析ポータル](https://go.microsoft.com/fwlink/?linkid=856587)の概要を確認します。

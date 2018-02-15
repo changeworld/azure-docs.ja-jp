@@ -90,9 +90,9 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-a-dummy-dataset-for-output"></a>出力のダミー データセットを作成する
 この出力データセットは、パイプラインのスケジュールを開始するダミーのデータセットです。 頻度は [時間] に設定され、間隔は 1 に設定されています。 したがって、パイプラインは、パイプラインの開始時刻から終了時刻までの間に 1 時間に 1 回実行されます。 
 
-1. Data Factory エディターの左側のペインで、**[...詳細]** -> **[New dataset] (新しいデータセット)** -> **[Azure SQL]** をクリックします。
+1. Data Factory エディターの左側のペインで、**[...詳細]** -> **[New dataset] \(新しいデータセット)** -> **[Azure SQL]** をクリックします。
 
-    ![[詳細] -> [New dataset] (新しいデータセット)](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-dataset-menu.png)
+    ![[詳細] -> [New dataset] \(新しいデータセット)](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-dataset-menu.png)
 2. 次の JSON スニペットを右側のペインの JSON エディターにコピーします。 
     
     ```json

@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 27b296092335ec5b95e8f259756aaf9572da1c16
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 37f9da7dcc8dd527fe0bfbf2fbcc40a3ba0e8a1c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub 開発者ガイド
 
@@ -42,10 +42,10 @@ Azure IoT Hub は、以下を提供します。
   * [Send cloud-to-device messages from IoT Hub (クラウドからデバイスへのメッセージを IoT Hub から送信する)][devguide-messages-c2d]
   * [Create and read IoT Hub messages (IoT Hub メッセージを作成し、読み取る)][devguide-format]
 * [デバイスからのファイルのアップロード][devguide-upload]: デバイスからファイルをアップロードする方法について説明します。 この記事には、アップロード プロセスで送信可能な通知などのトピックに関する情報も含まれています。
-* [IoT Hub でのデバイス ID の管理][devguide-identities]: 各 IoT ハブの ID レジストリに保存される情報と、レジストリにアクセスして変更する方法について説明します。
+* [IoT Hub でのデバイス ID の管理][devguide-identities]: 各 IoT ハブの ID レジストリに保存される情報について説明します。 この記事では、レジストリにアクセスして変更する方法についても説明します。
 * [IoT Hub へのアクセスの制御][devguide-security]: IoT Hub の機能へのアクセスを許可するために使用する、デバイスとクラウド コンポーネントの両方のセキュリティ モデルについて説明します。 この記事には、トークンと X.509 証明書の使用方法および付与できるアクセス許可の詳細情報が含まれています。
-* [デバイス ツインを使用した状態と構成の同期化][devguide-device-twins]: "*デバイス ツイン*" の概念と、デバイス ツインを使用したデバイスの同期化などの機能について説明します。 この記事には、デバイス ツインに保存されるデータに関する情報が含まれています。
-* [デバイスでのダイレクト メソッドの呼び出し][devguide-directmethods]: ダイレクト メソッドのライフサイクルと、バックエンド アプリからデバイスのメソッドを呼び出してデバイスでダイレクト メソッドを処理する方法について説明します。
+* [デバイス ツインを使って状態と構成を同期する][devguide-device-twins]: "*デバイス ツイン*" の概念について説明します。 この記事では、デバイス ツインの機能 (デバイスのそのデバイス ツインとの同期など) についても説明します。 この記事には、デバイス ツインに保存されるデータに関する情報が含まれています。
+* [デバイス上のダイレクト メソッドを呼び出す][devguide-directmethods]: ダイレクト メソッドのライフ サイクルについて説明します。 この記事では、バックエンド アプリからデバイス上のメソッドを呼び出し、デバイス上のダイレクト メソッドを処理する方法について説明します。
 * [Schedule jobs on multiple devices (複数デバイスで実行されるジョブのスケジュール設定)][devguide-jobs]: 複数のデバイスで実行するジョブのスケジュールを設定する方法について説明します。 この記事では、ダイレクト メソッドの実行やデバイス ツインを使用したデバイスの更新などのタスクを実行するジョブを送信する方法について説明します。 ジョブの状態を照会する方法についても説明します。
 * [Reference - choose a communication protocol (リファレンス - 通信プロトコルの選択)][devguide-protocol]: IoT Hub がデバイスの通信でサポートする通信プロトコルについて説明し、オープンする必要があるポートを一覧表示します。
 * [Reference - IoT Hub endpoints (リファレンス - IoT Hub エンドポイント)][devguide-endpoints]: 各 IoT ハブがランタイムと管理の操作のために公開する、さまざまなエンドポイントについて説明します。 また、この記事では、IoT Hub での追加エンドポイントの作成方法、およびフィールド ゲートウェイを使用して標準的ではないシナリオで IoT Hub エンドポイントへの接続を有効にする方法についても説明します。

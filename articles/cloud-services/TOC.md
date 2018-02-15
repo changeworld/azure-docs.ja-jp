@@ -64,13 +64,13 @@
 
 ## 監視
 ### [クラウド サービスを監視する](cloud-services-how-to-monitor.md)
+### [パフォーマンス カウンターの使用](diagnostics-performance-counters.md)
 ### [パフォーマンスのテスト](../vs-azure-tools-performance-profiling-cloud-services.md)
 #### [Visual Studio プロファイラーを使用したテスト](cloud-services-performance-testing-visual-studio-profiler.md)
 ### 診断を有効化する
 #### [Azure PowerShell](cloud-services-diagnostics-powershell.md)
 #### [.NET](cloud-services-dotnet-diagnostics.md)
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
-### [Azure 診断でのパフォーマンス カウンターの使用](cloud-services-dotnet-diagnostics-performance-counters.md)
 ### [Azure Storage への診断データの保存と表示](cloud-services-dotnet-diagnostics-storage.md)
 ### [診断を使用したクラウド サービスのトレース](cloud-services-dotnet-diagnostics-trace-flow.md)
 ### [App Insights への診断データの送信](cloud-services-dotnet-diagnostics-applicationinsights.md)

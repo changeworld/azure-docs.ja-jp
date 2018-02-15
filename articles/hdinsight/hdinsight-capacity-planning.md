@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: b4bdf3339e585a7b22a1945871f802854020fb94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 391b691e895c672ef872f8b98c88567175ad8030
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -67,9 +67,7 @@ Azure Storage には[容量制限](../azure-subscription-service-limits.md#stora
 
 ## <a name="choose-a-cluster-type"></a>クラスターの種類の選択
 
-クラスターの種類によって、実行されるワークロード (Hadoop、Storm、Kafka、Spark など) が決まります。HDInsight クラスターは、そのワークロードを実行するように構成されます。 
-<!-- For a detailed description of the available cluster types, see [HDInsight Architecture](hdinsight-architecture.md). -->
-クラスターの種類ごとに、サイズとノード数の要件を含む特定のデプロイ トポロジがあります。
+クラスターの種類によって、実行されるワークロード (Hadoop、Storm、Kafka、Spark など) が決まります。HDInsight クラスターは、そのワークロードを実行するように構成されます。 使用できるクラスターの種類の詳細については、[Azure HDInsight の概要](hadoop/apache-hadoop-introduction.md#cluster-types-in-hdinsight)に関するページを参照してください。 クラスターの種類ごとに、サイズとノード数の要件を含む特定のデプロイ トポロジがあります。
 
 ## <a name="choose-the-vm-size-and-type"></a>VM のサイズと種類の選択
 
@@ -96,9 +94,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 ### <a name="cluster-lifecycle"></a>クラスターのライフサイクル
 
-クラスターの有効期間に課金が発生します。 特定の時間にのみクラスターを起動して実行する必要がある場合は、Azure Data Factory を使用してオンデマンド クラスターを作成できます。
-<!-- [create on-demand clusters using Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md). -->
-また、クラスターのプロビジョニングと削除を実行する PowerShell スクリプトを作成し、[Azure Automation](https://azure.microsoft.com/services/automation/) を使用してそれらのスクリプトのスケジュールを設定することもできます。
+クラスターの有効期間に課金が発生します。 特定の時間にのみクラスターを起動して実行する必要がある場合は、[Azure Data Factory を使用してオンデマンド クラスターを作成](hdinsight-hadoop-create-linux-clusters-adf.md)できます。 また、クラスターのプロビジョニングと削除を実行する PowerShell スクリプトを作成し、[Azure Automation](https://azure.microsoft.com/services/automation/) を使用してそれらのスクリプトのスケジュールを設定することもできます。
 
 > [!NOTE]
 > クラスターが削除されると、既定の Hive metastore も削除されます。 クラスターを次回再作成するために metastore を保持するには、Azure Database や Oozie などの外部メタデータ ストアを使用します。
@@ -118,7 +114,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 ただし、固定のクォータ制限もいくつかあります。たとえば、1 つの Azure サブスクリプションで使用できるコア数は最大 10,000 コアです。 これらの制限の詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](https://docs.microsoft.com/azure/azure-subscription-service-limits#limits-and-the-azure-resource-manager)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md): Hadoop、Spark、Kafka、Interactive Hive、HBase、R Server、Storm の HDInsight クラスターをセットアップして構成する方法について説明します。
 * [クラスターのパフォーマンスを監視する](hdinsight-key-scenarios-to-monitor.md): クラスターの容量に影響を及ぼす可能性のある、HDInsight クラスターの主な監視シナリオについて説明します。

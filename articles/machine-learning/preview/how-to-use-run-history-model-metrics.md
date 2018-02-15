@@ -68,7 +68,7 @@ run_logger = get_azureml_logger()
 開発が完了したら、コマンド ラインで値を渡せるように、スクリプトをパラメーター化すると便利です。
 次の例は、標準の Python ライブラリを使用してコマンド ライン パラメーター (存在する場合) を受け入れる方法を示しています。
 このスクリプトは、オーバーフィットを発生させずに*精度*を上げる作業に分類モデルを適合させるために使用される [Regularization Rate]\(正則化率)\ (*reg*) の 1 つのパラメーターを受け取ります。
-これらの変数は*[Regularization Rate]\(正則化率)\*および*[Accuracy] \(精度)\* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
+これらの変数は *[Regularization Rate]\(正則化率)* および *[Accuracy] \(精度)* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
 
 ```Python
 # change regularization rate and you will likely get a different accuracy.
@@ -122,7 +122,7 @@ run_logger.log("Accuracy", accuracy)
 
 ### <a name="run-history-dashboard"></a>実行履歴ダッシュボード
 8 つの実行すべての結果が、**実行履歴ダッシュボード**に表示されます。
-**iris_sklearn.py** では *[Regularization Rate]\(正則化率)\*と*[Accuracy]\(精度)\*がログ記録されるので、既定では**実行履歴ダッシュボード**にこれらの値のグラフが表示されます。
+**iris_sklearn.py** では *[Regularization Rate]\(正則化率)* と *[Accuracy]\(精度)* がログ記録されるので、既定では **実行履歴ダッシュボード** にこれらの値のグラフが表示されます。
 
 ![実行履歴ダッシュボード](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
 

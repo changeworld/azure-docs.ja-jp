@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 424a5ec49018e969edbf90c374a9da7e1d22395d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8b5211e9c932221c6b6134e7e0627f4d7f964123
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Azure Data Factory を使用して Azure BLOB から Azure SQL Database にデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から Azure SQL Database にデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -144,10 +144,7 @@ ms.lasthandoff: 01/23/2018
 9. 下部にある**プロパティ** ウィンドウの **[General]\(一般\)** タブで、**[名前]** として「**SourceBlobDataset**」を指定します。
 
     ![データセットの名前](./media/tutorial-copy-data-portal/dataset-name.png)
-10. プロパティ ウィンドウで **[接続]** タブに切り替えます。   
-
-    ![[接続] タブ](./media/tutorial-copy-data-portal/source-dataset-connection-tab.png)
-11. **[リンクされたサービス]** ボックスの横にある **[+ 新規]** をクリックします。 リンクされたサービスは、データ ストアまたは計算をデータ ファクトリにリンクします。 ここでは、Azure ストレージ アカウントをデータ ストアにリンクする、Azure Storage のリンクされたサービスを作成します。 リンクされたサービスには、Data Factory サービスが実行時に BLOB ストレージに接続するために使用する接続情報が含まれています。 データセットは、コンテナー、フォルダー、ソース データが含まれているファイル (オプション) を指定します。 
+10. プロパティ ウィンドウで **[接続]** タブに切り替えます。 **[リンクされたサービス]** ボックスの横にある **[+ 新規]** をクリックします。 リンクされたサービスは、データ ストアまたは計算をデータ ファクトリにリンクします。 ここでは、Azure ストレージ アカウントをデータ ストアにリンクする、Azure Storage のリンクされたサービスを作成します。 リンクされたサービスには、Data Factory サービスが実行時に BLOB ストレージに接続するために使用する接続情報が含まれています。 データセットは、コンテナー、フォルダー、ソース データが含まれているファイル (オプション) を指定します。 
 
     ![新しいリンクされたサービスのボタン](./media/tutorial-copy-data-portal/source-dataset-new-linked-service-button.png)
 12. **[New Linked Service]\(新しいリンクされたサービス\)** ウィンドウで、次の手順を行います。 
@@ -283,7 +280,7 @@ Data Factory または独自の VSTS Git リポジトリにアーティファク
 2. ソース ファイルからのデータが宛先 SQL データベースに挿入されていることを確認します。 
 
     ![SQL 出力の確認](./media/tutorial-copy-data-portal/verify-sql-output.png)
-3. 左側のウィンドウで **[発行]** をクリックします。 これにより、作成したエンティティ (リンクされたサービス、データセット、パイプライン) が Azure Data Factory に発行されます。
+3. 左側のウィンドウで **[すべて発行]** をクリックします。 これにより、作成したエンティティ (リンクされたサービス、データセット、パイプライン) が Azure Data Factory に発行されます。
 
     ![[発行] ボタン](./media/tutorial-copy-data-portal/publish-button.png)
 4. **[正常に発行されました]** というメッセージが表示されるまで待機します。 通知メッセージを表示するには、左のサイド バーで **[通知の表示]** タブをクリックします。 **[X]** をクリックして通知ウィンドウを閉じます。
@@ -343,7 +340,7 @@ VSTS コード リポジトリを使用しない場合、この手順をスキ�
 ## <a name="trigger-the-pipeline-manually"></a>パイプラインを手動でトリガーする
 この手順では、前の手順で発行したパイプラインを手動でトリガーします。 
 
-1. ツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
+1. ツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 **[Pipeline Run]\(パイプラインの実行\)** ページで **[完了]** をクリックします。  
 
     ![[Trigger Now]\(今すぐトリガー\) メニュー](./media/tutorial-copy-data-portal/trigger-now-menu.png)
 2. 左側で **[監視]** タブに切り替えます。 手動トリガーによってトリガーされたパイプラインの実行が表示されます。 [アクション] 列のリンクを使用して、アクティビティの詳細を表示したりパイプラインを再実行したりできます。
@@ -386,10 +383,10 @@ VSTS コード リポジトリを使用しない場合、この手順をスキ�
 6. **[Trigger Run Parameters]\(トリガー実行のパラメーター\)** ページで、警告を確認し、**[完了]** をクリックします。 この例のパイプラインにはパラメーターはありません。 
 
     ![パイプラインのパラメーター](./media/tutorial-copy-data-portal/trigger-pipeline-parameters.png)
-7. **[発行]** をクリックして、変更をレポジトリに発行します。 トリガーは発行が成功して初めてアクティブ化されます。 
+7. **[同期]** をクリックして、自分のブランチ内の変更を master ブランチと同期します。 既定では、**[Publish changes after sync]\(同期後に変更を発行\)** がオンになっています。 そのため、**[同期]** を選択すると同時に、更新後のエンティティが master ブランチから Azure Data Factory サービスに発行されます。 トリガーは発行が成功して初めてアクティブ化されます。
 
-    ![トリガーの発行](./media/tutorial-copy-data-portal/publish-trigger.png) 
-8. 左側で **[モニター]** タブに切り替えて、トリガーされたパイプラインの実行を確認します。 
+    ![トリガーの発行](./media/tutorial-copy-data-portal/sync-your-changes-with-trigger.png) 
+9. 左側で **[モニター]** タブに切り替えて、トリガーされたパイプラインの実行を確認します。 
 
     ![トリガーされたパイプラインの実行](./media/tutorial-copy-data-portal/triggered-pipeline-runs.png)    
 9. パイプラインの実行ビューからトリガー実行ビューに切り替えるには、[Pipeline Runs]\(パイプラインの実行\) をクリックして [Trigger Runs]\(トリガーの実行\) を選択します。

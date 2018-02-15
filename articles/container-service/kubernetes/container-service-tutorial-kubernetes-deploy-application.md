@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 46274241841d3fec475a9fb6172e68daaa1f6303
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ee8a5e5537fdc20fdb8fecaa24b18418705d2f2b
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="run-applications-in-kubernetes"></a>Kubernetes でアプリケーションを実行する
 
@@ -59,7 +59,7 @@ vi azure-vote-all-in-one-redis.yml
 ```yaml
 containers:
 - name: azure-vote-front
-  image: microsoft/azure-vote-front:redis-v1
+  image: microsoft/azure-vote-front:v1
 ```
 
 ファイルを保存して閉じます。

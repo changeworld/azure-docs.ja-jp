@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/01/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f32fc2d2df73f4a01c300d565595e2c00b2baf4b
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 34826332db2e63d442d47ada74fcbad4cad600ae
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -75,7 +75,7 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 
 Azure AD Premium P1 エディションでは、ライセンスに含まれない検出は、追加のリスクが検出されたサインインというリスク イベントとして表示されます。
 
-詳細については、「[Azure Active Directory リスク イベント](active-directory-reporting-risk-events.md)」を参照してください。
+詳細については、「[Azure Active Directory リスク イベント](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-risk-events)」を参照してください。
  
 
 ---
@@ -90,7 +90,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 新しいユーザー設定を使用することで、ユーザーのアクセス パネルで Office 365 アプリケーションを表示する方法が管理しやすくなりました。 このオプションは、Office ポータルでのみ Office アプリを表示する場合に、ユーザーのアクセス パネル内のアプリ数を減らすのに役立ちます。 この設定は **[ユーザー設定]** 内にあり、**[ユーザーは Office 365 ポータルでのみ Office 365 アプリを表示できる]** というラベルが付いています。
  
 
-詳細については、「[Azure Active Directory でユーザーのエクスペリエンスからアプリケーションを非表示にする](active-directory-coreapps-hide-third-party-app.md)」をご覧ください。
+詳細については、「[Azure Active Directory でユーザーのエクスペリエンスからアプリケーションを非表示にする](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)」をご覧ください。
 
 ---
  
@@ -110,7 +110,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
 - 拡張機能で最近使用したアプリにショートカットできます
 - 拡張機能は Edge、Chrome、Firefox で使用できます。
  
-詳細については、「[マイ アプリによるセキュリティで保護されたサインイン拡張機能](active-directory-saas-access-panel-introduction.md#my-apps-secure-sign-in-extension)」をご覧ください。
+詳細については、「[マイ アプリによるセキュリティで保護されたサインイン拡張機能](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction#my-apps-secure-sign-in-extension)」をご覧ください。
 
 ---
 
@@ -153,11 +153,11 @@ MFA の構成は、**[Azure Active Directory] \> [MFA サーバー]** にあり�
 
 新しい管理コンソールへの移行の一環として、Azure AD アクティビティ ログの取得に使用できる新しい 2 つの API が作成されました。 新しい API のセットは、より豊富な監査およびサインイン アクティビティに加えて、より豊富なフィルターおよび並べ替え機能を提供します。 以前はセキュリティ レポートを通じて提供されていたデータに、Microsoft Graph の Identity Protection リスク イベント API を通じてアクセスできます。
 
-詳細については、「
+詳細については、次を参照してください。
 
-- [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started-azure-portal.md)
+- [Azure Active Directory Reporting API の概要](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)
 
-- [Azure Active Directory Identity Protection と Microsoft Graph の基本](active-directory-identityprotection-graph-getting-started.md)
+- [Azure Active Directory Identity Protection と Microsoft Graph の基本](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection-graph-getting-started)
 
 
 ---
@@ -227,7 +227,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 [ユーザーは使用条件を展開する必要があります] を **[オン]** にするか **[オフ]** にするかを選択します。 **[オン]** に設定すると、同意前に使用条件を承認するようユーザーに要求します。
 
-詳細については、「[Azure Active Directory Terms of Use 機能 (プレビュー)](active-directory-tou.md)」をご覧ください。
+詳細については、「[Azure Active Directory Terms of Use 機能 (プレビュー)](https://docs.microsoft.com/azure/active-directory/active-directory-tou)」をご覧ください。
  
 ---
  
@@ -240,7 +240,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
  
 範囲指定されたアクティブ化により、元の割り当ての既定値よりも低い自律性で、対象となる Azure リソースのロール割り当てをアクティブ化できます。 たとえば、ご利用のテナントでお客様がサブスクリプションの所有者として割り当てられているとします。 範囲指定されたアクティブ化では、サブスクリプションに含まれる最大 5 つのリソース (リソース グループや仮想マシンなど) に対して所有者のロールをアクティブ化できます。 アクティブ化を範囲指定すると、重要な Azure リソースに対して望ましくない変更が実行される可能性を低減できる場合があります。
 
-詳しくは、「[Azure AD Privileged Identity Management とは](active-directory-privileged-identity-management-configure.md)」をご覧ください。
+詳しくは、「[Azure AD Privileged Identity Management とは](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-configure)」をご覧ください。
  
 ---
  
@@ -343,7 +343,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 この機能の詳細については、今後のブログとリリース ノートをお待ちください。 
 
-詳細については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」をご覧ください。
+詳細については、「[Azure Active Directory の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)」をご覧ください。
 
  
 ---
@@ -358,16 +358,16 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 
 
-以下のアプリが、[承認されたクライアント アプリ](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)の一覧に追加される予定です。
+以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)の一覧に追加される予定です。
 
 - [Microsoft Kaizala](https://www.microsoft.com/garage/profiles/kaizala/)
 - [Microsoft StaffHub](https://staffhub.office.com/what-it-is)
 
 
-詳細については、「
+詳細については、次を参照してください。
 
-- [承認されたクライアント アプリケーションの要件](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
-- [Azure AD のアプリベースの条件付きアクセス](active-directory-conditional-access-mam.md)
+- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
 
 ---
@@ -409,7 +409,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 - 問題の解決に役立つドキュメントへのリンク 
 
 
-詳細については、「[オンプレミスの統合](active-directory-passwords-how-it-works.md#on-premises-integration)」をご覧ください。
+詳細については、「[オンプレミスの統合](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-how-it-works#on-premises-integration)」をご覧ください。
 
  
 ---
@@ -428,9 +428,9 @@ Intune Managed Browser を承認されたアプリとして使用することで
 
 
 
-[Azure AD のアプリベースの条件付きアクセス](active-directory-conditional-access-mam.md)を使用することで、Office 365 などの Azure AD 接続クラウド アプリへのアクセスを、Intune App Protection ポリシーがサポートされる[承認されたクライアント アプリ](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)に限定できるようになりました。 Intune App Protection ポリシーは、これらのクライアント アプリケーション上にある企業データの構成と保護に使用されます。
+[Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)を使用することで、Office 365 などの Azure AD 接続クラウド アプリへのアクセスを、Intune App Protection ポリシーがサポートされる[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)に限定できるようになりました。 Intune App Protection ポリシーは、これらのクライアント アプリケーション上にある企業データの構成と保護に使用されます。
 
-[アプリベース](active-directory-conditional-access-mam.md)の条件付きアクセス ポリシーを[デバイスベース](active-directory-conditional-access-policy-connected-applications.md)の条件付きアクセス ポリシーと組み合わせることで、個人および会社のデバイスのデータを柔軟に保護できます。
+[アプリベース](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)の条件付きアクセス ポリシーを[デバイスベース](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-policy-connected-applications)の条件付きアクセス ポリシーと組み合わせることで、個人および会社のデバイスのデータを柔軟に保護できます。
 
 現在、アプリベースの条件付きアクセスでは以下の条件とコントロールを使用できます。
 
@@ -448,7 +448,7 @@ Intune Managed Browser を承認されたアプリとして使用することで
 - 承認済みクライアント アプリを必須にする
 
 
-詳細については、「[Azure Active Directory のアプリベースの条件付きアクセス](active-directory-conditional-access-mam.md)」をご覧ください。
+詳細については、「[Azure Active Directory のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)」をご覧ください。
 
  
 ---
@@ -472,7 +472,7 @@ Azure AD に接続されているすべてのデバイスと、それらのデ�
 - Azure AD 参加済みデバイスの BitLocker キーを確認し、Intune などでデバイスを管理する。
 - Azure AD デバイス関連の設定を管理する。
 
-詳細については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページをご覧ください。
+詳細については、[Azure Portal によるデバイスの管理](https://docs.microsoft.com/azure/active-directory/device-management-azure-portal)に関するページをご覧ください。
 
 
 
@@ -494,10 +494,10 @@ Azure AD 条件付きアクセス ポリシーのデバイス プラットフォ
 - **Intune で定義したご所属の組織のコンプライアンス ポリシーを厳守するよう macOS デバイスを設定する。** Azure Portal の Intune では、macOS デバイス用のコンプライアンス ポリシーを設定できます。 
 - **Azure AD のアプリケーションにアクセスできるデバイスを、ポリシーに準拠した macOS デバイスのみに制限する。** 条件付きアクセス ポリシーを作成する際、別のデバイス プラットフォーム オプションとして macOS を選択できます。 Azure で設定済みのターゲット アプリケーション向けに macOS 専用の条件付きアクセス ポリシーを作成できます。
 
-詳細については、「
+詳細については、次を参照してください。
 
 - [Intune で macOS デバイス用のデバイス コンプライアンス ポリシーを作成する](https://aka.ms/macoscompliancepolicy)
-- [Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)
+- [Azure Active Directory の条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal)
 
 
  
@@ -518,7 +518,7 @@ Azure Multi-Factor Authentication のネットワーク ポリシー サーバ�
 この拡張機能は、Azure Multi-Factor Authentication Server をデプロイせずに仮想プライベート ネットワーク接続を保護する必要がある組織を対象に作成されました。 ネットワーク ポリシー サーバー拡張機能は、RADIUS とクラウド ベース Azure Multi-Factor Authentication の間のアダプターとして機能し、認証の 2 番目の要素をフェデレーション ユーザーまたは同期済みユーザーに提供します。
 
 
-詳細については、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](../multi-factor-authentication/multi-factor-authentication-nps-extension.md)」をご覧ください。
+詳細については、「[Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-nps-extension)」をご覧ください。
 
  
 ---
@@ -557,16 +557,16 @@ Azure AD 管理センターで以下の操作が可能になりました。
 **製品の機能:** ID のセキュリティと保護
 
 
-以下のアプリが、[承認されたクライアント アプリ](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)の一覧に追加されました。
+以下のアプリが、[承認されたクライアント アプリ](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)の一覧に追加されました。
 
 - Microsoft Planner
 - Azure Information Protection 
 
 
-詳細については、「
+詳細については、次を参照してください。
 
-- [承認されたクライアント アプリケーションの要件](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)
-- [Azure AD のアプリベースの条件付きアクセス](active-directory-conditional-access-mam.md)
+- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
 
 
 ---
@@ -581,7 +581,7 @@ Azure AD 管理センターで以下の操作が可能になりました。
  
 条件付きアクセス コントロールで (選択したコントロールのいずれかを必須にする) "OR" を使用できるようになりました。 この機能を使用すると、アクセス コントロール間を "OR" でつないでポリシーを作成できます。 たとえば、この機能を使用して、多要素認証を使用したサインイン "または" 準拠デバイスの使用をユーザーに求めるポリシーを作成できます。
 
-詳細については、「[Azure Active Directory の条件付きアクセスのコントロール](active-directory-conditional-access-controls.md)」をご覧ください。
+詳細については、「[Azure Active Directory の条件付きアクセスのコントロール](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-controls)」をご覧ください。
 
  
 ---
@@ -635,7 +635,7 @@ Azure Portal では次の機能が提供されています。
 
 
 
-Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](application-config-sso-problem-configure-password-sso-non-gallery.md#how-to-manually-capture-sign-in-fields-for-an-application)」に示されています。 この機能は、[Azure Portal](http://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの**シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
+Azure AD は、HTML ユーザー名とパスワード フィールドをレンダリングするアプリケーションのサインイン フィールドの自動検出をサポートしています。 この手順は「[アプリケーションのサインイン フィールドを自動的にキャプチャする方法](https://docs.microsoft.com/azure/active-directory/application-config-sso-problem-configure-password-sso-non-gallery#how-to-manually-capture-sign-in-fields-for-an-application)」に示されています。 この機能は、[Azure Portal](http://aad.portal.azure.com) の **[エンタープライズ アプリケーション]** ページで*ギャラリー以外のアプリケーション*を追加することで表示されます。 さらに、Web URL を入力してページを保存することにより、この新しいアプリケーションの**シングル サインオン** モードを**パスワード ベースのシングル サインオン**を実行するように構成できます。
  
 サービスの問題により、この機能は一時的に無効化されていました。 問題が解決されたため、サインイン フィールドの自動検出が再び利用可能になりました。
 
@@ -657,7 +657,7 @@ Azure AD は、HTML ユーザー名とパスワード フィールドをレン�
 
 このパブリック プレビューでは、MFA の管理およびレポートが、コアとなる Azure AD の構成エクスペリエンスに組み込まれました。 Azure AD を使用しながら MFA の管理ポータル機能を管理できます。
 
-詳細については、「[Azure Portal の多要素認証レポートのリファレンス](active-directory-reporting-activity-sign-ins-mfa.md)」をご覧ください。 
+詳細については、「[Azure Portal の多要素認証レポートのリファレンス](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-sign-ins-mfa)」をご覧ください。 
 
 
 ---
@@ -680,7 +680,7 @@ Azure AD Terms of Use は、次のシナリオで使用できます。
 - ユーザーの属性 (たとえば、動的グループによって行われる、医師と看護師や、国内の従業員と国外の従業員などの区別) に基づいた特定の使用条件
 - ビジネスへの影響が大きいアプリ (Salesforce など) へのアクセスのための特定の使用条件
 
-詳細については、[Azure AD の使用条件](active-directory-tou.md)に関するページをご覧ください。
+詳細については、[Azure AD の使用条件](https://docs.microsoft.com/azure/active-directory/active-directory-tou)に関するページをご覧ください。
 
 
 ---
@@ -701,7 +701,7 @@ Azure AD Privileged Identity Management で、組織内の以下の Azure リソ
 
 Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで、Azure AD Privileged Identity Management から提供されるセキュリティおよびライフサイクルの管理機能を使用できます。
 
-詳細については、[Azure リソース向けの Privileged Identity Management](privileged-identity-management/azure-pim-resource-rbac.md) に関するページをご覧ください。
+詳細については、[Azure リソース向けの Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac) に関するページをご覧ください。
 
 
 ---
@@ -722,7 +722,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 アクセス レビューの制御を組織に関連するプログラムに集めて、コンプライアンスまたはリスクを受けやすいアプリケーションのレビューを追跡できます。
 
-詳細については、「[Azure AD アクセス レビュー](active-directory-azure-ad-controls-access-reviews-overview.md)」をご覧ください。
+詳細については、「[Azure AD アクセス レビュー](https://docs.microsoft.com/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview)」をご覧ください。
 
 
 ---
@@ -739,7 +739,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 新しい**アプリの非表示**プロパティにより、ご利用のユーザー ポータルに表示されるアプリを管理しやすくなりました。 アプリの非表示は、バックエンド サービス用のアプリ タイルが表示されていたり、タイルが重複してユーザーのアプリ ランチャーが整理されていなかったりする場合に役立ちます。 切り替えボタンはサード パーティ製アプリの **[プロパティ]** セクションにあり、**[Visible to user?]\(ユーザーに表示しますか?\)** というラベルが付いています。 PowerShell を介してプログラムでアプリを非表示にすることもできます。 
 
-詳細については、[Azure AD でユーザーのエクスペリエンスからサードパーティ製アプリケーションを非表示にする](active-directory-coreapps-hide-third-party-app.md)方法に関するページをご覧ください。 
+詳細については、[Azure AD でユーザーのエクスペリエンスからサードパーティ製アプリケーションを非表示にする](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-hide-third-party-app)方法に関するページをご覧ください。 
 
 
 **利用可能な機能**

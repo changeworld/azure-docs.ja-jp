@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.openlocfilehash: ad53575b655ebec5a134c8d76b963708caf14334
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 2df08c8e3dbadbfc1a9d2cfb3adcda4f5bae2851
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="build-a-java-and-mysql-web-app-in-azure"></a>Azure で Java と MySQL Web アプリを構築する
 
@@ -41,14 +41,13 @@ ms.lasthandoff: 12/15/2017
 > * Azure から診断ログをストリーミングする
 > * Azure Portal でアプリを監視する
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
 1. [Git をダウンロードし、インストールします](https://git-scm.com/)
 1. [Java 7 JDK 以降をダウンロードし、インストールします](http://www.oracle.com/technetwork/java/javase/downloads/index.html)
 1. [MySQL をダウンロード、インストール、および起動します](https://dev.mysql.com/doc/refman/5.7/en/installing.html) 
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prepare-local-mysql"></a>ローカル MySQL を準備する 
 
@@ -126,7 +125,7 @@ select * from todo_item;
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドを使用して、[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの関連リソースをデプロイおよび管理される論理コンテナーです。 
+[`az group create`](/cli/azure/group#az_group_create) コマンドで[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの関連リソースをデプロイおよび管理される論理コンテナーです。 
 
 次の例は、北ヨーロッパ リージョンにリソース グループを作成します。
 
@@ -134,12 +133,11 @@ select * from todo_item;
 az group create --name myResourceGroup --location "North Europe"
 ```    
 
-`--location` に使用できる値を確認するには、[az appservice list-locations](/cli/azure/appservice#list-locations) コマンドを使用します。
+`--location` に使用できる値を確認するには、[`az appservice list-locations`](/cli/azure/appservice#list-locations) コマンドを使用します。
 
 ### <a name="create-a-mysql-server"></a>MySQL サーバーを作成する
 
-Cloud Shell で [az mysql server create](/cli/azure/mysql/server#create) コマンドを使用し、Azure Database for MySQL (プレビュー) でサーバーを作成します。    
-`<mysql_server_name>` プレースホルダーを独自の一意の MySQL サーバー名に置き換えます。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.mysql.database.azure.com`) の一部であるため、グローバルに一意である必要があります。 `<admin_user>` と `<admin_password>` も独自の値に置き換えます。
+Cloud Shell で [`az mysql server create`](/cli/azure/mysql/server#az_mysql_server_create) コマンドを使用して、Azure Database for MySQL (プレビュー) でサーバーを作成します。 `<mysql_server_name>` プレースホルダーを独自の一意の MySQL サーバー名に置き換えます。 この名前は、MySQL サーバーのホスト名 (`<mysql_server_name>.mysql.database.azure.com`) の一部であるため、グローバルに一意である必要があります。 `<admin_user>` と `<admin_password>` も独自の値に置き換えます。
 
 ```azurecli-interactive
 az mysql server create --name <mysql_server_name> --resource-group myResourceGroup --location "North Europe" --admin-user <admin_user> --admin-password <admin_password>
@@ -163,7 +161,7 @@ MySQL サーバーが作成されると、Azure CLI によって、次の例の�
 
 ### <a name="configure-server-firewall"></a>サーバーのファイアウォールを構成する
 
-Cloud Shell で [az mysql server firewall-rule create](/cli/azure/mysql/server/firewall-rule#create) コマンドを使用し、MySQL サーバーのクライアントへの接続を許可するファイアウォール ルールを作成します。 
+Cloud Shell で [`az mysql server firewall-rule create`](/cli/azure/mysql/server/firewall-rule#az_mysql_server_firewall_rule_create) コマンドを使用して、MySQL サーバーでクライアント接続を許可するためのファイアウォール規則を作成します。 
 
 ```azurecli-interactive
 az mysql server firewall-rule create --name allIPs --server <mysql_server_name> --resource-group myResourceGroup --start-ip-address 0.0.0.0 --end-ip-address 255.255.255.255
@@ -205,7 +203,7 @@ quit
 
 ## <a name="deploy-the-sample-to-azure-app-service"></a>サンプルを Azure App Service にデプロイする
 
-[az appservice plan create](/cli/azure/appservice/plan#create) CLI コマンドを使用して、**Free** 価格レベルの Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
+[`az appservice plan create`](/cli/azure/appservice/plan#az_appservice_plan_create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
@@ -231,7 +229,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ### <a name="create-an-azure-web-app"></a>Azure Web アプリを作成する
 
- Cloud Shell で [az webapp create](/cli/azure/appservice/web#create) CLI コマンドを使用し、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
+Cloud Shell で [`az webapp create`](/cli/azure/appservice/web#az_appservice_web_create) CLI コマンドを使用して、`myAppServicePlan` App Service プランで Web アプリ定義を作成します。 Web アプリ定義によって、アプリケーションにアクセスするための URL が提供され、Azure にコードをデプロイするためのいくつかのオプションが構成されます。 
 
 ```azurecli-interactive
 az webapp create --name <app_name> --resource-group myResourceGroup --plan myAppServicePlan
@@ -258,7 +256,7 @@ Web アプリ定義の準備が完了すると、Azure CLI によって次の例
 
 ### <a name="configure-java"></a>Java を構成する 
 
-Cloud Shell で [az appservice web config update](/cli/azure/appservice/web/config#update) コマンドを使用し、アプリで必要な Java ランタイム構成を設定します。
+Cloud Shell で [`az webapp config set`](/cli/azure/webapp/config#az_webapp_config_set) コマンドを使用して、アプリで必要な Java ランタイム構成を設定します。
 
 次のコマンドでは、最新の Java 8 JDK および [Apache Tomcat](http://tomcat.apache.org/) 8.0 で動作するように Web アプリを構成します。
 
@@ -270,7 +268,7 @@ az webapp config set --name <app_name> --resource-group myResourceGroup --java-v
 
 サンプル アプリを実行する前に、Azure で作成した Azure MySQL データベースを使用するように Web アプリのアプリケーション設定を行います。 これらのプロパティは環境変数として Web アプリケーションに公開され、パッケージ化された Web アプリ内の application.properties で設定されている値をオーバーライドします。 
 
-Cloud Shell で [az webapp config appsettings](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) を使用してアプリケーションの設定を行います。
+Cloud Shell で、CLI で [`az webapp config appsettings`](https://docs.microsoft.com/cli/azure/appservice/web/config/appsettings) を使用してアプリケーションの設定を行います。
 
 ```azurecli-interactive
 az webapp config appsettings set --settings SPRING_DATASOURCE_URL="jdbc:mysql://<mysql_server_name>.mysql.database.azure.com:3306/tododb?verifyServerCertificate=true&useSSL=true&requireSSL=false" --resource-group myResourceGroup --name <app_name>
@@ -287,7 +285,7 @@ az webapp config appsettings set --settings SPRING_DATASOURCE_PASSWORD=Javaapp_p
 ### <a name="get-ftp-deployment-credentials"></a>FTP デプロイ資格情報を取得する 
 アプリケーションを Azure App Service にデプロイするには、FTP、ローカル Git、GitHub、Visual Studio Team Services、BitBucket など、さまざまな方法があります。 この例では、事前にご利用のローカル コンピューターでビルドした .WAR ファイルを Azure App Service にデプロイするために FTP を使用します。
 
-ftp コマンドで Web アプリに渡す資格情報を確認するには、Cloud Shell で [az appservice web deployment list-publishing-profiles](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles) コマンドを次のように使用します。 
+ftp コマンドで Web アプリに渡す資格情報を確認するには、Cloud Shell で [`az appservice web deployment list-publishing-profiles`](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles) コマンドを次のように使用します。 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles --name <app_name> --resource-group myResourceGroup --query "[?publishMethod=='FTP'].{URL:publishUrl, Username:userName,Password:userPWD}" --output json
@@ -372,7 +370,7 @@ ToDo リストに項目の作成日の列を追加するように、アプリケ
     repository.save(item);
     ```
 
-4. Thymeleaf テンプレートの新しいフィールドのサポートを追加します。 *src/main/resources/templates/index.html* を、タイムスタンプ用の新しいテーブル ヘッダー、および各テーブル データ行にタイムスタンプの値を表示する新しいフィールドで更新します。
+4. `Thymeleaf` テンプレートの新しいフィールドのサポートを追加します。 *src/main/resources/templates/index.html* を、タイムスタンプ用の新しいテーブル ヘッダー、および各テーブル データ行にタイムスタンプの値を表示する新しいフィールドで更新します。
 
     ```html
     <th>Name</th>
@@ -401,7 +399,7 @@ ToDo リストに項目の作成日の列を追加するように、アプリケ
 
 Azure App Service でその Java アプリケーションを実行している間、コンソール ログをご利用のターミナルに直接パイプできます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
 
-ログのストリーミングを開始するには、Cloud Shell で [az webapp log tail](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) コマンドを使用します。
+ログのストリーミングを開始するには、Cloud Shell で [`az webapp log tail`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_tail) コマンドを使用します。
 
 ```azurecli-interactive 
 az webapp log tail --name <app_name> --resource-group myResourceGroup 
@@ -409,19 +407,17 @@ az webapp log tail --name <app_name> --resource-group myResourceGroup
 
 ## <a name="manage-your-azure-web-app"></a>Azure Web アプリを管理する
 
-Azure Portal に移動し、作成した Web アプリを表示します。
-
-そのためには、[https://portal.azure.com](https://portal.azure.com) にサインインします。
+[Azure Portal](https://portal.azure.com) に移動し、作成した Web アプリを表示します。
 
 左側のメニューで **[App Service]** をクリックした後、Azure Web アプリの名前をクリックします。
 
 ![Azure Web アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-java-mysql/access-portal.png)
 
-既定では、Web アプリのブレードは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、停止、開始、再開、削除のような管理タスクも行うことができます。 ブレードの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
+既定では、Web アプリ ページは **[概要]** ページを表示します。 このページでは、アプリの動作状態を見ることができます。 ここでは、停止、開始、再開、削除のような管理タスクも行うことができます。 ページの左側にあるタブは、開くことができるさまざまな構成ページを示しています。
 
-![Azure Portal の App Service ブレード](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
+![Azure Portal の [App Service] ページ](./media/app-service-web-tutorial-java-mysql/web-app-blade.png)
 
-ブレードのこれらのタブは、Web アプリに追加することができるさまざまな優れた機能を示しています。 次の一覧では、ほんの一部の例を示しています。
+このページのこれらのタブは、Web アプリに追加することができるさまざまな優れた機能を示しています。 次の一覧では、ほんの一部の例を示しています。
 * カスタム DNS 名をマップする
 * カスタム SSL 証明書をバインドする
 * 継続的なデプロイを構成する

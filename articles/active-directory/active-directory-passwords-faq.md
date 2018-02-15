@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 29b25a476344ed048673039beacdffd39469ec85
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: afa609d7b47f3c743f5d3bfd4011e09c762ccbd1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
-パスワードのリセットについてのあらゆることに対するよくあるご質問 (FAQ) を次に示します。
+パスワードのリセットについてのあらゆる問題に関するよくあるご質問 (FAQ) を次に示します。
 
 ここで解決できない Azure Active Directory (Azure AD) やセルフサービスによるパスワードのリセット (SSPR) に関する一般的な質問がある場合は、[Azure AD フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WindowsAzureAD)でコミュニティに支援を求めることができます。 コミュニティのメンバーには、エンジニア、製品マネージャー、MVP、IT プロフェッショナルなどが含まれます。
 
@@ -65,12 +65,12 @@ ms.lasthandoff: 01/17/2018
   >
 * **Q: ユーザーがパスワード リセットを使用するには、そのユーザーが事前に登録されている必要がありますか。**
 
-  > **A:** いいえ。 ユーザーに代わって管理者が必要な認証情報を定義している場合は、ユーザーを登録する必要はありません。 適切に書式設定されたデータがディレクトリ内の該当フィールドに格納されている限り、パスワード リセットは正常に動作します。
+  > **A:** いいえ。 ユーザーに代わって必要な認証情報を定義している場合は、ユーザー が登録を行う必要はありません。 適切に書式設定されたデータがディレクトリ内の該当フィールドに格納されている限り、パスワード リセットは正常に動作します。
   >
   >
-* **Q: ユーザーの代わりに管理者が [認証用電話]、[認証用電子メール]、または [代替の認証用電話] フィールドを同期または設定できますか。**
+* **Q: ユーザーの代わりに [認証用電話]、[認証用電子メール]、または [代替の認証用電話] フィールドを同期または設定できますか。**
 
-  > **A:** いいえ。現時点ではできません。
+  > **A:** グローバル管理者が設定できるフィールドは、[SSPR データ要件](active-directory-passwords-data.md)に関する記事に定義されています。
   >
   >
 * **Q: 登録ポータルでユーザーに対して表示されるオプションはどのように決定されていますか。**
@@ -80,7 +80,7 @@ ms.lasthandoff: 01/17/2018
   >
 * **Q: ユーザーが登録されたと見なされるのはどのタイミングですか。**
 
-  > **A:** ユーザーは、[Azure Portal](https://portal.azure.com) で設定されているパスワードの**リセットに必要な方法の数**以上で登録した場合に、SSPR に登録されたと見なされます。
+  > **A:** ユーザーは、[Azure Portal](https://portal.azure.com) のパスワードの**リセットのために必要な方法の数**で設定されている数以上を登録した場合に、SSPR に登録されたと見なされます。
   >
   >
 
@@ -104,7 +104,7 @@ ms.lasthandoff: 01/17/2018
   > **A:** メール、SMS メッセージ、電話呼び出しは、1 分以内に行われるはずです。 通常は 5 から 20 秒です。
     >この期間内に通知を受け取らない場合は、
         > * 迷惑メール フォルダーを確認します。
-        > * アクセスしている番号やメールの内容が正しいことを確認してください。
+        > * 連絡を受けている番号やメールが、自分の想定しているものであることを確認してください。
         > * ディレクトリ内の認証データの書式が正しいことを確認してください (例: +1 4255551234 または *user@contoso.com*)。 
   >
   >
@@ -245,7 +245,7 @@ ms.lasthandoff: 01/17/2018
   >
   >
 
-## <a name="password-writeback"></a>パスワード ライトバック
+## <a name="password-writeback"></a>パスワードの書き戻し
 
 * **Q: パスワード ライトバックは、バックグラウンドでどのように動作しますか。**
 
@@ -283,16 +283,16 @@ ms.lasthandoff: 01/17/2018
   >
   >
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 
-* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)

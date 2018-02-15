@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 97cd46819a4547ec743270871bcb6b4eef3eb365
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 12cbd7d9682e70fc5bc65b2eda5b8eddf6bbb7f0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -146,6 +146,17 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    
    クラスター名によって環境を識別できます。 場所には、Azure Portal で作成したモデル管理アカウントと同じ場所を指定する必要があります。
 
+   環境が正しく設定されていることを確認するには、次のコマンドを使用して状態を確認します。
+
+   ```azurecli
+   az ml env show -n <deployment environment name> -g <existing resource group name>
+   ```
+
+   手順 5 で環境を設定する前に、(次の図に示すように) [プロビジョニング状態] の値が [Succeeded]\(成功\) になっていることを確認してください。
+
+   ![プロビジョニング状態](media/tutorial-classifying-iris/provisioning_state.png)
+ 
+   
 3. モデル管理アカウントを作成します。 (これは 1 回限りの作業です)。  
    ```azurecli
    az ml account modelmanagement create --location <e.g. eastus2> -n <new model management account name> -g <existing resource group name> --sku-name S1
@@ -258,8 +269,9 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 2. サービスをテストするには、返された service run コマンドを実行します。
 
+    
    ```azurecli
-   az ml service run realtime -i irisapp -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
+   az ml service run realtime -i <web service ID> -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
    ```
    出力は **"2"** です。これは予測された品種を表します  (実際の結果は異なる場合があります)。 
 

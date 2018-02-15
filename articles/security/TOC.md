@@ -90,7 +90,6 @@
 ### [Azure ログ統合の概要](security-azure-log-integration-overview.md)
 #### [Azure ログ統合の使用](security-azure-log-integration-get-started.md)
 #### [Azure Active Directory の監査ログの統合](security-azure-log-integration-ad.md)
-#### [Security Center のアラートの統合](security-azure-log-integration-security-center.md)
 #### [Event Hubs を使用した Key Vault のログの統合](security-azure-log-integration-keyvault-eventhub.md)
 #### [FAQ](security-azure-log-integration-faq.md)
 

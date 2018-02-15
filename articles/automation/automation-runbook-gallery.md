@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: d6a950d69e5279c3cc19d8e457bfa23c2b40f515
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 91aa10b1e7dfbe47107257fa0a5fe14f7b43ff71
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているさまざまなシナリオにアクセスできます。  これらのシナリオを変更しないでそのまま使用することも、特定の要件に合うように編集することもできます。
@@ -37,11 +37,8 @@ Runbook ギャラリーから直接インポートできるのは、Azure ポー
 
 ### <a name="to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal"></a>Azure ポータルで Runbook ギャラリーから Runbook をインポートするには
 1. Azure ポータルで、Automation アカウントを開きます。
-2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
-3. **[ギャラリーの参照]** ボタンをクリックします。
-   
-    ![[ギャラリーの参照] ボタン](media/automation-runbook-gallery/browse-gallery-button.png)
-4. 必要なギャラリー アイテムを探し、選択して詳細を表示します。
+2. **[プロセス オートメーション]** の **[Runbook ギャラリー]** をクリックします。
+3. 必要なギャラリー アイテムを探し、選択して詳細を表示します。 左側に、発行元と種類に関する検索パラメーターを追加で入力できます。
    
     ![[ギャラリーの参照]](media/automation-runbook-gallery/browse-gallery.png)
 5. **[ソース プロジェクトの表示]** をクリックして、 [TechNet スクリプト センター](http://gallery.technet.microsoft.com/)の項目を表示します。
@@ -94,14 +91,8 @@ PowerShell モジュールには Runbook で使用できるコマンドレット
    
     ![PowerShell モジュールの詳細](media/automation-runbook-gallery/gallery-item-details-blade.png) <br>
 7. モジュールを Azure Automation に直接インストールするには、 **[インポート]** ボタンをクリックします。
-   
-    ![[モジュールのインポート] ボタン](media/automation-runbook-gallery/module-import-button.png)
 8. [インポート] ボタンをクリックすると、**[インポート]** ウィンドウに、インポートしようとしているモジュール名が表示されます。 すべての依存関係がインストールされている場合は、**[OK]** ボタンがアクティブになります。 依存関係が存在しない場合は、このモジュールをインポートする前に、その依存関係をインポートする必要があります。
-9. **[OK]** をクリックして、モジュールをインポートします。 Azure Automation がモジュールをアカウントにインポートしている間に、モジュールとコマンドレットについてのメタデータが抽出されます。
-   
-    ![[モジュールのインポート] ページ](media/automation-runbook-gallery/module-import-blade.png)
-   
-    各アクティビティを抽出する必要があるため、数分かかる場合があります。
+9. **[インポート]** ページで **[OK]** をクリックしてモジュールをインポートします。 Azure Automation がモジュールをアカウントにインポートしている間に、モジュールとコマンドレットについてのメタデータが抽出されます。 各アクティビティを抽出する必要があるため、数分かかる場合があります。
 10. モジュールをデプロイ中であることが最初に通知され、プロセスが完了すると完了通知が表示されます。
 11. モジュールがインポートされた後は、使用可能なアクティビティが表示され、Runbook と Desired State Configuration でそのリソースをご利用いただけます。
 
