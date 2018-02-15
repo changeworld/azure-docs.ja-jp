@@ -1,92 +1,180 @@
 ---
-title: "アプリケーション ゲートウェイのパスベース ルールを作成する - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用してアプリケーション ゲートウェイのパスベース ルールを作成する方法について説明します。"
+title: "URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs"
+description: "Azure Portal を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。"
 services: application-gateway
-documentationcenter: na
 author: davidmu1
 manager: timlt
-editor: 
+editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 87bd93bc-e1a6-45db-a226-555948f1feb7
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/03/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: b207e7e7bd83e56db68288190c7bedafa8b5b7fa
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: eb07b1811b017f71a003be26522e6b213a300321
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="create-a-path-based-rule-for-an-application-gateway-by-using-the-azure-portal"></a>Azure Portal を使用してアプリケーション ゲートウェイのパスベース ルールを作成する
+# <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
-> [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-url-route-portal.md)
-> * [Azure Resource Manager の PowerShell](application-gateway-create-url-route-arm-ps.md)
-> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
+[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure Portal を使用して [URL パス ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、仮想マシンを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
 
-URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートを関連付けできます。 アプリケーション ゲートウェイに記載されている URL に対して構成されたバックエンド サーバー プールへのルートがあるかどうかを調べて、定義されたプールにネットワーク トラフィックを送信します。 URL パスベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
+この記事では、次のことについて説明します:
 
-アプリケーション ゲートウェイには、基本ルールと URL パスベース ルールという 2 種類のルールがあります。 基本ルールの種類は、バックエンド プールにラウンド ロビン サービスを提供します。 パスベースのルールは、適切なバックエンド プールを選択する際、ラウンド ロビンによる分散だけでなく要求 URL のパス パターンも使用します。
+> [!div class="checklist"]
+> * アプリケーション ゲートウェイの作成
+> * バックエンド サーバー用の仮想マシンの作成
+> * バックエンド サーバーでのバックエンド プールの作成
+> * バックエンド リスナーの作成
+> * パス ベースのルーティング規則の作成
 
-## <a name="scenario"></a>シナリオ
+![URL ルーティングの例](./media/application-gateway-create-url-route-portal/scenario.png)
 
-次のシナリオでは、既存のアプリケーション ゲートウェイにパスベース ルールを作成します。
-このシナリオでは、[ポータルを使用してアプリケーション ゲートウェイを作成する](application-gateway-create-gateway-portal.md)ための手順を、あらかじめ完了していることを前提としています。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-![URL ルート][scenario]
+## <a name="log-in-to-azure"></a>Azure にログインする
 
-## <a name="createrule"></a>パスベース ルールの作成
+Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にログインします。
 
-パスベースのルールには、独自のリスナーが必要です。 ルールを作成する前に、使用するリスナーが利用できる状態であることを確認してください。
+## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-### <a name="step-1"></a>手順 1
+作成したリソース間の通信には仮想ネットワークが必要です。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。
 
-[Azure Portal](http://portal.azure.com) に移動し、既存のアプリケーション ゲートウェイを選択します。 **[ルール]** をクリックします。
+1. Azure Portal の左上にある **[新規]** をクリックします。
+2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
+3. 次のアプリケーション ゲートウェイの値を入力します。
 
-![Application Gateway の概要][1]
+    - *myAppGateway* - アプリケーション ゲートウェイの名前です。
+    - *myResourceGroupAG* - 新しいリソース グループの名前です。
 
-### <a name="step-2"></a>手順 2.
+    ![新しいアプリケーション ゲートウェイの作成](./media/application-gateway-create-url-route-portal/application-gateway-create.png)
 
-**[パス ベース]** ボタンをクリックして、新しいパスベース ルールを追加します。
+4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
+5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
-### <a name="step-3"></a>手順 3.
+    - *myVNet* - 仮想ネットワークの名前です。
+    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
+    - *myAGSubnet* - サブネットの名前です。
+    - *10.0.0.0/24* - サブネットのアドレス空間です。
 
-**[Add path-based rule (パスベース ルールの追加)]** ブレードには 2 つのセクションがあります。 最初のセクションでは、リスナー、ルールの名前、既定のパス設定を定義しました。 既定のパス設定は、カスタムのパスベース ルートに分類されないルートのための設定です。 **[Add path-based rule (パスベース ルールの追加)]** ブレードの 2 番目のセクションでは、パスベース ルールそのものを定義します。
+    ![Create virtual network](./media/application-gateway-create-url-route-portal/application-gateway-vnet.png)
 
-**基本設定**
+6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
+7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
+8. リスナーの構成は既定値をそのまま使用し、Web アプリケーション ファイアウォールは無効のままにして、**[OK]** をクリックします。
+9. 概要ページで設定を確認し、**[OK]** をクリックして、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
 
-* **[名前]**: ポータルでアクセス可能なルールのフレンドリ名。
-* **[リスナー]**: ルールで使用するリスナー。
-* **[既定のバックエンド プール]**: 既定のルールに使用するバックエンド プール。
-* **[既定の HTTP 設定]**: 既定のルールに使用する HTTP 設定。
+### <a name="add-a-subnet"></a>サブネットの追加
 
-**パスベース ルールの設定**
+1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myVNet]** をクリックします。
+2. **[サブネット]**、**[サブネット]** の順にクリックします。
 
-* **[名前]**: パスベース ルールのフレンドリ名。
-* **[パス]**: トラフィックを転送するときにルールが検索するパス。
-* **[バックエンド プール]**: ルールで使用するバックエンド。
-* **[HTTP 設定]**: ルールで使用する HTTP 設定。
+    ![サブネットの作成](./media/application-gateway-create-url-route-portal/application-gateway-subnet.png)
 
-> [!IMPORTANT]
-> **[パス]** 設定は、照合するパス パターンの一覧です。 各パターンはスラッシュで始まる必要があり、アスタリスクは末尾にのみ使用できます。 /xyz、/xyz*、/xyz/* などが有効な例です。  
+3. サブネットの名前として「*myBackendSubnet*」を入力し、**[OK]** をクリックします。
 
-![情報を入力した [Add path-based rule (パスベース ルールの追加)] ブレード][2]
+## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-既存のアプリケーション ゲートウェイへのパスベース ルールの追加は、Azure Portal を利用すると簡単にできます。 パスベース ルールを作成した後は、編集して新しいルールを追加できます。 
+この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 3 つの仮想マシンを作成します。 また、IIS を仮想マシンにインストールして、アプリケーション ゲートウェイが正常に作成されたことを確認します。
 
-![新しいパスベース ルールの追加][3]
+1. **[新規]**をクリックします。
+2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
+3. 次の仮想マシンの値を入力します。
 
-この手順では、パスベースのルートを構成します。 要求が再書き込みされないことを理解しておくことは重要です。 要求が着信すると、アプリケーション ゲートウェイは要求を検査し、URL パターンに基づいて適切なバックエンド プールに要求を送信します。
+    - *myVM1* - 仮想マシンの名前です。
+    - *azureuser* - 管理者のユーザー名です。
+    - *Azure123456!* パスワードです。
+    - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
 
-## <a name="next-steps"></a>次のステップ
+4. Click **OK**.
+5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
+6. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。 
+7. **[無効]** をクリックして、ブート診断を無効にします。
+8. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
 
-Azure Application Gateway で SSL オフロードを構成する方法については、「[Azure Portal を使用して SSL オフロード用のアプリケーション ゲートウェイを構成する](application-gateway-ssl-portal.md)」をご覧ください。
+### <a name="install-iis"></a>IIS のインストール
 
-[1]: ./media/application-gateway-create-url-route-portal/figure1.png
-[2]: ./media/application-gateway-create-url-route-portal/figure2.png
-[3]: ./media/application-gateway-create-url-route-portal/figure3.png
-[scenario]: ./media/application-gateway-create-url-route-portal/scenario.png
+1. 対話型シェルを開いて、**PowerShell** に設定されていることを確認します。
+
+    ![カスタム拡張機能のインストール](./media/application-gateway-create-url-route-portal/application-gateway-extension.png)
+
+2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
+
+    ```azurepowershell-interactive
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -Location eastus `
+      -ExtensionName IIS `
+      -VMName myVM1 `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -Settings $publicSettings
+    ```
+
+3. さらに 2 つの仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzureRmVMExtension の VMName の値として、*myVM2* と *myVM3* という名前を入力します。
+
+## <a name="create-backend-pools-with-the-virtual-machines"></a>仮想マシンでのバックエンド プールの作成
+
+1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
+2. **[バックエンド プール]** をクリックします。 既定のプールがアプリケーション ゲートウェイで自動的に作成されます。 **[appGateayBackendPool]** をクリックします。
+3. **[ターゲットの追加]** をクリックして、*myVM1* を appGatewayBackendPool に追加します。
+
+    ![バックエンド サーバーの追加](./media/application-gateway-create-url-route-portal/application-gateway-backend.png)
+
+4. **[Save]** をクリックします。
+5. **[バックエンド プール]**、**[追加]** の順にクリックします。
+6. *imagesBackendPool* という名前を入力し、**[ターゲットの追加]** を使用して *myVM2* を追加します。
+7. Click **OK**.
+8. **[追加]** を再度クリックして、*videoBackendPool* という名前の別のバックエンド プールを追加し、*myVM3* を追加します。
+
+## <a name="create-a-backend-listener"></a>バックエンド リスナーの作成
+
+1. **[リスナー]**、**[基本]** の順にクリックします。
+2. 名前として「*myBackendListener*」を、フロントエンド ポートの名前として「*myFrontendPort*」を、リスナーのポートとして「*8080*」を入力します。
+3. Click **OK**.
+
+## <a name="create-a-path-based-routing-rule"></a>パス ベースのルーティング規則の作成
+
+1. **[ルール]**、**[パス ベース]** の順にクリックします。
+2. 名前として「*rule2*」を入力します。
+3. 最初のパスの名前として「*イメージ*」と入力します。 パスとして「*/images/**」を入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
+4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスとして「*/video/**」を入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
+
+    ![パス ベース ルールの作成](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
+
+5. Click **OK**.
+
+## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
+
+1. **[すべてのリソース]**、**[myAGPublicIPAddress]** の順にクリックします。
+
+    ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
+
+2. パブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、http://http://40.121.222.19 です。
+
+    ![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
+
+3. URL を http://&lt;ip-address&gt;:8080/video/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
+
+    ![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
+
+4. URL を http://&lt;ip-address&gt;:8080/video/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
+
+    ![アプリケーション ゲートウェイでのビデオ URL のテスト](./media/application-gateway-create-url-route-portal/application-gateway-iistest-video.png)
+
+## <a name="next-steps"></a>次の手順
+
+この記事で学習した内容は次のとおりです
+
+> [!div class="checklist"]
+> * アプリケーション ゲートウェイの作成
+> * バックエンド サーバー用の仮想マシンの作成
+> * バックエンド サーバーでのバックエンド プールの作成
+> * バックエンド リスナーの作成
+> * パス ベースのルーティング規則の作成
+
+アプリケーション ゲートウェイとその関連リソースの詳細を確認するには、ハウツー記事に進みます。

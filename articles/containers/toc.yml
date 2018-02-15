@@ -51,12 +51,12 @@
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-containers-overview'
         - name: 方法
           items:
-            - name: Docker ホストの作成
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/dockerextension'
-            - name: Docker マシンの使用
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/docker-machine'
-            - name: Docker Compose の使用
-              href: 'https://docs.microsoft.com/azure/virtual-machines/linux/docker-compose-quickstart'
+            - name: Windows でのコンテナー アプリケーションの作成
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers'
+            - name: Linux でのコンテナー アプリケーションの作成
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-containers-linux'
+            - name: 既存の .NET アプリケーションのコンテナー格納
+              href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-host-app-in-a-container'
     - name: Windows コンテナー
       href: 'https://docs.microsoft.com/azure/virtual-machines/windows/overview'
       items:
@@ -64,7 +64,7 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
         - name: Windows コンテナーについて
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/about/index'
-    - name: 参照
+    - name: リファレンス
       items:
         - name: Azure Container Instances (az container)
           href: 'https://docs.microsoft.com/cli/azure/container'

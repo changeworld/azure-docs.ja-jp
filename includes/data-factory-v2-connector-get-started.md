@@ -1,7 +1,7 @@
 <!--
-    Separate the generic "Getting started" paragraph from each connector-* article in azure-docs-pr/articles/data-factory/ to ease future central update.
+    Separate the generic "Get started" paragraph from each connector-* article in azure-docs-pr/articles/data-factory/ to ease future central update.
 -->
-次のいずれかのツール/SDK を使用して、コピー アクティビティでパイプラインを作成できます。リンクをクリックすると、コピー アクティビティでパイプラインを作成するための詳細な手順を示したチュートリアルに移動します。 
+コピー アクティビティを含んだパイプラインは、次のいずれかのツールまたは SDK を使用して作成できます。 リンクを選択すると、コピー アクティビティを含んだパイプラインの作成手順を詳しく説明したチュートリアルにアクセスできます。 
 
 - [データのコピー ツール](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
 - [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)

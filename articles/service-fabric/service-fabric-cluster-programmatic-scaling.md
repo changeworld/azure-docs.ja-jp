@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
+ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: 1744e3c49ac06abe9e1067d507fd56d694201ffc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: bfa020e29a9bb67f0634d220725bc11279e1565c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
@@ -93,7 +93,7 @@ scaleSet.Update().WithCapacity(newCapacity).Apply();
 
 スケールインは、スケールアウトに似ています。実際の仮想マシン スケール セットの変更も、実質的には同じです。 しかし、先ほど説明したとおり、Service Fabric では、Gold または Silver の耐久性レベルを持つノードの場合だけは、ノードが削除されると自動的にクリーンアップが行われます。 そのため、Bronze の耐久性レベルでスケールインする場合は、Service Fabric クラスターを操作して削除するノードをシャットダウンした後に、ノードの状態の削除を行う必要があります。
 
-ノードのシャットダウンを準備する際は、削除するノード (最後に追加されたノード) を探して非アクティブ化する必要があります。 非シード ノードの場合、`NodeInstanceId` と比較することで新しいノードを検出できます。 
+ノードのシャットダウンを準備する際は、削除するノード (最後に追加された仮想マシン スケール セット インスタンス) を探して非アクティブ化します。 仮想マシン スケール セット インスタンスには、追加された順序で番号が付けられるため、ノノードの名前 (基になる仮想マシン スケール セット インスタンス名と一致します) に含まれる数値サフィックスを比較することによって新しいノードを見つけることができます。 
 
 ```csharp
 using (var client = new FabricClient())
@@ -101,11 +101,14 @@ using (var client = new FabricClient())
     var mostRecentLiveNode = (await client.QueryManager.GetNodeListAsync())
         .Where(n => n.NodeType.Equals(NodeTypeToScale, StringComparison.OrdinalIgnoreCase))
         .Where(n => n.NodeStatus == System.Fabric.Query.NodeStatus.Up)
-        .OrderByDescending(n => n.NodeInstanceId)
+        .OrderByDescending(n =>
+        {
+            var instanceIdIndex = n.NodeName.LastIndexOf("_");
+            var instanceIdString = n.NodeName.Substring(instanceIdIndex + 1);
+            return int.Parse(instanceIdString);
+        })
         .FirstOrDefault();
 ```
-
-シード ノードは異なり、また、より大きなインスタンス ID から削除するという規則に必ずしも従うわけではありません。
 
 削除するノードが見つかったら、非アクティブ化し、削除します。これには前に使ったのと同じ `FabricClient` インスタンスと `IAzure` インスタンスを使用します。
 

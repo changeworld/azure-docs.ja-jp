@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 6/06/2017
+ms.date: 01/30/2018
 ms.author: johnkem
-ms.openlocfilehash: f0e507cf2804edbcdd6c87f47b30defbc6a5eb94
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: c3c7ffe00263b8f76d89aa8d15fe2d502538527d
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [**Azure アクティビティ ログ**](monitoring-overview-activity-logs.md)は、ポータルに組み込まれた [エクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI を使用してログ プロファイルで Service Bus 規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -35,16 +35,17 @@ ms.lasthandoff: 12/14/2017
 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、Service Bus またはイベント ハブ名前空間は、ログを出力するのと同じサブスクリプションに属している必要はありません。
 
 ### <a name="via-azure-portal"></a>Azure ポータルの使用
-1. ポータルの左側のメニューを使用して、 **[アクティビティ ログ]** ブレードに移動します。
+1. ポータルの左側の [すべてのサービス] 検索を使用して、**[アクティビティ ログ]** ブレードに移動します。
    
-    ![ポータルの [アクティビティ ログ] に移動](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
-2. ブレードの上部にある **[エクスポート]** ボタンをクリックします。
+    ![ポータルの [アクティビティ ログ] に移動](./media/monitoring-stream-activity-logs-event-hubs/activity.png)
+2. アクティビティ ログ ブレードの上部にある **[エクスポート]** ボタンをクリックします。
    
-    ![ポータルの [エクスポート] ボタン](./media/monitoring-overview-activity-logs/activity-logs-portal-export.png)
-3. 表示されるブレードで、イベントをストリーミングするリージョンと、これらのイベントをストリーミングするための Event Hubs を作成する Service Bus 名前空間を選択できます。
+    ![ポータルの [エクスポート] ボタン](./media/monitoring-stream-activity-logs-event-hubs/export.png)
+3. 表示されるブレードで、イベントをストリーミングするリージョンと、これらのイベントをストリーミングするための Event Hubs を作成する Service Bus 名前空間を選択できます。 **[すべてのリージョン]** を選択します。
    
-    ![[Export Activity Log (アクティビティ ログのエクスポート)] ブレード](./media/monitoring-overview-activity-logs/activity-logs-portal-export-blade.png)
+    ![[Export Activity Log (アクティビティ ログのエクスポート)] ブレード](./media/monitoring-stream-activity-logs-event-hubs/export-audit.png)
 4. **[保存]** をクリックして設定を保存します。 設定はサブスクリプションにすぐに適用されます。
+5. 複数のサブスクリプションがある場合は、このアクションを繰り返して、すべてのデータをイベント ハブに送信する必要があります。
 
 ### <a name="via-powershell-cmdlets"></a>PowerShell コマンドレットの使用
 ログ プロファイルが既に存在する場合は、まず、そのプロファイルを削除する必要があります。
@@ -53,8 +54,10 @@ ms.lasthandoff: 12/14/2017
 2. 存在する場合は、 `Remove-AzureRmLogProfile` を使用して削除します。
 3. `Set-AzureRmLogProfile` を使用して、プロファイルを作成します。
 
-```
+```powershell
+
 Add-AzureRmLogProfile -Name my_log_profile -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
+
 ```
 
 Service Bus 規則 ID は、{Service Bus のリソース ID}/authorizationrules/{キー名} の形式の文字列です。 
@@ -66,7 +69,7 @@ Service Bus 規則 ID は、{Service Bus のリソース ID}/authorizationrules/
 2. 存在する場合は、 `azure insights logprofile delete` を使用して削除します。
 3. `azure insights logprofile add` を使用して、プロファイルを作成します。
 
-```
+```azurecli-interactive
 azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
 ```
 
@@ -75,7 +78,7 @@ Service Bus 規則 ID は、 `{service bus resource ID}/authorizationrules/{key 
 ## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Event Hubs からログ データを使用する方法
 アクティビティ ログのスキーマは[こちら](monitoring-overview-activity-logs.md)で入手できます。 各イベントは、"レコード" と呼ばれる JSON BLOB の配列に含まれます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ストレージ アカウントにアクティビティ ログをアーカイブする](monitoring-archive-activity-log.md)
 * [Azure アクティビティ ログの概要を確認する](monitoring-overview-activity-logs.md)
 * [アクティビティ ログ イベントに基づいてアラートを設定する](insights-auditlog-to-webhook-email.md)

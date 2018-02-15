@@ -43,6 +43,10 @@
         - name: Kafka と Storm
           href: ../hdinsight-apache-storm-with-kafka.md
           maintainContext: true
+        - name: Azure Container Service での Kafka の使用
+          href: apache-kafka-azure-container-services.md
+        - name: Kafka と Azure Functions
+          href: apache-kafka-azure-functions.md
     - name: 開発
       items:
         - name: Kafka Producer API と Consumer API の使用

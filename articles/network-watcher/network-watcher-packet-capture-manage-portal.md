@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: c283fb4d1a390de88b425ce51a312b5404503f0d
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a43d2ea10bfd6de2f8177283821f7aad59e9f610
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -80,6 +80,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 
 **キャプチャの構成**
 
+- **[ローカル ファイル パス]** - パケット キャプチャが保存される仮想マシン上のローカル パス (**[ファイル]** が選択されている場合にのみ有効)。 有効なパスを指定する必要があります。 Linux 仮想マシンを使用する場合、パスの冒頭は /var/captures にする必要があります。
 - **[ストレージ アカウント]** - パケット キャプチャをストレージ アカウントに保存するかどうかを決定します。
 - **[ファイル]** - パケット キャプチャをローカルの仮想マシンに保存するかどうかを決定します。
 - **[ストレージ アカウント]** - パケット キャプチャの保存先として選択されたストレージ アカウントです。 既定の保存先は、https://{storage account name}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscription id}/resourcegroups/{resource group name}/providers/microsoft.compute/virtualmachines/{virtual machine name}/{YY}/{MM}/{DD}/packetcapture_{HH}_{MM}_{SS}_{XXX}.cap です  (**[ストレージ アカウント]** を選択した場合にのみ有効です)。

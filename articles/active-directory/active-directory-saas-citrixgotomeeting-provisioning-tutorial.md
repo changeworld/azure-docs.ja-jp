@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: Azure Active Directory と GoToMeeting の統合 | Microsoft Docs"
+title: "チュートリアル: GoToMeeting を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
 description: "Azure Active Directory と GoToMeeting の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: ac664e2b4035f3572584e6f00e86453b10ce44e5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 82c7e8ff7d8a6692005bdc7a40d5e12be09bca5d
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル: GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
+# <a name="tutorial-configure-gotomeeting-for-automatic-user-provisioning"></a>チュートリアル: GoToMeeting を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から GoToMeeting にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで GoToMeeting と Azure AD で実行する必要がある手順について説明します。
 
@@ -66,7 +66,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 5. [管理者資格情報] セクションで、次の手順を実行します。
    
-    a. **[GoToMeeting 管理ユーザー名]** ボックスに、管理者のユーザー名を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[GoToMeeting 管理ユーザー名]** ボックスに、管理者のユーザー名を入力します。
 
     b. **[GoToMeeting 管理パスワード]** ボックスに、管理者のパスワードを入力します。
 

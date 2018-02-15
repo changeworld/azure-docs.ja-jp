@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center でのジャスト イン タイム仮想マシン アクセス | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center でのジャスト イン タイム VM アクセスにより、Azure 仮想マシンへのアクセスを制御しやすくする手順について説明します。"
+description: "このドキュメントでは、Azure Security Center でのジャスト イン タイム VM アクセスにより、Azure 仮想マシンへのアクセスを制御しやすくする方法を示します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/04/2017
+ms.date: 01/26/2018
 ms.author: terrylan
-ms.openlocfilehash: c715afe55a3aedd5c4f826bc34c3c56e167d2f82
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>ジャスト イン タイム (プレビュー) を使用した仮想マシン アクセスの管理
 
@@ -50,11 +50,13 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="using-just-in-time-access"></a>ジャスト イン タイム アクセスの使用
 
-**[セキュリティ センター]** の **[Just In Time VM アクセス]** タイルには、ジャスト イン タイム アクセス用に構成されている VM の数と、1 週間以内に行われた承認済みアクセス要求の数が表示されます。
+1. **[Security Center]** ダッシュボードを開きます。
+
+2. 左のウィンドウで、**[Just In Time VM アクセス]** を選択します。
 
 ![[Just In Time VM アクセス] タイル][2]
 
-**[Just In Time VM アクセス]** タイルを選択すると、**[Just In Time VM アクセス]** が開きます。
+**[Just In Time VM アクセス]** ウィンドウが開きます。
 
 ![[Just In Time VM アクセス] タイル][10]
 
@@ -77,7 +79,7 @@ ms.lasthandoff: 10/11/2017
 
 2. **[仮想マシン]** で、有効にする VM を選択します。 VM の横にチェックマークが付きます。
 3. **[<選択した VM 数> 台の VM で JIT を有効にする]** を選択します。
-4. [ **保存**] を選択します。
+4. **[保存]** を選択します。
 
 ### <a name="default-ports"></a>既定のポート
 
@@ -135,7 +137,7 @@ VM の既存のジャスト イン タイム ポリシーを編集するには�
 
 4. **[Add port configuration]\(ポート構成の追加\)** では、ポート、プロトコルの種類、許可されるソース IP、最大要求時間を指定します。
 5. **[OK]**を選択します。
-6. [ **保存**] を選択します。
+6. **[保存]** を選択します。
 
 ## <a name="auditing-just-in-time-access-activity"></a>ジャスト イン タイム アクセス アクティビティの監査
 
@@ -170,7 +172,7 @@ PowerShell でジャスト イン タイム ソリューションを使用する
 ジャスト イン タイム ソリューションで保護されている特定の VM にアクセスするには、PowerShell セッションで次のコマンドを実行する必要があります: Invoke-ASCJITAccess。
 詳細については、コマンドレットに関するドキュメントを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Security Center のジャスト イン タイム VM アクセスを活用して Azure 仮想マシンへのアクセスを制御する方法について説明しました。
 
 セキュリティ センターの詳細については、次を参照してください。

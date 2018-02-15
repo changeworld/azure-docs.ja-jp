@@ -1,10 +1,10 @@
----
-title: "Azure Network Watcher で接続を確認する - PowerShell | Microsoft Docs"
-description: "このページは、PowerShell を使用して Azure Network Watcher で接続をテストする方法について説明します。"
+﻿---
+title: "Azure Network Watcher との接続のトラブルシューティング - PowerShell | Microsoft Docs"
+description: "PowerShell を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。"
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.service: network-watcher
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: e3ffaca0eab20c973df4969b22dbf56300d0b1ed
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: cdbce4bde08cbff28b9b7c173a203bf699f9b876
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>PowerShell を使用した Azure Network Watcher による接続のトラブルシューティング
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>PowerShell を使用した Azure Network Watcher との接続のトラブルシューティング
 
 > [!div class="op_single_selector"]
 > - [ポータル](network-watcher-connectivity-portal.md)
@@ -27,18 +27,15 @@ ms.lasthandoff: 01/19/2018
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
-仮想マシンから指定されたエンドポイントへの直接の TCP 接続が確立されたかどうかを確認するために、接続を使用する方法について説明します。
+仮想マシンから指定されたエンドポイントへの直接の TCP 接続が確立されたかどうかを確認するために、接続のトラブルシューティングを使用する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
-この記事では、次のリソースがあることを前提としています。
-
-* 接続を確認するリージョンの Network Watcher のインスタンス。
-
-* 接続を確認する仮想マシン。
+* 接続のトラブルシューティングを行うリージョンの Network Watcher のインスタンス。
+* 接続のトラブルシューティングを行う仮想マシン。
 
 > [!IMPORTANT]
-> 接続チェックには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
+> 接続のトラブルシューティングには、仮想マシン拡張機能 `AzureNetworkWatcherExtension` が必要です。 Windows VM への拡張機能のインストールについては、[Windows 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/windows/extensions-nwa.md)に関する記事をご覧ください。Linux VM の場合は、[Linux 用 Azure Network Watcher Agent 仮想マシン拡張機能](../virtual-machines/linux/extensions-nwa.md)に関する記事をご覧ください。
 
 ## <a name="check-connectivity-to-a-virtual-machine"></a>仮想マシンへの接続を確認する
 
@@ -254,7 +251,7 @@ Hops             : [
 
 ## <a name="check-connectivity-to-a-storage-endpoint"></a>ストレージ エンドポイントへの接続を確認する
 
-次の例では、仮想マシンからのブログのストレージ アカウントへの接続をテストします。 この例では、ソース VM を含むリージョンで Network Watcher を有効にしている必要があります。  
+次の例では、仮想マシンからのブログのストレージ アカウントへの接続を確認します。 この例では、ソース VM を含むリージョンで Network Watcher を有効にしている必要があります。  
 
 ### <a name="example"></a>例
 
@@ -276,7 +273,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 次の json は、前のコマンドレットを実行した応答の例です。 接続先は到達可能なため、`ConnectionStatus` プロパティには **Reachable** (到達可能) と表示されます。  ストレージ BLOB と待ち時間に到達するために必要なホップ数に関する詳細情報が提供されます。
 
-```
+```json
 ConnectionStatus : Reachable
 AvgLatencyInMs   : 1
 MinLatencyInMs   : 0
@@ -307,22 +304,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>次の手順
 
-[IP フロー検証の確認](network-watcher-check-ip-flow-verify-portal.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを調べる
+[IP フロー検証の確認](network-watcher-check-ip-flow-verify-portal.md)に関する記事を参照して、VM で送受信される特定のトラフィックが許可されているかどうかを判断します。
 
 ブロックされるべきでないトラフィックがブロックされている場合は、[ネットワーク セキュリティ グループの管理](../virtual-network/virtual-network-manage-nsg-arm-portal.md)に関する記事を参照して、ネットワーク セキュリティ グループと定義済みのセキュリティ規則を突き止めます。
-
-<!-- Image references -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-

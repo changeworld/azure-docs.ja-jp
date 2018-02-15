@@ -3,7 +3,7 @@ title: "Azure Stack 1711 更新プログラム | Microsoft Docs"
 description: "Azure Stack 統合システムの 1711 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。"
 services: azure-stack
 documentationcenter: 
-author: andredm7
+author: brenduns
 manager: femila
 editor: 
 ms.assetid: 2b66fe05-3655-4f1a-9b30-81bd64ba0013
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
-ms.author: andredm
-ms.openlocfilehash: 578d17bcfbb7e12c9855132772c2068a5cdf1f62
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.date: 01/31/2018
+ms.author: brenduns
+ms.openlocfilehash: 3b3f6d66d8d5a095ff839195ccf718a9fa085527
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-1711-update"></a>Azure Stack 1711 更新プログラム
 
@@ -62,7 +62,7 @@ Azure Stack 1711 更新プログラムのビルド番号は **171201.3** です�
 #### <a name="windows-server-2016-new-features-and-fixes"></a>Windows Server 2016 の新機能と修正
 
 - [2017 年 11 月 14 日—KB4048953 (OS ビルド 14393.1884) ](https://support.microsoft.com/help/4048953)
- 
+
 ### <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題
 
 このセクションには、1711 更新プログラムのインストール中に発生する可能性のある既知の問題が含まれています。
@@ -97,7 +97,7 @@ Azure Stack 1711 更新プログラムのビルド番号は **171201.3** です�
 
    - 一覧の最上部に空の行が表示されることがある。 アイテムは問題なく選択できます。
    - ドロップダウン リストの項目の一覧が短い場合、アイテム名を表示できないことがある。
-   - ユーザー サブスクリプションが複数ある場合、リソース グループのドロップダウン リストが空になることがある。 
+   - ユーザー サブスクリプションが複数ある場合、リソース グループのドロップダウン リストが空になることがある。
 
         > [!NOTE]
         > 最後の 2 つの問題を回避するには、サブスクリプションまたはリソース グループの名前を入力するか (把握している場合)、代わりに PowerShell を使用します。
@@ -118,18 +118,18 @@ Azure Stack 1711 更新プログラムのビルド番号は **171201.3** です�
 - 仮想マシン可用性セットは、1 つの障害ドメインと 1 つの更新ドメインでのみ構成可能です。
 - 仮想マシン スケール セットを作成するマーケットプレースのエクスペリエンスはありません。 スケール セットはテンプレートを使用して作成できます。
 - 仮想マシン スケール セットのスケーリング設定は、ポータルで使用できません。 回避策として、[Azure PowerShell](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-powershell#change-the-capacity-of-a-scale-set) を使用できます。 PowerShell のバージョンの違いにより、`-VMScaleSetName` パラメーターの代わりに `-Name` を使用する必要があります。
- 
+
 #### <a name="networking"></a>ネットワーク
 - ポータルを使用して、パブリック IP アドレスを持つロード バランサーを作成することはできません。 この問題を回避するには、PowerShell を使用してロード バランサーを作成します。
 - ネットワーク ロード バランサーの作成時に、ネットワーク アドレス変換 (NAT) 規則を作成する必要があります。 作成しない場合、ロード バランサーを作成した後に NAT 規則を追加しようとするときにエラーが表示されます。
 - 仮想マシン (VM) を作成して IP アドレスに関連付けた後で、VM からパブリック IP アドレスの関連付けを解除することはできません。 関連付けの解除は機能したように見えますが、以前に割り当てられたパブリック IP アドレスは、元の VM に関連付けられたままになります。 この動作は、IP アドレスを新しい VM に 再割り当てした (一般に *VIP スワップ*と呼ばれます) 場合でも行われます。 以降のこの IP アドレスによるすべての接続の試みは、新しい VM ではなく、元々関連付けられていた VM に接続する結果になります。 現時点では、新しい VM の作成には新しいパブリック IP アドレスのみを使用する必要があります。
 - Azure Stack オペレーターが、VNET または ネットワーク セキュリティ グループのデプロイ、削除、変更を行えない場合があります。 この問題は、主に同じパッケージの更新を続けて試行する際に発生します。 これは、更新プログラムのパッケージ化の問題によって引き起こされますが、問題については現在調査中です。
 - 内部負荷分散 (ILB) は、バックエンド VM の MAC アドレスを正しく処理せず、Linux インスタンスを中断します。
- 
+
 #### <a name="sqlmysql"></a>SQL/MySQL
-- テナントでデータベースを新しい SQL または MySQL SKU で作成する際に、最大で 1 時間かかる場合があります。 
+- テナントでデータベースを新しい SQL または MySQL SKU で作成する際に、最大で 1 時間かかる場合があります。
 - リソース プロバイダーで実行されない SQL および MySQL ホスティング サーバーで直接アイテムを作成することはサポートされていないため、状態が不一致になる場合があります。
- 
+
 #### <a name="app-service"></a>App Service
 - ユーザーは、サブスクリプションに最初の Azure 関数を作成する前に、ストレージ リソース プロバイダーを登録する必要があります。
 
@@ -149,7 +149,7 @@ Azure Active Directory フェデレーション サービス (AD FS) が配置�
 - **ASDK でのインフラストラクチャ バックアップの有効化はテスト専用です。**  
   インフラストラクチャ バックアップを使用してマルチノード ソリューションを復元できます。 ASDK でインフラストラクチャ バックアップを有効化できますが、回復をテストする方法はありません。
 
-詳しくは、「[Backup and data recovery for Azure Stack with the Infrastructure Backup Service](C:\Git\MS\azure-docs-pr\articles\azure-stack\azure-stack-backup-infrastructure-backup.md)」(インフラストラクチャ バックアップ サービスを使用した Azure Stack のバックアップとデータの回復) をご覧ください。
+詳しくは、「[インフラストラクチャ バックアップ サービスを使用した Azure Stack のバックアップとデータの回復](azure-stack-backup-infrastructure-backup.md)」をご覧ください。
 
 ## <a name="download-the-update"></a>更新プログラムをダウンロードする
 

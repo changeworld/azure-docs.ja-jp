@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 0aac388f4499af018a4603bcad835ab41d6b6642
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 8f20e8d4329d815351147f90b598180839ce917a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Azure ファイル同期 (プレビュー) のデプロイの計画
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -82,7 +82,7 @@ Windows Server の今後のバージョンは、それらがリリースされ�
 > Azure File Sync で使用するすべてのサーバーは、Windows Update の最新の更新プログラムを使用して常に最新の状態を保つことをお勧めします。 
 
 ### <a name="file-system-features"></a>ファイル システムの機能
-| 機能 | サポートの状態 | メモ |
+| Feature | サポートの状態 | メモ |
 |---------|----------------|-------|
 | アクセス制御リスト (ACL) | 完全にサポートされます | Windows ACL は、Azure File Sync に保持され、サーバー エンドポイント上の Windows Server によって適用されます。 クラウドでファイルに直接アクセスする場合、Azure Files は Windows ACL を (まだ) サポートしていません。 |
 | ハード リンク | Skipped | |
@@ -158,11 +158,13 @@ Azure File Sync のプレビューは、次のリージョンでのみ利用で�
 
 | リージョン | データ センターの場所 |
 |--------|---------------------|
-| 米国東部 | バージニア州 (米国) |
-| 米国西部 | カリフォルニア州 (米国) |
-| 西ヨーロッパ | オランダ |
+| オーストラリア東部 | ニュー サウス ウェールズ州 |
+| カナダ中部 | トロント |
+| 米国東部 | バージニア州 |
 | 東南アジア | シンガポール |
-| オーストラリア東部 | ニュー サウス ウェールズ州 (オーストラリア) |
+| 英国南部 | ロンドン |
+| 西ヨーロッパ | オランダ |
+| 米国西部 | カリフォルニア |
 
 プレビューでは、ストレージ同期サービスと同じリージョンの Azure ファイル共有との同期のみをサポートしています。
 

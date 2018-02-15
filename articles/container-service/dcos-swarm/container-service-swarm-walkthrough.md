@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 08/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 05e6dbfbae3efd1dee39b87f32440b73da069f91
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a0f1d9aa733e023bbc544e28ce4d4a89168f7398
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="deploy-docker-swarm-cluster"></a>Docker Swarm クラスターのデプロイ
 
@@ -109,7 +109,7 @@ services:
         - "6379:6379"
 
   azure-vote-front:
-    image: microsoft/azure-vote-front:redis-v1
+    image: microsoft/azure-vote-front:v1
     container_name: azure-vote-front
     environment:
       REDIS: azure-vote-back
@@ -127,9 +127,9 @@ docker-compose up -d
 
 ```bash
 Creating network "user_default" with the default driver
-Pulling azure-vote-front (microsoft/azure-vote-front:redis-v1)...
-swarm-agent-EE873B23000005: Pulling microsoft/azure-vote-front:redis-v1...
-swarm-agent-EE873B23000004: Pulling microsoft/azure-vote-front:redis-v1... : downloaded
+Pulling azure-vote-front (microsoft/azure-vote-front:v1)...
+swarm-agent-EE873B23000005: Pulling microsoft/azure-vote-front:v1...
+swarm-agent-EE873B23000004: Pulling microsoft/azure-vote-front:v1... : downloaded
 Pulling azure-vote-back (redis:latest)...
 swarm-agent-EE873B23000004: Pulling redis:latest... : downloaded
 Creating azure-vote-front ... 

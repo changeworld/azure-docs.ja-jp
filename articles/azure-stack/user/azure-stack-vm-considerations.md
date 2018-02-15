@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/17/2018
+ms.date: 01/27/2018
 ms.author: brenduns
-ms.openlocfilehash: 6eafa2a5058ef1309cbf50be069ea1bb12f7e5b9
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 59053e4beda48fd8474da675e50e02438c79a98e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure Stack の仮想マシンに関する考慮事項
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 仮想マシンは、Azure Stack によって提供される、オンデマンドのスケーラブルなコンピューティング リソースです。 仮想マシンを使用する場合は、Azure で使用できる機能と Azure Stack で使用できる機能には違いがあることを理解する必要があります。 この記事では、Azure Stack の仮想マシンとその機能に固有の考慮事項の概要を示します。 Azure Stack と Azure の違いの概要については、「[主な考慮事項](azure-stack-considerations.md)」をご覧ください。
 
@@ -59,9 +59,7 @@ Azure Stack は、次のサイズをサポートしています。
 
 ## <a name="virtual-machine-extensions"></a>仮想マシン拡張機能
 
- Azure Stack は、仮想マシン拡張機能の次のバージョンをサポートしています。
-
-![VM 拡張機能](media/azure-stack-vm-considerations/vm-extensions.png)
+ Azure Stack には、拡張機能の小規模なセットが含まれています。 更新プログラムおよび追加の拡張機能は、Marketplace シンジケーションを通じて入手できます。
 
 実際の Azure Stack 環境で利用できる仮想マシン拡張機能の一覧を取得するには、次の PowerShell スクリプトを使用します。
 

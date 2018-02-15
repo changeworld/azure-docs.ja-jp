@@ -15,23 +15,24 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/25/2016
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 43df04d6478e44c82c88b17d916cfc9fe4afc03e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 525df7ddb8cd569bfd361da10d14ae08c1a721e0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Azure Logic Apps のスキーマの更新 - 2016 年 6 月 1 日
 
-Azure Logic Apps の新しいバージョンのスキーマと API には、ロジック アプリの信頼性と使いやすさを向上させる複数の機能強化が行われています。
+Azure Logic Apps の[更新されたバージョンのスキーマ](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)と API には、ロジック アプリの信頼性と使いやすさを向上させる複数の機能強化が行われています。
 
 * [スコープ](#scopes)により、複数のアクションを一連のアクションとしてグループ化したり、入れ子したりできるようになりました。
 * [条件とループ](#conditions-loops)がアクションに昇格しました。
 * `runAfter` プロパティ (`dependsOn` の後継) でアクションの実行順序をより正確に定義できるようになりました。
 
-ロジック アプリを 2015 年 8 月 1 日の preview スキーマから 2016 年 6 月 1 日のスキーマにアップグレードするには、[アップグレードに関するセクションを参照](##upgrade-your-schema)してください。
+ロジック アプリを 2015 年 8 月 1 日の preview スキーマから 2016 年 6 月 1 日のスキーマにアップグレードするには、[アップグレードに関するセクションを参照](#upgrade-your-schema)してください。
 
 <a name="scopes"></a>
+
 ## <a name="scopes"></a>スコープ
 
 このスキーマにはスコープが含まれており、アクションをまとめてグループ化したり、入れ子にできます。 たとえば、1 つの条件に別の条件を含めることができます。 [スコープの構文](../logic-apps/logic-apps-loops-and-scopes.md)の詳細を確認するか、以下のコードで基本的なスコープの例を確認してください。
@@ -57,6 +58,7 @@ Azure Logic Apps の新しいバージョンのスキーマと API には、ロ�
 ```
 
 <a name="conditions-loops"></a>
+
 ## <a name="conditions-and-loops-changes"></a>条件とループに関する変更
 
 以前のバージョンのスキーマでは、条件とループはパラメーターとして単一のアクションに関連付けられていました。 このスキーマではその制限が廃止され、条件とループはアクションのタイプとして記述されます。 [ループとスコープ](../logic-apps/logic-apps-loops-and-scopes.md)の詳細を確認するか、以下のコードで基本的な条件アクションの例を確認してください。
@@ -86,6 +88,7 @@ Azure Logic Apps の新しいバージョンのスキーマと API には、ロ�
 ```
 
 <a name="run-after"></a>
+
 ## <a name="runafter-property"></a>runAfter プロパティ
 
 `dependsOn` プロパティが `runAfter` プロパティに置き換えられ、前のアクションの状態に基づいてアクションの実行順序をより正確に指定できるようになりました。
@@ -104,7 +107,7 @@ Azure Logic Apps の新しいバージョンのスキーマと API には、ロ�
 
 ## <a name="upgrade-your-schema"></a>スキーマのアップグレード
 
-新しいスキーマへのアップグレードは、たった数回のステップで完了します。 アップグレード プロセスでは、アップグレード スクリプトを実行し、新しいロジック アプリを保存します。必要があれば、以前のロジック アプリの上書きも行います。
+[最新のスキーマ](https://schema.management.azure.com/schemas/2016-06-01/Microsoft.Logic.json)にアップグレードするには、いくつかの手順を行うだけです。 アップグレード プロセスでは、アップグレード スクリプトを実行し、新しいロジック アプリを保存します。必要があれば、以前のロジック アプリの上書きも行います。
 
 1. Azure Portal でロジック アプリを開きます。
 
@@ -156,7 +159,7 @@ Azure Logic Apps の新しいバージョンのスキーマと API には、ロ�
 
 ### <a name="new-trackedproperties-for-actions"></a>アクションの新しい trackedProperties
 
-アクションに `trackedProperties` というプロパティを (`runAfter` や `type` の兄弟として) 追加できるようになりました。 ワークフローの一環として出力される Azure 診断のテレメトリに含める特定のアクションの入力または出力を、このオブジェクトで指定します。 For example:
+アクションに `trackedProperties` というプロパティを (`runAfter` や `type` の兄弟として) 追加できるようになりました。 ワークフローの一環として出力される Azure 診断のテレメトリに含める特定のアクションの入力または出力を、このオブジェクトで指定します。 例: 
 
 ```
 {                
@@ -175,7 +178,7 @@ Azure Logic Apps の新しいバージョンのスキーマと API には、ロ�
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ロジック アプリのワークフロー定義の作成](../logic-apps/logic-apps-author-definitions.md)
 * [ロジック アプリのデプロイ テンプレートの作成](../logic-apps/logic-apps-create-deploy-template.md)
 

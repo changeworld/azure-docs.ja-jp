@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: banders
-ms.openlocfilehash: 031a538c7e3a7dd381fa9bd996d8a027f761a50a
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: c7516c6d4fa8cfe8e146c325af7ca7ca70475a94
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -43,12 +43,12 @@ Log Analytics の容量とパフォーマンス ソリューションは、Hyper
 
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続されているソース | サポート | 説明 |
+| 接続先ソース | サポート | [説明] |
 |---|---|---|
-| [Windows エージェント](log-analytics-windows-agent.md) | はい | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | いいえ    | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
-| [SCOM 管理グループ](log-analytics-om-agents.md) | はい |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから OMS への直接接続は必要ありません。 データは管理グループから OMS リポジトリに転送されます。|
-| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
+| [Windows エージェント](log-analytics-windows-agent.md) | [はい] | このソリューションでは、Windows エージェントから容量とパフォーマンスに関するデータ情報を収集します。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | いいえ     | このソリューションでは、直接の Linux エージェントから容量とパフォーマンスに関するデータ情報を収集することはありません。|
+| [SCOM 管理グループ](log-analytics-om-agents.md) | [はい] |このソリューションでは、接続された SCOM 管理グループ内のエージェントから容量とパフォーマンスに関するデータを収集します。 SCOM エージェントから Log Analytics への直接接続は必要ありません。|
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | Azure ストレージには、容量とパフォーマンスのデータは存在しません。|
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -59,11 +59,11 @@ Log Analytics の容量とパフォーマンス ソリューションは、Hyper
 
 容量とパフォーマンス ソリューションをワークスペースに追加する手順は、以下のとおりです。
 
-- [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)方法に関するページの手順に従って、容量とパフォーマンス ソリューションを OMS ワークスペースに追加します。
+- [ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)方法に関するページの手順に従って、容量とパフォーマンス ソリューションを Log Analytics ワークスペースに追加します。
 
 ## <a name="management-packs"></a>管理パック
 
-SCOM 管理グループが OMS ワークスペースに接続されている場合、このソリューションを追加したときに次の管理パックが SCOM にインストールされます。 これらの管理パックに伴う構成や保守は不要です。
+SCOM 管理グループが Log Analytics ワークスペースに接続されている場合、このソリューションを追加したときに次の管理パックが SCOM にインストールされます。 これらの管理パックに伴う構成や保守は不要です。
 
 - Microsoft.IntelligencePacks.CapacityPerformance
 
@@ -120,7 +120,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 以下の表は、容量とパフォーマンスに関してこのソリューションで収集および計算されるデータを取得するためのログ検索のサンプルを示したものです。
 
-| クエリ | Description |
+| クエリ | [説明] |
 |---|---|
 | ホストのメモリ構成の一括表示 | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="Host Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
 | VM のメモリ構成の一括表示 | <code>Type=Perf ObjectName="Capacity and Performance" CounterName="VM Assigned Memory MB" &#124; measure avg(CounterValue) as MB by InstanceName</code> |
@@ -133,7 +133,7 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 >[!NOTE]
 > ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
 
-> | クエリ | Description |
+> | クエリ | [説明] |
 |:--- |:--- |
 | ホストのメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "Host Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
 | VM のメモリ構成の一括表示 | Perf &#124; where ObjectName == "Capacity and Performance" and CounterName == "VM Assigned Memory MB" &#124; summarize MB = avg(CounterValue) by InstanceName |
@@ -144,5 +144,5 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 | 全 CSV の合計待機時間の内訳 | Perf &#124; where ObjectName == "Capacity and Performance" and (CounterName == "CSV Read Latency" or CounterName == "CSV Write Latency") &#124; summarize AggregatedValue = avg(CounterValue) by bin(TimeGenerated, 1h), CounterName, InstanceName |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。

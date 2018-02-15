@@ -2,17 +2,18 @@
 title: "Azure Stack とデータセンターの統合 - セキュリティ"
 description: "Azure Stack のセキュリティをお使いのデータセンターのセキュリティと統合する方法について説明します"
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/17/2017
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: eb7c651362838d44d6558e080e6130b4a8041d1e
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 0ce7585552f39f59f83df88320e52ea257bb74dd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Azure Stack とデータセンターの統合 - セキュリティ
 
@@ -43,7 +44,7 @@ Azure Storage Explorer と呼ばれるツールを使用して、Azure Stack に
 
 3. **[frphealthaccount]** を選択し、**[アクセス キー]** をクリックします。
 
-   ![アクセス キー](media/azure-stack-integrate-security/access-keys.png)
+   ![[アクセス キー]](media/azure-stack-integrate-security/access-keys.png)
 
 4. アクセス キーをクリップボードにコピーします。
 5. Azure ストレージ エクスプローラーを開きます。
@@ -55,7 +56,7 @@ Azure Storage Explorer と呼ばれるツールを使用して、Azure Stack に
 8. **[次へ]** をクリックします。
 9. **[外部ストレージの接続]** ページで、次のようにします。
 
-   a. アカウント名 **frphealthaccount** を入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 アカウント名 **frphealthaccount** を入力します。
 
    b. ストレージ アカウントのアクセス キーを貼り付けます。
 
@@ -91,6 +92,6 @@ Azure Stack 内のすべての物理デバイスは、Syslog メッセージを�
 
 Syslog の送信先アドレスは、デプロイ時に収集される省略可能なパラメーターですが、デプロイ後に追加することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[Azure Stack とデータセンターの統合 - エンドポイントの公開](azure-stack-integrate-endpoints.md)
+[サービス ポリシー](azure-stack-servicing-policy.md)

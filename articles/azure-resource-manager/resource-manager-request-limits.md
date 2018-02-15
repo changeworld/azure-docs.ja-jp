@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/11/2017
+ms.date: 01/26/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6d7eeaf460674c3ab98425a5412ffa465b9ffd1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc109cdaeade900e239624f408cea2a1f448ae5a
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="throttling-resource-manager-requests"></a>Resource Manager の要求のスロットル
-Resource Manager では、サブスクリプションおよびテナントごとに、読み取り要求が 1 時間あたり 15,000 に制限され、書き込み要求が 1 時間あたり 1,200 に制限されています。 これらの制限は、Azure Resource Manager の各インスタンスに適用されますが、すべての Azure リージョンには複数のインスタンスがあり、Azure Resource Manager はすべての Azure リージョンにデプロイされます。  このため、ユーザーの要求は、通常は多数の異なるインスタンスによって処理されるため、実際の上限は上に示したものよりも大幅に高くなります。
+Resource Manager では、サブスクリプションおよびテナントごとに、読み取り要求が 1 時間あたり 15,000 に制限され、書き込み要求が 1 時間あたり 1,200 に制限されています。 これらの制限は、各 Azure Resource Manager インスタンスに適用されます。 すべての Azure リージョンに複数のインスタンスがあり、Azure Resource Manager はすべての Azure リージョンにデプロイされます。  このため、ユーザーの要求は、通常は多数の異なるインスタンスによって処理されるため、実際の上限はこれらの制限よりも大幅に高くなります。
 
-アプリケーションまたはスクリプトがこれらの上限に達した場合、要求をスロットルする必要があります。 このトピックでは、上限に達する前に残りの要求数を確認する方法と、上限に達したときの対処方法について説明します。
+アプリケーションまたはスクリプトがこれらの上限に達した場合、要求をスロットルする必要があります。 この記事では、上限に達する前に残りの要求数を確認する方法と、上限に達したときの対処方法について説明します。
 
 上限に達すると、HTTP 状態コード **429 Too many requests** が返されます。
 
@@ -34,7 +34,7 @@ Resource Manager では、サブスクリプションおよびテナントごと
 ## <a name="remaining-requests"></a>残りの要求数
 残りの要求数を確認するには、応答ヘッダーを調べます。 各要求には、残りの読み取り要求と書き込み要求の数を示す値が含まれています。 これらの値を確認できる応答ヘッダーを次の表に示します。
 
-| 応答ヘッダー | 説明 |
+| 応答ヘッダー | [説明] |
 | --- | --- |
 | x-ms-ratelimit-remaining-subscription-reads |サブスクリプション スコープの残りの読み取り要求数。 |
 | x-ms-ratelimit-remaining-subscription-writes |サブスクリプション スコープの残りの書き込み要求数。 |
@@ -85,7 +85,7 @@ x-ms-ratelimit-remaining-subscription-reads: 14999
 **Azure CLI** では、より詳細なオプションを使用してヘッダー値を取得します。
 
 ```azurecli
-azure group list -vv --json
+az group list --verbose --debug
 ```
 
 次のオブジェクトを含む多くの値が返されます。
@@ -107,7 +107,7 @@ silly: returnObject
 ## <a name="waiting-before-sending-next-request"></a>次の要求を送信するまでの待機
 要求の上限に達すると、Resource Manager は HTTP 状態コード **429** とヘッダー値 **Retry-After** を返します。 **Retry-After** 値は、アプリケーションが次の要求を送信するまでに待機 (またはスリープ) する必要がある時間 (秒数) を示します。 この再試行値が経過する前に要求を送信した場合、要求は処理されず、新しい再試行値が返されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 制限とクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」を参照してください。
 * 非同期の REST 要求の処理の詳細については、「[Track asynchronous Azure operations (非同期の Azure 操作の追跡)](resource-manager-async-operations.md)」を参照してください。

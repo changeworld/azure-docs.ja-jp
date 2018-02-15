@@ -15,11 +15,11 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 06/07/2017
 ms.author: davidmu
-ms.openlocfilehash: abed4095bcacac4ca3995acfaafae2f16d5f1532
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0ae5d797a2a502cceeb1be20af4953f16f1320a
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="overview-of-integration-between-application-gateway-and-azure-security-center"></a>Application Gateway と Azure Security Center の統合の概要
 
@@ -79,9 +79,9 @@ Security Center の **[検出]** > **[セキュリティ アラート]** に移�
  
 ![アラートの詳細][9]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-既存の Application Gateway で Web アプリケーション ファイアウォールを有効にする方法については、「[既存のアプリケーション ゲートウェイに Web アプリケーション ファイアウォールを追加する](application-gateway-web-application-firewall-portal.md#add-web-application-firewall-to-an-existing-application-gateway)」を参照してください。
+既存の Application Gateway で Web アプリケーション ファイアウォールを有効にする方法については、[Web アプリケーション ファイアウォールがある Azure アプリケーション ゲートウェイの作成または更新](application-gateway-web-application-firewall-portal.md)に関する記事をご覧ください。
 
 [1]: ./media/application-gateway-integration-security-center/figure1.png
 [2]: ./media/application-gateway-integration-security-center/figure2.png

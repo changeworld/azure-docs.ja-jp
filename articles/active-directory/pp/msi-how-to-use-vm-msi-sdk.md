@@ -3,8 +3,8 @@ title: "VM 上で Azure SDK からユーザー割り当ての管理対象サー�
 description: "VM 上でユーザー割り当ての MSI を使って Azure SDK を使用する場合のコード サンプル"
 services: active-directory
 documentationcenter: 
-author: BryanLa
-manager: mbaldwin
+author: daveba
+manager: mtillman
 editor: 
 ms.service: active-directory
 ms.devlang: na
@@ -12,17 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/22/2017
-ms.author: bryanla
+ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: f9a31a0500a6f5f1c49fc45d5811e28788e6f2b1
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 59d65e42c9b32bd0acd98645342833b4d57ad7a4
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="use-azure-sdks-with-a-user-assigned-managed-service-identity-msi"></a>ユーザー割り当ての管理対象サービス ID (MSI) による Azure SDK の使用
 
-[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]この記事では、各 Azure SDK のユーザー割り当ての MSI サポートの使用例を示す SDK サンプルの一覧を示します。
+[!INCLUDE[preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
+この記事では、各 Azure SDK のユーザー割り当ての MSI サポートの使用例を示す SDK サンプルの一覧を示します。
 
 ## <a name="prerequisites"></a>前提条件
 

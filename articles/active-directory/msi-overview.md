@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: 07610b178bde6de9eb8d890edc060458fc3b07ac
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b28f5c7c90783c5abd933b50ddb9631739b8f421
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 01/29/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure リソースの管理対象サービス ID (MSI)
 
@@ -64,6 +64,7 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 | Azure App Service  | [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
 | Azure 関数     | [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
 | Azure Service Bus  | [Azure Service Bus で管理対象サービス ID を使用する](../service-bus-messaging/service-bus-managed-service-identity.md) |
+| Azure Event Hubs   | [Azure Event Hubs で管理対象サービス ID を使用する](../event-hubs/event-hubs-managed-service-identity.md) |
 
 ## <a name="which-azure-services-support-managed-service-identity"></a>Azure サービスは管理対象サービス ID をサポートしますか。
 

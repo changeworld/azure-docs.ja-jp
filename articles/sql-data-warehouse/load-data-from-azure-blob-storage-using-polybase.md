@@ -1,5 +1,5 @@
 ---
-title: "Polybase でのデータの読み込み - Azure Storage Blob から Azure SQL Data Warehouse | Microsoft Docs"
+title: "チュートリアル: Polybase でのデータの読み込み - Azure Storage Blob から Azure SQL Data Warehouse | Microsoft Docs"
 description: "Azure Portal と SQL Server Management Studio を使ってニューヨークのタクシー データを Azure Blob Storage から Azure SQL Data Warehouse に読み込むチュートリアルです。"
 services: sql-data-warehouse
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.workload: Active
 ms.date: 11/17/2017
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: 64315945d977ba912634eb626491a4513def1556
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a1f504f5bb728ce080e51678d44ed4eef4c3faa7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む
+# <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>チュートリアル: PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む
 
 PolyBase は、SQL Data Warehouse にデータを取得するための標準読み込みテクノロジです。 このチュートリアルでは、PolyBase を使って、ニューヨークのタクシー データを Azure Blob Storage から Azure SQL Data Warehouse に読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) を使って、次のことを行います。 
 

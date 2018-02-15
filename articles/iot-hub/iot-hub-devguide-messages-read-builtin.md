@@ -11,19 +11,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: c9e6aa03e3a1e0592223630c7b81634bcb09add6
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 82681214e9e42819bfc698aa670755467d250fa7
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
 既定では、メッセージは [Event Hubs][lnk-event-hubs] と互換性のある組み込みサービス向けエンドポイント (**messages/events**) にルーティングされます。 このエンドポイントは、現在、[AMQP][lnk-amqp] プロトコルを使用してポート 5671 のみで公開されています。 IoT Hub は、Event Hub と互換性のある組み込みのメッセージング エンドポイント **messages/events** を制御するための以下のプロパティを公開しています。
 
-| プロパティ            | Description |
+| プロパティ            | [説明] |
 | ------------------- | ----------- |
 | **パーティション数** | このプロパティは作成時に設定し、D2C イベントを取り込む場合の[パーティション][lnk-event-hub-partitions]数を定義します。 |
 | **リテンション期間**  | このプロパティは、IoT Hub によってメッセージが保持される期間を日数で指定します。 既定は 1 日ですが、7 日間に増やすことができます。 |
@@ -40,7 +40,7 @@ IoT Hub は、**messages/events** 組み込みエンドポイントをバック�
 
 [Azure Service Bus SDK for .NET][lnk-servicebus-sdk] または [Event Hubs - イベント プロセッサ ホスト][lnk-eventprocessorhost]を使用する場合、適切なアクセス許可があれば任意の IoT Hub の接続文字列を使用することができます。 これにより、 **メッセージやイベント** を Event Hub の名前として使用できます。
 
-IoT Hub を認識しない SDK (または製品統合) を使用する場合は、IoT ハブの設定から、イベント ハブ互換性エンドポイントとイベント ハブ互換名を取得する必要があります。
+IoT Hub を認識しない SDK (または製品統合) を使用する場合は、イベント ハブ互換性エンドポイントとイベント ハブ互換名を取得する必要があります。
 
 1. [Azure Portal][lnk-management-portal] にサインインし、IoT ハブに移動します。
 1. **[エンドポイント]**をクリックします。
@@ -65,7 +65,7 @@ IoT Hub から公開されている、Event Hub 互換のエンドポインで�
 * [Apache Storm のスパウト](../hdinsight/storm/apache-storm-develop-csharp-event-hub-topology.md)。 [スパウトのソース](https://github.com/apache/storm/tree/master/external/storm-eventhubs) は GitHub で確認できます。
 * [Apache Spark 統合](../hdinsight/spark/apache-spark-eventhub-streaming.md)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポイント][lnk-endpoints]に関するページを参照してください。
 

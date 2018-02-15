@@ -227,6 +227,8 @@
               items:
                 - name: .NET のサンプル
                   href: sql-api-dotnet-samples.md
+                - name: Java のサンプル
+                  href: sql-api-java-samples.md
                 - name: Node.js のサンプル
                   href: sql-api-nodejs-samples.md
                 - name: Python のサンプル
@@ -360,6 +362,7 @@
           href: spark-connector-graph.md
         - name: HDInsight での Kafka と Spark を使用したストリーミング
           href: ../hdinsight/apache-kafka-spark-structured-streaming-cosmosdb.md
+          maintainContext: true
         - name: Azure App Service で Web アプリをデプロイする
           href: create-website.md
         - name: Logic Apps を使用したアプリケーション ログ記録

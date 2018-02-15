@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/04/2017
 ms.author: ashishth
-ms.openlocfilehash: f57260b2ee280aa0f49f42cd145477205926cb0c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 66ff65a5b74294fe1a8f4373102160a98cd7a8c3
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="phoenix-query-server-rest-sdk"></a>Phoenix Query Server REST SDK
 
@@ -543,6 +543,7 @@ MH: 6
 FM: 5
 ```
 
-<!-- ## Next steps -->
-<!-- * [Phoenix in HDInsight](hdinsight-phoenix-in-hdinsight.md)  -->
-<!-- * [Using the HBase REST SDK](hdinsight-using-hbase-rest-sdk.md)  -->
+## <a name="next-steps"></a>次の手順 
+
+* [HDInsight の Phoenix](../hdinsight-phoenix-in-hdinsight.md)
+* [HBase REST SDK の使用](apache-hbase-rest-sdk.md)

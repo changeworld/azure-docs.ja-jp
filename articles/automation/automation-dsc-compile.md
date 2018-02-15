@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: na
 ms.date: 02/07/2017
 ms.author: magoedte; gwallace
-ms.openlocfilehash: 63120614f2a2ef6b366bc2d92ec9a0dd430a3fb4
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: c84f1671d8e23e5ff222455192e020700f1ff51e
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="compiling-configurations-in-azure-automation-dsc"></a>Azure Automation DSC での構成のコンパイル
 
@@ -40,14 +40,14 @@ Azure Automation を使用して、Desired State Configuration (DSC) 構成を�
 * ConfigurationData を渡す
 * 資格情報を使用する構成をコンパイルする
 
-コンパイルの方法を決定したら、以下の各手順に従い、コンパイルを開始できます。
+コンパイルの方法を決定したら、次の手順に従ってコンパイルを開始します。
 
 ## <a name="compiling-a-dsc-configuration-with-the-azure-portal"></a>Azure プレビューを使用した DSC 構成のコンパイル
 
 1. Automation アカウントから、**[DSC 構成]**をクリックします。
 2. 構成をクリックし、ブレードを開きます。
 3. **[コンパイル]**をクリックします。
-4. 構成にパラメーターが含まれていない場合、コンパイルの実行を確認するメッセージが表示されます。 構成にパラメーターが含まれている場合は、 **[構成のコンパイル]** ブレードが開き、パラメーター値を入力できます。 パラメーターの詳細については、以下の「 [**基本パラメーター**](#basic-parameters) 」セクションを参照してください。
+4. 構成にパラメーターが含まれていない場合、コンパイルの実行を確認するメッセージが表示されます。 構成にパラメーターが含まれている場合は、 **[構成のコンパイル]** ブレードが開き、パラメーター値を入力できます。 パラメーターの詳細については、次の「[**基本パラメーター**](#basic-parameters)」セクションを参照してください。
 5. **[コンパイル ジョブ]** ブレードが開き、コンパイル ジョブの状態を追跡できます。また、Azure Automation DSC プル サーバーにノード構成 (MOF 構成ドキュメント) が配置されます。
 
 ## <a name="compiling-a-dsc-configuration-with-windows-powershell"></a>Windows PowerShell を使用した DSC 構成のコンパイル
@@ -131,10 +131,10 @@ PSCredentials をパラメーターとして渡す方法の詳細については
 
 ## <a name="composite-resources"></a>複合リソース
 
-**複合リソース**の利点は、構成の内側に入れ子のリソースとして DSC 構成を使用できることです。 これにより、1 つのリソースに複数の構成を適用することができます。  **複合リソース**の詳細については、「[複合リソース: リソースとしての DSC 構成の使用](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite)」を参照してください。
+**複合リソース**の利点は、構成の内側に入れ子のリソースとして DSC 構成を使用できることです。 これにより、1 つのリソースに複数の構成を適用することができます。 **複合リソース**の詳細については、「[複合リソース: リソースとしての DSC 構成の使用](https://docs.microsoft.com/powershell/dsc/authoringresourcecomposite)」を参照してください。
 
 > [!NOTE]
-> **複合リソース**を正常にコンパイルするためには、まず、その複合リソースが依存する DSC リソースを先に Azure Automation アカウント モジュール リポジトリにインストールしておく必要があります。そうしないとインポートが適切に実行されません。
+> **複合リソース**を正常にコンパイルするには、まず、その複合リソースが依存する DSC リソースを先に Azure Automation アカウント モジュール リポジトリにインストールしておく必要があります。そうしないとインポートが適切に実行されません。
 
 DSC の**複合リソース**を追加するには、リソース モジュールをアーカイブ (*.zip) に追加する必要があります。 Azure Automation アカウントのモジュール リポジトリに移動します。 次に、[モジュールの追加] ボタンをクリックします。
 
@@ -144,7 +144,7 @@ DSC の**複合リソース**を追加するには、リソース モジュー�
 
 ![モジュールの選択](./media/automation-dsc-compile/select_dscresource.png)
 
-すると再びモジュール ディレクトリが表示され、アンパックと Azure Automation への登録が実行される間、**複合リソース**の状態を監視できます。
+再びモジュール ディレクトリが表示され、アンパックと Azure Automation への登録が実行される間、**複合リソース**の状態を監視できます。
 
 ![複合リソースのインポート](./media/automation-dsc-compile/register_composite_resource.png)
 
@@ -174,7 +174,7 @@ DSC の**複合リソース**を追加するには、リソース モジュー�
 ```
 
 ## <a name="configurationdata"></a>ConfigurationData
-**ConfigurationData** によって、環境固有の構成と構造上の構成を分離することができます。 [ConfigurationData](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) の詳細については、 **PowerShell DSC で "環境" から "物" を分離する**ことに関する記事を参照してください。
+**ConfigurationData** によって、PowerShell DSC の使用中に環境固有の構成と構造上の構成を分離することができます。 [ConfigurationData](http://blogs.msdn.com/b/powershell/archive/2014/01/09/continuous-deployment-using-dsc-with-minimal-change.aspx) の詳細については、 **PowerShell DSC で "環境" から "物" を分離する**ことに関する記事を参照してください。
 
 > [!NOTE]
 > Azure ポータルではなく、Azure PowerShell を使用して Azure Automation DSC でコンパイルする場合に、 **ConfigurationData** を使用できます。
@@ -200,7 +200,7 @@ Configuration ConfigurationDataSample
 }
 ```
 
-上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
+PowerShell を使用して上記の DSC 構成をコンパイルできます。 以下の PowerShell では、**ConfigurationDataSample.MyVM1** と **ConfigurationDataSample.MyVM3** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
 
 ```powershell
 $ConfigData = @{
@@ -263,7 +263,7 @@ Configuration CredentialSample
 }
 ```
 
-上記の DSC 構成は PowerShell を使用してコンパイルできます。 以下の PowerShell では、**CredentialSample.MyVM1** と **CredentialSample.MyVM2** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
+PowerShell を使用して上記の DSC 構成をコンパイルできます。 以下の PowerShell では、**CredentialSample.MyVM1** と **CredentialSample.MyVM2** という 2 つのノード構成が Azure Automation DSC プル サーバーに追加されます。
 
 ```powershell
 $ConfigData = @{

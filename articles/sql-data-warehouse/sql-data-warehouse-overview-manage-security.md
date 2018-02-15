@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: security
 ms.date: 12/14/2017
 ms.author: rortloff;barbkess
-ms.openlocfilehash: aa0d6cb03196167ec077b0ed4bbbb9d118951219
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: efc0ca9b156bd69a39197d40083830c6c7e77647
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL Data Warehouse でのデータベース保護
 > [!div class="op_single_selector"]
@@ -35,12 +35,14 @@ ms.lasthandoff: 01/02/2018
 ## <a name="connection-security"></a>接続のセキュリティ
 接続のセキュリティとは、ファイアウォール ルールと接続の暗号化を使用して、データベースへの接続を制限し、保護する方法のことです。
 
-ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。 ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。  詳しくは、[Azure SQL Database ファイアウォール][Azure SQL Database firewall] に関するページや [sp_set_firewall_rule][sp_set_firewall_rule] に関するページをご覧ください。
+ファイアウォール ルールはサーバーとデータベースの両方で使用され、明示的にホワイト リストに登録されていない IP アドレスからの接続試行を拒否します。 アプリケーションまたはクライアント コンピューターのパブリック IP アドレスからの接続を許可するには、まず Azure Portal、REST API、または PowerShell を使用して、サーバーレベルのファイアウォール ルールを作成する必要があります。 ベスト プラクティスとして、可能な限りサーバーのファイアウォールにより許可される IP アドレスの範囲を制限する必要があります。  ローカル コンピューターから Azure SQL Data Warehouse にアクセスするには、ネットワークとローカル コンピューターのファイアウォールで、TCP ポート 1433 での送信方向の通信が許可されていることを確認します。  
+
+SQL Data Warehouse では、サーバーレベルのファイアウォール規則を使用します。 データベースレベルのファイアウォール規則はサポートされていません。 詳しくは、[Azure SQL Database ファイアウォール][Azure SQL Database firewall] に関するページや [sp_set_firewall_rule][sp_set_firewall_rule] に関するページをご覧ください。
 
 SQL Data Warehouse への接続は、既定で暗号化されます。  暗号化を無視するように接続の設定を変更しても、その変更は無視されます。
 
 ## <a name="authentication"></a>認証
-認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Data Warehouse では現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory がサポートされています。 
+認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Data Warehouse では現在、ユーザー名とパスワードを使用した SQL Server 認証と、Azure Active Directory による認証がサポートされています。 
 
 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを SQL Server 認証を通して認証できます。
 
@@ -61,10 +63,10 @@ CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 CREATE USER ApplicationUser FOR LOGIN ApplicationLogin;
 ```
 
-ユーザーがログインの作成または新しいデータベースの作成など追加の操作を実行している場合は、master データベース内の `Loginmanager` と `dbmanager` ロールにユーザーを割り当てる必要もあります。 これらの追加のロールと SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理][Managing databases and logins in Azure SQL Database]に関する記事をご覧ください。  SQL Data Warehouse の Azure AD の詳細については、[Azure Active Directory 認証を使用した SQL Data Warehouse への接続][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication]に関する記事をご覧ください。
+ログインの作成や新しいデータベースの作成などの追加の操作を実行するアクセス許可をユーザーに与えるには、master データベース内の `Loginmanager` ロールと `dbmanager` ロールにユーザーを割り当てます。 これらの追加のロールと SQL Database の認証の詳細については、[Azure SQL Database におけるデータベースとログインの管理][Managing databases and logins in Azure SQL Database]に関する記事をご覧ください。  詳細については、[Azure Active Directory 認証を使用した SQL Data Warehouse への接続][Connecting to SQL Data Warehouse By Using Azure Active Directory Authentication]に関する記事をご覧ください。
 
 ## <a name="authorization"></a>承認
-承認とは、Azure SQL Data Warehouse データベース内で実行できる事柄を指し、これはアカウントのロール メンバーシップと権限によって制御されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。 Azure SQL Data Warehouse により、T-SQL 内のロールで簡単に管理できるようになります。
+承認とは、Azure SQL Data Warehouse データベース内で実行できる操作を指します。 承認の特権は、ロール メンバーシップとアクセス許可によって指定されます。 ベスト プラクティスとして、必要最低限の特権をユーザーに付与することをお勧めします。 ロールを管理するには、次のストアド プロシージャを使用します。
 
 ```sql
 EXEC sp_addrolemember 'db_datareader', 'ApplicationUser'; -- allows ApplicationUser to read data
@@ -75,20 +77,22 @@ EXEC sp_addrolemember 'db_datawriter', 'ApplicationUser'; -- allows ApplicationU
 
 ユーザーが Azure SQL Data Warehouse で実行できる操作をさらに制限する方法がいくつかあります。
 
-* 詳細な[アクセス許可][Permissions]により、個々の列、テーブル、ビュー、スキーマ、プロシージャ、その他のデータベース内のオブジェクトで実行できる操作を制御できます。 詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。 詳細なアクセス許可システムは、多少複雑なため、効率的に使用するには調査が必要になります。
+* 詳細な[アクセス許可][Permissions]により、個々の列、テーブル、ビュー、スキーマ、プロシージャ、その他のデータベース内のオブジェクトで実行できる操作を制御できます。 詳細なアクセス許可を使用して最大限の制御を行い、必要最小限のアクセス許可を付与します。 
 * db_datareader と db_datawriter 以外の[データベース ロール][Database roles]を使用して、権限の高いアプリケーション ユーザー アカウントや権限の低い管理アカウントを作成できます。 組み込みの固定データベース ロールを使用すると、簡単にアクセス許可を付与できますが、その結果、必要以上のアクセス許可を付与することになる可能性があります。
 * [ストアド プロシージャ][Stored procedures]を使用すると、データベースで実行できるアクションを制限できます。
 
-ユーザー定義スキーマに対する読み取りアクセスを付与する例を次に示します。
+次の例では、ユーザー定義スキーマに対する読み取りアクセス許可を付与します。
 ```sql
 --CREATE SCHEMA Test
 GRANT SELECT ON SCHEMA::Test to ApplicationUser
 ```
 
-Azure Portal または Azure Resource Manager API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 このトピックの詳細については、[Azure Portal でのロール ベースのアクセス制御][Role-based access control in Azure Portal]に関する記事をご覧ください。
+Azure Portal または Azure Resource Manager API を使用したデータベースと論理サーバーの管理は、ポータル ユーザー アカウントのロールの割り当てによって制御されます。 詳細については、[Azure Portal でのロールベースのアクセス制御][Role-based access control in Azure portal]に関するページをご覧ください。
 
 ## <a name="encryption"></a>暗号化
-Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威から保護できます。  データベースを暗号化すると、アプリケーションに変更を加える必要なく、関連付けられているバックアップとトランザクション ログ ファイルが暗号化されます。 TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。 SQL Data Warehouse で使用される暗号化アルゴリズムは AES-256 です。 TDE の概要については、[Transparent Data Encryption][Transparent Data Encryption] に関するページをご覧ください。
+Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データを暗号化および暗号化解除することにより、悪意のあるアクティビティの脅威から保護できます。  データベースを暗号化すると、アプリケーションに変更を加える必要なく、関連付けられているバックアップとトランザクション ログ ファイルが暗号化されます。 TDE は、データベース暗号化キーと呼ばれる対称キーを使用してデータベース全体のストレージを暗号化します。 
+
+SQL Database では、データベース暗号化キーは組み込まれているサーバー証明書によって保護されます。 組み込みのサーバー証明書は、SQL Database サーバーごとに一意です。 Microsoft は、少なくとも 90 日ごとにこれらの証明書を自動的にローテーションします。 SQL Data Warehouse で使用される暗号化アルゴリズムは AES-256 です。 TDE の概要については、[Transparent Data Encryption][Transparent Data Encryption] に関するページをご覧ください。
 
 データベースは、[Azure Portal][Encryption with Portal] または [T-SQL][Encryption with TSQL] を使用して暗号化できます。
 
@@ -115,4 +119,4 @@ Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用する�
 [Azure portal]: https://portal.azure.com/
 
 <!--Other Web references-->
-[Role-based access control in Azure Portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure
+[Role-based access control in Azure portal]: https://azure.microsoft.com/documentation/articles/role-based-access-control-configure

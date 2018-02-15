@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
-ms.openlocfilehash: 948b91a9fabc3ab3c4d6708968a88cb9d203b171
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ec532ce0871d11fea222050bb08ec73afe5f2be3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="connectors-list"></a>コネクタの一覧
 各コネクタの Swagger 記述で定義されているトリガーとアクション、コネクタの制限については、[コネクタの詳細](/connectors/)に関するページを参照してください。
@@ -82,7 +82,7 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 | --- | --- | --- | --- |
 | [![API アイコン][as2icon]<br/>**AS2</br> デコード**][as2decode] | [![API アイコン][as2icon]<br/>**AS2</br> エンコード**][as2encode] | [![API アイコン][x12icon]<br/>**EDIFACT</br> デコード**][EDIFACTdecode] | [![API アイコン][x12icon]<br/>**EDIFACT</br> エンコード**][EDIFACTencode] |
 [![API アイコン][flatfileicon]<br/>**フラット ファイル</br> エンコード**][flatfiledoc] | [![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br> デコード**][flatfiledecodedoc] | [![API アイコン][integrationaccounticon]<br/>**統合<br/>アカウント**][integrationaccountdoc] | [![API アイコン][xmltransformicon]<br/>**XML<br/> 変換**][xmltransformdoc] |
-| [![API アイコン][x12icon]<br/>**X12</br> デコード**][x12decode] | [![API アイコン][x12icon]<br/>**X12</br> エンコード**][x12encode] | [![API アイコン][xmlvalidateicon]<br/>**XML <br/>検証**][xmlvalidatedoc] | |
+| [![API アイコン][x12icon]<br/>**X12</br> デコード**][x12decode] | [![API アイコン][x12icon]<br/>**X12</br> エンコード**][x12encode] | [![API アイコン][xmlvalidateicon]<br/>**XML <br/>検証**][xmlvalidatedoc] | [![API アイコン][liquidicon]<br/>**Transform <br/>JSON (JSON 変換)**][JSONliquidtransformdoc] |
 
 ### <a name="enterprise-connectors"></a>エンタープライズ コネクタ
 
@@ -189,6 +189,7 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 [EDIFACTdecode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-decode.md "エンタープライズ統合 EDIFACT デコードについて説明します。"
 [EDIFACTencode]: ../logic-apps/logic-apps-enterprise-integration-EDIFACT-encode.md "エンタープライズ統合 EDIFACT エンコードについて説明します。"
 [integrationaccountdoc]: ../logic-apps/logic-apps-enterprise-integration-metadata.md "統合アカウントのスキーマ、マップ、パートナーなどを検索します。"
+[JSONliquidtransformdoc]: ../logic-apps/logic-apps-enterprise-integration-liquid-transform.md "Liquid を使用した JSON 変換について説明します"
 
 
 [boxDoc]: ./connectors-create-api-box.md "Box に接続します。ファイルのアップロード、取得、削除、一覧表示などを実行します。"
@@ -328,3 +329,4 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 [xmlvalidateicon]: ./media/apis-list/xmlvalidation.png
 [xmltransformicon]: ./media/apis-list/xsltransform.png
 [integrationaccounticon]: ./media/apis-list/integrationaccount.png
+[liquidicon]: ./media/apis-list/liquidtransform.png

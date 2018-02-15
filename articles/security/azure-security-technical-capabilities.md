@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 7288466cf31e180a16db18f8ddfe02ace3588a8d
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 536745d869ea3bcd0beedad3712597b00e600796
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -40,9 +40,9 @@ Microsoft Azure では、次のことを行うことができます。
 
 - ビジネスを保護する。
 
-## <a name="scope"></a>Scope
+## <a name="scope"></a>Scope (スコープ)
 
-このホワイトペーパーは主に、セキュリティや [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction)、[Microsoft Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)、[Microsoft Azure の仮想マシン モデル](https://docs.microsoft.com/azure/virtual-machines/    )といった Microsoft Azure のコア コンポーネントをサポートする機能、およびそれらをすべて管理するツールやインフラストラクチャについて取り上げます。 このホワイトペーパーは、お客様のデータのセキュリティやプライバシーを保護する役割を担う、Microsoft Azure の技術的な機能に焦点を当てます。
+このホワイトペーパーは主に、セキュリティや [Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction)、[Microsoft Azure SQL Database](https://docs.microsoft.com/azure/sql-database/)、[Microsoft Azure の仮想マシン モデル](https://docs.microsoft.com/azure/virtual-machines/)といった Microsoft Azure のコア コンポーネントをサポートする機能、およびそれらをすべて管理するツールやインフラストラクチャについて取り上げます。 このホワイトペーパーは、お客様のデータのセキュリティやプライバシーを保護する役割を担う、Microsoft Azure の技術的な機能に焦点を当てます。
 
 この責任共有モデルを理解することは、クラウドへの移行を進めているお客様にとって重要です。 クラウド プロバイダーはセキュリティやコンプライアンスの取り組みにおいて多大なメリットを提供しますが、これらの利点はお客様からユーザー、アプリケーション、およびサービス内容を保護する責務を解除するわけではありません。
 
@@ -50,10 +50,9 @@ IaaS ソリューションにおいて、お客様はオペレーティング �
 
 このドキュメントは、Azure Web Sites、Azure Active Directory、HDInsight、Media Services などの Microsoft Azure プラットフォームの関連コンポーネント、およびコア コンポーネントの上の層にある他のサービスの詳細については取り上げません。 一般的な情報は最低限のものしか提供されていませんが、読者はマイクロソフトが提供およびこのホワイトペーパーからリンクされている他の参考資料で説明されている Azure の基本概念を理解していると見なされます。
 
-
 ## <a name="available-security-technical-capabilities-to-fulfil-user-customer-responsibility---big-picture"></a>ユーザー (お客様) が責任を満たすために使用できるセキュリティの技術的な機能 - 全体像
 
-Microsoft Azure には、お客様がセキュリティ、プライバシー、およびコンプライアンスのニーズを満たすのに役立つサービスが用意されています。 次の図は、ユーザーが業界標準に基づいてセキュリティで保護およびコンプライアンスに準拠したアプリケーション インフラストラクチャを構築するために使用できる、各種 Azure サービスについて説明するのに役立ちます。
+Microsoft Azure には、お客様がセキュリティ、プライバシー、およびコンプライアンスのニーズを満たすのに役立つサービスが用意されています。 次の図は、ユーザーが業界標準に基づいてセキュリティで保護およびコンプライアンスに準拠しているアプリケーション インフラストラクチャを構築するために使用できる、各種 Azure サービスについて説明するのに役立ちます。
 
 ![セキュリティの技術的な機能 - 全体像](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig1.png)
 
@@ -65,7 +64,7 @@ Azure を使用すると、ユーザー ID や資格情報を管理し、アク�
 
 Microsoft ID およびアクセス管理ソリューションは、IT が企業のデータ センター全体とクラウドのアプリケーションとリソースへのアクセスを保護するのに役立ち、他要素認証や条件付きアクセスポリシーなどの追加レベルの検証を可能にします。 高度なセキュリティ報告、監査、および警告によって疑わしいアクティビティを監視し、潜在的なセキュリティ上の問題を軽減できます。 [Azure Active Directory Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) は、何千ものクラウドへのシングル サインオン (SaaS) アプリケーション、およびオンプレミスで実行する Web アプリケーションへのアクセスを提供します。
 
-Azure Active Directory (AD) のセキュリティ上の利点は次のとおりです。
+Azure Active Directory (Azure AD) のセキュリティ上の利点は次のとおりです。
 
 - ハイブリッドのエンタープライズ全体の各ユーザーに個別の ID を作成して管理し、ユーザー、グループ、およびデバイスが同期された状態を維持する
 
@@ -75,7 +74,7 @@ Azure Active Directory (AD) のセキュリティ上の利点は次のとおり�
 
 - Azure AD アプリケーション プロキシを通じてオンプレミス Web アプリケーションへの安全なリモート アクセスをプロビジョニングする。
 
-[Azure Active Directory ポータル](http://aad.portal.azure.com/)は、Azure Portal の一部として使用できます。 このダッシュボードから組織の状態の概要を確認し、ディレクトリ、ユーザー、またはアプリケーションのアクセスを簡単に管理できます。
+[Azure Active Directory ポータル](http://aad.portal.azure.com/)を Azure Portal の一部として使用できます。 このダッシュボードから組織の状態の概要を確認し、ディレクトリ、ユーザー、またはアプリケーションのアクセスを簡単に管理できます。
 
 ![Azure Active Directory](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig2.png)
 
@@ -133,9 +132,9 @@ Azure ID 管理のコア機能は次のとおりです。
 
 Azure Active Directory B2C を使用すると、コンシューマーは、既存のソーシャル アカウント (Facebook、Google、Amazon、LinkedIn) を使用するか、または新しい資格情報 (電子メール アドレスとパスワードまたはユーザー名とパスワード) を作成することによって、アプリケーションにサインアップできます。
 
-デバイス登録
+#### <a name="device-registration"></a>デバイス登録
 
-[Azure AD Device Registration](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview) は、デバイスに基づいて[条件付きでアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-device-registration-overview)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、Azure Active Directory Device Registration によってそのデバイスの ID がプロビジョニングされます。この ID は、ユーザーのサインイン時のデバイス認証に使用されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
+[Azure AD Device Registration](https://docs.microsoft.com/en-us/azure/active-directory/device-management-introduction) は、デバイスに基づいて[条件付きでアクセス](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-device-registration-on-premises-setup)を許可するというシナリオの基礎となる機能です。 デバイスが登録されると、ユーザーがサインインしたときにデバイスを認証するために使用される ID が、Azure AD のデバイス登録によって指定されます。 認証済みのデバイスおよびデバイスの属性を使用して、クラウドおよびオンプレミスでホストされるアプリケーションに条件付きアクセス ポリシーを適用できます。
 
 Intune などの[モバイル デバイス管理 (MDM)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) ソリューションと組み合わせて使用すると、Azure Active Directory のデバイスの属性は、デバイスに関する情報が追加されて更新されます。 これにより、条件付きアクセス規則を作成できます。この規則に従い、デバイスからのアクセス時にセキュリティおよび法令遵守の基準を満たす必要があります。
 
@@ -161,7 +160,7 @@ Azure AD Privileged Identity Management では、次のことが可能です。
 
 ## <a name="secured-resource-access-in-azure"></a>Azure でのセキュリティが保護されたリソース アクセス
 
-Azure のアクセス制御では、最初に課金に注目します。 [Azure アカウント センター](https://account.windowsazure.com/subscriptions)がアクセスする Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。各サブスクリプションはサービス管理者 (SA) を有し、SA は Azure Portal を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure アカウント センターで SA を変更できます。
+Azure のアクセス制御では、最初に課金に注目します。 [Azure アカウント センター](https://account.windowsazure.com/subscriptions)からアクセスされる、Azure アカウントの所有者は、アカウント管理者 (AA) です。 サブスクリプションは課金用のコンテナーですが、セキュリティの境界としても機能します。各サブスクリプションはサービス管理者 (SA) を有し、SA は Azure Portal を使ってそのサブスクリプションの Azure リソースを追加、削除、変更することができます。 新しいサブスクリプションの既定の SA は AA ですが、AA は Azure アカウント センターで SA を変更できます。
 
 ![Azure でのセキュリティが保護されたリソース アクセス](media/azure-security-technical-capabilities/azure-security-technical-capabilities-fig3.png)
 
@@ -183,7 +182,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 - 転送中: ネットワークやサービス バスなどを経由して、コンポーネント間、場所間、プログラム間でデータが転送されているとき (オンプレミスとクラウド間の転送、ExpressRoute などのハイブリッド接続を含む)、または入出力処理の間、データが転送中であると見なされます。
 
-### <a name="encryption--rest"></a>保存データの暗号化
+### <a name="encryption-at-rest"></a>保存時の暗号化
 
 次のそれぞれで保存データの暗号化を実現するには:
 
@@ -204,7 +203,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 > [!Note] 
 > "アプリケーション データ" や "PII" だけでなく、アカウント メタデータ (サブスクリプション マッピング、コントラクト情報、PII) などのアプリケーションに関連するすべてのデータが対象です。
 
-データの格納に使用しているストアを検討します。 For example:
+データの格納に使用しているストアを検討します。 例: 
 
 - 外部ストレージ (例: SQL Azure、Document DB、HDInsights、Data Lake など)
 
@@ -224,15 +223,15 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 
 サポートされている場合、VM とローカル ディスク ストレージには、Azure Disk Encryption を使用します。
 
-IaaS
+#### <a name="iaas"></a>IaaS
 
 IaaS VM のサービス (Windows または Linux) では、[Azure Disk Encryption](https://microsoft.sharepoint.com/teams/AzureSecurityCompliance/Security/SitePages/Azure%20Disk%20Encryption.aspx) を使用して顧客データが含まれるボリュームを暗号化してください。
 
-PaaS v2
+#### <a name="paas-v2"></a>PaaS v2
 
 Service Fabric を使用して PaaS v2 で実行されているサービスでは、仮想マシン スケール セット [VMSS] 用の Azure Disk Encryption を使用して、PaaS v2 の VM を暗号化できます。
 
-PaaS v1
+#### <a name="paas-v1"></a>PaaS v1
 
 現在、Azure Disk Encryption は PaaS v1 ではサポートされていません。 このため、保持されている保存データを暗号化するには、アプリケーション レベルの暗号化を使用する必要があります。  これにはアプリケーション データ、一時ファイル、ログ、クラッシュ ダンプなどが含まれますが、これらに限られません。
 
@@ -319,13 +318,11 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [アプリに対して Azure Active Directory 認証をセットアップする](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
-
 - [トランスポート層セキュリティ (TLS/SSL) - HTTPS を有効にして、アプリへのトラフィックをセキュリティで保護する](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
-    - [すべての着信トラフィックに対して HTTPS 接続を経由することを強制する](http://microsoftazurewebsitescheatsheet.info/)
+  - [すべての着信トラフィックに対して HTTPS 接続を経由することを強制する](http://microsoftazurewebsitescheatsheet.info/)
 
   - [Strict Transport Security (HSTS) を有効にする](http://microsoftazurewebsitescheatsheet.info/#enable-http-strict-transport-security-hsts)
-
 
 - [クライアントの IP アドレスによってアプリへのアクセスを制限する](http://microsoftazurewebsitescheatsheet.info/#filtering-traffic-by-ip)
 
@@ -462,7 +459,7 @@ OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、
 
 [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics) では、ストレージ サービスへの要求に関して集計されたトランザクション統計情報と容量データを含むメトリックを格納できます。 トランザクションに関しては、API 操作レベルとストレージ サービス レベルの両方でレポートされます。容量に関しては、ストレージ サービス レベルでレポートされます。 メトリック データは、ストレージ サービスの使用状況の分析、ストレージ サービスに対する要求に関する問題の診断、サービスを使用するアプリケーションのパフォーマンスの向上に利用できます。
 
-### <a name="application-insights"></a>Application Insights
+### <a name="application-insights"></a>アプリケーション インサイト
 
 [Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。 Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスと統合され、さまざまな開発ツールへの接続ポイントを備えています。
 
@@ -487,9 +484,10 @@ OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、
 - アプリの**診断トレース ログ**: これにより、トレース イベントを要求に関連付けることができます。
 
 - 販売された品目や勝利したゲームなどのビジネス イベントを追跡するためにクライアントまたはサーバーのコード内に書き込んだ**カスタム イベントとメトリック**。
+
 アプリケーションのインフラストラクチャは通常、仮想マシン、ストレージ アカウント、仮想ネットワーク、Web アプリ、データベース、データベース サーバー、サード パーティのサービスなど、複数のコンポーネントで構成されます。 これらのコンポーネントは別々のエンティティではなく、1 つのエンティティの中で互いに関連付けられ相互依存しています。 これらのコンポーネントを、1 つのグループとしてデプロイ、管理、および監視するのが好ましいです。 [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) を使用すると、ソリューション内の複数のリソースを 1 つのグループとして作業できます。
 
-ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 リソース マネージャーには、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
+ソリューションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、または削除できます。 デプロイにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 Resource Manager には、デプロイ後のリソースの管理に役立つ、セキュリティ、監査、タグ付けの機能が用意されています。
 
 **Resource Manager を使用する利点**
 
@@ -512,7 +510,7 @@ OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、
 > [!Note]
 > リソース マネージャーには、ソリューションをデプロイして管理するための新しい方法が用意されています。 以前のデプロイメント モデルを使用していて、変更の詳細を確認する場合は、[Resource Manager デプロイメントとクラシック デプロイメント](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-deployment-model)に関する記事をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 セキュリティについて詳しくは、セキュリティについて掘り下げた次のトピックをご覧ください。
 

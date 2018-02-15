@@ -2,17 +2,17 @@
 title: "Azure Batch Rendering サービス - クラウド規模のレンダリング | Microsoft Docs"
 description: "Azure 仮想マシン上のジョブを Maya から直接、従量課金ベースでレンダリングします。"
 services: batch
-author: v-dotren
-manager: timlt
+author: dlepow
+manager: jeconnoc
 ms.service: batch
 ms.topic: hero-article
 ms.date: 09/14/2017
 ms.author: danlep
-ms.openlocfilehash: aab68b4275edc48e1726b26a7400bbfdd8d40d6f
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: f1aa8de26afd8b54746c706047a6b6b21cbf311c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="get-started-with-the-batch-rendering-service"></a>Batch Rendering サービスの概要
 
@@ -25,12 +25,8 @@ Maya および 3ds Max の場合、[Batch Labs](https://github.com/Azure/BatchLa
 
 Batch Rendering サービスでは現在、以下のアプリケーションがサポートされています。
 
-- Autodesk Maya
-- Autodesk 3ds Max
-- Autodesk Arnold for Maya
-- Autodesk Arnold for 3ds Max
-- Chaos Group V-Ray for Maya
-- Chaos Group V-Ray for 3ds Max
+•   Autodesk Maya I/O 2017 Update 4 (バージョン 17.4.5459) •   Autodesk 3ds Max I/O 2018 Update 1 (バージョン 20.1.0.238) •   Autodesk Arnold for Maya (バージョン 5.0.1.1) •   Autodesk Arnold for 3ds Max (バージョン 1.0.836) •   Chaos Group V-Ray for Maya (バージョン 3.52.03) •   Chaos Group V-Ray for 3ds Max (バージョン 3.60.02)
+
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,7 +52,7 @@ Batch は、レンダリングなどのコンピューティング集中型の�
 
 Batch プールとコンピューティング ノードの詳細については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」の「[プール](batch-api-basics.md#pool)」と「[コンピューティング ノード](batch-api-basics.md#compute-node)」のセクションを参照してください。
 
-### <a name="jobs"></a>ジョブ
+### <a name="jobs"></a>[ジョブ]
 
 Batch **ジョブ**は、プール内のコンピューティング ノード上で実行されるタスクのコレクションです。 レンダリング ジョブを送信すると、Batch がジョブをタスクに分割し、タスクをプール内のコンピューティング ノードに分散して実行します。
 
@@ -262,6 +258,6 @@ Maya で選択したレンダリング エンジンがサポートされてい�
 
 ダウンロード プロセスを中断せずに、Maya を閉じることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Batch の詳細については、「[Batch で並列ワークロードを本質的に実行する](batch-technical-overview.md)」を参照してください。

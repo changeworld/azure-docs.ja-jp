@@ -2,17 +2,18 @@
 title: "Azure Stack とデータセンターの統合 - エンドポイントの公開"
 description: "データセンターで Azure Stack のエンドポイントを公開する方法を学習します"
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/16/2018
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: 1cc74cb2214918d6bfd0c0827cf5d9832b84f317
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.openlocfilehash: e368109adc7db4c589ac37b28c4891cb3ec5346f
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack とデータセンターの統合 - エンドポイントの公開
 
@@ -45,11 +46,13 @@ Azure Stack は、さまざまなエンドポイント (VIP - 仮想 IP アド�
 |Graph|Graph.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |証明書の失効リスト|Crl.*&lt;region>.&lt;fqdn>*|HTTP|80|
 |DNS|&#42;.*&lt;region>.&lt;fqdn>*|TCP と UDP|53|
-|Key Vault (ユーザー)|*.vault.*&lt;region>.&lt;fqdn>*|TCP|443|
-|Key Vault (管理者)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|TCP|443|
+|Key Vault (ユーザー)|&#42;.vault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
+|Key Vault (管理者)|&#42;.adminvault.*&lt;region>.&lt;fqdn>*|HTTPS|443|
 |ストレージ キュー|&#42;.queue.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |ストレージ テーブル|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |ストレージ BLOB|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
+|SQL リソース プロバイダー|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|MySQL リソース プロバイダー|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304
 
 ## <a name="ports-and-urls-outbound"></a>ポートと URL (送信)
 
@@ -64,49 +67,6 @@ Azure Stack は、透過的なプロキシ サーバーのみをサポートし�
 |登録|https://management.azure.com|HTTPS|443|
 |使用法|https://&#42;.microsoftazurestack.com<br>https://*.trafficmanager.com|HTTPS|443|
 
-## <a name="firewall-publishing"></a>ファイアウォールの発行
-
-既存のファイアウォールを介してAzure Stack サービスを発行するとき、前のセクションに記載されているポートをインバウンド通信に適用します。
-
-ファイアウォール デバイスを使って、Azure Stack を保護することをお勧めします。 ただし、これは厳密な要件ではありません。 ファイアウォールは、分散型サービス拒否 (DDOS) 攻撃やコンテンツ検査などに効果がありますが、BLOB、テーブル、キューなどの Azure Storage サービスのスループットのボトルネックにもなります。
-
-ID モデル (Azure ADまたはAD FS) によって、AD FS のエンドポイントを公開する必要がある場合と、ない場合とがあります。 切断されたデプロイ モードを使用する場合は、AD FS のエンドポイントを発行する必要があります。 (詳細については、データ センターの統合の ID のトピックをご覧ください。)
-
-Azure Resource Manager (管理者)、管理者ポータル、Key Vault (管理者) のエンドポイントは、外部発行が必須というわけではありません。 これはシナリオによって異なります。 たとえば、サービス プロバイダーは、攻撃対象領域を制限して、インターネットからではなくネットワークの内部から Azure Stack の管理のみをすることができます。
-
-企業組織では、外部のネットワークは既存の企業ネットワークを指定できます。 このようなシナリオでは、企業ネットワークから Azure Stack を操作するには、そのエンドポイントを公開する必要があります。
-
-## <a name="edge-firewall-scenario"></a>エッジ ファイアウォール シナリオ
-
-エッジ デプロイでは、Azure Stack は 外側にファイアウォールがあってもなくても、エッジ ルーター (ISPが提供) の内側に直接デプロイされます。
-
-![Azure Stack のエッジ デプロイのアーキテクチャ図](media/azure-stack-integrate-endpoints/Integrate-Endpoints-02.png)
-
-通常、エッジ デプロイではパブリックにルーティング可能な IP アドレスは、デプロイ時にパブリック VIP プールに指定されます。 このシナリオでは、Azure などのパブリック クラウドでのエクスペリエンスのような、完全に自己管理型のクラウドを体験できます。
-
-### <a name="using-nat"></a>NAT の使用
-
-オーバーヘッドのため推奨はされませんが、エンドポイント公開用にネットワーク アドレス変換 (NAT) を使用できます。 ユーザーが完全に管理するエンドポイント公開のためには、ユーザーが使う可能性のあるすべてのポートを含むユーザー VIP ごとに NAT 規則が必要です。
-
-別の考慮事項は、Azure のハイブリッド クラウド シナリオで NAT を使うエンドポイントへの VPN トンネルの設定を、Azure がサポートしていないことです。
-
-## <a name="enterpriseintranetperimeter-network-firewall-scenario"></a>企業、イントラネット、境界ネットワークのファイアウォール シナリオ
-
-企業、イントラネット、境界のデプロイでは、2 つ目のファイアウォールの先に Azure Stack がデプロイされ、通常、境界ネットワーク (DMZ とも呼ばれます) の一部となります。
-
-![Azure Stack ファイアウォール シナリオ](media/azure-stack-integrate-endpoints/Integrate-Endpoints-03.png)
-
-パブリックにルーティング可能な IP アドレスが Azure Stack のパブリック VIP プールに指定されている場合、これらのアドレスは論理的には境界ネットワークに属し、プライマリ ファイアウォールで公開規則が必要となります。
-
-### <a name="using-nat"></a>NAT の使用
-
-パブリックにルーティング不能な IP アドレスが Azure Stack のパブリック VIP プールに指定されている場合、Azure Stack のエンドポイントを公開するためにセカンダリ ファイアウォールで NAT が使われます。 このシナリオでは、エッジの先のプライマリ ファイアウォールとセカンダリ ファイアウォールで公開規則を構成する必要があります。 NAT を使用する場合は、次の点を考慮します。
-
-- ソフトウェア定義ネットワーク (SDN) スタックでは、ユーザーが独自のエンドポイントと独自の公開規則を管理するため、ファイアウォール ルールを管理する場合に NAT はオーバーヘッドを増加させます。 ユーザーは Azure Stack オペレーターと連絡をとって、自分の VIP を公開させ、ポート リストを更新する必要があります。
-- NAT の使用によりユーザー エクスペリエンスは制限されますが、オペレーターは公開要求を完全に管理できます。
-- Azure のハイブリッド クラウド シナリオでは、NAT を使うエンドポイントへの VPN トンネルの設定を Azure がサポートしていないことを考慮します。
-
 
 ## <a name="next-steps"></a>次の手順
-
-[Azure Stack データセンターの統合 - セキュリティ](azure-stack-integrate-security.md)
+[Azure Stack PKI の要件](azure-stack-pki-certs.md)

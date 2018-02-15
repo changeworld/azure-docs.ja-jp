@@ -157,6 +157,7 @@
 #### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
 
 #### [ログ](virtual-network-nsg-manage-log.md)
+### [ルート テーブル](manage-route-table.md)
 ### ネットワーク インターフェイス (NIC)
 #### [NIC の作成、変更、削除](virtual-network-network-interface.md)
 #### [IP アドレスの追加、変更、削除](virtual-network-network-interface-addresses.md)
@@ -177,6 +178,7 @@
 ### [スループットのテスト](virtual-network-bandwidth-testing.md)
 ### [仮想ネットワークを削除できない](virtual-network-troubleshoot-cannot-delete-vnet.md)
 ### [VM 間の接続に関する問題](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
+### [SMTP バナー チェック用の PTR の構成](create-ptr-for-smtp-service.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)

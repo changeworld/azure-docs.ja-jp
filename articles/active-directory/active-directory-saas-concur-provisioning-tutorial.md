@@ -1,5 +1,5 @@
 ---
-title: "チュートリアル: Azure Active Directory と Concur の統合 | Microsoft Docs"
+title: "チュートリアル: Concur を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
 description: "Azure Active Directory と Concur の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
 documentationCenter: na
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: f39013785f000c7055aaa28f4c6f41998644cb6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 743d974c3711d5359cf7664c6a8709f7eaaeee20
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 01/29/2018
 ---
-# <a name="tutorial-configuring-concur-for-user-provisioning"></a>チュートリアル: ユーザー プロビジョニングのための Concur の構成
+# <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>チュートリアル: Concur を構成し、自動ユーザー プロビジョニングに対応させる
 
 このチュートリアルでは、Azure AD から Concur にユーザー アカウントを自動的にプロビジョニング/プロビジョニング解除するうえで Concur と Azure AD で実行する必要がある手順について説明します。
 

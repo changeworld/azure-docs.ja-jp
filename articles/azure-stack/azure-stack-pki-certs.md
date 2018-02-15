@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/31/2018
 ms.author: jeffgilb
-ms.reviewer: wfayed
-ms.openlocfilehash: 8f0bb2266cb3a8a869ad50c40a46eb82985d17ed
-ms.sourcegitcommit: 5108f637c457a276fffcf2b8b332a67774b05981
+ms.reviewer: ppacent
+ms.openlocfilehash: 75a8f521135757ceb99cb0086f331c35827e4800
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 Azure Stack には、少数の Azure Stack サービスやテナント VM に割り当てられた外部からアクセス可能なパブリック IP アドレスを使用するパブリック インフラストラクチャ ネットワークが存在します。 Azure Stack のデプロイ中に、これらの Azure Stack パブリック インフラストラクチャ エンドポイントの適切な DNS 名を持つ PKI 証明書が必要です。 この記事では、次の項目に関する情報を提供します。
@@ -27,6 +27,8 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - Azure Stack をデプロイするために必要な証明書の種類
 - これらの仕様に一致する証明書を取得するプロセス
 - デプロイ中にこれらの証明書を準備、検証、および使用する方法
+> [!NOTE]
+> デプロイ時には、その対象となる ID プロバイダー (Azure AD または AD FS) に合ったデプロイ フォルダーに証明書をコピーする必要があります。 すべてのエンドポイントについて 1 つの証明書を使用する場合は、後述の表に記載した各デプロイ フォルダーに、その証明書ファイルをコピーしてください。 フォルダー構造は、デプロイ仮想マシンにあらかじめ作成されており、C:\CloudDeployment\Setup\Certificates で確認できます。 
 
 ## <a name="certificate-requirements"></a>証明書の要件
 次の一覧では、Azure Stack をデプロイするために必要な証明書の要件について説明します。 
@@ -91,8 +93,9 @@ Azure Stack がデプロイおよび構成された後に追加の Azure Stack P
 
 <sup>2</sup> これらの 3 つの証明書 (api.appservice.*&lt;region>.&lt;fqdn>*、ftp.appservice.*&lt;region>.&lt;fqdn>*、および sso.appservice.*&lt;region>.&lt;fqdn>*) の代わりに &#42;.appservice.*&lt;region>.&lt;fqdn>* ワイルドカード証明書を使用することはできません。 App Service では、これらのエンドポイントに個別の証明書を明示的に使用する必要があります。 
 
+## <a name="learn-more"></a>詳細情報
+[Azure Stack デプロイのための PKI 証明書を生成する](azure-stack-get-pki-certs.md)方法について理解を深めましょう。 
 
 ## <a name="next-steps"></a>次の手順
-[Azure Stack デプロイのための PKI 証明書を生成する](azure-stack-get-pki-certs.md) 
-
+[ID の統合](azure-stack-integrate-identity.md)
 

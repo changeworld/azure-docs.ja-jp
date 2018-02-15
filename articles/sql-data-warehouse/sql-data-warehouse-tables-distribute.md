@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 01/18/2018
 ms.author: barbkess
-ms.openlocfilehash: 692d92f2e45e04a4eb284b43797b5b468cd9ec1b
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3c86b89da796223336e3a0d9dd809ae140d6911e
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="guidance-for-designing-distributed-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse での分散テーブルの設計に関するガイダンス
 
@@ -121,7 +121,7 @@ WITH
 
 ### <a name="what-to-do-when-none-of-the-columns-are-a-good-distribution-column"></a>ディストリビューション列として適切な列がない場合の対処方法
 
-候補として適切な列が存在しない場合は、ディストリビューション方法としてラウンド ロビンを使用することを検討してください。
+ディストリビューション列に適した個別の値を持つ列がない場合は、1 つまたは複数の値の複合として新しい列を作成できます。 クエリ実行中のデータの移動を回避するために、クエリ内で複合ディストリビューション列を結合列として使用します。
 
 ハッシュ分散テーブルを設計したら、次の手順として、そのテーブルにデータを読み込みます。  読み込みのガイダンスについては、[読み込みの概要](sql-data-warehouse-overview-load.md)に関する記事をご覧ください。 
 

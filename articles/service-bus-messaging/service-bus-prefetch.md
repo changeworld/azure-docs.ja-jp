@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/04/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: 4a4a06f90c2c48d35d836f0be89fec9cc47f32c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a61918108a48f4a9fa3d1c07cc8d41525f1f2a0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="prefetch-azure-service-bus-messages"></a>Azure Service Bus メッセージのプリフェッチ
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="if-it-is-faster-why-is-prefetch-not-the-default-option"></a>プリフェッチの方が速度が速いのに既定のオプションではない理由
 
-プリフェッチは、アプリケーションが要求する前にローカルで取得できるようメッセージを用意することによって、メッセージ フローを高速化します。 プリフェッチを使用するかどうかは、このスループット向上のメリットと、プリフェッチによるデメリットを比較しながら、アプリケーションの作成者が明示的に決定する必要があります。
+プリフェッチは、アプリケーションが要求する前にローカルで取得できるようメッセージを用意することによって、メッセージ フローを高速化します。 このスループットの向上は、以下のメリットとデメリットを比較したうえで、アプリケーションの作成者がその使用を明示的に決定した結果として得られるものです。
 
 [ReceiveAndDelete](/dotnet/api/microsoft.azure.servicebus.receivemode.receiveanddelete) 受信モードでは、プリフェッチ バッファーに取得されたすべてのメッセージはキューで使用できなくなり、**Receive**/**ReceiveAsync** または **OnMessage**/**OnMessageAsync** API を通して アプリケーションで受信されるまで、メモリ内のプリフェッチ バッファーにのみ存在します。 アプリケーションがメッセージを受信する前に終了すると、それらのメッセージは失われ、復元できなくなります。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 
 最大プリフェッチ数とキューまたはサブスクリプションに構成されているロック期間は、ロックのタイムアウトが、プリフェッチ バッファーの最大サイズに 1 メッセージ分を足した累計予想メッセージ処理時間以上になるようにバランスを調整する必要があります。 同時に、ロック タイムアウトは、メッセージが誤って破棄された場合に、再配信される前にロックの有効期限が切れないよう、その最大 [TimeToLive](/dotnet/api/microsoft.azure.servicebus.message.timetolive#Microsoft_Azure_ServiceBus_Message_TimeToLive) を超えない長さである必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus メッセージングの詳細については、次のトピックをご覧ください。
 

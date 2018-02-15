@@ -11,19 +11,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 4e346306ecb8f4897a249454c537ce9a1a4c4011
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 48b904818c80b9175d45b88345634f11cf4a4812
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>device-to-cloud メッセージを IoT Hub に送信する
 
 時系列のテレメトリとアラートを、デバイスからソリューション バックエンドに送信するには、device-to-cloud メッセージを、デバイスから IoT hub に送信します。 IoT Hub でサポートされるその他のデバイスからクラウドのオプションの詳細については、「[device-to-cloud 通信に関するガイダンス][lnk-d2c-guidance]」をご覧ください。
 
-デバイスからのクラウドへのメッセージはデバイス向けのエンドポイント (**/devices/{deviceId}/messages/events**) を介して送信されます。 次にルーティング ルールに従って、IoT Hub 上のサービス向けエンドポイントの 1 つにメッセージをルーティングします。 ルーティング ルールはハブを通過する device-to-cloud メッセージのヘッダーとボディーを使用して、メッセージのルーティング先を決定します。 既定では、メッセージは、[Event Hubs][lnk-event-hubs] と互換性のある組み込みサービス向けエンドポイント (**messages/events**) にルーティングされます。 このため、標準的な [Event Hubs の統合と SDK][lnk-compatible-endpoint] を使用して、ソリューション バックエンドで device-to-cloud メッセージを受信できます。
+デバイスからのクラウドへのメッセージはデバイス向けのエンドポイント (**/devices/{deviceId}/messages/events**) を介して送信されます。 次にルーティング ルールに従って、IoT Hub 上のサービス向けエンドポイントの 1 つにメッセージをルーティングします。 ルーティング ルールは device-to-cloud メッセージのヘッダーとボディーを使用して、メッセージのルーティング先を決定します。 既定では、メッセージは [Event Hubs][lnk-event-hubs] と互換性のある組み込みサービス向けエンドポイント (**messages/events**) にルーティングされます。 このため、標準的な [Event Hubs の統合と SDK][lnk-compatible-endpoint] を使用して、ソリューション バックエンドで device-to-cloud メッセージを受信できます。
 
 IoT Hub は、ストリーミング メッセージング パターンを使用して、D2C メッセージングを実装しています。 IoT Hub の D2C メッセージは[Service Bus][lnk-servicebus] *メッセージ* というよりはむしろ [Event Hubs][lnk-event-hubs] の *イベント* であり、複数のリーダーで読み取り可能なサービスを経由する、大量のイベントが存在します。
 
@@ -36,11 +36,11 @@ IoT Hub を使用した device-to-cloud メッセージングには、次のよ�
 * IoT Hub により、何百万もの接続されているデバイスを同時に有効にできます (「[クォータと調整][lnk-quotas]」をご覧ください)。
 * IoT Hub では、任意のパーティション分割は許可されていません。 D2C メッセージは、発信元の **deviceId**に基づいてパーティション分割されます。
 
-IoT Hub サービスと Event Hubs サービスの違いについての詳細は、「[Azure IoT Hub と Azure Event Hubs の比較][lnk-comparison]」をご覧ください。
+IoT Hub と Event Hubs の違いについての詳細は、「[Azure IoT Hub と Azure Event Hubs の比較][lnk-comparison]」をご覧ください。
 
 ## <a name="send-non-telemetry-traffic"></a>非テレメトリ トラフィックの送信
 
-多くの場合、デバイスからは、テレメトリ データ ポイントが送信されるだけでなく、ソリューション バックエンドでの個別の実行と処理を必要とするメッセージと要求が送信されます。 たとえば、バック エンドで特定のアクションをトリガーする必要がある重大なアラートです。 メッセージのヘッダーまたはメッセージ本文内の値に基づいて、これらの処理を専用に行うエンドポイントに対して、このようなメッセージを送信する[ルーティング ルール][lnk-devguide-custom]が簡単に記述できます。
+多くの場合、デバイスからは、テレメトリが送信されるだけでなく、ソリューション バックエンドでの個別の実行と処理を必要とするメッセージと要求が送信されます。 たとえば、バック エンドで特定のアクションをトリガーする必要がある重大なアラートです。 メッセージのヘッダーまたはメッセージ本文内の値に基づいて、これらの処理を専用に行うエンドポイントに対して、このようなメッセージを送信する[ルーティング ルール][lnk-devguide-custom]を記述できます。
 
 この種類のメッセージを処理する最適な方法の詳細については、[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-d2c-tutorial]に関するチュートリアルをご覧ください。
 
@@ -71,7 +71,7 @@ D2C メッセージでのデバイスのなりすましを回避するために�
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 device-to-cloud メッセージの送信に使用できる SDK については、[Azure IoT SDK][lnk-sdks] に関する記事をご覧ください。
 

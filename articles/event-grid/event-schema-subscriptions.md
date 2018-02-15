@@ -6,13 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 11/08/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7dc10d0cc73960fac4759a0cebec8d294cf1b463
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 23249b92b4e99628d49bbd811b4ad1f1dc9cc9b0
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-event-grid-event-schema-for-subscriptions"></a>Azure Event Grid のサブスクリプション用のイベント スキーマ
 
@@ -24,7 +24,7 @@ Azure サブスクリプションとリソース グループは、同じ種類�
 
 Azure サブスクリプションは、VM が作成されたりストレージ アカウントが削除されたりしたときに、Azure Resource Manager から管理イベントを出力します。
 
-| イベントの種類 | 説明 |
+| イベントの種類 | [説明] |
 | ---------- | ----------- |
 | Microsoft.Resources.ResourceWriteSuccess | リソースの作成または更新操作が成功したときに発生します。 |
 | Microsoft.Resources.ResourceWriteFailure | リソースの作成または更新操作が失敗したときに発生します。 |
@@ -39,7 +39,7 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 ```json
 [
-    {
+  {
     "topic":"/subscriptions/{subscription-id}",
     "subject":"/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/eventSubscriptions/LogicAppdd584bdf-8347-49c9-b9a9-d1f980783501",
     "eventType":"Microsoft.Resources.ResourceWriteSuccess",
@@ -57,7 +57,9 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
         "subscriptionId":"{subscription-id}",
         "tenantId":"72f988bf-86f1-41af-91ab-2d7cd011db47"
         },
-    }
+      "dataVersion": "",
+      "metadataVersion": "1"
+  }
 ]
 ```
 
@@ -81,39 +83,43 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
     "status": "Succeeded",
     "subscriptionId": "{subscription-id}",
     "tenantId": "72f988bf-86f1-41af-91ab-2d7cd011db47"
-  }
+  },
+  "dataVersion": "",
+  "metadataVersion": "1"
 }]
 ```
 
 ## <a name="event-properties"></a>イベントのプロパティ
 
-イベントには、次の最上位レベルのデータがあります。
+イベントのトップレベルのデータを次に示します。
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | [説明] |
 | -------- | ---- | ----------- |
-| topic | string | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 |
-| subject | string | 発行元が定義したイベントの対象のパス。 |
-| eventType | string | このイベント ソース用に登録されたイベントの種類のいずれか。 |
-| eventTime | string | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
-| id | string | イベントの一意識別子。 |
-| data | object | サブスクリプション イベントのデータ。 |
+| トピック | 文字列 | イベント ソースの完全なリソース パス。 このフィールドは書き込み可能ではありません。 この値は Event Grid によって指定されます。 |
+| subject | 文字列 | 発行元が定義したイベントの対象のパス。 |
+| eventType | 文字列 | このイベント ソース用に登録されたイベントの種類のいずれか。 |
+| eventTime | 文字列 | プロバイダーの UTC 時刻に基づくイベントの生成時刻。 |
+| id | 文字列 | イベントの一意識別子。 |
+| data | オブジェクト | サブスクリプション イベントのデータ。 |
+| dataVersion | 文字列 | データ オブジェクトのスキーマ バージョン。 スキーマ バージョンは発行元によって定義されます。 |
+| metadataVersion | 文字列 | イベント メタデータのスキーマ バージョン。 最上位プロパティのスキーマは Event Grid によって定義されます。 この値は Event Grid によって指定されます。 |
 
 データ オブジェクトには、次のプロパティがあります。
 
-| プロパティ | 型 | 説明 |
+| プロパティ | type | [説明] |
 | -------- | ---- | ----------- |
-| authorization | string | 操作の要求された承認。 |
-| claims | string | 要求のプロパティ。 |
-| correlationId | string | トラブルシューティング用の操作 ID。 |
-| httpRequest | string | 操作の詳細。 |
-| resourceProvider | string | 操作を実行しているリソース プロバイダー。 |
-| resourceUri | string | 操作内のリソースの URI。 |
-| operationName | string | 実行された操作。 |
-| status | string | 操作の状態。 |
-| subscriptionId | string | リソースのサブスクリプション ID。 |
-| tenantId | string | リソースのテナント ID。 |
+| authorization | 文字列 | 操作の要求された承認。 |
+| claims | 文字列 | 要求のプロパティ。 |
+| correlationId | 文字列 | トラブルシューティング用の操作 ID。 |
+| httpRequest | 文字列 | 操作の詳細。 |
+| resourceProvider | 文字列 | 操作を実行しているリソース プロバイダー。 |
+| resourceUri | 文字列 | 操作内のリソースの URI。 |
+| operationName | 文字列 | 実行された操作。 |
+| status | 文字列 | 操作の状態。 |
+| subscriptionId | 文字列 | リソースのサブスクリプション ID。 |
+| tenantId | 文字列 | リソースのテナント ID。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。

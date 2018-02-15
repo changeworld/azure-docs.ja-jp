@@ -17,6 +17,8 @@
 # 例
 ## [Bash で Terraform を使用して Azure リソースをデプロイする](example-terraform-bash.md)
 
+## [Bash での Ansible の実行](../ansible/ansible-run-playbook-in-cloudshell.md)
+
 # [Cloud Shell を埋め込む](embed-cloud-shell.md)
 
 # [トラブルシューティング](troubleshooting.md)

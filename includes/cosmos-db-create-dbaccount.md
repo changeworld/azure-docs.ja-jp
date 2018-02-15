@@ -17,7 +17,7 @@
 
     **[Create]**をクリックします。
 
-    ![Azure Cosmos DB の [新しいアカウント] ブレード](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
+    ![Azure Cosmos DB の新しいアカウント ページ](./media/cosmos-db-create-dbaccount/create-nosql-db-databases-json-tutorial-2.png)
 
 4. アカウントの作成には数分かかります。 アカウントの作成中に、ポータルの右側に **[Deploying Azure Cosmos DB]\(Azure Cosmos DB のデプロイ\)** タイルが表示されます。タイルを表示するのに、ダッシュボードを右にスクロールしなければならない場合もあります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。 
 

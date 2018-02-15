@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/19/2016
 ms.author: veljko-msft
-ms.openlocfilehash: bf8e0203112a42132a80e234964747c550fea284
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: b599273874a4b5a3bbcb78284d69b4c8d02b5f2c
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 
@@ -28,7 +28,11 @@ Azure SQL Database は自動的に管理されるデータ サービスです。
 ## <a name="enable-automatic-tuning-on-server"></a>サーバーでの自動チューニングの有効化
 自動チューニングの構成を [Azure の既定値] から継承するかどうかをサーバー レベルで選択できます。 Azure の既定値では、FORCE_LAST_GOOD_PLAN と CREATE_INDEX が有効で、DROP_INDEX が無効です。
 
-### <a name="portal"></a>ポータル
+## <a name="configure-automiatic-tuning-e-mail-notifications"></a>メール通知の自動チューニングの構成
+
+[メール通知の自動チューニング](sql-database-automatic-tuning-email-notifications.md)に関するページを参照してください。
+
+### <a name="azure-portal"></a>Azure ポータル
 Azure SQL Database サーバーで自動チューニングを有効にするには、Azure Portal でサーバーに移動し、メニューで **[自動チューニング]** を選択します。 次のように、有効にする自動チューニング オプションを選択し、**[適用]** を選択します。
 
 ![サーバー](./media/sql-database-automatic-tuning-enable/server.png)
@@ -38,7 +42,7 @@ Azure SQL Database サーバーで自動チューニングを有効にするに�
 ### <a name="rest-api"></a>REST API
 [サーバー レベルの自動チューニングを REST API で有効にする方法については、ここをクリックしてください。](https://docs.microsoft.com/rest/api/sql/serverautomatictuning)
 
-## <a name="enable-automatic-tuning-on-database"></a>データベースで自動チューニングを有効にする
+## <a name="enable-automatic-tuning-on-an-individual-database"></a>個々のデータベースで自動チューニングを有効にする
 
 Azure SQL Database では、各データベースで自動チューニング構成を個別に指定することができます。 自動チューニングの構成を親サーバーから継承するか、[Azure の既定値] から継承するか、または構成を継承しないかをデータベース レベルで選択できます。 Azure の既定値では、FORCE_LAST_GOOD_PLAN と CREATE_INDEX が有効で、DROP_INDEX が無効です。
 
@@ -46,7 +50,7 @@ Azure SQL Database では、各データベースで自動チューニング構�
 > 一般的な推奨事項は、すべてのデータベースで同じ構成設定を自動的に適用できるように、サーバー レベルで自動チューニング構成を管理することです。 データベースが同じサーバーの他のデータベースとは異なる場合は、個々のデータベースで自動チューニングを構成します。
 >
 
-### <a name="portal"></a>ポータル
+### <a name="azure-portal"></a>Azure ポータル
 
 単一のデータベースで自動チューニングを有効にするには、Azure Portal でデータベースに移動し、**[自動チューニング]** を選択します。 オプションを選択して、サーバーから設定を継承するように単一のデータベースを構成することも、個別にデータベースの構成を指定することもできます。
 
@@ -78,7 +82,7 @@ T-SQL で個々の自動チューニング オプションを構成するには�
 ## <a name="disabled-by-the-system"></a>システムによる無効化
 自動チューニングがデータベースに対して作用するあらゆる操作は監視されていて、ときにはデータベースに対して適切に作用しない可能性があると判断される場合があります。 そのような状況では、チューニング オプションがシステムによって無効化されます。 その原因はほとんどの場合、クエリ ストアが有効になっていないか、特定のデータベースに対して読み取り専用状態になっていることにあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [自動チューニングに関する記事](sql-database-automatic-tuning.md)を読み、自動チューニングと、パフォーマンスの向上にいかに役立つかを確認します。
 * Azure SQL Database のパフォーマンスに関する推奨事項の概要については、「[パフォーマンスに関する推奨事項](sql-database-advisor.md)」を参照してください。
 * よく使用されるクエリによるパフォーマンスへの影響を確認する方法については、[クエリ パフォーマンスの洞察](sql-database-query-performance.md)に関する記事をご覧ください。

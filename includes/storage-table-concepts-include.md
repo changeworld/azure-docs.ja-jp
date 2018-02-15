@@ -13,13 +13,16 @@ Table Storage には次の構成要素があります。
 
 ![Table Storage のコンポーネントの図][Table1]
 
-* **URL 形式:** 次のアドレス形式を使用して、アカウントのテーブルのアドレスを記述します。   
-  http://`<storage account>`.table.core.windows.net/`<table>`  
-  
+* **URL 形式:** Azure Table Storage アカウントでは、以下の形式を使用します。`http://<storage account>.table.core.windows.net/<table>`
+
+  Azure Cosmos DB のテーブル API アカウントでは、以下の形式を使用します。`http://<storage account>.table.cosmosdb.azure.com/<table>`  
+
   このアドレスを OData プロトコルで使用して、Azure テーブルを直接アドレス指定できます。 詳細については、[OData.org][OData.org] の Web サイトを参照してください。
-* **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure のストレージの拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/common/storage-scalability-targets.md) を参照してください。
-* **テーブル:**テーブルは、エンティティのコレクションです。 テーブルではエンティティにスキーマを設定しないため、1 つのテーブルに異なるプロパティのセットを持つエンティティが含まれている場合があります。 テーブルの数は、ストレージ アカウントの容量制限によってのみ制限されます。
-* **エンティティ:**エンティティは、プロパティのセットで、データベースの行に似ています。 エンティティの最大サイズは 1 MB です。
+* **アカウント:** Azure Storage へのアクセスはすべて、ストレージ アカウント経由で行います。 ストレージ アカウントの容量の詳細については、 [Azure Storage の拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/common/storage-scalability-targets.md) を参照してください。 
+
+    Azure Cosmos DB へのアクセスはすべて、テーブル API アカウント経由で行います。 テーブル API アカウントの作成の詳細については、[テーブル API アカウントの作成](../articles/cosmos-db/create-table-dotnet.md#create-a-database-account)に関するページをご覧ください。
+* **テーブル:**テーブルは、エンティティのコレクションです。 テーブルではエンティティにスキーマを設定しないため、1 つのテーブルに異なるプロパティのセットを持つエンティティが含まれている場合があります。  
+* **エンティティ:**エンティティは、プロパティのセットで、データベースの行に似ています。 Azure Storage 内のエンティティには、最大 1 MB のサイズを指定できます。 Azure Cosmos DB 内のエンティティには、最大 2 MB のサイズを指定できます。
 * **プロパティ:**プロパティは、名前と値のペアです。 それぞれのエンティティは、データを格納するために最大で 252 個のプロパティを含むことができます。 さらに、それぞれのエンティティは、パーティション キー、行キー、およびタイムスタンプを指定する、3 つのシステム プロパティを持ちます。 同じパーティション キーを持つエンティティは、アトミック操作でより迅速な照会と挿入/更新が可能です。 エンティティの行キーは、パーティション内の一意の識別子です。
 
 テーブルとプロパティの名前付け規則については、「 [Understanding the Table Service Data Model (Table サービス データ モデルの概要)](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」を参照してください。

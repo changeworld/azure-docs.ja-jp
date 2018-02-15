@@ -86,6 +86,9 @@
           href: apache-spark-use-with-data-lake-store.md
         - name: Azure SQL Database に接続する
           href: apache-spark-connect-to-sql-database.md
+        - name: Spark と Cosmos DB を使用してラムダ アーキテクチャを実装する
+          href: ../../cosmos-db/lambda-architecture.md
+          maintainContext: true
     - name: Spark ストリーミング
       items:
         - name: 概要
@@ -204,7 +207,7 @@
           maintainContext: true
     - name: '[管理]'
       items:
-        - name: Spark の設定の構成
+        - name: Spark の設定を構成する
           href: apache-spark-settings.md
         - name: Spark ジョブの最適化
           href: apache-spark-perf.md

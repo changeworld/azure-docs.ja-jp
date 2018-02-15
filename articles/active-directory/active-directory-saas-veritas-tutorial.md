@@ -4,20 +4,20 @@ description: "Azure Active Directory と Veritas Enterprise Vault.cloud SSO の�
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: c47894b1-f5df-4755-845d-f12f4c602dc4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 01/31/2017
 ms.author: jeedes
-ms.openlocfilehash: fbec2cee6e1ecd23b34fd879d978a05bd5a04ac4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eb9243367d0817d37549fa147c6c5e1d2acf3761
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>チュートリアル: Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合
 
@@ -63,11 +63,11 @@ Azure AD への Veritas Enterprise Vault.cloud SSO の統合を構成するに�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「**Veritas Enterprise Vault.cloud SSO**」と入力します。
 
@@ -86,11 +86,11 @@ Veritas Enterprise Vault.cloud SSO で、Azure AD の **[ユーザー名]** の�
 
 Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Veritas Enterprise Vault.cloud SSO のテスト ユーザーの作成](#creating-a-veritas-enterprise-vaultcloud-sso-test-user)** - Veritas Enterprise Vault.cloud SSO で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,37 +100,53 @@ Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオン�
 
 1. Azure Portal の **Veritas Enterprise Vault.cloud SSO** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_samlbase.png)
 
 3. **[Veritas Enterprise Vault.cloud SSO のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_url.png)
 
-    **[サインオン URL]** ボックスに、`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://personal.ap.archive.veritas.com/CID=<CUSTOMERID>` のパターンを使用して URL を入力します。
+
+    b. **[識別子]** ボックスでは、データセンターに応じた URL を使用します。
+
+    | データセンター| URL |
+    |----------|----|
+    | 北米| `https://auth.lax.archivecloud.net` |
+    | ヨーロッパ | `https://auth.ams.archivecloud.net` |
+    | アジア太平洋| `https://auth.syd.archivecloud.net`|
+
+    c. **[応答 URL]** ボックスでは、データセンターに応じた URL を使用します。
+
+    | データセンター| URL |
+    |----------|----|
+    | 北米| `https://auth.lax.archivecloud.net` |
+    | ヨーロッパ | `https://auth.ams.archivecloud.net` |
+    | アジア太平洋| `https://auth.syd.archivecloud.net`|
     
     > [!NOTE] 
-    > これは実際の値ではありません。 この値を実際のサインオン URL で更新してください。 この値を取得するには、[Veritas Enterprise Vault.cloud SSO クライアント サポート チーム](https://www.veritas.com/support/.html)に問い合わせてください。 
+    > これは実際の値ではありません。 実際のサインオン URL でこの値を更新してください。 この値を取得するには、[Veritas Enterprise Vault.cloud SSO クライアント サポート チーム](https://www.veritas.com/support/.html)に問い合わせてください。 
 
 4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-veritas-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-veritas-tutorial/tutorial_general_400.png)
 
 6. **[Veritas Enterprise Vault.cloud SSO 構成]** セクションで、**[Veritas Enterprise Vault.cloud SSO の構成]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_configure.png) 
 
 7. **Veritas Enterprise Vault.cloud SSO** 側にシングルサインオンを構成するには、ダウンロードされた**証明書 (Base64)** および **SAML シングル サインオン サービス URL** を [Veritas Enterprise Vault.cloud SSO サポート チーム](https://www.veritas.com/support/.html)に送信する必要があります。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -156,7 +172,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオン�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-veritas-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -182,7 +198,7 @@ Veritas Enterprise Vault.cloud SSO で Azure AD のシングル サインオン�
 
 2. アプリケーションの一覧で **[Veritas Enterprise Vault.cloud SSO]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-veritas-tutorial/tutorial_veritas_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

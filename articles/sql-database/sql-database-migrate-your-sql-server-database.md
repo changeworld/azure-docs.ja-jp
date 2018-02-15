@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 09/01/2017
+ms.date: 01/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 526222944974c08f92aec2a8418e9b42401bc4d3
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0b45661bbfc3d86542bd7424329e504d1d9c91e4
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>SQL Server データベースを Azure SQL Database に移行する
 
@@ -42,7 +42,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - 最新バージョンの [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) (DMA) がインストールされていること。
 - 移行するデータベースを指定してアクセスできます。 このチュートリアルでは SQL Server 2008 R2 以降のインスタンス上にある [SQL Server 2008 R2 AdventureWorks OLTP データベース](https://msftdbprodsamples.codeplex.com/releases/view/59211)を使用しますが、任意のデータベースを使用してかまいません。 互換性の問題を修正するには、[SQL Server Data Tools](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -60,7 +60,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | Description | 
+   | 設定       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -69,7 +69,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-   | Setting       | 推奨値 | Description | 
+   | 設定       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -91,7 +91,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
    > [!IMPORTANT]
    > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
    >
-   >\* 現在、Premium レベルでは、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパ、ドイツ中部、東南アジア、東日本、オーストラリア東部、カナダ中部、およびカナダ東部の各リージョンにおいて、1 TB を超えるストレージが利用できます。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+   >\* Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
    > 
 
 9. サーバーのレベル、DTU 数、ストレージの容量を選択したら、**[適用]** をクリックします。  
@@ -124,7 +124,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. [ **Save**] をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+5. **[Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
 
@@ -153,19 +153,19 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 2. 左側のメニューで **[+ New]** (新規) をクリックし、**[Assessment]** (評価) を選択して、評価プロジェクトを作成します。 要求された値を入力し、**[作成]** をクリックします。
 
-   | 設定      | 推奨値 | Description | 
+   | 設定      | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | プロジェクトの種類 | 移行 | 移行するデータベースを評価するか、または、同じワークフローの一部として移行を評価するかを選択します。 |
    |プロジェクト名|移行のチュートリアル| わかりやすい名前 |
    |ソース サーバー名| SQL Server | 現在サポートされている唯一のソースです。 |
-   |ターゲット サーバー名| Azure SQL Database| 含まれるオプション: Azure SQL データベース、SQL Server、Azure の仮想マシン上の SQL Server |
+   |ターゲット サーバー名| の接続文字列| 含まれるオプション: Azure SQL データベース、SQL Server、Azure の仮想マシン上の SQL Server |
    |移行スコープ| スキーマとデータ| 含まれるオプション: スキーマとデータ、スキーマのみ、データのみ |
    
    ![Data Migration Assistant の新規プロジェクト](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-new-project.png)
 
 3.  **[ソースの選択]** ページで、要求された値を入力して、**[接続]** をクリックします。
 
-    | 設定      | 推奨値 | Description | 
+    | 設定      | 推奨値 | [説明] | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | サーバー名 | サーバー名または IP アドレス | サーバー名または IP アドレス |
     | 認証の種類 | 推奨される認証の種類| オプション: Windows 認証、SQL Server 認証、Active Directory 統合認証、Active Directory パスワード認証 |
@@ -179,7 +179,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 6. **[ターゲットの選択]** ページで、要求された値を入力して、**[接続]** をクリックします。
 
-    | 設定      | 推奨値 | Description | 
+    | 設定      | 推奨値 | [説明] | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | サーバー名 | 完全修飾 Azure データベース サーバー名を取得します。 | 前の手順の完全修飾 Azure データベース サーバー名 |
     | 認証の種類 | パブリック | このチュートリアルでは SQL Server 認証が唯一のオプションですが、Azure SQL Database では Active Directory 統合認証および Active Directory パスワード認証もサポートされています。 |
@@ -228,7 +228,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | 設定       | 推奨値 | Description | 
+   | 設定       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver20170824.database.windows.net** のような形式で指定する必要があります。 |
@@ -266,7 +266,7 @@ SQL Server Management Studio を使用して、サービス レベル、パフ�
     );
     ```
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 このチュートリアルで学習した内容は次のとおりです。
 
 > * Azure Portal で空の Azure SQL データベースを作成する 

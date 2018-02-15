@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 6febd3f12248a96f54415a91fcf0513ef7412e78
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7ee5a720b12152c27a96ee18f1b11e5fc03a531a
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="derive-column-by-example-transformation"></a>Derive column by example (例による列の派生) 変換
 
@@ -67,6 +67,10 @@ Workbench はデータを分析し、ユーザーによるレビューが必要�
 詳細モードでは、グリッド内の行をダブルクリックすることにより、任意の行を例の行として追加できます。 例の行として行がコピーされたら、ソース列のデータを編集して合成例を作成することもできます。 これにより、サンプル データに現存しないケースを追加できます。
 
 ユーザーは、変換エディターでリンクをクリックして、**基本モード**と**詳細モード**を切り替えられます。
+
+### <a name="transform-editor-send-feedback"></a>変換エディター: フィードバックの送信
+
+**[フィードバックの送信]** リンクをクリックすると、**[フィードバック]** ダイアログ ボックスが開き、ユーザー入力例があらかじめ設定されたコメント蘭が表示されます。 ユーザーは、コメント蘭の内容を確認し、問題の理解に役立つ詳細を入力する必要があります。 データを Microsoft と共有しない場合は、あらかじめ入力されているサンプル データを削除してから、**[フィードバックの送信]** をクリックする必要があります。 
 
 ### <a name="editing-existing-transformation"></a>既存の変換の編集
 

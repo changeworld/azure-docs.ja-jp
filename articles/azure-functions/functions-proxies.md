@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: dd022b189783f2d8c6209a6cd656704ff144bfd6
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: 3d1b5f30898bc0aab5c617ab547aa7db5e7e4375
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -62,6 +62,11 @@ ms.lasthandoff: 12/23/2017
 
 プロキシの構成は必ずしも静的である必要はありません。 条件に応じて元のクライアント要求やバックエンドからの応答、アプリケーション設定から得られる変数を使うことができます。
 
+### <a name="reference-localhost"></a>ローカル関数を参照する
+`localhost` を使用して、往復のプロキシ要求なしで、同じ関数アプリ内の関数を直接参照することができます。
+
+`"backendurl": "localhost/api/httptriggerC#1"` は、ローカルの HTTP トリガーされた関数をルート `/api/httptriggerC#1` で参照します。
+
 ### <a name="request-parameters"></a>要求のパラメーターを参照する
 
 要求のパラメーターは、バックエンド URL プロパティの入力として、または要求や応答に加える変更の一部として使うことができます。 パラメーターには、ベース プロキシの構成に指定されているルート テンプレートに由来するものもあれば、受信要求のプロパティに由来するものもあります。
@@ -94,6 +99,18 @@ ms.lasthandoff: 12/23/2017
 
 > [!TIP] 
 > 複数のデプロイまたはテスト環境がある場合は、バックエンド ホストのアプリケーション設定を使用してください。 そうすることで、常にその環境の適切なバックエンドと通信することができます。
+
+## <a name="debugProxies"></a>プロキシのトラブルシューティング
+
+フラグ `"debug":true` を `proxy.json` 内の任意のプロキシに追加することで、デバッグ ログを有効にします。 ログは、`D:\home\LogFiles\Application\Proxies\DetailedTrace` に格納され、高度なツール (Kudu) を使用してアクセスできます。 すべての HTTP 応答には、`Proxy-Trace-Location` ヘッダーと、ログ ファイルにアクセスするための URL も含まれます。
+
+`true` に設定した `Proxy-Trace-Enabled` ヘッダーを追加することによって、クライアント側からプロキシをデバッグできます。 これにより、ファイル システムのトレースもログに記録され、応答のヘッダーとしてトレースの URL が返されます。
+
+### <a name="block-proxy-traces"></a>プロキシ トレースをブロックする
+
+セキュリティ上の理由から、トレースを生成するためのサービスの呼び出しは許可しないことをお勧めします。 ログイン資格情報なしでトレース コンテンツにアクセスすることはできませんが、トレースを生成するとリソースが消費され、Functions プロキシを使用していることが公開されます。
+
+`proxy.json` 内の特定のプロキシに `"debug":false` を追加することで、トレースを完全に無効にします。
 
 ## <a name="advanced-configuration"></a>詳細な構成
 
@@ -130,6 +147,24 @@ ms.lasthandoff: 12/23/2017
 
 > [!NOTE] 
 > Azure Functions プロキシの *route* プロパティ では、Function App ホスト構成の *routePrefix* プロパティは考慮されません。 `/api` のようなプレフィックスを含める場合は、*route* プロパティに含める必要があります。
+
+### <a name="disableProxies"></a>個々のプロキシを無効する
+
+個々のプロキシを無効にするには、`proxies.json` ファイル内のプロキシに `"disabled": true` を追加します。 これにより、matchCondidtion を満たす要求はすべて 404 を返します。
+```json
+{
+    "$schema": "http://json.schemastore.org/proxies",
+    "proxies": {
+        "Root": {
+            "disabled":true,
+            "matchCondition": {
+                "route": "/example"
+            },
+            "backendUri": "www.example.com"
+        }
+    }
+}
+```
 
 ### <a name="requestOverrides"></a>requestOverrides オブジェクトの定義
 

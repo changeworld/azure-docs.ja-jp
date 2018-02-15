@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: a8a8d8e95af3e6d98aa4dd98b11c066dca81421b
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 18d0e8bc6cc1559f9ae1a1a4457aa85d2a206597
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
 
@@ -50,16 +50,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
 
 ## <a name="zone-redundant-storage"></a>ゾーン冗長ストレージ
-
-ゾーン冗長ストレージ (ZRS) (プレビュー) は、高可用性アプリケーションの開発を簡略化できるように設計されています。 ZRS は、ストレージ オブジェクトに年間 99.9999999999% (トゥエルブ ナイン) 以上の持続性を実現します。 ZRS では、複数の可用性ゾーンの間でデータが同期的にレプリケートされます。 ダウンタイムの発生が許容されないトランザクション用アプリケーションのようなシナリオでは、ZRS をご検討ください。
-
-ZRS なら、ゾーンが 1 か所利用できなくなったり回復できなくなったりした場合でも、お客様はデータを読み書きすることができます。 データの挿入や更新を同期的に実行できるため、一貫性が強固に保たれます。   
-
-ZRS のプレビューは現在、以下のリージョンで利用できます。近日中により多くのリージョンで利用できるようになる予定です。
-
-- 米国東部 2 
-- 米国中部 
-- フランス中部 (このリージョンは現在プレビュー段階です。 アクセスを要求するには、「[Microsoft Azure preview with Azure Availability Zones now open in France (Azure 可用性ゾーンを使用できる Microsoft Azure プレビューがフランスで提供開始)](https://azure.microsoft.com/blog/microsoft-azure-preview-with-azure-availability-zones-now-open-in-france)」をご覧ください。)
+[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="zrs-classic-accounts"></a>ZRS クラシック アカウント
 
@@ -72,7 +63,7 @@ ZRS クラシック アカウントと LRS、GRS、または RA-GRS を相互に
 1 つのリージョンで ZRS が一般公開されると、そのリージョンのポータルからは ZRS クラシック アカウントを作成できなくなりますが、他の方法で作成することはできます。  
 ZRS クラシックから ZRS への自動移行プロセスは、今後提供される予定です。
 
-ZRS アカウントは、手動でそのリージョンの ZRS アカウントを LRS、GRS、RAGRS アカウントに移行する、または LRS、GRS、RAGRS アカウントを ZRS アカウントに移行することをサポートしています。 この手動での移行は、AzCopy、Azure Storage Explorer、Azure PowerShell、Azure CLI、または Azure Storage クライアント ライブラリの 1 つを使用して実行できます。
+ZRS アカウントのデータは、別のアカウント (LRS、ZRS クラシック、GRS、RAGRS) との間で、双方向に手動で移行することができます。 この手動での移行は、AzCopy、Azure Storage Explorer、Azure PowerShell、Azure CLI、または Azure Storage クライアント ライブラリの 1 つを使用して実行できます。
 
 > [!NOTE]
 > ZRS クラシック アカウントは、2021 年 3 月 31 日に非推奨になり、移行が必須になる予定です。 ZRS クラシックのお客様には、非推奨になる前に Microsoft から詳細をご連絡します。

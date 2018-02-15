@@ -3,7 +3,7 @@ title: "Azure Stack と外部の監視ソリューションとの統合 | Micros
 description: "Azure Stack とデータセンターの外部の監視ソリューションを統合する方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: mattbriggs
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
@@ -12,13 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/20/2017
-ms.author: mabrigg
-ms.openlocfilehash: 76499ac959b77e83494bc4f9593c20a99da5c147
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
+ms.openlocfilehash: a7f6d3691410711fcae692007b08977a93961845
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Azure Stack と外部の監視ソリューションとの統合
 
@@ -76,7 +77,7 @@ Nagios 監視プラグインは、制約のない無料ソフトウェア ライ
 
 プラグイン ファイルの "Azurestack_plugin.py" を次のパラメーターで構成します。
 
-| パラメーター | Description | 例 |
+| パラメーター | [説明] | 例 |
 |---------|---------|---------|
 | *arm_endpoint* | Azure Resource Manager (管理者) エンドポイント |https://adminmanagement.local.azurestack.external |
 | *api_endpoint* | Azure Resource Manager (管理者) エンドポイント  | https://adminmanagement.local.azurestack.external |
@@ -137,14 +138,14 @@ REST API 呼び出しを使用して、アラートを取得したり、アラ�
 要求によって、既定のプロバイダー サブスクリプションのすべてのアクティブなアラートと終了したアラートを取得します。 要求の本文はありません。
 
 
-|メソッド  |要求 URI  |
+|方法  |要求 URI  |
 |---------|---------|
 |GET     |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts?api-version=2016-05-01"      |
 |     |         |
 
 **引数**
 
-|引数  |説明  |
+|引数  |[説明]  |
 |---------|---------|
 |armendpoint     |  ご利用の Azure Stack 環境の Azure Resource Manager エンドポイント。形式は https://adminmanagement.{RegionName}.{External FQDN}。 たとえば、外部の FQDN が *azurestack.external* でリージョン名が *local* の場合、Resource Manager エンドポイントは https://adminmanagement.local.azurestack.external になります。       |
 |subid     |   呼び出しを行っているユーザーのサブスクリプション ID。 この API を使用して、既定のプロバイダー サブスクリプションへのアクセス許可を持つユーザーにだけクエリを実行できます。      |
@@ -203,7 +204,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 **応答の詳細**
 
 
-|  引数  |説明  |
+|  引数  |[説明]  |
 |---------|---------|
 |*id*     |      アラートの一意の ID。   |
 |*name*     |     アラートの内部名。   |
@@ -240,14 +241,14 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 要求が一意の ID によってアラートを終了します。
 
-|メソッド    |要求 URI  |
+|方法    |要求 URI  |
 |---------|---------|
 |PUT     |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/Alerts/alertid?api-version=2016-05-01"    |
 
 **引数**
 
 
-|引数  |説明  |
+|引数  |[説明]  |
 |---------|---------|
 |*armendpoint*     |   ご利用の Azure Stack 環境の Resource Manager エンドポイント。形式は https://adminmanagement.{RegionName}.{External FQDN}。 たとえば、外部の FQDN が *azurestack.external* でリージョン名が *local* の場合、Resource Manager エンドポイントは https://adminmanagement.local.azurestack.external になります。      |
 |*subid*     |    呼び出しを行っているユーザーのサブスクリプション ID。 この API を使用して、既定のプロバイダー サブスクリプションへのアクセス許可を持つユーザーにだけクエリを実行できます。     |
@@ -346,7 +347,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 **応答の詳細**
 
 
-|  引数  |説明  |
+|  引数  |[説明]  |
 |---------|---------|
 |*id*     |      アラートの一意の ID。   |
 |*name*     |     アラートの内部名。   |
@@ -384,7 +385,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 要求によって、すべての登録済みリソースプロバイダーの正常性の状態を取得します。
 
 
-|メソッド  |要求 URI  |
+|方法  |要求 URI  |
 |---------|---------|
 |GET    |   https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths?api-version=2016-05-01"   |
 
@@ -392,7 +393,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 **引数**
 
 
-|引数  |説明  |
+|引数  |[説明]  |
 |---------|---------|
 |*armendpoint*     |    ご利用の Azure Stack 環境の Resource Manager エンドポイント。形式は https://adminmanagement.{RegionName}.{External FQDN}。 たとえば、外部の FQDN が azurestack.external でリージョン名が local の場合、Resource Manager エンドポイントは https://adminmanagement.local.azurestack.external になります。     |
 |*subid*     |     呼び出しを行っているユーザーのサブスクリプション ID。 この API を使用して、既定のプロバイダー サブスクリプションへのアクセス許可を持つユーザーにだけクエリを実行できます。    |
@@ -432,7 +433,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 **応答の詳細**
 
 
-|引数  |説明  |
+|引数  |[説明]  |
 |---------|---------|
 |*Id*     |   アラートの一意の ID。      |
 |*name*     |  アラートの内部名。       |
@@ -455,13 +456,13 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 **要求**
 
-|メソッド  |要求 URI  |
+|方法  |要求 URI  |
 |---------|---------|
 |GET     |     https://{armendpoint}/subscriptions/{subId}/resourceGroups/system.{RegionName}/providers/Microsoft.InfrastructureInsights.Admin/regionHealths/{RegionName}/serviceHealths/{RegistrationID}/resourceHealths?api-version=2016-05-01"    |
 
 **引数**
 
-|引数  |説明  |
+|引数  |[説明]  |
 |---------|---------|
 |*armendpoint*     |    ご利用の Azure Stack 環境の Resource Manager エンドポイント。形式は https://adminmanagement.{RegionName}.{External FQDN}。 たとえば、外部の FQDN が azurestack.external でリージョン名が local の場合、Resource Manager エンドポイントは https://adminmanagement.local.azurestack.external になります。     |
 |*subid*     |呼び出しを行っているユーザーのサブスクリプション ID。 この API を使用して、既定のプロバイダー サブスクリプションへのアクセス許可を持つユーザーにだけクエリを実行できます。         |
@@ -500,7 +501,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 **応答の詳細**
 
-|引数  |説明  |
+|引数  |[説明]  |
 |---------|---------|
 |*Id*     |   アラートの一意の ID。      |
 |*name*     |  アラートの内部名。       |
@@ -515,8 +516,11 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 |*resourceURI*     |   リソースの URI。   |
 |*alertSummary*     |   重大なアラート、警告のアラート、正常性の状態の概要。     |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="learn-more"></a>詳細情報
 
-- 組み込みの正常性監視の詳細については、「[Azure Stack での正常性およびアラートの監視](azure-stack-monitor-health.md)」をご覧ください。
+組み込みの正常性監視の詳細については、「[Azure Stack での正常性およびアラートの監視](azure-stack-monitor-health.md)」をご覧ください。
 
 
+## <a name="next-steps"></a>次の手順
+
+[セキュリティの統合](azure-stack-integrate-security.md)

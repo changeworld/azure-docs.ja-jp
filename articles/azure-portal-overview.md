@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 12/16/2015
 ms.author: dwrede
 ms.openlocfilehash: 45decfdec01b7086d1f9d18b31cf01cec1adb34d
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="microsoft-azure-portal-overview"></a>Microsoft Azure ポータルの概要
 Azure リソースのプロビジョニングと管理は、Microsoft Azure ポータルを使って 1 か所で行うことができます。  このチュートリアルは、ポータルについて説明し、次のような主要な機能を使用する方法を示します。
@@ -65,7 +65,7 @@ Azure には、1 か所で作成できる何千という項目を備えたマー
 
 ![ヘルプとサポート][HelpSupport]
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 このチュートリアルでは次のことについて説明しました。
 
 * サインアップ方法、サブスクリプションの取得方法、およびポータルの参照方法

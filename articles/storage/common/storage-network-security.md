@@ -1,5 +1,5 @@
 ---
-title: "Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー) | Microsoft Docs"
+title: "Azure Storage ファイアウォールおよび仮想ネットワークの構成 | Microsoft Docs"
 description: "ストレージ アカウントの多層型ネットワーク セキュリティを構成します。"
 services: storage
 documentationcenter: 
@@ -13,20 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: d29f2d180df93f45202e881336e492c45587b276
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: fc13b7cc164c948f25a6908bdf71124a5be02fb9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)
+# <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage ファイアウォールおよび仮想ネットワークを構成する
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
 
-## <a name="preview-availability-and-support"></a>プレビューの可用性とサポート
-Azure Storage ファイアウォールおよび仮想ネットワークはプレビュー段階です。  この機能は、現在のところ、すべての Azure パブリック クラウド リージョンの新規または既存のストレージ アカウントで利用できます。
-
-> [!NOTE]
-> プレビュー期間中は、運用環境のワークロードはサポートされていません。
+> [!IMPORTANT]
+> ストレージ アカウントのファイアウォール ルールをオンにすると、他の Azure サービスを含む、データの受信要求へのアクセスがブロックされます。  これにはポータルの使用やログの書き込みなども含まれます。参加サービスに対しては、以下の「[例外](#Exceptions)」セクションに従って、機能を再度有効にできます。  ポータルにアクセスするには、設定済みの信頼できる境界 (IP または VNet) 内のコンピューターからアクセスする必要があります。
 >
 
 ## <a name="scenarios"></a>シナリオ
@@ -55,9 +52,6 @@ Azure Storage に対して、REST や SMB などのすべてのネットワー�
 
 #### <a name="azure-portal"></a>Azure ポータル
 1. セキュリティで保護するストレージ アカウントを表示します。  
-> [!NOTE]
-> ストレージ アカウントが、パブリック プレビューでサポートされるリージョンのいずれかにあることを確認します。
->
 
 2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. 既定でアクセスを拒否するには、"選択したネットワーク" からのアクセスを許可するように選択します。  すべてのネットワークからのトラフィックを許可するには、"すべてのネットワーク" からのアクセスを許可するように選択します。

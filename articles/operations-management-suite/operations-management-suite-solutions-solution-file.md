@@ -1,6 +1,6 @@
 ---
-title: "Operations Management Suite (OMS) での管理ソリューションの作成 | Microsoft Docs"
-description: "管理ソリューションは、お客様の OMS ワークスペースに追加できるパッケージの管理シナリオを提供することで、 Operations Management Suite (OMS) の機能を拡張します。  この記事では、管理ソリューションを作成してお使いの環境で使用したり顧客に提供したりする方法について、詳しく説明します。"
+title: "Azure での管理ソリューション ファイルの作成 | Microsoft Docs"
+description: "管理ソリューションには、パッケージ化された管理シナリオが用意されており、お客様はそれを Azure 環境に追加できます。  この記事では、管理ソリューションを作成してお使いの環境で使用したり顧客に提供したりする方法について、詳しく説明します。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2018
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1ace3042cc00cedd005955cdfb82c557fd4a8fb2
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: d896fb7c5ffed5c0fe338c2d2f1ef864aacd6f79
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューション ファイルの作成 (プレビュー)
+# <a name="creating-a-management-solution-file-in-azure-preview"></a>Azure での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
-> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
+> 本記事は、現在プレビュー段階である Azure の管理ソリューションの作成に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
 
-Operations Management Suite (OMS) の管理ソリューションは、[Resource Manager テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
+Azure での管理ソリューションは、[Resource Manager テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
 
 
 ## <a name="tools"></a>ツール
@@ -38,7 +38,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 
 
-## <a name="structure"></a>Structure
+## <a name="structure"></a>構造
 管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
 
     {
@@ -50,10 +50,11 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
        "outputs": {  }
     }
 
-## <a name="parameters"></a>parameters
+## <a name="parameters"></a>パラメーター
 [パラメーター](../azure-resource-manager/resource-group-authoring-templates.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
 
-ユーザーが [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) または [Azure クイック スタート テンプレート](operations-management-suite-solutions.md#finding-and-installing-management-solutions) から管理ソリューションをインストールすると、[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions.md#oms-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
+ユーザーが [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) または [Azure クイック スタート テンプレート](operations-management-suite-solutions.md#finding-and-installing-management-solutions)から管理ソリューションをインストールすると、[Log Analytics ワークスペースと Automation アカウント](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
+
 
 ユーザーが[別の方法で](operations-management-suite-solutions.md#finding-and-installing-management-solutions)ソリューションをインストールすると、標準パラメーターと追加のパラメーターのすべてに値を入力する必要があります。
 
@@ -69,11 +70,11 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 次の表で、パラメーターの属性について説明します。
 
-| Attribute | [説明] |
+| 属性 | 説明 |
 |:--- |:--- |
 | 型 |パラメーターのデータ型。 ユーザーに表示される入力コントロールは、データ型によって異なります。<br><br>bool - ドロップダウン ボックス<br>string - テキスト ボックス<br>int - テキスト ボックス<br>securestring - パスワード フィールド<br> |
 | カテゴリ |パラメーターの任意のカテゴリ。  同じカテゴリのパラメーターはグループ化されます。 |
-| control |文字列パラメーターの追加の機能。<br><br>datetime - Datetime コントロールが表示されます。<br>guid - GUID 値が自動的に生成され、パラメーターは表示されません。 |
+| コントロール |文字列パラメーターの追加の機能。<br><br>datetime - Datetime コントロールが表示されます。<br>guid - GUID 値が自動的に生成され、パラメーターは表示されません。 |
 | 説明 |パラメーターの説明です (省略可能)。  パラメーターの横の情報バルーンに表示されます。 |
 
 ### <a name="standard-parameters"></a>標準パラメーター
@@ -84,7 +85,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 >
 >
 
-| パラメーター | type | [説明] |
+| パラメーター | 型 | 説明 |
 |:--- |:--- |:--- |
 | .<リージョン名 |文字列 |Azure automation アカウント名。 |
 | pricingTier |文字列 |Log Analytics ワークスペースと Azure Automation アカウントの両方の価格レベル。 |
@@ -168,8 +169,9 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 ### <a name="dependencies"></a>依存関係
 **dependsOn** 要素は、他のリソースの[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を指定します。  ソリューションをインストールすると、すべての依存関係が作成されるまでリソースは作成されません。  たとえば、[ジョブ リソース](operations-management-suite-solutions-resources-automation.md#automation-jobs)を使用してソリューションをインストールすると、ソリューションが [Runbook を開始する](operations-management-suite-solutions-resources-automation.md#runbooks)ことがあります。  ジョブ リソースは、ジョブが作成される前に Runbook が作成されたことを確認するために Runbook リソースに依存します。
 
-### <a name="oms-workspace-and-automation-account"></a>OMS ワークスペースと Automation アカウント
-管理ソリューションでは、ビューを格納するために [OMS ワークスペース](../log-analytics/log-analytics-manage-access.md)が、Runbook と関連リソースを格納するために [Automation アカウント](../automation/automation-security-overview.md#automation-account-overview)が必要です。  これらはソリューションのリソースが作成される前に使用できるようにする必要があり、ソリューションそのもので定義すべきではありません。  ユーザーはソリューションのデプロイ時に[ワークスペースとアカウントを指定](operations-management-suite-solutions.md#oms-workspace-and-automation-account)しますが、作成者としては、次の点を考慮する必要があります。
+### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics ワークスペースと Automation アカウント
+管理ソリューションでは、ビューを格納するために [Log Analytics ワークスペース](../log-analytics/log-analytics-manage-access.md)が、Runbook と関連リソースを格納するために [Automation アカウント](../automation/automation-security-overview.md#automation-account-overview)が必要です。  これらはソリューションのリソースが作成される前に使用できるようにする必要があり、ソリューションそのもので定義すべきではありません。  ユーザーはソリューションのデプロイ時に[ワークスペースとアカウントを指定](operations-management-suite-solutions.md#log-analytics-workspace-and-automation-account)しますが、作成者としては、次の点を考慮する必要があります。
+
 
 ## <a name="solution-resource"></a>ソリューションのリソース
 各ソリューションは、ソリューション自体を定義する**resources**要素の中にリソース エントリが必要です。  これは**Microsoft.OperationsManagement/solutions**の 1 つを有し、次の構造を持ちます。 これには、ソリューションのプロパティの定義に通常使用される[標準パラメーター](#parameters)と[変数](#variables)が含まれます。
@@ -208,10 +210,10 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 ### <a name="dependencies"></a>依存関係
 ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
 
-### <a name="properties"></a>[プロパティ]
+### <a name="properties"></a>プロパティ
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | workspaceResourceId |*<Resource Group ID>/providers/Microsoft.OperationalInsights/workspaces/\<Workspace Name\>* 形式での、Log Analytics ワークスペースの ID。 |
 | referencedResources |ソリューション削除時に削除すべきではないソリューション内のリソースの一覧。 |
@@ -222,7 +224,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 ### <a name="plan"></a>プラン
 ソリューション リソースの**プラン** エンティティには、次の表のプロパティがあります。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 |:--- |:--- |
 | name |ソリューションの名前。 |
 | version |作成者によって決定されるソリューションのバージョン。 |

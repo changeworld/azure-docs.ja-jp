@@ -12,17 +12,17 @@ ms.devlang: tbd
 ms.topic: get-started-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 01/30/2018
 ms.author: sethm
-ms.openlocfilehash: cb4df0495420776ba2ff7b471c44c4ca3aa1dcff
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 09345b32e80008d4afe61078bd4d272fafe631d2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-a-namespace-with-event-hub-and-enable-capture-using-a-template"></a>イベント ハブを含む名前空間を作成し、テンプレートを使用してキャプチャを有効にします
 
-この記事では、Azure Resource Manager テンプレートを使用し、1 つのイベント ハブ インスタンスを含んだ Event Hubs 名前空間を作成して、イベント ハブの [Capture 機能](event-hubs-capture-overview.md)を有効にする方法について説明します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
+この記事では、Azure Resource Manager テンプレートを使用し、1 つのイベント ハブ インスタンスを含んだ [Event Hubs](event-hubs-what-is-event-hubs.md) 名前空間を作成して、イベント ハブの [Capture 機能](event-hubs-capture-overview.md)を有効にする方法について説明します。 記事では、デプロイ対象のリソースを定義する方法と、デプロイの実行時に指定されるパラメーターを定義する方法を説明します。 このテンプレートは、独自のデプロイに使用することも、要件に合わせてカスタマイズすることもできます。
 
 この記事では、選択した保存先に応じて Azure Storage Blob または Azure Data Lake Store にキャプチャされるイベントの指定方法についても取り上げます。
 
@@ -42,11 +42,7 @@ Azure リソースの名前付け規則のパターンとプラクティスの�
 
 ## <a name="what-will-you-deploy"></a>デプロイの対象
 
-このテンプレートを使用して、イベント ハブを含んだ Event Hubs 名前空間をデプロイし、[Event Hubs Capture](event-hubs-capture-overview.md) も有効にします。
-
-[Event Hubs](event-hubs-what-is-event-hubs.md) は、Azure への大規模なイベントとテレメトリ受信をわずかな待機時間と高い信頼性で提供するために使用される、イベント処理サービスです。 Event Hubs Capture を使用すると、指定した時間またはサイズの間隔で、Event Hubs のストリーミング データを Azure Blob Storage または Azure Data Lake Store に自動的に配信できます。
-
-Event Hubs Capture を Azure Storage に対して有効にするには、次のボタンをクリックします。
+このテンプレートを使用して、イベント ハブを含んだ Event Hubs 名前空間をデプロイし、[Event Hubs Capture](event-hubs-capture-overview.md) も有効にします。 Event Hubs Capture を使用すると、指定した時間またはサイズの間隔で、Event Hubs のストリーミング データを Azure Blob Storage または Azure Data Lake Store に自動的に配信できます。 Event Hubs Capture を Azure Storage に対して有効にするには、次のボタンをクリックします。
 
 [![Azure へのデプロイ](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture%2Fazuredeploy.json)
 
@@ -54,7 +50,7 @@ Event Hubs Capture を Azure Data Lake Store に対して有効にするには�
 
 [![Azure へのデプロイ](./media/event-hubs-resource-manager-namespace-event-hub/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F201-eventhubs-create-namespace-and-enable-capture-for-adls%2Fazuredeploy.json)
 
-## <a name="parameters"></a>パラメーター
+## <a name="parameters"></a>parameters
 
 Azure リソース マネージャーを使用して、テンプレートのデプロイ時に値を指定するパラメーターを定義します。 テンプレートには、すべてのパラメーター値を含む `Parameters` という名前のセクションがあります。 これらの値のパラメーターを定義する必要があります。これらの値は、デプロイするプロジェクトやデプロイ先の環境に応じて異なります。 常に同じ値に対してはパラメーターを定義しないでください。 テンプレート内のそれぞれのパラメーターの値は、デプロイされるリソースを定義するために使用されます。
 
@@ -62,7 +58,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 
 ### <a name="eventhubnamespacename"></a>eventHubNamespaceName
 
-作成する [Event Hubs 名前空間](event-hubs-create.md)の名前。
+作成する Event Hubs 名前空間の名前。
 
 ```json
 "eventHubNamespaceName":{  
@@ -75,7 +71,7 @@ Azure リソース マネージャーを使用して、テンプレートのデ�
 
 ### <a name="eventhubname"></a>eventHubName
 
-[Event Hubs 名前空間](event-hubs-create.md)に作成するイベント ハブの名前。
+Event Hubs 名前空間に作成するイベント ハブの名前。
 
 ```json
 "eventHubName":{  
@@ -423,7 +419,7 @@ azure config mode arm
 azure group deployment create \<my-resource-group\> \<my-deployment-name\> --template-uri [https://raw.githubusercontent.com/azure/azure-quickstart-templates/master/201-eventhubs-create-namespace-and-enable-capture-for-adls/azuredeploy.json][]
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Portal](https://portal.azure.com) を使用して Event Hubs Capture を構成することもできます。 詳細については、「[Azure Portal を使用して Event Hubs Capture を有効にする](event-hubs-capture-enable-through-portal.md)」を参照してください。
 

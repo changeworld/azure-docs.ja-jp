@@ -72,23 +72,23 @@ ms.lasthandoff: 12/08/2017
 
 1. Jenkins アカウントを開き、**[Jenkins の管理]** を選択します。
 2. **[Jenkins の管理]** ページで、**[プラグインの管理]** を選択します。
-3. 一覧を絞り込んで **[NodeJS]** プラグインを探し、**[Install without restart](再起動せずにインストール)** オプションを選択します。
+3. 一覧を絞り込んで **[NodeJS]** プラグインを探し、**[Install without restart] \(再起動せずにインストール)** オプションを選択します。
     ![NodeJS プラグインを Jenkins に追加する](media/tutorial-build-deploy-jenkins/jenkins-nodejs-plugin.png)
-4. 一覧を絞り込んで **VS Team Services Continuous Deployment** プラグインを探し、**Install without restart(再起動せずにインストール)** オプションを選択します。
+4. 一覧を絞り込んで **VS Team Services Continuous Deployment** プラグインを探し、**Install without restart \(再起動せずにインストール)** オプションを選択します。
 5. Jenkins ダッシュボードに戻り、**[Jenkins の管理]** を選択します。
-6. **[Global Tool Configuration](ツールのグローバル構成)** を選択します。 **[NodeJS]** を検索して **[NodeJS installations](NodeJS のインストール)** を選択します。
-7. **[Install automatically](自動的にインストールする)** オプションを選択して、**[名前]** の値を入力します。
+6. **[Global Tool Configuration] \(ツールのグローバル構成)** を選択します。 **[NodeJS]** を検索して **[NodeJS installations] \(NodeJS のインストール)** を選択します。
+7. **[Install automatically] \(自動的にインストールする)** オプションを選択して、**[名前]** の値を入力します。
 8. **[保存]** を選択します。
 
 ## <a name="configure-a-jenkins-freestyle-project-for-nodejs"></a>Node.js の Jenkins フリースタイル プロジェクトを構成する
 
 1. **[New Item (新しい項目)]** を選択します。 項目名を入力します。
-2. **[Freestyle project](フリースタイル プロジェクト)** を選択します。 **[OK]**を選択します。
-3. **[Source Code Management](ソース コードの管理)** タブで **[Git]** を選択し、アプリ コードを保存するリポジトリとブランチの詳細情報を入力します。    
+2. **[Freestyle project] \(フリースタイル プロジェクト)** を選択します。 **[OK]**を選択します。
+3. **[Source Code Management] \(ソース コードの管理)** タブで **[Git]** を選択し、アプリ コードを保存するリポジトリとブランチの詳細情報を入力します。    
     ![ビルドにリポジトリを追加する](media/tutorial-build-deploy-jenkins/jenkins-git.png)
-4. **[Build Triggers](ビルド トリガー)** タブで **[Poll SCM](SCM のポーリング)** を選択し、スケジュール「`H/03 * * * *`」を入力して Git リポジトリの変更を 3 分間隔でポーリングします。 
-5. **[Build Environment](ビルド環境)** タブで **[Provide Node &amp; npm bin/ folder PATH](Node と npm bin/ フォルダーのパスを入力)** を選択し、**[NodeJS Installation](Node JS のインストール)** の値を選択します。 **[npmrc file](npmrc ファイル)** は **[use system default](システムの既定値を使用する)** のままにします。
-6. **[ビルド]** タブで **[Execute shell](シェルの実行)** を選択して `npm install` コマンドを入力し、すべての依存関係が更新されるようにします。
+4. **[Build Triggers] \(ビルド トリガー)** タブで **[Poll SCM] \(SCM のポーリング)** を選択し、スケジュール「`H/03 * * * *`」を入力して Git リポジトリの変更を 3 分間隔でポーリングします。 
+5. **[Build Environment] \(ビルド環境)** タブで **[Provide Node &amp; npm bin/ folder PATH] \(Node と npm bin/ フォルダーのパスを入力)** を選択し、**[NodeJS Installation] \(Node JS のインストール)** の値を選択します。 **[npmrc file] \(npmrc ファイル)** は **[use system default] \(システムの既定値を使用する)** のままにします。
+6. **[ビルド]** タブで **[Execute shell] \(シェルの実行)** を選択して `npm install` コマンドを入力し、すべての依存関係が更新されるようにします。
 
 
 ## <a name="configure-jenkins-for-team-services-integration"></a>Team Services との統合のために Jenkins を構成する
@@ -99,10 +99,10 @@ ms.lasthandoff: 12/08/2017
 1.  Team Services アカウントに PAT を作成します (まだお持ちでない場合)。 Jenkins から Team Services アカウントにアクセスするには、この情報が必要です。 必ず、このセクションの以降の手順で必要なトークンの情報を保存します。
   
     トークンの生成方法については、[VSTS と TFS 用の個人用アクセス トークンを作成する方法](https://www.visualstudio.com/docs/setup-admin/team-services/use-personal-access-tokens-to-authenticate)に関するページをご覧ください。
-2. **[Post-build Actions](ビルド後のアクション)** タブで **[Add post-build action](ビルド後のアクションを追加する)** を選択します。 **[Archive the artifacts](成果物のアーカイブ)** を選択します。
+2. **[Post-build Actions] \(ビルド後のアクション)** タブで **[Add post-build action] \(ビルド後のアクションを追加する)** を選択します。 **[Archive the artifacts] \(成果物のアーカイブ)** を選択します。
 3. **[Files to archive]\(アーカイブするファイル\)** に `**/*` と入力してすべてのファイルが含まれるようにします。
-4. 別のアクションを作成するには **[Add post-build action](ビルド後のアクションを追加する)** をクリックします。
-5. **[Trigger release in TFS/Team Services](TFS/Team Services でリリースをトリガーする)** を選択します。 **https://{your-account-name}.visualstudio.com** など、Team Services のアカウントの URI を入力します。
+4. 別のアクションを作成するには **[Add post-build action] \(ビルド後のアクションを追加する)** をクリックします。
+5. **[Trigger release in TFS/Team Services] \(TFS/Team Services でリリースをトリガーする)** を選択します。 **https://{your-account-name}.visualstudio.com** など、Team Services のアカウントの URI を入力します。
 6. **[チーム プロジェクト]** 名を入力します。
 7. リリース定義の名前を選択します。 (Team Services で後からこのリリース定義を作成します)。
 8. Team Services や Team Foundation Server 環境に接続するための資格情報を選択します。
@@ -131,7 +131,7 @@ ms.lasthandoff: 12/08/2017
    > [!NOTE]
    > 次の手順では前提条件となるものをインストールしますが、*スクリプトは sudo 権限で実行しない*ようにします。
 
-1. **[ビルドと&amp;リリース]** ハブの **[リリース]** タブを開き、**[Deployment groups](デプロイ グループ)** を開いて **[+ 新規]** を選択します。
+1. **[ビルドと&amp;リリース]** ハブの **[リリース]** タブを開き、**[Deployment groups] \(デプロイ グループ)** を開いて **[+ 新規]** を選択します。
 2. 配置グループの名前と、説明 (省略可能) を入力します。 **[作成]** を選択します。
 3. デプロイ ターゲットの仮想マシンのオペレーティング システムを選択します。 たとえば、**[Ubuntu 16.04+]** を選択します。
 4. **[認証用にスクリプト内の個人用アクセス トークンを使用する]** を選択します。
@@ -139,7 +139,7 @@ ms.lasthandoff: 12/08/2017
 6. **[スクリプトをクリップボードにコピー]** を選択してスクリプトをコピーします。
 7. デプロイ ターゲットの仮想マシンにログインして、スクリプトを実行します。 スクリプトは sudo 権限で実行しないでください。
 8. インストール後、デプロイ グループのタグを求められます。 既定値を受け入れます。
-9. Team Services の **[Deployment Groups](デプロイ グループ)** の **[ターゲット]** で、新たに登録された仮想マシンを確認します。
+9. Team Services の **[Deployment Groups] \(デプロイ グループ)** の **[ターゲット]** で、新たに登録された仮想マシンを確認します。
 
 ## <a name="create-a-team-services-release-definition"></a>Team Services リリース定義を作成する
 
@@ -150,14 +150,14 @@ Team Services でリリース定義を作成するには:
 1. **[ビルドと&amp;リリース]** ハブの **[リリース]** タブを開いて、**[リリース定義の作成]** を選択します。 
 2. **[空のプロセス]** で開始することを選択して **[空]** のテンプレートを選択します。
 3. **[成果物]** セクションで**[+ 成果物の追加]** を選択し、**[ソースの種類]** に **[Jenkins]** を選択します。 Jenkins サービス エンドポイントの接続を選択します。 Jenkins ソース ジョブを選択し、**[追加]** を選択します。
-4. **[環境 1]** の横にある省略記号を選択します。 **[Add deployment group phase](デプロイ グループ フェーズを追加)** をクリックします。
+4. **[環境 1]** の横にある省略記号を選択します。 **[Add deployment group phase] \(デプロイ グループ フェーズを追加)** をクリックします。
 5. ご利用のデプロイ グループを選択します。
-5. **[+]** を選択して **[Deployment group phase](デプロイ グループ フェーズ)** にタスクを追加します。
+5. **[+]** を選択して **[Deployment group phase] \(デプロイ グループ フェーズ)** にタスクを追加します。
 6. **[シェル スクリプト]** タスクを選択して **[追加]** を選択します。 **[シェル スクリプト]** タスクは、Node.js をインストールし、アプリを起動するために各サーバーで実行されるスクリプトの構成を指定します。
 8. **[スクリプト パス]** については、**$(System.DefaultWorkingDirectory)/Fabrikam-Node/deployscript.sh** を入力します。
 9. **[詳細]** を選択して、**[作業ディレクトリを指定する]** を有効にします。
 10. **[作業ディレクトリ]** については、**$(System.DefaultWorkingDirectory)/Fabrikam-Node** を入力します。
-11. リリース定義の名前を、Jenkins のビルドの **[Post-build Actions](ビルド後のアクション)** タブで指定した名前に変更します。 ソース アーティファクトが更新されたときに、Jenkins から新しいリリースをトリガーするには、この名前を指定する必要があります。
+11. リリース定義の名前を、Jenkins のビルドの **[Post-build Actions] \(ビルド後のアクション)** タブで指定した名前に変更します。 ソース アーティファクトが更新されたときに、Jenkins から新しいリリースをトリガーするには、この名前を指定する必要があります。
 12. **[保存]** を選択し、**[OK]** を選択してリリース定義を保存します。
 
 ## <a name="execute-manual-and-ci-triggered-deployments"></a>手動デプロイおよび CI によってトリガーされるデプロイを実行する

@@ -1,6 +1,6 @@
 ---
-title: "OMS での管理ソリューションの構築 | Microsoft Docs"
-description: "管理ソリューションは、お客様の OMS ワークスペースに追加できるパッケージの管理シナリオを提供することで、 Operations Management Suite (OMS) の機能を拡張します。  この記事では、管理ソリューションを作成してお使いの環境で使用したり顧客に提供したりする方法について、詳しく説明します。"
+title: "Azure での管理ソリューションのビルド | Microsoft Docs"
+description: "管理ソリューションには、Azure のパッケージ化された管理シナリオが含まれており、お客様はそれを Log Analytics ワークスペースに追加できます。  この記事では、管理ソリューションを作成してお使いの環境で使用したり顧客に提供したりする方法について、詳しく説明します。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -15,21 +15,21 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a17c73393ecbdff693e9b200d1506887e0f1d71e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 0f5d42292c8e885491aed55ada129f05cb3bcd35
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="design-and-build-a-management-solution-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューションの設計と構築 (プレビュー)
+# <a name="design-and-build-a-management-solution-in-azure-preview"></a>Azure での管理ソリューションの設計とビルド (プレビュー)
 > [!NOTE]
-> 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。
+> 本記事は、現在プレビュー段階である Azure の管理ソリューションの作成に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。
 
-[管理ソリューション](operations-management-suite-solutions.md)は、お客様の OMS ワークスペースに追加できるパッケージの管理シナリオを提供することで、Operations Management Suite (OMS) の機能を拡張します。  この記事では、最も一般的な要件に適した管理ソリューションを設計および構築する基本的な手順について説明します。  管理ソリューションを初めて構築する場合は、このプロセスを出発点として使用し、要件の変化に応じてより複雑なソリューションの概念を活用できます。
+[管理ソリューション](operations-management-suite-solutions.md)はパッケージ化された管理シナリオを提供します。お客様はそれらを Log Analytics ワークスペースに追加できます。  この記事では、最も一般的な要件に適した管理ソリューションを設計および構築する基本的な手順について説明します。  管理ソリューションを初めて構築する場合は、このプロセスを出発点として使用し、要件の変化に応じてより複雑なソリューションの概念を活用できます。
 
 ## <a name="what-is-a-management-solution"></a>管理ソリューションとは
 
-管理ソリューションには OMS と Azure のリソースが含まれており、それらが連携することで特定の監視シナリオを実現します。  管理ソリューションは、[リソース管理テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
+管理ソリューションには、連携して特定の管理シナリオを実現する Azure のリソースが含まれています。  管理ソリューションは、[リソース管理テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されます。テンプレートには、ソリューションがインストールされたときに、含まれているリソースをインストールして構成する方法の詳細が含まれています。
 
 管理ソリューションの構築は、基本的には、Azure 環境内で個々のコンポーネントを作成することから開始します。  正常に機能したら、それらのコンポーネントを[管理ソリューション ファイル](operations-management-suite-solutions-solution-file.md)にパッケージ化できます。 
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/18/2017
 ## <a name="design-your-solution"></a>ソリューションの設計
 管理ソリューションの最も一般的なパターンを次の図に示します。  このパターンのさまざまなコンポーネントについては、以下で説明します。
 
-![OMS ソリューションの概要](media/operations-management-suite-solutions-creating/solution-overview.png)
+![管理ソリューションの概要](media/operations-management-suite-solutions-creating/solution-overview.png)
 
 
 ### <a name="data-sources"></a>データ ソース

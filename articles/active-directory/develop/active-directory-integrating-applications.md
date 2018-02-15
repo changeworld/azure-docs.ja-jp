@@ -15,11 +15,11 @@ ms.date: 10/04/2017
 ms.author: bryanla
 ms.custom: aaddev
 ms.reviewer: luleon
-ms.openlocfilehash: e398536ff6f660c75e4e063040eab33a831d65c6
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f08e7327e266c342fe7f869f0b7a6a251792a071
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="integrating-applications-with-azure-active-directory"></a>Azure Active Directory とアプリケーションの統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -309,7 +309,7 @@ Web アプリケーションによって、以下が提供される場合もあ�
 ### <a name="removing-a-multi-tenant-application-authorized-by-another-organization"></a>別の組織によって承認されたマルチテナント アプリケーションの削除
 テナントの "アプリの登録" メイン ページで、"すべてのアプリ" フィルター ("マイアプリ" 登録を除く) の下に表示されているアプリケーション サブセットが、マルチテナント アプリケーションです。 技術的には、このマルチテナント アプリケーションは他のテナントにあり、同意プロセス中にテナントに登録されました。 具体的には、テナント内ではサービス プリンシパル オブジェクトのみによって表されます。対応するアプリケーション オブジェクトはありません。 アプリケーション オブジェクトとサービス プリンシパル オブジェクトの違いの詳細については、[Azure AD のアプリケーション オブジェクトとサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページをご覧ください。
 
-(同意後に) ディレクトリへのマルチテナント アプリケーションのアクセス権を削除するには、会社の管理者がそのサービス プリンシパルを削除する必要があります。 管理者には全体管理者アクセス権が必要で、Azure Portal または [Azure AD PowerShell コマンドレット](http://go.microsoft.com/fwlink/?LinkId=294151)を使用して、アクセス権を削除できます。
+(同意後に) ディレクトリへのマルチテナント アプリケーションのアクセス権を削除するには、会社の管理者がそのサービス プリンシパルを削除する必要があります。 管理者には全体管理者アクセス権が必要で、Azure Portal を使用して削除できます。または [Azure AD PowerShell コマンドレット](http://go.microsoft.com/fwlink/?LinkId=294151)を使用して、アクセス権を削除できます。
 
 ## <a name="next-steps"></a>次の手順
 - Azure AD での認証のしくみの詳細については、「[Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。

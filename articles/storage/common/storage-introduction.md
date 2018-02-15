@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 9af4bfd5b5ae46a856b25a94cdbe55e098ea940e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 088a58bf5bfe3736a158d2384c69cb5928b53556
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
 
@@ -131,21 +131,21 @@ Blob service を通じて、コンテナーとその BLOB (または特定の BL
 
 ## <a name="encryption"></a>暗号化
 
-ストレージ サービスには、いくつか基本的な種類の暗号化を使用できます。
+Storage サービスには、2 種類の基本的な暗号化を使用できます。 セキュリティと暗号化の詳細については、「[Azure Storage セキュリティ ガイド](storage-security-guide.md)」を参照してください。
 
 ### <a name="encryption-at-rest"></a>保存時の暗号化
 
-Storage サービスの暗号化 (SSE) は、Azure Storage アカウントの Files サービス (プレビュー) と Blob service のどちらでも有効にすることができます。 有効にした場合、特定のサービスに書き込まれるすべてのデータは、書き込みの前に暗号化されます。 データを読み取るときは、暗号化が解除されてからデータが返されます。
+保存時の Azure Storage Service Encryption (SSE) は、データを保護して安全性を確保し、組織のセキュリティとコンプライアンスの要件を満たすお手伝いをします。 この機能を使用すると、Azure Storage はストレージに保存する前にデータを自動的に暗号化し、取得する前に復号化します。 暗号化、復号化、キーの管理は、ユーザーにはまったく意識されずに行われます。
+
+BLOB ストレージまたは Azure Files (プレビュー) に対しては、ストレージ サービスの暗号化 (SSE) を有効にすることができます。 有効にした場合、特定のサービスに書き込まれるすべてのデータは、書き込みの前に暗号化されます。 データを読み取るときは、暗号化が解除されてからデータが返されます。
+
+保存時の SSE 暗号化の詳細については、「[Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)」を参照してください。
 
 ### <a name="client-side-encryption"></a>クライアント側暗号化
 
 ストレージ クライアント ライブラリのメソッドを呼び出すことで、プログラムによってデータを暗号化したうえで、クライアントからネットワーク経由で Azure に送信することができます。 データは暗号化された状態で保存されます。つまり、保存状態でも暗号化されます。 データを再度読み取るときは、その情報を受信した後で暗号化を解除することになります。
 
-### <a name="encryption-in-transit-with-azure-file-shares"></a>Azure ファイル共有を使った転送中の暗号化
-
-Shared Access Signature の詳細については、「 [Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](../storage-dotnet-shared-access-signature-part-1.md) 」を参照してください。 ストレージ アカウントへのセキュリティで保護されたアクセスの詳細については、「[コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)」および「[Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)」を参照してください。
-
-ストレージ アカウントのセキュリティ保護と暗号化の詳細については、「[Azure Storage security guide (Azure Storage セキュリティ ガイド)](storage-security-guide.md)」を参照してください。
+クライアント側の暗号化の詳細については、[.NET による Microsoft Azure Storage のクライアント側の暗号化](storage-client-side-encryption.md)に関するページを参照してください。
 
 ## <a name="replication"></a>レプリケーション
 
@@ -157,9 +157,9 @@ Azure Storage は、データの持続性を確保するために、データの
 
 **ゾーン冗長ストレージ (ZRS) (プレビュー)**
 
-ゾーン冗長ストレージ (ZRS) は、高可用性アプリケーションの開発を簡略化できるように設計されています。 ZRS は、ストレージ オブジェクトに年間 99.9999999999% (トゥエルブ ナイン) 以上の持続性を実現します。 ZRS では、複数の可用性ゾーンの間でデータが同期的にレプリケートされます。 ダウンタイムの発生が許容されないようなトランザクション用アプリケーションのシナリオでは、ZRS を検討してください。 ZRS なら、ゾーンが 1 箇所利用できなくなったり、回復できなくなったりした場合でも、お客様がデータを読み書きすることができます。 データの挿入や更新を同期的に実行できるため、その一貫性が強固に保たれます。    
+ゾーン冗長ストレージ (ZRS) は、高可用性アプリケーションの開発を簡略化できるように設計されています。 ZRS は、ストレージ オブジェクトに年間 99.9999999999% (トゥエルブ ナイン) 以上の持続性を実現します。 ZRS では、複数の可用性ゾーンの間でデータが同期的にレプリケートされます。 ダウンタイムの発生が許容されないトランザクション用アプリケーションのようなシナリオでは、ZRS をご検討ください。 ZRS なら、ゾーンが 1 か所利用できなくなったり回復できなくなったりした場合でも、お客様はデータを読み書きすることができます。 データの挿入や更新を同期的に実行できるため、その一貫性が強固に保たれます。    
 
-以前の ZRS 機能は現在、ZRS クラシックと呼ばれています。 ZRS クラシック アカウントが利用できるのは、汎用 V1 ストレージ アカウントのブロック BLOB に限られるのでご注意ください。 ZRS クラシックでは、1 つから 2 つのリージョン内の複数のデータセンターにデータが非同期的にレプリケートされます。 Microsoft がセカンダリへのフェールオーバーを開始していないと、レプリカが利用できないことがあります。 ZRS クラシック アカウントを LRS または GRS のアカウントに変換したり、逆に LRS または GRS のアカウントを ZRS クラシック アカウントに変換したりすることはできません。また、ZRS クラシック アカウントにはメトリック機能やログ機能はありません。
+以前の ZRS 機能は現在、ZRS クラシックと呼ばれています。 ZRS クラシック アカウントが利用できるのは、汎用 V1 ストレージ アカウントのブロック BLOB に限られるのでご注意ください。 ZRS クラシックでは、1 つから 2 つのリージョン内の複数のデータセンターに、データが非同期的にレプリケートされます。 Microsoft がセカンダリへのフェールオーバーを開始していないと、レプリカが利用できないことがあります。 ZRS クラシック アカウントを LRS または GRS のアカウントに変換したり、逆に LRS または GRS のアカウントを ZRS クラシック アカウントに変換したりすることはできません。また、ZRS クラシック アカウントにはメトリック機能やログ機能はありません。
 
 **geo 冗長ストレージ (GRS)**
 

@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/05/2017
+ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7d500d20dcce3e472e3e1e15b9ce307874caf22a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 3f8b5e8b8af4be85e830bde8eb0587c632a9dd1f
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -53,7 +53,10 @@ ms.lasthandoff: 01/22/2018
   az account show --subscription <your-destination-subscription> --query tenantId
   ```
 
-  移動元と移動先のサブスクリプションのテナント ID が同じでない場合、新しいテナントにリソースを移動するには、[サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)に問い合わせる必要があります。
+  移動元と移動先のサブスクリプションのテナント ID が同じでない場合、次の方法でテナント ID を調整する必要があります。 
+
+  * [Azure サブスクリプションの所有権を別のアカウントに譲渡する](../billing/billing-subscription-transfer.md)
+  * [Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法](../active-directory/active-directory-how-subscriptions-associated-directory.md)
 
 2. サービスでリソースの移動機能を有効にする必要があります。 この記事で、リソースの移動を有効にするサービスと、リソースの移動を有効にしないサービスを示します。
 3. 移動するリソースのリソース プロバイダーについて、移動先のサブスクリプションに登録する必要があります。 登録しないと、 **リソースの種類についてサブスクリプションへの登録が行われていない**ことを示すエラーが発生します。 この問題は、リソースを新しいサブスクリプションに移動するが、そのサブスクリプションがそのリソースの種類で使用されたことがない場合に発生する可能性があります。
@@ -93,7 +96,7 @@ ms.lasthandoff: 01/22/2018
 
 次の操作を実行する必要がある場合は、[サポート](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)にお問い合わせください。
 
-* リソースを新しい Azure アカウント (および Azure Active Directory テナント) に移動する。
+* リソースを新しい Azure アカウント (および Azure Active Directory テナント) に移動するにあたり、前出のセクションの手順に関して支援が必要。
 * クラシック リソースを移動するときに制限事項に関連する問題が発生した。
 
 ## <a name="services-that-enable-move"></a>移動が可能なサービス
@@ -131,7 +134,7 @@ ms.lasthandoff: 01/22/2018
 * Power BI
 * Redis Cache
 * Scheduler
-* 検索
+* Search
 * Server Management
 * Service Bus
 * Service Fabric
@@ -187,43 +190,29 @@ Marketplace のリソースから作成された仮想マシンは、サブス�
 
 ## <a name="app-service-limitations"></a>App Service の制限事項
 
-App Service アプリを使用している場合、App Service プランのみを移動することはできません。 App Service アプリを移動するには、次のオプションがあります。
+App Service のリソースを移動することに関しての制限事項は、リソースをサブスクリプション内で移動するか、新しいサブスクリプションに移動するかによって異なります。
 
-* App Service プランとそのリソース グループ内の他のすべての App Service リソースを、まだ App Service リソースが含まれていない新しいリソース グループに移動する。 この要件により、App Service プランに関連付けられていない App Service リソースも移動する必要があります。
-* アプリを別のリソース グループに移動し、元のリソース グループにも App Service プランをすべて保持する。
+### <a name="moving-within-the-same-subscription"></a>同じサブスクリプション内で移動する場合
 
-アプリが正常に動作するために、App Service プランがそのアプリと同じリソース グループ内に存在する必要はありません。
+Web アプリを_同じサブスクリプション内_で移動する場合には、アップロードした SSL 証明書は移動できません。 ただし、アップロードした SSL 証明書を移動せずに Web アプリを新しいリソース グループに移動することはできます。その場合でも、アプリの SSL 機能は引き続き機能します。 
 
-たとえば、リソース グループに次のものが含まれているとします。
+SSL 証明書を Web アプリと共に移動したい場合は、次の手順に従います。
 
-* **plan-a** に関連付けられた **web-a**
-* **plan-b** に関連付けられた **web-b**
+1.  アップロードした証明書を Web アプリから削除します。
+2.  Web アプリを移動します。
+3.  移動した Web アプリに証明書をアップロードします。
 
-オプションは次のとおりです。
+### <a name="moving-across-subscriptions"></a>サブスクリプション間で移動する場合
 
-* **web-a**、**plan-a**、**web-b**、**plan-b** を移動する
-* **web-a** と **web-b** を移動する
-* **web-a**
-* **web-b**
+Web App を_サブスクリプション間_で移動する場合には、次の制限事項が適用されます。
 
-これ以外の組み合わせでは、App Service プランの移動時に、残しておくことができないリソースの種類 (すべての種類の App Service リソース) が残されます。
-
-Web アプリがその App Service プランとは異なるリソース グループに存在するが、その両方を新しいリソース グループに移動する場合、移動を 2 段階で行う必要があります。 例: 
-
-* **web-group** に存在する **web-a**
-* **plan-group** に存在する **plan-a**
-* **web-a** と **plan-a** を **combined-group** に配置しようとしている
-
-この移動を実行するには、次の順序で 2 つの移動操作を個別に実行します。
-
-1. **web-a** を **plan-group** に移動します
-2. **web-a** と **plan-a** を **combined-group** に移動します
-
-App Service 証明書は、新しいリソース グループまたはサブスクリプションに問題なく移動できます。 ただし、お使いのアプリに、外部から購入してアップロードした SSL 証明書が含まれている場合は、Web アプリを移動する前に証明書を削除する必要があります。 たとえば、次の手順を実行できます。
-
-1. アップロードした証明書を Web アプリから削除します
-2. Web アプリを移動します
-3. Web アプリに証明書をアップロードします
+- 移動先のリソース グループに既存の App Service リソースが含まれていてはいけません。 App Service リソースには次のものがあります。
+    - Web Apps
+    - App Service プラン
+    - アップロードまたはインポートした SSL 証明書
+    - App Service Environment
+- リソース グループ内のすべての App Service リソースを一緒に移動する必要があります。
+- App Service リソースは、最初に作成されたときのリソース グループからのみ移動できます。 App Service リソースが元のリソース グループから移動されている場合は、まず元のリソース グループに戻してから、サブスクリプション間の移動を行うことができます。 
 
 ## <a name="classic-deployment-limitations"></a>クラシック デプロイメントの制限事項
 
@@ -319,7 +308,7 @@ Azure Site Recovery では、ディザスター リカバリーの設定に使�
  1. バックアップを一時的に停止し、バックアップ データを保持します
  2. VM をターゲット リソース グループに移動します
  3. 同じコンテナーまたは新しいコンテナーで VM を再び保護します。ユーザーは、移動操作の前に作成された使用可能な復元ポイントから復元できます。
-バックアップした VM をサブスクリプション間で移動する場合、手順 1 と手順 2 は同じです。 手順 3 では、ターゲット サブスクリプションに存在する、または作成した新しいコンテナーで、VM を保護する必要があります。Recovery Services では、異なるサブスクリプション間のバックアップはサポートされていません。
+バックアップした VM をサブスクリプション間で移動する場合、手順 1 と手順 2 は同じです。 手順 3 では、ターゲット サブスクリプションに存在する、または作成した新しいコンテナーで、VM を保護する必要があります。 Recovery Services では、異なるサブスクリプション間のバックアップはサポートされていません。
 
 ## <a name="hdinsight-limitations"></a>HDInsight の制限事項
 

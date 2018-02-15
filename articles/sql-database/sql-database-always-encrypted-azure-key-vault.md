@@ -5,8 +5,7 @@ keywords: "データの暗号化, 暗号化キー, クラウドの暗号化"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: cgronlun
+manager: craigg
 ms.assetid: 6ca16644-5969-497b-a413-d28c3b835c9b
 ms.service: sql-database
 ms.custom: security
@@ -16,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: 4fb189abfaddcf27c8af223773ab0e5fc9dfca14
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 0f26ce26b8b33274291c115ae136d124d79ed349
+ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 01/25/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
 
@@ -48,30 +47,18 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 * [Azure PowerShell](/powershell/azure/overview)バージョン 1.0 以降。 「 **(Get-Module azure -ListAvailable).Version** 」 と入力し、実行している PowerShell のバージョンを確認します。
 
 ## <a name="enable-your-client-application-to-access-the-sql-database-service"></a>クライアント アプリケーションから SQL Database サービスにアクセスできるようにする
-必要な認証を設定し、以下のコードでアプリケーションを認証するために使用する *ClientId* と *Secret* を取得して、クライアント アプリケーションから SQL Database サービスにアクセスできるようにする必要があります。
+Azure Active Directory (AAD) アプリケーションを設定し、アプリケーションを認証するために必要な "*アプリケーション ID*" と "*キー*" をコピーして、クライアント アプリケーションから SQL Database サービスにアクセスできるようにする必要があります。
 
-1. [Azure クラシック ポータル](http://manage.windowsazure.com)を開きます。
-2. **Active Directory** を選択し、アプリケーションで使用する Active Directory インスタンスをクリックします。
-3. **[アプリケーション]** をクリックし、**[追加]** をクリックします。
-4. アプリケーション名 ( *myClientApp*など) を入力して **[WEB アプリケーション]**を選択し、矢印をクリックして続行します。
-5. **[サインオン URL]** と **[アプリケーション ID/URI]** には、有効な URL (*http://myClientApp* など) を入力し、続行できます。
-6. **[構成]**をクリックします。
-7. **クライアント ID**をコピーします。 (この値は、後でコードで必要になります)。
-8. **[キー]** セクションの **[時間の選択]** ドロップダウン リストで **[1 年間]** を選択します (手順 13 で保存した後、キーをコピーします)。
-9. スクロール ダウンし、 **[アプリケーションの追加]**をクリックします。
-10. **[表示]** を **[Microsoft アプリ]** の設定のままにし、**[Microsoft Azure Service Management API]** を選択します。 チェックマークをクリックして続行します。
-11. **[デリゲートされたアクセス許可]** ドロップダウン リストから、**[Azure Service 管理へのアクセス]** を選択します。
-12. **[保存]**をクリックします。
-13. 保存の完了後、**[キー]** セクションのキー値をコピーします (この値は、後でコードで必要になります)。
+"*アプリケーション ID*" と "*キー*" を取得するには、[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページの手順に従ってください。
 
 ## <a name="create-a-key-vault-to-store-your-keys"></a>キーを格納する Key Vault を作成する
-これで、クライアント アプリの構成が完了したので、クライアント ID の Key Vault を作成し、ユーザーおよびアプリケーションが資格情報コンテナーの機密情報 (Always Encrypted キー) にアクセスすることを許可するアクセス ポリシーを構成できます。 新しい列のマスター キーを作成したり、SQL Server Management Studio で暗号化を設定したりするには、*create**get**list**sign**verify**wrapKey*、および *unwrapKey* 権限が必要です。
+これで、クライアント アプリの構成が完了したので、アプリケーション ID の Key Vault を作成し、ユーザーおよびアプリケーションが資格情報コンテナーの機密情報 (Always Encrypted キー) にアクセスすることを許可するアクセス ポリシーを構成できます。 新しい列のマスター キーを作成したり、SQL Server Management Studio で暗号化を設定したりするには、*create**get**list**sign**verify**wrapKey*、および *unwrapKey* 権限が必要です。
 
 次のスクリプトを実行して、Key Vault をすばやく作成できます。 これらのコマンドレットの詳細、および Key Vault の作成と構成の詳細については、「[Azure Key Vault の概要](../key-vault/key-vault-get-started.md)」をご覧ください。
 
     $subscriptionName = '<your Azure subscription name>'
     $userPrincipalName = '<username@domain.com>'
-    $clientId = '<client ID that you copied in step 7 above>'
+    $applicationId = '<application ID from your AAD application>'
     $resourceGroupName = '<resource group name>'
     $location = '<datacenter location>'
     $vaultName = 'AeKeyVault'
@@ -85,13 +72,13 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
     New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $resourceGroupName -Location $location
 
     Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -ResourceGroupName $resourceGroupName -PermissionsToKeys create,get,wrapKey,unwrapKey,sign,verify,list -UserPrincipalName $userPrincipalName
-    Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $clientId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
+    Set-AzureRmKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceGroupName -ServicePrincipalName $applicationId -PermissionsToKeys get,wrapKey,unwrapKey,sign,verify,list
 
 
 
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. **[新規]** > **[データ + ストレージ]** > **[SQL Database]** の順に移動します。
 3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started-portal.md)」を参照してください。
    
@@ -169,10 +156,10 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 ### <a name="validation"></a>検証
 列の暗号化はすぐに実行することも、PowerShell スクリプトを保存して後から実行することもできます。 このチュートリアルでは、**[今すぐ続行して完了]** を選択して **[次へ]** をクリックします。
 
-### <a name="summary"></a>概要
+### <a name="summary"></a>まとめ
 設定がすべて正しいことを確認し、 **[完了]** をクリックすれば、Always Encrypted の設定は完了です。
 
-![[概要]](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
+![まとめ](./media/sql-database-always-encrypted-azure-key-vault/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>ウィザードのアクションの確認
 ウィザードが完了すると、データベースに Always Encrypted が設定されています。 ウィザードでは、次の操作が実行されました。
@@ -233,7 +220,7 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
 
     static void InitializeAzureKeyVaultProvider()
     {
-       _clientCredential = new ClientCredential(clientId, clientSecret);
+       _clientCredential = new ClientCredential(applicationId, clientKey);
 
        SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
           new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
@@ -275,8 +262,8 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
     {
         // Update this line with your Clinic database connection string from the Azure portal.
         static string connectionString = @"<connection string from the portal>";
-        static string clientId = @"<client id from step 7 above>";
-        static string clientSecret = "<key from step 13 above>";
+        static string applicationId = @"<application ID from your AAD application>";
+        static string clientKey = "<key from your AAD application>";
 
 
         static void Main(string[] args)
@@ -399,7 +386,7 @@ Always Encrypted を有効にするには、接続文字列に **Column Encrypti
         static void InitializeAzureKeyVaultProvider()
         {
 
-            _clientCredential = new ClientCredential(clientId, clientSecret);
+            _clientCredential = new ClientCredential(applicationId, clientKey);
 
             SqlColumnEncryptionAzureKeyVaultProvider azureKeyVaultProvider =
               new SqlColumnEncryptionAzureKeyVaultProvider(GetToken);
@@ -628,7 +615,7 @@ SSMS を使用してプレーンテキスト データにアクセスするに�
     ![新しいコンソール アプリケーション](./media/sql-database-always-encrypted-azure-key-vault/ssms-plaintext.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Always Encrypted を使用するデータベースを作成したら、次の操作を試してみてください。
 
 * [キーのローテーションとクリーンアップを行う](https://msdn.microsoft.com/library/mt607048.aspx)。

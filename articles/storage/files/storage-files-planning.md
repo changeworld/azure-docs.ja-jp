@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: c28f341fb64271e2173cd377fa06c567e0e054a6
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 590bc459a71b8691741f7f33d2d70b0ba4474591
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Azure Files のデプロイの計画
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Files は完全に管理されているため、運用環境へのデプロイは、ファイル サーバーまたは NAS デバイスをデプロイして管理するよりはるかに簡単です。 この記事では、組織内で運用するために Azure ファイル共有をデプロイするときの考慮事項を説明します。
@@ -64,7 +64,7 @@ Azure Files には、データのセキュリティを確保するための複�
     * SMB 3.0 をサポートしていないクライアントは、暗号化を行わない SMB 2.1 または SMB 3.0 経由でデータ センター内の通信を行うことができます。 クライアントは暗号化なしで SMB 2.1 または SMB 3.0 を使ってデータ センター間通信をできないことに注意してください。
     * クライアントは、HTTP または HTTPS を使ってファイル REST 経由で通信できます。
 * 保存時の暗号化 ([Azure Storage Service Encryption](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)): 現在、基盤の Azure Storage プラットフォームで Storage Service Encryption (SSE) を有効にするプロセスを進めています。 これは、すべてのストレージ アカウントに対して既定で暗号化が有効になることを意味します。 既定で保存時に暗号化されるリージョンで新しいストレージ アカウントを作成する場合、有効にするために何もする必要はありません。 保存時のデータは完全に管理されたキーで暗号化されます。 保存データの暗号化では、ストレージ コストの増加やパフォーマンスの低下はありません。 
-* オプションの転送中のデータの暗号化要件: 選択すると、Azure Files は暗号化されていないチャネルでのデータへのアクセスを許可しません。 具体的には、暗号化接続を使う HTTPS と SMB 3.0 だけが許可されます。 
+* オプションの転送中のデータの暗号化要件: 選択すると、Azure Files は暗号化されていないチャネル経由でのデータへのアクセスが拒否されます。 具体的には、暗号化接続を使う HTTPS と SMB 3.0 だけが許可されます。 
 
     > [!Important]  
     > データのセキュリティで保護された転送を要求すると、暗号化ありで SMB 3.0 と通信する機能のない古い SMB クライアントは失敗します。 詳しくは、[Windows でのマウント](storage-how-to-use-files-windows.md)、[Linux でのマウント](storage-how-to-use-files-linux.md)、[macOS でのマウント](storage-how-to-use-files-mac.md)に関するページをご覧ください。
@@ -74,10 +74,13 @@ Azure Files には、データのセキュリティを確保するための複�
 Azure ファイル同期を使って Azure ファイル共有にアクセスする場合は、保存時のデータの暗号化が要求されているかどうかにかかわらず、Windows Server へのデータの同期には、暗号化ありの HTTPS と SMB 3.0 が常に使われます。
 
 ## <a name="data-redundancy"></a>データの冗長性
-Azure Files は、データ冗長性オプションとして、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) の 2 つをサポートします。 次のセクションでは、ローカル冗長ストレージと geo 冗長ストレージの違いについて説明します。
+Azure Files は、データ冗長性オプションとして、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、および geo 冗長ストレージ (GRS) の 3 つをサポートします。 次のセクションで、さまざまな冗長性オプションの違いについて説明します。
 
 ### <a name="locally-redundant-storage"></a>ローカル冗長ストレージ
 [!INCLUDE [storage-common-redundancy-LRS](../../../includes/storage-common-redundancy-LRS.md)]
+
+### <a name="zone-redundant-storage"></a>ゾーン冗長ストレージ
+[!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-ZRS.md)]
 
 ### <a name="geo-redundant-storage"></a>geo 冗長ストレージ
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-GRS.md)]
@@ -95,7 +98,7 @@ Azure ファイル同期を使って複数の Azure ファイル共有を 1 つ�
 * **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy は、Windows および Windows Server に付属するよく知られたコピー ツールです。 Robocopy では、ファイル共有をローカルにマウントした後、マウントした場所を Robocopy コマンドのコピー先として使って、Azure Files にデータを転送できます。
 * **[AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#upload-files-to-an-azure-file-share)**: AzCopy は、最高のパフォーマンスの単純なコマンドを使って Azure Files および Azure Blob Storage との間で双方向にデータをコピーするために設計された、コマンドライン ユーティリティです。 AzCopy は Windows と Linux で使うことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure File Sync のデプロイの計画](storage-sync-files-planning.md)
 * [Azure Files のデプロイ方法](storage-files-deployment-guide.md)
 * [Azure ファイル同期のデプロイ方法](storage-sync-files-deployment-guide.md)

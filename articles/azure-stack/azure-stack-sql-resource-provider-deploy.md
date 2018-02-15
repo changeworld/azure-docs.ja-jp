@@ -1,6 +1,6 @@
 ---
 title: "Azure Stack での SQL データベースの使用 | Microsoft Docs"
-description: "SQL データベースを Azure Stack にサービスとしてデプロイする方法と、SQL Server リソース プロバイダー アダプターの簡単なデプロイ手順について説明します"
+description: "SQL データベースを Azure Stack にサービスとしてデプロイする方法と、SQL Server リソース プロバイダー アダプターの簡単なデプロイ手順について説明します。"
 services: azure-stack
 documentationCenter: 
 author: JeffGoldner
@@ -13,22 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: JeffGo
-ms.openlocfilehash: e2f29a1686d0f4baa88b9d37bac0261952f4caa6
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: bf52ed4986b4e0930b57721c0e38bbf748045a36
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 SQL Server リソースプロバイダー アダプターを使用して、SQL データベースを [Azure Stack](azure-stack-poc.md) のサービスとして公開します。 リソースプロバイダーをインストールして 1 つまたは複数の SQL Server インスタンスに接続すると、御社および御社のユーザーは次のものを作成できます。
-- クラウドネイティブ アプリ向けデータベース
-- SQL に基づいた Web サイト
-- SQL に基づいたワークロード。SQL Server をホストする仮想マシン (VM) を毎回プロビジョニングする必要はありません。
+- クラウドネイティブ アプリ向けデータベース。
+- SQL に基づいた Web サイト。
+- SQL に基づいたワークロード。
+SQL Server をホストする仮想マシン (VM) を毎回プロビジョニングする必要はありません。
 
-リソース プロバイダーでは、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) のすべてのデータベース管理機能がサポートされるわけではありません。 たとえば、エラスティック データベース プールと、データベースのパフォーマンスを自動的に増減する機能は使用できません。 ただし、リソース プロバイダーでは、同様の作成、読み取り、更新、および削除 (CRUD) 操作がサポートされます。 API は、SQL DB と互換性がありません。
+リソース プロバイダーでは、[Azure SQL Database](https://azure.microsoft.com/services/sql-database/) のすべてのデータベース管理機能がサポートされるわけではありません。 たとえば、エラスティック データベース プールと、データベースのパフォーマンスを自動的に増減する機能は使用できません。 ただし、リソース プロバイダーでは、同様の作成、読み取り、更新、および削除 (CRUD) 操作がサポートされます。 API は、SQL Database と互換性がありません。
 
 ## <a name="sql-resource-provider-adapter-architecture"></a>SQL リソースプロバイダー アダプターのアーキテクチャ
 リソース プロバイダーは、次の 3 つのコンポーネントで構成されています。
@@ -37,41 +38,44 @@ SQL Server リソースプロバイダー アダプターを使用して、SQL �
 - **リソース プロバイダー自体**。これはプロビジョニング要求を処理し、データベース リソースを公開します。
 - **SQL Server をホストするサーバー**。これはデータベースに容量を提供し、ホスティング サーバーと呼ばれます。
 
-1 つ (以上) の SQL Server を作成する、または外部 SQL インスタンスへのアクセスを提供する、あるいはその両方が必要です。
+1 つ (以上) の SQL Server インスタンスを作成する、または外部 SQL Server インスタンスへのアクセスを提供する、あるいはその両方が必要です。
 
 ## <a name="deploy-the-resource-provider"></a>リソース プロバイダーのデプロイ
 
-1. まだ開発キットを登録していない場合は登録して、Marketplace の管理からダウンロードできる Windows Server 2016 Datacenter Core イメージをダウンロードします。 Windows Server 2016 Core イメージを使用する必要があります。 スクリプトを使用して [Windows Server 2016 イメージ](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)を作成することもできます。必ずコアのオプションを選択してください。 .NET 3.5 ランタイムは必要なくなりました。
+1. まだ開発キットを登録していない場合は登録して、Marketplace の管理からダウンロードできる Windows Server 2016 Datacenter Core イメージをダウンロードします。 Windows Server 2016 Core イメージを使用する必要があります。 スクリプトを使用して [Windows Server 2016 イメージ](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)を作成することもできます  (コア オプションを必ず選択してください)。 .NET 3.5 ランタイムは必要なくなりました。
 
 2. 特権エンドポイント VM にアクセスできるホストにサインインします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Stack Development Kit (ASDK) のインストールで、物理ホストにサインインします。
+    - Azure Stack Development Kit のインストールで、物理ホストにサインインします。
 
-    b. マルチノードのシステムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。 
+    - マルチノード システムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。
     
     >[!NOTE]
-    > スクリプトが実行されるシステムは、最新バージョンの .NET ランタイムがインストールされている Windows 10 または Windows Server 2016 システムである*必要があります*。 そうでない場合は、インストールが失敗します。 ASDK ホストは、この条件を満たします。
+    > スクリプトが実行されるシステムは、最新バージョンの .NET ランタイムがインストールされている Windows 10 または Windows Server 2016 システムである*必要があります*。 それ以外の場合、インストールは失敗します。 Azure Stack SDK ホストはこの条件を満たしています。
 
 
-3. SQL リソース プロバイダー バイナリをダウンロードし、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。
+3. SQL リソース プロバイダー バイナリをダウンロードします。 次に、自己解凍ツールを実行して、その内容を一時ディレクトリに抽出します。
 
     >[!NOTE] 
-    > リソース プロバイダーのビルドは、Azure Stack のビルドに対応します。 実行されている Azure Stack のバージョンに適合する正しいバイナリをダウンロードする必要があります。
+    > リソース プロバイダーのビルドは、Azure Stack のビルドに対応します。 必ず実行されている Azure Stack のバージョンに適合する正しいバイナリをダウンロードしてください。
 
-    | Azure Stack ビルド | SQL RP インストーラー |
+    | Azure Stack のビルド | SQL リソース プロバイダー インストーラー |
     | --- | --- |
-    |1.0.180102.3 または 1.0.180106.1 (マルチノード) | [SQL RP バージョン 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
+    |1.0.180102.3, 1.0.180103.2 または 1.0.180106.1 (マルチノード) | [SQL RP バージョン 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
     | 1.0.171122.1 | [SQL RP バージョン 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
     | 1.0.171028.1 | [SQL RP バージョン 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Azure Stack のルート証明書は、特権エンドポイントから取得されます。 ASDK には、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
+4. Azure Stack のルート証明書は、特権エンドポイントから取得されます。 Azure Stack SDK では、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 
-    独自の証明書を提供する必要がある場合は、次のように **DependencyFilesLocalPath** に配置された PFX ファイルが必要になります (下を参照)。
+   独自の証明書を提供するには、次のように .pfx ファイルを **DependencyFilesLocalPath** に配置します。
 
-    - \*.dbadapter.\<region\>.\<external fqdn\> のワイルドカード証明書、または sqladapter.dbadapter.\<region\>.\<external fqdn\> の一般名を持つ 1 つのサイト証明書のどちらか
-    - この証明書は、証明機関によって発行されるなど、信頼済みのものである必要があります。 つまり、信頼チェーンが中間証明書の必要なしに存在する必要があります。
+    - \*.dbadapter.\<region\>.\<external fqdn\> のワイルドカード証明書、または sqladapter.dbadapter.\<region\>.\<external fqdn\> の一般名を持つ 1 つのサイト証明書のどちらか。
+
+    - この証明書は信頼できる必要があります。 つまり、信頼チェーンが中間証明書の必要なしに存在する必要があります。
+
     - DependencyFilesLocalPath には 1 つの証明書ファイルしか存在しません。
+
     - このファイル名に特殊文字を含めることはできません。
 
 
@@ -79,56 +83,54 @@ SQL Server リソースプロバイダー アダプターを使用して、SQL �
 
 6. [Azure PowerShell バージョン 1.2.11 をインストールします](azure-stack-powershell-install.md)。
 
-7. 以下に示すパラメーターを指定して DeploySqlProvider.ps1 スクリプトを実行します。
+7. DeploySqlProvider.ps1 スクリプトを実行します。このスクリプトは次の手順を実行します。
 
-スクリプトでは次の手順が実行されます。
-
-- Azure Stack 上のストレージ アカウントに証明書とその他のアーティファクトをアップロードします。
-- ギャラリー パッケージを公開して、ギャラリーを通じて SQL データベースをデプロイできるようにします。
-- ホスティング サーバーをデプロイするためにギャラリー パッケージを発行します。
-- 手順 1 で作成した Windows Server 2016 イメージを使用して VM をデプロイし、リソース プロバイダーをインストールします。
-- リソース プロバイダー VM にマップされるローカル DNS レコードを登録します。
-- リソースプロバイダーをローカル Azure Resource Manager (ユーザーと管理者) に登録します。
+    - Azure Stack 上のストレージ アカウントに証明書とその他のアーティファクトをアップロードします。
+    - ギャラリー パッケージを発行して、ギャラリーを通じて SQL データベースをデプロイできるようにします。
+    - ホスティング サーバーをデプロイするためのギャラリー パッケージを発行します。
+    - 手順 1 で作成した Windows Server 2016 イメージを使用して VM をデプロイした後、リソース プロバイダーをインストールします。
+    - リソース プロバイダー VM にマップされるローカル DNS レコードを登録します。
+    - リソース プロバイダーをローカル Azure Resource Manager (ユーザーと管理者) に登録します。
 
 > [!NOTE]
-> インストールに要する時間が 90 分を超える場合は、インストールが失敗し、スクリーンとログ ファイルにエラー メッセージが表示されることがありますが、デプロイは失敗した手順から再試行されます。 推奨されるメモリと vCPU 仕様を満たしていないシステムは、SQL RP をデプロイできないことがあります。
+> インストールが 90 分以上かかっている場合は、失敗している可能性があります。 インストールが失敗した場合は、画面とログ ファイルにエラー メッセージが表示されますが、デプロイは失敗した手順から再試行されます。 推奨されるメモリと vCPU 仕様を満たしていないシステムは、SQL リソース プロバイダーをデプロイできない場合があります。
 >
 
-PowerShell プロンプトから実行できる例を次に示します (ただし、必要に応じてアカウント情報とパスワードを変更してください)。
+PowerShell プロンプトから実行できる例を示します  (必要に応じてアカウント情報とパスワードを変更してください)。
 
 ```
-# Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules
+# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
-# For integrated systems, the domain and the prefix will be the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack and the default prefix is AzS.
+# For integrated systems, the domain and the prefix are the same.
 $domain = "AzureStack"
 $prefix = "AzS"
 $privilegedEndpoint = "$prefix-ERCS01"
 
-# Point to the directory where the RP installation files were extracted
+# Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
 
-# The service admin account (can be AAD or ADFS)
+# The service admin account (can be Azure Active Directory or Active Directory Federation Services).
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set credentials for the new Resource Provider VM
+# Set credentials for the new Resource Provider VM.
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
-# and the cloudadmin credential required for Privileged Endpoint access
+# And the cloudadmin credential that's required for privileged endpoint access.
 $CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
 
-# change the following as appropriate
+# Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
-# Change directory to the folder where you extracted the installation files
-# and adjust the endpoints
+# Change directory to the folder where you extracted the installation files.
+# Then adjust the endpoints.
 . $tempDir\DeploySQLProvider.ps1 -AzCredential $AdminCreds `
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
@@ -138,76 +140,78 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
  ```
 
 ### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 パラメーター
-これらのパラメーターはコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
+これらのパラメーターをコマンド ラインで指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。
 
-| パラメーター名 | [説明] | コメントまたは既定値 |
+| パラメーター名 | 説明 | コメントまたは既定値 |
 | --- | --- | --- |
-| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報です。 | _必須_ |
-| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報を指定します。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
-| **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報を定義します。 | _必須_ |
-| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名を指定します。 |  _必須_ |
-| **DependencyFilesLocalPath** | 証明書 PFX ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードには_必須_) |
-| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード | _必須_ |
-| **MaxRetryCount** | 障害がある場合は、各操作を再試行する回数を定義します。| 2 |
-| **RetryDuration** | 再試行間のタイムアウトを秒単位で定義します。 | 120 |
-| **アンインストール** | リソース プロバイダーおよび関連付けられているすべてのリソース (以下のメモを参照) を削除します | いいえ  |
-| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします | いいえ  |
+| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ |
+| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
+| **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ |
+| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ |
+| **DependencyFilesLocalPath** | 証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードでは_必須_) |
+| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
+| **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 |
+| **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 |
+| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ |
 
 
 ## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用してデプロイを確認する
 
 > [!NOTE]
->  インストール スクリプトが完了したら、ポータルを最新の情報に更新して [管理者] ブレードを表示する必要があります。
+>  インストール スクリプトの実行が終了したら、ポータルを最新の情報に更新して [管理者] ブレードを表示する必要があります。
 
 
 1. 管理ポータルにサービス管理者としてサインインします。
 
-2. デプロイが成功したことを確認します。 **[リソース グループ]** &gt; を参照して、**system.\<location\>.sqladapter** リソース グループをクリックし、4 つすべてのデプロイが成功したことを確認します。
+2. デプロイが成功したことを確認します。 **リソース グループ**に移動します。 **system.\<location\>.sqladapter** リソース グループを選択します。 4 つのすべてのデプロイが成功したことを確認します。
 
-      ![SQL RP のデプロイの確認](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
+      ![SQL リソース プロバイダーのデプロイの確認](./media/azure-stack-sql-rp-deploy/sqlrp-verify.png)
 
 
 ## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>SQL リソース プロバイダー アダプターを更新する (マルチノードのみ、ビルド 1710 以降)
-Azure Stack ビルドが更新された場合は常に、新しい SQL リソース プロバイダー アダプターがリリースされます。 既存のアダプターが引き続き機能する可能性はありますが、Azure Stack が更新されたら、できるだけ早く最新のビルドに更新することをお勧めします。 更新プロセスは、上で説明したインストール プロセスとほぼ同様です。 最新の RP コードを持つ新しい VM が作成され、データベースおよびホスティング サーバー情報や必要な DNS レコードを含む設定はこの新しいインスタンスに移行されます。
+Azure Stack ビルドが更新されると、新しい SQL リソース プロバイダー アダプターが毎回リリースされます。 既存のアダプターが動作し続ける場合があります。 ただし、Azure Stack を更新した後、最新のビルドにできるだけ早く更新することをお勧めします。 
 
-上と同じ引数で UpdateSQLProvider.ps1 スクリプトを使用します。 ここでも証明書を指定する必要があります。
+更新プロセスは、既に説明したインストール プロセスに似ています。 最新のリソース プロバイダー コードを使用して新しい VM を作成します。 さらに、データベースとホスト サーバーの情報を含む設定をこの新しいインスタンスに移行します。 必要な DNS レコードも移行します。
+
+すでに説明したのと同じ引数を使用して UpdateSQLProvider.ps1 スクリプトを使用します。 ここでも証明書を指定する必要があります。
 
 > [!NOTE]
-> 更新はマルチノード システムでのみサポートされています。
+> この更新プロセスは、マルチノード システムでのみサポートされています。
 
 ```
-# Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules
+# Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
 Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack and the default prefix is AzS
-# For integrated systems, the domain and the prefix will be the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack and the default prefix is AzS.
+# For integrated systems, the domain and the prefix are the same.
 $domain = "AzureStack"
 $prefix = "AzS"
 $privilegedEndpoint = "$prefix-ERCS01"
 
-# Point to the directory where the RP installation files were extracted
+# Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
 
-# The service admin account (can be AAD or ADFS)
+# The service admin account (can be Azure AD or AD FS).
 $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set credentials for the new Resource Provider VM
+# Set credentials for the new Resource Provider VM.
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
-# and the cloudadmin credential required for Privileged Endpoint access
+# And the cloudadmin credential required for privileged endpoint access.
 $CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
 
-# change the following as appropriate
+# Change the following as appropriate.
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
-# Change directory to the folder where you extracted the installation files
-# and adjust the endpoints
+# Change directory to the folder where you extracted the installation files.
+# Then adjust the endpoints.
 . $tempDir\UpdateSQLProvider.ps1 -AzCredential $AdminCreds `
   -VMLocalCredential $vmLocalAdminCreds `
   -CloudAdminCredential $cloudAdminCreds `
@@ -217,38 +221,42 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
  ```
 
 ### <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 パラメーター
-これらのパラメーターをコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
+これらのパラメーターをコマンド ラインで指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。
 
-| パラメーター名 | [説明] | コメントまたは既定値 |
+| パラメーター名 | 説明 | コメントまたは既定値 |
 | --- | --- | --- |
-| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報です。 | _必須_ |
-| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報を指定します。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
-| **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報を定義します。 | _必須_ |
-| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名を指定します。 |  _必須_ |
-| **DependencyFilesLocalPath** | 証明書 PFX ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードには_必須_) |
-| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード | _必須_ |
-| **MaxRetryCount** | 障害がある場合は、各操作を再試行する回数を定義します。| 2 |
-| **RetryDuration** | 再試行間のタイムアウトを秒単位で定義します。 | 120 |
-| **アンインストール** | リソース プロバイダーおよび関連付けられているすべてのリソース (以下のメモを参照) を削除します | いいえ  |
-| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします | いいえ  |
+| **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ |
+| **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
+| **VMLocalCredential** | SQL リソース プロバイダー VM のローカル Administrator アカウントの資格情報。 | _必須_ |
+| **PrivilegedEndpoint** | 特権エンドポイントの IP アドレスまたは DNS 名。 |  _必須_ |
+| **DependencyFilesLocalPath** | 証明書 .pfx ファイルはこのディレクトリにも配置する必要があります。 | _省略可能_ (マルチノードでは_必須_) |
+| **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
+| **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 |
+| **RetryDuration** |再試行間のタイムアウト間隔 (秒単位)。 | 120 |
+| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ |
 
 
 
 ## <a name="remove-the-sql-resource-provider-adapter"></a>SQL リソースプロバイダー アダプターを削除する
 
-リソース プロバイダーを削除するには、最初に依存関係を削除することが重要です。
+リソース プロバイダーを削除するには、最初にすべての依存関係を削除する必要があります。
 
 1. このバージョンの SQL リソースプロバイダー アダプターに対してダウンロードした元のデプロイ パッケージがあることを確認します。
 
-2. すべてのユーザー データベースをリソースプロバイダーから削除する必要があります (データは削除されません)。 これは、ユーザー自身で実行する必要があります。
+2. すべてのユーザー データベースをリソース プロバイダーから削除する必要があります  (ユーザー データベースを削除してもデータは削除されません。)このタスクは、ユーザー自身で実行する必要があります。
 
-3. 管理者は、SQL リソースプロバイダー アダプターからホスティング サーバーを削除する必要があります
+3. 管理者は、SQL リソース プロバイダー アダプターからホスティング サーバーを削除する必要があります。
 
-4. 管理者は、SQL リソースプロバイダー アダプターを参照するプランをすべて削除する必要があります。
+4. 管理者は、SQL リソース プロバイダー アダプターを参照するプランをすべて削除する必要があります。
 
-5. 管理者は、SQL リソースプロバイダー アダプターに関連付けられている SKU とクォータをすべて削除する必要があります。
+5. 管理者は、SQL リソース プロバイダー アダプターに関連付けられているすべての SKU とクォータを削除する必要があります。
 
-6. -Uninstall パラメーター、Azure Resource Manager エンドポイント、DirectoryTenantID、サービス管理者アカウントの資格情報を指定してデプロイ スクリプトを再実行します。
+6. 次の要素を使用してデプロイ スクリプトを再実行します。
+    - -Uninstall パラメーター
+    - Azure Resource Manager エンドポイント
+    - DirectoryTenantID
+    - サービス管理者アカウントの資格情報
 
 
 ## <a name="next-steps"></a>次の手順

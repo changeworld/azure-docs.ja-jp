@@ -12,17 +12,17 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 01/30/2018
 ms.author: damaerte
-ms.openlocfilehash: 1113589507934d814bc8924267c07c99f8864657
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 9f089b5c5d573bf469d6920f9144b7cc5c97c03a
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="features--tools-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) での PowerShell の機能とツール
 
-[!include [features-introblock](../../includes/cloud-shell-features-introblock.md)]
+[!INCLUDE [features-introblock](../../includes/cloud-shell-features-introblock.md)]
 
 > [!TIP]
 > [Bash](features.md) の機能とツールも利用できます。
@@ -53,7 +53,6 @@ Azure リソースに対するすべての変更は、Azure Portal で直接行�
 ![](media/features-powershell/azure-drive.png)
 
 #### <a name="contextual-awareness"></a>コンテキストの認識
-
 - **リソース グループのスコープ**: Azure ドライブ (`Azure:`) のリソース グループ パスのコンテキスト内にいるときは、リソース グループ名が自動的に Azure PowerShell コマンドレットに渡されます。
 
     ![](media/features-powershell/resource-group-autocomplete.png)
@@ -91,7 +90,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 
 |**カテゴリ**    |**名前**                                 |
 |----------------|-----------------------------------------|
-|Azure ツール     |[Azure PowerShell (5.1.1)](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-5.1.1)<br> [Azure CLI (2.0.25)](https://docs.microsoft.com/cli/azure/overview)|
+|Azure ツール     |[Azure PowerShell (5.2.0)](https://docs.microsoft.com/powershell/azure/overview)<br> [Azure CLI (2.0.26)](https://docs.microsoft.com/cli/azure/overview)|
 |テキスト エディター    |vim<br> nano                             |
 |パッケージ マネージャー |PowerShellGet<br> PackageManagement<br> npm<br> pip |
 |ソース管理  |git                                      |
@@ -104,7 +103,7 @@ IntelliSense のサポートは、[PowerShell エディター サービス](http
 |------------|-----------|
 |.NET        |4.6        |
 |Node.js     |6.10       |
-|PowerShell  |5.1 および [6.0 (ベータ)](https://github.com/PowerShell/powershell/releases)       |
+|PowerShell  |5.1 および [6.0.0](https://github.com/PowerShell/powershell/releases)       |
 |Python      |2.7        |
 
 ## <a name="next-steps"></a>次の手順

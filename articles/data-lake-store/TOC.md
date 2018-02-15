@@ -6,6 +6,7 @@
 
 # 作業開始
 ## [ポータルの使用](data-lake-store-get-started-portal.md)
+## [Storage Explorer での Data Lake Store の使用](data-lake-store-in-storage-explorer.md)
 ## [PowerShell の使用](data-lake-store-get-started-powershell.md)
 ## [Azure CLI 2.0 の使用](data-lake-store-get-started-cli-2.0.md)
 
@@ -13,6 +14,7 @@
 # 方法
 ## データの読み込みと移動
 ### [Azure Data Factory の使用](../data-factory/load-azure-data-lake-store.md)
+### [Storage Explorer での Data Lake Store の使用](data-lake-store-in-storage-explorer.md)
 ### [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)

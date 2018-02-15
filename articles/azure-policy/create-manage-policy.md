@@ -9,11 +9,11 @@ ms.date: 01/18/2018
 ms.topic: tutorial
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: d6a588e1d8a20ffba555461cf98009f3894ed761
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: a3d47abcbf41133b9bc7194fd97f9b66a70003ff
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-and-manage-policies-to-enforce-compliance"></a>コンプライアンスを強制するポリシーの作成と管理
 
@@ -370,7 +370,7 @@ az policy definition list
 
 5. **[割り当て]** を選択します。
 
-## <a name="resolve-a-non-compliant-or-denied-resource"></a>準拠していないリソースまたは拒否されたリソースを解決する
+## <a name="exempt-a-non-compliant-or-denied-resource-using-exclusion"></a>準拠していないリソースまたは拒否されたリソースを免除する
 
 上の例に従って、SQL Server バージョン 12.0 を必須にするポリシー定義を割り当てると、別バージョンで作成された SQL サーバーは拒否されます。 このセクションでは、別バージョンで SQL サーバーを作成しようとして拒否された場合に、除外を要求して解決する手順について説明します。 除外は、基本的にはポリシーの強制を行わないようにします。 除外をリソース グループに適用することも、個々のリソースだけに絞り込むこともできます。
 

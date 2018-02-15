@@ -1,8 +1,8 @@
 ---
-title: "Azure API Management でグループを使用して開発者アカウントを管理する | Microsoft Docs"
-description: "Azure API Management でグループを使用して開発者アカウントを管理する方法について説明します。"
+title: "Azure Active Directory を使用して開発者アカウントを認証する - Azure API Management | Microsoft Docs"
+description: "API Management で Azure Active Directory を使用してユーザーを認証する方法について説明します。"
 services: api-management
-documentationcenter: 
+documentationcenter: API Management
 author: juliako
 manager: cfowler
 editor: 
@@ -11,98 +11,170 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: 5fa4825db7216f4b6e2d833c64d5835d6cef93a6
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: c9d99d6f7c2777c8e68f5db50b402280377d88e9
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
-API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。 グループに対して成果物の表示が許可されると、そのグループに属する開発者は、グループに関連付けられた成果物を表示してサブスクライブできるようになります。 
+# <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法
 
-API Management には、次に示すシステム グループが用意されています。これらのシステム グループを変更することはできません。
+このガイドでは、Azure Active Directory 内のユーザーに対して開発者ポータルへのアクセスを有効にする方法について説明します。 また、Azure Active Directory のユーザーが含まれた外部グループを追加することで Azure Active Directory ユーザーのグループを管理する方法についても説明します。
 
-* **管理者** - Azure サブスクリプション管理者は、このグループのメンバーです。 管理者は、API Management サービス インスタンスを管理します。開発者が使用する API とその操作、成果物は、管理者が作成します。
-* **開発者** - 認証された開発者ポータル ユーザーは、このグループに分類されます。 開発者は、API の利用者です。管理者によって作成された API を使用してアプリケーションを構築します。 開発者は、開発者ポータルへのアクセスが認められており、API の操作を呼び出すアプリケーションを構築します。
-* **ゲスト** - API Management インスタンスの開発者ポータルに訪れる開発者ポータル ユーザーのうち、認証を受けていないもの (利用予定者など) がこのグループに該当します。 特定の読み取り専用アクセスを許可することができます (API の閲覧はできるが、呼び出すことはできないなど)。
-
-管理者は、これらのシステム グループに加えてカスタム グループを作成できるほか、[関連付けられている Azure Active Directory テナントの外部グループを活用する][leverage external groups in associated Azure Active Directory tenants]こともできます。 カスタム グループと外部グループをシステム グループと共に使用することにより、開発者には API 成果物の可視性とアクセスが提供されます。 たとえば、特定のパートナー企業に所属する開発者向けにカスタム グループを 1 つ作成し、関連する API のみが含まれている成果物の API に対してアクセスを許可することができます。 ユーザーは 複数のグループのメンバーになることができます。
-
-このガイドでは、API Management インスタンスの管理者が新しいグループを追加して成果物および開発者に関連付ける方法について説明します。
-
-発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](https://msdn.microsoft.com/library/azure/dn776329.aspx) エンティティを使用してグループを作成および管理することができます。
+> [!WARNING]
+> Azure Active Directory 統合は、[Developer、Standard、および Premium](https://azure.microsoft.com/pricing/details/api-management/) の各レベルでのみ使用可能です。
 
 ## <a name="prerequisites"></a>前提条件
 
-「[Create an Azure API Management instance (Azure API Management インスタンスを作成する)](get-started-create-service-instance.md)」の記事にあるタスクを完了します。
+- [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
+- API Management インスタンスをインポートして発行します。 詳細については、[インポートと発行](import-and-publish.md)に関するページを参照してください。
 
-[!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
+## <a name="how-to-authorize-developer-accounts-using-azure-active-directory"></a>Azure Active Directory を使用して開発者アカウントを認証する方法
 
-## <a name="create-group"> </a>グループの作成
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+2. elect ![矢印](./media/api-management-howto-aad/arrow.png)が必要です。
+3. 検索ボックスに、「api」と入力します。
+4. **[API Management サービス]** をクリックします。
+5. APIM サービス インスタンスを選びます。
+6. **[セキュリティ]** の **[ID]** を選択します。
 
-このセクションでは、API Management アカウントに新しいグループを追加する方法を示します。
+    ![[外部 ID]](./media/api-management-howto-aad/api-management-with-aad001.png)
+7. 一番上にある **[+追加]** をクリックします。
 
-1. 画面の左にある **[グループ]** タブを選択します。
-2. **[+ 追加]** をクリックします。
-3. グループの一意の名前とオプションの説明を入力します。
-4. **[作成]**をクリックします。
+    **[ID プロバイダーの追加]** ウィンドウが右側に表示されます。
+8. **[プロバイダーの種類]** で **[Azure Active Directory]** を選択します。
 
-    ![新しいグループを追加する](./media/api-management-howto-create-groups/groups001.png)
+    その他必要な情報を入力するためのコントロールがウィンドウに表示されます。 そのようなコントロールとして、**[クライアント ID]** や **[クライアント シークレット]** があります (必要な情報は、後でこのチュートリアルの中で取得します)。
+9. **[リダイレクト URL]** をメモします。  
+10. ブラウザーで別のタブを開きます。 
+11. [Azure Portal](https://portal.azure.com) を開きます。
+12. elect ![矢印](./media/api-management-howto-aad/arrow.png)が必要です。
+13. 「active」と入力して、**Azure Active Directory** を表示します。
+14. **[Azure Active Directory]**を選択します。
+15. **[管理]** の **[アプリの登録]** を選択します。
 
-グループが作成されると、それが **[グループ]** リストに追加されます。 <br/>グループの **[名前]** または **[説明]** を編集するには、そのグループの名前と **[設定]** をクリックします。<br/>グループを削除するには、そのグループの名前をクリックし、**[削除]** を押します。
+    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad002.png)
+16. **[新しいアプリケーションの登録]** をクリックします。
 
-グループが作成されます。このグループは、成果物および開発者と関連付けることができます。
+    **[作成]** ウィンドウが右側に表示されます。 ここに AAD アプリの関連情報を入力します。
+17. アプリケーションの名前を入力します。
+18. アプリケーション タイプとして **[Web アプリ/API]** を選択します。
+19. [サインオン URL] には、開発者ポータルのサインオン URL を入力します。 この例では、https://apimwithaad.portal.azure-api.net/signin がサインオン URL です。
+20. **[作成]** をクリックして、アプリケーションを作成します。
+21. アプリを検索するには、**[アプリの登録]** を選択して名前で検索します。
 
-## <a name="associate-group-product"> </a>グループと成果物の関連付け
+    ![アプリの登録](./media/api-management-howto-aad/find-your-app.png)
+22. アプリケーションの登録後、**[応答 URL]** に移動し、[リダイレクト URL] が、手順 9. でメモした値に設定されていることを確認します。 
+23. アプリケーションを構成する場合 (**アプリ ID の URL** を変更するなど)、**[プロパティ]** を選択します。
 
-1. 左にある **[成果物]** タブを選択します。
-2. 目的の成果物の名前をクリックします。
-3. **[アクセス制御]** を押します。
-4. **[+ グループの追加]** をクリックします。
+    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad004.png)
 
-    ![新しいグループを追加する](./media/api-management-howto-create-groups/groups002.png)
-5. 追加するグループを選択します。
+    このアプリケーションで複数の Azure Active Directory を使用する場合は、**[アプリケーションはマルチテナントです]** で **[はい]** をクリックします。 既定値は **[いいえ]**です。
+24. **[必要なアクセス許可]** を選択して、アプリケーションのアクセス許可を設定します。
+25. アプリケーションを選択し、**[ディレクトリ データの読み取り]** と **[サインインとユーザー プロファイルの読み取り]** のチェック ボックスをオンにします。
 
-    ![新しいグループを追加する](./media/api-management-howto-create-groups/groups003.png)
+    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad005.png)
 
-    成果物からグループを削除するには、**[削除]** をクリックします。
+    アプリケーションと委任されたアクセス許可の詳細については、「[Graph API にアクセスする][Accessing the Graph API]」を参照してください。
+26. 左側のウィンドウで、**[アプリケーション ID]** の値をコピーします。
 
-    ![グループを削除する](./media/api-management-howto-create-groups/groups004.png)
+    ![アプリの登録](./media/api-management-howto-aad/application-id.png)
+27. API Management アプリケーションに戻ります。 **[ID プロバイダーの追加]** ウィンドウが表示されます。 <br/>**[クライアント ID]** ボックスに **[アプリケーション ID]** の値を貼り付けます。
+28. Azure Active Directory の構成に戻り、**[キー]** をクリックします。
+29. 名前と期間を指定して新しいキーを作成します。 
+30. **[Save]** をクリックします。 キーが生成されます。
 
-成果物をグループに関連付けると、そのグループに属する開発者は、成果物を表示してサブスクライブすることができます。
+    キーをクリップボードにコピーします。
 
-> [!NOTE]
-> Azure Active Directory グループを追加するには、「 [Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法](api-management-howto-aad.md)」をご覧ください。
+    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad006.png)
 
-## <a name="associate-group-developer"> </a>グループと開発者の関連付け
+    > [!NOTE]
+    > このキーを書き留めておきます。 Azure Active Directory の構成ウィンドウを閉じると、キーは再表示できません。
+    > 
+    > 
+31. API Management アプリケーションに戻ります。 <br/>**[ID プロバイダーの追加]** ウィンドウの **[クライアント シークレット]** ボックスにキーを貼り付けます。
+32. **[ID プロバイダーの追加]** ウィンドウの **[許可されているテナント]** ボックスで、API Management サービス インスタンスの API にアクセスできるディレクトリを指定します。 <br/>アクセス許可を付与する Azure Active Directory インスタンスのドメインを指定します。 複数のドメインを指定する場合は、改行文字、スペース、またはコンマで区切ります。
 
-このセクションでは、グループをメンバーに関連付ける方法を示します。
+    **[許可されたテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがログインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するには、全体管理者は `https://<URL of your developer portal>/aadadminconsent` (たとえば、https://contoso.portal.azure-api.net/aadadminconsent) に移動し、アクセス許可する Active Directory テナントのドメイン名を入力して、[送信] をクリックします。 次の例では、`miaoaad.onmicrosoft.com` の全体管理者がこの特定の開発者ポータルの権限を付与しようとしています。 
 
-1. 画面の左にある **[グループ]** タブを選択します。
-2. **[メンバー]** を選択します。
+33. 必要な構成を指定したら、**[追加]** をクリックします。
 
-    ![メンバーを追加する](./media/api-management-howto-create-groups/groups005.png)
-3. **[+ 追加]** を押し、メンバーを選択します。
+    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad007.png)
 
-    ![メンバーを追加する](./media/api-management-howto-create-groups/groups006.png)
-4. **[選択]** を押します。
+変更が保存さたら、指定された Azure Active Directory 内のユーザーは、「[Azure Active Directory アカウントを使用して開発者ポータルにログインする方法](#log_in_to_dev_portal)」の手順に従って開発者ポータルにサインインできます。
 
+![アクセス許可](./media/api-management-howto-aad/api-management-aad-consent.png)
 
-開発者とグループの間に関連付けを追加すると、 **[ユーザー]** タブにその関連付けが表示されるようになります。
+次の画面で、アクセス許可の付与を確認するメッセージが全体管理者に表示されます。 
 
-## <a name="next-steps"> </a>次のステップ
-* 開発者をグループに関連付けると、開発者は、グループに関連付けられた成果物を表示してサブスクライブすることができます。 詳細については、「[Azure API Management で成果物を作成して発行する方法][How create and publish a product in Azure API Management]」をご覧ください。
-* 発行者ポータルでグループを作成および管理するだけでなく、API Management REST API [グループ](https://msdn.microsoft.com/library/azure/dn776329.aspx) エンティティを使用してグループを作成および管理することができます。
+![アクセス許可](./media/api-management-howto-aad/api-management-permissions-form.png)
 
-[Create a group]: #create-group
-[Associate a group with a product]: #associate-group-product
-[Associate groups with developers]: #associate-group-developer
+全体管理者がアクセス許可を付与する前に全体管理者以外のユーザーがログインしようとすると、ログインに失敗し、エラー画面が表示されます。
+
+## <a name="how-to-add-an-external-azure-active-directory-group"></a>外部の Azure Active Directory グループを追加する方法
+
+Azure Active Directory 内のユーザーのアクセスを有効にした後は、Azure Active Directory のグループを API Management に追加することで、グループ内の開発者と目的の成果物の関連付けを管理しやすくすることができます。
+
+外部の Azure Active Directory グループを構成するには、先に前のセクションの手順を実行して、[外部 ID] タブで Azure Active Directory を構成する必要があります。 
+
+API Management インスタンスの **[グループ]** タブから、外部の Azure Active Directory グループが追加されます。
+
+![グループ](./media/api-management-howto-aad/api-management-with-aad008.png)
+
+1. **[グループ]** タブを選択します。
+2. **[AAD グループの追加]** ボタンをクリックします。
+3. 追加するグループを選択します。
+4. **[選択]** ボタンを押します。
+
+Azure Active Directory グループの作成後、追加された外部グループのプロパティを確認して構成するには、**[グループ]** タブでグループの名前をクリックします。
+
+ここでは、グループの **[名前]** と **[説明]** を編集できます。
+ 
+構成した Azure Active Directory のユーザーは、開発者ポータルにサインインし、次のセクションの指示に従って、可視性を有効化されたグループの表示とサブスクライブを実行できます。
+
+## <a name="a-idlogintodevportalhow-to-log-in-to-the-developer-portal-using-an-azure-active-directory-account"></a><a id="log_in_to_dev_portal"/>Azure Active Directory アカウントを使用して開発者ポータルにログインする方法
+
+前のセクションで構成した Azure Active Directory アカウントを使用して開発者ポータルにログインするには、Active Directory のアプリケーション構成の**サインオン URL** を使用して新しいブラウザー ウィンドウを開き、**[Azure Active Directory]** をクリックします。
+
+![開発者ポータル][api-management-dev-portal-signin]
+
+Azure Active Directory 内のいずれかのユーザーの資格情報を入力し、 **[サインイン]**をクリックします。
+
+![[サインイン]][api-management-aad-signin]
+
+追加情報が必要な場合は、登録フォームが表示されることがあります。 登録フォームに入力し、 **[サインアップ]**をクリックします。
+
+![登録][api-management-complete-registration]
+
+ユーザーが API Management サービス インスタンスの開発者ポータルにログインしました。
+
+![登録の完了][api-management-registration-complete]
+
+[api-management-dev-portal-signin]: ./media/api-management-howto-aad/api-management-dev-portal-signin.png
+[api-management-aad-signin]: ./media/api-management-howto-aad/api-management-aad-signin.png
+[api-management-complete-registration]: ./media/api-management-howto-aad/api-management-complete-registration.png
+[api-management-registration-complete]: ./media/api-management-howto-aad/api-management-registration-complete.png
+
+[How to add operations to an API]: api-management-howto-add-operations.md
+[How to add and publish a product]: api-management-howto-add-products.md
+[Monitoring and analytics]: api-management-monitoring.md
+[Add APIs to a product]: api-management-howto-add-products.md#add-apis
+[Publish a product]: api-management-howto-add-products.md#publish-product
+[Get started with Azure API Management]: get-started-create-service-instance.md
+[API Management policy reference]: api-management-policy-reference.md
+[Caching policies]: api-management-policy-reference.md#caching-policies
+[Create an API Management service instance]: get-started-create-service-instance.md
+
+[http://oauth.net/2/]: http://oauth.net/2/
+[WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
+[Accessing the Graph API]: http://msdn.microsoft.com/library/azure/dn132599.aspx#BKMK_Graph
+
+[Prerequisites]: #prerequisites
+[Configure an OAuth 2.0 authorization server in API Management]: #step1
+[Configure an API to use OAuth 2.0 user authorization]: #step2
+[Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
 
-[How create and publish a product in Azure API Management]: api-management-howto-add-products.md
-
-[Get started with Azure API Management]: get-started-create-service-instance.md
-[Create an API Management service instance]: get-started-create-service-instance.md
-[leverage external groups in associated Azure Active Directory tenants]: api-management-howto-aad.md#how-to-add-an-external-azure-active-directory-group
+[Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account

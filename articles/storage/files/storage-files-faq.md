@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 12/04/2017
 ms.author: renash
-ms.openlocfilehash: e25a6555e06a437259cddcc46c27add5f8b2ad8b
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 8762b2cca03f4c95f7543803a024bff4573927a1
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="frequently-asked-questions-about-azure-files"></a>Azure Files に関してよく寄せられる質問
 [Azure Files](storage-files-introduction.md) は、クラウド上で、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (別称 Common Internet File System または CIFS) を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure ファイル共有は、クラウドまたはオンプレミスにデプロイされた Windows、Linux、macOS で同時にマウントできます。 また、データが使用される場所に近接した Windows Server マシンに、Azure File Sync (プレビュー) で Azure ファイル共有をキャッシュすることによって高速なアクセスを実現することもできます。
@@ -73,7 +73,7 @@ ms.lasthandoff: 01/05/2018
 
 * <a id="redundancy-options"></a>
 **Azure Files では、どのようなストレージ冗長性オプションがサポートされていますか。**  
-    Azure Files では現在、ローカル冗長ストレージ (LRS) と geo 冗長ストレージ (GRS) のみがサポートされます。 今後、ゾーン冗長ストレージ (ZRS) と読み取りアクセスの geo 冗長ストレージ (RA-GRS) をサポートすることを計画していますが、現時点でスケジュールをお伝えすることはできません。
+    現在、Azure Files では、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、 geo 冗長ストレージ (GRS) がサポートされています。 今後は読み取りアクセス geo 冗長ストレージ (RA-GRS) のサポートを計画していますが、現時点でスケジュールをお伝えすることはできません。
 
 * <a id="tier-options"></a>
 **Azure Files では、どのストレージ層がサポートされていますか。**  
@@ -90,7 +90,7 @@ ms.lasthandoff: 01/05/2018
 
 * <a id="afs-region-availability"></a>
 **Azure File Sync (プレビュー) は、どのリージョンでサポートされていますか。**  
-    現在、Azure File Sync は米国東部、米国西部、西ヨーロッパ、オーストラリア東部、および東南アジアで利用可能です。 一般公開に向けての作業が進むにつれ、サポートされるリージョンがさらに追加される予定です。 詳細については、「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」をご覧ください。
+    現在、Azure File Sync はオーストラリア東部、カナダ中部、米国東部、東南アジア、英国南部、西ヨーロッパ、米国西部で使用できます。 一般公開に向けての作業が進むにつれ、サポートされるリージョンがさらに追加される予定です。 詳細については、「[利用可能なリージョン](storage-sync-files-planning.md#region-availability)」をご覧ください。
 
 * <a id="cross-domain-sync"></a>
 **同じ同期グループ内にドメイン参加とドメイン非参加のサーバーを保持することはできますか。**  

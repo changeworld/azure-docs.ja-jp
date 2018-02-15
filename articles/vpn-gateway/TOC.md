@@ -34,6 +34,7 @@
 ### P2S VPN の構成
 #### [Azure PowerShell](point-to-site-how-to-radius-ps.md)
 ### [VPN クライアント構成ファイルの作成とインストール](point-to-site-vpn-client-configuration-radius.md)
+### [P2S VPN RADIUS 認証と NPS サーバーの統合](vpn-gateway-radiuis-mfa-nsp.md)
 
 ## VNet 間の接続の構成
 ### [Azure Portal](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)

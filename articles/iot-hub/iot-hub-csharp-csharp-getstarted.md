@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 01/29/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ec9ff4a866ef8736ed260b4d17aa997433c1ef8d
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 3ea8979f21fcc8a85e80db9b49377ba9a48836e2
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="connect-your-device-to-your-iot-hub-using-net"></a>.NET を使用してデバイスを IoT ハブに接続する
 
@@ -31,9 +31,9 @@ ms.lasthandoff: 12/07/2017
 * **ReadDeviceToCloudMessages**。デバイス アプリから送信されたテレメトリを表示します。
 * **SimulatedDevice**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
 
-3 つのアプリを含んだ Visual Studio ソリューションを GitHub からダウンロードまたは複製することができます。
+このチュートリアルの手順に従って、最初からサンプル アプリを作成します。 または、GitHub から完成した Visual Studio ソリューションを[ダウンロード](https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-client-app/archive/master.zip)または複製することができます。
 
-```bash
+```cmd/sh
 git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-client-app.git
 ```
 
@@ -43,7 +43,7 @@ git clone https://github.com/Azure-Samples/iot-hub-dotnet-simulated-device-clien
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -54,6 +54,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
 <a id="D2C_csharp"></a>
 ## <a name="receive-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの受信
+
 このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み取る .NET コンソール アプリケーションを作成します。 IoT Hub は、デバイスからクラウドへのメッセージを読み取るための、[Azure Event Hubs][lnk-event-hubs-overview] と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 デバイスからクラウドへのメッセージを大規模に処理する方法については、[デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。 Event Hubs からのメッセージを処理する方法の詳細については、「[Event Hubs の使用][lnk-eventhubs-tutorial]」のチュートリアルを参照してください。 このチュートリアルは、IoT Hub の Event Hub 対応エンドポイントで応用できます。
 
 > [!NOTE]
@@ -63,18 +64,18 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
     ![New Visual C# Windows Classic Desktop project][10a]
 
-2. ソリューション エクスプローラーで **ReadDeviceToCloudMessages** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. ソリューション エクスプローラーで **ReadDeviceToCloudMessages** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **WindowsAzure.ServiceBus** を検索し、**[インストール]** を選択して、使用条件に同意します。 この手順により、[Azure Service Bus][lnk-servicebus-nuget] のダウンロードとインストールが実行され、その参照とすべての依存関係が追加されます。 このパッケージは、アプリケーションが IoT Hub でイベント ハブと互換性のあるエンドポイントに接続できるようにします。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **WindowsAzure.ServiceBus** を検索し、**[インストール]** を選択して、使用条件に同意します。 この手順により、[Azure Service Bus][lnk-servicebus-nuget] のダウンロードとインストールが実行され、その参照とすべての依存関係が追加されます。 このパッケージは、アプリケーションが IoT Hub でイベント ハブと互換性のあるエンドポイントに接続できるようにします。
 
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     using System.Threading;
     ```
 
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、「IoT Hub の作成」セクションで作成したハブの接続文字列に置き換えてください。
+1. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、「IoT Hub の作成」セクションで作成したハブの接続文字列に置き換えてください。
 
     ```csharp
     static string connectionString = "{iothub connection string}";
@@ -82,7 +83,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     static EventHubClient eventHubClient;
     ```
 
-6. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp
     private static async Task ReceiveMessagesFromDeviceAsync(string partition, CancellationToken ct)
@@ -102,7 +103,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
     このメソッドは、**EventHubReceiver** インスタンスを使用して、IoT Hub のすべてのデバイスからクラウドへの受信パーティションからメッセージを受け取ります。 **EventHubReceiver** オブジェクトを作成するときの `DateTime.Now` パラメーターの渡し方に注目してください。これによって、起動後に送信されたメッセージのみを受信するようにしています。 このフィルターは、現在のメッセージのセットを表示できるので、テスト環境で便利です。 運用環境では、すべてのメッセージがコードによって処理されるようにする必要があります。 詳細については、[IoT Hub のデバイスからクラウドへのメッセージを処理する方法][lnk-process-d2c-tutorial]に関するチュートリアルを参照してください。
 
-7. 最後に、 **Main** メソッドに次の行を追加します。
+1. 最後に、**Main** メソッドに次の行を追加します。
 
     ```csharp
     Console.WriteLine("Receive messages. Ctrl-C to exit.\n");
@@ -123,7 +124,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     foreach (string partition in d2cPartitions)
     {
         tasks.Add(ReceiveMessagesFromDeviceAsync(partition, cts.Token));
-    }  
+    }
     Task.WaitAll(tasks.ToArray());
     ```
 
@@ -135,18 +136,18 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
     ![New Visual C# Windows Classic Desktop project][10b]
 
-2. ソリューション エクスプローラーで **SimulatedDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
+1. ソリューション エクスプローラーで **SimulatedDevice** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。
 
-3. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。その後、**[インストール]** を選択し、**Microsoft.Azure.Devices.Client** パッケージをインストールして使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK NuGet パッケージ][lnk-device-nuget]への参照とその依存関係が追加されます。
+1. **[NuGet パッケージ マネージャー]** ウィンドウで **[参照]** を選択し、**Microsoft.Azure.Devices.Client** を検索します。その後、**[インストール]** を選択し、**Microsoft.Azure.Devices.Client** パッケージをインストールして使用条件に同意します。 この手順により、パッケージのダウンロードとインストールが実行され、[Azure IoT device SDK NuGet パッケージ][lnk-device-nuget]への参照とその依存関係が追加されます。
 
-4. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
+1. **Program.cs** ファイルの先頭に次の `using` ステートメントを追加します。
 
     ```csharp
     using Microsoft.Azure.Devices.Client;
     using Newtonsoft.Json;
     ```
 
-5. **Program** クラスに次のフィールドを追加します。 `{iot hub hostname}` は、「IoT ハブの作成」セクションで取得した IoT ハブ ホスト名に置き換えます。 `{device key}` は、「デバイス ID の作成」セクションで取得したデバイス キーに置き換えます。
+1. **Program** クラスに次のフィールドを追加します。 `{iot hub hostname}` は、「IoT ハブの作成」セクションで取得した IoT ハブ ホスト名に置き換えます。 `{device key}` は、「デバイス ID の作成」セクションで取得したデバイス キーに置き換えます。
 
     ```csharp
     static DeviceClient deviceClient;
@@ -154,7 +155,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
     static string deviceKey = "{device key}";
     ```
 
-6. **Program** クラスに次のメソッドを追加します。
+1. **Program** クラスに次のメソッドを追加します。
 
     ```csharp
     private static async void SendDeviceToCloudMessagesAsync()
@@ -190,7 +191,7 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
     このメソッドは、デバイスからクラウドへの新しいメッセージを 1 秒おきに送信します。 このメッセージには、JSON 形式でシリアル化されたオブジェクトが、デバイス ID、ランダムに生成された番号と共に含まれ、これによって温度センサーと湿度センサーがシミュレートされます。
 
-7. 最後に、 **Main** メソッドに次の行を追加します。
+1. 最後に、**Main** メソッドに次の行を追加します。
 
     ```csharp
     Console.WriteLine("Simulated device\n");
@@ -215,15 +216,15 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 
     ![Startup project properties][41]
 
-2. **F5** キーを押して両方のアプリケーションを実行します。 デバイス アプリから IoT ハブに送信されたメッセージは、**SimulatedDevice** アプリのコンソール出力に表示されます。 IoT Hub が受信したメッセージは、 **ReadDeviceToCloudMessages** アプリのコンソール出力に表示されます。
+1. **F5** キーを押して両方のアプリケーションを実行します。 デバイス アプリから IoT ハブに送信されたメッセージは、**SimulatedDevice** アプリのコンソール出力に表示されます。 IoT Hub が受信したメッセージは、 **ReadDeviceToCloudMessages** アプリのコンソール出力に表示されます。
 
     ![Console output from apps][42]
 
-3. [Azure Portal][lnk-portal] の **[使用状況]** タイルには、IoT Hub に送信されたメッセージ数が表示されます。
+1. [Azure Portal][lnk-portal] の **[使用状況]** タイルには、IoT Hub に送信されたメッセージ数が表示されます。
 
     ![Azure portal Usage tile][43]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Portal で IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 デバイス アプリでデバイスからクラウドへのメッセージを IoT ハブに送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。
 
@@ -243,7 +244,6 @@ IoT Hub の作成は以上です。以降の作業に必要なホスト名と Io
 [43]: ./media/iot-hub-csharp-csharp-getstarted/usage.png
 [10a]: ./media/iot-hub-csharp-csharp-getstarted/create-receive-csharp1.png
 [10b]: ./media/iot-hub-csharp-csharp-getstarted/create-device-csharp1.png
-
 
 <!-- Links -->
 [lnk-process-d2c-tutorial]: iot-hub-csharp-csharp-process-d2c.md

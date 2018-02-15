@@ -11,13 +11,13 @@ ms.assetid:
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
-ms.date: 08/17/2017
+ms.date: 01/31/2018
 ms.author: danlep
-ms.openlocfilehash: 2880114bb8f094a70c95fa3117dcfab6711aad9b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 014fab967a8d0cb97ec584e42394c531a09d217c
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="hpc-batch-and-big-compute-solutions-using-azure-vms"></a>Azure VM を使用した HPC、Batch、および Big Compute ソリューション
 

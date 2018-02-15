@@ -1,26 +1,25 @@
----
+﻿---
 title: "Actions と NotActions - Azure ロールベースのアクセス制御 (RBAC) | Microsoft Docs"
 description: "このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。 ロールは継続的に追加されるので、ドキュメントが最新かどうか確認してください。"
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: curtand
 manager: mtillman
 editor: 
-ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
 ms.service: active-directory
-ms.devlang: na
+ms.devlang: 
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 06/28/2017
-ms.author: andredm
-ms.reviewer: 
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e7c563547f04a16a1059ed709d9ded25d60792f
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 01/30/2018
+ms.author: curtand
+ms.reviewer: rqureshi
+ms.custom: it-pro
+ms.openlocfilehash: 43a958129b3c86f5e7a596b992d793a600c46dfd
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure ロールベースのアクセス制御の組み込みロール
 Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。 組み込みのロールの定義は変更できません。 ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md) を作成することができます。
@@ -55,7 +54,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [Data Factory Contributor](#data-factory-contributor) |Data Factory と Data Factory に含まれる子リソースを作成および管理できます。 |
 | [DevTest Labs User](#devtest-labs-user) |すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
 | [DNS Zone Contributor](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
-| [Document DB アカウントの共同作業者](#documentdb-account-contributor) |Azure Cosmos DB アカウントを管理できます |
+| [DocumentDB Account Contributor](#documentdb-account-contributor) |Azure Cosmos DB アカウントを管理できます |
 | [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) |Intelligent Systems アカウントを管理できます |
 | Logic App Contributor | ロジック アプリのあらゆる側面を管理できますが、新規作成はできません。 |
 | Logic App Operator |ロジック アプリ内で定義されたワークフローを開始および停止できます。 |
@@ -68,7 +67,9 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [Redis Cache Contributor](#redis-cache-contributor) |Redis キャッシュを管理できます |
 | [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) |Scheduler Job Collection を管理できます |
 | [Search Service Contributor](#search-service-contributor) |Search サービスを管理できます |
-| [Security Manager](#security-manager) |セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます |
+| [Security Admin](#security-administrator) | Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます |
+| [Security Manager](#security-manager) | セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます |
+| [Security Reader](#security-reader) | Security Center のみ: 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません |
 | [Site Recovery Contributor](#site-recovery-contributor) | Recovery Services コンテナーの Site Recovery を管理できます |
 | [Site Recovery Operator](#site-recovery-operator) | Recovery Services コンテナーでの Site Recovery のフェールオーバーとフェールバック操作を管理できます |
 | [Site Recovery Reader](#site-recovery-reader) | すべての Site Recovery 管理操作を表示できます  |
@@ -506,21 +507,50 @@ Search サービスを管理できます
 | Microsoft.Search/searchServices/* |検索サービスの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
+### <a name="security-administrator"></a>セキュリティ管理者
+Security Center のみ: セキュリティ ポリシーの表示、セキュリティ状態の表示、セキュリティ ポリシーの編集、アラートと推奨事項の表示、アラートと推奨事項の却下を行うことができます
+
+| **アクション** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |ロールとロール割り当ての読み取り |
+| Microsoft.Authorization/policyAssignments/* | ポリシーの割り当ての作成と管理 |
+| Microsoft.Authorization/policySetDefinitions/* | ポリシー セットの作成と管理 |
+| Microsoft.Authorization/policyDefinitions/* | ポリシー定義の作成と管理 |
+| Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
+| Microsoft.operationalInsights/workspaces/*/read | Log Analytics のデータの表示 |
+| Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
+| Microsoft.Security/*/read | セキュリティ コンポーネントとポリシーの読み取り |
+| Microsoft.Support/* |サポート チケットの作成と管理 |
+
 ### <a name="security-manager"></a>Security Manager
 セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます
 
 | **アクション** |  |
 | --- | --- |
 | Microsoft.Authorization/*/read |ロールとロール割り当ての読み取り |
-| Microsoft.ClassicCompute/*/read |従来のコンピューティング仮想マシンの構成情報の読み取り |
-| Microsoft.ClassicCompute/virtualMachines/*/write |仮想マシンの構成の書き込み |
+| Microsoft.ClassicCompute/*/read |従来の仮想マシンの構成情報の読み取り |
+| Microsoft.ClassicCompute/virtualMachines/*/write |従来の仮想マシンの構成の書き込み |
 | Microsoft.ClassicNetwork/*/read |従来のネットワークに関する構成情報の読み取り |
-| Microsoft.Insights/alertRules/* |アラート ルールの作成と管理 |
+| Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
 | Microsoft.ResourceHealth/availabilityStatuses/read |リソースの正常性の読み取り |
 | Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Security/* |セキュリティ コンポーネントおよびポリシーの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
+
+### <a name="security-reader"></a>セキュリティ閲覧者
+Security Center のみ: 推奨事項とアラート、セキュリティ ポリシー、セキュリティの状態を表示することはできますが、変更することはできません
+
+| **アクション** |  |
+| --- | --- |
+| Microsoft.Authorization/*/read |ロールとロール割り当ての読み取り |
+| Microsoft.Insights/alertRules/* | アラート ルールの作成と管理 |
+| Microsoft.operationalInsights/workspaces/*/read | Log Analytics のデータの表示 |
+| Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
+| Microsoft.Security/*/read | セキュリティ コンポーネントとポリシーの読み取り |
+| Microsoft.Support/* |サポート チケットの作成と管理 |
+| Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
 
 ### <a name="site-recovery-contributor"></a>Site Recovery Contributor
 Recovery Services コンテナーの作成と他のユーザーへのアクセス権の付与を除き、すべての Site Recovery 管理アクションを管理できます
@@ -872,3 +902,4 @@ Web サイトを管理できますが、接続されている Web プランは�
 * [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md): アクセスのニーズに合わせてカスタム ロールを作成する方法について説明します。
 * [アクセス変更履歴レポートの作成](role-based-access-control-access-change-history-report.md): RBAC でのロール割り当ての変更を追跡します。
 * [ロールベースのアクセス制御のトラブルシューティング](role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
+* [Azure Security Center におけるアクセス許可](../security-center/security-center-permissions.md)

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 04/25/2017
 ms.author: aedwin
-ms.openlocfilehash: 62a69aeb7499a961f95739fb3836942b670c7320
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7a480c77c93035e655606433aea2547a1c105cc
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="overview-of-reporting-apis-for-enterprise-customers"></a>企業ユーザー向けの Reporting API の概要
 Reporting API を使用すると、Enterprise Azure の顧客はプログラムで消費量および課金データを希望のデータ分析ツールに取り出すことができます。 
@@ -43,12 +43,15 @@ Reporting API を使用すると、Enterprise Azure の顧客はプログラム�
 
 * **Price Sheet** - [Price Sheet API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-pricesheet) を使用すると、指定された加入契約と請求期間に対する各測定に適用可能な課金率が提供されます。 
 
+## <a name="data-freshness"></a>データの鮮度
+上記のすべての API の応答では、Etag が返されます。 Etag の変更は、データが更新されたことを示します。  同じパラメーターを使用した同じ API の後続の呼び出しでは、キャプチャされた Etag と、http 要求のヘッダー内のキー “If-None-Match” を渡します。 データがそれ以上更新されていない場合は、応答の状態コードが "NotModified" になり、データは返されません。 Etag の変更がある場合、API は、要求された期間の完全なデータセットを返します。
+
 ## <a name="helper-apis"></a>Helper API
  **請求期間の一覧表示** - [Billing Periods API](https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-billing-periods) を使用すると、指定された加入契約の消費量データが含まれる請求期間の一覧が逆時系列順に返されます。 各期間には、BalanceSummary、UsageDetails、Marketplace Charges および Price Sheet の 4 セットのデータの API ルートを示すプロパティが含まれています。
 
 
 ## <a name="api-response-codes"></a>API 応答コード  
-|応答の状態コード|メッセージ|説明|
+|応答の状態コード|メッセージ|[説明]|
 |-|-|-|
 |200| OK|エラーなし|
 |401| 権限がありません| API キーが検出されない、正しくない、有効期限が切れている、など|

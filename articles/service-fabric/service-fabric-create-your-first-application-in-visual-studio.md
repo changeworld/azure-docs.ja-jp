@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: bdabdbbb3037f3325c107a4e6148873a923b4ded
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 2ecb8f8068043936d00f2c9752666490137414e3
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>C# で最初の Service Fabric ステートフル リライアブル サービス アプリケーションを作成する
 
@@ -81,6 +81,17 @@ Visual Studio で `F5` キーを押して、デバッグ用にアプリケーシ
 アプリケーションが起動すると、Visual Studio によって**診断イベント ビューアー**が自動的に呼び出されます。ここでは、サービスからのトレース出力を確認することができます。
    
 ![診断イベント ビューアー][5]
+
+>[!NOTE]
+>診断イベント ビューアーでの追跡はイベントによって自動的に開始されます。ただし、手動でこれを構成する必要がある場合は、最初に、プロジェクト **MyStatefulService** にある `ServiceEventSource.cs` ファイルを開きます。 `ServiceEventSource` クラスの先頭にある `EventSource` 属性の値をコピーします。 下の例のイベント ソースの名前は `"MyCompany-MyApplication-MyStatefulService"` ですが、これは状況によって異なる場合があります。
+>
+>![サービスのイベント ソース名の特定][service-event-source-name]
+>
+>次に、診断イベント ビューアーのタブにある歯車アイコンをクリックして、**[ETW プロバイダー]** ダイアログを開きます。 コピーしたイベント ソースの名前を **[ETW プロバイダー]** 入力ボックスに貼り付けます。 次に、**[適用]** ボタンをクリックします。 これにより、イベントのトレースが自動的に開始されます。
+>
+>![診断イベント ソース名の設定][setting-event-source-name]
+>
+>これで、[Diagnostics Events]\(診断イベント\) ウィンドウにイベントが表示されます。
 
 このクイックスタートで使用したステートフル サービス テンプレートでは、**MyStatefulService.cs** の `RunAsync` メソッドでインクリメントされているカウンター値が表示されます。
 
@@ -146,3 +157,5 @@ Reliable Services の詳細については、[こちら](service-fabric-reliable
 [sfe-delete-application]: ./media/service-fabric-create-your-first-application-in-visual-studio/sfe-delete-application.png
 [switch-cluster-mode]: ./media/service-fabric-create-your-first-application-in-visual-studio/switch-cluster-mode.png
 [cluster-setup-success-1-node]: ./media/service-fabric-get-started-with-a-local-cluster/cluster-setup-success-1-node.png
+[service-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/event-source-attribute-value.png
+[setting-event-source-name]: ./media/service-fabric-create-your-first-application-in-visual-studio/setting-event-source-name.png

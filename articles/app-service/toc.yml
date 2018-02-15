@@ -75,6 +75,8 @@
       href: app-service-local-cache-overview.md
     - name: 診断
       href: app-service-diagnostics.md
+    - name: OS とランタイムの修正プログラムの適用
+      href: app-service-patch-os-runtime.md
 - name: ハウツー ガイド
   items:
     - name: アプリの構成

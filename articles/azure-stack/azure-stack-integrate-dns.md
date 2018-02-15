@@ -2,29 +2,27 @@
 title: "Azure Stack とデータセンターの統合 - DNS"
 description: "Azure Stack の DNS をデータセンターの DNS と統合する方法について説明します。"
 services: azure-stack
-author: troettinger
+author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 10/10/2017
-ms.author: victorh
+ms.date: 01/31/2018
+ms.author: jeffgilb
+ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 40d6d4858ef2e3df61d04dc68c00e09c04f000e2
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 504cbabe6ea4b7ad71601186dac853515f8c4709
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack とデータセンターの統合 - DNS
-
-*適用先: Azure Stack 統合システム*
-
 Azure Stack の外部から Azure Stack エンドポイント (`portal`、`adminportal`、`management`、`adminmanagement` など) にアクセスできるようにするには、Azure Stack DNS サービスを、Azure Stack で使用したい DNS ゾーンをホストする DNS サーバーと統合する必要があります。
 
 ## <a name="azure-stack-dns-namespace"></a>Azure Stack の DNS 名前空間
 Azure Stack をデプロイするときに、DNS に関するいくつかの重要な情報を入力する必要があります。
 
 
-|フィールド  |Description  |例|
+|フィールド  |[説明]  |例|
 |---------|---------|---------|
 |リージョン|Azure Stack のデプロイの地理的な場所。|`east`|
 |外部ドメイン名|Azure Stack のデプロイに使用したいゾーンの名前。|`cloud.fabrikam.com`|
@@ -138,6 +136,6 @@ DNS 名を Azure Stack デプロイの外部から解決できるようにする
 
 ほとんどの DNS レジストラーでは、委任を実行するために 2 つ以上の DNS サーバーを指定する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-[Azure Stack とデータセンターの統合 - ID](azure-stack-integrate-identity.md)
+[ファイアウォールの統合](azure-stack-firewall.md)

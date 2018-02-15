@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
-ms.openlocfilehash: 20614aaabc05513e93eb001c1676a73f85003947
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d58baa89c9d11b6b7a6bbb3b53974184ef1903b5
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="azure-ad-connect-sync-understand-and-customize-synchronization"></a>Azure AD Connect sync: 同期を理解してカスタマイズする
 Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、Azure AD Connect の主要コンポーネントです。 オンプレミス環境と Azure AD 間の ID データの同期に関連するすべての操作を処理します。 Azure AD Connect Sync は、Azure Active Directory Connector で構成された DirSync、Azure AD Sync、Forefront Identity Manager の後継となります。
 
 このトピックは **Azure AD Connect 同期** (別名: **同期エンジン**) のホームであり、関連する他のすべてのトピックへのリンクを示します。 Azure AD Connect へのリンクについては、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
 
-同期サービスは、オンプレミスの **Azure AD Connect 同期** コンポーネントと、**Azure AD Connect 同期サービス**と呼ばれる Azure AD のサービス側の、2 つのコンポーネントで構成されます。 
+同期サービスは、オンプレミスの **Azure AD Connect 同期** コンポーネントと、**Azure AD Connect 同期サービス**と呼ばれる Azure AD のサービス側の、2 つのコンポーネントで構成されます。
 
 ## <a name="azure-ad-connect-sync-topics"></a>Azure AD Connect Sync のトピック
-| Topic | 内容 |
+| トピック | 内容 |
 | --- | --- |
 | **Azure AD Connect sync の基礎** | |
 | [アーキテクチャの概要](active-directory-aadconnectsync-understanding-architecture.md) |同期エンジンを初めて使うユーザーのために、アーキテクチャと用語について説明します。 |
@@ -49,6 +49,7 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 | [パスワード同期の実装](active-directory-aadconnectsync-implement-password-synchronization.md) |パスワード同期のしくみ、実装方法、および運用とトラブルシューティングについて説明します。 |
 | [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md) |Azure AD Connect のデバイスの書き戻しのしくみについて説明します。 |
 | [ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) |独自のカスタム属性で Azure AD スキーマを拡張する方法について説明します。 |
+| [Office 365 の PreferredDataLocation](active-directory-aadconnectsync-feature-preferreddatalocation.md) |ユーザーの Office 365 リソースをユーザーと同じリージョンに配置する方法について説明します。 |
 | **同期サービス** | |
 | [Azure AD Connect 同期サービスの機能](active-directory-aadconnectsyncservice-features.md) |同期サービス側と、Azure AD で同期の設定を変更する方法について説明します。 |
 | [重複属性の回復性](active-directory-aadconnectsyncservice-duplicate-attribute-resiliency.md) |**userPrincipalName** と **proxyAddresses** の重複した属性値の回復性を有効にして使用する方法について説明します。 |
@@ -64,4 +65,3 @@ Azure Active Directory Connect 同期サービス (Azure AD Connect Sync) は、
 
 ## <a name="additional-resources"></a>その他のリソース
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

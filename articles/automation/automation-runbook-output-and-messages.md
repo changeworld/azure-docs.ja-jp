@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: magoedte;bwren
-ms.openlocfilehash: 415eddaec9702a42ceee51858a39840fcd6a202b
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 540dca5416367f39d6132ae306dd1e44ec0561d5
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
 
 以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の両方の場合の、Azure Portal での各ストリームとその動作の簡単な説明を示します。 各ストリームの詳細については、後続のセクションで説明します。
 
-| ストリーム | [説明] | 公開先 | テスト |
+| ストリーム | 説明 | 公開先 | テスト |
 |:--- |:--- |:--- |:--- |
 | 出力 |他の Runbook によって使用されることを目的とするオブジェクト。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 警告 |ユーザー向けの警告メッセージ。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
@@ -95,11 +95,11 @@ Runbook を発行したら、それを開始する前に、詳細ストリーム
        Write-Output $output
     }
 
-グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook で出力の種類を宣言するには、**[入力と出力]** メニュー オプションを選択し、出力の種類の名前を入力します。 親 Runbook から参照するときに簡単に識別できるように、完全な .NET クラス名を使用することをお勧めします。 これにより、そのクラスのすべてのプロパティが Runbook のデータ バスに公開され、そのプロパティを条件付きロジックやログ記録に使用したり、Runbook 内の他のアクティビティの値として参照したりする際に柔軟性が高まります。<br> ![Runbook Input and Output option](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
+グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook で出力の種類を宣言するには、**[入力と出力]** メニュー オプションを選択し、出力の種類の名前を入力します。 親 Runbook から参照するときに簡単に識別できるように、完全な .NET クラス名を使用することをお勧めします。 これにより、そのクラスのすべてのプロパティが Runbook のデータ バスに公開され、そのプロパティを条件付きロジックやログ記録に使用したり、Runbook 内の他のアクティビティの値として参照したりする際に柔軟性が非常に高まります。<br> ![Runbook Input and Output option](media/automation-runbook-output-and-messages/runbook-menu-input-and-output-option.png)
 
-次の例には、この機能を説明するために 2 つのグラフィカル Runbook があります。 モジュール式の Runbook デザイン モデルを適用する場合は、"*認証 Runbook テンプレート*" として機能する 1 つの Runbook で、実行アカウントを使用した Azure での認証を管理します。 通常は特定のシナリオを自動化するためのコア ロジックを実行する 2 つ目の Runbook は、ここでは " *認証 Runbook テンプレート* " を実行し、結果を **[テスト]** 出力ウィンドウに表示します。  通常の状況では、この Runbook で子 Runbook からの出力を利用して、リソースに対する操作を行います。    
+次の例には、この機能を説明するために 2 つのグラフィカル Runbook があります。 モジュール式の Runbook デザイン モデルを適用する場合は、"*認証 Runbook テンプレート*" として機能する 1 つの Runbook で、実行アカウントを使用した Azure での認証を管理します。 通常は特定のシナリオを自動化するためのコア ロジックを実行する 2 つ目の Runbook は、ここでは " *認証 Runbook テンプレート* " を実行し、結果を **[テスト]** 出力ウィンドウに表示します。 通常の状況では、この Runbook で子 Runbook からの出力を利用して、リソースに対する操作を行います。    
 
-**AuthenticateTo-Azure** Runbook の基本的なロジックは、次のとおりです。<br> ![Authenticate Runbook Template Example](media/automation-runbook-output-and-messages/runbook-authentication-template.png)時の両方の場合の、Azure 管理ポータルでの各ストリームとその動作の簡単な説明を示します。  
+**AuthenticateTo-Azure** Runbook の基本的なロジックは、次のとおりです。<br> ![Authenticate Runbook Template Example](media/automation-runbook-output-and-messages/runbook-authentication-template.png)。  
 
 出力の種類は *Microsoft.Azure.Commands.Profile.Models.PSAzureContext* で、認証プロファイルのプロパティが返されます。<br> ![Runbook Output Type Example](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png) 
 
@@ -149,7 +149,7 @@ Runbook を (Azure ポータルの Runbook の [構成] タブで) 進捗状況�
 ## <a name="preference-variables"></a>ユーザー設定変数
 Windows PowerShell では [ユーザー設定変数](http://technet.microsoft.com/library/hh847796.aspx) を使用して、異なる出力ストリームに送信されるデータへの応答方法を決定します。 これらの変数を Runbook で設定することで、異なるストリームに送信されるデータへの応答方法を制御できます。
 
-次の表は、Runbook で使用できるユーザー設定変数と、それらの有効値と既定値を示しています。 この表には、Runbook で有効な値のみが含まれることに注意してください。 Windows PowerShell を Azure Automation の外部で使用する場合は、ユーザー設定変数で有効なその他の値があります。
+次の表は、Runbook で使用できるユーザー設定変数と、それらの有効値と既定値を示しています。 この表には、Runbook で有効な値のみが含まれています。 Windows PowerShell を Azure Automation の外部で使用する場合は、ユーザー設定変数で有効なその他の値があります。
 
 | 変数 | 既定値 | 有効な値 |
 |:--- |:--- |:--- |
@@ -170,7 +170,7 @@ Windows PowerShell では [ユーザー設定変数](http://technet.microsoft.co
 Runbook ジョブの詳細は、Azure ポータルの Runbook の [ジョブ] タブで参照できます。 ジョブの [概要] には、ジョブと例外 (発生した場合) の一般情報だけでなく、入力パラメーターと[出力ストリーム](#Output)も表示されます。 詳細レコードおよび進捗状況レコードを記録するように Runbook が構成されている場合は、[履歴] に、[詳細ストリーム](#Verbose)と[進捗状況レコード](#Progress)だけでなく、[出力ストリーム](#Output)と[警告およびエラー ストリーム](#WarningError)からのメッセージも含まれます。
 
 ### <a name="windows-powershell"></a>Windows PowerShell
-Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。 このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。 [Any] を指定して、ジョブのすべてのストリームを返すことができます。
+Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microsoft.com/library/mt603476.aspx) コマンドレットを使用して、Runbook から出力とメッセージを取得できます。 このコマンドレットにはジョブの ID が必要であり、返すストリームを指定する Stream と呼ばれるパラメーターがあります。 **[Any]** を指定して、ジョブのすべてのストリームを返すことができます。
 
 次の例は、サンプル Runbook を開始し、完了するまで待機します。 完了すると、その出力ストリームがジョブから収集されます。
 
@@ -194,24 +194,24 @@ Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microso
     
 
 ### <a name="graphical-authoring"></a>グラフィカル作成
-グラフィカル Runbook では、追加のログ記録はアクティビティ レベルのトレースの形式で使用できます。  トレースには Basic および Detailed の 2 つのレベルがあります。  Basic トレースでは、Runbook での各アクティビティの開始および終了時刻と、アクティビティの試行数および開始時刻など、アクティビティの再試行に関連する情報を確認できます。  Detailed トレースでは、各アクティビティの Basic トレースと入出力のデータを取得します。  現時点では詳細ストリームを使用してトレース レコードが書き込まれるため、トレースを有効にする場合は、詳細ログを有効にする必要があることに注意してください。  トレースが有効になっているグラフィカル Runbook では、Basic トレースは同じ目的を達成し、より有益であるため、進捗状況レコードを記録する必要はありません。
+グラフィカル Runbook では、追加のログ記録はアクティビティ レベルのトレースの形式で使用できます。 トレースには Basic および Detailed の 2 つのレベルがあります。 Basic トレースでは、Runbook での各アクティビティの開始および終了時刻と、アクティビティの試行数および開始時刻など、アクティビティの再試行に関連する情報を確認できます。 Detailed トレースでは、各アクティビティの Basic トレースと入出力のデータを取得します。 現時点では詳細ストリームを使用してトレース レコードが書き込まれるため、トレースを有効にする場合は、詳細ログを有効にする必要があります。 トレースが有効になっているグラフィカル Runbook では、Basic トレースは同じ目的を達成し、より有益であるため、進捗状況レコードを記録する必要はありません。
 
 ![グラフィカル作成のジョブ ストリーム ビュー](media/automation-runbook-output-and-messages/job-streams-view-blade.png)
 
-グラフィカル Runbook で詳細ログとトレースを有効にすると、より多くの情報が運用環境のジョブ ストリーム ビューで利用できることが上記のスクリーンショットから確認できます。  この追加情報は Runbook での運用環境の問題のトラブルシューティングに不可欠であるため、一般的なプラクティスではなく、その目的に合わせて有効にする必要があります。 トレース レコードは、特に多数存在させることができます。  グラフィカル Runbook のトレースで、Basic または Detailed トレースを構成したかどうかに応じてアクティビティごとに 2 個から 4 個のレコードを取得できます。  トラブルシューティングのための Runbook の進捗状況を追跡するためにこの情報が必要な場合を除き、トレースのオフを保持することが必要な場合があります。
+グラフィカル Runbook で詳細ログとトレースを有効にすると、より多くの情報が運用環境のジョブ ストリーム ビューで利用できることが前のスクリーンショットから確認できます。 この追加情報は Runbook での運用環境の問題のトラブルシューティングに不可欠であるため、一般的なプラクティスではなく、その目的に合わせて有効にする必要があります。 トレース レコードは、特に多数存在させることができます。 グラフィカル Runbook のトレースで、Basic または Detailed トレースを構成したかどうかに応じてアクティビティごとに 2 個から 4 個のレコードを取得できます。 トラブルシューティングのための Runbook の進捗状況を追跡するためにこの情報が必要な場合を除き、トレースのオフを保持することが必要な場合があります。
 
 **アクティビティ レベルのトレースを有効にするには、次の手順に従います。**
 
-1. Azure Portal で、Automation アカウントを開きます。
-2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
-3. [Runbook] ブレードで、Runbook の一覧からグラフィカル Runbook をクリックして選択します。
-4. 選択した Runbook の [設定] ブレードで、 **[ログとトレース]**をクリックします。
-5. [ログとトレース] ブレードで、[詳細レコードの記録] の下の **[オン]** をクリックして詳細ログを有効にし、[アクティビティ レベルのトレース] で、必要なトレースのレベルに基づいてトレース レベルを **[基本]** または **[詳細]** に変更します。<br>
+1. Azure ポータルで、Automation アカウントを開きます。
+2. **[プロセス オートメーション]** の **[Runbook]** を選択して、Runbook の一覧を開きます。
+3. [Runbook] ページで、Runbook の一覧からグラフィカル Runbook をクリックして選択します。
+4. **[設定]** の下の **[ログとトレース]** をクリックします。
+5. [ログとトレース] ページで、[詳細レコードの記録] の下の **[オン]** をクリックして詳細ログを有効にし、[アクティビティ レベルのトレース] で、必要なトレースのレベルに基づいてトレース レベルを **[基本]** または **[詳細]** に変更します。<br>
    
    ![グラフィカル作成の[ログ記録とトレース] ブレード](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
 ### <a name="microsoft-operations-management-suite-oms-log-analytics"></a>Microsoft Operations Management Suite (OMS) Log Analytics
-Automation からは、Runbook ジョブの状態とジョブ ストリームを Microsoft Operations Management Suite (OMS) Log Analytics ワークスペースに送信できます。  Log Analytics では、次のことが可能です。
+Automation からは、Runbook ジョブの状態とジョブ ストリームを Microsoft Operations Management Suite (OMS) Log Analytics ワークスペースに送信できます。 Log Analytics では、次のことが可能です。
 
 * Automation ジョブに関する情報を得る 
 * Runbook ジョブの状態 (失敗、中断など) に基づいて電子メールまたはアラートをトリガーする 

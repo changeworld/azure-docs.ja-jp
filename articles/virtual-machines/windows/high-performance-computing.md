@@ -11,13 +11,13 @@ ms.assetid:
 ms.service: virtual-machines-womdpws
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
-ms.date: 08/17/2017
+ms.date: 01/31/2018
 ms.author: danlep
-ms.openlocfilehash: 8251291bf2baea56a18745194aa310f174a916bd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ad082238c3ece2a770e3d4571575f7ba5b61ea0
+ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="hpc-batch-and-big-compute-solutions-using-azure-vms"></a>Azure VM を使用した HPC、Batch、および Big Compute ソリューション
 

@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 25f4cea1908a0f9bdf387ddfed5f29e6d19bdd20
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: c3621cb860339499089ebdf3c3581faf770f1fe3
+ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/03/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>透過的なゲートウェイとして動作する IoT Edge デバイスを作成する - プレビュー
 
@@ -104,12 +104,12 @@ IoT Edge デバイスをゲートウェイとして 構成するには、前の�
 
 上記のサンプル スクリプトにある次のファイル名を使用するとします。
 
-| 出力 | Bash スクリプト | PowerShell |
-| ------ | ----------- | ---------- |
-| デバイスの証明書 | `certs/new-edge-device.cert.pem` | `certs/new-edge-device.cert.pem` |
-| デバイスの秘密キー | `private/new-edge-device.cert.pem` | `private/new-edge-device.cert.pem` |
-| デバイスの証明書チェーン | `certs/new-edge-device-full-chain.cert.pem` | `certs/new-edge-device-full-chain.cert.pem` |
-| IoT Hub 所有者 CA | `certs/azure-iot-test-only.root.ca.cert.pem` | `RootCA.pem` |
+| 出力 | ファイル名 |
+| ------ | --------- |
+| デバイスの証明書 | `certs/new-edge-device.cert.pem` |
+| デバイスの秘密キー | `private/new-edge-device.cert.pem` |
+| デバイスの証明書チェーン | `certs/new-edge-device-full-chain.cert.pem` |
+| IoT Hub 所有者 CA | `certs/azure-iot-test-only.root.ca.cert.pem`  |
 
 IoT Edge ランタイムにデバイスと証明書の情報を提供します。 
  
@@ -177,7 +177,7 @@ OS レベルでこの手順を実行することは、Windows と Linux ディ�
 
 これら 2 つの手順によって、デバイス アプリケーションをゲートウェイ デバイスに接続できるようになります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [IoT Edge モジュールを開発するための要件と ツールについて理解します][lnk-module-dev]。
 
 [lnk-devicesdk]: ../iot-hub/iot-hub-devguide-sdks.md

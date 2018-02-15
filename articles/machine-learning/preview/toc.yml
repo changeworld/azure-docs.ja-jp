@@ -92,7 +92,7 @@
           href: deployment-setup-configuration.md
         - name: クラスターとサービスのスケーリング
           href: how-to-scale-clusters.md
-        - name: MLC クラスターでの SSL の設定
+        - name: MLC クラスターでの SSL の有効化
           href: how-to-setup-ssl-on-mlc.md
         - name: Web サービスのデプロイ
           href: model-management-service-deploy.md

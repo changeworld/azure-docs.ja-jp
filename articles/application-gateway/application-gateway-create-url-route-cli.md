@@ -1,125 +1,251 @@
 ---
-title: "URL ルーティング ルールを使用してアプリケーション ゲートウェイを作成する - Azure CLI 2.0 | Microsoft Docs"
-description: "このページでは、URL ルーティング ルールを使用してアプリケーション ゲートウェイを作成し、構成する方法について説明します。"
-documentationcenter: na
+title: "URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure CLI | Microsoft Docs"
+description: "Azure CLI を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。"
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/26/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 10d01d5d80e2d111d6b39598eed3612f80162b23
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0593e37def43770efad7e07b306d8290b0590a48
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="create-an-application-gateway-by-using-path-based-routing-with-azure-cli-20"></a>Azure CLI 2.0 でパスベースのルーティングを使用してアプリケーション ゲートウェイを作成する
+# <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-the-azure-cli"></a>Azure CLI を使用して URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
-> [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-url-route-portal.md)
-> * [Azure Resource Manager の PowerShell](application-gateway-create-url-route-arm-ps.md)
-> * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
+[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure CLI を使用して [URL パス ベースのルーティング規則](application-gateway-url-route-overview.md)を構成できます。 このチュートリアルでは、[仮想マシン スケール セット](../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md)を使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するようにルーティング規則を作成します。
 
-URL パスベースのルーティングを使用すると、HTTP 要求の URL パスに基づいてルートを関連付けできます。 アプリケーション ゲートウェイに記載されている URL に対して構成されたバックエンド サーバー プールへのルートがあるかどうかを調べて、定義されたプールにネットワーク トラフィックを送信します。 URL パスベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
+この記事では、次のことについて説明します:
 
-Azure Application Gateway には、基本ルールと URL パスベース ルールという 2 種類のルールがあります。 基本ルールの種類は、バックエンド プールにラウンド ロビン サービスを提供します。 パスベースのルールでは、適切なバックエンド プールを選択する際に、ラウンド ロビンによる分散だけでなく要求 URL のパス パターンも使用します。
+> [!div class="checklist"]
+> * ネットワークのセットアップ
+> * URL マップを含んだアプリケーション ゲートウェイの作成
+> * バックエンド プールを含んだ仮想マシン スケール セットの作成
 
-## <a name="scenario"></a>シナリオ
+![URL ルーティングの例](./media/application-gateway-create-url-route-cli/scenario.png)
 
-次の例では、アプリケーション ゲートウェイは、2 つのバックエンド サーバー プール (既定のサーバー プールとイメージ サーバー プール) を使用して contoso.com のトラフィックを処理します。
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-http://contoso.com/image* に対する要求は、イメージ サーバー プール (**imagesBackendPool**) にルーティングされます。 パス パターンが一致しない場合、アプリケーション ゲートウェイは既定のサーバー プール (**appGatewayBackendPool**) を選択します。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-![URL ルート](./media/application-gateway-create-url-route-cli/scenario.png)
+CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+## <a name="create-a-resource-group"></a>リソース グループの作成
 
-**Microsoft Azure コマンド プロンプト**を開き、サインインします。
+リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 [az group create](/cli/azure/group#create) を使用してリソース グループを作成します。
 
-```azurecli
-az login -u "username"
+次の例では、*myResourceGroupAG* という名前のリソース グループを *eastus* に作成します。
+
+```azurecli-interactive 
+az group create --name myResourceGroupAG --location eastus
 ```
 
-> [!NOTE]
-> aka.ms/devicelogin でのコード入力が必要なデバイス ログインのスイッチを用いずに、`az login` を使用することもできます。
+## <a name="create-network-resources"></a>ネットワーク リソースを作成する 
 
-上記のコマンドを入力すると、コードが表示されます。 ブラウザーで https://aka.ms/devicelogin に移動して、サインイン プロセスを続行します。
+[az network vnet create](/cli/azure/network/vnet#az_net) を使用して、*myVNet* という名前の仮想ネットワークと *myAGSubnet* という名前のサブネットを作成します。 次に、[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使用して、バックエンド サーバーに必要な *myBackendSubnet* という名前のサブネットを追加できます。 [az network public-ip create](/cli/azure/public-ip#az_network_public_ip_create) を使用して *myAGPublicIPAddress* という名前のパブリック IP アドレスを作成します。
 
-![デバイスのログインを表示するコマンド プロンプト][1]
+```azurecli-interactive
+az network vnet create \
+  --name myVNet \
+  --resource-group myResourceGroupAG \
+  --location eastus \
+  --address-prefix 10.0.0.0/16 \
+  --subnet-name myAGSubnet \
+  --subnet-prefix 10.0.1.0/24
+az network vnet subnet create \
+  --name myBackendSubnet \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --address-prefix 10.0.2.0/24
+az network public-ip create \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress
+```
 
-ブラウザーで、受け取ったコードを入力します。 これにより、サインイン ページにリダイレクトされます。
+## <a name="create-the-application-gateway-with-url-map"></a>URL マップを含んだアプリケーション ゲートウェイの作成
 
-![ブラウザーにコードを入力][2]
+[az network application-gateway create](/cli/azure/application-gateway#create) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイを作成することができます。 Azure CLI でアプリケーション ゲートウェイを作成するときは、キャパシティ、SKU、HTTP 設定などの構成情報を指定します。 このアプリケーション ゲートウェイを、先ほど作成した *myAGSubnet* と *myAGPublicIPAddress* に割り当てます。 
 
-コードを入力してサインインし、ブラウザーを閉じて続行します。
+```azurecli-interactive
+az network application-gateway create \
+  --name myAppGateway \
+  --location eastus \
+  --resource-group myResourceGroupAG \
+  --vnet-name myVNet \
+  --subnet myAGsubnet \
+  --capacity 2 \
+  --sku Standard_Medium \
+  --http-settings-cookie-based-affinity Disabled \
+  --frontend-port 80 \
+  --http-settings-port 80 \
+  --http-settings-protocol Http \
+  --public-ip-address myAGPublicIPAddress
+```
 
-![正常にサインイン][3]
+ アプリケーション ゲートウェイの作成には数分かかる場合があります。 アプリケーション ゲートウェイを作成すると、新たに次の機能が確認できます。
 
-## <a name="add-a-path-based-rule-to-an-existing-application-gateway"></a>パスベース ルールを既存のアプリケーション ゲートウェイに追加する
+- *appGatewayBackendPool* - アプリケーション ゲートウェイには、少なくとも 1 つのバックエンド アドレス プールが必要です。
+- *appGatewayBackendHttpSettings* - 通信に使用するポート 80 と HTTP プロトコルを指定します。
+- *appGatewayHttpListener* - *appGatewayBackendPool* に関連付けられている既定のリスナー。
+- *appGatewayFrontendIP* -*myAGPublicIPAddress* を *appGatewayHttpListener* に割り当てます。
+- *rule1* - *appGatewayHttpListener* に関連付けられている既定のルーティング規則。
 
-次の手順では、パスベース ルールを既存のアプリケーション ゲートウェイに追加する方法を説明します。
-### <a name="create-a-new-back-end-pool"></a>新しいバックエンド プールを作成する
 
-バックエンド プールでネットワーク トラフィックを負荷分散するように、アプリケーション ゲートウェイの設定 **imagesBackendPool** を構成します。 この例では、新しいバックエンド プールに対して別のバックエンド プール設定を構成します。 各バックエンド プールは、独自の設定にすることができます。 パスベース ルールでは、適切なバックエンド プール メンバーにトラフィックをルーティングするために、バックエンド HTTP 設定を使用します。 これによって、バックエンド プール メンバーにトラフィックを送信する際に使用されるプロトコルとポートが決定されます。 バックエンド HTTP 設定は、Cookie ベースのセッションを使用するかどうかも決定します。  有効にした場合、Cookie ベースのセッション アフィニティは、各パケットに対する以前の要求と同じバックエンドにトラフィックを送信します。
+### <a name="add-image-and-video-backend-pools-and-port"></a>イメージおよびビデオのバックエンド プールとポートの追加
+
+*imagesBackendPool* および *videoBackendPool* という名前のバックエンド プールをアプリケーション ゲートウェイに追加するには、[az network application-gateway address-pool create](/cli/azure/application-gateway#az_network_application_gateway_address-pool_create) を使用します。 プールのフロントエンド ポートは、[az network application-gateway frontend-port create](/cli/azure/application-gateway#az_network_application_gateway_frontend_port_create) を使用して追加します。 
 
 ```azurecli-interactive
 az network application-gateway address-pool create \
---gateway-name AdatumAppGateway \
---name imagesBackendPool  \
---resource-group myresourcegroup \
---servers 10.0.0.6 10.0.0.7
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name imagesBackendPool
+az network application-gateway address-pool create \
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name videoBackendPool
+az network application-gateway frontend-port create \
+  --port 8080 \
+  --gateway-name myAppGateway \
+  --resource-group myResourceGroupAG \
+  --name port8080
 ```
 
-### <a name="create-a-new-front-end-port-for-an-application-gateway"></a>アプリケーション ゲートウェイに新しいフロントエンド ポートを作成する
+### <a name="add-backend-listener"></a>バックエンド リスナーの追加
 
-フロントエンド ポート構成オブジェクトはリスナーで使用されます。これを使用して、アプリケーション ゲートウェイのリスナーがトラフィックをリッスンするポートを定義します。
+[az network application-gateway http-listener create](/cli/azure/application-gateway#az_network_application_gateway_http_listener_create) を使用して、トラフィックのルーティングに必要な *backendListener* という名前のバックエンド リスナーを追加します。
+
 
 ```azurecli-interactive
-az network application-gateway frontend-port create --port 82 --gateway-name AdatumAppGateway --resource-group myresourcegroup --name port82
+az network application-gateway http-listener create \
+  --name backendListener \
+  --frontend-ip appGatewayFrontendIP \
+  --frontend-port port8080 \
+  --resource-group myResourceGroupAG \
+  --gateway-name myAppGateway
 ```
 
-### <a name="create-a-new-listener"></a>新しいリスナーを作成する
+### <a name="add-url-path-map"></a>URL パス マップの追加
 
-この手順では、着信ネットワーク トラフィックを受信するために使用するポートとパブリック IP アドレスについて、リスナーを構成します。 次の例では、先ほど構成したフロントエンド IP 構成、フロントエンド ポート構成、プロトコル (http または https、大文字と小文字は区別されます) を使用して、リスナーを構成します。 この例のリスナーは、このシナリオで先ほど作成したパブリック IP アドレスを使って、ポート 82 で HTTP トラフィックをリッスンします。
-
-```azurecli-interactive
-az network application-gateway http-listener create --name imageListener --frontend-ip appGatewayFrontendIP  --frontend-port port82 --resource-group myresourcegroup --gateway-name AdatumAppGateway
-```
-
-### <a name="create-the-url-path-map"></a>URL パス マップを作成する
-
-この手順では、アプリケーション ゲートウェイが使用する相対 URL パスを構成します。これにより、パスと着信トラフィックを処理するために割り当てられたバックエンド プールとの間のマッピングが定義されます。
-
-> [!IMPORTANT]
-> 各パスは "/" で始まる必要があり、アスタリスクを配置できるのは末尾だけです。 有効な例としては、/xyz、/xyz*、または /xyz/* があります。 パス照合に提供する文字列では、最初の "?" または "#" の後にテキストを含めません (これらの文字は許可されません)。 
-
-次の例では、パス /images/* に対し、トラフィックをバックエンド **imagesBackendPool** にルーティングするルールを作成します。 このルールにより、URL の各セットのトラフィックがバックエンドに確実にルーティングされます。 たとえば、http://adatum.com/images/figure1.jpg は **imagesBackendPool** にルーティングされます。 パスがあらかじめ定義されているパス ルールのいずれとも一致しない場合、ルール パス マップ構成では、既定のバックエンド アドレス プールも構成します。 たとえば、http://adatum.com/shoppingcart/test.html は **pool1** にルーティングされます。このプールが、不一致のトラフィックの既定のプールとして定義されているためです。
+URL パス マップにより、特定の URL が特定のバックエンド プールに確実にルーティングされます。 [az network application-gateway url-path-map create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_create) と [az network application-gateway url-path-map rule create](/cli/azure/application-gateway#az_network_application_gateway_url_path_map_rule_create) を使用して、*imagePathRule* および *videoPathRule* という名前の URI パス マップを作成します。
 
 ```azurecli-interactive
 az network application-gateway url-path-map create \
---gateway-name AdatumAppGateway \
---name imagespathmap \
---paths /images/* \
---resource-group myresourcegroup2 \
---address-pool imagesBackendPool \
---default-address-pool appGatewayBackendPool \
---default-http-settings appGatewayBackendHttpSettings \
---http-settings appGatewayBackendHttpSettings \
---rule-name images
+  --gateway-name myAppGateway \
+  --name myPathMap \
+  --paths /images/* \
+  --resource-group myResourceGroupAG \
+  --address-pool imagesBackendPool \
+  --default-address-pool appGatewayBackendPool \
+  --default-http-settings appGatewayBackendHttpSettings \
+  --http-settings appGatewayBackendHttpSettings \
+  --rule-name imagePathRule
+az network application-gateway url-path-map rule create \
+  --gateway-name myAppGateway \
+  --name videoPathRule \
+  --resource-group myResourceGroupAG \
+  --path-map-name myPathMap \
+  --paths /video/* \
+  --address-pool videoBackendPool
 ```
 
-## <a name="next-steps"></a>次のステップ
+### <a name="add-routing-rule"></a>ルーティング規則の追加
 
-Secure Sockets Layer (SSL) オフロードの詳細については、[SSL オフロード用のアプリケーション ゲートウェイの構成](application-gateway-ssl-cli.md)に関するページを参照してください。
+ルーティング規則は、URL マップを、作成したリスナーに関連付けます。 [az network application-gateway rule create](/cli/azure/application-gateway#az_network_application_gateway_rule_create) を使用して、*rule2* という名前の規則を追加することができます。
 
+```azurecli-interactive
+az network application-gateway rule create \
+  --gateway-name myAppGateway \
+  --name rule2 \
+  --resource-group myResourceGroupAG \
+  --http-listener backendListener \
+  --rule-type PathBasedRouting \
+  --url-path-map myPathMap \
+  --address-pool appGatewayBackendPool
+```
 
-[scenario]: ./media/application-gateway-create-url-route-cli/scenario.png
-[1]: ./media/application-gateway-create-url-route-cli/figure1.png
-[2]: ./media/application-gateway-create-url-route-cli/figure2.png
-[3]: ./media/application-gateway-create-url-route-cli/figure3.png
+## <a name="create-virtual-machine-scale-sets"></a>仮想マシン スケール セットの作成
+
+この例では、作成した 3 つのバックエンド プールをサポートする 3 つの仮想マシン スケール セットを作成します。 作成するスケール セットの名前は、*myvmss1*、*myvmss2*、および *myvmss3* です。 各スケール セットには、NGINX をインストールする 2 つの仮想マシン インスタンスが含まれています。
+
+```azurecli-interactive
+for i in `seq 1 3`; do
+  if [ $i -eq 1 ]
+  then
+    poolName="appGatewayBackendPool" 
+  fi
+  if [ $i -eq 2 ]
+  then
+    poolName="imagesBackendPool"
+  fi
+  if [ $i -eq 3 ]
+  then
+    poolName="videoBackendPool"
+  fi
+  az vmss create \
+    --name myvmss$i \
+    --resource-group myResourceGroupAG \
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --admin-password Azure123456! \
+    --instance-count 2 \
+    --vnet-name myVNet \
+    --subnet myBackendSubnet \
+    --vm-sku Standard_DS2 \
+    --upgrade-policy-mode Automatic \
+    --app-gateway myAppGateway \
+    --backend-pool-name $poolName
+done
+```
+
+### <a name="install-nginx"></a>NGINX のインストール
+
+```azurecli-interactive
+for i in `seq 1 3`; do
+  az vmss extension set \
+    --publisher Microsoft.Azure.Extensions \
+    --version 2.0 \
+    --name CustomScript \
+    --resource-group myResourceGroupAG \
+    --vmss-name myvmss$i \
+    --settings '{ "fileUris": ["https://raw.githubusercontent.com/davidmu1/samplescripts/master/install_nginx.sh"], "commandToExecute": "./install_nginx.sh" }'
+done
+```
+
+## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
+
+アプリケーション ゲートウェイのパブリック IP アドレスを取得するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用できます。 そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、*http://40.121.222.19*、*http://40.121.222.19:8080/images/test.htm*、*http://40.121.222.19:8080/video/test.htm* です。
+
+```azurepowershell-interactive
+az network public-ip show \
+  --resource-group myResourceGroupAG \
+  --name myAGPublicIPAddress \
+  --query [ipAddress] \
+  --output tsv
+```
+
+![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-create-url-route-cli/application-gateway-nginx.png)
+
+URL を http://<ip-address>:8080/video/test.html (ベース URL の末尾) に変更します。次のように表示されます。
+
+![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/application-gateway-create-url-route-cli/application-gateway-nginx-images.png)
+
+URL を http://<ip-address>:8080/video/test.html に変更します。次のように表示されます。
+
+![アプリケーション ゲートウェイでのビデオ URL のテスト](./media/application-gateway-create-url-route-cli/application-gateway-nginx-video.png)
+
+## <a name="next-steps"></a>次の手順
+
+このチュートリアルで学習した内容は次のとおりです。
+
+> [!div class="checklist"]
+> * ネットワークのセットアップ
+> * URL マップを含んだアプリケーション ゲートウェイの作成
+> * バックエンド プールを含んだ仮想マシン スケール セットの作成
+
+アプリケーション ゲートウェイとその関連リソースの詳細を確認するには、ハウツー記事に進みます。

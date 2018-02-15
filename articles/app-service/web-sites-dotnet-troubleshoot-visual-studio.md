@@ -3,8 +3,8 @@ title: "Visual Studio を使用した Azure App Service のトラブルシュー
 description: "Visual Studio 2013 に組み込まれているリモート デバッグ、トレース、ログ記録のツールを使用して、Azure の Web アプリケーションのトラブルシューティングを行う方法について説明します。"
 services: app-service
 documentationcenter: .net
-author: tdykstra
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.service: app-service
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
-ms.author: rachelap
-ms.openlocfilehash: 1e3aff1898665c834a70e6c49f23e408a508b10a
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.author: cephalin
+ms.openlocfilehash: 6b1d5694c4d80a4db584b0c76a044dd596c5d553
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のトラブルシューティング
 ## <a name="overview"></a>概要
@@ -117,9 +117,9 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 リモート デバッグは、Visual Studio の各 Express Edition では機能しません。
 
-ここでは、[Azure に ASP.NET Web アプリを作成する][app-service-web-get-started-dotnet.md] で作成したプロジェクトを使用して、リモートでデバッグする方法を説明します。
+ここでは、「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet.md)」で作成したプロジェクトを使用して、リモートでデバッグする方法を説明します。
 
-1. [Azure に ASP.NET Web アプリを作成する][app-service-web-get-started-dotnet.md] で作成した Web プロジェクトを開きます。
+1. 「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet.md)」で作成した Web プロジェクトを開きます。
 
 2. *Controllers\HomeController.cs* を開きます。
 
@@ -135,7 +135,7 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 5. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
 
-6. **[プロファイル]** ドロップダウン リストで、[Azure に ASP.NET Web アプリを作成する][app-service-web-get-started-dotnet.md] で使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
+6. **[プロファイル]** ドロップダウン リストで、「[Azure に ASP.NET Core Web アプリを作成する](app-service-web-get-started-dotnet.md)」で使用した同じプロファイルを選択します。 次に、[設定] をクリックします。
 
 7. **[発行]** ダイアログ ボックスで、**[設定]** タブをクリックし、**[構成]** を **[デバッグ]** に変更し、**[保存]** をクリックします。
 

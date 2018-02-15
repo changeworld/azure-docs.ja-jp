@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL Server 可用性グループ - Azure 仮想マシン - 前提条件 | Microsoft Docs"
 description: "このチュートリアルでは、Azure VM で SQL Server Always On 可用性グループを作成するための前提条件の構成方法について説明します。"
 services: virtual-machines
@@ -313,8 +313,8 @@ Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン
 
 | |インストール アカウント<br/> |sqlserver-0 <br/>SQL Server と SQL エージェント サービス アカウント |sqlserver-1<br/>SQL Server と SQL エージェント サービス アカウント
 | --- | --- | --- | ---
-|**First Name** | Install |SQLSvc1 | SQLSvc2
-|**User SamAccountName** | Install |SQLSvc1 | SQLSvc2
+|**First Name** |Install |SQLSvc1 | SQLSvc2
+|**User SamAccountName** |Install |SQLSvc1 | SQLSvc2
 
 次の手順に従って、各アカウントを作成します。
 

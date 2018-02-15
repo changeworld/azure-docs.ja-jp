@@ -2,17 +2,17 @@
 title: "Azure Event Grid による配信と再試行"
 description: "Azure Event Grid がイベントをどのように配信し、未配信メッセージをどのように処理するかについて説明します。"
 services: event-grid
-author: djrosanova
+author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/10/2018
-ms.author: darosa
-ms.openlocfilehash: fe9089334deceb38186add56ce3fb1d6ecc20363
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.date: 01/30/2018
+ms.author: tomfitz
+ms.openlocfilehash: cdf6a4e999d55196e8f4eac5695163a7e5a933de
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行 
 
@@ -58,11 +58,11 @@ Event Grid は、イベント配信に対して指数バックオフ再試行ポ
 6. 30 分
 7. 1 時間
 
-Event Grid は、すべての再試行間隔に小さなランダム化を追加します。
+Event Grid は、すべての再試行間隔に小さなランダム化を追加します。 1 時間より後は、イベント配信が 1 時間に 1 回再試行されます。
 
 ## <a name="retry-duration"></a>再試行期間
 
-プレビュー中の Azure Event Grid では、2 時間内に配信されないすべてのイベントは有効期限切れになっています。
+Azure Event Grid では、24 時間内に配信されないすべてのイベントは有効期限切れになります。
 
 ## <a name="next-steps"></a>次の手順
 

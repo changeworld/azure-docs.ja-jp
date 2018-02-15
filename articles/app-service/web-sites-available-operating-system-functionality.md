@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-ms.openlocfilehash: a5f022eca8f901388c9cf003f3320db1b9c49e6a
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 6b5939341ad05fb8f80415c5335c24d216fc2555
+ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 01/29/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべてのアプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
@@ -49,7 +49,7 @@ App Service には、ローカル ドライブやネットワーク ドライブ
 <a id="LocalDrives"></a>
 
 ### <a name="local-drives"></a>ローカル ドライブ
-根本的に、App Service は、Azure PaaS (Platform as a Service) インフラストラクチャ上で動作するサービスです。 したがって、仮想マシンに "接続" されるローカル ドライブは、Azure 上の worker ロールで使用するドライブと同じ種類です。 これには、オペレーティング システム ドライブ (D:\ ドライブ)、App Service のみが使用する (顧客はアクセスできない) Azure パッケージ cspkg ファイルが保存されるアプリケーション ドライブ、"ユーザー" ドライブ (C:\ ドライブ) があり、そのサイズは VM のサイズによって異なります。
+根本的に、App Service は、Azure PaaS (Platform as a Service) インフラストラクチャ上で動作するサービスです。 したがって、仮想マシンに "接続" されるローカル ドライブは、Azure 上の worker ロールで使用するドライブと同じ種類です。 これには、オペレーティング システム ドライブ (D:\ ドライブ)、App Service のみが使用する (顧客はアクセスできない) Azure パッケージ cspkg ファイルが保存されるアプリケーション ドライブ、"ユーザー" ドライブ (C:\ ドライブ) があり、そのサイズは VM のサイズによって異なります。 アプリケーションの成長に伴い、ディスク使用率を監視することが重要です。 ディスク クォータに達すると、アプリケーションに悪影響が及ぶ可能性があります。
 
 <a id="NetworkDrives"></a>
 

@@ -34,7 +34,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 ## <a name="features"></a>機能の比較
 次の表では、最善の選択ができるように、App Service、Cloud Services、Virtual Machines、および Service Fabric の機能を比較しています。 それぞれのホスティング方法に関する最新の SLA 情報については、 [Azure サービス レベル アグリーメント](https://azure.microsoft.com/support/legal/sla/)を参照してください。
 
-| Feature | App Service (Web Apps) | Cloud Services (Web ロール) | [Virtual Machines] | Service Fabric | メモ |
+| Feature | App Service (Web Apps) | Cloud Services (Web ロール) | Virtual Machines | Service Fabric | メモ |
 | --- | --- | --- | --- | --- | --- |
 | ほぼ即時のデプロイ |○ | | |○ |アプリケーションまたはアプリケーションの更新プログラムを Cloud Services にデプロイしたり、VM を作成したりするには、最低でも数分かかります。一方、アプリケーションを Web アプリにデプロイする場合の所要時間は数秒です。 |
 | 再デプロイなしでの大型マシンへのスケールアップ |○ | | |○ | |

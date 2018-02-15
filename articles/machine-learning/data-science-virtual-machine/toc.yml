@@ -1,4 +1,5 @@
 - name: データ サイエンス仮想マシンのドキュメント
+  href: index.yml
   items: null
 - name: 概要
   expanded: true

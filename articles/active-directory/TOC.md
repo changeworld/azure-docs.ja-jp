@@ -83,6 +83,7 @@
 #### [グループにライセンスを割り当てる](active-directory-licensing-group-assignment-azure-portal.md)
 #### [グループでのライセンスに関する問題を特定して解決する](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
+#### [製品ライセンス間のユーザーの移行](active-directory-licensing-group-product-migration.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 #### [グループベースのライセンスの Azure PowerShell の例](active-directory-licensing-ps-examples.md)
 #### [Azure AD の製品およびサービス プランに関するリファレンス](active-directory-licensing-product-and-service-plan-reference.md)
@@ -200,8 +201,6 @@
 ##### [コネクタ](application-proxy-understand-connectors.md)
 ##### [セキュリティ](application-proxy-security-considerations.md)
 ##### [ネットワーク](application-proxy-network-topology-considerations.md)
-
-
 ##### [TMG または UAG からのアップグレード](application-proxy-transition-from-uag-tmg.md)
 
 #### 詳細な構成
@@ -212,6 +211,8 @@
 ##### [サイレント インストール](active-directory-application-proxy-silent-installation.md)
 ##### [カスタム ホーム ページ](application-proxy-office365-app-launcher.md)
 ##### [インライン リンクの変換](application-proxy-link-translation.md)
+##### [ワイルドカード アプリケーション](active-directory-application-proxy-wildcard.md)
+
 #### 発行に関するチュートリアル
 ##### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
@@ -293,8 +294,9 @@
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
-#### [コントロール](active-directory-conditional-access-controls.md)
+#### [条件](active-directory-conditional-access-conditions.md)
 #### [場所の条件](active-directory-conditional-access-locations.md)
+#### [コントロール](active-directory-conditional-access-controls.md)
 #### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)

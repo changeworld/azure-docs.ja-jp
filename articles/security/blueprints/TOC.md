@@ -17,8 +17,8 @@
 ### [セキュリティの技術的な機能](../azure-security-technical-capabilities.md)
 ### [Azure でのガバナンス](../governance-in-azure.md)
 ### [保存データの暗号化](../azure-security-encryption-atrest.md)
-### アーキテクチャのブループリント
-#### コンプライアンス - PCI DSS
+### Azure のセキュリティとコンプライアンスのブループリント
+#### PCI DSS
 ##### [PCI DSS 準拠環境での支払い処理](payment-processing-blueprint.md)
 ##### [要件の概要](pci-dss-requirements-overview.md)
 ##### [要件 1 - ファイアウォール](pci-dss-requirement-1-firewall.md)
@@ -33,8 +33,8 @@
 ##### [要件 10 - 監視](pci-dss-requirement-10-monitoring.md)
 ##### [要件 11 - テスト](pci-dss-requirement-11-testing.md)
 ##### [要件 12 - ポリシー](pci-dss-requirement-12-policy.md)
-#### コンプライアンス - FedRAMP
-##### [FedRAMP 用の Web アプリ](fedramp.md)
+#### FedRAMP
+##### [Web アプリケーションの自動化](fedramp.md)
 ##### [セキュリティ コントロールの概要](fedramp-controls-overview.md)
 ##### [アクセス制御](fedramp-access-controls.md)
 ##### [監査とアカウンタビリティ](fedramp-audit-accountability-controls.md)
@@ -53,11 +53,11 @@
 ##### [システムと通信の保護](fedramp-system-communications-protection-controls.md)
 ##### [システムと情報の整合性](fedramp-system-information-integrity-controls.md)
 ##### [システムとサービスの取得](fedramp-system-services-acquisition-controls.md)
-#### コンプライアンス - UK-OFFICIAL
-##### [UK-OFFICIAL 向け 3 層 Web アプリ](uk-official-three-tier-applications-overview.md)
+#### UK-OFFICIAL
+##### [3 層 Web アプリケーションの自動化](uk-official-three-tier-applications-overview.md)
 ##### [概要](uk-official-three-tier-applications-overview.md)
 ##### [原則の概要](uk-official-three-tier-applications-principles-overview.md)
-#### コンプライアンス - Financial Services
+#### 金融サービス
 ##### [規制対象ワークロードに対応した Financial Services](financial-services-regulated-workloads.md)
 
 # 作業の開始
@@ -89,11 +89,10 @@
 
 ## セキュリティの管理と監視
 ### [セキュリティ管理](../azure-security-management.md)
-### [Azure Security Center](../../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [[Azure Security Center] (Azure Security Center)](../../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
 ### [Azure ログ統合の概要](../security-azure-log-integration-overview.md)
 #### [Azure ログ統合の使用](../security-azure-log-integration-get-started.md)
 #### [Azure Active Directory の監査ログの統合](../security-azure-log-integration-ad.md)
-#### [Security Center のアラートの統合](../security-azure-log-integration-security-center.md)
 #### [Event Hubs を使用した Key Vault のログの統合](../security-azure-log-integration-keyvault-eventhub.md)
 #### [FAQ](../security-azure-log-integration-faq.md)
 

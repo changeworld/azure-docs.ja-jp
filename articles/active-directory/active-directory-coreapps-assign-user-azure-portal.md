@@ -29,7 +29,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="how-do-i-assign-user-access-to-an-enterprise-app-in-the-azure-portal"></a>Azure Portal でユーザーにエンタープライズ アプリケーションへのアクセス許可を割り当てる方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「Azure Active Directory」と入力して、**Enter** キーを押します。
-3. **[Azure Active Directory - <*ディレクトリ名*>]** ブレード (管理対象のディレクトリの Azure AD ブレード) で、**[エンタープライズ アプリケーション]** を選択します。
+3. **Azure Active Directory - *ディレクトリ名*** ブレード (管理対象のディレクトリの Azure AD ブレード) で、**エンタープライズ アプリケーション** を選択します。
 
     ![エンタープライズ アプリケーションを開く](./media/active-directory-coreapps-assign-user-azure-portal/open-enterprise-apps.png)
 4. **[エンタープライズ アプリケーション]** ブレードで、**[すべてのアプリケーション]** を選択します。 これにより、管理できるアプリが一覧で表示されます。
