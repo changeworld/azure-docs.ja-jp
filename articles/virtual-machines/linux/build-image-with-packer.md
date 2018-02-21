@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: d548d3df209df2a9ae8fa3f8ee684190bc140175
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 49a3e7f3aab3ae95c6f40b167880bb48d0fc851b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-packer-to-create-linux-virtual-machine-images-in-azure"></a>Packer を使用して Azure に Linux 仮想マシンのイメージを作成する方法
 Azure の各仮想マシン (VM) は、Linux ディストリビューションと OS のバージョンを定義するイメージから作成されます。 イメージには、プリインストールされているアプリケーションと構成を含めることができます。 Azure Marketplace には、ほとんどのディストリビューションおよびアプリケーション環境用の自社製およびサード パーティ製のイメージが数多く用意されています。また、ニーズに合わせて独自のイメージを作成することもできます。 この記事では、オープン ソース ツール [Packer](https://www.packer.io/) を使用して Azure に独自のイメージを定義およびビルドする方法について、詳しく説明します。
@@ -28,7 +28,7 @@ Azure の各仮想マシン (VM) は、Linux ディストリビューション�
 ## <a name="create-azure-resource-group"></a>Azure リソース グループを作成する
 ビルド プロセス中、Packer はソース VM をビルドする際に一時的な Azure リソースを作成します。 イメージとして使用するためにそのソース VM をキャプチャするには、リソース グループを定義する必要があります。 Packer のビルド プロセスからの出力は、このリソース グループに格納されます。
 
-[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create -n myResourceGroup -l eastus
@@ -54,7 +54,7 @@ az ad sp create-for-rbac --query "{ client_id: appId, client_secret: password, t
 }
 ```
 
-Azure に対して認証するには、[az account show](/cli/azure/account#show) で Azure サブスクリプション ID を取得する必要もあります。
+Azure に対して認証するには、[az account show](/cli/azure/account#az_account_show) で Azure サブスクリプション ID を取得する必要もあります。
 
 ```azurecli
 az account show --query "{ subscription_id: id }"
@@ -200,7 +200,7 @@ Packer が VM をビルド、プロビジョナーを実行、およびデプロ
 
 
 ## <a name="create-vm-from-azure-image"></a>Azure イメージから VM を作成する
-[az vm create](/cli/azure/vm#create) を使用して、イメージから VM を作成できるようになりました。 `--image` パラメーターで作成したイメージを指定します。 次の例では、*myPackerImage* から *myVM* という名前の VM を作成し、SSH キーを生成します (まだ存在していない場合)。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して、イメージから VM を作成できるようになりました。 `--image` パラメーターで作成したイメージを指定します。 次の例では、*myPackerImage* から *myVM* という名前の VM を作成し、SSH キーを生成します (まだ存在していない場合)。
 
 ```azurecli
 az vm create \

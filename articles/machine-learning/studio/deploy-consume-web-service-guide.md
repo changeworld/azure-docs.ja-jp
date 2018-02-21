@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: v-donglo
-ms.openlocfilehash: b0afbd54ddad4cc4be2b35c85d81abe90c717692
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 88a61467a79a424670d49e662315cab59ab52d13
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-machine-learning-web-services-deployment-and-consumption"></a>Azure Machine Learning Web サービス: デプロイと使用
 Azure Machine Learning により、Machine Learning のワークフローとモデルを Web サービスとしてデプロイできます。 この Web サービスを使用すると、インターネット経由で機械学習モデルをアプリケーションから呼び出して、リアルタイムまたはバッチ モードで予測することができます。 RESTfull であるため、Web サービスは、さまざまなプログラミング言語やプラットフォーム (.NET、Java など)、およびアプリケーション (Excel など) から呼び出すことができます。

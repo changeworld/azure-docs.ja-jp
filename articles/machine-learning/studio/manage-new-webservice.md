@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2017
-ms.author: v-donglo
-ms.openlocfilehash: 2e71fa46f88ce219bee96a223a034078a037b4d3
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.author: raymondl
+ms.openlocfilehash: 88eba56424d9289a35b7de4dcf5f50191411a09a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-a-web-service-using-the-azure-machine-learning-web-services-portal"></a>Azure Machine Learning Web サービス ポータルを使用して Web サービスを管理する
 Microsoft Azure Machine Learning Web サービス ポータルを使用して、Machine Learning の新しい Web サービスとクラシック Web サービスを管理できます。 クラシック Web サービスと新しい Web サービスは基盤としているテクノロジが異なるため、管理機能もそれぞれ若干異なります。

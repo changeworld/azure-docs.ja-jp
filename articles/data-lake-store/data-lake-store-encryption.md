@@ -1,9 +1,9 @@
 ---
 title: "Azure Data Lake Store での暗号化 | Microsoft Docs"
-description: "Azure Data Lake Store における暗号化とキーの交換のしくみについて説明します"
+description: "Azure Data Lake Store では、暗号化によってデータを保護し、企業のセキュリティ ポリシーを実装できるほか、規制上のコンプライアンス要件を満たすことができます。 この記事では、設計の概要を示すと共に、実装の技術的な側面について取り上げます。"
 services: data-lake-store
 documentationcenter: 
-author: yagupta
+author: esung22
 manager: 
 editor: 
 ms.assetid: 
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 4/14/2017
+ms.date: 01/31/2018
 ms.author: yagupta
-ms.openlocfilehash: 20444d368c568ee716ff242e33323b91ffd198eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4df0ce3d705361f20fa003929fed6a019f8b2f5e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Azure Data Lake Store でのデータの暗号化
 
@@ -61,11 +61,13 @@ Data Lake Store では、マスター暗号化キー (MEK) を管理するモー
 | --- | --- | --- |
 |データをどのように格納するか|格納する前に常に暗号化|格納する前に常に暗号化|
 |マスター暗号化キーをどこに格納するか|Key Vault|Key Vault|
-|Key Vault の外部に平文で格納される暗号化キーがあるか |いいえ|いいえ|
-|Key Vault から MEK を取得できるか|いいえ。 いったん Key Vault に格納された MEK は、暗号化と解読にしか使用できません。|いいえ。 いったん Key Vault に格納された MEK は、暗号化と解読にしか使用できません。|
+|Key Vault の外部に平文で格納される暗号化キーがあるか |いいえ |いいえ |
+|Key Vault から MEK を取得できるか|
+いいえ。 いったん Key Vault に格納された MEK は、暗号化と解読にしか使用できません。|
+いいえ。 いったん Key Vault に格納された MEK は、暗号化と解読にしか使用できません。|
 |Key Vault インスタンスと MEK の所有者はだれか|Data Lake Store サービス|ユーザーが Key Vault インスタンスを所有し、その Key Vault インスタンスはユーザー自身の Azure サブスクリプションに属します。 Key Vault 内の MEK は、ソフトウェアまたはハードウェアで管理できます。|
-|Data Lake Store サービスの MEK へのアクセスを取り消すことができるか|いいえ|はい。 Key Vault のアクセス制御リストを管理できるほか、Data Lake Store サービスのサービス ID に対するアクセス制御エントリを削除できます。|
-|MEK を完全に削除できるか|いいえ|はい。 Key Vault から MEK を削除すると、Data Lake Store サービスを含めだれも Data Lake Store アカウント内のデータを解読できなくなります。 <br><br> Key Vault から削除する前に MEK を明示的にバックアップしておけば、その MEK を復元してデータを回復することができます。 一方、MEK をバックアップせずに Key Vault から削除した場合、その後 Data Lake Store アカウント内のデータを解読することはできません。|
+|Data Lake Store サービスの MEK へのアクセスを取り消すことができるか|いいえ |はい。 Key Vault のアクセス制御リストを管理できるほか、Data Lake Store サービスのサービス ID に対するアクセス制御エントリを削除できます。|
+|MEK を完全に削除できるか|いいえ |はい。 Key Vault から MEK を削除すると、Data Lake Store サービスを含めだれも Data Lake Store アカウント内のデータを解読できなくなります。 <br><br> Key Vault から削除する前に MEK を明示的にバックアップしておけば、その MEK を復元してデータを回復することができます。 一方、MEK をバックアップせずに Key Vault から削除した場合、その後 Data Lake Store アカウント内のデータを解読することはできません。|
 
 
 MEK とそれが格納される Key Vault インスタンスの管理者が 2 つのモードで異なるという点を除けば、残りの設計はどちらのモードも同じです。
@@ -79,7 +81,7 @@ MEK とそれが格納される Key Vault インスタンスの管理者が 2 �
 
 データ暗号化の設計で使用されるキーの種類は 3 つあります。 次の表で簡単に説明します。
 
-| キー                   | 省略形 | 関連付け先 | 保存先                             | 型       | メモ                                                                                                   |
+| キー                   | 省略形 | 関連付け先 | 保存先                             | type       | メモ                                                                                                   |
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | マスター暗号化キー | MEK          | Data Lake Store アカウント | Key Vault                              | 非対称 | Data Lake Store 側で管理するか、ユーザー側で管理できます。                                                              |
 | データ暗号化キー   | DEK          | Data Lake Store アカウント | Data Lake Store サービスによって管理される永続的ストレージ | 対称  | DEK は MEK で暗号化されます。 その暗号化された DEK が永続メディアに格納されます。 |
@@ -120,7 +122,7 @@ Data Lake Store アカウントを設定するときに、独自キーの使用�
 
 ### <a name="how-to-rotate-the-mek-in-data-lake-store"></a>Data Lake Store の MEK を交換する方法
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ご利用の Data Lake Store アカウントに関連付けられているキーの格納場所となっている Key Vault インスタンスに移動します。 **[キー]** を選択します。
 
     ![Key Vault のスクリーンショット](./media/data-lake-store-encryption/keyvault.png)

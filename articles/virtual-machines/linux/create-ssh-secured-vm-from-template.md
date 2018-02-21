@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/18/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a7bd5b8c0534a51c6b6c9e8871be513194d38788
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 2750bed40707872bb120a7cb7130d8be01aabf7d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Linux 仮想マシンを作成する方法
 この記事では、Azure Resource Manager テンプレートと Azure CLI 2.0 と を使用してすばやく Linux 仮想マシンをデプロイする方法を説明します。 これらの手順は、[Azure CLI 1.0](create-ssh-secured-vm-from-template-nodejs.md) を使用して実行することもできます。
@@ -38,7 +38,7 @@ az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
-次の例では、[この Azure Resource Manager テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) から [az group deployment create](/cli/azure/group/deployment#create) を使用して VM を作成します。 SSH 認証のみが許可されています。 値を求められたら、自らの SSH 公開キーの値 (*~/.ssh/id_rsa.pub* の内容など) を指定します。 SSH キー ペアを短時間で作成する必要がある場合は、[Azure に Linux VM 用の SSH キー ペアを作成して使用する方法](mac-create-ssh-keys.md)に関する記事をご覧ください。
+次の例では、[この Azure Resource Manager テンプレート](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-sshkey/azuredeploy.json) から [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して VM を作成します。 SSH 認証のみが許可されています。 値を求められたら、自らの SSH 公開キーの値 (*~/.ssh/id_rsa.pub* の内容など) を指定します。 SSH キー ペアを短時間で作成する必要がある場合は、[Azure に Linux VM 用の SSH キー ペアを作成して使用する方法](mac-create-ssh-keys.md)に関する記事をご覧ください。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -49,7 +49,7 @@ az group deployment create --resource-group myResourceGroup \
 
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
-VM に SSH 接続するには、[az vm show](/cli/azure/vm#show) でパブリック IP アドレスを取得します。
+VM に SSH 接続するには、[az vm show](/cli/azure/vm#az_vm_show) でパブリック IP アドレスを取得します。
 
 ```azurecli
 az vm show \

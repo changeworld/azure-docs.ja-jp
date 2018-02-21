@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: b7fe6dadb444ebbe6af6239562f507e451f9f605
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: edf21d59bf3916a014706c2a298536262906fbf7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="troubleshoot-ssh-connections-to-an-azure-linux-vm-that-fails-errors-out-or-is-refused"></a>Azure Linux VM に対する SSH 接続の失敗、エラー、拒否のトラブルシューティング
 Linux 仮想マシン (VM) に接続しようとしたときに、さまざまな理由で Secure Shell (SSH) エラー、SSH 接続エラー、または SSH 拒否が発生することがあります。 この記事は、問題を特定して修正するために役立ちます。 Azure Portal、Azure CLI、または Linux 用の VM アクセス拡張機能を使用して、接続の問題を解決できます。
@@ -70,20 +70,20 @@ Azure Portal で VM を選択します。 **[サポート + トラブルシュ�
 このメニューから、VM に対して sudo 特権を持つユーザーを作成することもできます。 新しいユーザー名と、関連付けられているパスワードまたは SSH キーを入力し、**[リセット]** ボタンをクリックします。
 
 ## <a name="use-the-azure-cli-20"></a>Azure CLI 2.0 を使用する
-まだインストールしていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+まだインストールしていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。
 
 カスタム Linux ディスク イメージを作成してアップロードしている場合は、[Microsoft Azure Linux Agent](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) のバージョン 2.0.5 以降がインストールされていることを確認します。 ギャラリー イメージを使用して作成された VM の場合、このアクセス拡張機能は既にインストールされ、自動的に構成されています。
 
 ### <a name="reset-ssh-configuration"></a>SSH 構成をリセットする
 最初に SSH 構成を既定値にリセットして、VM 上の SSH サーバーを再起動します。 ユーザー アカウントの名前、パスワード、または SSH キーは変更されません。
-次の例は、[az vm user reset-ssh](/cli/azure/vm/user#reset-ssh) を使用して、`myResourceGroup` にある `myVM` という名前の VM で SSH 構成をリセットします。 実際の値を次のように使用します。
+次の例は、[az vm user reset-ssh](/cli/azure/vm/user#az_vm_user_reset_ssh) を使用して、`myResourceGroup` にある `myVM` という名前の VM で SSH 構成をリセットします。 実際の値を次のように使用します。
 
 ```azurecli
 az vm user reset-ssh --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="reset-ssh-credentials-for-a-user"></a>ユーザーの SSH 資格情報をリセットする
-次の例は、[az vm user update](/cli/azure/vm/user#update) を使用して、`myResourceGroup` にある `myVM` という名前の VM で、`myUsername` の資格情報を `myPassword` に指定された値にリセットします。 実際の値を次のように使用します。
+次の例は、[az vm user update](/cli/azure/vm/user#az_vm_user_update) を使用して、`myResourceGroup` にある `myVM` という名前の VM で、`myUsername` の資格情報を `myPassword` に指定された値にリセットします。 実際の値を次のように使用します。
 
 ```azurecli
 az vm user update --resource-group myResourceGroup --name myVM \
@@ -109,7 +109,7 @@ Linux 用の VM アクセス拡張機能は、実行するアクションを定�
 }
 ```
 
-Azure CLI を使用した後、json ファイルを指定して `VMAccessForLinux` 拡張機能を呼び出すことで SSHD 接続をリセットできます。 次の例は、[az vm extension set](/cli/azure/vm/extension#set) を使用して、`myResourceGroup` にある `myVM` という名前の VM で SSHD をリセットします。 実際の値を次のように使用します。
+Azure CLI を使用した後、json ファイルを指定して `VMAccessForLinux` 拡張機能を呼び出すことで SSHD 接続をリセットできます。 次の例は、[az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) を使用して、`myResourceGroup` にある `myVM` という名前の VM で SSHD をリセットします。 実際の値を次のように使用します。
 
 ```azurecli
 az vm extension set --resource-group philmea --vm-name Ubuntu \
@@ -191,7 +191,7 @@ azure vm restart --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-次の例では、[az vm restart](/cli/azure/vm#restart) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再起動します。 実際の値を次のように使用します。
+次の例では、[az vm restart](/cli/azure/vm#az_vm_restart) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再起動します。 実際の値を次のように使用します。
 
 ```azurecli
 az vm restart --resource-group myResourceGroup --name myVM
@@ -219,7 +219,7 @@ azure vm redeploy --resource-group myResourceGroup --name myVM
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-次の例では、[az vm redeploy](/cli/azure/vm#redeploy) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。 実際の値を次のように使用します。
+次の例では、[az vm redeploy](/cli/azure/vm#az_vm_redeploy) を使用して、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を再デプロイします。 実際の値を次のように使用します。
 
 ```azurecli
 az vm redeploy --resource-group myResourceGroup --name myVM

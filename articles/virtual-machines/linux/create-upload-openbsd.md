@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
 ms.author: huishao
-ms.openlocfilehash: 9b4163471f3dc8483993b9ac762694af4e926aa0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 322514debd42714142434106748e4acac220ebee
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-and-upload-an-openbsd-disk-image-to-azure"></a>OpenBSD ディスクイメージの作成と Azure へのアップロード
 この記事では、OpenBSD オペレーティング システムを格納した仮想ハード ディスク (VHD) を作成してアップロードする方法について説明します。 アップロードした VHD を独自のイメージとして使用し、Azure CLI で Azure の仮想マシン (VM) を作成することができます。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 この記事では、次の項目があることを前提としています。
 
 * **Azure サブスクリプション**- アカウントをお持ちでない場合でも、数分でアカウントを作成できます。 MSDN サブスクリプションをお持ちの場合は、「[Visual Studio サブスクライバー向けの月単位の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)」をご覧ください。 それ以外の場合は、 [無料試用版のアカウントの作成](https://azure.microsoft.com/pricing/free-trial/)方法に関するページをご覧ください。  
-* **Azure CLI 2.0** - [Azure CLI 2.0](/cli/azure/install-azure-cli) の最新版がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしていることを確認します。
+* **Azure CLI 2.0** - [Azure CLI 2.0](/cli/azure/install-azure-cli) の最新版がインストールされ、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインしていることを確認します。
 * **.vhd ファイルにインストールされている OpenBSD オペレーティング システム**- サポートされている OpenBSD オペレーティング システム (6.1 バージョン) を仮想ハード ディスクにインストールしておきます。 .vhd ファイルを作成するツールはいくつかあります。 たとえば Hyper-V などの仮想化ソリューションを使用して .vhd ファイルを作成し、オペレーティング システムをインストールすることができます。 Hyper-V をインストールして使用する手順については、「 [Hyper-V をインストールして仮想マシンを作成する](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
 
@@ -102,13 +102,13 @@ Convert-VHD OpenBSD61.vhdx OpenBSD61.vhd -VHDType Fixed
 ```
 
 ## <a name="create-storage-resources-and-upload"></a>ストレージ リソースの作成とアップロード
-最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-VHS をアップロードするには、ストレージ アカウントを、[az storage account create](/cli/azure/storage/account#create) を使用して作成します。 ストレージ アカウント名は一意である必要があるため、独自の名前を入力してください。 次の例では、*mystorageaccount* という名前のストレージ アカウントを作成します。
+VHS をアップロードするには、ストレージ アカウントを、[az storage account create](/cli/azure/storage/account#az_storage_account_create) を使用して作成します。 ストレージ アカウント名は一意である必要があるため、独自の名前を入力してください。 次の例では、*mystorageaccount* という名前のストレージ アカウントを作成します。
 
 ```azurecli
 az storage account create --resource-group myResourceGroup \
@@ -117,7 +117,7 @@ az storage account create --resource-group myResourceGroup \
     --sku Premium_LRS
 ```
 
-ストレージ アカウントへのアクセスを制御するには、次のように [az storage account keys list](/cli/azure/storage/account/keys#list) を使用してストレージ キーを取得します。
+ストレージ アカウントへのアクセスを制御するには、次のように [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用してストレージ キーを取得します。
 
 ```azurecli
 STORAGE_KEY=$(az storage account keys list \
@@ -126,7 +126,7 @@ STORAGE_KEY=$(az storage account keys list \
     --query "[?keyName=='key1']  | [0].value" -o tsv)
 ```
 
-アップロードする VHD を論理的に分離するには、[az storage container create](/cli/azure/storage/container#create) を使用してストレージ アカウント内のコンテナーを作成します。
+アップロードする VHD を論理的に分離するには、[az storage container create](/cli/azure/storage/container#az_storage_container_create) を使用してストレージ アカウント内のコンテナーを作成します。
 
 ```azurecli
 az storage container create \
@@ -135,7 +135,7 @@ az storage container create \
     --account-key ${STORAGE_KEY}
 ```
 
-最後に、次のように [az storage blob upload](/cli/azure/storage/blob#upload) を使用して VHD をアップロードします。
+最後に、次のように [az storage blob upload](/cli/azure/storage/blob#az_storage_blob_upload) を使用して VHD をアップロードします。
 
 ```azurecli
 az storage blob upload \
@@ -148,7 +148,7 @@ az storage blob upload \
 
 
 ## <a name="create-vm-from-your-vhd"></a>VHD から VM を作成
-[サンプル スクリプト](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md)を使用して、または直接 [az vm create](/cli/azure/vm#create) を使用して、VM を作成できます。 アップロードした OpenBSD VHD を指定するには、次のように `--image` パラメーターを使用します。
+[サンプル スクリプト](../scripts/virtual-machines-linux-cli-sample-create-vm-vhd.md)を使用して、または直接 [az vm create](/cli/azure/vm#az_vm_create) を使用して、VM を作成できます。 アップロードした OpenBSD VHD を指定するには、次のように `--image` パラメーターを使用します。
 
 ```azurecli
 az vm create \
@@ -173,7 +173,7 @@ ssh azureuser@<ip address>
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 OpenBSD 6.1 の Hyper-V の対応に関して詳細をお知りになりたい場合は、[OpenBSD 6.1](https://www.openbsd.org/61.html) および [hyperv.4](http://man.openbsd.org/hyperv.4) をお読みください。
 
 管理ディスクから VM を作成する場合は、[az disk](/cli/azure/disk) をお読みください。 

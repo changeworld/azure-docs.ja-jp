@@ -2,19 +2,19 @@
 title: "Azure Machine Learning Workbench で実行履歴とモデル メトリックを使用する方法 | Microsoft Docs"
 description: "Azure Machine Learning Workbench の実行履歴機能とモデル メトリック機能を使用するためのガイド"
 services: machine-learning
-author: jopela
-ms.author: jopela
+author: rastala
+ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 143cbfa66436796e1b61b100def030dde43faac9
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 2d1bce6463ac7880fd9091b4f3f2cbb226ea516d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で実行履歴とモデル メトリックを使用する方法
 
@@ -68,7 +68,7 @@ run_logger = get_azureml_logger()
 開発が完了したら、コマンド ラインで値を渡せるように、スクリプトをパラメーター化すると便利です。
 次の例は、標準の Python ライブラリを使用してコマンド ライン パラメーター (存在する場合) を受け入れる方法を示しています。
 このスクリプトは、オーバーフィットを発生させずに*精度*を上げる作業に分類モデルを適合させるために使用される [Regularization Rate]\(正則化率)\ (*reg*) の 1 つのパラメーターを受け取ります。
-これらの変数は *[Regularization Rate]\(正則化率)* および *[Accuracy] \(精度)* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
+これらの変数は*[Regularization Rate]\(正則化率)\*および*[Accuracy] \(精度)\* としてログ記録されるため、最適な結果が得られるモデルを簡単に識別できます。
 
 ```Python
 # change regularization rate and you will likely get a different accuracy.
@@ -122,7 +122,7 @@ run_logger.log("Accuracy", accuracy)
 
 ### <a name="run-history-dashboard"></a>実行履歴ダッシュボード
 8 つの実行すべての結果が、**実行履歴ダッシュボード**に表示されます。
-**iris_sklearn.py** では *[Regularization Rate]\(正則化率)* と *[Accuracy]\(精度)* がログ記録されるので、既定では **実行履歴ダッシュボード** にこれらの値のグラフが表示されます。
+**iris_sklearn.py** では *[Regularization Rate]\(正則化率)\*と*[Accuracy]\(精度)\*がログ記録されるので、既定では**実行履歴ダッシュボード**にこれらの値のグラフが表示されます。
 
 ![実行履歴ダッシュボード](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
 
@@ -230,7 +230,7 @@ $ az ml history list -o table
 ```
 **コマンド ライン インターフェイス**は、Azure Machine Learning Workbench の機能にアクセスするための代替経路となります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これらの機能は、データ サイエンス実験の処理を支援するために提供されています。
 マイクロソフトでは、これらの機能が皆様のお役に立つことを願っております。ご意見がございましたら、ぜひお知らせください。
 これは最初の実装であり、数多くの機能強化を現在計画中です。

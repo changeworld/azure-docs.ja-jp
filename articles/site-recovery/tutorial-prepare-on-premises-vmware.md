@@ -2,24 +2,18 @@
 title: "VMware VM から Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する | Microsoft Docs"
 description: "Azure Site Recovery サービスを使用して、Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する方法を説明します。"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: 90a4582c-6436-4a54-a8f8-1fee806b8af7
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/01/2017
+ms.topic: tutorial
+ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: af09c5602c53be4377ba19e68ff3486bcfefe0ea
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4fecd5f8ddb4a6f432995a7779e29479b5b1a7c0
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 

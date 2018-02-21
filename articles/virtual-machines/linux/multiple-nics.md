@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/26/2017
 ms.author: iainfou
-ms.openlocfilehash: 0c41388623b82421bd09f31fbc4b3769de758e4c
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: e377459d205426b34c52336d9104400cf9d8030b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
 Azure では、複数の仮想ネットワーク インターフェイス (NIC) を持つ仮想マシン (VM) を作成できます。 一般的なシナリオは、フロント エンドおよびバック エンド接続用に別々のサブネットを使用するか、監視またはバックアップ ソリューション専用のネットワークを用意することです。 この記事では、接続された複数の NIC を使用して VM を作成する方法、および既存の VM の NIC を追加または削除する方法について詳しく説明します。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。
@@ -27,17 +27,17 @@ Azure では、複数の仮想ネットワーク インターフェイス (NIC) 
 
 
 ## <a name="create-supporting-resources"></a>関連リソースを作成する
-最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。
 
 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*mystorageaccount*、*myVM* といったパラメーター名にします。
 
-最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-[az network vnet create](/cli/azure/network/vnet#create) で仮想ネットワークを作成します。 次の例では、*myVnet* という名前の仮想ネットワークと *mySubnetFrontEnd* という名前のサブネットを作成します。
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) で仮想ネットワークを作成します。 次の例では、*myVnet* という名前の仮想ネットワークと *mySubnetFrontEnd* という名前のサブネットを作成します。
 
 ```azurecli
 az network vnet create \
@@ -48,7 +48,7 @@ az network vnet create \
     --subnet-prefix 192.168.1.0/24
 ```
 
-[az network vnet subnet create](/cli/azure/network/vnet/subnet#create) を使用してバックエンド トラフィックのサブネットを作成します。 次の例では、*mySubnetBackEnd* という名前のサブネットを作成します。
+[az network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) を使用してバックエンド トラフィックのサブネットを作成します。 次の例では、*mySubnetBackEnd* という名前のサブネットを作成します。
 
 ```azurecli
 az network vnet subnet create \
@@ -58,7 +58,7 @@ az network vnet subnet create \
     --address-prefix 192.168.2.0/24
 ```
 
-[az network nsg create](/cli/azure/network/nsg#create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
+[az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) で、ネットワーク セキュリティ グループを作成します。 次の例では、*myNetworkSecurityGroup* という名前のネットワーク セキュリティ グループを作成します。
 
 ```azurecli
 az network nsg create \
@@ -67,7 +67,7 @@ az network nsg create \
 ```
 
 ## <a name="create-and-configure-multiple-nics"></a>複数の NIC を作成して構成する
-[az network nic create](/cli/azure/network/nic#create) を使用して、2 つの NIC を作成します。 次の例では、ネットワーク セキュリティ グループに接続された、*myNic1* と *myNic2* という名前の 2 つの NIC を作成します (1 つの NIC が各サブネットに接続します)。
+[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用して、2 つの NIC を作成します。 次の例では、ネットワーク セキュリティ グループに接続された、*myNic1* と *myNic2* という名前の 2 つの NIC を作成します (1 つの NIC が各サブネットに接続します)。
 
 ```azurecli
 az network nic create \
@@ -87,7 +87,7 @@ az network nic create \
 ## <a name="create-a-vm-and-attach-the-nics"></a>VM を作成して NIC を接続する
 VM を作成するとき、`--nics` を使用して、作成した NIC を指定します。 VM のサイズを選択する際には注意が必要です。 1 つの VM に追加できる NIC の合計数には制限があります。 詳しくは、 [Linux VM のサイズ](sizes.md)に関する記事をご覧ください。 
 
-[az vm create](/cli/azure/vm#create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -103,7 +103,7 @@ az vm create \
 ## <a name="add-a-nic-to-a-vm"></a>VM に NIC を追加する
 前の手順では、複数の NIC を含む VM を作成しました。 Azure CLI 2.0 を使用して NIC を既存の VM に追加することもできます。 [VM のサイズ](sizes.md)によってサポートされる NIC の数が異なります。VM のサイズを決める際はご注意ください。 必要な場合は、[VM のサイズを変更できます](change-vm-size.md)。
 
-[az network nic create](/cli/azure/network/nic#create) を使用して別の仮想 NIC を作成します。 次の例では、バックエンドのサブネットおよび前の手順で作成されたネットワーク セキュリティ グループに接続された *myNic3* という名前の NIC を作成します。
+[az network nic create](/cli/azure/network/nic#az_network_nic_create) を使用して別の仮想 NIC を作成します。 次の例では、バックエンドのサブネットおよび前の手順で作成されたネットワーク セキュリティ グループに接続された *myNic3* という名前の NIC を作成します。
 
 ```azurecli
 az network nic create \
@@ -114,14 +114,14 @@ az network nic create \
     --network-security-group myNetworkSecurityGroup
 ```
 
-NIC を既存の VM に追加するには、最初に [az vm deallocate](/cli/azure/vm#deallocate) を使用して VM の割り当てを解除します。 次の例では、*myVM* という名前の VM の割り当てを解除します。
+NIC を既存の VM に追加するには、最初に [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して VM の割り当てを解除します。 次の例では、*myVM* という名前の VM の割り当てを解除します。
 
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-[az vm nic add](/cli/azure/vm/nic#add) を使用して NIC を追加します。 次の例では、*myNic3* を *myVM* に追加します。
+[az vm nic add](/cli/azure/vm/nic#az_vm_nic_add) を使用して NIC を追加します。 次の例では、*myNic3* を *myVM* に追加します。
 
 ```azurecli
 az vm nic add \
@@ -130,20 +130,20 @@ az vm nic add \
     --nics myNic3
 ```
 
-[az vm start](/cli/azure/vm#start) を使用して VM を起動します。
+[az vm start](/cli/azure/vm#az_vm_start) を使用して VM を起動します。
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
 ```
 
 ## <a name="remove-a-nic-from-a-vm"></a>NIC を VM から削除する
-NIC を既存の VM から削除するには、最初に [az vm deallocate](/cli/azure/vm#deallocate) を使用して VM の割り当てを解除します。 次の例では、*myVM* という名前の VM の割り当てを解除します。
+NIC を既存の VM から削除するには、最初に [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して VM の割り当てを解除します。 次の例では、*myVM* という名前の VM の割り当てを解除します。
 
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
 
-[az vm nic remove](/cli/azure/vm/nic#remove) を使用して NIC を削除します。 次の例では、*myNic3* を *myVM* から削除します。
+[az vm nic remove](/cli/azure/vm/nic#az_vm_nic_remove) を使用して NIC を削除します。 次の例では、*myNic3* を *myVM* から削除します。
 
 ```azurecli
 az vm nic remove \
@@ -152,7 +152,7 @@ az vm nic remove \
     --nics myNic3
 ```
 
-[az vm start](/cli/azure/vm#start) を使用して VM を起動します。
+[az vm start](/cli/azure/vm#az_vm_start) を使用して VM を起動します。
 
 ```azurecli
 az vm start --resource-group myResourceGroup --name myVM
@@ -251,5 +251,5 @@ systemctl restart network
 これでルーティング規則が正しく配置され、必要に応じて、いずれかのインターフェイスに接続することができます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](sizes.md) を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 

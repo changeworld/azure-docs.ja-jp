@@ -2,31 +2,31 @@
 title: "Azure VM を別の Azure リージョンにレプリケートする (プレビュー)"
 description: "このクイック スタートでは、ある Azure リージョンから別のリージョンに Azure VM をレプリケートするのに必要な手順を紹介します。"
 services: site-recovery
-author: rajani-janaki-ram
+author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
+ms.topic: quickstart
+ms.date: 02/07/2018
+ms.author: raynew
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 12/08/2017
-ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 27066c3b5b9d52901dbd3790ba4b5abd97fe7d2b
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 213b218a50506ace2298aa3f77721db1b81e2efe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region-preview"></a>Azure VM を別の Azure リージョンにレプリケートする (プレビュー)
 
-[Azure Site Recovery](site-recovery-overview.md) サービスは、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、復旧など、オンプレミスのマシンと Azure 仮想マシン (VM) のディザスター リカバリーを管理し、調整します。
+[Azure Site Recovery](site-recovery-overview.md) サービスは、計画された停止や計画外の停止の際にビジネス アプリを実行し続け、使用できるようにすることで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 Site Recovery は、レプリケーション、フェールオーバー、フェールバックなど、オンプレミスのマシンと Azure Virtual Machines (VM) のディザスター リカバリーを管理し、調整します。
 
 このクイック スタートでは、Azure VM を別の Azure リージョンにレプリケートする方法について説明します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure Portal (http://portal.azure.com) にログインします。
 
@@ -67,7 +67,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
    ![レプリケーションを無効にする](media/azure-to-azure-quickstart/disable2-replication.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、1 つの VM をセカンダリ リージョンにレプリケートしました。
 

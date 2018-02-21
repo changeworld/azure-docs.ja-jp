@@ -2,24 +2,18 @@
 title: "Azure Site Recovery を使用して AWS の VM を Azure に移行する | Microsoft Docs"
 description: "この記事では、Azure Site Recovery を使用して、アマゾン ウェブ サービス (AWS) で実行中の VM を Azure に移行する方法を説明します。"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: ddb412fd-32a8-4afa-9e39-738b11b91118
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/01/2017
+ms.topic: tutorial
+ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 814d8ee4952dd08707849eadc1e4e97ab6087da0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4acdc540ca1a87a4545130eb5fbc096633b0605c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -66,7 +60,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 新しいコンテナーは、**[ダッシュボード]** > **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに表示されます。
 
-### <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップする
+### <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップ
 
 移行 (フェールオーバー) 後に作成された Azure VM は、このネットワークに参加します。
 
@@ -166,7 +160,7 @@ Site Recovery 構成サーバーとして使用できる別の EC2 インスタ�
 **[インフラストラクチャの準備]** の 5 セクションすべてを設定したら、**[OK]** をクリックします。
 
 
-## <a name="enable-replication"></a>Enable replication
+## <a name="enable-replication"></a>レプリケーションを有効にする
 
 移行する各 VM のレプリケーションを有効にします。 レプリケーションを有効にすると、Site Recovery がモビリティ サービスを自動的にインストールします。 
 
@@ -253,12 +247,12 @@ EC2 インスタンスで実際のフェールオーバーを実行して Azure 
     ![移行の完了](./media/tutorial-migrate-aws-to-azure/complete-migration.png)
 
 > [!WARNING]
-> **進行中のフェールオーバーを取り消さないでください**。フェールオーバーが開始する前に VM のレプリケーションが停止します。 進行中のフェールオーバーを取り消すと、フェールオーバーは停止しますが、VM は二度とレプリケートされません。  
+> **進行中のフェールオーバーをキャンセルしないでください**。フェールオーバーが開始される前に VM のレプリケーションが停止します。 進行中のフェールオーバーをキャンセルすると、フェールオーバーは停止しますが、VM が再びレプリケートされることはありません。  
 
 
     
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このトピックでは、AWS EC2 インスタンスを Azure VM に移行する方法について説明しました。 Azure VM の詳細については、Windows VM のチュートリアルを参照してください。
 

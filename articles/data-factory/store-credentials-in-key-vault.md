@@ -10,19 +10,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 145c2bc0556010389e78e523fde6fd4b9063f930
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 42643c73368597d1caea4aba12bc7b64b7440970
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
 [Azure Key Vault](../key-vault/key-vault-whatis.md) 内のデータ ストアに資格情報を格納することができます。 Azure Data Factory は、データ ストアを使用するアクティビティの実行時に、資格情報を取得します。
 
-現時点では、[Dynamics コネクタ](connector-dynamics-crm-office-365.md)、[Salesforce コネクタ](connector-salesforce.md)、および新しく有効になったいくつかのコネクタで、この機能がサポートされます。 今後、さらに追加される予定です。 詳細については、各コネクタのトピックを確認してください。 この機能をサポートするシークレット フィールドでは、次のような注意事項が説明に表示されます。"*このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、「Azure Key Vault への資格情報の格納」をご覧ください。*"
+現在、すべての種類のコネクタを使用したコピー アクティビティではこの機能がサポートされています。詳しくは、[各コネクタのトピック](copy-activity-overview.md#supported-data-stores-and-formats)の「リンクされたサービスのプロパティ」を参照してください。 他の種類のアクティビティとコンピューティングのリンクされたサービスも今後サポートしていく予定です。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
@@ -35,10 +35,10 @@ ms.lasthandoff: 12/14/2017
 
 Azure Key Vault に格納されている資格情報を参照するには、次の手順に従う必要があります。
 
-1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
-2. サービス ID に、Azure Key Vault へのアクセス権を付与します。 キー コンテナー -> [アクセス制御]-> [追加] で、このサービス ID アプリケーション ID を検索して**閲覧者**以上のアクセス許可を追加します。 この指定されたファクトリで、キー コンテナー内のシークレットにアクセスできます。
-3. Azure Key Vault をポイントするリンクされたサービスを作成します。 「[Azure Key Vault のリンクされたサービス](#azure-key-vault-linked-service)」をご覧ください。
-4. データ ストアのリンクされたサービスを作成します。その内部で、キー コンテナーに格納されている対応するシークレットを参照します。 「[キー コンテナーに格納された資格情報の参照](#reference-credential-stored-in-key-vault)」をご覧ください。
+1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、**[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)**します。
+2. **サービス ID に、Azure Key Vault へのアクセス権を付与します。** キー コンテナーで、[アクセス ポリシー] -> [新規追加] を選択し、このサービス ID アプリケーション ID を検索して、[シークレットのアクセス許可] ドロップダウンで **Get** アクセス許可を付与します。 この指定されたファクトリで、キー コンテナー内のシークレットにアクセスできます。
+3. **Azure Key Vault をポイントするリンクされたサービスを作成します。** 「[Azure Key Vault のリンクされたサービス](#azure-key-vault-linked-service)」をご覧ください。
+4. **データ ストアのリンクされたサービスを作成します。その内部で、キー コンテナーに格納されている対応するシークレットを参照します。** 「[キー コンテナーに格納されたシークレットの参照](#reference-secret-stored-in-key-vault)」をご覧ください。
 
 ## <a name="azure-key-vault-linked-service"></a>Azure Key Vault のリンクされたサービス
 
@@ -63,7 +63,7 @@ Azure Key Vault のリンクされたサービスでは、次のプロパティ�
 }
 ```
 
-## <a name="reference-credential-stored-in-key-vault"></a>キー コンテナーに格納された資格情報の参照
+## <a name="reference-secret-stored-in-key-vault"></a>キー コンテナーに格納されたシークレットの参照
 
 キー コンテナーのシークレットを参照するリンクされたサービスのフィールドを構成する場合は、次のプロパティがサポートされます。
 

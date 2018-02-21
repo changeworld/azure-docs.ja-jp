@@ -6,14 +6,14 @@ author: dlepow
 manager: jeconnoc
 ms.service: batch
 ms.topic: tutorial
-ms.date: 01/23/2018
+ms.date: 02/05/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 5a5c541f7a912a96547b6b3bec37f0e4066a54e6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c14f4d14584dad27e53504e2413e82764db9dca0
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>チュートリアル: Azure Batch を使用したシーンのレンダリング 
 
@@ -32,7 +32,7 @@ Azure Batch は、クラウド規模のレンダリング機能を従量課金�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアル用のサンプル 3DS Max シーンは、サンプルの Bash スクリプトと JSON 構成ファイルと共に [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) にあります。 3DS Max シーンは、[Autodesk 3DS Max サンプル ファイル](http:download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)に含まれています  (Autodesk 3DS Max のサンプル ファイルは、Creative Commons Attribution-NonCommercial-Share Alike ライセンスで入手可能です。 Copyright © Autodesk, Inc.)。
+このチュートリアル用のサンプル 3DS Max シーンは、サンプルの Bash スクリプトと JSON 構成ファイルと共に [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) にあります。 3DS Max シーンは、[Autodesk 3DS Max サンプル ファイル](http://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe)に含まれています  (Autodesk 3DS Max のサンプル ファイルは、Creative Commons Attribution-NonCommercial-Share Alike ライセンスで入手可能です。 Copyright © Autodesk, Inc.)。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -216,8 +216,8 @@ JSON ファイルの `blobSource` 要素と `containerURL` 要素を、ストレ
   "commandLine": "cmd /c \"3dsmaxcmdio.exe -secure off -v:5 -rfw:0 -start:1 -end:1 -outputName:\"dragon.jpg\" -w 400 -h 300 Robo_Dummy_Lo_Res.max\"",
   "resourceFiles": [
     {
-        "blobSource": "https://mystorageaccount.blob.core.windows.net/maxfile/Robo_Dummy_Lo_Res.max",
-        "filePath": "Robo_Dummy_Lo_Res.max"
+        "blobSource": "https://mystorageaccount.blob.core.windows.net/scenefiles/MotionBlur-DragonFlying.max",
+        "filePath": "MotionBlur-DragonFlying.max"
     }
   ],
     "outputFiles": [

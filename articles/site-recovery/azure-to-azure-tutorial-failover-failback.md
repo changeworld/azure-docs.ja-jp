@@ -5,22 +5,19 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 11/01/2017
+ms.topic: tutorial
+ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 02b709bb8dbab5d10ce9f4cf6155ff26ce229298
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b45d1287444d200727550a81ce72a19a417fe510
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする (プレビュー)
 
-[Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミス マシンと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、フェールバックを管理し、調整することでディザスター リカバリー戦略に貢献します。
+[Azure Site Recovery](site-recovery-overview.md) サービスは、オンプレミスのコンピューターと Azure 仮想マシン (VM) のレプリケーション、フェールオーバー、およびフェールバックの管理と調整を行うことでディザスター リカバリー戦略に貢献します。
 
 このチュートリアルでは、1 つの Azure VM をセカンダリ Azure リージョンにフェールオーバーする方法について説明します。 フェールオーバー後、利用できるようになった時点でプライマリ リージョンにフェールバックします。 このチュートリアルで学習する内容は次のとおりです。
 

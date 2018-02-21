@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: spelluru
-ms.openlocfilehash: 60a4afdb8a78cffdc7eb1ee82c7daf3b06e5fe15
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 814ef63f317c2c0c9081579c16a12a908c05ff74
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの開始と停止をスケジュール設定する方法 
 Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実行には料金が設定されています。 このため、SSIS パッケージを Azure で実行する必要がある場合のみ IR を実行し、必要ないときには停止する必要があります。 データ ファクトリ UI または Azure PowerShell を使用すると、[Azure SSIS IR を手動で開始または停止](manage-azure-ssis-integration-runtime.md)できます。 この記事では、Azure Automation と Azure Data Factory を使用して、Azure SSIS 統合ランタイム (IR) の開始と停止をスケジュール設定する方法を説明します。 この記事で説明する手順の概要を次に示します。
@@ -44,8 +44,9 @@ Azure SSIS 統合ランタイムをまだプロビジョニングしていない
 ### <a name="create-an-azure-automation-account"></a>Azure Automation アカウントを作成する
 Azure Automation アカウントを持っていない場合は、この手順の説明に従って作成します。 手順について詳しくは、「[Azure Automation アカウントを作成する](../automation/automation-quickstart-create-account.md)」をご覧ください。 この手順の中で、**Azure 実行** アカウント (Azure Active Directory のサービス プリンシパル) を作成し、Azure サブスクリプションの**共同作成者**ロールに追加します。 これが、Azure SSIS IR があるデータ ファクトリを含むサブスクリプションと同じであることを確認します。 Azure Automation はこのアカウントを使用して、Azure Resource Manager に対して認証し、リソースを処理します。 
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。    
-2. 左側のメニューで **[新規]** を選択し、**[監視 + 管理]** を選択し、**[Automation]** を選択します。 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. [Azure Portal](https://portal.azure.com/) にログインします。    
+3. 左側のメニューで **[新規]** を選択し、**[監視 + 管理]** を選択し、**[Automation]** を選択します。 
 
     ![[新規] -> [監視 + 管理] -> [Automation]](./media/how-to-schedule-azure-ssis-integration-runtime/new-automation.png)
 2. **[Automation アカウントの追加]** ウィンドウで次の手順を実行します。 

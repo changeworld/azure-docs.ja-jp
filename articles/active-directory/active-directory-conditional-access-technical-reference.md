@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/12/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 1ce1fc4c03130dfea4e79c89c25cf5a9004e4dc8
-ms.sourcegitcommit: 4256ebfe683b08fedd1a63937328931a5d35b157
+ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/23/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 12/23/2017
 
 ## <a name="cloud-apps-assignments"></a>クラウド アプリの割り当て
 
-条件付きアクセス ポリシーを使用して、ユーザーが[クラウド アプリ](active-directory-conditional-access-azure-portal.md#who)にアクセスする方法を制御します。 条件付きアクセス ポリシーを構成する際に、クラウド アプリを少なくとも 1 つ選択する必要があります。 
+条件付きアクセス ポリシーを使用して、ユーザーが[クラウド アプリ](active-directory-conditional-access-conditions.md#cloud-apps)にアクセスする方法を制御します。 条件付きアクセス ポリシーを構成する際に、クラウド アプリを少なくとも 1 つ選択する必要があります。 
 
 ![ポリシーに対してクラウド アプリを選択する](./media/active-directory-conditional-access-technical-reference/09.png)
 
@@ -105,7 +105,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 ## <a name="client-apps-condition"></a>クライアント アプリの条件 
 
-条件付きアクセス ポリシー内で、[クライアント アプリ](active-directory-conditional-access-azure-portal.md#client-apps)の条件を構成して、アクセス試行を開始したクライアント アプリにポリシーを関連付けることができます。 クライアント アプリの条件を設定し、次の種類のクライアント アプリからアクセス試行が行われたときに、アクセスを許可またはブロックします。
+条件付きアクセス ポリシー内で、[クライアント アプリ](active-directory-conditional-access-conditions.md#client-apps)の条件を構成して、アクセス試行を開始したクライアント アプリにポリシーを関連付けることができます。 クライアント アプリの条件を設定し、次の種類のクライアント アプリからアクセス試行が行われたときに、アクセスを許可またはブロックします。
 
 - [ブラウザー] ボタンを
 - モバイル アプリとデスクトップ アプリ
@@ -169,10 +169,9 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 |Outlook 2016 (Office for macOS)|Office 365 Exchange Online|Mac OS X|
 |Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)|Office 365 Exchange Online|Windows 8.1、Windows 7|
 |Outlook Mobile アプリ|Office 365 Exchange Online|Android、iOS|
-|PowerBI アプリ。 Android 用の Power BI では現在、デバイス ベースの条件付きアクセスはサポートされていません。|PowerBI サービス|Windows 10、Windows 8.1、Windows 7、iOS|
+|PowerBI アプリ|PowerBI サービス|Windows 10、Windows 8.1、Windows 7、iOS|
 |Skype for Business|Office 365 Exchange Online|Android、IOS |
 |Visual Studio Team Services アプリ|Visual Studio Team Services|Windows 10、Windows 8.1、Windows 7、iOS、Android|
-
 
 
 ## <a name="approved-client-app-requirement"></a>承認されたクライアント アプリケーションの要件 
@@ -186,6 +185,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 - Microsoft Azure Information Protection
 - Microsoft Excel
+- Microsoft Kaizala 
 - Microsoft OneDrive
 - Microsoft OneNote
 - Microsoft Outlook
@@ -193,6 +193,7 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 - Microsoft PowerPoint
 - Microsoft SharePoint
 - Microsoft Skype for Business
+- Microsoft StaffHub
 - Microsoft Teams
 - Microsoft Visio
 - Microsoft Word

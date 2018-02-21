@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2017
-ms.author: v-donglo
-ms.openlocfilehash: 6d96d173928fa18a3ab4f3086e5971ad1927df89
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 7b59dd1cd43bb95e52e271a44e321810fa6867cc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="retrain-an-existing-predictive-web-service"></a>既存の予測 Web サービスを再トレーニングする
 このドキュメントでは、次のシナリオの再トレーニング プロセスについて説明します。

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 4b677a4063ebef84dbd2fa476b5f633b859f90ed
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: a37bfa01343527a60193d893c7913e4e9c50d210
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法
 Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成でき、ログインするためのパスワードが不要になります。 この記事では、Linux VM 用に SSH プロトコル バージョン 2 RSA の公開キー ファイルと秘密キー ファイルのペアを短時間で生成し、使用する方法について説明します。 これらの手順を実行するには、Azure Cloud Shell、macOS または Linux ホスト、あるいは Windows Subsystem for Linux を使用することができます。 詳細な手順と補足的な例については、[SSH キー ペアと証明書を作成するための詳細な手順](create-ssh-keys-detailed.md)に関するページをご覧ください。
@@ -32,7 +32,7 @@ ssh-keygen -t rsa -b 2048
 ```
 
 ## <a name="use-the-ssh-key-pair"></a>SSH キー ペアの使用
-Azure の Linux VM に配置した公開キーは、既定で `~/.ssh/id_rsa.pub` に格納されますが、VM の作成時にこの場所を変更することができます。 [Azure CLI 2.0](/cli/azure) を使用して VM を作成する場合は、[az vm create](/cli/azure/vm#create) を実行する際に `--ssh-key-path` オプションを使って、この公開キーの場所を指定します。 公開キー ファイルの内容をコピーし、Azure Portal または Resource Manager テンプレートに貼り付けて使用する場合は、余分な空白スペースをコピーしないように注意してください。 たとえば、OS X を使用している場合は、公開キー ファイル (既定では **~/.ssh/id_rsa.pub**) を **pbcopy** にパイプして、内容をコピーできます (`xclip` など、同じ目的を達成できる Linux プログラムが他にもあります)。
+Azure の Linux VM に配置した公開キーは、既定で `~/.ssh/id_rsa.pub` に格納されますが、VM の作成時にこの場所を変更することができます。 [Azure CLI 2.0](/cli/azure) を使用して VM を作成する場合は、[az vm create](/cli/azure/vm#az_vm_create) を実行する際に `--ssh-key-path` オプションを使って、この公開キーの場所を指定します。 公開キー ファイルの内容をコピーし、Azure Portal または Resource Manager テンプレートに貼り付けて使用する場合は、余分な空白スペースをコピーしないように注意してください。 たとえば、OS X を使用している場合は、公開キー ファイル (既定では **~/.ssh/id_rsa.pub**) を **pbcopy** にパイプして、内容をコピーできます (`xclip` など、同じ目的を達成できる Linux プログラムが他にもあります)。
 
 SSH 公開キーがわからない場合は、次のように `cat` を実行して公開キーを表示できます。`~/.ssh/id_rsa.pub` の部分は実際の公開キー ファイルの場所に置き換えてください。
 

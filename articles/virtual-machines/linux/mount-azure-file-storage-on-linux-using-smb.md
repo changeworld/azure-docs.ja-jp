@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/13/2017
 ms.author: v-livech
-ms.openlocfilehash: 9eae17b304f8a987b44ebed8906dabd8ff3a36a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4566e9b236049c336858e9149cca80066b029775
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="mount-azure-file-storage-on-linux-vms-using-smb"></a>SMB を使用して Linux VM に Azure File Storage をマウントする
 
@@ -67,7 +67,7 @@ File Storage でホストされている SMB マウントに VM からファイ�
 
 この詳細なチュートリアルでは、まず File Storage 共有を作成するために必要な前提条件を作成し、次に SMB 経由で Linux VM にマウントします。
 
-1. [az group create](/cli/azure/group#create) を使用して、ファイル共有を保持するリソース グループを作成します。
+1. [az group create](/cli/azure/group#az_group_create) を使用して、ファイル共有を保持するリソース グループを作成します。
 
     "米国西部" という場所に `myResourceGroup` という名前のリソース グループを作成するには、次の例を使用します。
 
@@ -75,7 +75,7 @@ File Storage でホストされている SMB マウントに VM からファイ�
     az group create --name myResourceGroup --location westus
     ```
 
-2. [az storage account create](/cli/azure/storage/account#create) を使用して、実際のファイルを格納する Azure ストレージ アカウントを作成します。
+2. [az storage account create](/cli/azure/storage/account#az_storage_account_create) を使用して、実際のファイルを格納する Azure ストレージ アカウントを作成します。
 
     Standard_LRS ストレージ SKU を使用して mystorageaccount という名前のストレージ アカウントを作成するには、次の例を使用します。
 
@@ -90,7 +90,7 @@ File Storage でホストされている SMB マウントに VM からファイ�
 
     ストレージ アカウントを作成すると、サービスを中断させることなく交互に使用できるように、アカウント キーがペアで作成されます。 ペアの 2 つ目のキーに切り替えたら、新しいキー ペアを作成します。 新しいストレージ アカウント キーは必ずペアで作成されるので、すぐに切り換えることができる未使用のストレージ アカウント キーを常に 1 つ以上確保できます。
 
-    [az storage account keys list](/cli/azure/storage/account/keys#list) を使用して、ストレージ アカウント キーを表示します。 次の例では、`mystorageaccount` という名前のストレージ アカウントのストレージ アカウント キーが表示されます。
+    [az storage account keys list](/cli/azure/storage/account/keys#az_storage_account_keys_list) を使用して、ストレージ アカウント キーを表示します。 次の例では、`mystorageaccount` という名前のストレージ アカウントのストレージ アカウント キーが表示されます。
 
     ```azurecli
     az storage account keys list --resource-group myResourceGroup \
@@ -107,7 +107,7 @@ File Storage でホストされている SMB マウントに VM からファイ�
 
 4. File Storage 共有を作成します。
 
-    [az storage share create](/cli/azure/storage/share#create) を使用して、File Storage 共有に SMB 共有を含めます。 クォータは常にギガバイト (GB) 単位で表されます。 前の `az storage account keys list` コマンドで取得したキーのいずれかを渡します。 次の例を使用して、mystorageshare という名前の 10 GB クオータの共有を作成します。
+    [az storage share create](/cli/azure/storage/share#az_storage_share_create) を使用して、File Storage 共有に SMB 共有を含めます。 クォータは常にギガバイト (GB) 単位で表されます。 前の `az storage account keys list` コマンドで取得したキーのいずれかを渡します。 次の例を使用して、mystorageshare という名前の 10 GB クオータの共有を作成します。
 
     ```azurecli
     az storage share create --name mystorageshare \
@@ -137,10 +137,10 @@ File Storage でホストされている SMB マウントに VM からファイ�
     Linux VM を再起動すると、マウントされた SMB 共有はシャットダウン中にマウント解除されます。 起動時に SMB 共有を再マウントするには、Linux の /etc/fstab に行を追加します。 Linux では、fstab ファイルを使用して、起動プロセスでマウントする必要があるファイル システムを示します。 SMB 共有を追加することによって、File Storage 共有は Linux VM に永続的にマウントされるファイル システムとして設定されます。 File Storage SMB 共有を新しい VM に追加するには、cloud-init を使用します。
 
     ```bash
-    //myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
+    //myaccountname.file.core.windows.net/mystorageshare /mnt/mymountdirectory cifs vers=3.0,username=mystorageaccount,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [cloud-init を利用し、作成時に Linux VM をカスタマイズする](using-cloud-init.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 - [Linux VM へのディスクの追加](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

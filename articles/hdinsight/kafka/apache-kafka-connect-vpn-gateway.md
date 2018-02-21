@@ -13,13 +13,13 @@ ms.custom: hdinsightactive
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/07/2017
+ms.date: 02/05/2018
 ms.author: larryfr
-ms.openlocfilehash: 2b55de4de6bb94be78649112161211346090b23a
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: c82629c0f3d3b32314d22467164a06a4c7bcabfe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="connect-to-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Kafka に接続する
 
@@ -47,7 +47,7 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
 * VPN ゲートウェイと VPN クライアントを使用して、仮想ネットワークに各マシンを接続する。 この構成を有効にするには、次のタスクを実行します。
 
     1. 仮想ネットワークを作成します。
-    2. ポイント対サイト構成を使用する VPN ゲートウェイを作成します。 この構成により、Windows クライアントにインストール可能な VPN クライアントを使用できるようになります。
+    2. ポイント対サイト構成を使用する VPN ゲートウェイを作成します。 この構成は、Windows と MacOS の両方のクライアントで使用することができます。
     3. 仮想ネットワークに HDInsight 上の Kafka をインストールします。
     4. IP を提供するように Kafka を構成します。 この構成を行うことで、クライアントでドメイン名の代わりに IP アドレスを使用して接続を行えるようになります。
     5. 開発システムに VPN クライアントをダウンロードして使用します。
@@ -57,7 +57,7 @@ HDInsight では、パブリック インターネット経由で Kafka に直�
     > [!WARNING]
     > この構成には次の制限があるため、推奨されるのは開発用途のみです。
     >
-    > * 各クライアントは、VPN ソフトウェア クライアントを使用して接続する必要があります。 Azure で提供されるのは Windows ベースのクライアントのみです。
+    > * 各クライアントは、VPN ソフトウェア クライアントを使用して接続する必要があります。
     > * この VPN クライアントは仮想ネットワークに名前解決要求を渡さないため、Kafka との通信には IP アドレスを使用する必要があります。 IP で通信を行うには、Kafka クラスターで追加の構成を行う必要があります。
 
 仮想ネットワークで HDInsight を使用する方法については、[Azure Virtual Network を使用した HDInsight の機能拡張](../hdinsight-extend-hadoop-virtual-network.md)に関する記事を参照してください。
@@ -232,22 +232,13 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
         -DefaultStorageAccountName "$storageName.blob.core.windows.net" `
         -DefaultStorageAccountKey $defaultStorageKey `
         -DefaultStorageContainer $defaultContainerName `
+        -DisksPerWorkerNode 2 `
         -VirtualNetworkId $network.Id `
         -SubnetName $defaultSubnet.Id
     ```
 
   > [!WARNING]
   > このプロセスは、完了するまで約 15 分かかります。
-
-8. 次のコマンドレットを使用して、仮想ネットワークでの Windows VPN クライアントの URL を取得します。
-
-    ```powershell
-    Get-AzureRmVpnClientPackage -ResourceGroupName $resourceGroupName `
-        -VirtualNetworkGatewayName $vpnName `
-        -ProcessorArchitecture Amd64
-    ```
-
-    Windows VPN クライアントをダウンロードするには、返された URI を Web ブラウザーで使用します。
 
 ### <a name="configure-kafka-for-ip-advertising"></a>IP を提供するように Kafka を構成する
 
@@ -299,7 +290,7 @@ Kafka クライアントがオンプレミスからクラスターへ接続で�
 
 ### <a name="connect-to-the-vpn-gateway"></a>VPN ゲートウェイに接続する
 
-__Windows クライアント__から VPN ゲートウェイに接続するには、[ポイント対サイト接続の構成](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#clientcertificate)に関するドキュメントの「__Azure への接続__」セクションに従います。
+VPN ゲートウェイに接続するには、[ポイント対サイト接続の構成](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect)に関するドキュメントの「__Azure への接続__」セクションに従います。
 
 ## <a id="python-client"></a>例: Python クライアント
 
@@ -375,7 +366,7 @@ Kafka への接続を検証するには、次の手順に従って Python プロ
 
     * __カスタム DNS サーバー経由での名前解決を有効化__している場合は、`kafka_broker` エントリをワーカー ノードの FQDN に置き換えます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 仮想ネットワークでの HDInsight の使用の詳細については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](../hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
 

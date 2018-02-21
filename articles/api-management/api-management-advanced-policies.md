@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 47b8e43d1da031bdbe356917fd950ae106f8d96f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 860b1e0a214b107cfe37ffe9c77e804503ef2dde
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
@@ -615,7 +615,7 @@ status code and media type. If no example or schema found, the content is empty.
         <!-- Check active property in response -->  
         <when condition="@((bool)((IResponse)context.Variables["tokenstate"]).Body.As<JObject>()["active"] == false)">  
             <!-- Return 401 Unauthorized with http-problem payload -->  
-            <return-response response-variable-name="existing response variable">  
+            <return-response>  
                 <set-status code="401" reason="Unauthorized" />  
                 <set-header name="WWW-Authenticate" exists-action="override">  
                     <value>Bearer error="invalid_token"</value>  

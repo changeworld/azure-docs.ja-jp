@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2c2318d9a5f72800f9cfbd430dca448fd1e5746f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e0d5bd57a40fca837ead42e691e1fa0c802dc013
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -41,10 +41,10 @@ az provider register -n Microsoft.ContainerService
 
 ## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
 
-次の例では、`myK8sCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました。
+次の例では、`myAKSCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル][aks-tutorial-prepare-acr]で作成しました。
 
 ```azurecli
-az aks create --resource-group myResourceGroup --name myK8sCluster --node-count 1 --generate-ssh-keys
+az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
 ```
 
 数分してデプロイが完了すると、この AKS デプロイに関する情報が JSON 形式で表示されます。
@@ -64,7 +64,7 @@ az aks install-cli
 Kubernetes クラスターに接続するように kubectl を構成するには、次のコマンドを実行します。
 
 ```azurecli
-az aks get-credentials --resource-group=myResourceGroup --name=myK8sCluster
+az aks get-credentials --resource-group=myResourceGroup --name=myAKSCluster
 ```
 
 クラスターへの接続を確認するには、[kubectl get nodes][kubectl-get] コマンドを実行します。
@@ -77,12 +77,12 @@ kubectl get nodes
 
 ```
 NAME                          STATUS    AGE       VERSION
-k8s-myk8scluster-36346190-0   Ready     49m       v1.7.7
+k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.7
 ```
 
 チュートリアルが完了し、AKS クラスターはワークロードで使用できるようになりました。 後のチュートリアルでは、マルチコンテナー アプリケーションのクラスターへのデプロイ、スケールアウト、更新、監視を行います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Kubernetes クラスターが AKS にデプロイされました。 次の手順を完了しました。
 

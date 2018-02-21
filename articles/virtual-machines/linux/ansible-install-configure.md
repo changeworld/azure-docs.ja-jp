@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 13b043f3d6154852647f6bb738d3717be6802fa9
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: a27d4422e0d7b116d2aea6f743b9efc27570cdb9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Azure の仮想マシンを管理するための Ansible のインストールと構成
 この記事では、最も一般的な Linux ディストリビューションに Ansible と必須の Azure Python SDK モジュールをインストールする方法について説明します。 インストールしたパッケージを特定のプラットフォーム用に合わせることで、他のディストリビューションに Ansible をインストールできます。 Azure リソースを安全に作成するため、Ansible で使用する資格情報を作成し定義する方法についても説明します。 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/19/2017
 
 
 ## <a name="install-ansible"></a>Ansible のインストール
-最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroupAnsible* という名前のリソース グループを場所 *eastus* に作成します。
+最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroupAnsible* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroupAnsible --location eastus
@@ -41,7 +41,7 @@ az group create --name myResourceGroupAnsible --location eastus
 - [SLES 12 SP2](#sles-12-sp2)
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
-[az vm create](/cli/azure/vm#create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -72,7 +72,7 @@ pip install ansible[azure]
 
 
 ### <a name="centos-73"></a>CentOS 7.3
-[az vm create](/cli/azure/vm#create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -104,7 +104,7 @@ sudo pip install ansible[azure]
 
 
 ### <a name="sles-12-sp2"></a>SLES 12 SP2
-[az vm create](/cli/azure/vm#create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVMAnsible* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -157,7 +157,7 @@ az ad sp create-for-rbac --query [client_id: appId, secret: password, tenant: te
 }
 ```
 
-Azure に対して認証するには、[az account show](/cli/azure/account#show) で Azure サブスクリプション ID を取得する必要もあります。
+Azure に対して認証するには、[az account show](/cli/azure/account#az_account_show) で Azure サブスクリプション ID を取得する必要もあります。
 
 ```azurecli
 az account show --query "{ subscription_id: id }"

@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/11/2017
 ms.author: andrela
-ms.openlocfilehash: 994705b0a9c7ca850c357a5810f1edb1618098d6
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: ddf0f0be0acd86f3a2c3e241cbf8ebc81301bc21
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Java を使用して Azure SQL Database に照会する
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 11/29/2017
    <dependency>
        <groupId>com.microsoft.sqlserver</groupId>
        <artifactId>mssql-jdbc</artifactId>
-       <version>6.2.1.jre8</version>
+       <version>6.2.2.jre8</version>
    </dependency>
    ```
 
@@ -144,7 +144,7 @@ ms.lasthandoff: 11/29/2017
 2. 先頭から 20 行が返されることを確認して、アプリケーション ウィンドウを閉じます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [最初の Azure SQL Database の設計](sql-database-design-first-database.md)
 - [SQL Server 用 Microsoft JDBC ドライバー](https://github.com/microsoft/mssql-jdbc)
 - [問題の報告/質問](https://github.com/microsoft/mssql-jdbc/issues)

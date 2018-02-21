@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 736d286bb7b97e842e73afd362ba70a42d1a9d9d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 62036e8a4e0611958ffacf7f7d7896e6ebde5e16
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-amazon-marketplace-web-service-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Amazon Marketplace Web Service からデータをコピーする
 
@@ -51,9 +51,9 @@ Amazon Marketplace Web Service のリンクされたサービスでは、次の�
 | endpoint | Amazon MWS サーバーのエンドポイント (つまり、mws.amazonservices.com)  | [はい] |
 | marketplaceID | データを取得する Amazon Marketplace ID。 複数の Marketplace ID からデータを取得するには、コンマ (`,`) で区切って指定します。 (つまり、A2EUQ1WTGCTBG2)  | [はい] |
 | sellerID | Amazon の販売者 ID。  | [はい] |
-| mwsAuthToken | Amazon MWS 認証トークン。 このフィールドを SecureString としてマークしてデータ ファクトリ サービスで安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | [はい] |
+| mwsAuthToken | Amazon MWS 認証トークン。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | accessKeyId | データのアクセスに使用されるアクセス キー ID。  | [はい] |
-| secretKey | データのアクセスに使用されるシークレット キー。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | [はい] |
+| secretKey | データのアクセスに使用されるシークレット キー。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |

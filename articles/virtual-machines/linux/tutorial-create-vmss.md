@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 8703d0c06f2507cc3c21d4280d887a8772145a28
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 263983017e08dcc9a8e614c159ef5afaaf1d924e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-and-deploy-a-highly-available-app-on-linux"></a>仮想マシン スケール セットを作成して Linux に高可用性アプリをデプロイする
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 このチュートリアルでは、仮想マシン スケール セットを Azure にデプロイします。 学習内容は次のとおりです。
@@ -96,13 +96,13 @@ runcmd:
 
 
 ## <a name="create-a-scale-set"></a>スケール セットを作成する
-スケール セットを作成する前に、[az group create](/cli/azure/group#create) を使ってリソース グループを作成します。 次の例では、*myResourceGroupScaleSet* という名前のリソース グループを場所 *eastus* に作成します。
+スケール セットを作成する前に、[az group create](/cli/azure/group#az_group_create) を使ってリソース グループを作成します。 次の例では、*myResourceGroupScaleSet* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupScaleSet --location eastus
 ```
 
-ここでは、[az vmss create](/cli/azure/vmss#create) を使って仮想マシン スケール セットを作成します。 以下の例では、*myScaleSet* という名前のスケール セットを作成し、cloud-init ファイルを使って VM をカスタマイズして、存在しない場合は SSH キーを生成します。
+ここでは、[az vmss create](/cli/azure/vmss#az_vmss_create) を使って仮想マシン スケール セットを作成します。 以下の例では、*myScaleSet* という名前のスケール セットを作成し、cloud-init ファイルを使って VM をカスタマイズして、存在しない場合は SSH キーを生成します。
 
 ```azurecli-interactive 
 az vmss create \
@@ -121,7 +121,7 @@ az vmss create \
 ## <a name="allow-web-traffic"></a>Web トラフィックを許可する
 仮想マシン スケール セットの一部として、ロード バランサーが自動的に作成されました。 ロード バランサーはロード バランサー ルールを使用して定義した VM のセット全体にトラフィックを分散します。 ロード バランサーの概念と構成につい詳しくは、次のチュートリアル「[Azure の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法](tutorial-load-balancer.md)」をご覧ください。
 
-トラフィックが Web アプリに到達することを許可するには、[az network lb rule creat](/cli/azure/network/lb/rule#create) を使ってルールを作成します。 次の例では、*myLoadBalancerRuleWeb* という名前の規則を作成します。
+トラフィックが Web アプリに到達することを許可するには、[az network lb rule creat](/cli/azure/network/lb/rule#az_network_lb_rule_create) を使ってルールを作成します。 次の例では、*myLoadBalancerRuleWeb* という名前の規則を作成します。
 
 ```azurecli-interactive 
 az network lb rule create \
@@ -136,7 +136,7 @@ az network lb rule create \
 ```
 
 ## <a name="test-your-app"></a>アプリをテストする
-Web 上の Node.js アプリを確認するには、[az network public-ip show](/cli/azure/network/public-ip#show) でロード バランサーのパブリック IP アドレスを取得します。 次の例では、スケール セットの一部として作成された *myScaleSetLBPublicIP* の IP アドレスを取得します。
+Web 上の Node.js アプリを確認するには、[az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) でロード バランサーのパブリック IP アドレスを取得します。 次の例では、スケール セットの一部として作成された *myScaleSetLBPublicIP* の IP アドレスを取得します。
 
 ```azurecli-interactive 
 az network public-ip show \
@@ -157,7 +157,7 @@ az network public-ip show \
 スケール セットのライフサイクルを通じて、1 つ以上の管理タスクを実行する必要がある場合があります。 さらに、各種ライフサイクルのタスクを自動化するスクリプトを作成するほうが便利な場合もあります。 Azure CLI 2.0 には、これらのタスクを簡単に実行するための方法が用意されています。 一般的なタスクには、次のようなものがあります。
 
 ### <a name="view-vms-in-a-scale-set"></a>スケール セットの VM を表示する
-スケール セットで実行されている VM の一覧を表示するには、[az vmss list-instances](/cli/azure/vmss#list-instances) を次のように使います。
+スケール セットで実行されている VM の一覧を表示するには、[az vmss list-instances](/cli/azure/vmss#az_vmss_list_instances) を次のように使います。
 
 ```azurecli-interactive 
 az vmss list-instances \
@@ -177,7 +177,7 @@ az vmss list-instances \
 
 
 ### <a name="increase-or-decrease-vm-instances"></a>VM インスタンスを増減させる
-現時点でスケール セットに存在するインスタンスの数を確認するには、[az vmss show](/cli/azure/vmss#show) と *sku.capacity* に対するクエリを使います。
+現時点でスケール セットに存在するインスタンスの数を確認するには、[az vmss show](/cli/azure/vmss#az_vmss_show) と *sku.capacity* に対するクエリを使います。
 
 ```azurecli-interactive 
 az vmss show \
@@ -187,7 +187,7 @@ az vmss show \
     --output table
 ```
 
-[az vmss scale](/cli/azure/vmss#scale) を使って、スケール セット内の仮想マシンの数を手動で増減させることができます。 次の例では、スケール セット内の VM の数を *3* に設定します。
+[az vmss scale](/cli/azure/vmss#az_vmss_scale) を使って、スケール セット内の仮想マシンの数を手動で増減させることができます。 次の例では、スケール セット内の VM の数を *3* に設定します。
 
 ```azurecli-interactive 
 az vmss scale \
@@ -198,7 +198,7 @@ az vmss scale \
 
 
 ### <a name="configure-autoscale-rules"></a>自動スケール ルールを構成する
-スケール セット内のインスタンスの数を手動でスケールする代わりに、自動スケール ルールを定義しておくこともできます。 自動スケール ルールを使うと、スケール セット内のインスタンスが監視され、定義しておいたメトリックとしきい値に基づいて適切な対応が自動で実行されます。 以下の例は、CPU に対する負荷の平均が 5 分間に 60% を上回った場合にインスタンスの数を 1 つ増やしてスケールアウトするためのものです。 このコードではほかにも、CPU に対する負荷の平均が 5 分間に 30% を下回った場合に、インスタンスを 1 つ減らしてスケールインすることが指定されています。 サブスクリプション ID を使用して、さまざまなスケール セット コンポーネントのリソース URI を構築します。 [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings#create) でこれらのルールを作成するには、次の autoscale コマンド プロファイルをコピーして貼り付けます。
+スケール セット内のインスタンスの数を手動でスケールする代わりに、自動スケール ルールを定義しておくこともできます。 自動スケール ルールを使うと、スケール セット内のインスタンスが監視され、定義しておいたメトリックとしきい値に基づいて適切な対応が自動で実行されます。 以下の例は、CPU に対する負荷の平均が 5 分間に 60% を上回った場合にインスタンスの数を 1 つ増やしてスケールアウトするためのものです。 このコードではほかにも、CPU に対する負荷の平均が 5 分間に 30% を下回った場合に、インスタンスを 1 つ減らしてスケールインすることが指定されています。 サブスクリプション ID を使用して、さまざまなスケール セット コンポーネントのリソース URI を構築します。 [az monitor autoscale-settings create](/cli/azure/monitor/autoscale-settings#az_monitor_autoscale_settings_create) でこれらのルールを作成するには、次の autoscale コマンド プロファイルをコピーして貼り付けます。
 
 ```azurecli-interactive 
 sub=$(az account show --query id -o tsv)
@@ -271,7 +271,7 @@ az monitor autoscale-settings create \
 
 
 ### <a name="get-connection-info"></a>接続情報を取得する
-スケール セット内の VM に関する接続情報を取得するには、[az vmss list-instance-connection-info](/cli/azure/vmss#list-instance-connection-info) を使用します。 このコマンドでは、SSH での接続を許可する各 VM のパブリック IP アドレスとポートが出力されます。
+スケール セット内の VM に関する接続情報を取得するには、[az vmss list-instance-connection-info](/cli/azure/vmss#az_vmss_list_instance_connection_info) を使用します。 このコマンドでは、SSH での接続を許可する各 VM のパブリック IP アドレスとポートが出力されます。
 
 ```azurecli-interactive 
 az vmss list-instance-connection-info \
@@ -284,7 +284,7 @@ az vmss list-instance-connection-info \
 データ ディスクを作成し、スケール セットで使用できます。 少し前のチュートリアルでは、[Azure ディスクを管理する](tutorial-manage-disks.md)方法を説明しました。具体的には、OS ディスクではなくデータ ディスクにアプリを構築する際のベスト プラクティスとパフォーマンス改善のためのヒントを簡単に紹介しました。
 
 ### <a name="create-scale-set-with-data-disks"></a>データ ディスクを備えたスケール セットを作成する
-スケール セットを作成してデータ ディスクをアタッチするには、[az vmss create](/cli/azure/vmss#create) コマンドに `--data-disk-sizes-gb` パラメーターを追加します。 次の例では、各インスタンスに *50* Gb のデータ ディスクがアタッチされたスケール セットを作成します。
+スケール セットを作成してデータ ディスクをアタッチするには、[az vmss create](/cli/azure/vmss#az_vmss_create) コマンドに `--data-disk-sizes-gb` パラメーターを追加します。 次の例では、各インスタンスに *50* Gb のデータ ディスクがアタッチされたスケール セットを作成します。
 
 ```azurecli-interactive 
 az vmss create \
@@ -301,7 +301,7 @@ az vmss create \
 インスタンスがスケール セットから削除されると、アタッチされているデータ ディスクも削除されます。
 
 ### <a name="add-data-disks"></a>データ ディスクを追加する
-スケール セット内のインスタンスにデータ ディスクを追加するには、[az vmss disk attach](/cli/azure/vmss/disk#attach) を使用します。 次の例では、各インスタンスに *50* Gb のディスクを追加します。
+スケール セット内のインスタンスにデータ ディスクを追加するには、[az vmss disk attach](/cli/azure/vmss/disk#az_vmss_disk_attach) を使用します。 次の例では、各インスタンスに *50* Gb のディスクを追加します。
 
 ```azurecli-interactive 
 az vmss disk attach \
@@ -312,7 +312,7 @@ az vmss disk attach \
 ```
 
 ### <a name="detach-data-disks"></a>データ ディスクをデタッチする
-スケール セット内のインスタンスからデータ ディスクを削除するには、[az vmss disk detach](/cli/azure/vmss/disk#detach) を使用します。 以下の例では、各インスタンスから LUN *2* のデータ ディスクを削除します。
+スケール セット内のインスタンスからデータ ディスクを削除するには、[az vmss disk detach](/cli/azure/vmss/disk#az_vmss_disk_detach) を使用します。 以下の例では、各インスタンスから LUN *2* のデータ ディスクを削除します。
 
 ```azurecli-interactive 
 az vmss disk detach \

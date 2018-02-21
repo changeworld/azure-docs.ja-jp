@@ -3,7 +3,7 @@ title: "アクセス レポート - Azure RBAC | Microsoft Docs"
 description: "ロールベースのアクセス制御を使用した Azure サブスクリプションへのアクセス権の変更について、過去 90 日間分をすべて一覧表示するレポートを生成します。"
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 ms.assetid: 2bc68595-145e-4de3-8b71-3a21890d13d9
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/17/2017
-ms.author: andredm
+ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c430e1206e6e97f2c7fb7d2a6ff0dd6e65ee8bbf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 169ed8dd6d14d8d9d0fd49ad7306b1d4fb2c4d90
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-access-report-for-role-based-access-control"></a>ロール ベースのアクセス制御のアクセス レポートを作成する
 サブスクリプション内でだれかがアクセス権を付与したり取り消したりしたときは、その変更が常に Azure イベントに記録されます。 アクセス変更履歴レポートを作成すると、過去 90 日間のすべての変更を確認できます。
@@ -29,7 +29,7 @@ PowerShell でアクセス変更履歴レポートを作成するには、[Get-A
 
 このコマンドを呼び出すには、表示する割り当てのプロパティを指定します。プロパティの例を次に示します。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | **アクション** |アクセス権が付与されているか取り消されているか |
 | **Caller** |アクセス権の変更を担当する所有者 |
@@ -59,7 +59,7 @@ Azure コマンド ライン インターフェイス (CLI) でアクセス変�
 
 ![スプレッドシートとして表示した Changelog - スクリーンショット](./media/role-based-access-control-configure/change-history-spreadsheet.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md)
 * [PowerShell を使用して RBAC を管理する](role-based-access-control-manage-access-powershell.md)方法を確認します。
 

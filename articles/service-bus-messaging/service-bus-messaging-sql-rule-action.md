@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/07/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 83b4f76a171cd8a860e7ab43462c976bf4df941a
-ms.sourcegitcommit: 0930aabc3ede63240f60c2c61baa88ac6576c508
+ms.openlocfilehash: 9ac9a2968adfdd8e1fb229ad744bc99914cdcd08
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="sqlruleaction-syntax"></a>SQLRuleAction 構文
 
@@ -219,7 +219,7 @@ ms.lasthandoff: 11/07/2017
 - 存在しないユーザー プロパティが参照されていても、アクションは失敗しません。
 - 存在しないユーザー プロパティは内部的に "Unknown" と評価され、演算子を評価するときに [SQLFilter](/dotnet/api/microsoft.servicebus.messaging.sqlfilter) と同じセマンティクスに従います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)
 - [SQLFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)

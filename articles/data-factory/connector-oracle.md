@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: d6b96bc40325d398c91e293ec6ca8f8cc2993e58
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: dfbc6e1d8bdf20cc7a0a4b1571882ba84487dddc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-and-to-oracle-by-using-azure-data-factory"></a>Azure Data Factory を使用した Oracle をコピー元またはコピー先とするデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -55,10 +55,10 @@ Oracle データベースから、サポートされている任意のシンク 
 
 Oracle のリンクされたサービスでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| 型 | type プロパティは **Oracle** に設定する必要があります。 | はい |
-| connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 このフィールドを SecureString とマークします。<br><br>**サポートされる接続の種類**: **Oracle SID** または **Oracle サービス名**を使用してデータベースを識別できます。<br>- SID を使用する場合: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- サービス名を使用する場合: `Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | はい |
+| 型 | type プロパティは **Oracle** に設定する必要があります。 | [はい] |
+| connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 このフィールドを SecureString としてマークして Data Factory にデータ ファクトリに安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。<br><br>**サポートされる接続の種類**: **Oracle SID** または **Oracle サービス名**を使用してデータベースを識別できます。<br>- SID を使用する場合: `Host=<host>;Port=<port>;Sid=<sid>;User Id=<username>;Password=<password>;`<br>- サービス名を使用する場合: `Host=<host>;Port=<port>;ServiceName=<sid>;User Id=<username>;Password=<password>;` | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
@@ -88,10 +88,10 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 
 Oracle をコピー元またはコピー先としてデータをコピーするには、データセットの type プロパティを **OracleTable** に設定します。 次のプロパティがサポートされています。
 
-| プロパティ | 説明  | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| 型 | データセットの type プロパティは **OracleTable** に設定する必要があります。 | はい |
-| tableName |リンクされたサービスが参照する Oracle データベースのテーブルの名前です。 | はい |
+| 型 | データセットの type プロパティは **OracleTable** に設定する必要があります。 | [はい] |
+| tableName |リンクされたサービスが参照する Oracle データベースのテーブルの名前です。 | [はい] |
 
 **例:**
 
@@ -120,9 +120,9 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 
 Oracle からデータをコピーするは、コピー アクティビティのソースの種類を **OracleSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのソースの type プロパティは **OracleSource** に設定する必要があります。 | はい |
+| 型 | コピー アクティビティのソースの type プロパティは **OracleSource** に設定する必要があります。 | [はい] |
 | oracleReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 例: `"SELECT * FROM MyTable"`。 | いいえ  |
 
 "oracleReaderQuery" を指定しない場合は、データセットの "structure" セクションに定義された列を使用して、Oracle データベースに対して実行するクエリ (`select column1, column2 from mytable`) が作成されます。 データセット定義に "構造" がない場合は、すべての列がテーブルから選択されます。
@@ -163,12 +163,12 @@ Oracle からデータをコピーするは、コピー アクティビティの
 
 Oracle にデータをコピーするには、コピー アクティビティのシンクの種類を **OracleSink** に設定します。 コピー アクティビティの **sink** セクションでは、次のプロパティがサポートされます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| 型 | コピー アクティビティのシンクの type プロパティは **OracleSink** に設定する必要があります。 | はい |
+| 型 | コピー アクティビティのシンクの type プロパティは **OracleSink** に設定する必要があります。 | [はい] |
 | writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 10,000) |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 たとえば "00:30:00" (30 分) を指定できます。 | いいえ  |
-| preCopyScript | コピー アクティビティの毎回の実行で、データを Oracle に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |
+| preCopyScript | コピー アクティビティの毎回の実行で、データを Oracle に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ  |
 
 **例:**
 

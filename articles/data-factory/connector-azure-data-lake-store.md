@@ -10,13 +10,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 12/07/2017
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c388fe0cfe85ec2bf2b752f74d39eb2ebe38ceb1
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: e8326cedfbf22b5ddf19626642b63312babe5fb6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Store をコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -71,15 +71,15 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 
 >[!IMPORTANT]
 > Azure Data Lake Store でサービス プリンシパルに適切なアクセス許可を付与してください。
->- **ソースでは**、少なくともデータの**読み取り + 実行**アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または**読み取り**アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
->- **シンクでは**、少なくともデータの**書き込み + 実行**アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
+>- **ソースとして**、データ エクスプローラーで [アクセス] を選択し、少なくとも**読み取り + 実行**アクセス許可を付与し、ファイルをフォルダー/サブフォルダーにコピーするか、**読み取り**アクセス許可を付与して 1 つのファイルをコピーして、**アクセス許可および既定アクセス許可エントリ**として追加します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
+>- **シンクとして**、データ エクスプローラーで [アクセス] を選択し、少なくとも**書き込み + 実行**アクセス許可を付与して子項目をフォルダーに作成し、**アクセス許可および既定のアクセス許可エントリ**として追加することを選択します。 Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、アクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
 
 次のプロパティがサポートされています。
 
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString とマークします。 | [はい] |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 
 **例:**
 
@@ -114,12 +114,12 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 管理対象のサービス ID (MSI) の認証を使用するには:
 
 1. ファクトリと共に生成された "サービス ID アプリケーション ID" の値をコピーして、[データ ファクトリのサービス ID を取得](data-factory-service-identity.md#retrieve-service-identity)します。
-2. サービス プリンシパルの場合と同じように、Data Lake Store へのアクセス権をサービス ID に付与します。 詳しい手順については、[サービス間認証 - Azure Data Lake Store アカウントのファイルまたはフォルダーへの Azure AD アプリケーションの割り当て](../data-lake-store/data-lake-store-service-to-service-authenticate-using-active-directory.md#step-3-assign-the-azure-ad-application-to-the-azure-data-lake-store-account-file-or-folder)に関するページをご覧ください。
+2. サービス プリンシパルの場合と同じように、以下の注意に従って Data Lake Store へのアクセス権をサービス ID に付与します。
 
 >[!IMPORTANT]
 > Azure Data Lake Store でデータ ファクトリ サービス ID に適切なアクセス許可を付与してください。
->- **ソースでは**、少なくともデータの**読み取り + 実行**アクセス許可 (フォルダーの内容を表示およびコピーする場合)、または**読み取り**アクセス許可 (1 つのファイルをコピーする場合) を付与します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
->- **シンクでは**、少なくともデータの**書き込み + 実行**アクセス許可 (フォルダー内に子項目を作成する場合) を付与します。 また、Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、データ ファクトリで Data Lake Store のリージョンを検出させるために、アカウントのアクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
+>- **ソースとして**、データ エクスプローラーで [アクセス] を選択し、少なくとも**読み取り + 実行**アクセス許可を付与し、ファイルをフォルダー/サブフォルダーにコピーするか、**読み取り**アクセス許可を付与して 1 つのファイルをコピーして、**アクセス許可および既定アクセス許可エントリ**として追加します。 アカウント レベルのアクセスの制御 (IAM) に関する要件はありません。
+>- **シンクとして**、データ エクスプローラーで [アクセス] を選択し、少なくとも**書き込み + 実行**アクセス許可を付与して子項目をフォルダーに作成し、**アクセス許可および既定のアクセス許可エントリ**として追加することを選択します。 Azure IR を使用してコピーする (ソースとシンクの両方がクラウドに存在する) 場合は、Data Factory で Data Lake Store のリージョンを検出させるために、アクセスの制御 (IAM) で少なくとも**閲覧者**ロールを付与します。 この IAM ロールを付与しないようにする場合は、以下の例に示すように、Data Lake Store の場所を使用して明示的に [Azure IR を作成](create-azure-integration-runtime.md#create-azure-ir)し、Data Lake Store のリンクされたサービスで関連付けます。
 
 Azure Data Factory では、リンクされたサービスの Data Lake Store の一般的な情報以外にプロパティを指定する必要はありません。
 

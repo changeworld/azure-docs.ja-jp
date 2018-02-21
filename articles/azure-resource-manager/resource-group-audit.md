@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: tomfitz
-ms.openlocfilehash: ecfb7f726d5447710948405b2dd83fcd1db3dff2
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: fb6fb3f7172673be70b1a6dcfd77e42cd982e248
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-activity-logs-to-audit-actions-on-resources"></a>リソースのアクションを監査するアクティビティ ログの表示
 アクティビティ ログを使用すると、次の内容を判断することができます。
@@ -29,7 +29,11 @@ ms.lasthandoff: 12/08/2017
 * 操作の状態
 * 操作を調査するために役立つ可能性のあるその他のプロパティの値
 
-[!INCLUDE [resource-manager-audit-limitations](../../includes/resource-manager-audit-limitations.md)]
+アクティビティ ログには、リソースで実行されたすべての書き込み操作 (PUT、POST、DELETE) が含まれます。 このログには読み取り操作 (GET) は含まれません。 リソース アクションの一覧については、「[Azure Resource Manager のリソース プロバイダー操作](../active-directory/role-based-access-control-resource-provider-operations.md)」を参照してください。 監査ログを使用して、トラブルシューティングを行うときにエラーを探したり、組織のユーザーがどのようにリソースを変更したかを監視したりできます。
+
+アクティビティ ログは、90 日間保持されます。 開始日が過去 90 日以内である限り、任意の日付の範囲にクエリを実行できます。
+
+
 
 ポータル、PowerShell、Azure CLI、Insights REST API、または [Insights .NET Library](https://www.nuget.org/packages/Microsoft.Azure.Insights/)を利用し、アクティビティ ログから情報を取得できます。
 
@@ -142,7 +146,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="rest-api"></a>REST API
 アクティビティ ログを利用するための REST 操作は [Insights REST API](https://msdn.microsoft.com/library/azure/dn931943.aspx)に含まれています。 アクティビティ ログのイベントを取得するには、 [サブスクリプション内の管理イベントの一覧表示](https://msdn.microsoft.com/library/azure/dn931934.aspx)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure アクティビティ ログは、サブスクリプション内のアクションに関してさらに洞察を得るために、Power BI で使用できます。 [Power BI などでの Azure アクティビティ ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/)に関する記事をご覧ください。
 * セキュリティ ポリシーを設定する方法については、「[Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
 * デプロイ操作を表示するコマンドについては、[デプロイ操作の表示](resource-manager-deployment-operations.md)に関するページをご覧ください。

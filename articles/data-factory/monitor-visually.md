@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2018
+ms.date: 02/06/2018
 ms.author: shlo
-ms.openlocfilehash: 97a8fa1779cd11830781528527ddfe998e0548b6
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 60d7897caebcb138180d99358ec754c1b9594fe5
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="visually-monitor-azure-data-factories"></a>Azure Data Factory を視覚的に監視する
 Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
@@ -29,8 +29,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="monitor-data-factory-v2-pipelines"></a>Data Factory v2 パイプラインを監視する
 
-1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure Portal で、作成した Data Factory ブレードに移動し、[Monitor & Manage]\(監視と管理\) タイルをクリックします。 これで ADF v2 の視覚的な監視エクスペリエンスが起動します。
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. [Azure Portal](https://portal.azure.com/) にログインします。
+3. Azure Portal で、作成した Data Factory ブレードに移動し、[Monitor & Manage]\(監視と管理\) タイルをクリックします。 これで ADF v2 の視覚的な監視エクスペリエンスが起動します。
 
 ## <a name="list-view-monitoring"></a>リスト ビューの監視
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 09/14/2017
 ms.author: echuvyrov
-ms.openlocfilehash: 13390c2db203332433e7e3c39c8d9ed5f688448c
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 8abc98a6f1a222e2533eb9f742fb83f4a23d5e90
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-infrastructure-in-azure-with-terraform"></a>Terraform によって Azure に完全な Linux 仮想マシンのインフラストラクチャを作成する
 
@@ -456,7 +456,7 @@ Plan: 7 to add, 0 to change, 0 to destroy.
 terraform apply
 ```
 
-Terraform が完了すると、VM インフラストラクチャが準備完了となります。 [az vm show](/cli/azure/vm#show) で VM のパブリック IP アドレスを取得します。
+Terraform が完了すると、VM インフラストラクチャが準備完了となります。 [az vm show](/cli/azure/vm#az_vm_show) で VM のパブリック IP アドレスを取得します。
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM -d --query [publicIps] --o tsv

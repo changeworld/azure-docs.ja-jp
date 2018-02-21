@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: a8ccec0dc8ff100c5d067cd50f2a6fa8cb4871fb
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7f9defc1f414819cf856fc92f5eb51eafdc67be9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>cloud-init を使用して Linux VM 上のスワップファイルを構成する
 この記事では、[cloud-init](https://cloudinit.readthedocs.io) を使用してさまざまな Linux ディストリビューションのスワップファイルを構成する方法を示します。 従来、スワップファイルはそれを必要とするディストリビューションに基づいて Linux エージェント (WALA) によって構成されました。  このドキュメントでは、cloud-init を使用したプロビジョニング時にスワップファイルをオンデマンドで構築するプロセスを概説します。  cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法について詳しくは、「[cloud-init の概要](using-cloud-init.md)」をご覧ください
@@ -47,13 +47,13 @@ mounts:
 - ["ephemeral0.2", "none", "swap", "sw", "0", "0"]
 ```
 
-このイメージをデプロイする前に、[az group create](/cli/azure/group#create) コマンドを使用してリソース グループを作成する必要があります。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+このイメージをデプロイする前に、[az group create](/cli/azure/group#az_group_create) コマンドを使用してリソース グループを作成する必要があります。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-ここで、[az vm create](/cli/azure/vm#create) で VM を作成し、次のように `--custom-data cloud_init_swapfile.txt` で cloud-init ファイルを指定します。
+ここで、[az vm create](/cli/azure/vm#az_vm_create) で VM を作成し、次のように `--custom-data cloud_init_swapfile.txt` で cloud-init ファイルを指定します。
 
 ```azurecli-interactive 
 az vm create \
@@ -87,7 +87,7 @@ Filename                Type        Size    Used    Priority
 > [!NOTE] 
 > スワップ ファイルが構成された既存の Azure イメージがあり、新しいイメージのスワップ ファイル構成を変更する場合は、既存のスワップ ファイルを削除する必要があります。 詳しくは、cloud-init でプロビジョニングするためのイメージのカスタマイズに関するドキュメントをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 構成変更の cloud-init の他の例については、以下をご覧ください。
  
 - [VM に他の Linux ユーザーを追加する](cloudinit-add-user.md)

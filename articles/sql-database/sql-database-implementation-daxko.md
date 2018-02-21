@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 7a05836be4a0879fa7103d070c683f45c06cd741
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 4ecef0526bcdc61d29ae0ee0ac0d55c5651a1b2b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI 社、Azure 導入で開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化
 ![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -91,7 +91,6 @@ Azure SQL Database は、俊敏で信頼性の高いサービスを受ける Spe
 * データベース ツールおよびエラスティック スケーリングの詳細については、 [エラスティック データベース ツールおよびエラスティック スケーリング](sql-database-elastic-scale-get-started.md)に関する記事をご覧ください。
 * SQL Server データベースの移行について、詳しくは、[SQL Server データベースの Azure への移行](sql-database-cloud-migrate.md)に関する記事をご覧ください。
 * アクティブ geo レプリケーションについて詳しくは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページを参照してください。
-* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * Azure Service Bus の詳細については、「 [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)」をご覧ください。
 * 自動スケールの詳細については、 [クラウド サービスのスケーリング](../cloud-services/cloud-services-how-to-scale-portal.md)に関する記事をご覧ください。
 

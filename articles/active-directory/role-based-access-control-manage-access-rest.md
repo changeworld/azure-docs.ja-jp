@@ -3,7 +3,7 @@ title: "REST を使用したロールベースのアクセス制御 - Azure AD |
 description: "REST API を使用したロールベースの Access Control の管理"
 services: active-directory
 documentationcenter: na
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: 
 ms.assetid: 1f90228a-7aac-4ea7-ad82-b57d222ab128
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: rest-api
 ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2017
-ms.author: andredm
-ms.openlocfilehash: 9ec64dc3ce95de9c29331699ad2140e5a3c25673
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: rolyon
+ms.openlocfilehash: d449b53d348471275cea3c7129245569e2151864
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-role-based-access-control-with-the-rest-api"></a>REST API を使用してロールベースのアクセス制御を管理する
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
    * 特定のユーザー、グループ、またはアプリケーションを対象にロールの割り当てを一覧表示する: `principalId%20eq%20'{objectId of user, group, or service principal}'`  
    * (グループから継承されたものも含む) 特定のユーザーを対象にロールの割り当てを一覧表示する: `assignedTo('{objectId of user}')`
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 200
 
 ```
@@ -98,7 +98,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 2. *{role-assignment-id}* は、ロールの割り当ての GUID 識別子に置き換えます。
 3. *{api-version}* は 2015-07-01 に置き換えます。
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 200
 
 ```
@@ -151,12 +151,12 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-| 要素名 | 必須 | 型 | Description |
+| 要素名 | 必須 | type | [説明] |
 | --- | --- | --- | --- |
-| roleDefinitionId |はい |文字列 |ロールの識別子 識別子の形式: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
-| principalId |はい |文字列 |ロールの割り当て先となる Azure AD プリンシパル (ユーザー、グループ、またはサービス プリンシパル) の objectId。 |
+| roleDefinitionId |[はい] |String |ロールの識別子 識別子の形式: `{scope}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id-guid}` |
+| principalId |[はい] |String |ロールの割り当て先となる Azure AD プリンシパル (ユーザー、グループ、またはサービス プリンシパル) の objectId。 |
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 201
 
 ```
@@ -197,7 +197,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 2. *{role-assignment-id}* は、ロール割り当て ID (GUID) に置き換えます。
 3. *{api-version}* は 2015-07-01 に置き換えます。
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 200
 
 ```
@@ -241,7 +241,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
    * 指定したスコープとそのすべての子スコープでの割り当てに使用できるロールを一覧表示する: `atScopeAndBelow()`
    * 完全な表示名を使用してロールを検索する: `roleName%20eq%20'{role-display-name}'` ロールの完全な表示名の URL エンコード形式を使用します。 例: `$filter=roleName%20eq%20'Virtual%20Machine%20Contributor'` |
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 200
 
 ```
@@ -321,7 +321,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 2. *{role-definition-id}* は、ロールの定義の GUID 識別子に置き換えます。
 3. *{api-version}* は 2015-07-01 に置き換えます。
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 200
 
 ```
@@ -434,17 +434,17 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-| 要素名 | 必須 | 型 | Description |
+| 要素名 | 必須 | type | [説明] |
 | --- | --- | --- | --- |
-| name |はい |文字列 |カスタム ロールの GUID 識別子。 |
-| properties.roleName |はい |文字列 |カスタム ロールの表示名。 最大 128 文字です。 |
-| properties.description |いいえ |文字列 |カスタム ロールの説明。 最大 1,024 文字です。 |
-| properties.type |はい |文字列 |"CustomRole" に設定します。 |
-| properties.permissions.actions |あり |String[] |アクション文字列の配列。カスタム ロールでアクセス権を付与する操作を指定します。 |
-| properties.permissions.notActions |なし |String[] |アクション文字列の配列。カスタム ロールでアクセス権を付与する操作から除外する操作を指定します。 |
-| properties.assignableScopes |はい |String[] |カスタム ロールを使うことができるスコープの配列。 |
+| name |[はい] |String |カスタム ロールの GUID 識別子。 |
+| properties.roleName |[はい] |String |カスタム ロールの表示名。 最大 128 文字です。 |
+| properties.description |いいえ  |String |カスタム ロールの説明。 最大 1,024 文字です。 |
+| properties.type |[はい] |String |"CustomRole" に設定します。 |
+| properties.permissions.actions |[はい] |String[] |アクション文字列の配列。カスタム ロールでアクセス権を付与する操作を指定します。 |
+| properties.permissions.notActions |いいえ  |String[] |アクション文字列の配列。カスタム ロールでアクセス権を付与する操作から除外する操作を指定します。 |
+| properties.assignableScopes |[はい] |String[] |カスタム ロールを使うことができるスコープの配列。 |
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 201
 
 ```
@@ -537,17 +537,17 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-| 要素名 | 必須 | 型 | Description |
+| 要素名 | 必須 | type | [説明] |
 | --- | --- | --- | --- |
-| name |はい |文字列 |カスタム ロールの GUID 識別子。 |
-| properties.roleName |はい |文字列 |更新するカスタム ロールの表示名。 |
-| properties.description |いいえ |文字列 |更新するカスタム ロールの説明。 |
-| properties.type |はい |文字列 |"CustomRole" に設定します。 |
-| properties.permissions.actions |あり |String[] |アクション文字列の配列。更新したカスタム ロールでアクセス権を付与する操作を指定します。 |
-| properties.permissions.notActions |なし |String[] |アクション文字列の配列。更新したカスタム ロールで付与するアクセス権の対象外とする操作を指定します。 |
-| properties.assignableScopes |はい |String[] |更新したカスタム ロールを使うことができるスコープの配列。 |
+| name |[はい] |String |カスタム ロールの GUID 識別子。 |
+| properties.roleName |[はい] |String |更新するカスタム ロールの表示名。 |
+| properties.description |いいえ  |String |更新するカスタム ロールの説明。 |
+| properties.type |[はい] |String |"CustomRole" に設定します。 |
+| properties.permissions.actions |[はい] |String[] |アクション文字列の配列。更新したカスタム ロールでアクセス権を付与する操作を指定します。 |
+| properties.permissions.notActions |いいえ  |String[] |アクション文字列の配列。更新したカスタム ロールで付与するアクセス権の対象外とする操作を指定します。 |
+| properties.assignableScopes |[はい] |String[] |更新したカスタム ロールを使うことができるスコープの配列。 |
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 201
 
 ```
@@ -607,7 +607,7 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 2. *{role-definition-id}* は、カスタム ロールの GUID (ロール定義 ID) に置き換えます。
 3. *{api-version}* は 2015-07-01 に置き換えます。
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 状態コード: 200
 
 ```
@@ -647,6 +647,6 @@ URI 内の次の項目を置換して要求をカスタマイズします。
 
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [role-based-access-control-toc.md](../../includes/role-based-access-control-toc.md)]
