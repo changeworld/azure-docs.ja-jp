@@ -16,6 +16,8 @@
       href: time-series-insights-explorer.md
     - name: 調整の緩和
       href: time-series-insights-environment-mitigate-latency.md
+    - name: データ リテンション期間について
+      href: time-series-insights-concepts-retention.md
     - name: 診断とトラブルシューティング
       href: time-series-insights-diagnose-and-solve-problems.md
     - name: 開発
@@ -38,6 +40,8 @@
       href: time-series-insights-how-to-add-an-event-source-eventhub.md
     - name: IoT Hub への接続
       href: time-series-insights-how-to-add-an-event-source-iothub.md
+    - name: データ リテンション期間の構成
+      href: time-series-insights-how-to-configure-retention.md
     - name: 参照データ セットの作成
       href: time-series-insights-add-reference-data-set.md
     - name: 送信イベント

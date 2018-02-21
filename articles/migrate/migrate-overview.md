@@ -6,11 +6,12 @@ ms.service: azure-migrate
 ms.topic: overview
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: 393f2dfa29b930622a37b8ad90ee17b794c70aeb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.custom: mvc
+ms.openlocfilehash: 3269b865c4ef3c11a674d7b755faab2bbf5970e3
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 

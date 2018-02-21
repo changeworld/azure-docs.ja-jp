@@ -16,10 +16,10 @@ ms.date: 08/29/2017
 ms.author: barclayn
 ms.custom: azlog
 ms.openlocfilehash: 9acce21d544a43adcd0c0983771c02c6bb39caec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-get-your-security-center-alerts-in-azure-log-integration"></a>Azure Security Center の警告とログの統合を連携させる方法
 
@@ -47,9 +47,9 @@ ms.lasthandoff: 10/11/2017
  * **c:\Users\azlog\AzureSecurityCenterJson**
  * **c:\Users\azlog\AzureSecurityCenterJsonLD** </br></br>
 
-インストールおよび構成中に問題が発生した場合、[サポート要求](/azure-supportability/how-to-create-azure-support-request.md)を作成し、サポートを要求するサービスとして [**ログ統合**] を選択します。
+インストールおよび構成中に問題が発生した場合、[サポート要求](/azure-supportability/how-to-create-azure-support-request.md)を作成し、サポートを要求するサービスとして **[ログ統合]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure ログの統合の詳細については、次のドキュメントを参照してください。
 
 * [Azure ログ用の Microsoft Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。

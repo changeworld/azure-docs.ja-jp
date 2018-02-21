@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 210731ce2e792452650b7a92cfc542c78a0e8014
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 16db5bc948b1eac0ef996b449d89211fb210a91e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="process-emails-and-attachments-with-a-logic-app"></a>ロジック アプリでメールと添付ファイルを処理する
 
@@ -62,7 +62,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 1. ストレージ コンテナーを作成する前に、次の設定で[ストレージ アカウントを作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)します。
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **名前** | attachmentstorageacct | ストレージ アカウントの名前 | 
    | **デプロイ モデル** | Resource Manager | リソースのデプロイを管理するための[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md) | 
@@ -70,7 +70,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | **パフォーマンス** | 標準 | サポートされるデータの種類とデータの保存メディアは、この設定で指定します。 「[ストレージ アカウントの種類](../storage/common/storage-introduction.md#types-of-storage-accounts)」を参照してください。 | 
    | **レプリケーション** | ローカル冗長ストレージ (LRS) | データのコピー、保存、管理、同期の方法は、この設定で指定します。 「[レプリケーション](../storage/common/storage-introduction.md#replication)」を参照してください。 | 
    | **安全な転送が必須** | 無効 | 接続先からの要求には、この設定でセキュリティを確保することができます。 [安全な転送の義務付け](../storage/common/storage-require-secure-transfer.md)に関するページを参照してください。 | 
-   | **サブスクリプション** | <*your-Azure-subscription-name*> | Azure サブスクリプションの名前 | 
+   | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
    | **[リソース グループ]** | LA-Tutorial-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめて管理する目的で使われます。 <p>**注:** リソース グループは、特定のリージョン内に存在します。 このチュートリアルで使う項目が、一部のリージョンでは利用できない場合もありますが、可能な限り同じリージョンを使うようにしてください。 | 
    | **場所** | 米国東部 2 | ストレージ アカウントに関する情報の保存先となるリージョン | 
    | **仮想ネットワークの構成** | 無効 | このチュートリアルでは **[無効]** のままにしてください。 | 
@@ -128,10 +128,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 1. 関数を作成する前に、次の設定で[関数アプリを作成](../azure-functions/functions-create-function-app-portal.md)します。
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **アプリ名** | CleanTextFunctionApp | 関数アプリの名前。グローバルに一意で、かつわかりやすい名前を付けます。 | 
-   | **サブスクリプション** | <*your-Azure-subscription-name*> | 先ほど使用したものと同じ Azure サブスクリプション | 
+   | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
    | **リソース グループ** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ | 
    | **ホスティング プラン** | 従量課金プラン | 関数アプリを実行するためのリソース (計算処理能力など) の割り当てとスケールの方法は、この設定によって決まります。 [ホスティング プランの比較](../azure-functions/functions-scale.md)に関するページを参照してください。 | 
    | **場所** | 米国東部 2 | 先ほど使用したものと同じリージョン | 
@@ -213,10 +213,10 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-process-email-attachments-workflow/create-logic-app-settings.png)
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **名前** | LA-ProcessAttachment | ロジック アプリの名前 | 
-   | **サブスクリプション** | <*your-Azure-subscription-name*> | 先ほど使用したものと同じ Azure サブスクリプション | 
+   | **サブスクリプション** | <*Azure サブスクリプションの名前*> | 先ほど使用したものと同じ Azure サブスクリプション | 
    | **[リソース グループ]** | LA-Tutorial-RG | 先ほど使用したものと同じ Azure リソース グループ |
    | **場所** | 米国東部 2 | 先ほど使用したものと同じリージョン | 
    | **Log Analytics** | オフ | このチュートリアルでは **[オフ]** のままにしてください。 | 
@@ -245,7 +245,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![メールをチェックするフォルダー、間隔、頻度を指定](./media/tutorial-process-email-attachments-workflow/set-up-email-trigger.png)
 
-      | 設定 | 値 | [説明] | 
+      | Setting | 値 | [説明] | 
       | ------- | ----- | ----------- | 
       | **フォルダー** | Inbox | チェックするメール フォルダー | 
       | **間隔** | 1 | チェックの間隔 (単位数) | 
@@ -254,7 +254,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
   
    2. **[詳細オプションを表示する]** を選択し、次の設定を指定します。
 
-      | 設定 | 値 | [説明] | 
+      | Setting | 値 | [説明] | 
       | ------- | ----- | ----------- | 
       | **添付ファイルあり** | [はい] | ファイルが添付されているメールのみ取得します。 <p>**注:** このトリガーは、お使いのアカウントからメールを削除することはありません。新着メッセージだけをチェックし、件名フィルターに一致するメールだけを処理します。 | 
       | **添付ファイルを含める** | [はい] | 添付ファイルの有無をチェックするだけでなく、ワークフローの入力として添付ファイルを取得します。 | 
@@ -403,7 +403,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ストレージ アカウントへの接続を作成](./media/tutorial-process-email-attachments-workflow/create-storage-account-connection-first.png)
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **Connection Name** | AttachmentStorageConnection | 接続の名前。わかりやすい名前を付けます。 | 
    | **ストレージ アカウント** | attachmentstorageacct | 添付ファイルの保存用に作成しておいたストレージ アカウントの名前 | 
@@ -415,7 +415,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![メールの本文に使う BLOB 情報の指定](./media/tutorial-process-email-attachments-workflow/create-blob-for-email-body.png)
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **フォルダー パス** | /attachments | あらかじめ作成しておいたコンテナーのパスと名前。 コンテナーを参照して選択することもできます。 | 
    | **BLOB 名** | **[差出人]** フィールド | BLOB 名としてメールの送信者名を渡します。 パラメーター リストまたは動的コンテンツ リストから、**[新しい電子メールが届いたとき]** の **[差出人]** を選択します。 | 
@@ -500,7 +500,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![BLOB 情報の指定](./media/tutorial-process-email-attachments-workflow/create-blob-per-attachment.png)
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **フォルダー パス** | /attachments | あらかじめ作成しておいたコンテナーのパスと名前。 コンテナーを参照して選択することもできます。 | 
    | **BLOB 名** | **[名前]** フィールド | BLOB 名には、パラメーター リストまたは動的コンテンツ リストから **[名前]** を選択し、添付ファイルの名前を渡します。 | 
@@ -563,7 +563,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    必要なフィールドがリストに見つからない場合は、動的コンテンツ リストの **[新しい電子メールが届いたとき]** の横またはパラメーター リストの最後にある **[See more]\(詳細表示\)** を選択します。
 
-   | 設定 | 値 | メモ | 
+   | Setting | 値 | メモ | 
    | ------- | ----- | ----- | 
    | **To** | <*recipient-email-address*> | テスト目的で自分の電子メール アドレスを使用できます。 | 
    | **[件名]**  | ```ASAP - Review applicant for position: ``` **件名** | メールに付ける件名。 パラメーター リストまたは動的コンテンツ リストから、**[新しい電子メールが届いたとき]** の **[件名]** フィールドを選択します。 | 

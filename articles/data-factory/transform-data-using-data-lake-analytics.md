@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: abnarain
-ms.openlocfilehash: 4ae54bfda21d06d3d6ec963aaa17eba2b6e04de3
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a2cf2ac8ac099a92e1534c72d80be6c9647bec59
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,27 +37,30 @@ Data Lake Analytics U-SQL アクティビティでパイプラインを作成す
 
 次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 
 
-| プロパティ                 | 説明                              | 必須                                 |
+| プロパティ                 | [説明]                              | 必須                                 |
 | ------------------------ | ---------------------------------------- | ---------------------------------------- |
-| **type**                 | type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 | はい                                      |
-| **accountName**          | Azure Data Lake Analytics アカウント名。  | はい                                      |
-| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                       |
+| **type**                 | type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 | [はい]                                      |
+| **accountName**          | Azure Data Lake Analytics アカウント名。  | [はい]                                      |
+| **dataLakeAnalyticsUri** | Azure Data Lake Analytics URI。           | いいえ                                        |
 | **subscriptionId**       | Azure サブスクリプション ID                    | いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
 | **resourceGroupName**    | Azure リソース グループ名                | いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
 
 ### <a name="service-principal-authentication"></a>サービス プリンシパルの認証
 Azure Data Lake Analytics のリンクされたサービスには、Azure Data Lake Analytics サービスに接続するためのサービス プリンシパル認証が必要です。 サービス プリンシパル認証を使うには、Azure Active Directory (Azure AD) でアプリケーション エンティティを登録し、Data Lake Analytics およびそれを使用する Data Lake Store の両方へのアクセス権を付与します。 詳細な手順については、「[サービス間認証](../data-lake-store/data-lake-store-authenticate-using-active-directory.md)」を参照してください。 次の値を記録しておきます。リンクされたサービスを定義するときに使います。
+
 * アプリケーション ID
 * アプリケーション キー 
 * テナント ID
 
+[ユーザー追加ウィザード](../data-lake-analytics/data-lake-analytics-manage-use-portal.md#add-a-new-user)を使用して、Azure Data Lake Anatlyics へのサービス プリンシパル アクセス許可を付与します。
+
 次のプロパティを指定して、サービス プリンシパル認証を使います。
 
-| プロパティ                | 説明                              | 必須 |
+| プロパティ                | [説明]                              | 必須 |
 | :---------------------- | :--------------------------------------- | :------- |
-| **servicePrincipalId**  | アプリケーションのクライアント ID を取得します。     | はい      |
-| **servicePrincipalKey** | アプリケーションのキーを取得します。           | はい      |
-| **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | はい      |
+| **servicePrincipalId**  | アプリケーションのクライアント ID を取得します。     | [はい]      |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。           | [はい]      |
+| **tenant**              | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい]      |
 
 **例: サービス プリンシパル認証**
 ```json
@@ -117,19 +120,19 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。 
 
-| プロパティ            | 説明                              | 必須 |
+| プロパティ            | [説明]                              | 必須 |
 | :------------------ | :--------------------------------------- | :------- |
-| name                | パイプラインのアクティビティの名前。     | はい      |
-| 説明         | アクティビティの動作を説明するテキスト。  | いいえ       |
-| 型                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | はい      |
-| 既定のコンテナー   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |はい       |
-| scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | はい      |
-| scriptLinkedService | データ ファクトリへのスクリプトを含む **Azure Data Lake Store** または **Azure Storage** をリンクするリンク サービス | はい      |
+| name                | パイプラインのアクティビティの名前。     | [はい]      |
+| 説明         | アクティビティの動作を説明するテキスト。  | いいえ        |
+| 型                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | [はい]      |
+| 既定のコンテナー   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |[はい]       |
+| scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | [はい]      |
+| scriptLinkedService | データ ファクトリへのスクリプトを含む **Azure Data Lake Store** または **Azure Storage** をリンクするリンク サービス | [はい]      |
 | degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ        |
-| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ       |
-| parameters          | U-SQL スクリプトに渡すパラメーター。    | いいえ       |
+| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ        |
+| parameters          | U-SQL スクリプトに渡すパラメーター。    | いいえ        |
 | runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ        |
-| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります: **Semantic:** セマンティクスの検査と必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コードの生成などを含む完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります: **Semantic:** セマンティクスの検査と必要なサニティ チェックのみを実行します。**Full:** 構文チェック、最適化、コードの生成などを含む完全コンパイルを実行します。**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。 このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 | いいえ  |
 
 Data Factory によって送信されるスクリプト定義については、[SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script)をご覧ください。 
 

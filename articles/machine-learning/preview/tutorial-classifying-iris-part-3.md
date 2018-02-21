@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: 12cbd7d9682e70fc5bc65b2eda5b8eddf6bbb7f0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ab0c10b2eeaa4388ef9b4dab90b99b37fa32df74
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -198,7 +198,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    * `-n`: アプリ名。すべて小文字にする必要があります。
    * `-f`: スコア付けスクリプト ファイルの名前。
    * `--model-file`: モデル ファイル。 このケースでは、pickle から出力された model.pkl ファイルになります。
-   * `-r`: モデルの種類。 このケースでは、Python モデルになります。
+   * `-r`: モデルのランタイム。 このケースでは、Python モデルになります。 有効なランタイムは `python` と `spark-py` です。
    * `--collect-model-data true`: データ収集を有効にします。
    * `-c`: 追加のパッケージが指定されている conda 依存関係ファイルのパス。
 

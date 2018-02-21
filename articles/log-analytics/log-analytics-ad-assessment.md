@@ -3,7 +3,7 @@ title: "Azure Log Analytics での Active Directory 環境の最適化 | Microso
 description: "Active Directory 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価します。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 81eb41b8-eb62-4eb2-9f7b-fde5c89c9b47
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a8f6cfc678d0b6443ac1aa440941eb2b5c664564
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: f026c605b84c5f2b6420e975a06d7c02227efbd9
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-health-check-solution-in-log-analytics"></a>Log Analytics で Active Directory 正常性チェック ソリューションを使用して Active Directory 環境を最適化する
 
@@ -41,7 +41,7 @@ Active Directory 正常性チェック ソリューションを使用して、�
 
 ## <a name="prerequisites"></a>前提条件
 
-* Active Directory 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4.5.2 以降がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Log Analytics サービスに使用されます。 
+* Active Directory 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4.5.2 以降がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Log Analytics サービスに使用されます。
 * このソリューションは、Windows Server 2008 および 2008 R2、Windows Server 2012 および 2012 R2、および Windows Server 2016 を実行するドメイン コントローラーをサポートしています。
 * Azure Portal で Azure Marketplace から Active Directory 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  さらに手動で構成する必要はありません。
 
@@ -62,13 +62,13 @@ Operations Manager 管理グループに報告するドメイン コントロー
 
 Active Directory 正常性チェックでは、有効にしたエージェントを使用して、次のソースからデータを収集します。
 
-- レジストリ 
-- LDAP 
+- レジストリ
+- LDAP
 - .NET Framework
-- イベント ログ 
+- イベント ログ
 - Active Directory サービス インターフェイス (ADSI)
 - Windows PowerShell
-- ファイル データ 
+- ファイル データ
 - Windows Management Instrumentation (WMI)
 - DCDIAG ツール API
 - ファイル レプリケーション サービス (NTFRS) API
@@ -109,7 +109,7 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
 3. Azure Portal の Log Analytics ワークスペースの **[概要]** タイルをクリックします。
-4. **[概要]** ページで、**[Active Directory 正常性チェック]** タイルをクリックします。 
+4. **[概要]** ページで、**[Active Directory 正常性チェック]** タイルをクリックします。
 5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![正常性チェックの推奨事項の画像](./media/log-analytics-ad-assessment/ad-healthcheck-dashboard-02.png)
 7. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、コンプライアンスのスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
@@ -133,7 +133,7 @@ Active Directory 正常性チェックでは、有効にしたエージェント
 2. Log Analytics に個別の行で無視させ、ファイルを保存して閉じさせるには、推奨事項ごとにそれぞれ RecommendationId を貼り付けるか入力します。
 3. Log Analytics に推奨事項を無視させる各コンピューターの次のフォルダーにファイルを配置します。
    * Microsoft Monitoring Agent がインストールされたコンピューター (直接または Operations Manager 経由で接続されている) - *SystemDrive*:\Program Files\Microsoft Monitoring Agent\Agent
-   * Operations Manager 2012 R2 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server 
+   * Operations Manager 2012 R2 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2012 R2\Operations Manager\Server
    * Operations Manager 2016 管理サーバー - *SystemDrive*:\Program Files\Microsoft System Center 2016\Operations Manager\Server
 
 ### <a name="to-verify-that-recommendations-are-ignored"></a>推奨事項が無視されていることを確認するには

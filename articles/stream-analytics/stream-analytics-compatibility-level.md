@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 01/03/2018
 ms.author: sngun
-ms.openlocfilehash: 0d89259d54fba0bd57881ec69cb61b5af6d603b5
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: f354c39fc3b366795fe4ed8dbeeb961bb11d5420
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="compatibility-level-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブの互換性レベル
  
@@ -57,7 +57,10 @@ ms.lasthandoff: 01/12/2018
   * **以前のバージョン:** Azure Stream Analytics エンジンによる処理で、フィールド名が小文字に変更されました。 
 
   * **現在のバージョン:** Azure Stream Analytics エンジンによる処理で、フィールド名の大文字と小文字の区別が保持されます。 
- 
+
+  > [!NOTE] 
+  > 大文字と小文字の区別の保持は、Edge 環境を使用してホストされている Stream Analytic ジョブではまだ利用できません。 その結果、ジョブが Edge にホストされている場合は、すべてのフィールド名が小文字に変換されます。 
+
 * **FloatNaNDeserializationDisabled**  
 
   * **以前のバージョン:** CREATE TABLE コマンドが FLOAT 列型で NaN (Not-a-Number。 たとえば、Infinity、-Infinity) のイベントをフィルター処理しませんでした。これらの数値の文書化されている範囲を超えているためです。

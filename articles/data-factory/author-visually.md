@@ -1,6 +1,6 @@
 ---
-title: "Azure データ ファクトリを視覚的に作成する | Microsoft Docs"
-description: "Azure データ ファクトリを視覚的に作成する方法について説明します"
+title: "Azure Data Factory でのビジュアルの作成 | Microsoft Docs"
+description: "Azure Data Factory でビジュアルの作成機能を使用する方法について説明します"
 services: data-factory
 documentationcenter: 
 author: sharonlo101
@@ -13,98 +13,101 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/9/2018
 ms.author: shlo
-ms.openlocfilehash: 3e67665facba78c4ca8e2317f0323b4c5c02a49c
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 81b97bb6b6abb5431bedd4efec5f807fa577c4e4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="visually-author-data-factories"></a>データ ファクトリの視覚的な作成
-Azure Data Factory UX エクスペリエンスでは、ユーザーは、1 行のコードも記述することなく、データ ファクトリ内のリソースを視覚的に作成および展開できます。 このコード不要のインターフェイスを使うと、パイプライン キャンバス上にアクティビティをドラッグ アンド ドロップし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。 ADF UX ツールは 2 つの方法で使うことができます。
+# <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
+Azure Data Factory ユーザー インターフェイス エクスペリエンス (UX) を使用すると、コードを記述することなくデータ ファクトリ用リソースを視覚的に作成してデプロイできます。 パイプライン キャンバスにアクティビティをドラッグし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。 UX を使用してビジュアルの作成機能を実行するには 2 つの方法があります。
 
-1. Data Factory サービスを直接操作します
-2. コラボレーション、ソース管理、またはバージョン管理のための VSTS Git 統合を構成します
+- Data Factory サービスにより直接作成します。
+- コラボレーション、ソース管理、またはバージョン管理のための Visual Studio Team Services (VSTS) Git 統合を使用して作成します。
 
-## <a name="authoring-with-data-factory"></a>Data Factory での作成
-最初のオプションは、Data Factory モードで直接作成する方法です。 このアプローチは、VSTS コード リポジトリを使った作成とは異なり、変更した JSON エンティティが格納されるリポジトリはなく、コラボレーションまたはバージョン コントロール用に最適化されてはいません。
+## <a name="author-directly-with-the-data-factory-service"></a>Data Factory サービスを使用して直接作成
+Data Factory サービスによるビジュアルの作成は、VSTS によるビジュアルの作成と次の 2 点で異なります。
 
-![Configure Data Factory](media/author-visually/configure-data-factory.png)
+- Data Factory サービスには、変更について JSON エンティティを格納するためのリポジトリが含まれていません。
+- Data Factory サービスは、コラボレーションまたはバージョン管理用に最適化されていません。
 
-Data Factory モードでは、"発行" モードだけがあります。 行った変更はすべて、Data Factory サービスに直接発行されます。
+![Data Factory サービスの構成 ](media/author-visually/configure-data-factory.png)
 
-![Data Factory への発行](media/author-visually/data-factory-publish.png)
+UX **作成キャンバス**を使用して Data Factory サービスで直接作成する場合、**発行**モードを使用できます。 行った変更はすべて、Data Factory サービスに直接発行されます。
 
-## <a name="authoring-with-vsts-git-integration"></a>VSTS Git 統合での作成
-VSTS Git 統合を使った作成では、ソース管理とコラボレーションを利用しながらデータ ファクトリ パイプラインを作成できます。 ユーザーは、VSTS Git アカウント リポジトリとデータ ファクトリを関連付けて、ソース管理、コラボレーション、バージョン管理などを行うことができます。1 つの VSTS Git アカウントで、複数のリポジトリを使うことができます。 ただし、1 つの VSTS Git リポジトリを関連付けることができるデータ ファクトリは 1 つだけです。 VSTS アカウントとリポジトリをまだ持っていない場合は、[こちら](https://docs.microsoft.com/en-us/vsts/accounts/create-account-msa-or-work-student)で作成してください。
+![発行モード](media/author-visually/data-factory-publish.png)
 
-### <a name="configure-vsts-git-repo-with-azure-data-factory"></a>Azure Data Factory で VSTS Git リポジトリを構成する
+## <a name="author-with-vsts-git-integration"></a>VSTS Git 統合での作成
+VSTS Git 統合を使ったビジュアルの作成では、データ ファクトリ パイプラインの使用にあたりソース管理とコラボレーションがサポートされています。 データ ファクトリを VSTS Git アカウント リポジトリと関連付けて、ソース管理、コラボレーション、バージョン管理などを行うことができます。 1 つの VSTS Git アカウントで複数のリポジトリを使うことができますが、1 つの VSTS Git リポジトリに関連付けられるのは 1 つのデータ ファクトリのみです。 VSTS アカウントまたはリポジトリを持っていない場合は、[この手順](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student)に従ってリソースを作成します。
+
+### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Azure Data Factory で VSTS Git リポジトリを構成する
 データ ファクトリで VSTS Git リポジトリを構成するには 2 つの方法があります。
 
-#### <a name="method-1-lets-get-started-page"></a>方法 1: [始めましょう] ページ
+<a name="method1"></a>
+#### <a name="configuration-method-1-lets-get-started-page"></a>構成方法 1: [始めましょう] ページ
+Azure Data Factory で **[始めましょう]** ページに移動します。 **[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
 
-[始めましょう] ページに移動して、[Configure Code Repository]\(コード リポジトリの構成\) をクリックします。
+![VSTS コード リポジトリの構成](media/author-visually/configure-repo.png)
 
-![コード リポジトリを構成する](media/author-visually/configure-repo.png)
+**[リポジトリ設定]** 構成ウィンドウが表示されます。
 
-リポジトリの設定を構成するためのサイド パネルが表示されます。
+![コード リポジトリ設定の構成](media/author-visually/repo-settings.png)
 
-![リポジトリの設定を構成する](media/author-visually/repo-settings.png)
-* **[リポジトリの種類]**: Visual Studio Team Services Git (現時点では、GitHub はサポートされていません)。
-* **[Visual Studio Team Services Account]\(Visual Studio Team Services アカウント\)**: アカウント名は、https://<アカウント名>.visualstudio.com からわかります。[こちら](https://www.visualstudio.com/team-services/git/)で VSTS アカウントにサインインし、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。
-* **[プロジェクト名]**: プロジェクト名は、https://<アカウント名>.visualstudio.com/<プロジェクト名> からわかります。
-* **[Git repository name]\(Git リポジトリ名\)**: リポジトリ名です。 VSTS プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使います。
-* **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)**: このボックスをオンにすると、UX キャンバスで作成した現在データ ファクトリ リソースを、関連付けられている VSTS Git リポジトリに JSON 形式でインポートできます。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。    このチェック ボックスをオフにした場合は、既存のリソースは Git リポジトリにインポートされません。
+ウィンドウに次の VSTS コード リポジトリの設定が表示されます。
 
-#### <a name="method-2-from-authoring-canvas"></a>方法 2: 作成キャンバスから
+| Setting | [説明] | 値 |
+|:--- |:--- |:--- |
+| **リポジトリの種類** | VSTS コード リポジトリの種類。<br/>**注**: GitHub は現在サポートされていません。 | Visual Studio Team Services Git |
+| **Visual Studio Team Services アカウント** | VSTS アカウント名。 VSTS アカウント名は以下に見つかります。`https://{account name}.visualstudio.com` [VSTS アカウントにサインイン](https://www.visualstudio.com/team-services/git/)し、お使いの Visual Studio プロファイルにアクセスして、リポジトリとプロジェクトを確認してください。 | \<アカウント名> |
+| **ProjectName** | VSTS プロジェクト名。 VSTS プロジェクト名は以下に見つかります。`https://{account name}.visualstudio.com/{project name}` | \<VSTS プロジェクト名> |
+| **RepositoryName** | VSTS コード リポジトリ名。 VSTS プロジェクトには、プロジェクトの拡大に合わせてソース コードを管理するための Git リポジトリが含まれます。 新しいリポジトリを作成するか、プロジェクト内に既にある既存のリポジトリを使用できます。 | \<VSTS コード リポジトリ名> |
+| **[Import existing Data Factory resources to repository]\(既存の Data Factory リソースをリポジトリにインポートする\)** | UX **作成キャンバス**からの既存のデータ ファクトリ リソースを VSTS Git リボジトリにインポートするかどうかを指定します。 オンにすると、JSON 形式でデータ ファクトリ リソースを関連付けられている Git リポジトリにインポートします。 このアクションでは、各リソースが個別にエクスポートされます (つまり、リンクされたサービスとデータセットは、異なる JSON にエクスポートされます)。 このボックスを選択しなかった場合、既存のリソースはインポートされません。 | 選択済み (既定値) |
 
-"作成キャンバス" で、お使いのデータ ファクトリ名の下の [Data Factory] ドロップダウン メニューをクリックします。 次に、[Configure Code Repository]\(コード リポジトリの構成\) をクリックします。 **方法 1** と同じように、リポジトリの設定を構成するためのサイド パネルが表示されます。 設定について詳しくは、前のセクションをご覧ください。
+#### <a name="configuration-method-2-ux-authoring-canvas"></a>構成方法 2: UX 作成キャンバス
+Azure Data Factory UX **作成キャンバス**でデータ ファクトリを見つけます。 **[Data Factory]** ドロップダウン メニューを選択して、**[Configure Code Repository]\(コード リポジトリの構成\)** を選択します。
 
-![コード リポジトリを構成する 2](media/author-visually/configure-repo-2.png)
+構成ウィンドウが表示されます。 構成設定について詳しくは、「<a href="#method1">構成方法 1</a>」の説明をご覧ください。
 
-### <a name="version-control"></a>バージョン コントロール
-開発者は、バージョン コントロール (ソース管理とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
+![UX 作成のコード リポジトリ設定の構成](media/author-visually/configure-repo-2.png)
 
-データ ファクトリに関連付けられた各 VSTS Git リポジトリには、マスター ブランチが存在します。 VSTS Git リポジトリへのアクセス権を持つすべてのユーザーには、マスター ブランチから変更を行うとき、同期と発行の 2 つのオプションがあります。
+### <a name="use-version-control"></a>バージョン コントロールの使用
+開発者は、バージョン コントロール (_ソース管理_とも呼ばれます) システムを使うことで、コードの共同作業を行い、コード ベースに対して行われた変更を追跡することができます。 ソース管理は、複数の開発者で行うプロジェクトに不可欠なツールです。
 
-![同期と発行](media/author-visually/sync-publish.png)
+データ ファクトリに関連付けられた各 VSTS Git リポジトリには、マスター ブランチが存在します。 VSTS Git リポジトリへのアクセスがある場合、**[同期]** または **[発行]** を選択してコードを変更できます。
 
-#### <a name="sync"></a>同期
+![同期または発行してコードを変更](media/author-visually/sync-publish.png)
 
-[Sync] をクリックすると、マスター ブランチからローカル ブランチに変更をプルしたり、ローカル ブランチからマスター ブランチに変更をプッシュしたりできます。
+#### <a name="sync-code-changes"></a>コード変更の同期
+**[同期]** を選択すると、マスター ブランチからローカル ブランチに変更をプルしたり、ローカル ブランチからマスター ブランチに変更をプッシュしたりできます。
 
-![変更の同期](media/author-visually/sync-change.png)
+![コード変更の同期](media/author-visually/sync-change.png)
 
-#### <a name="publish"></a>[発行]
- マスター ブランチでの変更を Data Factory サービスに発行します。
+#### <a name="publish-code-changes"></a>コード変更の発行
+**[発行]** を選択して、マスター ブランチのコード変更を Data Factory サービスに発行します。
 
-> [!NOTE]
-> **マスター ブランチは Data Factory サービスに展開されているものを代表しているわけではありません**。 マスター ブランチを Data Factory サービスに手動で発行する "*必要があります*"。
+> [!IMPORTANT]
+> マスター ブランチは Data Factory サービスに展開されているものを代表しているわけではありません。 マスター ブランチを Data Factory サービスに手動で発行する "*必要があります*"。
 
+## <a name="use-the-expression-language"></a>式言語の使用
+プロパティ値の式を指定するには、Azure Data Factory でサポートされる式言語を使用します。 サポートされている式について詳しくは、「[Azure Data Factory の式と関数](control-flow-expression-language-functions.md)」をご覧ください。
 
+UX **作成キャンバス**を使用して、プロパティ値の式を指定します。
 
+![式言語の使用](media/author-visually/expression-language.png)
 
-## <a name="expression-language"></a>式言語
+## <a name="specify-parameters"></a>パラメーターの指定
+Azure Data Factory の **[パラメーター]** タブで、パイプラインやデータセットのパラメーターを指定できます。**[動的なコンテンツの追加]** を選択して、プロパティでパラメーターを簡単に使用できます。
 
-プロパティの値を定義するときは、Azure Data Factory でサポートされる式言語を使って式を指定できます。 サポートされている式について詳しくは、「[Azure Data Factory の式と関数](control-flow-expression-language-functions.md)」をご覧ください。
+![動的なコンテンツの追加](media/author-visually/dynamic-content.png)
 
-ユーザー エクスペリエンスでは次のようにプロパティ値の式を指定します。
+既存のパラメーターを使用するか、プロパティ値の新しいパラメーターを指定できます。
 
-![式言語](media/author-visually/expression-language.png)
+![プロパティ値のパラメーターの指定](media/author-visually/parameters.png)
 
-## <a name="parameters"></a>parameters
-ユーザーは、[パラメーター] タブで、パイプラインやデータセットのパラメーターを指定できます。さらに、[動的なコンテンツの追加] をクリックすることにより、簡単にプロパティでパラメーターを利用できます。
-
-![動的コンテンツ](media/author-visually/dynamic-content.png)
-
-プロパティ値では、既存のパラメーターを使うことも、新しいパラメーターを指定することもできます。
-
-![parameters](media/author-visually/parameters.png)
-
-## <a name="feedback"></a>フィードバック
-[フィードバック] アイコンをクリックして、さまざまな機能や、発生している問題について Microsoft にフィードバックをお寄せください。
+## <a name="provide-feedback"></a>フィードバックの提供
+機能に関するコメントを送信するには、またはツールの問題について Microsoft に通知するには、**[フィードバック]** を選択します。
 
 ![フィードバック](media/monitor-visually/feedback.png)
 
 ## <a name="next-steps"></a>次の手順
-
 パイプラインの監視と管理について詳しくは、[プログラムでのパイプラインの監視と管理](monitor-programmatically.md)に関する記事をご覧ください。

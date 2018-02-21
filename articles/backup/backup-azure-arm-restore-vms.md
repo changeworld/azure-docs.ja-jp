@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 1a1855cc3f83d7fcba749ce94167039feb5bebe1
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 84fb2cc08e97541d2d9d327ca2b6865ff9a6fe20
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Azure Poral を使用して仮想マシンを復元する
 定義された間隔でデータのスナップショットを取得してデータを保護します。 こうしたスナップショットは復旧ポイントと呼ばれ、Recovery Services コンテナーに格納されます。 仮想マシン (VM) を修復または再構築する必要がある場合は、保存されている復旧ポイントのいずれかから VM を復元できます。 復旧ポイントを復元すると、次のことが可能です。
@@ -42,7 +42,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 * 復元の種類を選択し、新しい VM を作成するかディスクを復元して、必要なパラメーターを指定します。 
 
 ## <a name="select-a-restore-point-for-restore"></a>復元を行うための復元ポイントを選択する
-1. [Azure Portal](http://portal.azure.com/) にサインインします。
+1. [Azure ポータル](http://portal.azure.com/)にサインインします。
 
 2. Azure メニューで **[参照]** を選択します。 サービスの一覧に「**Recovery Services**」と入力します。 入力した文字列に合わせて、サービスの一覧の内容が変更されます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
 
@@ -104,7 +104,7 @@ VM バックアップから VM またはすべてのディスクを復元する�
 
    * **ディスクの復元**
 
-ポータルには、復元された VM の **[簡易作成]** オプションがあります。 VM 構成をカスタマイズするには、または、新しい VM 選択肢の作成操作の一環として作成されたリソースの名前をカスタマイズするには、PowerShell またはポータルを使用してバックアップ ディスクを復元し、 そのディスクを、PowerShell コマンドで VM 構成の選択肢にアタッチします。 また、復元ディスクに含まれるテンプレートを使用して、復元された VM をカスタマイズすることもできます。 複数の NIC を持つ VM、またはロード バランサーの VM を復元する方法については、「[特別なネットワーク構成を持つ VM の復元](#restore-a vm-with-special-network-configurations)」を参照してください。 Windows VM が [HUB ライセンス](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合は、この記事で指定したように、ディスクを復元し、PowerShell/テンプレートを使用して VM を作成します。 復元された VM で HUB の利点を利用するには、VM を作成する際に、**ライセンスの種類**を "Windows_Server" と指定します。 
+ポータルには、復元された VM の **[簡易作成]** オプションがあります。 VM 構成をカスタマイズするには、または、新しい VM 選択肢の作成操作の一環として作成されたリソースの名前をカスタマイズするには、PowerShell またはポータルを使用してバックアップ ディスクを復元し、 そのディスクを、PowerShell コマンドで VM 構成の選択肢にアタッチします。 また、復元ディスクに含まれるテンプレートを使用して、復元された VM をカスタマイズすることもできます。 複数の NIC を持つ VM、またはロード バランサーの VM を復元する方法については、「[特別なネットワーク構成を持つ VM の復元](#restore-vms-with-special-network-configurations)」を参照してください。 Windows VM が [HUB ライセンス](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を使用している場合は、この記事で指定したように、ディスクを復元し、PowerShell/テンプレートを使用して VM を作成します。 復元された VM で HUB の利点を利用するには、VM を作成する際に、**ライセンスの種類**を "Windows_Server" と指定します。 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>復元ポイントから新しい VM を作成する
 1. 復元ポイントから新しい VM を作成する前に、[復元ポイントを選択](#restore-a vm-with-special-network-configurations)しておきます (まだ選択していない場合)。 復元ポイントを作成したら、**[復元の構成]** ブレードで、次の各フィールドの値を入力または選択します。

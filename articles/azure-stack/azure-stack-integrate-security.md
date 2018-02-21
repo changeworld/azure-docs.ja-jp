@@ -9,16 +9,13 @@ ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 0ce7585552f39f59f83df88320e52ea257bb74dd
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 16d97765c9340555bfc0db22975a43227cc6b517
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-datacenter-integration---security"></a>Azure Stack とデータセンターの統合 - セキュリティ
-
-*適用対象: Azure Stack 統合システム*
-
 Azure Stack はセキュリティを考慮して設計、構築されたものです。 Azure Stack はロック ダウンされたシステムなので、ソフトウェア セキュリティ エージェントのインストールはサポートされていません。
 
 この記事は、お使いのデータ センター内に既にデプロイされたセキュリティ ソリューションと Azure Stack のセキュリティ機能を統合するのに役立ちます。

@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 437c45891d1d20f5fadca8a58954185a3aef56ac
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 26f5acf369dd80d7877ab760806e0e08a49cfe6d
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
@@ -93,7 +93,7 @@ Application Insights Analytics には、Application Insights によって収集�
 
 2. Application Insights Analytics が、それぞれのビューのクエリと共にパネルに表示されます。  これらのクエリをそのまま実行するか、要件に合わせて変更できます。  最初のクエリは、この操作の一定期間の実行時間を示します。
 
-    ![[分析]](media/app-insights-tutorial-performance/server-analytics.png)
+    ![分析](media/app-insights-tutorial-performance/server-analytics.png)
 
 
 ## <a name="identify-slow-client-operations"></a>低速のクライアント操作を識別する
@@ -121,7 +121,7 @@ Application Insights では、サーバーのパフォーマンス データの�
 
 2. Application Insights Analytics が、それぞれのビューのクエリと共にパネルに表示されます。 最初のクエリは、一定期間のさまざまなページ ビューの実行時間を示します。
 
-    ![[分析]](media/app-insights-tutorial-performance/client-analytics.png)
+    ![分析](media/app-insights-tutorial-performance/client-analytics.png)
 
 3.  スマート診断は、データの一意のパターンを識別する Application Insights Analytics の機能です。  折れ線グラフのスマート診断ドットをクリックすると、異常の原因となったレコードを除外して同じクエリが実行されます。  これらのレコードの詳細がクエリの セクションに表示されるため、過剰な実行時間の原因となっているページ ビューのプロパティを識別できます。
 

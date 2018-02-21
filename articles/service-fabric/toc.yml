@@ -93,6 +93,8 @@
         - name: Reliable Service
           href: service-fabric-reliable-services-introduction.md
           items:
+            - name: レプリカとインスタンスのライフサイクル
+              href: service-fabric-concepts-replica-lifecycle.md
             - name: 'Reliable Services のライフサイクル - C#'
               href: service-fabric-reliable-services-lifecycle.md
             - name: Reliable Services のライフサイクル - Java
@@ -144,8 +146,6 @@
           href: service-fabric-concepts-scalability.md
         - name: サービスの可用性
           href: service-fabric-availability-services.md
-        - name: レプリカとインスタンスのライフサイクル
-          href: service-fabric-concepts-replica-lifecycle.md
         - name: Reconfiguration
           href: service-fabric-concepts-reconfiguration.md
         - name: サービス通信

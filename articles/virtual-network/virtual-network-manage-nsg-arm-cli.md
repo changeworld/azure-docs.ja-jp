@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8d9f932746811a5b21dbd667d7c7bdc8f721fb
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 36ff6d8fc956f5c863884e4591cbcb2909fcb200
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-network-security-groups-using-the-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループの管理
 
@@ -29,16 +29,16 @@ ms.lasthandoff: 11/17/2017
 [!INCLUDE [virtual-network-manage-nsg-intro-include.md](../../includes/virtual-network-manage-nsg-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、クラシック デプロイメント モデルではなくこのモデルをお勧めします。
 > 
 
 [!INCLUDE [virtual-network-manage-nsg-arm-scenario-include.md](../../includes/virtual-network-manage-nsg-arm-scenario-include.md)]
 
 ## <a name="prerequisite"></a>前提条件
-まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。 
+まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。 
 
 ## <a name="view-existing-nsgs"></a>既存の NSG を表示する
-特定のリソース グループの NSG の一覧を表示するには、[az network nsg list](/cli/azure/network/nsg#list) コマンドを `-o table` の出力形式で実行します。
+特定のリソース グループの NSG の一覧を表示するには、[az network nsg list](/cli/azure/network/nsg#az_network_nsg_list) コマンドを `-o table` の出力形式で実行します。
 
 ```azurecli
 az network nsg list -g RG-NSG -o table
@@ -52,7 +52,7 @@ az network nsg list -g RG-NSG -o table
     centralus   NSG-FrontEnd  Succeeded            RG-NSG           <guid>
 
 ## <a name="list-all-rules-for-an-nsg"></a>NSG のすべての規則を一覧表示する
-**NSG-FrontEnd** という名前の NGS の規則を表示するには、[JMESPATH クエリ フィルター](/cli/azure/query-az-cli2)と `-o table` 出力形式を使用して、[az network nsg show](/cli/azure/network/nsg#show) コマンドを実行します。
+**NSG-FrontEnd** という名前の NGS の規則を表示するには、[JMESPATH クエリ フィルター](/cli/azure/query-az-cli2)と `-o table` 出力形式を使用して、[az network nsg show](/cli/azure/network/nsg#az_network_nsg_show) コマンドを実行します。
 
 ```azurecli
     az network nsg show \
@@ -75,7 +75,7 @@ az network nsg list -g RG-NSG -o table
     rdp-rule                                                                               Allow     Inbound      3389             *                 *               Internet
     web-rule                                                                               Allow     Inbound      80               *                 *               Internet
 > [!NOTE]
-> [az network nsg rule list](/cli/azure/network/nsg/rule#list) を使用して NSG のカスタム規則のみを一覧表示することもできます。
+> [az network nsg rule list](/cli/azure/network/nsg/rule#az_network_nsg_rule_list) を使用して NSG のカスタム規則のみを一覧表示することもできます。
 >
 
 ## <a name="view-nsg-associations"></a>NSG の関連付けを表示する
@@ -151,7 +151,7 @@ az network nsg rule create  \
 ```
 
 ## <a name="change-a-rule"></a>規則を変更する
-上記の手順で作成した規則を、**インターネット**からの受信トラフィックのみを許可する規則に変更するには、[az network nsg rule update](/cli/azure/network/nsg/rule#update) コマンドを実行します。
+上記の手順で作成した規則を、**インターネット**からの受信トラフィックのみを許可する規則に変更するには、[az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) コマンドを実行します。
 
 ```azurecli
 az network nsg rule update \
@@ -194,7 +194,7 @@ az network nsg rule delete \
 
 
 ## <a name="associate-an-nsg-to-a-nic"></a>NSG を NIC に関連付ける
-**NSG-FrontEnd** NSG を **TestNICWeb1** NIC と関連付けるには、[az network nic update](/cli/azure/network/nic#update) コマンドを使用します。
+**NSG-FrontEnd** NSG を **TestNICWeb1** NIC と関連付けるには、[az network nic update](/cli/azure/network/nic#az_network_nic_update) コマンドを使用します。
 
 ```azurecli
 az network nic update \
@@ -277,7 +277,7 @@ az network nic update \
 
 ## <a name="dissociate-an-nsg-from-a-nic"></a>NSG と NIC の関連付けを解除する
 
-**TestNICWeb1** NIC から **NSG-FrontEnd** NSG への関連付けを解除するには、[az network nsg rule update](/cli/azure/network/nsg/rule#update) コマンドを再び実行し、`--network-security-group` の引数を空の文字列 (`""`) に置き換えます。
+**TestNICWeb1** NIC から **NSG-FrontEnd** NSG への関連付けを解除するには、[az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) コマンドを再び実行し、`--network-security-group` の引数を空の文字列 (`""`) に置き換えます。
 
 ```azurecli
 az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-security-group ""
@@ -286,7 +286,7 @@ az network nic update --resource-group RG-NSG --name TestNICWeb3 --network-secur
 出力では、`networkSecurityGroup` キーが null に設定されます。
 
 ## <a name="dissociate-an-nsg-from-a-subnet"></a>NSG とサブネットの関連付けを解除する
-**FrontEnd** サブネットから **NSG-FrontEnd** NSG への関連付けを解除するには、[az network nsg rule update](/cli/azure/network/nsg/rule#update) コマンドを再び実行し、`--network-security-group` 引数を空の文字列 (`""`) に置き換えます。
+**FrontEnd** サブネットから **NSG-FrontEnd** NSG への関連付けを解除するには、[az network nsg rule update](/cli/azure/network/nsg/rule#az_network_nsg_rule_update) コマンドを再び実行し、`--network-security-group` 引数を空の文字列 (`""`) に置き換えます。
 
 ```azurecli
 az network vnet subnet update \
@@ -340,6 +340,6 @@ NSG に関連付けられているリソースがない場合にのみ、NSG を
     ```azurecli
     az network nsg delete --resource-group RG-NSG --name NSG-FrontEnd
     ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ログを有効にします](virtual-network-nsg-manage-log.md) 。
 

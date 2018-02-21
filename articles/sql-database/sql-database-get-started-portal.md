@@ -14,13 +14,13 @@ ms.workload: Active
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/29/2018
-ms.author: ninarn
-ms.openlocfilehash: 63a16df5f36bba4ffb97529100b878f0a1591127
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 02/12/2018
+ms.author: carlrab
+ms.openlocfilehash: 7a57593825f816a03b59f6c5228243670f1e9e9e
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
@@ -46,7 +46,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | [説明] |
+   | Setting       | 推奨値 | [説明] |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -59,7 +59,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 4. 次の画像に示されているように、**[サーバー]** の **[Configure required settings]\(必要な設定の構成\)** をクリックし、SQL Server (論理サーバー) フォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | [説明] |
+   | Setting       | 推奨値 | [説明] |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 |
@@ -84,7 +84,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
    >\* Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
    >
 
-7. このクイック スタート チュートリアルでは、**Standard** サービス レベルを選択したうえで、スライダーを使用して **100 DTU (S3)** と **400** GB のストレージを選択します。
+7. このクイック スタート チュートリアルでは、**Standard** サービス レベルを選択したうえで、スライダーを使用して **10 DTU (S0)** と **1** GB のストレージを選択します。
 
    ![データベースの作成 -s1](./media/sql-database-get-started-portal/create-database-s1.png)
 
@@ -138,17 +138,13 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 Azure でサンプル データベースを作成できたので、Azure Portal の組み込みのクエリ ツールを使用して、データベースへの接続とデータへのクエリを実行できることを確認してみましょう。
 
-1. データベースの SQL Database ページで、左側のメニューで **[Data explorer (プレビュー)]** を見つけてクリックします
+1. データベースの SQL Database ページで、左側のメニューにある **[クエリ エディター (プレビュー)]** をクリックし、**[ログイン]** をクリックします。
 
-   ![クエリ エディターの検索](./media/sql-database-get-started-portal/find-query-editor.PNG)
+   ![login](./media/sql-database-get-started-portal/query-editor-login.png)
 
-2. **[ログイン]** をクリックしてログイン情報を確認し、**[OK]** をクリックしてログインします。先ほど作成したサーバー管理者ログインとパスワードを指定し、SQL Server 認証を使用してログインしてください。
+2. SQL Server 認証を選択し、必要なログイン情報を入力して、**[OK]** をクリックしてログインします。
 
-   ![login](./media/sql-database-get-started-portal/login-menu.png)
-
-3. **[OK]** をクリックしてログインします。
-
-4. **ServerAdmin** として認証されたら、[クエリ エディター] ウィンドウに次のクエリを入力します。
+3. **ServerAdmin** として認証されたら、[クエリ エディター] ウィンドウに次のクエリを入力します。
 
    ```sql
    SELECT TOP 20 pc.Name as CategoryName, p.name as ProductName
@@ -157,11 +153,11 @@ Azure でサンプル データベースを作成できたので、Azure Portal 
    ON pc.productcategoryid = p.productcategoryid;
    ```
 
-5. **[実行]** をクリックし、**[結果]** ウィンドウでクエリの結果を確認します。
+4. **[実行]** をクリックし、**[結果]** ウィンドウでクエリの結果を確認します。
 
    ![クエリ エディターの結果](./media/sql-database-get-started-portal/query-editor-results.png)
 
-6. **[Data explorer]** ページを閉じ、**[OK]** をクリックして未保存の編集を破棄します。
+5. **[Data explorer]** ページを閉じ、**[OK]** をクリックして未保存の編集を破棄します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
-ms.openlocfilehash: 0d2f98ca2fb39289b2916ddd24590924856507d6
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 50d2545d5145f1d93a1ea9fed3e4f98b474d41b2
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
@@ -35,7 +35,7 @@ Azure Portal で複数のダッシュボードを作成し、各ダッシュボ�
 
 - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。 
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
 
 ## <a name="create-a-new-dashboard"></a>新しいダッシュボードを作成する
@@ -88,7 +88,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 3. 画面のトップで **[ダッシュボードの表示]** をクリックしてダッシュボードに戻ります。
 
-4. これで、概要タイムラインがダッシュボードに追加されました。  これをクリックして適切な位置にドラッグし、**[カスタマイズ完了]**、**[変更の発行]** の順にクリックします。 
+4. これで、タイムライン メトリック グラフがダッシュボードに追加されました。 これをクリックして適切な位置にドラッグし、**[カスタマイズ完了]**、**[変更の発行]** の順にクリックします。 
 
     ![メトリックが表示されたダッシュボード](media/app-insights-tutorial-dashboards/dashboard-03.png)
 
@@ -162,7 +162,7 @@ Azure Application Insights の Analytics は独立したサービスであるた
 5. **[変更の発行]** をクリックして、Application Insights のさまざまなグラフや視覚エフェクトを含んだダッシュボードに変更をコミットします。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これでカスタム ダッシュボードを作成する方法の説明は終了しましたが、ケース スタディを含む Application Insights のドキュメントの残りの部分もご確認ください。
 
 > [!div class="nextstepaction"]

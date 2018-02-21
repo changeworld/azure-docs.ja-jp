@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 659a791124eab002290ac0b7f0898cf1c06c2951
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 72ed9ecd7a4c8e846818f7a19ad25c566fa57f64
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Azure CLI を使用した仮想ネットワークの作成
 
@@ -45,9 +45,9 @@ Azure には、Azure Resource Manager とクラシックという 2 種類のデ
 
 Azure CLI を使用して仮想ネットワークを作成するには、次の手順を実行します。
 
-1. 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+1. 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。
 
-2. [az group create](/cli/azure/group#create) コマンドに引数 `--name` および `--location` を指定して、VNet 用のリソース グループを作成します。
+2. [az group create](/cli/azure/group#az_group_create) コマンドに引数 `--name` および `--location` を指定して、VNet 用のリソース グループを作成します。
 
     ```azurecli
     az group create --name TestRG --location centralus
@@ -184,7 +184,7 @@ Azure CLI を使用して仮想ネットワークを作成するには、次の�
         FrontEnd  192.168.1.0/24  Succeeded
         BackEnd   192.168.2.0/24  Succeeded
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の接続方法を確認してください。
 

@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: e52f38d5fb3c100e4275032f9a2a1234961c672b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52f1f1543fe0ef15cf71d2cf1f9a8bfeaae8933f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>Node.js から BLOB ストレージを使用する方法
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-nodejs-application"></a>Node.js アプリケーションの作成
-Node.js アプリケーションを作成する手順については、[Azure App Service での Node.js Web アプリの作成]、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または「[Build and deploy a Node.js web app to Azure using Web Matrix (WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ)](https://www.microsoft.com/web/webmatrix/)」をご覧ください。
+Node.js アプリケーションを作成する手順については、「[Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)」、「[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)」 (Windows PowerShell の使用)、または「[WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ](https://www.microsoft.com/web/webmatrix/)」をご覧ください。
 
 ## <a name="configure-your-application-to-access-storage"></a>アプリケーションのストレージへのアクセスの構成
 Azure Storage を使用するには、Azure Storage SDK for Node.js が必要です。ここには、ストレージ REST サービスと通信するための便利なライブラリのセットが含まれています。
@@ -192,7 +192,7 @@ blobSvc.createAppendBlobFromLocalFile('mycontainer', 'myappendblob', 'test.txt',
 * **appendBlockFromText** - 既存の追加 BLOB に文字列の内容を追加します。
 
 > [!NOTE]
-> appendFromXXX API では、不要なサーバー呼び出しを回避するために、Fail Fast に対するクライアント側検証が実行されますが、 appendBlockFromXXX では実行されません。
+> appendFromXXX API では、不要なサーバー呼び出しを回避するために、フェイルファストに対するクライアント側検証が実行されますが、 appendBlockFromXXX では実行されません。
 >
 >
 
@@ -409,7 +409,7 @@ ACL を設定したら、ポリシーの ID に基づいて共有アクセス署
 blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
 * [Azure Storage SDK for Node の API リファレンス][Azure Storage SDK for Node の API リファレンス]  

@@ -3,7 +3,7 @@ title: "Azure Log Analytics の DNS 分析ソリューション | Microsoft Docs
 description: "Log Analytics の DNS 分析ソリューションをセットアップおよび使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する洞察を収集します。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
-ms.author: banders
-ms.openlocfilehash: 8f83d019c0168aa5abbf3211b4a599f631e9f426
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte
+ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -42,10 +42,10 @@ DNS 分析ソリューションは、Windows DNS の分析ログと監査ログ�
 
 | **接続先ソース** | **サポート** | **説明** |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agent.md) | はい | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | なし | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
-| [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) | はい | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Operations Management Suite への直接接続は必要ありません。 データは管理グループから Operations Management Suite レポジトリに転送されます。 |
-| [Azure Storage アカウント](log-analytics-azure-storage.md) | なし | ソリューションでは、Azure Storage は使用されません。 |
+| [Windows エージェント](log-analytics-windows-agent.md) | [はい] | ソリューションでは、Windows エージェントから DNS 情報を収集します。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、ダイレクト Linux エージェントから DNS 情報は収集しません。 |
+| [System Center Operations Manager 管理グループ](log-analytics-om-agents.md) | [はい] | ソリューションでは、接続された Operations Manager 管理グループ内のエージェントから DNS 情報が収集されます。 Operations Manager エージェントから Operations Management Suite への直接接続は必要ありません。 データは管理グループから Operations Management Suite レポジトリに転送されます。 |
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | ソリューションでは、Azure Storage は使用されません。 |
 
 ### <a name="data-collection-details"></a>データ収集の詳細
 
@@ -145,7 +145,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
 **[DDI 分析のサンプル クエリ]**。 生の分析データを直接取得する最も一般的な検索クエリの一覧が含まれています。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![サンプル クエリ](./media/log-analytics-dns/queries.png)
 
@@ -170,7 +170,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
     ![DnsEvents ログ検索](./media/log-analytics-dns/log-search-dnsevents.png)  
 
-    a. ルックアップ クエリのログ データを表示するには、左側のファセット コントロールから **[LookUpQuery]** を選択して **[サブタイプ]** フィルター処理します。 選択した期間のすべてのルックアップ クエリ イベントが一覧になったテーブルが表示されます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ルックアップ クエリのログ データを表示するには、左側のファセット コントロールから **[LookUpQuery]** を選択して **[サブタイプ]** フィルター処理します。 選択した期間のすべてのルックアップ クエリ イベントが一覧になったテーブルが表示されます。
 
     b. 動的登録のログ データを表示するには、左側のファセット コントロールから **[DynamicRegistration]** を選択して **[サブタイプ]** をフィルター処理します。 選択した期間のすべての動的登録イベントが一覧になったテーブルが表示されます。
 
@@ -187,6 +187,6 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 - **UserVoice**。 DNS 分析の機能についてアイデアを投稿できます。 [Operations Management Suite UserVoice ページ](https://aka.ms/dnsanalyticsuservoice)にアクセスしてください。
 - **コーホートへの参加**。 Microsoft が実施しているコーホートに参加して、DNS 分析の機能向上にご協力ください。コーホートに参加すると、新機能にいち早く触れることができます。 コーホートへの参加に関心がある場合は、[こちらの簡単なアンケート](https://aka.ms/dnsanalyticssurvey)にご記入ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [ログを検索](log-analytics-log-searches.md)して、詳細な DNS ログ レコードを確認します。

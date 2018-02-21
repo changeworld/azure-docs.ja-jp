@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: afea4b23aca322321b4096cdfdc9d30b087a2f30
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e697dec0f3d104af073fd61bac81a00e182524e1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-disconnected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure から切断されたデプロイ計画の決定
-[Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-deployment-decisions.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
+[Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
 
 Azure からの切断デプロイ オプションを使用すると、インターネットへの接続なしで Azure Stack をデプロイして使用できます。 ただし、切断されたデプロイでは、AD FS ID ストアおよび容量ベースの課金モデルに制限されます。 
 
@@ -34,7 +34,7 @@ Azure からの切断デプロイ オプションを使用すると、インタ�
 > [!TIP]
 > この種類の環境は "サブマリン シナリオ" と呼ばれる場合もあります。
 
-切断されたデプロイは、後でハイブリッド テナント VM シナリオのために Azure Stack インスタンスを Azure に接続できないことを厳密に示すものではありません。 これは、デプロイ中に Azure への接続がないか、または ID ストアとして Azure Active Directory を使用したくないことを示しています。 ただし、デプロイ後に Azure に接続したい場合は、ID ストアとして何を使用しているかには関係なく、Azure への接続デプロイ オプションを選択する必要があります。 
+切断されたデプロイは、後でハイブリッド テナント VM シナリオのために Azure Stack インスタンスを Azure に接続できないことを厳密に示すものではありません。 これは、デプロイ中に Azure への接続がないか、または ID ストアとして Azure Active Directory を使用したくないことを示しています。
 
 ## <a name="features-that-are-impaired-or-unavailable-in-disconnected-deployments"></a>切断されたデプロイで損なわれるか、または使用できない機能 
 Azure Stack は Azure に接続されているときに最適に機能するように設計されているため、切断モードでは損なわれるか、または完全に使用できない機能がいくつか存在することに注意する必要があります。 

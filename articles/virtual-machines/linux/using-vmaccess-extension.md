@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 3596b50b68cabf212218825566c0f8313f054f65
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fb3941e0b55f8b5d79c9fc794ec984e074caafe
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>VMAccess 拡張機能と Azure CLI 2.0 を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 Linux VM 上のディスクがエラーを示しています。 何らかの理由で Linux VM の root パスワードをリセットしたか、誤って SSH 秘密キーを削除してしまいました。 これがかつてのデータ センターの時代で起きていたら、車で駆けつけ、KVM を開けて、サーバー コンソールにたどり着くことになっていたでしょう。 Azure VMAccess 拡張機能は、コンソールにアクセスして、Linux へのアクセスをリセットしたり、ディスク レベルの保守を実行したりできるその KVM スイッチとして考えてください。
@@ -33,7 +33,7 @@ Linux VM で VMAccess 拡張機能を使用する方法は 2 つあります。
 * Azure CLI 2.0 と必要なパラメーターを使用する。
 * [VMAccess 拡張機能が処理して、動作の基となる未加工の JSON ファイル](#use-json-files-and-the-vmaccess-extension)を使用する。
 
-次の例では、[az vm user](/cli/azure/vm/user) コマンドを使用します。 これらの手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインする必要があります。
+次の例では、[az vm user](/cli/azure/vm/user) コマンドを使用します。 これらの手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインする必要があります。
 
 ## <a name="reset-ssh-key"></a>SSH キーのリセット
 次の例では、`myVM` という名前の VM 上のユーザー `azureuser` の SSH キーをリセットします。
@@ -46,7 +46,7 @@ az vm user update \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
 
-## <a name="reset-password"></a>パスワードのリセット
+## <a name="reset-password"></a>[パスワードのリセット]
 次の例では、`myVM` という名前の VM 上のユーザー `azureuser` のパスワードをリセットします。
 
 ```azurecli
@@ -91,7 +91,7 @@ az vm user delete \
 
 
 ## <a name="use-json-files-and-the-vmaccess-extension"></a>JSON ファイルと VMAccess 拡張機能の使用
-次の例では、未加工の JSON ファイルを使用します。 [az vm extension set](/cli/azure/vm/extension#set) を使用して JSON ファイルを呼び出します。 これらの JSON ファイルは、Azure テンプレートから呼び出すこともできます。 
+次の例では、未加工の JSON ファイルを使用します。 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) を使用して JSON ファイルを呼び出します。 これらの JSON ファイルは、Azure テンプレートから呼び出すこともできます。 
 
 ### <a name="reset-user-access"></a>ユーザー アクセスのリセット
 Linux VM で root へのアクセスを失った場合、VMAccess スクリプトを起動して、ユーザーの SSH キーまたはパスワードをリセットできます。
@@ -227,7 +227,7 @@ az vm extension set \
   --protected-settings disk_check_repair.json
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure VMAccess 拡張機能を使用して Linux を更新することは、実行中の Linux VM で変更を加える 1 つの方法です。 また、cloud-init と Azure Resource Manager テンプレートのようなツールを使用して、起動時に Linux VM を変更することもできます。
 
 [Linux 用の仮想マシンの拡張機能とその機能](extensions-features.md)

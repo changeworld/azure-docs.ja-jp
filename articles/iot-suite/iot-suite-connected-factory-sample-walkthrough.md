@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: 88fe50460baf8b7180da113b33a03120f39cf44f
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 10497097bfda36a0a8a2b6b677ac26394217d8b4
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>コネクテッド ファクトリ事前構成済みソリューションのチュートリアル
 
@@ -118,7 +118,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 - すべての OPC Publisher モジュールとすべての OPC Proxy モジュールの ID を格納する ID レジストリを維持します。
 - OPC Proxy モジュールの双方向の通信用の転送プロトコルとして使用されます。
 
-## <a name="azure-storage"></a>Azure Storage
+## <a name="azure-storage"></a>Azure Storage (Azure Storage)
 このソリューションでは、Azure Blob Storage を VM のディスク ストレージとして使用したり、デプロイ データの保存に使用したりします。
 
 ## <a name="web-app"></a>Web アプリ
@@ -227,13 +227,13 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 > [!NOTE]
 > OPC UA サーバーおよびコネクテッド ファクトリ WebApp 内の OPC UA スタックに対して OPC プロキシ通信は透過的であり、認証および暗号化のためのすべての OPC UA セキュリティ機能が適用されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
 
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
 * [構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)
-* [OPC Publisher のリファレンス実装](iot-suite-connected-factory-publisher.md)。
+* [OPC Publisher のリファレンス実装](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)。
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 

@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 533d4ddfc645843ed8feb8652021f47d93ed2ac1
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 75031b6189710286625406246e6dcde6f1c2b938
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="convert-a-linux-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Linux 仮想マシンを非管理対象ディスクから管理ディスクに変換する
 
@@ -36,19 +36,19 @@ ms.lasthandoff: 12/16/2017
 ## <a name="convert-single-instance-vms"></a>単一インスタンスの VM を変換する
 このセクションでは、単一インスタンスの Azure VM を非管理対象ディスクから Managed Disks に変換する方法について説明します。 (VM が可用性セットに含まれている場合は次のセクションを参照してください。)このプロセスを使用して、VM を非管理対象の Premium (SSD) ディスクから Premium 管理ディスクに、または非管理対象の標準 (HDD) ディスクから標準管理ディスクに変換できます。
 
-1. [az vm deallocate](/cli/azure/vm#deallocate) を使用して VM の割り当てを解除します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM の割り当てを解除します。
+1. [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して VM の割り当てを解除します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM の割り当てを解除します。
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-2. [az vm convert](/cli/azure/vm#convert) を使用して VM を管理ディスクに変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む `myVM` という名前の VM を変換します。
+2. [az vm convert](/cli/azure/vm#az_vm_convert) を使用して VM を管理ディスクに変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む `myVM` という名前の VM を変換します。
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-3. 管理ディスクに変換した後、[az vm start](/cli/azure/vm#start) で VM を起動します。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を起動します。
+3. 管理ディスクに変換した後、[az vm start](/cli/azure/vm#az_vm_start) で VM を起動します。 次の例では、`myResourceGroup` という名前のリソース グループ内にある `myVM` という名前の VM を起動します。
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
@@ -60,7 +60,7 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
 
 可用性セットを変換する前に、可用性セット内のすべての VM の割り当てを解除する必要があります。 可用性セット自体を管理対象の可用性セットに変換したあと、すべての VM を管理ディスクに変換する計画を立てます。 その後、すべての VM を起動し、通常どおり操作を続行します。
 
-1. [az vm availability-set list](/cli/azure/vm/availability-set#list) を使用して、可用性セット内のすべての VM を一覧表示します。 次の例では、`myResourceGroup` という名前のリソース グループの `myAvailabilitySet` という名前の可用性セットに含まれるすべての VM の一覧を取得します。
+1. [az vm availability-set list](/cli/azure/vm/availability-set#az_vm_availability_set_list) を使用して、可用性セット内のすべての VM を一覧表示します。 次の例では、`myResourceGroup` という名前のリソース グループの `myAvailabilitySet` という名前の可用性セットに含まれるすべての VM の一覧を取得します。
 
     ```azurecli
     az vm availability-set show \
@@ -70,13 +70,13 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
         --output table
     ```
 
-2. [az vm deallocate](/cli/azure/vm#deallocate) を使用して、すべての VM の割り当てを解除します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM の割り当てを解除します。
+2. [az vm deallocate](/cli/azure/vm#az_vm_deallocate) を使用して、すべての VM の割り当てを解除します。 次の例では、`myResourceGroup` という名前のリソース グループに含まれる `myVM` という名前の VM の割り当てを解除します。
 
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
     ```
 
-3. [az vm availability-set convert](/cli/azure/vm/availability-set#convert) を使用して、可用性セットを変換します。 次の例では、`myResourceGroup` という名前のリソース グループの `myAvailabilitySet` という名前の可用性セットを変換します。
+3. [az vm availability-set convert](/cli/azure/vm/availability-set#az_vm_availability_set_convert) を使用して、可用性セットを変換します。 次の例では、`myResourceGroup` という名前のリソース グループの `myAvailabilitySet` という名前の可用性セットを変換します。
 
     ```azurecli
     az vm availability-set convert \
@@ -84,13 +84,13 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
         --name myAvailabilitySet
     ```
 
-4. [az vm convert](/cli/azure/vm#convert) を使用して、すべての VM を管理ディスクに変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む `myVM` という名前の VM を変換します。
+4. [az vm convert](/cli/azure/vm#az_vm_convert) を使用して、すべての VM を管理ディスクに変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む `myVM` という名前の VM を変換します。
 
     ```azurecli
     az vm convert --resource-group myResourceGroup --name myVM
     ```
 
-5. 管理ディスクに変換した後、[az vm start](/cli/azure/vm#start) ですべての VM を起動します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVM` という名前の VM を起動します。
+5. 管理ディスクに変換した後、[az vm start](/cli/azure/vm#az_vm_start) ですべての VM を起動します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVM` という名前の VM を起動します。
 
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM

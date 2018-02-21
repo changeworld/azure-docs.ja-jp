@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: e2242851d51dee56679231b9f34c8b474ba6578d
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: e705946dca839e6b8e11872ad5431f125b9fb41d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイントの構成
 
@@ -65,7 +65,7 @@ Azure アカウントを使用して Azure にログインします。 Azure ア
 2. [新規] > [ネットワーク] > [仮想ネットワーク] > [+追加] をクリックします。
 3. [仮想ネットワークの作成] で、次の値を入力して [作成] をクリックします。
 
-設定 | 値
+Setting | 値
 ------- | -----
 Name    | myVnet
 アドレス空間 | 10.0.0.0/16
@@ -230,7 +230,7 @@ Get-AzureRmVirtualNetwork -ResourceGroupName "myRG" -Name "myVNet" | Set-AzureRm
 ## <a name="azure-cli"></a>Azure CLI
 
 前提条件の設定:
-- [az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 ログインの詳細については、「[Azure CLI 2.0 を使ってみる](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)」を参照してください。
+- [az login](/cli/azure/#az_login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 ログインの詳細については、「[Azure CLI 2.0 を使ってみる](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)」を参照してください。
  - アカウントには、仮想ネットワークとサービス エンドポイントを作成するための[アクセス許可](#provisioning)が必要です。
 
  仮想ネットワーク用のコマンドの一覧については、[Azure CLI 仮想ネットワーク コマンド](https://docs.microsoft.com/cli/azure/network/vnet?view=azure-cli-latest)に関する記事をご覧ください

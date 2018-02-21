@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/05/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 23cc9ce855eeba9e9a365e42beeee01b09f0fee3
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 6aec2146d83c18a1e1714843cd49890f178e4fb3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Azure Service Fabric Linux コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -34,50 +34,47 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 > * Service Fabric でのコンテナーのスケールとフェールオーバー
 
 ## <a name="prerequisite"></a>前提条件
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
-  
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+1. Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-コマンド ライン インターフェイス (CLI) をローカルにインストールして使用する場合、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、az --version を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+2. コマンド ライン インターフェイス (CLI) をローカルにインストールして使用する場合、Azure CLI バージョン 2.0.4 以降を実行する必要があります。 バージョンを確認するには、az --version を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="get-application-package"></a>アプリケーション パッケージを取得する
 コンテナーを Service Fabric にデプロイするには、個別のコンテナーとアプリケーションを説明する一連のマニフェスト ファイル (アプリケーション定義) が必要です。
 
 Cloud Shell で git を使用して、アプリケーション定義のコピーを複製します。
 
-```azurecli-interactive
+```bash
 git clone https://github.com/Azure-Samples/service-fabric-containers.git
 
 cd service-fabric-containers/Linux/container-tutorial/Voting
 ```
+## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
 
-## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>コンテナーを Azure の Service Fabric クラスターにデプロイする
-Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターかパーティー クラスターを使用します。
+### <a name="set-up-your-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターの設定
+Azure 内のクラスターにアプリケーションをデプロイするには、独自のクラスターを作成します。
 
-> [!Note]
-> アプリケーションは、ローカル開発マシン上の Service Fabric クラスターではなく、Azure 上のクラスターにデプロイする必要があります。 
->
+パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによって実行され、誰でもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
 
-パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによってサポートされており、誰でもアプリケーションをデプロイし、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
+セキュリティで保護されたパーティ クラスターに対する管理操作は、Service Fabric Explorer、CLI、Powershell のいずれかを使用して実行できます。 Service Fabric Explorer を使用するには、パーティ クラスターの Web サイトから PFX ファイルをダウンロードし、ご使用の証明書ストア (Windows または Mac) またはブラウザー本体 (Ubuntu) に証明書をインポートする必要があります。 パーティ クラスターの自己署名証明書についてはパスワードは不要です。 
+
+PowerShell または CLI で管理操作を実行するには、PFX (PowerShell) または PEM (CLI) が必要となります。 PFX を PEM ファイルに変換するには、次のコマンドを実行してください。  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 独自のクラスターの作成については、[Azure での Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページをご覧ください。
 
 > [!Note]
-> Web フロントエンド サービスは、ポート 80 で受信トラフィックをリッスンする構成になっています。 このポートがクラスターで開放されていることを確認してください。 パーティ クラスターを使用した場合、このポートは開放されています。
+> Web フロントエンド サービスは、ポート 80 で受信トラフィックをリッスンする構成になっています。 このポートがクラスターで開放されていることを確認してください。 パーティ クラスターを使用している場合、このポートは開放されています。
 >
 
 ### <a name="install-service-fabric-command-line-interface-and-connect-to-your-cluster"></a>Service Fabric コマンド ライン インターフェイスをインストールしてクラスターに接続する
-CLI 環境内に [Service Fabric CLI (sfctl)](service-fabric-cli.md) をインストールする
 
-```azurecli-interactive
-pip3 install --user sfctl 
-export PATH=$PATH:~/.local/bin
-```
+Azure CLI を使用して Azure の Service Fabric クラスターに接続します。 エンドポイントはクラスターの管理エンドポイントです (`https://linh1x87d1d.westus.cloudapp.azure.com:19080` など)。
 
-Azure CLI を使用して Azure の Service Fabric クラスターに接続します。 エンドポイントはクラスターの管理エンドポイントです (`http://linh1x87d1d.westus.cloudapp.azure.com:19080` など)。
-
-```azurecli-interactive
-sfctl cluster select --endpoint http://linh1x87d1d.westus.cloudapp.azure.com:19080
+```bash
+sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
 ```
 
 ### <a name="deploy-the-service-fabric-application"></a>Service Fabric アプリケーションをデプロイする 
@@ -86,13 +83,13 @@ Service Fabric コンテナー アプリケーションは、記載されてい�
 #### <a name="deploy-using-service-fabric-application-package"></a>Service Fabric アプリケーション パッケージを使用してデプロイする
 用意されているインストール スクリプトを使用してクラスターに投票アプリケーション定義をコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
 
-```azurecli-interactive
+```bash
 ./install.sh
 ```
 
 #### <a name="deploy-the-application-using-docker-compose"></a>Docker Compose を使用してアプリケーションをデプロイする
 Docker Compose と次のコマンドを使用して、Service Fabric クラスターにアプリケーションをデプロイし、インストールします。
-```azurecli-interactive
+```bash
 sfctl compose create --deployment-name TestApp --file-path docker-compose.yml
 ```
 

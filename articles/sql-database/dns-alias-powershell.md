@@ -13,14 +13,14 @@ ms.workload:
 ms.tgt_pltfrm: 
 ms.devlang: PowerShell
 ms.topic: article
-ms.date: 01/31/2018
-ms.reviewer: dmalik;amagarwa;maboja
-ms.author: genemi
-ms.openlocfilehash: 9d4aa9ddc0d77556e1511ea0a7914d94a227895f
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.date: 02/05/2018
+ms.reviewer: genemi;amagarwa;maboja
+ms.author: dmalik
+ms.openlocfilehash: ec638d7b48b443cda5755e3077c6304b0c5ad78e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Azure SQL Database を参照する DNS エイリアス用の PowerShell
 

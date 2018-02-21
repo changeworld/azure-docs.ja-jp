@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: f2482c7a47c72d192f26f3d8d9b9249af53da25d
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: c8e023d68ec2c7e40675f985d3e13b0714cec8ea
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>数テラバイトのデータを活用したサーバー ワークロードの予測
 
@@ -51,7 +51,7 @@ Machine Learning Workbench の次の主な機能について説明します。
 * Windows 10 (この例の手順は、macOS システムでもほぼ同じです)。
 * Linux (Ubuntu) 用のデータ サイエンス仮想マシン (DSVM)。できれば、データが存在する米国東部リージョンにします。 [こちらの手順](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro)に従って、Ubuntu DSVM をプロビジョニングできます。 [こちらのクイックスタート](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu)も参照してください。 少なくとも 8 個のコアと 32 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 
 
-[こちらの手順](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide#remove-vm-execution-error-no-tty-present)に従って、AML Workbench の VM でパスワードのない sudoer アクセスを有効にします。  [AML Workbench の VM の作成と使用に SSH キーに基づく認証](https://docs.microsoft.com/azure/machine-learning/preview/experimentation-service-configuration#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)を使うこともできますです。 この例では、パスワードを使って VM にアクセスします。  後の手順で参照できるように、次の表に DSVM の情報を記入して保存します。
+[こちらの手順](known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present)に従って、AML Workbench の VM でパスワードのない sudoer アクセスを有効にします。  [AML Workbench の VM の作成と使用に SSH キーに基づく認証](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets)を使うこともできますです。 この例では、パスワードを使って VM にアクセスします。  後の手順で参照できるように、次の表に DSVM の情報を記入して保存します。
 
  フィールド名| 値 |  
  |------------|------|
@@ -330,7 +330,7 @@ Workbench の右側のサイドバーで **[実行]** に移動すると、各 P
 
 このセクションでは、前の手順で Web サービスとして作成したモデルを運用化します。 また、Web サービスを使用してワークロードを予測する方法についても説明します。 Machine Language Operationalization コマンド ライン インターフェイス (CLI) を使用して、コードと依存関係を Docker イメージとしてパッケージ化し、コンテナー化された Web サービスとしてモデルを公開します。
 
-Machine Learning Workbench のコマンド ライン プロンプトを使用して CLI を実行できます。  また、[インストール ガイド](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/install-on-ubuntu-linux.md)に従って、Ubuntu Linux 上で CLI を実行することもできます。 
+Machine Learning Workbench のコマンド ライン プロンプトを使用して CLI を実行できます。  また、[インストール ガイド](./deployment-setup-configuration.md#using-the-cli)に従って、Ubuntu Linux 上で CLI を実行することもできます。 
 
 > [!NOTE]
 > 以降のすべてのコマンドで、引数の変数を実際の値に置き換えてください。 このセクションを完了するには、約 40 分かかります。
@@ -416,7 +416,7 @@ Machine Learning Workbench のコマンド ライン プロンプトを使用し
 
 8. Web サービスをスケーリングします。 
 
-   詳細については、[Azure Container Service クラスターで運用化をスケールする方法](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/how-to-scale.md)に関するページをご覧ください。
+   詳細については、[Azure Container Service クラスターで運用化をスケールする方法](how-to-scale-clusters.md)に関するページをご覧ください。
  
 
 ## <a name="next-steps"></a>次の手順

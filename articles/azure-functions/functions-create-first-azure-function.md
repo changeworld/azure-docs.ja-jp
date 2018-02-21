@@ -13,14 +13,15 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/17/2017
+ms.date: 01/21/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 754ca6e5297c3be9166efa7a40a5ba3714911c99
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+experiment: 
+ms.openlocfilehash: 82f87447a2176dffd55dcf71155c389398f7d64c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 
@@ -30,9 +31,9 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="sign-in-to-azure"></a>Azure へのサインイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure Portal を開きます。 これを行うには、Azure アカウントで [Azure Portal](https://portal.azure.com/) にサインインします。
+ご使用の Azure アカウントで Azure Portal (<http://portal.azure.com>) にサインインします。
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
@@ -76,7 +77,7 @@ HTTP によってトリガーされる関数のテンプレートを使用して
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-[!INCLUDE [Clean up resources](../../includes/functions-quickstart-cleanup.md)]
+[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
 
 ## <a name="next-steps"></a>次の手順
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/21/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: de6b3dcd77132154e583d7333983d6745c4aa3bd
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19ebb30164eee8e03a3cd8f18b6d575c6eee5438
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-what-if-tool---preview"></a>Azure Active Directory の条件付きアクセスの what if ツール - プレビュー
 
@@ -78,14 +78,14 @@ what if ツールは、特定のユーザーに適用されるポリシーをす
 
 ### <a name="ip-address"></a>IP アドレス
 
-IP アドレスは、[場所の条件](active-directory-conditional-access-azure-portal.md#locations)を模倣するための 1 つの IPv4 アドレスです。 このアドレスは、ユーザーがサインインするために使用するデバイスのインターネット アドレスを表します。 デバイスの IP アドレスは、たとえば [What is my IP address](https://whatismyipaddress.com) に移動することで確認できます。    
+IP アドレスは、[場所の条件](active-directory-conditional-access-locations.md)を模倣するための 1 つの IPv4 アドレスです。 このアドレスは、ユーザーがサインインするために使用するデバイスのインターネット アドレスを表します。 デバイスの IP アドレスは、たとえば [What is my IP address](https://whatismyipaddress.com) に移動することで確認できます。    
 
 ### <a name="device-platforms"></a>デバイス プラットフォーム
 
-この設定は、[デバイス プラットフォームの条件](active-directory-conditional-access-azure-portal.md#device-platforms)を模倣し、**[すべてのプラットフォーム (サポート対象外を含む)]** に相当します。 
+この設定は、[デバイス プラットフォームの条件](active-directory-conditional-access-conditions.md#device-platforms)を模倣し、**[すべてのプラットフォーム (サポート対象外を含む)]** に相当します。 
 ### <a name="client-apps"></a>クライアント アプリ
 
-この設定は、[クライアント アプリの条件](active-directory-conditional-access-azure-portal.md#client-apps)を模倣します。
+この設定は、[クライアント アプリの条件](active-directory-conditional-access-conditions.md#client-apps)を模倣します。
 既定では、この設定は、**[ブラウザー]** または **[モバイル アプリとデスクトップ クライアント]** のどちらかが選択されているか両方が選択されているすべてのポリシーを評価します。 **[Exchange ActiveSync (EAS)]** を適用するポリシーも検出されます。 以下を選択することで、この設定を絞り込むことができます。
 
 - 少なくとも  **[ブラウザー]** が選択されているすべてのポリシーのみを評価するには **[ブラウザー]** を選択。 
@@ -95,7 +95,7 @@ IP アドレスは、[場所の条件](active-directory-conditional-access-azure
 
 ### <a name="sign-in-risk"></a>サインイン リスク
 
-この設定は、[サインイン リスクの条件](active-directory-conditional-access-azure-portal.md#sign-in-risk)を模倣します。   
+この設定は、[サインイン リスクの条件](active-directory-conditional-access-conditions.md#sign-in-risk)を模倣します。   
 
 
 ## <a name="evaluation"></a>評価 

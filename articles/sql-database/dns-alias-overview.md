@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: 
-ms.date: 01/31/2018
-ms.reviewer: dmalik;ayolubek
-ms.author: genemi
-ms.openlocfilehash: ef888763918447b9e5f97288d90e287441a11cc6
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.date: 02/05/2018
+ms.reviewer: genemi;ayolubek
+ms.author: dmalik
+ms.openlocfilehash: b216bd933f9096f46aee2b719394f9df65adc769
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>Azure SQL Database の DNS エイリアス
 

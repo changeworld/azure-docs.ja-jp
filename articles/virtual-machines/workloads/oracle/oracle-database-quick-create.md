@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
-ms.openlocfilehash: 8683b016c4db2c66fb1dd994405b70c3d137a7fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f760165fa8a93bbb7646539af748b647fe63bba
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -33,7 +33,7 @@ CLI をローカルにインストールして使用する場合、このクイ�
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -42,7 +42,7 @@ az group create --name myResourceGroup --location eastus
 ```
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-仮想マシン (VM) を作成するには、[az vm create](/cli/azure/vm#create) コマンドを使用します。 
+仮想マシン (VM) を作成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用します。 
 
 次の例では、`myVM` という名前の VM を作成します。 また、既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーも作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
@@ -270,7 +270,7 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
 
 最後のタスクとして、いくつかの外部エンドポイントを構成します。 VM を保護する Azure ネットワーク セキュリティ グループを設定するには、まず VM で SSH セッションを終了します (前の手順で再起動したときに SSH からログアウトしているはずです)。 
 
-1.  リモートで Oracle データベースにアクセスするために使用するエンドポイントを開くには、次のように [az network nsg rule create](/cli/azure/network/nsg/rule#create) を使用して、ネットワーク セキュリティ グループ規則を作成します。 
+1.  リモートで Oracle データベースにアクセスするために使用するエンドポイントを開くには、次のように [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) を使用して、ネットワーク セキュリティ グループ規則を作成します。 
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -282,7 +282,7 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
         --destination-port-range 1521
     ```
 
-2.  リモートで Oracle EM Express にアクセスするために使用するエンドポイントを開くには、次のように [az network nsg rule create](/cli/azure/network/nsg/rule#create) を使用して、ネットワーク セキュリティ グループ規則を作成します。
+2.  リモートで Oracle EM Express にアクセスするために使用するエンドポイントを開くには、次のように [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) を使用して、ネットワーク セキュリティ グループ規則を作成します。
 
     ```azurecli-interactive
     az network nsg rule create \
@@ -294,7 +294,7 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
         --destination-port-range 5502
     ```
 
-3. 必要に応じて、次のように [az network public-ip show](/cli/azure/network/public-ip#show) を使用して、VM のパブリック IP アドレスを再度取得します。
+3. 必要に応じて、次のように [az network public-ip show](/cli/azure/network/public-ip#az_network_public_ip_show) を使用して、VM のパブリック IP アドレスを再度取得します。
 
     ```azurecli-interactive
     az network public-ip show \
@@ -316,13 +316,13 @@ VM を再起動したとき、既定では、Oracle データベースは自動�
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-これで、Azure での初めての Oracle データベース探索が終了しました。VM は必要なくなりましたので、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、VM、関連するすべてのリソースを削除することができます。
+これで、Azure での初めての Oracle データベース探索が終了しました。VM は必要なくなりましたので、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループ、VM、関連するすべてのリソースを削除することができます。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 他の [Azure 上での Oracle ソリューション](oracle-considerations.md)について学習します。 
 

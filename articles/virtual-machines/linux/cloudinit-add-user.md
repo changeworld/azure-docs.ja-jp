@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 728ffed27747cb298d5da312014a3c9e98b44f1e
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: ce4421fc8276f215564cb7a171a215cc166c8517
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-cloud-init-to-add-a-user-to-a-linux-vm-in-azure"></a>Azure で cloud-init を使用してユーザーを Linux VM に追加する
 この記事では、Azure でのプロビジョニング時に、[cloud-init](https://cloudinit.readthedocs.io) を使用して、仮想マシン (VM) または仮想マシン スケール セット (VMSS) でユーザーを追加する方法を示します。 この cloud-init スクリプトは、リソースが Azure によってプロビジョニングされた後の最初の起動時に実行されます。 cloud-init が Azure およびサポートされている Linux ディストリビューションでネイティブに動作する方法の詳細については、[cloud-init の概要](using-cloud-init.md)に関するページをご覧ください。
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/04/2017
 ## <a name="add-a-user-to-a-vm-with-cloud-init"></a>cloud-init で VM にユーザーを追加する
 新しい Linux VM での最初のタスクの 1 つとして、*root* の使用を避けるために自分用の追加ユーザーを追加することがあります。 SSH キーは、セキュリティと使いやすさのためのベスト プラクティスです。 キーは、この cloud-init スクリプトで *~/.ssh/authorized_keys* ファイルに追加されます。
 
-Linux VM にユーザーを追加するには、現在のシェルに *cloud_init_upgrade.txt* という名前のファイルを作成し、次の構成を貼り付けます。 この例では、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloud_init_add_user.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 **nano** エディターを使用するには #1 を選択します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。  値 `ssh-authorized-keys:` に対してご自身の公開キー (*~/.ssh/id_rsa.pub* の内容など) を指定する必要があります。ここでは、例を簡単にするために短くなっています。
+Linux VM にユーザーを追加するには、現在のシェルに *cloud_init_upgrade.txt* という名前のファイルを作成し、次の構成を貼り付けます。 この例では、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 `sensible-editor cloud_init_add_user.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 **nano** エディターを使用するには #1 を選びます。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。  値 `ssh-authorized-keys:` に対してご自身の公開キー (*~/.ssh/id_rsa.pub* の内容など) を指定する必要があります。ここでは、例を簡単にするために短くなっています。
 
 ```yaml
 #cloud-config
@@ -42,13 +42,13 @@ users:
 > [!NOTE] 
 > #cloud-config ファイルには、`- default` パラメーターが含まれます。 これにより、プロビジョニング中に作成された既存の管理ユーザーに、ユーザーが追加されます。 `- default` パラメーターを指定しないでユーザーを作成すると、Azure プラットフォームによって作成された自動生成された管理者ユーザーは上書きされます。 
 
-このイメージをデプロイする前に、[az group create](/cli/azure/group#create) コマンドを使用してリソース グループを作成する必要があります。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+このイメージをデプロイする前に、[az group create](/cli/azure/group#az_group_create) コマンドを使用してリソース グループを作成する必要があります。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-ここで、[az vm create](/cli/azure/vm#create) で VM を作成し、次のように `--custom-data cloud_init_add_user.txt` で cloud-init ファイルを指定します。
+ここで、[az vm create](/cli/azure/vm#az_vm_create) で VM を作成し、次のように `--custom-data cloud_init_add_user.txt` で cloud-init ファイルを指定します。
 
 ```azurecli-interactive 
 az vm create \
@@ -59,7 +59,7 @@ az vm create \
   --generate-ssh-keys 
 ```
 
-前述のコマンドからの出力に示すように、VM のパブリック IP アドレスに SSH 接続します。 ご自身の **publicIpAddress** を次のように入力します。
+前述のコマンドからの出力に示すように、VM のパブリック IP アドレスに SSH 接続します。 実際の **publicIpAddress** を次のように入力します。
 
 ```bash
 ssh <publicIpAddress>
@@ -81,10 +81,10 @@ sudo:x:27:myadminuser
 myadminuser:x:1000:
 ```
 
-## <a name="next-steps"></a>次のステップ
-構成の変更の cloud-init の追加の例については、以下をご覧ください。
+## <a name="next-steps"></a>次の手順
+構成変更の cloud-init の他の例については、以下をご覧ください。
  
-- [VM に追加の Linux ユーザーを追加する](cloudinit-add-user.md)
+- [VM に他の Linux ユーザーを追加する](cloudinit-add-user.md)
 - [初回起動時にパッケージ マネージャーを実行して既存のパッケージを更新する](cloudinit-update-vm.md)
 - [VM のローカル ホスト名を変更する](cloudinit-update-vm-hostname.md) 
-- [アプリケーション パッケージをインストールする、構成ファイルを更新する、キーを挿入する](tutorial-automate-vm-deployment.md)
+- [アプリケーション パッケージのインストール、構成ファイルの更新、キーの挿入](tutorial-automate-vm-deployment.md)

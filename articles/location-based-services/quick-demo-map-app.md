@@ -12,15 +12,15 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: bfc31553c32ac4dbfde55aa30b33025b579f6139
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 09022648c03ffa12aa3b060e5094c40ea5c3d61e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="launch-a-demo-interactive-map-search-using-azure-location-based-services-preview"></a>Azure Location Based Services (プレビュー) によるデモ版対話型マップ検索を開始する
 
-この記事では、Azure Location Based Services (LBS) (プレビュー) のデモ版対話型マップ検索機能について説明します。 また、デモ版の Web アプリケーションで使用する LBS アカウントを作成し、キーを取得する基本的な手順についても説明します。 
+この記事では、Azure Location Based Services (LBS) のデモ版対話型マップ検索機能について説明します。 また、デモ版の Web アプリケーションで使用する LBS アカウントを作成し、キーを取得する基本的な手順についても説明します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

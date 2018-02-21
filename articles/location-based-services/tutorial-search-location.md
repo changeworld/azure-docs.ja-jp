@@ -1,6 +1,6 @@
 ---
 title: "Azure Location Based Services で検索する | Microsoft Docs"
-description: "Azure Location Based Services を使用して近くの目的地を検索します"
+description: "Azure Location Based Services を使用して近くの目的地を検索する"
 services: location-based-services
 keywords: 
 author: dsk-2015
@@ -12,25 +12,25 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 8da7d9112c9527945ab4b524625603faa84cf00d
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 791992028d11633fc20f55ae1a34e7fcd442bf3a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="search-nearby-point-of-interest-using-azure-location-based-services"></a>Azure Location Based Services を使用して近くの目的地を検索する
+# <a name="search-nearby-points-of-interest-using-azure-location-based-services"></a>Azure Location Based Services を使用して近くの目的地を検索する
 
 このチュートリアルでは、Azure Location Based Services でアカウントを設定してから、提供されている API を使って目的地を検索する方法を示します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Location Based Services でアカウントを作成する
 > * Azure Location Based Services アカウントの主キーを確認する
-> * マップ コントロール API を使って新しい Web ページを作成する
+> * マップ コントロール API を使用して Web ページを作成する
 > * Search Service を使って近くの目的地を検索する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-# <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 [Azure Portal](https://portal.azure.com) にログインします。
 
 <a id="createaccount"></a>

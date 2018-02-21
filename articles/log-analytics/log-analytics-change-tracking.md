@@ -3,7 +3,7 @@ title: "Azure Log Analytics で変更を追跡する | Microsoft Docs"
 description: "Log Analytics の変更の追跡ソリューションは、ユーザーの環境で起こるソフトウェアと Windows サービスの変更を特定するために役立ちます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: f8040d5d-3c89-4f0c-8520-751c00251cb7
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
-ms.author: banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81cc7f78ef777e02b195422a81d9a9f15cb63564
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: ede3519b0b61ed20d85ea141dc6dee2505420448
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
 
@@ -61,7 +61,7 @@ ms.lasthandoff: 12/13/2017
 1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
 2. **[設定]** ページで **[データ]** をクリックし、**[Windows レジストリの追跡]** をクリックします。
 3. [Windows レジストリの変更追跡] の下に、追跡するキー全体を入力し、**[追加]** 記号をクリックします。
-4. **[保存]** をクリックします。  
+4. **[Save]** をクリックします。  
    ![Windows レジストリの変更追跡](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
 
 ### <a name="explanation-of-linux-file-collection-properties"></a>Linux ファイル コレクションのプロパティの説明
@@ -114,7 +114,7 @@ ms.lasthandoff: 12/13/2017
 
 | **変更の種類** | **frequency** | **変更が検出されたときに****エージェント****から相違点が送信されるか** |
 | --- | --- | --- |
-| Windows レジストリ | 50 分 | なし |
+| Windows レジストリ | 50 分 | いいえ  |
 | Windows ファイル | 30 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
 | Linux ファイル | 約 15 分 | はい。 24 時間以内に変更がない場合は、スナップショットが送信されます。 |
 | Windows サービス | 30 分 | はい。変更が検出されたときに 30 分ごとに送信されます。 スナップショットは、変更の有無に関係なく 24 時間おきに送信されます。 つまり変更が生じていなくてもスナップショットが送信されます。 |
@@ -185,5 +185,5 @@ Log Analytics は、変更の追跡ソリューションを使用して、Window
 2. **[変更の追跡]** ダッシュボードにあるいずれかの変更の種類ブレードで概要情報を確認し、**ログの検索**ページで、詳細情報を表示する変更の 1 つをクリックします。
 3. どのログの検索ページでも、時間、詳細結果、ログ検索履歴を表示することができます。 結果を絞り込むファセットを使用してフィルター処理することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な変更追跡データを確認してください。

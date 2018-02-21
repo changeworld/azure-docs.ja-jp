@@ -9,11 +9,11 @@
 | CA の最大数 | 10 |
 
 > [!NOTE]
-> これらの制限は、パブリック プレビューに対するものです。 サービスが一般公開になったら、[Microsoft サポート](https://azure.microsoft.com/support/options/)に連絡して、サブスクリプションのインスタンス数を増やすことができます。
+> [Microsoft サポート](https://azure.microsoft.com/support/options/)に連絡して、サブスクリプションのインスタンス数を増やすことができます。
 
 Device Provisioning Service は、次のクォータを超えた場合に、要求を調整します。
 
 | スロットル | サービスごとの値 |
 | --- | --- |
-| 操作 | 100/分 |
+| [操作] | 100/分 |
 | デバイス登録 | 100/分 |

@@ -10,17 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/15/2017
-ms.openlocfilehash: b0916f565d91f5a59d1bfb4653f29bfbdb573443
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 6bae66a5cd349b64b7f96bf7d6c71f4ce13678bf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="sprint-2-qfe---december-2017"></a>スプリント 2 QFE - 2017 年 12 月 
 
 #### <a name="version-number-01171115323"></a>バージョン番号: 0.1.1711.15323
 
->バージョン番号を調べる方法については、[こちら](https://docs.microsoft.com/azure/machine-learning/preview/known-issues-and-troubleshooting-guide)をご覧ください。
+>バージョン番号を調べる方法については、[こちら](known-issues-and-troubleshooting-guide.md)をご覧ください。
 
 Azure Machine Learning Workbench の 3 回目の更新である QFE (Quick Fix Engineering) リリースへようこそ。 このリリースはマイナー リリースです。 テレメトリに関するいくつかの問題に対処しているため、製品チームは製品の使用状況をより詳しく把握できます。 そのナレッジは、製品のエクスペリエンスを向上させる取り組みにおいて将来的に役立てられます。 
 

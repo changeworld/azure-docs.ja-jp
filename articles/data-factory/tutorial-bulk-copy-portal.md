@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/10/2018
 ms.author: jingwang
-ms.openlocfilehash: 6aa5d4aa032ef4dc3583bf76b9c451874b74f9a6
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 5f0703a3cb2ce912bfc042d0717ad8d921ec43e3
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
@@ -74,6 +74,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 3. **[ファイアウォールの設定]** ページの **[Azure サービスへのアクセスを許可]** で **[オン]** をクリックします。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/tutorial-bulk-copy-portal/new-azure-data-factory-menu.png)
@@ -286,7 +287,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 2. プロパティ ウィンドウで、パイプラインの名前を「**GetTableListAndTriggerCopyData**」に変更します。 
 
     ![パイプライン名](./media/tutorial-bulk-copy-portal/second-pipeline-name.png)
-3. **[アクティビティ]** ツール ボックスで **[SQL Database]** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップして、次のステップを実行します。
+3. **[アクティビティ]** ツール ボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップして、次のステップを実行します。
 
     1. **[名前]** に「**LookupTableList**」と入力します。 
     2. **[説明]** に「**Azure SQL Database からテーブル リストを取得する**」と入力します。
@@ -322,7 +323,7 @@ SQL Database と SQL Data Warehouse の両方について、SQL サーバーへ�
 8. パイプラインを検証するために、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 **[>>]** をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** を閉じます。
 
     ![2 つ目のパイプライン - 検証レポート](./media/tutorial-bulk-copy-portal/second-pipeline-validation-report.png)
-9. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、**[発行]** をクリックします。 発行が成功するまで待機します。 
+9. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、**[すべて公開]** をクリックします。 発行が成功するまで待機します。 
 
     ![[発行] ボタン](./media/tutorial-bulk-copy-portal/publish.png)
 

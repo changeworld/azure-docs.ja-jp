@@ -2,24 +2,18 @@
 title: "Azure クイックスタート - Node.js を使用して Azure Blob Storage との間でオブジェクトを転送する | Microsoft Docs"
 description: "Node.js を使って Azure Blob Storage との間で双方向にオブジェクトを転送する方法を説明します"
 services: storage
-documentationcenter: storage
-author: georgewallace
-manager: timlt
-editor: tysonn
-ms.assetid: 
+author: tamram
+manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 10/30/2017
-ms.author: gwallace
-ms.openlocfilehash: dd4d3abf082767c40760d020c0997b365452e769
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.date: 02/06/2018
+ms.author: tamram
+ms.openlocfilehash: 07845d0e1917c00dbd6098ef2bfbd9dcbbf2f97b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-nodejs"></a>Node.js を使用して Azure Blob Storage との間でオブジェクトを転送する
 
@@ -66,7 +60,7 @@ var blobService = storage.createBlobService(connectionString);
 npm install
 ```
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 
 このサンプルは、[マイ ドキュメント] にテスト ファイルを作成し、それを Blob Storage にアップロードし、コンテナー内の BLOB の一覧を取得してから、古いファイルと新しいファイルを比較できるように新しい名前でファイルをダウンロードします。
 
@@ -109,9 +103,9 @@ Sample finished running. When you hit <ENTER> key, the temporary files will be d
 
 ### <a name="get-references-to-the-storage-objects"></a>ストレージ オブジェクトへの参照を取得する
 
-最初に、Blob Storage にアクセスして管理するために使う `BlobService` への参照を作成します。 これらのオブジェクトは、他のオブジェクトを基にして作成されます。各オブジェクトは、一覧で次にあるオブジェクトによって使われます。
+最初に、Blob Storage にアクセスして管理するために使う **BlobService** オブジェクトへの参照を作成します。 これらのオブジェクトは、他のオブジェクトを基にして作成されます。各オブジェクトは、一覧で次にあるオブジェクトによって使われます。
 
-* ストレージ アカウントの Blob service を指す **[BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor)** オブジェクトのインスタンスを作成します。
+* ストレージ アカウントの Blob service を指す [BlobService](/nodejs/api/azure-storage/blobservice?view=azure-node-2.2.0#azure_storage_BlobService__ctor) オブジェクトのインスタンスを作成します。
 
 * 新しいコンテナーを作成してから、BLOB をパブリックにして URL のみでアクセスできるように、コンテナーに対するアクセス許可を設定します。 **quickstartcontainer-** で始まるコンテナーです。
 
@@ -192,11 +186,11 @@ console.log('6. Deleting block Blob\n');
         fs.unlinkSync(DOWNLOADED_FILE_PATH);
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、Node.js を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 
 > [!div class="nextstepaction"]
 > [Blob Storage の操作方法](storage-nodejs-how-to-use-blob-storage.md)
 
-Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。
+Azure Storage に関する Node.js のリファレンスについては、「[azure-storage package (azure-storage パッケージ)](https://docs.microsoft.com/javascript/api/azure-storage/?view=azure-node-latest)」を参照してください。

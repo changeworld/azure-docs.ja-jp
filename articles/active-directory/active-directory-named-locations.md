@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 231255d9a119c404c0c947c00414572aaab82719
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b6f80cde24edcbec68309ba033d4da16ee97b731
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="named-locations-in-azure-active-directory"></a>Azure Active Directory における名前付きの場所
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 - 報告される偽陽性の数を減らすための[リスク イベント](active-directory-reporting-risk-events.md)の検出。  
 
-- [場所ベースの条件付きアクセス](active-directory-conditional-access-azure-portal.md#locations)。
+- [場所ベースの条件付きアクセス](active-directory-conditional-access-locations.md)。
 
 
 この記事では、環境内で名前付きの場所を構成する方法について説明します。
@@ -81,7 +81,7 @@ ms.lasthandoff: 12/11/2017
 
     ![[新規] ブレード](./media/active-directory-named-locations/56.png)
 
-    a. **[名前]** ボックスに、名前付きの場所の名前を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、名前付きの場所の名前を入力します。
 
     b. **[IP 範囲]** ボックスに、IP 範囲を入力します。 IP 範囲は *Classless Inter-Domain Routing* (CIDR) 形式である必要があります。  
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 12/11/2017
 **制限事項**: 最大 60 の名前付き場所を定義でき、それぞれに 1 つの IP 範囲を割り当てることができます。 構成する名前付き場所が 1 つだけの場合、そこには最大 500 の IP 範囲を定義できます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 関連情報:
 
