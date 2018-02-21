@@ -17,8 +17,9 @@
 ### [セキュリティの技術的な機能](azure-security-technical-capabilities.md)
 ### [Azure でのガバナンス](governance-in-azure.md)
 ### [保存データの暗号化](azure-security-encryption-atrest.md)
-### アーキテクチャのブループリント
-#### [コンプライアンス - PCI DSS](./blueprints/payment-processing-blueprint.md)
+### Azure のセキュリティとコンプライアンスのブループリント
+#### PCI DSS
+##### [PCI DSS 準拠環境での支払い処理](./blueprints/payment-processing-blueprint.md)
 ##### [要件の概要](./blueprints/pci-dss-requirements-overview.md)
 ##### [要件 1 - ファイアウォール](./blueprints/pci-dss-requirement-1-firewall.md)
 ##### [要件 2 - パスワード](./blueprints/pci-dss-requirement-2-password.md)
@@ -32,7 +33,8 @@
 ##### [要件 10 - 監視](./blueprints/pci-dss-requirement-10-monitoring.md)
 ##### [要件 11 - テスト](./blueprints/pci-dss-requirement-11-testing.md)
 ##### [要件 12 - ポリシー](./blueprints/pci-dss-requirement-12-policy.md)
-#### [コンプライアンス - FedRAMP](./blueprints/fedramp.md)
+#### FedRAMP
+##### [Web アプリケーションの自動化](./blueprints/fedramp.md)
 ##### [セキュリティ コントロールの概要](./blueprints/fedramp-controls-overview.md)
 ##### [アクセス制御](./blueprints/fedramp-access-controls.md)
 ##### [監査とアカウンタビリティ](./blueprints/fedramp-audit-accountability-controls.md)
@@ -51,10 +53,11 @@
 ##### [システムと通信の保護](./blueprints/fedramp-system-communications-protection-controls.md)
 ##### [システムと情報の整合性](./blueprints/fedramp-system-information-integrity-controls.md)
 ##### [システムとサービスの取得](./blueprints/fedramp-system-services-acquisition-controls.md)
-#### [コンプライアンス - UK-OFFICIAL](./blueprints/uk-official-three-tier-applications-overview.md)
+#### UK-OFFICIAL
+##### [3 層 Web アプリケーションの自動化](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [概要](./blueprints/uk-official-three-tier-applications-overview.md)
 ##### [原則の概要](./blueprints/uk-official-three-tier-applications-principles-overview.md)
-#### コンプライアンス - Financial Services
+#### 金融サービス
 ##### [規制対象ワークロードに対応した Financial Services](./blueprints/financial-services-regulated-workloads.md)
 
 # 作業の開始

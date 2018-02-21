@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aec4db684a9067e1dee424f2c0e05e3674f84d1a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8f4d121ba76d63b70fa6976125457942a0e98aa9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-java-application"></a>Java アプリケーションの作成
 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -76,19 +76,45 @@ git clone https://github.com/Azure-Samples/service-fabric-java-quickstart.git
     
 これで一連の投票の選択肢を追加して投票を開始できます。 アプリケーションが実行され、データはすべて Service Fabric クラスターに保存されます。別途データベースを用意する必要はありません。
 
-## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションをデプロイする
+## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションを展開する
 
 ### <a name="set-up-your-azure-service-fabric-cluster"></a>Azure Service Fabric クラスターの設定
-Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターかパーティー クラスターを作成します。
+Azure 内のクラスターにアプリケーションをデプロイするには、独自のクラスターを作成します。
 
 パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによって実行され、誰でもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
+
+セキュリティで保護されたパーティ クラスターに対する管理操作は、Service Fabric Explorer、CLI、Powershell のいずれかを使用して実行できます。 Service Fabric Explorer を使用するには、パーティ クラスターの Web サイトから PFX ファイルをダウンロードし、ご使用の証明書ストア (Windows または Mac) またはブラウザー本体 (Ubuntu) に証明書をインポートする必要があります。 パーティ クラスターの自己署名証明書についてはパスワードは不要です。 
+
+PowerShell または CLI で管理操作を実行するには、PFX (PowerShell) または PEM (CLI) が必要となります。 PFX を PEM ファイルに変換するには、次のコマンドを実行してください。  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 独自のクラスターの作成については、[Azure での Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページをご覧ください。
 
 > [!Note]
-> Web フロントエンド サービスは、ポート 8080 で受信トラフィックをリッスンする構成になっています。 このポートがクラスターで開放されていることを確認してください。 パーティ クラスターを使用している場合、このポートは開放されています。
+> Spring Boot サービスは、ポート 8080 で受信トラフィックをリッスンする構成になっています。 このポートがクラスターで開放されていることを確認してください。 パーティ クラスターを使用している場合、このポートは開放されています。
 >
 
+### <a name="add-certificate-information-to-your-application"></a>アプリケーションに証明書情報を追加する
+
+アプリケーションには、Service Fabric のプログラミング モデルが使用されているため、証明書の拇印を追加する必要があります。 
+
+1. セキュリティで保護されたクラスターで実行するときは、```Voting/VotingApplication/ApplicationManiest.xml``` ファイルに証明書の拇印が必要となります。 次のコマンドを実行して、証明書の拇印を抽出します。
+
+    ```bash
+    openssl x509 -in [CERTIFICATE_FILE] -fingerprint -noout
+    ```
+
+2. ```Voting/VotingApplication/ApplicationManiest.xml``` の **ApplicationManifest** タグに次のスニペットを追加します。 前の手順で得た拇印 (セミコロンを除く) を **X509FindValue** に指定する必要があります。 
+
+    ```xml
+    <Certificates>
+        <SecretsCertificate X509FindType="FindByThumbprint" X509FindValue="0A00AA0AAAA0AAA00A000000A0AA00A0AAAA00" />
+    </Certificates>   
+    ```
+    
 ### <a name="deploy-the-application-using-eclipse"></a>Eclipse を使用したアプリケーションのデプロイ
 アプリケーションとクラスターの準備ができたので、Eclipse から直接クラスターにデプロイできます。
 
@@ -100,8 +126,8 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
          {
             "ConnectionIPOrURL": "lnxxug0tlqm5.westus.cloudapp.azure.com",
             "ConnectionPort": "19080",
-            "ClientKey": "",
-            "ClientCert": ""
+            "ClientKey": "[path_to_your_pem_file_on_local_machine]",
+            "ClientCert": "[path_to_your_pem_file_on_local_machine]"
          }
     }
     ```
@@ -121,7 +147,7 @@ Service Fabric Explorer は、あらゆる Service Fabric クラスターで動�
 
 Web フロントエンド サービスをスケールするには、次の手順に従います。
 
-1. クラスターで Service Fabric Explorer を開きます (例: `http://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`)。
+1. クラスターで Service Fabric Explorer を開きます (例: `https://lnxxug0tlqm5.westus.cloudapp.azure.com:19080`)。
 2. ツリー ビューで **fabric:/Voting/VotingWeb** ノードの横にある省略記号 (3 つの点) をクリックし、**[Scale Service]\(サービスのスケール\)** を選択します。
 
     ![Service Fabric Explorer スケール サービス](./media/service-fabric-quickstart-java/scaleservicejavaquickstart.png)
@@ -137,7 +163,7 @@ Web フロントエンド サービスをスケールするには、次の手順
 
 たったこれだけの管理タスクにより、フロントエンド サービスでユーザー負荷を処理するためのリソースが 2 倍になりました。 実行するサービスの信頼性を高めるために、サービスのインスタンスを複数用意する必要はないことに注目してください。 サービスで障害が発生した場合、Service Fabric によって新しいサービス インスタンスがクラスターで実行されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このクイック スタートでは、次の方法について説明しました。
 
 > [!div class="checklist"]

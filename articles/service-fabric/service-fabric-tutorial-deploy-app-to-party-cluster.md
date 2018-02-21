@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: cb9d20bcb4b863736229bb920f5d4615b2c28c94
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 91d4398589707e8007c4b93639ddb568e39f51a7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Azure でパーティ クラスターにアプリケーションをデプロイする
 このチュートリアルはシリーズの第 2 部です。Azure でパーティ クラスターに Azure Service Fabric アプリケーションをデプロイする方法について説明します。
@@ -59,14 +59,33 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 > [!NOTE]
 > パーティ クラスターはセキュリティで保護されないため、ご利用のアプリケーションとそれに入力するデータが他のユーザーに表示される可能性があります。 他のユーザーに見せたくないものは一切デプロイしないでください。 使用条件の詳細に必ず目を通してください。
 
+サインインし、[Windows クラスターに参加](http://aka.ms/tryservicefabric)します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 証明書と **[接続のエンドポイント]** の値は、次の手順で使用します。
+
+![PFX と接続エンドポイント](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+
+Windows コンピューターで、*CurrentUser\My* 証明書ストアに PFX をインストールします。
+
+```powershell
+PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
+\CurrentUser\My
+
+
+  PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
+
+Thumbprint                                Subject
+----------                                -------
+3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
+```
+
+
 ## <a name="deploy-the-app-to-the-azure"></a>Azure にアプリケーションをデプロイする
 これで、アプリケーションの準備ができたので、Visual Studio から直接パーティ クラスターにデプロイできます。
 
-1. ソリューション エクスプローラーで **[Voting]** を右クリックして、**[発行]** を選択します。
+1. ソリューション エクスプローラーで **[Voting]** を右クリックして、**[発行]** を選択します。 
 
-    ![[発行] ダイアログ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+    ![[発行] ダイアログ](./media/service-fabric-quickstart-containers/publish-app.png)
 
-2. **[接続のエンドポイント]** フィールドにパーティ クラスターの接続エンドポイントを入力し、**[発行]** をクリックします。
+2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、次の情報を入力します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順でインストールした証明書の拇印に一致する必要があります。 **[発行]**をクリックします。 
 
     発行が完了した後は、ブラウザーからアプリケーションに要求を送信できます。
 
@@ -81,9 +100,9 @@ Service Fabric Explorer は、Service Fabric クラスター内のアプリケ�
 
 パーティ クラスターからアプリケーションを削除するには:
 
-1. パーティ クラスターのサインアップ ページで提供されるリンクを使用して、Service Fabric Explorer を参照します。 たとえば、http://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html にアクセスします。
+1. パーティ クラスターのサインアップ ページで提供されるリンクを使用して、Service Fabric Explorer を参照します。 たとえば https://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html を使用します。
 
-2. Service Fabric Explorer で、左側にあるツリービューの **[fabric://Voting]** ノードに移動します。
+2. Service Fabric Explorer で、左側にあるツリービューの **[fabric:/Voting]** ノードに移動します。
 
 3. 右側の **[基本]** ウィンドウの **[アクション]** をクリックして、**[アプリケーションの削除]** を選択します。 アプリケーション インスタンスの削除を承認すると、クラスターで実行されているアプリケーション インスタンスが削除されます。
 

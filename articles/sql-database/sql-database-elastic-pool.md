@@ -14,13 +14,12 @@ ms.devlang: NA
 ms.date: 10/11/2017
 ms.author: carlrab
 ms.workload: Active
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.openlocfilehash: 2f1ff7a7c2ecf04069ffa6afcc66e2f0f9915b35
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.topic: 02/12/2018
+ms.openlocfilehash: 7c1cbc16d968bd13d0486cd434b095f8d3ecf636
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 
@@ -171,7 +170,7 @@ SQL Database サービスでは使用状況の履歴を評価し、単一のデ�
 
 プールの推奨事項は、以下で構成されます。
 
-- プールの価格レベル (Basic、Standard、Premium、または Premium RS)
+- プールの価格レベル (Basic、Standard、Premium)
 - 適切な **プールの eDTU** (プールあたりの最大 eDTU とも呼ばれます)
 - データベースあたりの **eDTU の最大値**と **eDTU の最小値**
 - プールの推奨データベースの一覧
@@ -262,7 +261,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 4. **[条件]** \(より大きい、より小さいなど) と **[しきい値]** を選択します。
 5. **[期間]** では、どのくらいの期間メトリック ルールが満たされた後、アラートがトリガーされるかを選択します。
-6. **[OK]**をクリックします。
+6. Click **OK**.
 
 詳細については、[Azure Portal での SQL Database アラートの作成](sql-database-insights-alerts-portal.md)に関するトピックを参照してください。
 
@@ -300,7 +299,7 @@ Azure PowerShell を使用して SQL Database エラスティック プールを
 > PowerShell のサンプル スクリプトについては、「[Create elastic pools and move databases between pools and out of a pool using PowerShell (エラスティック プールを作成し、PowerShell を使用してデータベースをプール間で、およびプールから外に移動する)](scripts/sql-database-move-database-between-pools-powershell.md)」および「[Use PowerShell to monitor and scale a SQL elastic pool in Azure SQL Database (PowerShell を使用して、Azure SQL Database 内の SQL エラスティック プールを監視およびスケーリングする)](scripts/sql-database-monitor-and-scale-pool-powershell.md)」を参照してください。
 >
 
-| コマンドレット | Description |
+| コマンドレット | [説明] |
 | --- | --- |
 |[New-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/new-azurermsqlelasticpool)|論理 SQL サーバー上にエラスティック データベース プールを作成します。|
 |[Get-AzureRmSqlElasticPool](/powershell/module/azurerm.sql/get-azurermsqlelasticpool)|論理 SQL サーバー上のエラスティック プールとそのプロパティ値を取得します。|
@@ -325,7 +324,7 @@ Azure PowerShell を使用して SQL Database エラスティック プールを
 > Azure CLI のサンプル スクリプトについては、「[Use CLI to move an Azure SQL database in a SQL elastic pool (CLI を使用して、SQL エラスティック プール内の Azure SQL データベースを移動する)](scripts/sql-database-move-database-between-pools-cli.md)」および「[Use Azure CLI to scale a SQL elastic pool in Azure SQL Database (Azure CLI を使用して、Azure SQL Database 内の SQL エラスティック プールをスケーリングする)](scripts/sql-database-scale-pool-cli.md)」を参照してください。
 >
 
-| コマンドレット | Description |
+| コマンドレット | [説明] |
 | --- | --- |
 |[az sql elastic-pool create](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|エラスティック プールを作成します。|
 |[az sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|サーバー内のエラスティック プールの一覧を返します。|
@@ -342,7 +341,7 @@ Transact-SQL を使用して既存のエラスティック プール内のデー
 > Transact-SQL を使用して Azure SQL Database エラスティック プールを作成、更新、または削除するすることはできません。 データベースをエラスティック プールに追加または削除したり、DMV を使用して既存のエラスティック プールに関する情報を返したりすることができます。
 >
 
-| コマンド | Description |
+| コマンド | [説明] |
 | --- | --- |
 |[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|新しいデータベースを既存のプール内に、または単一のデータベースとして作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |データベースをエラスティック プール内に、エラスティックから外に、またはエラスティック間で移動します。|
@@ -354,7 +353,7 @@ Transact-SQL を使用して既存のエラスティック プール内のデー
 
 SQL Database エラスティック プールを作成して管理するには、これらの REST API 要求を使用します。
 
-| コマンド | Description |
+| コマンド | [説明] |
 | --- | --- |
 |[エラスティック プール - 作成または更新](/rest/api/sql/elasticpools/createorupdate)|新しいエラスティック プールを作成するか、既存のエラスティック プールを更新します。|
 |[エラスティック プール - 削除](/rest/api/sql/elasticpools/delete)|エラスティック プールを削除します。|
@@ -375,7 +374,7 @@ SQL Database エラスティック プールを作成して管理するには、
 |[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
 |[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * ビデオについては、[Azure SQL Database のエラスティック機能に関する Microsoft Virtual Academy のビデオ コース](https://mva.microsoft.com/training-courses/elastic-database-capabilities-with-azure-sql-db-16554)をご覧ください。
 * エラスティック プールを使用する SaaS アプリケーションの設計パターンの詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)」を参照してください。

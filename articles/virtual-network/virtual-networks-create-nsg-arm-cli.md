@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ecc50a54feca6c3e9304821e0a5bdbb50708bd11
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: cb99f121a1ddf079008ed97edde71b067d6b5edb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループの作成
 
@@ -36,9 +36,9 @@ ms.lasthandoff: 11/17/2017
 
 前述のシナリオに基づいて *NSG-FrontEnd* という名前の NSG を作成するには、次の手順に従います。
 
-1. まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。 
+1. まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。 
 
-2. [az network nsg create](/cli/azure/network/nsg#create) コマンドを使用して NSG を作成します。 
+2. [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) コマンドを使用して NSG を作成します。 
 
     ```azurecli
     az network nsg create \
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/17/2017
 
 
 
-3. [az network nsg rule create](/cli/azure/network/nsg/rule#create) コマンドを使用して、インターネットからポート 3389 (RDP) へのアクセスを許可する規則を作成します。
+3. [az network nsg rule create](/cli/azure/network/nsg/rule#az_network_nsg_rule_create) コマンドを使用して、インターネットからポート 3389 (RDP) へのアクセスを許可する規則を作成します。
 
     > [!NOTE]
     > 使用しているシェルによっては、実行前に引数が展開されないように次の引数内の `*` 文字を変更する必要があります。
@@ -171,7 +171,7 @@ ms.lasthandoff: 11/17/2017
     }
     ```
 
-5. [az network vnet subnet update](/cli/azure/network/vnet/subnet#update) コマンドを使用して NSG を **FrontEnd** サブネットにバインドします。
+5. [az network vnet subnet update](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_update) コマンドを使用して NSG を **FrontEnd** サブネットにバインドします。
         
     ```azurecli
     az network vnet subnet update \

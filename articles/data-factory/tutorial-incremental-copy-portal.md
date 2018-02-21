@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: ff26d3ae159320f8c726b37eb0c68e6c5f2c2cc3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: edde9d8c6fe070e5323cf63d222c7cd6a8983e8a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
@@ -154,6 +154,7 @@ END
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/tutorial-incremental-copy-portal/new-azure-data-factory-menu.png)
@@ -192,7 +193,7 @@ END
 3. パイプラインの **[プロパティ]** ウィンドウの **[全般]** ページで、名前として「**IncrementalCopyPipeline**」と入力します。 
 
    ![パイプライン名](./media/tutorial-incremental-copy-portal/pipeline-name.png)
-4. 古い基準値を取得するための最初の検索アクティビティを追加します。 **[アクティビティ]** ツールボックスで **[SQL Database]** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を **LookupOldWaterMarkActivity** に変更します。
+4. 古い基準値を取得するための最初の検索アクティビティを追加します。 **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を **LookupOldWaterMarkActivity** に変更します。
 
    ![最初の検索アクティビティ - 名前](./media/tutorial-incremental-copy-portal/first-lookup-name.png)
 5. **[設定]** タブに切り替えて、**[Source Dataset]\(ソース データセット\)** の **[+ 新規]** をクリックします。 この手順では、**watermarktable** 内のデータを表すデータセットを作成します。 このテーブルには、前のコピー操作で使用されていた古い基準が含まれています。 
@@ -224,7 +225,7 @@ END
 11. 上部のパイプライン タブをクリックするか、左側のツリー ビューでパイプラインの名前をクリックして、パイプライン エディターに切り替えます。 **[検索]** アクティビティのプロパティ ウィンドウで、**[Source Dataset]\(ソース データセット\)** フィールドで **[WatermarkDataset]** が選択されていることを確認します。 
 
     ![パイプライン - 古い基準データセット](./media/tutorial-incremental-copy-portal/pipeline-old-watermark-dataset-selected.png)
-12. **[アクティビティ]** ツールボックスで **[SQL Database]** を展開し、パイプライン デザイナー画面にもう一つの **[検索]** アクティビティをドラッグ アンド ドロップし、プロパティ ウィンドウの **[全般]** タブで名前を「**LookupNewWaterMarkActivity**」に設定します。 この検索アクティビティは、ターゲットにコピーされるソース データを持つテーブルから新しい基準値を取得します。 
+12. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面にもう一つの **[検索]** アクティビティをドラッグ アンド ドロップし、プロパティ ウィンドウの **[General]\(一般\)** タブで名前を「**LookupNewWaterMarkActivity**」に設定します。 この検索アクティビティは、ターゲットにコピーされるソース データを持つテーブルから新しい基準値を取得します。 
 
     ![2 つ目の検索アクティビティ - 名前](./media/tutorial-incremental-copy-portal/second-lookup-activity-name.png)
 13. 2 つ目の **[検索]** アクティビティのプロパティ ウィンドウで **[設定]** タブに切り替え、**[新規]** をクリックします。 新しい基準値 (LastModifyTime の最大値) が含まれているソース テーブルを指すデータセットを作成します。 
@@ -295,7 +296,7 @@ END
 
         ![シンク データセット - 接続文字列](./media/tutorial-incremental-copy-portal/sink-dataset-connection-settings.png)
 28. 上部のパイプライン タブをクリックするか、左側のツリー ビューでパイプラインの名前をクリックして、**パイプライン** エディターに切り替えます。 
-29. **[アクティビティ]** ツールボックスで **[SQL Database]** を展開し、**[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **[コピー]** アクティビティの緑 (成功) の出力を **[ストアド プロシージャ]** アクティビティに**接続**します。 
+29. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、**[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **[ストアド プロシージャ]** アクティビティをドラッグ アンド ドロップします。 **[コピー]** アクティビティの緑 (成功) の出力を **[ストアド プロシージャ]** アクティビティに**接続**します。 
     
     ![コピー アクティビティ - ソース](./media/tutorial-incremental-copy-portal/connect-copy-to-stored-procedure-activity.png)
 24. パイプライン デザイナーで **[Storage Procedure Activity]\(ストレージ プロシージャ アクティビティ\)** を選択し、その名前を **StoredProceduretoWriteWatermarkActivity** に変更します。 
@@ -306,8 +307,8 @@ END
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
 
-    1. **[ストアド プロシージャ名]** に「**sp_write_watermark**」と入力します。 
-    2. ストアド プロシージャのパラメーターの値を指定するには、**[ストアド プロシージャのパラメーター]** セクションの **[+ 新規]** をクリックし、次の値を入力します。 
+    1. **[ストアド プロシージャ名]** に **[sp_write_watermark]** を選択します。 
+    2. ストアド プロシージャのパラメーターの値を指定するには、**[Import parameter]\(インポート パラメーター\)** をクリックし、各パラメーターに次の値を入力します。 
 
         | Name | type | 値 | 
         | ---- | ---- | ----- | 
@@ -318,14 +319,15 @@ END
 27. パイプライン設定を検証するには、ツール バーの **[検証]** をクリックします。 検証エラーがないことを確認します。 [>>] をクリックして、**[Pipeline Validation Report]\(パイプライン検証レポート\)** ウィンドウを閉じます。   
 
     ![パイプラインの検証](./media/tutorial-incremental-copy-portal/validate-pipeline.png)
-28. **[発行]** ボタンをクリックして、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Azure Data Factory サービスに発行します。 発行が成功したというメッセージが表示されるまで待機します。 
+28. **[すべて公開]** ボタンを選択して、エンティティ (リンクされたサービス、データセット、およびパイプライン) を Azure Data Factory サービスに発行します。 発行が成功したというメッセージが表示されるまで待機します。 
 
     ![[発行] ボタン](./media/tutorial-incremental-copy-portal/publish-button.png)
 
 ## <a name="trigger-a-pipeline-run"></a>パイプラインの実行をトリガーする
-ツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
+1. ツール バーの **[トリガー]** をクリックし、**[Trigger Now]\(今すぐトリガー\)** をクリックします。 
 
-![[Trigger Now]\(今すぐトリガー\) ボタン](./media/tutorial-incremental-copy-portal/trigger-now.png)
+    ![[Trigger Now]\(今すぐトリガー\) ボタン](./media/tutorial-incremental-copy-portal/trigger-now.png)
+2. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで **[完了]** を選択します。 
 
 ## <a name="monitor-the-pipeline-run"></a>パイプラインの実行を監視します
 

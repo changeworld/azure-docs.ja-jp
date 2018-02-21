@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/23/2018
+ms.date: 02/11/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 839fc3a326dca8b60c6750231b06d2369c3de2fc
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 804d9df37b5c89501200fc4e233108c09cce9262
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="collect-data-from-linux-computers-hosted-in-your-environment"></a>環境内でホストされている Linux コンピューターからデータを収集する
+# <a name="collect-data-from-linux-computer-hosted-in-your-environment"></a>環境内でホストされている Linux コンピューターからデータを収集する
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、物理的または仮想的な Linux コンピューターおよびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Linux コンピューターを構成し、データを収集する方法を示します。  Azure Linux VM の場合は、次のトピック「[Collect data about Azure Virtual Machines](log-analytics-quick-collect-azurevm.md)」 (Azure Virtual Machines に関するデータを収集する) を参照してください。  
 
-Linux エージェントをデプロイするためのネットワークとシステムの要件を理解するには、「[Collect data from your environment with Azure Log Analytics](log-analytics-concept-hybrid.md#prerequisites)」(Azure Log Analytics を使用した環境からのデータ収集) を参照してください。
+Linux エージェントをデプロイするためのネットワークとシステムの要件を理解するには、[Linux オペレーティング システムの前提条件](log-analytics-concept-hybrid.md#prerequisites)を参照してください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -61,30 +61,33 @@ OMS エージェント for Linux をインストールする前に、Log Analyti
 >[!NOTE]
 >Linux 用 OMS エージェントは、複数の Log Analytics ワークスペースにレポートするように構成することはできません。  
 
-1. Log Analytics に接続できるように Linux コンピューターを構成するには、前にコピーしたワークスペース ID と主キーを指定した次のコマンドを実行します。  このコマンドは、エージェントをダウンロードし、そのチェックサムを検証し、エージェントをインストールします。 
+Linux コンピューターと Log Analytics との通信をプロキシ サーバーを介して行う必要がある場合、コマンド ラインから「`-p [protocol://][user:password@]proxyhost[:port]`」を入力することでプロキシの構成を指定できます。  *proxyhost* プロパティは、プロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。 
+
+次に例を示します。`https://user01:password@proxy01.contoso.com:30443`
+
+1. Log Analytics に接続できるように Linux コンピューターを構成するには、前にコピーしたワークスペース ID と主キーを指定した次のコマンドを実行します。  次のコマンドは、エージェントをダウンロードし、そのチェックサムを検証してインストールします。 
     
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
     ```
 
-2. Azure Government クラウドの Log Analytics に接続できるように Linux コンピューターを構成するには、前にコピーしたワークスペース ID と主キーを指定した次のコマンドを実行します。  このコマンドは、エージェントをダウンロードし、そのチェックサムを検証し、エージェントをインストールします。 
+    次のコマンドには、`-p` プロキシ パラメーターとサンプル構文が使用されています。
+
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY>
+    ```
+
+2. Azure Government クラウドの Log Analytics に接続できるように Linux コンピューターを構成するには、前にコピーしたワークスペース ID と主キーを指定した次のコマンドを実行します。  次のコマンドは、エージェントをダウンロードし、そのチェックサムを検証してインストールします。 
 
     ```
     wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ``` 
 
-## <a name="configure-agent-to-communicate-with-a-proxy-server"></a>プロキシ サーバーと通信するエージェントを構成する
+    次のコマンドには、`-p` プロキシ パラメーターとサンプル構文が使用されています。
 
-Linux コンピューターがプロキシ サーバー経由で Log Analytics と通信するようにする場合は、次の手順を実行します。  プロキシ構成の値には次の構文があります。`[protocol://][user:password@]proxyhost[:port]`  *proxyhost* プロパティは、プロキシ サーバーの完全修飾ドメイン名または IP アドレスを受け取ります。    
-
-1. 次のコマンドを実行してファイル `/etc/opt/microsoft/omsagent/proxy.conf` を編集し、値を固有の設定に変更します。
-
+   ```
+    wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh -p [protocol://][user:password@]proxyhost[:port] -w <YOUR WORKSPACE ID> -s <YOUR WORKSPACE PRIMARY KEY> -d opinsights.azure.us
     ```
-    proxyconf="https://proxyuser:proxypassword@proxyserver01:30443"
-    sudo echo $proxyconf >>/etc/opt/microsoft/omsagent/proxy.conf
-    sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf 
-    ```
-
 2. 次のコマンドを実行してエージェントを再起動します。 
 
     ```
@@ -99,7 +102,7 @@ Log Analytics は、イベントを Linux Syslog から収集でき、長期分�
 3. テーブルで、重大度の **[情報]**、**[通知]** および **[デバッグ]** の各チェック ボックスをオフにします。 
 4. ページの上部にある **[保存]** をクリックして構成を保存します。
 5. **[Linux パフォーマンス データ]** を選択して、Windows コンピューターでのパフォーマンス カウンターの収集を有効にします。 
-6. 新しい Log Analytics ワークスペースの Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。<br><br> ![既定の Windows パフォーマンス カウンターが選択されています](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)。<br><br> **[選択したパフォーマンス カウンターを追加する]** をクリックします。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。  
+6. 新しい Log Analytics ワークスペースの Linux パフォーマンス カウンターを初めて構成する場合は、いくつかの一般的なカウンターをすばやく作成するためのオプションが表示されます。 それぞれのオプションの横には、チェック ボックスが表示されます。<br><br> ![既定の Windows パフォーマンス カウンターが選択されている状態](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)<br> **[選択したパフォーマンス カウンターを追加する]** をクリックします。  カウンターが追加され、10 秒間の収集サンプル間隔でプリセットされます。  
 7. ページの上部にある **[保存]** をクリックして構成を保存します。
 
 ## <a name="view-data-collected"></a>収集されたデータを表示する
@@ -111,12 +114,9 @@ Log Analytics は、イベントを Linux Syslog から収集でき、長期分�
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 不要になった場合、Linux コンピューターからエージェントを削除し、Log Analytics ワークスペースを削除できます。  
 
-エージェントを削除するには、次の手順を実行します。
+エージェントを削除するには、Linux コンピューターで次のコマンドを実行します。  引数 *--purge* を指定することにより、エージェントとその構成が完全に削除されます。
 
-1. Linux エージェントの[ユニバーサル スクリプト](https://github.com/Microsoft/OMS-Agent-for-Linux/releases)をコンピューターにダウンロードします。
-2. コンピューター上で引数 *--purge* を指定して .sh バンドル ファイルを実行します。これにより、エージェントとその構成が完全に削除されます。
-
-    `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
+   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
 ワークスペースを削除するには、作成した Log Analytics ワークスペースを選択し、リソース ページで **[削除]** をクリックします。<br><br> ![Log Analytics リソースを削除する](media/log-analytics-quick-collect-azurevm/log-analytics-portal-delete-resource.png)
 

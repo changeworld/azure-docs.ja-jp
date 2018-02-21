@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 01/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 8acc8deff8b635c97e8722d65a728aebf0e49bb3
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 3d9248d2501c7fea0492bad2687b6bdfb0b903e8
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-vmware-vms"></a>Azure にオンプレミス VMware VM のディザスター リカバリーを設定する
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/17/2018
 1. **[Recovery Services コンテナー]** で、コンテナー名 **ContosoVMVault** をクリックします。
 2. **[作業の開始]** で、[Site Recovery] をクリックします。 次に、**[インフラストラクチャの準備]** をクリックします。
 3. **[保護の目標]** > **[マシンのある場所]** で、**[オンプレミス]** を選びます。
-4. [マシンをどこにレプリケートしますか] で、**[To Azure]\(Azure\)** を選びます。
+4. **[マシンをどこにレプリケートしますか]** で、**[To Azure]\(Azure\)** を選びます。
 5. **[マシンは仮想化されていますか]** で、**[はい (VMware vSphere ハイパーバイザー の場合)]** を選びます。 次に、 **[OK]**をクリックします
 
 ## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
@@ -63,28 +63,28 @@ ms.lasthandoff: 01/17/2018
 
 ## <a name="import-the-template-in-vmware"></a>VMware にテンプレートをインポートする
 
-1. VMWare vSphere Client を使用して、VMware vCenter サーバーまたは vSphere ESXi ホストにログオンします。
-2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選択して、Deploy OVF Template (OVF テンプレートのデプロイ) ウィザードを起動します。  
+1. VMWare vSphere Client を使って、VMware vCenter サーバーまたは vSphere ESXi ホストにログオンします。
+2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選び、Deploy OVF Template (OVF テンプレートのデプロイ) ウィザードを起動します。  
 
      ![OVF テンプレート](./media/tutorial-vmware-to-azure/vcenter-wizard.png)
 
 3. **[Select source]\(ソースの選択\)** で、ダウンロードした OVF の場所を指定します。
 4. **[Review details]\(詳細の確認\)** で、**[Next]\(次へ\)** をクリックします。
 5. **[Select name and folder]\(名前とフォルダーの選択\)** および **[Select configuration]\(構成の選択\)** は、既定の設定のままにします。
-6. **[Select storage]\(ストレージの選択\)** で、パフォーマンスを最大にするために、**[Select virtual disk format]\(仮想ディスクの形式の選択\)** の **[Thick Provision Eager Zeroed]\(シック プロビジョニング Eager Zeroed\)** を選択します。
-4. ウィザードの残りのページでは、既定の設定をそのまま使用します。
+6. **[Select storage]\(ストレージの選択\)** で、パフォーマンスを最大にするために、**[Select virtual disk format]\(仮想ディスクの形式の選択\)** の **[Thick Provision Eager Zeroed]\(シック プロビジョニング Eager Zeroed\)** を選びます。
+4. ウィザードの残りのページでは、既定の設定をそのまま使います。
 5. **[Ready to complete]\(完了の準備\)** で、次の操作を行います。
-  - 既定の設定で VM をセットアップするには、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** > **[Finish]\(完了\)** の順に選択します。
-  - 追加のネットワーク インターフェイスを追加する場合は、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** をオフにし、**[Finish]\(完了\)** を選択します。 既定では構成サーバー テンプレートが 1 つの NIC でデプロイされますが、デプロイ後にさらに NIC を追加することができます。
+  - 既定の設定で VM をセットアップするには、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** > **[Finish]\(完了\)** の順に選びます。
+  - 追加のネットワーク インターフェイスを追加する場合は、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** をオフにし、**[Finish]\(完了\)** を選びます。 既定では構成サーバー テンプレートが 1 つの NIC でデプロイされますが、デプロイ後にさらに NIC を追加することができます。
 
   
 ## <a name="add-an-additional-adapter"></a>さらにアダプターを追加する
 
 構成サーバーにさらに NIC を追加する場合は、サーバーをコンテナーに登録する前に追加します。 登録後のアダプターの追加はサポートされていません。
 
-1. vSphere Client インベントリで VM を右クリックし、**[Edit Settings]\(設定の編集\)** を選択します。
+1. vSphere Client インベントリで VM を右クリックし、**[Edit Settings]\(設定の編集\)** を選びます。
 2. **[Hardware]\(ハードウェア\)** で、**[Add]\(追加\)** > **[Ethernet Adapter]\(イーサネット アダプター\)** の順にクリックします。 その後、 **[次へ]**をクリックします。
-3. アダプターの種類およびネットワークを選択します。 
+3. アダプターの種類およびネットワークを選びます。 
 4. VM がオンになったときに仮想 NIC を接続するには、**[Connect at power on]\(電源をオンにしたときに接続する\)** をオンにします。 **[Next]\(次へ\)** > **[Finish]\(完了\)** 順にクリックし、**[OK]** をクリックします。
 
 
@@ -94,21 +94,21 @@ ms.lasthandoff: 01/17/2018
 2. VM が Windows Server 2016 のインストール エクスペリエンスで起動します。 使用許諾契約書に同意し、管理者パスワードを指定します。
 3. インストールの完了後に、管理者として VM にログオンします。
 4. 初めてログオンすると、Azure Site Recovery 構成ツールが起動されます。
-5. 構成サーバーを Site Recovery に登録するために使用する名前を指定します。 その後、 **[次へ]**をクリックします。
+5. 構成サーバーを Site Recovery に登録するために使う名前を指定します。 その後、 **[次へ]**をクリックします。
 6. このツールは、VM が Azure に接続できることを確認します。 接続が確立された後、**[サインイン]** をクリックして、自分の Azure サブスクリプションにログインします。 この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。
 7. ツールがいくつかの構成タスクを実行した後、再起動されます。
 8. マシンにもう一度ログオンします。 構成サーバーの管理ウィザードが自動的に起動されます。
 
 ### <a name="configure-settings-and-connect-to-vmware"></a>設定を構成し、VMware に接続する
 
-1. 構成サーバーの管理ウィザードで **[接続の設定]** を選択し、レプリケーション トラフィックを受信する NIC を選択します。 その後、 **[保存]**をクリックします。 構成後、この設定を変更することはできません。
-2. **[Recovery Services コンテナーを選択する]** で、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選択します。
+1. 構成サーバーの管理ウィザードで **[接続の設定]** を選び、レプリケーション トラフィックを受信する NIC を選びます。 その後、 **[保存]**をクリックします。 構成後、この設定を変更することはできません。
+2. **[Recovery Services コンテナーを選択する]** で、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
 3. **[サードパーティ製ソフトウェアのインストール]** で使用許諾契約書に同意し、**[ダウンロードしてインストール]** をクリックして MySQL Server をインストールします。
-4. **[Install VMware PowerLCI]\(VMware PowerLCI のインストール\)** をクリックします。 この操作を行う前に、すべてのブラウザー ウィンドウを閉じてください。 次に、**[続行]** をクリックします。
+4. **[VMware PowerLCI のインストール]** をクリックします。 この操作を行う前に、すべてのブラウザー ウィンドウを閉じてください。 次に、**[続行]** をクリックします
 5. **[アプライアンス構成の検証]** で、続行する前に前提条件が検証されます。
-6. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを指定します。 サーバーがリッスンしているポートと、コンテナーで VMware サーバーのために使用するフレンドリ名を指定します。
-7. VMware サーバーに接続するために構成サーバーによって使用される資格情報を指定します。 Site Recovery はこれらの資格情報を使用して、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順にクリックします。
-8. **[仮想マシンの資格情報の構成]** で、レプリケーションが有効になったときにモビリティ サービスをマシンに自動的にインストールするために使用されるユーザー名とパスワードを指定します。 Windows マシンの場合、このアカウントは、レプリケートするマシンに対するローカル管理者特権を持っている必要があります。 Linux の場合は、ルート アカウントの詳細を指定します。
+6. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを指定します。 サーバーがリッスンしているポートと、コンテナーで VMware サーバーのために使うフレンドリ名を指定します。
+7. VMware サーバーに接続するために構成サーバーによって使われる資格情報を指定します。 Site Recovery はこれらの資格情報を使って、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順にクリックします。
+8. **[仮想マシンの資格情報の構成]** で、レプリケーションが有効になったときにモビリティ サービスをマシンに自動的にインストールするために使われるユーザー名とパスワードを指定します。 Windows マシンの場合、このアカウントは、レプリケートするマシンに対するローカル管理者特権を持っている必要があります。 Linux の場合は、ルート アカウントの詳細を指定します。
 9. **[構成の確定]** をクリックして、登録を完了します。 
 10. 登録が完了したら、Azure Portal で、構成サーバーおよび VMware サーバーがコンテナーの **[ソース]** ページの一覧に表示されていることを確認します。 その後、**[OK]** をクリックして、ターゲットの設定を構成します。
 

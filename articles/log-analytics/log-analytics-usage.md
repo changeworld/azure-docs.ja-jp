@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/01/2018
+ms.date: 02/13/2018
 ms.author: magoedte
-ms.openlocfilehash: d873fe37ba2c4e851df35b9d5afe69b4adbf001c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9125f3db8929a41f49ff3ae53de9f3a71f5bf051
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 Log Analytics には、収集されたデータの量、データを送信したシステム、送信されたさまざまな種類のデータに関する情報が含まれます。  **[ログ分析の利用状況]** ダッシュボードを使用すると、Log Analytics サービスに送信されたデータの量を確認できます。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。
@@ -36,7 +36,9 @@ Log Analytics には、収集されたデータの量、データを送信した
 - プラン
     - Insight と Analytics のノード
     - Automation と Control のノード
-    - セキュリティ ノード
+    - セキュリティ ノード  
+- [パフォーマンス]
+    - データの収集とインデックス作成に要した時間  
 - クエリのリスト
 
 ![[使用量] ダッシュボード](./media/log-analytics-usage/usage-dashboard01.png)
@@ -151,19 +153,6 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 
 [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。
 
-## <a name="check-if-there-is-ingestion-latency"></a>インジェストの待ち時間が生じているかどうかの確認
-Log Analytics では、収集されたデータのインジェストに待ち時間が生じる可能性があります。  データのインデックスが作成されてから、そのデータを検索で使用できるようになるまでの絶対時間は予測できません。 従来、Microsoft ではデータの収集とインデックス作成にかかった時間を示すパフォーマンス グラフをダッシュボードに設けていましたが、新しいクエリ言語の導入にあたって、このグラフを一時的に削除しました。  データ インジェストの待ち時間に関する最新のメトリックがリリースされるまでは、暫定的に次のクエリを使用して、データの種類ごとに待ち時間を見積もることができます。  
-
-    search *
-    | where TimeGenerated > ago(8h)
-    | summarize max(TimeGenerated) by Type
-    | extend LatencyInMinutes = round((now() - max_TimeGenerated)/1m,2)
-    | project Type, LatencyInMinutes
-    | sort by LatencyInMinutes desc
-
-> [!NOTE]
-> インジェストの待ち時間を求めるためのクエリは、待ち時間の履歴を示すものではありません。クエリから返されるのは、その時点での結果だけです。  *TimeGenerated* の値は、共通スキーマ ログのエージェントで設定されるほか、カスタム ログの収集エンドポイントで設定されます。  
->
 
 ## <a name="next-steps"></a>次の手順
 * 検索言語の使用方法については、[Log Analytics のログ検索](log-analytics-log-searches.md)に関する記事を参照してください。 検索クエリを使用して、使用量データをさらに分析できます。

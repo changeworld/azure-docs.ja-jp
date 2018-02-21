@@ -43,6 +43,7 @@
 ## プールの作成と管理
 ### [自動スケール コンピューティング ノード](batch-automatic-scaling.md)
 ### [コンピューティング集中型 VM](batch-pool-compute-intensive-sizes.md)
+### [コンピューティング ノードへのアクセスの構成](pool-endpoint-configuration.md)
 ### [カスタム イメージを使用してプールを作成する](batch-custom-images.md)
 ### [仮想ネットワーク内にプールを作成する](batch-virtual-network.md)
 ### [Linux コンピューティング ノード](batch-linux-nodes.md)

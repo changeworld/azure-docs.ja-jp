@@ -67,8 +67,10 @@
           href: kubernetes-helm.md
         - name: Draft を使用したアプリケーションの開発
           href: kubernetes-draft.md
-        - name: OSBA を使用した Azure との統合
+        - name: Open Service Broker for Azure
           href: integrate-azure.md
+        - name: Jenkins の継続的なデプロイ
+          href: jenkins-continuous-deployment.md
     - name: Kubernetes の基本
       items:
         - name: Kubernetes ダッシュボードの使用

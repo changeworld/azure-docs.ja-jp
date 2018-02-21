@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 9f1cf113f75bc5a96af8c33d4b83d1bd0f5c6efd
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: da29ecaaa0f694be3e96baebfd80c09069d7c4a8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
@@ -46,9 +46,9 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
 3. **[ネットワーク インターフェイス]** ブレードが表示されたら、**[+ 追加]** をクリックします。
 4. 表示される **[ネットワーク インターフェイスの作成]** ブレードで以下の設定の値を入力するか選択し、**[作成]** をクリックします。
 
-    |設定|必須|詳細|
+    |Setting|必須|詳細|
     |---|---|---|
-    |名前|[はい]|選択したリソース グループ内で一意となる名前を使用してください。 長い期間の間には、Azure サブスクリプションに複数のネットワーク インターフェイスを作成する可能性があります。 複数のネットワーク インターフェイスを管理しやすいように、名前付け規則を作成する際は、[名前付け規則](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)に関する記事に記載された推奨事項をご覧ください。 名前は、ネットワーク インターフェイスの作成後に変更することはできません。|
+    |Name|[はい]|選択したリソース グループ内で一意となる名前を使用してください。 長い期間の間には、Azure サブスクリプションに複数のネットワーク インターフェイスを作成する可能性があります。 複数のネットワーク インターフェイスを管理しやすいように、名前付け規則を作成する際は、[名前付け規則](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)に関する記事に記載された推奨事項をご覧ください。 名前は、ネットワーク インターフェイスの作成後に変更することはできません。|
     |Virtual Network|[はい]|ネットワーク インターフェイスの仮想ネットワークを選択します。 ネットワーク インターフェイスの割り当てが可能なのは、そのネットワーク インターフェイスと同じサブスクリプションおよび場所に存在する仮想ネットワークのみです。 いったんネットワーク インターフェイスが作成されると、それが割り当てられた仮想ネットワークを変更することはできません。 ネットワーク インターフェイスを追加する仮想マシンも、そのネットワーク インターフェイスと同じ場所およびサブスクリプション内に存在する必要があります。|
     |サブネット|[はい]|選択した仮想ネットワーク内のサブネットを選択します。 ネットワーク インターフェイスの割り当て先のサブネットは、作成後に変更できます。|
     |プライベート IP アドレスの割り当て|[はい]| この設定では、IPv4 アドレスの割り当て方法を選択します。 次の割り当て方法から選択します。**動的:** このオプションを選択すると、選択したサブネットのアドレス空間から使用可能な次のアドレスが自動的に割り当てられます。 **静的:** このオプションを選択した場合は、選択したサブネットのアドレス空間内から使用可能な IP アドレスを手動で割り当てる必要があります。 静的および動的アドレスは、ユーザーが変更するか、ネットワーク インターフェイスが削除されるまで変化しません。 ネットワーク インターフェイスの作成後に、割り当て方法を変更することができます。 このアドレスは Azure DHCP サーバーによって、仮想マシンのオペレーティング システム内のネットワーク インターフェイスに割り当てられます。|
@@ -68,7 +68,7 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
+|CLI|[az network nic create](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_create)|
 |PowerShell|[New-AzureRmNetworkInterface](/powershell/module/azurerm.network/new-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
 
 ## <a name="view-network-interface-settings"></a>ネットワーク インターフェイス設定の表示
@@ -94,7 +94,7 @@ IPv6 アドレスがネットワーク インターフェイスに割り当て�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list) ではサブスクリプションのネットワーク インターフェイスを表示します。[az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show) ではネットワーク インターフェイスの設定を表示します。|
+|CLI|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_list) ではサブスクリプションのネットワーク インターフェイスを表示します。[az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_show) ではネットワーク インターフェイスの設定を表示します。|
 |PowerShell|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) では、サブスクリプションのネットワーク インターフェイスまたはネットワーク インターフェイスの設定を表示します。|
 
 ## <a name="change-dns-servers"></a>DNS サーバーの変更
@@ -114,7 +114,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|CLI|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_update)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>IP 転送の有効化と無効化
@@ -136,7 +136,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|CLI|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_update)|
 |PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-subnet-assignment"></a>サブネットの割り当ての変更
@@ -157,7 +157,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
+|CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_ip_config_update)|
 |PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 
@@ -176,7 +176,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 
 |ツール|コマンド|
 |---|---|
-|CLI|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
+|CLI|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_nic_delete)|
 |PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="next-steps"></a>次の手順

@@ -11,11 +11,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 53d182d84c8f28c7b4055780a5b41df00fdc8583
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c3ad1cf8651858a2cb1fdadc2beed4e5c7bef56c
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用した画像分類
 
@@ -193,7 +193,7 @@ DNN は、画像分類だけでなく、オブジェクト検出や画像の類�
 ### <a name="step-6-deployment"></a>手順 6: デプロイ
 `Scripts: 6_callWebservice.py, deploymain.py. Notebook: deploy.ipynb`
 
-これで、トレーニング済みシステムを REST API として公開できます。 デプロイはノートブック `deploy.ipynb` で説明されており、Azure Machine Learning Workbench 内の機能に基づいています (必ず、"PROJECTNAME local" という名前のローカル プロジェクト カーネルをカーネルとして設定してください)。 デプロイの詳細については、[IRIS チュートリアル](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-3)の優れたデプロイに関するセクションも参照してください。
+これで、トレーニング済みシステムを REST API として公開できます。 デプロイはノートブック `deploy.ipynb` で説明されており、Azure Machine Learning Workbench 内の機能に基づいています (必ず、"PROJECTNAME local" という名前のローカル プロジェクト カーネルをカーネルとして設定してください)。 デプロイの詳細については、[IRIS チュートリアル](tutorial-classifying-iris-part-3.md)の優れたデプロイに関するセクションも参照してください。
 
 デプロイすると、スクリプト `6_callWebservice.py` を使用して、Web サービスを呼び出すことができます。 Web サービスの IP アドレス (ローカルまたはクラウド上のいずれか) をスクリプトの最初に設定する必要があります。 ノートブック `deploy.ipynb` にこの IP アドレスを見つける方法を説明しています。
 
@@ -228,7 +228,7 @@ SVM の代わりのニューラル ネットワークのトレーニングは、
 
 ### <a name="run-history-tracking"></a>実行履歴の追跡
 
-Azure Machine Learning Workbench は、Azure での実行ごとの履歴を保存しているため、数週間離れている複数の実行でも比較できます。 これについては、[Iris チュートリアル](https://docs.microsoft.com/azure/machine-learning/preview/tutorial-classifying-iris-part-2)で詳しく説明しています。 これについては、次のスクリーン ショットにも示しています。ここでは DNN の調整を使用した実行、つまり `classifier = "dnn"` (実行番号 148) と SVM トレーニングを使用した実行、つまり `classifier = "svm"` (実行番号 150) の 2 つの `5_evaluate.py` スクリプトの実行を比較しています。
+Azure Machine Learning Workbench は、Azure での実行ごとの履歴を保存しているため、数週間離れている複数の実行でも比較できます。 これについては、[Iris チュートリアル](tutorial-classifying-iris-part-2.md)で詳しく説明しています。 これについては、次のスクリーン ショットにも示しています。ここでは DNN の調整を使用した実行、つまり `classifier = "dnn"` (実行番号 148) と SVM トレーニングを使用した実行、つまり `classifier = "svm"` (実行番号 150) の 2 つの `5_evaluate.py` スクリプトの実行を比較しています。
 
 最初のスクリーンショットで、DNN の調整により、すべてのクラスの SVM トレーニングよりも精度が向上しています。 2 番目のスクリーン ショットでは、分類器が何かなど、追跡対象のすべてのメトリックを示しています。 この追跡は、スクリプト `5_evaluate.py` で Azure Machine Learning Workbench ロガーを呼び出すことによって行われます。 さらに、スクリプトは、ROC 曲線と混同行列を *outputs* フォルダーに保存します。 この *outputs* フォルダーは、その内容も、Workbench 履歴機能によって追跡される点で特別であり、そのためにローカル コピーが上書きされているかどうかに関係なく、出力ファイルにいつでもアクセスできます。
 

@@ -117,12 +117,11 @@
 ### [ワークロードの分析](analyze-your-workload.md)
 
 ## スケールアウト
-### [コンピューティングの管理 - REST API](sql-data-warehouse-manage-compute-rest-api.md)
+
 ### [コンピューティング レベルの自動化](manage-compute-with-azure-functions.md)
 
 
 # リファレンス
-
 
 ## T-SQL
 ### [完全なリファレンス](https://docs.microsoft.com/sql/t-sql/language-reference/)
@@ -130,6 +129,7 @@
 ### [SQL DW ステートメント](sql-data-warehouse-reference-tsql-statements.md)
 ## [システム ビュー](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell コマンドレット](sql-data-warehouse-reference-powershell-cmdlets.md)
+## [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)

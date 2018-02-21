@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 12/13/2017
 ms.author: barbkess
-ms.openlocfilehash: 80974f7660696887783e97b674e2d9921fe2feac
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 277766c22e25945fb314aa51017a72f415cbab46
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="best-practices-for-loading-data-into-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse へのデータ読み込みのベスト プラクティス
 Azure SQL Data Warehouse へのデータの読み込みに関する推奨事項とパフォーマンスの最適化。 
@@ -120,15 +120,19 @@ create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 
 Azure Storage のアカウント キーを切り替えるには:
 
-1. セカンダリ ストレージ アクセス キーに基づいたセカンダリ データベース スコープの資格情報を作成します。
-2. この新しい資格情報に基づいて 2 つ目の外部データ ソースを作成します。
-3. 新しい外部データ ソースを参照するように、外部テーブルを削除して、作成します。 
+キーが変更されているストレージ アカウントごとに、[ALTER DATABASE SCOPED CREDENTIAL](/sql/t-sql/statements/alter-database-scoped-credential-transact-sql.md) を発行します。
 
-外部テーブルを新しいデータ ソースに移行したら、以下のクリーンアップ作業を実行します。
+例:
 
-1. 1 つ目の外部データ ソースを削除します。
-2. プライマリ ストレージ アクセス キーに基づいた 1 つ目のデータベース スコープ資格情報を削除します。
-3. Azure にログインし、次回の切り替えに備えてプライマリ アクセス キーを再生成します。
+元のキーを作成します。
+
+CREATE DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key1' 
+
+key 1 から key 2 にキーを交換します。
+
+ALTER DATABASE SCOPED CREDENTIAL my_credential WITH IDENTITY = 'my_identity', SECRET = 'key2' 
+
+基となる外部データ ソースに対するこの他の変更は不要です。
 
 
 ## <a name="next-steps"></a>次の手順

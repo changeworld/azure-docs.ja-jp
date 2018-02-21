@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 01/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: deb2572de363ca5d0dec0f78f2e30ad648e9b5f8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: ff9a396f09b675e798e2b2a04fdf0fdb0cdaa09d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="check-traffic-with-a-scheduler-based-logic-app"></a>スケジュールに基づいたロジック アプリでトラフィックをチェックする
 
@@ -61,11 +61,11 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![ロジック アプリに関する情報の入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-logic-app-settings.png)
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **名前** | LA-TravelTime | ロジック アプリの名前 | 
-   | **サブスクリプション** | <*your-Azure-subscription-name*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | LA-TravelTime-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめる目的で使われます。 | 
+   | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
+   | **[リソース グループ]** | LA-TravelTime-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
    | **場所** | 米国東部 2 | ロジック アプリに関する情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
@@ -92,7 +92,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![スケジュールと定期実行の詳細を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/schedule-recurrence-trigger-settings.png)
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **間隔** | 1 | チェックの間隔 (単位数) | 
    | **頻度** | 週 | 定期実行の時間の単位 | 
@@ -127,7 +127,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションを選択](./media/tutorial-build-scheduled-recurring-logic-app-workflow/create-maps-connection.png)
 
-   | 設定 | 値 | [説明] |
+   | Setting | 値 | [説明] |
    | ------- | ----- | ----------- |
    | **Connection Name** | BingMapsConnection | 接続の名前を指定します。 | 
    | **API キー** | <*your-Bing-Maps-key*> | あらかじめ取得しておいた Bing 地図のキーを入力します。 Bing 地図のキーを所有していない場合は、<a href="https://msdn.microsoft.com/library/ff428642.aspx" target="_blank">キーの取得方法</a>に関するページを参照してください。 | 
@@ -139,7 +139,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![[Bing Maps - Get route]\(Bing 地図 - ルートを取得する\) アクションの情報を入力](./media/tutorial-build-scheduled-recurring-logic-app-workflow/get-route-action-settings.png) 
 
-   | 設定 | 値 | [説明] |
+   | Setting | 値 | [説明] |
    | ------- | ----- | ----------- |
    | **通過地点 1** | <*start-location*> | ルートの起点 | 
    | **通過地点 2** | <*end-location*> | ルートの目的地 | 
@@ -148,7 +148,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    | **距離単位** | <*your-preference*> | ルートの距離の単位。 この記事では、単位として "マイル" を使います。  | 
    | **Travel mode (移動手段)** | Driving (車) | ルートの移動手段。 [Driving]\(車\) を選択します。 | 
    | **Transit Date-Time (交通機関の日時)** | なし | 移動手段が交通機関の場合のみ | 
-   | **Transit Date-Type Type (交通機関の日時の種類)** | なし | 移動手段が交通機関の場合のみ | 
+   | **Date-Time Type (日時の種類)** | なし | 移動手段が交通機関の場合のみ | 
    |||| 
 
    これらのパラメーターの詳細については、「[Calculate a route (ルートの計算)](https://msdn.microsoft.com/library/ff701717.aspx)」を参照してください。
@@ -173,7 +173,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 4. 変数の詳細を次のように入力します。
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **名前** | travelTime | 変数の名前 | 
    | **種類** | 整数 | 変数のデータ型 | 

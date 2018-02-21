@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jdial
-ms.openlocfilehash: 55aece3f20ee98d21d7bb2b96cb3d039d4849f8f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 892aa03bd058b50fc4868a225dfe602624ff19ef
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-virtual-network"></a>Azure Virtual Network
 
@@ -44,7 +44,7 @@ Microsoft Azure Virtual Network サービスでは、Azure リソースを利用
 - Azure で提供される名前解決を使用するか、仮想ネットワーク内のリソースで使用する独自の DNS サーバーを指定する。 仮想ネットワークでの名前解決について詳しくは、[仮想ネットワーク内のリソースの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事をご覧ください。
 
 ## <a name = "internet"></a>インターネット通信
-仮想ネットワーク内のすべてのリソースでは、インターネットへ送信するための通信が可能です。 既定では、リソースのプライベート IP アドレスは、Azure インフラストラクチャによって選択されたパブリック IP アドレスへの送信元ネットワーク アドレス変換 (SNAT) が行われています。 インターネットへの送信接続の詳細については、「[Azure の送信用接続の詳細](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json#standalone-vm-with-no-instance-level-public-ip-address)」を参照してください。 インターネットへの送信接続を回避するために、カスタム ルートまたはトラフィック フィルターを実装できます。
+仮想ネットワーク内のすべてのリソースでは、インターネットへ送信するための通信が可能です。 既定では、リソースのプライベート IP アドレスは、Azure インフラストラクチャによって選択されたパブリック IP アドレスへの送信元ネットワーク アドレス変換 (SNAT) が行われています。 インターネットへの送信接続の詳細については、「[Azure の送信用接続の詳細](..\load-balancer\load-balancer-outbound-connections.md)」を参照してください。 インターネットへの送信接続を回避するために、カスタム ルートまたはトラフィック フィルターを実装できます。
 
 インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスの詳細については、「[パブリック IP アドレス](virtual-network-public-ip-address.md)」を参照してください。
 

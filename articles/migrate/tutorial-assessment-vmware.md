@@ -6,11 +6,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: a5019d3f729f2efbd01fca021b0089c7f99b0014
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.custom: mvc
+ms.openlocfilehash: bbcfe95f5427681f8d55d647b102d35fc37f15ee
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -44,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="create-a-project"></a>プロジェクトの作成
 
 1. Azure Portal で、**[リソースの作成]** をクリックします。
-2. 「**Azure Migrate**」を検索し、検索結果で **Azure Migrate (プレビュー)** サービスを選択します。 **[Create]**をクリックします。
+2. 「**Azure Migrate**」を検索し、検索結果でサービス **Azure Migrate (プレビュー)** を選択します。 **[Create]**をクリックします。
 3. プロジェクト名およびプロジェクトの Azure サブスクリプションを指定します。
 4. 新しいリソース グループを作成します。
 5. プロジェクトを作成する場所を指定して、**[作成]** をクリックします。 このプレビューで Azure Migrate プロジェクトを作成できるのは、米国中西部リージョンだけです。 ただし、対象となる任意の Azure の場所について移行を計画することもできます。 プロジェクト用に指定された場所は、オンプレミスの VM から収集されたメタデータを格納するためにのみ使用します。 
@@ -76,15 +77,15 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     OVA バージョン 1.0.8.49 の場合
     **アルゴリズム** | **ハッシュ値**
     --- | ---
-    MD5 | 8779eea842a1ac465942295c988ac0c7 
-    SHA1 | c136c52a0f785e1fd98865e16479dd103704887d
-    SHA256 | 5143b1144836f01dd4eaf84ff94bc1d2c53f51ad04b1ca43ade0d14a527ac3f9
+    MD5 | cefd96394198b92870d650c975dbf3b8 
+    SHA1 | 4367a1801cf79104b8cd801e4d17b70596481d6f
+    SHA256 | fda59f076f1d7bd3ebf53c53d1691cc140c7ed54261d0dc4ed0b14d7efef0ed9
 
     OVA バージョン 1.0.8.40 の場合:
 
     **アルゴリズム** | **ハッシュ値**
     --- | ---
-    MD5 |afbae5a2e7142829659c21fd8a9def3f
+    MD5 | afbae5a2e7142829659c21fd8a9def3f
     SHA1 | 1751849c1d709cdaef0b02a7350834a754b0e71d
     SHA256 | d093a940aebf6afdc6f616626049e97b1f9f70742a094511277c5f59eacc41ad
 
@@ -120,7 +121,7 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     - コレクター サービスが実行されていることをコレクターがチェックします。 このサービスは、既定でコレクター VM にインストールされています。
     - VMware PowerCLI をダウンロードしてインストールします。
 
-5. **[Specify vCenter Server details]\(vCenter Server の詳細の指定\)** で、次の操作を行います。
+5. **[Specify vCenter Server details]\(vCenter Server 詳細の指定\)** で、次の操作を行います。
     - vCenter サーバーの名前 (FQDN) または IP アドレスを指定します。
     - **[ユーザー名]** と **[パスワード]** で、コレクターが vCenter サーバーの VM を検出するために使用する読み取り専用の資格情報を指定します。
     - **[コレクション スコープ]** で、VM 検出のスコープを選択します。 コレクターは、指定されたスコープ内の VM のみを検出できます。 スコープは、指定のフォルダー、データセンター、またはクラスターに設定できます。 VM の数は 1000 台を超えないようにします。 

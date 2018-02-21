@@ -5,18 +5,18 @@ services: location-based-services
 keywords: 
 author: dsk-2015
 ms.author: dkshir
-ms.date: 11/28/2017
+ms.date: 02/05/2017
 ms.topic: overview
 ms.service: location-based-services
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 6871f174eb9bae57d9b4767520d0fb2d8d9631d3
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 9e6236f7d69556d7636962c98886d9f9508445ac
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="an-introduction-to-azure-location-based-services-preview"></a>Azure Location Based Services (プレビュー) の概要
 Azure Location Based Services は、Maps、Search、Routing、Traffic、Time Zones のサービス API を含む地理空間サービスのポートフォリオです。 Azure OneAPI に準拠するサービスのポートフォリオにより、使い慣れた開発者ツールを使って、Azure ソリューションに場所情報を統合するソリューションを迅速に開発および拡張できます。 Azure Location Based Services では、あらゆる業界の開発者に対して、Web アプリケーションやモバイル アプリケーションに地理的コンテキストを提供するのに不可欠で、最新のマッピング データが搭載された、強力な地理空間機能を提供します。 Azure Location Based Services は Azure One API に準拠した一連の REST API であり、開発を非常に簡単かつ柔軟で、複数のメディア間で移植可能にする Web ベースの JavaScript コントロールが伴います。 
@@ -65,11 +65,12 @@ Azure Location Based Services は、モビリティ向けに構築されてお�
 
 Azure Location Based Services は、キー ベースの認証スキームを使っているので、[Azure Portal](http://portal.azure.com) に移動して Azure Location Based Services アカウントを作成すればサービスにアクセスできます。 アカウントでは 2 つのキーがあらかじめ自動的に生成されます。 アプリケーションへのこれらの場所機能の直接統合を始めるには、Azure Location Based Services サービスへの要求でどちらかのキーを使います。
 
-**Bing Maps との関係** - このドキュメントで説明する Azure Location Based Services は、Bing Maps で提供されるものとは異なることに注意してください。  これらは多くの同じ機能を共有しますが、この 2 つのサービスは異なるものであり、関係していません。  Azure 内のこの新しいサービスの可用性で Bing Maps の製品やロードマップへの影響はなく、別個に管理されます。
+## <a name="relationship-with-bing-maps"></a>Bing 地図との関係
+このドキュメントで説明する Azure Location Based Services は、Bing 地図で提供されるものとは異なることに注意してください。  これらは多くの同じ機能を共有しますが、この 2 つのサービスは異なるものであり、関係していません。  Azure 内のこの新しいサービスの可用性で Bing Maps の製品やロードマップへの影響はなく、別個に管理されます。
 
 Microsoft の目標は、位置情報サービスの観点から開発者コミュニティに選択肢を提供することです。  次に、さまざまなユース ケースと顧客の状況に対して使用すべきサービスについての、開発者向けのクイック ガイドです。  このガイドは、現時点ではパブリック プレビュー段階である Azure LBS に適用され、2018 年の後半に一般公開に達した後に更新されることに注意してください。
 
-| 顧客の条件 | Azure Location Based Services を使用するタイミング | Bing Maps を使用するタイミング |
+| 顧客の条件 | Azure Location Based Services を使用するタイミング | Bing 地図を使用するタイミング |
 | ------------- | ------------- | ------------- |
 | 開発環境 | 他の Azure サービスへの組み込みまたは利用 | サード パーティのクラウドまたはその他の開発環境の使用 |
 | 開発段階  | Azure LBS は現在のところパブリック プレビュー段階のため、初期段階のテストと概念実証開発に最適化されています | 運用環境にはエンタープライズ グレード SLA が必要です |
