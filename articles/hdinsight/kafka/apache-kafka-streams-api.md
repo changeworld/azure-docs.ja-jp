@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: larryfr
-ms.openlocfilehash: 1ea20eceb28fead003c7279632b1e75ae1fd3553
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: be6ed6d4c0c3a5fa55166b84b128881d434c4ab2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="apache-kafka-streams-api"></a>Apache Kafka Streams API
 
@@ -100,6 +100,12 @@ Apache Kafka を操作している場合、ストリーム処理は多くの場�
     * `test` トピックに書き込むプロデューサーを起動します。
     * `wordcounts` トピックに書き込まれた出力を表示できるように、コンシューマーを起動します
 
+    > [!NOTE]
+    > Kafka ブローカーの構成ファイルで `auto.create.topics.enable` プロパティが `true` に設定されていることを確認してください。 詳細な Kafka ブローカーの構成ファイルでこのプロパティを表示し、変更するには、Ambari Web UI を使用します。 それ以外の場合は、次のコマンドを使用してこのサンプルを実行する前に中間トピック `RekeyedIntermediateTopic` を作成する必要があります。
+    ```bash
+    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic RekeyedIntermediateTopic  --zookeeper $KAFKAZKHOSTS
+    ```
+    
     これらの操作は、3 つの SSH セッションを開いて実現できました。 ただし、次に各 SSH セッションでこのセクションの手順 4 を実行して、それぞれに `$KAFKABROKERS` と `$KAFKAZKHOSTS` を設定する必要があります。 より簡単なソリューションは、`tmux` ユーティリティを使用することです。これは、現在の SSH 表示を複数のセクションに分割できます。 `tmux` を使用してストリーム、プロデューサー、およびコンシューマーを起動するには、次のコマンドを使用します。
 
     ```bash

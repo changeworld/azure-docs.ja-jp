@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: c76ba2189929113c2c6fbdf13f0c9b2b714ae73b
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c25a66daa87da96d4e77c9021a1ceb4366d7a224
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="umbraco-uses-azure-sql-database-to-quickly-provision-and-scale-services-for-thousands-of-tenants-in-the-cloud"></a>Umbraco、Azure SQL Database を使用して、クラウド上の数千のテナント向けに迅速にサービスをプロビジョニングおよびスケール
 ![Umbraco ロゴ](./media/sql-database-implementation-umbraco/umbracologo.png)
@@ -124,7 +124,6 @@ Mikkel Madsen 氏は次のように締めくくっています。「私たちは
 ## <a name="more-information"></a>詳細情報
 * Azure エラスティック プールの詳細については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 * Azure Service Bus の詳細については、「 [Azure Service Bus](https://azure.microsoft.com/services/service-bus/)」をご覧ください。
-* Web ロールと worker ロールの詳細については、 [worker ロール](../fundamentals-introduction-to-azure.md#compute)に関する記事をご覧ください。    
 * 仮想ネットワークの詳細については、 [仮想ネットワーク](https://azure.microsoft.com/documentation/services/virtual-network/)に関する記事を参照してください。    
 * バックアップと復旧の詳細については、 [ビジネス継続性](sql-database-business-continuity.md)に関する記事を参照してください。    
 * プールの監視の詳細については、 [プールの監視](sql-database-elastic-pool-manage-portal.md)に関する記事を参照してください。    

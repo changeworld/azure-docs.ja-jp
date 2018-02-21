@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 34f14f42150e46edae2d1352827f96a411117a62
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 479e486dca432020d5fcbaf98971a9803888bf98
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -100,7 +100,7 @@ EventFlow を使用してイベントを集計する場合は、必ず `Microsof
 
 一般的に EventFlow と WAD は集計ソリューションとして使用することをお勧めします。これは診断と監視を行うモジュール性の高いアプローチが可能になるためです。つまり、EventFlow からの出力を変更する場合、実際のインストルメンテーションを変更する必要はなく、構成ファイルを簡単に変更するだけで済みます。 ただし、Application Insights に投資することとし、別のプラットフォームに変更する可能性が低い場合、AI の新しい SDK を使用してイベントを集計し、AI に送信することを検討した方がよいでしょう。 つまり、データを AI に送信するように EventFlow を設定する必要はなくなり、代わりに ApplicationInsight の Service Fabric NuGet パッケージをインストールすることになります。 パッケージの詳細は、[こちら](https://github.com/Microsoft/ApplicationInsights-ServiceFabric)をご覧ください。
 
-[Application Insights のマイクロサービスとコンテナーのサポート](https://azure.microsoft.com/app-insights-microservices/)により、開発中の新機能 (現在はまだベータ版) が表示され、AI を使用した、より豊かで、細かい設定が不要なモニタリング オプションを利用できます。 これには、依存関係の追跡 (クラスター内すべてのサービスやアプリケーションおよびそれらの間の通信の AppMap 構築に使用されます)、サービスからのトレースの関連付けの向上 (アプリやサービスのワークフローの問題点を特定するのに役立ちます) が含まれます。
+[Application Insights のマイクロサービスとコンテナーのサポート](https://azure.microsoft.com/en-us/blog/app-insights-microservices/)により、開発中の新機能 (現在はまだベータ版) が表示され、AI を使用した、より豊かで、細かい設定が不要なモニタリング オプションを利用できます。 これには、依存関係の追跡 (クラスター内すべてのサービスやアプリケーションおよびそれらの間の通信の AppMap 構築に使用されます)、サービスからのトレースの関連付けの向上 (アプリやサービスのワークフローの問題点を特定するのに役立ちます) が含まれます。
 
 .NET で開発中で、Service Fabric のプログラミング モデルの一部を使用する可能性があり、イベントとログ データを視覚化して分析するためのプラットフォームとして AI を使用する場合は、AI SDK ルートをたどる監視および診断ワークフローを作成することをお勧めします。 AI を使用したログの収集と表示を開始するには、[こちら](../application-insights/app-insights-asp-net-more.md)と[こちら](../application-insights/app-insights-asp-net-trace-logs.md)をご覧ください。
 
@@ -112,7 +112,7 @@ EventFlow を使用してイベントを集計する場合は、必ず `Microsof
 
 **[Analytics]** をクリックすると、Application Insights Analytics ポータルに移動します。このポータルでは、より多くのオプションを使用し、より広い範囲でイベントとトレースを照会できます。 この詳細については、「[Application Insights の Analytics](../application-insights/app-insights-analytics.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [AI のアラートを設定して](../application-insights/app-insights-alerts.md)、パフォーマンスまたは使用状況の変化について通知を受けます
 * [Application Insights のスマート検出](../application-insights/app-insights-proactive-diagnostics.md)は、 AI に送信されるテレメトリのプロアクティブ分析を実行し、潜在的なパフォーマンスの問題を警告します

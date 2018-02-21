@@ -8,13 +8,13 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 6df7d74d572a59c83105905fbe0a9e218aadc28f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b5dbf4b7ae0fc1f8871fbf6df1a29f0f7324d83a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-amazon-simple-storage-service-using-azure-data-factory"></a>Azure Data Factory を使用して Amazon Simple Storage Service からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,9 +37,9 @@ ms.lasthandoff: 01/23/2018
 Amazon S3 からデータをコピーするには、次のアクセス許可が付与されている必要があります。
 
 - Amazon S3 オブジェクトの操作には `s3:GetObject` と `s3:GetObjectVersion`。
-- Amazon S3 バケットの操作には `s3:ListBucket`。 Data Factory コピー ウィザードを使用している場合は、`s3:ListAllMyBuckets` も必要です。
+- Amazon S3 バケットの操作には `s3:ListBucket` または `s3:GetBucketLocation`。 Data Factory コピー ウィザードを使用している場合は、`s3:ListAllMyBuckets` も必要です。
 
-Amazon S3 のアクセス許可の完全な一覧については、「[ポリシーでのアクセス許可の指定](http://docs.aws.amazon.com/amazons3/latest/dev/using-with-s3-actions.html)」を参照してください。
+Amazon S3 のアクセス許可の完全な一覧については、「[ポリシーでのアクセス許可の指定](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)」を参照してください。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -55,7 +55,7 @@ Amazon S3 のリンクされたサービスでは、次のプロパティがサ�
 |:--- |:--- |:--- |
 | 型 | type プロパティは **AmazonS3** に設定する必要があります。 | [はい] |
 | accessKeyId | シークレット アクセス キーの ID。 |[はい] |
-| secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString とマークします。 |[はい] |
+| secretAccessKey | シークレット アクセス キー自体。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 >[!NOTE]

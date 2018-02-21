@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: danlep
 ms.custom: 
-ms.openlocfilehash: 5e742187295d0bd6dbc0767ee164335fc0cf9f02
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 280c31d00acc074653b6594235f78e4d569464b4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して可用性ゾーン内に Linux 仮想マシンを作成する
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/05/2018
 
 [!INCLUDE [availability-zones-preview-statement.md](../../../includes/availability-zones-preview-statement.md)]
 
-[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/#login) で Azure アカウントにログインしていることを確認します。
+[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされていること、および [az login](/cli/azure/#az_login) で Azure アカウントにログインしていることを確認します。
 
 
 ## <a name="check-vm-sku-availability"></a>提供されている VM SKU の確認

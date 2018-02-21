@@ -12,15 +12,15 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: article
-ms.date: 10/05/2017
+ms.topic: tutorial
+ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2345b434a51b768793c2dea4587dc0a49ab35b70
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: b8577a02f0c9396b64af986950fddaa1e00925ec
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="how-to-use-availability-sets"></a>可用性セットの使用方法
 
@@ -34,19 +34,21 @@ ms.lasthandoff: 11/22/2017
 > * 使用可能な VM のサイズを確認する
 > * Azure Advisor を確認する
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+
+PowerShell をインストールしてローカルで使用する場合、このチュートリアルでは Azure PowerShell モジュール バージョン 5.3 以降が必要になります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。 
 
 ## <a name="availability-set-overview"></a>可用性セットの概要
 
 可用性セットは、Azure で使用できる論理グループ作成機能であり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、アプリケーション全体が停止することはなく、顧客は引き続きアプリケーションを利用できます。 可用性セットは、信頼性の高いクラウド ソリューションを構築する際に不可欠な機能です。
 
-4 台のフロント エンド Web サーバーとデータベースをホストする 2 台のバック エンド VM を使用する一般的な VM ベースのソリューションについて考えてみましょう。 Azure で VM をデプロイする前に、2 つの可用性セット (Web 層用に 1 つ、データベース層用に 1 つ) を定義します。 新しい VM を作成するときに、az vm create コマンドのパラメーターとして可用性セットを指定でき、可用性セット内に作成した VM は、Azure によって複数の物理的なハードウェア リソースに自動的に分離されます。 いずれかの Web サーバーまたはデータベース サーバー VM で問題が発生した場合でも、Web サーバーとデータベース VM の他のインスタンスは別のハードウェアで実行されているため、稼働し続けます。
+フロントエンド Web サーバーが 4 台あり、データベースをホストする 2 台のバックエンド VM を使用する典型的な VM ベースのソリューションを考えてみましょう。 Azure で VM をデプロイする前に、2 つの可用性セット (Web 層用に 1 つ、データベース層用に 1 つ) を定義します。 新しい VM を作成するときに、az vm create コマンドのパラメーターとして可用性セットを指定でき、可用性セット内に作成した VM は、Azure によって複数の物理的なハードウェア リソースに自動的に分離されます。 いずれかの Web サーバーまたはデータベース サーバー VM で問題が発生した場合でも、Web サーバーとデータベース VM の他のインスタンスは別のハードウェアで実行されているため、稼働し続けます。
 
 Azure に信頼性の高い VM ベースのソリューションをデプロイする場合は、可用性セットを使用します。
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
-可用性セットは、[New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) を使用して作成します。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として *2* を設定します。
+可用性セットは、[New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) を使用して作成します。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの数をどちらも *2* に設定します。
 
 リソース グループを作成します。
 
@@ -54,126 +56,52 @@ Azure に信頼性の高い VM ベースのソリューションをデプロイ�
 New-AzureRmResourceGroup -Name myResourceGroupAvailability -Location EastUS
 ```
 
-[New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) を使い、**-sku aligned** パラメーターを指定して、管理された可用性セットを作成します。
+`-sku aligned` パラメーターを指定した [New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) を使用して、管理された可用性セットを作成します。
 
 ```azurepowershell-interactive
 New-AzureRmAvailabilitySet `
-   -Location EastUS `
-   -Name myAvailabilitySet `
-   -ResourceGroupName myResourceGroupAvailability `
-   -sku aligned `
+   -Location "EastUS" `
+   -Name "myAvailabilitySet" `
+   -ResourceGroupName "myResourceGroupAvailability" `
+   -Sku aligned `
    -PlatformFaultDomainCount 2 `
    -PlatformUpdateDomainCount 2
 ```
 
 ## <a name="create-vms-inside-an-availability-set"></a>可用性セット内の VM の作成
-
 VM は、ハードウェア全体で適切に分散させるために、可用性セット内に作成する必要があります。 可用性セットを作成した後に、既存の VM を追加することはできません。 
 
 1 つの場所にあるハードウェアは、複数の更新ドメインと障害ドメインに分割されます。 **更新ドメイン**は、VM と、同時に再起動できる基になる物理ハードウェアのグループです。 同じ**障害ドメイン**内の VM は、共通の電源とネットワーク スイッチだけでなく、共通のストレージも共有します。 
 
-[New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) を使って VM 構成を作成する場合は、`-AvailabilitySetId` パラメーターで可用性セットの ID を指定します。
+[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成する際に、`-AvailabilitySetName` パラメーターを使用して可用性セットの名前を指定します。
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使って、可用性セットに 2 つの VM を作成します。
+まず、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者のユーザー名とパスワードを設定します。
 
 ```azurepowershell-interactive
-$availabilitySet = Get-AzureRmAvailabilitySet `
-    -ResourceGroupName myResourceGroupAvailability `
-    -Name myAvailabilitySet
-
-$cred = Get-Credential -Message "Enter a username and password for the virtual machine."
-
-$subnetConfig = New-AzureRmVirtualNetworkSubnetConfig `
-    -Name mySubnet `
-    -AddressPrefix 192.168.1.0/24
-$vnet = New-AzureRmVirtualNetwork `
-    -ResourceGroupName myResourceGroupAvailability `
-    -Location EastUS `
-    -Name myVnet `
-    -AddressPrefix 192.168.0.0/16 `
-    -Subnet $subnetConfig
-    
-$nsgRuleRDP = New-AzureRmNetworkSecurityRuleConfig `
-    -Name myNetworkSecurityGroupRuleRDP `
-    -Protocol Tcp `
-    -Direction Inbound `
-    -Priority 1000 `
-    -SourceAddressPrefix * `
-    -SourcePortRange * `
-    -DestinationAddressPrefix * `
-    -DestinationPortRange 3389 `
-    -Access Allow
-
-$nsg = New-AzureRmNetworkSecurityGroup `
-    -Location eastus `
-    -Name myNetworkSecurityGroup `
-    -ResourceGroupName myResourceGroupAvailability `
-    -SecurityRules $nsgRuleRDP
-    
-# Apply the network security group to a subnet
-Set-AzureRmVirtualNetworkSubnetConfig `
-    -VirtualNetwork $vnet `
-    -Name mySubnet `
-    -NetworkSecurityGroup $nsg `
-    -AddressPrefix 192.168.1.0/24
-
-# Update the virtual network
-Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
-
-for ($i=1; $i -le 2; $i++)
-{
-   $pip = New-AzureRmPublicIpAddress `
-        -ResourceGroupName myResourceGroupAvailability `
-        -Location EastUS `
-        -Name "mypublicdns$(Get-Random)" `
-        -AllocationMethod Static `
-        -IdleTimeoutInMinutes 4
-
-   $nic = New-AzureRmNetworkInterface `
-        -Name myNic$i `
-        -ResourceGroupName myResourceGroupAvailability `
-        -Location EastUS `
-        -SubnetId $vnet.Subnets[0].Id `
-        -PublicIpAddressId $pip.Id `
-        -NetworkSecurityGroupId $nsg.Id
-
-   # Here is where we specify the availability set
-   $vm = New-AzureRmVMConfig `
-        -VMName myVM$i `
-        -VMSize Standard_D1 `
-        -AvailabilitySetId $availabilitySet.Id
-
-   $vm = Set-AzureRmVMOperatingSystem `
-        -ComputerName myVM$i `
-        -Credential $cred `
-        -VM $vm `
-        -Windows `
-        -EnableAutoUpdate `
-        -ProvisionVMAgent
-   $vm = Set-AzureRmVMSourceImage `
-        -VM $vm `
-        -PublisherName MicrosoftWindowsServer `
-        -Offer WindowsServer `
-        -Skus 2016-Datacenter `
-        -Version latest
-   $vm = Set-AzureRmVMOSDisk `
-        -VM $vm `
-        -Name myOsDisk$i `
-        -DiskSizeInGB 128 `
-        -CreateOption FromImage `
-        -Caching ReadWrite
-   $vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-   New-AzureRmVM `
-        -ResourceGroupName myResourceGroupAvailability `
-        -Location EastUS `
-        -VM $vm
-}
-
+$cred = Get-Credential
 ```
 
-VM 2 台分の作成と構成が終わるまでには、数分かかります。 完了すると、基になるハードウェア全体に 2 つの仮想マシンが分散して配置されます。 
+ここで、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、可用性セットに 2 つの VM を作成します。
 
-[リソース グループ] > [myResourceGroupAvailability] > [myAvailabilitySet] に移動してポータルで可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
+```azurepowershell-interactive
+for ($i=1; $i -le 2; $i++)
+{
+    New-AzureRmVm `
+        -ResourceGroupName "myResourceGroupAvailability" `
+        -Name "myVM$i" `
+        -Location "East US" `
+        -VirtualNetworkName "myVnet" `
+        -SubnetName "mySubnet" `
+        -SecurityGroupName "myNetworkSecurityGroup" `
+        -PublicIpAddressName "myPublicIpAddress$i" `
+        -AvailabilitySetName "myAvailabilitySet" `
+        -Credential $cred
+}
+```
+
+`-AsJob` パラメーターにより、バックグラウンド タスクとして VM が作成されるため、PowerShell プロンプトが表示されます。 `Job` コマンドレットを使用して、バックグラウンド ジョブの詳細を表示できます。 VM 2 台分の作成と構成が終わるまでには、数分かかります。 完了すると、基になるハードウェア全体に 2 つの仮想マシンが分散されています。 
+
+[リソース グループ] > [myResourceGroupAvailability] > [myAvailabilitySet] の順に移動してポータルの可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
 
 ![ポータルの可用性セット](./media/tutorial-availability-sets/fd-ud.png)
 
@@ -183,8 +111,8 @@ VM 2 台分の作成と構成が終わるまでには、数分かかります。
 
 ```azurepowershell-interactive
 Get-AzureRmVMSize `
-   -AvailabilitySetName myAvailabilitySet `
-   -ResourceGroupName myResourceGroupAvailability  
+   -ResourceGroupName "myResourceGroupAvailability" `
+   -AvailabilitySetName "myAvailabilitySet"
 ```
 
 ## <a name="check-azure-advisor"></a>Azure Advisor を確認する 
@@ -194,7 +122,7 @@ Azure Advisor を使用して、VM の可用性を向上させる方法につい
 [Azure Portal](https://portal.azure.com) にサインインし、**[その他のサービス]** を選択して、「**Advisor**」と入力します。 Advisor ダッシュボードに、選択したサブスクリプションの個人向けの推奨事項が表示されます。 詳細については、「[Azure Advisor の使用を開始する](../../advisor/advisor-get-started.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

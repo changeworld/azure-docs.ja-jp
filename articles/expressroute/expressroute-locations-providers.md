@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
-ms.author: kaanan
-ms.openlocfilehash: 679c3093a1feb4589ff96dab398d38a866c9ad2a
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.date: 02/08/2018
+ms.author: pareshmu
+ms.openlocfilehash: b65e27e1499c60fa9be731c8bdc94ded89cc556b
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -69,38 +69,38 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ### <a name="production-azure"></a>運用 Azure
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
-| **アムステルダム** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Megaport、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Verizon、Zayo Group |
+| **アムステルダム** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、euNetworks、GÉANT、InterCloud、Internet Solutions - Cloud Connect、Interxion、KPN、Level 3 Communications、Megaport、Orange、Tata Communications、TeleCity Group、Telefonica、Telenor、Verizon、Zayo |
 | **アトランタ** |Equinix |
 | **釜山** |LG CNS |
 | **チェンナイ** | Airtel+、Global CloudXchange (GCX)、SIFY、Tata Communications |
-| **シカゴ** |AT&T NetBond、Comcast、Coresite、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group |
-| **ダラス** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo Group+ |
+| **シカゴ** |AT&T NetBond、Comcast、Coresite、Equinix、PacketFabric、Level 3 Communications、Megaport、Verizon、Zayo |
+| **ダラス** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo|
 | **デンバー** |CoreSite |
-| **ダブリン** |Colt、Interxion、Telecity Group |
+| **ダブリン** |Colt、eir、Interxion、Megaport、Telecity Group |
 | **香港** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **ラスベガス** |Level 3 Communications、Megaport |
-| **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo Group+ |
-| **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
+| **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo |
+| **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo |
 | **メルボルン** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
 | **マイアミ** |C3ntro+、Megaport、Neutrona Networks |
-| **モントリオール** |Bell Canada、Cologix、Telus |
+| **モントリオール** |Bell Canada、Cologix、Telus、Zayo |
 | **ムンバイ** |Airtel+、Global CloudXchange (GCX)、Sify、Tata Communications |
-| **ニューヨーク** |Coresite、Equinix、Level 3 Communications、Megaport、Zayo Group |
+| **ニューヨーク** |Coresite、Equinix、Level 3 Communications、Megaport、Zayo |
 | **ニューポート (ウェールズ)** |Level 3 Communications、Next Generation Data |
 | **大阪** |Equinix、Internet Initiative Japan Inc. - IIJ、NTT Communications、NTT SmartConnect、Softbank |
 | **パリ** |Colt、Intercloud、Interxion、Equinix、Orange |
-| **ケベック シティ** | Megaport |
+| **ケベック シティ** | Bell Canada、Megaport |
 | **サンアントニオ** |Level 3 Communications、Megaport |
 | **サンパウロ** |Ascenty Data Centers+、Equinix、Level 3 Communications、Neutrona Networks、Telefonica、UOLDIVEO |
 | **シアトル** |Equinix、Level 3 Communications、Megaport |
 | **ソウル** |KINX、LG CNS、Sejong Telecom |
-| **シリコン バレー** |Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink+、Comcast、Console、Coresite、Equinix、Level 3 Communications、Megaport、Orange、Tata Communications、Verizon、Zayo Group |
+| **シリコン バレー** |Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink+、Comcast、Coresite、Equinix、PacketFabric、Level 3 Communications、Megaport、Orange、Tata Communications、Verizon、Zayo Group |
 | **シンガポール** |Aryaka Networks、AT&T NetBond、British Telecom、Epsilon Global Communications、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
 | **シンガポール 2** |Megaport、SingTel |
 | **シドニー** |AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、Orange、Telstra Corporation、Verizon |
 | **東京** |Aryaka Networks、AT&T NetBond、British Telecom、Colt、Equinix、Internet Initiative Japan Inc. - IIJ、Level 3 Communications、NTT Communications、Softbank、Verizon |
-| **トロント** |AT&T NetBond、Bell Canada、Cologix、Console、Equinix、Megaport、Telus、Zayo Group |
-| **ワシントン DC** |Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Coresite、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、Verizon、Zayo Group |
+| **トロント** |AT&T NetBond、Bell Canada、Cologix、Console、Equinix、Megaport、Telus、Zayo |
+| **ワシントン DC** |Aryaka Networks、AT&T NetBond、British Telecom、Comcast、Coresite、Equinix、Internet2、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、Tata Communications、Verizon、Zayo |
 
  **+** は近日対応予定を表します
 
@@ -135,10 +135,10 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 
 * 接続プロバイダーが上の表に記載されているいずれかの Exchange に接続されているかどうかをその接続プロバイダーに確認します。 次のリンクから、Exchange プロバイダーが提供するサービスの詳細情報を収集できます。 一部の接続プロバイダーは既にイーサネット Exchange に接続されています。
   * [Cologix](http://www.cologix.com/)
-  * [Console](https://www.consoleconnect.com/partners/cloudsaas/)
   * [CoreSite](http://www.coresite.com/)
   * [Equinix Cloud Exchange](http://www.equinix.com/services/interconnection-connectivity/cloud-exchange/)
   * [InterXion](http://www.interxion.com/)
+  * [IX Reach](https://www.ixreach.com/services/cloud-connectivity/microsoft-azure/)
   * [NextDC](http://www.nextdc.com/)
   * [Megaport](https://www.megaport.com/services/microsoft-expressroute/)
   * [TeleCity CloudIX](http://www.telecitygroup.com/colocation-services/cloud-ix.htm)

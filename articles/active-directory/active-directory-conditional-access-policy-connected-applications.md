@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 02/08/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: fb646a56b51960d5b076027d942dabe8f2afbe97
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2354a8bf81189f70bb8d0d63c3df3236403c11fc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Azure Active Directory のデバイス ベースの条件付きアクセスポリシーを構成する
 
@@ -41,11 +41,11 @@ ms.lasthandoff: 12/11/2017
 
 モバイル ファースト、クラウド ファーストの世界で、Azure Active Directory を使用してデバイス、アプリ、およびサービスにどこからでもサインオンできます。 環境内の特定のリソースでは、適切なユーザーにアクセスを許可するだけでは十分ではない場合があります。 適切なユーザーであることに加え、リソースにアクセスするにはデバイスが信頼済みであることを要求することもできます。 環境内で、信頼済みデバイスとは何かを次のコンポーネントに基づいて定義できます。
 
-- デバイスの[デバイス プラットフォーム](active-directory-conditional-access-azure-portal.md#device-platforms)
+- デバイスの[デバイス プラットフォーム](active-directory-conditional-access-conditions.md#device-platforms)
 - デバイスが準拠しているかどうか
 - デバイスがドメインに参加済みかどうか 
 
-[デバイス プラットフォーム](active-directory-conditional-access-azure-portal.md#device-platforms)は、デバイスで実行されているオペレーティング システムによって分類されます。 デバイス ベースの条件付きアクセス ポリシーで、特定のリソースへのアクセスを特定のデバイス プラットフォームに制限できます。
+[デバイス プラットフォーム](active-directory-conditional-access-conditions.md#device-platforms)は、デバイスで実行されているオペレーティング システムによって分類されます。 デバイス ベースの条件付きアクセス ポリシーで、特定のリソースへのアクセスを特定のデバイス プラットフォームに制限できます。
 
 
 
@@ -73,7 +73,7 @@ Azure AD に接続されているデバイスのみを準拠しているとし�
 ![クラウド アプリ](./media/active-directory-conditional-access-policy-connected-applications/25.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 環境内でデバイス ベースの条件付きアクセス ポリシーを構成する前に、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: b55d186aba49e91bab6814da2380a372f61f39cb
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 082b410c9375dbdfa7f95ccd4c176e7384dad0d7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="getting-started"> </a>Azure App Service の Mobile Apps について
 Azure App Service は、プロの開発者のための完全に管理された[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 製品であり、 Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。 
@@ -38,7 +38,7 @@ Mobile Apps の機能を使ってできることを次に示します。
 ## <a name="mobile-apps-features"></a>Mobile Apps の機能
 クラウド対応のモバイル開発には次の機能が重要です。
 
-* **認証と承認**: エンタープライズ認証用の Azure Active Directory などの ID プロバイダーや、Facebook、Google、Twitter、Microsoft アカウントのようなソーシャル プロバイダーの豊富な一覧から選択します。 Mobile Apps は、各プロバイダーに対して OAuth 2.0 サービスを提供します。 また、プロバイダー固有の機能を実現するために、ID プロバイダーの SDK を統合することもできます。
+* **認証と承認**: Azure Active Directory など、エンタープライズ認証用の ID プロバイダーに加え、Facebook、Google、Twitter、Microsoft アカウントなど、ソーシャル プロバイダーがサポートされます。 Mobile Apps は、各プロバイダーに対して OAuth 2.0 サービスを提供します。 また、プロバイダー固有の機能を実現するために、ID プロバイダーの SDK を統合することもできます。
 
     [認証機能]の詳細を確認してください。
 
@@ -52,7 +52,7 @@ Mobile Apps の機能を使ってできることを次に示します。
 
   [プッシュ通知機能]の詳細を確認してください。
 
-* **クライアント SDK**: ネイティブ開発 ([iOS]、[Android]、[Windows])、クロスプラットフォーム開発 ([Xamarin.iOS および Xamarin.Android]、[Xamarin Forms])、ハイブリッド アプリケーション開発 ([Apache Cordova]) に対応したクライアント SDK の完全なセットを提供します。 各クライアント SDK は、オープン ソースであり、MIT ライセンスで使用できます。
+* **クライアント SDK**: ネイティブ開発 ([iOS]、[Android]、[Windows])、クロスプラットフォーム開発 ([Xamarin.iOS および Xamarin.Android]、[Xamarin Forms])、ハイブリッド アプリケーション開発 ([Apache Cordova]) に対応したクライアント SDK の完全なセットが用意されています。 各クライアント SDK は、オープンソースであり、MIT ライセンスで使用できます。
 
 ## <a name="azure-app-service-features"></a>Azure App Service の機能
 次のプラットフォーム機能は、モバイル運用サイトに役立ちます。
@@ -65,7 +65,7 @@ Mobile Apps の機能を使ってできることを次に示します。
 
   [ステージング環境]の詳細を確認してください。
 
-* **継続的なデプロイ**: App Service は一般的なソース コントロール管理 (SCM) システムと統合できるため、バックエンドの新しいバージョンを SCM システムのブランチにプッシュすることで自動的にデプロイできます。
+* **継続的なデプロイ**: App Service は一般的な "_ソース コントロール管理_" (SCM) システムと統合できるため、新しいバージョンのバックエンドを簡単にデプロイすることができます。
 
   [デプロイ オプション](../app-service/app-service-deploy-local-git.md)の詳細を確認してください。
 
@@ -73,7 +73,7 @@ Mobile Apps の機能を使ってできることを次に示します。
 
   [ハイブリッド接続]、[仮想ネットワーク]、[ExpressRoute] の詳細をご覧ください。
 
-* **分離/専用環境**: App Service は、Azure App Service アプリを高スケールで安全に実行するために、完全に分離された専用環境で実行できます。 この環境は、高スケール、分離、またはセキュリティで保護されたネットワーク アクセスを必要とするアプリケーション ワークロードに最適です。
+* **分離/専用環境**: App Service は、Azure App Service アプリを安全に実行するために、完全に分離された専用環境で実行できます。 この環境は、高スケール、分離、またはセキュリティで保護されたネットワーク アクセスを必要とするアプリケーション ワークロードに最適です。
 
   [App Service 環境]の詳細を確認してください。
 

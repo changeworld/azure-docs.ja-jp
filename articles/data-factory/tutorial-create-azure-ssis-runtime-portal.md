@@ -13,11 +13,11 @@ ms.devlang:
 ms.topic: hero-article
 ms.date: 01/29/2018
 ms.author: spelluru
-ms.openlocfilehash: 9e0b0efdf28e6d8b99d1cdf702dd0698ad87da7b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: abb5fd4953709198f6071bbdd4a1dc86900f0183
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="provision-an-azure-ssis-integration-runtime-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用した Azure SSIS 統合ランタイムのプロビジョニング
 このチュートリアルでは、Azure Portal を使用して Azure-SSIS 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 その後、SQL Server Data Tools または SQL Server Management Studio を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイできます。 Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事を参照してください。
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/01/2018
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。
-> * Azure-SSIS 統合ランタイムを作成および起動する。
+> * Azure-SSIS 統合ランタイムをプロビジョニングします。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
@@ -41,8 +41,9 @@ ms.lasthandoff: 02/01/2018
  
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-1. [Azure Portal](https://portal.azure.com/) にサインインします。    
-2. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. [Azure Portal](https://portal.azure.com/) にサインインします。    
+3. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/tutorial-create-azure-ssis-runtime-portal/new-data-factory-menu.png)
 3. **[新しいデータ ファクトリ]** ページで、**[名前]** に「**MyAzureSsisDataFactory**」と入力します。 
@@ -69,7 +70,7 @@ ms.lasthandoff: 02/01/2018
 11. 作成が完了すると、**[データ ファクトリ]** ページが表示されます。
    
    ![データ ファクトリのホーム ページ](./media/tutorial-create-azure-ssis-runtime-portal/data-factory-home-page.png)
-12. **[監視と管理]** を選択して、別のタブで Data Factory ユーザー インターフェイス (UI) を開きます。 
+12. **[作成と監視]** を選択して、別のタブで Data Factory ユーザー インターフェイス (UI) を開きます。 
 
 ## <a name="provision-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムのプロビジョニング
 
@@ -160,7 +161,7 @@ SSIS ドキュメントの次の記事をご覧ください。
 
 > [!div class="checklist"]
 > * データ ファクトリを作成します。
-> * Azure-SSIS 統合ランタイムを作成および起動する。
+> * Azure-SSIS 統合ランタイムをプロビジョニングします。
 
 オンプレミスからクラウドにデータをコピーする方法について学習するには、次のチュートリアルに進んでください。 
 

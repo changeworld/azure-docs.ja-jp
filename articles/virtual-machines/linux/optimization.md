@@ -16,17 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: e63b50e06ae280819aea88f61bf9f25b6e44eac7
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 5484f0422e67c75320cc76ffcf08a2b8d6cc6108
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
 
 ## <a name="prerequisites"></a>前提条件
-このトピックでは、利用中の Azure サブスクリプション ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)のサインアップ) が既にあり、VM を Azure サブスクリプションにプロビジョニング済みであることを前提としています。 [VM を作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する前に、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされていることを確認し、[az login](/cli/azure/#login) を使用して Azure サブスクリプションにログインしておく必要があります。
+このトピックでは、利用中の Azure サブスクリプション ([無料試用版](https://azure.microsoft.com/pricing/free-trial/)のサインアップ) が既にあり、VM を Azure サブスクリプションにプロビジョニング済みであることを前提としています。 [VM を作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)する前に、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされていることを確認し、[az login](/cli/azure/#az_login) を使用して Azure サブスクリプションにログインしておく必要があります。
 
 ## <a name="azure-os-disk"></a>Azure OS ディスク
 Azure に Linux VM を作成すると、その VM には 2 つのディスクが関連付けられています。 **/dev/sda** は OS ディスクを表し、**/dev/sdb** は一時ディスクを表します。  メインの OS ディスク (**/dev/sda**) は、VM の高速起動用に最適化されており、ワークロードでは優れたパフォーマンスを発揮しないため、オペレーティング システム以外の用途には使用しないでください。 データ用の永続的で最適化されたストレージにするために、1 つ以上のディスクを VM に接続することができます。 
@@ -126,7 +126,7 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 ## <a name="using-software-raid-to-achieve-higher-iops"></a>ソフトウェア RAID の使用による IOPS の向上
 単一のディスクで実現できる以上の IOPS を必要とするワークロードの場合、複数のディスクから成るソフトウェア RAID 構成を使用する必要があります。 Azure は既にローカルのファブリック層でディスクの回復性を実現しているため、RAID 0 のストライピング構成を使用することで最高レベルのパフォーマンスが実現されます。  ドライブのパーティション分割、フォーマット、マウントを実行する前に、Azure 環境でディスクをプロビジョニングして作成し、それらを Linux VM に接続します。  Azure の Linux VM でのソフトウェア RAID セットアップの構成の詳細については、「**[Linux でのソフトウェア RAID の構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)**」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 最適化に関するあらゆる話題と同様に、それぞれの変更の前後にテストを行って、その変更の影響を評価する必要があります。  最適化は段階的なプロセスであり、環境内のコンピューターごとに結果は異なります。  ある構成に効果があっても、それが他の構成に効果があるとは限りません。
 
 関連リソースへの便利なリンクは次のとおりです。 

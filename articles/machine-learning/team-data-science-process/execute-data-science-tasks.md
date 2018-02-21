@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: bradsev;
-ms.openlocfilehash: 1ad4e8c117f93f2f085c01fae2a5ab38cdd10d2f
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 7f3bf3bb5743bfb64489188d1016fb18d4967f79
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="execute-data-science-tasks-exploration-modeling-and-deployment"></a>データ サイエンス タスクの実行: 探索、モデリング、およびデプロイ
 
@@ -43,7 +43,7 @@ Azure Machine Learning Workbench などの製品では、機能作成を含め�
 現時点では、ツールはメモリ内のデータ フレームでのみ機能します。 調査するデータ セットのパラメーターを指定するには YAML ファイルが必要です。 詳細については、[TDSP データ サイエンス ユーティリティの IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/tree/master/DataScienceUtilities/DataReport-Utils) に関するページをご覧ください。
 
 
-## 手順 2.<a name='ModelingUtility-2'></a> モデリング
+## 2.<a name='ModelingUtility-2'></a> モデリング
 
 さまざまな言語でモデルをトレーニングするための、多数のツールキットとパッケージがあります。 精度と待機時間に関するパフォーマンスの考慮事項が、対応するビジネスのユース ケースや生産シナリオを満たしていれば、データ サイエンティストがそれらのうち自分に適したものを自由に使用できる必要があります。
 
@@ -80,7 +80,7 @@ YAML ファイルを使用して以下を指定します。
 3. [モデル管理システムとしての SQL サーバー](https://blogs.technet.microsoft.com/dataplatforminsider/2016/10/17/sql-server-as-a-machine-learning-model-management-system/)
 4. [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
-## 3.<a name='Deployment-3'></a> デプロイ
+## 手順 3.<a name='Deployment-3'></a> デプロイ
 
 運用環境へのデプロイによって、モデルがビジネスのアクティブな役割を担うことが可能になります。 デプロイされたモデルからの予測は、ビジネス上の決定に使用できます。
 
@@ -88,7 +88,7 @@ YAML ファイルを使用して以下を指定します。
 モデルを運用環境にデプロイするには、さまざまな方法とプラットフォームがあります。 いくつかの選択肢を次に示します。
 
 
-- [Azure Machine Learning でのモデルのデプロイ](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview)
+- [Azure Machine Learning でのモデルのデプロイ](../preview/model-management-overview.md)
 - [SQL server でのモデルのデプロイ](https://docs.microsoft.com/sql/advanced-analytics/tutorials/sqldev-py6-operationalize-the-model)
 - [Microsoft Machine Learning Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-server-standalone)
 
@@ -105,7 +105,7 @@ YAML ファイルを使用して以下を指定します。
 複数のモデルが運用環境にある場合、[A/B テスト](https://en.wikipedia.org/wiki/A/B_testing)を実行してモデルのパフォーマンスを比較することが役立つ可能性があります。 
 
  
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 「[Track progress of data science projects (データ サイエンス プロジェクトの進行状況の追跡)](track-progress.md)」に、データ サイエンティストがデータ サイエンス プロジェクトの進行状況を追跡できる方法が示されています。
  

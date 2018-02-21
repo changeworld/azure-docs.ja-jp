@@ -1,5 +1,5 @@
-﻿---
-title: "Azure Security の概要 | Microsoft Docs"
+---
+title: "Azure セキュリティの概要 | Microsoft Docs"
 description: "Azure のセキュリティ、サービス、およびそのしくみについて説明します。"
 services: security
 documentationcenter: na
@@ -24,7 +24,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="overview"></a>概要
 セキュリティはクラウドの最優先の課題であり、Azure セキュリティについての正確でタイムリーな情報を得ることがどれだけ重要かを、私たちは認識しています。 アプリケーションとサービスに Azure を使用する最大の理由の 1 つは、さまざまなセキュリティ ツールや機能を活用できることです。 これらのツールや機能により、Azure プラットフォーム上にセキュリティで保護されたソリューションを作成できるようになります。 Microsoft Azure では、透過的な説明責任を実現しつつ、顧客データの機密性、整合性、および可用性を提供しています。
 
-Microsoft Azure に実装されている多数のセキュリティ コントロールについて、お客様側と Microsoft 側の運用上の観点からご理解いただくために、このホワイト ペーパー「Azure Security の概要」では、Microsoft Azure で提供されるセキュリティについて総合的に説明します。
+Microsoft Azure に実装されている多数のセキュリティ制御について、お客様側と Microsoft 側の運用上の観点からご理解いただくために、このホワイト ペーパー「Azure セキュリティの概要」では、Microsoft Azure で提供されるセキュリティについて総合的に説明します。
 
 ### <a name="azure-platform"></a>Azure プラットフォーム
 Azure は、オペレーティング システム、プログラミング言語、フレームワーク、ツール、データベース、デバイスにおいて幅広い選択肢をサポートするパブリック クラウド サービス プラットフォームです。 Docker を統合した Linux コンテナーの実行、JavaScript、Python、.NET、PHP、Java、Node.js によるアプリの構築、iOS、Android、Windows の各デバイスに対応したバックエンドの構築を行えます。
@@ -38,7 +38,7 @@ Azure のインフラストラクチャでは、数百万の顧客を同時に�
 > [!Note]
 > ここでは、アプリケーションやサービスをカスタマイズしてセキュリティを強化できる顧客向けの制御機能に重点を置いています。
 >
-> 概要情報だけでなく Microsoft で Azure プラットフォーム自体のセキュリティを保護する方法の詳細について確認するには、 [Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/default.aspx) を参照してください。
+> 概要情報だけでなく Microsoft で Azure プラットフォーム自体のセキュリティを保護する方法の詳細について確認するには、[Microsoft Trust Center](https://www.microsoft.com/TrustCenter/default.aspx) を参照してください。
 
 ### <a name="abstract"></a>要約
 当初、パブリック クラウドの移行は、コストの削減と素早い導入によって決定されていました。 セキュリティは、これまで長い間パブリック クラウドの移行にとって重大な懸念事項であり、致命的な問題でもありました。 しかし、パブリック クラウドのセキュリティはいつしか重大な懸念事項からクラウド移行の原動力へと変化していきました。 この背景には、アプリケーションを保護する大規模なパブリック クラウド サービス プロバイダーの優れた能力と、クラウド ベースの資産データがあります。
@@ -149,7 +149,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 -   パフォーマンス (パフォーマンス イベントを表示)
 
 ## <a name="storage"></a>Storage
-このセクションでは、Azure ストレージのセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
+このセクションでは、Azure Storage のセキュリティの重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="role-based-access-control-rbac"></a>ロール ベースのアクセス制御 (RBAC)
 ロールベースのアクセス制御 (RBAC) を使用して、ストレージ アカウントをセキュリティで保護できます。 データ アクセスにセキュリティ ポリシーを適用する組織では、[必知事項](https://en.wikipedia.org/wiki/Need_to_know)と[最小権限](https://en.wikipedia.org/wiki/Principle_of_least_privilege)のセキュリティ原則に基づいてアクセスを制限することが不可欠です。 これらのアクセス権は、グループおよびアプリケーションに適切な RBAC ロールを特定のスコープで割り当てることによって付与します。 [組み込み RBAC ロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)(ストレージ アカウントの共同作成者など) を使用して、ユーザーに権限を割り当てることができます。 [Azure Resource Manager](https://docs.microsoft.com/azure/storage/storage-security-guide) モデルを使用したストレージ アカウントのストレージ キーに対するアクセス権は、ロールベースのアクセス制御 (RBAC) で制御できます。
@@ -306,12 +306,12 @@ Security Center は、脅威の回避、検出、対応に役立つサービス�
 -   [インターネットに接続するエンドポイント経由のアクセスを制限する](https://docs.microsoft.com/azure/security-center/security-center-restrict-access-through-internet-facing-endpoints)。NSG の着信トラフィック規則を構成することをお勧めします。
 
 
-## <a name="compute"></a>計算
+## <a name="compute"></a>コンピューティング
 
 このセクションでは、この領域の重要な機能と、これらの機能についての概要情報に関する追加の情報を提供します。
 
 ### <a name="antimalware--antivirus"></a>マルウェア対策とウイルス対策ソフトウェア
-Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 Azure Cloud Services および Azure Virtual Machines に対する [Microsoft マルウェア対策](https://docs.microsoft.com/azure/security/azure-security-antimalware)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ保護機能です。 Microsoft マルウェア対策は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。 Microsoft マルウェア対策は、Azure Security Center を使用してデプロイすることもできます。
+Azure IaaS では、Microsoft、Symantec、Trend Micro、McAfee、Kaspersky などのセキュリティ ベンダーが提供するマルウェア対策ソフトウェアを利用できます。これにより、悪意のあるファイルやアドウェアなどの脅威から仮想マシンを保護できます。 Azure Cloud Services および Azure Virtual Machines に対する [Microsoft Antimalware](https://docs.microsoft.com/azure/security/azure-security-antimalware)は、ウイルス、スパイウェアなどの悪意のあるソフトウェアの特定や駆除に役立つ保護機能です。 Microsoft Antimalware は、既知の悪意あるまたは望ましくないソフトウェアが Azure システム上に自動でインストールまたは実行されそうになった場合に、構成可能なアラートを提供します。 Microsoft Antimalwareは、Azure Security Center を使用してデプロイすることもできます。
 
 ### <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 暗号化と認証は、キー自体が保護されない限り、セキュリティを向上させません。 大切な秘密情報とキーを [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-whatis) に格納することで、それらの管理とセキュリティ保護をシンプルにできます。 Key Vault では、オプションとして、キーを保管するためのハードウェア セキュリティ モジュール (HSM) が提供されています。HSM は FIPS 140-2 レベル 2 標準に準拠しています。 バックアップまたは [Transparent Data Encryption](https://msdn.microsoft.com/library/bb934049.aspx) 用の SQL Server 暗号化キーに加えて、アプリケーションのすべてのキーや秘密情報を Key Vault に格納できます。 保護されたこれらのアイテムに対するアクセス許可とアクセスは、[Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/) を通して管理されます。

@@ -29,7 +29,7 @@ ms.lasthandoff: 11/28/2017
 
 このアプリには 3 つのバージョンがあります。それぞれが、Azure SQL Database 上で異なるデータベース テナント パターンを探求します。  1 つ目は、独立したシングル テナント データベースを使用するシングル テナント アプリケーションを使用します。 2 つ目は、テナントごとにデータベースを持つマルチテナント アプリを使用します。 3 つ目のサンプルは、シャードされたマルチテナント データベースを持つマルチ テナント アプリを使用します。
 
-![3 つのテナント パターン][image-three-tenancy-patterns]
+![ 3 つのテナント パターン][image-three-tenancy-patterns]
 
  各サンプルには、管理スクリプトおよび設計範囲を紹介するチュートリアルと、独自のアプリケーションで使用できる管理パターンが含まれています。  各サンプルは、5 分未満でデプロイします。  3 つすべてを並行してデプロイできるので、設計と管理の違いを比較できます。
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 11/28/2017
 
 <!-- Image references. -->
 
-[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png "3 つのテナント パターン"。
+[image-three-tenancy-patterns]: media/saas-tenancy-welcome-wingtip-tickets-app/three-tenancy-patterns.png " 3 つのテナント パターン"
 
 <!-- Docs.ms.com references. -->
 

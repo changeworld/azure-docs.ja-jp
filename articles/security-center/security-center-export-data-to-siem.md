@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/01/2018
 ms.author: barclayn
-ms.openlocfilehash: aef623f047bd7e14cb5bd17fb2a2c18e3c5d42b9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7a0a72a25010952f13eb190f0e0a1a65cc6d42d3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-security-data-export-to-siem--pipeline-configuration-preview"></a>Azure Security のデータを SIEM にエクスポートする - パイプラインの構成 (プレビュー)
 
@@ -61,7 +61,7 @@ Azure Monitor で監視データを Event Hub にルーティングすると、�
 | **クエリの説明**                                | **クエリ**                                                                                                                              |
 |---------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | すべての警告                                              | index=main Microsoft.Security/locations/alerts                                                                                         |
-| 名前を指定した操作の数の集計             | **Alerts** index=main sourcetype="amal:security" \| table operationName \| stats count by operationName                                |
+| 名前を指定した操作の数の集計             | index=main sourcetype="amal:security" \| table operationName \| stats count by operationName                                |
 | 警告情報の取得: 日時、名前、状態、ID、サブスクリプション | index=main Microsoft.Security/locations/alerts \| table \_time, properties.eventName, State, properties.operationId, am_subscriptionId |
 
 

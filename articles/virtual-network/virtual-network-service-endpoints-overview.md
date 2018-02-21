@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2018
+ms.date: 02/07/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: 61859e86f38e4666be01f218922ce00c698de960
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: aa1ac804c9cd623e5fb03c97a38f9352ac8a42ad
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="virtual-network-service-endpoints"></a>仮想ネットワーク サービスのエンドポイント
 
@@ -28,7 +28,8 @@ ms.lasthandoff: 02/01/2018
 この機能は、次の Azure サービスとリージョンで提供されています。
 
 - **Azure Storage**: 一般公開。 Azure パブリック クラウドと Azure Government のすべてのリージョン。
-- **Azure SQL**: プレビュー。 Azure パブリック クラウド内のすべてのリージョン。
+- **Azure SQL Database**: 一般公開 (全 Azure リージョン)。 
+- **Azure SQL Datawarehouse**: プレビュー。 Azure パブリック クラウド内のすべてのリージョン。
 
 このプレビュー機能に関する最新情報については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページをご覧ください。
 

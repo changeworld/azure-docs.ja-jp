@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 221af59c211cc6ce0471718908db1544ca2d75ed
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: a2abe0733f52c1e032a718fd8f870c3ec9686a41
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>チュートリアル: オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーする
-このチュートリアルでは、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを Azure PowerShell を使って作成します。 セルフホステッド統合ランタイムを作成して使用すると、データはオンプレミス データ ストアとクラウド データ ストア間を移動します。 
+このチュートリアルでは、オンプレミスの SQL Server データベースから Azure Blob Storage にデータをコピーするデータ ファクトリ パイプラインを Azure PowerShell を使って作成します。 セルフホステッド統合ランタイムを作成して使用すると、オンプレミス データ ストアとクラウド データ ストア間でデータを移動できます。 
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
@@ -45,7 +45,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ### <a name="azure-roles"></a>Azure ロール
 Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、"*共同作成者*" または "*所有者*" ロールに属しているか、Azure サブスクリプションの "*管理者*" である必要があります。 
 
-サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にあるユーザー名をクリックし、**[アクセス許可]** を選択します。 複数のサブスクリプションへのアクセス権がある場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加するサンプル手順については、[ロールの追加](../billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
+サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にあるユーザー名をクリックし、**[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加するサンプル手順については、[ロールの追加](../billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014、2016、2017
 このチュートリアルでは、オンプレミスの SQL Server データベースを "*ソース*" データ ストアとして使用します。 このチュートリアルで作成するデータ ファクトリ内のパイプラインは、このオンプレミスの SQL Server データベース (ソース) から Azure Blob Storage (シンク) にデータをコピーします。 SQL Server データベース内に **emp** という名前のテーブルを作成し、このテーブルにサンプル エントリをいくつか挿入します。 
@@ -202,6 +202,9 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 
 2. セルフホステッド統合ランタイムを作成します。 
 
+    ```powershell
+    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $integrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    ``` 
     出力例を次に示します。
 
     ```json
@@ -210,7 +213,7 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
     ResourceGroupName : ADFTutorialResourceGroup
     DataFactoryName   : onpremdf0914
     Name              : myonpremirsp0914
-    Description       :
+    Description       : selfhosted IR description
     ```
 
 3. 作成された統合ランタイムの状態を取得するために、次のコマンドを実行します。

@@ -3,7 +3,7 @@ title: "Log Analytics のワイヤ データ ソリューション | Microsoft D
 description: "ワイヤ データとは、Operations Manager エージェントや Windows に接続されたエージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データをログ データと結び付けると、データを相関させるのに役立ちます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: fc3d7127-0baa-4772-858a-5ba995d1519b
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
-ms.author: magoedte;banders
-ms.openlocfilehash: b7cb178a24b043fe2c884ef0e4b3ad14ca0d73e4
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.author: magoedte
+ms.openlocfilehash: 658d92900763249aeeb3542132f4fe0c43ba005f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
@@ -387,7 +387,7 @@ OMS ポータルで、**[Wire Data 2.0]** タイルをクリックして、ワ�
 | ローカル サブネット | エージェントが検出したローカル サブネットの数を表示します。  数値をクリックすると、ログ検索 (<code>Type:WireData &#124; Measure Sum(TotalBytes) by LocalSubnet</code>) が実行され、すべてのサブネットと共に、各サブネット上で送信されたバイト数が一覧表示されます。 リスト内のサブネットをクリックすると、ログ検索が実行され、サブネット上で送信された合計バイト数が返されます。 |
 | アプリケーション レベルのプロトコル | エージェントに検出された、使用中のアプリケーション レベルのプロトコルの数を示します。 数値をクリックすると、ログ検索 (<code>Type:WireData &#124; Measure Sum(TotalBytes) by ApplicationProtocol</code>) が実行されます。 プロトコルをクリックすると、ログ検索が実行され、そのプロトコルを使用して送信された合計バイト数が返されます。 |
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![ワイヤ データ ダッシュボード](./media/log-analytics-wire-data/wire-data-dash.png)
 

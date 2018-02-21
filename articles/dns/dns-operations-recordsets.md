@@ -57,7 +57,7 @@ Azure DNS における DNS レコードの詳細については、「[DNS ゾー
 New-AzureRmDnsRecordSet -Name "www" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
 ```
 
-ゾーンの "頂点" (この例では "contoso.com") にレコード セットを作成するには、レコード セット名 "@" (引用符を除く) を使います。
+ゾーンの "頂点" (この例では "contoso.com") にレコード セットを作成するには、レコード セット名 "\@\" (引用符を除く) を使います。
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "@" -RecordType A -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -IPv4Address "1.2.3.4") 
@@ -118,7 +118,7 @@ New-AzureRmDnsRecordSet -Name "test-cname" -RecordType CNAME -ZoneName "contoso.
 
 ### <a name="create-an-mx-record-set-with-a-single-record"></a>1 つのレコードを含む MX レコード セットの作成
 
-この例では、レコード セット名 "@" を使ってゾーンの頂点 (この場合は "contoso.com" ) に MX レコードを作成します。
+この例では、レコード セット名 "\@\" を使ってゾーンの頂点 (この場合は "contoso.com" ) に MX レコードを作成します。
 
 
 ```powershell
@@ -141,7 +141,7 @@ New-AzureRmDnsRecordSet -Name 10 -RecordType PTR -ZoneName "my-arpa-zone.com" -R
 
 ### <a name="create-an-srv-record-set-with-a-single-record"></a>1 つのレコードを含む SRV レコード セットの作成
 
-[SRV レコード セット](dns-zones-records.md#srv-records)を作成するときは、レコード セット名に *\_service* と *\_protocol* を指定します。 ゾーンの頂点で SRV レコード セットを作成するときは、レコード セット名に "@" を含める必要はありません。
+[SRV レコード セット](dns-zones-records.md#srv-records)を作成するときは、レコード セット名に *\_service* と *\_protocol* を指定します。 ゾーンの頂点で SRV レコード セットを作成するときは、レコード セット名に "\@\" を含める必要はありません。
 
 ```powershell
 New-AzureRmDnsRecordSet -Name "_sip._tls" -RecordType SRV -ZoneName "contoso.com" -ResourceGroupName "MyResourceGroup" -Ttl 3600 -DnsRecords (New-AzureRmDnsRecordConfig -Priority 0 -Weight 5 -Port 8080 -Target "sip.contoso.com") 

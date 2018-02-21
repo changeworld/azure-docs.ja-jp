@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: juliako
-ms.openlocfilehash: 4775374b7e91930daa686e48e2869b4891615c4c
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 919851db455e1ac727d8c98346d13e45d4336bc7
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services リリース ノート
 この Azure Media Services のリリース ノートには、以前のリリースからの変更と既知の問題が要約されています。
@@ -163,7 +163,7 @@ Basic、Standard、および Premium エンコード予約ユニットの名前�
 ### <a name="azure-sdk-for-php"></a>Azure SDK for PHP
 Azure SDK チームは [Azure SDK for PHP](http://github.com/Azure/azure-sdk-for-php) パッケージの新しいリリースを公開しました。これには Media Services の更新プログラムと新機能が含まれています。 具体的には、Media Services SDK for PHP で、最新の[コンテンツ保護](media-services-content-protection-overview.md)機能がサポートされるようになりました。 つまり、AES と DRM (PlayReady と Widevine) による動的暗号化 (トークン制限あり/なし) 機能です。 また、[エンコード ユニット](media-services-dotnet-encoding-units.md)のスケーリングにも対応しています。
 
-詳細については、「
+詳細については、次を参照してください。
 
 * [Media Services SDK for PHP](http://southworks.com/blog/2015/12/09/new-microsoft-azure-media-services-sdk-for-php-release-available-with-new-features-and-samples/) ブログ。
 * 次の[コード サンプル](http://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)は、すぐに使い始めるときに役立ちます。
@@ -203,7 +203,7 @@ Media Services で、Widevine Modular DRM テクノロジを使用してビデ�
 詳細については、 [このブログ](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/)をご覧ください。
 
 ## <a id="august_changes_15"></a>2015 年 8 月のリリース
-* Media Services SDK for Java バージョン 0.8.0 リリースと新しいサンプルを利用できるようになりました。 詳細については、「
+* Media Services SDK for Java バージョン 0.8.0 リリースと新しいサンプルを利用できるようになりました。 詳細については、次を参照してください。
   
   * [こちらのブログ記事](http://southworks.com/blog/2015/08/25/microsoft-azure-media-services-sdk-for-java-v0-8-0-released-and-new-samples-available/)
   * [Java サンプルのリポジトリ](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
@@ -348,8 +348,8 @@ Media Services SDK for .NET は、現在、バージョン 3.0.0.7 です
 * ライブ ストリーミングのプレビュー。 詳細については、「[Azure Media Services を使用したライブ ストリーミングの概要](http://msdn.microsoft.com/library/azure/dn783466.aspx)」を参照してください。
 * キー配信サービス。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](http://msdn.microsoft.com/library/azure/dn783457.aspx)」を参照してください。
 * AES 動的暗号化。 詳細については、「[AES-128 動的暗号化とキー配信サービスの使用](http://msdn.microsoft.com/library/azure/dn783457.aspx)」を参照してください。
-* PlayReady ライセンス配信サービス。 詳細については、[PlayReady 動的暗号化とライセンス配信サービスの使用](http://msdn.microsoft.com/library/azure/dn783467.aspx)に関するページをご覧ください。
-* PlayReady 動的暗号化。 詳細については、[PlayReady 動的暗号化とライセンス配信サービスの使用](http://msdn.microsoft.com/library/azure/dn783467.aspx)に関するページをご覧ください。
+* PlayReady ライセンス配信サービス。 
+* PlayReady 動的暗号化。 
 * Media Services PlayReady ライセンス テンプレート。 詳細については、「[Media Services PlayReady ライセンス テンプレートの概要]」を参照してください。
 * ストレージ暗号化資産のストリーミング。 詳細については、[ストレージ暗号化コンテンツのストリーミング](http://msdn.microsoft.com/library/azure/dn783451.aspx)に関するページをご覧ください。
 

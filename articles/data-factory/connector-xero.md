@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: aa81f9d163da8d9236470c0b797f5430163ed39d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 458ad702b510c0fd01ab63541b2026b8a9a06e91
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Xero からデータをコピーする
 
@@ -32,6 +32,11 @@ ms.lasthandoff: 01/19/2018
 ## <a name="supported-capabilities"></a>サポートされる機能
 
 Xero から、サポートされている任意のシンク データ ストアにデータをコピーできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する記事の表をご覧ください。
+
+具体的には、この Xero コネクタは以下をサポートします。
+
+- Xero [プライベート アプリケーション](https://developer.xero.com/documentation/getting-started/api-application-types) (パブリック アプリケーションは非サポート)。
+- "Reports" を除くすべて Xero テーブル (API エンドポイント)。 
 
 Azure Data Factory では接続を有効にする組み込みのドライバーが提供されるので、このコネクタを使用してドライバーを手動でインストールする必要はありません。
 
@@ -48,9 +53,9 @@ Xero のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Xero** に設定する必要があります。 | [はい] |
-| host | Xero サーバーのエンドポイント。 (つまり、api.xero.com)  | [はい] |
-| consumerKey | Xero アプリケーションに関連付けられているコンシューマー キー。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | [はい] |
-| privateKey | Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キー。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます。 このフィールドを SecureString としてマークしてデータ ファクトリに安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | [はい] |
+| host | Xero サーバーのエンドポイント (`api.xero.com`)。  | [はい] |
+| consumerKey | Xero アプリケーションに関連付けられているコンシューマー キー。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| privateKey | Xero プライベート アプリケーション用に生成された .pem ファイルの秘密キー (「[Create a public/private key pair (公開/秘密キー ペアの作成)](https://developer.xero.com/documentation/api-guides/create-publicprivate-key)」を参照してください)。 Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます (以下のサンプルを参照してください)。<br/>このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -75,6 +80,14 @@ Xero のリンクされたサービスでは、次のプロパティがサポー
         }
     }
 }
+```
+
+**サンプル秘密キー値:**
+
+Unix の改行文字 (\n) も含め、.pem ファイルのすべてのテキストを含めます。
+
+```
+"-----BEGIN RSA PRIVATE KEY-----\nMII***************************************************P\nbu****************************************************s\nU/****************************************************B\nA*****************************************************W\njH****************************************************e\nsx*****************************************************l\nq******************************************************X\nh*****************************************************i\nd*****************************************************s\nA*****************************************************dsfb\nN*****************************************************M\np*****************************************************Ly\nK*****************************************************Y=\n-----END RSA PRIVATE KEY-----"
 ```
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
@@ -102,7 +115,7 @@ Xero からデータをコピーするには、データセットの type プロ
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、Xero ソースでサポートされるプロパティの一覧を示します。
 
-### <a name="xerosource-as-source"></a>ソースとしての XeroSource
+### <a name="xero-as-source"></a>ソースとしての Xero
 
 Xero からデータをコピーするは、コピー アクティビティのソースの種類を **XeroSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
@@ -142,6 +155,60 @@ Xero からデータをコピーするは、コピー アクティビティの�
     }
 ]
 ```
+
+Xero クエリを指定する際には、次の点に注意してください。
+
+- 複雑な項目を含むテーブルは、複数のテーブルに分割されます。 たとえば、銀行トランザクションには複雑なデータ構造 "LineItems" が含まれるため、銀行トランザクションのデータはテーブル `Bank_Transaction` および `Bank_Transaction_Line_Items` にマップされ、それらをリンクするための外部キーとして `Bank_Transaction_ID` が使用されます。
+
+- Xero データは 2 つのスキーマを通じて使用できます。`Minimal` (既定) と `Complete` です。 Complete スキーマには、目的のクエリを実行する前に追加データ (例: ID 列) を必要とする、前提条件呼び出しテーブルが含まれます。
+
+次のテーブルは、Minimal スキーマと Complete スキーマで同じ情報を持ちます。 API 呼び出しの数を減らすには、Minimal スキーマ (既定) を使用します。
+
+- Bank_Transactions
+- Contact_Groups 
+- 連絡先 
+- Contacts_Sales_Tracking_Categories 
+- Contacts_Phones 
+- Contacts_Addresses 
+- Contacts_Purchases_Tracking_Categories 
+- Credit_Notes 
+- Credit_Notes_Allocations 
+- Expense_Claims 
+- Expense_Claim_Validation_Errors
+- Invoices 
+- Invoices_Credit_Notes
+- Invoices_ Prepayments 
+- Invoices_Overpayments 
+- Manual_Journals 
+- Overpayments 
+- Overpayments_Allocations 
+- Prepayments 
+- Prepayments_Allocations 
+- Receipts 
+- Receipt_Validation_Errors 
+- Tracking_Categories
+
+次のテーブルは、Complete スキーマでのみ照会できます。
+
+- Complete.Bank_Transaction_Line_Items 
+- Complete.Bank_Transaction_Line_Item_Tracking 
+- Complete.Contact_Group_Contacts 
+- Complete.Contacts_Contact_ Persons 
+- Complete.Credit_Note_Line_Items 
+- Complete.Credit_Notes_Line_Items_Tracking 
+- Complete.Expense_Claim_ Payments 
+- Complete.Expense_Claim_Receipts 
+- Complete.Invoice_Line_Items 
+- Complete.Invoices_Line_Items_Tracking
+- Complete.Manual_Journal_Lines 
+- Complete.Manual_Journal_Line_Tracking 
+- Complete.Overpayment_Line_Items 
+- Complete.Overpayment_Line_Items_Tracking 
+- Complete.Prepayment_Line_Items 
+- Complete.Prepayment_Line_Item_Tracking 
+- Complete.Receipt_Line_Items 
+- Complete.Receipt_Line_Item_Tracking 
+- Complete.Tracking_Category_Options
 
 ## <a name="next-steps"></a>次の手順
 コピー アクティビティによってサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するセクションを参照してください。

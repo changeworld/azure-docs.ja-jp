@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 66dee639ddb1f59199af2905bcd7b1d87a62289c
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 8a595ead7da8dfa5544903bd698bfdff40555eb9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Jenkins、GitHub、Docker を使って Azure 内の Linux VM に開発インフラストラクチャを作成する方法
 アプリケーション開発のビルドおよびテスト フェーズを自動化する場合は、継続的インテグレーション/デプロイ (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -68,13 +68,13 @@ runcmd:
   - service jenkins restart
 ```
 
-VM を作成する前に、[az group create](/cli/azure/group#create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupJenkins* という名前のリソース グループを場所 *eastus* に作成します。
+VM を作成する前に、[az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成します。 次の例では、*myResourceGroupJenkins* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupJenkins --location eastus
 ```
 
-ここで [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に *cloud-init.txt* ファイルを保存した場合は、ファイルの完全パスを指定します。
+ここで [az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 `--custom-data` パラメーターを使用して、cloud-init 構成ファイルを渡します。 現在の作業ディレクトリの外部に *cloud-init.txt* ファイルを保存した場合は、ファイルの完全パスを指定します。
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupJenkins \
@@ -87,7 +87,7 @@ az vm create --resource-group myResourceGroupJenkins \
 
 VM が作成されて構成されるには､数分､時間がかかります｡
 
-VM に対して Web 通信が行えるようにするには､[az vm open-port](/cli/azure/vm#open-port) を使用して､Jenkins 通信用にポート *8080*､サンプル アプリの実行に使用する Node.js アプリ用にポート *1337* を開きます｡
+VM に対して Web 通信が行えるようにするには､[az vm open-port](/cli/azure/vm#az_vm_open_port) を使用して､Jenkins 通信用にポート *8080*､サンプル アプリの実行に使用する Node.js アプリ用にポート *1337* を開きます｡
 
 ```azurecli-interactive 
 az vm open-port --resource-group myResourceGroupJenkins --name myVM --port 8080 --priority 1001

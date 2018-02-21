@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 19b573f77f2ee84600955d00d30bdb16c84e3623
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3cbc25099b99499a6186e57c155d195e75bd61bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>仮想マシンまたは VHD のイメージを作成する方法
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 
 * 管理ディスクを使用し、Resource Manager デプロイ モデルで作成された Azure VM が必要です。 Linux VM を作成していない場合は、[ポータル](quick-create-portal.md)、[Azure CLI](quick-create-cli.md)、または [Resource Manager](create-ssh-secured-vm-from-template.md) テンプレートを使うことができます。 必要に応じて VM を構成します。 たとえば、[データ ディスクを追加](add-disk.md)し、更新プログラムを適用し、アプリケーションをインストールします。 
 
-* 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしている必要もあります。
+* 最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインしている必要もあります。
 
 ## <a name="quick-commands"></a>クイック コマンド
 
@@ -79,7 +79,7 @@ Azure CLI 2.0 を使用し、一般化されたものとして VM を設定し�
       --name myVM
     ```
 
-3. [az image create](/cli//azure/image#create) で VM リソースのイメージを作成します。 次の例では、*myVM* という名前の VM リソースを使用して *myResourceGroup* という名前のリソース グループに含まれる *myImage* という名前のイメージを作成します。
+3. [az image create](/cli/azure/image#az_image_create) で VM リソースのイメージを作成します。 次の例では、*myVM* という名前の VM リソースを使用して *myResourceGroup* という名前のリソース グループに含まれる *myImage* という名前のイメージを作成します。
    
     ```azurecli
     az image create \
@@ -91,7 +91,7 @@ Azure CLI 2.0 を使用し、一般化されたものとして VM を設定し�
    > このイメージは、ソース VM と同じリソース グループに作成されます。 このイメージから、サブスクリプション内の任意のリソース グループに VM を作成できます。 管理の観点から、VM のリソースとイメージに専用のリソース グループを作成することをお勧めします。
 
 ## <a name="step-3-create-a-vm-from-the-captured-image"></a>手順 3: キャプチャしたイメージから VM を作成する
-[az vm create](/cli/azure/vm#create) で、作成したイメージを使用して VM を作成します。 次の例では、*myImage* という名前のイメージから *myVMDeployed* という名前の VM を作成します。
+[az vm create](/cli/azure/vm#az_vm_create) で、作成したイメージを使用して VM を作成します。 次の例では、*myImage* という名前のイメージから *myVMDeployed* という名前の VM を作成します。
 
 ```azurecli
 az vm create \
@@ -104,7 +104,7 @@ az vm create \
 
 ### <a name="creating-the-vm-in-another-resource-group"></a>別のリソース グループで VM を作成する 
 
-サブスクリプション内の任意のリソース グループでイメージから VM を作成できます。 イメージとは別のリソース グループに VM を作成するには、イメージに対する完全なリソース ID を指定します。 [az image list](/cli/azure/image#list) を実行すると、イメージの一覧が表示されます。 出力は次の例のようになります。
+サブスクリプション内の任意のリソース グループでイメージから VM を作成できます。 イメージとは別のリソース グループに VM を作成するには、イメージに対する完全なリソース ID を指定します。 [az image list](/cli/azure/image#az_image_list) を実行すると、イメージの一覧が表示されます。 出力は次の例のようになります。
 
 ```json
 "id": "/subscriptions/guid/resourceGroups/MYRESOURCEGROUP/providers/Microsoft.Compute/images/myImage",
@@ -112,7 +112,7 @@ az vm create \
    "name": "myImage",
 ```
 
-次の例では、[az vm create](/cli/azure/vm#create) を実行し、イメージ リソース ID を指定してソース イメージとは別のリソース グループに VM を作成します。
+次の例では、[az vm create](/cli/azure/vm#az_vm_create) を実行し、イメージ リソース ID を指定してソース イメージとは別のリソース グループに VM を作成します。
 
 ```azurecli
 az vm create \
@@ -126,7 +126,7 @@ az vm create \
 
 ## <a name="step-4-verify-the-deployment"></a>手順 4: デプロイを検証する
 
-ここで、作成した仮想マシンに SSH を使用して接続し、デプロイを検証し、新しい VM の使用を開始します。 SSH を介して接続するには、[az vm show](/cli/azure/vm#show) を実行して、VM の IP アドレスか FQDN を見つけます。
+ここで、作成した仮想マシンに SSH を使用して接続し、デプロイを検証し、新しい VM の使用を開始します。 SSH を介して接続するには、[az vm show](/cli/azure/vm#az_vm_show) を実行して、VM の IP アドレスか FQDN を見つけます。
 
 ```azurecli
 az vm show \
@@ -135,7 +135,7 @@ az vm show \
    --show-details
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ソース VM イメージから複数の VM を作成できます。 イメージに変更を加える必要がある場合は、次の手順を実行します。 
 
 - イメージから VM を作成します。

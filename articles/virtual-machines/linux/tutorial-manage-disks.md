@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 16cc0c5e38eb273fc2504a39497d00c76d666316
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 87b410fdcd5901499e809f8d2b9a7b8788134cfc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-azure-disks-with-the-azure-cli"></a>Azure CLI を使用した Azure ディスクの管理
 
@@ -108,7 +108,7 @@ Premium ディスクは、SSD ベースの高性能で待機時間の短いデ�
 az group create --name myResourceGroupDisk --location eastus
 ```
 
-[az vm create]( /cli/azure/vm#create) コマンドを使用して VM を作成します。 `--datadisk-sizes-gb` 引数は、追加のディスクを作成してこの仮想マシンに接続するように指定するために使用します。 複数のディスクを作成して接続するには、ディスク サイズ値をスペースで区切ったリストを使用します。 次の例では、どちらも 128 GB のデータ ディスクを 2 つ備えた VM が作成されます。 ディスク サイズが 128 GB であるため、両方のディスクが P10 として構成され、ディスクあたり最大 500 IOPS を実現します。
+[az vm create]( /cli/azure/vm#az_vm_create) コマンドを使用して VM を作成します。 `--datadisk-sizes-gb` 引数は、追加のディスクを作成してこの仮想マシンに接続するように指定するために使用します。 複数のディスクを作成して接続するには、ディスク サイズ値をスペースで区切ったリストを使用します。 次の例では、どちらも 128 GB のデータ ディスクを 2 つ備えた VM が作成されます。 ディスク サイズが 128 GB であるため、両方のディスクが P10 として構成され、ディスクあたり最大 500 IOPS を実現します。
 
 ```azurecli-interactive 
 az vm create \
@@ -122,7 +122,7 @@ az vm create \
 
 ### <a name="attach-disk-to-existing-vm"></a>既存の VM にディスクを接続する
 
-新しいディスクを作成して既存の仮想マシンに接続するには、[az vm disk attach](/cli/azure/vm/disk#attach) コマンドを使用します。 次の例では、サイズが 128 ギガバイトの Premium ディスクが作成され、最後の手順で作成した VM に接続されます。
+新しいディスクを作成して既存の仮想マシンに接続するには、[az vm disk attach](/cli/azure/vm/disk#az_vm_disk_attach) コマンドを使用します。 次の例では、サイズが 128 ギガバイトの Premium ディスクが作成され、最後の手順で作成した VM に接続されます。
 
 ```azurecli-interactive 
 az vm disk attach --vm-name myVM --resource-group myResourceGroupDisk --disk myDataDisk --size-gb 128 --sku Premium_LRS --new 
@@ -207,13 +207,13 @@ VM をデプロイしたら、オペレーティング システム ディスク
 az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
 ```
 
-VM の割り当ても解除する必要があります。 [az vm deallocate]( /cli/azure/vm#deallocate) コマンドを使用して、VM を停止し割り当てを解除します。
+VM の割り当ても解除する必要があります。 [az vm deallocate]( /cli/azure/vm#az_vm_deallocate) コマンドを使用して、VM を停止し割り当てを解除します。
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupDisk --name myVM
 ```
 
-[az disk update](/cli/azure/vm/disk#update) コマンドを使用して、ディスクのサイズを変更します。 この例では、*myDataDisk* という名前のディスクのサイズを 1 TB に変更します。
+[az disk update](/cli/azure/vm/disk#az_vm_disk_update) コマンドを使用して、ディスクのサイズを変更します。 この例では、*myDataDisk* という名前のディスクのサイズを 1 TB に変更します。
 
 ```azurecli-interactive 
 az disk update --name myDataDisk --resource-group myResourceGroupDisk --size-gb 1023

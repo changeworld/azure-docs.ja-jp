@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 02/07/2018
 ms.author: abnarain
-ms.openlocfilehash: 8bd5ae2aac23b18aeb3ef44692f448b50b7e3d44
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 898e6914a427b2e8864d97a7188eb718811ce263
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,9 +57,6 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 
    [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) にデータ ストアの資格情報を格納するよう選択して、Azure Data Factory にアクティビティの実行中にそれを取得させることができます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」を参照してください。
 
-   > [!NOTE]
-   > 現時点では、[Dynamics コネクタ](connector-dynamics-crm-office-365.md)でのみこの機能がサポートされます。 
-
 ### <a name="data-encryption-in-transit"></a>転送中のデータの暗号化
 クラウド データ ストアが HTTPS または TLS をサポートしている場合、Data Factory のデータ移動サービスとクラウド データ ストア間のデータ転送はすべて、セキュリティで保護されたチャネル HTTPS または TLS を介して行われます。
 
@@ -82,10 +79,10 @@ Azure Data Lake Store では、アカウントに格納されているデータ�
 Azure Blob Storage と Azure Table Storage では、Storage Service Encryption (SSE) をサポートしています。SSE により、データをストレージに永続化する前の暗号化と取得前の暗号化解除が自動的に実行されます。 詳細については、「[保存データ向け Azure Storage Service Encryption](../storage/common/storage-service-encryption.md)」をご覧ください。
 
 #### <a name="amazon-s3"></a>Amazon S3
-Amazon S3 では、保存データのクライアント暗号化とサーバー暗号化の両方をサポートしています。 詳細については、「[暗号化を使用したデータの保護](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)」をご覧ください。 現在、Data Factory では仮想プライベート クラウド (VPC) 内の Amazon S3 はサポートしていません。
+Amazon S3 では、保存データのクライアント暗号化とサーバー暗号化の両方をサポートしています。 詳細については、「[暗号化を使用したデータの保護](http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingEncryption.html)」をご覧ください。
 
 #### <a name="amazon-redshift"></a>Amazon Redshift
-Amazon Redshift では、保存データのクラスター暗号化をサポートしています。 詳細については、「[Amazon Redshift データベース暗号化](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)」をご覧ください。 現在、Data Factory では VPC 内の Amazon Redshift はサポートしていません。 
+Amazon Redshift では、保存データのクラスター暗号化をサポートしています。 詳細については、「[Amazon Redshift データベース暗号化](http://docs.aws.amazon.com/redshift/latest/mgmt/working-with-db-encryption.html)」をご覧ください。 
 
 #### <a name="salesforce"></a>Salesforce
 Salesforce では、ファイル、添付ファイル、カスタム フィールドをすべて暗号化できる Shield Platform Encryption をサポートしています。 詳細については、「[Understanding the Web Server OAuth Authentication Flow (Web サーバーの OAuth 認証フローについて)](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_understanding_web_server_oauth_flow.htm)」をご覧ください。  

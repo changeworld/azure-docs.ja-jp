@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: ca828dab7bdb47e41596be2717598cfe828953ca
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f13ca506197ff8b9b86cf1f69300fd974b9ddd5a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Kubernetes ダッシュボード
 
@@ -30,7 +30,7 @@ Kubernetes ダッシュボードを起動するために Azure CLI を使用で�
 Kubernetes ダッシュボードを起動するには、`az aks browse` コマンドを使用します。 このコマンドを実行する場合は、リソース グループとクラスター名を置き換えます。
 
 ```azurecli
-az aks browse --resource-group myResourceGroup --name myK8SCluster
+az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
 このコマンドは、開発システムと Kubernetes API の間にプロキシを作成し、Kubernetes ダッシュボードへの Web ブラウザーを開きます。
@@ -71,7 +71,7 @@ Kubernetes ダッシュボードで、右上のウィンドウにある **[作�
 
 ![Kubernetes 編集](./media/container-service-kubernetes-ui/edit-deployment.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Kubernetes ダッシュボードの詳細については、Kubernetes のドキュメントを参照してください。
 

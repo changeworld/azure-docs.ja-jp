@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 11/16/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2afbc64519887f110c0213a4f565b4ef1317e26e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3c8bbb06fd511321a67e01772caeaa316ddb6e2a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -134,7 +134,7 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
     Cloud Services 構成プールで使用可能なオペレーティング システムは、「 [Azure ゲスト OS リリースと SDK の互換性対応表](../cloud-services/cloud-services-guestos-update-matrix.md)」に一覧が掲載されています。 Cloud Services ノードを含むプールを作成する場合は、ノード サイズとその "*OS ファミリ*" を指定する必要があります。 Cloud Services は、Windows を実行する仮想マシンよりも迅速に Azure にデプロイされます。 Windows コンピューティング ノードのプールが必要な場合、デプロイ時間に関して Cloud Services にパフォーマンスのメリットがあることがわかります。
 
     * *OS ファミリ* によって、OS と同時にインストールされる .NET のバージョンも決まります。
-    * Cloud Services 内の worker ロールと同様、"*OS バージョン*" を指定できます (worker ロールの詳細については、[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページの「[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services)」セクションを参照してください)。
+    * Cloud Services 内の worker ロールと同様、"*OS バージョン*" を指定できます (worker ロールの詳細については、[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページを参照してください)。
     * worker ロールの場合と同様に、"*OS バージョン*" には `*` を指定することをお勧めします。これにより、ノードは自動的にアップグレードされ、新たにリリースされたバージョンに対応するための作業が不要になります。 特定の OS バージョンを選択するのは、主にアプリケーションの互換性を確保する必要がある場合です。こうすることで、バージョンの更新を許可する前に旧バージョンとの互換性をテストできます。 検証が終わると、プールの "*OS バージョン*" を更新して、新しい OS イメージをインストールできます。その際、実行中のタスクはすべて中断され、再びキューに置かれます。
 
 プールを作成するときは、VHD のベース イメージの OS に応じて、適切な **nodeAgentSkuId** を選択する必要があります。 [サポートされるノード エージェント SKU をリスト表示する](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)操作を呼び出して、使用可能なノード エージェント SKU ID と OS イメージ参照のマッピングを取得できます。
@@ -479,6 +479,8 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 > RDP や SSH を通じてノードに接続するには、まず、ノード上にユーザーを作成する必要があります。 Azure Portal から Batch REST API を使用して[ユーザー アカウントをノードに追加][rest_create_user]し、Batch .NET の [ComputeNode.CreateComputeNodeUser][net_create_user] メソッドを呼び出すか、Batch Python モジュールの [add_user][py_add_user] メソッドを呼び出してください。
 >
 >
+
+計算ノードへの RDP アクセスまたは SSH アクセスを制限または無効にする必要がある場合は、「[Configure or disable remote access to compute nodes in an Azure Batch pool (Azure Batch プールの計算ノードへのリモート アクセスを構成または無効にする)](pool-endpoint-configuration.md)」を参照してください。
 
 ### <a name="troubleshooting-problematic-compute-nodes"></a>問題のあるコンピューティング ノードのトラブルシューティング
 一部のタスクが失敗する場合は、Batch クライアント アプリケーションまたはサービスで、失敗したタスクのメタデータを調べて、正常に動作していないノードを特定できます。 プール内のノードにはそれぞれ一意の ID があり、タスクが実行されるノードはタスクのメタデータに含まれています。 問題のあるノードが特定できたら、そのノードで以下に示すいくつかの対策を実行します。

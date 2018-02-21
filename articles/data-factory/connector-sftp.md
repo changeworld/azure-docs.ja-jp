@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 046172d8c4cff880c8e5d59834f5753927fb90c2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 55379add493224770ca7e0e26fd607cd0a2cf892
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-from-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用して SFTP サーバーからデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +65,7 @@ SFTP のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | userName | SFTP サーバーにアクセスできるユーザー。 |[はい] |
-| password | ユーザー (userName) のパスワード。 このフィールドを SecureString とマークします。 | [はい] |
+| password | ユーザー (userName) のパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 
 **例:**
 
@@ -104,11 +104,11 @@ SSH 公開キー認証を使用するには、"authenticationType" を **SshPubl
 |:--- |:--- |:--- |
 | userName | SFTP サーバーにアクセスできるユーザー |[はい] |
 | privateKeyPath | 統合ランタイムがアクセスできる秘密キー ファイルへの絶対パスを指定します。 セルフホステッド統合ランタイムが "connectVia" で指定されている場合にのみ適用されます。 | `privateKeyPath` または `privateKeyContent` を指定します。  |
-| privateKeyContent | Base64 にエンコードされた SSH 秘密キーのコンテンツ。 SSH 秘密キーは、OpenSSH 形式にする必要があります。 このフィールドを SecureString とマークします。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
-| passPhrase | キー ファイルがパス フレーズで保護されている場合は、パス フレーズ/パスワードを指定して、秘密キーを復号化します。 このフィールドを SecureString とマークします。 | はい (秘密キー ファイルがパス フレーズで保護されている場合)。 |
+| privateKeyContent | Base64 にエンコードされた SSH 秘密キーのコンテンツ。 SSH 秘密キーは、OpenSSH 形式にする必要があります。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | `privateKeyPath` または `privateKeyContent` を指定します。 |
+| passPhrase | キー ファイルがパス フレーズで保護されている場合は、パス フレーズ/パスワードを指定して、秘密キーを復号化します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | はい (秘密キー ファイルがパス フレーズで保護されている場合)。 |
 
 > [!NOTE]
-> SFTP コネクタがサポートするのは OpenSSH キーのみです。 キー ファイルが適切な形式であることを確認してください。 Putty ツールを使用して、.ppk を OpenSSH 形式に変換することができます。
+> SFTP コネクタは RSA/DSA OpenSSH キーをサポートします。 キー ファイルの内容が "-----BEGIN [RSA/DSA] PRIVATE KEY-----" で始まることを確認します。 秘密キー ファイルが ppk 形式である場合は、Putty ツールを使用して .ppk から OpenSSH 形式に変換してください。 
 
 **例 1: 秘密キー ファイルの filePath を使用した SshPublicKey 認証**
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbeacd2acfd2fba9d26e7cbc94d8660d15c75642
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-is-azure-diagnostics"></a>Azure 診断について
 Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現在時点でのサポート対象は、Azure Cloud Service Web および Worker ロール、Microsoft Windows を実行している Azure Virtual Machines、および Service Fabric となっています。 その他の Azure サービスには、独自の独立した診断があります。
@@ -26,7 +26,7 @@ Azure 診断は、デプロイされたアプリケーションで診断デー�
 ## <a name="data-you-can-collect"></a>収集可能なデータ
 Azure 診断は、次の種類のデータを収集できます。
 
-| データ ソース | Description |
+| [データ ソース] | [説明] |
 | --- | --- |
 | パフォーマンス カウンター |オペレーティング システムとカスタム パフォーマンス カウンター |
 | Application Logs |アプリケーションによって書き込まれたメッセージをトレースする |
@@ -43,7 +43,7 @@ Azure 診断拡張機能は、このデータを Azure ストレージ アカウ
 ## <a name="versioning"></a>バージョン管理
 「 [Azure Diagnostics Versioning History (Azure 診断のバージョン履歴)](azure-diagnostics-versioning-history.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 診断情報を収集するサービスを選択し、以下の記事の説明に従って操作を開始してください。 特定のタスクのリファレンスについては、一般的な Azure 診断リンクを使用してください。
 
 ## <a name="web-apps"></a>Web Apps
@@ -75,6 +75,6 @@ Web Apps では Azure 診断が使用されないので注意してください�
 ## <a name="general-azure-diagnostics-articles"></a>Azure 診断に関する一般的な記事
 * [Azure Diagnostics Schema Configuration (Azure 診断スキーマの構成)](https://msdn.microsoft.com/library/azure/mt634524.aspx) - 診断データを収集して送信するようにスキーマ ファイルを変更する方法について説明します。 Visual Studio を使用してスキーマ ファイルを変更することもできます。
 * [Azure Storage に Azure 診断データを格納する方法](../cloud-services/cloud-services-dotnet-diagnostics-storage.md) - 診断データが書き込まれるテーブルと BLOB の名前を示します。
-* [Azure 診断でのパフォーマンス カウンターの使用](../cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md)について説明します。
+* [Azure 診断でのパフォーマンス カウンターの使用](../cloud-services/diagnostics-performance-counters.md)について説明します。
 * [Application Insights への Azure 診断情報の送信](azure-diagnostics-configure-application-insights.md)について説明します。
 * Azure Storage テーブルでの診断の開始またはデータの検索に問題がある場合は、[Azure 診断のトラブルシューティング](azure-diagnostics-troubleshooting.md)に関するページを参照してください。

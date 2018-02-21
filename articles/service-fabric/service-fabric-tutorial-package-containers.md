@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: caa7f58860c4540fa6914b1c0f0cfcba437468fa
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: eb838903802de5a04084a60924fc52d988180c11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Service Fabric アプリケーションとしてのコンテナーのパッケージ化とデプロイ
 
@@ -218,9 +218,17 @@ r = redis.StrictRedis(host=redis_server, port=6379, db=0)
 この時点で、サービス パッケージ アプリケーションのテンプレートをクラスターにデプロイすることができます。 次のチュートリアルでは、このアプリケーションをデプロイし、Service Fabric クラスターで実行します。
 
 ## <a name="create-a-service-fabric-cluster"></a>Service Fabric クラスターの作成
-Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターかパーティー クラスターを使用します。
+Azure 内のクラスターにアプリケーションをデプロイするには、独自のクラスターを作成します。
 
-パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによってサポートされており、誰でもアプリケーションをデプロイし、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
+パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによって実行され、誰でもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
+
+セキュリティで保護されたパーティ クラスターに対する管理操作は、Service Fabric Explorer、CLI、Powershell のいずれかを使用して実行できます。 Service Fabric Explorer を使用するには、パーティ クラスターの Web サイトから PFX ファイルをダウンロードし、ご使用の証明書ストア (Windows または Mac) またはブラウザー本体 (Ubuntu) に証明書をインポートする必要があります。 パーティ クラスターの自己署名証明書についてはパスワードは不要です。 
+
+PowerShell または CLI で管理操作を実行するには、PFX (PowerShell) または PEM (CLI) が必要となります。 PFX を PEM ファイルに変換するには、次のコマンドを実行してください。  
+
+```bash
+openssl pkcs12 -in party-cluster-1277863181-client-cert.pfx -out party-cluster-1277863181-client-cert.pem -nodes -passin pass:
+```
 
 独自のクラスターの作成については、[Azure での Service Fabric クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)に関するページをご覧ください。
 
@@ -230,7 +238,7 @@ Service Fabric CLI を使用して、アプリケーションを Azure クラス
 Azure の Service Fabric クラスターに接続します。 プレースホルダー エンドポイントは独自のエンドポイントに置き換えてください。 エンドポイントは、次のような完全な URL にする必要があります。
 
 ```bash
-sfctl cluster select --endpoint <http://lin4hjim3l4.westus.cloudapp.azure.com:19080>
+sfctl cluster select --endpoint https://linh1x87d1d.westus.cloudapp.azure.com:19080 --pem party-cluster-1277863181-client-cert.pem --no-verify
 ```
 
 **TestContainer** ディレクトリに用意されているインストール スクリプトを使用してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。

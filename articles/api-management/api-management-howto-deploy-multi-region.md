@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: e126e34bc9fce21243b0ef79f5ab661aec3a2de6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 6f84c1b2092f71eaeba0005a36018390242869ea
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-deploy-an-azure-api-management-service-instance-to-multiple-azure-regions"></a>複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法
 API Management では複数リージョンのデプロイメントがサポートされており、API パブリッシャーは 1 つの API Management サービスを任意の数の Azure リージョンに分散できます。 これにより、地理的に分散した API コンシューマーによって認識される要求待ち時間が短くなり、1 つのリージョンがオフラインになった場合でもサービスの可用性を向上できます。 
@@ -52,13 +52,12 @@ Azure Portal で API Management サービス インスタンスの **[スケー�
 すべての場所が構成されるまでこのプロセスを繰り返したら、ツールバーの **[保存]** をクリックして、デプロイ プロセスを開始します。
 
 ## <a name="remove-region"> </a>場所から API Management サービス インスタンスを削除する
+
 Azure Portal で API Management サービス インスタンスの **[スケールと料金]** ページに移動します。 
 
 ![[スケール] タブ][api-management-scale-service]
 
 テーブルの右端にある **[...]** ボタンを使用して、削除する場所のコンテキスト メニューを開きます。 **[削除]** を選択します。
-
-![リージョンの削除][api-management-remove-region]
 
 削除されたことを確認したら、**[保存]** をクリックして変更を適用します。
 

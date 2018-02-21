@@ -3,7 +3,7 @@ title: "Azure リソースのアクセス権の割り当ての確認 | Microsoft
 description: "Azure Portal の任意のユーザーまたはグループについて、すべてのロールベースのアクセス制御の割り当てを確認および管理する"
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: jeffsta
 ms.assetid: e6f9e657-8ee3-4eec-a21c-78fe1b52a005
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
-ms.author: andredm
-ms.openlocfilehash: 51b158ebfeea52e726213edd042277779f52124b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.author: rolyon
+ms.openlocfilehash: e893aeeabf6a34707fbfe6576293a9e0726dd975
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>Azure Portal のユーザーとグループのアクセス権の割り当てを表示
 > [!div class="op_single_selector"]
@@ -55,8 +55,8 @@ Azure Active Directory (Azure AD) のロールベースのアクセス制御 (RB
 2. **[削除]** を選択し、**[はい]** を選択して確定します。
     ![アクセス権の割り当ての削除 - スクリーンショット](./media/role-based-access-control-manage-assignments/delete_assignment.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * ロールベースのアクセス制御を開始して、 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](role-based-access-control-configure.md)
-* [RBAC の組み込みロール](role-based-access-built-in-roles.md)
+* [RBAC: 組み込みのロール](role-based-access-built-in-roles.md)
 

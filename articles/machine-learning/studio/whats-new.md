@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.author: v-donglo
-ms.openlocfilehash: 82ec23f4edba88ec75c2073e24cad24b66323d72
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.author: raymondl
+ms.openlocfilehash: 0e97a8906bf0e5ea790725efbef16b883138c87a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure Machine Learning の新機能
 

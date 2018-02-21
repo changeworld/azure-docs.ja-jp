@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 06b60968931d18e7c7219d83801a5433631ed470
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e1f745fc70395f06d2eb3d98644d54c314a0ef26
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-impala-by-using-azure-data-factory-beta"></a>Azure Data Factory (ベータ) を使用して Impala からデータをコピーする
 
@@ -52,7 +52,7 @@ Impala のリンクされたサービスでは、次のプロパティがサポ�
 | ポート | Impala サーバーがクライアント接続のリッスンに使用する TCP ポート。 既定値は 21050 です。  | いいえ  |
 | authenticationType | 使用する認証の種類。 <br/>使用できる値は、**Anonymous**、**SASLUsername**、および **UsernameAndPassword** です。 | [はい] |
 | username | Impala サーバーへのアクセスに使用するユーザー名。 既定値は anonymous です (SASLUsername を使用するとき)。  | いいえ  |
-| password | ユーザー名に対応するパスワード (UsernameAndPassword を使用するとき)。 このフィールドを SecureString としてマークして、Data Factory に安全に格納することができます。 また、Azure Key Vault にパスワードを格納して、データ コピーの実行時にコピー アクティビティがそこからプルするようにもできます。 詳細については、「[Azure Key Vault への資格情報の格納](store-credentials-in-key-vault.md)」をご覧ください。 | いいえ  |
+| password | ユーザー名に対応するパスワード (UsernameAndPassword を使用するとき)。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | enableSsl | SSL を使用してサーバーへの接続を暗号化するかどうかを指定します。 既定値は **false** です。  | いいえ  |
 | trustedCertPath | SSL 経由で接続するときにサーバーを検証するために使用する、信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド統合ランタイムで SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ  |
 | useSystemTrustStore | システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 既定値は **false** です。  | いいえ  |
@@ -87,7 +87,7 @@ Impala のリンクされたサービスでは、次のプロパティがサポ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットを定義するために使用できるセクションおよびプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Impala データセットでサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、[データセット](concepts-datasets-linked-services.md)に関する記事をご覧ください。 このセクションでは、Impala データセットでサポートされるプロパティの一覧を示します。
 
 Impala からデータをコピーするには、データセットの type プロパティを **ImpalaObject** に設定します。 この種類のデータセットに追加の種類固有のプロパティはありません。
 

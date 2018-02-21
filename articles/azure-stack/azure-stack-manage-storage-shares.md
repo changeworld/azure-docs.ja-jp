@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 12/14/2017
 ms.author: brenduns
 ms.reviewer: jiahan
-ms.openlocfilehash: dce4252846732ca5161018103438df1f9ff6146d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 30e5265fbad66ab3c68bc5d5e90687b1a968167b
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 この記事の情報は、Azure Stack クラウド オペレーターが、Azure Stack 展開のストレージ容量を監視して管理するために役立ちます。 Azure Stack ストレージ インフラストラクチャは、Azure Stack 展開の合計ストレージ容量のサブセットを、**ストレージ サービス**で使用されるストレージ容量として割り当てます。 ストレージ サービスは、展開のノードに対応するボリューム上の共有にテナント データを格納します。
 
@@ -130,7 +130,7 @@ PowerShell または管理者ポータルを使用して共有を監視するこ
 - リソース グループへのアクセス許可がないために、PowerShell を使用してオーバーフロー データが配置されている別のボリュームをクエリできない場合は、それらのリソース グループとコンテナーの所有者と協力して、移行するデータの合計サイズを把握したうえでデータを移行します。  
 
 > [!IMPORTANT]
-> コンテナーの BLOB の移行は、PowerShell の使用を要求するオフライン操作です。 移行が完了するまで、移行するコンテナーのすべての BLOB はオフラインのままであり、使用することはできません。
+> コンテナーの BLOB の移行は、PowerShell の使用を要求するオフライン操作です。 移行が完了するまで、移行するコンテナーのすべての BLOB はオフラインのままであり、使用することはできません。 また、進行中の移行作業がすべて完了するまで、Azure Stack をアップグレードすることは避けてください。
 
 #### <a name="to-migrate-containers-using-powershell"></a>PowerShell を使用してコンテナーを移行するには
 1. [Azure PowerShell のインストールと構成](http://azure.microsoft.com/documentation/articles/powershell-install-configure/)が行われていることを確認します。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](http://go.microsoft.com/fwlink/?LinkId=394767)をご覧ください。

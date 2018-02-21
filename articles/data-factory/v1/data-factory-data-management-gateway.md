@@ -15,15 +15,18 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 0735dd186e53a72c29040fcde51ceb70024784e4
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1f83b3568cf5c6ad0650f2289263d855ab395772
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
 > [!NOTE]
 > この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の自己ホスト型統合ランタイム](../create-self-hosted-integration-runtime.md)に関するページを参照してください。 
+
+> [!NOTE]
+> Data Management Gateway は、セルフホステッド Integration Runtime に名前が変わりました。  
 
 データ管理ゲートウェイは、クラウドと、オンプレミスのデータ ストアとの間でデータをコピーするために、オンプレミスの環境にインストールする必要があるクライアント エージェントです。 Data Factory でサポートされているオンプレミスのデータ ストアは、 [サポートされるデータ ソース](data-factory-data-movement-activities.md#supported-data-stores-and-formats) に関するセクションに示されています。
 

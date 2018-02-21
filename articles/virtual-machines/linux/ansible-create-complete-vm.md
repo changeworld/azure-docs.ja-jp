@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 88e1f17184be07ec8499ad3049f7210b56fdfc15
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: d5e3f3db4726bfb16cbb389cf99b9bf7c511da97
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Ansible によって Azure に完全な Linux 仮想マシンの環境を作成する
 Ansible を使用すると、環境内のリソースのデプロイと構成を自動化することができます。 Ansible を使用すると、他のリソースと同じように、Azure で仮想マシン (VM) を管理できます。 この記事では、Ansible を使用して、完全な Linux 環境とサポート リソースを作成する方法を示します。 [Ansible を使用して基本的な VM を作成する](ansible-create-vm.md)方法も説明します。
@@ -187,7 +187,7 @@ Ansible プレイブックの次のセクションでは、*10.0.0.0/16* アド�
         version: latest
 ```
 
-Ansible では、すべてのリソースをデプロイするリソース グループが必要です。 [az group create](/cli/azure/vm#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+Ansible では、すべてのリソースをデプロイするリソース グループが必要です。 [az group create](/cli/azure/vm#az_vm_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

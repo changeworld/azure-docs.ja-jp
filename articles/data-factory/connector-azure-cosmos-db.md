@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 1114fd272bd16d17fbeb382b0f374a69dc74916a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c791f335bfa9ec6073eb83149068571ceb253f82
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする
 
@@ -54,7 +54,7 @@ Azure Cosmos DB のリンクされたサービスでは、次のプロパティ�
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **CosmosDb** に設定する必要があります。 | [はい] |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString とマークします。 |[はい] |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString としてマークして Data Factory にデータ ファクトリに安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**

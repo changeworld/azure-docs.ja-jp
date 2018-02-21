@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/03/2018
+ms.date: 02/06/2018
 ms.author: yurid
-ms.openlocfilehash: 04f2dd3dcaa44a243cb9620ab8192e15aae82a01
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 608947ec4a94cad276e34e8d3457f05b06d04ad6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="security-health-monitoring-in-azure-security-center"></a>Azure セキュリティ センターでのセキュリティ ヘルスの監視
 この記事は、Azure Security Center で監視機能を使用してポリシーに対するコンプライアンスを監視するうえで役立ちます。
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/04/2018
 
 **[Monitoring agent health issues]\(エージェントの正常性の問題の監視\)** が表示されます。 Security Center で正常に監視できない VM とコンピューターが一覧表示されます。 詳細については、VM またはコンピューターを選択します。 Security Center で監視できない理由が **[監視の状態]** に表示されます。 **[監視の状態]** の値、説明、解決手順を紹介した一覧については、[Security Center トラブルシューティング ガイド](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)を参照してください。
 
-#### <a name="recommendations"></a>Recommendations
+#### <a name="recommendations"></a>推奨事項
 このセクションには、Azure Security Center で監視される[各仮想マシンとコンピューターについての推奨事項](security-center-virtual-machine-recommendations.md)が表示されます。 最初の列には、推奨事項が一覧表示されます。 2 番目の列は、その推奨事項の影響を受ける仮想マシンとコンピューターの合計数を表しています。 3 番目の列は、以下のスクリーンショットに示したように、問題の重大度を表します。
 
 ![仮想マシンの推奨事項](./media/security-center-monitoring/security-center-monitoring-fig2-sep2017.png)
@@ -87,6 +87,13 @@ ms.lasthandoff: 01/04/2018
 > [!NOTE]
 > ここに示したセキュリティの推奨事項は、**[推奨事項]** オプションに表示されているものと同じです。 推奨事項の解決方法の詳細については、「[Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md)」の記事を参照してください。 これは仮想マシンとコンピューターだけでなく、**[リソース正常性]** タイルで利用できるすべてのリソースにも適用されます。
 >
+
+#### <a name="unmonitored-vms"></a>監視対象外の VM
+Security Center では、Microsoft Monitoring Agent 拡張機能が実行されていない VM は監視されません。 VM には、既にローカル エージェントがインストールされている場合があります (OMS ダイレクト エージェント、SCOM エージェントなど)。 これらのエージェントがインストールされている VM は、監視対象外と見なされます。Security Center ではこれらのエージェントが完全にはサポートされないためです。 Security Center に備わっているあらゆる機能の利点を最大限に活かすためには、Microsoft Monitoring Agent 拡張機能が必要です。
+
+監視対象外の VM には、あらかじめインストールされているローカル エージェントに加えて、この拡張機能をインストールすることができます。 両方のエージェントを同じように構成し、同じワークスペースに接続してください。 そうすることで、Security Center が Microsoft Monitoring Agent 拡張機能と対話してデータを収集できる状態になります。  Microsoft Monitoring Agent 拡張機能をインストールする手順については、[VM 拡張機能の有効化](../log-analytics/log-analytics-quick-collect-azurevm.md#enable-the-log-analytics-vm-extension)に関するページを参照してください。
+
+自動プロビジョニングの対象として初期化された VM およびコンピューターを Security Center で正常に監視できない理由について詳しくは、「[Monitoring agent health issues (エージェントの正常性の問題の監視)](security-center-troubleshooting-guide.md#monitoring-agent-health-issues)」を参照してください。
 
 #### <a name="vms--computers-section"></a>[VM とコンピューター] セクション
 [VM とコンピューター] セクションには、すべての仮想マシンとコンピューターを対象とした推奨事項の概要が表示されます。 各列は、以下のスクリーンショットに示したように、推奨事項の 1 つのセットを表します。

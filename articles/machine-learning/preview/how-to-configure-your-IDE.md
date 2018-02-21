@@ -9,12 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/05/2017
-ms.openlocfilehash: 4e18a413a0559b1ddebecf1b29722d21ef35c337
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/01/2018
+ms.openlocfilehash: caafc626d42ea3f1514c36be04507adf31bbc5c9
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>IDE を使用する Azure Machine Learning Workbench の構成方法 
 

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: maxluk
-ms.openlocfilehash: 391b691e895c672ef872f8b98c88567175ad8030
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 70451c5a69a1a268aef0eb957cb92791b92eb221
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="capacity-planning-for-hdinsight-clusters"></a>HDInsight クラスターの容量計画
 
@@ -89,8 +89,7 @@ VM のサイズと種類は、CPU の処理能力、RAM サイズ、ネットワ
 
 クラスターの種類によっては、ワーカー ノードの数を増やすことでコンピューティング能力が高まりますが (コア数の増加など)、処理するデータのインメモリ ストレージをクラスター全体でサポートするために必要なメモリの総容量も増加する可能性があります。 VM のサイズと種類を選択する場合と同様に、通常、クラスタの適切なスケールの選択は、シミュレートされたワークロードやカナリア クエリを使用して経験的に行われます。
 
-ピーク時の負荷要求に合わせてクラスターをスケールアウトし、それらの追加ノードが不要になったらスケールインすることができます。
-<!-- - see [Scaling - best practices](hdinsight-scaling-best-practices.md). -->
+ピーク時の負荷要求に合わせてクラスターをスケールアウトし、それらの追加ノードが不要になったらスケールインすることができます。 詳細については、[HDInsight クラスターのスケーリング](hdinsight-scaling-best-practices.md)に関するページを参照してください。
 
 ### <a name="cluster-lifecycle"></a>クラスターのライフサイクル
 

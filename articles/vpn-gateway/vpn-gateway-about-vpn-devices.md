@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: yushwang
-ms.openlocfilehash: bb6f9f4df9afa9d0c1a75fbb1166798a2aef4bb4
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: f75732761cefd7706fe1555484148efe6cdc0e56
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -57,6 +57,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Cisco              |ASA       |8.3<br>8.4 以降 (IKEv2*) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[構成ガイド*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
 | Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[構成のサンプル**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |Meraki |該当なし |互換性なし |互換性なし |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |
 | F5 |BIG-IP シリーズ |12.0 |[構成ガイド](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[構成ガイド](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
 | Fortinet |FortiGate |FortiOS 5.6 |  |[構成ガイド](http://cookbook.fortinet.com/ipsec-vpn-microsoft-azure-56/) |
@@ -127,7 +128,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | IKE のバージョン           |IKEv1              |IKEv2              |
 | Diffie-hellman グループ  |グループ 2 (1024 ビット) |グループ 2 (1024 ビット) |
 | 認証方法 |事前共有キー     |事前共有キー     |
-| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
+| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |1.AES256、SHA1<br>2.AES256、SHA256<br>手順 3.AES128、SHA1<br>4.AES128、SHA256<br>5. 3DES、SHA1<br>6. 3DES、SHA256 |
 | SA の有効期間           |28,800 秒     |28,800 秒     |
 
 ### <a name="ike-phase-2-quick-mode-parameters"></a>IKE フェーズ 2 (クイック モード) のパラメーター
@@ -135,10 +136,10 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | **プロパティ**                  |**PolicyBased**| **RouteBased**                              |
 | ---                           | ---           | ---                                         |
 | IKE のバージョン                   |IKEv1          |IKEv2                                        |
-| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
+| 暗号化とハッシュ アルゴリズム |1.AES256、SHA256<br>2.AES256、SHA1<br>手順 3.AES128、SHA1<br>4. 3DES、SHA1 |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | SA の有効期間 (時間)            |3,600 秒  |27,000 秒                                |
 | SA の有効期間 (バイト)           |102,400,000 KB | -                                           |
-| Perfect Forward Secrecy (PFS) |いいえ             |[RouteBased QM SA プラン](#RouteBasedOffers) |
+| Perfect Forward Secrecy (PFS) |いいえ              |[RouteBased QM SA プラン](#RouteBasedOffers) |
 | Dead Peer Detection (DPD)     |サポートされていません  |サポートされています                                    |
 
 

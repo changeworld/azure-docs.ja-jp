@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: 474a2d66cc46fcac35b145633e802d72881b10d8
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: 9f8c9a32be9b889ced4fdc7065acd09e6700afd5
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="get-started-with-docker-and-compose-to-define-and-run-a-multi-container-application-in-azure"></a>Docker と Compose を使用して Azure 内で複数コンテナー アプリケーションを定義して実行する
 [Compose](http://github.com/docker/compose) では、単純なテキスト ファイルを使用して、複数の Docker コンテナーで構成されるアプリケーションを定義します。 次に、定義された環境をデプロイするためのあらゆる操作を実行する単一のコマンドで、アプリケーションを起動します。 たとえば、この記事では、Ubuntu VM のバックエンド MariaDB SQL Database で WordPress ブログをすばやくセットアップする方法を示します。 Compose を使用してさらに複雑なアプリケーションをセットアップすることもできます。
@@ -32,15 +32,15 @@ Docker VM 拡張機能を使用すると、VM が自動的に Docker ホスト�
 
 
 ### <a name="create-docker-host-with-azure-cli-20"></a>Azure CLI 2.0 で Docker ホストを作成する
-最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインします。
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールし、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。
 
-最初に、[az group create](/cli/azure/group#create) で Docker 環境のリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+最初に、[az group create](/cli/azure/group#az_group_create) で Docker 環境のリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-次に、[az group deployment create](/cli/azure/group/deployment#create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 メッセージが表示されたら、*newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の一意の値を指定します。
+次に、[az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して VM をデプロイします。これには [GitHub の Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu)の Azure Docker VM 拡張機能が含まれます。 メッセージが表示されたら、*newStorageAccountName*、*adminUsername*、*adminPassword*、*dnsNameForPublicIP* に独自の一意の値を指定します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup \
@@ -51,7 +51,7 @@ az group deployment create --resource-group myResourceGroup \
 
 
 ## <a name="verify-that-compose-is-installed"></a>Compose がインストールされていることを確認する
-DNS 名など、VM の詳細を表示するには、[az vm show](/cli/azure/vm#show) を使用します。
+DNS 名など、VM の詳細を表示するには、[az vm show](/cli/azure/vm#az_vm_show) を使用します。
 
 ```azurecli
 az vm show \

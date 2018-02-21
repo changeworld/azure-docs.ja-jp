@@ -3,7 +3,7 @@ title: "Azure RBAC のカスタム ロールの作成 | Microsoft Docs"
 description: "Azure サブスクリプションのきめ細かい ID 管理を実現するために Azure のロールベースのアクセス制御でカスタム ロールを定義する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 ms.assetid: e4206ea9-52c3-47ee-af29-f6eef7566fa5
 ms.service: active-directory
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/11/2017
-ms.author: andredm
+ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 53c8060413f5625273360d9bf23cf27b3f56fb32
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2871ff5eea8fb99040dfab2593d1640d79f51092
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-custom-roles-for-azure-role-based-access-control"></a>Azure のロールベースのアクセス制御のためのカスタム ロールを作成する
 組み込みのロールの中にアクセス権に関する特定の要件を満たすものがない場合は、Azure のロールベースのアクセス制御 (RBAC) でカスタム ロールを作成できます。 カスタム ロールは、[Azure PowerShell](role-based-access-control-manage-access-powershell.md)、[Azure コマンドライン インターフェイス](role-based-access-control-manage-access-azure-cli.md) (CLI)、および [REST API](role-based-access-control-manage-access-rest.md) で作成することができます。 組み込みのロールと同様、カスタム ロールは、ユーザー、グループ、アプリケーションに対して、サブスクリプション、リソース グループ、リソースのスコープで割り当てることができます。 カスタム ロールは Azure AD テナントに保存され、サブスクリプション間で共有することができます。

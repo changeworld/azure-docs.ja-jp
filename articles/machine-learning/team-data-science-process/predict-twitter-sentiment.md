@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: bradsev;
-ms.openlocfilehash: df1124ddb436f0cfeec8f4ed9728fa15278b9325
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 9bae3971f438659c121bfc18a23746a016e5ef97
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="predict-twitter-sentiment-with-word-embeddings-by-using-the-team-data-science-process"></a>Team Data Science Process を使用した単語埋め込みによる Twitter センチメントの予測
 
@@ -131,7 +131,7 @@ SSWE または Word2Vec アルゴリズムを使用して単語ベクトルが�
 
 ![Kubernetes ダッシュボード](./media/predict-twitter-sentiment/kubernetes-dashboard.PNG)
 
-運用化プロセスの詳細については、「[Azure Machine Learning モデルを Web サービスとしてデプロイする](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy)」を参照してください。
+運用化プロセスの詳細については、「[Azure Machine Learning モデルを Web サービスとしてデプロイする](../preview/model-management-service-deploy.md)」を参照してください。
 
 ## <a name="conclusion"></a>まとめ
 
@@ -143,8 +143,8 @@ SSWE または Word2Vec アルゴリズムを使用して単語ベクトルが�
 * [Team Data Science Process とは](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview) 
 * [Azure Machine Learning での Team Data Science Process (TDSP) の使用](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Azure Machine Learning の TDSP プロジェクト テンプレート](https://aka.ms/tdspamlgithubrepo)
-* [Azure Machine Learning Workbench](https://docs.microsoft.com/azure/machine-learning/preview/)
+* [Azure Machine Learning Workbench](../preview/index.yml)
 * [UCI ML リポジトリからの米国収入データセット](https://archive.ics.uci.edu/ml/datasets/adult)
-* [TDSP テンプレートを使った生体エンティティ認識](https://docs.microsoft.com/azure/machine-learning/preview/scenario-tdsp-biomedical-recognition)
+* [TDSP テンプレートを使った生体エンティティ認識](../preview/scenario-tdsp-biomedical-recognition.md)
 * [Mikolov, Tomas 他 "Distributed Representations of Words and Phrases and their Compositionality.Advances in neural information processing systems." 2013 年](https://arxiv.org/abs/1310.4546)
 * [Tang, Duyu 他。"Learning Sentiment-Specific Word Embedding for Twitter Sentiment Classification." ACL (1) 2014 年](http://www.aclweb.org/anthology/P14-1146)

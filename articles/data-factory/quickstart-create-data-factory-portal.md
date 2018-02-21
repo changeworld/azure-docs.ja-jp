@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 02/01/2018
 ms.author: jingwang
-ms.openlocfilehash: f17dc18825c929a75169875594c7b1a13ba1f6d7
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 7065b0b6e0576238e3b32fdbf7ac43b7fc2ae9e6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Azure Data Factory UI を使用してデータ ファクトリを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
@@ -38,8 +38,9 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 
-2. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. [Azure ポータル](https://portal.azure.com)にアクセスします。 
+3. 左側のメニューの **[新規]** を選択し、**[データ + 分析]** を選択して、**[Data Factory]** を選択します。 
    
    ![[新規] ウィンドウでの [Data Factory] の選択](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 2. **[新しいデータ ファクトリ]** ページで、**[名前]**に「**ADFTutorialDataFactory**」と入力します。 

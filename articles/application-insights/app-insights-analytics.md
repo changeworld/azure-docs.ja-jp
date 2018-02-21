@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 02/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: adda6335b702470cd491f07d750236c368325a9e
-ms.sourcegitcommit: 21a58a43ceceaefb4cd46c29180a629429bfcf76
+ms.openlocfilehash: 5f324051a2eeedd35a22f77c771793af9c90c434
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/27/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="analytics-in-application-insights"></a>Application Insights の Analytics
 Analytics は、[Application Insights](app-insights-overview.md) の強力な検索およびクエリのツールです。 Analytics は Web ツールであるため、セットアップは不要です。 Application Insights をお使いのアプリの一つで構成済みの場合、アプリの [[概要]](app-insights-dashboards.md) ブレードで Analytics を開いてアプリのデータを分析できます。
@@ -47,15 +47,15 @@ requests
 
 言語には、以下のような多くの魅力的な機能があります。
 
-* [フィルター](https://docs.loganalytics.io/queryLanguage/query_language_whereoperator.html)。カスタム プロパティとメトリックを含む、すべてのフィールドで未加工のアプリ テレメトリをフィルター処理します。
-* [結合](https://docs.loganalytics.io/queryLanguage/query_language_joinoperator.html)。複数のテーブルを結合します。要求をページ ビュー、依存関係の呼び出し、例外およびログ トレースに関連付けます。
-* 強力な統計 [集計](https://docs.loganalytics.io/docs/Learn/Tutorials/Aggregation-functions)。
+* [フィルター](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/where-operator)。カスタム プロパティとメトリックを含む、すべてのフィールドで未加工のアプリ テレメトリをフィルター処理します。
+* [結合](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/join-operator)。複数のテーブルを結合します。要求をページ ビュー、依存関係の呼び出し、例外およびログ トレースに関連付けます。
+* 強力な統計 [集計](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions)。
 * 迅速かつ強力な視覚化。
 * PowerShell などのプログラムによるクエリの実行に使用できる [REST API](https://dev.applicationinsights.io/)。
 
 [言語の完全なリファレンス](https://go.microsoft.com/fwlink/?linkid=856079)ではサポートされているすべてのコマンドを詳しく説明しており、定期的に情報を更新しています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Analytics ポータル](https://go.microsoft.com/fwlink/?linkid=856587)の概要
 * [クエリ作成](https://go.microsoft.com/fwlink/?linkid=856078)の概要
 * もっとも一般的なイディオムの変換については [SQL ユーザー用の早見表](https://aka.ms/sql-analytics)をご確認ください。

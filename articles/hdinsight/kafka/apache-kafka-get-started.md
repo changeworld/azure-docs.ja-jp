@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/18/2018
 ms.author: larryfr
-ms.openlocfilehash: 6191d81d6b55f5ffe943f800be542d7ea4614eaf
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 639adb2fdc5a7d76c11397b5027199626a0a4016
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka の開始
 
@@ -226,10 +226,12 @@ HDInsight クラスターの作成で問題が発生した場合は、「[アク
 
 * [Kafka ログの分析](apache-kafka-log-analytics-operations-management.md)
 * [Kafka クラスター間でデータをレプリケートする](apache-kafka-mirroring.md)
-* [HDInsight における Kafka のプロデューサー API とコンシューマー API](apache-kafka-producer-consumer-api.md)
+* [HDInsight における Kafka Producer API と Consumer API](apache-kafka-producer-consumer-api.md)
 * [HDInsight における Kafka Streams API](apache-kafka-streams-api.md)
 * [HDInsight 上で Kafka を用いて Apache Spark ストリーミング (DStream) を使用する](../hdinsight-apache-spark-with-kafka.md)
 * [HDInsight 上で Kafka を用いて Apache Spark 構造化ストリーミングを使用する](../hdinsight-apache-kafka-spark-structured-streaming.md)
 * [Apache Spark 構造化ストリーミングを使って HDInsight 上の Kafka から Cosmos DB にデータを移動する](../apache-kafka-spark-structured-streaming-cosmosdb.md)
 * [HDInsight での Kafka に Apache Storm を使用する](../hdinsight-apache-storm-with-kafka.md)
 * [Azure Virtual Network 経由で Kafka に接続する](apache-kafka-connect-vpn-gateway.md)
+* [Azure Container Service での Kafka の使用](apache-kafka-azure-container-services.md)
+* [Azure Function App での Kafka の使用](apache-kafka-azure-functions.md)

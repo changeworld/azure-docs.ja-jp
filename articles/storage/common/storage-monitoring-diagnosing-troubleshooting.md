@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: fhryo-msft
-ms.openlocfilehash: 1a9c9354b665294778886441cc6d7f02adb1163f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf6cf780867f9ecf5c5be93dc28fe3e00a0c3f82
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage の監視、診断、およびトラブルシューティング
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 クラウド環境でホストされる分散型アプリケーションの問題の診断およびトラブルシューティングは、従来の環境よりも複雑になる可能性があります。 アプリケーションは、PaaS や IaaS インフラストラクチャ、オンプレミス、モバイル デバイス、これらを組み合わせたものにデプロイできます。 一般に、アプリケーションのネットワーク トラフィックは公衆ネットワークと専用ネットワークを経由する可能性があり、アプリケーションでは、Microsoft Azure Storage のテーブル、BLOB、キュー、ファイルのほか、リレーショナル データベースやドキュメント データベースといった他のデータ ストアなどの複数のストレージ技術を使用している可能性があります。
 
 このようなアプリケーションを適切に管理するためには、アプリケーションをプロアクティブに監視し、アプリケーションおよびアプリケーションが依存する技術をあらゆる側面から診断およびトラブルシューティングする方法を理解する必要があります。 Azure Storage サービスのユーザーは、(応答時間が通常より長いなどの) 予期しない動作変化を捉えるために、アプリケーションで使用している Storage サービスを継続して監視し、ログを使用して詳細なデータを収集し、問題を徹底的に分析する必要があります。 監視とログの両方から得られた診断情報を基に、アプリケーションで発生した問題の根本原因を特定できます。 そして、問題をトラブルシューティングし、問題を解決するための適切な手順を決定できます。 Azure Storage は Azure の中核サービスであり、顧客が Azure インフラストラクチャにデプロイするソリューションのほとんどでは、Azure Storage が重要な役割を担っています。 Azure Storage には、クラウド ベース アプリケーションのストレージの問題を簡単に監視、診断、およびトラブルシューティングできる機能が組み込まれています。
@@ -104,7 +104,7 @@ Azure のストレージ アプリケーションにおけるエンド ツー �
 ## <a name="monitoring-your-storage-service"></a>Storage サービスの監視
 Windows のパフォーマンス監視に詳しい人は、Storage メトリックのことを Windows パフォーマンス モニターのカウンターに相当する Azure Storage の機能だと考えることができます。 Storage メトリックでは、サービス可用性、サービスに対する要求の総数、サービスに対する要求の成功率などの、包括的なメトリック (Windows パフォーマンス モニターの用語で言えばカウンター) のセットを利用できます。 使用可能なメトリックの詳細なリストについては、「 [Storage Analytics Metrics のテーブル スキーマ](http://msdn.microsoft.com/library/azure/hh343264.aspx)」を参照してください。 Storage サービスでメトリックを収集および集計する間隔は、1 時間または 1 分を指定できます。 メトリックを有効にしてストレージ アカウントを監視する方法の詳細については、 [ストレージ メトリックの有効化とメトリック データの表示](http://go.microsoft.com/fwlink/?LinkId=510865)に関するページをご覧ください。
 
-[Azure Portal](https://portal.azure.com) に表示する時間単位のメトリックを選ぶことができます。また、時間単位メトリックが特定のしきい値を超えたときに必ず電子メールで管理者に通知するようにルールを構成することもできます。 詳しくは、「[アラート通知を受け取る](/azure/monitoring-and-diagnostics/monitoring-overview-alerts.md)」をご覧ください。 
+[Azure Portal](https://portal.azure.com) に表示する時間単位のメトリックを選ぶことができます。また、時間単位メトリックが特定のしきい値を超えたときに必ず電子メールで管理者に通知するようにルールを構成することもできます。 詳しくは、「[アラート通知を受け取る](/azure/monitoring-and-diagnostics/monitoring-overview-alerts)」をご覧ください。 
 
 Storage サービスは、最大限メトリックを収集しますが、すべてのストレージ操作を記録するわけではありません。
 
@@ -181,7 +181,7 @@ Storage サービスのパフォーマンスを監視するには、時間単位
 次のセクションでは、これらの 4 つのカテゴリのそれぞれの問題を診断およびトラブルシューティングするときに従う必要のある手順を大まかに説明します。 後でこのガイドのセクション「[トラブルシューティング ガイダンス]」で、発生する可能性のある一般的な問題について詳しく説明します。
 
 ### <a name="service-health-issues"></a>サービス正常性の問題
-一般に、サービス正常性の問題は制御不能です。 [Azure Portal](https://portal.azure.com) では、Storage サービスを含む Azure サービスに現在発生している問題に関する情報が提供されます。 ストレージ アカウントの作成時に読み取りアクセス geo 冗長ストレージを選択していた場合は、プライマリ ロケーションのデータが使用できなくなったときに、アプリケーションはセカンダリ ロケーションの読み取り専用コピーに一時的に切り替えることができます。 そのためには、アプリケーションが、プライマリとセカンダリのストレージ ロケーションの間で切り替えを実行し、制限された機能モードで読み取り専用データを使用して動作できる必要があります。 Azure ストレージ クライアント ライブラリを使用して、プライマリ ストレージから読み取れなくなった場合にセカンダリ ストレージから読み取れるようにする再試行ポリシーを定義できます。 また、アプリケーションは、セカンダリ ロケーションのデータが実際に一貫性のあるデータかどうかを認識できる必要もあります。 詳細については、[Azure Storage の冗長オプションおよび読み取りアクセス地理冗長ストレージ](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)に関するブログ記事を参照してください。
+一般に、サービス正常性の問題は制御不能です。 [Azure Portal](https://portal.azure.com) では、Storage サービスを含む Azure サービスに現在発生している問題に関する情報が提供されます。 ストレージ アカウントの作成時に読み取りアクセス地理冗長ストレージを選択していた場合は、プライマリ ロケーションのデータが使用できなくなったときに、アプリケーションはセカンダリ ロケーションの読み取り専用コピーに一時的に切り替えることができます。 そのためには、アプリケーションが、プライマリとセカンダリのストレージ ロケーションの間で切り替えを実行し、制限された機能モードで読み取り専用データを使用して動作できる必要があります。 Azure ストレージ クライアント ライブラリを使用して、プライマリ ストレージから読み取れなくなった場合にセカンダリ ストレージから読み取れるようにする再試行ポリシーを定義できます。 また、アプリケーションは、セカンダリ ロケーションのデータが実際に一貫性のあるデータかどうかを認識できる必要もあります。 詳細については、[Azure Storage の冗長オプションおよび読み取りアクセス地理冗長ストレージ](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)に関するブログ記事を参照してください。
 
 ### <a name="performance-issues"></a>パフォーマンスの問題
 アプリケーションのパフォーマンスは主観的であり、特にユーザーの見方によって変わることがあります。 そのため、パフォーマンスに問題がある可能性のある場所を特定できるように、メトリックの基準値を設けておくことが重要です。 クライアント アプリケーションの観点から見ると、Azure Storage サービスのパフォーマンスはさまざまな要因によって影響を受ける可能性があります。 このような要因には Storage サービス、クライアント、ネットワーク インフラストラクチャに関するものがあります。したがって、パフォーマンス問題の根本原因を特定するための戦略を用意しておくことが重要です。
@@ -470,7 +470,7 @@ Storage サービスのスケーラビリティ ターゲットを超えると�
 ### <a name="the-client-is-receiving-403-messages"></a>クライアントが HTTP 403 (許可されていません) のメッセージを受け取る
 クライアント アプリケーションが HTTP 403 (許可されていません) エラーをスローする場合、可能性の高い原因は、クライアントがストレージ要求を送信するときに期限切れの Shared Access Signature (SAS) を使用していることです (原因の他の可能性としては、クロック スキュー、無効なキー、空のヘッダーなどがあります)。 期限切れの SAS キーが原因の場合、サーバー側の Storage Logging ログ データのエントリが表示されません。 以下の表に、この問題が生じたときにストレージ クライアント ライブラリによって生成されるクライアント側のログのサンプルを示します。
 
-| から | 詳細度 | 詳細度 | クライアント要求 ID | [操作テキスト] |
+| ソース | 詳細度 | 詳細度 | クライアント要求 ID | [操作テキスト] |
 | --- | --- | --- | --- | --- |
 | Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |場所 Primary、場所モード PrimaryOnly で操作を開始しています。 |
 | Microsoft.WindowsAzure.Storage |情報 |3 |85d077ab -… |https://domemaildist.blob.core.windows.netazureimblobcontainer/blobCreatedViaSAS.txt?sv=2014-02-14&amp;sr=c&amp;si=mypolicy&amp;sig=OFnd4Rd7z01fIvh%2BmcR6zbudIH2F5Ikm%2FyhNYZEmJNQ%3D&amp;api-version=2014-02-14 への同期要求を開始しています。 |
@@ -564,7 +564,7 @@ SAS トークンを生成するためのストレージ クライアント ラ�
 
 以下の表に、ストレージ ログのログ ファイルのサーバー側ログ メッセージの例を示します。
 
-| 名前 | 値 |
+| Name | 値 |
 | --- | --- |
 | 要求の開始時刻 | 2014-05-30T06:17:48.4473697Z |
 | 操作の種類     | GetBlobProperties            |
@@ -732,7 +732,7 @@ Fiddler を起動すると、ローカル マシンの HTTP および HTTPS ト�
 * トラフィックのキャプチャを停止および開始します。 メイン メニューで、**[File]**、**[Capture Traffic]** の順にクリックし、キャプチャのオン/オフを切り替えます。
 * キャプチャしたトラフィック データを保存します。 メイン メニューで、**[File]**、**[Save]**、**[All Sessions]** の順にクリックします。これにより、セッション アーカイブ ファイルにトラフィックを保存できるようになります。 後で分析するためセッション アーカイブを再読み込みしたり、要請された場合にそのファイルを Microsoft サポートに送信したりできます。
 
-Fiddler がキャプチャするトラフィックの量を制限するために、[ **Filters** ] タブで構成するフィルターを使用することができます。以下のスクリーンショットには、 **contosoemaildist.table.core.windows.net** ストレージ エンドポイントに送信されるトラフィックのみをキャプチャするフィルターが示されています。
+Fiddler がキャプチャするトラフィックの量を制限するために、**[Filters]** タブで構成するフィルターを使用することができます。以下のスクリーンショットには、 **contosoemaildist.table.core.windows.net** ストレージ エンドポイントに送信されるトラフィックのみをキャプチャするフィルターが示されています。
 
 ![][5]
 
@@ -742,16 +742,16 @@ Fiddler がキャプチャするトラフィックの量を制限するために
 以下の手順は、Wireshark をインストールしたローカル マシンから Azure ストレージ アカウントの Table サービスへのトラフィックに関する詳細なパケット情報をキャプチャする方法を示しています。
 
 1. ローカル マシンで Wireshark を起動します。
-2. [ **Start** ] セクションで、インターネットに接続されているローカル ネットワーク インターフェイスを選択します。
-3. [ **Capture Options**] をクリックします。
-4. フィルターを [ **Capture Filter** ] テキストボックスに追加します。 たとえば、**host contosoemaildist.table.core.windows.net** では、**contosoemaildist** ストレージ アカウントの Table service エンドポイントとの間で送受信されるパケットのみをキャプチャするように Wireshark を構成します。 [キャプチャ フィルターの完全な一覧](http://wiki.wireshark.org/CaptureFilters)を確認してください。
+2. **[Start]** セクションで、インターネットに接続されているローカル ネットワーク インターフェイスを選択します。
+3. **[Capture Options]** をクリックします。
+4. フィルターを **[Capture Filter]** テキストボックスに追加します。 たとえば、**host contosoemaildist.table.core.windows.net** では、**contosoemaildist** ストレージ アカウントの Table service エンドポイントとの間で送受信されるパケットのみをキャプチャするように Wireshark を構成します。 [キャプチャ フィルターの完全な一覧](http://wiki.wireshark.org/CaptureFilters)を確認してください。
    
    ![][6]
 5. **[開始]**をクリックします。 これで、Wireshark は、ローカル マシンでクライアント アプリケーションを使用しているときに Table サービス エンドポイントとの間で送受信されるすべてのパケットをキャプチャします。
 6. 終了したら、メイン メニューで **[Capture]**、**[Stop]** の順にクリックします。
 7. キャプチャしたデータを Wireshark キャプチャ ファイルに保存するには、メイン メニューで **[File]**、**[Save]** の順にクリックします。
 
-WireShark は、[ **packetlist** ] ウィンドウに存在するエラーをすべて強調表示します。 **[Expert Info]** ウィンドウを使用して (**[Analyze]**、**[Expert Info]** の順にクリック)、エラーや警告の概要を表示することもできます。
+WireShark は、**[packetlist]** ウィンドウに存在するエラーをすべて強調表示します。 **[Expert Info]** ウィンドウを使用して (**[Analyze]**、**[Expert Info]** の順にクリック)、エラーや警告の概要を表示することもできます。
 
 ![][7]
 
@@ -768,7 +768,7 @@ WireShark は、[ **packetlist** ] ウィンドウに存在するエラーをす
 Microsoft Message Analyzer を使用すると、Fiddler と同様の方法で HTTP および HTTPS トラフィックをキャプチャできるうえに、Wireshark と同様の方法でネットワーク トラフィックをキャプチャすることもできます。
 
 #### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer を使用した Web トレース セッションの構成
-Microsoft Message Analyzer を使用した HTTP と HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、**[File]** メニューで **[Capture/Trace]** をクリックします。 使用可能なトレース シナリオのリストで、[ **Web Proxy**] を選択します。 **[Trace Scenario Configuration (トレース シナリオの構成)]** パネルの **[HostnameFilter]** ボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は [Azure Portal](https://portal.azure.com) で調べられます)。 たとえば、Azure Storage アカウントの名前が **contosodata** である場合は、**[HostnameFilter]** テキストボックスに以下を追加する必要があります。
+Microsoft Message Analyzer を使用した HTTP と HTTPS トラフィックの Web トレース セッションを構成するには、Microsoft Message Analyzer アプリケーションを実行し、**[File]** メニューで **[Capture/Trace]** をクリックします。 使用可能なトレース シナリオのリストで、**[Web Proxy]** を選択します。 **[Trace Scenario Configuration (トレース シナリオの構成)]** パネルの **[HostnameFilter]** ボックスに、ストレージ エンドポイントの名前を入力します (これらの名前は [Azure Portal](https://portal.azure.com) で調べられます)。 たとえば、Azure Storage アカウントの名前が **contosodata** である場合は、**[HostnameFilter]** テキストボックスに以下を追加する必要があります。
 
 ```
 contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
@@ -779,7 +779,7 @@ contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata
 > 
 > 
 
-トレース データの収集を開始する準備ができたら、[ **Start With** ] ボタンをクリックします。
+トレース データの収集を開始する準備ができたら、**[Start With]** ボタンをクリックします。
 
 Microsoft Message Analyzer の **Web Proxy** トレースの詳細については、「 [Microsoft-PEF-WebProxy Provider (Microsoft-PEF-WebProxy プロバイダー)](http://technet.microsoft.com/library/jj674814.aspx)」を参照してください。
 
@@ -788,7 +788,7 @@ Microsoft Message Analyzer の組み込みの **Web Proxy** トレースは、Fi
 #### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Microsoft Message Analyzer を使用したネットワーク問題の診断
 Microsoft Message Analyzer の **Web Proxy** トレースを使用してクライアント アプリケーションとストレージ サービスの間の HTTP/HTTPS トラフィックの詳細をキャプチャすることに加え、組み込みの **Local Link Layer** トレースを使用してネットワークのパケット情報をキャプチャすることもできます。 これにより、Wireshark を使用してキャプチャできるデータと同様のデータをキャプチャし、ドロップされたパケットなどのネットワーク問題を診断することができます。
 
-以下のスクリーンショットは、**[DiagnosisTypes]** 列に**情報**メッセージが表示された **Local Link Layer** トレースの例を示しています。 [ **DiagnosisTypes** ] 列のアイコンをクリックすると、メッセージの詳細が表示されます。 この例では、サーバーが、クライアントからの確認を受信しなかったためにメッセージ #305 を再転送しました。
+以下のスクリーンショットは、**[DiagnosisTypes]** 列に**情報**メッセージが表示された **Local Link Layer** トレースの例を示しています。 **[DiagnosisTypes]** 列のアイコンをクリックすると、メッセージの詳細が表示されます。 この例では、サーバーが、クライアントからの確認を受信しなかったためにメッセージ #305 を再転送しました。
 
 ![][9]
 
@@ -804,10 +804,10 @@ Microsoft Message Analyzer の Local Link Layer トレースの詳細につい�
 BLOB ストレージからダウンロードしたストレージ ログ データを Excel にインポートするには、以下の手順に従います。
 
 * **[データ]** メニューで **[テキストから]** をクリックします。
-* 表示するログ ファイルを参照し、[ **インポート**] をクリックします。
+* 表示するログ ファイルを参照し、**[インポート]** をクリックします。
 * **[テキスト ファイル ウィザード]** の手順 1 で **[カンマやタブなどの区切り文字によってフィールドごとに区切られたデータ]** を選択します。
 
-**[テキスト ファイル ウィザード]** の手順 1 で、**[セミコロン]** のみを区切り文字として選択し、**[文字列の引用符]** として二重引用符を選択します。 [ **完了** ] をクリックし、ワークブックでデータを配置する場所を選択します。
+**[テキスト ファイル ウィザード]** の手順 1 で、**[セミコロン]** のみを区切り文字として選択し、**[文字列の引用符]** として二重引用符を選択します。 **[完了]** をクリックし、ワークブックでデータを配置する場所を選択します。
 
 ### <a name="appendix-5"></a>付録 5: Application Insights for Visual Studio Team Services を使用した監視
 パフォーマンスおよび可用性の監視の一環として、Visual Studio Team Services の Application Insights 機能を使用することもできます。 このツールは、以下を実行できます。

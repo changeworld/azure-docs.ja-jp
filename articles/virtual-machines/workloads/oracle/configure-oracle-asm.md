@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 117212a2e7e3da7c3e249798eec804a652e0ef58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e34a188271a5ac2fb6cb34a088ec3f650be6cab
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
-Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、Azure 仮想マシンの基本的デプロイと Oracle Automated Storage Management (ASM) のインストールと構成について扱います。  学習内容は次のとおりです。
+Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、Azure 仮想マシンの基本的な展開と Oracle Automated Storage Management (Oracle自動ストレージ管理) (ASM) のインストールと構成について扱います。  学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Oracle データベース VM を作成し、それに接続する
-> * Oracle Automated Storage Management をインストールし、構成する
+> * Oracle Automated Storage Management (Oracle自動ストレージ管理) をインストールし、構成する
 > * Oracle Grid Infrastructure をインストールし、構成する
 > * Oracle ASM インストールを初期化する
 > * ASM により管理される Oracle DB を作成する
@@ -41,7 +41,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループを作成するには、[az group create](/cli/azure/group#create) コマンドを使用します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+リソース グループを作成するには、[az group create](/cli/azure/group#az_group_create) コマンドを使用します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus
@@ -49,9 +49,9 @@ az group create --name myResourceGroup --location eastus
 
 ### <a name="create-a-vm"></a>VM の作成
 
-Oracle データベース イメージに基づいて仮想マシンを作成し、Oracle ASM を使用するようにそれを構成するには、[az vm create](/cli/azure/vm#create) コマンドを使用します。 
+Oracle データベース イメージに基づいて仮想マシンを作成し、Oracle ASM を使用するようにそれを構成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用します。 
 
-次の例では、myVM という名前の VM が作成されます。50 GB のデータ ディスクが 4 つ接続され、サイズは Standard_DS2_v2 です。 キーの既定の場所にまだ存在しない場合、SSH キーも作成されます。  特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
+次の例では、myVM という名前の VM が作成されます。サイズは Standard_DS2_v2 で、50 GB のデータ ディスクが 4 つ装着されます。 これらがキーの既定の場所にまだ存在しない場合、SSH キーも作成されます。  特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。  
 
    ```azurecli-interactive
    az vm create --resource-group myResourceGroup \
@@ -91,7 +91,7 @@ Oracle ASM をインストールするには、次の手順を実行します。
 
 Oracle ASM のインストールの詳細については、「[Oracle ASMLib Downloads for Oracle Linux 6 (Oracle Linux 6 用の Oracle ASMLib のダウンロード)](http://www.oracle.com/technetwork/server-storage/linux/asmlib/ol6-1709075.html)」を参照してください。  
 
-1. ASM インストールを続行するには、ルートとしてログインする必要があります。
+1. ASM インストールを続行するには、root としてログインする必要があります。
 
    ```bash
    sudo su -
@@ -247,7 +247,7 @@ Oracle ASM のインストールの詳細については、「[Oracle ASMLib Dow
    Syncing disks.
    ```
 
-4. 先の fdisk コマンドを `/dev/sdd`、`/dev/sde`、`/dev/sdf` に繰り返します。
+4. 前述の fdisk コマンドを `/dev/sdd`、`/dev/sde`、`/dev/sdf` に対して繰り返します。
 
 5. ディスク構成を確認します。
 
@@ -386,7 +386,7 @@ Oracle Grid Infrastructure ソフトウェアをダウンロードして準備�
    sudo chown -R grid:oinstall /opt/grid
    ```
 
-6. 構成済みのスワップ領域を更新します。 Oracle Grid コンポーネントは、Grid をインストールするにために 6.8 GB 以上のスワップ領域を必要とします。 Azure の Oracle Linux イメージの既定のスワップ ファイル サイズはわずか 2048 MB です。 更新した設定を適用するには、`/etc/waagent.conf` ファイルの `ResourceDisk.SwapSizeMB` を増やし、WALinuxAgent サービスを再起動する必要があります。 読み取り専用ファイルであるため、書き込みアクセスできるようにファイルのアクセス許可を変更する必要があります。
+6. 構成済みのスワップ領域を更新します。 Oracle Grid コンポーネントは、Grid をインストールするにために 6.8 GB 以上のスワップ領域を必要とします。 Azure の Oracle Linux イメージの既定のスワップ ファイル サイズはわずか 2048 MB です。 更新した設定を適用するには、`/etc/waagent.conf` ファイルの `ResourceDisk.SwapSizeMB` を増やし、WALinuxAgent サービスを再起動する必要があります。 読み取り専用ファイルであるため、書き込みアクセスを有効にするにはファイルのアクセス許可を変更する必要があります。
 
    ```bash
    sudo chmod 777 /etc/waagent.conf  
@@ -410,7 +410,7 @@ Oracle ASM を構成するとき、インストールと構成を完了するた
    1. `Generate` ボタンを選択し、キーを生成します。
    2. キーの内容をコピーします (Ctrl + C キー)。
    3. `Save private key` ボタンを選択します。
-   4. パスフレーズでキーのセキュリティを強化することに関する警告を無視し、`OK` を選択します。
+   4. パスフレーズによるキーのセキュリティ強化に関する警告を無視し、`OK` を選択します。
 
    ![PuTTY Key Generator のスクリーンショット](./media/oracle-asm/puttykeygen.png)
 
@@ -503,7 +503,7 @@ Oracle Grid Infrastructure をインストールするには、次の手順を�
 
 Oracle ASM インストールをセットアップするには、次の手順を実行します。
 
-1. X11 セッションから、まだ **grid** としてサインインしていることを確認します。 場合によっては、`enter` を押し、ターミナルを復帰させる必要があります。 Oracle ASM コンフィギュレーション アシスタントを起動します。
+1. X11 セッションから、まだ **grid** としてサインインしていることを確認します。 場合によっては、`enter` を押し、ターミナルを復帰させる必要があります。 Oracle Automated Storage Management Configuration Assistant (Oracle自動ストレージ管理コンフィギュレーション・アシスタント) を起動します。
 
    ```bash
    cd /u01/app/grid/product/12.1.0/grid/bin
@@ -574,13 +574,13 @@ Oracle データベース ソフトウェアは既に Azure Marketplace イメ�
 
 ## <a name="delete-the-vm"></a>VM の削除
 
-Azure Marketplace の Oracle DB イメージで Oracle Automated Storage Management を構成できました。  この VM が不要になったら、次のコマンドを使用し、リソース グループ、VM、すべての関連リソースを削除できます。
+Azure Marketplace の Oracle DB イメージ上でOracle Automated Storage Management (Oracle自動ストレージ管理) を正常に構成できました。  この VM が不要になったら、次のコマンドを使用し、リソース グループ、VM、すべての関連リソースを削除できます。
 
 ```azurecli
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [チュートリアル: Oracle DataGuard の構成](configure-oracle-dataguard.md)
 

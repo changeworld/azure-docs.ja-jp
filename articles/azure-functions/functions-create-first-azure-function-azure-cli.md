@@ -6,17 +6,17 @@ keywords:
 author: ggailey777
 ms.author: glenga
 ms.assetid: 674a01a7-fd34-4775-8b69-893182742ae0
-ms.date: 11/08/2017
+ms.date: 01/24/2018
 ms.topic: quickstart
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
 manager: cfowler
-ms.openlocfilehash: 22eb9989f24bb61638410a0c5361c0a888076e3c
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 2088844693748f090a67ad56f9b5fba4514d1282
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-your-first-function-using-the-azure-cli"></a>Azure CLI での初めての関数の作成
 
@@ -49,8 +49,9 @@ CLI をローカルにインストールして使用する場合、このトピ�
 次のコマンドでは、`<app_name>` プレースホルダーを一意の Function App 名で、`<storage_name>` をストレージ アカウント名で置き換えます。 `<app_name>` は、Function App の既定の DNS ドメインとして使用されます。そのため、名前は Azure のすべてのアプリ間で一意である必要があります。 _deployment-source-url_ パラメーターは、HTTP によってトリガーされる "Hello World" 関数を含む GitHub のサンプル リポジトリです。
 
 ```azurecli-interactive
-az functionapp create --name <app_name> --storage-account  <storage_name>  --resource-group myResourceGroup \
---consumption-plan-location westeurope --deployment-source-url https://github.com/Azure-Samples/functions-quickstart
+az functionapp create --deployment-source-url https://github.com/Azure-Samples/functions-quickstart  \
+--resource-group myResourceGroup --consumption-plan-location westeurope \
+--name <app_name> --storage-account  <storage_name>  
 ```
 _consumption-plan-location_ パラメーターを設定すると、従量課金ホスティング プランで Function App がホストされます。 このプランでは、関数からの要求に応じてリソースが動的に追加され、関数が実行中のときだけ課金されます。 詳細については、「[Azure Functions の適切なサービス プランを選択する](functions-scale.md)」を参照してください。 
 

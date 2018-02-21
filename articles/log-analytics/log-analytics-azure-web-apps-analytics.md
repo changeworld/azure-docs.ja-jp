@@ -3,7 +3,7 @@ title: "Azure Web Apps 分析データの表示 | Microsoft Docs"
 description: "Azure Web Apps Analytics ソリューションを使用して、すべての Azure Web App リソースのさまざまなメトリックを収集することで、Azure Web Apps について把握することができます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
-ms.author: banders
-ms.openlocfilehash: d910339cc35e09705e543706b40dfe8e0ea9dd42
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.author: magoedte
+ms.openlocfilehash: 7c22950c391707cdfe14ca242ea82a317be0e46e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
 
@@ -37,12 +37,12 @@ Azure Web Apps Analytics (プレビュー) ソリューションでは、すべ�
 
 他のほとんどの Log Analytics ソリューションとは異なり、Azure Web Apps のデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
-| 接続されているソース | サポートの有無 | 説明 |
+| 接続先ソース | サポートされています | [説明] |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agent.md) | いいえ | ソリューションでは、Windows エージェントの情報は収集しません。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | なし | ソリューションでは、Linux エージェントの情報は収集しません。 |
-| [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
-| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |
+| [Windows エージェント](log-analytics-windows-agent.md) | いいえ  | ソリューションでは、Windows エージェントの情報は収集しません。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | いいえ  | ソリューションでは、Linux エージェントの情報は収集しません。 |
+| [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ  | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ  | ソリューションでは、Azure Storage の情報は収集しません。 |
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -62,7 +62,7 @@ Azure Web Apps Analytics ソリューションでは Azure から以下の 2 つ
   - 平均応答時間
   - 受信/送信バイト数
   - CPU 時間
-  - 要求
+  - Requests
   - メモリ ワーキング セット
   - Httpxxx
 - App Service プランのメトリック
@@ -90,9 +90,9 @@ Azure Web Apps Analytics ソリューションをワークスペースに追加�
 
 **[Azure Web Apps Analytics]** タイルをクリックして、**[Azure Web Apps Analytics]** ダッシュボードを開きます。 ダッシュボードには、次の表に示したブレードが存在します。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、ブレードの一番下にある **[すべて表示]** をクリックするか、ブレード ヘッダーをクリックします。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-| 分割 | Description |
+| 分割 | [説明] |
 | --- | --- |
 | Azure Webapps |   |
 | Web Apps の要求傾向 | 選択した日付範囲の Web Apps の要求傾向の折れ線グラフが表示され、上位 10 個の Web 要求のリストが表示されます。 折れ線グラフをクリックすると、<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* (MetricName=Requests OR MetricName=Http*) &#124; measure avg(Average) by MetricName interval 1HOUR</code> のログ検索が実行されます。 <br>Web 要求の項目をクリックすると、要求する Web 要求メトリック傾向のログ検索が実行されます。 |
@@ -138,7 +138,7 @@ Azure Web Apps Analytics ソリューションをワークスペースに追加�
 
 ログ検索クエリのいずれかを開始点として使用することで、簡単にアラートを作成できます。 たとえば、メトリックの平均応答時間が 1 秒ごとより長い場合にアラートを作成することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 特定のメトリックの[アラート](log-analytics-alerts-creating.md)を作成します。
 - [ログ検索](log-analytics-log-searches.md)を使用して、アクティビティ ログの詳細情報を表示します。

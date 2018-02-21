@@ -11,11 +11,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
-ms.openlocfilehash: daa202ddf0dc934c491ead3951ddc4fdc3dd819c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 69bb79a1f02e601b9ed0104dde00211612473adc
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-and-jenkins"></a>Azure と Jenkins
 
@@ -29,7 +29,7 @@ Azure で Jenkins をホストすることで、ビルドの自動化を集中�
  
 - Azure Marketplace の [Jenkins ソリューション テンプレート](install-jenkins-solution-template.md)。
 - [Azure 仮想マシン](/azure/virtual-machines/linux/overview)。 VM で Jenkins を作成するには、[チュートリアル](/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd)を参照してください。
-- [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) で実行されている Kubernetes クラスターについては、こちらの[手順](/azure/container-service/kubernetes/container-service-kubernetes-jenkin)を参照してください。
+- [Azure Container Service](/azure/container-service/kubernetes/container-service-kubernetes-walkthrough) で実行されている Kubernetes クラスターについては、こちらの[手順](/azure/container-service/kubernetes/container-service-kubernetes-jenkins)を参照してください。
 
 Azure Jenkins のデプロイは、[Log Analytics](/azure/log-analytics/log-analytics-overview)、[Operations Management Suite](/azure/operations-management-suite/operations-management-suite-overview)、および [Azure CLI] (/cli/azure/overview) を使用して監視および管理します。
 

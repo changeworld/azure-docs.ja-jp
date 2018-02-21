@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/16/2017
 ms.author: iainfou
-ms.openlocfilehash: 7a28accce1bd328b2b486b588c44d91b03e42122
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 318f322196b0028e42268b8d6d003457869d1117
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="troubleshoot-a-linux-vm-by-attaching-the-os-disk-to-a-recovery-vm-with-the-azure-cli-20"></a>Azure CLI 2.0 で OS ディスクを復旧 VM に接続して Linux VM のトラブルシューティングを行う
 Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが発生した場合、仮想ハード ディスク自体でトラブルシューティングの手順を実行することが必要な場合があります。 一般的な例として、`/etc/fstab` 内の無効なエントリによって VM の正常な起動が妨げられている場合が挙げられます。 この記事では、Azure CLI 2.0 で仮想ハード ディスクを別の Linux VM に接続してエラーを修正し、元の VM を再作成する方法について詳しく説明します。 これらの手順は、[Azure CLI 1.0](troubleshoot-recovery-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
@@ -32,7 +32,7 @@ Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが�
 4. 仮想ハード ディスクのマウントを解除し、トラブルシューティング用 VM から切断します。
 5. 元の仮想ハード ディスクを使用して VM を作成します。
 
-上記のトラブルシューティング手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#login) を使用して Azure アカウントにログインしておく必要があります。
+上記のトラブルシューティング手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインしておく必要があります。
 
 以下の例では、パラメーター名を独自の値に置き換えてください。 `myResourceGroup`、`mystorageaccount`、`myVM` などは、例として使われているパラメーター名です。
 
@@ -40,7 +40,7 @@ Linux 仮想マシン (VM) で起動エラーまたはディスク エラーが�
 ## <a name="determine-boot-issues"></a>起動の問題を特定する
 シリアル出力を調べて、VM が正常に起動できない理由を特定します。 一般的な例として、`/etc/fstab` に無効なエントリがある場合や、基になる仮想ハード ディスクが削除または移動されている場合が挙げられます。
 
-[az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics#get-boot-log) を使用して、ブート ログを取得します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVM` という名前の VM からシリアル出力を取得します。
+[az vm boot-diagnostics get-boot-log](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) を使用して、ブート ログを取得します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVM` という名前の VM からシリアル出力を取得します。
 
 ```azurecli
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
@@ -52,7 +52,7 @@ az vm boot-diagnostics get-boot-log --resource-group myResourceGroup --name myVM
 ## <a name="view-existing-virtual-hard-disk-details"></a>既存の仮想ハード ディスクの詳細を表示する
 仮想ハード ディスク (VHD) を別の VM に接続するには、OS ディスクの URI を特定しておく必要があります。 
 
-[az vm show](/cli/azure/vm#show) を使用して、VM に関する情報を表示します。 OS ディスクの URI を抽出するには、`--query` フラグを使用します。 次の例では、`myResourceGroup` という名前のリソース グループにある `myVM` という名前の VM のディスク情報を取得します。
+[az vm show](/cli/azure/vm#az_vm_show) を使用して、VM に関する情報を表示します。 OS ディスクの URI を抽出するには、`--query` フラグを使用します。 次の例では、`myResourceGroup` という名前のリソース グループにある `myVM` という名前の VM のディスク情報を取得します。
 
 ```azurecli
 az vm show --resource-group myResourceGroup --name myVM \
@@ -66,7 +66,7 @@ Azure では、仮想ハード ディスクと VM は 2 つの異なるリソー
 
 VM を回復するには、まず VM リソース自体を削除します。 VM を削除しても、仮想ハード ディスクはストレージ アカウントに残されます。 VM を削除したら、仮想ハード ディスクを別の VM に接続してトラブルシューティングを行い、エラーを解決します。
 
-[az vm delete](/cli/azure/vm#delete) を使用して VM を削除します。 次の例では、`myResourceGroup` という名前のリソース グループから `myVM` という名前の VM を削除します。
+[az vm delete](/cli/azure/vm#az_vm_delete) を使用して VM を削除します。 次の例では、`myResourceGroup` という名前のリソース グループから `myVM` という名前の VM を削除します。
 
 ```azurecli
 az vm delete --resource-group myResourceGroup --name myVM 
@@ -78,7 +78,7 @@ VM の削除が完了するまで待ってから、仮想ハード ディスク�
 ## <a name="attach-existing-virtual-hard-disk-to-another-vm"></a>既存の仮想ハード ディスクを別の VM に接続する
 次のいくつかの手順では、トラブルシューティングのために別の VM を使用します。 ディスクの内容を参照して編集するために、既存の仮想ハード ディスクをこのトラブルシューティング用 VM に接続します。 このプロセスにより、構成エラーの修正や、その他のアプリケーション ログ ファイルまたはシステム ログ ファイルの確認などが可能になります。 トラブルシューティングに使用する別の VM を選択または作成します。
 
-[az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk#attach) を使用して、既存の仮想ハード ディスクを接続します。 既存の仮想ハード ディスクを接続する場合は、前述の `az vm show` コマンドで取得したディスクの URI を指定します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVMRecovery` という名前のトラブルシューティング用 VM に既存の仮想ハード ディスクを接続します。
+[az vm unmanaged-disk attach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_attach) を使用して、既存の仮想ハード ディスクを接続します。 既存の仮想ハード ディスクを接続する場合は、前述の `az vm show` コマンドで取得したディスクの URI を指定します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVMRecovery` という名前のトラブルシューティング用 VM に既存の仮想ハード ディスクを接続します。
 
 ```azurecli
 az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -144,7 +144,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
     sudo umount /dev/sdc1
     ```
 
-2. 仮想ハード ディスクを VM から切断します。 トラブルシューティング用 VM の SSH セッションを終了します。 [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk#list) を使用して、トラブルシューティング用 VM に接続されているデータ ディスクの一覧を表示します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVMRecovery` という名前の VM に接続されているデータ ディスクを表示します。
+2. 仮想ハード ディスクを VM から切断します。 トラブルシューティング用 VM の SSH セッションを終了します。 [az vm unmanaged-disk list](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_list) を使用して、トラブルシューティング用 VM に接続されているデータ ディスクの一覧を表示します。 次の例では、`myResourceGroup` という名前のリソース グループの `myVMRecovery` という名前の VM に接続されているデータ ディスクを表示します。
 
     ```azurecli
     azure vm unmanaged-disk list --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -153,7 +153,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
 
     既存の仮想ハード ディスクの名前を書き留めます。 たとえば、**https://mystorageaccount.blob.core.windows.net/vhds/myVM.vhd** という URI のディスクの名前は **myVHD** です。 
 
-    [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#detach) を使用して、VM からデータ ディスクを切断します。 次の例では、`myResourceGroup` リソース グループ内の `myVMRecovery` という名前の VM から `myVHD` という名前のディスクを切断します。
+    [az vm unmanaged-disk detach](/cli/azure/vm/unmanaged-disk#az_vm_unmanaged_disk_detach) を使用して、VM からデータ ディスクを切断します。 次の例では、`myResourceGroup` リソース グループ内の `myVMRecovery` という名前の VM から `myVHD` という名前のディスクを切断します。
 
     ```azurecli
     az vm unmanaged-disk detach --resource-group myResourceGroup --vm-name myVMRecovery \
@@ -166,7 +166,7 @@ az vm unmanaged-disk attach --resource-group myResourceGroup --vm-name myVMRecov
 
 - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/201-vm-specialized-vhd/azuredeploy.json
 
-このテンプレートでは、前述のコマンドの VHD URI を使用して VM をデプロイします。 [az group deployment create](/cli/azure/group/deployment#create) を使用して、テンプレートをデプロイします。 元の VHD の URI を指定した後、次のように OS の種類、VM サイズ、VM 名を指定します。
+このテンプレートでは、前述のコマンドの VHD URI を使用して VM をデプロイします。 [az group deployment create](/cli/azure/group/deployment#az_group_deployment_create) を使用して、テンプレートをデプロイします。 元の VHD の URI を指定した後、次のように OS の種類、VM サイズ、VM 名を指定します。
 
 ```azurecli
 az group deployment create --resource-group myResourceGroup --name myDeployment \
@@ -178,11 +178,11 @@ az group deployment create --resource-group myResourceGroup --name myDeployment 
 ```
 
 ## <a name="re-enable-boot-diagnostics"></a>ブート診断を再度有効にする
-既存の仮想ハード ディスクから VM を作成したときに、ブート診断が自動的に有効にならない場合があります。 [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics#enable) を使用して、ブート診断を有効にします。 次の例では、`myResourceGroup` という名前のリソース グループの `myDeployedVM` という名前の VM で診断拡張機能を有効にします。
+既存の仮想ハード ディスクから VM を作成したときに、ブート診断が自動的に有効にならない場合があります。 [az vm boot-diagnostics enable](/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable) を使用して、ブート診断を有効にします。 次の例では、`myResourceGroup` という名前のリソース グループの `myDeployedVM` という名前の VM で診断拡張機能を有効にします。
 
 ```azurecli
 az vm boot-diagnostics enable --resource-group myResourceGroup --name myDeployedVM
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 VM への接続の問題が発生した場合は、[Azure VM への SSH 接続のトラブルシューティング](troubleshoot-ssh-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。 VM で実行されているアプリケーションへのアクセスに関する問題については、[Linux VM でのアプリケーションの接続の問題のトラブルシューティング](../windows/troubleshoot-app-connection.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関する記事をご覧ください。

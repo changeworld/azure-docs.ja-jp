@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: cde484dd59ec6e2821678766726c02362222d496
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 230ce6a6b33e63bcced5f520b57b63ef4ed05448
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンを監視および更新する方法
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-vm"></a>VM を作成する
 
-診断とメトリックの動作を確認するには、VM が必要です。 最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroupMonitor* という名前のリソース グループを場所 *eastus* に作成します。
+診断とメトリックの動作を確認するには、VM が必要です。 最初に、[az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroupMonitor* という名前のリソース グループを場所 *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroupMonitor --location eastus
@@ -64,7 +64,7 @@ az vm create \
 
 Linux VM が起動すると、ブート診断拡張機能によってブート出力がキャプチャされて Azure Storage に格納されます。 VM の起動に関する問題は、このデータを使ってトラブルシューティングすることができます。 Azure CLI を使用して Linux VM を作成した場合、ブート診断が自動的に有効になりません。
 
-ブート診断を有効にするにはまず、ブート ログを格納するためのストレージ アカウントを作成しておく必要があります。 ストレージ アカウントには、グローバルに一意の名前が必要です。名前は 3 ～ 24 文字とし、数字と小文字のみを使用できます。 ストレージ アカウントは、[az storage account create](/cli/azure/storage/account#create) コマンドで作成します。 この例では、ランダムな文字列を使って一意のストレージ アカウント名を作成しています。 
+ブート診断を有効にするにはまず、ブート ログを格納するためのストレージ アカウントを作成しておく必要があります。 ストレージ アカウントには、グローバルに一意の名前が必要です。名前は 3 ～ 24 文字とし、数字と小文字のみを使用できます。 ストレージ アカウントは、[az storage account create](/cli/azure/storage/account#az_storage_account_create) コマンドで作成します。 この例では、ランダムな文字列を使って一意のストレージ アカウント名を作成しています。 
 
 ```azurecli-interactive 
 storageacct=mydiagdata$RANDOM
@@ -94,13 +94,13 @@ az vm boot-diagnostics enable \
 
 ## <a name="view-boot-diagnostics"></a>ブート診断を表示する
 
-ブート診断が有効になっている場合、VM を停止して起動するたびに、ブート プロセスに関する情報がログ ファイルに書き込まれます。 この例ではまず、次のように [az vm deallocate](/cli/azure/vm#deallocate) コマンドで VM の割り当てを解除します。
+ブート診断が有効になっている場合、VM を停止して起動するたびに、ブート プロセスに関する情報がログ ファイルに書き込まれます。 この例ではまず、次のように [az vm deallocate](/cli/azure/vm#az_vm_deallocate) コマンドで VM の割り当てを解除します。
 
 ```azurecli-interactive 
 az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 ```
 
-次に、[az vm start]( /cli/azure/vm#stop) コマンドで VM を起動します。
+次に、[az vm start]( /cli/azure/vm#az_vm_stop) コマンドで VM を起動します。
 
 ```azurecli-interactive 
 az vm start --resource-group myResourceGroupMonitor --name myVM

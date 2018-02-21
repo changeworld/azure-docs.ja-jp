@@ -3,7 +3,7 @@ title: "Azure Log Analytics で System Center Operations Manager 環境を最適
 description: "System Center Operations Manager Health Check ソリューションを使用すると、環境のリスクと正常性を定期的に評価できます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: tysonn
 ms.assetid: 49aad8b1-3e05-4588-956c-6fdd7715cda1
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2017
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3a66cc13d05c81de571e2710519ad9474304d656
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 86484ca2bc7dc14035f48b8f7b1514a4fc471b74
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-health-check-preview-solution"></a>System Center Operations Manager Health Check (プレビュー) ソリューションを使用して環境を最適化する
 
@@ -60,7 +60,7 @@ System Center Operations Manager Health Check ソリューションを使用す�
 
 ## <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager Assessment によるデータ収集の詳細
 
-System Center Operations Manager Assessment は、次のソースからデータを収集します。 
+System Center Operations Manager Assessment は、次のソースからデータを収集します。
 
 * レジストリ
 * Windows Management Instrumentation (WMI)
@@ -72,7 +72,7 @@ System Center Operations Manager Assessment は、次のソースからデータ
 
 ## <a name="operations-manager-run-as-accounts-for-log-analytics"></a>Log Analytics で使用される Operations Manager の実行アカウント
 
-Log Analytics は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン ユーザー アカウントなど)。 特権を持つ資格情報を使用して Operations Manager の実行アカウントを構成します。 詳細については、Operations Manager ドキュメントの「[How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx)」(実行アカウントを作成する方法) を参照してください。 
+Log Analytics は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン ユーザー アカウントなど)。 特権を持つ資格情報を使用して Operations Manager の実行アカウントを構成します。 詳細については、Operations Manager ドキュメントの「[How to create a Run As account](https://technet.microsoft.com/library/hh321655(v=sc.12).aspx)」(実行アカウントを作成する方法) を参照してください。
 
 次の情報を使用すると、System Center Operations Manager Health Check 用に Operations Manager の実行アカウントを設定できます。
 
@@ -82,13 +82,13 @@ Log Analytics は、ワークロード用の管理パックを基に付加価値
 
 * 任意の Operations Manager ロールをサポートするすべてのサーバー (管理サーバー、運用、データ ウェアハウス、および ACS データベースをホストする SQL Server、レポート、Web コンソール、およびゲートウェイ サーバー) で、ローカルの Administrator グループのメンバーであるドメイン ユーザー アカウント。
 * 評価する管理グループの Operation Manager 管理者ロール
-* アカウントに SQL sysadmin 権限がない場合は、[スクリプト](#sql-script-to-grant-granular-permissions-to-the-run-as-account)を実行して、Operations Manager データベースの 1 つまたはすべてをホストする各 SQL Server インスタンスにアカウントに細かいアクセス許可を付与します。 
+* アカウントに SQL sysadmin 権限がない場合は、[スクリプト](#sql-script-to-grant-granular-permissions-to-the-run-as-account)を実行して、Operations Manager データベースの 1 つまたはすべてをホストする各 SQL Server インスタンスにアカウントに細かいアクセス許可を付与します。
 
 1. Operations Manager コンソールで、**[管理]** ナビゲーション ボタンを選択します。
 2. **[実行アカウントの構成]** で、**[アカウント]** をクリックします。
 3. **[実行アカウントの作成]** ウィザードの **[はじめに]** ページで **[次へ]** をクリックします。
 4. **[全般プロパティ]** ページの **[実行アカウントの種類]** リストで **[Windows]** を選択します。
-5. **[表示名]** テキスト ボックスに表示名を入力し、**[説明]** ボックス (省略可能) に説明を入力し、**[次へ]** をクリックします。 
+5. **[表示名]** テキスト ボックスに表示名を入力し、**[説明]** ボックス (省略可能) に説明を入力し、**[次へ]** をクリックします。
 6. **[配布セキュリティ]** ページで、**[高いセキュリティ]** を選択します。
 7. **Create** をクリックしてください。  
 
@@ -96,7 +96,7 @@ Log Analytics は、ワークロード用の管理パックを基に付加価値
 
 1. 結果ウィンドウの **[実行アカウントの構成]** の **[アカウント]** で、前述の手順で作成したアカウントをダブルクリックします。
 2. **[配布]** タブで、**[選択したコンピューター]** ボックスの **[追加]** をクリックし、管理サーバーを追加してアカウントを配布します。  **[OK]** をクリックして変更を保存します。
-3. **[実行アカウントの構成]** で、**[プロファイル]** をクリックします。 
+3. **[実行アカウントの構成]** で、**[プロファイル]** をクリックします。
 4. "*SCOM Assessment プロファイル*" を検索します。
 5. プロファイル名は、"*Microsoft System Center Advisor SCOM Assessment 実行プロファイル*" です。
 6. 右クリックしてそのプロパティを更新し、前述の手順で作成した実行アカウントを追加します。
@@ -216,8 +216,8 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
-2. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
+2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 3. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[OMS ポータル]** タイルをクリックします。  
 4. **[概要]** ページの **[System Center Operations Manager Health Check]** タイルをクリックします。
 5. **[System Center Operations Manager Health Check]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
@@ -228,7 +228,7 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 
 無視する推奨事項がある場合は、Log Analytics が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-want-to-ignore"></a>無視する推奨事項を識別するには
 1. Azure Portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** タイルをクリックします。
@@ -303,6 +303,6 @@ Log Analytics の正常性チェック ソリューションを使用するに�
 *推奨事項を無視する方法はありますか?* はい。「[推奨事項を無視する](#Ignore-recommendations)」を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [ログの検索](log-analytics-log-searches.md)で、詳細な System Center Operations Manager Health Check データと推奨事項を分析する方法を学びます。

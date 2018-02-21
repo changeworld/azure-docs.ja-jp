@@ -14,13 +14,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 01/31/2018
+ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: 3598c61634bf039e5c9500cc9a4f6b08e4830ce5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a1b10c1a12d9a9215022cc77615901a0e4d144f8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 

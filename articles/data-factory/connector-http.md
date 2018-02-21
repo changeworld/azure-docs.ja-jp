@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/10/2018
+ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 232b9bed1ea719dfb76d639bc8d5274551cdab6f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 888b75ad16a3835ca988dd9aa6a146cc26e6370a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="copy-data-from-http-endpoint-using-azure-data-factory"></a>Azure Data Factory を使用した HTTP エンドポイントからのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -66,7 +66,7 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | userName | HTTP エンドポイントにアクセスするためのユーザー名。 | [はい] |
-| password | ユーザー (userName) のパスワード。 このフィールドを SecureString とマークします。 | [はい] |
+| password | ユーザー (userName) のパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 
 **例**
 
@@ -100,7 +100,7 @@ ClientCertificate 認証を使用するには、"authenticationType" プロパ�
 |:--- |:--- |:--- |
 | embeddedCertData | Base64 でエンコードされた証明書データ。 | `embeddedCertData` または `certThumbprint` を指定します。 |
 | certThumbprint | セルフホステッド統合ランタイム コンピューターの証明書ストアにインストールされている証明書の拇印。 セルフホステッド統合ランタイムが connectVia で指定されている場合にのみ適用されます。 | `embeddedCertData` または `certThumbprint` を指定します。 |
-| password | 証明書に関連付けられているパスワード。 このフィールドを SecureString とマークします。 | いいえ  |
+| password | 証明書に関連付けられているパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 
 認証に "certThumbprint" を使用し、証明書がローカル コンピューターの個人用ストアにインストールされている場合は、セルフホステッド統合ランタイムに読み取りアクセス許可を付与する必要があります。
 

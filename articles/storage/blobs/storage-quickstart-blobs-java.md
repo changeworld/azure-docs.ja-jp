@@ -2,18 +2,18 @@
 title: "Azure クイックスタート - Java を使用して Azure Blob Storage との間でオブジェクトを転送する | Microsoft Docs"
 description: "Java を使って Azure Blob Storage との間で双方向にオブジェクトを転送する方法を説明します"
 author: roygara
-manager: timlt
+manager: jeconnoc
 services: storage
 ms.service: storage
 ms.topic: quickstart
 ms.date: 11/01/2017
-ms.author: v-rogara
+ms.author: rogarana
 ms.custom: mvc
-ms.openlocfilehash: 5676cef446de7a68d3d8fd1a3b6833a5de184ea1
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 12e234b483ca7e3b030256bf1cedaed2bcc120d3
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-java"></a>Java を使用して Azure Blob Storage との間でオブジェクトを転送する
 
@@ -59,7 +59,7 @@ public static final String storageConnectionString =
 "AccountKey=<account-key>";
 ```
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 
 このサンプルは、既定のディレクトリ (Windows ユーザーの場合はマイ ドキュメント) にテスト ファイルを作成して Blob Storage にアップロードし、コンテナー内の BLOB の一覧を取得してから、古いファイルと新しいファイルを比較できるように新しい名前でファイルをダウンロードします。 
 
@@ -96,7 +96,7 @@ Deleting the source, and downloaded files
 
 最初に、Blob Storage にアクセスして管理するために使うオブジェクトへの参照を作成します。 これらのオブジェクトは、他のオブジェクトを基にして作成されます。各オブジェクトは、一覧で次にあるオブジェクトによって使われます。
 
-* [ストレージ アカウント](/java/api/com.microsoft.azure.management.storage._storage_account)を指す **CloudStorageAccount** オブジェクトのインスタンスを作成します。
+* ストレージ アカウントを指す [CloudStorageAccount](/java/api/com.microsoft.azure.management.storage._storage_account) オブジェクトのインスタンスを作成します。
 
     **CloudStorageAccount** オブジェクトはストレージ アカウントの表現であり、これを使用してストレージ アカウントのプロパティをプログラムで設定してアクセスできます。 **CloudStorageAccount** オブジェクトを使用して、**CloudBlobClient** インスタンスを作成できます。これは Blob service へのアクセスで必要です。
 
@@ -104,9 +104,9 @@ Deleting the source, and downloaded files
 
     **CloudBlobClient** は Blob service へのアクセス ポイントを提供し、BLOB ストレージのプロパティをプログラムで設定してアクセスできるようにします。 **CloudBlobClient** オブジェクトを使用して、**CloudBlobContainer** インスタンスを作成できます。これはコンテナーを作成するために必要です。
 
-* アクセスしている[コンテナー](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container)を表す **CloudBlobContainer** オブジェクトのインスタンスを作成します。 コンテナーは、コンピューターでフォルダーを使ってファイルを整理するのと同じように、BLOB を整理するために使われます。    
+* アクセスしているコンテナーを表す [CloudBlobContainer](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container) オブジェクトのインスタンスを作成します。 コンテナーは、コンピューターでフォルダーを使ってファイルを整理するのと同じように、BLOB を整理するために使われます。    
 
-    **CloudBlobContainer** を作成した後は、関心がある特定の [BLOB](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob) を指す **CloudBlockBlob** オブジェクトのインスタンスを作成して、アップロード、ダウンロード、コピーなどの操作を実行できます。
+    **CloudBlobContainer** を作成した後は、関心がある特定の BLOB を指す [CloudBlockBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob) オブジェクトのインスタンスを作成して、アップロード、ダウンロード、コピーなどの操作を実行できます。
 
 > [!IMPORTANT]
 > コンテナーの名前は小文字にする必要があります。 コンテナーと BLOB の名前の詳細については、「[コンテナー、BLOB、メタデータの名前付けと参照](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)」を参照してください。
@@ -115,7 +115,7 @@ Deleting the source, and downloaded files
 
 このセクションでは、オブジェクトのインスタンスを作成し、新しいコンテナーを作成した後、BLOB をパブリックにして URL のみでアクセスできるように、コンテナーに対するアクセス許可を設定します。 コンテナーの名前は **quickstartblobs** です。 
 
-この例では、サンプルを実行するたびに新しいコンテナーを作成したいので、**CreateIfNotExists** を使います。 アプリケーション全体で同じコンテナーを使う運用環境では、**CreateIfNotExists** を 1 回だけ呼び出す方が賢明です。 または、コードから作成する必要がないように、前もってコンテナーを作成しておいてもかまいません。
+この例では、サンプルを実行するたびに新しいコンテナーを作成したいので、[CreateIfNotExists](/java/api/com.microsoft.azure.storage.blob._cloud_blob_container.createifnotexists) を使います。 アプリケーション全体で同じコンテナーを使用する運用環境では、**CreateIfNotExists** を 1 回だけ呼び出すことがよい方法です。 または、コードから作成する必要がないように、前もってコンテナーを作成しておいてもかまいません。
 
 ```java
 // Parse the connection string and create a blob client to interact with Blob storage
@@ -152,7 +152,7 @@ System.out.println("Uploading the sample file ");
 blob.uploadFromFile(sourceFile.getAbsolutePath());
 ```
 
-BLOB ストレージでは複数の[アップロード方法](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob)を使用できます。 たとえば、文字列がある場合は、Upload メソッドではなく、UploadText メソッドを使用できます。 
+Blob Storage では、[upload](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.upload)、[uploadBlock](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadblock)、[uploadFullBlob](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadfullblob)、[uploadStandardBlobTier](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadstandardblobtier)、[uploadText](/java/api/com.microsoft.azure.storage.blob._cloud_block_blob.uploadtext) など、いくつかのアップロード方法を用いることができます。 たとえば、文字列がある場合は、Upload メソッドではなく、UploadText メソッドを使用できます。 
 
 ブロック BLOB は、あらゆる種類のテキスト ファイルまたはバイナリ ファイルに使うことができます。 ページ BLOB は、主に、IaaS VM のバックアップ用の VHD ファイルに使われます。 追加 BLOB は、ファイルに書き込んでから情報を追加する場合など、ログ記録に使われます。 BLOB ストレージに格納されているほとんどのオブジェクトはブロック BLOB です。
 
@@ -203,7 +203,7 @@ if(sourceFile != null)
 sourceFile.deleteOnExit();
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイックスタートでは、Java を使ってローカル ディスクと Azure Blob Storage との間でファイルを転送する方法について学習しました。 Blob Storage の操作の詳細を学習するには、Blob Storage の操作方法に進みます。
 
@@ -211,3 +211,5 @@ sourceFile.deleteOnExit();
 > [Blob Storage の操作方法](storage-java-how-to-use-blob-storage.md)
 
 Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md)」をご覧ください。
+
+Java のサンプルについて詳しくは、「[Java を使用した Azure Storage サンプル](../common/storage-samples-java.md)」をご覧ください。

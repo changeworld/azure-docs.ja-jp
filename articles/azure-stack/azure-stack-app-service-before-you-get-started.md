@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: anwestg
-ms.openlocfilehash: 18a671fe49b57dda3df33b58a464b300e574376f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cdeec60b4935fda58e2657a215826d8355c81664
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 *適用先: Azure Stack 統合システムと Azure Stack Development Kit*
@@ -156,22 +156,22 @@ Azure Stack Development Kit のデプロイのみの場合は、[Azure Resource 
 Azure Resource Manager テンプレートを使用するとき、ユーザーは既に作成されています。
 
 1. 次のコマンドを実行して、FileShareOwner アカウントと FileShareUser アカウントを作成します。 `<password>` を独自の値に置き換えます。
-``` DOS
-net user FileShareOwner <password> /add /expires:never /passwordchg:no
-net user FileShareUser <password> /add /expires:never /passwordchg:no
-```
+    ``` DOS
+    net user FileShareOwner <password> /add /expires:never /passwordchg:no
+    net user FileShareUser <password> /add /expires:never /passwordchg:no
+    ```
 2. 次の WMIC コマンドを実行して、アカウントのパスワードを無期限に設定します。
-``` DOS
-WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
-WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
-```
+    ``` DOS
+    WMIC USERACCOUNT WHERE "Name='FileShareOwner'" SET PasswordExpires=FALSE
+    WMIC USERACCOUNT WHERE "Name='FileShareUser'" SET PasswordExpires=FALSE
+    ```
 3. ローカル グループ FileShareUsers と FileShareOwners を作成し、最初の手順で作成したアカウントをそれらに追加します。
-``` DOS
-net localgroup FileShareUsers /add
-net localgroup FileShareUsers FileShareUser /add
-net localgroup FileShareOwners /add
-net localgroup FileShareOwners FileShareOwner /add
-```
+    ``` DOS
+    net localgroup FileShareUsers /add
+    net localgroup FileShareUsers FileShareUser /add
+    net localgroup FileShareOwners /add
+    net localgroup FileShareOwners FileShareOwner /add
+    ```
 
 ### <a name="provision-the-content-share"></a>コンテンツ共有をプロビジョニングする
 

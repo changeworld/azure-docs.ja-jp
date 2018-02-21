@@ -10,17 +10,17 @@ ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
 ms.openlocfilehash: be502e6aef39ee4ed8cfc1f8926cb556dc1defb1
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="mount-an-azure-file-share-with-azure-container-instances"></a>Azure Container Instances での Azure ファイル共有のマウント
 
 既定では、Azure Container Instances はステートレスです。 コンテナーがクラッシュまたは停止すると、すべての状態が失われます。 コンテナーの有効期間後も状態を保持するには、外部ストアからボリュームをマウントする必要があります。 この記事では、Azure Container Instances で使用できるように Azure ファイル共有をマウントする方法について説明します。
 
 > [!NOTE]
-> Azure ファイル共有のマウントは現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances (Azure Container Instances のクォータとリージョンの可用性)](container-instances-quotas.md)」で確認できます。
+> Azure ファイル共有のマウントは現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
 

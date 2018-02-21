@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 91129da9ef7791a506292d9e13e386a25ee341a8
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: a5c05466b21184a73d08190856e00ae95ee3727f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 **Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。
@@ -27,93 +27,106 @@ ms.lasthandoff: 10/26/2017
 ### <a name="sample-event"></a>サンプル イベント
 ```json
 {
-  "authorization": {
-    "action": "microsoft.support/supporttickets/write",
-    "role": "Subscription Admin",
-    "scope": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841"
-  },
-  "caller": "admin@contoso.com",
-  "channels": "Operation",
-  "claims": {
-    "aud": "https://management.core.windows.net/",
-    "iss": "https://sts.windows.net/72f988bf-86f1-41af-91ab-2d7cd011db47/",
-    "iat": "1421876371",
-    "nbf": "1421876371",
-    "exp": "1421880271",
-    "ver": "1.0",
-    "http://schemas.microsoft.com/identity/claims/tenantid": "1e8d8218-c5e7-4578-9acc-9abbd5d23315 ",
-    "http://schemas.microsoft.com/claims/authnmethodsreferences": "pwd",
-    "http://schemas.microsoft.com/identity/claims/objectidentifier": "2468adf0-8211-44e3-95xq-85137af64708",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "admin@contoso.com",
-    "puid": "20030000801A118C",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "9vckmEGF7zDKk1YzIY8k0t1_EAPaXoeHyPRn6f413zM",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "John",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Smith",
-    "name": "John Smith",
-    "groups": "cacfe77c-e058-4712-83qw-f9b08849fd60,7f71d11d-4c41-4b23-99d2-d32ce7aa621c,31522864-0578-4ea0-9gdc-e66cc564d18c",
-    "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": " admin@contoso.com",
-    "appid": "c44b4083-3bq0-49c1-b47d-974e53cbdf3c",
-    "appidacr": "2",
-    "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
-    "http://schemas.microsoft.com/claims/authnclassreference": "1"
-  },
-  "correlationId": "1e121103-0ba6-4300-ac9d-952bb5d0c80f",
-  "description": "",
-  "eventDataId": "44ade6b4-3813-45e6-ae27-7420a95fa2f8",
-  "eventName": {
-    "value": "EndRequest",
-    "localizedValue": "End request"
-  },
-  "httpRequest": {
-    "clientRequestId": "27003b25-91d3-418f-8eb1-29e537dcb249",
-    "clientIpAddress": "192.168.35.115",
-    "method": "PUT"
-  },
-  "id": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841/events/44ade6b4-3813-45e6-ae27-7420a95fa2f8/ticks/635574752669792776",
-  "level": "Informational",
-  "resourceGroupName": "MSSupportGroup",
-  "resourceProviderName": {
-    "value": "microsoft.support",
-    "localizedValue": "microsoft.support"
-  },
-  "resourceUri": "/subscriptions/s1/resourceGroups/MSSupportGroup/providers/microsoft.support/supporttickets/115012112305841",
-  "operationId": "1e121103-0ba6-4300-ac9d-952bb5d0c80f",
-  "operationName": {
-    "value": "microsoft.support/supporttickets/write",
-    "localizedValue": "microsoft.support/supporttickets/write"
-  },
-  "properties": {
-    "statusCode": "Created"
-  },
-  "status": {
-    "value": "Succeeded",
-    "localizedValue": "Succeeded"
-  },
-  "subStatus": {
-    "value": "Created",
-    "localizedValue": "Created (HTTP Status Code: 201)"
-  },
-  "eventTimestamp": "2015-01-21T22:14:26.9792776Z",
-  "submissionTimestamp": "2015-01-21T22:14:39.9936304Z",
-  "subscriptionId": "s1"
+    "authorization": {
+        "action": "Microsoft.Network/networkSecurityGroups/write",
+        "scope": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG"
+    },
+    "caller": "rob@contoso.com",
+    "channels": "Operation",
+    "claims": {
+        "aud": "https://management.core.windows.net/",
+        "iss": "https://sts.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/",
+        "iat": "1234567890",
+        "nbf": "1234567890",
+        "exp": "1234567890",
+        "_claim_names": "{\"groups\":\"src1\"}",
+        "_claim_sources": "{\"src1\":{\"endpoint\":\"https://graph.windows.net/1114444b-7467-4144-a616-e3a5d63e147b/users/f409edeb-4d29-44b5-9763-ee9348ad91bb/getMemberObjects\"}}",
+        "http://schemas.microsoft.com/claims/authnclassreference": "1",
+        "aio": "A3GgTJdwK4vy7Fa7l6DgJC2mI0GX44tML385OpU1Q+z+jaPnFMwB",
+        "http://schemas.microsoft.com/claims/authnmethodsreferences": "rsa,mfa",
+        "appid": "355249ed-15d9-460d-8481-84026b065942",
+        "appidacr": "2",
+        "http://schemas.microsoft.com/2012/01/devicecontext/claims/identifier": "10845a4d-ffa4-4b61-a3b4-e57b9b31cdb5",
+        "e_exp": "262800",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname": "Robertson",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname": "Rob",
+        "ipaddr": "111.111.1.111",
+        "name": "Rob Robertson",
+        "http://schemas.microsoft.com/identity/claims/objectidentifier": "f409edeb-4d29-44b5-9763-ee9348ad91bb",
+        "onprem_sid": "S-1-5-21-4837261184-168309720-1886587427-18514304",
+        "puid": "18247BBD84827C6D",
+        "http://schemas.microsoft.com/identity/claims/scope": "user_impersonation",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier": "b-24Jf94A3FH2sHWVIFqO3-RSJEiv24Jnif3gj7s",
+        "http://schemas.microsoft.com/identity/claims/tenantid": "1114444b-7467-4144-a616-e3a5d63e147b",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name": "rob@contoso.com",
+        "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn": "rob@contoso.com",
+        "uti": "IdP3SUJGtkGlt7dDQVRPAA",
+        "ver": "1.0"
+    },
+    "correlationId": "b5768deb-836b-41cc-803e-3f4de2f9e40b",
+    "eventDataId": "d0d36f97-b29c-4cd9-9d3d-ea2b92af3e9d",
+    "eventName": {
+        "value": "EndRequest",
+        "localizedValue": "End request"
+    },
+    "category": {
+        "value": "Administrative",
+        "localizedValue": "Administrative"
+    },
+    "eventTimestamp": "2018-01-29T20:42:31.3810679Z",
+    "id": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG/events/d0d36f97-b29c-4cd9-9d3d-ea2b92af3e9d/ticks/636528553513810679",
+    "level": "Informational",
+    "operationId": "04e575f8-48d0-4c43-a8b3-78c4eb01d287",
+    "operationName": {
+        "value": "Microsoft.Network/networkSecurityGroups/write",
+        "localizedValue": "Microsoft.Network/networkSecurityGroups/write"
+    },
+    "resourceGroupName": "myResourceGroup",
+    "resourceProviderName": {
+        "value": "Microsoft.Network",
+        "localizedValue": "Microsoft.Network"
+    },
+    "resourceType": {
+        "value": "Microsoft.Network/networkSecurityGroups",
+        "localizedValue": "Microsoft.Network/networkSecurityGroups"
+    },
+    "resourceId": "/subscriptions/dd042f02-6b3e-4f79-939a-6a381ffed3c0/resourcegroups/myResourceGroup/providers/Microsoft.Network/networkSecurityGroups/myNSG",
+    "status": {
+        "value": "Succeeded",
+        "localizedValue": "Succeeded"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-01-29T20:42:50.0724829Z",
+    "subscriptionId": "dd042f02-6b3e-4f79-939a-6a381ffed3c0",
+    "properties": {
+        "statusCode": "Created",
+        "serviceRequestId": "a4c11dbd-697e-47c5-9663-12362307157d",
+        "responseBody": "",
+        "requestbody": ""
+    },
+    "relatedEvents": []
 }
+
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | Description |
+| 要素名 | [説明] |
 | --- | --- |
 | authorization |イベントの RBAC プロパティの BLOB。 通常は、"action"、"role"、"scope" の各プロパティが含まれます。 |
 | caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの電子メール アドレス。 |
 | channels |値として、"Admin" または "Operation" を指定します。 |
 | claims |Resource Manager でこの操作を実行するユーザーまたはアプリケーションを認証するために Active Directory によって使用される JWT トークン。 |
 | correlationId |通常は文字列形式の GUID。 correlationId を共有するイベントは、同じ uber アクションに属します。 |
-| Description |イベントを説明する静的テキスト。 |
+| 説明 |イベントを説明する静的テキスト。 |
 | eventDataId |イベントの一意の識別子。 |
 | httpRequest |Http 要求を記述する BLOB。 通常、"clientRequestId"、"clientIpAddress"、"method" (HTTP メソッド、 たとえば PUT) が含まれます。 |
-| 最小限のレベル |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
+| level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
 | resourceProviderName |影響を受けるリソースのリソース プロバイダーの名前。 |
-| resourceId |影響を受けるリソースのリソース ID。 |
+| ResourceId |影響を受けるリソースのリソース ID。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
 | プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
@@ -183,11 +196,11 @@ ms.lasthandoff: 10/26/2017
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-要素名 | Description
+要素名 | [説明]
 -------- | -----------
 channels | 値は "Admin" または "Operation" のいずれか
 correlationId | 通常は文字列形式の GUID。 そのイベントは同じ uber アクションに属し、通常は同じ correlationID を共有します。
-description | イベントの説明。
+説明 | イベントの説明。
 eventDataId | イベントの一意識別子。
 eventName | イベントのタイトル。
 level | イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose”
@@ -200,7 +213,7 @@ subscriptionId | このイベントが記録された Azure サブスクリプ�
 status | 操作の状態を説明する文字列。 一般的な値の例: Active、Resolved。
 operationName | 操作の名前。 通常は Microsoft.ServiceHealth/incident/action です。
 カテゴリ | "ServiceHealth"
-resourceId | 既知の場合は、影響を受けるリソースのリソース ID。 それ以外の場合は、サブスクリプション ID が指定されます。
+ResourceId | 既知の場合は、影響を受けるリソースのリソース ID。 それ以外の場合は、サブスクリプション ID が指定されます。
 Properties.title | この通信のローカライズされたタイトル。 既定の言語は英語です。
 Properties.communication | HTML マークアップによる通信のローカライズされた詳細。 既定は英語です。
 Properties.incidentType | 使用可能な値: AssistedRecovery、ActionRequired、Information、Incident、Maintenance、Security
@@ -276,18 +289,18 @@ Properties.communicationId | このイベントが関連付けられている通
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | Description |
+| 要素名 | [説明] |
 | --- | --- |
 | caller | 常に Microsoft.Insights/alertRules |
 | channels | 常に "Admin, Operation" |
 | claims | アラート エンジンの SPN (サービス プリンシパル名) またはリソースの種類の JSON BLOB。 |
 | correlationId | 文字列形式の GUID。 |
-| description |アラート イベントを説明する静的テキスト。 |
+| 説明 |アラート イベントを説明する静的テキスト。 |
 | eventDataId |アラート イベントの一意識別子。 |
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |メトリック アラートである場合に影響を受けるリソースのリソース グループの名前。 その他のアラートの場合、これはアラート自体を含むリソース グループの名前です。 |
 | resourceProviderName |メトリック アラートである場合に影響を受けるリソースのリソース プロバイダーの名前。 その他のアラートの場合、これはアラート自体のリソース プロバイダーの名前です。 |
-| resourceId | メトリック アラートである場合に影響を受けるリソースのリソース ID の名前。 その他のアラートの場合、これはアラート リソース自体のリソース ID です。 |
+| ResourceId | メトリック アラートである場合に影響を受けるリソースのリソース ID の名前。 その他のアラートの場合、これはアラート リソース自体のリソース ID です。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
 | プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
@@ -301,7 +314,7 @@ Properties.communicationId | このイベントが関連付けられている通
 アラート イベントのソースに応じて、プロパティ フィールドには異なる値が格納されます。 アラート イベントの一般的なプロバイダーは、アクティビティ ログ アラートとメトリック アラートの 2 つです。
 
 #### <a name="properties-for-activity-log-alerts"></a>アクティビティ ログ アラートのプロパティ
-| 要素名 | Description |
+| 要素名 | [説明] |
 | --- | --- |
 | properties.subscriptionId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのサブスクリプション ID。 |
 | properties.eventDataId | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントのイベント データ ID。 |
@@ -312,7 +325,7 @@ Properties.communicationId | このイベントが関連付けられている通
 | properties.status | このアクティビティ ログ アラート ルールがアクティブになった原因であるアクティビティ ログ イベントの状態。|
 
 #### <a name="properties-for-metric-alerts"></a>メトリック アラートのプロパティ
-| 要素名 | Description |
+| 要素名 | [説明] |
 | --- | --- |
 | properties.RuleUri | メトリック アラート ルール自体のリソース ID。 |
 | properties.RuleName | メトリック アラート ルールの名前。 |
@@ -324,7 +337,7 @@ Properties.communicationId | このイベントが関連付けられている通
 | properties.MetricName | メトリック アラート ルールの評価で使用されるメトリックのメトリック名。 |
 | properties.MetricUnit | メトリック アラート ルールの評価で使用されるメトリックのメトリック単位。 |
 
-## <a name="autoscale"></a>自動スケール
+## <a name="autoscale"></a>Autoscale
 このカテゴリには、サブスクリプションで定義したすべての自動スケール設定に基づいて、自動スケール エンジンの操作に関連するすべてのイベントのレコードが含まれます。 このカテゴリで表示されるイベントの種類として、"Autoscale scale up action failed" (自動スケールのスケールアップ アクションに失敗しました) などがあります。 自動スケールを使用すると、自動スケール設定で指定した時刻や負荷 (メトリック) データに基づいて、サポートされるリソースの種類のインスタンス数を自動的にスケールアウトまたはスケールインすることができます。 スケールアップまたはスケールダウンの条件を満たした場合、開始イベントと、成功または失敗イベントがこのカテゴリに記録されます。
 
 ### <a name="sample-event"></a>サンプル イベント
@@ -385,18 +398,18 @@ Properties.communicationId | このイベントが関連付けられている通
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | Description |
+| 要素名 | [説明] |
 | --- | --- |
 | caller | 常に Microsoft.Insights/autoscaleSettings |
 | channels | 常に "Admin, Operation" |
 | claims | 自動スケール エンジンの SPN (サービス プリンシパル名) またはリソースの種類の JSON BLOB。 |
 | correlationId | 文字列形式の GUID。 |
-| description |自動スケール イベントを説明する静的テキスト。 |
+| 説明 |自動スケール イベントを説明する静的テキスト。 |
 | eventDataId |自動スケール イベントの一意識別子。 |
 | level |イベントのレベル。 次の値のいずれか: “Critical”、“Error”、“Warning”、“Informational” and “Verbose” |
 | resourceGroupName |自動スケール設定のリソース グループの名前。 |
 | resourceProviderName |自動スケール設定のリソース プロバイダーの名前。 |
-| resourceId |自動スケール設定のリソース ID。 |
+| ResourceId |自動スケール設定のリソース ID。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
 | プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 |
@@ -475,11 +488,11 @@ Properties.communicationId | このイベントが関連付けられている通
 ```
 
 ### <a name="property-descriptions"></a>プロパティの説明
-| 要素名 | Description |
+| 要素名 | [説明] |
 | --- | --- |
 | channels | 常に "Operation" |
 | correlationId | 文字列形式の GUID。 |
-| description |セキュリティ イベントを説明する静的テキスト。 |
+| 説明 |セキュリティ イベントを説明する静的テキスト。 |
 | eventDataId |セキュリティ イベントの一意識別子。 |
 | eventName |セキュリティ イベントのフレンドリ名。 |
 | id |セキュリティ イベントの一意リソース識別子。 |
@@ -487,7 +500,7 @@ Properties.communicationId | このイベントが関連付けられている通
 | resourceGroupName |リソースのリソース グループの名前。 |
 | resourceProviderName |Azure Security Center のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
 | resourceType |セキュリティ イベントを生成したリソースの種類 (例: "Microsoft.Security/locations/alerts") |
-| resourceId |セキュリティ アラートのリソース ID。 |
+| ResourceId |セキュリティ アラートのリソース ID。 |
 | operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
 | operationName |操作の名前。 |
 | プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 これらのプロパティは、セキュリティ アラートの種類によって異なります。 Security Center から送られてくるアラートの種類について詳しくは、[こちらのページ](../security-center/security-center-alerts-type.md)をご覧ください。 |
@@ -498,6 +511,6 @@ Properties.communicationId | このイベントが関連付けられている通
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [アクティビティ ログ (以前の監査ログ) の詳細を確認する](monitoring-overview-activity-logs.md)
 * [Azure アクティビティ ログを Event Hubs にストリーミングする](monitoring-stream-activity-logs-event-hubs.md)

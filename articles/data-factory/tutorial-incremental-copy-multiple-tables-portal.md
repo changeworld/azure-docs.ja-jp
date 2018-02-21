@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/20/2018
 ms.author: jingwang
-ms.openlocfilehash: c79bce401b0f1d67d7955f4c97a5dfac5008be0d
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 11dedc8866fcc0239fd4a34b7ed73af34c6d5a4e
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database"></a>SQL Server にある複数のテーブルから Azure SQL データベースにデータを増分読み込みする
 このチュートリアルでは、オンプレミスの SQL Server にある複数のテーブルから Azure SQL データベースに差分データを読み込むパイプラインを持つ Azure Data Factory を作成します。    
@@ -135,7 +135,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ```
 
-### <a name="create-another-table-in-the-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを SQL データベースに作成する
+### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>高基準値の格納用としてもう 1 つテーブルを Azure SQL データベースに作成する
 1. SQL データベースに対して次の SQL コマンドを実行し、基準値の格納先として `watermarktable` という名前のテーブルを作成します。 
     
     ```sql
@@ -157,7 +157,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     
     ```
 
-### <a name="create-a-stored-procedure-in-the-sql-database"></a>SQL データベースにストアド プロシージャを作成する 
+### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Azure SQL データベースにストアド プロシージャを作成する 
 
 次のコマンドを実行して、SQL データベースにストアド プロシージャを作成します。 パイプラインの実行後は都度、このストアド プロシージャによって基準値が更新されます。 
 
@@ -175,7 +175,7 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures"></a>データ型と新たなストアド プロシージャの作成
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Azure SQL データベースにデータ型と新たなストアド プロシージャを作成する
 次のクエリを実行して、2 つのストアド プロシージャと 2 つのデータ型を SQL データベースに作成します。 それらは、ソース テーブルから宛先テーブルにデータをマージするために使用されます。
 
 ```sql
@@ -228,6 +228,7 @@ END
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/tutorial-incremental-copy-multiple-tables-portal/new-azure-data-factory-menu.png)
@@ -422,7 +423,7 @@ END
     3. パラメーターの**[型]** として **[オブジェクト]** を選択します。
 
     ![パイプラインのパラメーター](./media/tutorial-incremental-copy-multiple-tables-portal/pipeline-parameters.png) 
-4. **[アクティビティ]** ツールボックスからパイプライン デザイナー画面に **ForEach** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
+4. **[アクティビティ]** ツール ボックスで **[Iteration & Conditionals]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[ForEach]** アクティビティをドラッグ アンド ドロップします。 **プロパティ** ウィンドウの **[全般]** タブで、「**IterateSQLTables**」と入力します。 
 
     ![ForEach アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/foreach-name.png)
 5. **プロパティ** ウィンドウで **[設定]** タブに切り替え、**[項目]** に「`@pipeline().parameters.tableList`」と入力します。 ForEach アクティビティは、一連のテーブルを反復処理しながら、増分コピー操作を実行します。 
@@ -431,7 +432,7 @@ END
 6. パイプラインの **ForEach** アクティビティが選択されていない場合はこれを選択します。 **[編集] (鉛筆アイコン)** ボタンをクリックします。
 
     ![ForEach アクティビティ - 編集](./media/tutorial-incremental-copy-multiple-tables-portal/edit-foreach.png)
-7. **[アクティビティ]** ツールボックスから**検索**アクティビティをドラッグアンドドロップし、**[名前]** に「**LookupOldWaterMarkActivity**」と入力します。
+7. **[アクティビティ]** ツールボックスで **[General]\(一般\)** を展開し、パイプライン デザイナー画面に **[検索]** アクティビティをドラッグ アンド ドロップし、**[名前]** に「**LookupOldWaterMarkActivity**」を入力します。
 
     ![最初の検索アクティビティ - 名前](./media/tutorial-incremental-copy-multiple-tables-portal/first-lookup-name.png)
 8. **プロパティ** ウィンドウで **[設定]** タブに切り替え、以下の手順を実行します。 
@@ -497,8 +498,9 @@ END
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-multiple-tables-portal/sproc-activity-sql-account.png)
 19. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。
 
-    1. **[ストアド プロシージャ名]** に「`sp_write_watermark`」と入力します。 
-    2. **[新規]** ボタンを使用して、次のパラメーターを追加します。 
+    1. **[ストアド プロシージャ名]** に `sp_write_watermark` を選択します。 
+    2. **[Import parameter]\(インポート パラメーター\)** を選択します。 
+    3. 各パラメーターの値を次のように指定します。 
 
         | Name | type | 値 | 
         | ---- | ---- | ----- |

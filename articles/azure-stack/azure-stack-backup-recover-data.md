@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/15/2017
+ms.date: 02/13/2017
 ms.author: mabrigg
-ms.openlocfilehash: 859d31b554fcd1936ce555f6afb0f4631a3af7aa
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 141641b01b338e3426861dad7424a1de1bd2c63c
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="recover-from-catastrophic-data-loss"></a>致命的なデータ損失からの復旧
 

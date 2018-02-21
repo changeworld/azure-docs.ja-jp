@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: bprakash
-ms.openlocfilehash: 009b909f9d92c6a21babffae3984be36a7682476
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 35ded349e9ced6463ece876ca1fd92423d20c625
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
 
@@ -115,7 +115,7 @@ Azure HDInsight は、クラスターの作成のワークフローの一部と�
 
     以前は、ローカル管理者ユーザーとローカル SSH ユーザーのみが HDInsight クラスターを作成できました。 ローカル管理者ユーザーは、すべてのファイル、フォルダー、テーブル、列にアクセスできます。  Enterprise セキュリティ パッケージを使用すると、オンプレミスの Active Directory、Azure Active Directory Domain Services、または IaaS 仮想マシン上の Active Directory を含む独自の Active Directory に HDInsight クラスターを統合することで、ロールベースのアクセス制御を有効にすることができます。 クラスターのドメイン管理者は、クラスターにアクセスするための自社の (ドメイン) ユーザー名とパスワードを使用する権限をユーザーに付与することができます。 
 
-    詳細については、「
+    詳細については、次を参照してください。
 
     - [ドメイン参加済み HDInsight クラスターでの Hadoop セキュリティの概要](./domain-joined/apache-domain-joined-introduction.md)
     - [HDInsight で Azure のドメイン参加済み Hadoop クラスターを計画する](./domain-joined/apache-domain-joined-architecture.md)
@@ -127,7 +127,7 @@ Azure HDInsight は、クラスターの作成のワークフローの一部と�
     - Hive、Spark SQL、Yarn Queues の承認のための Apache Ranger との統合。
     - ファイルとフォルダーのアクセスの制御を設定できます。
 
-    詳細については、「
+    詳細については、次を参照してください。
 
     - [ドメイン参加済み HDInsight での Hive ポリシーの構成](./domain-joined/apache-domain-joined-run-hive.md)
 

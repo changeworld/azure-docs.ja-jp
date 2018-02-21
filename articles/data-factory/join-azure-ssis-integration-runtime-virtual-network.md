@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 2131aa75dcfb975f11cff9800087c3e4e7170378
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 72b0965e1fda733651baa04997da1242a73320f1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 以下のシナリオでは、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワーク (VNet) に参加させます。 
@@ -31,7 +31,13 @@ ms.lasthandoff: 02/01/2018
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="access-on-premises-data-stores"></a>オンプレミスのデータ ストアにアクセスする
-SSIS パッケージがパブリック クラウドのデータ ストアだけにアクセスする場合は、VNet に Azure-SSIS IR を参加させる必要はありません。 SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合は、オンプレミスのネットワークに接続されている VNet に Azure-SSIS IR を参加させる必要があります。 SSIS カタログが VNet 内にない Azure SQL Database でホストされている場合は、適切なポートを開く必要があります。 SSIS カタログが Azure Resource Manager VNet 内またはクラシック VNet 内にある Azure SQL マネージ インスタンスでホストされている場合は、同じ VNet に、または Azure SQL マネージ インスタンスが存在する VNet との間に VNet 間接続のある別の VNet に、Azure-SSIS IR を参加させることができます。 以降のセクションではさらに詳しく説明します。
+SSIS パッケージがパブリック クラウドのデータ ストアだけにアクセスする場合は、VNet に Azure-SSIS IR を参加させる必要はありません。 SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合は、オンプレミスのネットワークに接続されている VNet に Azure-SSIS IR を参加させる必要があります。 
+
+SSIS カタログが VNet 内にない Azure SQL Database でホストされている場合は、適切なポートを開く必要があります。 
+
+SSIS カタログが VNet 内にある Azure SQL マネージ インスタンス (MI) でホストされている場合は、同じ VNet に、または Azure SQL マネージ インスタンスが存在する VNet との間に VNet 間接続のある別の VNet に、Azure-SSIS IR を参加させることができます。 VNet はクラシック VNet または Azure リソース管理 VNet にできます。 SQL MI を持つ**同じ VNet** の Azure-SSIS IR に参加することを計画している場合は、Azure-SSIS IR が SQL MI を持つ VNet とは**異なるサブネット**にあることを確認します。   
+
+以降のセクションではさらに詳しく説明します。
 
 注意すべき重要な点がいくつかあります。 
 
@@ -58,10 +64,11 @@ Azure-SSIS 統合ランタイムが参加する VNet にネットワーク セ�
 ### <a name="use-portal-to-configure-a-classic-vnet"></a>ポータルを使ってクラシック VNet を構成する
 Azure-SSIS IR を VNet に参加させる前に、まず VNet を構成する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にログインします。
-2. **[その他のサービス]** をクリックします。 **[仮想ネットワーク (クラシック)]** を選びます。
-3. 一覧で目的の**仮想ネットワーク**を選びます。 
-4. [仮想ネットワーク (クラシック)] ページで、**[プロパティ]** を選びます。 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. [Azure Portal](https://portal.azure.com) にログインします。
+3. **[その他のサービス]** をクリックします。 **[仮想ネットワーク (クラシック)]** を選びます。
+4. 一覧で目的の**仮想ネットワーク**を選びます。 
+5. [仮想ネットワーク (クラシック)] ページで、**[プロパティ]** を選びます。 
 
     ![クラシック VNet のリソース ID](media/join-azure-ssis-integration-runtime-virtual-network/classic-vnet-resource-id.png)
 5. **[リソース ID]** のコピー ボタンをクリックして、クラシック ネットワークのリソース ID をクリップボードにコピーします。 クリップボードから OneNote またはファイルに ID を保存します。
@@ -93,13 +100,14 @@ Azure-SSIS IR を VNet に参加させる前に、まず VNet を構成する必
 ### <a name="use-portal-to-configure-an-azure-resource-manager-vnet"></a>ポータルを使ってAzure Resource Manager VNet を構成する
 Azure-SSIS IR を VNet に参加させる前に、まず VNet を構成する必要があります。
 
-1. [Azure Portal](https://portal.azure.com) にログインします。
-2. **[その他のサービス]** をクリックします。 フィルターを適用して **[仮想ネットワーク]** を選択します。
-3. 一覧で目的の**仮想ネットワーク**を選びます。 
-4. [仮想ネットワーク] ページで、**[プロパティ]** を選択します。 
-5. **[リソース ID]** のコピー ボタンをクリックして、仮想ネットワークのリソース ID をクリップボードにコピーします。 クリップボードから OneNote またはファイルに ID を保存します。
-6. 左側のメニューの **[サブネット]** をクリックし、**[使用可能なアドレス]** の数が Azure-SSIS 統合ランタイムのノード数より多いことを確認します。
-5. VNet が含まれる Azure サブスクリプションに Azure Batch プロバイダーが登録されていることを確認します。登録されていない場合は、Azure Batch プロバイダーを登録します。 Azure Batch アカウントがサブスクリプションに既にある場合は、サブスクリプションは Azure Batch に登録されています。
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. [Azure Portal](https://portal.azure.com) にログインします。
+3. **[その他のサービス]** をクリックします。 フィルターを適用して **[仮想ネットワーク]** を選択します。
+4. 一覧で目的の**仮想ネットワーク**を選びます。 
+5. [仮想ネットワーク] ページで、**[プロパティ]** を選択します。 
+6. **[リソース ID]** のコピー ボタンをクリックして、仮想ネットワークのリソース ID をクリップボードにコピーします。 クリップボードから OneNote またはファイルに ID を保存します。
+7. 左側のメニューの **[サブネット]** をクリックし、**[使用可能なアドレス]** の数が Azure-SSIS 統合ランタイムのノード数より多いことを確認します。
+8. VNet が含まれる Azure サブスクリプションに Azure Batch プロバイダーが登録されていることを確認します。登録されていない場合は、Azure Batch プロバイダーを登録します。 Azure Batch アカウントがサブスクリプションに既にある場合は、サブスクリプションは Azure Batch に登録されています。
     1. Azure Portal で、左メニューの **[サブスクリプション]** をクリックします。 
     2. **サブスクリプション**を選択します。 
     3. 左側の **[リソース プロバイダー]** をクリックし、`Microsoft.Batch` が登録済みのプロバイダーであることを確認します。 
@@ -111,7 +119,8 @@ Azure-SSIS IR を VNet に参加させる前に、まず VNet を構成する必
 ### <a name="join-the-azure-ssis-ir-to-a-vnet"></a>Azure SSIS IR を VNet に参加させる
 
 
-1. [Azure Portal](https://portal.azure.com) の左側のメニューで **[データ ファクトリ]** を選択します。 メニューに **[データ ファクトリ]** が表示されない場合は、**[その他のサービス]** を選択し、**[インテリジェンス + 分析]** セクションで **[データ ファクトリ]** を選択します。 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
+2. [Azure Portal](https://portal.azure.com) の左側のメニューで **[データ ファクトリ]** を選択します。 メニューに **[データ ファクトリ]** が表示されない場合は、**[その他のサービス]** を選択し、**[インテリジェンス + 分析]** セクションで **[データ ファクトリ]** を選択します。 
     
     ![[データ ファクトリ] リスト](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 2. リストで Azure SSIS 統合ランタイムを使用するデータ ファクトリを選択します。 データ ファクトリのホーム ページが表示されます。 **[作成およびデプロイ]** タイルを選択します。 データ ファクトリのユーザー インターフェイス (UI) が別のタブに表示されます。 

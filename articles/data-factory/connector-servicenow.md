@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: d1e4d3a2d8edf061c5f16da62287359bd6039c69
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 28ecdc541bc7e95dfa6d7c1b2d984cba0654699f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して ServiceNow からデータをコピーする
 
@@ -48,12 +48,12 @@ ServiceNow のリンクされたサービスでは、次のプロパティがサ
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **ServiceNow** に設定する必要があります。 | [はい] |
-| endpoint | ServiceNow サーバーのエンドポイント。 (つまり、http://ServiceNowData.com)  | [はい] |
+| endpoint | ServiceNow サーバーのエンドポイント (`http://ServiceNowData.com`)。  | [はい] |
 | authenticationType | 使用する認証の種類。 <br/>使用可能な値: **Basic**、**OAuth2** | [はい] |
 | username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | いいえ  |
-| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ  |
+| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | clientId | OAuth2 認証のクライアント ID。  | いいえ  |
-| clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして ADF に安全に格納するか、Azure Key Vault にパスワードを格納し、データ コピーの実行時にコピー アクティビティでそこからプルするかを選択できます。詳しくは、[Key Vault への資格情報の格納](store-credentials-in-key-vault.md)に関するページをご覧ください。 | いいえ  |
+| clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -103,14 +103,22 @@ ServiceNow からデータをコピーするには、データセットの type 
 
 アクティビティの定義に利用できるセクションとプロパティの完全な一覧については、[パイプライン](concepts-pipelines-activities.md)に関する記事を参照してください。 このセクションでは、ServiceNow ソース でサポートされるプロパティの一覧を示します。
 
-### <a name="servicenowsource-as-source"></a>ソースとしての ServiceNowSource
+### <a name="servicenow-as-source"></a>ソースとしての ServiceNow
 
 ServiceNow からデータをコピーするには、コピー アクティビティのソースの種類を **ServiceNowSource** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | コピー アクティビティのソースの type プロパティは **ServiceNowSource** に設定する必要があります。 | [はい] |
-| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM alm.asset"`」のように入力します。 | [はい] |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 たとえば、「 `"SELECT * FROM Actual.alm_asset"`」のように入力します。 | [はい] |
+
+クエリで ServiceNow のスキーマと列を指定する際には、次の点に注意してください。
+
+- **スキーマ:** ServiceNow へのクエリでは、スキーマを `Actual` または `Display` として指定する必要があります。これは、[ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) を呼び出す際に、`sysparm_display_value` パラメーター (true または false) として確認できます。 
+- **列:** 実際の値の列名は`[columne name]_value`、表示値の列名は `[columne name]_display_value` です。
+
+**サンプル クエリ:**
+`SELECT distinct col_value, col_display_value FROM Actual.alm_asset` または `SELECT distinct col_value, col_display_value FROM Display.alm_asset`
 
 **例:**
 
@@ -134,7 +142,7 @@ ServiceNow からデータをコピーするには、コピー アクティビ�
         "typeProperties": {
             "source": {
                 "type": "ServiceNowSource",
-                "query": "SELECT * FROM alm.asset"
+                "query": "SELECT * FROM Actual.alm_asset"
             },
             "sink": {
                 "type": "<sink type>"

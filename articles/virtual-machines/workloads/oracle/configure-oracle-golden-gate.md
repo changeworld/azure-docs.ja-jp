@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.openlocfilehash: a05711357d345267647c02e42336fd37c09e1bff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c0011da9d7c57a532589b4b8ae19643ab554c35
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -50,7 +50,7 @@ Oracle Golden Gate のインストールを実行するには、同じ可用性�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-[az login](/cli/azure/#login) コマンドを使用して、Azure サブスクリプションにサインインします。 その後、画面の指示に従います。
+[az login](/cli/azure/#az_login) コマンドを使用して、Azure サブスクリプションにサインインします。 その後、画面の指示に従います。
 
 ```azurecli
 az login
@@ -58,7 +58,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
 
 次の例では、`myResourceGroup` という名前のリソース グループを `westus` の場所に作成します。
 
@@ -80,7 +80,7 @@ az vm availability-set create \
 
 ### <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-[az vm create](/cli/azure/vm#create) コマンドで VM を作成します。 
+[az vm create](/cli/azure/vm#az_vm_create) コマンドで VM を作成します。 
 
 次の例では、`myVM1` と `myVM2` という名前の 2 つの VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。
 
@@ -751,7 +751,7 @@ $ ./ggsci
 GGSCI> START EXTRACT INITEXT
 GGSCI> VIEW REPORT INITEXT
 ```
-#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>3.myVM2 (レプリケート) でのレプリケーションのセットアップ
+#### <a name="3-set-up-the-replication-on-myvm2-replicate"></a>手順 3.myVM2 (レプリケート) でのレプリケーションのセットアップ
 
 前に取得した番号で、SCN 番号を変更します。
 
@@ -803,7 +803,7 @@ myVM2 で状態と履歴を表示するには、次のコマンドを実行し�
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [可用性が高い仮想マシンの作成のチュートリアル](../../linux/create-cli-complete.md)
 

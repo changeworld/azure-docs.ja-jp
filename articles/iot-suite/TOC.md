@@ -17,6 +17,7 @@
 #### [azureiotsuite.com のアクセス許可](iot-suite-v1-permissions.md)
 #### [リモート監視ソリューションのチュートリアル](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
 #### [Raspberry Pi を接続する](iot-suite-v1-raspberry-pi-kit-get-started.md)
+#### [MXChip IoT DevKit を接続する](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 ##### C の使用
 ###### [シミュレートされたデータ](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
 ###### [実際のセンサーを使用する](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
@@ -76,7 +77,7 @@
 ## コネクテッド ファクトリ
 ### [コネクティッド ファクトリ用のゲートウェイをデプロイする](iot-suite-connected-factory-gateway-deployment.md)
 ### [コネクテッド ファクトリをカスタマイズする](iot-suite-connected-factory-customize.md)
-### [コネクテッド ファクトリに OPC Publisher を使用する](iot-suite-connected-factory-publisher.md)
+### [コネクテッド ファクトリに OPC Publisher を使用する](https://github.com/Azure/iot-edge-opc-publisher/blob/master/README.md)
 ### [コネクテッド ファクトリを構成する](iot-suite-connected-factory-configure.md)
 ## [azureiotsuite.com のアクセス許可](iot-suite-permissions.md)
 

@@ -41,7 +41,7 @@ Azure の Web アプリ用に A レコードを作成する場合、Web アプ�
 
 ## <a name="1-create-an-a-record-for-your-custom-domain"></a>1.カスタム ドメインの A レコードの作成
 
-A レコードは、名前をその IP アドレスに対応付けるために使用されます。 次の例では、A レコードとして @ を IPv4 アドレスに割り当てます。
+A レコードは、名前をその IP アドレスに対応付けるために使用されます。 次の例では、A レコードとして \@\ を IPv4 アドレスに割り当てます。
 
 ### <a name="step-1"></a>手順 1
 
@@ -53,7 +53,7 @@ $rs= New-AzureRMDnsRecordSet -Name "@" -RecordType "A" -ZoneName "contoso.com" -
 
 ### <a name="step-2"></a>手順 2.
 
-割り当てられた $rs 変数を使って、前に作成したレコード セット "@" に IPv4 の値を追加します。 割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
+割り当てられた $rs 変数を使って、前に作成したレコード セット "\@\" に IPv4 の値を追加します。 割り当てられた IPv4 の値は、Web アプリの IP アドレスになります。
 
 Web アプリの IP アドレスを確認するには、[Azure App Service でのカスタム ドメイン名の構成](../app-service/app-service-web-tutorial-custom-domain.md)に関するページの手順に従います。
 

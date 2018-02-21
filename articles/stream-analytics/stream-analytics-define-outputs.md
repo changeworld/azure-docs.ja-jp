@@ -4,8 +4,8 @@ description: "分析結果の Power BI など、Stream Analytics データ出力
 keywords: "データ変換、分析結果、データ ストレージ オプション"
 services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
 documentationcenter: 
-author: samacha
-manager: jhubbard
+author: SnehaGunda
+manager: kfile
 editor: cgronlun
 ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
 ms.service: stream-analytics
@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 33d0b9aa37cc92dda27f1cf21f1d393b42b8c09b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/18/2017
+ms.author: sngun
+ms.openlocfilehash: 6df9a3fafea97638d63c0dc4601c5ced357c410d
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Stream Analytics の出力: ストレージのオプション、分析
-Stream Analytics ジョブを作成するときは、生成されたデータがどのように使用されるかを考慮してください。 Stream Analytics ジョブの結果をどのように表示しますか。また、どこに保存しますか。
+Stream Analytics ジョブを作成するときは、生成されたデータがどのように使用されるかを考慮してください。 Stream Analytics ジョブの結果は、どのような方法で表示して、どの場所に保存できるのでしょうか?
 
-さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、出力を保存し、分析結果を表示するためのさまざまなオプションが用意されています。 そのため、ジョブ出力を簡単に確認したり、データのウェアハウジングやその他の用途でジョブ出力を柔軟に使用および保存したりすることができます。 ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。 たとえば、出力として BLOB Storage を使用する場合、ジョブはストレージ アカウントを自動的に作成しません。 ASA ジョブを開始する前に、ユーザーが作成する必要があります。
+さまざまなアプリケーション パターンを有効にするために、Azure Stream Analytics には、出力を保存し、分析結果を表示するためのさまざまなオプションが用意されています。 そのため、ジョブ出力を簡単に確認したり、データのウェアハウジングやその他の用途でジョブ出力を柔軟に使用および保存したりすることができます。 ジョブで構成される出力は、ジョブが開始されてイベントがフローを開始する前に存在している必要があります。 たとえば、出力として BLOB ストレージを使用する場合、ジョブはストレージ アカウントを自動的に作成しません。 Stream Analytics ジョブが開始される前に、ストレージ アカウントを作成します。
 
 ## <a name="azure-data-lake-store"></a>Azure Data Lake Store
 Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)をサポートしています。 この記憶域を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。 また、Data Lake Store にアクセスするには、Stream Analytics を承認する必要があります。 承認と (必要に応じて) Data Lake Store にサインアップする方法の詳細については、[Data Lake 出力の記事](stream-analytics-data-lake-output.md)を参照してください。
@@ -56,7 +56,7 @@ Data Lake Storage を Azure Portal で出力として選択すると、既存の
 </tr>
 <tr>
 <td>パスのプレフィックス パターン</td>
-<td>ファイルの名前付けは、次の規則に従います。 <BR>{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension <BR> <BR>出力ファイル例:<BR>Myoutput/20170901/00/45434_gguid_1.csv <BR>Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR>また、新しいファイルが作成される状況を次に示します。<BR>1. 出力スキーマの変更 <BR>2. ジョブの外部または内部再起動<BR><BR>または、ファイル パス パターンに末尾の "/" が含まれていない場合、ファイル パスの最後のパターンは、ファイル名のプレフィックスとして扱われます。<BR><BR>例:<BR>パス パターン: folder1/logs/HH の場合、生成されたファイルは folder1/logs/02_134343_gguid_1.csv のようになります</td>
+<td>ファイルの名前付けは、次の規則に従います。 <BR>{Path Prefix Pattern}/schemaHashcode_Guid_Number.extension <BR> <BR>出力ファイル例:<BR>Myoutput/20170901/00/45434_gguid_1.csv <BR>Myoutput/20170901/01/45434_gguid_1.csv <BR> <BR>また、新しいファイルが作成される状況を次に示します。<BR>1. 出力スキーマの変更 <BR>2. ジョブの外部または内部再起動<BR><BR>また、ファイル パス パターンに末尾の "/" が含まれていない場合、ファイル パスの最後のパターンは、ファイル名のプレフィックスとして扱われます。<BR><BR>例:<BR>パス パターン: folder1/logs/HH の場合、生成されたファイルは folder1/logs/02_134343_gguid_1.csv のようになります</td>
 </tr>
 <tr>
 <td>日付形式 [<I>省略可能</I>]</td>
@@ -72,7 +72,7 @@ Data Lake Storage を Azure Portal で出力として選択すると、既存の
 </tr>
 <tr>
 <td>エンコード</td>
-<td>CSV または JSON 形式の場合、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。</td>
+<td>CSV または JSON 形式を使用している場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。</td>
 </tr>
 <tr>
 <td>区切り記号</td>
@@ -93,7 +93,7 @@ Data Lake Storage を Azure Portal で出力として選択すると、既存の
 ## <a name="sql-database"></a>SQL Database
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) は、本質的にリレーショナルであるデータや、リレーショナル データベースにホストされているコンテンツに依存するアプリケーションの出力として使用できます。 Stream Analytics ジョブは、Azure SQL Database の既存のテーブルに書き込みます。  テーブル スキーマは、ジョブから出力されるフィールドとその型に正確に一致する必要があります。 また、SQL Database 出力オプションを使用して、 [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) を出力として指定することもできます (これはプレビュー機能です)。 次の表に、SQL Database の出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | Description |
+| プロパティ名 | [説明] |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこのデータベースに出力するためにクエリで使用されるわかりやすい名前です。 |
 | データベース |出力を送信するデータベースの名前 |
@@ -152,7 +152,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 </tr>
 <tr>
 <td>エンコード</td>
-<td>CSV または JSON 形式の場合、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。</td>
+<td>CSV または JSON 形式を使用している場合は、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。</td>
 </tr>
 <tr>
 <td>区切り記号</td>
@@ -165,17 +165,26 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 </tbody>
 </table>
 
+出力として BLOB ストレージを使用しているときに、BLOB に新しいファイルが作成されるのは、次の場合です。
+
+* ファイルが最大許容ブロック数を超えた場合 (最大許容 BLOB サイズに達しなくても、最大許容ブロック数に達する場合があります。 たとえば、出力レートが高い場合は、表示されるブロックあたりのバイト数が増え、ファイルのサイズが増加します。 出力レートが低い場合は、各ブロックのデータが少なくなり、ファイルのサイズも小さくなります。)  
+* 出力のスキーマが変更されている場合、および出力形式で固定スキーマが必要な場合 (CSV および Avro)。  
+* ジョブが外部で再起動された場合、または内部で再起動された場合。  
+* クエリが完全にパーティション分割されており、新しいファイルが出力パーティションごと作成される場合。  
+* ストレージ アカウントのファイルまたはコンテナーがユーザーによって削除された場合。  
+* 出力がパス プレフィックス パターンを使用して時間でパーティション分割されている場合は、クエリが次の時間に移動するときに、新しい BLOB が使用されます。
+
 ## <a name="event-hub"></a>イベント ハブ
-[Event Hubs](https://azure.microsoft.com/services/event-hubs/) はスケーラブルな発行/サブスクライブ イベント インジェスターです。 1 秒あたり数百万のイベントを収集できます。  イベント ハブを出力として使用する一例として、Stream Analytics ジョブの出力が別のストリーミング ジョブの入力となる場合があります。
+[Event Hubs](https://azure.microsoft.com/services/event-hubs/) はスケーラブルな発行/サブスクライブ イベント インジェスターです。 1 秒あたり数百万のイベントを収集できます。 イベント ハブを出力として使用するのは、たとえば、Stream Analytics ジョブの出力が別のストリーミング ジョブの入力になるときです。
 
 イベント ハブのデータ ストリームを出力として構成するために必要なパラメーターがいくつかあります。
 
-| プロパティ名 | Description |
+| プロパティ名 | [説明] |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこのイベント ハブに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
 | イベント ハブ |イベント ハブ出力の名前 |
-| イベント ハブ ポリシー名 |[イベント ハブの構成] タブで作成できる共有アクセス ポリシー。各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
+| イベント ハブ ポリシー名 |[イベント ハブの構成] タブで作成できる共有アクセス ポリシー。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています |
 | イベント ハブ ポリシー キー |Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 |
 | パーティション キー列 [省略可能] |この列には、Event Hub 出力のパーティション キーが含まれます。 |
 | イベントのシリアル化の形式 |出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
@@ -198,7 +207,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 ### <a name="configure-the-power-bi-output-properties"></a>Power BI 出力プロパティを構成する
 Power BI アカウントを認証すると、Power BI 出力のプロパティを構成できます。 次の表は、Power BI 出力を構成するためのプロパティ名とその説明の一覧です。
 
-| プロパティ名 | Description |
+| プロパティ名 | [説明] |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこの PowerBI 出力に出力するためにクエリで使用されるわかりやすい名前です。 |
 | グループ ワークスペース |他の Power BI ユーザーとのデータの共有を有効にするには、Power BI アカウント内のグループを選択できます。グループに書き込む必要がない場合は、[個人用ワークスペース] を選択します。  既存のグループを更新するには、Power BI の認証を更新する必要があります。 |
@@ -213,9 +222,9 @@ Power BI 出力およびダッシュボードの構成のチュートリアル�
 > 
 
 ### <a name="schema-creation"></a>スキーマの作成
-Power BI データセットとテーブルがまだ存在しない場合は、ユーザーに代わって Azure Stream Analytics がこれを作成します。 それ以外の場合は、テーブルが新しい値で更新されます。現時点では、データセット内に存在できるテーブルの数は 1 つのみという制限があります。
+Power BI データセットとテーブルがまだ存在しない場合は、ユーザーに代わって Azure Stream Analytics がこれを作成します。 それ以外の場合、テーブルは新しい値で更新されます。 現時点では、1 つのデータセット内に存在できるテーブルが 1 つのみという制限があります。
 
-### <a name="data-type-conversion-from-asa-to-power-bi"></a>ASA から Power BI へのデータ型の変換
+### <a name="data-type-conversion-from-stream-analytics-to-power-bi"></a>Stream Analytics から Power BI へのデータ型の変換
 Azure Stream Analytics では、出力スキーマが変更されると、データ モデルが実行時に動的に更新されます。 列名の変更、列の型の変更、列の追加または削除は、すべて追跡されます。
 
 次の表は、Power BI データセットとテーブルが存在しない場合の [Stream Analytics データ型](https://msdn.microsoft.com/library/azure/dn835065.aspx)から Power BI の [Entity Data Model (EDM) 型](https://powerbi.microsoft.com/documentation/powerbi-developer-walkthrough-push-data/)へのデータ型の変換を示します。
@@ -225,21 +234,21 @@ Stream Analytics から | Power BI へ
 -----|-----|------------
 bigint | Int64
 nvarchar(max) | String
-datetime | DateTime
+Datetime | DateTime
 float | Double
 レコードの配列 | 文字列型、定数値 "IRecord" または "IArray"
 
 ### <a name="schema-update"></a>スキーマの更新
 Stream Analytics では、出力内の最初のイベント セットに基づいてデータ モデルのスキーマを推論します。 その後、データ モデルのスキーマは、必要に応じて、元のスキーマに適合しない可能性のある受信イベントに対応できるように更新されます。
 
-複数行にわたってスキーマが動的に更新されるのを防ぐために、`SELECT *` クエリの使用を避ける必要があります。 パフォーマンスが低下する可能性があるだけでなく、結果を得るまでの所要時間が不確実になる恐れがあります。 Power BI ダッシュボードに表示する必要があるフィールドを厳密に選択してください。 また、データ値が、選択したデータ型に準拠している必要があります。
+複数行にわたってスキーマが動的に更新されるのを防ぐために、`SELECT *` クエリの使用を避ける必要があります。 パフォーマンスが低下する可能性があるだけでなく、結果を得るまでの所要時間が不確実になる恐れもあります。 Power BI ダッシュボードに表示する必要があるフィールドを厳密に選択してください。 また、データ値が、選択したデータ型に準拠している必要があります。
 
 
 以前/現在 | Int64 | String | DateTime | Double
 -----------------|-------|--------|----------|-------
 Int64 | Int64 | String | String | Double
 Double | Double | String | String | Double
-String | 文字列 | 文字列 | 文字列 |  | String | 
+String | String | String | String |  | String | 
 DateTime | String | String |  DateTime | String
 
 
@@ -250,19 +259,19 @@ DateTime | String | String |  DateTime | String
 
 この問題を解決するには、実行中のジョブを停止し、Power BI 出力に移動します。  [承認の更新] リンクをクリックし、データの損失を避けるため、"最後に停止した時刻" からジョブを再開します。
 
-  ![Power BI renew authorization](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
+  ![Power BI による承認の更新](./media/stream-analytics-define-outputs/04-stream-analytics-define-outputs.png)  
 
 ## <a name="table-storage"></a>Table Storage
 [Azure テーブル ストレージ](../storage/common/storage-introduction.md)は高度な可用性を備えた非常にスケーラブルなストレージであるため、アプリケーションを需要に応じて自動的に拡張できます。 テーブル ストレージは Microsoft の NoSQL キー/属性ストアであり、スキーマに対する制約を抑えながら、構造化されたデータに活用できます。 Azure テーブル ストレージを使用すると、永続化と効率的な取得のためにデータを保持できます。
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | Description |
+| プロパティ名 | [説明] |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこのテーブル ストレージに出力するためにクエリで使用されるわかりやすい名前です。 |
 | ストレージ アカウント |出力を送信するストレージ アカウントの名前。 |
 | ストレージ アカウント キー |ストレージ アカウントに関連付けられているアクセス キー。 |
-| テーブル名 |テーブルの名前。 存在しない場合は、テーブルが作成されます。 |
+| テーブル名 |テーブルの名前。 テーブルが存在しない場合は、テーブルが作成されます。 |
 | パーティション キー |パーティション キーが含まれる出力列の名前。 パーティション キーは、エンティティのプライマリ キーの最初の部分を形成する、特定のテーブル内のパーティションの一意の識別子です。 最大サイズが 1 KB の文字列値です。 |
 | Row Key |行キーが含まれる出力列の名前。 行キーは、特定のパーティション内のエンティティを示す一意の識別子です。 エンティティのプライマリ キーの 2 番目の部分を形成します。 行キーは、最大サイズが 1 KB の文字列値です。 |
 | バッチ サイズ |バッチ操作のレコードの数です。 通常、大部分のジョブは既定値で十分です。この設定の変更の詳細については、[テーブル バッチ操作の仕様](https://msdn.microsoft.com/library/microsoft.windowsazure.storage.table.tablebatchoperation.aspx)に関するページを参照してください。 |
@@ -272,12 +281,12 @@ DateTime | String | String |  DateTime | String
 
 次の表に、キュー出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | Description |
+| プロパティ名 | [説明] |
 | --- | --- |
 | 出力のエイリアス |クエリの出力をこの Service Bus キューに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 |
 | キュー名 |Service Bus キューの名前。 |
-| キュー ポリシー名 |キューを作成するとき、[キューの構成] タブで共有アクセス ポリシーを作成することもできます。各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
+| キュー ポリシー名 |キューを作成するとき、[キューの構成] タブで共有アクセス ポリシーを作成することもできます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています。 |
 | キュー ポリシー キー |Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 |
 | イベントのシリアル化の形式 |出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
 | エンコード |CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
@@ -289,15 +298,15 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 
 次の表に、テーブル出力を作成するためのプロパティ名とその説明を示します。
 
-| プロパティ名 | Description |
+| プロパティ名 | [説明] |
 | --- | --- |
-| 出力のエイリアス |クエリの出力をこの Service Bus トピックに出力するために、クエリで使用されるわかりやすい名前です。 |
+| 出力のエイリアス |クエリの出力をこの Service Bus トピックに出力するためにクエリで使用されるわかりやすい名前です。 |
 | Service Bus 名前空間 |Service Bus 名前空間は、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
 | トピック名 |トピックは、イベント ハブやキューと類似するメッセージ エンティティです。 多数のさまざまなデバイスやサービスからイベント ストリームを収集するように設計されています。 トピックが作成されるときに、特定の名前も付けられます。 トピックに送信されるメッセージはサブスクリプションが作成されなければ使用できないため、トピックの下に 1 つ以上のサブスクリプションがあることを確認してください |
-| トピック ポリシー名 |トピックを作成するとき、[トピックの構成] タブで共有アクセス ポリシーを作成することもできます。各共有アクセス ポリシーには、名前、設定したアクセス許可、およびアクセス キーが含まれます。 |
+| トピック ポリシー名 |トピックを作成するとき、[トピックの構成] タブで共有アクセス ポリシーを作成することもできます。各共有アクセス ポリシーには、名前、設定したアクセス許可、アクセス キーが含まれています |
 | トピック ポリシー キー |Service Bus 名前空間へのアクセスを認証するために使用する共有アクセス キー。 |
 | イベントのシリアル化の形式 |出力データのシリアル化形式。  JSON、CSV、Avro がサポートされています。 |
- | エンコード |CSV または JSON 形式の場合、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+ | エンコード |CSV または JSON 形式を使用している場合は、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
 | 区切り記号 |CSV のシリアル化のみに適用されます。 Stream Analytics は、CSV 形式のデータをシリアル化するために、一般的な区切り記号をサポートしています。 サポートしている値は、コンマ、セミコロン、スペース、タブ、および縦棒です。 |
 
 ## <a name="azure-cosmos-db"></a>Azure Cosmos DB
@@ -305,14 +314,14 @@ Service Bus キューには、送信者から受信者への 1 対 1 の通信�
 
 以下に、Azure Cosmos DB 出力を作成するためのプロパティ名とその説明の詳細を示します。
 
-* **出力のエイリアス** – ASA クエリ内でこの出力を意味するエイリアス。  
+* **出力のエイリアス** – Stream Analytics クエリ内でこの出力を意味するエイリアス  
 * **アカウント名** – Cosmos DB アカウントの名前またはエンドポイント URI。  
 * **アカウント キー** – Cosmos DB アカウントの共有アクセス キー。  
 * **データベース** – Cosmos DB データベース名。  
 * **コレクション名のパターン** – 使用するコレクションのコレクション名またはそのパターン。 コレクション名の形式は、オプションの {partition} トークンを使用して構成できます。この場合、パーティションは 0 から開始します。 有効な入力値のサンプルを次に示します。  
   1\) MyCollection – "MyCollection" という名前のコレクションが 1 つ必要です。  
   2\) MyCollection{partition} – "MyCollection0"、"MyCollection1"、"MyCollection2" などのコレクションが必要です。  
-* **パーティション キー** – 省略可能。 コレクション名のパターンに {partition} トークンを使用している場合のみ必要です。 コレクション全体で出力をパーティション分割するためのキーを指定するために使用される、出力イベント内のフィールドの名前。 コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。  
+* **パーティション キー** – 省略可能。 コレクション名のパターンにパーティション トークンを使用している場合のみ必要です。 コレクション全体で出力をパーティション分割するためのキーを指定するために使用される、出力イベント内のフィールドの名前。 コレクションの出力が 1 つの場合は、PartitionId など、任意の出力列を使用できます。  
 * **Document ID** – 省略可能です。 挿入操作または更新操作の基準となるプライマリ キーを指定するために使用される、出力イベント内のフィールドの名前。  
 
 ## <a name="azure-functions-in-preview"></a>Azure Functions (プレビュー)
@@ -320,7 +329,7 @@ Azure Functions は、インフラストラクチャを明示的にプロビジ�
 
 Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions を呼び出します。 新しい Azure 関数出力アダプターは、次の構成可能なプロパティで使用できます。
 
-| プロパティ名 | Description |
+| プロパティ名 | [説明] |
 | --- | --- |
 | Function App |Azure Functions アプリの名前 |
 | 関数 |Azure Functions アプリ内の関数の名前 |
@@ -328,7 +337,7 @@ Azure Stream Analytics では、HTTP トリガーを使用して Azure Functions
 | 最大バッチ カウント  |名前が示すように、このプロパティでは、Azure Functions に送信される各バッチのイベントの最大数を指定できます。 既定の最大バッチ カウントの値は 100 です |
 | キー |別のサブスクリプションの Azure 関数を使用するには、関数にアクセスするためのキーを指定します |
 
-Azure Stream Analytics は、Azure 関数から 413 (http の "要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを削減します。 Azure 関数コードで、この例外を使用して、Azure Stream Analytics がサイズの大きいバッチを送信しないようにします。 関数で使用する最大バッチ カウントとサイズの値が Stream Analytics ポータルで入力された値と矛盾しないこともご確認ください。 
+Azure Stream Analytics は、Azure 関数から 413 (http の "要求したエンティティが大きすぎる") 例外を受け取ると、Azure Functions に送信するバッチのサイズを削減します。 Azure 関数コードで、この例外を使用して、Azure Stream Analytics がサイズの大きいバッチを送信しないようにします。 また、関数で使用する最大バッチ カウントおよび最大バッチ サイズの値が Stream Analytics ポータルに入力した値と矛盾しないことを確認します。 
 
 また、時間枠内に開始するイベントがない場合も、出力は生成されません。 その結果、computeResult 関数は呼び出されません。 この動作は、組み込みのウィンドウ集計関数と一致します。
 
@@ -336,7 +345,7 @@ Azure Stream Analytics は、Azure 関数から 413 (http の "要求したエ�
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 モ ノのインターネットからのデータをストリーム分析する管理サービスである、 Stream Analytics の概要です。 このサービスの詳細については、以下の情報をご覧ください。
 
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)

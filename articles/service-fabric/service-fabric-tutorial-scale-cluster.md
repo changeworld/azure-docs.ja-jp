@@ -12,14 +12,14 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 10/24/2017
+ms.date: 02/06/2018
 ms.author: adegeo
 ms.custom: mvc
-ms.openlocfilehash: 63b4747164959b0e95f6d3f1908d1fd265589a98
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: bbbb31687ab0980d62b35d627c4b1708b7ae8288
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="scale-a-service-fabric-cluster"></a>Service Fabric クラスターのスケール
 
@@ -85,7 +85,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 --pem ./aztestcluster201709151446.pem --no-verify
 ```
 
-これで接続されたので、コマンドを使用してクラスター内の各ノードの状態を取得できます。 PowerShell では `Get-ServiceFabricClusterHealth` コマンドを使用し、**sfctl** では `` コマンドを使用します。
+これで接続されたので、コマンドを使用してクラスター内の各ノードの状態を取得できます。 PowerShell では `Get-ServiceFabricClusterHealth` コマンドを使用し、**sfctl** では `sfctl cluster select` コマンドを使用します。
 
 ## <a name="scale-out"></a>スケールアウト
 
@@ -95,7 +95,7 @@ sfctl cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 $scaleset = Get-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm
 $scaleset.Sku.Capacity += 1
 
-Update-AzureRmVmss -ResourceGroupName SFCLUSTERTUTORIALGROUP -VMScaleSetName nt1vm -VirtualMachineScaleSet $scaleset
+Update-AzureRmVmss -ResourceGroupName $scaleset.ResourceGroupName -VMScaleSetName $scaleset.Name -VirtualMachineScaleSet $scaleset
 ```
 
 このコードでは容量を 6 に設定します。
@@ -120,11 +120,11 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 6
 仮想マシン スケール セットをスケールインする場合、スケール セットでは (ほとんどの場合) 最後に作成された仮想マシン インスタンスが削除されます。 したがって、条件に合った最後に作成された Service Fabric ノードを検索する必要があります。 この最後のノードを検索するには、Service Fabric ノードで最大の `NodeInstanceId` プロパティ値をチェックします。 次のコードの例は、ノード インスタンスでソートし、最大の ID 値を持つインスタンスの詳細を返します。 
 
 ```powershell
-Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
+Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
 ```
 
 ```azurecli
-`sfctl node list --query "sort_by(items[*], &instanceId)[-1]"`
+sfctl node list --query "sort_by(items[*], &name)[-1]"
 ```
 
 Service Fabric クラスターは、このノードが削除されることを認識する必要があります。 以下の 3 つの手順を実行する必要があります。
@@ -146,8 +146,9 @@ sfcli: `sfctl node remove-state`
 次のコード ブロックは、最後に作成されたノードを取得して、そのノードを無効化して停止し、クラスターから削除します。
 
 ```powershell
+#### After you've connected.....
 # Get the node that was created last
-$node = Get-ServiceFabricNode | Sort-Object NodeInstanceId -Descending | Select-Object -First 1
+$node = Get-ServiceFabricNode | Sort-Object { $_.NodeName.Substring($_.NodeName.LastIndexOf('_') + 1) } -Descending | Select-Object -First 1
 
 # Node details for the disable/stop process
 $nodename = $node.NodeName
@@ -202,7 +203,7 @@ else
 }
 ```
 
-以下の **Sfctl** コードでは、コマンド `sfctl node list --query "sort_by(items[*], &instanceId)[-1].[instanceId,name]"` を使用して、最後に作成されたノードの**ノード名**と**ノード インスタンス ID** の値を取得します。
+以下の **sfctl** コードでは、コマンド `sfctl node list --query "sort_by(items[*], &name)[-1].name"` を使用して、最後に作成されたノードの **node-name** 値を取得します。
 
 ```azurecli
 # Inform the node that it is going to be removed
@@ -219,10 +220,10 @@ sfctl node remove-state --node-name _nt1vm_5
 > 以下の **sfctl** クエリを使用して、各ステップの状態を確認します。
 >
 > **非アクティブ化状態を確認する**  
-> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].nodeDeactivationInfo"`
+> `sfctl node list --query "sort_by(items[*], &name)[-1].nodeDeactivationInfo"`
 >
 > **停止状態を確認する**  
-> `sfctl node list --query "sort_by(items[*], &instanceId)[-1].isStopped"`
+> `sfctl node list --query "sort_by(items[*], &name)[-1].isStopped"`
 >
 
 
@@ -248,7 +249,7 @@ az vmss scale -g sfclustertutorialgroup -n nt1vm --new-capacity 5
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

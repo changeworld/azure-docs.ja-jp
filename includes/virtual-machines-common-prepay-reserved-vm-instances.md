@@ -14,7 +14,7 @@
 
     | フィールド      | [説明]|
     |:------------|:--------------|
-    |名前        |この予約の名前。| 
+    |Name        |この予約の名前。| 
     |[サブスクリプション]|予約の支払いに使用するサブスクリプション。 サブスクリプションの支払方法に対して、予約の初期コストが課金されます。 サブスクリプションの種類は、Enterprise Agreement (プラン番号: MS-AZR-0017P) または従量課金制 (プラン番号: MS-AZR-0003P) である必要があります。 エンタープライズ サブスクリプションの場合、登録の年額コミットメント残高から料金が差し引かれるか、超過料金として課金されます。 従量課金制サブスクリプションの場合、クレジット カードまたはサブスクリプションの請求書に記載されている支払方法に料金が課金されます。|    
     |Scope (スコープ)       |1 つのサブスクリプションまたは複数のサブスクリプション (共有スコープ) を予約のスコープにすることができます。 以下を選択した場合: <ul><li>1 つのサブスクリプション - 予約割引はこのサブスクリプションの VM に適用されます。 </li><li>共有 - 予約割引は、課金のコンテキスト内にある任意のサブスクリプションで実行されている VM に適用されます。 エンタープライズのお客様の場合、共有スコープが対象の登録であり、登録内のすべてのサブスクリプション (開発/テスト サブスクリプションを除きます) が含まれます。 従量課金制のお客様の場合、共有スコープは、アカウント管理者が作成するすべての従量課金制サブスクリプションです。</li></ul>|
     |場所    |予約の対象となる Azure リージョン。|    
@@ -30,8 +30,15 @@
 
     ![予約の購入を送信する前のスクリーンショット](./media/virtual-machines-buy-compute-reservations/virtualmachines-reservedvmInstance-submit.png)
 
-## <a name="next-steps-after-buying-a-reservation"></a>予約購入後の次の手順
+## <a name="next-steps"></a>次の手順 
 予約割引は、予約スコープと属性に一致する実行中の仮想マシン数に対して自動的に適用されます。 予約のスコープは、[Azure Portal](https://portal.azure.com)、PowerShell、CLI、または API で更新できます。 
 
-予約を管理する方法については、[Azure Reserved VM Instances の管理](../articles/billing/billing-manage-reserved-vm-instance.md)に関するページを参照してください。
+予約を管理する方法については、[Azure Reserved Virtual Machine Instances の管理](../articles/billing/billing-manage-reserved-vm-instance.md)に関するページを参照してください。
 
+予約仮想マシン インスタンスの詳細については、次の記事を参照してください。
+
+- [予約仮想マシン インスタンスで仮想マシンのコストを削減する](../articles/billing/billing-save-compute-costs-reservations.md)
+- [予約仮想マシン インスタンスの割引の適用方法について](../articles/billing/billing-understand-vm-reservation-charges.md)
+- [従量課金サブスクリプションの予約インスタンス使用量について](../articles/billing/billing-understand-reserved-instance-usage.md)
+- [エンタープライズ加入契約の予約インスタンス使用量について](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
+- [予約インスタンスに含まれない Windows ソフトウェアのコスト](../articles/billing/billing-reserved-instance-windows-software-costs.md)

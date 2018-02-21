@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: de48d61af0e8056a749715343ef821cfc35cb93d
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 2b1e3fa7fa57d92dbc3a33af20ed258d674e1625
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合、成功したコピー操作の詳細 (書き込まれたデータの量など) がパイプラインによって成功電子メールで送信されます。 コピー アクティビティが失敗した場合、コピー失敗の詳細 (エラー メッセージなど) がパイプラインによって失敗電子メールで送信されます。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
@@ -129,6 +129,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
+1. Web ブラウザー (**Microsoft Edge** または **Google Chrome**) を起動します。 現在、Data Factory の UI がサポートされる Web ブラウザーは Microsoft Edge と Google Chrome だけです。
 1. 左側のメニューで **[新規]** をクリックし、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
    
    ![New->DataFactory](./media/tutorial-control-flow-portal/new-azure-data-factory-menu.png)
@@ -241,8 +242,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
         - Data Factory Name – `@{pipeline().DataFactory}` から渡される値。これはシステム変数であり、対応するデータ ファクトリ名へのアクセスを可能にします。 サポートされているシステム変数の一覧については、「[システム変数](control-flow-system-variables.md)」の記事を参照してください。
         - Pipeline Name – `@{pipeline().Pipeline}` から渡される値。 これもシステム変数であり、対応するパイプライン名へのアクセスを可能にします。 
         - Receiver – "@pipeline().parameters.receiver") から渡される値。 パイプライン パラメーターにアクセスします。
-    6. **[設定]** は次の図のようになります。 
-
+    
         ![最初の Web アクティビティの設定](./media/tutorial-control-flow-portal/web-activity1-settings.png)         
 19. コピー アクティビティの横にある緑のボタンを Web アクティビティにドラッグ アンド ドロップして、**[コピー]** アクティビティを **[Web]** アクティビティに接続します。 
 
@@ -266,8 +266,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
             "receiver": "@pipeline().parameters.receiver"
         }
         ```
-    6. **[設定]** は次の図のようになります。 
-    
+
         ![2 番目の Web アクティビティの設定](./media/tutorial-control-flow-portal/web-activity2-settings.png)         
 22. パイプライン デザイナーの **[コピー]** アクティビティを選択して **+->** ボタンをクリックし、**[エラー]** を選択します。  
 
@@ -278,7 +277,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 24. パイプラインを検証するために、ツール バーの **[検証]** ボタンをクリックします。 **>>** ボタンをクリックして **[Pipeline Validation Output]\(パイプラインの検証の出力\)** ウィンドウを閉じます。
 
     ![パイプラインの検証](./media/tutorial-control-flow-portal/validate-pipeline.png)
-24. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、**[発行]** をクリックします。 **[正常に発行されました]** というメッセージが表示されるまで待機します。
+24. エンティティ (データセットやパイプラインなど) を Data Factory サービスに発行するには、**[すべて公開]** を選択します。 **[正常に発行されました]** というメッセージが表示されるまで待機します。
 
     ![[発行]](./media/tutorial-control-flow-portal/publish-button.png)
  

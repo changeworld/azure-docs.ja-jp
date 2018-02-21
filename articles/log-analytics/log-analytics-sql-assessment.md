@@ -3,7 +3,7 @@ title: "Azure Log Analytics での SQL Server 環境の最適化 | Microsoft Doc
 description: "Azure Log Analytics では、SQL 正常性チェック ソリューションを使用して、環境のリスクと正常性を定期的に評価できます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: e297eb57-1718-4cfe-a241-b9e84b2c42ac
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
-ms.author: magoedte;banders
+ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 09fed11830bbbce23f7098050568d68a3b3bebec
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 5da04e9479ebd6cec886a8c5ca38d040aec2758d
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="optimize-your-sql-environment-with-the-sql-server-health-check-solution-in-log-analytics"></a>Log Analytics で SQL Server 正常性チェック ソリューションを使用して SQL 環境を最適化する
 
@@ -43,7 +43,7 @@ SQL 正常性チェック ソリューションを使用して、サーバー環
 
 * SQL 正常性チェック ソリューションを使用するには、Microsoft Monitoring Agent (MMA) がインストールされている各コンピューターに、サポートされているバージョンの .NET Framework 4 がインストールされている必要があります。  MMA エージェントは、System Center 2016 (Operations Manager および Operations Manager 2012 R2) と Log Analytics サービスに使用されます。  
 * このソリューションは、SQL Server バージョン 2012、2014、2016 をサポートしています。
-* Azure Portal で Azure Marketplace から SQL 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  ソリューションをインストールするには、Azure サブスクリプションの管理者か共同作業者である必要があります。 
+* Azure Portal で Azure Marketplace から SQL 正常性チェック ソリューションを追加する Log Analytics ワークスペース。  ソリューションをインストールするには、Azure サブスクリプションの管理者か共同作業者である必要があります。
 
   > [!NOTE]
   > ソリューションを追加した後、AdvisorAssessment.exe ファイルがエージェントを含むサーバーに追加されます。 構成データが読み取られ、処理のためにクラウドの Log Analytics サービスに送信されます。 受信したデータにロジックが適用され、クラウド サービスによってそのデータが記録されます。
@@ -61,12 +61,12 @@ Operations Manager 管理グループに報告する SQL Server 上のエージ�
 SQL Server が Operations Manager で監視されている場合は、Operations Manager 実行アカウントを構成する必要があります。 詳細については、「[Log Analytics で使用される Operations Manager の実行アカウント](#operations-manager-run-as-accounts-for-log-analytics)」を参照してください。
 
 ## <a name="sql-health-check-data-collection-details"></a>SQL 正常性チェックのデータ収集の詳細
-SQL 正常性チェックでは、有効にしたエージェントを使用して、次のソースからデータを収集します。 
+SQL 正常性チェックでは、有効にしたエージェントを使用して、次のソースからデータを収集します。
 
-* Windows Management Instrumentation (WMI) 
-* レジストリ 
+* Windows Management Instrumentation (WMI)
+* レジストリ
 * パフォーマンス カウンター
-* SQL Server の動的管理ビューの結果 
+* SQL Server の動的管理ビューの結果
 
 データは SQL Server で収集され、7 日ごとに Log Analytics に転送されます。
 
@@ -163,10 +163,10 @@ Log Analytics の評価ソリューションを使用するには、ソリュー
 インフラストラクチャの準拠に関する評価の概要を表示してから、推奨事項を確認します。
 
 ### <a name="to-view-recommendations-for-a-focus-area-and-take-corrective-action"></a>対象領域の推奨事項を表示して修正措置を行うには
-1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。
 2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 3. [Log Analytics subscriptions] \(Log Analytics サブスクリプション) ペインで、ワークスペースを選択し、**[概要]** タイルをクリックします。  
-4. **[概要]** ページで、**[SQL 正常性チェック]** タイルをクリックします。 
+4. **[概要]** ページで、**[SQL 正常性チェック]** タイルをクリックします。
 5. **[正常性チェック]** ページの対象領域のいずれかのブレードで概要情報を確認し、いずれかの情報をクリックして、その対象領域の推奨事項を表示します。
 6. いずれの対象領域ページでも、ユーザーの環境を対象とした、優先順位が付けられた推奨事項を表示できます。 推奨事項の理由の詳細を確認するには、 **[影響を受けるオブジェクト]** でその推奨事項をクリックします。<br><br> ![SQL 正常性チェックの推奨事項の画像](./media/log-analytics-sql-assessment/sql-healthcheck-dashboard-02.png)<br>
 7. **[推奨する解決方法]**で推奨された修正措置を実行することができます。 項目に対応すると、それ以降の評価では、推奨されたアクションが行われたと記録され、準拠のスコアが上がります。 修正された項目は **[合格したオブジェクト]**として表示されます。
@@ -174,7 +174,7 @@ Log Analytics の評価ソリューションを使用するには、ソリュー
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
 無視する推奨事項がある場合は、Log Analytics が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>無視する推奨事項を識別するには
 1. Azure Portal の選択したワークスペースの Log Analytics ワークスペース ページで、**[ログ検索]** タイルをクリックします。
