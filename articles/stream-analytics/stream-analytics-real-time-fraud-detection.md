@@ -1,3 +1,26 @@
+---
+title: "Stream Analytics: リアルタイムの不正行為の検出 | Microsoft Docs"
+description: "Stream Analytics を使用してリアルタイムの不正行為検出ソリューションを作成する方法について説明します。 リアルタイム イベント処理のためにイベント ハブを使用します。"
+keywords: "異常検出, 不正行為の検出, リアルタイムの異常検出"
+services: stream-analytics
+documentationcenter: 
+author: SnehaGunda
+manager: jhubbard
+editor: cgronlun
+ms.assetid: c10dd53f-d17a-4268-a561-cb500a8c04eb
+ms.service: stream-analytics
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: data-services
+ms.date: 03/28/2017
+ms.author: sngun
+ms.openlocfilehash: cc581142ca2c75bbee80f9d980c4984b4863a6cf
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/14/2018
+---
 # <a name="get-started-using-azure-stream-analytics-real-time-fraud-detection"></a>Azure Stream Analytics の使用 | リアルタイムの不正行為の検出
 
 このチュートリアルでは、Azure Stream Analytics の使い方について詳しく説明します。 学習内容は次のとおりです。 
@@ -385,7 +408,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルに続けて、次の記事を読むことができます。
 

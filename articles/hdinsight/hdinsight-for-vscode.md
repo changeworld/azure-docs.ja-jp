@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: 89e83dc02f32f6f2a781cf2e35040b29cc3d3c06
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 0e2cd75845eb3613b23409b6bf1ab7d37d992275
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-hdinsight-tools-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code の使用
 
@@ -101,6 +101,26 @@ VS Code から HDInsight クラスターにスクリプトを送信するには�
     - 対話型 PySpark クエリの送信
     - PySpark バッチ スクリプトの送信
     - 構成の設定
+
+**クラスターにリンクするには**
+
+Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。
+1. **Ctrl+Shift+P** を押してコマンド パレットを開き、「**HDInsight: Link a cluster**」と入力します。
+
+   ![リンク クラスターのコマンド](./media/hdinsight-for-vscode/link-cluster-command.png)
+
+2. HDInsight クラスターの URL を入力し、[ユーザー名] と [パスワード] を入力し、クラスターの種類を選択します。検証に成功するとその旨が表示されます。
+   
+   ![リンク クラスターのダイアログ](./media/hdinsight-for-vscode/link-cluster-process.png)
+
+   > [!NOTE]
+   > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたユーザー名とパスワードを使用します。 
+   
+3. **List cluster** コマンドを使用すると、リンクされたクラスターを確認できます。 これでリンクされたクラスターにスクリプトを送信できるようになりました。
+
+   ![リンクされたクラスター](./media/hdinsight-for-vscode/linked-cluster.png)
+
+4. また、コマンド パレットに「**HDInsight: Unlink a cluster**」と入力してクラスターのリンクを解除することもできます。
 
 ## <a name="list-hdinsight-clusters"></a>List HDInsight clusters
 
@@ -256,6 +276,9 @@ HDInsight Tools for VS Code を使用すると、対話型 PySpark クエリを 
    ![Python ジョブの送信の結果](./media/hdinsight-for-vscode/submit-pythonjob-result.png) 
 
 Python ジョブを送信したら、VS Code の **[出力]** ウィンドウに送信ログが表示されます。 **Spark UI URL** と **Yarn UI URL** も表示されます。 URL を Web ブラウザーで開くと、ジョブの状態を追跡できます。
+
+
+   
 
 
 ## <a name="additional-features"></a>その他の機能
