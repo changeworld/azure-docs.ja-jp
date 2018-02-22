@@ -5,15 +5,15 @@ services: backup
 keywords: "仮想マシンのバックアップ; 仮想マシン バックアップ; VM のバックアップ; VM バックアップ; Azure VM のバックアップ; バックアップとディザスター リカバリー"
 author: markgalioto
 ms.author: markgal
-ms.date: 09/16/2017
+ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 74ccf95b559b690eb53c2f4df14513dab5a94677
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: f1cfa72d0fb3c83ef6265649b740dec317f0e4b2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Azure Portal を使用して複数の仮想マシンをバックアップする
 
@@ -25,7 +25,7 @@ Azure でデータをバックアップする場合は、Recovery Services コ�
 > * 複数の仮想マシンを保護するバックアップ ポリシーを適用する
 > * 保護された仮想マシン用のオンデマンドのバックアップ ジョブをトリガーする
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -33,7 +33,7 @@ Azure でデータをバックアップする場合は、Recovery Services コ�
 
 Recovery Services コンテナーには、バックアップ データと、保護される仮想マシンに適用されるバックアップ ポリシーが含まれます。 仮想マシンのバックアップはローカルな処理です。 ある場所から別の場所にある Recovery Services コンテナーに仮想マシンをバックアップすることはできません。 そのため、バックアップする仮想マシンがある Azure の場所ごとに、少なくとも 1 つの Recovery Services コンテナーが存在する必要があります。
 
-1. 左側のメニューで **[その他のサービス]** を選択し、サービスの一覧に "*「Recovery Services」*" と入力します。 入力中、リソースにフィルターが適用されます。 Recovery Services コンテナーが一覧に表示される場合、それを選択すると [Recovery Services コンテナー] メニューが開きます。
+1. 左側のメニューで **[すべてのサービス]** を選択し、サービスの一覧に*「Recovery Services」*と入力します。 入力中、リソースにフィルターが適用されます。 Recovery Services コンテナーが一覧に表示される場合、それを選択すると [Recovery Services コンテナー] メニューが開きます。
 
     ![[Recovery Services コンテナー] メニューを開く](./media/tutorial-backup-vm-at-scale/full-browser-open-rs-vault.png) <br/>
 
@@ -171,7 +171,7 @@ Recovery Services コンテナーのバックアップを有効にしました�
     コンテナーが削除されると、Recovery Services コンテナーの一覧に戻ります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Portal で次の作業を行いました。
 

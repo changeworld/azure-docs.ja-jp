@@ -11,23 +11,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2016
+ms.date: 02/12/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6e441c9cbd15bb1528ea8e8a781f90900af90cf2
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: ef813ec3f9f654fb3786fba4135a04e403928e9a
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。
 
 ## <a name="install-the-java-sdk"></a>Java SDK をインストールする
 
-[Application Insights SDK for Java][java] をインストールしていない場合はインストールします。
-
-(HTTP 要求を追跡したくない場合は、.xml 構成ファイルのほとんどを省略できますが、少なくとも `InstrumentationKey` 要素を含める必要があります。 また、`new TelemetryClient()` を呼び出して SDK を初期化する必要があります。)
-
+[Application Insights SDK for Java][java] をまだインストールしていない場合は、インストールする手順に従います。
 
 ## <a name="add-logging-libraries-to-your-project"></a>プロジェクトへのログ ライブラリの追加
 *プロジェクトに適した方法を選択してください。*
@@ -101,13 +98,14 @@ ms.lasthandoff: 11/01/2017
 ```
 
 #### <a name="otherwise-"></a>それ以外の場合:
-適切なアペンダーをダウンロードして展開し、適切なライブラリをプロジェクトに追加します。
+Application Insights Java SDK を手動でインストールするガイドラインに従って、適切なアペンダーの Jar (Maven Central ページに移動した後、ダウンロード セクションの 'jar' リンクをクリック) をダウンロードし、ダウンロードされたアペンダー Jar をプロジェクトに追加します。
 
-| ロガー | ダウンロード | ライブラリ |
+| ロガー | [ダウンロード] | ライブラリ |
 | --- | --- | --- |
-| Logback |[Logback アペンダーを含む SDK](https://aka.ms/xt62a4) |applicationinsights-logging-logback |
-| Log4J v2.0 |[Log4J v2 アペンダーを含む SDK](https://aka.ms/qypznq) |applicationinsights-logging-log4j2 |
-| Log4J v1.2 |[Log4J v1.2 アペンダーを含む SDK](https://aka.ms/ky9cbo) |applicationinsights-logging-log4j1_2 |
+| Logback |[Logback アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-logback%22) |applicationinsights-logging-logback |
+| Log4J v2.0 |[Log4J v2 アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j2%22) |applicationinsights-logging-log4j2 |
+| Log4J v1.2 |[Log4J v1.2 アペンダー Jar](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22applicationinsights-logging-log4j1_2%22) |applicationinsights-logging-log4j1_2 |
+
 
 ## <a name="add-the-appender-to-your-logging-framework"></a>ログ フレームワークへのアペンダーの追加
 トレースの取得を開始するには、適切なコード スニペットを Log4J または Logback の構成ファイルに追加します。 
@@ -128,7 +126,7 @@ ms.lasthandoff: 11/01/2017
 
 ```XML
 
-    <Configuration packages="com.microsoft.applicationinsights.Log4j">
+    <Configuration packages="com.microsoft.applicationinsights.log4j.v2">
       <Appenders>
         <ApplicationInsightsAppender name="aiAppender" />
       </Appenders>
@@ -158,9 +156,11 @@ Application Insights のアペンダーは、上記のコード サンプルに�
 ## <a name="explore-your-traces-in-the-application-insights-portal"></a>Application Insights ポータルでのトレースの探索
 これで、Application Insights にトレースを送信するようにプロジェクトが構成されました。これらのトレースは、Application Insights ポータルの [[検索]][diagnostic] ブレードで表示して検索できます。
 
+ロガー経由で送信された例外は、例外のテレメトリとしてポータルに表示されます。
+
 ![Application Insights ポータルで [検索] を開きます](./media/app-insights-java-trace-logs/10-diagnostics.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [診断検索][diagnostic]
 
 <!--Link references-->

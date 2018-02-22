@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 01/02/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e48e0e256306707ca7fde3636a4215b235fa2eb7
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 4246ecfa50176400c54cd80857e25675290e7170
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
@@ -137,21 +137,19 @@ Azure Virtual Machines で異なる VM の種類から選択できるのと同�
 | OLAP 用に最適化: SAP BW、BW/4HANA、<br /> または SAP HANA (一般的な OLAP ワークロード向け) | SAP HANA on Azure S72<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  768 GB |  3 TB | 使用可能 |
 | --- | SAP HANA on Azure S144<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 72 CPU コアと 144 CPU スレッド |  1.5 TB |  6 TB | 提供終了 |
 | --- | SAP HANA on Azure S192<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド |  2.0 TB |  8 TB | 使用可能 |
-| --- | SAP HANA on Azure S384<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  4.0 TB |  16 TB | 注文可能 |
+| --- | SAP HANA on Azure S384<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  4.0 TB |  16 TB | 使用可能 |
 | OLTP 用に最適化: SAP Business Suite<br /> on SAP HANA または S/4HANA (OLTP)、<br /> 一般的な OLTP | SAP HANA on Azure S72m<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 36 CPU コアと 72 CPU スレッド |  1.5 TB |  6 TB | 使用可能 |
 |---| SAP HANA on Azure S144m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3<br /> 72 CPU コアと 144 CPU スレッド |  3.0 TB |  12 TB | 提供終了 |
 |---| SAP HANA on Azure S192m<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 96 CPU コアと 192 CPU スレッド  |  4.0 TB |  16 TB | 使用可能 |
-|---| SAP HANA on Azure S384m<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  6.0 TB |  18 TB | 注文可能 |
-|---| SAP HANA on Azure S384xm<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  8.0 TB |  22 TB |  注文可能 |
-|---| SAP HANA on Azure S576<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  12.0 TB |  28 TB | 注文可能 |
-|---| SAP HANA on Azure S768<br /> – 16 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 384 CPU コアと 768 CPU スレッド |  16.0 TB |  36 TB | 注文可能 |
-|---| SAP HANA on Azure S960<br /> – 20 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 480 CPU コアと 960 CPU スレッド |  20.0 TB |  46 TB | 注文可能 |
+|---| SAP HANA on Azure S384m<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  6.0 TB |  18 TB | 使用可能 |
+|---| SAP HANA on Azure S384xm<br /> – 8 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 192 CPU コアと 384 CPU スレッド |  8.0 TB |  22 TB |  使用可能 |
+|---| SAP HANA on Azure S576<br /> – 12 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 288 CPU コアと 576 CPU スレッド |  12.0 TB |  28 TB | 使用可能 |
+|---| SAP HANA on Azure S768<br /> – 16 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 384 CPU コアと 768 CPU スレッド |  16.0 TB |  36 TB | 使用可能 |
+|---| SAP HANA on Azure S960<br /> – 20 x Intel® Xeon® プロセッサ E7-8890 v4<br /> 480 CPU コアと 960 CPU スレッド |  20.0 TB |  46 TB | 使用可能 |
 
 - CPU コア = サーバー ユニットのプロセッサの合計の、非ハイパースレッド CPU コアの合計。
 - CPU スレッド = サーバー ユニットのプロセッサの合計の、ハイパースレッド CPU コアによって提供されるコンピューティング スレッドの合計。 すべてのユニットは、既定で、ハイパースレッディングを使用するように構成されています。
 
-
-"使用可能" または "提供終了" と示されている上記の各種構成については、「[SAP Support Note #2316233 – SAP HANA on Microsoft Azure (Large Instances) (SAP サポート ノート #2316233 – SAP HANA on Microsoft Azure (L インスタンス))](https://launchpad.support.sap.com/#/notes/2316233/E)」をご覧ください。 "注文可能" と示されている構成については、間もなく SAP ノートで確認できるようになります。 ただし、それらのインスタンス SKU は、HANA L インスタンス サービスを利用できる 6 か所の Azure リージョン用に既に注文できます。
 
 選択する構成は、ワークロード、CPU リソース、および必要なメモリによって異なります。 OLTP ワークロードでは、OLAP ワークロード用に最適化された SKU を使用できます。 
 
@@ -376,7 +374,7 @@ Azure ネットワークのアーキテクチャは、HANA L インスタンス�
 - デプロイされた SAP システム (Azure VM 内)。 Azure (VM) に正常にデプロイ可能な SAP NetWeaver ベースのアプリケーション用の (リソース使用量とメモリの需要に基づく) 開発、テスト、サンドボックス、または実稼働インスタンスです。 また、これらのシステムは、SQL Server (「[SAP Support Note #1928533 – SAP Applications on Azure: Supported Products and Azure VM types (SAP サポート ノート #1928533 – Azure 上の SAP アプリケーション: サポート対象の製品と Azure VM の種類)](https://launchpad.support.sap.com/#/notes/1928533/E)」を参照) や SAP HANA (「[SAP HANA Certified IaaS Platforms (SAP HANA 認定 IaaS プラットフォーム)](http://global.sap.com/community/ebook/2014-09-02-hana-hardware/enEN/iaas.html)」を参照) などのデータベースに基づく場合もあります。
 - Azure L インスタンス スタンプの SAP HANA on Azure (L インスタンス) を活用する、デプロイされた SAP アプリケーション サーバー (VM 上の Azure 内)。
 
-(4 種類以上のデプロイ シナリオがある) ハイブリッド SAP ランドスケープが一般的ですが、Azure で実行されている完全な SAP ランドスケープの顧客事例が多数あります。 Microsoft Azure VM の強化に伴って、すべての SAP ソリューションを Azure に移行するお客様の数が増えています。
+(4 種類以上のデプロイ シナリオがある) ハイブリッド SAP ランドスケープが一般的ですが、Azure で実行されている完全な SAP ランドスケープの顧客事例が多数あります。 Microsoft Azure VM の強化に伴って、すべての SAP ソリューションを Azure に移行するお客様のの数が増えています。
 
 Azure にデプロイされた SAP システムにおける Azure ネットワークは複雑なものではありません。 このネットワークは次の原則に基づいています。
 

@@ -4,7 +4,7 @@ description: "Azure Virtual Machines で各 SQL Server エディションを実�
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-service-management
 ms.assetid: c505089e-6bbf-4d14-af0e-dd39a1872767
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/14/2017
 ms.author: jroth
-ms.openlocfilehash: 95a18e4b2437ca628e84f6d6f580e12f2f26e111
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 268ae1dae1a247ee63adef22403f89680daa4961
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -42,7 +42,7 @@ SQL Server Azure VM では[自動バックアップ](virtual-machines-windows-sq
 
 高可用性が必要な場合は、SQL Server 高可用性グループの構成を検討してください。 そのために、1 つの仮想ネットワークで複数の SQL Server Azure VM を使用します。 高可用性ソリューションは手動で構成できるほか、Azure Portal からテンプレートを使用して自動で構成することもできます。 高可用性を実現する各種方法の概要については、「[Azure 仮想マシンにおける SQL Server の高可用性とディザスター リカバリー](virtual-machines-windows-sql-high-availability-dr.md)」を参照してください。
 
-## <a name="performance"></a>パフォーマンス
+## <a name="performance"></a>[パフォーマンス]
 
 Azure 仮想マシンは、さまざまなワークロードのニーズを満たす複数のマシンのサイズを提供します。 SQL VM は、パフォーマンス要件に合わせて最適化される自動化されたストレージの構成も提供します。 SQL VM のストレージの構成の詳細については、「[SQL Server VM のストレージの構成](virtual-machines-windows-sql-server-storage-configuration.md)」を参照してください。 パフォーマンスを微調整するには、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 
@@ -94,7 +94,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 ### <a name="windows-virtual-machines"></a>Windows 仮想マシン
 * [Virtual Machines の概要](../overview.md)
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 * [Microsoft Azure Storage の概要](../../../storage/common/storage-introduction.md)
 
 ### <a name="networking"></a>ネットワーク
@@ -106,7 +106,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 * [SQL Server ドキュメント](https://docs.microsoft.com/sql/index)
 * [Azure SQL Database の比較](../../../sql-database/sql-database-paas-vs-sql-server-iaas.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Virtual Machines における SQL Server の概要
 

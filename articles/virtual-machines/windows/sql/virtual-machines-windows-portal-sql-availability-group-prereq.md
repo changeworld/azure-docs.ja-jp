@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure VM で SQL Server Always
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: c492db4c-3faa-4645-849f-5a1a663be55a
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 0748e0ffa405fc02f6da7e2c412beec12510fde5
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 85ad53f0b7b4b14784bb0755ee22763d124e63ba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="complete-the-prerequisites-for-creating-always-on-availability-groups-on-azure-virtual-machines"></a>Azure 仮想マシンで Always On 可用性グループを作成するための前提条件を満たす
 
@@ -313,7 +313,7 @@ Azure Portal の仮想ネットワークの下で、セカンダリ ドメイン
 
 | |インストール アカウント<br/> |sqlserver-0 <br/>SQL Server と SQL エージェント サービス アカウント |sqlserver-1<br/>SQL Server と SQL エージェント サービス アカウント
 | --- | --- | --- | ---
-|**First Name** |Install |SQLSvc1 | SQLSvc2
+|**名** |[インストール] |SQLSvc1 | SQLSvc2
 |**User SamAccountName** |Install |SQLSvc1 | SQLSvc2
 
 次の手順に従って、各アカウントを作成します。

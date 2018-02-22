@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/06/2017
+ms.date: 2/15/2018
 ms.author: menchi
-ms.openlocfilehash: 0baba2ef843ac95bfc6682ec2b00d19b9d94e5cf
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 46d45860f70cfa6d0e1dc4ea07f6ec1f0feec6ab
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="glossary-of-iot-edge-terms"></a>IoT Edge 用語集
 この記事では、IoT Edge の記事で使用される一般的な用語の一部を示します。
@@ -27,6 +27,6 @@ ms.lasthandoff: 01/12/2018
 
 ## <a name="next-steps"></a>次の手順
 
-* 「[Azure IoT Hub 用語集](#iot-hub-devguide-glossary.md)」をご覧ください
+* 「[Azure IoT Hub 用語集](../iot-hub/iot-hub-devguide-glossary.md)」をご覧ください
 * IoT Edge の[モジュール開発](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules)に関するページをご覧ください
 * IoT Edge の[デプロイ](https://docs.microsoft.com/azure/iot-edge/module-deployment-monitoring)に関するページをご覧ください

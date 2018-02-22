@@ -131,6 +131,8 @@
       href: cli-samples.md
     - name: PowerShell
       href: powershell-samples.md
+    - name: Azure Resource Manager のテンプレート
+      href: 'https://azure.microsoft.com/resources/templates/?term=cosmos+db&pageNumber=1'
 - name: 概念
   items:
     - name: サーバーレス データベース
@@ -342,6 +344,8 @@
           href: logging.md
         - name: キーと整合性の管理
           href: manage-account.md
+        - name: アクセス制御
+          href: access-control.md
         - name: Azure ストレージ エクスプローラー
           href: storage-explorer.md
         - name: セキュリティ

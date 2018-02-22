@@ -20,13 +20,10 @@
 #### [Blob Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-blobs.md)
 #### [Queue Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-queues.md)
 #### [Table Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-tables.md)
-### 継続的なビルドおよびデプロイのためのパッケージの構成
-#### [TFS およびチームのビルド](cloud-services-dotnet-continuous-delivery.md)
 ### [ロールのトラフィック規則の構成](cloud-services-enable-communication-role-instances.md)
 ### [クラウド サービスのライフサイクル イベントの処理](cloud-services-role-lifecycle-dotnet.md)
 ### [Socket.io (Node.js)](cloud-services-nodejs-chat-app-socketio.md)
 ### [Twilio を使用した通話 (.NET)](../partner-twilio-cloud-services-dotnet-phone-call-web-role.md)
-### [New Relic](../store-new-relic-cloud-services-dotnet-application-performance-management.md)
 
 ### スタートアップ タスクの構成
 #### [スタートアップ タスクの作成](cloud-services-startup-tasks.md)
@@ -73,11 +70,9 @@
 #### [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md)
 ### [Azure Storage への診断データの保存と表示](cloud-services-dotnet-diagnostics-storage.md)
 ### [診断を使用したクラウド サービスのトレース](cloud-services-dotnet-diagnostics-trace-flow.md)
-### [App Insights への診断データの送信](cloud-services-dotnet-diagnostics-applicationinsights.md)
 
 ## トラブルシューティング
 ### デバッグ 
-#### [継続的な配信を使用したリモート デバッグの有効化](cloud-services-virtual-machines-dotnet-continuous-delivery-remote-debugging.md)
 #### [クラウド サービスのオプション](../vs-azure-tools-debugging-cloud-services-overview.md)
 #### [Visual Studio を使用したローカルのクラウド サービス](../vs-azure-tools-debug-cloud-services-virtual-machines.md)
 #### [Visual Studio を使用した発行済みのクラウド サービス](../vs-azure-tools-intellitrace-debug-published-cloud-services.md)

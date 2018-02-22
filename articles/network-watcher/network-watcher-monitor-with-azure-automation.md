@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 935431783b08919049c5c24b56285647bc7b35ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c6efbc5da37a2ac500a575419263c0f21cca4b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視
 
@@ -51,7 +51,7 @@ VPN トンネルの接続状態を確認するスクリプトが含まれた Run
 
 ### <a name="create-the-runbook"></a>Runbook の作成
 
-この例を構成する最初の手順は、Runbook の作成です。 ここでは実行アカウントを使用します。 実行アカウントについては、「[Azure 実行アカウントを使用した Runbook の認証](../automation/automation-sec-configure-azure-runas-account.md)」を参照してください。
+この例を構成する最初の手順は、Runbook の作成です。 ここでは実行アカウントを使用します。 実行アカウントについては、「[Azure 実行アカウントを使用した Runbook の認証](../automation/automation-create-runas-account.md)」を参照してください。
 
 ### <a name="step-1"></a>手順 1
 
@@ -183,7 +183,7 @@ Runbook を保存したら、スケジュールをそれにリンクして Runbo
 
 ![手順 10.][10]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Network Watcher トラブルシューティングを Azure Automation と統合する方法を確認しました。次は、[アラートでトリガーされるパケット キャプチャを Azure Network Watcher で作成する方法](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、VM アラートでパケット キャプチャをトリガーする方法について学習します。
 

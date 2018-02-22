@@ -4,7 +4,7 @@ description: "Azure の仮想マシンで実行されている SQL Server に接
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.assetid: aa5bf144-37a3-4781-892d-e0e300913d03
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: 6d90904315e5d0a99ead193d1f95b504e796d587
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 7285cf47c3a5ec731cd9cfe311053e9d19886f1d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Azure での SQL Server 仮想マシンへの接続
 
@@ -38,7 +38,7 @@ Azure Portal で SQL Server VM をプロビジョニングする場合、**SQL �
 
 接続のオプションは次のとおりです。
 
-| オプション | Description |
+| オプション | [説明] |
 |---|---|
 | **パブリック** | インターネット経由で SQL Server に接続する |
 | **プライベート** | 同一仮想ネットワーク内で SQL Server に接続する |
@@ -80,7 +80,7 @@ Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User 
 > [!IMPORTANT]
 > SQL Server Developer および Express エディション用の仮想マシン イメージでは、TCP/IP プロトコルは自動では有効になりません。 Developer または Express エディションでは、VM の作成後に、SQL Server 構成マネージャーを使用して [TCP/IP プロトコルを手動で有効にする](#manualtcp) 必要があります。
 
-プライベート接続は、多くの場合、いくつかのシナリオを可能にする[仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)と共に使用されます。 同じ仮想ネットワーク内の VM が異なるリソース グループに存在する場合でも、それらの VM に接続できます。 また [サイト間 VPN](../../../vpn-gateway/vpn-gateway-site-to-site-create.md)を使うと、VM をオンプレミスのネットワークおよびマシンと接続するハイブリッド アーキテクチャを作成できます。
+プライベート接続は、多くの場合、いくつかのシナリオを可能にする[仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)と共に使用されます。 同じ仮想ネットワーク内の VM が異なるリソース グループに存在する場合でも、それらの VM に接続できます。 また [サイト間 VPN](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)を使うと、VM をオンプレミスのネットワークおよびマシンと接続するハイブリッド アーキテクチャを作成できます。
 
 仮想ネットワークを使うと、Azure VM をドメインに参加させることもできます。 これは、SQL Server に Windows 認証を使用する唯一の方法です。 その他の接続シナリオでは、ユーザー名とパスワードによる SQL 認証が必要です。
 
@@ -132,7 +132,7 @@ SQL Server 接続の設定を変更するとき、Azure は SQL Server Developer
 
 Azure VM で実行されている SQL Server に接続するための要件を次の表に示します。
 
-| 要件 | 説明 |
+| 要件 | [説明] |
 |---|---|
 | [SQL Server 認証モードを有効にする](https://docs.microsoft.com/sql/database-engine/configure-windows/change-server-authentication-mode#SSMSProcedure) | Virtual Network で Active Directory を構成済みである場合を除き、VM にリモート接続するには SQL Server 認証が必要になります。 |
 | [SQL ログインを作成する](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | SQL 認証を使用する場合、ターゲット データベースへのアクセス許可も持つ、ユーザー名とパスワードによる SQL ログインが必要です。 |
@@ -143,7 +143,7 @@ Azure VM で実行されている SQL Server に接続するための要件を�
 > [!TIP]
 > ポータルで接続を構成すると、上記の表の手順が自動的に実行されます。 これらの手順を使用するのは、構成を確認する場合または SQL Server の接続を手動で設定する場合だけです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これらの接続の手順とプロビジョニングの手順を確認するには、「[Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。
 

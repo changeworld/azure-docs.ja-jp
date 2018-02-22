@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: aa4608d37b06db88819e6175dcf8f94a7e13f04a
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: cef7fc282edc7396a0f26dab98ea7f1087315b23
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Log Analytics でログ検索を使用してデータを探す
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/22/2018
 > この記事では、従来のクエリ言語を使用した Log Analytics のログ検索について説明します。  ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[Log Analytics でのログ検索について (新)](log-analytics-log-search-new.md) に関するページをご覧ください。
 
 
-Log Analytics の中心にあるのは、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較できるログ検索機能です。 各種のソリューションも、特定の問題領域に関するj測定基準を得るためのログ検索機能を備えています。
+Log Analytics の中心にあるのは、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較できるログ検索機能です。 各種のソリューションも、特定の問題領域に関する測定基準を得るためのログ検索機能を備えています。
 
 検索クエリは [検索] ページで作成できます。検索結果は、ファセット コントロールを使用してフィルタリングすることができます。 検索結果に対して変換やフィルター処理、レポート作成などを実行する高度なクエリを作成することもできます。
 

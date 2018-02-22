@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: 4aca25f74d3e22911ab5059a8cdec45f189dc8cf
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: aab15e6981e4f5f3c69ea6a85995fd2db69ff8b8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド ネイティブ アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Service Fabric は、コンテナーで実行するこれらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代プラットフォームの代表例です。
@@ -49,7 +49,7 @@ Service Fabric はどこでも動きます。 Azure、オンプレミス、Windo
 
 ![Service Fabric platform][Image1]
 
-Windows 開発の場合、Service Fabric .NET SDK は、Visual Studio と PowerShell に統合されています。 「[開発環境を準備する](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started.md)」を参照してください。 Linux 開発の場合、Service Fabric Java SDK が Eclipse に統合されており、Java、.NET Core、およびコンテナー アプリケーション用のテンプレートを生成する必要はありません 「[Linux で開発環境を準備する](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started.md)」を参照してください。
+Windows 開発の場合、Service Fabric .NET SDK は、Visual Studio と PowerShell に統合されています。 「[開発環境を準備する](service-fabric-get-started.md)」を参照してください。 Linux 開発の場合、Service Fabric Java SDK が Eclipse に統合されており、Java、.NET Core、およびコンテナー アプリケーション用のテンプレートを生成する必要はありません 「[Linux で開発環境を準備する](service-fabric-get-started.md)」を参照してください。
 
 クラスター作成の詳細については、[Windows Server または Linux でのクラスターの作成](service-fabric-deploy-anywhere.md)に関する記事を参照してください。また、Azure でのクラスター作成の詳細については、[Azure Portal を使用したクラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
 
@@ -86,7 +86,7 @@ Service Fabric を使用すると、次の操作を実行できます。
 * クラスター内でアプリケーションの再配布を調整するリソース バランサーを監視します。 Service Fabric は障害から回復し、利用可能なリソースに基づいて負荷分散を最適化します。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 詳細:
   * [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
   * [用語の概要](service-fabric-technical-overview.md)

@@ -529,7 +529,11 @@
         - name: セキュリティ保護されたクラスターに接続する
           href: service-fabric-connect-to-secure-cluster.md
         - name: クラスター ノードへのパッチの適用
-          href: service-fabric-patch-orchestration-application.md
+          items:
+            - name: Windows
+              href: service-fabric-patch-orchestration-application.md
+            - name: Linux
+              href: service-fabric-patch-orchestration-application-linux.md
     - name: 監視と診断
       items:
         - name: OMS
@@ -599,7 +603,7 @@
     - name: ラーニング パス
       href: 'https://azure.microsoft.com/documentation/learning-paths/service-fabric/'
     - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric'
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureServiceFabric'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/service-fabric/'
     - name: 料金計算ツール

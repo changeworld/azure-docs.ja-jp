@@ -3,8 +3,8 @@ title: "Azure Stack のストレージ アカウントを管理する | Microsof
 description: "Azure Stack のストレージ アカウントを検索、管理、回復、および回収する方法について説明します。"
 services: azure-stack
 documentationcenter: 
-author: AniAnirudh
-manager: darmour
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
@@ -13,15 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/6/2017
-ms.author: anirudha
-ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: anirudha
+ms.openlocfilehash: 3ef9a66095d0ed5fc865dc3c22961f9f7bdcedd9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でのストレージ アカウントの管理
-ビジネスのニーズに基づいてストレージ容量を検索、回復、および再利用するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
+ビジネスのニーズに基づいてストレージ容量を検索、回復、および回収するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
 
 ## <a name="find"></a>ストレージ アカウントの検索
 リージョン内のストレージ アカウントのリストは、次の方法を使って Azure Stack で表示できます。
@@ -46,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 または
 
-特定のストレージ アカウントに興味がある場合は、**フィルター処理して関連するアカウントのみをフェッチ**することができます。
+特定のストレージ アカウントに関心がある場合は、**フィルター処理して関連するアカウントのみをフェッチ**することができます。
 
 
 **アカウントをフィルター処理するには:**
@@ -60,12 +61,12 @@ ms.lasthandoff: 10/11/2017
 
 (ストレージ アカウントのリスト ブレードの上部の) 検索テキスト ボックスを使用すると、アカウントのリスト内で選択したテキストを強調表示することができます。 これは、フルネームや ID が簡単に使用できない場合にとても便利です。
 
-ここでフリー テキストを使用すると、興味のあるアカウントが見つけやすくなります。
+ここでフリー テキストを使用すると、関心のあるアカウントが見つけやすくなります。
 
 ![](media/azure-stack-manage-storage-accounts/image6.png)
 
 ## <a name="look-at-account-details"></a>アカウントの詳細の確認
-表示で興味のあるアカウントが見つかったら、そのアカウントをクリックして特定の詳細を表示できます。 新しいブレードが開き、アカウントの種類、作成時、場所などのアカウントの詳細が表示されます。
+表示で関心のあるアカウントが見つかったら、そのアカウントをクリックして特定の詳細を表示できます。 新しいブレードが開き、アカウントの種類、作成時、場所などのアカウントの詳細が表示されます。
 
 ![](media/azure-stack-manage-storage-accounts/image7.png)
 
@@ -75,14 +76,14 @@ ms.lasthandoff: 10/11/2017
 Azure Stack では、これを行う非常に簡単な方法があります。
 
 1. ストレージ アカウント リストを参照します。 詳細については、このトピックの「[ストレージ アカウントの検索](#find)」を参照してください。
-2. リストでそのアカウントを見つけます。 場合によっては、フィルターを使用する必要があります。
+2. そのリストで特定のアカウントを検索します。 場合によっては、フィルターを使用する必要があります。
 3. アカウントの*状態*を確認します。 **[削除済み]** になっているはずです。
 4. アカウントをクリックして、アカウントの詳細ブレードを開きます。
 5. このブレードの上部にある **[回復]** ボタンをクリックします。
 6. **[はい]** をクリックして確定します。
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
-7. 回復が正常に完了したことが示される間、*[process…wait]\(処理中…お待ちください\)* と表示されます。
+7. その結果が正常であったことを受けて、この回復は *[process…wait]\(処理中…お待ちください\)* と表示されます。
    ポータルの上部にある “ベル” のアイコンをクリックしても進行状況インジケーターを表示できます。
    
    ![](media/azure-stack-manage-storage-accounts/image9.png)
@@ -151,7 +152,7 @@ PowerShell を使用して保有期間を明示的に上書きし、すぐに容
  
 
 ## <a name="migrate-a-container"></a>コンテナーの移行
-テナントが使用するストレージにはばらつきがあるため、クラウド オペレーターは、他よりも多くの領域を使用しているテナントの共有が 1 つまたは複数あることに気付く場合があります。 このような場合、クラウド オペレーターは、一部の BLOB コンテナーを別の共有に手動で移行して、高負荷の共有での領域の解放を試みることができます。 
+テナントが使用するストレージにはばらつきがあるため、クラウド オペレーターは、他よりも多くの領域を使用しているテナントへの割り当てが 1 つまたは複数あることに気付く場合があります。 このような場合、クラウド オペレーターは、一部の BLOB コンテナーを別の共有に手動で移行して、高負荷の共有での領域の解放を試みることができます。 
 
 PowerShell を使用して、コンテナーを移行する必要があります。
 > [!NOTE]

@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.openlocfilehash: 7f4088cf4470b1f9fa22c4ec83a9f92657032734
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c8b345cd973b8cd939ad111132f1afdadae9f2b7
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Web ページを使用して Azure Traffic Manager に Real User Measurements を送信する方法
 
@@ -65,7 +65,7 @@ RUM キーを取得した後、次の手順は、エンドユーザーがアク�
 
     **図 3: Real User Measurements JavaScript が埋め込まれた単純な HTML**
 
-3.  HTML ファイルを保存します
+3.  HTML ファイルを保存して、インターネットに接続されている Web サーバーでホストします。 
 4. Web ブラウザーでこのページを次に表示したときに、参照される JavaScript がダウンロードされ、スクリプトは測定とレポートの操作を実行します。
 
 

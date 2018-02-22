@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: joflore
-ms.openlocfilehash: af86434e1205d67829fc7079d97a37f013c0f2d8
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 67456fa865a7bc1057194d577cd79ce6378a7ac9
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/08/2018
 > この比較表では、各バージョンの Multi-Factor Authentication に含まれる機能について説明します。 完全な Azure Multi-Factor Authentication サービスを使用している場合、[クラウドの MFA とオンプレミスの MFA](multi-factor-authentication-get-started.md) のどちらを使用するかによって、一部の機能を利用できない可能性があります。
 
 
-| 機能 | Office 365 の多要素認証 | Azure AD 管理者用の Multi-Factor Authentication | Azure Multi-Factor Authentication |
+| Feature | Office 365 の多要素認証 | Azure AD 管理者用の Multi-Factor Authentication | Azure Multi-Factor Authentication |
 | --- |:---:|:---:|:---:|
 | MFA で Azure AD 管理者アカウントを保護する |● |● (Azure AD グローバル管理者アカウントの場合のみ) |● |
 | モバイル アプリを 2 番目の要素にする |● |● |● |
@@ -67,6 +67,9 @@ ms.lasthandoff: 01/08/2018
 | 信頼済みデバイスの MFA の記憶 |● |● |● |
 | MFA の SDK | | |● (非推奨) | 
 | オンプレミス アプリケーション用の MFA | | |● |
+
+## <a name="how-to-turn-on-azure-multi-factor-authentication-for-azure-ad-administrators"></a>Azure AD 管理者用の Azure Multi-Factor Authentication を有効にする方法
+Azure AD テナントのグローバル管理者ロールを割り当てられているユーザーは、追加費用なしで、その Azure AD グローバル管理者アカウントに 2 段階認証を適用できます。 Microsoft アカウントを使用している場合は、[ここ](https://support.microsoft.com/en-us/help/12408/microsoft-account-about-two-step-verification)から多要素認証を登録することができます。 Microsoft アカウントを使用していない場合は、[ここ](https://docs.microsoft.com/en-us/azure/multi-factor-authentication/multi-factor-authentication-get-started-user-states)からグローバル管理者の多要素認証を有効にします。
 
 ## <a name="how-to-get-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication の入手方法
 Azure Multi-Factor Authentication で提供されるすべての機能を利用するには、次のような方法があります。
