@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/14/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 8d19f2d29673364c50cb481e375f2c1b5e027467
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: e82fb85e78058d03b8615ef3fbe80bbfa1ad71ed
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 

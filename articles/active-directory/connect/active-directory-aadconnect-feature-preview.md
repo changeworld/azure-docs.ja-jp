@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7173c87dec980130992438954650227c16ad7292
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d4e76c85af7a9b90867d91a6290c4f4deea19a75
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="more-details-about-features-in-preview"></a>プレビュー段階の機能の詳細
 このトピックでは、現在プレビュー段階の機能を使用する方法について説明します。
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="group-writeback"></a>グループの書き戻し
 オプション機能のグループの書き戻し用のオプションでは、**Office 365 グループ**を Exchange がインストールされているフォレストに書き戻すことができます。 これは、クラウドで常に管理されるグループです。 オンプレミスの Exchange をご利用の場合、これらのグループをオンプレミスに書き戻すことができます。オンプレミスの Exchange メールボックスを所有するユーザーは、それらのグループから電子メールを送受信することができます。
 
-Office 365 グループの詳細とその使い方については、 [こちら](http://aka.ms/O365g)をご覧ください。
+Office 365 グループの詳細とその使い方については、 [こちら](https://aka.ms/O365g)をご覧ください。
 
 Office 365 グループは、オンプレミスの AD DS では配布グループとして表現されます。 この新しいグループの種類が表示されるようにするには、オンプレミスの Exchange サーバーを Exchange 2013 累積更新プログラム 8 (2015 年 3 月リリース) または Exchange 2016 で更新する必要があります。
 

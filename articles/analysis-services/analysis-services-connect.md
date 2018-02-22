@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: d6cafc72f74dc0ec891591d3311f93ba1649f922
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: e93544902d7ef435fb1b94e83700ae4fcd6f91f2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-to-an-azure-analysis-services-server"></a>Azure Analysis Services サーバーに接続する
 
@@ -76,7 +76,7 @@ Analysis Services サーバーを Azure に作成するとき、一意の名前�
 以前のバージョンの Excel を使用するユーザーは、Office データ接続 (.odc) ファイルを使って Azure Analysis Services サーバーに接続することができます。 詳細については、「[Office データ接続 (.odc) ファイルの作成](analysis-services-odc.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Excel を使用した接続](analysis-services-connect-excel.md)    
 [Power BI を使用した接続](analysis-services-connect-pbi.md)   
 [サーバーの管理](analysis-services-manage.md)   

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: e939c6a53a1154b23431581e789605d83e849fe2
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b716e553f7c4c11f6d566b43d771217fdf4b3a93
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 Azure AD Connect の同期機能には 2 つのコンポーネントがあります。
@@ -28,7 +28,7 @@ Azure AD Connect の同期機能には 2 つのコンポーネントがありま
 
 このトピックでは、 **Azure AD Connect 同期サービス** の各種機能のしくみと、Windows PowerShell を使用してそれらを構成する方法について説明します。
 
-これらの設定は、 [Windows PowerShell 用 Azure Active Directory モジュール](http://aka.ms/aadposh)で構成されます。 これは、Azure AD Connect とは別にダウンロードしてインストールします。 このトピックで紹介するコマンドレットは、 [2016 年 3 月のリリース (ビルド 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)で導入されたものです。 このトピックに記載されているコマンドレットがないか、同じ結果が生成されない場合は、最新バージョンが実行されていることを確認してください。
+これらの設定は、 [Windows PowerShell 用 Azure Active Directory モジュール](https://aka.ms/aadposh)で構成されます。 これは、Azure AD Connect とは別にダウンロードしてインストールします。 このトピックで紹介するコマンドレットは、 [2016 年 3 月のリリース (ビルド 9031.1)](http://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx#Version_9031_1)で導入されたものです。 このトピックに記載されているコマンドレットがないか、同じ結果が生成されない場合は、最新バージョンが実行されていることを確認してください。
 
 Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSyncFeatures`を実行します。  
 ![Get-MsolDirSyncFeatures result](./media/active-directory-aadconnectsyncservice-features/getmsoldirsyncfeatures.png)

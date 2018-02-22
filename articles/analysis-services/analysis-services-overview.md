@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 01/04/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: fe46b3c099c4fd4e04a39e2b2f127c1206711e60
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: c71d6fd7e3542a22edf093b0c9fccbd5185e0f85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-analysis-services-overview"></a>Azure Analysis Services の概要
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)

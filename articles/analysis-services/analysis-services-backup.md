@@ -12,13 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: f96e72e4decd475e7859eb7f70046a277b718ac8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 52db3916392c3ff304311717b12a163213197717
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="backup-and-restore"></a>バックアップと復元
 
@@ -56,7 +56,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
     ![バックアップ設定の保存](./media/analysis-services-backup/aas-backup-save.png)
 
-## <a name="backup"></a>バックアップ
+## <a name="backup"></a>Backup
 
 ### <a name="to-backup-by-using-ssms"></a>SSMS を使用してバックアップするには
 
@@ -80,7 +80,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 ### <a name="powershell"></a>PowerShell
 [Backup-ASDatabase](https://docs.microsoft.com/sql/analysis-services/powershell/backup-asdatabase-cmdlet) コマンドレットを使用します。
 
-## <a name="restore"></a>復元
+## <a name="restore"></a>Restore
 復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/common/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
 
 

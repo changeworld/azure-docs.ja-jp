@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 07/18/2017
 ms.author: adegeo
-ms.openlocfilehash: 7bef7643a989caee846f8235e024deb482f4b0a0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 542632dc61f1acecd8ca8ac45fb29bfa6aa839c2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sizes-for-cloud-services"></a>Cloud Services のサイズ
 このトピックでは、クラウド サービスのロール インスタンス (Web ロールと worker ロール) で使用できるサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意するデプロイメントに関する考慮事項も示します。 それぞれのサイズには、[サービス定義ファイル](cloud-services-model-and-package.md#csdef)に配置する ID があります。 サイズごとの価格は「[Cloud Services の価格](https://azure.microsoft.com/pricing/details/cloud-services/)」ページで表示されています。
@@ -147,23 +147,23 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 | サイズ            | CPU コア数 | メモリ: GiB   | ローカル SSD: GiB       | 最大 NIC/ネットワーク帯域幅 |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standard_D2_v3  | 2         | 8             | 16                   | 2/中 |
-| Standard_D4_v3  | 4         | 16            | 32                   | 2/高 |
-| Standard_D8_v3  | 8         | 32            | 64                   | 4/高 |
-| Standard_D16_v3 | 16        | 64            | 128                  | 8/極めて高 |
-| Standard_D32_v3 | 32        | 128           | 256                  | 8/極めて高 |
-| Standard_D64_v3 | 64        | 256           | 512                  | 8/極めて高 |
+| Standard_D2_v3  | 2         | 8             | 50                   | 2/中 |
+| Standard_D4_v3  | 4         | 16            | 100                  | 2/高 |
+| Standard_D8_v3  | 8         | 32            | 200                  | 4/高 |
+| Standard_D16_v3 | 16        | 64            | 400                  | 8/極めて高 |
+| Standard_D32_v3 | 32        | 128           | 800                  | 8/極めて高 |
+| Standard_D64_v3 | 64        | 256           | 1600                 | 8/極めて高 |
 
 ## <a name="ev3-series"></a>Ev3 シリーズ
 
 | サイズ            | CPU コア数 | メモリ: GiB   | ローカル SSD: GiB       | 最大 NIC/ネットワーク帯域幅 |
 |---------------- | --------- | ------------- | -------------------- | ---------------------------- |
-| Standard_E2_v3  | 2         | 16            | 32                   | 2/中 |
-| Standard_E4_v3  | 4         | 32            | 64                   | 2/高 |
-| Standard_E8_v3  | 8         | 64            | 128                  | 4/高 |
-| Standard_E16_v3 | 16        | 128           | 256                  | 8/極めて高 |
-| Standard_E32_v3 | 32        | 256           | 512                  | 8/極めて高 |
-| Standard_E64_v3 | 64        | 432           | 864                  | 8/極めて高 |
+| Standard_E2_v3  | 2         | 16            | 50                   | 2/中 |
+| Standard_E4_v3  | 4         | 32            | 100                  | 2/高 |
+| Standard_E8_v3  | 8         | 64            | 200                  | 4/高 |
+| Standard_E16_v3 | 16        | 128           | 400                  | 8/極めて高 |
+| Standard_E32_v3 | 32        | 256           | 800                  | 8/極めて高 |
+| Standard_E64_v3 | 64        | 432           | 1600                 | 8/極めて高 |
 
 
 ## <a name="g-series"></a>G シリーズ

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 53e946bba6bbd882e78b51ee8d222ab0d3ec056a
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 38bad0641d97028b435e05458d597bda378a8363
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理
 
@@ -46,7 +46,7 @@ model データベース レベルでは、すべてのユーザーがロール�
   
 4.  次のアクセス許可のいずれかを選択します。  
   
-    |アクセス許可|Description|  
+    |アクセス許可|[説明]|  
     |----------------|-----------------|  
     |**なし**|メンバーは、モデル スキーマを変更できず、データのクエリもできません。|  
     |**読み取り**|メンバーは、(行フィルターに基づいて) データをクエリできますが、モデル スキーマを変更することはできません。|  
@@ -73,7 +73,7 @@ model データベース レベルでは、すべてのユーザーがロール�
 2. **[Create Role(ロールの作成)]** で、ロールの名前と説明を入力します。
 
 3. アクセス許可を選択します。
-   |アクセス許可|Description|  
+   |アクセス許可|[説明]|  
    |----------------|-----------------|  
    |**フル コントロール (管理者)**|メンバーは、モデル スキーマの変更とプロセス、およびすべてのデータのクエリを実行できます。| 
    |**Process database (データベースのプロセス)**|メンバーは、プロセス操作および Process All (すべてプロセス) 操作を実行できます。 モデル スキーマを変更できず、データのクエリもできません。|  
@@ -121,7 +121,7 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>PowerShell を使用してロールとユーザーを追加する方法
 [SqlServer](https://msdn.microsoft.com/library/hh758425.aspx) モジュールには、タスク固有のデータベース管理コマンドレットと、Tabular Model Scripting Language (TMSL) クエリまたはスクリプトを受け入れる汎用 Invoke-ASCmd コマンドレットが用意されています。 次のコマンドレットは、データベース ロールとユーザーを管理するために使用されます。
   
-|コマンドレット|説明|
+|コマンドレット|[説明]|
 |------------|-----------------| 
 |[Add-RoleMember](https://msdn.microsoft.com/library/hh510167.aspx)|データベース ロールにメンバーを追加します。| 
 |[Remove-RoleMember](https://msdn.microsoft.com/library/hh510173.aspx)|データベース ロールからメンバーを削除します。|   
@@ -146,7 +146,7 @@ SSMS の XMLA ウィンドウで、または PowerShell を使用して、TMSL �
   
  フィルター *=FALSE()* を使用して、テーブル全体のすべての行へのアクセスを拒否できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
   [サーバー管理者の管理](analysis-services-server-admins.md)   
   [PowerShell で Azure Analysis Services を管理する](analysis-services-powershell.md)  
   [Tabular Model Scripting Language (TMSL) のリファレンス](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference)

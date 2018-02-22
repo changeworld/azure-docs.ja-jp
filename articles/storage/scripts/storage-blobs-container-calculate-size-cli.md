@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.date: 06/28/2017
 ms.author: tamram
-ms.openlocfilehash: 61a553e47a642aead323a19d0724fdccc94a6282
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: f9213018969ab47ce2e78d8c119f22dedaff9452
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="calculate-the-size-of-a-blob-storage-container"></a>Blob ストレージ コンテナーのサイズを計算する
 
@@ -50,11 +50,11 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage blob upload](/cli/azure/storage/account#create) | ローカル ファイルを Azure Blob ストレージ コンテナーにアップロードします。 |
-| [az storage blob list](/cli/azure/storage/account/keys#list) | Azure Blob ストレージ コンテナー内の BLOB を一覧表示します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage blob upload](/cli/azure/storage/account#az_storage_account_create) | ローカル ファイルを Azure Blob ストレージ コンテナーにアップロードします。 |
+| [az storage blob list](/cli/azure/storage/account/keys#az_storage_account_keys_list) | Azure Blob ストレージ コンテナー内の BLOB を一覧表示します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](/cli/azure/overview)のページをご覧ください。
 

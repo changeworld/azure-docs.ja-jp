@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 41bf697cd1d91ea0ba56ed6fad0e5b9c442ecec2
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: a07514c7734f3cd4be1e11a984151abb8ee3f23d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="compatibility-level-for-analysis-services-tabular-models"></a>Analysis Services 表形式モデルの互換性レベル
 
@@ -53,6 +53,6 @@ Azure Analysis Services は、互換性レベル 1200 と 1400 の表形式モ�
   
  このプロパティは、サーバーで実行されるデータベースの最上位の互換性レベルを指定します (プレビューを除く)。 サポートされる互換性レベルは変更できません。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
   [Azure Portal でモデルを作成する](analysis-services-create-model-portal.md)   
   [Analysis Services を管理する](analysis-services-manage.md)  

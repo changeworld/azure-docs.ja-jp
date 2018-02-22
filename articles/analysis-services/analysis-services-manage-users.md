@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/09/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: e7fdb55ba29fbdc2f3d89fbb19c8b77bf2c05795
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 1011e2c8351839cc8c93fc74a7d6f51f29e52410
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/active-directory-administer.md)に有効なユーザー ID が必要です。
@@ -80,7 +80,7 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
   
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Active Directory のグループによるリソースへのアクセス管理](../active-directory/active-directory-manage-groups.md)   
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
