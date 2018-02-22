@@ -14,11 +14,11 @@ ms.tgt_pltfrm:
 ms.workload: identity
 ms.date: 12/19/2017
 ms.author: skwan
-ms.openlocfilehash: b28f5c7c90783c5abd933b50ddb9631739b8f421
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 72e1d5250de214c063a970f5761105b2329ccf7f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/22/2018
 ---
 #  <a name="managed-service-identity-msi-for-azure-resources"></a>Azure リソースの管理対象サービス ID (MSI)
 
@@ -87,12 +87,12 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 
 | サービス | Resource ID | 状態 | 日付 | アクセス権を割り当てる |
 | ------- | ----------- | ------ | ---- | ------------- |
-| Azure Resource Manager | https://management.azure.com/ | 使用可能 | 2017 年 9 月 | [Azure Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
-| Azure Key Vault | https://vault.azure.net/ | 使用可能 | 2017 年 9 月 | |
-| Azure Data Lake | https://datalake.azure.net/ | 使用可能 | 2017 年 9 月 | |
-| Azure SQL | https://database.windows.net/ | 使用可能 | 2017 年 10 月 | |
-| Azure Event Hubs | https://eventhubs.azure.net/ | 使用可能 | 2017 年 12 月 | |
-| Azure Service Bus | https://servicebus.azure.net/ | 使用可能 | 2017 年 12 月 | |
+| Azure Resource Manager | https://management.azure.com | 使用可能 | 2017 年 9 月 | [Azure Portal](msi-howto-assign-access-portal.md) <br>[PowerShell](msi-howto-assign-access-powershell.md) <br>[Azure CLI](msi-howto-assign-access-CLI.md) |
+| Azure Key Vault | https://vault.azure.net | 使用可能 | 2017 年 9 月 | |
+| Azure Data Lake | https://datalake.azure.net | 使用可能 | 2017 年 9 月 | |
+| Azure SQL | https://database.windows.net | 使用可能 | 2017 年 10 月 | |
+| Azure Event Hubs | https://eventhubs.azure.net | 使用可能 | 2017 年 12 月 | |
+| Azure Service Bus | https://servicebus.azure.net | 使用可能 | 2017 年 12 月 | |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>管理対象サービス ID にはどれくらいのコストがかかりますか。
 

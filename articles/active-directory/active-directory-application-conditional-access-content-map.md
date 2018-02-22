@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 955f8bdaf61658bfacfb5c751602a34510d275ad
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 34d375d62cd41acdbbaa8da5f6cc46605aebb81f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="problems-configuring-conditional-access-to-one-of-my-applications"></a>アプリケーションへの条件付きアクセスの構成に関する問題
 
@@ -29,9 +29,9 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="im-having-problems-setting-up-conditional-access"></a>条件付きアクセスを設定するときに問題が発生する
   以下のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
-  * [企業ネットワークのルールを無効にする方法とタイミング](http://aka.ms/calocation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [企業ネットワークのルールを無効にする方法とタイミング](https://aka.ms/calocation/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Azure AD でユーザーが登録できるデバイス数を増やす方法](https://docs.microsoft.com/azure/active-directory/active-directory-azureadjoin-setup/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-  * [Exchange Online の条件付きアクセスの設定方法](http://aka.ms/csforexchange/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
+  * [Exchange Online の条件付きアクセスの設定方法](https://aka.ms/csforexchange/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [Windows 7 デバイスの条件付きアクセスの設定方法](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access#device-based-conditional-access/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [条件付きアクセスでサポートされるアプリケーション](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-supported-apps/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2017
 ms.author: kraigb
-ms.openlocfilehash: 5fe910e2757dd5ec783538e23e7f52e2f5725b39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1004f7d6938b4038df7681dc7f7551db2e988e61
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="building-azure-projects-from-the-command-line"></a>コマンド ラインからの Azure プロジェクトのビルド
 Microsoft Build Engine (MSBuild) を使用すると、Visual Studio がインストールされていないビルド ラボ環境で製品のビルドを構築できます。 MSBuild は、拡張可能で Microsoft が完全にサポートしている XML 形式をプロジェクト ファイルに使用します。 MSBuild ファイル形式を使用すると、1 つまたは複数のプラットフォームや構成でビルドが必要な項目を記述できます。
@@ -35,6 +35,5 @@ MSBuild はコマンド ラインで実行することもできます。この�
 
 パッケージと構成ファイルの格納に別のディレクトリを使用する場合は、`/p:PublishDir=Directory\` オプションを使用してパスを設定します。その際、末尾に円記号の区切り記号を含めます。
 
-## <a name="next-steps"></a>次のステップ
-パッケージは、ビルド後に Azure にデプロイできます。 このプロセスを自動化する方法を説明したチュートリアルについては、「[Azure でのクラウド サービスの継続的な配信](./cloud-services/cloud-services-dotnet-continuous-delivery.md)」を参照してください。
-
+## <a name="next-steps"></a>次の手順
+パッケージは、ビルド後に Azure にデプロイできます。

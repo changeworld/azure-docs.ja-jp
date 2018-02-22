@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 5ba7ef5aa2cccad7cda3cb39459a5a5722516524
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 33115ee35670407c3b046f70a5fbebc47284b4b9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 Azure Analysis Services サーバーでは、組織のクラウドおよびオンプレミスにあるデータ ソースへの接続がサポートされます。 サポート対象のデータ ソースは随時追加されていますので、 こちらを頻繁にご確認ください。 
@@ -29,7 +29,7 @@ Azure Analysis Services サーバーでは、組織のクラウドおよびオ�
 | クラウド  |
 |---|
 | Azure Blob Storage*  |
-| Azure SQL Database  |
+| の接続文字列  |
 | Azure データ ウェアハウス |
 
 
@@ -60,7 +60,7 @@ Azure SQL Database などのクラウド データ ソースに接続するデ�
 | **データ ソース** | **メモリ内** | **DirectQuery** |
 |  --- | --- | --- |
 | Azure SQL Data Warehouse |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー |
-| Azure SQL Database |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー | |
+| の接続文字列 |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー | |
 
 ### <a name="on-premises-via-gateway"></a>オンプレミス (ゲートウェイ経由)
 |**データ ソース** | **メモリ内** | **DirectQuery** |
@@ -99,7 +99,7 @@ Azure SQL Database などのクラウド データ ソースに接続するデ�
 
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 オンプレミスのデータ ソースがある場合は、[オンプレミスのゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。   
 SSDT または SSMS でのサーバーの管理について詳しくは、[サーバーの管理に関する記事](analysis-services-manage.md)をご覧ください。
 

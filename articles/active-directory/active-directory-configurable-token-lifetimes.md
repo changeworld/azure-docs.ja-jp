@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 19cd4ae8dc0ca3efa4eca51e5a6ba102338b4ef9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (パブリック プレビュー)
 Azure Active Directory (Azure AD) によって発行されたトークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。
@@ -73,7 +73,7 @@ Azure AD は永続的と非永続的の 2 つの種類の SSO セッション �
 | プロパティ | ポリシーのプロパティ文字列 | 影響 | 既定値 | 最小値 | 最大値 |
 | --- | --- | --- | --- | --- | --- |
 | Access Token Lifetime |AccessTokenLifetime |アクセス トークン、ID トークン、SAML2 トークン |1 時間 |10 分 |1 日 |
-| Refresh Token Max Inactive Time |MaxInactiveTime |更新トークン |14 日 |10 分 |90 日間 |
+| Refresh Token Max Inactive Time |MaxInactiveTime |更新トークン |90 日間 |10 分 |90 日間 |
 | Single-Factor Refresh Token Max Age |MaxAgeSingleFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 | Multi-Factor Refresh Token Max Age |MaxAgeMultiFactor |更新トークン (すべてのユーザー向け) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
 | Single-Factor Session Token Max Age |MaxAgeSessionSingleFactor<sup>2</sup> |セッション トークン (永続的および非永続的) |Until-revoked |10 分 |Until-revoked<sup>1</sup> |
@@ -363,7 +363,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -IsOrganizationDefault <boolean> -Type <Policy Type>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Definition</code> |ポリシーのすべてのルールが含まれる文字列化された JSON の配列。 | `-Definition @('{"TokenLifetimePolicy":{"Version":1,"MaxInactiveTime":"20:00:00"}}')` |
 | <code>&#8209;DisplayName</code> |ポリシー名の文字列。 |`-DisplayName "MyTokenPolicy"` |
@@ -380,7 +380,7 @@ New-AzureADPolicy -Definition <Array of Rules> -DisplayName <Name of Policy> -Is
 Get-AzureADPolicy
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> [省略可能] |目的のポリシーの **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 
@@ -393,7 +393,7 @@ Get-AzureADPolicy
 Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |目的のポリシーの **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 
@@ -406,7 +406,7 @@ Get-AzureADPolicyAppliedObject -Id <ObjectId of Policy>
 Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |目的のポリシーの **ObjectId (Id)**。 |`-Id <ObjectId of Policy>` |
 | <code>&#8209;DisplayName</code> |ポリシー名の文字列。 |`-DisplayName "MyTokenPolicy"` |
@@ -424,7 +424,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
  Remove-AzureADPolicy -Id <ObjectId of Policy>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |目的のポリシーの **ObjectId (Id)**。 | `-Id <ObjectId of Policy>` |
 
@@ -440,7 +440,7 @@ Set-AzureADPolicy -Id <ObjectId of Policy> -DisplayName <string>
 Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectId of Policy>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |ポリシーの **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -454,7 +454,7 @@ Add-AzureADApplicationPolicy -Id <ObjectId of Application> -RefObjectId <ObjectI
 Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 
@@ -467,7 +467,7 @@ Get-AzureADApplicationPolicy -Id <ObjectId of Application>
 Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectId of Policy>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |
@@ -484,7 +484,7 @@ Remove-AzureADApplicationPolicy -Id <ObjectId of Application> -PolicyId <ObjectI
 Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectId <ObjectId of Policy>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;RefObjectId</code> |ポリシーの **ObjectId**。 | `-RefObjectId <ObjectId of Policy>` |
@@ -498,7 +498,7 @@ Add-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal> -RefObjectI
 Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 
@@ -511,7 +511,7 @@ Get-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>
 Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -PolicyId <ObjectId of Policy>
 ```
 
-| parameters | 説明 | 例 |
+| parameters | [説明] | 例 |
 | --- | --- | --- |
 | <code>&#8209;Id</code> |アプリケーションの **ObjectId (Id)**。 | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |ポリシーの **ObjectId**。 | `-PolicyId <ObjectId of Policy>` |

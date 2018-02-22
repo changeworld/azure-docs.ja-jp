@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 0a70ce4a106b8d9103080f050ab2317cd69348c1
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 038cfb72cfc98fdddaca6751b321c11066527e56
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>Azure ポータルでモデルを作成する
 
@@ -68,7 +68,7 @@ Azure ポータルの Azure Analysis Services Web デザイナー (プレビュ�
 > ブラウザーでモデルのメタデータを編集するか新しいメジャーを作成するとに、これらの変更が Azure 内のモデルに保存されます。 SSDT、Power BI Desktop、または Excel でもモデルを操作している場合、モデルが同期から外れる可能性があります。
 
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
 [Excel を使用した接続](analysis-services-connect-excel.md)  
 

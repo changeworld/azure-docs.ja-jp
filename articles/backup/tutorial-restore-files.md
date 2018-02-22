@@ -1,26 +1,26 @@
 ---
 title: "Azure Backup での VM へのファイルの復元 | Microsoft Docs"
 description: "Azure VM でバックアップおよび Recovery Services を使用して、ファイル レベルの復元を実行する方法について説明します。"
-services: backup, virtual-machines
+services: backup
 documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
-ms.service: backup, virtual-machines
+ms.service: backup
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/29/2017
+ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e1bbae56b70c50fcf691db47efd9dc587686e7da
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 77084c5663f9e12347c243c4e78160657d7443b2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure の仮想マシンにファイルを復元する
 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体または個々のファイルを復元することができます。 この記事では、個々のファイルを復元する方法について詳しく説明します。 このチュートリアルで学習する内容は次のとおりです。
@@ -198,7 +198,7 @@ VM に回復スクリプトをコピーしたら、復旧ポイントを接続�
         --rp-name myRecoveryPointName
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、復旧ポイントを VM に接続し、Web サーバーのファイルを復元しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]

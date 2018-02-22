@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: eaceab7d0dba7719452000cc4e1bd19baa28af9e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ccbe48e4c7fdb25e003aedc048194e041865710e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="article-index-for-application-management-in-azure-active-directory"></a>Azure Active Directory のアプリケーション構成の管理に関する記事の索引
 このページでは、Azure Active Directory (Azure AD) のさまざまなアプリケーション関連機能について書かれたすべてのドキュメントの包括的な一覧を示します。
@@ -53,7 +53,7 @@ ms.lasthandoff: 02/01/2018
 | 記事の紹介 |  |
 |:---:| --- |
 | フェデレーションとその他の種類のサインオンの概要 |[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md) |
-| 簡略化されたシングル サインオンの構成手順によって Azure AD と事前統合された多数の SaaS アプリ |[Azure AD アプリケーション ギャラリーの概要](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[フェデレーションをサポートしている事前統合アプリの完全な一覧](http://aka.ms/aadfederatedapps)<br /><br />[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md) |
+| 簡略化されたシングル サインオンの構成手順によって Azure AD と事前統合された多数の SaaS アプリ |[Azure AD アプリケーション ギャラリーの概要](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)<br /><br />[フェデレーションをサポートしている事前統合アプリの完全な一覧](active-directory-saas-tutorial-list.md)<br /><br />[Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示](active-directory-app-gallery-listing.md) |
 | [Salesforce](active-directory-saas-salesforce-tutorial.md)、[ServiceNow](active-directory-saas-servicenow-tutorial.md)、[Google Apps](active-directory-saas-google-apps-tutorial.md)、[Workday](active-directory-saas-workday-tutorial.md) などのアプリ用にシングル サインオンを構成する方法に関する 150 以上のアプリ チュートリアル |[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md) |
 | シングル サインオンの構成を手動で設定してカスタマイズする方法 |[Azure Active Directory アプリケーション ギャラリーに含まれていないアプリへのフェデレーション シングル サインオンを構成する方法](application-config-sso-how-to-configure-federated-sso-non-gallery.md)<br /><br />[Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ](active-directory-saml-claims-customization.md) |
 | SAML プロトコルを使用するフェデレーション アプリのトラブルシューティング ガイド |[Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法](active-directory-saml-debugging.md) |

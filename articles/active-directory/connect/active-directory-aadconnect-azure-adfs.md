@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7e83eece09d9802792b87b89fd334ea67df14dc9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ba14244a3f5786ebcd667aa090d0245ce45f741d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Azure での Active Directory フェデレーション サービスのデプロイ
 AD FS は、単純かつ安全な ID フェデレーションと Web シングル サインオン (SSO) 機能を実現します。 Azure AD または O365 とのフェデレーションによって、ユーザーはオンプレミスの資格情報を認証に使用し、クラウド内のあらゆるリソースにアクセスすることができます。 そのため、オンプレミスとクラウドの両方のリソースに確実にアクセスできるよう、AD FS インフラストラクチャには、高い可用性を確保することが重要となります。 AD FS を Azure にデプロイすると、必要な高可用性を最小限の手間で確保できます。
@@ -354,7 +354,7 @@ AD FS のテストは、IdpInitiatedSignon.aspx ページを使用して行う�
 * [インターネットに接続するロード バランサー](https://aka.ms/Azure/ILB/Internet)
 * [ストレージ アカウント](https://aka.ms/Azure/Storage)
 * [Azure 仮想ネットワーク](https://aka.ms/Azure/VNet)
-* [AD FS と Web アプリケーション プロキシについてのリンク](http://aka.ms/ADFSLinks) 
+* [AD FS と Web アプリケーション プロキシについてのリンク](https://aka.ms/ADFSLinks) 
 
 ## <a name="next-steps"></a>次の手順
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)

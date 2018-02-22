@@ -1,26 +1,26 @@
 ---
 title: "Azure クイック スタート - Azure CLI で VM をバックアップする | Microsoft Docs"
 description: "Azure CLI を使用して仮想マシンをバックアップする方法"
-services: backup, virtual-machines-linux
+services: backup
 documentationcenter: virtual-machines
 author: markgalioto
 manager: carmonm
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
-ms.service: backup, virtual-machines-linux
+ms.service: backup
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.tgt_pltfrm: vm-linux
 ms.workload: storage-backup-recovery
-ms.date: 1/12/2018
+ms.date: 2/14/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 675ebb56496846c5d00ecb5af0e4a69c092b74c6
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 3696f57c0520cd8cb3d9fbf22a708c2323d666fc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-the-cli"></a>CLI を使用した Azure での仮想マシンのバックアップ
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 データは、定期的にバックアップすることで保護することができます。 Azure Backup によって、geo 冗長 Recovery コンテナーに保存できる復元ポイントが作成されます。 この記事では、Azure CLI を使用して Azure で仮想マシン (VM) をバックアップする方法を説明します。 これらの手順は、[Azure PowerShell](quick-backup-vm-powershell.md) または [Azure Portal](quick-backup-vm-portal.md) を介して実行することもできます。

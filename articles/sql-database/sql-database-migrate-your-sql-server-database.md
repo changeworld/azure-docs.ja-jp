@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 01/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 0b45661bbfc3d86542bd7424329e504d1d9c91e4
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: acba1aff0af8d54fca44af62ab46e1fd1a9d607e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>SQL Server データベースを Azure SQL Database に移行する
 
@@ -52,7 +52,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 空の SQL Database を作成するには、次の手順に従います。 
 
-1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
 2. **[新規]** ページから **[データベース]** を選択し、**[新規]** ページの **[SQL Database]** で **[作成]** を選択します。
 
@@ -60,7 +60,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -69,7 +69,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-   | 設定       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -153,7 +153,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 2. 左側のメニューで **[+ New]** (新規) をクリックし、**[Assessment]** (評価) を選択して、評価プロジェクトを作成します。 要求された値を入力し、**[作成]** をクリックします。
 
-   | 設定      | 推奨値 | [説明] | 
+   | Setting      | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | プロジェクトの種類 | 移行 | 移行するデータベースを評価するか、または、同じワークフローの一部として移行を評価するかを選択します。 |
    |プロジェクト名|移行のチュートリアル| わかりやすい名前 |
@@ -165,7 +165,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 3.  **[ソースの選択]** ページで、要求された値を入力して、**[接続]** をクリックします。
 
-    | 設定      | 推奨値 | [説明] | 
+    | Setting      | 推奨値 | [説明] | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | サーバー名 | サーバー名または IP アドレス | サーバー名または IP アドレス |
     | 認証の種類 | 推奨される認証の種類| オプション: Windows 認証、SQL Server 認証、Active Directory 統合認証、Active Directory パスワード認証 |
@@ -179,7 +179,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 6. **[ターゲットの選択]** ページで、要求された値を入力して、**[接続]** をクリックします。
 
-    | 設定      | 推奨値 | [説明] | 
+    | Setting      | 推奨値 | [説明] | 
     | ------------ | ------------------ | ------------------------------------------------- | 
     | サーバー名 | 完全修飾 Azure データベース サーバー名を取得します。 | 前の手順の完全修飾 Azure データベース サーバー名 |
     | 認証の種類 | パブリック | このチュートリアルでは SQL Server 認証が唯一のオプションですが、Azure SQL Database では Active Directory 統合認証および Active Directory パスワード認証もサポートされています。 |
@@ -228,7 +228,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | 設定       | 推奨値 | [説明] | 
+   | Setting       | 推奨値 | [説明] | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver20170824.database.windows.net** のような形式で指定する必要があります。 |

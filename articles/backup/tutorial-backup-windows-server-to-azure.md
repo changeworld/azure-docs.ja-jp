@@ -1,26 +1,26 @@
 ---
 title: "Windows Server を Azure にバックアップする | Microsoft Docs"
 description: "このチュートリアルでは、オンプレミスの Windows Server を Recovery Services コンテナーにバックアップする方法について説明します。"
-services: back up
+services: backup
 documentationcenter: 
 author: saurabhsensharma
 manager: shivamg
 editor: 
 keywords: "windows server バックアップ; windows server をバックアップする; バックアップとディザスター リカバリー"
 ms.assetid: 
-ms.service: back up
-ms.workload: storage-back up-recovery
+ms.service: backup
+ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/23/2017
+ms.date: 2/14/2018
 ms.author: saurabhsensharma;markgal;
 ms.custom: mvc
-ms.openlocfilehash: 0dbf3850c7fcccb1a02e70a19b498522a4ce0e79
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: de0398b7f295894a3cac7c67b68cef237c3ac2c2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server を Azure にバックアップする
 
@@ -34,7 +34,7 @@ Azure Backup を利用し、破損、攻撃、災害から Windows Server を守
 > * 臨時バックアップを実行する
 
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure Portal (http://portal.azure.com) にログインします。
 
@@ -142,7 +142,7 @@ Microsoft Azure Recovery Services エージェントを利用し、Azure への�
 4.  初回バックアップが完了すると、**[ジョブは完了しました]** 状態が MARS エージェント コンソールの **[ジョブ]** ウィンドウに表示されます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、Azure Portal で次の作業を行いました。 
  

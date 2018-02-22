@@ -4,7 +4,7 @@ description: "Azure Virtual Machines で実行されている SQL Server デー�
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 11/15/2016
 ms.author: mikeray
-ms.openlocfilehash: 65557938673c5442758396a47873be1016e0f71b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 16fef048e7c795f3d21fbc4185f6ba31bbc885fb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="backup-and-restore-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines おける SQL Server のバックアップと復元
 ## <a name="overview"></a>概要
@@ -72,7 +72,7 @@ SQL Server 2012 での SQL Server のバックアップと復元の詳細につ�
 
 SQL Server 2012 SP1 Cumulative Update 2 以降では、Azure BLOB ストレージ サービスとの間でバックアップと復元を実行できます。 この拡張機能を使用して、Azure 仮想マシンで実行されている SQL Server 上またはオンプレミスのインスタンス上の SQL Server データベースをバックアップできます。 詳細については、「 [Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)」をご覧ください。
 
-Azure BLOB ストレージ サービスを使用する利点として、接続されるディスク数の上限 (16 個) を回避できること、管理しやすいこと、移行または障害復旧のために、Azure 仮想マシンで実行されている SQL Server インスタンスの別のインスタンスまたはオンプレミスのインスタンスでバックアップ ファイルを直接利用できることなどがあります。 SQL Server バックアップに Azure BLOB ストレージ サービスを使用する利点の詳細については、「 *Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元* 」の [利点](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)に関するセクションをご覧ください。
+Azure BLOB ストレージ サービスを使用する利点として、接続されるディスク数の上限 (16 個) を回避できること、管理しやすいこと、移行またはディザスター リカバリーのために、Azure 仮想マシンで実行されている SQL Server インスタンスの別のインスタンスまたはオンプレミスのインスタンスでバックアップ ファイルを直接利用できることなどがあります。 SQL Server バックアップに Azure BLOB ストレージ サービスを使用する利点の詳細については、「 *Azure BLOB ストレージ サービスを使用した SQL Server のバックアップと復元* 」の [利点](https://msdn.microsoft.com/library/jj919148%28v=sql.110%29.aspx)に関するセクションをご覧ください。
 
 ベスト プラクティスの推奨事項とトラブルシューティング情報については、「 [バックアップと復元に関するベスト プラクティス (Azure BLOB ストレージ サービス)](https://msdn.microsoft.com/library/jj919149%28v=sql.110%29.aspx)」をご覧ください。
 
@@ -81,7 +81,7 @@ SQL Server 2008 R2 での SQL Server のバックアップと復元について�
 
 SQL Server 2008 での SQL Server のバックアップと復元については、「 [SQL Server でのデータベースのバックアップおよび復元](https://msdn.microsoft.com/library/ms187048%28v=sql.100%29.aspx)」(SQL Server 2008) をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure VM に SQL Server をデプロイすることを計画している場合、プロビジョニングのガイダンスについては、[Azure Resource Manager を使用した Azure での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)に関するチュートリアルをご覧ください。
 
 バックアップと復元を使用してデータを移行できますが、Azure VM の SQL Server へのより簡単なデータ移行パスが存在する可能性があります。 移行オプションと推奨事項の詳細については、「[Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)」をご覧ください。

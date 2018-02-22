@@ -14,13 +14,13 @@ ms.workload: Active
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/12/2018
+ms.date: 02/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 7a57593825f816a03b59f6c5228243670f1e9e9e
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 425e2186d4eba5db358ebb3a014c3563c4443eb5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
@@ -38,7 +38,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 以下の手順に従い、Adventure Works LT サンプル データを含む SQL データベースを作成します。
 
-1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
 2. **[新規]** ページから **[データベース]** を選択し、**[新規]** ページの **[SQL Database]** で **[作成]** を選択します。
 

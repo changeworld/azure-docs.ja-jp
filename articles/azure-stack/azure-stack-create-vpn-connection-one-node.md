@@ -1,10 +1,10 @@
 ---
-title: "異なる Azure Stack 開発キット環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する | Microsoft Docs"
-description: "2 つのシングル ノード Azure Stack 開発キット環境の間にクラウド管理者がサイト間 VPN 接続を作成するための詳細な手順。"
+title: "異なる Azure Stack Development Kit 環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する | Microsoft Docs"
+description: "2 つのシングル ノード Azure Stack Development Kit 環境の間にクラウド管理者がサイト間 VPN 接続を作成するための詳細な手順。"
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: darmour
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
 ms.service: azure-stack
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
-ms.author: scottnap
-ms.openlocfilehash: fa2a940620e06521fa110fa13dcbc3050635a502
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: scottnap
+ms.openlocfilehash: 886d56169c5500c9175b7ddc43edfc29c5142fbb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>異なる Azure Stack 開発キット環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する
+# <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>異なる Azure Stack Development Kit 環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する
 ## <a name="overview"></a>概要
-この記事では、2 つの独立した Azure Stack 開発キット環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する方法を説明します。 接続を構成しながら Azure Stack での VPN ゲートウェイのしくみを学習します。
+この記事では、2 つの独立した Azure Stack Development Kit 環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する方法を説明します。 接続を構成しながら Azure Stack での VPN ゲートウェイのしくみを学習します。
 
 ### <a name="connection-diagram"></a>接続図
 次の図は、作業完了後の接続構成を表しています。
@@ -32,20 +33,20 @@ ms.lasthandoff: 10/11/2017
 ### <a name="before-you-begin"></a>開始する前に
 接続構成を行うには、作業開始前に次のものを用意する必要があります。
 
-* Azure Stack 開発キット ハードウェア要件を満たす 2 つのサーバー。この要件は「[Azure Stack deployment prerequisites](azure-stack-deploy.md)」(Azure Stack デプロイ前提条件) に定義されています。 [この記事](azure-stack-deploy.md)にあるその他の前提条件も満たしてください。
-* [Azure Stack 開発キット](https://azure.microsoft.com/en-us/overview/azure-stack/try/) デプロイ パッケージ。
+* Azure Stack Development Kit ハードウェア要件を満たす 2 つのサーバー。この要件は「[Azure Stack deployment prerequisites](azure-stack-deploy.md)」(Azure Stack デプロイ前提条件) に定義されています。 [この記事](azure-stack-deploy.md)にあるその他の前提条件も満たしてください。
+* [Azure Stack Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/) デプロイ パッケージ。
 
-## <a name="deploy-the-azure-stack-development-kit-environments"></a>Azure Stack 開発キット環境のデプロイ
-接続構成を行うには、2 つの Azure Stack 開発キット環境をデプロイする必要があります。
+## <a name="deploy-the-azure-stack-development-kit-environments"></a>Azure Stack Development Kit 環境のデプロイ
+接続構成を行うには、2 つの Azure Stack Development Kit 環境をデプロイする必要があります。
 > [!NOTE] 
-> デプロイする Azure Stack 開発キットごとに、[デプロイ指示](azure-stack-run-powershell-script.md)に従ってください。 この記事では、Azure Stack 開発キット環境の名称が *POC1* と *POC2* になっています。
+> デプロイする Azure Stack Development Kit ごとに、[デプロイ指示](azure-stack-run-powershell-script.md)に従ってください。 この記事では、Azure Stack Development Kit 環境の名称が *POC1* と *POC2* になっています。
 
 
 ## <a name="prepare-an-offer-on-poc1-and-poc2"></a>POC1 と POC2 でプランを用意する
 POC1 と POC2 の両方で、ユーザーがプランに加入し、仮想マシンをデプロイできるようにプランを用意します。 プランの作成方法については、「[Make virtual machines available to your Azure Stack users](azure-stack-tutorial-tenant-vm.md)」 (Azure Stack ユーザーが仮想マシンを使えるようにする) を参照してください。
 
 ## <a name="review-and-complete-the-network-configuration-table"></a>ネットワーク構成表を確認し、完成する
-次の表は、両方の Azure Stack 開発キット環境のネットワーク構成についてまとめたものです。 表の後に出てくる手順で、自分のネットワークに固有の外部 BGPNAT アドレスを追加します。
+次の表は、両方の Azure Stack Development Kit 環境のネットワーク構成についてまとめたものです。 表の後に出てくる手順で、自分のネットワークに固有の外部 BGPNAT アドレスを追加します。
 
 **ネットワーク構成表**
 |   |POC1|POC2|
@@ -58,7 +59,7 @@ POC1 と POC2 の両方で、ユーザーがプランに加入し、仮想マシ
 |外部 BGPNAT アドレス     |         |         |
 
 > [!NOTE]
-> 環境例の外部 BGPNAT IP アドレスは POC1 が 10.16.167.195 で、POC2 が 10.16.169.131 です。 次の手順で Azure Stack 開発キット ホストの外部 BGPNAT IP アドレスを決定し、それを先のネットワーク構成表に追加します。
+> 環境例の外部 BGPNAT IP アドレスは POC1 が 10.16.167.195 で、POC2 が 10.16.169.131 です。 次の手順で Azure Stack Development Kit ホストの外部 BGPNAT IP アドレスを決定し、それを先のネットワーク構成表に追加します。
 
 
 ### <a name="get-the-ip-address-of-the-external-adapter-of-the-nat-vm"></a>NAT VM の外部アダプターの IP アドレスを取得する
@@ -132,7 +133,7 @@ POC1 と POC2 の両方で、ユーザーがプランに加入し、仮想マシ
 
 Azure デプロイでは、ローカル ネットワーク ゲートウェイは、Azure の仮想ネットワーク ゲートウェイへの接続に使用するオンプレミスの (テナントの) 物理デバイスを表します。 この Azure Stack 評価デプロイでは、接続の両端が仮想ネットワーク ゲートウェイになります。
 
-これをより一般化すると、ローカル ネットワーク ゲートウェイ リソースは、常に接続の反対側の端にあるリモート ゲートウェイを示します。 Azure Stack 開発キットの設計上、ローカル ネットワーク ゲートウェイのパブリック IP アドレスとして、他の Azure Stack 開発キットのネットワーク アドレス変換 (NAT) VM で外部ネットワーク アダプターの IP アドレスを指定する必要があります。 その後、NAT VM で NAT マッピングを作成し、両端が正しく接続されるようにします。
+これをより一般化すると、ローカル ネットワーク ゲートウェイ リソースは、常に接続の反対側の端にあるリモート ゲートウェイを示します。 Azure Stack Development Kit の設計上、ローカル ネットワーク ゲートウェイのパブリック IP アドレスとして、他の Azure Stack Development Kit のネットワーク アドレス変換 (NAT) VM で外部ネットワーク アダプターの IP アドレスを指定する必要があります。 その後、NAT VM で NAT マッピングを作成し、両端が正しく接続されるようにします。
 
 
 ### <a name="create-the-local-network-gateway-resource"></a>ローカル ネットワーク ゲートウェイ リソースを作成する
@@ -157,8 +158,8 @@ Azure デプロイでは、ローカル ネットワーク ゲートウェイは
 9. **[共有キー (PSK)]** に「**12345**」と入力し、**[OK]** を選択します。
 10. **[概要]** ブレードで、**[OK]** を選択します。
 
-### <a name="create-a-vm"></a>VM を作成します
-VPN 接続で送信されるデータを検証するには、各 Azure Stack 開発キットでデータを送受信する仮想マシンが必要です。 今から POC1 に仮想マシンを作成し、次に仮想ネットワークで作成し、VM サブネットにそれを配置します。
+### <a name="create-a-vm"></a>VM の作成
+VPN 接続で送信されるデータを検証するには、各 Azure Stack Development Kit でデータを送受信する仮想マシンが必要です。 今から POC1 に仮想マシンを作成し、次に仮想ネットワークで作成し、VM サブネットにそれを配置します。
 
 1. Azure Portal で **[新規]** を選択します。
 2. **[Marketplace]** に移動し、**[計算]** を選択します。
@@ -248,26 +249,26 @@ VPN 接続で送信されるデータを検証するには、各 Azure Stack 開
 8. **[設定]** ブレードは既定値のままでかまいません。 **VNET-02** 仮想ネットワークが選択されていること、サブネットが **10.0.20.0/24** に設定されていることを確認します。 **[OK]**を選択します。
 9. **[サマリー]** ブレードで設定を確認し、**[OK]** を選択します。
 
-## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>ゲートウェイ通過のために各 Azure Stack 開発キットで NAT 仮想マシンを構成する
-Azure Stack 開発キットは自己完結型であり、物理ホストがデプロイされるネットワークから分離されているため、ゲートウェイの接続先の*外部* VIP ネットワークは実際は外部にはありません。 VIP ネットワークは、ネットワーク アドレス変換を実行しているルーターの背後に隠れています。 
+## <a name="configure-the-nat-virtual-machine-on-each-azure-stack-development-kit-for-gateway-traversal"></a>ゲートウェイ通過のために各 Azure Stack Development Kit で NAT 仮想マシンを構成する
+Azure Stack Development Kit は自己完結型であり、物理ホストがデプロイされるネットワークから分離されているため、ゲートウェイの接続先の*外部* VIP ネットワークは実際は外部にはありません。 VIP ネットワークは、ネットワーク アドレス変換を実行しているルーターの背後に隠れています。 
 
-このルーターは *AzS-bgpnat01* という名前の Windows Server 仮想マシンです。この仮想マシンは、Azure Stack 開発キット インフラストラクチャでルーティングとリモート アクセス サービス (RRAS) ロールを実行します。 AzS-bgpnat01 仮想マシンでは、両端を結ぶサイト間 VPN 接続を許可するよう NAT を構成する必要があります。 
+このルーターは *AzS-bgpnat01* という名前の Windows Server 仮想マシンです。この仮想マシンは、Azure Stack Development Kit インフラストラクチャでルーティングとリモート アクセス サービス (RRAS) ロールを実行します。 AzS-bgpnat01 仮想マシンでは、両端を結ぶサイト間 VPN 接続を許可するよう NAT を構成する必要があります。 
 
 VPN 接続を構成するには、静的 NAT マップ ルートを作成する必要があります。このルートにより、BGPNAT VM の外部インターフェイスがエッジ ゲートウェイ プールの VIP にマップされます。 静的 NAT マップ ルートは、VPN 接続の各ポートに必須です。
 
 > [!NOTE]
-> この構成は、Azure Stack 開発キット環境のみで必要です。
+> この構成は、Azure Stack Development Kit 環境のみで必要です。
 > 
 > 
 
 ### <a name="configure-the-nat"></a>NAT を構成する
 > [!IMPORTANT]
-> この手順は、*両方*の Azure Stack 開発キット環境で実行する必要があります。
+> この手順は、*両方*の Azure Stack Development Kit 環境で実行する必要があります。
 
 1. 次の PowerShell スクリプトで使用する**内部 IP アドレス**を決定します。 仮想ネットワーク ゲートウェイ (GW1 と GW2) を開き、**[概要]** ブレードで後で使用するために **[パブリック IP アドレス]** の値を保存します。
 ![内部 IP アドレス](media/azure-stack-create-vpn-connection-one-node-tp2/InternalIP.PNG)
 2. POC1 の Azure Stack 物理マシンにサインインします。
-3. 次の PowerShell スクリプトをコピーし、編集します。 各 Azure Stack 開発キットで NAT を構成するには、管理者特権の Windows PowerShell ISE でこのスクリプトを実行します。 このスクリプトで、*[External BGPNAT address]\(外部 BGPNAT アドレス\)* プレースホルダーと *[内部 IP アドレス]* プレースホルダーに値を追加します。
+3. 次の PowerShell スクリプトをコピーし、編集します。 各 Azure Stack Development Kit で NAT を構成するには、管理者特権の Windows PowerShell ISE でこのスクリプトを実行します。 このスクリプトで、*[External BGPNAT address]\(外部 BGPNAT アドレス\)* プレースホルダーと *[内部 IP アドレス]* プレースホルダーに値を追加します。
 
    ```powershell
    # Designate the external NAT address for the ports that use the IKE authentication.
@@ -312,7 +313,7 @@ VPN 接続を構成するには、静的 NAT マップ ルートを作成する�
 4. POC2 でこの手順を繰り返します。
 
 ## <a name="test-the-connection"></a>接続をテストする
-サイト間接続が確立されたので、トラフィックがこの接続を経由できることをことを検証する必要があります。 検証するには、いずれかの Azure Stack 開発キット環境で作成した仮想マシンの 1 つにサインインします。 次に、もう 1 つの環境で作成した仮想マシンに ping を実行します。 
+サイト間接続が確立されたので、トラフィックがこの接続を経由できることをことを検証する必要があります。 検証するには、いずれかの Azure Stack Development Kit 環境で作成した仮想マシンの 1 つにサインインします。 次に、もう 1 つの環境で作成した仮想マシンに ping を実行します。 
 
 トラフィックがサイト間接続を通過するように、VIP ではなく、リモート サブネットの仮想マシンのダイレクト IP (DIP) に ping を実行します。 これを実行するには、接続の反対側の DIP アドレスを探します。 後で使用するためにアドレスを保存します。
 

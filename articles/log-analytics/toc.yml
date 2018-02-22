@@ -39,6 +39,8 @@
       href: log-analytics-faq.md
     - name: データの使用
       href: log-analytics-usage.md
+    - name: データのセキュリティ
+      href: log-analytics-data-security.md
     - name: アクセスを管理する
       href: log-analytics-manage-access.md
     - name: ハイブリッド環境の監視

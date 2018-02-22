@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.openlocfilehash: 683badcfb67dd9e98058d560a6b13d1a3474d3e9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 19c8d9084c9ce03d347e58b3359b65cdbcd80651
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>多層を利用した Azure AD パスワード セキュリティ
 
 この記事では、Azure Active Directory (Azure AD) または Microsoft アカウントを保護するために皆さんがユーザーとして、または管理者として実践できるベスト プラクティスについて説明します。
 
  > [!NOTE]
- > **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
+ > **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)。
  >
  > Azure AD 管理者は「[Azure Active Directory でのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)」という記事にある手引きでユーザー パスワードをリセットできます。
  >
@@ -46,7 +46,7 @@ Azure Active Directory のパスワード リセットに関する詳細につ�
 * パスワードの動的禁止
 * Smart Password Lockout
 
-最新の研究に基づくパスワード管理については、ホワイトペーパー「[Password Guidance](http://aka.ms/passwordguidance)」 (パスワード ガイダンス) を参照してください。
+最新の研究に基づくパスワード管理については、ホワイトペーパー「[Password Guidance](https://aka.ms/passwordguidance)」 (パスワード ガイダンス) を参照してください。
 
 ### <a name="dynamically-banned-passwords"></a>パスワードの動的禁止
 
@@ -80,7 +80,7 @@ Azure Active Directory のパスワード リセットに関する詳細につ�
   >Azure AD の管理者の方は、従来のパスワードをユーザーが一切作成できないように、[Windows Hello](https://www.microsoft.com/windows/windows-hello) を導入することもご検討ください。
   >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)
 * [Azure ID 管理の基礎](fundamentals-identity.md)
