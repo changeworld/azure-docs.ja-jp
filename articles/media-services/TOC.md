@@ -36,8 +36,11 @@
 #### [複数のストレージ アカウントで資産を管理する](meda-services-managing-multiple-storage-accounts.md)
 ### [クォータと制限](media-services-quotas-and-limitations.md)
 ## [Postman の構成](media-rest-apis-with-postman.md)
-### [Environment](postman-environment.md)
-### [コレクション](postman-collection.md)
+### オンデマンド ストリーミング
+#### [Environment](postman-environment.md)
+#### [コレクション](postman-collection.md)
+### ライブ ストリーミング
+#### [コレクション](postman-live-streaming-collection.md)
 ## コンテンツをアップロードする
 ### ファイルをアカウントにアップロードする
 #### [Azure Portal](media-services-portal-upload-files.md)

@@ -1,6 +1,6 @@
 ---
-title: "FedRAMP Azure Blueprint Automation - 概要"
-description: "FedRAMP の概要"
+title: "Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化 - 概要"
+description: "FedRAMP Web アプリケーションの自動化 - 概要"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 505a2fdc90abfcdd269b5e30537ea338b8c3774b
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 968f9013dcf438ccb3a97f0bbc291b1c58a392ea
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="fedramp-overview"></a>FedRAMP の概要
 
 [Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov) は、米国政府全体で実行されるプログラムであり、クラウド製品とサービスに対するセキュリティの評価、承認、および継続的な監視に対する標準化された手法を提供します。 FedRAMP は、[米国国立標準技術研究所 (NIST) Special Publication SP 800-53](https://csrc.nist.gov/publications/detail/sp/800-53/rev-4/final) セキュリティ コントロールに由来する一連の標準化要件に基づいてセキュリティ評価プロセスを定義しています。
 
-次のコントロール ファミリで Blueprint Automation が制御要件とどのように連携しているかを参照してください。
+次のコントロール ファミリで Azure のセキュリティとコンプライアンスのブループリント自動化が制御要件とどのように連携しているかを参照してください。
 
 | | |
 |---|---|
-| [AC](fedramp-access-controls.md ) | アクセス制御 |
+| [AC](fedramp-access-controls.md ) | Access Control |
 | [AU](fedramp-audit-accountability-controls.md ) | 監査とアカウンタビリティ |
 | [AT](fedramp-awareness-training-controls.md ) | 認識とトレーニング |
 | [CM](fedramp-configuration-manager-controls.md ) | 構成管理 |

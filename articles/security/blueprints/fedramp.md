@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation - FedRAMP 向け Web アプリケーション"
-description: "Azure Blueprint Automation - FedRAMP 向け Web アプリケーション"
+title: "Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化"
+description: "Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: d0521d68bab8bd0b7db53a512da6d37033abd85e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9b605e500925e8435b15ec8055f8d8f376888aaf
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-blueprint-automation---web-applications-for-fedramp"></a>Azure Blueprint Automation - FedRAMP 向け Web アプリケーション
+# <a name="azure-security-and-compliance-blueprint---fedramp-web-applications-automation"></a>Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化
 
 ## <a name="overview"></a>概要
 
-[Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov) は、米国政府全体で実行されるプログラムであり、クラウド製品とサービスに対するセキュリティの評価、承認、および継続的な監視に対する標準化された手法を提供します。 この「Azure Blueprint Automation - FedRAMP 向け Web アプリケーション」では、インターネットに接続する単純な Web アプリケーションに適している FedRAMP 準拠 IaaS (サービスとしてのインフラストラクチャ) 環境をデプロイするためのガイダンスを提供します。 このソリューションは、一般的なリファレンス アーキテクチャでの Azure リソースのデプロイと構成を自動化して、お客様が特定のセキュリティ要件と準拠要件をどのように満たすことができるかを示し、お客様が Azure 上に独自のソリューションをビルドして構成するための基礎として機能します。 このソリューションは、NIST SP 800-53 に基づく FedRAMP High ベースラインのコントロールのサブセットを実装します。 FedRAMP High 要件とこのソリューションの詳細については、[FedRAMP High 要件 - 概略](fedramp-controls-overview.md)に関する記事をご覧ください。 ***注: このソリューションのデプロイ先は Azure Government です。***
+[Federal Risk and Authorization Management Program (FedRAMP)](https://www.fedramp.gov) は、米国政府全体で実行されるプログラムであり、クラウド製品とサービスに対するセキュリティの評価、承認、および継続的な監視に対する標準化された手法を提供します。 この Azure のセキュリティとコンプライアンスのブループリント自動化では、インターネットに接続する単純な Web アプリケーションに適している FedRAMP 準拠 IaaS (サービスとしてのインフラストラクチャ) 環境をデプロイするためのガイダンスを提供します。 このソリューションは、一般的なリファレンス アーキテクチャでの Azure リソースのデプロイと構成を自動化して、お客様が特定のセキュリティ要件と準拠要件をどのように満たすことができるかを示し、お客様が Azure 上に独自のソリューションをビルドして構成するための基礎として機能します。 このソリューションは、NIST SP 800-53 に基づく FedRAMP High ベースラインのコントロールのサブセットを実装します。 FedRAMP High 要件とこのソリューションの詳細については、[FedRAMP High 要件 - 概略](fedramp-controls-overview.md)に関する記事をご覧ください。 ***注: このソリューションのデプロイ先は Azure Government です。***
 
 このアーキテクチャは、特定の要件に合わせて調整するための基礎として使用されることを目的としており、そのまま運用環境に適用しないでください。 変更せずにこの環境にアプリケーションをデプロイすることは、FedRAMP High ベースラインの要件を完全に満たすためには不十分です。 以下の点に注意してください。
 - このアーキテクチャは、お客様が FedRAMP に準拠した方法で Azure を使用するためのベースラインを提供します。
@@ -36,13 +36,13 @@ ms.lasthandoff: 11/16/2017
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 
-この Azure Blueprint Automation は、IaaS Web アプリケーション リファレンス アーキテクチャと事前構成済みのセキュリティ コントロールを自動的にデプロイして、お客様が FedRAMP 要件への準拠を実現することを支援します。 このソリューションは、リソースのデプロイと構成をガイドする Azure Resource Manager テンプレートと PowerShell スクリプトで構成されています。 Azure からのセキュリティ コントロールの継承と、NIST SP 800-53 セキュリティ コントロールと合致するリソースと構成のデプロイを示す Azure Blueprint [コンプライアンス ドキュメント](#compliance-documentation)が付属しています。組織は、そのドキュメントを使用して、コンプライアンスの義務に迅速に対応できます。
+この Azure のセキュリティとコンプライアンスのブループリント自動化は、IaaS Web アプリケーション リファレンス アーキテクチャと事前構成済みのセキュリティ コントロールを自動的にデプロイして、お客様が FedRAMP 要件への準拠を実現することを支援します。 このソリューションは、リソースのデプロイと構成をガイドする Azure Resource Manager テンプレートと PowerShell スクリプトで構成されています。 Azure からのセキュリティ コントロールの継承と、NIST SP 800-53 セキュリティ コントロールと合致するリソースと構成のデプロイを示す[コンプライアンス ドキュメント](#compliance-documentation)が付属しています。組織は、そのドキュメントを使用して、コンプライアンスの義務に迅速に対応できます。
 
 ## <a name="architecture-diagram"></a>アーキテクチャ ダイアグラム
 
 このソリューションは、データベース バックエンドがある IaaS Web アプリケーション向けのリファレンス アーキテクチャをデプロイします。 アーキテクチャには、Web 層、データ層、Active Directory インフラストラクチャ、アプリケーション ゲートウェイ、およびロード バランサーが含まれています。 Web 層とデータ層にデプロイされる仮想マシンは可用性セット内に構成され、SQL Server インスタンスは高可用性のために AlwaysOn 可用性グループ内に構成されます。 仮想マシンはドメインに参加し、Active Directory グループ ポリシーを使用して、オペレーティング システム レベルでセキュリティとコンプライアンスの構成が適用されます。 管理ジャンプボックス (要塞ホスト) は、デプロイされたリソースにアクセスするためのセキュリティで保護された接続を管理者に提供します。
 
-![代替テキスト](images/fedramp-architectural-diagram.png?raw=true "FedRAMP 準拠環境向けの IaaS web アプリケーションの Blueprint Automation")
+![alt text](images/fedramp-architectural-diagram.png?raw=true "Azure のセキュリティとコンプライアンスのブループリント - FedRAMP Web アプリケーションの自動化")
 
 このソリューションでは、次の Azure サービスを使用します。 デプロイ アーキテクチャについて詳しくは、「[デプロイ アーキテクチャ](#deployment-architecture)」セクションをご覧ください。
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 11/16/2017
 * **Operations Management Suite**
     - (1) OMS ワークスペース
 
-## <a name="deployment-architecture"></a>デプロイ アーキテクチャ
+## <a name="deployment-architecture"></a>デプロイメント アーキテクチャ
 
 以下のセクションでは、開発と実装の要素について詳しく説明します。
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 11/16/2017
 - [Web アプリケーション ファイアウォール](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) (WAF モード)
 - OWASP 3.0 ルールセットを使用した[防止モード](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-portal)
 
-#### <a name="virtual-network"></a>仮想ネットワーク
+#### <a name="virtual-network"></a>Virtual Network
 
 このアーキテクチャは、10.200.0.0/16 のアドレス空間 を使用してプライベート仮想ネットワークを定義します。
 
@@ -122,7 +122,7 @@ ms.lasthandoff: 11/16/2017
 
 このアーキテクチャは、さまざまな暗号化手段を使用して、保存データを保護します。
 
-#### <a name="azure-storage"></a>Azure Storage
+#### <a name="azure-storage"></a>Azure Storage (Azure Storage)
 
 保存データの暗号化要件を満たすために、すべてのストレージ アカウントは、[ストレージ サービスの暗号化](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)を使用します。
 
@@ -182,7 +182,7 @@ SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.co
 
 ### <a name="patch-management"></a>更新プログラムの管理
 
-この Blueprint Automation によってデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションによってデプロイされる OMS Azure Automation ソリューションにより、更新プログラムのデプロイを作成し、必要に応じて Windows サーバーに修正プログラムをデプロイできます。
+この Azure のセキュリティとコンプライアンスのブループリント自動化によってデプロイされる Windows 仮想マシンは、Windows Update サービスから自動的に更新プログラムを受け取るように、既定で構成されます。 また、このソリューションによってデプロイされる OMS Azure Automation ソリューションにより、更新プログラムのデプロイを作成し、必要に応じて Windows サーバーに修正プログラムをデプロイできます。
 
 ### <a name="operations-management"></a>運用管理
 
@@ -211,11 +211,11 @@ SQL Database は、[Transparent Data Encryption (TDE)](https://docs.microsoft.co
 
 ### <a name="control-implementation-matrix"></a>コントロールの実装マトリックス
 
-[コントロールの実装マトリックス](https://aka.ms/blueprintwacim) (Excel ブック) は、FedRAMP High ベースラインで要求されるすべてのセキュリティ コントロールを一覧表示します。 このマトリックスは、お客様の責任マトリックスでお客様の責任と指定されているコントロール (またはコントロールのサブパート) ごとに、1) Blueprint Automation がコントロールを実装するかどうか、2) 実装がコントロール要件とどのように合致しているかの説明を示します。 このコンテンツは、[こちら](fedramp-controls-overview.md)からもアクセスできます。
+[コントロールの実装マトリックス](https://aka.ms/blueprintwacim) (Excel ブック) は、FedRAMP High ベースラインで要求されるすべてのセキュリティ コントロールを一覧表示します。 このマトリックスは、お客様の責任マトリックスでお客様の責任と指定されているコントロール (またはコントロールのサブパート) ごとに、1) ブループリント自動化がコントロールを実装するかどうか、2) 実装がコントロール要件とどのように合致しているかの説明を示します。 このコンテンツは、[こちら](fedramp-controls-overview.md)からもアクセスできます。
 
-## <a name="deploy-the-solution"></a>ソリューションをデプロイする
+## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-この Azure Blueprint ソリューションは、Azure Resource Manager の API サービスが Azure 内にリソースをデプロイするために処理する JSON 構成ファイルと PowerShell スクリプトで構成されています。 詳しいデプロイ手順については、[こちら](https://aka.ms/fedrampblueprintrepo)をご覧ください。 ***注: このソリューションのデプロイ先は Azure Government です。***
+この Azure のセキュリティとコンプライアンスのブループリント自動化は、Azure Resource Manager の API サービスが Azure 内にリソースをデプロイするために処理する JSON 構成ファイルと PowerShell スクリプトで構成されています。 詳しいデプロイ手順については、[こちら](https://aka.ms/fedrampblueprintrepo)をご覧ください。 ***注: このソリューションのデプロイ先は Azure Government です。***
 
 #### <a name="quickstart"></a>クイック スタート
 1. [この](https://aka.ms/fedrampblueprintrepo) GitHub リポジトリをローカル ワークステーションに複製するかダウンロードします。

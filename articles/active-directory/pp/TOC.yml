@@ -23,6 +23,10 @@
       items:
         - name: Linux VM から
           href: msi-tutorial-linux-vm-access-arm.md
+    - name: VM MSI を使用した Azure Cosmos DB へのアクセス
+      items:
+        - name: Linux VM から
+          href: msi-tutorial-linux-vm-access-cosmosdb.md
     - name: VM MSI を使用した Azure ストレージへのアクセス
       items:
         - name: Linux VM から (アクセス キーを使用)

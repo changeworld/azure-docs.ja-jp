@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/28/2017
+ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: ddcbe895bdaa6eaa49e8ed129fe92b415f2600ef
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: cf7be370ab0d79be9068534f0c43b88f454bc024
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure Load Balancer Standard の概要 (プレビュー)
 
 Azure Load Balancer Standard SKU とパブリック IP Standard SKU を組み合わせて使用すると、拡張性と信頼性に優れたアーキテクチャを構築できます。 Load Balancer Standard を使用するアプリケーションでは、新しい機能を利用できます。 すべての TCP および UDP アプリケーションの数百万のフローに対応する、低転送待機時間、高スループット、およびスケールを利用できます。
 
 >[!NOTE]
-> Load Balancer Standard SKU は現在プレビュー段階です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 運用サービスには、一般公開されている [Load Balancer Basic SKU](load-balancer-overview.md) を使用してください。 この時点で、このプレビューに関連する機能である[可用性ゾーン](https://aka.ms/availabilityzones)と [HA ポート](https://aka.ms/haports)には別にサインアップする必要があります。 Load Balancer [Standard プレビュー](#preview-sign-up)のサインアップに加えて、これらの機能のサインアップについては、以下の各手順を参照してください。
+> Load Balancer Standard SKU は現在プレビュー段階です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 運用サービスには、一般公開されている [Load Balancer Basic SKU](load-balancer-overview.md) を使用してください。 このプレビューで[可用性ゾーン (プレビュー)](https://aka.ms/availabilityzones) を使用するには、Load Balancer [標準プレビュー](#preview-sign-up)へのサインアップに加え、[別のサインアップ](https://aka.ms/availabilityzones)が必要になります。
 
 ## <a name="why-use-load-balancer-standard"></a>Load Balancer Standard を使用する理由
 
@@ -325,13 +325,11 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-現在、Load Balancer Standard は次のリージョンで利用できます。
-- 米国東部 2
-- 米国中央部
-- 北ヨーロッパ
-- 米国中西部
-- 西ヨーロッパ
-- 東南アジア
+現在、Load Balancer Standard はすべてのパブリック クラウド リージョンで利用できます。
+
+>[!IMPORTANT]
+> 初期起動リージョン (米国東部 2、米国中部、北ヨーロッパ、米国中西部、西ヨーロッパ、東南アジア) の外部のリージョンに短期間アクセスするには、追加のサブスクリプション機能 (AllowLBPreviewWave2 と AllowLBPreviewWave3) の登録が必要です。  [こちらに記した手順に従ってください](#additionalpreviewregions)。 以前に AllowLBPreview にサインアップしたことがある場合でも、これらの手順をすべて実行してください。
+> この要件は今後数週間で削除される予定です。
 
 ## <a name="sku-service-limits-and-abilities"></a>SKU のサービスの制限と機能
 
@@ -369,7 +367,12 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 Load Balancer Standard SKU とそのコンパニオンのパブリック IP Standard SKU のプレビューに参加するには、サブスクリプションを登録します。  サブスクリプションを登録すると、PowerShell または Azure CLI 2.0 からのアクセス権を取得できます。 登録するには、次の手順に従います。
 
 >[!NOTE]
->Load Balancer Standard の機能の登録には、グローバルに有効になるまで 1 時間ほどかかる場合があります。 [可用性ゾーン](https://aka.ms/availabilityzones)と [HA ポート](https://aka.ms/haports)に Load Balancer Standard を使用する場合、これらのプレビューには別にサインアップする必要があります。 これらの機能のサインアップについては、それぞれの手順に従ってください。
+>Load Balancer Standard の機能の登録には、グローバルに有効になるまで 1 時間ほどかかる場合があります。 Load Balancer Standard を[可用性ゾーン](https://aka.ms/availabilityzones)で使用する場合は、AZ プレビュー用に[別のサインアップ](https://aka.ms/availabilityzones)が必要です。
+
+<a name="additionalpreviewregions"></a>
+>[!IMPORTANT]
+> 初期起動リージョン (米国東部 2、米国中部、北ヨーロッパ、米国中西部、西ヨーロッパ、東南アジア) の外部のリージョンに短期間アクセスするには、追加のサブスクリプション機能 (AllowLBPreviewWave2 と AllowLBPreviewWave3) の登録が必要です。  以下の手順は、追加のサブスクリプション機能を有効にするために変更されています。 以前に AllowLBPreview にサインアップしたことがある場合でも、これらの手順をすべて実行してください。 この要件は今後数週間で削除される予定です。
+
 
 ### <a name="sign-up-by-using-azure-cli-20"></a>Azure CLI 2.0 を使用したサインアップ
 
@@ -377,15 +380,19 @@ Load Balancer Standard SKU とそのコンパニオンのパブリック IP Stan
 
     ```cli
     az feature register --name AllowLBPreview --namespace Microsoft.Network
+    az feature register --name AllowLBPreviewWave2 --namespace Microsoft.Network
+    az feature register --name AllowLBPreviewWave3 --namespace Microsoft.Network
     ```
     
 2. この操作は、完了するまで最大 10 分かかることがあります。 操作の状態は、次のコマンドで確認できます。
 
     ```cli
-    az feature show --name AllowLBPreview --namespace Microsoft.Network
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreview']" --output json
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave2']" --output json
+    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave3']" --output json
     ```
     
-    次に示すように、機能の登録状態が "Registered" になったら、次の手順に進んでください。
+    上記の各サブスクリプション機能について、機能の登録状態が "Registered" になったら、次の手順に進んでください。 例:
    
     ```json
     {
@@ -398,28 +405,33 @@ Load Balancer Standard SKU とそのコンパニオンのパブリック IP Stan
     }
     ```
     
-3. サブスクリプションをリソース プロバイダーに再登録して、プレビューのサインアップを完了してください。
+4. サブスクリプションをリソース プロバイダーに再登録して、プレビューのサインアップを完了してください。
 
     ```cli
     az provider register --namespace Microsoft.Network
     ```
     
+
 ### <a name="sign-up-by-using-powershell"></a>PowerShell を使用したサインアップ
 
 1. 機能を次のようにプロバイダーに登録します。
 
     ```powershell
     Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
+    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
+    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
     ```
     
 2. この操作は、完了するまで最大 10 分かかることがあります。 操作の状態は、次のコマンドで確認できます。
 
     ```powershell
     Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
+    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
+    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
     ```
 
-    次に示すように、機能の登録状態が "Registered" になったら、次の手順に進んでください。
-   
+  上記の各サブスクリプション機能について、機能の登録状態が "Registered" になったら、次の手順に進んでください。 例:
+
     ```
     FeatureName      ProviderName        RegistrationState
     -----------      ------------        -----------------
@@ -450,11 +462,14 @@ Load Balancer Basic SKU は、引き続き無料でご利用いただけます�
 - IPv6 はサポートされていません。
 - 可用性ゾーンのコンテキストでは、フロントエンドをゾーン ベースからゾーン冗長に変更したり、ゾーン冗長からゾーン ベースに変更したりすることはできません。 フロント エンドは、ゾーン冗長として作成した後は常にゾーン冗長のままです。 フロント エンドは、ゾーン ベースとして作成した後は常にゾーン ベースのままです。
 - 可用性ゾーンのコンテキストでは、ゾーンのパブリック IP アドレスをゾーン間で移動することはできません。
+- [Azure Monitor アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)は、現時点ではサポートされていません。
+- ポータルでは、拡張されたプレビュー リージョンがまだサポートされていません。  回避策として、テンプレート、Azure CLI 2.0、PowerShell などのクライアント ツールを使用してください。
 
 
 ## <a name="next-steps"></a>次の手順
 
 - [Load Balancer Basic](load-balancer-overview.md) の詳細を確認する。
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を学習する。
+- [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)の詳細を確認する。
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
-
+- [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) で[公開されたメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)を確認する。

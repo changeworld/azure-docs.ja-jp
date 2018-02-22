@@ -36,6 +36,8 @@
       href: delivery-and-retry.md
 - name: ハウツー ガイド
   items:
+    - name: HTTP エンドポイントへのイベントの受け取り
+      href: receive-events.md
     - name: Event Hubs からデータ ウェアハウスへのデータ ストリーミング
       href: event-grid-event-hubs-integration.md
     - name: IoT Hub イベントに関する通知の送信

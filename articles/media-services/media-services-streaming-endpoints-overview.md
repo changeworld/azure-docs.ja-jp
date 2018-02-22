@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: e454778c558b9c17c47ad9eb651737aa0b5e2605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 80d625a6ab2d3c6d5de0a90fbff0760888154d70
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要 
 
@@ -42,7 +42,7 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 
 2017 年 1 月リリース以降の Media Services には、**Standard** と **Premium** の 2 つのストリーミング タイプがあります。 これらのタイプは、ストリーミング エンドポイントのバージョン「2.0」の一部です。
 
-型|Description
+type|[説明]
 ---|---
 **Standard**|ほとんどのシナリオで使用する既定のオプションです。<br/>このオプションでは、固定/制限付きの SLA を取得でき、開始後の最初の 15 日間ストリーミング エンドポイントは無料です。<br/>複数のストリーミング エンドポイントを作成する場合は、最初の 1 つだけが最初の 15 日間無料で、他は開始するとすぐに課金されます。 <br/>無料評価版は新しく作成したメディア サービス アカウントと既定のストリーミング エンドポイントにのみ適用されることに注意してください。 既存のストリーミング エンドポイントと追加で作成されたストリーミング エンドポイントは、バージョン 2.0 にアップグレードした場合やバージョン 2.0 で作成した場合にも、無料の試用期間に含まれません。
 **Premium**|このオプションは、より高度なスケールやコントロールを必要とするプロフェッショナルなシナリオに適しています。<br/>購入済みの Premium ストリーミング ユニット (SU) の容量をベースとする可変の SLA、専用のストリーミング エンドポイントは分離された環境に存在し、リソースの競合は起こりません。
@@ -65,33 +65,33 @@ Azure Media Services アカウントを作成すると、既定の標準スト�
 
 ### <a name="versions"></a>バージョン
 
-|型|StreamingEndpointVersion|ScaleUnits|CDN|課金|SLA| 
+|type|StreamingEndpointVersion|ScaleUnits|CDN|課金|SLA| 
 |--------------|----------|-----------------|-----------------|-----------------|-----------------|    
 |クラシック|1.0|0|該当なし|無料|該当なし|
-|Standard ストリーミング エンドポイント|2.0|0|はい|有料|はい|
-|Premium ストリーミング ユニット|1.0|>0|はい|有料|はい|
-|Premium ストリーミング ユニット|2.0|>0|はい|有料|はい|
+|Standard ストリーミング エンドポイント|2.0|0|[はい]|有料|[はい]|
+|Premium ストリーミング ユニット|1.0|>0|[はい]|有料|[はい]|
+|Premium ストリーミング ユニット|2.0|>0|[はい]|有料|[はい]|
 
-### <a name="features"></a>Features (機能)
+### <a name="features"></a>機能
 
-機能|標準|Premium
+Feature|標準|Premium
 ---|---|---
-最初の 15 日間無料| はい |なし
-スループット |Azure CDN を使用しない場合は、最大 600 Mbps。 CDN に合わせて拡大縮小。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN に合わせて拡大縮小。
+最初の 15 日間無料| [はい] |いいえ 
+Throughput |Azure CDN を使用しない場合は、最大 600 Mbps。 CDN に合わせて拡大縮小。|ストリーミング ユニット (SU) あたり 200 Mbps。 CDN に合わせて拡大縮小。
 SLA | 99.9|99.9 (SU あたり 200 Mbps)。
 CDN|Azure CDN、サード パーティ製 CDN、または CDN なし。|Azure CDN、サード パーティ製 CDN、または CDN なし。
 課金は日割り計算| 毎日|毎日
-動的な暗号化|はい|はい
-動的パッケージ|はい|はい
+動的な暗号化|[はい]|[はい]
+動的パッケージ|[はい]|[はい]
 スケール|対象スループットまで自動スケールアップ。|追加のストリーミング ユニット
-IP フィルタリング/G20/カスタム ホスト|はい|はい
-プログレッシブ ダウンロード|はい|はい
-推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。<br/>Standard 以上必要と考えられる場合。 同時実行の対象ユーザー数が 50,000 ビューアーを超えると予想される場合は、お問い合せ下さい (microsoft.com の amsstreaming)。
+IP フィルタリング/G20/カスタム ホスト|[はい]|[はい]
+プログレッシブ ダウンロード|[はい]|[はい]
+推奨使用量 |大半のストリーミング シナリオに推奨。|プロフェッショナルな使用量。<br/>Standard 以上必要と考えられる場合。 同時実行の対象ユーザー数が 50,000 ビューアーを超えると予想される場合は、お問い合せ (amsstreaming@microsoft.com) ください。
 
 
 ## <a name="migration-between-types"></a>タイプの移行
 
-ファイル | To | アクション
+ソース | ターゲット | アクションを表示します。
 ---|---|---
 クラシック|標準|オプトインが必要
 クラシック|Premium| スケール (追加のストリーミング ユニット)
@@ -104,7 +104,7 @@ Premium (CDN あり/なし)|別の構成の Standard|**停止**状態で可能 (
 バージョン 1.0、SU > = 1、CDN あり|Standard、CDN あり/なし|**停止**状態で可能。 **開始済み**状態では不可。 バージョン 1.0 の CDN は削除し、新しい CDN を作成して起動。
 バージョン 1.0、SU > = 1、CDN あり|Premium、CDN あり/なし|**停止**状態で可能。 **開始済み**状態では不可。 クラシック CDN は削除し、新しい CDN を作成して起動。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

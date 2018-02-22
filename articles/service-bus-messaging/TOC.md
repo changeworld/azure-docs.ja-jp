@@ -41,6 +41,8 @@
 #### [メッセージの転送、ロック、解決](message-transfers-locks-settlement.md)
 #### [メッセージのシーケンス処理とタイムスタンプ](message-sequencing.md)
 #### [メッセージの有効期限](message-expiration.md)
+#### [Azure Event Grid を使用したメッセージの処理](service-bus-to-event-grid-integration-concept.md)
+#### [Azure Event Grid の例](service-bus-to-event-grid-integration-example.md)
 ### [認証と権限承認](service-bus-authentication-and-authorization.md)
 #### [ACS から SAS への移行](service-bus-migrate-acs-sas.md)
 #### [Shared Access Signature による認証](service-bus-sas.md)
