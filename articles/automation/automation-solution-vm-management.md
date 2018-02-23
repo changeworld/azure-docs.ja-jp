@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: magoedte
-ms.openlocfilehash: 4424cbb83bdb31c60e15d62f9387b4050611a98d
-ms.sourcegitcommit: 6f33adc568931edf91bfa96abbccf3719aa32041
+ms.openlocfilehash: 7ffd424de2a7224b5ac50fa228289c5397092b2e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Azure Automation の Start/Stop VMs during off-hours ソリューション (プレビュー)
 
@@ -129,7 +129,7 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 
 Start/Stop VMs during off-hours ソリューションを、ご利用の Automation アカウントに追加し、変数を設定してソリューションをカスタマイズするには、以下の手順を実行します。
 
-1. Azure Portal で、**[新規]** をクリックします。<br> ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
+1. Azure Portal で、**[リソースの作成]** をクリックします。<br> ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)<br>  
 2. [Marketplace] ウィンドウで、「**Start**」、「**Start/Stop**」などのキーワードを入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 または、ソリューションのフルネームから 1 つ以上のキーワードを入力し、Enter キーを押すこともできます。  検索結果から **ピーク時間外 VM 起動/停止 [プレビュー]** を選択します。  
 3. 選択したソリューションの **ピーク時間外 VM 起動/停止 [プレビュー]** ウィンドウで概要を確認し、**作成** をクリックします。  
 4. **[ソリューションの追加]** ウィンドウが表示されます。 Automation サブスクリプションにインポートする前に、ソリューションの設定を行うよう求められます。<br><br> ![VM 管理の ソリューションの追加 ブレード](media/automation-solution-vm-management/azure-portal-add-solution-01.png)<br><br>
@@ -318,7 +318,7 @@ Automation アカウントと Log Analytics ワークスペースは、このプ
       
 ## <a name="next-steps"></a>次の手順
 
-- 各種検索クエリの作成方法と、Log Analytics での Automation ジョブの確認方法の詳細については、[Log Analytics でのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページをご覧ください。
+- 各種検索クエリの作成方法と、Log Analytics での Automation ジョブ ログの確認方法の詳細については、[Log Analytics でのログ検索](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。
 - Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
 - Log Analytics とデータ収集ソースの詳細については、[Log Analytics における Azure Storage データの収集](../log-analytics/log-analytics-azure-storage.md)に関するページをご覧ください。
 

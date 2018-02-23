@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: a27d4422e0d7b116d2aea6f743b9efc27570cdb9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 91173a14d40f8259927af720986a4efbc9c573ce
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="install-and-configure-ansible-to-manage-virtual-machines-in-azure"></a>Azure の仮想マシンを管理するための Ansible のインストールと構成
 この記事では、最も一般的な Linux ディストリビューションに Ansible と必須の Azure Python SDK モジュールをインストールする方法について説明します。 インストールしたパッケージを特定のプラットフォーム用に合わせることで、他のディストリビューションに Ansible をインストールできます。 Azure リソースを安全に作成するため、Ansible で使用する資格情報を作成し定義する方法についても説明します。 
@@ -144,7 +144,7 @@ Ansible は、ユーザー名とパスワード、またはサービス プリ�
 [az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) を使用してホスト コンピューターにサービス プリンシパルを作成し、Ansible に必要な資格情報を出力します。
 
 ```azurecli
-az ad sp create-for-rbac --query [client_id: appId, secret: password, tenant: tenant]
+az ad sp create-for-rbac --query '{"client_id": appId, "secret": password, "tenant": tenant}'
 ```
 
 上記のコマンドの出力例は、次のとおりです。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/07/2017
 ms.author: v-craic
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3dcd285761774c3cd1050976894f1f15db61b52c
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 330f6ae246697d54c6bce0690346652b5f2e2dd0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-azure-devtest-labs-formulas"></a>Azure DevTest Labs 数式の管理
 
@@ -40,7 +40,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 
-2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 
 3. ラボの一覧で目的のラボを選択します。  
 
@@ -87,7 +87,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 > 
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
-2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。  
 4. ラボの **[概要]** ブレードで、数式の作成元にする VM を選択します。
    
@@ -104,7 +104,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 数式を変更するには、次の手順に従います。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
-2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。  
 4. ラボのブレードで、 **[数式 (再利用可能なベース)]**を選択します。
    
@@ -116,7 +116,7 @@ DevTest Labs の *ユーザー* アクセス許可が付与されていれば、
 数式を削除するには、次の手順に従います。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
-2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。  
 4. ラボの **[設定]** ブレードで、**[Formulas (数式)]** を選択します。
    

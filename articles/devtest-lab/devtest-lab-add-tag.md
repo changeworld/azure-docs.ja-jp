@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: v-craic
-ms.openlocfilehash: 38b6612bc33326b758b357dca09081c02d294e5d
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 72e82b207a543a9020b38b2c4494717e9f648ab7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-tags-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボにタグを追加する
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/02/2018
 ## <a name="steps-to-manage-tags-in-an-existing-lab"></a>既存のラボのタグを管理する手順
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
-1. 必要に応じて、**[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。 お使いのラボは、**[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります。
+1. 必要に応じて、**[All Services]\(その他のサービス\)** を選択し、一覧から **[DevTest Labs]** を選択します。 お使いのラボは、**[すべてのリソース]** の [ダッシュボード] に既に表示されている場合があります。
 1. ラボの一覧から、タグを追加して管理するラボを選択します。  
 1. ラボの **[概要]** で、**[Configuration and policies]\(構成とポリシー\)** を選択します。  
 

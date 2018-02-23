@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 7df9fc58ac06ffde81df88ffd698c2527583f18f
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 93b29480b51f7a664411ffa92ed07c26b2ebafca
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-external-packages-with-jupyter-notebooks-in-apache-spark-clusters-on-hdinsight"></a>HDInsight の Apache Spark クラスターの Jupyter Notebook で外部のパッケージを使用する
 > [!div class="op_single_selector"]
@@ -71,7 +71,7 @@ HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、�
 
 6. 上のスニペットには、Maven Central Repository における外部パッケージの maven コーディネートを指定します。 このスニペットの `com.databricks:spark-csv_2.10:1.4.0` は、 **spark-csv** パッケージの maven コーディネートです。 パッケージのコーディネートは、以下の方法で構築します。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 Maven リポジトリから目的のパッケージを探します。 このチュートリアルでは [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) を使用します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Maven リポジトリから目的のパッケージを探します。 このチュートリアルでは [spark-csv](http://search.maven.org/#artifactdetails%7Ccom.databricks%7Cspark-csv_2.10%7C1.4.0%7Cjar) を使用します。
    
     b. リポジトリで **GroupId**、**ArtifactId**、**Version** の値を確認します。 収集した値が、クラスターに一致することを確認します。 この例では、Scala 2.10 と Spark 1.4.0 パッケージを使用していますが、クラスター内の適切な Scala または Spark のバージョンに対して別のバージョンを選択しなければならないことがあります。 クラスター上の Scala のバージョンを確認するには、Spark Jupyter カーネルまたは Spark 送信に対して `scala.util.Properties.versionString` を実行します。 クラスター上の Spark のバージョンを確認するには、Jupyter Notebook に対して `sc.version` を実行します。
    
@@ -108,7 +108,6 @@ HDInsight 上の Apache Spark クラスターにある Jupyter Notebook を、�
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](apache-spark-eventhub-streaming.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

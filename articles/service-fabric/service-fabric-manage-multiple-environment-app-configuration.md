@@ -14,13 +14,13 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/09/2017
 ms.author: mikhegn
-ms.openlocfilehash: 959fdb4aceee48863f3914d1b91f2bec6e256d6b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 6bc986236d50106485dce151f1f74622f56400c5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="manage-applications-for-multiple-environments"></a>複数の環境向けにアプリケーションを管理する
+# <a name="manage-applications-for-multiple-environments"></a>複数の環境向けのアプリケーションの管理
 
 Azure Service Fabric クラスターは、1 台から数千台のコンピューターを使って作成することができます。 ほとんどの場合、ローカル開発クラスター、共有開発クラスター、運用クラスターなど、複数のクラスター構成にアプリケーションを展開する必要があります。 これらのクラスターはすべて、その中でコードを実行する必要がある異なる環境と見なされます。 アプリケーション バイナリは変更しなくてもこのようなさまざまな環境で実行できますが、通常は、アプリケーションの構成は変える必要があります。
 
@@ -55,8 +55,8 @@ Service Fabric で名前付きアプリケーション インスタンスを作�
 ## <a name="next-steps"></a>次の手順
 以下の記事では、ここで説明したいくつかの概念の使い方が説明されています。
 
-- [Service Fabric のサービス用に環境変数を指定する方法](service-fabric-how-to-specify-port-number-using-parameters.md)
-- [Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法](service-fabric-how-to-specify-environment-variables.md)
+- [Service Fabric のサービス用に環境変数を指定する方法](service-fabric-how-to-specify-environment-variables.md)
+- [Service Fabric でパラメーターを使用してサービスのポート番号を指定する方法](service-fabric-how-to-specify-port-number-using-parameters.md)
 - [構成ファイルをパラメーター化する方法](service-fabric-how-to-parameterize-configuration-files.md)
 
 - [環境変数リファレンス](service-fabric-environment-variables-reference.md)

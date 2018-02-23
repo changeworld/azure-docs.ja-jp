@@ -3,8 +3,8 @@ title: "Azure Stack で Azure Resource Manager テンプレートを使用する
 description: "Azure Stack で Azure Resource Manager テンプレートを使用してリソースをプロビジョニングする方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: heathl17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
 ms.service: azure-stack
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 7648855011e8f77c35713d2d2ae50f2e474a08a6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 6d4ef16881ef8dc249116aec706f760b163a2972
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="use-azure-resource-manager-templates-in-azure-stack"></a>Azure Stack で Azure リソース マネージャー テンプレートを使用する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Resource Manager テンプレートは、お使いのアプリケーションのすべてのリソースを、単一の連携した操作でデプロイしてプロビジョニングします。 テンプレートを再デプロイして、リソース グループ内のリソースを変更することもできます。
 
@@ -69,7 +70,7 @@ PowerShell DSC 拡張機能を使用して、既存のバーチャル マシン�
 ## <a name="cancel-a-running-template-deployment"></a>実行中のテンプレートのデプロイのキャンセル
 実行中のテンプレートのデプロイをキャンセルするには、`Stop-AzureRmResourceGroupDeployment` PowerShell コマンドレットを使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ポータルを使用してテンプレートをデプロイする](azure-stack-deploy-template-portal.md)
 
 [Azure リソース マネージャーの概要](../../azure-resource-manager/resource-group-overview.md)

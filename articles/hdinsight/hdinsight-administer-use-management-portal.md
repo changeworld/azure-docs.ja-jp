@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: ecaad702843a63bb82b781339d25fde10df0a0a4
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 77c47809a01e9ff2bb851163f9adf987738f98f6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/03/2017
 1. [https://portal.azure.com](https://portal.azure.com)にサインインします。
 2. ポータルを開くと、次の操作を行うことができます。
 
-   * 左側のメニューの **[新規]** をクリックして新しいクラスターを作成する。
+   * 左側のメニューの **[リソースの作成]** をクリックして新しいクラスターを作成します。
 
        ![新しい [HDInsight クラスター] ボタン](./media/hdinsight-administer-use-management-portal/azure-portal-new-button.png)
    * 左側のメニューの **[HDInsight クラスター]** をクリックする。
@@ -129,7 +129,7 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
    * **[ホスト名]**: クラスター名。
    * **[クラスター URL]**。
    * **[状態]**: Aborted、Accepted、ClusterStorageProvisioned、AzureVMConfiguration、HDInsightConfiguration、Operational、Running、Error、Deleting、Deleted、Timedout、DeleteQueued、DeleteTimedout、DeleteError、PatchQueued、CertRolloverQueued、ResizeQueued、ClusterCustomization が表示されます。
-   * **[リージョン]**: Azure の場所。 サポートされている Azure の場所の一覧については、「 **HDInsight の価格** 」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/)ボックスの一覧をご覧ください。
+   * **[リージョン]**: Azure の場所。 サポートされている Azure の場所の一覧については、「**HDInsight の価格**」の [[リージョン]](https://azure.microsoft.com/pricing/details/hdinsight/)ボックスの一覧をご覧ください。
    * **[データの作成日]**。
    * **[オペレーティング システム]**: **Windows** または **Linux**。
    * **[タイプ]**: Hadoop、HBase、Storm、Spark。
@@ -159,12 +159,12 @@ HDInsight は、広範囲の Hadoop コンポーネントで動作します。 �
 
 HDInsight でサポートされているクラスターの種類ごとに、データ ノード数を変更した場合の影響:
 
-* Hadoop は、
+* Hadoop
 
     保留中または実行中のジョブに影響を与えることなく、実行中の Hadoop クラスター内の worker ノードの数をシームレスに増加できます。 処理の進行中に新しいジョブを送信することもできます。 スケール設定処理の失敗は正常に処理され、クラスターは常に機能状態になります。
 
     データ ノードの数を減らして Hadoop クラスターのスケールを小さくした場合、クラスター内の一部のサービスが再起動されます。 これにより、スケール設定処理の完了時に、実行中および保留中のすべてのジョブが失敗します。 ただし、処理が完了した後にジョブを再送信できます。
-* HBase
+* hbase
 
     実行中の HBase クラスターに対して、ノードの追加または削除をシームレスに実行できます。 地域サーバーは、スケール設定処理の完了の数分以内に自動的に分散されます。 ただし、クラスターのヘッドノードにログインし、コマンド プロンプト ウィンドウから次のコマンドを実行して、地域サーバーを手動で分散することもできます。
 
@@ -258,7 +258,7 @@ HDInsight クラスターには、以下の HTTP Web サービスがあります
     ![HDInsight による HTTP Web サービス アクセスの付与と削除](./media/hdinsight-administer-use-management-portal/hdinsight.portal.change.username.password.png)
 
 ## <a name="find-the-default-storage-account"></a>既定のストレージ アカウントの検索
-各 HDInsight クラスターには、既定のストレージ アカウントが設定されています。 クラスターの既定のストレージ アカウントとそのキーは、 **[設定]**/**[プロパティ]**/**[Azure ストレージ キー]**。 「[クラスターの一覧と表示](#list-and-show-clusters)」をご覧ください。
+各 HDInsight クラスターには、既定のストレージ アカウントが設定されています。 クラスターの既定のストレージ アカウントとそのキーは、 **[設定]**/**[プロパティ]**/**[Azure ストレージ キー]**。 「[クラスターの一覧と表示](#list-and-show-clusters)」を参照してください。
 
 ## <a name="find-the-resource-group"></a>リソース グループの検索
 Azure Resource Manager モードでは、各 HDInsight クラスターは Azure リソース グループと共に作成されます。 クラスターが属している Azure リソース グループは、次の場所に表示されます。
@@ -356,7 +356,7 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
 
     Hadoop コマンドの詳細については、 [Hadoop コマンド リファレンス](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/CommandsManual.html)を参照してください。
 
-先のスクリーンショットで、フォルダー名には Hadoop のバージョン番号が埋め込まれています。 バージョン番号は、クラスターにインストールされている Hadoop コンポーネントのバージョンに基づいて変更できます。 Hadoop 環境変数を使用して、これらのフォルダーを参照できます。 次に例を示します。
+先のスクリーンショットで、フォルダー名には Hadoop のバージョン番号が埋め込まれています。 バージョン番号は、クラスターにインストールされている Hadoop コンポーネントのバージョンに基づいて変更できます。 Hadoop 環境変数を使用して、これらのフォルダーを参照できます。 例: 
 
     cd %hadoop_home%
     cd %hive_home%
@@ -365,7 +365,7 @@ Yarn のユーザー インターフェイスを使用するには、HDInsight �
     cd %sqoop_home%
     cd %hcatalog_home%
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、ポータルを使用して HDInsight クラスターを作成する方法、および Hadoop コマンド ライン ツールを開く方法について説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure PowerShell を使用した HDInsight の管理](hdinsight-administer-use-powershell.md)

@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: 3a673d2ad58f85f5437c378a1d05aa4963893df1
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 315a879368e522cc17eeff7be766f0c8a38d470b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Azure Toolkit for IntelliJ を使用して HDInsight で VPN を介して Spark アプリケーションをリモートでデバッグする
 
@@ -36,7 +36,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 
 ## <a name="prerequisites"></a>前提条件
 * **Azure サブスクリプション**。 詳しくは、[Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **HDInsight での Apache Spark クラスター**。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* **HDInsight での Apache Spark クラスター**。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 * **Oracle Java Development Kit**。 [Oracle の Web サイト](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)からインストールできます。
 * **IntelliJ IDEA**。 この記事では、バージョン 2017.1 を使用します。 [JetBrains の Web サイト](https://www.jetbrains.com/idea/download/)からインストールできます。
 * **Azure Toolkit for IntelliJ のHDInsight ツール**。 IntelliJ 用の HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 Azure Toolkit をインストールする手順については、[Azure Toolkit for IntelliJ のインストール](https://docs.microsoft.com/java/azure/intellij/azure-toolkit-for-intellij-installation)に関するページをご覧ください。
@@ -68,7 +68,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
     ![Ambari で IP アドレスを見つける](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/headnode-ip-address.png)
 5. ヘッド ノードの IP アドレスとホスト名を、Spark ジョブの実行とリモート デバッグに使用するコンピューターの **hosts** ファイルに追加します。 これで、ホスト名と IP アドレスのどちらを使用してもヘッド ノードと通信できるようになります。
 
-   a. 管理者特権のアクセス許可を使用してメモ帳のファイルを開きます。 **[ファイル]** メニューから **[開く]** を選択し、hosts ファイルの場所を見つけます。 Windows コンピューター上での場所は **C:\Windows\System32\Drivers\etc\hosts** です。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 管理者特権のアクセス許可を使用してメモ帳のファイルを開きます。 **[ファイル]** メニューから **[開く]** を選択し、hosts ファイルの場所を見つけます。 Windows コンピューター上での場所は **C:\Windows\System32\Drivers\etc\hosts** です。
 
    b. 以下の情報を **hosts** ファイルに追加します。
 
@@ -92,7 +92,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 
     ![IntelliJ IDEA で新しいプロジェクト テンプレートを選択する](./media/apache-spark-intellij-tool-plugin-debug-jobs-remotely/create-hdi-scala-app.png)
 
-    a. **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
 
     b. **[次へ]**を選択します。
 2. 次の **[新しいプロジェクト]** ダイアログ ボックスで以下の手順を実行し、**[Finish]\(完了\)** を選択します。
@@ -107,7 +107,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
   
 3. Spark プロジェクトでは、アーティファクトが自動的に作成されます。 次の操作を実行して、アーティファクトを表示します。
 
-    a. **[File]\(ファイル\)** メニューの **[Project Structure]\(プロジェクトの構造\)** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[File]\(ファイル\)** メニューの **[Project Structure]\(プロジェクトの構造\)** を選択します。
 
     b. **[Project Structure]\(プロジェクトの構造)** ダイアログ ボックスで、**[Artifacts]\(アーティファクト)** を選択すると、作成された既定のアーティファクトが表示されます。 プラス記号 (**+**) をクリックして、独自のアーティファクトを作成することもできます。
 
@@ -116,7 +116,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 
 4. プロジェクトにライブラリを追加します。 ライブラリを追加するには、以下の手順を実行します。
 
-    a. プロジェクト ツリーのプロジェクト名を右クリックし、**[Open Module Settings]\(モジュール設定を開く\)** を選択します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プロジェクト ツリーのプロジェクト名を右クリックし、**[Open Module Settings]\(モジュール設定を開く\)** を選択します。 
 
     b. **[Project Structure]\(プロジェクトの構造\)** ダイアログ ボックスで、**[Libraries]\(ライブラリ\)**、(**+**) 記号、**[From Maven]\(Maven から\)** の順に選択します。
 
@@ -138,7 +138,7 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
     これらのファイルをプロジェクトに追加するには、プロジェクト ツリー内の **/src** フォルダー (例: `<your project directory>\src`) の下にこれらのファイルをコピーします。
 6. 以下の変更を行うために `core-site.xml` ファイルを更新します。
 
-   a. 暗号化されたキーを置換します。 `core-site.xml` ファイルには、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。 プロジェクトに追加した `core-site.xml` ファイルで、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。 詳しくは、「[ストレージ アクセス キーの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 暗号化されたキーを置換します。 `core-site.xml` ファイルには、クラスターに関連付けられたストレージ アカウント用の暗号化されたキーが含まれます。 プロジェクトに追加した `core-site.xml` ファイルで、暗号化されたキーを、既定のストレージ アカウントに関連付けられた実際のストレージ キーに置き換えます。 詳しくは、「[ストレージ アクセス キーの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
            <property>
                  <name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>
@@ -275,7 +275,6 @@ SSH を使用して Spark アプリケーションをリモートでデバッグ
 * [Spark と BI: HDInsight で BI ツールと Spark を使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: HDInsight で Spark を使用してリアルタイム ストリーミング アプリケーションを作成する](apache-spark-eventhub-streaming.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](../hdinsight-apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

@@ -2,17 +2,17 @@
 title: "OMS Log Analytics を使用した Azure SQL データ同期の監視 | Microsoft Docs"
 description: "OMS Log Analytics を使用して Azure SQL データ同期を監視する方法について説明します。"
 services: sql-database
-ms.date: 11/7/2017
+ms.date: 11/07/2017
 ms.topic: article
 ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: ace0eb671556dc980836464a365731d6100eab25
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 8683b3aec569f210529c1188cbbf514f7956b340
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>OMS Log Analytics を使用した SQL データ同期 (プレビュー) の監視 
 
@@ -86,7 +86,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
 9.  Runbook を選択し、ページの上部にある [編集] ボタンをクリックします。
 
-10. アカウントや SQL データ同期の構成に必要な変更を行います (詳細については、サンプル スクリプトを参照してください)。
+10. アカウントや SQL データ同期の構成に必要な変更を行います。 (詳細については、サンプル スクリプトを参照してください)。
 
     1.  Azure の情報。
 
@@ -126,7 +126,7 @@ OMS Log Analytics を使用するアラートを作成するには、次のこ�
 
 1.  OMS ポータルで、**[ログ検索]** を選択します。
 
-2.  選択した間隔に含まれる同期グループごとのエラーおよび警告を選択するためのクエリを作成します。 For example:
+2.  選択した間隔に含まれる同期グループごとのエラーおよび警告を選択するためのクエリを作成します。 例: 
 
     `Type=DataSyncLog\_CL LogLevel\_s!=Success| measure count() by SyncGroupName\_s interval 60minute`
 
@@ -140,7 +140,7 @@ OMS Log Analytics を使用するアラートを作成するには、次のこ�
 
 5.  **[アクション]** で、**[電子メール通知]** を [はい] に設定します。 目的の電子メール受信者を入力します。
 
-6.  **[ Save]** をクリックします。 これで、指定された受信者がエラー発生時に電子メール通知を受信するようになりました。
+6.  **[Save]** をクリックします。 これで、指定された受信者がエラー発生時に電子メール通知を受信するようになりました。
 
 ## <a name="create-an-oms-view-for-monitoring"></a>監視のための OMS ビューの作成
 
@@ -188,11 +188,11 @@ OMS ビューを構成するには、次のことを実行します。
 
 -   [データ同期のログ OMS ビュー](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/DataSyncLogOmsView.omsview)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL データ同期の詳細については、以下を参照してください。
 
 -   [Sync data across multiple cloud and on-premises databases with Azure SQL Data Sync (Azure SQL データ同期を使用した複数のクラウドおよびオンプレミス データベースにまたがるデータの同期)](sql-database-sync-data.md)
--   [Azure SQL データ同期の設定](sql-database-get-started-sql-data-sync.md)
+-   [Azure SQL データ同期のセットアップ](sql-database-get-started-sql-data-sync.md)
 -   [Azure SQL データ同期のベスト プラクティス](sql-database-best-practices-data-sync.md)
 -   [Troubleshoot issues with Azure SQL Data Sync (Azure SQL データ同期に関する問題のトラブルシューティング)](sql-database-troubleshoot-data-sync.md)
 

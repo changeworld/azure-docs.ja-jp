@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: v-craic
-ms.openlocfilehash: 21daa8ff756ee30c6d454d49af7db20afe488c47
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 037c3dd1ae3cc77ee6a0224149f3b099b3af8641
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-virtual-network-in-azure-devtest-labs"></a>Azure DevTest Labs で仮想ネットワークを構成する
 [ラボへの VM の追加](devtest-lab-add-vm.md)に関する記事で説明しているように、ラボで VM を作成する際に、構成されている仮想ネットワークを指定できます。 たとえば、ExpressRoute またはサイト間 VPN で構成されている仮想ネットワークを使用して、VM から企業ネットワーク リソースにアクセスしなければならない場合があります。
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/02/2018
 次に、ラボに既存の仮想ネットワーク (およびサブネット) を追加し、同じラボで VM を作成するときにそれを使用できるようにするための手順を説明します。 
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
-1. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+1. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 1. ラボの一覧で目的のラボを選択します。 
 1. ラボのメイン ウィンドウで、**[構成とポリシー]** を選択します。
 

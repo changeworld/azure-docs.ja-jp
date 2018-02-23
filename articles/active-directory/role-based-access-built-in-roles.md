@@ -15,11 +15,11 @@ ms.date: 01/30/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 520a52161438c967b7614ab01b2e9892612254f0
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 82fa6d3f04dc528c0e2d95dae82e7a7f8787ea7c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure ロールベースのアクセス制御の組み込みロール
 Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。 組み込みのロールの定義は変更できません。 ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md) を作成することができます。
@@ -61,7 +61,6 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [Monitoring Reader](#monitoring-reader) |すべての監視データを読み取ることができます |
 | [Monitoring Contributor](#monitoring-contributor) |監視データを読み取り、監視設定を編集できます |
 | [Network Contributor](#network-contributor) |すべてのネットワーク リソースを管理できます |
-| [New Relic APM Account Contributor](#new-relic-apm-account-contributor) |New Relic Application Performance Management アカウントおよびアプリケーションを管理できます |
 | [Owner](#owner) |アクセス権を含めすべてを管理できます |
 | [Reader](#reader) |すべてを閲覧できますが、変更を加えることはできません |
 | [Redis Cache Contributor](#redis-cache-contributor) |Redis キャッシュを管理できます |
@@ -440,19 +439,6 @@ Intelligent Systems アカウントを管理できます
 | Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
-
-### <a name="new-relic-apm-account-contributor"></a>New Relic APM Account Contributor
-New Relic Application Performance Management アカウントおよびアプリケーションを管理できます
-
-| **アクション** |  |
-| --- | --- |
-| Microsoft.Authorization/*/read |ロールとロール割り当ての読み取り |
-| Microsoft.Insights/alertRules/* |アラート ルールの作成と管理 |
-| Microsoft.ResourceHealth/availabilityStatuses/read |リソースの正常性の読み取り |
-| Microsoft.Resources/deployments/* |リソース グループ デプロイの作成と管理 |
-| Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
-| Microsoft.Support/* |サポート チケットの作成と管理 |
-| NewRelic.APM/accounts/* |New Relic Application Performance Management アカウントの作成と管理 |
 
 ### <a name="owner"></a>Owner
 アクセス権を含めすべてを管理できます

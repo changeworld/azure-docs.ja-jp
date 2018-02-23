@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: edee4fbb37744a8ef93c6a0b7e60b0790d1af9c4
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: f642a1f8060f566ec95b23995d0f82191b0c5315
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Solr をインストールして使用する
 
@@ -178,7 +178,7 @@ SSH トンネルを確立したら、Solr ダッシュボードを使用する�
 
 1. プライマリ ヘッドノードのホスト名を決定します。
 
-   1. SSH を使用してクラスターのヘッド ノードに接続します。 たとえば、「 `ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
+   1. SSH を使用してクラスターのヘッド ノードに接続します。 たとえば、「`ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
 
        SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -321,7 +321,7 @@ sudo start solr
 
 Solr のバックアップと復元の操作の詳細については、 [https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups](https://cwiki.apache.org/confluence/display/solr/Making+and+Restoring+Backups)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [HDInsight クラスターでの Giraph のインストール](hdinsight-hadoop-giraph-install-linux.md) クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Giraph をインストールします。 Giraph は、Hadoop でグラフの処理を実行するために使用でき、Azure HDInsight で使用できます。
 

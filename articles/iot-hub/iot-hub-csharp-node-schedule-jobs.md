@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
-ms.openlocfilehash: e6795f09e275f9fcd38000d48710560244abc11d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: bbc548ff7394ebdf158d8040eb8e188de951be2c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="schedule-and-broadcast-jobs-netnodejs"></a>ジョブのスケジュールとブロードキャスト (.NET/Node.js)
 
@@ -52,7 +52,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 * Visual Studio 2015 または Visual Studio 2017。
 * Node.js バージョン 4.0.x 以降。 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
-* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -80,6 +80,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 1. 既定のステートメント内に存在しない場合は、次の `using` ステートメントを追加します。
 
     ```csharp
+    using System.Threading;
     using System.Threading.Tasks;
     ```
 
@@ -143,7 +144,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     }
     ```
 
-1. 最後に、 **Main** メソッドに次の行を追加します。
+1. 最後に、**Main** メソッドに次の行を追加します。
 
     ```csharp
     jobClient = JobClient.CreateFromConnectionString(connString);
@@ -251,7 +252,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
     ![アプリを実行して、ジョブをスケジュールします。][img-schedulejobs]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、ジョブを使用して、デバイスへのダイレクト メソッドと、デバイス ツインのプロパティの更新をスケジュールしました。
 

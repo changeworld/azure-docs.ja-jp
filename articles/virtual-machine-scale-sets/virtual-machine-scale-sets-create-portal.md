@@ -17,11 +17,11 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a501a852a317ec7d087904c3a675ebefce1bece0
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: ae41149bf507e30dc5281fd60a9d6f77d2023293
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Azure Portal での仮想マシン スケール セットの作成
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 この入門記事では、Azure Portal で仮想マシン スケール セットを作成します。 スケール セットは、[Azure CLI 2.0](virtual-machine-scale-sets-create-cli.md) または [Azure PowerShell](virtual-machine-scale-sets-create-powershell.md) を使用して作成することもできます。
@@ -36,7 +36,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 ## <a name="create-virtual-machine-scale-set"></a>仮想マシン スケール セットを作成する
 Windows Server イメージまたは Linux イメージ (RHEL、CentOS、Ubuntu、SLES など) を含むスケール セットをデプロイできます。
 
-1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 2. "*スケール セット*" を検索し、**[仮想マシン スケール セット]** を選択し、**[作成]** を選択します。
 3. スケール セットの名前を入力します (*myScaleSet* など)。
 4. 目的の OS の種類を選択します (*Windows Server 2016 Datacenter* など)。

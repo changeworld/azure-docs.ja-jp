@@ -3,8 +3,8 @@ title: "Cloud Services で Azure 診断 (.NET) を使用する方法 | Microsoft
 description: "デバッグ、パフォーマンスの測定、監視、トラフィック分析などに使用するために、Azure 診断を使用して、Azure Cloud Services からデータを収集します。"
 services: cloud-services
 documentationcenter: .net
-author: rboucher
-manager: jwhit
+author: thraka
+manager: timlt
 editor: 
 ms.assetid: 89623a0e-4e78-4b67-a446-7d19a35a44be
 ms.service: cloud-services
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/22/2017
-ms.author: robb
-ms.openlocfilehash: 333d2f26ce043a167fb84858c8327cb39e868ffa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: adegeo
+ms.openlocfilehash: a8d6b16fa363062e06d48bfc5af2ca37697d5cd8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="enabling-azure-diagnostics-in-azure-cloud-services"></a>Azure Cloud Services での Azure 診断の有効化
 Azure 診断の背景については、「 [What is Microsoft Azure Diagnostics](../azure-diagnostics.md) 」をご覧ください。
@@ -142,7 +142,7 @@ namespace WorkerRole1
 2. **WorkerRole1** プロジェクトを右クリックし、**[追加]** -> **[新しいアイテム]** の順に選択して、XML ファイルを **WorkerRole1** プロジェクトに追加します。 -> **[Visual C# アイテム]** -> **[データ]** -> **[XML ファイル]** の順に選びます ファイルに「WadExample.xml」という名前を付けます。
 
    ![CloudServices_diag_add_xml](./media/cloud-services-dotnet-diagnostics/AddXmlFile.png)
-3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで  in the **[…]** をクリックします。 **[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 **[OK]**をクリックします。
+3. 構成ファイルに WadConfig.xsd を関連付けます。 WadExample.xml エディター ウィンドウがアクティブになっていることを確認します。 **F4** キーを押し、**[プロパティ]** ウィンドウを開きます。 **[プロパティ]** ウィンドウで **[スキーマ]** プロパティをクリックします。 **[スキーマ]** プロパティで  in the **[…]** をクリックします。 **[追加]** ボタンをクリックし、XSD ファイルを保存した場所に移動して [WadConfig.xsd] を選択します。 Click **OK**.
 
 4. WadExample.xml 構成ファイルの内容を次の XML に置き換え、ファイルを保存します。 この構成ファイルは、収集するいくつかのパフォーマンス カウンターを定義します。1 つは CPU 使用率、1 つはメモリ使用率です。 次に、SampleEventSourceWriter クラスのメソッドに対応する 4 つのイベントを定義します。
 
@@ -195,7 +195,7 @@ Visual Studio の**サーバー エクスプローラー**で、wadexample ス�
 ## <a name="troubleshooting"></a>トラブルシューティング
 問題が発生した場合、一般的な問題の解決方法については、「 [Azure Diagnostics Troubleshooting](../azure-diagnostics-troubleshooting.md) 」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 収集するデータの変更、問題のトラブルシューティング、または一般的な診断の詳細については、[関連する Azure 仮想マシンの診断に関する記事の一覧](../monitoring-and-diagnostics/azure-diagnostics.md#cloud-services-using-azure-diagnostics)をご覧ください。
 
 [EventSource Class]: http://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource(v=vs.110).aspx
