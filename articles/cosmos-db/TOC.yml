@@ -373,8 +373,6 @@
           href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
         - name: Azure Functions にバインドする
           href: ../azure-functions/functions-bindings-documentdb.md
-        - name: Hadoop でデータを分析する
-          href: run-hadoop-with-hdinsight.md
         - name: Azure Search と統合する
           href: ../search/search-howto-index-documentdb.md
         - name: Azure Data Factory を使用してデータを移動する
