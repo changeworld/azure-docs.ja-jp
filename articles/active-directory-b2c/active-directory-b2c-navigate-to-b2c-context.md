@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/13/2017
 ms.author: parakhj
-ms.openlocfilehash: 6c1fd08c52f33a062d06e0593cbbe00346bb44f1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a9b9f71d0c11aee238661d57fd2e5246f1bf0842
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントへの切り替え
 
@@ -32,15 +32,15 @@ Azure AD B2C テナントに移動するには、Azure AD B2C テナントのグ
 1. テナントを切り替えるには、右上隅にある電子メール アドレスまたは画像をクリックします。
 1. 表示された `Directory` の一覧で、管理する Azure AD B2C テナントを選択します。
 
-Azure Portal の表示が更新されます。  これで、Azure AD B2C テナントのコンテキストで Azure Portal にサインインしました。
+Azure Portal が更新されます。  これで、Azure AD B2C テナントのコンテキストで Azure Portal にサインインしました。
 
-## <a name="navigate-to-the-b2c-features-blade"></a>B2C 機能ブレードに移動する
+## <a name="navigate-to-the-b2c-features-pane"></a>B2C 機能ウィンドウに移動する
 
 1. 左側のナビゲーションで **[参照]** をクリックします。
-1. **[> その他のサービス]** をクリックし、左側のナビゲーション ウィンドウで `Azure AD B2C` を検索します  (左側のスタート画面にピン留めするには、Azure AD B2C の左側にある星をクリックします)。
-1. **[Azure AD B2C]** をクリックして B2C 機能ブレードにアクセスします。
+1. **[すべてのサービス]** をクリックし、左側のナビゲーション ウィンドウで `Azure AD B2C` を検索します   (左側のスタート画面にピン留めするには、Azure AD B2C の左側にある星をクリックします)。
+1. **[Azure AD B2C]** をクリックして B2C 機能ウィンドウにアクセスします。
    
-    ![Screen shot of Browse to B2C features blade](./media/active-directory-b2c-get-started/b2c-browse.png)
+    ![B2C 機能ウィンドウへの移動のスクリーン ショット](./media/active-directory-b2c-get-started/b2c-browse.png)
 
 > [!IMPORTANT]
-> B2C 機能ブレードにアクセスするには、B2Cテナントのグローバル管理者である必要があります。 他のテナントのグローバル管理者やテナントのユーザーはアクセスできません。  Azure Portal の右上隅にあるテナント スイッチャーを使用して、B2C テナントに切り替えることができます。
+> B2C 機能ウィンドウにアクセスするには、B2C テナントのグローバル管理者である必要があります。 他のテナントのグローバル管理者やテナントのユーザーはアクセスできません。  Azure Portal の右上隅にあるテナント スイッチャーを使用して、B2C テナントに切り替えることができます。

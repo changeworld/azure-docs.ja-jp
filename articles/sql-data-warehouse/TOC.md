@@ -23,6 +23,7 @@
 ### [MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)
 ### [パフォーマンス レベル](performance-tiers.md)
 ### [Data Warehouse ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [スケールアウト、一時停止、再開](sql-data-warehouse-manage-compute-overview.md)
 ### [データ ウェアハウスのバックアップ](sql-data-warehouse-backups.md)
 ### [監査](sql-data-warehouse-auditing-overview.md)
 ### [容量制限](sql-data-warehouse-service-capacity-limits.md)
@@ -50,7 +51,7 @@
 
 
 ## 監視とチューニング
-### [ガイドライン](resource-classes-for-workload-management.md)
+### [ワークロード管理](resource-classes-for-workload-management.md)
 ### [列ストア圧縮](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [監視](sql-data-warehouse-manage-monitor.md)
 ### [トラブルシューティング](sql-data-warehouse-troubleshoot.md)

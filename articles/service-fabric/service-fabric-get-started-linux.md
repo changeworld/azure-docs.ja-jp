@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/5/2018
 ms.author: subramar
-ms.openlocfilehash: b39a5790e5a2ef5483428842b537e0189f5f2b32
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 76d7fd268fba9f672e97d25dfc749afea3f52bab
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -230,6 +230,7 @@ sudo apt-get install -f
 * [Windows で Linux 開発環境を準備する](service-fabric-local-linux-cluster-windows.md)
 * [Service Fabric CLI を使用してアプリケーションを管理する](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric における Windows と Linux の違い](service-fabric-linux-windows-differences.md)
+* [Linux クラスターでオペレーティング システムのファイルの部分置換を自動化する](service-fabric-patch-orchestration-application-linux.md)
 * [Service Fabric CLI の概要](service-fabric-cli.md)
 
 <!-- Links -->

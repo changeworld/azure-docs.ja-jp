@@ -3,6 +3,7 @@
 ## [リソース プロバイダーと種類](resource-manager-supported-services.md)
 ## [Resource Manager デプロイメントとクラシック デプロイメント](resource-manager-deployment-model.md)
 ## [サブスクリプションのガバナンス](resource-manager-subscription-governance.md)
+## [管理グループを使用してリソースを整理する](management-groups-overview.md)
 
 # 作業開始
 ## [テンプレートを作成してデプロイする](resource-manager-create-first-template.md)
@@ -45,7 +46,8 @@
 ### [REST API](resource-manager-rest-api.md)
 ### [タグを使用してリソースを整理する](resource-group-using-tags.md)
 ### [リソースを新しいグループまたはサブスクリプションに移動する](resource-group-move-resources.md)
-### [管理グループを使用してサブスクリプションを整理する](../billing/billing-enterprise-mgmt-group-overview.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+### [管理グループを作成する](management-groups-create.md)
+### [管理グループを管理する](management-groups-manage.md)
 ### [ガバナンスの例](resource-manager-subscription-examples.md)
 ### [マネージ アプリケーション](../managed-applications/overview.md)
 

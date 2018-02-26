@@ -3,21 +3,23 @@ title: "インデックス付きビデオ、Azure SaaS SQL アプリ | Microsoft
 description: "この記事では、2017 年 10 月 11 日に開催された Ignite カンファレンスで公開された、SaaS DB テナント アプリの設計に関する 81 分間のビデオのさまざまな時点のインデックスを示します。 興味のある部分にスキップできます。 少なくとも 3 つのパターンについて説明されています。 開発と管理を簡略化する Azure の機能が説明されています。"
 ms.custom: 
 ms.date: 12/06/2017
-ms.prod: sql-server
+ms.prod: 
+ms.service: sql-database
 ms.reviewer: billgib
 ms.suite: 
-ms.technology: database-engine
+ms.technology:
+- database-engine
 ms.tgt_pltfrm: 
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
 ms.workload: Inactive
-ms.openlocfilehash: db47d1dd0a6114ebca0715da179cc0629b26781a
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 5e8d5467e676ee178b77c02e387bdfd2c54e6071
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスおよび注釈付きのビデオ
 
@@ -105,7 +107,7 @@ ms.lasthandoff: 12/07/2017
 
 
 &nbsp; <a name="anchor-image-wtip-min00311"/>
-#### <a name="2-session-objectives-00153"></a>手順 2.セッションの目標、0:01:53
+#### <a name="2-session-objectives-00153"></a>2.セッションの目標、0:01:53
 [![セッションの目標][image-wtip-min00311-session]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=113)
 
 - マルチテナント アプリの代替モデル、長所と短所。
@@ -115,7 +117,7 @@ ms.lasthandoff: 12/07/2017
 
 
 &nbsp; <a name="anchor-image-wtip-min00417"/>
-#### <a name="3-agenda-00409"></a>3.予定、0:04:09
+#### <a name="3-agenda-00409"></a>手順 3.予定、0:04:09
 [![予定][image-wtip-min00417-agenda]](https://www.youtube.com/watch?v=jjNmcKBVjrc&t=249)
 
 
@@ -307,7 +309,7 @@ ms.lasthandoff: 12/07/2017
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [最初のチュートリアル記事][saas-how-welcome-wingtip-app-679t]
 

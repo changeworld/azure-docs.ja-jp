@@ -2,23 +2,20 @@
 title: "Azure でのクラウド ストレージ アプリケーションの監視およびトラブルシューティング | Microsoft Docs"
 description: "クラウド アプリケーションをトラブルシューティングおよび監視するには、診断ツール、メトリック、およびアラートを使用します。"
 services: storage
-documentationcenter: 
-author: georgewallace
-manager: timlt
-editor: 
+author: tamram
+manager: jeconnoc
 ms.service: storage
 ms.workload: web
-ms.tgt_pltfrm: na
 ms.devlang: csharp
 ms.topic: tutorial
-ms.date: 09/19/2017
-ms.author: gwallace
+ms.date: 02/20/2018
+ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: db88c331f79d83e0124519f8b6dbb34514b456dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a1b3a1d4bb397e19f033b8f3bfe68ca6a63725c4
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>クラウド ストレージ アプリケーションの監視およびトラブルシューティング
 
@@ -36,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
 ストレージ アカウントのログ記録とメトリックは、Azure Portal の **[診断]** タブで有効にします。 メトリックには、次の 2 種類があります。 **集計**メトリックは、受信/送信、可用性、待機時間、および成功の割合を収集します。 このメトリックは、BLOB、キュー、テーブル、ファイルのサービスごとに集計されます。 **API ごと**は、Azure Storage サービス API でのストレージ操作ごとに同じ一連のメトリックを収集します。 ストレージのログ記録では、ストレージ アカウント内の成功した要求と失敗した要求の両方の詳細を記録できます。 これらのログにより、Azure テーブル、キュー、および BLOB に対する読み取り、書き込み、および削除操作の詳細を確認できます。 また、タイムアウト、調整、承認エラーなど、失敗した要求の理由を確認することもできます。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure ポータル](https://portal.azure.com)
 
@@ -113,7 +110,7 @@ curl https://<storage-account-name>.blob.core.windows.net/<container>/<incorrect
 
 [ストレージ エクスプローラー](https://azure.microsoft.com/features/storage-explorer/)は、**$logs** コンテナーやそこに含まれているログなど、ストレージ アカウントを操作するために使用できるもう 1 つのツールです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 シリーズの第 4 部であり、かつ最後の部分では、次に示すような、ストレージ アカウントを監視およびトラブルシューティングする方法を学習しました。
 

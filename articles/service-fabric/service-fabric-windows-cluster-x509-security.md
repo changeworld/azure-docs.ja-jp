@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: ca858408ecb258cc64645571d048de93449689d6
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: ee1a2eeeda95b03b185090841cf93c4183c5fce2
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>X.509 証明書を使用して Windows 上のスタンドアロン クラスターを保護する
 この記事では、スタンドアロン Windows クラスターの多様なノード間で行われる通信をセキュリティで保護する方法について説明します。 また、X.509 証明書を使用して、そのクラスターに接続しているクライアントを認証する方法についても説明します。 認証により、許可されたユーザーのみがクラスターやデプロイ済みアプリケーションにアクセスし、管理タスクを実行できるようになります。 証明書セキュリティは、クラスターの作成時にクラスターで有効にしておく必要があります。  
@@ -48,6 +48,12 @@ ms.lasthandoff: 12/09/2017
             ],
             "X509StoreName": "My"
         },
+        "ClusterCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames" : "Root"
+            }
+        ],
         "ServerCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
@@ -62,6 +68,12 @@ ms.lasthandoff: 12/09/2017
             ],
             "X509StoreName": "My"
         },
+        "ServerCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames" : "Root"
+            }
+        ],
         "ClientCertificateThumbprints": [
             {
                 "CertificateThumbprint": "[Thumbprint]",
@@ -79,6 +91,12 @@ ms.lasthandoff: 12/09/2017
                 "IsAdmin": true
             }
         ],
+        "ClientCertificateIssuerStores": [
+            {
+                "IssuerCommonName": "[IssuerCommonName]",
+                "X509StoreNames": "Root"
+            }
+        ]
         "ReverseProxyCertificate": {
             "Thumbprint": "[Thumbprint]",
             "ThumbprintSecondary": "[Thumbprint]",
@@ -110,10 +128,13 @@ ms.lasthandoff: 12/09/2017
 | --- | --- |
 | ClusterCertificate |テスト環境の場合に推奨されます。 クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 プライマリ証明書とアップグレード用のセカンダリ証明書の、2 つの異なる証明書を使用できます。 プライマリ証明書の拇印は Thumbprint セクションで設定し、セカンダリ証明書の拇印は ThumbprintSecondary 変数で設定します。 |
 | ClusterCertificateCommonNames |運用環境の場合に推奨されます。 クラスターのノード間の通信をセキュリティで保護するには、この証明書が必要です。 1 つまたは 2 つのクラスター証明書の共通名を使用することができます。 CertificateIssuerThumbprint は、この証明書の発行者の拇印に対応します。 同じ共通名の証明書が複数使用されている場合、複数の発行者の拇印を指定できます。|
+| ClusterCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書はクラスター証明書の発行者と対応します。 ClusterCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、クラスター発行者の証明書のロールオーバーが簡単になります。 複数のクラスター証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では X509StoreNames で指定されている対応するストアのすべての証明書がホワイトリスト化されます。|
 | ServerCertificate |テスト環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 利便性を考えて、ClusterCertificate と ServerCertificate に同じ証明書を使用することもできます。 プライマリ証明書とアップグレード用のセカンダリ証明書の、2 つの異なるサーバー証明書を使用できます。 プライマリ証明書の拇印は Thumbprint セクションで設定し、セカンダリ証明書の拇印は ThumbprintSecondary 変数で設定します。 |
 | ServerCertificateCommonNames |運用環境の場合に推奨されます。 この証明書は、クライアントがこのクラスターに接続しようとしたときに、クライアントに提示されます。 CertificateIssuerThumbprint は、この証明書の発行者の拇印に対応します。 同じ共通名の証明書が複数使用されている場合、複数の発行者の拇印を指定できます。 利便性を考えて、ClusterCertificateCommonNames と ServerCertificateCommonNames に同じ証明書を使用することもできます。 1 つまたは 2 つのサーバー証明書の共通名を使用することができます。 |
+| ServerCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書はサーバー証明書の発行者と対応します。 ServerCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、サーバー発行者の証明書のロールオーバーが簡単になります。 複数のサーバー証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では X509StoreNames で指定されている対応するストアのすべての証明書がホワイトリスト化されます。|
 | ClientCertificateThumbprints |この証明書のセットを認証されたクライアントにインストールします。 クラスターへのアクセスを許可するコンピューターには、いくつかの異なるクライアント証明書をインストールできます。 各証明書の拇印は CertificateThumbprint 変数で設定します。 IsAdmin を *true* に設定した場合、この証明書がインストールされたクライアントは、クラスターに対して管理者権限による管理操作を実行できるようになります。 IsAdmin が *false* の場合、この証明書がインストールされたクライアントはユーザー アクセス権限 (通常は読み取り専用) で許可される操作のみ実行できます。 ロールについて詳しくは、「[ロールベースのアクセス制御 (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)」をご覧ください。 |
 | ClientCertificateCommonNames |CertificateCommonName には、最初のクライアント証明書の共通名を設定します。 CertificateIssuerThumbprint は、この証明書の発行者の拇印です。 共通名と発行者について詳しくは、「[証明書の使用](https://msdn.microsoft.com/library/ms731899.aspx)」をご覧ください。 |
+| ClientCertificateIssuerStores |運用環境の場合に推奨されます。 この証明書は、クライアント証明書の発行者と対応します (管理者ロールと非管理者ロールの両方)。 ClientCertificateCommonNames に発行者の拇印を指定する代わりに、このセクションで発行者の共通名とそれに対応するストア名を指定することができます。  これにより、クライアント発行者の証明書のロールオーバーが簡単になります。 複数のクライアント証明書が使用されている場合は、複数の発行者を指定できます。 空の IssuerCommonName では X509StoreNames で指定されている対応するストアのすべての証明書がホワイトリスト化されます。|
 | ReverseProxyCertificate |テスト環境の場合に推奨されます。 これは、[リバース プロキシ](service-fabric-reverseproxy.md)をセキュリティで保護する場合に指定できる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
 | ReverseProxyCertificateCommonNames |運用環境の場合に推奨されます。 これは、[リバース プロキシ](service-fabric-reverseproxy.md)をセキュリティで保護する場合に指定できる、オプションの証明書です。 この証明書を使用している場合は、nodeTypes に reverseProxyEndpointPort を設定してください。 |
 
@@ -123,7 +144,7 @@ ms.lasthandoff: 12/09/2017
  {
     "name": "SampleCluster",
     "clusterConfigurationVersion": "1.0.0",
-    "apiVersion": "2016-09-26",
+    "apiVersion": "10-2017",
     "nodes": [{
         "nodeName": "vm0",
         "metadata": "Replace the localhost below with valid IP address or FQDN",
@@ -162,12 +183,21 @@ ms.lasthandoff: 12/09/2017
                 "ClusterCertificateCommonNames": {
                   "CommonNames": [
                     {
-                      "CertificateCommonName": "myClusterCertCommonName",
-                      "CertificateIssuerThumbprint": "7c fc 91 97 13 66 8d 9f a8 ee 71 2b a2 f4 37 62 00 03 49 0d"
+                      "CertificateCommonName": "myClusterCertCommonName"
                     }
                   ],
                   "X509StoreName": "My"
                 },
+                "ClusterCertificateIssuerStores": [
+                    {
+                        "IssuerCommonName": "ClusterIssuer1",
+                        "X509StoreNames" : "Root"
+                    },
+                    {
+                        "IssuerCommonName": "ClusterIssuer2",
+                        "X509StoreNames" : "Root"
+                    }
+                ],
                 "ServerCertificateCommonNames": {
                   "CommonNames": [
                     {
@@ -221,6 +251,7 @@ ms.lasthandoff: 12/09/2017
 
 ## <a name="certificate-rollover"></a>証明書のロールオーバー
 拇印ではなく証明書共通名を使用する場合、証明書のロールオーバーにクラスター構成のアップグレードは必要ありません。 発行者の拇印をアップグレードする場合、新しい拇印のリストには古いリストとの共通部分が含まれるようにしてください。 まず、新しい発行者の拇印を使用して構成をアップグレードし、その後、ストアに新しい証明書 (クラスター/サーバー証明書および発行者証明書の両方) をインストールする必要があります。 新しい発行者の証明書をインストールした後、最低 2 時間は古い発行者の証明書を証明書ストアに保持してください。
+発行者のストアを使用している場合、発行者の証明書のロールオーバーのために構成のアップグレードを実行する必要はありません。 対応する証明書ストアにある、有効期限がより後にある、新しい発行者の証明書をインストールし、数時間経ったら古い発行者の証明書を削除します。
 
 ## <a name="acquire-the-x509-certificates"></a>X.509 証明書を取得します。
 クラスター内の通信をセキュリティで保護するには、最初にクラスター ノード用の X.509 証明書を取得する必要があります。 さらに、承認されたコンピューターまたはユーザーだけがそのクラスターに接続できるように制限するには、クライアント コンピューター用に証明書を取得し、インストールする必要があります。
@@ -315,7 +346,7 @@ ClusterConfig.X509.MultiMachine.json ファイルの security セクションを
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-セキュリティで保護されたスタンドアロンの Windows クラスターを正常に実行し、認証されたクライアントがそのクラスターに接続できるようにセットアップしたら、「[PowerShell を使用してクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell)」を参考にしてクラスターに接続してください。 For example:
+セキュリティで保護されたスタンドアロンの Windows クラスターを正常に実行し、認証されたクライアントがそのクラスターに接続できるようにセットアップしたら、「[PowerShell を使用してクラスターに接続する](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell)」を参考にしてクラスターに接続してください。 例: 
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }

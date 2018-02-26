@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 01/07/2018
+ms.date: 02/18/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: ee9397406cbca21d8bd53019d9daac5a037f508c
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 406f0890da1ef4123b16082e7371d67f6328ea2c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com) > **Recovery Services** にサインインします。
-2. **[新規]** > **[監視 + 管理]** > **[Backup and Site Recovery]\(バックアップと Site Recovery\)** の順にクリックします。
+2. **[リソースの作成]** > **[監視 + 管理]** > **[Backup and Site Recovery]** の順にクリックします。
 3. **[名前]** に、フレンドリ名 **ContosoVMVault** を指定します。 複数のサブスクリプションがある場合は、適切なものを選択します。
 4. リソース グループ **ContosoRG** を作成します。
 5. Azure リージョンを指定します。 サポートされているリージョンを確認するには、[Azure Site Recovery の価格の詳細](https://azure.microsoft.com/pricing/details/site-recovery/)に関するページでご利用可能な地域をご覧ください。
@@ -72,7 +72,7 @@ ms.lasthandoff: 01/18/2018
 
 - VMware VM のソース環境を[設定します](tutorial-vmware-to-azure.md#set-up-the-source-environment)。
 - 物理サーバーのソース環境を[設定します](tutorial-physical-to-azure.md#set-up-the-source-environment)。
-- Hyper-V VM のソース環境を[設定します](tutorial-hyper-v-to-azure.md#set-up-the-source-environment)。
+- Hyper-V VM のソース環境を[設定します](hyper-v-azure-tutorial.md#set-up-the-source-environment)。
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
 
@@ -86,14 +86,14 @@ ms.lasthandoff: 01/18/2018
 
 - VMware VM の[レプリケーション ポリシーを設定します](tutorial-vmware-to-azure.md#create-a-replication-policy)。
 - 物理サーバーの[レプリケーション ポリシーを設定します](tutorial-physical-to-azure.md#create-a-replication-policy)。
-- Hyper-V VM の[レプリケーション ポリシーを設定します](tutorial-hyper-v-to-azure.md#set-up-a-replication-policy)。
+- Hyper-V VM の[レプリケーション ポリシーを設定します](hyper-v-azure-tutorial.md#set-up-a-replication-policy)。
 
 
 ## <a name="enable-replication"></a>レプリケーションを有効にする
 
 - VMware VM の [レプリケーションを有効にします](tutorial-vmware-to-azure.md#enable-replication)。
 - 物理サーバーの[レプリケーションを有効にします](tutorial-physical-to-azure.md#enable-replication)。
-- Hyper-V VM の[レプリケーションを有効にします](tutorial-hyper-v-to-azure.md#enable-replication)。
+- Hyper-V VM の[レプリケーションを有効にします](hyper-v-azure-tutorial.md#enable-replication)。
 
 
 ## <a name="run-a-test-migration"></a>テスト移行を実行する

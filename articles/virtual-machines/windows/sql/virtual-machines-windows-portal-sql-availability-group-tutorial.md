@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure Virtual Machines に SQL
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 228ca9ca5fddc493d27bfd6a40df5ee7306d6aa9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 70e483f8b64648200bd6f0898a2877c2bf95e590
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 次の表に、このチュートリアルを開始する前に完了している必要がある前提条件を示します。
 
-|  |要件 |Description |
+|  |要件 |[説明] |
 |----- |----- |----- |
 |![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png) | 2 つの SQL Server | - Azure 可用性セット内 <br/> - 単一のドメイン内 <br/> - フェールオーバー クラスタリング機能インストール済み |
 |![正方形](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/square.png)| Windows Server | クラスター監視用のファイル共有 |  
@@ -54,8 +54,7 @@ ms.lasthandoff: 10/11/2017
 
 <!--**Procedure**: *This is the first “step”. Make titles H2’s and short and clear – H2’s appear in the right pane on the web page and are important for navigation.*-->
 
-<a name="CreateCluster">
-</a>
+<a name="CreateCluster"></a>
 ## クラスターを作成する
 
 前提条件が完了した後は、最初に、2 つの SQL Sever と監視サーバーを含む Windows Server フェールオーバー クラスターを作成します。  
@@ -70,13 +69,13 @@ ms.lasthandoff: 10/11/2017
    ![クラスターの作成](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. クラスターの作成ウィザードの各ページで、次の表の設定を使って、単一ノード クラスターを作成します。
 
-   | ページ | [設定] |
+   | ページ | 設定 |
    | --- | --- |
    | 開始する前に |既定値を使用 |
    | サーバーの選択 |1 番目の SQL Server の名前を **[サーバー名を入力してください]** に入力し、**[追加]** をクリックします。 |
    | 検証の警告 |**[いいえ、このクラスターに Microsoft のサポートは必要ありませんので、検証テストを実行しません。[次へ] をクリックして、クラスターの作成を続行します。]** を選択します。 |
    | クラスター管理用のアクセス ポイント |**[クラスター名]** にクラスター名を入力します (例: **SQLAGCluster1**)。|
-   | [次へ] |記憶域スペースを使用している場合を除き、既定値を使用します。 この表の次の注を参照してください。 |
+   | 確認 |記憶域スペースを使用している場合を除き、既定値を使用します。 この表の次の注を参照してください。 |
 
 ### <a name="set-the-cluster-ip-address"></a>クラスターの IP アドレスを設定する
 
@@ -144,7 +143,7 @@ ms.lasthandoff: 10/11/2017
 
    ![新しい共有](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/50-filesharepermissions.png)
 
-1. **[OK]**をクリックします。
+1. Click **OK**.
 
 1. **[共有フォルダーのアクセス許可]** で、**[完了]** をクリックします。 もう一度 **[完了]** をクリックします。  
 
@@ -246,7 +245,7 @@ Repeat these steps on the second SQL Server.
 
    ![新しい共有](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/68-backupsharepermission.png)
 
-1. **[OK]**をクリックします。
+1. Click **OK**.
 
 1. **[共有フォルダーのアクセス許可]** で、**[完了]** をクリックします。 もう一度 **[完了]** をクリックします。  
 
@@ -353,7 +352,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
    | Setting | フィールド |
    | --- | --- |
    | **名前** |ロード バランサーのテキスト名を使います (例: **sqlLB**)。 |
-   | **型** |内部 |
+   | **種類** |内部 |
    | **Virtual Network** |Azure 仮想ネットワークの名前を使います。 |
    | **サブネット** |仮想マシンが存在するサブネットの名前を使います。  |
    | **IP アドレスの割り当て** |静的 |
@@ -377,7 +376,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
 1. ロード バランサーをクリックし、**[バックエンド プール]** をクリックして、**[+ 追加]** をクリックします。 次のようにバックエンド プールを設定します。
 
-   | 設定 | Description | 例
+   | Setting | [説明] | 例
    | --- | --- |---
    | **名前** | テキストの名前を入力します | SQLLBBE
    | **関連付け先** | 一覧から選択します | 可用性セット
@@ -400,7 +399,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
 1. 正常性プローブを次のように設定します。
 
-   | 設定 | Description | 例
+   | Setting | [説明] | 例
    | --- | --- |---
    | **名前** | テキスト | SQLAlwaysOnEndPointProbe |
    | **プロトコル** | TCP を選びます | TCP |
@@ -415,7 +414,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 1. ロード バランサーをクリックし、**[負荷分散規則]** をクリックして、**[+ 追加]** をクリックします。
 
 1. 次のように負荷分散規則を設定します。
-   | 設定 | Description | 例
+   | Setting | [説明] | 例
    | --- | --- |---
    | **名前** | テキスト | SQLAlwaysOnEndPointListener |
    | **フロントエンド IP アドレス** | アドレスを選びます |ロード バランサーの作成時に作成したアドレスを使います。 |
@@ -498,6 +497,6 @@ SQLCMD 接続では、プライマリ レプリカをホストしている SQL S
 
 <!--**Next steps**: *Reiterate what users have done, and give them interesting and useful next steps so they want to go on.*-->
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [2 番目の可用性グループのロード バランサーに IP アドレスを追加](virtual-machines-windows-portal-sql-ps-alwayson-int-listener.md#Add-IP)します。

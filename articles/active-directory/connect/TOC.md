@@ -17,6 +17,7 @@
 ### [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 ### [以前のバージョンからのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)
 ### [既存の ADSync データベースを使用したインストール](active-directory-aadconnect-existing-database.md)
+### [SQL によって委任された管理者の権限を使用したインストール](active-directory-aadconnect-sql-delegation.md)
 
 # 方法
 ## 計画と設計
@@ -51,6 +52,7 @@
 
 
 ## Azure AD Connect 同期を管理する
+### [GDPR コンプライアンスと Azure AD Connect](active-directory-aadconnect-gdpr.md)
 ### [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
 ### [パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)
 ### [Azure AD サービス アカウント](active-directory-aadconnectsync-howto-azureadaccount.md)
@@ -81,6 +83,7 @@
 ### [接続](active-directory-aadconnect-troubleshoot-connectivity.md)
 ### [同期中のエラー](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [オブジェクトが同期されない](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
+### [トラブルシューティング タスクを使用したオブジェクト同期](active-directory-aadconnect-troubleshoot-objectsync.md)
 ### [パスワードの同期](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
 ### [userCertificate による LargeObject エラー](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
 ### [LocalDB の 10 GB 制限からの回復方法](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)

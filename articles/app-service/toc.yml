@@ -4,7 +4,7 @@
   items:
     - name: Web Apps について
       href: app-service-web-overview.md
-    - name: Web App for Containers について
+    - name: App Service on Linux について
       href: containers/app-service-linux-intro.md
     - name: App Service 環境について
       href: environment/intro.md

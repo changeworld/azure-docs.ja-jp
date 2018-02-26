@@ -48,61 +48,62 @@
           href: security-center-customize-os-security-config.md
         - name: Azure Policy を使用するセキュリティ ポリシー
           href: security-center-azure-policy.md
-    - name: セキュリティ正常性を監視する
-      href: security-center-monitoring.md
-    - name: ID とアクセス
-      href: security-center-identity-access.md
     - name: セキュリティの推奨事項を実装する
       href: security-center-recommendations.md
-    - name: コンピューティングのセキュリティ
-      href: security-center-virtual-machine-recommendations.md
+    - name: セキュリティ正常性を監視する
+      href: security-center-monitoring.md
       items:
-        - name: ディスク暗号化の適用
-          href: security-center-apply-disk-encryption.md
-        - name: システムの更新の適用
-          href: security-center-apply-system-updates.md
-        - name: ストレージ アカウントの暗号化の有効化
-          href: security-center-enable-encryption-for-storage-account.md
-        - name: VM エージェントの有効化
-          href: security-center-enable-vm-agent.md
-        - name: Endpoint Protection をインストールします
-          href: security-center-install-endpoint-protection.md
-        - name: システムの更新後に再起動する
-          href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
-        - name: セキュリティ構成の修復
-          href: security-center-remediate-os-vulnerabilities.md
-        - name: OS バージョンの更新
-          href: security-center-update-os-version.md
-        - name: 脆弱性評価がインストールされていない
-          href: security-center-vulnerability-assessment-recommendations.md
-    - name: ネットワークのセキュリティ
-      href: security-center-network-recommendations.md
-      items:
-        - name: 次世代ファイアウォールを追加する
-          href: security-center-add-next-generation-firewall.md
-        - name: Enable Network Security Groups
-          href: security-center-enable-network-security-groups.md
-        - name: インターネット接続エンドポイント経由のアクセスを制限する
-          href: security-center-restrict-access-through-internet-facing-endpoints.md
-        - name: NGFW 経由に限定したトラフィックのルーティング
-          href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
-    - name: ストレージとデータのセキュリティ
-      href: security-center-sql-service-recommendations.md
-      items:
-        - name: SQL データベースの監査と脅威検出を有効にする
-          href: security-center-enable-auditing-on-sql-databases.md
-        - name: SQL サーバーの監査と脅威検出を有効にする
-          href: security-center-enable-auditing-on-sql-servers.md
-        - name: Transparent Data Encryption の有効化
-          href: security-center-enable-transparent-data-encryption.md
-    - name: アプリケーションのセキュリティ
-      href: security-center-application-recommendations.md
-      items:
-        - name: Web アプリケーション ファイアウォールの追加
-          href: security-center-add-web-application-firewall.md
-        - name: アプリケーション保護を完了する
-          href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
-    - name: クラウドの防御
+        - name: コンピューティングのセキュリティ
+          href: security-center-virtual-machine-recommendations.md
+          items:
+            - name: ディスク暗号化の適用
+              href: security-center-apply-disk-encryption.md
+            - name: システムの更新の適用
+              href: security-center-apply-system-updates.md
+            - name: ストレージ アカウントの暗号化の有効化
+              href: security-center-enable-encryption-for-storage-account.md
+            - name: VM エージェントの有効化
+              href: security-center-enable-vm-agent.md
+            - name: Endpoint Protection をインストールします
+              href: security-center-install-endpoint-protection.md
+            - name: システムの更新後に再起動する
+              href: 'security-center-apply-system-updates.md#reboot-after-system-updates'
+            - name: セキュリティ構成の修復
+              href: security-center-remediate-os-vulnerabilities.md
+            - name: OS バージョンの更新
+              href: security-center-update-os-version.md
+            - name: 脆弱性評価がインストールされていない
+              href: security-center-vulnerability-assessment-recommendations.md
+        - name: ネットワークのセキュリティ
+          href: security-center-network-recommendations.md
+          items:
+            - name: 次世代ファイアウォールを追加する
+              href: security-center-add-next-generation-firewall.md
+            - name: Enable Network Security Groups
+              href: security-center-enable-network-security-groups.md
+            - name: インターネット接続エンドポイント経由のアクセスを制限する
+              href: security-center-restrict-access-through-internet-facing-endpoints.md
+            - name: NGFW 経由に限定したトラフィックのルーティング
+              href: 'security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only'
+        - name: ストレージとデータのセキュリティ
+          href: security-center-sql-service-recommendations.md
+          items:
+            - name: SQL データベースの監査と脅威検出を有効にする
+              href: security-center-enable-auditing-on-sql-databases.md
+            - name: SQL サーバーの監査と脅威検出を有効にする
+              href: security-center-enable-auditing-on-sql-servers.md
+            - name: Transparent Data Encryption の有効化
+              href: security-center-enable-transparent-data-encryption.md
+        - name: アプリケーションのセキュリティ
+          href: security-center-application-recommendations.md
+          items:
+            - name: Web アプリケーション ファイアウォールの追加
+              href: security-center-add-web-application-firewall.md
+            - name: アプリケーション保護を完了する
+              href: 'security-center-add-web-application-firewall.md#finalize-application-protection'
+        - name: ID とアクセス
+          href: security-center-identity-access.md
+    - name: クラウドの防御の適用
       items:
         - name: ジャスト イン タイム アクセス
           href: security-center-just-in-time.md
@@ -136,13 +137,13 @@
           href: security-center-threat-intel.md
         - name: 調査
           href: security-center-investigation.md
-    - name: 自動化と調整
+    - name: セキュリティ ワークフローの自動化
       items:
         - name: Logic Apps のプレイブック
           href: security-center-playbooks.md
         - name: イベントの表示
           href: security-center-events-dashboard.md
-        - name: 検索
+        - name: Search
           href: security-center-search.md
     - name: Azure ログ統合
       href: security-center-integrating-alerts-with-log-integration.md

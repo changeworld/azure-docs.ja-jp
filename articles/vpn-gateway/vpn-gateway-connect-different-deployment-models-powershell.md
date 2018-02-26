@@ -1,10 +1,10 @@
 ---
 title: "クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: PowerShell | Microsoft Docs"
-description: "VPN Gateway と PowerShell を使用して、クラシック VNet と Resource Manager の VNet の間に VPN 接続を作成する方法について説明します。"
+description: "VPN Gateway と PowerShell を使用して、クラシック VNet と Resource Manager VNet の間に VPN 接続を作成します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management,azure-resource-manager
 ms.assetid: f17c3bf0-5cc9-4629-9928-1b72d0c9340b
@@ -13,19 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 02/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: da5bddba3a1fad74b2ee08fd2f34d1b01c7345c8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a3afd89a928854a1b03bfd4c5645ea12dbb638fc
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>異なるデプロイ モデルの仮想ネットワークを PowerShell を使用して接続する
 
-
-
-この記事では、クラシック VNet を Resource Manager VNet に接続し、異なるデプロイ モデルにあるリソースを相互に通信できるようにする方法について説明します。 この記事の手順では PowerShell を使いますが、Azure Portal を使ってこの構成を作成することもできます。この場合は、次のリストから PowerShell に関する記事を選んでください。
+この記事は、クラシック VNet を Resource Manager VNet に接続し、異なるデプロイ モデルにあるリソースを相互に通信できるようにするのに役立ちます。 この記事の手順では PowerShell を使いますが、Azure Portal を使ってこの構成を作成することもできます。この場合は、次のリストから PowerShell に関する記事を選んでください。
 
 > [!div class="op_single_selector"]
 > * [ポータル](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -35,7 +33,7 @@ ms.lasthandoff: 12/21/2017
 
 クラシック VNet から Resource Manager VNet への接続は、VNet をオンプレミス サイトの場所に接続することと似ています。 どちらの接続タイプでも、VPN ゲートウェイを使用して、IPsec/IKE を使った安全なトンネルが確保されます。 別のサブスクリプション、別のリージョンに存在する VNet 間で接続を作成することができます。 オンプレミスのネットワークに既に接続されている VNet を接続することもできます。ただし、Vnet が構成されているゲートウェイが動的またはルート ベースである場合に限ります。 VNet 間接続の詳細については、この記事の最後にある「[VNet 間接続に関してよく寄せられる質問](#faq)」を参照してください。 
 
-複数の VNet が同じリージョンに存在する場合は、それらを VNet ピアリングで接続することを検討してください。 VNet ピアリングは、VPN ゲートウェイを使いません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。 
+仮想ネットワーク ゲートウェイがまだなく、新しく作成しない場合は、代わりに VNet ピアリングを使用して VNet を接続することを検討する可能性があります。 VNet ピアリングは、VPN ゲートウェイを使用しません。 詳細については、「 [VNet ピアリング](../virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
 ## <a name="before"></a>開始する前に
 
@@ -45,7 +43,7 @@ ms.lasthandoff: 12/21/2017
 
 * 両方の VNet が既に作成されている。
 * これらの VNet のアドレス範囲が互いに重複していない。また、ゲートウェイの接続先になる可能性のある他の接続の範囲と重複していない。
-* 最新の PowerShell コマンドレットがインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。 必ずサービス管理 (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
+* 最新の PowerShell コマンドレットがインストール済みである。 詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」ご覧ください。 必ず Service Management (SM) と Resource Manager (RM) のコマンドレットの両方をインストールしてください。 
 
 ### <a name="exampleref"></a>設定例
 
@@ -76,10 +74,22 @@ Gateway IP addressing configuration = gwipconfig
 
 ## <a name="createsmgw"></a>セクション 1 - クラシック VNet を構成する
 ### <a name="1-download-your-network-configuration-file"></a>1.ネットワーク構成ファイルをダウンロードする
-1. 管理特権を使って PowerShell コンソールで Azure アカウントにログインします。 次のコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 構成のこの部分を完了するには、SM PowerShell コマンドレットを使用します。
+1. 管理特権を使って PowerShell コンソールで Azure アカウントにログインします。 次のコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされ、Azure PowerShell で使用できるようになります。 このセクションでは、クラシック Service Management (SM) Azure PowerShell コマンドレットが使用されます。
 
   ```powershell
   Add-AzureAccount
+  ```
+
+  Azure サブスクリプションを取得します。
+
+  ```powershell
+  Get-AzureSubscription
+  ```
+
+  複数のサブスクリプションがある場合は、使用するサブスクリプションを選択します。
+
+  ```powershell
+  Select-AzureSubscription -SubscriptionName "Name of subscription"
   ```
 2. 次のコマンドを実行して、Azure のネットワーク構成ファイルをエクスポートします。 必要に応じて、ファイルの場所を変更して別の場所にエクスポートすることもできます。
 
@@ -111,7 +121,7 @@ Gateway IP addressing configuration = gwipconfig
       </VirtualNetworkSite>
     </VirtualNetworkSites>
 
-### <a name="3-add-the-local-network-site"></a>3.ローカル ネットワーク サイトを追加する
+### <a name="3-add-the-local-network-site"></a>手順 3.ローカル ネットワーク サイトを追加する
 追加するローカル ネットワーク サイトは、接続先の RM VNet を表します。 まだ存在していない場合は、**LocalNetworkSites** 要素をファイルに追加します。 構成のこの時点では、Resource Manager の VNet のゲートウェイをまだ作成していないため、VPNGatewayAddress は任意の有効なパブリック IP アドレスにすることができます。 ゲートウェイを作成したら、このプレースホルダー IP アドレスを、RM ゲートウェイに割り当てられている正しいパブリック IP アドレスに置き換えます。
 
     <LocalNetworkSites>
@@ -169,13 +179,13 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
   Login-AzureRmAccount
   ``` 
    
-  複数のサブスクリプションがある場合は、Azure サブスクリプションの一覧が表示されます。
+  Azure サブスクリプションの一覧を取得します。
 
   ```powershell
   Get-AzureRmSubscription
   ```
    
-  使用するサブスクリプションを指定します。
+  複数のサブスクリプションがある場合は、使用するサブスクリプションを指定します。
 
   ```powershell
   Select-AzureRmSubscription -SubscriptionName "Name of subscription"
@@ -256,7 +266,7 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
   ```
 
 ## <a name="connect"></a>セクション 4 - ゲートウェイ間の接続を作成する
-ゲートウェイ間の接続を作成するには PowerShell が必要です。 従来のバージョンの PowerShell コマンドレットを使って、Azure アカウントを追加する必要が生じる場合もあります。 その場合は、**Add-azureaccount** を使用します。
+ゲートウェイ間の接続を作成するには PowerShell が必要です。 従来のバージョンの PowerShell コマンドレットを使って、Azure アカウントを追加する必要が生じる場合もあります。 それには、**Add-azureaccount** を使用します。
 
 1. PowerShell コンソールで、共有キーを設定します。 コマンドレットを実行する前に、ダウンロードしたネットワーク構成ファイルで、Azure が期待する正確な名前を確認します。 スペースを含む VNet の名前を指定するときは、単一引用符を使って値を囲みます。<br><br>次の例では、**-VNetName** はクラシック VNet の名前で、**-LocalNetworkSiteName** はローカル ネットワーク サイトに対して指定した名前です。 **-SharedKey** は、生成して指定する値です。 この例では "abc123" を使いましたが、さらに複雑な値を生成して使うことができます。 重要なのは、ここで指定する値は、次の手順で接続を作成するときに指定するものと同じ値でなければならないということです。 戻り値が **Status: Successful** を示している必要があります。
 
@@ -308,4 +318,3 @@ RM VNet 用の VPN ゲートウェイを作成するには、次の手順に従�
 ## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
-

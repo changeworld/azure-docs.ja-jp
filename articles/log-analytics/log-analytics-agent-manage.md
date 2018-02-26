@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 02/09/2018
 ms.author: magoedte
-ms.openlocfilehash: a17418142fb5f52a93d7a56cb2e6e6e97a250002
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 2e4daebf18d5edeba92bc14d5a4f699fbd2d94ce
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="managing-and-maintaining-the-log-analytics-agent-for-windows-and-linux"></a>Windows および Linux での Log Analytics エージェントの管理とメンテナンス
 
-Log Analytics 用の Windows または Linux エージェントを最初に配置した後、状況に応じてエージェントを再構成したり、ライフ サイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。  これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
+Log Analytics 用の Windows または Linux エージェントを最初に配置した後、エージェントを再構成したり、ライフ サイクルの提供終了段階に達したエージェントをコンピューターから削除したりする必要があります。  これらのルーチン メンテナンス タスクを手動またはオートメーションを介して管理することで、オペレーション エラーと経費の両方を減らすことができます。
 
 ## <a name="adding-or-removing-a-workspace"></a>ワークスペースの追加または削除 
 
@@ -148,12 +148,9 @@ Linux コンピューターがプロキシ サーバーまたは OMS ゲート�
 3. プロンプトで、`%WinDir%\System32\msiexec.exe /x <Path>:\MOMAgent.msi /qb` を入力します。  
 
 ### <a name="linux-agent"></a>Linux エージェント
-エージェントを削除するには、次の手順を実行します。
+エージェントを削除するには、Linux コンピューターで次のコマンドを実行します。  引数 *--purge* を指定することにより、エージェントとその構成が完全に削除されます。
 
-1. Linux エージェントの[ユニバーサル スクリプト](https://github.com/Microsoft/OMS-Agent-for-Linux/releases)をコンピューターにダウンロードします。
-2. コンピューター上で引数 *--purge* を指定して .sh バンドル ファイルを実行します。これにより、エージェントとその構成が完全に削除されます。
-
-    `sudo sh ./omsagent-<version>.universal.x64.sh --purge`
+   `wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/onboard_agent.sh && sh onboard_agent.sh --purge`
 
 ## <a name="configure-agent-to-report-to-an-operations-manager-management-group"></a>Operations Manager 管理グループに報告するようにエージェントを構成する
 

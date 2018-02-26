@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: d71d8e44d0327515ed302c5c902ce87587e36c7d
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 6f933c75d4829e3b2c5198aeee324f15490d8a93
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows データ サイエンス仮想マシンのプロビジョニング
 Microsoft データ サイエンス用仮想マシンは、プレインストールの Windows Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。 含まれているツールは、次のとおりです。
 
-* [Azure Machine Learning](https://azure.microsoft.com/services/machine-learning-services/) Workbench
-* [Microsoft ML Server](https://docs.microsoft.com/machine-learning-server/index) Developer エディション
+* [Azure Machine Learning](../preview/index.yml) Workbench
+* [Microsoft Machine Learning Server](https://docs.microsoft.com/machine-learning-server/index) Developer エディション
 * Anaconda Python ディストリビューション
 * Jupyter Notebook (R、Python、PySpark カーネル)
 * Visual Studio Community エディション
@@ -35,12 +35,12 @@ Microsoft データ サイエンス用仮想マシンは、プレインストー
   * ディープ ラーニング フレームワーク: [Microsoft Cognitive Toolkit](https://www.microsoft.com/en-us/cognitive-toolkit/)、[TensorFlow](https://www.tensorflow.org/)、[Chainer](https://chainer.org/)、mxNet などの AI フレームワークの豊富なセットが VM に含まれています。
   * [Vowpal Wabbit](https://github.com/JohnLangford/vowpal_wabbit): オンライン、ハッシュ、allreduce、リダクション、learning2search、アクティブ、対話型学習などの手法をサポートする高速機械学習システム。
   * [XGBoost](https://xgboost.readthedocs.org/en/latest/): 迅速かつ正確なブースト ツリー実装を提供するツール。
-  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily): GUI ベースのデータ探索と R コードの自動生成によるモデリングにより、R でデータ分析と機械学習を簡単に開始できるツール。
+  * [Rattle](http://rattle.togaware.com/) (R Analytical Tool To Learn Easily): R でデータ分析と機械学習を簡単に開始できるツール。 これには、R コードの自動生成を使用した GUI ベースのデータ探索とモデリングが含まれます。
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/): Java のビジュアル データ マイニングと機械学習ソフトウェア。
   * [Apache Drill](https://drill.apache.org/): Hadoop、NoSQL、およびクラウド ストレージ向けのスキーマフリーの SQL クエリ エンジン。  ODBC と JDBC のインターフェイスをサポートし、PowerBI、Excel、Tableau などの標準の BI ツールから NoSQL やファイルに対してクエリを実行できます。
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
 * GitHub、Visual Studio Team Services を含むソース コード リポジトリを操作する Git Bash を含む Git
-* コマンド プロンプトからアクセスできる、いくつかの一般的な Linux コマンド ライン ユーティリティ (awk, sed, perl, grep, find, wget, curl などを含む) の Windows のポート。 
+* コマンド プロンプトからアクセスできる、いくつかの一般的な Linux コマンドライン ユーティリティ (awk、sed、perl、grep、find、wget、curl などを含む) の Windows のポート。 
 
 データ サイエンスでは、次の一連のタスクを反復処理します。
 
@@ -64,7 +64,7 @@ Microsoft データ サイエンス仮想マシンを作成する前に、次を
 
 
 ## <a name="create-your-microsoft-data-science-virtual-machine"></a>Microsoft データ サイエンス仮想マシンの作成
-Microsoft データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。
+Microsoft データ サイエンス仮想マシンのインスタンスを作成するには、次の手順に従ってください。
 
 1. [Azure ポータル](https://portal.azure.com/#create/microsoft-ads.windows-data-science-vmwindows2016)に一覧表示されている仮想マシンに移動します。
 2. 下部にある **[作成]** ボタンを選択して、ウィザードを起動します。![configure-data-science-vm](./media/provision-vm/configure-data-science-virtual-machine.png)
@@ -83,8 +83,8 @@ Microsoft データ サイエンス仮想マシンのインスタンスを作成
    3. **設定**:
       
       1. **管理ディスクを使用**: Azure で VM のディスクを管理する場合、[管理対象] を選択します。  それ以外の場合は、新規または既存のストレージ アカウントを指定する必要があります。 
-      2. **他のパラメーター**: 通常は既定値を使用します。 既定以外の値の使用を検討する場合は、情報リンクにポインターを合わせ、該当するフィールドのヘルプを表示できます。
-   4. **総括**: 入力したすべての情報が正しいことを確認して、**[作成]** をクリックします。 **注**: 「**サイズ**」ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM で発生することはありません。 
+      2. **他のパラメーター**: 通常は既定値を使用します。 既定値以外の値の使用を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **総括**: 入力したすべての情報が正しいことを確認して、**[作成]** をクリックします。 **注**: 「**サイズ**」ステップで選択したサーバー サイズのコンピューティングを超える追加の課金が VM で発生することはありません。 
 
 > [!NOTE]
 > プロビジョニングには、10 ～ 20 分くらいかかります。 プロビジョニングの状態は、Azure ポータルに表示されます。
@@ -101,7 +101,7 @@ VM が作成され、プロビジョニングされた後は、VM にインス�
 
 ### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench はデスクトップ アプリおよびコマンド ライン インターフェイスです。 Workbench には、ユーザーが実行したデータ準備手順を学習する組み込みのデータ準備機能が用意されています。 また、生産性を向上させるプロジェクト管理、実行履歴、ノートブック統合も提供しています。 モデルを開発するために、TensorFlow、Cognitive Toolkit、Spark ML、scikit-learn など、最良のオープン ソース フレームワークを使用できます。 DSVM では、各ユーザーの %LOCALAPPDATA% ディレクトリに Azure Machine Learning Workbench をローカルに抽出するためのデスクトップ アイコン (InstallAMLFromLocal) を提供しています。 Workbench を使用する必要がある各ユーザーは、[InstallAMLFromLocal] デスクトップ アイコンをダブルクリックする 1 回限りの操作を実行して、Workbench のインスタンスをインストールする必要があります。 また、Azure Machine Learning では、%LOCALAPPDATA%\amlworkbench\python で抽出されるユーザーごとの Python 環境を作成して使用します。
+Azure Machine Learning Workbench はデスクトップ アプリおよびコマンド ライン インターフェイスです。 Workbench には、ユーザーが実行したデータ準備手順を学習する組み込みのデータ準備機能が用意されています。 また、生産性を向上させるプロジェクト管理、実行履歴、ノートブック統合も提供しています。 モデルを開発するには、TensorFlow、Cognitive Toolkit、Spark ML、scikit-learn など、最良のオープンソース フレームワークを使用できます。 DSVM では、各ユーザーの %LOCALAPPDATA% ディレクトリに Azure Machine Learning Workbench をローカルに抽出するためのデスクトップ アイコン (InstallAMLFromLocal) を提供しています。 Workbench を使用する必要がある各ユーザーは、[InstallAMLFromLocal] デスクトップ アイコンをダブルクリックする 1 回限りの操作を実行して、Workbench のインスタンスをインストールする必要があります。 また、Azure Machine Learning では、%LOCALAPPDATA%\amlworkbench\python で抽出されるユーザーごとの Python 環境を作成して使用します。
 
 ### <a name="microsoft-ml-server-developer-edition"></a>Microsoft ML Server Developer エディション
 分析のためのスケーラブルな R または Python 用の Microsoft エンタープライズ ライブラリを使用したい場合、VM に Microsoft ML Server Developer エディション (以前は Microsoft R Server と呼ばれていました) をインストールします。 Microsoft ML Server は R および Python の両方で使用でき、幅広くデプロイできる企業クラスの分析プラットフォームであり、スケーラブルかつ商業用にサポートされていて、安全です。 さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートする ML Server は、幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。 オープン ソース R および Python を使用、拡張することで、Microsoft ML Server は R および Python スクリプト、関数、CRAN / pip / Conda パッケージと完全に互換性のある形式で、エンタープライズ規模でデータを分析します。 データの並列処理とチャンク処理を追加することで、オープン ソース R のメモリ内制限も対処します。 これにより、メイン メモリに収まりきるよりもはるかに大きなデータに対して、分析を実行することができます。  VM に搭載されている Visual Studio Community Edition には R Tools for Visual Studio と、R または Python を操作するための完全な IDE を提供する Python tools for Visual Studio が含まれています。 また、[RStudio](http://www.rstudio.com) や [PyCharm Community エディション](https://www.jetbrains.com/pycharm/)などの他の IDE も VM 上に提供しています。 
@@ -114,7 +114,7 @@ Python を使用して開発するために、Anaconda Python ディストリビ
 > 
 > 
 
-Anaconda Python 2.7 のインストール先は C:\Anaconda、Anaconda Python 3.5 は c:\Anaconda\envs\py35 です。 詳細な手順については、 [PTVS のドキュメント](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it) をご覧ください。 
+Anaconda Python 2.7 のインストール先は C:\Anaconda、Anaconda Python 3.5 は c:\Anaconda\envs\py35 です。 詳細な手順については、 [PTVS のドキュメント](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) をご覧ください。 
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
 Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook サーバーには、Python 2.7、Python 3.5、PySpark、Julia、および R カーネルがあらかじめ構成されています。 Jupyter サーバーを開始して Notebook サーバーにアクセスするためにブラウザーを起動する、"Jupyter Notebook" という名前のデスクトップ アイコンがあります。 
@@ -196,9 +196,9 @@ VM には複数の Azure ツールがインストールされます。
 引き続き学習や調査に役立つ手順をいくつか紹介します。 
 
 * [スタート] メニューをクリックし、メニューに一覧表示されたツールを確認して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを検討できます。
-* Azure Machine Learning Services および Workbench については、製品の[クイック スタートおよびチュートリアルのページ](https://docs.microsoft.com/azure/machine-learning/preview/)をご覧ください。 
+* Azure Machine Learning Services および Workbench については、製品の[クイック スタートおよびチュートリアルのページ](../preview/index.yml)をご覧ください。 
 * **C:\Program Files\Microsoft\ML Server\R_SERVER\library\RevoScaleR\demoScripts** に移動し、エンタープライズ規模でのデータ分析をサポートする R で RevoScaleR ライブラリを使用するサンプルを入手します。  
 * 「 [データ サイエンス仮想マシンでできる 10 のこと](http://aka.ms/dsvmtenthings)
-* [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/data-science-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
+* [Team Data Science Process](../team-data-science-process/index.yml)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * Azure Machine Learning および関連する Azure 上のデータ サービスを使用した機械学習およびデータ分析については、[Azure AI Gallery](http://gallery.cortanaintelligence.com) をご覧ください。 このギャラリーへは、 **[スタート]** メニューや仮想マシンのデスクトップにもアイコンが用意されています。
 

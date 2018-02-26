@@ -3,17 +3,17 @@ title: "Azure IoT Edge SQL モジュール | Microsoft Docs"
 description: "SQL Server モジュールを使用してエッジでデータを格納し、Azure Functions でデータをフォーマットする方法を説明します。"
 services: iot-edge
 keywords: 
-author: ebertrams
+author: kgremban
 manager: timlt
 ms.author: kgremban, ebertrams
-ms.date: 02/07/2018
+ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f7ff069a2536d0138be8cbb32eefba342e1e9275
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4b66a699e4c58662cadd799cf6aec83b9d34b7e6
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server データベースを使用したエッジでのデータの格納
 
@@ -92,7 +92,6 @@ x64 プロセッサ アーキテクチャでは Windows と Linux の両方の�
              }
           }
         }
-      }
    ```
 
 3. 実行しているオペレーティング システムに応じて、次のコードで SQL モジュールの設定を更新します。 
@@ -101,7 +100,7 @@ x64 プロセッサ アーキテクチャでは Windows と Linux の両方の�
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\r\n\t"Env": [\r\n\t\t"ACCEPT_EULA=Y",\r\n\t\t"sa_password=Strong!Passw0rd"\r\n\t],\r\n\t"HostConfig": {\r\n\t\t"Mounts": [{\r\n\t\t\t"Target": "C:\\mssql",\r\n\t\t\t"Source": "sqlVolume",\r\n\t\t\t"Type": "volume"\r\n\t\t}],\r\n\t\t"PortBindings": {\r\n\t\t\t"1433/tcp": [{\r\n\t\t\t\t"HostPort": "1401"\r\n\t\t\t}]\r\n\t\t}\r\n\t}\r\n}"
+      "createOptions": "{\r\n\t"Env": [\r\n\t\t"ACCEPT_EULA=Y",\r\n\t\t"sa_password=Strong!Passw0rd"\r\n\t],\r\n\t"HostConfig": {\r\n\t\t"Mounts": [{\r\n\t\t\t"Target": "C:\\\\mssql",\r\n\t\t\t"Source": "sqlVolume",\r\n\t\t\t"Type": "volume"\r\n\t\t}],\r\n\t\t"PortBindings": {\r\n\t\t\t"1433/tcp": [{\r\n\t\t\t\t"HostPort": "1401"\r\n\t\t\t}]\r\n\t\t}\r\n\t}\r\n}"
       ```
 
    * Linux:
@@ -118,7 +117,7 @@ x64 プロセッサ アーキテクチャでは Windows と Linux の両方の�
 8. Edge ランタイムを開始するには、コマンド パレットで **[Edge: Start Edge]\(Edge: Edge の開始\)** を選択します。
 
 >[!TIP]
->運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker.md#change-the-sa-password)する必要があります。
+>運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password)する必要があります。
 
 ## <a name="create-the-sql-database"></a>SQL データベースの作成
 
@@ -132,7 +131,7 @@ x64 プロセッサ アーキテクチャでは Windows と Linux の両方の�
    ```
 
 * Linux    
-   ```cmd
+   ```bash
    Docker exec -it sql 'bash'
    ```
 
@@ -144,7 +143,7 @@ SQL コマンド ツールを開きます。
    ```
 
 * Linux
-   ```cmd
+   ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 
@@ -189,7 +188,7 @@ IoT Edge は起動時にブリッジ (Linux) または NAT (Windows) ネット�
 
 * Linux
 
-   ```cmd
+   ```bash
    sudo docker network inspect azure-iot-edge
    ```
 
@@ -309,7 +308,7 @@ IoT Edge は起動時にブリッジ (Linux) または NAT (Windows) ネット�
    ```
 
 * Linux    
-   ```cmd
+   ```bash
    Docker exec -it sql 'bash'
    ```
 
@@ -321,7 +320,7 @@ SQL コマンド ツールを開きます。
    ```
 
 * Linux
-   ```cmd
+   ```bash
    /opt/mssql-tools/bin/sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
    ```
 

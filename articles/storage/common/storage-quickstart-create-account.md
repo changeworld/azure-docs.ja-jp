@@ -9,11 +9,11 @@ ms.service: storage
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: tamram
-ms.openlocfilehash: f9692156fa2c1eaf9d3a617d339cdbc210bf6dd1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2043f635e30de208a29a3da2fcde6bf2a1223fc8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
@@ -161,7 +161,7 @@ Azure Storage には、2 種類の汎用ストレージ アカウントがあり
 
 Azure Portal で汎用 v2 ストレージ アカウントを作成するには、次の手順に従います。
 
-1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[その他のサービス]** を選択します。 次に、下へスクロールして **[ストレージ]** の **[ストレージ アカウント]** を選択します。 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
+1. Azure Portal で左側のメニューを展開してサービスのメニューを開き、**[すべてのサービス]** を選択します。 次に、下へスクロールして **[ストレージ]** の **[ストレージ アカウント]** を選択します。 表示された **[ストレージ アカウント]** ウィンドウで **[追加]** を選択します。
 2. ストレージ アカウントの名前を入力します。
 3. **[アカウントの種類]** フィールドで **[StorageV2 (汎用 v2)]** を設定します。
 4. **[レプリケーション]** フィールドは **[ローカル冗長ストレージ (LRS)]** のままにします。 または、**[ゾーン冗長ストレージ (ZRS プレビュー)]**、**[地理冗長ストレージ (GRS)]**、または **[読み取りアクセス地理冗長ストレージ (RA-GRS)]** を選択することもできます。

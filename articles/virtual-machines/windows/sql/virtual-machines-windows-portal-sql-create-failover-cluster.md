@@ -4,7 +4,7 @@ description: "この記事では、Azure Virtual Machines で SQL Server フェ�
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 9fc761b1-21ad-4d79-bebc-a2f094ec214d
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/26/2017
 ms.author: mikeray
-ms.openlocfilehash: ec35b4a02c04d5b6d0bbf9049927529258c3825b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -117,7 +117,7 @@ S2D では、コンバージド型とハイパー コンバージド型の 2 種
       >[!IMPORTANT]
       >仮想マシンを作成した後に可用性セットを設定または変更することはできません。
 
-   Azure Marketplace からイメージを選択します。 Windows Server と SQL Server、または Windows Server だけを含む Marketplace イメージを使用できます。 詳細については、「[Azure Virtual Machines における SQL Server の概要](../../virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
+   Azure Marketplace からイメージを選択します。 Windows Server と SQL Server、または Windows Server だけを含む Marketplace イメージを使用できます。 詳細については、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
 
    Azure ギャラリーの SQL Server の公式イメージには、インストール済みの SQL Server インスタンス、SQL Server のインストール ソフトウェア、必要なキーが含まれます。
 
@@ -419,7 +419,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
    - **[アイドル タイムアウト (分)]**: 4。
    - **[フローティング IP (ダイレクト サーバー リターン)]**: 有効にします。
 
-1. **[OK]**をクリックします。
+1. Click **OK**.
 
 ## <a name="step-6-configure-cluster-for-probe"></a>手順 6. プローブのクラスターを構成する
 

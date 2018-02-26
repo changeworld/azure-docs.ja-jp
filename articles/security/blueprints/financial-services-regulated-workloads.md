@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation - 規制対象ワークロードに対応する金融サービス"
-description: "規制対象ワークロードに対応する金融サービス ブループリント"
+title: "Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード"
+description: "Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード"
 services: security
 documentationcenter: na
 author: simorjay
@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 19e26c16866dada8dcff04a520ce4c208d67c365
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: a1167f56f595f905c6338868806351345c06b91a
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-blueprint-automation-financial-services-blueprint-for-regulated-workloads"></a>Azure Blueprint Automation: 規制対象ワークロードに対応する金融サービス ブループリント
+# <a name="azure-security-and-compliance-blueprint---ffiec-financial-services-regulated-workloads"></a>Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロード
 
 ## <a name="overview"></a>概要
 
-規制対象ワークロードに対応する金融サービス ブループリントは、クラウドで機微なデータを処理するように設計された、セキュリティで保護され、規格に準拠する、サービスとしてのプラットフォーム (PaaS) Web アプリケーションのデプロイを支援します。 ブループリントは、Microsoft Azure ソリューションの導入を簡素化するために役立つ単純な参照アーキテクチャとデザインを紹介する自動化スクリプトとガイダンスで構成されます。 このブループリントは、クラウドへのデプロイの手間とコストを削減する方法を探し求めている組織のニーズを満たす、エンド ツー エンドのソリューションを示しています。
+Azure Security and Compliance Blueprint: FFIEC Financial Services 規制対象ワークロードは、クラウドで機微なデータを処理するように設計された、セキュリティで保護され、規格に準拠する、サービスとしてのプラットフォーム (PaaS) Web アプリケーションのデプロイを支援します。 ブループリントは、Microsoft Azure ソリューションの導入を簡素化するために役立つ単純な参照アーキテクチャとデザインを紹介する自動化スクリプトとガイダンスで構成されます。 このブループリントは、クラウドへのデプロイの手間とコストを削減する方法を探し求めている組織のニーズを満たす、エンド ツー エンドのソリューションを示しています。
 
 このブループリントは、米国公認会計士協会によって規定された、SOC 1、SOC 2、PCI DDS (Payment Card Industry Data Security Standards) 協議会の DSS 3.2、機微な金融データの収集、格納、取得のための FFIEC などの厳格な準拠規格の要件を満たすように設計されています。 それは、セキュリティで保護され、規格に準拠した多層環境で金融データを管理するソリューションをデプロイすることで、そのようなデータの適切な処理方法を示しています。 ソリューションは、エンド ツー エンドの Azure ベースの PaaS ソリューションとしてデプロイされます。 
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 12/20/2017
 
 ブループリントは、次のユース ケースに対応します。
 
-> このシナリオは、架空の Web ストアが機微なデータを PaaS クラウド Azure ベース ソリューションに移行した方法を示しています。 サンプル ソリューションは、基本ユーザー情報と選択した機微なデータの処理と収集を示しています。 この作業は、「Azure Blueprint Automation: PCI DSS 準拠環境での支払い処理」から借用しています。 この作業の詳細については、[実装のレビューとガイダンス](https://aka.ms/pciblueprintprocessingoverview)に関するドキュメントに、PCI DSS 準拠環境のレビューが記載されています。
+> このシナリオは、架空の Web ストアが機微なデータを PaaS クラウド Azure ベース ソリューションに移行した方法を示しています。 サンプル ソリューションは、基本ユーザー情報と選択した機微なデータの処理と収集を示しています。 この作業は、Azure Security and Compliance Blueprint - PCI DSS 準拠の支払い処理環境から借用されています。 この作業の詳細については、[実装のレビューとガイダンス](https://aka.ms/pciblueprintprocessingoverview)に関するドキュメントに、PCI DSS 準拠環境のレビューが記載されています。
 
 ### <a name="use-case"></a>ユース ケース
 *Contoso Webstore* という名前の小規模の Web ストアは、顧客の支払い情報を含む金融データをクラウドに移行しようとしています。 
@@ -111,7 +111,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 - Edna は金融情報を上書きできます。
 - Edna アカウントは、フィルター処理されていない金融情報を表示できません。
 
-> Contoso Webstore では、ユーザーはデプロイされた環境の機能をテストするために自動的に **Edna** ユーザーとなります。
+
 
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso Webstore - 推定料金
 
@@ -172,7 +172,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 - ジャンプボックス (要塞ホスト) 管理用の NSG
 - App Service Environment 用の NSG
 
-各 NSG には、ソリューションの安全かつ適切な操作のために開かれる固有のポートとプロトコルがあります。 詳細については、[PCI ガイダンスのネットワーク セキュリティ グループ](#network-security-groups)に関する説明をご覧ください。
+各 NSG には、ソリューションの安全かつ適切な操作のために開かれる固有のポートとプロトコルがあります。 
 
 さらに、各 NSG で次の構成を使用できます。
 
@@ -190,7 +190,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 
 このアーキテクチャは、暗号化、データベース監査などの手段を使用して保存データを保護します。
 
-#### <a name="azure-storage"></a>Azure Storage
+#### <a name="azure-storage"></a>Azure Storage (Azure Storage)
 
 暗号化された保存データの要件を満たすために、すべての [Azure Storage](https://azure.microsoft.com/services/storage/) で [Storage サービスの暗号化](/azure/storage/storage-service-encryption)が使用されます。
 
@@ -305,7 +305,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ方法
 
-このソリューションをデプロイするためのコンポーネントは、[支払い処理ブループリントのコード リポジトリ][code-repo]から入手できます。 この基本アーキテクチャをデプロイするには、Microsoft PowerShell v5 を使用していくつかの手順を実行済みである必要があります。 Web サイトに接続するには、カスタム ドメイン名 (contoso.com など) を指定する必要があります。 これは手順 2 の`-customHostName` スイッチを使用して指定されます。 詳細については、「[Azure Web Apps のカスタム ドメイン名を購入する](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)」をご覧ください。 カスタム ドメイン名は、ソリューションを正常にデプロイおよび実行するためには必要ありませんが、デモンストレーション用の Web サイトに接続する際に必要になります。
+このソリューションをデプロイするためのコンポーネントは、[ブループリントのコード リポジトリ][code-repo]から入手できます。 この基本アーキテクチャをデプロイするには、Microsoft PowerShell v5 を使用していくつかの手順を実行済みである必要があります。 Web サイトに接続するには、カスタム ドメイン名 (contoso.com など) を指定する必要があります。 これは手順 2 の`-customHostName` スイッチを使用して指定されます。 詳細については、「[Azure Web Apps のカスタム ドメイン名を購入する](/azure/app-service-web/custom-dns-web-site-buydomains-web-app)」をご覧ください。 カスタム ドメイン名は、ソリューションを正常にデプロイおよび実行するためには必要ありませんが、デモンストレーション用の Web サイトに接続する際に必要になります。
 
 スクリプトにより、指定した Azure AD テナントにドメイン ユーザーが追加されます。 テストとして使用する新しい Azure AD テナントを作成することをお勧めします。
 
@@ -361,7 +361,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
     
 ## <a name="threat-model"></a>脅威モデル
 
-Contoso Webstore [Payment Processing Blueprint 脅威モデル](https://aka.ms/pciblueprintthreatmodel)のためのデータ フロー ダイアグラム (DFD) と脅威モデルの例です。
+Contoso Webstore [Blueprint 脅威モデル](https://aka.ms/pciblueprintthreatmodel)のためのデータ フロー ダイアグラム (DFD) と脅威モデルの例です。
 
 ![](images/pci-threat-model.png)
 

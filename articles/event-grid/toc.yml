@@ -36,12 +36,16 @@
       href: delivery-and-retry.md
 - name: ハウツー ガイド
   items:
+    - name: カスタム トピックへの投稿
+      href: post-to-custom-topic.md
+    - name: HTTP エンドポイントへのイベントの受け取り
+      href: receive-events.md
     - name: Event Hubs からデータ ウェアハウスへのデータ ストリーミング
       href: event-grid-event-hubs-integration.md
     - name: IoT Hub イベントに関する通知の送信
       href: publish-iot-hub-events-to-logic-apps.md
-    - name: カスタム トピックへの投稿
-      href: post-to-custom-topic.md
+    - name: Functions と Logic Apps での Service Bus イベントのリッスン
+      href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
     - name: イベント サブスクリプション用のテンプレート
       href: event-subscription-template.md
     - name: イベント配信の監視

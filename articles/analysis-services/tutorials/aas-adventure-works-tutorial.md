@@ -15,17 +15,17 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/10/2018
 ms.author: owend
-ms.openlocfilehash: ecc95181f61f556b18fa820617ea5ad0636c7a4b
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 3bc0ed965aea043fd5c105752ec39d07c4af818f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-analysis-services---adventure-works-tutorial"></a>Azure Analysis Services - Adventure Works チュートリアル
 
 このチュートリアルは､Visual Studio と [SQL Server Data Tools (SSDT)](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) を使用して 1400 互換性レベルで表形式モデルを作成､配備する方法に関するレッスンで構成されます｡  
 
-Analysis Services および表形式モデルが初めてという方は､このチュートリアルを最後まで終えることで、Visual Studio で基本的な表形式モデルを作成してデプロイする方法を最短で学ぶことができます｡ 前提条件となるものをすべて整えた後､このチュートリアルを終えるのに要する時間は 2 ～ 3 時間です｡  
+Analysis Services および表形式モデルが初めてという方は、このチュートリアルを最後まで終えることで、Visual Studio を使用して基本的な表形式モデルを作成してデプロイする方法を最短で学ぶことができます。 前提条件となるものをすべて整えた後､このチュートリアルを終えるのに要する時間は 2 ～ 3 時間です｡  
   
 ## <a name="what-you-learn"></a>学習内容   
   
@@ -43,7 +43,7 @@ Analysis Services および表形式モデルが初めてという方は､こ�
   
 -   ユーザー メンバーとともにロールを作成することによってモデル オブジェクトとモデル データのセキュリティを保護する方法  
   
--   **Azure Analysis Services** サーバーまたはオンプレミスの SQL Server 2017 Analysis Services サーバーに表形式モデルをデプロイする方法  
+-   SSDT を使用して **Azure Analysis Services** サーバーまたは **SQL Server 2017 Analysis Services** サーバーに表形式モデルをデプロイする方法  
   
 ## <a name="prerequisites"></a>前提条件  
 このチュートリアルを完了するには、次のものが必要です。  

@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.date: 12/04/2017
 ms.author: heidist
-ms.openlocfilehash: 098faa777746ac23ce7e88aa01fc727f88d4259c
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 528fd6e82079f37c1e9f907e081a1e918abd241e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-query-and-filter-an-azure-search-index-in-the-portal"></a>ポータルでの Azure Search インデックスの作成、照会、フィルター処理
 
@@ -43,10 +43,10 @@ Azure Portal で、**データのインポート** ウィザードを使用し�
 サービスをすぐにプロビジョニングしない場合は、「[Azure Search Overview (Azure Search の概要)](https://channel9.msdn.com/Events/Connect/2016/138)」ビデオで、このチュートリアルの手順のデモを見ることができます (約 3 分目から 6 分間)。
 
 ## <a name="find-your-service"></a>サービスの検索
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. Azure Search サービスのサービス ダッシュボードを開きます。 サービス タイルをダッシュボードにピン留めしていない場合、次の手順でサービスを検索します。 
    
-   * ジャンプ バーで、左側のナビゲーション ウィンドウの下部にある **[その他のサービス]** をクリックします。
+   * ジャンプ バーで、左側のナビゲーション ウィンドウの **[すべてのサービス]** をクリックします。
    * 検索ボックスに「*search*」と入力し、サブスクリプションの Search サービスの一覧を取得します。 サービスが一覧に表示されます。 
 
 ## <a name="check-for-space"></a>領域の確認
@@ -211,7 +211,7 @@ Azure Portal で、**データのインポート** ウィザードを使用し�
 
 + 地理空間検索は、検索アプリケーションに "近くを検索" 機能がある場合、またはマップ ナビゲーションを使用している場合に有用です。 ただし、フルテキスト検索ではありません。 ユーザーの要件に都市名または国名での検索がある場合は、座標に加えて、都市名または国名を含むフィールドを追加します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 + 作成したオブジェクトのいずれかを変更します。 ウィザードを 1 回実行したら、最初に戻って個々のコンポーネント (インデックス、インデクサー、データ ソース) を表示したり変更を加えたりすることができます。 インデックスでは一部の編集 (フィールドのデータ型の変更など) が禁止されていますが、ほとんどのプロパティおよび設定は変更を加えることができます。
 

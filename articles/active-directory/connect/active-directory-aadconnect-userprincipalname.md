@@ -8,11 +8,11 @@ ms.topic: article
 ms.workload: identity
 ms.service: active-Directory
 manager: mtillman
-ms.openlocfilehash: 1fca41a8498cec506298748acd3511a5c5802d26
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 96b12fbddd4293c55e9029b194416541ca44c622
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-ad-userprincipalname-population"></a>Azure AD の UserPrincipalName の設定
 
@@ -67,9 +67,10 @@ Azure AD の UserPrincipalName 属性の値が MOERA に設定される可能性
 ユーザー オブジェクトが Azure AD テナントに対して初めて同期されるときに、Azure AD は、以下の項目を上から順に調べ、最初に見つかった項目を MailNickName 属性の値に設定します。
 
 - オンプレミスの mailNickName 属性
-- オンプレミスの mail 属性のプレフィックス
 - プライマリ SMTP アドレスのプレフィックス
+- オンプレミスの mail 属性のプレフィックス
 - オンプレミスの userPrincipalName 属性/代替ログイン ID のプレフィックス
+- セカンダリ SMTP アドレスのプレフィックス
 
 ユーザー オブジェクトに対する更新が Azure AD テナントとの間で同期される際、MailNickName 属性の値が Azure AD によって更新されるのは、オンプレミスの mailNickName 属性の値が更新されていた場合だけです。
 
@@ -85,12 +86,12 @@ Azure AD の UserPrincipalName 属性の値が MOERA に設定される可能性
 
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : &lt;未設定&gt;
-- mail          : us1@contoso.com
-- proxyAddresses        : {SMTP:us2@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
+- mail          : us2@contoso.com
 - userPrincipalName : us3@contoso.com`
 
 Azure AD テナントとの間でユーザー オブジェクトを初回同期
-- Azure AD の MailNickName 属性をオンプレミスの mail 属性のプレフィックスに設定します。
+- Azure AD の MailNickName 属性をプライマリ SMTP アドレスのプレフィックスに設定します。
 - MOERA を  &lt;MailNickName&gt;&#64;&lt;initial domain&gt; に設定します。
 - Azure AD の UserPrincipalName 属性を MOERA に設定します。
 
@@ -103,8 +104,8 @@ Azure AD テナントのユーザー オブジェクト:
 
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : us4
-- mail          : us1@contoso.com
-- proxyAddresses        : {SMTP:us2@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
+- mail          : us2@contoso.com
 - userPrincipalName : us3@contoso.com
 
 オンプレミスの mailNickName 属性に対する更新を Azure AD テナントとの間で同期
@@ -119,8 +120,8 @@ Azure AD テナントのユーザー オブジェクト:
 
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : us4
-- mail          : us1@contoso.com
-- proxyAddresses        : {SMTP:us2@contoso.com}
+- proxyAddresses        : {SMTP:us1@contoso.com}
+- mail          : us2@contoso.com
 - userPrincipalName : us5@contoso.com
 
 オンプレミスの userPrincipalName 属性に対する更新を Azure AD テナントとの間で同期
@@ -132,12 +133,12 @@ Azure AD テナントのユーザー オブジェクト:
 - MailNickName      : us4
 - UserPrincipalName : us4@contoso.onmicrosoft.com
 
-### <a name="scenario-4-non-verified-upn-suffix--update-on-premises-mail-attribute-and-primary-smtp-address"></a>シナリオ 4: 未検証の UPN サフィックス - オンプレミスの mail 属性とプライマリ SMTP アドレスを更新
+### <a name="scenario-4-non-verified-upn-suffix--update-primary-smtp-address-and-on-premises-mail-attribute"></a>シナリオ 4: 未検証の UPN サフィックス - プライマリ SMTP アドレスとオンプレミスの mail 属性を更新
 
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : us4
-- mail          : us6@contoso.com
-- proxyAddresses        : {SMTP:us7@contoso.com}
+- proxyAddresses        : {SMTP:us6@contoso.com}
+- mail          : us7@contoso.com
 - userPrincipalName : us5@contoso.com
 
 オンプレミスの mail 属性およびプライマリ SMTP アドレスに対する更新を Azure AD テナントとの間で同期
@@ -151,8 +152,8 @@ Azure AD テナントのユーザー オブジェクト:
 
 オンプレミス ユーザー オブジェクト:
 - mailNickName      : us4
-- mail          : us6@contoso.com
-- proxyAddresses        : {SMTP:us7@contoso.com}
+- proxyAddresses        : {SMTP:us6@contoso.com}
+- mail          : us7@contoso.com
 - serPrincipalName  : us5@verified.contoso.com
 
 オンプレミスの userPrincipalName 属性に対する更新を Azure AD テナントとの間で同期

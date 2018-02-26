@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 02/21/2018
 ms.author: yurid
-ms.openlocfilehash: 959c0e8693f4bba49488bbe85e334599823ad0ed
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: a5c95fc7ddf78987d8a7b135d54f359eb5c49946
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラートの概要
 この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートと関連する分析情報についてわかりやすく説明します。 アラートとインシデントを管理する方法の詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
@@ -93,16 +93,11 @@ Security Center は高度な分析を使用し、仮想マシンのイベント 
 * **Disabling and deleting IIS log files (IIS ログ ファイルの無効化と削除)**: このアラートは、IIS ログファイルが無効になったか、削除されたことを示します。この操作は、攻撃者が痕跡を隠すためによく使用されます。
 * **Suspicious file deletion (疑わしいファイルの削除)**: このアラートは、ファイルの疑わしい削除を示します。攻撃者が悪意のあるバイナリの証拠を削除するために使用した可能性があります。
 * **All file shadow copies have been deleted (すべてのファイル シャドウ コピーが削除されました)**: このアラートは、シャドウ コピーが削除されたことを示します。
-* **A history file has been cleared (履歴ファイルがクリアされました)**: このアラートは、コマンド履歴ログ ファイルがクリアされたことを示します。この操作は、攻撃者が痕跡を隠すために使用された可能性があります。
 * **Suspicious file cleanup commands (疑わしいファイルのクリーンアップ コマンド)**: このアラートは、侵害後に自己クリーンアップ アクティビティを実行するために systeminfo コマンドの組み合わせが使用されたことを示します。  *systeminfo.exe* は正規の Windows ツールですが、2 回連続して実行され、その後に削除コマンドが実行される方法はまれです。
 * **Suspicious account creation (疑わしいアカウント作成)**: このアラートは、既存の組み込みの管理特権アカウントによく似たアカウントが作成されたことを示します。 この手法は、攻撃者が検出されずに不正なアカウントを作成するために使用されることがあります。
-* **Suspicious login activity (疑わしいログイン アクティビティ)**: このアラートは、通常とは異なるログイン アクティビティを示します。これは、サーバー メッセージ ブロック (SMB) のブルート フォース攻撃を示す可能性があります。 影響を受けるリソースが IIS サーバーとして動作している場合、正当な特定の IIS 認証構成が原因でこのアラートが生成されることがあります。
 * **Suspicious volume shadow copy activity (疑わしいボリューム シャドウ コピー アクティビティ)**: このアラートは、リソースに対するシャドウ コピーの削除アクティビティを示します。 ボリューム シャドウ コピー (VSC) は、データ スナップショットを保存する重要なアーティファクトです。 通常、このアクティビティはランサムウェアに関連していますが、正当なアクティビティの可能性もあります。
 * **Windows registry persistence method (Windows レジストリ永続性メソッド)**: このアラートは、Windows レジストリに実行可能ファイルを永続化しようとしていることを示します。 マルウェアは、起動時に存続するように、このような手法を使用することがよくあります。
-* **Windows firewall was disabled (Windows ファイアウォールが無効になりました)**: このアラートは、Windows ファイアウォールが無効になったことを示します。
 * **Suspicious new firewall rule (疑わしい新しいファイアウォール ルール)**: このアラートは、*netsh.exe* を介して、疑わしい場所の実行可能ファイルからのトラフィックを許可する新しいファイアウォール ルールが追加されたことを示します。
-* **New user was added to administrators group (新しいユーザーが管理者グループに追加されました)**: このアラートは、新しいユーザーがローカル管理者のグループに追加されたことを示します。
-* **A new service was created (新しいサービスが作成されました)**: このアラートは、新しいサービスが作成されたことを示します。
 * **Suspicious XCOPY executions (疑わしい XCOPY の実行)**: このアラートは、一連の XCOPY が実行されたを示します。これは、いずれかのコンピューターが侵害され、マルウェアを伝播するために使用されたことを示す可能性があります。
 * **Suppression of legal notice displayed to users at logon (ログオン時にユーザーに表示される法的通知の抑制)**: このアラートは、ログオン時に法的通知をユーザーに表示するかどうかを制御するレジストリ キーの変更を示します。 これは、攻撃者がホストを侵害した後に行われる一般的なアクティビティです。
 * **Detected anomalous mix of upper and lower case characters in command line (コマンド ラインで通常とは異なる大文字と小文字の混在が検出されました)**: このアラートは、コマンド ラインで大文字と小文字が混在していることを示します。これは、大文字と小文字を区別する、またはハッシュベースのコンピューター ルールから隠ぺいするために攻撃者が使用する手法です。
@@ -123,15 +118,10 @@ Security Center は高度な分析を使用し、仮想マシンのイベント 
 * **Suspicious Set-ExecutionPolicy and WinRM changes (疑わしい Set-ExecutionPolicy と WinRM の変更)**: このアラートは、悪意のある ChinaChopper webshel​​l の使用に関連する構成の変更を示します。
 * **Disabling of critical services (重要なサービスの無効化)**: このアラートは、"net.exe stop" コマンドが SharedAccess や Windows Security Center などの重要なサービスを停止するために使用されたことを示します。
 * **Suspicious use of FTP -s switch (FTP -s スイッチの疑わしい使用)**: このアラートは、FTP の "-s" スイッチが使用されたことを示します。このスイッチは、マルウェアがリモート FTP サーバーに接続し、悪意のあるバイナリをさらにダウンロードするために使用されることがあります。
-* **Preparation for document exfiltration via IIS backdoor (IIS バックドアを介したドキュメント取り出しの準備)**: このアラートは、文書が収集され、取り出しの準備が行われていることを示します。
 * **Suspicious execution of VBScript.Encode command (VBScript.Encode コマンドの疑わしい実行)**: このアラートは、*VBScript.Encode* コマンドが実行されたことを示します。このコマンドで、スクリプトは読み取り不可能なテキストにエンコードされ、ユーザーがコードを確認しづらくなります。
 * **VBScript HTTP object allocation (VBScript HTTP オブジェクトの割り当て)**: このアラートは、コマンド プロンプトを使用して VB スクリプト ファイルが作成されたことを示します。この操作は、悪意のあるファイルをダウンロードするために使用される可能性があります。
 * **Sticky keys attack (固定キー攻撃)**: このアラートは、攻撃者がバックドア アクセスを提供するために、アクセシビリティ バイナリ (固定キー、スクリーン キーボード、ナレーターなど) を侵害している可能性があることを示します。
 * **Petya ransomware indicators (Petya ランサムウェア インジケーター)**: このアラートは、Petya ランサムウェアに関連する手法が観察されたことを示します。
-* **A kernel module was loaded (カーネル モジュールが読み込まれました)**: このアラートは、カーネル モジュールが読み込まれたことを示します。
-* **A kernel module was removed (カーネル モジュールが削除されました)**: このアラートは、カーネル モジュールが削除されたことを示します。
-* **Anomalous login to a machine (コンピューターへの異常なログイン)**: このアラートは、ユーザーが通常とは異なる IP アドレスからログインしたことを示します。
-* **A file was downloaded and executed (ファイルがダウンロードされ、実行されました)**: このアラートは、ファイルがコンピューターにダウンロードされ、実行特権が与えられ、実行されたことを示します。
 * **Attempt to disable AMSI (AMSI の無効化が試行されました)**: このアラートは、マルウェア対策スキャン インターフェイス (AMSI) を無効にする試行を示しています。AMSI が無効になると、マルウェア対策の検出も無効になります。
 * **Ransomware indicators (ランサムウェア インジケーター)**: このアラートは、過去にロック画面と暗号化の ランサムウェアに関連付けられたことがある疑わしいアクティビティを示します。
 * **Suspicious trace collection output file (疑わしいトレース収集出力ファイル)**: このアラートは、トレース (ネットワーク アクティビティなど) が収集され、通常とは異なるファイルの種類に出力されたことを示します。
@@ -145,14 +135,8 @@ Security Center は高度な分析を使用し、仮想マシンのイベント 
 * **Dynamic PS script construction (動的 PS スクリプトの構築)**: このアラートは、PowerShell スクリプトが動的に構築されていることを示します。 攻撃者は、この手法を使用して、IDS システムを回避するためにスクリプトを段階的に構築します。
 * **Metaploit indicators (メタプロット インジケーター)**: このアラートは、さまざまな攻撃者の機能とツールを提供する Metasploit フレームワークに関連付けられたアクティビティを示します。
 * **Suspicious account activity (疑わしいアカウントアクティビティ)**: このアラートは、最近侵害されたアカウントを使用してコンピューターに接続しようとしたことを示します。
-* **Possible suspicious scheduling tasks access (疑わしいスケジュール タスク アクセスの可能性)**: このアラートは、cron ジョブが実行されたことを示します。cron ジョブは、攻撃者がスケジュールどおりに悪意のあるプログラムを実行するために使用することがあります。
-* **Possible suspicious command history file access (疑わしい可能性があるコマンド履歴ファイルのアクセス)**: このアラートは、コマンド履歴ファイルへの異常なアクセスを示します。
 * **Account creation (アカウント作成)**: このアラートは、コンピューターに新しいアカウントが作成されたことを示します。
-* **Change of bash setting has been (Bash 設定が変更されました)**: このアラートは、Bash プロファイル ファイルがアクセスされたことを示します。これは、攻撃者がスケジュールどおりに悪意のあるプログラムを実行しようとしている証拠の可能性があります。
-* **Suspicious sequence of failed sudo attempts (sudo の試行の疑わしい連続した失敗)**: このアラートは、sudo コマンドが連続して失敗したことを示します。これは、権限のないユーザーによる特権の昇格を目的としたブルート フォース攻撃の試行でよく見られます。
-* **Suspicious successful sudo attempts (sudo の試行の疑わしい成功)**: このアラートは、sudo の試行が連続して失敗した後に成功したことを示します。これは、権限のないユーザーによる特権の昇格を目的としたブルート フォース攻撃の試行でよく見られます。
-* **A new user was added to the sudoers group (新しいユーザーが sudoers グループに追加されました)**: このアラートは、ユーザーが sudoers グループに追加されたことを示します。sudoers グループのメンバーになると、高い特権でコマンドを実行できるようになります。
-* **Network logon with plaintext credentials (プレーンテキストの資格情報を使用したネットワーク ログオン)**: このアラートは、パスワードがネットワークを介してクリア テキスト形式で送信されたネットワーク ログオンを示しています。 これは、ADVAPI を使用する ASP スクリプトからのログオンや、ユーザーが IIS の基本認証モードを使用して IIS にログオンする場合によく起こります。 基本認証は、(HTTPS 接続のみを使用するなど) SSL などの暗号化レイヤーにラップされない限り、推奨される方法ではありません。
+
 
 ### <a name="crash-analysis"></a>クラッシュ分析
 
@@ -206,6 +190,8 @@ Security Center のリソース分析は、[Azure SQL Database の脅威の検�
 - ログの消去イベント
 - 不明なデバイスからの PNP デバイスの接続
 - 対応できないアラート
+- 新しいアカウントの作成
+- certutil ツールを使用してデコードされたファイル 
 
 ![Unusual access alert](./media/security-center-alerts-type/security-center-alerts-type-fig20.png)
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 88d9c4b23eb676743c004c0d1b3ab45f6cd66055
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 5c6f2b35b48988af533612cb48da8fe79a838cf6
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -49,7 +49,7 @@ HTTP データ コレクター API を使用するには、JavaScript Object Not
 ### <a name="request-uri-parameters"></a>要求 URI のパラメーター
 | パラメーター | [説明] |
 |:--- |:--- |
-| CustomerID |Microsoft Operations Management Suite ワークスペースの一意の識別子。 |
+| CustomerID |Log Analytics ワークスペースの一意識別子です。 |
 | リソース |API のリソース名は "/api/logs" です。 |
 | API バージョン |この要求で使用する API のバージョン。 現時点では "2016-04-01" です。 |
 
@@ -70,7 +70,7 @@ Log Analytics HTTP データ コレクター API への要求には、承認ヘ�
 Authorization: SharedKey <WorkspaceID>:<Signature>
 ```
 
-*WorkspaceID* は Operations Management Suite ワークスペースの一意の識別子です。 *Signature* は、要求で構築されてから、[SHA256 アルゴリズム](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx)を使用して計算される[ハッシュベース メッセージ認証コード (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) です。 このコードを Base64 エンコーディングを使用してエンコードします。
+*WorkspaceID* は、Log Analytics ワークスペースの一意識別子です。 *Signature* は、要求で構築されてから、[SHA256 アルゴリズム](https://msdn.microsoft.com/library/system.security.cryptography.sha256.aspx)を使用して計算される[ハッシュベース メッセージ認証コード (HMAC)](https://msdn.microsoft.com/library/system.security.cryptography.hmacsha256.aspx) です。 このコードを Base64 エンコーディングを使用してエンコードします。
 
 **SharedKey** 署名文字列をエンコードするには、次の形式を使用します。
 
@@ -204,7 +204,8 @@ Log Analytics HTTP データ コレクター API によって送信されたデ�
 
 サンプルごとに、次の手順を実行して承認ヘッダーの変数を設定します。
 
-1. Operations Management Suite ポータルで、**[設定]** タイル、**[接続されたソース]** タブの順に選択します。
+1. Azure Portal で、Log Analytics ワークスペースを検索します。
+2. **[詳細設定]** を選択し、**[接続されたソース]** を選択します。
 2. **[ワークスペース ID]** の右側にあるコピー アイコンを選択し、**Customer ID** 変数の値としてその ID を貼り付けます。
 3. **[主キー]** の右側にあるコピー アイコンを選択し、**Shared Key** 変数の値としてその ID を貼り付けます。
 
@@ -311,7 +312,7 @@ namespace OIAPIExample
         // An example JSON object, with key/value pairs
         static string json = @"[{""DemoField1"":""DemoValue1"",""DemoField2"":""DemoValue2""},{""DemoField3"":""DemoValue3"",""DemoField4"":""DemoValue4""}]";
 
-        // Update customerId to your Operations Management Suite workspace ID
+        // Update customerId to your Log Analytics workspace ID
         static string customerId = "xxxxxxxx-xxx-xxx-xxx-xxxxxxxxxxxx";
 
         // For sharedKey, use either the primary or the secondary Connected Sources client authentication key   
@@ -389,7 +390,7 @@ import hashlib
 import hmac
 import base64
 
-# Update the customer ID to your Operations Management Suite workspace ID
+# Update the customer ID to your Log Analytics workspace ID
 customer_id = 'xxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx'
 
 # For the shared key, use either the primary or the secondary Connected Sources client authentication key   

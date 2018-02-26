@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: e1bc0f27b14beef91b4deb68dc625d75195445fb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6611bd07ad4c65953349c62cae3ece735fd85e70
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Azure AD での特権アクセスのセキュリティ保護
 現代の組織にとって特権アクセスのセキュリティ保護は、ビジネス資産を保護するうえで重要な最初のステップです。 特権アカウントとは、IT システムを管理するアカウントです。 サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。 特権アクセスを保護するには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
@@ -50,7 +50,7 @@ Azure Multi-Factor Authentication の概要については、次のビデオを�
 ## <a name="time-bound-privileges"></a>期限付きの特権
 組織によっては、高い特権を持つロールに割り当てられたユーザーが増えすぎることがあります。 サービスのサインアップなど、特定のアクティビティのためにユーザーがロールに追加されたが、その後、ユーザーはあまり権限を使用していないというケースもあります。
 
-特権の公開期間を短縮し、使用状況の可視性を高めるには、ユーザーが "Just-In-Time" (JIT) 特権を持つように制限するか、短縮された期間に対してこうしたロールを割り当てます。確実に特権は自動失効します。 Azure Active Directory、Azure リソース (プレビュー)、Microsoft Online Services では、[Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM) をご利用いただけます。
+特権の公開期間を短縮し、使用状況の可視性を高めるには、ユーザーが "Just-In-Time" (JIT) 特権を持つように制限するか、短縮された期間に対してこうしたロールを割り当てます。確実に特権は自動失効します。 Azure Active Directory、Azure リソース (プレビュー)、Microsoft Online Services では、[Azure AD Privileged Identity Management (PIM)](https://aka.ms/AzurePIM) をご利用いただけます。
 
 ![PIM dashboard][2]
 
@@ -68,7 +68,7 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 * [Azure AD Identity Protection](../active-directory-identityprotection.md) の有効化
 * [条件付きアクセス制御](../active-directory-conditional-access-azure-portal.md)の有効化
 
-包括的なセキュリティ ロードマップの構築に関する詳細については、ドキュメント「 [Microsoft Cloud Security for Enterprise Architects (エンタープライズ アーキテクト向けの Microsoft クラウド セキュリティ)](http://aka.ms/securecustomer) 」の「Customer responsibilities and roadmap (お客様の責任範囲とロードマップ)」のセクションを参照してください。 Microsoft サービスと連携して、これらのトピックについて支援を受ける方法の詳細については、Microsoft の担当者に問い合わせていただくか、 [サイバーセキュリティ ソリューションに関するページ](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)を参照してください。
+包括的なセキュリティ ロードマップの構築に関する詳細については、ドキュメント「 [Microsoft Cloud Security for Enterprise Architects (エンタープライズ アーキテクト向けの Microsoft クラウド セキュリティ)](https://aka.ms/securecustomer) 」の「Customer responsibilities and roadmap (お客様の責任範囲とロードマップ)」のセクションを参照してください。 Microsoft サービスと連携して、これらのトピックについて支援を受ける方法の詳細については、Microsoft の担当者に問い合わせていただくか、 [サイバーセキュリティ ソリューションに関するページ](https://www.microsoft.com/en-us/microsoftservices/campaigns/cybersecurity-protection.aspx)を参照してください。
 
 <!--Image references-->
 [1]: ../media/active-directory-privileged-identity-management-configure/Search_PIM.png

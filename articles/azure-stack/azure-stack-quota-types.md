@@ -3,8 +3,8 @@ title: "Azure Stack のクォータの種類 | Microsoft Docs"
 description: "Azure Stack のサービスとリソースで使用可能なさまざまなクォータの種類を確認します。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,21 +13,22 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
-ms.author: erikje
-ms.openlocfilehash: d9bb048ece32bf5b34e05d7459488aa0f24d0d44
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: da4105fa88848b14e5d5d0289859cfd0f85c8fee
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 [クォータ](azure-stack-plan-offer-quota-overview.md#plans)は、ユーザー サブスクリプションがプロビジョニングまたは使用できるリソースの制限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシンの作成を許可できます。 各リソースは、独自のクォータの種類を持つことが可能です。
 
 ## <a name="compute-quota-types"></a>Compute クォータの種類
-| **型** | **既定値** | **説明** |
+| **種類** | **既定値** | **説明** |
 | --- | --- | --- |
 | [Max number of virtual machines]\(仮想マシンの最大数\) | 20 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
 | [Max number of virtual machine cores]\(仮想マシン コアの最大数\) | 50 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
@@ -61,7 +62,7 @@ ms.lasthandoff: 10/25/2017
 2. 参照するクォータを使用したサービスを選択します。
 3. **[クォータ]** をクリックして、参照するクォータを選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [プラン、オファーおよびクォータについて](azure-stack-plan-offer-quota-overview.md)
 
 [プランの作成時にクォータを作成する](azure-stack-create-plan.md)

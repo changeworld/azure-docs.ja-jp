@@ -62,6 +62,7 @@
 ### [イベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)
 ### [イベント ハブ リーダーの制限](stream-analytics-event-hub-consumer-groups.md)
 ### [診断ログ](stream-analytics-job-diagnostic-logs.md)
+### [形式が間違っているイベントの取得](stream-analytics-malformed-events.md)
 
 ## 自動化
 ### [管理用 .NET SDK を使用する](stream-analytics-dotnet-management-sdk.md)

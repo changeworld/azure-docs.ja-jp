@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 6caff3237e9694a00fc0847d5612b7a6e08d4b69
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f7d51352aa8411e36f4224804c90c2554d4ef9e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>オープン ソース ツールを使用した Azure Network Watcher NSG フロー ログの視覚化
 
@@ -46,7 +46,7 @@ NSG のフロー ログを Elastic Stack に接続すると、Kibana ダッシ�
 1. Elastic Stack のバージョン 5.0 以降では、Java 8 が必要です。 `java -version` コマンドを実行して、現在のバージョンを確認します。 Java がインストールされていない場合は、[Oracle の Web サイト](http://docs.oracle.com/javase/8/docs/technotes/guides/install/install_overview.html)のドキュメントを参照してください。
 1. お使いのシステムに適合するバイナリ パッケージをダウンロードします。
 
-    ```
+    ```bash
     curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-5.2.0.deb
     sudo dpkg -i elasticsearch-5.2.0.deb
     sudo /etc/init.d/elasticsearch start
@@ -56,13 +56,13 @@ NSG のフロー ログを Elastic Stack に接続すると、Kibana ダッシ�
 
 1. 次のコマンドを使用して、Elasticsearch が実行されていることを確認します。
 
-    ```
+    ```bash
     curl http://127.0.0.1:9200
     ```
 
     次のような応答画面が表示されます。
 
-    ```
+    ```json
     {
     "name" : "Angela Del Toro",
     "cluster_name" : "elasticsearch",
@@ -83,13 +83,13 @@ Elasticsearch のインストール方法の詳細については、[インス�
 
 1. Logstash をインストールするには、次のコマンドを実行します。
 
-    ```
+    ```bash
     curl -L -O https://artifacts.elastic.co/downloads/logstash/logstash-5.2.0.deb
     sudo dpkg -i logstash-5.2.0.deb
     ```
 1. 次に、フロー ログにアクセスし、解析するように Logstash を構成する必要があります。 以下のコマンドで logstash.conf ファイルを作成します。
 
-    ```
+    ```bash
     sudo touch /etc/logstash/conf.d/logstash.conf
     ```
 
@@ -162,13 +162,13 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 この Logstash プラグインを使用すると、指定されたストレージ アカウントから、フロー ログに直接アクセスできます。 このプラグインをインストールするには、既定の Logstash インストール ディレクトリ (この場合、/usr/share/logstash/bin) から、次のコマンドを実行します。
 
-```
+```bash
 logstash-plugin install logstash-input-azureblob
 ```
 
 Logstash を開始するには、次のコマンドを実行します。
 
-```
+```bash
 sudo /etc/init.d/logstash start
 ```
 
@@ -178,14 +178,14 @@ sudo /etc/init.d/logstash start
 
 1. Kibana をインストールするには、次のコマンドを実行します。
 
-  ```
+  ```bash
   curl -L -O https://artifacts.elastic.co/downloads/kibana/kibana-5.2.0-linux-x86_64.tar.gz
   tar xzvf kibana-5.2.0-linux-x86_64.tar.gz
   ```
 
 1. Kibana を実行するには、次のコマンドを使用します。
 
-  ```
+  ```bash
   cd kibana-5.2.0-linux-x86_64/
   ./bin/kibana
   ```
@@ -241,7 +241,7 @@ sudo /etc/init.d/logstash start
 
 ネットワーク セキュリティ グループのフロー ログと Elastic Stack とを組み合わせることで、ネットワーク トラフィックを視覚化する強力でカスタマイズ可能な方法が実現します。 これらのダッシュボードによって、ネットワーク トラフィックに関する有用な情報を素早く取得して共有したり、潜在的な異常をフィルターして調査したりできます。 Kibana を使用して、これらのダッシュボードをカスタマイズし、セキュリティ、監査、およびコンプライアンスのニーズを満たすための特別な視覚化されたデータを作成できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関するページから、Power BI で NSG フロー ログを視覚化する方法について確認する
 

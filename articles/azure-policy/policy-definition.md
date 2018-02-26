@@ -9,11 +9,11 @@ ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
 ms.custom: 
-ms.openlocfilehash: af373e2770ad020b3a3eb669424c001670ec9204
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -66,14 +66,11 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 ## <a name="mode"></a>Mode
 
-`mode` を `all` に設定して、ポリシーの割り当てですべてのリソース グループと種類を評価できるようにすることをお勧めします。 「[Allow custom VM image from a Resource Group (リソース グループからのカスタムの VM イメージを許可する)](scripts/allow-custom-vm-image.md)」で、リソース グループにタグを適用するポリシー定義の例を確認できます。
+**mode** では、ポリシーに対して評価されるリソースの種類を決定します。 サポートされているモードは次のとおりです。
+* `all`: リソース グループとすべてのリソースの種類を評価します 
+* `indexed`: タグと場所をサポートするリソースの種類のみを評価します
 
-これを **all** に設定すると、リソース グループとすべてのリソース タイプがそのポリシーの評価対象になります。 ポータルでは、すべてのポリシーについて **all** が使用されます。 PowerShell または Azure CLI を使用する場合、`mode` パラメーターを指定して **all** に設定する必要があります。
-
-ポータルを使って作成したすべてのポリシー定義で、`all` モードを使用します。ただし、PowerShell または Azure CLI を使いたい場合は、`mode` パラメーターを指定して `all` に設定する必要があります。
-
-モードを `indexed` に設定した場合、タグと位置をサポートするリソースの種類のみで、ポリシーの割り当てが評価されます。
-
+**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを指定して `all` に設定する必要があります。 
 
 ## <a name="parameters"></a>parameters
 
@@ -265,6 +262,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 | Microsoft.Compute/virtualMachines/imageVersion | 仮想マシンを作成するために使用されるプラットフォーム イメージまたはマーケットプレース イメージのバージョンを設定します。 |
 | Microsoft.Compute/virtualMachines/osDisk.Uri | Vhd URI を設定します。 |
 | Microsoft.Compute/virtualMachines/sku.name | 仮想マシンのサイズを設定します。 |
+| Microsoft.Compute/virtualMachines/availabilitySet.id | 仮想マシンで使用する可用性セット ID を設定します。 |
 
 **Microsoft.Compute/virtualMachines/extensions**
 
@@ -335,6 +333,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 | Microsoft.Storage/storageAccounts/enableFileEncryption | ファイル ストレージ サービスに格納されるときに、サービスがデータを暗号化するかどうかを設定します。 |
 | Microsoft.Storage/storageAccounts/sku.name | SKU 名を設定します。 |
 | Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | ストレージ サービスへの https トラフィックのみを許可するように設定します。 |
+| Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules[*].id | Virtual Network サービス エンドポイントが有効にされているかどうかを確認します。 |
 
 ## <a name="initiatives"></a>イニシアティブ
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/12/2017
 ms.author: magoedte
-ms.openlocfilehash: 1549408c6885ee556a142ab7de613ebb1629070d
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 5121535768b7fb430486c1c2c623e1a3a488858f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-workspaces"></a>ワークスペースを管理する
 
@@ -34,7 +34,7 @@ Log Analytics へのアクセスを管理するには、ワークスペースに
 ## <a name="determine-the-number-of-workspaces-you-need"></a>必要なワークスペースの数を決定する
 ワークスペースは、Azure のリソースであり、収集、集計、分析され、Azure Portal に表示されるデータのコンテナーです。
 
-Azure サブスクリプションごとに複数のワークスペースを用意できるほか、複数のワークスペースにアクセスできます。 ワークスペースの数を最小限に抑えることで、ほとんどのデータをまたいだクエリと関連付けが可能になります。これは、複数のワークスペースをまたいだクエリの実行ができないためです。 このセクションでは、複数のワークスペースを作成すると便利な状況について説明します。
+Azure サブスクリプションごとに複数のワークスペースを用意できるほか、複数のワークスペースにアクセスできます。 以前は、現在のワークスペース内からしかデータを分析することができず、サブスクリプション内で定義された複数のワークスペース間でクエリを実行する機能が制限されていました。 現在は、[複数のワークスペース間でクエリを実行](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-cross-workspace-search)できるため、システム全体のデータを確認できるようになりました。 このセクションでは、複数のワークスペースを作成すると便利な状況について説明します。
 
 現時点では、ワークスペースに次の情報が示されます。
 
@@ -61,11 +61,11 @@ System Center Operations Manager を使用している場合、各 Operations Ma
 
 #### <a name="view-workspace-information-in-the-azure-portal"></a>Azure Portal でワークスペース情報を表示する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. Azure Portal の左下隅の **[その他のサービス]** をクリックします。  リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** をクリックします。  
-    ![Azure のハブ](./media/log-analytics-manage-access/hub.png)  
-3. Log Analytics サブスクリプションのブレードで、ワークスペースを選択します。
-4. ワークスペースのブレードに、ワークスペースに関する詳細と、その他の情報へのリンクが表示されます。  
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[すべてのサービス]** をクリックします。  リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** をクリックします。  
+    ![Azure の左側のメニューのスクリーンショット](./media/log-analytics-manage-access/hub.png)  
+3. Log Analytics サブスクリプションのページで、ワークスペースを選択します。
+4. ワークスペースのページに、ワークスペースに関する詳細と、その他の情報へのリンクが表示されます。  
     ![workspace details](./media/log-analytics-manage-access/workspace-details.png)  
 
 
@@ -81,10 +81,10 @@ Log Analytics ワークスペースへのアクセスを制御するアクセス
 
 次の表には、各アクセス許可モデルを使用して設定できるアクセス権がまとめてあります。
 
-|                          | Log Analytics ポータル | Azure Portal | API (PowerShell を含む) |
+|                          | Log Analytics ポータル | Azure ポータル | API (PowerShell を含む) |
 |--------------------------|----------------------|--------------|----------------------------|
-| Log Analytics ユーザー ロール | はい                  | なし           | いいえ                         |
-| Azure のロールベースのアクセス  | はい                  | あり          | はい                        |
+| Log Analytics ユーザー ロール | [はい]                  | いいえ            | いいえ                          |
+| Azure のロールベースのアクセス  | [はい]                  | [はい]          | [はい]                        |
 
 > [!NOTE]
 > Log Analytics で使用されるアクセス許可モデルは、Log Analytics ユーザー ロールから Azure のロールベースのアクセスに移行しつつあります。
@@ -95,7 +95,7 @@ Log Analytics ワークスペースへのアクセスを制御するアクセス
 
 次のアクティビティにも、Azure のアクセス許可が必要です。
 
-| アクション                                                          | 必要とされる Azure のアクセス許可 | メモ |
+| アクションを表示します。                                                          | 必要とされる Azure のアクセス許可 | メモ |
 |-----------------------------------------------------------------|--------------------------|-------|
 | 管理ソリューションの追加と削除                        | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | |
 | 価格レベルの変更                                       | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -114,12 +114,12 @@ Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー �
 - すべての監視データを表示および検索する 
 - 監視設定を表示する。これには、すべての Azure リソースに対する Azure 診断の構成の表示などが含まれます。
 
-| 型    | アクセス許可 | Description |
+| type    | アクセス許可 | [説明] |
 | ------- | ---------- | ----------- |
-| [操作] | `*/read`   | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
-| [操作] | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | ログ検索 v2 クエリを実行する機能 |
-| [操作] | `Microsoft.OperationalInsights/workspaces/search/action` | ログ検索 v1 クエリを実行する機能 |
-| [操作] | `Microsoft.Support/*` | サポート ケースを開く機能 |
+| アクションを表示します。 | `*/read`   | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
+| アクションを表示します。 | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | ログ検索 v2 クエリを実行する機能 |
+| アクションを表示します。 | `Microsoft.OperationalInsights/workspaces/search/action` | ログ検索 v1 クエリを実行する機能 |
+| アクションを表示します。 | `Microsoft.Support/*` | サポート ケースを開く機能 |
 |非アクション | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | データ コレクション API の使用とエージェントのインストールに必要なワークスペース キーの読み取りを防ぐ |
 
 
@@ -136,7 +136,7 @@ Azure には、Log Analytics 用に、次の 2 つの組み込みユーザー �
 > [!NOTE] 
 > 仮想マシンに仮想マシン拡張機能を追加する機能を使用して、仮想マシンに対するフル コントロールを取得することができます。
 
-| アクセス許可 | Description |
+| アクセス許可 | [説明] |
 | ---------- | ----------- |
 | `*/read`     | すべてのリソースとリソース構成を表示する機能。 次のものを表示できます。 <br> 仮想マシン拡張機能の状態 <br> リソースに対する Azure 診断の構成 <br> すべてのリソースのすべてのプロパティと設定 |
 | `Microsoft.Automation/automationAccounts/*` | Runbook の追加と編集など、Azure Automation アカウントを作成および構成する機能 |
@@ -168,11 +168,11 @@ OMS ポータルのロールの割り当ては、次のように決まります�
 |--------------------------------------------------------------|----------------------------------|-------|
 | アカウントが従来の Log Analytics ユーザー ロールに属している     | 指定された Log Analytics ユーザー ロール | |
 | アカウントが従来の Log Analytics ユーザー ロールに属していない <br> ワークスペースに対する Azure の完全なアクセス許可 (`*` アクセス許可 <sup>1</sup>) | 管理者 ||
-| アカウントが従来の Log Analytics ユーザー ロールに属していない <br> ワークスペースに対する Azure の完全なアクセス許可 (`*` アクセス許可 <sup>1</sup>) <br> `Microsoft.Authorization/*/Delete` と `Microsoft.Authorization/*/Write` の "*操作は除く*" | 共同作成者 ||
+| アカウントが従来の Log Analytics ユーザー ロールに属していない <br> ワークスペースに対する Azure の完全なアクセス許可 (`*` アクセス許可 <sup>1</sup>) <br> `Microsoft.Authorization/*/Delete` と `Microsoft.Authorization/*/Write` の "*操作は除く*" | Contributor ||
 | アカウントが従来の Log Analytics ユーザー ロールに属していない <br> Azure の読み取りアクセス許可 | 読み取り専用 ||
 | アカウントが従来の Log Analytics ユーザー ロールに属していない <br> Azure アクセス許可が認識されない | 読み取り専用 ||
 | クラウド ソリューション プロバイダー (CSP) が管理するサブスクリプションの場合 <br> サインインに使用したアカウントが、ワークスペースに関連付けられた Azure Active Directory 内にある | 管理者 | 通常は CSP の顧客 |
-| クラウド ソリューション プロバイダー (CSP) が管理するサブスクリプションの場合 <br> サインインに使用したアカウントが、ワークスペースに関連付けられた Azure Active Directory 内にない | 共同作成者 | 通常は CSP |
+| クラウド ソリューション プロバイダー (CSP) が管理するサブスクリプションの場合 <br> サインインに使用したアカウントが、ワークスペースに関連付けられた Azure Active Directory 内にない | Contributor | 通常は CSP |
 
 <sup>1</sup> ロール定義の詳細については、[Azure のアクセス許可](../active-directory/role-based-access-control-custom-roles.md)に関するページを参照してください。 ロールの評価時に `*` の操作は `Microsoft.OperationalInsights/workspaces/*` と同等ではありません。
 
@@ -181,7 +181,7 @@ Azure Portal に関して留意が必要ないくつかの点:
 * http://mms.microsoft.com を使用して OMS ポータルにサインインした場合、**[ワークスペースの選択]** 一覧が表示されます。 この一覧には、Log Analytics ユーザー ロールを付与されているワークスペースのみが表示されます。 Azure サブスクリプションを使用してアクセスするワークスペースを表示するには、URL の一部としてテナントを指定する必要があります。 たとえば、「`mms.microsoft.com/?tenant=contoso.com`」のように入力します。 テナント ID は多くの場合、サインインに使用される電子メール アドレスの最後の部分です。
 * Azure のアクセス許可を使用してアクセスできるポータルに直接移動する場合は、URL の一部としてリソースを指定する必要があります。 この URL は PowerShell を使用して取得できます。
 
-  たとえば、「 `(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`」のように入力します。
+  たとえば、「`(Get-AzureRmOperationalInsightsWorkspace).PortalUrl`」のように入力します。
 
   URL は、`https://eus.mms.microsoft.com/?tenant=contoso.com&resource=%2fsubscriptions%2faaa5159e-dcf6-890a-a702-2d2fee51c102%2fresourcegroups%2fdb-resgroup%2fproviders%2fmicrosoft.operationalinsights%2fworkspaces%2fmydemo12` のようになります。
 
@@ -270,10 +270,10 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 7. 必要に応じて、次の項目の値を変更できます。
    * [サブスクリプション]
    * リソース グループ
-   * Location (場所)
+   * 場所
    * [価格レベル]   
      ![値を変更する](./media/log-analytics-manage-access/manage-access-link-azure05.png)
-8. **[OK]**をクリックします。 これでワークスペースがユーザーの Azure アカウントにリンクされました。
+8. Click **OK**. これでワークスペースがユーザーの Azure アカウントにリンクされました。
 
 > [!NOTE]
 > リンクするワークスペースが表示されない場合、OMS ポータルで作成したワークスペースにアクセスする許可がユーザーの Azure サブスクリプションにありません。  OMS ポータルからこのアカウントへのアクセスを許可するには、「[既存のワークスペースへのユーザーの追加](#add-a-user-to-an-existing-workspace)」を参照してください。
@@ -292,6 +292,6 @@ OMS アカウントに関連付けられているユーザーのアカウント 
 3. Azure Active Directory ドメインの管理者の ID 情報を入力します。 その後、ワークスペースが Azure Active Directory ドメインにリンクされたことを示す確認が表示されます。  
     ![リンクされているワークスペースの確認](./media/log-analytics-manage-access/manage-access-add-adorg02.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * ソリューションで収集され、コンピューターから送信されるデータの量を分析する方法については、[データ使用状況](log-analytics-usage.md)に関する記事を参照してください。
 * [Azure マーケットプレースから Log Analytics 管理ソリューションを追加](log-analytics-add-solutions.md)して、機能を追加し、データを収集します。

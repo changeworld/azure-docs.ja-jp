@@ -61,6 +61,7 @@
 # 方法
 ## [Azure Automation を使用して VPN Gateway を監視する](network-watcher-monitor-with-azure-automation.md)
 ## [VPN Gateway を使用してオンプレミスの接続を診断する](network-watcher-diagnose-on-premises-connectivity.md)
+## [ネットワーク接続を監視する](connection-monitor.md)
 ## [PowerShell を使用してネットワークのコンプライアンスと監査を実行する](network-watcher-nsg-auditing-powershell.md)
 ## [Azure Log Analytics で Application Gateway のログを分析する](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
 ## パケット キャプチャ

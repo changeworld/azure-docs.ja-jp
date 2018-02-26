@@ -4,7 +4,7 @@ description: "サブネットを Virtual Network サービス エンドポイン
 services: sql-database
 documentationcenter: 
 author: MightyPen
-manager: jhubbard
+manager: craigg
 editor: 
 tags: 
 ms.assetid: 
@@ -14,13 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: On Demand
-ms.date: 01/31/2018
-ms.author: genemi
-ms.openlocfilehash: d4179c590ef418633158dd5a5dbadbc8c20bcde7
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.date: 02/20/2018
+ms.reviewer: genemi
+ms.author: dmalik
+ms.openlocfilehash: 33ce521903265f60715f66220c4d038cf6d86671
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -127,9 +128,6 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 
 Azure SQL Database の場合、仮想ネットワーク規則機能には以下のような制限事項があります。
 
-- 現時点では、**サービス エンドポイント**がオンになっているサブネット内の Azure Web アプリは、まだ期待どおりに機能しません。 この機能を提供できるように取り組んでいます。
-    - この機能が完全に実装されるまで、SQL に対してオンになっているサービス エンドポイントがない別のサブネットに Web アプリを移動することをお勧めします。
-
 - SQL Database のファイアウォールでは、各仮想ネットワーク規則はサブネットを参照します。 これらの参照されるサブネットはすべて、SQL Database がホストされているのと同じ geographic 型のリージョンでホストされている必要があります。
 
 - 各 Azure SQL Database サーバーは、指定された仮想ネットワークに対して最大 128 個までの ACL エントリを保持できます。
@@ -142,6 +140,12 @@ Azure SQL Database の場合、仮想ネットワーク規則機能には以下�
 - ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
     - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
     - [ExpressRoute][expressroute-indexmd-744v] 経由のオンプレミス
+
+#### <a name="considerations-when-using-service-endpoints"></a>サービス エンドポイントを使用する場合の考慮事項
+Azure SQL Database のサービス エンドポイントを使用する場合、次の考慮事項を確認してください。
+
+- **Azure SQL Database Public IP への送信が必要**: ネットワーク セキュリティ グループ (NSG) は、接続を許可するために Azure SQL Database IP に対して開かれている必要があります。 Azure SQL Database に NSG の[サービス タグ](../virtual-network/security-overview.md#service-tags)を使用して、この設定を行うことができます。
+- **Azure Database for PostgreSQL と MySQL はサポートされない**: サービス エンドポイントは、Azure Database for PostgreSQL または MySQL に対してサポートされていません。 SQL Database へのサービス エンドポイントを有効にすると、これらのサービスへの接続が中断されます。 これに対する軽減策があります。*dmalik@microsoft.com* までお問い合わせください。
 
 #### <a name="expressroute"></a>ExpressRoute
 
@@ -170,6 +174,8 @@ Azure SQL Database クエリ エディターは、Azure の VM にデプロイ�
 #### <a name="table-auditing"></a>テーブル監査
 現在、SQL Database で監査を有効にする方法が 2 つあります。 Azure SQL Server でサービス エンドポイントを有効にすると、テーブル監査は失敗します。 この問題を軽減するには、BLOB 監査に移行します。
 
+#### <a name="impact-on-data-sync"></a>データ同期への影響
+Azure SQLDB には、Azure IP を使用してデータベースに接続するデータ同期機能があります。 サービス エンドポイントを使用する場合、使用している論理サーバーへの**すべての Azure サービス**のアクセスの許可をオフにすることがあります。 これにより、データ同期機能が中断されます。
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Azure Storage で VNet サービス エンドポイントを使用した場合の影響
 
@@ -177,7 +183,7 @@ Azure Storage は、ストレージ アカウントへの接続を制限でき�
 Azure SQL Server で使用されているストレージ アカウントでこの機能を使用すると、問題が発生する可能性があります。 この影響を受ける Azure SQLDB の機能について以下に説明します。
 
 #### <a name="azure-sqldw-polybase"></a>Azure SQLDW PolyBase
-PolyBase は、ストレージ アカウントから Azure SQLDW にデータを読み込むときによく使用されます。 データの読み込み元のストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。
+PolyBase は、ストレージ アカウントから Azure SQLDW にデータを読み込むときによく使用されます。 データの読み込み元のストレージ アカウントが、アクセス先を一連の VNet サブネットだけに制限している場合、PolyBase からアカウントへの接続は切断されます。 これに対する軽減策があります。詳細については、*dmalik@microsoft.com* までお問い合わせください。
 
 #### <a name="azure-sqldb-blob-auditing"></a>Azure SQLDB の BLOB 監査
 BLOB 監査では、監査ログをユーザー独自のストレージ アカウントにプッシュします。 このストレージ アカウントが VENT サービス エンドポイント機能を使用している場合、Azure SQLDB からストレージ アカウントへの接続は切断されます。

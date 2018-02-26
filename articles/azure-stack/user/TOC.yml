@@ -19,7 +19,7 @@
       href: azure-stack-quick-create-vm-linux-powershell.md
     - name: Linux VM の作成 - CLI
       href: azure-stack-quick-create-vm-linux-cli.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: Azure と Azure Stack へのアプリのデプロイ
       href: azure-stack-solution-pipeline.md
@@ -45,7 +45,7 @@
               href: azure-stack-vm-considerations.md
             - name: VM ディスクの管理
               href: azure-stack-manage-vm-disks.md
-        - name: ストレージ
+        - name: Storage
           items:
             - name: 概要
               href: azure-stack-storage-overview.md
@@ -127,11 +127,15 @@
       href: /azure/azure-stack/
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: Azure Stack のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
+    - name: Azure Stack の MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
+    - name: Azure Stack のドキュメントのフィードバック
+      href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: 料金情報
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-stack'
+    - name: トレーニングと認定
+      href: 'https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert'

@@ -4,7 +4,7 @@ description: "Azure Virtual Machines で実行されている SQL Server に対�
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: 3333e830-8a60-42f5-9f44-8e02e9868d7b
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: jroth
-ms.openlocfilehash: 81910dd9c2743484ca65bd21e400a1a52e961a19
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 05f5ec690fbf1ea2f4f6a6d927685d7a34ac9273
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>Azure Virtual Machines での SQL Server の自動バックアップ (クラシック)
 > [!div class="op_single_selector"]
@@ -62,10 +62,10 @@ ms.lasthandoff: 01/24/2018
 
 * [SQL Server IaaS 拡張機能をインストールします](../classic/sql-server-agent-extension.md)。
 
-## <a name="settings"></a>[設定]
+## <a name="settings"></a>設定
 自動バックアップで構成できるオプションを次の表に示します。 クラシック VM の場合は、PowerShell を使用してこれらの設定を構成する必要があります。
 
-| 設定 | 範囲 (既定値) | [説明] |
+| Setting | 範囲 (既定値) | [説明] |
 | --- | --- | --- |
 | **自動化されたバックアップ** |有効/無効 (無効) |SQL Server 2014 Standard または Enterprise を実行している Azure VM で、自動バックアップを有効または無効にします。 |
 | **保有期間** |1 ～ 30 日 (30 日) |バックアップを保持する日数。 |

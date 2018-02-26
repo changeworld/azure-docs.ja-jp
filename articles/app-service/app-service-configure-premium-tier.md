@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure App Service の PremiumV2 レベルの構成 |Microsoft ドキュメント"
 description: "新しい PremiumV2 価格レベルにスケーリングすることによって、Azure App Service で Web、モバイル、および API アプリのパフォーマンスを向上させる方法について説明します。"
 keywords: "App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.openlocfilehash: 92cc8d8b0f67dde95ea2e3fc2f0f083bd8ac8aab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76897173d9fdfffe7139e7c5648ad0efb1c05b97
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service の PremiumV2 レベルの構成
 
-新しい **PremiumV2** 価格レベル は、**標準** レベルと比較して高速なプロセッサ、SSD ストレージ、メモリコア比が 2 倍の [Dv2 シリーズ VM](../virtual-machines/windows/sizes-general.md#dv2-series) を提供します。 この記事では、**PremiumV2** レベルでアプリを作成する方法またはアプリを **PremiumV2** レベルにスケール アップする方法について説明します。
+新しい **PremiumV2** の価格レベルでは、プロセッサ、SSD ストレージが高速化され、メモリ対コア比が既存の価格レベルの 2 倍になっています。 パフォーマンスの利点を生かして、少ないインスタンス上でアプリを実行することで、費用を節約することができます。 この記事では、**PremiumV2** レベルでアプリを作成する方法またはアプリを **PremiumV2** レベルにスケール アップする方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,11 +56,11 @@ App Service アプリの価格レベルは、実行されている [App Service 
 ![](media/app-service-configure-premium-tier/pick-premium-tier.png)
 
 > [!IMPORTANT] 
-> **P1V2**、 **P2V2**、および **P3V2** がオプションとして表示されない場合は、**PremiumV2** が選択したリージョンで利用できないか、**PremiumV2** をサポートしない Linux App Service プランを構成しているかのいずれかです。
+> **P1V2**、**P2V2**、および **P3V2** がオプションとして表示されない場合は、**PremiumV2** が選択したリージョンで利用できないか、**PremiumV2** をサポートしない Linux App Service プランを構成しているかのいずれかです。
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>既存のアプリを PremiumV2 レベルにスケール アップする
 
-既存のアプリを **PremiumV2** レベルにスケーリングする前に、**PremiumV2** をリージョンで使用できることを確認してください。 詳細については、「[PremiumV2 の利用可能性](#availability)」を参照してください。 です。 リージョンで使用できない場合は、「[サポートされていないリージョンからのスケール アップ](#unsupported)」を参照してください。
+既存のアプリを **PremiumV2** レベルにスケーリングする前に、**PremiumV2** をリージョンで使用できることを確認してください。 詳細については、「[PremiumV2 の利用可能性](#availability)」を参照してください。 リージョンで使用できない場合は、「[サポートされていないリージョンからのスケール アップ](#unsupported)」を参照してください。
 
 ホスティング環境によっては、スケール アップに追加の手順が必要になる場合があります。 
 
@@ -80,7 +80,7 @@ App Service アプリ ページの左側のナビゲーションで、**[スケ�
 
 ### <a name="if-you-get-an-error"></a>エラーが発生した場合
 
-一部の App Service プランは PremiumV2 レベルにスケール アップできません。 スケール アップ操作でエラーが発生した場合、アプリには新しい App Service プランが必要です。
+一部の App Service プランは、PremiumV2 レベルにスケール アップできません。 スケール アップ操作でエラーが発生した場合、アプリには新しい App Service プランが必要です。
 
 同じリージョンおよびリソース グループ内で _Windows_ App Service アプリを既存の App Service アプリとして作成します。 「[PremiumV2 レベルでアプリを作成する](#create)」 の手順に従って、**PremiumV2** レベルに設定します。 必要な場合は、既存の App Service プランと同じスケール アウト構成 (インスタンスの数、自動スケールなど) を使用します。
 
@@ -105,7 +105,7 @@ App Service アプリ ページをもう一度開きます。 App Service アプ
 
     ![](media/app-service-configure-premium-tier/clone-app.png)
 
-    **アプリの複製**ページで、新しい App Service プランを指定のリージョンで作成し、複製する設定を指定することができます。
+    **[アプリの複製]** ページで、App Service プランを目的のリージョンで作成し、複製する設定を指定することができます。
 
 ## <a name="automate-with-scripts"></a>スクリプトで自動化する
 

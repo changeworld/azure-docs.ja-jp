@@ -3,8 +3,8 @@ title: "SQL データベースを Azure Stack ユーザーから使用可能に�
 description: "SQL Server リソース プロバイダーをインストールし、Azure Stack ユーザーが SQL データベースを作成できるようにするオファーを作成するためのチュートリアル。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: 
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 
 ms.service: azure-stack
@@ -13,13 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 7/03/2017
-ms.author: erikje
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: f774888ba3921d0688feddac669ed1dca4667441
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9fd74fa44bb9482ee2285f4305085ee6ff2fb73
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL データベースを Azure Stack ユーザーから使用可能にする
 
@@ -40,7 +41,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 
 ## <a name="create-an-offer"></a>オファーの作成
 
-1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *SQLServerQuota* という名前を付けます。 **[Namespace] \(名前空間)** フィールドの **[Microsoft.SQLAdapter]** を選択します。
+1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *SQLServerQuota* という名前を付けます。 **[Namespace] (名前空間)** フィールドの **[Microsoft.SQLAdapter]** を選択します。
 2.  [プランを作成します](azure-stack-create-plan.md)。 それに *TestSQLServerPlan* という名前を付け、**[Microsoft.SQLAdapter]** サービスおよび **[SQLServerQuota]** クォータを選択します。
 
     > [!NOTE]
@@ -56,7 +57,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 
 ### <a name="subscribe-to-the-offer"></a>オファーへのサブスクライブ
 1. テナントとして Azure Stack ポータル (https://portal.local.azurestack.external) にサインインします。
-2. **[Get a subscription] \(サブスクリプションの取得)** をクリックし、**[Display Name] \(表示名)** の下に「**TestSQLServerSubscription**」と入力します。
+2. **[Get a subscription] (サブスクリプションの取得)** をクリックし、**[Display Name] (表示名)** の下に「**TestSQLServerSubscription**」と入力します。
 3. **[Select an offer] \(オファーの選択)** > **[TestSQLServerOffer]** > **[作成]** をクリックします。
 4. **[その他のサービス]** > **[サブスクリプション]** > **[TestSQLServerSubscription]** > **[Resource providers] \(リソース プロバイダー)** をクリックします。
 5. **[Microsoft.SQLAdapter]** プロバイダーの横にある **[Register] \(登録)** をクリックします。
@@ -73,7 +74,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 4. **[SKU]** をクリックし、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
 5. **Create** をクリックしてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

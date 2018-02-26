@@ -3,22 +3,23 @@ title: "Azure Stack クイック スタート - VM ポータルの作成"
 description: "Azure Stack クイック スタート - ポータルを使用した Linux VM の作成"
 services: azure-stack
 cloud: azure-stack
-author: vhorne
-manager: byronr
+author: brenduns
+manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/25/2017
-ms.author: victorh
+ms.date: 12/11/2017
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: a97372002052570ccad2bb8bc442eb0dd1ca76d9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: d4aef23e2de327fabb1f0304d8a3db1497d55827
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-the-azure-stack-portal"></a>Azure Stack ポータルで Linux 仮想マシンを作成する
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack 仮想マシンは、Azure Stack ポータルで作成できます。 この方法では、仮想マシンとすべての関連リソースを作成して構成するためのブラウザー ベースのユーザー インターフェイスが提供されます。 このクイック スタートでは、Linux 仮想マシンをすばやく作成し、そこに Web サーバーをインストールする方法を示します。
 
@@ -59,7 +60,7 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
 ## <a name="create-the-virtual-machine"></a>仮想マシンの作成
 
-1. Azure Stack ポータルの左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Stack ポータルの左上隅にある **[リソースの作成]** をクリックします。
 
 2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。
 3. **Create** をクリックしてください。
@@ -121,7 +122,7 @@ sudo apt-get -y install nginx
 3. 左側のメニューの **[設定]** で、**[受信セキュリティ規則]** をクリックします。
 4. **[追加]**をクリックします。
 5. **[名前]** で「**http**」と入力します。 **[ポート範囲]** が 80 に設定されていることと、**[アクション]** が **[許可]** に設定されていることを確認します。 
-6. **[OK]**をクリックします。
+6. Click **OK**.
 
 
 ## <a name="view-the-nginx-welcome-page"></a>NGINX のようこそページの表示
@@ -137,7 +138,7 @@ Web ブラウザーを開き、```http://<public IP address>``` を参照しま�
 
 必要がなくなったら、リソース グループ、仮想マシン、すべての関連リソースを削除します。 そのためには、仮想マシン ページでリソース グループを選択し、**[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、単純な Linux 仮想マシンとネットワーク セキュリティ グループの規則をデプロイし、Web サーバーをインストールしました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。
 

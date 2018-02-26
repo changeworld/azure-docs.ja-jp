@@ -4,7 +4,7 @@ description: "SQL Server を Azure Storage に バックアップする方法に
 services: virtual-machines-windows
 documentationcenter: 
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 tags: azure-service-management
 ms.assetid: 0db7667d-ef63-4e2b-bd4d-574802090f8b
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.openlocfilehash: d3df6b25fe524c500cf1a1333ac136e8a29d1484
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 39d4f452143454a345bd91f550e44c93651ff933
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage を使用した SQL Server のバックアップと復元
 ## <a name="overview"></a>概要
@@ -46,7 +46,7 @@ SQL Server をバックアップするときに直面する課題はいくつか
 ## <a name="azure-blob-storage-service-components"></a>Azure Blob Storage サービスのコンポーネント
 Azure BLOB ストレージ サービスにバックアップする際に、次の Azure コンポーネントを使用します。
 
-| コンポーネント | Description |
+| コンポーネント | [説明] |
 | --- | --- |
 | **ストレージ アカウント** |ストレージ アカウントはすべてのストレージ サービスの出発点となります。 Azure Blob Storage サービスにアクセスするには、まず Azure のストレージ アカウントを作成します。 Azure BLOB ストレージ サービスの詳細については、「 [How to use the Azure Blob Storage Service (Azure BLOB ストレージ サービスを使用する方法)](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
 | **コンテナー** |コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。 SQL Server のバックアップを Azure Blob service に書き込むには、少なくとも root コンテナーが作成されている必要があります。 |
@@ -55,7 +55,7 @@ Azure BLOB ストレージ サービスにバックアップする際に、次�
 ## <a name="sql-server-components"></a>SQL Server のコンポーネント
 Azure BLOB ストレージ サービスにバックアップする際に、次の SQL Server コンポーネントを使用します。
 
-| コンポーネント | Description |
+| コンポーネント | [説明] |
 | --- | --- |
 | **URL** |URL は一意のバックアップ ファイルへの Uniform Resource Identifier (URI) を参照します。 URL を使用して SQL Server バックアップ ファイルの場所と名前を指定します。 URL は、コンテナーだけでなく実際の BLOB を参照する必要があります。 BLOB が存在しない場合は作成されます。 既存の BLOB を指定した場合、> WITH FORMAT オプションを指定していないと、BACKUP は失敗します。 BACKUP コマンドで URL を指定する例を次に示します。**http[s]://[ストレージ アカウント].blob.core.windows.net/[コンテナー]/[ファイル名.bak]** HTTPS は必須ではありませんが、使用することをお勧めします。 |
 | **資格情報** |Azure BLOB ストレージ サービスに対する接続と認証に必要な情報は資格情報として保存されます。  SQL Server から Azure BLOB に対してバックアップを書き込んだり復元したりするには、SQL Server 資格情報を作成する必要があります。 詳細については、 [SQL Server 資格情報](https://msdn.microsoft.com/library/ms189522.aspx)に関するページを参照してください。 |
@@ -65,7 +65,7 @@ Azure BLOB ストレージ サービスにバックアップする際に、次�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 1. まだお持ちでない場合は、Azure アカウントを作成します。 Azure を評価する場合は、 [無料試用版](https://azure.microsoft.com/free/)を検討してください。
 2. 次に、ストレージ アカウントの作成と復元の実行の手順について説明する次のいずれかのチュートリアルを確認します。
    

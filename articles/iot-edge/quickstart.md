@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 17675f870a015e86f98bf286a9b1c2bbc05c16cd
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: 803b0bbff12c8ce471c0bff5e22e24601b8ce07f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Windows デバイスに展開する - プレビュー
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 11/18/2017
 3. [Python 2.7 を Windows][lnk-python] にインストールし、pip コマンドを使用できるようにします。
 4. 次のコマンドを実行して、IoT Edge 制御スクリプトをダウンロードします。
 
-   ```
+   ```cmd
    pip install -U azure-iot-edge-runtime-ctl
    ```
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/18/2017
 >    * x64 ベース デバイス上の Windows IoT Core (ビルド 16299)
 >
 > Windows IoT Core については、[Windows IoT Core への IoT Edge ランタイムのインストール][lnk-install-iotcore]に関するページの手順に従ってください。 それ以外の場合は、[Windows コンテナーを使用するように Docker を構成][lnk-docker-containers]し、必要に応じて次の PowerShell コマンドを使用して、前提条件を検証します。
->    ```
+>    ```powershell
 >    Invoke-Expression (Invoke-WebRequest -useb https://aka.ms/iotedgewin)
 >    ```
 
@@ -78,19 +78,19 @@ IoT Edge ランタイムはすべての IoT Edge デバイスに展開されま�
 
 前のセクションで保存した IoT Edge デバイス接続文字列を使用してランタイムを構成します。
 
-```
+```cmd
 iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 ランタイムを開始します。
 
-```
+```cmd
 iotedgectl start
 ```
 
 Docker を調べて、IoT Edge エージェントがモジュールとして実行されていることを確認します。
 
-```
+```cmd
 docker ps
 ```
 
@@ -104,7 +104,7 @@ docker ps
 
 このクイック スタートでは、新しい IoT Edge デバイスを作成し、そこに IoT Edge ランタイムをインストールしました。 その後、Azure Portal を使用して、IoT Edge モジュールをプッシュし、デバイス自体を変更せずにモジュールをデバイスで実行しました。 この場合は、プッシュしたモジュールによって、チュートリアルで使用できる環境データが作成されます。 
 
-シミュレーション対象デバイスを実行するコンピューターで、コマンド プロンプトを再度開きます。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。 
+シミュレートされたデバイスを実行しているコンピューターで、もう一度コマンド プロンプトを開きます。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。 
 
 ```cmd
 docker ps
@@ -118,7 +118,7 @@ tempSensor モジュールからクラウドに送信されているメッセー
 docker logs -f tempSensor
 ```
 
-![ご利用のデバイスのデータを表示する](./media/tutorial-simulate-device-windows/docker-logs.png)
+![モジュールからのデータを表示する](./media/tutorial-simulate-device-windows/docker-logs.png)
 
 また、[IoT Hub エクスプローラー ツール][lnk-iothub-explorer]を使用して、デバイスが送信しているテレメトリを表示することもできます。 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
@@ -129,7 +129,7 @@ docker logs -f tempSensor
 az iot hub delete --name {your iot hub name} --resource-group {your resource group name}
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Edge モジュールを IoT Edge デバイスに展開する方法について学習しました。 エッジでデータを分析できるように、さまざまな種類の Azure サービスをモジュールとして展開してみてください。 
 

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: On Demand
-ms.date: 02/07/2017
-ms.author: sashan;carlrab
-ms.openlocfilehash: da463bcaf91321b65c8ad1067e457b88c8dcd58f
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 02/12/2018
+ms.author: carlrab
+ms.openlocfilehash: 4efa053afd26bde208441c4b841c5d02142a2d18
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="sql-database-faq"></a>SQL Database に関する FAQ
 
@@ -44,7 +44,7 @@ SQL Database では、予測可能な 1 時間単位のレートで、サービ�
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Single Database がアクティブであったのが 1 時間に満たない場合や上位のサービス階層の使用が 1 時間に満たない場合はどうなりますか。
 使用状況やデータベースがアクティブであったのが 1 時間未満であったことに関係なく、データベースが存在していた 1 時間単位で、その時間に使用された最上位のサービス階層とパフォーマンス レベルで課金は行われます。 たとえば、Single Database を作成し、それを 5 分後に削除した場合、請求書にはデータベース時間として 1 時間の請求が表示されます。 
 
-例
+次に例を示します。
 
 * Basic データベースを作成し、それをすぐに Standard S1 にアップグレードした場合、最初の 1 時間分として Standard S1 のレートが課金されます。
 * データベースを午後 10 時 00 分に Basic から Premium にアップグレードし始めて、 午前 1 時 35 分にアップグレードが完了した場合、 翌日の午前 1 時 00 分から Premium 料金での課金が始まります。 
@@ -53,7 +53,7 @@ SQL Database では、予測可能な 1 時間単位のレートで、サービ�
 ## <a name="how-does-elastic-pool-usage-show-up-on-my-bill-and-what-happens-when-i-change-edtus-per-pool"></a>エラスティック プールの使用量は請求書にどのように表示されますか。プールあたりの eDTU を変更した場合どうなりますか。
 エラスティック プールの料金は、[価格ページ](https://azure.microsoft.com/pricing/details/sql-database/)のプールあたりの最大 eDTU 数の部分に記載の単位に従い、請求書にエラスティック DTU (eDTU) として表示されます。 エラスティック プールでは、データベース単位の請求はありません。 課金は、使用量やプールがアクティブであったのが 1 時間に満たないということに関係なく、プールが存在していた時間の最上位の eDTU を使用して 1 時間単位で行われます。 
 
-例
+次に例を示します。
 
 * 午前 11 時 18 分に 200 eDTU の Standard エラスティック プールを作成し、プールに 5 つのデータベースを追加した場合、午前 11 時から始まって、その日中は 1 時間 200 eDTU が 課金されます。
 * 2 日目には、データベース 1 が午前 5 時 5 分から 50 eDTU の消費を開始し、その日はそれが維持されます。 データベース 2 ～ 5 は、0 ～ 80 eDTU の間で変動します。 その日、その 1 日間異なる eDTU を消費するデータベースが他に 5 つ追加されました。 2 日目は、丸 1 日 200 eDTU が課金されます。 
@@ -76,7 +76,7 @@ eDtu およびサービス レベルについては、 [SQL Database のオプ�
 エラスティック データベースで [アクティブ geo レプリケーション](sql-database-geo-replication-overview.md) を使用した場合、単一データベースとは異なり、請求書には直接の影響はありません。  各プール (プライマリ プールおよびセカンダリ プール) にプロビジョニングされた eDTU に対してのみ課金されます。
 
 ## <a name="how-does-the-use-of-the-auditing-feature-impact-my-bill"></a>監査機能を使用すると請求書にどのような影響がありますか。
-監査機能は、追加料金なしで SQL Database サービスに組み込まれており、Basic、Standard、Premium、および Premium RS データベースで利用可能です。 ただし、監査ログを保存する場合、監査機能は Azure Storage アカウントを使用するので、監査ログのサイズに応じて Azure Storage のテーブルとキューの料金が課されます。
+監査機能は、追加料金なしで SQL Database サービスに組み込まれており、Basic、Standard、Premium データベースで利用可能です。 ただし、監査ログを保存する場合、監査機能は Azure Storage アカウントを使用するので、監査ログのサイズに応じて Azure Storage のテーブルとキューの料金が課されます。
 
 ## <a name="how-do-i-find-the-right-service-tier-and-performance-level-for-single-databases-and-elastic-pools"></a>Single Database とエラスティック プールに適したサービス階層とパフォーマンス レベルはどのように調べることができますか。
 使用できるツールが少数あります。 
@@ -86,7 +86,7 @@ eDtu およびサービス レベルについては、 [SQL Database のオプ�
 * Single Database の調整については、「 [Single Database のパフォーマンス ガイダンス](sql-database-performance-guidance.md)」を参照してください。
 
 ## <a name="how-often-can-i-change-the-service-tier-or-performance-level-of-a-single-database"></a>Single Database のサービス階層またはパフォーマンス レベルは何回変更できますか。
-サービス階層 (Basic、Standard、Premium、および Premium RS) または (S1 から S2 などの) サービス階層のパフォーマンス レベルは、必要な回数だけ変更できます。 以前のバージョンのデータベースでは、サービス階層またはパフォーマンス レベルは、24 時間で合計 4 回変更できます。
+サービス階層 (Basic、Standard、および Premium) または (S1 から S2 などの) サービス階層内のパフォーマンス レベルは、必要な回数だけ変更できます。 以前のバージョンのデータベースでは、サービス階層またはパフォーマンス レベルは、24 時間で合計 4 回変更できます。
 
 ## <a name="how-often-can-i-adjust-the-edtus-per-pool"></a>各プールの eDTU はどのくらいの頻度で調整できますか。
 頻度に制限はありません。必要なだけ調整できます。
@@ -119,7 +119,7 @@ geo セカンダリは非同期レプリカであり、プライマリとの完�
 DMV を使ってプライマリ データベースと geo セカンダリの間のリアルタイムのレプリケーションの遅延を公開しています。 詳細については、[sys.dm_geo_replication_link_status](https://msdn.microsoft.com/library/mt575504.aspx) に関するページをご覧ください。
 
 ## <a name="to-move-a-database-to-a-different-server-in-the-same-subscription"></a>同じサブスクリプション内の別のサーバーにデータベースを移動するには
-* [Azure Portal](https://portal.azure.com) で **[SQL データベース]** をクリックし、一覧からデータベースを選択してから、**[コピー]** をクリックします。 詳細については、「 [Azure SQL データベースのコピー](sql-database-copy.md) 」を参照してください。
+[Azure Portal](https://portal.azure.com) で **[SQL データベース]** をクリックし、一覧からデータベースを選択してから、**[コピー]** をクリックします。 詳細については、「 [Azure SQL データベースのコピー](sql-database-copy.md) 」を参照してください。
 
 ## <a name="to-move-a-database-between-subscriptions"></a>サブスクリプション間でデータベースを移動するには
-* [Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からデータベースをホストするサーバーを選択します。 **[移動]**をクリックし、移動するリソースと移動先のサブスクリプションを選択します。
+[Azure Portal](https://portal.azure.com) で **[SQL Server]** をクリックし、一覧からデータベースをホストするサーバーを選択します。 **[移動]**をクリックし、移動するリソースと移動先のサブスクリプションを選択します。

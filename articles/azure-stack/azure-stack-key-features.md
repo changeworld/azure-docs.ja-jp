@@ -3,8 +3,8 @@ title: "Azure Stack の主要な機能と概念 | Microsoft Docs"
 description: "Azure Stack の主要な機能と概念について説明します。"
 services: azure-stack
 documentationcenter: 
-author: Heathl17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: 09ca32b7-0e81-4a27-a6cc-0ba90441d097
 ms.service: azure-stack
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: fd16748e1369b8abcab38ce1945f72c681c344b8
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: b252d3d52c9bf3825ae2b443065e007dda141b24
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。
 
@@ -44,9 +45,9 @@ Azure Stack は、ID プロバイダーとして Azure Active Directory (AAD) �
 Azure Active Directory は、マイクロソフトが提供するクラウドベースのマルチテナント対応 ID プロバイダーです。  ほとんどのハイブリッド シナリオでは、ID ストアとして Azure Active Directory を使用します。
 
 ### <a name="active-directory-federation-services"></a>Active Directory フェデレーション サービス (AD FS)
-Azure Stack の未接続デプロイでは、Active Directory フェデレーション サービス (AD FS) を使用することを選択できます。  Azure Stack、リソース プロバイダー、およびその他のアプリケーションは、Azure Active Directory を使用するのとほぼ同じ方法で AD FS を使用します。 Azure Stack には、独自の AD FS および Active Directory インスタンスと、Active Directory Graph API が含まれています。 Azure Stack Development Kit は、次の AD FS シナリオをサポートします。
+Azure Stack のオフラインでの展開に Active Directory フェデレーション サービス (AD FS) を使用することを選択できます。  Azure Stack、リソース プロバイダー、およびその他のアプリケーションは、Azure Active Directory を使用するのとほぼ同じ方法で AD FS を使用します。 Azure Stack には、独自の AD FS および Active Directory インスタンスと、Active Directory Graph API が含まれています。 Azure Stack Development Kit は、次の AD FS シナリオをサポートします。
 
-- AD FS を使用してデプロイにサインインする
+- AD FS を使用して展開にサインインする
 - Key Vault 内のシークレットを使用して仮想マシンを作成する
 - シークレットを格納/アクセスするためのコンテナーを作成する
 - サブスクリプション内にカスタム RBAC ロールを作成する
@@ -57,13 +58,13 @@ Azure Stack の未接続デプロイでは、Active Directory フェデレーシ
 
 
 ## <a name="regions-services-plans-offers-and-subscriptions"></a>リージョン、サービス、プラン、オファー、およびサブスクリプション
-Azure Stack では、サービスは、リージョン、サブスクリプション、オファー、およびプランを使用してテナントに提供されます。 テナントは複数のオファーにサブスクライブできます。 オファーは 1 つまたは複数のプランを含むことができ、プランは 1 つまたは複数のサービスを含むことができます。
+Azure Stack では、リージョン、サブスクリプション、オファー、およびプランを使用してサービスがテナントに提供されます。 テナントは複数のオファーにサブスクライブできます。 オファーは 1 つまたは複数のプランを含むことができ、プランは 1 つまたは複数のサービスを含むことができます。
 
 ![](media/azure-stack-key-features/image4.png)
 
 テナントによるオファーへのサブスクリプションを階層で示した例 (各オファーに異なるプランやサービスが含まれる)。
 
-### <a name="regions"></a>地域
+### <a name="regions"></a>リージョン
 Azure Stack のリージョンは、スケールと管理の基本要素です。 組織は、複数のリージョンを用意することができ、各リージョンでリソースを利用可能にできます。 リージョンごとに異なるサービスを利用可能にすることもできます。 Azure Stack Development Kit では単一のリージョンのみがサポートされ、自動的に *local* という名前が与えられます。
 
 ### <a name="services"></a>サービス
@@ -96,7 +97,7 @@ Azure Resource Manager を使用することで、インフラストラクチャ
 ### <a name="resource-groups"></a>リソース グループ
 リソース グループは、リソース、サービス、およびアプリケーションのコレクションであり、各リソースには、仮想マシン、仮想ネットワーク、パブリック IP、ストレージ アカウント、Web サイトなどの種類があります。 各リソースは、リソース グループに属する必要があります。このため、リソース グループを使用して、ワークロード別や場所別などにリソースを論理的に整理できます。  Microsoft Azure Stack では、プランやオファーなどのリソースもリソース グループで管理される。
  
-### <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
+### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
 Azure Resource Manager を使用して、アプリケーションのデプロイと構成を定義する (JSON 形式の) テンプレートを作成できます。 このテンプレートは Azure リソース マネージャー テンプレートと呼ばれ、デプロイメントの定義を宣言できます。 テンプレートを使用すると、アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできるほか、常にリソースが一貫した状態でデプロイされます。
 
 ## <a name="resource-providers-rps"></a>リソース プロバイダー (RP)
@@ -130,7 +131,7 @@ KeyVault RP は、パスワードや証明書などのシークレットの管�
 ## <a name="role-based-access-control-rbac"></a>ロールベースの Access Control (RBAC)
 RBAC を使用して、承認されたユーザー、グループ、およびサービスに対してサブスクリプション、リソース グループ、または個々のリソース レベルでロールを割り当てることによって、システムへのアクセスを許可することができます。 各ロールは、Microsoft Azure Stack のリソースに対するユーザー、グループ、またはサービスのアクセス レベルを定義します。
 
-Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロール (所有者、作成協力者、および閲覧者) があります。 所有者は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 作成協力者は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。 閲覧者は、既存の Azure リソースを表示できるのみです。 残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの作成協力者ロールでは、仮想マシンの作成と管理は許可されますが、仮想マシンが接続する仮想ネットワークまたはサブネットの管理は許可されません。
+Azure RBAC には、すべてのリソースの種類に適用される 3 つの基本的なロール (所有者、共同作成者、および閲覧者) があります。 所有者は、他のユーザーへアクセス権を委任する権限を含め、すべてのリソースへのフル アクセス権を持ちます。 作成協力者は、Azure リソースのすべてのタイプを作成および管理できますが、他のユーザーへアクセス権を付与することはできません。 閲覧者は、既存の Azure リソースを表示できるのみです。 残りの Azure RBAC ロールでは、特定の Azure リソースの管理が許可されます。 たとえば、仮想マシンの作成協力者ロールでは、仮想マシンの作成と管理は許可されますが、仮想マシンが接続する仮想ネットワークまたはサブネットの管理は許可されません。
 
 ## <a name="usage-data"></a>使用状況データ
 Microsoft Azure Stack は、すべてのリソース プロバイダーの使用状況データを収集して集約し、Azure コマースによる処理のために Azure に送信します。 Azure Stack で収集された使用状況データは、REST API を使用して表示できます。 Azure と一貫性のある Tenant API だけでなく、Provider および Delegated Provider API を使用して、すべてのテナント サブスクリプション全体の使用状況データを取得できます。 このデータは、請求や配賦のために外部のツールやサービスと統合できます。 Azure コマースによって処理された使用状況は、Azure の課金ポータルに表示できます。
@@ -143,6 +144,6 @@ Microsoft Azure Stack は、すべてのリソース プロバイダーの使用
 - 新機能
 - その他の機能強化
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Stack のデプロイの前提条件](azure-stack-deploy.md)
 

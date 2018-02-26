@@ -1,10 +1,10 @@
 ---
 title: "ポイント対サイトと RADIUS 認証を使用してコンピューターを仮想ネットワークに接続する: PowerShell | Azure"
-description: "RADIUS 認証を使用するポイント対サイト VPN ゲートウェイ接続を作成することで、コンピューターを Azure 仮想ネットワークに安全に接続します。"
+description: "P2S および RADIUS 認証を使って、Windows クライアントと Mac OS X クライアントを仮想ネットワークに安全に接続します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
+ms.date: 02/12/2018
 ms.author: anzaman
-ms.openlocfilehash: 13ae129eefb717f22db25ab29232fe1efe69a8ce
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3b7315aaa57d1387e3cea31e8b306131a59a7006
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する: PowerShell
 
@@ -235,6 +235,8 @@ VPN クライアント構成を使用すると、デバイスは P2S 接続を�
       Default Gateway.................:
       NetBIOS over Tcpip..............: Enabled
   ```
+
+P2S 接続のトラブルシューティングについては、「[トラブルシューティング: Azure ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)」をご覧ください。
 
 ## <a name="connectVM"></a>仮想マシンに接続するには
 

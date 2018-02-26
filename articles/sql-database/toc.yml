@@ -378,8 +378,8 @@
               href: saas-dbpertenant-restore-single-tenant.md
             - name: テナント スキーマの管理
               href: saas-tenancy-schema-management.md
-            - name: アドホック クエリの実行
-              href: saas-tenancy-adhoc-analytics.md
+            - name: テナント間のレポート
+              href: saas-tenancy-cross-tenant-reporting.md
             - name: 分析用の ETL
               href: saas-tenancy-tenant-analytics.md
         - name: マルチテナント データベース

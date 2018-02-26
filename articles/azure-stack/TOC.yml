@@ -57,8 +57,12 @@
         - name: Azure Stack のデプロイの PKI 要件
           href: azure-stack-pki-certs.md
           items:
-            - name: Azure Stack のデプロイ用の PKI 証明書の取得
+            - name: Azure Stack PKI 証明書の取得
               href: azure-stack-get-pki-certs.md
+            - name: Azure Stack PKI 証明書の準備
+              href: prepare-pki-certs.md
+            - name: Azure Stack PKI 証明書の検証
+              href: validate-pki-certs.md
         - name: ID の統合
           href: azure-stack-integrate-identity.md
         - name: Azure Stack の登録
@@ -168,6 +172,10 @@
           href: azure-stack-security-foundations.md
         - name: ID
           items:
+            - name: ID の概要
+              href: azure-stack-identity-overview.md
+            - name: ID アーキテクチャ
+              href: azure-stack-identity-architecture.md
             - name: RBAC の管理
               href: azure-stack-manage-permissions.md
             - name: Azure AD のユーザーの追加
@@ -288,13 +296,15 @@
       href: /azure/azure-stack/user/
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStack'
+    - name: Azure Stack のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?tag=azure-stack'
+    - name: Azure Stack の MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStack'
+    - name: Azure Stack のドキュメントのフィードバック
+      href: 'https://feedback.azure.com/forums/344565-azure-stack?category_id=160275'
     - name: 料金情報
       href: 'https://azure.microsoft.com/overview/azure-stack/how-to-buy/'
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-stack'
     - name: トレーニングと認定
-      href: azure-stack-train-and-cert.md
+      href: 'https://docs.microsoft.com/azure/azure-stack/azure-stack-train-and-cert'

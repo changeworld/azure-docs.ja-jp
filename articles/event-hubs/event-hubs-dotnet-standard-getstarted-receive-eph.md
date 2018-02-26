@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2017
 ms.author: sethm
-ms.openlocfilehash: 0dd3533ab1556b334c09ba69d096b06c8be85cc8
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 5eb5c2d1f0b85c907f788fb6ac752488601f613a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-receiving-messages-with-the-event-processor-host-in-net-standard"></a>.NET Standard で EventProcessorHost を使用したメッセージ受信を開始する
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/03/2018
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成  
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。  
-2. ポータルの左側のナビゲーション ウィンドウで **[新規]** をクリックし、**[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。  
+2. ポータルの左側のナビゲーション ウィンドウで **[リソースの作成]** をクリックし、**[ストレージ]**、**[ストレージ アカウント]** の順にクリックします。  
 3. ストレージ アカウント ウィンドウのフィールドを入力して、**[作成]** をクリックします。
 
     ![[ストレージ アカウントの作成]][1]

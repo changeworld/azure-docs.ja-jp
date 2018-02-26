@@ -55,6 +55,8 @@
       items:
         - name: 静的 IP アドレス
           href: static-ip.md
+        - name: イングレスと TLS
+          href: ingress.md
     - name: セキュリティと認証
       items:
         - name: サービス プリンシパルの作成

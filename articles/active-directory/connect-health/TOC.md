@@ -14,6 +14,7 @@
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
+## [GDPR コンプライアンスと Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
 # 関連項目
 ## [オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)
