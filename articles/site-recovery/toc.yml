@@ -197,7 +197,7 @@
           items:
             - name: VMware から Azure への場合のソース環境
               href: site-recovery-set-up-vmware-to-azure.md
-            - name: VMware と物理サーバー用の構成サーバーをデプロイする
+            - name: VMware ディザスター リカバリー用の構成サーバーのデプロイ
               href: how-to-deploy-configuration-server.md
             - name: 物理から Azure への場合のソース環境
               href: site-recovery-set-up-physical-to-azure.md
@@ -267,8 +267,10 @@
       items:
         - name: Azure でのプロセス サーバーの管理
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
-        - name: 構成サーバーの管理
+        - name: VMware ディザスター リカバリー用の構成サーバーの管理
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
+        - name: 物理マシン ディザスター リカバリー用の構成サーバーの管理
+          href: physical-manage-configuration-server.md
         - name: vCenter サーバーの管理
           href: site-recovery-vmware-to-azure-manage-vCenter.md
         - name: CSP によるマルチテナントの管理

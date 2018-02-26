@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 12/06/2017
+ms.date: 02/20/2018
 ms.author: barbkess
-ms.openlocfilehash: 861c2c977fa9d0341125127852bc7747dfd6001a
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 50d02b657ec3063b0ca4078844563b4ba7932f37
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のベスト プラクティス
 この記事には、Azure SQL Data Warehouse で最適なパフォーマンスを実現するのに役立つさまざまなベスト プラクティスがまとめられています。  この記事で取り上げている概念には、基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。  この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築するときに重視する必要がある重要な領域に対する認識を高めることです。  各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
@@ -29,14 +29,8 @@ Azure SQL Data Warehouse を使ってみるだけの場合でも、この記事�
 読み込みのガイダンスについては、[データの読み込みのガイダンス](guidance-for-loading-data.md)に関するページを参照してください。
 
 ## <a name="reduce-cost-with-pause-and-scale"></a>一時停止とスケールでコストを削減する
-SQL Data Warehouse の重要な機能として、使用していないときは一時停止できます。そうすると、コンピューティング リソースの課金が停止されます。  もう 1 つの重要な機能として、リソースをスケールできます。  一時停止とスケールは、Azure Portal または PowerShell コマンドを使用して行うことができます。  これらの機能を使用すると、データ ウェアハウスを使用していないときにコストを大幅に削減できるため、これらの機能についてよく理解してください。  常にデータ ウェアハウスにアクセスできることが必要な場合は、一時停止ではなく、最小サイズ (DW100) へのスケールダウンを検討することをお勧めします。
+一時停止とスケーリングを通じてコストを削減する方法については、[コンピューティングの管理](sql-data-warehouse-manage-compute-overview.md)に関するページを参照してください。 
 
-[コンピューティング リソースの一時停止][Pause compute resources]、[コンピューティング リソースの再開][Resume compute resources]、[コンピューティング リソースのスケール]に関するセクションもご覧ください。
-
-## <a name="drain-transactions-before-pausing-or-scaling"></a>一時停止またはスケールの前にトランザクションを排出する
-SQL Data Warehouse を一時停止またはスケールすると、要求の一時停止またはスケールを開始したときに、バックグラウンドでクエリが取り消されます。  単純な SELECT クエリの取り消しは、短時間で終わる処理であるため、インスタンスを一時停止またはスケールするのにかかる時間にほとんど影響しません。  ただし、データやデータ構造を変更するトランザクション クエリは、すぐに停止できない場合があります。  **トランザクション クエリについては、当然、すべてが完了するか、変更をロールバックする必要があります。**  トランザクション クエリが完了した作業をロールバックするには、クエリが元の変更の適用にかかった時間と同じか、それよりも長くかかる場合があります。  たとえば、行の削除を既に 1 時間実行しているクエリを取り消した場合、削除された行を挿入し直すのに 1 時間かかる可能性があります。  トランザクションの実行中に一時停止またはスケールを実行した場合、一時停止またはスケールするには、ロールバックが完了するのを待機する必要があるため、時間がかかることがあります。
-
-[トランザクションの概要][Understanding transactions]と[トランザクションの最適化][Optimizing transactions]に関するページもご覧ください。
 
 ## <a name="maintain-statistics"></a>統計を管理する
 列を自動的に検出し、その列に関する統計を作成または更新する SQL Server とは異なり、SQL Data Warehouse では、統計を手動で管理する必要があります。  この点は今後変更する予定ですが、現時点では、SQL Data Warehouse プランを確実に最適化するには、統計を管理する必要があります。  オプティマイザーによって作成されたプランの有効性は、使用可能な統計によって決まります。  **統計を開始する簡単な方法は、すべての列のサンプリングされた統計を作成することです。**  データに大幅な変更が発生したときに統計を更新することも同様に重要です。  控えめなアプローチとしては、毎日または各読み込みの後に統計を更新することが挙げられます。  パフォーマンスと統計を作成および更新するコストの間には常にトレードオフの関係が存在します。 すべての統計を管理するのは時間がかかりすぎる場合は、統計を作成する列や頻繁に更新する列を限定することをお勧めします。  たとえば、新しい値が毎日追加される日付列を更新します。 **結合に使用されている列、WHERE 句で使用されている列、および GROUP BY に含まれている列に関する統計を作成すると、最も大きなメリットが得られます。**
@@ -138,7 +132,7 @@ SQL Data Warehouse には、クエリの実行を監視するために使用で�
 [Monitor your workload using DMVs]: ./sql-data-warehouse-manage-monitor.md
 [Pause compute resources]: ./sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
 [Resume compute resources]: ./sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[コンピューティング リソースのスケール]: ./sql-data-warehouse-manage-compute-overview.md#scale-compute
+[Scale compute resources]: ./sql-data-warehouse-manage-compute-overview.md#scale-compute
 [Understanding transactions]: ./sql-data-warehouse-develop-transactions.md
 [Optimizing transactions]: ./sql-data-warehouse-develop-best-practices-transactions.md
 [Troubleshooting]: ./sql-data-warehouse-troubleshoot.md

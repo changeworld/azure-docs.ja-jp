@@ -33,21 +33,23 @@
       href: tutorial-virtual-network.md
     - name: 9 - 仮想マシンのバックアップ
       href: tutorial-backup-vms.md
-    - name: 10 - VM の監視と更新
+    - name: 10 - VM の管理
+      href: tutorial-govern-resources.md
+    - name: 11 - VM の監視と更新
       href: tutorial-monitoring.md
-    - name: 11 - VM のセキュリティの管理
+    - name: 12 - VM のセキュリティの管理
       href: tutorial-azure-security.md
-    - name: 12 - Jenkins のデプロイ
+    - name: 13 - Jenkins のデプロイ
       href: tutorial-jenkins-github-docker-cicd.md
-    - name: 13 - Team Services による CI/CD
+    - name: 14 - Team Services による CI/CD
       href: tutorial-build-deploy-jenkins.md
-    - name: 14a - LAMP スタックの作成
+    - name: 15a - LAMP スタックの作成
       href: tutorial-lamp-stack.md
-    - name: 14b - LEMP スタックの作成
+    - name: 15b - LEMP スタックの作成
       href: tutorial-lemp-stack.md
-    - name: 14c - MEAN スタックの作成
+    - name: 15c - MEAN スタックの作成
       href: tutorial-mean-stack.md
-    - name: 15 - SSL による Web サーバーのセキュリティ保護
+    - name: 16 - SSL による Web サーバーのセキュリティ保護
       href: tutorial-secure-web-server.md
 - name: サンプル
   items:

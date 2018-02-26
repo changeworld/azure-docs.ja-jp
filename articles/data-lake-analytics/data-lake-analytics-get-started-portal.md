@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/21/2017
 ms.author: edmaca
-ms.openlocfilehash: 2722a2d72ed90ea0005362563ecaee30750c040a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad5316add4b7806a03e777aee1757841ed866070
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-azure-portal"></a>Azure Portal で Azure Data Lake Analytics の使用を開始する
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
@@ -34,7 +34,7 @@ Azure Portal を使用して Azure Data Lake Analytics アカウントを作成�
 次に、Data Lake Analytics アカウントと Data Lake Store アカウントを同時に作成します。  この手順は単純であり、所要時間は約 60 秒です。
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. **[新規]** >  **[Data + Analytics]** > **[Data Lake Analytics]** の順にクリックします。
+2. **[リソースの作成]** >  **[データ + 分析]** > **[Data Lake Analytics]** の順にクリックします。
 3. 次の項目の値を選択します。
    * **名前**: Data Lake Analytics アカウントに名前を付けます (英小文字と数字のみ使用できます)。
    * **サブスクリプション**: Analytics アカウントに使用する Azure サブスクリプションを選択します。

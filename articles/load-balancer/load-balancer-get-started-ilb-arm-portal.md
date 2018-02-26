@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 8f0f575319eec0517366079c637ad7565530ac70
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 5274ec13ec2d04194e2dd4c8ec93be0f78329b23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-internal-load-balancer-in-the-azure-portal"></a>Azure Portal での内部ロード バランサーの作成
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/11/2018
 Azure Portal で内部ロード バランサーを作成するには、次の手順を使用します。
 
 1. ブラウザーを開いて [Azure Portal](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
-2. 画面の左上で、**[新規]** > **[ネットワーク]** > **[ロード バランサー]** の順にクリックします。
+2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
 3. **[ロード バランサーの作成]** ブレードで、ロード バランサーの**名前**を入力します。
 4. **[種類]** の **[内部]** をクリックします。
 5. **[仮想ネットワーク]**をクリックし、ロード バランサーを作成する仮想ネットワークを選択します。

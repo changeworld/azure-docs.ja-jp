@@ -1,10 +1,10 @@
 ---
 title: "オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN (クラシック): ポータル | Microsoft Docs"
-description: "パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、ポータルを使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。"
+description: "パブリック インターネットを経由したオンプレミスのネットワークからクラシック Azure 仮想ネットワークへの IPsec 接続を作成します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: eb8fe1ea6d4de066744a6277c1aec96073c1703c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 9fa8455e3be6dced5717e2a7399d0eae0e26a09b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-site-to-site-connection-using-the-azure-portal-classic"></a>Azure Portal を使用してサイト間接続を作成する (クラシック)
 
@@ -88,7 +88,7 @@ S2S 接続に使用する仮想ネットワークを作成する際には、指�
 
   ![[仮想ネットワークの作成] ページ](./media/vpn-gateway-howto-site-to-site-classic-portal/createvnet.png "[仮想ネットワークの作成] ページ")
 5. **サブスクリプション** が正しいものであることを確認します。 ドロップダウンを使用して、サブスクリプションを変更できます。
-6. **[リソース グループ]** をクリックし、既存のリソース グループを選択するか、名前を入力して新しいリソース グループを作成します。 リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md#resource-groups)」を参照してください。
+6. **[リソース グループ]** をクリックし、既存のリソース グループを選択するか、名前を入力して新しいリソース グループを作成します。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md#resource-groups)」を参照してください。
 7. 次に、VNet の **[場所]** 設定を選択します。 この場所の設定によって、この VNet にデプロイしたリソースの配置先が決まります。
 8. ダッシュボードで VNet を簡単に検索できるようにするには、**[Pin to dashboard]\(ダッシュボードにピン留めする\)** を選択します。 **[作成]** をクリックして、VNet を作成します。
 
@@ -194,7 +194,7 @@ VPN ゲートウェイのゲートウェイ サブネットを作成する必要
 
 PowerShell とクラシック デプロイメント モデルを使用する場合、ポータルのリソースの名前が、PowerShell の使用時に Azure で想定されている名前と異なる場合があります。 次の手順は、ネットワーク構成ファイルをエクスポートして、名前の正確な値を取得するのに役立ちます。
 
-1. コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 この例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
+1. コンピューターにディレクトリを作成し、ネットワーク構成ファイルをそのディレクトリにエクスポートします。 次の例では、ネットワーク構成ファイルは C:\AzureNet にエクスポートされます。
 
   ```powershell
   Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
@@ -223,7 +223,7 @@ PowerShell とクラシック デプロイメント モデルを使用する場�
 
 ゲートウェイ SKU を変更する手順については、[ゲートウェイ SKU のサイズ変更](vpn-gateway-about-SKUS-legacy.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
 * 強制トンネリングについては、[強制トンネリング](vpn-gateway-about-forced-tunneling.md)に関する記事を参照してください。

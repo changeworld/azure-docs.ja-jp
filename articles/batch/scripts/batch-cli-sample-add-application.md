@@ -1,60 +1,61 @@
 ---
-title: "Azure CLI スクリプト サンプル - バッチへのアプリケーションの追加 |Microsoft Docs"
-description: "Azure CLI スクリプト サンプル - バッチへのアプリケーションの追加"
+title: "Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加 | Microsoft Docs"
+description: "Azure CLI のサンプル スクリプト - Batch へのアプリケーションの追加"
 services: batch
 documentationcenter: 
-author: annatisch
-manager: daryls
-editor: tysonn
+author: dlepow
+manager: jeconnoc
+editor: 
 ms.assetid: 
 ms.service: batch
 ms.devlang: azurecli
-ms.topic: article
+ms.topic: sample
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
-ms.author: antisch
-ms.openlocfilehash: cbfe8ab565ecf7f298a9a6c0f0c8298c675f178c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 01/29/2018
+ms.author: danlep
+ms.openlocfilehash: 348e94e745350173196aeb64df3a814a05dd9144
+ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/01/2018
 ---
-# <a name="adding-applications-to-azure-batch-with-azure-cli"></a>Azure CLI を使用した Azure Batch へのアプリケーションの追加
+# <a name="cli-example-add-an-application-to-an-azure-batch-account"></a>CLI の例: Azure Batch アカウントへのアプリケーションの追加
 
-このスクリプトでは、Azure Batch プールまたはタスクで使用するアプリケーションを設定する方法について説明します。 アプリケーションを設定するには、実行ファイルをすべての依存関係と共に .zip ファイルにパッケージ化します。 この例では、実行可能な zip ファイル名を 'my-application-exe.zip' とします。
+このスクリプトでは、Azure Batch プールまたはタスクで使用するアプリケーションを追加する方法について説明します。 Batch アカウントに追加するようにアプリケーションをセットアップするには、実行ファイルをすべての依存関係と共に zip ファイルにパッケージ化します。 
 
-## <a name="prerequisites"></a>前提条件
+[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-- Azure CLI をまだインストールしていない場合は、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)の手順に従ってインストールします。
-- Batch アカウントをまだお持ちでない場合は、作成します。 アカウント作成のサンプル スクリプトについては、「[Azure CLI で Batch アカウントを作成する](https://docs.microsoft.com/azure/batch/scripts/batch-cli-sample-create-account)」を参照してください。
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.20 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
 
-## <a name="sample-script"></a>サンプル スクリプト
+## <a name="example-script"></a>サンプル スクリプト
 
-[!code-azurecli[main](../../../cli_scripts/batch/add-application/add-application.sh "Add Application")]
+[!code-azurecli-interactive[main](../../../cli_scripts/batch/add-application/add-application.sh "Add Application")]
 
-## <a name="clean-up-application"></a>アプリケーションのクリーンアップ
+## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-上記のサンプル スクリプトを実行したら、次のコマンドを実行して、アプリケーションとアップロードされたすべてのアプリケーション パッケージを削除します。
+次のコマンドを実行して、リソース グループと、それに関連付けられているすべてのリソースを削除します。
 
-```azurecli
-az batch application package delete -g myresourcegroup -n mybatchaccount --application-id myapp --version 1.0 --yes
-az batch application delete -g myresourcegroup -n mybatchaccount --application-id myapp --yes
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
 
-このスクリプトでは次のコマンドを使用して、アプリケーションを作成し、アプリケーション パッケージをアップロードします。
+このスクリプトでは、次のコマンドを使用します。
 表内の各コマンドは、それぞれのドキュメントにリンクされています。
 
 | コマンド | メモ |
 |---|---|
-| [az batch application create](https://docs.microsoft.com/cli/azure/batch/application#az_batch_application_create) | アプリケーションを作成します。  |
-| [az batch application set](https://docs.microsoft.com/cli/azure/batch/application#az_batch_application_set) | アプリケーションのプロパティを更新します。  |
-| [az batch application package create](https://docs.microsoft.com/cli/azure/batch/application/package#az_batch_application_package_create) | アプリケーション パッケージを指定されたアプリケーションに追加します。  |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 |
+| [az batch account create](/cli/azure/batch/account#az_batch_account_create) | Batch アカウントを作成します。 |
+| [az batch account login](/cli/azure/batch/account#az_batch_account_login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
+| [az batch application create](/cli/azure/batch/application#az_batch_application_create) | アプリケーションを作成します。  |
+| [az batch application package create](/cli/azure/batch/application/package#az_batch_application_package_create) | アプリケーション パッケージを指定されたアプリケーションに追加します。  |
+| [az batch application set](/cli/azure/batch/application#az_batch_application_set) | アプリケーションのプロパティを更新します。  |
+| [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
-
-その他の Batch CLI サンプル スクリプトは、[Azure Batch CLI のドキュメント](../batch-cli-samples.md)のページにあります。

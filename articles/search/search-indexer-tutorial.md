@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 11/10/2017
 ms.author: heidist
-ms.openlocfilehash: bebfdfdf72014019a49a6da0e512e72932b096ac
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 22eeccfd692cca74bc0cf12c3400d717c103332f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-crawl-an-azure-sql-database-using-azure-search-indexers"></a>Azure Search インデクサーを使用して Azure SQL データベースをクロールする方法
 
@@ -121,7 +121,7 @@ Azure Portal とサンプルの *hotels.sql* ファイルを使用して、Azure
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。 
 
-2. **[新規]** > **[SQL Database]** の順にクリックしてデータベース、サーバー、リソース グループを作成します。 既定値および一番低い価格レベルを使用してかまいません。 サーバーを作成する利点は、後の手順でテーブルを作成して読み込むために必要な管理者ユーザー名とパスワードを指定できることです。
+2. **[リソースの作成]** > **[SQL Database]** の順にクリックして、データベース、サーバー、およびリソース グループを作成します。 既定値および一番低い価格レベルを使用してかまいません。 サーバーを作成する利点は、後の手順でテーブルを作成して読み込むために必要な管理者ユーザー名とパスワードを指定できることです。
 
    ![[新しいデータベース] ページ](./media/search-indexer-tutorial/indexer-new-sqldb.png)
 

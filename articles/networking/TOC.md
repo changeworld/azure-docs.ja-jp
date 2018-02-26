@@ -23,6 +23,7 @@
 ### [オンプレミスへの接続 - VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [オンプレミスへの接続 - 専用](../expressroute/expressroute-introduction.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
+
 # 作業開始
 ## [最初の仮想ネットワークの作成](../virtual-network/quick-create-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
@@ -47,6 +48,7 @@
 ### [パケット キャプチャの管理](../network-watcher/network-watcher-packet-capture-manage-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [ルーティング次ホップの決定](../network-watcher/network-watcher-check-next-hop-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
 ### [VM の IP フローの確認](../network-watcher/network-watcher-check-ip-flow-verify-portal.md?toc=%2fazure%2fnetworking%2ftoc.json)
+### [ネットワーク監視の概要](network-monitoring-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)
 
 ## サンプルのスクリプト
 ### [Azure CLI](cli-samples.md)

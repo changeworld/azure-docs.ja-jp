@@ -10,11 +10,11 @@ ms.service: microsoft-genomics
 ms.workload: genomics
 ms.topic: quickstart
 ms.date: 12/07/2017
-ms.openlocfilehash: 71f5e4d1288a361c4b52ff45fb4c6601fa39a757
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: ed2048755317649d160bcfd71519af715067b99b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-run-a-workflow-through-the-microsoft-genomics-service"></a>クイックスタート: Microsoft Genomics サービス経由でのワークフローの実行
 
@@ -84,7 +84,7 @@ pip install msgen
 
 
 ### <a name="test-the-microsoft-genomics-client"></a>Microsoft Genomics クライアントのテスト
-Microsoft Genomics クライアントをテストするには、お使いのgenomics アカウントから config ファイルをダウンロードします。 左下部にある **[More services]/(その他のサービス/)** をクリックし、genomics アカウントをフィルター処理して選択し、お使いの genomics アカウントに移動します。
+Microsoft Genomics クライアントをテストするには、お使いのgenomics アカウントから config ファイルをダウンロードします。 左上の **[すべてのサービス]** をクリックし、フィルターを使って genomics アカウントを選択して、自分の genomics アカウントに移動します。
 
 
 ![Azure Portal で Microsoft Genomics をフィルター処理する](./media/quickstart-run-genomics-workflow-portal/genomics-filter-box.png "Azure Portal で Microsoft Genomics をフィルター処理する")

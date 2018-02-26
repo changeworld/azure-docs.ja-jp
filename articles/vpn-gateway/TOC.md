@@ -19,6 +19,8 @@
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
 
+## [VPN デバイス構成スクリプトのダウンロード](vpn-gateway-download-vpndevicescript.md)
+
 ## ポイント対サイト接続の構成 - ネイティブの Azure 証明書認証
 ### P2S VPN の構成
 #### [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)

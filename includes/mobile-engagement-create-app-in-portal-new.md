@@ -1,6 +1,6 @@
 
 1. [Azure Portal](https://portal.azure.com) にログオンします。
-2. **[新規]**、**[Web + モバイル]**、**[Mobile Engagement]** の順にクリックします。
+2. **[リソースの作成]**、**[Web + モバイル]**、**[Mobile Engagement]** の順にクリックします。
    
     ![](./media/mobile-engagement-create-app-in-portal-new/browse-azme-extension.png)
 3. 表示される **[New Mobile Engagement App Collection]\(新しい Mobile Engagement アプリ コレクション\)** ブレードで、アプリ コレクションを作成します。 次の情報を入力します。
@@ -8,7 +8,7 @@
     ![](./media/mobile-engagement-create-app-in-portal-new/new-azme-app.png)
    
    * **名前**: 名前 of your *アプリケーション コレクション* 
-   * **プラットフォーム**: クリックすると開く [プラットフォーム] ブレードでアプリのターゲット プラットフォームを選択します。 例: アプリを iOS と Android の両方に対応させる場合は、両方のプラットフォームを選択すると、このアプリ コレクションの下に 2 つのアプリが作成されます。 
+   * **プラットフォーム**: クリックすると開く [プラットフォーム] ブレードでアプリのターゲット プラットフォームを選択します。 例:  アプリを iOS と Android の両方に対応させる場合は、両方のプラットフォームを選択すると、このアプリ コレクションの下に 2 つのアプリが作成されます。 
      
       ![](./media/mobile-engagement-create-app-in-portal-new/choose-platform.png)
    * **サブスクリプション**: Azure サブスクリプションを選択します。 

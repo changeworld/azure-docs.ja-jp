@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 01/16/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 63290127b298efced14ad34e9223840f3229f046
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: d1aadd6b44d64f0bdb35ea02d628bedfc366ad3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>オンプレミス マシンのレプリケーションために Azure リソースを準備する
 
@@ -60,8 +60,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="create-a-vault"></a>コンテナーの作成
 
-1. Azure Portal メニューで、**[新規]**、>**[監視 + 管理]**、>
-   **[Backup and Site Recovery]** の順にクリックします。
+1. Azure Portal で、**[リソースの作成]** > **[監視 + 管理]** > **[Backup and Site Recovery]** の順にクリックします。
 2. **[名前]**に、コンテナーを識別するフレンドリ名を入力します。 このチュートリアルでは **ContosoVMVault** を使用します。
 3. **contosoRG** という名前の既存のリソース グループを選択します。
 4. Azure リージョンとして **[西ヨーロッパ]** を指定します (これは一連のチュートリアルで使用します)。
@@ -75,8 +74,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 フェールオーバー後にストレージから作成された Azure VM は、このネットワークに参加します。
 
-1. [[Azure Portal]](https://portal.azure.com) メニューで、**[新規]**、>**[ネットワーク]**、>
-   **[仮想ネットワーク]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** の順にクリックします。
 2. デプロイ モデルとして **[リソース マネージャー]** をそのまま選択します。 [リソース マネージャー] が推奨されるデプロイ モデルです。
    - ネットワーク名を指定します。 Azure リソース グループ内で一意となる名前を使用してください。 **ContosoASRnet** という名前を使用します。
    - 既存のリソース グループ **contosoRG** を選択します。

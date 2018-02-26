@@ -7,14 +7,14 @@ services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
 ms.topic: quickstart
-ms.date: 09/25/2017
+ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 08d63d47a99bdf9480299a74634bc0e9a09e691e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>メトリック値が条件を満たしている場合は通知を受け取る
 
@@ -26,15 +26,15 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-[Azure ポータル](https://portal.azure.com/)にサインインします。
+[Azure Portal](https://portal.azure.com/) にサインインします。
 
 ## <a name="create-a-logic-app"></a>ロジック アプリの作成
 
-1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
 
-2. **ロジック アプリ**を検索して選択します。 **myResourceGroup** という名前の新しいリソース グループを作成し、既定の場所を使用します。 **[作成]** ボタンをクリックします。
+2. **ロジック アプリ**を検索して選択します。 **[作成]** ボタンをクリックします。
 
-3. ロジック アプリ情報を入力し、**[ダッシュボードにピン留めする]** オプションをオンにします。 完了したら **[作成]** をクリックします。
+3. 次の図に示すようにロジック アプリの情報を入力します。  既定の場所を使用します。 **[ダッシュボードにピン留めする]** オプションをオンにします。  完了したら **[作成]** をクリックします。 
 
     ![ポータルでロジック アプリの基本情報を入力する](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
@@ -61,6 +61,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 12. **[Save]** をクリックします。
 
+13. ロジック アプリの実行アクションが実行されるまで最大で 5 分かかる場合があります。  
+
 ## <a name="view-metrics-for-your-logic-app"></a>ロジック アプリのメトリックを表示する
 
 1. 左側のナビゲーション ウィンドウで **[監視]**オプションをクリックします。
@@ -71,7 +73,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. グラフの **[時間の範囲]** を変更し、過去 1 時間のデータを表示するようにします。
 
-5. これで、過去 1 時間にロジック アプリで開始された実行総数を示すグラフが表示されます。
+5. これで、過去 1 時間にロジック アプリで開始された実行総数を示すグラフが表示されます。 何も表示されない場合は、上記の手順から少なくとも 5 分待ってください。 次に、ブラウザーを更新します。 
 
     ![ロジック アプリ リソースのメトリック グラフを表示する](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 
@@ -108,7 +110,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. パネルのテキスト ボックスで、このクイック スタートで作成したロジック アプリをクリックしてから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、リソースのメトリック アラートを作成する方法を学習しました。 メトリック アラートの詳細については、クリックしてアラートの概要ページに移動して参照してください。
 

@@ -14,11 +14,11 @@ ms.topic: tutorial
 ms.date: 09/26/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: dfcbb925a16ca1e53d10b7bf70d03e62bc9dae69
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: fc5dcc945750b4ab4eef337dbd96bd051bb4dd81
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Log Analytics のログ検索で収集されたデータの表示または分析
 
@@ -41,7 +41,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 ## <a name="open-the-log-search-portal"></a>ログ検索ポータルを開く 
 最初に、ログ検索ポータルを開きます。   
 
-1. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics サブスクリプション ウィンドウで、ワークスペースを選択して **[ログ検索]** タイルを選択します。<br> ![[ログ検索] ボタン](media/log-analytics-tutorial-viewdata/azure-portal-01.png)
 
 ポータルの Log Analytics リソース ページの上部に、アップグレードを促すバナーが表示されているのがわかります。<br> ![Azure Portal に表示されている Log Analytics のアップグレード通知](media/log-analytics-tutorial-viewdata/log-analytics-portal-upgradebanner.png)
@@ -82,7 +82,7 @@ Event | where (EventLevelName == "Error")
 Syslog | where (SeverityLevel == "err")
 ```
 
-![フィルター](media/log-analytics-tutorial-viewdata/log-analytics-portal-eventlist-02.png)
+![filter](media/log-analytics-tutorial-viewdata/log-analytics-portal-eventlist-02.png)
 
 レコードのいずれかのプロパティ メニューから **[フィルターに追加]** を選択して、プロパティをフィルター ウィンドウに追加します。
 
@@ -153,7 +153,7 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ![折れ線グラフ](media/log-analytics-tutorial-viewdata/log-analytics-portal-linechart-01.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、イベントおよびパフォーマンス データを分析する基本的なログ検索を作成する方法について説明しました。  次のチュートリアルでは、ダッシュボードを作成して、データを視覚化する方法について説明します。
 
 > [!div class="nextstepaction"]

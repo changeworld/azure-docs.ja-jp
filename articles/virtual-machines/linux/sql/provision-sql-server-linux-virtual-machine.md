@@ -12,11 +12,11 @@ ms.devlang: na
 ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.technology: database-engine
-ms.openlocfilehash: 8d714718e4fc27f0abbfede8fe6d0e2693698ec1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4105e0b4038f5dc09c503ac90ba7ad67c2fd93b8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Linux SQL Server 仮想マシンのプロビジョニング
 
@@ -39,11 +39,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a id="create"></a>SQL Server がインストールされた Linux VM の作成
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-1. 左側のウィンドウで **[新規]** をクリックします。
+1. 左側のウィンドウで、**[リソースの作成]** をクリックします。
 
-1. **[新規]** ウィンドウで、**[Compute]** をクリックします。
+1. **[リソースの作成]** ウィンドウで、**[コンピューティング]** をクリックします。
 
 1. **[おすすめ]** 見出しの横にある **[すべて表示]** をクリックします。
 
@@ -69,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     > [!Note]
     > 認証には、SSH 公開キーまたはパスワードを使用する選択肢があります。 安全性が高いのは SSH です。 SSH キーを生成する方法の手順については、[Azure の Linux VM と Mac for Linux VM に SSH キーを作成する方法](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-mac-create-ssh-keys)に関するページを参照してください。
 
-1. **[OK]**をクリックします。
+1. Click **OK**.
 
 1. **[サイズ]** ウィンドウで、マシンのサイズを選択します。 他のサイズを表示するには、**[すべて表示]** を選択します。 VM マシン サイズの詳細については、[Linux VM のサイズ](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-sizes)に関するページを参照してください。
 
@@ -82,7 +82,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. **[設定]** ウィンドウでは、設定を変更したり、既定の設定を保持したりできます。
 
-1. **[OK]**をクリックします。
+1. Click **OK**.
 
 1. **[概要]** ページで **[購入]** をクリックし、VM を作成します。
 
@@ -174,7 +174,7 @@ Azure VM 上の SQL Server にリモートで接続する必要がある場合�
    sudo firewall-cmd --reload
    ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure に SQL Server 2017 仮想マシンを作成できたので、**sqlcmd** を使用してローカルで接続し、Transact-SQL クエリを実行できます。
 

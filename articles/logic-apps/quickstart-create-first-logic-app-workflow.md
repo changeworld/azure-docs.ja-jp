@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9b6b9df01f0e56cac3fe45bd0ef8290ca1587a1a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>クイックスタート: 初めてのロジック アプリ ワークフローの作成 - Azure Portal
 
@@ -38,24 +38,24 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="create-your-logic-app"></a>ロジック アプリを作成する 
 
-1. Azure のメイン メニューで、**[新規]** > **[エンタープライズ統合]** > **[Logic Apps]** の順に選択します。
+1. Azure のメイン メニューで、**[リソースの作成]** > **[Enterprise Integration]** > **[Logic App]** の順に選択します。
 
    ![ロジック アプリを作成する](./media/quickstart-create-first-logic-app-workflow/create-logic-app.png)
 
-3. 次の例に示したように、ロジック アプリに関する詳しい情報を **[ロジック アプリの作成]** に入力します。 終了したら、**[ダッシュボードにピン留めする]** > **[作成]** を選びます。
+3. **[ロジック アプリの作成]** で、次に示すようにロジック アプリの詳細を入力します。 終了したら、**[ダッシュボードにピン留めする]** > **[作成]** を選択します。
 
    ![ロジック アプリの詳細を指定する](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **名前** | MyFirstLogicApp | ロジック アプリの名前 | 
-   | **サブスクリプション** | <*your-Azure-subscription-name*> | Azure サブスクリプションの名前 | 
-   | **[リソース グループ]** | My-First-LA-RG | [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前。関連するリソースをまとめる目的で使われます。 | 
+   | **サブスクリプション** | <*Azure サブスクリプションの名前*> | Azure サブスクリプションの名前 | 
+   | **[リソース グループ]** | My-First-LA-RG | 関連するリソースの整理に使用する[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)の名前 | 
    | **場所** | 米国東部 2 | ロジック アプリの情報の保存先となるリージョン | 
    | **Log Analytics** | オフ | 診断ログの場合は、この設定を**オフ**のままにしてください。 | 
    |||| 
 
-3. アプリのデプロイ後、Logic Apps デザイナーが起動し、紹介ビデオや使用頻度の高いトリガーを掲載したページが表示されます。 **[テンプレート]** で **[空のロジック アプリ]** を選択します。
+3. アプリのデプロイ後、Logic Apps デザイナーが開き、紹介ビデオやよく使用されるトリガーが含まれたページが表示されます。 **[テンプレート]** で **[空のロジック アプリ]** を選択します。
 
    ![空のロジック アプリ テンプレートを選択する](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
@@ -71,7 +71,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
    ![RSS フィード、頻度、および間隔を指定してトリガーを設定する](./media/quickstart-create-first-logic-app-workflow/add-trigger-rss-settings.png)
 
-   | 設定 | 値 | [説明] | 
+   | Setting | 値 | [説明] | 
    | ------- | ----- | ----------- | 
    | **RSS フィードの URL** | ```http://feeds.reuters.com/reuters/topNews``` | 監視する RSS フィードのリンク | 
    | **間隔** | 1 | チェックの間隔 (単位数) | 
@@ -143,7 +143,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
       ![電子メールの本文の内容を追加する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
-      | 設定 | [説明] | 
+      | Setting | [説明] | 
       | ----- | ----------- | 
       | **フィード タイトル** | 項目のタイトル | 
       | **フィードの公開日付** | 項目の公開日時 | 

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.openlocfilehash: 710543b5423d2b651545151eb4a8d426720e28e0
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 286408fb0c3aa2b83cf17a4646f6f7420b6884f4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>ポータルを使用した Azure Search へのデータのインポート
 Azure Portal では、データをインデックスに読み込む**データのインポート** ウィザードが Azure Search ダッシュボードに用意されています。 
@@ -49,7 +49,7 @@ Azure Cosmos DB のサンプル データを使用して、このワークフロ
 フラット化されたデータセットの入力が必要です。 データは 1 つのテーブル、データベース ビュー、または同等のデータ構造からのみインポートできます。 ウィザードを実行する前に、このデータ構造を作成する必要があります。
 
 ## <a name="connect-to-your-data"></a>データへの接続
-1. [Azure Portal](https://portal.azure.com) にサインインし、サービス ダッシュボードを開きます。 ジャンプ バーの **[More services (その他のサービス)]** をクリックすると、現在のサブスクリプションの既存の "検索サービス" を検索できます。 
+1. [Azure Portal](https://portal.azure.com) にサインインし、サービス ダッシュボードを開きます。 ジャンプ バーの **[すべてのサービス]** をクリックすると、現在のサブスクリプションの既存の "検索サービス" を検索できます。 
 2. コマンド バーの **[データのインポート]** をクリックして、[データのインポート] ブレードを開きます。  
 3. **[データに接続します]** をクリックし、インデクサーで使用されるデータ ソースの定義を指定します。 サブスクリプション内のデータ ソースの場合、ウィザードは通常、接続情報を検出して読み取ることができ、全体的な構成要件を最小限に抑えます。
 

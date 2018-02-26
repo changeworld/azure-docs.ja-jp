@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 12/18/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 41d7e42f203170e4fa3b8e3a8c973e23808f941b
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.openlocfilehash: bb08a60a9ec2db0fa145f75e00be96bc05664e32
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 
@@ -55,7 +55,7 @@ Azure Cosmos DB では、スキーマレス設計のキー/値ストアを必要
 - 1 リージョンで 99.99% の可用性 (可用性を上げるためにリージョンを追加することもでき、一般的な可用性に関して[業界をリードする包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) が提供される)
 - 既存の Azure Storage .NET SDK の利用、アプリケーションのコード変更不要
 
-このチュートリアルでは、.NET SDK を使う Azure Cosmos DB Table API について説明します。 [Azure Storage Preview SDK](https://aka.ms/tableapinuget) は NuGet からダウンロードできます。
+このチュートリアルでは、.NET SDK を使う Azure Cosmos DB Table API について説明します。 NuGet から [Azure Cosmos DB Table API .NET SDK](https://aka.ms/tableapinuget) をダウンロードすることができます。
 
 Azure Table Storage の複雑なタスクについては、次を参照してください。
 

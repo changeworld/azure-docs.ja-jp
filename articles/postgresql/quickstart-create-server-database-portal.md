@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 11/03/2017
-ms.openlocfilehash: b78009a4b2683bb7ee881808ddbbc792d66dea6c
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.openlocfilehash: de35254183798dd0aea32b63eb0689d33ae5b247
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Azure Portal で Azure Database for PostgreSQL サーバーを作成する
 
@@ -30,7 +30,7 @@ Web ブラウザーを開き、[ポータル](https://portal.azure.com/)に移�
 Azure Database for PostgreSQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-unit-and-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内に作成されます。
 
 Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
-1. ポータルの左上隅にある **[新規]** ボタン (+) を選択します。
+1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。
 
 2. **[データベース]** > **[Azure Database for PostgreSQL]** の順に選択します。
 
@@ -38,7 +38,7 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
 3. 前の画像で示されているように、新規サーバーの詳細フォームに次の情報を入力します。
 
-    設定|推奨値|Description
+    Setting|推奨値|[説明]
     ---|---|---
     サーバー名 |*mypgserver-20170401*|Azure Database for PostgreSQL サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 *postgres.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 3 文字以上 63 文字以内にする必要があります。
     [サブスクリプション]|該当するサブスクリプション|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
@@ -122,7 +122,7 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
     psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
     ```
 
-    psql パラメーター |推奨値|Description
+    psql パラメーター |推奨値|[説明]
     ---|---|---
     --host | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mypgserver-20170401.postgres.database.azure.com** です。例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     --port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
@@ -131,9 +131,9 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
 
     独自のパラメーター値で psql コマンドを実行した後、サーバー管理者パスワードの入力を求めるメッセージが表示されます。 これは、サーバーの作成時に指定したのと同じパスワードです。 
 
-    psql パラメーター |推奨値|Description
+    psql パラメーター |推奨値|[説明]
     ---|---|---
-    パスワード | 管理者パスワード | 入力したパスワードの文字は bash プロンプトには表示されません。 認証して接続するには、すべての文字を入力してから **Enter** キーを押します。
+    password | 管理者パスワード | 入力したパスワードの文字は bash プロンプトには表示されません。 認証して接続するには、すべての文字を入力してから **Enter** キーを押します。
 
     接続されると、sql コマンドの入力を求める postgres プロンプトが psql ユーティリティによって表示されます。 初回接続時の出力には、Cloud Shell の psql のバージョンが Azure Database for PostgreSQL サーバー側のバージョンと異なることが原因で、警告が表示されることがあります。 
     
@@ -185,7 +185,7 @@ GUI ツール pgAdmin を使用して Azure PostgreSQL サーバーに接続す�
 
    ![[接続] タブ](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    pgAdmin パラメーター |推奨値|Description
+    pgAdmin パラメーター |推奨値|[説明]
     ---|---|---
     Host Name/Address (ホスト名/アドレス) | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mypgserver-20170401.postgres.database.azure.com.** です。例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     Port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
@@ -234,6 +234,6 @@ GUI ツール pgAdmin を使用して Azure PostgreSQL サーバーに接続す�
 
 3. 削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 テキスト ボックスにサーバー名 (例に示した **mypgserver-20170401** など) を入力します。 **[削除]**を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)

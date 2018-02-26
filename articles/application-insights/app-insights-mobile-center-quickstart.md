@@ -10,11 +10,11 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 897c45322148aeb088f1ec2e7f8d9f46b58c71aa
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: 04e379e1bbd84929fca68cf2de8ebfcc217a51d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>App Center と Application Insights によるモバイル アプリの分析の開始
 
@@ -66,13 +66,13 @@ Analytics.trackEvent("Video clicked")
 アプリからカスタム イベントが送信され、App Center で受信されるようになったら、Azure Portal で App Center 型の Application Insights リソースを作成する必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. **[新規]** > **[監視 + 管理]** > **[Application Insights]** を選択します。
+2. **[リソースの作成]** > **[監視 + 管理]** > **[Application Insights]** の順に選択します。
 
     ![Application Insights リソースの追加](./media/app-insights-mobile-center-quickstart/add.png)
 
     構成ボックスが表示されます。 下の表を使用して、入力フィールドに入力します。
 
-    | [設定]        |  値           | 説明  |
+    | 設定        |  値           | [説明]  |
    | ------------- |:-------------|:-----|
    | **名前**      | グローバルに一意の値 (例: "myApp-iOS") | 監視しているアプリを識別する名前 |
    | **アプリケーションの種類** | App Center アプリケーション | 監視しているアプリの種類 |
@@ -164,7 +164,7 @@ Application Insights リソースを削除するには、次の手順に従い�
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、Application Insights リソースが作成されたリソース グループを選択します。
 2. 削除する Application Insights リソースを開きます。 リソースの上部のメニューで、**[削除]** をクリックして確認します。 これにより、Application Insights にエクスポートされたデータのコピーが完全に削除されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [どのようにお客様がアプリを使用しているかを理解します](app-insights-usage-overview.md)

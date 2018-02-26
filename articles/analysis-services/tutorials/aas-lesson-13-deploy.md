@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 01/08/2018
 ms.author: owend
-ms.openlocfilehash: 3442de96f346ef211672064584700a7ce183d929
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 251795f394d30418e1c03ec7b92fec40a75b2c3d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy"></a>デプロイ
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/09/2018
 このレッスンの推定所要時間: **5 分**  
   
 ## <a name="prerequisites"></a>前提条件  
-このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 参照してくださいこのレッスンの作業を実行する前に、前のレッスン「[レッスン 12: Excel で分析する](../tutorials/aas-lesson-12-analyze-in-excel.md)」を終えている必要があります。  
+この記事は、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 参照してくださいこのレッスンの作業を実行する前に、前のレッスン「[レッスン 12: Excel で分析する](../tutorials/aas-lesson-12-analyze-in-excel.md)」を終えている必要があります。  
 
 > [!IMPORTANT]  
 > デプロイするには､リモート Analysis Services サーバーでの[管理者権限](../analysis-services-server-admins.md)が必要です。  
@@ -67,6 +67,9 @@ ms.lasthandoff: 01/09/2018
   
 3. デプロイが正常に終了したら､**[Close]**をクリックします｡  
   
+
+このレッスンでは、SSDT から表形式モデルをデプロイするための最も一般的で簡単な方法を説明します。 デプロイ ウィザードや、XMLA と AMO による自動化など、高度なデプロイ オプションを使用すると、より柔軟性と一貫性が高い、スケジュールされたデプロイを行うことができます。 詳細については、「[Tabular model solution deployment (表形式モデル ソリューションのデプロイ)](https://docs.microsoft.com/sql/analysis-services/tabular-models/tabular-model-solution-deployment-ssas-tabular)」を参照してください。
+
 ## <a name="conclusion"></a>まとめ  
 お疲れさまでした。 これで､初めての Analysis Services 表形式モデルのオーサリングとデプロイは終了です｡ このチュートリアルでは､表形式モデルの作成で一般的な作業の手順をご案内しました｡ Adventure Works Internet Sales モデルをデプロイしましたから､SQL Server Management Studio を使用してモデルを管理､すなわち､処理スクリプトやバックアップ計画を作成することができます｡ またユーザーはこれで､Microsoft Excel や Power BI などのレポート用クライアント アプリケーションを使用してモデルに接続できます｡  
 

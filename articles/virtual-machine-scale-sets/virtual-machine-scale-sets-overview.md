@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: negat
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6c796377b90fb3cd697f6d77589e3995b3eac338
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: ea842ecb40e2aff3316ed255388412597bb28eae
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Azure Virtual Machine Scale Sets とは
 Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよび管理するための Azure コンピューティング リソースです。 すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、大規模なデータ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
@@ -33,7 +33,7 @@ Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよ�
 * [Virtual Machine Scale Sets を Guy Bowerman が解説](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>Scale Sets の作成と管理
-[Azure Portal](https://portal.azure.com) で Scale Sets を作成するには、**[新規]** を選択して、検索バーに「**scale**」と入力します。 検索結果に、**仮想マシン スケール セット**が表示されます。 そこから、必要なフィールドを入力し、Scale Sets をカスタマイズしてデプロイします。 また、ポータルには、CPU 使用率に基づいて基本的な自動スケール規則を設定するオプションも用意されています。 スケール セットを管理するには、Azure Portal、[Azure PowerShell コマンドレット](virtual-machine-scale-sets-windows-manage.md)、または Azure CLI 2.0 を使用できます。
+[Azure Portal](https://portal.azure.com) でスケール セットを作成するには、**[リソースの作成]** を選択して検索バーに「**スケール**」と入力します。 検索結果に、**仮想マシン スケール セット**が表示されます。 そこから、必要なフィールドを入力し、Scale Sets をカスタマイズしてデプロイします。 また、ポータルには、CPU 使用率に基づいて基本的な自動スケール規則を設定するオプションも用意されています。 スケール セットを管理するには、Azure Portal、[Azure PowerShell コマンドレット](virtual-machine-scale-sets-windows-manage.md)、または Azure CLI 2.0 を使用できます。
 
 スケール セットはすべての[可用性ゾーン](virtual-machine-scale-sets-use-availability-zones.md)にデプロイできます。
 

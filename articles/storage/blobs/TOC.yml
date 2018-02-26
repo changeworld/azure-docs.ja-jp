@@ -44,9 +44,9 @@
           href: storage-monitor-troubleshoot-storage-application.md
     - name: クラウド ストレージにおける高可用性向けの設計
       items:
-        - name: アプリケーションの可用性を高める
+        - name: 1 - アプリケーションの可用性を高める
           href: storage-create-geo-redundant-storage.md
-        - name: RA-GRS ストレージで障害をシミュレートする
+        - name: 2 - RA-GRS ストレージで障害をシミュレートする
           href: storage-simulate-failure-ragrs-account-app.md
     - name: AzCopy でオンプレミスのデータをクラウドに移行する
       href: ../common/storage-use-azcopy-migrate-on-premises-data.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
@@ -54,13 +54,13 @@
       href: storage-unstructured-search.md
     - name: ストレージ アプリケーションのパフォーマンスとスケーラビリティを最適化する
       items:
-        - name: VM とストレージ アカウントを作成する
+        - name: 1 - VM とストレージ アカウントを作成する
           href: storage-blob-scalable-app-create-vm.md
-        - name: Azure ストレージ アカウントに大きなデータをアップロードする
+        - name: 2 - Azure ストレージ アカウントに大きなデータをアップロードする
           href: storage-blob-scalable-app-upload-files.md
-        - name: Azure ストレージ アカウントから大きなデータをダウンロードする
+        - name: 3 - Azure ストレージ アカウントから大きなデータをダウンロードする
           href: storage-blob-scalable-app-download-files.md
-        - name: スループットと待機時間のメトリックの確認
+        - name: 4 - スループットと待ち時間のメトリックを検証する
           href: storage-blob-scalable-app-verify-metrics.md
 - name: サンプル
   items:

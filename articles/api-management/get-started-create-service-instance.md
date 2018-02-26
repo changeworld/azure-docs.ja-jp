@@ -12,11 +12,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: b7ea43419cbbb5f5d38f8ad721d564650c3681a6
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 84758fbf8f19728370280d5d94acb478ff739019
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-new-azure-api-management-service-instance"></a>Azure API Management サービスの新しいインスタンスの作成
 
@@ -28,13 +28,13 @@ API Management (APIM) が組織にもたらす利点は、外部、パートナ�
 
 ![新しいインスタンス](./media/get-started-create-service-instance/get-started-create-service-instance-created.png)
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="create-a-new-service"></a>新しいサービスの作成
 
-1. [Azure Portal](https://portal.azure.com/) で **[新規]** > **[エンタープライズ統合]** > **[API management]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com/) で **[リソースの作成]** > **[Enterprise Integration]** > **[API management]** の順に選択します。
 
     または **[新規]** を選択し、検索ボックスに「`API management`」と入力して Enter キーを押します。 **Create** をクリックしてください。
 
@@ -42,7 +42,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     ![新しいインスタンス](./media/get-started-create-service-instance/get-started-create-service-instance-create-new.png)
 
-    | 設定      | 推奨値  | Description              |
+    | Setting      | 推奨値  | Description              |
     | ------------ |  ------- | ---------------------------------|
     |**名前**|API Management サービスの一意の名前| この名前を後から変更することはできません。 サービスの名前は、*{name}.azure-api.net* の形式で既定のドメイン名を生成するために使用されます。 カスタム ドメイン名を使用する場合は、[カスタム ドメインの構成](configure-custom-domain.md)に関するページをご覧ください。 <br/> サービス名は、サービスおよび対応する Azure リソースへの参照に使用されます。|
     |**サブスクリプション**|該当するサブスクリプション | この新しいサービス インスタンスが作成されるサブスクリプション。 アクセスできる各種の Azure サブスクリプションの中から、サブスクリプションを 1 つ選択できます。|
@@ -63,14 +63,14 @@ Azure Portal (http://portal.azure.com) にログインします。
 不要になった場合は、次の手順に従って、リソース グループと、関連するすべてのリソースを削除できます。
 
 
-1. Azure Portal で  ![矢印](./media/get-started-create-service-instance/arrow.png)を選択します。
+1. Azure Portal で  ![矢印](./media/get-started-create-service-instance/arrow.png)が必要です。
 2. **[リソース グループ]** を選択します。
 3. リソース グループを見つけます。
-4. . . . をクリックして、 グループを削除します。
+4. . が必要です。 . をクリックして、 グループを削除します。
 
 ![cleanup](./media/get-started-create-service-instance/cleanup.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [最初の API をインポートして発行する](import-and-publish.md)
