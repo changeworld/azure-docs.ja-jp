@@ -15,15 +15,15 @@ ms.tgt_pltfrm: NA
 ms.workload: Active
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 25fa8d03a206452c17e5d4ad38211203aeb5dd65
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 57132367faaa4c4869f2415f32897562c8056fb1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 
-SQL Database はデータベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージ (RA-GRS) を利用して地理的冗長性を提供します。 バックアップは自動的に作成され、追加料金は発生しません。 ユーザー側の操作は必要ありません。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性および障害復旧戦略の最も重要な部分です。 独自のストレージ コンテナーにバックアップを保持したい場合は、長期的なバックアップの保持ポリシーを構成できます。 詳細については、[長期保存](sql-database-long-term-retention.md)に関する記事をご覧ください。
+SQL Database はデータベースをバックアップし、Azure 読み取りアクセス geo 冗長ストレージ (RA-GRS) を利用して地理的冗長性を提供します。 バックアップは自動的に作成され、追加料金は発生しません。 ユーザー側の操作は必要ありません。 データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 独自のストレージ コンテナーにバックアップを保持したい場合は、長期的なバックアップの保持ポリシーを構成できます。 詳細については、「[長期保存](sql-database-long-term-retention.md)」をご覧ください。
 
 ## <a name="what-is-a-sql-database-backup"></a>SQL Database バックアップとは何か。
 
@@ -41,9 +41,6 @@ SQL Database は SQL Server 技術を利用し、[完全](https://msdn.microsoft
 > [!NOTE]
 > Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の " *データベース レプリケーション* " は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
 > 
-
-## <a name="how-much-backup-storage-is-included-at-no-cost"></a>無償のバックアップ ストレージはどのくらい含まれますか。
-SQL Database は、バックアップ ストレージとして、プロビジョニングされている最大のデータベース ストレージの 200% までを追加のコストなしで提供します。 たとえば、プロビジョニングされたデータベース サイズが 250 GB の Standard データベース インスタンスの場合、500 GB のバックアップ ストレージを追加のコストなしで利用できます。 
 
 ## <a name="how-often-do-backups-happen"></a>バックアップはどのくらいの頻度で行われますか。
 完全データベース バックアップは毎週作成され、差分データベース バックアップは通常、数時間に 1 回作成されます。また、トランザクション ログのバックアップは通常 5 - 10 分間隔で実行されます。 初回の完全バックアップは、データベースの作成直後にスケジュールされます。 通常この操作は 30 分以内に終了しますが、データベースのサイズが大きい場合はそれ以上かかることがあります。 たとえば、復元されたデータベースまたはデータベースのコピーでは、初期バックアップに時間がかかります。 初回の完全バックアップ以降のバックアップは、すべて自動的にスケジュールされ、バックグラウンドで自動的に管理されます。 データベースのバックアップの正確なタイミングは、全体的なシステムのワークロードのバランスを図りながら SQL Database サービスによって決定されます。 
@@ -81,9 +78,9 @@ Azure Portal または API を使用して LTR ポリシーをデータベース
 
 Azure SQL データベースに対して TDE が有効になっているとき、バックアップも暗号化されます。 新しい Azure SQL データベースはすべて、既定で TDE が有効になった状態で構成されます。 TDE に関する詳細については、「[Azure SQL Database での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性および障害復旧戦略の最も重要な部分です。 その他の Azure SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+- データの不慮の破損または削除から保護するデータベース バックアップは、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 その他の Azure SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 - Azure Portal を使用して特定の時点に復元する方法については、[Azure Portal を使用したデータベースのポイントインタイム リストア](sql-database-recovery-using-backups.md)に関するページをご覧ください。
 - PowerShell を使用して特定の時点に復元する方法については、[PowerShell を使用したデータベースのポイントインタイム リストア](scripts/sql-database-restore-database-powershell.md)に関するページをご覧ください。
 - Azure Portal を使用して、Azure Recovery Services コンテナー内で長期保存されている自動バックアップを構成、管理、および復旧する場合、[Azure Portal を使用した長期バックアップ保存の管理](sql-database-long-term-backup-retention-configure.md)に関する記事を参照してください。

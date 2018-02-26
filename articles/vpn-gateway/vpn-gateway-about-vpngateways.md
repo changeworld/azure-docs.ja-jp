@@ -1,10 +1,10 @@
 ---
 title: "VPN Gateway の概要: Azure 仮想ネットワークへのクロスプレミス VPN 接続を作成する | Microsoft Docs"
-description: "この VPN Gateway の概要では、インターネット経由の VPN 接続を使用して Azure 仮想ネットワークに接続する方法について説明します。 基本的な接続構成の図が含まれています。"
+description: "この記事では、VPN Gateway の概要のほか、インターネット経由の VPN 接続を使用して Azure 仮想ネットワークに接続する方法について説明します。 基本的な接続構成の図が含まれています。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/04/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: ae8de17c6b2ca8e1b9888612221c7f39b629c1b1
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: ebecbfa3279a71cda005f60c32247e9e95dd6646
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="about-vpn-gateway"></a>VPN Gateway について
 
@@ -27,15 +27,11 @@ VPN ゲートウェイは、暗号化されたトラフィックをパブリッ�
 
 各仮想ネットワークには VPN ゲートウェイを 1 つだけ作成できますが、同一の VPN ゲートウェイに対して複数の接続を作成することができます。 その一例は、マルチサイト接続構成です。 同一の VPN ゲートウェイへの複数の接続を作成する場合、そのゲートウェイで利用できる帯域幅は、(ポイント対サイト VPN を含め) すべての VPN トンネルによって共有されます。
 
-### <a name="whatis"></a>仮想ネットワーク ゲートウェイとは
+## <a name="whatis"></a>仮想ネットワーク ゲートウェイとは
 
 仮想ネットワーク ゲートウェイは、GatewaySubnet と呼ばれる特定のサブネットにデプロイされる 2 台以上の仮想マシンで構成されます。 GatewaySubnet に配置される VM は、仮想ネットワーク ゲートウェイの作成時に作成されます。 仮想ネットワーク ゲートウェイの VM は、ゲートウェイ固有のルーティング テーブルとゲートウェイ サービスを含むように構成されます。 仮想ネットワーク ゲートウェイの一部である VM を直接構成することはできません。また、GatewaySubnet に、その他のリソースをデプロイすべきではありません。
 
 ゲートウェイの種類として 'Vpn' を使用して仮想ネットワーク ゲートウェイを作成すると、トラフィックを暗号化する特定の種類の仮想ネットワーク ゲートウェイ、つまり VPN ゲートウェイが作成されます。 VPN ゲートウェイの作成には最大 45 分かかることがあります。 VPN ゲートウェイに使用する VM を GatewaySubnet にデプロイし、指定された設定で構成しているためです。 この VM の性能は、選択したゲートウェイの SKU によって決まります。
-
-## <a name="gwsku"></a>ゲートウェイの SKU
-
-[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ## <a name="configuring"></a>VPN ゲートウェイの構成
 
@@ -52,6 +48,10 @@ Azure Portal などの構成ツールをどれか 1 つ使用して、リソー�
 ### <a name="models"></a>デプロイメント モデル
 
 VPN ゲートウェイを構成する手順は、仮想ネットワークの作成に使用したデプロイメント モデルによって異なります。 たとえば、クラシック デプロイメント モデルを使用して VNet を作成した場合は、クラシック デプロイメント モデルに対応したガイドラインと手順を使用して VPN ゲートウェイ設定を作成し、構成します。 デプロイメント モデルの詳細については、 [Resource Manager デプロイメント モデルとクラシック デプロイメント モデルについて](../azure-resource-manager/resource-manager-deployment-model.md)のページを参照してください。
+
+## <a name="gwsku"></a>ゲートウェイの SKU
+
+[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
 ## <a name="diagrams"></a>接続トポロジの図
 
@@ -148,7 +148,7 @@ VPN ゲートウェイの SKU の詳細については、「[ゲートウェイ�
 
 VPN Gateway に関してよく寄せられる質問については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - VPN ゲートウェイの構成を計画します。 [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)に関するページを参照してください。
 - 詳細については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)」を参照してください。

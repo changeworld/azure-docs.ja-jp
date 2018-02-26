@@ -3,8 +3,8 @@ title: "Azure Stack でのテスト VM の作成 | Microsoft Docs"
 description: "クラウド オペレーターとして Azure Stack でテスト VM をプロビジョニングする方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: ErikjeMS
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.assetid: c86646e1-a12e-493f-b396-f17bfacd60c2
 ms.service: azure-stack
@@ -13,16 +13,17 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
-ms.author: erikje
-ms.openlocfilehash: 233cf4df53af6a49e5fe4c5d51e112d8196a7530
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: 
+ms.openlocfilehash: 41096f68e5e7d9e31098d1e8919101418abe4c03
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-test-virtual-machine-in-azure-stack"></a>Azure Stack でのテスト仮想マシンの作成
 
-*適用対象: Azure Stack 開発キット*
+*適用対象: Azure Stack Development Kit*
 
 Azure Stack オペレーターは、テスト仮想マシンを作成して、[Azure Stack](azure-stack-poc.md) Developer Kit のデプロイを検証できます。
 
@@ -41,5 +42,5 @@ Azure Stack オペレーターは、テスト仮想マシンを作成して、[A
     ![](media/azure-stack-provision-vm/image06.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Stack での管理者およびユーザー ポータルの使用](azure-stack-manage-portals.md)

@@ -13,11 +13,11 @@ ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 37b984229a4be6c8f3ab337ea25820428922a466
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2199808533619ed7d9ef8201363f0cef04b0f50f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>SQL Server Integration Services パッケージを Azure にデプロイする
 このチュートリアルでは、Azure-SSIS 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 その後、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイできます。 このチュートリアルでは、次の手順を実行します。
@@ -35,10 +35,10 @@ ms.lasthandoff: 02/01/2018
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。 Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事をご覧ください。
 
 
 ## <a name="prerequisites"></a>前提条件
+- **Azure サブスクリプション**。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。 Azure-SSIS IR の概念については、[Azure-SSIS 統合ランタイムの概要](concepts-integration-runtime.md#azure-ssis-integration-runtime)に関する記事をご覧ください。
 - **Azure SQL Database サーバー**。 まだデータベース サーバーをお持ちでない場合は、あらかじめ Azure Portal でデータベース サーバーを作成しておいてください。 このサーバーは、SSIS カタログ データベース (SSISDB) をホストします。 このデータベース サーバーは、統合ランタイムと同じ Azure リージョンに作成することをお勧めします。 この構成により、統合ランタイムは、Azure リージョンにまたがることなく SSISDB に実行ログを書き込むことができます。 
     - データベース サーバーで **[Azure サービスへのアクセスを許可]** の設定が **[オン]** であることを確認します。 詳細については、「[Azure SQL データベースのセキュリティ保護](../sql-database/sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal)」を参照してください。 PowerShell を使用してこの設定を有効にするには、「[New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule?view=azurermps-4.4.1)」を参照してください。
     - クライアント マシンの IP アドレス、またはクライアント マシンの IP アドレスを含む IP アドレスの範囲を、データベース サーバーのファイアウォール設定にあるクライアント IP アドレスの一覧に追加します。 詳細については、「[Azure SQL Database のサーバーレベルとデータベースレベルのファイアウォール規則](../sql-database/sql-database-firewall-configure.md)」を参照してください。 
@@ -46,7 +46,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。 SSIS パッケージをクラウドで実行する Azure-SSIS 統合ランタイムは、スクリプトを実行してプロビジョニングします。PowerShell はその実行に使用します。 
 
 > [!NOTE]
-> Azure Data Factory V2 および Azure-SSIS Integration Runtime でサポートされているリージョンの一覧については、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」を参照してください。 **[データ + 分析]** を展開して、**[Data Factory V2]** と **[SSIS Integration Runtime]** を表示します。
+> - バージョン 2 のデータ ファクトリを作成することができるリージョンは、米国東部、米国東部 2、東南アジア、および西ヨーロッパです。 
+> - Azure-SSIS IR を作成できるリージョンは、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、およびオーストラリア東部です。
 
 ## <a name="launch-windows-powershell-ise"></a>Windows PowerShell ISE の起動
 管理特権を使用して **Windows PowerShell ISE** を起動します。 
@@ -60,13 +61,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 $SubscriptionName = "<Azure subscription name>"
 $ResourceGroupName = "<Azure resource group name>"
 # Data factory name. Must be globally unique
-$DataFactoryName = "<Data factory name>" 
+$DataFactoryName = "<Data factory name>"
+# You can create a data factory of version 2 in the following regions: East US, East US 2, Southeast Asia, and West Europe. 
 $DataFactoryLocation = "EastUS" 
 
 # Azure-SSIS integration runtime information. This is a Data Factory compute resource for running SSIS packages
 $AzureSSISName = "<Specify a name for your Azure-SSIS IR>"
 $AzureSSISDescription = "<Specify description for your Azure-SSIS IR"
-$AzureSSISLocation = "EastUS" 
+
+# You can create Azure-SSIS IR in the following regions: East US, East US 2, Central US, North Europe, West Europe, Australia East 
+$AzureSSISLocation = "EastUS"
+ 
 # In public preview, only Standard_A4_v2, Standard_A8_v2, Standard_D1_v2, Standard_D2_v2, Standard_D3_v2, Standard_D4_v2 are supported
 $AzureSSISNodeSize = "Standard_D3_v2"
 # In public preview, only 1-10 nodes are supported.
@@ -210,7 +215,7 @@ SSIS ドキュメントの次の記事をご覧ください。
 
 > [!NOTE]
 > - このスクリプトでは、Azure SQL データベースに接続して SSIS カタログ データベース (SSISDB) を準備します。 また、VNet (指定されている場合) に必要なアクセス許可と設定を構成し、Azure-SSIS 統合ランタイムの新しいインスタンスを VNet に参加させます。
-> - Azure-SSIS IR のインスタンスをプロビジョニングすると、ほかにも Azure Feature Pack for SSIS と Access の再頒布可能パッケージがインストールされます。 これらのコンポーネントは、組み込みのコンポーネントでサポートされるデータ ソースに加えて、Excel ファイルと Access ファイルのほか、さまざまな Azure データ ソースに対する接続を実現するものです。 現時点では、(Attunity による Oracle コンポーネントおよび Teradata コンポーネント、SAP BI コンポーネントなど、Microsoft が提供するサードパーティ コンポーネントも含め) SSIS 用のサードパーティ コンポーネントをインストールすることはできません。
+> - Azure-SSIS IR のインスタンスをプロビジョニングすると、Azure Feature Pack for SSIS と Access の再頒布可能パッケージもインストールされます。 これらのコンポーネントは、組み込みのコンポーネントでサポートされるデータ ソースに加えて、Excel ファイルと Access ファイルのほか、さまざまな Azure データ ソースに対する接続を実現するものです。 現時点では、(Attunity による Oracle コンポーネントおよび Teradata コンポーネント、SAP BI コンポーネントなど、Microsoft が提供するサードパーティ コンポーネントも含め) SSIS 用のサードパーティ コンポーネントをインストールすることはできません。
 
 
 Azure SQL Database でサポートされている**価格レベル**の一覧については、[SQL Database のリソース制限](../sql-database/sql-database-resource-limits.md)に関するページを参照してください。 

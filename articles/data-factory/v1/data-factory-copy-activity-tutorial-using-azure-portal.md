@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 6b22e06cc569ff58f4e988a014d39c90245bf260
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 555422356ef16319716a6f54d3ba90082ee25838
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-use-azure-portal-to-create-a-data-factory-pipeline-to-copy-data"></a>チュートリアル: Azure Portal を使用して、データをコピーする Data Factory パイプラインを作成する 
 > [!div class="op_single_selector"]
@@ -73,9 +73,9 @@ ms.lasthandoff: 01/23/2018
 
 データ ファクトリは、1 つまたは複数のパイプラインを持つことができます。 パイプラインには、1 つまたは複数のアクティビティを含めることができます。 たとえば、コピー元からコピー先のデータ ストアにデータをコピーするコピー アクティビティや、Hive スクリプトを実行し、入力データを変換して出力データを生成する HDInsight Hive アクティビティなどを含めることができます。 それでは、この手順でデータ ファクトリの作成から始めましょう。
 
-1. [Azure Portal](https://portal.azure.com/) にログインした後、左側のメニューで **[新規]**、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
+1. [Azure Portal](https://portal.azure.com/) にログインした後、左側のメニューで **[リソースの作成]**、**[データ + 分析]**、**[Data Factory]** の順にクリックします。 
    
-   ![[新規] -> [DataFactory]](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)    
+   ![New->DataFactory](./media/data-factory-copy-activity-tutorial-using-azure-portal/NewDataFactoryMenu.png)    
 2. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
    
    1. **[名前]** に「**ADFTutorialDataFactory**」と入力します。 

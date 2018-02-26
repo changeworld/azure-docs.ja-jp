@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/17/2017
 ms.author: barclayn
 ms.custom: pim
-ms.openlocfilehash: 11b5d1bc4e931ad902b623fe55e62097ae40d8ef
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 9f51daabef7d1e02917869e4e6943b8ea28b56f5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-using-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management の使用開始
 
@@ -33,7 +33,7 @@ Azure AD Privileged Identity Management を使用するには、まず Azure ポ
 
 1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/) にサインインします。
 2. 組織に複数のディレクトリがある場合は、Azure Portal の右上隅に表示されているユーザー名を選択し、 PIM を使用するディレクトリを選択します。
-3. **[その他のサービス]** を選択し、[フィルター] ボックスを使用して "**Azure AD Privileged Identity Management**" を検索します。
+3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使用して **Azure AD Privileged Identity Management** を検索します。
 4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。 Privileged Identity Management アプリケーションが起動します。
 
 ディレクトリ内で Azure AD Privileged Identity Management を使用する最初のユーザーには、そのディレクトリの **[セキュリティ管理者]** ロールと **[特権ロール管理者]** ロールが自動的に割り当てられます。 ユーザーの Azure AD ディレクトリ ロールの割り当てを管理できるのは特権ロール管理者だけです。 [セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)を実行して、 画面の指示に従って初回の検出と割り当てを体験することもできます。
@@ -51,7 +51,7 @@ Azure AD Privileged Identity Management を設定すると、アプリケーシ�
 - 左側のナビゲーション メニューの管理セクションにある **[Azure AD ディレクトリ ロール]** には、特権ロール管理者がロール割り当ての管理、ロールのアクティブ化設定の変更、アクセス レビューの開始などを行うためのダッシュボードが表示されます。 このダッシュボードは、特権ロール管理者以外に対しては無効になっています。 これらのユーザーは、[自分のビュー] という特殊なダッシュボードにアクセスできます。 [自分のビュー] ダッシュボードには、テナント全体ではなく、ダッシュボードにアクセスしているユーザーに関する情報のみが表示されます。
 - 左側のナビゲーション メニューの管理セクションにある **[Azure Resource roles (Preview)]\(Azure リソース ロール (プレビュー)\)** には、ロールの割り当てを選択してあるサブスクリプション リソースの一覧が表示されます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure AD Privileged Identity Management の概要](active-directory-privileged-identity-management-configure.md) に関するページに、組織で管理アクセスを管理する方法の詳細が記載されています。
 
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]

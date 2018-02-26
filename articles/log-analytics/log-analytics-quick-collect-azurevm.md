@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 01/04/2018
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 5ce4e530dde0f7a050e3b43f469154d679f25a34
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: be43701f96a71ad5cd9239c4ec7b3eea7fd6db21
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Azure Virtual Machines に関するデータの収集
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、Azure Virtual Machines およびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/05/2018
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
-1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
 2. **[作成]** をクリックし、次の項目について選択します。
 
   * 新しい **OMS ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 

@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 734243a28dc59518dc30d9d86064235795e794ab
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: c867f9ed7ede0dddf6b327b212adbbccbf3d64b0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -51,7 +51,7 @@ Azure Portal で AKS クラスターを作成する前に、サービス プリ�
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-**[新規作成]** > **[コンテナー]** > **[Azure Container Service - AKS (preview)]\(Azure Container Service - AKS (プレビュー)\)** を選択します。
+**[リソースの作成]** > **[コンテナー]** > **[Azure Container Service - AKS (preview)]\(Azure Container Service - AKS (プレビュー)\)** の順に選択します。
 
 クラスター名、DNS プレフィックス、リソース グループ名、場所、クラスターの Kubernetes のバージョンを指定します。 クラスター名とリソース グループ名をメモします。これらの情報は、クラスターに接続するときに必要になります。
 

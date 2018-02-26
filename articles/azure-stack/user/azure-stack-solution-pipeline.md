@@ -3,8 +3,8 @@ title: "Azure および Azure Stack へのアプリのデプロイ | Microsoft D
 description: "ハイブリッド CI/CD パイプラインを使用して、アプリを Azure と Azure Stack にデプロイする方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
@@ -12,18 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/25/2017
-ms.author: helaw
+ms.author: brenduns
+ms.reviewer: 
 ms.custom: mvc
-ms.openlocfilehash: 83bb401d5d65cd2c34015a1a14673363aeee81d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6c073376db196b7d6c73c38d6a0a7b2c24949528
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-apps-to-azure-and-azure-stack"></a>Azure と Azure Stack へのアプリのデプロイ
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
-ハイブリッド[継続的インテグレーション](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[継続的配信](https://www.visualstudio.com/learn/what-is-continuous-delivery/) (CI/CD) パイプラインによって、アプリのビルド、テスト、および複数のクラウドへのデプロイを行うことができます。  このチュートリアルでは、サンプル環境をビルドし、ハイブリッド CI/CD パイプラインを利用する方法について学習します。
+ハイブリッド[継続的インテグレーション](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[継続的デリバリー](https://www.visualstudio.com/learn/what-is-continuous-delivery/) (CI/CD) パイプラインによって、アプリのビルド、テスト、および複数のクラウドへのデプロイを行うことができます。  このチュートリアルでは、サンプル環境をビルドし、ハイブリッド CI/CD パイプラインを利用する方法について学習します。
  
 > [!div class="checklist"]
 > * コード コミットに基づいて、Visual Studio Team Services (VSTS) リポジトリに対して新しいビルドを開始します。
@@ -198,7 +199,7 @@ ms.lasthandoff: 10/11/2017
 
 新しいハイブリッド CI/CD パイプラインを、その他のハイブリッド クラウド パターンの構成要素として利用できるようになりました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、以下のことを行うハイブリッド CI/CD パイプラインの構築方法を学習しました。
 
 > [!div class="checklist"]

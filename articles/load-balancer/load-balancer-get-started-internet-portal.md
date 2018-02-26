@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 29c74c2cc58e7cab1364b2fc2c74951440dea0ab
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ff61008710766830640c0de31bf9fd23198946fd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>Azure ポータルを使用したインターネットに接続するロード バランサーの作成
 
@@ -57,7 +57,7 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 > この例では、 **myVNet**という名前の仮想ネットワークが存在すことを前提としています。 そのためには、 [仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) に関するページを参照してください。 また、**myVNet** 内に **LB-Subnet-BE** という名前のサブネットがあり、**web1** と **web2** という名前の 2 つの VM が **myVNet** の **myAvailSet** という名前の同じ可用性セット内に存在することも前提としています。 VM を作成するには、 [このリンク](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を参照してください。
 
 1. ブラウザーから Azure ポータル ( [http://portal.azure.com](http://portal.azure.com) ) に移動し、Azure アカウントでログインします。
-2. 画面の左上で、**[新規]** > **[ネットワーク]** > **[ロード バランサー]** の順に選択します。
+2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。
 3. **[ロード バランサーの作成]** ブレードで、ロード バランサーの名前を入力します。 ここでは、 **myLoadBalancer**という名前を付けます。
 4. **[種類]** から **[パブリック]** を選択します。
 5. **[パブリック IP アドレス]** で、**myPublicIP** という名前の新しいパブリック IP を作成します。
@@ -105,7 +105,7 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 
 ロード バランサーを削除するには、削除するロード バランサーを選択します。 *[ロード バランサー]* ブレードをクリックし、ブレードの上部にある **[削除]** をクリックします。 メッセージが表示されたら **[はい]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)
 

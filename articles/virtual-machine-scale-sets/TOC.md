@@ -30,6 +30,9 @@
 #### [高度な自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [スケール セット上のアプリケーション](virtual-machine-scale-sets-deploy-app.md)
 ### [スケール セットでデータ ディスクを使用する](virtual-machine-scale-sets-attached-disks.md)
+### スケール セット内のディスクの暗号化
+#### [PowerShell の使用](virtual-machine-scale-sets-encrypt-disks-ps.md)
+#### [Azure CLI 2.0 の使用](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [大規模なスケール セットを処理する](virtual-machine-scale-sets-placement-groups.md)
 ### [スケール セット テンプレートを変換して管理ディスクを使用する](virtual-machine-scale-sets-convert-template-to-md.md)
 
@@ -39,7 +42,7 @@
 #### [Azure PowerShell の使用](virtual-machine-scale-sets-manage-powershell.md)
 ### [スケール セットの垂直スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [OS の自動アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)
-### [スケール セットのアップグレード](virtual-machine-scale-sets-upgrade-scale-set.md)
+### [スケール セットの変更](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [DSC とスケール セットの使用](virtual-machine-scale-sets-dsc.md)
 ### [スケール セットのネットワーク](virtual-machine-scale-sets-networking.md)
 ### [テンプレートを管理ディスクに変換する](virtual-machine-scale-sets-convert-template-to-md.md)

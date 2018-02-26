@@ -254,6 +254,9 @@
     - name: Key Vault
       tocHref: /azure/key-vault/
       topicHref: /azure/key-vault/
+    - name: Location Based Services
+      tocHref: /azure/location-based-services/
+      topicHref: /azure/location-based-services/
     - name: Load Balancer
       tocHref: /azure/load-balancer/
       topicHref: /azure/load-balancer/
@@ -368,7 +371,7 @@
     - name: Scheduler
       tocHref: /azure/scheduler/
       topicHref: /azure/scheduler/
-    - name: 検索
+    - name: Search
       tocHref: /azure/search/
       topicHref: /azure/search/
     - name: セキュリティ
@@ -429,7 +432,7 @@
     - name: Virtual Machine Scale Sets
       tocHref: /azure/virtual-machine-scale-sets/
       topicHref: /azure/virtual-machine-scale-sets/
-    - name: '[Virtual Machines]'
+    - name: Virtual Machines
       tocHref: /azure/virtual-machines/
       topicHref: /azure/virtual-machines/
       items:

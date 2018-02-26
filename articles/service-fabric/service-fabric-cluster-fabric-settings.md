@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 2e609b205c32d2ea5ca58586e9f8ba9623ef7580
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 23f063d89c5030d440d50765eee9d121b4d8f5ba
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
@@ -482,17 +482,32 @@ ms.lasthandoff: 01/11/2018
 ### <a name="section-name-securityclientx509names"></a>セクション名: Security/ClientX509Names
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap、既定値は None|動的| |
+|PropertyGroup|X509NameMap、既定値は None|動的| |
 
 ### <a name="section-name-securityclusterx509names"></a>セクション名: Security/ClusterX509Names
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap、既定値は None|動的| |
+|PropertyGroup|X509NameMap、既定値は None|動的| |
 
 ### <a name="section-name-securityserverx509names"></a>セクション名: Security/ServerX509Names
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
 | --- | --- | --- | --- |
-PropertyGroup|X509NameMap、既定値は None|動的| |
+|PropertyGroup|X509NameMap、既定値は None|動的| |
+
+### <a name="section-name-securityclientcertificateissuerstores"></a>セクション名: Security/ClientCertificateIssuerStores
+| **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap、既定値は None |動的|クライアント証明書の X509 発行者証明書ストア。名前 = clientIssuerCN、値 = ストアのコンマ区切りの一覧 |
+
+### <a name="section-name-securityclustercertificateissuerstores"></a>セクション名: Security/ClusterCertificateIssuerStores
+| **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap、既定値は None |動的|クラスター証明書の X509 発行者証明書ストア。名前 = clusterIssuerCN、値 = ストアのコンマ区切りの一覧 |
+
+### <a name="section-name-securityservercertificateissuerstores"></a>セクション名: Security/ServerCertificateIssuerStores
+| **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
+| --- | --- | --- | --- |
+|PropertyGroup|IssuerStoreKeyValueMap、既定値は None |動的|サーバー証明書の X509 発行者証明書ストア。名前 = serverIssuerCN、値 = ストアのコンマ区切りの一覧 |
 
 ### <a name="section-name-securityclientaccess"></a>セクション名: Security/ClientAccess
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |
@@ -555,31 +570,31 @@ PropertyGroup|X509NameMap、既定値は None|動的| |
 | StartClusterConfigurationUpgrade |string、既定値は "Admin" |動的| パーティションで StartClusterConfigurationUpgrade を誘発します。 |
 | GetUpgradesPendingApproval |string、既定値は "Admin" |動的| パーティションで GetUpgradesPendingApproval を誘発します。 |
 | StartApprovedUpgrades |string、既定値は "Admin" |動的| パーティションで StartApprovedUpgrades を誘発します。 |
-| ping |string、既定値は "Admin\"|\|User" |動的| クライアントの ping のセキュリティ構成。 |
-| クエリ |string、既定値は "Admin\"|\|User" |動的| クエリのセキュリティ構成。 |
-| NameExists |string、既定値は "Admin\"|\|User" | 動的|名前付け URI の存在確認のセキュリティ構成。 |
-| EnumerateSubnames |string、既定値は "Admin\"|\|User" |動的| 名前付け URI を列挙するためのセキュリティ構成。 |
-| EnumerateProperties |string、既定値は "Admin\"|\|User" | 動的|名前付けプロパティを列挙するためのセキュリティ構成。 |
-| PropertyReadBatch |string、既定値は "Admin\"|\|User" |動的| 名前付けプロパティの読み取り操作のセキュリティ構成。 |
-| GetServiceDescription |string、既定値は "Admin\"|\|User" |動的| 長いポーリングのサービス通知と読み取りサービスの説明のセキュリティ構成。 |
-| ResolveService |string、既定値は "Admin\"|\|User" |動的| クレーム ベースのサービス解決のセキュリティ構成。 |
-| ResolveNameOwner |string、既定値は "Admin\"|\|User" | 動的|名前付け URI の所有者を解決するためのセキュリティ構成。 |
-| ResolvePartition |string、既定値は "Admin\"|\|User" | 動的|システム サービスを解決するためのセキュリティ構成。 |
-| ServiceNotifications |string、既定値は "Admin\"|\|User" |動的| イベント ベースのサービス通知のセキュリティ構成。 |
-| PrefixResolveService |string、既定値は "Admin\"|\|User" |動的| クレーム ベースのサービス プレフィックス解決のセキュリティ構成。 |
-| GetUpgradeStatus |string、既定値は "Admin\"|\|User" |動的| アプリケーションのアップグレード状態をポーリングするためのセキュリティ構成。 |
-| GetFabricUpgradeStatus |string、既定値は "Admin\"|\|User" |動的| クラスターのアップグレード状態をポーリングするためのセキュリティ構成。 |
-| InvokeInfrastructureQuery |string、既定値は "Admin\"|\|User" | 動的|インフラストラクチャ タスクを照会するためのセキュリティ構成。 |
-| 一覧表示 |string、既定値は "Admin\"|\|User" | 動的|イメージ ストア クライアント ファイルのリスト操作のセキュリティ構成。 |
-| ResetPartitionLoad |string、既定値は "Admin\"|\|User" |動的| failoverUnit の負荷をリセットするためのセキュリティ構成。 |
-| ToggleVerboseServicePlacementHealthReporting | string、既定値は "Admin\"|\|User" |動的| 詳細な ServicePlacement HealthReporting を切り替えるためのセキュリティ構成。 |
-| GetPartitionDataLossProgress | string、既定値は "Admin\"|\|User" | 動的|データ損失を発生させる API 呼び出しの進行状況を取得します。 |
-| GetPartitionQuorumLossProgress | string、既定値は "Admin\"|\|User" |動的| クォーラム損失を発生させる API 呼び出しの進行状況を取得します。 |
-| GetPartitionRestartProgress | string、既定値は "Admin\"|\|User" |動的| パーティションを再起動する API 呼び出しの進行状況を取得します。 |
-| GetChaosReport | string、既定値は "Admin\"|\|User" |動的| 指定された時間範囲内の混乱の状態を取得します。 |
-| GetNodeTransitionProgress | string、既定値は "Admin\"|\|User" |動的| ノード切り替えコマンドの進行状況を取得するためのセキュリティ構成。 |
-| GetClusterConfigurationUpgradeStatus | string、既定値は "Admin\"|\|User" |動的| パーティションで GetClusterConfigurationUpgradeStatus を誘発します。 |
-| GetClusterConfiguration | string、既定値は "Admin\"|\|User" | 動的|パーティションで GetClusterConfiguration を誘発します。 |
+| ping |string、既定値は "Admin\|\|User" |動的| クライアントの ping のセキュリティ構成。 |
+| クエリ |string、既定値は "Admin\|\|User" |動的| クエリのセキュリティ構成。 |
+| NameExists |string、既定値は "Admin\|\|User" | 動的|名前付け URI の存在確認のセキュリティ構成。 |
+| EnumerateSubnames |string、既定値は "Admin\|\|User" |動的| 名前付け URI を列挙するためのセキュリティ構成。 |
+| EnumerateProperties |string、既定値は "Admin\|\|User" | 動的|名前付けプロパティを列挙するためのセキュリティ構成。 |
+| PropertyReadBatch |string、既定値は "Admin\|\|User" |動的| 名前付けプロパティの読み取り操作のセキュリティ構成。 |
+| GetServiceDescription |string、既定値は "Admin\|\|User" |動的| 長いポーリングのサービス通知と読み取りサービスの説明のセキュリティ構成。 |
+| ResolveService |string、既定値は "Admin\|\|User" |動的| クレーム ベースのサービス解決のセキュリティ構成。 |
+| ResolveNameOwner |string、既定値は "Admin\|\|User" | 動的|名前付け URI の所有者を解決するためのセキュリティ構成。 |
+| ResolvePartition |string、既定値は "Admin\|\|User" | 動的|システム サービスを解決するためのセキュリティ構成。 |
+| ServiceNotifications |string、既定値は "Admin\|\|User" |動的| イベント ベースのサービス通知のセキュリティ構成。 |
+| PrefixResolveService |string、既定値は "Admin\|\|User" |動的| クレーム ベースのサービス プレフィックス解決のセキュリティ構成。 |
+| GetUpgradeStatus |string、既定値は "Admin\|\|User" |動的| アプリケーションのアップグレード状態をポーリングするためのセキュリティ構成。 |
+| GetFabricUpgradeStatus |string、既定値は "Admin\|\|User" |動的| クラスターのアップグレード状態をポーリングするためのセキュリティ構成。 |
+| InvokeInfrastructureQuery |string、既定値は "Admin\|\|User" | 動的|インフラストラクチャ タスクを照会するためのセキュリティ構成。 |
+| 一覧表示 |string、既定値は "Admin\|\|User" | 動的|イメージ ストア クライアント ファイルのリスト操作のセキュリティ構成。 |
+| ResetPartitionLoad |string、既定値は "Admin\|\|User" |動的| failoverUnit の負荷をリセットするためのセキュリティ構成。 |
+| ToggleVerboseServicePlacementHealthReporting | string、既定値は "Admin\|\|User" |動的| 詳細な ServicePlacement HealthReporting を切り替えるためのセキュリティ構成。 |
+| GetPartitionDataLossProgress | string、既定値は "Admin\|\|User" | 動的|データ損失を発生させる API 呼び出しの進行状況を取得します。 |
+| GetPartitionQuorumLossProgress | string、既定値は "Admin\|\|User" |動的| クォーラム損失を発生させる API 呼び出しの進行状況を取得します。 |
+| GetPartitionRestartProgress | string、既定値は "Admin\|\|User" |動的| パーティションを再起動する API 呼び出しの進行状況を取得します。 |
+| GetChaosReport | string、既定値は "Admin\|\|User" |動的| 指定された時間範囲内の混乱の状態を取得します。 |
+| GetNodeTransitionProgress | string、既定値は "Admin\|\|User" |動的| ノード切り替えコマンドの進行状況を取得するためのセキュリティ構成。 |
+| GetClusterConfigurationUpgradeStatus | string、既定値は "Admin\|\|User" |動的| パーティションで GetClusterConfigurationUpgradeStatus を誘発します。 |
+| GetClusterConfiguration | string、既定値は "Admin\|\|User" | 動的|パーティションで GetClusterConfiguration を誘発します。 |
 |CreateComposeDeployment|string、既定値は L"Admin"| 動的|compose ファイルで記述されている compose デプロイを作成します |
 |DeleteComposeDeployment|string、既定値は L"Admin"| 動的|compose デプロイを削除します |
 |UpgradeComposeDeployment|string、既定値は L"Admin"| 動的|compose デプロイをアップグレードします |
@@ -721,8 +736,6 @@ PropertyGroup|X509NameMap、既定値は None|動的| |
 |MaxDataMigrationTimeout |時間 (秒単位)、既定値は 600 |動的|timespan を秒単位で指定します。 Fabric のアップグレードが実行された後のデータ移行復旧操作の最大タイムアウト。 |
 |MaxOperationRetryDelay |時間 (秒単位)、既定値は 5|動的| timespan を秒単位で指定します。 エラーが発生したときの内部再試行の最大遅延。 |
 |ReplicaSetCheckTimeoutRollbackOverride |時間 (秒単位)、既定値は 1200 |動的| timespan を秒単位で指定します。 ReplicaSetCheckTimeout が DWORD の最大値に設定されている場合、ロールバックのためにこの構成の値で上書きされます。 ロールフォワードに使用する値が上書きされることはありません。 |
-|ImageBuilderJobQueueThrottle |int、既定値は 10 |動的|アプリケーション要求での Image Builder プロキシ ジョブ キューのスレッド数のスロットル。 |
-|MaxExponentialOperationRetryDelay|TimeSpan、既定値は Common::TimeSpan::FromSeconds(30)|動的|timespan を秒単位で指定します。 エラーが繰り返し発生したときの内部再試行の最大指数遅延 |
 
 ### <a name="section-name-defragmentationemptynodedistributionpolicy"></a>セクション名: DefragmentationEmptyNodeDistributionPolicy
 | **パラメーター** | **使用できる値** |**アップグレード ポリシー**| **ガイダンスまたは簡単な説明** |

@@ -3,7 +3,7 @@
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)
 
-# [概要](iot-hub-get-started.md)
+# [開始する](iot-hub-get-started.md)
 
 ## デバイスのセットアップ
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
@@ -87,6 +87,7 @@
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
 #### [Node.js](iot-hub-node-node-file-upload.md)
+#### [Python](iot-hub-python-python-file-upload.md)
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
@@ -110,15 +111,19 @@
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-how-to-configure.md)
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-how-to-configure.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-how-to-configure.md)
+#### [Python バックエンド/Python デバイス](iot-hub-python-python-twin-how-to-configure.md)
 ### デバイス ジョブを使用したデバイスのファームウェアの更新
 #### [Node バックエンド/Node デバイス](iot-hub-node-node-firmware-update.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-firmware-update.md)
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-firmware-update.md)
+#### [Python バックエンド/Python デバイス](iot-hub-python-python-firmware-update.md)
 ### ジョブのスケジュールとブロードキャスト
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-schedule-jobs.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-schedule-jobs.md)
-#### [Java](iot-hub-java-java-schedule-jobs.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-schedule-jobs.md)
+#### [Java バックエンド/Java デバイス](iot-hub-java-java-schedule-jobs.md)
+#### [Python バックエンド/Python デバイス](iot-hub-python-python-schedule-jobs.md)
 
 ## [管理]
 ### IoT Hub の作成 

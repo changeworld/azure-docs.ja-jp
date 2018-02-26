@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 9971eb9e069d9fe1148c293c3459a8b11d931c2a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 96a5caca1f00b46330c839ef3380d58cf9913ad5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Azure Data Factory を使って複数のテーブルを一括コピーする
 このチュートリアルでは、**Azure SQL Database から Azure SQL Data Warehouse に多数のテーブルをコピーする方法**について説明します。 同じパターンは他のコピー シナリオでも適用できます。 たとえば、SQL Server/Oracle から Azure SQL Database/Data Warehouse/Azure BLOB にテーブルをコピーしたり、BLOB から Azure SQL Database テーブルにさまざまなパスをコピーしたりするシナリオが該当します。
@@ -70,7 +70,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 SQL Database と SQL Data Warehouse の両方について、SQL サーバーへのアクセスを Azure サービスに許可します。 ご利用の Azure SQL サーバーで **[Azure サービスへのアクセスを許可]** 設定を**オン**にしてください。 この設定により、Data Factory サービスが Azure SQL データベースからデータを読み取ったり、Azure SQL データ ウェアハウスにデータを書き込んだりすることができます。 この設定を確認して有効にするには、次の手順を実行します。
 
-1. 左側にある **[More services (その他のサービス)]** ハブをクリックし、**[SQL サーバー]** をクリックします。
+1. 左側にある **[すべてのサービス]** をクリックし、**[SQL Server]** をクリックします。
 2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
 3. **[ファイアウォールの設定]** ページの **[Azure サービスへのアクセスを許可]** で **[オン]** をクリックします。
 

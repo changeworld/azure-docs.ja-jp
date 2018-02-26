@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 01/02/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 16e726d10b159d0a3f08f8bca197c675d748c764
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 63f22544276da07ec98e779cc524879603655db6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Azure Container Instances での最初のコンテナーの作成
 
@@ -27,7 +27,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="create-a-container-instance"></a>コンテナー インスタンスの作成
 
-**[New] (新規)** > **[Containers] (コンテナー)** > **[Azure Container Instances (preview)] (Azure Container Instances (プレビュー))** を選択します。
+**[リソースの作成]** > **[コンテナー]** > **[Azure Container Instances (preview)]** の順に選択します。
 
 ![Azure ポータルで新しいコンテナー インスタンスの作成を開始][aci-portal-01]
 

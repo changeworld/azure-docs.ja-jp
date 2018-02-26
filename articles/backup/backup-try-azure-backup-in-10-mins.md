@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 8/15/2017
 ms.author: markgal;
-ms.openlocfilehash: 7a016ed92c68ce624aeb09d766adbc6fc8ba2b42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb631eff77932b6bdcf858256c47c9d7381a58c1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>最初に: Resource Manager デプロイメントでのファイルとフォルダーのバックアップ
 この記事では、Resource Manager デプロイメントを使用して、Windows Server (または Windows コンピューター) のファイルとフォルダーを Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。 この記事は、Azure Backup を始めて使用する場合に適しています。
@@ -28,12 +28,12 @@ Azure Backup の詳細については、こちらの [概要記事](backup-intro
 
 Azure サブスクリプションがない場合は、すべての Azure サービスにアクセスできる [無料アカウント](https://azure.microsoft.com/free/) を作成します。
 
-## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成する
+## <a name="create-a-recovery-services-vault"></a>Recovery Services コンテナーの作成
 ファイルとフォルダーをバックアップするには、データを保存するリージョンに Recovery Services コンテナーを作成する必要があります。 また、ストレージのレプリケート方法を決定する必要もあります。
 
 ### <a name="to-create-a-recovery-services-vault"></a>Recovery Services コンテナーを作成するには
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ハブ メニューの **[その他のサービス]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、**[Recovery Services コンテナー]** をクリックします。
+2. ハブ メニューの **[すべてのサービス]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、**[Recovery Services コンテナー]** をクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
@@ -132,7 +132,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![コンテナー資格情報のダウンロード](./media/backup-try-azure-backup-in-10-mins/download-vault-credentials.png)
 
-    コンテナー資格情報は、ダウンロード フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[保存]**をクリックします。 誤って **[開く]** をクリックすると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報はダウンロード フォルダーにあります。   
+    コンテナー資格情報は、ダウンロード フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[Save]** をクリックします。 誤って **[開く]** をクリックすると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報はダウンロード フォルダーにあります。   
 
     ![コンテナー資格情報のダウンロード完了](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
 
@@ -224,7 +224,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 ## <a name="questions"></a>疑問がある場合
 ご不明な点がある場合や今後搭載を希望する機能がある場合は、 [フィードバックをお送りください](http://aka.ms/azurebackup_feedback)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Windows コンピューターのバックアップ](backup-configure-vault.md)の詳細を参照してください。
 * ファイルとフォルダーをバックアップしたので、 [コンテナーとサーバーを管理](backup-azure-manage-windows-server.md)できます。
 * バックアップを復元する必要がある場合は、 [Windows コンピューターへのファイルの復元](backup-azure-restore-windows-server.md)に関する記事を参照してください。

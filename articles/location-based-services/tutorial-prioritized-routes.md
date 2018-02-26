@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 78e911d17fe8c468cf89ec1477f1c5144e6669b6
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: ac57996e7dced5ef0f0a993889bfc13b1d064167
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Azure Location Based Services を使用してさまざまなトラベルのモードのルートを見つけます
 
@@ -209,9 +209,9 @@ ms.lasthandoff: 01/24/2018
     ```
     このコード スニペットは、[XMLHttpRequest](https://xhr.spec.whatwg.org/) を作成し、受信した応答を解析するためのイベント ハンドラーを追加します。 成功応答の場合、返されたルートの座標の配列が作成され、マップの `truckRouteLayerName` レイヤーが追加されます。 
     
-    また、このコード スニペットで、Route Service に対してクエリが送信され、アカウントのキーに指定された起点と終点のルートが取得されます。 次の省略可能なパラメーターは、大型トラックのルートを示すために使用します。パラメーター `travelMode=truck` で、トラベルのモードを *truck* と指定します。 サポートされる他のトラベルのモードは、*taxi*、*bus*、*van*、*motorcycle*、既定の *car* です。  
-        - パラメーター `vehicleWidth`、`vehicleHeight`、`vehicleLength` で、車両の寸法 (メートル) を指定します。これらのパラメーターは、トラベルのモードが *truck* の場合にのみ考慮されます。  
-        - `vehicleLoadType` は、積み荷を一部の道路で危険であり制限されるものと分類します。 現在、このパラメーターも *truck* モードの場合にのみ考慮されます。  
+    また、このコード スニペットで、Route Service に対してクエリが送信され、アカウントのキーに指定された起点と終点のルートが取得されます。 次の省略可能なパラメーターは、大型トラックのルートを示すために使用します。パラメーター `travelMode=truck` で、トラベルのモードを *truck* と指定します。 サポートされる他のトラベルのモードは、*taxi*、*bus*、*van*、*motorcycle*、既定の *car* です。
+        - パラメーター `vehicleWidth`、`vehicleHeight`、`vehicleLength` で、車両の寸法 (メートル) を指定します。これらのパラメーターは、トラベルのモードが *truck* の場合にのみ考慮されます。
+        - `vehicleLoadType` は、積み荷を一部の道路で危険であり制限されるものと分類します。 現在、このパラメーターも *truck* モードの場合にのみ考慮されます。
 
 2. 次の JavaScript コードを追加して、Route Service を使用して car のルートを取得します。
 

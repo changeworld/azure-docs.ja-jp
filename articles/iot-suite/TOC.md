@@ -17,7 +17,6 @@
 #### [azureiotsuite.com のアクセス許可](iot-suite-v1-permissions.md)
 #### [リモート監視ソリューションのチュートリアル](iot-suite-v1-remote-monitoring-sample-walkthrough.md)
 #### [Raspberry Pi を接続する](iot-suite-v1-raspberry-pi-kit-get-started.md)
-#### [MXChip IoT DevKit を接続する](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 ##### C の使用
 ###### [シミュレートされたデータ](iot-suite-v1-raspberry-pi-kit-c-get-started-simulator.md)
 ###### [実際のセンサーを使用する](iot-suite-v1-raspberry-pi-kit-c-get-started-basic.md)
@@ -26,6 +25,7 @@
 ###### [シミュレートされたデータ](iot-suite-v1-raspberry-pi-kit-node-get-started-simulator.md)
 ###### [実際のセンサーを使用する](iot-suite-v1-raspberry-pi-kit-node-get-started-basic.md)
 ###### [ファームウェアの更新プログラムを実装する](iot-suite-v1-raspberry-pi-kit-node-get-started-advanced.md)
+#### [MXChip IoT DevKit を接続する](../iot-hub/iot-hub-arduino-iot-devkit-az3166-devkit-remote-monitoring.md)
 
 ### ハウツー ガイド
 #### シミュレートされたデバイスの接続
@@ -99,5 +99,7 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [FAQ](iot-suite-faq.md)
+## [リモート監視に関する FAQ](iot-suite-faq-rm-v2.md)
 ## [コネクテッド ファクトリに関する FAQ](iot-suite-faq-cf.md)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-iot-suite)
 ## [IoT Suite ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)

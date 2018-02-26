@@ -5,16 +5,16 @@ services: application-insights
 keywords: 
 author: mrbullwinkle
 ms.author: mbullwin
-ms.date: 09/15/2017
+ms.date: 12/12/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: 065638c1d724865f45b0c1e2691041848f90ad00
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ccd55633f71be172edc330459bf8610f2146ad8d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="start-monitoring-your-aspnet-core-web-application"></a>ASP.NET Core Web アプリケーションの監視を開始する
 
@@ -36,7 +36,7 @@ ASP.NET Core Web アプリケーションがない場合は、[ASP.NET Core Web 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -44,13 +44,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 Application Insights は、オンプレミスとクラウドのどちらで実行されているかに関係なく、インターネットに接続された任意のアプリケーションからテレメトリ データを収集できます。 このデータの表示を開始するには、次の手順を実行します。
 
-1. **[新規]** > **[監視 + 管理]** > **[Application Insights]** を選択します。
+1. **[リソースの作成]** > **[監視 + 管理]** > **[Application Insights]** の順に選択します。
 
    ![Application Insights リソースの追加](./media/app-insights-dotnetcore-quick-start/0001-dc.png)
 
-    構成ボックスが表示されたら、下の表を使用して入力フィールドに入力します。
+    構成ボックスが表示されたら、次の表を使用して入力フィールドに入力します。
 
-    | [設定]        |  値           | 説明  |
+    | 設定        |  値           | [説明]  |
    | ------------- |:-------------|:-----|
    | **名前**      | グローバルに一意の値 | 監視しているアプリを識別する名前 |
    | **アプリケーションの種類** | ASP.NET Web アプリケーション | 監視しているアプリの種類 |
@@ -123,7 +123,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
 1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。
 2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [実行時の例外の特定と診断](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-runtime-exceptions)

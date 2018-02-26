@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 0299e73aecca3b3e5714b37c8b0b776ec8561e29
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 21cf8201236224244e6ed34f91f9c5c601ab9a79
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="predictive-maintenance-real-world-scenario"></a>予測メンテナンスの実際のシナリオ
 
-予期しない設備のダウンタイムは、どのような企業にとっても損害になる可能性があります。 そのため、使用率やパフォーマンスを最大化するには、またコストのかかる予定外のダウンタイムを最小化するには、現場の設備を稼働し続けることが必須です。 問題を早期に特定することで、コスト効率の高い方法で限られた保守リソースをデプロイし、品質管理やサプライ チェーンのプロセスを向上させることができます。 
+予期しない設備のダウンタイムは、どのような企業にとっても損害になる可能性があります。 使用率やパフォーマンスを最大化し、コストのかかる予定外のダウンタイムを最小化するには、現場の設備を稼働し続けることが必須です。 問題を早期に特定することで、コスト効率の高い方法で限られた保守リソースをデプロイし、品質管理やサプライ チェーンのプロセスを向上させることができます。 
 
 このシナリオでは、比較的[大規模なシミュレートされたデータ セット](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)を使用して、予測メンテナンスのデータ サイエンス プロジェクト (データ インジェスト、特徴エンジニアリング、モデルの構築、モデルの運用化とデプロイ) について説明します。 プロセス全体のコードは、Azure ML Workbench で PySpark を使用して Jupyter ノートブックで記述されています。 最終的なモデルは、設備の障害をリアルタイムで予測するために、Azure Machine Learning モデル管理を使用してデプロイされます。   
 
 ## <a name="link-to-the-gallery-github-repository"></a>ギャラリーの GitHub リポジトリへのリンク
 
-パブリック GitHub リポジトリのリンクは [https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) です
+問題レポートとコントリビューションのパブリック GitHub リポジトリのリンクは [https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance) です
 
 
 ## <a name="use-case-overview"></a>ユース ケースの概要
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/12/2018
 
 * [Azure アカウント](https://azure.microsoft.com/en-us/free/) (無料試用版も使用できます)。
 * [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](./quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
-* Azure Machine Learning Operationalization は、ローカル デプロイ環境と[管理アカウント](https://docs.microsoft.com/azure/machine-learning/preview/model-management-overview)を必要とします
+* Azure Machine Learning Operationalization は、ローカル デプロイ環境と[管理アカウント](model-management-overview.md)を必要とします
 
 この例は、任意の AML Workbench コンピューティング コンテキストで実行できます。 ただし、少なくとも 16 GB のメモリを備えたマシン上で実行することをお勧めします。 このシナリオは、リモート DS4_V2 標準 [Linux 用データ サイエンス仮想マシン (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) を実行している Windows 10 マシンで構築され、テストされました。
 
@@ -52,8 +52,8 @@ ms.lasthandoff: 01/12/2018
 1.  Azure Machine Learning Workbench を開きます
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します
-4.  **[プロジェクト テンプレートの検索]** 検索ボックスに「Predictive Maintenance」と入力し、テンプレートを選択します
-5.  **[作成]**
+4.  **[プロジェクト テンプレートの検索]** 検索ボックスに「予測メンテナンス」と入力し、**予測メンテナンス** テンプレートを選択します
+5.  **[作成]** ボタンをクリックします
 
 ## <a name="prepare-the-notebook-server-computation-target"></a>ノートブック サーバーの計算ターゲットの準備
 
@@ -98,7 +98,7 @@ az ml notebook start
 * [テレメトリ](https://pdmmodelingguide.blob.core.windows.net/pdmdata/telemetry.csv): テレメトリ データは、各マシン内の複数のセンサーからの時系列の測定で構成されます。 センサーの値の 1 時間の平均を計算して、このデータがログに記録されます。
 * [障害](https://pdmmodelingguide.blob.core.windows.net/pdmdata/failures.csv): 障害は、メンテナンス ログ内のコンポーネントの置き換えに対応します。 各レコードには、メンテナンス ID、コンポーネントの種類、置き換えの日時が含まれています。 これらのレコードは、モデルが予測しようとする機械学習ラベルを作成するために使用されます。
 
-Jupyter ノートブック シナリオの[データの取り込み](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb)に関するページのコード セクションを参照して、GitHub リポジトリの生データ セットをダウンロードし、この分析のために PySpark データセットを作成します。
+Jupyter Notebook シナリオの[データ インジェスト](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb)に関するページのコード セクションを参照して、GitHub リポジトリの生データ セットをダウンロードし、この分析のために PySpark データセットを作成します。
 
 ## <a name="scenario-structure"></a>シナリオの構造
 シナリオの内容については、[GitHub リポジトリ](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)を参照してください。 
@@ -125,13 +125,15 @@ Jupyter ノートブック シナリオの[データの取り込み](https://git
 
 ## <a name="references"></a>参照
 
-このユース ケースは、以前は複数のプラットフォームで開発されていました。
+他にもさまざまなプラットフォームで使用できる予測メンテナンスのユース ケースの例があります。
 
 * [予測メンテナンス ソリューション テンプレート](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
 * [予測メンテナンスのモデリング ガイド](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
 * [SQL R サービスを使用した予測メンテナンス モデリング ガイド](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
 * [予測メンテナンス モデリング ガイド Python ノートブック](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
 * [PySpark を使用する予測メンテナンス](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+* [予測メンテナンスのためのディープ ラーニング](
+ https://docs.microsoft.com/en-us/azure/machine-learning/preview/scenario-deep-learning-for-predictive-maintenance)
 
 ## <a name="next-steps"></a>次の手順
 

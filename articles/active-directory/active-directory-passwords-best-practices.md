@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 0ab45043e2f75ff07a2a1a48e69507be185b56ab
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 063c92a006696afb998799c312515c79c19a48f4
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="how-to-successfully-roll-out-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
 
@@ -61,7 +61,7 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 多くのお客様は、Web ページをホストし、ルート DNS エントリ (https://passwords.contoso.com など) を作成することを選択しています。このページには、以下の情報へのリンクを設定します。
 
 * [Azure AD のパスワードのリセット ポータル - https://aka.ms/sspr](https://aka.ms/sspr)
-* [Azure AD のパスワード リセット登録ポータル - http://aka.ms/ssprsetup](http://aka.ms/ssprsetup)
+* [Azure AD パスワード リセットの登録ポータル - https://aka.ms/ssprsetup](https://aka.ms/ssprsetup)
 * [Azure AD のパスワード変更ポータル - https://account.activedirectory.windowsazure.com/ChangePassword.aspx](https://account.activedirectory.windowsazure.com/ChangePassword.aspx)
 * その他の組織固有の情報
 
@@ -88,12 +88,12 @@ Azure Active Directory (Azure AD) のセルフサービスによるパスワー�
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
 [Email]: ./media/active-directory-passwords-best-practices/sspr-emailtemplates.png "こうしたメール テンプレートを組織の要件に合わせてカスタマイズする"

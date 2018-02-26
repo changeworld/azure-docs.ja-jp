@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 10/13/2017
-ms.openlocfilehash: 9a2648d800b803bf0d9d565a806e627c49bb1a00
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 1f25e6daa7378be4463bb0322cd702163dff5c3f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Azure Machine Learning プレビュー アカウントの作成と Azure Machine Learning Workbench のインストール
 Azure Machine Learning サービス (プレビュー) は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-azure-machine-learning-accounts"></a>Azure Machine Learning アカウントを作成する
 Azure Portal を使用して Azure Machine Learning アカウントをプロビジョニングします。 
-1. ポータルの左上隅にある **[新規]** ボタン (+) を選択します。
+1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。
 
 2. 検索バーに「**Machine Learning**」と入力します。 **[Machine Learning Experimentation (preview)]\(Machine Learning 実験 (プレビュー)\)** という検索結果を選択します。  星のアイコンをクリックすると、この選択項目は Azure Portal でのお気に入りとなります。
 

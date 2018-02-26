@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 38a8792588e013a0105ea57b20b2560f0acf02e6
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Azure Portal を使用して、Azure Data Lake Store アカウントを作成し
 ## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントを作成する
 
 1. 新しい [Azure Portal](https://portal.azure.com) にサインオンします。
-2. **[新規]**、**[データ + ストレージ]**、**[Azure Data Lake Store]** の順にクリックします。 **[Azure Data Lake Store]** ブレードに表示された情報を確認し、ブレードの左下隅にある **[作成]** をクリックします。
+2. **[リソースの作成]**、**[データ + ストレージ]**、**[Azure Data Lake Store]** の順にクリックします。 **[Azure Data Lake Store]** ブレードに表示された情報を確認し、ブレードの左下隅にある **[作成]** をクリックします。
 3. **[新しい Data Lake Store]** ブレードで、次のスクリーンショットに示されているように値を指定します。
    
     ![新しい Azure Data Lake Store アカウントの作成](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "新しい Azure Data Lake アカウントの作成")

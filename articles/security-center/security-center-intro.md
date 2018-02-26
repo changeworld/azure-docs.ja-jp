@@ -9,16 +9,17 @@ editor:
 ms.assetid: 45b9756b-6449-49ec-950b-5ed1e7c56daa
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/08/2018
+ms.date: 02/15/2018
 ms.author: terrylan
-ms.openlocfilehash: 50a54b8d2a73807aa9a0217f7ccf971b8c516494
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 08102ce4caead003925aa600f4f7f005b1c336e0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-azure-security-center"></a>Azure Security Center とは
 Azure Security Center は、ハイブリッド クラウド ワークロード全体で統合されたセキュリティ管理と高度な脅威保護を実現します。 Security Center を使用して、ワークロード全体へのセキュリティ ポリシーの適用、脅威にさらされる状態の軽減、攻撃の検出とその対応を行うことができます。
@@ -60,7 +61,7 @@ Security Center は、コンピューティング リソース、仮想ネット
 ## <a name="actionable-recommendations"></a>実行可能な推奨事項
 Security Center は Azure リソースと Azure 以外のリソースのセキュリティの状態を分析して、潜在的なセキュリティ脆弱性を特定します。 優先順位が設定されたセキュリティに関する推奨事項の一覧では、セキュリティの問題に対処するプロセスが説明されます。
 
-![Recommendations][4]
+![推奨事項][4]
 
 詳しくは、[セキュリティに関する推奨事項の管理](security-center-recommendations.md)に関する記事をご覧ください。
 

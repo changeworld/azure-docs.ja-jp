@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 02/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 4c7f48c993d66dd79538fd73ccaed1355c2e8cdd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: d2d317d6c66aa0fb81779c3a8a192b6a50571d1f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="create-your-first-container-in-azure-container-instances"></a>Azure Container Instances での最初のコンテナーの作成
 Azure Container Instances を使用すると、仮想マシンをプロビジョニングしたり、より高度なレベルのサービスを採用したりしなくても、Azure の Docker コンテナーを簡単に作成、管理できます。 このクイックスタートでは、Azure でコンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 わずか数秒で、お使いのブラウザーに次のように表示されます。
@@ -40,41 +40,32 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 
-コンテナーを作成するには、名前、Docker イメージ、および Azure リソース グループを [az container create][az-container-create] コマンドに指定します。 コンテナーは、必要に応じて、パブリック IP アドレスを使用してインターネットに公開できます。 このクイック スタートでは、[Node.js][node-js] で記述された小型の Web アプリをホストするコンテナーをデプロイします。
+コンテナーを作成するには、名前、Docker イメージ、および Azure リソース グループを [az container create][az-container-create] コマンドに指定します。 必要に応じて、DNS 名ラベルを指定してコンテナーをインターネットに公開できます。 このクイック スタートでは、[Node.js][node-js] で記述された小型の Web アプリをホストするコンテナーをデプロイします。
+
+次のコマンドを実行して、コンテナー インスタンスを開始します。 `--dns-name-label` の値は、インスタンスを作成する Azure リージョン内で一意である必要があります。そのため、場合によっては一意性を確保するためにこの値を変更する必要があります。
 
 ```azurecli-interactive
-az container create --resource-group myResourceGroup --name mycontainer --image microsoft/aci-helloworld --ip-address public --ports 80
+az container create --resource-group myResourceGroup --name mycontainer --image microsoft/aci-helloworld --dns-name-label aci-demo --ports 80
 ```
 
 数秒のうちに、要求に対する応答が得られます。 最初に、コンテナーは**作成中**の状態ですが、数秒のうちに起動されます。 [az container show][az-container-show] コマンドを使用して状態を確認することができます。
 
 ```azurecli-interactive
-az container show --resource-group myResourceGroup --name mycontainer
+az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
 ```
 
-出力の下部に、コンテナーのプロビジョニングの状態とその IP アドレスが表示されます。
+コマンドを実行すると、コンテナーの完全修飾ドメイン名 (FQDN) とそのプロビジョニング状態が表示されます。
 
-```json
-...
-"ipAddress": {
-      "ip": "13.88.176.27",
-      "ports": [
-        {
-          "port": 80,
-          "protocol": "TCP"
-        }
-      ]
-    },
-    "location:": "eastus",
-    "name": "mycontainer",
-    "osType": "Linux",
-    "provisioningState": "Succeeded"
-...
+```console
+$ az container show --resource-group myResourceGroup --name mycontainer --query "{FQDN:ipAddress.fqdn,ProvisioningState:provisioningState}" --out table
+FQDN                               ProvisioningState
+---------------------------------  -------------------
+aci-demo.eastus.azurecontainer.io  Succeeded
 ```
 
-コンテナーが**成功**状態に推移すると、指定した IP アドレスを使用してお使いのブラウザー内でこのコンテナーにアクセスすることができます。
+コンテナーが**成功**状態に推移すると、FQDN に移動してお使いのブラウザー内でこのコンテナーにアクセスできます。
 
-![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][aci-app-browser]
+![Azure コンテナー インスタンスで実行されているアプリケーションを示すブラウザー スクリーンショット][aci-app-browser]
 
 ## <a name="pull-the-container-logs"></a>コンテナー ログを取り込む
 

@@ -4,7 +4,7 @@ description: "この記事では、Azure Virtual Machines での SQL Server 可�
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 601eebb1-fc2c-4f5b-9c05-0e6ffd0e5334
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/13/2017
 ms.author: mikeray
-ms.openlocfilehash: 2cbb9ff3b2d13996b1b8dc64aa833807c264c877
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a531fb87d9cd2743138ba7a027bdf0d132b9747
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introducing-sql-server-always-on-availability-groups-on-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Always On 可用性グループの概要 #
 
@@ -47,6 +47,6 @@ Azure Virtual Machines に SQL Server 可用性グループを作成する準備
 
 - [Always On 可用性グループを作成して可用性と障害復旧を向上させる](virtual-machines-windows-portal-sql-availability-group-tutorial.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [異なるリージョンの Azure Virtual Machines に SQL Server Always On 可用性グループを構成します](virtual-machines-windows-portal-sql-availability-group-dr.md)。

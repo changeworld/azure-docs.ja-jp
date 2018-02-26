@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 01/31/2018
 ms.author: anithaa
 ms.custom: 
-ms.openlocfilehash: e705946dca839e6b8e11872ad5431f125b9fb41d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1e52b89cf8ac1a8ddeaa7e08ebd3734d1affe98e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイントの構成
 
@@ -62,8 +62,8 @@ ms.lasthandoff: 02/09/2018
 
 1. [Azure Portal](https://portal.azure.com/) を開きます。
 Azure アカウントを使用して Azure にログインします。 Azure アカウントを持っていない場合は、無料試用版でサインアップできます。 アカウントには、仮想ネットワークとサービス エンドポイントを作成するための[アクセス許可](#provisioning)が必要です。
-2. [新規] > [ネットワーク] > [仮想ネットワーク] > [+追加] をクリックします。
-3. [仮想ネットワークの作成] で、次の値を入力して [作成] をクリックします。
+2. **[リソースの作成]** > **[ネットワーク]** > **[仮想ネットワーク]** > **[+ 追加]** の順にクリックします。
+3. [仮想ネットワークの作成] で、次の値を入力して **[作成]** をクリックします。
 
 Setting | 値
 ------- | -----

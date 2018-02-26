@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 11/15/2017
+ms.date: 03/20/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: f0ed49c94dc83624b5f6f1ee0a4dcdff9284d5a5
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 63fb091166dcb3773354221e6c6628f6205bb308
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/09/2018
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイックスタートを実施するには、Azure CLI バージョン 2.0.21 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
+CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.27 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
 ## <a name="enabling-aks-preview-for-your-azure-subscription"></a>Azure サブスクリプションでの AKS プレビューの有効化
 AKS がプレビューである間、新しいクラスターを作成するには、サブスクリプションに機能フラグが必要です。 使用する任意の数のサブスクリプションに対して、この機能を要求することができます。 AKS プロバイダーを登録するには、次のように `az provider register` コマンドを使用します。
@@ -209,18 +209,6 @@ azure-vote-front   LoadBalancer   10.0.37.27   52.179.23.131   80:30572/TCP   2m
 これで、外部 IP アドレスを参照して Azure Vote アプリを表示できるようになりました。
 
 ![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
-
-## <a name="open-kubernetes-dashboard"></a>Kubernetes ダッシュボードを開く
-
-Kubernetes ダッシュボードとの接続は、Azure CLI を使用してセットアップすることもできます。 そのためには、[az aks browse][az-aks-browse] コマンドを使用します。
-
-```azurecli-interactive
-az aks browse --resource-group myResourceGroup --name myAKSCluster
-```
-
-実行後、ブラウザーが開いて Kubernetes ダッシュボードが表示されます。
-
-![Kubernetes ダッシュボード](media/container-service-kubernetes-walkthrough/k8s-dashboard.png)
 
 ## <a name="delete-cluster"></a>クラスターを削除する
 

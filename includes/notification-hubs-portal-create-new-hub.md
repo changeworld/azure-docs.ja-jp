@@ -2,7 +2,7 @@
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[新規]** > **[Web + モバイル]** > **[Notification Hub]** の順に選択します。
+2. **[リソースの作成]** > **[Web + モバイル]** > **[通知ハブ]** を選択します。
    
       ![Azure Portal - 通知ハブを作成](./media/notification-hubs-portal-create-new-hub/notification-hubs-azure-portal-create.png)
       
@@ -12,7 +12,7 @@
     
       ハブを作成する Service Bus 名前空間を既に用意してある場合は、次の手順に従います。
 
-    a. **[名前空間]** 領域で、**[既存項目の選択]** リンクを選択します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前空間]** 領域で、**[既存項目の選択]** リンクを選択します。 
    
     b. **[作成]**を選択します。
    

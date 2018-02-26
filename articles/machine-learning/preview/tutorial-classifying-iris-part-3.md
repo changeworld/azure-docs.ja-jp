@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 11/29/2017
-ms.openlocfilehash: ab0c10b2eeaa4388ef9b4dab90b99b37fa32df74
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 54f81a93876549d624cef6c37dd659af084d0b37
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="classify-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -285,7 +285,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. 自分のストレージ アカウントを探します。 これを行うには、**[その他のサービス]** を選択します。
+2. 自分のストレージ アカウントを探します。 そのためには、**[すべてのサービス]** を選択します。
 
 3. 検索ボックスに「**ストレージ アカウント**」と入力し、**Enter** キーを押します。
 

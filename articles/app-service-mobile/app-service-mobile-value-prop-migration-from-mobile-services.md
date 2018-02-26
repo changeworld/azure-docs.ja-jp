@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: 95934ce8be3570918f72ed7f8101a3599512abed
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 365f00ced38a1ddc20df211121fba43efff8ea87
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="getting-started"> </a>Mobile Services の使用時に App Service はどのように役立つか
 ## <a name="overview"></a>概要
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/09/2018
 * Web ジョブ、カスタム CName、進化した監視を含む新しいホスト機能
 * Traffic Manager との統合
 * ハイブリッド接続に加えて、VNet を使用したオンプレミス リソースと VPN への接続
-* NewRelic または AppInsights を使用したアプリの監視、警告、およびトラブルシューティング
+* AppInsights を使用したアプリの監視、警告、およびトラブルシューティング
 * 基盤となるコンピューティング リソースと価格の幅が広がった
 * 組み込みの自動スケール、負荷分散、パフォーマンス監視
 * 組み込みのステージング、バックアップ、ロールバック、運用環境でのテスト機能
@@ -54,7 +54,7 @@ Mobile Services により、現在既にハイブリッド接続を使用して�
 Mobile services では、バックエンド コードのすべてのインスタンスが S VM で実行されていました。 *Azure App Service* では、より豊富なオプション セットから VM のサイズを選択することができます。 また、さまざまなパフォーマンス メトリックに基づいて、すばやくスケールアップまたはスケールアウトして顧客の受信負荷を処理することもできます。
 
 ## <a name="be-in-the-know"></a>状況の把握
-監視と警告を使用して問題にリアルタイムで対応し、自動的に担当者やチームに通知します。 高度なアプリ分析と New Relic や AppInsights の監視機能を統合して、モバイル アプリの実行状況を分析します。 *Azure App Service* を使用することで、さまざまなパフォーマンス メトリックに基づき、プログラムまたは Azure Portal を使用してアラートを設定できるようになりました。
+監視と警告を使用して問題にリアルタイムで対応し、自動的に担当者やチームに通知します。 高度なアプリ分析と AppInsights の監視機能を統合して、モバイル アプリの実行状況を分析します。 *Azure App Service* を使用することで、さまざまなパフォーマンス メトリックに基づき、プログラムまたは Azure Portal を使用してアラートを設定できるようになりました。
 
 ## <a name="keep-your-assets-safe"></a>資産の安全性の保持
 バックエンドとデータベースを自動的にバックアップします。 コードとデータは災害からセキュリティ保護されていて簡単に復元できるため、安心して業務を遂行することができます。

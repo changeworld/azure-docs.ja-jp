@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/13/2017
 ms.author: nitinme
-ms.openlocfilehash: b52f896c0d2a023a0a371668c4f6ce55060c2cfd
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: d2b2e33de25fc5b76b1df4a42fd25e4e0b374439
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introduction-to-spark-on-hdinsight"></a>HDInsight での Spark の概要
 
@@ -46,7 +46,7 @@ Spark では、データがメモリ内に存在するため、処理間のデ�
 ## <a name="what-is-apache-spark-on-azure-hdinsight"></a>Azure HDInsight での Apache Spark とは
 Azure HDInsight の Spark クラスターでは、完全に管理された Spark サービスを利用できます。 以下の一覧は、HDInsight で Spark クラスターを作成する利点をまとめたものです。
 
-| 機能 | Description |
+| Feature | [説明] |
 | --- | --- |
 | Spark クラスターの作成しやすさ |Azure Portal、Azure PowerShell、または HDInsight .NET SDK を使用すると、HDInsight に新しい Spark クラスターを数分で作成できます。 「 [HDInsight での Spark クラスターの概要](apache-spark-jupyter-spark-sql.md) |
 | 使いやすさ |HDInsight の Spark クラスターには、Jupyter Notebook と Zeppelin Notebook が含まれています。 対話型のデータ処理と視覚化にこれらの Notebook を使用できます。|
@@ -59,7 +59,7 @@ Azure HDInsight の Spark クラスターでは、完全に管理された Spark
 | SSD へのキャッシュ |データのキャッシュ先を、メモリまたはクラスター ノードに取り付けられている SSD から選択できます。 メモリへのキャッシュは、クエリのパフォーマンスは最高ですが、コストがかかります。SSD へのキャッシュは、メモリ内のデータセット全体を収めるのに必要なサイズのクラスターを作成する必要なしにクエリのパフォーマンスを向上できる優れたオプションです。 |
 | BI ツールとの統合 |HDInsight の Spark クラスターには、データ分析用の [Power BI](http://www.powerbi.com/) や [Tableau](http://www.tableau.com/products/desktop) などの BI ツールへのコネクタが用意されています。 |
 | 読み込み済みの Anaconda ライブラリ |HDInsight の Spark クラスターには、Anaconda ライブラリが事前にインストールされています。 [Anaconda](http://docs.continuum.io/anaconda/) は、機械学習、データ分析、視覚化などのための 200 個近いライブラリを提供します。 |
-| 拡張性 |作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。 すべての HDInsight クラスターでは、クラスター内のノード数を変更できます。 また、すべてのデータは Azure Storage または Data Lake Store に格納されるため、Spark クラスターはデータの損失なしで削除できます。 |
+| スケーラビリティ |作成中にクラスター内のノード数を指定できますが、ワークロードに一致するようにクラスターを拡大、縮小できます。 すべての HDInsight クラスターでは、クラスター内のノード数を変更できます。 また、すべてのデータは Azure Storage または Data Lake Store に格納されるため、Spark クラスターはデータの損失なしで削除できます。 |
 | 常時サポート |HDInsight の Spark クラスターでは、エンタープライズ レベルの 24 時間無休体制のサポートと、アップタイム 99.9% の SLA が提供されます。 |
 
 ## <a name="spark-cluster-architecture"></a>Spark クラスターのアーキテクチャ
@@ -92,7 +92,6 @@ HDInsight の Apache Spark では、Azure Storage または Azure Data Lake Stor
 Apache Spark には、Spark を基に作成された機械学習ライブラリである [MLlib](http://spark.apache.org/mllib/) が付属し、HDInsight の Spark クラスターから使用できます。 HDInsight の Spark クラスターには、機械学習用のさまざまなパッケージを含む Python ディストリビューションである Anaconda も含まれています。 これと Jupyter および Zeppelin Notebook の組み込みサポートを組み合わせることにより、機械学習アプリケーションを作成するうえで最高の環境が得られます。
 
 ### <a name="spark-streaming-and-real-time-data-analysis"></a>Spark のストリーミングおよびリアルタイム データ分析
-[チュートリアルを見る](apache-spark-eventhub-streaming.md)
 
 HDInsight の Spark クラスターには、リアルタイム分析ソリューションを構築するための豊富なサポートが用意されています。 Spark には既に Kafka、Flume、Twitter、ZeroMQ、TCP ソケットなどの多数のソースからデータを取り込むためのコネクタがありますが、HDInsight の Spark では Azure Event Hubs からデータを取り込むためのファーストクラスのサポートが追加されます。 Event Hubs は、Azure で最も広く使用されているキュー サービスです。 Event Hubs 向けのサポートがすぐに利用できることから、HDInsight の Spark クラスターは、リアルタイム分析パイプラインを構築するうえで理想的なプラットフォームです。
 
@@ -110,12 +109,11 @@ HDInsight の Spark クラスターでは、Microsoft Power BI や Tableau な�
 ## <a name="where-do-i-start"></a>どこから始めるか
 まずは HDInsight で Spark クラスターを作成します。 [HDInsight Linux での Spark クラスターの作成と Jupyter を使用した対話型クエリの実行に関するクイックスタート ガイド](apache-spark-jupyter-spark-sql.md)のページを参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ### <a name="scenarios"></a>シナリオ
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](apache-spark-eventhub-streaming.md)
+* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

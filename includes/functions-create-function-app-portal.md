@@ -1,4 +1,4 @@
-1. Azure ポータルの左上にある **[新規]** ボタンをクリックし、**[コンピューティング]** > **[Function App]** を選択します。 
+1. Azure Portal の左上にある **[リソースの作成]** をクリックし、**[コンピューティング]** > **[Function App]** を選択します。 
 
     ![Azure ポータルでの関数アプリの作成](./media/functions-create-function-app-portal/function-app-create-flow.png)
 
@@ -6,7 +6,7 @@
 
     ![新しい関数アプリの設定を定義する](./media/functions-create-function-app-portal/function-app-create-flow2.png)
 
-    | 設定      | 推奨値  | [説明]                                        |
+    | Setting      | 推奨値  | [説明]                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **アプリ名** | グローバルに一意の名前 | 新しい Function App を識別する名前。 有効な文字は、`a-z`、`0-9`、および `-` です。  | 
     | **サブスクリプション** | 該当するサブスクリプション | この新しい Function App が作成されるサブスクリプション。 | 

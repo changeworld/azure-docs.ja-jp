@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50f908a166cb56d5654778ebb1f57ab956bf34a1
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: b91da3e3c99cec3a63d747062d4ae9f62720a872
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 
@@ -50,9 +50,9 @@ Premium Storage VM の保護の詳細については、[Premium Storage VM の�
 次の手順に従って、Azure Portal で仮想マシン管理ブレードからバックアップ ジョブを構成します。 次の手順が適用されるのは、Azure Portal の仮想マシンのみです。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ハブ メニューの **[その他のサービス]** をクリックし、[フィルター] ダイアログで「**仮想マシン**」と入力します。 入力中、リソースにフィルターが適用されます。 仮想マシンが表示されたら、それを選択します。
+2. ハブ メニューの **[すべてのサービス]** をクリックし、[フィルター] ダイアログで「**Virtual machines**」と入力します。 入力中、リソースにフィルターが適用されます。 仮想マシンが表示されたら、それを選択します。
 
-  ![ハブ メニューの [その他のサービス] をクリックしてテキスト ダイアログを開き、「仮想マシン」と入力する](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
+  ![[すべてのサービス] から仮想マシンに移動する方法を示すスクリーンショット](./media/backup-azure-vms-first-look-arm/open-vm-from-hub.png)
 
   サブスクリプションの仮想マシン (VM) の一覧が表示されます。
 
@@ -131,7 +131,7 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
 Recovery Services コンテナーを作成するには、次の手順に従います。
 
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ハブ メニューの **[その他のサービス]** をクリックし、[フィルター] ダイアログで「**Recovery Services**」と入力します。 入力中、リソースにフィルターが適用されます。 一覧に Recovery Services コンテナーが表示されたら、それをクリックします。
+2. ハブ メニューの **[すべてのサービス]** をクリックし、[フィルター] ダイアログで「**Recovery Services**」と入力します。 入力中、リソースにフィルターが適用されます。 一覧に Recovery Services コンテナーが表示されたら、それをクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 
@@ -202,7 +202,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>バックアップの目標を選択し、ポリシーを設定し、保護する項目の定義する
 VM をコンテナーに登録する前に、サブスクリプションに追加された新しい仮想マシンが特定されるように検出プロセスを実行してください。 このプロセスでは、サブスクリプションに含まれる仮想マシンの一覧を、クラウド サービス名、リージョンなどの追加情報と共に Azure に照会します。 Azure ポータルのシナリオは、Recovery Services コンテナーに何を格納するのかを指しています。 ポリシーは、復旧ポイントを作成する頻度と時期のスケジュールです。 ポリシーには、復旧ポイントの保持期間も含まれます。
 
-1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。 それ以外の場合は、ハブ メニューの **[その他のサービス]** をクリックし、リソースの一覧で「**Recovery Services**」と入力して、**[Recovery Services コンテナー]** をクリックします。
+1. 既に Recovery Services コンテナーが開かれている場合は、手順 2. に進みます。 そうでない場合は、**[すべてのサービス]** をクリックします。 「**Recovery Services**」と入力し、**[Recovery Services コンテナー]** をクリックします。
 
     ![Create Recovery Services Vault step 1](./media/backup-try-azure-backup-in-10-mins/open-rs-vault-list.png) <br/>
 

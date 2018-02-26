@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: sethm
-ms.openlocfilehash: fdeb9ba55fc8eade95f6fca88f47dd12aa18a480
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 9cbeff82f7a237c813ea91cd83e9273cad934991
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus の geo ディザスター リカバリー
 
@@ -99,7 +99,7 @@ Azure Service Bus の geo ディザスター リカバリー機能は、災害�
 
 1. フェールオーバー計画では、時間的要因も考慮する必要があります。 たとえば、接続の喪失時間が 15 ～ 20 分を超えた場合にフェールオーバー開始の判断を下すことが考えられます。 
  
-2. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされたメッセージ、新しい重複については正しく機能します。 
+2. レプリケートされるデータが存在しないということは、現在アクティブなセッションがレプリケートされないことを意味します。 また、重複の検出やスケジュールされたメッセージが正しく機能しない可能性があります。 新しいセッションやスケジュールされた新しいメッセージ、新しい重複については正しく機能します。 
 
 3. 複雑な分散インフラストラクチャのフェールオーバーは、少なくとも 1 回は[リハーサル](/azure/architecture/resiliency/disaster-recovery-azure-applications#disaster-simulation)を行うようお勧めします。 
 

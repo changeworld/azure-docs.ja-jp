@@ -13,7 +13,7 @@
       href: assign-policy-definition-ps.md
     - name: ポリシーの割り当て - Azure CLI
       href: assign-policy-definition-cli.md
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: Azure Policy の作成と管理
       href: create-manage-policy.md

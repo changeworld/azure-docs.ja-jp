@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: 636dc0fcae1bc2647cd59add5957884971015ce2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b0a79f46788dc7efb588110dc50805c45c373a49
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Azure サブスクリプションの重要なアクションを監査して通知を受信する
 
@@ -22,13 +22,13 @@ ms.lasthandoff: 10/11/2017
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
 ## <a name="create-a-network-security-group"></a>ネットワーク セキュリティ グループの作成
 
-1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
 
 2. **[ネットワーク]** を選択し、**[ネットワーク セキュリティ グループ]** を選択します。
 
@@ -93,7 +93,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 リソース グループとネットワーク セキュリティ グループが不要になったら、それらを削除します。 これを行うには、ポータルの上部にある [検索] ボックスに作成したリソース グループの名前を入力した後、リソース グループの名前をクリックします。 表示されたセクションで、**[リソース グループの削除]** ボタンをクリックし、リソース グループの名前を入力し、**[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、アクティビティ ログ イベントを生成する操作を実行した後、この操作が再度発生したときに通知を送信するアクティビティ ログ アラートを作成しました。 その後、操作をもう一度実行することで、アラートをテストしました。 Azure では、過去 90 日間のアクティビティ ログ イベントを使用できるようにしています。 90 日を超えてイベントを保持する必要がある場合は、アクティビティ ログ データをその他の監視データと共にアーカイブすることを試してください。
 

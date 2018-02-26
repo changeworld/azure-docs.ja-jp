@@ -3,8 +3,8 @@ title: "Azure Stack への Linux イメージの追加"
 description: "Azure Stack へ Linux イメージを追加する方法について説明します。"
 services: azure-stack
 documentationcenter: 
-author: anjayajodha
-manager: byronr
+author: brenduns
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
@@ -12,12 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 9/25/2017
-ms.author: anajod
-ms.openlocfilehash: a8763c01cba4e5a9eaa3b7842b627d6eb9661a95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: brenduns
+ms.reviewer: anajod
+ms.openlocfilehash: 29e5443de4dc43efe6d536b0f8b9cfc6ad37a669
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Azure Stack への Linux イメージの追加
 
@@ -62,7 +63,7 @@ Azure Marketplace の Linux のイメージをダウンロードするには、�
    
     Azure Linux エージェントを手動でインストールするには、以下の手順に従います。
    
-   a. まず、[GitHub](https://github.com/Azure/WALinuxAgent/releases) から、最新の Azure Linux エージェントをダウンロードします。例:
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 まず、[GitHub](https://github.com/Azure/WALinuxAgent/releases) から、最新の Azure Linux エージェントをダウンロードします。例:
      
             # wget https://github.com/Azure/WALinuxAgent/archive/v2.2.16.tar.gz
    b. Azure エージェントを展開します。
@@ -94,6 +95,6 @@ Azure Marketplace の Linux のイメージをダウンロードするには、�
 2. [Marketplace にイメージを追加](azure-stack-add-vm-image.md)します。 `OSType` パラメーターが `Linux` に設定されていることを確認してください。
 3. Marketplace にイメージを追加すると、Marketplace アイテムが作成され、ユーザーが Linux 仮想マシンをデプロイできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Stack でのサービスの提供の概要](azure-stack-offer-services-overview.md)
 

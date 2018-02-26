@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/11/2018
+ms.date: 2/13/2018
 ms.author: johnkem
-ms.openlocfilehash: b2813035b4665a36b475e791965d395b84ddb3f1
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: d449be98cd59756e2bafc584e0501b8c83c594eb
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -93,7 +93,9 @@ Azure リソースは、次の 2 種類の監視データを出力します。
 Azure Monitor で監視データをイベント ハブにルーティングすると、パートナー SIEM や監視ツールに簡単に統合することができます。 ほとんどのツールは、イベント ハブからデータを読み取るために、イベント ハブ接続文字列と、Azure サブスクリプションへの特定のアクセス許可が必要です。 Azure Monitor と統合できるツールの一覧 (一部) を次に示します。
 
 * **IBM QRadar** - Microsoft Azure DSM および Microsoft Azure Event Hub Protocol は、[IBM サポート Web サイト](http://www.ibm.com/support)からダウンロードすることができます。 Azure との統合の詳細については、[こちら](https://www.ibm.com/support/knowledgecenter/SS42VS_DSM/c_dsm_guide_microsoft_azure_overview.html?cp=SS42VS_7.3.0)を参照してください。
-* **Splunk** - [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)は、Splunkbase およびオープン ソース プロジェクトで入手できます。 ドキュメントは[こちら](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)にあります。
+* **Splunk** -Splunk の設定によって、次の 2 つの方法があります。
+    1. [Splunk 向けの Azure Monitor アドオン](https://splunkbase.splunk.com/app/3534/)は、Splunkbase およびオープン ソース プロジェクトで入手できます。 ドキュメントは[こちら](https://github.com/Microsoft/AzureMonitorAddonForSplunk/wiki/Azure-Monitor-Addon-For-Splunk)にあります。
+    2. Splunk インスタンスにアドオンをインストールできない場合 (例:  プロキシを使用している場合、Splunk Cloud で実行している場合など)、[イベント ハブの新しいメッセージによってトリガーされるこの機能](https://github.com/sebastus/AzureFunctionForSplunkVS)を使用して、Splunk HTTP イベント コレクターにこれらのイベントを転送できます。
 * **SumoLogic** - イベント ハブのデータを使用するように SumoLogic をセットアップする手順については、[こちら](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure-Audit/02Collect-Logs-for-Azure-Audit-from-Event-Hub)を参照してください。
 
 ## <a name="next-steps"></a>次の手順

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/01/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8f7a2344b6676a9067cf0adff04f49a73ce457fc
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 5b8e35a953c936949af0d496345f537ad85fc359
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Application Insights を使用して Node.js サービスとアプリを監視する
 
@@ -47,7 +47,7 @@ TelemetryClient API を使用して手動でインストルメント化すれば
 
 
 1. [Azure Portal][portal] にサインインします。
-2. **[新規]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。 このリソースには、テレメトリ データを受信するためのエンドポイント、そのデータのストレージ、保存済みのレポートとダッシュボード、ルールとアラートの構成などが含まれています。
+2. **[リソースの作成]** > **[開発者ツール]** > **[Application Insights]** の順に選択します。 このリソースには、テレメトリ データを受信するためのエンドポイント、そのデータのストレージ、保存済みのレポートとダッシュボード、ルールとアラートの構成などが含まれています。
 
   ![Application Insights リソースの作成](./media/app-insights-nodejs/03-new_appinsights_resource.png)
 
@@ -208,7 +208,7 @@ server.on("listening", () => {
 });
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ポータル内でテレメトリを監視する](app-insights-dashboards.md)
 * [テレメトリに関する分析クエリを記述する](app-insights-analytics-tour.md)

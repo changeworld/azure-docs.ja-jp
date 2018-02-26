@@ -13,18 +13,18 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 04/20/2017
+ms.date: 01/22/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 7e9ccd26e7c066189576903c39be63a421d1da23
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 2049de0adfd4be164cda69ca85782c528aeaf55c
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Azure Cosmos DB に接続する Azure 関数の作成
 
-このサンプル スクリプトでは、Azure Function App を作成し、Azure Cosmos DB データベースに接続します。
+この Azure Functions サンプル スクリプトは、関数アプリを作成し、関数を Azure Cosmos DB データベースに接続します。 作成された、接続を含むアプリ設定は、[Azure Cosmos DB のトリガーまたはバインド](..\functions-bindings-cosmosdb.md)と共に使用することができます。
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
@@ -38,10 +38,6 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 
 [!code-azurecli-interactive[main](../../../cli_scripts/azure-functions/create-function-app-connect-to-cosmos-db/create-function-app-connect-to-cosmos-db.sh "Create an Azure Function that connects to an Azure Cosmos DB")]
 
-## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
-
-サンプル スクリプトの実行後、次のコマンドを使用すると、リソース グループとすべての関連リソースを削除できます。
-
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
 ## <a name="script-explanation"></a>スクリプトの説明
@@ -50,14 +46,14 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 
 | コマンド | メモ |
 |---|---|
-| [az login](https://docs.microsoft.com/cli/azure/#login) | Azure にログインします。 |
+| [az login](https://docs.microsoft.com/cli/azure/#az_login) | Azure にログインします。 |
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 任意の場所にリソース グループを作成します |
 | [az storage accounts create](https://docs.microsoft.com/cli/azure/storage/account) | ストレージ アカウントの作成 |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 新しい Function App を作成します |
 | [az cosmosdb create](https://docs.microsoft.com/cli/azure/cosmosdb#az_cosmosdb_create) | cosmosdb データベースの作成 |
 | [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | クリーンアップ |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 

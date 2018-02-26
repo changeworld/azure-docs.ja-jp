@@ -1,6 +1,6 @@
 ---
 title: "Azure メトリック アラートでの webhook の構成 | Microsoft Docs"
-description: "他の Azure 以外のシステムに Azure アラートを再ルーティングします。"
+description: "他の Azure 以外のシステムに Azure アラートを再ルーティングする方法について説明します。"
 author: johnkemnetz
 manager: carmonm
 editor: 
@@ -14,26 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/03/2017
 ms.author: johnkem
-ms.openlocfilehash: 06ec1263046f7878871de628b6a0ac25682b2f83
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 049803e7701c68559103d9b1fa5dfacf820d0548
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="configure-a-webhook-on-an-azure-metric-alert"></a>Azure メトリック アラートでの webhook の構成
-webhook を使用すると、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用することで、SMS の送信、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションを実行するサービスに、アラートをルーティングできます。 この記事では、Azure メトリック アラートで webhook を設定する方法のほか、webhook に対する HTTP POST のペイロードの内容について説明します。 Azure アクティビティ ログ アラート (イベントでのアラート) の設定とスキーマについては、 [こちらのページをご覧ください](insights-auditlog-to-webhook-email.md)。
+webhook を使用して、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用して、SMS メッセージを送信するサービス、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションに対して、アラートをルーティングできます。 
 
-Azure は、JSON 形式 (以下で定義されているスキーマ) でアラートに含まれている HTTP POST を、アラートの作成時に指定した webhook URI に送信します。 この URI は有効な HTTP または HTTPS エンドポイントである必要があります。 Azure では、アラートがアクティブ化された場合に要求ごとに 1 つのエントリがポストされます。
+この記事では、Azure メトリック アラートで webhook を設定する方法について説明します。 また、webhook に対する HTTP POST のペイロードの概要についても説明します。 Azure アクティビティ ログ アラート (イベントでのアラート) の設定とスキーマについては、「[Azure アクティビティ ログ アラートでの webhook の呼び出し](insights-auditlog-to-webhook-email.md)」を参照してください。
 
-## <a name="configuring-webhooks-via-the-portal"></a>ポータルを使用して Webhook を構成する
-[ポータル](https://portal.azure.com/)のアラートの作成/更新画面では、webhook URI を追加または更新できます。
+Azure アラートでは、HTTP POST を使用して、JSON 形式のアラート コンテンツを、アラートの作成時に指定した webhook URI に送信します。 スキーマは、この記事の後半で定義されます。 この URI は、有効な HTTP または HTTPS エンドポイントである必要があります。 Azure では、アラートがアクティブ化された場合に要求ごとに 1 つのエントリがポストされます。
 
-![アラート ルールの追加](./media/insights-webhooks-alerts/Alertwebhook.png)
+## <a name="configure-webhooks-via-the-azure-portal"></a>Azure Portal を介して webhook を構成する
+webhook URI を追加または更新するには、[Azure Portal](https://portal.azure.com/) の **[Create/Update Alerts]\(アラートの作成/更新\)** に移動します。
 
-また、webhook URI にポストするアラートの構成には、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用できます。
+![[アラート ルールの追加] ウィンドウ](./media/insights-webhooks-alerts/Alertwebhook.png)
 
-## <a name="authenticating-the-webhook"></a>webhook の認証
-webhook はトークン ベースの承認を使用して認証できます。 webhook URI は次のようなトークン ID を使用して保存されます。 `https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+また、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、または [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) を使用して、webhook URI にポストするアラートを構成することもできます。
+
+## <a name="authenticate-the-webhook"></a>webhook の認証
+webhook は、トークンベースの承認を使用して認証できます。 webhook URI は、トークン ID を使用して保存されます。 次に例を示します。`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
 POST 操作には、すべてのメトリックベースのアラートについて以下の JSON ペイロードとスキーマが含まれます。
@@ -83,32 +85,32 @@ POST 操作には、すべてのメトリックベースのアラートについ
 | id |Y | |すべてのアラート ルールには一意の ID があります。 |
 | name |Y | |アラートの名前。 |
 | 説明 |Y | |アラートの説明。 |
-| conditionType |Y |"Metric"、"Event" |2 つの種類のアラートがサポートされています。 1 つはメトリックの条件に基づき、もう 1 つはアクティビティ ログ内のイベントに基づきます。 この値を使用して、アラートがメトリックとイベントのどちらに基づいているかを確認できます。 |
-| condition |Y | |conditionType に基づいて確認する特定のフィールド。 |
+| conditionType |Y |"Metric"、"Event" |2 つの種類のアラート (メトリックとイベント) がサポートされています。 メトリック アラートは、メトリックの条件に基づいています。 イベント アラートは、アクティビティ ログのイベントに基づいています。 この値を使用して、アラートがメトリックとイベントのどちらに基づいているかを確認できます。 |
+| condition |Y | |**conditionType** の値に基づいて確認する特定のフィールド。 |
 | metricName |メトリック アラートの場合 | |ルールによる監視対象を定義するメトリックの名前。 |
-| metricUnit |メトリック アラートの場合 |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds" |メトリックで使用できる単位。 [使用できる値はこちらに記載されています](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)。 |
+| metricUnit |メトリック アラートの場合 |"Bytes"、"BytesPerSecond"、"Count"、"CountPerSecond"、"Percent"、"Seconds" |メトリックで使用できる単位。 [使用できる値](https://msdn.microsoft.com/library/microsoft.azure.insights.models.unit.aspx)を参照してください。 |
 | metricValue |メトリック アラートの場合 | |アラートの原因となったメトリックの実際の値。 |
 | threshold |メトリック アラートの場合 | |アラートがアクティブ化されるしきい値。 |
-| windowSize |メトリック アラートの場合 | |しきい値に基づいてアラート アクティビティを監視するために使用される期間。 5 分から 1 日の間である必要があります。 ISO 8601 期間形式。 |
-| timeAggregation |メトリック アラートの場合 |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |収集されたデータの経時的な結合方法。 既定値は Average です。 [使用できる値はこちらに記載されています](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)。 |
+| windowSize |メトリック アラートの場合 | |しきい値に基づいてアラート アクティビティを監視するために使用される期間。 値は 5 分～ 1 日の範囲で指定する必要があります。 値は ISO 8601 の期間の形式である必要があります。 |
+| timeAggregation |メトリック アラートの場合 |"Average"、"Last"、"Maximum"、"Minimum"、"None"、"Total" |収集されたデータの経時的な結合方法。 既定値は Average です。 [使用できる値](https://msdn.microsoft.com/library/microsoft.azure.insights.models.aggregationtype.aspx)を参照してください。 |
 | operator |メトリック アラートの場合 | |設定したしきい値と現在のメトリック データを比較するために使用される演算子。 |
-| subscriptionId |Y | |Azure サブスクリプション ID。 |
+| subscriptionId |Y | |Azure サブスクリプション ID です。 |
 | resourceGroupName |Y | |影響を受けるリソースのリソース グループの名前。 |
 | resourceName |Y | |影響を受けるリソースのリソース名。 |
 | resourceType |Y | |影響を受けるリソースの種類。 |
 | ResourceId |Y | |影響を受けるリソースのリソース ID。 |
 | resourceRegion |Y | |影響を受けるリソースのリージョンまたは場所。 |
-| portalLink |Y | |ポータルのリソースの概要ページへのリンク。 |
-| プロパティ |N |省略可能 |イベントの詳細を含む `<Key, Value>` ペア (つまり、`Dictionary<String, String>`) のセット。 properties フィールドは省略可能です。 カスタム UI またはロジック アプリベースのワークフローでは、ユーザーは、ペイロードを使用して渡すことのできるキーと値を入力できます。 Webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを Webhook に戻すこともできます。 |
+| portalLink |Y | |ポータルのリソースの概要ページへの直接リンク。 |
+| プロパティ |N |省略可能 |イベントに関する詳細を含むキー/値のペアのセット。 たとえば、「`Dictionary<String, String>`」のように入力します。 properties フィールドは省略可能です。 カスタム UI またはロジック アプリベースのワークフローでは、ユーザーは、ペイロードを使用して渡すことのできるキー/値のペアを入力できます。 webhook URI 自体を (クエリ パラメーターとして) 使用して、カスタム プロパティを webhook に戻すこともできます。 |
 
 > [!NOTE]
-> properties フィールドを設定できるのは、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) を使用した場合のみです。
+> **properties** フィールドは、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) を使用してのみ設定できます。
 >
 >
 
 ## <a name="next-steps"></a>次の手順
-* [Azure アラートと PagerDuty との統合](http://go.microsoft.com/fwlink/?LinkId=627080)
-* [Azure アラートで Azure Automation スクリプト (Runbook) を実行します](http://go.microsoft.com/fwlink/?LinkId=627081)
-* [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS を送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)
-* [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)
-* [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)
+* [Azure アラートと PagerDuty との統合](http://go.microsoft.com/fwlink/?LinkId=627080)のビデオでは、Azure アラートと webhook について説明します。
+* [Azure アラートで Azure Automation スクリプト (Runbook) を実行する](http://go.microsoft.com/fwlink/?LinkId=627081)方法について説明します。
+* [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)方法について説明します。
+* [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)方法について説明します。
+* [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)方法について説明します。

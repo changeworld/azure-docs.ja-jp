@@ -49,7 +49,7 @@
             - name: Beeline を使用する
               href: ../hadoop/apache-hadoop-use-hive-beeline.md
               maintainContext: true
-            - name: cURL の使用
+            - name: REST API を使用する
               href: ../hadoop/apache-hadoop-use-hive-curl.md
               maintainContext: true
             - name: Azure PowerShell の使用
@@ -227,6 +227,12 @@
             - name: Ambari REST API を使用する
               href: ../hdinsight-hadoop-manage-ambari-rest-api.md
               maintainContext: true
+        - name: HDInsight クラスターのスケーリングを行う
+          href: ../hdinsight-scaling-best-practices.md
+          maintainContext: true
+        - name: 外部のメタデータ ストアを使用する
+          href: ../hdinsight-use-external-metadata-stores.md
+          maintainContext: true
         - name: HDInsight クラスターのログを管理する
           href: ../hdinsight-log-management.md
           maintainContext: true

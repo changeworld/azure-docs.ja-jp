@@ -5,7 +5,7 @@
 
 1. Microsoft アカウントの資格情報を使用して、[Azure Portal](https://portal.azure.com/) にログオンします。
 
-2. Azure Portal で **+** をクリックし、Marketplace で **[すべて表示]** をクリックします。
+2. Azure Portal で **[リソースの作成]** をクリックし、Marketplace で **[すべて表示]** をクリックします。
 
     ![StorSimple デバイス マネージャーの作成](./media/storsimple-8000-create-new-service/createssdevman1.png)
 

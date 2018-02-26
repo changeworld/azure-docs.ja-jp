@@ -4,7 +4,7 @@ description: "このチュートリアルでは、クラシック デプロイ�
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-service-management
 ms.assetid: 7ca7c423-8342-4175-a70b-d5101dfb7f23
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 50326a093adaf3558c56dfd0b38544f0e60be460
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3e56f1741a9cfd3f2d9f786c2ce22eb6a946ef2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>オンプレミスの AlwaysOn 可用性グループの Azure への拡張
 AlwaysOn 可用性グループは、セカンダリ レプリカを追加することで、データベースのグループの高可用性を実現します。 これらのレプリカを使用すると、障害発生時にデータベースをフェールオーバーできます。 また、読み取りワークロードやバックアップ タスクをオフロードすることもできます。
@@ -33,7 +33,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 * オンプレミスのネットワークと、Azure Virtual Network 間の接続。 この仮想ネットワークを作成する方法の詳細については、「[Azure Portal を使用してサイト間接続を作成する (クラシック)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md)」を参照してください。
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## <a name="add-azure-replica-wizard"></a>Azure レプリカ ウィザードの追加
 このセクションでは、 **Azure レプリカの追加ウィザード** を使用して、AlwaysOn 可用性グループ ソリューションを拡張し、Azure レプリカを含める方法について説明します。
@@ -55,7 +55,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 7. ページの各フィールドに、レプリカをホストする Azure 仮想マシン (VM) を作成するために使用する値を入力します。
    
-   | 設定 | 説明 |
+   | Setting | [説明] |
    | --- | --- |
    | **イメージ** |OS と SQL Server の目的の組み合わせを選択します。 |
    | **VM サイズ** |ビジネス ニーズに最も適した VM のサイズを選択します。 |
@@ -89,7 +89,7 @@ SQL Server を含む 1 つまたは複数の Azure VM をプロビジョニン�
 ## <a name="create-an-availability-group-listener"></a>可用性グループ リスナーの作成
 可用性グループを作成したら、レプリカに接続するクライアントのリスナーを作成する必要があります。 リスナーは、着信接続をプライマリ レプリカまたは読み取り専用のセカンダリ レプリカに転送します。 リスナーについて詳しくは、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](../classic/ps-sql-int-listener.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 **Azure レプリカの追加ウィザード** を使用して AlwaysOn 可用性グループを Azure に拡張するだけでなく、一部の SQL Server ワークロードを完全に Azure に移行することもできます。 まず、「[Azure での SQL Server 仮想マシンのプロビジョニング](../sql/virtual-machines-windows-portal-sql-server-provision.md)」をご覧ください。
 
 Azure VM での SQL Server の実行に関するその他のトピックについては、「 [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。

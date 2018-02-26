@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: kumud
-ms.openlocfilehash: b2a9a7dbd1fa7da7ebe479ac166602245cdaefde
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 22bf52f7452f182510c3714f7d1c2ca884446953
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-dns-using-the-azure-portal"></a>Azure Portal で Azure DNS の使用を開始する
 
@@ -35,7 +35,7 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
 1. Azure ポータルにサインインします。
-2. ハブ メニューの **[新規]、[ネットワーク]** の順にクリックし、**[DNS ゾーン]** をクリックして **[DNS ゾーンの作成]** ページを開きます。
+2. ハブ メニューで **[リソースの作成]、[ネットワーキング]**、**[DNS ゾーン]** の順にクリックして、**[DNS ゾーンの作成]** ページを開きます。
 
     ![[DNS ゾーン]](./media/dns-getstarted-portal/openzone650.png)
 
@@ -65,7 +65,7 @@ DNS ゾーンは、特定のドメインの DNS レコードをホストする�
    |**設定** | **値** | **詳細** |
    |---|---|---|
    |**名前**|www|レコードの名前です。|
-   |**型**|A| 作成する DNS レコードの種類です (指定できる値は A、AAAA、CNAME、MX、NS、SRV、TXT、PTR)。  レコードの種類の詳細については、「[DNS ゾーンとレコードの概要](dns-zones-records.md)」を参照してください。|
+   |**種類**|A| 作成する DNS レコードの種類です (指定できる値は A、AAAA、CNAME、MX、NS、SRV、TXT、PTR)。  レコードの種類の詳細については、「[DNS ゾーンとレコードの概要](dns-zones-records.md)」を参照してください。|
    |**TTL**|1|DNS 要求の有効期限です。|
    |**TTL の単位**|時間|TTL 値の時間の単位です。|
    |**IP アドレス**|ipAddressValue| この値は、DNS レコードが解決する IP アドレスです。|
@@ -96,7 +96,7 @@ DNS ゾーンとレコードを正しく設定したら、Azure DNS ネーム �
 1. 削除の意図を確認するために、リソース グループの名前を入力するよう求められます。 **[削除]** をクリックし、リソース グループの名前に「*MyResourceGroup*」と入力して、**[削除]** をクリックします。 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。削除する前に、リソース グループの内容を必ず確認してください。 まずリソース グループに含まれているすべてのリソースが削除された後、リソース グループそのものが削除されます。 このプロセスには数分かかります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)」を参照してください。
 

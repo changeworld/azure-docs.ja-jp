@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 71c98a7e17472ae0aa7646b9e7fc745363546211
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 4232634f57f9650a35c40ee769cbeb0a3e009dfb
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker のデプロイ方法
 
@@ -50,7 +50,7 @@ Hybrid Runbook Worker のデプロイを開始する前に、[ハードウェア
 
 Windows Hybrid Worker ロールのインストールと構成を自動化するには、次の手順を実行します。  
 
-1. [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/1.0/DisplayScript) の *New-OnPremiseHybridWorker.ps1* スクリプトを Hybrid Runbook Worker ロールを実行しているコンピューターから、または環境内の別のコンピューターから直接ダウンロードし、worker にコピーします。  
+1. [PowerShell ギャラリー](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/) の *New-OnPremiseHybridWorker.ps1* スクリプトを Hybrid Runbook Worker ロールを実行しているコンピューターから、または環境内の別のコンピューターから直接ダウンロードし、worker にコピーします。  
 
     *New-OnPremiseHybridWorker.ps1* スクリプトは、実行中に次のパラメーターを必要とします。
 
@@ -76,7 +76,7 @@ Windows Hybrid Worker ロールのインストールと構成を自動化する�
 
 4. **NuGet** のインストールに同意するように求められ、Azure 資格情報で認証するように求められます。<br><br> ![New-OnPremiseHybridWorker スクリプトの実行](media/automation-hybrid-runbook-worker/new-onpremisehybridworker-scriptoutput.png)
 
-5. スクリプトが完了したら、[ハイブリッド worker グループ] ブレードには新しいグループとメンバーの数が表示されますが、既存のグループの場合はメンバーの数がインクリメントされます。  **[ハイブリッド worker グループ]** ブレード上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。  **[ハイブリッド worker]** ブレードで、グループの各メンバーが一覧表示されます。  
+5. スクリプトが完了したら、[ハイブリッド worker グループ] ページには新しいグループとメンバーの数が表示されますが、既存のグループの場合はメンバーの数がインクリメントされます。  **[ハイブリッド worker グループ]** ページ上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。  **[ハイブリッド worker]** ページで、グループの各メンバーが一覧表示されます。  
 
 ### <a name="manual-deployment"></a>手動デプロイ 
 
@@ -113,13 +113,13 @@ Microsoft Monitoring Agent は Operations Management Suite にコンピュータ
 
     Add-HybridRunbookWorker –GroupName <String> -EndPoint <Url> -Token <String>
 
-このコマンドレットに必要な情報は、Azure ポータルの **[キーの管理]** ブレードから取得できます。  このブレードを開くには、Automation アカウントの **[設定]** ブレードで **[キー]** オプションを選択します。
+このコマンドレットに必要な情報は、Azure Portal の **[キーの管理]** ページから取得できます。  このページを開くには、Automation アカウントの **[設定]** ページで **[キー]** オプションを選択します。
 
 ![Hybrid Runbook Worker の概要](media/automation-hybrid-runbook-worker/elements-panel-keys.png)
 
 * **GroupName** は、Hybrid Runbook Worker グループの名前です。 Automation アカウントにこのグループが既に存在する場合は、現在のコンピューターがそれに追加されます。  まだ存在しない場合は、追加されます。
-* **EndPoint** は、**[キーの管理]** ブレードの **[URL]** フィールドです。
-* **Token** は、**[キーの管理]** ブレードの **[プライマリ アクセス キー]** です。  
+* **EndPoint** は、**[キーの管理]** ページの **[URL]** フィールドです。
+* **Token** は、**[キーの管理]** ページの **[プライマリ アクセス キー]** です。  
 
 インストールに関する詳細な情報を受け取るには、**Add-HybridRunbookWorker** で **-Verbose** スイッチを使用します。
 
@@ -143,7 +143,7 @@ Hybrid Runbook Worker は、Automation アカウントと通信してワーカ�
 3. Microsoft Monitoring Agent サービスが実行されていない。  
     Microsoft Monitoring Agent の Windows サービスが実行されていない場合、Hybrid Runbook Worker は Azure Automation と通信できません。  PowerShell で次のコマンドを入力して、このエージェントが実行されていることを確認します: `get-service healthservice`。  サービスが停止している場合は、PowerShell で次のコマンドを入力してサービスを開始します: `start-service healthservice`。  
 
-4. **アプリケーションとサービス ログ\Operations Manager** イベント ログに、**Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** と次の説明を含むイベント 4502 と EventMessage が表示される。"*service <wsid>.oms.opinsights.azure.com によって提示された証明書は Microsoft サービスで使用される証明機関によって発行されていません。TLS/SSL 通信を遮断するプロキシが実行されているかどうかをネットワーク管理者に問い合わせてください。記事 KB3126513 に、接続の問題に関するトラブルシューティング情報が記載されています。*"
+4. **アプリケーションとサービス ログ\Operations Manager** イベント ログに、**Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** と次の説明を含むイベント 4502 と EventMessage が表示される。*service \<wsid\>.oms.opinsights.azure.com によって提示された証明書は Microsoft サービスで使用される証明機関によって発行されていません。TLS/SSL 通信を遮断するプロキシが実行されているかどうかをネットワーク管理者に問い合わせてください。記事 KB3126513 に、接続の問題に関するトラブルシューティング情報が記載されています。*"
     これは、プロキシまたはネットワークのファイアウォールが Microsoft Azure への通信をブロックしていることが原因で発生する可能性があります。  コンピューターがポート 443 で *.azure-automation.net に発信アクセスできることを確認します。
 
 ログは、各ハイブリッド worker の C:\ProgramData\Microsoft\System Center\Orchestrator\7.2\SMA\Sandboxes にローカルに格納されます。  Azure Automation へのロールのオンボードに影響する接続などの問題や、通常の動作の実行中に発生した問題を示唆する警告やエラー イベントが、**アプリケーションとサービス ログ\Microsoft-SMA\Operations** と**アプリケーションとサービス ログ\Operations Manager** イベント ログに書き込まれているかどうかをチェックできます。  

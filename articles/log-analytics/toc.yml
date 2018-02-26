@@ -231,7 +231,15 @@
         - name: ネットワーク分析
           href: log-analytics-azure-networking-analytics.md
         - name: ネットワーク パフォーマンス監視
-          href: log-analytics-network-performance-monitor.md
+          items:
+            - name: ソリューションの概要
+              href: log-analytics-network-performance-monitor.md
+            - name: パフォーマンスの監視
+              href: log-analytics-network-performance-monitor-performance-monitor.md
+            - name: サービス エンドポイント
+              href: log-analytics-network-performance-monitor-service-endpoint.md
+            - name: ExpressRoute
+              href: log-analytics-network-performance-monitor-expressroute.md
         - name: Office 365
           href: ../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json
         - name: SCOM の正常性チェック

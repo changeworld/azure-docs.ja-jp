@@ -4,7 +4,7 @@ description: "このトピックでは、プロビジョニング中に SQL Serv
 services: virtual-machines-windows
 documentationcenter: na
 author: ninarn
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.assetid: 169fc765-3269-48fa-83f1-9fe3e4e40947
 ms.service: virtual-machines-sql
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/05/2017
 ms.author: ninarn
-ms.openlocfilehash: 7d076b970481b68d9c352d54f3452b8e222f5c64
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 21c8b955d48da03559097db93b2cb66029a203ec
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 Azure で SQL Server 仮想マシン イメージを構成するとき、ポータルを使用して、ストレージ構成を自動化すると便利です。 これには、ストレージを VM に接続する、そのストレージが SQL Server にアクセスできるようにする、特定のパフォーマンス要件を最適化するためにストレージを構成する、などの作業が含まれます。
@@ -130,7 +130,7 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 ## <a name="workload-optimization-settings"></a>ワークロード最適化の設定
 次の表では、使用可能な 3 つのワークロードの種類のオプションと、対応する最適化について説明します。
 
-| ワークロードの種類 | Description | 最適化 |
+| ワークロードの種類 | [説明] | 最適化 |
 | --- | --- | --- |
 | **全般** |ほとんどのワークロードをサポートする既定の設定 |なし |
 | **トランザクション処理** |従来のデータベース OLTP ワークロード用にストレージを最適化します |トレース フラグ 1117<br/>トレース フラグ 1118 |
@@ -141,5 +141,5 @@ Azure では、次の設定を使用して、SQL Server VM で記憶域プール
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure VM での SQL Server の実行に関するその他のトピックについては、「 [Azure Virtual Machines における SQL Server](virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。

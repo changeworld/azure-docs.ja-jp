@@ -17,11 +17,11 @@ ms.workload: Active
 ms.date: 11/17/2017
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: a1f504f5bb728ce080e51678d44ed4eef4c3faa7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4bb9b4a01d3efb90486e34d2b0eb5cfeef66e50c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>チュートリアル: PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む
 
@@ -54,15 +54,15 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 空の SQL Data Warehouse を作成するには、次のようにします。 
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 
-2. **[新規]** ページから **[Databases]** を選び、**[New]** ページの **[Featured]** で **[SQL Data Warehouse]** を選びます。
+2. **[新規]** ページの **[データベース]** を選択し、**[新規]** ページの **[おすすめ]** で **[SQL Data Warehouse]** を選択します。
 
     ![データ ウェアハウスを作成する](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
 3. SQL Data Warehouse のフォームで、次の情報を入力します。   
 
-   | 設定 | 推奨値 | [説明] | 
+   | Setting | 推奨値 | [説明] | 
    | ------- | --------------- | ----------- | 
    | **[データベース名]** | mySampleDataWarehouse | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -73,7 +73,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-    | 設定 | 推奨値 | [説明] | 
+    | Setting | 推奨値 | [説明] | 
     | ------- | --------------- | ----------- |
     | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
     | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -152,7 +152,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-    | 設定      | 推奨値 | [説明] | 
+    | Setting      | 推奨値 | [説明] | 
     | ------------ | --------------- | ----------- | 
     | サーバーの種類 | データベース エンジン | この値は必須です |
     | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver-20171113.database.windows.net** のような形式で指定する必要があります。 |

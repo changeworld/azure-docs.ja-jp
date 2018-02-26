@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2017
 ms.author: maxluk,jejiang
-ms.openlocfilehash: 077805cedb7895c8c59b650b3ec691244168a9f5
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 69f5857f89271b3e4865b93e42e5233ead572715
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -71,7 +71,7 @@ Azure Toolkit for IntelliJ プラグインを使用して Scala で記述され�
 
 ## <a name="link-a-cluster"></a>クラスターのリンク
 Ambari 管理対象ユーザー名を使用することで、ノーマル クラスターをリンクできます。また、ドメイン ユーザー名 (user1@contoso.com など) を使用することで、セキュリティ Hadoop クラスターをリンクすることもできます。 
-1. **Azure 用エクスプローラー**の **[Link a cluster]\(クラスターのリンク\)** をクリックします。
+1. **Azure 用エクスプローラー**の**[Link a cluster]\(クラスターのリンク\)** をクリックします。
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
@@ -301,7 +301,6 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
 * [Spark と BI: HDInsight で BI ツールと Spark を使用して対話型データ分析を実行する](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: HDInsight で Spark を使用してリアルタイム ストリーミング アプリケーションを作成する](apache-spark-eventhub-streaming.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="creating-and-running-applications"></a>アプリケーションの作成と実行

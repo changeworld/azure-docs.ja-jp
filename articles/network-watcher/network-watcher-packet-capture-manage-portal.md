@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: a43d2ea10bfd6de2f8177283821f7aad59e9f610
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 40414afbfcd456353b4290585ccd9d594fbf55dd
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>ポータルを使用して Azure Network Watcher でパケット キャプチャを管理する
 
@@ -61,7 +61,10 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 [概要] ページでは、存在するすべてのパケット キャプチャが、状態に関係なく一覧で表示されます。
 
 > [!NOTE]
-> パケット キャプチャには、ポート 443 を経由するストレージ アカウントへの接続が必要です。
+> パケット キャプチャは以下の接続を必要とします。
+> * ポート 443 経由でのストレージ アカウントへの送信接続。
+> * 169.254.169.254 への受信接続と送信接続。
+> * 168.63.129.16 への受信接続と送信接続。
 
 ![パケット キャプチャの概要画面][1]
 

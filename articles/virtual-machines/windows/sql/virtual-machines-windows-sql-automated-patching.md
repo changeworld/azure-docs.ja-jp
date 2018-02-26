@@ -4,7 +4,7 @@ description: "Azure で実行されている SQL Server Virtual Machines に対�
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
@@ -15,24 +15,22 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/05/2018
 ms.author: jroth
-ms.openlocfilehash: e3459e8a62386a94938aa52792b94e87315a48ab
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: c1cdf03133d765f7726d16378b042de8e04b2cfc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
-> * [クラシック](../classic/sql-automated-patching.md)
-> 
-> 
+> * [クラシック](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
 自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。 このメンテナンス期間にのみ、自動更新プログラムをインストールできます。 これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。 自動修正は、 [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
 
-この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](../classic/sql-automated-patching.md)」をご覧ください。
+この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 自動修正を使用するには、次の前提条件を検討してください。
@@ -58,10 +56,10 @@ ms.lasthandoff: 01/05/2018
 > 
 > 
 
-## <a name="settings"></a>[設定]
+## <a name="settings"></a>設定
 自動修正で構成できるオプションを次の表に示します。 実際の構成手順は、Azure ポータルと Azure Windows PowerShell コマンドのどちらを使用するかによって異なります。
 
-| 設定 | 指定できる値 | [説明] |
+| Setting | 指定できる値 | [説明] |
 | --- | --- | --- |
 | **自動修正** |有効/無効 (無効) |Azure 仮想マシンの自動修正を有効または無効にします。 |
 | **メンテナンス スケジュール** |毎日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日、日曜日 |仮想マシンの Windows、SQL Server、および Microsoft の更新プログラムをダウンロードしてインストールするスケジュール。 |

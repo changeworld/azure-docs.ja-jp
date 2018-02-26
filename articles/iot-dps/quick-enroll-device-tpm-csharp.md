@@ -12,17 +12,16 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 93ad83c6c89ce065cf905d28e20093bae4fdfa96
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 5a1da25a37cdfb451b88c058b5b2a04856f1155c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="enroll-tpm-device-to-iot-hub-device-provisioning-service-using-c-service-sdk"></a>C# サービス SDK を使用して TPM デバイスを IoT Hub Device Provisioning Service に登録する
-> [!div class="op_single_selector"]
-> * [Java](quick-enroll-device-tpm-java.md)
-> * [C#](quick-enroll-device-tpm-csharp.md)
-> * [Node.js](quick-enroll-device-tpm-node.md)
+
+[!INCLUDE [iot-dps-selector-quick-enroll-device-tpm](../../includes/iot-dps-selector-quick-enroll-device-tpm.md)]
+
 
 [C# サービス SDK](https://github.com/Azure/azure-iot-sdk-csharp) とサンプル C# .NET Core アプリケーションを使用して、Azure IoT Hub Device Provisioning Service で TPM デバイスの個々の登録をプログラムで作成する方法について説明します。 必要に応じて、この個々の登録エントリを使用して、シミュレートされた TPM デバイスをプロビジョニング サービスに登録することができます。 これらの手順は Windows マシンと Linux マシンの両方に利用できますが、この記事では Windows 開発マシンを使用します。
 

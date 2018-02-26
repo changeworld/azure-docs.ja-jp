@@ -79,6 +79,14 @@
               href: backup-mabs-system-state-and-bmr.md
         - name: Azure Backup Server からデータを回復する
           href: backup-azure-alternate-dpm-server.md
+    - name: Azure ファイル共有
+      items:
+        - name: Azure ファイル共有のバックアップ
+          href: backup-azure-files.md
+        - name: Azure ファイル共有のバックアップに関する FAQ
+          href: backup-azure-files-faq.md
+        - name: Azure ファイル共有のバックアップに関するトラブルシューティング
+          href: troubleshoot-azure-files.md
     - name: Azure VM
       items:
         - name: VM を準備する

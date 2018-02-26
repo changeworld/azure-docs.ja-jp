@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: 327816874fb2f2d43192e02410bd31c168e574f7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 66406ed327f496dce7e77bb9ff650e0eec44bbdd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Azure Storage の停止が発生した場合の対処方法
 Microsoft では、サービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス停止が 1 つまたは複数のリージョンで発生することがあります。 こうした状況はほとんど発生しませんが、発生した場合は、次のガイダンスに従って対応してください。
@@ -27,9 +27,9 @@ Microsoft では、サービスがいつでも使用できるように取り組�
 すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。 ストレージの停止から復旧し、アプリケーションをアクティブ化して、機能している状態に戻すには、通常、運用担当者の操作と自動処理の両方が必要です。 ディザスター リカバリー計画を作成するには、次の Azure ドキュメントをご覧ください。
 
 * [可用性のチェックリスト](https://docs.microsoft.com/azure/architecture/checklist/availability)
-* [回復性に優れた Azure 用アプリケーションの設計](/azure/architecture/resiliency)
+* [回復性に優れた Azure 用アプリケーションの設計](https://docs.microsoft.com/azure/architecture/resiliency/)
 * [Azure Site Recovery サービス](https://azure.microsoft.com/services/site-recovery/)
-* [Azure Storage のレプリケーション](storage-redundancy)
+* [Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 * [Azure Backup サービス](https://azure.microsoft.com/services/backup/)
 
 ## <a name="how-to-detect"></a>検出する方法

@@ -1,8 +1,8 @@
-キャッシュには、 [Azure ポータル](https://portal.azure.com) で **[参照]** ブレードを使用してアクセスできます。
+キャッシュは、[Azure Portal](https://portal.azure.com) の **[すべてのサービス]** からアクセスできます。
 
 ![Azure Redis Cache の参照ブレード](media/redis-cache-browse/redis-cache-browse.png)
 
-キャッシュを表示するには、**[その他のサービス] > [Redis Caches]** をクリックします。 最近 Redis Cache を参照した場合は、**[その他のサービス]** をクリックしなくても一覧から **[Redis Cache]** を直接クリックできます。
+キャッシュを表示するには、**[すべてのサービス]** をクリックし、**[Redis Caches]** を検索します。 
 
 目的のキャッシュを選択して表示し、そのキャッシュの設定を構成します。
 

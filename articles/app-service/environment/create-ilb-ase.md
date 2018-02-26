@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 9f7343102cf7af6d7f2ba6b4b2f08b7b855da6f8
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -55,7 +55,7 @@ ILB ASE を使用する際に実行できないことがいくつかあります
 
 ILB ASE を作成する方法は次のとおりです。
 
-1. Azure Portal で、**[新規]** > **[Web + モバイル]** > **[App Service Environment]** の順に選択します。
+1. Azure Portal で、**[リソースの作成]** > **[Web + モバイル]** > **[App Service Environment]** の順に選択します。
 
 2. サブスクリプションを選択します。
 
@@ -106,7 +106,7 @@ ILB ASE を作成する方法は次のとおりです。
 
 通常 ASE 内にアプリを作成するのと同じ方法で、ILB ASE 内にアプリを作成します。
 
-1. Azure Portal で、**[新規]** > **[Web + モバイル]** > **[Web]** の順に選択するか、**[モバイル]** または **[API アプリ]** を選択します。
+1. Azure Portal で、**[リソースの作成]** > **[Web + モバイル]** > **[Web]** の順に選択するか、**[モバイル]** または **[API アプリ]** を選択します。
 
 2. アプリの名前を入力します。
 
@@ -170,7 +170,7 @@ SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx フ�
 
 6. ASE ドメインで使用する DNS を設定します。 お使いの DNS のドメインにワイルドカードを使用できます。 いくつかの簡単なテストを行うには、ご使用の VM 上の hosts ファイルを編集して、Web アプリの名前を VIP の IP アドレスに設定します。
 
-    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
 
     b. Web デプロイの発行または高度なコンソールへのアクセスをテストするには、_mytestapp.scm.ilbase.com_ のレコードを作成します。
 

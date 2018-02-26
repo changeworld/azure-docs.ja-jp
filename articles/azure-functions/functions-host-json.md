@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/09/2017
+ms.date: 02/12/2018
 ms.author: tdykstra
-ms.openlocfilehash: 58fc58049e346d60c0882a91bd04485746a15cbd
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6b5a8c81b1e3e45c85ea84a46054b6a38a886c5b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions の host.json のリファレンス
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 02/01/2018
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ |既定値  | [説明] |
 |---------|---------|---------| 
 |batchSize|1,000|集計する要求の最大数。| 
 |flushTimeout|00:00:30|集計する最長期間。| 
@@ -137,7 +137,7 @@ ms.lasthandoff: 02/01/2018
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |既定値 | [説明] |
 |---------|---------|---------| 
 |isEnabled|false|サンプリングを有効または無効にします。| 
 |maxTelemetryItemsPerSecond|5|サンプリングが開始されるしきい値。| 
@@ -184,7 +184,7 @@ ms.lasthandoff: 02/01/2018
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |既定値 | [説明] |
 |---------|---------|---------| 
 |有効|true|機能が有効になっているかどうか。 | 
 |healthCheckInterval|10 秒|定期的なバック グラウンドでの正常性チェックの間隔。 | 
@@ -227,7 +227,7 @@ ms.lasthandoff: 02/01/2018
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |既定値 | [説明] |
 |---------|---------|---------| 
 |categoryFilter|該当なし|カテゴリ別のフィルターを指定します| 
 |defaultLevel|情報|`categoryLevels` 配列に指定されていないカテゴリの場合、このレベル以上のログを Application Insights に送信します。| 
@@ -237,25 +237,7 @@ ms.lasthandoff: 02/01/2018
 
 [Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md)の構成設定。
 
-```json
-{
-    "queues": {
-      "maxPollingInterval": 2000,
-      "visibilityTimeout" : "00:00:30",
-      "batchSize": 16,
-      "maxDequeueCount": 5,
-      "newBatchThreshold": 8
-    }
-}
-```
-
-|プロパティ  |既定値 | 説明 |
-|---------|---------|---------| 
-|maxPollingInterval|60000|キューのポーリングの最大間隔 (ミリ秒)。| 
-|visibilityTimeout|0|メッセージの処理が失敗したときの再試行間隔。| 
-|batchSize|16|並列で取得および処理されるキュー メッセージ数。 最大値は 32 です。| 
-|maxDequeueCount|5|有害キューに移動する前に、メッセージの処理を試行する回数。| 
-|newBatchThreshold|batchSize/2|新しいメッセージのバッチを取得するしきい値。| 
+[!INCLUDE [functions-host-json-queues](../../includes/functions-host-json-queues.md)]
 
 ## <a name="servicebus"></a>serviceBus
 
@@ -268,6 +250,7 @@ ms.lasthandoff: 02/01/2018
 シングルトン ロック動作の構成設定。 詳細については、「[GitHub issue about singleton support](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)」(シングルトンのサポートに関する GitHub の問題) を参照してください。
 
 ```json
+{
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -278,7 +261,7 @@ ms.lasthandoff: 02/01/2018
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |既定値 | [説明] |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|関数レベルのロックの取得期間。 ロックの自動更新。| 
 |listenerLockPeriod|00:01:00|リスナーのロックの取得期間。| 
@@ -299,7 +282,7 @@ ms.lasthandoff: 02/01/2018
 }
 ```
 
-|プロパティ  |既定値 | 説明 |
+|プロパティ  |既定値 | [説明] |
 |---------|---------|---------| 
 |consoleLevel|info|コンソール ログのトレース レベル。 オプションは、`off`、`error`、`warning`、`info`、および `verbose` です。|
 |fileLoggingMode|debugOnly|ファイルのログ記録のトレース レベル。 オプションは、`never`、`always`、`debugOnly` です。| 

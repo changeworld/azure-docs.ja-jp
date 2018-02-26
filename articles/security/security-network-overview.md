@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: cefc15e7df0dabd9229196d0175dcf6546a6ebce
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: d3ce4d5c6766c41fe32164ebfe623ea8c06b58f9
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/14/2018
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 Microsoft Azure には、アプリケーションとサービスの接続要件をサポートする堅牢なネットワーク インフラストラクチャが組み込まれています。 ネットワーク接続は、Azure に配置されているリソース間、オンプレミスのリソースと Azure でホストされているリソース間、インターネットと Azure 間で可能です。
@@ -37,11 +37,11 @@ Microsoft Azure には、アプリケーションとサービスの接続要件�
 
 
 ## <a name="azure-networking"></a>Azure のネットワーク
-仮想マシンには、ネットワーク接続が必要です。 その要件に対応するため、Azure では、仮想マシンによる Azure Virtual Network への接続が必要となります。 Azure Virtual Network は、物理的な Azure ネットワーク ファブリック上に構築される論理的な構築物です。 各論理 Azure Virtual Network は、他のすべての Azure Virtual Network から分離されています。 これは、自分のデプロイ内のネットワーク トラフィックに他の Microsoft Azure ユーザーがアクセスすることを防ぐ上で役立ちます。
+仮想マシンには、ネットワーク接続が必要です。 その要件に対応するため、Azure では、仮想マシンによる Azure Virtual Network への接続が必要となります。 Azure Virtual Network は、物理的な Azure ネットワーク ファブリック上に構築される論理的な構築物です。 各論理 Azure Virtual Network は、他のすべての Azure Virtual Network から分離されています。 これは、自分のデプロイ内のネットワーク トラフィックに他の Microsoft Azure ユーザーがアクセスすることを防ぐために役立ちます。
 
 詳細情報:
 
-* [仮想ネットワークの概要](../virtual-network/virtual-networks-overview.md)
+* [Virtual Network の概要](../virtual-network/virtual-networks-overview.md)
 
 
 ## <a name="network-access-control"></a>ネットワーク アクセス制御
@@ -261,7 +261,7 @@ Azure Network Watcher と、ラボで機能の一部のテストを開始する�
 >[!NOTE]
 Azure Network Watcher は現在もパブリック プレビュー中であるため、一般公開リリースのサービスと同じレベルの可用性と信頼性がない場合があります。 特定の機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 このサービスの可用性とステータスに関する最新の通知については、[Azure の更新情報](https://azure.microsoft.com/updates/?product=network-watcher)に関するページをご覧ください。
 
-### <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+### <a name="azure-security-center"></a>Azure Security Center
 Security Center は、脅威の回避、検出、対応に役立つサービスで、Azure リソースのセキュリティを高度に視覚化して制御できます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、多数のセキュリティ ソリューションと連動します。
 
 Azure Security Center は、ネットワーク セキュリティの最適化と監視に役立つ次の機能を備えています。

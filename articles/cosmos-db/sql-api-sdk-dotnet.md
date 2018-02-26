@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 11/17/2017
+ms.date: 02/12/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fb6937cc0fc744d6e3a783d77b2a16b6fc09f3bf
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 796a455ffb906a47ab4ac9ae069537b0d7a31156
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -45,7 +45,7 @@ ms.lasthandoff: 12/18/2017
 
 <tr><td>**サンプル**</td><td>[.NET コード サンプル](sql-api-dotnet-samples.md)</td></tr>
 
-<tr><td>**開始する**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
+<tr><td>**概要**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)</td></tr>
 
@@ -53,6 +53,14 @@ ms.lasthandoff: 12/18/2017
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
+
+* FeedOptions.MaxItemCount = -1 によって System.ArithmeticException: page size is negative (ページ サイズがマイナスです) がスローされた回帰が修正されました。
+* 新しい ToString() 関数が QueryMetrics に追加されました。
+* コレクションの読み取り時のパーティション統計情報が公開されました。
+* ChangeFeedOptions に PartitionKey プロパティが追加されました。
+* 軽微なバグの修正。
+
 ### <a name="a-name11911191"></a><a name="1.19.1"/>1.19.1
 
 * DocumentCollection の UniqueKeyPolicy プロパティを使用して、ドキュメントの一意のインデックスを指定する機能を追加します。
@@ -277,6 +285,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.20.1](#1.20.1) |2018 年 2 月 5 日 |--- |
 | [1.19.1](#1.19.1) |2017 年 11 月 16 日 |--- |
 | [1.19.0](#1.19.0) |2017 年 11 月 10 日 |--- |
 | [1.18.1](#1.18.1) |2017 年 11 月 7 日 |--- |

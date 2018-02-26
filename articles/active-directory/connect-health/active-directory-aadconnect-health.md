@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 9919e326613ce81db32f1d72a8cb5e3668992885
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f8082b632e9fef4aa5d46deb35e415f2b1c55dda
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視
 Azure Active Directory (Azure AD) Connect Health では、オンプレミスの ID インフラストラクチャと同期サービスを監視、分析できます。 これを使用すると、Active Directory フェデレーション サービス (AD FS) サーバー、Azure AD Connect サーバー (同期エンジン)、Active Directory ドメイン コントローラーなど、お使いの主要な ID コンポーネントの監視機能が用意されているため、Office 365 と Microsoft Online Services への信頼性の高い接続を維持できます。また、これらのコンポーネントの主要なデータ ポイントにアクセスしやすくなるため、使用状況やその他の重要な分析を取得して、しかるべき情報に基づく判断ができるようになります。
@@ -110,7 +110,7 @@ Azure AD Connect Health の使用を開始するには、次の手順に従い�
 Azure AD Connect Health ポータルでは、アラート、パフォーマンスの監視、使用状況の分析に関するビューが表示されます。 https://aka.ms/aadconnecthealth という URL から Azure AD Connect Health のメイン ブレードに移動できます。 ブレードは、ウィンドウと考えることができます。 メイン ブレードでは、**[クイック スタート]**、Azure AD Connect Health で提供されるサービス、その他の構成オプションが表示されます。 次のスクリーンショットとそれに続く簡単な説明をご覧ください。 エージェントのデプロイ後、Azure AD Connect Health で監視されているサービスが、Health サービスによって自動的に識別されます。
 
 > [!NOTE]
-> ライセンスの情報については、[Azure AD Connect の FAQ](active-directory-aadconnect-health-faq.md) または [Azure AD の価格に関するページ](https://aka.ms/aadpricing)を参照してください。
+> ライセンスの情報については、[Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md) または [Azure AD の価格に関するページ](https://aka.ms/aadpricing)を参照してください。
     
 ![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health/portal4.png)
 

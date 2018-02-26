@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: d5f76d532b236e67a4e69eb820e2cfc3033a80c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7cd457fe0660718c3939d39ec1825009c5e4d17
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
 ## <a name="overview"></a>概要
@@ -65,9 +65,9 @@ Media Services 2.10 リリース以降、チャネルを作成するときに、
 | チャネルの状態 | ポータル UI インジケーター | 課金対象 |
 | --- | --- | --- |
 | 開始中 |開始中 |いいえ (遷移状態) |
-| 実行中 |準備完了 (実行中プログラムなし)<br/>または<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |はい |
+| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |はい |
 | 停止中 |停止中 |いいえ (遷移状態) |
-| 停止済み |停止済み |いいえ |
+| 停止済み |停止済み |いいえ  |
 
 ### <a name="automatic-shut-off-for-unused-channels"></a>使用されていないチャネルの自動停止
 2016 年 1 月 25 日以降、Live Encoding が有効になっているチャネルが長期間使用されていない場合、そのチャネルを自動的に停止する Media Services の更新プログラムがロールアウトされます。 これは、アクティブなプログラムがなく、長期間にわたって入力/投稿フィードを受け取っていないチャネルに適用されます。
@@ -364,9 +364,9 @@ Live Encoding が有効な場合は、ライブ フィードがチャネルに�
 | チャネルの状態 | ポータル UI インジケーター | 課金対象 |
 | --- | --- | --- |
 | 開始中 |開始中 |いいえ (遷移状態) |
-| 実行中 |準備完了 (実行中プログラムなし)<br/>または<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |はい |
+| 実行中 |準備完了 (実行中プログラムなし)<br/>or<br/>ストリーミング (実行中プログラムが最低 1 つ存在) |[はい] |
 | 停止中 |停止中 |いいえ (遷移状態) |
-| 停止済み |停止済み |いいえ |
+| 停止済み |停止済み |いいえ  |
 
 > [!NOTE]
 > 現時点では、チャネルの開始の平均は約 2 分ですが、20 分以上かかる場合もあります。 チャネルのリセットには、最大で 5 分かかります。

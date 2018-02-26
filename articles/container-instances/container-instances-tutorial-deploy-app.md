@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: tutorial
-ms.date: 01/02/2018
+ms.date: 02/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 471caa1b24dc7017c70782c072b2068f9635244b
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 250f74b1a05959b93000452c4d5f025311f379d8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-a-container-to-azure-container-instances"></a>コンテナーを Azure Container Instances にデプロイする
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルでは、Azure CLI バージョン 2.0.23 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli-install]」を参照してください。
+このチュートリアルでは、Azure CLI バージョン 2.0.23 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli-install]」をご覧ください。
 
 このチュートリアルを完了するには、Docker 開発環境がローカルにインストールされている必要があります。 Docker では、[Mac][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
@@ -50,13 +50,15 @@ az acr show --name <acrName> --query loginServer
 az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
-1 CPU コアおよび 1 GB メモリのリソース要求で、コンテナー レジストリからコンテナー イメージをデプロイするには、次のコマンドを実行します。 `<acrLoginServer>` および `<acrPassword>` を、前の 2 つのコマンドから取得した値に置き換えます。
+1 CPU コアおよび 1 GB メモリのリソース要求で、コンテナー レジストリからコンテナー イメージをデプロイするには、次のコマンドを実行します。 `<acrLoginServer>` および `<acrPassword>` を、前の 2 つのコマンドから取得した値に置き換えます。 `<acrName>` を、コンテナー レジストリの名前に置き換えます。
 
 ```azurecli
-az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public --ports 80
+az container create --resource-group myResourceGroup --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
 ```
 
-数秒以内に、Azure Resource Manager から最初の応答を受信します。 デプロイの状態を表示するには、[az container show][az-container-show] を使用します。
+数秒以内に、Azure Resource Manager から最初の応答を受信します。 `--dns-name-label` の値は、コンテナー インスタンスを作成する Azure リージョン内で一意である必要があります。 コマンドを実行したときに **DNS 名ラベル**のエラー メッセージが表示された場合、前の例の値を更新してください。
+
+デプロイの状態を表示するには、[az container show][az-container-show] を使用します。
 
 ```azurecli
 az container show --resource-group myResourceGroup --name aci-tutorial-app --query instanceView.state
@@ -66,15 +68,15 @@ az container show --resource-group myResourceGroup --name aci-tutorial-app --que
 
 ## <a name="view-the-application-and-container-logs"></a>アプリケーションとコンテナー ログを表示する
 
-デプロイが成功したら、[az container show][az-container-show] コマンドでコンテナーのパブリック IP アドレスを表示します。
+デプロイが成功すると、[az container show][az-container-show] コマンドでコンテナーの完全修飾ドメイン名 (FQDN) が表示されます。
 
 ```bash
-az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.ip
+az container show --resource-group myResourceGroup --name aci-tutorial-app --query ipAddress.fqdn
 ```
 
-出力例: `"13.88.176.27"`
+出力例: `"aci-demo.eastus.azurecontainer.io"`
 
-実行中のアプリケーションを表示するには、お使いのブラウザーでパブリック IP アドレスにアクセスします。
+実行中のアプリケーションを表示するには、お使いのブラウザーで表示された DNS 名に移動します。
 
 ![ブラウザーでの Hello World アプリ][aci-app-browser]
 

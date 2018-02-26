@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: bdbcdc7d46d5395b28cf9ba7066703ce5da900a5
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: aa8704b9991dde639b50a5b6c9a27ad5cd08ad02
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-storage-account-options"></a>Azure Storage アカウントの種類
 
@@ -78,7 +78,7 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 > [!NOTE]
 > BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB のみをサポートします。ページ BLOB はサポートしません。
 
-## <a name="recommendations"></a>Recommendations
+## <a name="recommendations"></a>推奨事項
 
 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントについて](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
@@ -125,7 +125,7 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. ハブ メニューで、**[新規]** > **[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。
+2. ハブ メニューで、**[リソースの作成]** > **[データ + ストレージ]** > **[ストレージ アカウント]** を選択します。
 
 3. ストレージ アカウントの名前を入力します。
 
@@ -159,7 +159,7 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. ストレージ アカウントに移動するには、[すべてのリソース] を選択し、ストレージ アカウントを選択します。
+2. ストレージ アカウントに移動するには、**[すべてのリソース]** を選択し、ストレージ アカウントを選択します。
 
 3. [設定] セクションで **[構成]** をクリックします。
 
@@ -173,7 +173,7 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. ストレージ アカウントに移動するには、[すべてのリソース] を選択し、ストレージ アカウントを選択します。
+2. ストレージ アカウントに移動するには、**[すべてのリソース]** を選択し、ストレージ アカウントを選択します。
 
 3. [設定] ブレードで **[構成]** をクリックし、アカウント構成を表示または変更します。
 
@@ -185,7 +185,7 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. ストレージ アカウントの BLOB に移動するには、[すべてのリソース]、ストレージ アカウント、コンテナー、BLOB を順に選択します。
+2. ストレージ アカウントの BLOB に移動するには、**[すべてのリソース]**、ストレージ アカウント、コンテナー、BLOB を順に選択します。
 
 3. BLOB のプロパティ ブレードで、**[アクセス レベル]** ドロップダウン メニューをクリックし、**[ホット]**、**[クール]**、または **[アーカイブ]** ストレージ層を選択します。
 

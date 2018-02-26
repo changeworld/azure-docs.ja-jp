@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: spelluru
-ms.openlocfilehash: 5008d8f0ce36f09ff26bf10fadbf14da6b474ea9
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 77b30610072fb7f573597d035dcc161b4739ec7c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-create-an-azure-data-factory-using-azure-resource-manager-template"></a>チュートリアル: Azure Resource Manager テンプレートを使用した Azure データ ファクトリの作成
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -428,7 +428,7 @@ DeploymentDebugLogLevel :
     ```
 
 ## <a name="monitor-the-pipeline"></a>パイプラインの監視
-1. [Azure Portal](https://portal.azure.com/) にログインしたら、**[その他のサービス]** をクリックし、キーワード (**data fa** など) を使用して検索し、**[データ ファクトリ]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) にログインしたら、**[すべてのサービス]** をクリックし、キーワード ("**データ ファ**" など) を使用して検索して、**[データ ファクトリ]** を選択します。
 
     ![データ ファクトリ メニューの参照](media/quickstart-create-data-factory-resource-manager-template/browse-data-factories-menu.png)
 2. **[データ ファクトリ]** ページで、自分が作成したデータ ファクトリをクリックします。 必要に応じて、該当するデータ ファクトリの名前で一覧をフィルター処理します。  

@@ -16,11 +16,11 @@ ms.date: 08/15/2017
 ms.author: joflore
 ms.reviewer: richagi
 ms.custom: it-pro
-ms.openlocfilehash: 1141245739f86a482bb0b5f550fd3b89d1213ce1
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 9b156f80ae2b52ea7cb07bcb2c047d35d07b9154
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Azure のネットワーク ポリシー サーバー拡張機能を使用して VPN インフラストラクチャを Azure MFA と統合する
 
@@ -247,7 +247,7 @@ NPS ロールがメンバー サーバーにインストールされている場
 
 7. **[RADIUS サーバーの追加]** ウィンドウで、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[サーバー名]** ボックスに、前のセクションで構成した RADIUS サーバーの名前または IP アドレスを入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サーバー名]** ボックスに、前のセクションで構成した RADIUS サーバーの名前または IP アドレスを入力します。
 
     b. **[共有シークレット]** で **[変更]** を選択し、先ほど作成してメモしておいた共有シークレットのパスワードを入力します。
 
@@ -376,7 +376,7 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 1. Windows PowerShell を管理者として実行します。
 
-2. PowerShell コマンド プロンプトで、「**cd c:\Program Files\Microsoft\AzureMfa\Config**」と入力し、Enter キーを押します。
+2. PowerShell コマンド プロンプトで、「**cd "c:\Program Files\Microsoft\AzureMfa\Config"**」と入力し、Enter キーを押します。
 
 3. 次のコマンド プロンプトで「**.\AzureMfsNpsExtnConfigSetup.ps1**」と入力し、Enter キーを押します。 このスクリプトで、Azure AD PowerShell モジュールがインストールされているかどうかがチェックされます。 インストールされていない場合は、スクリプトによってモジュールがインストールされます。
  

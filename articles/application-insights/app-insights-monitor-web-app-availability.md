@@ -1,23 +1,8 @@
----
-title: "Web サイトの可用性と応答性の監視 | Microsoft Docs"
-description: "Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。"
-services: application-insights
-documentationcenter: 
-author: SoubhagyaDash
-manager: carmonm
-ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 12/14/2017
-ms.author: sdash
-ms.openlocfilehash: b35f37b4599cdf6276bc82013dc2fdf1c7d12834
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ ;--- タイトル: Web サイトの可用性と応答性の監視 | Microsoft Docs 説明: Application Insights で Web テストを設定します。 Web サイトが使用できなくなったり、応答速度が低下したりした場合に、アラートを受け取ります。
+services: application-insights documentationcenter: '' author: SoubhagyaDash manager: carmonm
+
+ms.assetid: 46dc13b4-eb2e-4142-a21c-94a156f760ee ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: na ms.topic: get-started-article ms.date: 02/09/2018 ms.author: sdash ; mbullwin
+
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Web サイトの可用性と応答性の監視
 いずれかのサーバーに Web アプリまたは Web サイトをデプロイした後、テストを設定して、その可用性と応答性を監視できます。 [ Application Insights](app-insights-overview.md) は、世界各地の複数のポイントから定期的にアプリケーションに Web 要求を送信します。 アプリケーションがまったく応答しなくなったりアプリケーションの応答が遅くなったりした場合は、Application Insights からその旨が通知されます。
@@ -41,7 +26,7 @@ ms.lasthandoff: 02/03/2018
 
 Web アプリ用に**既に Application Insights を構成している場合**は、[Azure Portal](https://portal.azure.com) でその Web アプリ用の Application Insights リソースを開きます。
 
-**新しいリソースでレポートを表示する場合**は、[Microsoft Azure](http://azure.com) にサインアップし、[Azure Portal](https://portal.azure.com) に移動して、Application Insights リソースを作成します。
+**新しいリソースでレポートを表示する場合は、**[Azure Portal](https://portal.azure.com) に移動し、Application Insights リソースを作成します。
 
 ![[新規] &gt; [Application Insights]](./media/app-insights-monitor-web-app-availability/11-new-app.png)
 
@@ -56,9 +41,13 @@ Web アプリ用に**既に Application Insights を構成している場合**�
 * **[従属要求の解析]**: このオプションをオンにしていると、テスト対象の Web ページの一部である画像、スクリプト、スタイル ファイル、その他のファイルがテストから要求されます。 記録される応答時間には、これらのファイルの取得にかかる時間が含まれます。 テスト全体のタイムアウト時間内にこれらすべてのリソースを正常にダウンロードできない場合、テストは失敗します。 
 
     このオプションがオンになっていない場合、テストからは指定した URL にあるファイルのみが要求されます。
+
 * **[Web テストが失敗した場合に再試行を有効にします。]**: このオプションをオンにしていると、テストに失敗したとき、少し間を置いてテストを再試行します。 エラーは試行が 3 回連続で失敗した場合にのみ報告されます。 その後、後続のテストが通常のテスト間隔で実行されます。 再試行は、次の成功まで一時的に中断されます。 このルールがテスト場所ごとに独立して適用されます。 このオプションはオンにすることをお勧めします。 再試行の際に平均でエラーの約 80% がなくなります。
-* **[テスト間隔]**: 各テストの場所からテストを実行する頻度を設定します。 間隔が 5 分で、テストの場所が 5 か所の場合、サイトは平均すると毎分テストされることになります。
+
+* **[テスト間隔]**: 各テストの場所からテストを実行する頻度を設定します。 既定の間隔が 5 分で、テストの場所が 5 か所の場合、サイトは平均して毎分テストされます。
+
 * **テストの場所** とは、指定された URL にサーバーが Web 要求を送信する送信元の場所です。 Web サイトで発生している問題とネットワークの問題とを区別できるように、複数の場所を選択してください。 最大 16 個の場所を選択できます。
+
 * **成功の基準**:
 
     **[テストのタイムアウト]**: この値を引き下げると、応答が遅い場合に警告されます。 テストは、この期間内にサイトから応答が返されない場合に、エラーとしてカウントされます。 **[従属要求の解析]**をオンにした場合、すべての画像、スタイル ファイル、スクリプト、その他依存するリソースがこの期間内に受信される必要があります。

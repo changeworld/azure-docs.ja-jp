@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: ad12dee2eb01f839db07985fcb0805bf961354cc
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: bfd176aaf02dd96cee8877f1754dd0ce7ebded13
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-mapreduce-in-hadoop-on-hdinsight"></a>HDInsight での MapReduce と Hadoop の使用
 
@@ -29,12 +29,12 @@ HDInsight クラスターで MapReduce ジョブを実行する方法を説明�
 | **使用する方法** | **目的** | 使用する **クラスターのオペレーティング システム** | 使用元の **クライアントのオペレーティング システム** |
 |:--- |:--- |:--- |:--- |
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
-| [REST ()](apache-hadoop-use-mapreduce-curl.md) |**REST** を使用してリモートからジョブを送信する (例では cURL を使用) |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
+| [REST](apache-hadoop-use-mapreduce-curl.md) |**REST** を使用してリモートからジョブを送信する (例では cURL を使用) |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
-| [リモート デスクトップ](apache-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2 および 3.3) |**リモート デスクトップ** |Windows |Windows |
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+>
 
 ## <a id="whatis"></a>MapReduce とは
 
@@ -168,7 +168,6 @@ HDInsight では、さまざまな方法を使用して HiveQL ジョブを実�
 | [SSH](apache-hadoop-use-mapreduce-ssh.md) |**SSH** |Linux |Linux、Unix、Mac OS X、または Windows |
 | [Curl](apache-hadoop-use-mapreduce-curl.md) |**REST** |Linux または Windows |Linux、Unix、Mac OS X、または Windows |
 | [Windows PowerShell](apache-hadoop-use-mapreduce-powershell.md) |**Windows PowerShell** |Linux または Windows |Windows |
-| [リモート デスクトップ](apache-hadoop-use-mapreduce-remote-desktop.md) (HDInsight 3.2 および 3.3) |**リモート デスクトップ** |Windows |Windows |
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。

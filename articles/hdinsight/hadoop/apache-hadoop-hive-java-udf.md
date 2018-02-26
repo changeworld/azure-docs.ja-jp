@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: 20473f5e462bfcace9c982786b771e01df337eab
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: cc6b63f40dd4323ecdf0dfb75c7c8036cbc7b0b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>HDInsight で Hive と Java UDF を使用する
 
@@ -52,7 +52,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
     ```
 
    > [!NOTE]
-   > PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。 たとえば、「 `mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`」のように入力します。
+   > PowerShell を使用している場合は、パラメーターを引用符で囲む必要があります。 たとえば、「`mvn archetype:generate "-DgroupId=com.microsoft.examples" "-DartifactId=ExampleUDF" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`」のように入力します。
 
     このコマンドにより、Maven プロジェクトを含む **exampleudf** という名前のディレクトリが作成されます。
 
@@ -243,7 +243,7 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
         | android  |
         +----------+--+
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Hive の他の使用方法について [HDInsight での Hive の使用](hdinsight-use-hive.md)を参照します。
 

@@ -22,7 +22,7 @@
 ### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
 ## [Azure 接続関数を作成する](https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function)
-## [Docker で Web アプリを Linux にデプロイする](https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image) 
+## [Docker で Web アプリを Linux にデプロイする](https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go) 
 
 # サンプル
 ## Azure CLI
