@@ -29,7 +29,7 @@ OMS の Update Management ソリューションを使用すると、Azure、オ�
 ## <a name="update-management-in-azure-automation"></a>Azure Automation における更新管理
 
 仮想マシンの更新管理は、[Azure Automation](../automation/automation-offering-get-started.md) アカウントから直接有効にすることができます。
-Automation アカウントから仮想マシンの更新管理を有効にする方法については、[多数の仮想マシンの更新管理](../automation/manage-update-multi.md)に関するページを参照してください。
+Automation アカウントから仮想マシンの更新管理を有効にする方法については、[複数の仮想マシンの更新管理](../automation/manage-update-multi.md)に関するページを参照してください。
 
 
 ## <a name="solution-overview"></a>ソリューションの概要
