@@ -107,7 +107,7 @@
           href: 'https://docs.loganalytics.io'
         - name: 従来の言語からの切り替え
           href: log-analytics-log-search-transition.md
-        - name: ワークスペースをまたがる検索
+        - name: リソース間の検索
           href: log-analytics-cross-workspace-search.md
         - name: 検索結果からのアクションの実行
           href: log-analytics-log-search-takeaction.md

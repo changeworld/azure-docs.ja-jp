@@ -87,28 +87,28 @@
           href: site-recovery-migrate-to-azure.md
     - name: ロールベースのアクセス許可
       href: site-recovery-role-based-linked-access-control.md
+    - name: Azure Traffic Manager と Azure Site Recovery
+      href: concepts-traffic-manager-with-site-recovery.md
     - name: FAQ
       href: site-recovery-faq.md
 - name: ハウツー ガイド
   items:
     - name: ネットワーク
       items:
-        - name: Azure VM ディザスター リカバリーのネットワークを設定する
+        - name: Azure VM ディザスター リカバリーのネットワークを管理する (プレビュー)
           href: azure-to-azure-about-networking.md
-        - name: Azure VM ディザスター リカバリーのネットワーク マッピングを設定する
+        - name: Azure VM ディザスター リカバリーにおけるネットワーク マッピングを準備する
           href: azure-to-azure-network-mapping.md
-        - name: VMM で Hyper-V VM のネットワーク マッピング レプリケーションを設定する
-          href: hyper-v-vmm-network-mapping.md
-        - name: Azure VM ディザスター リカバリーの IP を保持する (プレビュー)
+        - name: Azure VM フェールオーバー後の IP アドレス指定を設定する
           href: site-recovery-retain-ip-azure-vm-failover.md
-        - name: Azure への Hyper-V VM レプリケーションのネットワーク マッピングを準備する
-          href: site-recovery-network-mapping.md
-        - name: フェールオーバー後の Azure へのアクセスに使用する IP アドレスを設定する
-          href: concepts-on-premises-to-azure-networking.md
-        - name: フェールオーバー後のセカンダリ サイトへのアクセスに使用する IP アドレスを設定する
-          href: hyper-v-vmm-networking.md
-        - name: オンプレミスから Azure へのシナリオでネットワーク インターフェイスを管理する
+        - name: オンプレミスから Azure へのディザスター リカバリーのネットワーク インターフェイスを管理する
           href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
+        - name: Hyper-V VM ディザスター リカバリーのネットワーク マッピングを準備する
+          href: hyper-v-vmm-network-mapping.md
+        - name: Azure へのフェールオーバー後の IP アドレス指定を設定する
+          href: concepts-on-premises-to-azure-networking.md
+        - name: セカンダリ サイトへのフェールオーバー後の IP アドレス指定を設定する
+          href: hyper-v-vmm-networking.md
     - name: ディザスター リカバリー
       items:
         - name: Azure への移行後の Azure VM のディザスター リカバリー
