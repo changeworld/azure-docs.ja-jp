@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 11/21/2017
+ms.date: 02/22/2018
 ms.author: sutalasi
-ms.openlocfilehash: a5d0eb5b8cd5ba49a602d7000291270af31fb222
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 0a567f31bf1991d4c2a95468d2abc31c51a878f3
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="manage-replication-policy-for-vmware-to-azure"></a>VMware から Azure へのレプリケーション ポリシーの管理
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/22/2017
 
 7. **[アプリ整合性スナップショットの頻度]** で、アプリケーション整合性スナップショットを含む復旧ポイントの作成頻度 (分単位) を指定します。
 
-8. **[OK]**をクリックします。 30 ～ 60 秒でポリシーが作成されます。
+8. Click **OK**. 30 ～ 60 秒でポリシーが作成されます。
 
 ![レプリケーション ポリシーの生成](./media/site-recovery-setup-replication-settings-vmware/Creating-Policy.png)
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 11/22/2017
 ![構成サーバーの関連付け](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-1.PNG)
 
 3. サーバーの一覧から [構成サーバー] を選択します。
-4. **[OK]**をクリックします。 1 ～ 2 分で構成サーバーが関連付けられます。
+4. Click **OK**. 1 ～ 2 分で構成サーバーが関連付けられます。
 
 ![構成サーバーの関連付け](./media/site-recovery-setup-replication-settings-vmware/Associate-CS-2.png)
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/22/2017
 ![レプリケーション ポリシー設定の編集](./media/site-recovery-setup-replication-settings-vmware/Edit-Policy.png)
 
 3. 必要に応じて設定を変更します。
-4. **[保存]**をクリックします。 そのレプリケーション ポリシーを使用している VM の数に応じて、2 ～ 5 分でポリシーが保存されます。
+4. **[Save]** をクリックします。 そのレプリケーション ポリシーを使用している VM の数に応じて、2 ～ 5 分でポリシーが保存されます。
 
 ![レプリケーション ポリシーの保存](./media/site-recovery-setup-replication-settings-vmware/Save-Policy.png)
 
@@ -74,7 +74,7 @@ ms.lasthandoff: 11/22/2017
 1. 構成サーバーを関連付けるレプリケーション ポリシーを選択します。
 2. **[関連付けの解除]** をクリックします。
 3. サーバーの一覧から [構成サーバー] を選択します。
-4. **[OK]**をクリックします。 1 ～ 2 分で構成サーバーの関連付けが解除されます。
+4. Click **OK**. 1 ～ 2 分で構成サーバーの関連付けが解除されます。
 
     > [!NOTE]
     > そのポリシーを使用してレプリケートされた項目が 1 つでもある場合は、構成サーバーの関連付けを解除することはできません。 構成サーバーの関連付けを解除する前に、そのポリシーを使用してレプリケートされた項目がないことを確認してください。

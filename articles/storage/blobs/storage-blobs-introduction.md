@@ -2,23 +2,17 @@
 title: "Azure Blob Storage の概要 | Microsoft Docs"
 description: "Azure Blob Storage の概要"
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 09/28/2017
 ms.author: tamram
-ms.openlocfilehash: 0097f1c02b88343a135b6489130a6e0d35cf6fba
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: aabc10b1c1c501e4fa0eb31835c2818cfb8942c6
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="introduction-to-blob-storage"></a>Blob Storage の概要
 

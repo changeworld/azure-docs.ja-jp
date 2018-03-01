@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2017
+ms.date: 02/22/2018
 ms.author: ponatara
-ms.openlocfilehash: 52b123b598226e7b03ea9a31c40dd192fd76b191
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: b117525a4851dee5366aeda77c8aaefd1fdde375
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="replicate-a-multi-tier-citrix-xenapp-and-xendesktop-deployment-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 XenApp および Citrix XenDesktop デプロイをレプリケートします
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/31/2017
 Citrix XenDesktop は、デスクトップとアプリケーションを提供するデスクトップ仮想化ソリューションを、任意の場所の任意のユーザーに、オンデマンド サービスとして提供します。 XenDesktop では、FlexCast 配信テクノロジによって、迅速かつ安全にアプリケーションとデスクトップをユーザーに提供することができます。
 現在、Citrix XenApp には、ディザスター リカバリー機能が用意されていません。
 
-優れた障害復旧ソリューションでは、上記の複雑なアプリケーション アーキテクチャの復旧計画をモデル化できる必要があります。また、さまざまな階層間のアプリケーション マッピングを処理するカスタム手順を追加できる必要もあります。それによって、障害が発生した場合に備えたワンクリックの確実なソリューションを提供し、RTO を短縮します。
+優れたディザスター リカバリー ソリューションでは、上記の複雑なアプリケーション アーキテクチャの復旧計画をモデル化できる必要があります。また、さまざまな階層間のアプリケーション マッピングを処理するカスタム手順を追加できる必要もあります。それによって、障害が発生した場合に備えたワンクリックの確実なソリューションを提供し、RTO を短縮します。
 
 このドキュメントでは、Hyper-V プラットフォームおよび VMware vSphere プラットフォームに、オンプレミスの Citrix XenApp デプロイのディザスター リカバリー ソリューションを構築する手順について詳しく説明します。 また、復旧計画を使用して、Azure へのテスト フェールオーバー (ディザスター リカバリー ドリル) と計画されていないフェールオーバーを実行する方法、サポートされる構成、および前提条件についても説明します。
 
@@ -62,9 +62,9 @@ AD DNS サーバー、SQL データベース サーバー、Citrix Delivery Cont
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | この記事で扱わない内容 | あり
-**VMware** | この記事で扱わない内容 | あり
-**物理サーバー** | この記事で扱わない内容 | あり
+**Hyper-V** | この記事で扱わない内容 | [はい]
+**VMware** | この記事で扱わない内容 | [はい]
+**物理サーバー** | この記事で扱わない内容 | [はい]
 
 ### <a name="versions"></a>バージョン
 お客様は、XenApp コンポーネントを、Hyper-V または VMware で実行されている Virtual Machines として、または物理サーバーとしてデプロイできます。 Azure Site Recovery を使用すると、物理デプロイと仮想デプロイの両方を Azure で保護できます。
@@ -195,6 +195,6 @@ XenApp コンポーネント VM のレプリケーションを有効にしたら
 
 [このガイダンス](site-recovery-failover.md)に従って、フェールオーバーを実行します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このホワイト ペーパーで Citrix XenApp と XenDesktop デプロイのレプリケートの[詳細を確認](https://aka.ms/citrix-xenapp-xendesktop-with-asr)する。 Site Recovery を使用した[他のアプリケーションのレプリケート](site-recovery-workload.md)に関するガイダンスを確認する。

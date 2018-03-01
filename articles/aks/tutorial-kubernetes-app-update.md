@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 10/24/2017
+ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 76db735ca7bbad550e792d61658fa65fe8a53caf
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 82a6b6580fbe69b11fdb8a47e2ca09c19b341bbc
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="update-an-application-in-azure-container-service-aks"></a>Azure Container Service (AKS) でのアプリケーションの更新
 
@@ -135,11 +135,11 @@ kubectl get pod
 出力:
 
 ```
-NAME                               READY     STATUS    RESTARTS   AGE
-azure-vote-back-2978095810-gq9g0   1/1       Running   0          5m
-azure-vote-front-1297194256-tpjlg   1/1       Running   0         1m
-azure-vote-front-1297194256-tptnx   1/1       Running   0         5m
-azure-vote-front-1297194256-zktw9   1/1       Terminating   0         1m
+NAME                               READY     STATUS        RESTARTS   AGE
+azure-vote-back-2978095810-gq9g0   1/1       Running       0          5m
+azure-vote-front-1297194256-tpjlg  1/1       Running       0          1m
+azure-vote-front-1297194256-tptnx  1/1       Running       0          5m
+azure-vote-front-1297194256-zktw9  1/1       Terminating   0          1m
 ```
 
 ## <a name="test-updated-application"></a>更新されたアプリケーションをテストする
