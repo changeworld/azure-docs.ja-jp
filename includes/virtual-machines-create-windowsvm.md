@@ -1,6 +1,6 @@
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. 左上の **[新規] > [コンピューティング] > [Windows Server 2016 Datacenter]** をクリックします。
+2. 左上で、**[リソースの作成]** > **[Compute]** > **[Windows Server 2016 Datacenter]** の順にクリックします。
 
     ![ポータルで Azure VM イメージに移動する](./media/virtual-machines-common-portal-create-fqdn/marketplace-new.png)
 

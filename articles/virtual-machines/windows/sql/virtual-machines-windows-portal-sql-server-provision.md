@@ -1,10 +1,10 @@
 ---
-title: "Azure Portal で Windows SQL Server 2017 VM を構成する方法 | Microsoft Docs"
+title: "Azure Portal での Windows SQL Server VM のプロビジョニング ガイド | Microsoft Docs"
 description: "このハウツー ガイドでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成するためのオプションについて説明します。"
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
@@ -12,28 +12,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 440c783de73652ad2d312cd92db8635dc65df9ed
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 23a1f008e2c51325b7e9c7676847d55d7ccb7d44
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="how-to-create-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンを作成する方法
+# <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
-このガイドでは、Azure Portal で Windows SQL Server 仮想マシンを作成する際に使用できるさまざまなオプションについてのチュートリアルを示します。 手順に従って、さまざまな選択肢について学習しながら、独自の SQL Server VM を作成できます。 または、特定のセクションに移動して、ポータルの特定のステップについて参照することもできます。
+このガイドでは、Azure Portal で Windows SQL Server 仮想マシンを作成する際に使用できるさまざまなオプションについて説明します。 この記事では、[SQL Server VM のクイック スタート](quickstart-sql-vm-create-portal.md)で説明されていない構成オプションについて、プロビジョニング タスクの一例を通じて詳しく説明します。 
 
-> [!TIP]
-> 既定のポータル値ですぐに開始するには、[Azure クイックスタート - ポータルでの SQL Server VM の作成](quickstart-sql-vm-create-portal.md)に関するページをご覧ください。
+このガイドは、SQL Server VM を作成する目的にも使用できますし、 Azure Portal で使用できるオプションを参照する目的にも使用できます。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a id="select"></a>ギャラリーから SQL VM イメージを選択する
+## <a id="select"></a> SQL Server 仮想マシン ギャラリー イメージ
+
+SQL Server 仮想マシンを作成する際には、仮想マシン ギャラリーにあるいくつかの事前構成済みイメージの中から、使用するイメージを選択できます。 次の手順は、SQL Server 2017 イメージの中から、イメージを 1 つを選択する方法を示したものです。
 
 1. アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
 
-1. Azure Portal で、**[新規]**をクリックします。 **[新規]** ウィンドウが開きます。
+1. Azure Portal で、**[リソースの作成]** をクリックします。 **[新規]** ウィンドウが開きます。
 
 1. **[新規]** ウィンドウで、**[Compute]** をクリックし、**[すべて表示]** をクリックします。
 
@@ -52,10 +53,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 1. **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** という名前のイメージを選択します。
 
    > [!TIP]
-   > このチュートリアルで Developer エディションを使用するのは、このエディションが SQL Server の完全版であり、開発テストを無料で実行できるためです。 ユーザーは VM を実行するコストに対してのみ課金されます。 ただし、このチュートリアルでは、任意のイメージを選択してかまいません。
+   > このチュートリアルでは Developer エディションを使用しています。これは、開発テスト用に SQL Server のフル機能を使用できる無償エディションです。 ユーザーは VM を実行するコストに対してのみ課金されます。 ただし、このチュートリアルでは、任意のイメージを選択してかまいません。 使用可能なイメージの説明は、[SQL Server Windows 仮想マシンの概要](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo)に関する記事をご覧ください。
 
    > [!TIP]
-   > SQL VM イメージでは、SQL Server のライセンス コストが、作成した VM の分単位の料金に含まれます (Developer エディションおよび Express エディションを除く)。 SQL Server Developer は、無料で開発/テストできる (運用ではなく) エディションで、SQL Express は、無料で軽量のワークロード (1 GB 未満のメモリ、10 GB 未満のストレージ) を利用できるエディションです。 また、ライセンス持ち込み (BYOL) により VM の料金のみを支払うという別のオプションもあります。 それらのイメージの名前には、{BYOL} というプレフィックスが付きます。 
+   > SQL Server のライセンス コストは、作成した VM の 1 分あたりの料金に組み込まれており、エディションやコア数によって異なります。 ただし、SQL Server Developer エディションは、無料で開発/テストできる (運用向けではない) エディションで、SQL Express は、無料で軽量のワークロード (1 GB 未満のメモリ、10 GB 未満のストレージ) を利用できるエディションです。 また、ライセンス持ち込み (BYOL) により VM の料金のみを支払うこともできます。 それらのイメージの名前には、{BYOL} というプレフィックスが付きます。 
    >
    > これらのオプションの詳細については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
 
@@ -65,10 +66,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Create SQL VM with Resource Manager](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
-## <a id="configure"></a> VM を構成する
+## <a id="configure"></a> 構成オプション
 SQL Server 仮想マシンを構成するための 5 つのウィンドウがあります。
 
-| 手順 | Description |
+| 手順 | [説明] |
 | --- | --- |
 | **基本** |[基本設定を構成する](#1-configure-basic-settings) |
 | **サイズ** |[仮想マシンのサイズを選択する](#2-choose-virtual-machine-size) |
@@ -106,25 +107,25 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 この**サイズ**設定の手順では、**[サイズの選択]** ウィンドウで仮想マシンのサイズを選択します。 ウィンドウには、選択したイメージに基づいて推奨されるマシン サイズが最初に表示されます。
 
 > [!IMPORTANT]
-> **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」も参照してください。
+> **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この見積もり料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この見積もり料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」も参照してください。
 
 ![SQL VM Size Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
 運用時のワークロードについては、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」のマシンのサイズと構成に関する推奨事項を参照してください。 一覧にないマシン サイズが必要な場合は、**[すべて表示]** ボタンをクリックします。
 
 > [!NOTE]
-> 仮想マシン サイズの詳細については、 [仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
+> 仮想マシン サイズの詳細については、[仮想マシンのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。
 
 マシン サイズを選択し、 **[選択]**をクリックします。
 
-## <a name="3-configure-optional-features"></a>3.オプション機能を構成する
+## <a name="3-configure-optional-features"></a>手順 3.オプション機能を構成する
 
 **[設定]** ウィンドウで、仮想マシン用に Azure Storage、ネットワーク、監視を構成します。
 
 * **[ストレージ]** で、**[Managed Disks を使用]** の下の **[はい]** を選択します。
 
    > [!NOTE]
-   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳細については、「[Azure Managed Disks の概要](../../../storage/storage-managed-disks-overview.md)」を参照してください。 可用性セットの管理ディスクの詳細については、「[可用性セット内の VM に管理ディスクを使用する](../manage-availability.md)」を参照してください。
+   > SQL Server には、Managed Disks の使用をお勧めします。 Managed Disks はバックグラウンドでストレージを管理します。 さらに、仮想マシンと Managed Disks が同じ可用性セットにある場合、Azure は適切な冗長性を提供するためにストレージ リソースを分散させます。 詳しくは、「Azure Managed Disks の概要」(../managed-disks-overview.md) をご覧ください。 可用性セットの管理ディスクの詳細については、「[可用性セット内の VM に管理ディスクを使用する](../manage-availability.md)」を参照してください。
 
 * **[ネットワーク]**で、自動的に設定された値をそのまま使用できます。 また、各機能をクリックして、**仮想ネットワーク**、**サブネット**、**パブリック IP アドレス**、**ネットワーク セキュリティ グループ**を手動で構成することもできます。 このチュートリアルでは、既定値をそのまま使用します。
 
@@ -154,7 +155,7 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 ![SQL Connectivity Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-connectivity-alt.png)
 
 > [!TIP]
-> 既定では、SQL Server は既知のポート (**1433**) をリッスンします。 セキュリティ強化のためには、前のダイアログでポートを変更して、1401 など、既定以外のポートをリッスンするようにします。 そうする場合は、SSMS などの任意のクライアント ツールからそのポートを使用して接続する必要があります。
+> 既定では、SQL Server は既知のポート (**1433**) をリッスンします。 セキュリティ強化のためには、前のダイアログでポートを変更して、1401 など、既定以外のポートをリッスンするようにします。 ポートを変更する場合は、SSMS などの任意のクライアント ツールからそのポートを使用して接続する必要があります。
 
 インターネット経由で SQL Server に接続するには、次のセクションで説明する SQL Server 認証を有効にする必要もあります。
 
@@ -165,9 +166,6 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 
 一般的に、シナリオで許容される最も制限の厳しい接続を選択すると、セキュリティが向上します。 ただし、ネットワーク セキュリティ グループの規則と SQL 認証または Windows 認証を使用すると、すべてのオプションをセキュリティで保護できます。 VM が作成された後、ネットワーク セキュリティ グループを編集することができます。 詳細については、「 [Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)」をご覧ください。
 
-> [!NOTE]
-> SQL Server Express エディション用の仮想マシン イメージでは、TCP/IP プロトコルは自動では有効になりません。 これは、パブリック接続とプライベート接続のオプションについても当てはまります。 Express エディションでは、VM の作成後に、SQL Server 構成マネージャーを使用して [TCP/IP プロトコルを手動で有効にする](#configure-sql-server-to-listen-on-the-tcp-protocol) 必要があります。
-
 ### <a name="authentication"></a>認証
 
 SQL Server 認証が必要な場合は、 **[有効]** under **[有効]**にアクセスしてください。
@@ -175,11 +173,9 @@ SQL Server 認証が必要な場合は、 **[有効]** under **[有効]**にア�
 ![パブリック](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-arm-authentication.png)
 
 > [!NOTE]
-> インターネット経由で SQL Server にアクセスする場合 (つまりパブリック接続オプション)、ここで SQL 認証を有効にする必要があります。 SQL Server へのパブリック アクセスでは、SQL 認証を使う必要があります。
-> 
-> 
+> インターネット経由で SQL Server にアクセスする場合 (パブリック接続オプション)、ここで SQL 認証を有効にする必要があります。 SQL Server へのパブリック アクセスでは、SQL 認証を使う必要があります。
 
-SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パスワード]** を指定します。 このユーザー名が、SQL Server 認証ログインと **sysadmin** 固定サーバー ロールのメンバーとして構成されます。 認証モードの詳細については、「 [認証モードの選択](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode) 」を参照してください。
+SQL Server 認証を有効にする場合は、**[ログイン名]** と **[パスワード]** を指定します。 このユーザー名が、SQL Server 認証ログインと **sysadmin** 固定サーバー ロールのメンバーとして構成されます。 認証モードの詳細については、「[Choose an Authentication Mode (認証モードの選択)](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode)」を参照してください。
 
 SQL Server 認証を有効にしない場合は、VM のローカル管理者アカウントを使用して SQL Server インスタンスに接続できます。
 
@@ -215,7 +211,7 @@ SQL Server 認証を有効にしない場合は、VM のローカル管理者ア
 
 **[自動バックアップ]**では、すべてのデータベースの自動データベース バックアップを有効にすることができます。 既定では、自動バックアップは無効です。
 
-SQL の自動バックアップを有効にするときは、以下の構成を行います。
+SQL の自動バックアップを有効にするときは、以下の設定の構成を行います。
 
 * バックアップのリテンション期間 (日数)
 * バックアップに使用するストレージ アカウント
@@ -248,7 +244,7 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 
 ### <a name="sql-server-machine-learning-services"></a>SQL Server Machine Learning サービス
 
-[SQL Server Machine Learning サービス](https://msdn.microsoft.com/library/mt604845.aspx)を有効にするオプションがあります。 これを使うと、SQL Server 2017 で高度な分析を使用できるようになります。 **[SQL Server の設定]** ウィンドウで **[Enable]\(有効にする\)** をクリックします。
+[SQL Server Machine Learning サービス](https://msdn.microsoft.com/library/mt604845.aspx)を有効にするオプションがあります。 このオプションを使うと、SQL Server 2017 で高度な分析を使用できるようになります。 **[SQL Server の設定]** ウィンドウで **[Enable]\(有効にする\)** をクリックします。
 
 ![SQL Server Machine Learning サービスの有効化](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
@@ -280,10 +276,10 @@ SQL Server 仮想マシンに接続した後は、SQL Server Management Studio �
 > [!NOTE]
 > プロビジョニング中に [パブリック] を選択しなかった場合は、プロビジョニング後にポータルで SQL 接続設定を変更できます。 詳細については、「[Change your SQL connectivity settings (SQL 接続設定の変更)](virtual-machines-windows-sql-connect.md#change)」を参照してください。
 
-次のセクションでは、インターネット経由で別のコンピューターから VM の SQL Server インスタンスに接続する方法を示します。
+以下のセクションでは、インターネット経由で SQL Server VM インスタンスに接続する方法を示します。
 
 [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure での SQL Server の使用に関するその他の情報については、[Azure 仮想マシンにおける SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) に関する記事と[よく寄せられる質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページを参照してください。

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: tomfitz
-ms.openlocfilehash: ea91fdd58dd3b5c118fe390afe1eb355e3c26570
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 39680d4e70cc47cfa119b3a46e8d51ea87fa618d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 
 リソース グループを作成したら、それに Marketplace からリソースをデプロイできます。 Marketplace には、一般的なシナリオに対応する事前定義されたソリューションが用意されています。
 
-1. デプロイを開始するには、**[新規]** を選択します。
+1. デプロイを開始するには、**[リソースの作成]** を選択します。
 
    ![新しいリソース](./media/resource-group-template-deploy-portal/new-resources.png)
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 10/11/2017
 
 デプロイを実行するが、Marketplace 内のテンプレートを使用しない場合は、ソリューションのインフラストラクチャを定義するカスタマイズされたテンプレートを作成できます。 テンプレートの作成の詳細については、「[Azure Resource Manager テンプレートの構造と構文の詳細](resource-group-authoring-templates.md)」をご覧ください。
 
-1. カスタマイズしたテンプレートをポータルからデプロイするには、**[新規]** を選択し、**[テンプレートのデプロイ]** を検索してオプションに表示します。
+1. カスタマイズされたテンプレートをポータル経由でデプロイするには、**[リソースの作成]** を選択し、オプションから選択できるようになるまで **[テンプレートのデプロイ]** を検索します。
 
    ![テンプレートのデプロイの検索](./media/resource-group-template-deploy-portal/search-template.png)
 
@@ -103,7 +103,7 @@ ms.lasthandoff: 10/11/2017
 
    ![ストレージ アカウントを選択する](./media/resource-group-template-deploy-portal/add-storage-account.png)
 
-1. エディターのリソースの種類に JSON が自動的に追加されます。 ストレージ アカウントの種類を定義するためのパラメーターが含まれていることを確認します。 [ **保存**] を選択します。
+1. エディターのリソースの種類に JSON が自動的に追加されます。 ストレージ アカウントの種類を定義するためのパラメーターが含まれていることを確認します。 **[保存]** を選択します。
 
    ![テンプレートの表示](./media/resource-group-template-deploy-portal/show-json.png)
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 10/11/2017
 
    ![保存されたテンプレートのデプロイ](./media/resource-group-template-deploy-portal/deploy-saved-template.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 監査ログの表示については、「 [Resource Manager の監査操作](resource-group-audit.md)」を参照してください。
 * デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](resource-manager-deployment-operations.md)」を参照してください。
 * デプロイまたはリソース グループからテンプレートを取得するには、「 [既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。

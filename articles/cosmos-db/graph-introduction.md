@@ -12,11 +12,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: lbosq
-ms.openlocfilehash: 14921dbeb0b670e4ec29a224caca07da12bfb82b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: ba58377614326a10405be4a64d4b39f116b75bfe
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB の概要: Graph API
 
@@ -107,22 +107,14 @@ Graph API をサポートする Azure コマンド ライン インターフェ�
 
 次の表に、Azure Cosmos DB に対して使用できる一般的な Gremlin ドライバーを示します。
 
-| [ダウンロード] | ドキュメント |
-| --- | --- |
-| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) |[Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) |
-| [Node.js](https://www.npmjs.com/package/gremlin) |[Github の Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) |
-| [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) |[TinkerPop ドキュメント](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |
-
-Azure Cosmos DB では、NuGet を使用して、[Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) 上で Gremlin 拡張メソッドに .NET ライブラリも提供します。 このライブラリは、データ パーティションに直接接続する際に使用できる "インプロセス" Gremlin サーバーを提供します。
-
-| [ダウンロード] | ドキュメント |
-| --- | --- |
-| [.NET](https://www.nuget.org/packages/Microsoft.Azure.Graphs/) |[Microsoft.Azure.Graphs](https://msdn.microsoft.com/library/azure/dn948556.aspx) |
-
-[Azure Cosmos DB Emulator](local-emulator.md) を使用すると、Azure サブスクリプションを作成したり、コストをかけたりせずに、上記の .NET Graph API を使用してローカルで開発とテストを行うことができます。 エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
-
-> [!NOTE]
-> [Azure Cosmos DB エミュレーター](local-emulator.md)に対する Gremlin クエリの検証は、.NET Graph API を介してのみサポートされます。
+| [ダウンロード] | ドキュメント | Getting Started (概要) |
+| --- | --- | --- |
+| [.NET](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-DotNet) | [Github の Gremlin.NET](https://github.com/apache/tinkerpop/tree/master/gremlin-dotnet) | [.NET を使用してグラフを作成する](create-graph-dotnet.md) |
+| [Java](https://mvnrepository.com/artifact/com.tinkerpop.gremlin/gremlin-java) | [Gremlin JavaDoc](http://tinkerpop.apache.org/javadocs/current/full/) | [Java を使用してグラフを作成する](create-graph-java.md) |
+| [Node.js](https://www.npmjs.com/package/gremlin) | [Github の Gremlin-JavaScript](https://github.com/jbmusso/gremlin-javascript) | [Node.js を使用してグラフを作成する](create-graph-nodejs.md) |
+| [Python](http://tinkerpop.apache.org/docs/3.3.1/reference/#gremlin-python) | [Github の Gremlin-Python](https://github.com/apache/tinkerpop/tree/master/gremlin-python) | [Python を使用してグラフを作成する](create-graph-python.md) |
+| [PHP](https://packagist.org/packages/brightzone/gremlin-php) | [Github の Gremlin-PHP](https://github.com/PommeVerte/gremlin-php) | [PHP を使用してグラフを作成する](create-graph-php.md) |
+| [Gremlin コンソール](https://tinkerpop.apache.org/downloads.html) | [TinkerPop ドキュメント](http://tinkerpop.apache.org/docs/current/reference/#gremlin-console) |  [Gremlin コンソールを使用してグラフを作成する](create-graph-gremlin-console.md) |
 
 ## <a name="scenarios-for-graph-support-of-azure-cosmos-db"></a>Azure Cosmos DB のグラフ サポートのシナリオ
 Azure Cosmos DB のグラフ サポートを使用できるシナリオを以下に示します。

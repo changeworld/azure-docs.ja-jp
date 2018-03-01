@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: 1b3da4d6e4593f3c71995ef9331fcea2d5b6ec19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdd4b7ddd5ebaf0187ed4943a518a83fc2531da4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
 
@@ -65,7 +65,7 @@ Azure エコシステム内部から Network Watcher、アラート、関数を�
 
 最初の手順では、アラートを処理してパケット キャプチャを作成する Azure 関数を作成します。
 
-1. [Azure Portal](https://portal.azure.com) で、**[新規]** > **[コンピューティング]** > **[Function App]** の順に選びます。
+1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[コンピューティング]** > **[Function App]** の順に選択します。
 
     ![Function App を作成する][1-1]
 
@@ -368,7 +368,7 @@ Azure ストレージ アカウントからファイルをダウンロードす�
 - [Microsoft Message Analyzer](https://technet.microsoft.com/library/jj649776.aspx)
 - [Wireshark](https://www.wireshark.org/)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 パケット キャプチャを表示する方法については、[Wireshark によるパケット キャプチャ分析](network-watcher-deep-packet-inspection.md)に関するページをご覧ください。
 

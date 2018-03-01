@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: a41c09cc5a13c8326e22e315801b81c86d125c0e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: da7050edae282c90c4f92c588ce8fe501ccba50d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="how-to-configure-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングを構成する方法
 
@@ -31,7 +31,7 @@ Azure Portal では、左側のナビゲーション ウィンドウのエンタ
 
 アプリケーションに対して手動モードしか表示されない場合は、そのアプリ用の自動の Azure AD プロビジョニング コネクタがまだ作成されていないことを表しています。 または、自動プロビジョニング コネクタを構築するための前提条件であるユーザー管理 API をアプリがサポートしていないことを意味する場合もあります。
 
-特定のアプリの自動プロビジョニングに関するサポートを依頼するには、<http://aka.ms/aadapprequest> で依頼を入力してください。
+特定のアプリの自動プロビジョニングに関するサポートを依頼する必要がある場合は、「[Azure Active Directory Application Requests (Azure Active Directory アプリケーション要求)](https://aka.ms/aadapprequest)」を使用して要求を入力できます。
 
 ## <a name="configuring-an-application-for-automatic-provisioning"></a>自動プロビジョニング用にアプリケーションを構成する
 
@@ -50,6 +50,6 @@ Azure Portal では、左側のナビゲーション ウィンドウのエンタ
 
 プロビジョニングを設定するときの重要な考慮事項の 1 つは、属性マッピングとワークフローを確認し、構成することです。これらは、どのユーザー (またはグループ) のプロパティが Azure AD からアプリケーションに適用されるかを定義します。 これには、2 つのシステム間でユーザーまたはグループを一意に識別して照合するために使用される "照合プロパティ" の設定も含まれます。 この重要なプロセスに関する詳細。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Active Directory の SaaS アプリケーションに対するユーザー プロビジョニング属性マッピングのカスタマイズ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings)
 

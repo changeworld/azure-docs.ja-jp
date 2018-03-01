@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 2330ccf734944a8a563f9031a9d51902255c30d5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 895741c6a33434633b8c35df959b3c68d005ba3e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="using-java-command-line-app-to-access-an-api-with-azure-ad"></a>Azure AD を使用して API にアクセスするための Java コマンド ライン アプリを使用する
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -44,9 +44,9 @@ Azure AD を使用すると、数行のコードを追加するだけで、Web �
 ## <a name="1--register-an-application-with-azure-ad"></a>1.アプリケーションを Azure AD に登録する
 アプリケーションがユーザー認証を処理できるようにするには、まず、アプリケーションをテナントに登録する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 上部のバーにある自分のアカウントをクリックし、**[ディレクトリ]** の一覧から、アプリケーションを登録する Active Directory テナントを選択します。
-3. 左側のナビゲーションで **[More Services (その他のサービス)]**をクリックし、**[Azure Active Directory]** を選択します。
+3. 左側のナビゲーション バーで **[すべてのサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックして、**[追加]** を選択します。
 5. 画面の指示に従い、新しい **Web アプリケーションまたは WebAPI**を作成します。
   * アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。
@@ -54,7 +54,7 @@ Azure AD を使用すると、数行のコードを追加するだけで、Web �
 6. 登録が完了すると、AAD により、アプリに一意のアプリケーション ID が割り当てられます。  この値は次のセクションで必要になるので、[アプリケーション] タブからコピーします。
 7. アプリケーションの **[設定]**  ->  **[プロパティ]** ページで、アプリ ID URI を更新します。 **[アプリケーション ID/URI]** は、アプリケーションの一意識別子です。  形式は、`https://<tenant-domain>/<app-name>` (たとえば、`http://localhost:8080/adal4jsample/`) です。
 
-アプリケーションのポータルで、**[設定]** ページからアプリケーション用の**キー**を作成し、コピーします。  このプロジェクトはすぐに必要になります。
+アプリケーションのポータルで、**[設定]** ページからアプリケーション用の**キー**を作成し、コピーします。  それはすぐに必要になります。
 
 ## <a name="2-set-up-your-app-to-use-adal4j-library-and-prerequisites-using-maven"></a>2.Maven を使用して、ADAL4J ライブラリと前提条件を使用するようにアプリを設定する
 ここでは、OpenID Connect 認証プロトコルを使用するように ADAL4J を構成します。  ADAL4J は、サインイン要求とサインアウト要求の発行、ユーザー セッションの管理、ユーザーに関する情報の取得などを行うために使用されます。
@@ -181,7 +181,7 @@ Azure AD を使用すると、数行のコードを追加するだけで、Web �
 
 
 
-## <a name="3-create-the-java-publicclient-file"></a>3.Java PublicClient ファイルを作成する
+## <a name="3-create-the-java-publicclient-file"></a>手順 3.Java PublicClient ファイルを作成する
 既に説明したとおり、ここでは Graph API を使用して、ログイン ユーザーに関するデータを取得します。 これを簡単に実現するには、**ディレクトリ オブジェクト**を表すファイルと、**ユーザー**を表す個々のファイルの両方を作成し、Java のオブジェクト指向パターンを使用できるようにします。
 
 * `DirectoryObject.java` という名前のファイルを作成します。このファイルは、DirectoryObject に関する基本的なデータを格納するために使用します (後で他のグラフ クエリを実行する際にこのファイルを自由に使用してかまいません)。 次のコードをコピーして貼り付けることができます。
@@ -262,7 +262,7 @@ public class PublicClient {
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 お疲れさまでした。 これで、作業中の Java アプリケーションで、ユーザーの認証、OAuth 2.0 を使用した Web API の安全な呼び出し、ユーザーに関する基本情報の取得が可能になりました。  テナントに一連のユーザーを設定します (設定していない場合)。
 
 参照用に、完成したサンプル (構成値を除く) が[ここに .zip として提供されています](https://github.com/Azure-Samples/active-directory-java-webapp-openidconnect/archive/complete.zip)。または、GitHub から複製することもできます。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.openlocfilehash: b031807073313e9e093dbc7576ecfd3d2a970abe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e8540409c6174ad02bd2d9d57c53e0279f49871
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルは、App Service 環境が作成済みであることを前提としています。 まだ完了していない場合は、「 [App Service 環境を作成する](app-service-web-how-to-create-an-app-service-environment.md)」を参照してください。 
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する
-1. [Azure Portal](https://portal.azure.com/)で、**[新規]、[Web + モバイル]、[Web アプリ]** の順にクリックします。 
+1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成] > [Web + モバイル] > [Web アプリ]** の順にクリックします。 
    
     ![][1]
 2. サブスクリプションを選択します。  

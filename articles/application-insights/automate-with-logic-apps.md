@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: mbullwin
-ms.openlocfilehash: 92521bab2082f63fa01e816151e3da9400effe6d
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: e17d8076a00cab2cf608fe1a690e4a780a69d56f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
@@ -31,8 +31,8 @@ ms.lasthandoff: 11/01/2017
 このチュートリアルでは、Analytics 自動クラスター アルゴリズムを使うロジック アプリを作成して、Web アプリケーションのデータの属性をグループ化する方法を説明します。 このフローは結果を自動的にメールで送信しますが、これは、Application Insights Analytics と Logic Apps を共に利用する方法の一例にすぎません。 
 
 ### <a name="step-1-create-a-logic-app"></a>手順 1: ロジック アプリを作成する
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. **[新規]** ペインで、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[リソースの作成]** をクリックし、**[Web + モバイル]**、**[ロジック アプリ]** の順に選択します。
 
     ![新しいロジック アプリのウィンドウ](./media/automate-with-logic-apps/logicapp1.png)
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 11/01/2017
 
 4. **[電子メールの送信]** ウィンドウで、次の操作を行います。
 
-   a. 受信者の電子メール アドレスを入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 受信者の電子メール アドレスを入力します。
 
    b. 電子メールの件名を入力します。
 
@@ -110,7 +110,7 @@ ms.lasthandoff: 11/01/2017
 
 5. 動的なコンテンツのメニューで、以下を実行します。
 
-    a. **[添付ファイル名]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[添付ファイル名]** を選択します。
 
     b. **[添付ファイルの内容]** を選択します。
     
@@ -129,7 +129,7 @@ ms.lasthandoff: 11/01/2017
 
 ![ロジック アプリの電子メール メッセージ](./media/automate-with-logic-apps/flow9.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Analytics クエリ](app-insights-analytics-using.md)の作成についての詳細を見る
 - [Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps) の詳細を見る

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: 57dddcc9114aeec1337b5b5ad8cfda3004fb0a76
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e4a5ee41349a97493636327e3bda25cbd507867c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-choose-which-application-type-to-use-when-adding-an-application"></a>アプリケーションを追加するときに使用するアプリケーションの種類の選択方法
 
@@ -37,9 +37,9 @@ Azure AD は、4 つの主要なアプリケーションの種類をサポート
 
 -   **カスタム開発アプリケーション** – 組織が Azure AD アプリケーション開発プラットフォームでの開発を望んでいるがまだ存在しない可能性のあるアプリケーション。
 
--   **非ギャラリー アプリケーション** – ユーザー独自のアプリケーションを持ち込みます。 必要な Web リンク、またはユーザー名とパスワードのフィールドを表示するアプリケーションは、SAML または OpenID Connect プロトコルをサポートするか、シングル サインオンのために Azure AD と統合する SCIM をサポートしています。
+-   **非ギャラリー アプリケーション** – ユーザー独自のアプリケーションを持ち込みます。 必要な Web リンク、またはユーザー名とパスワードのフィールドを表示するアプリケーションは、SAML または OpenID Connect プロトコルをサポートするか、シングル サインオンのために Azure AD と統合する SCIM をサポートします。
 
-## <a name="features-and-capabilities-supported-by-all-the-above-application-types"></a>上記のすべてのアプリケーションの種類でサポートされている機能
+## <a name="features-and-capabilities-supported-by-all-the-preceding-application-types"></a>上記のすべてのアプリケーションの種類でサポートされている機能
 
 Azure AD では、上記 4 つのすべてのアプリケーションの種類で、次の機能がサポートされます。
 
@@ -59,7 +59,7 @@ Azure AD では、上記 4 つのすべてのアプリケーションの種類�
 
 -   **アクセス許可の表示** – 1 つの場所のディレクトリにおいてアプリケーションがアクセスを持つ、すべての [OAuth2 アクセス許可](https://docs.microsoft.com/azure/active-directory/active-directory-apps-permissions-consent)を表示します。
 
-## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>特定のアプリケーションの種類でサポートされるシングル サインオンとプロビジョニング モード
+## <a name="single-sign-on-and-provisioning-modes-supported-by-specific-application-types"></a>特定のアプリケーションの種類でサポートされるシングル サインオンとプロビジョニングのモード
 
 次の表では、上記のアプリケーションの種類それぞれでサポートされるさまざまなシングル サインオンとプロビジョニングのモードについて説明します。 この表を使用すると、特定の目標をサポートするために追加する必要があるアプリケーションを理解するのに役立ちます。
 
@@ -67,7 +67,7 @@ Azure AD では、上記 4 つのすべてのアプリケーションの種類�
 
 ## <a name="how-to-choose-a-single-sign-on-mode"></a>シングル サインオン モードを選ぶ方法
 
-Azure AD アプリケーションに対してサポートされている**シングル サインオン** モードの一覧を以下に示します。
+Azure AD アプリケーションに対してサポートされている**シングル サインオン** モードを次に示します。
 
 -   **Azure AD シングル サインオンが無効** – このアプリケーションを Azure AD とシングル サインオンで統合する準備ができていないか、単純にテストする場合は、[Azure AD シングル サインオンが無効] の**シングル サインオン モード**を選びます
 
@@ -82,7 +82,7 @@ Azure AD アプリケーションに対してサポートされている**シン
    >
    >
 
--   **ヘッダーベースのサインオン** – シングル サインオンを実行する、HTTP ヘッダー ベースの認証をサポートする PingAccess を使用しているアプリケーションがある場合は、[[ヘッダーベースのサインオン]](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) シングル サインオン モードを選びます。 
+-   **ヘッダーベースのサインオン** - シングル サインオンを実行する、HTTP ヘッダーベースの認証をサポートする PingAccess を使用しているアプリケーションがある場合は、[[ヘッダーベースのサインオン]](https://docs.microsoft.com/azure/active-directory/application-proxy-ping-access#what-is-pingaccess-for-azure-ad) シングル サインオン モードを選びます 
 
    >[!NOTE]
    >このオプションは、アプリケーションに対してアプリケーション プロキシと PingAccess が構成されている場合にのみ使用可能です。
@@ -98,7 +98,7 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 ## <a name="single-sign-on-modes-for-custom-developed-applications"></a>カスタム開発アプリケーションのシングル サインオン モード
 
-[カスタム開発アプリケーション](#_Custom-Developed_Applications) エクスペリエンスでカスタム開発したアプリケーションは、上記の一覧にない追加のシングル サインオンもサポートします。 チェックの内容は次のとおりです
+[カスタム開発アプリケーション](#_Custom-Developed_Applications) エクスペリエンスでカスタム開発したアプリケーションは、上記の一覧にない、次のような追加のシングル サインオンもサポートします。
 
 -   [OAuth 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code) ベースのサインオン
 
@@ -108,15 +108,15 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 -   [SAML 2.0](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-protocol-reference) ベースのサインオン
 
-これらのシングル サインオン モードをサポートするカスタム開発アプリケーションの作成方法について詳しくは、「[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)」をご覧ください。
+これらのシングル サインオン モードをサポートするカスタム開発アプリケーションの作成方法の詳細については、[Azure Active Directory 開発者ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-developers-guide)をご覧ください。
 
 ## <a name="how-to-set-an-applications-single-sign-on-mode"></a>アプリケーションのシングル サインオン モードを設定する方法
 
-アプリケーションの**シングル サインオン** モードを設定するには、以下の手順に従います。
+アプリケーションの**シングル サインオン** モードを設定するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -124,11 +124,11 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-  * ここに表示したいアプリケーションが表示されない場合は、**[すべてのアプリケーション リスト]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+  * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6.  シングル サインオンを構成するアプリケーションを選択します。
 
-7.  アプリケーションを読み込んだら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
+7.  アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
 
 ## <a name="how-to-choose-a-provisioning-mode"></a>プロビジョニング モードを選択する方法
 
@@ -150,13 +150,13 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 ## <a name="how-to-set-an-applications-provisioning-mode"></a>アプリケーションのプロビジョニング モードを設定する方法
 
-アプリケーションの**プロビジョニング** モードを設定するには、以下の手順に従います。
+アプリケーションの**プロビジョニング** モードを設定するには、次の手順に従います。
 
-アプリケーションの**シングル サインオン** モードを設定するには、以下の手順に従います。
+アプリケーションの**シングル サインオン** モードを設定するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -168,7 +168,7 @@ Azure AD アプリケーションに対してサポートされている**シン
 
 6.  プロビジョニングを構成するアプリケーションを選択します。
 
-7.  アプリケーションを読み込んだら、アプリケーションの左側にあるナビゲーション メニューで **[プロビジョニング]** をクリックします。
+7.  アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[プロビジョニング]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)

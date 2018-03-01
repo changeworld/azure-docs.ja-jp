@@ -15,23 +15,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
 ms.author: genemi
-ms.openlocfilehash: a7e6e319fb2fa8fee762055b625427403d14d679
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: 3bbfdccd020f5efc7510d9688ea38f5e1af4ebde
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するシャード化されたマルチテナント アプリケーションのデプロイと操作
 
-このチュートリアルでは、Wingtip Tickets という名前のサンプル SaaS マルチテナント データベース アプリケーションをデプロイおよび操作します。 Wingtip アプリの目的は、各種 SaaS シナリオの実装を簡素化する Azure SQL Database の機能を紹介することにあります。
+このチュートリアルでは、Wingtip Tickets という名前のサンプル マルチテナント SaaS アプリケーションをデプロイおよび詳細確認します。 Wingtip Tickets アプリの目的は、各種 SaaS シナリオの実装を簡素化する Azure SQL Database の機能を紹介することにあります。
 
-Wingtips のこの実装では、シャード化されたマルチテナント データベース パターンを使用します。 シャーディングはテナント ID ごとに実行されます。 テナントのデータは、テナント ID の値に応じて特定のデータベースに配布されます。 特定のデータベースに含まれているテナント数に関係なく、すべてのデータベースは、テーブル スキーマにテナント ID が含まれているという意味でマルチテナントです。 
+Wingtips Tickets アプリのこの実装では、シャード化されたマルチテナント データベース パターンを使用します。 シャーディングはテナント ID ごとに実行されます。 テナントのデータは、テナント ID の値に応じて特定のデータベースに配布されます。 
 
 このデータベースのパターンを使用すると、1 つ以上のテナントを各シャードまたはデータベースに保存できます。 それぞれのデータベースを複数のテナントでシャード化することによって、最小限のコストに最適化できます。 または、それぞれのデータベースに 1 つのテナントのみを格納させることによって分離性を最適化できます。 最適化の選択は、特定のテナントごとに独立して行うことができます。 テナントを最初に格納するときに選択したり、後で変更したりできます。 どちらの場合でもアプリケーションが正しく動作するように設計されています。
 
 #### <a name="app-deploys-quickly"></a>アプリのすばやいデプロイ
 
-以下のデプロイ セクションには **[Deploy to Azure (Azure にデプロイ)]** という青いボタンがあります。 このボタンが押されると、Wingtip アプリは 5 分後に完全にデプロイされます。 Wingtip アプリは、Azure クラウドで動作し、Azure SQL Database を使用します。 Wingtip は、Azure サブスクリプションにデプロイされます。 個々のアプリケーション コンポーネントを操作するフル アクセスがあります。
+このアプリは Azure クラウドで実行され、Azure SQL Database を使用します。 以下のデプロイ セクションには **[Deploy to Azure (Azure にデプロイ)]** という青いボタンがあります。 このボタンを押すと、アプリは 5 分以内に Azure サブスクリプションに完全にデプロイされます。 個々のアプリケーション コンポーネントを操作するフル アクセスがあります。
 
 アプリケーションは、3 つのサンプル テナント用のデータと共にデプロイされます。 テナントは、1 つのマルチテナント データベースにまとめて保存されます。
 
@@ -40,7 +40,7 @@ Wingtips のこの実装では、シャード化されたマルチテナント �
 #### <a name="learn-in-this-tutorial"></a>このチュートリアルの詳細
 
 > [!div class="checklist"]
-> - Wingtip SaaS アプリケーションをデプロイする方法。
+> - Wingtip Tickets SaaS アプリケーションのデプロイ方法。
 > - アプリケーションのソース コード、および管理スクリプトを取得する場所。
 > - アプリを構成するサーバーおよびデータベースについて。
 > - *カタログ*によるテナントとデータのマッピング方法。
@@ -59,11 +59,11 @@ Wingtips のこの実装では、シャード化されたマルチテナント �
 
 #### <a name="plan-the-names"></a>名前を付ける
 
-このセクションの手順には、*ユーザー*および新しい*リソース グループ*の名前を入力する必要がある場所が 2 つあります。 たとえば、名前が *Ann Finley* である場合、次のような名前にすることをお勧めします。
-- *ユーザー:* &nbsp; **af1** &nbsp; *(イニシャルと一桁の数字です。)*
-- *リソース グループ:* &nbsp; **wingtip af1** &nbsp; *(すべての文字を小文字にすることをお勧めします。これにハイフンとユーザー名を付加します。)*
+このセクションの手順では、リソース名がグローバルに一意であることを保証するために使用される "*ユーザー*" 値と、アプリのデプロイによって作成されるすべてのリソースを含む "*リソース グループ*" を指定します。 たとえば、名前が *Ann Finley* である場合、次のような名前にすることをお勧めします。
+- "*ユーザー:*" **af1** "*(イニシャルと一桁の数字。アプリをもう一度デプロイする場合は、別の値を使用します (例: af2)。)*"
+- "*リソース グループ:*" **wingtip-dpt-af1** "*(wingtip-dpt は、これがテナントごとのデータベース アプリであることを示します。ユーザー名 af1 の追加によって、リソース グループ名とリソースを含む名前が関連付けられます。)*"
 
-名前を選択し、書き留めておきます。
+名前を選択し、書き留めておきます。 
 
 #### <a name="steps"></a>手順
 
@@ -72,7 +72,7 @@ Wingtips のこの実装では、シャード化されたマルチテナント �
 
     [![[Deploy to Azure (Azure にデプロイ)] ボタン。][image-deploy-to-azure-blue-48d]][link-aka-ms-deploywtp-mtapp-52k]
 
-2. デプロイに必須のパラメーター値を入力します。
+1. デプロイに必須のパラメーター値を入力します。
 
     > [!IMPORTANT]
     > このデモでは、既存のリソース グループ、サーバー、またはプールを使用しません。 代わりに、**[新しいリソース グループの作成]** を選択します。 関連する課金を停止するために、サンプル アプリケーションの操作が終了したら、このリソース グループを削除してください。
@@ -82,12 +82,12 @@ Wingtips のこの実装では、シャード化されたマルチテナント �
         - ドロップダウン から **[場所]** を選択します。
     - **ユーザー** - 短い**ユーザー**値を選択することをお勧めします。
 
-3. **アプリケーションをデプロイします**。
+1. **アプリケーションをデプロイします**。
 
     - 使用条件に同意したら、チェック ボックスをオンにします。
     - **[購入]** をクリックします。
 
-4. **[通知]** (検索ボックスの右にあるベル アイコン) をクリックして、デプロイ ステータスを監視します。 Wingtip アプリのデプロイには約 5 分かかります。
+1. **[通知]** (検索ボックスの右にあるベル アイコン) をクリックして、デプロイ ステータスを監視します。 Wingtip アプリのデプロイには約 5 分かかります。
 
    ![デプロイメントに成功しました](media/saas-multitenantdb-get-started-deploy/succeeded.png)
 
@@ -127,7 +127,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 中央の **Events Hub** Web ページには、特定のデプロイのテナントへのリンク一覧が表示されます。 **Events Hub** Web ページや個別の Web アプリを体験するには、次の手順に従います。
 
 1. Web ブラウザーで **Events Hub** を開きます。
-    - http://events.wingtip.&lt;ユーザー&gt;.trafficmanager.net &nbsp; *(&lt;<ユーザー>&gt; は実際のデプロイのユーザー値に置き換えてください)。*
+    - http://events.wingtip-mt.&lt;user&gt;.trafficmanager.net &nbsp; "*(&lt;ユーザー&gt; をデプロイのユーザ値に置き換えます。)*"
 
     ![Events Hub](media/saas-multitenantdb-get-started-deploy/events-hub.png)
 
@@ -139,7 +139,7 @@ Wingtip アプリでは、テナントは会場です。 会場は、イベン�
 
 Wingtip アプリは、着信要求の分散を制御するために [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) を使用します。 各テナントのイベント ページには、URL にテナント名が含まれています。 各 URL には、固有のユーザー値も含まれています。 各 URL は、以下の手順で、次に示す形式に従います。
 
-- http://events.wingtip.&lt;ユーザー&gt;.trafficmanager.net/*fabrikamjazzclub*
+- http://events.wingtip-mt.&lt;ユーザー&gt;.trafficmanager.net/*fabrikamjazzclub*
 
 1. イベント アプリによって、URL からテナント名が解析されます。 前の URL の例では、テナント名は *fabrikamjazzclub* です。
 2. アプリはテナント名をハッシュして、[シャード マップ管理](sql-database-elastic-scale-shard-map-management.md)を使用するカタログにアクセスするためのキーを作成します。
@@ -213,7 +213,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
    ![resource group](./media/saas-multitenantdb-get-started-deploy/resource-group.png)
 
-2. **catalog-mt&lt;USER&gt;** サーバーをクリックします。 カタログ サーバーには、*tenantcatalog* と *basetenantdb* という名前の 2 つのデータベースが含まれています。 *basetenantdb* データベースは空のテンプレート データベースです。 これをコピーして新しいテナント データベースを作成します。多くのテナント用または 1 つのテナントのみに使用します。
+2. **catalog-mt&lt;ユーザー&gt;** サーバーをクリックします。 カタログ サーバーには、*tenantcatalog* と *basetenantdb* という名前の 2 つのデータベースが含まれています。 *basetenantdb* データベースは空のテンプレート データベースです。 これをコピーして新しいテナント データベースを作成します。多くのテナント用または 1 つのテナントのみに使用します。
 
    ![カタログ サーバー](./media/saas-multitenantdb-get-started-deploy/catalog-server.png)
 
@@ -228,7 +228,7 @@ PowerShell セッションを閉じると、すべてのジョブが停止しま
 
 ロード ジェネレーターを数分間実行したら、十分なテレメトリが生成されています。このテレメトリを使って、Azure Portal に組み込まれているデータベース監視機能を確認してみましょう。
 
-1. **tenants1-mt&lt;USER&gt;** サーバーを参照し、**[tenants1]** をクリックして 4 つのテナントを持つデータベースのリソース使用率を表示します。 各テナントは、ロード ジェネレーターから散発的な高負荷がかけられます。
+1. **tenants1-mt&lt;ユーザー&gt;** サーバーを参照し、**[tenants1]** をクリックして 4 つのテナントを持つデータベースのリソース使用率を表示します。 各テナントは、ロード ジェネレーターから散発的な高負荷がかけられます。
 
    ![tenants1 の監視](./media/saas-multitenantdb-get-started-deploy/monitor-tenants1.png)
 

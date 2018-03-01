@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: Active
-ms.date: 11/20/2017
+ms.date: 02/13/2018
 ms.author: carlrab
-ms.openlocfilehash: 06eb02e408b95176ca99ca391b437a3751876fac
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 81b61d59e63924e4af5befe4cbd638be98b385e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 SQL Database は、[自動データベース バックアップ](sql-database-automated-backups.md)および[長期保存でのバックアップ](sql-database-long-term-retention.md)を使用して、データベース復旧のためのこれらのオプションを提供します。 データベース バックアップは、次のものに復元できます。
@@ -34,7 +34,7 @@ SQL Database は、[自動データベース バックアップ](sql-database-au
 
 復元されたデータベースでは、次の条件下で、追加のストレージ コストが生じます。 
 - データベースの最大サイズが 500 GB より大きい場合に、P11–P15 を S4-S12 または P1–P6 に復元する。
-- データベースの最大サイズが 250 GB より大きい場合に、P1–P6 または PRS1–PRS6 を S4-S12 に復元する。
+- データベースの最大サイズが 250 GB より大きい場合に、P1–P6 を S4-S12 に復元する。
 
 余分なコストがかかるのは復元されるデータベースの最大サイズがパフォーマンス レベルに含まれるストレージの量を超えるためであり、含まれる量を超えてプロビジョニングされる余分なストレージに追加料金がかかります。  追加ストレージの価格について詳しくは、「[SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。  実際に使われる領域の量が含まれるストレージの量より少ない場合、データベースの最大サイズを含まれる量に減らすことで、この追加コストを回避できます。 データベース ストレージのサイズおよびデータベースの最大サイズを変更する方法について詳しくは、次を参照してください。[単一データベースのリソース制限に関する記事](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)をご覧ください。  
 

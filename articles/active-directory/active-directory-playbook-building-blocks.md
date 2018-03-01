@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory 概念実証戦略の構成要素 | Microsoft Docs"
-description: "ID とアクセスの管理のシナリオを探索して迅速に実装します。"
+description: "ID とアクセスを管理するシナリオを確認して、迅速に実装します"
 services: active-directory
 keywords: "azure active directory, 戦略, 概念実証, PoC"
 documentationcenter: 
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: dstefan
-ms.openlocfilehash: bc0bc80b45e97efc048d9a9c26b8dd5d5f39ce8d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b37ca3c6ca528551ef09a90159e92fd31e0fabf2
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-proof-of-concept-playbook-building-blocks"></a>Azure Active Directory 概念実証戦略: 構成要素
 
 ## <a name="catalog-of-roles"></a>ロールのカタログ
 
-| 役割 | Description | 概念実証 (PoC) の責任範囲 |
+| 役割 | [説明] | 概念実証 (PoC) の責任範囲 |
 | --- | --- | --- |
 | **ID アーキテクチャ/開発チーム** | このチームは、通常、ソリューションを設計し、プロトタイプを実装して、承認を得たうえで最後にオペレーションへの引き渡しを行います。 | 必要な環境を提供します。また管理の容易さの観点からさまざまなシナリオを評価する役割を担います。 |
 | **オンプレミス ID オペレーション チーム** | オンプレミスのさまざまな ID ソースを管理します (Active Directory フォレスト、LDAP ディレクトリ、人事システム、フェデレーション ID プロバイダー)。 | PoC のシナリオに必要なオンプレミス リソースへのアクセスを提供します。<br/>このチームの関与はできるだけ少なくする必要があります。|
@@ -391,7 +391,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | Azure AD 管理ポータルの [パスワードのリセット] に移動します。 | [Azure AD 管理ポータル: パスワードのリセット](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset) |
 | パスワード リセット ポリシーを決定します。 概念実証という目的上、電話と Q & A を使用できます。アクセス パネルへのログインについては登録を必須にすることをお勧めします。 |  |
 | ログアウトし、インフォメーション ワーカーとしてログインします。 |  |
-| 手順 2. で構成した "セルフサービスによるパスワードのリセット" データを指定します。 | http://aka.ms/ssprsetup |
+| 手順 2. で構成した "セルフサービスによるパスワードのリセット" データを指定します。 | https://aka.ms/ssprsetup |
 | ブラウザーを閉じます。 |  |
 | 手順 4. で使用したインフォメーション ワーカーとしてログイン プロセスを最初からやり直します。 |  |
 | パスワードをリセットします。 | [自分のパスワードを更新する: パスワードをリセットする](active-directory-passwords-update-your-own-password.md) |
@@ -442,7 +442,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | SaaS アプリケーションが構成済みであること。 |  |
 | そのアプリケーションに PoC ユーザーがあらかじめ割り当てられていること。 |  |
 | POC ユーザーの資格情報が用意されていること。 |  |
-| POC ユーザーが MFA の対象として登録済みであること。 受信状態の良い電話を使用すること。 | http://aka.ms/ssprsetup |
+| POC ユーザーが MFA の対象として登録済みであること。 受信状態の良い電話を使用すること。 | https://aka.ms/ssprsetup |
 | 内部ネットワーク内のデバイス。 内部アドレス範囲内で IP アドレスが構成されていること。 | IP アドレスの確認: https://www.bing.com/search?q=what%27s+my+ip |
 | 外部ネットワークのデバイス (キャリアのモバイル ネットワークを使ったスマートフォンなど) |  |
 
@@ -533,7 +533,7 @@ Azure AD Premium を使ったすべての POC で必要になるいくつかの�
 | 手順 | リソース |
 | --- | --- |
 | 全体管理者として https://portal.azure.com にログインし、[Identity Protection] ブレードを開きます。 | https://aka.ms/aadipgetstarted |
-| 次のようにサインイン リスク ポリシーを有効にします。<br/>- 割り当て先: POC ユーザー<br/>- 条件: 中程度またはそれ以上のサインイン リスク (匿名の場所からのサインインはリスク レベルが中程度と見なされます)<br/>- コントロール: MFA を要求 | [Azure Active Directory Identity Protection プレイブック: サインイン リスク](active-directory-identityprotection-playbook.md#sign-in-risk) |
+| 次のようにサインイン リスク ポリシーを有効にします。<br/>- 割り当て先: POC ユーザー<br/>- 条件: 中程度またはそれ以上のサインイン リスク (匿名の場所からのサインインはリスク レベルが中程度と見なされます)<br/>- コントロール: MFA を要求 | [Azure Active Directory Identity Protection プレイブック: サインイン リスク](active-directory-identityprotection-playbook.md) |
 | Tor Browser を開きます。 | [Tor Browser のダウンロード](https://www.torproject.org/projects/torbrowser.html.en#downloads) |
 | PoC ユーザー アカウントで https://myapps.microsoft.com にログインします。 |  |
 | MFA チャレンジを通知します。 | [Azure AD Identity Protection を使用したサインイン エクスペリエンス: リスクの高いサインインの復旧](active-directory-identityprotection-flows.md#risky-sign-in-recovery)

@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure Resource Manager モー�
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: 64e85527-d5c8-40d9-bbe2-13045d25fc68
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a612ffd5a68e34cb0a367a6a883495ef26aeb4bc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager
 
@@ -63,8 +63,8 @@ ms.lasthandoff: 10/11/2017
 Azure では、ソリューション全体のギャラリー イメージを提供します。 テンプレートを見つけるには、次を実行します。
 
 1. アカウントを使用して Azure Portal にサインインします。
-2. Azure Portal で、**[+New] \(+新規)** をクリックして**[新規]** ブレードを開きます。
-3. **[新規]** ブレードで **AlwaysOn** を検索します。
+2. Azure Portal で、**[リソースの作成]** をクリックして **[新規]** ウィンドウを開きます。
+3. **[新規]** ウィンドウで **AlwaysOn** を検索します。
    ![AlwaysOn テンプレートを見つける](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/16-findalwayson.png)
 4. 検索結果から **[SQL Server AlwaysOn Cluster (SQL Server AlwaysOn クラスター)]** を見つけます。
    ![AlwaysOn テンプレート](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/17-alwaysontemplate.png)
@@ -83,7 +83,7 @@ Azure では、ソリューション全体のギャラリー イメージを提�
 
 ![基本](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/1-basics.png)
 
-**[OK]**をクリックします。
+Click **OK**.
 
 ### <a name="domain-and-network-settings"></a>ドメインおよびネットワークの設定
 この Azure ギャラリー テンプレートでは、ドメインとドメイン コントローラーを作成します。 また、ネットワークと 2 つのサブネットも作成します。 このテンプレートでは、既存のドメインまたは仮想ネットワークには、サーバーを作成できません。 次の手順では、ドメインおよびネットワーク設定を構成します。
@@ -116,7 +116,7 @@ Azure の仮想ネットワークの詳細については、[仮想ネットワ�
 
 ![可用性グループの設定](./media/virtual-machines-windows-portal-sql-alwayson-availability-groups/3-availabilitygroup.png)
 
-**[OK]**をクリックします。
+Click **OK**.
 
 ### <a name="virtual-machine-size-storage-settings"></a>VM サイズおよび記憶域の設定
 **[VM size, storage settings] \(VM サイズおよび記憶域の設定)** では、SQL Server 仮想マシンのサイズを選択し、その他の設定を確認します。
@@ -184,8 +184,8 @@ SQL Server の構成のベスト プラクティスについては、「[Azure V
 
 設定を確認し、**[OK]** をクリックします。
 
-### <a name="summary"></a>概要
-[概要] ページでは Azure によって設定が検証されます。 テンプレートをダウンロードすることもできます。 概要を確認します。 **[OK]**をクリックします。
+### <a name="summary"></a>まとめ
+[概要] ページでは Azure によって設定が検証されます。 テンプレートをダウンロードすることもできます。 概要を確認します。 Click **OK**.
 
 ### <a name="buy"></a>購入
 この最後のブレードには **[使用条件]** と **[プライバシー ポリシー]** が掲載されています。 この情報を確認します。 Azure で仮想マシンと可用性グループに必要な他のすべてのリソースの作成を開始する準備ができたら、**[作成]** をクリックします。
@@ -208,6 +208,6 @@ SQL Server に RDP 接続するには、次の手順に従います。
 4. **sqlserver-0** のブレードで **[接続]** をクリックします。 ブラウザーから、リモート接続オブジェクトを開くか保存するかをたずねられます。 **[開く]**をクリックします。
 5. **リモート デスクトップ接続** で、このリモート接続の発行元が識別できないことが通知される場合があります。 **[接続]**をクリックします。
 6. Windows のセキュリティによって、プライマリ ドメイン コントローラーの IP アドレスに接続するための資格情報の入力が求められます。 **[別のアカウントを使用する]**をクリックします。 **[ユーザー名]** に「**contoso\DomainAdmin**」と入力します。 このアカウントは、テンプレートで管理者ユーザー名を設定したときに構成したものです。 テンプレートを構成したときに選択した複雑なパスワードを使用します。
-7. **リモート デスクトップ** により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。 そのセキュリティ証明書の名前が表示されます。 このチュートリアルに従った場合、名前は **sqlserver-0.contoso.com** になります。**[はい]**をクリックします。
+7. **リモート デスクトップ** により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。 そのセキュリティ証明書の名前が表示されます。 このチュートリアルに従った場合、名前は **sqlserver-0.contoso.com** になります。**[はい]** をクリックします。
 
 これで SQL Server 仮想マシンに RDP 接続できました。 SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続して、可用性グループが構成済みであることを確認できます。

@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 02/16/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: c06270c75ae16ba516e71a5dde9db4a7277d7e38
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 465e3d2c0c2b7c5d811441ede20adb9da2dbe847
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="introduction-to-azure-app-service-on-linux"></a>Azure App Service on Linux の概要
 
@@ -90,7 +90,7 @@ SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]**
 
 App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
-* [Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-custom-docker-image.md)
+* [Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-docker-go.md)
 * [Azure App Service on Linux で .NET Core を使用する](quickstart-dotnetcore.md)
 * [Azure App Service on Linux で Ruby を使用する](quickstart-ruby.md)
 * [Azure App Service Web App for Containers の FAQ](app-service-linux-faq.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 10b5eb0062e4a029b0f233ee8af17d590d59c8d4
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 9f773a8dfe772864fc9fc437052ac766a87623d1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-snapshot"></a>スナップショットの作成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/19/2018
 ## <a name="use-azure-portal-to-take-a-snapshot"></a>Azure Portal を使ってスナップショットを作成する 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左上の **[新規]** をクリックし、**[スナップショット]** を探します。
+2. 左上の **[リソースの作成]** をクリックし、**[スナップショット]** を探します。
 3. [スナップショット] ブレードで **[作成]** をクリックします。
 4. スナップショットの **[名前]** を入力します。
 5. 既存の[リソース グループ](../../azure-resource-manager/resource-group-overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。 

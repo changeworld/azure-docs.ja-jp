@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: limichel
-ms.openlocfilehash: ae9bd30b76786f94f0d836a39137da696fdb94a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 86867a9d6d2c43e6505b1a06672546a017172bfe
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Azure で負荷分散サービスを使用する
 
@@ -63,8 +63,8 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 ### <a name="step-1-create-a-traffic-manager-profile"></a>手順 1: Traffic Manager プロファイルを作成する
 
-1. Azure Portal で、**[新規]** をクリックして、"Traffic Manager プロファイル" の Marketplace を検索します。
-2. **[Create Traffic Manager profile (Traffic Manager プロファイルの作成)]** ブレードで、次の基本情報を入力します。
+1. Azure Portal で、**[リソースの作成]** > **[ネットワーク]** > **[Traffic Manager プロファイル]** > **[作成]** の順にクリックします。
+2. 次の基本情報を入力します。
 
   * **[名前]**: Traffic Manager プロファイルに DNS プレフィックス名を指定します。
   * **[ルーティング方法]**: トラフィック ルーティング方法のポリシーを選びます。 この方法の詳細については、「[Traffic Manager のトラフィック ルーティング方法について](traffic-manager-routing-methods.md)」をご覧ください。
@@ -78,7 +78,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 ### <a name="step-2-create-the-application-gateways"></a>手順 2: Application Gateway を作成する
 
-1. Azure Portal の左側のウィンドウで、**[新規]** > **[ネットワーク]** > **[Application Gateway]** の順にクリックします。
+1. Azure Portal の左側のウィンドウで、**[リソースの作成]** > **[ネットワーク]** > **[Application Gateway]** の順にクリックします。
 2. Application Gateway に関する次の基本情報を入力します。
 
   * **[名前]**: Application Gateway の名前。
@@ -86,10 +86,10 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
   * **[インスタンス数]**: インスタンスの数。2 ～ 10 の値。
   * **[リソース グループ]**: Application Gateway を保持するリソース グループ。 既存のリソース グループまたは新しいリソース グループを使用できます。
   * **[場所]**: Application Gateway のリージョン。リソース グループと同じ場所にします。 仮想ネットワークとパブリック IP はゲートウェイと同じ場所に存在する必要があるため、この場所は重要です。
-3. **[OK]**をクリックします。
+3. Click **OK**.
 4. Application Gateway の仮想ネットワーク、サブネット、フロントエンド IP、およびリスナーの構成を定義します。 このシナリオでは、フロント エンド IP アドレスは **[パブリック]** に設定されているため、後で Traffic Manager プロファイルにエンドポイントとして追加できます。
 5. 次のいずれかのオプションでリスナーを構成します。
-    * HTTP を使用する場合は、構成する必要はありません。 **[OK]**をクリックします。
+    * HTTP を使用する場合は、構成する必要はありません。 Click **OK**.
     * HTTPS を使用する場合は、さらに構成が必要になります。 [Application Gateway の作成](../application-gateway/application-gateway-create-gateway-portal.md)に関するページの手順 9.以降を参照してください。 構成が完了したら、**[OK]** をクリックします。
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Application Gateway の URL ルーティングを構成する
@@ -100,15 +100,15 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 1. リソース グループから、前のセクションで作成した Application Gateway のインスタンスに移動します。
 2. **[設定]** で **[バックエンド プール]** を選択し、**[追加]** を選択して Web 層のバックエンド プールに関連付ける VM を追加します。
-3. **[バックエンド プールの追加]** ブレードに、バックエンド プールの名前と、プールに存在するすべてのマシンの IP アドレスを入力します。 このシナリオでは、仮想マシンの 2 つのバックエンド サーバー プールを接続します。
+3. バックエンド プールの名前と、プールに存在するすべてのマシンの IP アドレスを入力します。 このシナリオでは、仮想マシンの 2 つのバックエンド サーバー プールを接続します。
 
-  ![Application Gateway [バックエンド プールの追加] ブレード](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
+  ![Application Gateway [バックエンド プールの追加]](./media/traffic-manager-load-balancing-azure/s2-appgw-add-bepool.png)
 
 4. Application Gateway の **[設定]** で、**[Rules (規則)]** を選択し、**[パス ベース]** ボタンをクリックして規則を追加します。
 
   ![Application Gateway 規則の [パス ベース] ボタン](./media/traffic-manager-load-balancing-azure/s2-appgw-add-pathrule.png)
 
-5. **[Add path-based rule (パスベースの規制を追加する)]** ブレードで、次の情報を入力して規則を構成します。
+5. 次の情報を入力して規則を構成します。
 
    基本設定:
 
@@ -138,13 +138,13 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
   ![Traffic Manager エンドポイント [追加] ボタン](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint.png)
 
-3. **[エンドポイントの追加]** ブレードで、次の情報を入力してエンドポイントを作成します。
+3. 次の情報を入力してエンドポイントを作成します。
 
   * **[種類]**: 負荷分散するエンドポイントの種類を選択します。 このシナリオでは、**[Azure エンドポイント]** を選択します。以前構成した Application Gateway のインスタンスに接続するためです。
   * **[名前]**: エンドポイントの名前を入力します。
   * **[ターゲット リソースの種類]** - **[パブリック IP アドレス]** を選択し、**[ターゲット リソース]** で、前に構成した Application Gateway のパブリック IP を選択します。
 
-   ![Traffic Manager [エンドポイントの追加] ブレード](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
+   ![Traffic Manager の [エンドポイントの追加]](./media/traffic-manager-load-balancing-azure/s3-tm-add-endpoint-blade.png)
 
 4. ここで、Traffic Manager プロファイルの DNS (この例では、TrafficManagerScenario.trafficmanager.net) でアクセスすることによって、設定をテストできます。 要求を再送信したり、別のリージョンに作成した VM/Web サーバーをアップまたはダウンさせたり、Traffic Manager プロファイルの設定を変更して、設定をテストできます。
 
@@ -156,8 +156,8 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 内部ロード バランサーの構成方法について詳しくは、「[Azure Portal での内部ロード バランサーの作成](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)」をご覧ください。
 
-1. Azure Portal の左側のウィンドウで、**[新規]** > **[ネットワーク]** > **[ロード バランサー]** の順にクリックします。
-2. **[ロード バランサーの作成]** ブレードで、ロード バランサーの名前を選択します。
+1. Azure Portal の左側のウィンドウで、**[リソースの作成]** > **[ネットワーク]** > **[ロード バランサー]** の順にクリックします。
+2. ロード バランサーの名前を選択します。
 3. **[タイプ]** を **[内部]** に設定し、適切な仮想ネットワークと、ロード バランサーが入るサブネットを選択します。
 4. **[IP アドレスの割り当て ]** で、**[動的]** または **[静的]** を選択します。
 5. **[リソース グループ]** で、ロード バランサーのリソース グループを選択します。
@@ -169,18 +169,18 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 1. リソース グループから、前の手順で作成したロード バランサーを見つけます。
 2. **[設定]** で、**[バックエンド プール]**、**[追加]** の順にクリックし、バックエンド プールを追加します。
 
-  ![ロード バランサー [バックエンド プールの追加] ブレード](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
+  ![ロード バランサー [バックエンド プールの追加]](./media/traffic-manager-load-balancing-azure/s4-ilb-add-bepool.png)
 
-3. **[バックエンド プールの追加]** ブレードで、バックエンド プールの名前を入力します。
+3. バックエンド プールの名前を入力します。
 4. 個々のマシンまたは可用性セットをバック エンド プールに追加します。
 
 #### <a name="configure-a-probe"></a>プローブを構成する
 
 1. ロード バランサーの **[設定]** で、**[プローブ]** を選択して **[追加]** をクリックし、プローブを追加します。
 
- ![ロード バランサー [プローブの追加] ブレード](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
+ ![ロード バランサー [プローブの追加]](./media/traffic-manager-load-balancing-azure/s4-ilb-add-probe.png)
 
-2. **[プローブの追加]** ブレードで、プローブの名前を入力します。
+2. プローブの名前を入力します。
 3. プローブの **[プロトコル]** を選択します。 データベースの場合は、HTTP プローブではなく TCP プローブを使用する場合が多くなります。 ロード バランサー プローブの詳細については、「[Load Balancer プローブを理解する](../load-balancer/load-balancer-custom-probe-overview.md)」をご覧ください。
 4. プローブにアクセスするときに使用するデータベースの **[ポート]** を入力します。
 5. **[間隔]** で、アプリケーションをプローブする頻度を指定します。
@@ -190,7 +190,7 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 #### <a name="configure-the-load-balancing-rules"></a>負荷分散規則を構成する
 
 1. ロード バランサーの **[設定]** で **[負荷分散規則]** を選択し、**[追加]** をクリックして、規則を作成します。
-2. **[負荷分散規則の追加]** ブレードで、負荷分散規則の **[名前]** を入力します。
+2. 負荷分散規則の**名前**を入力します。
 3. ロード バランサーの **[フロントエンド IP アドレス]**、**[プロトコル]**、**[ポート]** を選択します。
 4. **[バックエンド ポート]** で、バックエンド プールで使用するポートを指定します。
 5. **[バックエンド プール]** を選択し、上述の手順で作成した、規則を適用する **[プローブ]** を選択します。
@@ -201,11 +201,11 @@ Traffic Manager、Application Gateway、ロード バランサーを使用する
 
 ### <a name="step-5-connect-web-tier-vms-to-the-load-balancer"></a>手順 5: Web 層の VM をロード バランサーに接続する
 
-これで、Web 層の VM で実行されるアプリケーションの IP アドレスとロード バランサーのフロントエンド ポートを構成でき、データベースに接続できるようになりました。 この構成は、これらの VM で実行されるアプリケーション専用のものです。 接続先 IP アドレスとポートの構成については、アプリケーションのマニュアルをご覧ください。 フロントエンドの IP アドレスを見つけるには、Azure Portal で、**[ロード バランサーの設定]** ブレードのフロントエンド IP プールに移動します。
+これで、Web 層の VM で実行されるアプリケーションの IP アドレスとロード バランサーのフロントエンド ポートを構成でき、データベースに接続できるようになりました。 この構成は、これらの VM で実行されるアプリケーション専用のものです。 接続先 IP アドレスとポートの構成については、アプリケーションのマニュアルをご覧ください。 フロントエンドの IP アドレスを見つけるには、Azure Portal で、**[ロード バランサーの設定]** のフロントエンド IP プールに移動します。
 
 ![ロード バランサー [フロントエンド IP プール] ナビゲーション ウィンドウ](./media/traffic-manager-load-balancing-azure/s5-ilb-frontend-ippool.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Traffic Manager の概要](traffic-manager-overview.md)
 * [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)

@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 12/18/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 06d807b83f700c675c6979998dd8f74372a4845f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 1f31c05554db16d604a9825ef9b1317a0f281456
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
@@ -208,14 +208,14 @@ syncstate の値は次のとおりです。
 
 この形式の認証には、必要な API アクセス許可を割り当てられて作成された Azure アプリケーションが必要です。 
 
-1.  Azure Portal で、**[新規]** > **[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** の順にクリックします。
+1.  Azure Portal で、**[リソースの作成]** > **[Azure Active Directory]** > **[アプリの登録]** > **[新しいアプリケーションの登録]** の順にクリックします。
 
     ![[新しいアプリケーションの登録]](./media/analysis-services-async-refresh/aas-async-app-reg.png)
 
 
 2.  **[作成]** で名前を入力し、アプリケーションの種類として **[ネイティブ]** を選択します。 **[リダイレクト URI]** に「**urn:ietf:wg:oauth:2.0:oob**」と入力してから **[作成]** をクリックします。
 
-    ![[設定]](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
+    ![設定](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
 
 3.  アプリを選択してから **[アプリケーション ID]** をコピーして保存します。
 

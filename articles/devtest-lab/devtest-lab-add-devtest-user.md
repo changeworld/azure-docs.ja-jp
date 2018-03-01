@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: v-craic
-ms.openlocfilehash: 2921356f848739d602807236006f9867eaa2a4e4
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 348952626e13b9ac73ca2ec8e101bf02e416dc9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Azure DevTest Labs での所有者とユーザーの追加
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -64,7 +64,7 @@ Azure DevTest Labs へのアクセスは、 [Azure のロール ベースのア�
 次のステップでは、Azure DevTest Labs で所有者またはユーザーをラボに追加するプロセスについて説明します。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
-2. **[その他のサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
+2. **[すべてのサービス]** を選択し、一覧の **[DevTest Labs]** を選択します。
 3. ラボの一覧で目的のラボを選択します。
 4. ラボのブレードで、 **[構成]**を選択します。 
 5. ラボの **[構成]** ブレードで、**[ユーザー]** を選択します。
@@ -118,7 +118,7 @@ Azure のアクセス許可は、Azure で親スコープから子スコープ�
 Azure サブスクリプションに所有者を追加するには、次の手順を実行します。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
-2. **[その他のサービス]** を選択し、一覧の **[サブスクリプション]** を選択します。
+2. **[すべてのサービス]** を選択し、一覧から **[サブスクリプション]** を選択します。
 3. 目的のサブスクリプションを選択します。
 4. **[アクセス]** アイコンを選択します。 
    

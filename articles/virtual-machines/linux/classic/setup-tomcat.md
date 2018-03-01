@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
-ms.openlocfilehash: b76f6f7f53bc649fbc740a79e182f81f3fd983c7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: f3bd3167c9a879a876774e5d91fbb10fd340c6a8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Azure で Linux 仮想マシンに Tomcat7 をセットアップする
 Apache Tomcat (または単に Tomcat、旧称は Jakarta Tomcat) は、Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。 Tomcat には、Sun Microsystems の Java Servlet と JavaServer Pages (JSP) 仕様が実装されています。 Tomcat は、Java コードを実行する純粋な Java HTTP Web サーバー環境を提供します。 最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。 このプロセスは、Java 仮想マシン (JVM) を実行します。 ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。  
@@ -64,7 +64,7 @@ SSH はシステム管理者にとって重要なツールです。 ただし、
 6. **[Save private key (秘密キーの保存)]** をクリックし、privateKey.ppk という名前のファイルに保存します。
 
 ### <a name="step-2-create-the-image-in-the-azure-portal"></a>手順 2. Azure Portal でイメージを作成する
-1. [ポータル](https://portal.azure.com/)で、タスク バーの **[新規]** をクリックしてイメージを作成します。 ニーズに基づいた Linux イメージを選択します。 次の例では、Ubuntu 14.04 イメージを使用します。
+1. [ポータル](https://portal.azure.com/)で、タスク バーの **[リソースの作成]** をクリックしてイメージを作成します。 ニーズに基づいた Linux イメージを選択します。 次の例では、Ubuntu 14.04 イメージを使用します。
 ![[新規] ボタンが表示されているポータルのスクリーンショット][3]
 
 2. **[ホスト名]** に、ユーザーとインターネット クライアントがこの仮想マシンへのアクセスに使用する URL の名前を指定します。 DNS 名の最後の部分 (tomcatdemo など) を定義すると、 tomcatdemo.cloudapp.net として URL が生成されます。  

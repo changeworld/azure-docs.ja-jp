@@ -12,17 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload8: na
-ms.date: 08/07/2017
+ms.date: 02/16/2018
 ms.author: TomSh
 ms.custom: azlog
-ms.openlocfilehash: bfdc7154160bb6bb7dc9c46eb2352ce74310c4de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 615bfb1ea86d31733fc1db7139cd995fbbbac7aa
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-log-integration-faq"></a>Azure ログ統合 のFAQ
-この記事では、Azure ログ統合についてよく寄せられる質問 (FAQ) とその回答を紹介します。 
+
+この記事では、Azure ログ統合についてよく寄せられる質問 (FAQ) とその回答を紹介します。
+
+>[!IMPORTANT]
+>Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
 
 Azure ログ統合は Windows オペレーティング システムのサービスです。このサービスを利用すると、未加工のログを Azure リソースからオンプレミスの Security Information and Event Management (SIEM) システムに統合できます。 この統合によって、オンプレミスでもクラウド上でも、すべての資産を一元化されたダッシュボードで利用できるようになります。 そうすることで、お使いのアプリケーションに関連するセキュリティ イベントの集計、関連付け、分析、および警告を行えます。
 
@@ -34,11 +38,11 @@ Azure ログ統合は Windows オペレーティング システムのサービ�
 現時点では、Azure 商用サービスおよび Azure Government で利用できます。中国やドイツでは利用できません。
 
 ## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Azure ログ統合が Azure VM ログの取得元としているストレージ アカウントを表示するには、どうすればよいですか。
-**azlog source list**コマンドを実行します。
+**AzLog source list** コマンドを実行します。
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Azure ログ統合でログの取得元となっているサブスクリプションはどのようにしてわかりますか。
 
-**AzureResourcemanagerJson** ディレクトリに格納される監査ログの場合、サブスクリプション ID はログのファイル名で確認できます。 **AzureSecurityCenterJson** フォルダー内のログについても同様です。 For example:
+**AzureResourcemanagerJson** ディレクトリに格納される監査ログの場合、サブスクリプション ID はログのファイル名で確認できます。 **AzureSecurityCenterJson** フォルダー内のログについても同様です。 例: 
 
 20170407T070805_2768037.0000000023.**1111e5ee-1111-111b-a11e-1e111e1111dc**.json
 
@@ -47,7 +51,7 @@ Azure Active Directory 監査ログには、名前の一部として、テナン
 イベント ハブから読み取られた診断ログには、名前の一部にサブスクリプション ID は含まれていません。 その代わりに、イベント ハブ ソースの作成の一環で指定されたフレンドリ名が含まれます。 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>プロキシ構成を更新するには、どうすればよいですか。
-プロキシ設定で Azure ストレージ アクセスが直接許可されていない場合は、**c:\Program Files\Microsoft Azure Log Integration** で **AZLOG.EXE.CONFIG** ファイルを開きます。 ファイルを更新して、 **defaultProxy** セクションに組織のプロキシ アドレスを追加します。 更新の完了後、サービスを停止するには **net stop azlog** コマンドを、開始するには **net start azlog** コマンドを使用します。
+プロキシ設定で Azure ストレージ アクセスが直接許可されていない場合は、**c:\Program Files\Microsoft Azure Log Integration** で **AZLOG.EXE.CONFIG** ファイルを開きます。 ファイルを更新して、 **defaultProxy** セクションに組織のプロキシ アドレスを追加します。 更新の完了後、サービスを停止するには **net stop AzLog** コマンドを、開始するには **net start AzLog** コマンドを使用します。
 
     <?xml version="1.0" encoding="utf-8"?>
     <configuration>
@@ -74,7 +78,7 @@ Azure Active Directory 監査ログには、名前の一部として、テナン
 ![イベント XML][1]
 
 ## <a name="error-messages"></a>エラー メッセージ
-### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>**azlog createazureid** コマンドを実行すると、次のエラーが表示されるのはなぜですか。
+### <a name="when-i-run-the-command-azlog-createazureid-why-do-i-get-the-following-error"></a>```AzLog createazureid``` コマンドを実行すると、次のエラーが表示されるのはなぜですか?
 エラー:
 
   *Failed to create AAD Application - Tenant 72f988bf-86f1-41af-91ab-2d7cd011db37 - Reason = 'Forbidden' - Message = 'Insufficient privileges to complete the operation.'*

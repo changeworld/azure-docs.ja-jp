@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: afa609d7b47f3c743f5d3bfd4011e09c762ccbd1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 686cc2a94af729e6f872c334a6e5fda947d43725
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/01/2018
 
 * **Q: ユーザーが自分のパスワード リセット データを登録することはできますか。**
 
-  > **A:** はい。 パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (http://aka.ms/ssprsetup) で、認証情報を登録できます。 ユーザーは、アクセス パネル (http://myapps.microsoft.com) で登録することもできます。 アクセス パネルで登録するには、自分のプロフィール画像を選び、**[プロファイル]** を選んで、**[パスワード リセットの登録]** オプションを選ぶ必要があります。
+  > **A:** はい。 パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (https://aka.ms/ssprsetup) に移動して、認証情報を登録できます。 ユーザーは、アクセス パネル (http://myapps.microsoft.com) で登録することもできます。 アクセス パネルで登録するには、自分のプロフィール画像を選び、**[プロファイル]** を選んで、**[パスワード リセットの登録]** オプションを選ぶ必要があります。
   >
   >
 * **Q: グループに対してパスワード リセットを有効にし、その後全員に対してパスワード リセットを有効にする場合、ユーザーは再登録する必要がありますか。**

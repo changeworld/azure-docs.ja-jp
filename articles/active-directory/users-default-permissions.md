@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: curtand
 ms.reviewer: vincesm
-ms.openlocfilehash: 83d23323f050f670680499ecb428c07c94096418
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 880eaedcba2c0cdfe057ddb2460cf6a19bf8298e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="default-user-permissions-in-azure-active-directory"></a>Azure Active Directory の既定のユーザー アクセス許可
 
@@ -59,7 +59,7 @@ Office 365 グループを作成できる | このオプションを [いいえ]
 管理者とゲスト招待元ロールのユーザーはゲストを招待できる | このオプションを [いいえ] に設定すると、すべてのユーザーがゲストを招待できません。 メンバー ユーザーの既定のアクセス許可の構成に関するページをご覧ください。 詳しくは、「[Azure Active Directory のアプリ、アクセス許可、および同意](active-directory-apps-permissions-consent.md)」をご覧ください。
 メンバーはゲストを招待できる | このオプションを [いいえ] に設定すると、ユーザーはゲストを招待できません。 その場合でも、全体管理者、ユーザー アカウント管理者、ゲスト招待元は、ゲストを招待できます。 詳しくは、「[Azure Active Directory のアプリ、アクセス許可、および同意](active-directory-apps-permissions-consent.md)」をご覧ください。
 Azure AD 管理ポータルへのアクセスを制限する | このオプションを [いいえ] に設定すると、ユーザーは Azure Active Directory ポータルにアクセスできません。
-他のユーザーを読み取ることができる | 詳しくは、「[Azure Active Directory のアプリ、アクセス許可、および同意](active-directory-apps-permissions-consent.md)」をご覧ください。
+他のユーザーを読み取ることができる | この設定は PowerShell のみでご利用いただけます。 これを $false に設定すると、管理者以外のすべてのユーザーはディレクトリからユーザー情報を読み取ることができなくなります。 Exchange Online などの他の Microsoft サービスのユーザー情報の読み取りは妨げられません。 この設定は特殊な状況を想定しているため、これを $false に設定することは推奨されません。
 
 ## <a name="object-ownership"></a>オブジェクトの所有権
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/23/2018
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68bf84d0f848b60885d3976d3991b606e77ed074
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: f6ec6dd46d28518baf6f105dd232a4b0e77a8c6f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Azure Log Analytics 管理ソリューションをワークスペースに追加する
 
@@ -46,8 +46,7 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
 ## <a name="add-a-management-solution"></a>管理ソリューションの追加
 1. まだサインインしていない場合は、Azure サブスクリプションを使用して [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[新規]** ブレードの **[Marketplace]** で、**[監視 + 管理]** を選択します。
-3. **[監視 + 管理]** ブレードで、**[すべて表示]** をクリックします。  
+2. **[リソースの作成]** > **[監視 + 管理]** > **[See all] (すべてを表示)** を選択します。  
     ![[監視 + 管理] ブレード](./media/log-analytics-add-solutions/monitoring-management-blade.png)  
 4. **[管理ソリューション]** の右側の **[More (その他)]** をクリックします。
 5. **[管理ソリューション]** ブレードで、ワークスペースに追加する管理ソリューションを選択します。  

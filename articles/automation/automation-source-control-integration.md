@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;sngun
-ms.openlocfilehash: bb1ce4ceaa3d0c9aea014fc810ea269641dec14c
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 15e69105d4171c63b4ccef0b072bccf49a2e9ceb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 ソース管理の統合により、Automation アカウントの Runbook を GitHub のソース管理リポジトリに関連付けることができます。 ソース管理により、チームとの共同作業、変更の追跡、Runbook の以前のバージョンへのロールバックを簡単に実行できるようになります。 たとえば、開発、テスト、または運用の Automation アカウントに異なるブランチをソース管理で同期できるようになり、開発環境内でテストされたコードを運用の Automation アカウントに昇格することが容易になります。
@@ -36,10 +36,9 @@ Automation アカウントのソース管理を構成するには、2 つの簡�
 GitHub アカウントと、Azure Automation にリンクするリポジトリが既にある場合は、既存のアカウントにサインインし、次の手順 2. から開始してください。 それ以外の場合は、[GitHub](https://github.com/) に移動し、新しいアカウントにサインアップして、[新しいリポジトリを作成](https://help.github.com/articles/create-a-repo/)します。
 
 ## <a name="step-2--set-up-source-control-in-azure-automation"></a>手順 2. Azure Automation でソース管理を設定する
-1. Azure ポータルの [Automation アカウント] ページで、**[ソース管理の設定]** をクリックします。 
+1. Azure Portal の [Automation アカウント] ページの **[アカウント設定]** で、**[ソース管理]** をクリックします。 
    
-    ![ソース管理の設定](media/automation-source-control-integration/automation_01_SetUpSourceControl.png)
-2. **[ソース管理]** ページが開きます。ここで、GitHub アカウントの詳細を構成できます。 構成するパラメーターを次に示します。  
+1. **[ソース管理]** ページが開きます。ここで、GitHub アカウントの詳細を構成できます。 構成するパラメーターを次に示します。  
    
    | **パラメーター** | **説明** |
    |:--- |:--- |
@@ -66,19 +65,19 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
      
      | **パラメーター** | **値** |
      |:--- |:--- |
-     | 名前 |Microsoft.Azure.Automation.SourceControl.Connection |
-     | 型 |String |
+     | Name |Microsoft.Azure.Automation.SourceControl.Connection |
+     | type |String |
      | 値 |{"Branch":\<*ブランチ名*>,"RunbookFolderPath":\<*Runbookフォルダー パス*>,"ProviderType":\<*GitHub の場合は値 1*>,"Repository":\<*リポジトリ名*>,"Username":\<*Your GitHub ユーザー名*>} |
 
     * **Microsoft.Azure.Automation.SourceControl.OauthToken**変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
 
     |**パラメーター**            |**値** |
     |:---|:---|
-    | 名前  | Microsoft.Azure.Automation.SourceControl.OauthToken |
-    | 型 | Unknown(Encrypted) |
+    | Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
+    | type | Unknown(Encrypted) |
     | 値 | <*暗号化された OAuthToken*> |  
 
-    ![変数](media/automation-source-control-integration/automation_04_Variables.png)  
+    ![variables](media/automation-source-control-integration/automation_04_Variables.png)  
 
     * **Automation ソース管理** は、承認済みのアプリケーションとして GitHub アカウントに追加されます。 アプリケーションを表示するには、GitHub のホーム ページから **[プロファイル]** > 、**[設定]** > 、**[アプリケーション]** の順に移動します。 このアプリケーションにより、Azure Automation は GitHub リポジトリを Automation アカウントに同期できます。  
 
@@ -137,7 +136,7 @@ GitHub アカウントから切断するには、[リポジトリの同期] ペ�
 
   ![[切断] ボタン](media/automation-source-control-integration/automation_12_Disconnect.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ソース管理の統合の詳細については、次のリソースをご覧ください。  
 
 * [Azure Automation: Source Control Integration in Azure Automation](https://azure.microsoft.com/blog/azure-automation-source-control-13/)  

@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 02/15/2018
 ms.author: terrylan
-ms.openlocfilehash: fd238f0b2d877f7f57a27ce495dae8de1ab9c066
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 3b57cacec729bd2f2dd4acdbb9c15e69ab9f5c85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure Security Center でサポートされているプラットフォーム
-セキュリティ状態の監視と推奨事項は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルのどちらで作成された仮想マシン (VM) でも利用できます。
+セキュリティ状態の監視と推奨事項は、クラシック デプロイメント モデルと Resource Manager デプロイメント モデルのどちらかで作成された仮想マシン (VM)、およびコンピューターで利用できます。
 
 > [!NOTE]
 > Azure リソースの詳細については、 [クラシック デプロイメント モデルと Resource Manager デプロイメント モデル](../azure-classic-rm.md) に関するページを参照してください。
 >
 >
 
-## <a name="supported-platforms-for-windows-vms"></a>Windows VM でサポートされているプラットフォーム
+## <a name="supported-platforms-for-windows-computers-and-vms"></a>Windows コンピューターおよび VM でサポートされているプラットフォーム
 サポートされている Windows オペレーティング システム:
 
 * Windows Server 2008
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/08/2017
 * Windows Server 2016
 
 
-## <a name="supported-platforms-for-linux-vms"></a>Linux VM でサポートされているプラットフォーム
+## <a name="supported-platforms-for-linux-computers-and-vms"></a>Linux コンピューターおよび VM でサポートされているプラットフォーム
 サポートされている Linux オペレーティング システム:
 
 * Ubuntu バージョン 12.04、14.04、16.04、16.10
@@ -56,7 +56,7 @@ ms.lasthandoff: 12/08/2017
 ## <a name="vms-and-cloud-services"></a>VM とクラウド サービス
 クラウド サービスで実行されている VM もサポートされます。 監視されるのは、運用スロットで実行されているクラウド サービスの Web ロールと worker ロールだけです。 クラウド サービスの詳細については、 [Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 「[Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)」 - Azure Security Center を導入するための設計上の考慮事項を計画および理解する方法について説明します。
 - [Azure Security Center のタイプ別のセキュリティ アラート](https://docs.microsoft.com/azure/security-center/security-center-alerts-type.md#virtual-machine-behavioral-analysis) - Security Center における仮想マシンの動作分析とクラッシュ ダンプ メモリ分析について説明します。

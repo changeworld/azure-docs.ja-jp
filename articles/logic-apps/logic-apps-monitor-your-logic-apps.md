@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 8ad8281744293a05b50f8664a7e5a3fea7aa7b33
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f0376070a8bec7d97f54e9a198d5d67a9751334c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="view-runs-and-trigger-history-for-your-logic-app"></a>ロジック アプリの実行の履歴とトリガーの履歴を表示する
 
-1. [Azure Portal](https://portal.azure.com) でご利用のロジック アプリを探すには、Azure のメイン メニューの **[その他のサービス]** を選択します。 検索ボックスに「ロジック アプリ」と入力し、**[ロジック アプリ]** を選択します。
+1. [Azure Portal](https://portal.azure.com) でご利用のロジック アプリを探すには、Azure のメイン メニューの **[すべてのサービス]** を選択します。 検索ボックスに「ロジック アプリ」と入力し、**[ロジック アプリ]** を選択します。
 
    ![ロジック アプリを検索する](./media/logic-apps-monitor-your-logic-apps/find-your-logic-app.png)
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 01/19/2018
 
 トリガー イベント、実行イベント、アクション イベントなど、ご利用のロジック アプリのイベントを検索して表示するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) で、**[その他のサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
 
    ![[Log Analytics] を選択する](media/logic-apps-monitor-your-logic-apps/browseloganalytics.png)
 

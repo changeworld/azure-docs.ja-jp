@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: c8f19a4f0aadbee2de97bb3ec85c2c85b493a394
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0af34a64cd3cc33519f2cc69653982e00e4c1e9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="export-an-azure-resource-manager-template-from-existing-resources"></a>既存のリソースから Azure Resource Manager テンプレートをエクスポートする
 この記事では、サブスクリプション内の既存のリソースから Resource Manager テンプレートをエクスポートする方法について説明します。 生成されたそのテンプレートを使用して、テンプレートの構文について理解を深めることができます。
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="deploy-resources"></a>リソースのデプロイ
 まず、テンプレートとしてエクスポートするために使用できるリソースを Azure にデプロイします。 テンプレートにエクスポートしたいリソース グループが既にサブスクリプション内にある場合、このセクションはスキップしてかまいません。 この記事の残りの部分では、このセクションに示されている Web アプリと SQL データベース ソリューションをデプロイ済みであることを前提としています。 別のソリューションを使用する場合は、操作が若干異なる可能性がありますが、テンプレートをエクスポートする手順は同じです。 
 
-1. [Azure Portal](https://portal.azure.com) で **[+ 新規]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** を選択します。
    
       ![[+ 新規] の選択](./media/resource-manager-export-template/new.png)
 2. **[web app + SQL]\(Web アプリと SQL\)** を検索して、使用可能なオプションから選択します。
@@ -169,7 +169,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ポータルで作成したリソースからテンプレートをエクスポートする方法について説明しました。
 
 * [PowerShell](resource-group-template-deploy.md)、[Azure CLI](resource-group-template-deploy-cli.md)、または [REST API](resource-group-template-deploy-rest.md) を使用してテンプレートをデプロイできます。

@@ -15,28 +15,28 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 122dbdb838377a36020f9ec692b38544004e676c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 846ec63d47ebc787fa1edbf1968f1a843e96ac9d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 この記事では、[Azure Portal](https://portal.azure.com) を使用して、自動ユーザー アカウント プロビジョニングとプロビジョニング解除をサポートしているアプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)の "おすすめ" カテゴリから追加されたアプリケーション) の自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理する方法について説明します。 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」を参照してください。
 
 ## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
-[Azure Portal](https://portal.azure.com) では、ディレクトリ管理者が [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。 これらのアプリケーションは、ポータルの **[その他のサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。
+[Azure Portal](https://portal.azure.com) では、ディレクトリ管理者が [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)を使用してディレクトリでのシングル サインオンを構成したすべてのアプリケーションを表示および管理できます。 これらのアプリケーションは、ポータルの **[すべてのサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。
 
-![Enterprise Applications blade][0]
+![[エンタープライズ アプリケーション] ウィンドウ][0]
 
-左側にある **[すべてのアプリケーション]** リンクを選択すると、ギャラリーから追加されたアプリを含め、構成済みのアプリの一覧が表示されます。 アプリを選択すると、そのアプリのリソース ブレードが読み込まれます。リソース ブレードでは、そのアプリのレポートを表示することや、さまざまな設定を管理することができます。
+左側にある **[すべてのアプリケーション]** リンクを選択すると、ギャラリーから追加されたアプリを含め、構成済みのアプリの一覧が表示されます。 アプリを選択すると、そのアプリのリソース ウィンドウが読み込まれます。リソース ブレードでは、そのアプリのレポートを表示することや、さまざまな設定を管理することができます。
 
 左側にある **[プロビジョニング]** を選択すると、ユーザー アカウント プロビジョニングの設定を管理できます。
 
-![Application resource blade][1]
+![アプリケーション リソース ウィンドウ][1]
 
 ## <a name="provisioning-modes"></a>プロビジョニング モード
-**[プロビジョニング]** ブレードの先頭には**[モード]** メニューがあり、エンタープライズ アプリケーションでサポートされているプロビジョニング モードが表示され、プロビジョニング モードを構成できます。 利用可能なオプションは、次のとおりです。
+**[プロビジョニング]** ウィンドウの先頭には**[モード]** メニューがあり、エンタープライズ アプリケーションでサポートされているプロビジョニング モードが表示され、プロビジョニング モードを構成できます。 利用可能なオプションは、次のとおりです。
 
 * **[自動]** - Azure AD でこのアプリケーションに対する API ベースの自動ユーザー アカウント プロビジョニングやプロビジョニング解除がサポートされている場合、このオプションが表示されます。 このモードを選択すると、表示されるインターフェイスに従って、アプリケーションのユーザー管理 API に接続するように Azure AD を構成し、Azure AD とアプリの間でのユーザー アカウント データのフロー方法を定義するアカウント マッピングとワークフローを作成して、Azure AD プロビジョニング サービスを管理できます。
 * **[手動]** - Azure AD でこのアプリケーションに対するユーザー アカウントの自動プロビジョニングがサポートされていない場合、このオプションが表示されます。 このオプションは、アプリケーションが提供するユーザーの管理とプロビジョニング機能 (SAML のジャストインタイム プロビジョニングなど) に基づき、外部プロセスを使用して、そのアプリケーションに格納されているユーザー アカウント レコードを管理する必要があることを意味します。
@@ -54,7 +54,7 @@ ms.lasthandoff: 12/11/2017
 
 Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オブジェクトの間には、構成済みの一連のマッピングが存在します。 アプリによっては、グループや連絡先といった他のタイプのオブジェクトを管理するものもあります。 テーブル内のこれらのマッピングのいずれかを選択すると、右側にマッピング エディターが表示され、そこでマッピングを確認およびカスタマイズできます。
 
-![Application resource blade][2]
+![アプリケーション リソース ウィンドウ][2]
 
 サポートされるカスタマイズは次のとおりです。
 
@@ -62,7 +62,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 * Azure AD ユーザー オブジェクトからアプリのユーザー オブジェクトにフローする属性を編集する。 属性マッピングの詳細については、「 [属性マッピングの種類について](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types)」を参照してください。
 * Azure AD がターゲット アプリケーションに対して実行するプロビジョニング操作をフィルター処理する。 Azure AD でオブジェクトを完全に同期するのではなく、実行される操作を制限することができます。 たとえば、**[更新]** のみを選択すると、Azure AD はアプリケーションの既存のユーザー アカウントの更新のみを行い、新しいユーザー アカウントは作成しません。 **[作成]** のみを選択すると、Azure は新しいユーザー アカウントの作成のみを行い、既存のユーザー アカウントは更新しません。 この機能により、アカウントの作成ワークフローと更新ワークフローで異なるマッピングを作成できます。
 
-### <a name="settings"></a>[設定]
+### <a name="settings"></a>設定
 このセクションでは、選択したアプリケーションに対して Azure AD プロビジョニング サービスを開始および停止できるだけでなく、必要に応じてプロビジョニング キャッシュのクリアやサービスの再起動を行うこともできます。
 
 アプリケーションに対して初めてプロビジョニングを有効にする場合は、**[プロビジョニング状態]** を **[オン]** に変更して、サービスを有効にします。 そうすると、Azure AD プロビジョニング サービスが初期同期を実行します。初期同期では、**[ユーザーとグループ]** セクションで割り当てられたユーザーが読み取られ、そのユーザーのターゲット アプリケーションが照会され、Azure AD の **[マッピング]** セクションで定義されているプロビジョニング操作が実行されます。 このプロセス中に、プロビジョニング サービスは管理対象のユーザー アカウントに関するキャッシュ データを格納します。そのため、割り当てのスコープに存在しない、ターゲット アプリケーション内の管理対象外のアカウントはプロビジョニング解除操作の影響を受けません。 初期同期の後、プロビジョニング サービスは 10 分間隔で自動的にユーザーとグループ オブジェクトを同期します。
@@ -81,6 +81,6 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 Azure AD エクスペリエンスを気に入っていただけることを期待しております。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
 
 
-[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-blade.PNG
+[0]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-pane.PNG
 [1]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning.PNG
 [2]: ./media/active-directory-enterprise-apps-manage-provisioning/enterprise-apps-provisioning-mapping.PNG

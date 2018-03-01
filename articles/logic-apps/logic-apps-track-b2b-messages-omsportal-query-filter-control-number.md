@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 69e8735417bc006296b8a6e5168d9fbeff052247
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: bc1ea42c9fb81fe1e2a2594fda48500132cbb539
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="query-for-as2-x12-and-edifact-messages-in-the-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) で AS2、X12、および EDIFACT メッセージのクエリを実行する
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 01/19/2018
 > [!TIP] 
 > OMS ワークスペースの名前がわかっている場合は、ワークスペースのホーム ページ (`https://{your-workspace-name}.portal.mms.microsoft.com`)に移動して、手順 4 から始めてください。 それ以外の場合は、手順 1 から始めてください。
 
-1. [Azure ポータル](https://portal.azure.com)で、**[その他のサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
+1. [Azure Portal](https://portal.azure.com) で、**[すべてのサービス]** を選択します。 次に示すように、"ログ分析" を検索し、**[Log Analytics]** を選択します。
 
    ![Log Analytics を見つける](media/logic-apps-track-b2b-messages-omsportal-query-filter-control-number/browseloganalytics.png)
 

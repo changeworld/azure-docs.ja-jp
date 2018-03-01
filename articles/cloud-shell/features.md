@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: juluk
-ms.openlocfilehash: a2c5348ea2ea02917472c1c3ae3bb518364c6848
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 300630919ed832b059dd96fa0f35f89b52b0430d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="features--tools-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell での Bash の機能とツール
 
@@ -37,7 +37,7 @@ Cloud Shell での Bash は、Azure CLI 2.0 のアカウント アクセスを�
 
 ### <a name="ssh-into-azure-linux-virtual-machines"></a>Azure Linux 仮想マシンへの SSH 接続
 
-Azure CLI 2.0 からの Linux VM の作成では、既定の SSH キーを作成して、`$Home` ディレクトリに格納できます。 `$Home` に SSH キーを置くと、Cloud Shell から Azure Linux VM に直接 SSH 接続できます。 キーは、ファイル共有の acc_<user>.img に保持され、ファイル共有またはキーへのアクセスを使用または共有するときのベスト プラクティスを使います。
+Azure CLI 2.0 からの Linux VM の作成では、既定の SSH キーを作成して、`$Home` ディレクトリに格納できます。 `$Home` に SSH キーを置くと、Cloud Shell から直接 Azure Linux VM への SSH 接続が有効になります。 キーは、ファイル共有の acc_<user>.img に保持され、ファイル共有またはキーへのアクセスを使用または共有するときのベスト プラクティスを使います。
 
 ### <a name="home-persistence-across-sessions"></a>セッション間での $Home の永続化
 
@@ -47,6 +47,10 @@ Azure CLI 2.0 からの Linux VM の作成では、既定の SSH キーを作成
 `$Home` およびマシン状態の外部にあるファイルは、セッション間で保持されません。
 
 [Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください。](persisting-shell-storage.md)
+
+### <a name="deep-integration-with-open-source-tooling"></a>オープンソース ツールとの緊密な統合
+
+Cloud Shell の Bash には、Terraform や Ansible などのオープンソース ツールのための事前に構成された認証が含まれています。 チュートリアルの例からそれを試してみてください。
 
 ## <a name="tools"></a>ツール
 

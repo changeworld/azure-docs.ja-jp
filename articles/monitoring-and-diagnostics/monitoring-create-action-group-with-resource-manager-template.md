@@ -1,8 +1,8 @@
 ---
 title: "Resource Manager を使用してアクション グループを作成する | Microsoft Docs"
 description: "Azure Resource Manager テンプレートを使用してアクション グループを作成する方法を説明します。"
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
-ms.author: ancav
-ms.openlocfilehash: 5e715cad5cb28ad0c763ffb29c43e9ee98741699
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.date: 02/16/2018
+ms.author: dukek
+ms.openlocfilehash: 1f97bf1e1e5c2800c2cdc16a6bcc1837f178e408
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-action-group-with-a-resource-manager-template"></a>Resource Manager テンプレートを使用したアクション グループの作成
 この記事では、[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)を使用して、アクション グループを構成する方法について説明します。 テンプレートを使用することで、特定の種類のアラートで再利用できるアクション グループを自動的に設定できます。 このようなアクション グループを使用することで、アラートがトリガーされたときに、すべての適切な関係者が通知を確実に受け取ることができます。
@@ -56,7 +56,7 @@ Resource Manager テンプレートを使用してアクション グループ�
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2017-04-01",
+      "apiVersion": "2018-03-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {
@@ -139,7 +139,7 @@ Resource Manager テンプレートを使用してアクション グループ�
   "resources": [
     {
       "type": "Microsoft.Insights/actionGroups",
-      "apiVersion": "2017-04-01",
+      "apiVersion": "2018-03-01",
       "name": "[parameters('actionGroupName')]",
       "location": "Global",
       "properties": {

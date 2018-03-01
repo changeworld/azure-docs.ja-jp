@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 2b9ad6da3963fefc5441581d113f6f690bd72be0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d46b869815fef44a8137bb5121133a1c0140ca30
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="working-with-management-solutions-in-azure-preview"></a>Azure での管理ソリューションの使用 (プレビュー)
 > [!NOTE]
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/01/2018
 Microsoft および信頼されたパートナーが提供する管理ソリューションは、Azure Portal の Azure Marketplace でインストールできます。
 
 1. Azure ポータルにログインします。
-2. 左側のウィンドウで、**[その他のサービス]** を選択します。
+2. 左側のウィンドウで、**[すべてのサービス]** を選択します。
 3. **[ソリューション]** までスクロールするか、**[フィルター]** ダイアログに「*ソリューション*」と入力します。
 4. **[+ 追加]** ボタンをクリックします。
 5. 興味のあるソリューションを検索します。検索は、ブラウジングするか、**[フィルター]** ボタンをクリックするか、または **[Search Everthing]** (全ソリューションを検索) ボックスに入力して行います。
@@ -92,7 +92,7 @@ Log Analytics ワークスペースと Automation アカウント間のリンク
 Azure サブスクリプションにリンクされているワークスペース内の管理ソリューションを確認するには、次の手順に従います。
 
 1. Azure ポータルにログインします。
-2. 左側のウィンドウで、**[その他のサービス]** を選択します。
+2. 左側のウィンドウで、**[すべてのサービス]** を選択します。
 3. **[ソリューション]** までスクロールするか、**[フィルター]** ダイアログに「*ソリューション*」と入力します。
 4. すべてのワークスペースにインストールされているソリューションが表示されます。
 

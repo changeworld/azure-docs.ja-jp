@@ -1,6 +1,6 @@
 ---
-title: "Azure Cloud Shell で Terraform と Bash を使ってデプロイする | Microsoft Docs"
-description: "Bash で Terraform を使って Azure リソースをデプロイします"
+title: "Azure Cloud Shell で Bash から Terraform を使ってデプロイする | Microsoft Docs"
+description: "Azure Cloud Shell で Bash から Terraform を使ってデプロイする"
 services: Azure
 documentationcenter: 
 author: tomarcher
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: tarcher
-ms.openlocfilehash: c75b5d521dc3eacaf5c5921c35442b1afeb4fa13
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6df6a3a5242e0a5fc5c03136e1cd20967a93487a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="terraform-and-bash-in-cloud-shell"></a>Cloud Shell での Terraform と Bash
+# <a name="deploy-with-terraform-from-bash-in-azure-cloud-shell"></a>Azure Cloud Shell で Bash から Terraform を使ってデプロイする
 この記事では、[Terraform AzureRM プロバイダー](https://www.terraform.io/docs/providers/azurerm/index.html)を使ってリソース グループを作成する手順について説明します。 
 
 [Hashicorp Terraform](https://www.terraform.io/) は、チーム メンバー間で共有して編集、レビュー、バージョン管理できる宣言型の構成ファイルに API を体系化するオープン ソース ツールです。 Microsoft AzureRM プロバイダーは、Azure Resource Manager によってサポートされるリソースと AzureRM API を介してやり取りするために使われます。 
@@ -186,6 +186,6 @@ Destroy complete! Resources: 1 destroyed.
 
 Terraform で Azure リソースを正常に作成できました。 次のステップに進んで Cloud Shell の学習を続けてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Terraform Azure プロバイダーについて学習する](https://www.terraform.io/docs/providers/azurerm/#)<br>
 [Cloud Shell の Bash のクイックスタート](quickstart.md)

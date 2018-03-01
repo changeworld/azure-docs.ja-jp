@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: samacha
-ms.openlocfilehash: 98230a8b61d1776a9ab23fd416af306efc700959
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96a169343481f1cdf43af82a7768cfe08cbd4886
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Azure Stream Analytics でのリアルタイム Twitter 感情分析
 
@@ -49,9 +49,9 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 
 ### <a name="create-an-event-hub-namespace-and-event-hub"></a>イベント ハブの名前空間とイベント ハブを作成する
-この手順では、まずイベント ハブの名前空間を作成し、その名前空間にイベント ハブを追加します。 イベント ハブの名前空間は、関連するイベント バス インスタンスを論理的にグループ化するために使用されます。 
+この手順では、まずイベント ハブの名前空間を作成し、その名前空間にイベント ハブを追加します。 イベント ハブの名前空間は、関連するイベント バス インスタンスを論理的にグループ化するために使われます。 
 
-1. Azure Portal にログインし、**[新規]** > **[モノのインターネット]** > **[イベント ハブ]** をクリックします。 
+1. Azure Portal にログインし、**[リソースの作成]** > **[モノのインターネット]** > **[イベント ハブ]** をクリックします。 
 
 2. **[名前空間の作成]** ブレードで、名前空間の名前 (例: `<yourname>-socialtwitter-eh-ns`) を入力します。 名前空間には任意の名前を使用できますが、この名前は URL で有効である必要があり、Azure 全体で一意である必要があります。 
     
@@ -200,7 +200,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 ツイート イベントが Twitter からリアルタイムでストリーミングされるようになったので、これらのイベントをリアルタイムで分析する Stream Analytics ジョブを設定します。
 
-1. Azure Portal で、**[新規]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** をクリックします。
+1. Azure Portal で、**[リソースの作成]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。
 
 2. ジョブに `socialtwitter-sa-job` という名前を付け、サブスクリプション、リソース グループ、場所を指定します。
 
@@ -274,7 +274,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 5. **[Test]**をクリックします。 サンプリングされたデータに対してクエリが実行されます。
     
-6. [ **Save**] をクリックします。 クエリが Stream Analytics ジョブの一部として保存されます  (サンプル データは保存されません)。
+6. **[Save]** をクリックします。 クエリが Stream Analytics ジョブの一部として保存されます  (サンプル データは保存されません)。
 
 
 ## <a name="experiment-using-different-fields-from-the-stream"></a>ストリームのさまざまなフィールドを使用した実験 
@@ -305,7 +305,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
     * **[出力エイリアス]**: `TwitterStream-Output` という名前を使います。 
     * **[シンク]**: **[Blob ストレージ]** を選択します。
     * **[インポート オプション]**: **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
-    * **[ストレージ アカウント]**:  **[新しいストレージ アカウントを作成する]** を選択します。
+    * **[ストレージ アカウント]**。 **[新しいストレージ アカウントを作成する]** を選択します。
     * **[ストレージ アカウント]** (2 つ目のボックス):  「`YOURNAMEsa`」と入力します。`YOURNAME` は、自分の名前または別の一意の文字列です。 名前には小文字と数字だけを使用できます。名前は Azure 全体で一意である必要があります。 
     * **[コンテナー]**:  「`socialtwitter`」を入力します。
     ストレージ アカウント名とコンテナー名は、BLOB ストレージの URI を指定するときに次のように組み合わせて使われます。 
@@ -367,7 +367,7 @@ Twitter のセンチメントを理解するために使用できるもう 1 つ
     HAVING COUNT(*) > 20
     ```
 
-4. [ **Save**] をクリックします。
+4. **[Save]** をクリックします。
 
 5. TwitterWpfClient アプリケーションが実行されていることを確認します。 
 

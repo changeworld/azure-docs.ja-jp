@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.openlocfilehash: 9be945493cf013f472566a2c7a1dda05fd9b0ca9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0994bdc7e6c86e10f7002649830fc59ad3d1a045
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 Azure SQL Database 監査では、データベース イベントを追跡し、Azure ストレージ アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
@@ -39,8 +39,11 @@ SQL Database 監査を使用して、以下を行うことができます。
 
 「[データベースに対する監査を設定する](#subheading-2)」セクションの説明にあるように、さまざまな種類のイベント カテゴリの監査を構成できます。
 
-監査ログは Azure サブスクリプションの Azure Blob Storage に書き込まれます。
-
+> [!IMPORTANT]
+> 監査ログは Azure サブスクリプションの Azure Blob Storage 内にある**追加 BLOB** に書き込まれます。
+>
+> * **Premium Storage** は現在、追加 BLOB では**サポートされていません**。
+> * **VNet 内の Storage** は現在**サポートされていません**。
 
 ## <a id="subheading-8"></a>サーバー レベルおよびデータベース レベルの監査ポリシーを定義する
 
@@ -80,7 +83,7 @@ SQL Database 監査を使用して、以下を行うことができます。
    >監査レポートのテンプレートを最大限活用するには、すべての監査済みデータベースに同じストレージ アカウントを使用してください。
 
     <a id="storage-screenshot"></a> ![ナビゲーション ウィンドウ][4]
-6. 監査対象イベントをカスタマイズする場合は、PowerShell または REST API を使用して行います。 
+6. 監査対象イベントをカスタマイズする場合は、PowerShell または REST API を使用して行います。
 7. 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](sql-database-threat-detection-get-started.md)に関するページを参照してください。
 8. **[Save]** をクリックします。
 

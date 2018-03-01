@@ -3,7 +3,7 @@ title: "アプリケーション プロキシ用の Kerberos 制約付き委任�
 description: "アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティングを行います。"
 services: active-directory
 documentationcenter: 
-author: daveba
+author: MarkusVi
 manager: mtillman
 ms.assetid: 
 ms.service: active-directory
@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
-ms.author: asteen
-ms.openlocfilehash: 7b31f53e14e3f9a175e5dda95a18eb89dbca99dc
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.date: 02/09/2018
+ms.author: markvi
+ms.reviewer: harshja
+ms.openlocfilehash: a580b0afbd34623986ea8a3f60147a937c423e5e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティング
 
@@ -33,7 +34,7 @@ KCD を有効にするための実際の手順は比較的簡単です。要求�
 
 -   公開されているターゲット アプリケーションが IIS と Microsoft による Kerberos の実装に基づいている。
 
--   サーバーとアプリケーションのホストが単一の Active Directory ドメインに存在する。 クロス ドメインとフォレストのシナリオの詳細については、[KCD ホワイトペーパー](http://aka.ms/KCDPaper)を参照してください。
+-   サーバーとアプリケーションのホストが単一の Active Directory ドメインに存在する。 クロス ドメインとフォレストのシナリオの詳細については、[KCD ホワイトペーパー](https://aka.ms/KCDPaper)を参照してください。
 
 -   対象アプリケーションは事前認証が有効な Azure テナントで公開され、ユーザーは Azure に対してフォーム ベース認証で本人確認を行う。 リッチ クライアント認証のシナリオは、この記事では取り上げませんが、将来追加される予定です。
 
@@ -51,7 +52,7 @@ Windows Server 2012 R2 における KCD の構成に関するセクションは�
 
 -   可能であれば、コネクタ ホストと DC との間にアクティブな IPS/IDS デバイスを配置することは避けてください。これらのデバイスによって過剰な措置が講じられ、重要な RPC トラフィックが遮断されることが少なくありません。
 
-最も単純なシナリオで委任をテストすることをお勧めします。 一般に、不確定要素が多いほど、取り組むべき問題も多くなります。 たとえばテストを単一のコネクタに限定すれば貴重な時間を節約でき、問題が解決された後で新たにコネクタを追加することができます。
+単純なシナリオで委任をテストする必要があります。 一般に、不確定要素が多いほど、取り組むべき問題も多くなります。 たとえばテストを単一のコネクタに限定すれば貴重な時間を節約でき、問題が解決された後で新たにコネクタを追加することができます。
 
 いくつかの環境的要因が問題の原因となっている可能性もあります。 このような環境的要因を排除するために、テスト時にはアーキテクチャを最小限にするようにしてください。 たとえば、内部ファイアウォールの ACL が正しく構成されていないケースは多く見られます。可能であれば、コネクタからのすべてのトラフィックを直接 DC とバックエンド アプリケーションに流すようにしてください。 
 
@@ -79,7 +80,7 @@ KCD の問題にはどのようなものがあるのでしょうか。 問題の
 
 **クライアント事前認証** - 外部ユーザーが Azure に対しブラウザー経由で認証を行う。
 
-KCD SSO が正しく機能するためには、Azure に対する事前認証の成功が不可欠です。 まずこの点を確認し、問題があれば解決しておく必要があります。 事前認証段階は、KCD や公開されたアプリケーションとは無関係です。 対象のアカウントが Azure に存在し、無効化/ブロックされていないことをサニティ チェックすれば、不具合を修正するのは、それほど難しいことではありません。 通常、ブラウザーに返されたエラー応答を見れば原因を把握することができます。 確信が持てない場合は、Microsoft から提供されている他のトラブルシューティング ドキュメントも見て検証してください。
+KCD SSO が正しく機能するためには、Azure に対する事前認証の成功が不可欠です。 問題がある場合は、テストしてこの問題に対処する必要があります。 事前認証段階は、KCD や公開されたアプリケーションとは無関係です。 対象のアカウントが Azure に存在し、無効化/ブロックされていないことをサニティ チェックすれば、不具合を修正するのは、それほど難しいことではありません。 通常、ブラウザーに返されたエラー応答を見れば原因を把握することができます。 確信が持てない場合は、Microsoft から提供されている他のトラブルシューティング ドキュメントも見て検証してください。
 
 **委任サービス** - Azure プロキシ コネクタがユーザーの代理で、KDC (Kerberos Distribution Center) から Kerberos サービス チケットを取得する。
 
@@ -125,7 +126,7 @@ KCD SSO が正しく機能するためには、Azure に対する事前認証の
 
 2.  IIS サイトのプロバイダー リストから一時的に NTLM を削除し、コネクタ ホスト上の IE から直接アプリにアクセスします。 プロバイダー リストに NTLM がなければ、Kerberos のみを使用してアプリケーションにアクセスできるはずです。 もし失敗するようなら、アプリケーションの構成に問題があり、Kerberos 認証が正常に機能していないことが考えられます。
 
-Kerberos が利用できない場合は、IIS でアプリケーションの認証設定をチェックし、Negotiate が一番上に、そのすぐ下に NTLM が列挙されていることを確認します  (Negotiate:kerberos や Negotiate:PKU2U ではないこと)。 Kerberos が機能している場合にのみ先に進んでください。
+Kerberos が利用できない場合は、IIS でアプリケーションの認証設定をチェックし、Negotiate が一番上に、そのすぐ下に NTLM が列挙されていることを確認します  (Negotiate:Kerberos や Negotiate:PKU2U ではないこと)。 Kerberos が機能している場合にのみ先に進んでください。
 
    ![Windows 認証プロバイダー](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
    
@@ -152,6 +153,16 @@ Kerberos が利用できない場合は、IIS でアプリケーションの認�
 -   IIS に移動してアプリケーションの **[構成エディター]** オプションを選択し、**system.webServer/security/authentication/windowsAuthentication** に移動して、**UseAppPoolCredentials** 値が **True** に設定されていることを確認します。
 
    ![IIS の構成におけるアプリ プールの資格情報オプション](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic12.png)
+
+この値を **True** に変更した後、キャッシュされたすべての Kerberos チケットは、バックエンド サーバーから削除する必要があります。 これを行うには、次のコマンドを実行します。
+
+```powershell
+Get-WmiObject Win32_LogonSession | Where-Object {$_.AuthenticationPackage -ne 'NTLM'} | ForEach-Object {klist.exe purge -li ([Convert]::ToString($_.LogonId, 16))}
+``` 
+
+詳細については、「[Purge the Kerberos client ticket cache for all sessions](https://gallery.technet.microsoft.com/scriptcenter/Purge-the-Kerberos-client-b56987bf)」 (すべてのセッションの Kerberos クライアント チケットのキャッシュをパージする) をご覧ください。
+
+
 
 カーネル モードを有効にすることは、Kerberos の動作パフォーマンスを高めるうえでは効果的ですが、その場合、要求したサービスのチケットの暗号化解除に "コンピューター アカウント" が使用されます。 これは "ローカル システム" とも呼ばれます。これが true に設定されていると、ファーム内の複数のサーバーにアプリケーションをホストしたときに KCD が破綻します。
 

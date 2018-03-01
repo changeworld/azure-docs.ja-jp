@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: maheshu
-ms.openlocfilehash: 16b206b97f71eeffbb4fddb9e447649034998672
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 97803d62ee42d777336dc87c34a16eff426d24d0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 この記事では、Azure Portal を使用して、Azure Active Directory Domain Services (Azure AD DS) を有効にする方法について説明します。
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 **[Azure AD Domain Services の有効化]** ウィザードを起動するには、次の手順を実行します。
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。
-2. 左側のウィンドウで、**[新規]** をクリックします。
+2. 左側のウィンドウで、**[リソースの作成]** をクリックします。
 3. **[新規]** ページで、検索バーに「**Domain Services**」と入力します。
 
     ![ドメイン サービスの検索](./media/getting-started/search-domain-services.png)

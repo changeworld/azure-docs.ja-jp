@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.openlocfilehash: 0e3a5b84f57eac96249430fa1c2c4cc076c2926a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b041cc6a986c6f7a11d213f03294c9716c20d04
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="archive-the-azure-activity-log"></a>Azure アクティビティ ログのアーカイブ
 この記事では、Azure Portal、PowerShell コマンドレット、またはクロス プラットフォーム CLI を使用して、ストレージ アカウントで [**Azure アクティビティ ログ**](monitoring-overview-activity-logs.md)をアーカイブする方法について説明します。 このオプションは、監査、静的分析、またはバックアップに対して (保持ポリシーを完全に制御して) 90 日よりも長いアクティビティ ログを保持する場合に便利です。 90 日以下でイベントを保持する必要があるだけの場合は、ストレージ アカウントにアーカイブを設定する必要はありません。アーカイブを有効にしなければ、アクティビティ ログのイベントは Azure プラットフォームに90 日間保持されるためです。
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 以下の方法のいずれかを使用して、アクティビティ ログをアーカイブするには、サブスクリプションに **ログ プロファイル** を設定します。 ログ プロファイルは、保存またはストリーミングされたイベントの種類と、ストレージ アカウントまたはイベント ハブの出力の種類を定義します。 また、ストレージ アカウントに格納されたイベントの保持ポリシー (保持する日数) も定義します。 保持ポリシーが 0 に設定されている場合は、イベントが無制限に保存されます。 それ以外の場合は、1 ～ 2,147, 483,647 の範囲の任意の値に設定できます。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 [ログ プロファイルの詳細については、こちらを参照してください](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>ポータルを使用したアクティビティ ログのアーカイブ
-1. ポータルで、左側のナビゲーションの **[アクティビティ ログ]** リンクをクリックします。 アクティビティ ログのリンクが表示されない場合は、最初に **[More Services (詳細なサービス)]** リンクをクリックします。
+1. ポータルで、左側のナビゲーションの **[アクティビティ ログ]** リンクをクリックします。 アクティビティ ログのリンクが表示されない場合は、最初に **[すべてのサービス]** リンクをクリックします。
    
     ![[アクティビティ ログ] ブレードに移動します。](media/monitoring-archive-activity-log/act-log-portal-navigate.png)
 2. ブレードの上部にある、 **[エクスポート]**をクリックします。
@@ -40,32 +40,32 @@ ms.lasthandoff: 10/11/2017
    
     ![ストレージ アカウントを設定します。](media/monitoring-archive-activity-log/act-log-portal-export-blade.png)
 4. スライダーまたはテキスト ボックスを使用して、アクティビティ ログのイベントをストレージ アカウント内で保持する必要がある日数を定義します。 データがストレージ アカウントに無期限に保持されるようにする場合は、この数を 0 に設定します。
-5. [ **Save**] をクリックします。
+5. **[Save]** をクリックします。
 
 ## <a name="archive-the-activity-log-via-powershell"></a>PowerShell を使用したアクティビティ ログのアーカイブ
 ```
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -Locations global,westus,eastus -RetentionInDays 180 -Categories Write,Delete,Action
 ```
 
-| プロパティ | 必須 | Description |
+| プロパティ | 必須 | [説明] |
 | --- | --- | --- |
-| StorageAccountId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 [このページにアクセス](https://azure.microsoft.com/en-us/regions)して、または [Azure Management REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx) を使用して、すべてのリージョンの一覧を表示できます。 |
-| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| カテゴリ |はい |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
+| StorageAccountId |いいえ  |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
+| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 [このページにアクセス](https://azure.microsoft.com/en-us/regions)して、または [Azure Management REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx) を使用して、すべてのリージョンの一覧を表示できます。 |
+| RetentionInDays |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| カテゴリ |[はい] |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 ## <a name="archive-the-activity-log-via-cli"></a>CLI を使用したアクティビティ ログのアーカイブ
 ```
 azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --locations global,westus,eastus,northeurope --retentionInDays 180 –categories Write,Delete,Action
 ```
 
-| プロパティ | 必須 | 説明 |
+| プロパティ | 必須 | [説明] |
 | --- | --- | --- |
-| name |はい |ログ プロファイルの名前。 |
-| storageId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 [このページにアクセス](https://azure.microsoft.com/en-us/regions)して、または [Azure Management REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx) を使用して、すべてのリージョンの一覧を表示できます。 |
-| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| categories |はい |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
+| name |[はい] |ログ プロファイルの名前。 |
+| storageId |いいえ  |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
+| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 [このページにアクセス](https://azure.microsoft.com/en-us/regions)して、または [Azure Management REST API](https://msdn.microsoft.com/library/azure/gg441293.aspx) を使用して、すべてのリージョンの一覧を表示できます。 |
+| RetentionInDays |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| categories |[はい] |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 ## <a name="storage-schema-of-the-activity-log"></a>アクティビティ ログのストレージ スキーマ
 アーカイブの設定後、アクティビティ ログ イベントが発生するとすぐに、ストレージ コンテナーは、ストレージ アカウントに作成されます。 コンテナー内の BLOB は、アクティビティ ログおよび診断ログ全体で同じ形式に従います。 これらのBLOB の構造は次のとおりです。
@@ -141,7 +141,7 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 ```
 
 
-| 要素名 | Description |
+| 要素名 | [説明] |
 | --- | --- |
 | time |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | ResourceId |影響を受けるリソースのリソース ID。 |
@@ -163,7 +163,7 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [分析のための BLOB のダウンロード](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
 * [アクティビティ ログの Event Hubs へのストリーム](monitoring-stream-activity-logs-event-hubs.md)
 * [詳細については、アクティビティ ログに関するセクションをご覧ください](monitoring-overview-activity-logs.md)

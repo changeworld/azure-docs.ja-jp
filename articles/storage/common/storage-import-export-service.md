@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: muralikk
-ms.openlocfilehash: 37860425460496c5fc2451713d1d3ec58ac9106d
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0c34b7ce028ef0fae77322513f62557fa9f9929c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
 この記事では、Azure Import/Export サービスを使用してディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage と Azure Files に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure Files にインポートできます。 
@@ -87,7 +87,7 @@ Azure DC にパッケージを発送するには、FedEx、UPS、または DHL �
 このセクションでは、このサービスを使うために必要な前提条件を示します。 ドライブを発送する前に、これらの条件を慎重に確認してください。
 
 ### <a name="storage-account"></a>ストレージ アカウント
-既存の Azure サブスクリプション、または、Import/Export サービスを使用するための 1 つ以上のストレージ アカウントを持っている必要があります。 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+既存の Azure サブスクリプション、または、Import/Export サービスを使用するための 1 つ以上のストレージ アカウントを持っている必要があります。 Azure Import/Export では、クラシック、Blob Storage アカウントおよび汎用目的 v1 ストレージ アカウントのみがサポートされます。 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
 ### <a name="data-types"></a>データの種類
 Azure Import/Export サービスを使用して、データを**ブロック** BLOB、**ページ** BLOB、あるいは **Files** にコピーできます。 逆に言うと、このサービスを使用して Azure Storage からエクスポートできるのは、**ブロック** BLOB、**ページ** BLOB、**追加** BLOB に限られます。 このサービスは、Azure Files の Azure Storage へのインポートのみをサポートします。 Azure Files のエクスポートは、現在サポートされていません。
@@ -299,7 +299,7 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 
 **トランザクション料金**
 
-Azure Storage にデータをインポートするときは、トランザクション料金は発生しません。 Blob Storage からデータをエクスポートするときは、標準の送信料金が適用されます。 トランザクション料金の詳細については、「 [Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)
+データを Azure Storage にインポートするときに、標準のストレージ トランザクション料金の他に、追加のトランザクション料金は必要ありません。 Blob Storage からデータをエクスポートするときは、標準の送信料金が適用されます。 トランザクション料金の詳細については、「 [Data Transfers (データ転送) の料金詳細](https://azure.microsoft.com/pricing/details/data-transfers/)
 
 
 

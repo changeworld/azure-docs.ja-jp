@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: d9b951ad4c54a3714ba7e857d5198c351215cbac
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: e0b835f4cbad9855bfb7ddccf2d9bf5b4bf88231
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-routes-using-the-azure-portal"></a>Azure Portal を使用してルートのトラブルシューティングを行う
 > [!div class="op_single_selector"]
@@ -55,7 +55,7 @@ VNet (*VNet1*、プレフィックス: 10.9.0.0/16) に接続する VM (*VM1*) �
 VM に適用されている集約ルートを表示するには、次の手順を実行します。
 
 1. https://portal.azure.com で Azure ポータルにログインします。ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveRouteTable/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
-2. **[その他のサービス]** をクリックし、表示される一覧で **[仮想マシン]** をクリックします。
+2. **[すべてのサービス]** をクリックし、表示される一覧で **[仮想マシン]** をクリックします。
 3. 表示される一覧からトラブルシューティングを実行する VM を選択すると、VM のブレードとオプションが表示されます。
 4. **[問題の診断と解決]** をクリックし、一般的な問題を選択します。 例として、 **[Windows VM に接続できません]** を選択します。
 
@@ -97,7 +97,7 @@ VM に適用されている集約ルートを表示するには、次の手順�
 特定のネットワーク インターフェイス (NIC) のネットワーク トラフィック フローが影響を受ける場合は、有効なルートの完全な一覧を NIC で直接表示できます。 NIC に適用されている集約ルートを表示するには、次の手順を実行します。
 
 1. https://portal.azure.com で Azure ポータルにログインします。
-2. **[その他のサービス]** をクリックし、**[ネットワーク インターフェイス]** をクリックします。
+2. **[すべてのサービス]** をクリックし、**[ネットワーク インターフェイス]** をクリックします
 3. NIC の名前の一覧を検索するか、表示された一覧から選択します。 この例では、 **VM1-NIC1** が選択されています。
 4. 次の図にあるように、**[ネットワーク インターフェイス]** ブレードで **[Effective routes]** (有効なルート) を選択します。
 
@@ -117,7 +117,7 @@ VM に適用されている集約ルートを表示するには、次の手順�
 ルート テーブルの集約ルートを表示するには、次の手順を実行します。
 
 1. https://portal.azure.com で Azure ポータルにログインします。
-2. **[その他のサービス]** をクリックし、**[ルート テーブル]** をクリックします。
+2. **[すべてのサービス]** をクリックし、**[ルート テーブル]** をクリックします
 3. 集約ルートを表示するルート テーブルの一覧を検索し、選択します。 この例では **UDRouteTable** が選択されています。 次の図に示すように、選択したルート テーブルのブレードが表示されます。
 
     ![](./media/virtual-network-routes-troubleshoot-portal/image9.png)

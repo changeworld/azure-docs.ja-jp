@@ -1,10 +1,10 @@
 ---
 title: "VNet 間の接続の作成: クラシック: Azure Portal | Microsoft Docs"
-description: "PowerShell と Azure Portal を使って複数の Azure 仮想ネットワークを接続する方法。"
+description: "PowerShell と Azure Portal を使って複数の Azure 仮想ネットワークを接続します。"
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
+manager: jpconnock
 editor: 
 tags: azure-service-management
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/05/2017
+ms.date: 02/14/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1e7a7af26fbfb728aa5a6b8a0d63b71f678256bf
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9e0c96d0d2c321869f7dc90e18f8dd25d58edc8f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>VNet 間の接続の構成 (クラシック)
 
@@ -164,7 +164,7 @@ Azure では、各ローカル ネットワーク サイトで指定されてい
 3. ゲートウェイ サブネットの名前は、必須の名前 "GatewaySubnet" を使用して自動的に入力されます。 **[アドレス範囲]** には、VPN Gateway サービスに割り当てられている IP アドレスが含まれています。 一部の構成ではゲートウェイ サブネット /29 を使用できますが、将来の構成でゲートウェイ サービスに、より多くの IP アドレスが必要になった場合に備えて、/28 または /27 を使用することをお勧めします。 この例の設定では、10.11.1.0/27 を使用します。 アドレス空間を調整し、**[OK]** をクリックします。
 4. **[ゲートウェイのサイズ]** を構成します。 この設定では、[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku) を参照します。
 5. **[ルーティングの種類]** を構成します。 この構成のルーティングの種類は**動的**である必要があります。 ゲートウェイを破棄し、新しいゲートウェイを作成しない限り、ルーティングの種類を後で変更することはできません。
-6. **[OK]**をクリックします。
+6. Click **OK**.
 7. **[新しい VPN 接続]** ページで、**[OK]** をクリックして仮想ネットワーク ゲートウェイの作成を開始します。 選択したゲートウェイ SKU によっては、ゲートウェイの作成に 45 分以上かかる場合も少なくありません。
 
 ## <a name="vnet4settings"></a>手順 5 - TestVNet4 設定を構成する
@@ -287,5 +287,5 @@ Azure Portal でクラシック VNets を作成するときに表示される名
 * VNet のすべての VPN トンネル (P2S VPN を含む) は、VPN ゲートウェイ上の使用可能な帯域幅を共有し、Azure 内の同じ VPN ゲートウェイ アップタイム SLA を共有します。
 * VNet 間のトラフィックは、Azure バックボーン経由で送信できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 接続を確認します。 「[VPN Gateway 接続の確認](vpn-gateway-verify-connection-resource-manager.md)」を参照してください。

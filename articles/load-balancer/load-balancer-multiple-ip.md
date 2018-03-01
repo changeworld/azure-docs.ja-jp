@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ecb64aa13b3b08f7b054a0665df3dc0cdb3e09bd
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 02388162ac4d2d86255c0a65d8b94253047f3983
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 12/21/2017
 
 1. Azure Portal (http://portal.azure.com) に移動します。Azure のアカウントを使用してサインインします。
 
-2. 画面の左上で、**[新規]** > **[ネットワーク]** > **[Load Balancer]** の順に選択します。 次に、**[作成]** を選択します。
+2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。 次に、**[作成]** を選択します。
 
 3. **[ロード バランサーの作成]** で、ロード バランサーの名前を入力します。 このシナリオでは、**mylb** という名前を使用します。
 
@@ -193,6 +193,6 @@ ms.lasthandoff: 12/21/2017
 
 最後に、Load Balancer の各フロントエンド IP アドレスを指すように DNS リソース レコードを構成します。 ドメインを Azure DNS でホストできます。 Azure DNS を Load Balancer で使用する方法の詳細については、「[Azure DNS を他の Azure サービスで使用する](../dns/dns-for-azure-services.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Azure で負荷分散サービスを組み合わせて使う方法について詳しくは、「[Azure で負荷分散サービスを使用する](../traffic-manager/traffic-manager-load-balancing-azure.md)」をご覧ください。
 - 各種ログを使って、ロード バランサーの管理やトラブルシューティングを行う方法については、「[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md)」を参照してください。

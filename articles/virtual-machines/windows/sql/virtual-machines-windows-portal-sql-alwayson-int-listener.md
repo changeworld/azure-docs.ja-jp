@@ -4,7 +4,7 @@ description: "Azure Virtual Machines に SQL Server の AlwaysOn 可用性グル
 services: virtual-machines
 documentationcenter: na
 author: MikeRayMSFT
-manager: jhubbard
+manager: craigg
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
@@ -12,26 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 05/01/2017
+ms.date: 02/16/2017
 ms.author: mikeray
-ms.openlocfilehash: 09fed7e785708d4afe64905de973becc188181d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0399f9ef969098216e080140a67f81725b670115
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-a-load-balancer-for-an-always-on-availability-group-in-azure"></a>Azure の AlwaysOn 可用性グループに使用するロード バランサーの構成
 この記事では、Azure Resource Manager で動作する Azure 仮想マシンに、SQL Server AlwaysOn 可用性グループのロード バランサーを作成する方法について説明します。 SQL Server インスタンスが Azure 仮想マシン上で実行されている場合、可用性グループにロード バランサーが必要となります。 ロード バランサーには、可用性グループ リスナーの IP アドレスが格納されます。 可用性グループが複数のリージョンにまたがっている場合は、各リージョンにロード バランサーが必要です。
 
 この作業を行うには、Resource Manager で動作する Azure 仮想マシンに SQL Server 可用性グループがデプロイされている必要があります。 両方の SQL Server 仮想マシンが同じ可用性セットに属している必要があります。 [Microsoft のテンプレート](virtual-machines-windows-portal-sql-alwayson-availability-groups.md)を使用すると、Resource Manager で自動的に可用性グループを作成することができます。 内部ロード バランサーは、このテンプレートによって自動的に作成されます。 
 
-必要に応じて [可用性グループを手動で構成](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)することもできます。
+必要に応じて [可用性グループを手動で構成](virtual-machines-windows-portal-sql-availability-group-tutorial.md)することもできます。
 
 この記事は、可用性グループの構成が既に済んでいることを前提としています。  
 
 関連トピック:
 
-* [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md)   
+* [Azure VM での AlwaysOn 可用性グループの構成 (GUI)](virtual-machines-windows-portal-sql-availability-group-tutorial.md)   
 * [Azure リソース マネージャーと PowerShell を使用した VNet 間の接続の構成](../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
 この記事では、Azure Portal でロード バランサーを作成し、必要な構成を行います。 その作業が済んだら、可用性グループ リスナーのロード バランサーの IP アドレスを使用するようにクラスターを構成します。
@@ -62,10 +62,10 @@ ms.lasthandoff: 10/11/2017
 
 5. **[ロード バランサーの作成]** ダイアログボックスで、次のようにロード バランサーを構成します。
 
-   | 設定 | 値 |
+   | Setting | 値 |
    | --- | --- |
    | **名前** |ロード バランサーを表すテキスト名  (例: **sqlLB**)。 |
-   | **型** |**内部**: ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションが可用性グループに接続できます。  </br> **外部**: アプリケーションがパブリック インターネット接続経由で可用性グループに接続できます。 |
+   | **種類** |**内部**: ほとんどの実装では、内部ロード バランサーを使います。この場合、同じ仮想ネットワーク内のアプリケーションが可用性グループに接続できます。  </br> **外部**: アプリケーションがパブリック インターネット接続経由で可用性グループに接続できます。 |
    | **Virtual Network** |SQL Server インスタンスが存在する仮想ネットワークを選択します。 |
    | **サブネット** |SQL Server インスタンスが存在するサブネットを選択します。 |
    | **IP アドレスの割り当て** |**静的** |
@@ -108,7 +108,7 @@ Azure では、バックエンド アドレス プールを "*バックエンド
 
 3. **[プローブの追加]** ブレードでプローブを構成します。 次の値を使用してプローブを構成します。
 
-   | 設定 | 値 |
+   | Setting | 値 |
    | --- | --- |
    | **名前** |プローブを表すテキスト名  (例: **SQLAlwaysOnEndPointProbe**)。 |
    | **プロトコル** |**TCP** |
@@ -116,7 +116,7 @@ Azure では、バックエンド アドレス プールを "*バックエンド
    | **間隔** |*5* |
    | **異常のしきい値** |*2* |
 
-4.  **[OK]**をクリックします。 
+4.  Click **OK**. 
 
 > [!NOTE]
 > 指定したポートは、両方の SQL Server インスタンスのファイアウォールで必ず開放してください。 使用する TCP ポートに対する入力方向の規則が両方のインスタンスに必要となります。 詳細については、「[ファイアウォール規則を追加または編集する](http://technet.microsoft.com/library/cc753558.aspx)」をご覧ください。 
@@ -134,7 +134,7 @@ SQL Server インスタンスへのトラフィックをロード バランサ�
 
 3. **[負荷分散規則の追加]** ブレードを使用して負荷分散規則を構成します。 次の設定を使用します。 
 
-   | 設定 | 値 |
+   | Setting | 値 |
    | --- | --- |
    | **名前** |負荷分散規則を表すテキスト名  (例: **SQLAlwaysOnEndPointListener**)。 |
    | **プロトコル** |**TCP** |
@@ -149,7 +149,7 @@ SQL Server インスタンスへのトラフィックをロード バランサ�
    > ブレード上で一部の設定が隠れて見えないときは下へスクロールしてください。
    > 
 
-4. **[OK]**をクリックします。 
+4. Click **OK**. 
 5. 負荷分散規則が Azure によって構成されます。 以上、可用性グループのリスナーのホストとなっている SQL Server インスタンスにトラフィックをルーティングするようにロード バランサーを構成しました。 
 
 この時点で、リソース グループのロード バランサーが両方の SQL Server マシンに接続されています。 またロード バランサーには、可用性グループへの要求にいずれかのマシンが応答できるよう、SQL Server AlwaysOn 可用性グループ リスナーの IP アドレスが格納されます。
@@ -220,7 +220,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
 
 7. 次の設定で正常性プローブを追加します。
 
-   |設定 |値
+   |Setting |値
    |:-----|:----
    |**名前** |プローブを識別する名前。
    |**プロトコル** |TCP
@@ -234,7 +234,7 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
 
 10. 新しい負荷分散規則を次の設定で構成します。
 
-   |設定 |値
+   |Setting |値
    |:-----|:----
    |**名前** |負荷分散規則を識別する名前。 
    |**フロントエンド IP アドレス** |作成した IP アドレスを選択します。 
@@ -270,6 +270,34 @@ Azure Portal で IP アドレスをロード バランサーに追加するに�
 
 新しい IP アドレスを使用するように可用性グループを構成した後は、リスナーへの接続を構成します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="add-load-balancing-rule-for-distributed-availability-group"></a>分散可用性グループの負荷分散規則を追加する
+
+可用性グループが分散可用性グループに参加している場合は、ロード バランサーに追加の規則が必要になります。 この規則には、分散可用性グループ リスナーによって使用されるポートが格納されます。
+
+>[!IMPORTANT]
+>この手順は、可用性グループが[分散可用性グループ](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)に参加している場合にのみ適用されます。 
+
+1. 分散可用性グループに参加している各サーバーで、分散可用性グループ リスナーの TCP ポートに関する受信規則を作成します。 ドキュメントでは、多くの例で 5022 が使用されます。 
+
+1. Azure Portal でロード バランサーをクリックし、**[負荷分散規則]** をクリックした後、**[+ 追加]** をクリックします。 
+
+1. 負荷分散規則を次の設定で作成します。
+
+   |Setting |値
+   |:-----|:----
+   |**名前** |分散可用性グループの負荷分散規則を識別するための名前。 
+   |**フロントエンド IP アドレス** |可用性グループと同じフロント エンド IP アドレスを使用します。
+   |**プロトコル** |TCP
+   |**ポート** |5022 - [分散可用性グループのエンドポイント リスナー](http://docs.microsoft.com/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups)用のポート。</br> 任意のポートを使用できます。  
+   |**バックエンド ポート** | 5022 - **[ポート]** と同じ値を使用します。
+   |**バックエンド プール** |SQL Server インスタンスがある仮想マシンを含むプールです。 
+   |**正常性プローブ** |作成したプローブを選択します。
+   |**セッション永続化** |なし
+   |**アイドル タイムアウト (分)** |既定値 (4)
+   |**フローティング IP (ダイレクト サーバー リターン)** | 有効
+
+分散可用性グループに参加している他の可用性グループのロード バランサーについても、これらの手順を繰り返します。
+
+## <a name="next-steps"></a>次の手順
 
 - [異なるリージョンの Azure Virtual Machines に SQL Server AlwaysOn 可用性グループを構成する](virtual-machines-windows-portal-sql-availability-group-dr.md)

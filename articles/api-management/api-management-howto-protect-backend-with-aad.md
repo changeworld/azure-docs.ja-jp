@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 603a22059dcf07c68f4c6576ea1df97d810eacf3
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 695db2f5e6ffe794d76d0b9126dc231ed8a87d2c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
 次のビデオでは、Web API バックエンドをビルドし、Azure Active Directory と API Management で OAuth 2.0 プロトコルを使用して保護する方法を示します。  この記事では、ビデオで説明する手順の概要と追加情報を紹介します。 この 24 分間のビデオでは、次の手順について説明しています。
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/24/2018
 > 
 
 ## <a name="create-an-azure-ad-directory"></a>Azure AD Directory を作成する
-Azure Active Directory を使用して Web API バックエンドを保護するには、AAD テナントが必要です。 このビデオでは、 **APIMDemo** という名前のテナントを使用します。 AAD テナントを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインし、**[新規]**->、**[App Services]**->、**[Active Directory]**、->**[ディレクトリ]**、->**[カスタム作成]** の順にクリックします。 
+Azure Active Directory を使用して Web API バックエンドを保護するには、AAD テナントが必要です。 このビデオでは、**APIMDemo** という名前のテナントを使用します。 AAD テナントを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインし、**[新規]**->、**[App Services]**->、**[Active Directory]**、->**[ディレクトリ]**、->**[カスタム作成]** の順にクリックします。 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
@@ -42,15 +42,15 @@ Azure Active Directory を使用して Web API バックエンドを保護する
 ![Azure Active Directory][api-management-create-aad]
 
 ## <a name="create-a-web-api-service-secured-by-azure-active-directory"></a>Azure Active Directory で保護された Web API サービスを作成する
-この手順では、Web API バックエンドは Visual Studio 2013 を使用して作成されます。 この手順はビデオの 1:30 から開始されます。 Visual Studio で Web API バックエンド プロジェクトを作成するには、**[ファイル]**、->**[新規作成]**、->**[プロジェクト]** を選択し、**Web** テンプレートの一覧から **[ASP.NET Web アプリケーション]** を選択します。 このビデオでは、 **APIMAADDemo**という名前のプロジェクトを使用します。 **[OK]** をクリックしてプロジェクトを作成します。 
+この手順では、Web API バックエンドは Visual Studio 2013 を使用して作成されます。 この手順はビデオの 1:30 から開始されます。 Visual Studio で Web API バックエンド プロジェクトを作成するには、**[ファイル]**、->**[新規作成]**、->**[プロジェクト]** を選択し、**Web** テンプレートの一覧から **[ASP.NET Web アプリケーション]** を選択します。 このビデオでは、**APIMAADDemo** という名前のプロジェクトを使用します。 **[OK]** をクリックしてプロジェクトを作成します。 
 
 ![Visual Studio][api-management-new-web-app]
 
-**[テンプレートの選択]** の一覧で **[Web API]** をクリックし、Web API プロジェクトを作成します。 Azure Directory の認証を作成するには、 **[認証の変更]**をクリックします。
+**[テンプレートの選択]** の一覧で **[Web API]** をクリックし、Web API プロジェクトを作成します。 Azure Directory の認証を作成するには、**[認証の変更]** をクリックします。
 
 ![新しいプロジェクト][api-management-new-project]
 
-**[組織アカウント]** をクリックして、AAD テナントの**ドメイン**を指定します。 この例では、ドメインは **DemoAPIM.onmicrosoft.com**です。ディレクトリのドメインは、ディレクトリの **[ドメイン]** タブから取得できます。
+**[組織アカウント]** をクリックして、AAD テナントの**ドメイン**を指定します。 この例では、ドメインは **DemoAPIM.onmicrosoft.com** です。ディレクトリのドメインは、ディレクトリの **[ドメイン]** タブから取得できます。
 
 ![ドメイン][api-management-aad-domains]
 
@@ -192,7 +192,7 @@ API は、API パブリッシャー ポータルから構成されます。こ�
 
 操作は [API に手動で追加する](api-management-howto-add-operations.md)ことも、インポートすることもできます。 このビデオでは、操作は 6:40 から始まる Swagger 形式でインポートされます。
 
-次の内容のファイルを `calcapi.json` という名前で作成し、コンピューターに保存します。 `host` 属性がお使いの Web API バックエンドを指定していることを確認します。 この例では、 `"host": "apimaaddemo.azurewebsites.net"` が使用されます。
+次の内容のファイルを `calcapi.json` という名前で作成し、コンピューターに保存します。 `host` 属性がお使いの Web API バックエンドを指定していることを確認します。 この例では、`"host": "apimaaddemo.azurewebsites.net"` が使用されます。
 
 ```json
 {
@@ -387,7 +387,7 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 
 ![新規アプリケーション][api-management-aad-new-application-devportal-1]
 
-**[サインオン URL]** に API Management サービスの URL を入力し、`/signin` を追加します。 この例では、 `https://contoso5.portal.azure-api.net/signin` が使用されます。
+**[サインオン URL]** に API Management サービスの URL を入力し、`/signin` を追加します。 この例では、`https://contoso5.portal.azure-api.net/signin` が使用されます。
 
 **[アプリ URL]** に API Management サービスの URL を入力し、一意の文字をいくつか追加します。 この例では `https://contoso5.portal.azure-api.net/dp` を使用しますが、ここには任意の文字を入力できます。 必要な **[アプリケーションのプロパティ]** が構成されたら、チェック マークをクリックして、アプリケーションを作成します。
 
@@ -400,7 +400,7 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 
 ![承認サーバーの追加][api-management-add-authorization-server]
 
-**[名前]** フィールドと **[説明]** フィールドに、名前とオプションの説明を入力します。 これらのフィールドは、OAuth 2.0 承認サーバーを API Management サービス インスタンス内で識別するために使用されます。 この例では **承認サーバーのデモ** を使用します。 後で OAuth 2.0 サーバーを指定して API の認証に使用するときに、この名前を選択します。
+**[名前]** フィールドと **[説明]** フィールドに、名前とオプションの説明を入力します。 これらのフィールドは、OAuth 2.0 承認サーバーを API Management サービス インスタンス内で識別するために使用されます。 この例では**承認サーバーのデモ**を使用します。 後で OAuth 2.0 サーバーを指定して API の認証に使用するときに、この名前を選択します。
 
 **[Client registration page URL (クライアント登録ページ URL)]** に、`http://localhost` などのプレースホルダーの値を入力します。  **[クライアント登録ページ URL]** では、ユーザーによるアカウント管理をサポートする OAuth 2.0 プロバイダーについて、ユーザーが自身のアカウントを作成および構成するために使用できるページを指定します。 この例では、ユーザーは自身のアカウントを作成も構成もしないため、プレースホルダーを使用します。
 
@@ -495,7 +495,7 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 ビデオの 16:30 から始まる次の手順では、API を呼び出す単純なデスクトップ アプリケーションを構成します。 最初の手順では、デスクトップ アプリケーションを Azure AD に登録し、アクセス権をディレクトリとバックエンド サービスに付与します。 18:25 からは、電卓 API で操作を呼び出すデスクトップ アプリケーションのデモを紹介します。
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>要求を事前承認する JWT 検証ポリシーを構成する
-ビデオの 20:48 から始まる最後の手順では、 [JWT を検証する](https://msdn.microsoft.com/library/azure/034febe3-465f-4840-9fc6-c448ef520b0f#ValidateJWT) ポリシーを使用して、各受信要求のアクセス トークンを検証することで要求を事前承認する方法について説明します。 JWT の検証ポリシーで要求が検証されない場合、要求は API Management によってブロックされ、バックエンドへは渡されません。
+ビデオの 20:48 から始まる最後の手順では、 [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT) ポリシーを使用して、各受信要求のアクセス トークンを検証することで要求を事前承認する方法について説明します。 JWT の検証ポリシーで要求が検証されない場合、要求は API Management によってブロックされ、バックエンドへは渡されません。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">

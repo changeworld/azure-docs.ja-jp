@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro;seohack1
-ms.openlocfilehash: 8799931f6233f0f18b56bea39e3cbcbbf51274e9
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 0cf26846a8f42238de09727a03dc6b50dff746b6
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -78,7 +78,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にしていて必要としている認証方法にデータがある場合のみです。
 
-ユーザーが、携帯電話番号をディレクトリに表示したくなく、それでもパスワードのリセットにその番号を使いたい場合は、管理者がそれをディレクトリに設定しないようにする必要があります。 ユーザーは、[パスワード リセット登録ポータル](http://aka.ms/ssprsetup)で **[認証用電話]** 属性を設定する必要があります。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。
+ユーザーが、携帯電話番号をディレクトリに表示したくなく、それでもパスワードのリセットにその番号を使いたい場合は、管理者がそれをディレクトリに設定しないようにする必要があります。 ユーザーは、[パスワード リセット登録ポータル](https://aka.ms/ssprsetup)で **[認証用電話]** 属性を設定する必要があります。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。
 
 ### <a name="the-number-of-authentication-methods-required"></a>必要な認証方法の数
 
@@ -180,7 +180,7 @@ SSPR が有効になっている場合は、認証方法として以下のオプ
 * フェデレーション アプリケーション
 * Azure AD を使うカスタム アプリケーション
 
-登録の要求が無効になっている場合でも、ユーザーは自分の連絡先情報を手動で登録できます。 [http://aka.ms/ssprsetup](http://aka.ms/ssprsetup) にアクセスするか、アクセス パネルの **[プロファイル]** タブの下にある **[パスワード リセットの登録]** リンクを使って、行うことができます。
+登録の要求が無効になっている場合でも、ユーザーは自分の連絡先情報を手動で登録できます。 [https://aka.ms/ssprsetup](https://aka.ms/ssprsetup) にアクセスするか、アクセス パネルの **[プロファイル]** タブの下にある **[パスワード リセットの登録]** リンクを選択できます。
 
 > [!NOTE]
 > ユーザーは、**[キャンセル]** を選ぶか、ウィンドウを閉じることで、パスワード リセット登録ポータルを終了できます。 ただし、登録を完了するまでは、サインインのたびに登録を求められます。
@@ -250,17 +250,17 @@ Azure AD Connect のインストール、構成、有効化を行う場合、オ
 
 次の記事では、Azure AD によるパスワードのリセットに関する追加情報が得られます。
 
-* [SSPR のロールアウトを正常に完了する方法](active-directory-passwords-best-practices.md)
+* [SSPR のロールアウトを適切に完了する方法。](active-directory-passwords-best-practices.md)
 * [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 * [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
 * [ライセンスに関する質問](active-directory-passwords-licensing.md)
-* [SSPR が使用するデータと、ユーザー用に事前設定が必要なデータ。](active-directory-passwords-data.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
 * [ユーザーが使用できる認証方法。](active-directory-passwords-how-it-works.md#authentication-methods)
 * [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
-* [パスワード ライトバックの概要とその必要性。](active-directory-passwords-writeback.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
 * [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
 * [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
-* [不具合が発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
 * [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
 [Authentication]: ./media/active-directory-passwords-how-it-works/sspr-authentication-methods.png "Azure AD の使用できる認証方法と必要な数量"

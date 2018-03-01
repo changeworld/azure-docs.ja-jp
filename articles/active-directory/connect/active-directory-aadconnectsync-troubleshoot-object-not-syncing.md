@@ -14,15 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 7176ebd0515008147bd3797dcb760f35e2d85d45
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e68b70ce87a6fedab1b85bf2800a50e512910dea
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-an-object-that-is-not-synchronizing-to-azure-ad"></a>Azure AD と同期していないオブジェクトのトラブルシューティング
 
 オブジェクトが Azure AD と期待どおりに同期していない場合は、いくつかの理由が考えられます。 Azure AD からエラー電子メールを受信した場合、または Azure AD Connect Health にエラーが表示される場合は、代わりに[エクスポート エラーのトラブルシューティング](active-directory-aadconnect-troubleshoot-sync-errors.md)に関するページをご覧ください。 しかし、オブジェクトが Azure AD にないという問題のトラブルシューティングを行う場合は、このトピックが役に立ちます。 オンプレミスのコンポーネントの Azure AD Connect 同期のエラーを検出する方法について説明します。
+
+>[!IMPORTANT]
+>Azure Active Directory (AAD) Connect のバージョン <verison> 以上のデプロイについては、ウィザードの[トラブルシューティング タスク](active-directory-aadconnect-troubleshoot-objectsync.md)を使用して、オブジェクト同期の問題のトラブルシューティングを行ってください。 
 
 エラーを探すには、いくつかの異なる場所を次の順序で参照します。
 
@@ -78,7 +81,7 @@ ms.lasthandoff: 01/18/2018
 
 別の便利な検索は、Azure AD コネクタを選び、**[Scope (スコープ)]** で **[インポートを保留しています]** を選択し、**[追加]**チェックボックスをオンにすることです。 この検索によって、オンプレミスのオブジェクトに関連付けできない、Azure AD 内の同期されているすべてのオブジェクトが得られます。  
 ![コネクタ スペースの検索の孤立](./media/active-directory-aadconnectsync-troubleshoot-object-not-syncing/cssearchorphan.png)  
-これらのオブジェクトは、別の同期エンジンまたは別のフィルター処理構成を持つ同期エンジンによって作成されています。 このビューは、管理されなくなった**孤立した**オブジェクトの一覧です。 この一覧を確認し、[Azure AD PowerShell](http://aka.ms/aadposh) コマンドレットを使用してこれらのオブジェクトを削除することを検討する必要があります。
+これらのオブジェクトは、別の同期エンジンまたは別のフィルター処理構成を持つ同期エンジンによって作成されています。 このビューは、管理されなくなった**孤立した**オブジェクトの一覧です。 この一覧を確認し、[Azure AD PowerShell](https://aka.ms/aadposh) コマンドレットを使用してこれらのオブジェクトを削除することを検討する必要があります。
 
 ### <a name="cs-import"></a>CS インポート
 cs オブジェクトを開くと、いくつかのタブが上部に表示されます。 **[インポート]** タブには、インポート後にステージングされるデータが表示されます。  

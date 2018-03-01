@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/28/2017
+ms.date: 02/21/2018
 ms.author: jonbeck
-ms.openlocfilehash: fc2cae8208baa211db2166c9d66a83153fa7b445
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: dfeb6b0cbd74ff5a5b11b730c6413df189096ab8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="high-performance-compute-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -36,13 +36,7 @@ ms.lasthandoff: 11/17/2017
 
 RDMA 対応の Windows VM が Azure RDMA ネットワークにアクセスするための要件は、次のとおりです。 
 
-* **オペレーティング システム**
-  
-  Windows Server 2012 R2、Windows Server 2012
-  
-  > [!NOTE]
-  > 現在、Windows Server 2016 は、Azure での RDMA 接続をサポートしていません。
-  >
+* **オペレーティング システム** - Windows Server 2016、Windows Server 2012 R2、Windows Server 2012
 
 * **可用性セットまたはクラウド サービス** – RDMA 対応の VM を、同じ可用性セット (Azure Resource Manager デプロイメント モデルを使用する場合)、または同じクラウド サービス (クラシック デプロイメント モデルを使用している場合) 内にデプロイします。 Azure Batch を使用する場合、RDMA 対応の仮想マシンは同じプールにある必要があります。
 
@@ -52,7 +46,7 @@ RDMA 対応の Windows VM が Azure RDMA ネットワークにアクセスする
 
 * **RDMA ネットワーク アドレス空間** - Azure の RDMA ネットワークでは、アドレス空間 172.16.0.0/16 は予約済みです。 Azure 仮想ネットワークにデプロイ済みのインスタンスで MPI アプリケーションを実行する場合、仮想ネットワークのアドレス空間が RDMA ネットワークと重複しないようにしてください。
 
-* **HpcVmDrivers 拡張機能** - RDMA 対応の VM では、HpcVmDrivers 拡張機能を追加して、RDMA 接続用に Windows ネットワーク デバイス ドライバーをインストールする必要があります。 (A8 インスタンスと A9 インスタンスの特定のデプロイでは、HpcVmDrivers 拡張機能は自動的に追加されます)。VM に VM 拡張機能を追加するには、[Azure PowerShell](/powershell/azure/overview) コマンドレットを使用できます。 
+* **HpcVmDrivers VM 拡張機能** - RDMA 対応の VM では、HpcVmDrivers 拡張機能を追加して、RDMA 接続用に Windows ネットワーク デバイス ドライバーをインストールします。 (A8 インスタンスと A9 インスタンスの特定のデプロイでは、HpcVmDrivers 拡張機能は自動的に追加されます)。VM に VM 拡張機能を追加するには、[Azure PowerShell](/powershell/azure/overview) コマンドレットを使用できます。 
 
   
   次のコマンドは、*West US* リージョン内の *myResourceGroup* という名前のリソース グループにデプロイされた *myVM* という名前の既存の RDMA 対応 VM に、最新バージョン 1.1 の HpcVMDrivers 拡張機能をインストールします。
@@ -78,7 +72,7 @@ RDMA 対応の Windows VM が Azure RDMA ネットワークにアクセスする
 - [ストレージの最適化](../virtual-machines-windows-sizes-storage.md)
 - [GPU の最適化](sizes-gpu.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Windows Server で HPC Pack を使ってコンピューティング集中型インスタンスを使用するためのチェックリストについては、「[HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する](classic/hpcpack-rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」を参照してください。
 

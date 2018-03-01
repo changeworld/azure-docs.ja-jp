@@ -1,22 +1,26 @@
 ---
-title: "仮想マシン スケール セットを Azure Stack で使用できるようにする"
-description: "クラウド管理者が Azure Stack Marketplace に仮想マシン スケールを追加する方法"
+title: "仮想マシン スケール セットを Azure Stack で使用できるようにする | Microsoft Docs"
+description: "クラウド オペレーターが Azure Stack Marketplace に仮想マシン スケールを追加する方法"
 services: azure-stack
-author: anjayajodha
+author: brenduns
+manager: femila
+editor: 
+ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
 ms.date: 9/25/2017
-ms.author: anajod
+ms.author: brenduns
+ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: 31aeb963bdf4fd32712bc6f29f64060ec1c77cb8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e4c1145b8ff4665024b4532cf9cc9ac6a0a24a1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>仮想マシン スケール セットを Azure Stack で使用できるようにする
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 仮想マシン スケール セットは Azure Stack のコンピューティング リソースです。 これらを使用して同一の仮想マシン セットをデプロイおよび管理できます。 すべての仮想マシンが同一に構成されているため、スケール セットでは仮想マシンを事前にプロビジョニングする必要がありません。 ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
 
@@ -47,7 +51,7 @@ Azure Stack では、仮想マシン スケール セットは自動スケール
 
 お使いの環境に合わせて次の PowerShell スクリプトを編集し、スクリプトを実行して Azure Stack Marketplace に仮想マシン スケール セットを追加します。 
 
-``$User`` は、管理者ポータルへの接続に使用するアカウントです。 たとえば、「 serviceadmin@contoso.onmicrosoft.com」のように入力します。
+``$User`` は、管理者ポータルへの接続に使用するアカウントです。 たとえば、「serviceadmin@contoso.onmicrosoft.com」のように入力します。
 
 ```
 $Arm = "https://adminmanagement.local.azurestack.external"
@@ -72,14 +76,14 @@ Add-AzsVMSSGalleryItem -Location $Location
 
 ## <a name="remove-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの削除
 
-仮想マシン スケール セットのギャラリー項目を削除するには、次の PowerShell コマンドを実行します。
+仮想マシン スケール セットのギャラリー アイテムを削除するには、次の PowerShell コマンドを実行します。
 
     Remove-AzsVMSSGalleryItem
 
 > [!NOTE]
-> ギャラリー項目はすぐに削除されない場合があります。 Marketplace から削除されるまで、ポータルを数回更新する必要がある場合があります。
+> ギャラリー アイテムはすぐに削除されない場合があります。 Marketplace から削除されるまで、ポータルを数回更新する必要がある場合があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Stack に関してよく寄せられる質問](azure-stack-faq.md)
 

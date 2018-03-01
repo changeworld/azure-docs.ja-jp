@@ -8,18 +8,22 @@ editor: TomShinder
 ms.assetid: 
 ms.service: security
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 02/16/2018
 ms.author: Barclayn
 ms.custom: AzLog
-ms.openlocfilehash: 3cd80817bf8b2ef2f66e9942eddc186a3eb5b5e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e5bd27c94569228693d1a9c80c6e5362b50c4a44
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure ログ統合チュートリアル: Event Hubs を使用した Azure Key Vault イベントの処理
 
 Azure ログ統合を使用すると、ログに記録されたイベントを取得し、Security Information and Event Management (SIEM) システムで使用できます。 このチュートリアルでは、Azure Event Hubs で取得されるログの処理に Azure ログ統合を使用する方法の例を説明しています。
+
+>[!IMPORTANT]
+>Azure ログの統合に優先される方法は、SIEM ベンダーの Azure Monitor コネクタを使用し、こちらの[手順](../monitoring-and-diagnostics/monitor-stream-monitoring-data-event-hubs.md)に従うことです。 ただし、SIEM ベンダーが Azure Monitor にコネクタを提供していない場合は、このようなコネクタが使用可能になるまで、Azure Log Integration を一時的なソリューションとして使用できます (SIEM が Azure Log Integration でサポートされている場合)。
+
  
 このチュートリアルを使用して、次の手順例に従い、各手順が解決策をどのようにサポートしているかを理解することで、Azure ログ統合と Event Hubs を連携する方法に慣れることをお勧めします。 ここで学習した内容を利用して、自社に固有の要件をサポートする独自の手順を作成することができます。
 
@@ -51,7 +55,7 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
 
 3. [Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)がインストールされている。 インストールするには:
 
-   a. リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。   
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。   
    b. Azure ログ統合のインストーラーをシステムにコピーします。 [ここからインストール ファイルをダウンロード](https://www.microsoft.com/download/details.aspx?id=53324)できます。   
    c. インストーラーを起動し、マイクロソフト ソフトウェア ライセンス条項に同意します。   
    d. 利用統計情報を提供する場合は、チェック ボックスをオンのままにします。 使用状況に関する情報をマイクロソフトに送信しない場合は、チェック ボックスをオフにします。
@@ -64,7 +68,7 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
 
    PowerShell 5.0 以上がインストールされていれば、最新バージョンのインストールに進むことができます。
    
-   a. PowerShell ウィンドウで、```Install-Module Azure``` コマンドを入力します。 インストール手順を完了します。    
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 PowerShell ウィンドウで、```Install-Module Azure``` コマンドを入力します。 インストール手順を完了します。    
    b. ```Install-Module AzureRM``` コマンドを入力します。 インストール手順を完了します。
 
    詳しくは、[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)に関する記事をご覧ください。
@@ -114,7 +118,7 @@ Azure ログ統合を使用すると、ログに記録されたイベントを�
     ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
 11. 指定可能なすべての Azure の場所を取得し、後の手順で使用できる変数に名前を追加します。
     
-    a. ```$locationObjects = Get-AzureRMLocation```    
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ```$locationObjects = Get-AzureRMLocation```    
     b. ```$locations = @('global') + $locationobjects.location```
     
     この時点で「`$locations`」と入力すると、場所の名前が表示されますが、Get-AzureRmLocation によって返される追加情報は表示されません。
@@ -154,7 +158,7 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 4. シークレットを設定して読み取り、追加のログ エントリを生成します。
     
-   a. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b.  ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b.  ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![返されるシークレット](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 
@@ -175,7 +179,7 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
 
 しばらく (または最後の 2 つのコマンドを実行した後しばらく) すると、生成中の JSON ファイルが表示されます。 ディレクトリ **C:\users\AzLog\EventHubJson** でこれを確認できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure ログ統合 FAQ](security-azure-log-integration-faq.md)
 - [Azure ログ統合の使用](security-azure-log-integration-get-started.md)

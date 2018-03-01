@@ -24,11 +24,13 @@ ACU: 195 ～ 210
 | Standard_F16s_v2 | 16     | 32          | 128            | 32             | 32000 (256)                                                           | 高                                           |
 | Standard_F32s_v2 | 32     | 64          | 256            | 32             | 64000 (512)                                                           | 極めて高                                 |
 | Standard_F64s_v2 | 64     | 128         | 512            | 32             | 128000 (1024)                                                         | 極めて高                                 |
-| Standard_F72s_v2<sup>2</sup> | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | 極めて高                                 |
+| Standard_F72s_v2<sup>2、3</sup> | 72     | 144         | 576            | 32             | 144000 (1520)                                                         | 極めて高                                 |
 
 <sup>1</sup> Fsv2 シリーズの VM は Intel® ハイパー スレッディング テクノロジを利用しています
 
 <sup>2</sup> 64 個を超える vCPU では、Windows Server 2016、Ubuntu 16.04 LTS、SLES 12 SP2、および LIS 4.2.1 が付属する Red Hat Enterprise Linux、CentOS 7.3、または Oracle Linux 7.3 の、サポートされているゲスト OS のいずれかが必要です
+
+<sup>3</sup> インスタンスは、単一の顧客専用のハードウェアに分離されます。
 
 ## <a name="fs-series-sup1sup"></a>Fs シリーズ <sup>1</sup>
 

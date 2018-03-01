@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 10/05/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: f3bc2f14b182e502c651ff44ef49b88cd34e1f50
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 5de67b6f1ce79934a3a6aab623d2e77a56a8ce76
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="understand-how-iot-edge-modules-can-be-used-configured-and-reused---preview"></a>IoT Edge モジュールをどのように使用、構成、および再利用できるかを理解する - プレビュー
 
@@ -28,7 +28,7 @@ Azure IoT Edge では、複数の IoT Edge モジュールを、IoT Edge デバ�
 
 Azure IoT Edge チュートリアルでは、Azure IoT Edge ポータルでウィザードを使用することによってデプロイ マニフェストを作成します。 また、REST または IoT Hub サービス SDK を使用して、プログラムでデプロイ マニフェストを適用することもできます。 IoT Edge デプロイの詳細については、「[Deploy and monitor (デプロイおよび監視)][lnk-deploy]」を参照してください。
 
-高いレベルでは、デプロイ マニフェストは、IoT Edge デバイスにデプロイされた IoT Edge モジュールの必要なプロパティを構成します。 これらのモジュールのうちの 2 つである Edge エージェントと Edge ハブは常に存在します。
+高いレベルでは、配置マニフェストは、IoT Edge デバイスにデプロイされた IoT Edge モジュールのモジュール ツインの必要なプロパティを構成します。 これらのモジュールのうちの 2 つである Edge エージェントと Edge ハブは常に存在します。
 
 マニフェストは、この構造に従います。
 
@@ -112,6 +112,8 @@ Edge ハブは、その Edge ハブの必要なプロパティの `storeAndForwa
 必要なプロパティがデプロイ マニフェストで指定されている場合、それらは現在モジュール ツインにある必要なプロパティをすべて上書きします。
 
 デプロイ マニフェストでモジュール ツインの必要なプロパティを指定しない場合、IoT Hub はモジュール ツインをどのような方法でも変更しないため、ユーザーは必要なプロパティをプログラムで設定できます。
+
+デバイス ツインを変更できるのと同じメカニズムを使用してモジュール ツインを変更できます。 詳しくは、[デバイス ツインの開発者ガイド](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-devguide-device-twins)に関するページをご覧ください。   
 
 ### <a name="deployment-manifest-example"></a>デプロイ マニフェストの例
 
@@ -277,7 +279,7 @@ Edge ハブのモジュール ツインは `$edgeHub` と呼ばれ、デバイ�
 | lastDesiredVersion | この int は、Edge ハブによって処理された必要なプロパティの最後のバージョンを参照します。 |
 | lastDesiredStatus.code | これは、Edge ハブによって表示された最後の必要なプロパティを参照する状態コードです。 許可される値: `200` 成功、`400` 無効な構成、`500` 失敗 |
 | lastDesiredStatus.description | 状態のテキストでの説明 |
-| clients.{device or module identity}.status | このデバイスまたはモジュールの接続状態。 可能性のある値 {"connected" \| "disconnected"}. 切断された状態になることができるのはモジュール ID だけです。 Edge ハブに接続されるダウンストリーム デバイスは、接続されている場合にのみ表示されます。 |
+| clients.{device or module identity}.status | このデバイスまたはモジュールの接続状態。 可能性のある値 {"connected" \| "disconnected"}。 切断された状態になることができるのはモジュール ID だけです。 Edge ハブに接続されるダウンストリーム デバイスは、接続されている場合にのみ表示されます。 |
 | clients.{device or module identity}.lastConnectTime | デバイスまたはモジュールが接続された最後の時間 |
 | clients.{device or module identity}.lastDisconnectTime | デバイスまたはモジュールが切断された最後の時間 |
 

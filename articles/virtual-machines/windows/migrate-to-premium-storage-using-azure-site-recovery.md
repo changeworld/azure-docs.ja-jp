@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: luywang
-ms.openlocfilehash: 325ddb640e0cc10ae242e0a4ce2cc0d042dad320
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 15c9a6608421b3eeebe6fbe91a10a849bf36ed85
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
 
@@ -80,7 +80,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
 ### <a name="step-1-create-a-recovery-services-vault"></a>手順 1: Recovery Services コンテナーを作成する
 
 1. [Azure Portal](https://portal.azure.com)を開きます。
-2. **[新規]** > **[管理]** > **[Backup** and **Site Recovery (OMS)]** を選択します。 または、**[参照]** > **[Recovery Services コンテナー]** > **[追加]** を選択します。 
+2. **[リソースの作成]** > **[管理]** > **[Backup** and **Site Recovery (OMS)]** を選択します。 または、**[参照]** > **[Recovery Services コンテナー]** > **[追加]** を選択します。 
 3. VM をレプリケートする先のリージョンを指定します。 今回は同じリージョン内で移行を行うため、ソース VM とソース ストレージ アカウントがあるリージョンを選択します。 
 
 ### <a name="step-2-choose-your-protection-goals"></a>手順 2: 保護の目標を選択する 

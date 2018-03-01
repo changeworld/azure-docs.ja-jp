@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 084fdf2f9a65eed3e444851afb88390aacf33738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ae4e874d0fd0922295a4ec7ad719a0a1fb108c8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configuring-cluster-resource-manager-settings-for-service-fabric-services"></a>Service Fabric サービスのために Cluster Resource Manager の設定を構成する
 Service Fabric のクラスター リソース マネージャーを使用すると、すべての名前付きサービスを個別に制御するルールを非常にきめ細かく制御できます。 各名前付きサービスで、クラスター内の割り当て方法のルールを指定できます。 また、各名前付きサービスで、それらがサービスにとってどれだけ重要であるかを含め、レポートする一連のメトリックを定義できます。 サービスの構成は次の 3 つの異なるタスクに分かれます。
@@ -40,7 +40,7 @@ Service Fabric のクラスター リソース マネージャーを使用する
 
 その他の配置ルールは、相関関係またはポリシーによって構成されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - メトリックは、Service Fabric クラスター リソース マネージャーが管理するクラスターの利用量と容量を表します。 メトリックの詳細とその構成方法については、[この記事](service-fabric-cluster-resource-manager-metrics.md)を参照してください。
 - アフィニティは、サービスに構成できるモードの 1 つです。 一般的ではありませんが、必要な場合、 [こちら](service-fabric-cluster-resource-manager-advanced-placement-rules-affinity.md)
 - さまざまな配置ルールをサービスで構成し、追加のシナリオに対処できます。 さまざまな配置ルールの詳細は [こちら](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md)

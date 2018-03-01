@@ -15,18 +15,18 @@ ms.workload: identity
 ms.date: 09/19/2017
 ms.author: curtand
 ms.reviewer: asmalser
-ms.openlocfilehash: 61579af23acf466a11ae59832a02cb75ba39dc26
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dd251ca4696101911293caa59c54c3354a1627a5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>エンタープライズ アプリのシングル サインオンの管理
 
 この記事では、[Azure Portal](https://portal.azure.com) を使用してエンタープライズ アプリケーションのシングル サインオンの設定を管理する方法を説明します。 エンタープライズ アプリとは、組織内で使用されるデプロイ済みのアプリです。 この記事は、[Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)から追加されたアプリに特に当てはまります。 
 
 ## <a name="finding-your-apps-in-the-portal"></a>ポータルでアプリを検索する
-シングル サインオン用に設定されているすべてのエンタープライズ アプリを、Azure Portal で表示し、管理できます。 これらのアプリケーションは、ポータルの **[その他のサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 
+シングル サインオン用に設定されているすべてのエンタープライズ アプリを、Azure Portal で表示し、管理できます。 これらのアプリケーションは、ポータルの **[すべてのサービス]** &gt; **[エンタープライズ アプリケーション]** セクションで見つけることができます。 
 
 ![Enterprise Applications blade][1]
 
@@ -83,10 +83,10 @@ ms.lasthandoff: 12/11/2017
 
 ![パスワード ベースのサインオン][4]
 
-## <a name="linked-sign-on"></a>Linked sign-on
+## <a name="linked-sign-on"></a>リンクされたサインオン
 アプリケーションでサポートされている場合は、リンクされた SSO モードを選択すると、このアプリでユーザーがクリックしたときに Azure AD アクセス パネルまたは Office 365 がリダイレクトする URL を入力できます。 リンクされた SSO (以前の "既存の SSO") の詳細については、「 [Azure Active Directory によるシングル サインオンのしくみ](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)」を参照してください。
 
-![Linked sign-on][5]
+![リンクされたサインオン][5]
 
 ##<a name="feedback"></a>フィードバック
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 02/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 426a456f8d979c8fb68b469f01eb68f378e876e8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a17d0918ea5938daf81c469fd6402a7dc9764831
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>オンプレミスから Azure へのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
@@ -76,8 +76,8 @@ ms.lasthandoff: 02/09/2018
 >
 > Linux ディストリビューションでは、ディストリビューションのマイナー バージョン リリース/更新の一部である stock カーネルのみがサポートされます。
 >
-> Azure Site Recovery で保護された VMware 仮想マシンまたは物理サーバーでの Linux ディストリビューションのメジャー バージョン間のアップグレードは、サポートされていません。 オペレーティング システムのメジャー バージョン間のアップグレード (例: CentOS 6.* から CentOS 7.*) を行うときは、マシンのレプリケーションを無効にして、マシンでオペレーティング システムをアップグレードした後、再度レプリケーションを有効にします。
-> 
+> Azure Site Recovery で保護された VMware 仮想マシンまたは物理サーバーでの Linux ディストリビューションのメジャー バージョン間のアップグレードは、サポートされていません。 オペレーティング システムのメジャー バージョン間のアップグレード (例: CentOS 6.\* から CentOS 7.\*) を行うときは、マシンのレプリケーションを無効にして、マシンでオペレーティング システムをアップグレードした後、再度レプリケーションを有効にします。
+>
 
 
 ### <a name="supported-ubuntu-kernel-versions-for-vmwarephysical-servers"></a>VMware/物理サーバー用のサポートされる Ubuntu カーネル バージョン
@@ -166,7 +166,7 @@ SAN (ISCSI) | [はい] | [はい]
 VMDK | [はい] | 該当なし
 VHD/VHDX | 該当なし | [はい]
 第 2 世代 VM | 該当なし | [はい]
-EFI/UEFI| Windows Server 2012 以降の Azure への移行のみ。 </br></br> ** この表の下部の注意事項をご覧ください。  | [はい]
+EFI/UEFI| Azure for Windows Server 2012 およびそれ以降の VMware 仮想マシンへの移行のみ。 </br></br> ** この表の下部の注意事項をご覧ください。  | [はい]
 共有クラスター ディスク | いいえ  | いいえ 
 暗号化されたディスク | いいえ  | いいえ 
 NFS | いいえ  | 該当なし
@@ -182,10 +182,11 @@ RDM | [はい]<br/><br/> 物理サーバー = 該当なし | 該当なし
 マルチパス (MPIO) | 該当なし | [はい]
 
 > [!NOTE]
-> ** VMware 仮想マシンまたは Windows Server 2012 以降を実行する物理サーバーの UEFI ブートは、Azure に移行できます。 次の制限事項が適用されます。
+> ** Windows Server 2012 以降を実行するVMware 仮想マシンの UEFI ブートは、Azure に移行できます。 次の制限事項が適用されます。
 > - Azure への移行のみ。 オンプレミスの VMware サイトへのフェールバックはサポートされていません。
 > - サーバーの OS ディスクでサポートされるパーティションは、4 つまでです。
 > - バージョン 9.13 以降の Azure Site Recovery Mobility サービスが必要です。
+> - 物理サーバーについてはサポートされません。
 
 **Azure Storage** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---

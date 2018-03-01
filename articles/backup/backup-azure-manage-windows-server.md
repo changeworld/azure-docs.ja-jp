@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2017
 ms.author: markgal
-ms.openlocfilehash: 58080d0e045f1825e89287fc421b7e84db36331e
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 925aa88d32f6f5cea252616cf079faf35857eb8a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows コンピューター用 Azure Recovery Services コンテナーとサーバーの監視と管理
 
@@ -31,14 +31,12 @@ ms.lasthandoff: 11/11/2017
 
 Recovery Services コンテナーのダッシュボードには、Recovery Services コンテナーの詳細または属性が示されています。
 
-1. Azure サブスクリプションを使用して、 [Azure Portal](https://portal.azure.com/) にサインインします。
-2. ハブ メニューの **[その他のサービス]** をクリックします。
-
-    ![Open list of Recovery Services vaults step 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
+1. Azure サブスクリプションを使用して、[Azure Portal](https://portal.azure.com/) にサインインします。
+2. **[すべてのサービス]** をクリックします。 
 
 3. Recovery Services コンテナーを開く必要があります。 ダイアログ ボックスに、「**Recovery Services**」と入力を開始します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]** をクリックして、サブスクリプションの Recovery Services コンテナーの一覧を表示します。
 
-    ![Create Recovery Services Vault step 1](./media/backup-azure-manage-windows-server/browse-to-rs-vaults-2.png) <br/>
+     ![Open list of Recovery Services vaults step 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
 
     Recovery Services コンテナーの一覧が開きます。
 
@@ -74,9 +72,9 @@ Recovery Services コンテナーのダッシュボードには、Recovery Servi
 ## <a name="alerts-for-backups-using-azure-backup-agent"></a>Azure Backup エージェントを使用したバックアップに関するアラート:
 | アラート レベル | 送信されるアラート |
 | --- | --- |
-| 重大 |バックアップの失敗、回復エラー |
-| 警告 |警告を伴ってバックアップが完了した (破損が原因で 100 個未満のファイルがバックアップされず、100 万個を超える数のファイルが正常にバックアップされたとき) |
-| 情報 |なし |
+| 重大 | バックアップに失敗した場合は、回復エラーまたは削除の遅延 (任意のユーザーが delete data を使って保護を停止したとき) |
+| 警告 | 警告を伴ってバックアップが完了した (破損が原因で 100 個未満のファイルがバックアップされず、100 万個を超える数のファイルが正常にバックアップされたとき) |
+| 情報 | 現時点では、Azure バックアップ エージェントでは、情報通知のアラートは使用できません |
 
 ## <a name="manage-backup-alerts"></a>バックアップ アラートの管理
 **[バックアップ アラート]** タイルをクリックして **[バックアップ アラート]** メニューを開き、アラートを管理します。
@@ -239,12 +237,12 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 1. **Backup エージェント**で、**[プロパティの変更]** をクリックします。
 2. **[調整] タブで、**[バックアップ操作用のインターネット使用帯域幅の調整を有効にする]** をオンにします。
 
-    ![ネットワークのスロットル](./media/backup-azure-manage-windows-server/throttling-dialog.png)
+    ![Network throttling](./media/backup-azure-manage-windows-server/throttling-dialog.png)
 
     スロットルを有効にしたら、**[作業時間]** と **[作業時間外]** で、バックアップ データの転送時に使用できる帯域幅を指定します。
 
     帯域幅の値は、512 キロバイト/秒 (Kbps) から始まり、最大で 1023 メガバイト/秒 (Mbps) まで指定できます。 また、 **[作業時間]**の開始および終了時刻や、作業日と見なされる曜日も指定できます。 指定した作業時間以外は、作業時間外と見なされます。
-3. **[OK]**をクリックします。
+3. Click **OK**.
 
 ## <a name="manage-exclusion-settings"></a>除外の設定の管理
 1. **Microsoft Azure Backup エージェント** を開きます (コンピューターで " *Microsoft Azure Backup*" を検索すると見つかります)。
@@ -307,10 +305,10 @@ A3. アラートのノイズを軽減する目的で、次の場合は通知が�
 2. プロセスが実行中でなかった場合には、**コントロール パネル**を開いてサービスの一覧を参照し、 **Microsoft Azure Recovery Services 管理エージェント**を開始または再起動します。
 
     詳細については、以下の場所にあるログを参照してください。<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` 次に例を示します。<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`次に例を示します。<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 * [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)

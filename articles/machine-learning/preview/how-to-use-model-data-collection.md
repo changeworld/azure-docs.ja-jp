@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 6f9786b75f5160ceaa4dd269a91d7f3a4b6700d5
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 5e6a79a9b716b6797a1af21f0dcb911219b77207
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>データ収集を使用してモデル データを収集する
 
@@ -88,11 +88,11 @@ Linux では、まず libxml++ ライブラリをインストールします。 
 収集したデータを BLOB ストレージに表示するには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[その他のサービス]** を選択します。
+2. **[すべてのサービス]** を選択します。
 3. 検索ボックスに「**ストレージ アカウント**」と入力し、Enter キーを選択します。
 4. **[ストレージ アカウント]** 検索ブレードで、**[ストレージ アカウント]** リソースを選択します。 目的のストレージ アカウントを特定するには、次の手順に従います。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 Azure Machine Learning Workbench に移動して作業中のプロジェクトを選択し、**[ファイル]** メニューからコマンド プロンプトを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Machine Learning Workbench に移動して作業中のプロジェクトを選択し、**[ファイル]** メニューからコマンド プロンプトを開きます。
     
     b. 「`az ml env show -v`」と入力し、*storage_account* の値を調べます。 それがストレージ アカウントの名前です。
 
