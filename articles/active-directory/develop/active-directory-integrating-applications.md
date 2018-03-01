@@ -24,18 +24,18 @@ ms.lasthandoff: 01/29/2018
 # <a name="integrating-applications-with-azure-active-directory"></a>Azure Active Directory とアプリケーションの統合
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
 
-エンタープライズ開発者とサービスとしてのソフトウェア (SaaS) プロバイダーは、自社のサービスのセキュリティで保護されたサインインと承認を実現するために、Azure Active Directory (Azure AD) と統合できる商用クラウド サービスまたは基幹業務アプリケーションを開発できます。 アプリケーションまたはサービスを Azure AD と統合するには、まず開発者がアプリケーションを Azure AD に登録しておく必要があります。
+エンタープライズ開発者やサービスとしてのソフトウェア (SaaS) プロバイダーは、商用クラウド サービスまたは基幹業務アプリケーションを開発し、それらを Azure Active Directory (Azure AD) と統合することで、自社のサービスにおいてセキュリティで保護されたサインインと承認を実現することができます。 アプリケーションまたはサービスを Azure AD と統合するには、まず開発者がアプリケーションを Azure AD に登録しておく必要があります。
 
-この記事では、Azure AD でアプリケーションの登録を追加、更新、または削除する方法について説明します。 また、Azure AD と統合できるさまざまな種類のアプリケーションや、他のリソース (Web API など) にアクセスするようにアプリケーションを構成する方法などについても説明します。
+この記事では、Azure AD でアプリケーションの登録を追加、更新、または削除する方法について説明します。 Azure AD と統合できる様々なアプリケーションの種類や、他のリソース (Web API など) にアクセスするようにアプリケーションを構成する方法などについて説明します。
 
-登録されたアプリケーションおよびそれらの間の関係を表す 2 つの Azure AD オブジェクトの詳細については、[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページを参照してください。Azure Active Directory でアプリケーションを開発するときに使用するブランド化ガイドラインの詳細については、[統合アプリケーションのブランド化に関するガイドライン](active-directory-branding-guidelines.md)を参照してください。
+登録されたアプリケーションを表す 2 つの Azure AD オブジェクト、およびそれらの関係の詳細については、[アプリケーション オブジェクトおよびサービス プリンシパル オブジェクト](active-directory-application-objects.md)に関するページを参照してください。Azure Active Directory を使ってアプリケーションを開発するときに使用するブランド化ガイドラインの詳細については、[統合アプリケーションのブランド化に関するガイドライン](active-directory-branding-guidelines.md)を参照してください。
 
 ## <a name="adding-an-application"></a>アプリケーションの追加
-Azure AD の機能を使用するアプリケーションは、まず Azure AD テナントに登録する必要があります。 この登録プロセスでは、アプリケーションが配置されている URL、ユーザーの認証後の応答の送信先となる URL、アプリケーションを識別する URI など、アプリケーションの詳細を Azure AD に提供します。
+アプリケーションで Azure AD の機能を使用するには、まず Azure AD テナントにそのアプリケーションを登録する必要があります。 この登録プロセスでは、アプリケーションが配置されている URL、ユーザーの認証後の応答の送信先となる URL、アプリケーションを識別する URI など、アプリケーションの詳細を Azure AD に提供します。
 
 ### <a name="to-register-a-new-application-using-the-azure-portal"></a>Azure Portal を使用して新しいアプリケーションを登録するには
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
+2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]**、**[新しいアプリケーションの登録]** の順にクリックします。
 
    ![新しいアプリケーションの登録](./media/active-directory-integrating-applications/add-app-registration.png)
@@ -44,9 +44,9 @@ Azure AD の機能を使用するアプリケーションは、まず Azure AD �
 
   - **名前:** わかりやすいアプリケーション名を入力します
   - **アプリケーションの種類:** 
-    - デバイスにローカルでインストールされた[クライアント アプリケーション](active-directory-dev-glossary.md#client-application)については、"ネイティブ" を選択します。 この設定は OAuth のパブリック [ネイティブ クライアント](active-directory-dev-glossary.md#native-client)に使用されます。
-    - セキュリティで保護されたサーバーにインストールされた[クライアント アプリケーション](active-directory-dev-glossary.md#client-application)および[リソース/API アプリケーション](active-directory-dev-glossary.md#resource-server)については、"Web アプリ/API" を選択します。 この設定は、OAuth Confidential [Web クライアント](active-directory-dev-glossary.md#web-client)とパブリック [ユーザー エージェント ベースのクライアント](active-directory-dev-glossary.md#user-agent-based-client)で使用されます。 また、同じアプリケーションで、クライアントとリソース/API の両方を公開することもできます。
-  - **サインオン URL:** "Web アプリ/API" アプリケーションの場合は、アプリのベース URL を入力します。 たとえば、`http://localhost:31544` は、ローカル マシンで実行されている Web アプリの URL である可能性があります。 ユーザーは、この URL を使用して、Web クライアント アプリケーションにサインインします。 
+    - デバイスにローカルでインストールされた[クライアント アプリケーション](active-directory-dev-glossary.md#client-application)については、"ネイティブ" を選択します。 この設定は OAuth の public の [ネイティブ クライアント](active-directory-dev-glossary.md#native-client)に使用されます。
+    - セキュリティで保護されたサーバーにインストールされた[クライアント アプリケーション](active-directory-dev-glossary.md#client-application)および[リソース/API アプリケーション](active-directory-dev-glossary.md#resource-server)については、"Web アプリ/API" を選択します。 この設定は、OAuth confidential の [Web クライアント](active-directory-dev-glossary.md#web-client)と public の [ユーザー エージェント ベースのクライアント](active-directory-dev-glossary.md#user-agent-based-client)で使用されます。 また、同じアプリケーションで、クライアントとリソース/API の両方を公開することもできます。
+  - **サインオン URL:** "Web アプリ/API" アプリケーションの場合は、アプリのベース URL を入力します。 たとえば、ローカル マシンで実行されている Web アプリの URL は `http://localhost:31544` のようになることがあります。 ユーザーは、この URL を使用して、Web クライアント アプリケーションにサインインします。 
   - **リダイレクト URI:** "ネイティブ" アプリケーションの場合は、Azure AD がトークン応答を返すために使用する URI を入力します。 アプリケーション固有の値を入力します (`http://MyFirstAADApp` など)
 
    ![新しいアプリケーションの登録 - 作成](./media/active-directory-integrating-applications/add-app-registration-create.png)
@@ -114,7 +114,7 @@ Web/confidential クライアント アプリケーションが認証を必要�
 
 #### <a name="to-add-application-credentials-or-permissions-to-access-web-apis"></a>Web API にアクセスするためのアプリケーションの資格情報またはアクセス許可を追加するには
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
+2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。
 
    ![アプリケーションの登録の更新](./media/active-directory-integrating-applications/update-app-registration.png)
@@ -154,7 +154,7 @@ Web API を開発し、アクセス [スコープ](active-directory-dev-glossary
 #### <a name="adding-access-scopes-to-your-resource-application"></a>リソース アプリケーションへのアクセス スコープの追加
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
+2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的のテナントに設定します。
 
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。
 
@@ -239,7 +239,7 @@ Azure AD でアプリケーションを登録するときに、組織のユー�
 外部ユーザーがアプリケーションにアクセスできるようにするには: 
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
+2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメインの登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. **[設定]** ページで、**[プロパティ]** をクリックし、**[マルチテナント]** スイッチを **[はい]** に変更します。
 
@@ -276,7 +276,7 @@ Web アプリケーションによって、以下が提供される場合もあ�
 >
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
+2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメインの登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. アプリケーションの登録ページで **[マニフェスト]** をクリックして、**[マニフェストの編集]** ページに切り替えます。 Web ベースのマニフェスト エディターが開き、ポータルでマニフェストを**編集**できます。 "oauth2AllowImplicitFlow" を見つけて、値を "true" に設定します。 既定値は "false" です。
    
@@ -293,14 +293,14 @@ Web アプリケーションによって、以下が提供される場合もあ�
 
 #### <a name="to-remove-a-single-tenant-application-from-your-directory"></a>ディレクトリからシングルテナント アプリケーションを削除するには
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
+2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメインの登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. アプリケーションのメインの登録ページで **[削除]** をクリックします。
 5. 確認メッセージが表示されたら、 **[はい]** をクリックします。
 
 #### <a name="to-remove-a-multi-tenant-application-from-its-home-directory"></a>ホーム ディレクトリからマルチテナント アプリケーションを削除するには
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ご利用のアカウントで複数にアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的の Azure AD テナントに設定します。
+2. ご利用のアカウントで複数の Azure AD テナントにアクセスできる場合は、右上隅でアカウントをクリックし、ポータル セッションを目的のテナントに設定します。
 3. 左側のナビゲーション ウィンドウで、**[Azure Active Directory]** サービスをクリックし、**[アプリの登録]** をクリックして、構成するアプリケーションを検索/クリックします。 アプリケーションのメインの登録ページが表示され、そのアプリケーションの **[設定]** ページが開きます。
 4. **[設定]** ページで **[プロパティ]** を選択して、**[マルチテナント]** を **[いいえ]** に切り替えてまずアプリケーションをシングルテナントに変更してから、**[保存]** をクリックします。 アプリケーションのサービス プリンシパル オブジェクトは、既に同意しているすべての組織のテナントで保持されます。
 5. アプリケーションのメインの登録ページで **[削除]** をクリックします。
