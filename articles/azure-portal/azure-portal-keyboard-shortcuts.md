@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: micflan
 ms.custom: accessibility
-ms.openlocfilehash: 595039953d73c90f9772bdf62cffae4bbbc1220a
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 6c37dcbf14ee765aa803f41b91445c8f1cabcfdb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure ポータルのキーボード ショートカット
 この記事では、Azure ポータル全体で機能するキーボード ショートカットを示します。 個々のサービスで専用のキーボード ショートカットが用意されている場合もあります。
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/11/2017
 |目的 |押すキー |
 | --- | --- |
 |新しいリソースを作成|G + N|
-|[その他のサービス] ウィンドウを開く|G + B|
+|[すべてのサービス] ウィンドウを開く|G + B|
 |リソースの検索|G + /| 
 |リソースのメニュー項目を検索|CTRL + / |
 |選択した左側のウィンドウの項目を上に移動 |ALT + Shift + 上方向キー|

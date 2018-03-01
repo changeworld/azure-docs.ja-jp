@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: c1a1a5530c19d39a8e37d122235c8340caa88570
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 4bb003afd757faac675a9af8599a781247717a64
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="perform-advanced-json-transformations-with-a-liquid-template"></a>Liquid テンプレートを使用して高度な JSON 変換を実行する
 
@@ -110,7 +110,46 @@ Azure Logic Apps は、**Compose** や **Parse JSON** などのネイティブ�
 
 [Postman](https://www.getpostman.com/postman) などのツールからロジック アプリに JSON 入力を送信します。 ロジック アプリからの変換された JSON 出力は、次の例のようになります。
   
-![出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output.png)
+![出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontojson.png)
+
+## <a name="more-liquid-action-examples"></a>その他の Liquid アクションの例
+Liquid は、JSON 変換のみに使用されるわけではありません。 Liquid を使用して実行できるその他の変換アクションを以下に示します。
+
+* JSON からテキストへの変換
+  
+  この例で使用する Liquid テンプレートを次に示します。
+   
+   ``` json
+   {{content.firstName | Append: ' ' | Append: content.lastName}}
+   ```
+   入力と出力の例を次に示します。
+  
+   ![JSON からテキストへの出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-jsontotext.png)
+
+* XML から JSON への変換
+  
+  この例で使用する Liquid テンプレートを次に示します。
+   
+   ``` json
+   [{% JSONArrayFor item in content -%}
+        {{item}}
+    {% endJSONArrayFor -%}]
+   ```
+   入力と出力の例を次に示します。
+
+   ![XML から JSON への出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltojson.png)
+
+* XML からテキストへの変換
+  
+  この例で使用する Liquid テンプレートを次に示します。
+
+   ``` json
+   {{content.firstName | Append: ' ' | Append: content.lastName}}
+   ```
+
+   入力と出力の例を次に示します。
+
+   ![XML からテキストへの出力例](./media/logic-apps-enterprise-integration-liquid-transform/example-output-xmltotext.png)
 
 ## <a name="next-steps"></a>次の手順
 

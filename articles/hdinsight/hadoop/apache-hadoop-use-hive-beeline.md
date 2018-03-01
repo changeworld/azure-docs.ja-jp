@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 01/02/2018
 ms.author: larryfr
-ms.openlocfilehash: 19c5f165b47f7de4a014226460f82f3ca12b3eec
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: 5d4e9d6ffb7fa0c2e4b69c5b534f0078aec5f68c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-beeline-client-with-apache-hive"></a>Apache Hive で Beeline クライアントを使用する
 
@@ -44,7 +44,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
 ## <a id="prereq"></a>前提条件
 
-* HDInsight クラスターでの Linux ベースの Hadoop
+* バージョン 3.4 以上の HDInsight クラスターでの Linux ベースの Hadoop。
 
   > [!IMPORTANT]
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
@@ -53,7 +53,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
     SSH の使用方法の詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
-## <a id="beeline"></a>Beeline を使用する
+## <a id="beeline"></a>Hive クエリを実行する
 
 1. Beeline を開始するときに、HDInsight クラスターの HiveServer2 に接続文字列を指定する必要があります。
 
@@ -116,10 +116,19 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
     ```hiveql
     DROP TABLE log4jLogs;
-    CREATE EXTERNAL TABLE log4jLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    CREATE EXTERNAL TABLE log4jLogs (
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION 'wasb:///example/data/';
-    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' GROUP BY t4;
+    SELECT t4 AS sev, COUNT(*) AS count FROM log4jLogs 
+        WHERE t4 = '[ERROR]' AND INPUT__FILE__NAME LIKE '%.log' 
+        GROUP BY t4;
     ```
 
     これらのステートメントは次のアクションを実行します。
@@ -167,7 +176,7 @@ Beeline は、HDInsight クラスターのヘッド ノードに含まれてい�
 
 5. Beeline を終了するには、 `!exit`を使用します。
 
-## <a id="file"></a>Beeline を使用して HiveQL ファイルを実行する
+### <a id="file"></a>Beeline を使用して HiveQL ファイルを実行する
 
 次の手順でファイルを作成し、Beeline を使用してそれを実行します。
 
@@ -245,7 +254,7 @@ Beeline をローカルにインストールしている場合に Azure 仮想�
 
 Spark は独自の HiveServer2 実装を提供します。これは Spark Thrift サーバーとも呼ばれます。 このサービスでは、Spark SQL を使用して Hive の代わりにクエリを解決します。クエリによってはパフォーマンスが向上します。
 
-HDInsight クラスター上の Spark の Spark Thrift サーバーに接続するには、`10001` の代わりに `10002` ポートを使用します。 たとえば、「 `beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`」のように入力します。
+HDInsight クラスター上の Spark の Spark Thrift サーバーに接続するには、`10001` の代わりに `10002` ポートを使用します。 たとえば、「`beeline -u 'jdbc:hive2://headnodehost:10002/;transportMode=http'`」のように入力します。
 
 > [!IMPORTANT]
 > Spark Thrift サーバーには、インターネット経由で直接アクセスすることはできません。 SSH セッションから、または HDInsight クラスターと同じ Azure Virtual Network 内でのみ接続できます。

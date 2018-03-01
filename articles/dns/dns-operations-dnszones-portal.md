@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: gwallace
-ms.openlocfilehash: 69a509612e6204fc93dd42bf2fe69cb165b5777c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: cfb1debf9447cd66856b73166a133d5d498fcc79
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>Azure Portal で DNS ゾーンを管理する方法
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-1. Azure Portal にサインインします。
-2. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ブレードを開きます。
+1. Azure ポータルにサインインします。
+2. ハブ メニューの **[リソースの作成]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ブレードを開きます。
 
     ![[DNS ゾーン]](./media/dns-operations-dnszones-portal/openzone650.png)
 
@@ -58,6 +58,6 @@ Azure Portal で、**[その他のサービス]** > **[ネットワーク]** > *
 
 Portal で DNS ゾーンに移動します。 **[DNS ゾーン]** ブレードで、**[ゾーンを削除する]** をクリックします。 DNS ゾーンを削除する意思の確認を求められます。 DNS ゾーンを削除すると、そのゾーンに含まれるレコードもすべて削除されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 「[Azure Portal で Azure DNS の使用を開始する](dns-getstarted-portal.md)」で、DNS ゾーンとレコードの使用方法を学習してください。

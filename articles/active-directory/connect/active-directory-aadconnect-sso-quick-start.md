@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/21/2017
 ms.author: billmath
-ms.openlocfilehash: b533df58d24b3bc76a229ad09c682d1d8aeaf741
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2d172b22d00f21062237a1af1742bad6a03c864c
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
 ## <a name="deploy-seamless-single-sign-on"></a>シームレス シングル サインオンのデプロイ
 
-Azure Active Directory (Azure AD) シームレス シングル サインオン (シームレス SSO) により、ユーザーは企業ネットワークに接続される会社のデスクトップを使用するときに自動でサインインできます。 シームレス SSO により、追加のオンプレミス コンポーネントを必要とせずに、ユーザーはクラウド ベースのアプリケーションに簡単にアクセスできるようになります。
+Azure Active Directory (Azure AD) シームレス シングル サインオン (シームレス SSO) により、ユーザーは企業ネットワークにつながっている会社のデスクトップを使用するときに自動でサインインできます。 シームレス SSO により、オンプレミス コンポーネントの追加を必要とすることなく、ユーザーはクラウド ベースのアプリケーションに簡単にアクセスできるようになります。
 
 シームレス SSO をデプロイするには、以下の手順に従います。
 
@@ -41,7 +41,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 
 * **ドメイン管理者の資格情報がセットアップされている**: 次の各 Active Directory フォレストについて、ドメイン管理者の資格情報が必要です。
     * Azure AD Connect を使用して Azure AD に同期している。
-    * シームレス SSO を有効にするユーザーが含まれている。
+    * シームレス SSO を有効にさせたいユーザーが含まれている。
 
 ## <a name="step-2-enable-the-feature"></a>手順 2: 機能を有効にする
 
@@ -57,7 +57,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 **[シングル サインオンを有効にする]** ページが表示されるまで、ウィザードの手順を続行します。 次の各 Active Directory フォレストのドメイン管理者の資格情報を入力します。
     * Azure AD Connect を使用して Azure AD に同期している。
-    * シームレス SSO を有効にするユーザーが含まれている。
+    * シームレス SSO を有効にさせたいユーザーが含まれている。
 
 ウィザードの完了後、シームレスな SSO がテナントで有効になります。
 
@@ -78,7 +78,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 この機能をユーザーにロールアウトするには、Active Directory のグループ ポリシーを使用して、ユーザーのイントラネット ゾーンの設定に次の Azure AD URL を追加する必要があります。
 
 - https://autologon.microsoftazuread-sso.com
-- https://aadg.windows.net.nsatc.net
+
 
 また、グループ ポリシーを使用して、**[スクリプトを介したステータス バーの更新を許可する]** というイントラネットのゾーン ポリシー設定を有効にする必要があります。 
 
@@ -87,7 +87,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 ### <a name="why-do-you-need-to-modify-users-intranet-zone-settings"></a>ユーザーのイントラネット ゾーンの設定を変更する必要がある理由
 
-既定では、ブラウザーは指定 URL から適切なゾーン (インターネットまたはイントラネット) を自動的に判断します。 たとえば、"http://contoso/" はイントラネット ゾーンにマップされ、"http://intranet.contoso.com/" はインターネット ゾーンにマップされます (URL にピリオドが含まれているため)。 2 つの Azure AD URL と同様に、クラウド エンドポイントの URL をブラウザーのイントラネット ゾーンに明示的に追加しなければ、ブラウザーは Kerberos チケットをクラウド エンドポイントに送信しません。
+既定では、ブラウザーは指定 URL から適切なゾーン (インターネットまたはイントラネット) を自動的に判断します。 たとえば、"http://contoso/" はイントラネット ゾーンにマップされ、"http://intranet.contoso.com/" はインターネット ゾーンにマップされます (URL にピリオドが含まれているため)。 Azure AD URL と同様に、クラウド エンドポイントの URL をブラウザーのイントラネット ゾーンに明示的に追加しなければ、ブラウザーは Kerberos チケットをクラウド エンドポイントに送信しません。
 
 ### <a name="detailed-steps"></a>詳細な手順
 
@@ -104,13 +104,9 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
     値: https://autologon.microsoftazuread-sso.com
   
     Data 1
-        
-   値: https://aadg.windows.net.nsatc.net
-
-    Data 1
 
    >[!NOTE]
-   > 一部のユーザー (共有キオスクでサインインするユーザーなど) がシームレス SSO を使用できないようにする場合は、前述の値を **4** に設定します。 この操作により、Azure AD の URL が [制限付きゾーン] に追加され、シームレス SSO は常に失敗するようになります。
+   > 一部のユーザーに対してシームレス SSO の使用を許可したくない場合 ( ユーザー共有キオスクでサインインする場合など) は、前述の値を **4** に設定します。 この操作により、Azure AD の URL が [制限付きゾーン] に追加され、シームレス SSO は常に失敗するようになります。
    >
 
 5. **[OK]** を選択してから、もう一度 **[OK]** を選択します。

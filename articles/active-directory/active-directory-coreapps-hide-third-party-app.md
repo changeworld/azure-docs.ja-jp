@@ -15,11 +15,11 @@ ms.date: 01/04/2018
 ms.author: billmath
 ms.reviewer: asteen
 ms.custom: it-pro
-ms.openlocfilehash: 00307311ca2bc1432f2de3755575adf1804f9c77
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: dc314d8d2a0e7a099b0eff294d43995ea3809c90
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="hide-an-application-from-users-experience-in-azure-active-directory"></a>Azure Active Directory でユーザーのエクスペリエンスからアプリケーションを非表示にする
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/11/2018
 次の手順を使って、ユーザーのアクセス パネルと Office 365 アプリケーション ランチャーからアプリケーションを非表示にします。
 
 1.  ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2.  **[その他のサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
+2.  **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
 3.  **[Azure Active Directory - *<ディレクトリ名>*]** 画面 (つまり管理対象のディレクトリの Azure AD 画面) で、**[エンタープライズ アプリケーション]** を選択します。
 ![エンタープライズ アプリケーション](media/active-directory-coreapps-hide-third-party-app/app1.png)
 4.  **[エンタープライズ アプリケーション]** 画面で、**[すべてのアプリケーション]** を選択します。 管理できるアプリケーションの一覧が表示されます。
@@ -54,7 +54,7 @@ ms.lasthandoff: 01/11/2018
 アクセス パネルからすべての Office 365 アプリケーションを非表示にするには、次の手順を使用します。 これらのアプリは、Office 365 ポータルには引き続き表示されます。
 
 1.  ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2.  **[その他のサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
+2.  **[すべてのサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
 3.  **[Azure Active Directory - *<ディレクトリ名>*]** 画面 (つまり管理対象のディレクトリの Azure AD 画面) で、**[ユーザー設定]** を選択します。
 4.  **[ユーザー設定]** 画面の **[エンタープライズ アプリケーション]** で、**[Users can only see Office 365 apps in the Office 365 portal]\(ユーザーは Office 365 ポータルに Office 365 アプリのみを表示できる\)** の **[はい]** を選択します。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 01/19/2018
 ms.author: asaxton
-ms.openlocfilehash: 7eb64cce37f2655b72ab9b5fadedf7581fe007fb
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 9b7d0bc31946d6022e9bfae463f4a22eb12c2a58
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="scale-your-power-bi-embedded-capacity"></a>Power BI Embedded 容量の拡大縮小
 
@@ -33,9 +33,9 @@ ms.lasthandoff: 01/20/2018
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. **[その他のサービス]** > **[Power BI Embedded]** を選択して容量を確認します。
+2. **[すべてのサービス]** > **[Power BI Embedded]** を選択して容量を確認します。
 
-    ![Azure Portal の [その他のサービス]](media/scale-capacity/azure-portal-more-services.png)
+    ![Azure Portal の [すべてのサービス]](media/scale-capacity/azure-portal-more-services.png)
 
 3. 拡大縮小する容量を選択します。
 

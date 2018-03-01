@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d46f04a3e9fdb1beaf11c769ecdd7b807c5f817f
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 51734f5b39e9ca8af65048f2a7efd5c61cd53204
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-angularjs-getting-started"></a>Azure AD AngularJS の概要
 
@@ -48,7 +48,7 @@ Azure Active Directory (Azure AD) を使用すると、サインイン、サイ�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 複数のディレクトリにサインインしている場合は、適切なディレクトリを表示していることを確認する必要があります。 これを行うには、上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧で、アプリケーションを登録する Azure AD テナントを選択します。
-3. 左側のウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
+3. 左側のウィンドウで **[すべてのサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
 5. 画面の指示に従い、新しい Web アプリケーションや Web API を作成します。
   * **[名前]** には、ユーザーがアプリケーションの機能を把握できる名前を入力します。

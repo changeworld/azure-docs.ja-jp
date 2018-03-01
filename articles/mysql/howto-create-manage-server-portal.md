@@ -9,22 +9,22 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 6e9c541aac1241b6af0e4a58f5591d46f9a98c40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b73fe2214a165d7c02c0a58551d8b84bee39f919
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-manage-azure-database-for-mysql-server-using-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成と管理
 このトピックでは、新しい Azure Database for MySQL サーバーをすばやく作成する方法について説明します。 Azure Portal を使用したサーバーの管理方法に関する情報も含まれています。 サーバーの管理には、サーバーの詳細とデータベースの表示、パスワードのリセット、サーバーの削除が含まれます。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
-[Azure ポータル](https://portal.azure.com)にログインします。
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+[Azure Portal](https://portal.azure.com) にログインします。
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 "mysqlserver4demo" という名前の Azure Database for MySQL サーバーを作成するには、次の手順に従います。
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上隅にある **[リソースの作成]** ボタンをクリックします。
 
 2. [新規] ページで **[データベース]** を選択し、[データベース] ページで **[Azure Database for MySQL]** を選択します。
 
@@ -89,6 +89,6 @@ ms.lasthandoff: 10/11/2017
 ## <a name="show-details-of-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの詳細を表示する
 サーバー ブレードの **[設定]** をクリックし、**[プロパティ]** をクリックして **[プロパティ]** ブレードを開き、サーバーに関する詳細情報をすべて表示します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [クイックスタート: Azure Portal を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-portal.md)

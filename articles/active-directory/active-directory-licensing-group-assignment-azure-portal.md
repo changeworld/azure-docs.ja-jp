@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 250e84550fdf3253f28d682e85fe4bf855e40a4d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f24daaf5690eb1d9a0ab3b27a3626d03e6021d99
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て
 
@@ -37,36 +37,36 @@ ms.lasthandoff: 12/11/2017
 
 1. Administrator アカウントを使用して、[**Azure Portal**](https://portal.azure.com) にサインインします。 ライセンスを管理するアカウントは、グローバル管理者ロールまたはユーザー アカウント管理者である必要があります。
 
-2. 左のナビゲーション ウィンドウで **[その他のサービス]** を選択し、**[Azure Active Directory]** を選択します。 このブレードは、お気に入りに追加したり、ポータルのダッシュボードにピン留めしたりすることができます。
+2. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、**[Azure Active Directory]** を選択します。 このウィンドウは、お気に入りに追加したり、ポータルのダッシュボードにピン留めしたりすることができます。
 
-3. **[Azure Active Directory]** ブレードの **[ライセンス]** を選択します。 この操作で開かれるブレードで、テナント内でライセンスを付与できる全製品を確認して管理できます。
+3. **[Azure Active Directory]** ウィンドウで **[ライセンス]** を選択して、ライセンスを付与できるテナント内の製品すべてを確認および管理できるウィンドウを開きます。
 
-4. **[すべての製品]** で、製品名を選択して Office 365 Enterprise E3 と Enterprise Mobility + Security の両方を選択します。 割り当てを開始するには、ブレード上部の **[割り当て]** を選択します。
+4. **[すべての製品]** で、製品名を選択して Office 365 Enterprise E3 と Enterprise Mobility + Security の両方を選択します。 割り当てを開始するには、ウィンドウの上部にある **[割り当て]** を選択します。
 
    ![すべての製品、ライセンスの割り当て](media/active-directory-licensing-group-assignment-azure-portal/all-products-assign.png)
 
-5. **[ライセンスの割り当て]** ブレードで **[ユーザーとグループ]** をクリックして、**[ユーザーとグループ]** ブレードを開きます。 "*人事部*" というグループ名を探してグループを選択し、ブレードの下部にある **[選択]** をクリックして忘れずに確定します。
+5. **[ライセンスの割り当て]** ウィンドウで **[ユーザーとグループ]** をクリックして、**[ユーザーとグループ]** ウィンドウを開きます。 "*人事部*" というグループ名を探してグループを選択し、ウィンドウの下部にある **[選択]** をクリックして忘れずに確定します。
 
    ![グループの選択](media/active-directory-licensing-group-assignment-azure-portal/select-a-group.png)
 
-6. **[ライセンスの割り当て]** ブレードで **[割り当てオプション (省略可能)]** をクリックすると、先ほど選択した 2 つの製品に含まれているすべてのサービス プランが表示されます。 **Yammer Enterprise** を探して **[オフ]** に設定し、製品ライセンスのこのサービスを無効にします。 **[Assignment options (割り当てオプション)]** の下部にある **[OK]** をクリックして確定します。
+6. **[ライセンスの割り当て]** ウィンドウで **[割り当てオプション (省略可能)]** をクリックすると、先ほど選択した 2 つの製品に含まれているすべてのサービス プランが表示されます。 **Yammer Enterprise** を探して **[オフ]** に設定し、製品ライセンスのこのサービスを無効にします。 **[Assignment options (割り当てオプション)]** の下部にある **[OK]** をクリックして確定します。
 
    ![割り当てオプション](media/active-directory-licensing-group-assignment-azure-portal/assignment-options.png)
 
-7. 割り当てを完了するには、**[ライセンスの割り当て]** ブレードの下部にある **[割り当て]** をクリックします。
+7. 割り当てを完了するには、**[ライセンスの割り当て]** ウィンドウで、ウィンドウの下部にある **[割り当て]** をクリックします。
 
 8. 右上隅に通知が表示され、プロセスの状態と結果が示されます。 (たとえば、グループ内の既存のライセンスが原因で) グループへの割り当てを完了できなかった場合は、通知をクリックして失敗の詳細を確認します。
 
 これで、人事部グループのライセンス テンプレートの指定が完了しました。 開始された Azure AD のバックグラウンド プロセスによって、このグループの既存のメンバー全員が処理されます。 グループの現在の規模によっては、この初期操作に時間がかかる場合があります。 次の手順では、プロセスの終了を確認する方法と、問題の解決にさらなる注意が必要かどうかを確認する方法について説明します。
 
 > [!NOTE]
-> Azure AD の **[ユーザーとグループ]** からでも同様に割り当てを開始できます。 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** に移動します。 次にグループを検索して選択し、**[ライセンス]** タブに移動します。ブレードの上部にある **[割り当て]** ボタンをクリックすると、ライセンス割り当てのブレードが開きます。
+> Azure AD の **[ユーザーとグループ]** からでも同様に割り当てを開始できます。 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** に移動します。 次にグループを検索して選択し、**[ライセンス]** タブに移動します。ウィンドウの上部にある **[割り当て]** をクリックすると、ライセンス割り当てのウィンドウが開きます。
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>手順 2. 最初の割り当てが終了したことの確認
 
 1. **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** に移動します。 ライセンスを割り当てた "**人事部**" グループを見つけます。
 
-2. **人事部**グループのブレードで **[ライセンス]** を選択します。 これで、ライセンスがユーザーに完全に割り当てられていることと、調査が必要なエラーの有無をすばやく確認できます。 利用可能な情報は以下のとおりです。
+2. **人事部**グループのウィンドウで **[ライセンス]** を選択します。 これで、ライセンスがユーザーに完全に割り当てられていることと、調査が必要なエラーの有無をすばやく確認できます。 利用可能な情報は以下のとおりです。
 
    - グループに現在割り当てられている製品ライセンスの一覧。 エントリを選択すると、有効にした特定のサービスを表示して変更を行えます。
 
@@ -87,12 +87,12 @@ ms.lasthandoff: 12/11/2017
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>手順 3. ライセンスに関する問題のチェックと解決
 
 1. **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** の順に移動して、ライセンスを割り当てた "**人事部**" グループを見つけます。
-2. **人事部**グループのブレードで **[ライセンス]** を選択します。 ブレードの上部の通知で、ライセンスを割り当てられなかったユーザーが 10 人いることが示されます。 これをクリックすると、このグループでライセンスがエラー状態である全ユーザーの一覧が表示されます。
+2. **人事部**グループのウィンドウで **[ライセンス]** を選択します。 ウィンドウの上部の通知で、ライセンスを割り当てられなかったユーザーが 10 人いることが示されます。 これをクリックすると、このグループでライセンスがエラー状態である全ユーザーの一覧が表示されます。
 3. **[割り当ての失敗数]** 列から、どちらの製品ライセンスもユーザーに割り当てられなかったことがわかります。 **[エラーの最も大きな原因]** 列には、エラーの原因が記載されています。 この例では **[競合するサービス プラン]** です。
 
    ![失敗した割り当て](media/active-directory-licensing-group-assignment-azure-portal/failed-assignments.png)
 
-4. **[ライセンス]** ブレードを開くユーザーを選択します。 このブレードには、ユーザーに現在割り当てられているすべてのライセンスが表示されます。 この例では、このユーザーは**キオスク ユーザー** グループから継承された Office 365 Enterprise E1 のライセンスを持っています。 これは、システムが**人事部**グループから適用しようとした E3 ライセンスと競合しています。 結果的にこのユーザーには、そのグループからどのライセンスも割り当てられていません。
+4. **[ライセンス]** ウィンドウを開くユーザーを選択します。 このウィンドウには、ユーザーに現在割り当てられているすべてのライセンスが表示されます。 この例では、このユーザーは**キオスク ユーザー** グループから継承された Office 365 Enterprise E1 のライセンスを持っています。 これは、システムが**人事部**グループから適用しようとした E3 ライセンスと競合しています。 結果的にこのユーザーには、そのグループからどのライセンスも割り当てられていません。
 
    ![ユーザーのライセンスの表示](media/active-directory-licensing-group-assignment-azure-portal/user-license-view.png)
 
@@ -100,11 +100,11 @@ ms.lasthandoff: 12/11/2017
 
    ![正常に割り当てられたライセンス](media/active-directory-licensing-group-assignment-azure-portal/license-correctly-assigned.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 グループを使用したライセンス管理の機能セットについては、以下の記事をご覧ください。
 
-* [Azure Active Directory のグループベースのライセンスとは](active-directory-licensing-whatis-azure-portal.md)
+* [What is group-based licensing in Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md) (Azure Active Directory のグループベースのライセンスとは)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](active-directory-licensing-group-migration-azure-portal.md)
 * [Azure Active Directory グループベース ライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)

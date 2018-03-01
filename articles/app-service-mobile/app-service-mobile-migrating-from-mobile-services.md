@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: crdun
-ms.openlocfilehash: f3d89c627f462c9e34b2ff067972be56f5bed32f
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e94f08b9b9dad20c6f47367c47eb49aea59f4bd8
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
 [Azure App Service は一般公開されており]、Azure Mobile Service サイトを簡単にインプレース移行し、Azure App Service の全機能を最大限に活用できます。  このドキュメントでは、Azure Mobile Service から Azure App Service にサイトを移行するときに必要な作業について説明します。
@@ -32,7 +32,7 @@ Azure Mobile Service を移行すれば、コードを変更せずにモバイ�
 Microsoft では、次のような Azure App Service の機能を最大限に活用できるように Azure Mobile Service の移行を推奨しています。
 
 * [WebJobs] や [custom domain names] などの新しいホスト機能。
-* New Relic または [Application Insights]による監視とトラブルシューティング。
+* [Application Insights] による監視とトラブルシューティング。
 * [ステージング スロット]、ロールバック、本稼動テストなど、組み込み DevOps ツール。
 * [自動スケール]、負荷分散、[パフォーマンス監視]。
 

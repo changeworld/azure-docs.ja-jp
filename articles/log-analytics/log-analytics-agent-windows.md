@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2017
 ms.author: magoedte
-ms.openlocfilehash: 35e271f943901091041f7b1e9fad6cb9cd46df5b
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 87513ef82b5f754669a3a21dd736ecab6fb26fba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -38,7 +38,7 @@ Windows エージェントをデプロイするためのネットワークとシ
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
 Microsoft Monitoring Agent for Windows をインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントを Log Analytics と正常に通信できるようにするために必要です。  
 
-1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、エージェントのレポート送信先にするワークスペースを選択します。
 3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. **[接続されたソース]**、**[Windows サーバー]** の順に選択します。   
@@ -160,7 +160,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 
 また、Azure ポータルで簡単なログ検索を行うこともできます。  
 
-1. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。  
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。  
 2. Log Analytics ワークスペース ページで、ターゲット ワークスペースを選択して **[ログ検索]** タイルを選択します。 
 2. [ログ検索] ウィンドウのクエリ フィールドで、次のように入力します。  
 

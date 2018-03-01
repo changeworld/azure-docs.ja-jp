@@ -15,15 +15,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
-ms.openlocfilehash: 768c94fe0d2d6cfafc1f8b57256012e01de0f7a9
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: b166d2af56051b7d90eba0d50e1ea41f96c1109e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 Java 8 と Tomcat を使用して Web アプリをデプロイするための Resource Manager テンプレートについては、[こちら](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/)をご覧ください。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。 Java 8 と Tomcat を使用して Web アプリをデプロイするための Resource Manager テンプレートについては、[こちら](https://azure.microsoft.com/documentation/templates/201-web-app-java-tomcat/)をご覧ください。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 Azure では、仮想マシンを使用してサーバー機能を実現することができます。 たとえば、Apache Tomcat などの Java アプリケーション サーバーをホストできるように、Azure で実行する仮想マシンを構成できます。
@@ -43,8 +43,8 @@ Azure では、仮想マシンを使用してサーバー機能を実現する�
 [!INCLUDE [create-account-and-vms-note](../../../../includes/create-account-and-vms-note.md)]
 
 ## <a name="to-create-a-virtual-machine"></a>仮想マシンを作成するには
-1. [Azure ポータル](https://portal.azure.com)にサインインします。  
-2. **[新規]**、**[Compute]** の順にクリックし、**[おすすめアプリ]** で **[すべて表示]** をクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。  
+2. **[リソースの作成]**、**[Compute]** の順にクリックし、**[おすすめアプリ]** で **[すべて表示]** をクリックします。
 3. **[JDK]** をクリックし、**[JDK]** ウィンドウで **[JDK 8]** をクリックします。  
    JDK 8 での実行に対応していないレガシ アプリケーションがある場合は、**JDK 6** および **JDK 7** をサポートする仮想マシン イメージを使用できます。
 4. [JDK 8] ウィンドウで **[クラシック]** を選択し、**[作成]** をクリックします。
@@ -89,7 +89,7 @@ Tomcat が実行されたら、仮想マシンのブラウザーで URL とし�
 Tomcat が実行されていることを外部コンピューターから確認するには、エンドポイントを作成してポートを開く必要があります。
 
 ## <a name="to-create-an-endpoint-for-your-virtual-machine"></a>仮想マシンのエンドポイントを作成するには
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[仮想マシン (クラシック)]** をクリックします。
 3. Java アプリケーション サーバーを実行している仮想マシンの名前をクリックします。
 4. **[エンドポイント]**をクリックします。
@@ -121,7 +121,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 10. **[名前]** 画面で、**HttpIn** などの規則の名前を指定し (ただし、規則の名前がエンドポイント名と一致する必要はありません)、**[完了]** をクリックします。  
     ![新しい受信の規則の名前][NewRuleName]
 
-これで、外部ブラウザーから Tomcat の Web サイトを表示できます。 ブラウザーのアドレス ウィンドウに、**http://*your\_DNS\_name*.cloudapp.net** (***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を入力します。
+これで、外部ブラウザーから Tomcat の Web サイトを表示できます。 ブラウザーのアドレス ウィンドウに、***http://\_your\_DNS*name**.cloudapp.net (***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を入力します。
 
 ## <a name="application-lifecycle-considerations"></a>アプリケーションのライフサイクルについて
 * 独自の Web アプリケーション アーカイブ (WAR) を作成し、 **webapps** フォルダーに追加することもできます。 たとえば、基本的な Java Service Page (JSP) 動的 Web プロジェクトを作成し、WAR ファイルとしてエクスポートします。 次に、仮想マシン上の Apache Tomcat **webapps** フォルダーに WAR をコピーし、ブラウザーで実行します。
@@ -131,7 +131,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 
     Tomcat を自動的に起動する利点は、仮想マシンが再起動されたとき (再起動を必要とするソフトウェア更新プログラムのインストール後など) に実行が開始されることです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Java アプリケーションに含めることのできるその他のサービス (Azure Storage、Service Bus、SQL Database など) について確認します。 詳細については、[Java デベロッパー センター](https://azure.microsoft.com/develop/java/)を参照してください。
 
 [virtual_machine_tomcat]:media/java-run-tomcat-app-server/WA_VirtualMachineRunningApacheTomcat.png

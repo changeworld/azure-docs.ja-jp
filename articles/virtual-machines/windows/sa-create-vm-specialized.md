@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
-ms.openlocfilehash: e92a9d5900e3e0fe71084e5003010d419e44cb39
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 811cc6cea80acbe6cbbf4533c1f9a8c9c7f53702
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
 
@@ -118,7 +118,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 ### <a name="before-you-begin"></a>開始する前に
 次のことを確認してください。
 
-* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[その他のサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、作成できます。 
+* **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[すべてのサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、作成できます。 
 * [AzCopy ツール](../../storage/common/storage-use-azcopy.md)をダウンロードしてインストール済みであること。 
 
 ### <a name="deallocate-the-vm"></a>VM の割り当てを解除する
@@ -138,7 +138,7 @@ Azure Portal で VM の **[状態]** が **[停止済み]** から **[停止済�
 
 Azure Portal または Azure PowerShell を使用して URL を取得できます。
 
-* **Portal**: **>****[その他のサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[BLOB]** の順にクリックすると、コピー元の VHD ファイルはおそらく **vhds** コンテナー内にあります。 コンテナーの **[プロパティ]** をクリックし、**URL** というラベルのテキストをコピーします。 コピー元およびコピー先の両方のコンテナーの URL が必要です。 
+* **Portal**: **>****[すべてのサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[BLOB]** の順にクリックすると、コピー元の VHD ファイルはおそらく **vhds** コンテナー内にあります。 コンテナーの **[プロパティ]** をクリックし、**URL** というラベルのテキストをコピーします。 コピー元およびコピー先の両方のコンテナーの URL が必要です。 
 * **Powershell**: [Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) を使用して、リソース グループ **myResourceGroup** 内にある **myVM** という名前の VM に関する情報を取得します。 その結果の **Storage profile** セクションで **Vhd Uri** を探します。 URI の最初の部分はコンテナーの URL、最後の部分は VM の OS VHD 名です。
 
 ```powershell
@@ -148,7 +148,7 @@ Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ## <a name="get-the-storage-access-keys"></a>ストレージ アクセス キーを取得する
 コピー元とコピー先のストレージ アカウントのアクセス キーを探します。 アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
 
-* **Portal**: **[その他のサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
+* **Portal**: **[すべてのサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
 * **Powershell**: [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) を使用して、リソース グループ **myResourceGroup** 内にあるストレージ アカウント **mystorageaccount** のストレージ キーを取得します。 **key1** のラベルが付いているキーをコピーします。
 
 ```powershell
@@ -312,7 +312,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>VM 作成の確認
-新しく作成された VM は、[Azure Portal](https://portal.azure.com)の **[参照]** の >  **[仮想マシン]**、または次の PowerShell コマンドで確認できます。
+新しく作成された VM は、[Azure Portal](https://portal.azure.com)の **[すべてのサービス]** の >  **[仮想マシン]**、または次の PowerShell コマンドで確認できます。
 
 ```powershell
 $vmList = Get-AzureRmVM -ResourceGroupName $rgName

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2017
 ms.author: johnkem
-ms.openlocfilehash: a101039b59eb1a4a3bcac25162c7f6373283e1b6
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: aef427483d647c53ba45688ce33a75f876115d08
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Azure アクティビティ ログでサブスクリプション アクティビティを監視する
 **Azure アクティビティ ログ**は、Azure で発生したサブスクリプションレベルのイベントの分析に利用できるサブスクリプション ログです。 たとえば、Azure Resource Manager の運用データから、サービスの正常性イベントまでの範囲のデータが含まれています。 管理者のカテゴリではサブスクリプションのコントロール プレーン イベントが報告されるため、アクティビティ ログは以前は "監査ログ" または "操作ログ" と呼ばれていました。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 アクティビティ ログには、読み取り (GET) 操作や、クラシック/"RDFE" モデルを使用するリソースに対する操作は含まれません。
@@ -29,18 +29,21 @@ ms.lasthandoff: 12/14/2017
 
 アクティビティ ログは[診断ログ](monitoring-overview-of-diagnostic-logs.md)とは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します ("コントロール プレーン")。 診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します ("データ プレーン")。
 
-Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
-
-
 > [!WARNING]
 > Azure アクティビティ ログは、主に Azure Resource Manager で発生したアクティビティを記録します。 クラシック/RDFE モデルを使用しているリソースは追跡されません。 一部のクラシック リソース タイプでは、Azure Resource Manager にプロキシ リソース プロバイダー (例: Microsoft.ClassicCompute) が存在します。 これらのプロキシ リソース プロバイダーを使用して Azure Resource Manager 経由でクラシック リソース タイプを操作すると、その操作がアクティビティ ログに表示されます。 Azure Resource Manager プロキシの外部でクラシック リソース タイプを操作すると、そのアクションは操作ログにのみ記録されます。 操作ログは、ポータルの別のセクションで参照できます。
 >
 >
 
+Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API を使用して、アクティビティ ログからイベントを取得できます。
+
+> [!NOTE]
+
+>  [アラート (プレビュー)](monitoring-overview-unified-alerts.md) は現在、アクティビティ ログの警告ルールの作成と管理に強化されたエクスペリエンスを提供しています。  [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
+
+
 アクティビティ ログの概要については、次のビデオを参照してください。
 > [!VIDEO https://channel9.msdn.com/Blogs/Seth-Juarez/Logs-John-Kemnetz/player]
-> 
->
+
 
 ## <a name="categories-in-the-activity-log"></a>アクティビティ ログのカテゴリ
 アクティビティ ログには、複数のカテゴリのデータが含まれています。 各カテゴリのスキーマの詳細については、[こちらの記事を参照してください](monitoring-activity-log-schema.md)。 チェックの内容は次のとおりです
@@ -70,9 +73,9 @@ Azure Portal、CLI、PowerShell コマンドレット、Azure Monitor REST API �
 
 ## <a name="query-the-activity-log-in-the-azure-portal"></a>Azure Portal でアクティビティ ログに対してクエリを実行する
 Azure Portal のさまざまな場所でアクティビティ ログを表示できます。
-* **[アクティビティ ログ] ブレード**。左側のナビゲーション ウィンドウの [その他のサービス] で [アクティビティ ログ] を検索してアクセスすることができます。
-* **[監視] ブレード**。左側のナビゲーション ウィンドウに既定で表示されます。 アクティビティ ログはこの Azure Monitor ブレードのセクションの 1 つです。
-* 任意のリソースの**リソース ブレード**。たとえば、仮想マシンの構成ブレードです。 このようなリソース ブレードのほとんどで、セクションの 1 つとしてアクティビティ ログが表示されます。アクティビティ ログをクリックすると、そのリソースに関連するアクティビティ ログのイベントが自動的に絞り込まれます。
+* **[アクティビティ ログ]**。左側のナビゲーション ウィンドウの **[すべてのサービス]** で [アクティビティ ログ] を検索してアクセスすることができます。
+* **[監視]**。左側のナビゲーション ウィンドウに既定で表示されます。 [アクティビティ ログ] は Azure Monitor のセクションの 1 つです。
+* 任意のリソースの**リソース**。たとえば、仮想マシンの構成ブレードです。 このようなリソース ブレードのほとんどで、セクションの 1 つとしてアクティビティ ログが表示されます。アクティビティ ログをクリックすると、そのリソースに関連するアクティビティ ログのイベントが自動的に絞り込まれます。
 
 Azure Portal では、次のフィールドでアクティビティ ログを絞り込むことができます。
 * [期間] - イベントの開始時刻と終了時刻。
@@ -110,7 +113,7 @@ Azure Portal では、次のフィールドでアクティビティ ログを絞
 ### <a name="configure-log-profiles-using-the-azure-portal"></a>Azure Portal を使用したログ プロファイルの構成
 Azure Portal の [エクスポート] オプションを使用して、アクティビティ ログを Event Hubs にストリーミングしたり、ストレージ アカウントに保存したりできます。
 
-1. ポータルの左側のメニューを使用して、 **[アクティビティ ログ]** ブレードに移動します。
+1. ポータルの左側のメニューを使用して、**[アクティビティ ログ]** に移動します。
 
     ![ポータルの [アクティビティ ログ] に移動](./media/monitoring-overview-activity-logs/activity-logs-portal-navigate.png)
 2. ブレードの上部にある **[エクスポート]** ボタンをクリックします。
@@ -136,14 +139,14 @@ Get-AzureRmLogProfile
 Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/resourceGroups/myrg1/providers/Microsoft.Storage/storageAccounts/my_storage -serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey -Locations global,westus,eastus -RetentionInDays 90 -Categories Write,Delete,Action
 ```
 
-| プロパティ | 必須 | Description |
+| プロパティ | 必須 | [説明] |
 | --- | --- | --- |
-| 名前 |はい |ログ プロファイルの名前。 |
-| StorageAccountId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| serviceBusRuleId |なし |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
-| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| カテゴリ |なし |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
+| Name |[はい] |ログ プロファイルの名前。 |
+| StorageAccountId |いいえ  |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
+| serviceBusRuleId |いいえ  |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
+| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+| RetentionInDays |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| カテゴリ |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
 ```
@@ -165,20 +168,20 @@ azure insights logprofile get --name my_log_profile
 azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --serviceBusRuleId /subscriptions/s1/resourceGroups/Default-ServiceBus-EastUS/providers/Microsoft.ServiceBus/namespaces/mytestSB/authorizationrules/RootManageSharedAccessKey --locations global,westus,eastus,northeurope --retentionInDays 90 –categories Write,Delete,Action
 ```
 
-| プロパティ | 必須 | 説明 |
+| プロパティ | 必須 | [説明] |
 | --- | --- | --- |
-| name |はい |ログ プロファイルの名前。 |
-| storageId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
-| serviceBusRuleId |なし |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
-| 場所 |はい |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
-| RetentionInDays |はい |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
-| categories |なし |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
+| name |[はい] |ログ プロファイルの名前。 |
+| storageId |いいえ  |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |
+| serviceBusRuleId |いいえ  |Event Hubs を作成する Service Bus 名前空間の Service Bus 規則 ID。 これは、`{service bus resource ID}/authorizationrules/{key name}` の形式の文字列です。 |
+| 場所 |[はい] |アクティビティ ログ イベントを収集するリージョンのコンマ区切りリスト。 |
+| RetentionInDays |[はい] |イベントを保持する日数。1 ～2,147,483,647 の範囲。 値が 0 の場合、ログは無期限に (いつまでも) 保存されます。 |
+| categories |いいえ  |収集するイベント カテゴリのコンマ区切りリスト。 指定できる値は、Write、Delete、Action です。 |
 
 #### <a name="remove-a-log-profile"></a>ログ プロファイルの削除
 ```
 azure insights logprofile delete --name my_log_profile
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [アクティビティ ログ (以前の監査ログ) の詳細を確認する](../azure-resource-manager/resource-group-audit.md)
 * [Azure アクティビティ ログを Event Hubs にストリーミングする](monitoring-stream-activity-logs-event-hubs.md)

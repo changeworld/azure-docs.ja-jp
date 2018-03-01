@@ -15,11 +15,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: 549b6abf5728e50ee365f40326263d391e4b26fd
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: c6c83f4ac93dd105b2f311250061b8880f5d2a5b
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>抽出されたデータを使用したクロステナント分析
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/28/2017
 
 各テナントによるサービスの利用状況のばらつきを理解することで、ニーズに対応するサービス プランを作成する機会が得られます。 このチュートリアルでは、テナント データから得られる洞察の基本的な例を示します。
 
-## <a name="setup"></a>[Setup]
+## <a name="setup"></a>セットアップ
 
 ### <a name="prerequisites"></a>前提条件
 
@@ -76,7 +76,7 @@ ms.lasthandoff: 11/28/2017
 - Wingtip SaaS スクリプトとアプリケーションの[ソース コード](https://github.com/Microsoft/WingtipTicketsSaaS-MultiTenantDB)が GitHub からダウンロードされている。 内容を抽出する前に、必ず *ZIP ファイルのブロックを解除*してください。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 - Power BI Desktop をインストールします。 [Power BI Desktop のダウンロード](https://powerbi.microsoft.com/downloads/)
 - 追加のテナントのバッチをプロビジョニングします。[**テナントのプロビジョニングに関するチュートリアル**](saas-multitenantdb-provision-and-catalog.md)をご覧ください。
-- ジョブ アカウントとジョブ アカウント データベースを作成します。 適切な手順については、[**スキーマ管理に関するチュートリアル**](saas-multitenantdb-schema-management.md#create-a-job-account-database-and-new-job-account)をご覧ください。
+- ジョブ エージェントとジョブ エージェント データベースを作成します。 適切な手順については、[**スキーマ管理に関するチュートリアル**](saas-multitenantdb-schema-management.md#create-a-job-agent-database-and-new-job-agent)をご覧ください。
 
 ### <a name="create-data-for-the-demo"></a>デモ用のデータを作成する
 
@@ -184,7 +184,7 @@ SSMS オブジェクト エクスプローラーで分析ストア ノードを�
 
 6. **ナビゲーター** ウィンドウで、分析データベースのスター スキーマ テーブル (fact_Tickets、dim_Events、dim_Venues、dim_Customers、dim_Dates) を選択します。 **[読み込み]** を選択します。 
 
-ご利用ありがとうございます。 Power BI にデータが正常に読み込まれました。 これで、テナントに関する洞察を得るために、興味のある視覚化機能の探索を開始できます。 次に、分析を使用して、データ ドリブンの推奨事項を Wingtip Tickets ビジネス チームに提供する方法について説明します。 これらの推奨事項は、ビジネス モデルとカスタマー エクスペリエンスの最適化に役立ちます。
+お疲れさまでした。 Power BI にデータが正常に読み込まれました。 これで、テナントに関する洞察を得るために、興味のある視覚化機能の探索を開始できます。 次に、分析を使用して、データ ドリブンの推奨事項を Wingtip Tickets ビジネス チームに提供する方法について説明します。 これらの推奨事項は、ビジネス モデルとカスタマー エクスペリエンスの最適化に役立ちます。
 
 まず、チケット売上データを分析して、各会場の利用状況の差異を確認します。 Power BI で次のオプションを選択して、各会場で販売されたチケットの総数を示す棒グラフをプロットします。 チケット ジェネレーターのランダムな変動により、結果が異なる場合があります。
  
@@ -228,7 +228,7 @@ AverageTicketsSold = DIVIDE(DIVIDE(COUNTROWS(fact_Tickets),DISTINCT(dim_Venues[V
 
 Wingtip Tickets SaaS マルチテナント データベース アプリケーションのテナント データの傾向を確認しました。 アプリケーションが SaaS アプリケーション ベンダーのビジネス上の意思決定に役立つ情報を提供する他の方法を検討することができます。 ベンダーは、テナントのニーズに適切に応えることができます。 このチュートリアルでは、テナント データで分析を実行するために必要なツールを活用して、企業がデータ ドリブンの意思決定を行うことができるようにしました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 
@@ -239,7 +239,7 @@ Wingtip Tickets SaaS マルチテナント データベース アプリケーシ
 > - 分析データベースを照会する 
 > - データ視覚化に Power BI を使用して、テナント データの傾向を確認する 
 
-ご利用ありがとうございます。
+お疲れさまでした。
 
 ## <a name="additional-resources"></a>その他のリソース
 

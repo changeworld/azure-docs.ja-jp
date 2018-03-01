@@ -13,21 +13,21 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 6a42baf9fd880264e4130c009f27935a4743de21
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: d90f1e3df8f5934d5c334ec72b5726f105842ca1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理
-サーバー管理者は、サーバーが存在するテナントについて、Azure Active Directory (Azure AD) 内で有効なユーザーまたはグループである必要があります。 Azure Portal のサーバー用コントロール ブレードで **[Analysis Services 管理者]** を使用するか、SSMS のサーバー プロパティを使用して、サーバー管理者を管理できます。 
+サーバー管理者は、サーバーが存在するテナントについて、Azure Active Directory (Azure AD) 内で有効なユーザーまたはグループである必要があります。 Azure Portal でサーバーの **[Analysis Services 管理者]** を使用するか、SSMS のサーバー プロパティを使用して、サーバー管理者を管理できます。 
 
 ## <a name="to-add-server-administrators-by-using-azure-portal"></a>Azure Portal を使用してサーバー管理者を追加するには
-1. サーバーのコントロール ブレードで **[Analysis Services 管理者]** をクリックします。
-2. **[\<サーバー名> - Analysis Services 管理者]** ブレードで、**[追加]** をクリックします。
-3. **[サーバー管理者を追加します]** ブレードで、Azure AD からユーザー アカウントを選択するか、メール アドレスで外部のユーザーを招待します。
+1. ポータルで、サーバーの、**[Analysis Services 管理者]** をクリックします。
+2. **[\<サーバー名> - Analysis Services 管理者]** で、**[追加]** をクリックします。
+3. **[サーバー管理者を追加します]** で、Azure AD からユーザー アカウントを選択するか、メール アドレスで外部のユーザーを招待します。
 
     ![Azure Portal のサーバー管理者](./media/analysis-services-server-admins/aas-manage-users-admins.png)
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/02/2017
    
     ![SSMS でのサーバー管理者の追加](./media/analysis-services-server-admins/aas-manage-users-ssms.png)
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 [認証とユーザーのアクセス許可](analysis-services-manage-users.md)  
 [データベース ロールとユーザーの管理](analysis-services-database-users.md)  
 [ロールベースのアクセス制御](../active-directory/role-based-access-control-what-is.md)  

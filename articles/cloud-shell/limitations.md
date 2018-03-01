@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 08426b6142dd125a5981d65635ecc55336cb3d15
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 21a050373a9901220e106534464a8c13565bb3d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -33,7 +33,6 @@ Cloud Shell セッションを提供するマシンは一時的であり、セ�
 * マウントされたストレージでは、`clouddrive` ディレクトリ内の変更のみが永続化されます。 Bash では、`$Home` ディレクトリも永続化されます。
 * Azure ファイル共有は、[割り当て済みリージョン](persisting-shell-storage.md#mount-a-new-clouddrive)内からのみマウントできます。
   * Bash では、`env` を実行して、`ACC_LOCATION` として設定されたリージョンを検索します。
-* Azure Files は、ローカル冗長ストレージと geo 冗長ストレージのアカウントのみをサポートします。
 
 ### <a name="browser-support"></a>ブラウザーのサポート
 
@@ -55,18 +54,11 @@ Cloud Shell は対話型のユース ケースを想定しています。 その
 
 ### <a name="user-permissions"></a>ユーザーのアクセス許可
 
-権限は、sudo アクセスのない、通常のユーザーとして設定されます。 `$Home` ディレクトリ外のインストールはすべて失われます。
-
-### <a name="clouddrive-smb-limited-permissions"></a>Clouddrive SMB の制限されたアクセス許可
-`clouddrive` ディレクトリ内の特定のコマンド (`git clone` など) には、特定のファイルを読み書きするための適切なアクセス許可がありません。 この問題が発生する場合は、SMB の制限がない `$Home` ディレクトリからもう一度やり直してください。
+権限は、sudo アクセスのない、通常のユーザーとして設定されます。 `$Home` または `clouddrive` ディレクトリの外部にあるインストールはすべて失われます。
 
 ### <a name="editing-bashrc"></a>.bashrc の編集
 
-.bashrc を編集すると Cloud Shell で予期しないエラーが発生する可能性があるため、編集には注意が必要です。
-
-### <a name="bashhistory"></a>.bash_history
-
-bash コマンドの履歴は、Cloud Shell セッションの中断または同時セッションにより、一致していない場合があります。
+.bashrc を編集すると Cloud Shell の Bash で予期しないエラーが発生する可能性があるため、編集には注意が必要です。
 
 ## <a name="powershell-limitations"></a>PowerShell の制限事項
 

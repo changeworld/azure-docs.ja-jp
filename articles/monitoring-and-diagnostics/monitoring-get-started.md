@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: ba4e8fe0d54deb4a980174ff7d0904854c794d3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c352c67aa0e9392c9e9d68822abeb27344bd8b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-monitor"></a>Azure Monitor の使用
-Azure Monitor は、Azure リソースを監視するための 1 つのソースを提供するプラットフォーム サービスです。 Azure Monitor を使用すると、Azure のリソースのメトリックとログを視覚化、クエリ、ルーティング、アーカイブし、そのメトリックとログに対してアクションを実行できます。 このデータを操作するには、Monitor ポータル ブレード、[Monitor PowerShell コマンドレット](insights-powershell-samples.md)、[クロスプラットフォーム CLI](insights-cli-samples.md)、または [Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) を使用します。 この記事では、Azure Monitor の重要なコンポーネントをいくつか取り上げて、ポータルを使用しながら説明します。
+Azure Monitor は、Azure リソースを監視するための 1 つのソースを提供するプラットフォーム サービスです。 Azure Monitor を使用すると、Azure のリソースのメトリックとログを視覚化、クエリ、ルーティング、アーカイブし、そのメトリックとログに対してアクションを実行できます。 このデータを操作するには、Azure Portal、[Monitor PowerShell コマンドレット](insights-powershell-samples.md)、[クロスプラットフォーム CLI](insights-cli-samples.md)、または [Azure Monitor REST API](https://msdn.microsoft.com/library/dn931943.aspx) を使用します。 この記事では、Azure Monitor の重要なコンポーネントをいくつか取り上げて、ポータルを使用しながら説明します。
 
 ## <a name="walkthrough"></a>チュートリアル
-1. ポータルでは、**[More services (その他のサービス)]** に移動し、**[Monitor]** オプションを見つけます。 星のアイコンをクリックして、このオプションをお気に入りリストに追加し、左側のナビゲーション バーから簡単にアクセスできるようにします。
+1. ポータルでは、**[すべてのサービス]** に移動し、**[Monitor]** オプションを見つけます。 星のアイコンをクリックして、このオプションをお気に入りリストに追加し、左側のナビゲーション バーから簡単にアクセスできるようにします。
 
     ![サービス一覧の Monitor](./media/monitoring-get-started/monitor-more-services.png)
-2. **[Monitor]** をクリックして、**[Monitor]** ブレードを開きます。 このブレードは、すべての監視設定とデータが 1 つにまとめられた統合ビューです。 最初に開くのは **[アクティビティ ログ]** セクションです。
+2. **[Monitor]** オプションをクリックして、**[Monitor]** ページを開きます。 このページは、すべての監視設定とデータが 1 つにまとめられた統合ビューです。 最初に開くのは **[アクティビティ ログ]** セクションです。
 
-    ![[Monitor] ブレードのナビゲーション](./media/monitoring-get-started/monitor-blade-nav.png)
+    ![Monitor のナビゲーション](./media/monitoring-get-started/monitor-blade-nav.png)
 
     Azure Monitor には、**アクティビティ ログ**、**メトリック**、**診断ログ**の 3 つの基本的なデータ監視カテゴリがあります。
 3. **[アクティビティ ログ]** をクリックすると、アクティビティ ログ セクションが表示されます。
 
-    ![[アクティビティ ログ] ブレード](./media/monitoring-get-started/monitor-act-log-blade.png)
+    ![アクティビティ ログ](./media/monitoring-get-started/monitor-act-log-blade.png)
 
     [**アクティビティ ログ**](monitoring-overview-activity-logs.md)には、サブスクリプションのリソースに対して実行されたすべての操作が示されています。 アクティビティ ログを使用すると、サブスクリプションのリソースに対する作成、更新、または削除操作すべてについて、"いつ誰が何を" 行ったのかを確認できます。 たとえば、アクティビティ ログにより、いつ誰が Web アプリを停止したかがわかります。 アクティビティ ログ イベントがプラットフォームに保存され、クエリで使用できる期間は 90 日です。
 
@@ -50,12 +50,12 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
 6. ダッシュボードに戻ります。 クエリ (および結果数) がダッシュボードに表示されていることがわかります。 これは、最近サブスクリプションで実行されたアクションの中から、目立ったもの (新しいロールの割り当てや VM の削除など) をすばやく確認する必要がある場合に役立ちます。
 
     ![ダッシュボードにピン留めされたアクティビティ ログ](./media/monitoring-get-started/monitor-act-log-db.png)
-7. **[Monitor]** タイルに戻り、**[メトリック]** をクリックします。 最初に、リソースを選択する必要があります。ブレードの上部にあるドロップダウン オプションを使用して、リソースをフィルター処理して選択します。
+7. **[Monitor]** タイルに戻り、**[メトリック]** をクリックします。 最初に、リソースを選択する必要があります。ページの上部にあるドロップダウン オプションを使用して、リソースをフィルター処理して選択します。
 
     ![メトリックのリソースをフィルター処理](./media/monitoring-get-started/monitor-met-filter.png)
 
     すべての Azure リソースによって[**メトリック**](monitoring-overview-metrics.md)が出力されます。 このビューでは、すべてのメトリックが 1 つのウィンドウで表示されるため、リソースがどのように実行されているかを簡単に把握できます。 **[メトリック (プレビュー)]** タブをクリックして、[最新のメトリック グラフ化エクスペリエンス](https://aka.ms/azuremonitor/new-metrics-charts)を確認することもできます。
-8. リソースを選択すると、ブレードの左側に使用可能なすべてのメトリックが表示されます。 メトリックを選択して複数のメトリックを一度にグラフ化し、グラフの種類と時間の範囲を変更できます。 このリソースに設定されたすべてのメトリック アラートを表示することもできます。
+8. リソースを選択すると、ページの左側に使用可能なすべてのメトリックが表示されます。 メトリックを選択して複数のメトリックを一度にグラフ化し、グラフの種類と時間の範囲を変更できます。 このリソースに設定されたすべてのメトリック アラートを表示することもできます。
 
     ![[メトリック] ブレード](./media/monitoring-get-started/monitor-metric-blade.png)
 
@@ -64,14 +64,14 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
    >
    >
 9. グラフに問題がない場合は、 **[固定]** ボタンを使用して、そのグラフをにダッシュボードに固定できます。
-10. **[Monitor]** ブレードに戻り、**[診断ログ]** をクリックします。
+10. **[Monitor]** ページに戻り、**[診断ログ]** をクリックします。
 
     ![[診断ログ] ブレード](./media/monitoring-get-started/monitor-diaglogs-blade.png)
 
     [**Azure 診断ログ**](monitoring-overview-of-diagnostic-logs.md)は、リソース*によって*出力されるログです。このログでは、その特定のリソースの操作に関するデータを確認できます。 たとえば、ネットワーク セキュリティ グループの規則の数とロジック アプリ ワークフロー ログの種類は両方とも診断ログです。 こうしたログは、ストレージ アカウントに格納したり、Event Hub にストリーミングしたり、[Log Analytics](../log-analytics/log-analytics-overview.md) に送信したりできます。 Log Analytics は、高度な検索およびアラート機能を備えた Microsoft のオペレーション インテリジェンス製品です。
 
     ポータルでは、サブスクリプションのリソースの一覧を表示およびフィルター処理して、診断ログが有効になっているかどうかを確認できます。
-11. 診断ログ ブレードのリソースをクリックします。 診断ログがストレージ アカウントに保存されている場合は、時間単位のログの一覧が表示されます。このログは直接ダウンロードできます。
+11. 診断ログ ページのリソースをクリックします。 診断ログがストレージ アカウントに保存されている場合は、時間単位のログの一覧が表示されます。このログは直接ダウンロードできます。
 
     ![1 つのリソースの診断ログ](./media/monitoring-get-started/monitor-diaglogs-detail.png)
 
@@ -80,7 +80,7 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
     ![Azure App Service の Web アプリの診断ログの有効化](./media/monitoring-get-started/monitor-diaglogs-enable.png)
 
     Log Analytics への診断ログの設定した場合は、ポータルの **[ログ検索]** セクションで、そのログを検索できます。
-12. [Monitor] ブレードの **[アラート]** セクションに移動します。
+12. [Monitor] ページの **[アラート]** セクションに移動します。
 
     ![パブリックのアラート ブレード](./media/monitoring-get-started/monitor-alerts-nopp.png)
 
@@ -100,5 +100,5 @@ Azure Monitor は、Azure リソースを監視するための 1 つのソース
 
 ![Azure Monitor ダッシュボード](./media/monitoring-get-started/monitor-final-dash.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Monitor の概要](monitoring-overview.md)

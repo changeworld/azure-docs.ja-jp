@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 40433df5ebe90aec3a9294f2c5a6083c4567b161
-ms.sourcegitcommit: dcf5f175454a5a6a26965482965ae1f2bf6dca0a
+ms.openlocfilehash: e32e84eacee3a43b948b0a4b4177ab956b34ca3c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 この記事では、Recovery Services コンテナーを使用する Azure Backup のレポートを構成し、Power BI を使用してそのレポートにアクセスする手順を説明します。 この手順を実行すると、Power BI に直接アクセスしてすべてのレポートを表示し、レポートのカスタマイズおよび作成を行えるようになります。 
@@ -38,7 +38,7 @@ ms.lasthandoff: 11/10/2017
 
 ## <a name="configure-storage-account-for-reports"></a>レポート用のストレージ アカウントを構成する
 Azure Portal で次の手順を使用して、Recovery Services コンテナー用のストレージ アカウントを構成します。 これは 1 回限りの構成であり、ストレージ アカウントをいったん構成すれば、Power BI に直接アクセスしてコンテンツパックを表示し、レポートを利用できるようになります。
-1. 既に Recovery Services コンテナーが開かれている場合は、次の手順に進みます。 Recovery Services コンテナーが開かれていない場合は、Azure Portal でハブ メニューの **[参照]** をクリックします。
+1. 既に Recovery Services コンテナーが開かれている場合は、次の手順に進みます。 Recovery Services コンテナーが開かれていないが、Azure Portal 内にいる場合は、**[すべてのサービス]** をクリックします。
 
    * リソース ボックスに「 **Recovery Services**」と入力します。
    * 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**が表示されたら、それをクリックします。
@@ -80,7 +80,7 @@ Azure Portal で次の手順を使用して、Recovery Services コンテナー�
 ## <a name="view-reports-in-power-bi"></a>Power BI でレポートを表示する 
 Recovery Services コンテナーを使用するレポート用にストレージ アカウントを構成した後、レポート データのフローが開始されるまでに約 24 時間かかります。 ストレージ アカウントを設定してから 24 時間が経過したら、次の手順を使用して Power BI でレポートを表示します。
 1. Power BI に[サインイン](https://powerbi.microsoft.com/landing/signin/)します。
-2. **[データの取得]** をクリックし、[コンテンツ パック ライブラリ]の **[サービス]** の下にある [取得] をクリックします。 [Power BI のドキュメントで説明されているコンテンツ パックへのアクセス手順](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/)を使用します。
+2. **[データの取得]** をクリックし、[コンテンツ パック ライブラリ] の **[サービス]** の下にある **[取得]** をクリックします。 [Power BI のドキュメントで説明されているコンテンツ パックへのアクセス手順](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-packs-services/)を使用します。
 
      ![コンテンツ パックをインポートする](./media/backup-azure-configure-reports/content-pack-import.png)
 3. 検索バーに「**Azure Backup**」と入力し、**[今すぐ入手する]** をクリックします。
@@ -150,10 +150,10 @@ Recovery Services コンテナーを使用するレポート用にストレー�
 ## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
 | エラーの詳細 | 解決策 |
 | --- | --- |
-| バックアップ レポート用のストレージ アカウントの設定後もなお、**[ストレージ アカウント]** に **[構成されていません]** と表示される。 | ストレージ アカウントを正常に構成した場合には、この問題が発生していてもレポート データが挿入されます。 この問題を解決するには、[Azure Portal]、[その他のサービス]、[診断設定]、[RS vault]\(RS コンテナー\)、[設定の編集] の順に移動します。 以前に構成した設定を削除し、同じブレードから新しい設定を作成する必要があります。 今回は、フィールド **[名前]** を **service** と設定します。 これにより、新たに構成されたストレージ アカウントが表示されます。 |
+| バックアップ レポート用のストレージ アカウントの設定後もなお、**[ストレージ アカウント]** に **[構成されていません]** と表示される。 | ストレージ アカウントを正常に構成した場合には、この問題が発生していてもレポート データが挿入されます。 この問題を解決するには、[Azure Portal] > [すべてのサービス] > [診断設定] > [RS vault] (RS コンテナー) > [設定の編集] の順に移動します。 以前に構成した設定を削除し、同じブレードから新しい設定を作成する必要があります。 今回は、フィールド **[名前]** を **service** と設定します。 これにより、新たに構成されたストレージ アカウントが表示されます。 |
 |Power BI で Azure Backup コンテンツ パックをインポートすると、エラー "**404 - コンテナーが見つかりません**" が表示される。 | このドキュメントで既に示したとおり、Recovery Services コンテナーでレポートを構成してから Power BI で正しくレポートが表示されるまでには、24 時間かかります。 24 時間が経過する前にレポートにアクセスしようとすると、有効なレポートを表示するうえで必要なデータが揃っていないため、このエラーが表示されます。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ストレージ アカウントを構成し、Azure Backup コンテンツ パックをインポートしたので、次のステップではこれらのレポートのカスタマイズと、レポート データ モデルを使用したレポートの作成を行います。 詳細については、次の記事をご覧ください。
 
 * [Azure Backup レポート データ モデルの使用](backup-azure-reports-data-model.md)

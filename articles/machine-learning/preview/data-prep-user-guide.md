@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: a75ad760fe7f9663c5b43500581170d5f8671a13
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2879daf4b5ba072a3a9b11ec87c01e5904b6a5dc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="data-preparations-user-guide"></a>データ準備ユーザー ガイド 
 Azure Machine Learning データ準備には豊富な機能が搭載されています。 この記事では、その操作方法について深く掘り下げます。
@@ -89,7 +89,7 @@ Azure Machine Learning データ準備には豊富な機能が搭載されてい
 4. **[Conditions]\(条件\)** の後で、**[Create Dataflow Containing the Filtered Out Rows]\(フィルターで除去された行を含むデータ フローの作成\)** を選択して、表示されない結果セットを新しいデータ フローにフォークします。
 
 
-この手法は多くの場合、追加の準備を必要とするデータのセットを分割するために使用します。 フォークしたデータ セットをラングリングした後、そのデータを元のデータ フロー内の結果セットとマージすることが一般的です。 マージ (フォーク操作の逆) を実行するには、次のいずれかのアクションを使用します。
+この手法は多くの場合、追加の準備を必要とするデータのセットを分割するために使用します。 フォークしたデータ セットを準備した後、そのデータを元のデータ フロー内の結果セットとマージすることが一般的です。 マージ (フォーク操作の逆) を実行するには、次のいずれかのアクションを使用します。
 
 - **行の追加**。 2 つ以上のデータ フローを垂直方向 (行方向) にマージします。 
 - **列の追加**。 2 つ以上のデータ フローを水平方向 (列方向) にマージします。

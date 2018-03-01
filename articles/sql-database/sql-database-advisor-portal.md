@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 2b725c60dbcb9737b00ffd5fb43273b26dda1ea8
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: fe76be59d6ee09049ed8c1343d1a91e42646c262
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -32,12 +32,12 @@ Azure Portal を使って、Azure SQL Database のパフォーマンスを最適
 Azure Portal でパフォーマンスに関する推奨事項を調べるには、次の手順のようにします。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[その他のサービス]** > **[SQL Database]** の順に移動し、データベースを選択します。
+2. **[すべてのサービス]** > **[SQL Database]** の順に移動し、データベースを選択します。
 3. **[パフォーマンスの推奨事項]** に移動し、選択したデータベースで使用できる推奨事項を表示します。
 
 パフォーマンスの推奨事項は、次の図のようなテーブルに表示されます。
 
-![Recommendations](./media/sql-database-advisor-portal/recommendations.png)
+![推奨事項](./media/sql-database-advisor-portal/recommendations.png)
 
 推奨事項は、パフォーマンスへの潜在的な影響ごとに、次のカテゴリの順に表示されます。
 

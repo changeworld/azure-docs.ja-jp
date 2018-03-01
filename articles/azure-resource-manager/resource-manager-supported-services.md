@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6a9128f45d4199404019cee594842d59c7f1aaf3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b1915288feff8f1d9fc780fef40a247d1c35839
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="resource-providers-and-types"></a>リソース プロバイダーと種類
 
@@ -263,9 +263,9 @@ Azure ですべてのリソース プロバイダおよびサブスクリプシ�
 
 サブスクリプション内に特定のリソース プロバイダーからのリソースの種類がまだある場合、そのリソース プロバイダーの登録を解除することはできません。
 
-特定のリソース プロバイダーの情報を表示するには、**[その他のサービス]** を選択します。
+特定のリソース プロバイダーの情報を表示するには、**[すべてのサービス]** を選択します。
 
-![[その他のサービス] の選択](./media/resource-manager-supported-services/more-services.png)
+![[すべてのサービス] を選択する](./media/resource-manager-supported-services/more-services.png)
 
 **リソース エクスプローラー**を検索し、使用可能なオプションから選択します。
 
@@ -287,7 +287,7 @@ API バージョンは、リリース プロバイダーがリリースする RE
 
 ![API のバージョンの表示](./media/resource-manager-supported-services/show-api-versions.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * リソース マネージャーのテンプレートの作成の詳細については、 [Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
 * リソースをデプロイする方法を確認するには、「 [Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 * リソース プロバイダーの操作を表示するには、「[Azure REST API](/rest/api/)」を参照してください。

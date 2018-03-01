@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: d0bdce43796ea555fc20ddc56a2a670042d4f16b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 77f4bf0fc38043afd7a6634bcf16a0f10f7ddfeb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 
@@ -31,13 +31,13 @@ ms.lasthandoff: 12/11/2017
 
 -   1 つ目のインスタンスに使用されている証明書とは別の証明書を構成する。
 
-アプリケーションが、上のいずれかをサポートしていない場合、 2 つ目のインスタンスを構成することはできません。
+アプリケーションが、上記のいずれかをサポートしていない場合、2 つ目のインスタンスを構成することはできません。
 
 ## <a name="where-do-i-set-the-entityid-user-identifier-format"></a>EntityID (ユーザー識別子) の形式はどこで設定しますか
 
-Azure AD がユーザー認証後の応答でアプリケーションに送信する EntityID (ユーザー ID) の形式は、選択することができません。
+Azure AD がユーザー認証後の応答でアプリケーションに送信する EntityID (ユーザー識別子) の形式は、選択することができません。
 
-Azure AD は、選択した値に基づく NameID 属性 (ユーザー ID) の形式、または SAML AuthRequest でアプリケーションによって要求された形式を選択します。 詳細については、「[シングル サインオンの SAML プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)」の「NameIDPolicy」セクションを参照してください。
+Azure AD は、選択した値に基づく NameID 属性 (ユーザー識別子) の形式、または SAML AuthRequest でアプリケーションによって要求された形式を選択します。 詳細については、「[シングル サインオンの SAML プロトコル](https://docs.microsoft.com/azure/active-directory/develop/active-directory-single-sign-on-protocol-reference#authnrequest)」の「NameIDPolicy」セクションを参照してください。
 
 ## <a name="where-do-i-get-the-application-metadata-or-certificate-from-azure-ad"></a>Azure AD からのアプリケーション メタデータまたは証明書は、どこで取得できますか
 
@@ -45,7 +45,7 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -57,7 +57,7 @@ Azure AD からアプリケーションのメタデータまたは証明書を�
 
 6.  シングル サインオンを構成したアプリケーションを選択します。
 
-7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューで **[シングル サインオン]** をクリックします。
+7.  アプリケーションが読み込まれたら、アプリケーションの左側にあるナビゲーション メニューで **[シングル サインオン]** をクリックします。
 
 8.  **[SAML 署名証明書]** セクションに移動して、**[ダウンロード]** 列の値をクリックします。 アプリケーションでシングル サインオンを構成するために何が必要かに応じて、メタデータ XML または証明書をダウンロードするオプションが表示されます。
 
@@ -67,5 +67,5 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 
 アプリケーションに送信される SAML 属性要求をカスタマイズする方法については、「[Azure Active Directory での要求マッピング](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)

@@ -1,4 +1,4 @@
-Premium キャッシュを作成するには、[Azure Portal](https://portal.azure.com) にサインインし、**[新規]** > **[データベース]** > **[Redis Cache]** の順にクリックします。
+Premium キャッシュを作成するには、[Azure Portal](https://portal.azure.com) にサインインし、**[リソースの作成]** > **[データベース]** > **[Redis Cache]** の順にクリックします。
 
 ![キャッシュの作成](media/redis-cache-premium-create/redis-cache-new-cache-menu.png)
 

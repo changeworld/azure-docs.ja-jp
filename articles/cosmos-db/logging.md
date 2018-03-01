@@ -12,36 +12,61 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/29/2018
+ms.date: 02/20/2018
 ms.author: mimig
-ms.openlocfilehash: b8f92953634f9294805521d8b925ed67d121a17d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0d76e3bea8b3d24c4232c699354320f6b873722e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
-1 つまたは複数の Azure Cosmos DB データベースを使用し始めた場合、データベースのアクセス方法と時間を監視したいと考えるのではないでしょうか。 Azure Cosmos DB の診断ログなら、この監視を実行できます。 診断ログを有効にすると、ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信すること、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミングすること、[Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) に含まれる [Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートすることができます。
+1 つまたは複数の Azure Cosmos DB データベースを使用し始めた場合、データベースのアクセス方法と時間を監視したいと考えるのではないでしょうか。 この記事では、Azure プラットフォームで利用可能なすべてのログの概要を説明した後、監視目的で診断ログの記録を有効にして、ログの [Azure Storage](https://azure.microsoft.com/services/storage/) への送信、ログの [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) へのストリーミング、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) の一部) へのエクスポートを行う方法について説明します。
+
+## <a name="logs-available-in-azure"></a>Azure で利用可能なログ
+
+Azure Cosmos DB アカウントの監視を始める前に、ログと監視に関するいくつかの点を明確にしておきます。 Azure プラットフォームのログには、さまざまな種類があります。 [Azure アクティビティ ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)、[Azure 診断ログ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)、[メトリック](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics)、イベント、ハートビート監視、操作ログなどです。大量のログが存在します。 Azure Portal の[Azure Log Analytics](https://azure.microsoft.com/en-us/services/log-analytics/) で、ログの完全な一覧を確認できます。 
+
+次の図は、利用可能な Azure ログの種類を示しています。
+
+![さまざまな種類の Azure ログ](./media/logging/azurelogging.png)
+
+この記事では、Azure アクティビティ、Azure 診断、およびメトリックに注目します。 この 3 つのログの違いは何でしょうか。 
+
+### <a name="azure-activity-log"></a>Azure アクティビティ ログ
+
+Azure アクティビティ ログは、Azure で発生したサブスクリプション レベルのイベントの分析に利用できるサブスクリプション ログです。 アクティビティ ログは、サブスクリプションのコントロール プレーン イベントを管理カテゴリで報告します。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 
+
+アクティビティ ログは診断ログとは異なります。 アクティビティ ログは、外部から行われるリソースの操作に関するデータを提供します ("コントロール プレーン")。 Azure Cosmos DB のコンテキストでは、コントロール プレーンの操作の一部に、コレクションの作成、キーの一覧表示、キーの削除、データベースの一覧表示などが含まれます。診断ログは、リソースによって出力され、そのリソースの操作に関する情報を提供します ("データ プレーン")。 データ プレーンの診断ログの例には、delete、insert、readfeed 操作などがあります。
+
+アクティビティ ログ (コントロール プレーン操作) は、実際は非常に大量になる可能性があり、呼び出し元の完全な電子メール アドレス、呼び出し元の IP アドレス、リソース名、操作名、TenantId などが含まれる可能性があります。アクティビティ ログには、データの複数の[カテゴリ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)が含まれます。 これらのカテゴリのスキーマの詳細については、「[Azure アクティビティ ログのイベント スキーマ](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-activity-log-schema)」を参照してください。  ただし、診断ログでは、多くの場合 PII データが削除されるため、実際は限定的である可能性があります。 そのため、呼び出し元の IP アドレスが存在する可能性がありますが、最後のオクテットは削除されています。
+
+### <a name="azure-metrics"></a>Azure メトリック
+
+大半の Azure リソースによって出力される Azure テレメトリ データ (パフォーマンスカウンターとも呼ばれます)の最も重要な種類は、[Azure メトリック](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-metrics)です。 メトリックを使用して、Azure Cosmos DB リソースのスループット、ストレージ、整合性、可用性、および 待機時間に関する情報を表示できます。 詳細については、「[Azure Cosmos DB のメトリックを使用した監視とデバッグ](use-metrics.md)」を参照してください。
+
+### <a name="azure-diagnostic-logs"></a>Azure 診断ログ
+
+Azure 診断ログは、リソースによって出力されるログであり、そのリソースの操作に関する豊富なデータを提供します。 これらのログの内容は、リソースの種類によって異なります。 リソースレベルの診断ログは、ゲスト OS レベルの診断ログとも異なります。 ゲスト OS 診断ログは、仮想マシンの内部で実行されているエージェントや、他のサポートされるリソースの種類によって収集されるログです。 リソースレベルの診断ログの場合、エージェントは不要です。Azure プラットフォーム自体からリソース固有のデータをキャプチャします。一方、ゲスト OS レベルの診断ログの場合、仮想マシン上で実行されているオペレーティング システムとアプリケーションからデータをキャプチャします。
 
 ![Log Analytics を介した Storage、Event Hubs、Operations Management Suite への診断ログ記録](./media/logging/azure-cosmos-db-logging-overview.png)
 
-このチュートリアルを読むと、Azure Portal、CLI、または PowerShell を使用して Azure Cosmos DB のログ記録を開始できるようになります。
-
-## <a name="what-is-logged"></a>ログに記録される内容
+### <a name="what-is-logged-by-azure-diagnostic-logs"></a>Azure 診断ログによって記録されるもの
 
 * すべての API で認証されたバックエンド要求 (TCP / REST) がすべて記録されます。たとえば、アクセス許可、システム エラー、または不正な要求の結果として失敗した要求などが記録されます。 ユーザーが開始した Graph、Cassandra、および Table API 要求のサポートは現在使用できません。
 * データベース自体に対する操作。すべてのドキュメント、コンテナー、およびデータベースに対する CRUD 操作が含まれます。
 * アカウント キーに対する操作。これらのキーの作成、変更、または削除が含まれます。
 * 結果として 401 応答が発生する、認証されていない要求。 たとえば、ベアラー トークンを持たない要求、形式が正しくない要求、有効期限切れの要求、または無効なトークンを持つ要求です。
 
-## <a name="prerequisites"></a>前提条件
-このチュートリアルを完了するには、以下のリソースが必要です。
+<a id="#turn-on"></a>
+## <a name="turn-on-logging-in-the-azure-portal"></a>Azure Portal でログを有効にする
+
+診断ログを有効にするには、次のリソースが必要です。
 
 * 既存の Azure Cosmos DB アカウント、データベース、およびコンテナー。 これらのリソースの作成手順については、[Azure Portal を使用したデータベース アカウントの作成](create-sql-api-dotnet.md#create-a-database-account)、[CLI サンプル](cli-samples.md)、または [PowerShell サンプル](powershell-samples.md)に関するページを参照してください。
 
-<a id="#turn-on"></a>
-## <a name="turn-on-logging-in-the-azure-portal"></a>Azure Portal でログを有効にする
+Azure Portal で診断ログを有効にするには、以下を実行します。
 
 1. [Azure Portal](https://portal.azure.com) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[診断ログ]** をクリックし、**[診断をオンにする]** をクリックします。
 
@@ -98,7 +123,7 @@ Azure CLI を使用してメトリックと診断のロギングを有効にす�
 
 ## <a name="turn-on-logging-using-powershell"></a>PowerShell を使用してログ記録を有効にする
 
-PowerShell を使用してログ記録を有効にするには、Azure PowerShell バージョン 1.0.1 以降が必要です。
+PowerShell を使用して診断ログを有効にするには、Azure PowerShell バージョン 1.0.1 以降が必要です。
 
 Azure PowerShell をインストールして、Azure サブスクリプションに関連付けるには、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 
@@ -315,7 +340,7 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 
 ## <a name="managing-your-logs"></a>ログの管理
 
-ログは、アカウントで Azure Cosmos DB 操作が実行されてから 2 時間使用できます。 ストレージ アカウントでのログの管理はお客様に委ねられます。
+診断ログは、アカウントで Azure Cosmos DB 操作が実行されてから 2 時間後に使用できます。 ストレージ アカウントでのログの管理はお客様に委ねられます。
 
 * ログにアクセスできるユーザーを制限することでログのセキュリティを保護するには、標準的な Azure アクセス制御方法を使用します。
 * ストレージ アカウントに保持する必要がなくなったログは削除します。
@@ -406,7 +431,7 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 
 次の表は、各ログ エントリの内容をまとめた一覧です。
 
-| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | [説明] |
+| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | 説明 |
 | --- | --- | --- |
 | time | TimeGenerated | 操作が発生した日時 (UTC)。 |
 | ResourceId | リソース | ログが有効になっている Azure Cosmos DB アカウント。|

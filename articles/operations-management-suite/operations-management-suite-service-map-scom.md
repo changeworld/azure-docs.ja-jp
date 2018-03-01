@@ -1,6 +1,6 @@
 ---
 title: "サービス マップと System Center Operations Manager の統合 | Microsoft Docs"
-description: "サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする Operations Management Suite のソリューションです。 この記事では、Operations Manager でサービス マップを使用して、分散アプリケーション ダイアグラムを自動作成する方法について説明します。"
+description: "Service Map は、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、Azure のソリューションです。 この記事では、Operations Manager でサービス マップを使用して、分散アプリケーション ダイアグラムを自動作成する方法について説明します。"
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,26 +14,26 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.openlocfilehash: af1f683f08ff6b70b23ff265f39b9a76f92f4be2
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: 906a90acb8754ff4b70235256cd184e2611ff5a0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
   > [!NOTE]
   > この機能はパブリック プレビュー段階にあります。
   > 
   
-Operations Management Suite のサービス マップでは、Windows および Linux システムのアプリケーション コンポーネントが自動的に検出され、サービス間の通信がマップされます。 サービス マップを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして、思うように表示することができます。 サービス マップには、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続が表示されます。その際、エージェントのインストール以外の構成は必要ありません。 詳細については、[サービス マップのドキュメント](operations-management-suite-service-map.md)を参照してください。
+サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 サービス マップを使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして、思うように表示することができます。 サービス マップには、TCP 接続アーキテクチャ全体のサーバー、プロセス、ポート間の接続が表示されます。その際、エージェントのインストール以外の構成は必要ありません。 詳細については、[サービス マップのドキュメント](operations-management-suite-service-map.md)を参照してください。
 
 このサービス マップと System Center Operations Manager との統合を利用すると、サービス マップの動的な依存関係に基づいて、Operation Manager で分散アプリケーション ダイアグラムを自動作成できます。
 
 ## <a name="prerequisites"></a>前提条件
 * サーバー セットを管理する Operations Manager 管理グループ (2012 R2 以降)。
-* サービス マップ ソリューションが有効化された Operations Management Suite ワークスペース。
+* Service Map ソリューションが有効化された Log Analytics ワークスペース。
 * Operations Manager で管理され、サービス マップにデータを送信する (1 つ以上の) サーバー セット。 Windows および Linux サーバーがサポートされています。
-* Operations Management Suite ワークスペースに関連付けられている Azure サブスクリプションにアクセスできるサービス プリンシパル。 詳細については、「[サービス プリンシパルの作成](#creating-a-service-principal)」を参照してください。
+* Log Analytics ワークスペースに関連付けられている Azure サブスクリプションにアクセスできるサービス プリンシパル。 詳細については、「[サービス プリンシパルの作成](#creating-a-service-principal)」を参照してください。
 
 ## <a name="install-the-service-map-management-pack"></a>サービス マップ管理パックのインストール
 Operations Manager とサービス マップの統合を有効にするには、Microsoft.SystemCenter.ServiceMap 管理パック バンドル (Microsoft.SystemCenter.ServiceMap.mpb) をインポートします。 管理パックのバンドルは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=55763)からダウンロードできます。 このバンドルには、次の管理パックが含まれています。
@@ -55,7 +55,7 @@ Operations Manager とサービス マップの統合を有効にするには、
 
     ![[接続構成ツール] ウィンドウ](media/oms-service-map/scom-config-spn.png)
 
-3. **[Subscription Selection (サブスクリプションの選択)]** ウィンドウで、Azure サブスクリプション、Azure リソース グループ (Operations Management Suite ワークスペースが含まれるグループ)、Operations Management Suite ワークスペースを選択し、**[次へ]** をクリックします。
+3. **[サブスクリプションの選択]** ウィンドウで、Azure サブスクリプション、Azure リソース グループ (Log Analytics ワークスペースが含まれるグループ)、Log Analytics ワークスペースを選択し、**[次へ]** をクリックします。
 
     ![Operations Manager 構成ワークスペース](media/oms-service-map/scom-config-workspace.png)
 
@@ -73,22 +73,22 @@ Operations Manager とサービス マップの統合を有効にするには、
 
     ![Operations Manager 構成グループ](media/oms-service-map/scom-config-group.png)
 
-6. 省略可能: Operations Management Suite と通信する管理サーバーのリソース プールを選択し、**[ワークスペースの追加]** をクリックします。
+6. 省略可能: Log Analytics と通信する管理サーバーのリソース プールを選択し、**[ワークスペースの追加]** をクリックします。
 
     ![Operations Manager 構成リソース プール](media/oms-service-map/scom-config-pool.png)
 
-    Operations Management Suite ワークスペースの構成および登録には時間がかかる場合があります。 構成が完了すると、Operations Manager と、Operations Management Suite の最初のサービス マップの同期が開始されます。
+    Log Analytics ワークスペースの構成および登録には時間がかかる場合があります。 構成が完了すると、Operations Manager と、最初の Service Map の同期が開始されます。
 
     ![Operations Manager 構成リソース プール](media/oms-service-map/scom-config-success.png)
 
 
 ## <a name="monitor-service-map"></a>サービス マップの監視
-Operations Management Suite ワークスペースが接続されると、Operations Manager コンソールの **[監視]** ウィンドウに、サービス マップという名前の新しいフォルダーが表示されます。
+Log Analytics ワークスペースが接続されると、Operations Manager コンソールの **[監視]** ウィンドウに、Service Map という名前の新しいフォルダーが表示されます。
 
 ![Operations Manager の [監視] ウィンドウ](media/oms-service-map/scom-monitoring.png)
 
 Service Map フォルダーには 4 つのノードがあります。
-* **アクティブなアラート**: Operations Manager と Service Map の間の通信に関するアクティブなアラートの一覧が表示されます。  このアラートは、Operations Manager に同期されている Operations Management Suite アラートではないことにご注意ください。 
+* **アクティブなアラート**: Operations Manager と Service Map の間の通信に関するアクティブなアラートの一覧が表示されます。  このアラートは、Operations Manager に同期されている Log Analytics アラートではないことにご注意ください。 
 
 * **サーバー**: サービス マップと同期するように構成されている監視対象サーバーの一覧が表示されます。
 
@@ -103,7 +103,7 @@ Service Map フォルダーには 4 つのノードがあります。
     ![Operations Manager の分散アプリケーション ダイアグラム](media/oms-service-map/scom-dad.png)
 
 ## <a name="edit-or-delete-the-workspace"></a>ワークスペースを編集または削除
-構成済みワークスペースは、**[サービス マップ概要]** ウィンドウ (**[管理]** ウィンドウ > **[Operations Management Suite]**  >  **[サービス]**) で編集または削除できます。 現時点で構成できる Operations Management Suite ワークスペースは 1 つのみです。
+構成済みワークスペースは、**[サービス マップ概要]** ウィンドウ (**[管理]** ウィンドウ > **[Operations Management Suite]**  >  **[サービス]**) で編集または削除できます。 現時点で構成できる Log Analytics ワークスペースは 1 つのみです。
 
 ![Operations Manager の [ワークスペースの編集] ウィンドウ](media/oms-service-map/scom-edit-workspace.png)
 
@@ -120,7 +120,7 @@ Service Map フォルダーには 4 つのノードがあります。
 ## <a name="known-issues-and-limitations"></a>既知の問題と制限
 
 現在の設計には次の問題と制限があります。
-* 接続できる Operations Management Suite ワークスペースは 1 つだけです。
+* 1 つの Log Analytics ワークスペースにのみ接続することができます。
 * **[作成]** ウィンドウでサーバーを Service Map サーバー グループに手動で追加できますが、そのサーバーのマップは、即座には同期されません。  次回の同期サイクル中に Service Map から同期されます。
 * 管理パックによって作成された分散アプリケーション ダイアグラムに変更を加える場合は、Service Map による次回同期の際に、これらの変更が上書きされる可能性があります。
 

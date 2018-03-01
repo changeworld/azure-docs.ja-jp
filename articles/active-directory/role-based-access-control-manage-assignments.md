@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: rolyon
-ms.openlocfilehash: e893aeeabf6a34707fbfe6576293a9e0726dd975
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7794d25e9111a4c2dbe822f9618d0acdfb69a2d2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>Azure Portal のユーザーとグループのアクセス権の割り当てを表示
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Azure Active Directory (Azure AD) のロールベースのアクセス制御 (RB
 ## <a name="view-access-assignments"></a>アクセス権の割り当ての表示
 1 つのユーザーまたはグループのアクセス権の割り当てを調べるには、 [Azure Portal](http://portal.azure.com)の Azure Active Directory から開始します。
 
-1. **[Azure Active Directory]**を選択します。 このオプションがナビゲーションの一覧に表示されない場合は、**[More Services (その他のサービス)]** を選択して、**[Azure Active Directory]** が表示されるまで下にスクロールします。
+1. **[Azure Active Directory]**を選択します。 このオプションがナビゲーションの一覧に表示されない場合は、**[すべてのサービス]** を選択して、**[Azure Active Directory]** が表示されるまで下にスクロールします。
 2. **[ユーザーとグループ]** を選択して、**[すべてのユーザー]** または **[すべてのグループ]** を選択します。 この例では、個々のユーザーについて説明します。
     ![Azure Active Directory のユーザーおよびグループの管理 - スクリーンショット](./media/role-based-access-control-manage-assignments/rbac_users_groups.png)
 3. ユーザーを氏名またはユーザー名で検索します。

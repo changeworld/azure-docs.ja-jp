@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.openlocfilehash: 50ae54b9476c49b80236e295c0bf244df8236cff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec6bd6b053f6546c77508d29065de25739619d96
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
 
@@ -80,7 +80,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-1. [Azure Portal](https://ms.portal.azure.com/) で、**[新規]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。
 1. 次の情報をジョブに入力します。
 
    **[ジョブ名]**: ジョブの名前。 名前はグローバルに一意である必要があります。
@@ -167,7 +167,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 
    `[YourOutputAlias]` をジョブの出力エイリアスに置き換えます。
 
-1. [ **Save**] をクリックします。
+1. **[Save]** をクリックします。
 
 ### <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 

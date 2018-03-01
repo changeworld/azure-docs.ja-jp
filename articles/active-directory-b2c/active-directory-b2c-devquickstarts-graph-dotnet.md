@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
-ms.openlocfilehash: 33df6c4255d4ca672e65237c8be45b3f0bc7864e
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dd84a8da348d0d534ba19a3d61970ec0d8c66cc8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API を使用する
 
@@ -45,7 +45,7 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ページの右上隅のアカウント名を選択して、Azure AD B2C テナントを選択します。
-3. 左側のナビゲーション ウィンドウで **[More Services (その他のサービス)]** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
+3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
 4. 画面の指示に従い、新しいアプリケーションを作成します。 
     1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
     2. **任意のリダイレクト URI** (例: https://B2CGraphAPI) を入力します。ただし、この例には関係ありません。  

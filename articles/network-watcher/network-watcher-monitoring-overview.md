@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: eecb20d4a53478471c238018d8fbd5a5f9cb79d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8a8e0653221af126ea137b1450ce27c29791ae3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-network-monitoring-overview"></a>Azure のネットワーク監視の概要
 
@@ -46,7 +46,7 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 * **[仮想ネットワーク ゲートウェイと接続のトラブルシューティング](network-watcher-troubleshoot-manage-rest.md)** - 仮想ネットワーク ゲートウェイと接続に関する問題をトラブルシューティングできます。
 * **[ネットワーク サブスクリプションの制限](#network-subscription-limits)** - ネットワーク リソースの使用状況を制限と照らし合わせて確認できます。
 * **[診断ログの構成](#diagnostic-logs)** – 1 つのペインで、リソース グループ内のネットワーク リソースの診断ログを有効化または無効化することができます。
-* **[接続 (プレビュー)](network-watcher-connectivity-overview.md)** - 仮想マシンから指定されたエンドポイントへの直接の TCP 接続を確立する可能性を確認します。
+* **[接続のトラブルシューティング](network-watcher-connectivity-overview.md)** - 仮想マシンから、Azure のコンテキストで拡充された指定のエンドポイントまでの直接の TCP 接続が確立されたかどうかを確認します。
 
 ### <a name="role-based-access-control-rbac-in-network-watcher"></a>Network Watcher におけるロールベースのアクセス制御 (RBAC)
 
@@ -57,9 +57,9 @@ Network Watcher では、[Azure のロールベースのアクセス制御 (RBAC
 |Microsoft.Storage/ |読み取り|
 |Microsoft.Authorization/| 読み取り| 
 |Microsoft.Resources/subscriptions/resourceGroups/| 読み取り|
-|Microsoft.Storage/storageAccounts/listServiceSas/ | アクション|
-|Microsoft.Storage/storageAccounts/listAccountSas/ |アクション|
-|Microsoft.Storage/storageAccounts/listKeys/ | アクション|
+|Microsoft.Storage/storageAccounts/listServiceSas/ | アクションを表示します。|
+|Microsoft.Storage/storageAccounts/listAccountSas/ |アクションを表示します。|
+|Microsoft.Storage/storageAccounts/listKeys/ | アクションを表示します。|
 |Microsoft.Compute/virtualMachines/ |読み取り|
 |Microsoft.Compute/virtualMachines/ |書き込み|
 |Microsoft.Compute/virtualMachineScaleSets/ |読み取り|
@@ -114,7 +114,7 @@ Network Watcher には診断ログ ビューが用意されています。 こ�
 
 ネットワーク リソースの正常性に関する情報は定期的に提供されています。 対象のリソースは、VPN Gateway や VPN トンネルなどです。 Resource Health には、Azure Portal からアクセスできます。 Resource Health の詳細については、[Resource Health の概要](../resource-health/resource-health-overview.md)に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Network Watcher について学習したので、次のことが可能になりました。
 

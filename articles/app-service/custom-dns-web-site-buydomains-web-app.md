@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: cephalin
-ms.openlocfilehash: 13a61caf9b4dff8ffc08970d5a4c09efa9c5f117
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 152dbb6d47dfdf3bf5df945b823f64e58e7d91e2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Azure Web Apps のカスタム ドメイン名を購入する
 
@@ -111,7 +111,7 @@ Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Pre
 
 次に、ドメインに必要なオプションを選びます。 次の表の説明をご覧ください。
 
-| 設定 | 推奨値 | [説明] |
+| Setting | 推奨値 | [説明] |
 |-|-|-|
 |プライバシー保護 | 有効化 | "プライバシー保護" にオプトインします。これは、購入価格に含まれており "_無料_" です。 一部のトップレベル ドメインは、プライバシー保護をサポートしていないレジストラーによって管理されます。これらは、**[プライバシー保護]** ページに表示されます。 |
 | 既定のホスト名の割り当て | **www** および **@** | 必要に応じて、適切なホスト名バインドを選びます。 ドメイン購入操作が完了すると、選んだホスト名で Web アプリにアクセスできるようになります。 Web アプリが [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) の背後にある場合、Traffic Manager は A レコードをサポートしていないため、ルート ドメイン (@) を割り当てるオプションは表示されません。 ドメインの購入が完了した後で、ホスト名の割り当てを変更することができます。 |
@@ -220,7 +220,7 @@ Azure では、App Service ドメインの DNS レコードは [Azure DNS](https
 
 ### <a name="open-app-service-domain"></a>App Service ドメインを開く
 
-Azure Portal の左側のメニューから、**[その他のサービス]** > **[App Service ドメイン]** の順に選びます。
+Azure Portal の左側のメニューから、**[すべてのサービス]** > **[App Service ドメイン]** の順に選びます。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 
@@ -240,7 +240,7 @@ App Service ドメイン購入後 5 日間は、購入をキャンセルでき�
 
 ### <a name="open-app-service-domain"></a>App Service ドメインを開く
 
-Azure Portal の左側のメニューから、**[その他のサービス]** > **[App Service ドメイン]** の順に選びます。
+Azure Portal の左側のメニューから、**[すべてのサービス]** > **[App Service ドメイン]** の順に選びます。
 
 ![](./media/custom-dns-web-site-buydomains-web-app/dncmntask-cname-buydomains-access.png)
 

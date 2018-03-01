@@ -21,9 +21,7 @@ Azure ポータルを使用する方法と、Azure PowerShell コマンドを使
 Azure ポータルを使用するには。
 
 1. まだサインインしていない場合は、 [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで **[+新規]**、**[仮想マシン]** の順にクリックします。
-   
-    ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseVMImage.png)
+2. **[リソースの作成]** > **[Compute]** の順にクリックします。
 3. 使用する Marketplace 仮想マシン イメージを選択します。 Linux または Windows の仮想マシンを作成することができます。
 4. 選択した仮想マシンについて、デプロイメント モデルが **[クラシック]** に設定されていることを確認し、**[作成]** をクリックします。
    
@@ -42,7 +40,7 @@ Azure PowerShell コマンドを使用して Azure 仮想マシンを作成し�
 Azure ポータルでは、既存のクラシック仮想マシンを可用性セットに追加することも、既存の仮想マシン用に新しい可用性セットを作成することもできます  (同じ可用性セット内の仮想マシンは同じクラウド サービスに属する必要がある点に留意してください)。いずれの場合も、手順はほとんど同じです。 Azure PowerShell では、既存の仮想マシンを既存の可用性セットに追加できます。
 
 1. まだサインインしていない場合は、 [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで **[仮想マシン (クラシック)]**をクリックします。
+2. 左側のメニューで **[仮想マシン (クラシック)]** をクリックします。
    
     ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/ChooseClassicVM.png)
 3. 仮想マシンの一覧から、既存の可用性セットに追加する仮想マシンの名前を選択します。
@@ -52,7 +50,7 @@ Azure ポータルでは、既存のクラシック仮想マシンを可用性�
 5. 仮想マシンを追加する可用性セットを選択します。 仮想マシンは、可用性セットと同じクラウド サービスに属している必要があります。
    
     ![イメージ テキスト](./media/virtual-machines-common-classic-configure-availability/AvailabilitySetPicker.png)
-6. **[保存]**をクリックします。
+6. **[Save]** をクリックします。
 
 Azure PowerShell コマンドを使用するには、管理者レベルの Azure PowerShell セッションを開き、次のコマンドを実行します。 プレース ホルダー (&lt;VmCloudServiceName&gt; など) は、< > を含む引用符内のすべてを正しい名前に置き換えます。
 

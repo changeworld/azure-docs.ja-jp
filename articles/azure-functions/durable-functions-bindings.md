@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Durable Functions のバインド - Azure"
 description: "Azure Functions の Durable Functons 拡張機能のトリガーとバインドの使用方法。"
 services: functions
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 3be59e32de22e0939ee887fba1d20829f1ef22eb
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 8198fbe9f919638565357c61ba487e47a8f5229c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions のバインド (Azure Functions)
 
@@ -120,7 +120,7 @@ Azure ポータルを使用して開発する場合、アクティビティ ト�
 * `version` はアクティビティのバージョン ラベルです。 アクティビティを呼び出すオーケストレーター関数は、一致するバージョン ラベルを含める必要があります。 このプロパティは省略可能です。 指定されない場合は、空の文字列が使用されます。 詳細については、[バージョン管理](durable-functions-versioning.md)に関する記事を参照してください。
 
 > [!NOTE]
-> 現時点では `activity` または `version` プロパティの値は設定しないことをお勧めします。
+> この時点では `activity` または `version` プロパティの値は設定しないことをお勧めします。
 
 内部的には、このトリガーのバインドは、関数アプリの既定のストレージ アカウントでキューをポーリングします。 このキューは拡張機能の内部実装の詳細であるため、バインド プロパティに明示的に構成されることはありません。
 
@@ -129,7 +129,7 @@ Azure ポータルを使用して開発する場合、アクティビティ ト�
 アクティビティ トリガーに関する注意事項を次に示します。
 
 * **スレッド処理** - オーケストレーション トリガーとは異なり、アクティビティ トリガーにはスレッド処理と I/O に関する制限はありません。 それらは、標準的な関数と同様に扱うことができます。
-* **有害メッセージの処理** - アクティビティ トリガーでは、有害メッセージはサポートされません。
+*  **有害メッセージの処理** - アクティビティ トリガーでは、有害メッセージはサポートされません。
 * **メッセージの可視性** - アクティビティ トリガー メッセージはキューから削除され、構成可能な期間にわたって非表示を保持します。 これらのメッセージの可視性は、関数アプリが正常に実行されている限り、自動的に更新されます。
 * **戻り値** - 戻り値は JSON にシリアル化され、Azure Table ストレージのオーケストレーション履歴テーブルに保存されます。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 8259a97d28effa7bfa9cfb9d7cd9cd2a14c9d906
-ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
+ms.openlocfilehash: 5d8b20d5da442aa1f37eb7e2b2cb8049031e7a24
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Azure ポータルで Log Analytics ワークスペースを作成する
 Azure Portal で Log Analytics ワークスペースを設定できます。このワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた Log Analytics 固有の環境です。  次のソースからデータを収集する場合は、この記事で説明する手順を実行する必要があります。
@@ -40,7 +40,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
-1. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure ポータル](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
+1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br><br> ![Azure Portal](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br><br>  
 2. **[作成]** をクリックし、次の項目について選択します。
 
   * 新しい **OMS ワークスペース**の名前 (*DefaultLAWorkspace* など) を指定します。 
@@ -54,7 +54,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 情報が検証され、ワークスペースが作成されている間、メニューの **[通知]** でその進行状況を追跡することができます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 使用できるワークスペースが用意されたので、管理テレメトリの収集の構成、ログ検索の実行によるデータの分析、管理ソリューションの追加による追加データと分析的な考察の提供を行うことができます。 
 
 * Microsoft Azure 診断または Azure ストレージを使用して Azure リソースからデータを収集できるようにするには、「[Log Analytics で Azure サービスのログとメトリックを使用できるように収集する](log-analytics-azure-storage.md)」を参照してください。  

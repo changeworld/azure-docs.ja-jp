@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
-ms.openlocfilehash: 47154202d0a8f7704561676fa645b5ccdb5b8c01
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 8e86648195811a666a197b6ee06ad610a1c8d568
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: データベース暗号化を使用して SQL Database で機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
 
@@ -47,8 +47,8 @@ Always Encrypted を使用するようデータベースを構成したら、Vis
 * [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx)。
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. **[新規]** > **[データ + ストレージ]** > **[SQL Database]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. **[リソースの作成]** > **[データ + ストレージ]** > **[SQL データベース]** をクリックします。
 3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started-portal.md)」を参照してください。
    
     ![空のデータベースの作成](./media/sql-database-always-encrypted/create-database.png)
@@ -121,10 +121,10 @@ Always Encrypted ウィザードには、**[列の選択]**、**[マスター �
 ### <a name="validation"></a>検証
 列の暗号化はすぐに実行することも、PowerShell スクリプトを保存して後から実行することもできます。 このチュートリアルでは、**[今すぐ続行して完了]** を選択して **[次へ]** をクリックします。
 
-### <a name="summary"></a>概要
+### <a name="summary"></a>まとめ
 設定がすべて正しいことを確認し、 **[完了]** をクリックすれば、Always Encrypted の設定は完了です。
 
-![[概要]](./media/sql-database-always-encrypted/summary.png)
+![まとめ](./media/sql-database-always-encrypted/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>ウィザードのアクションの確認
 ウィザードが完了すると、データベースに Always Encrypted が設定されています。 ウィザードでは、次の操作が実行されました。
@@ -503,7 +503,7 @@ SSMS を使用してプレーンテキスト データにアクセスするに�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Always Encrypted を使用するデータベースを作成したら、次の操作を試してみてください。
 
 * 別のコンピューターからこのサンプルを実行する。 別のコンピューターからは暗号化キーにアクセスできず、プレーンテキスト データにもアクセスできないので、サンプルは正常に実行されません。

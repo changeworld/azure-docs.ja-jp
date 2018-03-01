@@ -134,7 +134,7 @@ Hive テーブルに、スペースで区切られた単語から成る文字列
         and dropoff_latitude between 30 and 90
         limit 10;
 
-2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。 この Javascript で、関数 `toRad()` は単に *lat_or_lon*pi/180* であり、これは、角度をラジアンに変換します。 ここで、 *lat_or_lon* は緯度または経度です。 Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
+2 つの GPS 座標の距離を計算する方程式は、Peter Lapisu による <a href="http://www.movable-type.co.uk/scripts/latlong.html" target="_blank">Movable Type Scripts</a> サイトにあります。 この Javascript で、関数 `toRad()` は単に *lat_or_lon*pi/180*であり、これは、角度をラジアンに変換します。 ここで、 *lat_or_lon* は緯度または経度です。 Hive には関数 `atan2` はありませんが関数 `atan` はあるので、上記の Hive クエリでは、`atan2` 関数は <a href="http://en.wikipedia.org/wiki/Atan2" target="_blank">Wikipedia</a> に記載された定義を使用して、`atan` 関数により実装されています。
 
 ![ワークスペースの作成](./media/create-features-hive/atan2new.png)
 

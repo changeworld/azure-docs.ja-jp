@@ -15,11 +15,11 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: robmcm
-ms.openlocfilehash: 1ee30aadc1bd07e7ac9a1894e4be832436ab5910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: fa19f3dc7dded712102d4ba9b66dd4df1bfd20dd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="ruby-on-rails-web-application-on-an-azure-vm"></a>Azure VM での Ruby on Rails Web アプリケーション
 このチュートリアルでは、Linux 仮想マシンを使用して、Azure で Ruby on Rails Web サイトをホストする方法について説明します。  
@@ -38,7 +38,7 @@ VM を作成するには、Azure Portal または Azure コマンド ライン �
 
 ### <a name="azure-portal"></a>Azure ポータル
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[新規]** をクリックし、検索ボックスに「Ubuntu Server 14.04」と入力します。 検索によって返されたエントリをクリックします。 デプロイ モデルは **[クラシック]** を選択し、[作成] をクリックします。
+2. **[リソースの作成]** をクリックし、検索ボックスに「Ubuntu Server 14.04」と入力します。 検索によって返されたエントリをクリックします。 デプロイ モデルは **[クラシック]** を選択し、[作成] をクリックします。
 3. [基本] ブレードで、必須フィールドに値を指定します。指定するのは、名前 (VM 名)、ユーザー名、認証の種類と対応する資格情報、Azure サブスクリプション、リソース グループ、および場所です。
 
    ![新しい Ubuntu イメージの作成](./media/virtual-machines-linux-classic-ruby-rails-web-app/createvm.png)

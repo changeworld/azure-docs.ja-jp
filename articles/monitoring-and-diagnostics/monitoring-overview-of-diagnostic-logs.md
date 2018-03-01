@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: johnkem; magoedte
-ms.openlocfilehash: d59abde29fc7b73a799e5bf3659b02f824b693de
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df20e174abb9960ad378221008ac7261fd0582f1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Azure リソースからのログ データの収集と使用
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 10/11/2017
    
    ![診断設定の追加 - 既存の設定が存在する](media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-configure.png)
     
-4. [ **Save**] をクリックします。
+4. **[Save]** をクリックします。
 
 しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログが指定の宛先に送信されます。
 
@@ -163,7 +163,7 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 
 ![ポータルの [診断ログ] ブレード](./media/monitoring-overview-of-diagnostic-logs/diagnostic-settings-nav.png)
 
-[その他のサービス] をクリックして、[モニター] セクションを見つけます。
+[すべてのサービス] をクリックして、[モニター] セクションを見つけます。
 
 ここでは、診断ログをサポートするすべてのリソースを表示し、フィルター処理することで、有効になっている診断設定があるかどうかを確認できます。 また、ドリルダウンすると、複数の設定が 1 つのリソースに設定されているかどうかを調べて、データの送信先であるストレージ アカウント、Event Hubs 名前空間、Log Analytics ワークスペースを確認することもできます。
 
@@ -174,7 +174,7 @@ Azure Monitor REST API を使用して診断設定を変更する場合は、[�
 ## <a name="supported-services-categories-and-schemas-for-resource-diagnostic-logs"></a>リソース診断ログでサポートされているサービス、カテゴリ、スキーマ
 サポートされているサービスと、それらのサービスで使用されるログ カテゴリおよびスキーマの完全な一覧については、[この記事](monitoring-diagnostic-logs-schema.md)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [リソース診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Azure Monitor REST API を使用してリソース診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)

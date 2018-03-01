@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: b6a333d075e0391adca4f37bbff8918391a22fde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6aef0fbe44e19b515c2bc10c0e7c38fabac10dae
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシン上の開発ツール
 
@@ -52,6 +52,15 @@ ms.lasthandoff: 10/11/2017
 | 一般的な用途      |  R 開発     |
 | 使用/実行方法      | Windows のデスクトップ ショートカット (`C:\Program Files\RStudio\bin\rstudio.exe`)、Linux のデスクトップ ショートカット (`/usr/bin/rstudio`)      |
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、Juno      |
+
+## <a name="rstudio--server"></a>RStudio Server 
+|    |           |
+| ------------- | ------------- |
+| 紹介   | R 言語用の Web ベース IDE    |
+| サポートされている DSVM バージョン      | Linux      |
+| 一般的な用途      |  R 開発     |
+| 使用/実行方法      | _systemctl enable rstudio-server_ を使用してサービスを有効にしてから、_systemctl start rstudio-server_ でサービスを開始します。 その後、RStudio Server (http://your-vm-ip:8787) にログインできます。       |
+| DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、RStudio Desktop      |
 
 ## <a name="juno"></a>Juno 
 |    |           |

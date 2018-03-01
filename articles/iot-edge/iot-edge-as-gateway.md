@@ -1,5 +1,5 @@
 ---
-title: "他のデバイスに対するゲートウェイとして Azure IoT Edge デバイスを使用する方法を理解する | Microsoft Docs"
+title: "Azure IoT Edge デバイスをゲートウェイとして使用する | Microsoft Docs"
 description: "Azure IoT Edge を使って、複数のダウンストリーム デバイスからクラウドにデータを送信する、またはデータをローカルに処理する、透過的デバイス、非透過的デバイス、またはプロキシ ゲートウェイ デバイスを作成します。"
 services: iot-edge
 keywords: 
@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/27/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 3f2f9258b97d4886f41a2b991ff4de7e16379245
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: fe7ad2444b9378550e9624e3d109c8be4fd29f23
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-an-iot-edge-device-can-be-used-as-a-gateway---preview"></a>IoT Edge デバイスをゲートウェイとして使用する方法 - プレビュー
 

@@ -15,15 +15,13 @@ articles/sql-database/sql-database-connect-query.md
 -->
 
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. 左側の一覧で、**[参照]** を選びます。 
+2. 左側の一覧で、**[すべてのサービス]** を選びます。 
 
 3. スクロールして、**[SQL Server]** を選びます。 
    
     ![ポータルで Azure SQL Database サーバーを見つける][b21-FindServerInPortal]
-4. 操作しやすいように、**[参照]** ブレードを最小化します。
-
 5. フィルター テキスト ボックスで、サーバーの名前の入力を開始します。 行が表示されます。
 
 6. お使いのサーバーの行を選びます。 サーバー用のブレードが表示されます。

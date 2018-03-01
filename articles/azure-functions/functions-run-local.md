@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: c1a9310d0a09d714f1d58f29e5683097c9dc6b90
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8b85457c5df9fb15c7eebe8b6fe8fb904f9e6009
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -126,7 +126,7 @@ local.settings.json ファイルには、アプリの設定、接続文字列、
   }
 }
 ```
-| 設定      | [説明]                            |
+| Setting      | [説明]                            |
 | ------------ | -------------------------------------- |
 | **IsEncrypted** | **true** に設定すると、すべての値がローカル コンピューターのキーを使用して暗号化されます。 `func settings` コマンドと共に使用されます。 既定値は **false** です。 |
 | **Values** | ローカルで実行するときに使用されるアプリケーション設定のコレクションです。 **AzureWebJobsStorage** と **AzureWebJobsDashboard** は例です。完全な一覧については、[アプリの設定リファレンス](functions-app-settings.md)に関するページを参照してください。  |
@@ -231,6 +231,9 @@ C# 関数をデバッグするには、`--debug vs` を使用します。 また
 ```
 func host start --debug vscode
 ```
+
+> [!IMPORTANT]
+> デバッグについては、Node.js 8.x のみがサポートされています。 Node.js 9.x はサポートされていません。 
 
 その後、Visual Studio Code の **[デバッグ]** ビューで、**[Attach to Azure Functions]\(Azure Functions にアタッチ\)** を選択します。 ブレークポイントをアタッチし、変数の調査をして、コードをステップ実行できます。
 

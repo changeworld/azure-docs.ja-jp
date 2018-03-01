@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 3149147a95ac6e12b8866fbd03dd159de97c43cb
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: ea83a6b4fa3399ae6a30157c720005683d445d8a
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="fix-a-hive-out-of-memory-error-in-azure-hdinsight"></a>Azure HDInsight における Hive メモリ不足エラーの解決
 
@@ -122,6 +122,6 @@ D12 コンピューターには 28 GB のメモリがあるので、10 GB (10,24
 
 この新しい設定では、クエリが 10 分間未満で正常に実行されました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 OOM エラーの原因は、必ずしもコンテナー サイズが小さすぎるためではありません。 コンテナー サイズではなくヒープ サイズを増やし、コンテナー メモリ サイズの 80% 以上を割り当てるようにメモリ設定を構成することをお勧めします。 Hive クエリの最適化については、「[HDInsight の Hadoop に対する Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)」を参照してください。

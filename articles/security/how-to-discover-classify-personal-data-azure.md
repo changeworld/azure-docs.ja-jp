@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: 0d99df534da4575f3c34ec6b3475cdd1bdc3308a
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Microsoft Azure で個人データを検出、特定、分類する
 
@@ -59,22 +59,22 @@ ms.lasthandoff: 12/14/2017
 
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
+2. **[すべてのサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
    ![ユーザー プロファイルと勤務情報を検索する方法](media/how-to-discover-classify-personal-data-azure/user-profile.png)
 
 3. **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
 
-  ![ユーザーとグループを開く](media/how-to-discover-classify-personal-data-azure/users-groups.png)
+      ![ユーザーとグループを開く](media/how-to-discover-classify-personal-data-azure/users-groups.png)
 
 4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択し、選択したユーザーのブレードで **[プロファイル]** を選択して、個人データが含まれる可能性があるユーザー プロファイル情報を表示します。
 
-  ![select user](media/how-to-discover-classify-personal-data-azure/select-user.png)
+      ![select user](media/how-to-discover-classify-personal-data-azure/select-user.png)
 
 5. ユーザー プロファイル情報を追加または変更する必要がある場合は、追加または変更してから、コマンド バーの **[保存]** をクリックします。
 6. 選択したユーザーのブレードで **[ワーク情報]** を選択して、個人データが含まれる可能性のあるユーザーの勤務情報を表示します。
 
- ![勤務情報の表示](media/how-to-discover-classify-personal-data-azure/work-info.png)
+     ![勤務情報の表示](media/how-to-discover-classify-personal-data-azure/work-info.png)
 
 7. ユーザーの勤務情報を追加または変更する必要がある場合は、追加または変更してから、コマンド バーの **[保存]** をクリックします。
 

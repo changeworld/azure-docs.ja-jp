@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: ea5453f98c427304fd0b437ba27846a008da2585
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 2bead1a879811349e4bee5dfebdcbbb838130b81
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>ブートストラップを使って HDInsight クラスターをカスタマイズする
 
@@ -86,7 +86,7 @@ New-AzureRmHDInsightCluster `
 **接続を確認するには:**
 
 1. [Azure Portal](https://portal.azure.com) にサインオンします。
-2. 左側のメニューから、**[HDInsight クラスター]** をクリックします。 表示されない場合は、先に **[その他のサービス]** をクリックします。
+2. 左側のメニューから、**[HDInsight クラスター]** をクリックします。 表示されない場合は、最初に **[すべてのサービス]** をクリックします。
 3. PowerShell スクリプトを使用して作成したクラスターをクリックします。
 4. ブレードの上部から **[ダッシュボード]** をクリックし、Ambari UI を開きます。
 5. 左側のメニューで **[Hive]** をクリックします。

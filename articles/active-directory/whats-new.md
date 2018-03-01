@@ -14,18 +14,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2017
+ms.date: 02/15/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 34826332db2e63d442d47ada74fcbad4cad600ae
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 7cdeb0a996835f976e6c80e9831479a2ff917434
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
-
-
 
 
 > [![RSS](./media/whats-new/feed-icon-16x16.png)](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)[フィード](https://docs.microsoft.com/api/search/rss?search=%22whats%20new%20in%20azure%20active%20directory%22&locale=en-us)をサブスクライブして、Azure Active Directory (Azure AD) の新着情報を常に把握するようにしてください。
@@ -125,7 +123,7 @@ Azure AD Premium P1 エディションでは、ライセンスに含まれない
  
 ---
 
-### <a name="azure-ad-administration-experience-in-azure-classic-portal-has-been-retired"></a>Azure クラシック ポータルでの Azure AD 管理エクスペリエンスの廃止
+### <a name="the-phonefactor-web-portal-has-been-retired"></a>PhoneFactor Web ポータルは廃止されました
 
 **タイプ:** 非推奨  
 **サービス カテゴリ:** Azure AD  
@@ -221,7 +219,7 @@ Azure AD サインイン ページの **[サインインしたままにする]**
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** 使用条件  
-**製品の機能:** ガバナンス
+**製品の機能:** ガバナンス/コンプライアンス
  
 条項に同意する前に使用条件を展開することをお客様のユーザーに要求する、管理者向けのオプションです。
 
@@ -668,7 +666,7 @@ Azure AD は、HTML ユーザー名とパスワード フィールドをレン�
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** 使用条件  
-**製品の機能:** ガバナンス  
+**製品の機能:** ガバナンス/コンプライアンス  
 
 
 
@@ -711,7 +709,7 @@ Azure RBAC 機能を利用する Azure Portal 内のすべてのリソースで�
 
 **タイプ:** 新機能  
 **サービス カテゴリ:** アクセス レビュー  
-**製品の機能:** ガバナンス  
+**製品の機能:** ガバナンス/コンプライアンス  
 
 
 

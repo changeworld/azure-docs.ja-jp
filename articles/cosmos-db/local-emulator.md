@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/15/2018
 ms.author: danoble
-ms.openlocfilehash: 40d7b8a52f67d116ab764b9716c917d5c7865467
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 2512ba4ea89bd3477c7901cda29ab3682d834195
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 
@@ -195,6 +195,11 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
   <td></td>
 </tr>
 <tr>
+  <td>GetStatus</td>
+  <td>Azure Cosmos DB Emulator の状態を取得します。 この状態は、1 = 開始中、2 = 実行中、3 = 停止済みの終了コードで示されます。 負の終了コードは、エラーが発生したことを示します。 その他の出力は生成されません。</td>
+  <td>CosmosDB.Emulator.exe /GetStatus</td>
+  <td></td>
+<tr>
   <td>Shutdown</td>
   <td>Azure Cosmos DB Emulator をシャットダウンします。</td>
   <td>CosmosDB.Emulator.exe /Shutdown</td>
@@ -318,6 +323,40 @@ Azure Cosmos DB Emulator で利用できるコレクションの数は次のよ�
 4. 最新版の [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) をインストールします。
 5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 たとえば、「 `C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`」のように入力します。
 
+## <a name="controlling-the-emulator"></a>エミュレーターの制御
+
+エミュレーターには、サービスの状態を起動、停止、アンインストール、および取得するための PowerShell モジュールが付属しています。 使用方法:
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+```
+
+または、`PSModules` ディレクトリを `PSModulesPath` に配置し、それを次のようにインポートします。
+
+```powershell
+$env:PSModulesPath += "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules"
+Import-Module Microsoft.Azure.CosmosDB.Emulator
+```
+
+PowerShell からエミュレーターを制御するためのコマンドの概要を次に示します。
+
+### `Get-CosmosDbEmulatorStatus`
+
+ServiceControllerStatus.StartPending、ServiceControllerStatus.Running、または ServiceControllerStatus.Stopped のいずれかの ServiceControllerStatus 値を返します。
+
+### `Start-CosmosDbEmulator [-NoWait]`
+
+エミュレーターを起動します。 既定では、このコマンドは、エミュレーターで要求を受け付ける準備ができるまで待ちます。 エミュレーターを起動したらすぐにコマンドレットから戻るようにする場合は、-NoWait オプションを使用します。
+
+### `Stop-CosmosDbEmulator [-NoWait]`
+
+エミュレーターを停止します。 既定では、このコマンドは、エミュレーターが完全に停止するまで待ちます。 エミュレーターが停止し始めたらすぐにコマンドレットから戻るようにする場合は、-NoWait オプションを使用します。
+
+### `Uninstall-CosmosDbEmulator [-RemoveData]`
+
+エミュレーターをアンインストールし、オプションで $env:LOCALAPPDATA\CosmosDbEmulator のすべての内容を削除します。
+このコマンドレットは、アンインストールする前にエミュレーターが停止されたことを確認します。
+
 ## <a name="running-on-docker"></a>Docker で実行する
 
 Azure Cosmos DB Emulator は、Docker for Windows 上で実行できます。 Emulator は、Docker for Oracle Linux では機能しません。
@@ -416,7 +455,29 @@ Azure Cosmos DB Emulator で遭遇する問題の解決には次のヒントが�
 
 タスクバーのローカル エミュレーター アイコンを右クリックし、[バージョン情報] メニュー項目をクリックすると、バージョン番号を確認できます。
 
-### <a name="120-released-on-january-26-2018"></a>1.20 (2018 年 1 月 26 日リリース)
+### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 (2018 年 2 月 14 日リリース)
+
+このリリースには 1 つの新機能と 2 つのバグ修正があります。 これらの問題を見つけて修正することを支援していただいたお客様に感謝します。
+
+#### <a name="bug-fixes"></a>バグの修正
+
+1. エミュレーターは現在、1 または 2 個のコア (または仮想 CPU) を備えたコンピューター上で動作します。
+
+   Cosmos DB は、さまざまなサービスを実行するためにタスクを割り当てます。 割り当てられるタスクの数は、ホスト上のコアの数の倍数です。 既定の倍数は、コアの数が多い運用環境では適切に機能します。 ただし、1 または 2 個のプロセッサを備えたマシンでは、この倍数が適用された場合、これらのサービスを実行するためのタスクは割り当てられません。
+
+   エミュレーターに構成の上書きを追加することによって、この問題を修正しました。 現在は、倍数 1 を適用します。 さまざまなサービスを実行するために割り当てられるタスクの数は現在、ホスト上のコアの数と同じです。
+
+   このリリースで他に何も行わなかったとしたら、この問題への対処だけになったでしょう。 エミュレーターをホストしている多くの開発/テスト環境は、1 または 2 個のコアを備えていることがわかりました。
+
+2. エミュレーターでは、Microsoft Visual C++ 2015 再頒布可能パッケージをインストールする必要がなくなりました。
+
+   Windows (デスクトップおよびサーバー エディション) の新規インストールには、この再頒布可能パッケージが含まれていないことがわかりました。 そのため、現在はエミュレーターに再頒布可能バイナリをバンドルしています。
+
+#### <a name="features"></a>機能
+
+話を伺った多くのお客様から、エミュレーターがスクリプト可能であったらいいのにとお聞きしました。 そのため、このリリースではいくつかのスクリプト機能を追加しました。 エミュレーターには現在、状態を起動、停止、取得したり、自身をアンインストールしたりするための PowerShell モジュール `Microsoft.Azure.CosmosDB.Emulator` が含まれています。 
+
+### <a name="120911-released-on-january-26-2018"></a>1.20.91.1 (2018 年 1 月 26 日リリース)
 
 * MongoDB 集計パイプラインは既定で有効です。
 

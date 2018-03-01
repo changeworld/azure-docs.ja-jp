@@ -1,30 +1,12 @@
----
-title: "SQL エラー コード - データベース接続エラー | Microsoft Docs"
-description: "よくあるデータベース接続エラー、データベース コピーの問題、一般エラーなど、SQL Database クライアント アプリケーションの SQL エラー コードについて説明します。 "
-keywords: "SQL エラー コード,SQL へのアクセス,データベース接続エラー,SQL エラー コード"
-services: sql-database
-documentationcenter: 
-author: stevestein
-manager: jhubbard
-editor: 
-ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202
-ms.service: sql-database
-ms.custom: develop apps
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/28/2017
-ms.author: sstein
-ms.openlocfilehash: 34e7142b5ca13ad8de5a4dbd380377abdf055c04
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ ---
+title: SQL エラー コード - データベース接続エラー | Microsoft Docs description: 'よくあるデータベース接続エラー、データベース コピーの問題、一般エラーなど、SQL Database クライアント アプリケーションの SQL エラー コードについて説明します。 ' keywords: sql エラー コード,sql アクセス,データベース接続エラー,sql エラー コード services: sql-database documentationcenter: '' author: stevestein manager: jhubbard editor: ''
+
+ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202 ms.service: sql-database ms.custom: develop apps ms.workload: "Active" ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 09/28/2017 ms.author: sstein
+
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 
-この記事では、データベース接続エラー、一時的なエラー (一時的な障害)、リソース ガバナンス エラー、データベース コピーの問題、エラスティック プール、その他のエラーなど、SQL Database クライアント アプリケーションの SQL エラー コードの一覧を示します。 大半は Azure SQL Database に固有のカテゴリで、Microsoft SQL Server には当てはまりません。
+この記事では、データベース接続エラー、一時的なエラー (一時的な障害)、リソース ガバナンス エラー、データベース コピーの問題、エラスティック プール、その他のエラーなど、SQL Database クライアント アプリケーションの SQL エラー コードの一覧を示します。 大半は Azure SQL Database に固有のカテゴリで、Microsoft SQL Server には当てはまりません。 [システム エラー メッセージ](https://technet.microsoft.com/en-us/library/cc645603(v=sql.105).aspx)もご覧ください。
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>データベース接続エラー、一時的なエラー、その他の一時的なエラー
 次の表に、接続喪失エラーや、アプリケーションが SQL Database にアクセスしようとしたときに発生する可能性がある一時的なエラーを示します。 Azure SQL Database への接続方法のチュートリアルの概要については、 [Azure SQL Database への接続](sql-database-libraries.md)に関するページをご覧ください。
@@ -52,7 +34,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 ### <a name="transient-fault-error-codes"></a>一時的な障害のエラー コード
 次のエラーは一時的なもので、アプリケーション ロジックを再試行されます。 
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | 重大度 | [説明] |
 | ---:| ---:|:--- |
 | 4060 |16 |ログインで要求されたデータベース "%.&#x2a;ls" を開くことができません。 ログインに失敗しました。 |
 | 40197 |17 |要求の処理中にサービスでエラーが発生しました。 もう一度実行してください。 エラー コード %d。<br/><br/>ソフトウェアやハードウェアのアップグレード、ハードウェアの障害、その他フェールオーバーに関する問題によってサービスがダウンしたときに、このエラーが発生します。 障害の種類や発生したフェールオーバーに関する詳細な情報は、エラー 40197 のメッセージに埋め込まれたエラー コード (%d) から得られます。 エラー 40197 のメッセージ内に埋め込まれているエラー コードは、40020、40143、40166、40540 などです。<br/><br/>SQL Database サーバーに再接続すると、自動的にデータベースの正常なコピーに接続されます。 アプリケーションでエラー 40197 をキャッチし、メッセージに埋め込まれているエラー コード (%d) をログに記録してトラブルシューティングに備えたうえで、リソースが復旧して接続が再度確立されるまで SQL Database への再接続を試みる必要があります。 |
@@ -66,7 +48,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 ## <a name="database-copy-errors"></a>データベース コピー エラー
 次のエラーは、Azure SQL Database でデータベースをコピーしているときに発生する可能性があります。 詳細については、「 [Azure SQL Database のコピー](sql-database-copy.md)」を参照してください。
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | 重大度 | [説明] |
 | ---:| ---:|:--- |
 | 40635 |16 |IP アドレス '%.&#x2a;ls' のクライアントは一時的に無効化されています。 |
 | 40637 |16 |データベース コピーの作成は現在無効です。 |
@@ -83,7 +65,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | 40571 |16 |データベースのコピーに失敗しました。内部エラーが発生しました。 ターゲット データベースを削除してやり直してください。 |
 
 ## <a name="resource-governance-errors"></a>リソース ガバナンス エラー
-次のエラーは、Azure SQL Database を使って作業しているときに、リソースの過剰使用によって発生します。 次に例を示します。
+次のエラーは、Azure SQL Database を使って作業しているときに、リソースの過剰使用によって発生します。 例: 
 
 * トランザクションが長時間開いている。
 * トランザクションで保持されているロックが多すぎる。
@@ -94,7 +76,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 * 詳細については、「[Azure SQL Database のリソース制限](sql-database-service-tiers.md)」をご覧ください。
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | 重大度 | [説明] |
 | ---:| ---:|:--- |
 | 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、「 [http://goに関するページをご覧ください。microsoftに関するページをご覧ください。com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637)に関するページをご覧ください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers.md)」を参照してください。 |
 | 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 詳細については、「 [http://goに関するページをご覧ください。microsoftに関するページをご覧ください。com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637)に関するページをご覧ください。 それ以外の場合は、後でもう一度やり直してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers.md)」を参照してください。 |
@@ -141,7 +123,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 ## <a name="general-errors"></a>一般エラー
 次のエラーは、上記のカテゴリには当てはまりません。
 
-| エラー コード | 重大度 | 説明 |
+| エラー コード | 重大度 | [説明] |
 | ---:| ---:|:--- |
 | 15006 |16 |(AdministratorLogin) は無効な文字を含んでいるため、有効な名前ではありません。 |
 | 18452 |14 |ログインできませんでした。 このログインは信頼されていないドメインからのログインなので、Windows 認証では使用できません。%.&#x2a;ls (Windows ログインは、このバージョンの SQL Server ではサポートされていません。) |
@@ -209,7 +191,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | 45168 |16 |SQL Azure システムに負荷がかかっているため、サーバー 1 台あたりの同時実行 DB CRUD 操作 (データベースの作成など) に上限を設定しています。 エラー メッセージに示されているサーバーは、最大同時接続数を超過しました。 後でもう一度やり直してください。 |
 | 45169 |16 |SQL Azure システムに負荷がかかっているため、サブスクリプション 1 つあたりの同時実行サーバー CRUD 操作 (サーバーの作成など) に上限を設定しています。 エラー メッセージに示されているサブスクリプションは、最大同時接続数を超過したため、要求が拒否されました。 後でもう一度やり直してください。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure SQL Database の機能](sql-database-features.md)を確認する
 * [サービス階層](sql-database-service-tiers.md)を確認する
 

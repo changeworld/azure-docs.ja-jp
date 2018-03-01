@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 2de788fabcae501d1a388bcea6b7759c9ea269cc
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>エンド ツー エンドのキー ローテーションと監査で Azure Key Vault を設定する
 ## <a name="introduction"></a>はじめに
@@ -255,12 +255,12 @@ Set-AzureRmDiagnosticSetting -ResourceId $kv.ResourceId -StorageAccountId $sa.Id
 
 1. Service Bus 名前空間を作成します (使用できるものが既にある場合は、手順 2 に進みます)。
 2. Azure ポータルで Service Bus に移動して、キューを作成する名前空間を選択します。
-3. **[新規]** を選択し、**[Service Bus] > [キュー]** の順に選択して、必要な情報を入力します。
+3. **[リソースの作成]**、**[エンタープライズ統合]**、**[Service Bus]** の順に選択し、必要な詳細を入力します。
 4. 名前空間を選択し、**[接続情報]** をクリックして、Service Bus 接続情報を取得します。 この情報は、次のセクションで必要です。
 
 次に、[Azure 関数を作成](../azure-functions/functions-create-first-azure-function.md)して、ストレージ アカウント内で Key Vault ログをポーリングし、新しいイベントを取得します。 これが、スケジュールでトリガーされる関数です。
 
-Azure 関数を作成するには、Azure ポータルで **[新規] > [Function App]** を選択します。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 関数のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
+Azure 関数を作成するには、**[リソースの作成]** を選択し、_関数アプリ_のマーケットプレースを検索してから、**[作成]** をクリックします。 作成中、既存のホスティング プランを使用するか、新しいプランを作成できます。 動的ホスティングを選択することもできます。 関数のホスティング オプションの詳細については、「[Azure Functions のスケーリング方法](../azure-functions/functions-scale.md)」をご覧ください。
 
 Azure 関数を作成するときに、この画面にアクセスしてタイマー関数と C\# を選択します。 次に **[この関数を作成する]** をクリックします。
 

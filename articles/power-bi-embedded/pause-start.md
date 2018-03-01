@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
-ms.openlocfilehash: ab5d184fde2cbcb517b325624c8405954b4d0972
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7f86ebf3e79812eb50e58cbb320336cbd1149e6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="pause-and-start-your-power-bi-embedded-capacity-in-the-azure-portal"></a>Azure Portal での Power BI Embedded 容量の一時停止と開始
 
@@ -35,9 +35,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. **[その他のサービス]** > **[Power BI Embedded]** を選択して容量を確認します。
+2. **[すべてのサービス]** > **[Power BI Embedded]** を選択して容量を確認します。
 
-    ![Azure Portal の [その他のサービス]](media/pause-start/azure-portal-more-services.png)
+    ![Azure Portal の [すべてのサービス]](media/pause-start/azure-portal-more-services.png)
 
 3. 一時停止する容量を選択します。
 
@@ -57,9 +57,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
-2. **[その他のサービス]** > **[Power BI Embedded]** を選択して容量を確認します。
+2. **[すべてのサービス]** > **[Power BI Embedded]** を選択して容量を確認します。
 
-    ![Azure Portal の [その他のサービス]](media/pause-start/azure-portal-more-services.png)
+    ![Azure Portal の [すべてのサービス]](media/pause-start/azure-portal-more-services.png)
 
 3. 開始する容量を選択します。
 
@@ -75,10 +75,10 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 任意のコンテンツがこの容量に割り当てられている場合は、開始後に使用可能になります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 容量のスケール アップ/スケールダウンについては、「[Power BI Embedded 容量の拡大縮小](scale-capacity.md)」を参照してください。
 
-アプリケーション内に Power BI コンテンツの埋め込みを始めるには、「[How to embed your Power BI dashboards, reports and tiles](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)」(Power BI のダッシュボード、レポート、タイルを埋め込む方法) を参照してください。
+アプリケーション内に Power BI コンテンツの埋め込みを始めるには、[Power BI ダッシュボード、レポート、およびタイルを埋め込む方法](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)に関するページを参照してください。
 
 ご質問は、 [Power BI コミュニティで質問してみてください](http://community.powerbi.com/)。

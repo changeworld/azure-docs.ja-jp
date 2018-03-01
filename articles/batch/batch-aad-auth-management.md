@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 04/27/2017
 ms.author: tamram
-ms.openlocfilehash: 26d4adf4f74f9aacc4cf8cf24be293ebdb4d63c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 054e9686a1acae09f4dd3b7d841d82eae1fc88a9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="authenticate-batch-management-solutions-with-active-directory"></a>Batch 管理ソリューションの認証に Active Directory を使用する
 
@@ -49,7 +49,7 @@ AccountManagement サンプル アプリケーションを登録するには、�
 
 Azure Portal で次の手順に従います。
 
-1. Azure Portal の左側のナビゲーション ウィンドウで **[More Services] \(その他のサービス)** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
+1. Azure Portal の左側のナビゲーション ウィンドウで、**[すべてのサービス]** を選択し、**[アプリの登録]** をクリックして、**[追加]** をクリックします。
 2. アプリケーション登録の一覧で、アプリケーションの名前を検索します。
 
     ![アプリケーションの名前を検索する](./media/batch-aad-auth-management/search-app-registration.png)
@@ -122,7 +122,7 @@ AuthenticationResult authResult = authContext.AcquireToken(ResourceUri,
 
 資格情報を入力すると、サンプル アプリケーションは認証された要求を Batch 管理サービスに発行できるようになります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [AccountManagement サンプル アプリケーション][acct_mgmt_sample]の実行に関する詳細については、「[.NET 用の Batch 管理クライアント ライブラリを使用した Batch アカウントとクォータの管理](batch-management-dotnet.md)」を参照してください。
 

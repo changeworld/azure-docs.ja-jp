@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
 ms.author: kasing
-ms.openlocfilehash: 01bccb2f8d103faf77b39825a1f9ff663329ed7a
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 38bc949917f6bb56486ad6267044ef2f19e33fcb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="migrate-iaas-resources-from-classic-to-azure-resource-manager-by-using-azure-powershell"></a>Azure PowerShell を使用してクラシックから Azure Resource Manager へ IaaS リソースを移行する
 以下の手順では、Azure PowerShell コマンドを使用して、サービスとしてのインフラストラクチャ (IaaS) のリソースをクラシック デプロイメント モデルから Azure Resource Manager デプロイメント モデルに移行する方法を説明します。
@@ -58,8 +58,8 @@ Azure PowerShell のインストールには、[PowerShell ギャラリー](http
 ## <a name="step-3-ensure-that-you-are-an-administrator-for-the-subscription-in-azure-portal"></a>手順 3: Azure ポータルでサブスクリプションの管理者であることを確認する
 この移行を実行には、[Azure ポータル](https://portal.azure.com)で自分をサブスクリプションの共同管理者として追加する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. ハブ メニューで、 **[サブスクリプション]**を選択します。 表示されない場合は、**[その他のサービス]** を選択します。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. ハブ メニューで、 **[サブスクリプション]**を選択します。 表示されない場合は、**[すべてのサービス]** を選択します。
 3. 適切なサブスクリプションのエントリを検索し、を見て、**[MY ROLE]** (自分のロール) フィールドを確認します。 共同管理者の場合は、この値は _[アカウント管理者]_ です。
 
 共同管理者を追加できない場合は、サービス管理者またはサブスクリプションの共同管理者に連絡して、追加してもらってください。   
@@ -340,7 +340,7 @@ Azure PowerShell または Azure Portal のどちらかを使用して、準備�
     Move-AzureStorageAccount -Commit -StorageAccountName $storageAccountName
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [クラシックから Azure Resource Manager への IaaS リソースの移行計画](migration-classic-resource-manager-plan.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)

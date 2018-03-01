@@ -4,7 +4,7 @@ description: "Azure で実行されている SQL Server 2016 VM の自動バッ�
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
-manager: jhubbard
+manager: craigg
 editor: 
 tags: azure-resource-manager
 ms.assetid: ebd23868-821c-475b-b867-06d4a2e310c7
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 04/05/2017
+ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: e7e14b0243f82c672392d5ab4bb6aca01156465b
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ecae49e70a0fdd30be8a0872d02abcf4a4c228bd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="automated-backup-v2-for-sql-server-2016-azure-virtual-machines-resource-manager"></a>SQL Server 2016 Azure Virtual Machines の自動バックアップ v2 (Resource Manager)
 
@@ -61,32 +61,32 @@ ms.lasthandoff: 12/21/2017
 > [!NOTE]
 > 自動バックアップは、**SQL Server IaaS Agent 拡張機能** に依存します。 現在の SQL 仮想マシン ギャラリー イメージでは、既定でこの拡張機能が追加されます。 詳細については、[SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に関するページをご覧ください。
 
-## <a name="settings"></a>[設定]
+## <a name="settings"></a>設定
 自動バックアップ v2 で構成できるオプションを次の表に示します。 実際の構成手順は、Azure ポータルと Azure Windows PowerShell コマンドのどちらを使用するかによって異なります。
 
 ### <a name="basic-settings"></a>基本設定
 
-| Setting | 範囲 (既定値) | 説明 |
+| Setting | 範囲 (既定値) | [説明] |
 | --- | --- | --- |
 | **自動化されたバックアップ** | 有効/無効 (無効) | SQL Server 2016 Standard または Enterprise を実行している Azure VM で、自動バックアップを有効または無効にします。 |
 | **保有期間** | 1 ～ 30 日 (30 日) | バックアップを保持する日数。 |
 | **ストレージ アカウント** | Azure ストレージ アカウント | 自動バックアップのファイルを BLOB ストレージに保存するために使用する Azure ストレージ アカウント。 この場所にコンテナーが作成され、すべてのバックアップ ファイルが保存されます。 バックアップ ファイルの名前付け規則には、日付、時刻、およびデータベース GUID が含まれます。 |
-| **暗号化** |有効/無効 (無効) | 暗号化を有効または無効にします。 暗号化を有効にすると、バックアップの復元に使用する証明書は、指定されたストレージ アカウントの同じ **automaticbackup** コンテナー内に、同じ名前付け規則を使用して配置されます。 パスワードが変更された場合、そのパスワードを使用して新しい証明書が生成されますが、以前のバックアップの復元には古い証明書が引き続き使用されます。 |
-| **パスワード** |パスワード テキスト | 暗号化キーのパスワード。 暗号化を有効にした場合にのみ必須となります。 暗号化されたバックアップを復元するには、バックアップの作成時に使用した正しいパスワードおよび関連する証明書が必要です。 |
+| **暗号化** |有効/無効 (無効) | 暗号化を有効または無効にします。 暗号化を有効にすると、バックアップの復元に使用する証明書は、指定されたストレージ アカウントに配置されます。 これには、同じ **automaticbackup** コンテナーと、同じ名前付け規則が使用されます。 パスワードが変更された場合、そのパスワードを使用して新しい証明書が生成されますが、以前のバックアップの復元には古い証明書が引き続き使用されます。 |
+| **パスワード** |パスワード テキスト | 暗号化キーのパスワード。 このパスワードは、暗号化を有効にした場合にのみ必須となります。 暗号化されたバックアップを復元するには、バックアップの作成時に使用した正しいパスワードおよび関連する証明書が必要です。 |
 
 ### <a name="advanced-settings"></a>詳細設定
 
-| Setting | 範囲 (既定値) | Description |
+| Setting | 範囲 (既定値) | [説明] |
 | --- | --- | --- |
 | **システム データベースのバックアップ** | 有効/無効 (無効) | 有効にすると、この機能によりシステム データベース (マスター、MSDB、およびモデル) もバックアップされます。 ログのバックアップを作成する場合は、MSDB とモデル データベースが完全復旧モードであることを確認します。 マスターのログのバックアップは作成されません。 また TempDB のバックアップは一切作成されません。 |
-| **バックアップ スケジュール** | 手動/自動 (自動化) | 既定では、バックアップ スケジュールはログの増加に基づいて自動的に決定されます。 手動のバックアップ スケジュールでは、ユーザーはバックアップの時間枠を指定することができます。 この場合、バックアップは指定された頻度で、特定の日の指定された時間枠内でのみ行われます。 |
+| **バックアップ スケジュール** | 手動/自動 (自動) | 既定では、バックアップ スケジュールはログの増加に基づいて自動的に決定されます。 手動のバックアップ スケジュールでは、ユーザーはバックアップの時間枠を指定することができます。 この場合、バックアップは指定された頻度で、特定の日の指定された時間枠内でのみ行われます。 |
 | **完全バックアップの頻度** | 毎日/毎週 | 完全バックアップの頻度。 どちらの場合も、完全バックアップは次のスケジュールされた時間枠内に開始されます。 毎週を選択すると、すべてのデータベースが正常にバックアップされるまで、バックアップは数日にわたることがあります。 |
 | **完全バックアップの開始時刻** | 00:00 – 23:00 (01:00) | 完全バックアップが行われる日の開始時刻。 |
 | **完全バックアップの時間枠** | 1 – 23 時間 (1 時間) | 完全バックアップが行われる日の時間枠。 |
 | **ログのバックアップの頻度** | 5 – 60 分 (60 分) | ログのバックアップの頻度。 |
 
 ## <a name="understanding-full-backup-frequency"></a>完全バックアップの頻度を理解する
-毎日および毎週の完全バックアップの違いについて理解することは重要です。 こちらのセクションでは、2 つのシナリオの例を説明します。
+毎日および毎週の完全バックアップの違いについて理解することは重要です。 ここでは、次の 2 つのシナリオを例に説明します。
 
 ### <a name="scenario-1-weekly-backups"></a>シナリオ 1: 毎週のバックアップ
 非常に大規模なデータベースを多数含む SQL Server VM があります。
@@ -321,7 +321,7 @@ Set-AzureRmVMSqlServerExtension -AutoBackupSettings $autobackupconfig `
     -VMName $vmname -ResourceGroupName $resourcegroupname
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 自動バックアップ v2 では、Azure VM でマネージ バックアップが構成されます。 そのため、 [マネージ バックアップに関するドキュメント](https://msdn.microsoft.com/library/dn449496.aspx) を見直して、動作と影響を理解することが重要です。
 
 Azure VM の SQL Server のバックアップと復元に関するその他のガイダンスについては、「 [Azure の仮想マシンにおける SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」をご覧ください。

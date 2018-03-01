@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/16/2018
 ms.author: jgao
-ms.openlocfilehash: 9924a9656f2e2e268356b8ce293d58afc3d535a9
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: cfaad24e7bf1c38f3be1e13c88fc932be0bd502c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-third-party-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのサード パーティ製 Hadoop アプリケーションのインストール
 
@@ -33,13 +33,12 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 * **AtScale Intelligence Platform**: HDInsight クラスターをスケールアウト OLAP サーバーに変えます。 このアプリケーションを使用すると、Excel、PowerBI、Tableau Software、QlikView などの BI ツールを使用して、数十億行のデータのクエリを対話的に実行できます。
 * **Cask CDAP for HDInsight**: ビッグ データ用に初めて一元管理された統合プラットフォームを提供します。ビッグ データにより、データ アプリケーションや Data Lake の作成にかかる時間が 80% 短縮されます。 このアプリケーションは、標準の HBase 3.4 クラスターのみをサポートします。
 * **DATAIKU DDS on HDInsight**: このアプリケーションを使用して、データの専門家は、生データをインパクトのある景気予測に変換する特異性の高いサービスのプロトタイプ作成、ビルド、デプロイを行うことができます。
-* **Datameer**: [Datameer](http://www.datameer.com/documentation/display/DAS50/Home?ls=Partners&lsd=Microsoft&c=Partners&cd=Microsoft) を利用すると、アナリストはビッグ データ上の結果を対話形式で検索、分析、視覚化できるようになります。 追加のデータ ソースを簡単に取り込んで新たな関係性を発見し、必要な答えをすぐに得られます。
 * **H2O Artificial Intelligence for HDInsight (ベータ)**: H2O Sparkling Water は、GLM、Naïve Bayes、Distributed Random Forest、Gradient Boosting Machine、Deep Neural Networks、Deep learning、K-means、PCA、Generalized Low Rank Models、Anomaly Detection、Autoencoders などの分散アルゴリズムをサポートしています。
 * **Kyligence Analytics Platform**: Kyligence Analytics Platform (KAP) は、Apache Kylin と Apache Hadoop を利用したエンタープライズ対応のデータ ウェアハウスです。大規模なデータセットに対するクエリの待ち時間が 1 秒未満に抑えられ、ビジネス ユーザーやアナリストはデータ分析を簡単に実行できます。 
 * **Paxata セルフサービス データ準備**
-* **SnapLogic Hadooplex**: HDInsight 上で実行される SnapLogic Hadooplex では、ほぼすべてのソースから Microsoft Azure クラウド プラットフォームにセルフサービスでデータの取り込みと準備を実行できるため、短時間でビジネスの洞察が得られます。
 * **Spark Job Server for KNIME Spark Executor**: Spark Job Server for KNIME Spark Executor は、KNIME Analytics Platform を HDInsight クラスターに接続するために使用されます。
 * **Streamsets Data Collector for HDnsight**: フル機能を備えた統合開発環境 (IDE) を備えており、これを使用すると、ストリーム データとバッチ データを調和させる任意の環境間の取り込みパイプラインを設計、テスト、デプロイ、管理したり、ストリーム内のさまざまな変換を含めたりできます。どの処理でも、カスタム コードを記述する必要はありません。 
+* **[Trifacta](http://www.trifacta.com/)** を使用すると、データ エンジニアやアナリストは画期的なユーザー エクスペリエンス、ワークフロー、およびアーキテクチャを提供する機械学習を利用することによって、今日のさまざまなデータをより効率的に調査したり、準備したりできます。
 * **WANdisco Fusion HDI App**: データの場所を問わず、データが変更された際のデータへの継続的な一貫した接続を可能にします。 このアプリケーションにより、いつでもどこでもダウンタイムや中断なしでデータにアクセスできるようになります。
 
 この記事で説明する手順では、Azure Portal を使用します。 また、ポータルから Azure Resource Manager テンプレートをエクスポートしたり、ベンダーから Resource Manager テンプレートのコピーを入手したりして、Azure PowerShell と Azure CLI を使ってテンプレートをデプロイできます。  「[Resource Manager テンプレートを使用して HDInsight に Hadoop クラスターを作成する](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
@@ -53,19 +52,15 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 **HDInsight アプリケーションをインストールする**
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. 左側のメニューの **[HDInsight クラスター]** をクリックします。
+2. 左側のメニューの **HDInsight クラスター** をクリックします。
 3. HDInsight クラスターをクリックします。  HDInsight クラスターがない場合は、最初に作成する必要があります。  「 [クラスターの作成](hadoop/apache-hadoop-linux-tutorial-get-started.md#create-cluster)」を参照してください。
 4. **構成** カテゴリにある **アプリケーション** をクリックします。 インストールされているアプリケーションの一覧が表示されます。 アプリケーションが見つからない場合は、このバージョンの HDInsight クラスターに対応するアプリケーションがないことを意味します。
    
     ![HDInsight アプリケーションのポータル メニュー](./media/hdinsight-apps-install-applications/hdinsight-apps-portal-menu.png)
-5. メニューで **[追加]** をクリックします。 
-   
-    ![HDInsight アプリケーションのインストールされたアプリ](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps.png)
-   
-    既存の HDInsight アプリケーションの一覧が表示されます。
+5. メニューで **[追加]** をクリックします。 既存の HDInsight アプリケーションの一覧が表示されます。
    
     ![HDInsight アプリケーションの利用可能なアプリケーション](./media/hdinsight-apps-install-applications/hdinsight-apps-list.png)
-6. いずれかのアプリケーションをクリックし、法律条項に同意した後、 **[選択]**をクリックします。
+6. いずれかの使用可能なアプリケーションをクリックし、指示に従って法律条項を受け入れます。
 
 インストールの状態はポータル通知で確認できます (ポータル上部のベル アイコンをクリック)。 アプリケーションのインストール後、[インストール済みアプリ] 一覧にアプリケーションが表示されます。
 
@@ -80,7 +75,7 @@ HDInsight アプリケーションは、ユーザーが HDInsight クラスタ�
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **HDInsight クラスター** をクリックします。 
 3. HDInsight クラスターをクリックします。
-4. **設定** で、**全般** カテゴリの **アプリケーション** をクリックします。 インストール済みアプリが右側に一覧表示されます。 
+4. **[設定]** から、**[構成]** カテゴリの下の **[アプリケーション]** をクリックします。 インストール済みアプリが右側に一覧表示されます。 
    
     ![HDInsight アプリケーションのインストールされたアプリ](./media/hdinsight-apps-install-applications/hdinsight-apps-installed-apps-with-apps.png)
 5. インストール済みのアプリケーションのいずれかをクリックし、プロパティを表示します。 プロパティには次の項目が一覧表示されます。

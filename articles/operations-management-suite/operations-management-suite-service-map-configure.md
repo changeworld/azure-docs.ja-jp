@@ -1,6 +1,6 @@
 ---
-title: "Operations Management Suite の Service Map の構成 | Microsoft Docs"
-description: "サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする Operations Management Suite のソリューションです。 この記事では、サービス マップを環境に展開して、さまざまなシナリオで使用する場合の詳細について説明します。"
+title: "Azure での Service Map の構成 | Microsoft Docs"
+description: "Service Map は、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、Azure のソリューションです。 この記事では、サービス マップを環境に展開して、さまざまなシナリオで使用する場合の詳細について説明します。"
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,55 +14,55 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: e23173fb6708104c39071145595e4eec3454ee76
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: d535c738943b4fea81798b6fc2eedc60ae6be41f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="configure-service-map-in-operations-management-suite"></a>Operations Management Suite の Service Map の構成
+# <a name="configure-service-map-in-azure"></a>Azure で Service Map を構成する
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
-この記事では、サービス マップの構成とエージェントのオンボードの詳細について説明します。 Service Map の使用方法については、「[Operations Management Suite (OMS) の Service Map ソリューションの使用](operations-management-suite-service-map.md)」を参照してください。
+この記事では、サービス マップの構成とエージェントのオンボードの詳細について説明します。 Service Map の使用方法については、「[Operations Management Suite の Service Map ソリューションの使用](operations-management-suite-service-map.md)」をご覧ください。
 
 ## <a name="dependency-agent-downloads"></a>Dependency Agent のダウンロード
 | ファイル | OS | バージョン | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.3.0 | 1F5261CAAF6C8DF4E03E4927DA918B3461B40B41C6BF5845803878D7CF975693 |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.3.0 | 7BADFF2411899114F0214766160E4E871A2462DC137141CEEDEFAF528F428ADD  |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.4.1 | 0DCCE16495E7A3254A5FE1B5EADE66110984C3BE799A1FAAD7D119F23614592E |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.4.1 | 1E4ED4CA5940BEA462FC7CAEDF4DF1C7F92C927DE6D538C4DC61DCFDFFAB1A0B  |
 
 
 ## <a name="connected-sources"></a>接続先ソース
-サービス マップは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Operations Management Suite への接続に関して OMS エージェントに依存しています。 つまり、サーバーには OMS エージェントを先にインストールして構成する必要があり、Dependency Agent はその操作の後でインストールできます。 次の表では、Service Map ソリューションでサポートされている接続先ソースについて説明します。
+サービス マップは、Microsoft Dependency Agent からデータを取得します。 Dependency Agent は、Log Analytics への接続に関して OMS エージェントに依存しています。 つまり、サーバーには OMS エージェントを先にインストールして構成する必要があり、Dependency Agent はその操作の後でインストールできます。 次の表では、Service Map ソリューションでサポートされている接続先ソースについて説明します。
 
 | 接続先ソース | サポートされています | [説明] |
 |:--|:--|:--|
 | Windows エージェント | [はい] | サービス マップは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br>[OMS エージェント](../log-analytics/log-analytics-windows-agent.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
 | Linux エージェント | [はい] | サービス マップは、Linux エージェント コンピューターからのデータを分析して収集します。 <br><br>[OMS エージェント](../log-analytics/log-analytics-linux-agents.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](#supported-operating-systems)」を参照してください。 |
-| System Center Operations Manager 管理グループ | [はい] | Service Map は、接続された [System Center Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br>System Center Operations Manager エージェント コンピューターから Operations Management Suite への直接接続が必要です。 データは管理グループから Operations Management Suite レポジトリに転送されます。|
+| System Center Operations Manager 管理グループ | [はい] | Service Map は、接続された [System Center Operations Manager 管理グループ](../log-analytics/log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br>System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 データは管理グループから Log Analytics ワークスペースに転送されます。|
 | Azure ストレージ アカウント | いいえ  | Service Map はエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
 Service Map でサポートされるのは 64 ビット プラットフォームのみです。
 
-Windows では、監視データの収集と送信のために System Center Operations Manager と Operations Management Suite の両方で Microsoft Monitoring Agent (MMA) が使用されます  (このエージェントは、状況に応じて、System Center Operations Manager エージェント、OMS エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます)。System Center Operations Manager と Operations Management Suite には、すぐに使用できる異なるバージョンの MMA が用意されています。 これらのバージョンはそれぞれ、System Center Operations Manager、Operations Management Suite、またはその両方にレポートできます。  
+Windows では、監視データの収集と送信のために System Center Operations Manager と Log Analytics の両方で Microsoft Monitoring Agent (MMA) が使用されます。 (このエージェントは、状況に応じて、System Center Operations Manager エージェント、OMS エージェント、Log Analytics エージェント、MMA、またはダイレクト エージェントと呼ばれます)。System Center Operations Manager と Log Analytics では、MMA のすぐに使用できるバージョンが異なります。 これらのバージョンはそれぞれ、System Center Operations Manager、Log Analytics、またはその両方にレポートできます。  
 
-Linux では、OMS Agent for Linux が監視データを収集して Operations Management Suite に送信します。 Service Map は、OMS ダイレクト エージェントがインストールされているサーバーまたは System Center Operations Manager 管理グループ経由で Operations Management Suite にアタッチされているサーバーで使用できます。  
+Linux では、OMS エージェント for Linux が監視データを収集して Log Analytics に送信します。 Service Map は、OMS ダイレクト エージェントがインストールされているサーバーまたは System Center Operations Manager 管理グループ経由で Log Analytics にアタッチされているサーバーで使用できます。  
 
-Linux 用であるか Windows 用であるか、System Center Operations Manager 管理グループに接続されているか Operations Management Suite に直接接続されているかに関係なく、この記事ではすべてのエージェントを "OMS エージェント" と呼びます。 状況に応じて必要な場合にのみ、特定のデプロイ名を使用します。
+Linux 用であるか Windows 用であるか、System Center Operations Manager 管理グループに接続されているか Log Analytics に直接接続されているかに関係なく、この記事ではすべてのエージェントを "OMS エージェント" と呼びます。 状況に応じて必要な場合にのみ、エージェントの特定のデプロイ名を使用します。
 
-サービス マップ エージェントがデータを送信することはないため、ファイアウォールやポートを変更する必要はありません。 Service Map のデータは、常に OMS エージェントによって、直接または OMS ゲートウェイ経由で Operations Management Suite に送信されます。
+サービス マップ エージェントがデータを送信することはないため、ファイアウォールやポートを変更する必要はありません。 Service Map 内のデータは、常に OMS エージェントによって、直接または OMS ゲートウェイを使用して Log Analytics に送信されます。
 
 ![Service Map エージェント](media/oms-service-map/agents.png)
 
-Operations Manager Suite に接続された管理グループを使用している System Center Operations Manager ユーザーの場合:
+Log Analytics に管理グループが接続されている System Center Operations Manager ユーザーである場合は次のとおりです。
 
-- System Center Operations Manager エージェントがインターネット経由で Operations Management Suite にアクセスできる場合は、追加の構成は必要ありません。  
-- System Center Operations Manager エージェントがインターネット経由で Operations Management Suite にアクセスできない場合は、System Center Operations Manager を操作するために OMS ゲートウェイを構成する必要があります。
+- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできる場合は、追加の構成は必要ありません。  
+- System Center Operations Manager エージェントがインターネット経由で Log Analytics にアクセスできない場合は、System Center Operations Manager を操作するために OMS ゲートウェイを構成する必要があります。
   
-OMS ダイレクト エージェントを使用している場合は、OMS エージェント自体を Operations Management Suite または OMS ゲートウェイに接続するように構成する必要があります。 OMS ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
+OMS のダイレクト エージェントを使用している場合は、OMS エージェント自体が Log Analytics または OMS ゲートウェイに接続するように構成する必要があります。 OMS ゲートウェイは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=52666)からダウンロードできます。
 
 ### <a name="management-packs"></a>管理パック
-Service Map が Operations Management Suite ワークスペースでアクティブになると、300 KB の管理パックがそのワークスペース内のすべての Windows サーバーに送信されます。 System Center Operations Manager エージェントを[接続された管理グループ](../log-analytics/log-analytics-om-agents.md)で使用している場合は、Service Map 管理パックが System Center Operations Manager からデプロイされます。 エージェントが直接接続されている場合、管理パックは Operations Management Suite によって配布されます。
+Service Map が Log Analytics ワークスペースでアクティブになると、300 KB の管理パックがそのワークスペース内のすべての Windows サーバーに送信されます。 System Center Operations Manager エージェントを[接続された管理グループ](../log-analytics/log-analytics-om-agents.md)で使用している場合は、Service Map 管理パックが System Center Operations Manager からデプロイされます。 エージェントが直接接続されている場合、管理パックは Log Analytics によって配布されます。
 
 この管理パックは、Microsoft.IntelligencePacks.ApplicationDependencyMonitor という名前で、 %Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\ に書き込まれます。 管理パックで使用されるデータ ソースは、%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll です。
 
@@ -147,7 +147,7 @@ PowerShell を使用して Azure VM 拡張機能を展開するには、次の�
 # Deploy the Dependency Agent to every VM in a Resource Group
 #
 
-$version = "9.1"
+$version = "9.3"
 $ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
 $OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
 $rmgroup = "<Your Resource Group Here>"
@@ -180,7 +180,7 @@ Dependency Agent を各 VM で確実に展開する、さらに簡単な方法�
 "properties": {
     "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
     "type": "DependencyAgentWindows",
-    "typeHandlerVersion": "9.1",
+    "typeHandlerVersion": "9.3",
     "autoUpgradeMinorVersion": true
 }
 
@@ -235,7 +235,7 @@ sudo rpm -e dependency-agent
 ```
 Ubuntu:
 ```
-sudo dpkg --purge dependency-agent
+sudo apt -y purge dependency-agent
 ```
 ## <a name="troubleshooting"></a>トラブルシューティング
 Service Map のインストールまたは実行で問題が発生した場合は、こちらのセクションを参照してください。 それでも問題が解決しない場合は、Microsoft サポートにお問い合わせください。
@@ -267,11 +267,11 @@ Dependency Agent のインストールに成功しても、サービス マッ�
 
 * 現在ご利用されているのは、[無料の価格レベルの Operations Management Suite または Log Analytics](https://docs.microsoft.com/azure/log-analytics/log-analytics-add-solutions#offers-and-pricing-tiers) ですか。 無料のプランでは、一意のサービス マップ サーバーを最大 5 台まで使用できます。 以前使用していた 5 台がデータを送信していない場合でも、6 台目以降のサーバーはサービス マップに表示されません。
 
-* サーバーはログとパフォーマンス データを Operations Management Suite に送信していますか。 ログ検索に移動し、お使いのコンピューターに対して次のクエリを実行します。 
+* サーバーはログとパフォーマンス データを Log Analytics に送信していますか?  ログ検索に移動し、お使いのコンピューターに対して次のクエリを実行します。 
 
         * Computer="<your computer name here>" | measure count() by Type
         
-  結果としてさまざまなイベントを取得しましたか?  そのデータは最近のものですか?  そうであれば、OMS エージェントは正しく動作しており、Operations Management Suite サービスと通信しています。 そうでなければ、お使いのサーバーの OMS エージェントを確認してください ([Windows 用 OMS エージェントのトラブルシューティング](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)または [Linux 用 OMS エージェントのトラブルシューティング](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)に関するページを参照)。
+  結果としてさまざまなイベントを取得しましたか?  そのデータは最近のものですか?  そうであれば、OMS エージェントは正しく動作しており、Log Analytics と通信しています。 そうでなければ、お使いのサーバーの OMS エージェントを確認してください ([Windows 用 OMS エージェントのトラブルシューティング](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)または [Linux 用 OMS エージェントのトラブルシューティング](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/Troubleshooting.md)に関するページを参照)。
 
 #### <a name="server-appears-in-service-map-but-has-no-processes"></a>Service Map にサーバーは表示されるがプロセスが表示されない
 サービス マップにサーバーは表示されるがプロセスまたは接続データは表示されないという場合は、Dependency Agent がインストールされて実行されているがカーネル ドライバーがロードされなかったということを意味しています。 
@@ -350,8 +350,8 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 
 | OS バージョン | カーネル バージョン |
 |:--|:--|
-| 16.04 | 4.4.0-103<br>4.11.0-1016 |
-| 14.04 | 3.13.0-137<br>4.4.0-103 |
+| 16.04 | 4.4.\*<br>4.8.\*<br>4.10.\*<br>4.11.\*<br>4.13.\* |
+| 14.04 | 3.13.\*<br>4.4.\* |
 
 ### <a name="oracle-enterprise-linux-with-unbreakable-enterprise-kernel"></a>Unbreakable Enterprise Kernel を搭載した Oracle Enterprise Linux
 #### <a name="oracle-linux-6"></a>Oracle Linux 6

@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 10/13/2017
 ms.author: joroja
-ms.openlocfilehash: 064ccec58406e08ae68320b59fcf2a96952a41ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f65ad324e1bf0887ea293254621466a2f1ddaff
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Azure Active Directory B2C カスタム ポリシー パブリック プレビューのリリース ノート
 カスタム ポリシー機能セットは、すべての Azure Active Directory B2C (Azure AD B2C) のユーザーがパブリック プレビューで評価できるようになりました。 この機能セットは、最も複雑な ID ソリューションを構築する上級 ID 開発者を対象としています。  
@@ -60,13 +60,13 @@ ms.lasthandoff: 12/11/2017
 ## <a name="features-by-stage-and-known-issues"></a>段階別の機能と既知の問題
 カスタム ポリシー/Identity Experience Framework 機能は、継続的かつ高速に開発されています。  次の表は、機能/コンポーネントの可用性のインデックスです。
 
-質問については、Stack Overflow ([aka.ms/aadb2cso](http://aka.ms/aadb2cso)) に投稿してください
+質問については、Stack Overflow ([https://aka.ms/aadb2cso](https://aka.ms/aadb2cso)) に投稿してください
 
 
 ### <a name="identity-providers-tokens-protocols"></a>ID プロバイダー、トークン、プロトコル
 外部コンポーネントとアプリケーションとのインターフェイス
 
-| 機能 | 開発 | Preview | 一般公開 | メモ |
+| Feature | 開発 | プレビュー | 一般公開 | メモ |
 |---------------------------------------------|-------------|---------|----|-------|
 | IDP-OpenIDConnect |  | ○ |  | 例: Google+ |
 | IDP-OAUTH2 |  | ○ |  | 例: Facebook  |
@@ -83,7 +83,7 @@ ms.lasthandoff: 12/11/2017
 ### <a name="component-support"></a>コンポーネントのサポート
 
 
-| 機能 | 開発 | Preview | 一般公開 | メモ |
+| Feature | 開発 | プレビュー | 一般公開 | メモ |
 |-------------------------------------------|-------------|---------|----|-------|
 | Azure Multi Factor Authentication |  | ○ |  |  |
 | ローカル ディレクトリとしての Azure Active Directory |  | ○ |  |  |
@@ -94,7 +94,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="content-definition"></a>コンテンツ定義
 
-| 機能 | 開発 | Preview | 一般公開 | メモ |
+| Feature | 開発 | プレビュー | 一般公開 | メモ |
 |-----------------------------------------------------------------------------|-------------|---------|----|-------|
 |   エラー ページ、api.error |  | ○ |  |  |
 |   IDP の選択ページ、api.idpselections |  | ○ |  |  |
@@ -109,7 +109,7 @@ ms.lasthandoff: 12/11/2017
 
 
 ### <a name="app-ief-integration"></a>アプリケーションと IEF の統合
-| 機能 | 開発 | Preview | 一般公開 | メモ |
+| Feature | 開発 | プレビュー | 一般公開 | メモ |
 |--------------------------------------------------|-------------|---------|----|-------------------------------------------------|
 | クエリ文字列パラメーター id_token_hint | ○ |  |  |  |
 | クエリ文字列パラメーター domain_hint |  | ○ |  | 要求として使用可能、IDP に渡すことができる |
@@ -120,7 +120,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="session-management"></a>セッションの管理
 
-| 機能 | 開発 | Preview | 一般公開 | メモ |
+| Feature | 開発 | プレビュー | 一般公開 | メモ |
 |---------------------------------|-------------|---------|----|-------|
 | SSO セッション プロバイダー |  | ○ |  |  |
 | 外部ログイン セッション プロバイダー |  | ○ |  |  |
@@ -128,14 +128,14 @@ ms.lasthandoff: 12/11/2017
 
 
 ### <a name="security"></a>セキュリティ
-| 機能 | 開発 | Preview | 一般公開 | メモ |
+| Feature | 開発 | プレビュー | 一般公開 | メモ |
 |---------------------------------------------|-------------|---------|----|-------|
 | ポリシー キー - 生成、手動、アップロード |  | ○ |  |  |
 | ポリシー キー - RSA/証明書、シークレット |  | ○ |  |  |
 
 
 ### <a name="developer-interface"></a>開発者向けインターフェイス
-| 機能 | 開発 | Preview | 一般公開 | メモ |
+| Feature | 開発 | プレビュー | 一般公開 | メモ |
 |---------------------------------------------|-------------|---------|----|-------|
 | Azure Portal - IEF UX |  | ○ |  |  |
 | Application Insights の UserJourney ログ  |  | ○ |  |  |
@@ -143,5 +143,5 @@ ms.lasthandoff: 12/11/2017
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)

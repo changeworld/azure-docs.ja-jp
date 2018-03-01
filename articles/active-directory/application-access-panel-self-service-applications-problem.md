@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewer: japere
-ms.openlocfilehash: dcd3ea1269ff40e4777cc9b0ca46f0b64560f923
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6d4044414cfae9a79487d02709aab24998fdef0b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-using-self-service-application-access"></a>アプリケーションのセルフ サービス アクセス使用に関する問題点
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 
 ユーザーがアクセス パネルからアプリケーションを自己検出できるようにする前に、ユーザーによる自己検出およびアクセス権の要求を許可する任意のアプリケーションに対する、**アプリケーションへのセルフ サービス アクセス権**を有効にする必要があります。
 
-## <a name="general-issues-to-check-first"></a>最初に確認する一般的な問題
+## <a name="general-issues-to-check-first"></a>最初にチェックすべき一般的な問題
 
 -   アプリケーションのセルフ サービス アクセスが正しく構成されていることを確認します。 「アプリケーションのセルフ サービス アクセスの構成方法」を参照してください。
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/11/2017
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 12/11/2017
 
 5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。
 
-  * ここに表示したいアプリケーションが表示されない場合は、**[すべてのアプリケーション リスト]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+  * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
 
 6.  セルフサービス アクセスを有効にするアプリケーションを一覧から選択します。
 
@@ -95,5 +95,5 @@ ms.lasthandoff: 12/11/2017
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [セルフサービス グループ管理に必要な Azure Active Directory の設定](active-directory-accessmanagement-self-service-group-management.md)

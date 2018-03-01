@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
-ms.openlocfilehash: d61b29f1327f57bc32b2c53de3fe58e53fcf3cac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>ネットワークのセキュリティ機能を使用した個人データの保護: Azure Application Gateway とネットワーク セキュリティ グループ
 
@@ -59,23 +59,14 @@ WAF でアプリケーション ゲートウェイを作成するか、既存の
 
 WAF を有効にした新しいアプリケーション ゲートウェイを作成するには、次の操作を行います。
 
-1. Azure ポータルにログインし、ポータルの **[お気に入り]** ウィンドウで **[新規]** をクリックします。
-
-2. **[新規]** ブレードの **[ネットワーキング]** をクリックします。
-
-3. **[Application Gateway]** をクリックします。
-
-4. Azure ポータルに移動し、**[新規]、\>\>[ネットワーク]、[Application Gateway]** の順にクリックします。
-
-   ![Application Gateway の作成方法](media/protect-netsec/app-gateway-01.png)
-
+1. [Azure Portal](https://portal.azure.com) にログインします。
+2. **[リソースの作成]** > **[ネットワーク]** > **[Application Gateway]** の順に選択します。
 5. 表示された **[基本]** ブレードで、[名前]、[階層] \(Standard または WAF) [SKU サイズ] \(小、中、大)、[インスタンス数] \(高可用性が必要な場合は 2)、[サブスクリプション]、[リソース グループ]、[場所] のフィールドの値を入力します
-
 6. **[仮想ネットワーク]**の下に表示される **[設定]** ブレードで、**[仮想ネットワークの選択]** をクリックします。 [仮想ネットワークの選択] ブレードが開きます。
 
 7. **[新規作成]** をクリックして **[仮想ネットワークの作成]** ブレードを開きます。
 
-8. [名前]、[アドレス空間]、[サブネット名]、[サブネット アドレス範囲] に値を入力します。 **[OK]**をクリックします。
+8. [名前]、[アドレス空間]、[サブネット名]、[サブネット アドレス範囲] に値を入力します。 Click **OK**.
 
 9. **[フロントエンド IP 構成]** の **[設定]** ブレードで、[IP アドレスの種類] を選択します。
 
@@ -126,7 +117,7 @@ NSG の計画および実装に関するガイダンスの詳細と、サンプ�
 
 既存の NSG で受信規則を作成するには、次の操作を行います。
 
-1. **[参照]**、**[ネットワーク セキュリティ グループ]** の順にクリックします。
+1. **[すべてのサービス]**、**[ネットワーク セキュリティ グループ]** の順にクリックします。
 
 2. NSG の一覧で、**[NSG-FrontEnd]**、**[受信セキュリティ規則]** の順にクリックします。
 
@@ -140,7 +131,7 @@ NSG の計画および実装に関するガイダンスの詳細と、サンプ�
 
 サブネット内に NSG を作成する、ルールを作成、NSG をフロント エンドおよびバック エンドサブネットに関連付ける方法の詳細については、「[Azure Portal を使用したネットワーク セキュリティ グループの作成](https://docs.microsoft.com/azure/virtual-network/virtual-networks-create-nsg-arm-pportal)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure のネットワーク セキュリティ](https://azure.microsoft.com/blog/azure-network-security/)
 

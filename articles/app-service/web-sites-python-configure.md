@@ -15,11 +15,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/26/2016
 ms.author: huvalo
-ms.openlocfilehash: 86e19d5bb942937779665eb60d9dc0654c16747d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fa5f9afbc595f06bd41e8670fab7730b610f570e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configuring-python-with-azure-app-service-web-apps"></a>Azure App Service Web Apps による Python の構成
 このチュートリアルでは、Web Server Gateway Interface (WSGI) に準拠している基本的な Python アプリケーションを [Azure App Service Web Apps](http://go.microsoft.com/fwlink/?LinkId=529714)に作成して構成する方法について説明します。
@@ -36,7 +36,7 @@ Azure Marketplace には、Bottle、Django、Flask フレームワーク用の�
 ## <a name="web-app-creation-on-azure-portal"></a>Azure Portal での Web アプリの作成
 このチュートリアルは、Azure サブスクリプションを既に所有しており、Azure Portal にアクセスできることを前提としています。
 
-既存の Web アプリがない場合、[Azure Portal](https://portal.azure.com) から自分で作成できます。  左上隅の [新規] ボタンをクリックし、**[Web + モバイル]** > **[Web アプリ]** をクリックします。
+既存の Web アプリがない場合、[Azure Portal](https://portal.azure.com) から自分で作成できます。 左上隅で、**[リソースの作成]** > **[Web + Mobile] (Web + モバイル)** > **[Web アプリ]** をクリックします。
 
 ## <a name="git-publishing"></a>Git 発行
 「 [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)」の指示に従い、新しく作成した Web アプリで Git 発行を構成します。 このチュートリアルでは、Python Web アプリの作成と管理、Azure App Service への発行を Git を使用して行います。
@@ -349,7 +349,7 @@ Python 3.4 用の `web.config` の例:
 ## <a name="troubleshooting---virtual-environment"></a>トラブルシューティング - 仮想環境
 [!INCLUDE [web-sites-python-troubleshooting-virtual-environment](../../includes/web-sites-python-troubleshooting-virtual-environment.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、 [Python デベロッパー センター](/develop/python/)を参照してください。
 
 > [!NOTE]

@@ -1,26 +1,10 @@
+-- title: Service Fabric の .NET アプリケーションを作成する | Microsoft Docs description: ASP.NET Core のフロントエンドとリライアブル サービスのステートフルなバックエンドを含むアプリケーションを作成し、クラスターにアプリケーションをデプロイする方法を説明します。
+services: service-fabric documentationcenter: .net author: rwike77 manager: timlt editor: ''
+
+ms.assetid: ms.service: service-fabric ms.devlang: dotNet ms.topic: tutorial ms.tgt_pltfrm: NA ms.workload: NA ms.date: 01/29/2018 ms.author: ryanwi ms.custom: mvc
+
 ---
-title: "Service Fabric の .NET アプリケーションを作成する | Microsoft Docs"
-description: "ASP.NET Core のフロントエンドとリライアブル サービスのステートフルなバックエンドを含むアプリケーションを作成し、クラスターにアプリケーションをデプロイする方法を説明します。"
-services: service-fabric
-documentationcenter: .net
-author: rwike77
-manager: timlt
-editor: 
-ms.assetid: 
-ms.service: service-fabric
-ms.devlang: dotNet
-ms.topic: tutorial
-ms.tgt_pltfrm: NA
-ms.workload: NA
-ms.date: 01/29/2018
-ms.author: ryanwi
-ms.custom: mvc
-ms.openlocfilehash: 467abe321fba166f1b862ae9f254c4943ba9e488
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
----
+
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
 このチュートリアルは、シリーズの第 1 部です。  ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 最後まで読み進めていけば、ASP.NET Core Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。 投票アプリケーションを手動で作成しない場合は、完成したアプリケーションの[ソース コードをダウンロード](https://github.com/Azure-Samples/service-fabric-dotnet-quickstart/)し、「[投票のサンプル アプリケーションの概要](#walkthrough_anchor)」に進むことができます。
 
@@ -43,7 +27,7 @@ ms.lasthandoff: 02/01/2018
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に
 - Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
-- [Visual Studio 2017](https://www.visualstudio.com/) バージョン 15.3 以降をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
+- [Visual Studio 2017](https://www.visualstudio.com/) バージョン 15.5 以降をインストールし、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 - [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
 ## <a name="create-an-aspnet-web-api-service-as-a-reliable-service"></a>ASP.NET Web API サービスをリライアブル サービスとして作成する

@@ -6,24 +6,23 @@ documentationcenter:
 author: curtand
 manager: mtillman
 editor: 
-ms.assetid: 9f2090e6-3af4-4f07-bbb2-1d18dae89b73
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.tgt_pltfrm: 
+ms.devlang: 
 ms.topic: article
-ms.date: 12/06/2017
+ms.date: 02/20/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
-ms.openlocfilehash: 331dafc9164e315c84036fa0af11820e89066f36
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 75df4436d5d36878f361e87f34d9bfc8bed1e58f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
-この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して、グループを作成し、更新する手順を説明します。 このコンテンツは、Office 365 グループにのみ適用されます。 
+この記事では、Azure Active Directory (Azure AD) PowerShell コマンドレットを使用して、グループを作成し、更新する手順を説明します。 このコンテンツは、Office 365 グループ (統合グループと呼ばれることもあります) にのみ適用されます。 
 
 > [!IMPORTANT]
 > 一部の設定には、Azure Active Directory Premium P1 ライセンスが必要です。 詳細については、「[テンプレート設定](#template-settings)」の表を参照してください。
@@ -42,7 +41,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
 ```
 
 ## <a name="create-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の作成
-次の手順では、ディレクトリ内のすべての Office 365 グループ (統合グループ) に適用される設定をディレクトリ レベルで作成します。
+次の手順では、ディレクトリ内のすべての Office 365 グループに適用される設定をディレクトリ レベルで作成します。
 
 1. DirectorySettings コマンドレットでは、使用する SettingsTemplate の ID を指定する必要があります。 使用する ID を把握していない場合、このコマンドレットでは、すべての Settings テンプレートの一覧が返されます。
   
@@ -55,7 +54,7 @@ Office365 グループの設定は、Settings オブジェクトおよび Settin
   Id                                   DisplayName         Description
   --                                   -----------         -----------
   62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified       ...
-  08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Unified Group
+  08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest Settings for a specific Office 365 group
   16933506-8a8d-4f0d-ad58-e1db05a5b929 Company.BuiltIn     Setting templates define the different settings that can be used for the associ...
   4bc7f740-180e-4586-adb6-38b2e9024e6b Application...
   898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy       Settings ...
@@ -93,20 +92,19 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 | **設定** | **説明** |
 | --- | --- |
-|  <ul><li>EnableGroupCreation<li>型: ブール<li>既定: True |ディレクトリで管理者以外のユーザーによる統合グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
-|  <ul><li>GroupCreationAllowedGroupId<li>型: 文字列<li>既定値: “” |EnableGroupCreation == false の場合でも統合グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
+|  <ul><li>EnableGroupCreation<li>型: ブール<li>既定: True |ディレクトリで管理者以外のユーザーによる Office 365 グループの作成を許可するかどうかを示すフラグ。 この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
+|  <ul><li>GroupCreationAllowedGroupId<li>型: 文字列<li>既定値: “” |EnableGroupCreation == false の場合でも Office 365 グループの作成がメンバーに許可されているセキュリティ グループの GUID。 |
 |  <ul><li>UsageGuidelinesUrl<li>型: 文字列<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
 |  <ul><li>ClassificationDescriptions<li>型: 文字列<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 |
 |  <ul><li>DefaultClassification<li>型: 文字列<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>型: 文字列<li>既定値: “” | 使用しないでください。 実装されていません。 |
-| <ul><li>CustomBlockedWordsList<li>型: 文字列<li>既定値: “” | 使用しないでください。 実装されていません。 |
+|  <ul><li>PrefixSuffixNamingRequirement<li>型: 文字列<li>既定値: “” | Office 365 グループ用に構成された名前付け規則を定義する文字列。最大文字数は 64 文字です。 詳細については、[Office 365 グループの名前付けポリシーの強制 (プレビュー)](groups-naming-policy.md) に関するページをご覧ください。 |
+| <ul><li>CustomBlockedWordsList<li>型: 文字列<li>既定値: “” | ユーザーによるグループ名または別名での使用が許可されていないフレーズのコンマ区切りの文字列。 詳細については、[Office 365 グループの名前付けポリシーの強制 (プレビュー)](groups-naming-policy.md) に関するページをご覧ください。 |
 | <ul><li>EnableMSStandardBlockedWords<li>型: ブール<li>既定値: “False” | 使用しないでください
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: ブール<li>既定: False | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
-|  <ul><li>AllowGuestsToAccessGroups<li>型: ブール<li>既定: True | ゲスト ユーザーが統合グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
+|  <ul><li>AllowGuestsToAccessGroups<li>型: ブール<li>既定: True | ゲスト ユーザーが Office 365 グループのコンテンツにアクセスできるかどうかを示すブール値。  この設定には、Azure Active Directory Premium P1 ライセンスは必要ありません。|
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: 文字列<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
 |  <ul><li>AllowToAddGuests<li>型: ブール<li>既定: True | このディレクトリにゲストを追加することが許可されているかどうかを示すブール値。|
-|  <ul><li>ClassificationList<li>型: 文字列<li>既定値: “” |統合グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
-
+|  <ul><li>ClassificationList<li>型: 文字列<li>既定値: “” |Office 365 グループに適用できる有効な分類の値のコンマ区切りの一覧。 |
 
 ## <a name="read-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の読み取り
 次の手順では、ディレクトリ内のすべての Office グループに適用される設定をディレクトリ レベルで読み取ります。
@@ -138,6 +136,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
   ClassificationDescriptions
   DefaultClassification
   PrefixSuffixNamingRequirement
+  CustomBlockedWordsList        
   AllowGuestsToBeGroupOwner     False 
   AllowGuestsToAccessGroups     True
   GuestUsageGuidelinesUrl
@@ -157,7 +156,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
   Id                                   DisplayName            Description
   --                                   -----------            -----------
   62375ab9-6b52-47ed-826b-58e47e0e304b Group.Unified          ...
-  08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Unified Group
+  08d542b9-071f-4e16-94b0-74abb372e3d9 Group.Unified.Guest    Settings for a specific Office 365 group
   4bc7f740-180e-4586-adb6-38b2e9024e6b Application            ...
   898f1161-d651-43d1-805c-3b0b388a9fc2 Custom Policy Settings ...
   5cf42378-d67d-4f36-ba46-e8b86229381d Password Rule Settings ...
@@ -186,7 +185,7 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 
 ## <a name="update-settings-at-the-directory-level"></a>ディレクトリ レベルでの設定の更新
 
-次の手順では、ディレクトリ内のすべての統合グループに適用される設定をディレクトリ レベルで更新します。 以下の例では、ディレクトリ内に Settings オブジェクトが既に存在することを前提としています。
+次の手順では、ディレクトリ内のすべての Office 365 グループに適用される設定をディレクトリ レベルで更新します。 以下の例では、ディレクトリ内に Settings オブジェクトが既に存在することを前提としています。
 
 1. 既存の Settings オブジェクトを検索します。
   ```

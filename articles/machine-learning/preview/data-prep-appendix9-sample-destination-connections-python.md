@@ -12,11 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 4cad3343461a6c7eda78566b3d2552b1e3591960
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 203c8399153d2bc2d855fc2602b01ed074852687
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="sample-of-destination-connections-python"></a>変換先接続のサンプル (Python) 
 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事をご覧ください。
@@ -29,7 +29,7 @@ Excel への書き込みには、追加のライブラリが必要です。 機�
 
 Excel に書き込む前に、他のいくつかの変更が必要になる場合があります。 データ準備で使用されるデータ型には、変換先の一部の形式でサポートされていないものがあります。 たとえば、"Error" オブジェクトが存在する場合、これらは正しく Excel にシリアル化されません。 したがって、Excel への書き込みを試みる前に、すべての列からエラーを削除する [Replace Error Values] \(エラー値の置換\) 変換を行う必要があります。
 
-以前の作業がすべて終了している場合、次の行により、Excel ドキュメントの単一のシートにデータ テーブルが書き込まれます。 データフローの書き出し (スクリプト) の変換を追加します。 その後、演算のセクションに次のコードを入力します。
+以前の作業がすべて終了している場合、次の行により、Excel ドキュメントの単一のシートにデータ テーブルが書き込まれます。 「データフローの変換 (スクリプト)」変換を追加します。 その後、演算のセクションに次のコードを入力します。
 
 
 ### <a name="on-windows"></a>Windows の場合 

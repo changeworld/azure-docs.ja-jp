@@ -12,22 +12,25 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 02/07/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: b76d6a31dfe600a4639b830bfbbb5cacfc158dd6
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f4240c9196796c2e83c408271fe81b20842ab722
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
+
 このプレイブックは次の操作で役立ちます。
 
 * リスク イベントと脆弱性をシミュレートし、ID 保護環境にデータを入力する
 * リスクに基づく条件付きアクセス ポリシーを設定し、そのポリシーの影響をテストする
 
+
 ## <a name="simulating-risk-events"></a>リスク イベントのシミュレーション
+
 このセクションでは、次の種類のリスク イベントをシミュレートするための手順を提供します。
 
 * 匿名の IP アドレスからのサインイン (簡単)
@@ -37,39 +40,53 @@ ms.lasthandoff: 01/16/2018
 他のリスク イベントは、安全な方法でシミュレートすることはできません。
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
-このリスク イベントの種類は、匿名プロキシ IP アドレスとして識別されている IP アドレスからのサインインにユーザーが成功したことを示します。 このようなプロキシは、自分のデバイスの IP アドレスを隠したいユーザーによって使用され、悪意のある目的で使用される場合があります。
+
+このリスク イベントの詳細については、「[匿名 IP アドレスからのサインイン](active-directory-reporting-risk-events.md#sign-ins-from-anonymous-ip-addresses)」を参照してください。 
+
+次の手順を完了するには、以下を使用する必要があります。
+
+- 匿名 IP アドレスをシミュレートするための [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en)。 組織が Tor Browser の使用を制限している場合は、仮想マシンの使用が必要になることがあります。
+- まだ多要素認証に登録されていないテスト アカウント。
 
 **匿名 IP からサインインをシミュレートするには、次の手順を実行します**。
 
-1. [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en)をダウンロードします。
-2. Tor Browser を使用し、 [https://myapps.microsoft.com](https://myapps.microsoft.com)に移動します。   
-3. **匿名 IP アドレスからのサインイン** レポートに表示するアカウントの資格情報を入力します。
+1. [Tor Browser](https://www.torproject.org/projects/torbrowser.html.en) を使用し、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動します。   
+2. **匿名 IP アドレスからのサインイン** レポートに表示するアカウントの資格情報を入力します。
 
-5 分以内に Identity Protection ダッシュボードにサインインが表示されます。 
+10 ～ 15 分以内に Identity Protection ダッシュボードにサインインが表示されます。 
 
 ### <a name="sign-ins-from-unfamiliar-locations"></a>未知の場所からのサインイン
-未知の場所のリスクはリアルタイム サインイン評価メカニズムであり、過去のサインインの場所 (IP、緯度/経度、ASN) を考慮して、新規/未知の場所を決定します。 システムは、ユーザーの以前の IP、緯度/経度、および ASN を保存し、それを "既知の" 場所と見なします。 サインインの場所が既存の場所のいずれとも一致しない場合、そのサインインの場所は未知と見なされます。
 
-Azure Active Directory Identity Protection:  
+このリスク イベントの詳細については、「[未知の場所からのサインイン](active-directory-reporting-risk-events.md#sign-in-from-unfamiliar-locations)」を参照してください。 
 
-* 14 日間の初期学習期間があり、この間はどの新しい場所にも未知の場所としてのフラグは設定されません。
-* 既知のデバイスからのサインイン、および既存の場所と地理的に近い場所からのサインインも無視します。
+未知の場所をシミュレートするには、テスト アカウントがサインイン元として以前に使用したことのない場所とデバイスからサインインする必要があります。
 
-未知の場所をシミュレートするには、それ以前にアカウントがサインインしていない場所とデバイスからサインインする必要があります。 
+以下の手順では、次のものを新たに作成して使用します。
+
+- 新しい場所をシミュレートするための VPN 接続。
+
+- 新しいデバイスをシミュレートするための仮想マシン。
+
+以下の手順を完了するには、次のようなユーザー アカウントを使用する必要があります。
+
+- 30 日以上のサインイン履歴がある。
+- 多要素認証が有効になっている。
+
 
 **未知の場所からサインインをシミュレートするには、次の手順を実行します**。
 
-1. 少なくとも 14 日間のサインイン履歴のあるアカウントを選択します。 
-2. 次のどちらかの操作を行います。
+1. テスト アカウントでサインインするとき、MFA チャレンジをパスしないことで、MFA チャレンジを失敗させます。
+2. 新しい VPN を使用して、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動し、テスト アカウントの資格情報を入力します。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 VPN を使用している状態で、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動し、リスク イベントをシミュレートするアカウントの資格情報を入力します。
-   
-   b. 別の場所にいる知り合いに、アカウントの資格情報を使用してサインインするよう頼みます (推奨されません)。
 
-5 分以内に Identity Protection ダッシュボードにサインインが表示されます。
+10 ～ 15 分以内に Identity Protection ダッシュボードにサインインが表示されます。
 
 ### <a name="impossible-travel-to-atypical-location"></a>特殊な場所へのあり得ない移動
-アルゴリズムでは、機械学習を使用して、既知のデバイスからのあり得ない移動や、ディレクトリ内の他のユーザーによって使用される VPN からのサインインなどの誤検知が除去されるため、あり得ない移動の状態をシミュレートすることは困難です。 さらに、ユーザーには、リスク イベントの生成を開始する前に、3 ～ 14 日間のサインイン履歴が必要です。
+
+このリスク イベントの詳細については、「[特殊な場所へのあり得ない移動](active-directory-reporting-risk-events.md#impossible-travel-to-atypical-locations)」を参照してください。 
+
+アルゴリズムでは、機械学習を使用して、既知のデバイスからのあり得ない移動や、ディレクトリ内の他のユーザーによって使用される VPN からのサインインなどの誤検知が除去されるため、あり得ない移動の状態をシミュレートすることは困難です。 さらに、リスク イベントの生成を開始する前に、ユーザーには 14 日間のサインイン履歴と 10 回のログインが必要です。 複雑な機械学習モデルと上記のルールのため、次の手順ではリスク イベントが発生しないこともあります。 このリスク イベントを発行するには、複数の Azure AD アカウントでこの手順を繰り返してください。
+
 
 **特殊な場所へのあり得ない移動をシミュレートするには、次の手順を実行します**。
 
@@ -79,8 +96,7 @@ Azure Active Directory Identity Protection:
 4. IP アドレスを変更します。 IP アドレスの変更は、VPN または Tor アドオンを使用して、または別のデータセンターの Azure で新しいマシンを起動して、行うことができます。
 5. 前と同じ資格情報を使用し、前のサインインから数分以内に、 [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。
 
-2 ～ 4 時間以内に Identity Protection ダッシュボードにサインインが表示されます。<br>
-複雑な機械学習モデルが含まれるため、取得されない可能性があります。<br> 複数の Azure AD アカウントでこの手順を繰り返すのがよい方法です。
+2 ～ 4 時間以内に Identity Protection ダッシュボードにサインインが表示されます。
 
 ## <a name="simulating-vulnerabilities"></a>脆弱性のシミュレーション
 脆弱性は、悪意のあるユーザーによって悪用される可能性のある Azure AD 環境内の弱点です。 現在、Azure AD Identity Protection では、Azure AD の他の機能を利用する 3 種類の脆弱性が明らかになっています。 これらの脆弱性は、以下の機能がセットアップされると Identity Protection ダッシュボードに自動的に表示されます。
@@ -89,51 +105,71 @@ Azure Active Directory Identity Protection:
 * Azure AD [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 * Azure AD [Privileged Identity Management](active-directory-privileged-identity-management-configure.md) 
 
-## <a name="user-compromise-risk"></a>ユーザーの侵害リスク
-**ユーザーの侵害リスクをテストするには、次の手順を実行します**。
+
+## <a name="testing-security-policies"></a>セキュリティ ポリシーのテスト
+
+このセクションでは、ユーザー リスクとサインイン リスクのセキュリティ ポリシーをテストする手順を示します。
+
+
+### <a name="user-risk-security-policy"></a>ユーザーのリスク セキュリティ ポリシー
+
+詳細については、「[ユーザーのリスク セキュリティ ポリシー](active-directory-identityprotection.md#user-risk-security-policy)」を参照してください。
+
+![ユーザーのリスク](./media/active-directory-identityprotection-playbook/02.png "プレイブック")
+
+
+**ユーザーのリスク セキュリティ ポリシーをテストするには、次の手順に従います**。
 
 1. テナントのグローバル管理者の資格情報を使用して [https://portal.azure.com](https://portal.azure.com) にサインインします。
 2. **Identity Protection**に移動します。 
-3. **Azure AD Identity Protection** のメイン ブレードで、**[設定]** をクリックします。 
-4. **[ポータルの設定]** ブレードの **[セキュリティ規則]** で、**[ユーザーの侵害リスク]** をクリックします。 
-5. **[サインインのリスク]** ブレードで、**[ルールの有効化]** をオフにして、**[保存]** をクリックします。
-6. 特定のユーザー アカウントで、未知の場所または匿名 IP のリスク イベントをシミュレートします。 これにより、そのユーザーのユーザー リスク レベルが **中**に上がります。
-7. 数分待った後、ユーザーのユーザー レベルが **中**であることを確認します。
-8. **[ポータルの設定]** ブレードに移動します。
-9. **[ユーザーの侵害リスク]** ブレードで、**[ルールの有効化]** の **[オン]** を選択します。 
-10. 次のいずれかのオプションを選択します。
-    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します。
-    
-    b. セキュリティで保護されたパスワードの変更を強制するには、**[多要素認証を要求する]** で **[中]** を選択します。
-11. **[Save]** をクリックします。
-12. リスク レベルを上げたユーザーを使用してサインインすることにより、リスクに基づく条件付きアクセスをテストできます。 ユーザーのリスクが中の場合、ポリシーの設定に応じて、サインインがブロックされるか、パスワードの変更を強制されます。 
-    <br><br>
-    ![プレイブック](./media/active-directory-identityprotection-playbook/201.png "Playbook")
-    <br>
+3. **[Azure AD Identity Protection]** ページで、**[ユーザーのリスク ポリシー]** をクリックします。
+4. **[割り当て]** セクションで、目的のユーザー (およびグループ) とユーザーのリスク レベルを選択します。
 
-## <a name="sign-in-risk"></a>サインイン リスク
-**サインイン リスクをテストするには、次の手順を実行します。**
+    ![ユーザーのリスク](./media/active-directory-identityprotection-playbook/03.png "プレイブック")
+
+5. [コントロール] セクションで、必要なアクセスの制御 ([パスワードの変更を必須とする] など) を選択します。
+5. **[ポリシーを適用します]** で **[オフ]** を選択します。
+6. テスト アカウントのユーザーのリスクを評価します。たとえば、リスク イベントのいずれかを数回シミュレートします。
+7. 数分待った後、そのユーザーのユーザー レベルが "中" であることを確認します。 そうでない場合は、そのユーザーに対してリスク イベントをさらにシミュレートします。
+8. **[ポリシーを適用します]** で **[オン]** を選択します。
+9. これで、リスク レベルを上げたユーザーを使用してサインインすることで、ユーザーのリスクに基づく条件付きアクセスをテストできます。
+    
+    
+
+### <a name="sign-in-risk-security-policy"></a>サインインのリスク セキュリティ ポリシー
+
+詳細については、「[ユーザーのリスク セキュリティ ポリシー](active-directory-identityprotection.md#user-risk-security-policy)」を参照してください。
+
+![サインインのリスク](./media/active-directory-identityprotection-playbook/01.png "プレイブック")
+
+
+**サインインのリスク ポリシーをテストするには、次の手順に従います。**
 
 1. テナントのグローバル管理者の資格情報を使用して [https://portal.azure.com ](https://portal.azure.com) にサインインします。
-2. **Identity Protection**に移動します。
-3. **Azure AD Identity Protection** のメイン ブレードで、**[設定]** をクリックします。 
-4. **[ポータルの設定]** ブレードの **[セキュリティ規則]** で、**[サインインのリスク]** をクリックします。
-5. **[サインインのリスク]** ブレードで、**[ルールの有効化]** の **[オン]** を選択します。 
-6. 次のいずれかのオプションを選択します。
-   
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します
-   
-   b. セキュリティで保護されたパスワードの変更を強制するには、**[多要素認証を要求する]** で **[中]** を選択します。
-7. ブロックするには、[リスクが指定された設定値以上の場合、サインインをブロックする] で [中] を選択します。
-8. 多要素認証を強制するには、**[多要素認証を要求する]** で **[中]** を選択します。
-9. **[Save]**をクリックします。
-10. 未知の場所または匿名 IP のリスク イベントをシミュレートすることにより、リスクに基づく条件付きアクセスをテストできます。どちらも**中**リスク イベントと見なされるためです。
+
+2. **Azure AD Identity Protection** に移動します。
+
+3. **[Azure AD Identity Protection]** メイン ページで、**[サインインのリスク ポリシー]** をクリックします。 
+
+4. **[割り当て]** セクションで、目的のユーザー (およびグループ) とサインインのリスク レベルを選択します。
+
+    ![サインインのリスク](./media/active-directory-identityprotection-playbook/04.png "プレイブック")
 
 
-![プレイブック](./media/active-directory-identityprotection-playbook/200.png "Playbook")
+5. **[コントロール]** セクションで、必要なアクセスの制御 (**[多要素認証を要求する]** など) を選択します。 
+
+6. **[ポリシーを適用します]** で **[オン]** を選択します。
+
+7. **[Save]** をクリックします。
+
+8. これで、リスクの高いセッションを使用してサインインすることで (たとえば、Tor Browser を使用して)、サインインのリスクに基づく条件付きアクセスをテストできます。 
+
+ 
+
+
 
 
 ## <a name="see-also"></a>関連項目
-* [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
+
+- [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
 

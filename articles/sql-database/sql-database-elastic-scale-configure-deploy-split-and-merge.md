@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 203e1f8842c229088102412afa5de8f967837041
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 4505aebc8919a5d7b8f3debe0db9f49b465176bf
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="deploy-a-split-merge-service"></a>split-merge サービスのデプロイ
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -39,8 +39,8 @@ split-merge ツールを使用すると、シャード化されたデータベ�
 2. Azure SQL DB サーバーで Azure サービスからの接続が許可されていることを確認します。 ポータルの **[ファイアウォール設定]** で、**[Azure サービスへのアクセスを許可する]** 設定が **[オン]** に設定されていることを確認してください。 [保存] アイコンをクリックします。
    
    ![使用できるサービス][1]
-3. 診断の出力に使用する Azure Storage アカウントを作成します。 Azure Portal にアクセスします。 左側のバーで、**[新規]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
-4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。  Azure Portal にアクセスします。 左側のバーで、**[新規]** をクリックした後に、**[コンピューティング]**、**[クラウド サービス]**、**[作成]** の順にクリックします。 
+3. 診断の出力に使用する Azure Storage アカウントを作成します。 Azure Portal にアクセスします。 左側のバーで、**[リソースの作成]** をクリックし、**[データ + ストレージ]**、**[ストレージ]** の順にクリックします。
+4. Split-Merge サービスが含まれる Azure クラウド サービスを作成します。  Azure Portal にアクセスします。 左側のバーで、**[リソースの作成]** をクリックした後に、**[Compute]**、**[クラウド サービス]**、**[作成]** の順にクリックします。 
 
 ## <a name="configure-your-split-merge-service"></a>Split-Merge サービスの構成
 ### <a name="split-merge-service-configuration"></a>Split-Merge サービスの構成
@@ -133,7 +133,7 @@ Web ロール:
 6. **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします。]** チェック ボックスがオンになっていることを確認します。
 7. 右下のチェック マークをクリックしてデプロイを開始します。 完了には数分かかります。
 
-   ![[アップロード]][4]
+   ![アップロード][4]
 
 ## <a name="troubleshoot-the-deployment"></a>デプロイのトラブルシューティング
 Web ロールのオンライン化に失敗した場合は、セキュリティの構成に問題があると考えられます。 SSL が前の説明どおりに構成されていることをご確認ください。

@@ -12,13 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/01/2017
+ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 554c5e6e3e3cfa2742ef27a3c1510176184b6bd0
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: ed2bb2fe159db146ee520fc600c8b11f2dd4f761
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="analysis-services-high-availability"></a>Analysis Services の高可用性
 この記事では、Azure Analysis Services サーバーの高可用性の確保について説明します。 
@@ -29,13 +29,14 @@ ms.lasthandoff: 11/02/2017
 
 * モデルを他のリージョンの冗長サーバーにデプロイします。 この方法を使用する場合、プライマリ サーバーと冗長サーバーの両方のデータを並行して処理し、すべてのサーバーを確実に同期させる必要があります。
 
-* プライマリ サーバーのデータベースをバックアップして、冗長サーバーで復元します。 たとえば、Azure Storage への夜間バックアップを自動化し、他のリージョンの他の冗長サーバーに復元できます。 
+* プライマリ サーバーのデータベースを[バックアップ](analysis-services-backup.md)して、冗長サーバーで復元します。 たとえば、Azure Storage への夜間バックアップを自動化し、他のリージョンの他の冗長サーバーに復元できます。 
 
 いずれの場合も、プライマリ サーバーで障害が発生したら、レポート クライアントの接続文字列を変更して、別のリージョンのデータセンターのサーバーに接続する必要があります。 この変更は、致命的なデータ センターの停止が発生した場合の最終手段にしてください。 プライマリ サーバーをホストしているデータ センターが停止した場合、そのデータ センターの復旧は、すべてのクライアントの接続更新よりも先に完了することはよくあります。 
 
-
+レポート クライアント上の接続文字列の変更を回避するには、プライマリ サーバーに対してサーバー [エイリアス](analysis-services-server-alias.md)を作成します。 プライマリ サーバーで障害が発生した場合は、別のリージョンの冗長サーバーを示すようにエイリアスを変更できます。 プライマリ サーバーのエンドポイントの正常性チェックをコーディングすることで、サーバー名のエイリアスを自動化できます。 正常性チェックが失敗した場合、そのエンドポイントを別のリージョンの冗長サーバーにリダイレクトできます。 
 
 ## <a name="related-information"></a>関連情報
 [バックアップと復元](analysis-services-backup.md)   
-[Azure Analysis Services を管理する](analysis-services-manage.md) 
+[Azure Analysis Services を管理する](analysis-services-manage.md)   
+[サーバー名のエイリアス](analysis-services-server-alias.md) 
 

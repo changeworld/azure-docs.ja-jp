@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/27/2017
+ms.date: 02/16/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: b883a3d9559c2f11742cd54716d8220b2034470d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 7fa50e206c86b307f7e2a90ff0938571b64f41bb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-powershell-to-run-pig-jobs-with-hdinsight"></a>Azure PowerShell を使用して HDInsight で Pig ジョブを使用する
 
@@ -40,9 +40,7 @@ ms.lasthandoff: 11/28/2017
 
 * **Azure PowerShell を実行できるワークステーション**。
 
-[!INCLUDE [upgrade-powershell](../../../includes/hdinsight-use-latest-powershell.md)]
-
-## <a id="powershell"></a>PowerShell を使用した Pig ジョブの実行
+## <a id="powershell"></a>Pig ジョブを実行する
 
 Azure PowerShell では、HDInsight で Pig ジョブをリモートで実行できる *コマンドレット* が提供されます。 PowerShell は、HDInsight クラスター上で実行される [WebHCat](https://cwiki.apache.org/confluence/display/Hive/WebHCat) への REST 呼び出しを内部的に使用します。
 

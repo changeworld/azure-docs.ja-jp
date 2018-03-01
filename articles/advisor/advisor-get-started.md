@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: dc89cd29e1e8038f0ff317ff6acee332218ebce7
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: d15f91c91281eae28ddaff52af3ee8e617f142c1
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 
@@ -26,9 +26,9 @@ Azure Portal を使用して Advisor にアクセスし、推奨事項を取得�
 
 ## <a name="get-advisor-recommendations"></a>Advisor の推奨事項を取得する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-2. 左側のウィンドウで、**[Advisor]** をクリックします。  左側のウィンドウに Advisor が表示されていない場合は、**[その他のサービス]** をクリックします。  サービス メニュー ウィンドウで、**[Monitoring and Management]\(監視と管理\)** の **[Advisor]** をクリックします。
+2. 左側のウィンドウで、**[Advisor]** をクリックします。  左側のウィンドウに Advisor が表示されていない場合は、**[すべてのサービス]** をクリックします。  サービス メニュー ウィンドウで、**[Monitoring and Management]\(監視と管理\)** の **[Advisor]** をクリックします。
  Advisor ダッシュボードが表示されます。
 
    ![Azure Portal を使用した Azure Advisor へのアクセス](./media/advisor-get-started/advisor-portal-menu.png) 
@@ -128,7 +128,7 @@ Advisor では、推奨事項の概要をダウンロードできます。  推�
 
 ダウンロード オプションでは、Advisor ダッシュボードに適用したフィルターが考慮されます。  推奨事項の特定のカテゴリまたは特定の推奨事項を表示しているときにダウンロード オプションを選択すると、ダウンロードされた概要には、そのカテゴリまたは推奨事項の情報だけが含まれます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Advisor の詳細については、次を参照してください。
 * [Azure Advisor の概要](advisor-overview.md)

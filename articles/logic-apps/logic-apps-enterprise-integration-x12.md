@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: bfad01d8c14cdd972ebe8e4038f226ffe0da93b1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 7a274ad33b7181d238203290cf63937df5f13bbc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の X12 メッセージを交換する
 
@@ -39,12 +39,12 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 ## <a name="create-an-x12-agreement"></a>X12 契約の作成
 
-1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューの **[その他のサービス]** をクリックします。 
+1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューから、**[すべてのサービス]** を選択します。 
 
     > [!TIP]
-    > **[その他のサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
+    > **[すべてのサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
 
-    ![左側のメニューの [その他のサービス] の選択](./media/logic-apps-enterprise-integration-x12/account-1.png)
+    ![左側のメニューの [すべてのサービス] を選択する](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
 2.  検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。  
 

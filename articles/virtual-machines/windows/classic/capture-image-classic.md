@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: cynthn
-ms.openlocfilehash: 6f7d8e8b3d1ed7c8a06f7e11fea492eec8b60409
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: ee6371faa9c3cc72104ba0eb05d17226679fa420
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="capture-an-image-of-an-azure-windows-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して作成された Azure Windows 仮想マシンのイメージをキャプチャする
 > [!IMPORTANT]
@@ -57,7 +57,7 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
 
    ![Sysprep を実行する](./media/capture-image/SysprepGeneral.png)
 5. Sysprep コマンドにより仮想マシンがシャットダウンされます。これにより、Azure ポータルの仮想マシンの状態が **[停止済み]** に変わります。
-6. Azure Portal で **[仮想マシン (クラシック)]** をクリックし、キャプチャする仮想マシンを選択します。 **[VM イメージ (クラシック)]** グループは、**[その他のサービス]** を表示したときに **[Compute]** の下に表示されます。
+6. Azure Portal で **[仮想マシン (クラシック)]** をクリックし、キャプチャする仮想マシンを選択します。 **[VM イメージ (クラシック)]** グループは、**[すべてのサービス]** を表示したときに **[Compute]** の下に表示されます。
 
 7. コマンド バーで、 **[取り込み]**をクリックします。
 
@@ -74,7 +74,7 @@ Azure 仮想マシンのイメージをキャプチャする前に、ターゲ�
     ![イメージのキャプチャの成功](./media/capture-image/VMCapturedImageAvailable.png)
 
 ## <a name="next-steps"></a>次の手順
-イメージを使用して仮想マシンを作成する準備ができました。 イメージを使用して仮想マシンを作成するには、サービス メニューの下部の **[その他のサービス]** メニュー項目を選択し、**[Compute]** グループの **[VM イメージ (クラシック)]** を選択します。 手順については、「 [イメージから仮想マシンを作成](createportal.md)」を参照してください。
+イメージを使用して仮想マシンを作成する準備ができました。 イメージを使用して仮想マシンを作成するには、サービス メニューの下部の **[すべてのサービス]** メニュー項目を選択し、**[Compute]** グループの **[VM イメージ (クラシック)]** を選択します。 手順については、「 [イメージから仮想マシンを作成](createportal.md)」を参照してください。
 
 [How to sign in to a virtual machine running Windows Server]:connect-logon.md
 [How to Use Sysprep: An Introduction]: http://technet.microsoft.com/library/bb457073.aspx

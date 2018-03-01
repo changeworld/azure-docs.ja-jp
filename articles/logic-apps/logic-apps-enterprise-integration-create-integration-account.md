@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 716e7b5bab8725dea0fd2b760d0e46e8e892c5b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7ec63810fe78b38c574ec39369d5926f80e595e
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="what-is-an-integration-account"></a>統合アカウントとは
 
@@ -26,9 +26,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-an-integration-account"></a>統合アカウントの作成
 
-1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューの **[その他のサービス]** をクリックします。
+1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューの **[すべてのサービス]** を選択します。
 
-    ![[その他のサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![[すべてのサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. 検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
 
@@ -85,9 +85,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="delete-your-integration-account"></a>統合アカウントの削除
 
-1. **[そのほかのサービス]** を選択します。
+1. **[すべてのサービス]** を選択します。
 
-    ![[その他のサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![[すべてのサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. 検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
 
@@ -110,9 +110,9 @@ ms.lasthandoff: 10/11/2017
 > [!IMPORTANT]
 > 統合アカウントを移動すると、新しいリソース ID を使用するために、すべてのスクリプトを更新する必要があります。
 
-1. **[そのほかのサービス]** を選択します。
+1. **[すべてのサービス]** を選択します。
 
-    ![[その他のサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+    ![[すべてのサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 2. 検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
 
@@ -126,6 +126,6 @@ ms.lasthandoff: 10/11/2017
 
     ![リソース グループの変更またはサブスクリプションの変更の選択](./media/logic-apps-enterprise-integration-accounts/move-2.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
 

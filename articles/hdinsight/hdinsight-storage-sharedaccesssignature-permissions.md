@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/25/2018
 ms.author: larryfr
-ms.openlocfilehash: 83a93f433769e880a729cd918198909696071594
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: d3e37ba0f590cf0572b84a53bdd407af63a19d36
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -216,7 +216,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
    > [!IMPORTANT]
    > 変更を有効にするには、複数のサービスを再起動する必要があります。
 
-6. Ambari Web UI で、左側の一覧から **[HDFS]** を選択して、右側の **[サービス アクション]** ドロップダウン リストから **[すべて再起動]** を選択します。 メッセージが表示されたら、__[すべて再起動を確認する]__ を選択します。
+6. Ambari Web UI で、左側の一覧から **[HDFS]** を選択して、右側の **[サービス アクション]** ドロップダウン リストから **[すべて再起動]** を選択します。 メッセージが表示されたら、__[Confirm Restart All]\(すべての再起動の確認\)__ を選択します。
 
     この手順を MapReduce2 と YARN に対して繰り返します。
 

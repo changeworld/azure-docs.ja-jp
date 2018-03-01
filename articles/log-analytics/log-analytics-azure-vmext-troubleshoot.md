@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/08/2018
 ms.author: magoedte
-ms.openlocfilehash: 4e43c7a7cea903a2e94e60a519f6ead1e6f932e3
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: d1e70d8f9fb929e3877c88fd4c1169a0c76ac2a6
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshooting-the-log-analytics-vm-extension"></a>Log Analytics VM 拡張機能のトラブルシューティング
 この記事では、Microsoft Azure で実行されている Windows および Linux 仮想マシンの Log Analytics VM 拡張機能で発生する可能性のあるエラーのトラブルシューティングを支援し、それらの問題について考えられる解決策を提案します。
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/09/2018
 拡張機能の状態を確認するには、Azure Portal から次の手順を実行します。
 
 1. [Azure Portal](http://portal.azure.com) にサインインします。
-2. Azure ポータルで、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**virtual machines**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Virtual Machines]** を選択します。
+2. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**virtual machines**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Virtual Machines]** を選択します。
 3. 仮想マシンの一覧で、検索して選択します。
 3. 仮想マシンで、**[拡張機能]** をクリックします。
 4. 一覧から、Log Analytics 拡張機能が有効かどうかを確認します。  Linux の場合、エージェントは **OMSAgentforLinux** として表示され、Windows の場合、エージェントは **MicrosoftMonitoringAgent** として表示されます。

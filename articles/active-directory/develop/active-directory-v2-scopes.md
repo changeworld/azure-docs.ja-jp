@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a93cfd710f89efbd4dab01b84ecdb12b4acb0033
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b35e4a7619c23660d93d91219a92be7e93a35139
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="scopes-permissions-and-consent-in-the-azure-active-directory-v20-endpoint"></a>Azure Active Directory v2.0 エンドポイントでのスコープ、アクセス許可、および同意
 Azure Active Directory (Azure AD) と統合されるアプリでは、アプリがどのようにデータにアクセスできるかをユーザーが制御できるようにする承認モデルが使用されます。 この承認モデルの v2.0 実装が更新され、アプリが Azure AD とやり取りする方法が変わりました。 この記事では、スコープ、アクセス許可、同意など、この承認モデルの基本的な概念について説明します。
@@ -145,9 +145,9 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49ae-97bc-6eba6914391e&state=12345&redirect_uri=http://localhost/myapp/permissions
 ```
 
-| パラメーター | 条件 | 説明 |
+| パラメーター | 条件 | [説明] |
 | --- | --- | --- |
-| テナント |必須 |アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。 |
+| テナント |必須 |アクセス許可を要求するディレクトリ テナント。 GUID またはフレンドリ名の形式で指定できます。または、例で示すように "common" で包括的に参照できます。 |
 | client_id |必須 |[アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)によってアプリに割り当てられたアプリケーション ID。 |
 | redirect_uri |必須 |処理するアプリの応答の送信先となるリダイレクト URI。 アプリケーション登録ポータルで登録したリダイレクト URI のいずれかと完全に一致させる必要があります。 |
 | state |推奨 |要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用します。 |
@@ -161,7 +161,7 @@ https://login.microsoftonline.com/common/adminconsent?client_id=6731de76-14a6-49
 GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b95&state=state=12345&admin_consent=True
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- | --- |
 | テナント |アプリケーションが要求したアクセス許可を GUID 形式で付与するディレクトリ テナント。 |
 | state |要求に含まれ、かつトークンの応答として返される値。 任意のコンテンツの文字列を指定することができます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページやビューなど) に関する情報をエンコードする目的に使用されます。 |
@@ -174,7 +174,7 @@ GET http://localhost/myapp/permissions?tenant=a8990e1f-ff32-408a-9f8e-78d3b9139b
 GET http://localhost/myapp/permissions?error=permission_denied&error_description=The+admin+canceled+the+request
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |

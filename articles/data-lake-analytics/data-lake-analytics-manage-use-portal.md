@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 15b3b44e45a59f44bd9bbd96dce867cc87fa410c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -32,8 +32,8 @@ Azure Portal を使用して、Azure Data Lake Analytics のアカウント、�
 
 ### <a name="create-an-account"></a>アカウントの作成
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. **[新規]** > **[インテリジェンス + 分析]** > **[Data Lake Analytics]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
+2. **[リソースの作成]** > **[インテリジェンス + 分析]** > **Data Lake Analytics** をクリックします。
 3. 次の項目の値を選択します。 
    1. **[名前]**: Data Lake Analytics アカウントの名前。
    2. **[サブスクリプション]**: アカウントに使用する Azure サブスクリプション。
@@ -47,9 +47,9 @@ Azure Portal を使用して、Azure Data Lake Analytics のアカウント、�
 Data Lake Analytics アカウントを削除する前に、その既定の Data Lake Store アカウントを削除します。
 
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
-2. [ **削除**] をクリックします。
+2. **[削除]** をクリックします。
 3. アカウント名を入力します。
-4. [ **削除**] をクリックします。
+4. **[削除]** をクリックします。
 
 <!-- ################################ -->
 <!-- ################################ -->
@@ -117,7 +117,7 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 2. **[アクセス制御 (IAM)]** > **[追加]** の順にクリックします。
 3. ロールを選択します。
 4. ユーザーを追加します。
-5. **[OK]**をクリックします。
+5. Click **OK**.
 
 >[!NOTE]
 >ユーザーまたはセキュリティ グループがジョブを送信する必要がある場合は、ストア アカウントに対するアクセス許可も必要です。 詳細については、[Data Lake Store に格納されているデータのセキュリティ保護](../data-lake-store/data-lake-store-secure-data.md)に関する記事を参照してください。
@@ -178,7 +178,7 @@ Data Lake Analytics アカウントの AU の数を変更するには:
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[プロパティ]**をクリックします。
 3. **[最大 AU]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。 
-4. [ **Save**] をクリックします。
+4. **[Save]** をクリックします。
 
 > [!NOTE]
 > 既定値 (250) より多い AU が必要な場合は、ポータルで **[ヘルプとサポート]** をクリックし、サポート要求を送信します。 Data Lake Analytics アカウントで利用できる AU の数は、増やすことができます。
@@ -192,7 +192,7 @@ Data Lake Analytics アカウントの AU の数を変更するには:
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[プロパティ]**をクリックします。
 3. **[実行ジョブの最大数]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。 
-4. [ **Save**] をクリックします。
+4. **[Save]** をクリックします。
 
 > [!NOTE]
 > 既定値 (20) より多い数のジョブを実行する必要がある場合は、ポータルで **[ヘルプとサポート]** をクリックし、サポート要求を送信します。 Data Lake Analytics アカウントで同時に実行できるジョブの数は、増やすことができます。
@@ -206,7 +206,7 @@ Data Lake Analytics アカウントの AU の数を変更するには:
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[プロパティ]**をクリックします。
 3. **[ジョブ クエリを保持する日数]** で、スライダーを移動して値を選択するか、テキスト ボックスに値を入力します。  
-4. [ **Save**] をクリックします。
+4. **[Save]** をクリックします。
 
 ### <a name="job-level-policies"></a>ジョブレベルのポリシー
 ジョブレベルのポリシーでは、個々のユーザー (または特定のセキュリティ グループのメンバー) が自分の送信するジョブに設定できる最大 AU と最大優先度を制御できます。 これで、ユーザーによって生じるコストを制御できます。 また、スケジュールされたジョブが同じ Data Lake Analytics アカウントで実行されている優先度の高い実稼働ジョブに与える可能性がある影響を制御することもできます。
@@ -248,7 +248,7 @@ Data Lake Analytics には、ジョブ レベルで設定できる次の 2 つ�
 * [アカウントレベルのポリシーに関するブログの投稿](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-account-level-policy/)
 * [ジョブレベルのポリシーに関するブログの投稿](https://blogs.msdn.microsoft.com/azuredatalake/2017/06/08/managing-your-azure-data-lake-analytics-compute-resources-job-level-policy/)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure Portal で Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)

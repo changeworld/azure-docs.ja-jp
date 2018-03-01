@@ -15,15 +15,15 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.openlocfilehash: 76997f2e31f3edd6260b2ae19631236bc1c0c1b6
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: ccccdf58fbb84605bc5dff29d870b373134f1f97
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-run-a-compute-intensive-task-in-java-on-a-virtual-machine"></a>仮想マシンで多くのコンピューティング処理を要する Java タスクを実行する方法
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 Azure で仮想マシンを使用することで、多くのコンピューティング処理を要するタスクを処理できます。 たとえば、仮想マシンでタスクを処理し、結果をクライアント マシンやモバイル アプリケーションに配信できます。 このガイドを記事を読むことで、多くのコンピューティング処理を要する Java アプリケーションを実行し、それを別の Java アプリケーションから監視できる仮想マシンの作成方法を理解できます。
@@ -52,7 +52,7 @@ Azure で仮想マシンを使用することで、多くのコンピューテ�
 
 ## <a name="to-create-a-virtual-machine"></a>仮想マシンを作成するには
 1. [Azure Portal](https://portal.azure.com) にログインします。
-2. **[新規]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
+2. **[リソースの作成]**、**[Compute]**、**[仮想マシン]**、**[ギャラリーから]** をクリックします。
 3. **[仮想マシン イメージの選択]** ダイアログ ボックスで、**[JDK 7 Windows Server 2012]** を選択します。
    **[JDK 6 Windows Server 2012]** は、JDK 7 を実行する準備ができていないレガシ アプリケーションがある場合に表示されることに注意してください。
 4. **[次へ]** をクリックします。

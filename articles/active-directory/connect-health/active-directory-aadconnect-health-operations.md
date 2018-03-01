@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 5e6910ea52f880e28378c9bf7fde02d080bc2e58
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 98dc12a857d910e8822dcfbb61209aa9ef773f47
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-connect-health-operations"></a>Azure Active Directory Connect Health の操作
 このトピックでは、Azure Active Directory (Azure AD) Connect Health を使用して実行できるさまざまな操作について説明します。
@@ -42,6 +42,9 @@ ID インフラストラクチャの状態に問題があることをアラー�
 
 ## <a name="delete-a-server-or-service-instance"></a>サーバーまたはサービス インスタンスを削除する
 
+>[!NOTE] 
+> 削除の手順を実行するには、Azure AD Premium ライセンスが必要です。
+
 特定のサーバーを監視対象から除外しなければならない場合があります。 Azure AD Connect Health サービスから特定のサーバーを削除する場合に必要な知識をここで説明します。
 
 サーバーを削除する際は次の点に注意してください。
@@ -51,7 +54,11 @@ ID インフラストラクチャの状態に問題があることをアラー�
 * このサーバーから既に収集されたデータは削除されません。 収集済みのデータは、Azure のデータ リテンション期間ポリシーに従って削除されます。
 * このアクションを実行した後、同じサーバーの監視を再開する場合、このサーバー上の Health エージェントをアンインストールしてから再インストールしてください。
 
-### <a name="to-delete-a-server-from-the-azure-ad-connect-health-service"></a>Azure AD Connect Health サービスからサーバーを削除するには
+### <a name="delete-a-server-from-the-azure-ad-connect-health-service"></a>Azure AD Connect Health サービスからサーバーを削除する
+
+>[!NOTE] 
+> 削除の手順を実行するには、Azure AD Premium ライセンスが必要です。
+
 Active Directory フェデレーション サービス (AD FS) および Azure AD Connect (Sync) の Azure AD Connect Health の場合は、以下の手順に従います。
 
 1. **[サーバーの一覧]** ブレードから、削除するサーバー名を選択して **[サーバー]** ブレードを開きます。
@@ -93,8 +100,8 @@ Azure AD Connect Health では、次の組み込みのロールがサポート�
 
 | 役割 | アクセス許可 |
 | --- | --- |
-| 所有者 |所有者は、"*アクセスの管理*" (例: ユーザーやグループへのロールの割り当て)、ポータルからの "*すべての情報の表示*" (例: アラートの表示)、Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 <br>このロールは、既定で Azure AD のグローバル管理者に割り当てられ、これを変更することはできません。 |
-| 共同作成者 |共同作成者は、ポータルからの "*すべての情報の表示*" (例: アラートの表示) と Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 |
+| Owner |所有者は、"*アクセスの管理*" (例: ユーザーやグループへのロールの割り当て)、ポータルからの "*すべての情報の表示*" (例: アラートの表示)、Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 <br>このロールは、既定で Azure AD のグローバル管理者に割り当てられ、これを変更することはできません。 |
+| Contributor |共同作成者は、ポータルからの "*すべての情報の表示*" (例: アラートの表示) と Azure AD Connect Health 内の "*設定の変更*" (例: 電子メール通知) を実行できます。 |
 | 閲覧者 |閲覧者は、ポータルから Azure AD Connect Health 内の "*すべての情報の表示*" (例: アラートの表示) を実行できます。 |
 
 上記以外のすべてのロール ("ユーザー アクセス管理者" や "DevTest Labs ユーザー" など) は、ポータル エクスペリエンスで利用できる場合でも、Azure AD Connect Health 内のアクセスに影響することはありません。
@@ -133,7 +140,7 @@ Azure AD Connect Health 内で "*すべてのサービス インスタンス*" �
 >
 
 #### <a name="step-3-share-the-blade-location-with-users-or-groups"></a>手順 3: ブレードの場所をユーザーまたはグループと共有する
-1. アクセス許可が割り当てられた後、ユーザーは[ここ](http://aka.ms/aadconnecthealth)に移動することで Azure AD Connect Health にアクセスできます。
+1. アクセス許可が割り当てられた後、ユーザーは[ここ](https://aka.ms/aadconnecthealth)に移動することで Azure AD Connect Health にアクセスできます。
 2. ブレードで、ブレードやブレードのさまざまな部分をダッシュボードにピン留めできます。 **[ダッシュボードにピン留めする]** アイコンをクリックするだけです。<br>
    ![ピン アイコンが強調表示されている Azure AD Connect Health RBAC のピン ブレードのスクリーンショット](./media/active-directory-aadconnect-health/RBAC_pin_blade.png)
 
@@ -148,7 +155,7 @@ Azure AD Connect Health RBAC に追加されたユーザーまたはグループ
 
 [//]: # (End of RBAC section)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)
 * [Azure AD Connect Health エージェントのインストール](active-directory-aadconnect-health-agent-install.md)
 * [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)

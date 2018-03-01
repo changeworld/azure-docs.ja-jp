@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1be9947c43c70b7248201b9f470fb3cf5a11519e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 656e0e16167a73ef3c3eab21d6896f5fc280e375
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-group-and-add-members-in-azure-active-directory"></a>Azure Active Directory でグループを作成し、メンバーを追加する
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.lasthandoff: 12/21/2017
 
 ## <a name="how-do-i-create-a-group"></a>どのようにしてグループを作成しますか?
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[More services (その他のサービス)]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
+2. **[すべてのサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
    ![ユーザー管理を開く](./media/active-directory-groups-create-azure-portal/search-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/21/2017
    ![グループの作成の確認](./media/active-directory-groups-create-azure-portal/create-group-confirmation.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事は、Azure Active Directory に関する追加情報を示します。
 
 * [既存のグループの表示](active-directory-groups-view-azure-portal.md)

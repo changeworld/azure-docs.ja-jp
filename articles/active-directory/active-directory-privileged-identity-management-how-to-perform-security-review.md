@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 06/06/2017
 ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 8ca735f04334557f40ddbe3119f7110dbcdde2a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d9885fc286e31100e14a5c8a1001df079829dcbe
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-to-perform-an-access-review-in-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management でアクセス レビューを実行する方法
 Azure Active Directory (AD) Privileged Identity Management を使用すると、企業における Azure AD や他の Microsoft オンライン サービス (Office 365 や Microsoft Intune など) のリソースへの特権アクセスの管理が簡略化されます。  
@@ -33,7 +33,7 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. Azure Portal の右上隅に表示されているユーザー名をクリックし、操作するディレクトリを選択します。
-3. **[その他のサービス]** を選択し、[フィルター] ボックスを使用して "**Azure AD Privileged Identity Management**" を検索します。
+3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使って **Azure AD Privileged Identity Management** を検索します。
 4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。 Privileged Identity Management アプリケーションが起動します。
 
 ## <a name="approve-or-deny-access"></a>アクセスの承認または拒否
@@ -47,7 +47,7 @@ Azure Active Directory (AD) Privileged Identity Management を使用すると、
 5. **[Azure AD ロールのレビュー]** ブレードを閉じます。
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [!INCLUDE [active-directory-privileged-identity-management-toc](../../includes/active-directory-privileged-identity-management-toc.md)]
 
 <!--Image references-->

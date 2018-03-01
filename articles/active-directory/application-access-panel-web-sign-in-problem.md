@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviwer: japere
-ms.openlocfilehash: 0f50a705d4453970d039c2219aef8e1a411fd533
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 83c3a893fe18f2de2acc4fdbc9b048c92cc71d15
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="problem-signing-in-to-the-access-panel-website"></a>アクセス パネルの Web サイトにサインインできない問題
 
@@ -34,7 +34,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ユーザーが Azure または Office 365 のサブスクリプションを保持し、Azure Portal または Office 365 アプリケーションを使用している場合は、サインインし直さなくてもアクセス パネルをシームレスに使用できます。 認証されていないユーザーは、Azure AD アカウントのユーザー名とパスワードを使用してサインインするように求められます。 組織がフェデレーションを構成している場合は、ユーザー名を入力するだけで十分です。
 
-## <a name="general-issues-to-check-first"></a>最初に確認すべき一般的な問題 
+## <a name="general-issues-to-check-first"></a>最初にチェックすべき一般的な問題 
 
 -   ユーザーが**正しい URL** (<https://myapps.microsoft.com>) にサインインしていることを確認します。
 
@@ -50,7 +50,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 -   **条件付きアクセス ポリシー**または **ID 保護**ポリシーがユーザー アクセスをブロックしていないことを確認します。
 
--   ユーザーの**認証の連絡先情報**が最新のものであり、多要素認証または条件付きアクセス ポリシーを適用できることを確認します。
+-   ユーザーの**認証の連絡先情報**が最新のものであり、多要素認証または条件付きアクセス ポリシーを強制できることを確認します。
 
 -   ブラウザーの Cookie を削除してから、再度サインインを試行して、サインインできることを確認します。
 
@@ -71,7 +71,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ## <a name="problems-with-the-users-account"></a>ユーザーのアカウントに関する問題
 
-ユーザーのアカウントに関する問題により、アクセス パネルへのアクセスがブロックされることがあります。 ユーザーとユーザーのアカウント設定に関する問題をトラブルシューティングして解決できるいくつかの方法を以下に示します。
+ユーザーのアカウントに関する問題により、アクセス パネルへのアクセスがブロックされることがあります。 ユーザーとそのアカウントの設定に関する問題をトラブルシューティングして解決するための方法を次に示します。
 
 -   [ユーザー アカウントが Azure Active Directory に存在するかどうかを調べる](#check-if-a-user-account-exists-in-azure-active-directory)
 
@@ -93,11 +93,11 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="check-if-a-user-account-exists-in-azure-active-directory"></a>ユーザー アカウントが Azure Active Directory に存在するかどうかを調べる
 
-ユーザーのアカウントが存在するかどうかを確認するには、次の手順を実行します。
+ユーザーのアカウントが存在するかどうかを確認するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -111,11 +111,11 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="check-a-users-account-status"></a>ユーザーのアカウントの状態を確認する
 
-ユーザーのアカウントの状態を確認するには、次の手順を実行します。
+ユーザーのアカウントの状態を確認するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -131,11 +131,11 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="reset-a-users-password"></a>ユーザーのパスワードをリセットする
 
-ユーザーのパスワードをリセットするには、次の手順を実行します。
+ユーザーのパスワードをリセットするには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -145,9 +145,9 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 6.  対象のユーザーを**検索**し、**行をクリック**して選択します。
 
-7.  ユーザー ブレードの上部にある **[パスワードのリセット]** ボタンをクリックします。
+7.  ユーザー ウィンドウの上部にある **[パスワードのリセット]** をクリックします。
 
-8.  表示される **[パスワードのリセット]** ブレード上の **[パスワードのリセット]** ボタンをクリックします。
+8.  表示される **[パスワードのリセット]** ウィンドウ上の **[パスワードのリセット]** をクリックします。
 
 9.  **一時パスワード**をコピーするか、ユーザーの**新しいパスワードを入力**します。
 
@@ -155,7 +155,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="enable-self-service-password-reset"></a>セルフ サービスのパスワード リセットを有効にする
 
-セルフ サービスのパスワード リセットを有効にするには、次のデプロイ手順を実行します。
+セルフ サービスのパスワード リセットを有効にするには、次のデプロイ手順に従います。
 
 -   [Azure Active Directory パスワードをユーザーがリセットできるようにする](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-getting-started#enable-users-to-reset-their-azure-ad-passwords)
 
@@ -163,11 +163,11 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="check-a-users-multi-factor-authentication-status"></a>ユーザーの多要素認証の状態を確認する
 
-ユーザーの多要素認証の状態を確認するには、次の手順を実行します。
+ユーザーの多要素認証の状態を確認するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -175,7 +175,7 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 5.  **[すべてのユーザー]** をクリックします。
 
-6.  ブレード最上部の **[多要素認証]** ボタンをクリックします。
+6.  ウィンドウの上部にある **[多要素認証]** をクリックします。
 
 7.  **多要素認証管理ポータル**をロードしたら、自分が **[ユーザー]** タブに存在していることを確認します。
 
@@ -190,11 +190,11 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="check-a-users-authentication-contact-info"></a>ユーザーの認証の連絡先情報を確認する
 
-多要素認証、条件付きアクセス、ID 保護、パスワード リセットで使用されるユーザーの認証の連絡先情報を確認するには、次の手順を実行します。
+多要素認証、条件付きアクセス、ID 保護、およびパスワード リセットで使用されるユーザーの認証の連絡先情報を確認するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -212,11 +212,11 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="check-a-users-group-memberships"></a>ユーザーのグループ メンバーシップを確認する
 
-ユーザーのグループ メンバーシップを確認するには、次の手順を実行します。
+ユーザーのグループ メンバーシップを確認するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -230,11 +230,11 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="check-a-users-assigned-licenses"></a>ユーザーに割り当てられているライセンスを確認する
 
-ユーザーに割り当てられているライセンスを確認するには、次の手順を実行します。
+ユーザーに割り当てられているライセンスを確認するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -248,11 +248,11 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 ### <a name="assign-a-user-a-license"></a>ユーザーにライセンスを割り当てる 
 
-ユーザーにライセンスを割り当てるには、次の手順を実行します。
+ユーザーにライセンスを割り当てるには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -288,5 +288,5 @@ Azure AD の職場または学校アカウントを持つユーザーは、次�
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](active-directory-application-proxy-sso-using-kcd.md)

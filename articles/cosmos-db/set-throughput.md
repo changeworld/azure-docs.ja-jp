@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: mimig
-ms.openlocfilehash: 8797910651c54baa3529b015d4195cf2a5c06ece
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: afbb3392a4726ea067bf19c117792b866d9e79f3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="set-throughput-for-azure-cosmos-db-containers"></a>Azure Cosmos DB コンテナーのスループットの設定
 
@@ -49,7 +49,7 @@ Azure Portal またはクライアントの SDK を使用して、Azure Cosmos D
 ## <a name="to-set-the-throughput-by-using-the-azure-portal"></a>Azure Portal を使用してスループットを設定するには
 
 1. 新しいウィンドウで、[Azure Portal](https://portal.azure.com) を開きます。
-2. 左側のバーで **[Azure Cosmos DB]** をクリックします。または、下部の **[その他のサービス]** をクリックし、**[データベース]** までスクロールして、**[Azure Cosmos DB]** をクリックします。
+2. 左側のバーで、**[Azure Cosmos DB]** をクリックするか、または下部にある **[すべてのサービス]** をクリックし、**[データベース]** までスクロールして **[Azure Cosmos DB]** をクリックします。
 3. Azure Cosmos DB アカウントを選択します。
 4. 新しいウィンドウで、ナビゲーション メニューの **[データ エクスプローラー]** をクリックします。
 5. 新しいウィンドウで、データベースとコンテナーを展開し、**[Scale & Settings]\(スケールと設定\)** をクリックします。

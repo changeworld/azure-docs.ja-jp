@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: b3c1e2afadea91f010c3e4b43206b6d30a75ec38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e061f24f3160de82548c4debf6da5821318ad2fb
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする
 
-ロジック アプリがオンプレミスのデータ ソースにアクセスする前に、オンプレミス データ ゲートウェイをインストールして設定する必要があります。 このゲートウェイは、オンプレミスのシステムとロジック アプリ間でのデータ転送と暗号化を高速で行うブリッジとして機能します。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを転送します。 すべてのトラフィックは、ゲートウェイ エージェントからの安全な送信トラフィックとして生成されます。 詳細については、[データ ゲートウェイのしくみ](#gateway-cloud-service)に関するセクションを参照してください。
+ロジック アプリがオンプレミスのデータ ソースにアクセスするには、オンプレミス データ ゲートウェイをインストールして設定しておく必要があります。 このゲートウェイは、オンプレミスのシステムとロジック アプリ間でのデータ転送と暗号化を高速で行うブリッジとして機能します。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを転送します。 すべてのトラフィックは、ゲートウェイ エージェントからの安全な送信トラフィックとして生成されます。 詳細については、[データ ゲートウェイのしくみ](#gateway-cloud-service)に関するセクションを参照してください。
 
 このゲートウェイは、次のオンプレミスのデータ ソースへの接続をサポートします。
 
@@ -54,18 +54,18 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="requirements"></a>必要条件
 
-**最小**:
+**最小**
 
 * .NET Framework 4.5
 * Windows 7 または Windows Server 2008 R2 (以降) の 64 ビット バージョン
 
-**推奨**:
+**推奨**
 
 * 8 コア CPU
 * 8 GB メモリ
 * Windows 2012 R2 (以降) の 64 ビット バージョン
 
-**重要な考慮事項**:
+**重要な考慮事項**
 
 * オンプレミス データ ゲートウェイはローカル コンピューターにのみインストールしてください。
 ドメイン コントローラーにはゲートウェイをインストールできません。
@@ -75,7 +75,7 @@ ms.lasthandoff: 10/11/2017
 
 * 電源がオフになる、スリープ状態に移行する、またはインターネットに接続していないコンピューターにはゲートウェイをインストールしないようにしてください。このような状況下では、ゲートウェイが動作しない場合があります。 また、ワイヤレス ネットワークではゲートウェイのパフォーマンスが低下する可能性もあります。
 
-* インストール時は、Microsoft アカウントではなく、Azure Active Directory (Azure AD) が管理する[職場または学校アカウント](https://docs.microsoft.com/azure/active-directory/sign-up-organization)でサインインする必要があります。
+* インストール中は、Microsoft アカウントではなく、Azure Active Directory (Azure AD) によって管理される[職場または学校アカウント](https://docs.microsoft.com/azure/active-directory/sign-up-organization)でサインインする必要があります。
 
   > [!TIP]
   > MSDN サブスクリプションを含む Visual Studio のある Microsoft アカウントを使いたい場合は、最初に Microsoft アカウントで [Azure Active Directory にディレクトリ (テナント) を作成する](../active-directory/develop/active-directory-howto-tenant.md)か、または既定のディレクトリを使います。 ディレクトリにパスワードを持つユーザーを追加した後、そのユーザーにサブスクリプションへのアクセス権を与えます。 その後、ゲートウェイのインストール中に、このユーザー名とパスワードでサインインできます。
@@ -93,7 +93,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="install-the-data-gateway"></a>データ ゲートウェイをインストールする
 
-1.  [ゲートウェイ インストーラーをローカル コンピューターにダウンロードして実行します](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
+1. [ゲートウェイ インストーラーをローカル コンピューターにダウンロードして実行します](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409)。
 
 2. 使用条件とプライバシーに関する声明を確認して同意します。
 
@@ -197,7 +197,7 @@ PingReplyDetails (RTT) : 0 ms
 TcpTestSucceeded       : True
 ```
 
-**TcpTestSucceeded** が **True** に設定されていない場合、ファイアウォールによってブロックされている可能性があります。 包括的にテストしたい場合は、**ComputerName** と **Port** の値を、このトピックの「[ポートの構成](#configure-ports)」の一覧に記載されている値に置き換えます。
+**TcpTestSucceeded** が **True** に設定されていない場合、ファイアウォールによってブロックされている可能性があります。 包括的にテストしたい場合は、**ComputerName** と **Port** の値を、この記事の「[ポートの構成](#configure-ports)」の一覧に記載されている値に置き換えます。
 
 Azure Service Bus から Azure データ センターへの接続も、ファイアウォールによってブロックされる可能性があります。 その場合は、リージョン内にあるそれらのデータ センターの IP アドレスをすべて承認 (ブロック解除) してください。 これらの IP アドレスについては、[こちら](https://www.microsoft.com/download/details.aspx?id=41653)で Azure の IP アドレスの一覧を取得してください。
 
@@ -205,20 +205,22 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 
 ゲートウェイによって [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) への送信接続が作成され、送信ポートの TCP 443 (既定)、5671、5672、9350 ～ 9354 で通信が行われます。 ゲートウェイでは受信ポートは必要ありません。 詳細については、[Azure Service Bus](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md) に関するページを参照してください。
 
-| ドメイン名 | 送信ポート | Description |
-| --- | --- | --- |
+| ドメイン名 | 送信ポート | [説明] |
+| ------------ | -------------- | ----------- |
 | *. analysis.windows.net | 443 | HTTPS | 
 | *.login.windows.net | 443 | HTTPS | 
 | *.servicebus.windows.net | 5671 ～ 5672 | Advanced Message Queuing Protocol (AMQP) | 
 | *.servicebus.windows.net | 443、9350 ～ 9354 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
-| *. frontend.clouddatahub.net | 使用します | HTTPS | 
+| *. frontend.clouddatahub.net | 443 | HTTPS | 
 | *.core.windows.net | 443 | HTTPS | 
 | login.microsoftonline.com | 443 | HTTPS | 
 | *. msftncsi.com | 443 | Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続性のテストに使用されます。 | 
+||||
 
 ドメインではなく IP アドレスを承認する必要がある場合は、[Microsoft Azure データセンター IP 範囲リスト](https://www.microsoft.com/download/details.aspx?id=41653)をダウンロードして使用してください。 Azure Service Bus 接続は、完全修飾ドメイン名ではなく IP アドレスを使用して行われる場合があります。
 
 <a name="gateway-cloud-service"></a>
+
 ## <a name="how-does-the-data-gateway-work"></a>データ ゲートウェイの動作
 
 データ ゲートウェイによって、ロジック アプリ、ゲートウェイ クラウド サービス、オンプレミスのデータ ソース間に迅速かつセキュリティで保護された通信が促進されます。 
@@ -240,26 +242,27 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 6. 結果がデータ ソースからゲートウェイに返送され、その後ゲートウェイ クラウド サービスに送信されます。 ゲートウェイ クラウド サービスが結果を使用します。
 
 <a name="faq"></a>
+
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="general"></a>全般
 
 **Q**: SQL Azure など、クラウドのデータ ソースにゲートウェイは必要ですか? <br/>
-**A**: いいえ。 ゲートウェイは、オンプレミス データ ソースのみに接続します。
+**A:** いいえ。 ゲートウェイは、オンプレミス データ ソースのみに接続します。
 
 **Q**: ゲートウェイはデータ ソースと同じコンピューターにインストールする必要がありますか? <br/>
-**A**: いいえ。 ゲートウェイは、指定された接続情報を使用してデータ ソースに接続します。 その意味ではゲートウェイをクライアント アプリケーションと見なすことができます。 ゲートウェイに必要なのは、指定されたサーバー名に接続する機能だけです。
+**A:** いいえ。 ゲートウェイは、指定された接続情報を使用してデータ ソースに接続します。 その意味ではゲートウェイをクライアント アプリケーションと見なすことができます。 ゲートウェイに必要なのは、指定されたサーバー名に接続する機能だけです。
 
 <a name="why-azure-work-school-account"></a>
 
-**Q**: サインインで Azure の職場または学校のアカウントを使用する必要があるのはなぜですか? <br/>
-**A**: オンプレミスのデータ ゲートウェイをインストールするときに、Azure の職場または学校アカウントのみを使用することができます。 サインイン アカウントは、Azure Active Directory (Azure AD) によって管理されるテナントに格納されます。 通常、Azure AD アカウントのユーザー プリンシパル名 (UPN) は電子メール アドレスと一致します。
+**Q**: Azure の職場または学校アカウントを使用してサインインする必要があるのはなぜですか? <br/>
+**A**: オンプレミス データ ゲートウェイをインストールする場合は、Azure の職場または学校アカウントしか使用できません。 サインイン アカウントは、Azure Active Directory (Azure AD) によって管理されるテナントに格納されます。 通常、Azure AD アカウントのユーザー プリンシパル名 (UPN) は電子メール アドレスと一致します。
 
 **Q**: 自分の資格情報はどこに格納されますか? <br/>
 **A**: データ ソース用に入力した資格情報は、暗号化されてゲートウェイ クラウド サービスに格納されます。 資格情報の復号化はオンプレミス データ ゲートウェイで行われます。
 
 **Q**: ネットワーク帯域幅の要件はありますか? <br/>
-**A**: スループットの高いネットワーク接続の確保をお勧めします。 スループットは環境ごとに異なり、送信されるデータの量も結果に影響を与えます。 ExpressRoute を使用すると、オンプレミスと Azure データ センター間で一定レベルのスループットを保証するために役立ちます。
+**A**: ネットワーク接続のスループットを高くすることをお勧めします。 スループットは環境ごとに異なり、送信されるデータの量も結果に影響を与えます。 ExpressRoute を使用すると、オンプレミスと Azure データ センター間で一定レベルのスループットを保証するために役立ちます。
 サード パーティ製のツールである Azure Speed Test アプリを使用すると、スループットを測定できます。
 
 **Q**: ゲートウェイからデータ ソースにクエリを実行する際に待機時間が発生するのはなぜですか? 最適なアーキテクチャとは何ですか? <br/>
@@ -269,16 +272,16 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 **A**: 結果は Azure Service Bus を介して送信されます。
 
 **Q**: クラウドからゲートウェイへの着信接続はありますか? <br/>
-**A**: いいえ。 ゲートウェイは、Azure Service Bus への発信接続を使用します。
+**A:** いいえ。 ゲートウェイは、Azure Service Bus への発信接続を使用します。
 
 **Q**: 発信接続をブロックしたらどうなりますか? 開くために何をする必要がありますか? <br/>
 **A**: ゲートウェイが使用するポートとホストを確認してください。
 
 **Q**: 実際の Windows サービスは何と呼ばれていますか?<br/>
-**A**: サービスでは、ゲートウェイは、Power BI Enterprise Gateway Service と呼ばれています。
+**A**: サービスでは、このゲートウェイは Power BI Enterprise Gateway Service と呼ばれています。
 
 **Q**: ゲートウェイ Windows サービスは、Azure Active Directory アカウントを使用して実行できますか? <br/>
-**A**: いいえ。 Windows サービスには有効な Windows アカウントが必要です。 既定では、Windows サービスはサービス SID の NT SERVICE\PBIEgwService を使用して実行されます。
+**A:** いいえ。 Windows サービスには有効な Windows アカウントが必要です。 既定では、Windows サービスはサービス SID の NT SERVICE\PBIEgwService を使用して実行されます。
 
 ### <a name="high-availability-and-disaster-recovery"></a>高可用性と障害復旧
 
@@ -289,7 +292,7 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 **A**: 回復キーを利用すると、災害発生後にゲートウェイの設定を移行または回復することができます。
 
 **Q**: ゲートウェイで高可用性のシナリオを有効にする予定はありますか? <br/>
-**A**: そのようなシナリオへの対応は計画中ですが、具体的な時期はまだ決まっていません。
+**A**: 一部のコネクタ (ファイル システム コネクタや開発中のその他のコネクタなど) は、高可用性シナリオをサポートしています。 詳細については、[オンプレミス データ ゲートウェイのための高可用性クラスター](https://docs.microsoft.com/power-bi/service-gateway-high-availability-clusters)に関するページを参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -301,7 +304,7 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 クエリをトレースするためにデータ ソースに用意されているツールを使用することもできます。 たとえば、SQL Server 用の拡張イベントまたは SQL Profiler や Analysis Services を使用できます。
 
 **Q**: ゲートウェイのログはどこにありますか? <br/>
-**A**: このトピックの後半の「ツール」を参照してください。
+**A**: この記事の後の方にある「ツール」を参照してください。
 
 ### <a name="update-to-the-latest-version"></a>最新バージョンへの更新
 
@@ -337,7 +340,7 @@ Data Management Gateway と PowerBIGateway のログは、**[アプリケーシ�
 
 [Fiddler](http://www.telerik.com/fiddler) は、HTTP トラフィックを監視する Telerik の無料ツールです。 クライアント コンピューターからの Power BI サービスによる HTTP トラフィックを確認できます。 このサービスを利用することで、エラーやその他の関連情報が明らかになる場合があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
     
 * [ロジック アプリからオンプレミスのデータに接続する](../logic-apps/logic-apps-gateway-connection.md)
 * [エンタープライズ統合機能](../logic-apps/logic-apps-enterprise-integration-overview.md)

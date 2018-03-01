@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/19/2016
 ms.author: robb
-ms.openlocfilehash: 7dd8c6e1fbfba2587aadb3410c3a769b57e06001
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b4f1f8900637f23220f9a89adbb321707c49e2d3
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="send-cloud-service-virtual-machine-or-service-fabric-diagnostic-data-to-application-insights"></a>Cloud Services、Virtual Machines、または Service Fabric の診断データを Application Insights に送信する
 Cloud Services、Virtual Machines、Virtual Machine Scale Sets、および Service Fabric では、Azure 診断拡張機能を使用してデータを収集します。  Azure 診断のデータは、Azure Storage のテーブルに送信されます。  ただし、Azure 診断拡張機能 1.5 以降を使用して、すべてのデータまたはデータのサブセットを他の場所にパイプすることもできます。
@@ -67,7 +67,7 @@ Application Insights のシンクの構成の例を以下に示します。
 
 - **ApplicationInsights** 要素では、Azure 診断データの送信先となる Application Insights リソースのインストルメンテーション キーを指定します。
     - 既存の Application Insights リソースがない場合、リソースの作成方法とインストルメンテーション キーの取得方法の詳細については、「[新しい Application Insights リソースを作成する](../application-insights/app-insights-create-new-resource.md)」を参照してください。
-    - Azure SDK 2.8 以降でクラウド サービスを開発する場合、このインストルメンテーション キーが自動的に設定されます。 この値は、クラウド サービス プロジェクトをパッケージ化するときの **APPINSIGHTS_INSTRUMENTATIONKEY** サービス構成設定に基づきます。 詳細については、[Application Insights と Azure 診断を使用したクラウド サービスの問題のトラブルシューティング](../cloud-services/cloud-services-dotnet-diagnostics-applicationinsights.md)に関するページを参照してください。
+    - Azure SDK 2.8 以降でクラウド サービスを開発する場合、このインストルメンテーション キーが自動的に設定されます。 この値は、クラウド サービス プロジェクトをパッケージ化するときの **APPINSIGHTS_INSTRUMENTATIONKEY** サービス構成設定に基づきます。 [Cloud Services での Application Insights の使用](../application-insights/app-insights-cloudservices.md)に関するページを参照してください。
 
 - **Channels** 要素には、1 つ以上の **Channel** 要素が含まれます。
     - *name* 属性は、そのチャンネルを一意に参照します。
@@ -219,7 +219,7 @@ Application Insights のシンクの構成の例を以下に示します。
 - **チャンネルのログ レベルには、Azure 診断によって収集されるデータのログ レベルを超えるログを指定することはできません。** たとえば、Logs 要素でアプリケーション ログのエラーを収集できないため、Application Insight シンクに "詳細" ログを送信することにします。 *scheduledTransferLogLevelFilter* 属性では、シンクに送信するログと同じかそれを超えるレベルのログを常に収集する必要があります。
 - **Azure 診断の拡張機能によって収集される BLOB データは Application Insights に送信できません。** たとえば、*Directories* ノードの下で指定されたデータがこれに該当します。 クラッシュ ダンプの場合、実際のクラッシュ ダンプは Blob Storage に送信され、Application Insights にはクラッシュ ダンプが生成されたという通知のみが送信されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Application Insights で [Azure 診断情報を表示する](https://docs.microsoft.com/azure/application-insights/app-insights-cloudservices#view-azure-diagnostic-events)方法について説明します。
 * [PowerShell](../cloud-services/cloud-services-diagnostics-powershell.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。
 * [Visual Studio](../vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines.md) を使用して、アプリケーションの Azure 診断の拡張機能を有効にします。

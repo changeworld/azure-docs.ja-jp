@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 11/30/2017
 ms.author: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: 36c6f6d2449d1e137f85e0f657f0399f9df8ee55
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 93df6f5e6c966fdf4909a4c21ebc36bff4283a59
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-ad-ios-getting-started"></a>Azure AD iOS の概要
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]
@@ -63,7 +63,7 @@ iOS のリダイレクト URI の形式は次のとおりです。
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 上部のバーで、自分のアカウントをクリックします。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Active Directory テナントを選択します。
-3. 一番左のナビゲーション ウィンドウで **[その他のサービス]** をクリックし、**[Azure Active Directory]** を選択します。
+3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** をクリックし、**[Azure Active Directory]** を選択します。
 4. **[アプリの登録]** をクリックし、**[追加]** を選択します。
 5. 画面の指示に従って、新しい**ネイティブ クライアント アプリケーション**を作成します。
   * アプリケーションの **[名前]** には、エンド ユーザーがアプリケーションの機能を把握できるような名前を設定します。

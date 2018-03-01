@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/27/2017
 ms.author: magoedte
 ms.custom: mvc
-ms.openlocfilehash: 35064c792b72222d59b1d3f0913a92a4a2b34612
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 5143abdde715424a41a53bb661db342acf817e0c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="manage-cost-of-data-retention-with-your-log-analytics-workspace"></a>Log Analytics ワークスペースによるデータ保持のコストの管理
 Log Analytics にサインアップすると、選択したプランに応じて、接続されたソースが生成したデータをワークスペースに格納する期間が制限されます。  この記事では、このデータをさまざまな期間に保持するためのコストに影響を与える事項とその制限を構成する方法について取り上げます。   
@@ -44,11 +44,11 @@ Log Analytics はオンプレミスのソース、クラウド環境、および
 ## <a name="change-the-data-retention-period"></a>データ保持期間の変更 
 
 1. [Azure Portal](http://portal.azure.com) にサインインします。 
-2. 左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
+2. **[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 3. Log Analytics のサブスクリプション ウィンドウで、変更するワークスペースを一覧から選択します。
 4. [ワークスペース] ページで、左側のウィンドウの **[リテンション期間]** をクリックします。
 5. ワークスペースの保持期間のウィンドウで、スライダーを移動して日数を増減し、**[保存]** をクリックします。  *無料*プランをご利用の場合は、データ保持期間を変更できません。この設定を制御するには、有料プランにアップグレードする必要があります。<br><br> ![ワークスペースのデータ保持の設定の変更](media/log-analytics-manage-cost/manage-cost-change-retention.png)
 
-## <a name="next-steps"></a>次のステップ  
+## <a name="next-steps"></a>次の手順  
 
 使用量とコストの管理に役立つデータの収集量、データを送信するソース、および送信されるデータの種類を指定するには、「[Log Analytics でのデータ使用状況の分析](log-analytics-usage.md)」をご覧ください。

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: 64746f7b1a09e35b35e794f5a11d69bef39a03a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64e1652ac4067a3f1639bf81cfcd0f79637ade9b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-an-app-service-environment"></a>App Service Environment の使用 #
 
@@ -48,7 +48,7 @@ ASE をご利用でない場合は、[App Service Environment の作成][MakeExt
 
 ASE で Web アプリを作成するには、次の手順に従います。
 
-1. **[新規]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
+1. **[リソースの作成]** > **[Web + モバイル]** > **[Web アプリ]** を選択します。
 
 2. Web アプリの名前を入力します。 ASE 内で既に App Service プランが選択されている場合、アプリのドメイン名に、ASE のドメイン名が反映されます。
 
@@ -60,7 +60,7 @@ ASE で Web アプリを作成するには、次の手順に従います。
 
 5. ASE で既存の App Service プランを選択するか、次の手順で新しく作成します。
 
-    a. **[新規作成]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[新規作成]** を選択します。
 
     b. App Service プランの名前を入力します。
 

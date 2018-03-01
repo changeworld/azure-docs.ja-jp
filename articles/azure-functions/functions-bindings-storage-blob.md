@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 10/27/2017
+ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 6985d631bdac7114a72f105716c9483d0c5733ba
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 9294d19ea78a2b9cf4282d627eddd16e6588d3ee
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -227,13 +227,22 @@ C# および C# スクリプトでは、`T paramName` のようなメソッド �
 
 前述のように、これらの型の一部は、*function.json* に `inout` バインド方向を必要とします。 この方向は Azure Portal の標準のエディターではサポートされていないため、詳細エディターを使用する必要があります。
 
-テキスト BLOB がある場合は、`string` 型にバインドできます。 BLOB 全体のコンテンツがメモリに読み込まれるため、これが推奨されるのは、BLOB のサイズが小さい場合のみです。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。
+テキスト BLOB がある場合は、`string` 型にバインドできます。 BLOB 全体のコンテンツがメモリに読み込まれるため、これが推奨されるのは、BLOB のサイズが小さい場合のみです。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で後述する「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
 JavaScript では、`context.bindings.<name>` を使用して入力 BLOB データにアクセスします。
 
 ## <a name="trigger---blob-name-patterns"></a>トリガー - BLOB 名のパターン
 
-*function.json* の `path` プロパティまたは `BlobTrigger` 属性コンストラクターで BLOB 名のパターンを指定することができます。 名前のパターンは、[フィルターまたはバインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)にすることができます。
+*function.json* の `path` プロパティまたは `BlobTrigger` 属性コンストラクターで BLOB 名のパターンを指定することができます。 名前のパターンは、[フィルターまたはバインド式](functions-triggers-bindings.md#binding-expressions-and-patterns)にすることができます。 以下のセクションで、例を示します。
+
+### <a name="get-file-name-and-extension"></a>ファイル名と拡張子の取得
+
+次の例は、BLOB ファイル名と拡張子を別々にバインドする方法を示します。
+
+```json
+"path": "input/{blobname}.{blobextension}",
+```
+BLOB の名前が *original-Blob1.txt* の場合、関数コード内の `blobname` 変数と `blobextension` 変数の値は *original-Blob1* と *txt* です。
 
 ### <a name="filter-on-blob-name"></a>BLOB 名のフィルター
 
@@ -262,15 +271,6 @@ BLOB 名が *original-Blob1.txt* の場合、関数コード内の `name` 変数
 ```
 
 BLOB の名前が*{20140101}-soundfile.mp3* の場合、関数コード内の `name` 変数の値は *soundfile.mp3* です。 
-
-### <a name="get-file-name-and-extension"></a>ファイル名と拡張子の取得
-
-次の例は、BLOB ファイル名と拡張子を別々にバインドする方法を示します。
-
-```json
-"path": "input/{blobname}.{blobextension}",
-```
-BLOB の名前が *original-Blob1.txt* の場合、関数コード内の `blobname` 変数と `blobextension` 変数の値は *original-Blob1* と *txt* です。
 
 ## <a name="trigger---metadata"></a>トリガー - メタデータ
 
@@ -309,6 +309,14 @@ BLOB を強制的に再処理する場合は、*azure-webjobs-hosts* コンテ�
 * コンテナー名
 * BlobName
 * ETag (BLOB のバージョン識別子。たとえば、"0x8D1DC6E70A277EF")
+
+## <a name="trigger---concurrency-and-memory-usage"></a>トリガー - 同時実行とメモリ使用量
+
+BLOB トリガーはキューを内部的に使用するため、関数の同時呼び出しの最大数が [host.json のキュー構成設定](functions-host-json.md#queues)によって制御されます。 既定の設定では、同時呼び出しの数は 24 までに制限されています。 この制限は、BLOB トリガーを使用する各関数に個別に適用されます。
+
+[従量課金プラン](functions-scale.md#how-the-consumption-plan-works)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大同時実行数 3*24 = 72 関数呼び出しとなります。
+
+JavaScript 関数は BLOB 全体をメモリに読み込みますが、C# 関数は `string` にバインドした場合に BLOB 全体をメモリに読み込みます。
 
 ## <a name="trigger---polling-for-large-containers"></a>トリガー - 大規模なコンテナーのポーリング
 
@@ -720,6 +728,14 @@ C# クラス ライブラリと C# スクリプトでは、`Stream paramName` �
 テキスト BLOB を読み取る場合は、`string` 型にバインドすることができます。 BLOB 全体のコンテンツがメモリに読み込まれるため、この型が推奨されるのは、BLOB のサイズが小さい場合のみです。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。
 
 JavaScript では、`context.bindings.<name>` を使用して BLOB データにアクセスします。
+
+## <a name="exceptions-and-return-codes"></a>例外とリターン コード
+
+| バインド |  リファレンス |
+|---|---|
+| BLOB | [BLOB エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
+| BLOB、テーブル、キュー |  [Storage エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB、テーブル、キュー |  [トラブルシューティング](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>次の手順
 

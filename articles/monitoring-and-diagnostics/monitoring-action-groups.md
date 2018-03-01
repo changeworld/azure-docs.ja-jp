@@ -1,8 +1,8 @@
 ---
 title: "Azure Portal でのアクション グループの作成および管理 | Microsoft Docs"
 description: "Azure Portal でアクション グループを作成および管理する方法について説明します。"
-author: anirudhcavale
-manager: orenr
+author: dkamstra
+manager: chrad
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2017
-ms.author: ancav
-ms.openlocfilehash: 9f7f9dcc473e6925000ebe76a6592779c228a9af
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.date: 02/16/2018
+ms.author: dukek
+ms.openlocfilehash: 772b9c2b9532bd2cc37ad89db92545297eecd903
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Azure Portal でのアクション グループの作成および管理
 ## <a name="overview"></a>概要 ##
 この記事では、Azure Portal でアクション グループを作成および管理する方法について説明します。
 
-アクション グループを使用して、アクションのリストを構成できます。 これらのグループはアクティビティ ログ アラートを定義するときに活用できます。 これらのグループは、定義する各アクティビティ ログ アラートで再利用することができ、アクティビティ ログ アラートがトリガーされるときに必ず特定のアクション グループが呼び出されます。
+アクション グループを使用して、アクションのリストを構成できます。 これらのグループは、定義する各アラートで使用できるため、アラートがトリガーされるときに特定のアクション グループが必ず呼び出されるようにすることができます。
 
 アクション グループには、最大 10 個のアクションの種類を設定できます。 各アクションは次のプロパティで構成されます。
 
@@ -56,7 +56,7 @@ Azure Resource Manager テンプレートを使用したアクション グル�
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]**: このアクションの一意識別子を入力します。
 
-    b. **[アクションの種類]**: SMS、メール、webhook、Azure アプリ、ITSM、または Automation Runbook を選択します。
+    b. **[アクションの種類]**: 電子メール/SMS/Azure アプリ、webhook、ITSM、または Automation Runbook を選択します。
 
     c. **[詳細]**: アクションの種類に基づいて、電話番号、メール アドレス、webhook の URI、Azure アプリ、ITSM 接続、Automation Runbook を入力します。 ITSM アクションの場合は、さらに ITSM ツールで必要な **[作業項目]** および他のフィールドを指定します。
 

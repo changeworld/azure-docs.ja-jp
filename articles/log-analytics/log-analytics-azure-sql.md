@@ -3,7 +3,7 @@ title: "Log Analytics の Azure SQL Analytics ソリューション | Microsoft 
 description: "Azure SQL Analytics ソリューションを使用して、Azure SQL データベースを管理できます。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: b2712749-1ded-40c4-b211-abc51cc65171
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
-ms.author: magoedte;banders
-ms.openlocfilehash: e2176a41a115d77a60a8348d2d1b5928109dd65b
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: magoedte
+ms.openlocfilehash: 624c861db9bb318c368cef04965da0a73dd028d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Log Analytics の Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -31,7 +31,7 @@ Azure Log Analytics の Azure SQL Analytics ソリューションは、SQL Azure
 この Azure SQL Analytics ソリューションでは、Log Analytics で利用可能な他のソリューションと同様に、Azure リソース (この場合は Azure SQL Database) の正常性の監視と、それに関する通知の受信ができます。 Microsoft Azure SQL Database は、使い慣れた SQL Server と同様の機能を、Azure クラウドで実行されているアプリケーションで提供する、スケーラブルなリレーショナル データベース サービスです。 Log Analytics では、収集、関連付けのほか、構造化データおよび非構造化データの視覚化ができます。
 
 Azure SQL Analytics ソリューションの使用に関する実践的な概要と、一般的な使用シナリオについては、埋め込みのビデオをご覧ください。
-          
+
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Get-Intelligent-Insights-for-Improving-Azure-SQL-Database-Performance/player]
 >
 
@@ -60,14 +60,14 @@ Azure SQL Analytics ソリューションでは、Log Analytics サービスに�
 Azure SQL Analytics ソリューションをワークスペースに追加するには、次の手順を実行します。
 
 1. Azure SQL Analytics ソリューションをワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.AzureSQLAnalyticsOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページに説明されている手順に従って追加してください。
-2. Azure Portal で **[新規]** (+ 記号) をクリックし、次にリソースの一覧で **[監視 + 管理]** を選択します。  
+2. Azure Portal で、**[リソースの作成]** > **[監視 + 管理]** をクリックします。  
     ![監視 + 管理](./media/log-analytics-azure-sql/monitoring-management.png)
 3. **[監視 + 管理]** の一覧で、**[すべて表示]** をクリックします。
-4. **[Recommended (推奨)]** の一覧で **[詳細]** をクリックし、新しい一覧で **[Azure SQL Analytics (Preview) (Azure SQL Analytics (プレビュー))]** を探して選択します。  
+4. **[推奨]** の一覧で **[詳細]** をクリックし、新しい一覧で **[Azure SQL Analytics (プレビュー)]** を探して選択します。  
     ![Azure SQL Analytics のソリューション](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. **[Azure SQL Analytics (Preview) (Azure SQL Analytics (プレビュー))]** ブレードで、**[作成]** をクリックします。  
+5. **[Azure SQL Analytics (プレビュー)]** 領域で、**[作成]** をクリックします。  
     ![作成](./media/log-analytics-azure-sql/portal-create.png)
-6. **[新しいソリューションの作成]** ブレードで、ソリューションを追加するワークスペースを選択し、**[作成]** をクリックします。  
+6. **[新しいソリューションの作成]** 領域で、ソリューションを追加するワークスペースを選択し、**[作成]** をクリックします。  
     ![ワークスペースに追加](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 
@@ -97,7 +97,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ### <a name="viewing-azure-sql-analytics-data"></a>Azure SQL Analytics データの表示
 
-**[Azure SQL Analytics]** タイルをクリックして、Azure SQL Analytics ダッシュボードを開きます。 ダッシュボードには、さまざまなパースペクティブから監視されるすべてのデータベースの概要が含まれています。 さまざまなパースペクティブが動作するには、適切なメトリックを有効にするか、SQL リソースにログオンして、Azure Log Analytics ワークスペースにストリーミングする必要があります。 
+**[Azure SQL Analytics]** タイルをクリックして、Azure SQL Analytics ダッシュボードを開きます。 ダッシュボードには、さまざまなパースペクティブから監視されるすべてのデータベースの概要が含まれています。 さまざまなパースペクティブが動作するには、適切なメトリックを有効にするか、SQL リソースにログオンして、Azure Log Analytics ワークスペースにストリーミングする必要があります。
 
 ![Azure SQL Analytics の概要](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
@@ -140,9 +140,9 @@ Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intellige
 
 ### <a name="analyze-data-and-create-alerts"></a>データの分析とアラートの作成
 
-アラートは、Azure SQL Database リソースから送られるデータを使用して簡単に作成できます。 アラートに使用できる実用的な[ログ検索](log-analytics-log-searches.md)クエリを以下に 2 つ示しました。
+アラートは、Azure SQL Database リソースから送られるデータを使用して簡単に作成できます。 アラートに使用できる実用的な[ログ検索](log-analytics-log-searches.md)クエリをいくつか示します。
 
-[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 
 *高 DTU (Azure SQL Database 上)*

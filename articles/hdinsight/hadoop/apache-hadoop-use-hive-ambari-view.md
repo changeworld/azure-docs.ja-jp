@@ -14,59 +14,64 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/19/2018
+ms.date: 02/13/2018
 ms.author: larryfr
-ms.openlocfilehash: 5f66e60249af489e695029cbb072f3cc881bb039
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: af5fe44b611e8ff9d93aba8a30c71213c452aff9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-ambari-hive-view-with-hadoop-in-hdinsight"></a>HDInsight での Ambari Hive ビューと Hadoop の使用
 
 [!INCLUDE [hive-selector](../../../includes/hdinsight-selector-use-hive.md)]
 
-Ambari Hive ビューを使用して Hive クエリを実行する方法について説明します。 Ambari は、Linux ベースの HDInsight クラスターに付属する管理および監視ユーティリティです。 Ambari が提供する機能の 1 つに、Hive クエリを実行するときに使用される Web UI があります。
-
-> [!NOTE]
-> Ambari には数多くの機能がありますが、このドキュメントではそれらについて説明しません。 詳細については、「 [Ambari Web UI を使用した HDInsight クラスターの管理](../hdinsight-hadoop-manage-ambari.md)」を参照してください。
+Ambari Hive ビューを使用して Hive クエリを実行する方法について説明します。 Hive ビューを使用すると、Web ブラウザーからHive クエリを作成、最適化、および実行できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* Linux ベースの HDInsight クラスター。 クラスターの作成については、[HDInsight での Hadoop の使用](apache-hadoop-linux-tutorial-get-started.md)に関するページ を参照してください。
+* バージョン 3.4 以上の HDInsight クラスターでの Linux ベースの Hadoop。
 
-> [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する Azure HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以降の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+  > [!IMPORTANT]
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
-## <a name="open-the-hive-view"></a>Hive ビューを開く
+* Web ブラウザー
 
-Ambari ビューは、Azure Portal から開くことができます。 HDInsight クラスターを選択し、**[クイック リンク]** セクションの **[Ambari ビュー]** を選択します。
+## <a name="run-a-hive-query"></a>Hive クエリを実行する
 
-![ポータルの [クイック リンク] セクション](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
+1. [Azure Portal](https://portal.azure.com)を開きます。
 
-ビューの一覧で、__Hive ビュー__を選択します。
+2. HDInsight クラスターを選択し、**[クイック リンク]** セクションの **[Ambari ビュー]** を選択します。
 
-![Hive ビューを選択する](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
+    ![ポータルの [クイック リンク] セクション](./media/apache-hadoop-use-hive-ambari-view/quicklinks.png)
 
-> [!NOTE]
-> Ambari にアクセスする際には、サイトに対する認証を求められます。 クラスターの作成時に使用した管理者アカウント名 (既定値は `admin`) とパスワードを入力します。
+    認証情報の入力を求められたら、クラスターの作成時に使用したクラスター ログイン (既定値は `admin`) アカウント名とパスワードを入力します。
 
-次の図ようなページが表示されます。
+3. ビューの一覧で、__Hive ビュー__を選択します。
 
-![Hive ビューのクエリ ワークシートの画像](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
+    ![Hive ビューを選択する](./media/apache-hadoop-use-hive-ambari-view/select-hive-view.png)
 
-## <a name="run-a-query"></a>クエリを実行する
+    Hive ビュー ページは次の図のようになります。
 
-Hive クエリを実行するには、Hive ビューから以下の手順を使用します。
+    ![Hive ビューのクエリ ワークシートの画像](./media/apache-hadoop-use-hive-ambari-view/ambari-hive-view.png)
 
-1. __[Query]\(クエリ\)__ タブから、次の HiveQL ステートメントをワークシートに貼り付けます。
+4. __[Query]\(クエリ\)__ タブから、次の HiveQL ステートメントをワークシートに貼り付けます。
 
     ```hiveql
     DROP TABLE log4jLogs;
-    CREATE EXTERNAL TABLE log4jLogs(t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string)
+    CREATE EXTERNAL TABLE log4jLogs(
+        t1 string,
+        t2 string,
+        t3 string,
+        t4 string,
+        t5 string,
+        t6 string,
+        t7 string)
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ' '
     STORED AS TEXTFILE LOCATION '/example/data/';
-    SELECT t4 AS sev, COUNT(*) AS cnt FROM log4jLogs WHERE t4 = '[ERROR]' GROUP BY t4;
+    SELECT t4 AS loglevel, COUNT(*) AS count FROM log4jLogs 
+        WHERE t4 = '[ERROR]' 
+        GROUP BY t4;
     ```
 
     これらのステートメントは次のアクションを実行します。
@@ -82,42 +87,20 @@ Hive クエリを実行するには、Hive ビューから以下の手順を使�
 
    * `SELECT`: t4 列の値が [ERROR] であるすべての行の数を選択します。
 
-     > [!NOTE]
-     > 基になるデータが外部ソース (データの自動アップロード処理や別の MapReduce 操作など) によって更新する場合は、外部テーブルを使用します。 外部テーブルを削除しても、データは削除*されません*。テーブル定義のみが削除されます。
-
     > [!IMPORTANT]
     > __[Database]\(データベース\)__ では、__[default]\(既定\)__ が選択されたままにしておきます。 このドキュメントの例では、HDInsight に含まれている既定のデータベースを使用します。
 
-2. クエリを開始するために、ワークシートの下にある **[Execute]\(実行\)** ボタンを使用します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
+5. クエリを開始するために、ワークシートの下にある **[Execute]\(実行\)** ボタンを使用します。 ボタンがオレンジ色になり、テキストが **[Stop]\(停止\)** に変わります。
 
-3. クエリが完了すると、**[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
+6. クエリが完了すると、**[Results]\(結果\)** タブに操作の結果が表示されます。 次のテキストは、クエリの結果を示します。
 
-        sev       cnt
-        [ERROR]   3
+        loglevel       count
+        [ERROR]        3
 
     **[Logs]\(ログ\)** タブを使用すると、ジョブが作成したログ情報を表示できます。
 
    > [!TIP]
    > **[Query Process Results]\(クエリ処理結果\)** セクションの左上にある **[Save results]\(結果の保存\)** ドロップダウン ダイアログで、結果をダウンロードまたは保存します。
-
-4. このクエリの最初の 4 行を選択し、次に **[Execute]\(実行\)** を選択します。 ジョブが完了しても結果が示されないことに注意してください。 クエリの一部が選択されているときに **[Execute]** ボタンを使用すると、選択したステートメントのみが実行されます。 この場合は、テーブルの行を取得する最後のステートメントが選択範囲に含まれていませんでした。 その行のみを選択して **[Execute]** を使用すると、予想どおりの結果が表示されます。
-
-5. ワークシートを追加するために、**クエリ エディター**の下部にある **[New Worksheet]\(新規ワークシート\)** ボタンを使用します。 新しいワークシートに、次の HiveQL ステートメントを入力します。
-
-    ```hiveql
-    CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
-    INSERT OVERWRITE TABLE errorLogs SELECT t1, t2, t3, t4, t5, t6, t7 FROM log4jLogs WHERE t4 = '[ERROR]';
-    ```
-
-  これらのステートメントは次のアクションを実行します。
-
-   * **CREATE TABLE IF NOT EXISTS**: 既存のテーブルがない場合は、テーブルを作成します。 **EXTERNAL** キーワードは使用されていないため、内部テーブルが作成されます。 内部テーブルは Hive データ ウェアハウスに格納され、完全に Hive によって管理されます。 外部テーブルとは異なり、内部テーブルを削除すると基になるデータも削除されます。
-
-   * **STORED AS ORC**: Optimized Row Columnar (ORC) 形式でデータを格納します。 ORC は、Hive データを格納するための高度に最適化された効率的な形式です。
-
-   * **INSERT OVERWRITE ...SELECT**: `[ERROR]` を含む **log4jLogs** テーブルから列を選択し、**errorLogs** テーブルにデータを挿入します。
-
-**[Execute]** ボタンを使用して、このクエリを実行します。 クエリから返される行が 0 の場合、**[Results]** タブには情報が含まれません。 クエリが完了すると、状態として **SUCCEEDED** が示されます。
 
 ### <a name="visual-explain"></a>ビジュアルの説明
 
@@ -152,9 +135,14 @@ __[Tables]\(テーブル\)__ タブを使用して、Hive データベース内�
 
 ![[Saved Queries]\(保存済みクエリ\) タブの画像](./media/apache-hadoop-use-hive-ambari-view/saved-queries.png)
 
+> [!TIP]
+> 保存済みのクエリは、既定のクラスター記憶域に格納されます。 保存済みのクエリは、パス `/user/<username>/hive/scripts` の下にあります。 これらはプレーンテキストの `.hql` ファイルとして格納されます。
+>
+> クラスターを削除して、記憶域は保持した場合、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) や Data Lake Storage Explorer などのユーティリティを ([Azure Portal](https://portal.azure.com) から) 使用してクエリを取得することができます。
+
 ## <a name="user-defined-functions"></a>ユーザー定義関数
 
-Hive はユーザー定義関数 (UDF) を使用して拡張することもできます。 UDF を使用すると、HiveQL では簡単にモデル化できない機能またはロジックを実装できます。
+ユーザー定義関数 (UDF) を使用して、Hive を拡張できます。 UDF を使用すると、HiveQL では簡単にモデル化できない機能またはロジックを実装できます。
 
 Hive ビューの上部にある **[UDF]** タブを使用して、UDF のセットを宣言および保存します。 これらの UDF は**クエリ エディター**で使用できます。
 

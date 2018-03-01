@@ -2,30 +2,24 @@
 title: "Azure Site Recovery: よく寄せられる質問 | Microsoft Docs"
 description: "この記事では、Azure Site Recovery に関してよく寄せられる質問について説明します。"
 services: site-recovery
-documentationcenter: 
 author: rayne-wiselman
 manager: carmonm
-editor: 
-ms.assetid: 5cdc4bcd-b4fe-48c7-8be1-1db39bd9c078
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 10/19/2017
+ms.date: 02/18/2018
 ms.author: raynew
-ms.openlocfilehash: 82cec6df5d5d6ecf1147cac29b8fc46966ea57de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1a7d57c1f1f84e7ce3b931c2911ae7394b066f8d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事には、Azure Site Recovery に関してよく寄せられる質問が含まれます。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
 ## <a name="general"></a>全般
 ### <a name="what-does-site-recovery-do"></a>Site Recovery は何をするものですか。
-Site Recovery は、リージョン間の Azure VM のレプリケーション、オンプレミスの仮想マシンと物理サーバーの Azure へのレプリケーション、およびオンプレミスのマシンのセカンダリ データセンターへのレプリケーションを調整および自動化することで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 [詳細情報](site-recovery-overview.md)
+Site Recovery は、リージョン間の Azure VM のレプリケーション、オンプレミスの仮想マシンと物理サーバーの Azure へのレプリケーション、およびオンプレミスのマシンのセカンダリ データセンターへのレプリケーションを調整および自動化することで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 [詳細情報](site-recovery-overview.md)。
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery が保護できるものは何ですか。
 * **Azure VM**: Site Recovery は、サポート対象の Azure VM で実行されているすべてのワークロードをレプリケートできます。
@@ -36,7 +30,7 @@ Site Recovery は、リージョン間の Azure VM のレプリケーション�
 
 
 ### <a name="can-i-replicate-azure-vms"></a>Azure VM をレプリケートできますか。
-はい、サポートされている Azure VM は Azure リージョン間でレプリケートできます。 [詳細情報](site-recovery-azure-to-azure.md)
+はい、サポートされている Azure VM は Azure リージョン間でレプリケートできます。 [詳細情報](site-recovery-azure-to-azure.md)。
 
 ### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Site Recovery でレプリケーションを調整するには、Hyper-V で何が必要ですか。
 Hyper-V ホスト サーバーに必要なものは、デプロイ シナリオによって異なります。 以下の Hyper-V に関する前提条件を参照してください。
@@ -166,16 +160,17 @@ Azure は復元するように設計されています。 Site Recovery は、�
 * [詳細については、こちらを参照してください。](site-recovery-failback-azure-to-vmware.md) を参照してください
 
 ### <a name="if-my-on-premises-host-is-not-responding-or-crashed-can-i-failover-back-to-a-different-host"></a>オンプレミスのホストが応答しない場合やクラッシュした場合は、別のホストにフェールバックできますか。
-はい。alternate location recovery (別の場所への復旧) を使用すると、Azure から別のホストにフェールバックできます。 このオプションの詳細については、以下の VMware および Hyper-v 仮想マシンへのリンクを参照してください。
+はい。alternate location recovery (別の場所への復旧) を使用すると、Azure から別のホストにフェールバックできます。 このオプションの詳細については、以下の VMware および Hyper-V 仮想マシンへのリンクを参照してください。
 
-* [VMware 仮想マシン用](site-recovery-how-to-failback-azure-to-vmware.md#fail-back-to-the-original-or-alternate-location)
-* [Hyper-v 仮想マシン用](site-recovery-failback-from-azure-to-hyper-v.md#failback-to-an-alternate-location)
+* [VMware 仮想マシン用](concepts-types-of-failback.md#alternate-location-recovery-alr)
+* [Hyper-V 仮想マシン用](hyper-v-azure-failback.md#perform-failback)
 
 ## <a name="service-providers"></a>サービス プロバイダー
 ### <a name="im-a-service-provider-does-site-recovery-work-for-dedicated-and-shared-infrastructure-models"></a>当社はサービス プロバイダーですが、 Site Recovery は、専用および共有のインフラストラクチャ モデルで動作しますか。
 はい。Site Recovery は、専用および共有のインフラストラクチャ モデルの両方をサポートしています。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>サービス プロバイダーの場合、テナントの ID は Site Recovery サービスと共有されますか。
+
 いいえ。 テナント ID は匿名のままです。 テナントは Site Recovery ポータルにアクセスする必要はありません。 ポータルを操作するのは、サービス プロバイダーの管理者だけです。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>テナントのアプリケーション データは Azure に送信されますか。
@@ -184,6 +179,7 @@ Azure は復元するように設計されています。 Site Recovery は、�
 Azure にレプリケートする場合、アプリケーション データは Site Recovery サービスではなく、Azure ストレージに送信されます。 データは、転送中に暗号化され、暗号化された状態のまま Azure に残ります。
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>テナントに Azure サービスの請求書が届きますか。
+
 いいえ。 Azure の請求関係は、サービス プロバイダーとの直接的な関係です。 サービス プロバイダーは、そのテナントに対して固有の請求書を生成する必要があります。
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>Azure にレプリケートする場合、仮想マシンを Azure で常時実行する必要がありますか。
@@ -198,6 +194,6 @@ Azure パック、クラウド プラットフォーム システム、および
 ### <a name="do-you-support-single-azure-pack-and-single-vmm-server-deployments"></a>単一の Azure パックおよび単一の VMM サーバーのデプロイメントもサポートされますか。
 はい。Hyper-V 仮想マシンを Azure にレプリケートできます。または、サービス プロバイダー サイト間でレプリケートできます。  サービス プロバイダー サイト間でレプリケートする場合は、Azure Runbook 統合が使用できないことに注意してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Site Recovery の概要](site-recovery-overview.md)
 * こちら [Site Recovery アーキテクチャ](site-recovery-components.md)  
