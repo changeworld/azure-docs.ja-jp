@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service へのローカル Git デプロイ"
 description: "Azure App Service へのローカル Git デプロイを有効にする方法を説明します。"
 services: app-service
@@ -127,9 +127,9 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 **解決策**: `git remote -v` コマンドを使用して、すべてのリモートおよび関連付けられている URL を一覧表示します。 "azure" リモートの URL が正しいことを確認します。 必要に応じて、このリモートを削除し、正しい URL を使用して再作成します。
 
 ---
-**症状**: `No refs in common and none specified; doing nothing. Perhaps you should specify a branch such as 'master'.`
+**症状**: 参照が共通していないか、指定されていません。未対応です。 『master』 などのブランチを指定する必要があります。
 
-**原因**: このエラーは、`git push` でブランチを指定しなかった場合、または `.gitconfig` に `push.default` 値を設定しなかった場合に発生する可能性があります。
+**原因**: このエラーは、git push 操作を実行するときにブランチを指定せず、Git で使用される push.default 値を設定していない場合に発生します。
 
 **解決策**: master ブランチを指定して、もう一度 push 操作を実行します。 例: 
 
