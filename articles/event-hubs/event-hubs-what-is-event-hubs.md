@@ -12,25 +12,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 02/27/2018
 ms.author: sethm
-ms.openlocfilehash: 9b7be70d726edfa9dbda3719d431e532106724b6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 08b78f59dc758f12556f332546ccb6043bef2812
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="what-is-event-hubs"></a>Event Hubs とは
 
 Azure Event Hubs は高度にスケーラブルなデータ ストリーミング プラットフォームであり、毎秒数百万のイベントを受け取って処理できるイベント インジェスト サービスでもあります。 Event Hubs では、分散されたソフトウェアやデバイスから生成されるイベント、データ、またはテレメトリを処理および格納できます。 イベント ハブに送信されたデータは、任意のリアルタイム分析プロバイダーやバッチ処理/ストレージ アダプターを使用して、変換および保存できます。 短い待ち時間かつ大きなスケールで[パブリッシュ/サブスクライブ機能](/biztalk/core/publish-and-subscribe-architecture)を実現できるので、Event Hubs はビッグ データの "オン ランプ" として機能します。
-
-## <a name="why-use-event-hubs"></a>Event Hubs を使用する理由
-
-Event Hubs のイベントとテレメトリの処理機能は、次のような場合に特に役立ちます。
-
-* アプリケーションのインストルメンテーション
-* ユーザー エクスペリエンスやワークフロー処理
-* モノのインターネット (IoT) のシナリオ
 
 たとえば Event Hubs は、モバイル アプリでの動作追跡、Web ファームからのトラフィック情報、コンソール ゲームにおけるゲーム中のイベント キャプチャのほか、産業機器、コネクテッド カー、またはその他のデバイスから収集されたテレメトリ データにも対応します。
 

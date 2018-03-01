@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 04/11/2017
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 672eda222a0fa7d0e05dd2fc75ac743ec330463d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: d727894a51eba5b29970a8d933f635a338bcec26
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-code-and-powershell-samples"></a>Azure Active Directory B2B コラボレーション コードと PowerShell サンプル
 
@@ -101,7 +101,7 @@ namespace SampleInviteApp
         /// <summary>
         /// Client secret of the application.
         /// </summary>
-        private static readonly string TestAppClientSecret = @"
+        private static readonly string TestAppClientSecret = @"";
  
         /// <summary>
         /// This is the email address of the user you want to invite.

@@ -58,9 +58,7 @@
     - name: リソース
       items:
         - name: 価格レベル
-          href: concepts-service-tiers.md
-        - name: コンピューティング ユニット
-          href: concepts-compute-unit-and-storage.md
+          href: concepts-pricing-tiers.md
         - name: 制限
           href: concepts-limits.md
     - name: データ アクセスとセキュリティ
@@ -69,6 +67,12 @@
           href: concepts-firewall-rules.md
         - name: SSL の構成
           href: concepts-ssl-connection-security.md
+    - name: ビジネス継続性
+      items:
+        - name: 概要
+          href: concepts-business-continuity.md
+        - name: バックアップと復元
+          href: concepts-backup.md
     - name: 監視
       href: concepts-monitoring.md
     - name: 開発
@@ -77,7 +81,9 @@
           href: concepts-connection-libraries.md
 - name: ハウツー ガイド
   items:
-    - name: ファイアウォール規則
+    - name: ユーザーの作成
+      href: howto-create-users.md
+    - name: ファイアウォールの管理
       items:
         - name: Azure ポータル
           href: howto-manage-firewall-using-portal.md

@@ -24,13 +24,13 @@
         - name: Azure を準備する
           href: tutorial-prepare-azure.md
         - name: オンプレミスの VMware を準備する
-          href: tutorial-prepare-on-premises-vmware.md
+          href: vmware-azure-tutorial-prepare-on-premises.md
         - name: ディザスター リカバリーを設定する
-          href: tutorial-vmware-to-azure.md
+          href: vmware-azure-tutorial.md
         - name: ディザスター リカバリー訓練を実行する
           href: tutorial-dr-drill-azure.md
         - name: フェールオーバーとフェールバックを実行する
-          href: tutorial-vmware-to-azure-failover-failback.md
+          href: vmware-azure-tutorial-failover-failback.md
     - name: Hyper-V VM
       items:
         - name: Azure を準備する
@@ -50,9 +50,9 @@
         - name: オンプレミスのレプリケーション用に Azure を準備する
           href: tutorial-prepare-azure.md
         - name: オンプレミスのマシンを Azure に移行する
-          href: tutorial-migrate-on-premises-to-azure.md
+          href: migrate-tutorial-on-premises-azure.md
         - name: AWS インスタンスを Azure に移行する
-          href: tutorial-migrate-aws-to-azure.md
+          href: migrate-tutorial-aws-azure.md
         - name: Azure VM を別のリージョンに移行する
           href: azure-to-azure-tutorial-migrate.md
 - name: 概念
@@ -62,11 +62,11 @@
         - name: Azure から Azure へのアーキテクチャ
           href: azure-to-azure-architecture.md
         - name: VMware から Azure へのアーキテクチャ
-          href: concepts-vmware-to-azure-architecture.md
+          href: vmware-azure-architecture.md
         - name: Hyper-V から Azure へのアーキテクチャ
           href: hyper-v-azure-architecture.md
         - name: 物理から Azure へのアーキテクチャ
-          href: concepts-physical-to-azure-architecture.md
+          href: physical-azure-architecture.md
         - name: Hyper-V からセカンダリ サイトへのアーキテクチャ
           href: hyper-v-vmm-architecture.md
     - name: サポート要件のマトリックス
@@ -114,11 +114,11 @@
         - name: Azure への移行後の Azure VM のディザスター リカバリー
           href: azure-to-azure-replicate-after-migration.md
         - name: Azure への物理サーバーのディザスター リカバリー
-          href: tutorial-physical-to-azure.md
+          href: physical-azure-disaster-recovery.md
         - name: セカンダリ サイトへの Hyper-V VM のディザスター リカバリー
           href: hyper-v-vmm-disaster-recovery.md
         - name: セカンダリ サイトへの VMware VM と物理サーバーのディザスター リカバリー
-          href: tutorial-vmware-to-vmware.md
+          href: vmware-physical-secondary-disaster-recovery.md
         - name: Azure へのディザスター リカバリー訓練を実行する
           href: site-recovery-test-failover-to-azure.md
         - name: セカンダリ サイトへの Hyper-V VM のディザスター リカバリー訓練を実行する
@@ -236,7 +236,7 @@
         - name: PowerShell を使用して Azure への Hyper-V のレプリケーションを設定する (VMM なし)
           href: hyper-v-azure-powershell-resource-manager.md
         - name: PowerShell を使用して Azure への Hyper-V のレプリケーションを設定する (VMM を使用)
-          href: site-recovery-vmm-to-azure-powershell-resource-manager.md
+          href: hyper-v-vmm-powershell-resource-manager.md
         - name: PowerShell を使用してセカンダリ VMM サイトへの Hyper-V のレプリケーションを設定する
           href: hyper-v-vmm-powershell-resource-manager.md
     - name: ワークロード
@@ -290,7 +290,7 @@
         - name: Azure へのフェールオーバーの問題
           href: site-recovery-failover-to-azure-troubleshoot.md
         - name: 再保護とフェールバックの問題
-          href: troubleshoot-failback-reprotect.md
+          href: vmware-azure-troubleshoot-failback-reprotect.md
         - name: Azure Site Recovery の監視
           href: site-recovery-monitor-and-troubleshoot.md
 - name: リファレンス

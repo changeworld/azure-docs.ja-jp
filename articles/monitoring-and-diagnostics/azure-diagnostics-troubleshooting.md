@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
-ms.openlocfilehash: ae99085a37162a883d18976181be198a2f21a60c
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: e194c2898616d5a19782039d38592c59f6b0c576
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診断のトラブルシューティング
 この記事では、Azure 診断の使用に関連するトラブルシューティング情報について説明します。 Azure 診断の詳細については、[Azure 診断の概要](azure-diagnostics.md)に関するページを参照してください。
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/24/2018
 | アーティファクト | パス |
 | --- | --- |
 | **Azure 診断構成ファイル** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<バージョン>\RuntimeSettings |
-| **ログ ファイル** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<バージョン>\Logs\ |
+| **ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\ |
 | **診断データのローカル ストア** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<診断のバージョン>\WAD0107\Tables |
 | **監視エージェント構成ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<診断のバージョン>\WAD0107\Configuration\MaConfig.xml |
 | **状態ファイル** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<バージョン>\Status |
@@ -61,9 +61,9 @@ Azure 診断には、Azure ポータルに表示できるメトリック デー�
 
 ここでは、テーブルの **PartitionKey** がリソース ID、仮想マシン、または仮想マシン スケール セットです。 **RowKey** はメトリック名です (パフォーマンス カウンター名とも呼ばれています)。
 
-リソース ID が間違っている場合は、**[診断]**、**[構成]** > **[メトリック]** > **[ResourceId]** で、リソース ID が正しく設定されているかどうかを確認します。
+リソース ID が間違っている場合は、**[診断構成]** > **[メトリック]** > **[ResourceId]** で、リソース ID が正しく設定されているかどうかを確認します。
 
-特定のメトリックのデータがない場合は、**[診断構成]**、 > **[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
+特定のメトリックのデータがない場合は、**[診断構成]** > **[PerformanceCounter]** で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
 - \Processor(_Total)\% Processor Time
 - \Memory\Available Bytes
 - \ASP.NET Applications(__Total__)\Requests/Sec
@@ -125,7 +125,7 @@ Azure 診断では、あらゆるエラーが診断インフラストラクチ�
 - **トレース ログ**: VM にリモート アクセスし、アプリケーションの構成ファイルに TextWriterTraceListener を追加します。  http://msdn.microsoft.com/library/sk36c28t.aspx を参照し、テキスト リスナーをセットアップしてください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
 トレース ログが生成されていない場合、「[トレース ログが見つからない場合 (詳細)](#more-about-trace-logs-missing)」をご覧ください。
 
-- **ETW トレース**: VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]**、 > **[ユーザー コマンド]** の順に選択し、 > **Listen etwprovder1** を実行します。必要に応じてさらに  > **etwprovider2** 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
+- **ETW トレース**: VM にリモート アクセスし、PerfView をインストールします。  PerfView で、**[ファイル]** > **[ユーザー コマンド]** > **Listen etwprovder1** > **etwprovider2** の順に選択し、 を実行します。必要に応じてさらに 以降に Listen コマンドを実行します。 **Listen** コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。 コマンドを実行できない場合は、Perfview ツールの右下にある **[ログ]** ボタンを選択すると、実行しようとした内容とその結果を確認できます。  入力が正しいとすれば、新しいウィンドウが表示されます。 数秒後、ETW トレースが表示され始めます。
 
 - **イベント ログ**: VM にリモート アクセスします。 `Event Viewer` を開き、イベントが存在することを確認します。
 

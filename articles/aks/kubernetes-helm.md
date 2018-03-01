@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 39c6de1ce2443cf027d7cde067281355ea0b7207
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f0fa4c667074a1acda70371251172acf9ff119e5
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="use-helm-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Helm の使用
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイック スタート][aks-quickstart]をご覧ください。
+このドキュメントで詳しく説明する手順では、AKS クラスターを作成済みで、そのクラスターとの kubectl 接続が確立されていることを想定しています。 これらの項目が必要な場合は、[AKS のクイック スタート][aks-quickstart]を参照してください。
 
 ## <a name="install-helm-cli"></a>Helm CLI のインストール
 
@@ -160,7 +160,7 @@ NAME            REVISION    UPDATED                     STATUS      CHART       
 bilging-ant     1           Thu Oct  5 00:11:11 2017    DEPLOYED    nginx-ingress-0.8.7 default
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Kubernetes チャートの管理の詳細については、Helm のドキュメントを参照してください。
 

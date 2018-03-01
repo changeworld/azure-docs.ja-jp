@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 7f3cc81327d1d247fb8e19e256eafb009a5bf162
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d7c32e5ae02e294ee88c19f058e04249c7c9969e
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。 一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。
@@ -282,11 +282,4 @@ API Management の主な機能には、バックエンド リソースの保護�
 
 ## <a name="summary"></a>まとめ
 Azure API Management サービスには、HTTP トラフィックに選択的に適用できる、バックエンド サービスの構成に使用できる、柔軟なポリシーがあります。 警告機能、確認、検証機能で API ゲートウェイを拡張したい場合、または複数のバックエンド サービスを使用し新しい複合リソースを作成したい場合のために、 `send-request` と関連ポリシーはさまざまな可能性を開きます。
-
-## <a name="watch-a-video-overview-of-these-policies"></a>これらのポリシーの概要に関するビデオ
-この記事で説明した [send-one-way-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendOneWayRequest)、[send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest)、[return-response](https://msdn.microsoft.com/library/azure/dn894085.aspx#ReturnResponse) の各ポリシーの詳細については、次のビデオをご覧ください。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Send-Request-and-Return-Response-Policies/player]
-> 
-> 
 

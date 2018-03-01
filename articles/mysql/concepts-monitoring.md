@@ -1,50 +1,47 @@
 ---
-title: "Azure Database for MySQL での監視 | Microsoft Docs"
+title: "Azure Database for MySQL での監視"
 description: "この記事では、Azure Database for MySQL での監視およびアラート生成のためのメトリック (CPU、制限、ストレージ、および接続の統計を含む) について説明します。"
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/24/2017
-ms.openlocfilehash: 9af447d54faa8ee96e4b79beb274b437eea57626
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 02/28/2018
+ms.openlocfilehash: 7ecfb8151cd81fb588f964fdfa3a74aacab24874
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Azure Database for MySQL での監視
 サーバーに関する監視データは、ワークロードをトラブルシューティングしたり最適化したりするのに役立ちます。 Azure Database for MySQL には、MySQL サーバーをサポートするリソースの動作への洞察を提供する各種のメトリックが用意されています。 
 
 ## <a name="metrics"></a>メトリック
-Azure メトリックはすべて 1 分間の頻度を持ち、各メトリックが 30 日間の履歴を提供します。 
+すべての Azure メトリックは 1 分間隔で、各メトリックの 30 日間の履歴が保持されます。 
 
-メトリックにアラートを構成できます。 手順を追ったガイダンスについては、「[How to set up alerts (アラートを設定する方法)](howto-alert-on-metric.md)」を参照してください。 
+メトリックにアラートを構成できます。 詳細な手順については、[アラートの設定方法](howto-alert-on-metric.md)に関する記事をご覧ください。 
 
-その他のタスクには、自動化されたアクションの設定、高度な分析の実行、および履歴のアーカイブが含まれます。 詳細については、「[Azure Metrics Overview (Azure メトリックの概要)](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」を参照してください。
+その他のタスクとして、自動化されたアクションの設定、高度な分析の実行、履歴のアーカイブなどがあります。 詳細については、[Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。
 
 ### <a name="list-of-metrics"></a>メトリックの一覧
 これらのメトリックは、Azure Database for MySQL に使用できます。
 
-|メトリック|メトリックの表示名|単位|Description|
+|メトリック|メトリックの表示名|単位|[説明]|
 |---|---|---|---|---|
-|cpu_percent|CPU 使用率|Percent|使用されている CPU の割合 (%)。|
-|compute_limit|コンピューティング ユニットの制限|カウント|このサーバーのコンピューティング ユニットの最大数|
-|compute_consumption_percent|コンピューティング ユニットの割合|Percent|サーバーの最大数のうち使用されているコンピューティング ユニットの割合 (%)。|
-|memory_percent|メモリの割合|Percent|使用されているメモリの割合 (%)。|
-|io_consumption_percent|IO の割合|Percent|使用されている I/O の割合 (%)。|
-|storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合 (%)。|
+|cpu_percent|CPU 使用率|Percent|使用されている CPU の割合|
+|compute_limit|コンピューティング ユニットの制限|Count|このサーバーのコンピューティング ユニットの最大数|
+|compute_consumption_percent|コンピューティング ユニットの割合|Percent|サーバーの最大数のうち使用されているコンピューティング ユニットの割合|
+|memory_percent|メモリの割合|Percent|使用されているメモリの割合|
+|io_consumption_percent|IO の割合|Percent|使用されている IO の割合|
+|storage_percent|ストレージの割合|Percent|サーバーの最大数のうち使用されているストレージの割合|
 |storage_used|使用済みストレージ|Bytes|使用されているストレージの量。 サービスで使用されるストレージには、データベース ファイル、トランザクション ログ、およびサーバー ログが含まれます。|
-|storage_limit|ストレージの制限|Bytes|このサーバーの最大のストレージ。|
-|active_connections|アクティブな接続の合計|カウント|サーバーへのアクティブな接続の数。|
-|connections_failed|失敗した接続の合計|カウント|サーバーへの失敗した接続の数。|
+|storage_limit|ストレージの制限|Bytes|このサーバーの最大のストレージ|
+|active_connections|アクティブな接続の合計|Count|サーバーへのアクティブな接続の数|
+|connections_failed|失敗した接続の合計|Count|サーバーへの失敗した接続の数|
 
 
-> [!NOTE]
-> コンピューティング ユニットは、メモリと CPU で構成されます。 コンピューティング ユニットの割合 (%) は max(memory%, cpu%) です。 どちらがコンピューティング ユニットの割合 (%) の変化に寄与しているかを正確に特定するには、メモリと CPU のグラフを調べます。 詳細については、[コンピューティング ユニット](concepts-compute-unit-and-storage.md)を参照してください。
-
-## <a name="next-steps"></a>次のステップ
-- 手順を追ったガイダンスについては、「[How to set up alerts (アラートを設定する方法)](howto-alert-on-metric.md)」を参照してください。 
-- Azure Portal、REST API、または CLI を使用してメトリックにアクセスしたりエクスポートしたりする方法の詳細については、「[Azure Metrics Overview (Azure メトリックの概要)](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
+- 詳細な手順については、[アラートの設定方法](howto-alert-on-metric.md)に関する記事をご覧ください。 
+- Azure Portal、REST API、または CLI を使用してメトリックへのアクセスおよびメトリックのエクスポートを行う方法の詳細については、[Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)に関する記事をご覧ください。

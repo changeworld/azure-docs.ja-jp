@@ -1,10 +1,11 @@
-- name: Azure Time Series Insights
+- name: Azure Time Series Insights のドキュメント
   href: index.yml
 - name: 概要
   items:
     - name: Time Series Insights について
       href: time-series-insights-overview.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: Time Series Insights の探索
       href: time-series-quickstart.md

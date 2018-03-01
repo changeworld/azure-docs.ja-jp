@@ -15,24 +15,24 @@ ms.workload: infrastructure
 ms.date: 11/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 8116ba82838cf0ee610c6dadada0d8bfe6106f34
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: cdb2bda0c3f7e73b115c2609c3f229c633093bdc
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
 Microsoft Azure は、分析、仮想マシン、データベース、モバイル、ネットワーク、ストレージ、Web など、多様なパブリック クラウド サービスを一元化した集合体として成長し続け、さまざまなソリューションのホストとして理想的な形態となっています。  Microsoft Azure のスケーラブルなコンピューティング プラットフォームによって、必要なときに使用した分だけを支払う料金体系が実現され、オンプレミスのハードウェアに投資する必要がありません。  貴社の顧客のニーズに応えるうえで必要なレベルにまでソリューションをいつでもスケールアップまたはスケールアウトできる柔軟性が Azure にはあります。
 
 Amazon の AWS のさまざまな機能を使い慣れている場合は、Azure と AWS の [定義マッピング ドキュメント](https://azure.microsoft.com/campaigns/azure-vs-aws/mapping/)を調べることができます。
 
-## <a name="regions"></a>地域
+## <a name="regions"></a>リージョン
 Microsoft Azure のリソースは、世界各国複数の地理的リージョンに分散されます。  "リージョン" とは、1 つの地域に存在する複数のデータ センターを表します。 Azure では、現在 (2017 年 11 月)、世界中で 36 か所のリージョンが一般公開されており、さらに 6 つのリージョンが発表されました。 既存のリージョンと新しく発表されたリージョンの最新の一覧は次のページで確認できます。
 
 * [Azure リージョン](https://azure.microsoft.com/regions/)
 
 ## <a name="availability"></a>可用性
-Azure は、単一インスタンス仮想マシン向けに、業界をリードする 99.9% というサービス レベル アグリーメントを発表しました。ただし、すべてのディスクに Premium Storage を使用した VM をデプロイすることが条件となります。  デプロイが、VM に適用される 99.95% という標準のサービス レベル アグリーメントの要件を満たすためには、可用性セット内でワークロードを実行する複数の VM をデプロイする必要があります。 可用性セットにより、Azure データ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) では、全体としての Azure の可用性の確保について説明します。
+Azure は、単一インスタンス仮想マシン向けに、業界をリードする 99.9% というサービス レベル アグリーメントを発表しました。ただし、すべてのディスクに Premium Storage を使用した VM をデプロイすることが条件となります。  デプロイが、VM に適用される 99.95% という標準のサービス レベル アグリーメントの要件を満たすためには、可用性セット内でワークロードを実行する複数の VM をデプロイする必要があります。 可用性セットにより、Azure データ センターにある複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
 ## <a name="managed-disks"></a>Managed Disks
 
@@ -115,7 +115,7 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 * [Azure Portal で Linux VM にデータ ディスクを接続する方法](attach-disk-portal.md)
 
 ## <a name="networking"></a>ネットワーク
-* [仮想ネットワークの概要](../../virtual-network/virtual-networks-overview.md)
+* [Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)
 * [Azure 内の IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Azure での Linux VM へのポートの開放](nsg-quickstart.md)
 * [Azure Portal での完全修飾ドメイン名の作成](portal-create-fqdn.md)
@@ -125,7 +125,7 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 * [Azure Container Service の概要](../../container-service/container-service-intro.md)
 * [Azure コンテナー サービス クラスターのデプロイ](../../container-service/dcos-swarm/container-service-deployment.md)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Azure での Linux の概要の説明が終わりました。  次の手順では、VM の作成について詳しく説明します。
 
 * [Azure CLI を使用した一般的なタスクの増え続けるサンプル スクリプトの一覧を確認する](cli-samples.md)

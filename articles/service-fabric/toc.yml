@@ -1,10 +1,11 @@
 - name: Service Fabric のドキュメント
-  href: /azure/service-fabric
+  href: index.yml
 - name: 概要
   items:
     - name: Service Fabric とは
       href: service-fabric-overview.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: .NET アプリケーションの作成
       href: service-fabric-quickstart-dotnet.md

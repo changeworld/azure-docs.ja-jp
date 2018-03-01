@@ -1,3 +1,5 @@
+# [Key Vault のドキュメント](index.md)
+
 # 概要
 ## [Key Vault とは](key-vault-whatis.md)
 ## [サービスの概要](https://azure.microsoft.com/services/key-vault/)
@@ -23,7 +25,7 @@
 #### [ストレージ アカウント キー](key-vault-ovw-storage-keys.md)
 #### [調整](key-vault-ovw-throttling.md)
 
-## Manage
+## [管理]
 ### [Azure Key Vault のログ記録](key-vault-logging.md)
 ### [ファイアウォールの内側にアクセスする](key-vault-access-behind-firewall.md)
 ### [可用性と冗長性](key-vault-disaster-recovery-guidance.md)
@@ -46,7 +48,7 @@
 ## Node.js
 ### [コンテナーの管理](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest)
 ### [コンテナーの内容の管理](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest)
-## [REST ()](/rest/api/keyvault)
+## [REST](/rest/api/keyvault)
 
 # 関連項目
 ## [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)
