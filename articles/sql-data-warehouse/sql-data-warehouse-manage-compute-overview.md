@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Data Warehouse のコンピューティング能力の管理 (概要) | Microsoft Docs"
-description: "Azure SQL Data Warehouse のパフォーマンス スケールアウト機能。 DWU を調整してスケールアウトする方法や、コンピューティング リソースを一時停止および再開してコストを節約する方法を説明します。"
+title: "Azure SQL Data Warehouse でのコンピューティング リソースの管理 | Microsoft Docs"
+description: "Azure SQL Data Warehouse のパフォーマンス スケールアウト機能について説明します。 DWU を調整してスケールアウトしたり、データ ウェアハウスを一時停止してコストを削減したりします。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -13,36 +13,30 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 3/23/2017
+ms.date: 02/20/2018
 ms.author: elbutter
-ms.openlocfilehash: d795abe5254d47a72a468b0989e46829a5c5142a
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 7e6ae6e59b53dd79dab5e2504cf7a43a30e55353
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)
-> [!div class="op_single_selector"]
-> * [概要](sql-data-warehouse-manage-compute-overview.md)
-> * [ポータル](sql-data-warehouse-manage-compute-portal.md)
-> * [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
-> * [REST ()](sql-data-warehouse-manage-compute-rest-api.md)
-> * [TSQL](sql-data-warehouse-manage-compute-tsql.md)
->
->
+# <a name="manage-compute-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのコンピューティングの管理
+Azure SQL Data Warehouse でコンピューティング リソースを管理する方法について説明します。 また、データ ウェアハウスを一時停止してコストを削減したり、データ ウェアハウスをパフォーマンス需要に応じてスケーリングしたりする方法についても説明します。 
 
-SQL Data Warehouse のアーキテクチャではストレージとコンピューティングを分離して、それぞれを個別にスケーリングできます。 結果として、データの量とは無関係に、パフォーマンスの需要を満たすようにコンピューティングをスケーリングできます。 このアーキテクチャでは、当然、コンピューティングとストレージに対する[課金][billed]は別々に行われます。 
+## <a name="what-is-compute-management"></a>コンピューティングの管理とは
+SQL Data Warehouse のアーキテクチャではストレージとコンピューティングを分離して、それぞれを個別にスケーリングできます。 その結果、データ ストレージとは無関係に、パフォーマンス需要に応じてコンピューティングをスケーリングできます。 コンピューティング リソースは、一時停止して再開することもできます。 このアーキテクチャでは、当然、コンピューティングとストレージに対する[課金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)は別々に行われます。 データ ウェアハウスをしばらく使用する必要がない場合は、コンピューティングを一時停止して、コンピューティング コストを節約できます。 
 
-この概要では、SQL Data Warehouse でのスケールアウトのしくみについて説明するほか、SQL Data Warehouse の機能を一時停止、再開、およびスケーリングする方法について説明します。 
+## <a name="scaling-compute"></a>コンピューティングのスケーリング
+コンピューティングをスケールアウトまたはスケールバックするには、データ ウェアハウスの[データ ウェアハウス ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)設定を調整します。 データ ウェアハウス ユニットを追加していくと、読み込みとクエリのパフォーマンスが直線的に増加していきます。 SQL Data Warehouse は、データ ウェアハウス ユニットの[サービス レベル](performance-tiers.md#service-levels)を提供しており、スケールアウトまたはスケールバックを実行したときにパフォーマンスが顕著に変化します。 
 
-## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>SQL Data Warehouse でのコンピューティング管理操作のしくみ
-SQL Data Warehouse のアーキテクチャは、制御ノード、コンピューティング ノード、および 60 のディストリビューションに分散されたストレージ層で構成されます。 
+スケールアウトの手順については、[Azure Portal](quickstart-scale-compute-portal.md)、[PowerShell](quickstart-scale-compute-powershell.md)、または [T-SQL](quickstart-scale-compute-tsql.md) のクイックスタートに関する記事を参照してください。 [REST API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute) を使用して、スケールアウト操作を実行することもできます。
 
-SQL Data Warehouse の通常のアクティブ セッション中、システムのヘッド ノードは、メタデータを管理し、分散されたクエリ オプティマイザーを格納します。 このヘッド ノードの下には、コンピューティング ノードとストレージ層があります。 DWU が 400 のシステムには、1 つのヘッド ノードと 4 つのコンピューティング ノードのほか、60 のディストリビューションから成るストレージ層があります。 
+スケール操作を実行する場合、SQL Data Warehouse は、最初にすべての受信クエリを中止し、次にトランザクションをロールバックして一貫性のある状態を確保します。 スケーリングは、トランザクションのロールバックが完了して初めて実行されます。 スケール操作では、コンピューティング ノードからストレージ レイヤーがデタッチされ、コンピューティング ノードが追加され、ストレージ レイヤーがコンピューティング レイヤーに再アタッチされます。 各データ ウェアハウスは、60 のディストリビューションとして保存され、これがコンピューティング ノードに均等に分配されます。 コンピューティング ノードを追加していくと、コンピューティング能力も向上していきます。 コンピューティング ノードの数が増加すると、それにつれてコンピューティング ノードあたりのディストリビューションの数が減少し、クエリ用のコンピューティング能力がより多く得られます。 同様に、データ ウェアハウス ユニットを減らすと、コンピューティング ノードの数が減少し、クエリ用のコンピューティング リソースが減ります。
 
-スケール操作または一時停止操作を実行すると、システムは、最初にすべての受信クエリを中止し、次にトランザクションをロールバックして一貫性のある状態を確保します。 スケール操作の場合、このトランザクションのロールバックが完了した後でのみスケーリングが行われます。 スケールアップ操作の場合、システムによって追加で必要な数のコンピューティング ノードがプロビジョニングされた後、それらのコンピューティング ノードをストレージ層に再接続する処理が開始されます。 スケールダウン操作の場合、不要なノードが解放された後、残りのコンピューティング ノードが自動的に適切な数のディストリビューションに再接続します。 一時停止操作では、すべてのコンピューティング ノードが解放され、さまざまなメタデータ操作が実行された後、最終的にシステムが安定した状態になります。
+次の表は、データ ウェアハウス ユニットが変化すると、コンピューティング ノードあたりのディストリビューションの数がどのように変化するかを示しています。  DWU6000 は、60 のコンピューティング ノードを提供し、DWU100 よりはるかに高いクエリ パフォーマンスを達成します。 
 
-| DWU  | \#コンピューティング ノードの数 | \#ノードあたりのディストリビューションの数 |
+| データ ウェアハウス ユニット  | \# コンピューティング ノードの数 | \#ノードあたりのディストリビューションの数 |
 | ---- | ------------------ | ---------------------------- |
 | 100  | 1                  | 60                           |
 | 200  | 2                  | 30                           |
@@ -57,163 +51,72 @@ SQL Data Warehouse の通常のアクティブ セッション中、システム
 | 3000 | 30                 | 2                            |
 | 6000 | 60                 | 1                            |
 
-コンピューティングを管理するための 3 つの主要な機能は次のとおりです。
 
-1. 一時停止
-2. 再開
-3. スケール
+## <a name="finding-the-right-size-of-data-warehouse-units"></a>データ ウェアハウス ユニットの適正サイズの確認
 
-これらの各操作は、完了までに数分かかる場合があります。 スケーリング、一時停止、再開を自動的に行う場合は、別のアクションに進む前に特定の操作が完了していることを確認するロジックを実装することをお勧めします。 
+スケールアウトのパフォーマンス上のメリット (特に、大規模なデータ ウェアハウス ユニットのスケールアウトのパフォーマンス上の メリット) を確認するには、少なくとも 1 TB のデータ セットを使用する必要があります。 データ ウェアハウスの最適なデータ ウェアハウス ユニット数を確認するには、スケールアップとスケールダウンを試します。 データを読み込んだ後、さまざまなデータ ウェアハウス ユニット数でいくつかのクエリを実行します。 スケーリングは簡単に行えるので、1 時間以内でさまざまなパフォーマンス レベルを試すことができます。 
 
-さまざまなエンドポイントを通じてデータベースの状態を確認することで、このような操作の自動化を適切に実装できます。 ポータルでは、操作の完了通知とデータベースの現在の状態が提供されます。ただし、プログラムを使って状態をチェックすることはできません。 
+最適なデータ ウェアハウス ユニット数を確認する際の推奨事項を以下に示します。
 
->  [!NOTE]
->
->  コンピューティング管理機能はすべてのエンドポイントで使用できるわけではありません。
->
->  
+- 開発中のデータ ウェアハウスの場合は、少ない数のデータ ウェアハウス ユニットを選択することから始めます。  手始めとしては、DW400 または DW200 が適しています。
+- アプリケーションのパフォーマンスを監視し、選択したデータ ウェアハウス ユニットの数に対するパフォーマンスの変化を観察します。
+- 線形スケールを想定し、データ ウェアハウス ユニットをどれだけ増減する必要があるかを確認します。 
+- ビジネス要件に応じた最適なパフォーマンス レベルに到達するまで調整を行います。
 
-|              | 一時停止/再開 | スケール | データベース状態の確認 |
-| ------------ | ------------ | ----- | -------------------- |
-| Azure ポータル | [はい]          | [はい]   | **いいえ**               |
-| PowerShell   | [はい]          | [はい]   | [はい]                  |
-| REST API     | [はい]          | [はい]   | [はい]                  |
-| T-SQL        | **いいえ**       | [はい]   | [はい]                  |
+## <a name="when-to-scale-out"></a>スケールアウトを実行するタイミング
+データ ウェアハウス ユニットをスケールアウトすると、次のパフォーマンスに影響があります。
 
+- スキャン、集計、CTAS ステートメントに関するシステムのパフォーマンスが直線的に向上します。
+- データ読み込み用のリーダーとライターの数が増えます。
+- 同時クエリと同時実行スロットの最大数。
 
+データ ウェアハウス ユニットをスケールアウトするタイミングについての推奨事項を以下に示します。
 
-<a name="scale-compute-bk"></a>
+- 大量データの読み込みまたは変換操作を実行する前に、データが短時間で使用可能になるようにスケールアウトします。
+- 営業時間のピーク時は、より多くの同時実行クエリに対応できるようにスケールアウトします。 
 
-## <a name="scale-compute"></a>コンピューティングのスケーリング
+## <a name="what-if-scaling-out-does-not-improve-performance"></a>スケール アウトしてもパフォーマンスが向上しない場合の対処
 
-SQL Data Warehouse のパフォーマンスは、CPU、メモリ、I/O 帯域幅などのコンピューティング リソースの抽象的な尺度である [Data Warehouse ユニット (DWU)][data warehouse units (DWUs)] で測定されます。 システムのパフォーマンスをスケーリングする必要のあるユーザーは、ポータル、T-SQL、REST API などのさまざまな手段を使用してパフォーマンスを向上させることができます。 
+データ ウェアハウス ユニットを追加すると、並列性が増加します。 作業がコンピューティング ノード間で均等に分割されている場合、並列性を追加すると、クエリのパフォーマンスが向上します。 スケール アウトしてもパフォーマンスが変化しない場合は、その理由がいくつか存在します。 ディストリビューション全体でデータが傾斜しているか、クエリによって大量のデータ移動が発生している可能性があります。 クエリのパフォーマンスの問題を調査するには、[パフォーマンスのトラブルシューティングに関する記事](sql-data-warehouse-troubleshoot.md#performance)を参照してください。 
 
-### <a name="how-do-i-scale-compute"></a>コンピューティングをスケーリングする方法
-SQL Data Warehouse のコンピューティング能力を管理するには、DWU 設定を変更します。 パフォーマンスは、特定の操作のために DWU を追加するのに応じて線形に向上します。  Microsoft では、システムをスケールアップまたはスケールダウンしたときにパフォーマンスが顕著に変化するような DWU プランを提供しています。 
+## <a name="pausing-and-resuming-compute"></a>コンピューティングの一時停止と再開
+コンピューティングを一時停止すると、ストレージ レイヤーがコンピューティング ノードからデタッチされます。 コンピューティング リソースは、アカウントからリリースされます。 コンピューティングが一時停止中は、コンピューティングに対する課金はありません。 コンピューティングを再開すると、ストレージがコンピューティング ノードに再アタッチされ、コンピューティングの課金が再開されます。 データ ウェアハウスを一時停止すると、以下のようになります。
 
-DWU を調整するのには、これらの各方法をどれでも使用できます。
+* コンピューティング リソースとメモリ リソースは、データ センターで使用可能なリソースのプールに返されます。
+* 一時停止の期間中、データ ウェアハウス ユニットのコストは 0 になります。
+* データ ストレージは影響を受けず、データはそのまま残ります。 
+* SQL Data Warehouse では、実行中またはキューに格納されたすべての操作を取り消します。
 
-* [Azure Portal を使用したコンピューティング能力のスケーリング][Scale compute power with Azure portal]
-* [PowerShell を使用したコンピューティング能力のスケーリング][Scale compute power with PowerShell]
-* [REST API を使用したコンピューティング能力のスケーリング][Scale compute power with REST APIs]
-* [TSQL を使用したコンピューティング能力のスケーリング][Scale compute power with TSQL]
+データ ウェアハウスを再開すると、以下のようになります。
 
-### <a name="how-many-dwus-should-i-use"></a>必要な DWU の数
+* SQL Data Warehouse がデータ ウェアハウス ユニット設定のコンピューティング リソースとメモリ リソースを取得します。
+* データ ウェアハウス ユニットのコンピューティングの課金が再開されます。
+* データが使用可能になります。
+* データ ウェアハウスがオンラインになった後、ワークロード クエリを再開する必要があります。
 
-理想的な DWU 値を把握するには、データ読み込みの後で、拡大/縮小を行い、いくつかのクエリを実行してください。 スケーリングは簡単に行えるので、1 時間以内でさまざまなパフォーマンス レベルを試すことができます。 
+常にデータ ウェアハウスにアクセスできることが必要な場合は、一時停止ではなく、最小サイズへのスケールダウンを検討してください。 
 
-> [!Note] 
-> SQL Data Warehouse は、大量のデータを処理するように設計されています。 特に大規模な DWU での実際のスケーリング能力を確認する場合は、サイズが 1 TB に近いか 1 TB を超える大きなデータ セットを使用できます。
+一時停止と再開の手順については、[Azure Portal](pause-and-resume-compute-portal.md) または [PowerShell](pause-and-resume-compute-powershell.md) のクイックスタートに関する記事を参照してください。 [一時停止 REST API](sql-data-warehouse-manage-compute-rest-api.md#pause-compute) または [再開 REST API](sql-data-warehouse-manage-compute-rest-api.md#resume-compute) を使用することもできます。
 
-ワークロードに最適な DWU を特定する際の推奨事項:
+## <a name="drain-transactions-before-pausing-or-scaling"></a>一時停止またはスケールの前にトランザクションを排出する
+一時停止操作またはスケール操作を開始する前に、既存のトランザクションを完了することをお勧めします。
 
-1. 開発中のデータ ウェアハウスの場合は、DWU が小さなパフォーマンス レベルを選択することから始めます。  手始めとしては、DW400 または DW200 が適しています。
-2. アプリケーションのパフォーマンスを監視し、選択した DWU の数に対するパフォーマンスの変化を観察します。
-3. 線形スケールを想定して、要件に対して最適なパフォーマンス レベルに到達するために、パフォーマンスをどの程度上下する必要があるかを判別します。
-4. どのくらい速くまたは遅くワークロードを実行するかに応じて、DWU の数を増減します。 
-5. ビジネス要件に応じた最適なパフォーマンス レベルに到達するまで調整を行います。
+SQL Data Warehouse を一時停止またはスケールすると、要求の一時停止またはスケールを開始したときに、バックグラウンドでクエリが取り消されます。  単純な SELECT クエリの取り消しは、短時間で終わる処理であるため、インスタンスを一時停止またはスケールするのにかかる時間にほとんど影響しません。  ただし、データやデータ構造を変更するトランザクション クエリは、すぐに停止できない場合があります。  **トランザクション クエリについては、当然、すべてが完了するか、変更をロールバックする必要があります。**  トランザクション クエリが完了した作業をロールバックするには、クエリが元の変更の適用にかかった時間と同じか、それよりも長くかかる場合があります。  たとえば、行の削除を既に 1 時間実行しているクエリを取り消した場合、削除された行を挿入し直すのに 1 時間かかる可能性があります。  トランザクションの実行中に一時停止またはスケールを実行した場合、一時停止またはスケールするには、ロールバックが完了するのを待機する必要があるため、時間がかかることがあります。
 
-> [!NOTE]
->
-> コンピューティング ノード間で作業を分割することができる場合、クエリのパフォーマンスを引き上げるには、並列処理を増やすしかありません。 スケーリングしてもパフォーマンスが変わらない場合は、パフォーマンス チューニングに関する記事を参照して、データの分散が不均等でないか、または大量のデータ移動が行われていないかを確認してください。 
+[トランザクションの理解に関する記事](sql-data-warehouse-develop-transactions.md)、および [トランザクションの最適化][トランザクションの最適化に関する記事](sql-data-warehouse-develop-best-practices-transactions.md)も参照してください。
 
-### <a name="when-should-i-scale-dwus"></a>DWU をスケーリングするタイミング
-DWU のスケーリングに伴い、次の重要なシナリオに変化が生じます。
+## <a name="automating-compute-management"></a>コンピューティングの管理の自動化
+コンピューティングの管理操作を自動化するには、[Azure の機能を使用したコンピューティングの管理に関する記事](manage-compute-with-azure-functions.md)を参照してください。
 
-1. スキャン、集計、CTAS ステートメントのためのシステムのパフォーマンスの線形の変化
-2. PolyBase を使用して読み込むときのリーダーとライターの数の拡大
-3. 同時クエリと同時実行スロットの最大数
+スケール アウト、一時停止、再開の各操作は、完了するのに数分かかる場合があります。 スケーリング、一時停止、または再開を自動化する場合は、別のアクションに進む前に特定の操作を確実に完了させるロジックを実装することをお勧めします。 さまざまなエンドポイントを通じてデータ ウェアハウスの状態を確認することで、このような操作の自動化を適切に実装できます。 
 
-DWU をスケーリングするタイミングを特定するための推奨事項:
+データ ウェアハウスの状態を確認するには、 [PowerShell](quickstart-scale-compute-powershell.md#check-database-state) または [T-SQL](quickstart-scale-compute-tsql.md#check-database-state) のクイックスタートに関する記事を参照してください。 [REST API](sql-data-warehouse-manage-compute-rest-api.md#check-database-state) を使用して、データ ウェアハウスの状態を確認することもできます。
 
-1. 大量データの読み込みまたは変換操作を実行する前に、データが短時間で使用可能になるように DWU をスケールアップします。
-2. 営業時間のピーク時は、より多くの同時実行クエリに対応できるようにスケーリングします。 
-
-<a name="pause-compute-bk"></a>
-
-## <a name="pause-compute"></a>コンピューティングの一時停止
-[!INCLUDE [SQL Data Warehouse pause description](../../includes/sql-data-warehouse-pause-description.md)]
-
-データベースを一時停止するには、次のいずれかの方法を使用できます。
-
-* [Azure Portal を使用したコンピューティングの一時停止][Pause compute with Azure portal]
-* [PowerShell を使用したコンピューティングの一時停止][Pause compute with PowerShell]
-* [REST API を使用したコンピューティングの一時停止][Pause compute with REST APIs]
-
-<a name="resume-compute-bk"></a>
-
-## <a name="resume-compute"></a>コンピューティングの再開
-[!INCLUDE [SQL Data Warehouse resume description](../../includes/sql-data-warehouse-resume-description.md)]
-
-データベースを再開するには、次のいずれかの方法を使用できます。
-
-* [Azure Portal を使用したコンピューティングの再開][Resume compute with Azure portal]
-* [PowerShell を使用したコンピューティングの再開][Resume compute with PowerShell]
-* [REST API を使用したコンピューティングの再開][Resume compute with REST APIs]
-
-<a name="check-compute-bk"></a>
-
-## <a name="check-database-state"></a>データベース状態の確認 
-
-データベースを再開するには、次のいずれかの方法を使用できます。
-
-- [T-SQL を使用したデータベース状態の確認][Check database state with T-SQL]
-- [PowerShell を使用したデータベース状態の確認][Check database state with PowerShell]
-- [REST API を使用したデータベース状態の確認][Check database state with REST APIs]
 
 ## <a name="permissions"></a>アクセス許可
 
-データベースをスケーリングするには、[ALTER DATABASE][ALTER DATABASE] に関するページで説明されているアクセス許可が必要です。  一時停止と再開には、[SQL DB の共同作成者][SQL DB Contributor]のアクセス許可、具体的には Microsoft.Sql/servers/databases/action が必要です。
+データ ウェアハウスをスケーリングするには、[「ALTER DATABASE」(データベースの変更)](/sql/t-sql/statements/alter-database-azure-sql-data-warehouse.md) で説明されているアクセス許可が必要です。  一時停止と再開には、[SQL DB Contributor](../active-directory/role-based-access-built-in-roles.md#sql-db-contributor) のアクセス許可、具体的には Microsoft.Sql/servers/databases/action が必要です。
 
-<a name="next-steps-bk"></a>
 
 ## <a name="next-steps"></a>次の手順
-その他の主要なパフォーマンスの概念を理解するために、次の記事を参照してください。
-
-* [ワークロードと同時実行の管理][Workload and concurrency management]
-* [テーブル設計の概要][Table design overview]
-* [テーブルの分散][Table distribution]
-* [テーブルのインデックス作成][Table indexing]
-* [テーブルのパーティション分割][Table partitioning]
-* [テーブルの統計][Table statistics]
-* [ベスト プラクティス][Best practices]
-
-<!--Image reference-->
-
-<!--Article references-->
-[billed]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
-[Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-power
-[Scale compute power with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
-[Scale compute power with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk
-[Scale compute power with TSQL]: ./sql-data-warehouse-manage-compute-tsql.md#scale-compute-bk
-
-[capacity limits]: ./sql-data-warehouse-service-capacity-limits.md
-
-[Pause compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md
-[Pause compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#pause-compute-bk
-[Pause compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#pause-compute-bk
-
-[Resume compute with Azure portal]:  ./sql-data-warehouse-manage-compute-portal.md
-[Resume compute with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#resume-compute-bk
-[Resume compute with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#resume-compute-bk
-
-[Check database state with T-SQL]: ./sql-data-warehouse-manage-compute-tsql.md#check-database-state-and-operation-progress
-[Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
-[Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
-
-[Workload and concurrency management]: ./sql-data-warehouse-develop-concurrency.md
-[Table design overview]: ./sql-data-warehouse-tables-overview.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Table indexing]: ./sql-data-warehouse-tables-index.md
-[Table partitioning]: ./sql-data-warehouse-tables-partition.md
-[Table statistics]: ./sql-data-warehouse-tables-statistics.md
-[Best practices]: ./sql-data-warehouse-best-practices.md
-[development overview]: ./sql-data-warehouse-overview-develop.md
-
-[SQL DB Contributor]: ../active-directory/role-based-access-built-in-roles.md#sql-db-contributor
-
-<!--MSDN references-->
-[ALTER DATABASE]: https://msdn.microsoft.com/library/mt204042.aspx
-
-<!--Other Web references-->
-[Azure portal]: http://portal.azure.com/
+コンピューティング リソースの管理のもう一つの側面は、個々のクエリに対して異なるコンピューティング リソースを割り当てることです。 詳細については、[「ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。

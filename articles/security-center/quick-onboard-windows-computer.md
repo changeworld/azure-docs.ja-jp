@@ -9,16 +9,17 @@ editor:
 ms.assetid: 61e95a87-39c5-48f5-aee6-6f90ddcd336e
 ms.service: security-center
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: terrylan
-ms.openlocfilehash: 50cbbca9181d67bc41632a4650c76b9636a72356
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 8d9b0fcc8b72f947cbc64c6ac9a428ac29f8dfd2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="quickstart-onboard-windows-computers-to-azure-security-center"></a>クイックスタート: Windows コンピューターでの Azure Security Center の利用開始
 Azure サブスクリプションの利用を開始した後で、Microsoft Monitoring Agent をプロビジョニングして、オンプレミスや他のクラウドなど、Azure の外部で実行されているリソースに対して Security Center を有効にできます。
@@ -73,7 +74,7 @@ Azure サブスクリプションの利用を開始した後で、Microsoft Moni
 
 完了すると、**コントロール パネル**に **Microsoft Monitoring Agent** が表示されます。 構成を検証して、エージェントが接続されていることを確認できます。
 
-エージェントのインストールと構成について詳しくは、[Windows コンピューターの接続](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup)に関するページをご覧ください。
+エージェントのインストールと構成について詳しくは、[Windows コンピューターの接続](../log-analytics/log-analytics-agent-windows.md#install-the-agent-using-setup-wizard)に関するページをご覧ください。
 
 これで、Azure VM と Azure 以外のコンピューターを 1 か所で監視できます。 **[計算]** に、すべての VM とコンピューターの概要が推奨事項と共に表示されます。 各列は、推奨事項の 1 つのセットを表します。 色は、その推奨事項の VM またはコンピューターの現在のセキュリティの状態を表します。 Security Center では、セキュリティの警告でのこれらのコンピューターの検出も明らかになります。
 

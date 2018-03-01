@@ -2,23 +2,17 @@
 title: ".NET を使用して Azure Blob Storage (オブジェクト ストレージ) を使用する | Microsoft Docs"
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
-documentationcenter: .net
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: d18a8fc8-97cb-4d37-a408-a6f8107ea8b3
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: tamram
-ms.openlocfilehash: 87594d2688e3cd01f5e7db8f5be8ca513969e774
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3dff18f41cc7264c523e6ae423a5d86661ab9918
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>.NET を使用して Azure Blob Storage を使用する
 
@@ -168,7 +162,7 @@ foreach (IListBlobItem item in container.ListBlobs(null, false))
 
 BLOB の名前にパス情報を含めることで、従来のファイル システムと同じように、整理およびスキャン可能な仮想ディレクトリ構造を作成できます。 ディレクトリ構造は仮想のみであり、Blob Storage で使用できるリソースはコンテナーと BLOB のみです。 ただし、ストレージ クライアント ライブラリでは、仮想ディレクトリを参照し、この方法で整理される BLOB の操作プロセスを簡略化するための **CloudBlobDirectory** オブジェクトが提供されます。
 
-たとえば、*photos* というコンテナーに次のブロック BLOB があるとします。
+たとえば、 *photos*というコンテナーに次のブロック BLOB があるとします。
 
 ```
 photo1.jpg
@@ -384,7 +378,7 @@ Azure Storage では、クライアント側とサーバー側の両方で、BLO
 * **クライアント側の暗号化** : .NET 用ストレージ クライアント ライブラリは、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。 また、このライブラリは Azure Key Vault との統合にも役立ち、ストレージ アカウント キー管理に利用することができます。 詳細については、 [.NET による Microsoft Azure Storage のクライアント側の暗号化](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) についてのページを参照してください。 また、「 [チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](storage-encrypt-decrypt-blobs-key-vault.md)」も参照してください。
 * **サーバー側の暗号化**: Azure Storage は現在、サーバー側の暗号化をサポートしています。 「 [Azure Storage Service Encryption for Data at Rest (プレビュー)](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、Blob Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 ### <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー

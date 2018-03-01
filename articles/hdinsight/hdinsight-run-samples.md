@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e4dbf1fa32f916a206e4f8d796218ab809835ad
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: a5aabd2d845f4ff10169640d6316c1029105f608
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="run-hadoop-mapreduce-samples-in-windows-based-hdinsight"></a>Windows ベースの HDInsight での Hadoop MapReduce サンプルの実行
 [!INCLUDE [samples-selector](../../includes/hdinsight-run-samples-selector.md)]
@@ -210,7 +210,7 @@ Pi 推定では、統計的手法 (準モンテカルロ法) を使用して、P
                                 -Arguments "-Dmapred.map.tasks=50", "-Dmapred.reduce.tasks=25", "/example/data/10GB-sort-output", "/example/data/10GB-sort-validate"
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事および各サンプルの記事では、Azure PowerShell を使用して HDInsight クラスターに付属するサンプルを実行する方法を説明しました。 HDInsight で Pig、Hive、および MapReduce を使用する方法のチュートリアルについては、次のトピックをご覧ください。
 
 * [HDInsight で Hive と Hadoop を使用し、モバイル ハンドセットの使用状況を分析する][hdinsight-get-started]
@@ -519,7 +519,7 @@ implements Mapper<LongWritable, LongWritable, BooleanWritable, LongWritable> {
 //Map method.
 //@param offset samples starting from the (offset+1)th sample.
 //@param size the number of samples for this map
-//@param out output {ture->numInside, false->numOutside}
+//@param out output {true->numInside, false->numOutside}
 //@param reporter
 public void map(LongWritable offset,
 LongWritable size,

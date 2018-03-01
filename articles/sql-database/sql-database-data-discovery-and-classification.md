@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 4538ad9c048a3e84bbe793572f569dd7126803da
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 1ff7f3509ccdaa6911cee0487d5a6d90b11eb79f
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
-データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの検出、分類、ラベル付け、保護を行う高度な機能が用意されます。
+データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
 最も機微なデータの検出と分類 (ビジネス/金融、医療、PII など) は、組織の情報保護水準において極めて重要な役割を果たします。 これは、以下のケースのインフラストラクチャとして機能します。
+* データのプライバシー基準および規制のコンプライアンス要件を満たす支援 (GDPR など)。
 * さまざまなセキュリティ シナリオ (機微なデータに対する異常なアクセスの監視 (監査) とアラートなど)。
 * 非常に機微なデータを含むデータベースへのアクセスの制御と、セキュリティの強化。
-* データのプライバシー基準および規制のコンプライアンス要件を満たす支援 (GDPR など)。
 
 ## <a id="subheading-1"></a>概要
 データの検出と分類では、一連の高度なサービスと新しい SQL 機能が導入され、データベースだけでなくデータの保護も目的とする新しい SQL Information Protection パラダイムが形成されます。
@@ -92,6 +92,8 @@ ms.lasthandoff: 02/01/2018
     ![ナビゲーション ウィンドウ][10]
 
 ## <a id="subheading-3"></a>機密データへのアクセスの監査
+
+機密データへのアクセスを監視できることは、情報保護パラダイムの重要な要素の 1 つです。
 
 [Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) が拡張され、監査ログに *data_sensitivity_information* という名前の新しいフィールドが追加されています。このフィールドには、クエリによって返された実際のデータの重大度の分類 (ラベル) が記録されます。
 

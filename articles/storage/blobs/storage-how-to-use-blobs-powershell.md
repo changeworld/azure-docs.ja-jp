@@ -2,23 +2,17 @@
 title: "PowerShell を使用する Azure Blob Storage (オブジェクトの記憶域) での操作の実行 | Microsoft Docs"
 description: "チュートリアル - PowerShell を使用する Azure Blob Storage (オブジェクトの記憶域) での操作の実行"
 services: storage
-documentationcenter: storage
-author: robinsh
-manager: timlt
-editor: tysonn
-ms.assetid: 
+author: tamram
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
-ms.author: robinsh
-ms.openlocfilehash: 170c3091efc90f640792682377ed10e2eab0cab3
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.author: tamram
+ms.openlocfilehash: 8b87ecc3fefe5338269a6ad584e9a097ff3fb633
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="perform-azure-blob-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用して Azure Blob Storage の操作を実行する
 
