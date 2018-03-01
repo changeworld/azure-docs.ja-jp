@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory の条件付きアクセスのコントロール | Microsoft Docs"
-description: "Azure Active Directory の条件付きアクセスのコントロールのしくみについて学習します。"
+title: "Azure Active Directory の条件付きアクセスのアクセス制御 | Microsoft Docs"
+description: "Azure Active Directory の条件付きアクセスのアクセス制御のしくみについて学習します。"
 services: active-directory
 keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
 documentationcenter: 
@@ -13,28 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 533229ae90828a0aeba9f10cbdfdb70afa21e1c5
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: c5a2ab3b8d2fe55eee1f67e4b697a1e5b0dd2daf
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスのコントロール 
+# <a name="access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスのアクセス制御 
 
-[Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、特定の条件 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 条件付きアクセスの文脈では、 
+[Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、ポリシーをトリガーする理由 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 
 
-- "**When this happens**" (これが発生した場合は) を**条件文**と呼びます
+![コントロール](./media/active-directory-conditional-access-controls/10.png)
 
-- "**Then do this**" (これを実行する) を**コントロール**と呼びます
 
-![コントロール](./media/active-directory-conditional-access-controls/11.png)
+条件付きアクセスの文脈では、 
+
+- "**When this happens**" (これが発生した場合は) を**条件**と呼びます。
+
+- "**Then do this**" (これを実行する) を**アクセス制御**と呼びます。
+
 
 条件文とコントロールの組み合わせによって、条件付きアクセス ポリシーを表現します。
 
-![コントロール](./media/active-directory-conditional-access-controls/12.png)
+![コントロール](./media/active-directory-conditional-access-controls/61.png)
 
 各コントロールはいずれも、サインインしようとしているユーザーまたはシステムが満たすべき要件と、サインインした後にユーザーができることに対する制約のいずれかになります。 
 

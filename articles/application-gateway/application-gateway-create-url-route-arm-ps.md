@@ -10,11 +10,11 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: e5c76ff84fc6409975ce6df076bfe220a092eeec
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 70973684445416d715c5b26d06613b31e0001395
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-application-gateway-with-url-path-based-routing-rules-using-azure-powershell"></a>Azure PowerShell を使用して URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -24,8 +24,8 @@ ms.lasthandoff: 01/29/2018
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
-> * URL マップでのアプリケーション ゲートウェイの作成
-> * バックエンド プールでの仮想マシン スケール セットの作成
+> * URL マップを含んだアプリケーション ゲートウェイの作成
+> * バックエンド プールを含んだ仮想マシン スケール セットの作成
 
 ![URL ルーティングの例](./media/application-gateway-create-url-route-arm-ps/scenario.png)
 
@@ -129,7 +129,7 @@ $frontendRule = New-AzureRmApplicationGatewayRequestRoutingRule `
 
 ### <a name="create-the-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-必要な関連リソースを作成したら、[New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) を使用して、*myAppGateway* という名前のアプリケーション ゲートウェイのパラメーターを指定し、[New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway) を使用して、それを作成します。
+必要な関連リソースを作成したら、[New-AzureRmApplicationGatewaySku](/powershell/module/azurerm.network/new-azurermapplicationgatewaysku) を使用して *myAppGateway* という名前のアプリケーション ゲートウェイのパラメーターを指定し、[New-AzureRmApplicationGateway](/powershell/module/azurerm.network/new-azurermapplicationgateway) を使用してそれを作成します。
 
 ```azurepowershell-interactive
 $sku = New-AzureRmApplicationGatewaySku `
@@ -352,7 +352,7 @@ Get-AzureRmPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublic
 
 ![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest.png)
 
-URL を http://<ip-address>:8080/video/test.htm (ベース URL の末尾) に変更します。次のように表示されます。
+URL を http://<ip-address>:8080/video/test.htm に変更します。<ip-address> は使用している IP アドレスに置き換えてください。次の例のように表示されます。
 
 ![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/application-gateway-create-url-route-arm-ps/application-gateway-iistest-images.png)
 
@@ -366,7 +366,7 @@ URL を http://<ip-address>:8080/video/test.htm に変更します。次のよ�
 
 > [!div class="checklist"]
 > * ネットワークのセットアップ
-> * URL マップでのアプリケーション ゲートウェイの作成
-> * バックエンド プールでの仮想マシン スケール セットの作成
+> * URL マップを含んだアプリケーション ゲートウェイの作成
+> * バックエンド プールを含んだ仮想マシン スケール セットの作成
 
 アプリケーション ゲートウェイとその関連リソースの詳細を確認するには、ハウツー記事に進みます。

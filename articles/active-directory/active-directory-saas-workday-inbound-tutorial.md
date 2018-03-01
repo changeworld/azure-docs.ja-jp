@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: ed35a703774fdb2f2896414b6022b6f13fb7a307
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -297,7 +297,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
          * **式** – 1 つ以上の Workday 属性に基づいて、AD 属性にカスタム値を書き込むことができます。 [詳細については、式に関するこの記事を参照してください](active-directory-saas-writing-expressions-for-attribute-mappings.md)。
 
-      * **ソース属性** - Workday のユーザー属性。
+      * **ソース属性** - Workday のユーザー属性。 探している属性が存在しない場合は、「[Workday のユーザー属性リストをカスタマイズする](#customizing-the-list-of-workday-user-attributes)」を参照してください。
 
       * **既定値** – 省略可能。 ソース属性に空の値がある場合、マッピングではこの値が代わりに書き込まれます。
             最も一般的な構成では、これを空白のままにします。
@@ -549,7 +549,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
       * **式** – 1 つ以上の Workday 属性に基づいて、AD 属性にカスタム値を書き込むことができます。 [詳細については、式に関するこの記事を参照してください](active-directory-saas-writing-expressions-for-attribute-mappings.md)。
 
-   * **ソース属性** - Workday のユーザー属性。
+   * **ソース属性** - Workday のユーザー属性。 探している属性が存在しない場合は、「[Workday のユーザー属性リストをカスタマイズする](#customizing-the-list-of-workday-user-attributes)」を参照してください。
 
    * **既定値** – 省略可能。 ソース属性に空の値がある場合、マッピングではこの値が代わりに書き込まれます。
             最も一般的な構成では、これを空白のままにします。
@@ -646,7 +646,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 ## <a name="customizing-the-list-of-workday-user-attributes"></a>Workday のユーザー属性リストをカスタマイズする
 Active Directory と Azure AD の Workday プロビジョニング アプリにはどちらも、Workday のユーザー属性の選択元となる既定のリストが含まれています。 ただしこれらのリストは、必要な情報をすべてカバーしているわけではありません。 Workday は、想定されるさまざまなユーザー属性を数多くサポートしていますが、それらのユーザー属性には、標準の属性と特定の Workday テナントに固有の属性とがあります。 
 
-Azure AD プロビジョニング サービスは、このリスト (Workday 属性) をカスタマイズできるようになっており、Human Resources API の [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Get_Workers.html) 操作に公開されている属性であれば、どのような属性でも含めることができます。
+Azure AD プロビジョニング サービスは、このリスト (Workday 属性) をカスタマイズできるようになっており、Human Resources API の [Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) 操作に公開されている属性であれば、どのような属性でも含めることができます。
 
 そのためには、使用する属性の XPath 式を [Workday Studio](https://community.workday.com/studio-download) を使って抽出し、Azure Portal の高度な属性エディターを使ってそれらをプロビジョニング構成に追加する必要があります。
 
@@ -654,7 +654,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 1. [Workday Studio](https://community.workday.com/studio-download) をダウンロードしてインストールします。 インストーラーにアクセスするには、Workday コミュニティ アカウントが必要です。
 
-2. Workday Human_Resources WDSL ファイルをダウンロードします。URL は https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v29.2/Human_Resources.wsdl です。
+2. Workday Human_Resources WDSL ファイルをダウンロードします。URL は https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl です。
 
 3. Workday Studio を起動します。
 
@@ -680,12 +680,23 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
     <?xml version="1.0" encoding="UTF-8"?>
     <env:Envelope xmlns:env="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <env:Body>
-        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v28.0">
+        <wd:Get_Workers_Request xmlns:wd="urn:com.workday/bsvc" wd:version="v21.1">
           <wd:Request_References wd:Skip_Non_Existing_Instances="true">
             <wd:Worker_Reference>
               <wd:ID wd:type="Employee_ID">21008</wd:ID>
             </wd:Worker_Reference>
           </wd:Request_References>
+          <wd:Response_Group>
+            <wd:Include_Reference>true</wd:Include_Reference>
+            <wd:Include_Personal_Information>true</wd:Include_Personal_Information>
+            <wd:Include_Employment_Information>true</wd:Include_Employment_Information>
+            <wd:Include_Management_Chain_Data>true</wd:Include_Management_Chain_Data>
+            <wd:Include_Organizations>true</wd:Include_Organizations>
+            <wd:Include_Reference>true</wd:Include_Reference>
+            <wd:Include_Transaction_Log_Data>true</wd:Include_Transaction_Log_Data>
+            <wd:Include_Photo>true</wd:Include_Photo>
+            <wd:Include_User_Account>true</wd:Include_User_Account>
+          </wd:Response_Group>
         </wd:Get_Workers_Request>
       </env:Body>
     </env:Envelope>

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 9a6e629582b6966d270a2378e585572efe133f3e
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 69750db615460b3ac69ba9ffe707a970ca8e2e11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow を使用したイベントの集計と収集
 
@@ -43,6 +43,9 @@ EventFlow バイナリは、一連の NuGet パッケージとして入手でき
 
 ## <a name="configure-and-enable-log-collection"></a>ログの収集の構成と有効化
 ログの送信を行う EventFlow パイプラインは、構成ファイルに格納されている仕様から作成されます。 `Microsoft.Diagnostics.EventFlow.ServiceFabric` パッケージは、初期の EventFlow 構成ファイルを `eventFlowConfig.json` という名前の `PackageRoot\Config` ソリューション フォルダーにインストールします。 サービスの既定の `EventSource` クラスおよび構成する任意の他の入力からデータをキャプチャして適切な場所にデータを送信するように、この構成ファイルを変更する必要があります。
+
+>[!NOTE]
+>プロジェクト ファイルで Visual Studio 2017 形式を使用している場合、`eventFlowConfig.json` ファイルは自動的に追加されません。 これを修正するには、そのファイルを `Config` フォルダーに作成し、ビルド アクションを `Copy if newer` に設定します。 
 
 上記で説明した NuGet パッケージに基づくサンプル *eventFlowConfig.json* です。
 ```json
@@ -150,7 +153,7 @@ servicefabric:/<section-name>/<setting-name>
 
 サービスを開始し、Visual Studio の [デバッグ] 出力ウィンドウを観察します。 サービスを開始すると、構成した出力に対して、サービスがレコードを送信している証拠が表示され始めるはずです。 イベント分析と視覚化プラットフォームに移動し、ログ表示が開始したことを確認します (数分かかる場合があります)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [OMS を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)

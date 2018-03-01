@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: 6982d6177ef5c94436a28cd68beb9feb5cc343e5
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 29f153803d5eb74e2d287d97cf9436e81b2a3e20
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="understand-reserved-instance-usage-for-your-pay-as-you-go-subscription"></a>従量課金サブスクリプションの予約インスタンス使用量について
 
@@ -56,6 +56,16 @@ CSV のこのセクションには、予約の合計使用量が表示されま�
 3. [測定サブカテゴリ] 行の [占有 - ベース VM] は、[明細書] セクションの $0 コストの行を表します。 この VM の実行コストは、予約による前払いが済んでいます。
 4. これは予約のメーター ID です。 このメーターのコストは $0 です。 予約インスタンスの適用資格を満たしたすべての VM は、そのコストを説明するこの MeterId が CSV に存在します。 
 5. Standard_DS1_v2 は、vCPU を 1 個搭載した VM です。この VM は、Azure ハイブリッド特典なしでデプロイされます。 そのため、Windows ソフトウェアに対する追加料金は、このメーターでカバーされます。 「[Azure 予約 VM インスタンスにおける Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。 D シリーズの 1 コア VM に対応するメーターが記載されています。 Azure ハイブリッド特典が使用されている場合、この追加料金は適用されません。 
+
+## <a name="next-steps"></a>次の手順
+予約仮想マシン インスタンスの詳細については、次の記事を参照してください。
+
+- [予約 VM インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [予約仮想マシン インスタンスの管理](billing-manage-reserved-vm-instance.md)
+- [予約仮想マシン インスタンスで仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
+- [予約仮想マシン インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
+- [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
+- [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

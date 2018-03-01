@@ -3,7 +3,7 @@ title: "ロールベースのアクセス制御のカスタム ロールを作�
 description: "PowerShell と CLI を使用して作成したカスタム RBAC ロールを内部および外部ユーザーに割り当てます"
 services: active-directory
 documentationcenter: 
-author: andreicradu
+author: rolyon
 manager: mtillman
 editor: kgremban
 ms.assetid: 
@@ -13,14 +13,14 @@ ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
 ms.date: 12/06/2017
-ms.author: a-crradu
+ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
-ms.openlocfilehash: b3b65812d453a9f7d93ee4381c4261e685a60376
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 75a45b492c230b19d2f7237f8ea7fe2c49de29bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="intro-on-role-based-access-control"></a>ロールベースのアクセス制御の概要
 
@@ -129,7 +129,7 @@ RBAC ロールを付与できるのは、サブスクリプションの**所有�
 
 ![Azure Active Directory へのアクセス制限 (Azure portal)](./media/role-based-access-control-create-custom-roles-for-internal-external-users/9.png)
 
-Azure Active Directory と Azure サブスクリプションには、他の Azure リソース (例: 仮想マシン、仮想ネットワーク、Web アプリ、ストレージなど) と Azure サブスクリプションとの間にあるような子と親の関係はありません。 後者はすべて Azure サブスクリプションの下で作成、管理、課金されますが、Azure ディレクトリへのアクセスの管理には Azure サブスクリプションが使用されます。 詳細については、「[Azure サブスクリプションと Azure AD の関連性](/active-directory/active-directory-how-subscriptions-associated-directory)」を参照してください。
+Azure Active Directory と Azure サブスクリプションには、他の Azure リソース (例: 仮想マシン、仮想ネットワーク、Web アプリ、ストレージなど) と Azure サブスクリプションとの間にあるような子と親の関係はありません。 後者はすべて Azure サブスクリプションの下で作成、管理、課金されますが、Azure ディレクトリへのアクセスの管理には Azure サブスクリプションが使用されます。 詳細については、[Azure サブスクリプションを Azure AD に関連付ける方法](/active-directory/active-directory-how-subscriptions-associated-directory)に関するページを参照してください。
 
 すべての組み込み RBAC ロールのうち、**所有者**と**共同作成者**は環境内の全リソースへの完全な管理アクセスが可能ですが、共同作成者は新しい RBAC ロールを作成および削除できないという違いがあります。 **仮想マシン共同作成者**のような他の組み込みロールは、リソースの作成先となっている**リソース グループ**に関係なく、名前によって示されるリソースのみへの完全な管理アクセスが可能です。
 

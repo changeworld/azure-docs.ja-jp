@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 76bbee514eac36aec8eaf84e8a20f85a27559fc7
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: ad12dfd525afe1bde7026535dceb25556abf0a96
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp-federated-sso"></a>チュートリアル: Azure Active Directory と ADP Federated SSO の統合
 
@@ -197,9 +197,8 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
     ![シングル サインオン構成のリンク][4]
 
 7. **[シングル サインオン]** ダイアログで、**[モード]** として **[リンクされたサインオン]** を選択し、アプリケーションを **ADP Federated SSO** にリンクします。
-<!---Loc Comment:Sentence "to link your application to ADP Federated SSO." should be concatenated with the previous sentence--->
 
-    ![Single sign-on linked](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
+    ![リンクされたシングル サインオン](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
 
 8. **[サインオン URL の構成]** セクションに移動し、次の手順を実行します。
 

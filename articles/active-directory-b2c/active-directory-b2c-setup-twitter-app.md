@@ -14,17 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/06/2017
 ms.author: parakhj
-ms.openlocfilehash: dde17c89c49223c75842f328f455c6637aa1915b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4dbc70d866a728a63102bd169a124bd26990aeb2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-twitter-accounts"></a>Azure Active Directory B2C: Twitter アカウントを使用するコンシューマーにサインアップとサインインを提供する
-
-> [!NOTE]
-> この機能はプレビュー段階にあります。
-> 
 
 ## <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Twitter を使用するには、Twitter アプリケーションを作成し、適切なパラメーターを指定する必要があります。 そのためには、Twitter の開発者アカウントが必要です。 アカウントがない場合は、[https://dev.twitter.com/](https://dev.twitter.com/) で取得できます。
@@ -46,3 +42,6 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Twitter
 6. **[この ID プロバイダーをセットアップします]** をクリックします。**[クライアント ID]** に **Twitter のコンシューマー キー**を入力し、**[クライアント シークレット]** に **Twitter のコンシューマー シークレット**を入力します。
 7. **[OK]** をクリックし、**[作成]** をクリックして Twitter の構成を保存します。
 
+## <a name="next-steps"></a>次の手順
+
+[組み込みのポリシー](active-directory-b2c-reference-policies.md)を作成するか編集し、ID プロバイダーとして Twitter を追加します。

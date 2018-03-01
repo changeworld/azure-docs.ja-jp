@@ -3,7 +3,7 @@ title: "Azure Stack の主要な機能と概念 | Microsoft Docs"
 description: "Azure Stack の主要な機能と概念について説明します。"
 services: azure-stack
 documentationcenter: 
-author: brenduns
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 09ca32b7-0e81-4a27-a6cc-0ba90441d097
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: b252d3d52c9bf3825ae2b443065e007dda141b24
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 02/21/2018
+ms.author: jeffgilb
+ms.reviewer: unknown
+ms.openlocfilehash: 6c02ec42874e4e3221c53e6d6e85378bbe2e414a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Blueprint Automation - UK-OFFICIAL 向け 3 層 Web アプリ"
-description: "Azure Blueprint Automation& - UK-OFFICIAL 向け 3 層 Web アプリ"
+title: "Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化"
+description: "Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化"
 services: security
 documentationcenter: na
 author: jomolesk
@@ -12,25 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/15/2017
+ms.date: 02/08/2018
 ms.author: jomolesk
-ms.openlocfilehash: 5f5694367d9be2ae66c7303cfea063b7f4979307
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9d95ccdd536efbff1540fab2b564e7745f5ac397
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/11/2018
 ---
-# <a name="azure-blueprint-automation-three-tier-web-applications-for-uk-official"></a>Azure Blueprint Automation: UK-OFFICIAL 向け 3 層 Web アプリ
+# <a name="azure-security-and-compliance-blueprint---uk-offical-three-tier-web-applications-automation"></a>Azure のセキュリティとコンプライアンスのブループリント - UK-OFFICIAL 向け 3 層 Web アプリケーションの自動化
 
 ## <a name="overview"></a>概要
 
  この記事では、英国で OFFICIAL として分類される多くのワークロードの処理に適したアーキテクチャに基づく Microsoft Azure 3 層 Web を提供するためのガイダンスと自動化スクリプトを提供します。
 
- コードとしてのインフラストラクチャ アプローチを使用して、一連の [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) (ARM) テンプレートは、英国立サーバー セキュリティ センター (NCSC) の 14 の[クラウド セキュリティに関する原則](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)と Center for Internet Security (CIS) の[重要なセキュリティ コントロール](https://www.cisecurity.org/critical-controls.cfm)に準拠する環境をデプロイします。
+ コードとしてのインフラストラクチャ アプローチを使用して、一連の [Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) テンプレートは、英国立サーバー セキュリティ センター (NCSC) の 14 の[クラウド セキュリティに関する原則](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)と Center for Internet Security (CIS) の[重要なセキュリティ コントロール](https://www.cisecurity.org/critical-controls.cfm)に準拠する環境をデプロイします。
 
  NCSC は、顧客がそのクラウド セキュリティに関する原則を使用してサービスのセキュリティ プロパティを評価し、顧客とサプライヤー間での責任分担の理解に役立てるよう推奨しています。 Microsoft では、責任の分担を理解できるように、これらの各原則に関する情報を提供しています。
 
- このアーキテクチャおよび対応する ARM テンプレートは、[英国政府機関向けの Azure Blueprint](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1) に関する Microsoft ホワイトペーパーでサポートされています。 このホワイトペーパーは、Azure サービスが英国 NCSC の 14 のクラウド セキュリティに関する原則に準拠する方法をカタログ化しているので、組織はグローバルに、また英国で Microsoft Azure クラウドのクラウドベース サービスを使用してコンプライアンス義務を果たす能力を迅速に実現できます。
+ このアーキテクチャおよび対応する Azure Resource Manager テンプレートは、Microsoft ホワイト ペーパー「[14 Cloud Security Controls for UK cloud Using Microsoft Azure (Microsoft Azure を使用した英国クラウド向けの 14 のクラウド セキュリティ コントロール)」](https://gallery.technet.microsoft.com/14-Cloud-Security-Controls-670292c1)でサポートされています。 このホワイトペーパーは、Azure サービスが英国 NCSC の 14 のクラウド セキュリティに関する原則に準拠する方法をカタログ化しているので、組織はグローバルに、また英国で Microsoft Azure クラウドのクラウドベース サービスを使用してコンプライアンス義務を果たす能力を迅速に実現できます。
 
  このテンプレートは、ワークロードのインフラストラクチャをデプロイします。 アプリケーション コードとビジネス層およびデータ層のサポート ソフトウェアをインストールし、構成する必要があります。 詳しいデプロイ手順については、[こちら](https://aka.ms/ukwebappblueprintrepo)をご覧ください。
 
@@ -114,7 +114,7 @@ Load Balancer
 - (1) Biz 層のロード バランサー
 - (1) データ層のロード バランサー
 
-ストレージ
+Storage
 - (14) 合計ストレージ アカウント
   - Active Directory ドメイン コントローラー可用性セット
     - (2) プライマリ ローカル冗長ストレージ (LRS) アカウント - VM ごとに 1 つ  
@@ -195,17 +195,17 @@ Load Balancer
 
 ### <a name="security"></a>セキュリティ
 
-**管理セキュリティ**: この Azure Blueprint により、管理者は信頼されたソースからの RDP を使用して管理 VNet およびジャンプボックスに接続できます。 管理 VNetのネットワーク トラフィックは、NSG を使用して制御されます。 ポート 3389 へのアクセスは、ジャンプボックスを含むサブネットにアクセスできる信頼される IP 範囲からのトラフィックに制限されます。
+**管理セキュリティ**: このブループリントにより、管理者は信頼されたソースからの RDP を使用して管理 VNet およびジャンプボックスに接続できます。 管理 VNetのネットワーク トラフィックは、NSG を使用して制御されます。 ポート 3389 へのアクセスは、ジャンプボックスを含むサブネットにアクセスできる信頼される IP 範囲からのトラフィックに制限されます。
 
 お客様は、管理 VNet とジャンプボックスに接続するときに、[強化されたセキュリティ管理モデル](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/securing-privileged-access)を使用して環境をセキュリティで保護することも検討できます。 セキュリティを強化するために、[特権アクセス ワークステーション](https://technet.microsoft.com/windows-server-docs/security/securing-privileged-access/privileged-access-workstations#what-is-a-privileged-access-workstation-paw)と RDGateway 構成を使用することをお勧めします。 ネットワーク仮想アプライアンスとパブリック/プライベート DMZ を使用すると、セキュリティがさらに強化されます。
 
-**ネットワークのセキュリティ保護**: [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) は、正しく構成されていないか無効になっているゲートウェイをバイパスして受信トラフィックに対する第 2 レベルの保護を提供するために各サブネットに対してお勧めします。 例 - [NSG をデプロイするための ARM テンプレート](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)。
+**ネットワークのセキュリティ保護**: [ネットワーク セキュリティ グループ](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg) (NSG) は、正しく構成されていないか無効になっているゲートウェイをバイパスして受信トラフィックに対する第 2 レベルの保護を提供するために各サブネットに対してお勧めします。 例 - [NSG をデプロイするための Resource Manager テンプレート](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/networkSecurityGroups)。
 
 **パブリック エンドポイントのセキュリティ保護**: インターネット ゲートウェイは、インターネットを通じてユーザーにアプリケーション サービスを公開します。 これらのサービスにアクセスするトラフィックは、Web アプリケーション ファイアウォールと HTTPS プロトコル管理を提供する [Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) を使用して保護されます。
 
 **IP 範囲**: アーキテクチャの IP 範囲は推奨範囲です。 お客様自身の環境を検討し、適切な範囲を使用することをお勧めします。
 
-**ハイブリッド接続**: クラウド ベースのワークロードは、Azure VPN Gateway を使用して、IPSEC VPN を介してオンプレミスのデータセンターに接続されます。 お客様は、適切な VPN Gateway を使用して Azure に接続する必要があります。 例 - [VPN Gateway ARM テンプレート](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 ビッグ データが必要な大規模でミッション クリティカルなワークロードを実行しているお客様は、Microsoft クラウド サービスへのプライベート ネットワーク接続のために [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) を使用したハイブリッド ネットワーク アーキテクチャを検討できます。
+**ハイブリッド接続**: クラウド ベースのワークロードは、Azure VPN Gateway を使用して、IPSEC VPN を介してオンプレミスのデータセンターに接続されます。 お客様は、適切な VPN Gateway を使用して Azure に接続する必要があります。 例 - [VPN Gateway Resource Manager テンプレート](https://github.com/mspnp/template-building-blocks/tree/v1.0.0/templates/buildingBlocks/vpn-gateway-vpn-connection)。 ビッグ データが必要な大規模でミッション クリティカルなワークロードを実行しているお客様は、Microsoft クラウド サービスへのプライベート ネットワーク接続のために [ExpressRoute](https://docs.microsoft.com/azure/guidance/guidance-hybrid-network-expressroute) を使用したハイブリッド ネットワーク アーキテクチャを検討できます。
 
 **懸念事項の分離**: この参照アーキテクチャは、VNet を管理操作用とビジネス操作用に分離します。 分離された VNet とサブネットにより、「[Microsoft クラウド サービスとネットワーク セキュリティ](https://docs.microsoft.com/azure/best-practices-network-security)」のベスト プラクティスに従ってネットワーク セグメント間に NSG を使用して、トラフィックの受信と送信の制限などのトラフィック管理を実行できます。
 
@@ -221,17 +221,17 @@ Load Balancer
 
 Crown Commercial Service (政府による商業および調達アクティビティの向上に努める機関) は、Microsoft の対象となるエンタープライズ クラウド サービスの分類を OFFICIAL レベルのすべてのサービスをカバーする G-Cloud v6 に更新しました。 Azure と G-Cloud について詳しくは、[Azure UK G-Cloud セキュリティ評価概要](https://www.microsoft.com/en-us/trustcenter/compliance/uk-g-cloud)に関するページをご覧ください。
 
-この UK-OFFICIAL Azure Blueprint ソリューションは、NCSC [クラウド セキュリティに関する原則](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)で説明されている 14 のクラウド セキュリティに関する原則に準拠し、UK-OFFICIAL として分類されたワークロードをサポートする環境の実現を支援します。
+このブループリントは、NCSC [クラウド セキュリティに関する原則](https://www.ncsc.gov.uk/guidance/implementing-cloud-security-principles)で説明されている 14 のクラウド セキュリティに関する原則に準拠し、UK-OFFICIAL として分類されたワークロードをサポートする環境の実現を支援します。
 
 [お客様の責任マトリックス](https://aka.ms/blueprintuk-gcrm) (Excel ブック) には 14 のクラウド セキュリティに関する原則がすべて示されており、マトリックスは、各原則 (または原則のサブパート) について、原則の実装の責任を追うのが Microsoft、お客様、または双方の共同責任のいずれかであるかを示します。
 
-[原則実装マトリックス](https://aka.ms/ukwebappblueprintpim) (Excel ブック) には、14 のクラウド セキュリティに関する原則がすべて示されており、マトリックスは、お客様の責任マトリックスでお客様の責任と指定された各原則 (または原則のサブパート) について、1) Azure Blueprint Automation が原則を実行しているかどうか、および 2) 実装が原則要件に準拠する方法の説明を示します。 このコンテンツは[こちら](https://github.com/Azure/uk-official-three-tier-webapp/blob/master/principles-overview.md)でも利用できます。
+[原則実装マトリックス](https://aka.ms/ukwebappblueprintpim) (Excel ブック) には、14 のクラウド セキュリティに関する原則がすべて示されており、マトリックスは、お客様の責任マトリックスでお客様の責任と指定された各原則 (または原則のサブパート) について、1) Blueprint Automation が原則を実行しているかどうか、および 2) 実装が原則要件に準拠する方法の説明を示します。 このコンテンツは、[こちら](https://github.com/Azure/uk-official-three-tier-webapp/blob/master/principles-overview.md)からもアクセスできます。
 
 さらに Cloud Security Alliance (CSA) は、クラウド プロバイダーの評価でお客様をサポートし、クラウド サービスへの移行前に回答する必要がある質問を識別するために、Cloud Control Matrix を発行しました。 これに対し、Microsoft Azure は CSA Consensus Assessment Initiative Questionnaire ([CSA CAIQ](https://www.microsoft.com/en-us/TrustCenter/Compliance/CSA)) に回答し、Microsoft が提示された原則に対処する方法を説明しました。
 
 ## <a name="deploy-the-solution"></a>ソリューションのデプロイ
 
-デプロイ ユーザーがこの Azure Blueprint ソリューションのデプロイに使用できる方法は 2 つあります。 最初の方法は PowerShell スクリプトを使用し、2 番目の方法は Azure Portal を使用して参照アーキテクチャをデプロイします。 詳しいデプロイ手順については、[こちら](https://aka.ms/ukwebappblueprintrepo)をご覧ください。
+デプロイ ユーザーがこの Blueprint Automation のデプロイに使用できる方法は 2 つあります。 最初の方法は PowerShell スクリプトを使用し、2 番目の方法は Azure Portal を使用して参照アーキテクチャをデプロイします。 詳しいデプロイ手順については、[こちら](https://aka.ms/ukwebappblueprintrepo)をご覧ください。
 
 ## <a name="disclaimer"></a>免責事項
 

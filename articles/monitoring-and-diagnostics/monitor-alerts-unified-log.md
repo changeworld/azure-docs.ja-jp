@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 99d222102ab0245c7c4dc8603eaedcfc88ae7a66
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: f6072e4e8a9ab72f677c35e498e31b5218579f1b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Azure Monitor でのログ アラート - Alerts (プレビュー)
 この記事では、Analytics クエリのアラート ルールが Azure Alerts (プレビュー) でどのように機能するかについて詳しく紹介し、また各種ログ アラートの相違点について説明します。
-現在 Azure Alerts (プレビュー) は、[新しい Log Analytics クエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)で書かれた [Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) からのクエリでのログ アラートのみをサポートしています。
+
+現在、Azure アラート (プレビュー) は、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) および [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) からのクエリに関するログ アラートをサポートしています。
 
 > [!WARNING]
-> Azure Alerts (プレビュー) - ログ アラートは現在、クロス ワークスペースまたはクロス アプリのクエリをサポートしていません。 
+
+> 現在、Azure アラート (プレビュー) のログ アラートは、クロスワークスペースおよびクロスアプリのクエリをサポートしていません。
 
 ## <a name="log-alert-rules"></a>ログ アラート ルール
 
@@ -70,7 +72,16 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 
 **集計関数**: 実行する計算と、集計対象になる可能性のある数値フィールドを決定します。  たとえば、**count()** であれば、クエリで指定したレコードの件数が返されます。**avg(CounterValue)** であれば、一定期間内の CounterValue フィールドの平均値が返されます。
 
+> [!NOTE]
+
+> クエリの集計関数を指定/呼び出す必要があります (AggregatedValue と数値を指定します)。
+
+
 **グループ フィールド**: このフィールドのインスタンスごとに値を集計したレコードが作成されます。アラートは、それぞれのインスタンスについて生成されます。  たとえば、コンピューターごとにアラートを生成する場合は、**by Computer** を使用します。   
+
+> [!NOTE]
+
+> Application Insight に基づくメトリック測定アラート ルールでは、データをグループ化するためのフィールドを指定できます。 これを行うには、ルール定義の **[集計]** オプションを使用します。   
 
 **間隔**:  データを集計する間隔を定義します。  たとえば、**5 分**を指定した場合には、アラートに対して指定した期間にわたり、グループ フィールドの各インスタンスについて、5 分間隔でレコードが作成されます。
 
@@ -93,6 +104,6 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 
 
 ## <a name="next-steps"></a>次の手順
-* [Azure Alerts (プレビュー) の概要を確認](monitoring-overview-unified-alerts.md)します。 
+* [Azure Alerts (プレビュー) の概要を確認](monitoring-overview-unified-alerts.md)します。
 * [Azure Alerts (プレビュー) の使用方法](monitor-alerts-unified-usage.md)について学習します。
 * [Log Analytics](../log-analytics/log-analytics-overview.md) についてさらに学習します。    

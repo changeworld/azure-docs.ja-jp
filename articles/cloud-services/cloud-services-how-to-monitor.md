@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2018
+ms.date: 01/29/2018
 ms.author: adegeo
-ms.openlocfilehash: 3ffbdb121aa558d69547db294cad83b5d11e3f56
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: f3a3a1beb8540ee8ab0502379396c06ea505fb44
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>クラウド サービスの監視の概要
 
@@ -39,9 +39,9 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="advanced-monitoring"></a>高度な監視
 
-高度な監視では、監視対象のロールで **Azure 診断**拡張機能 (および必要に応じて Application Insights SDK) が使用されます。 診断拡張機能は、(ロールごとに) 構成ファイル **diagnostics.wadcfgx** を使用して、監視する診断メトリックを構成します。 Azure 診断拡張機能が収集するデータは、**.wadcfgx**、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef)、[.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) の各ファイルに構成された Azure ストレージ アカウントに格納されます。 つまり、高度な監視機能には追加のコストが伴います。
+高度な監視では、監視対象のロールで **Azure 診断**拡張機能 (および必要に応じて Application Insights SDK) が使用されます。 診断拡張機能は、(ロールごとに) 構成ファイル **diagnostics.wadcfgx** を使用して、監視する診断メトリックを構成します。 Azure 診断拡張機能では、データを収集して Azure Storage アカウントに格納します。 これらの設定は、**.wadcfgx** ファイル、[.csdef](cloud-services-model-and-package.md#servicedefinitioncsdef) ファイル、および[.cscfg](cloud-services-model-and-package.md#serviceconfigurationcscfg) ファイルで構成されています。 つまり、高度な監視機能には追加のコストが伴います。
 
-ロールが作成されるたびに、Visual Studio が Azure 診断拡張機能をロールに追加します。 この拡張機能は、次の種類の情報を収集できます。
+ロールが作成されるたびに、Visual Studio が Azure 診断拡張機能をロールに追加します。 この診断拡張機能では、次の種類の情報を収集できます。
 
 * カスタム パフォーマンス カウンター
 * アプリケーション ログ
@@ -54,12 +54,6 @@ ms.lasthandoff: 01/24/2018
 
 > [!IMPORTANT]
 > これらすべてのデータがストレージ アカウントに集計されますが、データのグラフを作成するポータル固有の方法は用意されて**いません**。 Application Insights などの他のサービスをアプリケーションに統合することを強くお勧めします。
-
-### <a name="use-application-insights"></a>Application Insights を使用する
-
-Visual Studio からクラウド サービスを発行するときに、診断データを Application Insights に送信するオプションが提供されます。 その時点で Application Insights の Azure リソースを作成したり、データを既存の Azure リソースに送信したりすることができます。 クラウド サービスの可用性、パフォーマンス、障害、および使用状況を Application Insights で監視できます。 カスタム グラフを Application Insights に追加して、自分にとって最も重要なデータを確認できます。 ロール インスタンス データは、クラウド サービス プロジェクトで Application Insights SDK を使用して収集できます。 Application Insights を統合する方法について詳しくは、[クラウド サービス向けの Application Insights](../application-insights/app-insights-cloudservices.md) に関する記事をご覧ください。
-
-Application Insights を使用すると、Windows Azure 診断拡張機能で指定したパフォーマンス カウンター (および他の設定) を表示できますが、さらに高度な機能は worker ロールおよび web ロールに Application Insights SDK を統合した場合のみ得られます。
 
 ## <a name="setup-diagnostics-extension"></a>診断拡張機能の設定
 
@@ -96,7 +90,15 @@ Application Insights を使用すると、Windows Azure 診断拡張機能で指
       -->
 ```
 
+## <a name="use-application-insights"></a>Application Insights を使用する
+
+Visual Studio からクラウド サービスを発行するときに、診断データを Application Insights に送信するオプションが提供されます。 その時点で Application Insights の Azure リソースを作成したり、データを既存の Azure リソースに送信したりすることができます。 クラウド サービスの可用性、パフォーマンス、障害、および使用状況を Application Insights で監視できます。 カスタム グラフを Application Insights に追加して、最も重要なデータを確認できます。 ロール インスタンス データは、クラウド サービス プロジェクトで Application Insights SDK を使用して収集できます。 Application Insights を統合する方法について詳しくは、[クラウド サービス向けの Application Insights](../application-insights/app-insights-cloudservices.md) に関する記事をご覧ください。
+
+Application Insights を使用すると、Windows Azure 診断拡張機能で指定したパフォーマンス カウンター (および他の設定) を表示できますが、さらに高度な機能は worker ロールおよび Web ロールに Application Insights SDK を統合した場合のみ得られることに注意してください。
+
+
 ## <a name="next-steps"></a>次の手順
 
 - [クラウド サービスでの Application Insights について学ぶ](../application-insights/app-insights-cloudservices.md)
+- [パフォーマンス カウンターをセットアップする](diagnostics-performance-counters.md)
 

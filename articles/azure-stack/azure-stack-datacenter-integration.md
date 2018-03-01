@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 2c013c11dea5217d564ac15a13a8d11614989057
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f93fc95d6bed517cae3adb706f690941f97c366e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムのデータ センター統合に関する考慮事項
 Azure Stack 統合システムに関心がある場合は、デプロイや、このシステムがデータセンターにどのように適合するかに関する計画のいくつかの主な考慮事項を理解する必要があります。 この記事では、Azure Stack マルチノード システムに関するインフラストラクチャの重要な決定を行うときに役立つこれらの考慮事項の概要について説明します。 これらの考慮事項を理解していると、OEM ハードウェア ベンダーと協力して Azure Stack をデータセンターにデプロイする場合に役立ちます。  
@@ -45,7 +45,7 @@ Azure Stack のデプロイに Azure AD と AD FS のどちらの ID プロバ�
 
 ID プロバイダーの選択は、テナントの仮想マシン、ID システム、使用するアカウント、Active Directory ドメインに参加できるかどうかなどには関係しません。この選択とは独立しています。
 
-[Azure Stack 統合システムのデプロイの決定の記事](.\azure-stack-deployment-decisions.md)では、ID プロバイダーの選択に関する詳細を学習できます。
+[Azure Stack 統合システムの接続モデルの記事](.\azure-stack-connection-models.md)では、ID プロバイダーの選択に関する詳細を学習できます。
 
 ### <a name="ad-fs-and-graph-integration"></a>AD FS と Graph の統合
 ID プロバイダーとして AD FS を使用して Azure Stack をデプロイする場合は、フェデレーションの信頼関係を介して Azure Stack 上の AD FS インスタンスと既存の AD FS インスタンスを統合する必要があります。 これにより、既存の Active Directory フォレスト内の ID を Azure Stack 内のリソースに対して認証できます。
@@ -53,18 +53,25 @@ ID プロバイダーとして AD FS を使用して Azure Stack をデプロイ
 Azure Stack の Graph サービスを既存の Active Directory と統合することもできます。 これにより、Azure Stack でロールベースのアクセス制御 (RBAC) を管理できます。 リソースへのアクセスが委任されると、Graph のコンポーネントは LDAP プロトコルを使用して、既存の Active Directory フォレストでユーザー アカウントを検索します。
 
 次の図は、統合された AD FS と Graph のトラフィック フローを示しています。
-![AD FS と Graph のトラフィック フローの図](media/azure-stack-deployment-planning/ADFSIntegration.PNG)
+![AD FS と Graph のトラフィック フローの図](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
 
 ## <a name="licensing-model"></a>ライセンス モデル
+使用するライセンス モデルを決める必要があります。 使用可能なオプションは、インターネットに接続された Azure Stack をデプロイするかどうかによって異なります。
+- [接続されたデプロイ](azure-stack-connected-deployment.md)の場合、従量制ライセンスか容量ベースのライセンスを選択できます。 従量制では、Azure との通信を通じて課金される使用量を報告するために Azure に接続する必要があります。 
+- インターネットに[接続していないデプロイ](azure-stack-disconnected-deployment.md)では、容量ベースのライセンスのみがサポートされます。 
 
-使用するライセンス モデルを決める必要があります。 接続されたデプロイの場合、従量制ライセンスか容量ベースのライセンスを選択できます。 従量制では、Azure との通信を通じて課金される使用量を報告するために Azure に接続する必要があります。 インターネットに接続していないデプロイでは、容量ベースのライセンスのみがサポートされます。 ライセンス モデルの詳細については、「[Microsoft Azure Stack packaging and pricing](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)」 (Microsoft Azure Stack のパッケージと料金) を参照してください。
+ライセンス モデルの詳細については、「[Microsoft Azure Stack packaging and pricing](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf)」 (Microsoft Azure Stack のパッケージと料金) を参照してください。
+
 
 ## <a name="naming-decisions"></a>名前付けの決定事項
 
-Azure Stack の名前空間 (特にリージョン名) と外部のドメイン名を計画する方法について検討する必要があります。 Azure Stack のデプロイで公開されたエンドポイントの完全修飾ドメイン名 (FQDN) は、&lt;*region*&gt;&lt;*external_FQDN*&gt; という 2 つの名前の組み合わせです (たとえば *east.cloud.fabrikam.com*)。この例で Azure Stack ポータルは、次の URL で使用可能になります。
+Azure Stack の名前空間 (特にリージョン名と外部のドメイン名) を計画する方法について検討する必要があります。 Azure Stack のデプロイで公開されたエンドポイントの外部完全修飾ドメイン名 (FQDN) は、&lt;*region*&gt;.&lt;*fqdn*&gt; という 2 つの名前の組み合わせです。 たとえば、*east.cloud.fabrikam.com* となります。この例で Azure Stack ポータルは、次の URL で使用可能になります。
 
 - https://portal.east.cloud.fabrikam.com
 - https://adminportal.east.cloud.fabrikam.com
+
+> [!IMPORTANT]
+> Azure Stack のデプロイに選択したリージョン名は一意でなければならず、ポータル アドレスに表示されます。 
 
 次の表は、これらのドメイン名前付けの決定事項をまとめたものです。
 
@@ -128,14 +135,14 @@ Azure Stack を同期するために使用される特定のタイム サーバ�
 
 次の図は、シングル テナント シナリオの ExpressRoute ("顧客の接続" が ExpressRoute 回線) を示しています。
 
-![シングル テナントの ExpressRoute シナリオを示した図](media/azure-stack-deployment-planning/ExpressRouteSingleTenant.PNG)
+![シングル テナントの ExpressRoute シナリオを示した図](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.PNG)
 
 次の図は、マルチテナント シナリオの ExpressRoute を示しています。
 
-![マルチテナントの ExpressRoute シナリオを示した図](media/azure-stack-deployment-planning/ExpressRouteMultiTenant.PNG)
+![マルチテナントの ExpressRoute シナリオを示した図](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
 
 ## <a name="external-monitoring"></a>外部の監視
-Azure Stack のデプロイとデバイスからすべてのアラートを 1 つのビューとして取得し、チケット発行用の既存の IT サービス管理ワークフローにアラートを統合するために、外部のデータセンター監視ソリューションと Azure Stack を統合することができます。
+Azure Stack のデプロイとデバイスからすべてのアラートを 1 つのビューとして取得し、チケット発行用の既存の IT サービス マネジメント ワークフローにアラートを統合するために、[外部のデータセンター監視ソリューションと Azure Stack を統合](azure-stack-integrate-monitor.md)することができます。
 
 Azure Stack ソリューションに含まれているハードウェア ライフサイクル ホストは、Azure Stack の外部にあるコンピューターで、ハードウェアを対象にした OEM ベンダー提供の管理ツールを実行しています。 それらのツールを使用することも、データセンター内の既存の監視ソリューションに直接統合されたソリューションを使用することもできます。
 
@@ -143,10 +150,10 @@ Azure Stack ソリューションに含まれているハードウェア ライ�
 
 | 領域 | 外部の監視ソリューション |
 | -- | -- |
-| Azure Stack ソフトウェア | - [Operations Manager 用 Azure Stack 管理パック](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>- [Nagios プラグイン](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>- REST ベースの API 呼び出し | 
-| 物理サーバー (IPMI 経由 BMC) | - Operations Manager ベンダー管理パック<br>- OEM ハードウェア ベンダー提供のソリューション<br>- ハードウェア ベンダーの Nagios プラグイン | OEM パートナーがサポートしている監視ソリューション (含まれている) | 
-| ネットワーク デバイス (SNMP) | - Operations Manager ネットワーク デバイスの検出<br>- OEM ハードウェア ベンダー提供のソリューション<br>- Nagios スイッチ プラグイン |
-| テナント サブスクリプションの正常性の監視 | - [Windows Azure 用 System Center 管理パック](https://www.microsoft.com/download/details.aspx?id=50013) | 
+| Azure Stack ソフトウェア | [Operations Manager 用 Azure Stack 管理パック](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Nagios プラグイン](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>REST ベースの API 呼び出し | 
+| 物理サーバー (IPMI 経由 BMC) | OEM ハードウェア - Operations Manager ベンダー管理パック<br>OEM ハードウェア ベンダー提供のソリューション<br>ハードウェア ベンダーの Nagios プラグイン | OEM パートナーがサポートしている監視ソリューション (含まれている) | 
+| ネットワーク デバイス (SNMP) | Operations Manager ネットワーク デバイスの検出<br>OEM ハードウェア ベンダー提供のソリューション<br>Nagios スイッチ プラグイン |
+| テナント サブスクリプションの正常性の監視 | [Windows Azure 用 System Center 管理パック](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 
 
 以下の要件に注意してください。
@@ -159,7 +166,7 @@ Azure Stack ソリューションに含まれているハードウェア ライ�
 
 ### <a name="protect-infrastructure-components"></a>インフラストラクチャ コンポーネントの保護
 
-Azure Stack では、指定した共有にインフラストラクチャのコンポーネントがバックアップされます。
+指定した SMB 共有に [Azure Stack インフラストラクチャ コンポーネントをバックアップ](azure-stack-backup-back-up-azure-stack.md)できます。
 
 - 既存の Windows ベース ファイル サーバーまたはサード パーティのデバイス上に、外部 SMB ファイル共有が必要です。
 - この同じ共有を、ネットワーク スイッチとハードウェア ライフサイクル ホストのバックアップに使用する必要があります。 これらのコンポーネントは Azure Stack の外部にあるため、これらのコンポーネントのバックアップと復元については、OEM ハードウェア ベンダーに問い合わせてください。 OEM ベンダーの推奨に基づいたバックアップ ワークフローを実行することは、お客様の責任となります。

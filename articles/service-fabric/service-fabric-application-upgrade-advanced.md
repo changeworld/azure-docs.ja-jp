@@ -12,50 +12,44 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/5/2018
 ms.author: subramar;chackdan
-ms.openlocfilehash: 8d3b922f3d50b645ac9db2cc879a319df1262e0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b0ca553fb96b0a54f3b76d306ed98d95026dcd9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Service Fabric アプリケーションのアップグレード: 高度なトピック
-## <a name="adding-or-removing-services-during-an-application-upgrade"></a>アプリケーション アップグレード中のサービスの追加と削除
-既にデプロイされているアプリケーションに新しいサービスを追加し、アップグレードとして発行した場合、その新しいサービスは、デプロイされているアプリケーションに追加されます。  このようなアップグレードは、アプリケーションに含まれていたどのサービスにも影響を及ぼしません。 ただし新しいサービスを有効にするには、追加したサービスのインスタンスを ( `New-ServiceFabricService` コマンドレットを使用して) 開始する必要があります。
+## <a name="adding-or-removing-service-types-during-an-application-upgrade"></a>アプリケーション アップグレード中のサービスの種類の追加と削除
+アップグレードの一環として、発行したアプリケーションに新しいサービスの種類を追加した場合、その新しいサービスの種類はデプロイされているアプリケーションに追加されます。 このようなアップグレードは、既にアプリケーションの一部であるサービス インスタンスには影響しませんが、追加されたサービスの種類のインスタンスを作成して、新しいサービスの種類をアクティブにする必要があります (「[New-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/new-servicefabricservice?view=azureservicefabricps)」を参照)。
 
-アップグレードの一環として、サービスをアプリケーションから削除することもできます。 ただし、アップグレードに進む前に、削除するサービスの現在のサービスすべてを ( `Remove-ServiceFabricService` コマンドレットを使用して) 停止しておく必要があります。
+同様に、アップグレードの一環として、アプリケーションからサービスの種類を削除することもできます。 ただし、アップグレードに進む前に、削除するサービスの種類のサービス インスタンスをすべて削除する必要があります (「[Remove-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/remove-servicefabricservice?view=azureservicefabricps)」を参照)。
 
 ## <a name="manual-upgrade-mode"></a>手動アップグレード モード
 > [!NOTE]
-> アップグレード時にエラーが発生するか中断された場合にのみ、管理対象外手動モードを検討してください。 管理対象モードは、Service Fabric アプリケーションの推奨されるアップグレード モードです。
+> すべての Service Fabric アップグレードで、*Monitored* アップグレード モードをお勧めします。
+> *UnmonitoredManual* アップグレード モードは、アップグレードが失敗または中断した場合にのみ検討してください。 
 >
 >
 
-Azure Service Fabric には、開発と運用環境のクラスターをサポートする複数のアップグレード モードが用意されます。 選択するデプロイメント オプションは、環境によって異なる場合があります。
+*Monitored* モードでは、Service Fabric が正常性ポリシーを適用して、アップグレードの進行中にアプリケーションの正常性を確認します。 正常性ポリシーに違反すると、指定した *FailureAction* に応じて、アップグレードが中断されるか、自動的にロールバックされます。
 
-管理対象ローリング アプリケーション アップグレードは、運用環境で使用される最も一般的なアップグレードです。 アップグレードのポリシーを指定すると、Service Fabric は、アップグレードを実行する前に、アプリケーションの正常性を確認します。
+*UnmonitoredManual* モードでは、アプリケーション管理者がアップグレードの進行を完全に制御します。 このモードは、カスタムの正常性評価ポリシーを適用する場合や、一般的でないアップグレードを実行して、正常性の監視を完全にバイパスする場合 (アプリケーションが既にデータ損失の状態にある場合など) に便利です。 このモードでアップグレードを実行すると、各 UD の完了後にアップグレードが中断し、[Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) を使用して明示的に再開する必要があります。 アップグレードが中断し、ユーザーが再開できる状態になると、そのアップグレードの状態は *RollforwardPending* と表示されます (「[UpgradeState](https://docs.microsoft.com/dotnet/api/system.fabric.applicationupgradestate?view=azure-dotnet)」を参照)。
 
- アプリケーション管理者は手動ローリング アプリケーション アップグレード モードを使用して、多様なアップグレード ドメインのアップグレード状況全体を制御できます。 このモードは、カスタマイズされた、または複雑な正常性評価ポリシーが必要な場合、または一般的ではないアップグレードを行う場合 (アプリケーションが既にデータ損失の状態にある場合など) に便利です。
-
-最後に、自動ローリング アプリケーション アップグレードは、開発環境やテスト環境で、サービス開発中に短時間で反復サイクルを提供する場合に便利です。
-
-## <a name="change-to-manual-upgrade-mode"></a>手動アップグレード モードに変更する
-**手動**-- 現在の UD でアプリケーションのアップグレードを停止し、アップグレード モードを管理対象外手動に変更します。 管理者は、 **MoveNextApplicationUpgradeDomainAsync** を手動で呼び出して、アップグレードを続行したり、新しいアップグレードを開始することでロールバックをトリガーしたりします。 アップグレードが、手動モードに入ると、新しいアップグレードが開始されるまでは手動モードのままになります。 **GetApplicationUpgradeProgressAsync** コマンドは、FABRIC\_APPLICATION\_UPGRADE\_STATE\_ROLLING\_FORWARD\_PENDING を返します。
+最後に、*UnmonitoredAuto* モードは、ユーザーの入力が不要で、アプリケーションの正常性ポリシーが評価されないため、サービスの開発時やテスト時に迅速にアップグレードを繰り返し実行する場合に便利です。
 
 ## <a name="upgrade-with-a-diff-package"></a>差分のパッケージを使用したアップグレード
-Service Fabric アプリケーションは、完全な自己完結型のアプリケーション パッケージで、プロビジョニングすることでアップグレードできます。 更新済みのアプリケーション ファイル、更新済みのアプリケーション マニフェスト、サービス マニフェスト ファイルのみを含む差分のパッケージを使用してアプリケーションをアップグレードすることもできます。
+完全なアプリケーション パッケージをプロビジョニングする代わりに、完全なアプリケーション マニフェストと完全なサービス マニフェストと共に、更新されたコード/構成/データ パッケージのみを含む差分パッケージをプロビジョニングして、アップグレードを実行することもできます。 完全なアプリケーション パッケージは、アプリケーションをクラスターに最初にインストールするときにのみ必要です。 後続のアップグレードは、完全なアプリケーション パッケージと差分パッケージのどちらからでも実行できます。  
 
-完全なアプリケーション パッケージには、Service Fabric の起動と実行に必要なすべてのファイルが含まれます。 差分のパッケージには、最後のプロビジョニングと現在のアップグレード間で変更されたファイル、完全なアプリケーション マニフェスト、サービス マニフェスト ファイルのみが含まれます。 ビルドのレイアウトで見つからないアプリケーション マニフェストやサービス マニフェストの参照については、イメージ ストア内で検索されます。
+アプリケーション パッケージ内に見つからない、差分パッケージのアプリケーション マニフェストまたはサービス マニフェスト内の参照はすべて、現在プロビジョニングされているバージョンに自動的に置き換えられます。
 
-完全なアプリケーション パッケージは、クラスターへのアプリケーションの最初のインストールに必要です。 以降の更新は、完全なアプリケーションのパッケージまたは差分のパッケージのいずれかになります。
+差分パッケージを使用するシナリオは次のとおりです。
 
-差分のパッケージの使用は次のような場合に適しています。
+* 複数のサービス マニフェスト ファイルや複数のコード パッケージ、構成パッケージ、データ パッケージを参照する大規模なアプリケーション パッケージがある場合。
+* アプリケーションのビルド プロセスから直接ビルドのレイアウトを生成するデプロイ システムがある場合。 この場合、コードは変更されていませんが、新しくビルドされたアセンブリはさまざまなチェックサムを取得します。 完全なアプリケーション パッケージを使用すると、すべてのコード パッケージのバージョンを更新する必要があります。 差分のパッケージを使用すると、変更されたファイルとバージョンが変更されているマニフェスト ファイルのみが提供されます。
 
-* 差分のパッケージは、複数のサービス マニフェスト ファイルや複数のコード パッケージ、構成パッケージ、データ パッケージを参照する大規模なアプリケーション パッケージがある場合に適しています。
-* 差分のパッケージは、アプリケーションのビルド プロセスから直接、ビルドのレイアウトを生成する、デプロイメント システムがあるときに適しています。 この場合、コードは変更されていませんが、新しくビルドされたアセンブリはさまざまなチェックサムを取得します。 完全なアプリケーション パッケージを使用すると、すべてのコード パッケージのバージョンを更新する必要があります。 差分のパッケージを使用すると、変更されたファイルとバージョンが変更されているマニフェスト ファイルのみが提供されます。
-
-Visual Studio を使ってアプリケーションをアップグレードすると、差分パッケージが自動的に発行されます。 差分パッケージを手動で作成するには、アプリケーション マニフェストとサービス マニフェストを更新する必要がありますが、最終アプリケーション パッケージには、変更のあったパッケージだけを追加します。
+Visual Studio を使ってアプリケーションをアップグレードすると、差分パッケージが自動的に発行されます。 差分パッケージを手動で作成するには、アプリケーション マニフェストとサービス マニフェストを更新する必要がありますが、最終的なアプリケーション パッケージには、変更のあったパッケージだけを追加します。
 
 たとえば、次のようなアプリケーションがあるとします (理解しやすいようバージョン番号を単純化しています)。
 
@@ -69,7 +63,7 @@ app1           1.0.0
     config     1.0.0
 ```
 
-ここで、PowerShell から差分パッケージを使用して、service1 のコード パッケージのみを更新すると仮定しましょう。 更新後のアプリケーションのフォルダー構造は、次のようになります。
+差分パッケージを使用して、service1 のコード パッケージのみを更新すると仮定しましょう。 更新後のアプリケーションのバージョンは、次のように変更されます。
 
 ```text
 app1           2.0.0      <-- new version
@@ -89,7 +83,17 @@ app1/
     code/
 ```
 
-## <a name="next-steps"></a>次のステップ
+つまり、通常どおり完全なアプリケーション パッケージを作成した後、バージョンが変更されなかったコード/構成/データ パッケージ フォルダーをすべて削除します。
+
+## <a name="rolling-back-application-upgrades"></a>アプリケーションのアップグレードのロールバック
+
+アップグレードは 3 つのモード (*Monitored*、*UnmonitoredAuto*、*UnmonitoredManual*) のいずれかでロールフォワードできますが、ロールバックできるのは *UnmonitoredAuto* または *UnmonitoredManual* モードのみです。 *UnmonitoredAuto* モードでのロールバックは、*UpgradeReplicaSetCheckTimeout* の既定値が異なる点を除き、ロールフォワードと同じように動作します (「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照)。 *UnmonitoredManual* モードでのロールバックは、ロールフォワードと同じように動作します。つまり、ロールバックは各 UD の完了後に中断し、[Resume-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/resume-servicefabricapplicationupgrade?view=azureservicefabricps) を使用して明示的に再開してロールバックを続行する必要があります。
+
+*Monitored* モードで *FailureAction* に *Rollback* を指定し、アップグレードの正常性ポリシーに違反した場合 (「[アプリケーション アップグレードのパラメーター](service-fabric-application-upgrade-parameters.md)」を参照)、または [Start-ServiceFabricApplicationRollback](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationrollback?view=azureservicefabricps) を明示的に使用した場合に、ロールバックが自動的にトリガーされます。
+
+ロールバック中、*UpgradeReplicaSetCheckTimeout* の値とモードは、[Update-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricapplicationupgrade?view=azureservicefabricps) を使用していつでも変更できます。
+
+## <a name="next-steps"></a>次の手順
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。

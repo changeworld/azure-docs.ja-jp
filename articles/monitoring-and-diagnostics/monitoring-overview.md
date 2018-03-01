@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: robb,bwren
-ms.openlocfilehash: 3ab7d2d5c3b95d215f3ee9eb9346e8a7895e734c
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 505e92b5fc63f570bc4d0f8899ae977b93850356
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitoring-azure-applications-and-resources"></a>Azure のアプリケーションおよびリソースの監視
 
@@ -57,8 +57,11 @@ Azure には、監視領域における特定のロールやタスクを個別�
 [Service Map](../operations-management-suite/operations-management-suite-service-map.md) は、他のコンピューターの各種プロセスや依存関係、外部プロセスを使用して仮想マシンを分析し、IaaS 環境に関する洞察を提供します。  Log Analytics 内のイベント、パフォーマンス データ、管理ソリューションが Service Map で統合されるため、データを各コンピューターのコンテキストや環境内の他の要素との関係の中で把握することができます。  Service Map は [Application Insights のアプリケーション マップ](../application-insights/app-insights-app-map.md)に似ていますが、Service Map ではアプリケーションをサポートしているインフラストラクチャ コンポーネントに焦点が当てられています。
 
 ### <a name="network-watcher"></a>Network Watcher
-[Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) は、Azure の各種ネットワーク シナリオに応じた監視と診断の機能を提供します。  将来の分析に使用できるように Azure のメトリックおよび診断データを格納し、[Log Analytics の管理ソリューション](../log-analytics/log-analytics-azure-networking-analytics.md)と連携して、ネットワーク リソースの包括的な監視を行います。
-
+[Network Watcher](../network-watcher/network-watcher-monitoring-overview.md) は、Azure の各種ネットワーク シナリオに応じた監視と診断の機能を提供します。  将来の分析に使用できるように Azure のメトリックおよび診断データを格納し、次のネットワーク監視ソリューションと連携して、ネットワーク リソースのさまざまな面を監視します。
+* [Network Performance Monitor (NPM)](https://blogs.msdn.microsoft.com/azuregov/2017/09/05/network-performance-monitor-general-availability/) - パブリック クラウド、データ センター、オンプレミス環境間の接続を監視するクラウドベースのネットワーク監視ソリューションです。
+* [ExpressRoute モニター](https://azure.microsoft.com/en-in/blog/monitoring-of-azure-expressroute-in-preview/) - ExpressRoute 回線を介したエンド ツー エンド接続とパフォーマンスを監視する NPM 機能です。
+* Traffic Analytics - クラウド ネットワーク上のユーザーおよびアプリケーションのアクティビティを可視化するクラウドベースのソリューションです。
+* [DNS Analytics](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-dns) - DNS サーバーに基づいて、セキュリティ、パフォーマンス、および操作に関連する分析情報を提供します。
 
 ### <a name="management-solutions"></a>管理ソリューション
 [管理ソリューション](../log-analytics/log-analytics-add-solutions.md)は、特定のアプリケーションまたはサービスに関する洞察を提供するロジックを 1 つにまとめたものです。  管理ソリューションは Log Analytics を使用して、収集した監視データの格納と分析を行います。  Azure とサード パーティの各種サービスを監視するさまざまな管理ソリューションが Microsoft とサード パーティから提供されています。 監視ソリューションの例には、コンテナー ホストの把握と管理に役立つ[コンテナー監視ソリューション](../log-analytics/log-analytics-containers.md)や、Azure SQL Database のパフォーマンス メトリックの収集と可視化を行う [Azure SQL Analytics](../log-analytics/log-analytics-azure-sql.md) などがあります。

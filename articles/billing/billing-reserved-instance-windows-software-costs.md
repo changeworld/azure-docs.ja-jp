@@ -1,6 +1,6 @@
 ---
 title: "Azure 予約 VM インスタンスにおける Windows ソフトウェアのコスト | Microsoft Docs"
-description: "予約インスタンスの条件を満たした Windows VM に関して、Windows ソフトウェアにどのメーターが使用されるかを説明します。"
+description: "予約仮想マシン インスタンスのコストに含まれない Windows ソフトウェア メーターについて説明します。"
 services: billing
 documentationcenter: 
 author: manish-shukla01
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: b985e6e9575ffeedcac5bcb3f94a43d23fdbb85e
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: a0bb559369877e1cc5333394102bfb85d3f0bb11
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="windows-software-costs-not-included-with-reserved-instances"></a>予約インスタンスに含まれない Windows ソフトウェアのコスト
 
-予約インスタンス VM に Azure ハイブリッド使用特典がない場合、以下の表に記載されている Windows ソフトウェアのメーターに関して料金が発生します。
+予約インスタンス仮想マシンに Azure ハイブリッド使用特典がない場合、以下のセクションに記載されている Windows ソフトウェア メーターに関して料金が発生します。
+
+## <a name="windows-software-meters-not-included-in-reserved-instance-cost"></a>予約インスタンスのコストに含まれない Windows ソフトウェア メーター
 
 | MeterId | 使用状況ファイルにおける MeterName | VM による使用 |
 | ------- | ------------------------| --- |
@@ -48,3 +50,13 @@ ms.lasthandoff: 11/16/2017
 | 6fdab81b-4284-4df9-8939-c237cc7462fe | 占有 - Windows Svr (96 コア) | B シリーズを除くすべて |
 
 これらのメーターごとのコストは、Azure RateCard API を使用して取得できます。 Azure メーターの料金を取得する方法については、「[Get price and metadata information for resources used in an Azure subscription (Azure サブスクリプションで使用されるリソースの料金とメタデータ情報を取得する)](https://msdn.microsoft.com/library/azure/mt219004)」を参照してください。
+
+## <a name="next-steps"></a>次の手順
+予約仮想マシン インスタンスの詳細については、次の記事を参照してください。
+
+- [予約 VM インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [予約仮想マシン インスタンスの管理](billing-manage-reserved-vm-instance.md)
+- [予約仮想マシン インスタンスで仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
+- [予約仮想マシン インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
+- [従量課金サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
+- [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)

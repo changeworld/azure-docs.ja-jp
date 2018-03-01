@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
-ms.openlocfilehash: b3829f0e1b87451bf0706edc268359be5c4480bc
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 015bf031aea6b79fcca0a416253e9aa47bb245b6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-ase-by-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して ASE を作成する
 
@@ -40,7 +40,7 @@ ASE の作成を自動化するには、次の手順に従います。
 
 2. ILB ASE を作成したら、ILB ASE ドメインに一致する SSL 証明書がアップロードされます。
 
-3. アップロードされた SSL 証明書は、"既定の" SSL 証明書として ILB ASE に割り当てられます。  この証明書は、ILB ASE 上のアプリが、ASE に割り当てられた共通ルート ドメイン (https://someapp.mycustomrootcomain.com など) を使用する場合に、そのアプリの SSL トラフィックで使用されます。
+3. アップロードされた SSL 証明書は、"既定の" SSL 証明書として ILB ASE に割り当てられます。  この証明書は、ILB ASE 上のアプリが、ASE に割り当てられた共通ルート ドメイン (https://someapp.mycustomrootdomain.com など) を使用する場合に、そのアプリの SSL トラフィックで使用されます。
 
 
 ## <a name="create-the-ase"></a>ASE を作成する

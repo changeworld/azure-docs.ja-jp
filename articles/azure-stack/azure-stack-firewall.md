@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: f7b621312677c0b250e267770ae0c445ee9f083f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 919618c0779d47f0add02d5e7d3ab9ab4b5bdd10
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-firewall-integration"></a>Azure Stack ファイアウォールの統合
 Azure Stack は、ファイアウォール デバイスを使って保護することをお勧めします。 ファイアウォールは、分散型サービス拒否 (DDOS) 攻撃や侵入検出、コンテンツ検査などに効果がありますが、BLOB、テーブル、キューなどの Azure Storage サービスのスループットのボトルネックにもなります。
@@ -40,8 +40,8 @@ Azure Resource Manager (管理者)、管理者ポータル、Key Vault (管理�
 - NAT の使用によりユーザー エクスペリエンスは制限されますが、オペレーターは公開要求を完全に管理できます。
 - Azure のハイブリッド クラウド シナリオでは、NAT を使うエンドポイントへの VPN トンネルの設定を Azure がサポートしていないことを考慮します。
 
-### <a name="ssl-decryption"></a>SSL 暗号化解除
-現在 Microsoft では、Azure Stack のすべてのトラフィックについて SSL 暗号化解除を無効にすることを推奨しています。将来、Azure Stack の SSL 暗号化解除を有効にする方法についての指針を示す予定です。
+### <a name="ssl-decryption"></a>SSL 解読
+現在、すべての Azure Stack トラフィックに対して SSL 解読を無効にすることをお勧めします。 将来の更新で SSL 解読がサポートされた場合は、Azure Stack に対して SSL 解読を有効にする方法に関するガイダンスが提供される予定です。
 
 ## <a name="edge-firewall-scenario"></a>エッジ ファイアウォール シナリオ
 エッジ デプロイでは、エッジ ルーターまたはファイアウォールのすぐ内側に Azure Stack がデプロイされます。 これらのシナリオでは、ファイアウォールを境界より上に配置するか、BGP または静的ルーティングを使用した ECMP (Equal Cost Multi Path) にファイアウォールが対応している場合、ファイアウォールを境界デバイスとして機能させることが推奨されます。

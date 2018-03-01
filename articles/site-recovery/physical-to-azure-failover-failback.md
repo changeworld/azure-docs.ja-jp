@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 02/22/2018
 ms.author: raynew
-ms.openlocfilehash: 2fbad3b53319c8dc8be3480162a4fa67bab94306
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: bbad2a0ea1a58834eaf32e0d3286f6e8a794d364
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/11/2017
 ms.author: oanapl
-ms.openlocfilehash: cd9a144baf06422b425a0bc6c516600d6fcd4b97
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: f2a07d58938ae77701d8df8099ec0aedf1524d6b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -637,6 +637,21 @@ HealthEvents          :
 - **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。これは、パーティションのレプリカのレプリカ状態を確認するか、スタック再構成の System.FM 正常性レポートを確認することで判別できます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 プライマリの `CommittedSequenceNumber` の後ろにある `LastAppliedReplicationSequenceNumber` が含まれるレプリカに問題があります。
 
 - **IReplicator.BuildReplica (<Remote ReplicaId>)**: この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
+
+### <a name="replicator-system-health-reports"></a>レプリケーター システム正常性レポート
+**レプリケーション キュー満杯:**
+**System.Replicator** は、レプリケーション キューが満杯の場合、警告を報告します。 プライマリでレプリケーション キューが満杯になる原因は、通常、1 つまたは複数のセカンダリ レプリカで、処理の確認に時間がかかることです。 セカンダリでこの状態が発生する原因は、通常、サービスでの操作の適用に時間がかかることです。 キューが満杯でなくなると、警告はクリアされます。
+
+* **SourceId**: System.Replicator
+* **プロパティ**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**
+* **次の手順**: レポートがプライマリにある場合は、クラスター内のノード間の接続を確認します。 すべての接続が正常な場合は、1 つ以上のセカンダリが低速で、操作を適用するためのディスクの待ち時間が長い可能性があります。 レポートがセカンダリにある場合は、ノードのディスク使用量とパフォーマンスを最初に確認してから、低速なノードからプライマリへの発信接続を確認します。
+
+**RemoteReplicatorConnectionStatus:**
+プライマリ レプリカの **System.Replicator** は、セカンダリ (リモート) レプリケーターへの接続が正常でない場合に警告を表示します。 レポートのメッセージにリモート リプリケーターのアドレスが表示されるため、間違った構成が渡されたかどうかや、レプリケーター間にネットワークの問題があるかどうかを簡単に確認できます。
+
+* **SourceId**: System.Replicator
+* **プロパティ**: **RemoteReplicatorConnectionStatus**
+* **次の手順**: エラー メッセージを確認し、リモート リプリケーターのアドレスが正しく構成されていることを確認します (たとえば、リモート リプリケーターが "localhost" リッスン アドレスで開かれている場合、外部からアクセスできません)。 アドレスが正しいようであれば、プライマリ ノードとリモート アドレスの間の接続を確認して、考えられるネットワークの問題を探します。
 
 ### <a name="replication-queue-full"></a>レプリケーション キュー満杯
 **System.Replicator** は、レプリケーション キューが満杯の場合、警告を報告します。 プライマリでレプリケーション キューが満杯になる原因は、通常、1 つまたは複数のセカンダリ レプリカで、処理の確認に時間がかかることです。 セカンダリでこの状態が発生する原因は、通常、サービスでの操作の適用に時間がかかることです。 キューが満杯でなくなると、警告はクリアされます。

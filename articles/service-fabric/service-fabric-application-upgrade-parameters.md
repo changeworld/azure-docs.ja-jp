@@ -14,18 +14,18 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: f09dad590f32c10f75484bba9afb7ea60f29d81e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c12c4fc6cabd695101abf922eba77b9cd3ee00fa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="application-upgrade-parameters"></a>アプリケーション アップグレードのパラメーター
 この記事では、Azure Service Fabric アプリケーションのアップグレード中に適用されるさまざまなパラメーターについて説明します。 パラメーターには、アプリケーションの名前とバージョンが含まれています。 パラメーターは、アップグレード時に適用されるタイムアウトと正常性チェックを制御するノブです。また、パラメーターには、アップグレードの失敗時に適用する必要があるポリシーを指定します。
 
 <br>
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | ApplicationName |アップグレードするアプリケーションの名前です。 例: fabric:/VisualObjects、fabric:/ClusterMonitor |
 | TargetApplicationTypeVersion |ターゲットをアップグレードするアプリケーションの種類のバージョンです。 |
@@ -45,21 +45,21 @@ ms.lasthandoff: 10/11/2017
 
 <br>
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | ConsiderWarningAsError |既定値は False です。 アップグレード中に、アプリケーションの正常性を評価するときに、アプリケーションの警告正常性状態をエラーとして扱います。 既定では、Service Fabric は警告イベントがある場合でもアップグレードを続行できるように、エラーになるイベントの警告正常性のイベントは評価しません。 |
-| MaxPercentUnhealthyDeployedApplications |既定値と推奨値は、0 です。 アプリケーションが正常でないと見なされ、アップグレードに失敗する前にデプロイされるアプリケーションの最大数 ([正常性のセクション](service-fabric-health-introduction.md)を参照してください) を指定します。 このパラメーターは、ノード上のアプリケーションの正常性を定義するため、アップグレード中の問題を検出するうえで役立ちます。 通常、アプリケーションのレプリカの負荷はその他のノードに分散されます。これにより、アプリケーションは正常に表示され、アップグレードを続行することができます。 厳密な MaxPercentUnhealthyDeployedApplications を指定すると、Service Fabric はアプリケーション パッケージで高速に問題を検出し、高速アップグレードに失敗します。 |
+| MaxPercentUnhealthyDeployedApplications |既定値と推奨値は、0 です。 アプリケーションが正常でないと見なされ、アップグレードに失敗する前にデプロイされるアプリケーションの最大数 ([正常性のセクション](service-fabric-health-introduction.md)を参照してください) を指定します。 このパラメーターは、ノード上のアプリケーションの正常性を定義するため、アップグレード中の問題を検出するうえで役立ちます。 通常、アプリケーションのレプリカの負荷はその他のノードに分散されます。これにより、アプリケーションは正常に表示され、アップグレードを続行することができます。 厳密な MaxPercentUnhealthyDeployedApplications を指定すると、Service Fabric はアプリケーション パッケージで高速に問題を検出し、フェイルファストなアップグレードが行われるようにします。 |
 | MaxPercentUnhealthyServices |既定値と推奨値は、0 です。 アップグレードが正常でないと見なされてアップグレードに失敗する前に、正常性がなくなることを許可するアプリケーション インスタンス内のサービスの最大数を指定します。 |
 | MaxPercentUnhealthyPartitionsPerService |既定値と推奨値は、0 です。 サービス内のパーティション最大数に指定すると、サービスが正常でないと見なされる前に、正常でなくなる可能性があります。 |
 | MaxPercentUnhealthyReplicasPerPartition |既定値と推奨値は、0 です。 パーティションが正常でないと見なされる前に、正常でない状態になるパーティション内のレプリカの最大数を指定します。 |
-| UpgradeReplicaSetCheckTimeout |**ステートレス サービス**-- Service Fabric は単一のアップグレード ドメイン内で、サービスの追加インスタンスを確実に使用できるようにしようとします。 ターゲット インスタンス数が複数ある場合、最大タイムアウト値になるまで、複数のインスタンスが使用可能になるまで待機します。 このタイムアウトは、UpgradeReplicaSetCheckTimeout プロパティを使用して指定されます。 タイムアウトになると、サービス インスタンス数にかかわらず、Service Fabric はアップグレードを続行します。 ターゲット インスタンス数が 1 つの場合、Service Fabric は待機せずに、すぐにアップグレードを実行します。 **ステートフル サービス**-- Service Fabric は 1 つのアップグレード ドメイン内で、レプリカ セットに確実にクォーラムが含まれるようにしようとします。 Service Fabric は UpgradeReplicaSetCheckTimeout プロパティで指定した最大タイムアウト値になるまで、クォーラムが使用可能になるまで待機します。 タイムアウトになると、クォーラムにかかわらずアップグレードを続行します。 この設定は、ロール フォワード時には、"しない (無限)" に設定され、ロールバック時には 900 秒に設定されます。 |
+| UpgradeReplicaSetCheckTimeout |<p>**ステートレス サービス**-- Service Fabric は単一のアップグレード ドメイン内で、サービスの追加インスタンスを確実に使用できるようにしようとします。 ターゲット インスタンス数が複数ある場合、最大タイムアウト値になるまで、複数のインスタンスが使用可能になるまで待機します。 このタイムアウトは、UpgradeReplicaSetCheckTimeout プロパティを使用して指定されます。 タイムアウトになると、サービス インスタンス数にかかわらず、Service Fabric はアップグレードを続行します。 ターゲット インスタンス数が 1 つの場合、Service Fabric は待機せずに、すぐにアップグレードを実行します。</p><p>**ステートフル サービス**-- Service Fabric は 1 つのアップグレード ドメイン内で、レプリカ セットに確実にクォーラムが含まれるようにしようとします。 Service Fabric は UpgradeReplicaSetCheckTimeout プロパティで指定した最大タイムアウト値になるまで、クォーラムが使用可能になるまで待機します。 タイムアウトになると、クォーラムにかかわらずアップグレードを続行します。 この設定は、ロールフォワード時には、"しない (無限)" に設定され、ロールバック時には 1,200 秒に設定されます。</p> |
 | ForceRestart |サービス コードを更新せずに構成やデータ パッケージを更新する場合、サービスは、ForceRestart プロパティが true に設定されている場合にのみ再起動されます。 更新が完了すると、Service Fabric は新しい構成パッケージやデータ パッケージを使用可能なサービスを知らせます。 サービスは、変更を適用する役割を担います。 必要に応じて、サービス自体を再起動できます。 |
 
 <br>
 <br>
 MaxPercentUnhealthyServices、MaxPercentUnhealthyPartitionsPerService、MaxPercentUnhealthyReplicasPerPartition の基準は、アプリケーション インスタンスのサービスの種類ごとに指定できます。 このパラメーター per-service を設定すると、アプリケーションにさまざまなサービスの種類を含め、それぞれ異なる評価ポリシーを指定することができます。 たとえば、ステートレスなゲートウェイ サービスの種類には、特定のアプリケーション インスタンスのステートフルなエンジン サービスの種類とは異なる MaxPercentUnhealthyPartitionsPerService を含めることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。

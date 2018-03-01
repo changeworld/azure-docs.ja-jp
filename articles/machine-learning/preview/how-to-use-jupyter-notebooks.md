@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/09/2017
-ms.openlocfilehash: 9d8a9f1c32578abff1d98e093469e1a780f6cd80
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: 4a8681bfdfe6b387d5790446d8b6dce04aaec580
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で Jupyter Notebook を使用する方法
 
@@ -42,15 +42,15 @@ Azure ML Workbench では、プロジェクトの `aml_config` フォルダー�
 >実行構成および計算ターゲットの詳細については、[実行構成](experimentation-service-configuration.md)に関する記事をご覧ください。
 
 ### <a name="kernel-naming-convention"></a>カーネルの名前付け規則
-通常、カーネルには "\<プロジェクト名> \<実行構成名>" という形式の名前が付けられます。 たとえば、_myIris_ という名前のプロジェクトに _docker-python_ という名前の実行構成がある場合、Jupyter ノートブックを開くとカーネルの一覧に "myIris docker-python" という名前のカーネルが表示されます。
-
+Azure ML Workbench は、カスタムの Jupyter カーネルを生成します。  カーネルには、"\<プロジェクト名> \<実行構成名>" という形式の名前が付けられます。 たとえば、_myIris_ という名前のプロジェクトに _docker-python_ という名前の実行構成がある場合、Azure ML によって "myIris docker-python" という名前のカーネルが使用可能になります。  実行中のカーネルは、Jupyter Notebook の [Kernel]\(カーネル\) メニューの [Change kernel]\(カーネルの変更\) サブメニューで設定します。 実行中のカーネルの名前は、メニュー バーの右端に表示されます。
+ 
 現在、Workbench では次の種類のカーネルがサポートされています。
 
 ### <a name="local-python-kernel"></a>ローカルの Python カーネル
 この Python カーネルは、ローカル コンピューターでの実行をサポートします。 これは Azure Machine Learning の実行履歴と統合されています。 通常、このカーネルの名前は "my_project_name local" です。
 
 >[!NOTE]
->"Python 3" カーネルは使用しないでください。 これは Jupyter に既定で提供されているスタンドアロン カーネルです。 Azure Machine Learning 機能と統合されていません。
+>"Python 3" カーネルは使用しないでください。 これは Jupyter に既定で提供されているスタンドアロン カーネルです。 Azure Machine Learning 機能と統合されていません。 たとえば、_%azureml_ Jupyter マジック関数は、"見つかりません" エラーを返します。 
 
 ### <a name="python-kernel-in-docker-local-or-remote"></a>Docker (ローカルまたはリモート) 内の Python カーネル
 この Python カーネルは、ローカル コンピューターまたはリモート Linux VM 上の Docker コンテナーで実行されます。 通常、このカーネルの名前は "my_project docker" です。 関連付けられている `docker.runconfig` ファイルの `Framework` フィールドは `Python` に設定されます。
@@ -135,7 +135,7 @@ with open(modelpath,"wb") as f:
 >[!NOTE]
 >出力は、"outputs" というフォルダーに保存する必要があります
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Jupyter Notebook の使用方法について学習するには、[Jupyter の公式ドキュメント](http://jupyter-notebook.readthedocs.io/en/latest/)を参照します。    
 - Azure ML 実験実行環境をより深く理解するには、[Azure Machine Learning 実験サービスの概要](experimentation-service-configuration.md)に関する記事を参照します。
 

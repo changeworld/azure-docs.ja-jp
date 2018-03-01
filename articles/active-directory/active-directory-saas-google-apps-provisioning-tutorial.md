@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
-ms.openlocfilehash: 0a0dd38fda35b1eee1fdce196a3ed15f6e73dde6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: a90fe2c919e0c5452072c4129dcb7a1135d9ec25
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Google Apps を構成する
 
@@ -157,9 +157,9 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 20. **[保存]** を選択します。
 
-このプロセスは、[ユーザーとグループ] セクションで Google Apps に割り当てたユーザーとグループの初期同期を開始します。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている間、約 20 分ごとに実行されます。 
+このプロセスは、[ユーザーとグループ] セクションで Google Apps に割り当てたユーザーとグループの初期同期を開始します。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている間、約 40 分ごとに実行されます。 **[同期の詳細]** セクションを使用して、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ ログを取得できます。 これらのログには、Google Apps アプリでプロビジョニング サービスによって実行されたすべてのアクションが記載されています。
 
-**[同期の詳細]** セクションを使用して、進行状況を監視できるほか、リンクをクリックしてプロビジョニング アクティビティ レポートを取得できます。 これらのレポートには、Google Apps アプリでプロビジョニング サービスによって実行されたすべてのアクションが記載されています。
+Azure AD プロビジョニング ログの読み取りの詳細については、「[自動ユーザー アカウント プロビジョニングについてのレポート](active-directory-saas-provisioning-reporting.md)」をご覧ください。
 
 ## <a name="additional-resources"></a>その他のリソース
 

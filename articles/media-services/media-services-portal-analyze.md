@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.openlocfilehash: 22032aef0cc8b7b015503043028873e70c21ee85
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fee9f8d2204869cbe5cac7f446e8011305e92bfa
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="analyze-your-media-using-the-azure-portal"></a>Azure Portal を使用してメディアを分析する
 > [!NOTE]
@@ -29,12 +29,12 @@ ms.lasthandoff: 10/11/2017
 ## <a name="overview"></a>概要
 Azure Media Services Analytics は、組織や企業がビデオ ファイルからアクションにつながる分析データを簡単に得られるようにする、(エンタープライズ向けの規模、コンプライアンス、セキュリティ、グローバルな展開で使用できる) 音声コンポーネントと視覚コンポーネントのコレクションです。 Azure Media Services Analytics の概要について、詳しくは[こちら](media-services-analytics-overview.md)のトピックを参照してください。 
 
-このトピックでは、Azure Portal を使用して Media Analytics メディア プロセッサ (MP) でメディアを処理する方法について説明します。 Media Analytics MP によって MP4 または JSON ファイルが生成されます。 メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルのプログレッシブ ダウンロードが可能です。 メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードできます。 
+このトピックでは、Azure Portal を使用して Media Analytics メディア プロセッサ (MP) でメディアを処理する方法について説明します。 Media Analytics MP によって MP4 または JSON ファイルが生成されます。 メディア プロセッサによって MP4 ファイルが生成された場合は、そのファイルをプログレッシブ ダウンロードします。 メディア プロセッサによって JSON ファイルが生成された場合は、そのファイルを Azure Blob Storage からダウンロードします。 
 
 ## <a name="choose-an-asset-that-you-want-to-analyze"></a>分析する資産を選択する
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** ウィンドウで、**[資産]** を選択します。  
-   に関するページを参照してください。
+   が必要です。
     ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze001.png)
 3. 分析する資産を選択し、**[分析]** をクリックします。
    
@@ -45,7 +45,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 5. **[作成]** をクリックしてジョブを開始します。
 
 ## <a name="azure-media-indexer"></a>Azure Media Indexer
-**Azure Media Indexer** メディア プロセッサを使用して、メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックを生成できます。 このセクションでは、この MP に対して指定できるオプションについて詳細を説明します。
+**Azure Media Indexer** メディア プロセッサを使用して、メディア ファイルとコンテンツを検索可能にすると共に、クローズド キャプション トラックを生成できます。 このセクションでは、この MP に対して指定するオプションについて詳細を説明します。
 
 ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze003.png)
 
@@ -74,7 +74,7 @@ Azure Media Services Analytics は、組織や企業がビデオ ファイルか
 出力コンテンツを特定するためのフレンドリ名。 
 
 ## <a name="azure-media-hyperlapse"></a>Azure Media Hyperlapse
-Azure Media Hyperlapse は、一人称視点またはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成する MP です。  詳細については、[こちらの](media-services-hyperlapse-content.md)トピックを参照してください。 このセクションでは、この MP に対して指定できるオプションについて詳細を説明します。
+Azure Media Hyperlapse は、一人称視点またはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成する MP です。  詳細については、 [こちらの](media-services-hyperlapse-content.md) トピックを参照してください。 このセクションでは、この MP に対して指定するオプションについて詳細を説明します。
 
 ![ビデオを分析する](./media/media-services-portal-analyze/media-services-portal-analyze004.png)
 
@@ -135,11 +135,21 @@ Azure Media Hyperlapse は、一人称視点またはアクション カメラ�
 ### <a name="output-file"></a>出力ファイル
 出力コンテンツを特定するためのフレンドリ名。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="azure-media-content-moderator"></a>Azure Media Content Moderator
+このプロセッサは、ビデオに含まれる成人向けやわいせつな可能性のあるコンテンツを検出するのに役立ちます。 このプロセッサはビデオ内のショットとキーフレームを自動的に検出します。 成人向けやわいせつな可能性のあるコンテンツのキーフレームをスコア付けし、既定のしきい値に基づいてレビューを提案します。 詳細と例については、[Azure Media Content Moderator を使用したビデオの管理](media-services-content-moderation.md)に関するページを参照してください。
+
+![ビデオのモデレート](./media/media-services-portal-analyze/media-services-portal-analyze-content-moderator.PNG)
+
+### <a name="version"></a>バージョン 
+"2.0" を使用しています。
+
+### <a name="mode"></a>Mode
+バージョン 2.0 では `Mode` 設定が無視されます。
+
+## <a name="next-steps"></a>次の手順
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 11/23/2017
+ms.date: 02/22/2018
 ms.author: bsiva
-ms.openlocfilehash: 98e0a7cd77e8e6e9ce124845aad49bd03a2bf1d8
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ec1322e95431d5fd38d8e05a66322239d3184ac0
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="prepare-target-vmware-to-azure"></a>ターゲットを準備する (VMware から Azure)
 > [!div class="op_single_selector"]
@@ -48,5 +48,5 @@ ms.lasthandoff: 12/21/2017
 
 互換性のある Resource Manager ストレージ アカウントまたは仮想ネットワークがない場合は、ページの上部にある **[+ ストレージ アカウント]** または **[+ ネットワーク]** ボタンをクリックして作成できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [レプリケーションの設定を構成する](./site-recovery-setup-replication-settings-vmware.md)。

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;sogup;
-ms.openlocfilehash: d6ee96b17c6bc85a2278bbe98867a579ff9c550a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: da589905babd20b46ea7bc0baba753415b3b5d5b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Azure Backup サービスについての質問
 この記事では、Azure Backup のコンポーネントについてよくある質問の回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 Azure Backup について質問するには、**[コメント]** (右側) をクリックします。 コメントは、この記事の下部に表示されます。 コメントするには、Livefyre アカウントが必要です。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -135,7 +135,8 @@ Azure Backup では、ファイルとフォルダーのほか、Azure Backup Ser
 | Microsoft Exchange |バックアップ対象の Exchange サーバー内のすべての Exchange データベースの合計 |
 | BMR/システム状態 |バックアップ対象のコンピューターの BMR またはシステム状態の個々のコピー |
 
-Azure VM バックアップでは、各データ ディスクのサイズを 1,023 GB 未満として、最大 16 台のデータ ディスクを個々の VM に割り当てることができます。 
+Azure VM バックアップでは、各データ ディスクのサイズを 1,024 GB 未満として、最大 16 台のデータ ディスクを個々の VM に割り当てることができます。 <br>
+最大 4 TB のディスクをサポートする[プライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a?redir=0)を用意しています。 
 
 ## <a name="retention-policy-and-recovery-points"></a>保持ポリシーと復旧ポイント
 ### <a name="is-there-a-difference-between-the-retention-policy-for-dpm-and-windows-serverclient-that-is-on-windows-server-without-dpmbr"></a>DPM と Windows Server/クライアント (DPM がインストールされていない Windows Server) の保持ポリシーには違いがありますか。<br/>

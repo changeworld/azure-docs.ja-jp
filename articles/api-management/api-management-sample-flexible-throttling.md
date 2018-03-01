@@ -12,19 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/15/2016
+ms.date: 02/03/2018
 ms.author: apimpm
-ms.openlocfilehash: 356f98aec072a1295915ae0701a3e3cd793aba07
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 427660be92d3caf4c381cec65f49adce9808e50a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="advanced-request-throttling-with-azure-api-management"></a>Azure API Management を使用した高度な要求スロットル
 受信要求のスロットルは、Azure API Management の重要な役割の 1 つです。 要求のレートや転送される要求/データの合計を制御できるため、API プロバイダーは API Management を使用して、さまざまな API 成果物階層に対する値の不正使用や作成から API を保護できます。
 
 ## <a name="product-based-throttling"></a>成果物ベースのスロットル
-これまで、レートのスロットル機能は、特定の成果物のサブスクリプション (実質的にはキー) を範囲とするように制限されていました。この範囲は、API Management パブリッシャー ポータルで定義します。 API プロバイダーからすると、これは API を使用するためにサインアップした開発者に制限を適用する場合には便利ですが、API の個々のエンド ユーザーをスロットルする場合などには役立ちません。 開発者のアプリケーションを使用する 1 人のユーザーがクォータ全体を使用しているために、他の顧客がアプリケーションを使用できないという状況が生じることがあります。 また、複数の顧客が大量の要求を生成したために、不定期に使用するユーザーがアクセスを制限される場合もあります。
+これまで、レート調整機能は、特定の成果物のサブスクリプション (実質的にはキー) を範囲とするように制限されていました。この範囲は、Azure Portal で定義します。 API プロバイダーからすると、これは API を使用するためにサインアップした開発者に制限を適用する場合には便利ですが、API の個々のエンド ユーザーをスロットルする場合などには役立ちません。 開発者のアプリケーションを使用する 1 人のユーザーがクォータ全体を使用しているために、他の顧客がアプリケーションを使用できないという状況が生じることがあります。 また、複数の顧客が大量の要求を生成したために、不定期に使用するユーザーがアクセスを制限される場合もあります。
 
 ## <a name="custom-key-based-throttling"></a>カスタム キー ベースのスロットル
 新しい [rate-limit-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRateByKey) ポリシーと [quota-by-key](https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuotaByKey) ポリシーを使用すると、トラフィック制御の柔軟性が大幅に向上します。 これらの新しいポリシーでは、トラフィックの使用状況を追跡するために使用されるキーを識別する式を定義できます。 このしくみを理解しやすいように、例を示します。 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="summary"></a>まとめ
 Azure API Management では、レートとクォータのスロットルを通じて、API サービスの保護と API サービスへの付加価値の両方を実現します。 新しいスロットル ポリシーをカスタムの範囲設定規則と組み合わせて使用することで、ポリシーをきめ細かく制御でき、顧客はさらに高品質なアプリケーションを構築できるようになります。 この記事の例では、クライアントの IP アドレス、ユーザー ID、クライアントを用いて生成された値を使用してレート制限キーを作成して、新しいポリシーの使用方法の例を示しましたが、 ユーザー エージェント、URL パス フラグメント、メッセージ サイズなど、使用可能なメッセージ要素は他にも多数あります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ご意見ご感想をこのトピックの Disqus スレッドでお寄せください。 上記以外で、お客様のシナリオに適した選択肢となりそうなキーの値がありましたら、ぜひお聞かせください。
 
 ## <a name="watch-a-video-overview-of-these-policies"></a>これらのポリシーの概要に関するビデオ

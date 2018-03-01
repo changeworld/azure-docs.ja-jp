@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 09/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: e58c10cfb4cdd4ba49945e6c19845cbc957d6326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87bc6e4def624785c5052a9a25f579b022c940ec
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>無効なテンプレートのエラーを解決する
 
@@ -131,6 +131,10 @@ part of the allowed values
 
 テンプレートで許可された値を十分に確認し、デプロイの際はその値を用いてください。
 
-### <a name="solution-4---circular-dependency-detected"></a>解決策 4 - 循環依存関係が検出された
+### <a name="solution-4---too-many-target-resource-groups"></a>解決策 4 - ターゲット リソース グループが多すぎる
+
+1 つのデプロイに 5 つを超えるターゲット リソース グループを指定すると、このエラーが発生します。 デプロイ内のリソース グループの数を統合するか、一部のテンプレートを別個のデプロイとしてデプロイすることを検討してください。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](resource-manager-cross-resource-group-deployment.md)」を参照してください。
+
+### <a name="solution-5---circular-dependency-detected"></a>解決策 5 - 循環依存関係が検出された
 
 このエラーは、リソース同士の依存関係がデプロイの開始を妨げるときに受け取ります。 相互依存関係の組み合わせにより、2 つ以上のリソースが同じく待機しているその他のリソースを待機します。 たとえば、resource1 が resource3 に依存、resource2 が resource1 に依存、resource3 が resource2 している場合などです。 通常、この問題は不要な依存関係を削除することによって解決できます。

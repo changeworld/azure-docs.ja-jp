@@ -5,13 +5,13 @@ services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/15/2017
+ms.date: 02/04/2018
 ms.author: anoopkv
-ms.openlocfilehash: e9e4bfc86df2cae1facac62472c915d91fb8c84c
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 9cdabfb4e24423d76e4f247f184ac4156c3b257b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="manage-the-configuration-server"></a>構成サーバーの管理
 
@@ -72,6 +72,22 @@ OVF テンプレートは、ネットワーク アダプターが 1 つの構成
       net stop obengine
       net start obengine
       ```
+## <a name="upgrade-the-configuration-server"></a>構成サーバーをアップグレードする
+
+構成サーバーを更新するには、更新プログラムのロールアップを実行します。 更新は N-4 までのバージョンに適用できます。 例: 
+
+- 9.7、9.8、9.9、または 9.10 を実行している場合は、9.11 に直接アップグレードできます。
+- 9.6 以前を実行している場合に、9.11 にアップグレードするには、まずバージョン 9.7 にアップグレードしてから、 9.11 にアップグレードする必要があります。
+
+すべてのバージョンの構成サーバーにアップグレードするための更新プログラムのロールアップへのリンクは、[wiki の更新プログラムのページ](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)にあります。
+
+次のようにサーバーをアップグレードします。
+
+1. 更新プログラムのインストーラー ファイルを構成サーバーにダウンロードします。
+2. インストーラーをダブルクリックして実行します。
+3. インストーラーがマシン上で実行中の現在のバージョンを検出します。
+4. **[OK]** をクリックして確認し、アップグレードを実行します。 
+
 
 ## <a name="delete-or-unregister-a-configuration-server"></a>構成サーバーを削除または登録解除する
 

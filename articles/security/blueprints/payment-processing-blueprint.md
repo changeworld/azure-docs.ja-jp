@@ -1,6 +1,6 @@
 ---
-title: "PCI DSS 準拠環境での支払い処理のブループリント"
-description: "PCI DSS 要件"
+title: "Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境"
+description: "Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境"
 services: security
 documentationcenter: na
 author: simorjay
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/29/2017
+ms.date: 02/09/2018
 ms.author: frasim
-ms.openlocfilehash: 7f85c8b0377e57f08044bac41dbddbbedb7a4f55
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 3e97862091e6ea334f2437bd8424b79952f41bf4
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 02/13/2018
 ---
-# <a name="azure-blueprint-automation-payment-processing-for-pci-dss-compliant-environments"></a>Azure Blueprint Automation: PCI DSS 準拠環境での支払い処理
+# <a name="azure-security-and-compliance-blueprint---pci-dss-compliant-payment-processing-environments"></a>Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境
 
 ## <a name="overview"></a>概要
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 11/30/2017
 - **デプロイ テンプレート**:  このデプロイでは、[Azure Resource Manager テンプレート](/azure/azure-resource-manager/resource-group-overview#template-deployment) を使用してアーキテクチャのコンポーネントを Microsoft Azure に自動的にデプロイします (これは、セットアップ時に構成パラメーターを指定することによって行います)。
 - **自動化されたデプロイ スクリプト**:  これらのスクリプトを使用して、エンド ツー エンド ソリューションをデプロイします。 次のスクリプトが含まれます。
     - モジュールのインストールと[グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)のセットアップ スクリプト。インストールを行い、必要な PowerShell モジュールとグローバル管理者ロールが正しく構成されていることを確認するために使用します。
-    - インストール PowerShell スクリプト。エンド ツー エンドのソリューションをデプロイするために使用します。事前構築済みのデモ Web アプリケーションと [SQL データベースのサンプル](https://github.com/Microsoft/azure-sql-security-sample)を含む .zip ファイルと .bacpac ファイルによって提供されます。 コンテンツ。 このソリューションのソース コードは、[Payment Processing Blueprint コード リポジトリ][code-repo] のページでレビュー用に入手できます。 
+    - インストール PowerShell スクリプト。エンド ツー エンドのソリューションをデプロイするために使用します。事前構築済みのデモ Web アプリケーションと [SQL データベースのサンプル](https://github.com/Microsoft/azure-sql-security-sample)を含む .zip ファイルと .bacpac ファイルによって提供されます。 コンテンツ。 このソリューションのソース コードは、[ブループリントのコード リポジトリ][code-repo]でレビュー用に入手できます。 
 
 ## <a name="architectural-diagram"></a>アーキテクチャ図
 
@@ -111,8 +111,6 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 - Edna は顧客情報を変更できます。
 - Edna はクレジット カード番号、有効期限、および CVV 情報の上書きおよび置換を実行できます。
 
-> Contoso Webstore では、ユーザーは配置された環境の機能をテストするために自動的に **Edna** ユーザーとなります。
-
 ### <a name="contoso-webstore---estimated-pricing"></a>Contoso Webstore - 推定料金
 
 この基本アーキテクチャおよびサンプル Web アプリケーションでは月額料金と時間あたりの使用コストが発生するため、ソリューションのサイズを決定する際にそれらを考慮する必要があります。 これらのコストは [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を使用して推定できます。 2017 年 9 月の時点で、このソリューションの毎月の推定コストはおよそ 2500 ドルです。これには ASE v2 に対する毎月 1000 ドルの使用料金が含まれます。 これらのコストは使用量に基づいて変化し、変更される可能性があります。 デプロイ時点でより正確な見積もりのために月間推定コストを計算するのはお客様の責任です。 
@@ -127,8 +125,8 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 >- ネットワーク セキュリティ グループ
 >- Azure SQL DB
 >- Azure Load Balancer
->- Application Insights
->- [Azure Security Center] \(Azure Security Center)
+>- アプリケーション インサイト
+>- Azure Security Center
 >- Azure Web アプリ
 >- Azure Automation
 >- Azure Automation Runbooks
@@ -191,7 +189,7 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 
 暗号化された保存データの要件を満たすために、すべての [Azure Storage](https://azure.microsoft.com/services/storage/) で [Storage サービスの暗号化](/azure/storage/storage-service-encryption)が使用されます。
 
-#### <a name="azure-sql-database"></a>Azure SQL Database
+#### <a name="azure-sql-database"></a>の接続文字列
 
 Azure SQL Database インスタンスは、次のデータベース セキュリティ対策を使用します。
 
@@ -272,9 +270,9 @@ App Service 環境はセキュリティで保護され、ロック ダウンさ�
 
 Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウェア対策](/azure/security/azure-security-antimalware)は、ウイルスやスパイウェアなどの悪意のあるソフトウェアを識別して削除するリアルタイム保護機能であり、既知のマルウェアや不要なソフトウェアが Azure システムへのインストールまたは実行を試みた場合に警告する構成可能なアラートを備えています。
 
-### <a name="operations-management"></a>Operations Management
+### <a name="operations-management"></a>運用管理
 
-#### <a name="application-insights"></a>Application Insights
+#### <a name="application-insights"></a>アプリケーション インサイト
 
 [Application Insights](https://azure.microsoft.com/services/application-insights/) を使用すると、アプリケーションのパフォーマンス管理と瞬時の分析によって、行動につながる知見を得ることができます。
 
@@ -357,7 +355,7 @@ Azure Cloud Services および Virtual Machines 向けの [Microsoft マルウ�
     
 ## <a name="threat-model"></a>脅威モデル
 
-Contoso Webstore [Payment Processing Blueprint 脅威モデル](https://aka.ms/pciblueprintthreatmodel)のためのデータ フロー ダイアグラム (DFD) と脅威モデルの例です。
+Contoso Webstore [ブループリントの脅威モデル](https://aka.ms/pciblueprintthreatmodel)のためのデータ フロー ダイアグラム (DFD) と脅威モデルの例です。
 
 ![](images/pci-threat-model.png)
 
