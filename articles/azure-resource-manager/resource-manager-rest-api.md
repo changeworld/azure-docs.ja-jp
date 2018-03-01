@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/13/2017
 ms.author: navale;tomfitz;
 ms.openlocfilehash: 2f7ba23775545637de865f9ef63680ae22c62164
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/26/2018
 ---
 # <a name="resource-manager-rest-apis"></a>Resource Manager REST API
 > [!div class="op_single_selector"]
