@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 1d3dba645acf51a7dcdd42fa23c82db962244b62
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 08f71340fea7424262fc9c549351bd50bcfcafe2
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Azure Virtual Network での HDInsight HBase クラスターの作成
 [Azure Virtual Network][1] での Azure HDInsight HBase クラスターの作成方法について説明します。
@@ -41,7 +41,7 @@ ms.lasthandoff: 11/04/2017
 このセクションでは、[Azure Resource Manager テンプレート](../../azure-resource-manager/resource-group-template-deploy.md)を使用して Azure Virtual Network 内の依存する Azure ストレージ アカウントで Linux ベースの HBase クラスターを作成します。 その他のクラスター作成方法と設定の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](../hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。 テンプレートを利用して HDInsight で Hadoop クラスターを作成する方法の詳細については、「[Azure Resource Manager テンプレートを使用した HDInsight での Windows ベースの Hadoop クラスターの作成](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)」をご覧ください。
 
 > [!NOTE]
-> 一部のプロパティは、テンプレートにハードコーディングされています。 次に例を示します。
+> 一部のプロパティは、テンプレートにハードコーディングされています。 例: 
 >
 > * **場所**: 米国東部 2
 > * **クラスターのバージョン**: 3.6
@@ -102,7 +102,7 @@ ms.lasthandoff: 11/04/2017
         curl -u <username>:<password> -k https://<clustername>.azurehdinsight.net/ambari/api/v1/clusters/<clustername>.azurehdinsight.net/services/hbase/components/hbrest
     ```
 
-     返された JavaScript Object Notation (JSON) データで、"host_name" エントリを見つけます。 これには、クラスターのノードの FQDN が含まれています。 For example:
+     返された JavaScript Object Notation (JSON) データで、"host_name" エントリを見つけます。 これには、クラスターのノードの FQDN が含まれています。 例: 
 
          ...
          "host_name": "wordkernode0.<clustername>.b1.cloudapp.net
@@ -231,7 +231,7 @@ ms.lasthandoff: 11/04/2017
 
 仮想マシンが HBase クラスターと通信できることを確認するには、仮想マシンからコマンド `ping headnode0.<dns suffix>` を使用します。 たとえば、「ping headnode0.mycluster.b1.cloudapp.net」のように入力します。
 
-Java アプリケーションでこの情報を使用するには、「 [HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築](./apache-hbase-build-java-maven-linux.md) 」の手順に従って、アプリケーションを作成します。 アプリケーションをリモート HBase サーバーに接続するには、Zookeeper の FQDN を使用するように、この例の **hbase-site.xml** ファイルを変更します。 For example:
+Java アプリケーションでこの情報を使用するには、「 [HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築](./apache-hbase-build-java-maven-linux.md) 」の手順に従って、アプリケーションを作成します。 アプリケーションをリモート HBase サーバーに接続するには、Zookeeper の FQDN を使用するように、この例の **hbase-site.xml** ファイルを変更します。 例: 
 
     <property>
         <name>hbase.zookeeper.quorum</name>
@@ -243,7 +243,7 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、HBase クラスターの作成方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight の概要](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
@@ -251,7 +251,7 @@ Java アプリケーションでこの情報を使用するには、「 [HDInsig
 * [HDInsight での HBase レプリケーションの構成](apache-hbase-replication.md)
 * [HDInsight で Hadoop クラスターを作成する](../hdinsight-hadoop-provision-linux-clusters.md)
 * [HDInsight の Hadoop 環境での HBase の使用](./apache-hbase-tutorial-get-started-linux.md)
-* [仮想ネットワークの概要](../../virtual-network/virtual-networks-overview.md)
+* [Virtual Network の概要](../../virtual-network/virtual-networks-overview.md)
 
 [1]: http://azure.microsoft.com/services/virtual-network/
 [2]: http://technet.microsoft.com/library/ee176961.aspx

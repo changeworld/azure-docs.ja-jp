@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/23/2017
 ms.author: echuvyrov
-ms.openlocfilehash: c156776103a466af8923ba7249d96835ff339268
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: dada9c70eef2adb2704e276a5401509581e37538
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>VM などのインフラストラクチャを Azure にプロビジョニングするための Terraform のインストールと構成
  
@@ -80,12 +80,13 @@ az vm list-sizes --location westus
 
 ## <a name="configure-terraform-environment-variables"></a>Terraform 環境変数の構成
 
-Azure リソースを作成するときに、サービス プリンシパルのテナント ID、サブスクリプション ID、クライアント ID、およびクライアント シークレットを使用するように Terraform を構成します。 次の環境変数を設定します。これらは [Azure Terraform モジュール](https://registry.terraform.io/modules/Azure)で自動的に使用されます。
+Azure リソースを作成するときに、サービス プリンシパルのテナント ID、サブスクリプション ID、クライアント ID、およびクライアント シークレットを使用するように Terraform を構成します。 Azure パブリック以外の Azure クラウドで作業している場合は、環境を設定することもできます。 次の環境変数を設定します。これらは [Azure Terraform モジュール](https://registry.terraform.io/modules/Azure)で自動的に使用されます。
 
 - ARM_SUBSCRIPTION_ID
 - ARM_CLIENT_ID
 - ARM_CLIENT_SECRET
 - ARM_TENANT_ID
+- ARM_ENVIRONMENT
 
 これらの変数は、次のサンプル シェル スクリプトを使用して設定できます。
 
@@ -96,6 +97,9 @@ export ARM_SUBSCRIPTION_ID=your_subscription_id
 export ARM_CLIENT_ID=your_appId
 export ARM_CLIENT_SECRET=your_password
 export ARM_TENANT_ID=your_tenant_id
+
+# Not needed for public, required for usgovernment, german, china
+export ARM_ENVIRONMENT=public
 ```
 
 ## <a name="run-a-sample-script"></a>サンプル スクリプトの実行
@@ -141,7 +145,7 @@ azurerm_resource_group.rg: Creating...
 azurerm_resource_group.rg: Creation complete after 1s
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure サブスクリプションへのインフラストラクチャのデプロイを開始できるように、Terraform のインストールと Azure 資格情報の構成を完了しました。 その後、空の Azure リソース グループを作成してインストールをテストしました。
 

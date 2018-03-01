@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: sstein
-ms.openlocfilehash: d17c361d2249cc95be78cde143925251ad65db44
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 2871d2b1208013808958e8a5b0c62fce31af86ec
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/22/2018
 ---
-# <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>SQL Database のマルチ テナント SaaS アプリの例の概要
+# <a name="introduction-to-a-multi-tenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナントごとのデータベース パターンを使用するマルチテナント SaaS アプリケーションの概要
 
-*Wingtip SaaS* アプリケーションは、SQL Database の独自のメリットを示すためのサンプルのマルチテナント アプリです。 このアプリは、SaaS アプリケーション パターンとしてテナント単位のデータベースを使用して、複数のテナントにサービスを提供します。 アプリの目的は、複数の SaaS の設計と管理のパターンを含む各種の SaaS シナリオを実現している Azure SQL Database の機能を紹介することにあります。 このアプリをすぐに使い始めるために、Wingtip SaaS アプリを 5 分以内でデプロイできます。
+*Wingtip SaaS* アプリケーションは、サンプルのマルチ テナント アプリです。 このアプリは、テナントごとにデータベースを使用する SaaS アプリケーション パターンで、複数のテナントにサービスを提供します。 このアプリは、さまざまな SaaS の設計と管理のパターンを使用する SaaS シナリオを可能にする Azure SQL Database の機能を紹介します。 このアプリをすぐに使い始めるために、Wingtip SaaS アプリを 5 分以内でデプロイできます。
 
-アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリから入手できます。 Wingtip Tickets SaaS スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
+アプリケーションのソース コードと管理スクリプトは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリから入手できます。 開始する前に、Wingtip Tickets 管理スクリプトをダウンロードしてブロック解除する手順に関する[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)を参照してください。
 
 ## <a name="application-architecture"></a>アプリケーションのアーキテクチャ
 
@@ -48,13 +48,13 @@ Wingtip SaaS アプリでは、テナント単位のデータベース モデル
 |[パフォーマンスを監視および管理する](saas-dbpertenant-performance-monitoring.md)| SQL Database の監視機能の使用方法と、パフォーマンスのしきい値が超過した場合のアラートの設定方法について説明します。 |
 |[Log Analytics (OMS) を使って監視する](saas-dbpertenant-log-analytics.md) | [Log Analytics](../log-analytics/log-analytics-overview.md) を使って、複数のプールにある大量のリソースを監視する方法を説明します。 |
 |[シングル テナントを復元する](saas-dbpertenant-restore-single-tenant.md)| テナント データベースを前のポイント イン タイムに復元する方法を説明します。 既存のテナント データベースをオンラインにしたまま、並列のデータベースに復元する手順も含まれています。 |
-|[テナント スキーマを管理する](saas-tenancy-schema-management.md)| すべての Wingtip SaaS テナントにあるスキーマの更新および参照データの更新を行う方法について説明します。 |
-|[アドホック分析を実行する](saas-tenancy-adhoc-analytics.md) | アドホック分析データベースを作成し、すべてのテナントに対してリアルタイムに配布されたクエリを実行します。  |
-|[テナント分析を実行する](saas-tenancy-tenant-analytics.md) | 実行中のオフライン分析クエリに対応する分析データベースまたはデータ ウェアハウスに、テナント データを抽出します。 |
+|[テナント データベースのスキーマの管理に関するページ](saas-tenancy-schema-management.md)| すべてのテナント データベースに対してスキーマの更新と参照データの更新を行う方法について説明します。 |
+|[テナント間で分散クエリを実行する](saas-tenancy-cross-tenant-reporting.md) | アドホック分析データベースを作成し、すべてのテナントに対してリアルタイムに配布されたクエリを実行します。  |
+|[抽出されたテナント データに対して分析を実行する](saas-tenancy-tenant-analytics.md) | オフライン分析クエリに対応する分析データベースまたはデータ ウェアハウスにテナント データを抽出します。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [Azure SQL Database のマルチテナント SaaS アプリ例のガイダンスとヒント](saas-tenancy-wingtip-app-guidance-tips.md)
+- [Wingtip Tickets SaaS サンプル アプリをデプロイして使用する際の一般的なガイダンスとヒント](saas-tenancy-wingtip-app-guidance-tips.md)
 
 - [Wingtip SaaS アプリケーションのデプロイ](saas-dbpertenant-get-started-deploy.md)

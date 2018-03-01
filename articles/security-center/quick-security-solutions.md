@@ -9,17 +9,17 @@ editor:
 ms.assetid: 3263bb3d-befc-428c-9f80-53de65761697
 ms.service: security-center
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
+ms.custom: mvc
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/07/2018
+ms.date: 02/22/2018
 ms.author: yurid
-ms.custom: mvc
-ms.openlocfilehash: 2ea4dc75c6285379d7a7eb3e85d28c89ae520dc8
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 95cc85f0c742d465ab1ed68d6c29b61a6919dd5b
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="quickstart-connect-security-solutions-to-security-center"></a>クイックスタート: Security Center へのセキュリティ ソリューションの接続
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 01/08/2018
 ## <a name="connect-solution-using-cef"></a>CEF を使用したソリューションの接続
 
 1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
-2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[Security Center - Overview]\(セキュリティ センター - 概要\)** が開きます。
+2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
 
     ![セキュリティ センターの選択](./media/quick-security-solutions/quick-security-solutions-fig1.png)  
 

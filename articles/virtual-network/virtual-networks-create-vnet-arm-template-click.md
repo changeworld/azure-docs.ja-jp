@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 81602766848a91331c8d811ea1c8ec3ffae44b96
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a59ea7c9e111f8ae5b0d9bd620faa5495c3924b7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した仮想ネットワークの作成
 
@@ -39,9 +39,9 @@ Azure には、Azure Resource Manager とクラシックという 2 種類のデ
 - [PowerShell (クラシック)](virtual-networks-create-vnet-classic-netcfg-ps.md)
 - [CLI (クラシック)](virtual-networks-create-vnet-classic-cli.md)
 
-GitHub から既存の ARM テンプレートをダウンロードして変更し、そのテンプレートを GitHub、PowerShell、および Azure CLI からデプロイする方法を説明します。
+GitHub から既存の Azure Resource Manager テンプレートをダウンロードして変更し、そのテンプレートを GitHub、PowerShell、Azure CLI からデプロイする方法を説明します。
 
-GitHub から直接 ARM テンプレートをデプロイするだけで、変更を加えない場合は、 [Github からのテンプレートのデプロイ](#deploy-the-arm-template-by-using-click-to-deploy)に進んでください。
+GitHub から直接 Azure Resource Manager テンプレートをデプロイするだけで、変更を加えない場合は、[Github からのテンプレートのデプロイ](#deploy-the-arm-template-by-using-click-to-deploy)に進んでください。
 
 [!INCLUDE [virtual-networks-create-vnet-scenario-include](../../includes/virtual-networks-create-vnet-scenario-include.md)]
 
@@ -52,9 +52,9 @@ Github から既存のテンプレートをダウンロードして VNet と 2 �
 2. **[azuredeploy.json]**、**[RAW]** の順にクリックします。
 3. お使いのコンピューター上のローカル フォルダーにファイルを保存します。
 4. テンプレートを使用したことがある場合は、手順 7. に進みます。
-5. 保存したファイルを開き、 5 行目にある **parameters** の内容を参照します。 ARM テンプレートのパラメーターでは、デプロイ中に入力できる、値のプレース ホルダーが用意されています。
+5. 保存したファイルを開き、5 行目にある **parameters** の内容を確認します。 Azure リソース マネージャー テンプレートのパラメーターでは、デプロイメント中に入力できる、値のプレース ホルダーが用意されています。
    
-   | パラメーター | 説明 |
+   | パラメーター | [説明] |
    | --- | --- |
    | **location** |VNet が作成される Azure リージョン |
    | **vnetName** |新しい VNet の名前 |
@@ -71,7 +71,7 @@ Github から既存のテンプレートをダウンロードして VNet と 2 �
 6. **resources** の内容を確認し、次を参照します。
    
    * **type**。 テンプレートによって作成されるリソースのタイプ。 この場合は **Microsoft.Network/virtualNetworks**にあたり、VNet を指しています。
-   * **name**。 リソースの名前です。 **[parameters('vnetName')]**が使用されているため、名前はデプロイ中にユーザーまたはパラメーター ファイルによって入力されます。
+   * **name**。 リソースの名前です。 **[parameters('vnetName')]** が使用されているため、名前はデプロイ中にユーザーまたはパラメーター ファイルによって入力されます。
    * **properties**。 リソースのプロパティの一覧です。 VNet の作成中、このテンプレートではアドレス空間とサブネットのプロパティが使用されます。
 7. [サンプル テンプレート ページ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vnet-two-subnets)に戻ります。
 8. **[azuredeploy-paremeters.json]**、**[RAW]** の順にクリックします。
@@ -118,7 +118,7 @@ PowerShell を使用してダウンロードしたテンプレートをデプロ
     New-AzureRmResourceGroup -Name TestRG -Location centralus
     ```
 
-    コマンドを実行すると、*米国中部* Azure リージョンに *TestRG* というリソース グループが作成されます。 リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
+    コマンドを実行すると、*米国中部* Azure リージョンに *TestRG* というリソース グループが作成されます。 リソース グループの詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
     予想される出力:
 
@@ -231,11 +231,11 @@ Microsoft によって管理され、コミュニティにも公開されてい�
    
     ![プレビュー ポータルでのデプロイ タイルの送信](./media/virtual-networks-create-vnet-arm-template-click-include/figure4.png)
 
-10. デプロイが完了したら、Azure Portal で **[その他のサービス]** をクリックし、フィルター ボックスに「*仮想ネットワーク*」と入力し、[仮想ネットワーク] をクリックして仮想ネットワーク ブレードを表示します。 ブレードで、*[TestVNet]* をクリックします。 *[TestVNet]* ブレードで **[サブネット]** をクリックし、下図のように作成したサブネットを表示します。
+10. デプロイが完了したら、Azure Portal で **[すべてのサービス]** をクリックし、フィルター ボックスに「*仮想ネットワーク*」と入力し、[仮想ネットワーク] をクリックして [仮想ネットワーク] ブレードを表示します。 ブレードで、*[TestVNet]* をクリックします。 *[TestVNet]* ブレードで **[サブネット]** をクリックし、下図のように作成したサブネットを表示します。
     
      ![プレビュー ポータルでの VNet の作成](./media/virtual-networks-create-vnet-arm-template-click-include/figure5.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の接続方法を確認してください。
 

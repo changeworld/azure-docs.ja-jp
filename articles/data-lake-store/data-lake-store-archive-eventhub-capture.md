@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 221ee6990fe0b5bfc9e745fc85543c4e04e41bd3
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: ac8000abc35cba89c4bf655a4806636933ab8d08
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-azure-data-lake-store-to-capture-data-from-event-hubs"></a>Azure Data Lake Store を使用して Event Hubs からデータをキャプチャする
 
@@ -46,7 +46,7 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
 3. Data Lake Store のルートにアクセス許可を割り当てます。 
 
-    a. **[データ エクスプローラー]** をクリックし、Data Lake Store アカウントのルートを選択して、**[アクセス]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[データ エクスプローラー]** をクリックし、Data Lake Store アカウントのルートを選択して、**[アクセス]** をクリックします。
 
     ![Data Lake Store のルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-root.png "Data Lake Store のルートにアクセス許可を割り当てる")
 
@@ -60,11 +60,11 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
     ![Data Lake Store のルートにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp1.png "Data Lake Store のルートにアクセス許可を割り当てる")
 
-    **[OK]**をクリックします。
+    Click **OK**.
 
 4. データをキャプチャする Data Lake Store アカウントのフォルダーにアクセス許可を割り当てます。
 
-    a. **[データ エクスプローラー]** をクリックし、Data Lake Store アカウントのフォルダーを選択して、**[アクセス]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[データ エクスプローラー]** をクリックし、Data Lake Store アカウントのフォルダーを選択して、**[アクセス]** をクリックします。
 
     ![Data Lake Store のフォルダーにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-permissions-to-folder.png "Data Lake Store のフォルダーにアクセス許可を割り当てる")
 
@@ -78,7 +78,7 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
     ![Data Lake Store のフォルダーにアクセス許可を割り当てる](./media/data-lake-store-archive-eventhub-capture/data-lake-store-assign-eventhub-sp-folder.png "Data Lake Store のフォルダーにアクセス許可を割り当てる")
     
-    **[OK]**をクリックします。 
+    Click **OK**. 
 
 ## <a name="configure-event-hubs-to-capture-data-to-data-lake-store"></a>Data Lake Store にデータをキャプチャするよう Event Hubs を構成する
 
@@ -92,7 +92,7 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
     ![イベント ハブを作成する](./media/data-lake-store-archive-eventhub-capture/data-lake-store-configure-eventhub.png "イベント ハブを作成する")
 
-    a. イベント ハブの名前を指定します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 イベント ハブの名前を指定します。
     
     b. このチュートリアルでは、**[パーティション数]** と **[メッセージのリテンション期間]** を既定値に設定します。
     
@@ -102,7 +102,7 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 
     e. **[サンプルのキャプチャ ファイル名の形式]** は既定値のままにします。 このオプションは、キャプチャ フォルダーの下に作成されるフォルダー構造を制御します。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **Create** をクリックしてください。
+    f. **Create** をクリックしてください。
 
 ## <a name="test-the-setup"></a>設定をテストする
 

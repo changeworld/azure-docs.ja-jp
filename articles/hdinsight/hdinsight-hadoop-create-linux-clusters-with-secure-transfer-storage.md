@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 9b537595fd8224536f67989d7529f6030347bfab
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: fd27837e4b40b34551092be5d75eb770730d97a4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントで Hadoop クラスターを作成する
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 11/06/2017
 
 2. 手順に従って、以下の仕様のクラスターを作成します。 
 
-    - HDInsight バージョン 3.6 を指定します。  既定のバージョンは 3.5 です。 バージョン 3.6 以降が必須です。
+    - HDInsight バージョン 3.6 を指定します。  バージョン 3.6 以降が必須です。
     - 安全な転送が有効になっているストレージ アカウントを指定します。
     - ストレージ アカウントの短い名前を使用します。
     - ストレージ アカウントと BLOB コンテナーのどちらも、事前に作成しておく必要があります。 
@@ -66,7 +66,7 @@ ms.lasthandoff: 11/06/2017
 - [Azure Portal](https://portal.azure.com) を使用してクラスターを作成し、リンクされたストレージ アカウントを指定します。
 - スクリプト アクションを使用して、既存の HDInsight クラスターに安全な転送が有効になっている追加のストレージ アカウントを追加します。  詳細については、「[HDInsight にストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、HDInsight クラスターを作成し、ストレージ アカウントへの安全な転送を有効にする方法について説明しました。
 
 HDInsight でデータを分析する方法の詳細については、次の記事を参照してください。
