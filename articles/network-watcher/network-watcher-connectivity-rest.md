@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Network Watcher との接続のトラブルシューティング - Azure REST API | Microsoft Docs"
 description: "Azure REST API を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。"
 services: network-watcher
