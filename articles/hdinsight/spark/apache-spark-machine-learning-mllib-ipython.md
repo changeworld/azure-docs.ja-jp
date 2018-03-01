@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: jgao
-ms.openlocfilehash: 864d34306dad2915a15b032a27600cefdc632bb9
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 0e1d7b46aeaf8f21fdf2942f986643746dad3313
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 
@@ -81,7 +81,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
 ## <a name="construct-an-input-dataframe"></a>入力データフレームを作成する
 `sqlContext` を使用すると、構造化データに対して変換を実行できます。 最初のタスクは、サンプル データ ((**Food_Inspections1.csv**))を Spark SQL *データフレーム*に読み込むことです。
 
-1. 生のデータが CSV 形式であるため、Spark コンテキストを使用して、ファイルのすべての行を非構造化テキストとしてメモリにプルする必要があります。次に、Python の CSV ライブラリを使用して、各行を個別に解析します。
+1. 生データが CSV 形式であるため、Spark コンテキストを使用して、ファイルのすべての行を非構造化テキストとしてメモリにプルする必要があります。次に、Python の CSV ライブラリを使用して、各行を個別に解析します。
 
         def csvParse(s):
             import csv
@@ -172,7 +172,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
         |  Pass w/ Conditions|
         |     Out of Business|
         +--------------------+
-1. グラフ化することで、これらの結果の分布の理解に役立ちます。 一時テーブル **CountResults**には既にデータが入力されています。 テーブルに対し次の SQL クエリを実行して、結果がどのように分布しているかを分析できます。
+1. グラフ化することで、これらの結果の分布の理解に役立ちます。 一時テーブル **CountResults** には既にデータが入力されています。 テーブルに対し次の SQL クエリを実行して、結果がどのように分布しているかを分析できます。
 
         %%sql -o countResultsdf
         SELECT results, COUNT(results) AS cnt FROM CountResults GROUP BY results
@@ -207,7 +207,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
    * 条件付きで合格
    * 廃業
 
-     違反を考慮した、食品検査の結果を推測できるモデルを作成してみましょう。 ロジスティック回帰は二項分類メソッドであるため、データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。 「条件付きで合格」であっても合格には変わりがないため、モデルをトレーニングするときは、この 2 つの結果が同等であると見なします。 その他の結果のデータ (「事業体が存在しない」や「廃業」) は使用できないため、トレーニング セットから削除します。 いずれにしても、これら 2 つのカテゴリが結果に占める割合は非常にわずかであるため、問題ありません。
+     違反を考慮した、食品検査の結果を推測できるモデルを作成してみましょう。 ロジスティック回帰は二項分類メソッドであるため、データを **Fail** と **Pass** の 2 つのカテゴリにグループ化することは意味があります。 「条件付きで合格」であっても合格には変わりがないため、モデルをトレーニングするときは、この 2 つの結果が同等であると見なします。 その他の結果 (「事業体が存在しない」や「廃業」) のデータは使用できないため、トレーニング セットから削除します。 いずれにしても、これら 2 つのカテゴリが結果に占める割合は非常にわずかであるため、問題ありません。
 1. 先に進み、既存のデータフレーム (`df`) を、各検査がラベルと違反のペアとして表される新しいデータフレームに変換します。 ここでは、ラベル `0.0` は失敗、ラベル `1.0` は成功、ラベル `-1.0` はこれら 2 つ以外の何らかの結果であることを表します。 新しいデータ フレームを計算するときに、これらのその他の結果は除外されます。
 
         def labelForResults(s):
@@ -247,7 +247,7 @@ MLLib には、この操作を簡単に実行する方法が用意されてい�
     model = pipeline.fit(labeledData)
 
 ## <a name="evaluate-the-model-on-a-separate-test-dataset"></a>別のテスト データセットでモデルを評価する
-前に作成したモデルを使用し、どのくらい違反が観察されたかに基づいて、新しい検査結果を *予測* できます。 データセット **Food_Inspections1.csv** でこのモデルをトレーニングしました。 2 つ目のデータセット **Food_Inspections2.csv** を使用して、新しいデータでこのモデルの強度を*評価*します。 この 2 つ目のデータ セット (**Food_Inspections2.csv**) は、クラスターに関連付けられている既定のストレージ コンテナーに既に存在している必要があります。
+前に作成したモデルを使用し、どのくらい違反が観察されたかに基づいて、新しい検査結果を "*予測*" できます。 データセット **Food_Inspections1.csv** でこのモデルをトレーニングしました。 2 つ目のデータセット **Food_Inspections2.csv** を使用して、新しいデータでこのモデルの強度を*評価*します。 この 2 つ目のデータ セット (**Food_Inspections2.csv**) は、クラスターに関連付けられている既定のストレージ コンテナーに既に存在している必要があります。
 
 1. 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。 このスニペットでは、データフレームに基づいた **Predictions** と呼ばれる一時テーブルも作成します。
 
@@ -342,8 +342,7 @@ MLLib には、この操作を簡単に実行する方法が用意されてい�
 
 ### <a name="scenarios"></a>シナリオ
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
-* [Spark with Machine Learning: Use Spark in HDInsight for analyzing building temperature using HVAC data (Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する)](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](apache-spark-eventhub-streaming.md)
+* [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

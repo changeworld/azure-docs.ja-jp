@@ -2,7 +2,7 @@
 
 1.  Microsoft アカウント資格情報を使用して、この URL (<https://portal.azure.com/>) から Azure Portal にログオンします。 Government ポータルにデバイスをデプロイする場合は、<https://portal.azure.us/> にログインします。
 
-2.  Azure Portal で、**[+ 新規]** &gt; **[ストレージ]** &gt; **[StorSimple 仮想シリーズ]** の順にクリックします。
+2.  Azure Portal で、**[+ リソースの作成]** &gt; **[ストレージ]** &gt; **[StorSimple 仮想シリーズ]** の順にクリックします。
 
     ![新しいサービスの作成](./media/storsimple-virtual-array-create-new-service/createnewservice2.png) 
 

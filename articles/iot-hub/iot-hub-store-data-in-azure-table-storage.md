@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/04/2017
 ms.author: xshi
-ms.openlocfilehash: 5419f0fb86f2a7b051ffc7fda17c74cf15178a6b
-ms.sourcegitcommit: c25cf136aab5f082caaf93d598df78dc23e327b9
+ms.openlocfilehash: f6b334dbc9903d0080b74052062de7564aa4a993
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-blob-storage"></a>センサー データを含む IoT ハブ メッセージを Azure Blob Storage に保存する
 
@@ -45,7 +45,7 @@ Azure ストレージ アカウントと Azure 関数アプリを作成し、IoT
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-1. [Azure Portal](https://portal.azure.com/) で、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** > **[作成]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[リソースの作成]** > **[ストレージ]** > **[ストレージ アカウント]** > **[作成]** の順にクリックします。
 
 2. ストレージ アカウントに必要な情報を入力します。
 
@@ -98,7 +98,7 @@ Azure Portal で、IoT ハブに移動します。 **[エンドポイント]** >
 
    デバイスから IoT ハブに送信されたメッセージが、BLOB コンテナーに記録されたことがわかります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure ストレージ アカウントを作成し、IoT Hub からこのストレージ アカウント内の BLOB コンテナーにメッセージをルーティングしました。
 

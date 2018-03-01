@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3350645d4f173a6d0d007ff9095bb3115600a13b
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1b931de564417ab98207321d7798613b187e411f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 > [!NOTE]
@@ -114,8 +114,8 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
 ## <a name="launch-copy-wizard"></a>コピー ウィザードの起動
 1. [Azure Portal](https://portal.azure.com) にログインします。
-2. 左上隅の **[+ 新規]** をクリックし、**[インテリジェンス + 分析]** をクリックし、**[Data Factory]** をクリックします。
-3. **[新しいデータ ファクトリ]** ブレードで以下の手順を実行します。
+2. 左上隅にある **[リソースの作成]**、**[インテリジェンス + 分析]**、**[データ ファクトリ]** の順にクリックします。
+3. **[新しいデータ ファクトリ]** ウィンドウで、次の手順を実行します。
 
    1. **[名前]** に「**LoadIntoSQLDWDataFactory**」と入力します。
        Azure Data Factory の名前はグローバルに一意にする必要があります。 **""LoadIntoSQLDWDataFactory" という名前の Data Factory は使用できません"** というエラーが発生した場合は、データ ファクトリの名前を (yournameLoadIntoSQLDWDataFactory などに) 変更して作成し直します。 Data Factory アーティファクトの名前付け規則については、 [Data Factory - 名前付け規則](data-factory-naming-rules.md) に関するトピックを参照してください。  

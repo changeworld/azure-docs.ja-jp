@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 2e377ef96f6c2b5866ad258a88d6403fd0bb1e41
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 87bbbd1fdcb9afb59de0bda29e99e23e0b9ad104
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -34,7 +34,7 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 
 メトリックや診断のロギングは既定では有効になっていません。 次のいずれかの方法を使用してメトリックと診断のロギングを有効にして管理できます。
 
-- Azure Portal
+- Azure ポータル
 - PowerShell
 - Azure CLI
 - Azure Monitor REST API 
@@ -44,7 +44,7 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 
 - Log Analytics
 - Event Hubs
-- ストレージ 
+- Storage 
 
 新しい Azure リソースをプロビジョニングするか、既存のリソースを選択できます。 ストレージ リソースを選択したら、収集するデータを指定する必要があります。 次のオプションを使用できます。
 
@@ -180,7 +180,7 @@ Log Analytics を使用すると、Azure SQL Database フリートを簡単に�
 
 ### <a name="create-a-log-analytics-resource"></a>Log Analytics リソースを作成する。
 
-1. 左側のメニューで **[新規]** を選択します。
+1. 左側のメニューで、**[リソースの作成]** を選択します。
 
 2. **[監視 + 管理]** を選択します。
 
@@ -271,12 +271,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-runtime-statistics"></a>クエリ ストアのランタイム統計
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
-|型|常に AzureDiagnostics|
+|type|常に AzureDiagnostics|
 |ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
 |カテゴリ|カテゴリの名前。 常に QueryStoreRuntimeStatistics|
 |OperationName|操作の名前。 常に QueryStoreRuntimeStatisticsEvent|
@@ -322,12 +322,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="query-store-wait-statistics"></a>クエリ ストアの待機統計
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
-|型|常に AzureDiagnostics|
+|type|常に AzureDiagnostics|
 |ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
 |カテゴリ|カテゴリの名前。 常に QueryStoreWaitStatistics|
 |OperationName|操作の名前。 常に QueryStoreWaitStatisticsEvent|
@@ -360,12 +360,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="errors-dataset"></a>エラー データセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
-|型|常に AzureDiagnostics|
+|type|常に AzureDiagnostics|
 |ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
 |カテゴリ|カテゴリの名前。 常に Errors|
 |OperationName|操作の名前。 常に ErrorEvent|
@@ -380,7 +380,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |メッセージ|プレーンテキストのエラー メッセージ。|
 |user_defined_b|エラーがユーザー定義ビットかどうか。|
 |error_number_d|エラー コード。|
-|Severity|エラーの重大度。|
+|重大度|エラーの重大度。|
 |state_d|エラーの状態。|
 |query_hash_s|使用可能な場合は、失敗したクエリのクエリ ハッシュ。|
 |query_plan_hash_s|使用可能な場合は、失敗したクエリのクエリ プラン ハッシュ。|
@@ -389,12 +389,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="database-wait-statistics-dataset"></a>データベースの待機統計データセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
-|型|常に AzureDiagnostics|
+|type|常に AzureDiagnostics|
 |ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
 |カテゴリ|カテゴリの名前。 常に DatabaseWaitStatistics|
 |OperationName|操作の名前。 常に DatabaseWaitStatisticsEvent|
@@ -418,12 +418,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="time-outs-dataset"></a>タイムアウトのデータセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
-|型|常に AzureDiagnostics|
+|type|常に AzureDiagnostics|
 |ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
 |カテゴリ|カテゴリの名前。 常に Timeouts|
 |OperationName|操作の名前。 常に TimeoutEvent|
@@ -441,12 +441,12 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="blockings-dataset"></a>ブロックしているデータセット
 
-|プロパティ|説明|
+|プロパティ|[説明]|
 |---|---|
 |TenantId|テナント ID。|
 |SourceSystem|常に Azure|
 |TimeGenerated [UTC]|ログが記録されたときのタイムスタンプ。|
-|型|常に AzureDiagnostics|
+|type|常に AzureDiagnostics|
 |ResourceProvider|リソース プロバイダーの名前。 常に MICROSOFT.SQL|
 |カテゴリ|カテゴリの名前。 常に Blocks|
 |OperationName|操作の名前。 常に BlockEvent|
@@ -466,7 +466,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 ### <a name="intelligent-insights-dataset"></a>Intelligent Insights データセット
 [Intelligent Insights ログ形式](sql-database-intelligent-insights-use-diagnostics-log.md)の詳細。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ログ記録を有効にする方法や、各種の Azure サービスでサポートされているメトリックとログのカテゴリについては、次の資料を参照してください。
 

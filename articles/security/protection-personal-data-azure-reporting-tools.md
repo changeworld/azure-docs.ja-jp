@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: barclayn
-ms.openlocfilehash: 7ce6297d7d6b61ac95df58db3fa1a2a0a123a64e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 397161cf2eaea9712fec352a45f5fc49e8da486c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Azure のレポート ツールによる、個人データのドキュメント保護
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/08/2017
 
 米国に本社を置く大手クルーズ会社が、地中海、アドリア海、バルト海だけでなくイギリス諸島での旅程を提供できるように、事業を拡張しています。 この取り組みの中で、この会社は、イタリア、ドイツ、デンマーク、英国に拠点を置くいくつかの小規模クルーズ会社を買収しました。
 
-会社は、Microsoft Azure を使用して企業データを処理および格納しています。 これには、グローバルな顧客ベースの氏名や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 また、住所、電話番号、納税者番号など、あらゆる場所の会社の従業員に関する標準的な人事情報も含まれます。 このクルーズ会社では、現在と過去の顧客とのリレーションシップを追跡するための個人情報を含む、特典やロイヤリティ プログラム メンバーの大規模なデータベースも管理しています。
+会社は、Microsoft Azure を使用して企業データを処理および格納しています。 これには、グローバルな顧客ベースの氏名や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 また、住所、電話番号、納税者番号など、あらゆる場所の会社の従業員に関する標準的な人事情報も含まれます。 このクルーズ会社は報酬やロイヤリティ プログラム メンバーについての大規模なデータベースも管理しており、このデータベースには現在および過去の顧客との関係を追跡できる個人情報なども含まれています。
 
 この企業の従業員は、会社の支社からネットワークにアクセスし、世界各地に存在する旅行代理店の社員は、一部の会社リソースにアクセスできます。
 
@@ -144,7 +144,7 @@ Azure ポータルで、Log Analytics ワークスペースを作成するには
 
 - Azure Monitor REST API、CLI コマンド、[PowerShell](https://docs.microsoft.com/powershell/)コマンドレット、または .NET SDK を使用すれば、データに対しクエリを実行できます。
 
-Azure Monitor の使用を開始するには、Azure ポータルで **[その他のサービス]** を選択します。
+Azure Monitor の使用を開始するには、Azure Portal で **[すべてのサービス]** を選択します。
 
 1. **[監視と管理]** セクションで **[監視]** まで下方向にスクロールします。
 

@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: b710c324f72fa56a2ebad0d1b35052639611d30d
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: da415f4fb276f3d86d3ff1634a08fa11eabe6e7f
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
@@ -83,7 +83,7 @@ Cloud Shell の初回起動時に、リソース グループ、ストレージ 
 ストレージのセットアップを促す画面が表示されたら、[詳細設定の表示] をクリックして、追加オプションを表示します。
 
 > [!Note]
-> ドロップダウン ボックスには、事前に割り当てられている Cloud Shell リージョンと LRS/GRS ストレージ アカウントが一覧表示されます。
+> ドロップダウンは、事前に割り当てられている Cloud Shell リージョンおよび LRS/GRS/ZRS ストレージ アカウント用にフィルター処理されます。
 
 [Cloud Shell ストレージ、Azure ファイル共有の更新、ファイルのアップロード/ダウンロードについては、こちらをご覧ください。](persisting-shell-storage.md)
 

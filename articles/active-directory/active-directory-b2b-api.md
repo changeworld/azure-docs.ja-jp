@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 04/11/2017
 ms.author: sasubram
-ms.openlocfilehash: 9e1dcd38e7c05a234e4b8d7a6190770d813a227f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 06de162a82fa096780b4d7faa79ca1c91f9202fa
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B コラボレーションの API とカスタマイズ
 
@@ -77,7 +77,7 @@ API は、以下の承認モードで実行できます。
 このモードでは、API を使用するユーザーは、B2B 招待を作成できるアクセス許可を付与されている必要があります。
 
 ### <a name="app-only-mode"></a>アプリのみモード
-アプリのみのコンテキストで招待を成功させるには、アプリに User.ReadWrite.All または Directory.ReadWrite.All スコープが必要です。
+アプリのみのコンテキストで招待を成功させるには、アプリに User.Invite.All スコープが必要です。
 
 詳しくは、https://graph.microsoft.io/docs/authorization/permission_scopes をご覧ください
 
@@ -98,7 +98,7 @@ New-AzureADMSInvitation
 
 [https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation](https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/invitation) で招待 API リファレンスを確認することもできます
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure AD B2B コラボレーションに関する他の記事を参照してください。
 

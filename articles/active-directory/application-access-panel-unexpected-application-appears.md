@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewr: japere
-ms.openlocfilehash: 7ff6817bafdfe1943d70639c7f3c69c417f5f94a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 25e8bd404bc5b622568b8885f241c743f82f59cc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>アクセス パネルにアプリケーションが表示される方法
 
 Web ベースのポータルであるアクセス パネルを使用すると、Azure Active Directory (Azure AD) の職場または学校アカウントを持つユーザーは、Azure AD 管理者によってアクセスを許可されたクラウドベースのアプリケーションを表示および起動することができます。 これらのアプリケーションは、Azure AD ポータルでユーザーに代わって構成されます。 管理者は、アプリケーションをユーザーに直接、またはユーザーが属するグループにプロビジョニングできます。その結果、ユーザーのアクセス パネルにアプリケーションが表示されます。
 
-## <a name="general-issues-to-check-first"></a>最初に確認する一般的な問題
+## <a name="general-issues-to-check-first"></a>最初にチェックすべき一般的な問題
 
 -   ユーザーまたはユーザーがメンバーとなっているグループからアプリケーションが削除された場合は、数分後にユーザーのアクセス パネルにもう一度サインインおよびサインアウトしてみて、アプリケーションが削除されているかどうかを確認してください。
 
@@ -32,7 +32,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 ## <a name="problems-related-to-assigning-applications-to-users"></a>ユーザーへのアプリケーションの割り当てに関連する問題
 
-アプリケーションが以前に割り当てられたため、ユーザーのアクセス パネルにアプリケーションが表示されることがあります。 確認方法を以下にいくつか示します。
+アプリケーションが以前に割り当てられたため、ユーザーのアクセス パネルにアプリケーションが表示されることがあります。 確認方法をいくつか次に示します。
 
 -   [ユーザーがアプリケーションに割り当てられているかどうかを確認する](#check-if-a-user-is-assigned-to-the-application)
 
@@ -45,7 +45,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -63,11 +63,11 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 ### <a name="check-if-a-user-is-under-a-license-related-to-the-application"></a>ユーザーがアプリケーションに関連するライセンスを付与されているかどうかを確認する
 
-ユーザーに割り当てられたライセンスを確認するには、次の手順に従います。
+ユーザーに割り当てられているライセンスを確認するには、次の手順に従います。
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -83,7 +83,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 ## <a name="problems-related-to-assigning-applications-to-groups"></a>グループへのアプリケーションの割り当てに関連する問題
 
-アプリケーションを割り当てられたグループにユーザーが属しているために、そのユーザーのアクセス パネルにアプリケーションが表示されることがあります。 確認方法を以下にいくつか示します。
+アプリケーションを割り当てられたグループにユーザーが属しているために、そのユーザーのアクセス パネルにアプリケーションが表示されることがあります。 確認方法をいくつか次に示します。
 
 -   [ユーザーのグループ メンバーシップを確認する](#check-a-users-group-memberships)
 
@@ -95,7 +95,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -115,7 +115,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**としてサインインします。
 
-2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。
+2.  左側のメイン ナビゲーション メニューの上部にある **[すべてのサービス]** をクリックして **[Azure Active Directory 拡張機能]** を開きます。
 
 3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。
 
@@ -150,5 +150,5 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 
 -   Fiddler のトレース
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)

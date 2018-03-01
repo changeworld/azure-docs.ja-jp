@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 0570aab14283b38f9efcc50636f0c0c1c8e3ed13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0357e67a8920a57b2ab8b79ebd8dd3a64d888478
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="learn-about-certificates-and-enterprise-integration-pack"></a>証明書と Enterprise Integration Pack についての詳細情報
 ## <a name="overview"></a>概要
@@ -44,7 +44,7 @@ B2B 機能を備えたロジック アプリで *パブリック証明書* を�
 
 次に、Azure Portal へのサインイン後に統合アカウントにパブリック証明書をアップロードする詳細な手順を示します。
 
-1. **[その他のサービス]** を選択し、フィルター検索ボックスに「**統合**」と入力します。 結果の一覧から **[統合アカウント]** を選択します。     
+1. **[すべてのサービス]** を選択し、フィルター検索ボックスに「**統合**」と入力します。 結果の一覧から **[統合アカウント]** を選択します。     
 ![[参照]](media/logic-apps-enterprise-integration-certificates/overview-1.png)を選択します。  
 2. 証明書の追加先となる統合アカウントを選択します。  
 ![証明書の追加先となる統合アカウントの選択](media/logic-apps-enterprise-integration-certificates/overview-3.png)  

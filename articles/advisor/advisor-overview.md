@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 906450f75557820bb27762707c3328b08b23cccb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 8ae99c7ce6382626657777d003a1cb82348c4aba
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -32,7 +32,7 @@ Advisor では、以下の項目を実行できます。
 * リソースのパフォーマンス、セキュリティ、および高可用性を向上させながら、総合的な Azure の支出を削減する機会を捉える。
 * アクション提案をインラインで含めた推奨事項を取得する。
 
-Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[その他のサービス]** メニューで Advisor を検索します。
+Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[すべてのサービス]** メニューで Advisor を検索します。
 
 Advisor ダッシュボードに、すべてのサブスクリプションの個人用に設定された推奨事項が表示されます。  フィルターを適用して、特定のサブスクリプションやリソースの種類の推奨事項を表示できます。  推奨事項は、4 つのカテゴリに分割されています。 
 
@@ -57,7 +57,7 @@ Advisor ダッシュボードに、すべてのサブスクリプションの個
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 ### <a name="how-do-i-access-advisor"></a>Advisor にアクセスする方法は?
-Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[その他のサービス]** メニューで Advisor を検索します。
+Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通してアクセスできます。 [ポータル](https://portal.azure.com)にサインインし、ナビゲーション メニューの **[Advisor]** を見つけるか、**[すべてのサービス]** メニューで Advisor を検索します。
 
 仮想マシンのリソース インターフェイスを使用して、Advisor の推奨事項を表示することもできます。 仮想マシンを選択し、メニューで [Advisor の推奨事項] までスクロールします。 
 
@@ -73,7 +73,7 @@ Advisor は、仮想マシン、可用性セット、アプリケーション �
 
 推奨事項を再通知するか無視するには、**[再通知]** リンクをクリックします。 再通知期間を指定するか、**[Never]** を選択して推奨事項を無視できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 

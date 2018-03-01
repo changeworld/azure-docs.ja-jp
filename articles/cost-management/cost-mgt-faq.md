@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/30/2018
+ms.date: 02/14/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: b3c7c19543d50ed91129a2040bea1db1c4df1ea7
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 0d33f434dccae7836ae7774afbdf9b80d4685eb4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
 
@@ -63,7 +63,7 @@ Azure Enterprise Agreement API キーを生成して Cloudyn を設定する前�
 3.  アクティブ化されていないアカウントの右にある、鉛筆に似た **[編集]** 記号をクリックします。
 4.  テナント ID とレート ID が自動的に検出されます。 **[次へ]** をクリックします。
 5.  Azure Portal にリダイレクトされます。 ポータルにサインインし、Cloudyn Collector が Azure データにアクセスすることを承認します。
-6.  次に、[Cloudyn Accounts] \(Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが**アクティブな**アカウント状態に更新されます。 そこには緑色のチェックマーク記号が表示されます。
+6.  次に、[Cloudyn Accounts] (Cloudyn アカウント) 管理ページにリダイレクトされ、サブスクリプションが**アクティブな**アカウント状態に更新されます。 そこには緑色のチェックマーク記号が表示されます。
 7.  1 つ以上のサブスクリプションに緑色のチェックマーク記号が表示されていない場合は、そのサブスクリプションのリーダー アプリ (CloudynCollector) を作成するためのアクセス許可がないことを示しています。 そのサブスクリプションのより高いアクセス許可を持つユーザーが手順 3 と 4 を繰り返す必要があります。  
 
 前の手順を完了すると、1 ～ 2 日以内にオプティマイザの推奨事項を表示できます。 ただし、完全な最適化データが入手可能になるまでに最大 5 日かかる場合があります。
@@ -116,9 +116,9 @@ CSP の場合:
 
 異なる通貨を使用する複数の Azure アカウントがある場合があります。 ただし、Cloudyn のコスト レポートでは、レポートあたり複数の通貨の種類は表示されません。
 
-異なる通貨を使用している複数のサブスクリプションがある場合は、親エンティティとその子エンティティの通貨が **$** 記号で表示されます。 推奨されるベスト プラクティスは、同じエンティティ階層で異なる通貨を使用しないことです。 つまり、エンティティ構造に整理されているすべてのサブスクリプションで同一の通貨を使用する必要があります。
+異なる通貨を使用している複数のサブスクリプションがある場合は、親エンティティとその子エンティティの通貨が米国ドル **$** で表示されます。 推奨されるベスト プラクティスは、同じエンティティ階層で異なる通貨を使用しないことです。 つまり、エンティティ構造に整理されているすべてのサブスクリプションで同一の通貨を使用する必要があります。
 
-Cloudyn は Enterprise Agreement サブスクリプションの通貨を自動的に検出し、レポートに正しく表示します。  ただし Cloudyn では、CSP および Web ダイレクト Azure アカウントに対しては **$** 記号のみが表示されます。
+Cloudyn は Enterprise Agreement サブスクリプションの通貨を自動的に検出し、レポートに正しく表示します。  ただし Cloudyn では、CSP および Web ダイレクト Azure アカウントに対しては米国ドル **$** のみが表示されます。
 
 ## <a name="what-are-cloudyn-data-refresh-timelines"></a>Cloudyn のデータ更新タイムラインは何ですか
 

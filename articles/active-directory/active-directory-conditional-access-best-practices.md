@@ -13,24 +13,29 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/12/2017
+ms.date: 02/15/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 8c6707505a6331b53e06b1de60575dd3637ea477
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 16f9179b6cbaee00a2afbe2efe090cb3eb8b204a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
 
-このトピックでは、条件付きアクセス ポリシーを構成するときに知っておくべきことと避けるべきことについて説明します。 このトピックを読む前に、概念と用語について理解しておいてください。「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」に説明があります。
+[Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 この記事では、次の項目に関する情報を提供します。
 
-## <a name="what-you-should-know"></a>知っておくべきこと
+- 知っておくべきこと 
+- 条件付きアクセス ポリシーを構成するときに避けるべきこと 
 
-### <a name="whats-required-to-make-a-policy-work"></a>ポリシーを機能させるために必要なこと
+この記事は、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」で説明されている概念と用語について理解していることを前提としています
 
-新しいポリシーを作成するとき、ユーザー、グループ、アプリケーション、アクセスの制御は選択されていません。
+
+
+## <a name="whats-required-to-make-a-policy-work"></a>ポリシーを機能させるために必要なこと
+
+新しいポリシーを作成するとき、ユーザー、グループ、アプリケーション、またはアクセスの制御は選択されていません。
 
 ![クラウド アプリ](./media/active-directory-conditional-access-best-practices/02.png)
 
@@ -40,40 +45,54 @@ ms.lasthandoff: 12/12/2017
 
 |対象           | 方法                                  | 理由|
 |:--            | :--                                  | :-- |
-|**クラウド アプリ** |1 つまたは複数のアプリを選択する必要があります。  | 条件付きアクセス ポリシーの目的は、許可されているユーザーがどのようにアプリケーションにアクセスできるかを微調整できるようにすることです。|
-| **ユーザーとグループ** | 選択したクラウド アプリにアクセスする権限を与えられたユーザーまたはグループを、少なくとも 1 人は選択する必要があります。 | ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。 |
+|**クラウド アプリ** |1 つまたは複数のアプリを選択する必要があります。  | 条件付きアクセス ポリシーの目的は、許可されたユーザーによるクラウド アプリへのアクセス方法を、ご自身で制御できるようにすることです。|
+| **ユーザーとグループ** | 選択したクラウド アプリにアクセスする権限が付与されたユーザーまたはグループを、少なくとも 1 つ選択する必要があります。 | ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。 |
 | **アクセスの制御** | アクセスの制御を少なくとも 1 つ選択する必要があります。 | 条件が満たされた場合のポリシー プロセッサの対応を決める必要があります。|
 
 
-これらの基本的な要件に加えて、多くの場合、条件も構成する必要があります。 ポリシーは構成された条件なしでも機能しますが、条件はアプリケーションへのアクセスの微調整の推進要因となります。
 
 
-![クラウド アプリ](./media/active-directory-conditional-access-best-practices/04.png)
-
-
+## <a name="what-you-should-know"></a>知っておくべきこと
 
 ### <a name="how-are-assignments-evaluated"></a>割り当てはどのように評価されますか。
 
-すべての割り当ては、論理的に **AND** 処理されます。 複数の割り当てを構成した場合、ポリシーをトリガーするには、すべての割り当てを満たす必要があります。  
+すべての割り当ては、論理的に **AND** 処理されます。 複数の割り当てを構成した場合、ポリシーをトリガーするには、すべての割り当てが満たされている必要があります。  
 
-組織のネットワークの外部から行われたすべての接続に適用される場所の条件を構成する必要がある場合は、次の割り当てを行うことでこれを実現できます。
+組織のネットワークの外部から行われたすべての接続に適用される場所の条件を構成する必要がある場合は、次を行います。
 
 - **すべての場所**を含める
 - **すべての信頼できる IP** を除外する
 
+
+### <a name="what-to-do-if-you-are-locked-out-of-the-azure-ad-admin-portal"></a>Azure AD 管理ポータルからロックアウトされた場合はどのように対処すればよいですか。
+
+条件付きアクセス ポリシーの設定が正しくないため Azure AD ポータルからロックアウトされた場合は、次の操作を行います。
+
+- まだブロックされていない管理者が組織にいないかどうかを確認します。 Azure Portal へのアクセス権を持つ管理者であれば、ご自身のサインインに影響するポリシーを無効にできます。 
+
+- ポリシーを更新できる管理者が組織にいない場合は、サポート要求を送信する必要があります。 Microsoft サポートが、アクセスを妨げている条件付きアクセス ポリシーを確認して、更新できます。
+
+
 ### <a name="what-happens-if-you-have-policies-in-the-azure-classic-portal-and-azure-portal-configured"></a>Azure クラシック ポータルと Azure Portal の両方にポリシーが構成されている場合はどうなりますか。  
+
 Azure Active Directory によって両方のポリシーが適用されます。ユーザーは、すべての要件が満たされた場合のみ、アクセスできます。
 
 ### <a name="what-happens-if-you-have-policies-in-the-intune-silverlight-portal-and-the-azure-portal"></a>Intune Silverlight ポータルと Azure Portal の両方にポリシーが構成されている場合はどうなりますか。
+
 Azure Active Directory によって両方のポリシーが適用されます。ユーザーは、すべての要件が満たされた場合のみ、アクセスできます。
 
 ### <a name="what-happens-if-i-have-multiple-policies-for-the-same-user-configured"></a>同じユーザーに対して複数のポリシーが構成されている場合はどうなりますか。  
+
 毎回のサインインで、すべてのポリシーが Azure Active Directory によって評価され、すべての要件が満たされていることを確認したうえで、ユーザーのアクセスが許可されます。
 
 
 ### <a name="does-conditional-access-work-with-exchange-activesync"></a>条件付きアクセスは、Exchange ActiveSync と連携しますか。
 
 はい。条件付きアクセス ポリシーで Exchange ActiveSync を使用できます。
+
+
+
+
 
 
 ## <a name="what-you-should-avoid-doing"></a>避けるべきこと
@@ -97,10 +116,27 @@ Azure Active Directory によって両方のポリシーが適用されます。
 - **アクセスのブロック** - この構成では組織全体がブロックされるため、明らかによい方法ではありません。
 
 
+## <a name="how-should-you-deploy-a-new-policy"></a>新しいポリシーはどのように展開する必要がありますか。
+
+最初に、[what if ツール](active-directory-conditional-access-whatif.md)を使用してポリシーを評価します。
+
+新しいポリシーをご利用環境に展開する準備ができたら、段階的に展開します。
+
+1. 少数のユーザーにポリシーを適用し、想定どおりに動作することを確認します。 
+
+2.  より多くのユーザーが含まれるようにポリシーを拡げます。このとき、管理者は引き続きそのポリシーから除外します。 これにより、変更が必要になった場合に、管理者がポリシーにアクセスして更新することができます。
+
+3. 本当に必要な場合にのみ、すべてのユーザーにポリシーを適用します。 
+
+ベスト プラクティスとして、次のようなユーザー アカウントを作成します。
+
+- ポリシー管理専用である 
+- すべてのポリシーから除外されている
+
 
 ## <a name="policy-migration"></a>ポリシーの移行
 
-次の理由から、Azure Portal で作成していないポリシーの移行を検討する必要があります。
+次の理由から、Azure Portal で作成していないポリシーの移行を検討します。
 
 - 以前は処理できなかったシナリオに対処できるようになった可能性があります。
 
@@ -108,12 +144,12 @@ Azure Active Directory によって両方のポリシーが適用されます。
 
 - 一元的な場所ですべての条件付きアクセス ポリシーを管理することができます。
 
-- Azure クラシック ポータルは廃止されます。   
+- Azure クラシック ポータルは廃止されました。   
 
 
 詳しくは、「[Azure Portal でクラシック ポリシーを移行する](active-directory-conditional-access-migration.md)」をご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。

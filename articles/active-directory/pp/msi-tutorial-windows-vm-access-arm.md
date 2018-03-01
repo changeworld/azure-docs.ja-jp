@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/15/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: df559f44fd0613c39734efc8ae3132ae831ab857
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 2816a19833f45a7e3a344e31f4131d23d9a8417a
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-a-windows-vm-managed-service-identity-msi-to-access-resource-manager"></a>Windows VM 管理対象サービスID (MSI) を使用してリソース マネージャーにアクセスする
 
@@ -44,7 +44,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 このチュートリアルでは、新しい Windows VM を作成します。  既存の VM で MSI を有効にすることもできます。
 
-1.  Azure Portal の左上にある **[新規]** ボタンをクリックします。
+1.  Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 2.  **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
 3.  仮想マシンの情報を入力します。 ここで作成した**ユーザー名**と**パスワード**は、仮想マシンへのログインに使用する資格情報になります。
 4.  ドロップダウンで仮想マシンの適切な**サブスクリプション**を選択します。

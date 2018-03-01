@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: c6dba433536e07970ad5ce338e33b5d19f4532b2
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 89a8cde0dbb7fe7ccfbb6d068411aaf5488c532f
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](http://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。 
@@ -67,7 +67,7 @@ ms.lasthandoff: 01/24/2018
 |    |           |
 | ------------- | ------------- |
 | 紹介   | ディープ ラーニング フレームワーク      |
-| サポートされている DSVM エディション      | Linux     |
+| サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | Caffe は `/opt/caffe` にインストールされます。    |
 | サンプルへのリンク      | サンプルは `/opt/caffe/examples` に含まれています。      |
 | DSVM 上の関連ツール      | Caffe2      |
@@ -87,7 +87,7 @@ jupyter notebook
 |    |           |
 | ------------- | ------------- |
 | 紹介   | ディープ ラーニング フレームワーク      |
-| サポートされている DSVM エディション      | Linux     |
+| サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | Caffe2 は `/opt/caffe2` にインストールされます。 Python 2.7(_root_) conda 環境でも利用可能です。     |
 | サンプルへのリンク      | サンプル Jupyter ノートブックが含まれています     |
 | DSVM 上の関連ツール      | Caffe      |
@@ -114,7 +114,7 @@ jupyter notebook
 |    |           |
 | ------------- | ------------- |
 | 紹介   | H2O 向けのディープ ラーニング フレームワーク      |
-| サポートされている DSVM エディション      | Linux     |
+| サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | Deep Water は `/dsvm/tools/deep_water` にインストールされます。   |
 | サンプルへのリンク      | サンプルは Deep Water サーバー経由で入手できます。      |
 | DSVM 上の関連ツール      | H2O、Sparkling Water      |
@@ -145,7 +145,7 @@ X2Go を使用して VM に接続します。 ターミナルで、Deep Water �
 |    |           |
 | ------------- | ------------- |
 | 紹介   | ディープ ラーニング モデルを迅速にトレーニングするための NVIDIA 製ディープ ラーニング システム      |
-| サポートされている DSVM エディション      | Linux     |
+| サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | DIGITS は `/dsvm/tools/DIGITS` にインストールされ、_digits_ という名前のサービスとして利用できます。   |
 ### <a name="how-to-use--run-it"></a>使用/実行方法  
 
@@ -173,7 +173,7 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 |    |           |
 | ------------- | ------------- |
 | 紹介   | ディープ ラーニング フレームワーク      |
-| サポートされている DSVM エディション      | Linux     |
+| サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | Theano は Python 2.7 (_root_) および Python 3.5 (_py35_) 環境にインストールされます。   |
 | DSVM 上の関連ツール      | Keras      |
 | 使用/実行方法    | ターミナルで、必要な Python バージョン (root または py35) をアクティブ化し、python を実行した後、theano をインポートします。 Jupyter で、Python 2.7 または 3.5 カーネルを選択した後、theano をインポートします。  |
@@ -185,7 +185,42 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 |    |           |
 | ------------- | ------------- |
 | 紹介   | ディープ ラーニング フレームワーク      |
-| サポートされている DSVM エディション      | Linux     |
+| サポートされている DSVM エディション      | Ubuntu     |
 | DSVM での構成/インストール方法  | Torch は `/dsvm/tools/torch` にインストールされます。 PyTorch は Python 2.7 (_root_) および Python 3.5 (_py35_) 環境にインストールされます。   |
 | サンプルへのリンク      | Torch サンプルは `/dsvm/samples/torch` にあります。 PyTorch サンプルは `/dsvm/samples/pytorch` にあります。      |
 
+
+## <a name="pytorch"></a>PyTorch
+
+|    |           |
+| ------------- | ------------- |
+| 紹介   | ディープ ラーニング フレームワーク      |
+| サポートされている DSVM エディション      | Linux     |
+| DSVM での構成/インストール方法  | PyTorch は Python 3.5 (_py35_) 環境にインストールされます。   |
+| サンプルへのリンク      | サンプル Jupyter ノートブックが含まれています。また、サンプルは /dsvm/samples/pytorch でも見つけることができます。      |
+| DSVM 上の関連ツール      | Torch      |
+
+### <a name="how-to-use--run-it"></a>使用/実行方法  
+
+端末で、_python_ を実行して、トーチをインポートします。 Jupyter で、Python 3.5 カーネルを選択した後、トーチをインポートします。
+
+
+## <a name="mxnet-model-server"></a>MXNet モデル サーバー
+
+|    |           |
+| ------------- | ------------- |
+| 紹介   | MXNet および ONNX モデルの HTTP エンドポイントを作成するサーバー      |
+| サポートされている DSVM エディション      | Linux     |
+| DSVM での構成/インストール方法  | _mxnet-model-server_ は端末で利用可能   |
+| サンプルへのリンク      | [[MXNet Model Server] (MXNet モデル サーバー) ページ](https://github.com/awslabs/mxnet-model-server)で、最新のサンプルを探す    |
+| DSVM 上の関連ツール      | MXNet      |
+
+## <a name="tensorflow-serving"></a>TensorFlow Serving
+
+|    |           |
+| ------------- | ------------- |
+| 紹介   | TensorFlow モデルで推論を実行するサーバー      |
+| サポートされている DSVM エディション      | Linux     |
+| DSVM での構成/インストール方法  | _tensorflow_model_server_ は端末で利用可能   |
+| サンプルへのリンク      | サンプルは[オンラインで](https://www.tensorflow.org/serving/)利用可能      |
+| DSVM 上の関連ツール      | TensorFlow      |

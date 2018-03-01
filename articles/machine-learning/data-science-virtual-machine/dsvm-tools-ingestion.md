@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 8f1477c5fd8f57a815eeb603d2bde580bf78cca2
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
@@ -84,6 +84,17 @@ ms.lasthandoff: 12/11/2017
 |  使用/実行方法    |   コマンド プロンプトを開き、`bcp` と入力してヘルプを表示します。    |
 | サンプルへのリンク      | [一括コピー ユーティリティ](https://docs.microsoft.com/sql/tools/bcp-utility)      |
 | DSVM 上の関連ツール      | SQL Server、sqlcmd      |
+
+## <a name="blobfuse"></a>blobfuse
+
+|    |           |
+| ------------- | ------------- |
+| 紹介   | Linux ファイル システムで Azure BLOB コンテナーをマウントするツール      |
+| サポートされている DSVM バージョン      | Linux      |
+| 一般的な用途      | コンテナー内の BLOB へ読み取りと書き込み      |
+|  使用/実行方法    |   端末で _blobfuse_ を実行します。    |
+| サンプルへのリンク      | [GitHub の blobfuse)[https://github.com/Azure/azure-storage-fuse]      |
+| DSVM 上の関連ツール      | Azure コマンド ライン      |
 
 
 ## <a name="microsoft-data-management-gateway"></a>Microsoft Data Management Gateway

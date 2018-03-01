@@ -12,250 +12,214 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 02/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: ae5ccb83a0088cb7c9668f18620b74f9f3f1e9b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e2f988fd62753e1ebed702728dee7ede65c72c4
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="manage-resources-with-azure-powershell-and-resource-manager"></a>Azure PowerShell と Resource Manager でリソースを管理する
+# <a name="manage-resources-with-azure-powershell"></a>Azure PowerShell でリソースを管理する
 
-この記事では、Azure PowerShell と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 この記事では管理タスクに重点を置いて説明します。 このチュートリアルの内容は次のとおりです。
+[!include[Resource Manager governance introduction](../../includes/resource-manager-governance-intro.md)]
 
-1. リソース グループの作成
-2. リソース グループへのリソースの追加
-3. リソースへのタグの追加
-4. 名前とタグの値に基づいたリソースへのクエリ実行
-5. リソースへのロック適用と解除
-6. リソース グループの削除
+[!INCLUDE [cloud-shell-powershell.md](../../includes/cloud-shell-powershell.md)]
 
-この記事では、Resource Manager テンプレートをサブスクリプションにデプロイする方法については説明しません。 この情報については、「[Deploy resources with Resource Manager templates and Azure PowerShell (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ)](resource-group-template-deploy.md)」を参照してください。
+PowerShell をローカルにインストールして使用することを選択する場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="get-started-with-azure-powershell"></a>Azure PowerShell の使用に関するページ
+## <a name="understand-scope"></a>スコープを理解する
 
-Azure PowerShell がインストールされていない場合は、[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)に関するページをご覧ください。
+[!include[Resource Manager governance scope](../../includes/resource-manager-governance-scope.md)]
 
-前に Azure PowerShell をインストールしていても、最近更新していない場合は、最新バージョンをインストールすることを検討してください。 バージョンの更新は、インストールと同じ方法で行うことができます。 たとえば、Web Platform Installer を使用した場合は、それを再度起動して、更新プログラムを探します。
+この記事では、すべての管理設定をリソース グループに適用して、完了したらこれらの設定を容易に削除できるようにします。
 
-Azure Resource モジュールのバージョンを確認するには、次のコマンドレットを使用してください。
+リソース グループを作成しましょう。
 
-```powershell
-Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
+```azurepowershell-interactive
+Set-AzureRmContext -Subscription <subscription-name>
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
 
-この記事は、バージョン 3.3.0 向けに更新されています。 以前のバージョンを使っている場合は、この記事に示されている手順と一致しない可能性があります。 このバージョンのコマンドレットに関するドキュメントについては、「[AzureRM.Resources Module (AzureRM.Resources モジュール)](/powershell/module/azurerm.resources)」を参照してください。
+現在、リソース グループは空です。
 
-## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
-ソリューションを操作する前に、ご使用のアカウントにログインする必要があります。
+## <a name="role-based-access-control"></a>ロールベースのアクセス制御
 
-Azure アカウントにログインするには、**Login-AzureRmAccount** コマンドレットを使います。
+[!include[Resource Manager governance policy](../../includes/resource-manager-governance-rbac.md)]
 
-```powershell
-Login-AzureRmAccount
+### <a name="assign-a-role"></a>ロールの割り当て
+
+この記事では、仮想マシンとそれに関連する仮想ネットワークをデプロイします。 仮想マシン ソリューションを管理するために、一般的に必要なアクセスを提供する、リソースに固有の次の 3 つのロールがあります。
+
+* [Virtual Machine Contributor](../active-directory/role-based-access-built-in-roles.md#virtual-machine-contributor)
+* [Network Contributor](../active-directory/role-based-access-built-in-roles.md#network-contributor)
+* [Storage Account Contributor](../active-directory/role-based-access-built-in-roles.md#storage-account-contributor)
+
+多くの場合は、個々のユーザーにロールを割り当てる代わりに、類似のアクションを実行する必要のあるユーザーのための [Azure Active Directory グループを作成する](../active-directory/active-directory-groups-create-azure-portal.md)方が簡単です。 その後、そのグループを適切なロールに割り当てます。 この記事を簡略化するために、メンバーを含まない Azure Active Directory グループを作成します。 その場合でも、このグループをスコープのロールに割り当てることができます。 
+
+次の例では、グループを作成し、それをリソース グループの仮想マシンの共同作業者ロールに割り当てます。 `New-AzureAdGroup` コマンドを実行するには、[Azure Cloud Shell](/azure/cloud-shell/overview) を使用するか、または [Azure AD PowerShell モジュールをダウンロードする](https://www.powershellgallery.com/packages/AzureAD/)必要があります。
+
+```azurepowershell-interactive
+$adgroup = New-AzureADGroup -DisplayName VMDemoContributors `
+  -MailNickName vmDemoGroup `
+  -MailEnabled $false `
+  -SecurityEnabled $true
+New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
+  -ResourceGroupName myResourceGroup `
+  -RoleDefinitionName "Virtual Machine Contributor"
 ```
 
-このコマンドレットは、Azure アカウントのログイン資格情報をユーザーに求めます。 ログイン後にアカウント設定がダウンロードされるため、Azure PowerShell で使用できるようになります。
+通常は、デプロイされたリソースを管理するユーザーが確実に割り当てられるようにするために、このプロセスを**ネットワークの共同作業者**と**ストレージ アカウントの共同作業者**に対して繰り返します。 この記事では、これらの手順を省略できます。
 
-コマンドレットは、自分のアカウントと、タスクに使用するサブスクリプションに関する情報を返します。
+## <a name="azure-policies"></a>Azure のポリシー
 
-```powershell
-Environment           : AzureCloud
-Account               : example@contoso.com
-TenantId              : {guid}
-SubscriptionId        : {guid}
-SubscriptionName      : Example Subscription One
-CurrentStorageAccount :
+[!include[Resource Manager governance policy](../../includes/resource-manager-governance-policy.md)]
 
+### <a name="apply-policies"></a>ポリシーを適用する
+
+サブスクリプションには、既にいくつかのポリシー定義が含まれています。 使用可能なポリシー定義を確認するには、次を使用します。
+
+```azurepowershell-interactive
+(Get-AzureRmPolicyDefinition).Properties | Format-Table displayName, policyType
 ```
 
-複数のサブスクリプションがある場合は、別のサブスクリプションに切り替えることができます。 最初に、自分のアカウントのすべてのサブスクリプションを見てみましょう。
+既存のポリシー定義が表示されます。 ポリシーの種類は、**[BuiltIn] (ビルトイン)** または **[カスタム]** のどちらかです。 この中から、割り当てる条件を記述している定義を探します。 この記事では、次のようなポリシーを割り当てます。
 
-```powershell
-Get-AzureRmSubscription
+* すべてのリソースの場所を制限する
+* 仮想マシンの SKU を制限する
+* 管理ディスクを使用しない仮想マシンを監査する
+
+```azurepowershell-interactive
+$locations ="eastus", "eastus2"
+$skus = "Standard_DS1_v2", "Standard_E2s_v2"
+
+$rg = Get-AzureRmResourceGroup -Name myResourceGroup
+
+$locationDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed locations"}
+$skuDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Allowed virtual machine SKUs"}
+$auditDefinition = Get-AzureRmPolicyDefinition | where-object {$_.properties.displayname -eq "Audit VMs that do not use managed disks"}
+
+New-AzureRMPolicyAssignment -Name "Set permitted locations" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $locationDefinition `
+  -listOfAllowedLocations $locations
+New-AzureRMPolicyAssignment -Name "Set permitted VM SKUs" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $skuDefinition `
+  -listOfAllowedSKUs $skus
+New-AzureRMPolicyAssignment -Name "Audit unmanaged disks" `
+  -Scope $rg.ResourceId `
+  -PolicyDefinition $auditDefinition
 ```
 
-有効および無効なサブスクリプションを返します。
+## <a name="deploy-the-virtual-machine"></a>仮想マシンをデプロイする
 
-```powershell
-SubscriptionName : Example Subscription One
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Enabled
+ロールとポリシーを割り当てたため、ソリューションをデプロイする準備ができました。 既定のサイズは Standard_DS1_v2 です。これは、許可される SKU の 1 つです。 この手順の実行時に、資格情報の入力を求められます。 入力した値は、仮想マシンのユーザー名とパスワードとして構成されます。
 
-SubscriptionName : Example Subscription Two
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Enabled
-
-SubscriptionName : Example Subscription Three
-SubscriptionId   : {guid}
-TenantId         : {guid}
-State            : Disabled
+```azurepowershell-interactive
+New-AzureRmVm -ResourceGroupName "myResourceGroup" `
+     -Name "myVM" `
+     -Location "East US" `
+     -VirtualNetworkName "myVnet" `
+     -SubnetName "mySubnet" `
+     -SecurityGroupName "myNetworkSecurityGroup" `
+     -PublicIpAddressName "myPublicIpAddress" `
+     -OpenPorts 80,3389
 ```
 
-別のサブスクリプションに切り替えるには、**Set-AzureRmContext** コマンドレットでサブスクリプション名を指定します。
+デプロイが完了したら、そのソリューションにより多くの管理設定を適用できます。
 
-```powershell
-Set-AzureRmContext -SubscriptionName "Example Subscription Two"
+## <a name="lock-resources"></a>リソースのロック
+
+[!include[Resource Manager governance locks](../../includes/resource-manager-governance-locks.md)]
+
+### <a name="lock-a-resource"></a>リソースのロック
+
+仮想マシンとネットワーク セキュリティ グループをロックするには、次を使用します。
+
+```azurepowershell-interactive
+New-AzureRmResourceLock -LockLevel CanNotDelete `
+  -LockName LockVM `
+  -ResourceName myVM `
+  -ResourceType Microsoft.Compute/virtualMachines `
+  -ResourceGroupName myResourceGroup
+New-AzureRmResourceLock -LockLevel CanNotDelete `
+  -LockName LockNSG `
+  -ResourceName myNetworkSecurityGroup `
+  -ResourceType Microsoft.Network/networkSecurityGroups `
+  -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+仮想マシンは、ロックを明確に削除した場合にのみ削除できます。 その手順は、「[リソースのクリーンアップ](#clean-up-resources)」に示されています。
 
-サブスクリプションにリソースをデプロイする前に、そのリソースを含めるリソース グループを作成する必要があります。
+## <a name="tag-resources"></a>リソースへのタグ付け
 
-リソース グループを作成するには、 **New-AzureRmResourceGroup** コマンドレットを使用します。 コマンドは **Name** パラメーターを使用してリソース グループの名前を指定し、**Location** パラメーターを使用して場所を指定します。
+[!include[Resource Manager governance tags](../../includes/resource-manager-governance-tags.md)]
 
-```powershell
-New-AzureRmResourceGroup -Name TestRG1 -Location "South Central US"
+### <a name="tag-resources"></a>リソースへのタグ付け
+
+[!include[Resource Manager governance tags Powershell](../../includes/resource-manager-governance-tags-powershell.md)]
+
+仮想マシンにタグを適用するには、次を使用します。
+
+```azurepowershell-interactive
+$r = Get-AzureRmResource -ResourceName myVM `
+  -ResourceGroupName myResourceGroup `
+  -ResourceType Microsoft.Compute/virtualMachines
+Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test"; Project="Documentation" } -ResourceId $r.ResourceId -Force
 ```
 
-出力の形式は次のとおりです。
+### <a name="find-resources-by-tag"></a>タグでリソースを見つける
 
-```powershell
-ResourceGroupName : TestRG1
-Location          : southcentralus
-ProvisioningState : Succeeded
-Tags              :
-ResourceId        : /subscriptions/{guid}/resourceGroups/TestRG1
+タグ名と値でリソースを見つけるには、次を使用します。
+
+```azurepowershell-interactive
+(Find-AzureRmResource -TagName Environment -TagValue Test).Name
 ```
 
-後でリソース グループを取得する必要がある場合は、次のコマンドレットを使用します。
+返される値は、タグ値ですべての仮想マシンを停止するような管理タスクで使用できます。
 
-```powershell
-Get-AzureRmResourceGroup -ResourceGroupName TestRG1
+```azurepowershell-interactive
+Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.ResourceType -eq "Microsoft.Compute/virtualMachines"} | Stop-AzureRmVM
 ```
 
-自分のサブスクリプションのリソース グループをすべて取得するには、名前を指定しないでください。
+### <a name="view-costs-by-tag-values"></a>タグ値でコストを表示する
 
-```powershell
-Get-AzureRmResourceGroup
+リソースにタグを適用した後、それらのタグでリソースのコストを表示できます。 コスト分析に最新の使用状況が表示されるには少し時間がかかるため、まだコストが表示されない可能性があります。 コストが使用可能な場合は、サブスクリプション内のリソース グループにまたがるリソースのコストを表示できます。 コストを表示するには、ユーザーに[課金情報へのサブスクリプション レベルのアクセス権](../billing/billing-manage-access.md)が必要です。
+
+ポータル内でタグでコストを表示するには、サブスクリプションを選択し、**[コスト分析]** を選択します。
+
+![コスト分析](./media/powershell-azure-resource-manager/select-cost-analysis.png)
+
+次に、タグ値でフィルター処理し、**[適用]** を選択します。
+
+![タグでコストを表示する](./media/powershell-azure-resource-manager/view-costs-by-tag.png)
+
+[Azure Billing API](../billing/billing-usage-rate-card-overview.md) を使用して、プログラムでコストを表示することもできます。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+ロックされたネットワーク セキュリティ グループは、そのロックが削除されるまで削除できません。 ロックを削除するには、次を使用します。
+
+```azurepowershell-interactive
+Remove-AzureRmResourceLock -LockName LockVM `
+  -ResourceName myVM `
+  -ResourceType Microsoft.Compute/virtualMachines `
+  -ResourceGroupName myResourceGroup
+Remove-AzureRmResourceLock -LockName LockNSG `
+  -ResourceName myNetworkSecurityGroup `
+  -ResourceType Microsoft.Network/networkSecurityGroups `
+  -ResourceGroupName myResourceGroup
 ```
 
-## <a name="add-resources-to-a-resource-group"></a>リソース グループへのリソースの追加
-
-リソースをリソース グループに追加するには、**New-AzureRmResource** コマンドレット、または作成するリソースの種類に固有のコマンドレット (**New-AzureRmStorageAccount** など) を使用します。 リソースの種類に固有のコマンドレットには、新しいリソースが必要とするプロパティのパラメーターが含まれているため、ほとんどの場合、こちらを使用する方が簡単です。 **New-AzureRmResource** を使用するには、設定するすべてのプロパティを把握しておく必要があります。こうしたプロパティを入力するよう求めるメッセージは表示されません。
-
-ただし、コマンドレットを使ってリソースを追加した場合、その新しいリソースは Resource Manager テンプレートに存在しないため、将来的に混乱が生じる可能性があります。 Microsoft では、Azure ソリューションのインフラストラクチャは、Resource Manager テンプレートを使って定義することをお勧めします。 テンプレートを使用すると、ソリューションを繰り返し、かつ確実にデプロイすることができます。 この記事では、PowerShell コマンドレットでストレージ アカウントを作成しますが、後でリソース グループからテンプレートを生成します。
-
-次のコマンドレットは、ストレージ アカウントを作成します。 この例で示されている名前ではなく、ストレージ アカウントの一意の名前を指定してください。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。 この例で示されている名前は既に使用済みのため、その名前を使うと、エラーが発生します。
+必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
 
 ```powershell
-New-AzureRmStorageAccount -ResourceGroupName TestRG1 -AccountName mystoragename -Type "Standard_LRS" -Location "South Central US"
+Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
-後でこのリソースを取得する必要がある場合は、次のコマンドレットを使用します。
-
-```powershell
-Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
-```
-
-## <a name="add-a-tag"></a>タグを追加します
-
-タグを使用すると、さまざまなプロパティに基づいてリソースを整理できます。 たとえば、同じ部門に属しているさまざまなリソース グループに、複数のリソースが含まれていることがあります。 こうしたリソースに部門タグと値を適用して、同じカテゴリに属するものとしてマークできます。 また、運用環境で使用されているリソースか、テスト環境のリソースかをマークすることもできます。 この記事では、1 つのリソースにのみタグを適用しますが、環境内では、ほとんどの場合、すべてのリソースにタグを適用すると便利です。
-
-次のコマンドレットでは、2 つのタグをストレージ アカウントに適用します。
-
-```powershell
-Set-AzureRmResource -Tag @{ Dept="IT"; Environment="Test" } -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
- ```
-
-タグは 1 つのオブジェクトとして更新されます。 タグが既に含まれているリソースにタグを追加するには、最初に既存のタグを取得します。 新しいタグを、既存のタグが含まれるオブジェクトに追加したら、すべてのタグをリソースに再度適用します。
-
-```powershell
-$tags = (Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1).Tags
-$tags += @{Status="Approved"}
-Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName TestRG1 -ResourceType Microsoft.Storage/storageAccounts
-```
-
-## <a name="search-for-resources"></a>リソースの検索
-
-**Find-AzureRmResource** コマンドレットを使用して、さまざまな検索条件でリソースを取得します。
-
-* 名前によってリソースを取得するには、**ResourceNameContains** パラメーターを指定します。
-
-  ```powershell
-  Find-AzureRmResource -ResourceNameContains mystoragename
-  ```
-
-* リソース グループですべてのリソースを取得するには、**ResourceGroupNameContains** パラメーターを指定します。
-
-  ```powershell
-  Find-AzureRmResource -ResourceGroupNameContains TestRG1
-  ```
-
-* タグ名と値ですべてのリソースを取得するには、**TagName** パラメーターと **TagValue** パラメーターを指定します。
-
-  ```powershell
-  Find-AzureRmResource -TagName Dept -TagValue IT
-  ```
-
-* 特定のリソースの種類のリソースをすべて取得するには、**ResourceType** パラメーターを指定します。
-
-  ```powershell
-  Find-AzureRmResource -ResourceType Microsoft.Storage/storageAccounts
-  ```
-
-## <a name="get-resource-id"></a>リソース ID を取得する
-
-多くのコマンドは、リソース ID をパラメーターとして受け取ります。 リソースおよび変数内のストアの ID を取得するには、次のコマンドを使用します。
-
-```powershell
-$webappID = (Get-AzureRmResource -ResourceGroupName exampleGroup -ResourceName exampleSite).ResourceId
-```
-
-## <a name="lock-a-resource"></a>リソースのロック
-
-重要なリソースが誤って削除または変更されないようにするには、そのリソースにロックを適用します。 **CanNotDelete** または **ReadOnly** のいずれかを指定できます。
-
-管理ロックを作成または削除するには、`Microsoft.Authorization/*` または `Microsoft.Authorization/locks/*` アクションにアクセスできる必要があります。 組み込みロールのうち、所有者とユーザー アクセス管理者にのみこれらのアクションが許可されています。
-
-ロックを適用するには、次のコマンドレットを使用します。
-
-```powershell
-New-AzureRmResourceLock -LockLevel CanNotDelete -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-```
-
-前の例でロックされたリソースは、ロックが解除されるまで削除できません。 ロックを解除するには、次を使用します。
-
-```powershell
-Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-```
-
-ロックの詳細については、[Azure Resource Manager でのリソースのロック](resource-group-lock-resources.md)に関するページをご覧ください。
-
-## <a name="remove-resources-or-resource-group"></a>リソースまたはリソース グループの削除
-リソースまたはリソース グループを削除できます。 リソース グループを削除すると、そのリソース グループ内のリソースもすべて削除されます。
-
-* リソース グループからリソースを削除するには、 **Remove-AzureRmResource** コマンドレットを使用します。 このコマンドレットはリソースを削除しますが、リソース グループは削除しません。
-
-  ```powershell
-  Remove-AzureRmResource -ResourceName mystoragename -ResourceType Microsoft.Storage/storageAccounts -ResourceGroupName TestRG1
-  ```
-
-* リソース グループとそのグループのリソースすべてを削除するには、**Remove-AzureRmResourceGroup** コマンドレットを使用します。
-
-  ```powershell
-  Remove-AzureRmResourceGroup -Name TestRG1
-  ```
-
-どちらのコマンドレットについても、リソースまたはリソース グループを削除するかどうかを確認するメッセージが表示されます。 リソースまたはリソース グループが適切に削除されると、**True** が返されます。
-
-## <a name="run-resource-manager-scripts-with-azure-automation"></a>Azure Automation での Resource Manager スクリプトの実行
-
-この記事では、Azure PowerShell でリソースに対して基本的な操作を行う方法について説明します。 高度な管理シナリオでは、通常、スクリプトを作成し、そのスクリプトを、必要に応じてまたはスケジュールに従って再利用する必要があります。 [Azure Automation](../automation/automation-intro.md) を使用すると、よく使用される Azure ソリューション管理スクリプトを自動化できます。
-
-次のトピックでは、Azure Automation、Resource Manager、および PowerShell を使用して、管理タスクを効果的に実行する方法について説明します。
-
-- Runbook 作成の詳細については、「[初めての PowerShell Runbook](../automation/automation-first-runbook-textual-powershell.md)」を参照してください。
-- スクリプト ギャラリーの使用については、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](../automation/automation-runbook-gallery.md)」を参照してください。
-- 仮想マシンを起動および停止する Rubbook については、「[Azure Automation シナリオ: JSON 形式のタグを使用して Azure VM の起動とシャットダウンのスケジュールを作成する](../automation/automation-scenario-start-stop-vm-wjson-tags.md)」を参照してください。
-- ピーク時間外に仮想マシンを起動および停止する Runbook については、「[ピーク時間外 VM 起動/停止 ソリューション (Automation)](../automation/automation-solution-vm-management.md)」を参照してください。
-
-## <a name="next-steps"></a>次のステップ
-* リソース マネージャーのテンプレートの作成の詳細については、[Azure リソース マネージャーのテンプレートの作成](resource-group-authoring-templates.md)に関するページを参照してください。
-* テンプレートをデプロイする方法の詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
+* 仮想マシンの監視の詳細については、[Azure PowerShell による Windows 仮想マシンの監視および更新](../virtual-machines/windows/tutorial-monitoring.md)に関するページを参照してください。
+* Azure Security Center を使用した推奨されるセキュリティ対策の実装の詳細については、[Azure Security Center を使用した仮想マシン セキュリティの監視](../virtual-machines/windows/tutorial-azure-security.md)に関するページを参照してください。
 * 新しいリソース グループに、既存のリソースを移動できます。 例については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-

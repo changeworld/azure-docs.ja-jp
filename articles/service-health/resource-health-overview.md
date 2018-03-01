@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/01/2017
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 040d58a81a9b41fe660e4276d698bf884f90bb6c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9912911d6ed43a70a7a0f9316079d8f66d063f64
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-resource-health-overview"></a>Azure Resource Health の概要
  
 Resource Health は、リソースに影響を及ぼす Azure の問題が発生した際の診断とサポート利用を支援します。 リソースの現在と過去の正常性に関する情報が表示され、問題を軽減するのに役立ちます。 Resource Health は、Azure のサービスの問題についてサポートが必要な場合にテクニカル サポートを提供します。
 
-[Azure の状態](https://status.azure.com)は広範囲の Azure ユーザーに影響するサービスの問題の情報を提供する一方で、Resource Health はお使いのリソースの正常性に関するパーソナライズされたダッシュボードを提供します。 Resource Health は、過去に Azure サービスの問題によって指定のリソースを利用できなかったすべての時間を示します。 これにより、SLA に違反していたかどうかを簡単に把握できます。 
+[Azure の状態](https://status.azure.com)は広範囲の Azure ユーザーに影響するサービスの問題の情報を提供する一方で、Resource Health はお使いのリソースの正常性に関するパーソナライズされたダッシュボードを提供します。 Resource Health は、過去に Azure サービスの問題によって指定のリソースを利用できなかったすべての時間を示します。これにより、SLA に違反していたかどうかを簡単に把握できます。 
 
 ## <a name="what-is-considered-a-resource-and-how-does-resource-health-decides-if-a-resource-is-healthy-or-not"></a>どのようなものがリソースと認識されるのか、またリソースが正常であるかどうかはどのようにして判断されるか
-リソースとは、Azure Resource Manager を通じて Azure サービスによって提供されているリソースの種類 (仮想マシン、Web アプリ、SQL データベースなど) のインスタンスです。
+リソースは Azure サービスの特定のインスタンスです (例: 仮想マシン、Web アプリ、SQL データベース)。
 
 Resource Health は、異なる Azure サービスから生成される信号を基にリソースが正常であるかどうかを評価します。 リソースが正常でない場合、Resource Health は追加の情報を分析して問題の原因を特定します。 また、問題を修正するためにマイクロソフトがとっているアクションや、問題の原因に対処するためにユーザーが実行できるアクションを特定します。 
 
@@ -45,31 +45,37 @@ Resource Health は、異なる Azure サービスから生成される信号を
 サービスがリソースの正常性に影響を与えるプラットフォームまたはプラットフォーム以外の継続的なイベントを検出しています。
 
 #### <a name="platform-events"></a>プラットフォームのイベント
-これらのイベントは Azure インフラストラクチャの複数のコンポーネントによってトリガーされており、計画的なメンテナンスなどのスケジュールされたアクションと、計画されていないホストの再起動などの予期しないインシデントの両方が含まれます。
+これらのイベントは、Azure インフラストラクチャの複数のコンポーネントによってトリガーされます。 これには、スケジュールされたアクション (計画的なメンテナンスなど) と、予期しないインシデント (計画されていないホストの再起動など) の両方が含まれます。
 
-Resource Health はイベントと回復プロセスに関する詳細を提供し、ユーザーはアクティブな Microsoft サポート契約がない場合でもサポートに問い合わせることができます。
+Resource Health は、イベントと復旧プロセスについてさらに詳細な情報を提供します。 また、ユーザーは、有効な Microsoft サポート契約がない場合でも、サポートに問い合わせることができます。
 
 ![プラットフォームのイベントにより Resource Health で使用不可になっている仮想マシン](./media/resource-health-overview/Unavailable.png)
 
 #### <a name="non-platform-events"></a>プラットフォーム以外のイベント
-これらのイベントは、仮想マシンを停止するなどのユーザーのアクションや、Redis Cache への接続数が最大数に到達した場合にトリガーされます。
+これらのイベントは、ユーザーが行ったアクションによってトリガーされます。 たとえば、仮想マシンを停止した場合や、Redis Cache への接続数が最大数に到達した場合などです。
 
 ![プラットフォーム以外のイベントにより Resource Health で使用不可になっている仮想マシン](./media/resource-health-overview/Unavailable_NonPlatform.png)
 
 ### <a name="unknown"></a>Unknown
 この正常性状態は、Resource Health がこのリソースに関する情報を 10 分以上受け取っていないことを示します。 この状態はリソースの状態を明確に示すものではありませんが、トラブルシューティング プロセスにおいて重要なデータ ポイントです。
-* リソースが予期した通りに実行されている場合、リソースの状態は数分後に「使用可能」に更新されます。
+* リソースが予期した通りに実行されている場合、リソースの状態は数分後に使用可能に更新されます。
 * リソースで問題が発生している場合は、正常性状態が「使用不可」になり、リソースがプラットフォームのイベントの影響を受けていることを示すことがあります。
 
 ![Resource Health で使用不可になっている仮想マシン](./media/resource-health-overview/Unknown.png)
 
+### <a name="degraded"></a>低下しています
+この正常性状態は、リソースはパフォーマンス低下を検出したが、まだ使用可能であることを示します。
+さまざまなリソースは、リソース機能低下を指定するときの独自の条件を持っています。
+
+![Resource Health で機能低下になっている仮想マシン](./media/resource-health-overview/degraded.png)
+
 ## <a name="report-an-incorrect-status"></a>正しくない状態を報告する
-現在の正常性状態が正しくないと思われる場合はいつでも、**[報告]** をクリックして正常ではない状態をマイクロソフトに報告できます。 Azure の問題の影響を受けている場合は、[Resource Health] ブレードからサポートにお問い合わせください。 
+現在の正常性状態が正しくないと思われる場合はいつでも、**[報告]** をクリックして正常ではない状態をマイクロソフトに報告できます。 Azure の問題の影響を受けている場合は、Resource Health からサポートにお問い合わせください。 
 
 ![Resource Health が正しくない状態を報告する](./media/resource-health-overview/incorrect-status.png)
 
 ## <a name="historical-information"></a>履歴情報
-[Resource Health] ブレードの **[履歴の表示]** をクリックすることで、過去 14 日の正常性データの履歴を核にできます。 
+Resource Health の **[履歴の表示]** をクリックすることで、過去 14 日間の正常性履歴にアクセスできます。 
 
 ![Resource Health のレポートの履歴](./media/resource-health-overview/history-blade.png)
 
@@ -79,13 +85,13 @@ Resource Health はイベントと回復プロセスに関する詳細を提供�
 2.  対象のリソースに移動します。
 3.  左側にあるリソース メニューで、**[Resource Health]** をクリックします。
 
-![リソース ブレードから Resource Health を開く](./media/resource-health-overview/from-resource-blade.png)
+![リソース ビューから Resource Health を開く](./media/resource-health-overview/from-resource-blade.png)
 
-Resource Health には、**[その他のサービス]** をクリックしてフィルター テキスト ボックスに「**resource health**」と入力し、**[ヘルプとサポート]** ブレードを開いてアクセスすることもできます。 最後に、[**Resource Health**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth) をクリックします。
+Resource Health には、**[すべてのサービス]** をクリックし、フィルター テキスト ボックスに「**resource health**」と入力し、**[ヘルプとサポート]** ブレードを開いてアクセスすることもできます。 最後に、[**Resource Health**](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring/AzureMonitoringBrowseBlade/resourceHealth) をクリックします。
 
-![[その他のサービス] から Resource Health を開く](./media/resource-health-overview/FromOtherServices.png)
+![[すべてのサービス] から Resource Health を開く](./media/resource-health-overview/FromOtherServices.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Resource Health について詳しくは、次のリソースをご覧ください。
 -  [Azure Resource Health で利用できるリソースの種類と正常性チェック](resource-health-checks-resource-types.md)

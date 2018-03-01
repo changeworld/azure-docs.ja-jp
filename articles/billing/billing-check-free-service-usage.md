@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
-ms.openlocfilehash: 27ff6c92904a0b32cd4a37c8b1930adc121a7231
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8bc63091dfba822f9839f61dd12c212154ba695d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Azure 無料アカウントで無料サービスの使用状況を確認する 
 
@@ -28,7 +28,7 @@ Azure 無料アカウントに含まれる無料サービスは、使用制限�
 
 1.  [Azure Portal]( http://portal.azure.com) にログインします。
 
-2.  左側のナビゲーションの下部で、**[More services]\(その他のサービス\)** を選択します。
+2.  左側のナビゲーション領域で、**[すべてのサービス]** を選択します。
 
 3.  **[サブスクリプション]** を選択します。
 

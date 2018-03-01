@@ -4,40 +4,41 @@ description: "Azure Migration Planner を使用して VMware VM を Azure に移
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 12/12/2017
+ms.date: 06/02/2017
 ms.author: raynew
-ms.openlocfilehash: ce47790f6214864afdba33eb5cbe3a9e49b81cd5
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 8babdbc30e062c7b289e90a674cec3222943e48d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
-[Azure Migrate](migrate-overview.md) は、既定の設定で評価を作成します。 評価を作成した後は、この記事の手順に従って、これらの既定の設定を変更できます。
+[Azure Migrate](migrate-overview.md) は、既定のプロパティで評価を作成します。 評価を作成した後は、この記事の手順に従って、既定のプロパティを変更できます。
 
 
-## <a name="edit-assessment-values"></a>評価値を編集します。
+## <a name="edit-assessment-properties"></a>評価のプロパティの編集
 
-1. Azure Migrate プロジェクトの [**評価]** ページで、評価を選択し **[プロパティの編集]** をクリックします。
-2. 次の表に従って設定を変更します。
+1. 移行プロジェクトの **[評価]** ページで、評価を選択し、**[プロパティの編集]** をクリックします。
+2. 次の表に従ってプロパティを変更します。
 
     **設定** | **詳細** | **既定値**
     --- | --- | ---
     **ターゲットの場所** | Azure 上の移行先となる場所。 |  既定の場所は、米国西部 2 です。
-    **記憶域冗長** | 移行後に Azure VM で使用されるストレージの種類。 | 現在サポートされるレプリケーションは [[ローカル冗長ストレージ (LRS)]](../storage/common/storage-redundancy.md#locally-redundant-storage) のみです。
-    **快適性係数** | 快適性係数は、評価中に使用されるバッファーです。 季節特有の使用方法、パフォーマンス履歴が短い、使用量が将来的に増加する可能性などを考慮に入れるために使用します。 | 既定の設定は 1.3x です。
-    **パフォーマンス履歴** | パフォーマンス履歴を評価するために使用された時間です。 | 既定値は 1 か月です。
-    **百分位数の使用率** | パフォーマンス履歴で考慮すべきパーセンタイル値です。 | 既定値は 95% です。
-    **[価格レベル]** | VM の[価格レベル](https://azure.microsoft.com/blog/basic-tier-virtual-machines-2/) を指定することができます。  | 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
-    **プラン** | 適用される [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)が既定値です。
+    **ストレージ冗長** | 移行後に Azure VM で使用されるストレージ冗長の種類。 | [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) が既定値です。 Azure Migrate では管理ディスク ベースの評価だけがサポートされ、管理ディスクでは LRS だけがサポートされています。そのため、現在、プロパティには LRS オプションだけがあります。 
+    **サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 "*パフォーマンスに基づく*" サイズ変更、またはパフォーマンスの履歴を考慮しない "*オンプレミスとしての*" VM のサイズ変更を実行できます。 | パフォーマンスに基づくサイズ変更が既定のオプションです。
+    **パフォーマンス履歴** | VM のパフォーマンスを評価するために考慮する期間。 このプロパティは、サイズ変更の基準が "*パフォーマンスに基づくサイズ変更*" の場合にのみ適用されます。 | 既定値は 1 日です。
+    **百分位数の使用率** | 適切なサイズ設定のために考慮するパフォーマンス サンプル セットのパーセンタイル値。 このプロパティは、サイズ変更の基準が "*パフォーマンスに基づくサイズ変更*" の場合にのみ適用されます。  | 既定は 95 パーセンタイルです。
+    **[価格レベル]** | ターゲット Azure VM の[価格レベル (Basic/Standard)](../virtual-machines/windows/sizes-general.md) を指定できます。 たとえば、運用環境の移行を計画している場合は、Standard レベルを検討するかもしれません。この場合、VM の待ち時間は短くなりますが、コストは高くなります。 一方、開発/テスト環境の場合は、Basic レベルを検討するかもしれません。この場合、VM の待ち時間は長くなり、コストは安くなります。 | 既定では [Standard](../virtual-machines/windows/sizes-general.md) レベルが使用されます。
+    **快適性係数** | Azure Migrate では、評価時にバッファー (快適性係数) が考慮されます。 VM のマシン使用率データ (CPU、メモリ、ディスク、ネットワーク) に加えて、このバッファーが適用されます。 快適性係数は、季節ごとの使用量、短期間のパフォーマンス履歴、将来に使用量が増える可能性などの問題に相当します。<br/><br/> たとえば、使用率 20% の 10 コア VM の結果は、通常 2 コア VM になります。 一方、快適性係数を 2.0x とした場合は、結果が 4 コア VM になります。 | 既定の設定は 1.3x です。
+    **プラン** | 登録されている [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)。 | [従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)が既定値です。
     **通貨** | 請求通貨です。 | 既定値は、米ドルです。
-    **割引率 (%)** | プランに適用される任意のサブスクリプション固有の割引です。 | 既定の設定は 0% です。
-    **Azure Hybrid 利用特典** | [Azure Hybrid 利用特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)に登録されているかどうかを示します。 [はい] に設定すると、Windows VM に Windows Azure 以外の価格は考慮されません。 | 既定値は Yes です。
+    **割引率 (%)** | Azure プランに適用される任意のサブスクリプション固有の割引です。 | 既定の設定は 0% です。
+    **Azure ハイブリッド特典** | ソフトウェア アシュアランスがあり、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を受ける資格があるかどうかを指定します。 [はい] に設定すると、Windows VM に Windows Azure 以外の価格は考慮されません。 | 既定値は Yes です。
 
 3. **[保存]** をクリックして評価を更新します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 評価の計算方法の[詳細を確認](concepts-assessment-calculation.md)します。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/14/2017
 ms.author: dastrock
-ms.openlocfilehash: f3de9016fe29a51ab2c7fb9e93fcd33af0f0e871
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: f634adbacc8e1fc128ecef15ad38f2f8b28eb25d
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="migrate-from-the-azure-access-control-service"></a>Azure Access Control Service からの移行
 
@@ -142,11 +142,11 @@ Azure AD テナントは、AD FS を通じて、1 つ以上のオンプレミス
 | **プロトコルと SDK の互換性** | | |
 | WIF | サポートされています | サポート対象。ただし、使用できる手順に制限あり |
 | WS-Federation | サポートされています | サポートされています |
-| [OAuth 2.0] | Draft 13 をサポート | RFC 6749 (ほとんどの最新の仕様) をサポート |
+| OAuth 2.0 | Draft 13 をサポート | RFC 6749 (ほとんどの最新の仕様) をサポート |
 | WS-Trust | サポートされています | サポートされていません |
 | **トークン形式** | | |
 | JWT | Beta でサポート | サポートされています |
-| SAML 1.1 | サポートされています | Preview |
+| SAML 1.1 | サポートされています | プレビュー |
 | SAML 2.0 | サポートされています | サポートされています |
 | SWT | サポートされています | サポートされていません |
 | **カスタマイズ** | | |
@@ -180,7 +180,7 @@ Possible nameIdentifiers from Access Control (via AAD or AD FS):
 
 このアプローチを選ぶ場合は、[Azure AD での署名キー ロールオーバー](https://docs.microsoft.com/azure/active-directory/develop/active-directory-signing-key-rollover)について理解する必要があります。 このアプローチでは、Azure AD のグローバル署名キーを使用してトークンを発行します。 既定では、WIF は署名キーを自動的に更新しません。 Azure AD がそのグローバル署名キーを回転する場合、変更を確定するために WIF 実装を準備する必要があります。
 
-OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](http://aka.ms/aaddev)にさまざまなドキュメントとガイダンスが記載されています。
+OpenID Connect または OAuth プロトコル経由で Azure AD と統合できる場合は、その方法で統合することをお勧めします。 Azure AD を Web アプリケーションに統合する方法については、[Azure AD 開発者ガイド](https://aka.ms/aaddev)にさまざまなドキュメントとガイダンスが記載されています。
 
 <!-- TODO: If customers ask about authZ, let's put a blurb on role claims here -->
 
@@ -205,7 +205,7 @@ Azure AD B2C の最も魅力的な機能の 1 つは、Access Control と同様�
 | **プロトコルと SDK の互換性** | | |
 | Windows Identity Foundation (WIF) | サポートされています | サポートされていません |
 | WS-Federation | サポートされています | サポートされていません |
-| [OAuth 2.0] | Draft 13 をサポート | RFC 6749 (ほとんどの最新の仕様) をサポート |
+| OAuth 2.0 | Draft 13 をサポート | RFC 6749 (ほとんどの最新の仕様) をサポート |
 | WS-Trust | サポートされています | サポートされていません |
 | **トークン形式** | | |
 | JWT | Beta でサポート | サポートされています |
@@ -230,7 +230,7 @@ Azure AD B2C がアプリケーションとサービスの最善の移行経路�
 
 場合によっては、Web アプリケーションの Access Control を Azure AD や Azure AD B2C に置き換えるために、大量のコード変更が必要になることがあります。 たとえば、次のような場合です。
 
-- Web アプリケーションで、Google や Facebook などのソーシャル ID プロバイダーにサインインするために、WIF または WS-Federation を使用してしている。
+- Web アプリケーションで、Google や Facebook などのソーシャル ID プロバイダーにサインインするために、WIF または WS-Federation を使用している。
 - Web アプリケーションで、WS-Federation プロトコルを使用して、エンタープライズ ID プロバイダーへの直接フェデレーションを実行している。
 - Web アプリケーションで、Access Control によって発行されたトークン内の要求として、ソーシャル ID プロバイダー (Google や Facebook など) によって発行されたアクセス トークンが必要である。
 - Web アプリケーションで、Azure AD や Azure AD B2C では再現できない複雑なトークン変換を使用している。

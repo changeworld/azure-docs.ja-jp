@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.openlocfilehash: 1cfe7ec37ad8b24a8bd9ab2bf67e95675a57b675
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b71aa004095a94bea84623fd2b5dbdfc1f81af0
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -62,7 +62,7 @@ Web アプリに関しては、次のメトリックを監視するようお勧�
 * 平均応答時間
 * CPU 時間
 * メモリ ワーキング セット
-* 要求数
+* Requests
 
 ![Web アプリのパフォーマンスを監視する](./media/app-service-web-troubleshoot-performance-degradation/1-monitor-metrics.png)
 
@@ -83,18 +83,14 @@ Web アプリを **Standard** 価格レベルで実行している場合、Web A
 また、「 [Keeping Azure Web Sites up plus Endpoint Monitoring with Stefan Schackow (Azure の Web サイトの保持とエンドポイントの監視 - Stefan Schackow 共演)](https://channel9.msdn.com/Shows/Azure-Friday/Keeping-Azure-Web-Sites-up-plus-Endpoint-Monitoring-with-Stefan-Schackow) 」で、エンドポイント監視に関するビデオをご覧いただけます。
 
 #### <a name="application-performance-monitoring-using-extensions"></a>拡張機能を使用したアプリケーション パフォーマンスの監視
-アプリケーションのパフォーマンス監視には、"*サイト拡張機能*" を使用することもできます。
+"*サイト拡張機能*" を使用して、アプリケーションのパフォーマンスを監視することもできます。
 
 App Service Web アプリにはそれぞれ拡張可能な管理エンドポイントが用意されており、サイト拡張機能としてデプロイされている強力なツール一式を使用することができます。 次のような拡張機能があります。 
 
 - [Visual Studio Team Services](https://www.visualstudio.com/products/what-is-visual-studio-online-vs.aspx) のようなソース コード エディター。 
 - Web アプリに接続されている MySQL データベースのような、接続されたリソース用の管理ツール。
 
-パフォーマンス監視を目的としたサイト拡張機能としては、[Azure Application Insights](/services/application-insights/) と [New Relic](/marketplace/partners/newrelic/newrelic/) の 2 つがあります。 New Relic を使用するには、実行時にエージェントをインストールします。 Azure Application Insights を使用するには、SDK でコードを再ビルドします。また、追加データにアクセスできる拡張機能もインストールできます。 SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。
-
-Application Insights の使用については、「 [Web アプリケーションのパフォーマンスを監視する](../application-insights/app-insights-web-monitor-performance.md)」を参照してください。
-
-New Relic の使用については、「 [Azure の New Relic によるアプリケーション パフォーマンス管理](../store-new-relic-cloud-services-dotnet-application-performance-management.md)」を参照してください。
+[Azure Application Insights](/services/application-insights/) というパフォーマンス監視を目的としたサイト拡張機能も使用できます。 Application Insights を使用するには、SDK でコードをリビルドします。 追加データへのアクセスを提供する拡張機能をインストールすることもできます。 SDK では、アプリの使用状況とパフォーマンスをさらに詳細に監視するコードを記述できます。 詳細については、「[Web アプリケーションのパフォーマンスを監視する](../application-insights/app-insights-web-monitor-performance.md)」を参照してください。
 
 <a name="collect" />
 
@@ -165,7 +161,7 @@ Kudu で利用できる機能の詳細については、 [知っておくべき 
 
 <a name="mitigate" />
 
-### <a name="3-mitigate-the-issue"></a>3.問題を緩和する
+### <a name="3-mitigate-the-issue"></a>手順 3.問題を緩和する
 #### <a name="scale-the-web-app"></a>Web アプリをスケーリングする
 Azure App Service では、アプリケーションが実行されるスケールを調整することによって、パフォーマンスとスループットを高めることができます。 Web アプリのスケール アップには、2 つの関連する措置が伴います。1 つは、App Service プランの価格レベルを引き上げること、もう 1 つは、価格レベルを引き上げた後に特定の設定を構成することです。
 

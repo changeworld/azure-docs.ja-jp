@@ -1,6 +1,6 @@
 ---
-title: "Operations Management Suite の Service Map ソリューションの使用 | Microsoft Docs"
-description: "サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする Operations Management Suite のソリューションです。 この記事では、サービス マップを環境に展開して、さまざまなシナリオで使用する場合の詳細について説明します。"
+title: "Azure での Service Map ソリューションの使用 | Microsoft Docs"
+description: "Service Map は、Windows および Linux システム上のアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップする、Azure のソリューションです。 この記事では、サービス マップを環境に展開して、さまざまなシナリオで使用する場合の詳細について説明します。"
 services: operations-management-suite
 documentationcenter: 
 author: daveirwin1
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/22/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 993dff7657a73803ca21677e19b08946fb89bfa2
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 84a43a4f04d7cd89d0d968acb436d196353eb81d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="use-the-service-map-solution-in-operations-management-suite"></a>Operations Management Suite の Service Map ソリューションの使用
+# <a name="using-service-map-solution-in-azure"></a>Azure での Service Map ソリューションの使用
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 Service Map を使用すると、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
 
-この記事では、サービス マップの使い方を詳しく説明します。 Service Map の構成とエージェントのオンボードについては、[Operations Management Suite の Service Map ソリューションの構成](operations-management-suite-service-map-configure.md)に関するページを参照してください。
+この記事では、サービス マップの使い方を詳しく説明します。 Service Map の構成とエージェントのオンボードについては、[Azure での Service Map ソリューションの構成](operations-management-suite-service-map-configure.md)に関するページをご覧ください。
 
 
 ## <a name="use-cases-make-your-it-processes-dependency-aware"></a>使用例: IT プロセスの依存関係を明確にする
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/11/2018
 サービス マップは、サーバー、プロセス、およびサード パーティのサービス間での依存関係について、共通の参照マップを自動的に作成します。 すべての TCP 依存関係を検出してマップし、予想外の接続、依存しているリモートのサードパーティ システム、Active Directory などの従来型のネットワークの暗領域の依存関係を特定します。 Service Map は、管理システムが試みたネットワーク接続の失敗を検出し、サーバー構成に関する潜在的な問題、サービスの停止、ネットワークの問題を特定する手助けをします。
 
 ### <a name="incident-management"></a>インシデント管理
-サービス マップでは、システムがどのように接続され互いに影響しているかを示すので、当て推量で問題を特定することが少なくなります。 失敗した接続を特定するだけでなく、ロード バランサー構成の問題、重要なサービスへの予想外または過剰な負荷、許可されていないクライアント (実稼働システムと通信する開発者マシンなど) を特定するのに役立ちます。 また、Operations Management Suite の Change Tracking と統合されたワークフローを使用すれば、バックエンド マシンの変更イベントとサービスのどちらがインシデントの根本原因であるのかがわかります。
+サービス マップでは、システムがどのように接続され互いに影響しているかを示すので、当て推量で問題を特定することが少なくなります。 失敗した接続を特定するだけでなく、ロード バランサー構成の問題、重要なサービスへの予想外または過剰な負荷、許可されていないクライアント (実稼働システムと通信する開発者マシンなど) を特定するのに役立ちます。 また、Change Tracking と統合されたワークフローを使用すれば、バックエンド マシンの変更イベントとサービスのどちらがインシデントの根本原因であるのかがわかります。
 
 ### <a name="migration-assurance"></a>確実な移行
 Service Map を使用すると、Azure の移行を効果的に計画、迅速化、検証することができるため、必要な作業を網羅して予想外の障害が起きないようにすることができます。 同時に移行する必要のある、相互依存しているシステムをすべて検出し、システム構成と容量を評価し、稼働中のシステムがまだユーザーにサービス提供しているのか、あるいは移行せず使用中止する対象となるのかを特定することができます。 移行完了後は、クライアントの負荷と ID をチェックして、テスト システムと顧客が接続していることを確認できます。 サブネットの計画とファイアウォールの定義に問題がある場合は、サービス マップにある失敗した接続を見れば、接続が必要なシステムがわかります。
@@ -41,7 +41,7 @@ Service Map を使用すると、Azure の移行を効果的に計画、迅速�
 Azure Site Recovery を使用していて、お使いのアプリケーション環境における復元シーケンスの定義が必要な場合、サービス マップは、どのようにシステムが相互依存しているかを自動的に表示して、信頼性の高い復旧計画を立てる手助けをします。 重要なサーバーまたはグループを選択してそのクライアントを表示することで、そのサーバーが復元され使用可能になった後に復旧するフロントエンド システムを特定できます。 逆に、重要なサーバーのバックエンドの依存関係を調べることで、焦点となるシステムが復元される前に復旧するシステムを特定できます。
 
 ### <a name="patch-management"></a>更新プログラムの管理
-Service Map は、Operations Management Suite のシステム更新評価の使用を強化します。他のどのチームとサーバーがサービスに依存しているかが示されるため、更新プログラム適用のためにシステムを停止する前に事前通知することができます。 また、Service Map は、更新プログラムを適用して再起動した後にそのサービスが使用可能で正常に接続されているかどうかを示すことによって、Operations Management Suite における更新プログラム管理を強化します。
+Service Map は、システム更新評価の使用を強化します。他のどのチームとサーバーがサービスに依存しているかが示されるため、更新プログラム適用のためにシステムを停止する前に事前通知することができます。 また、Service Map は、更新プログラムを適用して再起動した後にそのサービスが使用可能で正常に接続されているかを示すことにより、更新プログラム管理を強化します。
 
 
 ## <a name="mapping-overview"></a>マッピングの概要
@@ -54,7 +54,7 @@ Service Map は、Operations Management Suite のシステム更新評価の使�
 既定では、サービス マップは、直近 30 分間の依存関係情報を表示します。 左上にある時間コントロールを使用すると、過去の時間範囲 (最長 1 時間まで) のマップを照会し、過去における依存関係を表示することができます (例: インシデントの発生中や変更が発生する前)。 サービス マップのデータは、有料のワークスペースで 30 日間、無料のワークスペースでは 7 日間のあいだ保存されます。
 
 ## <a name="status-badges-and-border-coloring"></a>状態バッジと枠線の色分け
-マップ内の各サーバーの下部には、サーバーの状態情報を示す状態バッジの一覧が表示されます。 このバッジは、いずれかの Operations Management Suite ソリューション統合から取得したサーバーに関する情報があることを示します。 バッジをクリックすると、状態に関する詳細情報が右側のウィンドウに直接表示されます。 現在使用できる状態バッジには、アラート、サービス デスク、変更、セキュリティ、更新があります。
+マップ内の各サーバーの下部には、サーバーの状態情報を示す状態バッジの一覧が表示されます。 このバッジは、ソリューション統合のいずれかに、サーバー関連情報がいくつかあることを示します。 バッジをクリックすると、状態に関する詳細情報が右側のウィンドウに直接表示されます。 現在使用できる状態バッジには、アラート、サービス デスク、変更、セキュリティ、更新があります。
 
 状態バッジの重大度に応じて、マシン ノードの枠線を赤 (重大)、黄 (警告)、青 (情報) に色分けすることができます。 この色は、状態バッジの中で最も重大な状態を表します。 灰色の枠線は、ノードに状態インジケーターがないことを示します。
 
@@ -168,12 +168,12 @@ Service Map マップでは、プロセスとコンピューターの失敗し�
 **[自己リンクを表示する]** をクリックすると、自己リンクを含むサーバー ノードが再描画されます。これは、サーバー内のプロセスを開始および終了する TCP 接続です。 自己リンクが表示されると、このメニュー コマンドは **[自己リンクを非表示にする]** に変わります。これを使用して表示をオフにできます。
 
 ## <a name="computer-summary"></a>コンピューターの概要
-**[Machine Summary]\(マシンの概要\)** ウィンドウには、サーバーのオペレーティング システム、依存関係の数、その他の Operations Management Suite ソリューションから取得したデータの概要が表示されます。 このようなデータには、パフォーマンス メトリック、サービス デスク チケット、変更の追跡、セキュリティ、更新プログラムがあります。
+**[Machine Summary]\(マシンの概要\)** ウィンドウには、サーバーのオペレーティング システム、依存関係の数、その他のソリューションから取得したデータの概要が表示されます。 このようなデータには、パフォーマンス メトリック、サービス デスク チケット、変更の追跡、セキュリティ、更新プログラムがあります。
 
 ![[Machine Summary]\(マシンの概要\) ウィンドウ](media/oms-service-map/machine-summary.png)
 
 ## <a name="computer-and-process-properties"></a>コンピューターとプロセスのプロパティ
-Service Map マップを見ている間、マシンとプロセスを選択して、それらのプロパティに関する追加情報を取得できます。 マシンは、DNS 名、IPv4 アドレス、CPU とメモリ容量、VM の種類、オペレーティング システムとバージョン、最後の再起動時刻、Operations Management Suite と Service Map エージェントの ID に関する情報を提供します。
+Service Map マップを見ている間、マシンとプロセスを選択して、それらのプロパティに関する追加情報を取得できます。 コンピューターは、DNS 名、IPv4 アドレス、CPU とメモリ容量、VM の種類、オペレーティング システムとバージョン、最後の再起動時刻、OMS と Service Map エージェントの ID に関する情報を提供します。
 
 ![[Machine Properties]\(マシンのプロパティ\) ウィンドウ](media/oms-service-map/machine-properties.png)
 
@@ -185,8 +185,8 @@ Service Map マップを見ている間、マシンとプロセスを選択し�
 
 ![[Process Summary]\(プロセスの概要\) ウィンドウ](media/oms-service-map/process-summary.png)
 
-## <a name="operations-management-suite-alerts-integration"></a>Operations Management Suite のアラートの統合
-Service Map は、選択した時間範囲内で選択したサーバーに対して発生したアラートを表示するために、Operations Management Suite アラートと統合されます。 進行中のアラートがある場合はサーバーにアイコンが表示され、**[Machine Alerts]\(マシンのアラート\)** ウィンドウにアラートが一覧表示されます。
+## <a name="alerts-integration"></a>アラートの統合
+Service Map は、選択されたサーバーで選択された時間範囲中に発生したアラートを表示するために、Log Analytics のアラートと統合されます。 進行中のアラートがある場合はサーバーにアイコンが表示され、**[Machine Alerts]\(マシンのアラート\)** ウィンドウにアラートが一覧表示されます。
 
 ![[Machine Alerts]\(マシンのアラート\) ウィンドウ](media/oms-service-map/machine-alerts.png)
 
@@ -197,13 +197,13 @@ Service Map で関連するアラートを表示できるようにするには�
 ![アラートの構成](media/oms-service-map/alert-configuration.png)
 
 
-## <a name="operations-management-suite-log-events-integration"></a>Operations Management Suite のログ イベントの統合
+## <a name="log-events-integration"></a>ログ イベントの統合
 サービス マップは、ログ検索と統合して、選択したサーバーで選択した時間の範囲中に発生したすべてのログ イベントの数を表示します。 イベント数の一覧の任意の行をクリックしてログ検索に移動し、個別のログ イベントを表示することができます。
 
 ![[Machine Log Events]\(マシン ログ イベント\) ウィンドウ](media/oms-service-map/log-events.png)
 
-## <a name="operations-management-suite-service-desk-integration"></a>Operations Management Suite のサービス デスクの統合
-Service Map と IT Service Management Connector の統合は、両方のソリューションが有効で、Operations Management Suite ワークスペースで構成されているときに自動的に行われます。 Service Map での統合に、"サービス デスク" というラベルが付けられます。 詳細については、[IT Service Management Connector を使用した ITSM 作業項目の一元管理](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)に関するページを参照してください。
+## <a name="service-desk-integration"></a>サービス デスクとの統合
+Service Map と IT Service Management Connector との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。 Service Map での統合に、"サービス デスク" というラベルが付けられます。 詳細については、[IT Service Management Connector を使用した ITSM 作業項目の一元管理](https://docs.microsoft.com/azure/log-analytics/log-analytics-itsmc-overview)に関するページを参照してください。
 
 **[Machine Service Desk]\(マシン サービス デスク\)** ウィンドウでは、選択した時間範囲内で選択したサーバーの IT Service Management イベントすべてが一覧表示されます。 進行中の項目がある場合はサーバーにアイコンが表示され、[Machine Service Desk]\(マシン サービス デスク\) ウィンドウにはそれらの項目が一覧表示されます。
 
@@ -214,8 +214,8 @@ Service Map と IT Service Management Connector の統合は、両方のソリ�
 ログ検索で項目の詳細を表示するには、**[ログ検索で表示]** をクリックします。
 
 
-## <a name="operations-management-suite-change-tracking-integration"></a>Operations Management Suite の Change Tracking の統合
-Service Map と Change Tracking の統合は、両方のソリューションが有効であり、Operations Management Suite ワークスペースで構成されているときに自動的に行われます。
+## <a name="change-tracking-integration"></a>Change Tracking との統合
+Service Map と Change Tracking との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。
 
 **[Machine Change Tracking]\(マシン変更の追跡\)** ウィンドウには、すべての変更が新しい順に一覧表示されており、ログ検索へのリンクで追加の詳細情報を探すことができます。
 
@@ -226,7 +226,7 @@ Service Map と Change Tracking の統合は、両方のソリューションが
 ![ConfigurationChange イベント](media/oms-service-map/configuration-change-event.png)
 
 
-## <a name="operations-management-suite-performance-integration"></a>Operations Management Suite のパフォーマンスの統合
+## <a name="performance-integration"></a>パフォーマンスの統合
 **[Machine Performance]\(マシンのパフォーマンス\)** ウィンドウには、選択したサーバーの標準的なパフォーマンス メトリックが表示されます。 このメトリックには、CPU 使用率、メモリ使用率、送受信したネットワークのバイト数、ネットワークで送受信されたバイト数による上位プロセスの一覧が含まれます。
 
 ![[Machine Performance]\(マシンのパフォーマンス\) ウィンドウ](media/oms-service-map/machine-performance.png)
@@ -245,20 +245,20 @@ Linux:
 - Network Adapter(*)\\Bytes Sent/sec
 - Network Adapter(*)\\Bytes Received/sec
 
-ネットワークのパフォーマンス データを取得するには、Operations Management Suite で Wire Data 2.0 ソリューションを有効にしておく必要もあります。
+ネットワークのパフォーマンス データを取得するには、ワークスペースで Wire Data 2.0 ソリューションを有効にしておく必要もあります。
  
-## <a name="operations-management-suite-security-integration"></a>Operations Management Suite のセキュリティの統合
-Service Map と Security and Audit の統合は、両方のソリューションが有効であり、Operations Management Suite ワークスペースで構成されているときに自動的に行われます。
+## <a name="security-integration"></a>セキュリティの統合
+Service Map と Security and Audit との統合は、両方のソリューションが有効であり、Log Analytics ワークスペースに構成されているときは自動的に行われます。
 
-**[Machine Security]\(マシンのセキュリティ\)** ウィンドウには、Operations Management Suite Security and Audit ソリューションから取得した、選択したサーバーに関するデータが表示されます。 このウィンドウには、選択した時間範囲における、サーバーの未解決のセキュリティ問題の概要が一覧表示されます。 いずれかのセキュリティ問題をクリックすると、それらの詳細がログ検索でドリルダウンされます。
+**[Machine Security]\(マシンのセキュリティ\)** ウィンドウには、選択したサーバーの Security and Audit ソリューションからのデータが表示されます。 このウィンドウには、選択した時間範囲における、サーバーの未解決のセキュリティ問題の概要が一覧表示されます。 いずれかのセキュリティ問題をクリックすると、それらの詳細がログ検索でドリルダウンされます。
 
 ![[Machine Security]\(マシンのセキュリティ\) ウィンドウ](media/oms-service-map/machine-security.png)
 
 
-## <a name="operations-management-suite-updates-integration"></a>Operations Management Suite の更新プログラムの統合
-Service Map と Update Management の統合は、両方のソリューションが有効であり、Operations Management Suite ワークスペースで構成されているときに自動的に行われます。
+## <a name="updates-integration"></a>更新の統合
+Service Map と Update Management との統合は、両方のソリューションが有効であり、Log Anlaytics ワークスペースに構成されているときは自動的に行われます。
 
-**[Machine Updates]\(マシンの更新プログラム\)** ウィンドウには、Operations Management Suite Update Management ソリューションから取得した、選択したサーバーに関するデータが表示されます。 このウィンドウには、選択した時間範囲における、サーバーに不足している更新プログラムの概要が一覧表示されます。
+**[Machine Updates]\(マシンの更新\)** ウィンドウには、選択したサーバーの Update Management ソリューションからのデータが表示されます。 このウィンドウには、選択した時間範囲における、サーバーに不足している更新プログラムの概要が一覧表示されます。
 
 ![[Machine Change Tracking]\(マシン変更の追跡\) ウィンドウ](media/oms-service-map/machine-updates.png)
 
@@ -272,8 +272,8 @@ Service Map のコンピューターとプロセスのインベントリ デー�
 
 個々のプロセスとコンピューターの識別に使用できる、内部生成されたプロパティがあります。
 
-- コンピューター: ResourceId または ResourceName_s を使用して、Operations Management Suite ワークスペース内のコンピューターを一意に識別します。
-- プロセス: ResourceId を使用して、Operations Management Suite ワークスペース内のプロセスを一意に識別します。 ResourceName_s は、プロセスが実行されているコンピューターのコンテキスト内で一意です (MachineResourceName_s) 
+- コンピューター: ResourceId または ResourceName_s を使用して、Log Analytics ワークスペース内のコンピューターを一意に識別します。
+- プロセス: ResourceId を使用して、Log Analytics ワークスペース内のプロセスを一意に識別します。 ResourceName_s は、プロセスが実行されているコンピューターのコンテキスト内で一意です (MachineResourceName_s) 
 
 指定の時間範囲にある指定のプロセスとコンピューターについては、複数のレコードが存在できるため、クエリは、同じコンピューターまたはプロセスに対して複数のレコードを返すことがあります。 最新のレコードのみが返されるようにするには、"| dedup ResourceId" をクエリに追加します。
 

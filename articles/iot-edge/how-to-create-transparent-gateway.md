@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 12/04/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: c3621cb860339499089ebdf3c3581faf770f1fe3
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 0ea4d8ec51211f1208083d3f93c3c100dc54e6b0
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-an-iot-edge-device-that-acts-as-a-transparent-gateway---preview"></a>透過的なゲートウェイとして動作する IoT Edge デバイスを作成する - プレビュー
 
@@ -63,7 +63,7 @@ Azure IoT device SDK を使用してデバイスを IoT Edge ゲートウェイ�
 
 1. GitHub から Microsoft Azure IoT SDK と C のライブラリを複製します。
 
-   ```
+   ```cmd/sh
    git clone -b modules-preview https://github.com/Azure/azure-iot-sdk-c.git 
    ```
 
@@ -75,22 +75,22 @@ Azure IoT device SDK を使用してデバイスを IoT Edge ゲートウェイ�
 
 新しいデバイス証明書を作成します。
 
-   ```
+   ```bash
    ./certGen.sh create_edge_device_certificate myGateway
    ```
 
-新しいファイルが作成されます。.\certs\new-edge-device.* には公開キーと PFX が含まれ、.\private\new-edge-device.key.pem にはデバイスの秘密キーが含まれます。
+新しいファイルが作成されます .\certs\new-edge-device.* には公開キーと PFX が含まれ、.\private\new-edge-device.key.pem にはデバイスの秘密キーが含まれます。
  
 `certs` ディレクトリで次のコマンドを実行して、デバイスの公開キーの完全なチェーンを取得します。
 
-   ```
+   ```bash
    cat ./new-edge-device.cert.pem ./azure-iot-test-only.intermediate.cert.pem ./azure-iot-test-only.root.ca.cert.pem > ./new-edge-device-full-chain.cert.pem
    ```
 
 ### <a name="powershell"></a>Powershell
 
 新しいデバイス証明書を作成します。 
-   ```
+   ```powershell
    New-CACertsEdgeDevice myGateway
    ```
 
@@ -115,7 +115,7 @@ IoT Edge ランタイムにデバイスと証明書の情報を提供します�
  
 Linux では、Bash の出力を使います。
 
-   ```
+   ```bash
    sudo iotedgectl setup --connection-string {device connection string}
         --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
         --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
@@ -126,7 +126,7 @@ Linux では、Bash の出力を使います。
 
 Windows では、PowerShell の出力を使います。
 
-   ```
+   ```powershell
    iotedgectl setup --connection-string {device connection string}
         --edge-hostname {gateway hostname, e.g. mygateway.contoso.com}
         --device-ca-cert-file {full path}/certs/new-edge-device.cert.pem
@@ -135,15 +135,11 @@ Windows では、PowerShell の出力を使います。
         --owner-ca-cert-file {full path}/RootCA.pem
    ```
 
-既定では、サンプル スクリプトは、パスフレーズをデバイスの秘密キーに設定しません。 パスフレーズを設定する場合は、次のパラメーターを追加します。
-
-   ```
-   --device-ca-passphrase {passphrase}
-   ```
+既定では、サンプル スクリプトは、パスフレーズをデバイスの秘密キーに設定しません。 パスフレーズを設定する場合は、次のパラメーターを追加します: `--device-ca-passphrase {passphrase}`。
 
 スクリプトで、Edge Agent 証明書のパスフレーズを設定するように要求されます。 このコマンドの後で、IoT Edge ランタイムを再起動します。
 
-   ```
+   ```cmd/sh
    iotedgectl restart
    ```
 
@@ -155,7 +151,7 @@ Windows では、PowerShell の出力を使います。
 
 たとえば、.NET アプリケーションの場合、次のスニペットを追加してパス `certPath` に格納されている PEM 形式の証明書を信頼することができます。 使ったスクリプトのバージョンに応じて、パスは `certs/azure-iot-test-only.root.ca.cert.pem` (Bash) または `RootCA.pem` (Powershell) を参照します。
 
-   ```
+   ```csharp
    using System.Security.Cryptography.X509Certificates;
    
    ...

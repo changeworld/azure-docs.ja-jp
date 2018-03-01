@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: 71929b449f2a0fa55327fd3f9741208506859e85
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 6478d577c52ffa23c3149c8213f182eaa1e466bd
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stream-analytics-event-order-considerations"></a>Azure Stream Analytics のイベントの順序に関する考慮事項
 
@@ -70,6 +70,9 @@ Stream Analytics では、アプリケーション時間で処理する場合に
 * **削除**: 破棄されます。
 
 誤順序の許容期間内に届いたイベントが Stream Analytics によって並べ替えられる場合、クエリの出力は誤順序の許容期間だけ遅延されます。
+
+### <a name="early-events"></a>早期イベント
+アプリケーション時間による処理のとき、アプリケーション時間がイベントの到着時刻より 5 分以上前のイベントは、削除されるか、または選択されている構成オプションに従って調整されます。
 
 ### <a name="example"></a>例
 

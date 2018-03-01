@@ -4,13 +4,13 @@ description: "Azure Migrate サービスにおけるアセスメントの計算�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: 10bc249aa70852dce71c96e46319925cececdd8b
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 886977764517f1fec89eee77fc3263d30ff9ab31
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -35,7 +35,7 @@ Azure Migrate は、依存関係の視覚化のために [Log Analytics](../log-
 
 ## <a name="do-i-need-to-pay-for-it"></a>使用料金が必要になる場合
 
-はい。 Log Analytics ワークスペースは既定で作成されますが、Azure Migrate で依存関係の視覚化を使用しない限り、使用されません。 依存関係の視覚化を使用する場合またはワークスペースを Azure Migrate 以外で使用する場合は、ワークスペースの使用料が発生します。  Service Map ソリューションの価格については、[こちら](https://azure.microsoft.com/pricing/details/insight-analytics/)を参照してください。 
+Azure Migrate の価格については、[こちら](https://azure.microsoft.com/pricing/details/azure-migrate/)を参照してください。 
 
 ## <a name="how-do-i-manage-the-workspace"></a>ワークスペースの管理方法
 
@@ -43,6 +43,6 @@ Azure Migrate 以外で Log Analytics ワークスペースを使用できます
 
 移行プロジェクトを削除する場合を除き、Azure Migrate で作成されたワークスペースは削除しないでください。 削除すると、依存関係は期待どおりに動作しません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [マシンの依存関係マッピングを使用したマシンのグループ化](how-to-create-group-machine-dependencies.md)

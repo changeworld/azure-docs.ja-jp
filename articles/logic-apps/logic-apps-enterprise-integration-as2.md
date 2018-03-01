@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: 6a283d8772e48aa6671d88288c2083d891a220d5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: fa61bbecc51c4f3163bd1cc077391bb102662297
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の AS2 メッセージを交換する
 
@@ -40,12 +40,12 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。  
 
-2.  左側のメニューの **[その他のサービス]** をクリックします。 検索ボックスに、フィルターとして「**統合**」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
+2.  左側のメニューから、**[すべてのサービス]** を選択します。 検索ボックスに、フィルターとして「**統合**」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
 
     > [!TIP]
-    > **[その他のサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
+    > **[すべてのサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
 
-    ![[その他のサービス]、"統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+    ![[すべてのサービス]、"統合" でのフィルター処理、[統合アカウント] の選択](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
 3. 表示された **[統合アカウント]** ブレードで、契約を作成する統合アカウントを選択します。
 統合アカウントが表示されない場合は、[最初に統合アカウントを 1 つ作成](../logic-apps/logic-apps-enterprise-integration-accounts.md "統合アカウントについて")します。  

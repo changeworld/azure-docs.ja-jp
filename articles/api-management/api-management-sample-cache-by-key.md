@@ -14,17 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 4a41e4e0be44e855ead253ad76fe5a3af52070ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 838850d38c9df51fabcf620831371bed401e9492
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="custom-caching-in-azure-api-management"></a>Azure API Management のカスタム キャッシュ
 Azure API Management サービスは、リソース URL をキーとして使用する [HTTP 応答のキャッシュ](api-management-howto-cache.md) を標準でサポートしています。 このキーは、要求ヘッダーで `vary-by` プロパティを使用して変更できます。 この変更操作は、HTTP 応答全体 ("表現" とも呼ばれます) をキャッシュする際だけでなく、表現の一部をキャッシュする際にも役立つことがあります。 新しい [cache-lookup-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#GetFromCacheByKey) ポリシーと [cache-store-value](https://msdn.microsoft.com/library/azure/dn894086.aspx#StoreToCacheByKey) ポリシーを使用すると、ポリシー定義内からデータの任意の部分の格納と取得を実行できます。 また、外部サービスからの応答をキャッシュできるようになるため、以前に導入された [send-request](https://msdn.microsoft.com/library/azure/dn894085.aspx#SendRequest) ポリシーに値を追加することもできます。
 
 ## <a name="architecture"></a>アーキテクチャ
-API Management サービスでは、テナント単位の共有データ キャッシュが使用されるため、複数のユニットにスケールアップしても、同じキャッシュ データにアクセスできます。 ただし、複数リージョンのデプロイを使用する場合、キャッシュはリージョンごとに独立しています。 そのため、データの唯一の格納場所となるデータ ストアとしてキャッシュを扱わないようにしてください。 データ ストアとして扱い、後で複数リージョンのデプロイを使用することにした場合、ユーザーが移動すると、キャッシュされたデータにアクセスできなくなる可能性があります。
+API Management サービスでは、テナント単位の共有データ キャッシュが使用されるため、複数のユニットにスケールアップしても、同じキャッシュ データにアクセスできます。 ただし、複数リージョンのデプロイを使用する場合、キャッシュはリージョンごとに独立しています。 キャッシュを、データの唯一の格納場所となるデータ ストアとして扱わないようにすることが重要です。 データ ストアとして扱い、後で複数リージョンのデプロイを使用することにした場合、ユーザーが移動すると、キャッシュされたデータにアクセスできなくなる可能性があります。
 
 ## <a name="fragment-caching"></a>フラグメント キャッシュ
 特定するのにコストがかかるため手付かずのまま長期間放置されているデータが、返される応答の中に含まれている場合があります。 例として、航空会社が飛行機の予約やフライト状況などの関連情報を提供するサービスを構築した場合を考えてみましょう。ユーザーが航空会社のポイント プログラムのメンバーである場合、ユーザーには現在の状態や累積マイレージ数に関する情報があります。 これらのユーザー関連情報が別のシステムに格納されていて、その情報をフライト状況や予約についての応答の中に含めたい場合、 これらのユーザー関連情報が別のシステムに格納されていて、その情報をフライト状況や予約についての応答の中に含めたい場合、フラグメント キャッシュと呼ばれるプロセスを使用して実現できます。 ユーザー関連情報を挿入する位置を示す一種のトークンを使用して、プライマリ表現を配信元サーバーから返すことができます。 
@@ -48,7 +48,7 @@ API Management サービスでは、テナント単位の共有データ キャ�
 { "username" : "Bob Smith", "Status" : "Gold" }
 ```
 
-応答に含める適切なユーザー情報を特定するには、エンド ユーザーを識別する必要があります。 このしくみは、実装によって異なります。 この例では、`JWT` トークンの `Subject` 要求を使用しています。 
+追加する適切なユーザー情報を特定するために、API Management はエンド ユーザーを識別する必要があります。 このしくみは、実装によって異なります。 この例では、`JWT` トークンの `Subject` 要求を使用しています。 
 
 ```xml
 <set-variable
@@ -56,7 +56,7 @@ API Management サービスでは、テナント単位の共有データ キャ�
   value="@(context.Request.Headers.GetValueOrDefault("Authorization","").Split(' ')[1].AsJwt()?.Subject)" />
 ```
 
-この `enduserid` 値には、後で使用できるようにコンテキスト変数を格納しています。 次の手順では、前の要求でユーザー情報が既に取得されてキャッシュに格納されているかどうかを特定します。 そのために、 `cache-lookup-value` ポリシーを使用します。
+API Management では、`enduserid` 値は、後で使用できるようにコンテキスト変数に格納されます。 次の手順では、前の要求でユーザー情報が既に取得されてキャッシュに格納されているかどうかを特定します。 そのために、API Management では、`cache-lookup-value` ポリシーを使用します。
 
 ```xml
 <cache-lookup-value
@@ -64,7 +64,7 @@ key="@("userprofile-" + context.Variables["enduserid"])"
 variable-name="userprofile" />
 ```
 
-キー値に対応するエントリがキャッシュ内にない場合、 `userprofile` コンテキスト変数は作成されません。 `choose` 制御フロー ポリシーを使用して、検索が成功したかどうかを確認します。
+キー値に対応するエントリがキャッシュ内にない場合、`userprofile` コンテキスト変数は作成されません。 API Management は、`choose` 制御フロー ポリシーを使用して、検索が成功したかどうかを確認します。
 
 ```xml
 <choose>
@@ -74,7 +74,7 @@ variable-name="userprofile" />
 </choose>
 ```
 
-`userprofile` コンテキスト変数が存在しない場合、取得するための HTTP 要求を作成する必要があります。
+`userprofile` コンテキスト変数が存在しない場合、API Management は、それを取得するための HTTP 要求を作成する必要があります。
 
 ```xml
 <send-request
@@ -91,7 +91,7 @@ variable-name="userprofile" />
 </send-request>
 ```
 
-`enduserid` を使用して、ユーザー プロファイル リソースに対する URL を作成します。 応答が返されたら、応答から本文テキストを取得し、コンテキスト変数に格納できます。
+API Management は、`enduserid` を使用して、ユーザー プロファイル リソースの URL を作成します。 API Management に応答が返されたら、API Management は、応答から本文テキストを取得し、コンテキスト変数に格納します。
 
 ```xml
 <set-variable
@@ -99,7 +99,7 @@ variable-name="userprofile" />
     value="@(((IResponse)context.Variables["userprofileresponse"]).Body.As<string>())" />
 ```
 
-同じユーザーが別の要求を行ったときに、この HTTP 要求を再度作成しなくて済むように、キャッシュにユーザー プロファイルを格納できます。
+同じユーザーが別の要求を行ったときに、API Management でこの HTTP 要求を再作成しなくてもすむように、ユーザー プロファイルはキャッシュに格納できます。
 
 ```xml
 <cache-store-value
@@ -107,7 +107,7 @@ variable-name="userprofile" />
     value="@((string)context.Variables["userprofile"])" duration="100000" />
 ```
 
-最初の取得で使用したのと同じキーを使用してキャッシュに値を格納できます。 値を格納する期間は、情報が変更される頻度と、古くなった情報をユーザーがどの程度許容できるかに基づいて決定する必要があります。 
+API Management が値をキャッシュに格納するときに使用するのは、API Management が最初の取得で使用したキーと同じものです。 API Management が値を格納する期間は、情報が変更される頻度と、古くなった情報をユーザーがどの程度許容できるかに基づいて決定する必要があります。 
 
 キャッシュからの取得はプロセス外のネットワーク要求であり、要求にかかる時間が数十ミリ秒増える可能性がある点に注意が必要です。 ユーザー プロファイル情報を特定する際に、データベース クエリの実行や複数のバックエンドからの情報集計が必要になるために長い時間がかかる場合は、キャッシュから取得する方がメリットがあります。
 
@@ -120,7 +120,7 @@ variable-name="userprofile" />
     to="@((string)context.Variables["userprofile"])" />
 ```
 
-ここでは、トークンに引用符を含め、置換が実行されなかった場合も、応答が引き続き有効な JSON となるようにしています。 これは、主にデバッグを容易にするための措置です。
+ここでは、トークンに引用符を含めることができ、置換が実行されなかった場合も、応答が引き続き有効な JSON となります。  
 
 ここまでのすべての手順を 1 つにすると、最終的には次のようなポリシーが完成します。
 
@@ -137,7 +137,7 @@ variable-name="userprofile" />
           key="@("userprofile-" + context.Variables["enduserid"])"
           variable-name="userprofile" />
 
-        <!-- If we don’t find it in the cache, make a request for it and store it -->
+        <!-- If API Management doesn’t find it in the cache, make a request for it and store it -->
         <choose>
             <when condition="@(!context.Variables.ContainsKey("userprofile"))">
                 <!-- Make HTTP request to get user profile -->
@@ -176,14 +176,14 @@ variable-name="userprofile" />
 </policies>
 ```
 
-このようなキャッシュ アプローチは、主に、1 つのページとして表示できるように HTML がサーバー側で構成されている Web サイトで使用されます。 ただし、クライアントがクライアント側での HTTP キャッシュを実行できない API や、クライアントにその役割を負わせたくない場合にも役立ちます。
+このようなキャッシュ アプローチは、主に、1 つのページとして表示できるように HTML がサーバー側で構成されている Web サイトで使用されます。 これは、クライアントがクライアント側での HTTP キャッシュを実行できない API や、クライアントにその役割を負わせたくない場合にも役立ちます。
 
 同種のフラグメント キャッシュは、Redis キャッシュ サーバーを使用してバックエンド Web サーバーで実行することもできます。ただし、キャッシュされたフラグメントがプライマリ応答とは別のバックエンドから取得される場合は、API Management サービスを使用して実施する方が便利です。
 
 ## <a name="transparent-versioning"></a>透過的なバージョン管理
-API の複数の実装バージョンを同時にサポートすることはよくあります。 開発、テスト、運用など複数の環境をサポートするためであることもあれば、API コンシューマーが新しいバージョンに移行するための期間を設けて以前のバージョンの API をサポートする場合もあります。 
+API の複数の実装バージョンを同時にサポートすることはよくあります。 その目的は、たとえば、さまざまな環境 (開発、テスト、運用など) をサポートすることだったり、API コンシューマーが新しいバージョンに移行するための期間を設けて、以前のバージョンの API をサポートすることだったりします。 
 
-クライアントの開発者が URL を `/v1/customers` から `/v2/customers` に変更せずにこの状況に対処する方法の 1 つとして、使用したい API バージョンをコンシューマーのプロファイル データに格納し、適切なバックエンド URL を呼び出すというアプローチがあります。 特定のクライアントを呼び出すための適切なバックエンド URL を調べるには、いくつかの構成データをクエリする必要があります。 この構成データをキャッシュすることで、検索を実行する際のパフォーマンスの低下を最小限に抑えることができます。
+クライアントの開発者が URL を `/v1/customers` から `/v2/customers` に変更せずに、この状況に対処する方法の 1 つとして使用したい API バージョンをコンシューマーのプロファイル データに格納し、適切なバックエンド URL を呼び出すというアプローチがあります。 特定のクライアントを呼び出すための適切なバックエンド URL を調べるには、いくつかの構成データに対してクエリを実行する必要があります。 この構成データをキャッシュすることで、API Management は、検索を実行する際のパフォーマンスの低下を最小限に抑えることができます。
 
 最初の手順では、目的のバージョンを構成するために使用される識別子を特定します。 この例では、バージョンを製品のサブスクリプション キーに関連付けることにしました。 
 
@@ -191,7 +191,7 @@ API の複数の実装バージョンを同時にサポートすることはよ�
 <set-variable name="clientid" value="@(context.Subscription.Key)" />
 ```
 
-キャッシュの検索を実行し、目的のクライアント バージンが既に取得されているかどうかを確認します。
+API Management は、キャッシュの検索を実行し、目的のクライアント バージンが既に取得されているかどうかを確認します。
 
 ```xml
 <cache-lookup-value
@@ -199,14 +199,14 @@ key="@("clientversion-" + context.Variables["clientid"])"
 variable-name="clientversion" />
 ```
 
-次に、キャッシュ内に見つからないかどうかを確認します。
+次に、API Management は、それがキャッシュで見つからなかったかどうかを確認します。
 
 ```xml
 <choose>
     <when condition="@(!context.Variables.ContainsKey("clientversion"))">
 ```
 
-見つからなかった場合は、取得します。
+見つからなかった場合、API Management はそれを取得します。
 
 ```xml
 <send-request
@@ -251,7 +251,7 @@ variable-name="clientversion" />
     <set-variable name="clientid" value="@(context.Subscription.Key)" />
     <cache-lookup-value key="@("clientversion-" + context.Variables["clientid"])" variable-name="clientversion" />
 
-    <!-- If we don’t find it in the cache, make a request for it and store it -->
+    <!-- If API Management doesn’t find it in the cache, make a request for it and store it -->
     <choose>
         <when condition="@(!context.Variables.ContainsKey("clientversion"))">
             <send-request mode="new" response-variable-name="clientconfiguresponse" timeout="10" ignore-error="true">
@@ -277,7 +277,3 @@ variable-name="clientversion" />
 
 ## <a name="summary"></a>まとめ
 Azure API Management のキャッシュを使用すると、あらゆる種類のデータを格納できるため、受信要求の処理方法に影響を与える可能性のある構成データに効率よくアクセスできます。 また、データ フラグメントを格納し、バックエンド API から返された応答を補強することもできます。
-
-## <a name="next-steps"></a>次のステップ
-これらのポリシーによって可能になった別のシナリオがある場合や、実現したいが現時点では不可能だと感じているシナリオがある場合は、このトピック用の Disqus スレッドでご意見をお寄せください。
-

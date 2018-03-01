@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.openlocfilehash: 3187939fa813f941c2fe12a359df474a6c487c71
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 2f62de428d1915b1e070350a2837f24c3486f8c7
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
-Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 このアプリは、Azure、ソブリン クラウド、および Azure Stack でホストされているストレージ アカウントに接続できます。
+Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 このアプリは、Azure、National Clouds、および Azure Stack でホストされているストレージ アカウントに接続できます。
 
 このガイドでは、Storage Explorer で確認されている一般的な問題の解決方法を紹介しています。
 
@@ -59,7 +59,7 @@ Azure Active Directory (AAD) のアカウントのみがサポートされてい
 
 6. Storage Explorer を開き、**[編集]** > **[SSL 証明書]** > **[証明書のインポート]** の順にクリックし、ファイル ピッカーを使用して、作成した .cer ファイルを検索して選択し、開きます。
 
-上記の手順で自己署名証明書が見つからない場合は、フィードバック ツールを使用して Microsoft にお問い合わせください。
+前述の手順で自己署名証明書が見つからない場合は、フィードバック ツールを使用して Microsoft にお問い合わせください。
 
 ### <a name="unable-to-retrieve-subscriptions"></a>サブスクリプションを取得できない
 
@@ -116,7 +116,7 @@ Azure Active Directory (AAD) のアカウントのみがサポートされてい
     - ~/.config/StorageExplorer (Linux の場合)
 
 > [!NOTE]
->  これらのファイルを削除すると、すべての資格情報を再入力する必要があります。
+>  前述のファイルを削除した後は、アカウントに再びサインインする必要があります。
 
 ## <a name="proxy-issues"></a>プロキシの問題
 
@@ -173,15 +173,23 @@ SAS URL を使用してサービスに接続し、上記のエラーが発生す
 
 - SAS URL がアクセス ポリシーに基づいている場合は、このアクセス ポリシーが失効されていないかを確認します。
 
-無効な SAS URL を誤ってアタッチし、デタッチできない場合は、次の手順を実行します。
+無効な SAS URL を使用して誤ってアタッチし、デタッチできない場合は、次の手順を実行します。
 1.  Storage Explorer を実行している場合は、F12 キーを押して開発者ツール ウィンドウを開きます。
 2.  [アプリケーション] タブをクリックし、ローカル記憶域をクリックし、左側のツリーで file:// をクリックします。
-3.  問題がある SAS URI のサービスの種類と関連付けられているキーを見つけます。 たとえば、不適切な SAS URI が BLOB コンテナーの URI の場合は、"StorageExplorer_AddStorageServiceSAS_v1_blob" というキーを探します。
+3.  問題がある SAS URI のサービスの種類と関連付けられているキーを見つけます。 たとえば、BLOB コンテナーの SAS URI が不適切である場合は、`StorageExplorer_AddStorageServiceSAS_v1_blob` というキーを探します。
 4.  キーの値は JSON 配列にする必要があります。 不適切な URI に関連付けられたオブジェクトを見つけて削除します。
 5.  Ctrl キーを押しながら R キーを押して、Storage Explorer をリロードします。
 
+## <a name="linux-dependencies"></a>Linux の依存関係
 
-## <a name="next-steps"></a>次のステップ
+Ubuntu 16.04 以外の Linux ディストリビューションの場合、いくつかの依存関係を手動でインストールすることが必要な場合があります。 一般に、次のパッケージが必要です。
+* libgconf-2-4
+* libsecret
+* 最新の GCC
+
+ご使用のディストリビューションによっては、他のパッケージのインストールも必要な場合があります。 Storage Explorer の[リリース ノート](https://go.microsoft.com/fwlink/?LinkId=838275&clcid=0x409)には、一部のディストリビューションでの具体的な手順が掲載されています。
+
+## <a name="next-steps"></a>次の手順
 
 上記の方法で問題が解決しなかった場合は、フィードバック ツールを使用してメールでお問い合わせください。その際は Azure サポートから問題解決のご連絡を差し上げられるように、問題についてできる限り詳しくご記入ください。
 

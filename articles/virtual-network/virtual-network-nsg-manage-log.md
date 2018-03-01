@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/31/2017
 ms.author: jdial
-ms.openlocfilehash: 552f37dd704de25159bc0f0ad34fdae9ed8b73f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6beb9ae1b64e27df0a4eefefd592c7850efc7d2d
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="log-analytics-for-network-security-groups-nsgs"></a>ネットワーク セキュリティ グループ (NSG) のためのログ分析
 
@@ -46,7 +46,7 @@ NSG に対して、以下の診断ログ カテゴリを有効にできます。
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-ポータルを使用してログを有効にするには、[ポータル](https://portal.azure.com)にログインします。 **[その他のサービス]** をクリックし、*ネットワーク サービス グループ*を入力します。 ログを有効にする NSG を選択します。 コンピューティング以外のリソースに対する手順については、[ポータルでの診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)に関する記事をご覧ください。 **[NetworkSecurityGroupEvent]** と **[NetworkSecurityGroupRuleCounter]** のいずれかまたは両方のログ カテゴリを選択します。
+ポータルを使用してログを有効にするには、[ポータル](https://portal.azure.com)にログインします。 **[All services]\(すべてのサービス\)** をクリックし、"*ネットワーク セキュリティ グループ*"を入力します。 ログを有効にする NSG を選択します。 コンピューティング以外のリソースに対する手順については、[ポータルでの診断ログの有効化](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)に関する記事をご覧ください。 **[NetworkSecurityGroupEvent]** と **[NetworkSecurityGroupRuleCounter]** のいずれかまたは両方のログ カテゴリを選択します。
 
 ### <a name="powershell"></a>PowerShell
 

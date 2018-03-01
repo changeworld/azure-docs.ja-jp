@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 01/25/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: b2fc8a622549a9858c6c769a7e648fe07a3d01c1
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2cb32ddc67060d9860d172b90cc399622c52b04b
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Azure CLI を使用した仮想ネットワークの作成
 
@@ -81,7 +81,7 @@ az vm create \
   --no-wait
 ```
 
-仮想ネットワークがリソース グループ内に存在し、コマンドでは仮想ネットワークやサブネットが指定されていないため、Azure では自動的に、*myVirtualNetwork* 仮想ネットワークの*既定*のサブネットに仮想マシンを作成します。 *既定*のサブネットで使用できる最初のアドレスは 10.0.0.4 なので、Azure DHCP はこれを仮想マシンに自動的に割り当てました。 仮想マシンを作成する場所は、仮想ネットワークが存在する場所と同じ場所にする必要があります。 この記事では同じになっていますが、仮想マシンは、該当の仮想マシンと同じリソース グループ内に配置する必要はありません。
+仮想ネットワークがリソース グループ内に存在し、コマンドでは仮想ネットワークやサブネットが指定されていないため、Azure では自動的に、*myVirtualNetwork* 仮想ネットワークの*既定*のサブネットに仮想マシンを作成します。 *既定*のサブネットで使用できる最初のアドレスは 10.0.0.4 なので、Azure DHCP はこれを仮想マシンに自動的に割り当てました。 仮想マシンを作成する場所は、仮想ネットワークが存在する場所と同じ場所にする必要があります。 この記事では同じになっていますが、仮想マシンは、該当の仮想ネットワークと同じリソース グループ内に配置する必要はありません。
 
 2 番目の仮想マシンを作成します。 また、既定では、Azure は*既定*のサブネットにこの仮想マシンを作成します。
 

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/31/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: 75a8f521135757ceb99cb0086f331c35827e4800
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d96e2e6767ca01c8c16403a8846e3ab9d16796bc
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 Azure Stack には、少数の Azure Stack サービスやテナント VM に割り当てられた外部からアクセス可能なパブリック IP アドレスを使用するパブリック インフラストラクチャ ネットワークが存在します。 Azure Stack のデプロイ中に、これらの Azure Stack パブリック インフラストラクチャ エンドポイントの適切な DNS 名を持つ PKI 証明書が必要です。 この記事では、次の項目に関する情報を提供します。
@@ -33,7 +33,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 ## <a name="certificate-requirements"></a>証明書の要件
 次の一覧では、Azure Stack をデプロイするために必要な証明書の要件について説明します。 
 - 証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関が使用されている場合は、Microsoft の信頼されたルート機関プログラムの一部として基本オペレーティング システム イメージに含まれている必要があります。 完全な一覧は、https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca で見つけることができます。 
-- この証明書は、サブジェクトの別名 (SAN) フィールドにすべての名前空間を含む 1 つのワイルドカード証明書にすることができます。 あるいは、必要な場所にストレージや Key Vault などのエンドポイント用のワイルドカードを使用した個々の証明書を使用できます。 
+- この証明書は、サブジェクトの別名 (SAN) フィールドにすべての名前空間を含む 1 つのワイルドカード証明書にすることができます。 あるいは、必要な場所に acs や Key Vault などのエンドポイント用のワイルド カードを使用した個々の証明書を使用できます。 
 - 証明書署名アルゴリズムを SHA1 にすることはできません。より強力にする必要があります。 
 - Azure Stack のインストールには公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 
 - 証明書 pfx ファイルの "Key Usage" フィールドには、"Digital Signature" と "KeyEncipherment" の値が含まれている必要があります。

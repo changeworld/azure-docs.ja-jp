@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 10/13/2017
 ms.author: pajosh;markgal;trinadhk; sogup
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 509e891207d1469ed244eab4512ec66420284fd5
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 4a1a3c5eb5550967e0a0e045ec508a86cd80ee03
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="back-up-and-restore-encrypted-virtual-machines-with-azure-backup"></a>暗号化された仮想マシンを Azure Backup でバックアップおよび復元する
 この記事では、Azure Backup を使用して仮想マシン (VM) をバックアップおよび復元する手順を紹介します。 また、サポートされるシナリオ、前提条件のほか、エラーが発生した場合のトラブルシューティングの手順についても、詳しく説明します。
@@ -48,9 +48,9 @@ ms.lasthandoff: 12/21/2017
 次の手順を使用して、バックアップ目標の設定、ポリシーの定義、項目の構成、バックアップのトリガーを行います。
 
 ### <a name="configure-backup"></a>バックアップの構成
-1. Recovery Services コンテナーが既に開かれている場合は、次の手順に進みます。 Recovery Services コンテナーが開かれていない場合は、Azure Portal で **[ハブ]** メニューの **[参照]** を選択します。
+1. Recovery Services コンテナーが既に開かれている場合は、次の手順に進みます。 Recovery Services コンテナーを開いていなくても、Azure Portal にログイン済みの場合は、**[すべてのサービス]** を選択します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 リソース ボックスに「 **Recovery Services**」と入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 リソース ボックスに「 **Recovery Services**」と入力します。
 
    b. 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Recovery Services コンテナー]**が表示されたら、それを選択します。
 
@@ -98,7 +98,7 @@ VM の暗号化を後で有効にする VM が Recovery Services コンテナー
 
 ## <a name="provide-permissions-to-backup"></a>Backup にアクセス許可を付与する
 キー コンテナーへのアクセス、および暗号化された VM のバックアップ実行のための適切なアクセス許可を Backup に付与するには、次の手順に従います。
-1. **[その他のサービス]** を選択して、"**キー コンテナー**" を検索します。
+1. **[すべてのサービス]** を選択して、「**キー コンテナー**」を検索します。
 
     ![キー コンテナー](./media/backup-azure-vms-encryption/search-key-vault.png)
     

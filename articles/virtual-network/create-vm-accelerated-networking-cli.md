@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: c051fec3369ef0d309ecf6c68b17272bb396eeec
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e4c875d07905b56c0d3eb346c839f7a4917531de
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
@@ -48,8 +48,8 @@ ms.lasthandoff: 02/09/2018
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 * **Ubuntu 16.04**: 4.11.0-1013 以上のカーネル バージョン
 * **SLES SP3**: 4.4.92-6.18 以上のカーネル バージョン
-* **RHEL**: 7.4.2017120423 以上のカーネル バージョン
-* **CentOS**: 7.4.20171206 以上のカーネル バージョン
+* **RHEL 7.4**: 7.4.2017120423 以上のカーネル バージョン
+* **CentOS 7.4**: 7.4.20171206 以上のカーネル バージョン
 
 ## <a name="supported-vm-instances"></a>サポートされている VM インスタンス
 高速ネットワークは、4 つ以上の vCPU を持つ、コンピューティングに最適化された多くの汎用のインスタンス サイズでサポートされています。 ハイパースレッディングをサポートする D/DSv3 や E/ESv3 などのインスタンスでは、8 以上の vCPU を持つ VM インスタンスで高速ネットワークがサポートされています。  D/DSv2、D/DSv3、E/ESv3、F/Fs/Fsv2 および Ms/Mms のシリーズがサポートされています。 

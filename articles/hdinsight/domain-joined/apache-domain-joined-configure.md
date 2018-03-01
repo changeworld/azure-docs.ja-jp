@@ -13,17 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/24/2018
+ms.date: 02/15/2018
 ms.author: saurinsh
-ms.openlocfilehash: 6284b246c071fb99a8b47845aca34b6262e5b856
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: b4d71eeb0aab75e67e851f867f194ed7578d0d1c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-domain-joined-hdinsight-sandbox-environment"></a>ドメイン参加済み HDInsight サンドボックス環境を構成する
 
-Azure HDInsight クラスターとスタンドアロンの Active Directory および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップし、強力な認証機能と豊富なロールベースのアクセス制御 (RBAC) ポリシーを活用する方法について説明します。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](apache-domain-joined-introduction.md)に関するページを参照してください。
+Azure HDInsight クラスターとスタンドアロンの Active Directory および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップし、強力な認証機能と豊富なロールベースのアクセス制御 (RBAC) ポリシーを活用する方法について説明します。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](apache-domain-joined-introduction.md)に関するページを参照してください。 
+
+> [!IMPORTANT]
+> 既定では、この設定は Azure Storage アカウントでのみ使用できます。 Azure Data Lake Store で使用するには、Active Directory を新しい Azure Active Directory と同期します。
 
 ドメイン参加済み HDInsight クラスターではない場合は、各クラスターで使うことができるのは Hadoop HTTP ユーザー アカウントと SSH ユーザー アカウントだけです。  マルチユーザー認証は次のものを使って実現できます。
 
@@ -40,6 +43,7 @@ Azure HDInsight クラスターとスタンドアロンの Active Directory お�
     - HDInsight クラスターの作成
 
 > [!IMPORTANT]
+> 
 > ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
 
 ## <a name="prerequisite"></a>前提条件

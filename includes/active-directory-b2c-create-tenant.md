@@ -1,4 +1,4 @@
-**[新規]** をクリックします。 **[Marketplace を検索]** フィールドに「`Azure Active Directory B2C`」と入力します。
+**[リソースの作成]** をクリックします。 **[Marketplace を検索]** フィールドに「`Azure Active Directory B2C`」と入力します。
 
 ![[追加] ボタンを強調表示したところ ([Marketplace を検索] フィールドに「Azure Active Directory B2C」と入力)](./media/active-directory-b2c-create-tenant/find-azure-ad-b2c.png)
 
@@ -12,7 +12,7 @@ Azure Active Directory B2C の詳細が表示されます。 新しい Azure Act
 
 ![各フィールドにサンプル テキストを使用して Azure AD B2C テナントを作成](./media/active-directory-b2c-create-tenant/create-new-b2c-tenant.png)
 
-| 設定      | 値の例  | Description                                        |
+| Setting      | 値の例  | [説明]                                        |
 | ------------ | ------- | -------------------------------------------------- |
 | **組織名** | Contoso | 組織の名前。 | 
 | **初期ドメイン名** |  ContosoB2CTenant | B2C テナントのドメイン名。 既定では、初期ドメイン名に .onmicrosoft.com が含まれます。テスト テナントを作成している場合は、運用環境とは異なる名前を選択してください (ContosoB2CTesting など)。 |

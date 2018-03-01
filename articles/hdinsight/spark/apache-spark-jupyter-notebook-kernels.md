@@ -17,11 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/11/2017
 ms.author: nitinme
-ms.openlocfilehash: b561352d702d1c5a415ebebc253869b8a56d68d8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 2be4477528c9109151c4737eabc16741cc020ce8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
 
@@ -35,7 +35,7 @@ HDInsight の Spark クラスターには、アプリケーションをテスト
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight での Apache Spark クラスター。 手順については、 [Azure HDInsight での Apache Spark クラスターの作成](apache-spark-jupyter-spark-sql.md)に関するページを参照してください。
+* HDInsight での Apache Spark クラスター。 手順については、「 [Create Apache Spark clusters in Azure HDInsight (Azure HDInsight での Apache Spark クラスターの作成)](apache-spark-jupyter-spark-sql.md)」を参照してください。
 
 ## <a name="create-a-jupyter-notebook-on-spark-hdinsight"></a>Spark HDInsight での Jupyter Notebook の作成
 
@@ -80,7 +80,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    
     次の表は、カーネルで使用できるさまざまなマジックを一覧にしたものです。
 
-   | マジック | 例 | 説明 |
+   | マジック | 例 | [説明] |
    | --- | --- | --- |
    | help |`%%help` |利用できるすべてのマジック、その例と説明から構成されるテーブルを生成します。 |
    | info |`%%info` |現在の Livy エンドポイントのセッション情報を出力します。 |
@@ -88,7 +88,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
    | sql |`%%sql -o <variable name>`<br> `SHOW TABLES` |sqlContext に対して Hive クエリを実行します。 `-o` パラメーターが渡される場合、クエリの結果は、 [Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化されます。 |
    | local |`%%local`<br>`a=1` |後続行のすべてのコードがローカルで実行されます。 使用しているカーネルに関係なく、コードは有効な Python2 コードである必要があります。 したがって、Notebook の作成時に **PySpark3** または **Spark** カーネルを選択している場合でも、`%%local` マジックをセルで使用する場合、そのセルには、有効な Python2 コードのみが含まれている必要があります。 |
    | ログ |`%%logs` |現在の Livy セッションのログを出力します。 |
-   | 削除 |`%%delete -f -s <session number>` |現在 Livy エンドポイントの特定のセッションを削除します。 カーネル自体が開始したセッションを削除することはできないことに注意してください。 |
+   | 削除 |`%%delete -f -s <session number>` |現在 Livy エンドポイントの特定のセッションを削除します。 カーネル自体が開始したセッションを削除することはできません。 |
    | cleanup |`%%cleanup -f` |このノートブックのセッションを含む、現在 Livy エンドポイントのすべてのセッションを削除します。 強制フラグ -f は必須です。 |
 
    > [!NOTE]
@@ -100,7 +100,7 @@ Spark HDInsight クラスター上の Jupyter Notebook で新しいカーネル�
 ## <a name="parameters-supported-with-the-sql-magic"></a>%%sql マジックでサポートされるパラメーター
 `%%sql` マジックでは、クエリの実行時に受け取る出力の種類の制御に使用できる、さまざまなパラメーターがサポートされます。 次の表に、出力を示します。
 
-| パラメーター | 例 | 説明 |
+| パラメーター | 例 | [説明] |
 | --- | --- | --- |
 | -o |`-o <VARIABLE NAME>` |クエリの結果を [Pandas](http://pandas.pydata.org/) データフレームとして %%local Python コンテキストで永続化するには、このパラメーターを使用します。 データ フレーム変数の名前は、指定した変数の名前です。 |
 | パラメーター |`-q` |セルの視覚化をオフにするには、これを使用します。 セルのコンテンツを自動的に視覚化せず、単にデータ フレームとしてキャプチャする場合は、 `-q -o <VARIABLE>`を使用します。 (たとえば、`CREATE TABLE` ステートメントのような、SQL クエリを実行するために) 結果をキャプチャせずに視覚化をオフにする必要がある場合、`-o` 引数を指定せずに `-q` を使用します。 |
@@ -159,8 +159,7 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 ### <a name="scenarios"></a>シナリオ
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](apache-spark-eventhub-streaming.md)
+* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

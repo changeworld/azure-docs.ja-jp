@@ -1,9 +1,9 @@
 ---
-title: "Azure ExpressRoute 回線に使用する Network Performance Monitor の構成 (プレビュー) | Microsoft Docs"
-description: "ExpressRoute 回線に使用する NPM を構成します。 (プレビュー)"
+title: "Azure ExpressRoute 回線に使用する Network Performance Monitor の構成 | Microsoft Docs"
+description: "Azure ExpressRoute 回線に対してクラウドベースのネットワーク監視を構成します。"
 documentationcenter: na
 services: expressroute
-author: cherylmc
+author: ajaycode
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/31/2018
-ms.author: pareshmu
-ms.openlocfilehash: 269c2e8a7867521b34128980e33ed97aa7b62a04
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.date: 02/14/2018
+ms.author: agummadi
+ms.openlocfilehash: 4d5bf1550ecd5982e51c0ae8d3917102d2f7c253
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
-# <a name="configure-network-performance-monitor-for-expressroute-preview"></a>ExpressRoute に使用する Network Performance Monitor の構成 (プレビュー)
+# <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
 
 Network Performance Monitor (NPM) は、Azure クラウド デプロイとオンプレミス拠点 (支社など) との間の接続性を監視するクラウドベースのネットワーク監視ソリューションです。 NPM は、Microsoft Operations Management Suite (OMS) に含まれています。 新たに ExpressRoute 用の拡張機能が追加され、プライベート ピアリングを使用するように構成された ExpressRoute 回線上のネットワーク パフォーマンスを監視できるようになりました。 ExpressRoute に対して NPM を構成することにより、特定して排除すべきネットワークの問題を検出することができます。
 
@@ -62,9 +62,15 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
 
 既に Network Performance Monitor を使用して他のオブジェクトやサービスを監視しており、かつワークスペースが既に、サポートされているいずれかのリージョンに存在する場合は、手順 1. と手順 2. を省略し、手順 3. で構成を始めてください。
 
-## <a name="configure"></a>手順 1: (ExpressRoute 回線にリンクされた VNET を含んだサブスクリプションに) ワークスペースを作成する
+## <a name="configure"></a>手順 1. ワークスペースを作成する
+
+ExpressRoute 回線への VNet リンクを含んだサブスクリプションにワークスペースを作成します。
 
 1. ExpressRoute 回線に VNET がピアリングされているサブスクリプションを [Azure Portal](https://portal.azure.com) で選択します。 **[Marketplace]** のサービス一覧で "Network Performance Monitor" を検索します。 検索結果で **[Network Performance Monitor]** をクリックしてそのページを開きます。
+
+>[!NOTE]
+>新しいワークスペースを作成するか、既存のワークスペースを使用することができます。  既存のワークスペースを使用する場合は、ワークスペースが新しいクエリ言語に移行されていることを確認する必要があります。 [詳細情報...](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-log-search-upgrade)
+>
 
   ![ポータル](.\media\how-to-npm\3.png)<br><br>
 2. **[Network Performance Monitor]** メイン ページの一番下にある **[作成]** をクリックして **[Network Performance Monitor - 新しいソリューションの作成]** ページを開きます。 **[OMS ワークスペース - ワークスペースを選択します]** をクリックしてワークスペース ページを開きます。 **[+ 新しいワークスペースの作成]** をクリックしてワークスペース ページを開きます。
@@ -79,29 +85,25 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
   >[!NOTE]
   >ExpressRoute 回線は、世界中のどこにあってもかまいません。ワークスペースと同じリージョンにある必要はありません。
   >
-
-
+  
   ![ワークスペース](.\media\how-to-npm\4.png)<br><br>
 4. 設定テンプレートを保存してデプロイするには、**[OK]** をクリックします。 テンプレートの検証後、**[作成]** をクリックしてワークスペースをデプロイします。
 5. ワークスペースがデプロイされたら、作成した **[NetworkMonitoring(<名前>)]** リソースに移動します。 設定を確認して、**[このソリューションにはさらに構成が必要です]** をクリックします。
 
   ![追加の構成](.\media\how-to-npm\5.png)
-6. **[ネットワーク パフォーマンス モニターへようこそ]** ページの **[代理トランザクションに TCP を使います]** を選択し、**[送信]** をクリックします。 TCP トランザクションは、接続の確立と切断にのみ使用されます。 これらの TCP 接続上でデータが送信されることはありません。
-
-  ![代理トランザクションに TCP を使用](.\media\how-to-npm\6.png)
 
 ## <a name="agents"></a>手順 2. エージェントをインストールして構成する
 
 ### <a name="download"></a>2.1. エージェントのセットアップ ファイルをダウンロードする
 
-1. 該当するリソースの **[ネットワーク パフォーマンス モニターの構成 - TCP のセットアップ] ページ**の **[OMS エージェントをインストールする]** セクションで、サーバーのプロセッサに対応するエージェントをクリックし、セットアップ ファイルをダウンロードします。
+1. リソースの **[ネットワーク パフォーマンス モニターの構成]** ページの **[共通設定]** タブに移動します。 **[OMS エージェントをインストールする]** セクションでサーバーのプロセッサに対応するエージェントをクリックし、セットアップ ファイルをダウンロードします。
 
   >[!NOTE]
   >エージェントは Windows Server (2008 SP1 以降) にインストールする必要があります。 Windows デスクトップ OS や Linux OS を使用した ExpressRoute 回線の監視はサポートされていません。 
   >
   >
 2. 次に、**[ワークスペース ID]** と **[主キー]** をメモ帳にコピーします。
-3. **[エージェントを構成する]** セクションで PowerShell スクリプトをダウンロードします。 この PowerShell スクリプトは、TCP トランザクションに必要なファイアウォール ポートを開くのに役立ちます。
+3. **[TCP プロトコルを使用して OMS エージェントを監視用に構成します]** セクションで、Powershell スクリプトをダウンロードします。 この PowerShell スクリプトは、TCP トランザクションに必要なファイアウォール ポートを開くのに役立ちます。
 
   ![PowerShell スクリプト](.\media\how-to-npm\7.png)
 

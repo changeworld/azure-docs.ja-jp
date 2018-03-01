@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: 0f26ce26b8b33274291c115ae136d124d79ed349
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: ca4566ced525f0cb732afc15d96d9ef73fd8cff5
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
 
@@ -79,7 +79,7 @@ Azure Active Directory (AAD) アプリケーションを設定し、アプリケ
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. **[新規]** > **[データ + ストレージ]** > **[SQL Database]** の順に移動します。
+2. **[リソースの作成]** > **[データベース]** > **[SQL データベース]** に移動します。
 3. 新規または既存のサーバーに **Clinic** という名前の**空の**データベースを作成します。 Azure Portal でデータベースを作成する詳しい手順については、「[初めての Azure SQL Database](sql-database-get-started-portal.md)」を参照してください。
    
     ![空のデータベースの作成](./media/sql-database-always-encrypted-azure-key-vault/create-database.png)

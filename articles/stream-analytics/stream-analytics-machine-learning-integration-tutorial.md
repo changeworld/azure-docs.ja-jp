@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
 ms.author: samacha
-ms.openlocfilehash: 243ee799d2cddb1baf5b8046eee6eaf182463d2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d06681c687f5cd3eb10d375499266c7e78be1558
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行
 この記事では、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
@@ -57,7 +57,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Storage コンテナーを作成して CSV 入力ファイルをアップロードする
 この手順では、GitHub から入手できるファイルなど、あらゆる CSV ファイルを使用できます。
 
-1. Azure Portal で、**[新規]** &gt; **[ストレージ]** &gt; **[ストレージ アカウント]** の順にクリックします。
+1. Azure Portal で、**[リソースの作成]** &gt; **[Storage]** &gt; **[ストレージ アカウント]** の順にクリックします。
 
    ![新しいストレージ アカウントを作成する](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 10/11/2017
 
 1. [Azure ポータル](https://portal.azure.com)にアクセスします。  
 
-2. **[新規]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。 
+2. **[リソースの作成]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。 
 
    ![新しい Stream Analytics ジョブに至る Azure Portal のパス](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
    
@@ -154,7 +154,7 @@ ms.lasthandoff: 10/11/2017
     * **[ソースの種類]**: **[データ ストリーム]** を選択します。
     * **[ソース]**: **[Blob Storage]** を選択します。
     * **[インポート オプション]**: **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。 
-    * **[ストレージ アカウント]**:  以前に作成したストレージ アカウントを選択します。
+    * **[ストレージ アカウント]**。 以前に作成したストレージ アカウントを選択します。
     * **[コンテナー]**。 以前に作成したコンテナー (`azuresamldemoblob`) を選択します。
     * **[イベントのシリアル化の形式]**。 **[CSV]** を選択します。
 
@@ -269,7 +269,7 @@ Azure Machine Learning 関数に関連するメトリックも表示できます
 * **[関数イベント]** は、要求内のイベントの数を示します。 既定では、Machine Learning Web サービスへの各要求には、最大 1,000 件のイベントが含まれています。  
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)

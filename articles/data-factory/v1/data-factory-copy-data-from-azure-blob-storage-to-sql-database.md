@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 41ead775c8ce1919d8c3813b58c8a4d648c8bc64
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e166e73ba45e229d8049738fa4a79f5dc117d806
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>チュートリアル: Data Factory を使用した Blob Storage から SQL Database へのデータのコピー
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ ms.lasthandoff: 01/23/2018
 このチュートリアルを実行するには、Azure ストレージ アカウントのアカウント名とアカウント キーが必要です。 Azure ストレージ アカウントの**アカウント名**と**アカウント キー**をメモしておきます。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューで **[More services (その他のサービス)]** を選択し、**[ストレージ アカウント]** を選択します。
+2. 左側のメニューの **[すべてのサービス]** をクリックし、**[ストレージ アカウント]** を選択します。
 
     ![参照 - ストレージ アカウント](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
 3. **[ストレージ アカウント]** ブレードで、このチュートリアルで使用する **Azure ストレージ アカウント**を選択します。
@@ -70,7 +70,7 @@ ms.lasthandoff: 01/23/2018
 ## <a name="collect-sql-server-database-user-names"></a>SQL サーバー、データベース、ユーザーの名前を収集する
 このチュートリアルを実行するには、Azure SQL サーバー名、データベース名、ユーザー名が必要です。 Azure SQL Database の**サーバー**、**データベース**、**ユーザー**の名前をメモしておきます。
 
-1. **Azure Portal** で、左側にある **[More services (その他のサービス)]** をクリックし、**[SQL データベース]** を選択します。
+1. **Azure Portal** で、左側にある **[すべてのサービス]** をクリックし、**[SQL データベース]** を選択します。
 2. **[SQL データベース]** ブレードで、このチュートリアルで使用する**データベース**を選択します。 **データベース名**をメモしておきます。  
 3. **[SQL データベース]** ブレードで、**[設定]** の **[プロパティ]** をクリックします。
 4. **[サーバー名]** と **[サーバー管理ログイン]** の値をメモしておきます。
@@ -79,7 +79,7 @@ ms.lasthandoff: 01/23/2018
 ## <a name="allow-azure-services-to-access-sql-server"></a>Azure サービスに SQL サーバーへのアクセスを許可する
 Data Factory サービスから Azure SQL サーバーにアクセスできるように、Azure SQL サーバーで **[Azure サービスへのアクセスを許可する]** の設定が**オン**になっていることを確認します。 この設定を確認して有効にするには、次の手順を実行します。
 
-1. 左側にある **[More services (その他のサービス)]** ハブをクリックし、**[SQL サーバー]** をクリックします。
+1. 左側にある **[すべてのサービス]** ハブをクリックし、**[SQL サーバー]** をクリックします。
 2. サーバーを選択し、**[設定]** の **[ファイアウォール]** をクリックします。
 3. **[ファイアウォールの設定]** ブレードの **[Azure サービスへのアクセスを許可する]** で **[オン]** をクリックします。
 4. **[X]**をクリックしてすべてのブレードを閉じます。

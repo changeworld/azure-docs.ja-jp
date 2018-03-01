@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: b190fea06ffc2406d781c7edad091f097cca9c2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82915a92464f240591777595e878a534cde0136c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Power BI を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
 
@@ -43,7 +43,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 - 次の要件に対応するために、[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するチュートリアルを完了しておきます。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
-  - Azure IoT ハブにメッセージを送信するクライアント アプリケーション。
+  - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
 - Power BI アカウント  ([Power BI を無料で試す](https://powerbi.microsoft.com/))
 
 [!INCLUDE [iot-hub-get-started-create-consumer-group](../../includes/iot-hub-get-started-create-consumer-group.md)]
@@ -52,7 +52,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 
 ### <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 
-1. Azure Portal で、[新規]、[モノのインターネット]、[Stream Analytics ジョブ] の順にクリックします。
+1. [Azure Portal](https://portal.azure.com) で、**[リソースの作成]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。
 1. 次の情報をジョブに入力します。
 
    **[ジョブ名]**: ジョブの名前。 名前はグローバルに一意である必要があります。
@@ -107,7 +107,7 @@ Azure IoT ハブが受信したリアルタイム センサー データを Powe
 1. **[ジョブ トポロジ]** で **[クエリ]** をクリックします。
 1. `[YourInputAlias]` をジョブの入力エイリアスに置き換えます。
 1. `[YourOutputAlias]` をジョブの出力エイリアスに置き換えます。
-1. **[Save]**をクリックします。
+1. **[Save]** をクリックします。
 
    ![Azure で Stream Analytics ジョブにクエリを追加する](media/iot-hub-live-data-visualization-in-power-bi/5_add-query-stream-analytics-job-azure.png)
 
@@ -153,7 +153,7 @@ Stream Analytics ジョブで、**[開始]** > **[現在]** > **[開始]** の�
 
 Microsoft は [Power BI のモバイル アプリ](https://powerbi.microsoft.com/en-us/documentation/powerbi-power-bi-apps-for-mobile-devices/)も提供しています。これを使用すると、モバイル デバイスで Power BI のダッシュボードとレポートを表示して操作できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Power BI を使用して、Azure IoT ハブからのリアルタイム センサー データを視覚化することができました。
 このほかにも、Azure IoT Hub からのデータを視覚化する方法があります。 [Azure Web Apps を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する方法](iot-hub-live-data-visualization-in-web-apps.md)に関するページを参照してください。

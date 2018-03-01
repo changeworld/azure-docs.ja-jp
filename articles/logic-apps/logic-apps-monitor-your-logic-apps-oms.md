@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 8da2bc9645e432ddf0e9f627c7b5e30c44fd74b6
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 2f9f27dc74348909b89941c2bb17ccdf610dba33
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Operations Management Suite (OMS) と Log Analytics を使用してロジック アプリの実行を監視して洞察を得る
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 10/20/2017
 
 ## <a name="turn-on-diagnostics-logging-when-creating-logic-apps"></a>ロジック アプリの作成時に診断ログの記録をオンにする
 
-1. [Azure Portal](https://portal.azure.com) で、ロジック アプリを作成します。 **[新規]** > **[Enterprise Integration]** > **[Logic App]** > **[作成]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) で、ロジック アプリを作成します。 **[リソースの作成]** > **[エンタープライズ統合]** > **[ロジック アプリ]** を選択します。
 
    ![ロジック アプリを作成します](media/logic-apps-monitor-your-logic-apps-oms/find-logic-apps-azure.png)
 
@@ -152,7 +152,7 @@ ms.lasthandoff: 10/20/2017
 
      ![Azure Log Analytics - クエリ ビュー](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [B2B メッセージを監視する](../logic-apps/logic-apps-monitor-b2b-message.md)
 

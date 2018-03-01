@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: nitinme
-ms.openlocfilehash: bb5557eb0672b9ad137bc5817e47bf4f89e1c34d
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 7faa1fa1537dd71bdf0493d92f26ddda2ae59264
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>HDInsight における Apache Spark クラスターの既知の問題
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 11/29/2017
    
         yarn application –list
    
-    明示的に名前を指定せずに、Livy 対話型セッションによってジョブが開始された場合、既定のジョブ名は Livy です。Jupyter Notebook によって開始された Livy セッションでは、ジョブ名は remotesparkmagics_* で始まります。 
+    明示的な名前が指定されていない Livy 対話型セッションでジョブが開始された場合、既定のジョブ名は Livy になります。 Jupyter Notebook によって開始された Livy セッションの場合、ジョブ名は、remotesparkmagics_* で開始します。 
 3. 次のコマンドを実行して、これらのジョブを強制終了します。 
    
         yarn application –kill <Application ID>
@@ -69,13 +69,13 @@ hdiuser が spark-submit でジョブを送信すると、java.io.FileNotFoundEx
 
 **対応策:**
 
-代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)に関するページを参照してください。
+代わりに、Spark-HBase コネクタを使用する必要があります。 手順については、[Spark-HBase コネクタの使用方法](https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/)に関するページをご覧ください。
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter Notebook に関連する問題
 Jupyter Notebook に関連する既知の問題を以下に示します。
 
 ### <a name="notebooks-with-non-ascii-characters-in-filenames"></a>ファイル名での非 ASCII 文字の使用
-Spark HDInsight クラスターで使用できる Jupyter Notebook では、ファイル名に非 ASCII 文字を使用することはできません。 Jupyter UI を使用して、ファイル名に非 ASCII 文字が含まれたファイルをアップロードしようとすると、通知されずに失敗します (つまり、Jupyter でファイルのアップロード操作ができないわけではありませんが、明確なエラーがスローされるわけでもありません)。 
+Spark HDInsight クラスターで使用できる Jupyter Notebook では、ファイル名に非 ASCII 文字を使用することはできません。 Jupyter UI を使用して、ファイル名に非 ASCII 文字が含まれたファイルをアップロードしようとすると、通知されずに失敗します (つまり、Jupyter でファイルをアップロードできませんが、明確なエラーはスローされません)。 
 
 ### <a name="error-while-loading-notebooks-of-larger-sizes"></a>大きなサイズの Notebook の読み込み中のエラー
 大きなサイズの Notebook の読み込み中にエラー **`Error loading notebook`** が発生する場合があります。  
@@ -84,11 +84,11 @@ Spark HDInsight クラスターで使用できる Jupyter Notebook では、フ�
 
 このエラーが発生した場合、データが壊れたり失われたりしているわけではありません。  Notebook はディスク上の `/var/lib/jupyter`に残っているため、クラスターに SSH 接続し、Notebook にアクセスすることができます。 詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-SSH を使用してクラスターに接続したら、バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。 ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。  そこでは、Notebook の出力をクリアしてから再度保存して、Notebook のサイズを最小限に縮小できます。
+SSH を使用してクラスターに接続したら、バックアップとしてクラスターの Notebook をローカル コンピューター (SCP または WinSCP を使用) にコピーすることで、Notebook 内の重要なデータが失われるのを防ぐことができます。 ポート 8001 のヘッドノードへの SSH トンネルを使用すると、ゲートウェイを経由せずに Jupyter にアクセスできます。  そこでは、Notebook の出力をクリアしてからもう一度保存して、Notebook のサイズを最小限に縮小できます。
 
 今後このエラーが発生しないようにするには、次のベスト プラクティスを実行する必要があります。
 
-* Notebook のサイズを小さく保つことが重要です。 Jupyter に返送される、Spark ジョブからの出力は Notebook に保持されます。  Jupyter でのベスト プラクティスは一般に次のとおりです。大規模な RDD またはデータフレームに対して `.collect()` を実行することは避けます。RDD の内容を参照する場合は、出力が大きくなり過ぎないように `.take()` または `.sample()` の実行を検討します。
+* Notebook のサイズを小さく保つことが重要です。 Jupyter に返送される、Spark ジョブからの出力は Notebook に保持されます。  Jupyter でのベスト プラクティスは一般に次のとおりです。大規模な RDD またはデータフレームに対して `.collect()` を実行することは避けます。RDD の内容を参照する場合は、出力が大きくなりすぎないように `.take()` または `.sample()` の実行を検討します。
 * また、Notebook を保存する場合は、出力セルをすべてクリアしてサイズを縮小します。
 
 ### <a name="notebook-initial-startup-takes-longer-than-expected"></a>Notebook の初期スタートアップに予想より時間がかかる
@@ -99,7 +99,7 @@ Spark マジックを使用した Jupyter Notebook の最初のコード ステ�
 これは、最初のコード セルが実行されるタイミングのために発生します。 バック グラウンドで、これにより、セッション構成が開始され、Spark、SQL、および Hive コンテキストが設定されます。 これらのコンテキストが設定された後に、最初のステートメントが実行されるので、ステートメントの完了までに時間がかかるような印象を受けます。
 
 ### <a name="jupyter-notebook-timeout-in-creating-the-session"></a>Jupyter Notebook がセッションの作成中にタイムアウトする
-Spark クラスターがリソース不足になると、Jupyter Notebook の Spark カーネルと Pyspark カーネルは、セッションを作成する試行をタイムアウトにします。 
+Spark クラスターがリソース不足になると、Jupyter Notebook の Spark カーネルと PySpark カーネルは、セッションを作成する試行をタイムアウトにします。 
 
 **対応策:** 
 
@@ -115,8 +115,7 @@ Spark クラスターがリソース不足になると、Jupyter Notebook の Sp
 ### <a name="scenarios"></a>シナリオ
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](apache-spark-use-bi-tools.md)
 * [Spark と Machine Learning: HDInsight で Spark を使用して HVAC データを基に建物の温度を分析する](apache-spark-ipython-notebook-machine-learning.md)
-* [Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する](apache-spark-machine-learning-mllib-ipython.md)
-* [Spark ストリーミング: リアルタイム ストリーミング アプリケーションを作成するための HDInsight での Spark の使用](apache-spark-eventhub-streaming.md)
+* [Spark with Machine Learning: Use Spark in HDInsight to predict food inspection results (Spark と Machine Learning: HDInsight で Spark を使用して食品の検査結果を予測する)](apache-spark-machine-learning-mllib-ipython.md)
 * [Website log analysis using Spark in HDInsight (HDInsight での Spark を使用した Web サイト ログ分析)](apache-spark-custom-library-website-log-analysis.md)
 
 ### <a name="create-and-run-applications"></a>アプリケーションの作成と実行

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: f1b92c604e20198714e9697bf4d08b3f71f23ae3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5657df412b1f2b7d4d43d7551289620ae4d77de2
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -82,6 +82,18 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 - ドメイン ユーザーとしてサインオンしていない
 
     ![[Workplace Join for Windows (Windows の社内参加)]](./media/active-directory-device-registration-troubleshoot-windows-legacy/03.png)
+    
+    これが発生する理由はいくつかあります。
+    
+    1. サインインしているユーザーがドメイン ユーザーでない場合 (ローカル ユーザーなど)。 ダウンレベルのデバイスでのハイブリッド Azure AD 参加は、ドメイン ユーザーに対してのみサポートされています。
+    
+    2. 何らかの理由で Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 原因としては、Azure AD URL への送信ネットワーク接続の問題 (前提条件を確認してください) や、ユーザーに対して MFA が有効化/構成されていてもフェデレーション サーバーで WIAORMUTLIAUTHN が構成されていないこと (構成手順を確認してください) などが考えられます。 また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、Autoworkplace.exe では、自動的にトークンを取得できなくなっていることも考えられます。 
+    
+    3. 組織で Azure AD シームレス シングル サインオンを使用している場合、次の URL はデバイスの IE イントラネット設定に表示されません。
+    - https://autologon.microsoftazuread-sso.com
+    - https://aadg.windows.net.nsatc.net
+    
+    また、イントラネット ゾーンの [スクリプトを介したステータス バーの更新を許可する] 設定を有効にする必要があります。
 
 - クォータに達している
 
@@ -107,6 +119,6 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
   - ユーザーがデバイスの上限に達している。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ご不明な点がある場合は、[デバイス管理の FAQ](device-management-faq.md) をご覧ください。  

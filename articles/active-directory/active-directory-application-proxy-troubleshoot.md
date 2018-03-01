@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/14/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: H1Hack27Feb2017; it-pro
-ms.openlocfilehash: 4291d765bec94ca1edd50b8df0c414524f29fba2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6fcf360df6da36919c251bef0a8214deba6b5605
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="troubleshoot-application-proxy-problems-and-error-messages"></a>アプリケーション プロキシの問題とエラー メッセージのトラブルシューティング | Microsoft Docs
 発行されたアプリケーションへのアクセス中、またはアプリケーションの発行中にエラーが発生する場合は、Microsoft Azure AD アプリケーション プロキシが正しく機能しているかどうかを次のオプションで確認します。
@@ -68,7 +68,7 @@ Azure AD のトラブルシューティング ツールについて詳しくは�
 | 13016 - Azure AD が、エッジ トークンまたはアクセス Cookie に UPN がないため、ユーザーに代わって Kerberos チケットを取得できません。 | STS 構成の問題があります。 STS の UPN 要求の構成を修正してください。 |
 | 13019 - Azure AD が、次の一般 API エラーのため、ユーザーに代わって Kerberos チケットを取得できません。 | このイベントは、Azure AD とドメイン コントローラー サーバー間の構成が正しくないことや、両方のコンピューターに日付と時刻の構成の問題があることを示している場合があります。 ドメイン コントローラーが、Azure AD によって作成された Kerberos チケットを拒否しました。 Azure AD とバックエンド アプリケーション サーバーが正しく構成されていることを確認してください (特に SPN 構成)。 ドメイン コントローラーが Azure AD との信頼関係を確立できるように、Azure AD がドメイン コントローラーと同じドメインに参加しているドメインであることを確認してください。 Azure AD とドメイン コントローラーの日付と時刻の構成が同期されていることを確認してください。 |
 | 13020 - バックエンド サーバー SPN が定義されていないため、Azure AD がユーザーに代わって Kerberos チケットを取得できません。 | このイベントは、Azure AD とドメイン コントローラー サーバー間の構成が正しくないことや、両方のコンピューターに日付と時刻の構成の問題があることを示している場合があります。 ドメイン コントローラーが、Azure AD によって作成された Kerberos チケットを拒否しました。 Azure AD とバックエンド アプリケーション サーバーが正しく構成されていることを確認してください (特に SPN 構成)。 ドメイン コントローラーが Azure AD との信頼関係を確立できるように、Azure AD がドメイン コントローラーと同じドメインに参加しているドメインであることを確認してください。 Azure AD とドメイン コントローラーの日付と時刻の構成が同期されていることを確認してください。 |
-| 13022 - バックエンド サーバーが Kerberos 認証の試行に対して HTTP 401 エラーを返すため、Azure AD がユーザーを認証できません。 | このイベントは、Azure AD とバックエンド アプリケーション サーバー間の構成が正しくないことや、両方のコンピューターに日付と時刻の構成の問題があることを示している場合があります。 バックエンド サーバーが、Azure AD によって作成された Kerberos チケットを拒否しました。 Azure AD とバックエンド アプリケーション サーバーが正しく構成されていることを確認してください。 Azure AD とバックエンド アプリケーション サーバーの日付と時刻の構成が同期されていることを確認してください。 |
+| 13022 - バックエンド サーバーが Kerberos 認証の試行に対して HTTP 401 エラーを返すため、Azure AD がユーザーを認証できません。 | このイベントは、Azure AD とバックエンド アプリケーション サーバー間の構成が正しくないことや、両方のコンピューターに日付と時刻の構成の問題があることを示している場合があります。 バックエンド サーバーが、Azure AD によって作成された Kerberos チケットを拒否しました。 Azure AD とバックエンド アプリケーション サーバーが正しく構成されていることを確認してください。 Azure AD とバックエンド アプリケーション サーバーの日付と時刻の構成が同期されていることを確認してください。 詳細については、「[アプリケーション プロキシ用の Kerberos 制約付き委任構成のトラブルシューティング](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)」を参照してください。  |
 
 ## <a name="end-user-errors"></a>エンド ユーザーのエラー
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/04/2017
 ms.author: juliako
-ms.openlocfilehash: a24b73a93bddbeb5b56ddfdf604fa99faccea442
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 72b110cac8d4945c958d760ff98e2da2f2796b62
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="configure-postman-for-media-services-rest-api-calls"></a>Media Services REST API 呼び出し用の Postman の構成
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="configure-the-environment"></a>環境の構成 
 
-1. AMS チュートリアルで使用される環境変数を含む .json ファイルを作成します。 ファイルに **AzureMediaServices.postman_environment.json** という名前を付けます。 ファイルを開き、Postman 環境を定義するコードを[このコード リスト](postman-environment.md)から貼り付けます。 
+1. AMS チュートリアルで使用される環境変数を含む .json ファイルを作成します。 ファイルに名前を付けます (例: **AzureMediaServices.postman_environment.json**)。 ファイルを開き、Postman 環境を定義するコードを[このコード リスト](postman-environment.md)から貼り付けます。 
 2. **Postman** を開きます。
 3. 画面の右側で、**[Manage environment]/(環境の管理/)** オプションを選択します。
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="configure-the-collection"></a>コレクションの構成
 
-1. Media Services にファイルをアップロードするために必要なすべての操作を含む **Postman** コレクションが格納された .json ファイルを作成します。 ファイルに **AzureMediaServicesOperations.postman_collection.json** という名前を付けます。 ファイルを開き、**Postman** コレクションを定義するコードを[このコード リスト](postman-collection.md)から貼り付けます。
+1. Media Services にファイルをアップロードするために必要なすべての操作を含む **Postman** コレクションが格納された .json ファイルを作成します。 ファイルに名前を付けます (例: **AzureMediaServicesOperations.postman_collection.json**)。 ファイルを開き、**Postman** コレクションを定義するコードを[このコード リスト](postman-collection.md)から貼り付けます。
 2. **[インポート]** をクリックしてコレクション ファイルをインポートします。
 3. **AzureMediaServicesOperations.postman_collection.json** ファイルを選択します。
 

@@ -4,7 +4,7 @@ description: "この記事では、クラシック デプロイ モデルで作�
 services: virtual-machines-windows
 documentationcenter: 
 author: danielsollondon
-manager: jhubbard
+manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 7ccf99d7-7cce-4e3d-bbab-21b751ab0e88
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: f637e3c744d61f6fda755c162609d7cc9f4619c7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 3d3fdd8865a293c5e2f0df6a97910ac8e2a07d4c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 ## <a name="overview"></a>概要
@@ -61,7 +61,7 @@ DS* VM の場合、VM をホストする Virtual Network (VNET) を地域 VNET �
 
 ![RegionalVNET][1]
 
-地域 VNET に移行するためのマイクロソフト サポート チケットを提出できます。マイクロソフトは、変更を行い、地域 VNET への移行を完了して、AffinityGroup プロパティをネットワーク構成で変更します。 最初に PowerShell でネットワーク構成をエクスポートし、**VirtualNetworkSite** 要素の **AffinityGroup** プロパティを **Location** プロパティで置き換えます。 `Location = XXXX` を指定します。`XXXX` は Azure リージョンです。 次に、新しい構成をインポートします。
+地域 VNET に移行するには、Microsoft サポート チケットを提出します。 その後、マイクロソフトが変更を行います。 地域 Vnet への移行を完了するには、ネットワーク構成で AffinityGroup プロパティを変更します。 最初に PowerShell でネットワーク構成をエクスポートし、**VirtualNetworkSite** 要素の **AffinityGroup** プロパティを **Location** プロパティで置き換えます。 `Location = XXXX` を指定します。`XXXX` は Azure リージョンです。 次に、新しい構成をインポートします。
 
 たとえば、次のような VNET 構成について考えます。
 
@@ -197,7 +197,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     New-AzureStorageContainer -Name $containerName -Context $xioContext
 
 #### <a name="step-5-placing-os-vhd-on-standard-or-premium-storage"></a>手順 5. Standard または Premium Storage に OS VHD を配置する
-    #NOTE: Set up subscription and default storage account which will be used to place the OS VHD in
+    #NOTE: Set up subscription and default storage account which is used to place the OS VHD in
 
     #If you want to place the OS VHD Premium Storage Account
     Set-AzureSubscription -SubscriptionName $mysubscription -CurrentStorageAccount  $newxiostorageaccountname  
@@ -232,7 +232,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     $vmConfigsl = New-AzureVMConfig -Name $vmName -InstanceSize $newInstanceSize -ImageName $image  -AvailabilitySetName $availabilitySet  ` | Add-AzureProvisioningConfig -Windows ` -AdminUserName $userName -Password $pass | Set-AzureSubnet -SubnetNames $subnet | Set-AzureStaticVNetIP -IPAddress $ipaddr
 
     #Add Data and Log Disks to VM Config
-    #Note the size specified ‘-DiskSizeInGB 1023’, this will attach 2 x P30 Premium Storage Disk Type
+    #Note the size specified ‘-DiskSizeInGB 1023’, this attaches 2 x P30 Premium Storage Disk Type
     #Utilising the Premium Storage enabled Storage account
 
     $vmConfigsl | Add-AzureDataDisk -CreateNew -DiskSizeInGB 1023 -LUN 0 -HostCaching "ReadOnly"  -DiskLabel "DataDisk1" -MediaLocation "https://$newxiostorageaccountname.blob.core.windows.net/vhds/$vmName-data1.vhd"
@@ -316,7 +316,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
     $subnet = "Clients"
     $ipaddr = "192.168.0.41"
 
-    #This will need to be a new cloud service
+    #This needs to be a new cloud service
     $destcloudsvc = "danregsvcamsxio2"
 
     #Use to DS Series VM
@@ -342,7 +342,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 
 ## <a name="existing-deployments-that-do-not-use-always-on-availability-groups"></a>Always On 可用性グループを使用しない既存のデプロイ
 > [!NOTE]
-> 既存のデプロイの場合、最初にこのトピックの「 [前提条件](#prerequisites-for-premium-storage) 」セクションをご覧ください。
+> 既存のデプロイの場合、最初にこの記事の「[前提条件](#prerequisites-for-premium-storage)」セクションをご覧ください。
 >
 >
 
@@ -360,7 +360,7 @@ SQL Server が外部からアクセスされる場合、クラウド サービ�
 
 ## <a name="existing-deployments-that-use-always-on-availability-groups"></a>Always On 可用性グループを使用する既存のデプロイ
 > [!NOTE]
-> 既存のデプロイの場合、最初にこのトピックの「 [前提条件](#prerequisites-for-premium-storage) 」セクションをご覧ください。
+> 既存のデプロイの場合、最初にこの記事の「[前提条件](#prerequisites-for-premium-storage)」セクションをご覧ください。
 >
 >
 
@@ -524,7 +524,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 ##### <a name="disadvantages"></a>短所
 * SQL Server へのクライアントのアクセスによっては、SQL Server がアプリケーションに対して代替 DC で実行している場合、遅延が増加する可能性があります。
 * Premium Storage への VHD のコピーに長い時間がかかります。 これは、可用性グループにノードを保持するかどうかの決定に影響する可能性があります。 プライマリ ノードはトランザクション ログにレプリケートされないトランザクションを保持する必要があるため、移行が必要なときにログが大量に発生する処理を実行している場合は、このことを検討します。 トランザクション ログは非常に大きくなる可能性があります。
-* このシナリオで使用する Azure **Start-AzureStorageBlobCopy** コマンドレットは非同期です。 完了に対する SLA はありません。 コピーに要する時間は一定ではなく、キューでの待機に依存し、それはまた転送するデータの量に依存します。 したがって、第 2 のデータ センターにノードが 1 つだけある場合、コピーがテストより長くかかるときは、軽減手順を実行する必要があります。 これには次のアイデアが含まれます。
+* このシナリオで使用する Azure **Start-AzureStorageBlobCopy** コマンドレットは非同期です。 完了に対する SLA はありません。 コピーに要する時間は一定ではなく、キューでの待機に依存し、それはまた転送するデータの量に依存します。 したがって、第 2 のデータ センターにノードが 1 つだけある場合、コピーがテストより長くかかるときは、軽減手順を実行する必要があります。 これらの軽減手順には、次のアイデアが含まれます。
   * 合意されたダウンタイムでの移行の前に、HA に第 2 の SQL ノードを一時的に追加します。
   * Azure のスケジュールされたメンテナンスの時間外に移行を実行します。
   * クラスター クォーラムを正しく構成したことを確認します。
@@ -556,7 +556,7 @@ Always On の高可用性が期待どおりに機能することを確認する�
 ![Appendix1][11]
 
 ### <a name="vm"></a>VM:
-この例では、ELB から ILB への移行を示します。 ELB は ILB より前に使用できたので、これは移行中に切り替える方法を示しています。
+この例では、ELB から ILB への移行を示します。 ELB は ILB より前に使用できたので、これは移行中に ILB に切り替える方法を示しています。
 
 ![Appendix2][12]
 
@@ -610,16 +610,16 @@ Always On 可用性グループに属する特定のリソースでは、クラ�
 最大エラー数 6 に変更します。
 
 #### <a name="step-3-addition-ip-address-resource-for-cluster-group-optional"></a>手順 3: クラスター グループに IP アドレス リソースを追加する <Optional>
-クラスター グループの IP アドレスが 1 つだけであり、それがクラウドのサブネットに整列されている場合は、そのネットワークのクラウドですべてのクラスター ノードを誤ってオフラインにすると、クラスター IP リソースおよびクラスター ネットワーク名をオンラインにできなくなることに注意してください。 これが発生した場合、その他のクラスター リソースを更新をできません。
+クラスター グループの IP アドレスが 1 つだけであり、それがクラウドのサブネットに整列されている場合は、そのネットワークのクラウドですべてのクラスター ノードを誤ってオフラインにすると、クラスター IP リソースおよびクラスター ネットワーク名をオンラインにできなくなることに注意してください。 そのような場合には、他のクラスター リソースに対する更新ができなくなります。
 
 #### <a name="step-4-dns-configuration"></a>手順 4. DNS を構成する
 円滑な移行の実装は、DNS が利用および更新される方法に依存します。
 Always On は、インストールされるときに Windows クラスター リソース グループを作成します。フェールオーバー クラスター マネージャーを開くと、少なくとも 3 つのリソースがあることがわかり、次の 2 つがドキュメントで参照されています。
 
-* Virtual Network 名 (VNN) – これは、Always On 経由で SQL Server に接続するときにクライアントが接続する DNS 名です。
-* IP アドレス リソース – これは、VNN に関連付けられている IP アドレスです。複数の IP アドレス リソースを使用できます。マルチサイト構成では、サイト/サブネットごとに IP アドレスがあります。
+* Virtual Network 名 (VNN) – Always On 経由で SQL Server に接続するときにクライアントが接続する DNS 名。
+* IP アドレス リソース – VNN に関連付けられている IP アドレス。複数の IP アドレス リソースを使用できます。マルチサイト構成では、サイト/サブネットごとに IP アドレスがあります。
 
-SQL Server に接続すると、SQL Server クライアント ドライバーは、リスナーに関連付けられている DNS レコードを取得し、Always On に関連付けられている各 IP アドレスに接続を試みます。以下では、これに影響を与える可能性のあるいくつかの要因について説明します。
+SQL Server に接続すると、SQL Server クライアント ドライバーは、リスナーに関連付けられている DNS レコードを取得し、Always On に関連付けられている各 IP アドレスに接続を試みます。 次に、これに影響を与える可能性のあるいくつかの要因について説明します。
 
 リスナー名に関連付けられている同時 DNS レコードの数は、関連付けられている IP アドレスの数だけでなく、Always On VNN リソースに対するフェールオーバー クラスターでの "RegisterAllIpProviders" の設定にも依存します。
 
@@ -633,7 +633,7 @@ Always On を Azure にデプロイするときは、リスナーおよび IP �
 
 ![Appendix5][15]
 
-次に示すコードは、VNN の設定のダンプであり、自動的に設定されます。変更を有効にするには、VNN をオフラインにしてから再度オンラインにする必要があり、これによりリスナーがオフラインになるためクライアントの接続が中断することに注意してください。
+次のコードは、VNN 設定をダンプし、それを自動的に設定します。 変更を反映するには、VNN をオフラインにし、その後オンラインに戻す必要があります。 これを行うと、リスナーがオフラインになり、クライアント接続が中断されます。
 
     ##Always On Listener Name
     $ListenerName = "Mylistener"
@@ -656,15 +656,16 @@ Always On を Azure にデプロイするときは、リスナーおよび IP �
     #Set HostRecordTTL Examples
     Get-ClusterResource $ListenerName| Set-ClusterParameter -Name "HostRecordTTL" 120
 
-"HostRecordTTL" を小さくすると DNS トラフィックの量が増えることに注意してください。
+> [!NOTE]
+> "HostRecordTTL" を小さくすると DNS トラフィックの量が増えます。
 
 ##### <a name="client-application-settings"></a>クライアント アプリケーションの設定
-SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポートしている場合、"MULTISUBNETFAILOVER = TRUE" キーワードを使用できます。このキーワードを使用すると、フェールオーバーの間に SQL Always On 可用性グループに速く接続できるので、適用することをお勧めします。 このキーワードは、Always On リスナーに関連付けられているすべての IP アドレスを並列に列挙し、フェールオーバー中により積極的な TCP 接続の再試行速度を実行します。
+SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポートしている場合は、' MULTISUBNETFAILOVER = TRUE' キーワードを使用できます。 このキーワードを適用すると、フェールオーバー時の SQL Always On 可用性グループへの接続が高速化されるので、可能な場合には適用するようにしてください。 このキーワードは、Always On リスナーに関連付けられているすべての IP アドレスを並列に列挙し、フェールオーバー中により積極的な TCP 接続の再試行速度を実行します。
 
-上記の設定に関する詳細については、「 [MultiSubnetFailover のキーワードおよび関連機能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)」を参照してください。 また、「[高可用性障害復旧のための SqlClient サポート](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx)」も参照してください。
+上記の設定について詳しくは、「[MultiSubnetFailover のキーワードおよび関連機能](https://msdn.microsoft.com/library/hh213080.aspx#MultiSubnetFailover)」をご覧ください。 また、「[高可用性障害復旧のための SqlClient サポート](https://msdn.microsoft.com/library/hh205662\(v=vs.110\).aspx)」も参照してください。
 
 #### <a name="step-5-cluster-quorum-settings"></a>手順 5. クラスター クォーラムを設定する
-一度に少なくとも 1 つの SQL Server を停止する場合、クラスターのクォーラム設定を変更する必要があります。2 つのノードでファイル共有監視 (FSW) を使用している場合、ノード マジョリティを許可して動的な投票を利用するようにクォーラムを設定する必要があり、これにより 1 つのノードは稼働したままになります。
+一度に少なくとも 1 つの SQL Server を停止する場合、クラスターのクォーラム設定を変更する必要があります。2 つのノードでファイル共有監視 (FSW) を使用している場合、ノード マジョリティを許可して動的な投票を利用するようにクォーラムを設定する必要があります。これにより、1 つのノードは稼働したままになります。
 
     Set-ClusterQuorum -NodeMajority  
 
@@ -676,7 +677,7 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
     #GET ACL Rules for Each EP, this example is for the Always On Endpoint
     Get-AzureVM -ServiceName $destcloudsvc -Name $vmNameToMigrate | Get-AzureAclConfig -EndpointName "myAOEndPoint-LB"  
 
-これらをテキスト ファイルに保存します。
+このテキストをファイルに保存します。
 
 #### <a name="step-7-change-failover-partners-and-replication-modes"></a>手順 7. フェールオーバー パートナーとレプリケーション モードを変更する
 3 つ以上の SQL Server がある場合、別の DC またはオンプレミスの別のセカンダリのフェールオーバーを「同期」に変更し、それを自動フェールオーバー パートナー (AFP) にする必要があります。これは、変更を行っている間に HA を維持するためです。 これは、SSMS を変更して TSQL によって行うことができます。
@@ -684,7 +685,7 @@ SQL クライアント アプリケーションが .Net 4.5 SQLClient をサポ�
 ![Appendix6][16]
 
 #### <a name="step-8-remove-secondary-vm-from-cloud-service"></a>手順 8. クラウド サービスからセカンダリ VM を削除する
-最初に、クラウド セカンダリ ノードの移行を計画する必要があります。これが、現在のプライマリである場合は、手動フェールオーバーを開始する必要があります。
+クラウドのセカンダリ ノードを最初に移行するように計画してください。 このノードが現在プライマリの場合は、手動フェールオーバーを開始する必要があります。
 
     $vmNameToMigrate="dansqlams2"
 
@@ -943,9 +944,9 @@ SQL Server クライアント ネットワーク上の DNS サーバーを確認
     Remove-AzureVM -ServiceName $sourceSvc -Name $vmNameToMigrate
 
 #### <a name="step-18-change-disk-caching-settings-in-csv-file-and-save"></a>手順 18: CSV ファイルでディスク キャッシュの設定を変更して保存する
-データ ボリュームの場合、これらを READONLY に設定する必要があります。
+データ ボリュームの場合、キャッシュ設定を READONLY に設定する必要があります。
 
-TLOG ボリュームの場合、これらを NONE に設定する必要があります。
+TLOG ボリュームの場合、キャッシュ設定を NONE に設定する必要があります。
 
 ![Appendix11][21]
 
@@ -1073,7 +1074,7 @@ TLOG ボリュームの場合、これらを NONE に設定する必要があり
     #http://msdn.microsoft.com/library/azure/dn495192.aspx
 
 #### <a name="step-23-test-failover"></a>手順 23: フェールオーバーをテストする
-ここでは、移行されたノードがオンプレミスの Always On ノードと同期するようにし、ノードを同期レプリケーション モードにして、同期されるまで待つ必要があります。 その後、オンプレミスから移行された最初のノードにフェールオーバーします。これは AFP です。 正しく動作した後は、最後に移行されたノードを AFP に変更します。
+移行されたノードがオンプレミスの Always On ノードと同期するのを待ちます。 ノードを同期レプリケーション モードにし、同期されるまで待ちます。 その後、オンプレミスから移行された最初のノードにフェールオーバーします。これは AFP です。 正しく動作した後は、最後に移行されたノードを AFP に変更します。
 
 すべてのノード間のフェールオーバーをテストし、混乱テストを実行してフェールオーバーが意図したとおりにタイムリーに動作することを確認する必要があります。
 
@@ -1085,10 +1086,10 @@ SQL Server が 2 つだけであり、それらを同じサブネットのまま
 
 IP アドレスの追加については、 [付録](#appendix-migrating-a-multisite-alwayson-cluster-to-premium-storage)の手順 14 を参照してください。
 
-1. 現在の IP アドレス リソースについて、実行可能な所有者を "既存のプライマリ SQL Server" に変更します。下の例では "dansqlams4" です。
+1. 現在の IP アドレス リソースについて、実行可能な所有者を "既存のプライマリ SQL Server" に変更します。例では "dansqlams4" です。
 
     ![Appendix13][23]
-2. 新しい IP アドレス リソースについて、実行可能な所有者を "移行されたセカンダリ SQL Server" に変更します。下の例では "dansqlams5" です。
+2. 新しい IP アドレス リソースについて、実行可能な所有者を "移行されたセカンダリ SQL Server" に変更します。例では "dansqlams5" です。
 
     ![Appendix14][24]
 3. これを設定した後、フェールオーバーを実行し、最後のノードが移行されるときに、そのノードが実行可能な所有者として追加されるように、実行可能な所有者を編集する必要があります。

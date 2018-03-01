@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: ganesr
-ms.openlocfilehash: 0129a48e43e90001785a5977d4b0d1fd9fa9fd7d
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: ab0cd45334581f6f5c6dd6e86939e018df5de074
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft ピアリングにルート フィルターを構成する: Azure Portal
 > [!div class="op_single_selector"]
@@ -83,7 +83,7 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
 
 Microsoft ピアリング経由でアクセスできるサービスに関連付けられた BGP コミュニティ値は、「[ExpressRoute のルーティングの要件](expressroute-routing.md)」ページで確認できます。
 
-### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>手順 2.使用する値をリストアップする
+### <a name="2-make-a-list-of-the-values-that-you-want-to-use"></a>2.使用する値をリストアップする
 
 ルート フィルターで使用する BGP コミュニティ値をリストアップします。 たとえば Dynamics 365 サービスの BGP コミュニティ値は 12076:5040 です。
 
@@ -92,7 +92,7 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。
 
 ### <a name="1-create-a-route-filter"></a>1.ルート フィルターを作成する
-新しいリソースを作成するオプションを選択して、ルート フィルターを作成できます。 次の図に示すように、**[新規]**  >  **[ネットワーク]**  >  **[RouteFilter]** をクリックします。
+新しいリソースを作成するオプションを選択して、ルート フィルターを作成できます。 次の図に示すように、**[リソースの作成]** > **[ネットワーク]** > **[RouteFilter]** をクリックします。
 
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\CreateRouteFilter1.png)
 
@@ -154,6 +154,6 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\DeleteRouteFilter.png) 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

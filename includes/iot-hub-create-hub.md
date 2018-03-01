@@ -1,7 +1,7 @@
 1. [Azure Portal][lnk-portal] にサインインします。
-1. **[新規]** > **[モノのインターネット (IoT)]** > **[IoT Hub]** の順に選択します。
+1. **[リソースの作成]** > **[モノのインターネット]** > **[IoT Hub]** を選択します。
    
-    ![Azure portal Jumpbar][1]
+    ![Azure Portal での IoT Hub へのナビゲーションのスクリーン ショット][1]
 
 1. **[IoT Hub]** ウィンドウで、IoT Hub のために以下の情報を入力します。
 
@@ -21,8 +21,8 @@
 
 1. **Create** をクリックしてください。 IoT ハブの作成には数分かかることがあります。 **[通知]** ウィンドウで進行状況を監視できます。
 <!-- Images -->
-[1]: ./media/iot-hub-get-started-create-hub/create-iot-hub1.png
-[2]: ./media/iot-hub-get-started-create-hub/create-iot-hub2.png
+[1]: ./media/iot-hub-create-hub/create-iot-hub1.png
+[2]: ./media/iot-hub-create-hub/create-iot-hub2.png
 <!-- Links -->
 [lnk-portal]: https://portal.azure.com/
 [lnk-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/

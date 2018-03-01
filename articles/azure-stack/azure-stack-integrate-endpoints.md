@@ -5,21 +5,18 @@ services: azure-stack
 author: jeffgilb
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/16/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: e368109adc7db4c589ac37b28c4891cb3ec5346f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8af533147f3cc12f2334a43e7b672c69d0d25802
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack とデータセンターの統合 - エンドポイントの公開
-
-*適用対象: Azure Stack 統合システム*
-
-Azure Stack は、さまざまなエンドポイント (VIP - 仮想 IP アドレス) をエンドポイントのインフラストラクチャ ロールに応じて設定します。 この VIP はパブリック IP アドレス プールから割り当てられます。 各 VIP は、ソフトウェア定義のネットワーク レイヤーで、アクセス制御リスト (ACL) で保護されます。 ACL は、ソリューションをさらに強化するために、さまざまな物理スイッチ (TOR や BMC) でも使われます。 デプロイ時に指定した外部 DNS ゾーン内のエンドポイントごとに DNS エントリが作成されます。
+Azure Stack は、そのインフラストラクチャ ロールのためにいくつかの仮想 IP アドレス (VIP) を設定します。 この VIP はパブリック IP アドレス プールから割り当てられます。 各 VIP は、ソフトウェア定義のネットワーク レイヤーで、アクセス制御リスト (ACL) で保護されます。 ACL は、ソリューションをさらに強化するために、さまざまな物理スイッチ (TOR や BMC) でも使われます。 デプロイ時に指定した外部 DNS ゾーン内のエンドポイントごとに DNS エントリが作成されます。
 
 
 次のアーキテクチャ図は、さまざまなネットワーク レイヤーと ACL を示しています。
@@ -28,7 +25,7 @@ Azure Stack は、さまざまなエンドポイント (VIP - 仮想 IP アド�
 
 ## <a name="ports-and-protocols-inbound"></a>ポートとプロトコル (受信)
 
-外部ネットワークに Azure Stack のエンドポイントを公開するために必要なインフラストラクチャの VIP は、次の表に掲載されています。 この一覧では、各エンドポイント、必要なポート、そしてプロトコルを示しています。 特定のリソースプロバイダーの展開に関するドキュメントでは、SQL のリソースプロバイダーなどのような、追加のリソースプロバイダーに必要なエンドポイントについて説明します。
+Azure Stack エンドポイントを外部ネットワークに公開するために必要なインフラストラクチャ VIP を次に示します。 この一覧では、各エンドポイント、必要なポート、そしてプロトコルを示しています。 特定のリソースプロバイダーの展開に関するドキュメントでは、SQL のリソースプロバイダーなどのような、追加のリソースプロバイダーに必要なエンドポイントについて説明します。
 
 社内インフラストラクチャの VIP は Azure Stack の発行には不要なため、記載されていません。
 
@@ -52,7 +49,11 @@ Azure Stack は、さまざまなエンドポイント (VIP - 仮想 IP アド�
 |ストレージ テーブル|&#42;.table.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |ストレージ BLOB|&#42;.blob.*&lt;region>.&lt;fqdn>*|HTTP<br>HTTPS|80<br>443|
 |SQL リソース プロバイダー|sqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
-|MySQL リソース プロバイダー|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304
+|MySQL リソース プロバイダー|mysqladapter.dbadapter.*&lt;region>.&lt;fqdn>*|HTTPS|44300-44304|
+|App Service|&#42;.appservice.*&lt;region>.&lt;fqdn>*|TCP|80 (HTTP)<br>443 (HTTPS)<br>8172 (MSDeploy)|
+|  |&#42;.scm.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)|
+|  |api.appservice.*&lt;region>.&lt;fqdn>*|TCP|443 (HTTPS)<br>44300 (Azure Resource Manager)|
+|  |ftp.appservice.*&lt;region>.&lt;fqdn>*|TCP、UDP|21、1021、10001-101000 (FTP)<br>990 (FTPS)|
 
 ## <a name="ports-and-urls-outbound"></a>ポートと URL (送信)
 

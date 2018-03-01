@@ -10,13 +10,13 @@ ms.service: iot-hub
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/30/2018
+ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 096fcce979bd488a0fe9dead2b1232a057d0ae02
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6123039ba5eeb720e0ca590fa69af915da91367c
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする - プレビュー
 
@@ -107,7 +107,7 @@ IoT Hub イベントには、デバイスのライフサイクルの変更に対
 
 ## <a name="filter-events"></a>イベントのフィルター処理
 
-IoT Hub イベント サブスクリプションは、イベントの種類とデバイス名に基づいてイベントをフィルター処理できます。 Event Grid のサブジェクト フィルターは**プレフィックス**と**サフィックス**の一致に基づいて動作し、サブジェクトが一致するイベントはサブスクライバーに配信されます。 
+IoT Hub イベント サブスクリプションは、イベントの種類とデバイス名に基づいてイベントをフィルター処理できます。 Event Grid のサブジェクト フィルターは**プレフィックス**と**サフィックス**の一致に基づいて動作します。 フィルターは `AND` 演算子を使用するため、プレフィックスとサフィックスの両方に一致するサブジェクトを持つイベントがサブスクライバーに配信されます。 
 
 IoT イベントのサブジェクトには次の形式が使われます。
 

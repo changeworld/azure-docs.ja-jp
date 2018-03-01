@@ -11,7 +11,7 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 ### <a name="obtain-the-connection-string-from-the-azure-portal"></a>Azure ポータルから接続文字列を取得する
 [Azure Portal](https://portal.azure.com/) を使って、クライアント プログラムが Azure SQL Database と対話するために必要な接続文字列を取得します。 
 
-1. **[すべて参照]** > **[SQL データベース]** を選びます。
+1. **[すべてのサービス]** > **[SQL データベース]** の順にクリックします。
 
 2. **[SQL データベース]** ブレードの左上近辺にあるフィルター テキスト ボックスにデータベースの名前を入力します。
 
@@ -19,7 +19,6 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 
 4. お使いのデータベースのブレードが表示されたら、画面を見やすくするために、**[最小化]** ボタンを選んで、参照とデータベースのフィルター処理に使ったブレードを折りたたみます。 
    
-    ![フィルター処理を行ってデータベースを分離する][10-FilterDatabase]
 5. お使いのデータベースのブレードで、**[データベース接続文字列の表示]** を選びます。
 
 6. ADO.NET 接続ライブラリを使用する場合は、 **ADO**というラベルが付いた文字列をコピーします。 
@@ -31,7 +30,7 @@ Latest Freshness check:  2015-09-02 , GeneMi.
 
 <!-- Image references. -->
 
-[10-FilterDatabase]: ./media/sql-database-include-connection-string-20-portalshots/connqry-connstr-a.png
+
 
 [20-CopyAdoConnectionString]: ./media/sql-database-include-connection-string-20-portalshots/connqry-connstr-b.png
 
