@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: c10362fa1d5d9e4316dd94a3d08c9e1fcd3eb985
-ms.sourcegitcommit: 651a6fa44431814a42407ef0df49ca0159db5b02
+ms.openlocfilehash: d76f756e7a6fe77886f0d4e00ab8b23273b4e09d
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Data Lake Store 内のデータに対するディザスター リカバリーのガイダンス
 
@@ -26,7 +26,7 @@ Azure Data Lake Store アカウントのデータは、リージョン内で発�
 ## <a name="disaster-recovery-guidance"></a>ディザスター リカバリーの ガイダンス
 すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。 ディザスター リカバリー計画を作成する場合は、次の Azure ドキュメントをご覧ください。 独自の計画を作成する際に役立つリソースがあります。
 
-* [Azure アプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>ベスト プラクティス
@@ -42,7 +42,7 @@ Azure Data Lake Store は自動レプリカによるデータの回復性を備�
 
 また、組織で Azure Data Lake Store アカウントの[診断ログ](data-lake-store-diagnostic-logs.md)を有効にすることもできます。これにより、ファイルを削除または更新した可能性のあるユーザーに関する情報を提供する、データ アクセスの監査証跡を収集できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 

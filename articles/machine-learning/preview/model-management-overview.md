@@ -3,18 +3,18 @@ title: "Azure Machine Learning モデル管理の概念の概要 | Microsoft Doc
 description: "このドキュメントでは、Azure Machine Learning のモデル管理の概念について説明します。"
 services: machine-learning
 author: nk773
-ms.author: neerajkh, padou
+ms.author: padou
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 0474e7ae77128a46fc6218de814913d07aa63d97
-ms.sourcegitcommit: 80eb8523913fc7c5f876ab9afde506f39d17b5a1
+ms.openlocfilehash: 931dfae740996325cc62071a861e81ef5f67548b
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/02/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning のモデル管理
 
@@ -88,7 +88,7 @@ Azure Machine Learning モデル管理では、Docker ベースのコンテナ�
 - 各 Web サービス レベルのシステム ログとモデルのテレメトリ。 有効な場合、すべての標準出力ログは [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) にストリーミングされます。 モデルのテレメトリは、ユーザー指定のストレージにアーカイブされます。 
 - 自動スケールと同時実行の制限。 これらの設定は、既存のクラスター内での負荷に基づいて、デプロイされるコンテナーの数を自動的に増やします。 予測の待機時間のスループットと一貫性も制御します。
 
-## <a name="consumption"></a>使用量 
+## <a name="consumption"></a>消費 
 Azure Machine Learning モデル管理は、デプロイされたモデルの REST API と共に Swagger ドキュメントを作成します。 API キーとモデル入力を使って REST API を呼び出すことによりデプロイされたモデルを使用し、基幹業務アプリケーションの一部として予測を取得できます。 REST API の呼び出しについては、Java、[Python](https://github.com/CortanaAnalyticsGallery-Int/digit-recognition-cnn-tf/blob/master/client.py)、C# の各言語のサンプル コードを GitHub で入手できます。 Azure Machine Learning モデル管理の CLI では、これらの REST API を使う簡単な方法が提供されます。 1 つの CLI コマンド、Swagger 対応のアプリケーション、または curl を使って、API を使うことができます。 
 
 ## <a name="retraining"></a>再トレーニング 
@@ -123,5 +123,5 @@ Azure Machine Learning モデル管理で提供されている API を使って�
 
    そして、 同じクラスターで 100 個のサービス/エンドポイントを実行できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 モデル管理を使い始めるには、「[モデル管理のセットアップ](deployment-setup-configuration.md)」をご覧ください。

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/13/2018
 ms.author: subramar
-ms.openlocfilehash: 5fed3b5b127a2b398b99ab2b46c762920e9dc249
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cdad0617c59fd5881c3857388809fac2186b36d8
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/21/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
 Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。
@@ -47,23 +47,23 @@ Service Fabric アプリケーションは、サービスのコレクション�
 監視対象外手動モードでは、更新ドメインですべてのアップグレードが行われた後、次の更新ドメインでアップグレードを開始するために、手動操作が必要になります。 Service Fabric の正常性チェックは実行されません。 管理者は、次の更新ドメインでアップグレードを開始する前に、正常性または状態のチェックを実行します。
 
 ## <a name="upgrade-default-services"></a>既定のサービスをアップグレードする
-Service Fabric アプリケーション内の既定のサービスは、アプリケーションのアップグレード処理の間にアップグレードできます。 既定のサービスは、[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)で定義されています。 既定サービスのアップグレードの標準的な規則は次のとおりです。
+アプリケーションのアップグレードの一環として、[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)で定義されている一部の既定のサービス パラメーターもアップグレードできます。 アップグレードの一環として変更できるのは、[Update-ServiceFabricService](https://docs.microsoft.com/powershell/module/servicefabric/update-servicefabricservice?view=azureservicefabricps) による変更がサポートされているサービス パラメーターのみです。 アプリケーションのアップグレード時に既定のサービス パラメーターを変更する動作は次のとおりです。
 
-1. クラスターに存在しない新しい[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)の既定のサービスは、作成されます。
+1. クラスターに既に存在していない新しいアプリケーション マニフェストの既定のサービスは、作成されます。
+2. 以前のアプリケーション マニフェストと新しいアプリケーション マニフェストの両方に存在している既定のサービスは、更新されます。 新しいアプリケーション マニフェストの既定のサービスのパラメーターによって、既存のサービスのパラメーターが上書きされます。 既定のサービスの更新が失敗した場合、アプリケーションのアップグレードは自動的にロールバックされます。
+3. 新しいアプリケーション マニフェストに存在しない既定のサービスがクラスターに存在する場合は、削除されます。 **既定のサービスを削除すると、そのサービスの状態がすべて削除され、元には戻せないことに注意してください。**
+
+アプリケーションのアップグレードがロールバックされるときは、既定のサービス パラメーターがアップグレード開始前の古い値に戻されますが、削除されたサービスを以前の状態で再作成することはできません。
+
 > [!TIP]
-> 次の規則を有効にするには、[EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) を true に設定する必要があります。 この機能は v5.5 からサポートされています。
-
-2. 以前の[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)と新しいバージョンの両方に存在している既定のサービスは、更新されます。 新しいバージョンのサービス記述により、クラスター内の既存の記述が上書きされます。 既定のサービスの更新が失敗すると、アプリケーションのアップグレードは自動的にロールバックします。
-3. 以前の[アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md)には存在し、新しいバージョンには存在しない既定のサービスは、削除されます。 **この既定サービスの削除は元に戻せないことに注意してください。**
-
-アプリケーションのアップグレードがロールバックされる場合、既定のサービスはアップグレード開始前の状態に戻されます。 ただし、削除されたサービスを作成することはできません。
+> 上記のルール 2) および 3) (既定のサービスの更新と削除) を有効にするには、[EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) クラスター構成設定を *true* にする必要があります。 この機能は、Service Fabric バージョン 5.5 以降でサポートされています。
 
 ## <a name="application-upgrade-flowchart"></a>アプリケーション アップグレードのフローチャート
 以下に示すフローチャートは、Service Fabric アプリケーションのアップグレード プロセスをわかりやすく示しています。 特に、このフローでは 1 つの更新ドメインのアップグレードが成功または失敗と見なされるときに、*HealthCheckStableDuration*、*HealthCheckRetryTimeout*、*UpgradeHealthCheckInterval* などのタイムアウトが制御にどのように役立つかを説明します。
 
 ![Service Fabric アプリケーションのアップグレード プロセス][image]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [PowerShell を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial-powershell.md) に関する記事では、PowerShell を使用したアプリケーションのアップグレードについて説明します。

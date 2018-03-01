@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 0c1b192dc8481448252b6bc2e3801d6a6f3daa0d
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 7e60e33330357d08d69e3372fd3eea1aadb4a141
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Azure HDInsight クラスターで Azure Storage を使用する
 
@@ -38,10 +38,10 @@ Azure Storage は、堅牢な汎用ストレージ ソリューションであ�
 > 
 > | ストレージ アカウントの種類 | ストレージ層 | HDInsight でのサポート |
 > | ------- | ------- | ------- |
-> | 汎用ストレージ アカウント | Standard | __はい__ |
-> | &nbsp; | Premium | いいえ |
-> | BLOB ストレージ アカウント | ホット | いいえ |
-> | &nbsp; | クール | いいえ |
+> | 汎用ストレージ アカウント | 標準 | __はい__ |
+> | &nbsp; | Premium | いいえ  |
+> | BLOB ストレージ アカウント | ホット | いいえ  |
+> | &nbsp; | クール | いいえ  |
 
 ビジネス データの格納には、既定の BLOB コンテナーを使用しないことをお勧めします。 ストレージ コストを削減するために、既定の BLOB コンテナーの使用後、コンテナーを毎回削除することをお勧めします。 既定のコンテナーには、アプリケーション ログとシステム ログが格納されます。 コンテナーを削除する前に、ログを取り出してください。
 
@@ -105,7 +105,7 @@ BLOB を使用するには、まず、[Azure ストレージ アカウント][az
 
 [!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
 
-### <a name="use-the-azure-portal"></a>Azure Portal の使用
+### <a name="use-the-azure-portal"></a>Azure ポータルの使用
 ポータルから HDInsight クラスターを作成するとき、ストレージ アカウントの詳細を提供するオプション (以下を参照) を使用できます。 また、クラスターに関連付けられている追加のストレージ アカウントが必要かどうかを指定し、必要な場合は、Data Lake Store または他の Azure Storage Blob から追加のストレージとして選択することもできます。
 
 ![HDInsight Hadoop 作成データ ソース](./media/hdinsight-hadoop-use-blob-storage/hdinsight.provision.data.source.png)
@@ -299,7 +299,7 @@ HDInsight クラスターを作成しているときに、そのクラスター�
 > [!WARNING]
 > HDInsight クラスター以外の場所で追加のストレージ アカウントを使用することはできません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、HDInsight で HDFS と互換性のある Azure Storage を使う方法について説明しました。 これにより、収集したデータを長期にわたって格納できるスケーラブルなソリューションを構築できます。さらに HDInsight を使用すると、格納されている構造化データと非構造化データから有益な情報を得ることができます。
 
 詳細については、次を参照してください。

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 4bd7f5b584030f9c1554b56895493837d2eac357
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 3577b06bfb23457c17099902a7ac9fb8eb6e3087
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="optimize-hive-queries-in-azure-hdinsight"></a>Azure HDInsight での Hive クエリの最適化
 
@@ -113,7 +113,7 @@ Hive パーティション分割は、生データを新しいディレクトリ
 詳細については、「[Partitioned Tables (パーティション テーブル)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-PartitionedTables)」を参照してください。
 
 ## <a name="use-the-orcfile-format"></a>ORCFile 形式の使用
-Hive は、さまざまなファイル形式をサポートしています。 次に例を示します。
+Hive は、さまざまなファイル形式をサポートしています。 例: 
 
 * **テキスト**: これは既定のファイル形式で、ほとんどのシナリオで使用できます
 * **Avro**: 相互運用性シナリオで使用できます
@@ -137,7 +137,7 @@ ORC 形式を有効にするにはまず、 *Stored as ORC*句でテーブルを
     PARTITIONED BY(L_SHIPDATE STRING)
     STORED AS ORC;
 
-次に、データをステージング テーブルから ORC テーブルに挿入します。 次に例を示します。
+次に、データをステージング テーブルから ORC テーブルに挿入します。 例: 
 
     INSERT INTO TABLE lineitem_orc
     SELECT L_ORDERKEY as L_ORDERKEY, 
@@ -177,7 +177,7 @@ Hive クエリのベクター化プレフィックスを有効にするには、
 * **結合の最適化:** 結合の効率を向上させユーザー ヒントの必要性を少なくするための Hive のクエリ実行プランの最適化です。 詳しくは、「[Join optimization (結合の最適化)](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+JoinOptimization#LanguageManualJoinOptimization-JoinOptimization)」を参照してください。
 * **Reducer の増加**。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事ではいくつかの一般的な Hive クエリの最適化方法を説明しました。 詳細については、次の記事を参照してください。
 
 * [HDInsight での Apache Hive の使用](hadoop/hdinsight-use-hive.md)

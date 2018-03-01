@@ -1,6 +1,6 @@
 ---
 title: "Azure のセキュリティのベスト プラクティスとパターン | Microsoft Docs"
-description: "この記事では、Azure セキュリティのベスト プラクティスとパターンの概要と、別の Azure リソースのセキュリティ ベスト プラクティスを精選した一覧を提供します。"
+description: "この記事では、さまざまな Azure リソースに対する Azure セキュリティのベストプラクティスとパターンの一覧を示します。"
 services: azure-security
 documentationcenter: na
 author: TomShinder
@@ -12,38 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
-ms.author: terrylan
-ms.openlocfilehash: c8a25d64f3925ec963d8d02c827bd2045994feac
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.date: 2/16/2018
+ms.author: 
+ms.openlocfilehash: 5176f679971d542e67dfc6ff04a729fa52bc3f6e
+ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-security-best-practices-and-patterns"></a>Azure セキュリティのベスト プラクティスとパターン
-現在、以下の Azure セキュリティのベスト プラクティスとパターンの記事があります。 Azure セキュリティのベスト プラクティスとパターンの増加する一覧の更新を確認するには、このサイトを定期的にアクセスしてください。  
 
-* [Azure のネットワーク セキュリティに関するベスト プラクティス](azure-security-network-security-best-practices.md)
-* [Azure のデータ セキュリティと暗号化のベスト プラクティス](azure-security-data-encryption-best-practices.md)
-* [ID 管理とアクセス制御セキュリティのベスト プラクティス](azure-security-identity-management-best-practices.md)
-* [モノのインターネットのセキュリティのベスト プラクティス](azure-security-iot-best-practices.md)
-* [Azure IaaS のセキュリティのベストプラクティス] (azure-security-iaas.md)
 * [Azure の境界セキュリティに関するベスト プラクティス](../best-practices-network-security.md)
+* [Azure のデータベース セキュリティに関するベスト プラクティス](azure-database-security-best-practices.md)
+* [Azure のデータ セキュリティと暗号化のベスト プラクティス](azure-security-data-encryption-best-practices.md)
+* [Azure の ID 管理とアクセス制御セキュリティのベスト プラクティス](azure-security-identity-management-best-practices.md)
+* [Azure のネットワーク セキュリティに関するベスト プラクティス](azure-security-network-security-best-practices.md)
+* [Azure で運用可能なセキュリティに関するベスト プラクティス](azure-operational-security-best-practices.md)
+* [Azure PaaS のベスト プラクティス](https://docs.microsoft.com/azure/security/security-paas-deployments) 
+* [Azure Service Fabric のセキュリティに関するベスト プラクティス](security-best-practices-and-patterns.md)
+* [Azure VM のセキュリティに関するベスト プラクティス](azure-service-fabric-security-best-practices.md)
 * [Azure における安全なハイブリッド ネットワーク アーキテクチャの実装](../guidance/guidance-iaas-ra-secure-vnet-hybrid.md)
-* [Azure PaaS のベスト プラクティス] (https://docs.microsoft.com/azure/security/security-paas-deployments)
+* [モノのインターネットのセキュリティに関するベスト プラクティス](azure-security-iot-best-practices.md)* [Azure で PaaS データベースをセキュリティ保護する](security-paas-applications-using-sql.md)
+* [Azure App Service を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティ保護する](security-paas-applications-using-app-services.md)
+* [Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](security-paas-applications-using-storage.md)
+* [Azure における IaaS ワークロードのセキュリティに関するベスト プラクティス](azure-security-iaas.md)
 
-Azure には、ソリューションを構築できるセキュリティで保護されたプラットフォームが用意されています。 また、Azure 上のソリューションをより高いセキュリティで保護するためのサービスとテクノロジも提供しています。 多数のオプションを利用できるため、多くのお客様から、セキュリティを向上させるために Microsoft がベスト プラクティスやパターンとして推奨する内容について興味があるとのご意見をいただいています。
 
-関心を持たれている内容を理解しましたので、お客様が実行できる内容を説明するドキュメントのコレクションを作成し、Azure デプロイのセキュリティの向上に役立つと考える適切なコンテキストを提供しています。
 
-このベスト プラクティスとパターンの記事では、特定のトピックにおけるベスト プラクティスと役立つパターンのコレクションについて説明します。 このベスト プラクティスとパターンは、このテクノロジに関して Microsoft が蓄積してきたノウハウと、ユーザーの皆様の経験に基づいています。
-
-それぞれのベスト プラクティスについて、次の点を説明するよう努めます。
-
-* ベスト プラクティスの内容
-* そのベスト プラクティスをお勧めする理由
-* そのベスト プラクティスを実践しなかった場合に発生する可能性がある事態
-* そのベスト プラクティスに代わる対処法
-* そのベスト プラクティスを実践する方法
-
-マイクロソフトでは、Azure のセキュリティ アーキテクチャとベスト プラクティスに関する記事を今後さらに拡充させていく予定です。 ご希望のテーマがあればぜひ、このページの一番下にあるコメント欄でお知らせください。

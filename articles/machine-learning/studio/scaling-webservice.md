@@ -3,7 +3,7 @@ title: "Azure Machine Learning Web サービスの同時実行数を増やす方
 description: "エンドポイントの追加によって Azure Machine Learning Web サービスの同時実行数を増やす方法を説明します。"
 services: machine-learning
 documentationcenter: 
-author: neerajkh
+author: raymondlaghaeian
 manager: srikants
 editor: cgronlun
 keywords: "Azure Machine Learning、Web サービス、運用、スケーリング、エンドポイント、同時実行"
@@ -14,12 +14,12 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/23/2017
-ms.author: neerajkh
-ms.openlocfilehash: 2b4fcef51b2704f07f5d1d08a4bd16970864b0fd
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.author: raymondl
+ms.openlocfilehash: 0d9c4b77ae16b5919a62f855c5b472708ba39004
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="scaling-an-azure-machine-learning-web-service-by-adding-additional-endpoints"></a>エンドポイントの追加による Azure Machine Learning Web サービスのスケーリング
 > [!NOTE]
