@@ -6,13 +6,13 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 1/12/2018
+ms.date: 02/24/2018
 ms.author: nepeters
-ms.openlocfilehash: 86a160d8f2dbfb0e385d9dbed7cf6d789f5a8df6
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 0cf09b55b8d144e8a58f7b2f73c99a0bacfb252d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-container-service"></a>Azure Container Service から Azure Container Registry の認証を受ける
 
@@ -39,7 +39,7 @@ CLIENT_ID=$(az aks show --resource-group $AKS_RESOURCE_GROUP --name $AKS_CLUSTER
 ACR_ID=$(az acr show --name $ACR_NAME --resource-group $ACR_RESOURCE_GROUP --query "id" --output tsv)
 
 # Create role assignment
-az role assignment create --assignee $CLIENT_ID --role Reader --scope $ACR_ID
+az role assignment create --assignee $CLIENT_ID --role Contributor --scope $ACR_ID
 ```
 
 ## <a name="access-with-kubernetes-secret"></a>Kubernetes シークレットを使用したアクセス

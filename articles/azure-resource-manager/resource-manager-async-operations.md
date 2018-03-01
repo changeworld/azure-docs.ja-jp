@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
-ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9015347042ea9cce221ec5febd4ae60cbeac9315
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="track-asynchronous-azure-operations"></a>非同期 Azure 操作の追跡
 Azure の REST 操作の中には、操作を迅速に完了できないため、非同期的に実行されるものがあります。 このトピックでは、応答で返される値を通じて非同期操作の状態を追跡する方法について説明します。  
@@ -81,8 +81,8 @@ response.Headers.GetValues("Azure-AsyncOperation").GetValue(0)
 
 リソースを作成、更新、または削除 (PUT、PATCH、DELETE) する操作は通常、`provisioningState` 値を返します。 操作が完了すると、次の 3 つの値のいずれかが返されます。 
 
-* Succeeded
-* Failed
+* 成功
+* 失敗
 * Canceled
 
 その他の値はすべて、操作がまだ実行中であることを示します。 リソース プロバイダーは、その状態を示すカスタマイズされた値を返すことができます。 たとえば、要求が受信され、実行中の場合は **Accepted** が表示されします。
@@ -191,8 +191,7 @@ https://management.azure.com/subscriptions/{subscription-id}/providers/Microsoft
 
 要求がまだ実行中の場合は、状態コード 202 が表示されます。 要求が完了すると、状態コード 200 が表示され、応答の本文には、作成されたストレージ アカウントのプロパティが含まれます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 各 REST 操作の詳細については、[REST API のドキュメント](/rest/api/)を参照してください。
-* リソース マネージャー REST API からリソースを管理する方法の詳細については、「[Using the Resource Manager REST API (リソース マネージャー REST API の使用)](resource-manager-rest-api.md)」を参照してください。
 * リソース マネージャー REST API からテンプレートをデプロイする方法の詳細については、「[Deploy resources with Resource Manager templates and Resource Manager REST API (リソース マネージャー テンプレートとリソース マネージャー REST API を使用したリソースのデプロイ)](resource-group-template-deploy-rest.md)」を参照してください。

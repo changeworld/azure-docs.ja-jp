@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL サーバーのファイアウォール規則 | Microsoft Docs"
+title: "Azure Database for MySQL サーバーのファイアウォール規則"
 description: "Azure Database for MySQL サーバーのファイアウォール規則について説明します。"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/12/2018
-ms.openlocfilehash: 5afe3fc2d39c6ab0996b1ee68a4158ccacc7e86a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.openlocfilehash: a1ebbc088b54112ed625412a347b054fd3361782
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。

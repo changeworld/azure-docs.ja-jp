@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/26/2018
 ms.author: larryfr
-ms.openlocfilehash: c830abdf8220f222a06b771b8c9fc905146420b4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dfe9efdb57a0ce2506abd251267f39020568d081
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>REST を使用した HDInsight における Hadoop での Hive クエリの実行
 
@@ -77,7 +77,8 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
     
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/status" `
-       -Credential $creds
+       -Credential $creds `
+       -UseBasicParsing
     $resp.Content
     ```
 
@@ -100,7 +101,8 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 
     ```powershell
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/version/hive" `
-       -Credential $creds
+       -Credential $creds `
+       -UseBasicParsing
     $resp.Content
     ```
 
@@ -122,7 +124,8 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/hive" `
        -Credential $creds `
        -Body $reqParams `
-       -Method POST
+       -Method POST `
+       -UseBasicParsing
     $jobID = (ConvertFrom-Json $resp.Content).id
     $jobID
     ```
@@ -162,7 +165,8 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
     $reqParams=@{"user.name"="admin"}
     $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/jobs/$jobID" `
        -Credential $creds `
-       -Body $reqParams
+       -Body $reqParams `
+       -UseBasicParsing
     # ConvertFrom-JSON can't handle duplicate names with different case
     # So change one to prevent the error
     $fixDup=$resp.Content.Replace("jobID","job_ID")

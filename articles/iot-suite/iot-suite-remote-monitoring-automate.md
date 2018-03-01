@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: e00c4ab2fc8bb13a765f7c2154555607dddfc651
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 9d9fbefd81fed506bcc025fa0f44315ec831cf0d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="detect-issues-using-threshold-based-rules"></a>しきい値に基づくルールを使用して問題を検出する
 
@@ -34,9 +34,9 @@ Contoso には、**Chiller** デバイスによって報告される圧力が 25
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを実行するには、お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューションのインスタンスが必要です。
+このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
-リモート監視ソリューションをまだデプロイしていない場合は、「[Deploy the remote monitoring preconfigured solution (リモート監視の事前構成済みソリューションのデプロイ)](iot-suite-remote-monitoring-deploy.md)」のチュートリアルを完了しておく必要があります。
+まだリモート管理ソリューションをデプロイしていない場合は、「[リモート管理の事前構成済みソリューションをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="view-the-rules-in-your-solution"></a>ソリューション内のルールを表示する
 
@@ -64,15 +64,15 @@ Contoso には、**Chiller** デバイスによって報告される圧力が 25
 
 次の値を使用してルールを作成します。
 
-| 設定          | 値                                 |
+| Setting          | 値                                 |
 | ---------------- | ------------------------------------- |
-| 名前             | Chiller 警告                       |
+| Name             | Chiller 警告                       |
 | ソース           | **Chillers** デバイス グループ             |
 | トリガー フィールド    | pressure                              |
 | トリガーの演算子 | より大きい                          |
 | トリガーの値    | 150                                   |
 | 重大度レベル   | 警告                               |
-| 説明      | Chiller の圧力が 150 PSI を超えました |
+| [説明]      | Chiller の圧力が 150 PSI を超えました |
 
 新しいルールを保存するには、**[適用]** を選択します。
 
@@ -98,7 +98,7 @@ Contoso には、**Chiller** デバイスによって報告される圧力が 25
 
 一覧で複数のルールを選択すると、同時に複数のルールを削除できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の方法について説明しました。
 

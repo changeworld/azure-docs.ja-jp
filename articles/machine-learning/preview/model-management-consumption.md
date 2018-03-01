@@ -4,17 +4,17 @@ description: "このドキュメントでは、Azure Machine Learning でモデ�
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 120611f98c97fa4c5bfa2a44aece47f246d9ec57
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 4d388af3175bce5df6108ff0fd836707cca5040a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="consuming-web-services"></a>Web サービスの使用
 モデルをリアルタイム Web サービスとしてデプロイしたら、さまざまなプラットフォームやアプリケーションから予測を取得できるようになります。 リアルタイム Web サービスでは、予測を取得するために REST API を公開します。 単一行または複数行の形式でデータを Web サービスに送信して、1 つまたは複数の予測を一度に取得できます。
@@ -35,7 +35,7 @@ CLI コマンド ```az ml service list realtime -o table``` を使用して、�
 Web サービスが正常にデプロイされたら、次のコマンドを使用して、サービス エンドポイントを呼び出すためのサービス URL とその他の詳細を取得します。 
 
 ```
-az ml service usage realtime -i <service name>
+az ml service usage realtime -i <web service id>
 ```
 
 このコマンドは、サービス API スキーマがデプロイ時に指定された場合、サービスを呼び出すためのサービス URL、必要な要求ヘッダー、Swagger URL、およびサンプル データを出力します。
@@ -43,7 +43,7 @@ az ml service usage realtime -i <service name>
 HTTP 要求を構成せずに、CLI から直接サービスをテストできます。そのためには、次のように、サンプル CLI コマンドと共に入力データを入力します。
 
 ```
-az ml service run realtime -i <service name> -d "Your input data"
+az ml service run realtime -i <web service id> -d "Your input data"
 ```
 
 ## <a name="get-the-service-api-key"></a>サービス API キーの取得

@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 0e35ac70125bc640114a4492498b12ea96800d42
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 19afd35248cc0796eddbb50db4f38b813f5d568e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-compose"></a>sfctl compose
 Docker Compose のデプロイを作成、削除、および管理します。
@@ -160,10 +160,9 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 | --- | --- |
 |   --debug                      | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 |    --help -h                    | このヘルプ メッセージを表示して終了します。|
- |   --output -o                  | 出力形式。  使用できる値は、json、jsonc、table、tsv です。
-                                   既定値は json です。|
- |   --query                      | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
- |   --verbose                    | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
+|   --output -o                  | 出力形式。  使用できる値は、json、jsonc、table、tsv です。 既定値は json です。|
+|   --query                      | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+|   --verbose                    | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="next-steps"></a>次の手順
 - Service Fabric CLI を[セットアップ](service-fabric-cli.md)します。

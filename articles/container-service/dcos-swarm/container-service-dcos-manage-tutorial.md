@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 07/17/2017
+ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 04b5d158c636668a726e046e4f471b452e31ff0d
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ea5cbcc115e3da08b54d34da8b9d240c6d6a869c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Azure Container Service チュートリアル - DC/OS の管理
 

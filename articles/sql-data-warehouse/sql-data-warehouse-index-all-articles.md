@@ -16,10 +16,10 @@ ms.custom: reference
 ms.date: 03/30/2017
 ms.author: barbkess
 ms.openlocfilehash: 9fe41f12960dc099700e01573b4f03ebf63f8749
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="all-topics-for-azure-sql-data-warehouse-service"></a>Azure SQL Data Warehouse サービスに関するすべてのトピック
 このトピックでは、 **SQL Data Warehouse** サービスに直接適用されるすべてのトピックを示します。 この Web ページでは、 **Ctrl + F**を使用してキーワード検索することで、現在関心があるトピックを見つけることができます。

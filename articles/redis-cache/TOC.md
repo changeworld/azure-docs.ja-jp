@@ -1,3 +1,5 @@
+# [Redis Cache のドキュメント](index.md)
+
 # 概要
 ##[Redis Cache を使用する理由](https://azure.microsoft.com/services/cache/)
 ##[Premium レベルの機能を探索する](cache-premium-tier-intro.md)
@@ -31,7 +33,7 @@
 ## ASP.NET と統合する
 ###[セッション状態プロバイダー](cache-aspnet-session-state-provider.md)
 ###[出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)
-## 管理
+## [管理]
 ###[Azure Portal での構成](cache-configure.md)
 ###[geo レプリケーションの構成](cache-how-to-geo-replication.md)
 ###[データをインポート/エクスポートする](cache-how-to-import-export-data.md)
@@ -55,7 +57,7 @@
 ## [Java](/java/api/com.microsoft.azure.management.redis._redis_cache)
 ## [Redis クライアント](http://redis.io/clients)
 ## [Redis コマンド](http://redis.io/commands#)
-## [REST ()](https://docs.microsoft.com/rest/api/redis/)
+## [REST](https://docs.microsoft.com/rest/api/redis/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)

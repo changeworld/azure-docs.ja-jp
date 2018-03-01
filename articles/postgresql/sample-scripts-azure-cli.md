@@ -2,20 +2,20 @@
 title: "Azure Database for PostgreSQL 用 Azure CLI サンプル"
 description: "この記事では、Azure Database for PostgreSQL サーバーを操作する Azure CLI サンプル コードを紹介します。"
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: sample, mvc
-ms.date: 01/12/2018
-ms.openlocfilehash: d9b7b0cba46d16d0fae08c8f445044776cf75c10
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.date: 02/28/2018
+ms.openlocfilehash: b44f23adfb69c250757248a3462317eabaf5f111
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-cli-samples-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL 用 Azure CLI サンプル 
 次の表には、Azure Database for PostgreSQL の Azure CLI スクリプトのサンプルへのリンクが含まれています。

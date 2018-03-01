@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/26/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 2a9a565cf2c20490475d1b73b0f99fbe63e57dd3
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 34e7693ea40df2bf12fd6e9be2ef627f30748bcd
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 クエリを実行し、修復マネージャー サービスにコマンドを送信します。

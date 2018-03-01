@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 02/14/2018
 ms.author: owend
 ms.custom: mvc
-ms.openlocfilehash: 99798af8cb0a2b13f2c3c3808222113656a5a388
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 083c5a9bb5c57f3287c259900e6a23d6f0a886de
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-an-azure-analysis-services-server-by-using-powershell"></a>PowerShell を使って Azure Analysis Services サーバーを作成する
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 02/21/2018
 > [!NOTE]
 > サーバーを作成すると、新しい課金対象サービスを使用することになる場合があります。 詳しくは、「[Azure Analysis Services の価格](https://azure.microsoft.com/pricing/details/analysis-services/)」をご覧ください。
 
-## <a name="prerequisites"></a>前提条件
-このクイック スタートを完了するには、次のものが必要です。
+## <a name="before-you-begin"></a>開始する前に
+このクイック スタートを完了するための要件を次に示します。
 
 * **Azure サブスクリプション**: [Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)でアカウントを作成します。
 * **Azure Active Directory**: サブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。また、そのディレクトリのアカウントが必要となります。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。

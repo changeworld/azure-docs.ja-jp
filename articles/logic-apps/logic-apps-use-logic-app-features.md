@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/28/2017
-ms.author: LADocs; estfan
-ms.openlocfilehash: 751bcc21397effc501931c00afef05f2dab24e4a
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: estfan; LADocs
+ms.openlocfilehash: cca13db916dc2560ff78d477a0faa241e032ab27
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-logic-apps-features"></a>Logic Apps の機能を使用する
 

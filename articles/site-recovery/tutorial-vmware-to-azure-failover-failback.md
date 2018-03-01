@@ -10,10 +10,10 @@ ms.date: 02/07/2018
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: f074312ecee39d4b3022df64b51aadd2bb8f968c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="fail-over-and-fail-back-vmware-vms-and-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた VMware VM と物理サーバーのフェールオーバーとフェールバック
 

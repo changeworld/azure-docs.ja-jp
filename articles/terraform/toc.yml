@@ -1,3 +1,5 @@
+- name: Terraform on Azure のドキュメント
+  href: index.yml
 - name: 概要
   items:
     - name: Terraform on Azure について
@@ -11,11 +13,11 @@
     - name: Linux VM の作成
       href: /azure/virtual-machines/linux/terraform-create-complete-vm
       maintainContext: true
-- name: Tutorials (チュートリアル)
+- name: チュートリアル
   items:
     - name: Terraform モジュールを使用した VM クラスターの作成
       href: terraform-create-vm-cluster-module.md
-    - name: Terraform と HCL を使用した VM クラスターの作成
+    - name: Terraform と HCL を使用して VM クラスターを作成する
       href: terraform-create-vm-cluster-with-infrastructure.md
     - name: インフラストラクチャを使用した VM スケール セットのプロビジョニング
       href: terraform-create-vm-scaleset-network-disks-hcl.md

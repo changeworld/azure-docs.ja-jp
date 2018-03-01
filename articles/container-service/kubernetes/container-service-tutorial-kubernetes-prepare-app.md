@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 09/14/2017
+ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 3dcfc0d454926d6040692b0e8a9d44b13e7603c5
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 696ba0d19aef0c550b00616d00438d081081027c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="create-container-images-to-be-used-with-azure-container-service"></a>Azure Container Service で使用するコンテナー イメージを作成する
 
@@ -121,7 +121,7 @@ docker-compose down
 
 完了すると、Azure Vote アプリケーションを含むコンテナー イメージが完成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、アプリケーションをテストし、アプリケーション用のコンテナー イメージを作成しました。 次の手順を完了しました。
 

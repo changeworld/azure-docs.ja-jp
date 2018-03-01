@@ -1,10 +1,11 @@
-- name: Azure Managed Applications
+- name: Azure Managed Applications のドキュメント
   href: index.yml
 - name: 概要
   items:
     - name: マネージ アプリケーションについて
       href: overview.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: マネージ アプリケーションを作成する
       href: managed-apps-quickstart-cli.md
@@ -30,13 +31,13 @@
       href: update-managed-resources.md
     - name: ポータルを使用して発行する
       href: publish-portal.md
-- name: 参照
+- name: リファレンス
   items:
     - name: Azure CLI
       href: /cli/azure/managedapp
     - name: PowerShell
       href: /powershell/module/azurerm.resources
-    - name: REST
+    - name: REST ()
       href: /rest/api/resources/
     - name: ユーザー インターフェイスの関数
       href: create-uidefinition-functions.md
@@ -57,7 +58,7 @@
               href: microsoft-common-section.md
             - name: TextBox
               href: microsoft-common-textbox.md
-        - name: 計算
+        - name: コンピューティング
           items:
             - name: CredentialsCombo
               href: microsoft-compute-credentialscombo.md

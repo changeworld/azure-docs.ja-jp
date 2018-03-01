@@ -1,3 +1,5 @@
+# [Azure AD B2C ドキュメント](index.md)
+
 # [概要](active-directory-b2c-overview.md)
 
 # 作業開始

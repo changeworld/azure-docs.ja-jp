@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: fc16be80e776d1472be775fa32354ba157d16545
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 5012412ec642a04102836274caea253635376efb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="create-container-for-deployment-to-azure-container-instances"></a>デプロイするコンテナーを Azure Container Instances に作成する
 
@@ -32,11 +32,11 @@ Azure Container Instances では、仮想マシンをプロビジョニングし
 
 このチュートリアルでは、Azure CLI バージョン 2.0.23 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli-install]」をご覧ください。
 
-このチュートリアルの前提として、コンテナー、コンテナー イメージ、基本 `docker` コマンドなど、Docker のコア概念を基本的に理解している必要があります。 必要な場合は、[Docker の入門][docker-get-started]に関するドキュメントでコンテナーの基礎を確認してください。
+このチュートリアルの前提として、コンテナー、コンテナー イメージ、基本 `docker` コマンドなど、Docker のコア概念を基本的に理解している必要があります。 必要な場合は、[Docker の入門][docker-get-started]に関するドキュメントでコンテナーの基礎を参照してください。
 
 このチュートリアルを完了するには、ローカルにインストールされた Docker 開発環境が必要です。 Docker では、[Mac][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
-Azure Cloud Shell には、このチュートリアルの各ステップを完了するのに必要な Docker コンポーネントがすべて含まれているわけではありません。 このチュートリアルを完了するには、Azure CLI および Docker 開発環境をローカル コンピューターにインストールする必要があります。
+Azure Cloud Shell には、このチュートリアルの各ステップを完了するのに必要な Docker コンポーネントがすべて含まれているわけではありません。 このチュートリアルを完了するには、ローカル コンピューターに Azure CLI と Docker 開発環境をインストールする必要があります。
 
 ## <a name="get-application-code"></a>アプリケーションのコードを入手する
 
@@ -57,7 +57,7 @@ git clone https://github.com/Azure-Samples/aci-helloworld.git
 ```Dockerfile
 FROM node:8.9.3-alpine
 RUN mkdir -p /usr/src/app
-COPY ./app/* /usr/src/app/
+COPY ./app/ /usr/src/app/
 WORKDIR /usr/src/app
 RUN npm install
 CMD node /usr/src/app/index.js

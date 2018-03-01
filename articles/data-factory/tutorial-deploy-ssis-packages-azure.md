@@ -3,7 +3,7 @@ title: "SSIS パッケージを Azure にデプロイする | Microsoft Docs"
 description: "この記事では、Azure Data Factory によって提供される Azure-SSIS 統合ランタイムに SSIS パッケージをデプロイする方法について説明します。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: douglaslMS
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
@@ -12,12 +12,12 @@ ms.tgt_pltfrm:
 ms.devlang: powershell
 ms.topic: hero-article
 ms.date: 01/22/2018
-ms.author: spelluru
-ms.openlocfilehash: 2199808533619ed7d9ef8201363f0cef04b0f50f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: douglasl
+ms.openlocfilehash: abdf09900c59081821467229f81141bea2d7c15c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="deploy-sql-server-integration-services-packages-to-azure"></a>SQL Server Integration Services パッケージを Azure にデプロイする
 このチュートリアルでは、Azure-SSIS 統合ランタイム (IR) を Azure Data Factory にプロビジョニングする手順について説明します。 その後、SQL Server Data Tools (SSDT) または SQL Server Management Studio (SSMS) を使用して、Azure 上のこのランタイムに SQL Server Integration Services (SSIS) パッケージをデプロイできます。 このチュートリアルでは、次の手順を実行します。
@@ -46,8 +46,8 @@ ms.lasthandoff: 02/21/2018
 - **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。 SSIS パッケージをクラウドで実行する Azure-SSIS 統合ランタイムは、スクリプトを実行してプロビジョニングします。PowerShell はその実行に使用します。 
 
 > [!NOTE]
-> - バージョン 2 のデータ ファクトリを作成することができるリージョンは、米国東部、米国東部 2、東南アジア、および西ヨーロッパです。 
-> - Azure-SSIS IR を作成できるリージョンは、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、およびオーストラリア東部です。
+> - バージョン 2 のデータ ファクトリは、米国東部、米国東部 2、東南アジア、西ヨーロッパの各リージョンで作成できます。 
+> - Azure-SSIS IR は、米国東部、米国東部 2、米国中部、北ヨーロッパ、西ヨーロッパ、オーストラリア東部の各リージョンで作成できます。
 
 ## <a name="launch-windows-powershell-ise"></a>Windows PowerShell ISE の起動
 管理特権を使用して **Windows PowerShell ISE** を起動します。 

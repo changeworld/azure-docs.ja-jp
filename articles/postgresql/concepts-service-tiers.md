@@ -11,10 +11,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 11/03/2017
 ms.openlocfilehash: 9de2d93735942903df9320741baadf2c934bd7ab
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL のオプションとパフォーマンス: 各価格レベルで使用できる内容
 Azure Database for PostgreSQL を作成するときは、そのサーバーに割り当てられたリソースを構成する 3 つの主な選択肢を決定します。 これらの選択肢は、サーバーのパフォーマンスとスケールに影響します。
@@ -81,7 +81,7 @@ Azure Database for PostgreSQL サーバーの価格レベルが決定したら�
 \* 最大サーバー ストレージ サイズは、サーバーのプロビジョニング済みストレージの最大サイズを意味します。
 
 ## <a name="storage"></a>Storage 
-ストレージ構成は、Azure Database for PostgreSQL サーバーで使用可能なストレージ容量を定義します。 サービスによって使用されるストレージには、データベース ファイル、一時ファイル、トランザクション ログ、および PostgreSQL、サーバー ログが含まれています。 ストレージ構成を選択する場合には、データベースをホストする必要があるストレージのサイズと、パフォーマンス要件 (IOPS) を検討してください。
+ストレージ構成は、Azure Database for PostgreSQL サーバーで使用可能なストレージ容量を定義します。 サービスで使用されるストレージには、データベース ファイル、一時ファイル、トランザクション ログ、および PostgreSQL サーバー ログが含まれます。 ストレージ構成を選択する場合には、データベースをホストする必要があるストレージのサイズと、パフォーマンス要件 (IOPS) を検討してください。
 
 各価格レベルには、前述の表の「含まれるストレージ サイズ」に示すとおり、最小ストレージ容量が含まれています。 サーバーの作成時に、ストレージ容量を 125 GB ずつ、許容される最大ストレージ容量まで追加できます。 追加のストレージ容量は、コンピューティング ユニットの構成とは別に構成できます。 価格は、選択するストレージ容量に応じて変わります。
 

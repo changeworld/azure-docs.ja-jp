@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 08/25/2017
+ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: 
-ms.openlocfilehash: d56c0b466cec1df41fb86bbc89843e783513e9a4
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 3c06aaa09366df89ad73cb60780511d2087d5994
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="deploy-docker-ce-cluster"></a>Docker CE クラスターのデプロイ
 

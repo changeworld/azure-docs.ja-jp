@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/19/2017
 ms.author: raynew
 ms.openlocfilehash: 8bae8688e322efd0a0556cf01e319252d42fc31d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>物理サーバーから Azure へのレプリケーション アーキテクチャ
 

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 1ad6ba7126b210ddc671026244c4c614d7010000
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: 8455a45f1c39c5cb04f742d57a16a81776f850e0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用
 
@@ -49,7 +49,7 @@ Hive と Pig では、両方とも、外部のアプリケーションにデー�
 
 ## <a name="net-on-hdinsight"></a>HDInsight の .NET
 
-* [Mono (https://mono-project.com)](https://mono-project.com) を使用した __Linux ベースの HDInsight__ クラスターで .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.5 に付属しています。
+* [Mono (https://mono-project.com)](https://mono-project.com) を使用した __Linux ベースの HDInsight__ クラスターで .NET アプリケーションを実行します。 Mono バージョン 4.2.1 は HDInsight バージョン 3.6 に付属しています。
 
     .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
@@ -222,7 +222,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
 
 1. HDInsight クラスターに接続するには、次のいずれかの方法を使用します。
 
-    * __Linux ベース__の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「 `ssh sshuser@mycluster-ssh.azurehdinsight.net`」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
+    * __Linux ベース__の HDInsight クラスターを使用している場合は、SSH を使用します。 たとえば、「`ssh sshuser@mycluster-ssh.azurehdinsight.net`」のように入力します。 詳細については、「[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)」を参照してください。
     
     * __Windows ベース__ の HDInsight クラスターを使用している場合は、[リモート デスクトップを使用してクラスターに接続します。](../hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp)
 
@@ -260,7 +260,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
         (2012-02-03 20:11:56 SampleClass5 [TRACE] verbose detail for id 1737534798)
         (2012-02-03 20:11:56 SampleClass7 [DEBUG] detail for id 1475865947)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、HDInsight の Hive と Pig から .NET Framework アプリケーションを使用する方法について説明しました。 Hive と Pig で Python を使用する方法について学習するには、「[HDInsight における Python と Hive および Pig の使用](python-udf-hdinsight.md)」をご覧ください。
 

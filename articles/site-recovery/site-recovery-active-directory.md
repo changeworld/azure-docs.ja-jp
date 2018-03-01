@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: 71e28d7c91526de07e64a294873d3f25fe5378f7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery を使用して Active Directory と DNS を保護する
 
@@ -80,7 +80,7 @@ Site Recovery を使用してレプリケートされたドメイン コント�
     ![Azure テスト ネットワーク](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
-    > Site Recovery は、仮想マシンの **[コンピューティングとネットワーク]** 設定で指定されているのと同じ IP アドレスを使用して、同じ名前のサブネットに、テスト仮想マシンの作成を試みます。 テスト フェールオーバー用に指定された Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト仮想マシンが作成されます。 
+    > Site Recovery は、仮想マシンの **[コンピューティングとネットワーク]** 設定で指定されているのと同じ IP アドレスを使用して、同じ名前のサブネットに、テスト仮想マシンの作成を試みます。 テスト フェールオーバー用に指定された Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト仮想マシンが作成されます。
     >
     > ターゲット IP が選択したサブネットの一部である場合、Site Recovery は、ターゲット IP アドレスを使用してテスト フェールオーバー仮想マシンの作成を試みます。 ターゲット IP が選択したサブネットの一部でない場合、テスト フェールオーバー仮想マシンは、選択したサブネット内の使用可能な次の IP を使用して作成されます。
     >
@@ -110,7 +110,7 @@ Windows Server 2012 以降では、[Active Directory Domain Services (AD DS)に�
 
 **VM-GenerationID** がリセットされると、AD DS データベースの **InvocationID** 値もリセットされます。 さらに、RID プールが破棄され、SYSVOL が権限なしとしてマークされます。 詳細については、[Active Directory Domain Services の仮想化の概要](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)に関するページと、「[Safely virtualizing DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)」(DFSR の安全な仮想化) をご覧ください。
 
-Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにログインできるまでに*かなり時間がかかる*可能性があります。 
+Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにログインできるまでに*かなり時間がかかる*可能性があります。
 
 このドメイン コントローラーはテスト フェールオーバー専用であるため、仮想化のセーフガードは必要ありません。 ドメイン コントローラー仮想マシンの **VM-GenerationID** が変更されないようにするには、オンプレミス ドメイン コントローラーで次の DWORD の値を **4** に変更します。
 
@@ -165,20 +165,20 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 上記の条件が満たされている場合、ドメイン コントローラーは正常に機能していると考えられます。 満たされていない場合は、次の手順を実行します。
 
 1. ドメイン コントローラーの Authoritative Restore を実行します。 次の情報を考慮してください。
-    * [FRS レプリケーション](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)は推奨されませんが、FRS レプリケーションを使用している場合は、次の手順に従って Authoritative Restore を行います。 プロセスについては、「[BurFlags レジストリ キーを使用してファイル レプリケーション サービスのレプリカ セットを再初期化する](https://support.microsoft.com/kb/290762)」をご覧ください。 
-    
+    * [FRS レプリケーション](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)は推奨されませんが、FRS レプリケーションを使用している場合は、次の手順に従って Authoritative Restore を行います。 プロセスについては、「[BurFlags レジストリ キーを使用してファイル レプリケーション サービスのレプリカ セットを再初期化する](https://support.microsoft.com/kb/290762)」をご覧ください。
+
         BurFlags の詳細については、ブログ記事「[D2 and D4: What is it for?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」(D2 と D4: 何のために使用するか?) をご覧ください。
-    * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated SYSVOL (like "D4/D2" for FRS)](https://support.microsoft.com/kb/2218556)」(DFSR でレプリケートされた SYSVOL (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する) をご覧ください。 
-    
+    * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated SYSVOL (like "D4/D2" for FRS)](https://support.microsoft.com/kb/2218556)」(DFSR でレプリケートされた SYSVOL (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する) をご覧ください。
+
         PowerShell 関数を使用することもできます。 詳細については、「[DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)」(DFSR-SYSVOL の権限のある/権限のない復元の PowerShell 関数) をご覧ください。
 
-2. オンプレミス ドメイン コントローラーで次のレジストリ キーを **0** に設定して、初期同期要件をバイパスします。 この DWORD 値が存在しない場合は、**Parameters** ノードの下に作成できます。 
+2. オンプレミス ドメイン コントローラーで次のレジストリ キーを **0** に設定して、初期同期要件をバイパスします。 この DWORD 値が存在しない場合は、**Parameters** ノードの下に作成できます。
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
 
     詳細については、「[Troubleshoot DNS Event ID 4013: The DNS server was unable to load AD integrated DNS zones](https://support.microsoft.com/kb/2001093)」(DNS イベント ID 4013: DNS サーバーは AD 統合された DNS ゾーンを読み込めませんでした) をご覧ください。
 
-3. ユーザーのログインを検証するためにグローバル カタログ サーバーを利用可能にする要件を無効にします。 これを行うには、オンプレミス ドメイン コントローラーで、次のレジストリ キーを **1** に設定します。 この DWORD 値が存在しない場合は、**Lsa** ノードの下に作成できます。 
+3. ユーザーのログインを検証するためにグローバル カタログ サーバーを利用可能にする要件を無効にします。 これを行うには、オンプレミス ドメイン コントローラーで、次のレジストリ キーを **1** に設定します。 この DWORD 値が存在しない場合は、**Lsa** ノードの下に作成できます。
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 

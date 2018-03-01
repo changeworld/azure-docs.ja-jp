@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL の接続ライブラリ | Microsoft Docs"
+title: "Azure Database for MySQL の接続ライブラリ"
 description: "この記事では、クライアント プログラムが Azure Database for MySQL に接続するときに使用できる各ライブラリまたはドライバーを示します。"
 services: mysql
 author: mswutao
 ms.author: wutao
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/20/2017
-ms.openlocfilehash: 759fa290cff94b04e29edd818b985b11267caab7
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.date: 02/28/2018
+ms.openlocfilehash: c22bb9b31e7623daa635f82256e28ed466070481
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="connection-libraries-for-azure-database-for-mysql"></a>Azure Database for MySQL の接続ライブラリ
 この記事では、クライアント プログラムが Azure Database for MySQL に接続するときに使用できる各ライブラリまたはドライバーを示します。
@@ -34,7 +34,7 @@ MySQL では、業界標準の ODBC および JDBC と互換性のあるアプ�
 | Perl | Windows、Linux、Mac OS X、Unix プラットフォーム | [DBD::MySQL](https://metacpan.org/pod/DBD::mysql) | [ダウンロード](https://metacpan.org/pod/DBD::mysql) |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これらのクイックスタートを読み、次の言語を使用して Azure Database for MySQL に接続およびクエリを実行する方法について確認します。
 
 [PHP](./connect-php.md) | [Java](./connect-java.md) |  [.NET (C#)](./connect-csharp.md) | [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [Ruby](./connect-ruby.md) | [C++](connect-cpp.md) | [Go](./connect-go.md)
