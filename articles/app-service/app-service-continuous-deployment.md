@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service への継続的なデプロイ | Microsoft Docs"
 description: "Azure App Service への継続的なデプロイを有効にする方法を説明します。"
 services: app-service
