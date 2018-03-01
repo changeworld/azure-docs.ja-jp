@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.openlocfilehash: 3ac630982b47f7105feb034982eae070faa72d9e
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.openlocfilehash: c4779ada60fab2db5249a107abfc7ca6f80cb16f
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のためのネットワークの考慮事項 #
+# <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のネットワークの考慮事項 #
 
 ## <a name="overview"></a>概要 ##
 
@@ -47,7 +47,7 @@ ILB ASE が存在する場合、ILB の IP アドレスは、HTTP/S、FTP/S、We
 
 通常のアプリのアクセス ポートは次のとおりです。
 
-| 用途 | ソース | To |
+| 用途 | ソース | ターゲット |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | ユーザーが構成可能 |  80、443 |
 |  FTP/FTPS    | ユーザーが構成可能 |  21、990、10001-10020 |
@@ -55,11 +55,18 @@ ILB ASE が存在する場合、ILB の IP アドレスは、HTTP/S、FTP/S、We
 
 これは、ユーザーが外部 ASE または ILB ASE にいる場合に当てはまります。 外部 ASE にいる場合は、パブリック VIP でこれらのポートにヒットします。 ILB ASE にいる場合は、ILB でこれらのポートにヒットします。 ポート 443 をロックダウンすると、ポータルで公開されている一部の機能に影響が出る場合があります。 詳細については、「[ポータルの依存関係](#portaldep)」を参照してください。
 
+## <a name="ase-subnet-size"></a>ASE サブネットのサイズ ##
+
+ASE をデプロイした後は、ASE をホストするために使用されるサブネットのサイズを変更することはできません。  ASE では、インフラストラクチャのロールごと、および独立した App Service プラン インスタンスごとにアドレスが使用されます。  さらに、作成されたすべてのサブネットに対して Azure ネットワークが使用するアドレスが 5 つあります。  App Service プランを持たない ASE では、アプリを作成する前の段階で 12 個のアドレスが使用されます。  ILB ASE の場合は、その ASE にアプリを作成する前の段階で 13 個のアドレスが使用されます。 App Service プランをスケールアウトする場合は、追加されるフロントエンドごとに追加のアドレスが必要になります。  既定では、合計 15 個の App Service プラン インスタンスごとにフロントエンド サーバーが追加されます。 
+
+   > [!NOTE]
+   > サブネット内には ASE の他に何も存在できません。 将来の拡張を考慮に入れたアドレス空間を選択するようにしてください。 この設定を後で変更することはできません。 推奨されるサイズは、128 のアドレスを持つ `/25` です。
+
 ## <a name="ase-dependencies"></a>ASE の依存関係 ##
 
 ASE の着信アクセスの依存関係は次のとおりです。
 
-| 用途 | ソース | To |
+| 用途 | ソース | ターゲット |
 |-----|------|----|
 | 管理 | App Service の管理アドレス | ASE サブネット: 454、455 |
 |  ASE 内部通信 | ASE サブネット: すべてのポート | ASE サブネット: すべてのポート
@@ -79,7 +86,7 @@ Azure Load Balancer と ASE サブネット間の通信では、最低限開く�
 | 用途 | ソース | ターゲット |
 |-----|------|----|
 | Azure Storage (Azure Storage) | ASE サブネット | table.core.windows.net、blob.core.windows.net、queue.core.windows.net、file.core.windows.net: 80、443、445 (445 は ASEv1 にのみ必要です。) |
-| Azure SQL Database | ASE サブネット | database.windows.net: 1433、11000-11999、14000-14999 (詳細については、[SQL Database V12 ポートの使用](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)に関するページを参照。)|
+| の接続文字列 | ASE サブネット | database.windows.net: 1433、11000-11999、14000-14999 (詳細については、[SQL Database V12 ポートの使用](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)に関するページを参照。)|
 | Azure の管理 | ASE サブネット | management.core.windows.net、management.azure.com: 443 
 | SSL 証明書の検証 |  ASE サブネット            |  ocsp.msocsp.com、mscrl.microsoft.com、crl.microsoft.com: 443
 | Azure Active Directory        | ASE サブネット            |  インターネット: 443
@@ -150,7 +157,7 @@ ASE では、ASE 自体をホストするために使用する VM にアクセ�
 
 NSG は、Azure Portal または PowerShell を使用して構成できます。 ここにある情報は、Azure Portal を示しています。 ポータルで NSG を **[ネットワーク]** の下の最上位のリソースとして作成して管理します。
 
-受信と送信の要件を考慮すると、NSG は、この例に示されている NSG のようになります。 VNet アドレスの範囲は _192.168.250.0/16_ であり、ASE が存在するサブネットは _192.168.251.128/25_ です。
+受信と送信の要件を考慮すると、NSG は、この例に示されている NSG のようになります。 VNet アドレスの範囲は _192.168.250.0/23_ であり、ASE が存在するサブネットは _192.168.251.128/25_ です。
 
 この例の一覧の先頭には、ASE が機能するための最初の 2 つの受信要件が示されています。 これらは ASE 管理を有効にし、ASE に自身との通信を許可します。 その他のエントリはすべてテナント構成可能であり、ASE でホストされたアプリケーションへのネットワーク アクセスを制御できます。 
 
@@ -168,13 +175,13 @@ NSG が定義されたら、それを ASE が存在するサブネットに割�
 
 ## <a name="routes"></a>ルート ##
 
-ルートで問題が発生するのは通常、Azure ExpressRoute で VNet を構成する場合です。 VNet 内のルートの種類には、次の 3 つがあります。
+強制トンネリングとは何か、またどのように扱えばよいかを考えるうえで、ルートは重要な要素です。 Azure 仮想ネットワークでは、最長プレフィックス一致 (LPM) に基づいてルーティングが実行されます。 同じ LPM マッチの複数のルートが存在する場合は、そのルートが検出された経緯に応じて次の順序でルートが選択されます。
 
--   システム ルート
--   BGP のルート
--   ユーザー定義ルート (UDR)
+- ユーザー定義のルート (UDR)
+- BGP のルート (ExpressRoute を使用している場合)
+- システム ルート
 
-BGP ルートはシステム ルートを上書きします。 UDR は、BGP ルートをオーバーライドします。 Azure 仮想ネットワーク内のルートの詳細については、[ユーザー定義ルートの概要][UDRs]に関するページをご覧ください。
+仮想ネットワークにおけるルーティングの詳細については、[ユーザー定義ルートと IP 転送][UDRs]に関するページをご覧ください。
 
 ASE がシステムを管理するために使用する Azure SQL データベースには、ファイアウォールがあります。 これには、ASE パブリック VIP から発信するための通信が必要です。 ASE から SQL データベースへの接続は、ExpressRoute 接続経由で別の IP アドレスに送信される場合は拒否されます。
 

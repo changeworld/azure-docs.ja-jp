@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: 5e1c3df24b0fc3e733981ab3f8814a9e6641f5f1
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: b58a4b215b13d2e57a69a94a60e3e37471c926c8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-store"></a>Azure Data Lake Store の診断ログへのアクセス
 Data Lake Store アカウントの診断ログを有効にする方法と、アカウント用に収集されたログを表示する方法について説明します。
@@ -114,7 +114,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
     }
 
 #### <a name="request-log-schema"></a>要求ログのスキーマ
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | ResourceId |String |操作が行われたリソースの ID |
@@ -127,7 +127,7 @@ JSON 形式の要求ログのエントリの例を次に示します。 各 BLOB
 | プロパティ |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="request-log-properties-schema"></a>要求ログのプロパティのスキーマ
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | HttpMethod |String |操作に使用される HTTP メソッド。 GET など。 |
 | パス |String |操作が実行されたパス |
@@ -160,7 +160,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
     }
 
 #### <a name="audit-log-schema"></a>監査ログのスキーマ
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | time |String |ログのタイムスタンプ (UTC) |
 | ResourceId |String |操作が行われたリソースの ID |
@@ -172,7 +172,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | プロパティ |JSON |詳細については、以下をご覧ください。 |
 
 #### <a name="audit-log-properties-schema"></a>監査ログのプロパティのスキーマ
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | StreamName |String |操作が実行されたパス |
 

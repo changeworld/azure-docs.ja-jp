@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory を使用して開発者アカウントを認証する - Azure API Management | Microsoft Docs"
-description: "API Management で Azure Active Directory を使用してユーザーを認証する方法について説明します。"
+title: "Azure Active Directory を使用して開発者アカウントを承認する - Azure API Management | Microsoft Docs"
+description: "API Management で Azure Active Directory を使用してユーザーを承認する方法について説明します。"
 services: api-management
 documentationcenter: API Management
 author: juliako
@@ -13,144 +13,156 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: apimpm
-ms.openlocfilehash: c9d99d6f7c2777c8e68f5db50b402280377d88e9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d89257cba70fb82d56fb1beef8a8efe66a8af02d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="how-to-authorize-developer-accounts-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを認証する方法
+# <a name="authorize-developer-accounts-by-using-azure-active-directory-in-azure-api-management"></a>Azure API Management で Azure Active Directory を使用して開発者アカウントを承認する
 
-このガイドでは、Azure Active Directory 内のユーザーに対して開発者ポータルへのアクセスを有効にする方法について説明します。 また、Azure Active Directory のユーザーが含まれた外部グループを追加することで Azure Active Directory ユーザーのグループを管理する方法についても説明します。
+この記事では、Azure Active Directory (Azure AD) 内のユーザーに対して開発者ポータルへのアクセスを有効にする方法について説明します。 また、Azure AD ユーザーが含まれた外部グループを追加することで Azure AD ユーザーのグループを管理する方法についても説明します。
 
-> [!WARNING]
-> Azure Active Directory 統合は、[Developer、Standard、および Premium](https://azure.microsoft.com/pricing/details/api-management/) の各レベルでのみ使用可能です。
+> [!NOTE]
+> Azure AD 統合は、[Developer、Standard、および Premium](https://azure.microsoft.com/pricing/details/api-management/) の各レベルでのみ使用可能です。
 
 ## <a name="prerequisites"></a>前提条件
 
 - [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
-- API Management インスタンスをインポートして発行します。 詳細については、[インポートと発行](import-and-publish.md)に関するページを参照してください。
+- Azure API Management インスタンスをインポートして発行します。 詳細については、[インポートと発行](import-and-publish.md)に関するページを参照してください。
 
-## <a name="how-to-authorize-developer-accounts-using-azure-active-directory"></a>Azure Active Directory を使用して開発者アカウントを認証する方法
+## <a name="authorize-developer-accounts-by-using-azure-ad"></a>Azure AD を使用して開発者アカウントを承認する
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。 
 2. elect ![矢印](./media/api-management-howto-aad/arrow.png)が必要です。
-3. 検索ボックスに、「api」と入力します。
-4. **[API Management サービス]** をクリックします。
-5. APIM サービス インスタンスを選びます。
+3. 検索ボックスに、「**api**」と入力します。
+4. **[API Management サービス]** を選択します。
+5. お使いの API Management サービス インスタンスを選択します。
 6. **[セキュリティ]** の **[ID]** を選択します。
 
-    ![[外部 ID]](./media/api-management-howto-aad/api-management-with-aad001.png)
-7. 一番上にある **[+追加]** をクリックします。
+7. 一番上にある **[+追加]** を選択します。
 
     **[ID プロバイダーの追加]** ウィンドウが右側に表示されます。
 8. **[プロバイダーの種類]** で **[Azure Active Directory]** を選択します。
 
-    その他必要な情報を入力するためのコントロールがウィンドウに表示されます。 そのようなコントロールとして、**[クライアント ID]** や **[クライアント シークレット]** があります (必要な情報は、後でこのチュートリアルの中で取得します)。
-9. **[リダイレクト URL]** をメモします。  
+    その他必要な情報を入力するためのコントロールがウィンドウに表示されます。 そのようなコントロールとして、**[クライアント ID]** や **[クライアント シークレット]** があります  (これらのコントロールに関する情報は、記事の後半で取得します)。
+9. **[リダイレクト URL]** の内容をメモします。
+    
+   ![Azure Portal で ID プロバイダーを追加するための手順](./media/api-management-howto-aad/api-management-with-aad001.png)  
 10. ブラウザーで別のタブを開きます。 
-11. [Azure Portal](https://portal.azure.com) を開きます。
+11. [Azure ポータル](https://portal.azure.com)にアクセスします。
 12. elect ![矢印](./media/api-management-howto-aad/arrow.png)が必要です。
-13. 「active」と入力して、**Azure Active Directory** を表示します。
+13. 「**active**」と入力します。 **[Azure Active Directory]** ウィンドウが表示されます。
 14. **[Azure Active Directory]**を選択します。
 15. **[管理]** の **[アプリの登録]** を選択します。
+16. **[新しいアプリケーションの登録]** を選択します。
 
-    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad002.png)
-16. **[新しいアプリケーションの登録]** をクリックします。
+    ![新しいアプリの登録を作成するための選択内容](./media/api-management-howto-aad/api-management-with-aad002.png)
 
-    **[作成]** ウィンドウが右側に表示されます。 ここに AAD アプリの関連情報を入力します。
+    **[作成]** ウィンドウが右側に表示されます。 ここに Azure AD アプリの関連情報を入力します。
 17. アプリケーションの名前を入力します。
 18. アプリケーション タイプとして **[Web アプリ/API]** を選択します。
-19. [サインオン URL] には、開発者ポータルのサインオン URL を入力します。 この例では、https://apimwithaad.portal.azure-api.net/signin がサインオン URL です。
-20. **[作成]** をクリックして、アプリケーションを作成します。
+19. サインイン URL には、開発者ポータルのサインイン URL を入力します。 この例では、https://apimwithaad.portal.azure-api.net/signin がサインイン URL です。
+20. **[作成]** を選択して、アプリケーションを作成します。
 21. アプリを検索するには、**[アプリの登録]** を選択して名前で検索します。
 
-    ![アプリの登録](./media/api-management-howto-aad/find-your-app.png)
-22. アプリケーションの登録後、**[応答 URL]** に移動し、[リダイレクト URL] が、手順 9. でメモした値に設定されていることを確認します。 
-23. アプリケーションを構成する場合 (**アプリ ID の URL** を変更するなど)、**[プロパティ]** を選択します。
+    ![アプリの検索ボックス](./media/api-management-howto-aad/find-your-app.png)
+22. アプリケーションの登録後、**[応答 URL]** に移動し、**[リダイレクト URL]** が、手順 9. でメモした値に設定されていることを確認します。 
+23. アプリケーションを構成する場合 (**アプリ ID の URL** を変更するなど) は、**[プロパティ]** を選択します。
 
-    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad004.png)
+    ![[プロパティ] ウィンドウを開く](./media/api-management-howto-aad/api-management-with-aad004.png)
 
-    このアプリケーションで複数の Azure Active Directory を使用する場合は、**[アプリケーションはマルチテナントです]** で **[はい]** をクリックします。 既定値は **[いいえ]**です。
+    このアプリケーションで複数の Azure AD インスタンスを使用する場合は、**[マルチテナント]** に対して **[はい]** を選択します。 既定値は **[いいえ]**です。
 24. **[必要なアクセス許可]** を選択して、アプリケーションのアクセス許可を設定します。
 25. アプリケーションを選択し、**[ディレクトリ データの読み取り]** と **[サインインとユーザー プロファイルの読み取り]** のチェック ボックスをオンにします。
 
-    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad005.png)
+    ![アクセス許可のチェック ボックス](./media/api-management-howto-aad/api-management-with-aad005.png)
 
-    アプリケーションと委任されたアクセス許可の詳細については、「[Graph API にアクセスする][Accessing the Graph API]」を参照してください。
+    アプリケーションのアクセス許可と委任されたアクセス許可の詳細については、[Graph API へのアクセス][Accessing the Graph API]に関するページを参照してください。
 26. 左側のウィンドウで、**[アプリケーション ID]** の値をコピーします。
 
-    ![アプリの登録](./media/api-management-howto-aad/application-id.png)
-27. API Management アプリケーションに戻ります。 **[ID プロバイダーの追加]** ウィンドウが表示されます。 <br/>**[クライアント ID]** ボックスに **[アプリケーション ID]** の値を貼り付けます。
-28. Azure Active Directory の構成に戻り、**[キー]** をクリックします。
+    ![[アプリケーション ID] の値](./media/api-management-howto-aad/application-id.png)
+27. API Management アプリケーションに戻ります。 
+
+    **[ID プロバイダーの追加]** ウィンドウで、**[クライアント ID]** ボックスに **[アプリケーション ID]** の値を貼り付けます。
+28. Azure AD の構成に戻り、**[キー]** を選択します。
 29. 名前と期間を指定して新しいキーを作成します。 
-30. **[Save]** をクリックします。 キーが生成されます。
+30. **[保存]** を選択します。 キーが生成されます。
 
     キーをクリップボードにコピーします。
 
-    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad006.png)
+    ![キーを作成するための選択内容](./media/api-management-howto-aad/api-management-with-aad006.png)
 
     > [!NOTE]
-    > このキーを書き留めておきます。 Azure Active Directory の構成ウィンドウを閉じると、キーは再表示できません。
+    > このキーを書き留めておきます。 Azure AD の構成ウィンドウを閉じた後はキーを再表示できません。
     > 
     > 
-31. API Management アプリケーションに戻ります。 <br/>**[ID プロバイダーの追加]** ウィンドウの **[クライアント シークレット]** ボックスにキーを貼り付けます。
-32. **[ID プロバイダーの追加]** ウィンドウの **[許可されているテナント]** ボックスで、API Management サービス インスタンスの API にアクセスできるディレクトリを指定します。 <br/>アクセス許可を付与する Azure Active Directory インスタンスのドメインを指定します。 複数のドメインを指定する場合は、改行文字、スペース、またはコンマで区切ります。
+31. API Management アプリケーションに戻ります。 
 
-    **[許可されたテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがログインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するには、全体管理者は `https://<URL of your developer portal>/aadadminconsent` (たとえば、https://contoso.portal.azure-api.net/aadadminconsent) に移動し、アクセス許可する Active Directory テナントのドメイン名を入力して、[送信] をクリックします。 次の例では、`miaoaad.onmicrosoft.com` の全体管理者がこの特定の開発者ポータルの権限を付与しようとしています。 
+    **[ID プロバイダーの追加]** ウィンドウで、**[クライアント シークレット]** ボックスにキーを貼り付けます。
+32. **[ID プロバイダーの追加]** ウィンドウには、**[許可されているテナント]** テキスト ボックスもあります。 ここには、API Management サービス インスタンスの API へのアクセスを許可する Azure AD インスタンスのドメインを指定します。 複数のドメインを指定する場合は、改行文字、スペース、またはコンマで区切ります。
 
-33. 必要な構成を指定したら、**[追加]** をクリックします。
+    **[許可されているテナント]** セクションには、複数のドメインを指定できます。 アプリケーションが登録されている元のドメインとは別のドメインからユーザーがサインインするには、別のドメインの全体管理者がアプリケーションにディレクトリ データへのアクセス許可を付与する必要があります。 アクセス許可を付与するために、全体管理者は次の操作を行う必要があります。
+    
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `https://<URL of your developer portal>/aadadminconsent` (たとえば、https://contoso.portal.azure-api.net/aadadminconsent) に移動します。
+    
+    b. アクセスを許可する Azure AD テナントのドメイン名を入力します。
+    
+    c. **[Submit]\(送信\)** をクリックします。 
+    
+    次の例では、miaoaad.onmicrosoft.com の全体管理者がこの特定の開発者ポータルの権限を付与しようとしています。 
 
-    ![アプリの登録](./media/api-management-howto-aad/api-management-with-aad007.png)
+33. 必要な構成を指定したら、**[追加]** を選択します。
 
-変更が保存さたら、指定された Azure Active Directory 内のユーザーは、「[Azure Active Directory アカウントを使用して開発者ポータルにログインする方法](#log_in_to_dev_portal)」の手順に従って開発者ポータルにサインインできます。
+    ![[ID プロバイダーの追加] ウィンドウの [追加] ボタン](./media/api-management-howto-aad/api-management-with-aad007.png)
 
-![アクセス許可](./media/api-management-howto-aad/api-management-aad-consent.png)
+変更が保存されると、指定された Azure AD インスタンスのユーザーは、「[Azure AD アカウントを使用して開発者ポータルにサインインする](#log_in_to_dev_portal)」の手順に従って開発者ポータルにサインインできます。
+
+![Azure AD テナントの名前の入力](./media/api-management-howto-aad/api-management-aad-consent.png)
 
 次の画面で、アクセス許可の付与を確認するメッセージが全体管理者に表示されます。 
 
-![アクセス許可](./media/api-management-howto-aad/api-management-permissions-form.png)
+![アクセス許可の割り当ての確認](./media/api-management-howto-aad/api-management-permissions-form.png)
 
-全体管理者がアクセス許可を付与する前に全体管理者以外のユーザーがログインしようとすると、ログインに失敗し、エラー画面が表示されます。
+全体管理者がアクセス許可を付与する前に全体管理者以外のユーザーがログインしようとすると、サインイン試行は失敗し、エラー画面が表示されます。
 
-## <a name="how-to-add-an-external-azure-active-directory-group"></a>外部の Azure Active Directory グループを追加する方法
+## <a name="add-an-external-azure-ad-group"></a>外部 Azure AD グループを追加する
 
-Azure Active Directory 内のユーザーのアクセスを有効にした後は、Azure Active Directory のグループを API Management に追加することで、グループ内の開発者と目的の成果物の関連付けを管理しやすくすることができます。
+Azure AD インスタンス内のユーザーのアクセスを有効にした後、API Management で Azure AD グループを追加できます。 これにより、グループ内の開発者と目的の成果物の関連付けをより簡単に管理できます。
 
-外部の Azure Active Directory グループを構成するには、先に前のセクションの手順を実行して、[外部 ID] タブで Azure Active Directory を構成する必要があります。 
+外部の Azure AD グループを構成するには、先に前のセクションの手順を実行して、**[ID]** タブで Azure AD を構成する必要があります。 
 
-API Management インスタンスの **[グループ]** タブから、外部の Azure Active Directory グループが追加されます。
-
-![グループ](./media/api-management-howto-aad/api-management-with-aad008.png)
+外部の Azure AD グループは、API Management インスタンスの **[グループ]** タブから追加します。
 
 1. **[グループ]** タブを選択します。
-2. **[AAD グループの追加]** ボタンをクリックします。
+2. **[AAD グループの追加]** ボタンを選択します。
+   ![[AAD グループの追加] ボタン](./media/api-management-howto-aad/api-management-with-aad008.png)
 3. 追加するグループを選択します。
 4. **[選択]** ボタンを押します。
 
-Azure Active Directory グループの作成後、追加された外部グループのプロパティを確認して構成するには、**[グループ]** タブでグループの名前をクリックします。
-
-ここでは、グループの **[名前]** と **[説明]** を編集できます。
+外部 Azure AD グループを追加した後、そのプロパティを確認および構成できます。 **[グループ]** タブからグループの名前を選択します。ここでは、グループの **[名前]** と **[説明]** の情報を編集できます。
  
-構成した Azure Active Directory のユーザーは、開発者ポータルにサインインし、次のセクションの指示に従って、可視性を有効化されたグループの表示とサブスクライブを実行できます。
+これで、構成された Azure AD インスタンスのユーザーが開発者ポータルにサインインできるようになります。 これらのユーザーは、可視性があるすべてのグループを表示し、サブスクライブすることができます。
 
-## <a name="a-idlogintodevportalhow-to-log-in-to-the-developer-portal-using-an-azure-active-directory-account"></a><a id="log_in_to_dev_portal"/>Azure Active Directory アカウントを使用して開発者ポータルにログインする方法
+## <a name="a-idlogintodevportalsign-in-to-the-developer-portal-by-using-an-azure-ad-account"></a><a id="log_in_to_dev_portal"/>Azure AD アカウントを使用して開発者ポータルにサインインする
 
-前のセクションで構成した Azure Active Directory アカウントを使用して開発者ポータルにログインするには、Active Directory のアプリケーション構成の**サインオン URL** を使用して新しいブラウザー ウィンドウを開き、**[Azure Active Directory]** をクリックします。
+前のセクションで構成した Azure AD アカウントを使用して開発者ポータルにサインインするには、次の操作を行います。
 
-![開発者ポータル][api-management-dev-portal-signin]
+1. Active Directory のアプリケーション構成のサインイン URL を使用して新しいブラウザー ウィンドウを開き、**[Azure Active Directory]** を選択します。
 
-Azure Active Directory 内のいずれかのユーザーの資格情報を入力し、 **[サインイン]**をクリックします。
+   ![サインイン ページ][api-management-dev-portal-signin]
 
-![[サインイン]][api-management-aad-signin]
+2. Azure AD 内のいずれかのユーザーの資格情報を入力し、**[サインイン]** を選択します。
 
-追加情報が必要な場合は、登録フォームが表示されることがあります。 登録フォームに入力し、 **[サインアップ]**をクリックします。
+   ![ユーザー名とパスワードを使用してサインインする][api-management-aad-signin]
 
-![登録][api-management-complete-registration]
+3. 追加情報が必要な場合は、登録フォームが表示されることがあります。 登録フォームに入力し、**[サインアップ]** を選択します。
 
-ユーザーが API Management サービス インスタンスの開発者ポータルにログインしました。
+   ![登録フォームの [サインアップ] ボタン][api-management-complete-registration]
 
-![登録の完了][api-management-registration-complete]
+ユーザーは、API Management サービス インスタンスの開発者ポータルにサインインしました。
+
+![登録が完了した後の開発者ポータル][api-management-registration-complete]
 
 [api-management-dev-portal-signin]: ./media/api-management-howto-aad/api-management-dev-portal-signin.png
 [api-management-aad-signin]: ./media/api-management-howto-aad/api-management-aad-signin.png
@@ -177,4 +189,4 @@ Azure Active Directory 内のいずれかのユーザーの資格情報を入力
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
 
-[Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
+[Sign in to the developer portal by using an Azure AD account]: #Sign-in-to-the-developer-portal-by-using-an-Azure-AD-account

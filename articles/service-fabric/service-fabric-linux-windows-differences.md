@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/19/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 25976ba919454e26f1dd7965de5db7c4f80b9355
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fff5a5310fc45534cec864b235501b75e3836241
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="differences-between-service-fabric-on-linux-and-windows"></a>Linux での Service Fabric と Windows での Service Fabric の違い
 
@@ -91,7 +91,7 @@ Windows ではサポートされていても、Linux ではサポートされて
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Linux で開発環境を準備する](service-fabric-get-started-linux.md)
 * [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
 * [Yeoman を使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-create-your-first-linux-application-with-java.md)

@@ -6,14 +6,14 @@ author: dlepow
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 993a8b71b29952394a2ab6a2bdddd0fc5fd241ae
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 556f4bfb204504de55c41da9615e61d5a88c75b2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="scale-application-in-azure-container-service-aks"></a>Azure Container Service (AKS) でのアプリケーションのスケーリング
 

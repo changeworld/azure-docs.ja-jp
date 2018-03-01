@@ -1,6 +1,6 @@
 ---
 title: "Azure アクティビティ ログ アラートでの webhook の呼び出し | Microsoft Docs"
-description: "カスタム アクションのためにアクティビティ ログ イベントを他のサービスにルーティングします。 たとえば、チャット/メッセージング サービスを使用して SMS の送信、バグの記録、またはチームへの通知を行います。"
+description: "カスタム アクションのためにアクティビティ ログ イベントを他のサービスにルーティングする方法について説明します。 たとえば、SMS メッセージの送信、バグの記録、チャットやメッセージング サービスを使用したチームへの通知を行うことができます。"
 author: johnkemnetz
 manager: orenr
 editor: 
@@ -14,30 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: johnkem
-ms.openlocfilehash: 08467aed4e1601b32598fc42515d9c38b601a9d4
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 9872c30d123f0a7443e28dc58ee0d4e16572a390
+ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/14/2018
 ---
-# <a name="call-a-webhook-on-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートでの webhook の呼び出し
-webhook を使用すると、後処理やカスタム アクションのために、Azure アラート通知を他のシステムにルーティングすることができます。 アラートで webhook を使用することで、SMS の送信、バグのログ記録、チャット/メッセージング サービスを介したチームへの通知、またはその他のさまざまなアクションを実行するサービスに、アラートをルーティングできます。 この記事では、webhook が Azure アクティビティ ログ アラートの発生時に呼び出されるように設定する方法について説明します。 また、webhook に対する HTTP POST のペイロードの概要についても説明します。 Azure メトリック アラートの設定とスキーマについては、[こちらのページをご覧ください](insights-webhooks-alerts.md)。 また、起動時に電子メールを送信するようにアクティビティ ログ アラートを設定することもできます。
+# <a name="call-a-webhook-on-an-azure-activity-log-alert"></a>Azure アクティビティ ログ アラートでの webhook の呼び出し
+後処理やカスタム アクションのために、webhook を使用して Azure アラート通知を他のシステムにルーティングできます。 SMS メッセージを送信するサービスへのアラートのルーティング、バグの記録、チャットやメッセージング サービスを使用したチームへの通知など、さまざまなアクションに対してアラートで webhook を使用できます。 また、アラートがアクティブになったときに電子メールを送信するようにアクティビティ ログ アラートを設定することもできます。
+
+この記事では、Azure アクティビティ ログ アラートの発生時に webhook が呼び出されるように設定する方法について説明します。 また、webhook に対する HTTP POST のペイロードの概要についても説明します。 Azure メトリック アラートの設定とスキーマの詳細については、「[Azure メトリック アラートでの webhook の構成](insights-webhooks-alerts.md)」を参照してください。 
 
 > [!NOTE]
-> この機能は現在プレビュー段階で、今後ある時点で削除されます。
+> Azure アクティビティ ログ アラートでの webhook の呼び出しをサポートする機能は、現時点ではプレビュー段階にあります。
 >
 >
 
-アクティビティ ログ アラートは、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用して設定できます。 現時点では、Azure Portal を使用してアラートを設定することはできません。
+アクティビティ ログ アラートは、[Azure PowerShell コマンドレット](insights-powershell-samples.md#create-metric-alerts)、[クロスプラットフォーム CLI](insights-cli-samples.md#work-with-alerts)、[Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn933805.aspx) のいずれかを使用して設定できます。 現時点では、アクティビティ ログ アラートの設定に Azure Portal は使用できません。
 
-## <a name="authenticating-the-webhook"></a>webhook の認証
+## <a name="authenticate-the-webhook"></a>webhook の認証
 webhook は、次の方法のいずれかを使用して認証できます。
 
-1. **トークンベースの認証** - webhook URI は、`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue` のようなトークン ID を使用して保存されます。
-2. **基本認証** - webhook URI は、`https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar` のようにユーザー名とパスワードを使用して保存されます。
+* **トークンベースの認証**。 webhook URI は、トークン ID を使用して保存されます。 次に例を示します。`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue`
+* **基本承認**。 webhook URI は、ユーザー名とパスワードを使用して保存されます。 次に例を示します。`https://userid:password@mysamplealert/webcallback?someparamater=somevalue&foo=bar`
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
-POST 操作には、すべてのアクティビティ ログベースのアラートについて以下の JSON ペイロードとスキーマが含まれます。 このスキーマは、メトリックベースのアラートによって使用されるものと似ています。
+POST 操作には、すべてのアクティビティ ログベースのアラートについて以下の JSON ペイロードとスキーマが含まれます。 このスキーマは、メトリックベースのアラートで使用されるものと似ています。
 
 ```json
 {
@@ -104,36 +106,36 @@ POST 操作には、すべてのアクティビティ ログベースのアラ�
 
 | 要素名 | [説明] |
 | --- | --- |
-| status |メトリック アラートで使用されます。 アクティビティ ログ アラートでは常に "Activated" に設定されます。 |
+| status |メトリック アラートで使用されます。 アクティビティ ログ アラートでは常に "Activated" に設定されます。|
 | context |イベントのコンテキスト。 |
 | activityLog | イベントのログ プロパティ。|
-| authorization |イベントの RBAC プロパティ。 これらには、通常、"action"、"role"、"scope" が含まれます。 |
+| authorization |イベントのロールベースのアクセス制御 (RBAC) プロパティ。 これらのプロパティには通常、**action**、**role**、**scope** が含まれます。 |
 | action | アラートによってキャプチャされたアクション。 |
-| scope | アラートのスコープ (つまり、 リソース)。|
-| channels | 操作 |
+| scope | アラートのスコープ (つまり、リソース)。|
+| channels | 操作。 |
 | claims | 要求に関連する情報のコレクション。 |
-| caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの GUID またはユーザー名。 一部のシステム呼び出しでは、null の場合があります。 |
-| correlationId |通常は GUID (文字列形式)。 correlationId を含むイベントは、より大きな同じアクションに属し、通常は correlationId を共有します。 |
-| 説明 |アラートの作成時に設定したアラートの説明。 |
+| caller |操作、UPN 要求、または可用性に基づく SPN 要求を実行したユーザーの GUID またはユーザー名。 一部のシステム呼び出しでは、null 値の場合があります。 |
+| correlationId |通常は GUID (文字列形式)。 **correlationId** を含むイベントは、より大きな同じアクションに属します。 通常は、同じ **correlationId** 値を持ちます。 |
+| 説明 |アラートの作成時に設定されたアラートの説明。 |
 | eventSource |イベントを生成した Azure サービスまたはインフラストラクチャの名前。 |
-| eventTimestamp |イベントが発生した時間。 |
+| eventTimestamp |イベントが発生した時刻。 |
 | eventDataId |イベントの一意識別子。 |
 | level |"Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値。 |
 | operationName |操作の名前。 |
-| operationId |通常、単一の操作に対応する複数のイベントで共有される GUID。 |
+| operationId |通常、イベント間で共有されている GUID。 GUID は通常、単一の操作に対応します。 |
 | ResourceId |影響を受けるリソースのリソース ID。 |
 | resourceGroupName |影響を受けるリソースのリソース グループの名前。 |
 | resourceProviderName |影響を受けるリソースのリソース プロバイダー。 |
-| status |文字列 をオンにします。 操作の状態。 一般的な値は "Started"、"In Progress"、"Succeeded"、"Failed"、"Active"、"Resolved" です。 |
+| status |操作の状態を示す文字列値。 一般的な値は Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | subStatus |通常、対応する REST 呼び出しの HTTP 状態コードが含まれます。 また、subStatus を説明する他の文字列を含めることもできます。 一般的な subStatus の値は、OK (HTTP 状態コード: 200)、Created (HTTP 状態コード: 201)、Accepted (HTTP 状態コード: 202)、No Content (HTTP 状態コード: 204)、Bad Request (HTTP 状態コード: 400)、Not Found (HTTP 状態コード: 404)、Conflict (HTTP 状態コード: 409)、Internal Server Error (HTTP 状態コード: 500)、Service Unavailable (HTTP 状態コード: 503)、Gateway Timeout (HTTP 状態コード: 504) です。 |
 | subscriptionId |Azure サブスクリプション ID。 |
 | submissionTimestamp |要求を処理した Azure サービスによってイベントが生成された時刻。 |
 | resourceType | イベントを生成したリソースの種類。|
-| プロパティ |イベントの詳細を含む `<Key, Value>` ペア (つまり、`Dictionary<String, String>`) のセット。 |
+| プロパティ |イベントに関する詳細を含むキー/値のペアのセット。 たとえば、「`Dictionary<String, String>`」のように入力します。 |
 
 ## <a name="next-steps"></a>次の手順
-* [アクティビティ ログについて詳しく学習します](monitoring-overview-activity-logs.md)
-* [Azure アラートで Azure Automation スクリプト (Runbook) を実行します](http://go.microsoft.com/fwlink/?LinkId=627081)
-* [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS を送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
-* [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
-* [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
+* [アクティビティ ログ](monitoring-overview-activity-logs.md)の詳細を確認します。
+* [Azure アラートで Azure Automation スクリプト (Runbook) を実行する](http://go.microsoft.com/fwlink/?LinkId=627081)方法について確認します。
+* [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)方法について確認します。 この例はメトリック アラート用のものですが、変更を加えてアクティビティ ログ アラートで使用できます。
+* [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)方法について確認します。 この例はメトリック アラート用のものですが、変更を加えてアクティビティ ログ アラートで使用できます。
+* [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信する](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)方法について確認します。 この例はメトリック アラート用のものですが、変更を加えてアクティビティ ログ アラートで使用できます。

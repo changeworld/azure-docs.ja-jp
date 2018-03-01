@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2017
 ms.author: vikdesai
-ms.openlocfilehash: 96e9cf2fed0b22fd7aa7b9ffeab0e94738ce510d
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 799abddc4894bc090d860e7fe100ee65d4d085ab
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="save-money-on-virtual-machines-with-reserved-virtual-machine-instances"></a>予約仮想マシン インスタンスで仮想マシンのコストを削減する 
 仮想マシンは、予約仮想マシン インスタンスを通じて 1 年分または 3 年分の計算処理能力を前払いすることで割引価格で利用することができます。 これにより、仮想マシンのコストが大幅に削減されます。割引率は、従量課金制の料金に対し、1 年間または 3 年間の前払い契約で最大 72% となります。 予約仮想マシン インスタンスは課金割引であり、仮想マシンの実行時の状態には影響しません。
@@ -58,7 +58,16 @@ ms.lasthandoff: 11/17/2017
 - クォータの不足 - 単一サブスクリプションをスコープとする予約 VM インスタンスの場合、新しい予約インスタンスに割り当てることのできる vCPU クォータがそのサブスクリプションに存在していることが必要です。 たとえば対象のサブスクリプションに、D-Series ファミリーに関して 10 vCPU のクォータ制限がある場合、Standard_D1 インスタンス 11個分の予約 VM インスタンスを購入することはできません。 予約のクォータ チェックには、既にサブスクリプションにデプロイされている VM が含まれます。 たとえば、D-Series ファミリーに関して 10 vCPU のクォータがサブスクリプションにあるとします。 このサブスクリプションに 2 つの standard_D1 インスタンスがデプロイされている場合、このサブスクリプションでは、10 standard_D1 インスタンスの予約 VM インスタンスを購入することができます。 
 - 容量制限 - まれなケースですが、一部の VM サイズに関して、リージョンのキャパシティが低下しているために、新しい予約を購入できないよう Azure によって制限されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 実際に[予約仮想マシン インスタンス](https://go.microsoft.com/fwlink/?linkid=861721)を購入して仮想マシンのコストを節約してみましょう。 
+
+予約仮想マシン インスタンスの詳細については、次の記事を参照してください。
+
+- [予約 VM インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [予約仮想マシン インスタンスの管理](billing-manage-reserved-vm-instance.md)
+- [予約仮想マシン インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
+- [従量課金サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
+- [エンタープライズ加入契約の予約インスタンス使用量について](billing-understand-reserved-instance-usage-ea.md)
+- [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。

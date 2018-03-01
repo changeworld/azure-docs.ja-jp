@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: magoedte
-ms.openlocfilehash: e1734bdd22ecfc4e54074f02582f5a8eca7d4f59
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: cb7183cbec1c3efafe58f4508042d329be5dcecf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-automation-scenario---automate-removal-of-resource-groups"></a>Azure Automation のシナリオ - リソース グループの削除の自動化
 多くのユーザーは、1 つ以上のリソース グループを作成します。 リソース グループは、実稼働アプリケーションの管理に使用することもあれば、開発、テスト、ステージング環境として使用することもあります。 これらのリソースのデプロイを自動化することと、ワンクリックでリソース グループを削除する機能は、まったくの別物です。 Azure Automation を使用することで、この一般的な管理タスクを効率化できます。 これは、MSDN や Microsoft Partner Network Cloud Essentials プログラムなどのメンバー プランを通じて使用制限のある Azure サブスクリプションを使っている場合に役立ちます。
@@ -52,15 +52,15 @@ Runbook をダウンロードした後、[Runbook のインポートの手順](a
 
 1. Azure Portal で Automation アカウントを開き、**[Runbook]** をクリックします。
 2. **Remove-ResourceGroup** Runbook を選択し、**[開始]** をクリックします。
-3. Runbook を開始すると、**[Runbook の開始]** ブレードが開き、パラメーターを構成できます。 サブスクリプション内にある、テストに使用できるリソース グループの名前を入力します。誤って削除しても悪影響のないものを選んでください。<br> ![Remove-ResouceGroup のパラメーター](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-input-parameters.png)
+3. Runbook を開始すると、**[Runbook の開始]** ページが開き、パラメーターを構成できます。 サブスクリプション内にある、テストに使用できるリソース グループの名前を入力します。誤って削除しても悪影響のないものを選んでください。
 
    > [!NOTE]
-   > 選択したリソース グループが削除されないように、**[Previewmode]** が **true** に設定されていることを確認します。  この Runbook では、Runbook を実行中の Automation アカウントが含まれているリソース グループは削除されないことに**注意してください**。  
+   > 選択したリソース グループが削除されないように、**[Previewmode]** が **true** に設定されていることを確認します。 この Runbook では、この Runbook を実行中の Automation アカウントが含まれているリソース グループは削除されません。  
    >
    >
-4. すべてのパラメーター値を構成したら、**[OK]** をクリックします。Runbook が実行されるよう、キューに配置されます。  
+1. すべてのパラメーター値を構成したら、**[OK]** をクリックします。Runbook が実行されるよう、キューに配置されます。  
 
-Azure Portal で **Remove-ResourceGroup** Runbook ジョブの詳細を表示するには、Runbook の **[ジョブ]** タイルを選択します。 ジョブの概要として、入力パラメーターと出力ストリーム、さらにジョブに関する全般情報が表示されます。例外が発生した場合は、その情報も表示されます。<br> ![Remove-ResourceGroup Runbook ジョブの状態](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png)
+Azure Portal で **Remove-ResourceGroup** Runbook ジョブの詳細を表示するには、**[リソース]** で、Runbook の **[ジョブ]** を選択します。 表示するジョブを選択します。 ジョブの概要として、入力パラメーターと出力ストリーム、さらにジョブに関する全般情報が表示されます。例外が発生した場合は、その情報も表示されます。<br> ![Remove-ResourceGroup Runbook ジョブの状態](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-status.png)
 
 **[ジョブの概要]** には、出力、警告、およびエラー ストリームからのメッセージが表示されます。 Runbook 実行の詳細な結果を表示するには、**[出力]** を選択します。<br> ![Remove-ResourceGroup Runbook の出力結果](media/automation-scenario-remove-resourcegroup/remove-resourcegroup-runbook-job-output.png)
 

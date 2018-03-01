@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/27/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 1e9d5ca475424c99b30c62252f4b0abc9bd09078
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 0f3e8f00b1cee1141277f4dee21fabf993e69ba0
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Hive クエリの実行
 
@@ -253,7 +253,7 @@ Data Lake Tools for Visual Studio は、Pig スクリプトの作成と、HDInsi
 * 結果が NULL 値で始まっている場合、現在その結果は表示されません。 この問題は修正されており、この問題で支障が出ている場合は、サポート チームにお問い合わせください。
 * ユーザーのローカルのリージョン設定によっては、Visual Studio によって作成された HQL スクリプトがエンコードされます。 ユーザーがスクリプトをバイナリとしてクラスターにアップロードする場合、これは正常に実行されないことがあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、Data Lake (HDInsight) Tools パッケージを使用して Visual Studio から HDInsight クラスターに接続し、Hive クエリを実行する方法を説明しました。 詳細については、次を参照してください。
 
 * [HDInsight での Hadoop Hive の使用](hdinsight-use-hive.md)

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/25/2018
-ms.openlocfilehash: 87bd27147d20fec8c5839b744d70f215e2c1ec47
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 3c1c259cc58eb1adab39d9c0ca376726b798186e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="faq-about-using-the-azure-database-migration-service"></a>Azure Database Migration Service の使用に関する FAQ
 この記事では、Azure Database Migration Service の使用に関してよく寄せられる質問とその回答をまとめてあります。
@@ -81,6 +81,9 @@ SQL Server エラー ログに対して次のクエリを実行して、SQL Serv
 
 ### <a name="q-how-do-i-set-up-an-azure-virtual-network"></a>Q. Azure Virtual Network をセットアップするにはどうすればよいですか。
 Azure VNET のセットアップ手順を説明する複数の Microsoft チュートリアルがありますが、公式ドキュメントは「[Azure Virtual Network](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-overview)」という記事に掲載されています。
+
+### <a name="q-why-is-my-azure-database-migration-service-unavailable-or-stopped"></a>Q. Azure Database Migration Service が利用できないか停止しています。なぜですか。
+ユーザーが明示的に Azure Database Migration Service (DMS) を停止した場合、またはサービスが 24 時間非アクティブ状態になった場合、サービスは停止状態または自動一時停止状態になります。 いずれの場合も、サービスは利用できなくなり、停止状態になります。  アクティブな移行を再開するには、サービスを再起動します。
 
 ### <a name="q-where-can-i-leave-feedback-about-the-azure-database-migration-service"></a>Q. Azure Database Migration Service についてのフィードバックは、どこで行うことができますか。
 ユーザーからのご意見をお待ちしています。 Azure Database Migration Service に関するフィードバックやご要望は、[こちら](https://feedback.azure.com/forums/906100-azure-database-migration-service)から送信してください。

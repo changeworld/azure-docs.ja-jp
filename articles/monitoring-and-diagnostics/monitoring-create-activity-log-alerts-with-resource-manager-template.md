@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
-ms.openlocfilehash: 2bfeba27b6de9e5db623eba1526bd2d2ff1b7211
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: b30912c44bd66f8c6fca548dc905f750e05c8621
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのアクティビティ ログ アラートの作成
 この記事では、[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates)を使用してアクティビティ ログ アラートを構成する方法について説明します。 テンプレートを使用すると、自動デプロイ プロセスの一環として、特定のアクティビティ ログ イベント条件に基づいてアクティブ化する多数のアラートを簡単に設定できます。
@@ -82,10 +82,10 @@ Resource Manager テンプレートを使用してアクティビティ ログ �
               "field": "resourceType",
               "equals": "Microsoft.Resources/deployments"
             }
-          ] 
+          ]
         },
         "actions": {
-          "actionGroups": 
+          "actionGroups":
           [
             {
               "actionGroupId": "[parameters('actionGroupResourceId')]"
@@ -100,7 +100,11 @@ Resource Manager テンプレートを使用してアクティビティ ログ �
 
 アクティビティ ログ アラート テンプレートの例については、[Azure クイックスタート ギャラリー](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Insights)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+> [!NOTE]
+
+> また、[監視] > [[アラート (プレビュー)]](monitoring-overview-unified-alerts.md) の強化されたユーザー エクスペリエンスを使用して、アクティビティ ログ アラート ルールを作成することもできます。 作成方法の詳細については、[こちらの記事](monitoring-activity-log-alerts-new-experience.md)を参照してください。
+
+## <a name="next-steps"></a>次の手順
 - [アラート](monitoring-overview-alerts.md)の詳細について学習します。
 - [Resource Manager テンプレートを使用してアクション グループ](monitoring-create-action-group-with-resource-manager-template.md)を追加する方法について確認します。
 - [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)方法について確認します。

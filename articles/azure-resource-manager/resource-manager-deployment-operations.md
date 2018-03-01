@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: infrastructure
 ms.date: 01/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: fb6b3b357fd1f66184e480115a9c863ba31ac193
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 197f890690ff68236cba221988ead9b9abd8c04e
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="view-deployment-operations-with-azure-resource-manager"></a>Azure Resource Manager でのデプロイ操作の表示
 
 
 デプロイの操作は、Azure ポータルから確認することができます。 最も一般的な確認の対象としては、デプロイ中にエラーが発生したときに実行されていた操作が挙げられます。この記事では、失敗した操作の表示について重点的に取り上げます。 Azure ポータルには、すぐにエラーを見つけ出し、有効と考えられる解決策を特定できるインターフェイスが用意されています。
 
-[!INCLUDE [resource-manager-troubleshoot-introduction](../../includes/resource-manager-troubleshoot-introduction.md)]
+監査ログまたはデプロイ操作のいずれかを確認して、デプロイのトラブルシューティングを行うことができます。 このトピックでは、両方のメソッドを示します。 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
 
 ## <a name="portal"></a>ポータル
 デプロイ操作を表示するには、次の手順に従います。
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
     ![失敗したデプロイの表示](./media/resource-manager-deployment-operations/view-error.png)
    
     このエラー メッセージは、トラブルシューティングの糸口をつかむうえでは十分でしょう。 しかし、どのようなタスクが実行されたのかについて、もっと詳しい情報が必要である場合は、以降の手順に従って操作を確認することができます。
-4. **[デプロイ]** ブレードですべてのデプロイ操作を確認できます。 いずれかの操作を選択すると、さらに詳しい情報が表示されます。
+4. すべてのデプロイ操作を確認できます。 いずれかの操作を選択すると、さらに詳しい情報が表示されます。
    
     ![view operations](./media/resource-manager-deployment-operations/view-operations.png)
    
@@ -121,7 +121,7 @@ ms.lasthandoff: 10/11/2017
   ----           -------                                                                        -------
   DnsRecordInUse DNS record dns.westus.cloudapp.azure.com is already used by another public IP. {}
   ```
-4. Azure でのすべてのデプロイ操作には、要求と応答のコンテンツが含まれます。 要求コンテンツは、デプロイ中に Azure に送信するものです (たとえば、VM、OS ディスク、その他のリソースの作成)。 応答コンテンツは、Azure がデプロイメント要求に対して返信するものです。 デプロイの際に **DeploymentDebugLogLevel** パラメータを使用して、要求または応答 (あるいは両方) がログに保存されるように指定できます。 
+4. Azure でのすべてのデプロイ操作には、要求と応答のコンテンツが含まれます。 要求コンテンツは、デプロイ中に Azure に送信するものです (たとえば、VM、OS ディスク、その他のリソースの作成)。 応答コンテンツは、Azure がデプロイメント要求に対して返信するものです。 デプロイの際に **DeploymentDebugLogLevel** パラメーターを使用して、要求または応答 (あるいは両方) がログに保存されるように指定できます。 
 
   次の PowerShell コマンドを使用すると、ログから情報を取得して、ローカルに保存できます。
 
@@ -178,7 +178,7 @@ ms.lasthandoff: 10/11/2017
   }
   ```
 
-2. [すべてのテンプレート デプロイ操作を一覧表示する](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List)操作を行って、デプロイ操作に関する情報を取得します。 
+2. [すべてのテンプレート デプロイを一覧表示する](https://docs.microsoft.com/rest/api/resources/deployments#Deployments_List)操作を行って、デプロイに関する情報を取得します。 
 
   ```http
   GET https://management.azure.com/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.resources/deployments/{deployment-name}/operations?$skiptoken={skiptoken}&api-version={api-version}
@@ -212,7 +212,7 @@ ms.lasthandoff: 10/11/2017
   ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 特定のデプロイ エラーの解決については、 [Azure Resource Manager を使用してリソースを Azure にデプロイするときに発生する一般的なエラーの解決](resource-manager-common-deployment-errors.md)に関するページを参照してください。
 * アクティビティ ログを使用して、その他の種類のアクションを監視する方法については、「[アクティビティ ログを表示して Azure リソースを管理する](resource-group-audit.md)」を参照してください。
 * デプロイを実行する前に検証するには、 [Azure Resource Manager テンプレートを使用したリソース グループのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。

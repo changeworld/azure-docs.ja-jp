@@ -12,20 +12,20 @@ ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/23/2018
 ms.author: apimpm
-ms.openlocfilehash: d4ea43cb7ca5e9fa50202561c71d6bfb298e2452
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 8ef8d64ba90960281faffc350821d7934e35749a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="monitor-your-apis-with-azure-api-management-event-hubs-and-runscope"></a>Azure API Management、Event Hubs、Runscope を使用した API の監視
-[API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 ただし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは発行者ポータル ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
+[API Management サービス](api-management-key-concepts.md) は、HTTP API に送信された HTTP 要求の処理を強化する多くの機能を提供します。 しかし、要求と応答の存在は一時的なものです。 要求は、発行されると、API Management サービスを経由してバックエンド API に渡されます。 API によって要求が処理されると、応答が API コンシューマーに返されます。 API Management サービスでは Azure Portal ダッシュボードへの表示用に API に関するいくつかの重要な統計情報が保持されますが、それ以上の詳細は失われます。
 
-API Management サービスで log-to-eventhub ポリシーを使用することにより、要求から応答まですべての詳細を [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外の警告、サード パーティの統合の監査証跡が該当します。   
+API Management サービスで log-to-eventhub ポリシーを使用することにより、要求から応答まですべての詳細を [Azure イベント ハブ](../event-hubs/event-hubs-what-is-event-hubs.md)に送信できます。 API に送信される HTTP メッセージからイベントを生成するのにはさまざまな理由があります。 たとえば、更新プログラム、利用状況分析、例外のアラート、サード パーティの統合の監査証跡が該当します。   
 
-この記事では、HTTP 要求と応答メッセージ全体をキャプチャしてイベント ハブに送信した後、HTTP ログと監視サービスを提供するサード パーティのサービスにそのメッセージを中継する方法を示します。
+この記事では、HTTP 要求と応答メッセージ全体をキャプチャしてイベント ハブに送信した後、HTTP ログと監視サービスを提供するサード パーティのサービスにそのメッセージをリレーする方法を示します。
 
 ## <a name="why-send-from-api-management-service"></a>API Management サービスから送信する理由
 HTTP API フレームワークに接続できる HTTP ミドルウェアを作成して、HTTP 要求と応答をキャプチャし、それらをログおよび監視システムに送ることは可能です。 この方法の欠点は、HTTP ミドルウェアをバックエンド API に統合する必要があり、API のプラットフォームに対応させる必要があることです。 API が複数ある場合は、それぞれがミドルウェアをデプロイする必要があります。 多くの場合、バックエンド API を更新できない理由もいくつかあります。
@@ -33,7 +33,7 @@ HTTP API フレームワークに接続できる HTTP ミドルウェアを作�
 Azure API Management サービスを使用してログ記録インフラストラクチャを統合すると、プラットフォームに依存しない一元的なソリューションを実現できます。 このソリューションがスケーラブルなのは、1 つには Azure API Management の [geo レプリケーション](api-management-howto-deploy-multi-region.md) 機能のおかげでもあります。
 
 ## <a name="why-send-to-an-azure-event-hub"></a>Azure Event ハブに送信する理由
-Azure Event Hubs に固有のポリシーを作成する理由を問うのも理にかなっています。 要求を記録できる場所にはいろいろあります。 なぜ最終的な宛先に直接、要求を送信しないのでしょうか。  それも 1 つの方法です。 ただし、API Management サービスからログ記録を要求する場合は、メッセージのログ記録が API のパフォーマンスにどのように影響するかを考慮する必要があります。 負荷が段階的に増加する場合は、システム コンポーネントの使用可能なインスタンスを増やすか、geo レプリケーションを活用することで対処できます。 ただし、トラフィックが短期間で急増した場合、負荷がかかることでログ記録インフラストラクチャへの要求の処理速度が低下し始めると、要求が遅延する可能性があります。
+Azure Event Hubs に固有のポリシーを作成する理由を問うのも理にかなっています。 要求を記録できる場所にはいろいろあります。 なぜ最終的な宛先に直接、要求を送信しないのでしょうか。  それも 1 つの方法です。 ただし、API Management サービスからログ記録を要求する場合は、メッセージのログ記録が API のパフォーマンスにどのように影響するかを考慮する必要があります。 負荷が段階的に増加する場合は、システム コンポーネントの使用可能なインスタンスを増やすか、geo レプリケーションを活用することで対処できます。 しかし、トラフィックが短期間で急増した場合、負荷がかかることでログ記録インフラストラクチャへの要求の処理速度が低下し始めると、要求が遅延する可能性があります。
 
 Azure Event Hubs は、膨大な量のデータの受信に対応できるように設計されており、ほとんどの API で処理される HTTP 要求の数よりもはるかに大量のイベントを処理できます。 イベント ハブは、API Management サービスと、メッセージを格納して処理するインフラストラクチャとの間で高度なバッファーの一種として機能します。 これにより、API のパフォーマンスはログ記録インフラストラクチャの影響を受けることはありません。  
 
@@ -75,7 +75,7 @@ Event Hubs には、複数のコンシューマー グループにイベント�
 ```
 
 ### <a name="policy-declaration"></a>ポリシーの宣言
-このポリシー式に関して触れておく必要があることがいくつかあります。 この log-to-eventhub ポリシーには、API Management サービス内で作成されたロガーの名前を参照する、logger-id という名前の属性があります。 API Management サービスでイベント ハブ ロガーを設定する方法の詳細については、 [Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)に関するドキュメントを参照してください。 2 番目の属性は、メッセージを格納するパーティションをイベント ハブに指示する省略可能なパラメーターです。 Event Hubs では、パーティションを使用してスケーラビリティを実現するため、2 つ以上のパーティションが必要になります。 メッセージの順次配信は、パーティション内でのみ保証されます。 どのパーティションにメッセージを格納するかをイベント ハブに指示しなかった場合は、ラウンドロビン アルゴリズムを使用して負荷が分散されます。 ただし、その場合、メッセージのいくつかは順序どおりに処理されない可能性があります。  
+このポリシー式に関して触れておく必要があることがいくつかあります。 この log-to-eventhub ポリシーには、API Management サービス内で作成されたロガーの名前を参照する、logger-id という名前の属性があります。 API Management サービスでイベント ハブ ロガーを設定する方法の詳細については、「[Azure API Management で Azure Event Hubs にイベントを記録する方法](api-management-howto-log-event-hubs.md)」というドキュメントを参照してください。 2 番目の属性は、メッセージを格納するパーティションをイベント ハブに指示する省略可能なパラメーターです。 Event Hubs では、パーティションを使用してスケーラビリティを実現するため、2 つ以上のパーティションが必要になります。 メッセージの順次配信は、パーティション内でのみ保証されます。 どのパーティションにメッセージを格納するかをイベント ハブに指示しなかった場合は、ラウンドロビン アルゴリズムを使用して負荷が分散されます。 ただし、その場合、メッセージのいくつかは順序どおりに処理されない可能性があります。  
 
 ### <a name="partitions"></a>パーティション
 メッセージが順番にコンシューマーに配信されるようにして、パーティションの負荷分散機能を利用するために、ここでは、HTTP 要求メッセージを 1 つのパーティションに送信し、HTTP 応答メッセージをもう 1 つのパーティションに送信することにしました。 これにより、負荷が均等に分散されるようになるため、すべての要求が順序どおりに使用されることとすべての応答が順序どおりに使用されることを保証できます。 応答が対応する要求の前に使用される可能性はありますが、それは問題ではありません。なぜなら、要求を応答に対応付けるために別のメカニズムを使用しており、要求が常に応答の前に処理されることがわかっているためです。
@@ -209,7 +209,7 @@ public class HttpMessage
 `HttpMessage` インスタンスには、HTTP 要求を対応する HTTP 応答に関連付けるための `MessageId` GUID と、オブジェクトに HttpRequestMessage と HttpResponseMessage のインスタンスが含まれるかどうかを示すブール値が格納されます。 `System.Net.Http` の組み込みの HTTP クラスを使用することで、`System.Net.Http.Formatting` に含まれている `application/http` 解析コードを使用することができました。  
 
 ### <a name="ihttpmessageprocessor"></a>IHttpMessageProcessor
-次に、`HttpMessage` インスタンスは、`IHttpMessageProcessor` の実装に転送されます。これは、Azure Event Hubs からのイベントの受信および解釈と実際のイベントの処理を分離するために作成したものです。
+次に、`HttpMessage` インスタンスは、`IHttpMessageProcessor` の実装に転送されます。これは、Azure イベント ハブからのイベントの受信および解釈と実際のイベントの処理を分離するために作成したインターフェイスです。
 
 ## <a name="forwarding-the-http-message"></a>HTTP メッセージの転送
 このサンプルでは、少しひねって HTTP 要求を [Runscope](http://www.runscope.com) にプッシュ送信しました。 Runscope は、HTTP デバッグ、ログ記録、および監視に特化したクラウド ベースのサービスです。 Runscope には Free レベルが用意されているため、簡単に試すことができます。これを使用すると、API Management サービスを通過する HTTP 要求をリアルタイムで確認することができます。
@@ -270,10 +270,10 @@ public class RunscopeHttpMessageProcessor : IHttpMessageProcessor
 
 ![Demonstration of request being forwarded to Runscope](./media/api-management-log-to-eventhub-sample/apim-eventhub-runscope.gif)
 
-## <a name="summary"></a>まとめ
+## <a name="summary"></a>概要
 Azure API Management サービスでは、API を経由して送受信される HTTP トラフィックをキャプチャするための理想的な場所が用意されています。 Azure Event Hubs は、そのトラフィックをキャプチャして、ログ記録、監視、その他の高度な分析用のセカンダリ処理システムに供給するための、非常にスケーラブルで低コストのソリューションです。 数十行のコードを書くだけで、Runscope のようなサード パーティ製のトラフィック監視システムに簡単に接続できます。
 
-## <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 * Azure Event Hubs の詳細
   * [Azure Event Hubs の使用](../event-hubs/event-hubs-c-getstarted-send.md)
   * [EventProcessorHost を使用したメッセージの受信](../event-hubs/event-hubs-dotnet-standard-getstarted-receive-eph.md)

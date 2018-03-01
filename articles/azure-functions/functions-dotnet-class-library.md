@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3de1e9b042a7a356c3c88e604e1e26c256d85657
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 8a098d2ecc004b1593310579c47c53778858e799
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -40,6 +40,9 @@ Visual Studio では、**Azure Functions** プロジェクト テンプレート
 
 * [host.json](functions-host-json.md) - ローカルまたは Azure 内で実行される場合に、プロジェクト内のすべての関数に影響を及ぼす構成設定を格納します。
 * [local.settings.json](functions-run-local.md#local-settings-file) - ローカルで実行される場合に使用されるアプリ設定および接続文字列を格納します。
+
+> [!IMPORTANT]
+> ビルド処理では、関数ごとに *function.json* ファイルが作成されます。 この *function.json* ファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 関数を無効にするには、[Disable](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) 属性を使用します。 たとえば、ブール値アプリ設定 MY_TIMER_DISABLED を追加し、`[Disable("MY_TIMER_DISABLED")]` を関数に適用します。 アプリ設定を変更して有効と無効を切り替えることができます。
 
 ### <a name="functionname-and-trigger-attributes"></a>FunctionName およびトリガー属性
 
@@ -83,7 +86,7 @@ public static class SimpleExampleWithOutput
 
 ### <a name="conversion-to-functionjson"></a>function.json への変換
 
-ビルド処理では、ビルド フォルダー内の関数フォルダーに *function.json*ファイルを作成します。 このファイルに対しては、直接編集は行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 
+ビルド処理では、ビルド フォルダー内の関数フォルダーに *function.json*ファイルを作成します。 前述のとおり、このファイルに対しては直接編集が行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 
 
 このファイルの目的は、[従量課金プランに関する決定事項を評価](functions-scale.md#how-the-consumption-plan-works)する際に使用するスケール コントローラーに、情報を提供することです。 このため、ファイルはトリガー情報だけを含み、入力または出力バインドは含まれません。
 

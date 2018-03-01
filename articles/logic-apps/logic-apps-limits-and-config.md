@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5e3147cbc9fce6737cfb9b2e93e8bf1662163f3c
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 8de3cc6665fc3861aedcf4f36cdce4a4a776e80d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps の制限と構成
 
-このトピックでは、Azure Logic Apps に関する現在の制限と構成について説明します。
+この記事では、Azure Logic Apps に関する現在の制限と構成について説明します。
 
 ## <a name="limits"></a>制限
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 01/29/2018
 | 最大の繰り返し間隔 | 500 日 | 
 ||| 
 
-通常の処理フローで実行継続期間またはストレージ リテンション期間の制限を超えるには、[お問い合わせ](mailto://logicappsemail@microsoft.com)ください。
+通常の処理フローで実行継続期間またはストレージ リテンション期間の制限を超える場合の要件の詳細については、[製品チームにお問い合わせ](mailto://logicappsemail@microsoft.com)ください。
 
 ### <a name="looping-and-debatching-limits"></a>ループと分割処理の制限
 
@@ -82,18 +82,18 @@ ms.lasthandoff: 01/29/2018
 
 ### <a name="throughput-limits"></a>スループットの制限
 
-これらの制限は、ロジック アプリの 1 つのインスタンスに適用されます。
+これらの制限は、ロジック アプリの 1 つのリソースに適用されます。
 
 | Name | 制限 | メモ | 
 | ----- | ----- | ----- | 
-| 5 分間のアクション実行数 | 100,000 |<p>この制限は、`High Througput` モードでロジック アプリを実行することで最大 300,000 まで増やすことができます。これを実行するには、ワークフロー リソースの `runtimeConfiguration` の `operationOptions` プロパティを `OptimizedForHighThroughput` に設定します。 <p>高スループット モードはプレビュー段階であることに注意してください。 必要に応じて複数のアプリにワークロードを分散することもできます。 | 
+| 5 分間のアクション実行数 | 100,000 |<p>`High Througput` モードでロジック アプリを実行することで、制限値を 300,000 に増やすことができます。 高スループット モードは、ワークフロー リソースの `runtimeConfiguration` にある `operationOptions` プロパティを `OptimizedForHighThroughput` に設定することで構成できます。 <p>高スループット モードはプレビュー段階であることに注意してください。 必要に応じて複数のアプリにワークロードを分散することもできます。 | 
 | 同時発信呼び出しアクション数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮します。 | 
 | ランタイム エンドポイント: 同時受信呼び出し数 |～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮します。 | 
 | ランタイム エンドポイント: 5 分間の読み取り呼び出し数  | 60,000 | 必要に応じて複数のアプリにワークロードを分散することができます。 | 
 | ランタイム エンドポイント: 5 分間の起動呼び出し数| 45,000 |必要に応じて複数のアプリにワークロードを分散することができます。 | 
 |||| 
 
-通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行するには、[お問い合わせ](mailto://logicappsemail@microsoft.com)ください。
+通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行する場合の要件の詳細については、[製品チームにお問い合わせ](mailto://logicappsemail@microsoft.com)ください。
 
 ### <a name="logic-app-definition-limits"></a>ロジック アプリ定義の制限
 

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: sethm
-ms.openlocfilehash: 16f641c7b6fdd1d6730d2ae229c93ce4a33b9492
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: 7a594e5951f6e90c9151fbaf231675d6ed091d1f
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>メッセージ セッション: 先入れ先出し (FIFO) 
 
@@ -45,7 +45,7 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 
 ![][1]
 
-[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) の受信プロセスは、セッションを受け入れたクライアントによって作成されます。 クライアントは [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) (C# の場合は [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)) を呼び出します。 リアクティブなコールバック モデルでは、後で説明するように、セッション ハンドラーが登録されます。
+[MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) の受信プロセスは、セッションを受け入れたクライアントによって作成されます。 クライアントは [QueueClient.AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) (C# の場合は [QueueClient.AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync)) を呼び出します。 リアクティブなコールバック モデルでは、セッション ハンドラーが登録されます。
 
 [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) オブジェクトが受け入れられクライアントに保持されている間、そのクライアントはそのセッションの [SessionId](/en-us/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) が付いたキューまたはサブスクリプションに存在するすべてのメッセージと、その **SessionId** が付けられ、セッションが保持されている間も着信し続けるメッセージに対する排他的ロックを保持します。
 
@@ -72,6 +72,8 @@ Service Bus のセッション機能では、C# や Java API の [MessageSession
 Service Bus の観点からは、メッセージ セッションの状態は、Service Bus Standard の場合は 256 KB の、Service Bus Premium の場合は 1 MB のサイズのデータを保持できる不透明なバイナリ オブジェクトです。 セッションに対する処理状態は、セッション状態に保持されるか、セッション状態は記憶域の場所または情報が保管されているデータベース レコードを指すことができます。
 
 セッション状態を管理するための [SetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) および [GetState](/dotnet/api/microsoft.servicebus.messaging.messagesession.getstate#Microsoft_ServiceBus_Messaging_MessageSession_GetState) API は、C# と Java API のいずれも [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) にあります。 過去にセッション状態セットがないセッションは、**GetState** への参照として **null** を返します。 以前に設定したセッション状態をクリアするには [SetState(null)](/dotnet/api/microsoft.servicebus.messaging.messagesession.setstate#Microsoft_ServiceBus_Messaging_MessageSession_SetState_System_IO_Stream_) を使用します。
+
+セッション状態は、セッション内のすべてのメッセージが使用済みになっても、クリア (**null** を返す) されない限り同じままであることに注意してください。
 
 キューまたはサブスクリプションに存在するすべてのセッションは、Java API の **SessionBrowser** メソッドを使用して、.NET クライアントでは [QueueClient](/dotnet/api/microsoft.azure.servicebus.queueclient) および [SubscriptionClient](/dotnet/api/microsoft.azure.servicebus.subscriptionclient) の [GetMessageSessions](/dotnet/api/microsoft.servicebus.messaging.queueclient.getmessagesessions#Microsoft_ServiceBus_Messaging_QueueClient_GetMessageSessions) を使って列挙できます。
 

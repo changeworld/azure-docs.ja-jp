@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 2c9b072551b467785dbb4aae02492ffae6cdb787
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2a6ac8d9c2f3694cf08357d6ccec874f7e076514
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン
 この記事では、Windows Server の Active Directory Domain Services (AD DS) および Active Directory フェデレーション サービス (AD FS) に関して、オンプレミスへのデプロイと Microsoft Azure 仮想マシンへのデプロイとの大きな違いについて説明します。
@@ -53,7 +53,7 @@ AD をデプロイした経験のない方は、「[AD DS Deployment Guide (AD D
 
 * [Azure Portal を使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
 * [Azure Portal でサイト間 VPN 接続を使用して仮想ネットワークを作成する](../vpn-gateway/vpn-gateway-site-to-site-create.md)
-* [Azure の仮想ネットワークでの Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
+* [Azure Virtual Network での Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
 * [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](active-directory-install-replica-active-directory-domain-controller.md)
 * [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](https://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)
 * [Microsoft Azure IT Pro IaaS: (05) 仮想ネットワークとクロスプレミス接続の作成](https://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/05)
@@ -220,7 +220,7 @@ Office 365 のサインインに対応することのみが目的である場合
 | --- | --- |
 | 1.ユーザーが企業ネットワークにログオンして、Windows Server Active Directory に対して認証されます。 |1.ユーザーが企業ネットワークにログオンして、Windows Server Active Directory に対して認証されます。 |
 | 2.ユーザーが Office 365 へのアクセスを試みます (@contoso.com を使用)。 |2.ユーザーが Office 365 へのアクセスを試みます (@contoso.com を使用)。 |
-| 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |手順 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |
+| 手順 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |手順 3.Office 365 がユーザーを Azure AD にリダイレクトします。 |
 | 4.Azure AD はユーザーを認証できませんが、オンプレミスの AD FS との間に信頼関係があることがわかっているため、ユーザーを AD FS にリダイレクトします。 |4.Azure AD は Kerberos チケットを直接受理することができず、信頼関係が存在しないため、ユーザーに資格情報の入力を要請します。 |
 | 5.ユーザーは Kerberos チケットを AD FS STS に送信します。 |5.ユーザーは、同じオンプレミスのパスワードを入力します。Azure AD は、DirSync によって同期されているユーザー名とパスワードに照らして入力内容を検証します。 |
 | 6.AD FS は Kerberos チケットを必要なトークン形式/要求に変換し、ユーザーを Azure AD にリダイレクトします。 |6.Azure AD がユーザーを Office 365 にリダイレクトします。 |
@@ -258,7 +258,7 @@ Office 365 で DirSync とパスワード同期を使用する場合 (AD FS を�
 ![Cloud-only AD DS deployment](media/active-directory-deploying-ws-ad-guidelines/ADDS_cloud.png)
 **図 1**
 
-#### <a name="description"></a>説明
+#### <a name="description"></a>[説明]
 SharePoint は Azure 仮想マシンにデプロイされ、アプリケーションは会社のネットワーク リソースに依存していません。 また、Windows Server AD DS は必要ですが、それがオンプレミスにある必要は "*ありません*"。 Kerberos またはフェデレーションによる信頼関係は不要です。Windows Server AD DS ドメインはクラウド内の Azure 仮想マシンでもホストされており、ユーザーはそのドメインに対し、アプリケーションを介して自己プロビジョニングすることになります。
 
 #### <a name="scenario-considerations-and-how-technology-areas-apply-to-the-scenario"></a>シナリオの考慮事項と適用する技術領域
@@ -278,7 +278,7 @@ SharePoint は Azure 仮想マシンにデプロイされ、アプリケーシ�
 ![Federation with cross-premises connectivity](media/active-directory-deploying-ws-ad-guidelines/Federation_xprem.png)
 **図 2**
 
-#### <a name="description"></a>Description
+#### <a name="description"></a>[説明]
 社内ユーザーによって使用されている、オンプレミスにデプロイされた要求対応のアプリケーションにインターネットから直接アクセスできるようにします。 アプリケーションは、データの保存先となる SQL データベースへの Web フロントエンドとして機能しています。 アプリケーションによって使用される SQL Server も会社のネットワークに配置されています。 社内ユーザーのアクセス用に、2 つの Windows Server AD FS STS と 1 つのロード バランサーがオンプレミスにデプロイされています。 今後は、既存の社内ユーザーだけでなく、自社の ID を使用するビジネス パートナーも、インターネット経由でアプリケーションに直接アクセスする必要があります。
 
 この新しい要件に伴い、デプロイと構成のニーズを効率よく満たすために決定したのは、別途 2 つの Web フロントエンドと 2 つの Windows Server AD FS プロキシ サーバーを Azure 仮想マシンにインストールすることです。 4 つの VM はすべてインターネットに直接公開され、Azure 仮想ネットワークのサイト間 VPN 機能を使用してオンプレミス ネットワークに接続されます。
@@ -302,7 +302,7 @@ SharePoint は Azure 仮想マシンにデプロイされ、アプリケーシ�
 ![Cross-premises AD DS deployment](media/active-directory-deploying-ws-ad-guidelines/ADDS_xprem.png)
 **図 3**
 
-#### <a name="description"></a>説明
+#### <a name="description"></a>[説明]
 LDAP 対応アプリケーションを Azure 仮想マシンにデプロイします。 このアプリケーションは Windows 統合認証をサポートし、構成データとユーザー プロファイル データのリポジトリとして Windows Server AD DS を使用します。 このシナリオの目的は、会社の既存の Windows Server AD DS を利用し、かつシングル サインオンにアプリケーションを対応させることです。 アプリケーションは要求対応ではありません。 また、ユーザーはインターネットから直接アプリケーションにアクセスする必要があります。 パフォーマンスとコストを考慮し、会社のドメインに属している 2 つのドメイン コントローラーを別途、アプリケーションと共に Azure にデプロイすることになりました。
 
 #### <a name="scenario-considerations-and-how-technology-areas-apply-to-the-scenario"></a>シナリオの考慮事項と適用する技術領域
@@ -329,7 +329,7 @@ LDAP 対応アプリケーションを Azure 仮想マシンにデプロイし�
 
 | Windows Server Active Directory の技術領域 | 決定事項 | 考慮すべき要素 |
 | --- | --- | --- |
-| [ネットワーク トポロジ](#BKMK_NetworkTopology) |仮想ネットワークを作成するかどうか。 |<li>会社のリソースにアクセスするための要件</li> <li>認証</li> <li>[Account Management]</li> |
+| [ネットワーク トポロジ](#BKMK_NetworkTopology) |仮想ネットワークを作成するかどうか。 |<li>会社のリソースにアクセスするための要件</li> <li>認証</li> <li>アカウント管理</li> |
 | [DC のデプロイ構成](#BKMK_DeploymentConfig) |<li>信頼関係のない独立したフォレストをデプロイするか。</li> <li>フェデレーションを使用する新しいフォレストをデプロイするか。</li> <li>Windows Server Active Directory フォレストの信頼関係 (つまり Kerberos) を使用する新しいフォレストをデプロイするか。</li> <li>レプリカ DC をデプロイすることで会社のフォレストを拡張するか。</li> <li>新しい子ドメインやドメイン ツリーをデプロイすることで会社のフォレストを拡張するか。</li> |<li>セキュリティ</li> <li>コンプライアンス</li> <li>コスト</li> <li>回復性とフォールト トレランス</li> <li>アプリケーションの互換性</li> |
 | [Windows Server Active Directory のサイト トポロジ](#BKMK_ADSiteTopology) |トラフィックを最適化してコストを最小限に抑えるために、サブネットとサイト、さらに Azure Virtual Network とのサイト リンクをどのように構成するか。 |<li>サブネットとサイトの定義</li> <li>サイト リンクのプロパティと変更通知</li> <li>レプリケーション圧縮</li> |
 | [IP アドレス指定と DNS](#BKMK_IPAddressDNS) |IP アドレスと名前解決をどのように構成するか。 |<li>Set-AzureStaticVNetIP コマンドレットを使用して静的 IP アドレスを割り当てます</li> <li>Windows Server DNS サーバーをインストールし、DC および DNS サーバー ロールのホストとなる VM の名前と IP アドレスを使用して、仮想ネットワークのプロパティを構成します</li> |
@@ -433,7 +433,7 @@ SYSPREP を使用して DC をデプロイしたり複製したりしないで�
 Windows Server AD DS のデータベース、ログ、SYSVOL を検索する場所を選択します。 これらのデータは Azure データ ディスクにデプロイする必要があります。
 
 > [!NOTE]
-> Azure データ ディスクは 1 TB に制限されます。
+> Azure データ ディスクは 4 TB に制限されます。
 > 
 > 
 

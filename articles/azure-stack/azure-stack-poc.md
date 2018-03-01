@@ -3,8 +3,8 @@ title: "Azure Stack とは | Microsoft Docs"
 description: "Azure Stack を使用すると、お使いのデータセンターで Azure を実行できます。"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: jeffgilb
+manager: femila
 editor: 
 ms.assetid: d9e6aee1-4cba-4df5-b5a3-6f38da9627a3
 ms.service: azure-stack
@@ -12,14 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 09/25/2017
-ms.author: helaw
+ms.date: 02/21/2018
+ms.author: jeffgilb
+ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 950ba44c0b7eb80c9b0a3c69a9fca03cd244576d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 68d1e1752f934e61bbb60c0c934a80b564896a36
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="what-is-azure-stack"></a>Azure Stack とは
 
@@ -36,7 +37,7 @@ Azure Stack Development Kit には次の制限事項があります。
 * すべてのコンポーネントが単一のマシンにデプロイされるため、テナント用のリソースとして使用できる物理リソースは限られます。 この構成は、拡張性やパフォーマンスの評価のためのものではありません。
 * 単一ホスト/NIC 要件のため、ネットワークのシナリオは制限されています。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [主要機能および概念](azure-stack-key-features.md)
 
 [Azure Stack: Azure の拡張機能 (pdf)](https://azure.microsoft.com/en-us/resources/azure-stack-an-extension-of-azure/)

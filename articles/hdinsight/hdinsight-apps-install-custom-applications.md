@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: 3bf8ff367fcf88c76c2dc711a6daeffdcb3258b7
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 4065c08e647ff708e1d8c4fa52563da7f83ef0c1
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Azure HDInsight へのカスタム Hadoop アプリケーションのインストール
 
@@ -30,8 +30,8 @@ HDInsight アプリケーションは、ユーザーが Linux ベースの HDIns
 
 その他の関連記事:
 
-* [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について説明します。
-* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。
+* [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について確認します。
+* [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について確認します。
 * [MSDN: HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションを定義する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -79,7 +79,7 @@ Azure ポータルでアプリケーションのステータスを確認し、�
 
 **Hue ポータルを開くには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックします。  表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
 3. アプリケーションをインストールしたクラスターをクリックします。
 4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。 **[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
@@ -111,7 +111,7 @@ HDInsight アプリケーションを削除する方法は複数あります。
 ### <a name="use-portal"></a>ポータルの使用
 **ポータルを使用してアプリケーションを削除するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューの **[HDInsight クラスター]** をクリックします。  表示されない場合は、**[参照]** をクリックし、**[HDInsight クラスター]** をクリックしてください。
 3. アプリケーションをインストールしたクラスターをクリックします。
 4. **[設定]** ブレードで **[全般]** カテゴリの **[アプリケーション]** をクリックします。 インストールされているアプリケーションの一覧が表示されます。 このチュートリアルでは、**[インストール済みアプリ]** ブレードの一覧に **hue** が表示されます。
@@ -126,7 +126,7 @@ Azure PowerShell を使用して、クラスターを削除したり、リソー
 ### <a name="use-azure-cli"></a>Azure CLI の使用
 Azure CLI を使用して、クラスターを削除したり、リソース グループを削除したりできます。 [Azure CLI を使用したクラスターの削除](hdinsight-administer-use-command-line.md#delete-clusters)に関するセクションを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [MSDN 記事を参照して HDInsight アプリケーションをインストールする](https://msdn.microsoft.com/library/mt706515.aspx): HDInsight アプリケーションをデプロイするための Resource Manager テンプレートの作成方法について確認します。
 * [HDInsight アプリケーションをインストールする](hdinsight-apps-install-applications.md): HDInsight アプリケーションをクラスターにインストールする方法について説明します。
 * [HDInsight アプリケーションを発行する](hdinsight-apps-publish-applications.md): カスタム HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。

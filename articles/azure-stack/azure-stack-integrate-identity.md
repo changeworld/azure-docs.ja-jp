@@ -5,22 +5,22 @@ services: azure-stack
 author: mattbriggs
 ms.service: azure-stack
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: 
-ms.openlocfilehash: 2f15e130859272a729fb0ad6e0b718d4724f2103
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 03dc26ba3fcf10b52f6d6b77445de3f6770c4162
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Azure Stack とデータセンターの統合 - ID
 Azure Stack は、ID プロバイダーとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のいずれかを使用してデプロイできます。 Azure Stack を展開する前に、選択を行う必要があります。 AD FS を使用したデプロイは、切断モードでの Azure Stack のデプロイとも呼ばれます。
 
 次の表は、2 つの ID の選択間の違いを示します。
 
-||物理的に切断されている|物理的に接続されている|
+||インターネットから切断されている|インターネットに接続されている|
 |---------|---------|---------|
 |課金|容量ベース<br> Enterprise Agreement (EA) のみ|容量ベースまたは従量課金制<br>EA または Cloud Solution Provider (CSP)|
 |ID|AD FS|Azure AD または AD FS|

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
-ms.openlocfilehash: 4ed83b28fe5f0f1e9626115390f8697dfb2c8ead
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 69431979769a03b62a7f9fd7760e6eb614e37cd6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="quickstart-for-bash-in-azure-cloud-shell"></a>Azure Cloud Shell の Bash のクイックスタート
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/15/2017
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
-> VM の認証に使用される公開キーと秘密キーは、Azure CLI 2.0 によって既定で `/User/.ssh/id_rsa` と `/User/.ssh/id_rsa.pub` に格納されます。 .ssh フォルダーは、接続した Azure ファイル共有の 5 GB イメージに永続化されます。
+> VM の認証に使用される公開キーと秘密キーは、Azure CLI 2.0 によって既定で `/home/<user>/.ssh/id_rsa` と `/home/<user>/.ssh/id_rsa.pub` に格納されます。 .ssh フォルダーは、接続した Azure ファイル共有の 5 GB イメージに永続化されます。
 
 この VM でのユーザー名が、Cloud Shell で使用されるユーザー名になります ($User@Azure:)。
 
@@ -76,7 +76,7 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 リソース グループとそこに含まれるリソースを削除するには、 <br>
 `az group delete -n MyRG` を実行します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Cloud Shell の Bash でのファイルの永続化については、こちらを参照してください](persisting-shell-storage.md) <br>
 [Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure Files ストレージについて](../storage/files/storage-files-introduction.md) <br>

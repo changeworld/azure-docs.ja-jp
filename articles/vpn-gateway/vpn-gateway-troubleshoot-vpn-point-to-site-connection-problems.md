@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/14/2017
 ms.author: genli
-ms.openlocfilehash: 69d363b5ff0b94884cf6d13ae0260f3747e4e69a
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 83d96a2706e879f8817540e85369729289be9456
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -65,11 +65,18 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 ### <a name="cause"></a>原因
 
-この問題は、ルート証明書の公開キーが Azure VPN ゲートウェイにアップロードされていない場合に発生します。 また、キーが破損しているか、有効期限が切れている場合にも発生することがあります。
+この問題は、次のいずれかの条件に当てはまる場合に発生します。
+
+- ゲートウェイ サブネット上のユーザー定義ルート (UDR) と既定のルートが正しく設定されていない。
+- ルート証明書の公開キーが Azure VPN ゲートウェイにアップロードされていない。 
+- キーが破損しているか、有効期限が切れている。
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、Azure Portal でルート証明書の状態をチェックして、失効しているかどうかを確認します。 失効していない場合は、ルート証明書を削除して再アップロードしてみます。 詳細については、「[証明書の作成](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)」を参照してください。
+この問題を解決するには、次の手順に従ってください。
+
+1. ゲートウェイ サブネット上の UDR を削除します。 UDR ですべてのトラフィックが正常に転送されるようにします。
+2. Azure Portal でルート証明書の状態をチェックして、失効しているかどうかを確認します。 失効していない場合は、ルート証明書を削除して再アップロードしてみます。 詳細については、「[証明書の作成](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)」を参照してください。
 
 ## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN クライアント エラー: 証明書チェーンは処理されましたが、停止されました 
 
@@ -146,7 +153,7 @@ VPN クライアント構成パッケージを抽出し、.cer ファイルを�
 
 Azure Portal で VPN ゲートウェイの変更を保存しようとすると、次のエラー メッセージが表示されます。
 
-**仮想ネットワーク ゲートウェイ &lt;*ゲートウェイ名*&gt; を保存できませんでした。 証明書 &lt;*証明書 ID*&gt; のデータが無効です。**
+**仮想ネットワーク ゲートウェイ &lt;*ゲートウェイ名*&gt; を保存できませんでした。証明書 &lt;*証明書 ID*&gt; のデータが無効です。**
 
 ### <a name="cause"></a>原因 
 
@@ -181,7 +188,7 @@ Azure Portal で VPN ゲートウェイの変更を保存しようとすると�
 
 Azure Portal で VPN ゲートウェイの変更を保存しようとすると、次のエラー メッセージが表示されます。 
 
-**仮想ネットワーク ゲートウェイ &lt;*ゲートウェイ名*&gt; を保存できませんでした。 リソース名 &lt;*アップロードしようとした証明書の名前*&gt; は無効です**。
+**仮想ネットワーク ゲートウェイ &lt;*ゲートウェイ名*&gt; を保存できませんでした。リソース名 &lt;*アップロードしようとした証明書の名前*&gt; は無効です。**
 
 ### <a name="cause"></a>原因
 
@@ -199,7 +206,7 @@ VPN クライアント構成パッケージをダウンロードしようとす�
 
 このエラーは、一時的なネットワークの問題が原因で発生します。 数分経ってからもう一度 VPN パッケージをダウンロードしてみてください。
 
-## <a name="azure-vpn-gateway-upgrade-all-p2s-clients-are-unable-to-connect"></a>Azure VPN Gateway のアップグレード: すべての P2S クライアントが接続できません
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway のアップグレード: すべてのポイント対サイト クライアントが接続できません
 
 ### <a name="cause"></a>原因
 
@@ -207,7 +214,7 @@ VPN クライアント構成パッケージをダウンロードしようとす�
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、新しい証明書を作成して VPN クライアントに再配布します。 
+この問題を解決するには、ポイント対サイト パッケージをすべてのクライアントに再デプロイします。
 
 ## <a name="too-many-vpn-clients-connected-at-once"></a>一度に接続する VPN クライアントが多すぎる
 
@@ -234,6 +241,10 @@ VPN クライアントの範囲が 10.0.0.0/8 の小規模なサブネット (10
 アドレスがクラス B に属している場合 --> /16 が適用されます
 
 アドレスがクラス C に属している場合 --> /24 が適用されます
+
+### <a name="solution"></a>解決策
+
+他のネットワークのルートが、最長プレフィックス一致またはポイント対サイトより低い (そのため優先順位の高い) メトリックでルーティング テーブルに挿入されるようにします。 
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>VPN クライアントがネットワーク ファイル共有にアクセスできない
 
@@ -262,7 +273,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-この問題を解決するには、**C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。
+この問題を解決するには、**C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>ポイント対サイト VPN クライアントがローカル ドメイン内のリソースの FQDN を解決できません
 
@@ -301,7 +312,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="cause"></a>原因
 
-このエラーは、VPN クライアントを認証するために使用する RADIUS サーバーの設定が正しくない場合に発生します。 
+このエラーは、VPN クライアントを認証するために使用する RADIUS サーバーの設定が正しくない場合、または Azure ゲートウェイが RADIUS サーバーに到達できない場合に発生します。
 
 ### <a name="solution"></a>解決策
 
@@ -312,3 +323,45 @@ RADIUS サーバーが正しく構成されていることを確認します。 
 ### <a name="cause"></a>原因
 
 ルート証明書がインストールされていません。 ルート証明書は、クライアントの**信頼された証明書**ストアにインストールされます。
+
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN クライアント エラー: VPN トンネルの試行に失敗したため、リモート接続を確立できませんでした。 (エラー 800) 
+
+### <a name="cause"></a>原因
+
+NIC ドライバーの期限が切れています。
+
+### <a name="solution"></a>解決策
+
+NIC ドライバーを更新します。
+
+1. **[開始]** をクリックして「**デバイス マネージャー**」と入力し、結果の一覧から選択します。 管理者パスワードまたは確認を求められたら、パスワードを入力するか、確認を行います。
+2. **ネットワーク アダプター** カテゴリで、更新したい NIC を見つけます。  
+3. デバイス名をダブルクリックして **[ドライバーの更新]** を選択し、**[自動的に更新されたドライバ ソフトウェアを検索します]** を選択します。
+4. Windows によって新しいドライバーが検出されない場合、デバイス製造元の Web サイト上にあるドライバーを探してその手順に従うことができます。
+5. コンピューターを再起動して、もう一度接続を試してみてください。
+
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>エラー: "ファイル ダウンロード エラー: ターゲット URI が指定されていません"
+
+### <a name="cause"></a>原因
+
+これは、ゲートウェイの種類が正しく構成されていないことが原因です。
+
+### <a name="solution"></a>解決策
+
+Azure VPN ゲートウェイの種類は VPN で、VPN の種類は **RouteBased** にする必要があります。
+
+## <a name="vpn-package-installer-doesnt-complete"></a>VPN パッケージのインストーラーが完了しない
+
+### <a name="cause"></a>原因
+
+この問題の原因は、以前の VPN クライアントのインストールである可能性があります。 
+
+### <a name="solution"></a>解決策
+
+**C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId>** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。 
+
+## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>VPN クライアントがしばらくしたら休止状態またはスリープ状態になる
+
+### <a name="solution"></a>解決策
+
+VPN クライアントが実行されているコンピューターのスリープ設定および休止状態設定をチェックします。

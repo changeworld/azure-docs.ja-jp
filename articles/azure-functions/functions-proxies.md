@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 3d1b5f30898bc0aab5c617ab547aa7db5e7e4375
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 75b568c12fd58d5599b6878dedb6c2266b6cb649
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 01/29/2018
 3. プロキシの名前を指定します。
 4. **ルート テンプレート**と **HTTP メソッド**を指定して、この関数アプリで公開されるエンドポイントを構成します。 これらのパラメーターは、[HTTP トリガー]の規則に従って動作します。
 5. **バックエンド URL** を他のエンドポイントに設定します。 このエンドポイントは、別の関数アプリ内の関数にすることも、他の任意の API にすることもできます。 静的な値である必要はありません。[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することもできます。
-6. **Create** をクリックしてください。
+6. **[作成]** をクリックします。
 
 これで、プロキシが関数アプリの新しいエンドポイントになりました。 クライアントの観点からは、Azure Functions の HttpTrigger と同じです。 プロキシの URL をコピーし、任意の HTTP クライアントでテストすることで、新しいプロキシを試してみることができます。
 
@@ -50,13 +50,13 @@ ms.lasthandoff: 01/29/2018
 
 既定では、バックエンドへの要求は、元の要求のコピーとして初期化されます。 バックエンドの URL を設定することに加え、HTTP メソッドやヘッダー、クエリ文字列のパラメーターに変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することが可能です。
 
-現時点では、ポータルからバックエンドへの要求に変更を加えることはできません。 この機能を *proxies.json* から利用する方法については、「[requestOverrides オブジェクトの定義]」をご覧ください。
+バックエンドへの要求は、ポータルでプロキシの詳細ページの "*要求の上書き*" セクションを展開して変更することができます。 
 
 ### <a name="modify-response"></a>応答を変更する
 
 既定では、クライアントへの応答は、バックエンドからの応答のコピーとして初期化されます。 応答の状態コード、理由の文字列、ヘッダー、本文には、変更を加えることができます。 変更後の値から、[アプリケーション設定]や[元のクライアント要求のパラメーター]、[バックエンドからの応答のパラメーター]を参照することが可能です。
 
-現時点では、ポータルから応答に変更を加えることはできません。 この機能を *proxies.json* から利用する方法については、「[responseOverrides オブジェクトの定義]」をご覧ください。
+バックエンドへの要求は、ポータルでプロキシの詳細ページの "*応答の上書き*" セクションを展開して変更することができます。 
 
 ## <a name="using-variables"></a>変数を使用する
 
@@ -65,7 +65,11 @@ ms.lasthandoff: 01/29/2018
 ### <a name="reference-localhost"></a>ローカル関数を参照する
 `localhost` を使用して、往復のプロキシ要求なしで、同じ関数アプリ内の関数を直接参照することができます。
 
-`"backendurl": "localhost/api/httptriggerC#1"` は、ローカルの HTTP トリガーされた関数をルート `/api/httptriggerC#1` で参照します。
+`"backendurl": "https://localhost/api/httptriggerC#1"` は、ローカルの HTTP トリガーされた関数をルート `/api/httptriggerC#1` で参照します。
+
+ 
+>[!Note]  
+>関数が "*function、admin、または sys*" の承認レベルを使用している場合は、元の関数 URL に従って code と clientId を指定する必要があります。 この場合、参照は `"backendurl": "https://localhost/api/httptriggerC#1?code=<keyvalue>&clientId=<keyname>"` のようになります。
 
 ### <a name="request-parameters"></a>要求のパラメーターを参照する
 
@@ -114,7 +118,7 @@ ms.lasthandoff: 01/29/2018
 
 ## <a name="advanced-configuration"></a>詳細な構成
 
-構成するプロキシは、関数アプリ ディレクトリのルートにある *proxies.json* ファイルに格納されます。 このファイルを手動で編集し、Functions でサポートされているいずれかの[デプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)を使用するときにアプリの一部としてデプロイできます。 ファイルが処理されるようにするには、Azure Functions プロキシ機能を[有効](#enable)にしておく必要があります。 
+構成するプロキシは、関数アプリ ディレクトリのルートにある *proxies.json* ファイルに格納されます。 このファイルを手動で編集し、Functions でサポートされているいずれかの[デプロイ方法](https://docs.microsoft.com/azure/azure-functions/functions-continuous-deployment)を使用するときにアプリの一部としてデプロイできます。 
 
 > [!TIP] 
 > いずれのデプロイ方法もまだ設定していない場合は、ポータルで *proxies.json* ファイルを編集することもできます。 目的の関数アプリに移動して **[プラットフォーム機能]** を選択し、**[App Service エディター]** を選択します。 これにより、関数アプリのファイル構造全体が表示され、変更を加えることができます。
@@ -229,16 +233,6 @@ ms.lasthandoff: 01/29/2018
 ```
 > [!NOTE] 
 > この例では、応答の本文が直接設定されているため、`backendUri` プロパティは必要ありません。 この例では、Azure Functions プロキシを使って API のモッキングを行う方法を説明しています。
-
-## <a name="enable"></a>Azure Functions プロキシを有効にする
-
-現在、Azure Functions プロキシは既定で有効になっています。 プレビュー版の古いバージョンのプロキシを使用し、プロキシを無効にしていた場合、プロキシを実行するために手動で有効化を 1 回行う必要があります。
-
-1. [Azure Portal] を開き、関数アプリに移動します。
-2. **[Function App の設定]** を選択します。
-3. **[Azure Functions プロキシの有効化 (プレビュー)]** を **[オン]** に切り替えます。
-
-新機能が使用可能になったときに、ここに戻って、プロキシ ランタイムを更新することもできます。
 
 [Azure Portal]: https://portal.azure.com
 [HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/20/2017
 ms.author: jgao
-ms.openlocfilehash: 96faa0cf518e4b02b5ba9fd8aedaf21bd6288b02
-ms.sourcegitcommit: 901a3ad293669093e3964ed3e717227946f0af96
+ms.openlocfilehash: 62b21db5c52287c1d0d058cba3a433434c364777
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="process-and-analyze-json-documents-by-using-apache-hive-in-azure-hdinsight"></a>Azure HDInsight での Apache Hive による JSON ドキュメントの処理および分析
 
@@ -151,7 +151,6 @@ SerDe は、入れ子になった JSON ドキュメントの解析に最適な�
 * [HDInsight で Hadoop と共に Hive と HiveQL を使用して Apache log4j サンプル ファイルを分析する](../hdinsight-use-hive.md)
 * [HDInsight での Hive を使用したフライトの遅延データの分析](../hdinsight-analyze-flight-delay-data.md)
 * [HDInsight での Hive を使用した Twitter データの分析](../hdinsight-analyze-twitter-data.md)
-* [Azure Cosmos DB と HDInsight を使用した Hadoop ジョブの実行](../../cosmos-db/run-hadoop-with-hdinsight.md)
 
 [hdinsight-python]:python-udf-hdinsight.md
 

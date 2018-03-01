@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: mahender
-ms.openlocfilehash: 608f5ec2fb4b8fa374778cb4f506f1d25eb7642b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 01f845e0cb987eb4e4e9baa62478d3ff6991fb7e
+ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
 
@@ -493,6 +493,9 @@ module.exports = function (context, req) {
 ### <a name="authorization-keys"></a>承認キー
 
 HTTP トリガーを使用すると、セキュリティを強化するためにキーを利用できます。 標準的な HTTP トリガーは、それらを API キーとして使用できます。キーは、要求内に存在する必要があります。 webhook はキーを使用して、プロバイダーで何がサポートされているかに応じてさまざまな方法で要求を承認することができます。
+
+> [!NOTE]
+> 関数をローカルで実行している場合、`function.json` で設定された `authLevel` に関係なく、承認は無効になります。 Azure Functions に発行すると、`authLevel` は直ちに有効になります。
 
 キーは関数アプリの一部として Azure に格納され、保存中は暗号化されます。 キーを表示するには、新しいキーを作成するか、キーを新しい値にロールし、ポータル内でいずれかの関数に移動して、[管理] を選択します。 
 

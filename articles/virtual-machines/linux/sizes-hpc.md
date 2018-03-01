@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2017
 ms.author: jonbeck
-ms.openlocfilehash: a235261dc477ab29dc17fe1e680e4e91ae2f4ede
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: cdfd09d90be9696dacc151e138920944c8bbd2c9
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>ハイ パフォーマンス コンピューティング仮想マシンのサイズ
 
@@ -30,9 +30,9 @@ ms.lasthandoff: 11/17/2017
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
 ## <a name="rdma-capable-instances"></a>RDMA 対応のインスタンス
-コンピューティング集中型インスタンス (H16r、H16mr、A8、A9) のサブセットには、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 このインターフェイスは、標準の Azure ネットワーク インターフェイスと同様に、他の VM サイズでも利用可能です。 
+コンピューティング集中型インスタンス (H16r、H16mr、NC24r、A8、A9) のサブセットには、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 このインターフェイスは、標準の Azure ネットワーク インターフェイスと同様に、他の VM サイズでも利用可能です。 
   
-このインターフェイスにより、RDMA 対応インスタンスは InfiniBand ネットワークを介して通信することができ、H16r と H16mr の仮想マシンでは FDR のレートで、A8 と A9 の仮想マシンでは QDR のレートで動作します。 これらの RDMA 機能により、Intel MPI 5.x 以降のバージョンで実行している Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。
+このインターフェイスにより、RDMA 対応インスタンスは InfiniBand ネットワークを介して通信することができ、H16r、H16mr、および NC24r の仮想マシンでは FDR のレートで、A8 と A9 の仮想マシンでは QDR のレートで動作します。 これらの RDMA 機能により、Intel MPI 5.x でのみ、実行している Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。 Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure RDMA ドライバーと互換性がありません。
 
 RDMA 対応の VM を、同じ可用性セット (Azure Resource Manager デプロイメント モデルを使用している場合) または同じクラウド サービス (クラシック デプロイメント モデルを使用している場合) 内にデプロイします。 RDMA 対応の Linux VM が Azure RDMA ネットワークにアクセスするための追加の要件が発生します。
 
@@ -76,7 +76,7 @@ RDMA 接続をサポートする Azure Marketplace で、イメージの 1 つ�
 - [GPU](../windows/sizes-gpu.md)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Linux 上の RDMA によりコンピューティング集中型サイズのデプロイと使用を開始する方法については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
 

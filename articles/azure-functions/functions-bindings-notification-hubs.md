@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: cbc22721bbe06fdc5a8a9026b113071e1616bcb8
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 6be75035247f05995949734cd4f4f0d934e30685
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions における Notification Hubs の出力バインド
 
@@ -320,6 +320,12 @@ public static async Task Run(string myQueueItem, IAsyncCollector<Notification> n
 このアプリケーション設定の名前が、*function.json* または .NET 属性の出力バインディング接続設定で使用されます。 この記事で前述した「[構成](#configuration)」セクションをご覧ください。
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
+
+## <a name="exceptions-and-return-codes"></a>例外とリターン コード
+
+| バインド | リファレンス |
+|---|---|
+| Notification Hub | [運用ガイド](https://docs.microsoft.com/rest/api/notificationhubs/) |
 
 ## <a name="next-steps"></a>次の手順
 

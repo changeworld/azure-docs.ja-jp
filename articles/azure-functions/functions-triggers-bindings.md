@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a122271b5fdffd9db33a7dca5908e15f002041d7
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 90a192f58f0e4b285f7aece8a3555c08df051f38
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 
@@ -483,6 +483,12 @@ C# やその他の .NET 言語では、*function.json* の宣言型のバイン�
 ## <a name="functionjson-file-schema"></a>function.json ファイル スキーマ
 
 *function.json* ファイル スキーマは [http://json.schemastore.org/function](http://json.schemastore.org/function) から入手できます。
+
+## <a name="handling-binding-errors"></a>バインド エラーの処理
+
+[!INCLUDE [bindings errors intro](../../includes/functions-bindings-errors-intro.md)]
+
+Functions でサポートされているさまざまなサービスに関連するすべてのエラー トピックへのリンクについては、概要トピック「[Azure Functions error handling (Azure Functions のエラー処理)](functions-bindings-error-pages.md)」の「[Binding error codes (バインド エラー コード)](functions-bindings-error-pages.md#binding-error-codes)」セクションを参照してください。  
 
 ## <a name="next-steps"></a>次の手順
 

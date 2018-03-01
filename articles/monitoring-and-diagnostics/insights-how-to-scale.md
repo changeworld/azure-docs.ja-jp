@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: ancav
-ms.openlocfilehash: 7e16926b5a1c28c0c8c80ee8c17e8c2fdb9e55a7
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 9ff52bd29644c7c585d2a85fcbe49e8800f6a035
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="scale-instance-count-manually-or-automatically"></a>手動または自動によるインスタンス数のスケール変更
 [Azure Portal](https://portal.azure.com/) では、サービスのインスタンス数を手動で設定するか、パラメーターを指定して必要に応じて自動的にスケールを変更することができます。 これは通常、"*スケールアウト*" または "*スケールイン*" と呼ばれます。
@@ -30,7 +30,7 @@ ms.lasthandoff: 12/14/2017
 ## <a name="scaling-manually"></a>手動によるスケール変更
 1. [Azure Portal](https://portal.azure.com/) で、**[参照]** をクリックし、**[App Service プラン]** など、スケール変更するリソースに移動します。
 2. **[設定] > [スケール アウト (App Service のプラン)]** をクリックします。
-3. **[スケール]** ブレードの上部に、サービスに対する自動スケール アクションの履歴が表示されます。
+3. **[スケール]** ブレードの上部にある **[実行履歴]** タブには、サービスに対する自動スケール アクションの履歴が表示されます。
    
     ![[スケール] ブレード](./media/insights-how-to-scale/Insights_ScaleBladeDayZero.png)
    
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/14/2017
    > このグラフに表示されるのは、自動スケールで実行されるアクションのみです。 インスタンス数を手動で調整した場合、このグラフに変更は反映されません。
    > 
    > 
-4. スライダーを使用して、 **[インスタンス]** の数を手動で調整できます。
+4. **[インスタンス]** の数は、**[構成]** タブで手動で調整できます。
 5. **[保存]** コマンドをクリックすると、ほぼ即座にインスタンス数が調整されます。
 
 ## <a name="scaling-based-on-a-pre-set-metric"></a>事前設定されたメトリックに基づくスケール変更
@@ -97,7 +97,7 @@ ms.lasthandoff: 12/14/2017
 3. 日中に適用するプロファイルを用意するには、 **[開始時刻]** に、開始する時刻を設定します。
    
     ![Default recurrence](./media/insights-how-to-scale/Insights_ProfileRecurrence.png)
-4. **[OK]**をクリックします。
+4. Click **OK**.
 5. 次に、別の時間に適用するプロファイルを追加する必要があります。 **[プロファイルの追加]** 行をクリックします。
     ![業務時間外](./media/insights-how-to-scale/Insights_ProfileOffWork.png)
 6. 2 つ目の新しいプロファイルに、「 **業務時間外**」などの名前を付けます。
@@ -108,14 +108,14 @@ ms.lasthandoff: 12/14/2017
    > 自動スケールでは、選択した **[タイム ゾーン]** に応じて夏時間ルールが使用されます。 ただし、夏時間の間、UTC オフセットには、夏時間の UTC オフセットではなく、基本のタイム ゾーン オフセットが表示されます。
    > 
    > 
-9. **[OK]**をクリックします。
+9. Click **OK**.
 10. ここで、2 つ目のプロファイルで適用するすべてのルールを追加する必要があります。 **[規則の追加]**をクリックして、既定のプロファイルと同じ規則を作成することもできます。
     
     ![Add rule to off work](./media/insights-how-to-scale/Insights_RuleOffWork.png)
 11. スケールアウトとスケールインの両方のルールを必ず作成してください。そうしないと、そのプロファイルの間は、インスタンス数は増加 (または減少) の一途をたどります。
 12. 最後に、 **[保存]**をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [サービス メトリックスを監視](insights-how-to-customize-monitoring.md) して、サービスの可用性と応答性を確認します。
 * [監視と診断を有効](insights-how-to-use-diagnostics.md) にしてサービスに関する詳細な頻度の高いメトリックを収集します。
 * [アラート通知を受け取り](insights-receive-alert-notifications.md) ます。

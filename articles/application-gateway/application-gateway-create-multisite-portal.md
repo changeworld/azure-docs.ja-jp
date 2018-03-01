@@ -1,142 +1,189 @@
 ---
-title: "Azure Application Gateway での複数のサイトのホスト | Microsoft Docs"
-description: "このページでは、Azure Portal を使って同じゲートウェイで複数の Web アプリケーションをホストするために既存の Azure アプリケーション ゲートウェイを構成する手順について説明します。"
-documentationcenter: na
+title: "複数のサイトをホストするアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs"
+description: "Azure Portal を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する方法について説明します。"
 services: application-gateway
 author: davidmu1
 manager: timlt
 editor: tysonn
-ms.assetid: 95f892f6-fa27-47ee-b980-7abf4f2c66a9
 ms.service: application-gateway
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 01/26/2018
 ms.author: davidmu
-ms.openlocfilehash: 28a7fcb3e08a9c4b6a27e9fbc8d3ebae309adc62
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 403c6c254d8547b09e42f0b1561e5eff350a1f9b
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="configure-an-existing-application-gateway-for-hosting-multiple-web-applications"></a>複数の Web アプリケーションをホストするために既存のアプリケーション ゲートウェイを構成する
+# <a name="create-an-application-gateway-with-multiple-site-hosting-using-the-azure-portal"></a>Azure Portal を使用して複数のサイトをホストするアプリケーション ゲートウェイを作成する
 
-> [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-create-multisite-portal.md)
-> * [Azure Resource Manager の PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
-> 
-> 
+[アプリケーション ゲートウェイ](application-gateway-introduction.md)を作成するときに、Azure Portal を使用して [複数の Web サイト](application-gateway-multi-site-overview.md)のホスティングを構成できます。 このチュートリアルでは、仮想マシン スケール セットを使用してバックエンド プールを作成します。 その後、Web トラフィックがプール内の適切なサーバーに確実に到着するように、所有するドメインに基づいてリスナーと規則を構成します。 このチュートリアルでは、複数のドメインを所有していることを前提として、*www.contoso.com* と *www.fabrikam.com* の例を使用します。
 
-複数サイトのホストにより、複数の Web アプリケーションを同じアプリケーション ゲートウェイにデプロイすることができます。 どのリスナーがトラフィックを受信するかを決定するには、受信 HTTP 要求にホスト ヘッダーがあるかどうかに依存します。 リスナーは、ゲートウェイのルール定義の構成に従って、適切なバックエンド プールにトラフィックを送ります。 SSL 対応の Web アプリケーションの場合、アプリケーション ゲートウェイは Server Name Indication (SNI) 拡張機能を使用して Web トラフィックに適切なリスナーを選択します。 複数サイトのホストの一般的な用途は、さまざまな Web ドメインに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。 同様に、同じルート ドメインの複数のサブドメインも、同じアプリケーション ゲートウェイでホストすることができます。
+この記事では、次のことについて説明します:
 
-## <a name="scenario"></a>シナリオ
+> [!div class="checklist"]
+> * アプリケーション ゲートウェイの作成
+> * バックエンド サーバー用の仮想マシンの作成
+> * バックエンド サーバーでのバックエンド プールの作成
+> * リスナーとルーティング規則の作成
+> * ドメインの CNAME レコードの作成
 
-次の例では、アプリケーション ゲートウェイは、2 つのバックエンド サーバー プール (contoso サーバー プールと fabrikam サーバー プール) を使用して contoso.com および fabrikam.com のトラフィックを処理します。 同様の設定は、app.contoso.com や blog.contoso.com などのサブドメインのホストにも使用できます。
+![マルチサイト ルーティングの例](./media/application-gateway-create-multisite-portal/scenario.png)
 
-![複数サイトのシナリオ][multisite]
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="log-in-to-azure"></a>Azure にログインする
 
-このシナリオでは、既存のアプリケーション ゲートウェイに複数サイトのサポートを追加します。 このシナリオを完了するには、既存のアプリケーション ゲートウェイを構成できる必要があります。 ポータルで基本的なアプリケーション ゲートウェイを作成する方法については、「[ポータルを使ってアプリケーション ゲートウェイを作成する](application-gateway-create-gateway-portal.md)」をご覧ください。
+Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にログインします。
 
-アプリケーション ゲートウェイを更新するために必要な手順を次に示します。
+## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-1. 各サイトに使うバックエンド プールを作成します。
-2. アプリケーション ゲートウェイがサポートする各サイトにリスナーを作成します。
-3. 各リスナーと適切なバックエンドをマップするルールを作成します。
+作成したリソース間の通信には仮想ネットワークが必要です。 この例では 2 つのサブネットが作成されます。1 つはアプリケーション ゲートウェイ用で、もう 1 つはバックエンド サーバー用です。 仮想ネットワークは、アプリケーション ゲートウェイを作成するときに同時に作成できます。
 
-## <a name="requirements"></a>必要条件
+1. Azure Portal の左上にある **[新規]** をクリックします。
+2. **[ネットワーク]** を選択し、注目のリストで **[Application Gateway]** を選択します。
+3. 次のアプリケーション ゲートウェイの値を入力します。
 
-* **バックエンド サーバー プール:** バックエンド サーバーの IP アドレスの一覧。 一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、パブリック IP/VIP である必要があります。 FQDN を使用することもできます。
-* **バックエンド サーバー プールの設定:** すべてのプールには、ポート、プロトコル、Cookie ベースのアフィニティなどの設定があります。 これらの設定はプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-* **フロントエンド ポート:** このポートは、Application Gateway で開かれたパブリック ポートです。 このポートにトラフィックがヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
-* **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https で、値には大文字小文字の区別あり)、SSL 証明書名 (オフロードの SSL を構成する場合) があります。 複数サイト対応のアプリケーション ゲートウェイでは、ホスト名と SNI インジケーターも追加されます。
-* **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックが特定のリスナーにヒットした際に送られるバックエンド サーバー プールを定義します。 ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールによってリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも前に配置する必要があります。 
-* **証明書:** 各リスナーに固有の証明書が必要です。この例では、複数サイト用に 2 つのリスナーを作成します。 したがって、2 つの .pfx 証明書とパスワードを作成する必要があります。
+    - *myAppGateway* - アプリケーション ゲートウェイの名前です。
+    - *myResourceGroupAG* - 新しいリソース グループの名前です。
 
-## <a name="create-back-end-pools-for-each-site"></a>各サイトのバックエンド プールを作成する
+    ![新しいアプリケーション ゲートウェイの作成](./media/application-gateway-create-multisite-portal/application-gateway-create.png)
 
-アプリケーション ゲートウェイがサポートする各サイトにバックエンド プールが必要です。この例では、contoso11.com 用と fabrikam11.com 用に 2 つのプールを作成します。
+4. 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
+5. **[仮想ネットワークの選択]**、**[新規作成]** の順にクリックし、次の仮想ネットワークの値を入力します。
 
-### <a name="step-1"></a>手順 1
+    - *myVNet* - 仮想ネットワークの名前です。
+    - *10.0.0.0/16* - 仮想ネットワークのアドレス空間です。
+    - *myAGSubnet* - サブネットの名前です。
+    - *10.0.0.0/24* - サブネットのアドレス空間です。
 
-Azure Portal (https://portal.azure.com) で既存のアプリケーション ゲートウェイに移動します。 **[バックエンド プール]** を選び、**[追加]** をクリックします
+    ![Create virtual network](./media/application-gateway-create-multisite-portal/application-gateway-vnet.png)
 
-![バックエンド プールを追加する][7]
+6. **[OK]** をクリックして、仮想ネットワークとサブネットを作成します。
+7. **[パブリック IP アドレスの選択]**、**[新規作成]** の順にクリックし、パブリック IP アドレスの名前を入力します。 この例では、パブリック IP アドレスの名前は *myAGPublicIPAddress* にします。 他の設定は既定値をそのまま使用し、**[OK]** をクリックします。
+8. リスナーの構成は既定値をそのまま使用し、Web アプリケーション ファイアウォールは無効のままにして、**[OK]** をクリックします。
+9. 概要ページで設定を確認し、**[OK]** をクリックして、ネットワーク リソースとアプリケーション ゲートウェイを作成します。 アプリケーション ゲートウェイの作成には数分かかる場合があります。デプロイが正常に終了するのを待ち、その後で次のセクションに進みます。
 
-### <a name="step-2"></a>手順 2.
+### <a name="add-a-subnet"></a>サブネットの追加
 
-バックエンド プール **pool1** の情報を入力し、バックエンド サーバーの IP アドレスまたは FQDN を追加して、**[OK]** をクリックします
+1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myVNet]** をクリックします。
+2. **[サブネット]**、**[サブネット]** の順にクリックします。
 
-![バックエンド プール pool1 の設定][8]
+    ![サブネットの作成](./media/application-gateway-create-multisite-portal/application-gateway-subnet.png)
 
-### <a name="step-3"></a>手順 3.
+3. サブネットの名前として「*myBackendSubnet*」を入力し、**[OK]** をクリックします。
 
-バックエンド プール ブレードで **[追加]** をクリックして新しいバックエンド プール **pool2** を追加し、バックエンド サーバーの IP アドレスまたは FQDN を追加して、**[OK]** をクリックします
+## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-![バックエンド プール pool2 の設定][9]
+この例では、アプリケーション ゲートウェイのバックエンド サーバーとして使用する 2 つの仮想マシンを作成します。 また、IIS を仮想マシンにインストールして、トラフィックが正常にルーティングされていることを確認します。
 
-## <a name="create-listeners-for-each-back-end"></a>各バックエンド用のリスナーを作成する
+1. **[新規]**をクリックします。
+2. **[コンピューティング]** をクリックし、注目のリストで **[Windows Server 2016 Datacenter]** を選択します。
+3. 次の仮想マシンの値を入力します。
 
-Application Gateway は、複数の Web サイトを同じパブリック IP アドレスとポートでホストするために、HTTP 1.1 ホスト ヘッダーを利用します。 ポータルで作成される基本的なリスナーには、このプロパティは含まれません。
+    - *contosoVM* - 仮想マシンの名前です。
+    - *azureuser* - 管理者のユーザー名です。
+    - *Azure123456!* パスワードです。
+    - **[既存のものを使用]**、*[myResourceGroupAG]* の順に選択します。
 
-### <a name="step-1"></a>手順 1
+4. Click **OK**.
+5. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
+6. 仮想ネットワークに対して **[myVNet]** が選択されていること、およびサブネットが **myBackendSubnet** であることを確認します。 
+7. **[無効]** をクリックして、ブート診断を無効にします。
+8. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
 
-既存のアプリケーション ゲートウェイで **[リスナー]** をクリックし、**[Multi-site]** (マルチサイト) をクリックして最初のリスナーを追加します。
+### <a name="install-iis"></a>IIS のインストール
 
-![リスナー概要ブレード][1]
+1. 対話型シェルを開いて、**PowerShell** に設定されていることを確認します。
 
-### <a name="step-2"></a>手順 2.
+    ![カスタム拡張機能のインストール](./media/application-gateway-create-multisite-portal/application-gateway-extension.png)
 
-リスナーの情報を入力します。 SSL 終了が設定されているこの例では、新しいフロント エンド ポートを作成します。 SSL 終了に使う .pfx 証明書をアップロードします。 このブレードと標準的な基本リスナー ブレードとの唯一の違いは、ホスト名です。
+2. 次のコマンドを実行して、IIS を仮想マシンにインストールします。 
 
-![リスナー プロパティ ブレード][2]
+    ```azurepowershell-interactive
+    $publicSettings = @{ "fileUris" = (,"https://raw.githubusercontent.com/davidmu1/samplescripts/master/appgatewayurl.ps1");  "commandToExecute" = "powershell -ExecutionPolicy Unrestricted -File appgatewayurl.ps1" }
+    Set-AzureRmVMExtension `
+      -ResourceGroupName myResourceGroupAG `
+      -Location eastus `
+      -ExtensionName IIS `
+      -VMName contosoVM `
+      -Publisher Microsoft.Compute `
+      -ExtensionType CustomScriptExtension `
+      -TypeHandlerVersion 1.4 `
+      -Settings $publicSettings
+    ```
 
-### <a name="step-3"></a>手順 3.
+3. 2 番目の仮想マシンを作成し、終了したばかりの手順を使用して、IIS をインストールします。 名前および Set-AzureRmVMExtension の VMName の値として、*fabrikamVM* という名前を入力します。
 
-**[Multi-site]** (マルチサイト) をクリックし、前の手順の説明に従って 2 番目のサイト用に別のリスナーを作成します。 第 2 のリスナーには別の証明書を使います。 このブレードと標準的な基本リスナー ブレードとの唯一の違いは、ホスト名です。 リスナーの情報を入力して **[OK]** をクリックします。
+## <a name="create-backend-pools-with-the-virtual-machines"></a>仮想マシンでのバックエンド プールの作成
 
-![リスナー プロパティ ブレード][3]
+1. **[すべてのリソース]**、**[myAppGateway]** の順にクリックします。
+2. **[バックエンド プール]**、**[追加]** の順にクリックします。
+3. *contosoPool* という名前を入力し、**[ターゲットの追加]** を使用して *contosoVM* を追加します。
 
-> [!NOTE]
-> Azure Portal でのアプリケーション ゲートウェイ用リスナーの作成は長時間のタスクであり、このシナリオで 2 つのリスナーを作成するには時間がかかる場合があります。 完了すると、次の図のようにポータルにリスナーが表示されます。
+    ![バックエンド サーバーの追加](./media/application-gateway-create-multisite-portal/application-gateway-multisite-backendpool.png)
 
-![リスナーの概要][4]
+4. Click **OK**.
+5. **[バックエンド プール]**、**[追加]** の順にクリックします。
+6. 終了したばかりの手順を使用して、*fabrikamVM* を含む *fabrikamPool* を作成します。
 
-## <a name="create-rules-to-map-listeners-to-backend-pools"></a>リスナーをバックエンド プールにマップするルールを作成する
+## <a name="create-listeners-and-routing-rules"></a>リスナーとルーティング規則の作成
 
-### <a name="step-1"></a>手順 1
+1. **[リスナー]**、**[マルチサイト]** の順にクリックします。
+2. 次のリスナーの値を入力します。
+    
+    - *contosoListener* - リスナーの名前です。
+    - *www.contoso.com* - このホスト名の例をドメイン名に置き換えます。
 
-Azure Portal (https://portal.azure.com) で既存のアプリケーション ゲートウェイに移動します。 **[ルール]** を選び、既存の既定のルール **rule1** を選んで、**[編集]** をクリックします。
+3. Click **OK**.
+4. *fabrikamListener* という名前を使用して 2 番目のリスナーを作成し、2 番目のドメイン名を使用します。 この例では、*www.fabrikam.com* が使用されています。
 
-### <a name="step-2"></a>手順 2.
+ルールはリストの順序どおりに処理され、トラフィックは、具体性にかかわらず最初に一致したルールを使用してリダイレクトされます。 たとえば、同一のポート上に基本リスナーを使用するルールとマルチサイト リスナーを使用するルールがある場合、マルチサイトのルールを適切に動作させるには、リストでマルチサイト リスナーのルールを基本リスナーのルールよりも前に配置する必要があります。 
 
-次の図に示すように、ルール ブレードに入力します。 1 番目のリスナーと 1 番目のプールを選び、完了したら **[保存]** をクリックします。
+この例では、2 つの新しいルールを作成し、アプリケーション ゲートウェイを作成したときに作成された既定のルールを削除します。 
 
-![既存のルールを編集する][6]
+1. **[ルール]**、**[基本]** の順にクリックします。
+2. 名前として「*contosoRule*」と入力します。
+3. リスナーとして *[contosoListener]* を選択します。
+4. バックエンド プールとして *[contosoPool]* を選択します。
 
-### <a name="step-3"></a>手順 3.
+    ![パス ベース ルールの作成](./media/application-gateway-create-multisite-portal/application-gateway-multisite-rule.png)
 
-**[Basic rule (基本ルール)]** をクリックして、2 番目のルールを作ります。 2 番目のリスナーと 2 番目のバックエンド プールの情報をフォームに入力し、**[OK]** をクリックして保存します。
+5. Click **OK**.
+6. *fabrikamRule*、*fabrikamListener*、および *fabrikamPool* の名前を使用して 2 番目のルールを作成します。
+7. *rule1* という名前の既定のルールをクリックし、**[削除]** をクリックしてこのルールを削除します。
 
-![基本ルールの追加ブレード][10]
+## <a name="create-a-cname-record-in-your-domain"></a>ドメインの CNAME レコードの作成
 
-以上のシナリオで、Azure Portal での複数サイトのサポートを含む既存アプリケーション ゲートウェイの構成は終了です。
+パブリック IP アドレスを使用してアプリケーション ゲートウェイを作成した後は、DNS アドレスを取得し、これを使用してドメインに CNAME レコードを作成できます。 アプリケーション ゲートウェイを再起動すると VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
 
-## <a name="next-steps"></a>次のステップ
+1. **[すべてのリソース]**、**[myAGPublicIPAddress]** の順にクリックします。
 
-[Application Gateway - Web アプリケーション ファイアウォール](application-gateway-webapplicationfirewall-overview.md)を使用して Web サイトを保護する方法について学びます。
+    ![アプリケーション ゲートウェイの DNS アドレスの記録](./media/application-gateway-create-multisite-portal/application-gateway-multisite-dns.png)
 
-<!--Image references-->
-[1]: ./media/application-gateway-create-multisite-portal/figure1.png
-[2]: ./media/application-gateway-create-multisite-portal/figure2.png
-[3]: ./media/application-gateway-create-multisite-portal/figure3.png
-[4]: ./media/application-gateway-create-multisite-portal/figure4.png
-[5]: ./media/application-gateway-create-multisite-portal/figure5.png
-[6]: ./media/application-gateway-create-multisite-portal/figure6.png
-[7]: ./media/application-gateway-create-multisite-portal/figure7.png
-[8]: ./media/application-gateway-create-multisite-portal/figure8.png
-[9]: ./media/application-gateway-create-multisite-portal/figure9.png
-[10]: ./media/application-gateway-create-multisite-portal/figure10.png
-[multisite]: ./media/application-gateway-create-multisite-portal/multisite.png
+2. DNS アドレスをコピーし、これをドメイン内の新しい CNAME レコードの値として使用します。
+
+## <a name="test-the-application-gateway"></a>アプリケーション ゲートウェイのテスト
+
+1. ブラウザーのアドレス バーにドメイン名を入力します。 例: http://www.contoso.com。
+
+    ![アプリケーション ゲートウェイの contoso サイトをテストする](./media/application-gateway-create-multisite-portal/application-gateway-iistest.png)
+
+2. アドレスをもう 1 つのドメインに変更します。次の例のように表示されます。
+
+    ![アプリケーション ゲートウェイの fabrikam サイトをテストする](./media/application-gateway-create-multisite-portal/application-gateway-iistest2.png)
+
+## <a name="next-steps"></a>次の手順
+
+この記事で学習した内容は次のとおりです。
+
+> [!div class="checklist"]
+> * アプリケーション ゲートウェイの作成
+> * バックエンド サーバー用の仮想マシンの作成
+> * バックエンド サーバーでのバックエンド プールの作成
+> * リスナーとルーティング規則の作成
+> * ドメインの CNAME レコードの作成
+
+> [!div class="nextstepaction"]
+> [アプリケーション ゲートウェイでできることについてさらに学習する](application-gateway-introduction.md)

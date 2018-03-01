@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: wesmc
-ms.openlocfilehash: 74ec104bebec2004a8b7116865c2394c02b12638
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 5ed5af627fa8ec8007f095face2cbf115ead4b27
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 VNet とは、クラウド内のプライベート ネットワークです。 VNet を使用して Azure Redis Cache インスタンスを構成する場合、パブリックにアドレスを指定することはできないため、VNet 内の仮想マシンとアプリケーションからしかアクセスできません。 この記事では、Premium Azure Redis Cache インスタンスの仮想ネットワークのサポートを構成する方法について説明します。
@@ -117,6 +117,7 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 | 20226 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 | 13000-13999 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 | 15000-15999 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
+| 6379-6380 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
 
 ### <a name="inbound-port-requirements"></a>受信ポートの要件
@@ -125,7 +126,7 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 
 | ポート | 方向 | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
 | --- | --- | --- | --- | --- | --- |
-| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
+| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) | (Redis サブネット)、Virtual Network、Azure Load Balancer |
 | 8443 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 | 8500 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
 | 10221-10231 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、Azure Load Balancer |
@@ -146,7 +147,7 @@ Azure Redis Cache のネットワーク接続要件には、仮想ネットワ�
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>VNET で自分のキャッシュの動作を確認するにはどうすればよいですか
 
 >[!IMPORTANT]
->VNET にホストされている Azure Redis Cache インスタンスに接続している場合、キャッシュ クライアントはテスト アプリケーションや診断 ping ツールを含む同じ VNET にある必要があります。
+>VNET にホストされている Azure Redis Cache インスタンスに接続している場合、キャッシュ クライアントは同じ VNET または VNET ピアリングが有効な VNET にある必要があります。 これには、テスト アプリケーションや診断 ping ツールが含まれます。 クライアント アプリケーションがどこでホストされているかに関係なく、クライアントのネットワーク トラフィックが Redis インスタンスに到達できるようネットワーク セキュリティ グループを構成する必要があります。
 >
 >
 

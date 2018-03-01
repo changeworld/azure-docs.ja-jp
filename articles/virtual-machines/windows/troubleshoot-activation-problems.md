@@ -14,17 +14,25 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: f6095d98ada2974bce03ec8f5527367837daafd3
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: fd3f52de40c6d448d457824bcc675db036d2cb86
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="troubleshoot-azure-windows-virtual-machine-activation-problems"></a>Azure Windows 仮想マシンのライセンス認証に関する問題のトラブルシューティング
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 カスタム イメージから作成された Azure Windows 仮想マシン (VM) をライセンス認証するときに問題が発生する場合は、問題のトラブルシューティングを行うために、このドキュメントに記載されている情報を使用できます。 
+
+## <a name="understanding-azure-kms-endpoints-for-windows-product-activation-of-azure-virtual-machines"></a>Azure Virtual Machines の Windows 製品ライセンス認証の Azure KMS エンドポイントについて
+Azure では、KMS ライセンス認証に対して、VM が存在するクラウド リージョンに応じたエンドポイント使用します。 このトラブルシューティング ガイドを使用する際は、ご利用のリージョンに適用される適切な KMS エンドポイントを使用してください。
+
+* Azure パブリック クラウド リージョン: kms.core.windows.net:1688
+* Azure China 国内クラウド リージョン: kms.core.chinacloudapi.cn:1688
+* Azure Germany 国内クラウド リージョン: kms.core.cloudapi.de:1688
+* Azure US Gov 国内クラウド リージョン: kms.core.usgovcloudapi.net:1688
 
 ## <a name="symptom"></a>症状
 

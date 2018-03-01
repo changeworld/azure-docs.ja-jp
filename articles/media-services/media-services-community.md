@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: juliako
-ms.openlocfilehash: 2743ef7e60371329bcad0090733eb8e40560c5f1
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: b32997f9a936b73a08b367ca69341da24f31f3a8
+ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/11/2018
 ---
 # <a name="azure-media-services-community"></a>Azure Media Services コミュニティ
 この Azure Media Services (AMS) コミュニティ ページでは、AMS に関する最新情報を取得するさまざまな方法が話し合われています。 新しいビデオとポッドキャストを参照したり、質問してフィードバックをもらったりすることができます。   
@@ -59,4 +59,6 @@ Azure Media Services の主要なサポート メール アドレスは **amshel
 | Azure Media Player |ampinfo@microsoft.com |
 | Azure Media Explorer |amse@microsoft.com |
 | ワークフロー デザイナー |mepd@microsoft.com |
+| ファイル ストリーミングとパッケージング |amsstreaming@microsoft.com |
+| ファイル ストリーミングとパッケージング |amslived@microsoft.com |
 

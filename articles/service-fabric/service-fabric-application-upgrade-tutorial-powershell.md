@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 54ca664a29ed8c6337bb27fe1fa17276e480c911
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 0306a219112a14121fd881a7cc52d58597a073a2
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="service-fabric-application-upgrade-using-powershell"></a>PowerShell を使用した Service Fabric アプリケーションのアップグレード
 > [!div class="op_single_selector"]
@@ -135,7 +135,7 @@ Get-ServiceFabricApplicationUpgrade fabric:/VisualObjects
 
 練習として、バージョンをバージョン 2 からバージョン 3 にアップグレードするか、バージョン 2 からバージョン 1 に変更してみることができます。 バージョン 2 からバージョン 1 への移行もアップグレードと見なされます。 タイムアウトと正常性ポリシーをいろいろ試して、これらに精通してください。 Azure クラスターにデプロイするときに、パラメーターを適切に設定する必要があります。 タイムアウトは控えめに設定することをお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md) に関する記事では、Visual Studio を使用してアプリケーションをアップグレードする方法について説明します。
 
 [アップグレード パラメーター](service-fabric-application-upgrade-parameters.md)を使用して、アプリケーションのアップグレード方法を制御します。

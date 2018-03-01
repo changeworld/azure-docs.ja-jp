@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: 16c72f8c22307a124fdb670aabca771084c0d1ec
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: aaa9705aed59b5cf78100eda9997bb1ca74845b9
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning 実験サービス構成ファイル
 
@@ -166,8 +166,8 @@ _"az ml experiment submit foo.runconfig"_ は自動的に、パラメーター�
 **Environment Variables**: このセクションでは、ユーザーは実行の一部として環境変数を設定できます。 ユーザーは、次の形式で名前と値のペアを使用して、環境変数を指定できます。
 ```
 EnvironmentVariables:
-"EXAMPLE_ENV_VAR1": "Example Value1"
-"EXAMPLE_ENV_VAR2": "Example Value2"
+  "EXAMPLE_ENV_VAR1": "Example Value1"
+  "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
 これらの環境変数には、ユーザーのコードでアクセスできます。 たとえば、この Phyton コードでは、"EXAMPLE_ENV_VAR" という環境変数が出力されます
@@ -210,5 +210,5 @@ DataSourceSubstitutions:
 ```
 df = datasource.load_datasource('mylocal.dsource')
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [実験サービス構成](experimentation-service-configuration.md)の詳細を確認します。

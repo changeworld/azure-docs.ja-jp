@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/16/2017
 ms.author: jeedes
-ms.openlocfilehash: 8d77215fd2923e22a9cc87e469cb135d035d22d9
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0ff14365323d66a101e5847d7959045c3f20dea2
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-amazon-web-services-aws"></a>チュートリアル: Azure Active Directory と Amazon Web Services (AWS) の統合
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 01/19/2018
 Amazon Web Services (AWS) と Azure AD の統合には、次の利点があります。
 
 - Amazon Web Services (AWS) にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Amazon Web Services (AWS) にサインオンできるようにします (シングル サインオン)。
+- ユーザーが自分の Azure AD アカウントで自動的にアマゾン ウェブ サービス (AWS) にサインインできるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
@@ -40,12 +40,12 @@ Amazon Web Services (AWS) と Azure AD の統合を構成するには、次の�
 - Amazon Web Services (AWS) でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
-> このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
+> このチュートリアルの手順をテストする場合、運用環境を使わないことをお勧めします。
 
-このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
+このチュートリアルの手順をテストするには、次の推奨事項に従います。
 
-- 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
+- 必要な場合を除き、運用環境は使わないでください。
+- Azure AD の評価環境がない場合は、[1 か月間無料の試用版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -53,12 +53,12 @@ Amazon Web Services (AWS) と Azure AD の統合を構成するには、次の�
 1. ギャラリーからの Amazon Web Services (AWS) の追加
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-amazon-web-services-aws-from-the-gallery"></a>ギャラリーからの Amazon Web Services (AWS) の追加
+## <a name="add-amazon-web-services-aws-from-the-gallery"></a>ギャラリーからの Amazon Web Services (AWS) の追加
 Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Amazon Web Services (AWS) を追加する必要があります。
 
-**ギャラリーから Amazon Web Services (AWS) を追加するには、次の手順を実行します:** 
+**ギャラリーからアマゾン ウェブ サービス (AWS) を追加するには、次の手順を実行します:** 
 
-1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
+1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンを選びます。 
 
     ![Azure Active Directory のボタン][1]
 
@@ -66,127 +66,127 @@ Azure AD への Amazon Web Services (AWS) の統合を構成するには、ギ�
 
     ![[エンタープライズ アプリケーション] ブレード][2]
     
-3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
+3. 新しいアプリケーションを追加するには、ダイアログ ボックスの上部にある **[新しいアプリケーション]** ボタンを選びます。
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Amazon Web Services (AWS)**」と入力して結果パネルから **[Amazon Web Services (AWS)]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
+4. 検索ボックスに、「**Amazon Web Services (AWS)**」と入力します。 結果パネルから **[アマゾン ウェブ サービス (AWS)]** を選択し、**[追加]** を選択してアプリケーションを追加します。
 
     ![結果の一覧の Amazon Web Services (AWS)](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Amazon Web Services (AWS) で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、アマゾン ウェブ サービス (AWS) で Azure AD のシングル サインオンを構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Amazon Web Services (AWS) ユーザーが Azure AD で認識される必要があります。 言い換えると、Azure AD ユーザーと Amazon Web Services (AWS) の関連ユーザーの間で、リンク関係が確立されている必要があります。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応するアマゾン ウェブ サービス (AWS) ユーザーが Azure AD で認識される必要があります。 言い換えると、Azure AD ユーザーとアマゾン ウェブ サービス (AWS) の関連ユーザーの間で、リンクが確立されている必要があります。
 
-Amazon Web Services (AWS) で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+リンクを確立するには、アマゾン ウェブ サービス (AWS) の**ユーザー名**に、Azure AD 内の**ユーザー名**と同じ値を割り当てます。 
 
-Amazon Web Services (AWS) との Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+アマゾン ウェブ サービス (AWS) との Azure AD シングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
-2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Amazon Web Services (AWS) テスト ユーザーの作成](#create-an-amazon-web-services-aws-test-user)** - Amazon Web Services (AWS) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+1. [Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on) - ユーザーがこの機能を使用できるようにします。
+2. [Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user) - Britta Simon で Azure AD のシングル サインオンをテストします。
+3. [アマゾン ウェブ サービス (AWS) テスト ユーザーの作成](#create-an-amazon-web-services-aws-test-user) - アマゾン ウェブ サービス (AWS) で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+4. [Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user) - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+5. [シングル サインオンのテスト](#test-single-sign-on)。構成が機能することを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
 このセクションでは、Azure ポータルで Azure AD のシングル サインオンを有効にし、Amazon Web Services (AWS) アプリケーションへのシングル サインオンを構成します。
 
-**Amazon Web Services (AWS) との Azure AD シングル サインオンを構成するには、次の手順を実行します。**
+**アマゾン ウェブ サービス (AWS) との Azure AD シングル サインオンを構成するには、次の手順を実行します。**
 
-1. Azure Portal の **Amazon Web Services (AWS)** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の**アマゾン ウェブ サービス (AWS)** アプリケーション統合ページで、**[シングル サインオン]** を選択します。
 
     ![シングル サインオン構成のリンク][4]
 
-2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
+2. シングル サインオンを有効にするには、**[シングル サインオン]** ダイアログ ボックスの **[モード]** ドロップダウン リストで **[SAML ベースのサインオン]** を選択します。
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_samlbase.png)
 
-3. アプリは Azure と事前に統合済みであるため、**[Amazon Web Services (AWS) のドメインと URL]** セクションで特に手順を実施する必要はありません。
+3. アプリは Azure と事前に統合済みであるため、**[アマゾン ウェブ サービス (AWS) のドメインと URL]** セクションで特に手順を実施する必要はありません。
 
-    ![[Amazon Web Services (AWS) のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_url.png)
+    ![[アマゾン ウェブ サービス (AWS) のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_url.png)
 
-4. Amazon Web Services (AWS) アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
+4. アマゾン ウェブ サービス (AWS) アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットは、例を示しています。
 
-    ![シングル サインオンの構成の属性](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_attribute.png)   
+    ![シングル サインオン属性の構成](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_attribute.png)  
 
-5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、上の図に示すように SAML トークン属性を構成し、次の手順を実行します。
+5. **[シングル サインオン]** ボックスの **[ユーザー属性]** セクションで、前の画像で示されているように、SAML トークン属性を構成し、次の手順を実行します。
     
-    | 属性名  | 属性値 | 名前空間 |
+    | 属性名  | 属性名 | 名前空間 |
     | --------------- | --------------- | --------------- |
     | RoleSessionName | user.userprincipalname | https://aws.amazon.com/SAML/Attributes |
     | 役割            | user.assignedroles |  https://aws.amazon.com/SAML/Attributes |
     
     >[!TIP]
-    >AWS コンソールからすべてのロールをフェッチするには、Azure AD でユーザー プロビジョニングを構成する必要があります。 次のプロビジョニングの手順をご覧ください。
+    >アマゾン ウェブ サービス (AWS) コンソールからすべてのロールをフェッチするには、Azure AD でユーザー プロビジョニングを構成します。 次のプロビジョニング手順を参照してください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** ダイアログ ボックスを開くには、**[属性の追加]** を選択します。
 
-    ![シングル サインオンの構成の追加](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_04.png)
+    ![シングル サインオン属性の構成](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_04.png)
 
-    ![シングル サインオンの構成の属性の追加](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_05.png)
+    ![シングル サインオン属性の構成](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_attribute_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
-    c. **[値]** 一覧から、その行に対して表示される値を入力します。
+    c. **[値]** 一覧から、その行に対して表示される属性値を入力します。
 
     d. **[名前空間]** ボックスに、その行に表示される名前空間の値を入力します。
     
-    d. **[OK]**をクリックします。
+    d. **[OK]** を選びます。
 
-6. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+6. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** を選択します。 次に、コンピューターにメタデータ ファイルを保存します。
 
     ![証明書のダウンロードのリンク](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_certificate.png) 
 
-7. **[保存]** ボタンをクリックします。
+7. **[保存]** を選択します。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_general_400.png)
 
-8. 別の Web ブラウザーのウィンドウで、管理者として Amazon Web Services (AWS) 企業サイトにサインオンします。
+8. 別の Web ブラウザーのウィンドウで、管理者としてアマゾン ウェブ サービス (AWS) 企業サイトにサインインします。
 
-9. **[Console Home]**をクリックします。
+9. **[Console Home]\(コンソール ホーム\)** を選択します。
    
     ![シングル サインオン ホームの構成][11]
 
-10. **[Identity and Access Management]**をクリックします。 
+10. **[Identity and Access Management]\(ID とアクセス管理\)** を選択します。 
    
     ![シングル サインオン ID の構成][12]
 
-11. **[Identity Providers]**、**[Create Provider]** の順にクリックします。 
+11. **[Identity Providers]\(ID プロバイダー\)** を選択します。 **[Create Provider]\(プロバイダーを作成する\)** を選択します。 
    
     ![シングル サインオン プロバイダーの構成][13]
 
-12. **[Configure Provider]** ダイアログ ページで、次の手順を実行します。 
+12. **[Configure Provider]\(プロバイダーの構成\)** ダイアログ ボックスで、次の手順を実行します。 
    
     ![シングル サインオンの構成ダイアログ][14]
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Provider Type]** として **[SAML]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Provider Type]\(プロバイダーの種類\)** で **[SAML]** を選択します。
 
-    b. **[Provider Name]** ボックスにプロバイダー名を入力します (例: *WAAD*)。
+    b. **[Provider Name]\(プロバイダー名\)** ボックスにプロバイダー名を入力します (例: *WAAD*)。
 
-    c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[ファイルの選択]** をクリックします。
+    c. Azure Portal からダウンロードした**メタデータ ファイル**をアップロードするには、**[Choose File]\(ファイルの選択\)** を選択します。
 
-    d. ページの下部にある **[Next Step]**」を参照してください。
+    d. **[Next Step]\(次のステップ\)** を選択します。
 
-13. **[Verify Provider Information]** ダイアログ ボックスで、**[Create]** をクリックします。 
+13. **[Verify Provider Information]\(プロバイダー情報の検証\)** ダイアログ ボックスで **[Create]\(作成\)** を選択します。 
     
-    ![シングル サインオンの検証の構成][15]
+    ![シングル サインオン検証の構成][15]
 
-14. **[Roles]** をクリックしてから **[Create New Role]** をクリックします。 
+14. **[役割]** を選びます。 **[Create New Role]\(新しいロールの作成\)** を選択します。 
     
     ![シングル サインオン ロールの構成][16]
 
-15. **[Set Role Name]** ダイアログで、次の手順を実行します。 
+15. **[Set Role Name]\(ロール名の設定\)** ダイアログ ボックスで、次の手順を実行します。 
     
     ![シングル サインオン名の構成][17] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Role Name]** ボックスにロール名を入力します (例: *TestUser*)。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Role Name]\(ロール名\)** ボックスにロール名を入力します (例: *TestUser*)。 
 
-    b. ページの下部にある **[Next Step]**」を参照してください。
+    b. **[Next Step]\(次のステップ\)** を選択します。
 
-16. **[Select Role Type]** ダイアログで、次の手順を実行します。 
+16. **[Select Role Type]\(ロールの種類の選択\)** ダイアログ ボックスで、次の手順を実行します。 
     
     ![シングル サインオンのロールの種類の構成][18] 
 
@@ -194,49 +194,49 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     b. **[Grant Web Single Sign-On (WebSSO) access to SAML providers]** セクションで、**[Select]** をクリックします。
 
-17. **Establish Trust** ダイアログで、次の手順を実行します。  
+17. **[Establish Trust]\(信頼の確立\)** ダイアログ ボックスで、次の手順を実行します。  
     
     ![シングル サインオンの信頼の構成][19] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 SAML プロバイダーとして、先ほど作成した SAML プロバイダーを選択します (例: *WAAD*) 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 先ほど作成した SAML プロバイダーを選択します (例: *WAAD*)。 
   
-    b. ページの下部にある **[Next Step]**」を参照してください。
+    b. **[Next Step]\(次のステップ\)** を選択します。
 
-18. **[Verify Role Trust]** ダイアログで、**[Next Step]** をクリックします。 
+18. **[Verify Role Trust]\(ロールの信頼の検証\)** ダイアログ ボックスで、**[Next Step]\(次のステップ\)** を選択します。 
     
     ![シングル サインオン ロールの信頼の構成][32]
 
-19. **[Attach Policy]** ダイアログで、**[Next Step]** をクリックします。  
+19. **[Attach Policy]\(ポリシーのアタッチ\)** ダイアログ ボックスで、**[Next Step]\(次のステップ\)** を選択します。  
     
     ![シングル サインオン ポリシーの構成][33]
 
-20. **[Review]** ダイアログで、次の手順を実行します。   
+20. **[Review]\(確認\)** ダイアログ ボックスで、次の手順を実行します。   
     
     ![シングル サインオンの構成の確認][34] 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Create Role]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Create Role]\(ロールの作成\)** を選択します。
 
-    b. 必要な数の役割ロールを作成し、それらを ID プロバイダーにマップします。
+    b. 必要な数のロールを作成し、それらを ID プロバイダーにマップします。
 
-21. Azure AD ユーザー プロビジョニングの AWS アカウントからロールをフェッチするには、AWS サービス アカウントの資格情報を使用します。 そのためには、AWS コンソール ホームを開きます。
+21. Azure AD ユーザー プロビジョニングのアマゾン ウェブ サービス (AWS) アカウントからロールをフェッチするには、アマゾン ウェブ サービス (AWS) のサービス アカウントの資格情報を使用します。 このタスクを開始するには、アマゾン ウェブ サービス (AWS) のコンソール ホームを開きます。
 
-22. **[Services]** -> **[Security, Identity& Compliance]** -> **[IAM]** をクリックします。
+22. **[Services]\(サービス\)** > **[Security, Identity & Compliance]\(セキュリティ、ID、およびコンプライアンス\)** > **[IAM]** を選択します。
 
-    ![AWS アカウントからのロールのフェッチ](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole1.png)
+    ![アマゾン ウェブ サービス (AWS) アカウントからロールをフェッチ](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole1.png)
 
-23. [IAM] セクションで **[Policies]** タブを選択します。
+23. IAM セクションで **[Policies]\(ポリシー\)** タブを選択します。
 
-    ![AWS アカウントからのロールのフェッチ](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole2.png)
+    ![アマゾン ウェブ サービス (AWS) アカウントからロールをフェッチ](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole2.png)
 
-24. **[Create policy]** をクリックして新しいポリシーを作成します。
+24. 新しいポリシーを作成するには、**[Create policy]\(ポリシーの作成\)** を選択します。
 
     ![新しいポリシーの作成](./media/active-directory-saas-amazon-web-service-tutorial/fetchingrole3.png)
  
-25. 以下の手順を実行して、AWS アカウントからすべてのロールをフェッチする独自のポリシーを作成します。
+25. アマゾン ウェブ サービス (AWS) のアカウントからすべてのロールをフェッチする独自のポリシーを作成するには、次の手順を実行します。
 
     ![新しいポリシーの作成](./media/active-directory-saas-amazon-web-service-tutorial/policy1.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ポリシーの作成]** セクションで、**[JSON]** タブをクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Create policy]\(ポリシーの作成\)** セクションで、**[JSON]** タブを選択します。
 
     b. ポリシー ドキュメントで、次の JSON を追加します。
     
@@ -268,7 +268,7 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     ```
 
-    c. **[ポリシーの確認] ボタン**をクリックして、ポリシーを検証します。
+    c. ポリシーを検証するには、**[Review Policy]\(ポリシーの確認\) ボタン**を選択します。
 
     ![新しいポリシーの定義](./media/active-directory-saas-amazon-web-service-tutorial/policy5.png)
 
@@ -278,39 +278,39 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Policy Name]** として **AzureAD_SSOUserRole_Policy** を指定します。
 
-    b. ポリシーの **[Description]** には、「**This policy will allow to fetch the roles from AWS accounts**」を指定できます。
+    b. ポリシーの**説明**には、「**This policy will allow you to fetch the roles from AWS accounts**」を指定できます。
     
-    c. **[ポリシーの作成]** ボタンをクリックします。
+    c. **[Create Policy]\(ポリシーの作成\)** ボタンを選択します。
         
-27. 次の手順を実行して、AWS IAM サービスで新しいユーザー アカウントを作成します。
+27. アマゾン ウェブ サービス (AWS) IAM サービスに新しいユーザー アカウントを作成するには、次の手順を実行します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 AWS IAM コンソールで **[Users]** ナビゲーションをクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 アマゾン ウェブ サービス (AWS) IAM コンソールの **[Users]\(ユーザー\)** を選択します。
 
     ![新しいポリシーの定義](./media/active-directory-saas-amazon-web-service-tutorial/policy3.png)
     
-    b. **[Add user]** をクリックして新しいユーザーを作成します。
+    b. 新しいユーザーを作成するには、**[Add user]\(ユーザーの追加\)** ボタンを選択します。
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/policy4.png)
 
-    c. **[Add user]** セクションで、次の手順を実行します。
+    c. **[Add user]\(ユーザーの追加\)** セクションで、次の手順を実行します。
     
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/adduser1.png)
     
-    * ユーザー名として「**AzureADRoleManager**」を入力します。
+    * ユーザー名のボックスに「**AzureADRoleManager**」と入力します。
     
-    * [Access type] で **[Programmatic access]** オプションを選択します。 こうすると、ユーザーは API を呼び出し、AWS アカウントからロールをフェッチできます。
+    * [Access type]\(アクセスの種類\) で、**[Programmatic access]\(プログラム アクセス\)** オプションを選択します。 こうすると、ユーザーは API を呼び出し、アマゾン ウェブ サービス (AWS) アカウントからロールをフェッチできます。
     
-    * 右下隅の **[Next Permissions]** をクリックします。
+    * 右下隅の **[Next Permissions]\(次のアクセス許可\)** ボタンを選択します。
 
-28. ここで、次の手順を実行して、このユーザーの新しいポリシーを作成します。
+28. 次の手順を実行して、このユーザーの新しいポリシーを作成します。
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/adduser2.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Attach existing policies directly]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Attach existing policies directly]\(既存のポリシーを直接アタッチする\)** ボタンを選択します。
 
     b. [フィルター] セクションで、新しく作成されたポリシー **AzureAD_SSOUserRole_Policy** を検索します。
     
-    c. **ポリシー**を選択し、**[Next: Review]** をクリックします。
+    c. **ポリシー**を選択します。 続けて、**[Next: Review]\(次へ: 確認\)** ボタンを選択します。
 
 29. 次の手順を実行して、接続されたユーザーに対するポリシーを確認します。
 
@@ -318,19 +318,19 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
     
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザー名、アクセスの種類、ユーザーにマップされているポリシーを確認します。
     
-    b. 右下隅にある **[Create user]** をクリックしてユーザーを作成します。
+    b. ユーザーを作成するには、右下隅の **[Create user]\(ユーザーの作成\)** ボタンを選択してユーザーを作成します。
 
-30. 次の手順を実行して、ユーザーのユーザー資格情報をダウンロードします。
+30. 次の手順を実行して、ユーザーの資格情報をダウンロードします。
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/adduser4.png)
     
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザーの **[Access key ID]** と **[Secret access key]** をコピーします。
     
-    b. これらの資格情報を Azure AD の [ユーザー プロビジョニング] セクションに入力して、AWS コンソールからロールをフェッチします。
+    b. これらの資格情報を Azure AD の [ユーザー プロビジョニング] セクションに入力して、アマゾン ウェブ サービス (AWS) コンソールからロールをフェッチします。
     
-    c. 下部にある **[Close]** をクリックします。
+    c. 右上にある **[閉じる]** ボタンを選択します。
 
-31. Azure AD 管理ポータルでアマゾン ウェブ サービス アプリの **[ユーザー プロビジョニング]** セクションに移動します。
+31. Azure AD 管理ポータルでアマゾン ウェブ サービス (AWS) アプリの **[ユーザー プロビジョニング]** セクションに移動します。
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/provisioning.png)
 
@@ -338,20 +338,20 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/provisioning1.png)
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 AWS ユーザーのアクセス キーを **[clientsecret]/(clientsecret/)** フィールドに入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 アマゾン ウェブ サービス (AWS) ユーザーのアクセス キーを **[clientsecret]** フィールドに入力します。
     
-    b. AWS ユーザー シークレットを **[シークレット トークン]** フィールドに入力します。
+    b. アマゾン ウェブ サービス (AWS) ユーザーのシークレットを **[シークレット トークン]** フィールドに入力します。
     
-    c. **[テスト接続]** をクリックすると、この接続を正常にテストできます。
+    c. **[接続のテスト]** ボタンを選択します。 この接続テストに成功することが必要です。
 
-    d. 上部にある **[保存]** をクリックして、設定を保存します。
+    d. 上部にある **[保存]** を選択して、設定を保存します。
  
-33. スイッチをオンにしてから上部の **[保存]** をクリックして、[設定] セクションで [プロビジョニングの状態] を **[オン]** にします。
+33. **[設定]** の [プロビジョニングの状態] が **[オン]** になっていることを確認します。 オンの状態にするには、**[オン]** を選択して上部の **[保存]** ボタンを選択してください。
 
     ![ユーザーの追加](./media/active-directory-saas-amazon-web-service-tutorial/provisioning2.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。 このアプリを追加した後、**[Active Directory] > [エンタープライズ アプリケーション]** セクションで、**[シングル サインオン]** タブを選びます。次に、下部の **[構成]** セクションから組み込みドキュメントにアクセスします。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
 > 
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -362,15 +362,15 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 **Azure AD でテスト ユーザーを作成するには、次の手順に従います。**
 
-1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンをクリックします。
+1. Azure Portal の左側のウィンドウで、**Azure Active Directory** のボタンを選択します。
 
     ![Azure Active Directory のボタン](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_01.png)
 
-2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックします。
+2. ユーザーの一覧を表示するには、**[ユーザーとグループ]** に移動します。 次に、**[すべてのユーザー]** を選択します。
 
     ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_02.png)
 
-3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** をクリックしてきます。
+3. **[ユーザー]** ダイアログ ボックスを開くには、**[すべてのユーザー]** ダイアログ ボックスの上部にある **[追加]** を選択します。
 
     ![[追加] ボタン](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_03.png)
 
@@ -378,17 +378,17 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
     ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-amazon-web-service-tutorial/create_aaduser_04.png)
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに、ユーザーである Britta Simon の電子メール アドレスを入力します。
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **Create** をクリックしてください。
+    d. **[作成]**を選択します。
  
 ### <a name="create-an-amazon-web-services-aws-test-user"></a>アマゾン ウェブ サービス (AWS) テスト ユーザーの作成
 
-このセクションの目的は、Amazon Web Services (AWS) で Britta Simon というユーザーを作成することです。 アマゾン ウェブ サービス (AWS) では、SSO 用にユーザーをシステムに作成する必要がないため、ここで操作を実行する必要はありません。
+このセクションの目的は、Amazon Web Services (AWS) で Britta Simon というユーザーを作成することです。 アマゾン ウェブ サービス (AWS) では、シングル サインオン用にユーザーをシステムに作成する必要がないため、ここで操作を実行する必要はありません。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
@@ -396,36 +396,35 @@ Amazon Web Services (AWS) との Azure AD シングル サインオンを構成�
 
 ![ユーザー ロールを割り当てる][200] 
 
-**Britta Simon を Amazon Web Services (AWS) に割り当てるには、次の手順に従います。**
+**Britta Simon をアマゾン ウェブ サービス (AWS) に割り当てるには、次の手順に従います。**
 
-1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
+1. Azure ポータルで、アプリケーション ビューを開きます。 続けて、ディレクトリ ビューに移動し、**[エンタープライズ アプリケーション]** を選択します。 次に、**[すべてのアプリケーション]** を選びます。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で、 **[Amazon Web Services (AWS)]**を選択します。
+2. アプリケーションの一覧で、**[アマゾン ウェブ サービス (AWS)]** を選択します。
 
-    ![アプリケーションの一覧の [Amazon Web Services (AWS)] リンク](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_app.png)  
+    ![アプリケーションの一覧の [アマゾン ウェブ サービス (AWS)] リンク](./media/active-directory-saas-amazon-web-service-tutorial/tutorial_amazonwebservices(aws)_app.png)  
 
-3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
+3. 左側のメニューで **[ユーザーとグループ]** を選びます。
 
     ![[ユーザーとグループ] リンク][202]
 
-4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
+4. **[追加]** ボタンを選びます。 次に、**[割り当ての追加]** ダイアログ ボックスで **[ユーザーとグループ]** を選択します。
 
     ![[割り当ての追加] ウィンドウ][203]
 
-5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
+5. **[ユーザーとグループ]** ダイアログ ボックスで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
-6. **[ユーザーとグループ]** ダイアログで **[選択]** をクリックします。
+6. **[ユーザーとグループ]** ダイアログ ボックスで、**[選択]** ボタンをクリックします。 
 
-7. **[割り当ての追加]** ダイアログで **[割り当て]** ボタンをクリックします。
+7. **[割り当ての追加]** ダイアログ ボックスで、**[割り当て]** ボタンを選択します。
     
 ### <a name="test-single-sign-on"></a>シングル サインオンのテスト
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで [Amazon Web Services (AWS)] タイルをクリックすると、自動的に Amazon Web Services (AWS) アプリケーションにサインオンします。
-アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
+アクセス パネルで [アマゾン ウェブ サービス (AWS)] タイルをクリックすると、自動的にアマゾン ウェブ サービス (AWS) アプリケーションにサインインします。 アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
