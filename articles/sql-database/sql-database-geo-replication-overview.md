@@ -1,4 +1,4 @@
----
+﻿---
 title: "フェールオーバー グループとアクティブ geo レプリケーション - Azure SQL Database | Microsoft Docs"
 description: "アクティブ geo レプリケーションで自動フェールオーバー グループを使用して、障害発生時に 自動フェイル オーバーを実行できるようにします。"
 services: sql-database

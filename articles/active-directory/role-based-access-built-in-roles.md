@@ -1,4 +1,4 @@
----
+﻿---
 title: "Actions と NotActions - Azure ロールベースのアクセス制御 (RBAC) | Microsoft Docs"
 description: "このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。 ロールは継続的に追加されるので、ドキュメントが最新かどうか確認してください。"
 services: active-directory

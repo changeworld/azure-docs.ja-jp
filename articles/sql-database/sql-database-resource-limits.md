@@ -13,6 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
+<<<<<<< HEAD
 ms.date: 02/27/2018
 ms.author: carlrab
 ms.openlocfilehash: 839705b902b8e1343c1e0bda97a2ec1dc6b47042
@@ -20,6 +21,15 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+=======
+ms.date: 02/12/2018
+ms.author: carlrab
+ms.openlocfilehash: 47f42c10a791caa8ab20401574fb853ad3e4f0e9
+ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/21/2018
+>>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限
 
