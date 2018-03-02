@@ -12,6 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
+<<<<<<< HEAD
 ms.date: 02/22/2018
 ms.author: nisoneji
 ms.openlocfilehash: 50dccf6196b7affd3d21087f851b929d0e850f6d
@@ -19,6 +20,15 @@ ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/24/2018
+=======
+ms.date: 11/28/2017
+ms.author: ruturajd
+ms.openlocfilehash: 7a76ff45fe6209698532a7abc2d561bf7a7b3284
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/09/2018
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへのフェールバック
 

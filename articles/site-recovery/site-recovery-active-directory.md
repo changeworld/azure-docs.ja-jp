@@ -7,6 +7,10 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
+<<<<<<< HEAD
+ms.date: 02/27/2018
+=======
+<<<<<<< HEAD
 ms.date: 02/27/2018
 ms.author: manayar
 ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
@@ -14,6 +18,20 @@ ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
+=======
+ms.date: 02/13/2018
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
+ms.author: manayar
+ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+<<<<<<< HEAD
+ms.lasthandoff: 02/28/2018
+=======
+ms.lasthandoff: 02/21/2018
+>>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery を使用して Active Directory と DNS を保護する
 
@@ -34,6 +52,7 @@ SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケー
 
 ### <a name="single-domain-controller"></a>ドメイン コントローラーが 1 つの場合
 アプリケーションの数が少なく、ドメイン コントローラーが 1 つしかない場合は、サイト全体をまとめてフェールオーバーするとよいでしょう。 このケースでは、Site Recovery を使用して、ターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にドメイン コントローラーをレプリケートすることをお勧めします。 レプリケートされた同じドメイン コントローラーまたは DNS 仮想マシンを、[テスト フェールオーバー](#test-failover-considerations)にも使用できます。
+<<<<<<< HEAD
 
 ### <a name="multiple-domain-controllers"></a>ドメイン コントローラーが複数の場合
 環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
@@ -51,6 +70,25 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 ### <a name="configure-vm-network-settings"></a>VM のネットワーク設定の構成
 ドメイン コントローラーまたは DNS をホストする仮想マシンに関して、Site Recovery で、レプリケートされる仮想マシンの **[コンピューティングとネットワーク]** 設定でネットワーク設定を構成します。 これにより、仮想マシンがフェールオーバー後に適切なネットワークに接続されます。
 
+=======
+
+### <a name="multiple-domain-controllers"></a>ドメイン コントローラーが複数の場合
+環境に多数のアプリケーションと複数のドメイン コントローラーがある場合、または少数のアプリケーションを一度にフェールオーバーすることを検討している場合は、Site Recovery でドメイン コントローラーの仮想マシンをレプリケートすることに加え、[追加のドメイン コントローラー](#protect-active-directory-with-active-directory-replication)をターゲット サイト (Azure またはセカンダリ オンプレミス データセンター) にセットアップすることをお勧めします。 [テスト フェールオーバー](#test-failover-considerations)には、Site Recovery によってレプリケートされたドメイン コントローラーを使用できます。 フェールオーバーには、ターゲット サイト上の追加のドメイン コントローラーを使用できます。
+
+## <a name="enable-protection-with-site-recovery"></a>Site Recovery による保護の有効化
+
+Site Recovery を使用して、ドメイン コントローラーまたは DNS をホストする仮想マシンを保護できます。
+
+### <a name="protect-the-vm"></a>VM の保護
+Site Recovery を使用してレプリケートされたドメイン コントローラーは、[テスト フェールオーバー](#test-failover-considerations)に使用されます。 次の要件を満たしていることを確認してください。
+
+1. ドメイン コントローラーがグローバル カタログ サーバーである。
+2. ドメイン コントローラーが、テスト フェールオーバー中に必要なロールに対応する FSMO ロール所有者である。 そうでない場合、フェールオーバー後にこれらのロールを[強制する](http://aka.ms/ad_seize_fsmo)必要があります。
+
+### <a name="configure-vm-network-settings"></a>VM のネットワーク設定の構成
+ドメイン コントローラーまたは DNS をホストする仮想マシンに関して、Site Recovery で、レプリケートされる仮想マシンの **[コンピューティングとネットワーク]** 設定でネットワーク設定を構成します。 これにより、仮想マシンがフェールオーバー後に適切なネットワークに接続されます。
+
+>>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
 ## <a name="protect-active-directory"></a>Active Directory の保護
 
 ### <a name="site-to-site-protection"></a>サイト間の保護
@@ -80,7 +118,15 @@ Site Recovery を使用してレプリケートされたドメイン コント�
     ![Azure テスト ネットワーク](./media/site-recovery-active-directory/azure-test-network.png)
 
     > [!TIP]
+<<<<<<< HEAD
     > Site Recovery は、仮想マシンの **[コンピューティングとネットワーク]** 設定で指定されているのと同じ IP アドレスを使用して、同じ名前のサブネットに、テスト仮想マシンの作成を試みます。 テスト フェールオーバー用に指定された Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト仮想マシンが作成されます。
+=======
+<<<<<<< HEAD
+    > Site Recovery は、仮想マシンの **[コンピューティングとネットワーク]** 設定で指定されているのと同じ IP アドレスを使用して、同じ名前のサブネットに、テスト仮想マシンの作成を試みます。 テスト フェールオーバー用に指定された Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト仮想マシンが作成されます。
+=======
+    > Site Recovery は、仮想マシンの **[コンピューティングとネットワーク]** 設定で指定されているのと同じ IP アドレスを使用して、同じ名前のサブネットに、テスト仮想マシンの作成を試みます。 テスト フェールオーバー用に指定された Azure 仮想ネットワークで同じ名前のサブネットを使用できない場合は、アルファベット順で最初のサブネットにテスト仮想マシンが作成されます。 
+>>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
     >
     > ターゲット IP が選択したサブネットの一部である場合、Site Recovery は、ターゲット IP アドレスを使用してテスト フェールオーバー仮想マシンの作成を試みます。 ターゲット IP が選択したサブネットの一部でない場合、テスト フェールオーバー仮想マシンは、選択したサブネット内の使用可能な次の IP を使用して作成されます。
     >
@@ -110,7 +156,15 @@ Windows Server 2012 以降では、[Active Directory Domain Services (AD DS)に�
 
 **VM-GenerationID** がリセットされると、AD DS データベースの **InvocationID** 値もリセットされます。 さらに、RID プールが破棄され、SYSVOL が権限なしとしてマークされます。 詳細については、[Active Directory Domain Services の仮想化の概要](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/introduction-to-active-directory-domain-services-ad-ds-virtualization-level-100)に関するページと、「[Safely virtualizing DFSR](https://blogs.technet.microsoft.com/filecab/2013/04/05/safely-virtualizing-dfsr/)」(DFSR の安全な仮想化) をご覧ください。
 
+<<<<<<< HEAD
 Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにログインできるまでに*かなり時間がかかる*可能性があります。
+=======
+<<<<<<< HEAD
+Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにログインできるまでに*かなり時間がかかる*可能性があります。
+=======
+Azure にフェールオーバーすると、**VM-GenerationID** がリセットされることがあります。 **VM-GenerationID** がリセットされると、Azure でのドメイン コントローラー仮想マシンの起動時に追加のセーフガードがトリガーされます。 これが原因で、ユーザーがドメイン コントローラー仮想マシンにログインできるまでに*かなり時間がかかる*可能性があります。 
+>>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 
 このドメイン コントローラーはテスト フェールオーバー専用であるため、仮想化のセーフガードは必要ありません。 ドメイン コントローラー仮想マシンの **VM-GenerationID** が変更されないようにするには、オンプレミス ドメイン コントローラーで次の DWORD の値を **4** に変更します。
 
@@ -121,6 +175,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 #### <a name="symptoms-of-virtualization-safeguards"></a>仮想化のセーフガードの兆候
 
 テスト フェールオーバー後に仮想化のセーフガードがトリガーされた場合、次の兆候が 1 つ以上見られます。  
+<<<<<<< HEAD
 
 * **GenerationID** 値の変更
 
@@ -140,6 +195,28 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 
     ![DFSR データベースが削除](./media/site-recovery-active-directory/Event2208.png)
 
+=======
+
+* **GenerationID** 値の変更
+
+    ![生成 ID の変更](./media/site-recovery-active-directory/Event2170.png)
+
+* **InvocationID** 値の変更
+
+    ![呼び出し ID の変更](./media/site-recovery-active-directory/Event1109.png)
+
+* SYSVOL 共有と NETLOGON 共有が使用不可
+
+    ![SYSVOL 共有](./media/site-recovery-active-directory/sysvolshare.png)
+
+    ![NtFrs SYSVOL](./media/site-recovery-active-directory/Event13565.png)
+
+* DFSR データベースが削除
+
+    ![DFSR データベースが削除](./media/site-recovery-active-directory/Event2208.png)
+>>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+
+### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>テスト フェールオーバーの間のドメイン コントローラーの問題のトラブルシューティング
 
 ### <a name="troubleshoot-domain-controller-issues-during-test-failover"></a>テスト フェールオーバーの間のドメイン コントローラーの問題のトラブルシューティング
 
@@ -151,6 +228,7 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
 1. コマンド プロンプトで次のコマンドを実行して、SYSVOL フォルダーと NETLOGON フォルダーが共有されているかどうかを確認します。
 
     `NET SHARE`
+<<<<<<< HEAD
 
 2. コマンド プロンプトで次のコマンドを実行して、ドメイン コントローラーが正常に機能していることを確認します。
 
@@ -179,6 +257,40 @@ Azure にフェールオーバーすると、**VM-GenerationID** がリセット
     詳細については、「[Troubleshoot DNS Event ID 4013: The DNS server was unable to load AD integrated DNS zones](https://support.microsoft.com/kb/2001093)」(DNS イベント ID 4013: DNS サーバーは AD 統合された DNS ゾーンを読み込めませんでした) をご覧ください。
 
 3. ユーザーのログインを検証するためにグローバル カタログ サーバーを利用可能にする要件を無効にします。 これを行うには、オンプレミス ドメイン コントローラーで、次のレジストリ キーを **1** に設定します。 この DWORD 値が存在しない場合は、**Lsa** ノードの下に作成できます。
+=======
+
+2. コマンド プロンプトで次のコマンドを実行して、ドメイン コントローラーが正常に機能していることを確認します。
+
+    `dcdiag /v > dcdiag.txt`
+
+3. 出力ログで、次のテキストを探します。 このテキストにより、ドメイン コントローラーが正常に機能していることを確認できます。
+
+    * "passed test Connectivity"
+    * "passed test Advertising"
+    * "passed test MachineAccount"
+
+上記の条件が満たされている場合、ドメイン コントローラーは正常に機能していると考えられます。 満たされていない場合は、次の手順を実行します。
+
+1. ドメイン コントローラーの Authoritative Restore を実行します。 次の情報を考慮してください。
+    * [FRS レプリケーション](https://blogs.technet.microsoft.com/filecab/2014/06/25/the-end-is-nigh-for-frs/)は推奨されませんが、FRS レプリケーションを使用している場合は、次の手順に従って Authoritative Restore を行います。 プロセスについては、「[BurFlags レジストリ キーを使用してファイル レプリケーション サービスのレプリカ セットを再初期化する](https://support.microsoft.com/kb/290762)」をご覧ください。
+
+        BurFlags の詳細については、ブログ記事「[D2 and D4: What is it for?](https://blogs.technet.microsoft.com/janelewis/2006/09/18/d2-and-d4-what-is-it-for/)」(D2 と D4: 何のために使用するか?) をご覧ください。
+    * DFSR レプリケーションを使用している場合は、次の手順で Authoritative Restore を行います。 プロセスについては、「[Force an authoritative and non-authoritative sync for DFSR-replicated SYSVOL (like "D4/D2" for FRS)](https://support.microsoft.com/kb/2218556)」(DFSR でレプリケートされた SYSVOL (FRS の "D4/D2" など) の権限のある/権限のない同期を強制実行する) をご覧ください。
+
+        PowerShell 関数を使用することもできます。 詳細については、「[DFSR-SYSVOL authoritative/non-authoritative restore PowerShell functions](https://blogs.technet.microsoft.com/thbouche/2013/08/28/dfsr-sysvol-authoritative-non-authoritative-restore-powershell-functions/)」(DFSR-SYSVOL の権限のある/権限のない復元の PowerShell 関数) をご覧ください。
+
+2. オンプレミス ドメイン コントローラーで次のレジストリ キーを **0** に設定して、初期同期要件をバイパスします。 この DWORD 値が存在しない場合は、**Parameters** ノードの下に作成できます。
+
+    `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\NTDS\Parameters\Repl Perform Initial Synchronizations`
+
+    詳細については、「[Troubleshoot DNS Event ID 4013: The DNS server was unable to load AD integrated DNS zones](https://support.microsoft.com/kb/2001093)」(DNS イベント ID 4013: DNS サーバーは AD 統合された DNS ゾーンを読み込めませんでした) をご覧ください。
+
+<<<<<<< HEAD
+3. ユーザーのログインを検証するためにグローバル カタログ サーバーを利用可能にする要件を無効にします。 これを行うには、オンプレミス ドメイン コントローラーで、次のレジストリ キーを **1** に設定します。 この DWORD 値が存在しない場合は、**Lsa** ノードの下に作成できます。
+=======
+3. ユーザーのログインを検証するためにグローバル カタログ サーバーを利用可能にする要件を無効にします。 これを行うには、オンプレミス ドメイン コントローラーで、次のレジストリ キーを **1** に設定します。 この DWORD 値が存在しない場合は、**Lsa** ノードの下に作成できます。 
+>>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 
     `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Lsa\IgnoreGCFailures`
 

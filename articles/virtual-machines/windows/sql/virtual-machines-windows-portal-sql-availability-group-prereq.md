@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL Server 可用性グループ - Azure 仮想マシン - 前提条件 | Microsoft Docs"
 description: "このチュートリアルでは、Azure VM で SQL Server Always On 可用性グループを作成するための前提条件の構成方法について説明します。"
 services: virtual-machines
