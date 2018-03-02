@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/03/2017
 ms.author: manshuk
-ms.openlocfilehash: 7ef601033b36ee968cb766d40a0a6b05afa9a1a4
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 515eae3c9a84a171bebc5213f5824e1b50336e34
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="understand--reserved-instance-usage-for-your-enterprise-enrollment"></a>エンタープライズ加入契約の予約インスタンス使用量について
 予約インスタンスの使用状況は、[予約ページ](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=Reservations&Microsoft_Azure_Reservations=true#blade/Microsoft_Azure_Reservations/ReservationsBrowseBlade )から ReservationId を使用するか、[EA ポータル](https://ea.azure.com)から使用状況ファイルを使用して把握することができます。 予約の使用状況は、[EA ポータル](https://ea.azure.com)の使用状況の概要セクションで確認することもできます。
@@ -37,7 +37,7 @@ ms.lasthandoff: 11/16/2017
 
 ## <a name="reservation-application"></a>予約の適用
 
-デプロイされている VM が予約の属性と合致していることで特典が適用されるのは、VM のハードウェア部分です。 予約インスタンスによって充当されない Windows ソフトウェアについては、「[Azure 予約 VM インスタンスにおける Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。
+デプロイされている VM が予約の属性と合致していることで特典が適用されるのは、VM のハードウェア部分です。 予約インスタンスによって充当されない Windows ソフトウェアについては、「[Azure Reserved VM Instances における Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)」を参照してください。
 
 
 ### <a name="reservation-usage-in-csv"></a>予約の使用状況 (CSV)
@@ -56,6 +56,16 @@ EA の使用状況の CSV は EA ポータルからダウンロードできま�
 
 1. VM のハードウェア コンポーネントは、予約インスタンスによって充当されるため、料金は発生しません。 
 2. Windows ソフトウェアは、Azure ハイブリッド特典が使用されていないため、料金が発生します。 
+
+## <a name="next-steps"></a>次の手順
+予約仮想マシン インスタンスの詳細については、次の記事を参照してください。
+
+- [予約 VM インスタンスによる仮想マシンの前払い](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [予約仮想マシン インスタンスの管理](billing-manage-reserved-vm-instance.md)
+- [予約仮想マシン インスタンスで仮想マシンのコストを削減する](billing-save-compute-costs-reservations.md)
+- [予約仮想マシン インスタンスの割引の適用方法について](billing-understand-vm-reservation-charges.md)
+- [従量課金サブスクリプションの予約インスタンス使用量について](billing-understand-reserved-instance-usage.md)
+- [予約インスタンスに含まれない Windows ソフトウェアのコスト](billing-reserved-instance-windows-software-costs.md)
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

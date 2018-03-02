@@ -12,13 +12,13 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/16/2017
+ms.date: 02/27/2018
 ms.author: manayar
-ms.openlocfilehash: ce579bc2844d321e4fbc70726b57120e17e4788d
-ms.sourcegitcommit: 7d107bb9768b7f32ec5d93ae6ede40899cbaa894
+ms.openlocfilehash: 9c8745162afebe6690776152b29d8619edc26a42
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-role-based-access-control-to-manage-azure-site-recovery-deployments"></a>ロール ベースのアクセス制御を使用した Azure Site Recovery の管理
 
@@ -47,7 +47,7 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 
 | **リソースの種類** | **デプロイメント モデル** | **アクセス許可** |
 | --- | --- | --- |
-| コンピューティング | Resource Manager | Microsoft.Compute/availabilitySets/read |
+| コンピューティング | リソース マネージャー | Microsoft.Compute/availabilitySets/read |
 |  |  | Microsoft.Compute/virtualMachines/read |
 |  |  | Microsoft.Compute/virtualMachines/write |
 |  |  | Microsoft.Compute/virtualMachines/delete |
@@ -57,7 +57,7 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 |  |  | Microsoft.ClassicCompute/virtualMachines/read |
 |  |  | Microsoft.ClassicCompute/virtualMachines/write |
 |  |  | Microsoft.ClassicCompute/virtualMachines/delete |
-| ネットワーク | Resource Manager | Microsoft.Network/networkInterfaces/read |
+| ネットワーク | リソース マネージャー | Microsoft.Network/networkInterfaces/read |
 |  |  | Microsoft.Network/networkInterfaces/write |
 |  |  | Microsoft.Network/networkInterfaces/delete |
 |  |  | Microsoft.Network/networkInterfaces/join/action |
@@ -66,16 +66,16 @@ Azure Site Recovery を使用して新しい仮想マシンを Azure にレプ�
 |  |  | Microsoft.Network/virtualNetworks/subnets/join/action |
 |  | クラシック | Microsoft.ClassicNetwork/virtualNetworks/read |
 |  |  | Microsoft.ClassicNetwork/virtualNetworks/join/action |
-| Storage | Resource Manager | Microsoft.Storage/storageAccounts/read |
+| Storage | リソース マネージャー | Microsoft.Storage/storageAccounts/read |
 |  |  | Microsoft.Storage/storageAccounts/listkeys/action |
 |  | クラシック | Microsoft.ClassicStorage/storageAccounts/read |
 |  |  | Microsoft.ClassicStorage/storageAccounts/listKeys/action |
-| リソース グループ | Resource Manager | Microsoft.Resources/deployments/* |
+| リソース グループ | リソース マネージャー | Microsoft.Resources/deployments/* |
 |  |  | Microsoft.Resources/subscriptions/resourceGroups/read |
 
 Resource Manager と Classic のデプロイメント モデルそれぞれに、'仮想マシン共同作業者' と '従来の仮想マシン共同作業者' の[組み込みのロール](../active-directory/role-based-access-built-in-roles.md)を使用することを検討してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)

@@ -12,11 +12,11 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: article
 ms.date: 11/30/2017
-ms.openlocfilehash: 04e5465a56b8da9f2a078e513d5176f134fd011d
-ms.sourcegitcommit: be0d1aaed5c0bbd9224e2011165c5515bfa8306c
+ms.openlocfilehash: d09292cce1414a1b89e4b75df27d0a689738b4d6
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-time-series-insights-explorer"></a>Azure Time Series Insights エクスプローラー
 この記事では、Time Series Insights エクスプローラー Web アプリ内で使用できるさまざまな機能とオプションについて説明します。 Web ブラウザーで Time Series Insights エクスプローラーを使用して、データを視覚化します。
@@ -37,7 +37,7 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
 2. 環境を選択したら、上部にある **[FROM]\(開始\)** および **[TO]\(終了\)** 構成を使用するか、指定する期間をクリックしてドラッグします。  右上にある虫眼鏡をクリックするか、選択した期間を右クリックして **[検索]** を選択します。  
 
-3. **[Auto On]\(自動 オン\)** ボタンを選択することで、毎分自動的に状態を更新することもできます。
+3. **[Auto On]\(自動 オン\)** ボタンを選択することで、毎分自動的に状態を更新することもできます。  [Auto-On]\(自動オン\) ボタンは、メインの視覚化のコンテンツではなく、可用性チャートにのみ適用されることに注意してください。
 
 4. Azure Cloud アイコンから Azure Portal の環境に移動できます。
 
@@ -106,6 +106,6 @@ Time Series Insights エクスプローラーを使用するための前提条�
 
 ここまでで、Time Series Insights エクスプローラー Web アプリ内で使用できるさまざまな機能とオプションが確認できました。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
 >[Time Series Insights 環境の問題を診断して解決する](time-series-insights-diagnose-and-solve-problems.md)

@@ -12,13 +12,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: af6bf1d69761520d20d0a0c5d872377793f6650b
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 1e6f1e1ee37592d974cab01ca229995c4ff6b70e
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Presto をインストールして使用する
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 11/29/2017
 
 1. [Linux ベースの HDInsight クラスターのプロビジョニング](hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに記載されている手順を使用して、クラスターのプロビジョニングを開始します。 このとき、**カスタム** クラスター作成フローを使用してクラスターを作成します。 作成したクラスターが次の要件を満たしていることを確認する必要があります。
 
-    a. HDInsight Version 3.5 を使用する Hadoop クラスターである必要があります。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 HDInsight Version 3.5 を使用する Hadoop クラスターである必要があります。
 
     b. データ ストアとして Azure Storage を使用する必要があります。 ストレージ オプションとして Azure Data Lake Store を使用するクラスターでの Presto の使用はまだサポートされていません。 
 
@@ -127,7 +127,7 @@ ms.lasthandoff: 11/29/2017
 
 6. 変更がクラスター構成に適用されると、次の手順を使用して Airpal Web インターフェイスにアクセスできます。
 
-    a. クラスター ブレードで、**[アプリケーション]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 クラスター ブレードで、**[アプリケーション]** をクリックします。
 
     ![HDInsight クラスター上の Presto 用の Airpal の起動](./media/hdinsight-hadoop-install-presto/hdinsight-presto-launch-airpal.png)
 

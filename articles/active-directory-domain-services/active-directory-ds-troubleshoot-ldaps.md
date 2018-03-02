@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/02/2018
 ms.author: ergreenl
-ms.openlocfilehash: ad98f3fb1ddb753976be627764d34864e5bf3d50
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c6c47d1f9776f9e45711d8139661255dcd44c2a1
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-ad-domain-services---troubleshooting-secure-ldap-configuration"></a>Azure AD Domain Services - Secure LDAP の構成のトラブルシューティング
 
@@ -48,6 +48,9 @@ Secure LDAP を有効にするときは、特定の IP アドレスからの受�
 5. 規則が作成されたことを確認します。
 6. 手順を正しく完了したことを確認するには、2 時間後にドメインの正常性をチェックします。
 
+> [!TIP]
+> Azure AD Domain Services を円滑に動作させるために必要なのはポート 636 だけではありません。 詳細については、[ネットワークに関するガイドライン](active-directory-ds-networking.md)または [NSG 構成のトラブルシューティング](active-directory-ds-troubleshoot-nsg.md)に関する記事を参照してください。
+>
 
 ## <a name="contact-us"></a>お問い合わせ
 [フィードバックの共有およびサポートについては](active-directory-ds-contact-us.md)、Azure Active Directory Domain Services 製品チームにお問い合わせください。

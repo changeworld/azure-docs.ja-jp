@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/4/2018
+ms.date: 2/27/2018
 ms.author: raiye
-ms.openlocfilehash: e645d57dfff040eb05f4d395fac058b2b485933b
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: dac0efdb1ce76ad6f143479782f164d3304aeaf3
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 「[Azure ゲスト OS の更新設定][Azure Guest OS Update Settings]」に説明されているゲスト OS の *自動更新*を使用するようにロールを構成している場合は、このページを読むことは必須ではありません。
@@ -42,6 +42,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
 
 ## <a name="news-updates"></a>最新情報
+###### <a name="january-29-2018"></a>**2018 年 1 月 29 日**
+OS ファミリ 2 (WA-GUEST-OS-2.70_201801-01) と 3 (WA-GUEST-OS-3.57_201801-01) 向けの 1 月のゲスト OS がリリースされました。
+
 ###### <a name="january-4-2018"></a>**2018 年 1 月 4 日**
 OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01) 向けの 1 月のゲスト OS がリリースされました。これには重要なセキュリティ パッチが含まれています。  
 
@@ -92,7 +95,7 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 | --- | --- | --- | --- |
 | WA-GUEST-OS-5.15_201801-01 |2018 年 1 月 4 日 |Post 5.17 |TBD |
 | WA-GUEST-OS-5.14_201712-01 |2018 年 1 月 4 日 |Post 5.16 |TBD |
-| WA-GUEST-OS-5.13_201711-01 |2017 年 12 月 14 日 |Post 5.15 |TBD |
+|~~WA-GUEST-OS-5.13_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 4 日|TBD |
 |~~WA-GUEST-OS-5.12_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-5.11_201709-01~~ |2017 年 10 月 6 日 |2017 年 12 月 14 日 |TBD |
 |~~WA-GUEST-OS-5.10_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
@@ -117,7 +120,7 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 | --- | --- | --- | --- |
 | WA-GUEST-OS-4.50_201801-01 |2018 年 1 月 4 日 |Post 4.52 |TBD |
 | WA-GUEST-OS-4.49_201712-01 |2018 年 1 月 4 日 |Post 4.51 |TBD |
-| WA-GUEST-OS-4.48_201711-01 |2017 年 12 月 14 日 |Post 4.50 |TBD |
+|~~WA-GUEST-OS-4.48_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-4.47_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-4.46_201709-01~~ |2017 年 10 月 6 日 |2017 年 12 月 14 日 |TBD |
 |~~WA-GUEST-OS-4.45_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
@@ -140,8 +143,9 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.57_201801-01 |2018 年 1 月 29 日 |Post 3.59 |TBD |
 | WA-GUEST-OS-3.56_201712-01 |2018 年 1 月 4 日 |Post 3.58 |TBD |
-| WA-GUEST-OS-3.55_201711-01 |2017 年 12 月 14 日 |Post 3.57 |TBD |
+|~~WA-GUEST-OS-3.55_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 29 日 |TBD |
 |~~WA-GUEST-OS-3.54_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-3.53_201709-01~~ |2017 年 10 月 6 日 |2017 年 12 月 14 日 |TBD |
 |~~WA-GUEST-OS-3.52_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |
@@ -164,8 +168,9 @@ OS ファミリ 4 (WA-GUEST-OS-4.50_201801-01) と 5 (WA-GUEST-OS-5.15_201801-01
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.70_201801-01 |2018 年 1 月 29 日 |Post 2.72 |TBD |
 | WA-GUEST-OS-2.69_201712-01 |2018 年 1 月 4 日 |Post 2.71 |TBD |
-| WA-GUEST-OS-2.68_201711-01 |2017 年 12 月 14 日 |Post 2.70 |TBD |
+|~~WA-GUEST-OS-2.68_201711-01~~ |2017 年 12 月 14 日 |2018 年 1 月 29 日 |TBD |
 |~~WA-GUEST-OS-2.67_201710-02~~ |2017 年 11 月 8 日 |2018 年 1 月 4 日 |TBD |
 |~~WA-GUEST-OS-2.66_201709-01~~ |2017 年 10 月 6 日 |2017 年 12 月 14 日 |TBD |
 |~~WA-GUEST-OS-2.65_201708-01~~ |2017 年 8 月 24 日 |2017 年 12 月 14 日 |TBD |

@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 8aff62dd32395c1ef292942e977467779f945931
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2a4d17673340d145de9a3514f920c74f7eebf6b6
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-examples"></a>Azure Service Bus と Azure Event Grid の例
 
@@ -118,7 +118,7 @@ public class GridEvent
 
 ## <a name="connect-function-and-namespace-via-event-grid"></a>Event Grid による関数と名前空間の接続
 
-次の手順では、関数と Service Bus 名前空間を関連付けます。 たとえば、Azure Portal を使用します。 PowerShell または Azure CLI を使用して同じことを実現する方法を確認するには、[コンセプト](service-bus-to-event-grid-integration-concept.md)に関するページを参照してください。
+次の手順では、関数と Service Bus 名前空間を関連付けます。 たとえば、Azure Portal を使用します。 PowerShell または Azure CLI を使用して同じことを実現する方法を確認するには、[コンセプト](service-bus-to-event-grid-integration-concept.md に関するページを参照してください。
 
 新しい Azure Event Grid サブスクリプションを作成するには、Azure Portal で名前空間に移動して、[イベント グリッド] ブレードを選択します。 + [イベント サブスクリプション] をクリックします。
 
@@ -190,10 +190,10 @@ Logic Apps デザイナーの初期ビューは次のスクリーンショット
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Event Grid](https://docs.microsoft.com/en-us/azure/azure-functions/) について学習します。
-* [Azure Functions](https://docs.microsoft.com/en-us/azure/azure-functions/) について学習します。
-* [Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/) についての詳細を見る
-* Azure Service Bus の詳細については、[こちら](https://docs.microsoft.com/en-us/azure/azure-functions/)を参照してください。
+* [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/) について学習します。
+* [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) について学習します。
+* [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/) についての詳細を見る
+* Azure Service Bus の詳細については、[こちら](https://docs.microsoft.com/azure/service-bus/)を参照してください。
 
 [2]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid2.png
 [3]: ./media/service-bus-to-event-grid-integration-example/sbtoeventgrid3.png

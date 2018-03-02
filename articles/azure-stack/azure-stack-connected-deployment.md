@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/06/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: a2d4efc3a3e1480de71528144ae3f025f4879f07
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: def9d5381144026b5ad0e8a076edd3c0692a08f4
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-connected-deployment-planning-decisions-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの Azure に接続されたデプロイ計画の決定
-[Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-deployment-decisions.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
+[Azure Stack をハイブリッド クラウド環境に統合する方法](azure-stack-connection-models.md)を決定したら、Azure Stack デプロイの決定を完成させることができます。
 
 Azure に接続された Azure Stack をデプロイすることは、ID ストアとして Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) のどちらかを使用できることを示します。 また、従量制または容量ベースのどちらかの課金モデルも選択できます。 接続されたデプロイは、特に Azure と Azure Stack の両方を含むハイブリッド クラウドのシナリオの場合、顧客が Azure Stack を最大限に活用できるため、既定のオプションです。 
 
@@ -45,7 +45,7 @@ ID ストアとして Azure AD を使用する場合は、グローバル管理�
 このオプションは、サービス管理者アカウント用に独自の ID ストア (企業の Active Directory など) を使用する場合に選択します。  
 
 ## <a name="choose-a-billing-model"></a>課金モデルを選択する
-**従量制**または**容量**課金モデルのどちらかを選択できます。 従量制課金モデルのデプロイは 30 日ごとに少なくとも 1 回、接続を通して Azure に使用状況を報告できる必要があるため、接続を使用できない場合は、容量課金モデルが唯一のオプションです。 
+**従量制**または**容量**課金モデルのどちらかを選択できます。 従量制課金モデルのデプロイは 30 日ごとに少なくとも 1 回、接続を通して Azure に使用状況を報告できる必要があります。 したがって、従量制課金モデルは、接続されたデプロイでのみ使用できます。  
 
 ### <a name="pay-as-you-use"></a>従量制
 従量制課金モデルでは、Azure サブスクリプションに対して使用状況が課金されます。 Azure Stack サービスを使用した場合にのみ支払います。 このモデルに決定した場合は、Azure サブスクリプションと、そのサブスクリプションに関連付けられたアカウント ID (serviceadmin@contoso.onmicrosoft.com など) が必要になります。 EA、CSP、および CSL サブスクリプションがサポートされています。 使用状況レポートは、[Azure Stack の登録](azure-stack-registration.md)中に構成されます。

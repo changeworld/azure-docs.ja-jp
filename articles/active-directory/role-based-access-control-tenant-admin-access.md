@@ -3,7 +3,7 @@ title: "テナント管理者によるアクセス権の昇格 | Microsoft Docs"
 description: "このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。"
 services: active-directory
 documentationcenter: 
-author: andredm7
+author: rolyon
 manager: mtillman
 editor: rqureshi
 ms.assetid: b547c5a5-2da2-4372-9938-481cb962d2d6
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 10/30/2017
-ms.author: andredm
-ms.openlocfilehash: 894ccd13684a79590b75821514ef6922abb8fdaf
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: rolyon
+ms.openlocfilehash: 8be842018cadfc36eb74b14a02a8f9bc9ddf098d
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>ロール ベースのアクセス制御を使用してテナント管理者としてアクセス権を昇格させる
 
@@ -101,7 +101,7 @@ Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefiniti
 
 *elevateAccess* を呼び出すと、自分自身に対するロールの割り当てが作成されます。このため、これらの権限を取り消すには、割り当てを削除する必要があります。
 
-1.  GET role definitions を呼び出します。roleName = User Access Administrator で、ユーザー アクセス管理者ロールの名前の GUID を判別します。
+1.  GET roleDefinitions を呼び出します。roleName = User Access Administrator で、ユーザー アクセス管理者ロールの名前の GUID を判別します。
     1.  GET *https://management.azure.com/providers/Microsoft.Authorization/roleDefinitions?api-version=2015-07-01&$filter=roleName+eq+'User+Access+Administrator*
 
         ```
@@ -127,9 +127,9 @@ Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefiniti
     1. GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=principalId+eq+'{objectid}'*
     
         >[!NOTE] 
-        >テナント管理者の割り当ては多くありません。上記のクエリが返す割り当ての数が多すぎる場合は、テナント スコープ レベルのみで、すべての割り当てに対してクエリを実行し、結果をフィルターすることもできます: GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()*
+        >テナント管理者の割り当ては多くありません。前のクエリが返す割り当ての数が多すぎる場合は、テナント スコープ レベルのみで、すべての割り当てに対してクエリを実行し、結果をフィルターすることもできます: GET *https://management.azure.com/providers/Microsoft.Authorization/roleAssignments?api-version=2015-07-01&$filter=atScope()*
         
-    2. 上記の呼び出しは、ロール割り当ての一覧を返します。 スコープが "/" で、RoleDefinitionId が手順 1. で見つかったロール名 GUID で終了し、PrincipalId がテナント管理者の ObjectId と一致する、ロール割り当てを検索します。ロール割り当ては次のようになります。
+    2. 前の呼び出しは、ロール割り当ての一覧を返します。 スコープが "/" で、RoleDefinitionId が手順 1. で見つかったロール名 GUID で終了し、PrincipalId がテナント管理者の ObjectId と一致する、ロール割り当てを検索します。ロール割り当ては次のようになります。
 
         ```
         {"value":[{"properties":{
@@ -152,7 +152,7 @@ Remove-AzureRmRoleAssignment -SignInName <username@somedomain.com> -RoleDefiniti
 
         DELETE https://management.azure.com /providers/Microsoft.Authorization/roleAssignments/e7dd75bc-06f6-4e71-9014-ee96a929d099?api-version=2015-07-01
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - 「[REST API を使用したロールベースの Access Control の管理](role-based-access-control-manage-access-rest.md)」を参照する
 

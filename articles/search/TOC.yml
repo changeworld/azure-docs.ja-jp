@@ -5,6 +5,7 @@
     - name: Azure Search について
       href: search-what-is-azure-search.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: サービスの作成
       href: search-create-service-portal.md
@@ -22,7 +23,7 @@
           href: search-create-index-dotnet.md
         - name: Import data
           href: search-import-data-dotnet.md
-        - name: 検索
+        - name: Search
           href: search-query-dotnet.md
     - name: REST ()
       items:
@@ -30,7 +31,7 @@
           href: search-create-index-rest-api.md
         - name: Import data
           href: search-import-data-rest-api.md
-        - name: 検索
+        - name: Search
           href: search-query-rest-api.md
         - name: REST クライアントを使用したテスト
           href: search-fiddler.md
@@ -134,7 +135,7 @@
           href: search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md
         - name: インデクサーのフィールド マッピング
           href: search-indexer-field-mappings.md
-    - name: 検索
+    - name: Search
       items:
         - name: 基本的なクエリの構築
           href: search-query-overview.md

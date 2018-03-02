@@ -4,16 +4,16 @@ description: "このページでは、Microsoft によって管理された Azur
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 12/01/2017
-ms.openlocfilehash: 2f3f0b67759ab965b16cbddb37bf05aa81f6746e
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.date: 02/28/2018
+ms.openlocfilehash: 0540d14f949f6f6c78a1d8a9ec63f6d85a0c79f9
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-mysql-videos"></a>Azure Database for MySQL のビデオ
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2017
-ms.openlocfilehash: 01f9c01c9e04e02dbb548b68cf99684ba6ddd57e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5afccc4aa7b751958952d1401182f93109cff358
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-visual-studio-team-services"></a>Azure Automation のシナリオ - Automation ソース管理と Visual Studio Team Services の統合
 
@@ -29,21 +29,21 @@ ms.lasthandoff: 10/11/2017
 
 このシナリオは、Azure Portal の [Runbook ギャラリー](automation-runbook-gallery.md)から直接インポート、または [PowerShell ギャラリー](https://www.powershellgallery.com)からダウンロードできる 2 つの PowerShell Runbook で構成されています。
 
-### <a name="runbooks"></a>Runbook
+### <a name="runbooks"></a>Runbooks
 
-Runbook | 説明| 
+Runbook | [説明]| 
 --------|------------|
-Sync-VSTS | チェックインの処理が完了したら、VSTS ソース管理から Runbook または構成をインポートします。 手動で実行した場合、すべての Runbook または構成をインポートして Automation アカウントに発行します。| 
-Sync-VSTSGit | チェックインの処理が完了したら、Git ソース管理下にある VSTS から Runbook または構成をインポートします。 手動で実行した場合、すべての Runbook または構成をインポートして Automation アカウントに発行します。|
+Sync-VSTS | チェックインの処理が完了したら、VSTS ソース管理から Runbook または構成をインポートします。 手動で実行した場合、すべての Runbook または構成がインポートされ Automation アカウントに発行されます。| 
+Sync-VSTSGit | チェックインの処理が完了したら、Git ソース管理下にある VSTS から Runbook または構成をインポートします。 手動で実行した場合、すべての Runbook または構成がインポートされ Automation アカウントに発行されます。|
 
-### <a name="variables"></a>変数
+### <a name="variables"></a>variables
 
-変数 | 説明|
+変数 | [説明]|
 -----------|------------|
-VSToken | 作成する変数資産 (VSTS 個人用アクセス トークンを含む) をセキュリティで保護します。 VSTS 個人用アクセス トークンを作成する方法は、[VSTS 認証に関するページ](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview)で確認できます。 
+VSToken | 作成する変数資産 (VSTS 個人用アクセス トークンを含む) をセキュリティで保護します。 VSTS 個人用アクセス トークンを作成する方法は、[VSTS 認証に関するページ](/vsts/accounts/use-personal-access-tokens-to-authenticate)で確認できます。
 ## <a name="installing-and-configuring-this-scenario"></a>このシナリオのインストールと構成
 
-Runbook または構成を Automation アカウントに同期するために使用する VSTS で、[個人用アクセス トークン](https://www.visualstudio.com/en-us/docs/integrate/get-started/auth/overview)を作成します。
+Runbook または構成を Automation アカウントに同期するために使用する VSTS で、[個人用アクセス トークン](/vsts/accounts/use-personal-access-tokens-to-authenticate)を作成します。
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPersonalToken.png) 
 
@@ -58,12 +58,12 @@ Runbook または構成を Automation アカウントに同期する Runbook を
 これで、この Runbook を[発行](automation-creating-importing-runbook.md#publishing-a-runbook)できるようになったので、Webhook を作成できます。 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPublishRunbook.png)
 
-この Sync-VSTS Runbook の [Webhook](automation-webhooks.md) を作成し、次に示すようにパラメーターを入力します。 VSTS のサービス フックで必要なので、Webhook の URL をコピーします。 VSAccessTokenVariableName は、個人用アクセス トークンを保持するために前に作成したセキュリティで保護された変数の名前 (VSToken) です。 
+この Sync-VSTS Runbook の [Webhook](automation-webhooks.md) を作成し、次に示すようにパラメーターを入力します。 VSTS のサービス フックで必要なので、webhook の URL をコピーします。 VSAccessTokenVariableName は、個人用アクセス トークンを保持するために前に作成したセキュリティで保護された変数の名前 (VSToken) です。 
 
 VSTS (Sync-VSTS.ps1) と統合すると、次のパラメーターを取得します。
 ### <a name="sync-vsts-parameters"></a>Sync-VSTS パラメーター
 
-パラメーター | Description| 
+パラメーター | [説明]| 
 --------|------------|
 WebhookData | VSTS サービス フックから送信されたチェックイン情報が含まれます。 このパラメーターは空白のままにする必要があります。| 
 ResourceGroup | Automation アカウントがあるリソース グループの名前です。|
@@ -77,7 +77,7 @@ VSAccessTokenVariableName | VSTS 個人用アクセス トークンを保持す�
 
 GIT (Sync-VSTSGit.ps1) を使用した VSTS を使用している場合、次のパラメーターを取得します。
 
-パラメーター | Description|
+パラメーター | [説明]|
 --------|------------|
 WebhookData | VSTS サービス フックから送信されたチェックイン情報が含まれます。 このパラメーターは空白のままにする必要があります。| ResourceGroup | Automation アカウントがあるリソース グループの名前です。|
 AutomationAccountName | VSTS と同期する Automation アカウントの名前です。|
@@ -90,7 +90,7 @@ VSAccessTokenVariableName | VSTS 個人用アクセス トークンを保持す�
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSGitWebhook.png)
 
-コードのチェックイン時にこの Webhook をトリガーするフォルダーへのチェックインの VSTS で、サービス フックを作成します。 新しいサブスクリプションを作成するとき、統合する Web フックをサービスとして選択します。 サービス フックの詳細については、[VSTS サービス フックのドキュメント](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started)を参照してください。
+コードのチェックイン時にこの Webhook をトリガーするフォルダーへのチェックインの VSTS で、サービス フックを作成します。 新しいサブスクリプションを作成するとき、統合する **Web フック**をサービスとして選択します。 サービス フックの詳細については、[VSTS サービス フックのドキュメント](https://www.visualstudio.com/en-us/docs/marketplace/integrate/service-hooks/get-started)を参照してください。
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSServiceHook.png)
 
 これで、VSTS への Runbook と構成のすべてのチェックインを実行して、これらを Automation アカウントに自動的に同期することができます。

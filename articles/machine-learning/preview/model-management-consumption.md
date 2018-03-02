@@ -4,46 +4,46 @@ description: "このドキュメントでは、Azure Machine Learning でモデ�
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 64141afe421ace44fe71c04f8a2fba48144633c9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 4d388af3175bce5df6108ff0fd836707cca5040a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="consuming-web-services"></a>Web サービスの使用
 モデルをリアルタイム Web サービスとしてデプロイしたら、さまざまなプラットフォームやアプリケーションから予測を取得できるようになります。 リアルタイム Web サービスでは、予測を取得するために REST API を公開します。 単一行または複数行の形式でデータを Web サービスに送信して、1 つまたは複数の予測を一度に取得できます。
 
-[Azure Machine Learning Web サービス](https://docs.microsoft.com/azure/machine-learning/preview/model-management-service-deploy)では、外部のアプリケーションは、サービス URL に HTTP POST 呼び出しを実行することによって、予測モデルと同期的に通信します。 Web サービス呼び出しを実行するには、クライアント アプリケーションは、予測のデプロイ時に作成される API キーを指定して、要求データを POST 要求の本文に格納する必要があります。
+[Azure Machine Learning Web サービス](model-management-service-deploy.md)では、外部のアプリケーションは、サービス URL に HTTP POST 呼び出しを実行することによって、予測モデルと同期的に通信します。 Web サービス呼び出しを実行するには、クライアント アプリケーションは、予測のデプロイ時に作成される API キーを指定して、要求データを POST 要求の本文に格納する必要があります。
 
 API キーを使用できるのは、クラスター デプロイ モードだけであることに注意してください。 ローカルの Web サービスにはキーがありません。
 
 ## <a name="service-deployment-options"></a>サービス デプロイのオプション
-Azure Machine Learning Web サービスは、運用環境とテストの両方のシナリオでクラウド ベースのクラスターにデプロイでき、Docker エンジンを使用してローカル ワークステーションにデプロイできます。 どちらのケースでも、予測モデルの機能は同じです。 クラスター ベースのデプロイでは、Azure Container Service に基づいてスケーラブルでパフォーマンスの高いソリューションが提供される一方で、ローカル デプロイはデバッグに使用できます。 
+Azure Machine Learning Web サービスは、実稼働とテストの両方のシナリオでクラウド ベースのクラスターにデプロイでき、Docker エンジンを使用してローカル ワークステーションにデプロイできます。 どちらのケースでも、予測モデルの機能は同じです。 クラスター ベースのデプロイでは、Azure Container Service に基づいて、スケーラブルでパフォーマンスの高いソリューションが提供されます。一方、ローカル デプロイは、デバッグに使用できます。 
 
 Azure Machine Learning CLI と API には、```az ml env``` オプションを使用したサービス デプロイ用のコンピューティング環境を作成して管理するのに役立つコマンドが用意されています。 
 
 ## <a name="list-deployed-services-and-images"></a>デプロイされたサービスとイメージの一覧表示
-CLI コマンド ```az ml service list realtime -o table``` を使用して、現在デプロイされているサービスと Docker イメージを一覧表示できます。 このコマンドは、常に現在のコンピューティング環境のコンテキストで機能し、現在として設定されていない環境にデプロイされているサービスは表示しません。 環境を設定するには、```az ml env set``` を使用します。 
+CLI コマンド ```az ml service list realtime -o table``` を使用して、現在デプロイされているサービスと Docker イメージを一覧表示できます。 このコマンドは、常に現在のコンピューティング環境のコンテキストで動作することに注意してください。 現在の環境として設定されていない環境にデプロイされているサービスは表示されません。 環境を設定するには、```az ml env set``` を使用します。 
 
 ## <a name="get-service-information"></a>サービス情報の取得
 Web サービスが正常にデプロイされたら、次のコマンドを使用して、サービス エンドポイントを呼び出すためのサービス URL とその他の詳細を取得します。 
 
 ```
-az ml service usage realtime -i <service name>
+az ml service usage realtime -i <web service id>
 ```
 
-このコマンドは、サービス API スキーマをデプロイ時に指定している場合、サービス呼び出しのための、サービス URL、必要な要求ヘッダー、Swagger URL、およびサンプル データを印刷します。
+このコマンドは、サービス API スキーマがデプロイ時に指定された場合、サービスを呼び出すためのサービス URL、必要な要求ヘッダー、Swagger URL、およびサンプル データを出力します。
 
-HTTP 要求を構成せずに CLI から直接サービスをテストできます。そのためには、入力データでサンプル CLI コマンドを入力します。
+HTTP 要求を構成せずに、CLI から直接サービスをテストできます。そのためには、次のように、サンプル CLI コマンドと共に入力データを入力します。
 
 ```
-az ml service run realtime -i <service name> -d "Your input data"
+az ml service run realtime -i <web service id> -d "Your input data"
 ```
 
 ## <a name="get-the-service-api-key"></a>サービス API キーの取得

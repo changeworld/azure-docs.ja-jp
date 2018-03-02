@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/21/2017
+ms.date: 02/22/2018
 ms.author: asgang
-ms.openlocfilehash: 7a8cd09731ccdf7ad7385f7e707125c3902ebdf2
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 9e0c602646009b20c8d4f8a29d55b7f44a089131
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshoot-on-premises-vmwarephysical-server-replication-issues"></a>オンプレミス VMware/物理サーバーのレプリケーションに関する問題のトラブルシューティング
 VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使用して保護する際に、特定のエラー メッセージが表示される場合があります。 この記事では、よく発生するエラー メッセージのいくつかと、それを解決するためのトラブルシューティング手順について詳しく説明します。
@@ -45,13 +45,13 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 プロセス サーバー マシンから、タスク マネージャーを開きます (Ctrl + Shift + Esc キーを押します)。 [パフォーマンス] タブに移動し、[リソース モニターを開く] リンクをクリックします。 リソース マネージャーから、[ネットワーク] タブに移動します。[ネットワーク活動のプロセス] で cbengine.exe がアクティブに大量 (MB 単位) のデータを送信しているかどうかを確認します。
 
-![Enable replication](./media/site-recovery-protection-common-errors/cbengine.png)
+![レプリケーションを有効にする](./media/site-recovery-protection-common-errors/cbengine.png)
 
 送信していない場合は、次の手順に従います。
 
 * **プロセス サーバーが Azure BLOB に接続できることを確認する**: cbengine.exe を選択し、[TCP 接続] を表示して、プロセス サーバーから Azure Storage の BLOB URL に接続されているかどうかを確認します。
 
-![Enable replication](./media/site-recovery-protection-common-errors/rmonitor.png)
+![レプリケーションを有効にする](./media/site-recovery-protection-common-errors/rmonitor.png)
 
 接続されていない場合は、[コントロール パネル]、[サービス] の順に移動し、以下のサービスが稼働しているかどうかを確認します。
 
@@ -67,7 +67,7 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 
 `%programfiles%\Microsoft Azure Recovery Services Agent\Temp` から最新の CBEngineCurr.errlog を開き、443 と connection attempt failed を探します。
 
-![Enable replication](./media/site-recovery-protection-common-errors/logdetails1.png)
+![レプリケーションを有効にする](./media/site-recovery-protection-common-errors/logdetails1.png)
 
 問題がある場合は、プロセス サーバーのコマンドラインから telnet を使用し、ポート 443 を使用して CBEngineCurr.currLog で見つかった Azure のパブリック IP アドレス (上の画像ではマスクされている) を ping します。
 
@@ -107,13 +107,13 @@ VMware 仮想マシンまたは物理サーバーを Azure Site Recovery を使�
 ここで、データを送信するために Azure Site Recovery エージェントで同じ設定が使用されていることを確認します。
 Microsoft Azure Backup を検索します。
 
-![Enable replication](./media/site-recovery-protection-common-errors/mab.png)
+![レプリケーションを有効にする](./media/site-recovery-protection-common-errors/mab.png)
 
 これを開き、[アクション]、[プロパティの変更] の順にクリックします。 [プロキシの構成] タブに、プロキシ アドレスが表示されます。これは、レジストリ設定で表示されるものと同じです。 同じでない場合は、同じアドレスに変更します。
 
-![Enable replication](./media/site-recovery-protection-common-errors/mabproxy.png)
+![レプリケーションを有効にする](./media/site-recovery-protection-common-errors/mabproxy.png)
 
 * **プロセス サーバーでスロットルの帯域幅が制限されていないかどうかを確認**: 帯域幅を増やし、問題がまだ発生するかどうかを確認します。
 
-##<a name="next-steps"></a>次のステップ
+##<a name="next-steps"></a>次の手順
 さらに支援が必要な場合は、[Azure Site Recovery フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)にクエリを投稿してください。 弊社のアクティブなコミュニティを通じて、エンジニアがサポートいたします。

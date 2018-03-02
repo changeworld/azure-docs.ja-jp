@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 10/30/2017
+ms.date: 02/22/2018
 ms.author: raynew
-ms.openlocfilehash: da120d8e325867eaf9eb8b9be1ae8d9152db54c4
-ms.sourcegitcommit: e38120a5575ed35ebe7dccd4daf8d5673534626c
+ms.openlocfilehash: 256bad0c3c06182b6be2b647ae27db90fe69724d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Azure Site Recovery によるセカンダリ サイトへのレプリケーションのサポート マトリックス
 
@@ -67,21 +67,21 @@ ms.lasthandoff: 11/13/2017
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-NIC チーミング | あり | あり
-VLAN | あり | あり
-IPv4 | あり | あり
-IPv6 | なし | なし
+NIC チーミング | [はい] | [はい]
+VLAN | [はい] | [はい]
+IPv4 | [はい] | [はい]
+IPv6 | いいえ  | いいえ 
 
 ### <a name="guest-vms"></a>ゲスト VM
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-NIC チーミング | なし | なし
-IPv4 | あり | あり
-IPv6 | なし | なし
-静的 IP (Windows) | あり | あり
-静的 IP (Linux) | あり | あり
-マルチ NIC | あり | あり
+NIC チーミング | いいえ  | いいえ 
+IPv4 | [はい] | [はい]
+IPv6 | いいえ  | いいえ 
+静的 IP (Windows) | [はい] | [はい]
+静的 IP (Linux) | [はい] | [はい]
+マルチ NIC | [はい] | [はい]
 
 
 ## <a name="storage"></a>Storage
@@ -90,37 +90,37 @@ IPv6 | なし | なし
 
 **ストレージ (ホスト)** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-NFS | あり | 該当なし
-SMB 3.0 | 該当なし | あり
-SAN (ISCSI) | あり | はい
-マルチパス (MPIO) | あり | あり
+NFS | [はい] | 該当なし
+SMB 3.0 | 該当なし | [はい]
+SAN (ISCSI) | [はい] | [はい]
+マルチパス (MPIO) | [はい] | [はい]
 
 ### <a name="guest-or-physical-server-storage"></a>ゲストまたは物理サーバーのストレージ
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-VMDK | あり | 該当なし
-VHD/VHDX | 該当なし | あり (最大 16 個のディスク)
-第 2 世代 VM | 該当なし | あり
-共有クラスター ディスク | あり  | なし
-暗号化されたディスク | なし | なし
-UEFI| あり | 該当なし
-NFS | なし | なし
-SMB 3.0 | なし | なし
-RDM | あり | 該当なし
-1 TB より大きいディスク | あり | あり
-ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | あり | あり
-記憶域 | なし | あり
-ディスクのホット アド/削除 | あり | なし
-ディスクの除外 | あり | あり
-マルチパス (MPIO) | 該当なし | あり
+VMDK | [はい] | 該当なし
+VHD/VHDX | 該当なし | はい (最大 16 個のディスク)
+第 2 世代 VM | 該当なし | [はい]
+共有クラスター ディスク | [はい]  | いいえ 
+暗号化されたディスク | いいえ  | いいえ 
+UEFI| [はい] | 該当なし
+NFS | いいえ  | いいえ 
+SMB 3.0 | いいえ  | いいえ 
+RDM | [はい] | 該当なし
+1 TB より大きいディスク | [はい] | [はい]
+ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM | [はい] | [はい]
+記憶域 | いいえ  | [はい]
+ディスクのホット アド/削除 | [はい] | いいえ 
+ディスクの除外 | [はい] | [はい]
+マルチパス (MPIO) | 該当なし | [はい]
 
 ## <a name="vaults"></a>資格情報コンテナー
 
 **アクション** | **VMware/物理サーバー** | **Hyper-V (VMM あり)**
 --- | --- | ---
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | なし | なし
-リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | なし | なし
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) での資格情報コンテナーの移動 | いいえ  | いいえ 
+リソース グループ間 (サブスクリプション内またはサブスクリプション間) でのストレージ、ネットワーク、Azure VM の移動 | いいえ  | いいえ 
 
 ## <a name="provider-and-agent"></a>プロバイダーとエージェント
 
@@ -130,7 +130,7 @@ RDM | あり | 該当なし
 **モビリティ サービス** | オンプレミスの VMware サーバー/物理サーバーとセカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます  | 該当なし (ポータルから使用可能) | 該当なし
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](tutorial-vmm-to-vmm.md)
 - [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](tutorial-vmware-to-vmware.md)

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 2/23/2018
 ms.author: masnider;
-ms.openlocfilehash: 601b1c7713c9785d949c1c72000ec7f3f63dd682
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3c583d99a63c13a0a2ab351f82a4f5ff6840788a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要
 Azure Service Fabric により、ステートレスおよびステートフルな Reliable Service の作成と管理が簡素化されます。 このトピックの内容は次のとおりです。
@@ -113,7 +113,7 @@ Service Fabric でのステートレス サービスの使用方法を示す一�
 * アプリケーションで、複数の状態に関する変更履歴を維持する必要がある。
 * カスタム状態プロバイダーを開発するか、サード パーティが開発したカスタム状態プロバイダーを使用したい。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Reliable Services のクイック スタート](service-fabric-reliable-services-quick-start.md)
 * [Reliable Services の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 * [Reliable Actors プログラミング モデル](service-fabric-reliable-actors-introduction.md)

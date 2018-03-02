@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 8a2211e76150a90e4e10d79fd527decd3cbcc220
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 2bdb8c30ffa630f85d666f3a16ce2b9dcdab6492
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-customize-the-azure-api-management-developer-portal-using-templates"></a>Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法
 
@@ -31,13 +31,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 テンプレートは、システムで生成された開発者ポータル ページのコンテンツ (API ドキュメント、製品、ユーザー認証など) をカスタマイズするために使用します。 [DotLiquid](http://dotliquidmarkup.org/) 構文と、用意されているローカライズされた文字列リソース、アイコン、およびページ コントロールのセットを使用して、表示されるページの内容を自由に構成できます。
 
 ## <a name="developer-portal-templates-overview"></a>開発者ポータル テンプレートの概要
-テンプレートの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure Portal を開き、API Management インスタンスのサービス ツール バーにある **[パブリッシャー ポータル]** をクリックします。
-
-![パブリッシャー ポータル][api-management-management-console]
-
-右上にある **[開発者ポータル]** をクリックします。 
-
-![開発者ポータル メニュー][api-management-developer-portal-menu]
+テンプレートの編集は、管理者としてログインしているときに**開発者ポータル**から実行できます。 開発者ポータルにアクセスするには、まず Azure Portal を開き、API Management インスタンスのサービス ツール バーにある **[開発者ポータル]** をクリックします。
 
 開発者ポータル テンプレートにアクセスするには、左側のカスタマイズ アイコンをクリックしてカスタマイズ メニューを表示し、 **[テンプレート]**をクリックします。
 
@@ -47,7 +41,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ![開発者ポータル テンプレート][api-management-templates-menu]
 
-テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。 この例では、 **製品リスト** テンプレートが表示されています。 **製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。 
+テンプレートをクリックすると、そのテンプレートによってカスタマイズできる開発者ポータルのページが表示されます。 この例では、**製品リスト** テンプレートが表示されています。 **製品リスト** テンプレートは、赤色の四角形によって示されている画面の領域を制御します。 
 
 ![製品リスト テンプレート][api-management-developer-portal-templates-overview]
 
@@ -65,7 +59,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ![テンプレートのデータ モデル][api-management-template-data]
 
-前の例には、次の例に示す **テンプレート データ** ウィンドウに表示されたデータから取得され、開発者ポータルに表示される 2 つの製品があります。
+前の例には、次の例に示す **[Template data]\(テンプレート データ\)** ウィンドウに表示されたデータから取得され、開発者ポータルに表示される 2 つの製品があります。
 
 ```json
 {
@@ -185,7 +179,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 その後、復元したテンプレートを、「 [テンプレートを発行するには](#to-publish-a-template)」の手順に従って、個別にまたはまとめて発行する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 開発者ポータル テンプレート、文字列リソース、アイコン、およびページ コントロールのリファレンス情報については、 [API Management 開発者ポータル テンプレート リファレンスに関するページ](api-management-developer-portal-templates-reference.md)を参照してください。
 
 [modify-content-layout]: api-management-modify-content-layout.md

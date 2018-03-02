@@ -1,3 +1,5 @@
+# [ExpressRoute のドキュメント](index.md)
+
 # 概要
 ## [ExpressRoute とは](expressroute-introduction.md)
 ## [ExpressRoute の FAQ](expressroute-faqs.md)
@@ -17,24 +19,24 @@
 
 # 方法
 ## 回線の作成と変更
-### [Azure ポータル](expressroute-howto-circuit-portal-resource-manager.md)
+### [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-circuit-arm.md)
 ### [Azure CLI](howto-circuit-cli.md)
 ## ピアリング構成の作成と変更
-### [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
+### [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-routing-arm.md)
 ### [Azure CLI](howto-routing-cli.md)
 ## ExpressRoute 回線への仮想ネットワークのリンク
-### [Azure ポータル](expressroute-howto-linkvnet-portal-resource-manager.md)
+### [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-linkvnet-arm.md)
 ### [Azure CLI](howto-linkvnet-cli.md)
 ## [Microsoft ピアリング経由のサイト間 VPN を構成する](site-to-site-vpn-over-microsoft-peering.md)
 ## ExpressRoute の仮想ネットワーク ゲートウェイを構成する
-### [Azure ポータル](expressroute-howto-add-gateway-portal-resource-manager.md)
+### [Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [Azure PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)
 ## Microsoft ピアリングにルート フィルターを構成する
-### [Azure ポータル](how-to-routefilter-portal.md)
+### [Azure Portal](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
 ### [Azure CLI](how-to-routefilter-cli.md)
 ## [パブリック ピアリングから Microsoft ピアリングへの移行](how-to-move-peering.md)
@@ -67,7 +69,7 @@
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#expressroute)
 ## [Azure CLI](/cli/azure/network/express-route)
-## [REST ()](https://msdn.microsoft.com/library/azure/mt586720)
+## [REST](https://msdn.microsoft.com/library/azure/mt586720)
 ## [REST (クラシック)](https://msdn.microsoft.com/library/azure/dn606310)
 
 # 関連項目

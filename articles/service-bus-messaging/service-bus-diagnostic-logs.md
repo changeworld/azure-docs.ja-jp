@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 10/16/2017
+ms.date: 02/05/2018
 ms.author: sethm
-ms.openlocfilehash: 2bf65b7c5b0518da59e767db18fe6f4193e0ab6e
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 4ce724adc9ca167634be9a0b7137b6a3d54211bf
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 
 Azure Service Bus の 2 種類のログを表示できます。
-* **[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)**。 これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
+* **[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)** これらのログには、ジョブで実行された操作に関する情報が含まれます。 このログは常に有効になっています。
 * **[診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)**。 ジョブで発生するすべてのイベントに関する豊富な情報を含んだ診断ログを構成することができます。 診断ログは、ジョブが作成されたときからジョブが削除されるまでのアクティビティを記録します。ジョブの実行中に発生した更新やアクティビティも含まれます。
 
 ## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
@@ -63,15 +63,15 @@ Azure Service Bus の 2 種類のログを表示できます。
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
-名前 | Description
+Name | [説明]
 ------- | -------
 ActivityId | 内部 ID。追跡目的で使用されます
 EventName | 操作の名前           
-resourceId | Azure Resource Manager リソース ID
+ResourceId | Azure Resource Manager リソース ID
 SubscriptionId | サブスクリプション ID
 EventTimeString | 操作時間
 EventProperties | 操作プロパティ
-[Status] | 操作の状態
+状態 | 操作の状態
 Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)
 カテゴリ | OperationalLogs
 
@@ -91,7 +91,7 @@ Caller | 操作の呼び出し元 (Azure Portal または管理クライアン�
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Service Bus の詳細については、次のリンクを参照してください。
 

@@ -1,3 +1,5 @@
+# [VPN Gateway のドキュメント](index.md)
+
 # 概要
 ## [VPN Gateway について](vpn-gateway-about-vpngateways.md)
 ## [VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md)

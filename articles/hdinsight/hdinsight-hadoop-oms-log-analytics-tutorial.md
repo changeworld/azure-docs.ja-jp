@@ -13,13 +13,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: ca2cf642cfff2961dcb0dd18f0e712f61d6915c2
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 2c43b9aabda56e1204870575e86934bf93d05882
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters"></a>Azure Log Analytics を使用して Azure HDInsight クラスターを監視する
 
@@ -34,7 +34,7 @@ Azure Log Analytics を使って HDInsight でHadoop クラスターの操作を
 * **Azure HDInsight クラスター**。 現在、Azure Operations Management Suite は次の HDInsight クラスター タイプで使用することができます。
 
     * Hadoop
-    * HBase
+    * hbase
     * Interactive Query
     * Kafka
     * Spark
@@ -82,5 +82,5 @@ Disable-AzureRmHDInsightOperationsManagementSuite
 「[Disable-AzureRmHDInsightOperationsManagementSuite](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/disable-azurermhdinsightoperationsmanagementsuite?view=azurermps-5.0.0)」(Disable-AzureRmHDInsightOperationsManagementSuite) をご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Log Analytics に HDInsight クラスター管理ソリューションを追加する](hdinsight-hadoop-oms-log-analytics-management-solutions.md)

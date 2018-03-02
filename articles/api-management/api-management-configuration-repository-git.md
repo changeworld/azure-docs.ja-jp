@@ -6,25 +6,22 @@ documentationcenter:
 author: vladvino
 manager: erikre
 editor: mattfarm
-ms.assetid: 364cd53e-88fb-4301-a093-f132fa1f88f5
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 02/02/2018
 ms.author: apimpm
-ms.openlocfilehash: 0abf2635e08bfc3113e9dec1947b9bb162cd3952
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 57d14b6aa6caca0cc9b075723d4c350b0a50c9f8
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-save-and-configure-your-api-management-service-configuration-using-git"></a>Git を使用して API Management サービス構成を保存および構成する方法
-> 
-> 
 
-各 API Management サービス インスタンスは、サービス インスタンスの構成とメタデータに関する情報が格納されている構成データベースを保持します。 サービス インスタンスへの変更は、発行者ポータルの設定変更、PowerShell コマンドレットの使用、または REST API 呼び出しによって行うことができます。 これらの方法のほか、Git を使用してサービス インスタンスの構成を管理することもできます。Git を使用すると、次のようなサービス管理のシナリオが可能になります。
+各 API Management サービス インスタンスは、サービス インスタンスの構成とメタデータに関する情報が格納されている構成データベースを保持します。 サービス インスタンスへの変更は、Azure Portal の設定変更、PowerShell コマンドレットの使用、または REST API 呼び出しによって行うことができます。 これらの方法のほか、Git を使用してサービス インスタンスの構成を管理することもできます。Git を使用すると、次のようなサービス管理のシナリオが可能になります。
 
 * 構成のバージョン管理 - サービス構成のさまざまなバージョンをダウンロードして保存する
 * 構成の一括変更 - ローカル リポジトリ内のサービス構成の複数の部分を変更し、1 回の操作で変更をサーバーに返して統合する
@@ -34,7 +31,7 @@ ms.lasthandoff: 12/08/2017
 
 ![Git configure][api-management-git-configure]
 
-発行者ポータル、PowerShell コマンドレット、または REST API を使用してサービスに変更を加える場合は、図の右側に示されているように、サービス構成データベースの管理に `https://{name}.management.azure-api.net` エンドポイントを使用します。 図の左側では、Git を使用してサービス構成を管理する方法を示しています。この場合、`https://{name}.scm.azure-api.net` にあるご利用のサービスの Git リポジトリを使用します。
+Azure Portal、PowerShell コマンドレット、または REST API を使用してサービスに変更を加える場合は、図の右側に示されているように、サービス構成データベースの管理に `https://{name}.management.azure-api.net` エンドポイントを使用します。 図の左側では、Git を使用してサービス構成を管理する方法を示しています。この場合、`https://{name}.scm.azure-api.net` にあるご利用のサービスの Git リポジトリを使用します。
 
 Git を使用して API Management サービス インスタンスを管理する手順の概要は次のとおりです。
 
@@ -47,11 +44,8 @@ Git を使用して API Management サービス インスタンスを管理す�
 この記事では、Git を有効にして使用し、サービス構成を管理する方法について説明します。また、Git リポジトリ内のファイルとフォルダーに関するリファレンス情報も提供します。
 
 ## <a name="access-git-configuration-in-your-service"></a>サービスの Git 構成にアクセスする
-発行者ポータルの右上隅にある Git アイコンを表示して、Git 構成の状態をすばやく表示することができます。 この例のステータス メッセージは、リポジトリへの未保存の変更があることを示しています。 これは、API Management サービス構成データベースがまだリポジトリに保存されていないためです。
 
-![Git の状態][api-management-git-icon-enable]
-
-Git 構成設定を表示して構成する場合は、Git アイコンをクリックするか、**[セキュリティ]** メニューをクリックして **[構成リポジトリ]** タブに移動することができます。
+Git 構成設定を表示して構成するには、**[セキュリティ]** メニューをクリックし、**[構成リポジトリ]** タブに移動します。
 
 ![Enable GIT][api-management-enable-git]
 
@@ -63,43 +57,30 @@ Git 構成設定を表示して構成する場合は、Git アイコンをクリ
 REST API を使用して Git アクセスを有効または無効にする方法については、「 [Enable or disable Git access using the REST API (REST API を使用して Git アクセスを有効または無効にする)](https://msdn.microsoft.com/library/dn781420.aspx#EnableGit)」を参照してください。
 
 ## <a name="to-save-the-service-configuration-to-the-git-repository"></a>サービス構成を Git リポジトリに保存するには
-まず、リポジトリを複製する前に、サービス構成の現在の状態をリポジトリに保存します。 **[構成をリポジトリに保存する]**をクリックします。
 
-![Save configuration][api-management-save-configuration]
+まず、リポジトリを複製する前に、サービス構成の現在の状態をリポジトリに保存します。 **[リポジトリに保存する]** をクリックします。
 
 必要に応じて確認画面で変更を行い、 **[OK]** をクリックして保存します。
 
-![Save configuration][api-management-save-configuration-confirm]
-
 しばらくすると構成が保存されます。また、最後に構成を変更した日時、サービス構成とリポジトリの間で最後に行われた同期の日時など、リポジトリの構成状態が表示されます。
-
-![Configuration status][api-management-configuration-status]
 
 構成がリポジトリに保存されたら、そのリポジトリを複製できます。
 
 REST API を使用してこの操作を実行する方法については、「 [Commit configuration snapshot using the REST API (REST API を使用して構成スナップショットをコミットする)](https://msdn.microsoft.com/library/dn781420.aspx#CommitSnapshot)」を参照してください。
 
 ## <a name="to-clone-the-repository-to-your-local-machine"></a>ローカル コンピューターにリポジトリを複製するには
-リポジトリを複製するには、リポジトリの URL、ユーザー名、パスワードが必要です。 ユーザー名と URL は、 **[構成リポジトリ]** タブの上部近くに表示されます。
 
-![Git clone][api-management-configuration-git-clone]
-
-パスワードは、 **[構成リポジトリ]** タブの下部で生成されます。
-
-![Generate password][api-management-generate-password]
-
-パスワードを生成するには、希望する有効期限の日時を **[有効期限]** に設定してから、**[トークンの生成]** をクリックします。
-
-![パスワード][api-management-password]
+リポジトリを複製するには、リポジトリの URL、ユーザー名、パスワードが必要です。 ユーザー名と他の資格情報を取得するには、ページの上部にある **[アクセス資格情報]** をクリックします。  
+ 
+パスワードを生成するには、希望する有効期限の日時を **[有効期限]** に設定してから、**[生成]** をクリックします。
 
 > [!IMPORTANT]
 > このパスワードを書き留めておいてください。 このページから移動すると、パスワードが再度表示されることはありません。
 > 
-> 
 
 次の例では [Git for Windows](http://www.git-scm.com/downloads) の Git Bash ツールを使用していますが、使い慣れた Git ツールも使用できます。
 
-Git ツールを目的のフォルダーで開き、次のコマンドを実行して、Git リポジトリをローカル コンピューターに複製します (コマンドは発行者ポータルで入手できます)。
+Git ツールを目的のフォルダーで開き、次のコマンドを実行して、Git リポジトリをローカル マシンに複製します (コマンドは Azure Portal で提供されます)。
 
 ```
 git clone https://bugbashdev4.scm.azure-api.net/
@@ -116,7 +97,7 @@ git clone https://username:password@bugbashdev4.scm.azure-api.net/
 それでもエラーが発生する場合は、コマンドのパスワード部分をエンコードする URL を試してください。 これを簡単に行う 1 つの方法では、Visual Studio を開き、 **[イミディエイト ウィンドウ]**で次のコマンドを発行します。 **[イミディエイト ウィンドウ]** を開くには、Visual Studio で任意のソリューションまたはプロジェクトを開き (または新しく空のコンソール アプリケーションを作成し)、**[デバッグ]** メニューから **[ウィンドウ]**、**[イミディエイト]** の順に選択します。
 
 ```
-?System.NetWebUtility.UrlEncode("password from publisher portal")
+?System.NetWebUtility.UrlEncode("password from the Azure portal")
 ```
 
 エンコードされたパスワードをユーザー名とリポジトリの場所と共に使用して Git コマンドを作成します。
@@ -128,7 +109,8 @@ git clone https://username:url encoded password@bugbashdev4.scm.azure-api.net/
 リポジトリの複製が完了したら、ローカル ファイル システムのリポジトリを表示して操作できます。 詳細については、「 [ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス](#file-and-folder-structure-reference-of-local-git-repository)」を参照してください。
 
 ## <a name="to-update-your-local-repository-with-the-most-current-service-instance-configuration"></a>最新のサービス インスタンス構成を使用してローカル リポジトリを更新するには
-発行者ポータルまたは REST API で API Management サービス インスタンスに変更を加える場合、これらの変更をリポジトリに保存しておく必要があります。その後、最新の変更を使用してローカル リポジトリを更新できます。 これを行うには、発行者ポータルの **[構成リポジトリ]** タブで **[構成をリポジトリに保存する]** をクリックし、ローカル リポジトリで次のコマンドを発行します。
+
+Azure Portal または REST API で API Management サービス インスタンスに変更を加える場合、これらの変更をリポジトリに保存しておく必要があります。その後、最新の変更を使用してローカル リポジトリを更新できます。 これを行うには、Azure Portal の **[構成リポジトリ]** タブで **[構成をリポジトリに保存する]** をクリックし、ローカル リポジトリで次のコマンドを発行します。
 
 ```
 git pull
@@ -155,16 +137,16 @@ git push
 ```
 
 ## <a name="to-deploy-any-service-configuration-changes-to-the-api-management-service-instance"></a>API Management サービス インスタンスにサービス構成の変更をデプロイするには
-ローカルの変更をコミットし、サーバー リポジトリにプッシュしたら、これらの変更を API Management サービス インスタンスにデプロイできます。
 
-![デプロイ][api-management-configuration-deploy]
+ローカルの変更をコミットし、サーバー リポジトリにプッシュしたら、これらの変更を API Management サービス インスタンスにデプロイできます。
 
 REST API を使用してこの操作を実行する方法については、「 [Deploy Git changes to configuration database using the REST API (REST API を使用して構成データベースに Git の変更をデプロイする)](https://docs.microsoft.com/rest/api/apimanagement/tenantconfiguration)」を参照してください。
 
 ## <a name="file-and-folder-structure-reference-of-local-git-repository"></a>ローカル Git リポジトリのファイルとフォルダーの構造のリファレンス
+
 ローカル Git リポジトリのファイルとフォルダーには、サービス インスタンスに関する構成情報が含まれています。
 
-| 項目 | Description |
+| 項目 | [説明] |
 | --- | --- |
 | api-management ルート フォルダー |サービス インスタンスの最上位の構成が含まれています |
 | apis フォルダー |サービス インスタンス内の API の構成が含まれています |
@@ -188,11 +170,10 @@ REST API を使用してこの操作を実行する方法については、「 [
 > [!NOTE]
 > 次のエンティティは、Git リポジトリに含まれないため、Git を使用して構成することはできません。
 > 
-> * Users
+> * ユーザー
 > * サブスクリプション
-> * プロパティ
+> * [プロパティ]
 > * スタイル以外の開発者ポータルのエンティティ
-> 
 > 
 
 ### <a name="root-api-management-folder"></a>api-management ルート フォルダー
@@ -223,8 +204,6 @@ REST API を使用してこの操作を実行する方法については、「 [
 | UserRegistrationTermsEnabled |**[サインアップ ページに使用条件を表示する]** チェック ボックス |
 | UserRegistrationTermsConsentRequired |**[同意を要求する]** チェック ボックス |
 
-![Identity settings][api-management-identity-settings]
-
 その次の 4 つの設定 (`DelegationEnabled`、`DelegationUrl`、`DelegatedSubscriptionEnabled`、`DelegationValidationKey`) は、**[セキュリティ]** セクションの **[委任]** タブにある次の設定に対応します。
 
 | 委任の設定 | 対応する設定 |
@@ -233,8 +212,6 @@ REST API を使用してこの操作を実行する方法については、「 [
 | DelegationUrl |**[委任エンドポイント URL]** ボックス |
 | DelegatedSubscriptionEnabled |**[製品のサブスクリプションを委任する]** チェック ボックス |
 | DelegationValidationKey |**[検証キーを委任する]** ボックス |
-
-![Delegation settings][api-management-delegation-settings]
 
 最後の設定 `$ref-policy`は、サービス インスタンスのグローバル ポリシー ステートメントのファイルに対応します。
 
@@ -277,21 +254,15 @@ REST API を使用してこの操作を実行する方法については、「 [
 * `<template name>\configuration.json` - これは電子メール テンプレートの構成です。
 * `<template name>\body.html` - これは電子メール テンプレートの本文です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 サービス インスタンスの他の管理方法については、以下を参照してください。
 
 * 次の PowerShell コマンドレットを使用したサービス インスタンスの管理
   * [Azure API Management Deployment Cmdlets (Azure API Management のデプロイ コマンドレット)](https://msdn.microsoft.com/library/azure/mt619282.aspx)
   * [Azure API Management Service Management Cmdlets (Azure API Management のサービス管理コマンドレット)](https://msdn.microsoft.com/library/azure/mt613507.aspx)
-* 発行者ポータルでのサービス インスタンスの管理
-  * [Azure API Management での最初の API の管理](import-and-publish.md)
 * REST API を使用したサービス インスタンスの管理
   * [API Management REST (API Management REST)](https://msdn.microsoft.com/library/azure/dn776326.aspx)
 
-## <a name="watch-a-video-overview"></a>ビデオの概要を見る
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Configuration-over-Git/player]
-> 
-> 
 
 [api-management-enable-git]: ./media/api-management-configuration-repository-git/api-management-enable-git.png
 [api-management-git-enabled]: ./media/api-management-configuration-repository-git/api-management-git-enabled.png

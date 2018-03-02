@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: milanga;juliako;johndeu
-ms.openlocfilehash: c0bbe6f80370515fa783b12757434897fe2221b6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88c854a6a2bc98a6851246c0ac3481869bbd9c34
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics
 ## <a name="overview"></a>概要
@@ -50,6 +50,8 @@ Face Detector を使用すると、幸福、悲しみ、驚きなど、人の顔
 Azure Media OCR (光学式文字認識) では、ビデオ ファイル内のテキスト コンテンツを編集かつ検索可能なデジタル テキストに変換できます。 これにより、メディアのビデオ信号から有意なメタデータを自動的に抽出することができます。
 ### <a name="scalable-face-redaction"></a>スケーラブルな顔編集
 Azure Media Redactor は、クラウドでスケーラブルな顔編集を提供する Media Analytics メディア プロセッサです。 顔編集を使用することで、ビデオを編集して選択した個人の顔をぼかすことができます。 顔編集サービスは、ニュース媒体や公共の安全が関係する場合などに使用していただけます。 複数人の顔を含んでいる映像の場合、顔編集を手作業で行うと数分の映像でも数時間かかりますが、このサービスを使えば数ステップの簡単な手順で完了します。 詳細については、[Redact faces with Azure Media Analytics](media-services-face-redaction.md)の記事を参照してください。
+### <a name="content-moderation"></a>コンテンツ モデレート
+Azure Content Moderator を使用すると、マシンによるモデレートをビデオに使用できます。 たとえば、ビデオに含まれる成人向けやわいせつな可能性のあるコンテンツを検出し、フラグが設定されたコンテンツを人間のモデレート チームがレビューすることができます。 ビデオを手動でモデレートして、望ましくないコンテンツが含まれていないかどうかを確認するのは、時間とコストがかかる作業です。 このサービスおよび関連するレビュー ツールを使用すると、マシンによるモデレートと目視によるレビューを組み合わせて、高いコスト効率で最適な結果を効率的に得ることができます。 詳細については、[Azure Content Moderator を使用したビデオの処理](media-services-content-moderation.md)に関する記事をご覧ください。
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 Media Analytics は、ビデオから新しい見識を収集する組織や企業を支援し、大量のビデオ コンテンツのより効果的な管理に役立ちます。 いくつかのシナリオを次に示します。
@@ -69,6 +71,7 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
 * Azure Media Motion Detector
 * Azure Media Video Thumbnails
 * Azure Media OCR
+* Azure Media Content Moderator
 
 ### <a name="net"></a>.NET
 次の関数は、指定された MP 名のいずれかを取得し、MP オブジェクトを返します。
@@ -123,11 +126,6 @@ Media Analytics は、ビデオから新しい見識を収集する組織や企�
 ## <a name="demos"></a>デモ
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
-Media Services のラーニング パスを確認します。
-
-[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
@@ -137,3 +135,8 @@ Media Services のラーニング パスを確認します。
 <!-- Images -->
 
 [overview]: ./media/media-services-video-on-demand-workflow/media-services-video-on-demand.png
+
+## <a name="next-steps"></a>次の手順
+Media Services のラーニング パスを確認します。
+
+[!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

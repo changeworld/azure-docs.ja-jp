@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mingzhan
-ms.openlocfilehash: c79e37976a58ae5384b5856e0f7f258a773ef0fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 455de7bc0bca86ad542b6606181b0daf146a5e6a
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>VM で Azure Linux エージェントを更新する方法
 
@@ -29,6 +29,9 @@ Azure 上の Linux VM の [Azure Linux エージェント](https://github.com/Az
 - SSH を使用してその Linux VM に接続している。
 
 まずは常に Linux ディストリビューション リポジトリでパッケージを確認することをお勧めします。 使用できるパッケージが最新のバージョンでない可能性もありますが、自動更新を有効にすると Linux エージェントが常に最新の更新プログラムを入手します。 パッケージ マネージャーからのインストールに問題がある場合は、ディストリビューション ベンダーにサポートを依頼してください。
+
+## <a name="minimum-virtual-machine-agent-support-in-azure"></a>Azure での仮想マシン エージェントの最小バージョンのサポート
+先に進む前に、[Azure での仮想マシン エージェントの最小バージョンのサポート](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)を確認してください。
 
 ## <a name="updating-the-azure-linux-agent"></a>Azure Linux エージェントを更新する
 
@@ -411,7 +414,7 @@ unzip v2.2.14.zip
 cd WALinuxAgent-2.2.14
 ```
 
-### <a name="2-install-the-azure-linux-agent"></a>手順 2.Azure Linux エージェントをインストールします。
+### <a name="2-install-the-azure-linux-agent"></a>2.Azure Linux エージェントをインストールします。
 
 #### <a name="for-version-22x-use"></a>バージョン 2.2.x の場合は次を使用します。
 パッケージ `setuptools` を先にインストールする必要がある場合は、 [こちら](https://pypi.python.org/pypi/setuptools)をご覧ください。 次に、以下を実行します。
@@ -441,7 +444,7 @@ AutoUpdate.Enabled=y
 sudo sed -i 's/AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 ```
 
-### <a name="3-restart-the-waagent-service"></a>3.waagent サービスを再起動します
+### <a name="3-restart-the-waagent-service"></a>手順 3.waagent サービスを再起動します
 ほとんどの Linux ディストリビューションでは、次のコマンドを使用します。
 
 ```bash

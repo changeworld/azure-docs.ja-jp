@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/29/2017
+ms.date: 02/22/2018
 ms.author: asgang
-ms.openlocfilehash: 028aa0f23c3a7c98c4801d9e306c5dcfa35aab80
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 1b63515970f81b1cab679287d84707d531fd102a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="replicate-applications-running-on-vmware-virtual-machines-to-azure"></a>VMware 仮想マシンから Azure にアプリケーションをレプリケートする
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/20/2017
 2.  [Azure でのターゲット環境の設定](site-recovery-prepare-target-vmware-to-azure.md)。
 
 
-## <a name="enable-replication"></a>Enable replication
+## <a name="enable-replication"></a>レプリケーションを有効にする
 ### <a name="before-you-start"></a>開始する前に
 VMware 仮想マシンをレプリケートする場合:
 
@@ -83,7 +83,7 @@ VMware 仮想マシンをレプリケートする場合:
     >    * レプリケーション グループのマシンはまとめてレプリケートされ、フェールオーバー時にクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを共有します。
     >    * VM と物理サーバーがワークロードをミラー化できるように、これらをまとめます。 マルチ VM 整合性を有効にすると、ワークロードのパフォーマンスに影響する場合があります。 複数のマシンが同じワークロードを実行していて、整合性を持たせる必要がある場合にのみ使用してください。
 
-    ![Enable replication](./media/site-recovery-vmware-to-azure/enable-replication7.png)
+    ![レプリケーションを有効にする](./media/site-recovery-vmware-to-azure/enable-replication7.png)
 14. **[レプリケーションを有効にする]**をクリックします。 **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**保護の有効化**ジョブの進行状況を追跡できます。 **保護の最終処理**ジョブが実行されると、マシンはフェールオーバーできる状態になります。
 
 > [!NOTE]
@@ -135,7 +135,7 @@ VMware 仮想マシンをレプリケートする場合:
 * OS ディスクは、ダイナミック ディスクではなく、ベーシック ディスクである必要があります。
 * 第 2 世代/UEFI 対応仮想マシンでは、オペレーティング システム ファミリは Windows である必要があります。また、ブート ディスクは 300 GB 未満である必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 保護を完了し、マシンが保護された状態になったら、[フェールオーバー](site-recovery-failover.md)を実行して、アプリケーションが Azure で動作するかどうかを確認できます。
 

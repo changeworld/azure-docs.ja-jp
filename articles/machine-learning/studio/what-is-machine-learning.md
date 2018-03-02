@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 02/23/2018
 ms.author: cgronlun;tedway;olgali
-ms.openlocfilehash: adbd1badd8053d3c2b53386b0311e120738099f9
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 2968a71141eb6e036bc8bff1bc620b978f3ffdd9
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="introduction-to-machine-learning-in-the-azure-cloud"></a>Azure クラウドでの機械学習の概要
 

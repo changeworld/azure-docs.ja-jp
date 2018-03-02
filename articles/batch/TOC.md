@@ -83,9 +83,9 @@
 
 ## [Azure CLI](/cli/azure/batch)
 ## [Azure PowerShell](/powershell/module/azurerm.batch)
-## [.NET](/dotnet/api/microsoft.azure.batch)
-## [Java](/java/api/com.microsoft.azure.batch)
-## [Node.js](/nodejs/api/overview/azure/batch)
+## [.NET](/dotnet/api/overview/azure/batch)
+## [Java](/java/api/overview/azure/batch)
+## [Node.js](/javascript/api/overview/azure/batch)
 ## [Python](/python/api/overview/azure/batch)
 ## REST ()
 ### [Batch サービス](/rest/api/batchservice)
@@ -100,7 +100,6 @@
 ### [タスク完了イベント](batch-task-complete-event.md)
 ### [タスク失敗イベント](batch-task-fail-event.md)
 ## [Batch コンピューティング ノードの環境変数](batch-compute-node-environment-variables.md)
-### [Resource Manager テンプレート](/templates/microsoft.batch/batchaccounts)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
@@ -110,6 +109,7 @@
 ## [Azure の HPC ソリューション](../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [料金](https://azure.microsoft.com/pricing/details/batch/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [Resource Manager テンプレート](/azure/templates/microsoft.batch/batchaccounts)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=batch)

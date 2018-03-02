@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 99c9740e3f19e2a09332317b08e06352ffa8eee7
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 1ec845a6491b406c1aef34609b155a9c3d087427
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -70,12 +70,12 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
         <groupId>com.microsoft.azure</groupId>
         <artifactId>applicationinsights-web</artifactId>
         <!-- or applicationinsights-core for bare API -->
-        <version>[1.0,)</version>
+        <version>[2.0,)</version>
       </dependency>
     </dependencies>
 ```
 
-* *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `<version>1.0.n</version>`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
+* *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `<version>2.0.n</version>`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
 * *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
 
 #### <a name="if-youre-using-gradle"></a>Gradle を使用している場合:
@@ -90,19 +90,19 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
     }
 
     dependencies {
-      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '1.+'
+      compile group: 'com.microsoft.azure', name: 'applicationinsights-web', version: '2.+'
       // or applicationinsights-core for bare API
     }
 ```
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'1.0.n'`。 *[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
+* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'2.0.n'`。 *[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
 * *新しい SDK に更新するには*
   * プロジェクトの依存関係を更新します。
 
 #### <a name="otherwise-"></a>それ以外の場合:
 SDK を手動で追加する:
 
-1. [Application Insights SDK for Java](https://aka.ms/aijavasdk)をダウンロードします。
+1. [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)をダウンロードします。
 2. zip ファイルからバイナリを抽出し、プロジェクトに追加します。
 
 ### <a name="questions"></a>疑問がある場合...
@@ -112,10 +112,10 @@ SDK を手動で追加する:
   * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。 このテレメトリを自動的に収集しない場合、このコンポーネントは省略できます。 たとえば、独自に記述する場合です。
 * *変更が発行されたときに SDK を更新するには*
 
-  * 最新の [Application Insights SDK for Java](https://aka.ms/qqkaq6) をダウンロードして、古いものと置き換えます。
+  * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。
   * 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
-## <a name="3-add-an-application-insights-xml-file"></a>3.Application Insights の xml ファイルを追加する
+## <a name="3-add-an-application-insights-xml-file"></a>手順 3.Application Insights の xml ファイルを追加する
 ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
@@ -379,7 +379,7 @@ Application Insights では、Web サイトを定期的にテストして、Web 
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [依存関係の呼び出しを監視する](app-insights-java-agent.md)
 * [Unix パフォーマンス カウンターを監視する](app-insights-java-collectd.md)
 * [Web ページに監視機能](app-insights-javascript.md)を追加して、ページの読み込み時間、AJAX 呼び出し、ブラウザーの例外を監視する

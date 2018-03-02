@@ -13,14 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: 19ab428913517e4f3df156c93782fe23f1cd67ec
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 6abdb15917508152529990c434eb48a9983b9432
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 02/28/2018
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>storm-starter の例を使って HDInsight で Apache Storm の使用を開始する
 
@@ -43,7 +43,7 @@ Apache Storm は、データ ストリームの処理を目的とし、スケー
 
 HDInsight で Storm クラスターを作成するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) で、**[+ 新規]**、**[データ + 分析]**、**[HDInsight]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) で、**[+ リソースの作成]**、**[データ + 分析]**、**[HDInsight]** の順に選択します。
 
     ![HDInsight クラスターの作成](./media/apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
@@ -65,8 +65,6 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     * **[オペレーティング システム]**: Linux
 
     * **[バージョン]**: Storm 1.1.0 (HDI 3.6)
-
-    * **[クラスター レベル]**: Standard
 
    最後に、**[選択]** ボタンをクリックして設定を保存します。
 
@@ -95,7 +93,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     > SSH クライアントで、ホストの信頼性が確立できないというメッセージが表示されることがあります。 その場合は、「`yes`」と入力して続行します。
 
     > [!NOTE]
-    > SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「 `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
+    > SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「`ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
 
     詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -106,7 +104,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     このコマンドにより、クラスターで WordCount トポロジの例が開始されます。 このトポロジは、ランダムな文と単語の出現回数を生成するものです。 トポロジの表示名は `wordcount` です。
 
     > [!NOTE]
-    > 独自のトポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 `scp` コマンドを使用して、ファイルをコピーします。 たとえば、 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
+    > 独自のトポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 `scp` コマンドを使用して、ファイルをコピーします。 たとえば、`scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` のように指定します。
     >
     > WordCount の例と他の storm-starter の例は、`/usr/hdp/current/storm-client/contrib/storm-starter/` のクラスターに既に含まれています。
 
@@ -146,7 +144,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
     * **アクティブ化の解除** - 実行中のトポロジを一時停止します
 
-    * **再調整** - トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 再調整によって、並列処理が、クラスター内のノード数の増減に合わせて調整されます。 詳細については、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」をご覧ください。
+    * **再調整** - トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 再調整によって、並列処理が、クラスター内のノード数の増減に合わせて調整されます。 詳細については、「 [Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」を参照してください。
 
     * **強制終了** - 指定したタイムアウト後に Storm トポロジを停止します。
 

@@ -7,11 +7,11 @@ author: dcaro
 ms.author: dcaro
 ms.date: 10/19/2017
 ms.topic: article
-ms.openlocfilehash: 253e5d341f93e61d851893eb05832fbf35707cfc
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 5157066086f1bdfa580c1946942bda4505e48935
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/09/2018
 ---
 # <a name="terraform-cloud-shell-development"></a>Terraform Cloud Shell の開発 
 
@@ -45,7 +45,7 @@ Cloud Shell は、`terraform` CLI コマンドのいずれかを使用すると�
 Azure CLI 2.0 は Cloud Shell で使用可能で、`terraform apply` または `terraform destroy` が完了した後の構成のテストと作業のチェックに適したツールです。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [モジュール レジストリを使用した Terraform での VM クラスターの作成](terraform-create-vm-cluster-module.md)
 [カスタム HCL を使用した小規模な VM クラスターの作成](terraform-create-vm-cluster-with-infrastructure.md)

@@ -11,22 +11,22 @@ ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: c48171d8634a651718a0775183414f463c6a468c
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: ce3d6d5aa721f84bda6d8de6eac161deb934a1e5
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
 > * [Python](batch-python-tutorial.md)
-> * [Node.JS](batch-nodejs-get-started.md)
+> * [Node.js](batch-nodejs-get-started.md)
 >
 >
 
-この記事では、[Azure Batch Node.js SDK](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/) を使って Node.js で Batch クライアントを作成するうえで基本となる事項を説明します。 説明にあたっては、段階的なアプローチを採用しています。具体的には、バッチ アプリケーションを使用するシナリオを紹介したうえで、Node.js クライアントを使ってアプリケーションをセットアップしていきます。  
+この記事では、[Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) を使って Node.js で Batch クライアントを作成するうえで基本となる事項を説明します。 説明にあたっては、段階的なアプローチを採用しています。具体的には、バッチ アプリケーションを使用するシナリオを紹介したうえで、Node.js クライアントを使ってアプリケーションをセットアップしていきます。  
 
 ## <a name="prerequisites"></a>前提条件
 この記事は、Node.js の実務知識を持ち、Linux に精通している読者を想定しています。 また、Batch と Storage の 2 つのサービスを作成できるアクセス権を備えた Azure アカウントも必要になります。
@@ -73,7 +73,7 @@ Node.js 向け Azure Batch SDK をインストールするには、npm install �
 
 ### <a name="step-2-create-an-azure-batch-account"></a>ステップ 2: Azure Batch アカウントを作成する
 
-[Azure Portal](batch-account-create-portal.md) またはコマンド ライン ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](https://docs.microsoft.com/cli/azure/overview)) から作成できます。
+[Azure Portal](batch-account-create-portal.md) またはコマンド ライン ([Powershell](batch-powershell-cmdlets-get-started.md) /[Azure CLI](/cli/azure/overview)) から作成できます。
 
 以下で紹介するのは、Azure CLI からアカウントを 1 つ作成するためのコマンドです。
 
@@ -357,8 +357,8 @@ var container_list = ["con1","con2","con3","con4"]
 
 ポータルでは、タスクとジョブの状態の詳細を確認できます。 このほか、Azure Node SDK の list 関数や get 関数も使用できます。 詳細については、ドキュメント ([リンク](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html)) を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - このサービスを初めて扱う場合は、 [Azure Batch 機能の概要](batch-api-basics.md) に関する記事を確認することをお勧めします。
-- Batch API の詳細については、[Batch Node.js のリファレンス](http://azure.github.io/azure-sdk-for-node/azure-batch/latest/)を参照してください。
+- Batch API の詳細については、[Batch Node.js のリファレンス](/javascript/api/overview/azure/batch)を参照してください。
 

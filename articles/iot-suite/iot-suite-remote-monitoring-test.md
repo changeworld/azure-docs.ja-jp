@@ -12,13 +12,13 @@ ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 4bdcd6d57989df3d1b67c87d56b8c57035ef2f63
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9f51c35be09af6f3a8dde7061dcf57a9c4cc9fdb
+ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/09/2018
 ---
-# <a name="test-your-solution-with-simulated-devices"></a>デバイスのシミュレーションを利用したソリューションのテスト
+# <a name="create-a-new-simulated-device"></a>新しいシミュレートされたデバイスの作成
 
 このチュートリアルでは、リモート監視の事前構成済みソリューションでデバイス シミュレーター マイクロサービスをカスタマイズする方法について説明します。 デバイス シミュレーターの機能を説明するために、このチュートリアルでは Contoso の IoT アプリケーションにおける 2 つのシナリオを使用して説明します。
 

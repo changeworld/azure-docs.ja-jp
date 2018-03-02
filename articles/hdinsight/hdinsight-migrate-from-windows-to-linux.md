@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 764a41dc9e890de85c3bfab3d2f78d5a07b39dff
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: dff9eaad252a71942b07212b7cfa9d9ddf346a3f
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
@@ -140,7 +140,7 @@ Linux ベースの HDInsight クラスターでは **Secure Shell (SSH)** プロ
 
 Linux ベースのクラスターのブートストラップ機能では、この機能は提供されません。 代わりに、「 [HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」に記載されているスクリプト アクションを使用します。
 
-### <a name="virtual-networks"></a>Virtual Networks
+### <a name="virtual-networks"></a>仮想ネットワーク
 
 Windows ベースの HDInsight クラスターは従来の仮想ネットワークでのみ動作しますが、Linux ベースの HDInsight クラスターにはリソース マネージャーの仮想ネットワークが必要になります。 Linux ベースの HDInsight クラスターを接続する必要がある従来の Virtual Network にリソースがある場合は、「 [従来の VNet を新しい VNet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)」を参照してください。
 
@@ -170,7 +170,7 @@ Linux クラスターのファイル システムは、Windows ベースの HDIn
 
 | 検索対象 | 配置場所 |
 | --- | --- |
-| 構成 |`/etc`」を参照してください。 たとえば、 `/etc/hadoop/conf/core-site.xml` |
+| 構成 |`/etc` たとえば、 `/etc/hadoop/conf/core-site.xml` |
 | ログ ファイル |`/var/logs` |
 | Hortonworks Data Platform (HDP) |`/usr/hdp`。ここには 2 つのディレクトリがあります。つまり、現在の HDP バージョンと `current` です。 `current`ディレクトリには、バージョン番号ディレクトリにあるファイルとディレクトリへのシンボリック リンクが含まれています。 バージョン番号は HDP バージョンの更新時に変更されるため、`current` ディレクトリは HDP ファイルにアクセスするための便利な方法として提供されます。 |
 | hadoop-streaming.jar |`/usr/hdp/current/hadoop-mapreduce-client/hadoop-streaming.jar` |
@@ -237,7 +237,7 @@ C# アプリケーションを使用するワークフローを使用してい�
 | Storm UI |Storm UI は https://CLUSTERNAME.azurehdinsight.net/stormui で利用できます。 |
 | Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |HDInsight 上の Linux ベースの Storm で、C# (SCP.NET) またはハイブリッド トポロジの作成、デプロイおよび管理に Visual Studio を使用できます。 2016年 10 月 28 日より後に作成されたクラスターでのみ使用できます。 |
 
-## <a name="hbase"></a>HBase
+## <a name="hbase"></a>hbase
 
 Linux ベースのクラスターでは、HBase の znode の親は `/hbase-unsecure`です。 この値を、ネイティブの HBase Java API を使用するすべての Java クライアント アプリケーションの構成で設定する必要があります。
 
@@ -282,7 +282,7 @@ Linux ベースのクラスターでは、HBase の znode の親は `/hbase-unse
     hdfs dfs -put -f script.py wasb:///path/to/script.py
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Linux ベースの HDInsight クラスターを作成する方法を確認する](hdinsight-hadoop-provision-linux-clusters.md)
 * [SSH を使用して HDInsight に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
