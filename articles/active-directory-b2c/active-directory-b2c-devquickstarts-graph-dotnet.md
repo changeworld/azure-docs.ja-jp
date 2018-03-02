@@ -21,12 +21,20 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/27/2018
 =======
+<<<<<<< HEAD
+ms.openlocfilehash: aee051946c90c686959066ac14798f807e7b91b0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/27/2018
+=======
 ms.openlocfilehash: dd84a8da348d0d534ba19a3d61970ec0d8c66cc8
 ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
 >>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API を使用する
 

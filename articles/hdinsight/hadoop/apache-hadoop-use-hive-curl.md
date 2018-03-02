@@ -23,12 +23,20 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
 =======
+<<<<<<< HEAD
+ms.openlocfilehash: dfe9efdb57a0ce2506abd251267f39020568d081
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/28/2018
+=======
 ms.openlocfilehash: c830abdf8220f222a06b771b8c9fc905146420b4
 ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
 >>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>REST を使用した HDInsight における Hadoop での Hive クエリの実行
 
@@ -89,8 +97,13 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
        -Credential $creds `
        -UseBasicParsing
 =======
+<<<<<<< HEAD
+       -Credential $creds `
+       -UseBasicParsing
+=======
        -Credential $creds
 >>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
     $resp.Content
     ```
 
@@ -117,8 +130,13 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
        -Credential $creds `
        -UseBasicParsing
 =======
+<<<<<<< HEAD
+       -Credential $creds `
+       -UseBasicParsing
+=======
        -Credential $creds
 >>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
     $resp.Content
     ```
 
@@ -144,8 +162,13 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
        -Method POST `
        -UseBasicParsing
 =======
+<<<<<<< HEAD
+       -Method POST `
+       -UseBasicParsing
+=======
        -Method POST
 >>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
     $jobID = (ConvertFrom-Json $resp.Content).id
     $jobID
     ```
@@ -189,8 +212,13 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
        -Body $reqParams `
        -UseBasicParsing
 =======
+<<<<<<< HEAD
+       -Body $reqParams `
+       -UseBasicParsing
+=======
        -Body $reqParams
 >>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
     # ConvertFrom-JSON can't handle duplicate names with different case
     # So change one to prevent the error
     $fixDup=$resp.Content.Replace("jobID","job_ID")

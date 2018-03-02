@@ -21,12 +21,20 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/24/2018
 =======
+<<<<<<< HEAD
+ms.openlocfilehash: a4a8ea14fecac73b187c9c7d3f9ca318bb2671c5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/24/2018
+=======
 ms.openlocfilehash: 7ed7df2451a44075a79f514cf67efbf479a2ebb1
 ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/21/2018
 >>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application-by-using-site-recovery"></a>Site Recovery を使用して IIS ベースの多層 Web アプリケーションをレプリケートする
 

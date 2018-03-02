@@ -19,6 +19,9 @@ ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ms.lasthandoff: 02/13/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作

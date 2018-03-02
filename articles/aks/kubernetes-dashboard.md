@@ -16,12 +16,20 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/27/2018
 =======
+<<<<<<< HEAD
+ms.openlocfilehash: 47608993320d987822422ea103e4e2043de2d2e8
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/27/2018
+=======
 ms.openlocfilehash: c830400ca1ccd7273ba3acfbd4f17eb2081add87
 ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/22/2018
 >>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
+>>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ---
 # <a name="kubernetes-dashboard-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Kubernetes ダッシュボード
 
