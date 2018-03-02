@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 * Azure アカウント ([無料試用版を入手](https://azure.microsoft.com/pricing/free-trial/))。
 * `azure login` でログインした [Azure CLI](../../cli-install-nodejs.md)。
-* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である** "必要があります"。
+* Azure CLI は、Azure Resource Manager モード (`azure config mode arm`) である*必要があります*。
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>タスクを完了するための CLI バージョン
