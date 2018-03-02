@@ -236,12 +236,12 @@ SAP ASCS/SCS インスタンスを ASCS/SCS クラスターの "*両方*" のノ
 
 インスタンスをインストールするには、SAP SWPM インストール ツールで、次のように選択します。
 
-**\<製品>** > **\<DBMS>** > **[Installation]\(インストール\)** > **[Application Server ABAP (or **Java**)]\(アプリケーション サーバー ABAP (または Java)\)** > **[Distributed System]\(分散システム\)** > **[ASCS/SCS Instance]\(ASCS/SCS インスタンス\)**
+**\<製品>** > **\<DBMS>** > **[Installation]\(インストール)** > **[Application Server ABAP (or **Java**)]\(アプリケーション サーバー ABAP (または Java))** > **[Distributed System]\(分散システム)** > **[ASCS/SCS Instance]\(ASCS/SCS インスタンス)**
 
 > [!IMPORTANT]
 > 現在、SAP SWPM インストール ツールでは、ファイル共有のシナリオはサポートされていません。 次のインストール パスは "*使用できません*"。
 >
-> **\<製品>** > **\<DBMS>** > **[Installation]\(インストール\)** > **[Application Server ABAP (or **Java**)]\(アプリケーション サーバー ABAP (または Java)\)** > **[High-Availability System]\(高可用性システム\)** > …
+> **\<製品>** > **\<DBMS>** > **[Installation]\(インストール)** > **[Application Server ABAP (or **Java**)]\(アプリケーション サーバー ABAP (または Java))** > **[High-Availability System]\(高可用性システム)** > …
 >
 
 ### <a name="remove-sapmnt-and-create-an-saploc-file-share"></a>SAPMNT の削除と SAPLOC ファイル共有の作成
