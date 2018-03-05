@@ -43,7 +43,7 @@
           href: app-service-web-tutorial-java-mysql.md
         - name: Python と PostgreSQL
           href: app-service-web-tutorial-python-postgresql.md
-    - name: 1 - RESTful API の作成
+    - name: 1 - RESTful API のホスト
       href: app-service-web-tutorial-rest-api.md
     - name: 2 - カスタム ドメインのマップ
       href: app-service-web-tutorial-custom-domain.md
@@ -230,7 +230,7 @@
     - name: クックブック
       items:
         - name: 参照アーキテクチャ
-          href: ../guidance/guidance-ra-app-service.md
+          href: /azure/architecture/reference-architectures/app-service-web-app/
         - name: デプロイ スクリプト
           href: 'https://azure.microsoft.com/documentation/scripts/'
     - name: トラブルシューティング

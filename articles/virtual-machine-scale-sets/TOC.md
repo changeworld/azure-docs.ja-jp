@@ -14,6 +14,7 @@
 # 方法
 ## 計画と設計
 ### [設計上の考慮事項](virtual-machine-scale-sets-design-overview.md)
+### [インスタンス ID について](virtual-machine-scale-sets-instance-ids.md)
 
 ## テンプレートの作成
 ### [スケール セット テンプレートについて](virtual-machine-scale-sets-mvss-start.md)

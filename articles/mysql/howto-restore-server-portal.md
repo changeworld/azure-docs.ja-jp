@@ -1,54 +1,97 @@
 ---
-title: "Azure Database for MySQL サーバーの復元方法 | Microsoft Docs"
+title: "Azure Database for MySQL のサーバーを復元する方法"
 description: "この記事では、Azure Portal を使用して Azure Database for MySQL サーバーを復元する方法について説明します。"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 6c1c0f8a0c0e59661b70b787b551b8cfdb024cda
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: 5dac5343551bed709486d97d85ae0ff3a49d1851
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for MySQL サーバーのバックアップと復元を行う方法
 
 ## <a name="backup-happens-automatically"></a>自動バックアップ
-Azure Database for MySQL を使用するとき、このデータベース サービスは 5 分ごとに自動でサービスのバックアップを行います。 
+Azure Database for MySQL サーバーは、復元機能が有効になるように、バックアップが定期的に行われます。 この機能を使用して、新しいサーバー上で、サーバーとそのすべてのデータベースを過去の特定の時点に復元できます。
 
-このバックアップは、Basic レベルでは 7 日間、Standard レベルでは 35 日間使用できます。 詳細については、[Azure Database for MySQL サービス レベル](concepts-service-tiers.md)に関するページをご覧ください。
+## <a name="prerequisites"></a>前提条件
+このハウツー ガイドを完了するには、次が必要です。
+- [Azure Database for MySQL サーバーとデータベース](quickstart-create-mysql-server-database-using-azure-portal.md)
 
-自動バックアップ機能を使用して、過去の特定の時点までサーバーとそのサーバーのすべてのデータベースを新しいサーバーに復元できます。
+## <a name="set-backup-configuration"></a>バックアップ構成の設定
 
-## <a name="restore-in-the-azure-portal"></a>Azure Portal で復元
-Azure Database for MySQL では、特定の時点までのサーバーのコピーを新しいサーバーに復元できます。 この新しいサーバーを使用して、データを回復できます。 
+サーバーの作成時に、**[価格レベル]** ウィンドウで、ローカル冗長バックアップまたは地理冗長バックアップのどちらでご自身のサーバーを構成するかを選択します。
 
-たとえば、本日正午にテーブルが誤って削除された場合、正午前の時点まで復元し、削除されたテーブルとデータを新しいサーバーのコピーから取得できます。
+> [!NOTE]
+> サーバーの作成後は、冗長の種類 (地理冗長とローカル冗長) を切り替えることはできません。
+>
+
+Azure Portal でサーバーを作成するときに、**[価格レベル]** ウィンドウで、使用しているサーバーのバックアップとして **[ローカル冗長]** または **[地理冗長]** のいずれかを選択します。 また、このウィンドウの **[バックアップの保有期間]** で、サーバーのバックアップを保存する長さ (日数) を選択します。
+
+   ![価格レベル - バックアップ冗長の選択](./media/howto-restore-server-portal/pricing-tier.png)
+
+作成中のこれらの値の設定について詳しくは、[Azure Database for MySQL サーバーのクイック スタート](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページをご覧ください。
+
+バックアップのリテンション期間は、以下の手順を使用してサーバーで変更できます。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. Azure Database for MySQL サーバーを選択します。 この操作で、**[概要]** ページが開きます。
+3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間**を 7 ～ 35 日の間で希望の値に変更します。
+次のスクリーンショットでは 34 日に変更されています。
+![長くしたバックアップのリテンション期間](./media/howto-restore-server-portal/3-increase-backup-days.png)
+
+4. **[OK]** をクリックして変更を確定します。
+
+バックアップのリテンション期間によって、現在からどのくらい遡ってポイントインタイム リストアを取得できるかが管理されます。ポイントインタイム リストアは使用可能なバックアップに基づいているためです。 ポイントインタイム リストアについては、次のセクションで詳しく説明します。 
+
+## <a name="point-in-time-restore-in-the-azure-portal"></a>Azure Portal でのポイントインタイム リストア
+Azure Database for MySQL では、サーバーの過去の特定時点まで遡り、これをサーバーの新しいコピーに復元できます。 この新しいサーバーを使用してデータを復旧したり、クライアント アプリケーションにこの新しいサーバーを参照させたりすることができます。
+
+たとえば、本日正午にテーブルが誤って削除された場合、正午前の時点まで復元し、削除されたテーブルとデータを新しいサーバーのコピーから取得できます。 ポイントインタイム リストアは、データベース レベルではなく、サーバー レベルで行われます。
 
 次の手順では、サンプルのサーバーを特定の時点まで復元します。
+1. Azure Portal で、ご利用の Azure Database for MySQL サーバーを選択します。 
 
-1. [Azure ポータル](https://portal.azure.com/)
+2. サーバーの **[概要]** ページのツール バーで **[復元]** を選択します。
 
-2. Azure Database for MySQL サーバーを検索します。 左側のウィンドウで、**[すべてのリソース]** を選択し、一覧からサーバーを選択します。
+   ![Azure Database for MySQL - [概要] - [復元] ボタン](./media/howto-restore-server-portal/2-server.png)
 
-3.  サーバーの概要ブレードの上部で、ツールバーの **[復元]** をクリックします。 [復元] ブレードが開きます。
-![[復元] ボタンをクリックする](./media/howto-restore-server-portal/click-restore-button.png)
+3. [復元] フォームに必要な情報を入力します。
 
-4. [復元] フォームに必要な情報を入力します。
+   ![Azure Database for MySQL - 情報の復元 ](./media/howto-restore-server-portal/3-restore.png)
+  - **復元ポイント**: 復元先の特定の時点を選択します。
+  - **対象サーバー**: 新しいサーバーの名前を指定します。
+  - **場所**: リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
+  - **価格レベル**: ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
-- **[復元ポイント (UTC)]**: 復元する特定の時点の日付と時刻を選択します。 指定した時刻は UTC 形式であるため、現地時刻を UTC に変換する必要があります。
-- **[新しいサーバーに復元]**: 既存サーバーの復元先である新しいサーバーの名前を入力します。
-- **[場所]**: リージョンは自動でソース サーバーのリージョンが選択され、変更できません。
-- **[価格レベル]**: 価格レベルはソース サーバーと同じ価格レベルが自動で選択されるため、ここでは変更できません。 
-![PITR による復元](./media/howto-restore-server-portal/pitr-restore.png)
+4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
 
-5. **[OK]** をクリックして、指定した時点までサーバーを復元します。 
+5. 復元が完了したら、作成した新しいサーバーを検索して、想定どおりにデータベースが復元できたかどうかを確認します。
 
-6. 復元が完了したら、作成した新しいサーバーを検索して、データベースが想定どおりに復元されていることを確認します。
+>[!Note]
+>ポイントインタイム リストアによって作成された新しいサーバーには、選択した特定の時点の既存のサーバーに対して有効であったサーバー管理者のログイン名とパスワードが設定されていることに注意してください。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
 
-## <a name="next-steps"></a>次のステップ
-- [Azure Database for MySQL の接続ライブラリ](concepts-connection-libraries.md)
+## <a name="geo-restore"></a>geo リストア
+地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for MySQL を使用できる任意のリージョンに作成できます。  
+
+1. ポータルの左上隅にある **[新規]** ボタン (+) を選択します。 **[データベース]** > **[Azure Database for MySQL]** の順に選択します。
+
+   !["Azure Database for MySQL" オプション](./media/howto-restore-server-portal/1-create-database.png)
+
+2. フォームの **[ソースの選択]** ドロップダウンで **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧が読み込まれます。 これらのバックアップの中から、新しいサーバーのソースとして使用するものを選択します。
+   ![ソースの選択: バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
+
+3. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。 場所を選択したら、**[価格レベル]** を選択できます。 既定では、復元元の既存のサーバーのパラメーターが表示されます。 これらの設定を継承するには、変更を加えずに **[OK]** をクリックします。 または、**コンピューティング世代** (選択したリージョンで使用できる場合)、**仮想コア**の数、**バックアップのリテンション期間**、および**バックアップ冗長性オプション**を変更することもできます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+
+>[!Note]
+>geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
+
+
+## <a name="next-steps"></a>次の手順
+- サービスの[バックアップ](concepts-backup.md)の詳細を確認します。
+- [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します。

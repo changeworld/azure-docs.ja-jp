@@ -1,55 +1,93 @@
 ---
-title: "Azure Database for PostgreSQL サーバーを復元する方法 | Microsoft Docs"
+title: "Azure Database for PostgreSQL のサーバーを復元する方法"
 description: "この記事では、Azure Portal を使用して Azure Database for PostgreSQL のサーバーを復元する方法について説明します。"
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 903fd2ff446e1963ab5cfcec745766188b74efcf
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: f7ea0cafe6427e59a07c28a9d0c6e48e0d96d8cd
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
+# <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for PostgreSQL のサーバーをバックアップおよび復元する方法
 
 ## <a name="backup-happens-automatically"></a>自動バックアップ
-Azure Database for PostgreSQL を使用するとき、このデータベース サービスは 5 分ごとに自動でサーバーのバックアップを行います。 
+Azure Database for PostgreSQL サーバーは、復元機能が有効になるように、バックアップが定期的に行われます。 この機能を使用して、新しいサーバー上で、サーバーとそのすべてのデータベースを過去の特定の時点に復元できます。
 
-このバックアップは、Basic レベルでは 7 日間、Standard レベルでは 35 日間使用できます。 詳細については、[Azure Database for PostgreSQL サービス レベル](concepts-service-tiers.md)に関するページをご覧ください。
+## <a name="set-backup-configuration"></a>バックアップ構成の設定
 
-自動バックアップ機能を使用して、過去の特定の時点までサーバーとそのサーバーのすべてのデータベースを新しいサーバーに復元できます。
+サーバーの作成時に、**[価格レベル]** ウィンドウで、ローカル冗長バックアップまたは地理冗長バックアップのどちらでサーバーを構成するかを選択します。
 
-## <a name="restore-in-the-azure-portal"></a>Azure Portal で復元する
-Azure Database for PostgreSQL では、過去の特定の時点までサーバーのコピーを新しいサーバーに復元できます。 この新しいサーバーを使用して、データを回復できます。 
+> [!NOTE]
+> サーバーの作成後、冗長の種類 (地理冗長とローカル冗長) を切り替えることはできません。
+>
 
-たとえば、本日正午にテーブルが誤って削除された場合、正午前の時点まで復元し、削除されたテーブルとデータを新しいサーバーのコピーから取得できます。
+Azure Portal でサーバーを作成するときに、**[価格レベル]** ウィンドウで、使用しているサーバーのバックアップとして **[ローカル冗長]** または **[地理冗長]** のいずれかを選択します。 また、このウィンドウの **[バックアップの保有期間]** で、サーバーのバックアップを保存する期間 (日数) を選択します。
+
+   ![価格レベル - バックアップ冗長の選択](./media/howto-restore-server-portal/pricing-tier.png)
+
+作成中のこれらの値の設定について詳しくは、[Azure Database for PostgreSQL サーバーのクイック スタート](quickstart-create-server-database-portal.md)に関するページをご覧ください。
+
+サーバーのバックアップのリテンション期間は、以下の手順で変更できます。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
+2. Azure Database for PostgreSQL サーバーを選択します。 この操作で、**[概要]** ページが開きます。
+3. **[設定]** で、メニューから **[価格レベル]** を選択します。 スライダーを使用して、**バックアップの保有期間**を 7 ～ 35 日の間で希望の値に変更します。
+次のスクリーンショットでは 34 日に変更されています。
+![長くしたバックアップのリテンション期間](./media/howto-restore-server-portal/3-increase-backup-days.png)
+
+4. **[OK]** をクリックして変更を確定します。
+
+バックアップのリテンション期間によって、現在からどのくらい遡ってポイントインタイム リストアを取得できるかが管理されます。ポイントインタイム リストアは使用可能なバックアップに基づいているためです。 ポイントインタイム リストアについては、次のセクションで詳しく説明します。 
+
+## <a name="point-in-time-restore-in-the-azure-portal"></a>Azure Portal でのポイントインタイム リストア
+Azure Database for PostgreSQL では、サーバーの過去の特定時点まで遡り、これをサーバーの新しいコピーに復元できます。 この新しいサーバーを使用してデータを復旧したり、クライアント アプリケーションにこの新しいサーバーを参照させたりすることができます。
+
+たとえば、本日正午にテーブルが誤って削除された場合、正午前の時点まで復元し、削除されたテーブルとデータを新しいサーバーのコピーから取得できます。 ポイントインタイム リストアは、データベース レベルではなく、サーバー レベルで行われます。
 
 次の手順では、サンプルのサーバーを特定の時点まで復元します。
-1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Database for PostgreSQL サーバーを見つけます。 Azure Portal で、左側のメニューの **[すべてのリソース]** をクリックし、サーバーの名前 (**mypgserver-20170401** など) を入力して、既存のサーバーを検索します。 検索結果に示されたサーバー名をクリックします。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
+1. Azure Portal で、ご利用の Azure Database for PostgreSQL サーバーを選択します。 
 
-   ![Azure Portal - サーバーを検索して見つける](media/postgresql-howto-restore-server-portal/1-locate.png)
+2. サーバーの **[概要]** ページのツール バーで **[復元]** を選択します。
 
-3. サーバーの概要ページのツール バーで **[復元]** をクリックします。 [復元] ページが表示されます。
+   ![Azure Database for PostgreSQL - 概要 - 復元ボタン](./media/howto-restore-server-portal/2-server.png)
 
-   ![Azure Database for PostgreSQL - 概要 - 復元ボタン](./media/postgresql-howto-restore-server-portal/2_server.png)
+3. [復元] フォームに必要な情報を入力します。
 
-4. [復元] フォームに必要な情報を入力します。
-
-   ![Azure Database for PostgreSQL - 情報の復元 ](./media/postgresql-howto-restore-server-portal/3_restore.png)
-  - **復元ポイント**: サーバーが変更される前の日時を選択します。
-  - **対象サーバー**: 復元先の新しいサーバー名を指定します。
+   ![Azure Database for PostgreSQL - 情報の復元 ](./media/howto-restore-server-portal/3-restore.png)
+  - **復元ポイント**: 復元先の特定の時点を選択します。
+  - **対象サーバー**: 新しいサーバーの名前を指定します。
   - **場所**: リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
-  - **価格レベル:** サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
+  - **価格レベル**: ポイントインタイム リストアを行うときは、これらのパラメーターを変更することはできません。 ソース サーバーと同じレベルになります。 
 
-5. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
+4. **[OK]** をクリックして、特定の時点までサーバーを復元します。 
 
-6. 復元が完了したら、作成した新しいサーバーを検索して、想定どおりにデータベースが復元できたかどうかを確認します。
+5. 復元が完了したら、作成した新しいサーバーを検索して、想定どおりにデータベースが復元できたかどうかを確認します。
 
-## <a name="next-steps"></a>次のステップ
-- [Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)
+>[!Note]
+>ポイントインタイム リストアによって作成された新しいサーバーには、選択した特定の時点の既存のサーバーに対して有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
+
+## <a name="geo-restore"></a>geo リストア
+地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for PostgreSQL を使用できる任意のリージョンに作成できます。  
+
+1. ポータルの左上隅にある **[新規]** ボタン (+) を選択します。 **[データベース]** > **[Azure Database for PostgreSQL]** の順に選択します。
+
+   ![[Azure Database for PostgreSQL] オプション](./media/howto-restore-server-portal/1-create-database.png)
+
+2. フォームの **[ソースの選択]** ドロップダウンで **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧が読み込まれます。 これらのバックアップの中から、新しいサーバーのソースとして使用するものを選択します。
+   ![ソースの選択: バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
+
+3. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。 場所を選択したら、**[価格レベル]** を選択できます。 既定では、復元元の既存のサーバーのパラメーターが表示されます。 これらの設定を継承するには、変更を加えずに **[OK]** をクリックします。 または、**コンピューティング世代** (選択したリージョンで使用できる場合)、**仮想コア**の数、**バックアップのリテンション期間**、および**バックアップ冗長性オプション**を変更することもできます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
+
+>[!Note]
+>geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
+
+
+## <a name="next-steps"></a>次の手順
+- サービスの[バックアップ](concepts-backup.md)の詳細を確認します。
+- [ビジネス継続性](concepts-business-continuity.md)オプションについて確認します。
