@@ -58,7 +58,7 @@ Axinom の Widevine ライセンス サーバーの STS として Azure Active D
 
 ## <a name="azure-media-player-preparation"></a>Azure Media Player の準備
 AMP v1.4.0 では、PlayReady DRM と Widevine DRM の両方で動的にパッケージ化されている AMS コンテンツの再生がサポートされています。
-Widevine ライセンス サーバーでトークン認証が必要ない場合は、Widevine で保護されている DASH コンテンツをテストするために追加で必要となる操作はありません。 たとえば、AMP チームが提供している単純な [サンプル](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html)では、Edge と IE11 の場合は PlayReady と動作し、Chrome の場合は Widevine と動作しています。
+Widevine ライセンス サーバーでトークン認証が必要ない場合は、Widevine で保護されている DASH コンテンツをテストするために追加で必要となる操作はありません。 たとえば、AMP チームが提供している単純な [サンプル](http://amp.azure.net/libs/amp/latest/samples/dynamic_multiDRM_PlayReadyWidevine_notoken.html)では、Microsoft Edge と IE11 の場合は PlayReady と動作し、Chrome の場合は Widevine と動作しています。
 Axinom が提供する Widevine ライセンス サーバーでは、JWT トークン認証が必要です。 JWT トークンは、HTTP ヘッダー "X-AxDRM-Message" を使用してライセンス要求と共に送信する必要があります。 そのため、ソースを設定する前に、AMP をホストする Web ページに次の JavaScript を追加する必要があります。
 
     <script>AzureHtml5JS.KeySystem.WidevineCustomAuthorizationHeader = "X-AxDRM-Message"</script>
