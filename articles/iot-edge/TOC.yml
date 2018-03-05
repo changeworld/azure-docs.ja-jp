@@ -5,6 +5,7 @@
     - name: Azure IoT Edge について
       href: how-iot-edge-works.md
 - name: クイック スタート
+  expanded: true
   items:
     - name: エッジへのデプロイ - Linux/Mac
       href: quickstart-linux.md

@@ -1,4 +1,4 @@
-
+# [Scheduler のドキュメント](index.md)
 
 # 概要
 ## [What is Scheduler? (Scheduler とは)](scheduler-intro.md)
@@ -22,7 +22,7 @@
 
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.scheduler)
-## [REST ()](/rest/api/scheduler)
+## [REST](/rest/api/scheduler)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)

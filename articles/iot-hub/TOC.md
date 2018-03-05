@@ -1,9 +1,11 @@
+# [IoT Hub のドキュメント](index.md)
+
 # 概要
 ## [Azure と IoT](iot-hub-what-is-azure-iot.md)
 ## [Azure IoT Hub とは](iot-hub-what-is-iot-hub.md)
 ## [デバイス管理の概要](iot-hub-device-management-overview.md)
 
-# [開始する](iot-hub-get-started.md)
+# [作業開始](iot-hub-get-started.md)
 
 ## デバイスのセットアップ
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
@@ -86,7 +88,7 @@
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
-#### [Node.js](iot-hub-node-node-file-upload.md)
+#### [Node.JS](iot-hub-node-node-file-upload.md)
 #### [Python](iot-hub-python-python-file-upload.md)
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)

@@ -1,7 +1,9 @@
+# [Azure Advisor のドキュメント](index.md)
+
 # 概要
 ## [Azure Advisor とは](advisor-overview.md)
 
-# [推奨事項]
+# Recommendations
 ## [コストに関する推奨事項](advisor-cost-recommendations.md)
 ## [パフォーマンスに関する推奨事項](advisor-performance-recommendations.md)
 ## [高可用性に関する推奨事項](advisor-high-availability-recommendations.md)

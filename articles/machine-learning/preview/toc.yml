@@ -9,17 +9,17 @@
       href: model-management-overview.md
 - name: クイック スタート
   items:
-    - name: インストールと作成
+    - name: インストールと開始
       href: quickstart-installation.md
 - name: チュートリアル
   items:
-    - name: 1 - データの準備
+    - name: '1: データを準備する'
       href: tutorial-classifying-iris-part-1.md
-    - name: 2 - モデルのビルド
+    - name: '2: モデルを構築する'
       href: tutorial-classifying-iris-part-2.md
-    - name: 3 - モデルのデプロイ
+    - name: '3: モデルをデプロイする'
       href: tutorial-classifying-iris-part-3.md
-    - name: 4 - 高度なデータ準備
+    - name: '4: 高度なデータ準備'
       href: tutorial-bikeshare-dataprep.md
 - name: 概念
   items:

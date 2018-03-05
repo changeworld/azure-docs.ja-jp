@@ -66,9 +66,7 @@
     - name: リソース
       items:
         - name: 価格レベル
-          href: concepts-service-tiers.md
-        - name: コンピューティング ユニット
-          href: concepts-compute-unit-and-storage.md
+          href: concepts-pricing-tiers.md
         - name: 制限
           href: concepts-limits.md
     - name: データ アクセスとセキュリティ
@@ -77,6 +75,12 @@
           href: concepts-firewall-rules.md
         - name: SSL の構成
           href: concepts-ssl-connection-security.md
+    - name: ビジネス継続性
+      items:
+        - name: 概要
+          href: concepts-business-continuity.md
+        - name: バックアップと復元
+          href: concepts-backup.md
     - name: 監視
       href: concepts-monitoring.md
     - name: 開発
@@ -137,6 +141,12 @@
       items:
         - name: メトリックに基づいたアラートの作成
           href: howto-alert-on-metric.md
+    - name: トラブルシューティング
+      items:
+        - name: クエリ パフォーマンスのトラブルシューティング
+          href: howto-troubleshoot-query-performance.md
+        - name: sys スキーマでビューを使用する方法
+          href: howto-troubleshoot-sys-schema.md
 - name: リファレンス
   items:
     - name: Azure CLI

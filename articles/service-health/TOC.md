@@ -1,3 +1,5 @@
+# [Azure Service Health](index.md)
+
 # 概要
 ## [Azure Service Health とは](service-health-overview.md)
 ## [Azure Resource Health とは](resource-health-overview.md)

@@ -10,6 +10,8 @@
       href: tutorial-assessment-vmware.md
 - name: 概念
   items:
+    - name: コレクターの概念
+      href: concepts-collector.md
     - name: 評価の計算
       href: concepts-assessment-calculation.md
     - name: 依存関係の視覚化

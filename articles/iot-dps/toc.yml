@@ -7,8 +7,10 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: 自動プロビジョニングの設定
+    - name: 自動プロビジョニングの設定 - ポータル
       href: quick-setup-auto-provision.md
+    - name: 自動プロビジョニングの設定 - テンプレート
+      href: quick-setup-auto-provision-rm.md
     - name: シミュレートされたデバイスの作成
       items:
         - name: TPM
@@ -91,6 +93,8 @@
       href: how-to-revoke-device-access-portal.md
     - name: デバイスのプロビジョニング解除
       href: how-to-unprovision-devices.md
+    - name: X.509 CA 証明書での証明書の所有証明の実行
+      href: how-to-verify-certificates.md
     - name: SDK での HSM の使用
       href: use-hsm-with-sdk.md
     - name: Provisioning Service へのアクセスの制御
@@ -99,6 +103,8 @@
       href: how-to-manage-dps-with-cli.md
     - name: SDK ツールを使用して開発する
       href: how-to-use-sdk-tools.md
+    - name: MXChip IoT DevKit に接続する
+      href: how-to-connect-mxchip-iot-devkit.md
 - name: リファレンス
   items:
     - name: REST ()

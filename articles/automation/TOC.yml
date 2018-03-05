@@ -19,7 +19,7 @@
       href: automation-watchers-tutorial.md
     - name: VM の更新プログラムの管理
       href: automation-tutorial-update-management.md
-    - name: 更新および変更の追跡のオンボード
+    - name: Runbook による更新および変更の追跡のオンボード
       href: automation-onboard-solutions.md
     - name: VM 上のソフトウェアの特定
       href: automation-tutorial-installed-software.md
@@ -27,20 +27,24 @@
       href: automation-tutorial-troubleshoot-changes.md
 - name: 方法
   items:
+    - name: オンボード
+      items:
+        - name: Azure VM からのオンボード
+          href: automation-onboard-solutions-from-vm.md
+        - name: Automation アカウントからのオンボード
+          href: automation-onboard-solutions-from-automation-account.md
     - name: 更新管理
       items:
-        - name: 概要
-          href: ../operations-management-suite/oms-solution-update-management.md?toc=%2fazure%2fautomation%2ftoc.json
+        - name: Update Management の概要
+          href: automation-update-management.md
         - name: 複数の VM の更新プログラム管理
           href: manage-update-multi.md
-        - name: SCCM と OMS Update Management の統合
+        - name: SCCM と Update Management の統合
           href: oms-solution-updatemgmt-sccmintegration.md
     - name: 変更の追跡
       items:
-        - name: 概要
-          href: ../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json
-        - name: VM での変更の追跡
-          href: automation-vm-change-tracking.md
+        - name: 変更の追跡の概要
+          href: automation-change-tracking.md
     - name: インベントリ
       items:
         - name: インベントリ コレクションでの VM の管理

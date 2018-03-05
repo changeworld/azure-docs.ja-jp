@@ -1,3 +1,5 @@
+# [Virtual Machines のドキュメント](index.md)
+
 # [Linux 仮想マシン](linux/overview.md)
 # [Windows 仮想マシン](windows/overview.md)
 # [クラシック デプロイメントを使用した Linux VM](linux/overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)

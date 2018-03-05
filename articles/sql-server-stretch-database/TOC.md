@@ -1,3 +1,5 @@
+# [SQL Server Stretch Database のドキュメント](index.md)
+
 # 概要
 ## [Stretch Database とは](/sql/sql-server/stretch-database/stretch-database)
 ## [制限とブロックの問題](/sql/sql-server/stretch-database/limitations-for-stretch-database)

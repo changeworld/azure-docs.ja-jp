@@ -77,6 +77,10 @@
       items:
         - name: Kubernetes ダッシュボードの使用
           href: kubernetes-dashboard.md
+    - name: トラブルシューティング
+      items:
+        - name: SSH ノード アクセス
+          href: aks-ssh.md
 - name: リファレンス
   items:
     - name: Azure CLI

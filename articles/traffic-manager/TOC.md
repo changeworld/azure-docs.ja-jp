@@ -1,3 +1,5 @@
+# [Traffic Manager のドキュメント](index.md)
+
 # 概要
 ## [Traffic Manager について](traffic-manager-overview.md)
 ## [ルーティング方法](traffic-manager-routing-methods.md)
@@ -39,7 +41,7 @@
 ## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-trafficmanager/latest/)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_traffic_manager)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-trafficmanager.html)
-## [REST ()](https://msdn.microsoft.com/library/mt163667.aspx)
+## [REST](https://msdn.microsoft.com/library/mt163667.aspx)
 
 # 関連項目
 ## [Application Gateway](/azure/application-gateway/)

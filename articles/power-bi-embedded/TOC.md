@@ -1,3 +1,5 @@
+# [Power BI Embedded のドキュメント](index.md)
+
 # 概要
 ## [Power BI Embedded について](what-is-power-bi-embedded.md)
 
