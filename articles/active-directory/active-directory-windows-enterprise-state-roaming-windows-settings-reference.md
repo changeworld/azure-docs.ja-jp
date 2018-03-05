@@ -49,7 +49,7 @@ Windows 10 デバイス上の設定に対する同期操作は、エンド ユ�
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-individual-sync-settings.png)
 
-Edge ブラウザーの設定 (お気に入り、リーディング リスト) の同期は [Edge ブラウザーの設定] メニュー オプションからエンドユーザーが行うことができます。
+Microsoft Edge ブラウザーの設定 (お気に入り、リーディング リスト) の同期は [Microsoft Edge ブラウザーの設定] メニュー オプションからエンドユーザーが行うことができます。
 
 ![](./media/active-directory-enterprise-state-roaming/active-directory-enterprise-state-roaming-sync-content.png)
 
@@ -86,8 +86,8 @@ Edge ブラウザーの設定 (お気に入り、リーディング リスト) �
 | **デスクトップの個人設定**: タスク バーの設定 (位置、自動的に隠す、など) |sync |○ |テーマ |
 | **デスクトップの個人設定**: スタート画面のレイアウト |○ |backup | |
 | **デバイス**: 接続済みの共有プリンター |○ |○ |その他 |
-| **Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
-| **Edge ブラウザー**: お気に入り |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: リーディング リスト |sync |sync |内部 |
+| **Microsoft Edge ブラウザー**: お気に入り |sync |sync |内部 |
 | **Edge ブラウザー**: サイトのトップ <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Edge ブラウザー**: 入力された URL <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |
 | **Edge ブラウザー**: お気に入りバーの設定 <sup>[[1]](#footnote-1)</sup> |sync |sync |内部 |

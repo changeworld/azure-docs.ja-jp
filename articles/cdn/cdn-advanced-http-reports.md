@@ -202,5 +202,5 @@ ms.lasthandoff: 10/11/2017
 * [Azure CDN の概要](cdn-overview.md)
 * [Microsoft Azure CDN でのリアルタイム統計情報](cdn-real-time-stats.md)
 * [規則エンジンを使用した既定の HTTP 動作のオーバーライド](cdn-rules-engine.md)
-* [Edge のパフォーマンスの分析](cdn-edge-performance.md)
+* [Microsoft Edge のパフォーマンスの分析](cdn-edge-performance.md)
 
