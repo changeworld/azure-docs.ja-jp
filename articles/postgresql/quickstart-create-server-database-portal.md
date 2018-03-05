@@ -1,22 +1,22 @@
 ---
-title: "Azure Portal: Azure Database for PostgreSQL サーバーを作成する | Microsoft Docs"
+title: "クイック スタート - Azure Portal を使用した Azure Database for PostgreSQL サーバーの作成"
 description: "Azure Portal ユーザー インターフェイスを使用して Azure Database for PostgreSQL サーバーを作成して管理するためのクイック スタート ガイド。"
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 11/03/2017
-ms.openlocfilehash: de35254183798dd0aea32b63eb0689d33ae5b247
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 02/28/2018
+ms.openlocfilehash: 83bdc6eba35f0deaaf541f2042854764ae513fb9
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Azure Portal で Azure Database for PostgreSQL サーバーを作成する
+# <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>クイック スタート: Azure Portal での Azure Database for PostgreSQL サーバーの作成
 
 Azure Database for PostgreSQL は、高可用性の PostgreSQL データベースをクラウドで実行、管理、スケールできるマネージ サービスです。 このクイック スタートでは、Azure Portal を使用して Azure Database for PostgreSQL サーバーを作成する方法について説明します。所要時間は約 5 分です。
 
@@ -27,7 +27,7 @@ Web ブラウザーを開き、[ポータル](https://portal.azure.com/)に移�
 
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
 
-Azure Database for PostgreSQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-unit-and-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内に作成されます。
+Azure Database for PostgreSQL サーバーは、構成済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-pricing-tiers.md)を使って作成されます。 サーバーは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内に作成されます。
 
 Azure Database for PostgreSQL サーバーを作成するには、次の手順に従います。
 1. ポータルの左上隅にある **[リソースの作成]** ボタン (+) を選択します。
@@ -36,28 +36,30 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
     ![[Azure Database for PostgreSQL] オプション](./media/quickstart-create-database-portal/1-create-database.png)
 
-3. 前の画像で示されているように、新規サーバーの詳細フォームに次の情報を入力します。
+3. 新しいサーバーの詳細フォームには次の情報を入力してください。
+
+    ![サーバーの作成](./media/quickstart-create-database-portal/3-create.png)
 
     Setting|推奨値|[説明]
     ---|---|---
-    サーバー名 |*mypgserver-20170401*|Azure Database for PostgreSQL サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 *postgres.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 3 文字以上 63 文字以内にする必要があります。
-    [サブスクリプション]|該当するサブスクリプション|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
+    サーバー名 |*mydemoserver*|Azure Database for PostgreSQL サーバーを識別する一意の名前。 指定したサーバー名にドメイン名 *postgres.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、ハイフン (-) のみです。 3 文字以上 63 文字以内にする必要があります。
+    [サブスクリプション]|お使いのサブスクリプション名|サーバーに使用する Azure サブスクリプション。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
     リソース グループ|*myresourcegroup*| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
-    サーバー管理者のログイン |*mylogin*| サーバーに接続するときに使用する独自のログイン アカウント。 管理者のログイン名に **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest**、または **public** は使用できません。 **pg_** で始めることはできません。
-    パスワード |<任意> | サーバー管理者アカウントの新しいパスワード。 8 文字以上 128 文字以内にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 種類の文字が含まれている必要があります。
+    ソースの選択 | "*空白*" | *[空白]* を選択し、最初から新しいサーバーを作成します  (既存の Azure Database for PostgreSQL サーバーの geo バックアップからサーバーを作成している場合は、*[Backup]* を選択します)。
+    サーバー管理者のログイン |*myadmin*| サーバーに接続するときに使用する独自のログイン アカウント。 管理者のログイン名に **azure_superuser**、**azure_pg_admin**、**admin**、**administrator**、**root**、**guest**、または **public** は使用できません。 **pg_** で始めることはできません。
+    パスワード |お使いのパスワード| サーバー管理者アカウントの新しいパスワード。 8 ～ 128 文字にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 から 9)、英数字以外の文字 (!、$、#、% など) のうち、3 種類の文字が含まれている必要があります。
     場所|ユーザーに最も近いリージョン| ユーザーに最も近い場所。
-    PostgreSQL のバージョン|最新バージョン| 特別な要件がない限り、最新バージョン。
-    [価格レベル]  | **Basic**、**50 コンピューティング ユニット**、**50 GB** | 新しいデータベースのサービス レベルとパフォーマンス レベル。 **[価格レベル]** を選択します。 次に、**[Basic]\(基本\)** タブを選択します。**[コンピューティング ユニット]** スライダーの左端を選択して、このクイック スタートで使用可能な最小量に値を調整します。 価格レベルの選択を保存するには、**[OK]** を選択します。 詳細については、次のスクリーンショットをご覧ください。 
-    [ダッシュボードにピン留めする] | ○ | ポータルのフロント ダッシュボード ページでサーバーを追跡しやすくなります。
+    バージョン|最新バージョン| 特別な要件がない限り、最新 PostgreSQL バージョン。
+    [価格レベル]  | **汎用**、**Gen 4**、**2 仮想コア**、**5 GB**、**7 日**、**地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** を選択します。 次に、**[汎用]** タブを選択します。*Gen 4*、"*2 仮想コア*"、*5 GB*、および "*7 日*" は、それぞれ **[コンピューティング世代]**、**[仮想コア]**、**[ストレージ]**、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、**[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、**[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
 
     > [!IMPORTANT]
     > ここで指定するサーバー管理者のログイン名とパスワードは、このクイック スタートの後半でサーバーとそのデータベースにサインインするために必要です。 後で使用するために、この情報を覚えておくか、記録しておきます。
 
-    ![[価格レベル] ウィンドウ](./media/quickstart-create-database-portal/2-service-tier.png)
+    ![[価格レベル] ウィンドウ](./media/quickstart-create-database-portal/2-pricing-tier.png)
 
-4. **[作成]** を選択して、サーバーをプロビジョニングします。 プロビジョニングには、最大 20 分かかる場合があります。
+4. **[作成]** を選択して、サーバーをプロビジョニングします。 この操作には数分かかることがあります。
 
-5. ツール バーの **[通知]** シンボルを選択して、デプロイ プロセスを監視します。
+5. ツール バーの **[通知]** アイコン (ベル) を選択して、デプロイ プロセスを監視します。 デプロイが完了したら、**[ダッシュボードにピン留めする]** を選択できます。これにより、このサーバーのタイルが、サーバーの **[概要]** ページへのショートカットとして、Azure Portal ダッシュボードに作成されます。 **[リソースに移動]** を選択すると、サーバーの **[概要]** ページが開きます。
 
     ![[通知] ウィンドウ](./media/quickstart-create-database-portal/3-notifications.png)
    
@@ -67,15 +69,13 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
 
 Azure Database for PostgreSQL は、サーバー レベルでファイアウォールを作成します。 これにより、外部のアプリケーションやツールからの、サーバーとサーバー上のすべてのデータベースへの接続が禁止されます。接続を許可するには、特定の IP アドレスに対してファイアウォールを開放する規則を作成します。 
 
-1. デプロイが完了したら、目的のサーバーを探します。 必要に応じて、検索することができます。 たとえば、左側のメニューで **[すべてのリソース]** を選択します。 サーバー名 (例に示した **mypgserver-20170401** など) を入力して、新しく作成されたサーバーを検索します。 検索結果の一覧からご利用のサーバー名を選択します。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
+1. デプロイが完了したら、目的のサーバーを探します。 必要に応じて、検索することができます。 たとえば、左側のメニューで **[すべてのリソース]** を選択します。 使用しているサーバー名 (例に示した **mydemoserver** など) を入力して、新しく作成されたサーバーを検索します。 検索結果の一覧からご利用のサーバー名を選択します。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
  
     ![サーバー名の検索](./media/quickstart-create-database-portal/4-locate.png)
 
 2. サーバーのページで、**[接続のセキュリティ]** を選択します。
 
-    ![[接続のセキュリティ] 設定](./media/quickstart-create-database-portal/5-firewall-2.png)
-
-3. **[ファイアウォール規則]** という見出しの下で、**[規則名]** 列の空白のテキスト ボックス内を選択し、ファイアウォール規則の作成を開始します。 
+3. **[ファイアウォール規則]** で、**[規則名]** 列の空白のテキスト ボックス内を選択し、ファイアウォール規則の作成を開始します。 
 
     このクイック スタートでは、サーバーに対してすべての IP アドレスを許可してみましょう。 各列のテキスト ボックスに次の値を入力します。
 
@@ -83,10 +83,12 @@ Azure Database for PostgreSQL は、サーバー レベルでファイアウォ�
     ---|---|---
     AllowAllIps | 0.0.0.0 | 255.255.255.255
 
+     ![ファイアウォール規則の設定](./media/quickstart-create-database-portal/5-firewall-2.png)
+
 4. **[接続のセキュリティ]** ページの上部のツール バーで、**[保存]** を選択します。 接続のセキュリティの更新が正常に完了したことを示す通知が表示されるまで待ってから、次に進んでください。
 
     > [!NOTE]
-    > Azure Database for PostgreSQL サーバーとの接続では、ポート 5432 が通信に使用されます。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで許可されていないことがあります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、サーバーに接続することはできません。
+    > Azure Database for PostgreSQL サーバーとの接続では、ポート 5432 が通信に使用されます。 企業ネットワーク内から接続しようとしたときに、ポート 5432 での送信トラフィックがネットワークのファイアウォールで許可されていないことがあります。 その場合、会社の IT 部門によってポート 5432 が開放されない限り、サーバーに接続することはできません。
     >
 
 ## <a name="get-the-connection-information"></a>接続情報の取得
@@ -119,12 +121,12 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
     たとえば、次のコマンドは、サンプル サーバーに接続します。
 
     ```bash
-    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres
+    psql --host=mydemoserver.postgres.database.azure.com --port=5432 --username=myadmin@mydemoserver --dbname=postgres
     ```
 
-    psql パラメーター |推奨値|[説明]
+    psql パラメーター |値|[説明]
     ---|---|---
-    --host | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mypgserver-20170401.postgres.database.azure.com** です。例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
+    --host | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
     --port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
     --username | サーバー管理者ログイン名 |前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
     --dbname | *postgres* | 初回接続時にシステムによって生成される既定のデータベース名。 後で独自のデータベースを作成します。
@@ -133,7 +135,7 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
 
     psql パラメーター |推奨値|[説明]
     ---|---|---
-    password | 管理者パスワード | 入力したパスワードの文字は bash プロンプトには表示されません。 認証して接続するには、すべての文字を入力してから **Enter** キーを押します。
+    password | 管理者パスワード | 入力したパスワードの文字は bash プロンプトには表示されません。 認証して接続するには、すべての文字を入力してから Enter キーを押します。
 
     接続されると、sql コマンドの入力を求める postgres プロンプトが psql ユーティリティによって表示されます。 初回接続時の出力には、Cloud Shell の psql のバージョンが Azure Database for PostgreSQL サーバー側のバージョンと異なることが原因で、警告が表示されることがあります。 
     
@@ -151,11 +153,11 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
     > [!TIP]
     > Cloud Shell の IP アドレスを許可するようにファイアウォールが構成されていない場合、次のエラーが発生します。
     > 
-    > "psql: FATAL:  no pg_hba.conf entry for host "138.91.195.82", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required. ("psql: 致命的:  ホスト "138.91.195.82"、ユーザー "mylogin"、データベース "postgres" のエントリが pg_hba.conf にありません。SSL オン 致命的: SSL 接続が必要です。) Specify SSL options and retry. (SSL のオプションを指定して再試行してください。)
+    > "psql: FATAL:  no pg_hba.conf entry for host "0.0.0.0", user "mylogin", database "postgres", SSL on FATAL: SSL connection is required. ("psql: 致命的:  ホスト "0.0.0.0"、ユーザー "mylogin"、データベース "postgres" のエントリが pg_hba.conf にありません。SSL オン 致命的: SSL 接続が必要です。) Specify SSL options and retry. (SSL のオプションを指定して再試行してください。)
     > 
     > エラーを解決するには、サーバーの構成がこの記事の「サーバーレベルのファイアウォール規則の構成」セクションの手順と一致していることを確認してください。
 
-4. プロンプトに次のコマンドを入力して空のデータベースを作成します。
+4. プロンプトで次のコマンドを入力して、"mypgsqldb" という空のデータベースを作成します。
     ```bash
     CREATE DATABASE mypgsqldb;
     ```
@@ -166,56 +168,57 @@ Azure Database for PostgreSQL サーバーに接続するために使用でき�
     \c mypgsqldb
     ```
 
-6. 「`\q`」を入力してから、**Enter** キーを押して psql を終了します。 完了したら Cloud Shell を閉じることができます。
+6. 「`\q`」を入力し、Enter キーを押して、psql を終了します。 完了したら Cloud Shell を閉じることができます。
 
-これで、Azure Database for PostgreSQL サーバーに接続し、空のユーザー データベースを作成することができました。 他の一般的なツールである pgAdmin を使用して接続するには、次のセクションに進みます。
+Cloud Shell で psql を介して Azure Database for PostgreSQL サーバーに接続し、空のユーザー データベースを作成しました。 他の一般的なツールである pgAdmin を使用して接続するには、次のセクションに進みます。
 
-## <a name="connect-to-the-postgresql-database-by-using-pgadmin"></a>pgAdmin を使用して PostgreSQL データベースに接続する
+## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>pgAdmin を使用して PostgreSQL サーバーに接続する
 
-GUI ツール pgAdmin を使用して Azure PostgreSQL サーバーに接続する手順は次のとおりです。
-1. クライアント コンピューターで pgAdmin アプリケーションを開きます。 [pgAdmin の Web サイト](http://www.pgadmin.org/)からインストールできます。
+pgAdmin は PostgreSQL で使用されるオープンソース ツールです。 [pgAdmin の Web サイト](http://www.pgadmin.org/)からインストールできます。 使用する pgAdmin のバージョンは、このクイック スタートで使用されているものと異なる可能性があります。 追加のガイダンスが必要な場合は、pgAdmin のドキュメントをご覧ください。
 
-2. ダッシュボード ページで、**[クイックリンク]** セクションにある **[新しいサーバーの追加]** シンボルを選択します。
+1. クライアント コンピューターで pgAdmin アプリケーションを開きます。
 
-3. **[Create - Server]\(作成 - サーバー\)** ダイアログ ボックスの **[General]\(全般\)** タブに、サーバーの一意のフレンドリ名を入力します (「**Azure PostgreSQL Server**」など)。
+2. ツール バーからに **[オブジェクト]** に移動し、**[作成]** をポイントして、**[サーバー]** を選択します。
+
+3. **[作成 - サーバー]** ダイアログ ボックスの **[全般]** タブに、サーバーの一意のフレンドリ名 (**mydemoserver** など) を入力します。
 
     ![[General]\(全般\) タブ](./media/quickstart-create-database-portal/9-pgadmin-create-server.png)
 
-4. **[Create - Server]\(作成 - サーバー\)** ダイアログ ボックスの **[接続]** タブで、指定された設定を使用し、**[保存]** をクリックします。
+4. **[作成 - サーバー]** ダイアログ ボックスの **[接続]** タブで、設定テーブルに入力します。
 
    ![[接続] タブ](./media/quickstart-create-database-portal/10-pgadmin-create-server.png)
 
-    pgAdmin パラメーター |推奨値|[説明]
+    pgAdmin パラメーター |値|[説明]
     ---|---|---
-    Host Name/Address (ホスト名/アドレス) | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mypgserver-20170401.postgres.database.azure.com.** です。例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
-    Port | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
+    ホスト名/アドレス | サーバー名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに使用したサーバー名の値。 例に示したサーバーは、**mydemoserver.postgres.database.azure.com** です。例で示されているように、完全修飾ドメイン名 (**\*.postgres.database.azure.com**) を使用します。 サーバー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 
+    ポート | 5432 | Azure Database for PostgreSQL サーバーに接続するときに使用するポート。 
     メンテナンス データベース | *postgres* | システムによって生成される既定のデータベース名。
     ユーザー名 | サーバー管理者ログイン名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
     パスワード | 管理者パスワード | このクイック スタートでサーバーを作成したときに選択したパスワードです。
     役割 | 空白 | この時点でロール名を指定する必要はありません。 このフィールドは空白にしてください。
-    SSL モード | 必須 | 既定では、すべての Azure PostgreSQL サーバーは SSL 適用がオンの状態で作成されます。 SSL 適用をオフにする方法については、[SSL の適用](./concepts-ssl-connection-security.md)に関する記事をご覧ください。
+    SSL モード | "*必須*" | pgAdmin の [SSL] タブで、SSL モードを設定できます。既定では、すべての Azure Database for PostgreSQL サーバーは SSL の強制がオンの状態で作成されます。 SSL の強制をオフにする方法については、[SSL の強制](./concepts-ssl-connection-security.md)に関する記事をご覧ください。
     
 5. **[保存]** を選択します。
 
-6. 左側の **[ブラウザー]** ウィンドウで **[サーバー]** ノードを展開します。 **Azure PostgreSQL Server** など、ご利用のサーバーを選択します。 クリックして接続します。
+6. 左側の **[ブラウザー]** ウィンドウで **[サーバー]** ノードを展開します。 **mydemoserver** など、ご利用のサーバーを選択します。 クリックして接続します。
 
-7. サーバー ノードを展開し、その下の **[Databases]\(データベース\)** を展開します。 既存の *postgres* データベースと、新しく作成されたユーザー データベース (前のセクションで作成された **mypgsqldb** など) が一覧表示されます。 Azure Database for PostgreSQL では、サーバーごとに複数のデータベースを作成できることに注意してください。
+7. サーバー ノードを展開し、その下の **[Databases]\(データベース\)** を展開します。 一覧には既存の *postgres* データベースと、作成した他のデータベースすべてを含める必要があります。 Azure Database for PostgreSQL では、サーバーごとに複数のデータベースを作成できます。
 
 8. **[データベース]** を右クリックし、**[作成]** メニューを選択して **[データベース]** を選択します。
 
-9. **[データベース]** フィールドに任意のデータベース名 (例に示した **mypgsqldb** など) を入力します。
+9. **[データベース]** フィールドに、任意のデータベース名 (**mypgsqldb2** など) を入力します。
 
-10. データベースの**所有者**をリスト ボックスから選択します。 サーバー管理者ログイン名 (例に示した **mylogin** など) を選択します。
+10. データベースの**所有者**をリスト ボックスから選択します。 サーバー管理者ログイン名 (例に示した **my admin** など) を選択します。
+
+   ![pgadmin でデータベースを作成する](./media/quickstart-create-database-portal/11-pgadmin-database.png)
 
 11. **[保存]** を選択して、新しい空のデータベースを作成します。
 
-12. **[ブラウザー]** ウィンドウで、該当するサーバー名の [データベース] 一覧で、作成したデータベースを確認します。
-
-    ![[ブラウザー] ウィンドウ](./media/quickstart-create-database-portal/11-pgadmin-database.png)
+12. **[ブラウザー]** ウィンドウで、該当するサーバー名のデータベースの一覧で、作成したデータベースを確認できます。
 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
-このクイック スタートで作成したリソースは、2 つある方法のうちいずれかでクリーンアップすることができます。 [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を削除した場合、そのリソース グループに含まれるすべてのリソースが削除対象となります。 他のリソースをそのまま維持する場合は、1 つのサーバー リソースだけを削除してください。
+このクイック スタートで作成したリソースは、2 つある方法のうちいずれかでクリーンアップすることができます。 [Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を削除した場合、そのリソース グループに含まれたすべてのリソースが対象となります。 他のリソースをそのまま維持する場合は、サーバー リソースだけを削除してください。
 
 > [!TIP]
 > このコレクションの他のクイック スタートは、このクイック スタートに基づいています。 引き続きクイック スタートの作業を行う場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、次の手順に従って、このクイック スタートで作成したリソースをポータルで削除してください。
@@ -232,7 +235,7 @@ GUI ツール pgAdmin を使用して Azure PostgreSQL サーバーに接続す�
 
     ![[削除] ボタン](./media/quickstart-create-database-portal/12-delete.png)
 
-3. 削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 テキスト ボックスにサーバー名 (例に示した **mypgserver-20170401** など) を入力します。 **[削除]**を選択します。
+3. 削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 テキスト ボックスにサーバー名 (例に示した **mydemoserver** など) を入力します。 **[削除]**を選択します。
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]

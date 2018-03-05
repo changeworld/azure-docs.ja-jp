@@ -33,7 +33,7 @@
 ### [Power BI を使用した接続](analysis-services-connect-pbi.md)
 ### [.odc ファイルの作成](analysis-services-odc.md)
 ## チュートリアル
-### [1 - サンプル モデルを作成する](analysis-services-create-sample-model.md)
+### [1 - サンプル モデルを追加する](analysis-services-create-sample-model.md)
 ### [データ モデリング - Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)
 #### [1 - 表形式モデル プロジェクトを作成する](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
 #### [2 - データを取得する](tutorials/aas-lesson-2-get-data.md)

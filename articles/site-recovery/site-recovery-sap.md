@@ -14,27 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
-<<<<<<< HEAD
 ms.openlocfilehash: b6ab734186f23d51d60e51bd0946329d5209097b
 ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
-=======
-<<<<<<< HEAD
-ms.openlocfilehash: b6ab734186f23d51d60e51bd0946329d5209097b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-=======
-ms.openlocfilehash: 1ee472498bdefc4eeb9863670e5480326b5ba6d8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
->>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
->>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ---
 # <a name="protect-a-multi-tier-sap-netweaver-application-deployment-by-using-site-recovery"></a>Site Recovery を使用して多層 SAP NetWeaver アプリケーションのデプロイを保護する
 

@@ -108,6 +108,8 @@
           href: disk-scalability-targets.md
         - name: ディスクのバックアップとディザスター リカバリー
           href: backup-and-disaster-recovery-for-azure-iaas-disks.md
+        - name: アタッチされた VHD のトラブルシューティング
+          href: troubleshoot-vhds.md
     - name: ネットワーク
       href: network-overview.md
     - name: 自動スケール アプリケーション

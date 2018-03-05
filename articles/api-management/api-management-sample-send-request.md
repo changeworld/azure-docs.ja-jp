@@ -14,27 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/15/2016
 ms.author: apimpm
-<<<<<<< HEAD
 ms.openlocfilehash: d7c32e5ae02e294ee88c19f058e04249c7c9969e
 ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 02/28/2018
-=======
-<<<<<<< HEAD
-ms.openlocfilehash: d7c32e5ae02e294ee88c19f058e04249c7c9969e
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
-=======
-ms.openlocfilehash: 7f3cc81327d1d247fb8e19e256eafb009a5bf162
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
->>>>>>> f6e60491ca10793f438340e0ef568521bf62f91f
->>>>>>> c4ce4b03750940da5f3b6739fe7a56cec2bb8f61
 ---
 # <a name="using-external-services-from-the-azure-api-management-service"></a>Azure API Management サービスからの外部サービスの使用
 Azure API Management サービスに含まれるポリシーでは、着信要求、送信応答、および基本的な構成情報のみを使用した有用なさまざまな処理を実行できます。 一方、API Management ポリシーでは外部サービスと通信することもできるため、さらに可能性が広がります。

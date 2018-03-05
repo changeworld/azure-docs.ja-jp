@@ -194,25 +194,15 @@
   items:
     - name: よく寄せられる質問
       href: frequently-asked-questions.md
-    - name: 既知の問題とトラブルシューティング
+    - name: 問題とトラブルシューティング
       href: known-issues-and-troubleshooting-guide.md
-    - name: Team Data Science Process のドキュメント
-      href: ../team-data-science-process/overview.md
-    - name: データ サイエンス VM のドキュメント
-      href: ../data-science-virtual-machine/overview.md
+    - name: サポートとトレーニング
+      href: support-for-aml-services.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
-    - name: スタック オーバーフロー
-      href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
-    - name: フィードバック フォーラム
-      href: 'https://feedback.azure.com/forums/257792-machine-learning'
+      href: aml-services-pricing.md
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'
-    - name: サポート オプション
-      href: 'https://azure.microsoft.com/support/options/'
+    - name: Team Data Science Process
+      href: ../team-data-science-process/overview.md

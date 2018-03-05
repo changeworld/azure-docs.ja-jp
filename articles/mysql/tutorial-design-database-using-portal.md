@@ -1,20 +1,20 @@
 ---
-title: "最初の Azure Database for MySQL データベースを設計する - Azure Portal | Microsoft Docs"
+title: "最初の Azure Database for MySQL データベースを設計する - Azure Portal"
 description: "このチュートリアルでは、Azure Portal を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: tutorial
-ms.date: 11/03/2017
+ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 76cccf9e2ce0a1e59b43646c43ac165d46dade4a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 272c1ba67fb1a907d739d23ce1d965f57c3a1074
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>最初の Azure Database for MySQL データベースを設計する
 Azure Database for MySQL は、高可用性 MySQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure Portal を使用して、簡単にサーバーを管理し、データベースを設計することができます。
@@ -37,31 +37,36 @@ Web ブラウザーを開いて [Microsoft Azure Portal](https://portal.azure.co
 Azure Database for MySQL サーバーは、定義済みの一連の[コンピューティング リソースとストレージ リソース](./concepts-compute-unit-and-storage.md)を使って作成されます。 サーバーは、[Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)内に作成されます。
 
 1. **[データベース]** > **[Azure Database for MySQL]** の順に移動します。 **[データベース]** カテゴリ内に MySQL Server が見つからない場合は、**[すべて表示]** をクリックして、使用可能なすべてのデータベース サービスを表示します。 検索ボックスに「**Azure Database for MySQL**」と入力すれば、サービスをすばやく探せます。
-![2-1 MySQL への移動](./media/tutorial-design-database-using-portal/2_1-Navigate-to-MySQL.png)
+   
+   ![MySQL への移動](./media/tutorial-design-database-using-portal/1-Navigate-to-MySQL.png)
 
-2. **[Azure Database for MySQL]** タイルをクリックして **[作成]** をクリックします。
+2. **[Azure Database for MySQL]** タイルをクリックして **[作成]** をクリックします。 Azure Database for MySQL フォームに入力します。
+   
+   ![フォームの作成](./media/tutorial-design-database-using-portal/2-create-form.png)
 
-この例では、Azure Database for MySQL フォームに次の情報を入力します。
+    **設定** | **推奨値** | **フィールドの説明** 
+    ---|---|---
+    サーバー名 | 一意のサーバー名 | Azure Database for MySQL サーバーを識別する一意の名前を選択します。 たとえば mydemoserver を選択します。 指定したサーバー名にドメイン名 *.mysql.database.azure.com* が追加されます。 サーバー名に含めることができるのは、英小文字、数字、およびハイフン (-) のみであり、 3 ～ 63 文字にする必要があります。
+    [サブスクリプション] | 該当するサブスクリプション | サーバーに使用する Azure サブスクリプションを選択します。 複数のサブスクリプションをお持ちの場合は、リソースの課金対象となるサブスクリプションを選択してください。
+    リソース グループ | *myresourcegroup* | 新規または既存のリソース グループの名前を入力します。    リソース グループ|*myresourcegroup*| 新しいリソース グループ名、またはサブスクリプションの既存のリソース グループ名。
+    ソースの選択 | "*空白*" | *[空白]* を選択し、最初から新しいサーバーを作成します  (既存の Azure Database for MySQL サーバーの geo バックアップからサーバーを作成する場合は、*[Backup]* を選択します)。
+    サーバー管理者のログイン | myadmin | サーバーに接続するときに使用するサインイン アカウント。 管理者のサインイン名に **azure_superuser**、**admin**、**administrator**、**root**、**guest**、**public** は使用できません。
+    パスワード | *<任意>* | サーバー管理者アカウントの新しいパスワードを入力します。 8 文字以上 128 文字以内にする必要があります。 パスワードには、英大文字、英小文字、数字 (0 ～ 9)、英数字以外の文字 (!、$、#、% など) のうち、3 つのカテゴリの文字が含まれている必要があります。
+    パスワードの確認 | *<任意>*| 管理者アカウントのパスワードを確認します。
+    場所 | *ユーザーに最も近いリージョン*| ユーザーや他の Azure アプリケーションに最も近い場所を選択します。
+    バージョン | "*最新バージョン*"| 最新バージョン (別のバージョンを指定する特定の要件がある場合を除く)。
+    [価格レベル]  | **汎用**、**Gen 4**、**2 仮想コア**、**5 GB**、**7 日**、**地理冗長** | 新しいサーバーのコンピューティング、ストレージ、およびバックアップ構成。 **[価格レベル]** を選択します。 次に、**[汎用]** タブを選択します。*Gen 4*、"*2 仮想コア*"、*5 GB*、および "*7 日*" は、それぞれ **[コンピューティング世代]**、**[仮想コア]**、**[ストレージ]**、および **[バックアップの保有期間]** の既定値です。 これらのスライダーはそのままにします。 サーバー バックアップを geo 冗長ストレージで有効にするには、**[バックアップ冗長オプション]** から **[地理冗長]** を選択します。 この価格レベルの選択を保存するには、**[OK]** を選択します。 次のスクリーンショットは、これらの選択を示しています。
+    
+   ![[価格レベル] ](./media/tutorial-design-database-using-portal/3-pricing-tier.png)
 
-| **設定** | **推奨値** | **フィールドの説明** |
-|---|---|---|
-| *[サーバー名]* | myserver4demo  | サーバー名はグローバルに一意である必要があります。 |
-| *サブスクリプション* | mysubscription | ドロップダウン リストからサブスクリプションを選択します。 |
-| *[リソース グループ]* | myresourcegroup | リソース グループを作成するか、既存のものを使用します。 |
-| *[サーバー管理者ログイン]* | myadmin | 管理者アカウントの名前を設定します。 |
-| *パスワード* |  | 強力な管理者アカウントのパスワードを設定します。 |
-| *パスワードの確認* |  | 管理者アカウントのパスワードを確認します。 |
-| *場所* |  | 使用可能なリージョンを選択します。 |
-| *バージョン* | 5.7 | 最新バージョンを選択します。 |
-| *[パフォーマンスの構成]* | Basic、50 コンピューティング ユニット、50 GB  | **価格レベル**、**コンピューティング ユニット**、**ストレージ (GB)** を選択して **[OK]** をクリックします。 |
-| *ダッシュボードにピン留めする* | ○ | サーバーを後で簡単に見つけることができるので、このチェック ボックスをオンすることをお勧めします。 |
-**[作成]**をクリックします。 1 ～ 2 分で、新しい Azure Database for MySQL サーバーがクラウドで実行されます。 ツール バーの **[通知]** ボタンをクリックすると、デプロイ プロセスを監視できます。
+3. **Create** をクリックしてください。 1 ～ 2 分で、新しい Azure Database for MySQL サーバーがクラウドで実行されます。 ツール バーの **[通知]** ボタンをクリックすると、デプロイ プロセスを監視できます。
 
 ## <a name="configure-firewall"></a>ファイアウォールの構成
 Azure Databases for MySQL は、ファイアウォールによって保護されます。 既定では、サーバーとサーバー内部のデータベースに対する接続はすべて拒否されます。 初めて Azure Database for MySQL に接続する前に、ファイアウォールを構成し、クライアント マシンのパブリック ネットワーク IP アドレス (またはその範囲) を追加します。
 
 1. 新しく作成したサーバーをクリックし、**[接続のセキュリティ]** をクリックします。
-   ![3-1 接続のセキュリティ](./media/tutorial-design-database-using-portal/3_1-Connection-security.png)
+   
+   ![接続のセキュリティ](./media/tutorial-design-database-using-portal/1-Connection-security.png)
 2. **自分の IP を追加**するか、またはファイアウォール規則を構成できます。 規則を作成したら、忘れずに **[保存]** をクリックしてください。
 これで、mysql コマンド ライン ツールまたは MySQL Workbench GUI ツールを使用してサーバーに接続することができます。
 
@@ -73,17 +78,17 @@ Azure Portal から、Azure Database for MySQL サーバーの完全修飾**サ�
 
 1. [Azure Portal](https://portal.azure.com/) の左側のメニューにある **[すべてのリソース]** をクリックして名前を入力し、Azure Database for MySQL サーバーを探します。 サーバー名を選択すると、詳細が表示されます。
 
-2. [設定] という見出しの **[プロパティ]** をクリックします。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値をメモしておきます。 各フィールドの横にあるコピー ボタンをクリックすると、クリップボードにコピーできます。
-   ![4-2 サーバーのプロパティ](./media/tutorial-design-database-using-portal/4_2-server-properties.png)
+2. **[概要]** ページで、**[サーバー名]** と **[サーバー管理者ログイン名]** の値をメモしておきます。 各フィールドの横にあるコピー ボタンをクリックすると、クリップボードにコピーできます。
+   ![4-2 サーバーのプロパティ](./media/tutorial-design-database-using-portal/2-server-properties.png)
 
-この例では、サーバー名は *myserver4demo.mysql.database.azure.com*、サーバー管理者ログインは *myadmin@myserver4demo* です。
+この例では、サーバー名は *mydemoserver.mysql.database.azure.com*、サーバー管理者ログインは *myadmin@mydemoserver* です。
 
 ## <a name="connect-to-the-server-using-mysql"></a>mysql を使用してサーバーに接続する
 [mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)を使用して、Azure Database for MySQL サーバーへの接続を確立します。 mysql コマンドライン ツールは、ブラウザーで Azure Cloud Shell から実行するか、ローカルにインストールされている mysql ツールを使用して自分のマシンから起動できます。 Azure Cloud Shell を起動するには、この記事のコード ブロックにある `Try It` ボタンをクリックするか、Azure Portal にアクセスして右上のツール バーにある `>_` アイコンをクリックします。 
 
 接続するためのコマンドを入力します。
 ```azurecli-interactive
-mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p
+mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p
 ```
 
 ## <a name="create-a-blank-database"></a>空のデータベースの作成
@@ -139,11 +144,11 @@ SELECT * FROM inventory;
 
 1. Azure Portal で、ご利用の Azure Database for MySQL を探します。 **[概要]** ページのツール バーで **[復元]** をクリックします。 [復元] ページが表示されます。
 
-   ![10-1 データベースの復元](./media/tutorial-design-database-using-portal/10_1-restore-a-db.png)
+   ![10-1 データベースの復元](./media/tutorial-design-database-using-portal/1-restore-a-db.png)
 
 2. **[復元]** フォームに必要な情報を入力します。
    
-   ![10-2 [復元] フォーム](./media/tutorial-design-database-using-portal/10_2-restore-form.png)
+   ![10-2 [復元] フォーム](./media/tutorial-design-database-using-portal/2-restore-form.png)
    
    - **[復元ポイント]**: 一覧表示された期間から、どの時点までさかのぼって復元するかを選択します。 ローカル タイム ゾーンは必ず UTC に変換してください。
    - **[新しいサーバーに復元]**: 復元先の新しいサーバー名を指定します。

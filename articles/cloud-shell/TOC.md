@@ -4,10 +4,9 @@
 ## [Bash - クイック スタート](quickstart.md)
 ## [PowerShell - クイック スタート](quickstart-powershell.md)
 
-# 概念
+# 機能とツール
 ## [Bash - 機能とツール](features.md)
 ## [PowerShell - 機能とツール](features-powershell.md)
-## [制限事項](limitations.md)
 
 # 操作方法
 ## [Bash - ストレージの永続化](persisting-shell-storage.md)
@@ -20,7 +19,7 @@
 
 # [Cloud Shell を埋め込む](embed-cloud-shell.md)
 
-# [トラブルシューティング](troubleshooting.md)
+# [トラブルシューティングと制限事項](troubleshooting.md)
 
 # リファレンス
 ## [Azure CLI](/cli/azure)
