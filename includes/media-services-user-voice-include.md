@@ -5,6 +5,6 @@
 * [エンコードと処理](https://feedback.azure.com/forums/169396-media-services/category/144411-encoding-and-processing/)
 * [ライブ ストリーミング](https://feedback.azure.com/forums/169396-media-services/category/144414-live-streaming/)
 * [メディア分析](https://feedback.azure.com/forums/169396-media-services/category/146181-media-analytics)
-* [Azure ポータル](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
+* [Azure Portal](https://feedback.azure.com/forums/169396-media-services/category/144432-portal/)
 * [REST API とプラットフォーム](https://feedback.azure.com/forums/169396-media-services/category/144423-rest-api-and-platform/)
 * [ビデオ オンデマンド ストリーミング](https://feedback.azure.com/forums/169396-media-services/category/144429-vod-streaming/)
