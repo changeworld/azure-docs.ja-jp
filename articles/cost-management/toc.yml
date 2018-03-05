@@ -17,12 +17,12 @@
   items:
     - name: 1 - 使用状況とコストを確認する
       href: tutorial-review-usage.md
-    - name: 2 - データへのアクセスを制御する
-      href: tutorial-user-access.md
-    - name: 3 - 支出を予測する
+    - name: 2 - 支出を予測する
       href: tutorial-forecast-spending.md
-    - name: 4 - コストを管理する
+    - name: 3 - コストを管理する
       href: tutorial-manage-costs.md
+    - name: 4 - データへのアクセスを制御する
+      href: tutorial-user-access.md
 - name: 概念
   items:
     - name: コスト レポートについて

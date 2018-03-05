@@ -1,3 +1,5 @@
+# [SQL Data Warehouse のドキュメント](index.md)
+
 # 概要
 
 ## [SQL Data Warehouse について](sql-data-warehouse-overview-what-is.md)

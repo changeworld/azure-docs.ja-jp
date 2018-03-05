@@ -1,8 +1,11 @@
+# [Azure AD Domain Services のドキュメント](index.md)
+
 # 概要
 ## [Azure AD Domain Services とは](active-directory-ds-overview.md)
 ## 適しているかの判断
 ### [Windows Server AD との比較](active-directory-ds-comparison.md)
 ### [Azure AD Join との比較](active-directory-ds-compare-with-azure-ad-join.md)
+## [新機能](https://azure.microsoft.com/updates/?product=active-directory-ds)
 ## [機能](active-directory-ds-features.md)
 ## [シナリオ](active-directory-ds-scenarios.md)
 ## [同期のしくみ](active-directory-ds-synchronization.md)
@@ -16,6 +19,7 @@
 ## [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
 
 # 方法
+## [管理対象ドメインの正常性のチェック](active-directory-ds-check-health.md)
 ## [Azure CSP サブスクリプションで Azure AD Domain Services を使用する](active-directory-ds-csp.md)
 ## [PowerShell を使用して Azure AD Domain Services を有効にする](active-directory-ds-enable-using-powershell.md)
 ## 管理対象ドメインに参加する
@@ -28,7 +32,7 @@
 ## 管理対象ドメインを管理する
 ### [管理対象ドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
 ### [管理対象ドメインで DNS を管理する](active-directory-ds-admin-guide-administer-dns.md)
-### [ドメインの正常性のチェック](active-directory-ds-check-health.md)
+
 ### 管理対象ドメインのセキュリティで保護された LDAP を構成する
 #### [タスク 1: セキュリティで保護された LDAP 用の証明書を取得する](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [タスク 2: セキュリティで保護された LDAP 証明書をエクスポートする](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)

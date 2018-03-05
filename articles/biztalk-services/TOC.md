@@ -1,3 +1,5 @@
+# [BizTalk Services のドキュメント](index.md)
+
 # 概要
 ## [エディション](biztalk-editions-feature-chart.md)
 

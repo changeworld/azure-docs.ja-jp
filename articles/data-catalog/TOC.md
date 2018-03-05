@@ -1,3 +1,5 @@
+# [Data Catalog のドキュメント](index.md)
+
 # 概要
 ## [Data Catalog とは](data-catalog-what-is-data-catalog.md)
 ## [一般的なシナリオ](data-catalog-common-scenarios.md)
@@ -25,7 +27,7 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-catalog)
-## [REST ()](/rest/api/datacatalog/)
+## [REST](/rest/api/datacatalog/)
 ## [検索構文リファレンス](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [開発者の概念](data-catalog-developer-concepts.md)
 

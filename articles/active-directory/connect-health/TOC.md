@@ -11,8 +11,12 @@
 ## [Azure AD Connect Health の操作](active-directory-aadconnect-health-operations.md)
 ## [同期中のエラー](../active-directory-aadconnect-troubleshoot-sync-errors.md)
 
+# トラブルシューティング
+## [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
+## [Health サービス データが最新ではありません](active-directory-aadconnect-health-data-freshness.md)
+
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 ## [GDPR コンプライアンスと Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
@@ -23,5 +27,4 @@
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
-##[Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

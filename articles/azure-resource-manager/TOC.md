@@ -1,3 +1,5 @@
+# [Azure Resource Manager のドキュメント](index.md)
+
 # 概要
 ## [Azure Resource Manager とは](resource-group-overview.md)
 ## [リソース プロバイダーと種類](resource-manager-supported-services.md)
@@ -43,13 +45,11 @@
 ### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
 ### [Azure Portal](resource-group-portal.md)
-### [REST API](resource-manager-rest-api.md)
 ### [タグを使用してリソースを整理する](resource-group-using-tags.md)
 ### [リソースを新しいグループまたはサブスクリプションに移動する](resource-group-move-resources.md)
 ### [管理グループを作成する](management-groups-create.md)
 ### [管理グループを管理する](management-groups-manage.md)
 ### [ガバナンスの例](resource-manager-subscription-examples.md)
-### [マネージ アプリケーション](../managed-applications/overview.md)
 
 ## アクセスを制御する
 ### サービス プリンシパルの作成

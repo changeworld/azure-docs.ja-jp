@@ -1,3 +1,5 @@
+# [DNS のドキュメント](index.md)
+
 # 概要
 
 ## [Azure DNS とは](dns-overview.md)
@@ -9,7 +11,7 @@
 # 作業の開始
 
 ## DNS ゾーンとレコードの作成
-### [Azure ポータル](dns-getstarted-portal.md)
+### [Azure Portal](dns-getstarted-portal.md)
 ### [Azure PowerShell](dns-getstarted-powershell.md)
 ### [Azure CLI](dns-getstarted-cli.md)
 
@@ -21,12 +23,12 @@
 # 方法
 
 ## DNS ゾーンの管理
-### [Azure ポータル](dns-operations-dnszones-portal.md)
+### [Azure Portal](dns-operations-dnszones-portal.md)
 ### [Azure PowerShell](dns-operations-dnszones.md)
 ### [Azure CLI](dns-operations-dnszones-cli.md)
 
 ## DNS レコードの管理
-### [Azure ポータル](dns-operations-recordsets-portal.md)
+### [Azure Portal](dns-operations-recordsets-portal.md)
 ### [Azure PowerShell](dns-operations-recordsets.md)
 ### [Azure CLI](dns-operations-recordsets-cli.md)
 
@@ -50,10 +52,10 @@
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
-## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html)
-## [REST ()](/rest/api/dns/)
+## [REST](/rest/api/dns/)
 
 # 関連項目
 ## [Application Gateway](/azure/application-gateway/)

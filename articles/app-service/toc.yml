@@ -57,6 +57,8 @@
       href: app-service-cli-samples.md
     - name: Azure PowerShell
       href: app-service-powershell-samples.md
+    - name: Resource Manager テンプレート
+      href: app-service-rm-template-samples.md
 - name: 概念
   items:
     - name: App Service の特長
@@ -111,6 +113,8 @@
           href: app-service-deployment-credentials.md
         - name: ステージング環境の作成
           href: web-sites-staged-publishing.md
+        - name: Resource Manager テンプレートのガイダンス
+          href: web-sites-rm-template-guidance.md
     - name: カスタム ドメインのマップ
       items:
         - name: ドメインの購入

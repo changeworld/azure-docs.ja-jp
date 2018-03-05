@@ -1,3 +1,5 @@
+# [Virtual Machine Scale Sets のドキュメント](index.md)
+
 # 概要
 ## [仮想マシン スケール セットとは](virtual-machine-scale-sets-overview.md)
 

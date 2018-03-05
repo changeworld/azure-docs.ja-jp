@@ -1,3 +1,5 @@
+# [Notification Hubs のドキュメント](index.md)
+
 # 概要
 ## [Azure Notification Hubs とは](notification-hubs-push-notification-overview.md)
 # 作業の開始
@@ -28,7 +30,7 @@
 ### [クロスプラットフォーム通知を送信する](notification-hubs-aspnet-cross-platform-notification.md)
 ### サーバー スクリプトを使用する
 #### [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/notification-hubs?view=azure-dotnet)
-#### [Node.js](notification-hubs-nodejs-push-notification-tutorial.md)
+#### [Node.JS](notification-hubs-nodejs-push-notification-tutorial.md)
 #### [Java](notification-hubs-java-push-notification-tutorial.md)
 #### [PHP](notification-hubs-php-push-notification-tutorial.md)
 #### [Python](notification-hubs-python-push-notification-tutorial.md)
@@ -42,7 +44,7 @@
 #### [iOS](notification-hubs-ios-xplat-localized-apns-push-notification.md)
 #### [Windows](notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md)
 
-## 管理
+## [管理]
 ### [登録](notification-hubs-push-notification-registration-management.md)
 ### [APNS トークンベースの認証](notification-hubs-push-notification-http2-token-authentification.md)
 
@@ -63,7 +65,7 @@
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=notification-hubs)
 ## [Azure PowerShell](/powershell/module/azurerm.notificationhubs)
 ## [.NET](/dotnet/api/microsoft.azure.notificationhubs)
-## [REST ()](/rest/api/notificationhubs)
+## [REST](/rest/api/notificationhubs)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

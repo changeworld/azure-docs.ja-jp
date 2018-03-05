@@ -1,4 +1,4 @@
-- name: Azure 上の Jenkins
+- name: Azure 上の Jenkins のドキュメント
   href: index.yml
 - name: 概要
   items:

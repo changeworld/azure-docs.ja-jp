@@ -1,3 +1,5 @@
+# [Load Balancer のドキュメント](index.md)
+
 # 概要
 ## [Load Balancer とは](load-balancer-overview.md)
 ## [Load Balancer Standard とは](load-balancer-standard-overview.md)
@@ -63,7 +65,7 @@
 ## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations)
-## [REST ()](https://msdn.microsoft.com/library/azure/mt163651.aspx)
+## [REST](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
 # 関連項目
 ## [Application Gateway](/azure/application-gateway/)

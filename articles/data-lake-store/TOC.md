@@ -1,3 +1,5 @@
+# [Data Lake Store のドキュメント](index.md)
+
 # 概要
 ## [Azure Data Lake Store の概要](data-lake-store-overview.md)
 ## [Azure Data Lake Store と Azure Storage を比較する](data-lake-store-comparison-with-blob-storage.md)
@@ -85,7 +87,7 @@
 ## [Azure PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
-## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-store)
+## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-store)
 ## [Python (アカウント管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python (ファイルシステム管理)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST](/rest/api/datalakestore)

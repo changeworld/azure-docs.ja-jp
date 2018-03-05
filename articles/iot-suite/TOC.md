@@ -1,3 +1,5 @@
+# [IoT Suite のドキュメント](index.md)
+
 # 概要
 ## [IoT アーキテクチャの概念](iot-suite-what-is-azure-iot.md)
 ## [Azure IoT オプションの比較](iot-suite-options.md)

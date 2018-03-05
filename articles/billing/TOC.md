@@ -1,3 +1,5 @@
+# [Azure Billing のドキュメント](index.md)
+
 # 作業開始
 ## [予想外のコストを防ぐ](billing-getting-started.md)
 ## [無料アカウントに含まれるサービスを作成する](billing-create-free-services-included-free-account.md)

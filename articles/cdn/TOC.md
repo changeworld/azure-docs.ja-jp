@@ -1,3 +1,5 @@
+# [CDN のドキュメント](index.md)
+
 # [概要](cdn-overview.md)
 ## [Azure CDN とは](../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json)
 

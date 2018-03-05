@@ -1,3 +1,5 @@
+# [Multi-Factor Authentication のドキュメント](index.md)
+
 # 概要
 ## [Azure Multi-Factor Authentication とは](multi-factor-authentication.md)
 ## [動作のしくみ](multi-factor-authentication-how-it-works.md)

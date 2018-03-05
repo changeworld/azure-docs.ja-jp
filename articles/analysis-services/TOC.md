@@ -1,3 +1,5 @@
+# [Analysis Services のドキュメント](index.md)
+
 # 概要
 ## [Analysis Services について](analysis-services-overview.md)
 ## [サポートされるデータ ソース](analysis-services-datasource.md)
@@ -14,6 +16,7 @@
 
 # 操作方法 
 ## [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
+## [Power BI Desktop ファイルのインポート](analysis-services-import-pbix.md)
 ## [バックアップと復元](analysis-services-backup.md)
 ## [REST API を使用した更新](analysis-services-async-refresh.md)
 ## [スケールアウトの構成](analysis-services-scale-out.md)
@@ -30,25 +33,26 @@
 ### [Power BI を使用した接続](analysis-services-connect-pbi.md)
 ### [.odc ファイルの作成](analysis-services-odc.md)
 ## チュートリアル
+### [1 - サンプル モデルを作成する](analysis-services-create-sample-model.md)
 ### [データ モデリング - Adventure Works チュートリアル](tutorials/aas-adventure-works-tutorial.md)
-### [1 - 表形式モデル プロジェクトを作成する](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
-### [2 - データを取得する](tutorials/aas-lesson-2-get-data.md)
-### [3 - 日付テーブルとしてマークする](tutorials/aas-lesson-3-mark-as-date-table.md) 
-### [4 - リレーションシップを作成する](tutorials/aas-lesson-4-create-relationships.md) 
-### [5 - 計算列を作成する](tutorials/aas-lesson-5-create-calculated-columns.md)
-### [6 - メジャーを作成する](tutorials/aas-lesson-6-create-measures.md)  
-### [7 - 主要業績評価指標を作成する](tutorials/aas-lesson-7-create-key-performance-indicators.md)  
-### [8 - パースペクティブを作成する](tutorials/aas-lesson-8-create-perspectives.md) 
-### [9 - 階層を作成する](tutorials/aas-lesson-9-create-hierarchies.md) 
-### [10 - パーティションを作成する](tutorials/aas-lesson-10-create-partitions.md) 
-### [11 - ロールを作成する](tutorials/aas-lesson-11-create-roles.md)
-### [12 - Excel で分析する](tutorials/aas-lesson-12-analyze-in-excel.md)
-### [13 - デプロイする](tutorials/aas-lesson-13-deploy.md)
-### [補足のレッスン - 詳細行](tutorials/aas-supplemental-lesson-detail-rows.md)
-### [補足のレッスン - 動的なセキュリティ](tutorials/aas-supplemental-lesson-dynamic-security.md)
-### [補足のレッスン - 不規則階層](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
+#### [1 - 表形式モデル プロジェクトを作成する](tutorials/aas-lesson-1-create-a-new-tabular-model-project.md)
+#### [2 - データを取得する](tutorials/aas-lesson-2-get-data.md)
+#### [3 - 日付テーブルとしてマークする](tutorials/aas-lesson-3-mark-as-date-table.md) 
+#### [4 - リレーションシップを作成する](tutorials/aas-lesson-4-create-relationships.md) 
+#### [5 - 計算列を作成する](tutorials/aas-lesson-5-create-calculated-columns.md)
+#### [6 - メジャーを作成する](tutorials/aas-lesson-6-create-measures.md)  
+#### [7 - 主要業績評価指標を作成する](tutorials/aas-lesson-7-create-key-performance-indicators.md)  
+#### [8 - パースペクティブを作成する](tutorials/aas-lesson-8-create-perspectives.md) 
+#### [9 - 階層を作成する](tutorials/aas-lesson-9-create-hierarchies.md) 
+#### [10 - パーティションを作成する](tutorials/aas-lesson-10-create-partitions.md) 
+#### [11 - ロールを作成する](tutorials/aas-lesson-11-create-roles.md)
+#### [12 - Excel で分析する](tutorials/aas-lesson-12-analyze-in-excel.md)
+#### [13 - デプロイする](tutorials/aas-lesson-13-deploy.md)
+#### [補足のレッスン - 詳細行](tutorials/aas-supplemental-lesson-detail-rows.md)
+#### [補足のレッスン - 動的なセキュリティ](tutorials/aas-supplemental-lesson-dynamic-security.md)
+#### [補足のレッスン - 不規則階層](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
-# 参照
+# リファレンス
 ## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)

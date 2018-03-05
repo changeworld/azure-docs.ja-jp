@@ -1,3 +1,5 @@
+# [DevTest Labs のドキュメント](index.md)
+
 # 概要
 ## [Azure DevTest Labs とは](devtest-lab-overview.md)
 ## [概念](devtest-lab-concepts.md)
@@ -6,7 +8,7 @@
 ### [テスト環境でのラボの使用](devtest-lab-test-env.md)
 ### [トレーニングでのラボの使用](devtest-lab-training-lab.md)
 
-# 作業の開始
+# 作業開始
 ## [ラボの作成](devtest-lab-create-lab.md)
 ## [最初の VM の作成](devtest-lab-create-first-vm.md)
 ## [開始ポリシーの設定](devtest-lab-get-started-with-lab-policies.md)
@@ -65,7 +67,7 @@
 ## CI/CD との統合
 ### [ラボを VSTS CI/CD パイプラインに統合する](devtest-lab-integrate-ci-cd-vsts.md)
 
-# 参照
+# リファレンス
 ## [CLI 2.0](/cli/azure/lab)
 ## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [ラボを自動的に作成または変更する](devtest-lab-use-arm-and-powershell-for-lab-resources.md)

@@ -1,3 +1,5 @@
+# [Data Lake Analytics のドキュメント](index.md)
+
 # 概要
 ## [Data Lake Analytics とは](data-lake-analytics-overview.md)
 
@@ -47,7 +49,7 @@
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-analytics)
 ## [Azure PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
-## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
+## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-analytics)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-analytics.html)
 ## [REST](/rest/api/datalakeanalytics/)
 ## [CLI](https://docs.microsoft.com/cli/azure/dla)
