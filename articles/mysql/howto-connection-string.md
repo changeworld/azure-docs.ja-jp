@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL にアプリケーションを接続する |Microsoft Docs"
+title: "Azure Database for MySQL にアプリケーションを接続する"
 description: "このドキュメントでは、Azure Database for MySQL に接続するアプリケーションについて、現在サポートされている接続文字列を示します。ADO.NET (C#)、JDBC、Node.js、ODBC、PHP、Python、および Ruby の接続文字列が含まれます。"
 services: mysql
 author: mswutao
 ms.author: wuta
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: c9fe0a892bd5e81d2b33987b6ca55ec753550a01
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: e7b200fd1de79f0bca680bdedc34fa376cf07d68
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Azure Database for MySQL にアプリケーションを接続する方法
 このトピックでは、Azure Database for MySQL でサポートされているすべての接続文字列の種類と共に、テンプレートと例を紹介します。 実際に使用する接続文字列のパラメーターと設定は異なる可能性があります。
@@ -27,10 +27,10 @@ ms.lasthandoff: 10/11/2017
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-この例では、サーバー名は `myserver4demo`、データベース名は `wpdb`、ユーザー名は `WPAdmin`、パスワードは `mypassword!2` です。 その結果、接続文字列は次のようになります。
+この例では、サーバー名は `mydemoserver`、データベース名は `wpdb`、ユーザー名は `WPAdmin`、パスワードは `mypassword!2` です。 その結果、接続文字列は次のようになります。
 
 ```ado.net
-Server= "myserver4demo.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@myserver4demo"; Pwd="mypassword!2"; SslMode=Required;
+Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
 ```
 
 ## <a name="jdbc"></a>JDBC
@@ -68,5 +68,5 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 
 この文字列は、ドライバー、サーバー、その他のデータベース接続パラメーターといった詳細情報を提供します。 独自のパラメーター (データベース名やパスワードなど) を使用してこれらの例を変更します。 その文字列を使用して、コードやアプリケーションからサーバーに接続できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - 接続ライブラリの詳細については、[接続ライブラリの概念](./concepts-connection-libraries.md)に関するページを参照してください。

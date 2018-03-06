@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL のサーバー パラメーターの構成方法 | Microsoft Docs"
+title: "Azure Database for MySQL のサーバー パラメーターの構成方法"
 description: "この記事では、Azure ポータルを使用して Azure Database for MySQL で使用できる MySQL サーバー パラメータを構成する方法について説明します。"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 01/25/2018
-ms.openlocfilehash: 59eeed42356a276c259bd8da55890b7ada67d729
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.date: 02/28/2018
+ms.openlocfilehash: b3510c616d2a9ba66cb83cb998c42e03fdbb0f2b
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Azure ポータルを使用して Azure Database for MySQL のサーバー パラメーターを構成する方法
 
@@ -22,10 +22,14 @@ Azure Database for MySQL では、いくつかのサーバー パラメーター
 ## <a name="navigate-to-server-parameters-on-azure-portal"></a>Azure ポータルの [サーバー パラメーター] に移動する
 1. Azure ポータルにサインインし、お使いの Azure Database for MySQL サーバーを探します。
 2. **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MySQL の [サーバー パラメーター] ページを開きます。
-3. 調整が必要な設定を探します。 **[説明]** 列を確認して、目的と許可される値を理解します。 
-4. **[保存]** をクリックして変更を保存します。
-
 ![Azure Portal の [サーバー パラメーター] ページ](./media/howto-server-parameters/auzre-portal-server-parameters.png)
+3. 調整が必要な設定を探します。 **[説明]** 列を確認して、目的と許可される値を理解します。 
+![列挙ドロップ ダウン](./media/howto-server-parameters/3-toggle_parameter.png)
+4. **[保存]** をクリックして変更を保存します。
+![変更の保存または破棄](./media/howto-server-parameters/4-save_parameters.png)
+5. パラメーターの新しい値を保存した場合は、**[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
+![すべて既定値にリセット](./media/howto-server-parameters/5-reset_parameters.png)
+
 
 ## <a name="list-of-configurable-server-parameters"></a>構成可能なサーバー パラメーターの一覧
 
@@ -34,14 +38,27 @@ Azure Database for MySQL では、いくつかのサーバー パラメーター
 ## <a name="nonconfigurable-server-parameters"></a>構成不可能なサーバー パラメーター
 InnoDB バッファー プールと最大接続数は構成できず、[価格レベル](concepts-service-tiers.md)に関連付けられています。 
 
-| **[価格レベル]** | **InnoDB バッファー プール (MB)** | **最大接続数** |
-| :------------------------ | :-------- | :----------- |
-| Basic 50 | 1024 | 50 | 
-| Basic 100  | 2560 | 100 | 
-| Standard 100 | 2560 | 200 | 
-| Standard 200 | 5120 | 400 | 
-| Standard 400 | 10240 | 800 | 
-| Standard 800 | 20480 | 1600 |
+|**価格レベル**| **コンピューティング世代**|**仮想コア数**|**InnoDB バッファー プール (MB)**| **最大接続数**|
+|---|---|---|---|--|
+|Basic| Gen 4| 1| 1024| 50 |
+|Basic| Gen 4| 2| 2560| 100 |
+|Basic| Gen 5| 1| 1024| 50 |
+|Basic| Gen 5| 2| 2560| 100 |
+|汎用| Gen 4| 2| 2560| 200|
+|汎用| Gen 4| 4| 5120| 400|
+|汎用| Gen 4| 8| 10240| 800|
+|汎用| Gen 4| 16| 20480| 1600|
+|汎用| Gen 4| 32| 40960| 3200|
+|汎用| Gen 5| 2| 2560| 200|
+|汎用| Gen 5| 4| 5120| 400|
+|汎用| Gen 5| 8| 10240| 800|
+|汎用| Gen 5| 16| 20480| 1600|
+|汎用| Gen 5| 32| 40960| 3200|
+|メモリ最適化| Gen 5| 2| 7168| 600|
+|メモリ最適化| Gen 5| 4| 15360| 1250|
+|メモリ最適化| Gen 5| 8| 30720| 2500|
+|メモリ最適化| Gen 5| 16| 62464| 5000|
+|メモリ最適化| Gen 5| 32| 125952| 10000| 
 
 次に示す追加のサーバー パラメーターは、システム内で構成できません。
 

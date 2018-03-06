@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for PostgreSQL のサーバー ログ | Microsoft Docs"
-description: "Azure Database for PostgreSQL でクエリ ログとエラーログを生成します。"
+title: "Azure Database for PostgreSQL のサーバー ログ"
+description: "この記事では、Azure Database for PostgreSQL がクエリ ログとエラー ログを生成する方法、およびログのリテンション期間を構成する方法について説明します。"
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 09/26/2017
-ms.openlocfilehash: 696af85cd5609171a719a7e77efbfcdeba0aaaaa
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.date: 02/28/2018
+ms.openlocfilehash: a8d560aa8906e3ba1f65758239b645cd1b1df032
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="server-logs-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のサーバー ログ 
 Azure Database for PostgreSQL ではクエリ ログとエラー ログが生成されます。 ただし、トランザクション ログへのアクセスはサポートされていません。 クエリとエラー ログを使用して、構成エラーと十分に最適化されていないパフォーマンスの特定、トラブルシューティング、修復を行えます。 詳細については、「[Error Reporting and Logging (エラー レポートとログ記録)](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html)」を参照してください。
@@ -38,6 +38,6 @@ PostgreSQL DB インスタンスのクエリのログ記録を有効にするに
 
 こうした設定の詳細については、「[Error Reporting and Logging (エラー レポートとログ記録)](https://www.postgresql.org/docs/9.6/static/runtime-config-logging.html)」を参照してください。 特に Azure Database for PostgreSQL サーバー パラメーターの構成については、「[Azure CLI を使用したサーバー構成パラメーターのカスタマイズ](howto-configure-server-parameters-using-cli.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - Azure CLI コマンド ライン インターフェイスを使用してログにアクセスするには、「[Azure CLI を使用した PostgreSQL のサーバー ログの構成とアクセス](howto-configure-server-logs-using-cli.md)」を参照してください。
 - サーバー パラメーターの詳細については、「[Customize server configuration parameters using Azure CLI (Azure CLI を使用したサーバー構成パラメーターのカスタマイズ)](howto-configure-server-parameters-using-cli.md)」を参照してください。

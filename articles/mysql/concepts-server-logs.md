@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL のサーバー ログ | Microsoft Docs"
+title: "Azure Database for MySQL のサーバー ログ"
 description: "Azure Database for MySQL で利用できるログと、さまざまなログ記録レベルを有効にするため利用可能なパラメーターについて説明します。"
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/18/2017
-ms.openlocfilehash: 13b30df82c1a6c4c45a621a1f7a40148a55a7648
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.date: 02/28/2018
+ms.openlocfilehash: ce6b6208b74063ea5d6e9868ca414f833b1a2045
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="server-logs-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバー ログ
 Azure Database for MySQL では、ユーザーは低速クエリ ログを使用できます。 トランザクション ログへのアクセスはサポートされていません。 低速クエリ ログは、トラブルシューティングの目的でパフォーマンスのボトルネックを特定するために使用できます。 
@@ -45,5 +45,5 @@ Azure CLI の詳細については、「[Configure and access server logs using 
 
 低速クエリ ログのパラメーターの完全な説明については、MySQL の[低速クエリ ログのドキュメント](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure CLI からサーバー ログを構成しアクセスする方法](howto-configure-server-logs-in-cli.md)

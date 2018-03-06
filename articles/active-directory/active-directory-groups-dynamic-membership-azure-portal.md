@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
 ms.openlocfilehash: 3ece2326a19e32666f46e8b737d15a48e335de6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
 Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
@@ -102,7 +102,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
 ````
 すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。 優先順位が要件を満たさない場合にのみ、かっこを追加する必要があります。
-For example:
+例: 
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```
@@ -137,7 +137,7 @@ For example:
 * -eq
 * -ne
 
-| プロパティ | 使用できる値 | 使用法 |
+| [プロパティ] | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | accountEnabled |true false |user.accountEnabled -eq true |
 | dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
@@ -156,7 +156,7 @@ For example:
 * -in
 * -notIn
 
-| プロパティ | 使用できる値 | 使用法 |
+| [プロパティ] | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | city |任意の文字列値または *null* |(user.city -eq "value") |
 | country |任意の文字列値または *null* |(user.country -eq "value") |
@@ -191,7 +191,7 @@ For example:
 * -contains
 * -notContains
 
-| プロパティ | 使用できる値 | 使用法 |
+| [プロパティ] | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
@@ -202,11 +202,11 @@ For example:
 * -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
 * -all (コレクション内のすべての項目が条件に一致するときに満たされる)
 
-| プロパティ | 値 | 使用法 |
+| [プロパティ] | 値 | 使用法 |
 | --- | --- | --- |
 | assignedPlans |コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 
-複数値プロパティは、同じ型のオブジェクトのコレクションです。 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。 For example:
+複数値プロパティは、同じ型のオブジェクトのコレクションです。 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。 例: 
 
 assignedPlans は、ユーザーに割り当てられたすべてのサービス プランをリストする複数値プロパティです。 次の式は、同様に [有効] 状態にある Exchange Online (プラン 2) サービス プランを持っているユーザーを選択します。
 
@@ -357,7 +357,7 @@ ConvertDynamicGroupToStatic "a58913b2-eee4-44f9-beb2-e381c375058f"
 ```
 ConvertStaticGroupToDynamic "a58913b2-eee4-44f9-beb2-e381c375058f" "user.displayName -startsWith ""Peter"""
 ```
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次の記事は、Azure Active Directory のグループに関する追加情報を提供します。
 
 * [既存のグループの表示](active-directory-groups-view-azure-portal.md)

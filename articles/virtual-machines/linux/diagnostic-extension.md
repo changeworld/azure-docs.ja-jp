@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
 ms.openlocfilehash: 1eae6d302827c977b9258174dec68fd8f3009a11
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
 
@@ -127,7 +127,7 @@ Protected 設定または Public 設定を変更した後、同じコマンド�
 }
 ```
 
-名前 | 値
+Name | 値
 ---- | -----
 storageAccountName | 拡張機能によってデータが書き込まれるストレージ アカウントの名前。
 storageAccountEndPoint | (省略可能) ストレージ アカウントが存在するクラウドを識別するエンドポイント。 この設定がない場合、LAD の既定値は Azure パブリック クラウド `https://core.windows.net` になります。 Azure Germany、Azure Government、Azure China でストレージ アカウントを使用するには、この値を適切に設定します。

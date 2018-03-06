@@ -1,25 +1,25 @@
 ---
-title: "既存の Azure App Service と Azure Database for MySQL の接続 |Microsoft Docs"
+title: "既存の Azure App Service と Azure Database for MySQL の接続"
 description: "既存の Azure App Service を Azure Database for MySQL に適切に接続する手順"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
+author: ajlam
+ms.author: andrela
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: mysql-database
 ms.topic: article
-ms.date: 09/15/2017
-ms.openlocfilehash: 0028b0c918b573f6884e6f63fa82dbe23079882a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.openlocfilehash: d8b130876e5fa0f2b2322dff82013a409ff7d30e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="connect-an-existing-azure-app-service-to-azure-database-for-mysql-server"></a>既存の Azure App Service と Azure Database for MySQL サーバーの接続
 このトピックでは、既存の Azure App Service を Azure Database for MySQL サーバーに接続する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
-[Azure ポータル](https://portal.azure.com)にログインします。 Azure Database for MySQL サーバーを作成します。 詳細については、[Azure Portal を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページ、または[Azure CLI を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-cli.md)に関するページをご覧ください。
+[Azure Portal](https://portal.azure.com) にログインします。 Azure Database for MySQL サーバーを作成します。 詳細については、[Azure Portal を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-portal.md)に関するページ、または[Azure CLI を使用した Azure Database for MySQL サーバーの作成方法](quickstart-create-mysql-server-database-using-azure-cli.md)に関するページをご覧ください。
 
 現在、Azure App Service から Azure Database for MySQL へのアクセスを有効にする方法は 2 つあります。 どちらの方法でも、サーバー レベルのファイアウォール ルールの設定を行います。
 
@@ -60,5 +60,5 @@ Azure App Service では IP アドレスを長時間一定に保とうとしま�
 ## <a name="ssl-configuration"></a>SSL の構成
 Azure Database for MySQL では、既定で SSL が有効になっています。 アプリケーションがデータベースへの接続で SSL を使用しない場合、MySQL サーバーで SSL を無効にする必要があります。 SSL の構成方法の詳細については、[Azure Database for MySQL での SSL の使用](howto-configure-ssl.md)に関する記事を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 接続文字列の詳細については、[接続文字列](howto-connection-string.md)に関するページをご覧ください。

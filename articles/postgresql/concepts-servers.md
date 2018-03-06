@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for PostgreSQL のサーバーの概念 | Microsoft Docs"
-description: "このトピックでは、Azure Database for PostgreSQL サーバーを構成および管理するための考慮事項とガイドラインを示します。"
+title: "Azure Database for PostgreSQL のサーバーの概念"
+description: "この記事では、Azure Database for PostgreSQL サーバーを構成および管理するための考慮事項とガイドラインを示します。"
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 12/02/2017
-ms.openlocfilehash: d7eec2735e48f57500eb2ea822f0949d2ec2e585
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.date: 02/28/2018
+ms.openlocfilehash: 2db18b014606799bdf5707c4c19f363bbc323e5c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-database-for-postgresql-servers"></a>Azure Database for PostgreSQL サーバー
 この記事では、Azure Database for PostgreSQL サーバーを操作するための考慮事項とガイドラインを示します。
@@ -33,7 +33,7 @@ Azure Database for PostgreSQL サーバーの特徴を次に示します。
 - 複数のバージョンで使用できます。 詳しくは、「[サポートされている PostgreSQL Database バージョン](concepts-supported-versions.md)」をご覧ください。
 - ユーザーが拡張できます。 詳細については、[PostgreSQL の拡張機能](concepts-extensions.md)に関するページをご覧ください。
 
-Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを利用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、価格レベル、コンピューティング ユニット、ストレージ (GB) の構成に基づき、サーバーごとに構造化されています。 詳細については、「[価格レベル](./concepts-service-tiers.md)」をご覧ください。
+Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを利用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、価格レベル、仮想コア、ストレージ (GB) の構成に基づき、サーバーごとに構造化されています。 詳細については、「[価格レベル](./concepts-pricing-tiers.md)」をご覧ください。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーへの接続および認証方法
 次の要素が、データベースへの安全なアクセスを確保するうえで役に立ちます。
@@ -56,6 +56,6 @@ Postgres の管理対象サービスとして、Azure Database for PostgreSQL �
 
 ## <a name="next-steps"></a>次の手順
 - サービスの概要については、[Azure Database for PostgreSQL の概要](overview.md)に関するページをご覧ください。
-- **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](concepts-service-tiers.md)に関するページをご覧ください。
+- **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](concepts-pricing-tiers.md)に関するページをご覧ください。
 - サービスへの接続については、「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」を参照してください。
 - [Azure Portal](howto-configure-server-parameters-using-portal.md) または [Azure CLI](howto-configure-server-parameters-using-cli.md) でサーバー パラメーターを表示および編集します。

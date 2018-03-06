@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: f15875610e2035c6f4c10c36e19c02f3e045b3ea
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法 
 
