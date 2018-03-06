@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL の SSL 接続 | Microsoft Docs"
+title: "Azure Database for MySQL の SSL 接続"
 description: "SSL 接続を適切に使用できるように、Azure Database for MySQL と関連アプリケーションを構成するための情報"
 services: mysql
 author: JasonMAnderson
 ms.author: janders
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/02/2017
-ms.openlocfilehash: 37e2bbbe1ed4b6a9cca0e0b001e5e632b9b73be2
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.date: 02/28/2018
+ms.openlocfilehash: f59d5eab9772515a3c59f887a48d597d27bab135
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="ssl-connectivity-in-azure-database-for-mysql"></a>Azure Database for MySQL の SSL 接続
 Azure Database for MySQL では、Secure Sockets Layer (SSL) を使用して、データベース サーバーをクライアント アプリケーションに接続できます。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化され、"man in the middle" 攻撃から保護されます。
@@ -27,5 +27,5 @@ Azure Portal や CLI を使用して新しい Azure Database for MySQL サーバ
 
 アプリケーションの開発時に SSL 接続を有効または無効にする方法については、[SSL の構成方法](howto-configure-ssl.md)に関するページをご覧ください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Database for MySQL の接続ライブラリ](concepts-connection-libraries.md)

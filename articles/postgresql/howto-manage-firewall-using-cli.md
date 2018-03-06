@@ -1,20 +1,20 @@
 ---
-title: "Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理 | Microsoft Docs"
+title: "Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理"
 description: "この記事では、Azure CLI コマンド ラインを使って Azure Database for PostgreSQL ファイアウォール規則を作成し、管理する方法について説明します。"
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 02/12/2018
-ms.openlocfilehash: 4fbb0adabac3cefa0b889279eed9dfd03fe1b1f5
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.openlocfilehash: 1d72761f3c80fbf3068492b6843349fc9d7accfd
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-and-manage-azure-database-for-postgresql-firewall-rules-using-azure-cli"></a>Azure CLI を使用した Azure Database for PostgreSQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は特定の IP アドレスまたは IP アドレス範囲からの Azure Database for PostgreSQL サーバーへのアクセスを管理できます。 便利な Azure CLI コマンドを使用すると、サーバーを管理するためのファイアウォール規則の作成、更新、削除、一覧化、表示などができます。 Azure Database for PostgreSQL ファイアウォール規則の概要については、「[Azure Database for PostgreSQL サーバーのファイアウォール規則](concepts-firewall-rules.md)」をご覧ください。
@@ -47,6 +47,15 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 ```azurecli-interactive
 az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver --name AllowSingleIpAddress --start-ip-address 13.83.152.1 --end-ip-address 13.83.152.1
 ```
+Azure IP アドレスからの Azure Database for PostgreSQL サーバーへの接続を許可するには、次の例のように、開始 IP と終了 IP に IP アドレス 0.0.0.0 を指定します。
+```azurecli-interactive
+az postgres server firewall-rule create --resource-group myresourcegroup --server-name mydemoserver--name AllowAllAzureIps --start-ip-address 0.0.0.0 --end-ip-address 0.0.0.0
+```
+
+> [!IMPORTANT]
+> このオプションは、ファイアウォールを構成して、他のお客様のサブスクリプションからの接続を含むすべての接続を許可します。 このオプションを選択する場合は、ログインおよびユーザーのアクセス許可が、承認されたユーザーのみにアクセスを制限していることを確認してください。
+> 
+
 正常に完了すると、作成したファイアウォール規則の詳細が、既定では JSON 形式で、コマンドの出力として一覧表示されます。 失敗した場合は、代わりにエラー メッセージが出力されます。
 
 ## <a name="update-firewall-rule"></a>ファイアウォール規則の更新 

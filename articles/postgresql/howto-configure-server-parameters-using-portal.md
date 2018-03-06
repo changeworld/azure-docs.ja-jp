@@ -1,19 +1,19 @@
 ---
-title: "Azure Portal を使用した Azure Database for PostgreSQL のサーバー パラメーターの構成 | Microsoft Docs"
+title: "Azure Portal を使用した Azure Database for PostgreSQL のサーバー パラメーターの構成"
 description: "この記事では、Azure Portal を使用して Azure Database for PostgreSQL のサーバー パラメーターを構成する方法について説明します。"
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/08/2017
-ms.openlocfilehash: 9e8262fbfcde2e69a656e356a7ab241f2d5043ad
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.date: 02/28/2018
+ms.openlocfilehash: 6d43cac79c19e117385549b1678a464dc5731bd7
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-server-parameters-in-azure-portal"></a>Azure Portal でのサーバー パラメーターの構成
 Azure Portal を使用して、Azure Database for PostgreSQL サーバーの構成パラメーターを一覧表示、表示、更新できます。
@@ -45,7 +45,7 @@ Azure Portal を使用して、Azure Database for PostgreSQL サーバーの構�
 8. パラメーターの新しい値を保存した場合は、**[すべて既定値にリセット]** を選択していつでもすべてを既定値に戻すことができます。
 ![すべて既定値にリセット](./media/howto-configure-server-parameters-in-portal/7-reset-to-default-button.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 内容は次のとおりです。
 - [Azure Database for PostgreSQL のサーバー パラメーターの概要](concepts-servers.md)
 - [Azure CLI を使用したパラメーターの構成](howto-configure-server-parameters-using-cli.md)

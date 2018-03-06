@@ -16,10 +16,10 @@ ms.author: daveba
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.openlocfilehash: 85b45a828dbb06325b6a1c9453117849f48a27c8
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>既存のオンプレミス プロキシ サーバーと連携する
 

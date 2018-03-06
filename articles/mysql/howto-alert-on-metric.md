@@ -1,19 +1,19 @@
 ---
-title: "Azure Portal での Azure Database for MySQL のメトリック アラートの構成 | Microsoft Docs"
+title: "Azure Portal での Azure Database for MySQL のメトリック アラートの構成"
 description: "この記事では、Azure Portal から Azure Database for MySQL のメトリック アラートを構成およびアクセスする方法について説明します。"
 services: mysql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/24/2017
-ms.openlocfilehash: 5b4263e76f89ae27b9c9f317db3038def01e3e6b
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.date: 02/28/2018
+ms.openlocfilehash: 025e7089f797b0accf8ee7d14028e5b5ab23c113
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Azure Portal を使用して Azure Database for MySQL のメトリックのアラートを設定する 
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/25/2017
 * Webhook を呼び出す
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
-* [Azure ポータル](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [コマンド ライン インターフェイス (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -45,10 +45,10 @@ ms.lasthandoff: 10/25/2017
 
    ![メトリック アラート フォームを追加する](./media/howto-alert-on-metric/2-add-rule-form.png)
 
-   | 設定 | 説明  |
+   | Setting | [説明]  |
    |---------|---------|
-   | 名前 | アラート ルールの名前を指定します。 この値はアラート通知メールで送信されます。 |
-   | Description | アラート ルールの簡単な説明を入力します。 この値はアラート通知メールで送信されます。 |
+   | Name | アラート ルールの名前を指定します。 この値はアラート通知メールで送信されます。 |
+   | [説明] | アラート ルールの簡単な説明を入力します。 この値はアラート通知メールで送信されます。 |
    | アラート対象 | このアラートの対象となる**メトリック**を選択します。 |
    | [サブスクリプション] | このフィールドには Azure Database for MySQL をホストするサブスクリプションが入力されています。 |
    | リソース グループ | このフィールドには Azure Database for MySQL のリソース グループが入力されています。 |
@@ -80,6 +80,6 @@ ms.lasthandoff: 10/25/2017
 * アラートを**無効**にしてアラートを一時的に停止する、または**有効**にして通知の受け取りを再開する。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)に関する詳細情報を確認します。
 * [メトリック収集の概要](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) 情報を入手して、サービスの可用性と応答性を確認します。

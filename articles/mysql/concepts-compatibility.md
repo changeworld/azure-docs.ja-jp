@@ -1,19 +1,19 @@
 ---
-title: "MySQL ドライバーと管理ツールの互換性 | Microsoft Docs"
-description: "Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性"
+title: "MySQL ドライバーと管理ツールの互換性"
+description: "この記事では、Azure Database for MySQL との、MySQL ドライバーと管理ツールの互換性について説明します。"
 services: mysql
-author: seanli1988
-ms.author: seanli
+author: ajlam
+ms.author: andrela
 editor: jasonwhowell
-manager: jhubbard
+manager: kfile
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/27/2017
-ms.openlocfilehash: 7578ae710a3d6c81fdfa2952c53a20c2cdccb6d0
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.date: 02/28/2018
+ms.openlocfilehash: 5fc13ef07b61feb9e9fdd73123a09daa61f6aaf3
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="mysql-drivers-and-management-tools-compatible-with-azure-database-for-mysql"></a>Azure Database for MySQL に対する MySQL ドライバーと管理ツールの互換性
 この記事では、Azure Database for MySQL との、ドライバーと管理ツールの互換性について説明します。
@@ -35,11 +35,11 @@ Azure Database for MySQL では、MySQL データベースの世界で最も人�
 
 |                                     | **MySQL Workbench 6.x 以降** | **Navicat 12** | **PHPMyAdmin 4.x 以降** |
 | :---------------------------------- | :----------------------------- | :------------- | :-------------------------|
-| 作成、更新、読み取り、書き込み、削除 | X | X | X |
-| SSL 接続 | X | X | X |
-| SQL クエリのオート コンプリート | X | X |  |
-| データのインポートとエクスポート | X | X | X |
-| 複数の形式へのエクスポート | X | X | X |
-| バックアップと復元 |  | X |  |
-| サーバー パラメーターの表示 | X | X | X |
-| クライアント接続の表示 | X | X | X |
+| 作成、更新、読み取り、書き込み、削除 | ○ | ○ | ○ |
+| SSL 接続 | ○ | ○ | ○ |
+| SQL クエリのオート コンプリート | ○ | ○ |  |
+| データのインポートとエクスポート | ○ | ○ | ○ |
+| 複数の形式へのエクスポート | ○ | ○ | ○ |
+| バックアップと復元 |  | ○ |  |
+| サーバー パラメーターの表示 | ○ | ○ | ○ |
+| クライアント接続の表示 | ○ | ○ | ○ |

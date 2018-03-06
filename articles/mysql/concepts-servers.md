@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL のサーバーの概念 | Microsoft Docs"
+title: "Azure Database for MySQL のサーバーの概念"
 description: "このトピックでは、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/27/2017
-ms.openlocfilehash: d3de3fdf28997b63321bf23443472db43ebb5c52
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 02/28/2018
+ms.openlocfilehash: 0cf35efa7b8b4c6f78a8821c6d10e606813b7848
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Azure Database for MySQL のサーバーの概念
 この記事では、Azure Database for MySQL サーバーを操作するための考慮事項とガイドラインを示します。
@@ -33,7 +33,7 @@ Azure Database for MySQL サーバーの特徴を次に示します。
 - データベースに適用される管理ポリシーのスコープ (ログイン、ファイアウォール、ユーザー、ロール、構成など) を提供します。
 - 複数のバージョンで使用できます。 詳細については、[サポートされる Azure Database for MySQL データベース バージョン](./concepts-supported-versions.md)に関するページをご覧ください。
 
-Azure Database for MySQL サーバー内には 1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを使用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、価格レベル、コンピューティング ユニット、ストレージ (GB) の構成に基づき、サービスごとに構造化されています。 詳細については、「[価格レベル](./concepts-service-tiers.md)」をご覧ください。
+Azure Database for MySQL サーバー内には 1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを使用するか、複数のデータベースを作成してリソースを共有することができます。 価格は、価格レベル、仮想コア、ストレージ (GB) の構成に基づき、サーバーごとに構造化されています。 詳細については、「[価格レベル](./concepts-service-tiers.md)」をご覧ください。
 
 ## <a name="how-do-i-connect-and-authenticate-to-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーへの接続および認証方法
 
@@ -49,7 +49,7 @@ Azure Database for MySQL サーバー内には 1 つまたは複数のデータ�
 ## <a name="how-do-i-manage-a-server"></a>サーバーの管理方法
 Azure Database for MySQL サーバーを管理するには、Azure Portal または Azure CLI を使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - サービスの概要については、[Azure Database for MySQL の概要](./overview.md)に関するページをご覧ください
 - **サービス レベル**に基づく特定のリソース クォータと制限については、[サービス レベル](./concepts-service-tiers.md)に関するページをご覧ください
 - サービスへの接続については、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」を参照してください。
