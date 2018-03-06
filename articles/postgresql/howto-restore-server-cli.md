@@ -1,20 +1,20 @@
 ---
-title: "Azure Database for PostgreSQL のサーバーをバックアップして復元する方法 | Microsoft Docs"
+title: "Azure Database for PostgreSQL のサーバーをバックアップして復元する方法"
 description: "Azure CLI を使用して、Azure Database for PostgreSQL のサーバーをバックアップおよび復元する方法について説明します。"
 services: postgresql
-author: jasonwhowell
-ms.author: jasonh
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/27/2017
-ms.openlocfilehash: 7027669597b8c1989f7baac5c5f9d997b218750a
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 02/28/2018
+ms.openlocfilehash: 69dfde7e54a271caabc6d0909565165fb219c7f2
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-by-using-the-azure-cli"></a>Azure CLI を使用して、Azure Database for PostgreSQL のサーバーをバックアップおよび復元する方法
 
@@ -26,7 +26,6 @@ Azure Database for PostgreSQL を使用して、7 日 ～ 35 日にわたって�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
- 
 
 > [!IMPORTANT]
 > Azure CLI をローカルにインストールして使用する場合、このハウツー ガイドでは Azure CLI バージョン 2.0 以上を使用する必要があります。 バージョンを確認するには、Azure CLI コマンド プロンプトで「`az --version`」と入力します。 インストールまたはアップグレードする必要には、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」をご覧ください。
@@ -34,7 +33,7 @@ Azure Database for PostgreSQL を使用して、7 日 ～ 35 日にわたって�
 ## <a name="backup-happens-automatically"></a>自動バックアップ
 Azure Database for PostgreSQL を使用するとき、このデータベース サービスは 5 分ごとに自動でサービスのバックアップを行います。 
 
-Basic レベルでは、バックアップは 7 日間有効です。 Standard レベルでは、バックアップは 35 日間有効です。 詳しくは、[Azure Database for PostgreSQL の価格レベル](concepts-service-tiers.md)に関する記事をご覧ください。
+Basic レベルでは、バックアップは 7 日間有効です。 Standard レベルでは、バックアップは 35 日間有効です。 詳しくは、[Azure Database for PostgreSQL の価格レベル](concepts-pricing-tiers.md)に関する記事をご覧ください。
 
 自動バックアップ機能を使用すると、サーバーとそのデータベースを過去の日付や特定の時点に復元できます。
 
@@ -48,16 +47,16 @@ Azure Database for PostgreSQL を使用して、過去の特定の時点まで�
 サーバーを復元するには、Azure CLI コマンド プロンプトで、次のコマンドを入力します。
 
 ```azurecli-interactive
-az postgres server restore --resource-group myResourceGroup --name mypgserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mypgserver-20170401
+az postgres server restore --resource-group myresourcegroup --server mydemoserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mydemoserver
 ```
 
 `az postgres server restore` コマンドには、次のパラメーターが必要です。
-| Setting | 推奨値 | Description  |
+| Setting | 推奨値 | [説明]  |
 | --- | --- | --- |
-| resource-group |  myResourceGroup |  ソース サーバーが存在するリソース グループ。  |
-| name | mypgserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
+| resource-group |  myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
+| name | mydemoserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、`2017-04-13T05:59:00-08:00` など自身のローカル タイム ゾーンを使用できます。 また、`2017-04-13T13:59:00Z` など UTC Zulu 形式も使用できます。 |
-| source-server | mypgserver-20170401 | 復元元のソース サーバーの名前または ID。 |
+| source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
 
 サーバーを過去の特定の時点に復元すると、新しいサーバーが作成されます。 特定の時点における元のサーバーとそのデータベースが新しいサーバーにコピーされます。
 
@@ -67,5 +66,5 @@ az postgres server restore --resource-group myResourceGroup --name mypgserver-re
 
 復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)

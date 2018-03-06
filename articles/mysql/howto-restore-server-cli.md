@@ -1,20 +1,20 @@
 ---
-title: "Azure Database for MySQL サーバーをバックアップして復元する方法 | Microsoft Docs"
+title: "Azure Database for MySQL のサーバーをバックアップして復元する方法"
 description: "Azure CLI を使用して Azure Database for MySQL サーバーをバックアップおよび復元する方法について説明します。"
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.devlang: azure-cli
 ms.topic: article
-ms.date: 11/28/2017
-ms.openlocfilehash: 44b3c68b8df4006d3fe087e5ad4118d7616d3d9a
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.date: 02/28/2018
+ms.openlocfilehash: b954e26c9ecb1767b971117fc9102e8573beaaac
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure CLI を使用して Azure Database for MySQL サーバーをバックアップして復元する方法
 
@@ -32,7 +32,7 @@ Azure Database for MySQL を使用して、7 日 ～ 35 日にわたって過去
 ## <a name="backup-happens-automatically"></a>自動バックアップ
 Azure Database for MySQL を使用するとき、このデータベース サービスは 5 分ごとに自動でサービスのバックアップを行います。 
 
-Basic レベルでは、バックアップは 7 日間有効です。 Standard レベルでは、バックアップは 35 日間有効です。 詳しくは、[Azure Database for MySQL の価格レベル](concepts-service-tiers.md)に関する記事をご覧ください。
+Basic レベルでは、バックアップは 7 日間有効です。 Standard レベルでは、バックアップは 35 日間有効です。 詳しくは、[Azure Database for MySQL の価格レベル](concepts-pricing-tiers.md)に関する記事をご覧ください。
 
 自動バックアップ機能を使用すると、サーバーとそのデータベースを過去の日付や特定の時点に復元できます。
 
@@ -46,16 +46,16 @@ Azure Database for MySQL を使用して、過去の特定の時点までサー�
 サーバーを復元するには、Azure CLI コマンド プロンプトで、次のコマンドを入力します。
 
 ```azurecli-interactive
-az mysql server restore --resource-group myResourceGroup --name myserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server myserver4demo
+az mysql server restore --resource-group myresourcegroup --name myserver-restored --restore-point-in-time 2017-04-13T13:59:00Z --source-server mydemoserver
 ```
 
 `az mysql server restore` コマンドには、次のパラメーターが必要です。
-| Setting | 推奨値 | Description  |
+| Setting | 推奨値 | [説明]  |
 | --- | --- | --- |
-| resource-group | myResourceGroup |  ソース サーバーが存在するリソース グループ。  |
+| resource-group | myresourcegroup |  ソース サーバーが存在するリソース グループ。  |
 | name | myserver-restored | 復元コマンドで作成される新しいサーバーの名前。 |
 | restore-point-in-time | 2017-04-13T13:59:00Z | 復元する特定の時点を選択します。 この日付と時刻は、ソース サーバーのバックアップ保有期間内でなければなりません。 ISO8601 の日時形式を使います。 たとえば、`2017-04-13T05:59:00-08:00` など自身のローカル タイム ゾーンを使用できます。 また、`2017-04-13T13:59:00Z` など UTC Zulu 形式も使用できます。 |
-| source-server | myserver4demo | 復元元のソース サーバーの名前または ID。 |
+| source-server | mydemoserver | 復元元のソース サーバーの名前または ID。 |
 
 サーバーを過去の特定の時点に復元すると、新しいサーバーが作成されます。 特定の時点における元のサーバーとそのデータベースが新しいサーバーにコピーされます。
 
@@ -65,5 +65,5 @@ az mysql server restore --resource-group myResourceGroup --name myserver-restore
 
 復元プロセスが完了したら、新しいサーバーを検索して、想定どおりにデータが復元できたかどうかを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Database for MySQL の接続ライブラリ](concepts-connection-libraries.md)

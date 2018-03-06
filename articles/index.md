@@ -5,11 +5,11 @@ title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 featureFlags:
 - clicktale
-ms.openlocfilehash: 8179149046ac8f1240dd547edc0442d0543f4be0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7a702ec2bb3ccff0766ee70f3efd00e9caa7dbba
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/05/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -71,7 +71,7 @@ ms.lasthandoff: 02/24/2018
         </ul>
     </div>
     <div class="container">
-        <h1 class="screenReader">Microsoft Azure のドキュメント</h1>
+        <h1 class="visually-hidden">Microsoft Azure のドキュメント</h1>
         <ul class="pivots">
             <li>
                 <a href="#get-started">作業開始</a>

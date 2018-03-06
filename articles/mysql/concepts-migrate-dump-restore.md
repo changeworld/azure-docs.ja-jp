@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for MySQL でのダンプと復元を使用した MySQL データベースの移行 | Microsoft Docs"
+title: "ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行"
 description: "この記事では、mysqldump、MySQL Workbench、PHPMyAdmin などのツールを使用して、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します。"
 services: mysql
-author: v-chenyh
-ms.author: v-chenyh
-manager: jhubbard
+author: ajlam
+ms.author: andrela
+manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 11/27/2017
-ms.openlocfilehash: e962fd65244ceebfc7544dc5a1d1956dad811fea
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.date: 02/28/2018
+ms.openlocfilehash: 0c5a6b6d971d434a52bf80da6b34d7f6949589bc
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -101,7 +101,7 @@ mysql -h [hostname] -u [uname] -p[pass] [db_to_restore] < [backupfile.sql]
 ```
 この例では、Azure Database for MySQL ターゲット サーバーに新しく作成されたデータベースにデータを復元します。
 ```bash
-$ mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p testdb < testdb_backup.sql
+$ mysql -h mydemoserver.mysql.database.azure.com -u myadmin@mydemoserver -p testdb < testdb_backup.sql
 ```
 
 ## <a name="export-using-phpmyadmin"></a>PHPMyAdmin を使用したエクスポート
@@ -122,5 +122,5 @@ $ mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p te
 - **参照**ボタンを使用して、データベース ファイルを検索します。 
 - **[実行]** をクリックすると、バックアップがエクスポートされ、SQL コマンドが実行された後、データベースが再作成されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Database for MySQL にアプリケーションを接続する](./howto-connection-string.md)

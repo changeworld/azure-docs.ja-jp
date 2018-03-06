@@ -1,19 +1,19 @@
 ---
-title: "Azure Portal での PostgreSQL のサーバー ログの構成とアクセス | Microsoft Docs"
+title: "Azure Portal での PostgreSQL のサーバー ログの構成とアクセス"
 description: "この記事では、Azure Portal から Azure Database for PostgreSQL のサーバー ログの構成方法とアクセス方法について説明します。"
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: jhubbard
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 10/19/2017
-ms.openlocfilehash: a2f67b21293a1a0456b27cad9043be01fdd5274a
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.date: 02/28/2018
+ms.openlocfilehash: aa9823c65b342f922ca78a51ecd3055dfac62869
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="configure-and-access-server-logs-in-the-azure-portal"></a>Azure Portal でのサーバー ログの構成とアクセス
 
@@ -36,19 +36,13 @@ Azure Portal から [Azure Database for PostgreSQL のサーバー ログ](conce
 
 4. サーバー パラメーターを表示するには、見出しの **[ログを有効にし、ログ パラメーターを構成するには、ここをクリックしてください]** を選択します。
 
-5. 使用可能なパラメーターの拡張されたリストを表示するには、**[さらに表示する]** 展開コントロールを選択します。 
-
-   パラメーターの定義の詳細については、「[Error Reporting and Logging](https://www.postgresql.org/docs/current/static/runtime-config-logging.html)」 (エラー レポートとログ記録) の PostgreSQL のドキュメントを参照してください。
-
-   ![ログのパラメーターの短いリスト。 長いリストを表示するには [さらに表示する] をクリック](./media/howto-configure-server-logs-in-portal/2-show-more.png)
-
-6. 調整する必要のあるパラメーターを変更します。 このセッションで行ったすべての変更が紫色で強調表示されます。
+5. 調整する必要のあるパラメーターを変更します。 このセッションで行ったすべての変更が紫色で強調表示されます。
 
    パラメーターを変更すると、**[保存]** をクリックできます。 または変更を **[破棄]** することができます。 
 
    ![変更を保存または破棄するパラメーターの長いリスト](./media/howto-configure-server-logs-in-portal/3-save-discard.png)
 
-7. ログのリストに戻るには、**[サーバー パラメーター]** ページの**閉じるボタン** (X のアイコン) をクリックします。
+6. ログのリストに戻るには、**[サーバー パラメーター]** ページの**閉じるボタン** (X のアイコン) をクリックします。
 
 ## <a name="view-list-and-download-logs"></a>リストの表示とログのダウンロード
 ログ記録が開始されると、使用可能なログのリストを表示したり、[サーバー ログ] ウィンドウで個々のログ ファイルをダウンロードすることができます。 

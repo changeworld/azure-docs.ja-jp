@@ -1,19 +1,19 @@
 ---
-title: "Azure Database for PostgreSQL でダンプおよび復元する方法 | Microsoft Docs"
-description: "ダンプ ファイルに PostgreSQL データベースを抽出し、Azure Database for PostgreSQL で pg_dump によって作成されたアーカイブ ファイルから PostgreSQL データベースを復元する方法について説明します。"
+title: "Azure Database for PostgreSQL でダンプおよび復元する方法"
+description: "ダンプ ファイルに PostgreSQL データベースを抽出し、Azure Database for PostgreSQL で pg_dump によって作成されたファイルから復元する方法について説明します。"
 services: postgresql
-author: SaloniSonpal
-ms.author: salonis
-manager: jhubbard
+author: rachel-msft
+ms.author: raagyema
+manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 11/03/2017
-ms.openlocfilehash: 28727117dbd37f9c595b488639a632b4c7404496
-ms.sourcegitcommit: 38c9176c0c967dd641d3a87d1f9ae53636cf8260
+ms.date: 02/28/2018
+ms.openlocfilehash: 6ea839c10bffc9a024af38132081f2c9bd7dfc0a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>ダンプと復元を使用した PostgreSQL データベースの移行
 [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) を使用して PostgreSQL データベースをダンプ ファイルに抽出し、[pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) を使用して、pg_dump によって作成されたアーカイブ ファイルから PostgreSQL データベースを復元することができます。
@@ -40,10 +40,10 @@ pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.
 ```bash
 pg_restore -v –-host=<server name> --port=<port> --username=<user@servername> --dbname=<target database name> <database>.dump
 ```
-この例では、対象サーバー **mypgserver-20170401.postgres.database.azure.com** 上のデータベース **mypgsqldb** に、ダンプ ファイル **testdb.dump** からデータを復元します。
+この例では、対象サーバー **mydemoserver.postgres.database.azure.com** 上のデータベース **mypgsqldb** に、ダンプ ファイル **testdb.dump** からデータを復元します。
 ```bash
-pg_restore -v --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=mypgsqldb testdb.dump
+pg_restore -v --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - エクスポートとインポートを使用して PostgreSQL データベースを移行するには、「[Migrate your PostgreSQL database using export and import (エクスポートとインポートを使用した PostgreSQL の移行)](howto-migrate-using-export-and-import.md)」を参照してください。
