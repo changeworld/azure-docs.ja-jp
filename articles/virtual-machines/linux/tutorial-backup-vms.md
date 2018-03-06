@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2eb0958169b175813b0dca775e9250da1cb364d4
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 1c07fa40964fdcbae6ec1cbbbf77094753956cf1
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="back-up-linux--virtual-machines-in-azure"></a>Azure での Linux 仮想マシンのバックアップ
 
@@ -172,5 +172,5 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 次のチュートリアルに進み、仮想マシンの監視について学習してください。
 
 > [!div class="nextstepaction"]
-> [仮想マシンの監視](tutorial-monitoring.md)
+> [仮想マシンの管理](tutorial-govern-resources.md)
 

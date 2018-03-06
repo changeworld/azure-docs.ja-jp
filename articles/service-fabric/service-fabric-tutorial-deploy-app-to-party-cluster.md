@@ -1,6 +1,6 @@
 ---
-title: "パーティ クラスターに Azure Service Fabric アプリケーションをデプロイする | Microsoft Docs"
-description: "パーティ クラスターにアプリケーションをデプロイする方法を説明します。"
+title: "クラスターに Azure Service Fabric アプリケーションをデプロイする | Microsoft Docs"
+description: "このチュートリアルでは、Service Fabric クラスターにアプリケーションをデプロイする方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
@@ -15,14 +15,14 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
 ms.custom: mvc
-ms.openlocfilehash: 91d4398589707e8007c4b93639ddb568e39f51a7
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 35ddf77b1e9a9b355ed2cee4731e3c5d87c4a701
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-an-application-to-a-party-cluster-in-azure"></a>Azure でパーティ クラスターにアプリケーションをデプロイする
-このチュートリアルはシリーズの第 2 部です。Azure でパーティ クラスターに Azure Service Fabric アプリケーションをデプロイする方法について説明します。
+# <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターにアプリケーションをデプロイする
+このチュートリアルはシリーズの第 2 部です。Azure で実行されているクラスターに Azure Service Fabric アプリケーションをデプロイする方法について説明します。
 
 シリーズの第 2 部で学習する内容は次のとおりです。
 > [!div class="checklist"]

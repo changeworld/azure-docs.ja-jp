@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Fabric Java アプリケーションを作成する | Microsoft Docs"
-description: "Service Fabric のクイック スタート サンプルを使用して Azure 向けの Java アプリケーションを作成します。"
+description: "このクイック スタートでは、Service Fabric Reliable Services サンプル アプリケーションを使用して、Azure 用の Java アプリケーションを作成します。"
 services: service-fabric
 documentationcenter: java
 author: suhuruli
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 10/23/2017
 ms.author: suhuruli
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8f4d121ba76d63b70fa6976125457942a0e98aa9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0b284194abbbdd38524c0ae74ab7e05977d6883f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="create-a-java-application"></a>Java アプリケーションの作成
+# <a name="quickstart-deploy-a-java-service-fabric-reliable-services-application-to-azure"></a>クイック スタート: Java Service Fabric Reliable Services アプリケーションを Azure にデプロイする
 Azure Service Fabric は、マイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
 このクイック スタートでは、Linux 開発者コンピューターで Eclipse IDE を使用して、Service Fabric に初めての Java アプリケーションをデプロイする方法を示します。 最後まで読み進めていけば、Java Web フロントエンドからクラスター内のステートフルなバックエンド サービスに投票結果を保存するアプリケーションが完成します。

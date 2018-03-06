@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/19/2018
 ms.author: ryanwi
-ms.openlocfilehash: 5398605f98c9e115255057cfad0c4c2c2e14737c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 20f9be1a0274b40a684fe12207cf9fe1f33969c8
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Windows で初めての Service Fabric コンテナー アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -387,6 +387,7 @@ Windows Server コンテナー (プロセス分離モード) は、新しいバ�
 ```xml
 <ContainerHostPolicies> 
          <ImageOverrides> 
+           <Image Name="myregistry.azurecr.io/samples/helloworldappDefault" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1701" Os="14393" /> 
                <Image Name="myregistry.azurecr.io/samples/helloworldapp1709" Os="16299" /> 
          </ImageOverrides> 
@@ -406,6 +407,7 @@ WIndows Server 2016 のビルド バージョンは 14393 であり、Windows Se
 
 VM 上の基になる OS がビルド 16299 (バージョン 1709) である場合、Service Fabric はその Windows Server バージョンに対応するコンテナー イメージを取得します。  アプリケーション マニフェストで、タグが付けられたコンテナー イメージと共にタグなしのコンテナー イメージも指定されている場合、Service Fabric は、タグなしのイメージを複数のバージョン間で動作するものとして扱います。 コンテナー イメージを明示的にタグ付けすることをお勧めします。
 
+タグなしのコンテナー イメージは、ServiceManifest に指定されているイメージのオーバーライドとして機能します。 つまり "myregistry.azurecr.io/samples/helloworldappDefault" イメージは、ServiceManifest の ImageName に指定されている "myregistry.azurecr.io/samples/helloworldapp" よりも優先されます。
 
 ## <a name="complete-example-service-fabric-application-and-service-manifests"></a>Service Fabric のアプリケーション マニフェストとサービス マニフェストの完全な例
 この記事で使用される完全なサービス マニフェストとアプリケーション マニフェストは次のとおりです。
@@ -430,6 +432,9 @@ VM 上の基になる OS がビルド 16299 (バージョン 1709) である場�
       <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
       <ContainerHost>
         <ImageName>myregistry.azurecr.io/samples/helloworldapp</ImageName>
+        <!-- Pass comma delimited commands to your container: dotnet, myproc.dll, 5" -->
+        <!--Commands> dotnet, myproc.dll, 5 </Commands-->
+        <Commands></Commands>
       </ContainerHost>
     </EntryPoint>
     <!-- Pass environment variables to your container: -->    

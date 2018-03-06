@@ -1,22 +1,22 @@
 ---
-title: "Azure クイックスタート - Ruby を使用して Azure Blob Storage との間でオブジェクトを転送する | Microsoft Docs"
-description: "Ruby を使って Azure Blob Storage との間で双方向にオブジェクトを転送する方法を説明します"
+title: "Azure クイック スタート - Ruby を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs"
+description: "このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Ruby 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。"
 services: storage
-author: ruthogunnnaike
+author: tamram
 manager: jeconnoc
+ms.custom: mvc
 ms.service: storage
-ms.tgt_pltfrm: na
-ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 01/18/2018
+ms.date: 02/22/2018
 ms.author: seguler
-ms.openlocfilehash: 649099f045639c8c506fb4a4be65736626044fe6
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: df885849e879317be6379767a09dd30a93687902
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 02/24/2018
 ---
-#  <a name="transfer-objects-tofrom-azure-blob-storage-using-ruby"></a>Ruby を使用して Azure Blob Storage との間でオブジェクトを転送する
+# <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>クイック スタート: Ruby を使用して BLOB をアップロード、ダウンロード、および一覧表示する
+
 このクイックスタートでは、Ruby を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。 
 
 ## <a name="prerequisites"></a>前提条件

@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: cdfb5db7b304a18d6945328abc0ca7ebf2f9ec6a
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub webhook でトリガーされる関数の作成
 
@@ -67,7 +67,7 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
 ## <a name="configure-the-webhook"></a>webhook を構成する
 
-1. GitHub で、自分が所有するリポジトリに移動します。 フォークした任意のリポジトリを使用することもできます。 リポジトリをフォークする必要がある場合は、<https://github.com/Azure-Samples/functions-quickstart> を使用します。
+1. GitHub で、自分が所有するリポジトリに移動します。 フォークした任意のリポジトリを使用することもできます。 リポジトリをフォークする必要がある場合は、<https://github.com/Azure-Samples/functions-quickstart> を使用してください。
 
 1. **[Settings (設定)]**、**[Webhooks (webhook)]**、**[Add webhook (webhook の追加)]** の順にクリックします。
 
@@ -77,11 +77,11 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
     ![webhook URL とシークレットの設定](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 
-| 設定 | 推奨値 | 説明 |
+| Setting | 推奨値 | [説明] |
 |---|---|---|
 | **Payload URL (ペイロード URL)** | コピーされた値 | **[</> 関数の URL の取得]** によって返された値を使用します。 |
-| **シークレット**   | コピーされた値 | **[</> GitHub シークレットの取得]** によって返された値を使用します。 |
 | **コンテンツの種類** | application/json | この関数は、JSON ペイロードを予測します。 |
+| **シークレット**   | コピーされた値 | **[</> GitHub シークレットの取得]** によって返された値を使用します。 |
 | Event triggers (イベント トリガー) | Let me select individual events (個々のイベントを選択させてください) | 問題コメント イベントに対してのみトリガーします。  |
 | | Issue comment (問題コメント) |  |
 
@@ -105,9 +105,9 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-GitHub webhook から要求が受信されときに実行される関数を作成しました。
+GitHub webhook から要求が受信されときにトリガーされる関数を作成しました。
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 

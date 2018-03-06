@@ -5,16 +5,16 @@ services: automation
 keywords: "インベントリ, オートメーション, 変更, 追跡"
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.service: automation
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: bdd638d0612a8ddee1a0ddb4fd4579f8da14b887
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 97cd2c91ca2c70b044518c43d49356918202d5ff
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="discover-what-software-is-installed-on-your-azure-and-non-azure-machines"></a>Azure マシンと Azure 以外のマシンにインストールされているソフトウェアを検出する
 
@@ -41,35 +41,17 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="enable-change-tracking-and-inventory"></a>変更履歴とインベントリを有効にする
 
-このチュートリアルでは、まず VM の変更履歴とインベントリを有効にする必要があります。 VM の別の Automation ソリューションで有効にした場合、この手順は不要です。
+このチュートリアルでは、まず VM の変更履歴とインベントリを有効にする必要があります。 既に VM の **Change Tracking** ソリューションを有効にしてある場合、この手順は不要です。
 
 1. 左側のメニューで **[仮想マシン]** を選択し､一覧から VM を選択します。
 2. 左側のメニューの **[操作]** セクションで、**[インベントリ]** をクリックします。 **[変更履歴とインベントリを有効化]** ページが開きます。
 
-この VM でインベントリが有効かどうかを確認する検証が行われます。
-この検証では、Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、ソリューションがワークスペースにあるかどうかの確認が行われます。
+![インベントリのオンボード構成バナー](./media/automation-tutorial-installed-software/enableinventory.png)
+
+このソリューションを有効にするには、使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペースは、インベントリのような機能およびサービスによって生成されるデータを収集するために使用されます。
 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
-
-また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) とハイブリッド worker でプロビジョニングされているかどうかが確認されます。
-このエージェントは VM との通信に使用され、インストールされているソフトウェアに関する情報を取得します。
-また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) と Automation ハイブリッド Runbook worker でプロビジョニングされているかどうかが確認されます。
-
-これらの前提条件が満たされていない場合、バナーが表示され、ソリューションを有効にするオプションを選択できます。
-
-![インベントリのオンボード構成バナー](./media/automation-tutorial-installed-software/enableinventory.png)
-
-ソリューションを有効にするには、バナーをクリックします。
-検証後、次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
-
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペース
-* [Automation](./automation-offering-get-started.md)
-* [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) が VM で有効になっている
-
-**[変更履歴とインベントリ]** 画面が開きます。 使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
-
-![変更履歴ソリューションを有効にするウィンドウ](./media/automation-tutorial-installed-software/installed-software-enable.png)
 
 ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。
 ソリューションが有効になると、VM にインストールされているソフトウェアと変更に関する情報が Log Analytics に送られます。
@@ -137,4 +119,4 @@ ConfigurationData
 さらに詳しく学ぶには、変更履歴とインベントリ ソリューションの概要に進んでください。
 
 > [!div class="nextstepaction"]
-> [変更管理とインベントリ ソリューション](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [変更管理とインベントリ ソリューション](automation-change-tracking.md)

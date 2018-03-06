@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 03/20/2018
+ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 63fb091166dcb3773354221e6c6628f6205bb308
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8e64ab3214633ae2f34234514dca5e7bb7b1896e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -39,6 +39,7 @@ az provider register -n Microsoft.ContainerService
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
 [az group create][az-group-create] コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理グループです。
+リソース グループを作成するときに場所を指定するように求められます。Azure で利用するリソースは、その場所に配置されます。 AKS はプレビュー段階ですが、いくつかの場所に限り、選択できるようになっています。 具体的には、`eastus, westeurope, centralus, canadacentral, canadaeast` が該当します。
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -88,7 +89,7 @@ Kubernetes クラスターに接続するように kubectl を構成するには
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 ```
 
-クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使って、クラスター ノードの一覧を取得します。
+クラスターへの接続を確認するには、[kubectl get][kubectl-get] コマンドを使って、クラスター ノードの一覧を取得します。 表示されるまでに数分かかる場合があります。
 
 ```azurecli-interactive
 kubectl get nodes
@@ -103,9 +104,9 @@ k8s-myAKSCluster-36346190-0   Ready     agent     2m        v1.7.7
 
 ## <a name="run-the-application"></a>アプリケーションの実行
 
-Kubernetes のマニフェスト ファイルでは、どのようなコンテナー イメージを実行するかというようなことも含め、クラスターの望ましい状態を定義します。 この例では、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。
+Kubernetes のマニフェスト ファイルでは、どのようなコンテナー イメージを実行するかというようなことも含め、クラスターの望ましい状態を定義します。 この例では、マニフェストを使用して、Azure Vote アプリケーションを実行するために必要なすべてのオブジェクトを作成します。 ここで紹介するイメージはサンプル アプリケーションですが、[イメージの作成](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app)と [Azure Container Registry へのデプロイ](https://docs.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-acr)に関するページを読んで独自のアプリケーションを使用してもかまいません。
 
-`azure-vote.yaml` という名前のファイルを作成し、そこに以下の YAML コードをコピーします。 Azure Cloud Shell で作業している場合、仮想システムまたは物理システムで作業するときと同じように vi または Nano を使用してこのファイルを作成できます。
+`azure-vote.yaml` という名前のファイルを作成し、そこに以下の YAML コードをコピーします。 Azure Cloud Shell で作業している場合、仮想システムまたは物理システムで作業するときと同じように vi または Nano を使用してこのファイルを作成できます。 ローカルで作業する場合は、Visual Studio Code を使用し、`code azure-vote.yaml` を実行することで、このファイルを作成できます。
 
 ```yaml
 apiVersion: apps/v1beta1
@@ -231,7 +232,7 @@ az group delete --name myResourceGroup --yes --no-wait
 AKS の詳細を参照し、デプロイの例の完全なコードを確認するには、Kubernetes クラスター チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [AKS クラスターの管理][aks-tutorial]:
+> [ASK チュートリアル][aks-tutorial]:
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git

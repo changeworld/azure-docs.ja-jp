@@ -2,17 +2,17 @@
 title: "Azure Service Fabric CLI の概要"
 description: "Azure Service Fabric CLI の使用方法について説明します。 クラスターに接続して、アプリケーションを管理する方法についても説明します。"
 services: service-fabric
-author: samedder
+author: Christina-Kang
 manager: timlt
 ms.service: service-fabric
 ms.topic: get-started-article
 ms.date: 10/20/2017
-ms.author: edwardsa
-ms.openlocfilehash: 3d7c79e00d2b41669296d08250cb73434000cbb2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.author: bikang
+ms.openlocfilehash: 9ad1286ffdf0c45a73b0f4a472bc0de683d20ee5
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -32,7 +32,8 @@ Service Fabric CLI は、Service Fabric SDK の最新のランタイム バー�
 
 | CLI のバージョン   | サポートされているランタイムのバージョン |
 |---------------|---------------------------|
-| 最新 (3 前後)  | 最新 (6.0 前後)            |
+| 最新 (4 前後)  | 最新 (6.1 前後)            |
+| 3.0.0         | 6.0                       |
 | 1.1.0         | 5.6、5.7                  |
 
 `pip install` コマンドの末尾にオプションとして `==<version>` を付けると、インストールする CLI のターゲット バージョンを指定できます。 たとえば、バージョン 1.1.0 であれば、次のような構文になります。

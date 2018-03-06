@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/11/2017
+ms.date: 02/28/2018
 ms.author: eamono
 ms.custom: mvc
-ms.openlocfilehash: e277aa44dfe625780d72a78010f0638c73a6b182
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 4c97cda2f16c769d0510b6a661bd03b20f488b62
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Update と Change Tracking ソリューションの Azure Automation への配布準備をする
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 01/10/2018
 
 ## <a name="onboard-an-azure-vm"></a>Azure VM の配布準備
 
-Azure Virtual Machines の配布準備を自動的に行うには、Change Tracking または Update Management ソリューションで既存の VM の配布準備をする必要があります。 この手順では、Update Management および Change Tracking で仮想マシンの配布準備を行います。
+マシンの配布準備を行う方法は複数あります。[仮想マシン](automation-onboard-solutions-from-vm.md)や [Automation アカウント](automation-onboard-solutions-from-automation-account.md)から、または Runbook を使用して行うことができます。 このチュートリアルでは、Runbook を使用して Update Management を有効にする方法について説明します。 さらに大きな規模で Azure Virtual Machines の配布準備を行うには、Change Tracking または Update Management ソリューションで既存の VM の配布準備をする必要があります。 この手順では、Update Management および Change Tracking で仮想マシンの配布準備を行います。
 
 ### <a name="enable-change-tracking-and-inventory"></a>Change Tracking と Inventory の有効化
 

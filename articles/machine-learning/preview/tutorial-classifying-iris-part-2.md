@@ -1,23 +1,23 @@
 ---
-title: "Azure Machine Learning サービス (プレビュー) のモデルの構築 | Microsoft Docs"
+title: "Azure Machine Learning サービス (プレビュー) のモデル構築チュートリアル | Microsoft Docs"
 description: "このチュートリアルでは、Azure Machine Learning サービス (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 このパート 2 では、実験について説明します。"
 services: machine-learning
 author: hning86
-ms.author: haining
+ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: mvc
 ms.topic: tutorial
-ms.date: 11/06/2017
-ms.openlocfilehash: 3337ba9fa6845deb98813259821f77ff713f9eb1
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.date: 02/28/2018
+ms.openlocfilehash: f52d4268c3983b419a6393bbd651301022688029
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="classify-iris-part-2-build-a-model"></a>あやめの分類 (パート 2): モデルを構築する
+# <a name="tutorial-classify-iris-part-2---build-a-model"></a>チュートリアル: あやめの分類 (パート 2) - モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
 
 このチュートリアルは、3 部構成のシリーズのパート 2 になります。 チュートリアルのこのパートでは、Azure Machine Learning サービス (プレビュー) を使って次の作業を行います。
@@ -33,6 +33,8 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 > * クラウド Azure HDInsight 環境でスクリプトを実行する。
 
 このチュートリアルでは、経時的な変化を伴わない[あやめデータ セット](https://en.wikipedia.org/wiki/Iris_flower_data_set)を使用します。 スクリーンショットは Windows のものですが、Mac OS を使用した場合も大きな違いはありません。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアル シリーズのパート 1 を済ませます。 このチュートリアルの手順を始める前に、[データの準備に関するチュートリアル](tutorial-classifying-iris-part-1.md)に従って Azure Machine Learning リソースを作成し、Azure Machine Learning Workbench アプリケーションをインストールしてください。
@@ -374,6 +376,10 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    >リモート HDInsight クラスターで実行するときは、`admin` ユーザー アカウントを使って YARN (Yet Another Resource Negotiator) ジョブの実行情報を `https://<cluster_name>.azurehdinsight.net/yarnui` で確認することもできます。
 
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+[!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
+
 ## <a name="next-steps"></a>次の手順
 3 部構成のチュートリアル シリーズのパート 2 では、Azure Machine Learning サービスを使って次の作業を行う方法について説明しました。
 > [!div class="checklist"]
@@ -389,4 +395,4 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
 シリーズのパート 3 に進む準備が整いました。 次は作成したロジスティック回帰モデルを、リアルタイムの Web サービスとしてデプロイしましょう。
 
 > [!div class="nextstepaction"]
-> [モデルのデプロイ](tutorial-classifying-iris-part-3.md)
+> [チュートリアル 3 - あやめの分類: モデルをデプロイする](tutorial-classifying-iris-part-3.md)

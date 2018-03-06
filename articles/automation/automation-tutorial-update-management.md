@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.author: zachal
 ms.custom: mvc
-ms.openlocfilehash: 615618e0e78f97e3f41dc2c0e1ca9a6e4b1b47bf
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 614b5bd7a2663c3b61f511dcc6b6a49218ac439a
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-windows-updates-with-azure-automation"></a>Azure Automation で Windows 更新プログラムを管理する
 
@@ -65,12 +65,9 @@ Azure Portal (http://portal.azure.com) にログインします。
 また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) と Automation ハイブリッド Runbook worker でプロビジョニングされているかどうかが確認されます。
 このエージェントは VM との通信に使用され、更新ステータスに関する情報を取得します。
 
-これらの前提条件が満たされていない場合、バナーが表示され、ソリューションを有効にするオプションを選択できます。
+Log Analytics ワークスペースおよび Automation アカウントを選択し、**[有効化]** をクリックして、ソリューションを有効にします。 ソリューションを有効にするには最大 15 分かかります。
 
-![Update Management のオンボード構成バナー](./media/automation-tutorial-update-management/manageupdates-onboard-solution-banner.png)
-
-ソリューションを有効にするには、バナーをクリックします。
-検証後、次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
+オンボード中に次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
 
 * [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペース
 * [Automation](./automation-offering-get-started.md)

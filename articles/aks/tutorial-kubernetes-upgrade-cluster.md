@@ -6,14 +6,14 @@ author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: tutorial
-ms.date: 11/15/2017
+ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: d82232d590bcc5c578ebe8ed7c85d25aebcfe097
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 16c8892743ac25c21b7004e10796c77c3ac9f900
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>Azure Container Service (AKS) での Kubernetes のアップグレード
 
@@ -35,25 +35,25 @@ Azure Container Service (AKS) クラスターは、Azure CLI を使用してア�
 
 ## <a name="get-cluster-versions"></a>クラスター バージョンを取得する
 
-クラスターをアップグレードする前に、`az aks get-versions` コマンドを使用して、アップグレードで利用できる Kubernetes のリリースを確認します。
+クラスターをアップグレードする前に、`az aks get-upgrades` コマンドを使用して、アップグレードで利用できる Kubernetes のリリースを確認します。
 
-```azurecli-interactive
-az aks get-versions --name myAKSCluster --resource-group myResourceGroup --output table
+```azurecli
+az aks get-upgrades --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 
-ここでは、現在のノード バージョンが `1.7.7` であり、バージョン `1.7.9`、`1.8.1`、および `1.8.2` が使用可能なことがわかります。
+ここでは、ノードの現在のバージョンが `1.7.9` であることがわかります。また、[Upgrades] 列からは利用可能なアップグレードのバージョンがわかります。
 
 ```
-Name     ResourceGroup    MasterVersion    MasterUpgrades       NodePoolVersion     NodePoolUpgrades
--------  ---------------  ---------------  -------------------  ------------------  -------------------
-default  myAKSCluster     1.7.7            1.8.2, 1.7.9, 1.8.1  1.7.7               1.8.2, 1.7.9, 1.8.1
+Name     ResourceGroup    MasterVersion    NodePoolVersion    Upgrades
+-------  ---------------  ---------------  -----------------  ----------------------------------
+default  myResourceGroup  1.7.9            1.7.9              1.7.12, 1.8.1, 1.8.2, 1.8.6, 1.8.7
 ```
 
 ## <a name="upgrade-cluster"></a>クラスターをアップグレードする
 
 `az aks upgrade` コマンドを使用してクラスター ノードをアップグレードします。 次の例では、クラスターをバージョン `1.8.2` に更新します。
 
-```azurecli-interactive
+```azurecli
 az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes-version 1.8.2
 ```
 
@@ -117,7 +117,7 @@ az aks upgrade --name myAKSCluster --resource-group myResourceGroup --kubernetes
 
 ここで、`az aks show` コマンドを使用して、アップグレードが成功したことを確認できます。
 
-```azurecli-interactive
+```azurecli
 az aks show --name myAKSCluster --resource-group myResourceGroup --output table
 ```
 

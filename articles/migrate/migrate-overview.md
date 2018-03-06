@@ -4,14 +4,14 @@ description: "Azure Migrate サービスの概要を示します。"
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 01/08/2018
+ms.date: 02/26/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a9e04c7fa2a32ab7be8844b962f4bccdf260af23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 45eac1d1ecb173ba0a62ab13f47b7ee6e12f7af3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
@@ -48,7 +48,7 @@ Azure Migrate の価格については、[こちら](https://azure.microsoft.com
 
 **プロパティ** | **詳細**
 --- | ---
-**ターゲットの場所** | Azure 上の移行先となる場所。 既定では、ターゲットの場所は、米国西部 2 に設定されます。 
+**ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/>Azure Migrate は現在、30 のリージョンをサポートしています (オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、ドイツ中部、ドイツ北東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2)。 既定では、ターゲットの場所は、米国西部 2 に設定されます。 
 **ストレージ冗長** | 移行後に Azure VM で使用される[ストレージ冗長](https://docs.microsoft.com/azure/storage/common/storage-redundancy)の種類。 既定値はローカル冗長ストレージ (LRS) です。 Azure Migrate では管理ディスク ベースの評価だけがサポートされ、管理ディスクでは LRS だけがサポートされていることに注意してください。そのため、現在、プロパティには LRS オプションだけがあります。 
 **サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 サイズ変更は、オンプレミス VM の*パフォーマンス履歴*に基づいて行うことも、パフォーマンス履歴を考慮せずに、Azure でも "*オンプレミスと同じ*" VM サイズにすることもできます。 既定値は、パフォーマンスに基づくサイズ変更です。
 **価格プラン** | コスト計算の評価では、ソフトウェア アシュアランスがあるかどうかや、[Azure ハイブリッド特典](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を利用できるかどうかが考慮されます。 また、登録対象の [Azure プラン](https://azure.microsoft.com/support/legal/offer-details/)も考慮されるほか、そのプランに加えて適用されるサブスクリプション固有の割引 (%) を指定することができます。 
