@@ -1,21 +1,21 @@
 ---
-title: "Azure クイックスタート - Java を使用して Azure Blob Storage との間でオブジェクトを転送する | Microsoft Docs"
-description: "Java を使って Azure Blob Storage との間で双方向にオブジェクトを転送する方法を説明します"
+title: "Azure クイック スタート - Java を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs"
+description: "このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Java 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。"
+services: storage
 author: roygara
 manager: jeconnoc
-services: storage
+ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 11/01/2017
+ms.date: 02/22/2018
 ms.author: rogarana
-ms.custom: mvc
-ms.openlocfilehash: 12e234b483ca7e3b030256bf1cedaed2bcc120d3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cde366e75e4111a911be67795a2ad4dfa73778ea
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="transfer-objects-tofrom-azure-blob-storage-using-java"></a>Java を使用して Azure Blob Storage との間でオブジェクトを転送する
+# <a name="quickstart-upload-download-and-list-blobs-using-java"></a>クイック スタート: Java を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
 このクイックスタートでは、Java を使って、Azure Blob Storage 内のコンテナーでブロック BLOB のアップロード、ダウンロード、一覧取得を行う方法を説明します。
 

@@ -5,15 +5,15 @@ services: automation
 keywords: "変更, 追跡, オートメーション"
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0aefa175d676bd7e98841d3a1e9ff5a8c90b7deb
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: f0af493036740b854609cea07e01136aac808579
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>環境の変更に関する問題を解決する
 
@@ -47,37 +47,19 @@ Azure Portal (http://portal.azure.com) にログインします。
 このチュートリアルでは、まず VM の変更履歴とインベントリを有効にする必要があります。 VM の別の Automation ソリューションで有効にした場合、この手順は不要です。
 
 1. 左側のメニューで **[仮想マシン]** を選択し､一覧から VM を選択します。
-1. 左側のメニューの **[操作]** セクションで、**[インベントリ]** をクリックします。 **[変更履歴とインベントリを有効化]** ページが開きます。
+1. 左側のメニューの **[操作]** セクションで、**[インベントリ]** をクリックします。 **[変更履歴]** ページが表示されます。
 
-この VM で変更履歴とインベントリが有効になっているかどうかを確認する検証が行われます。
-この検証では、Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、ソリューションがワークスペースにあるかどうかの確認が行われます。
+![変更履歴の有効化](./media/automation-tutorial-troubleshoot-changes/enableinventory.png) **[変更履歴]** 画面が表示されます。 使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
 
 [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペースは、インベントリのような機能およびサービスによって生成されるデータを収集するために使用されます。
 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。
 
-また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) とハイブリッド worker でプロビジョニングされているかどうかが確認されます。
+オンボーディング時には、VM と共に Microsoft Monitoring Agent (MMA) とハイブリッド worker がプロビジョニングされます。
 このエージェントは VM との通信に使用され、インストールされているソフトウェアに関する情報を取得します。
-また、検証プロセスでは、VM が Microsoft Monitoring Agent (MMA) と Automation ハイブリッド Runbook worker でプロビジョニングされているかどうかが確認されます。
-
-これらの前提条件が満たされていない場合、バナーが表示され、ソリューションを有効にするオプションを選択できます。
-
-![変更履歴とインベントリのオンボード構成バナー](./media/automation-tutorial-troubleshoot-changes/enableinventory.png)
-
-ソリューションを有効にするには、バナーをクリックします。
-検証後、次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
-
-* [Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fautomation%2ftoc.json) ワークスペース
-* [Automation](./automation-offering-get-started.md)
-* [Hybrid Runbook Worker](./automation-hybrid-runbook-worker.md) が VM で有効になっている
-
-**[変更履歴とインベントリ]** 画面が開きます。 使用する場所、Log Analytics ワークスペース、Automation アカウントを構成し、**[有効にする]** をクリックします。 フィールドが淡色表示されている場合は、その VM で別の Automation ソリューションが有効になっているため、同じワークスペースと Automation アカウントを使用する必要があることを示します。
-
-![変更履歴ソリューションを有効にするウィンドウ](./media/automation-tutorial-troubleshoot-changes/installed-software-enable.png)
 
 ソリューションを有効にするには最大 15 分かかります。 この処理中はブラウザーのウィンドウは閉じないでください。
 ソリューションが有効になると、VM にインストールされているソフトウェアと変更に関する情報が Log Analytics に送られます。
 データの分析に使用できるようになるまでに、30 分から 6 時間かかる場合があります。
-
 
 ## <a name="using-change-tracking-in-log-analytics"></a>Log Analytics で変更履歴を使用する
 
@@ -107,40 +89,47 @@ Log Analytics でのログ ファイルの実行と検索については、[Azur
 1. **[Windows レジストリ]** タブで **[追加]** を選択します。
     **[変更履歴用の Windows レジストリを追加する]** ウィンドウが開きます。
 
-   ![変更履歴のレジストリの追加](./media/automation-vm-change-tracking/change-add-registry.png)
+3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
-2. **[有効化]** で **[True]** を選択します。
-3. **[項目名]** ボックスに、フレンドリ名を入力します。
-4. (省略可能) **[グループ]** ボックスに、グループ名を入力します。
-5. **[Windows レジストリ キー]** ボックスに、追跡するレジストリ キーの名前を入力します。
-6. **[保存]** を選択します。
+|プロパティ  |[説明]  |
+|---------|---------|
+|有効     | 設定が適用されるかどうかを決定します。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
+|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
+|Windows レジストリ キー   | ファイル確認のためのパス (例: "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup")。      |
 
 ### <a name="add-a-windows-file"></a>Windows ファイルを追加する
 
 1. **[Windows ファイル]** タブで **[追加]** を選択します。 **[変更履歴用の Windows ファイルを追加する]** ウィンドウが開きます。
 
-   ![変更履歴の Windows ファイルの追加](./media/automation-vm-change-tracking/change-add-win-file.png)
+1. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-2. **[有効化]** で **[True]** を選択します。
-3. **[項目名]** ボックスに、フレンドリ名を入力します。
-4. (省略可能) **[グループ]** ボックスに、グループ名を入力します。
-5. **[パスの入力]** ボックスに、追跡するファイルの完全なパスとファイル名を入力します。
-6. **[保存]** を選択します。
+|プロパティ  |[説明]  |
+|---------|---------|
+|有効     | 設定が適用されるかどうかを決定します。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
+|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
+|パスの入力     | ファイル確認のためのパス (例: "c:\temp\myfile.txt")。       |
 
 ### <a name="add-a-linux-file"></a>Linux ファイルを追加する
 
 1. **[Linux ファイル]** タブで **[追加]** を選択します。 **[変更履歴用の Linux ファイルを追加する]** ウィンドウが開きます。
 
-   ![変更履歴の Linux ファイルの追加](./media/automation-vm-change-tracking/change-add-linux-file.png)
+1. **[変更履歴用の Linux ファイルを追加する]** で、追跡するファイルまたはディレクトリの情報を入力し、**[保存]** をクリックします。
 
-2. **[有効化]** で **[True]** を選択します。
-3. **[項目名]** ボックスに、フレンドリ名を入力します。
-4. (省略可能) **[グループ]** ボックスに、グループ名を入力します。
-5. **[パスの入力]** ボックスに、追跡するファイルの完全なパスとファイル名を入力します。
-6. **[パスの種類]** ボックスで、**[ファイル]** または **[ディレクトリ]** を選択します。
-7. **[再帰]** で、指定したパスとその下にあるすべてのファイルとパスの変更を追跡するには、**[オン]** を選択します。 選択したパスまたはファイルのみを追跡するには、**[オフ]** を選択します。
-8. **[Sudo の使用]** で、`sudo` コマンドを使用してアクセスする必要があるファイルを追跡するには、で、**[オン]** を選択します。 それ以外の場合は、**[オフ]** を選択します。
-9. **[保存]** を選択します。
+|プロパティ  |[説明]  |
+|---------|---------|
+|有効     | 設定が適用されるかどうかを決定します。        |
+|Item Name     | 追跡するファイルのフレンドリ名。        |
+|グループ     | ファイルを論理的にグループ化するためのグループ名。        |
+|パスの入力     | ファイル確認のためのパス (例: "/etc/*.conf")。       |
+|パスの種類     | 追跡する項目の種類。"ファイル" または "ディレクトリ" を指定できます。        |
+|再帰     | 追跡する項目を検索するときに、再帰を使用するかどうかを決定します。        |
+|sudo の使用     | この設定により、項目を確認するときに、sudo を使用するかどうかが決まります。         |
+|リンク     | この設定により、ディレクトリを走査するときの、シンボリック リンクの処理方法が決まります。<br> **無視** - シンボリック リンクを無視し、参照先のファイル/ディレクトリを含めません。<br>**フォロー** - 再帰中、シンボリック リンクをフォローします。参照先のファイル/ディレクトリも含めます。<br>**管理** - シンボリック リンクをフォローします。また、返された内容の処理を変更することができます。      |
+
+   > [!NOTE]   
+   > "管理" リンク オプションはお勧めしません。 ファイルのコンテンツの取得はサポートされていません。
 
 ## <a name="enable-activity-log-connection"></a>アクティビティ ログの接続を有効にする
 
@@ -188,4 +177,4 @@ VM 内から **[操作]** の **[変更履歴]** を選択します。
 さらに詳しく学ぶには、変更履歴とインベントリ ソリューションの概要に進んでください。
 
 > [!div class="nextstepaction"]
-> [変更管理とインベントリ ソリューション](../log-analytics/log-analytics-change-tracking.md?toc=%2fazure%2fautomation%2ftoc.json)
+> [変更管理とインベントリ ソリューション](automation-change-tracking.md)

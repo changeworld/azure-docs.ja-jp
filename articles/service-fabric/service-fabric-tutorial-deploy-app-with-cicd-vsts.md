@@ -1,6 +1,6 @@
 ---
 title: "継続的インテグレーションを使用して Azure Service Fabric アプリケーションをデプロイする (Team Services) | Microsoft Docs"
-description: "Visual Studio Team Services を使用して、継続的インテグレーションと Service Fabric アプリケーションのデプロイを設定する方法について説明します。  Azure の Service Fabric クラスターにアプリケーションをデプロイします。"
+description: "このチュートリアルでは、Visual Studio Team Services を使用して、継続的インテグレーションと Service Fabric アプリケーションのデプロイをセットアップする方法について説明します。  Azure の Service Fabric クラスターにアプリケーションをデプロイします。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -15,13 +15,13 @@ ms.workload: NA
 ms.date: 12/13/2017
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 2fb7ab906208a58c0b5cd3af8b53188fbab94029
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 3f5ccd40e2b46cc68b4f7aeb67577fb66dbd5355
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
+# <a name="tutorial-deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>チュートリアル: CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
 このチュートリアルはシリーズの第 3 部です。Visual Studio Team Services を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
 
 シリーズの第 3 部で学習する内容は次のとおりです。

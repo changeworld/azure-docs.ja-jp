@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Fabric の Windows コンテナー アプリケーションを作成する | Microsoft Docs"
-description: "Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。"
+description: "このチュートリアルでは、Azure Service Fabric で初めての Windows コンテナー アプリケーションを作成します。"
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,16 +12,16 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/25/18
+ms.date: 02/27/18
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 4043c600dcc79cc85b66d66051416218507432af
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 7a8d28ef842ba77355628c79c20fa7fd3c693380
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Service Fabric の Windows コンテナー アプリケーションを Azure にデプロイする
+# <a name="quickstart-deploy-a-service-fabric-windows-container-application-on-azure"></a>クイック スタート: Service Fabric の Windows コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
 既存のアプリケーションを Service Fabric クラスター上の Windows コンテナー内で実行する場合は、アプリケーションに変更を加える必要はありません。 このクイックスタートでは、あらかじめ用意されている Docker コンテナー イメージを Service Fabric アプリケーションにデプロイする方法を紹介します。 最後まで読み進めていけば、Windows Server 2016 Nano Server と IIS コンテナーを稼働状態にすることができます。 このクイックスタートでは、Windows コンテナーのデプロイについて説明しています。Linux コンテナーをデプロイする場合は、[こちらのクイックスタート](service-fabric-quickstart-containers-linux.md)を参照してください。
@@ -48,21 +48,25 @@ Service Fabric SDK およびツールには、コンテナーを Service Fabric 
 
 **[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、**[OK]** をクリックします。
 
-**[サービス テンプレート]** の一覧から **[コンテナー]** を選択します。
+**[ホスト コンテナーとアプリケーション]** テンプレートから **[コンテナー]** を選択します。
 
 **[イメージ名]** に、「microsoft/iis:nanoserver」と入力します。これが [Windows Server Nano Server と IIS の基本イメージ](https://hub.docker.com/r/microsoft/iis/)になります。 
 
 サービスに "MyContainerService" という名前を付けて **[OK]** をクリックします。
 
 ## <a name="configure-communication-and-container-port-to-host-port-mapping"></a>通信/コンテナー ポートからホスト ポートへのマッピングを構成する
-サービスには、通信のエンドポイントが必要です。  ServiceManifest.xml ファイル内の `Endpoint` にプロトコル、ポート、タイプを追加しましょう。 このクイックスタートでは、コンテナー化されたサービスはポート 80 でリッスンします。 
+サービスには、通信のエンドポイントが必要です。  このクイック スタートでは、コンテナー化されたサービスはポート 80 でリッスンします。  ソリューション エクスプローラーで *MyFirstContainer/ApplicationPackageRoot/MyContainerServicePkg/ServiceManifest.xml* を開きます。  ServiceManifest.xml ファイルで既存の `Endpoint` を更新し、プロトコル、ポート、URI スキームを追加します。 
 
 ```xml
-<Endpoint Name="MyContainerServiceTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
+<Resources>
+    <Endpoints>
+        <Endpoint Name="MyContainerServiceTypeEndpoint" UriScheme="http" Port="80" Protocol="http"/>
+   </Endpoints>
+</Resources>
 ```
 `UriScheme` を指定すると、Service Fabric ネーム サービスを使用したコンテナー エンドポイントが自動的に登録され、検出可能性が確保されます。 ServiceManifest.xml の完全なサンプル ファイルは、この記事の最後にあります。 
 
-ApplicationManifest.xml ファイルの `ContainerHostPolicies` 内にある `PortBinding` ポリシーを指定して、コンテナーのポートからホストへのポート マッピングを構成します。  このクイックスタートでは、`ContainerPort` は 80 で、`EndpointRef` は "MyContainerServiceTypeEndpoint" (サービス マニフェストで定義されたエンドポイント) です。  ポート 80 で受信するサービスへの要求は、コンテナーのポート 80 にマッピングされています。  
+ポート 80 で受信するサービスへの要求が、コンテナーのポート 80 にマッピングされるように、コンテナーとホストとの間のポート マッピングを構成します。  ソリューション エクスプローラーで *MyFirstContainer/ApplicationPackageRoot/ApplicationManifest.xml* を開き、`ContainerHostPolicies` の `PortBinding` ポリシーを指定します。  このクイックスタートでは、`ContainerPort` は 80 で、`EndpointRef` は "MyContainerServiceTypeEndpoint" (サービス マニフェストで定義されたエンドポイント) です。    
 
 ```xml
 <ServiceManifestImport>
@@ -79,9 +83,7 @@ ApplicationManifest.xml ファイルの `ContainerHostPolicies` 内にある `Po
 ApplicationManifest.xml の完全なサンプル ファイルは、この記事の最後にあります。
 
 ## <a name="create-a-cluster"></a>クラスターの作成
-Azure のクラスターにアプリケーションをデプロイする場合、パーティ クラスターに参加するか、または[独自のクラスターを Azure に作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)できます。
-
-パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 このクラスターでは、ノード間のセキュリティおよびクライアントとノードの間のセキュリティに単一の自己署名証明書が使用されます。 
+Azure のクラスターにアプリケーションをデプロイする場合、パーティ クラスターに参加できます。 パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 このクラスターでは、ノード間のセキュリティおよびクライアントとノードの間のセキュリティに単一の自己署名証明書が使用されます。 
 
 サインインし、[Windows クラスターに参加](http://aka.ms/tryservicefabric)します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 証明書と **[接続のエンドポイント]** の値は、次の手順で使用します。
 
@@ -108,7 +110,7 @@ Thumbprint                                Subject
 
 ソリューション エクスプローラーで **[MyFirstContainer]** を右クリックして、**[発行]** を選択します。 [発行] ダイアログが表示されます。
 
-パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、次の情報を入力します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順でインストールした証明書の拇印に一致する必要があります。 
+パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、接続パラメーターの情報を確認します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順でインストールした証明書の拇印に一致する必要があります。 
 
 ![[発行] ダイアログ](./media/service-fabric-quickstart-containers/publish-app.png)
 
@@ -187,7 +189,6 @@ Thumbprint                                Subject
         <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
       </ContainerHostPolicies>
     </Policies>
-
   </ServiceManifestImport>
   <DefaultServices>
     <!-- The section below creates instances of service types, when an instance of this 

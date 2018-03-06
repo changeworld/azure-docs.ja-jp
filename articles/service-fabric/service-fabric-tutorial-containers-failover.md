@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Fabric コンテナー アプリのフェールオーバーとスケーリング | Microsoft Docs"
-description: "Azure Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。  また、クラスターで実行されているコンテナーとサービスをスケーリングする方法についても説明します。"
+description: "このチュートリアルでは、Azure Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。  また、クラスターで実行されているコンテナーとサービスをスケーリングする方法についても説明します。"
 services: service-fabric
 documentationcenter: 
 author: suhuruli
@@ -16,13 +16,13 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 21dd9dfbc90c26236c43e2c334305ca97f63d361
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 27d1918125b8c2f79f6506470ae43354e402f9af
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングのデモンストレーション
+# <a name="tutorial-demonstrate-fail-over-and-scaling-of-container-services-with-service-fabric"></a>チュートリアル: Service Fabric でのコンテナー サービスのフェールオーバーとスケーリングをデモンストレーションする
 
 このチュートリアルは、シリーズの第 3 部です。 このチュートリアルでは、Service Fabric コンテナー アプリケーションでのフェールオーバーの処理方法について説明します。 さらに、コンテナーのスケーリング方法を説明します。 このチュートリアルでは、次のことを行いました。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 
 ![noderestart][noderestart]
 
-フロントエンド コンテナーが実行している場所を示すノード名が、クラスター内の別のノードに変わることを確認します。 しばらくすると、再度アプリケーションを参照し、アプリケーションが異なるノードで実行していることを確認できます。
+ノード名 (フロントエンド コンテナーが実行されている場所を示す) がクラスター内の別のノードに変わることを確認します。 しばらくすると、再度アプリケーションを参照し、アプリケーションが異なるノードで実行していることを確認できます。
 
 ## <a name="scale-containers-and-services-in-a-cluster"></a>クラスター内のコンテナーとサービスをスケーリングする
 Service Fabric コンテナーは、サービスに対する負荷に対応して、クラスター内でスケーリングすることができます。 コンテナーをスケーリングするには、クラスターで実行されるインスタンスの数を変更します。
@@ -68,7 +68,7 @@ Web フロントエンドをスケーリングするには、次の手順のよ�
 
 たったこれだけの管理タスクにより、フロントエンド サービスでユーザー負荷を処理するためのリソースが 2 倍になりました。 実行するサービスの信頼性を高めるために、サービスのインスタンスを複数用意する必要はないことに注目してください。 サービスで障害が発生した場合、Service Fabric によって新しいサービス インスタンスがクラスターで実行されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、コンテナーのフェールオーバーとアプリケーションのスケーリングを実際に行いました。 次の手順を完了しました。
 

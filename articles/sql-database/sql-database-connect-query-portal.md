@@ -17,15 +17,15 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: 131a1f77fa9c8d8e7b9ac5b01dee655b1aa1c3df
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: aa4df1854b15198ede1ee143afeff47b24dc567f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/24/2018
 ---
-# <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal：SQL クエリ エディターを使用した接続とデータの照会
+# <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: SQL クエリ エディターを使用した接続とデータの照会
 
-SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。
+SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、および削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,18 +33,19 @@ SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL D
 
 [!INCLUDE [prerequisites-create-db](../../includes/sql-database-connect-query-prerequisites-create-db-includes.md)]
 
+> [!NOTE]
+> SQL Server のファイアウォール設定で、[Azure サービスへのアクセスを許可する] が [オン] に設定されていることを確認します。 このオプションにより、SQL クエリ エディターはデータベースおよびデータ ウェアハウスにアクセスできるようになります。
+
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
 
 ## <a name="connect-using-sql-authentication"></a>SQL 認証を使用して接続する
-> [!NOTE]
-> SQL Server のファイアウォール設定で、[Azure サービスへのアクセスを許可する] が [オン] に設定されていることを確認します。 このオプションにより、SQL クエリ エディターはデータベースおよびデータ ウェアハウスにアクセスできるようになります。
 
 1. 左側のメニューの **[SQL データベース]** をクリックし、照会するデータベースをクリックします。
 
-2. データベースの SQL Database ページで、左側のメニューで **[Data explorer (プレビュー)]** を見つけてクリックします。
+2. データベースの SQL Database ページで、左側のメニューの **[クエリ エディター (プレビュー)]** を見つけてクリックします。
 
     ![クエリ エディターの検索](./media/sql-database-connect-query-portal/find-query-editor.PNG)
 

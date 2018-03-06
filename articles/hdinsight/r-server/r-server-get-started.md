@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/14/2017
 ms.author: bradsev
-ms.openlocfilehash: e688068efb41cdccbeb23de3c8ad7a09021e5b3f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: aa7f2e6f44036738756391ecaa265c57c093c42c
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="get-started-with-r-server-on-hdinsight"></a>HDInsight での R Server の使用
 
@@ -61,7 +61,7 @@ HDInsight R Server インスタンスの作成操作は、Azure Resource Manager
 4. **[クラスターの種類]** を選択して **[クラスターの構成]** ウィンドウを開きます。 **[クラスターの構成]** ウィンドウで、次のオプションを選択します。
 
     * **[クラスターの種類]**: **[R Server]** を選択します。
-    * **[バージョン]**: クラスターにインストールする R Server のバージョンを選択します。 現在利用できるバージョンは **R Server 9.1 (HDI 3.6)** です。 使用可能な R Server のバージョンのリリース ノートは、[MSDN](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes) で入手できます。
+    * **[バージョン]**: クラスターにインストールする R Server のバージョンを選択します。 現在利用できるバージョンは **R Server 9.1 (HDI 3.6)** です。 使用可能な R Server のバージョンのリリース ノートは、[docs.microsoft.com](https://docs.microsoft.com/machine-learning-server/whats-new-in-r-server#r-server-91) で入手できます。
     * **[R Studio community edition for R Server]\(R Server の R Studio コミュニティ エディション)**: このブラウザーベースの IDE は、既定でエッジ ノードにインストールされます。 この IDE をインストールしない場合は、チェック ボックスをオフにします。 インストールを選択した場合、クラスターの作成後に、RStudio Server ログインにアクセスするための URL がクラスターのポータル アプリケーション ウィンドウに表示されます。
     * その他のオプションは既定値のままにして、**[選択]** ボタンをクリックし、クラスターの種類を保存します。
 
@@ -102,7 +102,7 @@ HDInsight R Server インスタンスの作成操作は、Azure Resource Manager
 
         ssh –i <private-key-filename> remoteuser@<hostname public ip>
 
-      または、秘密キー ファイルを、クライアントの R Server の Hadoop Spark コンピューティング コンテキストの定義の一部として使用します。 詳細については、[Spark のコンピューティング コンテキストの作成](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started)に関する記事を参照してください。
+      または、秘密キー ファイルを、クライアントの R Server の Hadoop Spark コンピューティング コンテキストの定義の一部として使用します。 詳細については、[Spark のコンピューティング コンテキストの作成](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark)に関する記事を参照してください。
 
 8. 簡易作成画面が **[ストレージ]** ウィンドウに切り替わります。 クラスターで使用される HDFS ファイル システムのプライマリ ロケーションで使用するストレージ アカウントの設定を選択します。 新規または既存の Azure Storage アカウントを選択するか、既存の Azure Data Lake Store アカウントを選択します。
 
@@ -379,7 +379,7 @@ ScaleR 関数を使用してジョブを送信できます。 ジョブを実行
 
 ## <a name="use-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI の R Server を使用する
 
-デスクトップまたはノート PC で実行している Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI Hadoop Spark コンピューティング コンテキストへのアクセスを設定することもできます。 詳細については、[Spark 用のコンピューティング コンテキストの作成](https://msdn.microsoft.com/microsoft-r/scaler-spark-getting-started.md)に関するページの Hadoop クライアントとしての Microsoft R Server の使用に関するセクションを参照してください。 そのためには、ノート PC で RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、sshProfileScript) を指定します。 次に例を示します。
+デスクトップまたはノート PC で実行している Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI Hadoop Spark コンピューティング コンテキストへのアクセスを設定することもできます。 詳細については、[Spark 用のコンピューティング コンテキストの作成](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-spark#more-spark-scenarios)に関するページの Hadoop クライアントとしての Microsoft R Server の使用に関するセクションを参照してください。 そのためには、ノート PC で RxSpark コンピューティング コンテキストを定義するときに、オプション (hdfsShareDir、shareDir、sshUsername、sshHostname、sshSwitches、sshProfileScript) を指定します。 次に例を示します。
 
 
     myNameNode <- "default"
@@ -705,7 +705,7 @@ R Server 9.1 で利用可能な機能を使うと、Hive および Parquet 内�
     rxSparkConnect(reset = TRUE)
 
 
-この段階で、運用化の構成が完了しました。 これで、R Client で mrsdeploy パッケージを使用して、エッジ ノードの運用化に接続できます。 その後、[リモート実行](https://msdn.microsoft.com/microsoft-r/operationalize/remote-execution)や [Web サービス](https://msdn.microsoft.com/microsoft-r/mrsdeploy/mrsdeploy-websrv-vignette)などの機能の使用を開始することができます。 クラスターが仮想ネットワーク上に設定されているか否かに応じて、SSH ログイン経由のポート転送トンネリングの設定が必要になる場合があります。
+この段階で、運用化の構成が完了しました。 これで、R Client で mrsdeploy パッケージを使用して、エッジ ノードの運用化に接続できます。 その後、[リモート実行](https://docs.microsoft.com/machine-learning-server/r/how-to-execute-code-remotely)や [Web サービス](https://docs.microsoft.com/machine-learning-server/operationalize/concept-what-are-web-services)などの機能の使用を開始することができます。 クラスターが仮想ネットワーク上に設定されているか否かに応じて、SSH ログイン経由のポート転送トンネリングの設定が必要になる場合があります。
 
 ### <a name="r-server-cluster-on-a-virtual-network"></a>仮想ネットワーク上の R Server クラスター
 

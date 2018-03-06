@@ -1,6 +1,6 @@
 ---
 title: "ASP.NET Web アプリでユーザー認証に Azure Active Directory B2C を使用するチュートリアル"
-description: "ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザーをサインインおよびサインアップする方法に関するチュートリアル。"
+description: "ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。"
 services: active-directory-b2c
 author: PatAltimore
 ms.author: patricka
@@ -9,11 +9,11 @@ ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: ee006476f9e40e9d1a6e7213cb1881ca46ea75c2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1d1e0ce51d86ebcdbf0a2a423ff64b3814413d86
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>チュートリアル: ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザーを認証する
 
@@ -147,7 +147,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 サンプル ソリューションには 2 つのプロジェクトがあります。
 
-**Web アプリのサンプル アプリ (TaskWebApp):** タスク リストを作成および編集するための Web アプリ。 この Web アプリでは、**サインアップまたはサインイン** ポリシーを使用して、メール アドレスでユーザーをサインアップまたはサインインします。
+**Web アプリのサンプル アプリ (TaskWebApp):** タスク リストを作成および編集するための Web アプリ。 この Web アプリでは、**サインアップまたはサインイン** ポリシーを使用して、ユーザーをサインアップまたはサインインします。
 
 **Web API のサンプル アプリ (TaskService):** タスク リストの作成、読み取り、更新、削除機能をサポートする Web API。 この Web API は Azure AD B2C によって保護されており、Web アプリによって呼び出されます。
 
@@ -178,7 +178,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 
 **F5** キーを押して Web アプリを起動します。 既定のブラウザーで、ローカルの Web サイトアドレス `https://localhost:44316/` が開かれます。 
 
-このサンプル アプリでは、サインアップ、サインイン、プロファイルの編集、パスワードのリセットがサポートされています。 ユーザーがアプリを使用するためにメール アドレスでサインアップする方法を次に示します。 ご自身で他のシナリオを試すこともできます。
+このサンプル アプリでは、サインアップ、サインイン、プロファイルの編集、パスワードのリセットがサポートされています。 このチュートリアルでは、アプリを使用するためのサインアップをユーザーがメール アドレスを使って行う方法に焦点を当てています。 その他のシナリオについては、ご自身でお試しください。
 
 ### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
 
@@ -205,4 +205,4 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
 このチュートリアルでは、Azure AD B2C テナントを作成し、ポリシーを作成して、Azure AD B2C テナントを使用するようにサンプル Web アプリを更新する方法について学習しました。 Azure AD B2C テナントで保護されている ASP.NET Web API の登録、構成、呼び出しを行う方法を学習するには、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Azure Active Directory B2C を使用して ASP.NET Web API を保護する](active-directory-b2c-tutorials-web-api.md)
+> [チュートリアル: Azure Active Directory B2C を使用して ASP.NET Web API を保護する](active-directory-b2c-tutorials-web-api.md)

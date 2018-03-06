@@ -1,122 +1,109 @@
 ---
-title: "Azure AD B2C デスクトップ アプリケーションの試用 | Microsoft Docs"
-description: "テスト用の Azure AD B2C 環境を使用して、サインイン、サインアップ、プロファイルの編集、パスワードのリセットを体験してみます"
+title: "Azure AD B2C 対応デスクトップ アプリの試用"
+description: "Azure Active Directory B2C を使用してユーザー ログインを提供するサンプル ASP.NET デスクトップ アプリを試用するためのクイック スタートです。"
 services: active-directory-b2c
-documentationcenter: .net
-author: saraford
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 86293627-26fb-4e96-a76b-f263f9a945bd
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: article
-ms.date: 10/31/2017
-ms.author: saraford
-ms.openlocfilehash: 51f5643f0bd975beb939c2d5a8853810fb609ec9
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.topic: quickstart
+ms.custom: mvc
+ms.date: 2/13/2018
+ms.author: patricka
+ms.openlocfilehash: 18c378f82255df3a999703bc319d551af4b2705c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="test-drive-a-desktop-application-configured-with-azure-ad-b2c"></a>Azure AD B2C で構成されているデスクトップ アプリケーションの試用
+# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-desktop-app"></a>クイック スタート: Azure AD B2C 対応デスクトップ アプリの試用
 
-Azure Active Directory B2C は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。  このクイックスタートでは、サンプルの Windows Presentation Foundation (WPF) デスクトップ アプリを使用して、以下のデモンストレーションを行います。
+Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。
 
-* **サインアップまたはサインイン** ポリシーを使用した、ソーシャル ID プロバイダー アカウントまたはメール アドレスを使用したローカル アカウントの作成またはサインイン。 
-* **API の呼び出し**による、Azure AD B2C のセキュリティで保護されたリソースからの表示名の取得。
-
-## <a name="prerequisites"></a>前提条件
-
-* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
-    - **.NET デスクトップ開発**
-
-* Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。 ソーシャル アカウントを持っていない場合は、有効なメール アドレスが必要です。
+このクイックスタートでは、Azure AD B2C 対応のサンプル WPF (Windows Presentation Foundation) デスクトップ アプリにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="prerequisites"></a>前提条件
+
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) と **ASP.NET および開発**ワークロード。 
+* Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
+
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-GitHub から[サンプル アプリケーションをダウンロードまたは複製](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop)します。
+[ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
+
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop.git
+```
 
 ## <a name="run-the-app-in-visual-studio"></a>Visual Studio でのアプリの実行
 
-サンプル アプリケーションのプロジェクト フォルダーにある `active-directory-b2c-wpf.sln` ソリューションを Visual Studio で開きます。 
+サンプル アプリケーションのプロジェクト フォルダーにある `active-directory-b2c-wpf.sln` ソリューションを Visual Studio で開きます。
 
-**[デバッグ]、[デバッグの開始]** の順に選択し、アプリケーションをビルドして実行します。 
+**F5** キーを押してアプリケーションをデバッグします。
 
 ## <a name="create-an-account"></a>アカウントの作成
 
-**[Sign in]\(サインイン\)** をクリックして、**サインアップまたはサインイン** ワークフローを開始します。 アカウントの作成時に、既存のソーシャル ID プロバイダー アカウントまたは電子メール アカウントを使用することができます。
+**[Sign in]\(サインイン\)** をクリックすると、Azure AD B2C のポリシーに基づく**サインアップまたはサインイン** ワークフローが開始されます。
 
 ![サンプル アプリケーション](media/active-directory-b2c-quickstarts-desktop-app/wpf-sample-application.png)
 
+このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。 
+
 ### <a name="sign-up-using-a-social-identity-provider"></a>ソーシャル ID プロバイダーを使用してサインアップする
 
-ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。 メール アドレスを使用する場合は、「[メール アドレスを使用してサインアップする](#sign-up-using-an-email-address)」セクションに進んでください。
+このサンプル Web アプリでは、Wingtip Toys という架空のブランドのカスタム ログイン ページが Azure AD B2C により表示されます。 
 
-![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
+1. ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。 
 
-ソーシャル アカウントの資格情報を使用して認証 (サインイン) し、アプリケーションがソーシャル アカウントから情報を読み取ることを承認する必要があります。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
+    ![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-wpf.png)
 
-![ソーシャル アカウントを使用して認証と承認を行う](media/active-directory-b2c-quickstarts-desktop-app/twitter-authenticate-authorize-wpf.png)
+    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) を行うと共に、ソーシャル アカウントから情報を読み取ることについての承認をアプリケーションに与えることになります。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
 
-新しいアカウントのプロファイルの詳細には、ソーシャル アカウントからの情報があらかじめ設定されています。 必要に応じて詳細を変更し、**[Continue]\(続行\)** をクリックします。
+2. ID プロバイダーのサインイン プロセスを完了します。 たとえば、Twitter を選択した場合、Twitter の資格情報を入力し、**[サインイン]** をクリックします。
 
-![新しいアカウントのサインアップ用プロファイルの詳細](media/active-directory-b2c-quickstarts-desktop-app/new-account-sign-up-profile-details-wpf.png)
+    ![ソーシャル アカウントを使用して認証と承認を行う](media/active-directory-b2c-quickstarts-desktop-app/twitter-authenticate-authorize-wpf.png)
 
-ID プロバイダーを使用する新しい Azure AD B2C ユーザー アカウントが正常に作成されました。 サインイン後に、アクセス トークンが *[Token info]\(トークン情報\)* テキスト ボックスに表示されます。 アクセス トークンは、API リソースにアクセスするときに使用されます。
+    新しいアカウントのプロファイルの詳細には、ソーシャル アカウントからの情報があらかじめ設定されています。 
 
-![承認トークン](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
+3. 必要に応じて詳細を変更し、**[Continue]\(続行\)** をクリックします。 入力した値は、Azure AD B2C ユーザー アカウントのプロファイルに使用されます。
 
-次の手順: 「[プロファイルの編集](#edit-your-profile)」セクションに進みます。
+    ![新しいアカウントのサインアップ用プロファイルの詳細](media/active-directory-b2c-quickstarts-desktop-app/new-account-sign-up-profile-details-wpf.png)
 
-### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
-
-認証の提供にソーシャル アカウントを使用しない場合は、有効なメール アドレスを使用して Azure AD B2C ユーザー アカウントを作成できます。 Azure AD B2C ローカル ユーザー アカウントは、ID プロバイダーとして Azure Active Directory を使用します。 メール アドレスを使用するには、**[Don't have an account? Sign up now]\(アカウントをお持ちでない場合は今すぐサインアップ\)** リンクをクリックします。
-
-![電子メールを使用してサインインまたはサインアップする](media/active-directory-b2c-quickstarts-desktop-app/sign-in-or-sign-up-email-wpf.png)
-
-有効なメール アドレスを入力し、**[Send verification code]\(確認コードの送信\)** をクリックします。 Azure AD B2C から確認コードを受信するには、有効なメール アドレスが必要です。
-
-電子メールで受け取った確認コードを入力し、**[Verify code]\(コードの確認\)** をクリックします。
-
-プロファイル情報を追加し、**[Create]\(作成\)** をクリックします。
-
-![電子メールを使用した新しいアカウントでサインアップする](media/active-directory-b2c-quickstarts-desktop-app/sign-up-new-account-profile-email-wpf.png)
-
-新しい Azure AD B2C ローカル ユーザー アカウントが正常に作成されました。 サインイン後に、アクセス トークンが *[Token info]\(トークン情報\)* テキスト ボックスに表示されます。 アクセス トークンは、API リソースにアクセスするときに使用されます。
-
-![承認トークン](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
+    ID プロバイダーを使用する新しい Azure AD B2C ユーザー アカウントが正常に作成されました。 サインイン後に、アクセス トークンが *[Token info]\(トークン情報\)* テキスト ボックスに表示されます。 アクセス トークンは、API リソースにアクセスするときに使用されます。
 
 ## <a name="edit-your-profile"></a>プロファイルの編集
 
-Azure Active Directory B2C には、ユーザーが自分のプロファイルを更新することができる機能があります。 作成したプロファイルを編集するには、**[Edit profile]\(プロファイルの編集\)** をクリックします。
+Azure Active Directory B2C には、ユーザーが自分のプロファイルを更新することができる機能があります。  このサンプル Web アプリのワークフローには、Azure AD B2C の編集プロファイル ポリシーが使用されます。 
 
-![プロファイルを編集する](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
+1. 作成したプロファイルを編集するには、**[Edit profile]\(プロファイルの編集\)** をクリックします。
 
-作成したアカウントに関連付けられている ID プロバイダーを選択します。 たとえば、アカウントの作成時に ID プロバイダーとして Twitter を使用した場合は、関連付けられているプロファイルの詳細を変更するために Twitter を選択します。
+    ![プロファイルを編集する](media/active-directory-b2c-quickstarts-desktop-app/edit-profile-wpf.png)
 
-![編集するプロファイルに関連付けられているプロバイダーを選択する](media/active-directory-b2c-quickstarts-desktop-app/edit-account-choose-provider-wpf.png)
+2. 作成したアカウントに関連付けられている ID プロバイダーを選択します。 たとえば、アカウントの作成時に ID プロバイダーとして Twitter を使用した場合は、関連付けられているプロファイルの詳細を変更するために Twitter を選択します。
 
-**表示名**や**都市**を変更します。 
+3. **表示名**や**都市**を変更し、**[Continue]\(続行\)** をクリックします。
 
-![プロファイルの更新](media/active-directory-b2c-quickstarts-desktop-app/update-profile-wpf.png)
+    新しいアクセス トークンが *[Token info]\(トークン情報\)* テキスト ボックスに表示されます。 プロファイルに対する変更を確認する場合は、アクセス トークンをコピーしてトークン デコーダー https://jwt.ms に貼り付けます。
 
-新しいアクセス トークンが *[Token info]\(トークン情報\)* テキスト ボックスに表示されます。 プロファイルに対する変更を確認する場合は、アクセス トークンをコピーしてトークン デコーダー https://jwt.ms に貼り付けます。
+## <a name="access-a-protected-web-api-resource"></a>保護された Web API リソースにアクセスする
 
-![承認トークン](media/active-directory-b2c-quickstarts-desktop-app/twitter-auth-token.png)
-
-## <a name="access-a-resource"></a>リソースへのアクセス
-
-**[Call API]\(API の呼び出し\)** をクリックして、Azure AD B2C のセキュリティで保護されたリソース https://fabrikamb2chello.azurewebsites.net/hello に対して要求を送信します。 
+**[Call API]\(API の呼び出し\)** をクリックして、Azure AD B2C で保護されたリソース https://fabrikamb2chello.azurewebsites.net/hello に対して要求を送信します。 
 
 ![API の呼び出し](media/active-directory-b2c-quickstarts-desktop-app/call-api-wpf.png)
 
-アプリケーションにより、*[Token info]\(トークン情報\)* テキスト ボックスに表示されているアクセス トークンが要求に含まれます。 API からは、アクセス トークンに含まれている表示名が返されます。
+このアプリケーションは、保護された Web API リソースへの要求に Azure AD アクセス トークンを追加します。 Web API からは、アクセス トークンに含まれている表示名が返されます。
 
-## <a name="next-steps"></a>次のステップ
+Azure AD B2C ユーザー アカウントを使用して、Azure AD B2C で保護された Web API の承認済みの呼び出しを正しく行いました。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+他の Azure AD B2C クイックスタートやチュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant)ことができます。
+
+## <a name="next-steps"></a>次の手順
 
 次のステップでは、独自の Azure AD B2C テナントを作成し、そのテナントを使用して実行するようにサンプルを構成します。 
 

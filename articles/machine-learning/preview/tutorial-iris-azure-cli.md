@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: tutorial
 ms.date: 10/15/2017
-ms.openlocfilehash: 21fb0bca08bca0fe6384bbc9ba2511f7d8b746cf
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ad81cd02ba0c46cbe58de7071d2164aaefea6514
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>チュートリアル: コマンド ライン インターフェイスを使用して Iris を分類する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -28,14 +28,16 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 > * トレーニング済みのモデルを昇格させて登録する
 > * 新しいデータをスコア付けする Web サービスをデプロイする
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
 ## <a name="prerequisites"></a>前提条件
-- Azure サブスクリプションへのアクセス権と、そのサブスクリプションにリソースを作成するアクセス許可が必要です。 
-- [インストールと作成のクイックスタート](quickstart-installation.md)に関する記事に従って、Azure Machine Learing Workbench アプリケーションをインストールする必要があります。 
+このチュートリアルを完了するには、次のものが必要です。
+- Azure サブスクリプションへのアクセス権と、そのサブスクリプションにリソースを作成するアクセス許可があること。 
+  
+  Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-  >[!NOTE]
-  >Azure Machine Learning Workbench のローカルなインストールだけが必要です。 行う必要があるのは、Azure Machine Learning Workbench のインストールに関するセクションの手順だけです。アカウントの作成と新しいプロジェクトの作成に関する手順は、この記事でコマンド ラインを使って行います。
+- [Azure Machine Learning サービスのインストールと基本操作のクイック スタート](quickstart-installation.md)の説明に従って Azure Machine Learning Workbench アプリケーションがインストールされていること。 
+
+  >[!IMPORTANT]
+  >Azure Machine Learning サービス アカウントは作成しないでください。サービス アカウントの作成は、この記事の中で CLI を使用して行います。
  
 ## <a name="getting-started"></a>使用の開始
 Azure Machine Learning コマンド ライン インターフェイス (CLI) では、データ サイエンス ワークフローの開始から終了までに必要なすべてのタスクを実行することができます。 CLI ツールには次の方法でアクセスできます。
@@ -48,10 +50,10 @@ Azure ML Workbench を初めて起動してログインするとき、実験ア�
 ダイアログ ボックスの **[Command Line Window]\(コマンド ライン ウィンドウ\)** リンクをクリックして、コマンド ライン ウィンドウを起動します。
 
 ### <a name="option-2-launch-azure-ml-cli-from-azure-ml-workbench-app"></a>方法 2. Azure ML Workbench アプリから Azure ML CLI を起動する
-実験アカウントへのアクセス権が既にある場合は、正常にログインすることができます。 その後、**[ファイル]** --> **[Open Commmand Prompt]\(コマンド プロンプトを開く\)** メニューをクリックして、コマンド ライン ウィンドウを開くことができます。
+実験アカウントへのアクセス権が既にある場合は、正常にログインすることができます。 その後、**[ファイル]** --> **[コマンド プロンプトを開く]** メニューをクリックして、コマンド ライン ウィンドウを開くことができます。
 
 ### <a name="option-3-enable-azure-ml-cli-in-an-arbitrary-command-line-window"></a>方法 3. 任意のコマンド ライン ウィンドウで Azure ML CLI を有効にする
-任意のコマンド ライン ウィンドウで Azure ML CLI を有効にすることもできます。 普通にコマンド ウィンドウを開き、次のコマンドを入力します。
+任意のコマンド ライン ウィンドウで Azure ML CLI を有効にすることもできます。 その場合は、コマンド ウィンドウを開き、次のコマンドを入力してください。
 
 ```sh
 # Windows Command Prompt
@@ -66,10 +68,10 @@ PATH=$HOME/Library/Caches/AmlWorkbench/Python/bin:$PATH
 変更を永続的にするには、Windows では `SETX` を使うことができます。 macOS の場合は、`setenv` を使うことができます。
 
 >[!TIP]
->上の環境変数を設定することにより、好みのターミナル ウィンドウで Azure CLI を有効にできます。
+>前出の環境変数を設定することにより、好みのターミナル ウィンドウで Azure CLI を有効にできます。
 
 ## <a name="step-1-log-in-to-azure"></a>手順 1. Azure にログインする
-最初に、AMLWorkbench アプリから CLI を開きます ([ファイル] > [Open Command Prompt]\(コマンド プロンプトを開く\))。 これにより、正しい Python 環境が使われて、ML CLI コマンドを使うことができるようになります。 
+最初に、AMLWorkbench アプリから CLI を開きます ([ファイル] > [Open Command Prompt]\(コマンド プロンプトを開く\))。 適切な Python 環境が存在していて ML CLI コマンドを利用できることが、これにより確認できます。 
 
 次に、Azure リソースにアクセスして管理するための適切なコンテキストを CLI で設定する必要があります。
  
@@ -85,7 +87,8 @@ $ az account set -s <subscription id or name>
 ```
 
 ## <a name="step-2-create-a-new-azure-machine-learning-experimentation-account-and-workspace"></a>手順 2. 新しい Azure Machine Learning 実験アカウントとワークスペースを作成する
-最初に、新しい実験アカウントと新しいワークスペースを作成します。 実験アカウントとワークスペースについて詳しくは、「[Azure Machine Learning の概念](overview-general-concepts.md)」をご覧ください。
+
+この手順では、新しい実験アカウントと新しいワークスペースを作成します。 実験アカウントとワークスペースについて詳しくは、「[Azure Machine Learning の概念](overview-general-concepts.md)」をご覧ください。
 
 > [!NOTE]
 > 実験アカウントにはストレージ アカウントが必要です。ストレージ アカウントは、実験の実行の出力を格納するために使われます。 ストレージ アカウント名は、関連付けられる URL があるため、Azure 内でグローバルに一意である必要があります。 既存のストレージ アカウントを指定しない場合、実験用のアカウント名を使用して新しいストレージ アカウントを作成します。 必ず一意名を使ってください。一意でないと、"_\<storage_account_name> という名前のストレージ アカウントは既に取得されています_" のようなエラーが発生します。 または、`--storage` 引数を使って既存のストレージ アカウントを使うこともできます。
@@ -206,7 +209,7 @@ $ az ml history info --run <run id> --artifact <artifact location>
 ```
 
 ## <a name="step-6-promote-artifacts-of-a-run"></a>手順 6. 実行のアーティファクトを昇格させる 
-行った実行の 1 つの AUC が優れているので、それを使って運用環境にデプロイするスコア付け Web サービスを作ります。 そのためには最初に、アーティファクトを資産に昇格させる必要があります。
+相対的に AUC の優れている実行が 1 つあるので、運用環境にデプロイするスコア付け Web サービスを作成する際は、その実行を使うことになります。 そのためには最初に、アーティファクトを資産に昇格させる必要があります。
 
 ```azure-cli
 $ az ml history promote --run <run id> --artifact-path outputs/model.pkl --name model.pkl
@@ -215,13 +218,13 @@ $ az ml history promote --run <run id> --artifact-path outputs/model.pkl --name 
 これで、プロジェクト ディレクトリの `assets` フォルダーと `model.pkl.link` ファイルが作成されます。 このリンク ファイルは、プロンプトに表示された資産を参照するために使用されます。
 
 ## <a name="step-7-download-the-files-to-be-operationalized"></a>手順 7. 運用可能にするファイルをダウンロードする
-次に、昇格させたモデルをダウンロードし、それを使って予測 Web サービスを作成できるようにします。 
+昇格させたモデルを使って予測 Web サービスを作成できるように、そのモデルをダウンロードします。 
 
 ```azure-cli
 $ az ml asset download --link-file assets\pickle.link -d asset_download
 ```
 
-## <a name="step-8-setup-your-model-management-environment"></a>手順 8. モデル管理環境を設定する 
+## <a name="step-8-set-up-your-model-management-environment"></a>手順 8. モデル管理環境を設定する 
 Web サービスをデプロイするための環境を作成します。 Docker を使ってローカル コンピューターで Web サービスを実行できます。 または、高スケールの運用には ACS クラスターにデプロイします。 
 
 ```azure-cli
@@ -245,8 +248,8 @@ $ az ml account modelmanagement create -n <model management account name> -g <re
 $ az ml service create realtime -m asset_download/model.pkl -f score_iris.py -r python –n <web service name>
 ```
 
-## <a name="step-10-run-the-web-service"></a>手順 10. Web サービスを実行する
-前の手順で出力された Web サービス ID を使うことで、Web サービスを呼び出してテストできます。 
+## <a name="step-11-run-the-web-service"></a>手順 11. Web サービスを実行する
+前の手順で出力された Web サービス ID を使うことで、Web サービスを呼び出してテストします。 
 
 ```azure-cli
 # Get web service usage infomration
@@ -256,17 +259,17 @@ $ az ml service usage realtime -i <web service id>
 $ az ml service run realtime -i <web service id> -d <input data>
 ```
 
-## <a name="deleting-all-the-resources"></a>すべてのリソースを削除する 
+## <a name="step-12-deleting-all-the-resources"></a>手順 12. すべてのリソースを削除する 
 学習を続ける場合を除き、最後に、作成したすべてのリソースを削除します。 
 
-それには、単に、すべてのリソースを保持しているリソース グループを削除します。 
+それらのリソースが属しているリソース グループを削除すれば、そのようにすることができます。 
 
 ```azure-cli
 az group delete --name <resource group name>
 ```
 
 ## <a name="next-steps"></a>次の手順
-このチュートリアルでは、Azure Machine Learning プレビュー機能を使って以下のことを行う方法を学習しました。 
+このチュートリアルでは、Azure Machine Learning を使って以下のことを行う方法を学習しました。 
 > [!div class="checklist"]
 > * 実験アカウントを設定してワークスペースを作成する
 > * プロジェクトを作成する

@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/30/2018
+ms.date: 02/22/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: a5b321bc06ef14207eddf5aa77ff983ada1e409f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3437bc9f164cbdc6c923498b978291ced6278744
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Azure から Azure Stack に Marketplace の項目をダウンロードする
 
@@ -62,7 +62,7 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
 
 1. PowerShell コンソールを管理者として開き、[Azure Stack 固有の PowerShell モジュールをインストール](azure-stack-powershell-install.md)します。 必ず、**PowerShell バージョン 1.2.11 以上**をインストールしてください。  
 
-2. Azure Stack の登録に使用した Azure アカウントを追加します。 これを行うには、**Add-AzureRmAccount** コマンドレットをパラメーターなしで実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。  
+2. Azure Stack の登録に使用した Azure アカウントを追加します。 アカウントを追加するには、**Add-AzureRmAccount** コマンドレットをパラメーターなしで実行します。 Azure アカウント資格情報の入力を求められ、お使いのアカウントの構成によっては 2 要素認証を使用する必要があります。  
 
 3. 複数のサブスクリプションがある場合は、次のコマンドを実行して、登録に使用したサブスクリプションを選択します。  
 
@@ -75,16 +75,16 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
 
    ```PowerShell
    # Download the tools archive.
-   invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/vnext.zip `
-     -OutFile vnext.zip
+   invoke-webrequest https://github.com/Azure/AzureStack-Tools/archive/master.zip `
+     -OutFile master.zip
 
    # Expand the downloaded files.
-   expand-archive vnext.zip `
+   expand-archive master.zip `
      -DestinationPath . `
      -Force
 
    # Change to the tools directory.
-   cd \AzureStack-Tools-vnext
+   cd \AzureStack-Tools-master
 
    ```
 
@@ -94,7 +94,7 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
    Import-Module .\ Syndication\AzureStack.MarketplaceSyndication.psm1
 
    Sync-AzSOfflineMarketplaceItem `
-     -destination “<Destination folder path>” `
+     -destination "<Destination folder path>" `
      -AzureTenantID $AzureContext.Tenant.TenantId `
      -AzureSubscriptionId $AzureContext.Subscription.Id  
    ```
@@ -103,15 +103,17 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
 
    ![Azure Marketplace アイテムのポップアップ](./media/azure-stack-download-azure-marketplace-item/image05.png)
 
-7. ダウンロードするイメージを選択し (Ctrl キーを押しながら複数のイメージを選択できます)、イメージのバージョンを書き留めてください。次のセクションでイメージをインポートするときに、このバージョンを使用します。**[OK]**、**[はい]** の順にクリックし、法律条項に同意します。 また、**[Add criteria]\(条件の追加\)** オプションを使用して、イメージの一覧をフィルター処理することもできます。 ダウンロードには、イメージのサイズに応じて時間がかかります。 イメージがダウンロードされたら、前に指定したダウンロード先のパスで使用できます。 ダウンロードには、Azpkg 形式で VHD ファイルとギャラリー アイテムが含まれています。  
+7. ダウンロードするイメージを選択し、イメージのバージョンを書き留めます。 Ctrl キーを押しながら複数のイメージを選択することができます。 次のセクションでは、このイメージ バージョンを使用してイメージをインポートします。  次に、**[OK]** をクリックし、法的条項に **[はい]** をクリックして同意します。 また、**[Add criteria]\(条件の追加\)** オプションを使用して、イメージの一覧をフィルター処理することもできます。 
+
+   ダウンロードには、イメージのサイズに応じて時間がかかります。 イメージがダウンロードされたら、前に指定したダウンロード先のパスで使用できます。 ダウンロードには、Azpkg 形式で VHD ファイルとギャラリー アイテムが含まれています。
 
 ### <a name="import-the-image-and-publish-it-to-azure-stack-marketplace"></a>イメージのインポートと Azure Stack Marketplace への発行
 
-1. イメージとギャラリーのパッケージをダウンロードした後、それらと AzureStack-Tools-vnext フォルダーの内容をリムーバブル ディスク ドライブに保存して、Azure Stack 環境にコピーします (C:\MarketplaceImages など、ローカルの任意の場所にコピーできます)。   
+1. イメージとギャラリーのパッケージをダウンロードした後、それらと AzureStack-Tools-master フォルダーの内容をリムーバブル ディスク ドライブに保存して、Azure Stack 環境にコピーします (C:\MarketplaceImages など、ローカルの任意の場所にコピーできます)。     
 
 2. イメージをインポートする前に、「[Azure Stack オペレーターの PowerShell 環境の構成](azure-stack-powershell-configure-admin.md)」で説明されている手順に従って、Azure Stack オペレーターの環境に接続する必要があります。  
 
-3. Add-AzsVMImage コマンドレットを使用して、Azure Stack にイメージをインポートします。 このコマンドレットを使用する場合は、publisher、offer などのパラメーター値を、インポートするイメージの値で置き換えてください。 イメージの "publisher"、"offer"、および "sku" の値は、前にダウンロードした Azpkg ファイルの imageReference オブジェクトから取得できます。また、"version" の値は、前のセクションの手順 6. で取得できます。
+3. Add-AzsVMImage コマンドレットを使用して、Azure Stack にイメージをインポートします。 このコマンドレットを使用する場合は、*publisher*、*offer* などのパラメーター値を、インポートするイメージの値で置き換えてください。 イメージの *publisher*、*offer*、および *sku* の値は、前にダウンロードした Azpkg ファイルの imageReference オブジェクトから取得できます。また、*version* の値は、前のセクションの手順 6. で取得できます。
 
    ```json
    "imageReference": {
@@ -131,8 +133,8 @@ Azure Stack を非接続モード (インターネット接続なし) でデプ�
     -offer "WindowsServer" `
     -sku "2016-Datacenter-Server-Core" `
     -osType Windows `
-    -Version "2017.09.25" `
-    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Microsoft.WindowsServer2016DatacenterServerCore-ARM-Eval.2017.09.25.vhd" `
+    -Version "2016.127.20171215" `
+    -OsDiskLocalPath "C:\AzureStack-Tools-master\Syndication\Windows-Server-2016-DatacenterCore-20171215-en.us-127GB.vhd" `
     -CreateGalleryItem $False `
     -Location Local
    ```

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
-ms.openlocfilehash: ac8a9f28881ff7d249a02976f310bf6a8283aeb6
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: fbf0556cc47bc08a71fcf050b43c2dbbe5d27184
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 02/11/2018
 ## <a name="azure-platform-considerations"></a>Azure プラットフォームに関する考慮事項
 
 - **ホスト ノードの仮想 IP:** DHCP、DNS、正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 および 169.254.169.254 を通じて提供されます。 このパブリック IP アドレスは Microsoft に属し、この目的のためにすべてのリージョンで使われる唯一の仮想化 IP アドレスです。 このアドレスは、仮想マシンをホストしているサーバー マシン (ホスト ノード) の物理 IP アドレスにマッピングされます。 ホスト ノードは、DHCP リレー、DNS の再帰的リゾルバー、および Load Balancer の正常性プローブとマシンの正常性プローブのプローブ元として機能します。 この IP アドレスへの通信は攻撃ではありません。 これらの IP アドレスの受信/送信トラフィックをブロックすると、仮想マシンが正しく機能しない可能性があります。
-- **ライセンス (キー管理サービス)**: 仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。
+- **ライセンス (キー管理サービス)**: 仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。 [default route 0.0.0.0/0](virtual-networks-udr-overview.md#default-route) 構成を使用したデプロイに関しては、このプラットフォーム ルールは無効となります。
 - **負荷分散プール内の仮想マシン**: 適用されるソース ポートおよびアドレス範囲は、元のコンピューターからのもので、ロード バランサーではありません。 ターゲット ポートとアドレス範囲は、ロード バランサーのものではなく、ターゲット コンピューターのものになります。
 - **Azure のサービス インスタンス**: HDInsight、Application Service Environments、および仮想マシン スケール セットなどの Azure サービスのインスタンスが仮想ネットワークのサブネットにデプロイされています。 仮想ネットワークにデプロイできるサービスの詳細な一覧については、[Azure サービスの仮想ネットワーク](virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network)に関するページをご覧ください。 リソースがデプロイされているサブネットにネットワーク セキュリティ グループを適用する前に、各サービスのポート要件を確認してください。 サービスに必要なポートを拒否すると、サービスは正しく機能しません。
 - **アウトバウンド メールの送信**: Azure Virtual Machines からのメール送信に関して、Microsoft では、Authenticated SMTP リレー サービスの利用を推奨しています (通常は、TCP ポート 587 で接続されますが、他のポートが使用されることもあります)。 SMTP リレー サービスは、送信者評価に特化することで、サード パーティのメール プロバイダーによってメッセージが拒否される可能性を最小限に抑えます。 そのような SMTP リレー サービスとしては、Exchange Online Protection や SendGrid が代表的ですが、他にもさまざまなリレー サービスが存在します。 Azure に限らず、またサブスクリプションの種類に限らず、SMTP リレー サービスは広く利用されています。 

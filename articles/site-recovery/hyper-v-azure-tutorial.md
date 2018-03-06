@@ -8,11 +8,11 @@ ms.topic: tutorial
 ms.date: 02/14/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: b946964c162f47a283c37c6eae7e7152e27b6033
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e7ddb3046b0725b3afcea2ed6a533388a89cf306
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/22/2018
 ## <a name="select-a-replication-goal"></a>レプリケーションの目標を選ぶ
 
 
-1. **[すべてのサービス]** > **[Recovery Services コンテナー]** で、前のチュートリアルで準備したコンテナーの名前 "**ContosoVMVault**" をクリックします。
+1. **[すべてのサービス]** > **[Recovery Services コンテナー]** で、前のチュートリアルで準備したコンテナー **ContosoVMVault** を選択します。
 2. **[作業の開始]** で、**[Site Recovery]** をクリックします。 次に、**[インフラストラクチャの準備]** をクリックします。
 3. **[保護の目標]** > **[マシンのある場所]** で、**[オンプレミス]** を選びます。
 4. **[マシンをどこにレプリケートしますか]** で、**[To Azure]\(Azure\)** を選びます。
@@ -49,10 +49,10 @@ ms.lasthandoff: 02/22/2018
 ソース環境をセットアップするには、Hyper-V ホストを Hyper-V サイトに追加し、Azure Site Recovery Provider と Azure Recovery Services エージェントをダウンロードしてインストールし、Hyper-V サイトをコンテナーに登録します。 
 
 1. **[インフラストラクチャの準備]** で、**[ソース]** をクリックします。
-2. **[+Hyper-V サイト]** をクリックし、前のチュートリアルで作成したサイトの名前「**ContosoHyperVSite**」を指定します。
+2. **[+Hyper-V サイト]** をクリックし、前のチュートリアルで作成したサイトの名前 **ContosoHyperVSite** を指定します。
 3. **[+Hyper-V Server]** をクリックします。
 4. プロバイダーのセットアップ ファイルをダウンロードします。
-5. コンテナー登録キーをダウンロードします。 プロバイダーをセットアップする際に、これが必要になります。 キーは生成後 5 日間有効です。
+5. コンテナー登録キーをダウンロードします。 プロバイダーのセットアップの実行に、このキーが必要になります。 キーは生成後 5 日間有効です。
 
     ![プロバイダーのダウンロード](./media/hyper-v-azure-tutorial/download.png)
     
@@ -68,7 +68,7 @@ ms.lasthandoff: 02/22/2018
 5. **[プロキシ設定]** で、**[プロキシを使用せずに直接 Azure Site Recovery に接続する]** を選択します。
 6. **[登録]** で、サーバーがコンテナーに登録されたら **[完了]** をクリックします。
 
-Azure Site Recovery によって Hyper-V サーバーからメタデータが取得され、**[Site Recovery インフラストラクチャ]** の  > **[Hyper-V ホスト]** にサーバーが表示されます。 最大 30 分かかることがあります。
+Azure Site Recovery によって Hyper-V サーバーからメタデータが取得され、**[Site Recovery インフラストラクチャ]** の  > **[Hyper-V ホスト]** にサーバーが表示されます。 このプロセスには最大 30 分かかる可能性があります。
 
 
 ## <a name="set-up-the-target-environment"></a>ターゲット環境をセットアップする
@@ -84,6 +84,9 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
 
 ## <a name="set-up-a-replication-policy"></a>レプリケーション ポリシーを設定する
 
+> [!NOTE]
+> Hyper-V から Azure へのレプリケーション ポリシーで、15 分のコピー頻度オプションは、5 分および 30 秒のコピー頻度設定の方が多用されるため、廃止されています。 15 分のコピー頻度を使用するレプリケーション ポリシーは、5 分のコピー頻度設定を使用するように自動的に更新されます。 5 分および 30 秒のコピー頻度オプションでは、15 分のコピー頻度と比較して、レプリケーションのパフォーマンスと目標復旧時点が向上し、帯域幅の使用量とデータ転送量への影響は最小限に抑えられます。
+
 1. **[インフラストラクチャの準備]** > **[レプリケーションの設定]** > **[+ 作成と関連付け]** の順にクリックします。
 2. **[ポリシーの作成と関連付け]**で、ポリシー名「**ContosoReplicationPolicy**」を指定します。
 3. 既定の設定のままにして **[OK]** をクリックします。
@@ -91,7 +94,7 @@ Site Recovery によって、互換性のある Azure ストレージ アカウ�
     - **[復旧ポイントのリテンション期間]** では、各復旧ポイントのリテンション期間が 2 時間に設定されています。
     - **[アプリ整合性スナップショットの頻度]** は、アプリ整合性スナップショットを含む復旧ポイントが 1 時間ごとに作成されるように設定されています。
     - **[初期レプリケーションの開始時刻]** は、初期レプリケーションを直ちに開始するように設定されています。
-4. ポリシーを作成したら、**[OK]** をクリックします。 新しいポリシーを作成すると、指定した Hyper-V サイト (**ContosoHyperVSite**) に自動的に関連付けられます。
+4. ポリシーが作成されたら、**[OK]** をクリックします。 新しいポリシーを作成すると、指定した Hyper-V サイト (**ContosoHyperVSite**) に自動的に関連付けられます。
 
     ![Replication policy](./media/hyper-v-azure-tutorial/replication-policy.png)
 

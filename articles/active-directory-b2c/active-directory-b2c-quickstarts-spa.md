@@ -1,48 +1,45 @@
 ---
-title: "Azure AD B2C シングル ページ アプリケーションの試用 | Microsoft Docs"
-description: "テスト用の Azure AD B2C 環境を使用して、サインイン、サインアップ、プロファイルの編集、パスワードのリセットを体験してみます"
+title: "Azure AD B2C 対応シングルページ アプリの試用"
+description: "Azure Active Directory B2C を使用してユーザーの認証とサインアップを行うシングル ページ アプリのサンプルを試用するためのクイック スタートです。"
 services: active-directory-b2c
 documentationcenter: 
-author: saraford
+author: PatAltimore
 manager: mtillman
-editor: PatAltimore
-ms.assetid: 5a8a46af-28bb-4b70-a7f0-01a5240d0255
+ms.reviewer: saraford
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: article
-ms.date: 10/31/2017
-ms.author: saraford
-ms.openlocfilehash: ba8ee4657309ab2a541f4c7b3fd4879542eee63c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.topic: quickstart
+ms.date: 2/13/2018
+ms.author: patricka
+ms.openlocfilehash: e659fd228c2294313a62b331c8e530b7d34073ac
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="test-drive-a-single-page-application-configured-with-azure-ad-b2c"></a>Azure AD B2C で構成されているシングル ページ アプリケーションの試用
+# <a name="quickstart-test-drive-an-azure-ad-b2c-enabled-single-page-app"></a>クイック スタート: Azure AD B2C 対応シングルページ アプリの試用
 
-## <a name="about-this-sample"></a>このサンプルについて
+Azure Active Directory (Azure AD) B2C は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。 Azure AD B2C に対応したアプリは、オープンな標準プロトコルを使用し、ソーシャル アカウントやエンタープライズ アカウントで認証を行うことができます。
 
-Azure Active Directory B2C は、アプリケーション、ビジネス、顧客を保護するためのクラウド ID 管理を提供します。  このクイック スタートでは、サンプルのシングル ページ アプリケーションを使用して、以下の操作のデモンストレーションを行います。
-
-* **サインアップまたはサインイン** ポリシーを使用した、ソーシャル ID プロバイダー アカウントまたはメール アドレスを使用したローカル アカウントの作成またはサインイン。 
-* **API の呼び出し**による、Azure AD B2C のセキュリティで保護されたリソースからの表示名の取得。
-
-## <a name="prerequisites"></a>前提条件
-
-* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
-    - **ASP.NET と Web 開発**
-
-* [Node.js](https://nodejs.org/en/download/)
-
-* Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。 ソーシャル アカウントを持っていない場合は、有効なメール アドレスが必要です。
+このクイックスタートでは、Azure AD B2C 対応のサンプル シングル ページ アプリにソーシャル ID プロバイダーを使ってサインインし、Azure AD B2C で保護された Web API を呼び出します。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
+## <a name="prerequisites"></a>前提条件
+
+* [Visual Studio 2017](https://www.visualstudio.com/downloads/) と **ASP.NET および開発**ワークロード。
+* [Node.js](https://nodejs.org/en/download/)
+* Facebook、Google、Microsoft、または Twitter のソーシャル アカウント。
+
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 
-GitHub から[サンプル アプリケーションをダウンロードまたは複製](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp)します。
+[ZIP ファイルをダウンロード](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip)するか、GitHub からサンプル Web アプリを複製します。
+
+```
+git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
+```
 
 ## <a name="run-the-sample-application"></a>サンプル アプリケーションの実行
 
@@ -54,64 +51,57 @@ npm install && npm update
 node server.js
 ```
 
-コンソール ウィンドウには、コンピューターで実行されている Web アプリケーションのポート番号が表示されます。
+この Node.js アプリは、localhost でリッスンしているポート番号を出力します。
 
 ```
 Listening on port 6420...
 ```
 
-Web ブラウザーで `http://localhost:6420` を開き、Web アプリケーションにアクセスします。
-
+Web ブラウザーでアプリの URL (`http://localhost:6420`) にアクセスします。
 
 ![ブラウザーでのサンプル アプリ](media/active-directory-b2c-quickstarts-spa/sample-app-spa.png)
 
 ## <a name="create-an-account"></a>アカウントの作成
 
-**[Login]\(ログイン\)** ボタンをクリックして、Azure AD B2C の**サインアップまたはサインイン** ワークフローを開始します。 アカウントの作成時に、既存のソーシャル ID プロバイダー アカウントまたは電子メール アカウントを使用することができます。
+**[Login]\(ログイン\)** ボタンをクリックすると、Azure AD B2C のポリシーに基づく Azure AD B2C の**サインアップまたはサインイン** ワークフローが開始されます。 
+
+このサンプルは、ソーシャル ID プロバイダーを使用する方法や、メール アドレスを使用してローカル アカウントを作成する方法など、複数のサインアップ方法に対応しています。 このクイック スタートでは、Facebook、Google、Microsoft、または Twitter のいずれかのソーシャル ID プロバイダー アカウントを使用します。 
 
 ### <a name="sign-up-using-a-social-identity-provider"></a>ソーシャル ID プロバイダーを使用してサインアップする
 
-ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。 メール アドレスを使用する場合は、「[メール アドレスを使用してサインアップする](#sign-up-using-an-email-address)」セクションに進んでください。
+このサンプル Web アプリでは、Wingtip Toys という架空のブランドのカスタム ログイン ページが Azure AD B2C により表示されます。 
 
-![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
+1. ソーシャル ID プロバイダーを使用してサインアップするには、使用する ID プロバイダーのボタンをクリックします。
 
-ソーシャル アカウントの資格情報を使用して認証 (サインイン) し、アプリケーションがソーシャル アカウントから情報を読み取ることを承認する必要があります。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
+    ![サインインまたはサインアップ用のプロバイダー](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-spa.png)
 
-![ソーシャル アカウントを使用して認証と承認を行う](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
+    ユーザーは、ソーシャル アカウントの資格情報を使用して認証 (サインイン) を行うと共に、ソーシャル アカウントから情報を読み取ることについての承認をアプリケーションに与えることになります。 アクセスを許可することにより、アプリケーションはソーシャル アカウントからプロファイル情報 (名前やお住まいの都市など) を取得できるようになります。 
 
-新しいアカウントのプロファイルの詳細には、ソーシャル アカウントからの情報があらかじめ設定されています。 
+2. ID プロバイダーのサインイン プロセスを完了します。 たとえば、Twitter を選択した場合、Twitter の資格情報を入力し、**[サインイン]** をクリックします。
 
-![新しいアカウントのサインアップ用プロファイルの詳細](media/active-directory-b2c-quickstarts-spa/new-account-sign-up-profile-details-spa.png)
+    ![ソーシャル アカウントを使用して認証と承認を行う](media/active-directory-b2c-quickstarts-spa/twitter-authenticate-authorize-spa.png)
 
-[Display Name]\(表示名\)、[Job Title]\(役職\)、[City]\(都市) フィールドを更新し、**[Continue]\(続行\)** をクリックします。  入力した値は、Azure AD B2C ユーザー アカウントのプロファイルに使用されます。
+    新しいアカウントのプロファイルの詳細には、ソーシャル アカウントからの情報があらかじめ設定されています。 
 
-ID プロバイダーを使用する新しい Azure AD B2C ユーザー アカウントが正常に作成されました。 
+3. [Display Name]\(表示名\)、[Job Title]\(役職\)、[City]\(都市) フィールドを更新し、**[Continue]\(続行\)** をクリックします。  入力した値は、Azure AD B2C ユーザー アカウントのプロファイルに使用されます。
 
-次の手順: 「[リソースの呼び出し](#call-a-resource)」セクション。
+    ID プロバイダーを使用する新しい Azure AD B2C ユーザー アカウントが正常に作成されました。 
 
-### <a name="sign-up-using-an-email-address"></a>メール アドレスを使用してサインアップする
+## <a name="access-a-protected-web-api-resource"></a>保護された Web API リソースにアクセスする
 
-認証の提供にソーシャル アカウントを使用しない場合は、有効なメール アドレスを使用して Azure AD B2C ユーザー アカウントを作成できます。 Azure AD B2C ローカル ユーザー アカウントは、ID プロバイダーとして Azure Active Directory を使用します。 メール アドレスを使用するには、**[Don't have an account? Sign up now]\(アカウントをお持ちでない場合は今すぐサインアップ\)** リンクをクリックします。
-
-![電子メールを使用してサインインまたはサインアップする](media/active-directory-b2c-quickstarts-spa/sign-in-or-sign-up-email-spa.png)
-
-有効なメール アドレスを入力し、**[Send verification code]\(確認コードの送信\)** をクリックします。 Azure AD B2C から確認コードを受信するには、有効なメール アドレスが必要です。 
-
-電子メールで受け取った確認コードを入力し、**[Verify code]\(コードの確認\)** をクリックします。
-
-プロファイル情報を追加し、**[Create]\(作成\)** をクリックします。
-
-![電子メールを使用した新しいアカウントでサインアップする](media/active-directory-b2c-quickstarts-spa/sign-up-new-account-profile-email-web.png)
-
-新しい Azure AD B2C ローカル ユーザー アカウントが正常に作成されました。
-
-## <a name="call-a-resource"></a>リソースの呼び出し
-
-サインイン後、**[Call Web API]\(Web API の呼び出し\)** ボタンをクリックすると、Web API 呼び出しから表示名が JSON オブジェクトとして返されます。 
+**[Call Web API]\(Web API の呼び出し\)** ボタンをクリックすると、Web API 呼び出しから表示名が JSON オブジェクトとして返されます。 
 
 ![Web API の応答](media/active-directory-b2c-quickstarts-spa/call-api-spa.png)
 
-## <a name="next-steps"></a>次のステップ
+このサンプル シングル ページ アプリは、保護された Web API リソースへの要求に、JSON オブジェクトの取得操作を実行するための Azure AD アクセス トークンを追加します。
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+他の Azure AD B2C クイックスタートやチュートリアルを試す場合は、Azure AD B2C テナントを使用できます。 不要になったら、[Azure AD B2C テナントを削除する](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant)ことができます。
+
+## <a name="next-steps"></a>次の手順
+
+このクイックスタートでは、Azure AD B2C 対応のサンプル ASP.NET アプリを使用して、カスタム ログイン ページでのサインインとソーシャル ID プロバイダーでのサインイン、Azure AD B2C アカウントの作成を行った後、Azure AD B2C で保護された Web API を呼び出しました。 
 
 次のステップでは、独自の Azure AD B2C テナントを作成し、そのテナントを使用して実行するようにサンプルを構成します。 
 
