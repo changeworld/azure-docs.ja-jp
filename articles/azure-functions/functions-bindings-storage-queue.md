@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: ce28b6eea9843ce423b57e539a844b4dacb552aa
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e2f9c75ba6e43f93aeb742b9eceebf846ec85cbf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
@@ -211,7 +211,7 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
 
 次の表は、*function.json* ファイルと `QueueTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし| `queueTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction**| 該当なし | *function.json* ファイルの場合のみ。 `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -234,16 +234,16 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 
 ## <a name="trigger---message-metadata"></a>トリガー - メッセージのメタデータ
 
-キュー トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 値は、[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) と同じセマンティクスを持ちます。
+キュー トリガーは、いくつかの[メタデータ プロパティ](functions-triggers-bindings.md#binding-expressions---trigger-metadata)を提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 値は、[CloudQueueMessage](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage) と同じセマンティクスを持ちます。
 
 |プロパティ|type|[説明]|
 |--------|----|-----------|
 |`QueueTrigger`|`string`|キュー ペイロード (有効な文字列の場合)。 キュー メッセージ ペイロードが文字列の場合、`QueueTrigger` は、*function.json* の `name` プロパティで指定された変数と同じ値になります。|
 |`DequeueCount`|`int`|このメッセージがデキューされた回数。|
-|`ExpirationTime`|`DateTimeOffset?`|メッセージが期限切れになる時刻。|
+|`ExpirationTime`|`DateTimeOffset`|メッセージが期限切れになる時刻。|
 |`Id`|`string`|キュー メッセージ ID。|
-|`InsertionTime`|`DateTimeOffset?`|メッセージがキューに追加された時刻。|
-|`NextVisibleTime`|`DateTimeOffset?`|メッセージが次に表示される時刻。|
+|`InsertionTime`|`DateTimeOffset`|メッセージがキューに追加された時刻。|
+|`NextVisibleTime`|`DateTimeOffset`|メッセージが次に表示される時刻。|
 |`PopReceipt`|`string`|メッセージのポップ受信。|
 
 ## <a name="trigger---poison-messages"></a>トリガー - 有害メッセージ
@@ -251,6 +251,18 @@ JavaScript の場合、`context.bindings.<name>` を使用してキュー項目�
 キュー トリガー関数が失敗すると、Azure Functions は、その関数を特定のキュー メッセージに対して (最初の試行を含め) 最大 5 回再試行します。 試行が 5 回とも失敗した場合、Functions ランタイム は、*&lt;originalqueuename>-poison* という名前のキューにメッセージを追加します。 メッセージのログを取得するか、手動での対処が必要であるという通知を送信することにより有害キューからのメッセージを処理する関数が記述できます。
 
 有害メッセージを手動で処理するには、キュー メッセージの [dequeueCount](#trigger---message-metadata) を確認します。
+
+## <a name="trigger---polling-algorithm"></a>トリガー - ポーリング アルゴリズム
+
+キュー トリガーは、アイドル状態のキューのポーリングがストレージ トランザクション コストに与える影響を軽減するために、ランダムな指数バックオフ アルゴリズムを実装します。  メッセージが見つかったら、このランタイムは 2 秒間待ってから別のメッセージを確認します。メッセージが見つからない場合は、約 4 秒間待ってから再試行します。 再試行後もキュー メッセージが取得できなかった場合、待ち時間が最大になるまで再試行が続けられます。既定の最大待ち時間は 1 分間です。 最大待ち時間は、[host.json ファイル](functions-host-json.md#queues)内の `maxPollingInterval` プロパティで構成できます。
+
+## <a name="trigger---concurrency"></a>トリガー - 同時実行
+
+待機中のキュー メッセージが複数存在する場合、キュー トリガーはメッセージのバッチを取得し、関数インスタンスを同時に呼び出してそれらを処理します。 既定では、このバッチ サイズは 16 です。 処理されている数が 8 まで減少すると、このランタイムは別のバッチを取得し、それらのメッセージの処理を開始します。 そのため、1 つの仮想マシン (VM) 上で 1 関数あたりに処理されている同時実行メッセージの最大数は 24 です。 この制限は、各 VM 上のキューによってトリガーされる各関数に個別に適用されます。 関数アプリが複数の VM にスケールアウトした場合、各 VM はトリガーを待機し、関数を実行しようとします。 たとえば、関数アプリが 3 つの VM にスケールアウトした場合、キューによってトリガーされる 1 つの関数の同時実行インスタンスの既定の最大数は 72 です。
+
+新しいバッチを取得するためのバッチ サイズとしきい値は、[host.json ファイル](functions-host-json.md#queues)で構成できます。 関数アプリ内のキューによってトリガーされる関数の並列実行を最小限に抑えたい場合は、このバッチ サイズを 1 に設定できます。 この設定によって同時実行が解消されるのは、関数アプリが 1 つの仮想マシン (VM) 上で実行される場合に限ります。 
+
+キュー トリガーは、関数がキュー メッセージを複数回処理することを自動的に防止します。関数をべき等として記述する必要はありません。
 
 ## <a name="trigger---hostjson-properties"></a>トリガー - host.json のプロパティ
 
@@ -433,7 +445,7 @@ public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
 
 次の表は、*function.json* ファイルと `Queue` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `queue` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `out` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |

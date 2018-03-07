@@ -1,0 +1,106 @@
+---
+title: "S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする: Azure Resource Manager | Microsoft Docs"
+description: "この記事では、Azure Resource Manager を使って Azure VPN ゲートウェイで S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする手順を説明します。"
+services: vpn-gateway
+documentationcenter: na
+author: yushwang
+manager: rossort
+editor: 
+tags: azure-resource-manager
+ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
+ms.service: vpn-gateway
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: infrastructure-services
+ms.date: 02/21/2018
+ms.author: yushwang
+ms.openlocfilehash: ebff881cdaa7dd3e14fa1687588408cd9a911553
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 02/24/2018
+---
+# <a name="download-vpn-device-configuration-scripts-for-s2s-vpn-connections"></a>S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする
+
+この記事では、Azure Resource Manager を使って Azure VPN ゲートウェイで S2S VPN 接続用の VPN デバイス構成スクリプトをダウンロードする手順を説明します。 次の図はワークフローの概要です。
+
+![download-script](./media/vpn-gateway-download-vpndevicescript/downloaddevicescript.png)
+
+## <a name="about"></a>VPN デバイス構成スクリプトについて
+
+クロスプレミスの VPN 接続は、Azure VPN ゲートウェイとオンプレミスの VPN デバイスおよび両者を接続する IPsec S2S VPN トンネルで構成されます。 一般的なワークフローには次の手順が含まれます。
+
+1. Azure VPN ゲートウェイ (仮想ネットワーク ゲートウェイ) を作成して構成します
+2. オンプレミスのネットワークと VPN デバイスを表す Azure ローカル ネットワーク ゲートウェイを作成して構成します
+3. Azure VPN ゲートウェイとローカル ネットワーク ゲートウェイの間に Azure VPN 接続を作成して構成します
+4. ローカル ネットワーク ゲートウェイで表されるオンプレミスの VPN デバイスを構成して、Azure VPN ゲートウェイとの実際の S2S VPN トンネルを確立します
+
+ステップ 1 ～ 3 は、Azure [Portal](vpn-gateway-howto-site-to-site-resource-manager-portal.md)、[PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)、または [CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md) を使って実行できます。 最後のステップには、Azure の外部でオンプレミスの VPN デバイスを構成する作業が含まれます。 この機能では、Azure VPN ゲートウェイ、仮想ネットワーク、オンプレミス ネットワークの各アドレス プレフィックスや、VPN 接続のプロパティなどに対応する値が既に設定されている、お使いの VPN デバイス用の構成スクリプトをダウンロードできます。 スクリプトを基にして使い始めることも、構成コンソールでオンプレミスの VPN デバイスにスクリプトを直接適用することもできます。
+
+> [!IMPORTANT]
+> * VPN デバイスごとに構成スクリプトの構文は異なり、モデルとファームウェアのバージョンに大きく依存します。 使用可能なテンプレートに対するデバイスのモデルとバージョンの情報に特に注意してください。
+> * 一部のパラメーター値はデバイスに固有である必要があり、デバイスにアクセスしないで決定することはできません。 Azure 生成の構成スクリプトではこれらの値が事前に設定されていますが、提供されている値がお使いのデバイスで有効であることを確認する必要があります。 次に例を示します。
+>    * インターフェイス番号
+>    * アクセス制御リスト番号
+>    * ポリシーの名前または番号など
+> * スクリプトを適用する前に確認する必要があるパラメーターを探すには、スクリプトに埋め込まれているキーワード "**REPLACE**" を検索してください。
+> * 一部のテンプレートには、構成を削除するために適用できる "**CLEANUP**" セクションが含まれます。 クリーンアップ セクションは、既定ではコメントになっています。
+
+## <a name="download-the-configuration-script-from-azure-portal"></a>Azure Portal から構成スクリプトをダウンロードする
+
+Azure VPN ゲートウェイ、ローカル ネットワーク ゲートウェイ、およびそれらを接続する接続リソースを作成します。 次のページではその手順が説明されています。
+
+* [Azure Portal でサイト間接続を作成する](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
+
+接続リソースを作成した後、以下の手順に従って VPN デバイス構成スクリプトをダウンロードします。
+
+1. ブラウザーから [Azure Portal](http://portal.azure.com) に移動し、必要な場合は Azure アカウントでサインインします。
+2. 作成した接続リソースに移動します。 [すべてのサービス]、[ネットワーク]、[接続] の順にクリックすると、すべての接続リソースの一覧が表示されます。
+
+    ![connection-list](./media/vpn-gateway-download-vpndevicescript/connectionlist.png)
+
+3. 構成する接続をクリックします。
+
+    ![connection-overview](./media/vpn-gateway-download-vpndevicescript/connectionoverview.png)
+
+4. 接続の概要ページの赤で強調した [構成のダウンロード] リンクをクリックします。[構成のダウンロード] ページが開きます。
+
+    ![download-script-1](./media/vpn-gateway-download-vpndevicescript/downloadscript-1.png)
+
+5. お使いの VPN デバイスのモデル ファミリとファームウェア バージョンを選び、[構成のダウンロード] ボタンをクリックします。
+
+    ![download66-script-2](./media/vpn-gateway-download-vpndevicescript/downloadscript-2.PNG)
+
+6. ブラウザーでダウンロードしたスクリプト (テキスト ファイル) を保存するように求められます。
+7. 構成スクリプトをダウンロードした後、テキスト エディターでそれを開いて、キーワード "REPLACE" を検索し、置き換えが必要な可能性のあるパラメーターを探して調べます。
+
+    ![edit-script](./media/vpn-gateway-download-vpndevicescript/editscript.png)
+
+## <a name="download-the-configuration-script-using-azure-powershell"></a>Azure PowerShell を使用して構成スクリプトをダウンロードする
+
+次の例で示すように、Azure PowerShell を使って構成スクリプトをダウンロードすることもできます。
+
+```powershell
+$Sub         = "<YourSubscriptionName>"
+$RG          = "TestRG1"
+$GWName      = "VNet1GW"
+$Connection  = "VNet1toSite5"
+
+Login-AzureRmAccount
+Set-AzureRmContext -Subscription $Sub
+
+# List the available VPN device models and versions
+Get-AzureRmVirtualNetworkGatewaySupportedVpnDevice -Name $GWName -ResourceGroupName $RG
+
+# Download the configuration script for the connection
+Get-AzureRmVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -ResourceGroupName $RG -DeviceVendor Juniper -DeviceFamily Juniper_SRX_GA -FirmwareVersion Juniper_SRX_12.x_GA
+```
+
+## <a name="apply-the-configuration-script-to-your-vpn-device"></a>VPN デバイスに構成スクリプトを適用する
+
+構成スクリプトをダウンロードして検証した後は、お使いの VPN デバイスにスクリプトを適用します。 実際の手順は、お使いの VPN デバイスの製造元とモデルによって異なります。 お使いの VPN デバイスの操作マニュアルまたは説明ページをご覧ください。
+
+## <a name="next-steps"></a>次の手順
+
+接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。

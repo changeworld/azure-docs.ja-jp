@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c62ea8efe56186a2f3ee934823b4ea03775037b0
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: fe27577b73c26731647a217c249913d8332c0c59
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -59,7 +59,11 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
 
-### <a name="a-name180181"></a><a name="1.8.0"/>1.8.1
+### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
+
+* 特定の競合状態の下で起こり、セッションの整合性レベルを使うと断続的に "Microsoft.Azure.Documents.NotFoundException: The read session is not available for the input session token" (入力セッション トークンでは読み取りセッションを使用できません) というエラーが発生するバグを修正しました。
+
+### <a name="a-name181181"></a><a name="1.8.1"/>1.8.1
 
 * FeedOptions.MaxItemCount = -1 によって System.ArithmeticException: page size is negative (ページ サイズがマイナスです) がスローされた回帰が修正されました。
 * 新しい ToString() 関数が QueryMetrics に追加されました。
@@ -165,6 +169,7 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.8.2](#1.8.2) |2018 年 2 月 21 日 |--- |
 | [1.8.1](#1.8.1) |2018 年 2 月 5 日 |--- |
 | [1.7.1](#1.7.1) |2017 年 11 月 16 日 |--- |
 | [1.7.0](#1.7.0) |2017 年 11 月 10 日 |--- |

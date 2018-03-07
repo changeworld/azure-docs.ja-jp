@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2018
+ms.date: 02/26/2018
 ms.author: larryfr
-ms.openlocfilehash: 866dd3abbcca12413d0e02651826365166db616f
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: eca3f95b672a7334d77ac027b4774addf4efed2c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>HDInsight の Storm での Apache Kafka の使用
 
@@ -36,7 +36,7 @@ Apache Storm を使用して Apache Kafka のデータを読み書きする方�
 
 このプロジェクトをコンパイルするには、開発環境に次の構成が必要です。
 
-* [Java JDK 1.8](https://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
+* [Java JDK 1.8](http://www.oracle.com/technetwork/pt/java/javase/downloads/jdk8-downloads-2133151.html) 以上 HDInsight 3.5 以降には Java 8 が必要です。
 
 * [Maven 3.x](https://maven.apache.org/download.cgi)
 
@@ -121,7 +121,7 @@ Azure 仮想ネットワーク、Kafka、および Storm クラスターは手�
     このトポロジでは、Storm HdfsBolt を使用して Storm クラスターの既定のストレージにデータを書き込みます。
 ### <a name="flux"></a>Flux
 
-これらのトポロジは、[Flux](https://storm.apache.org/releases/1.1.0/flux.html) で定義されています。 Flux は Storm 0.10.x で導入されており、これによりトポロジ構成とコードを切り離すことができます。 Flux フレームワークを使用するトポロジの場合、YAML ファイルでトポロジを定義します。 YAML ファイルはトポロジの一部として含めることができるほか、 トポロジを送信するときに使用するスタンドアロン ファイルにもなります。 Flux では実行時の変数代入もサポートされており、以下の例ではこれを使用しています。
+これらのトポロジは、[Flux](https://storm.apache.org/releases/1.1.2/flux.html) で定義されています。 Flux は Storm 0.10.x で導入されており、これによりトポロジ構成とコードを切り離すことができます。 Flux フレームワークを使用するトポロジの場合、YAML ファイルでトポロジを定義します。 YAML ファイルはトポロジの一部として含めることができるほか、 トポロジを送信するときに使用するスタンドアロン ファイルにもなります。 Flux では実行時の変数代入もサポートされており、以下の例ではこれを使用しています。
 
 これらのトポロジの実行時に、次のパラメーターが設定されます。
 
@@ -131,7 +131,7 @@ Azure 仮想ネットワーク、Kafka、および Storm クラスターは手�
 
 * `${kafka.zookeeper.hosts}`: Kafka クラスター上で Zookeeper が実行されるホスト。
 
-Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1.1.0/flux.html](https://storm.apache.org/releases/1.1.0/flux.html) をご覧ください。
+Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1.1.2/flux.html](https://storm.apache.org/releases/1.1.2/flux.html) をご覧ください。
 
 ## <a name="download-and-compile-the-project"></a>プロジェクトのダウンロードおよびコンパイル
 
@@ -172,7 +172,7 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
     ```
 
     > [!IMPORTANT]
-    > Bash の例では、`$CLUSTERNAME` に HDInsight クラスターの名前が含まれていること、 および [jq](https://stedolan.github.io/jq/) がインストールされいていることを前提としています。 プロンプトが表示されたら、クラスターのログイン アカウントのパスワードを入力してください。
+    > Bash の例では、`$CLUSTERNAME` に HDInsight クラスターの名前が含まれていること、 また、[jq](https://stedolan.github.io/jq/) バージョン 1.5 以降がインストールされているものとします。 プロンプトが表示されたら、クラスターのログイン アカウントのパスワードを入力してください。
 
     次のテキストのような値が返されます。
 
@@ -218,7 +218,7 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
 4. `dev.properties` ファイルを保存し、次のコマンドを使用して Storm クラスターにアップロードします。
 
      ```bash
-    scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:KafkaTopology-1.0-SNAPSHOT.jar
+    scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
     ```
 
     **USERNAME** は、クラスターの SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
@@ -287,6 +287,9 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
     スクリプトを停止するには Ctrl+C キーを押します。
 
 ## <a name="start-the-reader"></a>リーダーの起動
+
+> [!NOTE]
+> Storm UI でリーダーを表示すると、__[Topology spouts lag error]\(トポロジ スパウト ラグ エラー\)__ セクションが表示される場合があります。 この例では、このエラーは無視してかまいません。
 
 1. Storm クラスターへの SSH セッションで、次のコマンドを使用してリーダー トポロジを起動します。
 

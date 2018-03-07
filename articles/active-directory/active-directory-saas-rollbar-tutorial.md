@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/04/2017
 ms.author: jeedes
-ms.openlocfilehash: bb8a81327163513ab721d2ad72da19173b59bc1f
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 43dc50d0a5381ace8bcfeb3cae39e249ba743876
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rollbar"></a>チュートリアル: Azure Active Directory と Rollbar の統合
 
@@ -108,7 +108,7 @@ Rollbar で Azure AD のシングル サインオンを構成してテストす�
 
     ![[Rollbar のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-rollbar-tutorial/tutorial_rollbar_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://saml.rollbar.com`
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに次の URL を入力します。`https://saml.rollbar.com`
 
     b. **[応答 URL]** ボックスに、`https://rollbar.com/<accountname>/saml/sso/azure/` のパターンを使用して URL を入力します。
 
@@ -143,17 +143,20 @@ Rollbar で Azure AD のシングル サインオンを構成してテストす�
     
     ![構成](./media/active-directory-saas-rollbar-tutorial/configure2.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[SAML Identity Provider]\(SAML ID プロバイダー\)** ドロップダウンから **[AZURE]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[SAML Identity Provider]\(SAML ID プロバイダー\)** ドロップダウンから **[AZURE]** を選択します。
 
     b. メタデータ ファイルをメモ帳で開き、その内容をクリップボードにコピーし、**[SAML Metadata]\(SAML メタデータ\)** テキストボックスに貼りつけます。
 
     c. **[Save]** をクリックします。
 
-11. [Save]\(保存\) ボタンをクリックすると、次のような画面が表示されます。 このセクションで、次の手順を実行します。
+11. 保存ボタンをクリックすると、次のような画面が表示されます。
     
     ![構成](./media/active-directory-saas-rollbar-tutorial/configure3.png)
+    > [!NOTE] 
+    > 次の手順を行うには、最初に、Azure で自分自身を Rollbar アプリにユーザーとして追加する必要があります。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure による認証をすべてのユーザーに要求する場合は、**[log in via your identity provider]\(ID プロバイダーを使用してログインする\)** をクリックして Azure で再認証します。  
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **[Require login via SAML Identity Provider]\(SAML ID プロバイダー経由のログインを必須にする\)** チェックボックスをオンにします。
+    b.  画面に戻った後、**[Require login via SAML Identity Provider]\(SAML ID プロバイダーによるログインを要求する\)** チェック ボックスをオンにします。
 
     b. **[Save]** をクリックします。
 

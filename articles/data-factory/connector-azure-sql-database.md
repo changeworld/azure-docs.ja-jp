@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: e4d14f396b3a928975b671d10254cfbcc822a0d3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a4d2ccb4b4ba27983537f26e66b5c279f427d466
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -35,9 +35,12 @@ ms.lasthandoff: 02/09/2018
 
 具体的には、この SQL Database コネクタは以下をサポートします。
 
-- SQL 認証を使用したデータのコピー。
+- **SQL 認証**を使って、およびサービス プリンシパルまたは管理対象サービス ID (MSI) で **Azure Active Directory アプリケーション トークン認証**を使って、データをコピーする。
 - ソースとしての SQL クエリまたはストアド プロシージャを使用したデータの取得。
 - シンクとして、宛先テーブルにデータを追記する、またはコピー中にカスタム ロジックを使用してストアド プロシージャを起動する。
+
+> [!IMPORTANT]
+> Azure Integration Runtime を使ってデータをコピーする場合は、[Azure サービスがサーバーにアクセスするのを許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Server ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)を構成します。 セルフホステッド Integration Runtime を使ってデータをコピーする場合は、Azure SQL Database への接続に使われるコンピューターの IP アドレスを含む適切な IP 範囲を許可するように、Azure SQL Server ファイアウォールを構成します。
 
 ## <a name="getting-started"></a>使用の開始
 
@@ -52,13 +55,21 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **AzureSqlDatabase** | [はい] |
-| connectionString |connectionString プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| connectionString |connectionString プロパティの Azure SQL Database インスタンスに接続するために必要な情報を指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| servicePrincipalId | アプリケーションのクライアント ID を取得します。 | サービス プリンシパルで AAD 認証を使う場合は、はい。 |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | サービス プリンシパルで AAD 認証を使う場合は、はい。 |
+| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | サービス プリンシパルで AAD 認証を使う場合は、はい。 |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
-> [!IMPORTANT]
-> [サーバーへのアクセスを Azure サービスに許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Database ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) データベース サーバーを構成します。 さらに、Azure の外部 (たとえば自己ホスト型統合ランタイムを使用するオンプレミスのデータ ファクトリ) から Azure SQL Database にデータをコピーする場合は、Azure SQL Database にデータを送信するコンピューターの適切な IP アドレス範囲を構成します。
+さまざまな認証の種類の前提条件と JSON サンプルについては、以下のセクションをご覧ください。
 
-**例:**
+- [SQL 認証の使用](#using-sql-authentication)
+- [AAD アプリケーション トークン認証の使用 - サービス プリンシパル](#using-service-principal-authentication)
+- [AAD アプリケーション トークン認証の使用 - 管理対象サービス ID](#using-managed-service-identity-authentication)
+
+### <a name="using-sql-authentication"></a>SQL 認証の使用
+
+**SQL 認証を使用するリンクされたサービスの例:**
 
 ```json
 {
@@ -69,6 +80,113 @@ Azure SQL Database のリンクされたサービスでは、次のプロパテ�
             "connectionString": {
                 "type": "SecureString",
                 "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-service-principal-authentication"></a>サービス プリンシパル認証の使用
+
+サービス プリンシパル ベースの AAD アプリケーション トークン認証を使うには、以下の手順のようにします。
+
+1. **[Azure Portal から Azure Active Directory アプリケーションを作成します](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)。**  リンクされたサービスを定義するときに使うアプリケーション名と次の値を記録しておきます。
+
+    - アプリケーション ID
+    - アプリケーション キー
+    - テナント ID
+
+2. まだ行っていない場合は、Azure Portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**。 AAD 管理者は AAD ユーザーまたは AAD グループである必要がありますが、サービス プリンシパルであることはできません。 このステップは、後続のステップで AAD ID を使ってサービス プリンシパルの包含データベース ユーザーを作成できるようにするために行われます。
+
+3. SSMS などのツールを使ってデータをコピーするデータベースに接続し、少なくとも ALTER ANY USER アクセス許可を持つ AAD ID を使って、次の T-SQL を実行することにより、**サービス プリンシパルの包含データベース ユーザーを作成**します。 包含データベース ユーザーについて詳しくは、[こちら](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をご覧ください。
+    
+    ```sql
+    CREATE USER [your application name] FROM EXTERNAL PROVIDER;
+    ```
+
+4. SQL ユーザーに対する通常の方法 (たとえば次のコマンドの実行) で、**サービス プリンシパルに必要なアクセス許可を付与**します。
+
+    ```sql
+    EXEC sp_addrolemember '[your application name]', 'readonlyuser';
+    ```
+
+5. ADF で、Azure SQL Database のリンクされたサービスを構成します。
+
+
+**サービス プリンシパル認証を使うリンクされたサービスの例:**
+
+```json
+{
+    "name": "AzureSqlDbLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;User ID=<username>@<servername>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+            },
+            "servicePrincipalId": "<service principal id>",
+            "servicePrincipalKey": {
+                "type": "SecureString",
+                "value": "<service principal key>"
+            },
+            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>"
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+### <a name="using-managed-service-identity-authentication"></a>管理対象のサービス ID の認証の使用
+
+データ ファクトリは、この特定のデータ ファクトリを表す[管理対象のサービス ID (MSI)](data-factory-service-identity.md) に関連付けることができます。 Azure SQL Database 認証にこのサービス ID を使ことができ、そうすると、この指定されたファクトリは、データベースとの間で双方向にアクセスしたりデータをコピーしたりできるようになります。
+
+MSI ベースの AAD アプリケーション トークン認証を使うには、以下の手順のようにします。
+
+1. **Azure AD にグループを作成し、ファクトリの MSI をそのグループのメンバーにします**。
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 Azure Portal でデータ ファクトリのサービス ID を調べます。 データ ファクトリの [プロパティ] で **[サービス ID]** をコピーします。
+
+    b. [Azure AD PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2) モジュールをインストールし、`Connect-AzureAD` コマンドを使ってサインインし、次のコマンドを実行してグループを作成し、データ ファクトリの MSI をメンバーとして追加します。
+    ```powershell
+    $Group = New-AzureADGroup -DisplayName "<your group name>" -MailEnabled $false -SecurityEnabled $true -MailNickName "NotSet"
+    Add-AzureAdGroupMember -ObjectId $Group.ObjectId -RefObjectId "<your data factory service identity ID>"
+    ```
+
+2. まだ行っていない場合は、Azure Portal で Azure SQL Server の **[Azure Active Directory 管理者をプロビジョニングします](../sql-database/sql-database-aad-authentication-configure.md#create-an-azure-ad-administrator-for-azure-sql-server)**。 AAD 管理者には、AAD ユーザーまたは AAD グループを指定できます。 グループに MSI と管理者ロールを付与する場合は、管理者は DB へのフル アクセス権を持っているので、以下のステップ 3 と 4 をスキップします。
+
+3. SSMS などのツールを使ってデータをコピーするデータベースに接続し、少なくとも ALTER ANY USER アクセス許可を持つ AAD ID を使って、次の T-SQL を実行することにより、**AAD グループの包含データベース ユーザーを作成**します。 包含データベース ユーザーについて詳しくは、[こちら](../sql-database/sql-database-aad-authentication-configure.md#create-contained-database-users-in-your-database-mapped-to-azure-ad-identities)をご覧ください。
+    
+    ```sql
+    CREATE USER [your AAD group name] FROM EXTERNAL PROVIDER;
+    ```
+
+4. SQL ユーザーに対する通常の方法 (たとえば次のコマンドの実行) で、**AAD グループに必要なアクセス許可を付与**します。
+
+    ```sql
+    EXEC sp_addrolemember '[your AAD group name]', 'readonlyuser';
+    ```
+
+5. ADF で、Azure SQL Database のリンクされたサービスを構成します。
+
+**MSI 認証を使うリンクされたサービスの例:**
+
+```json
+{
+    "name": "AzureSqlDbLinkedService",
+    "properties": {
+        "type": "AzureSqlDatabase",
+        "typeProperties": {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Server=tcp:<servername>.database.windows.net,1433;Database=<databasename>;Connection Timeout=30"
             }
         },
         "connectVia": {

@@ -13,82 +13,100 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 02/27/2018
 ms.author: owend
-ms.openlocfilehash: 33115ee35670407c3b046f70a5fbebc47284b4b9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e2f7e356b260c0e5af67d28811bd88a63a601312
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
-Azure Analysis Services サーバーでは、組織のクラウドおよびオンプレミスにあるデータ ソースへの接続がサポートされます。 サポート対象のデータ ソースは随時追加されていますので、 こちらを頻繁にご確認ください。 
 
-現在、次のデータ ソースがサポートされています。
+Visual Studio のデータ ファイル指定ウィザードまたはインポート ウィザードで表示されるデータ ソースとコネクタは、Azure Analysis Services と SQL Server Analysis Services の両方に対するものです。 ただし、表示されているすべてのデータ ソースとコネクタが、Azure Analysis Services でサポートされているわけではありません。 接続できるデータ ソースの種類は、モデルの互換性レベル、使用可能なデータ コネクタ、認証の種類、プロバイダー、オンプレミスのデータ ゲートウェイのサポートなど、さまざまな要因に依存します。 
 
-| クラウド  |
-|---|
-| Azure Blob Storage*  |
-| の接続文字列  |
-| Azure データ ウェアハウス |
+## <a name="azure-data-sources"></a>Azure データ ソース
 
+|データソース  |メモリ内  |DirectQuery  |
+|---------|---------|---------|
+|の接続文字列     |   [はい]      |    [はい]      |
+|Azure SQL Data Warehouse     |   [はい]      |   [はい]       |
+|Azure Blob Storage*     |   [はい]       |    いいえ       |
+|Azure Table Storage*    |   [はい]       |    いいえ       |
+|Azure Cosmos DB (ベータ)*     |  [はい]        |  いいえ         |
+|Azure Data Lake Store*     |   [はい]       |    いいえ       |
+|Azure HDInsight HDFS*     |     [はい]     |   いいえ        |
+|Azure HDInsight Spark (ベータ)*     |   [はい]       |   いいえ        |
+|Azure Database for MySQL (プレビュー)*     |   [はい]       |   いいえ       |
+|Azure Database for PostgreSQL (プレビュー)*     | [はい]         |  いいえ        |
+||||
 
-| オンプレミスの  |   |   |   |
-|---|---|---|---|
-| Access データベース  | フォルダー* | Oracle Database  | Teradata データベース |
-| Active Directory*  | JSON ドキュメント*  | Postgre SQL データベース*  |XML テーブル* |
-| Analysis Services  | バイナリからの行*  | SAP HANA*  |
-| Analytics Platform System  | MySQL Database  | SAP Business Warehouse*  | |
-| Dynamics CRM*  | OData フィード*  | SharePoint*  |
-| Excel ブック  | ODBC クエリ  | SQL Database  |
-| Exchange*  | OLE DB  | Sybase データベース  |
+\* 表形式 1400 モデルのみ。
 
-\* 表形式 1400 モデルのみ。 
+**プロバイダー**   
+Azure データ ソースに接続するメモリ内モデルおよび DirectQuery モデルは、.NET Framework SQL Server 用データ プロバイダーを使います。
+
+## <a name="on-premises-data-sources"></a>オンプレミス データ ソース
+
+オンプレミスのデータ ソースに接続するには、オンプレミスのゲートウェイが必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーがインストールされていることを確認してください。
+
+### <a name="in-memory-and-directquery"></a>メモリ内と DirectQuery
+
+|データソース | メモリ内のプロバイダー | DirectQuery プロバイダー |
+|  --- | --- | --- |
+| SQL Server |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
+| SQL Server Data Warehouse |SQL Server Native Client 11.0、Microsoft OLE DB Provider for SQL Server、.NET Framework SQL Server 用データ プロバイダー | SQL Server 用の .NET Framework データ プロバイダー |
+| Oracle |Microsoft OLE DB Provider for Oracle、Oracle Data Provider for .NET |Oracle Data Provider for .NET | |
+| Teradata |OLE DB Provider for Teradata、Teradata Data Provider for .NET |Teradata Data Provider for .NET | |
+| | | |
+
+\* 表形式 1400 モデルのみ。
+
+### <a name="in-memory-only"></a>メモリ内のみ
 
 > [!IMPORTANT]
-> オンプレミスのデータ ソースに接続するには、ご利用の環境内のコンピューターに[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)がインストールされている必要があります。
+> 以下のデータ ソース用のプロバイダーはテスト中です。 
 
-## <a name="data-providers"></a>データ プロバイダー
+|データソース  |  
+|---------|---------|
+|Access データベース     |  
+|Active Directory*     |  
+|Analysis Services     | 
+|Analytics Platform System     |  
+|Dynamics CRM*     |  
+|Excel ブック     | 
+|Exchange*     |  
+|フォルダー*     | 
+|JSON ドキュメント*     |  
+|バイナリからの行*     | 
+|MySQL Database     | 
+|OData フィード*     | 
+|ODBC クエリ     | 
+|OLE DB     |  
+|Postgre SQL データベース*    | 
+|SAP HANA*    |   
+|SAP Business Warehouse*    |  
+|SharePoint*     |   
+|Sybase データベース     |  
+|XML テーブル*    |  
+|||
+ 
+\* 表形式 1400 モデルのみ。
 
-Azure Analysis Services のデータ モデルでは、特定のデータ ソースに接続するときに異なるデータ プロバイダーが必要になる場合があります。 場合によっては、SQL Server Native Client (SQLNCLI11) などのネイティブ プロバイダーを使ってデータ ソースに接続する表形式モデルがエラーを返すことがあります。
+## <a name="specifying-a-different-provider"></a>別のプロバイダーを指定する
 
-Azure SQL Database などのクラウド データ ソースに接続するデータ モデルでは、SQLOLEDB 以外のネイティブ プロバイダーを使用すると、**"プロバイダー 'SQLNCLI11.1' は登録されていません"** というエラー メッセージが表示される場合があります。 または、オンプレミスのデータ ソースに接続する直接クエリ モデルがある場合、ネイティブ プロバイダーを使うと、**"Error creating OLE DB row set.Incorrect syntax near 'LIMIT'"** (OLE DB 行セットの作成でエラーが発生しました。'LIMIT' の周辺に正しくない構文があります") というエラー メッセージが表示される場合があります。
-
-クラウドまたはオンプレミスのデータ ソースに接続する場合、メモリ内データ モデルまたは DirectQuery データ モデルに対しては次のデータ ソース プロバイダーがサポートされます。
-
-### <a name="cloud"></a>クラウド
-| **データ ソース** | **メモリ内** | **DirectQuery** |
-|  --- | --- | --- |
-| Azure SQL Data Warehouse |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー |
-| の接続文字列 |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー | |
-
-### <a name="on-premises-via-gateway"></a>オンプレミス (ゲートウェイ経由)
-|**データ ソース** | **メモリ内** | **DirectQuery** |
-|  --- | --- | --- |
-| SQL Server |SQL Server Native Client 11.0 |SQL Server 用の .NET Framework データ プロバイダー |
-| SQL Server |Microsoft OLE DB Provider for SQL Server |SQL Server 用の .NET Framework データ プロバイダー | |
-| SQL Server |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー | |
-| Oracle |Microsoft OLE DB Provider for Oracle |Oracle Data Provider for .NET | |
-| Oracle |Oracle Data Provider for .NET |Oracle Data Provider for .NET | |
-| Teradata |OLE DB Provider for Teradata |Teradata Data Provider for .NET | |
-| Teradata |Teradata Data Provider for .NET |Teradata Data Provider for .NET | |
-| Analytics Platform System |SQL Server 用の .NET Framework データ プロバイダー |SQL Server 用の .NET Framework データ プロバイダー | |
-
-> [!NOTE]
-> オンプレミスのゲートウェイを使う場合は、64 ビット プロバイダーがインストールされていることを確認します。
-> 
-> 
+Azure Analysis Services のデータ モデルでは、特定のデータ ソースに接続するときに異なるデータ プロバイダーが必要になる場合があります。 場合によっては、SQL Server Native Client (SQLNCLI11) などのネイティブ プロバイダーを使ってデータ ソースに接続する表形式モデルがエラーを返すことがあります。 SQLOLEDB 以外のネイティブ プロバイダーを使っている場合、"**プロバイダー 'SQLNCLI11.1' が登録されていません**" というエラー メッセージが表示されることがあります。 または、オンプレミスのデータ ソースに接続する直接クエリ モデルがあり、ネイティブ プロバイダーを使っている場合は、"**Error creating OLE DB row set.Incorrect syntax near 'LIMIT'**" (OLE DB 行セットの作成でエラーが発生しました。'LIMIT' の周辺に正しくない構文があります。) というエラー メッセージが表示される場合があります。
 
 オンプレミスの SQL Server Analysis Services 表形式モデルを Azure Analysis Services に移行する場合は、プロバイダーの変更が必要になることがあります。
 
-**データ ソース プロバイダーを指定するには**
+**プロバイダーを指定するには**
 
 1. SSDT > **表形式モデル エクスプローラー** > **[データ ソース]** で、データ ソース接続を右クリックし、**[データ ソースの編集]** をクリックします。
 2. **[接続の編集]** で、**[詳細]** をクリックして詳細プロパティ ウィンドウを開きます。
 3. **[詳細プロパティの設定]** > **[プロバイダー]** で、適切なプロバイダーを選びます。
 
 ## <a name="impersonation"></a>権限の借用
-場合によっては、異なる権限借用アカウントの指定が必要になることがあります。 権限借用アカウントは SSDT または SSMS でを指定できます。
+場合によっては、異なる権限借用アカウントの指定が必要になることがあります。 権限借用アカウントは、Visual Studio (SSDT) または SSMS で指定できます。
 
 オンプレミスのデータ ソースの場合:
 
@@ -100,6 +118,6 @@ Azure SQL Database などのクラウド データ ソースに接続するデ�
 * SQL 認証を使っている場合、権限借用にはサービス アカウントを使う必要があります。
 
 ## <a name="next-steps"></a>次の手順
-オンプレミスのデータ ソースがある場合は、[オンプレミスのゲートウェイ](analysis-services-gateway.md)をインストールする必要があります。   
-SSDT または SSMS でのサーバーの管理について詳しくは、[サーバーの管理に関する記事](analysis-services-manage.md)をご覧ください。
+[オンプレミス ゲートウェイ](analysis-services-gateway.md)   
+[サーバーの管理](analysis-services-manage.md)   
 

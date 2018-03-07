@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 09/14/2017
 ms.author: LADocs; millopis; estfan
-ms.openlocfilehash: 216745f9f540235ee48661eae922a5ae0e716e01
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5160913b2f08a04f0a985d8ddadd6641a664b258
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータに接続する
 
@@ -75,7 +75,7 @@ ms.lasthandoff: 02/21/2018
 
 1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。 ゲートウェイをインストールするために使用したのと同じ Azure の職場または学校の電子メール アドレスを必ず使用してください。
 
-2. Azure のメイン メニューで、**[リソースの作成]** > **[エンタープライズ統合]** > **[オンプレミス データ ゲートウェイ]** を選択します。
+2. Azure のメイン メニューで、**[リソースの作成]** > **[エンタープライズ統合]** > **[オンプレミスのデータ ゲートウェイ]** の順に選びます。
 
    !["オンプレミス データ ゲートウェイ" を見つける](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
@@ -107,9 +107,10 @@ ms.lasthandoff: 02/21/2018
 
     ![詳細を指定してオンプレミス データ ゲートウェイを作成する](./media/logic-apps-gateway-connection/createblade.png)
 
-    任意の時点でデータ ゲートウェイを検索または表示するには、メインの Azure のメニューで、**[その他のサービス]** > **[エンタープライズ統合]** > **[オンプレミス データ ゲートウェイ]** の順に選択します。
+    必要なときにデータ ゲートウェイを検索したり表示したりするには、Azure のメイン メニューで **[すべてのサービス]** を選びます。 
+    検索ボックスに「オンプレミスのデータ ゲートウェイ」と入力し、**[オンプレミスのデータ ゲートウェイ]** を選びます。
 
-    ![[その他のサービス]、[エンタープライズ統合]、[オンプレミス データ ゲートウェイ] の順に移動する](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
+    !["オンプレミスのデータ ゲートウェイ" を見つける](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
 <a name="connect-logic-app-gateway"></a>
 

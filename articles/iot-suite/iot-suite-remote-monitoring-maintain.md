@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: d26275b6b03115b775990c9efb5d4706fcb829d1
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: dd01246075a5c0db0ed49133ed51fb56d8fcf8e5
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-and-remediate-device-issues"></a>トラブルシューティングを行ってデバイスの問題を修復する
 
@@ -32,7 +32,7 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを実行するには、お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューションのインスタンスが必要です。
+このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
 リモート監視ソリューションをまだデプロイしていない場合は、「[Deploy the remote monitoring preconfigured solution (リモート監視の事前構成済みソリューションのデプロイ)](iot-suite-remote-monitoring-deploy.md)」のチュートリアルを完了しておく必要があります。
 
@@ -58,6 +58,8 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 ![アラームを確認する](media/iot-suite-remote-monitoring-maintain/maintenanceacknowledge.png)
 
+アラームを確認すると、発生の状態は **[承認済み]** に変わります。
+
 一覧では、温度アラームを発生させた**プロトタイプ** デバイスを表示できます。
 
 ![アラームの原因となったデバイスを一覧表示する](media/iot-suite-remote-monitoring-maintain/maintenanceresponsibledevice.png)
@@ -82,9 +84,9 @@ Contoso は、フィールド内の新しい**プロトタイプ** デバイス�
 
 ![ジョブの詳細を表示する](media/iot-suite-remote-monitoring-maintain/maintenancejobdetail.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、次の方法について説明しました。
+このチュートリアルで説明する内容は次のとおりです。
 
 <!-- Repeat task list from intro -->
 >[!div class="checklist"]

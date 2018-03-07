@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/26/2018
 ms.author: abnarain
-ms.openlocfilehash: 898e6914a427b2e8864d97a7188eb718811ce263
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: ebe0523849b4709424e2f4bdac00f6bf98bf7cf4
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -150,8 +150,8 @@ PowerShell は既定で、セキュリティで保護された通信にセルフ
 | `*.servicebus.windows.net`    | 443、80        | セルフホステッド統合ランタイムが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net`          | 443            | [ステージング コピー](copy-activity-performance.md#staged-copy)機能を使用する場合に、セルフホステッド統合ランタイムが Azure Storage アカウントに接続するために使用します。 |
 | `*.frontend.clouddatahub.net` | 443            | セルフホステッド統合ランタイムが Azure Data Factory サービスに接続するために必要です。 |
-| `*.database.windows.net`      | 1433           | (オプション) 移動先が Azure SQL Database または Azure SQL Data Warehouse である場合に必要です。 ステージング コピー機能を使用すると、ポート 1433 を開かずに Azure SQL Database または Azure SQL Data Warehouse にデータをコピーします。 |
-| `*.azuredatalakestore.net`    | 443            | (オプション) 移動先が Azure Data Lake Store である場合に必要です。 |
+| `*.database.windows.net`      | 1433           | (オプション) Azure SQL Database/Azure SQL Data Warehouse との間でコピーするときに必要です。 ステージング コピー機能を使用すると、ポート 1433 を開かずに Azure SQL Database または Azure SQL Data Warehouse にデータをコピーします。 |
+| `*.azuredatalakestore.net`<br>`login.microsoftonline.com/<tenant>/oauth2/token`    | 443            | (オプション) Azure Data Lake Store との間でコピーするときに必要です。 |
 
 > [!NOTE] 
 > 各データ ソースで必要な場合は、企業ファイアウォール レベルでポート/ホワイトリストに登録するドメインを管理する必要があります。 この表では、例として Azure SQL Database、Azure SQL Data Warehouse、Azure Data Lake Store のみを使用しています。   

@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 12/12/2017
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: fab3fd4163141aadc06b385f5759c19eece7fd14
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 66005b78a368c15a463844b3f098eac9fd64f621
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-and-configure-your-devices"></a>デバイスの管理と構成
 
@@ -36,17 +36,17 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを実行するには、お使いの Azure サブスクリプションにデプロイされたリモート監視ソリューションのインスタンスが必要です。
+このチュートリアルを実行するには、お使いの Azure サブスクリプションにリモート監視ソリューションのインスタンスをデプロイしておく必要があります。
 
 まだリモート管理ソリューションをデプロイしていない場合は、「[リモート管理の事前構成済みソリューションをデプロイする](iot-suite-remote-monitoring-deploy.md)」チュートリアルを実行する必要があります。
 
 ## <a name="add-a-simulated-device"></a>シミュレートされたデバイスの追加
 
-ソリューションの **[デバイス]** ページに移動して、**[新規デバイス]** を選択します。 **[新規デバイス]** パネルで、**[シミュレート済み]** を選択します。
+ソリューションの **[デバイス]** ページに移動して、**[+ 新規デバイス]** を選びます。 **[新規デバイス]** パネルで、**[シミュレート済み]** を選択します。
 
 ![シミュレートされたデバイスのプロビジョニング](media/iot-suite-remote-monitoring-manage/devicesprovision.png)
 
-プロビジョニングするデバイスの数を **1** のままにします。 **[デバイス モデル]** として **[Faulty Engine]\(問題があるエンジン\)** を選択し、**[適用]** を選択してシミュレートされたデバイスを作成します。
+プロビジョニングするデバイスの数を **1** のままにします。 デバイス モデルとして **[Faulty Engine]\(問題があるエンジン\)** を選び、**[適用]** を選んでシミュレートされたデバイスを作成します。
 
 ![シミュレートされたエンジン デバイスのプロビジョニング](media/iot-suite-remote-monitoring-manage/devicesprovisionengine.png)
 
@@ -98,7 +98,7 @@ Contoso は自社の施設の 1 つを拡大して生産量を増やすために
 
 **[メンテナンス]** ページでジョブの状態を追跡するには、**[ジョブ]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の方法について説明しました。
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9294d19ea78a2b9cf4282d627eddd16e6588d3ee
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e44261e8ee62ce6a91110da0ec0bc489c426f688
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -63,6 +63,8 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
+BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](functions-triggers-bindings.md#binding-expressions-and-patterns)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
+
 `BlobTrigger` 属性について詳しくは、[トリガー - 属性](#trigger---attributes) に関する記事をご覧ください。
 
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
@@ -79,14 +81,16 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
             "name": "myBlob",
             "type": "blobTrigger",
             "direction": "in",
-            "path": "samples-workitems",
+            "path": "samples-workitems/{name}",
             "connection":"MyStorageAccountAppSetting"
         }
     ]
 }
 ```
 
-[構成](#trigger---configuration)のセクションで、これらのプロパティについて説明します。
+BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](functions-triggers-bindings.md#binding-expressions-and-patterns)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
+
+*function.json* ファイル プロパティについて詳しくは、これらのプロパティについて説明している「[構成](#trigger---configuration)」セクションをご覧ください。
 
 `Stream` にバインドする C# スクリプト コードを次に示します。
 
@@ -112,7 +116,7 @@ public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
 
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
 
-次の例は、*function.json* ファイルの BLOB トリガー バインディングと、バインディングを使用する [JavaScript コード] (functions-reference-node.md) を示しています。 関数は、`samples-workitems` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
+次の例は、*function.json* ファイルの BLOB トリガー バインドと、バインドを使用する [JavaScript](functions-reference-node.md) コードを示しています。 関数は、`samples-workitems` コンテナーで BLOB が追加または更新されたときにログを書き込みます。
 
 *function.json* ファイルを次に示します。
 
@@ -124,14 +128,16 @@ public static void Run(CloudBlockBlob myBlob, string name, TraceWriter log)
             "name": "myBlob",
             "type": "blobTrigger",
             "direction": "in",
-            "path": "samples-workitems",
+            "path": "samples-workitems/{name}",
             "connection":"MyStorageAccountAppSetting"
         }
     ]
 }
 ```
 
-これらのプロパティについては、「[構成](#trigger---configuration)」セクションを参照してください。
+BLOB トリガー パス `samples-workitems/{name}` の文字列 `{name}` は、トリガーする BLOB のファイル名にアクセスするために関数コードで使用できる、[バインディング式](functions-triggers-bindings.md#binding-expressions-and-patterns)を作成します。 詳しくは、後述の「[BLOB 名のパターン](#trigger---blob-name-patterns)」をご覧ください。
+
+*function.json* ファイル プロパティについて詳しくは、これらのプロパティについて説明している「[構成](#trigger---configuration)」セクションをご覧ください。
 
 JavaScript コードを次に示します。
 
@@ -202,7 +208,7 @@ module.exports = function(context) {
 
 次の表は、*function.json* ファイルと `BlobTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `blobTrigger` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | `in` に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 例外は、[使用方法](#trigger---usage)のセクションに記載しています。 |
@@ -214,12 +220,13 @@ module.exports = function(context) {
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
-C# および C# スクリプトでは、`T paramName` のようなメソッド パラメーターを使用して BLOB データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+C# と C# スクリプトでは、トリガーする BLOB に次のパラメーター型を使用できます。
 
 * `Stream`
 * `TextReader`
-* `Byte[]`
 * `string`
+* `Byte[]`
+* JSON としてシリアル化可能な POCO
 * `ICloudBlob` (*function.json* に "inout" バインド方向が必要)
 * `CloudBlockBlob` (*function.json* に "inout" バインド方向が必要)
 * `CloudPageBlob` (*function.json* に "inout" バインド方向が必要)
@@ -227,9 +234,9 @@ C# および C# スクリプトでは、`T paramName` のようなメソッド �
 
 前述のように、これらの型の一部は、*function.json* に `inout` バインド方向を必要とします。 この方向は Azure Portal の標準のエディターではサポートされていないため、詳細エディターを使用する必要があります。
 
-テキスト BLOB がある場合は、`string` 型にバインドできます。 BLOB 全体のコンテンツがメモリに読み込まれるため、これが推奨されるのは、BLOB のサイズが小さい場合のみです。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で後述する「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
+`string`、`Byte[]`、または POCO へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で後述する「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
-JavaScript では、`context.bindings.<name>` を使用して入力 BLOB データにアクセスします。
+JavaScript では、`context.bindings.<name from function.json>` を使用して入力 BLOB データにアクセスします。
 
 ## <a name="trigger---blob-name-patterns"></a>トリガー - BLOB 名のパターン
 
@@ -276,13 +283,28 @@ BLOB の名前が*{20140101}-soundfile.mp3* の場合、関数コード内の `n
 
 BLOB トリガーは、いくつかのメタデータ プロパティを提供します。 これらのプロパティは、他のバインドのバインド式の一部として、またはコードのパラメーターとして使用できます。 これらの値は、[CloudBlob](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.cloudblob?view=azure-dotnet) 型と同じセマンティクスを持ちます。
 
-
 |プロパティ  |type  |[説明]  |
 |---------|---------|---------|
 |`BlobTrigger`|`string`|トリガーする BLOB のパス。|
 |`Uri`|`System.Uri`|プライマリ ロケーションの BLOB URI。|
 |`Properties` |[BlobProperties](https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.blob.blobproperties)|Blob のシステム プロパティ。 |
 |`Metadata` |`IDictionary<string,string>`|BLOB のユーザー定義メタデータ。|
+
+たとえば、次の C# スクリプトと JavaScript の例では、トリガーする BLOBへのパスがログに記録されます (コンテナーを含む)。
+
+```csharp
+public static void Run(string myBlob, string blobTrigger, TraceWriter log)
+{
+    log.Info($"Full blob path: {blobTrigger}");
+} 
+```
+
+```javascript
+module.exports = function (context, myBlob) {
+    context.log("Full blob path:", context.bindingData.blobTrigger);
+    context.done();
+};
+```
 
 ## <a name="trigger---blob-receipts"></a>トリガー - BLOB の配信確認メッセージ
 
@@ -316,9 +338,9 @@ BLOB トリガーはキューを内部的に使用するため、関数の同時
 
 [従量課金プラン](functions-scale.md#how-the-consumption-plan-works)では、1 つの仮想マシン (VM) の関数アプリのメモリが 1.5 GB に制限されています。 メモリは、同時実行される各関数インスタンスと、Functions ランタイム自体によって使用されます。 BLOB によってトリガーされる関数が BLOB 全体をメモリに読み込む場合、その関数が BLOB 用にのみ使用するメモリの最大量は 24 * 最大 BLOB サイズです。 たとえば、BLOB によってトリガーされる 3 つの関数を含む関数アプリの場合、既定の設定では、VM あたりの最大同時実行数 3*24 = 72 関数呼び出しとなります。
 
-JavaScript 関数は BLOB 全体をメモリに読み込みますが、C# 関数は `string` にバインドした場合に BLOB 全体をメモリに読み込みます。
+JavaScript 関数は BLOB 全体をメモリに読み込みますが、C# 関数は `string`、`Byte[]`、または POCO にバインドした場合に BLOB 全体をメモリに読み込みます。
 
-## <a name="trigger---polling-for-large-containers"></a>トリガー - 大規模なコンテナーのポーリング
+## <a name="trigger---polling"></a>トリガー - ポーリング
 
 監視対象の BLOB コンテナーに 10,000 を超える BLOB が含まれる場合は、Functions ランタイムによりログ ファイルがスキャンされ、新規または変更された BLOB が監視されます。 このプロセスによって遅延が発生することがあります。 関数は、BLOB が作成されてから数分以上経過しないとトリガーされない可能性があります。 また、[ ストレージ ログは "ベスト エフォート"](/rest/api/storageservices/About-Storage-Analytics-Logging) ベースで作成されます。 すべてのイベントがキャプチャされる保証はありません。 ある条件下では、ログが欠落する可能性があります。 より高速で信頼性の高い BLOB 処理が必要な場合は、BLOB 作成時に[キュー メッセージ](../storage/queues/storage-dotnet-how-to-use-queues.md)を作成することを検討してください。 次に、BLOB トリガーの代わりに[キュー トリガー](functions-bindings-storage-queue.md)を使用して BLOB を処理します。 別のオプションは、Event Grid の使用です。「[Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する](../event-grid/resize-images-on-storage-blob-upload-event.md)」のチュートリアルをご覧ください。
 
@@ -485,7 +507,7 @@ public static void Run(
 
 次の表は、*function.json* ファイルと `Blob` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `blob` に設定する必要があります。 |
 |**direction** | 該当なし | `in` に設定する必要があります。 例外は、[使用方法](#input---usage)のセクションに記載しています。 |
@@ -498,12 +520,12 @@ public static void Run(
 
 ## <a name="input---usage"></a>入力 - 使用方法
 
-C# クラス ライブラリと C# スクリプトでは、`Stream paramName` などのメソッド パラメーターを使用して BLOB にアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+C# とC# スクリプトでは、BLOB 入力バインドに次のパラメーター型を使用できます。
 
+* `Stream`
 * `TextReader`
 * `string`
 * `Byte[]`
-* `Stream`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
 * `ICloudBlob` (*function.json* に "inout" バインド方向が必要)
@@ -513,9 +535,9 @@ C# クラス ライブラリと C# スクリプトでは、`Stream paramName` �
 
 前述のように、これらの型の一部は、*function.json* に `inout` バインド方向を必要とします。 この方向は Azure Portal の標準のエディターではサポートされていないため、詳細エディターを使用する必要があります。
 
-テキスト BLOB を読み取る場合は、`string` 型にバインドすることができます。 BLOB 全体のコンテンツがメモリに読み込まれるため、この型が推奨されるのは、BLOB のサイズが小さい場合のみです。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。
+`string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
-JavaScript では、`context.bindings.<name>` を使用して BLOB データにアクセスします。
+JavaScript では、`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
 
 ## <a name="output"></a>出力
 
@@ -696,7 +718,7 @@ public static void Run(
 
 次の表は、*function.json* ファイルと `Blob` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | `blob` に設定する必要があります。 |
 |**direction** | 該当なし | 出力バインディングの場合は `out` に設定する必要があります。 例外は、[使用方法](#output---usage)のセクションに記載しています。 |
@@ -709,7 +731,7 @@ public static void Run(
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-C# クラス ライブラリと C# スクリプトでは、`Stream paramName` などのメソッド パラメーターを使用して BLOB にアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+C# とC# スクリプトでは、BLOB 出力バインドに次のパラメーター型を使用できます。
 
 * `TextWriter`
 * `out string`
@@ -725,9 +747,12 @@ C# クラス ライブラリと C# スクリプトでは、`Stream paramName` �
 
 前述のように、これらの型の一部は、*function.json* に `inout` バインド方向を必要とします。 この方向は Azure Portal の標準のエディターではサポートされていないため、詳細エディターを使用する必要があります。
 
-テキスト BLOB を読み取る場合は、`string` 型にバインドすることができます。 BLOB 全体のコンテンツがメモリに読み込まれるため、この型が推奨されるのは、BLOB のサイズが小さい場合のみです。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。
+非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
 
-JavaScript では、`context.bindings.<name>` を使用して BLOB データにアクセスします。
+`string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
+
+
+JavaScript では、`context.bindings.<name from function.json>` を使用して BLOB データにアクセスします。
 
 ## <a name="exceptions-and-return-codes"></a>例外とリターン コード
 

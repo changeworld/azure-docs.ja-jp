@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 7a274ad33b7181d238203290cf63937df5f13bbc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c644dd98d468a8c99625c45bad3f06031ff22b4e
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の X12 メッセージを交換する
 
@@ -31,37 +31,34 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 必要な項目を次に示します。
 
-* 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)
+* 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)
 * 統合アカウントで定義され、**ビジネス ID** の X12 修飾子を使用して構成されている 2 つ以上の[パートナー](../logic-apps/logic-apps-enterprise-integration-partners.md)    
-* [統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)にアップロードするために必要な[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)
+* 統合アカウントにアップロードできる必要な[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)
 
-[統合アカウントを作成](../logic-apps/logic-apps-enterprise-integration-accounts.md)し、[パートナーを追加](logic-apps-enterprise-integration-partners.md)して、使用する[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を設定した後に、X12 契約を作成するには、次の手順に従います。
+[統合アカウントを作成](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)し、[パートナーを追加](logic-apps-enterprise-integration-partners.md)して、使用する[スキーマ](../logic-apps/logic-apps-enterprise-integration-schemas.md)を設定した後に、X12 契約を作成するには、次の手順に従います。
 
 ## <a name="create-an-x12-agreement"></a>X12 契約の作成
 
-1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューから、**[すべてのサービス]** を選択します。 
+1. [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 
 
-    > [!TIP]
-    > **[すべてのサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
+2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。  
 
-    ![左側のメニューの [すべてのサービス] を選択する](./media/logic-apps-enterprise-integration-x12/account-1.png)
+   ![統合アカウントの検索](./media/logic-apps-enterprise-integration-x12/account-1.png)
 
-2.  検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。  
+   > [!TIP]
+   > **[すべてのサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
 
-    !["統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-x12/account-2.png)
+3. **[統合アカウント]** で、契約を追加する統合アカウントを選びます。
 
-3. 表示された **[統合アカウント]** ブレードで、契約を追加する統合アカウントを選択します。
-統合アカウントが表示されない場合は、[最初に統合アカウントを 1 つ作成](../logic-apps/logic-apps-enterprise-integration-accounts.md "統合アカウントについて")します。
-
-    ![契約を作成する統合アカウントの選択](./media/logic-apps-enterprise-integration-x12/account-3.png)
+   ![契約を作成する統合アカウントの選択](./media/logic-apps-enterprise-integration-x12/account-3.png)
 
 4. **[概要]**、**[契約]** タイルの順に選択します。 [契約] タイルが表示されない場合は、まずタイルを追加します。 
 
-    ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
+   ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. 表示された [契約] ブレードの **[追加]** を選択します。
+5. **[契約]** で **[追加]** を選びます。
 
-    ![[追加] の選択](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
+   ![[追加] の選択](./media/logic-apps-enterprise-integration-as2/agreement-2.png)     
 
 6. **[追加]** で、契約の**名前**を入力します。 [契約タイプ] で、**[X12]** を選択します。 契約の**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および**ゲスト ID** を選択します。 プロパティの詳細については、この手順の表を参照してください。
 
@@ -291,13 +288,13 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 
 ## <a name="find-your-created-agreement"></a>作成された契約の検索
 
-1.  契約のプロパティをすべて設定したら、**[追加]** ブレードで、**[OK]** を選択して、契約の作成を終了し、統合アカウント ブレードに戻ります。
+1.  契約のプロパティをすべて設定した後、**[追加]** ページで **[OK]** を選んで契約の作成を終了し、統合アカウントに戻ります。
 
     これで、新しく追加した契約が **[契約]** リストに表示されます。
 
-2.  また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント ブレードで、**[概要]**、**[契約]** タイルの順に選択します。
+2.  また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント メニューで、**[概要]**、**[契約]** タイルの順に選びます。
 
-    ![すべての契約が表示される [契約] タイルの選択](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
+    ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-x12/x12-1-5.png)   
 
 ## <a name="view-the-swagger"></a>Swagger の表示
 [Swagger の詳細](/connectors/x12/)を参照してください。 

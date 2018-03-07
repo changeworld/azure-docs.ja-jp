@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/04/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: dd3e5904ee21ee74da5adaa65abd7865a82c8b36
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: e48e9f833db86f01d944133c8a32d2c6b27b7b48
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>REST を使用して HDInsight の Hadoop で MapReduce ジョブを実行
 
@@ -33,23 +33,46 @@ WebHCat REST API を使用して HDInsight クラスターの Hadoop で MapRedu
 ## <a id="prereq"></a>前提条件
 
 * HDInsight クラスター上の Hadoop
-* [Curl](http://curl.haxx.se/)
-* [jq](http://stedolan.github.io/jq/)
+* Windows PowerShell または [Curl](http://curl.haxx.se/) と [jq](http://stedolan.github.io/jq/)
 
-## <a id="curl"></a>Curl を使用した MapReduce ジョブの実行
+## <a id="curl"></a>MapReduce ジョブを実行する
 
 > [!NOTE]
 > Curl、または WebHCat を使用したその他の REST 通信が使用できる場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。 サーバーへの要求の送信に使用する URI にクラスター名を含める必要があります。
 >
-> このセクションのコマンドでは、**admin** をクラスターに対して認証するユーザーに置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。 メッセージが表示されたら、ユーザー アカウントのパスワードを入力します。
->
 > REST API のセキュリティは、 [基本アクセス認証](http://en.wikipedia.org/wiki/Basic_access_authentication)の使用によって保護されています。 資格情報を安全にサーバーに送信するには、必ず HTTPS を使用して要求を行う必要があります。
 
-
-1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
+1. このドキュメントのスクリプトで使用されるクラスター ログインを設定するには、次のいずれかのコマンドを使用します。
 
     ```bash
-    curl -u admin -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
+    read -p "Enter your cluster login account name: " LOGIN
+    ```
+
+    ```powershell
+    $creds = Get-Credential -UserName admin -Message "Enter the cluster login name and password"
+    ```
+
+2. クラスター名を設定するには、次のいずれかのコマンドを使用します。
+
+    ```bash
+    read -p "Enter the HDInsight cluster name: " CLUSTERNAME
+    ```
+
+    ```powershell
+    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+    ```
+
+3. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
+
+    ```bash
+    curl -u $LOGIN -G https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/status
+    ```
+
+    ```powershell
+    $resp = Invoke-WebRequest -Uri "https://$clustername.azurehdinsight.net/templeton/v1/status" `
+        -Credential $creds `
+        -UseBasicParsing
+    $resp.Content
     ```
 
     次の JSON のような応答を受け取ります。
@@ -63,10 +86,28 @@ WebHCat REST API を使用して HDInsight クラスターの Hadoop で MapRedu
 
    URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、これはすべての要求で共通です。
 
-2. MapReduce ジョブを送信するには、次のコマンドを使用します。
+4. MapReduce ジョブを送信するには、次のコマンドを使用します。
 
     ```bash
-    curl -u admin -d user.name=admin -d jar=/example/jars/hadoop-mapreduce-examples.jar -d class=wordcount -d arg=/example/data/gutenberg/davinci.txt -d arg=/example/data/CurlOut https://CLUSTERNAME.azurehdinsight.net/templeton/v1/mapreduce/jar
+    JOBID=`curl -u $LOGIN -d user.name=$LOGIN -d jar=/example/jars/hadoop-mapreduce-examples.jar -d class=wordcount -d arg=/example/data/gutenberg/davinci.txt -d arg=/example/data/output https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/mapreduce/jar | jq .id`
+    echo $JOBID
+    ```
+
+    ```powershell
+    $reqParams = @{}
+    $reqParams."user.name" = "admin"
+    $reqParams.jar = "/example/jars/hadoop-mapreduce-examples.jar"
+    $reqParams.class = "wordcount"
+    $reqParams.arg = @()
+    $reqParams.arg += "/example/data/gutenberg/davinci.txt"
+    $reqparams.arg += "/example/data/output"
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/mapreduce/jar" `
+       -Credential $creds `
+       -Body $reqParams `
+       -Method POST `
+       -UseBasicParsing
+    $jobID = (ConvertFrom-Json $resp.Content).id
+    $jobID
     ```
 
     URI の末尾 (/mapreduce/jar) により、この要求では jar ファイルのクラスから MapReduce ジョブが起動されることが WebHCat に通知されます。 このコマンドで使用されるパラメーターの意味は次のとおりです。
@@ -79,22 +120,32 @@ WebHCat REST API を使用して HDInsight クラスターの Hadoop で MapRedu
 
    このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。
 
-       {"id":"job_1415651640909_0026"}
+       job_1415651640909_0026
 
-3. ジョブのステータスを確認するには、次のコマンドを使用します。
+5. ジョブのステータスを確認するには、次のコマンドを使用します。
 
     ```bash
-    curl -G -u admin -d user.name=admin https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
+    curl -G -u $LOGIN -d user.name=$LOGIN https://$CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/$JOBID | jq .status.state
     ```
 
-    **JOBID** を前の手順で返された値に置き換えます。 たとえば、戻り値が `{"id":"job_1415651640909_0026"}` の場合、JOBID は `job_1415651640909_0026` になります。
+    ```powershell
+    $reqParams=@{"user.name"="admin"}
+    $resp = Invoke-WebRequest -Uri "https://$clusterName.azurehdinsight.net/templeton/v1/jobs/$jobID" `
+       -Credential $creds `
+       -Body $reqParams `
+       -UseBasicParsing
+    # ConvertFrom-JSON can't handle duplicate names with different case
+    # So change one to prevent the error
+    $fixDup=$resp.Content.Replace("jobID","job_ID")
+    (ConvertFrom-Json $fixDup).status.state
+    ```
 
     ジョブが完了している場合、返される状態は `SUCCEEDED` です。
 
    > [!NOTE]
    > この Curl 要求では、ジョブに関する情報が記載された JSON ドキュメントが返されます。 Jq は、状態値のみを取得するために使用されます。
 
-4. ジョブの状態が `SUCCEEDED` に変化したら、Azure Blob ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所を含めます。 この例では、場所は `/example/curl` です。 このアドレスは、`/example/curl` にあるクラスターの既定ストレージにジョブの出力を格納します。
+6. ジョブの状態が `SUCCEEDED` に変化したら、Azure Blob ストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには出力ファイルの場所を含めます。 この例では、場所は `/example/curl` です。 このアドレスは、`/example/curl` にあるクラスターの既定ストレージにジョブの出力を格納します。
 
 これらのファイルを一覧表示およびダウンロードするには [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) を使用します。 Azure CLI から Blob を操作することの詳細については、「[Azure Storage での Azure CLI 2.0 の使用](../../storage/common/storage-azure-cli.md#create-and-manage-blobs)」というドキュメントを参照してください。
 

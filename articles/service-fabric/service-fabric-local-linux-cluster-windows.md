@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/20/2017
 ms.author: suhuruli
-ms.openlocfilehash: f21561269e90e3643ef5d8d48ee28712ee7f611c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: db6ad8b83ce34a8b86de822bc074e8a13345a1b4
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="set-up-a-linux-service-fabric-cluster-on-your-windows-developer-machine"></a>Windows 開発用マシンで Linux Service Fabric クラスターを設定する
 
@@ -29,7 +29,6 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
 
 * 少なくとも 4 GB の RAM
 * 最新バージョンの [Docker](https://store.docker.com/editions/community/docker-ce-desktop-windows)
-* Service Fabric One-box Docker コンテナー [イメージ](https://hub.docker.com/r/servicefabricoss/service-fabric-onebox/)へのアクセス
 
 >[!TIP]
 > * Docker の公式[ドキュメント](https://store.docker.com/editions/community/docker-ce-desktop-windows/plans/docker-ce-desktop-windows-tier?tab=instructions)に記載されている手順に従って Windows に Docker をインストールしてください。 
@@ -42,7 +41,7 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
 1. Docker ハブ リポジトリからイメージをプルします。
 
     ```powershell
-    docker pull servicefabricoss/service-fabric-onebox
+    docker pull microsoft/service-fabric-onebox
     ```
 
 2. ホスト上の Docker デーモン構成を以下を使用して更新し、Docker デーモンを再起動します。 
@@ -58,11 +57,11 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
 3. イメージを使用して Service Fabric One-box コンテナー インスタンスを起動します。
 
     ```powershell
-    docker run -itd -p 19080:19080 --name sfonebox servicefabricoss/service-fabric-onebox
+    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
     ```
     >[!TIP]
     > * コンテナー インスタンスの名前を指定すると、読みやすい方法で処理することができます。 
-    > * アプリケーションが特定のポートでリッスンしている場合は、追加の -p タグを使用して指定する必要があります。 たとえば、アプリケーションがポート 8080 でリッスンしている場合、docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox servicefabricoss/service-fabric-onebox を実行します。
+    > * アプリケーションが特定のポートでリッスンしている場合は、追加の -p タグを使用して指定する必要があります。 たとえば、アプリケーションがポート 8080 でリッスンしている場合、docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox を実行します。
 
 4. 対話型 ssh モードで Docker コンテナーにログインします。
 
@@ -82,7 +81,7 @@ Linux ベースの Service Fabric クラスターは、Windows ではネイテ�
     > [!NOTE]
     > Eclipse プラグインは、現在、Windows でサポートされていません。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Eclipse](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-eclipse) の概要
 * その他の [Java サンプル](https://github.com/Azure-Samples/service-fabric-java-getting-started)を確認する
 

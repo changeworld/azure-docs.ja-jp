@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: b94c5a7d6c3c74e1dd66559dea288238c35d664c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 50c7fe38d8bf7b14adf437f85c758e465e7d231d
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-node"></a>sfctl node
 クラスターを形成するノードを管理します。
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/18/2018
 |    disable       | 指定した非アクティブ化インテントを使用して、Service Fabric クラスターのノードを非アクティブ化します。|
 |    enable        | 現在非アクティブ化されている Service Fabric クラスター ノードをアクティブにします。|
 |    health        | Service Fabric ノードの正常性を取得します。|
-|    info          | Service Fabric クラスター内のノードの一覧を取得します。|
+|    info          | Service Fabric クラスター内の特定のノードに関する情報を取得します。|
 |    list          | Service Fabric クラスター内のノードの一覧を取得します。|
 |    load          | Service Fabric ノードの読み込み情報を取得します。|
 |    remove-state  | ノード上の永続化状態が完全に削除または失われたことを Service Fabric に通知します。|
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/18/2018
 |引数|[説明]|
 | --- | --- |
 | --node-name [必須]| ノード名。|
-| --deactivation-intent | ノードを非アクティブ化するインテントまたは理由について記述します。 指定できる値は次のとおりです。 - Pause - 一時停止する必要があるノードを示します。 値は 1 です。 - Restart - インテントが短時間の後に再起動されるノード用であることを示します。 値は 2 です。 -        RemoveData - インテントがデータを削除するノード用であることを示します。 値は 3 です。 が必要です。|
+| --deactivation-intent | ノードを非アクティブ化するインテントまたは理由について記述します。 |
 | --timeout -t       | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -109,9 +109,9 @@ Service Fabric ノードの正常性を取得します。 正常性状態に基�
 | --verbose                | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-node-info"></a>sfctl node info
-Service Fabric クラスター内のノードの一覧を取得します。
+Service Fabric クラスター内の特定のノードに関する情報を取得します。
 
-Service Fabric クラスター内の特定のノードに関する情報を取得します。 応答には、名前、状態、ID、正常性、アップタイム、およびノードに関するその他の詳細が含まれます。
+Service Fabric クラスター内の特定のノードに関する情報を取得します。応答には、名前、状態、ID、正常性、アップタイム、およびノードに関するその他の詳細が含まれます。
 
 ### <a name="arguments"></a>引数
 
@@ -133,14 +133,14 @@ Service Fabric クラスター内の特定のノードに関する情報を取�
 ## <a name="sfctl-node-list"></a>sfctl node list
 Service Fabric クラスター内のノードの一覧を取得します。
 
-ノード エンドポイントは、Service Fabric クラスター内のノードに関する情報を返します。 応答には、名前、状態、ID、正常性、アップタイム、およびノードに関するその他の詳細が含まれます。
+Service Fabric クラスター内のノードの一覧を取得します。 応答には、名前、状態、ID、正常性、アップタイム、およびノードに関するその他の詳細が含まれます。
 
 ### <a name="arguments"></a>引数
 
 |引数|[説明]|
 | --- | --- |
 | --continuation-token| 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。      この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。|
-| --node-status-filter| NodeStatus に基づいてノードをフィルターできます。 指定したフィルター値に一致するノードだけが返されます。 フィルター値には、次のいずれかを指定できます。 - default - このフィルター値は、状態が Unknown または Removed を除くすべてのノードと一致します。 -      all - このフィルター値は、すべてのノードと一致します。 - up - このフィルター値は、アップしているノードと一致します。 - down - このフィルター値は、ダウンしているノードと一致します。 - enabling - このフィルター値は、Enabling の状態を持つ有効化が進行中のノードと一致します。 - disabling -      このフィルター値は、Disabling の状態を持つ無効化が進行中のノードと一致します。 - disabled - このフィルター値は、無効化されたノードと一致します。 - unknown - このフィルター値は、状態が Unknown のノードと一致します。 Service Fabric がそのノードに関する権限情報を持っていない場合は、ノードは Unknown 状態になります。 これは、システムが実行時にノードについて学習する場合に発生します。 - removed - このフィルター値は、状態が Removed のノードと一致します。 これらは、RemoveNodeState API を使用して、クラスターから削除されたノードです。 が必要です。      既定値は default です。|
+| --node-status-filter| NodeStatus に基づいてノードをフィルターできます。 指定したフィルター値に一致するノードだけが返されます。 フィルター値には、次のいずれかを指定できます。 既定値は default です。|
 | --timeout -t     | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -156,7 +156,7 @@ Service Fabric クラスター内のノードの一覧を取得します。
 ## <a name="sfctl-node-load"></a>sfctl node load
 Service Fabric ノードの読み込み情報を取得します。
 
-Service Fabric ノードの読み込み情報を取得します。
+負荷または容量が定義されているすべてのメトリックに対する Service Fabric ノードの負荷情報を取得します。
 
 ### <a name="arguments"></a>引数
 
@@ -203,7 +203,7 @@ Service Fabric クラスター ノードを再起動します。
 クラスター ノードを開始または停止します。
 
 クラスター ノードを開始または停止します。  クラスター ノードはプロセスで、OS インスタンスそのものではありません。
-ノードを開始するには、NodeTransitionType パラメーターに "Start" を渡します。 ノードを停止するには、NodeTransitionType パラメーターに "Stop" を渡します。 この API は、移行がまだ完了していない可能性のあるノードを API が返したときに操作を開始します。 操作の進行状況を取得するには、同じ OperationId を使用して GetNodeTransitionProgress を呼び出します。 が必要です。
+ノードを開始するには、NodeTransitionType パラメーターに "Start" を渡します。 ノードを停止するには、NodeTransitionType パラメーターに "Stop" を渡します。 この API は、移行がまだ完了していない可能性のあるノードを API が返したときに操作を開始します。 操作の進行状況を取得するには、同じ OperationId を使用して GetNodeTransitionProgress を呼び出します。 
 
 ### <a name="arguments"></a>引数
 
@@ -211,7 +211,7 @@ Service Fabric クラスター ノードを再起動します。
 | --- | --- |
 | --node-instance-id         [必須]| ターゲット ノードのノード インスタンス ID。 これは GetNodeInfo API を通じて決定できます。|
 | --node-name                [必須]| ノード名。|
-| --node-transition-type     [必須]| 実行する移行の種類を示します。                       NodeTransitionType.Start は、停止したノードを開始します。                       NodeTransitionType.Stop は、稼働しているノードを停止します。 -                       Invalid - 予約済み。  API に渡すことはできません。 - Start -                       停止しているノードをアップに移行します。 - Stop - 稼働しているノードを停止に移行します。 が必要です。|
+| --node-transition-type     [必須]| 実行する移行の種類を示します。                       NodeTransitionType.Start は、停止したノードを開始します。                       NodeTransitionType. Stop は、稼働しているノードを停止します。 |
 | --operation-id             [必須]| この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。|
 | --stop-duration-in-seconds [必須]| ノードを停止させたままにする期間 (秒単位)。  最小値は 600、最大値は 14400 です。 この時間を過ぎると、ノードは自動的に復帰します。|
 | --timeout -t                      | サーバー タイムアウト (秒)。  既定値は 60 です。|

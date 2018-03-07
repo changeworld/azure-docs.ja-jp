@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 5e94ba1a45bccefedfa0017ad0123942e66f70bb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 683ef1ebffaec74df95b454d717857d55b8026dd
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure Functions C# スクリプト (.csx) 開発者向けリファレンス
 
@@ -199,24 +199,7 @@ public class Order
 
 ## <a name="binding-to-method-return-value"></a>メソッドの戻り値へのバインド
 
-出力バインドにメソッド戻り値を使用できます。そのためには、*function.json* の名前 `$return` を使用します。
-
-```json
-{
-    "type": "queue",
-    "direction": "out",
-    "name": "$return",
-    "queueName": "outqueue",
-    "connection": "MyStorageConnectionString",
-}
-```
-
-```csharp
-public static string Run(string input, TraceWriter log)
-{
-    return input;
-}
-```
+*function.json* 内の名前 `$return` を使用して、出力バインディングにメソッド戻り値を使用できます。 例については、[トリガーとバインディング](functions-triggers-bindings.md#using-the-function-return-value)に関するページを参照してください。
 
 ## <a name="writing-multiple-output-values"></a>複数の出力値の書き込み
 
@@ -264,17 +247,31 @@ public async static Task ProcessQueueMessageAsync(
 
 ## <a name="cancellation-tokens"></a>キャンセル トークン
 
-一部の操作では、グレースフル シャットダウンが必要です。 クラッシュに対応できるコードを記述するのが最善の方法ですが、シャットダウンの要求を処理する場合は、[CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 型の引数を定義します。  `CancellationToken` は、ホストのシャット ダウンがトリガーされることを通知するために用意されています。
+関数は [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) パラメーターを受け付けることができます。これにより、オペレーティング システムは、その関数をいつ終了しようとしているかをコードに通知できます。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
+
+次の例は、関数の終了が迫っているかどうかを確認する方法を示しています。
 
 ```csharp
-public async static Task ProcessQueueMessageAsyncCancellationToken(
-    string blobName,
-    Stream blobInput,
-    Stream blobOutput,
+using System;
+using System.IO;
+using System.Threading;
+
+public static void Run(
+    string inputText,
+    TextWriter logger,
     CancellationToken token)
+{
+    for (int i = 0; i < 100; i++)
     {
-        await blobInput.CopyToAsync(blobOutput, 4096, token);
+        if (token.IsCancellationRequested)
+        {
+            logger.WriteLine("Function was cancelled at iteration {0}", i);
+            break;
+        }
+        Thread.Sleep(5000);
+        logger.WriteLine("Normal processing for queue message={0}", inputText);
     }
+}
 ```
 
 ## <a name="importing-namespaces"></a>名前空間のインポート

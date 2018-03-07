@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/12/2018
+ms.date: 02/26/2018
 ms.author: carlrab
-ms.openlocfilehash: c0dc3181d3cd5c642dfca1c0f6031b83726478c0
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: b36af32d900f9426424dd08c43946e7dcb5b39b9
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベルとは
 
@@ -35,8 +35,8 @@ ms.lasthandoff: 02/14/2018
 |アップタイム SLA|99.99%|99.99%|99.99%|プレビューは対象外|
 |バックアップ保有期間|7 日|35 日|35 日|
 |CPU|低|低、中、高|中、高|
-|IO スループット|低  | 中 | Standard より 1 桁高い|
-|IO 待機時間|Premium より高い|Premium より高い|Basic および Standard より低い|
+|IO スループット (概算) |DTU あたり 2.5 IOPS  | DTU あたり 2.5 IOPS | DTU あたり 48 IOPS|
+|IO 待機時間 (概算)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|5 ミリ秒 (読み取り)、10 ミリ秒 (書き込み)|2 ミリ秒 (読み取り/書き込み)|
 |列ストア インデックス作成とインメモリ OLTP|該当なし|該当なし|サポートされています|
 |||||
 

@@ -1,6 +1,6 @@
 ---
-title: "PHP から Table Storage を使用する方法 | Microsoft Docs"
-description: "PHP から Table service を使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。"
+title: "PHP から Azure Storage Table service API または Azure Cosmos DB Table API を使用する方法 | Microsoft Docs"
+description: "PHP から Table service API を使って、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。"
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -12,83 +12,114 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 02/22/2018
 ms.author: mimig
-ms.openlocfilehash: 7fa82875ba823f1a4a9a886d4f699ca6757c3a3b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 64ce8206b4b0ab3c831417d6e478f9c059188345
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="how-to-use-azure-table-storage-from-php"></a>PHP から Azure Table Storage を使用する方法
+# <a name="how-to-use-azure-storage-table-service-or-cosmos-db-table-api-from-php"></a>PHP から Azure Storage Table service API または Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>概要
-このガイドでは、Azure Table service を使用して一般的なシナリオを実行する方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。 紹介するシナリオは、 **テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
+このガイドでは、Azure Storage Table service API および Azure Cosmos DB Table API を使って一般的なシナリオを実行する方法を説明します。 サンプルは PHP で記述されており、[Azure Storage Table PHP Client Library][download] を使います。 紹介するシナリオは、**テーブルの作成と削除**、**テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+## <a name="create-an-azure-service-account"></a>Azure サービス アカウントを作成する
+
+Azure テーブル ストレージ API または Azure Cosmos DB テーブル API を使ってテーブルを操作できます。 サービスによる違いの詳細については、「[Table のサービス](table-introduction.md#table-offerings)」を参照してください。 使用するサービスのアカウントを作成する必要があります。 
+
+### <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
+
+最初のストレージ アカウントを作成する最も簡単な方法は、[Azure Portal](https://portal.azure.com) を利用することです。 詳細については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+
+[Azure PowerShell](../storage/common/storage-powershell-guide-full.md) または [Azure CLI](../storage/common/storage-azure-cli.md) を使って、ストレージ アカウントを作成することもできます。
+
+現時点でストレージ アカウントを作成しない場合は、Azure Storage エミュレーターを使って、ローカル環境でコードの実行とテストを行うこともできます。 詳細については、「[Azure ストレージ エミュレーターを使用した開発とテスト](../storage/common/storage-use-emulator.md)」を参照してください。
+
+### <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントを作成する
+
+Azure Cosmos DB アカウントの作成手順については、[Table API アカウントの作成](create-table-dotnet.md#create-a-database-account)に関するページをご覧ください。
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-Azure Table service にアクセスする PHP アプリケーションを作成するための要件は、コード内から Azure SDK for PHP のクラスを参照することのみです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
-このガイドで使用する Table service 機能は、PHP アプリケーション内からローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
+Storage Table service API または Azure Cosmos DB Table API にアクセスする PHP アプリケーションを作成するための唯一の要件は、コード内から azure-storage-table SDK for PHP のクラスを参照することです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
-## <a name="get-the-azure-client-libraries"></a>Azure クライアント ライブラリの入手
-[!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
+このガイドで使う Storage Table service または Azure Cosmos DB の機能は、PHP アプリケーション内からローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
-## <a name="configure-your-application-to-access-the-table-service"></a>Table service にアクセスするようにアプリケーションを構成する
-Azure Table service API を使用するには、次の要件があります。
+## <a name="get-the-client-library"></a>クライアント ライブラリを入手する
 
-1. [require_once][require_once] ステートメントを使ってオートローダー ファイルを参照する
-2. 使用する可能性のあるクラスを参照する
+1. プロジェクトのルートに composer.json という名前のファイルを作成して、次のコードを追加します。
+```json
+{
+  "require": {
+    "microsoft/azure-storage-table": "*"
+  }
+}
+```
+2. [composer.phar](http://getcomposer.org/composer.phar) をルートにダウンロードします。 
+3. コマンド プロンプトを開き、次のコマンドをプロジェクトのルートで実行します。
+```
+php composer.phar install
+```
+または、GitHub で [Azure Storage Table PHP Client Library](https://github.com/Azure/azure-storage-php/tree/master/azure-storage-table) に移動し、ソース コードを複製します。
 
-次の例では、オートローダー ファイルをインクルードし、 **ServicesBuilder** クラスを参照する方法を示しています。
 
-> [!NOTE]
-> この記事の例では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。 ライブラリを手動でインストールした場合は、 <code>WindowsAzure.php</code> オートローダー ファイルを参照する必要があります。
->
->
+## <a name="add-required-references"></a>必要な参照を追加する
+Storage Table service API または Azure Cosmos DB API を使うには、次のことが必要です。
+
+* [require_once][require_once] ステートメントを使ってオートローダー ファイルを参照する
+* 使うクラスを参照する
+
+次の例では、オートローダー ファイルをインクルードし、**TableRestProxy** クラスを参照する方法を示します。
 
 ```php
 require_once 'vendor/autoload.php';
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 ```
 
 下のすべてのサンプルに `require_once` ステートメントが入っていますが、サンプルの実行に必要なクラスのみが参照されます。
 
-## <a name="set-up-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
-Azure Table service クライアントをインスタンス化するには、まず有効な接続文字列が必要です。 Table service の接続文字列の形式は次のとおりです。
-
-ライブ サービスにアクセスする場合:
+## <a name="add-a-storage-table-service-connection"></a>Storage Table service の接続を追加する
+Storage Table service クライアントをインスタンス化するには、まず有効な接続文字列が必要です。 Storage Table service の接続文字列の形式は次のとおりです。
 
 ```php
-DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]
+$connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
 ```
 
-エミュレーター ストレージにアクセスする場合:
+## <a name="add-an-azure-cosmos-db-connection"></a>Azure Cosmos DB の接続を追加する
+Azure Cosmos DB テーブル クライアントをインスタンス化するには、まず有効な接続文字列が必要です。 Azure Cosmos DB の接続文字列の形式は次のとおりです。
 
 ```php
-UseDevelopmentStorage=true
+$connectionString = "DefaultEndpointsProtocol=[https];AccountName=[myaccount];AccountKey=[myaccountkey];TableEndpoint=[https://myendpoint/]";
 ```
 
-いずれの Azure サービス クライアントを作成するにも、 **ServicesBuilder** クラスを使用する必要があります。 次のようにすることができます。
+## <a name="add-a-storage-emulator-connection"></a>ストレージ エミュレーターの接続を追加する
+エミュレーター ストレージにアクセスするには:
+
+```php
+UseDevelopmentStorage = true
+```
+
+Azure Table service クライアントまたは Azure Cosmos DB クライアントを作成するには、**TableRestProxy** クラスを使う必要があります。 次のようにすることができます。
 
 * 接続文字列を直接渡す
-* **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
+* **CloudConfigurationManager (CCM)** を使って複数の外部ソースに対して接続文字列を確認する
   * 既定では 1 つの外部ソース (環境変数) のみサポートされています。
-  * **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
+  * `ConnectionStringSource` クラスを拡張して新しいソースを追加できます。
 
-ここで概説している例では、接続文字列を直接渡します。
+ここで概説している例では、接続文字列が直接渡されます。
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 ```
 
 ## <a name="create-a-table"></a>テーブルを作成する
@@ -97,40 +128,40 @@ $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connection
 ```php
 require_once 'vendor\autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
-// Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+// Create Table REST proxy.
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 try    {
     // Create table.
-    $tableRestProxy->createTable("mytable");
+    $tableClient->createTable("mytable");
 }
 catch(ServiceException $e){
     $code = $e->getCode();
     $error_message = $e->getMessage();
     // Handle exception based on error codes and messages.
     // Error codes and messages can be found here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
 }
 ```
 
 テーブル名の制限については、「[Table サービス データ モデルについて][table-data-model]」をご覧ください。
 
 ## <a name="add-an-entity-to-a-table"></a>エンティティをテーブルに追加する
-エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、**TableRestProxy->insertEntity** に渡します。 エンティティの作成時には `PartitionKey` と `RowKey` を指定する必要があることに注意してください。 これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。 システムでは `PartitionKey` が使用されて多くのストレージ ノードにテーブルのエンティティが自動的に配布されます。 `PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。`RowKey` は特定のパーティション内のエンティティの一意の ID です。
+エンティティをテーブルに追加するには、新しい **Entity** オブジェクトを作成し、**TableRestProxy->insertEntity** に渡します。 エンティティの作成時には `PartitionKey` と `RowKey` を指定する必要があることに注意してください。 これらにはエンティティの一意の識別子であり、他のエンティティのプロパティよりはるかに高速に照会できる値です。 システムは `PartitionKey` を使って多くのストレージ ノードにテーブルのエンティティを自動的に配布します。 `PartitionKey` が同じエンティティは同じノードで格納されています (同じノードで格納されている複数のエンティティに対する処理は、異なるノードにまたがって格納されているエンティティに対する処理よりもパフォーマンスは高くなります)。`RowKey` は特定のパーティション内のエンティティの一意の ID です。
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 $entity = new Entity();
 $entity->setPartitionKey("tasksSeattle");
@@ -142,12 +173,12 @@ $entity->addProperty("DueDate",
 $entity->addProperty("Location", EdmType::STRING, "Home");
 
 try{
-    $tableRestProxy->insertEntity("mytable", $entity);
+    $tableClient->insertEntity("mytable", $entity);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
 }
@@ -160,13 +191,13 @@ catch(ServiceException $e){
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 //Create new entity.
 $entity = new Entity();
@@ -185,12 +216,12 @@ $entity->addProperty("Status", EdmType::STRING, "Complete"); // Added Status fie
 try    {
     // Calling insertOrReplaceEntity, instead of insertOrMergeEntity as shown,
     // would simply replace the entity with PartitionKey "tasksSeattle" and RowKey "1".
-    $tableRestProxy->insertOrMergeEntity("mytable", $entity);
+    $tableClient->insertOrMergeEntity("mytable", $entity);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -203,19 +234,19 @@ catch(ServiceException $e){
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 try    {
-    $result = $tableRestProxy->getEntity("mytable", "tasksSeattle", 1);
+    $result = $tableClient->getEntity("mytable", "tasksSeattle", 1);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -232,21 +263,21 @@ echo $entity->getPartitionKey().":".$entity->getRowKey();
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 $filter = "PartitionKey eq 'tasksSeattle'";
 
 try    {
-    $result = $tableRestProxy->queryEntities("mytable", $filter);
+    $result = $tableClient->queryEntities("mytable", $filter);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -265,21 +296,21 @@ foreach($entities as $entity){
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 $filter = "Location eq 'Office' and DueDate lt '2012-11-5'";
 
 try    {
-    $result = $tableRestProxy->queryEntities("mytable", $filter);
+    $result = $tableClient->queryEntities("mytable", $filter);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -298,23 +329,23 @@ foreach($entities as $entity){
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\QueryEntitiesOptions;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 $options = new QueryEntitiesOptions();
 $options->addSelectField("Description");
 
 try    {
-    $result = $tableRestProxy->queryEntities("mytable", $options);
+    $result = $tableClient->queryEntities("mytable", $options);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -332,36 +363,33 @@ foreach($entities as $entity){
 ```
 
 ## <a name="update-an-entity"></a>エンティティを更新する
-既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使用した後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。 次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。 プロパティの値を **null**に設定して、プロパティを削除できることに注意してください。
+既存のエンティティは、エンティティの **Entity->setProperty** および **Entity->addProperty** メソッドを使った後、**TableRestProxy->updateEntity** を呼び出すことで更新できます。 次の例では、エンティティを取得してから、1 つのプロパティの変更、別のプロパティの削除、新しいプロパティの追加を行っています。 プロパティの値を **null**に設定して、プロパティを削除できることに注意してください。
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
-$result = $tableRestProxy->getEntity("mytable", "tasksSeattle", 1);
+$result = $tableClient->getEntity("mytable", "tasksSeattle", 1);
 
 $entity = $result->getEntity();
-
 $entity->setPropertyValue("DueDate", new DateTime()); //Modified DueDate.
-
 $entity->setPropertyValue("Location", null); //Removed Location.
-
 $entity->addProperty("Status", EdmType::STRING, "In progress"); //Added Status.
 
 try    {
-    $tableRestProxy->updateEntity("mytable", $entity);
+    $tableClient->updateEntity("mytable", $entity);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -374,27 +402,27 @@ catch(ServiceException $e){
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 try    {
     // Delete entity.
-    $tableRestProxy->deleteEntity("mytable", "tasksSeattle", "2");
+    $tableClient->deleteEntity("mytable", "tasksSeattle", "2");
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
 }
 ```
 
-同時実行のチェック用に、削除するエンティティの Etag を設定できることに注意してください。そのためには、**DeleteEntityOptions->setEtag** メソッドを使用して、**DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
+同時実行のチェック用に、削除するエンティティの Etag を設定できます。そのためには、**DeleteEntityOptions->setEtag** メソッドを使い、**DeleteEntityOptions** オブジェクトを 4 番目のパラメーターとして **deleteEntity** に渡します。
 
 ## <a name="batch-table-operations"></a>バッチ テーブル処理
 **TableRestProxy->batch** メソッドを使用すると、1 つの要求で複数の処理を実行できます。 ここで示しているパターンでは、処理を **BatchRequest** オブジェクトに追加し、**BatchRequest** オブジェクトを **TableRestProxy->batch** メソッドに渡しています。 処理を **BatchRequest** オブジェクトに追加するには、次のいずれかのメソッドを複数回呼び出すことができます。
@@ -406,19 +434,25 @@ catch(ServiceException $e){
 * **addInsertOrMergeEntity** (insertOrMergeEntity 処理を追加)
 * **addDeleteEntity** (deleteEntity 処理を追加)
 
-次の例では、1 つの要求で **insertEntity** 処理と **deleteEntity** 処理を実行する方法を示しています。
+次の例では、1 つの要求で **insertEntity** 処理と **deleteEntity** 処理を実行する方法を示しています。 
+
+> [!NOTE]
+> Azure Cosmos DB では、テーブルのバッチ操作はまだサポートされていません。 
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 use MicrosoftAzure\Storage\Table\Models\Entity;
 use MicrosoftAzure\Storage\Table\Models\EdmType;
 use MicrosoftAzure\Storage\Table\Models\BatchOperations;
 
-    // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+// Configure a connection string for Storage Table service.
+$connectionString = "DefaultEndpointsProtocol=[http|https];AccountName=[yourAccount];AccountKey=[yourKey]"
+
+// Create table REST proxy.
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 // Create list of batch operation.
 $operations = new BatchOperations();
@@ -439,12 +473,12 @@ $operations->addInsertEntity("mytable", $entity1);
 $operations->addDeleteEntity("mytable", "tasksSeattle", "1");
 
 try    {
-    $tableRestProxy->batch($operations);
+    $tableClient->batch($operations);
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -459,20 +493,20 @@ catch(ServiceException $e){
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Table\TableRestProxy;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create table REST proxy.
-$tableRestProxy = ServicesBuilder::getInstance()->createTableService($connectionString);
+$tableClient = TableRestProxy::createTableService($connectionString);
 
 try    {
     // Delete table.
-    $tableRestProxy->deleteTable("mytable");
+    $tableClient->deleteTable("mytable");
 }
 catch(ServiceException $e){
     // Handle exception based on error codes and messages.
     // Error codes and messages are here:
-    // http://msdn.microsoft.com/library/azure/dd179438.aspx
+    // https://docs.microsoft.com/rest/api/storageservices/Table-Service-Error-Codes
     $code = $e->getCode();
     $error_message = $e->getMessage();
     echo $code.": ".$error_message."<br />";
@@ -480,16 +514,16 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>次の手順
-これで、Azure Table service の基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
+これで、Azure Table service と Azure Cosmos DB の基本を学習できました。さらに詳しく学習するには、次のリンク先をご覧ください。
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
 * [PHP デベロッパー センター](/develop/php/)
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473
+[download]: https://packagist.org/packages/microsoft/azure-storage-table
 [require_once]: http://php.net/require_once
-[table-service-timeouts]: http://msdn.microsoft.com/library/azure/dd894042.aspx
+[table-service-timeouts]: https://docs.microsoft.com/rest/api/storageservices/setting-timeouts-for-table-service-operations
 
-[table-data-model]: http://msdn.microsoft.com/library/azure/dd179338.aspx
-[filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
-[entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
+[table-data-model]: https://docs.microsoft.com/rest/api/storageservices/Understanding-the-Table-Service-Data-Model
+[filters]: https://docs.microsoft.com/rest/api/storageservices/Querying-Tables-and-Entities
+[entity-group-transactions]: https://docs.microsoft.com/rest/api/storageservices/Performing-Entity-Group-Transactions

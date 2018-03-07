@@ -10,19 +10,19 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 02/26/2017
 ms.author: jingwang
-ms.openlocfilehash: 42643c73368597d1caea4aba12bc7b64b7440970
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 51318a6bb4f88759984531b005c65712b6817ec0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Azure Key Vault への資格情報の格納
 
-[Azure Key Vault](../key-vault/key-vault-whatis.md) 内のデータ ストアに資格情報を格納することができます。 Azure Data Factory は、データ ストアを使用するアクティビティの実行時に、資格情報を取得します。
+データ ストアや計算のための資格情報を [Azure Key Vault](../key-vault/key-vault-whatis.md) に格納することができます。 Azure Data Factory は、データ ストア/計算を使うアクティビティの実行時に、資格情報を取得します。
 
-現在、すべての種類のコネクタを使用したコピー アクティビティではこの機能がサポートされています。詳しくは、[各コネクタのトピック](copy-activity-overview.md#supported-data-stores-and-formats)の「リンクされたサービスのプロパティ」を参照してください。 他の種類のアクティビティとコンピューティングのリンクされたサービスも今後サポートしていく予定です。
+現時点では、カスタム アクティビティを除くすべてのアクティビティの種類が、この機能をサポートしています。 具体的なコネクタの構成について詳しくは、[各コネクタ トピック](copy-activity-overview.md#supported-data-stores-and-formats)の「リンクされたサービスのプロパティ」セクションをご覧ください。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。

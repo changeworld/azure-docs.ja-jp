@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/23/2017
 ms.author: byvinyal
-ms.openlocfilehash: 22e05af889b4e792dcc6f6fc438e8a58674b9f0e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 551f34436dfeac14bb6e8676dd7c9b10d30a3af3
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Azure App Service 静的 IP 制限 #
 
@@ -26,7 +26,7 @@ IP 制限を使用すると、アプリへのアクセスを許可されてい�
 
 アプリへの要求がクライアントから生成されるとき、許可一覧に対して IP アドレスが評価されます。 IP アドレスが一覧にない場合、アプリは[HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) ステータス コードで応答します。
 
-IP 制限は、アプリが実行時に使用する web.config に定義します。 特定の状況下では、HTTP パイプラインの IP 制限ロジックの前にモジュールが実行されることがあります。 この場合、要求は異なる HTTP エラー コードで失敗します。
+IP 制限は、アプリが実行時に使う web.config で定義されています (より正確には、制限は applicationHost.config ファイルの許可される IP アドレスのセットに挿入されるので、許可される IP アドレスのセットを web.config ファイルにも追加すると、それが優先されます)。 特定の状況下では、HTTP パイプラインの IP 制限ロジックの前にモジュールが実行されることがあります。 この場合、要求は異なる HTTP エラー コードで失敗します。
 
 IP 制限は、アプリに割り当てられた同じ App Service プラン インスタンスで評価されます。
 

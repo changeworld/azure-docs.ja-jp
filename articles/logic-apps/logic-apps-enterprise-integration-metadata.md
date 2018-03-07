@@ -13,58 +13,58 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
-ms.date: 11/21/2016
+ms.date: 02/23/2018
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 5eebae624ea024f2ff8c1fa4764027c05220a15f
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 59cebb6c0b86f4e3c4e16a5b6d2ada7b3e7a44a2
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="manage-artifact-metadata-in-integration-accounts-for-logic-apps"></a>ロジック アプリの統合アカウントでアーティファクト メタデータを管理する
 
-統合アカウント内でアーティファクトのカスタム メタデータを定義し、ロジック アプリの実行時にそのメタデータを取得することができます。 たとえば、パートナー、契約、スキーマ、マップなどのアーティファクトに対してメタデータを指定することができます。これらすべてのアーティファクトには、キーと値のペアを使用してメタデータが保存されます。 現在、アーティファクトでは UI を通じてメタデータを作成することはできませんが、REST API を使用してメタデータを作成することができます。 Azure ポータルでパートナー、契約、またはスキーマを作成または選択する際にメタデータを追加するには、**[編集]** を選択します。 ロジック アプリ内でアーティファクト メタデータを取得するには、統合アカウント アーティファクト検索機能を使用できます。
+統合アカウント内でアーティファクトのカスタム メタデータを定義し、ロジック アプリの実行時にそのメタデータを取得することができます。 たとえば、パートナー、契約、スキーマ、マップなどのアーティファクトに対してメタデータを指定することができます。これらすべてのアーティファクトには、キーと値のペアを使用してメタデータが保存されます。 
 
 ## <a name="add-metadata-to-artifacts-in-integration-accounts"></a>統合アカウント内のアーティファクトにメタデータを追加する
 
-1. [統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)を作成します。
+1. Azure Portal で、[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)を作成します。
 
-2. 統合アカウントにアーティファクトを追加します (たとえば、[パートナー](logic-apps-enterprise-integration-partners.md#how-to-create-a-partner)、[契約](logic-apps-enterprise-integration-agreements.md#how-to-create-agreements)、[スキーマ](logic-apps-enterprise-integration-schemas.md))。
+2. 統合アカウントにアーティファクトを追加します (たとえば、[パートナー](logic-apps-enterprise-integration-partners.md)、[契約](logic-apps-enterprise-integration-agreements.md)、[スキーマ](logic-apps-enterprise-integration-schemas.md))。
 
-3.  アーティファクトを選択し、**[編集]** を選択して、メタデータの詳細を入力します。
+3. アーティファクトを選択し、**[編集]** を選択して、メタデータの詳細を入力します。
 
-    ![メタデータを入力する](media/logic-apps-enterprise-integration-metadata/image1.png)
+   ![メタデータを入力する](media/logic-apps-enterprise-integration-metadata/image1.png)
 
 ## <a name="retrieve-metadata-from-artifacts-for-logic-apps"></a>ロジック アプリのアーティファクトからメタデータを取得する
 
-1. [ロジック アプリ](quickstart-create-first-logic-app-workflow.md)を作成します。
+1. Azure Portal で、[ロジック アプリ](quickstart-create-first-logic-app-workflow.md)を作成します。
 
 2. [ロジック アプリから統合アカウントへのリンク](logic-apps-enterprise-integration-create-integration-account.md#link-an-integration-account-to-a-logic-app)を作成します。 
 
-3. ロジック アプリ デザイナーで、ロジック アプリに*要求*や *HTTP* などのトリガーを追加します。
+3. ロジック アプリ デザイナーで、ロジック アプリに**要求**や **HTTP** などのトリガーを追加します。
 
-4.  **[次のステップ]** > **[アクションの追加]** の順に選択します。 *統合*を検索し、**[統合アカウントのアーティファクトの検索]** を選択します。
+4. トリガーで、**[新しいステップ]** > **[アクションの追加]** の順に選びます。 "統合アカウント" を検索し、**[統合アカウント - 統合アカウントのアーティファクトの検索]** アクションを選びます。
 
-    ![[統合アカウントのアーティファクトの検索] を選択する](media/logic-apps-enterprise-integration-metadata/image2.png)
+   ![[統合アカウントのアーティファクトの検索] を選択する](media/logic-apps-enterprise-integration-metadata/image2.png)
 
-5. **アーティファクトの種類**を選択し、**アーティファクトの名前**を指定します。
+5. **アーティファクトの種類**を選択し、**アーティファクトの名前**を指定します。 例: 
 
-    ![アーティファクトの種類を選択し、アーティファクト名を指定する](media/logic-apps-enterprise-integration-metadata/image3.png)
+   ![アーティファクトの種類を選択し、アーティファクト名を指定する](media/logic-apps-enterprise-integration-metadata/image3.png)
 
 ## <a name="example-retrieve-partner-metadata"></a>例: パートナーのメタデータを取得する
 
-パートナーのメタデータには、次の `routingUrl` 情報が含まれています。
+このパートナーが、`routingUrl` の詳細を含むこのメタデータを持っているものとします。
 
 ![パートナーの "routingURL" メタデータを見つける](media/logic-apps-enterprise-integration-metadata/image6.png)
 
-1. ロジック アプリで、トリガー、パートナーの **[統合アカウントのアーティファクトの検索]** アクション、および **HTTP** を追加します。
+1. ロジック アプリで、トリガー、パートナーの **[統合アカウント - 統合アカウントのアーティファクトの検索]** アクション、および **HTTP** アクションを追加します。次はその例です。
 
-    ![ロジック アプリに、トリガー、アーティファクト検索、および "HTTP" を追加する](media/logic-apps-enterprise-integration-metadata/image4.png)
+   ![ロジック アプリに、トリガー、アーティファクト検索、および HTTP アクションを追加する](media/logic-apps-enterprise-integration-metadata/image4.png)
 
-2. URI を取得するには、ロジック アプリのコード ビューに移動します。 ロジック アプリの定義は、次の例のようになります。
+2. URI を取得するには、ロジック アプリ デザイナー ツールバーで、ロジック アプリの **[コード ビュー]** を選びます。 ロジック アプリの定義は、次の例のようになります。
 
-    ![参照の検索](media/logic-apps-enterprise-integration-metadata/image5.png)
-
+   ![参照の検索](media/logic-apps-enterprise-integration-metadata/image5.png)
 
 ## <a name="next-steps"></a>次の手順
-* [契約についての詳細情報](logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
+
+* [契約の詳細について学習する](logic-apps-enterprise-integration-agreements.md)

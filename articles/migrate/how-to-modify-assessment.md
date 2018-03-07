@@ -4,13 +4,13 @@ description: "Azure Migration Planner を使用して VMware VM を Azure に移
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 02/26/2018
 ms.author: raynew
-ms.openlocfilehash: 8babdbc30e062c7b289e90a674cec3222943e48d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: efb4ad59d25a0c1209e4f0f6cd406c2f0d48159c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/21/2018
 
     **設定** | **詳細** | **既定値**
     --- | --- | ---
-    **ターゲットの場所** | Azure 上の移行先となる場所。 |  既定の場所は、米国西部 2 です。
+    **ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/> Azure Migrate は現在、30 のリージョンをサポートしています (オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、ドイツ中部、ドイツ北東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2)。 |  既定の場所は、米国西部 2 です。
     **ストレージ冗長** | 移行後に Azure VM で使用されるストレージ冗長の種類。 | [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) が既定値です。 Azure Migrate では管理ディスク ベースの評価だけがサポートされ、管理ディスクでは LRS だけがサポートされています。そのため、現在、プロパティには LRS オプションだけがあります。 
     **サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 "*パフォーマンスに基づく*" サイズ変更、またはパフォーマンスの履歴を考慮しない "*オンプレミスとしての*" VM のサイズ変更を実行できます。 | パフォーマンスに基づくサイズ変更が既定のオプションです。
     **パフォーマンス履歴** | VM のパフォーマンスを評価するために考慮する期間。 このプロパティは、サイズ変更の基準が "*パフォーマンスに基づくサイズ変更*" の場合にのみ適用されます。 | 既定値は 1 日です。
