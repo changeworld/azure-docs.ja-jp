@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 02/22/2018
 ms.author: nitinme
-ms.openlocfilehash: 2be4477528c9109151c4737eabc16741cc020ce8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 87e60bcc097157c733c1e08356b7cd9ea48bb868
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
 
@@ -135,7 +135,11 @@ Jupyter Notebook を開くと、ルート レベルで利用可能な 2 つの�
 
 ## <a name="where-are-the-notebooks-stored"></a>Notebook の格納場所
 
-Jupyter Notebook は、**/HdiNotebooks** フォルダー下にあるクラスターに関連付けられたストレージ アカウントに保存されます。  Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、ストレージ アカウントからアクセスできます。  たとえば、Jupyter を使用して **myfolder** フォルダーと Notebook **myfolder/mynotebook.ipynb** を作成した場合、ストレージ アカウントの `/HdiNotebooks/myfolder/mynotebook.ipynb` で Notebook にアクセスできます。  逆の場合も同様です。つまり、Notebook を 自分のストレージ アカウントの `/HdiNotebooks/mynotebook1.ipynb` に直接アップロードした場合、Jupyter からも Notebook を表示することができます。  Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+クラスターで Azure Storage が既定のストレージ アカウントとして使用されている場合、Jupyter Notebook は **/HdiNotebooks** フォルダーの下のストレージ アカウントに保存されます。  Notebook、テキスト ファイル、および Jupyter 内から作成したフォルダーには、ストレージ アカウントからアクセスできます。  たとえば、Jupyter を使用して **myfolder** フォルダーと Notebook **myfolder/mynotebook.ipynb** を作成した場合、ストレージ アカウントの `/HdiNotebooks/myfolder/mynotebook.ipynb` で Notebook にアクセスできます。  逆の場合も同様です。つまり、Notebook を 自分のストレージ アカウントの `/HdiNotebooks/mynotebook1.ipynb` に直接アップロードした場合、Jupyter からも Notebook を表示することができます。  Notebook は、クラスターが削除された後でも、ストレージ アカウントに保持されます。
+
+> [!NOTE]
+> Azure Data Lake Store を既定のストレージにしている HDInsight クラスターの場合、Notebook は関連するストレージには保存されません。
+>
 
 Notebook がストレージ アカウントに保存される方法は、HDFS と互換性があります。 そのため、クラスターに SSH で接続する場合は、次のスニペットに示すようにファイル管理コマンドを使用できます。
 
@@ -143,8 +147,7 @@ Notebook がストレージ アカウントに保存される方法は、HDFS �
     hdfs dfs –copyToLocal /HdiNotebooks                    # Download the contents of the HdiNotebooks folder
     hdfs dfs –copyFromLocal example.ipynb /HdiNotebooks   # Upload a notebook example.ipynb to the root folder so it’s visible from Jupyter
 
-
-クラスターのストレージ アカウントへのアクセスに問題がある場合のために、Notebook はヘッド ノード `/var/lib/jupyter`にも保存されます。
+クラスターの既定のストレージ アカウントが Azure Storage か Azure Data Lake Store かに関わらず、Notebook は `/var/lib/jupyter` のヘッド ノードにも保存されます。
 
 ## <a name="supported-browser"></a>サポートされているブラウザー
 

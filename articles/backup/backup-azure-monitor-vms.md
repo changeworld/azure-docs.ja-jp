@@ -1,6 +1,6 @@
 ---
-title: "Resource Manager によってデプロイされた仮想マシン バックアップの監視 | Microsoft Docs"
-description: "Resource Manager によってデプロイされた仮想マシンのバックアップのイベントとアラートを監視します。 アラートに基づいて電子メールを送信します。"
+title: "Azure 仮想マシンのバックアップ アラートを監視する | Microsoft Docs"
+description: "Azure 仮想マシンのバックアップ ジョブからのイベントとアラートを監視します。 アラートに基づいて電子メールを送信します。"
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/21/2016
+ms.date: 02/23/2018
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: 1e9f6d44965e8a6cd9529ef860f0fb57fd8e572d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0f92d63d6eabe48bfac444b79bc10e090df239ca
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
 アラートはサービスから返され、イベントのしきい値が満たされていること、またはしきい値を超えたことを示します。 ビジネス コストを抑えるには、問題が発生したときに、それを把握することが重要です。 通常、アラートはスケジュールに基づいて発生するわけではないため、発生後にできるだけ早く通知されると便利です。 たとえば、バックアップ ジョブまたは復元ジョブが失敗した場合、エラーの発生後 5 分以内にアラートが発生します。 コンテナーのダッシュボードの [バックアップ アラート] タイルには、重大なアラートと警告レベルのアラートが発生しているイベントが表示されます。 [バックアップ アラート] 設定では、すべてのイベントを確認することができますが、 別の問題に対応しているときに、アラートが発生したらどうでしょう。 アラートが発生したことを知らなくても、大きな問題にはならないかもしれませんが、データのセキュリティ侵害につながることもあります。 アラートが発生したことを、適切なユーザーに確実に知らせるには、アラート通知を電子メールで送信するようにサービスを構成します。 電子メール通知の設定の詳細については、「[通知の構成](backup-azure-monitor-vms.md#configure-notifications)」を参照してください。

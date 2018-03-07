@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2017
 ms.author: billmath
-ms.openlocfilehash: cde406bd745fe61757eaa69c9fc0cfc98a42d205
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c10a069f5359dc148b103688355c859bd653b5d7
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。
@@ -63,7 +63,7 @@ AD DS の読み取りと書き込み用に作成された [アカウント](#act
 | すべてのプロパティの読み取り/書き込み (iNetOrgPerson) |インポートおよび Exchange ハイブリッド |
 | すべてのプロパティの読み取り/書き込み (グループ) |インポートおよび Exchange ハイブリッド |
 | すべてのプロパティの読み取り/書き込み (連絡先) |インポートおよび Exchange ハイブリッド |
-| パスワードのリセット |パスワード ライトバックを有効にするための準備 |
+| [パスワードのリセット] |パスワード ライトバックを有効にするための準備 |
 
 ## <a name="custom-settings-installation"></a>カスタム設定を使用したインストール
 Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウィザードが Active Directory への接続に使うアカウントを作成できるオプションがあります。  以前のバージョンでは、インストールする前にアカウントを作成する必要があります。 このアカウントに付与する必要があるアクセス許可については、「 [AD DS アカウントの作成](#create-the-ad-ds-account)」を参照してください。 
@@ -84,7 +84,7 @@ Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウ�
 
 必要なアクセス許可は、有効にしたオプションの機能によって異なります。 複数のドメインがある場合は、フォレスト内のすべてのドメインにアクセス許可を付与する必要があります。 これらのいずれの機能も有効にしなかった場合、既定の **ドメイン ユーザー** アクセス許可で十分対応できます。
 
-| 機能 | アクセス許可 |
+| Feature | アクセス許可 |
 | --- | --- |
 | msDS-ConsistencyGuid 機能 |「[設計概念 - sourceAnchor としての msDS-ConsistencyGuid の使用](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)」に記載された msDS-ConsistencyGuid 属性への書き込みアクセス許可。 | 
 | パスワードの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
@@ -98,10 +98,10 @@ Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウ�
 Azure AD Connect のいずれかのバージョンから新しいリリースにアップグレードする場合、次のアクセス許可が必要です。
 
 >[!IMPORTANT]
->ビルド 1.1.484 以降の Azure AD Connect には回帰バグがあり、SQL データベースのアップグレードに sysadmin アクセス許可が必要です。  このバグは、最新のビルド 1.1.614 にもまだ存在します。  このビルドにアップグレードする場合は、sysadmin アクセス許可が必要です。  dbo アクセス許可では不十分です。  sysadmin アクセス許可がないユーザーが Azure AD Connect をアップグレードしようとすると、アップグレードは失敗し、Azure AD Connect が正しく機能しなくなります。  Microsoft はこの問題を認識しており、解決に取り組んでいます。
+>ビルド 1.1.484 以降の Azure AD Connect には回帰バグがあり、SQL データベースのアップグレードに sysadmin アクセス許可が必要です。  このバグはビルド 1.1.647 で修正されています。  このビルドにアップグレードする場合は、sysadmin アクセス許可が必要です。  dbo アクセス許可では不十分です。  sysadmin アクセス許可がないユーザーが Azure AD Connect をアップグレードしようとすると、アップグレードは失敗し、Azure AD Connect が正しく機能しなくなります。  Microsoft はこの問題を認識しており、解決に取り組んでいます。
 
 
-| プリンシパル | 必要なアクセス許可 | 用途 |
+| プリンシパル | 必要なアクセス許可 | 使用対象 |
 | --- | --- | --- |
 | インストール ウィザードを実行するユーザー |ローカル サーバーの管理者 |バイナリを更新します。 |
 | インストール ウィザードを実行するユーザー |ADSyncAdmins のメンバー |同期規則などの構成を変更します。 |
@@ -118,7 +118,7 @@ Azure AD Connect のいずれかのバージョンから新しいリリースに
 ### <a name="azure-ad-connect-sync-service-account"></a>Azure AD Connect 同期サービス アカウント
 同期サービスは、複数のアカウントで実行できます。 これは、**仮想サービス アカウント** (VSA)、**グループの管理されたサービス アカウント** (gMSA/sMSA)、または通常のユーザー アカウントで実行できます。 サポートされるオプションは、新規インストールを実行した場合、Connect の 2017 年 4 月のリリースで変更されます。 Azure AD Connect の以前のリリースからアップグレードする場合は、これらの追加のオプションは利用できません。
 
-| アカウントの種類 | インストール オプション | 説明 |
+| アカウントの種類 | インストール オプション | [説明] |
 | --- | --- | --- |
 | [仮想サービス アカウント](#virtual-service-account) | 高速およびカスタム、2017 年 4 月以降 | これは、ドメイン コントローラーでのインストールを除くすべての高速インストールに使用されるオプションです。 カスタムでは、別のオプションが使われていない限り、これが既定のオプションです。 |
 | [グループの管理されたサービス アカウント](#group-managed-service-account) | カスタム、2017 年 4 月以降 | リモートの SQL サーバーを使用した場合、グループの管理されたサービス アカウントを使用することをお勧めします。 |
@@ -195,5 +195,5 @@ Azure AD での同期サービスのアカウント数の上限は 20 です。 
 
 使用されていない Azure AD サービス アカウントを削除するには、次の Azure AD PowerShell コマンドレットを実行します。`Remove-AzureADUser -ObjectId <ObjectId-of-the-account-you-wish-to-remove>`
 
-## <a name="next-steps"></a>次のステップ
-「 [オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。
+## <a name="next-steps"></a>次の手順
+「[オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。

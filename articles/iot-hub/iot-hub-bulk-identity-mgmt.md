@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: dobett
-ms.openlocfilehash: d2a6660b93fee1e1fc24269eb7075e5243ce88ed
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 699237c68258243b5f654f5dc57e616e3a22177a
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="manage-your-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID を一括で管理する
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 01/11/2018
 
 **RegistryManager** クラスには、**ジョブ** フレームワークを使用する **ExportDevicesAsync** および **ImportDevicesAsync** メソッドが含まれています。 これらのメソッドを使用すると、IoT Hub ID レジストリ全体のエクスポート、インポート、および同期化を行うことができます。
 
-このトピックでは、**RegistryManager** クラスと**ジョブ** システムを使用して、デバイスの一括インポートおよびエクスポートを IoT Hub の ID レジストリとの間で実行する方法について説明します。 また、Azure IoT Hub Device Provisioning サービスを使用して、1 つまたは複数の IoT ハブに対してノータッチの Just-In-Time プロビジョニングを実現できるため、人の手を介する必要がなくなります。 詳細については、[Provisioning Service のドキュメント][lnk-dps]をご覧ください。
+このトピックでは、**RegistryManager** クラスと**ジョブ** システムを使用して、デバイスの一括インポートおよびエクスポートを IoT Hub の ID レジストリとの間で実行する方法について説明します。 また、Azure IoT Hub Device Provisioning サービスを使用して、1 つまたは複数の IoT ハブに対してノータッチの Just-In-Time プロビジョニングを実現できるため、人の手を介する必要がなくなります。 詳細については、[Provisioning Service のドキュメント][lnk-dps]を参照してください。
 
 ## <a name="what-are-jobs"></a>ジョブとは
 
@@ -49,7 +49,18 @@ JobProperties exportJob = await registryManager.ExportDevicesAsync(containerSasU
 > [!NOTE]
 > C# コードで **RegistryManager** クラスを使用するには、プロジェクトに **Microsoft.Azure.Devices** NuGet パッケージを追加します。 **RegistryManager** クラスは、**Microsoft.Azure.Devices** 名前空間にあります。
 
-**RegistryManager** クラスを使用すると、返された **JobProperties** メタデータを基に**ジョブ**の状態を照会することができます。
+**RegistryManager** クラスを使用すると、返された **JobProperties** メタデータを基に**ジョブ**の状態を照会することができます。 **RegistryManager** クラスのインスタンスを作成するには、**CreateFromConnectionString** メソッドを使用します。
+
+```csharp
+RegistryManager registryManager = RegistryManager.CreateFromConnectionString("{your IoT Hub connection string}");
+```
+
+IoT ハブ の接続文字列を取得するには、Azure Portal で次の操作を行います。
+
+- IoT Hub に移動します。
+- **[共有アクセス ポリシー]** を選択します。
+- 必要なアクセス許可を考慮して、ポリシーを選択します。
+- 画面の右側にあるパネルから接続文字列をコピーします。
 
 次の C# コード スニペットでは、5 秒ごとにポーリングして、ジョブの実行が完了したかどうかを確認する方法を示します。
 
@@ -409,7 +420,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 * [IoT Hub 開発者ガイド][lnk-devguide]
 * [Azure IoT Edge でエッジ デバイスに AI をデプロイする][lnk-iotedge]
 
-IoT Hub Device Provisioning サービスを使用してノータッチの Just-In-Time プロビジョニングを実現する方法については、次をご覧ください。 
+IoT Hub Device Provisioning サービスを使用してノータッチの Just-In-Time プロビジョニングを実現する方法については、次を参照してください。 
 
 * [Azure IoT Hub Device Provisioning Service][lnk-dps]
 

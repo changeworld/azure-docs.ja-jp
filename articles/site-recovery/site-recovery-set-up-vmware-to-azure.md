@@ -2,48 +2,34 @@
 title: "ソース環境のセットアップ (VMware から Azure へ) | Microsoft Docs"
 description: "この記事では、VMware 仮想マシンを Azure にレプリケートする前に、オンプレミス環境をセットアップする方法について説明します。"
 services: site-recovery
-documentationcenter: 
 author: AnoopVasudavan
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/23/2017
+ms.date: 02/22/2018
 ms.author: anoopkv
-ms.openlocfilehash: 32a3f7498d3c8891178818436e33221f91ae2f8f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2b6b0e5cc95f28b5596e7e898f5f035e3647d9c5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="set-up-the-source-environment-vmware-to-azure"></a>ソース環境のセットアップ (VMware から Azure へ)
 > [!div class="op_single_selector"]
 > * [VMware から Azure](./site-recovery-set-up-vmware-to-azure.md)
 > * [物理から Azure](./site-recovery-set-up-physical-to-azure.md)
 
-この記事では、VMware 上で実行されている仮想マシンを Azure にレプリケートする前に、オンプレミス環境をセットアップする方法について説明します。
+この記事では、ソースのオンプレミス環境をセットアップし、VMware 上で実行されている仮想マシンを Azure にレプリケートする方法について説明します。 これには、レプリケーション シナリオを選択するための手順、オンプレミス コンピューターを Site Recovery の構成サーバーとして設定するための手順、およびオンプレミスのVM を自動的に検出するための手順が含まれます。 
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事では、次のものが既に作成されていることを前提としています。
-- Recovery Services コンテナー ([Azure Portal](http://portal.azure.com "Azure Portal") 内)。
-- [自動検出](./site-recovery-vmware-to-azure.md)に使用できる、VMware vCenter 内の専用アカウント。
-- 構成サーバーをインストールする仮想マシン。
+この記事は、既に以下の操作を行っていることを前提としています。
+- [Azure Portal](http://portal.azure.com) で[リソースを設定する](tutorial-prepare-azure.md)。
+- [オンプレミスの VMware 設定する](tutorial-prepare-on-premises-vmware.md) (自動検出のための専用アカウントを含む)。
 
-## <a name="configuration-server-minimum-requirements"></a>構成サーバーの最小要件
-次の表は、構成サーバーに最低限必要なハードウェア、ソフトウェア、およびネットワークの要件を示したものです。
 
-> [!IMPORTANT]
-> VMware 仮想マシンを保護するために構成サーバーをデプロイするときは、**高可用性 (HA)** 仮想マシンとしてデプロイすることをお勧めします。
-
-[!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
-
-> [!NOTE]
-> HTTPS ベースのプロキシ サーバーは、構成サーバーではサポートされません。
 
 ## <a name="choose-your-protection-goals"></a>保護の目標を選択する
 
@@ -55,39 +41,21 @@ ms.lasthandoff: 12/21/2017
 
     ![Choose goals](./media/site-recovery-set-up-vmware-to-azure/choose-goals2.png)
 
-## <a name="set-up-the-source-environment"></a>ソース環境をセットアップする
-ソース環境のセットアップ作業には、主に 2 つのアクティビティが含まれます。
+## <a name="set-up-the-configuration-server"></a>構成サーバーを設定する
 
-- Site Recovery を使用して構成サーバーをインストールし、登録する。
-- Site Recovery をオンプレミスの VMware vCenter または vSphere EXSi ホストに接続して、オンプレミスの仮想マシンを検出する。
+Open Virtualization Format (OVF) テンプレートを使用して、構成サーバーをオンプレミスの VMware VM として設定します。 VMware VM にインストールされるコンポーネントについては、[こちら](concepts-vmware-to-azure-architecture.md)をご覧ください。 
 
-### <a name="step-1-install-and-register-a-configuration-server"></a>手順 1: 構成サーバーをインストールし、登録する
+1. 構成サーバー デプロイの[前提条件](how-to-deploy-configuration-server.md#prerequisites)を確認します。 デプロイに必要な[容量を確認](how-to-deploy-configuration-server.md#capacity-planning)します。
+2. OVF テンプレート (how-to-deploy-configuration-server.md) を[ダウンロード](how-to-deploy-configuration-server.md#download-the-template)して[インポート](how-to-deploy-configuration-server.md#import-the-template-in-vmware)し、構成サーバーを実行するオンプレミス VMware VM を設定します。
+3. VMware VM を有効にし、Recovery Services コンテナーに[登録](how-to-deploy-configuration-server.md#register-the-configuration-server)します。
 
-1. **[手順 1: インフラストラクチャを準備する]** > **[ソース]** の順にクリックします。 **[ソースの準備]** で、構成サーバーがない場合は **[+ 構成サーバー]** をクリックして追加します。
 
-    ![Set up source](./media/site-recovery-set-up-vmware-to-azure/set-source1.png)
-2. **[サーバーの追加]** ブレードで、**[サーバーの種類]** に **[構成サーバー]** が表示されていることを確認します。
-4. Site Recovery 統合セットアップ インストール ファイルをダウンロードします。
-5. コンテナー登録キーをダウンロードします。 統合セットアップを実行する際には、登録キーが必要です。 キーは生成後 5 日間有効です。
-
-    ![Set up source](./media/site-recovery-set-up-vmware-to-azure/set-source2.png)
-6. 構成サーバーとして使用するマシンで**Azure Site Recovery 統合セットアップ**を実行して、構成サーバー、プロセス サーバー、マスター ターゲット サーバーをインストールします。
-
-#### <a name="run-azure-site-recovery-unified-setup"></a>Azure Site Recovery 統合セットアップを実行する
-
-> [!TIP]
-> コンピューターのシステム クロックの時刻と現地時刻との差が 5 分を超えている場合は、構成サーバーの登録が失敗します。 インストールを開始する前に、システム クロックを[タイム サーバー](https://technet.microsoft.com/windows-server-docs/identity/ad-ds/get-started/windows-time-service/windows-time-service)と同期させてください。
-
-[!INCLUDE [site-recovery-add-configuration-server](../../includes/site-recovery-add-configuration-server.md)]
-
-> [!NOTE]
-> 構成サーバーはコマンド ラインを使用してインストールすることもできます。 詳細については、[コマンドライン ツールを使用した構成サーバーのインストール](http://aka.ms/installconfigsrv)に関するページを参照してください。
-
-#### <a name="add-the-vmware-account-for-automatic-discovery"></a>自動検出用の VMware アカウントを追加する
+## <a name="add-the-vmware-account-for-automatic-discovery"></a>自動検出用の VMware アカウントを追加する
 
 [!INCLUDE [site-recovery-add-vcenter-account](../../includes/site-recovery-add-vcenter-account.md)]
 
-### <a name="step-2-add-a-vcenter"></a>手順 2: vCenter を追加する
+## <a name="connect-to-the-vmware-server"></a>VMware サーバーに接続する
+
 オンプレミス環境で実行されている仮想マシンを Azure Site Recovery で検出できるようにするには、VMware vCenter サーバーまたは vSphere ESXi ホストを Site Recovery に接続する必要があります。
 
 **[+vCenter]** を選択して、VMware vCenter サーバーまたは VMware vSphere ESXi ホストの接続を開始します。
@@ -99,5 +67,5 @@ ms.lasthandoff: 12/21/2017
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure で[ターゲット環境を設定](./site-recovery-prepare-target-vmware-to-azure.md)します。

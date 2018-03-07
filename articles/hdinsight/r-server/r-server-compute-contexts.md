@@ -15,30 +15,30 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 4c839bf0c39bf10855f8a31770b82a04ed1ca457
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 8bc7767d9903761f3338b7825185171aad74de78
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>HDInsight の R Server (プレビュー) の計算コンテキストのオプション
 
 Azure HDInsight 上の Microsoft R Server は、コンピューティング コンテキストを設定することによって呼び出しの実行方法を制御します。 この記事では、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて説明します。
 
-クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
+クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、RevoScaleR の並列化された分散関数を実行できます。 また、RevoScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
 ## <a name="microsoft-r-server-on-azure-hdinsight"></a>Azure HDInsight での Microsoft R Server
-[Azure HDInsight の Microsoft R Server](r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 HDFS 内の [Azure BLOB](../../storage/common/storage-introduction.md "Azure Blob Storage") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 R Server はオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、[RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler) (R Server に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
+[Azure HDInsight の Microsoft R Server](r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 HDFS 内の [Azure BLOB](../../storage/common/storage-introduction.md "Azure Blob Storage") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 R Server はオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、[RevoScaleR](https://docs.microsoft.com/machine-learning-server/r-reference/revoscaler/revoscaler) (R Server に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>エッジ ノードに対する計算コンテキスト
-一般に、エッジ ノードの R Server で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。 ScaleR 関数を呼び出すステップは例外です。 ScaleR 呼び出しは、ScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。  エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は次のとおりです。
+一般に、エッジ ノードの R Server で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。 RevoScaleR 関数を呼び出すステップは例外です。 RevoScaleR 呼び出しは、RevoScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。  エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は次のとおりです。
 
 - local sequential (*local*)
 - local parallel (*localpar*)
 - Map Reduce
 - Spark
 
-オプション *local* と *localpar* の違いは、**rxExec** 呼び出しを実行する方法のみです。 ScaleR の **numCoresToUse** オプションの使用を通じて別途指定されている (`rxOptions(numCoresToUse=6)` など) 場合を除き、どちらも、他の rx 関数呼び出しは使用可能なすべてのコアで並列に実行します。 並列実行は、パフォーマンスの面で最も有利なオプションです。
+オプション *local* と *localpar* の違いは、**rxExec** 呼び出しを実行する方法のみです。 RevoScaleR の **numCoresToUse** オプションの使用を通じて別途指定されている (`rxOptions(numCoresToUse=6)` など) 場合を除き、どちらも、他の rx 関数呼び出しは使用可能なすべてのコアで並列に実行します。 並列実行は、パフォーマンスの面で最も有利なオプションです。
 
 次の表は、呼び出しの実行方法を設定する各種コンピューティング コンテキスト オプションをまとめたものです。
 
@@ -72,13 +72,13 @@ Azure HDInsight 上の Microsoft R Server は、コンピューティング コ�
 * Map Reduce コンピューティング コンテキストは、一般に処理が低速になるため、Spark コンピューティング コンテキストを使用して解決不可能な問題が発生した場合のみ使用してください。  
 
 ## <a name="inline-help-on-rxsetcomputecontext"></a>rxSetComputeContext のインライン ヘルプ
-ScaleR コンピューティング コンテキストの詳細と例については、次のようにして rxSetComputeContext メソッドの R のインライン ヘルプを参照してください。
+RevoScaleR コンピューティング コンテキストの詳細と例については、次のようにして rxSetComputeContext メソッドの R のインライン ヘルプを参照してください。
 
     > ?rxSetComputeContext
 
-[Microsoft R Server MSDN](https://msdn.microsoft.com/library/mt674634.aspx) ライブラリで入手可能な [ScaleR 分散コンピューティング ガイド](https://msdn.microsoft.com/microsoft-r/scaler-distributed-computing)を参照することもできます。
+「[Machine Learning Server documentation (Machine Learning Server ドキュメント)](https://docs.microsoft.com/machine-learning-server/)」の「[Distributed computing overview (分散コンピューティングの概要)](https://docs.microsoft.com/machine-learning-server/r/how-to-revoscaler-distributed-computing)」にも関連情報があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、HDInsight クラスターやエッジ ノードの複数のコア間で実行を並列化するかどうかとその方法を指定する際に利用できるオプションについて説明しました。 HDInsight クラスターで R Server を使用する方法の詳細については、次のトピックを参照してください。
 
 * [R Server for Hadoop の概要](r-server-overview.md)

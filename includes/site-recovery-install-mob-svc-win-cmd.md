@@ -25,15 +25,15 @@ Usage :
 UnifiedAgent.exe /Role <MS|MT> /InstallLocation <Install Location> /Platform “VmWare” /Silent
 ```
 
-| パラメーターが含まれる必要があります。|型|Description|指定できる値|
+| パラメーター|type|[説明]|指定できる値|
 |-|-|-|-|
-|/Role|必須|モビリティ サービス (MS) とマスター ターゲット (MS) のどちらをインストールするかを指定します|MS </br> MT|
-|/InstallLocation|省略可能。|モビリティ サービスをインストールする場所|コンピューター上の任意のフォルダー|
-|/Platform|必須|モビリティ サービスをインストールするプラットフォームを指定します </br> </br>- **VMware**: "*VMware vSphere ESXi ホスト*"、"*Hyper-V ホスト*"、または "*物理サーバー*" で実行されている VM にモビリティ サービスをインストールする場合は、この値を使用します </br> - **Azure**: Azure IaaS VM にエージェントをインストールする場合は、この値を使用します| VMware </br> Azure|
-|/Silent|省略可能。|インストーラーをサイレント モードで実行するよう指定します| 該当なし|
+|/Role|必須|モビリティ サービス (MS) とマスター ターゲット (MS) のどちらをインストールするかを指定します。|MS </br> MT|
+|/InstallLocation|省略可能|モビリティ サービスをインストールする場所。|コンピューター上の任意のフォルダー|
+|/Platform|必須|モビリティ サービスをインストールするプラットフォームを指定します。 </br> </br>- **VMware**: "*VMware vSphere ESXi ホスト*"、"*Hyper-V ホスト*"、または "*物理サーバー*" で実行されている VM にモビリティ サービスをインストールする場合は、この値を使用します。 </br> - **Azure**: Azure IaaS VM にエージェントをインストールする場合は、この値を使用します。 | VMware </br> Azure|
+|/Silent|省略可能|インストーラーをサイレント モードで実行するよう指定します。| 該当なし|
 
 >[!TIP]
-> セットアップ ログは、%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log にあります
+> セットアップ ログは、%ProgramData%\ASRSetupLogs\ASRUnifiedAgentInstaller.log にあります。
 
 #### <a name="mobility-service-registration-command-line-arguments"></a>モビリティ サービスの登録のコマンド ライン引数
 
@@ -42,11 +42,11 @@ Usage :
 UnifiedAgentConfigurator.exe  /CSEndPoint <CSIP> /PassphraseFilePath <PassphraseFilePath>
 ```
 
-  | パラメーターが含まれる必要があります。|型|Description|指定できる値|
+  | パラメーター|type|[説明]|指定できる値|
   |-|-|-|-|
   |/CSEndPoint |必須|構成サーバーの IP アドレス| 任意の有効な IP アドレス|
-  |/PassphraseFilePath|必須|パスフレーズの場所 |任意の有効な UNC またはローカル ファイル パス|
+  |/PassphraseFilePath|必須|パス フレーズの場所 |任意の有効な UNC またはローカル ファイル パス|
 
 
 >[!TIP]
-> AgentConfiguration のログは、%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log にあります
+> エージェント構成のログは、%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log にあります。

@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/16/2018
+ms.date: 02/22/2018
 ms.author: markvi
 ms.custom: it-pro
 ms.reviewer: jeedes
-ms.openlocfilehash: 8ccce6f780314ed04e9fe2e3b28df76a7f7ab7c4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5242e40c0cca727e2702b3cd49ffa3de695450ca
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合
 
@@ -72,6 +72,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-assetbank-tutorial.png)| [Asset Bank](active-directory-saas-assetbank-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-atlassian-cloud-tutorial.png)| [Atlassian Cloud](active-directory-saas-atlassian-cloud-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-atomiclearning-tutorial.png)| [Atomic Learning](active-directory-saas-atomiclearning-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-attendancemanagementservices-tutorial.png)| [Attendance Management Services](active-directory-saas-attendancemanagementservices-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-autotaskworkplace-tutorial.png)| [Autotask Workplace](active-directory-saas-autotaskworkplace-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-bamboo-hr-tutorial.png)| [BambooHR](active-directory-saas-bamboo-hr-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-bambubysproutsocial-tutorial.png)| [Bambu by Sprout Social](active-directory-saas-bambubysproutsocial-tutorial.md)|
@@ -143,6 +144,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-dowjones-factiva-tutorial.png)| [Dow Jones Factiva](active-directory-saas-dowjones-factiva-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-dropboxforbusiness-tutorial.png)| [Dropbox for Business](active-directory-saas-dropboxforbusiness-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-druva-tutorial.png)| [Druva](active-directory-saas-druva-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-esalesmanagerremix-tutorial.png)| [E Sales Manager Remix](active-directory-saas-esalesmanagerremix-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-easyterritory-tutorial.png)| [EasyTerritory](active-directory-saas-easyterritory-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-ebsco-tutorial.png)| [EBSCO](active-directory-saas-ebsco-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-edcor-tutorial.png)| [Edcor](active-directory-saas-edcor-tutorial.md)|
@@ -368,8 +370,8 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-saphana-tutorial.png)| [SAP HANA](active-directory-saas-saphana-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-sap-netweaver-tutorial.png)| [SAP NetWeaver](active-directory-saas-sap-netweaver-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-scalexenterprise-tutorial.png)| [ScaleX Enterprise](active-directory-saas-scalexenterprise-tutorial.md)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-scc-lifecycle-tutorial.png)| [SCC LifeCycle](active-directory-saas-scc-lifecycle-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-scclifecycle-tutorial.png)| [SCC LifeCycle](active-directory-saas-scclifecycle-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-scc-lifecycle-tutorial.png)| [SCC LifeCycle](active-directory-saas-scc-lifecycle-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-schoox-tutorial.png)| [Schoox](active-directory-saas-schoox-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-sciforma-tutorial.png)| [Sciforma](active-directory-saas-sciforma-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-sciquest-spend-director-tutorial.png)| [SciQuest Spend Director](active-directory-saas-sciquest-spend-director-tutorial.md)|

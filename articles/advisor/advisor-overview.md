@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 8ae99c7ce6382626657777d003a1cb82348c4aba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -52,7 +52,7 @@ Advisor ダッシュボードに、すべてのサブスクリプションの個
 
 推奨事項を実装するには、その推奨事項の推奨されるアクションを選択します。  推奨事項を実装したり、実装に役立つドキュメントを参照したりできる、シンプルなインターフェイスが開きます。  推奨事項の実装後、Advisor が認識するまで最大 1 日かかることがあります。
 
-推奨事項のアクションをすぐに実行しない場合は、推奨事項を一定期間後に再通知することも、無視することもできます。  特定のサブスクリプションまたはリソース グループの推奨事項を受け取らない場合は、指定したサブスクリプションとリソース グループの推奨事項だけを生成するように Advisor を構成できます。
+推奨事項のアクションをすぐに実行しない場合は、推奨事項を一定期間後に延期することも、無視することもできます。  特定のサブスクリプションまたはリソース グループの推奨事項を受け取らない場合は、指定したサブスクリプションとリソース グループの推奨事項だけを生成するように Advisor を構成できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -69,9 +69,9 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
 
 Advisor は、仮想マシン、可用性セット、アプリケーション ゲートウェイ、App Services、SQL Server、SQL Database、および Redis Cache に関する推奨事項を提供します。
 
-### <a name="can-i-snooze-or-dismiss-a-recommendation"></a>推奨事項は再通知したり無視したりできるか?
+### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>推奨事項は延期したり無視したりできるか?
 
-推奨事項を再通知するか無視するには、**[再通知]** リンクをクリックします。 再通知期間を指定するか、**[Never]** を選択して推奨事項を無視できます。
+推奨事項を延期するか無視するには、**[延期]** リンクをクリックします。 延期期間を指定するか、**[Never]** を選択して推奨事項を無視できます。
 
 ## <a name="next-steps"></a>次の手順
 
