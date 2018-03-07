@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
-ms.openlocfilehash: 82d4bdbe60fe403ea07ed958e9aec9dbf4e9fbb8
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 6a518f9c7ddb11de2b459d5d28c404316eb62355
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="powershell-examples-for-group-based-licensing-in-azure-ad"></a>Azure AD のグループベースのライセンスの PowerShell の例
 
@@ -27,6 +27,9 @@ ms.lasthandoff: 01/03/2018
 
 > [!NOTE]
 > コマンドレットの実行を開始する前に、`Connect-MsolService` コマンドレットを実行して、テナントに接続していることを確認します。
+
+>[!WARNING]
+>このコードは、デモンストレーション用のサンプルとして提供されています。 ご利用の環境で使用する場合は、まず小規模にテストするか別のテスト テナントでテストすることを検討してください。 お使いの環境の具体的なニーズに合わせてコードの調整が必要になる場合があります。
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>グループに割り当てられた製品ライセンスの表示
 [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) コマンドレットでは、グループ オブジェクトを取得し、*ライセンス* プロパティを確認できます (グループに現在割り当てられているすべての製品ライセンスが一覧表示されます)。
@@ -70,7 +73,7 @@ c2652d63-9161-439b-b74e-fcd8228a7074 EMSandOffice             {ENTERPRISEPREMIUM
 ```
 
 ## <a name="get-statistics-for-groups-with-licenses"></a>ライセンスを持つグループの統計を取得する
-ライセンスを持つグループの基本的な統計情報を報告できます。 次の例では、合計ユーザー数、グループに既に割り当てられているライセンスを持つユーザーの数、およびグループにライセンスを割り当てることができなかったユーザーの数を一覧表示しています。
+ライセンスを持つグループの基本的な統計情報を報告できます。 次のスクリプト例は、合計ユーザー数、グループに既に割り当てられているライセンスを持つユーザーの数、およびグループにライセンスを割り当てることができなかったユーザーの数を一覧表示します。
 
 ```
 #get all groups with licenses
@@ -167,7 +170,7 @@ ObjectId                             DisplayName      License Error
 ```
 ## <a name="get-all-users-with-license-errors-in-the-entire-tenant"></a>テナント全体のライセンス エラーがあるすべてのユーザーを取得する
 
-1 つ以上のグループからのライセンス エラーを持つすべてのユーザーを一覧表示するには、次のスクリプトを使用できます。 このスクリプトには、ユーザーあたり、またライセンス エラーあたり 1 行を表示するため、各エラーのソースを明確に識別することができます。
+次のスクリプトを使用すると、1 つ以上のグループからのライセンス エラーを持つすべてのユーザーを一覧表示できます。 このスクリプトでは、ユーザーごと、またライセンス エラーごとに 1 行を出力するので、各エラーのソースを明確に識別することができます。
 
 > [!NOTE]
 > このスクリプトではテナントのすべてのユーザーが列挙されるため、大きなテナントでは最適でない場合があります。
@@ -302,7 +305,7 @@ ObjectId                             SkuId       AssignedDirectly AssignedFromGr
 ## <a name="remove-direct-licenses-for-users-with-group-licenses"></a>グループ ライセンスを持つユーザーの直接付与されたライセンスを削除する
 このスクリプトの目的は、グループから既に同じライセンスを継承している (例: [グループベースのライセンスへの移行](https://docs.microsoft.com/azure/active-directory/active-directory-licensing-group-migration-azure-portal)の一環として) ユーザーの不要な直接ライセンスを削除することです。
 > [!NOTE]
-> まず、削除する直接ライセンスで、継承されたライセンスより多い数のサービス機能が有効にされないことを検証することが重要です。 そうしないと、直接付与されたライセンスを削除したときに、ユーザーのサービスおよびデータへのアクセスが無効になる可能性があります。 現在、継承されたライセンスまたは直接ライセンスによって有効になっているサービスを PowerShell で確認することはできません。 スクリプトでは、グループから継承されることがわかっているサービスの最小レベルを指定し、それに照らして確認を行います。
+> まず、削除する直接ライセンスで、継承されたライセンスより多い数のサービス機能が有効にされないことを検証することが重要です。 そうしないと、直接付与されたライセンスを削除したときに、ユーザーのサービスおよびデータへのアクセスが無効になる可能性があります。 現在、継承されたライセンスまたは直接ライセンスによって有効になっているサービスを PowerShell で確認することはできません。 このスクリプトでは、グループから継承されることがわかっているサービスの最小レベルを指定し、それに照らして確認を行うことで、サービスに対するユーザーのアクセス権が予期せず失われないようにしています。
 
 ```
 #BEGIN: Helper functions used by the script
@@ -382,7 +385,7 @@ function GetDisabledPlansForSKU
 {
     Param([string]$skuId, [string[]]$enabledPlans)
 
-    $allPlans = Get-MsolAccountSku | where {$_.AccountSkuId -ieq $skuId} | Select -ExpandProperty ServiceStatus | Where {$_.ProvisioningStatus -ine "PendingActivation"} | Select -ExpandProperty ServicePlan | Select -ExpandProperty ServiceName
+    $allPlans = Get-MsolAccountSku | where {$_.AccountSkuId -ieq $skuId} | Select -ExpandProperty ServiceStatus | Where {$_.ProvisioningStatus -ine "PendingActivation" -and $_.ServicePlan.TargetClass -ieq "User"} | Select -ExpandProperty ServicePlan | Select -ExpandProperty ServiceName
     $disabledPlans = $allPlans | Where {$enabledPlans -inotcontains $_}
 
     return $disabledPlans
@@ -476,7 +479,7 @@ aadbe4da-c4b5-4d84-800a-9400f31d7371 User has no direct license to remove. Skipp
 
 ## <a name="next-steps"></a>次の手順
 
-グループを使用したライセンス管理の機能セットについては、以下をご覧ください。
+グループを使用したライセンス管理の機能セットについては、以下の記事をご覧ください。
 
 * [What is group-based licensing in Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md) (Azure Active Directory のグループベースのライセンスとは)
 * [Assigning licenses to a group in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) (Azure Active Directory でのグループへのライセンス割り当て)

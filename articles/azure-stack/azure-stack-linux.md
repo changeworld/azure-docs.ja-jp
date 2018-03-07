@@ -11,20 +11,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 02/22/2018
 ms.author: brenduns
-ms.reviewer: anajod
-ms.openlocfilehash: 29e5443de4dc43efe6d536b0f8b9cfc6ad37a669
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: jeffgo
+ms.openlocfilehash: 6e6f9ca3b314ee2f58d8007e7ddc93ddd213e361
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="add-linux-images-to-azure-stack"></a>Azure Stack への Linux イメージの追加
 
-*適用対象: Azure Stack 統合システムと Azure Stack Development Kit* 
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
-Azure Stack Marketplace に Linux ベースのイメージを追加することによって、Azure Stack に Linux 仮想マシンをデプロイできます。 最も容易に Linux イメージを Azure Stack に追加する方法は、Marketplace Management からです。
+Azure Stack Marketplace に Linux ベースのイメージを追加することによって、Azure Stack に Linux 仮想マシン (VM) をデプロイできます。 最も容易に Linux イメージを Azure Stack に追加する方法は、Marketplace Management からです。 これらのイメージは、Azure Stack との互換性を確保できるよう、あらかじめ準備され、テストされています。
 
 ## <a name="marketplace-management"></a>Marketplace Management
 
@@ -32,64 +32,48 @@ Azure Marketplace の Linux のイメージをダウンロードするには、�
 
 [Azure から Azure Stack に Marketplace の項目をダウンロードする](azure-stack-download-azure-marketplace-item.md)
 
-## <a name="download-an-image"></a>イメージのダウンロード
-
-ユーザーは、次のリンクを使用して、Azure Stack と互換性のある Linux のイメージをダウンロードして抽出できます。
-
-
-   * [Bitnami](https://bitnami.com/azure-stack)
-   * [CentOS](http://olstacks.cloudapp.net/latest/)
-   * [CoreOS](https://stable.release.core-os.net/amd64-usr/current/coreos_production_azure_image.vhd.bz2)
-   * [SuSE](https://download.suse.com/Download?buildid=VCFi7y7MsFQ~)
-   * [Ubuntu 14.04 LTS](https://partner-images.canonical.com/azure/azure_stack/) / [Ubuntu 16.04 LTS](http://cloud-images.ubuntu.com/releases/xenial/release/ubuntu-16.04-server-cloudimg-amd64-disk1.vhd.zip)
-
-1. 必要に応じて、イメージ VHD を抽出し、[Marketplace にイメージを追加](azure-stack-add-vm-image.md)します。 `OSType` パラメーターが `Linux` に設定されていることを確認してください。
-2. Marketplace にイメージを追加すると、Marketplace アイテムが作成され、ユーザーが Linux 仮想マシンをデプロイできます。
-
 ## <a name="prepare-your-own-image"></a>独自のイメージを準備する
 
 次のいずれかの手順を使用すると、独自の Linux イメージを準備できます。
-   
+
    * [CentOS ベースのディストリビューション](../virtual-machines/linux/create-upload-centos.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Debian Linux](../virtual-machines/linux/debian-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   * [Oracle Linux](../virtual-machines/linux/oracle-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-   * [Red Hat Enterprise Linux](../virtual-machines/linux/redhat-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [SLES と openSUSE](../virtual-machines/linux/suse-create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
    * [Ubuntu](../virtual-machines/linux/create-upload-ubuntu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 1. [Azure Linux エージェント](https://github.com/Azure/WALinuxAgent/)をダウンロードしてインストールします。
-   
-    Azure Stack に Linux VM をプロビジョニングするためには、Azure Linux エージェント バージョン 2.1.3 以上が必要です。 前に説明したディストリビューションの多くは、それらのリポジトリに、このバージョン以上のエージェントがパッケージとして既に含まれています (通常 `WALinuxAgent` または `walinuxagent` と呼ばれる)。 ただし、Azure エージェント パッケージのバージョンが 2.1.3 未満 (たとえば 2.0.18 以下) である場合は、エージェントを手動でインストールする必要があります。 インストールされているバージョンは、パッケージの名前から、または VM で `/usr/sbin/waagent -version` を実行して判断できます。
-   
+
+    Azure Stack に Linux VM をプロビジョニングするためには、Azure Linux エージェント バージョン 2.2.2 以上が必要です。なお、一部のバージョン (2.2.12 や 2.2.13 など) は動作しません。 前に説明したディストリビューションの多くには、エージェントのバージョンが既に含まれています (通常 `WALinuxAgent` または `walinuxagent` と呼ばれる)。 カスタム イメージを作成する場合は、エージェントを手動でインストールする必要があります。 インストールされているバージョンは、パッケージの名前から、または VM で `/usr/sbin/waagent -version` を実行して判断できます。
+
     Azure Linux エージェントを手動でインストールするには、以下の手順に従います。
-   
+
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 まず、[GitHub](https://github.com/Azure/WALinuxAgent/releases) から、最新の Azure Linux エージェントをダウンロードします。例:
-     
-            # wget https://github.com/Azure/WALinuxAgent/archive/v2.2.16.tar.gz
+
+            # wget https://github.com/Azure/WALinuxAgent/archive/v2.2.21.tar.gz
    b. Azure エージェントを展開します。
-     
-            # tar -vzxf v2.2.16.tar.gz
+
+            # tar -vzxf v2.2.21.tar.gz
    c. python-setuptools をインストールします。
-     
+
         **Debian / Ubuntu**
-     
+
             # sudo apt-get update
             # sudo apt-get install python-setuptools
-     
+
         **Ubuntu 16.04+**
-     
+
             # sudo apt-get install python3-setuptools
-     
+
         **RHEL / CentOS / Oracle Linux**
-     
+
             # sudo yum install python-setuptools
    d. Azure エージェントをインストールします。
-     
-            # cd WALinuxAgent-2.2.16
+
+            # cd WALinuxAgent-2.2.21
             # sudo python3 setup.py install --register-service
-     
+
      Python 2.x および Python 3.x がサイド バイ サイドでインストールされたシステムでは、次のコマンドを実行する必要がある場合があります。
-     
+
          sudo python3 setup.py install --register-service
      詳細については、Azure Linux エージェント [README](https://github.com/Azure/WALinuxAgent/blob/master/README.md) をご覧ください。
 2. [Marketplace にイメージを追加](azure-stack-add-vm-image.md)します。 `OSType` パラメーターが `Linux` に設定されていることを確認してください。
@@ -97,4 +81,3 @@ Azure Marketplace の Linux のイメージをダウンロードするには、�
 
 ## <a name="next-steps"></a>次の手順
 [Azure Stack でのサービスの提供の概要](azure-stack-offer-services-overview.md)
-

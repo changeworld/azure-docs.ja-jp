@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 02/23/2018
 ms.author: mimig
-ms.openlocfilehash: c7aadb4e535ed221f882f251324b6d4e633c2d5e
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: b63c778f02b88bea4d68206f441aef7b32172c24
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 Azure Cosmos DB の [要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が新たに公開されました。 詳細については、「 [スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照してください。
@@ -44,7 +44,7 @@ Azure Cosmos DB はマルチモデル データベースであるため、この
 ## <a name="request-units-and-request-charges"></a>要求ユニットと要求の使用量
 Azure Cosmos DB を使用して、アプリケーションのスループット ニーズを満たすリソースを "*予約*" することで、高速の予測可能なパフォーマンスが得られます。  アプリケーション負荷とアクセス パターンは時間と共に変化するため、Azure Cosmos DB はアプリケーションで利用できる予約済みスループットの量を簡単に増減できる機能を備えています。
 
-Azure Cosmos DB では、1 秒で処理する要求ユニットで、予約済みスループットを指定します。 要求ユニットはスループットの通貨と考えることができます。この通貨によって、アプリケーションで利用できる保証された要求ユニット量を秒単位で "*予約*" できます。  ドキュメントの作成、クエリの実行、ドキュメントの更新など、Azure Cosmos DB での各操作は、CPU、メモリ、IOPS を消費します。  つまり、それぞれの操作により、"*要求の使用量*" が発生し、それが "*要求ユニット*" で表されます。  アプリケーションのスループット要件と共に、要求ユニット使用量に影響を及ぼす要因を理解しておくと、できるだけコスト効率の高い方法でアプリケーションを実行できます。 また、クエリ エクスプローラーは、クエリの核となる部分をテストできるすばらしいツールでもあります。
+Azure Cosmos DB では、1 秒で処理する要求ユニットで、予約済みスループットを指定します。 要求ユニットはスループットの通貨と考えることができます。この通貨によって、アプリケーションで利用できる保証された要求ユニット量を秒単位で "*予約*" できます。  ドキュメントの作成、クエリの実行、ドキュメントの更新など、Azure Cosmos DB での各操作は、CPU、メモリ、IOPS を消費します。  つまり、それぞれの操作により、"*要求の使用量*" が発生し、それが "*要求ユニット*" で表されます。  アプリケーションのスループット要件と共に、要求ユニット使用量に影響を及ぼす要因を理解しておくと、できるだけコスト効率の高い方法でアプリケーションを実行できます。 また、Azure Portal のデータ エクスプローラーは、クエリの核となる部分をテストできるすばらしいツールでもあります。
 
 まずは以下のビデオを見ることをお勧めします。このビデオでは、Aravind Ramachandran が要求ユニットと Azure Cosmos DB での予測可能なパフォーマンスについて説明しています。
 
@@ -190,9 +190,7 @@ Azure Cosmos DB コンテナー用に予約する要求ユニット数を推定�
 > 
 
 ### <a name="use-the-azure-cosmos-db-request-charge-response-header"></a>Azure Cosmos DB の "要求の使用量" 応答ヘッダーの使用
-Azure Cosmos DB サービスからの各応答には、要求で使用される要求ユニットを含むカスタム ヘッダー (`x-ms-request-charge`) が付きます。 このヘッダーには、Azure Cosmos DB SDK を介してアクセスすることもできます。 .NET SDK では、RequestCharge は ResourceResponse オブジェクトのプロパティです。  Azure Portal の Azure Cosmos DB クエリ エクスプローラーは、実行されたクエリに関する要求の使用量情報を示します。
-
-![Examining RU charges in the Query Explorer][1]
+Azure Cosmos DB サービスからの各応答には、要求で使用される要求ユニットを含むカスタム ヘッダー (`x-ms-request-charge`) が付きます。 このヘッダーには、Azure Cosmos DB SDK を介してアクセスすることもできます。 .NET SDK では、RequestCharge は ResourceResponse オブジェクトのプロパティです。  Azure Portal の Azure Cosmos DB データ エクスプローラーは、実行されたクエリに関する要求の使用量情報を示します。
 
 これを踏まえて、アプリケーションに必要な予約済みスループットの量を推定するには、典型的な操作の実行に関連する要求ユニット使用量を記録し、アプリケーションが使用する代表的なアイテムに基づいて、1 秒ごとに実行される操作数を推定します。  さらに、通常のクエリと Azure Cosmos DB スクリプトの使用も忘れずに測定し、考慮に入れます。
 
@@ -358,7 +356,6 @@ Azure Cosmos DB の詳細については、Azure Cosmos DB の[ドキュメン�
 
 Azure Cosmos DB に関するスケールとパフォーマンスのテストを始めるには、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 
-[1]: ./media/request-units/queryexplorer.png 
 [2]: ./media/request-units/RUEstimatorUpload.png
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png

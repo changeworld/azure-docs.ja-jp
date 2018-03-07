@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/18/2018
 ms.author: billmath
-ms.openlocfilehash: b9a0b9027bbead00300040186e453933b3a7f46b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d66f717f546271a5e5c3c49d6cbaef1c190d18d8
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect-health"></a>GDPR コンプライアンスと Azure AD Connect Health 
 
@@ -35,6 +35,8 @@ Azure AD Connect Health は、GDPR の**データ プロセッサ** カテゴリ
 
 ## <a name="data-retention-policy"></a>データ リテンション期間ポリシー
 Azure AD Connect Health では、レポートの生成、分析の実行、またはインサイトの提供を、30 日間を超えて行うことはありません。 そのため Azure AD Connect Health では、いかなるデータも 30 日間を超えて格納、処理、保持されることはありません。 この設計は、GDPR の規制、Microsoft のプライバシー コンプライアンス規則、および Azure AD のデータ リテンション ポリシーに準拠したものです。 
+
+「**Health サービス データが最新ではありません**」という**エラー** アラートが30 日以上連続でアクティブになっている場合、そのサーバーでは、その期間中にデータが Connect Health に一切到達していません。 これらのサーバーは無効化され、Connect Health ポータルに表示されません。 サーバーを再度有効にするには、[正常性エージェントをアンインストールし、再インストールする](active-directory-aadconnect-health-agent-install.md)必要があります。 なお、このことは同じアラート タイプの**警告**には当てはまりません。 警告は、一部のデータがアラート対象のサーバーに見つからないことを示します。 
  
 ## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Azure AD Connect Health でのデータの収集と 監視を無効にする
 Azure AD Connect Health では、各監視対象サーバーや、監視対象サービスのインスタンスについて、データ収集を停止させることができます。 たとえば、Azure AD Connect Health を使用して監視されている個々の AD FS (Active Directory フェデレーション サービス) サーバーについて、データ収集を停止することもできます。 また、Azure AD Connect Health を使用して監視されている ADFS インスタンス全体について、データ収集を停止することもできます。 これを行った場合は、データ収集が停止された後に、対応するサーバーが Azure AD Connect Health ポータルから削除されます。 
@@ -53,7 +55,7 @@ Azure AD Connect Health では、各監視対象サーバーや、監視対象�
 - 監視対象サービスのインスタンスに属するすべてのデータは、Microsoft Azure のデータ リテンション期間ポリシーに従って削除されます。
 
 ### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>監視対象サーバーのデータ収集と監視を無効にする
-「[Azure AD Connect Health サービスからサーバーを削除するには](active-directory-aadconnect-health-operations.md#to-delete-a-server-from-the-azure-ad-connect-health-service)」をご覧ください。
+「[Azure AD Connect Health サービスからサーバーを削除するには](active-directory-aadconnect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service)」をご覧ください。
 
 ### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>監視対象サービスのインスタンスのデータ収集と監視を無効にする
 「[Azure AD Connect Health サービスからのサービス インスタンスの削除](active-directory-aadconnect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service)」をご覧ください。

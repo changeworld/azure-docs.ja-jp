@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: 314f528a1fcef2c7afb0eedba012023f3bc9502b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 039306b093d92b66883edcca10e42f7b1dbc7245
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-f-developer-reference"></a>Azure Functions F# 開発者向けリファレンス
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -35,7 +35,7 @@ Azure Functions 用 F# は、小規模なコード ("関数") をクラウドで
 Azure 関数に対して `.fsx` を使用すると、一般に必要とされるアセンブリが自動的に含められるため、"定型" コードではなく、関数のコードに集中できます。
 
 ## <a name="binding-to-arguments"></a>引数へのバインド
-「[Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」で詳しく説明されているように、各バインドはいくつかの引数のセットをサポートしています。 たとえば、BLOB トリガーでサポートされている引数バインドの 1 つは、POCO です。これは、F# レコードを使用して表すことができます。 次に例を示します。
+「[Azure Functions のトリガーとバインドの開発者用リファレンス](functions-triggers-bindings.md)」で詳しく説明されているように、各バインドはいくつかの引数のセットをサポートしています。 たとえば、BLOB トリガーでサポートされている引数バインドの 1 つは、POCO です。これは、F# レコードを使用して表すことができます。 例: 
 
 ```fsharp
 type Item = { Id: string }
@@ -49,7 +49,7 @@ F# Azure 関数は、1 つまたは複数の引数を受け取ります。 Azure
 
 上の例では、`blob` が入力引数で、`output` が出力引数です。 `output` に `byref<>` を使用したことに注意してください (`[<Out>]` という注釈を付ける必要はありません)。 `byref<>` 型を使用すると、関数は引数が参照するレコードまたはオブジェクトを変更できます。
 
-F# レコードを入力型として使用する場合は、Azure Functions フレームワークがレコードを関数に渡す前にフィールドを適切に設定できるように、レコード定義を `[<CLIMutable>]` でマークする必要があります。 内部的には、 `[<CLIMutable>]` によってレコードのプロパティのセッターが生成されます。 次に例を示します。
+F# レコードを入力型として使用する場合は、Azure Functions フレームワークがレコードを関数に渡す前にフィールドを適切に設定できるように、レコード定義を `[<CLIMutable>]` でマークする必要があります。 内部的には、 `[<CLIMutable>]` によってレコードのプロパティのセッターが生成されます。 例: 
 
 ```fsharp
 [<CLIMutable>]
@@ -61,7 +61,7 @@ let Run(req: TestObject, log: TraceWriter) =
     { req with Greeting = sprintf "Hello, %s" req.SenderName }
 ```
 
-F# クラスも、入力と出力の両方の引数で使用できます。 クラスの場合、プロパティには通常、ゲッターとセッターが必要です。 次に例を示します。
+F# クラスも、入力と出力の両方の引数で使用できます。 クラスの場合、プロパティには通常、ゲッターとセッターが必要です。 例: 
 
 ```fsharp
 type Item() =
@@ -74,7 +74,7 @@ let Run(input: string, item: byref<Item>) =
 ```
 
 ## <a name="logging"></a>ログの記録
-出力を F# の[ストリーミング ログ](../app-service/web-sites-enable-diagnostic-log.md)に記録するには、関数が `TraceWriter` 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 次に例を示します。
+出力を F# の[ストリーミング ログ](../app-service/web-sites-enable-diagnostic-log.md)に記録するには、関数が `TraceWriter` 型の引数を受け取る必要があります。 一貫性のために、この引数は `log`という名前にすることをお勧めします。 例: 
 
 ```fsharp
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -164,7 +164,7 @@ let Run(req: HttpRequestMessage, log: TraceWriter) =
 プライベート アセンブリを参照する必要がある場合は、アセンブリ ファイルを関数に関連する `bin` フォルダーにアップロードし、ファイル名 (例: `#r "MyAssembly.dll"`) を使用して参照できます。 関数フォルダーにファイルをアップロードする方法については、パッケージ管理の次のセクションを参照してください。
 
 ## <a name="editor-prelude"></a>エディター準備
-F# Compiler Services をサポートしているエディターは、Azure Functions が自動的に含める名前空間とアセンブリを認識しません。 そのため、使用されているアセンブリを検索するエディターを支援するための準備を行い、明示的に名前空間を開くと、便利な場合があります。 次に例を示します。
+F# Compiler Services をサポートしているエディターは、Azure Functions が自動的に含める名前空間とアセンブリを認識しません。 そのため、使用されているアセンブリを検索するエディターを支援するための準備を行い、明示的に名前空間を開くと、便利な場合があります。 例: 
 
 ```fsharp
 #if !COMPILED
@@ -172,7 +172,7 @@ F# Compiler Services をサポートしているエディターは、Azure Funct
 #r "Microsoft.Azure.WebJobs.Host.dll"
 #endif
 
-open Sytem
+open System
 open Microsoft.Azure.WebJobs.Host
 
 let Run(blob: string, output: byref<string>, log: TraceWriter) =
@@ -184,7 +184,7 @@ Azure Functions は、コードを実行するとき、 `COMPILED` が定義さ�
 <a name="package"></a>
 
 ## <a name="package-management"></a>パッケージの管理
-NuGet パッケージを F# 関数で使用するには、 `project.json` ファイルを関数アプリのファイル システムにある関数のフォルダーに追加します。 次に示すのは、`Microsoft.ProjectOxford.Face` Version 1.1.0 への NuGet パッケージ参照を追加する、`project.json` ファイルの例です。
+NuGet パッケージを F# 関数で使用するには、`project.json` ファイルを関数アプリのファイル システムにある関数のフォルダーに追加します。 次に示すのは、`Microsoft.ProjectOxford.Face` Version 1.1.0 への NuGet パッケージ参照を追加する、`project.json` ファイルの例です。
 
 ```json
 {
@@ -238,7 +238,7 @@ let Run(timer: TimerInfo, log: TraceWriter) =
 ```
 
 ## <a name="reusing-fsx-code"></a>.fsx コードの再利用
-他の `.fsx` ファイルのコードを利用するには、`#load` ディレクティブを使用します。 次に例を示します。
+他の `.fsx` ファイルのコードを利用するには、`#load` ディレクティブを使用します。 例: 
 
 `run.fsx`
 
@@ -264,7 +264,7 @@ let mylog(log: TraceWriter, text: string) =
 
 `#load` ディレクティブは、`.fsx` (F# スクリプト) ファイルだけで動作します。`.fs` ファイルでは動作しません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
 * [F# Guide (F# ガイド)](/dotnet/articles/fsharp/index)

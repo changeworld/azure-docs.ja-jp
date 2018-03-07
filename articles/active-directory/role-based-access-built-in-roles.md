@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Actions と NotActions - Azure ロールベースのアクセス制御 (RBAC) | Microsoft Docs"
 description: "このトピックでは、ロール ベースのアクセス制御 (RBAC) の組み込みのロールについて説明します。 ロールは継続的に追加されるので、ドキュメントが最新かどうか確認してください。"
 services: active-directory
@@ -11,15 +11,15 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 01/30/2018
+ms.date: 02/23/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
 ms.custom: it-pro
-ms.openlocfilehash: 82fa6d3f04dc528c0e2d95dae82e7a7f8787ea7c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e49f555b2ae972cd3a0437fc44d2331aaeb5e955
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="built-in-roles-for-azure-role-based-access-control"></a>Azure ロールベースのアクセス制御の組み込みロール
 Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、グループ、サービスに割り当てられる次の組み込みのロールが用意されています。 組み込みのロールの定義は変更できません。 ただし、組織の具体的なニーズに合うように [Azure RBAC のカスタム ロール](role-based-access-control-custom-roles.md) を作成することができます。
@@ -51,6 +51,7 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 | [BizTalk Contributor](#biztalk-contributor) |BizTalk Services を管理できます |
 | [ClearDB MySQL DB Contributor](#cleardb-mysql-db-contributor) |ClearDB MySQL データベースを管理できます |
 | [Contributor](#contributor) |アクセス権以外のすべてを管理できます。 |
+| [Cosmos DB アカウントの閲覧者ロール](#cosmos-db-account-reader-role) |Cosmos DB アカウントのデータを読み取ることができます |
 | [Data Factory Contributor](#data-factory-contributor) |Data Factory と Data Factory に含まれる子リソースを作成および管理できます。 |
 | [DevTest Labs User](#devtest-labs-user) |すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
 | [DNS Zone Contributor](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
@@ -311,6 +312,19 @@ ClearDB MySQL データベースを管理できます
 | --- | --- |
 | Microsoft.Authorization/*/Delete |ロールとロール割り当ては削除できません |
 | Microsoft.Authorization/*/Write |ロールとロール割り当ては作成できません |
+
+### <a name="cosmos-db-account-reader-role"></a>Cosmos DB アカウントの閲覧者ロール
+Cosmos DB アカウントのデータを読み取ることができます。 Azure Cosmos DB アカウントの管理については、「[DocumentDB Account Contributor](#documentdb-account-contributor)」をご覧ください。
+
+| **アクション** |  |
+| --- | --- |
+|Microsoft.Authorization/*/read|ロールとロール割り当ての読み取り (各ユーザーに付与されたアクセス許可を読み取ることができます)|
+|Microsoft.DocumentDB/*/read|任意のコレクションの読み取り|
+|Microsoft.DocumentDB/databaseAccounts/readonlykeys/action|読み取り専用キー ウィンドウの読み取り|
+|Microsoft.Insights/Metrics/read|アカウント メトリックの読み取り|
+|Microsoft.Insights/MetricDefinitions/read|メトリック定義の読み取り|
+|Microsoft.Resources/subscriptions/resourceGroups/read|リソース グループの読み取り|
+|Microsoft.Support/*|サポート チケットの作成と管理|
 
 ### <a name="data-factory-contributor"></a>Data Factory Contributor
 Data Factory と Data Factory に含まれる子リソースを作成および管理します。

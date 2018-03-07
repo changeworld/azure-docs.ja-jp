@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2017
+ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 2d172b22d00f21062237a1af1742bad6a03c864c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -99,7 +99,7 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
    - **[値の名前]**: Kerberos チケットの転送先となる Azure AD URL。
    - **[値]** (データ): **1** (イントラネット ゾーンを示す)
 
-   結果は次のようになります。
+    結果は次のようになります。
 
     値: https://autologon.microsoftazuread-sso.com
   
@@ -129,7 +129,7 @@ Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各
 1. Firefox を実行し、アドレス バーに「`about:config`」と入力します。 表示されているすべての通知を無視します。
 2. **network.negotiate-auth.trusted-uris** の設定を検索します。 この設定は、Kerberos 認証用の Firefox の信頼済みサイトを一覧表示します。
 3. 右クリックして **[変更]** を選択します。
-4. フィールドに「https://autologon.microsoftazuread-sso.com」と「https://aadg.windows.net.nsatc.net」を入力します。
+4. フィールドに「https://autologon.microsoftazuread-sso.com」と入力します。
 5. **[OK]** を選択してから、ブラウザーをもう一度開きます。
 
 #### <a name="safari-mac-os"></a>Safari (Mac OS)
@@ -138,7 +138,7 @@ Mac OS を実行しているコンピューターが Azure AD に参加してい
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
 
-お使いの環境の [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) ポリシー設定または [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ポリシー設定をオーバーライドした場合は、Azure AD の URL (https://autologon.microsoftazuread-sso.com および https://aadg.windows.net.nsatc.net) を必ず追加してください。
+お使いの環境の [AuthNegotiateDelegateWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthNegotiateDelegateWhitelist) ポリシー設定または [AuthServerWhitelist](https://www.chromium.org/administrators/policy-list-3#AuthServerWhitelist) ポリシー設定をオーバーライドした場合は、Azure AD の URL (https://autologon.microsoftazuread-sso.com) を必ず追加してください。
 
 #### <a name="google-chrome-mac-os-only"></a>Google Chrome (Mac OS のみ)
 

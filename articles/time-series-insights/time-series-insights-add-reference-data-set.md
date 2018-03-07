@@ -1,50 +1,94 @@
 ---
-title: "Azure Time Series Insights 環境に参照データ セットを追加する方法 | Microsoft Docs"
-description: "この記事では、Azure Time Series Insights 環境に参照データ セットを追加する方法について説明します。 参照データは、ソース データに結合することにより値を増幅するのに役立ちます。"
+title: "Azure Time Series Insights 環境に参照データ セットを追加する方法"
+description: "この記事では、参照データ セットを追加して、Azure Time Series Insights 環境内のデータを増幅する方法について説明します。"
 services: time-series-insights
 ms.service: time-series-insights
-author: venkatgct
-ms.author: venkatja
-manager: jhubbard
+author: jasonwhowell
+ms.author: jasonh
+manager: kfile
 editor: MicrosoftDocs/tsidocs
-ms.reviewer: v-mamcge, jasonh, kfile, anshan
+ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: article
-ms.date: 11/15/2017
-ms.openlocfilehash: 7cdcefbd0daec3b7bab59680afa1470624583c74
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.date: 02/15/2018
+ms.openlocfilehash: e0d11f253d5aa143ff636c4dc8dff7665a80360e
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境の参照データ セットを作成する
 
 この記事では、Azure Time Series Insights 環境に参照データ セットを追加する方法について説明します。 参照データは、ソース データに結合することにより値を増幅するのに役立ちます。
 
-参照データ セットは、イベント ソースからのイベントによって増幅される項目の集まりです。 イベント ソースから受信したイベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の項目と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されているキーに基づいて行われます。
+参照データ セットは、イベント ソースからのイベントを増幅する項目の集まりです。 イベント ソースから受信した各イベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の対応するデータ行と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されている主キー列に基づいて行われます。
+
+参照データは、遡及的に結合されることはありません。 つまり、データが構成されてアップロードされると、現在および将来のイングレス データのみが対応付けられ、参照日付セットに結合されます。
 
 ## <a name="add-a-reference-data-set"></a>参照データ セットを追加する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. 既存の Time Series Insights 環境を見つけます。 Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックします。 Time Series Insights 環境を選択します。
 
-3. **[Environment Topology] (環境トポロジ)** 見出しで、**[Reference Data Sets] (参照データ セット)** を選択します。
+3. **[概要]** ページを選択します。 **[Time Series Insights エクスプローラーの URL]** を見つけ、リンクを開きます。  
 
-    ![Time Series Insights の参照データ セットの作成](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
+   TSI 環境のエクスプローラーを参照します。
 
-4. **[+ 追加]** を選択して、新しい参照データ セットを追加します。
+4. TSI エクスプローラーで、環境セレクターを展開します。 アクティブな環境を選択します。 エクスプローラー ページの右上にある参照データ アイコンを選択します。
 
-5. 一意の**参照データ セットの名前**を指定します。
+   ![参照データの追加](media/add-reference-data-set/add_reference_data.png)
 
-    ![Time Series Insights の参照データ セットの作成 - 詳細](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
+5. **[+ データ セットの追加]** ボタンをクリックして、新しいデータ セットの追加を開始します。
 
-6. 空のフィールドに**キー名**を指定し、その**型**を選択します。 この名前と型は、参照データに結合するため、イベント ソース内のイベントから正しいプロパティを選択するために使用されます。 
+   ![データ セットの追加](media/add-reference-data-set/add_data_set.png)
 
-   たとえば、キー名を **DeviceId**、型を**文字列**として指定した場合、検索して結合する各受信イベントで、Time Series Insights のイングレス エンジンは**文字列**型の **DeviceId** という名前のプロパティを探します。 複数のキーを指定して、イベントと結合させることができます。 キー名を突き合わせる際は、大文字と小文字が区別されます。
+6. **[新しい参照データ セット]** ページで、データの形式を選択します。 
+   - **[CSV]**(コンマ区切りのデータ) を選択します。 最初の行は、ヘッダー行として扱われます。 
+   - **[JSON 配列]**(javascript オブジェクト表記法 (JSON) 形式のデータ) を選択します。
 
-7. **[作成]**を選択します。
+   ![データ形式を選択します。](media/add-reference-data-set/add_data.png)
 
-## <a name="next-steps"></a>次のステップ
+7. 次のいずれかの方法を使用して、データを指定します。
+   - データをテキスト エディターに貼り付けます。 その後、**[参照データの解析]** ボタンをクリックします。
+   - **[ファイルの選択]** ボタンをクリックして、ローカル テキスト ファイルからデータを追加します。 
+
+   たとえば、CSV データを貼り付けます。![貼り付けられた CSV データ](media/add-reference-data-set/csv_data_pasted.png)
+
+   たとえば、JSON 配列データを貼り付けます。![JSON データを貼り付ける](media/add-reference-data-set/json_data_pasted.png)
+
+   データ値の解析中にエラーが発生した場合は、ページの下部に赤色でエラーが表示されます (たとえば、`CSV parsing error, no rows extracted`)。
+
+8. データが正常に解析されると、データ グリッドが表示され、データを表す行と列が表示されます。  データ グリッドをレビューし、内容が正しいこと確認してください。
+
+   ![参照データの追加](media/add-reference-data-set/parse_data.png)
+
+9. 各列をレビューして、仮定されたデータ型を確認し、必要であればデータ型を変更します。  列見出しにあるデータ型のシンボルを選択します。**#** はdouble (数値データ)、**T|F** はブール型、**Abc** は文字列を表します。
+
+   ![列見出しでデータ型を選択します。](media/add-reference-data-set/choose_datatypes.png)
+
+10. 必要であれば、列見出しの名前を変更します。 キー列の名前は、イベント ソース内の対応するプロパティに結合させるために必要です。 参照データのキー列名が、大文字小文字の区別も含め、受信データへのイベント名と正確に一致することを確認してください。 非キー列の名前は、受信データを対応する参照データの値で増幅するために使用されます。
+
+11. 必要であれば、**[行の追加]** または **[列の追加]** をクリックして参照データの値を追加します。
+
+12. 必要であれば、**[Filter the rows...]\(行をフィルター...\)** フィールドに値を入力して、特定の行をレビューします。 フィルターはデータをレビューするのに便利ですが、データのアップロード中には適用されません。
+ 
+13. データ グリッドの上の **[データ セット名]** フィールドに値を入力して、データ セットに名前を付けます。
+
+   ![データ セットに名前を付けます。](media/add-reference-data-set/name_reference_dataset.png)
+
+14. データ グリッドの上にあるドロップダウン リストを選択して、データ セット内の **[主キー]** 列を指定します。
+
+   ![キー列を選択します。](media/add-reference-data-set/set_primary_key.png)
+
+   必要であれば、**[+]** ボタンをクリックして、セカンダリ キー列を (複合主キーとして) 追加します。 選択を元に戻す必要がある場合は、ドロップダウン リストから空の値を選択して、セカンダリ キーを削除します。
+
+15.  データをアップロードするには、**[アップロード]** ボタンをクリックします。
+
+   ![アップロード](media/add-reference-data-set/upload_rows.png)
+
+   完了したアップロードが確認され、**[データセットが正常にアップロードされました]** というメッセージが表示されます。
+
+## <a name="next-steps"></a>次の手順
 * プログラムで[参照データを管理](time-series-insights-manage-reference-data-csharp.md)する。
 * 詳細な API リファレンスについては、[参照データ API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) に関するドキュメントを参照してください。

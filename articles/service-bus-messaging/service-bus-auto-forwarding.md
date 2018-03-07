@@ -12,19 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/08/2017
+ms.date: 02/22/2018
 ms.author: sethm
-ms.openlocfilehash: 6c92acee9d7609f4fedcddd40563b1a55fa08fac
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: be23d919b0c96d6c9b96ee328d1b18ad978a9dcc
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="chaining-service-bus-entities-with-auto-forwarding"></a>自動転送を使用した Service Bus エンティティのチェーン
 
 Service Bus の*自動転送*機能を使用すると、キューまたはサブスクリプションを同じ名前空間に属する別のキューまたはトピックにチェーンできます。 自動転送が有効な場合は、Service Bus は、一方のキューまたはサブスクリプション (転送元) にあるメッセージを自動的に削除し、もう一方のキューまたはトピック (転送先) に追加します。 ここで、転送先エンティティにメッセージを直接送信できることに注意してください。 配信不能キューなどのサブキューを別のキューまたはトピックにチェーンすることはできません。
 
 ## <a name="using-auto-forwarding"></a>自動転送の使用
+
 ソースの [QueueDescription][QueueDescription] オブジェクトまたは [SubscriptionDescription][SubscriptionDescription] オブジェクトの [QueueDescription.ForwardTo][QueueDescription.ForwardTo] または [SubscriptionDescription.ForwardTo][SubscriptionDescription.ForwardTo] プロパティを、次の例のように設定することにより自動転送を有効にできます。
 
 ```csharp
@@ -55,7 +56,7 @@ Service Bus では、メッセージの転送ごとに 1 操作を請求しま�
 
 別のキューまたはトピックにチェーンされているサブスクリプションを作成するには、サブスクリプションの作成者は、転送元エンティティと転送先エンティティの両方に対する**管理**アクセス許可が必要です。 転送元トピックにメッセージを送信する場合は、転送元トピックに対する**送信**アクセス許可のみが必要です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 自動転送の詳細については、次のリファレンス トピックを参照してください。
 

@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 11/08/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5657df412b1f2b7d4d43d7551289620ae4d77de2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ecf77a614922ef58cdfb2b2c8174f66e01ea9b46
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>ハイブリッド Azure Active Directory 参加済みダウンレベル デバイスのトラブルシューティング 
 
@@ -55,7 +55,6 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
 
 - オペレーティング システムの再インストールまたは手動での登録解除と再登録により、Azure AD に新しい登録が作成されることがあります。この場合、Azure Portal の [ユーザー情報] タブに複数のエントリが表示されます。 
 
-
 ## <a name="step-1-retrieve-the-registration-status"></a>手順 1: 登録状態を取得する 
 
 **登録状態を確認するには:**  
@@ -87,13 +86,14 @@ Windows 10 または Windows Server 2016 については、「[Windows 10 と Wi
     
     1. サインインしているユーザーがドメイン ユーザーでない場合 (ローカル ユーザーなど)。 ダウンレベルのデバイスでのハイブリッド Azure AD 参加は、ドメイン ユーザーに対してのみサポートされています。
     
-    2. 何らかの理由で Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 原因としては、Azure AD URL への送信ネットワーク接続の問題 (前提条件を確認してください) や、ユーザーに対して MFA が有効化/構成されていてもフェデレーション サーバーで WIAORMUTLIAUTHN が構成されていないこと (構成手順を確認してください) などが考えられます。 また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、Autoworkplace.exe では、自動的にトークンを取得できなくなっていることも考えられます。 
+    2. 何らかの理由で Autoworkplace.exe が Azure AD または AD FS で自動的に認証できない場合。 原因としては、Azure AD URL への送信ネットワーク接続の問題 (前提条件を確認してください) や、ユーザーに対して MFA が有効化/構成されていてもフェデレーション サーバーで WIAORMUTLIAUTHN が構成されていないこと (構成手順を確認してください) などが考えられます。 また、ホーム領域検出 (HRD) ページがユーザーの操作を待っているため、Autoworkplace.exe では、自動的にトークンを取得できなくなっていることも考えられます。
     
     3. 組織で Azure AD シームレス シングル サインオンを使用している場合、次の URL はデバイスの IE イントラネット設定に表示されません。
-    - https://autologon.microsoftazuread-sso.com
-    - https://aadg.windows.net.nsatc.net
     
-    また、イントラネット ゾーンの [スクリプトを介したステータス バーの更新を許可する] 設定を有効にする必要があります。
+       - https://autologon.microsoftazuread-sso.com
+       - https://aadg.windows.net.nsatc.net
+    
+       また、イントラネット ゾーンの [スクリプトを介したステータス バーの更新を許可する] 設定を有効にする必要があります。
 
 - クォータに達している
 

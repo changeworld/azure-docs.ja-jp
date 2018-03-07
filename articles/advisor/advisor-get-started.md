@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/10/2017
 ms.author: makohli
-ms.openlocfilehash: d15f91c91281eae28ddaff52af3ee8e617f142c1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5a7864597e50294c8e1227cbab7a3be73dde0a7f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="get-started-with-azure-advisor"></a>Azure Advisor の使用を開始する
 
@@ -66,17 +66,17 @@ Advisor の推奨事項を選択して、詳細 (推奨されるアクション�
 
     ![Advisor 検索フィルターの条件](./media/advisor-get-started/advisor-filters.png)
 
-## <a name="snooze-or-dismiss-advisor-recommendations"></a>Advisor 推奨事項の再通知または無視
+## <a name="postpone-or-dismiss-advisor-recommendations"></a>Advisor 推奨事項の延期または無視
 
 1. [Azure Portal](https://portal.azure.com) にサインインし、[Advisor](https://aka.ms/azureadvisordashboard) を開きます。
 
-2. 再通知または無視する推奨事項に移動します。
+2. 延期または無視する推奨事項に移動します。
 
 3. 推奨事項をクリックします。
 
-4. **[再通知]** をクリックします。 
+4. **[延期]** をクリックします。 
 
-5. 再通知期間を指定するか、**[Never]** を選択して推奨事項を無視します。
+5. 延期期間を指定するか、**[Never]** を選択して推奨事項を無視します。
 
 ## <a name="exclude-subscriptions-or-resource-groups-from-advisor"></a>サブスクリプションまたはリソース グループを Advisor から除外する
 

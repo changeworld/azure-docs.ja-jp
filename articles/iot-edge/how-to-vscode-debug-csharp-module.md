@@ -9,11 +9,11 @@ ms.author: xshi
 ms.date: 12/06/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 46d9ca0bf6c9ddf95c147fc2eb62d275c973845e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5ed517cf8d70cd279a55b79ad448709116cf511b
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge で C# モジュールをデバッグする
 この記事では、主要開発ツールとして [Visual Studio Code](https://code.visualstudio.com/) を使用して、Azure IoT Edge モジュールをデバッグする手順について詳しく説明します。
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/01/2018
 
 3. **[フォルダーの選択]** ウィンドウで、**./bin/Debug/netcoreapp2.0/publish** を参照するか入力します。 次に、**[Select Folder as EXE_DIR]\(EXE_DIR としてフォルダーを選択\)** を選択します。
 4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 たとえば、「 `<your container registry address>/filtermodule:latest`」のように入力します。 ローカル レジストリにデプロイする場合は、`localhost:5000/filtermodule:latest` のようになります。
-5. イメージを Docker リポジトリにプッシュします。 **[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** コマンドを使用して、VS Code ウィンドウの上部にあるポップアップ テキスト ボックスにイメージの URL を入力します。 前の手順で使用したのと同じイメージの URL を使用してください。
+5. イメージを Docker リポジトリにプッシュします。 **[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** コマンドを使用し、VS Code ウィンドウの上部にあるポップアップ テキスト ボックスにイメージの URL を入力します。 前の手順で使用したのと同じイメージの URL を使用してください。
 6. `deployment.json` を再利用して再デプロイできます。 コマンド パレットで、「**Edge: Restart Edge\(Edge: Edge の再起動\)**」と入力して選択し、フィルター モジュールをデバッグ バージョンで実行します。
 
 ## <a name="start-debugging-in-vs-code"></a>VS Code でデバッグを開始する
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/01/2018
 
 2. `launch.json` で、**[Debug IoT Edge Custom Module (.NET Core)]\(IoT Edge カスタム モジュールのデバッグ (.NET Core)\)** セクションに移動します。 **[pipeArgs]** で、`<container_name>` を入力します。 このチュートリアルでは `filtermodule` になります。
 
-    ![VS Code デバッグ ウィンドウのスクリーンショット](./media/how-to-debug-csharp-module/f5-debug-option.png)
+    ![VS Code launch.json のスクリーンショット](./media/how-to-debug-csharp-module/add-container-name.png)
 
 3. **Program.cs** に移動します。 `method static async Task<MessageResponse> FilterModule(Message message, object userContext)` にブレークポイントを追加します。
 4. もう一度 **F5** を押し、アタッチ先のプロセスを選択します。 このチュートリアルでは、プロセス名は `FilterModule.dll` になります。

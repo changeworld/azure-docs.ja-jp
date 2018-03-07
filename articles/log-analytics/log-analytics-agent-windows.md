@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/14/2017
+ms.date: 02/22/2018
 ms.author: magoedte
-ms.openlocfilehash: 87513ef82b5f754669a3a21dd736ecab6fb26fba
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3bb023cfd94c7b87550d692101d30f922de80bf9
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="connect-windows-computers-to-the-log-analytics-service-in-azure"></a>Windows コンピューターを Azure の Log Analytics サービスに接続する
 
@@ -26,28 +26,28 @@ Log Analytics を使用して、ローカル データ センターやその他�
 
 監視対象の Windows コンピューターでは、エージェントは Microsoft Monitoring Agent サービスとしてリストされます。 Microsoft Monitoring Agent サービスは、ログ ファイル、Windows イベント ログ、パフォーマンス データ、およびその他のテレメトリからイベントを収集します。 エージェントは、レポート送信先の Log Analytics サービスと通信できないときにも常時実行され、収集したデータを監視対象コンピューターのディスク キューに配置します。 接続が復元されると、Microsoft Monitoring Agent サービスは収集したデータをサービスに送信します。
 
-エージェントは、次のいずれかの方法を使用してインストールされます。 多くの場合は、これらのメソッドを必要に応じて組み合わせて使用し、さまざまなコンピューターをインストールします。
+エージェントは、次のいずれかの方法を使用してインストールされます。 多くの場合は、これらのメソッドを必要に応じて組み合わせて使用し、さまざまなコンピューターをインストールします。  各メソッドの使い方の詳細については、記事の後半で説明します。
 
 * 手動インストール。 セットアップ ウィザード、コマンドライン、または既存のソフトウェア配布ツールを使用して、コンピューター上でセットアップを手動で実行します。
 * Azure Automation Desired State Configuration (DSC)。 Azure Automation 内の DSC と、環境内に既にデプロイされている Windows コンピューター用のスクリプトを使用します。  
 * PowerShell スクリプト。
 * Azure Stack 内のオンプレミスで Windows を実行している仮想マシン用の、Resource Manager テンプレートです。  
 
-Windows エージェントをデプロイするためのネットワークとシステムの要件を理解するには、「[Collect data from your environment with Azure Log Analytics (Azure Log Analytics を使用した環境からのデータ収集)](log-analytics-concept-hybrid.md#prerequisites)」を参照してください。
+Windows エージェントをデプロイするためのネットワークとシステムの要件を理解するには、[Windows コンピューターの前提条件](log-analytics-concept-hybrid.md#prerequisites)を参照してください。
 
 ## <a name="obtain-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
-Microsoft Monitoring Agent for Windows をインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントを Log Analytics と正常に通信できるようにするために必要です。  
+Microsoft Monitoring Agent for Windows をインストールする前に、Log Analytics ワークスペースのワークスペース ID とキーが必要です。  この情報は、各インストール方法を通じたセットアップ時に、エージェントを適切に構成し、そのエージェントが Azure の商用クラウドや米国政府機関向けクラウド内にある Log Analytics と正常に通信できるようにするために必要です。  
 
 1. Azure Portal で、**[すべてのサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、エージェントのレポート送信先にするワークスペースを選択します。
 3. **[詳細設定]** を選択します。<br><br> ![Log Analytics の詳細設定](media/log-analytics-quick-collect-azurevm/log-analytics-advanced-settings-01.png)<br><br>  
 4. **[接続されたソース]**、**[Windows サーバー]** の順に選択します。   
-5. **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。 両方をコピーしてお使いのエディターに貼り付けます。   
+5. **ワークスペース ID**と**主キー**をコピーして、好みのエディターに貼り付けます。    
    
-## <a name="install-the-agent-using-setup"></a>セットアップを使用してエージェントをインストールする
-次の手順に従って、コンピューターで Microsoft Monitoring Agent の設定を使用する Azure クラウドと Azure Government クラウドに Log Analytics のエージェントをインストールして構成します。  エージェントのセットアップ プログラムは、ダウンロードしたファイル内に含まれています。これを抽出し、次の手順を実行します 
+## <a name="install-the-agent-using-setup-wizard"></a>セットアップ ウィザードを使用してエージェントをインストールする
+次の手順では、コンピューター上の Microsoft Monitoring Agent 用のセットアップ ウィザードを使用して、Azure クラウドと Azure Government クラウド内にある Log Analytics 用のエージェントをインストールし、構成します。  
 
-1. **[Windows サーバー]** ページの **[Windows エージェントのダウンロード]** で、Windows オペレーティング システムのプロセッサ アーキテクチャに応じた適切なバージョンを選択します。
+1. Log Analyics ワークスペースで、先の手順で移動した **[Windows サーバー]** ページの **[Windows エージェントのダウンロード]** から、Windows オペレーティング システムのプロセッサ アーキテクチャに応じた適切なバージョンを選択します。   
 2. セットアップを実行して、コンピューターにエージェントをインストールします。
 2. **[ようこそ]** ページで **[次へ]** をクリックします。
 3. **[ライセンス条項]** ページの記述内容を確認し、**[同意する]** をクリックします。
@@ -63,7 +63,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 完了すると、**コントロール パネル**に **Microsoft Monitoring Agent** が表示されます。 Log Analytics にレポートが送信されていることを確認する方法については、「[Log Analytics へのエージェント接続を確認する](#verify-agent-connectivity-to-log-analytics)」をご覧ください。 
 
 ## <a name="install-the-agent-using-the-command-line"></a>コマンド ラインを使用してエージェントをインストールする
-ダウンロードしたエージェント ファイルは、IExpress で作成された自己完結型インストール パッケージです。  パッケージにはエージェントとサポート ファイルのセットアップ プログラムが含まれており、次の例に示すようにコマンドラインを使用して正しくインストールするためには、それらを抽出する必要があります。  この方法を使用する場合は、Azure の商用および米国政府機関向けクラウドを、エージェントのレポート送信先として構成することができます。  
+ダウンロードしたエージェント ファイルは、IExpress で作成された自己完結型インストール パッケージです。  パッケージにはエージェントとサポート ファイルのセットアップ プログラムが含まれており、次の例に示すようにコマンドラインを使用して正しくインストールするためには、それらを抽出する必要があります。    
 
 >[!NOTE]
 >エージェントをアップグレードするには、Log Analytics スクリプト API を使用する必要があります。 詳しくは、「[Windows および Linux での Log Analytics エージェントの管理とメンテナンス](log-analytics-agent-manage.md)」をご覧ください。
@@ -84,13 +84,13 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
 2. エージェントをサイレント モードでインストールし、Azure の商用クラウド内のワークスペースにレポートを送信するように構成するには、セットアップ ファイルを抽出したフォルダーから、次のコマンドを入力します。 
    
      ```dos
-    setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=0 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
    Azure の米国政府機関向けクラウドをエージェントのレポート送信先として構成するには、次のコマンドを入力します。 
 
      ```dos
-    setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
+    setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_AZURE_CLOUD_TYPE=1 OPINSIGHTS_WORKSPACE_ID=<your workspace id> OPINSIGHTS_WORKSPACE_KEY=<your workspace key> AcceptEndUserLicenseAgreement=1
     ```
 
 ## <a name="install-the-agent-using-dsc-in-azure-automation"></a>Azure Automation の DSC を使用してエージェントをインストールする
@@ -122,6 +122,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
         $OPSINSIGHTS_WS_KEY = Get-AutomationVariable -Name "OPSINSIGHTS_WS_KEY"
 
         Import-DscResource -ModuleName xPSDesiredStateConfiguration
+        Import-DscResource –ModuleName PSDesiredStateConfiguration
 
         Node OMSnode {
             Service OIService
@@ -141,7 +142,7 @@ Microsoft Monitoring Agent for Windows をインストールする前に、Log A
                 Path  = $OIPackageLocalPath
                 Name = "Microsoft Monitoring Agent"
                 ProductId = "8A7F2C51-4C7D-4BFD-9014-91D11F24AAE2"
-                Arguments = '/C:Deploy"setup.exe /qn ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
+                Arguments = '/C:"setup.exe /qn NOAPM=1 ADD_OPINSIGHTS_WORKSPACE=1 OPINSIGHTS_WORKSPACE_ID=' + $OPSINSIGHTS_WS_ID + ' OPINSIGHTS_WORKSPACE_KEY=' + $OPSINSIGHTS_WS_KEY + ' AcceptEndUserLicenseAgreement=1"'
                 DependsOn = "[xRemoteFile]OIPackage"
             }
         }
