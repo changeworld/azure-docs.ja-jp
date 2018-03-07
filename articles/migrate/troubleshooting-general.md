@@ -4,13 +4,13 @@ description: "Azure Migrate サービスの既知の問題についての概要�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
-ms.date: 12/12/2017
+ms.date: 02/21/2018
 ms.author: raynew
-ms.openlocfilehash: 1fcc9e12e63eda73d53ae2085bc2a64d31ea2067
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 249de45dbd9bedf1b3c2d2a5957acf31d6c0d243
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -31,7 +31,7 @@ URL ベースのファイアウォール プロキシを使用して送信接続
 
 **ポータルからコピーしたプロジェクト ID とキーを使用しても、コレクターがプロジェクトに接続できません。**
 
-情報を正しくコピーして貼り付けたかどうかを確認してください。 トラブルシューティングのために、次の手順で Microsoft Monitoring Agent (MMA) をインストールします。
+情報を正しくコピーして貼り付けたかどうかを確認してください。 この問題を解決するには、Microsoft Monitoring Agent (MMA) をインストールし、次のように MMA がプロジェクトに接続できるかどうかを確認します。
 
 1. コレクター VM 上に、[MMA](https://go.microsoft.com/fwlink/?LinkId=828603) をダウンロードします。
 2. インストールを開始するには、ダウンロードしたファイルをダブルクリックします。
@@ -69,9 +69,9 @@ URL ベースのファイアウォール プロキシを使用して送信接続
 
 **問題** | **解決策**
 --- | ---
-ブートの種類がサポートされていません | 移行を実行する前に BIOS を変更します。
+サポートされていないブートの種類 | Azure では、ブートの種類が EFI の VM はサポートされません。 移行を実行する前に、ブートの種類を BIOS に変換することをお勧めします。 <br/><br/>[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/tutorial-migrate-on-premises-to-azure) を使用すると、移行中に VM のブートの種類が BIOS に変換される、このような VM の移行を行うことができます。
 ディスクの数が制限を超えています | 移行前に、マシンから未使用のディスクを削除します。
-ディスクのサイズが制限を超えています | 移行前に、ディスクを 4 TB 未満に縮小します。 
+ディスクのサイズが制限を超えています | Azure は最大 4 TB のディスクをサポートしています。 移行前に、ディスクを 4 TB 未満に縮小します。 
 指定した場所でディスクを使用できません | 移行前に、ディスクがターゲットの場所にあることを確認します。
 指定した冗長性でディスクを使用できません | 評価の設定 (既定では LRS) で定義されているストレージの冗長性の種類をディスクで使用する必要があります。
 内部エラーが原因でディスクの適合性を決定できませんでした | そのグループの評価を新しく作成してみます。 
@@ -83,12 +83,15 @@ URL ベースのファイアウォール プロキシを使用して送信接続
 内部エラーが原因で 1 つ以上のネットワーク アダプターの適合性を決定できませんでした。 | そのグループの評価を新しく作成してみます。
 必要なストレージ パフォーマンスの VM が見つかりませんでした。 | そのマシンに必要なストレージ パフォーマンス (IOPS/スループット) が Azure VM のサポート範囲を超えています。 移行前に、そのマシンのストレージ要件を緩和します。
 必要なネットワーク パフォーマンスの VM が見つかりませんでした。 | そのマシンに必要なネットワーク パフォーマンス (入力/出力) が Azure VM のサポート範囲を超えています。 そのマシンのネットワーク要件を緩和します。 
-指定した価格レベルの VM が見つかりませんでした。 | 価格レベルの設定を確認します。 
+指定された価格レベルの VM が見つかりません。 | 価格レベルが Standard に設定されている場合、Azure に移行する前に VM のサイズを小さくすることを検討してください。 サイズのレベルが Basic の場合、アセスメントの価格レベルを Standard に変更することを検討してください。 
 指定した場所で VM が見つかりませんでした。 | 移行前に、別のターゲットの場所を指定します。
-Linux OS のサポートに関する問題 | サポートされている 64 ビットの[オペレーティング システム](../virtual-machines/linux/endorsed-distros.md)を実行していることを確認します。
-Windows OS のサポートに関する問題 | サポートされているオペレーティング システムを実行していることを確認します。 [詳細情報](concepts-assessment-calculation.md#azure-suitability-analysis)
-オペレーティング システムが不明です。 | vCenter で指定したオペレーティング システムが正しいことを確認し、検出プロセスを繰り返します。
-Visual Studio サブスクリプションが必要です。 | Windows クライアント オペレーティング システムは、Visual Studio (MSDN) サブスクリプションでのみサポートされます。
+オペレーティング システムが不明です | vCenter Server で VM のオペレーティング システムが [その他] に指定されました。そのため、Azure Migrate は VM の Azure 対応性を識別できません。 マシンを移行する前に、マシン内で実行されている OS が Azure によって[サポートされている](https://aka.ms/azureoslist)ことを確認してください。
+条件付きでサポートされる Windows OS | この OS はサポート期間が終了しており、Azure のサポートのためには[カスタム サポート契約 (CSA)](https://aka.ms/WSosstatement) が必要です。Azure に移行する前に OS をアップグレードすることを検討してください。
+サポートされていない Windows OS | Azure は[一部の Windows OS バージョン](https://aka.ms/WSosstatement)のみをサポートしています。Azure に移行する前にマシンの OS をアップグレードすることを検討してください。 
+条件付きで動作が保証されている Linux OS | Azure は[一部の Linux OS バージョン](../virtual-machines/linux/endorsed-distros.md)のみの動作を保証しています。Azure に移行する前にマシンの OS をアップグレードすることを検討してください。
+動作が保証されていない Linux OS | マシンは Azure で起動する可能性はありますが、Azure でサポートされている OS はありません。Azure に移行する前に OS を[動作保証済みの Linux バージョン](../virtual-machines/linux/endorsed-distros.md)にアップグレードすることを検討してください
+サポートされていないビット数版の OS | 32 ビット版 OS の VM は Azure で起動する可能性はありますが、Azure に移行する前に、VM の OS を 32 ビット版から 64 ビット版にアップグレードすることをお勧めします。
+Visual Studio サブスクリプションが必要です。 | マシン内で、Visual Studio サブスクリプションでのみサポートされている Windows クライアント OS が実行されています。
 
 
 ## <a name="collect-logs"></a>ログの収集

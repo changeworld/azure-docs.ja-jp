@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: e4c875d07905b56c0d3eb346c839f7a4917531de
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 82a0a336e8315d7fe9862e22e47a6847f94bfcb1
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Linux 仮想マシンの作成
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
 * **Ubuntu 16.04**: 4.11.0-1013 以上のカーネル バージョン
-* **SLES SP3**: 4.4.92-6.18 以上のカーネル バージョン
+* **SLES 12 SP3**: 4.4.92-6.18 以上のカーネル バージョン
 * **RHEL 7.4**: 7.4.2017120423 以上のカーネル バージョン
 * **CentOS 7.4**: 7.4.20171206 以上のカーネル バージョン
 

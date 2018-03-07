@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: bradsev
-ms.openlocfilehash: 6d9df88d6047fbe674c216dacc6fa01bad8451ec
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 593df249429bf1dcc5a59312830ed78f7cf642e8
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Hive テーブルを作成して Azure Blob Storage からデータを読み込む
 このトピックでは Hive テーブルを作成し、Azure Blob Storage からデータを読み込む汎用の Hive クエリを紹介しています。 Hive テーブルをパーティション分割する方法や、Optimized Row Columnar (ORC) 形式を使用してクエリのパフォーマンスを向上させる方法についてのガイダンスも提供されます。
@@ -77,14 +77,14 @@ Hadoop コマンド ラインで Hive クエリを送信する場合、次の 3 
 
     hive -f "<path to the .hql file>"
 
-![Create workspace](./media/move-hive-tables/run-hive-queries-3.png)
+![ワークスペースの作成](./media/move-hive-tables/run-hive-queries-3.png)
 
 **Hive クエリの進行状況ステータス画面の出力を抑制する**
 
 既定では、Hadoop コマンド ラインで Hive クエリを送信した後に、マップ/縮小ジョブの進行状況が画面に出力されます。 マップ/縮小ジョブの進捗の画面出力を抑制するには、次のように、コマンド ラインで引数 `-S` ("S" は大文字) を使用します。
 
     hive -S -f "<path to the .hql file>"
-をクリックします。    hive -S -e "<Hive queries>"
+が必要です。    hive -S -e "<Hive queries>"
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Hive コマンド コンソールで Hive クエリを送信する。
 Hadoop コマンド ラインで `hive` コマンドを実行すると、まず Hive コマンド コンソールに入力できるようになります。その後、Hive コマンド コンソールで Hive クエリを送信します。 たとえば次のようになります。 この例では、2 つの赤いボックスは、それぞれ Hive コマンド コンソールに入るために使用するコマンドと、Hive コマンド コンソールで送信された Hive クエリを強調表示しています。 緑色のボックスは、Hive クエリからの出力を強調表示しています。
@@ -110,14 +110,14 @@ Hive クエリの結果は、Hadoop クラスターの既定のコンテナー�
 
 次の例では、Hive クエリの出力が、Hadoop クラスターの既定のコンテナー内にある BLOB ディレクトリ `queryoutputdir` に書き込まれます。 ここでは、ディレクトリ名のみを指定する必要があります (BLOB 名は必要ありません)。 `wasb:///queryoutputdir/queryoutput.txt`のようにディレクトリ名と BLOB 名の両方を指定すると、エラーがスローされます。
 
-![Create workspace](./media/move-hive-tables/output-hive-results-2.png)
+![ワークスペースの作成](./media/move-hive-tables/output-hive-results-2.png)
 
 Azure ストレージ エクスプローラーを使用して Hadoop クラスターの既定のコンテナーを開くと、Hive クエリの出力が次の図のように表示されます。 フィルター (赤色の四角形によって示されています) を適用して、名前に指定された文字を持つ BLOB のみを取得できます。
 
 ![ワークスペースの作成](./media/move-hive-tables/output-hive-results-3.png)
 
 ### <a name="hive-editor"></a> 2.Hive エディターで Hive クエリを送信する
-*https://&#60;Hadoop クラスター名>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。 このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
+*https://<Hadoop cluster name>.azurehdinsight.net/Home/HiveEditor* の形式の URL を Web ブラウザーに入力することで、クエリ コンソール (Hive エディター) を使用することもできます。 このコンソールにログインする必要があるので、Hadoop クラスターの資格情報が必要になります。
 
 ### <a name="ps"></a> 3.Azure PowerShell コマンドで Hive クエリを送信する
 PowerShell を使用して Hive クエリを送信することもできます。 手順については、「 [PowerShell を使用して Hive ジョブを送信する](../../hdinsight/hadoop/apache-hadoop-use-hive-powershell.md)」を参照してください。
@@ -142,11 +142,11 @@ Hive テーブルを作成する Hive クエリを次に示します。
 
 接続する必要があるフィールドと他の構成の説明を次に示します。
 
-* **&#60;データベース名>**: 作成するデータベースの名前。 既定のデータベースを使用する場合、 *create database...* クエリは省略してかまいません。
-* **&#60;テーブル名>**: 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *&#60;テーブル名>* で直接参照でき、&#60;データベース名> は不要です。
-* **&#60;フィールド区切り記号>**: Hive テーブルにアップロードするデータ ファイル内のフィールドを区切る区切り記号。
-* **&#60;行区切り記号>**: データ ファイル内の行を区切る区切り記号。
-* **&#60;ストレージの場所>**: Hive テーブルのデータを保存する Azure Sorage の場所。 *LOCATION &#60;ストレージの場所>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、*'wasb:///&#60;ディレクトリ 1>/'* や *'wasb:///&#60;directory 1>/&#60;ディレクトリ 2>/'* などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
+* **<database name>**: 作成するデータベースの名前。 既定のデータベースを使用する場合、 *create database...* クエリは省略してかまいません。
+* **<table name>**: 指定したデータベース内に作成するテーブルの名前。 既定のデータベースを使用する場合、テーブルは *<table name>* で直接参照でき、<database name> は不要です。
+* **<field separator>**: Hive テーブルにアップロードするデータ ファイルのフィールドを区切る区切り記号。
+* **<line separator>**: データ ファイル内の行を区切る区切り記号。
+* **<storage location>**: Hive テーブルのデータを保存する Azure Sorage の場所。 *LOCATION <storage location>* を指定しなかった場合、既定では、データベースとテーブルは、Hive クラスターの既定のコンテナー内の *hive/warehouse/* ディレクトリに格納されます。 ストレージの場所を指定する場合、ストレージの場所は、データベースとテーブルの既定のコンテナー内でなければなりません。 この場所は、クラスターの既定のコンテナーを基準として、"*'wasb:///<ディレクトリ 1>/'*" や "*'wasb:///<ディレクトリ 1>/<ディレクトリ 2>/'*" などの形式で参照する必要があります。クエリが実行されると、既定のコンテナー内に相対ディレクトリが作成されます。
 * **TBLPROPERTIES("skip.header.line.count"="1")**: データ ファイルにヘッダー行が含まれる場合は、このプロパティを *create table* クエリの**最後に**追加する必要があります。 それ以外の場合、ヘッダー行はレコードとしてテーブルに読み込まれます。 データ ファイルにヘッダー行が含まれない場合は、クエリでこの構成を省略することができます。
 
 ## <a name="load-data"></a>Hive テーブルへのデータの読み込み
@@ -154,7 +154,7 @@ Hive テーブルにデータを読み込む Hive クエリを次に示します
 
     LOAD DATA INPATH '<path to blob data>' INTO TABLE <database name>.<table name>;
 
-* **&#60;BLOB データのパス>**: Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*&#60;BLOB データのパス>* は *'wasb:///&#60;このコンテナー内のディレクトリ>/&#60;BLOB ファイル名>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、 *&#60;データのパス>* は *'wasb://&#60;container name>@&#60;ストレージ アカウント名>.blob.core.windows.net/&#60;BLOB ファイル名>'* の形式にする必要があります。
+* **<path to blob data>**: Hive テーブルにアップロードする BLOB ファイルが HDInsight Hadoop クラスターの既定のコンテナーに存在する場合、*<path to blob data>* は *'wasb:///<directory in this container>/<blob file name>'* の形式にする必要があります。 BLOB ファイルは、HDInsight Hadoop クラスターの追加コンテナーに配置することもできます。 この場合、*<path to blob data>* は、*'wasb://<container name><storage account name>.blob.core.windows.net/<blob file name>'* の形式である必要があります。
 
   > [!NOTE]
   > Hive テーブルにアップロードする BLOB データは、Hadoop クラスターのストレージ アカウントの既定のコンテナーまたは追加のコンテナーに配置されている必要があります。 それ以外の場合、 *LOAD DATA* クエリはデータにアクセスできないために失敗します。
@@ -221,7 +221,7 @@ ORC 形式で格納されているデータを BLOB ストレージから Hive �
             SELECT * FROM <database name>.<external textfile table name>;
 
 > [!NOTE]
-> TEXTFILE テーブル *&#60;データベース名>.&#60;外部テキストファイル テーブル名>* にパーティションが含まれている場合、手順 3 で、`SELECT * FROM <database name>.<external textfile table name>` コマンドは、返されたデータ セット内のフィールドとしてパーティション変数を選択します。 *&#60;データベース名>.&#60;ORC テーブル名>* にはテーブル スキーマのフィールドとしてパーティション変数が含まれないため、*&#60;データベース名>.&#60;ORC テーブル名>* に挿入すると失敗します。 この場合、*&#60;データベース名>.&#60;ORC テーブル名>* に挿入するフィールドを次のように具体的に選択する必要があります。
+> TEXTFILE テーブル *<database name>.<external textfile table name>*  にパーティションが含まれている場合、手順 3. で、`SELECT * FROM <database name>.<external textfile table name>` コマンドは、返されたデータ セット内のフィールドとしてパーティション変数を選択します。 これを *<database name>.<ORC table name>* に挿入すると 失敗します。その理由は、*<database name>.<ORC table name>*  にはテーブル スキーマのフィールドとしてパーティション変数が含まれないためです。 この場合、ユーザーは *<database name><ORC table name>.* に挿入するフィールドを、以下のように具体的に選択する必要があります 。
 >
 >
 
@@ -230,7 +230,7 @@ ORC 形式で格納されているデータを BLOB ストレージから Hive �
            FROM <database name>.<external textfile table name>
            WHERE <partition variable>=<partition value>;
 
-すべてのデータが *&#60;データベース名>.&#60;ORC テーブル名>* に挿入された後に、次のクエリを使用して *&#60;外部テキストファイル テーブル名>* を削除するのが安全です。
+すべてのデータが *<database name>.<ORC table name>* に挿入された後に、次のクエリを使用して *<external textfile table name>* を削除するのが安全です。
 
         DROP TABLE IF EXISTS <database name>.<external textfile table name>;
 

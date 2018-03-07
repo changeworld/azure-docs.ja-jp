@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 843582a980280a14f033c6d27965867c063039e2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 63ae975426f1057b178171ef89ce98402ff18725
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -36,8 +36,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 ダウンロード | [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)します。
 
 ## <a name="117490"></a>1.1.749.0
-状態: 一部のお客様にリリース
-
+状態: 一部のお客様にリリース。このリリースは現在、自動アップグレードを有効にしている AADConnect テナントのごく一部に対してランダムに配布されています。 自動アップグレードのお客様の 100% がこのリリースを受信できるまで、今後数週間、このテナントのグループを拡大します。 その後は、上記のダウンロード リンクで一般ダウンロード用のビルドを公表します。現時点では、2018 年 3 月中旬になる予定です。
 >[!NOTE]
 >この新しいバージョンへのアップグレードが完了すると、Azure AD コネクタの完全同期とフル インポート、および AD コネクタの完全同期が自動的にトリガーされます。 Azure AD Connect 環境のサイズによっては、これには時間がかかる場合があるため、これに対応できるように必要な手順を確実に実施していることを確認してください。また、好都合なタイミングが見つかるまでアップグレードを見合わせるようにしてください。
 

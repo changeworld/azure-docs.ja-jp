@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/06/2017
+ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: d169645b9b701e611d27e0d984bf44b7ca85d2ad
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: b2b5427f037203e86f6b73610084993892ed4a37
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
 
@@ -46,7 +46,7 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 ## <a name="install-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーのインストール
 Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-odbc-driver-download]からダウンロードしてインストールします。
 
-このドライバーをインストールできるのは、32 ビットまたは 64 ビットバージョンの Windows 7、Windows 8、Windows 10、Windows Server 2008 R2、および Windows Server 2012 です。 ドライバーを使用して、Azure HDInsight (バージョン 1.6 以降) と Azure HDInsight Emulator (v.1.0.0.0 以降) に接続できます。 ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンをインストールする必要があります。 このチュートリアルでは、Office Excel のドライバーが使用されます。
+このドライバーをインストールできるのは、32 ビットまたは 64 ビットバージョンの Windows 7、Windows 8、Windows 10、Windows Server 2008 R2、および Windows Server 2012 です。 このドライバーを使用して Azure HDInsight に接続できます。 ODBC ドライバーを使用するアプリケーションのバージョンに合致したバージョンをインストールする必要があります。 このチュートリアルでは、Office Excel のドライバーが使用されます。
 
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC データ ソースの作成
 次の手順に従って、Hive ODBC データ ソースを作成します。
@@ -64,7 +64,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
    | --- | --- |
    |  データ ソース名 |データ ソースに名前を付けます。 |
    |  Host |「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
-   |  Port |<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。 |
+   |  ポート |<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。 |
    |  データベース |<strong>既定値</strong>を使用します。 |
    |  メカニズム |<strong>Azure HDInsight サービス</strong>を選択します。 |
    |  ユーザー名 |HDInsight クラスター ユーザーの HTTP ユーザー名を入力します。 既定のユーザー名は <strong>admin</strong>です。 |

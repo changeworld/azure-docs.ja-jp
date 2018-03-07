@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 378330149aebc1936846472a522631308fe3eb80
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 506781ac83e75d558badbd3a8842533e314a8dfa
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -145,15 +145,14 @@ Set-AzureRmStorageSyncServerEndpoint -Id serverendpointid -CloudTiering true -Vo
 <a id="replica-not-ready"></a>**同期が "0x80c8300f - レプリカでは、必要な操作を実行する準備ができていません" エラーで失敗する**  
 この問題は、クラウド エンドポイントを作成してデータが格納されている Azure ファイル共有を使用した場合に発生することが予期されます。 Azure ファイル共有での変更検出ジョブの実行が終了すると (最大 24 時間がかかることがあります)、同期は正常に動作を開始します。
 
-<a id="broken-sync-files"></a>**同期に失敗する個々のファイルをトラブルシューティングする**  
-個々のファイルが同期に失敗する場合:
-1. イベント ビューアーで、Applications と Services\Microsoft\FileSync\Agent に配置されている操作イベント ログと診断イベント ログをレビューします。
-2. ファイルに開いているハンドルがないことを確認します。
 
     > [!NOTE]
-    > Azure File Sync は、開いているハンドルがあるファイルを同期するために VSS スナップショットを定期的に取得します。
+    > Azure File Sync periodically takes VSS snapshots to sync files that have open handles.
 
 現在、別のサブスクリプションへのリソースの移動、または異なる Azure AD テナントへの移動は、サポートされていません。  サブスクリプションが別のテナントに移動すると、所有権が変化するためにサービスは Azure ファイル共有にアクセスできなくなります。 テナントが変更された場合は、サーバー エンドポイントとクラウド エンドポイントを削除し (再利用される Azure ファイル共有のクリーニング方法に関する同期グループ管理のセクションを参照)、同期グループを再作成する必要があります。
+
+<a id="doesnt-have-enough-free-space"></a>**エラー "この PC には十分な空き領域がありません"**  
+ポータルに、"この PC には十分な空き領域がありません" という状態が表示されている場合、その原因は、ボリュームに残っている空き領域が 1 GB 未満である可能性があります。  たとえば、1.5 GB のボリュームがある場合、同期で利用できるのは 0.5 GB のみです。この問題が発生した場合は、サーバーのエンドポイントに使用できるボリュームのサイズを拡張してください。
 
 ## <a name="cloud-tiering"></a>クラウドの階層化 
 クラウドの階層化の障害パスは 2 つあります。

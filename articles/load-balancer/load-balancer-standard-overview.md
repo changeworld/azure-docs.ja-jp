@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: cf7be370ab0d79be9068534f0c43b88f454bc024
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8f98fd7773acb960ae79e743663aceb216f217c4
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure Load Balancer Standard の概要 (プレビュー)
 
@@ -302,9 +302,11 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 1. 新しい Standard リソース (必要に応じて、Load Balancer とパブリック IP) を作成します。 規則とプローブ定義を再作成します。
 
-2. すべての VM インスタンスから Basic SKU リソース (必要に応じて、Load Balancer とパブリック IP) を削除します。 可用性セットのすべての VM インスタンスも削除してください。
+2. NIC またはサブネットで新規 NSGを作成するか、既存の NSG を更新して、負荷分散されたトラフィック、プローブ、その他の許可するすべてのトラフィックをホワイトリストに登録します。
 
-3. すべての VM インスタンスを新しい Standard SKU リソースに接続します。
+3. すべての VM インスタンスから Basic SKU リソース (必要に応じて、Load Balancer とパブリック IP) を削除します。 可用性セットのすべての VM インスタンスも削除してください。
+
+4. すべての VM インスタンスを新しい Standard SKU リソースに接続します。
 
 ### <a name="migrate-from-standard-to-basic-sku"></a>Standard SKU から Basic SKU への移行
 

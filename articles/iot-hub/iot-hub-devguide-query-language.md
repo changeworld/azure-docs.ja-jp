@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 01951afa983e7a578281fda38bb4714df6b41891
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 624f706532645034f19af15d10352dbc6db0b6c1
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語
 
@@ -298,27 +298,27 @@ IoT Hub は、メッセージのルーティングのために、メッセージ
 
 ```json
 {
-    "$messageId": "",
-    "$enqueuedTime": "",
-    "$to": "",
-    "$expiryTimeUtc": "",
-    "$correlationId": "",
-    "$userId": "",
-    "$ack": "",
-    "$connectionDeviceId": "",
-    "$connectionDeviceGenerationId": "",
-    "$connectionAuthMethod": "",
-    "$content-type": "",
-    "$content-encoding": "",
-
-    "userProperty1": "",
-    "userProperty2": ""
+  "message": {
+    "systemProperties": {
+      "contentType": "application/json",
+      "contentEncoding": "utf-8",
+      "iothub-message-source": "deviceMessages",
+      "iothub-enqueuedtime": "2017-05-08T18:55:31.8514657Z"
+    },
+    "appProperties": {
+      "processingPath": "<optional>",
+      "verbose": "<optional>",
+      "severity": "<optional>",
+      "testDevice": "<optional>"
+    },
+    "body": "{\"Weather\":{\"Temperature\":50}}"
+  }
 }
 ```
 
 メッセージのシステム プロパティには、`'$'` シンボルが付きます。
-ユーザー プロパティは、常にその名前でアクセスされます。 ユーザー プロパティの名前が、システム プロパティと一致する場合 (`$to` など)、とユーザー プロパティは、`$to` 式で取得されます。
-システム プロパティは、常にかっこ `{}` を使用してアクセスできます。たとえば、`{$to}` 式を使用してシステム プロパティ `to` にアクセスできます。 かっこで囲まれたプロパティ名は、常に対応するシステム プロパティを取得します。
+ユーザー プロパティは、常にその名前でアクセスされます。 ユーザー プロパティの名前が、システム プロパティと一致する場合 (`$contentType` など)、とユーザー プロパティは、`$contentType` 式で取得されます。
+システム プロパティは、常にかっこ `{}` を使用してアクセスできます。たとえば、`{$contentType}` 式を使用してシステム プロパティ `contentType` にアクセスできます。 かっこで囲まれたプロパティ名は、常に対応するシステム プロパティを取得します。
 
 プロパティ名では大文字と小文字は区別されません。
 
@@ -350,12 +350,58 @@ messageType = 'alerts' AND as_number(severity) <= 2
 
 IoT Hub は、メッセージ本文が、UTF-8、UTF-16、または UTF-32 でエンコードされた適切な形式の JSON である場合のみ、メッセージ本文のコンテンツに基づいてルーティングできます。 メッセージのコンテンツの種類を `application/json` に設定します。 コンテンツのエンコードを、メッセージ ヘッダーでサポートされているいずれかの UTF エンコードに設定します。 いずれかのヘッダーが指定されていない場合、IoT Hub は、メッセージに対して、本文を含むクエリ式を評価しようとしません。 メッセージが JSON メッセージでない場合、またはメッセージでコンテンツの種類とコンテンツのエンコーディングを指定しない場合でも、メッセージ ルーティングを使用して、メッセージ ヘッダーに基づいてメッセージをルーティングできます。
 
+次の例では、正しい形式でエンコードされた JSON 本文を持つメッセージを作成する方法を示します。
+
+```csharp
+string messageBody = @"{ 
+                            ""Weather"":{ 
+                                ""Temperature"":50, 
+                                ""Time"":""2017-03-09T00:00:00.000Z"", 
+                                ""PrevTemperatures"":[ 
+                                    20, 
+                                    30, 
+                                    40 
+                                ], 
+                                ""IsEnabled"":true, 
+                                ""Location"":{ 
+                                    ""Street"":""One Microsoft Way"", 
+                                    ""City"":""Redmond"", 
+                                    ""State"":""WA"" 
+                                }, 
+                                ""HistoricalData"":[ 
+                                    { 
+                                    ""Month"":""Feb"", 
+                                    ""Temperature"":40 
+                                    }, 
+                                    { 
+                                    ""Month"":""Jan"", 
+                                    ""Temperature"":30 
+                                    } 
+                                ] 
+                            } 
+                        }"; 
+ 
+// Encode message body using UTF-8 
+byte[] messageBytes = Encoding.UTF8.GetBytes(messageBody); 
+ 
+using (var message = new Message(messageBytes)) 
+{ 
+    // Set message body type and content encoding. 
+    message.ContentEncoding = "utf-8"; 
+    message.ContentType = "application/json"; 
+ 
+    // Add other custom application properties.  
+    message.Properties["Status"] = "Active";    
+ 
+    await deviceClient.SendEventAsync(message); 
+}
+```
+
 クエリ式で `$body` を使用して、メッセージをルーティングできます。 クエリ式で、簡単な本文参照、本文配列参照、または複数の本文参照を使用できます。 クエリ式で、本文参照とメッセージ ヘッダー参照を組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。
 
 ```sql
-$body.message.Weather.Location.State = 'WA'
 $body.Weather.HistoricalData[0].Month = 'Feb'
-$body.Weather.Temperature = 50 AND $body.message.Weather.IsEnabled
+$body.Weather.Temperature = 50 AND $body.Weather.IsEnabled
 length($body.Weather.Location.State) = 2
 $body.Weather.Temperature = 50 AND Status = 'Active'
 ```

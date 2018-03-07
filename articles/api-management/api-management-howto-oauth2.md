@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: bd8b3d13754e981235cbce39e919f39228820426
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: 47011bf2cfde268bb6248e54e98930f3a0b522e4
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 多くの API では、[OAuth 2.0](http://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。 Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
@@ -33,16 +33,16 @@ ms.lasthandoff: 12/04/2017
 ## <a name="step1"> </a>API Management で OAuth 2.0 認証サーバーを構成する
 まず、ご利用の API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックします。
 
-![パブリッシャー ポータル][api-management-management-console]
+![発行者ポータル][api-management-management-console]
 
 > [!NOTE]
-> API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][Create an API Management service instance]に関するページをご覧ください。
+> API Management サービス インスタンスをまだ作成していない場合は、[API Management サービス インスタンスの作成][Create an API Management service instance]に関するページを参照してください。
 > 
 > 
 
 左側の **[API Management]** メニューで **[セキュリティ]** をクリックし、**[OAuth 2.0]** をクリックしてから、**[Add authorization server (認証サーバーの追加)]** をクリックします。
 
-![[OAuth 2.0]][api-management-oauth2]
+![OAuth 2.0][api-management-oauth2]
 
 **[認証サーバーの追加 (Add authorization server)]**をクリックした後に、新しい認証サーバーのフォームが表示されます。
 
@@ -131,12 +131,9 @@ OAuth 2.0 認証サーバーを構成して、そのサーバーを使用する�
 
 これで、残りのパラメーター用に必要な値を構成して、要求を送信できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 OAuth 2.0 と API Management の詳細については、次のビデオとこの [記事](api-management-howto-protect-backend-with-aad.md)をご覧ください。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
-> 
-> 
 
 [api-management-management-console]: ./media/api-management-howto-oauth2/api-management-management-console.png
 [api-management-oauth2]: ./media/api-management-howto-oauth2/api-management-oauth2.png

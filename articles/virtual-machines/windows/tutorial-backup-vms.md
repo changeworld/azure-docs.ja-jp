@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 07/27/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 20760650b093216a2929de580f5971c45e0534a8
-ms.sourcegitcommit: d247d29b70bdb3044bff6a78443f275c4a943b11
+ms.openlocfilehash: 9638c7148d4347bb9cbc9e48022037ee6cb983d7
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="back-up-windows-virtual-machines-in-azure"></a>Windows 仮想マシンをバックアップする
 
@@ -46,7 +46,7 @@ Windows VM のスナップショットを取るとき、Backup サービスは V
 ## <a name="create-a-backup"></a>バックアップの作成
 Recovery Services コンテナーに対するバックアップを 1 日 1 回の単純なスケジュールで作成します。 
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 左側のメニューから **[仮想マシン]** を選択します。 
 3. バックアップする VM を一覧から選択します。
 4. その VM のブレードの **[設定]** セクションで **[バックアップ]** をクリックします。 **[バックアップの有効化]** ブレードが開きます。
@@ -92,7 +92,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 18. ローカル コンピューターで Azure Portal のブラウザー タブに移動し、**[ステップ 3: 回復後にディスクのマウントを解除する]** の **[ディスクのマウント解除]** ボタンをクリックします。 この手順を実行するのを忘れた場合、12 時間後にマウントポイントへの接続が自動的に解除されます。 12 時間が経過した後、新しいマウント ポイントを作成するには、新しいスクリプトをダウンロードする必要があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 
@@ -104,7 +104,7 @@ Recovery Services コンテナーに対するバックアップを 1 日 1 回�
 次のチュートリアルに進み、仮想マシンの監視について学習してください。
 
 > [!div class="nextstepaction"]
-> [仮想マシンの監視](tutorial-monitoring.md)
+> [仮想マシンの管理](tutorial-govern-resources.md)
 
 
 

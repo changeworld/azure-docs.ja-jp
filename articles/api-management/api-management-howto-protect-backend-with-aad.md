@@ -1,48 +1,24 @@
+-- title: Azure Active Directory と API Management で Web API バックエンドを保護する | Azure Active Directory と API Management で Web API バックエンドを保護する方法について説明します。
+services: api-management documentationcenter: '' author: juliako manager: cfowler editor: ''
+
+ms.service: api-management ms.workload: mobile ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 10/30/2017 ms.author: apimpm
 ---
-title: "Azure Active Directory と API Management で Web API バックエンドを保護する | Microsoft Docs"
-description: "Azure Active Directory と API Management で Web API バックエンドを保護する方法について説明します。"
-services: api-management
-documentationcenter: 
-author: juliako
-manager: cfowler
-editor: 
-ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 10/30/2017
-ms.author: apimpm
-ms.openlocfilehash: 695db2f5e6ffe794d76d0b9126dc231ed8a87d2c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
----
+
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
-次のビデオでは、Web API バックエンドをビルドし、Azure Active Directory と API Management で OAuth 2.0 プロトコルを使用して保護する方法を示します。  この記事では、ビデオで説明する手順の概要と追加情報を紹介します。 この 24 分間のビデオでは、次の手順について説明しています。
 
-* Web API バックエンドをビルドし、AAD で保護する - 1:30 開始
-* API Management に API をインポートする - 7:10 開始
-* API を呼び出す開発者ポータルを構成する - 9:09 開始
-* API を呼び出すデスクトップ アプリケーションを構成する - 18:08 開始
-* 要求を事前承認する JWT 検証ポリシーを構成する - 20:47 開始
-
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Protecting-Web-API-Backend-with-Azure-Active-Directory-and-API-Management/player]
-> 
-> 
+このトピックでは、Web API バックエンドをビルドし、Azure Active Directory と API Management で OAuth 2.0 プロトコルを使用して保護する方法を示します。  
 
 ## <a name="create-an-azure-ad-directory"></a>Azure AD Directory を作成する
-Azure Active Directory を使用して Web API バックエンドを保護するには、AAD テナントが必要です。 このビデオでは、**APIMDemo** という名前のテナントを使用します。 AAD テナントを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインし、**[新規]**->、**[App Services]**->、**[Active Directory]**、->**[ディレクトリ]**、->**[カスタム作成]** の順にクリックします。 
+Azure Active Directory を使用して Web API バックエンドを保護するには、AAD テナントが必要です。 AAD テナントを作成するには、[Azure クラシック ポータル](https://manage.windowsazure.com)にサインインし、**[新規]**->、**[App Services]**->、**[Active Directory]**、->**[ディレクトリ]**、->**[カスタム作成]** の順にクリックします。 
 
 ![Azure Active Directory][api-management-create-aad-menu]
 
-この例では、**APIMDemo** という名前のディレクトリが既定のドメイン名 **DemoAPIM.onmicrosoft.com** で作成されます。このディレクトリはビデオ全体で使用されます。
+この例では、**APIMDemo** という名前のディレクトリが既定のドメイン名 **DemoAPIM.onmicrosoft.com** で作成されます。 
 
 ![Azure Active Directory][api-management-create-aad]
 
 ## <a name="create-a-web-api-service-secured-by-azure-active-directory"></a>Azure Active Directory で保護された Web API サービスを作成する
-この手順では、Web API バックエンドは Visual Studio 2013 を使用して作成されます。 この手順はビデオの 1:30 から開始されます。 Visual Studio で Web API バックエンド プロジェクトを作成するには、**[ファイル]**、->**[新規作成]**、->**[プロジェクト]** を選択し、**Web** テンプレートの一覧から **[ASP.NET Web アプリケーション]** を選択します。 このビデオでは、**APIMAADDemo** という名前のプロジェクトを使用します。 **[OK]** をクリックしてプロジェクトを作成します。 
+この手順では、Web API バックエンドは Visual Studio 2013 を使用して作成されます。 Visual Studio で Web API バックエンド プロジェクトを作成するには、**[ファイル]**、->**[新規作成]**、->**[プロジェクト]** を選択し、**Web** テンプレートの一覧から **[ASP.NET Web アプリケーション]** を選択します。 
 
 ![Visual Studio][api-management-new-web-app]
 
@@ -75,7 +51,6 @@ Azure へのサインインを求めるメッセージが表示され、Web ア�
 **[OK]** をクリックし、Web アプリを構成してプロジェクトを作成します。
 
 ## <a name="add-the-code-to-the-web-api-project"></a>Web API プロジェクトにコードを追加します。
-ビデオの次の手順では、Web API プロジェクトにコードを追加します。 この手順は 4 35 から開始されます。
 
 この例の Web API は、モデルとコントローラーを使用して基本的な電卓サービスを実装します。 サービスにモデルを追加するには、**ソリューション エクスプローラー**で **[モデル]** を右クリックし、**[追加]**、**[クラス]** の順に選択します。 クラスに「 `CalcInput` 」という名前を付け、 **[追加]**をクリックします。
 
@@ -161,14 +136,13 @@ public class CalcController : ApiController
 **F6** キーを押して、ソリューションをビルドし、検証します。
 
 ## <a name="publish-the-project-to-azure"></a>Azure にプロジェクトを発行する
-この手順では、Visual Studio プロジェクトを Azure に発行します。 この手順はビデオの 5:45 から開始されます。
 
 プロジェクトを Azure に発行するには、Visual Studio で **APIMAADDemo** プロジェクトを右クリックし、**[発行]** を選択します。 **[Web の発行]** ダイアログ ボックスの既定の設定をそのまま適用し、**[発行]** をクリックします。
 
 ![Web の発行][api-management-web-publish]
 
 ## <a name="grant-permissions-to-the-azure-ad-backend-service-application"></a>Azure AD バックエンド サービス アプリケーションにアクセス許可を付与する
-Web API プロジェクトの構成と公開プロセスの一環として、バックエンド サービス用の新しいアプリケーションが Azure AD Directory に作成されます。 ビデオの 6:13 から始まるビデオの手順では、Web API バックエンドにアクセス許可が付与されます。
+Web API プロジェクトの構成と公開プロセスの一環として、バックエンド サービス用の新しいアプリケーションが Azure AD Directory に作成されます。
 
 ![アプリケーション][api-management-aad-backend-app]
 
@@ -352,7 +326,7 @@ API は、API パブリッシャー ポータルから構成されます。こ�
 API がインポートされると、API の概要ページがパブリッシャー ポータルに表示されます。
 
 ## <a name="call-the-api-unsuccessfully-from-the-developer-portal"></a>開発者ポータルから API の呼び出しに失敗する場合
-この時点で API は API Management にインポートされましたが、バックエンド サービスが Azure AD 認証で保護されているため、まだ開発者ポータルから正常に呼び出すことはできません。 これについては次の手順を使用して説明します。ビデオの 7:40 から始まります。
+この時点で API は API Management にインポートされましたが、バックエンド サービスが Azure AD 認証で保護されているため、まだ開発者ポータルから正常に呼び出すことはできません。 
 
 パブリッシャー ポータルの右上で **[開発者ポータル]** をクリックします。
 
@@ -373,9 +347,9 @@ API がインポートされると、API の概要ページがパブリッシャ
 バックエンド API が Azure Active Directory によって保護されているため、要求は承認されていません。 API を正常に呼び出すには、OAuth 2.0 を使用して開発者を承認するよう、開発者ポータルを構成する必要があります。 このプロセスについては以降のセクションで説明します。
 
 ## <a name="register-the-developer-portal-as-an-aad-application"></a>開発者ポータルを AAD アプリケーションとして登録する
-OAuth 2.0 を使用して開発者を承認するように開発者ポータルを構成する最初の手順で、開発者ポータルを AAD アプリケーションとして登録します。 この説明については、ビデオでは 8:27 から始まります。
+OAuth 2.0 を使用して開発者を承認するように開発者ポータルを構成する最初の手順で、開発者ポータルを AAD アプリケーションとして登録します。 
 
-このビデオの最初の手順から Azure AD テナント (この例では **APIMDemo**) に移動し、**[アプリケーション]** タブに移動します。
+Azure AD テナントに移動します。 この例では、**[APIMDemo]** を選択し、**[アプリケーション]** タブに移動します。
 
 ![新規アプリケーション][api-management-aad-new-application-devportal]
 
@@ -394,7 +368,7 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 ![新規アプリケーション][api-management-aad-new-application-devportal-2]
 
 ## <a name="configure-an-api-management-oauth-20-authorization-server"></a>API Management OAuth 2.0 承認サーバーを構成する
-次の手順では、API Management に OAuth 2.0 承認サーバーを構成します。 この手順の説明については、ビデオの 9:43 から始まります。
+次の手順では、API Management に OAuth 2.0 承認サーバーを構成します。 
 
 左側の [API Management] メニューで **[セキュリティ]** をクリックし、**[OAuth 2.0]** をクリックしてから、**[Add authorization server (認証サーバーの追加)]** をクリックします。
 
@@ -466,7 +440,7 @@ OAuth 2.0 を使用して開発者を承認するように開発者ポータル�
 ![Add permissions][api-management-aad-add-delegated-permissions]
 
 ## <a name="enable-oauth-20-user-authorization-for-the-calculator-api"></a>電卓 API 用に OAuth 2.0 のユーザー認証を有効にする
-OAuth 2.0 サーバーが構成されたので、API のセキュリティ設定で指定できるようになります。 この手順の説明については、ビデオの 14:30 から始まります。
+OAuth 2.0 サーバーが構成されたので、API のセキュリティ設定で指定できるようになります。 
 
 左側のメニューで **[API]** をクリックし、**[Calculator]** をクリックして設定を表示し、構成します。
 
@@ -477,7 +451,7 @@ OAuth 2.0 サーバーが構成されたので、API のセキュリティ設定
 ![電卓 API][api-management-enable-aad-calculator]
 
 ## <a name="successfully-call-the-calculator-api-from-the-developer-portal"></a>開発者ポータルから電卓 API を正常に呼び出す
-OAuth 2.0 認証を API で構成したら、デベロッパー センターから操作を正常に呼び出すことができます。 この手順の説明については、ビデオの 15:00 から始まります。
+OAuth 2.0 認証を API で構成したら、デベロッパー センターから操作を正常に呼び出すことができます。 
 
 開発者ポータルで電卓サービスの **2 つの整数を追加する**操作に戻り、**[試してみる]** をクリックします。 **[承認]** セクションの新しい項目は、先ほど追加した承認サーバーに対応しています。
 
@@ -492,10 +466,12 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 ![電卓 API][api-management-devportal-response]
 
 ## <a name="configure-a-desktop-application-to-call-the-api"></a>API を呼び出すデスクトップ アプリケーションを構成する
-ビデオの 16:30 から始まる次の手順では、API を呼び出す単純なデスクトップ アプリケーションを構成します。 最初の手順では、デスクトップ アプリケーションを Azure AD に登録し、アクセス権をディレクトリとバックエンド サービスに付与します。 18:25 からは、電卓 API で操作を呼び出すデスクトップ アプリケーションのデモを紹介します。
+
+API を呼び出す簡単なデスクトップ アプリケーションを構成します。 最初の手順では、デスクトップ アプリケーションを Azure AD に登録し、アクセス権をディレクトリとバックエンド サービスに付与します。 
 
 ## <a name="configure-a-jwt-validation-policy-to-pre-authorize-requests"></a>要求を事前承認する JWT 検証ポリシーを構成する
-ビデオの 20:48 から始まる最後の手順では、 [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT) ポリシーを使用して、各受信要求のアクセス トークンを検証することで要求を事前承認する方法について説明します。 JWT の検証ポリシーで要求が検証されない場合、要求は API Management によってブロックされ、バックエンドへは渡されません。
+
+[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで要求を事前承認します。 JWT の検証ポリシーで要求が検証されない場合、要求は API Management によってブロックされ、バックエンドへは渡されません。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -508,7 +484,7 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 </validate-jwt>
 ```
 
-このポリシーの構成と使用についての別のデモは、「 [「Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/) 」を 13:50 まで早送りしてご覧ください。 15:00 まで早送りし、ポリシー エディターで構成されるポリシーをご覧いただいた後、開発者ポータルから操作を呼び出す方法について、必要な認証トークンを使用した場合と使用しない場合の両方のデモを 18:50 からご覧ください。
+詳細については、「[Cloud Cover Episode 177: More API Management Features (クラウド カバー エピソード 177: その他の API Management 機能の紹介)](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」を 13:50 まで早送りしてご覧ください。 15:00 まで早送りし、ポリシー エディターで構成されるポリシーをご覧いただいた後、開発者ポータルから操作を呼び出す方法について、必要な認証トークンを使用した場合と使用しない場合の両方のデモを 18:50 からご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 * API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。

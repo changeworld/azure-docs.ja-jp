@@ -8,22 +8,23 @@ manager: jhubbard
 editor: cgronlun
 ms.assetid: 67f9d08c-eea0-401b-952b-db765655dad0
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: 
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: 9ad160377a8779ae917e6fd2d605ee01b12c3e2a
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ROBOTS: NOINDEX
+ms.openlocfilehash: fe1cf3eab1f0ca930b516e4ab44f1e2439cb3e07
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="process-events-from-azure-event-hubs-with-storm-on-hdinsight-c"></a>HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (＃C)
 
-HDInsight の Apache Storm から Azure Event Hubs を使用する方法について説明します。 このドキュメントでは、C# Storm トポロジを使用して Event Hub からデータの読み取りや書き込みを行います。
+HDInsight の Apache Storm から Azure Event Hubs を使用する方法について説明します。 このドキュメントでは、C# Storm トポロジを使用して Event Hubs からデータの読み取りや書き込みを行います。
 
 > [!NOTE]
 > このプロジェクトの Java バージョンについては、「[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する (Java)](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)」を参照してください。
@@ -36,9 +37,6 @@ HDInsight の Apache Storm から Azure Event Hubs を使用する方法につ�
 > このドキュメントの手順は Visual Studio を使う Windows 開発環境でのものですが、コンパイル済みのプロジェクトは、Linux を使用する HDInsight クラスターの Storm に送信できます。 SCP.NET トポロジをサポートする Linux ベースのクラスターは、2016 年 10 月 28 日より後に作成されたものだけです。
 
 HDInsight 3.4 以降では、Mono を使用して C# トポロジを実行します。 このドキュメントで使用される例は、HDInsight 3.6 で動作します。 HDInsight の独自の .NET ソリューションを作成する場合は、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)に関するドキュメントで、非互換性がないか確認してください。
-
-> [!WARNING]
-> SCP.NET バージョン 1.0.0.x を使用するプロジェクトを構築する際に問題が発生した場合は、Microsoft サポートに対処方法をお問い合わせください。
 
 ### <a name="cluster-versioning"></a>クラスターのバージョン管理
 
@@ -142,11 +140,11 @@ Event Hubs のスパウトおよびボルト コンポーネントは、[https:/
 
 Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用](../../event-hubs/event-hubs-create.md)に関するページの "イベント ハブの作成" のセクションにある情報を使用します。
 
-1. イベント ハブが作成されたら、Azure Portal の **EventHub** ブレードを表示し、**[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを追加します。
+1. イベント ハブが作成されたら、Azure Portal の **EventHub** 設定を表示し、**[共有アクセス ポリシー]** を選択します。 **[+ 追加]** を選択して、次のポリシーを追加します。
 
-   | 名前 | アクセス許可 |
+   | Name | アクセス許可 |
    | --- | --- |
-   | ライター |送信 |
+   | ライター |Send |
    | リーダー |リッスン |
 
     ![[共有アクセス ポリシー] ウィンドウのスクリーンショット](./media/apache-storm-develop-csharp-event-hub-topology/sas.png)
@@ -227,7 +225,7 @@ Event Hubs は、この例のデータ ソースです。 [Event Hubs の使用]
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このドキュメントでは、C# トポロジから Java Event Hubs スパウトおよびボルトを使用して、Azure Event Hubs のデータを操作する方法について説明しました。 C# トポロジの作成の詳細については、次の記事を参照してください。
 

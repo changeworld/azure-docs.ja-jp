@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: 40b684fe5681123f3c32d3984b2725f97b427f1b
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 9222fcebd51ff13e797f40f3fdb0ddaa955d2611
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -302,7 +302,7 @@ subnet/address | VM のサブネット アドレス | 2017-04-02
 subnet/prefix | サブネットのプレフィックス (24 など) | 2017-04-02 
 ipv6/ipAddress | VM のローカル IPv6 アドレス | 2017-04-02 
 macAddress | VM の mac アドレス | 2017-04-02 
-scheduledevents | 現在パブリック プレビュー段階です。[スケジュールされたイベント](scheduled-events.md)に関するページを参照してください。 | 2017-03-01
+scheduledevents | [scheduledevents](scheduled-events.md) を参照 | 2017-03-01
 
 ## <a name="example-scenarios-for-usage"></a>使用に関するシナリオ例  
 
@@ -409,6 +409,6 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 
    ![Instance Metadata のサポート](./media/instance-metadata-service/InstanceMetadata-support.png)
     
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- Instance Metadata Service によって提供される[スケジュールされたイベント](scheduled-events.md) API **(パブリック プレビュー段階)** を参照します。
+- 詳細については、「[スケジュール化されたイベント](scheduled-events.md)」を参照してください。

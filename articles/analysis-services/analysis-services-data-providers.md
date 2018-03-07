@@ -13,37 +13,35 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/21/2018
+ms.date: 02/27/2018
 ms.author: owend
-ms.openlocfilehash: 2149330eb711fea76a144f5ec748ae6760c7746a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5c847f5cd02503b708db8a0a0211b5d403df0943
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="client-libraries-for-connecting-to-azure-analysis-services"></a>Azure Analysis Services に接続するためのクライアント ライブラリ
 
 クライアント アプリケーションとツールが Analysis Services サーバーに接続するためには、クライアント ライブラリが必要です。 
 
-## <a name="download-the-latest-client-libraries"></a>最新のクライアント ライブラリをダウンロード  
+## <a name="download-the-latest-client-libraries-windows-installer"></a>最新のクライアント ライブラリのダウンロード (Windows インストーラー)  
 
-|[ダウンロード]  |バージョン  | 
+|[ダウンロード]  |製品バージョン  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.300.129.01      |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.300.129.01      |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.0.300.129.01      |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    115.0.300.129.01      |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.0.1.208      |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |    15.0.1.208      |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   15.0.2     |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    15.0.2     |
 
-## <a name="amo-and-adomd-on-nuget"></a>NuGet の AMO および ADOMD
+## <a name="amo-and-adomd-nuget-packages"></a>AMO と ADOMD (NuGet パッケージ)
 
-Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント ライブラリは、インストール可能なパッケージとして [NuGet.org](https://www.nuget.org/) で入手できます。 
+Analysis Services 管理オブジェクト (AMO) と ADOMD クライアント ライブラリは、インストール可能なパッケージとして [NuGet.org](https://www.nuget.org/) で入手できます。Windows インストーラーを使用する代わりに、NuGet 参照へ移行することをお勧めします。 
 
-|パッケージ  |バージョン  | 
+|パッケージ  | 製品バージョン  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.0.2      |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.0.2      |
-
-MSI インストーラーを使用する代わりに、NuGet 参照へ移行することをお勧めします。 
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    15.0.2.0      |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   15.0.2.0      |
 
 NuGet パッケージ アセンブリの AssemblyVersion は、セマンティック バージョニングである MAJOR.MINOR.PATCH に従います。 NuGet 参照では、(MSI のインストールの結果として得られる) GAC 内に別のバージョンがある場合でも、必要なバージョンが読み込まれます。 PATCH は、リリースごとにインクリメントされます。 AMO と ADOMD のバージョンは常に同期されます。
 
@@ -67,9 +65,7 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
 
 ### <a name="amo"></a>AMO  
 
- AMO は、サーバーの管理とデータの定義に使用されるマネージ クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 たとえば、SQL Server Management Studio (SSMS) は、AMO を使用して Analysis Services に接続します。  
-  
- AMO を使用した接続は、通常は最小で、`“data source=\<servername>”` で構成されています。 接続の確立後は、API を使用して、データベース コレクションおよび主要なオブジェクトを操作します。 SSDT と SSMS のどちらも、AMO を使用して Analysis Services インスタンスに接続します。  
+ AMO は、サーバーの管理とデータの定義に使用されるマネージ クライアント ライブラリです。 ツールおよびクライアント アプリケーションによってインストールされ、使用されます。 たとえば、SQL Server Management Studio (SSMS) は、AMO を使用して Analysis Services に接続します。 AMO を使用した接続は、通常は最小で、`“data source=\<servername>”` で構成されています。 接続の確立後は、API を使用して、データベース コレクションおよび主要なオブジェクトを操作します。 SSDT と SSMS のどちらも、AMO を使用して Analysis Services インスタンスに接続します。  
 
   
 ### <a name="adomd"></a>ADOMD
@@ -83,21 +79,21 @@ Power BI Desktop や Excel などの Microsoft クライアント アプリケ�
   
 ### <a name="oleddb-msolap"></a>OLEDDB (MSOLAP)  
   
-1.  `C:\Program Files\Microsoft Analysis Services\AS OLEDB\140` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
+1.  C:\Program Files\Microsoft Analysis Services\AS OLEDB\ に移動します。 複数のフォルダーがある場合は、番号の大きい方を選択します。
   
-2.  **[msolap.dll]** > **[プロパティ]** > **[詳細]** の順にクリック (最初は右クリック) します。 dll の名前が msolap140.dll である場合は、最新のバージョンよりも古いバージョンであるため、アップグレードする必要があります。
+2.  **[msolap.dll]** > **[プロパティ]** > **[詳細]** の順にクリック (最初は右クリック) します。 ファイル名が msolap140.dll である場合は、最新のバージョンよりも古いバージョンであるため、アップグレードする必要があります。
     
     ![クライアント ライブラリの詳細](media/analysis-services-data-providers/aas-msolap-details.png)
     
   
 ### <a name="amo"></a>AMO
 
-1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\v4.0_14.0.0.0__89845dcd8080cc91` にアクセスします。
+1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
 2. **[Microsoft.AnalysisServices]** > **[プロパティ]** > **[詳細]** の順にクリック (最初は右クリック) します。  
 
 ### <a name="adomd"></a>ADOMD
 
-1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\v4.0_14.0.0.0__89845dcd8080cc91` にアクセスします。
+1. `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` にアクセスします。 複数のフォルダーがある場合は、番号の大きい方を選択します。
 2. **[Microsoft.AnalysisServices.AdomdClient]** > **[プロパティ]** > **[詳細]** の順にクリック (最初は右クリック) します。  
 
 
