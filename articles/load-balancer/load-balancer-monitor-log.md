@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 36b9379f88ce024c1dcbf9977a873d95076d10df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4388a1e933a0ebf211b5a7621c74b0622be41a4c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="log-analytics-for-azure-load-balancer"></a>Azure Load Balancer のログ分析
 
@@ -52,7 +52,7 @@ Azure の各種ログを使用して、ロード バランサーの管理やト�
 5. **[診断]** ウィンドウの **[状態]** で、**[オン]** を選択します。
 6. **[ストレージ アカウント]** をクリックします。
 7. **[ログ]** で既存のストレージ アカウントを選択するか、新しいストレージ アカウントを作成します。 スライダーを使用して、イベント データをイベント ログに格納しておく日数を指定します。 
-8. **[保存]**をクリックします。
+8. **[Save]** をクリックします。
 
     ![ポータル - 診断ログ](./media/load-balancer-monitor-log/load-balancer-diagnostics.png)
 
@@ -145,6 +145,6 @@ JSON 形式の出力でプロパティ フィールドを見れば、プロー�
 * [Power BI を使用した Azure 監査ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) に関するブログ記事
 * [Power BI などにおける Azure 監査ログの表示と分析](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) に関するブログ記事
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Load Balancer プローブを理解する](load-balancer-custom-probe-overview.md)

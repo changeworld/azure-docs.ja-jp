@@ -1,26 +1,26 @@
 ---
-title: " Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs"
+title: "Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する | Microsoft Docs"
 description: "この記事では、Azure Site Recovery での VMware ディザスター リカバリーのために構成サーバーを展開する方法について説明します"
 services: site-recovery
 author: AnoopVasudavan
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 02/25/2018
 ms.author: anoopkv
-ms.openlocfilehash: e257ede08ac46ad863b4883b10399058e6f59f1f
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: f7ec02cb4723d8a4ea0847810b1a1822cf20e957
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="deploy-a-configuration-server"></a>構成サーバーをデプロイする
 
-Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを展開します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整し、データのレプリケーションを管理します。 この記事では、構成サーバーの展開に必要な手順について説明します。
+Azure への VMware 仮想マシンと物理サーバーのディザスター リカバリーに [Azure Site Recovery](site-recovery-overview.md) を使うときは、オンプレミスの構成サーバーを展開します。 構成サーバーは、オンプレミスの VMware と Azure の間の通信を調整します。 データのレプリケーションも管理します。 この記事では、VMware VM を Azure にレプリケートするときの構成サーバーの展開に必要な手順について説明します。 物理サーバーのレプリケーション用に構成サーバーを設定する必要がある場合は、[こちらの記事に従ってください](site-recovery-set-up-physical-to-azure.md)。
 
 ## <a name="prerequisites"></a>前提条件
 
-高可用性の VMware VM として構成サーバーを展開することをお勧めします。 物理サーバーのレプリケーションの場合は、物理コンピューターに構成サーバーを設定できます。 最小限のハードウェア要件を次の表に示します。
+高可用性の VMware VM として構成サーバーを展開することをお勧めします。 最小限のハードウェア要件を次の表に示します。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
@@ -38,7 +38,7 @@ Azure への VMware 仮想マシンと物理サーバーのディザスター �
 | 16 vCPU (2 ソケット * 8 コア @ 2.5 GHz) |32 GB |1 TB (テラバイト) |1 TB ～ 2 TB |150 ～ 200 台のマシンをレプリケートします。 |
 
 
-VMware VM をレプリケートする場合は、詳細については[容量計画に関する考慮事項](/site-recovery-plan-capacity-vmware.md)に関するページを参照し、VMWare レプリケーションに対する [Deployment Planner ツール](site-recovery-deployment-planner.md)を実行してください。
+VMware VM をレプリケートする場合は、[容量計画に関する考慮事項](/site-recovery-plan-capacity-vmware.md)の詳細をご覧ください。 VMware のレプリケーションの場合は [Deployment Planner ツール](site-recovery-deployment-planner.md)を実行します。
 
 
 
@@ -47,30 +47,32 @@ VMware VM をレプリケートする場合は、詳細については[容量計
 Site Recovery では、高可用性の VMware VM として構成サーバーを設定するためのテンプレートをダウンロードできます。 
 
 1. コンテナーで、**[インフラストラクチャの準備]** > **[ソース]** の順に移動します。
-2. **[ソースの準備]** で、**[+ 構成サーバー]** をクリックします。
+2. **[ソースの準備]** で **[+ 構成サーバー]** を選びます。
 3. **[サーバーの追加]** で、**[サーバーの種類]** に **[VMware の構成サーバー]** が表示されていることを確認します。
 4. 構成サーバー用の Open Virtualization Format (OVF) テンプレートをダウンロードします。
 
   > [!TIP]
-  構成サーバー テンプレートの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードできます
+  構成サーバー テンプレートの最新バージョンは、[Microsoft ダウンロード センター](https://aka.ms/asrconfigurationserver)から直接ダウンロードできます。
 
 
 ## <a name="import-the-template-in-vmware"></a>VMware にテンプレートをインポートする
 
 
-1. VMWare vSphere Client を使って、VMware vCenter サーバーまたは vSphere ESXi ホストにログオンします。
-2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選び、Deploy OVF Template (OVF テンプレートのデプロイ) ウィザードを起動します。  
+1. VMWare vSphere Client を使って、VMware vCenter サーバーまたは vSphere ESXi ホストにサインインします。
+2. **[File]\(ファイル\)** メニューの **[Deploy OVF Template]\(OVF テンプレートのデプロイ\)** を選び、Deploy OVF Template (OVF テンプレートのデプロイ) ウィザードを起動します。
 
      ![OVF テンプレート](./media/tutorial-vmware-to-azure/vcenter-wizard.png)
 
-3. **[Select source]\(ソースの選択\)** で、ダウンロードした OVF の場所を指定します。
-4. **[Review details]\(詳細の確認\)** で、**[Next]\(次へ\)** をクリックします。
+3. **[Select source]\(ソースの選択\)** で、ダウンロードした OVF の場所を入力します。
+4. **[Review details]\(詳細の確認\)** で、**[Next]\(次へ\)** を選択します。
 5. **[Select name and folder]\(名前とフォルダーの選択\)** および **[Select configuration]\(構成の選択\)** は、既定の設定のままにします。
 6. **[Select storage]\(ストレージの選択\)** で、パフォーマンスを最大にするために、**[Select virtual disk format]\(仮想ディスクの形式の選択\)** の **[Thick Provision Eager Zeroed]\(シック プロビジョニング Eager Zeroed\)** を選びます。
 4. ウィザードの残りのページでは、既定の設定をそのまま使います。
 5. **[Ready to complete]\(完了の準備\)** で、次の操作を行います。
-  - 既定の設定で VM をセットアップするには、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** > **[Finish]\(完了\)** の順に選びます。
-  - 追加のネットワーク インターフェイスを追加する場合は、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** をオフにし、**[Finish]\(完了\)** を選びます。 既定では構成サーバー テンプレートが 1 つの NIC でデプロイされますが、デプロイ後にさらに NIC を追加することができます。
+
+    * 既定の設定で VM をセットアップするには、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** > **[Finish]\(完了\)** の順に選びます。
+
+    * 追加のネットワーク インターフェイスを追加するには、**[Power on after deployment]\(デプロイ後に電源をオンにする\)** をオフにし、**[Finish]\(完了\)** を選びます。 既定でデプロイされる構成サーバー テンプレートの NIC は 1 つだけですが、 デプロイ後にさらに NIC を追加することができます。
 
 
 ## <a name="add-an-additional-adapter"></a>さらにアダプターを追加する
@@ -78,34 +80,34 @@ Site Recovery では、高可用性の VMware VM として構成サーバーを�
 構成サーバーにさらに NIC を追加する場合は、サーバーをコンテナーに登録する前に追加します。 登録後のアダプターの追加はサポートされていません。
 
 1. vSphere Client インベントリで VM を右クリックし、**[Edit Settings]\(設定の編集\)** を選びます。
-2. **[Hardware]\(ハードウェア\)** で、**[Add]\(追加\)** > **[Ethernet Adapter]\(イーサネット アダプター\)** の順にクリックします。 その後、 **[次へ]**をクリックします。
+2. **[Hardware]\(ハードウェア\)** で、**[Add]\(追加\)** > **[Ethernet Adapter]\(イーサネット アダプター\)** の順に選択します。 次に、**[次へ]** を選択します。
 3. アダプターの種類およびネットワークを選びます。 
-4. VM がオンになったときに仮想 NIC を接続するには、**[Connect at power on]\(電源をオンにしたときに接続する\)** をオンにします。 **[Next]\(次へ\)** > **[Finish]\(完了\)** 順にクリックし、**[OK]** をクリックします。
+4. VM がオンになったときに仮想 NIC を接続するには、**[Connect at power on]\(電源をオンにしたときに接続する\)** をオンにします。 次に、**[Next]\(次へ\)** > **[Finish]\(完了\)** > **OK** の順に選びます。
  
 
 ## <a name="register-the-configuration-server"></a>構成サーバーを登録する 
 
 1. VMWare vSphere Client のコンソールで、VM をオンにします。
-2. VM が Windows Server 2016 のインストール エクスペリエンスで起動します。 使用許諾契約書に同意し、管理者パスワードを指定します。
-3. インストールの完了後に、管理者として VM にログオンします。
-4. 初めてログオンすると、Azure Site Recovery 構成ツールが起動されます。
-5. 構成サーバーを Site Recovery に登録するために使う名前を指定します。 その後、 **[次へ]**をクリックします。
-6. このツールは、VM が Azure に接続できることを確認します。 接続が確立された後、**[サインイン]** をクリックして、自分の Azure サブスクリプションにログインします。 この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。
+2. VM が Windows Server 2016 のインストール エクスペリエンスで起動します。 使用許諾契約書に同意し、管理者パスワードを入力します。
+3. インストールの完了後に、管理者として VM にサインインします。
+4. 初めてサインインすると、Azure Site Recovery 構成ツールが起動されます。
+5. 構成サーバーを Site Recovery に登録するために使う名前を入力します。 次に、**[次へ]** を選択します。
+6. このツールは、VM が Azure に接続できることを確認します。 接続が確立された後、**[サインイン]** を選択して、自分の Azure サブスクリプションにサインインします。 この資格情報は、構成サーバーを登録するコンテナーにアクセスできる必要があります。
 7. ツールがいくつかの構成タスクを実行した後、再起動されます。
-8. マシンにもう一度ログオンします。 構成サーバーの管理ウィザードが自動的に起動されます。
+8. 再度マシンにサインインします。 構成サーバーの管理ウィザードが自動的に起動されます。
 
 ### <a name="configure-settings"></a>設定を構成する
 
-1. 構成サーバーの管理ウィザードで **[接続の設定]** を選び、レプリケーション トラフィックを受信する NIC を選びます。 その後、 **[保存]**をクリックします。 構成後、この設定を変更することはできません。
+1. 構成サーバー管理ウィザードで、**[接続の設定]** を選びます。 レプリケーション トラフィックを受信する NIC を選び、**[保存]** を選びます。 構成後、この設定を変更することはできません。
 2. **[Recovery Services コンテナーを選択する]** で、Azure サブスクリプションと、関連するリソース グループおよびコンテナーを選びます。
-3. **[サードパーティ製ソフトウェアのインストール]** で使用許諾契約書に同意し、**[ダウンロードしてインストール]** をクリックして MySQL Server をインストールします。
-4. **[VMware PowerLCI のインストール]** をクリックします。 この操作を行う前に、すべてのブラウザー ウィンドウを閉じてください。 次に、**[続行]** をクリックします
+3. **[サードパーティ製ソフトウェアのインストール]** でライセンス契約に同意します。 **[ダウンロードしてインストール]** を選択して MySQL サーバーをインストールします。
+4. **[VMware PowerCLI のインストール]** を選択します。 このステップを行う前に、すべてのブラウザー ウィンドウを閉じてください。 その後 **[続行]** を選択します。
 5. **[アプライアンス構成の検証]** で、続行する前に前提条件が検証されます。
-6. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを指定します。 サーバーがリッスンしているポートと、コンテナーで VMware サーバーのために使うフレンドリ名を指定します。
-7. VMware サーバーに接続するために構成サーバーによって使われる資格情報を指定します。 Site Recovery はこれらの資格情報を使って、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順にクリックします。
-8. **[仮想マシンの資格情報の構成]** で、レプリケーションが有効になったときにモビリティ サービスをマシンに自動的にインストールするために使われるユーザー名とパスワードを指定します。 Windows マシンの場合、このアカウントは、レプリケートするマシンに対するローカル管理者特権を持っている必要があります。 Linux の場合は、ルート アカウントの詳細を指定します。
-9. **[構成の確定]** をクリックして、登録を完了します。 
-10. 登録が完了したら、Azure Portal で、構成サーバーおよび VMware サーバーがコンテナーの **[ソース]** ページの一覧に表示されていることを確認します。 その後、**[OK]** をクリックして、ターゲットの設定を構成します。
+6. **[Configure vCenter Server/vSphere ESXi server]\(vCenter Server/vSphere ESXi サーバーの構成\)** で、レプリケートする VM が存在している vCenter サーバーまたは vSphere ホストの FQDN または IP アドレスを入力します。 サーバーがリッスンしているポートと、コンテナーでの VMware サーバーのフレンドリ名を入力します。
+7. VMware サーバーに接続するために構成サーバーによって使われる資格情報を入力します。 Site Recovery はこれらの資格情報を使って、レプリケーションに利用できる VMware VM を自動的に検出します。 **[追加]**、**[続行]** の順に選択します。
+8. **[仮想マシンの資格情報の構成]** で、レプリケーションが有効になったときに Azure Site Recovery モビリティ サービスをマシンに自動的にインストールするために使われるユーザー名とパスワードを入力します。 Windows マシンの場合、このアカウントは、レプリケートするマシンに対するローカル管理者特権を持っている必要があります。 Linux の場合は、ルート アカウントの詳細を指定します。
+9. **[構成の確定]** を選択して、登録を完了します。 
+10. 登録が完了したら、Azure Portal で、構成サーバーおよび VMware サーバーがコンテナーの **[ソース]** ページの一覧に表示されていることを確認します。 その後、**[OK]** を選択して、ターゲットの設定を構成します。
 
 
 ## <a name="troubleshoot-deployment-issues"></a>デプロイに関する問題のトラブルシューティング
@@ -116,4 +118,4 @@ Site Recovery では、高可用性の VMware VM として構成サーバーを�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure への [VMware VM](tutorial-vmware-to-azure.md) および[物理サーバー](tutorial-physical-to-azure.md)のディザスター リカバリーの設定に関するチュートリアルをご覧ください。
+Azure への [VMware VM](tutorial-vmware-to-azure.md) のディザスター リカバリーを設定する。

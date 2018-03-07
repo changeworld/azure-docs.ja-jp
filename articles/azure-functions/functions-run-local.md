@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: 8b85457c5df9fb15c7eebe8b6fe8fb904f9e6009
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f19fa1ac4dd970ca3df2c0fdbf8e0778e171c43d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -105,6 +105,14 @@ Initialized empty Git repository in D:/Code/Playground/MyFunctionProj/.git/
 ```
 
 ローカル Git リポジトリを使用せずにプロジェクトを作成する場合は、`--no-source-control [-n]` オプションを使用します。
+
+## <a name="register-extensions"></a>拡張機能を登録する
+
+Azure Functions ランタイムのバージョン 2.x では、関数アプリで使用する[バインディング拡張機能](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/README.md)を明示的に登録する必要があります。 
+
+[!INCLUDE [Full bindings table](../../includes/functions-core-tools-install-extension.md)]
+
+詳しくは、「[Azure Functions でのトリガーとバインドの概念](functions-triggers-bindings.md#register-binding-extensions)」をご覧ください。
 
 ## <a name="local-settings-file"></a>ローカル設定ファイル
 
@@ -311,6 +319,10 @@ curl --request POST -H "Content-Type:application/json" --data '{"input":"sample 
 ```
 func run MyHttpTrigger -c '{\"name\": \"Azure\"}'
 ```
+
+### <a name="viewing-log-files-locally"></a>ログ ファイルをローカルに表示する
+
+[!INCLUDE [functions-local-logs-location](../../includes/functions-local-logs-location.md)]
 
 ## <a name="publish"></a>Azure に発行する
 

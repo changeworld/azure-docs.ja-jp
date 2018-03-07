@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/20/2018
 ms.author: jeffgilb
 ms.reviewer: ppacent
-ms.openlocfilehash: d96e2e6767ca01c8c16403a8846e3ab9d16796bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f2f71372211dcc9db34beb3fa3fd788920f8bd45
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 Azure Stack には、少数の Azure Stack サービスやテナント VM に割り当てられた外部からアクセス可能なパブリック IP アドレスを使用するパブリック インフラストラクチャ ネットワークが存在します。 Azure Stack のデプロイ中に、これらの Azure Stack パブリック インフラストラクチャ エンドポイントの適切な DNS 名を持つ PKI 証明書が必要です。 この記事では、次の項目に関する情報を提供します。
@@ -27,6 +27,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - Azure Stack をデプロイするために必要な証明書の種類
 - これらの仕様に一致する証明書を取得するプロセス
 - デプロイ中にこれらの証明書を準備、検証、および使用する方法
+
 > [!NOTE]
 > デプロイ時には、その対象となる ID プロバイダー (Azure AD または AD FS) に合ったデプロイ フォルダーに証明書をコピーする必要があります。 すべてのエンドポイントについて 1 つの証明書を使用する場合は、後述の表に記載した各デプロイ フォルダーに、その証明書ファイルをコピーしてください。 フォルダー構造は、デプロイ仮想マシンにあらかじめ作成されており、C:\CloudDeployment\Setup\Certificates で確認できます。 
 
@@ -37,6 +38,7 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - 証明書署名アルゴリズムを SHA1 にすることはできません。より強力にする必要があります。 
 - Azure Stack のインストールには公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 
 - 証明書 pfx ファイルの "Key Usage" フィールドには、"Digital Signature" と "KeyEncipherment" の値が含まれている必要があります。
+- 証明書の pfx ファイルの "Enhanced Key Usage" フィールドには、"Server Authentication (1.3.6.1.5.5.7.3.1)" と "Client Authentication (1.3.6.1.5.5.7.3.2)" の値が含まれている必要があります。
 - デプロイの時点で、すべての証明書 pfx ファイルのパスワードが同じである必要があります。
 - デプロイの失敗を回避するために、すべての証明書のサブジェクト名とサブジェクトの別名がこの記事で説明されている仕様に一致していることを確認してください。
 

@@ -12,21 +12,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/21/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 796a455ffb906a47ab4ac9ae069537b0d7a31156
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b9e81bbff7c09f3bfb60fcdeda5cd3c8faf23adc
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>SQL API 用の Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node.js](sql-api-sdk-node.md)
+> * [Node.JS](sql-api-sdk-node.md)
 > * [Java](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
 > * [REST](https://docs.microsoft.com/rest/api/documentdb/)
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/13/2018
 
 <tr><td>**サンプル**</td><td>[.NET コード サンプル](sql-api-dotnet-samples.md)</td></tr>
 
-<tr><td>**概要**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
+<tr><td>**作業の開始**</td><td>[Azure Cosmos DB .NET SDK を開始する](sql-api-get-started.md)</td></tr>
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](sql-api-dotnet-application.md)</td></tr>
 
@@ -53,6 +53,10 @@ ms.lasthandoff: 02/13/2018
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+### <a name="a-name12021202"></a><a name="1.20.2"/>1.20.2
+
+* 特定の競合状態の下で起こり、セッションの整合性レベルを使うと断続的に "Microsoft.Azure.Documents.NotFoundException: The read session is not available for the input session token" (入力セッション トークンでは読み取りセッションを使用できません) というエラーが発生するバグを修正しました。
+
 ### <a name="a-name12011201"></a><a name="1.20.1"/>1.20.1
 
 * FeedOptions.MaxItemCount = -1 によって System.ArithmeticException: page size is negative (ページ サイズがマイナスです) がスローされた回帰が修正されました。
@@ -285,6 +289,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.20.2](#1.20.2) |2018 年 2 月 21 日 |--- |
 | [1.20.1](#1.20.1) |2018 年 2 月 5 日 |--- |
 | [1.19.1](#1.19.1) |2017 年 11 月 16 日 |--- |
 | [1.19.0](#1.19.0) |2017 年 11 月 10 日 |--- |

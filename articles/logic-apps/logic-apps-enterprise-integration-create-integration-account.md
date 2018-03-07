@@ -14,118 +14,95 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: f7ec63810fe78b38c574ec39369d5926f80e595e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b238ef8cf9d1328913334a92c042584334d81e3c
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="what-is-an-integration-account"></a>統合アカウントとは
 
-統合アカウントによって、エンタープライズ統合アプリでスキーマ、マップ、証明書、パートナー、契約などのアーティファクトを管理できます。 作成した統合アプリケーションはすべて、統合アカウントを使用してこれらのスキーマ、マップ、証明書などにアクセスします。
+統合アカウントは、エンタープライズ統合アプリ (具体的にはロジック アプリ) が B2B アーティファクト (取引先、契約、マップ、スキーマ、証明書など) にアクセスして管理する手段を提供します。 このアクセスを提供するには、統合アカウントとロジック アプリの両方が "*同じ Azure の場所*" であることを確認した後、ロジック アプリに統合アカウントをリンクします。
 
 ## <a name="create-an-integration-account"></a>統合アカウントの作成
 
-1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューの **[すべてのサービス]** を選択します。
+1. [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 
 
-    ![[すべてのサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
-2. 検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
-
-    !["統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-accounts/account-2.png)  
+   ![統合アカウントを作成する](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
 3. ページの上部にある **[追加]** を選択します。
 
-    ![[追加] の選択](./media/logic-apps-enterprise-integration-accounts/account-3.png)
+   ![[追加] の選択](./media/logic-apps-enterprise-integration-accounts/account-3.png)
 
-4. 統合アカウントの名前を指定し、使用する Azure サブスクリプションを選択します。 新しい**リソース グループ**を作成するか、既存のリソース グループを選択することができます。 次に、統合アカウントをホストする**場所**と**価格レベル**を選択します。 
+4. 統合アカウントの名前を指定し、使用する Azure サブスクリプションを選択します。 新しい**リソース グループ**を作成するか、既存のリソース グループを選択することができます。 統合アカウントをホストする **[場所]** と **[価格レベル]** を選びます。 準備ができたら、**[作成]** をクリックします。
 
-    準備ができたら、**[作成]** をクリックします。
+   ![統合アカウントの詳細の指定](./media/logic-apps-enterprise-integration-accounts/account-4.png)
 
-    ![統合アカウントの詳細の指定](./media/logic-apps-enterprise-integration-accounts/account-4.png)
-
-    Azure により、選択した場所に統合アカウントがプロビジョニングされます。通常、1 分以内で完了します。
+   Azure により、選択した場所に統合アカウントがプロビジョニングされます。通常、1 分以内で完了します。
 
 5. ページを更新します。 新しい統合アカウントがリストされていることを確認します。
 
-    ![新しい統合アカウントの表示](./media/logic-apps-enterprise-integration-accounts/account-5.png) 
+   ![新しい統合アカウントの表示](./media/logic-apps-enterprise-integration-accounts/account-5.png) 
 
 次に、作成した統合アカウントをロジック アプリにリンクさせます。 
 
 ## <a name="link-an-integration-account-to-a-logic-app"></a>ロジック アプリへの統合アカウントのリンク
 
-ロジック アプリで統合アカウントにあるマップ、スキーマ、契約などのアーティファクトにアクセスするには、ロジック アプリに統合アカウントをリンクさせます。
-
-### <a name="prerequisites"></a>前提条件
-
-* 統合アカウント
-* ロジック アプリ
-
-> [!NOTE] 
-> 開始する前に、統合アカウントおよびロジック アプリが*同じ Azure の場所*にあることを確認してください。
-
+ロジック アプリが統合アカウントにある取引先、契約、マップ、スキーマなどの B2B アーティファクトにアクセスできるようにするには、ロジック アプリに統合アカウントをリンクします。 
 
 1. Azure Portal で、ロジック アプリを選択し、ロジック アプリの場所を確認します。
 
-    ![ロジック アプリの選択、場所の確認](./media/logic-apps-enterprise-integration-accounts/linkaccount-1.png)
+   ![ロジック アプリの選択、場所の確認](./media/logic-apps-enterprise-integration-accounts/linkaccount-1.png)
 
 2. **[設定]** で、**[統合アカウント]** を選択します。
 
-    ![[統合アカウント] の選択](./media/logic-apps-enterprise-integration-accounts/linkaccount-2.png)
+   ![[統合アカウント] の選択](./media/logic-apps-enterprise-integration-accounts/linkaccount-2.png)
 
 3. **[統合アカウントを選択してください]** ボックスの一覧からロジック アプリにリンクする統合アカウントを選択します。 リンクを終了するには、**[保存]** を選択します。
 
-    ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-accounts/linkaccount-3.png)
+   ![統合アカウントを選択する](./media/logic-apps-enterprise-integration-accounts/linkaccount-3.png)
 
-    統合アカウントがロジック アプリにリンクされていることと、統合アカウント内のすべてのアーティファクトがロジック アプリに対して使用できるようになったことを示す通知が表示されます。
+   統合アカウントがロジック アプリにリンクされていることと、統合アカウント内のすべてのアーティファクトがロジック アプリに対して使用できるようになったことを示す通知が表示されます。
 
-    ![ロジック アプリが統合アカウントにリンクされた](./media/logic-apps-enterprise-integration-accounts/linkaccount-5.png)
+   ![ロジック アプリが統合アカウントにリンクされた](./media/logic-apps-enterprise-integration-accounts/linkaccount-5.png)
 
-統合アカウントがロジック アプリにリンクされ、Logic Apps 内で B2B コネクタが使用できるようになりました。 一般的な B2B コネクタには、XML の検証、フラット ファイルのエンコードやデコードなどがあります。  
+統合アカウントがロジック アプリにリンクされ、Logic Apps 内で B2B コネクタが使用できるようになります。 一般的な B2B コネクタには、XML の検証、フラット ファイルのエンコードやデコードなどがあります。  
 
 ## <a name="delete-your-integration-account"></a>統合アカウントの削除
 
-1. **[すべてのサービス]** を選択します。
+1. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
-    ![[すべてのサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+   ![統合アカウントの検索](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
-2. 検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
-
-    !["統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-accounts/account-2.png)  
-
-3. 削除する統合アカウントを選択します。
+2. 削除する統合アカウントを選択します。
 
     ![削除する統合アカウントの選択](./media/logic-apps-enterprise-integration-accounts/account-5.png)
 
-4. メニューの **[削除]** を選択します。
+3. メニューの **[削除]** を選択します。
 
     ![[削除] の選択](./media/logic-apps-enterprise-integration-accounts/delete.png)
 
-5. 統合アカウントの削除を確認します。
+4. 統合アカウントの削除を確認します。
 
 ## <a name="move-your-integration-account"></a>統合アカウントの移動
 
-統合アカウントを別の Azure サブスクリプションまたはリソース グループに移動するには、以下の手順に従います。
+統合アカウントを別の Azure サブスクリプションまたはリソース グループに移動するには、以下の手順に従います。 統合アカウントを移動した後、新しいリソース ID を使うようにすべてのスクリプトを更新する必要があります。
 
-> [!IMPORTANT]
-> 統合アカウントを移動すると、新しいリソース ID を使用するために、すべてのスクリプトを更新する必要があります。
+1. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
-1. **[すべてのサービス]** を選択します。
+   ![統合アカウントの検索](./media/logic-apps-enterprise-integration-accounts/account-1.png)
 
-    ![[すべてのサービス] の選択](./media/logic-apps-enterprise-integration-accounts/account-1.png)
+2. 移動する統合アカウントを選択します。 **[設定]** の **[プロパティ]** を選択します。
 
-2. 検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
+   ![移動する統合アカウントの選択。 [設定] の [プロパティ] の選択](./media/logic-apps-enterprise-integration-accounts/move.png)
 
-    !["統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-accounts/account-2.png)
+3. 統合アカウントに関連付けられているリソース グループまたは Azure サブスクリプションを変更します。
 
-3. 移動する統合アカウントを選択します。 **[設定]** の **[プロパティ]** を選択します。
-
-    ![移動する統合アカウントの選択。 [設定] の [プロパティ] の選択](./media/logic-apps-enterprise-integration-accounts/move.png)
-
-5. 統合アカウントに関連付けられているリソース グループまたは Azure サブスクリプションを変更します。
-
-    ![リソース グループの変更またはサブスクリプションの変更の選択](./media/logic-apps-enterprise-integration-accounts/move-2.png)
+   ![リソース グループの変更またはサブスクリプションの変更の選択](./media/logic-apps-enterprise-integration-accounts/move-2.png)
 
 ## <a name="next-steps"></a>次の手順
+
 * [契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
 

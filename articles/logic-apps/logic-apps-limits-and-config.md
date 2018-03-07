@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 8de3cc6665fc3861aedcf4f36cdce4a4a776e80d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps の制限と構成
 
@@ -58,15 +58,22 @@ ms.lasthandoff: 02/09/2018
 
 これらの制限は、ロジック アプリの 1 回の実行に適用されます。
 
-| Name | 制限 | 
-| ---- | ----- | 
-| 時間継続時間 | 90 日間 | 
-| ストレージのリテンション期間 | 実行の開始時刻から 90 日間 | 
-| 最小の繰り返し間隔 | 1 秒 </br>App Service プランを持つロジック アプリの場合: 15 秒 | 
-| 最大の繰り返し間隔 | 500 日 | 
-||| 
+| Name | 既定値 | 制限 |
+| ---- | ------- | ----- |
+| 時間継続時間   | 90 日間 | 7 ～ 90 日間 |
+| ストレージのリテンション期間 | 実行の開始時刻から 90 日間 |  実行の開始時刻から 7 ～ 90 日間 |
+||||
 
 通常の処理フローで実行継続期間またはストレージ リテンション期間の制限を超える場合の要件の詳細については、[製品チームにお問い合わせ](mailto://logicappsemail@microsoft.com)ください。
+
+
+### <a name="recurrence-interval"></a>繰り返し間隔
+
+| Name | 制限 |
+| ---- | ------- |
+| 最小の繰り返し間隔 | 1 秒 </br>App Service プランを持つロジック アプリの場合: 15 秒 |
+| 最大の繰り返し間隔 | 500 日 |
+|||
 
 ### <a name="looping-and-debatching-limits"></a>ループと分割処理の制限
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 12/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: 422c19dfa9a204d98a898f76bc1af92a05c054d0
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ba67a2a20d3f3e8e9fbccb2674cea500bfbde3fb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-replica"></a>sfctl replica
 サービス パーティションに属しているレプリカを管理します。
@@ -64,7 +64,7 @@ Service Fabric ノードにデプロイされているレプリカの詳細を�
 ## <a name="sfctl-replica-health"></a>sfctl replica health
 Service Fabric ステートフル サービス レプリカまたはステートレス サービス インスタンスの正常性を取得します。
 
-Service Fabric レプリカの正常性を取得します。 正常性状態に基づいてレプリカで報告される正常性イベントのコレクションをフィルター処理するには、EventsHealthStateFilter を使用します。 が必要です。
+Service Fabric レプリカの正常性を取得します。 正常性状態に基づいてレプリカで報告される正常性イベントのコレクションをフィルター処理するには、EventsHealthStateFilter を使用します。
 
 ### <a name="arguments"></a>引数
 
@@ -72,7 +72,7 @@ Service Fabric レプリカの正常性を取得します。 正常性状態に�
 | --- | --- |
 | --partition-id    [必須]| パーティションの ID。|
 | --replica-id      [必須]| レプリカの識別子。|
-| --events-health-state-filter| 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 すべてのイベントを使用して正常性の状態の集計が評価されます。 指定しない場合、すべてのエントリが返されます。 状態の値はフラグベースの列挙であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせとなる可能性があります。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。 - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。 - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。 - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。 - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。 - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。 - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。|
+| --events-health-state-filter| 正常性の状態に基づいて返された HealthEvent オブジェクトのコレクションをフィルター処理できます。 このパラメーターに指定できる値には、次の正常性の状態のいずれかの整数値が含まれます。 フィルターに一致するイベントのみが返されます。 すべてのイベントを使用して正常性の状態の集計が評価されます。 指定しない場合、すべてのエントリが返されます。 状態値はフラグベースの列挙型であるため、値はビット演算子 'OR' を使用して取得したこれらの値の組み合わせが可能です。 たとえば、指定した値が 6 の場合、HealthState の値が OK (2) と Warning (4) のすべてのイベントが返されます。 - Default - 既定値。 任意の HealthState と一致します。 値は 0 です。 - None - どの HealthState 値とも一致しないフィルター。 状態の特定のコレクションの結果が返されないようにするために使用されます。 値は 1 です。 - Ok - HealthState 値が Ok の入力に一致するフィルター。 値は 2 です。 - Warning - HealthState 値が Warning の入力に一致するフィルター。 値は 4 です。 - Error - HealthState 値が Error の入力に一致するフィルター。 値は 8 です。 - All - 任意の HealthState 値の入力に一致するフィルター。 値は 65535 です。|
 | --timeout -t             | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -82,7 +82,7 @@ Service Fabric レプリカの正常性を取得します。 正常性状態に�
 | --debug                  | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h                | このヘルプ メッセージを表示して終了します。|
 | --output -o              | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query                  | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query                  | JMESPath クエリ文字列。 詳細については、http://jmespath.org/ を参照してください。|
 | --verbose                | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-replica-info"></a>sfctl replica info
@@ -106,7 +106,7 @@ Service Fabric パーティションのレプリカに関する情報を取得�
 | --debug               | すべてのデバッグ ログを表示するため、ログ記録の詳細度を上げます。|
 | --help -h             | このヘルプ メッセージを表示して終了します。|
 | --output -o           | 出力形式。  使用できる値は、json、jsonc、table、tsv です。  既定値は json です。|
-| --query               | JMESPath クエリ文字列。 詳細と例については、http://jmespath.org/ を参照してください。|
+| --query               | JMESPath クエリ文字列。 詳細については、http://jmespath.org/ を参照してください。|
 | --verbose             | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-replica-list"></a>sfctl replica list

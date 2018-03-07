@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/02/2018
 ms.author: liydu
-ms.openlocfilehash: abaad6514b24bd4bcc923d87a7b721cc80648c47
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b43061f5af3e836ba3f0b37eb11b351a769890be
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-suite-for-remote-monitoring"></a>リモート監視のために IoT DevKit AZ3166 を Azure IoT Suite に接続する
 
 このチュートリアルでは、DevKit でサンプル アプリを実行して、センサー データを Azure IoT Suite に送信する方法を説明します。
+
+[MXChip IoT DevKit](https://aka.ms/iot-devkit) は、豊富な周辺機器とセンサーを備えたオールインワンの Arduino 互換ボードです。 [Arduino 向け Visual Studio Code 拡張機能](https://aka.ms/arduino)を使用して開発できます。 また、Microsoft Azure サービスを活用したモノのインターネット (IoT) ソリューションのプロトタイプを作成する手順を示す[プロジェクト カタログ](https://microsoft.github.io/azure-iot-developer-kit/docs/projects/)が付属しています。
 
 ## <a name="what-you-need"></a>必要なもの
 
@@ -122,3 +124,4 @@ IoT Hub でデバイス ID を変更するには、[このガイド](https://mic
 ここでは、DevKit デバイスを Azure IoT Suite に接続して、センサー デバイスを視覚化する方法を説明しました。推奨する次の手順は、以下のとおりです。
 
 * [Azure IoT Suite の概要](https://docs.microsoft.com/azure/iot-suite/)
+* [MXChip IoT DevKit デバイスを Microsoft IoT Central アプリケーションに接続する](https://docs.microsoft.com/en-us/microsoft-iot-central/howto-connect-devkit)

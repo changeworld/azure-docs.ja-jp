@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示"
-description: "シングル サインオンをサポートするアプリケーションを Azure Active Directory ギャラリーに表示する方法 | Microsoft Azure"
+title: "Azure Active Directory アプリケーション ギャラリーでアプリケーションを公開する | Microsoft Docs"
+description: "シングル サインオンをサポートするアプリケーションを Azure Active Directory アプリ ギャラリーで公開する方法を説明します"
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
@@ -15,47 +15,49 @@ ms.workload: identity
 ms.date: 01/09/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: feb09aa8f8e22ad6fbda6a490d251c500bedf3ee
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: 502fb555bd3b381c9be0ff04e210cc07f9bf6cd8
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 02/28/2018
 ---
-# <a name="listing-your-application-in-the-azure-active-directory-application-gallery"></a>Azure Active Directory アプリケーション ギャラリーでのアプリケーションの表示
+# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>アプリケーションを Azure Active Directory アプリケーション ギャラリーで公開する
 
 
-##  <a name="what-is-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーとは
+##  <a name="what-is-the-azure-ad-application-gallery"></a>Azure AD アプリケーション ギャラリーとは
 
-Azure AD は、クラウド ベースの ID サービスです。 [Azure AD アプリ ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/) は、シングル サインオンおよびユーザー プロビジョニング用のすべてのアプリケーション コネクタが公開されている共通ストアです。 ID プロバイダーとして Azure AD を使用している共通のお客様が、ここに公開されているさまざまな SaaS アプリケーション コネクタを検索します。 IT 管理者は、アプリ ギャラリーからコネクタを追加し、構成して、シングル サインオンおよびプロビジョニングに使用します。 Azure AD では、シングル サインオンに対応する SAML 2.0、OpenID Connect、OAuth、WS-Fed などの主要なフェデレーション プロトコルをすべてサポートします。 
+Azure Active Directory (Azure AD) は、クラウド ベースの ID サービスです。 [Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)は、Azure Marketplace アプリ ストア内にあり、シングル サインオンおよびユーザー プロビジョニング用のすべてのアプリケーション コネクタが公開されています。 ID プロバイダーとして Azure AD を使うお客様は、ここで発行されているさまざまな SaaS アプリケーション コネクタを検索します。 IT 管理者は、アプリ ギャラリーからコネクタを追加した後、シングル サインオンおよびプロビジョニング用にコネクタを構成して使います。 Azure AD は、SAML 2.0、OpenID Connect、OAuth、WS-Fed など、シングル サインオン用の主要なフェデレーション プロトコルをすべてサポートします。 
 
-## <a name="what-are-the-benefits-of-listing-the-application-in-the-gallery"></a>ギャラリーにアプリケーションを公開する利点とは
+## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>ギャラリーにアプリケーションを公開する利点とは
 
-*  考えられる最良のシングル サインオン エクスペリエンスを顧客に提供します。
+*  顧客は考えられる最良のシングル サインオン エクスペリエンスを探しています。
 
-*  アプリケーションの構成をシンプルかつ単純にします。
+*  アプリケーションの構成は簡単で最小限です。 
 
-*  顧客がアプリケーションをギャラリーで検索して見つけることができます。 
+*  クイック検索でギャラリー内のアプリケーションが検索されます。
 
-*  すべての顧客が、Azure AD SKU (Free、Basic、Premium) に関係なく、この統合を使用できます。
+*  Free、Basic、Premium すべての Azure AD ユーザーがこの情報を使用できます。 
 
-*  共通の顧客向けの詳細な構成手順チュートリアルがあります。
+*  共通の顧客向けの詳細な構成手順チュートリアルがあります。 
 
-*  SCIM を使用している場合、同じアプリのユーザー プロビジョニングを有効にできます。
+*  SCIM を使っているユーザーは、同じアプリのプロビジョニングを使うことができます。
 
 
-##  <a name="what-are-the-pre-requisites"></a>前提条件
+##  <a name="prerequisites-implement-federation-protocol"></a>前提条件: フェデレーション プロトコルを実装する
 
-Azure AD ギャラリー内のアプリケーションの一覧を表示するには、まず、アプリケーションに Azure AD でサポートされているフェデレーション プロトコルのいずれかを実装する必要があります。 ここから、Azure AD アプリケーション ギャラリーの使用条件をご覧ください。 使っているプロトコル: 
+Azure AD アプリ ギャラリーにアプリケーションを公開するには、まず、Azure AD でサポートされている以下のフェデレーション プロトコルのいずれかを実装する必要があります。 ここから、Azure AD アプリケーション ギャラリーの使用条件をご覧ください。 
 
-*   **OpenID Connect** - Azure AD でマルチ テナント アプリケーションを作成し、アプリケーションの [Azure AD の同意フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受信したテナント ID とユーザーの UPN に基づいて顧客のユーザー アクセスを制御できます。 アプリケーションを Azure AD と統合するには、[開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。
+*   **OpenID Connect**: Azure AD でマルチテナント アプリケーションを作成し、アプリケーションに [Azure AD 同意フレームワーク](active-directory-integrating-applications.md#overview-of-the-consent-framework)を実装します。 すべての顧客がアプリケーションへの同意を提供できるように、共通エンドポイントにログイン要求を送信します。 トークンで受け取ったテナント ID とユーザーの UPN に基づいてユーザー アクセスを制御できます。 アプリケーションを Azure AD と統合するには、[開発者向けの手順](active-directory-authentication-scenarios.md)に従ってください。
 
-*   **SAML 2.0 または WS-Fed** - アプリケーションに、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能が必要です。 SAML 2.0 をサポートするすべてのアプリケーションは、[この手順](../active-directory-saas-custom-apps.md)を使用して Azure AD テナントと直接統合し、カスタム アプリケーションを追加できます。
+*   **SAML 2.0** または **WS-Fed**: アプリケーションに、SP または IDP モードで SAML/WS-Fed SSO 統合を行う機能が必要です。 アプリが SAML 2.0 をサポートしている場合、[カスタム アプリケーションを追加する手順](../active-directory-saas-custom-apps.md)を使って、Azure AD テナントと直接統合できます。
 
-*   [パスワード SSO](../active-directory-appssoaccess-whatis.md) - HTML サインイン ページがある Web アプリケーションを作成して、**パスワード ベースのシングル サインオン** を構成します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。 
+*   [パスワード SSO](../active-directory-appssoaccess-whatis.md): HTML サインイン ページがある Web アプリケーションを作成して、**パスワード ベースのシングル サインオン**を構成します。 パスワード ベースの SSO (パスワード保管ともいう) では、ID フェデレーションをサポートしない Web アプリケーションに対するユーザーのアクセスおよびパスワードを管理できます。 これは、複数のユーザーが、たとえば、組織のソーシャル メディア アプリ アカウントなどに、1 つのアカウントを共有する必要があるシナリオにも便利です。 
 
-## <a name="process-for-submitting-the-request-in-the-portal"></a>ポータルで要求を送信するためのプロセス
+## <a name="submit-the-request-in-the-portal"></a>ポータルで要求を送信する
 
-アプリケーションの統合が Azure AD で動作することをテストしたら、[アプリケーション ネットワーク ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)へのアクセスを求める要求を送信する必要があります。 Office 365 アカウントがある場合は、これを使ってこのポータルにログインできます。ない場合は、Microsoft ID (Live ID、Outlook、Hotmail など) を使ってログインします。 アクセスを要求する次のページが表示されます。 テキスト ボックスに業務の妥当性を入力し、**[アクセスの要求]** をクリックします。 Microsoft のチームが、すべての詳細を確認し、適宜アクセスを付与します。 その後に、ポータルにログオンして、アプリケーションの詳細な要求を送信できるようになります。
+アプリケーションの統合が Azure AD で動作することをテストした後は、[アプリケーション ネットワーク ポータル](https://microsoft.sharepoint.com/teams/apponboarding/Apps)へのアクセスを求める要求を送信します。 Office 365 アカウントがある場合は、それを使ってこのポータルにサインインします。 ない場合は、Microsoft アカウント (Outlook、Hotmail など) を使ってサインインします。
+
+サインインすると、次のページが表示されます。 ビジネスでアクセスが必要な正当な理由をテキスト ボックスに入力し、**[アクセスの要求]** を選びます。 Microsoft のチームが詳細をレビューし、それに応じてアクセスを提供します。 その後、ポータルにサインインして、アプリケーションの詳細な要求を送信できます。
 
 アクセスに関して問題が発生した場合は、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にお問い合わせください。
 
@@ -63,15 +65,15 @@ Azure AD ギャラリー内のアプリケーションの一覧を表示する�
 
 ## <a name="timelines"></a>タイムライン
     
-*   ギャラリーに SAML 2.0 または WS-Fed アプリケーションを公開するプロセス - **7 営業日から 10 営業日**
+SAML 2.0 または WS-Fed アプリケーションをギャラリーに公開するプロセスのタイムラインは、7 ～ 10 営業日です。
 
    ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/active-directory-app-gallery-listing/timeline.png)
 
-*   ギャラリーに OpenID Connect アプリケーションを公開するプロセス - **2 営業日から 5 営業日**
+OpenID Connect アプリケーションをギャラリーに公開するプロセスのタイムラインは、2 ～ 5 営業日です。
 
    ![ギャラリーに SAML アプリケーションを公開するタイムライン](./media/active-directory-app-gallery-listing/timeline2.png)
 
 ## <a name="escalations"></a>エスカレーション
 
-いずれのエスカレーションでも、[Azure AD の SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)に電子メールを送信するとすぐに Microsoft から連絡があります。
+すべてのエスカレーションについては、[Azure AD SSO 統合チーム](<mailto:SaaSApplicationIntegrations@service.microsoft.com>)にメールでご連絡いただけば、可能な限り早く対応します。
 

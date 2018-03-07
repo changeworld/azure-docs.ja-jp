@@ -3,7 +3,7 @@ title: "Azure の Windows VM 向けのスケジュールされたイベント | 
 description: "Windows 仮想マシンでは Azure メタデータ サービスを使用してイベントがスケジュールされています。"
 services: virtual-machines-windows, virtual-machines-linux, cloud-services
 documentationcenter: 
-author: zivraf
+author: ericrad
 manager: timlt
 editor: 
 tags: 
@@ -13,23 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/14/2017
-ms.author: zivr
-ms.openlocfilehash: 75e811f77bade3701cce2d9945cf35d6e14e376f
-ms.sourcegitcommit: 7f1ce8be5367d492f4c8bb889ad50a99d85d9a89
+ms.date: 02/22/2018
+ms.author: ericrad
+ms.openlocfilehash: 8f78f476e28ec04acfea9fe45d57a4c18d5db678
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント (プレビュー)
-
-> [!NOTE] 
-> プレビューは、使用条件に同意することを条件に使用することができます。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
->
+# <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント
 
 スケジュールされたイベントとは、仮想マシンのメンテナンスに備えるための時間をアプリケーションに与える Azure Metadata Service です。 今後のメンテナンス イベント (再起動など) に関する情報を提供することで、アプリケーションがイベントの準備を行い、中断を制限できるようにします。 このサービスは、Windows および Linux で、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 
 
 Linux のスケジュールされたイベントの詳細については、[Linux VM のスケジュールされたイベント](../linux/scheduled-events.md)に関する記事をご覧ください。
+
+> [!Note] 
+> スケジュールされたイベントは、すべての Azure リージョンで一般公開されています。 最新リリースについては、「[利用可能なバージョンとリージョン](#version-and-region-availability)」をご覧ください。
 
 ## <a name="why-scheduled-events"></a>スケジュールされたイベントを使用する理由
 
@@ -48,58 +47,42 @@ Linux のスケジュールされたイベントの詳細については、[Linu
 - プラットフォームが開始するメンテナンス (例: ホスト OS の更新)
 - ユーザーが開始するメンテナンス (例: ユーザーによる再起動や VM の再デプロイ)
 
-## <a name="the-basics"></a>基本  
+## <a name="the-basics"></a>基本操作  
 
 Azure Metadata Service では、VM 内部からアクセスできる REST エンドポイントを使用した Virtual Machine の実行に関する情報が公開されます。 情報は、VM の外部に公開されないように、ルーティング不可能な IP 経由で提供されます。
 
-### <a name="scope"></a>Scope
-スケジュールされたイベントの配信先は次のとおりです。
-- クラウド サービス内のすべての Virtual Machines
-- 可用性セット内のすべての Virtual Machines
-- スケール セットの配置グループ内のすべての Virtual Machines 
-
-そのため、イベント内の `Resources` フィールドをチェックして、影響を受ける VM を特定する必要があります。 
-
-## <a name="discovering-the-endpoint"></a>エンドポイントの検出
-VNET 対応 VM では、スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。 
+### <a name="endpoint-discovery"></a>エンドポイントの検出
+VNET が有効な VM の場合は、静的でルーティング不可能な IP アドレス `169.254.169.254` からメタデータ サービスを利用できます。 スケジュールされたイベントの最新バージョンのフル エンドポイントは次のとおりです。 
 
  > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
-Virtual Machine が Virtual Network (VNet) 内で作成されている場合、メタデータ サービスはルーティング不可能な静的 IP `169.254.169.254` 経由で提供されます。
 Virtual Machine が Virtual Network 内で作成されていない場合 (クラウド サービスと従来の VM の既定のケース)、使用する IP アドレスを検出する追加のロジックが必要となります。 [ホスト エンドポイントの検出](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm)方法については、こちらのサンプルをご覧ください。
 
-### <a name="versioning"></a>バージョン管理 
+### <a name="version-and-region-availability"></a>利用可能なバージョンとリージョン
 スケジュールされたイベントのサービスは、バージョンによって管理されています。 バージョンは必須で、現在のバージョンは `2017-08-01` です。
 
-| バージョン | リリース ノート | 
-| - | - | 
-| 2017-08-01 | <li> Iaas VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
-| 2017-03-01 | <li>パブリック プレビュー バージョン
+| バージョン | リリースの種類 | リージョン | リリース ノート | 
+| - | - | - | - |
+| 2017-08-01 | 一般公開 | すべて | <li> Iaas VM のリソース名から先頭のアンダースコアを削除<br><li>すべての要求にメタデータ ヘッダー要件を適用 | 
+| 2017-03-01 | プレビュー | すべて |<li>最初のリリース
 
 > [!NOTE] 
 > スケジュールされたイベントの前のプレビュー リリースでは、api-version として {latest} がサポートされていました。 この形式はサポートされなくなり、今後廃止される予定です。
 
-### <a name="using-headers"></a>ヘッダーの使用
-メタデータ サービスのクエリを実行するときには、要求が意図せずリダイレクトされないように、ヘッダー `Metadata:true` を指定する必要があります。 `Metadata:true` ヘッダーは、スケジュールされたイベントのすべての要求で必要です。 要求にヘッダーを含めないと、メタデータ サービスから Bad Request (無効な要求) という応答が生成されます。
+### <a name="enabling-and-disabling-scheduled-events"></a>スケジュールされたイベントの有効化と無効化
+スケジュールされたイベントは、ユーザーが初めてイベントを要求したときに、サービスに対して有効になります。 最初の呼び出しでは、最大 2 分の応答遅延が発生すると予想されます。
 
-### <a name="enabling-scheduled-events"></a>スケジュールされたイベントの有効化
-スケジュールされたイベントを初めて呼び出すとき、Azure はこの機能を Virtual Machine で暗黙的に有効化します。 そのため、最初の呼び出しでは最大 2 分の応答遅延が発生すると予想されます。
-
-> [!NOTE]
-> ご使用のサービスが 1 日間エンドポイントを呼び出さない場合、スケジュールされたイベントはそのサービスに対して自動的に無効になります。 スケジュールされたイベントがサービスに対して無効になると、ユーザー開始メンテナンスのイベントは作成されなくなります。
+スケジュールされたイベントは、サービスが 24 時間要求を行わないと、サービスに対して無効になります。
 
 ### <a name="user-initiated-maintenance"></a>ユーザーが開始したメンテナンス
 ユーザーが Azure Portal、API、CLI または PowerShell を使用して開始した仮想マシンのメンテナンスによって、スケジュールされたイベントが発生します。 これによって、アプリケーションでメンテナンス準備ロジックをテストすることができ、アプリケーションでは、ユーザーが開始したメンテナンスのための準備することができます。
 
 仮想マシンを再起動すると、`Reboot` 型のイベントがスケジュールされます。 仮想マシンを再デプロイすると、`Redeploy` 型のイベントがスケジュールされます。
 
-> [!NOTE] 
-> 現在、最大で 100 ユーザーが開始したメンテナンス操作を同時にスケジュールできます。
-
-> [!NOTE] 
-> 現在、スケジュールされたイベントが発生する結果となる、ユーザーが開始したメンテナンスは構成することができません。 構成機能は、将来のリリースで予定されています。
-
 ## <a name="using-the-api"></a>API を使用する
+
+### <a name="headers"></a>headers
+メタデータ サービスのクエリを実行するときには、要求が意図せずリダイレクトされないように、ヘッダー `Metadata:true` を指定する必要があります。 `Metadata:true` ヘッダーは、スケジュールされたイベントのすべての要求で必要です。 要求にヘッダーを含めないと、メタデータ サービスから Bad Request (無効な要求) という応答が生成されます。
 
 ### <a name="query-for-events"></a>イベントのクエリ
 次の呼び出しを行うだけで、スケジュールされたイベントのクエリを実行できます。
@@ -128,7 +111,7 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @
 ```
 
 ### <a name="event-properties"></a>イベントのプロパティ
-|プロパティ  |  説明 |
+|プロパティ  |  [説明] |
 | - | - |
 | EventId | このイベントのグローバル一意識別子。 <br><br> 例: <br><ul><li>602d9444-d2cd-49c7-8624-8643e7171297  |
 | EventType | このイベントによって発生する影響。 <br><br> 値: <br><ul><li> `Freeze`: Virtual Machine は数秒間の一時停止がスケジュールされています。 CPU は中断しますが、メモリ、開いているファイル、ネットワーク接続への影響はありません。 <li>`Reboot`: Virtual Machine は再起動がスケジュールされています (非永続メモリは失われます)。 <li>`Redeploy`: Virtual Machine は別のノードへの移動がスケジュールされています (一時ディスクは失われます)。 |
@@ -145,6 +128,14 @@ curl http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01 -H @
 | Freeze| 約 15 分 |
 | Reboot | 約 15 分 |
 | Redeploy | 10 分 |
+
+### <a name="event-scope"></a>イベントの範囲     
+スケジュールされたイベントの配信先は次のとおりです。        
+ - クラウド サービス内のすべての Virtual Machines      
+ - 可用性セット内のすべての Virtual Machines      
+ - スケール セットの配置グループ内のすべての Virtual Machines         
+
+そのため、イベント内の `Resources` フィールドをチェックして、影響を受ける VM を特定する必要があります。 
 
 ### <a name="starting-an-event"></a>イベントの開始 
 
@@ -229,8 +220,9 @@ foreach($event in $scheduledEvents.Events)
 }
 ``` 
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 
+- Azure Friday で、[スケジュールされたイベントのデモ](https://channel9.msdn.com/Shows/Azure-Friday/Using-Azure-Scheduled-Events-to-Prepare-for-VM-Maintenance)をご覧ください。 
 - スケジュールされたイベントのコード サンプルは、[Azure Instance Metadata スケジュールされたイベントの Github リポジトリ](https://github.com/Azure-Samples/virtual-machines-scheduled-events-discover-endpoint-for-non-vnet-vm)をご覧ください。
 - [インスタンス メタデータ サービス](instance-metadata-service.md)で使用可能な API の詳細についてご覧ください。
 - [Azure での Windows 仮想マシンの計画メンテナンス](planned-maintenance.md)に関するページをご覧ください。

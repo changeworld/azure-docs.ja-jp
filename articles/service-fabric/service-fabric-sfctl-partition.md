@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: 9d709a0ec2b7de985ac08fe9ee2935848e7a371c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 01dd1900fe765618e5da20bd289b9c3a021ea9a3
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 任意のサービスで、クエリを実行し、パーティションを管理します。
@@ -48,7 +48,7 @@ ms.lasthandoff: 01/18/2018
 指定した Service Fabric パーティションの正常性を取得します。
 
 指定したパーティションの正常性情報を取得します。 正常性状態に基づいてサービスで報告される正常性イベントのコレクションをフィルター処理するには、EventsHealthStateFilter を使用します。
-パーティションの ReplicaHealthState オブジェクトのコレクションをフィルター処理するには、ReplicasHealthStateFilter を使用します。 正常性ストアに存在しないパーティションを指定した場合、このコマンドレットはエラーを返します。 が必要です。
+パーティションの ReplicaHealthState オブジェクトのコレクションをフィルター処理するには、ReplicasHealthStateFilter を使用します。 正常性ストアに存在しないパーティションを指定した場合、このコマンドレットはエラーを返します。
 
 ### <a name="arguments"></a>引数
 
@@ -101,7 +101,7 @@ Service Fabric サービスのパーティションの一覧を取得します�
 
 |引数|[説明]|
 | --- | --- |
-| --service-id [必須]| サービスの ID。 これは通常、'fabric:' URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、サービス名が "fabric://myapp/app1/svc1" の場合、6.0 以上ならばサービス ID は "myapp~app1~svc1" になり、以前のバージョンでは "myapp/app1/svc1" になります。|
+| --service-id [必須]| サービスの ID。 これは通常、'fabric:' URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、サービス名が "fabric:/myapp/app1/svc1" の場合、6.0 以上ならばサービス ID は "myapp~app1~svc1" になり、以前のバージョンでは "myapp/app1/svc1" になります。|
 | --continuation-token| 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。         システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値をエンコードされた URL にすることはできません。|
 | --timeout -t        | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
@@ -162,7 +162,7 @@ Service Fabric サービスのパーティションの一覧を取得します�
 ## <a name="sfctl-partition-restart"></a>sfctl partition restart
 この API は、指定したパーティションのレプリカやインスタンスの一部またはすべてを再起動します。
 
-この API は、フェールオーバーをテストするために役立ちます。 ステートレス サービス パーティションを対象に使用する場合、RestartPartitionMode を AllReplicasOrInstances にする必要があります。 同じ OperationId を使用して GetPartitionRestartProgress API を呼び出し、進行状況を取得します。 が必要です。
+この API は、フェールオーバーをテストするために役立ちます。 ステートレス サービス パーティションを対象に使用する場合、RestartPartitionMode を AllReplicasOrInstances にする必要があります。 同じ OperationId を使用して GetPartitionRestartProgress API を呼び出し、進行状況を取得します。
 
 ### <a name="arguments"></a>引数
 
@@ -170,8 +170,8 @@ Service Fabric サービスのパーティションの一覧を取得します�
 | --- | --- |
 | --operation-id [必須]| この API の呼び出しを識別する GUID。  これは対応する GetProgress API に渡されます。|
 | --partition-id [必須]| パーティションの ID。|
-| --restart-partition-mode [必須]| - Invalid - 予約済み。  API に渡すことはできません。 - AllReplicasOrInstances - パーティション内のすべてのレプリカまたはインスタンスが一度に再起動されます。 - OnlyActiveSecondaries - セカンダリ レプリカのみが再起動されます。 が必要です。|
-| --service-id [必須]| サービスの ID。 これは通常、'fabric:' URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、サービス名が "fabric://myapp/app1/svc1" の場合、6.0 以上ならばサービス ID は "myapp~app1~svc1" になり、以前のバージョンでは "myapp/app1/svc1" になります。|
+| --restart-partition-mode [必須]| 再起動するパーティションを記述します。|
+| --service-id [必須]| サービスの ID。 これは通常、'fabric:' URI スキームのないサービスの完全な名前です。 バージョン 6.0 以降では、階層名は "~" 文字で区切られます。 たとえば、サービス名が "fabric:/myapp/app1/svc1" の場合、6.0 以上ならばサービス ID は "myapp~app1~svc1" になり、以前のバージョンでは "myapp/app1/svc1" になります。|
 | --timeout -t                    | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数

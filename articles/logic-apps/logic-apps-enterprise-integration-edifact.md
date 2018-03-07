@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/26/2016
 ms.author: LADocs; jonfan
-ms.openlocfilehash: 68009b74a410f7e854de675a1d8d0c32e310d2c9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4b1ea9966add3cf0d5f75988f11cda57fa4e4cf6
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-edifact-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の EDIFACT メッセージを交換する
 
@@ -32,65 +32,63 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
 必要な項目を次に示します。
 
-* 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](../logic-apps/logic-apps-enterprise-integration-accounts.md)  
+* 既に定義され、Azure サブスクリプションに関連付けられている[統合アカウント](logic-apps-enterprise-integration-create-integration-account.md)  
 * 統合アカウントで既に定義されている 2 つ以上の[パートナー](logic-apps-enterprise-integration-partners.md)
 
 > [!NOTE]
 > 契約を作成する際は、パートナーとの間で送受信するメッセージの内容と契約の種類とが一致している必要があります。
 
-[統合アカウントを作成](../logic-apps/logic-apps-enterprise-integration-accounts.md)し、[パートナーを追加](logic-apps-enterprise-integration-partners.md)した後に、EDIFACT 契約を作成するには、次の手順に従います。
+[統合アカウントを作成](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md)し、[パートナーを追加](logic-apps-enterprise-integration-partners.md)した後に、EDIFACT 契約を作成するには、次の手順に従います。
 
 ## <a name="create-an-edifact-agreement"></a>EDIFACT 契約の作成 
 
-1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 左側のメニューの **[すべてのサービス]** を選択します。
+1. [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。 
 
-    > [!TIP]
-    > **[すべてのサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
+2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
-    ![左側のメニューの [すべてのサービス] を選択します。](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
+   ![統合アカウントの検索](./media/logic-apps-enterprise-integration-edifact/edifact-0.png)
 
-2. 検索ボックスに、フィルターとして「統合」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
+   > [!TIP]
+   > **[すべてのサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[テキスト ラベルの表示]** を選びます。
 
-    !["統合" でのフィルター処理、[アカウントの統合] の選択](./media/logic-apps-enterprise-integration-edifact/edifact-1-3.png)
+3. **[統合アカウント]** で、契約を作成する統合アカウントを選びます。
 
-3. 表示された **[統合アカウント]** ブレードで、契約を作成する統合アカウントを選択します。
-統合アカウントが表示されない場合は、[最初に統合アカウントを 1 つ作成](../logic-apps/logic-apps-enterprise-integration-accounts.md "統合アカウントについて")します。  
+   ![契約を作成する統合アカウントの選択](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
 
-    ![契約を作成する統合アカウントの選択](./media/logic-apps-enterprise-integration-edifact/edifact-1-4.png)
+4. **[契約]** を選びます。 [契約] タイルが表示されない場合は、まずタイルを追加します。   
 
-4. **[契約]** タイルを選択します。 [契約] タイルが表示されない場合は、まずタイルを追加します。   
+   ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
 
-    ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-edifact/edifact-1-5.png)
+5. [契約] ページで、**[追加]** を選びます。
 
-5. 表示された [契約] ブレードの **[追加]** を選択します。
-
-    ![[追加] の選択](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
+   ![[追加] の選択](./media/logic-apps-enterprise-integration-edifact/edifact-agreement-2.png)
 
 6. **[追加]** で、契約の**名前**を入力します。 **[契約タイプ]** で、**[EDIFACT]** を選択します。 契約の**ホスト パートナー**、**ホスト ID**、**ゲスト パートナー**、および**ゲスト ID** を選択します。
 
-    ![契約の詳細の指定](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
+   ![契約の詳細の指定](./media/logic-apps-enterprise-integration-edifact/edifact-1.png)
 
-    | プロパティ | [説明] |
-    | --- | --- |
-    | Name |契約の名前。 |
-    | 契約の種類 | EDIFACT である必要があります |
-    | ホスト パートナー |契約には、ホストとゲストの両方のパートナーが必要です。 ホスト パートナーは、契約を構成している組織を表します。 |
-    | ホスト ID |ホスト パートナーの ID。 |
-    | Guest Partner (ゲスト パートナー) |契約には、ホストとゲストの両方のパートナーが必要です。 ゲスト パートナーは、ホスト パートナーと取引している組織を表します。 |
-    | ゲスト ID |ゲスト パートナーの ID。 |
-    | 受信設定 |これらのプロパティは、契約によって受信されたすべてのメッセージに適用されます。 |
-    | Send Settings (送信の設定) |これらのプロパティは、契約によって送信されたすべてのメッセージに適用されます。 |
+   | プロパティ | [説明] |
+   | --- | --- |
+   | Name |契約の名前。 |
+   | 契約の種類 | EDIFACT である必要があります |
+   | ホスト パートナー |契約には、ホストとゲストの両方のパートナーが必要です。 ホスト パートナーは、契約を構成している組織を表します。 |
+   | ホスト ID |ホスト パートナーの ID。 |
+   | Guest Partner (ゲスト パートナー) |契約には、ホストとゲストの両方のパートナーが必要です。 ゲスト パートナーは、ホスト パートナーと取引している組織を表します。 |
+   | ゲスト ID |ゲスト パートナーの ID。 |
+   | 受信設定 |これらのプロパティは、契約によって受信されたすべてのメッセージに適用されます。 |
+   | Send Settings (送信の設定) |これらのプロパティは、契約によって送信されたすべてのメッセージに適用されます。 |
+   ||| 
 
 ## <a name="configure-how-your-agreement-handles-received-messages"></a>契約で受信したメッセージを処理する方法の構成
 
 契約のプロパティを設定したので、この契約でパートナーから受信した受信メッセージを識別して処理する方法を構成できます。
 
-1.  **[追加]** で、**[受信設定]** をクリックします。
+1. **[追加]** で、**[受信設定]** をクリックします。
 メッセージを交換するパートナーとの契約に基づいて、これらのプロパティを構成します。 プロパティの説明については、このセクションの表を参照してください。
 
-    **[受信設定]** は、[識別子]、[受信確認]、[スキーマ]、[制御番号]、[検証]、[内部設定] のセクションに分かれています。
+   **[受信設定]** は、[識別子]、[受信確認]、[スキーマ]、[制御番号]、[検証]、[内部設定] のセクションに分かれています。
 
-    ![[受信設定] の構成](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
+   ![[受信設定] の構成](./media/logic-apps-enterprise-integration-edifact/edifact-2.png)  
 
 2. 完了したら、**[OK]** を選択して、必ず設定を保存します。
 
@@ -240,13 +238,13 @@ Azure Logic Apps の EDIFACT メッセージを交換する前に、EDIFACT 契�
 
 ## <a name="find-your-created-agreement"></a>作成された契約の検索
 
-1.  契約のプロパティをすべて設定したら、**[追加]** ブレードで、**[OK]** を選択して、契約の作成を終了し、統合アカウント ブレードに戻ります。
+1.  契約のプロパティをすべて設定した後、**[追加]** ページで **[OK]** を選んで契約の作成を終了し、統合アカウントに戻ります。
 
     これで、新しく追加した契約が **[契約]** リストに表示されます。
 
-2.  また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント ブレードで、**[概要]**、**[契約]** タイルの順に選択します。 
+2.  また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント メニューで、**[概要]**、**[契約]** タイルの順に選びます。 
 
-    ![すべての契約が表示される [契約] タイルの選択](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
+    ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-edifact/edifact-4.png)   
 
 ## <a name="view-swagger-file"></a>Swagger ファイルを表示する
 EDIFACT コネクタの Swagger の詳細を表示するには、「[EDIFACT](/connectors/edifact/)」を参照してください。

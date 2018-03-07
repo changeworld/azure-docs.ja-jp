@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: billmath
-ms.openlocfilehash: 68b36e1806d3338b07d4c2c400de233aff270132
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR コンプライアンスと Azure AD Connect 
 
@@ -33,7 +33,7 @@ Azure AD Connect では、次の 2 つの方法で一般データ保護規則へ
 1.  要請を受けた際、個人のデータを抽出し、その個人のデータを環境から削除する
 2.  すべてのデータが 48 時間しか保持されないようにする。
 
-Azure AD Connect チームでは、2 番目の方法をお勧めしています。  その理由は、後者のほうが実装と管理がはるかに簡単だからです。
+Azure AD Connect チームは、実装と保守がはるかに簡単な 2 番目のオプションをお勧めします。
 
 Azure AD Connect の同期サーバーには、GDPR コンプライアンスの対象となる次のデータが格納されます。
 1.  個人に関するデータ (**Azure AD Connect データベース**に格納されます)

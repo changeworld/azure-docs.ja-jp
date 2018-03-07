@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/08/2018
 ms.author: raynew
-ms.openlocfilehash: c6a227ca78a1312fe315cc6838834ec956a08b01
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 442e9df550bec750afe0eab6e94b7e8550015fdd
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="test-failover-to-azure-in-site-recovery"></a>Azure Site Recovery での Azure へのテスト フェールオーバー
 

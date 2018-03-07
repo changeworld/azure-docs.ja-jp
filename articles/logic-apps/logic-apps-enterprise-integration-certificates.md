@@ -1,11 +1,11 @@
 ---
-title: "Enterprise Integration Pack での証明書の使用 |Microsoft Docs"
-description: "Enterprise Integration Pack で証明書を使用する方法 | Azure Logic Apps"
+title: "Azure Logic Apps の証明書を使用して B2B メッセージをセキュリティで保護する | Microsoft Docs"
+description: "Enterprise Integration Pack を使用して B2B メッセージをセキュリティで保護するために証明書を追加します"
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: padmavc
 manager: anneta
-editor: cgronlun
+editor: 
 ms.assetid: 4cbffd85-fe8d-4dde-aa5b-24108a7caa7d
 ms.service: logic-apps
 ms.workload: integration
@@ -14,86 +14,108 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 0357e67a8920a57b2ab8b79ebd8dd3a64d888478
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 708bdcddede71186c48ae7d4034cc9df0bd61391
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
-# <a name="learn-about-certificates-and-enterprise-integration-pack"></a>証明書と Enterprise Integration Pack についての詳細情報
-## <a name="overview"></a>概要
-エンタープライズ統合では、証明書を使用して B2B 通信を保護します。 エンタープライズ統合アプリでは、次の2 種類の証明書を使用できます。
+# <a name="secure-b2b-messages-with-certificates"></a>証明書を使用して B2B メッセージをセキュリティで保護する
+
+B2B の通信の機密を保持することが必要な場合があります。 エンタープライズ統合アプリ (具体的にはロジック アプリ) の B2B 通信をセキュリティで保護するため、統合アカウントに証明書を追加することができます。 証明書はデジタル ドキュメントであり、電子通信の参加者の ID を検証します。
+証明書は次の方法で通信をセキュリティ保護します。
+
+* メッセージの内容を暗号化します
+* メッセージにデジタル署名します  
+
+エンタープライズ統合アプリでは、次の証明書を使うことができます。
 
 * パブリック証明書。証明機関 (CA) から購入する必要があります。
 * プライベート証明書。自身で発行できます。 これらは自己署名証明書とも呼ばれます。
 
-## <a name="what-are-certificates"></a>証明書の概要
-証明書はデジタル ドキュメントであり、電子通信の参加者の ID の確認と、電子通信の保護を行うためのものです。
-
-## <a name="why-use-certificates"></a>証明書を使用する理由
-場合によっては、B2B 通信で機密性を保持する必要があります。 エンタープライズ統合では、次の 2 つの方法で証明書を使用してこれらの通信を保護します。
-
-* メッセージの内容を暗号化することによって
-* メッセージをデジタル署名することによって  
-
 ## <a name="upload-a-public-certificate"></a>パブリック証明書のアップロード
 
-B2B 機能を備えたロジック アプリで *パブリック証明書* を使用するには、まず統合アカウントにこの証明書をアップロードする必要があります。  
+B2B 機能を備えたロジック アプリで "*パブリック証明書*" を使うには、最初に統合アカウントに証明書をアップロードする必要があります。 作成した[契約](logic-apps-enterprise-integration-agreements.md)でプロパティを定義した後は、証明書を使って B2B メッセージをセキュリティ保護できるようになります。
 
-証明書をアップロードすると、作成する [契約](logic-apps-enterprise-integration-agreements.md) で B2B メッセージのプロパティを定義して、B2B メッセージを保護できるようになります。  
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
-次に、Azure Portal へのサインイン後に統合アカウントにパブリック証明書をアップロードする詳細な手順を示します。
+2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
-1. **[すべてのサービス]** を選択し、フィルター検索ボックスに「**統合**」と入力します。 結果の一覧から **[統合アカウント]** を選択します。     
-![[参照]](media/logic-apps-enterprise-integration-certificates/overview-1.png)を選択します。  
-2. 証明書の追加先となる統合アカウントを選択します。  
-![証明書の追加先となる統合アカウントの選択](media/logic-apps-enterprise-integration-certificates/overview-3.png)  
-3. **[証明書]** タイルを選択します。  
-![[証明書] タイルの選択](media/logic-apps-enterprise-integration-certificates/certificate-1.png)
-4. 表示された **[証明書]** ブレードで **[追加]** をクリックします。   
-![[追加] ボタンのクリック](media/logic-apps-enterprise-integration-certificates/certificate-2.png)
-5. 証明書の**名前**を入力して、ドロップダウンから証明書の種類として **[パブリック]** を選択します。  
-6. **[証明書]** ボックスの右側にあるフォルダー アイコンをクリックします。 ファイル ピッカーが表示されたら、統合アカウントにアップロードする証明書を見つけて選択します。
-7. 証明書を選択して、ファイル ピッカーで **[OK]** をクリックします。 これにより、証明書を検証し、統合アカウントにアップロードできます。
-8. 最後に、**[証明書の追加]** ブレードに戻って **[OK]** をクリックします。  
-![[OK] ボタンのクリック](media/logic-apps-enterprise-integration-certificates/certificate-3.png)  
-9. **[証明書]** タイルを選択します。 新しく追加された証明書が表示されます。  
-![新しい証明書の確認](media/logic-apps-enterprise-integration-certificates/certificate-4.png)  
+   ![統合アカウントの検索](media/logic-apps-enterprise-integration-certificates/overview-1.png)  
+
+3. **[統合アカウント]** で、証明書を追加する統合アカウントを選びます。
+
+   ![証明書の追加先となる統合アカウントの選択](media/logic-apps-enterprise-integration-certificates/overview-3.png)  
+
+4. **[証明書]** タイルを選びます。  
+
+   ![[証明書] を選択する](media/logic-apps-enterprise-integration-certificates/certificate-1.png)
+
+5. **[証明書]** で **[追加]** を選びます。
+
+   ![[追加] の選択](media/logic-apps-enterprise-integration-certificates/certificate-2.png)
+
+6. **[証明書の追加]** で、証明書の詳細を指定します。
+   
+   1. 証明書の **[名前]** を入力します。 証明書の種類で **[パブリック]** を選びます。
+
+   2. **[証明書]** ボックスの右側にあるフォルダー アイコンを選びます。 
+   アップロードする証明書ファイルを探して選びます。 
+   完了したら、**[OK]** を選びます。
+
+      ![パブリック証明書をアップロードする](media/logic-apps-enterprise-integration-certificates/certificate-3.png)
+
+   Azure は、選択内容を検証した後、証明書をアップロードします。
+
+   ![新しい証明書を表示する](media/logic-apps-enterprise-integration-certificates/certificate-4.png) 
 
 ## <a name="upload-a-private-certificate"></a>プライベート証明書のアップロード
 
-B2B 機能を備えたロジック アプリで*プライベート証明書*を使用するには、次の手順に従ってプライベート証明書を統合アカウントにアップロードします。
+B2B 機能を備えたロジック アプリで "*プライベート証明書*" を使うには、最初に統合アカウントに証明書をアップロードする必要があります。 また、最初に秘密キーを [Azure Key Vault](../key-vault/key-vault-get-started.md) に追加しておく必要があります。 
 
-1. [Key Vault に秘密キーをアップロード](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報")して、**キー名**を指定します。 
+作成した[契約](logic-apps-enterprise-integration-agreements.md)でプロパティを定義した後は、証明書を使って B2B メッセージをセキュリティ保護できるようになります。
+
+> [!NOTE]
+> プライベート証明書の場合、メッセージの署名と暗号化のため [AS2 契約](logic-apps-enterprise-integration-as2.md)の送信と受信の設定に表示されるように、対応するパブリック証明書を追加する必要があります。
+
+1. [Azure Key Vault に秘密キーを追加](../key-vault/key-vault-get-started.md#add)し、**[キー名]** を指定します。
    
-   > [!TIP]
-   > Key Vault に対して操作を実行するには、Logic Apps を承認する必要があります。 Logic Apps サービス プリンシパルにアクセスを付与するには、次の PowerShell コマンドを使用します: `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`  
-   > 
-   > 
+2. Azure Logic Apps が Azure Key Vault で操作を実行することを承認します。 Logic Apps サービス プリンシパルへのアクセスを許可するには、次の例のように、PowerShell コマンド [Set-AzureRmKeyVaultAccessPolicy](https://docs.microsoft.com/powershell/module/azurerm.keyvault/set-azurermkeyvaultaccesspolicy) を使います。
 
-前の手順を実行したら、統合アカウントにプライベート証明書を追加します。
-
-次に、Azure Portal へのサインイン後に統合アカウントにプライベート証明書をアップロードする詳細な手順を示します。  
+   `Set-AzureRmKeyVaultAccessPolicy -VaultName 'TestcertKeyVault' -ServicePrincipalName 
+   '7cd684f4-8a78-49b0-91ec-6a35d38739ba' -PermissionsToKeys decrypt, sign, get, list`
  
-1. 証明書の追加先となる統合アカウントを選択し、**[証明書]** タイルを選択します。  
-![[証明書] タイルの選択](media/logic-apps-enterprise-integration-certificates/certificate-1.png)  
-2. 表示された **[証明書]** ブレードで **[追加]** をクリックします。   
-![[追加] ボタンのクリック](media/logic-apps-enterprise-integration-certificates/certificate-2.png)
-3. 証明書の**名前**を入力して、ドロップダウンから証明書の種類として **[プライベート]** を選択します。   
-4. **[証明書]** ボックスの右側にあるフォルダー アイコンをクリックします。 ファイル ピッカーが表示されたら、統合アカウントにアップロードする、対応するパブリック証明書を見つけて選択します。   
+3. [Azure Portal](https://portal.azure.com) にサインインします。
+
+4. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
+
+   ![統合アカウントの検索](media/logic-apps-enterprise-integration-certificates/overview-1.png) 
+
+5. **[統合アカウント]** で、証明書を追加する統合アカウントを選びます。
+
+6. **[証明書]** タイルを選びます。  
+
+   ![[証明書] タイルを選ぶ](media/logic-apps-enterprise-integration-certificates/certificate-1.png)
+
+7. **[証明書]** で **[追加]** を選びます。   
+
+   ![[追加] ボタンを選ぶ](media/logic-apps-enterprise-integration-certificates/certificate-2.png)
+
+8. **[証明書の追加]** で、証明書の詳細を指定します。
    
-   > [!Note]
-   > プライベート証明書を追加するときに、対応するパブリック証明書を追加することが重要です。これは、[AS2 契約](logic-apps-enterprise-integration-as2.md)で送受信するメッセージの署名と暗号化の設定に使用されます。
-   > 
-   >   
+   1. 証明書の **[名前]** を入力します。 証明書の種類で **[プライベート]** を選びます。
 
-5. **[リソース グループ]**、**[Key Vault]**、**[キー名]** の順に選択し、**[OK]** ボタンをクリックします。  
-![証明書の追加](media/logic-apps-enterprise-integration-certificates/privatecertificate-1.png)  
-6. **[証明書]** タイルを選択します。 新しく追加された証明書が表示されます。
-![新しい証明書の確認](media/logic-apps-enterprise-integration-certificates/privatecertificate-2.png)  
+   2. **[証明書]** ボックスの右側にあるフォルダー アイコンを選びます。 
+   アップロードする証明書ファイルを探して選びます。 
+   また、**[リソース グループ]**、**[Key Vault]**、**[キー名]** を選びます。 
+   完了したら、**[OK]** を選びます。
 
+      ![証明書を追加する](media/logic-apps-enterprise-integration-certificates/privatecertificate-1.png)
 
+   Azure は、選択内容を検証した後、証明書をアップロードします。
 
-* [B2B 契約の作成](logic-apps-enterprise-integration-agreements.md)  
-* [Key Vault についての詳細情報](../key-vault/key-vault-get-started.md "Key Vault についての詳細情報")  
+   ![新しい証明書を表示する](media/logic-apps-enterprise-integration-certificates/privatecertificate-2.png)
 
+## <a name="next-steps"></a>次の手順
+
+* [B2B 契約の作成](logic-apps-enterprise-integration-agreements.md)

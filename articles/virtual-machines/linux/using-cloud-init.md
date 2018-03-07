@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: 2d110705a86fa8bc05859bd8bfde34b0b5b11575
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5c1d4eb0825d132037cc3a20a17c1f417578d35d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="cloud-init-support-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する cloud-init のサポート
 この記事では、Azure でのプロビジョニング時に仮想マシン (VM) または仮想マシン スケール セット (VMSS) を構成するための [cloud-init](https://cloudinit.readthedocs.io) のサポートについて説明します。 これらの cloud-init スクリプトは、Azure によってリソースがプロビジョニングされた後の最初の起動時に実行されます。  
@@ -39,7 +39,7 @@ cloud-init はディストリビューション全体でも有効です。 た�
 |OpenLogic |CentOS |7-CI |latest |preview |
 |RedHat |RHEL |7-RAW-CI |latest |preview |
 
-プレビュー期間中、Azure Stack は cloud-init を使用した RHEL 7.4 および CentOS 7.4 のプロビジョニングをサポートしません。
+現時点では、Azure Stack は cloud-init を使用した RHEL 7.4 および CentOS 7.4 のプロビジョニングをサポートしません。
 
 ## <a name="what-is-the-difference-between-cloud-init-and-the-linux-agent-wala"></a>cloud-init と Linux エージェント (WALA) の相違点
 WALA は、VM のプロビジョニングと構成および Azure 拡張機能の処理に使われる、Azure プラットフォーム固有のエージェントです。 既存の cloud-init のお客様が現在の cloud-init スクリプトを使用できるよう、Linux エージェントではなく cloud-init を使うように VM 構成タスクの拡張を行っています。  Linux システム構成用の cloud-init スリプトが既にある場合、それを有効にするために**追加の設定は必要ありません**。 

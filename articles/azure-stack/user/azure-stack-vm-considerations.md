@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2018
+ms.date: 02/23/2018
 ms.author: brenduns
-ms.openlocfilehash: 59053e4beda48fd8474da675e50e02438c79a98e
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 2b39ff3665a4cc3aeddf81b83e0c90c7f770da72
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure Stack の仮想マシンに関する考慮事項
 
@@ -41,19 +41,25 @@ ms.lasthandoff: 02/01/2018
 |仮想マシン スケール セット|自動スケールがサポートされる|自動スケールはサポートされない。<br>ポータル、Resource Manager テンプレート、または PowerShell を使用してスケール セットにより多くのインスタンスを追加します。
 
 ## <a name="virtual-machine-sizes"></a>仮想マシン サイズ
+Azure は、リソースの過剰消費を防ぐため、複数の方法でリソースの制限を適用します (サーバー ローカルおよびサービス レベル)。 テナントのリソース消費量に何らかの制限を設けないと、"うるさい隣人" がリソースを過剰に消費してテナントのパフォーマンスが低下することがあります。 
+- VM からのネットワーク送信には、帯域幅の上限が設けられます。 Azure Stack での上限は、Azure での上限と一致します。  
+- ストレージ リソースの場合、テナントによるストレージ アクセスのためのリソースの基本的な過剰消費を防ぐため、Azure Stack によってストレージ IOP 制限が実装されます。 
+- 複数のデータ ディスクが接続された VM では、各個別データ ディスクの最大スループットは、HHD で 500 IOPS、SSD で 2300 IOPS です。
 
-Azure Stack は、次のサイズをサポートしています。
+次の表は、Azure Stack でサポートされている VM とその構成の一覧です。
 
-| type | サイズ | サポートされるサイズの範囲 |
-| --- | --- | --- |
-|汎用 |Basic A|A0 - A4|
-|汎用 |Standard A|A0 - A7|
-|汎用 |D シリーズ|D1 - D4|
-|汎用 |Dv2 シリーズ|D1_v2 - D5_v2|
-|汎用 |DS シリーズ|DS1 - DS4|
-|汎用 |DSv2 シリーズ|DS1_v2 - DS5_v2|
-|メモリ最適化|DS シリーズ|DS11 - DS14|
-|メモリ最適化 |DSv2 シリーズ|DS11_v2 - DS14_v2|
+| type           | サイズ          | サポートされるサイズの範囲 |
+| ---------------| ------------- | ------------------------ |
+|汎用 |Basic A        |[A0 - A4](azure-stack-vm-sizes.md#basic-a)                   |
+|汎用 |Standard A     |[A0 - A7](azure-stack-vm-sizes.md#standard-a)              |
+|汎用 |D シリーズ       |[D1 - D4](azure-stack-vm-sizes.md#d-series)              |
+|汎用 |Dv2 シリーズ     |[D1_v2 - D5_v2](azure-stack-vm-sizes.md#ds-series)        |
+|汎用 |DS シリーズ      |[DS1 - DS4](azure-stack-vm-sizes.md#dv2-series)            |
+|汎用 |DSv2 シリーズ    |[DS1_v2 - DS5_v2](azure-stack-vm-sizes.md#dsv2-series)      |
+|メモリ最適化|D シリーズ       |[D11 - D14](azure-stack-vm-sizes.md#mo-d)            |
+|メモリ最適化|DS シリーズ      |[DS11 - DS14](azure-stack-vm-sizes.md#mo-ds)|
+|メモリ最適化|Dv2 シリーズ     |[D11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dv2)     |
+|メモリ最適化|DSv2 シリーズ  |[DS11_v2 - DS14_v2](azure-stack-vm-sizes.md#mo-dsv2)    |
 
 仮想マシンのサイズと、それに関連付けられるリソースの量は、Azure Stack と Azure の間で一貫しています。 たとえば、この一貫性には、作成できるメモリの量、コアの数、データ ディスクの数やサイズが含まれます。 ただし、Azure Stack 内で VM サイズが同じ場合のパフォーマンスは、基になっている特定の Azure Stack 環境の特性によって異なります。
 

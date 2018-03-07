@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: b611a447dd6669a09ca16c816de74acd7f3e8c7e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d3a4c7a308bdf7132cebffc13a5e7214ec73eaf2
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-is"></a>sfctl is
 クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。
@@ -34,14 +34,14 @@ ms.lasthandoff: 01/18/2018
 ## <a name="sfctl-is-command"></a>sfctl is command
 特定の Infrastructure Service インスタンスで管理コマンドを呼び出します。
 
-構成済みの Infrastructure Service のインスタンスが 1 つ以上あるクラスターの場合、この API を使用して、Infrastructure Service の特定のインスタンスにインフラストラクチャ固有のコマンドを送信することができます。 使用可能なコマンドと、対応する応答の形式は、クラスターが実行されているインフラストラクチャによって異なります。 この API は、Service Fabric プラットフォームをサポートしています。コードから直接使用するものではありません。 が必要です。
+構成済みの Infrastructure Service のインスタンスが 1 つ以上あるクラスターの場合、この API を使用して、Infrastructure Service の特定のインスタンスにインフラストラクチャ固有のコマンドを送信することができます。 使用可能なコマンドと、対応する応答の形式は、クラスターが実行されているインフラストラクチャによって異なります。 この API は、Service Fabric プラットフォームをサポートしています。コードから直接使用するものではありません。 
 
 ### <a name="arguments"></a>引数
 
 |引数|[説明]|
 | --- | --- |
-| --command [必須]| 呼び出されるコマンドのテキスト。 コマンドのコンテンツは、インフラストラクチャに固有です。  既定値は is command です。|
-| --service-id     | Infrastructure Service の ID。 これは 'fabric:' URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。|
+| --command [必須]| 呼び出されるコマンドのテキスト。 コマンドのコンテンツは、インフラストラクチャに固有です。 |
+| --service-id     | Infrastructure Service の ID。 ID は "fabric:" URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。|
 | --timeout -t     | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -63,8 +63,8 @@ ms.lasthandoff: 01/18/2018
 
 |引数|[説明]|
 | --- | --- |
-| --command [必須]| 呼び出されるコマンドのテキスト。 コマンドのコンテンツは、インフラストラクチャに固有です。  既定値は is query です。|
-| --service-id     | Infrastructure Service の ID。 これは 'fabric:' URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。|
+| --command [必須]| 呼び出されるコマンドのテキスト。 コマンドのコンテンツは、インフラストラクチャに固有です。|
+| --service-id     | Infrastructure Service の ID。 ID は "fabric:" URI スキームのない Infrastructure Service の完全な名前です。 このパラメーターは、実行している Infrastructure Service のインスタンスを複数持つクラスターにのみ必要です。|
 | --timeout -t     | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数

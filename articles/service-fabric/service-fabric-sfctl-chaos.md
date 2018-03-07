@@ -12,13 +12,13 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/22/2018
 ms.author: ryanwi
-ms.openlocfilehash: dbea84511c37cf52c3d98f0247e5ce3c0b2a05c3
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 34e4d47b1de509c2053996d9d1078733d7055447
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -28,7 +28,7 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 |コマンド|[説明]|
 | --- | --- |
 |    report| 渡された継続トークン、または渡された時間範囲に基づく Chaos レポートの次のセグメントを取得します。|
-|    start | クラスターで Chaos がまだ実行されていない場合、Chaos パラメーターで指定した Chaos の実行を開始します。|
+|    start | クラスターで Chaos を開始します。|
 |    stop  | クラスターで Chaos が実行されている場合は停止します。実行されていない場合は何も行われません。|
 
 
@@ -42,8 +42,8 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 |引数|[説明]|
 | --- | --- |
 | --continuation-token| 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。|
-| --end-time-utc   | Chaos レポートが生成される時間範囲の終了時刻を表すティック数。 ティックの詳細については、「[DateTime.Ticks プロパティ](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)」を参照してください。|
-| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表すティック数。 ティックの詳細については、「[DateTime.Ticks プロパティ](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)」を参照してください。|
+| --end-time-utc   | Chaos レポートが生成される時間範囲の終了時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。|
+| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表す Windows ファイル時間。 詳しくは、「[DateTime.ToFileTimeUtc Method](https://msdn.microsoft.com/library/system.datetime.tofiletimeutc(v=vs.110).aspx)」(DateTime.ToFileTimeUtc メソッド) をご覧ください。|
 | --timeout -t     | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
@@ -57,22 +57,26 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 | --verbose        | ログ記録の詳細度を上げます。 すべてのデバッグ ログを得るには --debug を使用します。|
 
 ## <a name="sfctl-chaos-start"></a>sfctl chaos start
-クラスターで Chaos がまだ実行されていない場合、Chaos パラメーターで指定した Chaos の実行を開始します。
+クラスターで Chaos を開始します。
+
+クラスターで Chaos がまだ実行されていない場合、渡された Chaos パラメーターで Chaos を開始します。 Chaos が既に実行しているときにこの呼び出しを行った場合は、呼び出しはエラー コード FABRIC_E_CHAOS_ALREADY_RUNNING で失敗します。
 
 ### <a name="arguments"></a>引数
 
 |引数|[説明]|
 | --- | --- |
-| --app-type-health-policy-map  | 特定のアプリケーションの種類の異常なアプリケーションの最大割合の JSON でエンコードされた一覧。 各エントリは、キーとしてアプリケーションの種類名を指定し、値として指定したアプリケーションの種類のアプリケーションを評価するために使用される MaxPercentUnhealthyApplications を表す整数を指定します。|
+| --app-type-health-policy-map  | 特定のアプリケーションの種類の異常なアプリケーションの最大割合の JSON でエンコードされた一覧。 各エントリは、キーとしてアプリケーションの種類名を指定し、値として指定したアプリケーションの種類のアプリケーションを評価するために使用される MaxPercentUnhealthyApplications を表す整数を指定します。 特定のアプリケーションの種類の異常なアプリケーションの最大の割合でマップを定義します。 各エントリは、キーとしてアプリケーションの種類名を指定し、値として指定したアプリケーションの種類のアプリケーションを評価するために使用される MaxPercentUnhealthyApplications を表す整数を指定します。 アプリケーションの種類の正常性ポリシー マップをクラスターの正常性評価時に使用して、特別なアプリケーションの種類を記述できます。 マップに含まれるアプリケーションの種類は、クラスターの正常性ポリシーで定義されているグローバルな MaxPercentUnhealthyApplications ではなく、マップで指定されている割合に対して評価されます。 マップで指定されているアプリケーションの種類のアプリケーションは、アプリケーションのグローバル プールに対してカウントされません。 たとえば、ある種類の一部のアプリケーションがクリティカルである場合、クラスター管理者はそのアプリケーションの種類のエントリをマップに追加し、値 0% を割り当てることができます (つまり、すべてのエラーは許容されません)。 他のすべてのアプリケーションは、20% に設定された MaxPercentUnhealthyApplications で評価して、多数のアプリケーション インスタンスのうち一部の障害を許容できます。 アプリケーションの種類の正常性ポリシー マップは、HealthManager/EnableApplicationTypeHealthEvaluation の構成エントリを使うアプリケーションの種類の正常性評価がクラスター マニフェストで有効になっている場合にのみ使われます。|
+|--chaos-target-filter         | 2 つの文字列型キーを持つ JSON エンコードのディクショナリ。 2 つのキーは、NodeTypeInclusionList と ApplicationInclusionList です。 どちらのキーの値も、文字列のリストです。 chaos_target_filter では、対象を絞った Chaos 障害のためのすべてのフィルターが定義されています (たとえば、特定のノードの種類だけを障害にする、または特定のアプリケーションだけを障害にする)。 chaos_target_filter が使われない場合、Chaos はすべてのクラスター エンティティを障害にします。 chaos_target_filter が使われた場合、Chaos は chaos_target_filter の指定を満たすエンティティのみを障害にします。 NodeTypeInclusionList と ApplicationInclusionList では、和集合セマンティクスのみが可能です。 NodeTypeInclusionList と ApplicationInclusionList の積集合を指定することはできません。 たとえば、"アプリケーションが特定のノードの種類上にある場合のみ障害を発生させる" と指定することはできません。 エンティティが NodeTypeInclusionList または ApplicationInclusionList のどちらかに含まれている時点で、ChaosTargetFilter を使用してエンティティを除外することはできません。 applicationX が ApplicationInclusionList に含まれていない場合でも、そのアプリケーションが NodeTypeInclusionList に含まれている nodeTypeY のノード上にあるという理由で、何らかの混乱の反復処理中にそのアプリケーションで障害が発生する可能性があります。 NodeTypeInclusionList と ApplicationInclusionList の両方が空の場合は、ArgumentException がスローされます。 すべての種類の障害 (ノードの再起動、コード パッケージの再起動、レプリカの削除、レプリカの再起動、プライマリの移動、およびセカンダリの移動) は、指定されたノードの種類のノードで有効になります。 ノードの種類 (たとえば NodeTypeX) が NodeTypeInclusionList に含まれていない場合、ノード レベルの障害 (ノードの再起動など) が NodeTypeX のノードで有効になることはありませんが、ApplicationInclusionList 内のアプリケーションが NodeTypeX のノードに存在する場合、コード パッケージ障害とレプリカ障害が NodeTypeX のノードで有効になる可能性があります。 この一覧には最大 100 種のノードの種類を含めることができ、この数を増やすには、MaxNumberOfNodeTypesInChaosEntityFilter 構成をアップグレードする必要があります。 指定されたアプリケーションのサービスに属すすべてのレプリカは、混乱によって誘発されるレプリカ障害 (レプリカの再起動、レプリカの削除、プライマリの移動、およびセカンダリの移動) を受け入れます。 コード パッケージがこれらのアプリケーションのレプリカをホストしている場合のみ、混乱は、コード パッケージを再起動できます。 アプリケーションがこの一覧に含まれていない場合でも、NodeTypeInclusionList に含まれるノードの種類のノード上にアプリケーションが存在する場合は、混乱の反復処理によって障害が発生する可能性があります。 ただし、applicationX が配置制約によって nodeTypeY に関連付けられているときに、applicationX が ApplicationInclusionList になく、nodeTypeY が NodeTypeInclusionList にない場合、applicationX で障害が発生することはありません。 この一覧には最大 1,000 個のアプリケーションの名前を含めることができ、この数を増やすには、MaxNumberOfApplicationsInChaosEntityFilter 構成をアップグレードする必要があります。|
+|--context                     | (文字列, 文字列) 型のキーと値のペアの JSON エンコード マップ。 マップを使用して、混乱の実行に関する情報を記録できます。 このようなペアが 100 を超えることはできませんし、各文字列 (キーまたは値) の最大は 4095 文字です。 このマップは、オプションで特定の実行に関するコンテキストを格納するために、混乱実行を開始するユーザーによって設定されます。|
 | --disable-move-replica-faults | move primary と move secondary の障害を無効にします。|
-| --max-cluster-stabilization| すべてのクラスター エンティティが安定し正常な状態になるまで待機する最長時間。  既定値は 60 です。|
-| --max-concurrent-faults    | 各イテレーションで誘発される同時実行のエラーの最大数。           既定値は 1 です。|
-| --max-percent-unhealthy-apps  | Chaos 中にクラスターの正常性を評価するときに、エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。|
-| --max-percent-unhealthy-nodes | Chaos 中にクラスターの正常性を評価するときに、エラーを報告する前の異常なノードの最大許容パーセンテージ。|
+| --max-cluster-stabilization| すべてのクラスター エンティティが安定し正常な状態になるまで待機する最長時間。  既定値は 60 です。 Chaos は、繰り返して実行し、各繰り返しの開始時にクラスターのエンティティの正常性を検証します。 検証中に、クラスターのエンティティが MaxClusterStabilizationTimeoutInSeconds の時間内に安定して正常にならない場合、Chaos は検証失敗イベントを生成します。|
+| --max-concurrent-faults    | 各イテレーションで誘発される同時実行のエラーの最大数。           既定値は 1 です。 Chaos は繰り返して実行し、2 つの連続する繰り返しは検証フェーズで区切られます。 同時実行性が高いほど、障害の挿入は積極的になり、より複雑な一連の状態が誘発されて、バグが発見されます。 2 または 3 の値で始めて、注意しながら値を増やすことをお勧めします。|
+| --max-percent-unhealthy-apps  | Chaos 中にクラスターの正常性を評価するときに、エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 エラーを報告する前の異常なアプリケーションの最大許容パーセンテージ。 たとえば、アプリケーションの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるアプリケーションの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なアプリケーションがある場合は、正常性は Warning として評価されます。 これは、異常なアプリケーションの数をクラスター内のアプリケーション インスタンスの総数で割ることによって計算されます。ApplicationTypeHealthPolicyMap に含まれているアプリケーションの種類のアプリケーションは除外されます。 切り上げ計算が実行され、少数のアプリケーションに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。|
+| --max-percent-unhealthy-nodes | Chaos 中にクラスターの正常性を評価するときに、エラーを報告する前の異常なノードの最大許容パーセンテージ。 エラーを報告する前の異常なノードの最大許容パーセンテージ。 たとえば、ノードの 10% の異常を許容するには、この値を 10 にします。 パーセンテージは、異常な可能性のあるノードの最大許容パーセンテージを表します。この値を超えるとクラスターはエラーの状態と見なされます。 許容パーセンテージ内であっても、1 つ以上の異常なノードがある場合は、正常性は Warning として評価されます。 パーセンテージは、異常なノードの数をクラスター内のノードの総数で割ることによって計算されます。 切り上げ計算が実行され、少数のノードに対する 1 つのエラーは許容されます。 既定のパーセンテージは 0 です。 大規模なクラスターでは、ダウンしているか修復を必要とするノードがいくつか必ず存在するため、それが許容されるようにこのパーセンテージを構成する必要があります。|
 | --time-to-run              | 自動停止するまでに Chaos が実行される合計時間 (秒)。 最大許容値は、4,294,967,295 (System.UInt32.MaxValue) です。  既定値は 4294967295 です。|
 | --timeout -t               | サーバー タイムアウト (秒)。  既定値は 60 です。|
-| --wait-time-between-faults | 1 つのイテレーション内で連続する障害の間の時間 (秒単位)。  既定値は 20 です。|
-| --wait-time-between-iterations| Chaos の 2 つの連続するイテレーション間の時間区切り (秒単位)。  既定値は 30 です。|
+| --wait-time-between-faults | 1 つのイテレーション内で連続する障害の間の時間 (秒単位)。  既定値は 20 です。 値が大きいほど、障害間のオーバーラップは少なくなり、クラスターの状態遷移のシーケンスは単純になります。 1 ～ 5 の値で始めて、注意しながら値を増やすことをお勧めします。|
+| --wait-time-between-iterations| Chaos の 2 つの連続するイテレーション間の時間区切り (秒単位)。 値が大きいほど、障害挿入率は低くなります。 既定値は 30 です。|
 | --warning-as-error         | Chaos 中にクラスターの正常性を評価するときは、warning を error と同じ重大度で扱います。|
 
 ### <a name="global-arguments"></a>グローバル引数

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: LADocs; mandia
-ms.openlocfilehash: fa61bbecc51c4f3163bd1cc077391bb102662297
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8c6dbc507cd1b79fe9424071bc3eb8bf24331a16
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="exchange-as2-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の AS2 メッセージを交換する
 
@@ -40,23 +40,22 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 1.  [Azure Portal](http://portal.azure.com "Azure Portal") にサインインします。  
 
-2.  左側のメニューから、**[すべてのサービス]** を選択します。 検索ボックスに、フィルターとして「**統合**」と入力します。 結果の一覧から **[統合アカウント]** を選択します。
+2. Azure のメイン メニューで、**[すべてのサービス]** を選びます。 検索ボックスに「統合」と入力し、"**統合アカウント**" を選びます。
 
-    > [!TIP]
-    > **[すべてのサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[メニューの表示]** を選択します。
+   ![統合アカウントの検索](./media/logic-apps-enterprise-integration-as2/overview-1.png)
 
-    ![[すべてのサービス]、"統合" でのフィルター処理、[統合アカウント] の選択](./media/logic-apps-enterprise-integration-as2/overview-1.png)
+   > [!TIP]
+   > **[すべてのサービス]** が表示されない場合は、メニューを最初に展開する必要があります。 折りたたまれたメニューの上部にある **[テキスト ラベルの表示]** を選びます。
 
-3. 表示された **[統合アカウント]** ブレードで、契約を作成する統合アカウントを選択します。
-統合アカウントが表示されない場合は、[最初に統合アカウントを 1 つ作成](../logic-apps/logic-apps-enterprise-integration-accounts.md "統合アカウントについて")します。  
+3. **[統合アカウント]** で、契約を作成する統合アカウントを選びます。
 
-    ![契約を作成する統合アカウントの選択](./media/logic-apps-enterprise-integration-overview/overview-3.png)
+   ![契約を作成する統合アカウントの選択](./media/logic-apps-enterprise-integration-overview/overview-3.png)
 
 4. **[契約]** タイルを選択します。 [契約] タイルが表示されない場合は、まずタイルを追加します。
 
     ![[契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-1.png)
 
-5. 表示された [契約] ブレードの **[追加]** を選択します。
+5. **[契約]** で **[追加]** を選びます。
 
     ![[追加] の選択](./media/logic-apps-enterprise-integration-as2/agreement-2.png)
 
@@ -166,13 +165,13 @@ Azure Logic Apps の AS2 メッセージを交換する前に、AS2 契約を作
 
 ## <a name="find-your-created-agreement"></a>作成された契約の検索
 
-1.  契約のプロパティをすべて設定したら、**[追加]** ブレードで、**[OK]** を選択して、契約の作成を終了し、統合アカウント ブレードに戻ります。
+1. 契約のプロパティをすべて設定した後、**[追加]** ページで **[OK]** を選んで契約の作成を終了し、統合アカウントに戻ります。
 
     これで、新しく追加した契約が **[契約]** リストに表示されます。
 
-2.  また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント ブレードで、**[概要]**、**[契約]** タイルの順に選択します。 
+2. また、統合アカウントの概要で、契約を表示することもできます。 統合アカウント メニューで、**[概要]**、**[契約]** タイルの順に選びます。 
 
-    ![すべての契約が表示される [契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
+   ![すべての契約が表示される [契約] タイルの選択](./media/logic-apps-enterprise-integration-as2/agreement-6.png)
 
 ## <a name="view-the-swagger"></a>Swagger の表示
 [Swagger の詳細](/connectors/as2/)を参照してください。 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 038cfb72cfc98fdddaca6751b321c11066527e56
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ff2f1dd89796a30d4e0fee0810ff45ff57f5f8bf
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-a-model-in-azure-portal"></a>Azure ポータルでモデルを作成する
 
@@ -27,15 +27,19 @@ Azure ポータルの Azure Analysis Services Web デザイナー (プレビュ�
 
 この Web デザイナーは、**プレビュー**段階であることに留意してください。 新しい機能は常に追加されていますが、プレビュー段階で利用できる機能は限られています。 高度なモデルの開発とテストを実行する場合は、Visual Studio (SSDT) と SQL Server Management Studio (SSMS) を使用することが最善の方法です。
 
-## <a name="prerequisites"></a>前提条件
+## <a name="before-you-begin"></a>開始する前に
 
 - Standard または Developer レベルの Azure Analysis Services サーバー。 Web デザイナーを使用して作成される新しいモデルは、これらのレベルでのみサポートされる DirectQuery です。
 - データソースとしての Azure SQL Database、Azure SQL Data Warehouse、または Power BI Desktop (.pbix) ファイル。 Power BI Desktop ファイルから作成される新しいモデルは、Azure SQL Database、Azure SQL Data Warehouse、Oracle、および Teradata データ ソースをサポートします。
 - Azure SQL Database または Azure SQL Data Warehouse データ ソースに接続するための SQL Server アカウントとパスワード。
 
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
+
+[Azure Portal](https://portal.azure.com/) にサインインします。
+
 ## <a name="to-create-a-new-tabular-model"></a>新しい表形式モデルを作成するには
 
-1. サーバーの **[概要]**ブレードで **[Web デザイナー]** を選択し、**[開く]** をクリックします。
+1. サーバーの **[概要]** > **[Web デザイナー]** で、**[開く]** をクリックします。
 
     ![Azure ポータルでモデルを作成する](./media/analysis-services-create-model-portal/aas-create-portal-overview-wd.png)
 

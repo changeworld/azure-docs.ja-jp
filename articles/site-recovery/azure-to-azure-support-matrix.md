@@ -7,13 +7,13 @@ manager: rochakm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 73b8a28fa2f2b432f12a230be9326b6696d3908a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 4383286285f02bad1645344fab43f8b6bdb145cb
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure 間でのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
@@ -153,8 +153,8 @@ OS ディスクの最大サイズ | 2048 GB | ｢[VM で使用されるディス
 ディスク上のデータの変更率 | 最大値は、Premium ストレージの場合はディスクあたり 10 MBps、Standard ストレージの場合はディスクあたり 2 MBps です | ディスク上の平均データ変更率が継続的に 10 MBps (Premium の場合) と 2 MBps (Standard の場合) を超えると、レプリケーションは追いつかなくなります。 ただし、データの急激な増加が時折しか発生せず、データ変更率が一時的に 10 MBps (Premium の場合) と 2 MBps (Standard の場合) を超えてから低下する場合、レプリケーションは追いつきます。 この場合、復旧ポイントは、少し後ろにずれることがあります。
 Standard Storage アカウントのディスク | サポートされています |
 Premium Storage アカウントのディスク | サポートされています | VM のディスクが Premium Storage アカウントと Standard Storage ストレージ アカウントに分散している場合は、ディスクごとに異なるターゲット ストレージ アカウントを選択して、ターゲット リージョンのストレージ構成を確実に同じできます。
-Standard 管理ディスク | サポートされていません |  
-Premium 管理ディスク | サポートされていません |
+Standard 管理ディスク | Azure Site Recovery がサポートされている Azure リージョンでサポートされます。 政府機関向けクラウドは現在はサポートされていません。  |  
+Premium 管理ディスク | Azure Site Recovery がサポートされている Azure リージョンでサポートされます。 政府機関向けクラウドは現在はサポートされていません。 |
 記憶域スペース | サポートされています |         
 保存時の暗号化 (SSE) | サポートされています | キャッシュおよびターゲット ストレージ アカウントごとに、SSE 対応ストレージ アカウントを選択できます。     
 Azure Disk Encryption (ADE) | サポートされていません |

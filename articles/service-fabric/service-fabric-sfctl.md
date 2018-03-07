@@ -12,16 +12,16 @@ ms.devlang: cli
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 12/22/2017
+ms.date: 02/23/2018
 ms.author: ryanwi
-ms.openlocfilehash: 23adc7fa6ee53d1c5edd10b2772f8825dbcef2a8
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 7c8563539ca8507f05fa99fdeffbf511b1540a6a
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="sfctl"></a>sfctl 
-Service Fabric のクラスターとエンティティを管理するためのコマンドです。 このバージョンは Service Fabric 6.0 ランタイムと互換性があります。 コマンドは、名詞 - 動詞のパターンに従いますが、詳細については、次のサブグループを参照してください。
+Service Fabric のクラスターとエンティティを管理するためのコマンドです。 このバージョンは Service Fabric 6.1 ランタイムと互換性があります。 コマンドは、名詞 - 動詞のパターンに従いますが、詳細については、次のサブグループを参照してください。
 
 ## <a name="subgroups"></a>サブグループ
 |サブグループ|[説明]|
@@ -33,6 +33,7 @@ Service Fabric のクラスターとエンティティを管理するための�
 | [is](service-fabric-sfctl-is.md)      | クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。|
 | [node](service-fabric-sfctl-node.md)    | クラスターを形成するノードを管理します。|
 | [partition](service-fabric-sfctl-partition.md)  | 任意のサービスで、クエリを実行し、パーティションを管理します。|
+| property  | Service Fabric の名前でプロパティを格納およびクエリします。|
 | [rpm](service-fabric-sfctl-rpm.md)        | クエリを実行し、修復マネージャー サービスにコマンドを送信します。|
 | [replica](service-fabric-sfctl-replica.md) | サービス パーティションに属しているレプリカを管理します。|
 | [service](service-fabric-sfctl-service.md) | サービス、サービスの種類、およびサービス パッケージを作成、削除、管理します。|

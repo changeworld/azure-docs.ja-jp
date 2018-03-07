@@ -12,11 +12,11 @@ ms.devlang:
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: e8326cedfbf22b5ddf19626642b63312babe5fb6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d4f5123ff47bbe1e4d88acdaef004dcecd2f3512
+ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/27/2018
 ---
 # <a name="copy-data-to-or-from-azure-data-lake-store-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Data Lake Store をコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -37,6 +37,9 @@ ms.lasthandoff: 02/09/2018
 - **サービス プリンシパル**または**管理対象のサービス ID (MSI)** 認証を使用したファイルのコピー。
 - ファイルをそのままコピーするか、[サポートされているファイル形式と圧縮コーデック](supported-file-formats-and-compression-codecs.md)を使用してファイルを解析/生成します。
 
+> [!IMPORTANT]
+> セルフホステッド Integration Runtime を使ってデータをコピーする場合は、ポート 443 での `<ADLS account name>.azuredatalakestore.net` および `login.microsoftonline.com/<tenant>/oauth2/token` への送信トラフィックを許可するように、会社のファイアウォールを構成します。 後者は、IR がアクセス トークンを取得するために通信する必要のある Azure セキュリティ トークン サービス (STS) です。
+
 ## <a name="get-started"></a>作業開始
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
@@ -51,7 +54,6 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 |:--- |:--- |:--- |
 | 型 | type プロパティは **AzureDataLakeStore** に設定する必要があります。 | [はい] |
 | dataLakeStoreUri | Azure Data Lake Store アカウントに関する情報です。 この情報の形式は、`https://[accountname].azuredatalakestore.net/webhdfs/v1` または `adl://[accountname].azuredatalakestore.net/` です。 | [はい] |
-| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
 | subscriptionId | Data Lake Store アカウントが属している Azure サブスクリプション ID です。 | シンクでは必須 |
 | resourceGroupName | Data Lake Store アカウントが属している Azure リソース グループ名です。 | シンクでは必須 |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
@@ -79,7 +81,8 @@ Azure Data Lake Store のリンクされたサービスでは、次のプロパ�
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | servicePrincipalId | アプリケーションのクライアント ID を取得します。 | [はい] |
-| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| servicePrincipalKey | アプリケーションのキーを取得します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| テナント | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
 
 **例:**
 
@@ -132,7 +135,6 @@ Azure Data Factory では、リンクされたサービスの Data Lake Store �
         "type": "AzureDataLakeStore",
         "typeProperties": {
             "dataLakeStoreUri": "https://<accountname>.azuredatalakestore.net/webhdfs/v1",
-            "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
             "subscriptionId": "<subscription of ADLS>",
             "resourceGroupName": "<resource group of ADLS>"
         },
