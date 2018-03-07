@@ -20,7 +20,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-resource-manager-template-functions"></a>Azure リソース マネージャーのテンプレートの関数
+# <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
 このトピックでは、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。
 
 テンプレート内の関数はそれぞれかっこ (`[` と `]`) で囲んで追加します。 式は配置時に評価されます。 文字列リテラルとして記述される一方で、式の評価の結果は、配列、オブジェクト、整数など、さまざまな JSON 型にすることができます。 JavaScript の場合と同様に、関数呼び出しは `functionName(arg1,arg2,arg3)` という形式になります。 プロパティの参照には、ドットと [index] 演算子を使用します。
