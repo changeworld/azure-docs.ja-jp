@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: 5e4068cc694b623f67d998f410f207356efd873f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Azure Monitor を使用したアラートの作成、表示、管理 - Alerts (プレビュー)
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/09/2018
 - [条件]: Signal で確認された場合にアクションをトリガーする特定の条件またはロジック
 - [アクション]: 電子メール、SMS、Webhook などの通知の受信者に送信される特定の呼び出し。
 
-Alerts (プレビュー) では、**ログ アラート**という用語を使用してアラートを説明します。このアラートでは、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) に基づいて、シグナルがカスタム クエリとなります。 既存のアラート エクスペリエンスでは[ほぼリアルタイムのメトリック アラート](monitoring-near-real-time-metric-alerts.md)と呼ばれるメトリック アラート機能は、Alerts (プレビュー) では**メトリック アラート**と呼ばれます。 *メトリック アラート*では、いくつかのリソースの種類で特定の Azure リソース向けに[多次元メトリック](monitoring-metric-charts.md)を提供しているため、そうしたリソース向けのアラートを、次元の他のフィルターを使用してより具体的なものにすることができます。そうしたアラートは**多次元メトリック アラート**と呼ばれます。
+Alerts (プレビュー) では、**ログ アラート**という用語を使用してアラートを説明します。このアラートでは、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) または [Azure Application Insights](../application-insights/app-insights-analytics.md) に基づいて、シグナルがカスタム クエリとなります。 既存のアラート エクスペリエンスでは[ほぼリアルタイムのメトリック アラート](monitoring-near-real-time-metric-alerts.md)と呼ばれるメトリック アラート機能は、Alerts (プレビュー) では**メトリック アラート**と呼ばれます。 *メトリック アラート*では、いくつかのリソースの種類で特定の Azure リソース向けに[多次元メトリック](monitoring-metric-charts.md)を提供しているため、そうしたリソース向けのアラートを、次元の他のフィルターを使用してより具体的なものにすることができます。そうしたアラートは**多次元メトリック アラート**と呼ばれます。
 また、Azure Alerts (プレビュー) には、ご利用のすべてのアラート ルールを表示する統合されたビューと、それらを 1 か所で管理する、未解決アラートの表示機能などの機能があります。 機能の詳細については、[Azure Alerts (プレビュー) の概要](monitoring-overview-unified-alerts.md)に関するページをご覧ください。
 
 > [!NOTE]
@@ -73,7 +73,7 @@ Alerts (プレビュー) では、**ログ アラート**という用語を使�
 
     > 迅速なアラート設定のために導入された新しいメトリック機能は、プラットフォーム サービスからのメトリックとしてシグナルの種類にのみ含まれています
 
-6. *[メトリック アラート]*: シグナルを選択すると、アラート設定のロジックを宣言できます。 参考として、直近の 6 時間から最後の週までさまざまな時間枠を **[履歴の表示]** を使用して微調整するオプションとともに、シグナルの履歴データが表示されます。 所定の視覚エフェクトを使用して、表示される [条件]、[集計]、[しきい値] のオプションから**アラート ロジック**を選択できます。 ロジックのプレビューから分かるように、シグナルの履歴とともに条件が視覚エフェクトで表示され、アラートがトリガーされた時間を示します。 最後に、**[期間]** オプションから選択して Alert が指定条件を探す期間を指定し、**[頻度]** を選択して Alert が実行される頻度を指定します。
+6. *メトリック アラート*: シグナルを選択すると、アラート設定のロジックを宣言できます。 参考として、直近の 6 時間から最後の週までさまざまな時間枠を **[履歴の表示]** を使用して微調整するオプションとともに、シグナルの履歴データが表示されます。 所定の視覚エフェクトを使用して、表示される [条件]、[集計]、[しきい値] のオプションから**アラート ロジック**を選択できます。 ロジックのプレビューから分かるように、シグナルの履歴とともに条件が視覚エフェクトで表示され、アラートがトリガーされた時間を示します。 最後に、**[期間]** オプションから選択して Alert が指定条件を探す期間を指定し、**[頻度]** を選択して Alert が実行される頻度を指定します。
 
     ![メトリックのシグナル ロジックの構成](./media/monitor-alerts-unified/AlertsPreviewCriteria.png)
 
@@ -81,16 +81,13 @@ Alerts (プレビュー) では、**ログ アラート**という用語を使�
 
     ![多次元メトリックのシグナル ロジックの構成](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *[ログ アラート]*: **[リソースの種類]** が *Log Analytics*/*Application Insights* のような分析ソースであることを確認し、適切な**リソース**を選択したら、*[完了]* をクリックします。 次に **[条件の追加]** をクリックして、そのリソースで使用できるシグナル オプションの一覧を表示し、シグナル一覧から、*Log Analytics*/*Application Insights* などの選択したログ監視サービスの **[Custom log search]\(カスタム ログ検索\)** オプションを選択します。
+8. *[ログ アラート]*: **[リソースの種類]** が *Log Analytics* または *Application Insights* のような分析ソースであることを確認し、適切な**リソース**を選択したら、*[完了]* をクリックします。 次に **[条件の追加]** をクリックして、そのリソースで使用できるシグナル オプションの一覧を表示し、シグナル一覧から、*Log Analytics* または *Application Insights* などの選択したログ監視サービスの **[Custom log search]\(カスタム ログ検索\)** オプションを選択します。
 
    ![リソースの選択 - カスタム ログ検索](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
 
-   > **アラート プレビュー**では、選択したリソースが Log Analytics である場合、保存されたログ検索はシグナルの種類が [Log (Saved Query)]\(ログ (保存クエリ)\) として表示されます。
-   Analytics のクエリを完成させた後、将来利用するために保存できます。詳細については、[Log Analytics でのログ検索の使用](../log-analytics/log-analytics-log-searches.md)に関するページを参照してください。 次に、以下の保存した検索条件のサンプル画面に示すように、これらのクエリに基づいてアラート ルールを直接作成することができます。
-
-   ![リソースの選択 - カスタム ログ検索](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+   > Alerts (プレビュー) リストは上の図に示すように、分析クエリをシグナルの種類 - **[Log (Saved Query)]** (ログ (保存されたクエリ)) としてインポートできます。 したがって、ユーザーは Analytics でクエリを完成させ、将来使用するためにクエリをアラートに保存することができます。保存クエリの使用について詳しくは、[ログ分析でのログ検索の使用](../log-analytics/log-analytics-log-searches.md)または [Application Insights 分析 での共有クエリ](../log-analytics/log-analytics-overview.md)に関する記事を参照してください。 
 
 9.  *[ログ アラート]*: 選択すると、アラート設定のクエリを **[検索クエリ]** フィールドで宣言できます。クエリ構文が正しくない場合は、フィールドに赤文字でエラーが表示されます。 クエリ構文が正しい場合は、直近の 6 時間から最後の週までさまざまな時間枠を微調整するオプションとともに、宣言されたクエリの履歴データが参考としてグラフで表示されます。
 
@@ -125,7 +122,7 @@ Alerts (プレビュー) では、**ログ アラート**という用語を使�
     **ログ アラート**の場合、既定のアクションを上書きするためにいくつかの他の機能を使用できます。
 
     - **[電子メール通知]**: アクション グループを介して送信される電子メールの件名を上書きします。 電子メールの本文を変更することはできません。
-    - **[カスタム Json ペイロードを含める]**: アクション グループが使用する webhook Json を上書きし、代わりに既定のペイロードをカスタムのペイロードに置き換えます。 webhook 形式の詳細については、[ログ アラートの webhook アクション](monitor-alerts-unified-log-webhook.md)に関するページを参照してください。
+    - **[カスタム Json ペイロードを含める]**: アクション グループが使用する webhook Json を上書きし、代わりに既定のペイロードをカスタムのペイロードに置き換えます。 webhook 形式の詳細については、[ログ アラートの webhook アクション](monitor-alerts-unified-log-webhook.md)に関するページを参照してください
 
         ![ログ アラートのアクションの上書き](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 
