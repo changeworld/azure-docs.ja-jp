@@ -1,0 +1,280 @@
+- name: Azure のセキュリティのドキュメント
+  href: index.md
+- name: アーキテクチャと設計
+  href: azure-security.md
+  expanded: true
+  items:
+    - name: 高度な脅威検出
+      href: azure-threat-detection.md
+    - name: Azure のログと監査
+      href: azure-log-audit.md
+    - name: Azure のネットワーク セキュリティ
+      href: azure-network-security.md
+    - name: 運用上のセキュリティの有効化
+      href: azure-operational-security.md
+    - name: Azure でのガバナンス
+      href: governance-in-azure.md
+    - name: Azure クラウドでの分離
+      href: azure-isolation.md
+    - name: セキュリティ保護されたハイブリッド ネットワーク アーキテクチャ
+      href: 'https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?toc=%2Fazure%2Fsecurity%2Ftoc.json'
+    - name: セキュリティの技術的な機能
+      href: azure-security-technical-capabilities.md
+- name: データ セキュリティと暗号化
+  href: security-azure-encryption-overview.md
+  items:
+    - name: データベースのセキュリティ
+      href: azure-database-security-overview.md
+      items:
+        - name: ベスト プラクティス
+          href: azure-database-security-best-practices.md
+        - name: セキュリティ チェックリスト
+          href: azure-database-security-checklist.md
+    - name: ディスクの暗号化
+      items:
+        - name: ベスト プラクティス
+          href: azure-security-data-encryption-best-practices.md
+        - name: 保存時のデータ暗号化
+          href: azure-security-encryption-atrest.md
+        - name: IaaS VM のディスク暗号化
+          href: azure-security-disk-encryption.md
+          items:
+            - name: ディスク暗号化の FAQ
+              href: azure-security-disk-encryption-faq.md
+            - name: トラブルシューティング
+              href: azure-security-disk-encryption-tsg.md
+        - name: Azure VM の暗号化
+          href: ../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json
+    - name: Azure Storage セキュリティ
+      href: security-storage-overview.md
+    - name: Storage のセキュリティ ガイド
+      href: ../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json
+- name: プラットフォームとインフラストラクチャ
+  items:
+    - name: Microsoft Antimalware
+      href: azure-security-antimalware.md
+    - name: IaaS セキュリティ
+      href: security-virtual-machines-overview.md
+      items:
+        - name: ベスト プラクティス - Azure VM
+          href: azure-security-best-practices-vms.md
+        - name: ベスト プラクティス - IaaS ワークロード
+          href: azure-security-iaas.md
+        - name: Azure Marketplace イメージ
+          href: security-recommendations-azure-marketplace-images.md
+    - name: ID 管理
+      href: security-identity-management-overview.md
+      items:
+        - name: ベスト プラクティス
+          href: azure-security-identity-management-best-practices.md
+    - name: ネットワークのセキュリティ
+      href: security-network-overview.md
+      items:
+        - name: ベスト プラクティス
+          href: azure-security-network-security-best-practices.md
+        - name: 境界のセキュリティ
+          href: ../best-practices-network-security.md?toc=%2fazure%2fsecurity%2ftoc.json
+- name: アプリケーション
+  items:
+    - name: PaaS
+      href: security-paas-deployments.md
+      items:
+        - name: PaaS の Azure App Service
+          href: security-paas-applications-using-app-services.md
+        - name: PaaS の Azure Storage
+          href: security-paas-applications-using-storage.md
+        - name: PaaS の DB ベスト プラクティス
+          href: security-paas-applications-using-sql.md
+        - name: IoT
+          href: security-internet-of-things-overview.md
+          items:
+            - name: IoT セキュリティのベスト プラクティス
+              href: ../iot-suite/iot-security-best-practices.md
+            - name: IoT のセキュリティ
+              href: '../iot-suite/iot-security-architecture.md#security-in-iot'
+            - name: IoT デプロイのセキュリティ保護
+              href: ../iot-suite/iot-suite-security-deployment.md
+    - name: Azure Service Fabric のセキュリティ
+      href: azure-service-fabric-security-overview.md
+      items:
+        - name: ベスト プラクティス
+          href: azure-service-fabric-security-best-practices.md
+        - name: セキュリティ チェックリスト
+          href: azure-service-fabric-security-checklist.md
+- name: 監視、監査、および操作
+  href: security-management-and-monitoring-overview.md
+  items:
+    - name: 監査とログ記録
+      items:
+        - name: セキュリティ管理
+          href: ../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json
+        - name: リモート管理セキュリティ
+          href: azure-security-management.md
+        - name: Azure ログ統合
+          items:
+            - name: はじめに
+              href: security-azure-log-integration-overview.md
+            - name: 作業開始
+              href: security-azure-log-integration-get-started.md
+            - name: Azure AD 監査ログの統合
+              href: security-azure-log-integration-ad.md
+            - name: Security Center のアラートの統合
+              href: security-azure-log-integration-security-center.md
+            - name: Key Vault のログの統合
+              href: security-azure-log-integration-keyvault-eventhub.md
+            - name: FAQ
+              href: security-azure-log-integration-faq.md
+    - name: 運用上のセキュリティ
+      href: azure-operational-security-overview.md
+      items:
+        - name: ベスト プラクティス
+          href: azure-operational-security-best-practices.md
+        - name: セキュリティ チェックリスト
+          href: azure-operational-security-checklist.md
+- name: ガバナンスとコンプライアンス
+  items:
+    - name: 規制対象ワークロードに対応した金融サービス
+      href: ./blueprints/financial-services-regulated-workloads.md
+    - name: GDPR
+      items:
+        - name: 個人データを管理する
+          href: manage-personal-data-azure.md
+        - name: 個人データを検出、特定、分類する
+          href: how-to-discover-classify-personal-data-azure.md
+        - name: Azure で個人データを保護する
+          href: protect-personal-data-azure.md
+        - name: Security Center で個人データを保護する
+          href: protect-personal-data-azure-security-center.md
+        - name: Application Gateway で個人データを保護する
+          href: protect-personal-data-network-security.md
+        - name: ID とアクセスの制御を使用して個人データを保護する
+          href: protect-personal-data-identity-access-controls.md
+        - name: 暗号化を使用して、保存してある個人データを保護する
+          href: protect-personal-data-at-rest.md
+        - name: 暗号化を使用して、転送中の個人データを保護する
+          href: protect-personal-data-in-transit-encryption.md
+        - name: Azure のレポート作成ツールを使用して個人データを保護する
+          href: protection-personal-data-azure-reporting-tools.md
+    - name: FEDRAMP
+      href: ./blueprints/fedramp.md
+      items:
+        - name: セキュリティ コントロールの概要
+          href: ./blueprints/fedramp-controls-overview.md
+        - name: アクセス制御
+          href: ./blueprints/fedramp-access-controls.md
+        - name: 監査とアカウンタビリティ
+          href: ./blueprints/fedramp-audit-accountability-controls.md
+        - name: 認識とトレーニング
+          href: ./blueprints/fedramp-awareness-training-controls.md
+        - name: 構成管理
+          href: ./blueprints/fedramp-configuration-manager-controls.md
+        - name: 代替計画
+          href: ./blueprints/fedramp-contingency-planning-controls.md
+        - name: 識別と認証
+          href: ./blueprints/fedramp-identification-authentication-controls.md
+        - name: インシデント対応
+          href: ./blueprints/fedramp-incident-response-controls.md
+        - name: 'メンテナンス '
+          href: ./blueprints/fedramp-maintenance-controls.md
+        - name: メディア保護
+          href: ./blueprints/fedramp-media-protection-controls.md
+        - name: 人的セキュリティ
+          href: ./blueprints/fedramp-personnel-security-controls.md
+        - name: 物理的および環境的な保護
+          href: ./blueprints/fedramp-physical-environmental-protection-controls.md
+        - name: 計画
+          href: ./blueprints/fedramp-planning-controls.md
+        - name: リスク評価
+          href: ./blueprints/fedramp-risk-assessment-controls.md
+        - name: セキュリティの評価と承認
+          href: ./blueprints/fedramp-security-assessment-authorization-controls.md
+        - name: システムと通信の保護
+          href: ./blueprints/fedramp-system-communications-protection-controls.md
+        - name: システムと情報の整合性
+          href: ./blueprints/fedramp-system-information-integrity-controls.md
+        - name: システムとサービスの取得
+          href: ./blueprints/fedramp-system-services-acquisition-controls.md
+    - name: PCI DSS
+      href: ./blueprints/payment-processing-blueprint.md
+      items:
+        - name: 要件の概要
+          href: ./blueprints/pci-dss-requirements-overview.md
+        - name: 要件 1 - ファイアウォール
+          href: ./blueprints/pci-dss-requirement-1-firewall.md
+        - name: 要件 2 - パスワード
+          href: ./blueprints/pci-dss-requirement-2-password.md
+        - name: 要件 3 - CHD
+          href: ./blueprints/pci-dss-requirement-3-chd.md
+        - name: 要件 4 - 暗号化
+          href: ./blueprints/pci-dss-requirement-4-encryption.md
+        - name: 要件 5 - マルウェア
+          href: ./blueprints/pci-dss-requirement-5-malware.md
+        - name: 要件 6 - セキュリティ保護されたシステム
+          href: ./blueprints/pci-dss-requirement-6-secure-system.md
+        - name: 要件 7 - アクセス
+          href: ./blueprints/pci-dss-requirement-7-access.md
+        - name: 要件 8 - ID
+          href: ./blueprints/pci-dss-requirement-8-identity.md
+        - name: 要件 9 - 物理アクセス
+          href: ./blueprints/pci-dss-requirement-9-physical-access.md
+        - name: 要件 10 - 監視
+          href: ./blueprints/pci-dss-requirement-10-monitoring.md
+        - name: 要件 11 - テスト
+          href: ./blueprints/pci-dss-requirement-11-testing.md
+        - name: 要件 12 - ポリシー
+          href: ./blueprints/pci-dss-requirement-12-policy.md
+    - name: UK-OFFICIAL
+      href: ./blueprints/uk-official-three-tier-applications-overview.md
+      items:
+        - name: 原則の概要
+          href: ./blueprints/uk-official-three-tier-applications-principles-overview.md
+    - name: HIPAA/HITRUST 正常性データおよび AI
+      href: ./blueprints/azure-health.md
+- name: ホワイト ペーパー
+  href: security-white-papers.md
+- name: 技術的概要
+  href: security-overviews.md
+- name: ベスト プラクティス
+  href: security-best-practices-and-patterns.md
+- name: リソース
+  items:
+    - name: Azure セキュリティの MVP プログラム
+      href: azure-security-mvp.md
+    - name: サイバーセキュリティに関する相談
+      href: azure-security-cyber-services.md
+    - name: セキュリティ イベント サポート チケットのログ記録
+      href: azure-security-event-support-ticket.md
+    - name: 侵入テスト
+      href: azure-security-pen-testing.md
+    - name: Microsoft Threat Modeling Tool
+      href: azure-security-threat-modeling-tool.md
+      items:
+        - name: 使用の開始
+          href: azure-security-threat-modeling-tool-getting-started.md
+        - name: 機能の概要
+          href: azure-security-threat-modeling-tool-feature-overview.md
+        - name: 脅威
+          href: azure-security-threat-modeling-tool-threats.md
+        - name: 軽減策
+          href: azure-security-threat-modeling-tool-mitigations.md
+          items:
+            - name: 監査とログ記録
+              href: azure-security-threat-modeling-tool-auditing-and-logging.md
+            - name: 認証
+              href: azure-security-threat-modeling-tool-authentication.md
+            - name: 承認
+              href: azure-security-threat-modeling-tool-authorization.md
+            - name: 通信のセキュリティ
+              href: azure-security-threat-modeling-tool-communication-security.md
+            - name: 構成管理
+              href: azure-security-threat-modeling-tool-configuration-management.md
+            - name: 暗号化
+              href: azure-security-threat-modeling-tool-cryptography.md
+            - name: 例外管理
+              href: azure-security-threat-modeling-tool-exception-management.md
+            - name: 入力の検証
+              href: azure-security-threat-modeling-tool-input-validation.md
+            - name: 機微なデータ
+              href: azure-security-threat-modeling-tool-sensitive-data.md
+            - name: セッションの管理
+              href: azure-security-threat-modeling-tool-session-management.md

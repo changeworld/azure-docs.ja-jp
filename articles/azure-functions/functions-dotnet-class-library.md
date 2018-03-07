@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 8a098d2ecc004b1593310579c47c53778858e799
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9e9aa8a36d363ce28d61c5ba3cfe758520a626cf
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -84,6 +84,31 @@ public static class SimpleExampleWithOutput
 }
 ```
 
+### <a name="order-of-parameters"></a>パラメーターの順序
+
+関数シグネチャのパラメーターの順序は関係ありません。 たとえば、トリガー パラメーターは、他のバインドの前後に配置できます。また、ロガー パラメーターは、トリガー パラメーターまたはバインド パラメーターの前後に配置できます。
+
+### <a name="binding-expressions"></a>バインド式
+
+属性コンストラクターのパラメーターおよび関数パラメーターでバインド式を使用できます。 たとえば、次のコードは、アプリ設定から監視するキューの名前を取得し、`insertionTime` パラメーターのキュー メッセージの作成時刻を取得します。
+
+```csharp
+public static class BindingExpressionsExample
+{
+    [FunctionName("LogQueueMessage")]
+    public static void Run(
+        [QueueTrigger("%queueappsetting%")] string myQueueItem,
+        DateTimeOffset insertionTime,
+        TraceWriter log)
+    {
+        log.Info($"Message content: {myQueueItem}");
+        log.Info($"Created at: {insertionTime}");
+    }
+}
+```
+
+詳細については、[トリガーとバインド](functions-triggers-bindings.md#binding-expressions-and-patterns)に関するページの「**バインド式とパターン**」を参照してください。
+
 ### <a name="conversion-to-functionjson"></a>function.json への変換
 
 ビルド処理では、ビルド フォルダー内の関数フォルダーに *function.json*ファイルを作成します。 前述のとおり、このファイルに対しては直接編集が行われません。 このファイルを編集して、バインド構成を変更したり、関数を無効にしたりすることはできません。 
@@ -119,22 +144,7 @@ public static class SimpleExampleWithOutput
 
 ## <a name="binding-to-method-return-value"></a>メソッドの戻り値へのバインド
 
-次の例に示すように、出力バインドにはメソッドの戻り値を使用できます。
-
-```csharp
-public static class ReturnValueOutputBinding
-{
-    [FunctionName("CopyQueueMessageUsingReturnValue")]
-    [return: Queue("myqueue-items-destination")]
-    public static string Run(
-        [QueueTrigger("myqueue-items-source-2")] string myQueueItem,
-        TraceWriter log)
-    {
-        log.Info($"C# function processed: {myQueueItem}");
-        return myQueueItem;
-    }
-}
-```
+出力バインドのメソッドの戻り値を使用するには、属性をメソッドの戻り値に適用します。 例については、[トリガーとバインド](functions-triggers-bindings.md#using-the-function-return-value)に関するページを参照してください。
 
 ## <a name="writing-multiple-output-values"></a>複数の出力値の書き込み
 
@@ -202,18 +212,28 @@ public static class AsyncExample
 
 ## <a name="cancellation-tokens"></a>キャンセル トークン
 
-一部の操作では、グレースフル シャットダウンが必要です。 クラッシュに対応できるコードを記述するのが最善の方法ですが、シャットダウンの要求を処理する場合は、[CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) 型の引数を定義します。  `CancellationToken` は、ホストのシャット ダウンがトリガーされることを通知するために用意されています。
+関数は、[CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) パラメーターを受け取ることができます。これによって、関数が中断しそうな場合に、オペレーティング システムからコードに通知を受けることができます。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
+
+次の例では、関数の終了が迫っているかどうかを確認する方法を示します。
 
 ```csharp
 public static class CancellationTokenExample
 {
-    [FunctionName("BlobCopy")]
-    public static async Task RunAsync(
-        [BlobTrigger("sample-images/{blobName}")] Stream blobInput,
-        [Blob("sample-images-copies/{blobName}", FileAccess.Write)] Stream blobOutput,
+    public static void Run(
+        [QueueTrigger("inputqueue")] string inputText,
+        TextWriter logger,
         CancellationToken token)
     {
-        await blobInput.CopyToAsync(blobOutput, 4096, token);
+        for (int i = 0; i < 100; i++)
+        {
+            if (token.IsCancellationRequested)
+            {
+                logger.WriteLine("Function was cancelled at iteration {0}", i);
+                break;
+            }
+            Thread.Sleep(5000);
+            logger.WriteLine("Normal processing for queue message={0}", inputText);
+        }
     }
 }
 ```

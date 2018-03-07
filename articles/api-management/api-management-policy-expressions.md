@@ -14,26 +14,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: fb50ba3f292a390c45f1afe6259731d2b92cc335
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: a5bcd03e71a69928fa1e02a5286801c4933d17ef
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="api-management-policy-expressions"></a>API Management ポリシー式
-ポリシー式の構文は C# 6.0 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。  
-  
-> [!TIP]
->  ポリシー式の詳細については、[ポリシー式](https://azure.microsoft.com/documentation/videos/policy-expressions-in-azure-api-management/)のビデオを参照してください。  
->   
->  ポリシー式を使用したポリシー構成のデモを、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」 (Cloud Cover エピソード 177: Vlad Vinogradsky と学ぶ API Management 機能) でご覧いただくことができます。 このビデオでは、以下のポリシー式のデモを観ることができます。  
->   
->  -   10:30 - バックエンド サービスにコンテキスト情報を指定する方法をご覧ください。 この情報を指定するには、[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーおよび [HTTP ヘッダーの設定](api-management-transformation-policies.md#SetHTTPheader)ポリシーを使用します。 12:10 には、開発者ポータルで操作を呼び出すデモが行われ、これらのポリシーの動作を確認できます。  
-> -   13:50 - [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレームに基づいて操作へのアクセスを事前に承認する方法を示します。 ポリシー エディターでポリシーを構成する方法を観るには、15:00 に早送りします。 18:50 には、必須の認証トークンがある場合とない場合の両方について、開発者ポータルから操作を呼び出すデモをご覧いただけます。  
-> -   21:00 - [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) トレースを使用して、ポリシーの評価方法と評価結果を確認しています。  
-> -   25:25 - [キャッシュから取得](api-management-caching-policies.md#GetFromCache)ポリシーおよび[キャッシュに格納](api-management-caching-policies.md#StoreToCache)ポリシーの式を使用して、API Management 応答のキャッシュを構成する方法をご覧ください。 バックエンド サービスの `Cache-Control` ディレクティブによって指定されたバックエンド サービスの応答キャッシュ時間と一致するように設定しています。  
-> -   34:30 - コンテンツのフィルター処理を実行する方法をご覧ください。 [制御フロー](api-management-advanced-policies.md#choose) ポリシーおよび[本文設定](api-management-transformation-policies.md#SetBody)ポリシーを使用して、バックエンドから受信した応答からデータ要素を削除しています。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。  
-> -   このビデオで使用されているポリシー ステートメントをダウンロードするには、 [api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) github リポジトリをご覧ください。  
+この記事で説明するポリシー式の構文は C# 6.0 です。 それぞれの式は、暗黙的に指定された[コンテキスト](api-management-policy-expressions.md#ContextVariables)変数と、許可されている .NET Framework の型の[サブセット](api-management-policy-expressions.md#CLRTypes)にアクセスできます。  
+
+詳細:
+
+- バックエンド サービスにコンテキスト情報を指定する方法をご覧ください。 この情報を指定するには、[クエリ文字列パラメーターの設定](api-management-transformation-policies.md#SetQueryStringParameter)ポリシーおよび [HTTP ヘッダーの設定](api-management-transformation-policies.md#SetHTTPheader)ポリシーを使用します。
+- [JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、トークン クレームに基づいて操作へのアクセスを事前に承認する方法を示します。   
+- [API Inspector](https://azure.microsoft.com/documentation/articles/api-management-howto-api-inspector/) トレースによってポリシーの評価方法と評価結果を確認する方法を示します。  
+- [キャッシュから取得](api-management-caching-policies.md#GetFromCache)ポリシーおよび[キャッシュに格納](api-management-caching-policies.md#StoreToCache)ポリシーの式を使用して、API Management 応答のキャッシュを構成する方法をご覧ください。 バックエンド サービスの `Cache-Control` ディレクティブによって指定されたバックエンド サービスの応答キャッシュ時間と一致するように設定しています。  
+- コンテンツのフィルター処理を実行する方法をご覧ください。 [制御フロー](api-management-advanced-policies.md#choose) ポリシーおよび[本文設定](api-management-transformation-policies.md#SetBody)ポリシーを使用して、バックエンドから受信した応答からデータ要素を削除しています。 
+- ポリシー ステートメントをダウンロードするには、[api-management-samples/policies](https://github.com/Azure/api-management-samples/tree/master/policies) GitHub リポジトリをご覧ください。  
   
   
 ##  <a name="Syntax"></a>構文  
@@ -206,10 +203,7 @@ ms.lasthandoff: 01/17/2018
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm)|input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />プレーンテキストを返します。|
 |byte[] Decrypt(input: this byte[], alg: System.Security.Cryptography.SymmetricAlgorithm, key:byte[], iv:byte[])|input - input - 暗号化解除対象の暗号化テキスト<br /><br />alg - 暗号化アルゴリズム<br /><br />key - 暗号化キー<br /><br />iv - 初期化ベクター<br /><br />プレーンテキストを返します。|
 
-## <a name="video"></a>ビデオ
 
-> [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Policy-Expressions-in-Azure-API-Management/player] 
->
 ## <a name="next-steps"></a>次の手順
 
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/28/2017
+ms.date: 02/22/2018
 ms.author: larryfr
-ms.openlocfilehash: a972344e2b6205fbcf69d2969c42211ec5b24869
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 18b7b5d56acb4d9d0c2ed007f0521193e37d82e8
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>HDInsight での Apache Storm トポロジのデプロイと管理
 
@@ -65,7 +65,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
 
 3. **[新しいプロジェクト]** ダイアログで、**[インストール済]** > **[テンプレート]** の順に展開して **[HDInsight]** を選択します。 テンプレートの一覧から **[Storm Sample]**を選択します。 ダイアログ ボックスの下部に、アプリケーションの名前を入力します。
 
-    ![イメージ](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
+    ![image](./media/apache-storm-deploy-monitor-topology-linux/sample.png)
 
 4. **[ソリューション エクスプローラー]** で、プロジェクトを右クリックして **[HDInsight の Storm に送信]** を選択します。
 
@@ -89,7 +89,7 @@ HDInsight Tools は、C# またはハイブリッド トポロジを Storm ク�
     このコマンドにより、クラスターで WordCount トポロジの例が開始されます。 このトポロジは、ランダムに文を生成し、文中の各単語の出現回数をカウントします。
 
    > [!NOTE]
-   > トポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 ファイルをクラスターにコピーするには、`scp` コマンドを使用できます。 たとえば、 `scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar`
+   > トポロジをクラスターに送信する場合、まずクラスターを含む jar ファイルをコピーしてから、`storm` コマンドを実行します。 ファイルをクラスターにコピーするには、`scp` コマンドを使用できます。 たとえば、`scp FILENAME.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:FILENAME.jar` のように指定します。
    >
    > WordCount の例と他の Storm スターターの例は、 `/usr/hdp/current/storm-client/contrib/storm-starter/`のクラスターに既に含まれています。
 
@@ -226,7 +226,7 @@ Linux ベースの HDInsight クラスターの REST API のベース URI は、
 
 * **SSH セッションから**: SSH セッションからクラスターに `headnode -f` コマンドを使用します。
 * **Ambari Web から**: ページの一番上から **[サービス]** を選択し、**[Storm]** を選択します。 **[概要 ]** タブで **[Storm UI Server]** を選択します。 Storm UI と REST API をホストするノードの FQDN はページの一番上で確認できます。
-* **Ambari REST API から**: `curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。 **PASSWORD** をクラスターの管理者パスワードに替えます。 **CLUSTERNAME** をクラスター名に置き換えます。 応答の「host_name」エントリにノードの FQDN が含まれます。
+* **Ambari REST API から**: `curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/STORM/components/STORM_UI_SERVER"` コマンドを使用し、Storm UI と REST API が実行されているノードに関する情報を取得します。 **CLUSTERNAME** をクラスター名に置き換えます。 メッセージが表示されたら、ログイン (管理者) アカウントのパスワードを入力します。 応答の「host_name」エントリにノードの FQDN が含まれます。
 
 ### <a name="authentication"></a>認証
 
@@ -239,7 +239,7 @@ REST API への要求では、HDInsight クラスターの管理者名とパス�
 
 REST API から返される情報は、クラスター内からのみ利用可能です。 たとえば、Zookeeper サーバーに返された完全修飾ドメイン名 (FQDN) は、インターネットからはアクセスできません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Maven を使用して Java ベースのトポロジを開発](apache-storm-develop-java-topology.md)する方法について説明します。
 

@@ -7,16 +7,16 @@ author: dominicbetts
 manager: timlt
 ms.author: dobett
 ms.service: iot-suite
-ms.date: 02/15/2018
+ms.date: 02/22/2018
 ms.topic: article
 ms.devlang: NA
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.openlocfilehash: 5bc01c7e70e6837989c6bebd843ba1f41c8c5aeb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 96d701860abcc645b37d0420fe352da2adeb992f
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="explore-the-capabilities-of-the-remote-monitoring-preconfigured-solution"></a>リモート監視の構成済みソリューションについて知る
 
@@ -114,7 +114,7 @@ Contoso のオペレーターは、デバイスが正常に動作しているか
 
     ![トリガーされたアラームの一覧が表示された [メンテナンス] ページ](media/iot-suite-remote-monitoring-explore/maintenancealarmlist.png)
 
-1. 一覧内の最初のアラームが、最新のアラームです。 **[Chiller Pressure]\(冷却装置の圧力\)** アラームをクリックして、関連するデバイスとテレメトリを表示します。 テレメトリは冷却装置の圧力のスパイクを示しています。
+1. 一覧内の最初のアラームが、最新のアラームです。 **[Chiller Pressure Too High]\(冷却装置の圧力が高すぎる\)** アラームをクリックして、関連するデバイスとテレメトリを表示します。 テレメトリは冷却装置の圧力のスパイクを示しています。
 
     ![選択したアラームのテレメトリが表示された [メンテナンス] ページ](media/iot-suite-remote-monitoring-explore/maintenancetelemetry.png)
 
@@ -159,12 +159,12 @@ Contoso は、新しい種類のデバイスを実地にテストしています
 
     ![[デバイス] ページでデバイスを選択する](media/iot-suite-remote-monitoring-explore/devicesselect.png)
 
-1. **[スケジュール]** ボタンをクリックし、**[ファームウェア更新]** を選択します。 **[ジョブ名]** と **[Firmware URI]\(ファームウェアの URI\)** の値を入力します。 **[適用]** を選択して、今すぐ実行するようにジョブをスケジュールします。
+1. **[スケジュール]** ボタンをクリックし、**[ファームウェア更新]** を選択します。 **[ジョブ名]**、**[ファームウェアのバージョン]**、**[Firmware URI]\(ファームウェアの URI\)** の値を入力します。 **[適用]** を選択して、今すぐ実行するようにジョブをスケジュールします。
 
     ![デバイスのファームウェアの更新をスケジュールする](media/iot-suite-remote-monitoring-explore/devicesschedulefirmware.png)
 
     > [!NOTE]
-    > シミュレートされたデバイスでは、**[Firmware URI]\(ファームウェアの URI\)** の値として任意の URL を使用できます。 シミュレートされたデバイスは、この URL にアクセスしません。
+    > シミュレートされたデバイスでは、**[Firmware URI]\(ファームウェアの URI\)** の値として任意の URL を使用し、**[ファームウェアのバージョン]** には任意の値を使用できます。 シミュレートされたデバイスは、この URL にアクセスしません。
 
 1. ジョブの影響を受けるデバイスの数をメモして、**[適用]** を選択します。
 

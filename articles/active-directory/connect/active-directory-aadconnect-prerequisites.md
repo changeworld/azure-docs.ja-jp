@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9c35e796cb823b2b059b726f099d658ee5e8192b
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d82a91aa51b6684e6bf88de142d00705a0ceddba
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -61,7 +61,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
 ### <a name="sql-server-used-by-azure-ad-connect"></a>Azure AD Connect で使用される SQL Server
 * Azure AD Connect には、ID データを格納する SQL Server データベースが必要です。 既定では、SQL Server 2012 Express LocalDB (SQL Server Express の簡易バージョン) がインストールされています。 SQL Server Express のサイズ制限は 10 GB で、約 100,000 オブジェクトを管理できます。 さらに多くのディレクトリ オブジェクトを管理する必要がある場合は、インストール ウィザードで別の SQL Server インストール済み環境を指定する必要があります。
 * 別の SQL Server を使用する場合は、次の要件が適用されます。
-  * Azure AD Connect では、SQL Server 2008 (最新の Service Pack) から SQL Server 2016 SP1 まで、すべてのエディションの Microsoft SQL Server がサポートされています。 Microsoft Azure SQL Database は、データベースとして **サポートされていません** 。
+  * Azure AD Connect では、SQL Server 2008 (最新の Service Pack) から SQL Server 2016 SP1 まで、すべてのバージョンの Microsoft SQL Server がサポートされています。 Microsoft Azure SQL Database は、データベースとして **サポートされていません** 。
   * 大文字と小文字が区別されない SQL 照合順序を使用する必要があります。 これらの照合順序は、名前に含まれる \_CI_ で識別します。 大文字と小文字が区別される照合順序 (名前に含まれる \_CS_ で識別) は**サポートされていません**。
   * 1 つの SQL インスタンスにつき保持できる同期エンジンは 1 つだけです。 FIM/MIM Sync、DirSync、または Azure AD Sync との SQL インスタンスの共有は**サポートされていません**。
 

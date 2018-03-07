@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 02/22/2018
 ms.author: jingwang
-ms.openlocfilehash: 28ecdc541bc7e95dfa6d7c1b2d984cba0654699f
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 64b0982ab1d0b212120d962d4c47a1b8db8ca025
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="copy-data-from-servicenow-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して ServiceNow からデータをコピーする
 
@@ -51,9 +51,9 @@ ServiceNow のリンクされたサービスでは、次のプロパティがサ
 | endpoint | ServiceNow サーバーのエンドポイント (`http://ServiceNowData.com`)。  | [はい] |
 | authenticationType | 使用する認証の種類。 <br/>使用可能な値: **Basic**、**OAuth2** | [はい] |
 | username | Basic および OAuth2 認証で ServiceNow サーバーへの接続に使用されるユーザー名。  | いいえ  |
-| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| password | Basic および OAuth2 認証のユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | clientId | OAuth2 認証のクライアント ID。  | いいえ  |
-| clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| clientSecret | OAuth2 認証のクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |
@@ -114,11 +114,11 @@ ServiceNow からデータをコピーするには、コピー アクティビ�
 
 クエリで ServiceNow のスキーマと列を指定する際には、次の点に注意してください。
 
-- **スキーマ:** ServiceNow へのクエリでは、スキーマを `Actual` または `Display` として指定する必要があります。これは、[ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) を呼び出す際に、`sysparm_display_value` パラメーター (true または false) として確認できます。 
-- **列:** 実際の値の列名は`[columne name]_value`、表示値の列名は `[columne name]_display_value` です。
+- **スキーマ:** ServiceNow のクエリでは、スキーマを `Actual` または `Display` として指定します。これは、[ServiceNow restful API](https://developer.servicenow.com/app.do#!/rest_api_doc?v=jakarta&id=r_AggregateAPI-GET) を呼び出す際に、`sysparm_display_value` パラメーター (true または false) として確認できます。 
+- **列:** `Actual` スキーマの下の実際の値の列名は `[columne name]_value` で、`Display` スキーマの下の表示値は `[columne name]_display_value` です。 列名は、クエリで使用されているスキーマにマップされる必要があります。
 
 **サンプル クエリ:**
-`SELECT distinct col_value, col_display_value FROM Actual.alm_asset` または `SELECT distinct col_value, col_display_value FROM Display.alm_asset`
+`SELECT col_value FROM Actual.alm_asset` または `SELECT col_display_value FROM Display.alm_asset`
 
 **例:**
 

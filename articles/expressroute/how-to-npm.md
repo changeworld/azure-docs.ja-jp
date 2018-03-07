@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/14/2018
 ms.author: agummadi
-ms.openlocfilehash: 4d5bf1550ecd5982e51c0ae8d3917102d2f7c253
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4f3edb6879ff256b1b50a1437fe349084fe7de41
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="configure-network-performance-monitor-for-expressroute"></a>ExpressRoute に使用する Network Performance Monitor の構成
 
@@ -48,6 +48,10 @@ ExpressRoute 回線は、世界中どこにあっても、次のいずれかの�
 * 米国東部 
 * 東南アジア 
 * オーストラリア南東部
+
+>[!NOTE]
+>Azure Government クラウドで VNET に接続された ExpressRoute 回線の監視のサポートは、2018 年第 2 四半期に予定されています。   
+>
 
 ## <a name="workflow"></a>ワークフロー
 

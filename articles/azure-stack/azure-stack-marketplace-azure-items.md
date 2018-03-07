@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/27/2018
+ms.date: 02/27/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: bfc55a305fd0099af5cc2bb394420e547d2703bc
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c82ee87b341de4e85e2eab566f7a3c6fcffdace1
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/21/2018
 
 
 ## <a name="virtual-machine-extensions"></a>仮想マシン拡張機能
-必要な VM 拡張機能の更新プログラムがある場合には、必ずそれらをダウンロードすることをお勧めします。 製品に付属している拡張機能は、通常の修正プログラムや更新プロセスでは更新されません。更新プログラムは頻繁に確認するようにしてください。 他の拡張機能は、Marketplace Management からのみ入手できます。
+ご使用の仮想マシン (VM) の拡張機能の更新プログラムがあるときは、必ずダウンロードする必要があります。 製品に付属している拡張機能は、通常の修正プログラムや更新プロセスでは更新されません。更新プログラムは頻繁に確認するようにしてください。 他の拡張機能は、Marketplace Management からのみ入手できます。
 
 |  | 項目名 | [説明] | 発行元 | [OS Type]\(OS の種類\) |
 | --- | --- | --- | --- | --- |
@@ -42,7 +42,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Microsoft 仮想マシン イメージおよびソリューション テンプレート
 
-Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよびソリューション テンプレートがサポートされています。 依存関係がある場合は、前述のように、それらすべてを個別にダウンロードしてください。 SQL Server や Machine Learning Server などのアプリケーションには、適切なライセンスが必要です (無償または試用版としてマークされている場合を除く)。
+Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよびソリューション テンプレートがサポートされています。 依存関係がある場合は、前述のように、それらすべてを個別にダウンロードします。 SQL Server や Machine Learning Server などのアプリケーションには、適切なライセンスが必要です (無償または試用版としてマークされている場合を除く)。
 
 |  | 項目名 | [説明] | 発行元 |
 | --- | --- | --- | --- |
@@ -71,9 +71,9 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Express](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonSLES12SP2) | SQL Server 2016 SP1 の無償 Express バージョン。 | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Enterprise](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017EnterpriseonSLES12SP2) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
 | ![](media/azure-stack-marketplace-azure-items/sql.png) | [SUSE Linux Enterprise Server (SLES) 12 SP2 の SQL Server 2017 Web](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.Microsoft.SQLServer2017WebonSLES12SP2) | インテリジェントでミッション クリティカルなアプリケーション用のデータベース プラットフォーム。 | Microsoft + SUSE |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server 2016 の Microsoft Machine Learning Server 9.2.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onWindowsServer2016) | Windows Server 2016 の Microsoft Machine Learning Server 9.2.1。 | Microsoft |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Ubuntu 16.04 の Microsoft Machine Learning Server 9.2.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onUbuntu1604) | Ubuntu 16.04 の Microsoft Machine Learning Server 9.2.1。 | Microsoft + Canonical |
-| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [CentOS Linux 7.2 の Microsoft Machine Learning Server 9.2.1](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer921onCentOSLinux72) | CentOS Linux 7.2 の Microsoft Machine Learning Server 9.2.1。 | Microsoft + Rogue Wave |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Windows Server 2016 の Microsoft Machine Learning Server 9.3.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onWindowsServer2016) | Windows Server 2016 の Microsoft Machine Learning Server 9.3.0。 | Microsoft |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [Ubuntu 16.04 の Microsoft Machine Learning Server 9.3.0](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onUbuntu1604) | Ubuntu 16.04 の Microsoft Machine Learning Server 9.3.0。 | Microsoft + Canonical |
+| ![](media/azure-stack-marketplace-azure-items/microsoft.png) | [CentOS Linux 7.2 の Microsoft Machine Learning Server 9.3.0 ](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.MicrosoftMachineLearningServer930onCentOSLinux72) | CentOS Linux 7.2 の Microsoft Machine Learning Server 9.3.0。 | Microsoft + Rogue Wave |
 
 
 ## <a name="linux-distributions"></a>Linux ディストリビューション

@@ -8,13 +8,13 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 12/01/2017
+ms.date: 02/26/2018
 ms.author: danlep
-ms.openlocfilehash: 2fa5f9335a4d00f489f11c0db23322ab971a224f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a26d786ffcb74bb28fb9bd065e49398d52d2b662
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Azure Batch で コンテナー アプリケーションを実行する
 
@@ -27,7 +27,7 @@ Azure Batch を使用すると、Azure で膨大な数のバッチ コンピュ�
 
 ## <a name="prerequisites"></a>前提条件
 
-* SDK バージョン: 次のバージョンの Batch SDK がコンテナー イメージをサポートします。
+* SDK バージョン: 次のバージョンの時点の Batch SDK がコンテナー イメージをサポートします。
     * Batch REST API バージョン 2017-09-01.6.0
     * Batch .NET SDK バージョン 8.0.0
     * Batch Python SDK バージョン 4.0
@@ -87,7 +87,7 @@ Azure RDMA ネットワークにアクセスするには、サイズが A8、A9�
 
     Azure Portal からこのイメージ ID を取得するには、**[すべてのリソース]** を開いてカスタム イメージを選択し、イメージ ブレードの **[概要]** から **[リソース ID]** のパスをコピーします。
 
-* [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?page=1&subcategories=windows-based) イメージを使用する場合は、「[仮想マシン イメージの一覧](batch-linux-nodes.md#list-of-virtual-machine-images)」に示されているように、プランの種類、パブリッシャー、SKU、イメージのバージョンなど、イメージについて説明するパラメーターのグループを指定します。
+* [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?page=1&subcategories=windows-based) イメージを使用する場合は、「[仮想マシン イメージの一覧](batch-linux-nodes.md#list-of-virtual-machine-images)」に示されているように、パブリッシャー、プランの種類、SKU、イメージのバージョンなど、イメージについて説明するパラメーターのグループを指定します。
 
   ```csharp
   // Provide a reference to an Azure Marketplace image for
@@ -239,7 +239,7 @@ CloudTask containerTask = new CloudTask (
 
 ## <a name="next-steps"></a>次の手順
 
-* Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
+* [Shipyard レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes)を使用して Azure Batch でコンテナー ワークロードを簡単にデプロイする方法については、[Batch Shipyard](https://github.com/Azure/batch-shipyard) ツールキットも参照してください。
 
 * Linux での Docker CE のインストールおよび使用の詳細については、[Docker](https://docs.docker.com/engine/installation/) ドキュメントをご覧ください。
 

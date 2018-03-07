@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/16/2018
 ms.author: menchi
-ms.openlocfilehash: 760a6a30513308aa59c5e253e3b91e28cf9e3241
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: e83aa590cc41abcd661e6f0fef450833c816dac4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="use-the-iot-extension-for-azure-cli-20-for-azure-iot-hub-device-management"></a>Azure CLI 2.0 向けの IoT 拡張機能を使用した Azure IoT Hub デバイス管理
 
@@ -66,7 +66,7 @@ Azure CLI 2.0 と Azure CLI 2.0 向けの IoT 拡張機能をさまざまな管�
 - IoT 拡張機能をインストールします。 最も簡単な方法は、`az extension add --name azure-cli-iot-ext` を実行することです。 [IoT 拡張機能の readme](https://github.com/Azure/azure-iot-cli-extension/blob/master/README.md) に、拡張機能をインストールするためのいくつかの方法が説明されています。
 
 
-## <a name="login-to-your-azure-account"></a>Azure アカウントへのログイン
+## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
 
 次のコマンドを実行して Azure アカウントにログインします。
 
@@ -74,15 +74,15 @@ Azure CLI 2.0 と Azure CLI 2.0 向けの IoT 拡張機能をさまざまな管�
 az login
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-direct-methods"></a>Azure CLI 2.0 向けの IoT 拡張機能を直接メソッドで使用する
+## <a name="direct-methods"></a>ダイレクト メソッド
 
 ```bash
 az iot hub invoke-device-method --device-id <your device id> --hub-name <your hub name> --method-name <the method name> --method-payload <the method payload>
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-desired-properties"></a>Azure CLI 2.0 向けの IoT 拡張機能をデバイス ツインの必要なプロパティで使用する
+## <a name="device-twin-desired-properties"></a>デバイス ツインの目的のプロパティ
 
-次のコマンドを実行して、必要なプロパティの間隔 = 3000 を設定します。
+次のコマンドを実行して、目的のプロパティ interval = 3000 を設定します。
 
 ```bash
 az iot hub device-twin update -n <your hub name> -d <your device id> --set properties.desired.interval = 3000
@@ -90,7 +90,7 @@ az iot hub device-twin update -n <your hub name> -d <your device id> --set prope
 
 このプロパティをデバイスから読み取ることができます。
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-reported-properties"></a>Azure CLI 2.0 向けの IoT 拡張機能をデバイス ツインの報告されるプロパティで使用する
+## <a name="device-twin-reported-properties"></a>デバイス ツインの報告されるプロパティ
 
 次のコマンドを実行して、デバイスの報告されるプロパティを取得します。
 
@@ -100,7 +100,7 @@ az iot hub device-twin update -n <your hub name> -d <your device id> --set prope
 
 プロパティの 1 つに、このデバイスが最後にメッセージを送信または受信した時間を示す $metadata.$lastUpdated があります。
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-twins-tags"></a>Azure CLI 2.0 向けの IoT 拡張機能をデバイス ツインのタグで使用する
+## <a name="device-twin-tags"></a>デバイス ツインのタグ
 
 次のコマンドを実行して、デバイスのタグとプロパティを取得します。
 
@@ -114,7 +114,7 @@ az iot hub device-twin show --hub-name <your hub name> --device-id <your device 
 az iot hub device-twin update --hub-name <your hub name> --device-id <your device id> --set tags = '{"role":"temperature&humidity"}}'
 ```
 
-## <a name="use-the-iot-extension-for-azure-cli-20-with-device-twins-queries"></a>Azure CLI 2.0 向けの IoT 拡張機能をデバイス ツインのクエリで使用する
+## <a name="device-twin-queries"></a>デバイス ツイン クエリ
 
 次のコマンドを実行して、タグ role = 'temperature&humidity' のクエリを実行します。
 

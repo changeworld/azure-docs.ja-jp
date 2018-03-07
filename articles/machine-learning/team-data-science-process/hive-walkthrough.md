@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: bradsev
-ms.openlocfilehash: daf5168ba9a21a56d72fc14649c349b0fb63a167
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 4671493c23bfed72517e436dd6922f4ef8a213b0
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>Team Data Science Process の活用: Azure HDInsight Hadoop クラスターの使用
 このチュートリアルでは、[Team Data Science Process (TDSP)](overview.md) をエンド ツー エンドのシナリオで使用します。 [Azure HDInsight Hadoop クラスター](https://azure.microsoft.com/services/hdinsight/)を使用して、公開されている [NYC タクシー乗車](http://www.andresmh.com/nyctaxitrips/)データセットのデータの保存、探索、特徴エンジニアリングを行い、データのダウンサンプリングを実行します。 二項分類、多クラス分類、回帰予測タスクを処理するために、ここでは Azure Machine Learning を使用してデータのモデルを構築します。 
@@ -104,10 +104,10 @@ HDInsight クラスターを使用する高度な分析用の Azure 環境は、
 
 次の AzCopy コマンドでは、Hadoop クラスターを作成してデータ ファイルを解凍したときに指定した実際の値で次のパラメーターを置き換えます。
 
-* ***&#60;path_to_data_folder>*** を解凍データ ファイルのあるコンピューター上のディレクトリ (パス) に置き換えます。  
-* ***&#60;Hadoop クラスターのストレージ アカウント名>*** を、HDInsight クラスターに関連付けられているストレージ アカウントに置き換えます。
-* ***&#60;Hadoop クラスターの既定のコンテナー>*** を、クラスターで使用する既定のコンテナーに置き換えます。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
-* ***&#60;ストレージ アカウント キー>*** を、クラスターで使用するストレージ アカウントのキーに置き換えます。
+* "***<path_to_data_folder>***" を解凍データ ファイルのあるコンピューター上のディレクトリ (パス) で置き換えます。  
+* "***<storage account name of Hadoop cluster>***" を、HDInsight クラスターに関連付けられているストレージ アカウントで置き換えます。
+* "***<default container of Hadoop cluster>***" を、クラスターで使用される既定のコンテナーで置き換えます。 通常、既定のコンテナーの名前は、クラスター自体と同じ名前です。 たとえば、"abc123.azurehdinsight.net" というクラスターの場合、既定のコンテナーは abc123 です。
+* "***<storage account key>***" を、クラスターで使用するストレージ アカウントのキーで置き換えます。
 
 コマンド プロンプトまたは Windows PowerShell ウィンドウで、次の 2 つの AzCopy コマンドを実行します。
 

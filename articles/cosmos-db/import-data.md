@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 02/27/2018
 ms.author: anhoh
 ms.custom: mvc
-ms.openlocfilehash: 103f4200ea24c34c066a11c7b49676f51f252589
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 036683698c49b8acb8a83117ac823c90fef0b2b3
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-cosmos-db-data-migration-tool"></a>Azure Cosmos DB: データ移行ツール
 
@@ -61,7 +61,7 @@ Azure Cosmos DB で使用する API を教えてください。
 このインポート ツールにはグラフィカル ユーザー インターフェイス (dtui.exe) が搭載されていますが、コマンド ライン (dt.exe) から実行することもできます。 さらに、UI でインポートを設定した後で関連コマンドを出力するオプションもあります。 インポート時には、表形式ソース データ (SQL Server や CSV ファイルなど) を変換して、階層関係 (サブドキュメント) を作成できます。 最後まで目を通し、ソース オプション、各ソースからインポートするためのサンプル コマンド ライン、ターゲット オプション、およびインポート結果の表示に関する詳細を確認してください。
 
 ## <a id="Install"></a>インストール
-以降ツールのソース コードは GitHub の[こちらのリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)から、コンパイル済みバージョンは [Microsoft ダウンロードセンター](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d)から入手できます。 ソリューションをコンパイルすることも、コンパイル済みバージョンをダウンロードして任意のディレクトリに展開することもできます。 その後で、いずれかを実行します。
+移行ツールのソース コードは、GitHub の[このリポジトリ](https://github.com/azure/azure-documentdb-datamigrationtool)で入手できます。 ダウンロードして、そのソリューションをローカルでコンパイルし、次のいずれかを実行します。
 
 * **Dtui.exe**: グラフィカル インターフェイス バージョンのツール
 * **Dt.exe**: コマンド ライン バージョンのツール

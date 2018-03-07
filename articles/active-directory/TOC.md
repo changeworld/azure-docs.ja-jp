@@ -113,6 +113,7 @@
 #### [名前付きの場所の構成](active-directory-named-locations.md)
 #### [アクティビティ レポートの検出](active-directory-reporting-migration.md)
 #### [Azure Active Directory Power BI コンテンツ パックの使用](active-directory-reporting-power-bi-content-pack-how-to.md)
+#### [リスクのフラグ付きユーザーの修復](active-directory-report-security-user-at-risk-remediation.md)
 ### リファレンス
 #### [保持](active-directory-reporting-retention.md)
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)

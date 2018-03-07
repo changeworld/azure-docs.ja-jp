@@ -10,11 +10,11 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: f0c466c433701c295bde00258d9ff7fd267b71f7
-ms.sourcegitcommit: 234c397676d8d7ba3b5ab9fe4cb6724b60cb7d25
+ms.openlocfilehash: 467111978d43d35788276cf7a464496393e4599b
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用したハイパーパラメーターの分散チューニング
 
@@ -39,19 +39,14 @@ ms.lasthandoff: 12/20/2017
 * Workbench をインストールしてアカウントを作成するために、[インストールと作成のクイックスタート](./quickstart-installation.md)に関するページに従ってインストールした [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のコピー。
 * このシナリオでは、Docker エンジンをローカルにインストールした Windows 10 または MacOS で Azure ML Workbench を実行していることを前提とします。 
 * リモート Docker コンテナーを使用するシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm)に従って Ubuntu データ サイエンス仮想マシン (DSVM) をプロビジョニングします。 少なくとも 8 個のコアと 28 GB のメモリを搭載した仮想マシンを使用することをお勧めします。 D4 インスタンスの仮想マシンにはこのような容量があります。 
-* Spark クラスターでこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って Azure HDInsight クラスターをプロビジョニングします。   
-クラスターには少なくとも次のものを用意することをお勧めします。
-    - 6 個の worker ノード
+* Spark クラスターでこのシナリオを実行するには、[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters)に従って Spark HDInsight クラスターをプロビジョニングします。 ヘッダーとワーカーの両方のノードで、次の構成のクラスターを使用することをお勧めします。
+    - 4 つのワーカー ノード
     - 8 個のコア
-    - ヘッド ノードと worker ノードの両方に 28 GB のメモリ。 D4 インスタンスの仮想マシンにはこのような容量があります。       
-    - クラスターのパフォーマンスを最大化するために、次のパラメーターを変更することをお勧めします。
-        - spark.executor.instances
-        - spark.executor.cores
-        - spark.executor.memory 
+    - 28 GB のメモリ  
+      
+  D4 インスタンスの仮想マシンにはこのような容量があります。 
 
-[こちらの手順](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-resource-manager)に従って、[Custom spark-defaults]\(カスタム Spark 既定値\) セクションの定義を編集できます。
-
-     **Troubleshooting**: Your Azure subscription might have a quota on the number of cores that can be used. The Azure portal does not allow the creation of cluster with the total number of cores exceeding the quota. To find you quota, go in the Azure portal to the Subscriptions section, click on the subscription used to deploy a cluster and then click on **Usage+quotas**. Usually quotas are defined per Azure region and you can choose to deploy the Spark cluster in a region where you have enough free cores. 
+     **トラブルシューティング**: Azure サブスクリプションには、使用できるコア数にクォータが設定されている場合があります。 Azure Portal では、クォータ数を超える合計コア数のクラスターは作成できません。 クォータを確認するには、Azure Portal の [サブスクリプション] セクションに移動し、クラスターのデプロイに使用されているサブスクリプションをクリックし、**[使用量 + クォータ]** をクリックします。 通常、クォータは Azure リージョンごとに定義されており、空きコアが十分にあるリージョンに Spark コアをデプロイすることができます。 
 
 * データセットの格納に使用される Azure ストレージ アカウントを作成します。 [こちらの手順](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account)に従って、ストレージ アカウントを作成します。
 
@@ -118,7 +113,7 @@ AML Workbench ワークスペース アカウントがある Azure サブスク�
 
 Spark 環境を設定するには、CLI で次のコマンドを実行します
 
-    az ml computetarget attach cluster--name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
+    az ml computetarget attach cluster --name spark --address <cluster name>-ssh.azurehdinsight.net  --username <username> --password <password> 
 
 このコマンドで、クラスターの名前、クラスターの SSH ユーザー名とパスワードを指定します。 クラスターのプロビジョニング時に変更していない場合、SSH ユーザー名の既定値は `sshuser` です。 クラスターの名前は、Azure Portal のクラスター ページの [プロパティ] セクションで確認できます。
 
@@ -126,14 +121,20 @@ Spark 環境を設定するには、CLI で次のコマンドを実行します
 
 spark-sklearn パッケージを使用して、ハイパーパラメーターの分散チューニングの実行環境として Spark を設定することができます。 ここでは、Spark 実行環境を使用するときにこのパッケージをインストールするように spark_dependencies.yml ファイルを変更しました。
 
-    configuration: {}
+    configuration: 
+      #"spark.driver.cores": "8"
+      #"spark.driver.memory": "5200m"
+      #"spark.executor.instances": "128"
+      #"spark.executor.memory": "5200m"  
+      #"spark.executor.cores": "2"
+  
     repositories:
       - "https://mmlspark.azureedge.net/maven"
       - "https://spark-packages.org/packages"
     packages:
       - group: "com.microsoft.ml.spark"
         artifact: "mmlspark_2.11"
-        version: "0.7"
+        version: "0.7.91"
       - group: "databricks"
         artifact: "spark-sklearn"
         version: "0.2.0"
@@ -199,9 +200,9 @@ CLI ウィンドウで上のコマンドを実行します。
 ローカル環境では小さすぎてすべての機能セットを計算できないので、メモリ サイズが大きいリモートの DSVM に切り替えます。 DSVM 内の実行は、AML Workbench で管理されている Docker コンテナー内で完了します。 この DSVM を使用して、すべての機能を計算し、モデルをトレーニングし、ハイパーパラメーターをチューニングできます (次のセクションを参照してください)。 singleVM.py ファイルには、完全な機能の計算とコードのモデリングが含まれています。 次のセクションでは、リモートの DSVM で singleVM.py を実行する方法を示します。 
 
 ### <a name="tuning-hyperparameters-using-remote-dsvm"></a>リモートの DSVM を使用したハイパーパラメーターのチューニング
-グラデーション ツリー ブーストの [xgboost](https://anaconda.org/conda-forge/xgboost) 実装 [1] を使用します。 [scikit-learn](http://scikit-learn.org/) パッケージを使用して、xgboost のハイパーパラメーターをチューニングします。 xgboost は scikit-learn パッケージに含まれていませんが、scikit-learn API を実装しているため、scikit-learn のハイパーパラメーター チューニング関数と併用できます。 
+グラデーション ツリー ブーストの [xgboost](https://anaconda.org/conda-forge/xgboost) 実装 [1] を使用します。 xgboost のハイパーパラメーターをチューニングするには、[scikit-learn](http://scikit-learn.org/) パッケージも使用します。 xgboost は scikit-learn パッケージに含まれていませんが、scikit-learn API を実装しているため、scikit-learn のハイパーパラメーター チューニング関数と併用できます。 
 
-Xgboost には 8 個のハイパーパラメーターがあります。
+[こちら](https://github.com/dmlc/xgboost/blob/master/doc/parameter.md)に記載されているように、Xgboost には 8 個のハイパーパラメーターがあります。
 * n_estimators
 * max_depth
 * reg_alpha
@@ -210,9 +211,8 @@ Xgboost には 8 個のハイパーパラメーターがあります。
 * learning_rate
 * colsample\_by_level
 * subsample
-* objective これらのハイパーパラメーターの説明については、以下をご覧ください。
-- http://xgboost.readthedocs.io/en/latest/python/python_api.html#module-xgboost.sklearn- https://github.com/dmlc/xgboost/blob/master/doc/parameter.md。 
-- 
+* objective  
+ 
 最初に、リモートの DSVM を使用し、少数のグリッドの候補値からハイパーパラメーターをチューニングします。
 
     tuned_parameters = [{'n_estimators': [300,400], 'max_depth': [3,4], 'objective': ['multi:softprob'], 'reg_alpha': [1], 'reg_lambda': [1], 'colsample_bytree': [1],'learning_rate': [0.1], 'colsample_bylevel': [0.1,], 'subsample': [0.5]}]  
@@ -285,7 +285,7 @@ DSVM に 8 コアと 28 GB のメモリが搭載されている場合、この�
 
 このグリッドには、ハイパーパラメーターの値の組み合わせが 16 個あります。 5 フォールドのクロス検証を使用しているので、xgboost を 16x5=80 回実行します。
 
-scikit-learn パッケージは、Spark クラスターを使用したハイパーパラメーターのチューニングをネイティブでサポートしていませんが、 Databricks の [spark-sklearn](https://spark-packages.org/package/databricks/spark-sklearn) パッケージでこのギャップを埋めることができます。 このパッケージには GridSearchCV 関数があります。この関数は、scikit-learn の GridSearchCV 関数とほぼ同じ API です。 spark-sklearn を使用し、Spark を使用してハイパーパラメーターをチューニングするには、接続して Spark コンテキストを作成する必要があります。
+scikit-learn パッケージは、Spark クラスターを使用したハイパーパラメーターのチューニングをネイティブでサポートしていませんが、 Databricks の [spark-sklearn](https://spark-packages.org/package/databricks/spark-sklearn) パッケージでこのギャップを埋めることができます。 このパッケージには GridSearchCV 関数があります。この関数は、scikit-learn の GridSearchCV 関数とほぼ同じ API です。 spark-sklearn を使用し、Spark を使用してハイパーパラメーターをチューニングするには、Spark コンテキストを作成する必要があります。
 
     from pyspark import SparkContext
     sc = SparkContext.getOrCreate()

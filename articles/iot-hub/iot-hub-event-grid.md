@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 6123039ba5eeb720e0ca590fa69af915da91367c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7c75a65714898f27ab0008ad5a30a5714d7174f4
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions---preview"></a>Event Grid を使用し IoT Hub のイベントに対応してアクションをトリガーする - プレビュー
 
@@ -28,14 +28,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="regional-availability"></a>リージョン別の提供状況
 
-Event Grid の統合はパブリック プレビュー段階であり、利用できるリージョンの数は限られます。 統合は、次のリージョンにある IoT Hub で機能します。
-
-* 米国中央部
-* 米国東部
-* 米国東部 2
-* 米国中西部
-* 米国西部
-* 米国西部 2
+Event Grid の統合は、Event Grid イベントグリッドがサポートされている地域にある IoT ハブで利用できます。 最新のリージョン一覧については、「[Azure Event Grid の概要][lnk-eg-overview]」を参照してください。 
 
 ## <a name="event-types"></a>イベントの種類
 

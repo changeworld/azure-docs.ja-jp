@@ -16,15 +16,15 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: tdykstra
-ms.openlocfilehash: ed26abdb76083b9a18f79276ebf4294b4b6967b1
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 472d61debff016cfd3df79bae1f63e176c14849d
+ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 02/24/2018
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions における Azure Service Bus のバインド
 
-この記事では、Azure Functions で Azure Service Bus のバインドを操作する方法について説明します。 Azure Functions は、Service Bus のキューおよびトピックのトリガーおよび出力バインドをサポートしています。
+この記事では、Azure Functions で Azure Service Bus のバインドを連携する方法について説明します。 Azure Functions は、Service Bus のキューおよびトピックのトリガーおよび出力バインドをサポートしています。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -56,6 +56,8 @@ public static void Run(
 }
 ```
 
+この例は、Azure Functions バージョン 1.x の場合です。2.x の場合は、[アクセス権のパラメーターを省略してください](#trigger---configuration)。
+ 
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
 次の例は、*function.json* ファイルの Service Bus トリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、Service Bus キュー メッセージを記録します。
@@ -150,7 +152,9 @@ module.exports = function(context, myQueueItem) {
 
 * NuGet パッケージ [Microsoft.Azure.WebJobs.ServiceBus](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus) で定義された [ServiceBusTriggerAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusTriggerAttribute.cs)
 
-  属性のコンストラクターは、キューの名前、またはトピックとサブスクリプションを受け取ります。 接続のアクセス権を指定することもできます。 アクセス権を指定しない場合、既定値は `Manage` になります。 アクセス権の設定を選択する方法については、「[トリガー - 構成](#trigger---configuration)」セクションで説明されています。 文字列パラメーターで使用される属性を示す例は次のとおりです。
+  属性のコンストラクターは、キューの名前、またはトピックとサブスクリプションを受け取ります。 Azure Functions バージョン 1.x では、接続のアクセス権を指定することもできます。 アクセス権を指定しない場合、既定値は `Manage` になります。 詳細については、「[トリガー - 構成](#trigger---configuration)」セクションをご覧ください。
+
+  文字列パラメーターで使用される属性を示す例は次のとおりです。
 
   ```csharp
   [FunctionName("ServiceBusQueueTriggerCSharp")]                    
@@ -205,7 +209,7 @@ module.exports = function(context, myQueueItem) {
 
 次の表は、*function.json* ファイルと `ServiceBusTrigger` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | "serviceBusTrigger" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "in" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -214,23 +218,24 @@ module.exports = function(context, myQueueItem) {
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックを監視する場合にのみ設定します。|
 |**subscriptionName**|**SubscriptionName**|監視するサブスクリプションの名前。 キューではなくトピックを監視する場合にのみ設定します。|
 |**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、「[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)」の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。 |
-|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。|
+|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
 
-C# と C# スクリプトでは、`string paramName` などのメソッド パラメーターを使用して、キューまたはトピック メッセージにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 `string` の代わりに、次の型を使用することもできます。
+C# と C# スクリプトでは、キューまたはトピック メッセージに次のパラメーター型を使用できます。
 
-* `byte[]` - バイナリ データに有効です。
+* `string` - メッセージがテキストである場合。
+* `byte[]` - バイナリ データの場合に便利です。
 * カスタム型 - メッセージに JSON が含まれている場合、Azure Functions は JSON データの逆シリアル化を試みます。
 * `BrokeredMessage` - [BrokeredMessage.GetBody<T>()](https://msdn.microsoft.com/library/hh144211.aspx) メソッドで逆シリアル化されたメッセージを返します。
 
-JavaScript で、`context.bindings.<name>` を使用して、キューまたはトピック メッセージにアクセスします。 `<name>` は *function.json* の `name` プロパティで指定された値です。 Service Bus メッセージが文字列または JSON オブジェクトとして関数に渡されます。
+JavaScript で、`context.bindings.<name from function.json>` を使用して、キューまたはトピック メッセージにアクセスします。 Service Bus メッセージが文字列または JSON オブジェクトとして関数に渡されます。
 
 ## <a name="trigger---poison-messages"></a>トリガー - 有害メッセージ
 
-Azure Functions では、有害メッセージの処理を制御することも構成することもできません。 Service Bus は、それ自体が有害なメッセージを処理します。
+Azure Functions では、有害メッセージの処理を制御することも構成することもできません。 Service Bus 自体で、有害なメッセージが処理されます。
 
 ## <a name="trigger---peeklock-behavior"></a>トリガー - PeekLock 動作
 
@@ -443,7 +448,7 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 
 次の表は、*function.json* ファイルと `ServiceBus` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type** | 該当なし | "serviceBus" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。|
 |**direction** | 該当なし | "out" に設定する必要があります。 このプロパティは、Azure Portal でトリガーを作成するときに自動で設定されます。 |
@@ -452,22 +457,25 @@ public static string Run([HttpTrigger] dynamic input, TraceWriter log)
 |**topicName**|**TopicName**|監視するトピックの名前。 キューではなくトピックのメッセージを送信する場合にのみ設定します。|
 |**subscriptionName**|**SubscriptionName**|監視するサブスクリプションの名前。 キューではなくトピックのメッセージを送信する場合にのみ設定します。|
 |**connection**|**Connection**|このバインドに使用する Service Bus 接続文字列を含むアプリ設定の名前です。 アプリ設定の名前が "AzureWebJobs" で始まる場合は、名前の残りの部分のみを指定できます。 たとえば、`connection` を "MyServiceBus" に設定した場合、Functions ランタイムは "AzureWebJobsMyServiceBus" という名前のアプリ設定を探します。 `connection` を空のままにした場合、Functions ランタイムは、アプリ設定内の "AzureWebJobsServiceBus" という名前の既定の Service Bus 接続文字列を使用します。<br><br>接続文字列は、「[管理資格情報の取得](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md#obtain-the-management-credentials)」の手順に従って取得します。 接続文字列は、特定のキューまたはトピックに限らず、Service Bus 名前空間のものである必要があります。|
-|**accessRights**|**Access (アクセス)** |接続文字列のアクセス権。 使用可能な値は、"manage" と "listen" です。 既定値は "manage" です。これは、接続が**管理**アクセス許可を持ってることを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。|
+|**accessRights**|**Access (アクセス)**|接続文字列のアクセス権。 使用できる値は `manage` と `listen` です。 既定値は `manage` で、`connection` が**管理**アクセス許可を持つことを示します。 **管理**アクセス許可を持たない接続文字列を使用する場合は、`accessRights` を "listen" に設定します。 設定しないと、Functions ランタイムが管理権限を必要とする操作の試行に失敗する可能性があります。 最新バージョンの Storage SDK が管理の操作をサポートしていないため、Azure Functions バージョン 2.x ではこのプロパティを利用できません。|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-C# と C# スクリプトでは、`out string paramName` などのメソッド パラメーターを使用して、キューまたはトピックにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次のようなパラメーターの型を使用することもできます。
+Azure Functions 1.x では、キューが存在しない場合に `accessRights` を `manage` に設定していると、ランタイムによってキューが作成されます。 Azure Functions バージョン 2.x では、キューまたはトピックが既に存在する必要があります。存在しないキューまたはトピックを指定した場合、関数は失敗します。 
+
+C# とC# スクリプトでは、出力バインドに次のパラメーター型を使用できます。
 
 * `out T paramName` - `T` は任意の JSON シリアル化可能な型にすることができます。 関数が終了したときにこのパラメーターの値が null の場合、Functions は、null オブジェクトでメッセージを作成します。
 * `out string` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
 * `out byte[]` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
 * `out BrokeredMessage` - 関数が終了したときにパラメーター値が null の場合、Functions はメッセージを作成しません。
+* `ICollector<T>` または `IAsyncCollector<T>`- 複数のメッセージを作成する場合。 `Add` メソッドを呼び出すときに、メッセージが作成されます。
 
-C# または C# スクリプト関数で複数のメッセージを作成するには、`ICollector<T>` または `IAsyncCollector<T>` を使用できます。 `Add` メソッドを呼び出すときに、メッセージが作成されます。
+非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
 
-JavaScript で、`context.bindings.<name>` を使用して、キューまたはトピックにアクセスします。 `<name>` は *function.json* の `name` プロパティで指定された値です。 文字列、バイト配列、または (JSON に逆シリアル化された) Javascript オブジェクトを `context.binding.<name>` に割り当てることができます。
+JavaScript で、`context.bindings.<name from function.json>` を使用して、キューまたはトピックにアクセスします。 文字列、バイト配列、または (JSON に逆シリアル化された) Javascript オブジェクトを `context.binding.<name>` に割り当てることができます。
 
 ## <a name="exceptions-and-return-codes"></a>例外とリターン コード
 

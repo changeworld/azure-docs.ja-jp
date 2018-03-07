@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: aelnably;wesmc
-ms.openlocfilehash: cccbd4952c66d3d8140e2a03e3b76afaa5ba3fbf
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.author: aelnably;msangapu
+ms.openlocfilehash: e61c767ada31fc32e28bfd9a2a4e843e9ca88053
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="continuous-deployment-with-web-app-for-containers"></a>Web App for Containers での継続的デプロイ
 
@@ -34,14 +34,14 @@ ms.lasthandoff: 10/25/2017
 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) で次のコマンドを実行して、継続的なデプロイ機能を有効にできます。
 
 ```azurecli-interactive
-az webapp deployment container config -n sname -g rgname -e true
+az webapp deployment container config --name name --resource-group myResourceGroup --enable-cd true
 ```
 
 **[Azure Portal](https://portal.azure.com/)** で、ページの左側にある **[App Service]** オプションをクリックします。
 
 Docker Hub の継続的なデプロイを構成するアプリの名前をクリックします。
 
-**[App settings (アプリ設定)]** で、`true` を使用して `DOCKER_ENABLE_CI` と呼ばれるアプリ設定を追加します。
+**[Docker コンテナー]** で、[オン] を選択し、[保存] を押して継続的デプロイを有効にします。
 
 ![アプリ設定のイメージを挿入](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
@@ -50,7 +50,7 @@ Docker Hub の継続的なデプロイを構成するアプリの名前をクリ
 [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) で次のコマンドを実行して、Webhook URL を取得できます。
 
 ```azurecli-interactive
-az webapp deployment container show-cd-url -n sname1 -g rgname
+az webapp deployment container show-cd-url --name sname1 --resource-group rgname
 ```
 
 Webhook URL には、エンドポイント `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook` が必要です。
@@ -83,12 +83,12 @@ Docker Hub ページで、**[Webhooks (Webhook)]**、**[CREATE A WEBHOOK (Webhoo
 
 イメージが更新されると、Web アプリも新しいイメージで自動的に更新されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure App Service on Linux とは](./app-service-linux-intro.md)
 * [Azure Container Registry](https://azure.microsoft.com/services/container-registry/)
 * [Azure App Service on Linux で .NET Core を使用する](quickstart-dotnetcore.md)
 * [Azure App Service on Linux で Ruby を使用する](quickstart-ruby.md)
-* [Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-custom-docker-image.md)
+* [Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-docker-go.md)
 * [Azure App Service Web App for Containers の FAQ](./app-service-linux-faq.md)
 * [Azure CLI 2.0 を使って Web App for Containers を管理する](./app-service-linux-cli.md)

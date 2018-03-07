@@ -12,14 +12,14 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 02/21/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06445845ef8f93a06cb4b52e07108965cc3b7f8a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 775db415e667729f6eecf8223a84f5ac0aa45c4c
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
@@ -39,9 +39,10 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 ## <a name="resource-quotas"></a>リソース クォータ
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
-### <a name="quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのクォータ
 
-古いバージョンの Batch API を使って、プール割り当てモードを**ユーザー サブスクリプション**に設定した Batch アカウントを作成した場合、クォータの適用が異なります。 このモード (現在は非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
+### <a name="cores-quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのコア クォータ
+
+プール割り当てモードを**ユーザー サブスクリプション**に設定した Batch アカウントを作成した場合、クォータの適用が異なります。 このモードでは、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 
 ## <a name="other-limits"></a>その他の制限
 | **リソース** | **上限** |

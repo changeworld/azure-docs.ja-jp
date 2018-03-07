@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 02/27/2018
 ms.author: sethm
-ms.openlocfilehash: 89042badbfefc69582e7979a8379260a7b08d7da
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 07cbdd24368d66104ecdeb263983e3aaf3f219fe
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay に関する FAQ
 
@@ -76,14 +76,13 @@ Service Bus リレーへのメッセージ送信は、そのメッセージを�
 **netTCPRelay** WCF バインドを使って開いたリレーでは、メッセージは個別のメッセージではなく、システムを流れるデータ ストリームとして扱われます。 このバインドを使用すると、センダーとリスナーだけが、送受信された個々のメッセージを 1 つのまとまりとして認識できます。 **netTCPRelay** バインドを使ったリレーの場合、課金対象のメッセージ数を計算するために、すべてのデータがストリームとして扱われます。 この場合、Service Bus は、個々のリレーを介して送受信されたデータ量の合計を 5 分ごとに計算します。 次に、データ量の合計を 64 KB で除算して、その期間内でのリレーについて、課金対象のメッセージ数を決定します。
 
 ## <a name="quotas"></a>クォータ
-| クォータ名 | Scope (スコープ) | type | 超過したときの動作 | 値 |
-| --- | --- | --- | --- | --- |
-| リレーの同時リスナー |エンティティ |静的 |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
-| 同時リレー リスナー |システム全体 |静的 |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |2,000 |
-| あるサービス名前空間に含まれるリレー エンドポイント全部の同時リレー接続 |システム全体 |静的 |- |5,000 |
-| サービス名前空間ごとのリレー エンドポイント |システム全体 |静的 |- |10,000 |
-| [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) と [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) リレーのメッセージ サイズ |システム全体 |静的 |これらのクォータを超える受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 |64 KB |
-| [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) と [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) リレーのメッセージ サイズ |システム全体 |静的 |- |無制限 |
+| クォータ名 | Scope (スコープ) |  メモ | 値 |
+| --- | --- | --- | --- |
+| リレーの同時リスナー |エンティティ |追加の接続に関する後続の要求は拒否され、呼び出し元のコードが例外を受け取ります。 |25 |
+| あるサービス名前空間に含まれるリレー エンドポイント全部の同時リレー接続 |名前空間 |- |5,000 |
+| サービス名前空間ごとのリレー エンドポイント |名前空間 |- |10,000 |
+| [NetOnewayRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.netonewayrelaybinding.aspx) と [NetEventRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.neteventrelaybinding.aspx) リレーのメッセージ サイズ |名前空間 |これらのクォータを超える受信メッセージは拒否され、呼び出し元のコードが例外を受け取ります。 |64 KB |
+| [HttpRelayTransportBindingElement](https://msdn.microsoft.com/library/microsoft.servicebus.httprelaytransportbindingelement.aspx) と [NetTcpRelayBinding](https://msdn.microsoft.com/library/microsoft.servicebus.nettcprelaybinding.aspx) リレーのメッセージ サイズ |名前空間 |メッセージ サイズに制限はありません。 |無制限 |
 
 ### <a name="does-relay-have-any-usage-quotas"></a>Relay に使用量クォータはありますか?
 既定では、Microsoft はすべてのクラウド サービスに関し、お客様のサブスクリプション全体で算出する月単位の総使用量クォータを設定しています。 Microsoft では、実際のニーズがこれらの制限を上回る可能性があることを認識しています。 お気軽にカスタマー サービスまでお問い合わせください。お客様のニーズを確認のうえ、適宜制限を調整させていただきます。 Service Bus の総使用量クォータは次のとおりです。

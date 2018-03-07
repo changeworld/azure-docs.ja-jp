@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
-ms.openlocfilehash: 65bf5928428b21e98c893a9de8ca596329329411
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dd81e9d6c91387b3873593b84e952ca4f2546c57
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用する Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -99,13 +99,13 @@ New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -
 Get-AdlAnalyticsAccount -Name $adla
 ```
 
-特定の Data Lake Analytics アカウントの存在を確認します。 コマンドレットは、`True` または `False` のどちらかを返します。
+特定の Data Lake Analytics アカウントの存在を確認します。 コマンドレットは、`$true` または `$false` のどちらかを返します。
 
 ```powershell
 Test-AdlAnalyticsAccount -Name $adla
 ```
 
-特定の Data Lake Store アカウントの存在を確認します。 コマンドレットは、`True` または `False` のどちらかを返します。
+特定の Data Lake Store アカウントの存在を確認します。 コマンドレットは、`$true` または `$false` のどちらかを返します。
 
 ```powershell
 Test-AdlStoreAccount -Name $adls
@@ -154,8 +154,6 @@ Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $sta
 ```powershell
 Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
 ```
-
-
 
 Azure の IP アドレスを許可します。
 
@@ -239,7 +237,6 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
 
-
 ### <a name="submit-a-file-as-a-u-sql-script"></a>U-SQL スクリプトとしてファイルを送信する
 
 ```powershell
@@ -258,15 +255,13 @@ Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 Get-AdlJob -Account $adla
 ```
 
+### <a name="list-the-top-n-jobs"></a>上位 n 個のジョブを一覧表示する
 
-### <a name="list-a-specific-number-of-jobs"></a>特定の数のジョブを一覧表示します。
-
-既定ではジョブの一覧は送信時に並べ替えられます。 したがって最近送信されたジョブは、先頭に表示されます。 既定では、ADLA アカウントはジョブを 180 日間記憶していますが、Ge-AdlJob コマンドレットは既定で、最初の 500 件のみを返します。 Top パラメーターを使用して、特定の数のジョブを一覧表示します。
+既定ではジョブの一覧は送信時に並べ替えられます。 したがって最近送信されたジョブは、先頭に表示されます。 既定では、ADLA アカウントはジョブを 180 日間記憶していますが、Get-AdlJob コマンドレットは既定で、最初の 500 件のみを返します。 Top パラメーターを使用して、特定の数のジョブを一覧表示します。
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
-
 
 ### <a name="list-jobs-based-on-the-value-of-job-property"></a>ジョブ プロパティの値に基づいてジョブを一覧表示します。
 
@@ -296,9 +291,9 @@ Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
 `-Result` パラメーターを使って、終了したジョブが正常完了したかどうかを検出します。 次の値があります。
 
 * キャンセル
-* Failed
+* 失敗
 * なし
-* Succeeded
+* 成功
 
 ``` powershell
 # List Successful jobs.
@@ -307,7 +302,6 @@ Get-AdlJob -Account $adla -State Ended -Result Succeeded
 # List Failed jobs.
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
-
 
 `-Submitter` パラメーターを使うと、ジョブを送信したユーザーを特定できます。
 
@@ -338,7 +332,6 @@ Azure PowerShell を使用して、Data Lake Analytics で実行されたジョ�
 
 ```powershell
 $pipelines = Get-AdlJobPipeline -Account $adla
-
 $pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
 ```
 
@@ -682,7 +675,7 @@ New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rg 
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
 * [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI 2.0](data-lake-analytics-get-started-cli2.md) で Data Lake Analytics の使用を開始する
 * [Azure portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) | [CLI](data-lake-analytics-manage-use-cli.md) で Azure Data Lake Analytics を管理する 

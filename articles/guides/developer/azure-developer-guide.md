@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 8eb3cae792a09fc530b84243f2baa01ecc5d13dc
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e740b655cbd22a08aab988e83a057cc770e8dfe3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
@@ -151,7 +151,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**使用する場合**: Linux 上の Web アプリを Docker イメージにデプロイする場合。
 
-    >**作業開始**: [Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service/containers/quickstart-custom-docker-image.md)。
+    >**作業開始**: [Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service/containers/quickstart-docker-go.md)。
 
 ### <a name="authentication"></a>認証
 
@@ -222,7 +222,7 @@ Azure には、Bash、ターミナル、コマンド プロンプト、または
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は <https://portal.azure.com> にあります。カスタマイズ可能なダッシュボード、Azure リソースを管理するツール、サブスクリプション設定と課金情報へのアクセス機能が含まれています。 詳細については、「[Microsoft Azure Portal の概要](../../azure-portal-overview.md)」を参照してください。
+Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は <https://portal.azure.com> にあります。 カスタマイズ可能なダッシュボード、Azure リソースを管理するツール、サブスクリプション設定と課金情報へのアクセス機能が含まれています。 詳細については、「[Microsoft Azure Portal の概要](../../azure-portal-overview.md)」を参照してください。
 
 ### <a name="rest-apis"></a>REST API
 

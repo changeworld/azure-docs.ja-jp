@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 10/12/2017
+ms.date: 02/27/2018
 ms.author: davidmu
 ms.custom: mvc
-ms.openlocfilehash: 21f2d586a4c468071bec55c65005b35baf323fe7
-ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
+ms.openlocfilehash: 3a59d85ea19ba6670ffbb60aa9b764560a3567a0
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用した Azure Virtual Networks と Windows 仮想マシンの管理
 
@@ -33,29 +33,32 @@ Azure 仮想マシンでは、内部と外部のネットワーク通信に Azur
 > * ネットワーク トラフィックのセキュリティ保護
 > * バックエンド VM の作成
 
-このチュートリアルを実行すると、次のようなリソースが作成されます。
 
-![2 つのサブネットのある仮想ネットワーク](./media/tutorial-virtual-network/networktutorial.png)
 
-- *myVNet* - 各 VM が相互間、またインターネットと通信するために使用する仮想ネットワーク。
-- *myFrontendSubnet* - フロントエンド リソースが使用する、*myVNet* 内のサブネット。
-- *myPublicIPAddress* - インターネットから *myFrontendVM* にアクセスするために使用するパブリック IP アドレス。
-- *myFrontentNic* - *myFrontendVM* が *myBackendVM* と通信するために使用するネットワーク インターフェイス。
-- *myFrontendVM* -インターネットと *myBackendVM* との間の通信に使用する VM。
-- *myBackendNSG* - *myFrontendVM* と *myBackendVM* 間の通信を制御するネットワーク セキュリティ グループ。
-- *myBackendSubnet* - *myBackendNSG* に関連付けられ、バックエンド リソースが使用するサブネット。
-- *myBackendNic* - *myBackendVM* が *myFrontendVM* と通信するために使用するネットワーク インターフェイス。
-- *myBackendVM* - ポート 1433 を使用して *myFrontendVM* と通信する VM。
-
-このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+このチュートリアルには、AzureRM.Compute モジュール バージョン 4.3.1 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM.Compute` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
 ## <a name="vm-networking-overview"></a>VM ネットワークの概要
 
 Azure 仮想ネットワークを使用すると、仮想マシン、インターネット、その他の Azure サービス (Azure SQL Database など) の間でセキュリティ保護されたネットワーク接続を実現できます。 仮想ネットワークは、サブネットと呼ばれる論理セグメントに分割することができます。 サブネットは、ネットワーク フローを制御する目的のほか、セキュリティ境界としても使用されます。 VM をデプロイするときは、通常、そこに仮想ネットワーク インターフェイスが含まれているので、それをサブネットに接続することになります。
 
+このチュートリアルを実行していく中で、次のようなリソースが作成されます。
+
+![2 つのサブネットのある仮想ネットワーク](./media/tutorial-virtual-network/networktutorial.png)
+
+- *myVNet* - VM 間、およびインターネットと通信するために VM によって使用される仮想ネットワーク。
+- *myFrontendSubnet* - フロントエンド リソースによって使用される、*myVNet* 内のサブネット。
+- *myPublicIPAddress* - インターネットから *myFrontendVM* にアクセスするために使用するパブリック IP アドレス。
+- *myFrontentNic* - *myFrontendVM* が *myBackendVM* と通信するために使用するネットワーク インターフェイス。
+- *myFrontendVM* -インターネットと *myBackendVM* との間の通信に使用する VM。
+- *myBackendNSG* - *myFrontendVM* と *myBackendVM* 間の通信を制御するネットワーク セキュリティ グループ。
+- *myBackendSubnet* - *myBackendNSG* に関連付けられ、バックエンド リソースによって使用されるサブネット。
+- *myBackendNic* - *myBackendVM* が *myFrontendVM* と通信するために使用するネットワーク インターフェイス。
+- *myBackendVM* - ポート 1433 を使用して *myFrontendVM* と通信する VM。
+
+
 ## <a name="create-a-virtual-network-and-subnet"></a>仮想ネットワークとサブネットの作成
 
-このチュートリアルでは、2 つのサブネットから成る単一の仮想ネットワークを作成します。 Web アプリケーションのホストとなるフロントエンド サブネットと、データベース サーバーのホストとなるバックエンド サブネットです。
+このチュートリアルでは、2 つのサブネットと共に単一の仮想ネットワークが作成されます。 Web アプリケーションのホストとなるフロントエンド サブネットと、データベース サーバーのホストとなるバックエンド サブネットです。
 
 仮想ネットワークを作成する前に、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用してリソース グループを作成します。 次の例では、*myRGNetwork* という名前のリソース グループを場所 *EastUS* に作成します。
 
@@ -122,7 +125,7 @@ VM が仮想ネットワーク内で通信するには、仮想ネットワー�
 $frontendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
-  -Name myFrontendNic `
+  -Name myFrontend `
   -SubnetId $vnet.Subnets[0].Id `
   -PublicIpAddressId $pip.Id
 ```
@@ -133,38 +136,18 @@ $frontendNic = New-AzureRmNetworkInterface `
 $cred = Get-Credential
 ```
 
-[New-AzureRmVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig)、[Set-AzureRmVMOperatingSystem](/powershell/module/azurerm.compute/set-azurermvmoperatingsystem)、[Set-AzureRmVMSourceImage](/powershell/module/azurerm.compute/set-azurermvmsourceimage)、[Set-AzureRmVMOSDisk](/powershell/module/azurerm.compute/set-azurermvmosdisk)、[Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface)、[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して、VM を作成します。
+[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。
 
 ```azurepowershell-interactive
-$frontendVM = New-AzureRmVMConfig `
-    -VMName myFrontendVM `
-    -VMSize Standard_D1
-$frontendVM = Set-AzureRmVMOperatingSystem `
-    -VM $frontendVM `
-    -Windows `
-    -ComputerName myFrontendVM `
-    -Credential $cred `
-    -ProvisionVMAgent `
-    -EnableAutoUpdate
-$frontendVM = Set-AzureRmVMSourceImage `
-    -VM $frontendVM `
-    -PublisherName MicrosoftWindowsServer `
-    -Offer WindowsServer `
-    -Skus 2016-Datacenter `
-    -Version latest
-$frontendVM = Set-AzureRmVMOSDisk `
-    -VM $frontendVM `
-    -Name myFrontendOSDisk `
-    -DiskSizeInGB 128 `
-    -CreateOption FromImage `
-    -Caching ReadWrite
-$frontendVM = Add-AzureRmVMNetworkInterface `
-    -VM $frontendVM `
-    -Id $frontendNic.Id
 New-AzureRmVM `
-    -ResourceGroupName myRGNetwork `
-    -Location EastUS `
-    -VM $frontendVM
+   -Credential $cred `
+   -Name myFrontend `
+   -PublicIpAddressName myPublicIPAddress `
+   -ResourceGroupName myRGNetwork `
+   -Location "EastUS" `
+   -Size Standard_D1 `
+   -SubnetName myFrontendSubnet `
+   -VirtualNetworkName myVNet
 ```
 
 ## <a name="secure-network-traffic"></a>ネットワーク トラフィックのセキュリティ保護
@@ -183,7 +166,7 @@ NSG ルールは、トラフィックが許可または拒否されるネット�
 
 ### <a name="create-network-security-groups"></a>ネットワーク セキュリティ グループの作成
 
-[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用して、*myFrontendVM* 上で受信 Web トラフィックを可能にする *myFrontendNSGRule* という名前の受信規則を作成します。
+[New-AzureRmNetworkSecurityRuleConfig](/powershell/module/azurerm.network/new-azurermnetworksecurityruleconfig) を使用して、*myFrontendVM* 上で受信 Web トラフィックを許可する *myFrontendNSGRule* という名前の受信規則を作成します。
 
 ```azurepowershell-interactive
 $nsgFrontendRule = New-AzureRmNetworkSecurityRuleConfig `
@@ -264,7 +247,7 @@ SQL Server イメージを使用すると、このチュートリアル用に最
 $backendNic = New-AzureRmNetworkInterface `
   -ResourceGroupName myRGNetwork `
   -Location EastUS `
-  -Name myBackendNic `
+  -Name myBackend `
   -SubnetId $vnet.Subnets[1].Id
 ```
 
@@ -277,35 +260,14 @@ $cred = Get-Credential
 *myBackendVM* を作成します。
 
 ```azurepowershell-interactive
-$backendVM = New-AzureRmVMConfig `
-  -VMName myBackendVM `
-  -VMSize Standard_D1
-$backendVM = Set-AzureRmVMOperatingSystem `
-  -VM $backendVM `
-  -Windows `
-  -ComputerName myBackendVM `
-  -Credential $cred `
-  -ProvisionVMAgent `
-  -EnableAutoUpdate
-$backendVM = Set-AzureRmVMSourceImage `
-  -VM $backendVM `
-  -PublisherName MicrosoftSQLServer `
-  -Offer SQL2016SP1-WS2016 `
-  -Skus Enterprise `
-  -Version latest
-$backendVM = Set-AzureRmVMOSDisk `
-  -VM $backendVM `
-  -Name myBackendOSDisk `
-  -DiskSizeInGB 128 `
-  -CreateOption FromImage `
-  -Caching ReadWrite
-$backendVM = Add-AzureRmVMNetworkInterface `
-  -VM $backendVM `
-  -Id $backendNic.Id
 New-AzureRmVM `
-  -ResourceGroupName myRGNetwork `
-  -Location EastUS `
-  -VM $backendVM
+   -Credential $cred `
+   -Name myBackend `
+   -ImageName "MicrosoftSQLServer:SQL2016SP1-WS2016:Enterprise:latest" `
+   -ResourceGroupName myRGNetwork `
+   -Location "EastUS" `
+   -SubnetName myFrontendSubnet `
+   -VirtualNetworkName myVNet
 ```
 
 使用されているイメージには SQL Server がインストールされていますが、このチュートリアルでは使用しません。 これが含まれているのは、Web トラフィックを処理する VM と、データベースの管理を処理する VM の構成の方法を示すためです。

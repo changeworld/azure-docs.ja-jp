@@ -13,19 +13,19 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 02/23/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b83e096cbb677653db8a13b6b7c04e6c705fd2f3
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 2150b91b5c8dd0326893497fe963fbe1d7cc59bd
+ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Azure Cosmos DB を使用した Python Flask Web アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.JS](sql-api-nodejs-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Python](sql-api-python-application.md)
 > 
@@ -157,7 +157,7 @@ class VoteForm(Form):
    
     ```python
     from forms import VoteForm
-    import config
+    import config_cosmos
     import pydocumentdb.document_client as document_client
     ```
 
@@ -168,28 +168,28 @@ class VoteForm(Form):
 @app.route('/create')
 def create():
     """Renders the contact page."""
-    client = document_client.DocumentClient(config.DOCUMENTDB_HOST, {'masterKey': config.DOCUMENTDB_KEY})
+    client = document_client.DocumentClient(config_cosmos.COSMOSDB_HOST, {'masterKey': config_cosmos.COSMOSDB_KEY})
 
     # Attempt to delete the database.  This allows this to be used to recreate as well as create
     try:
-        db = next((data for data in client.ReadDatabases() if data['id'] == config.DOCUMENTDB_DATABASE))
+        db = next((data for data in client.ReadDatabases() if data['id'] == config_cosmos.COSMOSDB_DATABASE))
         client.DeleteDatabase(db['_self'])
     except:
         pass
 
     # Create database
-    db = client.CreateDatabase({ 'id': config.DOCUMENTDB_DATABASE })
+    db = client.CreateDatabase({ 'id': config_cosmos.COSMOSDB_DATABASE })
 
     # Create collection
-    collection = client.CreateCollection(db['_self'],{ 'id': config.DOCUMENTDB_COLLECTION })
+    collection = client.CreateCollection(db['_self'],{ 'id': config_cosmos.COSMOSDB_COLLECTION })
 
     # Create document
     document = client.CreateDocument(collection['_self'],
-        { 'id': config.DOCUMENTDB_DOCUMENT,
+        { 'id': config_cosmos.COSMOSDB_DOCUMENT,
           'Web Site': 0,
           'Cloud Service': 0,
           'Virtual Machine': 0,
-          'name': config.DOCUMENTDB_DOCUMENT 
+          'name': config_cosmos.COSMOSDB_DOCUMENT 
         })
 
     return render_template(
@@ -209,16 +209,16 @@ def vote():
     form = VoteForm()
     replaced_document ={}
     if form.validate_on_submit(): # is user submitted vote  
-        client = document_client.DocumentClient(config.DOCUMENTDB_HOST, {'masterKey': config.DOCUMENTDB_KEY})
+        client = document_client.DocumentClient(config_cosmos.COSMOSDB_HOST, {'masterKey': config_cosmos.COSMOSDB_KEY})
 
         # Read databases and take first since id should not be duplicated.
-        db = next((data for data in client.ReadDatabases() if data['id'] == config.DOCUMENTDB_DATABASE))
+        db = next((data for data in client.ReadDatabases() if data['id'] == config_cosmos.COSMOSDB_DATABASE))
 
         # Read collections and take first since id should not be duplicated.
-        coll = next((coll for coll in client.ReadCollections(db['_self']) if coll['id'] == config.COSMOSDB_COLLECTION))
+        coll = next((coll for coll in client.ReadCollections(db['_self']) if coll['id'] == config_cosmos.COSMOSDB_COLLECTION))
 
         # Read documents and take first since id should not be duplicated.
-        doc = next((doc for doc in client.ReadDocuments(coll['_self']) if doc['id'] == config.COSMOSDB_DOCUMENT))
+        doc = next((doc for doc in client.ReadDocuments(coll['_self']) if doc['id'] == config_cosmos.COSMOSDB_DOCUMENT))
 
         # Take the data from the deploy_preference and increment our database
         doc[form.deploy_preference.data] = doc[form.deploy_preference.data] + 1
@@ -316,8 +316,8 @@ def vote():
     ```
 
 ### <a name="add-a-configuration-file-and-change-the-initpy"></a>構成ファイルの追加と、\_\_init\_\_.py の変更
-1. ソリューション エクスプローラーで、**tutorial** プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックして、**[Empty Python File]** を選択し、ファイルに **config.py** という名前を付けます。 この構成ファイルは、Flask のフォームで必要になります。 これを使用して秘密キーを指定することもできます。 このチュートリアルではこのキーは不要です。
-2. 次のコードを config.py に追加します。次の手順で **COSMOSDB\_HOST** と **COSMOSDB\_KEY** の値を変更する必要があります。
+1. ソリューション エクスプローラーで、**tutorial** プロジェクトを右クリックし、**[追加]**、**[新しい項目]** の順にクリックして、**[Empty Python File]** を選択し、ファイルに **config_cosmos.py** という名前を付けます。 この構成ファイルは、Flask のフォームで必要になります。 これを使用して秘密キーを指定することもできます。 このチュートリアルではこのキーは不要です。
+2. 次のコードを config_cosmos.py に追加します。次の手順で **COSMOSDB\_HOST** と **COSMOSDB\_KEY** の値を変更する必要があります。
    
     ```python
     CSRF_ENABLED = True
@@ -331,17 +331,23 @@ def vote():
     COSMOSDB_DOCUMENT = 'voting document'
     ```
 3. [Azure Portal](https://portal.azure.com/) で、**[参照]**、**[Azure Cosmos DB Accounts]\(Azure Cosmos DB アカウント\)** の順にクリックして、**[キー]** ページに移動します。使用するアカウントの名前をダブルクリックし、**[Essentials]** 領域で **[キー]** ボタンをクリックします。 **[キー]** ページで、**[URI]** の値をコピーし、**config.py** ファイルに **COSMOSDB\_HOST** プロパティの値として貼り付けます。 
-4. Azure Portal に戻り、**[キー]** ページで、**[プライマリ キー]** または **[セカンダリ キー]** の値をコピーし、**config.py** ファイルに **COSMOSDB\_KEY** プロパティの値として貼り付けます。
-5. **\_\_init\_\_.py** ファイルに次の行を追加します。 
+4. Azure Portal に戻り、**[キー]** ページで、**[プライマリ キー]** または **[セカンダリ キー]** の値をコピーし、**config_cosmos.py** ファイルに **COSMOSDB\_KEY** プロパティの値として貼り付けます。
+5. 構成ファイルの読み取りと基本的なログ記録を含めるために、**\_\_init\_\_.py** ファイルに次の行を追加します。 
    
-        app.config.from_object('config')
+        app.config.from_object('config_cosmos')
+        logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+        logger = logging.getLogger(__name__)
    
     ファイルの内容は次のようになります。
    
     ```python
+    import logging
     from flask import Flask
     app = Flask(__name__)
-    app.config.from_object('config')
+    app.config.from_pyfile('config_cosmos')
+    logging.basicConfig(level=logging.INFO,format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+    logger = logging.getLogger(__name__)
+
     import tutorial.views
     ```
 6. すべてのファイルを追加すると、ソリューション エクスプローラーは次のようになります。

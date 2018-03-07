@@ -9,18 +9,19 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 380d804f-a8c5-4b20-9762-593ec4da5a0d
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: 
 ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/27/2017
 ms.author: larryfr
-ms.openlocfilehash: d777d467b3f0d4ef6101dffa551ec5c85feb209c
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ROBOTS: NOINDEX
+ms.openlocfilehash: c89556cf66526f793ab81383e205ff45075385a3
+ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/23/2018
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
 
@@ -42,9 +43,6 @@ C# トポロジを Linux ベースのクラスターで使うには、プロジ�
 
 > [!IMPORTANT]
 > Linux ベースのクラスターの C# トポロジは、.NET 4.5 を使い、Mono を使って HDInsight クラスターで実行する必要があります。 互換性のない可能性がある機能については、[Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)のドキュメントを参照してください。
-
-> [!WARNING]
-> SCP.NET バージョン 1.0.0.x を使用するプロジェクトを構築する際に問題が発生した場合は、Microsoft サポートに対処方法をお問い合わせください。
 
 ## <a name="install-visual-studio"></a>Visual Studio のインストール
 
@@ -124,7 +122,7 @@ Data Lake Tools for Visual Studio には次のテンプレートがあります�
 | Storm サンプル |基本的なワード カウント トポロジ。 |
 
 > [!WARNING]
-> すべてのテンプレートが Linux ベースの HDInsight で動作するとは限りません。 テンプレートで使用されている Nuget パッケージは Mono と互換性がない場合があります。 [Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)に関するドキュメントを確認し、[.NET Portability Analyzer](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) を使用して潜在的な問題を特定してください。
+> すべてのテンプレートが Linux ベースの HDInsight で動作するとは限りません。 テンプレートで使用されている NuGet パッケージは Mono と互換性がない場合があります。 [Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)に関するドキュメントを確認し、[.NET Portability Analyzer](../hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) を使用して潜在的な問題を特定してください。
 
 このドキュメントの手順では、基本的な種類の Storm アプリケーション プロジェクトを使用してトポロジを作成します。
 
@@ -169,7 +167,7 @@ HBase のリーダーとライターのテンプレートは、HBase Java API �
 
    * **Fail** (トランザクションのトポロジのみ): トポロジの他のコンポーネントの処理に失敗したタプルを処理します。 Fail メソッドを実装することにより、再処理用のタプルを再出力できるようになります。
 
-2. **Spout** クラスの内容を次のテキストのように置き換えます。 このスパウトは、トポロジにセンテンスをランダムに出力します。
+2. **Spout** クラスの内容を次のテキストで置換します: このスパウトは、トポロジにセンテンスをランダムに出力します。
 
     ```csharp
     private Context ctx;
@@ -290,7 +288,7 @@ HBase のリーダーとライターのテンプレートは、HBase Java API �
     }
     ```
 
-5. **Counter.cs** を開いて、クラスの内容を次のように置き換えます。
+5. **Counter.cs** を開いて、クラスの内容を次のコードで置き換えます。
 
     ```csharp
     private Context ctx;
@@ -352,7 +350,7 @@ HBase のリーダーとライターのテンプレートは、HBase Java API �
 
 センテンスはスパウトから出力され、Splitter ボルトのインスタンスに配布されます。 Splitter ボルトがセンテンスを単語に分け、Counter ボルトに配布します。
 
-ワード カウントは Counter インスタンスにローカルに保持されるため、特定の 1 つの単語が同じ Counter ボルト インスタンスに届くようにする必要があります。 各インスタンスが特定の単語を追跡します。 Splitter ボルトでは状態が保持されないため、Splitter のどのインスタンスがどのセンテンスを受信しても問題ありません。
+ワード カウントは Counter インスタンスにローカルに保持されるため、特定の単語が同じ Counter ボルト インスタンスに届くようにする必要があります。 各インスタンスが特定の単語を追跡します。 Splitter ボルトでは状態が保持されないため、Splitter のどのインスタンスがどのセンテンスを受信しても問題ありません。
 
 **Program」を参照してください。cs**」を参照してください。 重要なメソッドは **GetTopologyBuilder** です。これは、Storm に送信されるトポロジの定義に使われます。 **GetTopologyBuilder** の内容を次のコードに置き換えて前述のトポロジを実装します。
 
@@ -472,16 +470,16 @@ return topologyBuilder;
   > このバージョンは、Closure コードをテキスト ファイルから Java コンポーネントとして使用する方法も示しています。
 
 
-プロジェクトの送信時に使用されるトポロジを切り替えるには、単純にクラスターの送信前に `[Active(true)]` ステートメントを使用するトポロジに移動します。
+プロジェクトの送信時に使用されるトポロジを切り替えるには、クラスターへの送信前に `[Active(true)]` ステートメントを使用するトポロジに移動します。
 
 > [!NOTE]
 > 必要なすべての Java ファイルは、このプロジェクトの一部として **JavaDependency** フォルダーに提供されています。
 
 ハイブリッド トポロジの作成と送信を行う際には、次の点を考慮してください。
 
-* **JavaComponentConstructor** は、スパウトまたはボルトの Java クラスのインスタンスを作成するために使用する必要があります。
+* **JavaComponentConstructor** は、スパウトまたはボルトの Java クラスのインスタンスを作成するために使用します。
 
-* **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** は、Java オブジェクトから JSON に、Java コンポーネントのデータをシリアル化するときに使用する必要があります。
+* **microsoft.scp.storm.multilang.CustomizedInteropJSONSerializer** は、Java オブジェクトから JSON に、Java コンポーネントのデータをシリアル化するときに使用します。
 
 * トポロジをサーバーに送信するとき、**[追加の構成]** オプションを使って **[Java ファイルのパス]** を指定する必要があります。 ここで指定するパスは、Java クラスを含む JAR ファイルのあるディレクトリである必要があります。
 
@@ -703,7 +701,7 @@ Linux ベースの HDInsight クラスターでは、.NET 4.5 用にコンパイ
 
 ### <a name="log-information"></a>ログ情報
 
-トポロジ コンポーネントからの情報は、 `Context.Logger`を使用して簡単に記録できます。 たとえば、次のようにすると情報ログ エントリが作成されます。
+トポロジ コンポーネントからの情報は、 `Context.Logger`を使用して簡単に記録できます。 たとえば、次のコマンドでは情報ログ エントリが作成されます。
 
 ```csharp
 Context.Logger.Info("Component started");
@@ -746,7 +744,7 @@ __sshuser__ をクラスターの SSH ユーザー アカウントに置き換�
 * JDK が開発環境のパスに存在しない。 JDK が開発環境にインストールされていること、また `%JAVA_HOME%/bin` がパスにあることを確認してください。
 * Java の依存関係が不足している。 必要な .jar ファイルを必ず含めて送信してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Event Hubs からのデータ処理の例は、「[HDInsight で Storm を使用して Azure Event Hubs のイベントを処理する](apache-storm-develop-csharp-event-hub-topology.md)」を参照してください。
 

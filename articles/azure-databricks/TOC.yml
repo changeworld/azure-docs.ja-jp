@@ -9,6 +9,12 @@
   items:
     - name: Databricks ワークスペースの作成
       href: quickstart-create-databricks-workspace-portal.md
+- name: ハウツー ガイド
+  items:
+    - name: Excel、R、Python を使用した接続
+      href: connect-databricks-excel-python-r.md
+    - name: Azure Cloud Shell からの Databricks CLI の使用
+      href: databricks-cli-from-azure-cloud-shell.md
 - name: リソース
   items:
     - name: 一般的な質問
