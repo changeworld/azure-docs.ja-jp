@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 54b9c38d1122d898dd584a189b9ea2e3405dc6f5
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: 91461af20cdb189ab23671fee0f3dea182ec0bb1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-playready-andor-widevine-dynamic-common-encryption"></a>PlayReady または Widevine の動的共通暗号化を使用する
 
@@ -135,6 +135,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 ## <a name="get-a-test-token"></a>テスト トークンを取得する
 キー認証ポリシーに使用されたトークンによる制限に基づいて、テスト トークンを取得します。
 
+```csharp
     // Deserializes a string containing an XML representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
@@ -145,7 +146,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
     //so you have to add it in front of the token string.
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
-
+```
 
 [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
 
@@ -155,8 +156,10 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 
 2. app.config ファイルで定義されている **appSettings** に次の要素を追加します。
 
+```xml
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
+```
 
 ## <a name="example"></a>例
 
@@ -171,7 +174,7 @@ Program.cs ファイルのコードを、このセクションで示されてい
 
 必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;

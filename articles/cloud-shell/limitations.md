@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: 21a050373a9901220e106534464a8c13565bb3d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 245e2e1ca52e7d3c5bd22d5f2569e3e8d7ae6671
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 
@@ -54,11 +54,11 @@ Cloud Shell は対話型のユース ケースを想定しています。 その
 
 ### <a name="user-permissions"></a>ユーザーのアクセス許可
 
-権限は、sudo アクセスのない、通常のユーザーとして設定されます。 `$Home` または `clouddrive` ディレクトリの外部にあるインストールはすべて失われます。
+権限は、sudo アクセスのない、通常のユーザーとして設定されます。 `$Home` ディレクトリ外のインストールはすべて失われます。
 
 ### <a name="editing-bashrc"></a>.bashrc の編集
 
-.bashrc を編集すると Cloud Shell の Bash で予期しないエラーが発生する可能性があるため、編集には注意が必要です。
+.bashrc を編集すると Cloud Shell で予期しないエラーが発生する可能性があるため、編集には注意が必要です。
 
 ## <a name="powershell-limitations"></a>PowerShell の制限事項
 
@@ -68,7 +68,7 @@ Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間�
 
 ### <a name="no-home-directory-persistence"></a>$Home ディレクトリが永続化されない
 
-アプリケーション (たとえば、git、vim など) によって `$Home` に書き込まれたデータは、PowerShell セッション間で保持されません。 回避策については、[こちらをご覧ください](troubleshooting.md#powershell-resolutions)。
+アプリケーション (たとえば、git、vim など) によって `$Home` に書き込まれたデータは、PowerShell セッション間で保持されません。 回避策については、[こちらをご覧ください](troubleshooting.md#powershell-troubleshooting)。
 
 ### <a name="default-file-location-when-created-from-azure-drive"></a>Azure ドライブから作成された場合の既定のファイルの場所
 

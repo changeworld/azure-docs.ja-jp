@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 739e80633f828e8c14f024dc22971e7d8858cf78
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 03b9de7374880cdb2741821edae246bffaf3f921
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-analytics-to-convert-text-content-in-video-files-into-digital-text"></a>Azure Media Analytics を使用して、ビデオ ファイル内のテキスト コンテンツをデジタル テキストに変換する
 ## <a name="overview"></a>概要
@@ -41,7 +41,7 @@ ms.lasthandoff: 12/11/2017
 >
 
 ### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | 説明 |
+| 属性名 | [説明] |
 | --- | --- |
 |AdvancedOutput| AdvancedOutput を true に設定すると、JSON 出力には各単語ごとに (語句とリージョンに加えて) 位置指定データが含まれます。 これらの詳細を表示しないようにするには、フラグを false に設定します。 既定値は false です。 詳細については、 [このブログ](https://azure.microsoft.com/blog/azure-media-ocr-simplified-output/)をご覧ください。|
 | 言語 |(省略可能) 検索対象テキストの言語です。 次のいずれかを指定します: AutoDetect (既定)、Arabic、ChineseSimplified、ChineseTraditional、Czech、Danish、Dutch、English、Finnish、French、German、Greek、Hungarian、Italian、Japanese、Korean、Norwegian、Polish、Portuguese、Romanian、Russian、SerbianCyrillic、SerbianLatin、Slovak、Spanish、Swedish、Turkish。 |
@@ -51,6 +51,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="json-preset-example"></a>JSON プリセットの例
 
+```json
     {
         "Version":1.0, 
         "Options": 
@@ -69,8 +70,11 @@ ms.lasthandoff: 12/11/2017
              ]
         }
     }
+```
 
 #### <a name="xml-preset-example"></a>XML プリセットの例
+
+```xml
     <?xml version=""1.0"" encoding=""utf-16""?>
     <VideoOcrPreset xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"" Version=""1.0"" xmlns=""http://www.windowsazure.com/media/encoding/Preset/2014/03"">
       <Options>
@@ -88,6 +92,7 @@ ms.lasthandoff: 12/11/2017
        <TextOrientation>Up</TextOrientation>
       </Options>
     </VideoOcrPreset>
+```
 
 ## <a name="ocr-output-files"></a>OCR 出力ファイル
 OCR メディア プロセッサの出力は、JSON ファイルです。
@@ -97,7 +102,7 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
 
 出力には、次の属性が含まれています。
 
-| 要素 | Description |
+| 要素 | [説明] |
 | --- | --- |
 | タイムスケール |ビデオの 1 秒あたりの "ティック数" |
 | Offset |タイムスタンプの時間オフセット。 Video API のバージョン 1.0 では、これは常に 0 になります。 |
@@ -113,11 +118,12 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
 | 言語 |リージョン内で検出されたテキストの言語 |
 | orientation |リージョン内で検出されたテキストの向き |
 | lines |リージョン内で検出されたラインの配列 |
-| text |実際のテキスト |
+| テキスト |実際のテキスト |
 
 ### <a name="json-output-example"></a>JSON 出力の例
 次の出力例には、一般的なビデオ情報とビデオ フラグメントがいくつか含まれています。 ビデオ フラグメントごとに、OCR MP によって検出されたすべてのリージョンと、言語およびそのテキストの向きが示されています。 また、リージョンには、そのリージョン内のすべての単語ラインと、ラインのテキスト、ラインの位置、およびこのラインのすべての単語情報 (単語のコンテンツ、位置、信頼度) も含まれます。 例を次に示します。この例には、コメントをいくつかインラインで挿入してあります。
 
+```json
     {
         "version": 1, 
         "timescale": 90000, 
@@ -170,6 +176,7 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
             }
         ]
     }
+```
 
 ## <a name="net-sample-code"></a>.NET サンプル コード
 
@@ -185,7 +192,7 @@ OCR メディア プロセッサの出力は、JSON ファイルです。
 
 #### <a name="example"></a>例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

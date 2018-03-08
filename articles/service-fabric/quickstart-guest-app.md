@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: adegeo
-ms.openlocfilehash: 304d22c14f6877138213db14333773f1e293c57a
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 1130ce3231b9e96a03d3e8dc5f75721dd0415928
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Azure Service Fabric での Node.js アプリケーションのホスト
 
@@ -51,7 +51,7 @@ Visual Studio を**管理者**として起動します。
 
 サービスに **MyGuestService** という名前を付けて、右側のオプションを次の値に設定します。
 
-| 設定                   | 値 |
+| Setting                   | 値 |
 | ------------------------- | ------ |
 | コード パッケージ フォルダー       | _&lt;Node.js アプリが含まれているフォルダー&gt;_ |
 | コード パッケージの動作     | フォルダーの内容をプロジェクトにコピーする |
@@ -95,7 +95,7 @@ Visual Studio によって、アプリケーション プロジェクトとア�
   </Resources>
 ```
 
-## <a name="deploy-to-azure"></a>Azure へのデプロイ
+## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
 
 **F5** キーを押してプロジェクトを実行すると、プロジェクトはローカル クラスターにデプロイされます。 ただし、ここでは代わりに Azure にデプロイします。
 
@@ -125,7 +125,7 @@ Service Fabric クラスターを作成する際に、必ず **[カスタム エ
 
 最初に、Azure Portal を開き、目的の Service Fabric サービスを探します。
 
-サービス アドレスの概要ブレードを確認します。 _[Client connection endpoint]\(クライアントの接続エンドポイント\)_ プロパティのドメイン名を使用します。 たとえば、「 `http://mysvcfab1.westus2.cloudapp.azure.com`」のように入力します。
+サービス アドレスの概要ブレードを確認します。 _[Client connection endpoint]\(クライアントの接続エンドポイント\)_ プロパティのドメイン名を使用します。 たとえば、「`http://mysvcfab1.westus2.cloudapp.azure.com`」のように入力します。
 
 ![Azure Portal の Service Fabric 概要ブレード][overview]
 
@@ -135,7 +135,7 @@ Service Fabric クラスターを作成する際に、必ず **[カスタム エ
 
 このクイックスタートで作成したリソースについて料金が発生するため、すべてのリソースを忘れずに削除してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)の詳細を確認します。
 
 <!-- Image References -->

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 5741a484dcda05e3143b5f896ddee2e8591dabee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7a16745fc21d03f81ca6140ace54f84468749364
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="detect-face-and-emotion-with-azure-media-analytics"></a>Azure Media Analytics での顔と感情の検出
 ## <a name="overview"></a>概要
@@ -64,21 +64,24 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 ### <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットは、顔検出用だけです。
 
+```json
     {
       "version":"1.0",
       "options":{
           "TrackingMode": "Fast"
       }
     }
+```
 
 #### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | Description |
+| 属性名 | [説明] |
 | --- | --- |
 | Mode |Fast: 処理速度は速くなりますが、精度が低下します (既定値)。|
 
 ### <a name="json-output"></a>JSON 出力
 次の JSON 出力例は途中までです。
 
+```json
     {
     "version": 1,
     "timescale": 30000,
@@ -123,8 +126,8 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
                 "height": 0.151389
             }
             ],
+```
 
-        . . . 
 
 ## <a name="emotion-detection-input-and-output-example"></a>感情検出の入力と出力の例
 ### <a name="input-video"></a>入力ビデオ
@@ -133,6 +136,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 ### <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Face Detector**でタスクを作成するときは、構成プリセットを指定する必要があります。 次の構成プリセットでは、感情検出に基づく JSON の作成を指定しています。
 
+```json
     {
       "version": "1.0",
       "options": {
@@ -141,10 +145,11 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
         "aggregateEmotionIntervalMs": "342"
       }
     }
+```
 
 
 #### <a name="attribute-descriptions"></a>属性の説明
-| 属性名 | Description |
+| 属性名 | [説明] |
 | --- | --- |
 | Mode |Faces: 顔検出のみ。<br/>PerFaceEmotion: 検出された顔ごとに、感情を個別に返します。<br/>AggregateEmotion: フレーム内のすべての顔の平均的感情値を返します。 |
 | AggregateEmotionWindowMs |AggregateEmotion モードが選択されている場合に使用します。 各集計結果を生成するために使用するビデオの長さを指定します (ミリ秒単位)。 |
@@ -161,6 +166,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 ### <a name="json-output"></a>JSON 出力
 感情の集計の JSON 出力 (途中まで):
 
+```json
     {
      "version": 1,
      "timescale": 30000,
@@ -311,6 +317,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
                  "anger": 0,
                  "disgust": 0,
                  "fear": 0,
+```
 
 ## <a name="limitations"></a>制限事項
 * サポートされている入力ビデオ形式は、MP4、MOV、WMV です。
@@ -324,10 +331,12 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
 2. 次の JSON プリセットを含む構成ファイルに基づく顔検出タスクのジョブを作成します。 
-   
-        {
-            "version": "1.0"
-        }
+
+    ```json
+            {
+                "version": "1.0"
+            }
+    ```
 3. 出力 JSON ファイルをダウンロードします。 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
@@ -336,7 +345,7 @@ Face Detector は、フラグメント化 (メタデータを時間に基づい�
 
 #### <a name="example"></a>例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

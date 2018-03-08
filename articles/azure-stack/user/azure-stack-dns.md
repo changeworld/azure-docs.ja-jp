@@ -3,26 +3,25 @@ title: "Azure Stack の DNS | Microsoft Docs"
 description: "Azure Stack の DNS"
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: byronr
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 9/25/2017
-ms.author: victorh
-ms.openlocfilehash: ac93b5eb4228cef373428b7b69932d5993d54fa0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 394abe5295af4ed99e48d50b5886ac93af87e875
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="dns-in-azure-stack"></a>Azure Stack の DNS
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack には次の DNS 機能が含まれています。
 * DNS ホスト名解決のサポート
@@ -99,5 +98,5 @@ Azure Stack DNS を使用する際は、次の制限が既定で適用されま�
 | ゾーンあたりのレコード セット数| 5000|
 | レコード セットあたりのレコード数| 20|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Stack の iDNS の概要](azure-stack-understanding-dns.md)

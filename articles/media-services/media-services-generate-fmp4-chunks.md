@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 7273e51342f4e9fc68a8b3d3b145d119b4eab122
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f497954f82e209c1547fca0943169d53f4ab517a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 #  <a name="create-an-encoding-task-that-generates-fmp4-chunks"></a>fMP4 チャンクを生成するエンコーディング タスクを作成する
 
@@ -25,10 +25,11 @@ ms.lasthandoff: 12/11/2017
 
 この記事では、ISO MP4 ファイルではなく、フラグメント化 MP4 (fMP4) チャンクを生成するエンコーディング タスクの作成方法を紹介します。 fMP4 チャンクを生成するには、次のコード スニペットで示されているとおり、**Media Encoder Standard** または **Media Encoder Premium Workflow** エンコーダーを使用してエンコーディング タスクを作成し、合わせて **AssetFormatOption.AdaptiveStreaming** オプションを指定します。  
     
+```csharp
     task.OutputAssets.AddNew(@"Output Asset containing fMP4 chunks", 
             options: AssetCreationOptions.None, 
             formatOption: AssetFormatOption.AdaptiveStreaming);
-
+```
 
 ## <a id="encoding_with_dotnet"></a>Media Services .NET SDK を使用したエンコード
 
@@ -47,7 +48,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="example"></a>例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.Linq;

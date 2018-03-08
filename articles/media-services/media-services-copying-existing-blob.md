@@ -13,11 +13,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 5a6e1b5bc377d3fc4ad47fdfb37da4853c3bb827
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7c94f59eaa079677223083339f111cf73b13632e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="copying-existing-blobs-into-a-media-services-asset"></a>既存の BLOB を Media Services 資産にコピーする
 この記事では、[Azure Media Services .NET SDK Extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions/) を使用して、ストレージ アカウントから新しい Azure Media Services (AMS) 資産に BLOB をコピーする方法について説明します。
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 1. 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って開発環境を設定してください。 
 2. appSettings セクションを .config ファイルに追加し、Media Services アカウント、送信先のストレージ アカウント、および送信元の資産 ID に基づいて値を更新します。  
 
-```   
+```xml
 <appSettings>
     <add key="AMSSourceAADTenantDomain" value="tenant"/>
     <add key="AMSSourceRESTAPIEndpoint" value="endpoint"/>
@@ -77,7 +77,7 @@ ms.lasthandoff: 12/11/2017
 
 次のコードは、**IAsset.Copy** 拡張メソッドを使用して、送信元の資産内のすべてのファイルを送信先の資産にコピーします。
 
-```
+```csharp
 using System;
 using Microsoft.WindowsAzure.MediaServices.Client;
 using System.Linq;
@@ -167,7 +167,7 @@ namespace CopyExistingBlobsIntoAsset
 1. 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って開発環境を設定してください。 
 2. appSettings セクションを .config ファイルに追加し、コピー元のストレージ アカウントとコピー先の AMS アカウントに基づいて値を更新します。
 
-```
+```xml
 <appSettings>
     <add key="SourceStorageAccountName" value="name" />
     <add key="SourceStorageAccountKey" value="key" />
@@ -189,7 +189,7 @@ namespace CopyExistingBlobsIntoAsset
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.Linq;
@@ -371,7 +371,8 @@ namespace CopyExistingBlobsIntoAsset
     }
 }
 ```
-## <a name="next-steps"></a>次のステップ
+
+## <a name="next-steps"></a>次の手順
 
 これで、アップロードした資産をエンコードできます。 詳細については、 [資産のエンコード](media-services-portal-encode.md)に関するページをご覧ください。
 

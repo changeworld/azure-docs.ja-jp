@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f99fe340b6cfebaafb04af9dba8abf9cb0f09a2b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 999f2cef7d70c4f1b45076300312664defdeb3f5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
@@ -28,7 +28,7 @@ Azure Media Services を使用する既存の Azure 関数を探してデプロ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- 初めての関数を作成するには、アクティブな Azure アカウントを用意しておく必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
+- 初めての関数を作成するには、アクティブな Azure アカウントを用意しておく必要があります。 Azure アカウントがまだない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
 - Azure Media Services (AMS) アカウントでアクションを実行する Azure 関数を作成したり、Media Services から送信されるイベントをリッスンしたりするためには、[こちら](media-services-portal-create-account.md)の説明に従って AMS アカウントを作成する必要があります。
     
 ## <a name="create-a-function-app"></a>Function App を作成する
@@ -86,7 +86,7 @@ function.json ファイルは、関数バインドとその他の構成設定を
 
 既存の function.json ファイルの内容を次のコードで置き換えます。
 
-```
+```json
 {
   "bindings": [
     {
@@ -107,7 +107,7 @@ project.json ファイルには、依存関係が含まれています。 以下
 
 次の定義を project.json に追加します。 
 
-```
+```json
 {
   "frameworks": {
     "net46":{
@@ -136,7 +136,7 @@ project.json ファイルには、依存関係が含まれています。 以下
 
 既存の run.csx ファイルの内容を次のコードで置き換えます。必要な関数を定義したら、**[保存および実行]** をクリックします。
 
-```
+```csharp
 #r "Microsoft.WindowsAzure.Storage"
 #r "Newtonsoft.Json"
 #r "System.Web"
@@ -339,7 +339,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 >[!NOTE]
 > 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 これで、Media Services アプリケーションの開発準備が整いました。 
  

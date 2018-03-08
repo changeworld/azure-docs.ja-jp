@@ -3,20 +3,21 @@ title: "Azure Stack ネットワーク: 違いと考慮事項"
 description: "Azure Stack でネットワークを操作する際の違いと考慮事項について説明します。"
 services: azure-stack
 keywords: 
-author: ScottNapolitan
-ms.author: victorh
-ms.date: 9/25/2017
+author: mattbriggs
+manager: femila
+ms.author: mabrigg
+ms.date: 02/28/2018
 ms.topic: article
 ms.service: azure-stack
-ms.openlocfilehash: 3c72c58e63335f1cb440811e283bd742b8124161
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 4c881a5f5e64ddc9fc67060208f3bef6ae0f5028
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ネットワークに関する考慮事項
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack ネットワークは Azure に備えられている機能の多くを備えていますが、デプロイを開始する前に把握しておいていただきたい違いがいくつかあります。
 
@@ -26,7 +27,7 @@ Azure Stack ネットワークは Azure に備えられている機能の多く�
 
 ## <a name="cheat-sheet-networking-differences"></a>チート シート: ネットワークの違い
 
-|サービス | 機能 | Azure (グローバル) | Azure Stack |
+|サービス | Feature | Azure (グローバル) | Azure Stack |
 | --- | --- | --- | --- |
 | DNS | マルチテナント DNS | サポートされています| まだサポートされていません|
 | |DNS AAAA レコード|サポートされています|サポートされていません|
@@ -41,10 +42,10 @@ Azure Stack ネットワークは Azure に備えられている機能の多く�
 |Load Balancer|IPv6 パブリック IP アドレス|ロード バランサーへの IPv6 パブリック IP アドレスの割り当てをサポートします。|IPv4 のみがサポートされています。|
 |Network Watcher|Network Watcher テナント ネットワーク監視機能|サポートされています|まだサポートされていません|
 |CDN|Content Delivery Network のプロファイル|サポートされています|まだサポートされていません|
-|フロント エンド|レイヤー 7 の負荷分散|サポートされています|まだサポートされていません|
+|Application gateway|レイヤー 7 の負荷分散|サポートされています|まだサポートされていません|
 |Traffic Manager|アプリケーションのパフォーマンスと信頼性を最適にするように着信トラフィックをルーティングします。|サポートされています|まだサポートされていません|
 |ExpressRoute|オンプレミス インフラストラクチャや共用施設から Microsoft クラウド サービスに高速なプライベート接続を設定します。|サポートされています|Express Route 回線への Azure Stack の接続をサポートします。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Stack の DNS](azure-stack-dns.md)

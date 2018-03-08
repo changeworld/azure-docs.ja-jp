@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.openlocfilehash: 33fb0a18ea3e5bfec044a216c8e6a78942e3af40
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: de6cbf954f175777407432845ece24ac49198e46
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="using-azure-media-packager-to-accomplish-static-packaging-tasks"></a>Azure Media Packager を使用して静的パッケージ タスクを実行する
 > [!NOTE]
@@ -58,6 +58,7 @@ Media Services のエンコーダーでエンコードされていない一連�
 
 Media Services Packager を使用して MP4 ファイルを検証するには、独自のマニフェスト (.ism) ファイルを作成し、ソース ファイルと共に Media Services アカウントにアップロードする必要があります。 Media Encoder Standard で生成された .ism ファイルのサンプルを次に示します。 ファイル名の大文字と小文字は区別されます。 また、.ism ファイルのテキストは UTF-8 エンコード形式にする必要があります。
 
+```xml
     <?xml version="1.0" encoding="utf-8" standalone="yes"?>
     <smil xmlns="http://www.w3.org/2001/SMIL20/Language">
       <head>
@@ -76,11 +77,13 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
         </switch>
       </body>
     </smil>
+```
 
 アダプティブ ビットレート MP4 を設定すると、動的パッケージを利用できます。 Dynamic Packaging を使用すると、さらにパッケージ化せずに、指定したプロトコルでストリームを配信できます。 詳細については、「 [動的パッケージ](media-services-dynamic-packaging-overview.md)」を参照してください。
 
 次のコード サンプルでは、Azure Media Services .NET SDK Extensions を使用します。  入力 MP4 ファイルと .ism ファイルがあるフォルダーを指すようにコードを更新します。 これは、MediaPackager_ValidateTask.xml ファイルがある場所でもあります。 この XML ファイルは、「[Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx)」トピックで定義されています。
 
+```csharp
     using Microsoft.WindowsAzure.MediaServices.Client;
     using System;
     using System.Collections.Generic;
@@ -244,6 +247,7 @@ Media Services Packager を使用して MP4 ファイルを検証するには、
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-your-smooth-and-mpeg-dash-with-playready"></a>静的暗号化を使用して PlayReady で Smooth および MPEG DASH を保護する
 PlayReady でコンテンツを保護する場合、 [動的暗号化](media-services-protect-with-playready-widevine.md) (推奨されるオプション) または 静的暗号化 (このセクションで説明します) を選択できます。
@@ -263,6 +267,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 この例では、MediaEncryptor_PlayReadyProtection.xml を動的に更新できる UpdatePlayReadyConfigurationXMLFile メソッドを定義します。 使用可能なキー シードがある場合は、CommonEncryption.GeneratePlayReadyContentKey メソッドを使用して、keySeedValue 値と KeyId 値に基づいてコンテンツ キーを生成することができます。
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -694,6 +699,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-aes-128"></a>静的暗号化を使用して AES-128 で HLSv3 を保護する
 AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨されるオプション) と静的暗号化 (このセクションの説明を参照) のどちらかを選択できます。 動的暗号化を使用する場合は、「 [AES-128 動的暗号化とキー配信サービスの使用](media-services-protect-with-aes128.md)」を参照してください。
@@ -707,6 +713,7 @@ AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨�
 
 このセクションの例では、中間ファイル (ここでは MP4) をマルチビットレート MP4 ファイルにエンコードし、MP4 を Smooth Streaming にパッケージ化します。 また、Smooth Streaming は、Advanced Encryption Standard (AES) 128 ビット ストリーム暗号化で暗号化された HTTP Live Streaming (HLS) にパッケージ化されます。 入力 MP4 ファイルがあるフォルダーを指すように、次のコードを更新します。 また、MediaPackager_MP4ToSmooth.xml と MediaPackager_SmoothToHLS.xml 構成ファイルがある場所も示すように更新します。 これらのファイルの定義については、「[Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx)」をご覧ください。
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -975,6 +982,7 @@ AES-128 を使用して HLS を暗号化する場合、動的暗号化 (推奨�
             }
         }
     }
+```
 
 ## <a name="using-static-encryption-to-protect-hlsv3-with-playready"></a>静的暗号化を使用して PlayReady で HLSv3 を保護する
 PlayReady でコンテンツを保護する場合、 [動的暗号化](media-services-protect-with-playready-widevine.md) (推奨されるオプション) または 静的暗号化 (このセクションで説明します) を選択できます。
@@ -990,6 +998,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
 入力 MP4 ファイルがあるフォルダーを指すように、次のコードを更新します。 また、MediaPackager_MP4ToSmooth.xml、MediaPackager_SmoothToHLS.xml、および MediaEncryptor_PlayReadyProtection.xml のファイルがある場所を指すように更新します。 MediaPackager_MP4ToSmooth.xml と MediaPackager_SmoothToHLS.xml については、「[Azure Media Packager のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973635.aspx)」で定義されています。また、MediaEncryptor_PlayReadyProtection.xml については、「[Azure Media Encryptor のタスク プリセット](http://msdn.microsoft.com/library/azure/hh973610.aspx)」をご覧ください。
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Configuration;
@@ -1452,6 +1461,7 @@ Media Services では、Microsoft PlayReady ライセンスの配信サービス
 
         }
     }
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

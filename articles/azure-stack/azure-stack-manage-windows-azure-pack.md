@@ -3,8 +3,8 @@ title: "Azure Stack からの Windows Azure Pack 仮想マシンの管理 | Micr
 description: "Azure Stack 内のユーザー ポータルから Windows Azure Pack (WAP) VM を管理する方法について説明します。"
 services: azure-stack
 documentationcenter: 
-author: walterov
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 213c2792-d404-4b44-8340-235adf3f8f0b
 ms.service: azure-stack
@@ -12,17 +12,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: walterov
-ms.openlocfilehash: b07a18055d149e20cd605a892063eccecf3df8a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: a7e4896c84938b392a86f4d9609c4932324c785d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="manage-windows-azure-pack-virtual-machines-from-azure-stack"></a>Azure Stack からの Windows Azure Pack 仮想マシンの管理
 
-*適用対象: Azure Stack 開発キット*
+*適用対象: Azure Stack Development Kit*
 
 Azure Stack Development Kit では、Azure Stack ユーザー ポータルから Windows Azure Pack 上で実行されているテナント仮想マシンへのアクセスを有効にできます。 ユーザーは Azure Stack ポータルを使用して、その既存の IaaS 仮想マシンおよび仮想ネットワークを管理できます。 これらのリソースは、基になる Service Provider Foundation (SPF) および Virtual Machine Manager (VMM) コンポーネント経由で Windows Azure Pack で使用可能になります。 具体的には、ユーザーは次のことができます。
 
@@ -93,7 +93,7 @@ Windows Azure Pack コネクタを構成する前に、Azure Stack ユーザー 
 マルチクラウド モードを有効にするには、Azure Stack デプロイの後に Add-AzurePackConnector.ps1 スクリプトを実行する必要があります。 次の表で、スクリプト パラメーターについて説明します。
 
 
-|  パラメーター | Description | 例 |   
+|  パラメーター | [説明] | 例 |   
 | -------- | ------------- | ------- |  
 | AzurePackClouds | Windows Azure Pack コネクタの URI。 これらの URI は、Windows Azure Pack テナント ポータルに対応している必要があります。 | @{CloudName = "AzurePack1"; CloudEndpoint = "https://waptenantportal1:40005"},@{CloudName = "AzurePack2"; CloudEndpoint = "https://waptenantportal2:40005"}<br><br>  (既定では、ポート値は 40005 です。) |  
 | AzureStackCloudName | ローカルの Azure Stack クラウドを表すラベル。| "AzureStack" |
@@ -134,7 +134,7 @@ Add-AzurePackConnector.ps1 スクリプトはデプロイの直後か、また�
 
 4.  構成をテストします。
 
-    a. ブラウザーを開き、Azure Stack ユーザー ポータル (https://portal.local.azurestack.external/) にサインインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ブラウザーを開き、Azure Stack ユーザー ポータル (https://portal.local.azurestack.external/) にサインインします。
     
     b. テナントとしてサインインし、ポータルが読み込まれた後、Azure Pack クラウドからサブスクリプションまたは拡張機能をフェッチできないことに関するエラーが表示されます。 **[OK]** をクリックして、これらのメッセージを閉じます。 (これらのエラー メッセージは、Windows Azure Pack を構成した後に消えます。)
 
@@ -150,7 +150,7 @@ Add-AzurePackConnector.ps1 スクリプトはデプロイの直後か、また�
 
 1.  Windows Azure Pack テナント ポータル仮想マシンにコネクタ MSI ファイルをインストールし、証明書をインストールします。 (複数のテナント ポータル仮想マシンがある場合は、各仮想マシンでこの手順を完了する必要があります。)
 
-    a. ファイル エクスプローラーで、**WAPConnector** フォルダー (前にダウンロードしたもの) をテナント ポータル仮想マシン内の **c:\temp** という名前のフォルダーにコピーします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ファイル エクスプローラーで、**WAPConnector** フォルダー (前にダウンロードしたもの) をテナント ポータル仮想マシン内の **c:\temp** という名前のフォルダーにコピーします。
 
     b. テナント ポータル仮想マシンへのコンソールまたは RDP 接続を開きます。
 
@@ -177,9 +177,9 @@ Add-AzurePackConnector.ps1 スクリプトはデプロイの直後か、また�
         .\Configure-Certificates.ps1
     ```
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 これらの 3 つのサービスの構成を完了するには、**Configure-WapConnector.ps1** スクリプトを実行して Web.config ファイル パラメーターを更新します。
+    f. これらの 3 つのサービスの構成を完了するには、**Configure-WapConnector.ps1** スクリプトを実行して Web.config ファイル パラメーターを更新します。
 
-    |  パラメーター | Description | 例 |   
+    |  パラメーター | [説明] | 例 |   
     | -------- | ------------- | ------- |  
     | TenantPortalFQDN | Windows Azure Pack テナント ポータルの FQDN。 | tenant.contoso.com | 
     | TenantAPIFQDN | Windows Azure Pack テナント API の FQDN。 | tenantapi.contoso.com  |
@@ -195,7 +195,7 @@ Add-AzurePackConnector.ps1 スクリプトはデプロイの直後か、また�
 
 2. 各 Windows Azure Pack テナント API 仮想マシンに新しいテナント API MSI をインストールします。
 
-    a. ロード バランサーが使用されている場合は、仮想マシンをオフラインとしてマークすることもできます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ロード バランサーが使用されている場合は、仮想マシンをオフラインとしてマークすることもできます。
 
     b. ファイル エクスプローラーで、**WAPConnector** フォルダーを各テナント API マシン上の **c:\temp** という名前のフォルダーにコピーします。
 
@@ -211,10 +211,10 @@ Add-AzurePackConnector.ps1 スクリプトはデプロイの直後か、また�
     .\Update-TenantAPI.ps1
     ```
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。  テナント API を実行しているその他のすべての仮想マシンに対して手順 2. を繰り返します。
+    f.  テナント API を実行しているその他のすべての仮想マシンに対して手順 2. を繰り返します。
 3. テナント API VM のうちの **1 つだけ**から、Configure-TrustAzureStack.ps1 スクリプトを実行して、テナント API と Azure Stack 上の AD FS インスタンスの間の信頼関係を追加します。 Microsoft.MgmtSvc.Store データベースへの sysadmin アクセス権を持つアカウントを使用する必要があります。 このスクリプトには、次のパラメーターがあります。
 
-    | パラメーター | Description | 例 |
+    | パラメーター | [説明] | 例 |
     | --------- | ------------| ------- |
    | SqlServer | Microsoft.MgmtSvc.Store データベースを含む SQL Server の名前。 このパラメーターは必須です。 | SQLServer | 
    | DataFile | 以前の Azure Stack マルチクラウド モードの構成中に生成された出力ファイル。 このパラメーターは必須です。 | AzurePack-06-27-15-50.txt | 
@@ -277,5 +277,5 @@ cd C:\temp\WAPConnector\Setup\Scripts
 4. 既知の問題については、「[Microsoft Azure Stack のトラブルシューティング](azure-stack-troubleshooting.md)」を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Stack での管理者およびユーザー ポータルの使用](azure-stack-manage-portals.md)

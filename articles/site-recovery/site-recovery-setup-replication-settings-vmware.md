@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 02/22/2018
 ms.author: sutalasi
 ms.openlocfilehash: 0a567f31bf1991d4c2a95468d2abc31c51a878f3
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="manage-replication-policy-for-vmware-to-azure"></a>VMware から Azure へのレプリケーション ポリシーの管理
 

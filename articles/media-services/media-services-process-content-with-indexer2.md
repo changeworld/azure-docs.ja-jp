@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: adsolank;juliako;
-ms.openlocfilehash: 075daadae42340dfc9c7510a8010e337210e6e01
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: c78a4d2d3a1b0f84d488e7358c875c9708ac6107
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
 ## <a name="overview"></a>概要
@@ -56,6 +56,7 @@ ms.lasthandoff: 12/11/2017
 
 次の JSON では、使用可能なパラメーターを設定します。
 
+```json
     {
       "version":"1.0",
       "Features":
@@ -69,6 +70,7 @@ ms.lasthandoff: 12/11/2017
            "Type":"SpReco"
         }]
     }
+```
 
 ## <a name="supported-languages"></a>サポートされている言語
 Azure Media Indexer 2 プレビューは、次の言語の音声をテキストに変換する機能をサポートします (タスク構成に言語を指定するときは、次に示すかっこ内の 4 文字のコードを使用します)。
@@ -96,20 +98,23 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
 2. 次の json プリセットを含む構成ファイルに基づいて、インデックス作成タスクを持つジョブを作成します。
-   
-        {
-          "version":"1.0",
-          "Features":
-            [
-               {
-               "Options": {
-                    "Formats":["WebVtt","ttml"],
-                    "Language":"enUs",
-                    "Type":"RecoOptions"
-               },
-               "Type":"SpReco"
-            }]
-        }
+
+    ```json
+            {
+            "version":"1.0",
+            "Features":
+                [
+                {
+                "Options": {
+                        "Formats":["WebVtt","ttml"],
+                        "Language":"enUs",
+                        "Type":"RecoOptions"
+                },
+                "Type":"SpReco"
+                }]
+            }
+    ```
+    
 3. 出力ファイルをダウンロードします。 
    
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
@@ -118,7 +123,7 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 
 #### <a name="example"></a>例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;

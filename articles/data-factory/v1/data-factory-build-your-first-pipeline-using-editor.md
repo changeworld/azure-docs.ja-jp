@@ -3,9 +3,9 @@ title: "初めてのデータ ファクトリの作成 (Azure Portal) | Microsof
 description: "このチュートリアルでは、Azure Portal で Data Factory エディターを使用して、サンプルの Azure Data Factory パイプラインを作成します。"
 services: data-factory
 documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+author: sharonlo101
+manager: 
+editor: 
 ms.assetid: d5b14e9e-e358-45be-943c-5297435d402d
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 01/22/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 995abf497e7267434b5e87132d30183e3c293af3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c4fe0e01936ebc131b10f011b98e9d0c1782179b
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-build-your-first-data-factory-by-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用した初めてのデータ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -178,7 +178,7 @@ ms.lasthandoff: 01/23/2018
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。 これらのデータセットは、このチュートリアルで前に作成した AzureStorageLinkedService を参照します。 このリンクされたサービスは、ストレージ アカウントを指します。 データセットは、入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。   
 
 ### <a name="create-the-input-dataset"></a>入力データセットを作成する
-1. Data Factory エディターで、**[詳細]** > **[新しいデータセット]** > **[Azure BLOB ストレージ]** を選択します。
+1. Data Factory エディターで、**[詳細]** > **[新しいデータセット]** > **[Azure Blob Storage]** を選択します。
 
     ![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 
@@ -227,7 +227,7 @@ ms.lasthandoff: 01/23/2018
 ### <a name="create-the-output-dataset"></a>出力データセットを作成する
 次に、BLOB ストレージに格納される出力データを表す出力データセットを作成します。
 
-1. Data Factory エディターで、**[詳細]** > **[新しいデータセット]** > **[Azure BLOB ストレージ]** を選択します。
+1. Data Factory エディターで、**[詳細]** > **[新しいデータセット]** > **[Azure Blob Storage]** を選択します。
 
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、**AzureBlobOutput** というデータセットを作成して、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが毎月生成されることを指定します。
 
@@ -436,7 +436,7 @@ ms.lasthandoff: 01/23/2018
 この記事では、オンデマンド HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して BLOB ストレージから SQL Database にデータをコピーする方法については、[から SQL Database にデータをコピーする操作のチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)のページを参照してください。
 
 ## <a name="see-also"></a>関連項目
-| Topic | [説明] |
+| トピック | [説明] |
 |:--- |:--- |
 | [パイプライン](data-factory-create-pipelines.md) |この記事は、Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法について理解するのに役立ちます。 |
 | [データセット](data-factory-create-datasets.md) |この記事は、Data Factory のデータセットについて理解するのに役立ちます。 |

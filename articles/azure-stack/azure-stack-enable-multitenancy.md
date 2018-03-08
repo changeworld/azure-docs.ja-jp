@@ -3,21 +3,21 @@ title: "Azure Stack でのマルチテナントの有効化 | Microsoft Docs"
 description: "Azure Stack で複数の Azure Active Directory ディレクトリをサポートする方法を説明します。"
 services: azure-stack
 documentationcenter: 
-author: HeathL17
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: bdf92b8b73dca55e819545913931c0a79a366486
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 66689d80cbee0be36b3e8c9951a43d0d43fa01be
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナントの有効化
 

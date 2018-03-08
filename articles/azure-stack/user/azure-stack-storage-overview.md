@@ -3,26 +3,25 @@ title: "Azure Stack Storage の概要"
 description: "Azure Stack Storage について"
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 092aba28-04bc-44c0-90e1-e79d82f4ff42
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: xiaofmao
-ms.openlocfilehash: 8777aa486a627cf8b2d8ba443e115638354d10da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/29/2018
+ms.author: mabrigg
+ms.openlocfilehash: dbc2ffb7540feb91b14c3d502e7f4007a0751ebd
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Azure Stack Storage の概要
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 ## <a name="overview"></a>概要
 Azure Stack Storage は、Azure Storage サービスと一貫性がある BLOB、テーブル、およびキューを含むクラウド ストレージ サービスのセットです。
@@ -33,9 +32,9 @@ Azure Stack Storage 次の 3 つのサービスを提供します。
 * **Blob Storage** 
 
     Blob Storage は、非構造化オブジェクト データを格納します。 ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを BLOB として保存できます。
-* **テーブル ストレージ** 
+* **Table Storage** 
 
-    テーブル ストレージには、構造型データが格納されます。 Table Storage は、NoSQL キー属性データ ストアであるため、開発が迅速化され、大量のデータにすばやくアクセスできます。
+    テーブル ストレージには、構造型データが格納されます。 テーブル ストレージは、NoSQL キー属性データ ストアであるため、開発が迅速化され、大量のデータにすばやくアクセスできます。
 * **Queue Storage** 
 
     キュー ストレージは、ワークフロー処理およびクラウド サービスのコンポーネント間通信のための、信頼性の高いメッセージング機能を提供します。
@@ -71,11 +70,11 @@ BLOB ストレージには、3 つの種類の BLOB が用意されています�
 
 
 ### <a name="table-storage"></a>テーブル ストレージ
-最新のアプリケーションの多くは、前の世代のソフトウェアよりも、拡張性と柔軟性に優れたデータ ストアを必要とします。 Table Storage は、高度な可用性と拡張性を備え、アプリケーションを需要に応じて自動的に拡張できます。 Table Storage は、Microsoft の NoSQL のキーまたは属性ストアですが、従来のリレーショナル データベースと異なり、スキーマなしの設計です。 スキーマなしのデータ ストアでは、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 Table Storage は使いやすいため、開発者はアプリケーションを迅速に作成できます。
+最新のアプリケーションの多くは、前の世代のソフトウェアよりも、拡張性と柔軟性に優れたデータ ストアを必要とします。 Table Storage は、高度な可用性と拡張性を備え、アプリケーションを需要に応じて自動的に拡張できます。 Table Storage は、Microsoft の NoSQL のキーまたは属性ストアですが、従来のリレーショナル データベースと異なり、スキーマなしの設計です。 スキーマなしのデータ ストアでは、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 テーブル ストレージは使いやすいため、開発者はアプリケーションを迅速に作成できます。
 
 テーブル ストレージは、キー属性ストアであるため、テーブル内のすべての値に型指定されたプロパティ名が付いて保存されます。 このプロパティ名は、フィルタリングや、選択条件の指定に使用できます。 1 つのエンティティは、一連のプロパティとその値で構成されます。 Table Storage はスキーマがないため、同じテーブル内の 2 つのエンティティが異なるコレクションのプロパティを持つことができ、それらのプロパティに異なる型を使用できます。
 
-Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。 今日のインターネットベースのアプリケーションでは、Table Storage のような NoSQL データベースが、従来のリレーショナル データベースの代わりに広く使用されています。
+テーブル ストレージを使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。 今日のインターネットベースのアプリケーションでは、Table Storage のような NoSQL データベースが、従来のリレーショナル データベースの代わりに広く使用されています。
 
 ストレージ アカウントの容量の上限を超えない限り、ストレージ アカウントには任意の数のテーブルを含めることができ、テーブルには任意の数のエンティティを保存できます。
 
@@ -84,7 +83,7 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 
 ストレージ アカウントの容量の上限を超えない限り、ストレージ アカウントには任意の数のキューを含めることができ、キューには任意の数のメッセージを保存できます。 1 つのメッセージは、最大 64 KB のサイズにすることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
 
 * Azure Storage の詳細については、「[Introduction to Microsoft Azure Storage](../../storage/common/storage-introduction.md)」(Microsoft Azure Storage の概要) を参照してください。

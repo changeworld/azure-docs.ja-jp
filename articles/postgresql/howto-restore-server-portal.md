@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: f7ea0cafe6427e59a07c28a9d0c6e48e0d96d8cd
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 7607a3e60eec39de61c785b8ff75a9f11fa02d0c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-back-up-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用して Azure Database for PostgreSQL のサーバーをバックアップおよび復元する方法
 
@@ -25,7 +25,7 @@ Azure Database for PostgreSQL サーバーは、復元機能が有効になる�
 サーバーの作成時に、**[価格レベル]** ウィンドウで、ローカル冗長バックアップまたは地理冗長バックアップのどちらでサーバーを構成するかを選択します。
 
 > [!NOTE]
-> サーバーの作成後、冗長の種類 (地理冗長とローカル冗長) を切り替えることはできません。
+> サーバーの作成後は、冗長の種類 (地理冗長とローカル冗長) を切り替えることはできません。
 >
 
 Azure Portal でサーバーを作成するときに、**[価格レベル]** ウィンドウで、使用しているサーバーのバックアップとして **[ローカル冗長]** または **[地理冗長]** のいずれかを選択します。 また、このウィンドウの **[バックアップの保有期間]** で、サーバーのバックアップを保存する期間 (日数) を選択します。
@@ -71,22 +71,6 @@ Azure Database for PostgreSQL では、サーバーの過去の特定時点ま�
 
 >[!Note]
 >ポイントインタイム リストアによって作成された新しいサーバーには、選択した特定の時点の既存のサーバーに対して有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
-
-## <a name="geo-restore"></a>geo リストア
-地理冗長バックアップを使用するようにサーバーを構成した場合は、新しいサーバーをその既存のサーバーのバックアップから作成できます。 この新しいサーバーは、Azure Database for PostgreSQL を使用できる任意のリージョンに作成できます。  
-
-1. ポータルの左上隅にある **[新規]** ボタン (+) を選択します。 **[データベース]** > **[Azure Database for PostgreSQL]** の順に選択します。
-
-   ![[Azure Database for PostgreSQL] オプション](./media/howto-restore-server-portal/1-create-database.png)
-
-2. フォームの **[ソースの選択]** ドロップダウンで **[バックアップ]** を選択します。 この操作により、geo 冗長バックアップが有効になっているサーバーの一覧が読み込まれます。 これらのバックアップの中から、新しいサーバーのソースとして使用するものを選択します。
-   ![ソースの選択: バックアップと geo 冗長バックアップの一覧](./media/howto-restore-server-portal/2-georestore.png)
-
-3. 必要に応じて、フォームの残りの部分を入力します。 任意の**場所**を選択できます。 場所を選択したら、**[価格レベル]** を選択できます。 既定では、復元元の既存のサーバーのパラメーターが表示されます。 これらの設定を継承するには、変更を加えずに **[OK]** をクリックします。 または、**コンピューティング世代** (選択したリージョンで使用できる場合)、**仮想コア**の数、**バックアップのリテンション期間**、および**バックアップ冗長性オプション**を変更することもできます。 復元中に、**価格レベル** (Basic、汎用、またはメモリ最適化) と**ストレージ**のサイズはいずれも変更できません。
-
->[!Note]
->geo リストアによって作成された新しいサーバーには、復元が開始された時点の既存のサーバーで有効であったサーバー管理者のログイン名とパスワードが設定されています。 このパスワードは、新しいサーバーの **[概要]** ページで変更できます。
-
 
 ## <a name="next-steps"></a>次の手順
 - サービスの[バックアップ](concepts-backup.md)の詳細を確認します。

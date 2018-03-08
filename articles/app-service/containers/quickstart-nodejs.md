@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 33889e391d3060f08294f81b35f180c1318d9f4c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: a0648832c43e2aa82b64194a103cf03f4dbd6ca8
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js Web アプリの作成
 
@@ -183,7 +183,7 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 ## <a name="video"></a>ビデオ
 
-[!VIDEO https://www.youtube.com/embed/S9eqK7xPKqU]
+>[!VIDEO https://www.youtube.com/embed/S9eqK7xPKqU]
 
 ## <a name="next-steps"></a>次の手順
 

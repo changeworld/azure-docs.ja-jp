@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako;
-ms.openlocfilehash: 2e936379968f74eb8bea420916acea2b8d96bb24
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 73d2f7135e85b829b1ecbd9eb0264024df36244a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
 ## <a name="overview"></a>概要
@@ -57,6 +57,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="output-example"></a>出力例:
 
+```json
     {
       "version": 1,
       "timescale": 24000,
@@ -103,6 +104,7 @@ ms.lasthandoff: 12/11/2017
             ],
 
     … truncated
+```
 
 ### <a name="redact-mode"></a>編集モード
 ワークフローの 2 番目のパスでは、単一の資産に結合する必要のある大量の入力を受け取ります。
@@ -138,7 +140,9 @@ foo_IDList.txt の例
 
 ### <a name="example-json"></a>サンプル JSON:
 
+```json
     {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
+```
 
 #### <a name="low"></a>低
 
@@ -172,8 +176,16 @@ Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フ
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
 2. 次の JSON プリセットを含む構成ファイルに基づく顔編集タスクのジョブを作成します。 
-   
-        {'version':'1.0', 'options': {'mode':'combined'}}
+
+    ```json
+            {
+                'version':'1.0',
+                'options': {
+                    'mode':'combined'
+                }
+            }
+    ```
+
 3. 出力 JSON ファイルをダウンロードします。 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
@@ -182,7 +194,7 @@ Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フ
 
 #### <a name="example"></a>例
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;
@@ -350,7 +362,7 @@ namespace FaceRedaction
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

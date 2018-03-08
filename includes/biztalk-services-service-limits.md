@@ -1,4 +1,20 @@
-| リソース | 無料 (プレビュー) | 開発者 | 基本 | 標準 | プレミアム |
+---
+title: "インクルード ファイル"
+description: "インクルード ファイル"
+services: biztalk-services
+author: MandiOhlinger
+ms.service: biztalk-services
+ms.topic: include
+ms.date: 11/09/2017
+ms.author: mandia
+ms.custom: include file
+ms.openlocfilehash: 7fa6930acf4d19b3939bb8a5b0306d216346c2b3
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/05/2018
+---
+| リソース | 無料 (プレビュー) | 開発者 | 基本 | Standard | プレミアム |
 | --- | --- | --- | --- | --- | --- |
 | スケールアウト |該当なし |該当なし |あり (1 基本ユニットずつ増加) |あり (1 標準ユニットずつ増加) |あり (1 プレミアム ユニットずつ増加) |
 | スケールの制限 |該当なし |該当なし |最大 8 ユニット |最大 8 ユニット |最大 8 ユニット |

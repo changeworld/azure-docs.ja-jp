@@ -3,7 +3,7 @@ title: "Office 365 の外部共有と Azure Active Directory B2B コラボレー
 description: "Azure Active Directory B2B コラボレーションの要求マッピング リファレンス"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/24/2017
-ms.author: sasubram
-ms.openlocfilehash: aaf7d858b45ff6b5d10846b064f40bef08bfe5e5
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 8486c7518e2cabb1d17a8f38442b7b5a77fddb01
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Office 365 の外部共有と Azure Active Directory B2B コラボレーション
 
@@ -37,7 +38,7 @@ OneDrive/SharePoint Online には、独自の招待マネージャーがあり�
 
 ![OneDrive/SharePoint Online の外部共有の設定](media/active-directory-b2b-o365-external-user/odsp-sharing-setting.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure AD B2B コラボレーションに関する他の記事を参照してください。
 

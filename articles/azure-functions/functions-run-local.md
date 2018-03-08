@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: f19fa1ac4dd970ca3df2c0fdbf8e0778e171c43d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -35,14 +35,6 @@ Visual Studio C# の開発者は、Azure Functions を [Visual Studio 2017 に�
 
 >[!NOTE]  
 > いずれかのバージョンをインストールする前に、npm を含む [NodeJS をインストール](https://docs.npmjs.com/getting-started/installing-node)する必要があります。 2x バージョンのツールの場合、Node.js 8.5 以降のバージョンのみがサポートされています。 
-
-### <a name="version-1x-runtime"></a>バージョン 1.x ランタイム
-
-元のバージョンのツールは、Functions 1.x ランタイムを使用します。 このバージョンは .NET Framework を使用し、Windows コンピューターでのみサポートされます。 次のコマンドを使用して、バージョン 1.x ツールをインストールします。
-
-```bash
-npm install -g azure-functions-core-tools
-```
 
 ### <a name="version-2x-runtime"></a>バージョン 2.x ランタイム
 
@@ -69,6 +61,14 @@ macOS および Linux 上にインストールする場合、次のように `un
 
 ```bash
 sudo npm install -g azure-functions-core-tools@core --unsafe-perm true
+```
+
+### <a name="version-1x-runtime"></a>バージョン 1.x ランタイム
+
+元のバージョンのツールは、Functions 1.x ランタイムを使用します。 このバージョンは .NET Framework を使用し、Windows コンピューターでのみサポートされます。 次のコマンドを使用して、バージョン 1.x ツールをインストールします。
+
+```bash
+npm install -g azure-functions-core-tools
 ```
 
 ## <a name="run-azure-functions-core-tools"></a>Azure Functions Core Tools の実行
