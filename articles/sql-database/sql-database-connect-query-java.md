@@ -15,11 +15,11 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/11/2017
 ms.author: andrela
-ms.openlocfilehash: ddf0f0be0acd86f3a2c3e241cbf8ebc81301bc21
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7de8a1e19de1a72dfc02d726447270fc1ee047d1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Java を使用して Azure SQL Database に照会する
 
@@ -57,7 +57,7 @@ ms.lasthandoff: 02/09/2018
    <dependency>
        <groupId>com.microsoft.sqlserver</groupId>
        <artifactId>mssql-jdbc</artifactId>
-       <version>6.2.2.jre8</version>
+       <version>6.4.0.jre8</version>
    </dependency>
    ```
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: milanga;juliako;
-ms.openlocfilehash: 92c730addb69bc4d12708ccd789edce0c2336c80
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 4f40c9364d02929fe5bb193b4e8eb0a0157d34d2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-video-thumbnails-to-create-a-video-summarization"></a>Azure Media Video Thumbnails を使用してビデオ要約を作成する
 ## <a name="overview"></a>概要
@@ -44,11 +44,15 @@ ms.lasthandoff: 12/11/2017
 ## <a name="task-configuration-preset"></a>タスクの構成 (プリセット)
 **Azure Media Video Thumbnails**でビデオのサムネイル タスクを作成するときは、構成プリセットを指定する必要があります。 上記のサムネイル サンプルは、次の基本的な JSON 構成で作成されました。
 
-    {"version":"1.0"}
+```json
+    {
+        "version":"1.0"
+    }
+```
 
 現在、次のパラメーターを変更できます。
 
-| Param | Description |
+| Param | [説明] |
 | --- | --- |
 | outputAudio |結果ビデオにオーディオが含まれているかどうかを指定します。 <br/>使用可能な値: True または False。 既定値は True です。 |
 | fadeInFadeOut |フェードの遷移が独立したモーションのサムネイル間で使用されているかどうかを指定します。  <br/>使用可能な値: True または False。  既定値は True です。 |
@@ -63,6 +67,7 @@ ms.lasthandoff: 12/11/2017
 
 次の JSON では、使用可能なパラメーターを設定します。
 
+```json
     {
         "version": "1.0",
         "options": {
@@ -71,6 +76,7 @@ ms.lasthandoff: 12/11/2017
             "fadeInFadeOut": "true"
         }
     }
+```
 
 ## <a name="net-sample-code"></a>.NET サンプル コード
 
@@ -78,15 +84,18 @@ ms.lasthandoff: 12/11/2017
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
 2. 次の JSON プリセットを含む構成ファイルに基づくビデオ サムネイル タスクのジョブを作成します。 
-   
-        {                
-            "version": "1.0",
-            "options": {
-                "outputAudio": "true",
-                "maxMotionThumbnailDurationInSecs": "30",
-                "fadeInFadeOut": "false"
+    
+    ```json
+            {                
+                "version": "1.0",
+                "options": {
+                    "outputAudio": "true",
+                    "maxMotionThumbnailDurationInSecs": "30",
+                    "fadeInFadeOut": "false"
+                }
             }
-        }
+    ```
+
 3. 出力ファイルをダウンロードします。 
 
 #### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
@@ -95,6 +104,7 @@ ms.lasthandoff: 12/11/2017
 
 #### <a name="example"></a>例
 
+```csharp
     using System;
     using System.Configuration;
     using System.IO;
@@ -262,6 +272,7 @@ ms.lasthandoff: 12/11/2017
 
         }
     }
+```
 
 ### <a name="video-thumbnail-output"></a>ビデオのサムネイル出力
 [ビデオのサムネイル出力](http://ampdemo.azureedge.net/azuremediaplayer.html?url=http%3A%2F%2Fnimbuscdn-nimbuspm.streaming.mediaservices.windows.net%2Fd06f24dc-bc81-488e-a8d0-348b7dc41b56%2FHololens%2520Demo_VideoThumbnails_MotionThumbnail.mp4)

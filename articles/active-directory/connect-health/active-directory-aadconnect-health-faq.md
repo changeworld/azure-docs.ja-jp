@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: bd93b3473143f425b47f141efb3af3007614794f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -130,12 +130,7 @@ Health エージェントの登録は、次の理由により失敗する可能�
 
 **Q: "Health サービス データが最新ではありません。" というアラートが通知されます。この問題をトラブルシューティングする方法を教えてください。**
 
-Azure AD Connect Health では、過去 2 時間でサーバーから一部のデータ ポイントが送られなかった場合に、このアラートが生成されます。 このアラートには複数の理由が考えられます。
-
-* ファイアウォールによってトラフィックがブロックされているため、エージェントが必要なエンドポイントと通信できません。 これは特に、Web アプリケーション プロキシ サーバーで起こりがちです。 必要なエンドポイントとポートへの発信通信が許可されていることを確認してください。 詳しくは、「[必要条件](active-directory-aadconnect-health-agent-install.md#requirements)」セクションをご覧ください。
-* 発信通信がネットワーク層による SSL 検査の対象になっています。 これが原因で、エージェントによって使われる証明書が検査サーバー/エンティティによって置き換えられ、Azure AD Connect Health サービスにデータをアップロードするプロセスが失敗します。
-* エージェントに組み込まれている接続コマンドを使うことができます。 詳細については、[こちら](active-directory-aadconnect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service)を参照してください。
-* また、エージェントは、認証されていない HTTP プロキシを経由した発信接続もサポートしています。 詳細については、[こちら](active-directory-aadconnect-health-agent-install.md##configure-azure-ad-connect-health-agents-to-use-http-proxy)を参照してください。
+Azure AD Connect Health では、過去 2 時間でサーバーから一部のデータ ポイントが送られなかった場合に、このアラートが生成されます。 詳細については、[こちら](active-directory-aadconnect-health-data-freshness.md)を参照してください。
 
 ## <a name="operations-questions"></a>操作に関する質問
 **Q: Web アプリケーション プロキシ サーバーで監査を有効にする必要がありますか。**

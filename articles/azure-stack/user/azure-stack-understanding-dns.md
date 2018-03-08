@@ -3,8 +3,8 @@ title: "Azure Stack の DNS について | Microsoft Docs"
 description: "Azure Stack の DNS の機能と Azure について"
 services: azure-stack
 documentationcenter: 
-author: ScottNapolitan
-manager: darmour
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: 60f5ac85-be19-49ac-a7c1-f290d682b5de
 ms.service: azure-stack
@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: scottnap
-ms.openlocfilehash: 381947a5c936b2bbcae1cf61cdd36eb1653be30b
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 86ed2805e93bd147841e22a773b52d1451f8c353
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Azure Stack 用の iDNS の概要
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 iDNS は、外部 DNS 名 (http://www.bing.com など) を解決できる Azure Stack の機能です。
 内部仮想ネットワーク名を登録することもできます。 これを行うことで、同じ仮想ネットワーク内の VM を IP アドレスではなく名前で解決することができ、カスタム DNS サーバー エントリを用意する必要はありません。

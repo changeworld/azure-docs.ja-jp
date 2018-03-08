@@ -3,7 +3,7 @@ title: "Azure Active Directory B2B コラボレーションの FAQ | Microsoft D
 description: "Azure Active Directory B2B コラボレーションに関してよく寄せられる質問への回答を示します。"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,13 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 01/08/2018
-ms.author: sasubram
+ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 4c43082281cbc95ae75b65a2aefadbbab6d7cd30
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 21511b37eba2cd2e87d8720f3e9cfe453b50d88c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 

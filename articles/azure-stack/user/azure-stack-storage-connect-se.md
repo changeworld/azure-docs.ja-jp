@@ -3,26 +3,25 @@ title: "Azure Stack サブスクリプションに Microsoft Azure Storage Explo
 description: "Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する方法"
 services: azure-stack
 documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
+ms.date: 02/28/2018
 ms.author: xiaofmao
-ms.openlocfilehash: c7e6d70148d39fd74f6409a0a239833f8e9f7614
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: bad4b6b0d829fb68dc25e84406a453071a36476a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux で Azure Stack Storage のデータを簡単に操作できるスタンドアロン アプリです。 Azure Stack Storage からデータを移動するために利用できるツールは、いくつかあります。 詳細については、「[Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md)」 (Azure Stack Storage のデータ転送ツール) を参照してください。
 
@@ -98,7 +97,7 @@ Azure Stack Development Kit 用に、Azure Stack の証明機関のルート証�
 
     ![Azure Stack サブスクリプション アカウントを含むストレージ アカウントの一覧][31]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Microsoft Azure Storage Explorer (プレビュー) の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure Stack Storage: 違いと考慮事項](azure-stack-acs-differences.md)
 

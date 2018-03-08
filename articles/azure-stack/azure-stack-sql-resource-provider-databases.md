@@ -3,25 +3,25 @@ title: "Azure Stack 上で SQL アダプター RP によって指定されたデ
 description: "SQL アダプター リソースプロバイダーを使用してプロビジョニングした SQL データベースを作成し管理する方法"
 services: azure-stack
 documentationCenter: 
-author: JeffGoldner
-manager: bradleyb
+author: mattbriggs
+manager: femila
 editor: 
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
-ms.author: JeffGo
-ms.openlocfilehash: 0cc08c37e879b00f8cd9a4046a4c81c55dab167c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 39f6cc30191f07a7c891446a9132222a6d264dc4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-sql-databases"></a>SQL データベースの作成
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 セルフサービス データベースは、ユーザー ポータル エクスペリエンスを通じて提供されます。 ユーザーはデータベース サービスを含むプランのサブスクリプションが必要です。
 

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 19760b743e7cdcba3e30503090b61243911441ee
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 532306427ba13aca70c50d47a33bb7edeac71720
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="media-services-development-with-net"></a>.NET を使用した Media Services 開発
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -62,68 +62,75 @@ ms.lasthandoff: 12/11/2017
     3. .NET Framework アセンブリで、System.Configuration アセンブリを探して選択し、**[OK]** をクリックします。
 6. App.config ファイルを開き、**appSettings** セクションをファイルに追加します。 Media Services API に接続するために必要な値を設定します。 詳細については、「[Azure AD Authentication を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
-**サービス プリンシパル**認証方法を使って接続するために必要な値を設定します。  
+    **サービス プリンシパル**認証方法を使って接続するために必要な値を設定します。
 
-        <configuration>
-        ...
-            <appSettings>
-                <add key="AMSAADTenantDomain" value="tenant"/>
-                <add key="AMSRESTAPIEndpoint" value="endpoint"/>
-                <add key="AMSClientId" value="id"/>
-                <add key="AMSClientSecret" value="secret"/>
-            </appSettings>
-        </configuration>
+        ```csharp
+                <configuration>
+                ...
+                    <appSettings>
+                        <add key="AMSAADTenantDomain" value="tenant"/>
+                        <add key="AMSRESTAPIEndpoint" value="endpoint"/>
+                        <add key="AMSClientId" value="id"/>
+                        <add key="AMSClientSecret" value="secret"/>
+                    </appSettings>
+                </configuration>
+        ```
+
 7. **System.Configuration** の参照をプロジェクトに追加します。
-7. Program.cs ファイルの先頭にある既存の **using** ステートメントを次のコードで上書きします。
-           
-        using System;
-        using System.Configuration;
-        using System.IO;
-        using Microsoft.WindowsAzure.MediaServices.Client;
-        using System.Threading;
-        using System.Collections.Generic;
-        using System.Linq;
+8. Program.cs ファイルの先頭にある既存の **using** ステートメントを次のコードで上書きします。
 
-これで、Media Services アプリケーションの開発準備が整いました。    
+    ```csharp      
+            using System;
+            using System.Configuration;
+            using System.IO;
+            using Microsoft.WindowsAzure.MediaServices.Client;
+            using System.Threading;
+            using System.Collections.Generic;
+            using System.Linq;
+    ```
+
+    これで、Media Services アプリケーションの開発準備が整いました。    
 
 ## <a name="example"></a>例
 
 この小さい例では、AMS API に接続し、すべての使用可能なメディア プロセッサを一覧表示します。
-    
-    class Program
-    {
-        // Read values from the App.config file.
 
-        private static readonly string _AADTenantDomain =
-            ConfigurationManager.AppSettings["AMSAADTenantDomain"];
-        private static readonly string _RESTAPIEndpoint =
-            ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
-        private static readonly string _AMSClientId =
-            ConfigurationManager.AppSettings["AMSClientId"];
-        private static readonly string _AMSClientSecret =
-            ConfigurationManager.AppSettings["AMSClientSecret"];
-    
-        private static CloudMediaContext _context = null;
-        static void Main(string[] args)
+```csharp
+        class Program
         {
-            AzureAdTokenCredentials tokenCredentials = 
-                new AzureAdTokenCredentials(_AADTenantDomain,
-                    new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
-                    AzureEnvironments.AzureCloudEnvironment);
+            // Read values from the App.config file.
 
-            var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
-
-            _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
-    
-            // List all available Media Processors
-            foreach (var mp in _context.MediaProcessors)
+            private static readonly string _AADTenantDomain =
+                ConfigurationManager.AppSettings["AMSAADTenantDomain"];
+            private static readonly string _RESTAPIEndpoint =
+                ConfigurationManager.AppSettings["AMSRESTAPIEndpoint"];
+            private static readonly string _AMSClientId =
+                ConfigurationManager.AppSettings["AMSClientId"];
+            private static readonly string _AMSClientSecret =
+                ConfigurationManager.AppSettings["AMSClientSecret"];
+        
+            private static CloudMediaContext _context = null;
+            static void Main(string[] args)
             {
-                Console.WriteLine(mp.Name);
-            }
-    
-        }
+                AzureAdTokenCredentials tokenCredentials = 
+                    new AzureAdTokenCredentials(_AADTenantDomain,
+                        new AzureAdClientSymmetricKey(_AMSClientId, _AMSClientSecret),
+                        AzureEnvironments.AzureCloudEnvironment);
 
-##<a name="next-steps"></a>次のステップ
+                var tokenProvider = new AzureAdTokenProvider(tokenCredentials);
+
+                _context = new CloudMediaContext(new Uri(_RESTAPIEndpoint), tokenProvider);
+        
+                // List all available Media Processors
+                foreach (var mp in _context.MediaProcessors)
+                {
+                    Console.WriteLine(mp.Name);
+                }
+        
+            }
+ ```
+
+##<a name="next-steps"></a>次の手順
 
 このあとは、[AMS API に接続](media-services-use-aad-auth-to-access-ams-api.md)したり、[開発](media-services-dotnet-get-started.md)を開始したりできます。
 

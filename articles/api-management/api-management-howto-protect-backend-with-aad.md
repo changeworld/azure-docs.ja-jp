@@ -1,9 +1,24 @@
--- title: Azure Active Directory と API Management で Web API バックエンドを保護する | Azure Active Directory と API Management で Web API バックエンドを保護する方法について説明します。
-services: api-management documentationcenter: '' author: juliako manager: cfowler editor: ''
-
-ms.service: api-management ms.workload: mobile ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 10/30/2017 ms.author: apimpm
 ---
-
+title: "Azure Active Directory と API Management で Web API バックエンドを保護する | Microsoft Docs"
+description: "Azure Active Directory と API Management で Web API バックエンドを保護する方法について説明します。"
+services: api-management
+documentationcenter: 
+author: juliako
+manager: cfowler
+editor: 
+ms.service: api-management
+ms.workload: mobile
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 10/30/2017
+ms.author: apimpm
+ms.openlocfilehash: 2a5be24aba8a675290045b282cc64dda4b7c594e
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/02/2018
+---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
 
 このトピックでは、Web API バックエンドをビルドし、Azure Active Directory と API Management で OAuth 2.0 プロトコルを使用して保護する方法を示します。  

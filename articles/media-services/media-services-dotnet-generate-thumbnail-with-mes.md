@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: f7a8b60e26b42668e505b3d466bfc447d0cfb48b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 02bbeafd9cd8ca93f22cf9e1a2c107e01c082ba3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法
 
@@ -34,6 +34,7 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
 
 ### <a name="json-preset"></a>JSON プリセット
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -58,9 +59,11 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
         }
       ]
     }
+```
     
 ### <a name="xml-preset"></a>XML プリセット
 
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -79,6 +82,7 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-series-of-jpeg-images-preset"></a>"一連の JPEG 画像" プリセットの例
 
@@ -86,6 +90,7 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
 
 ### <a name="json-preset"></a>JSON プリセット
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -113,9 +118,11 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>XML プリセット
     
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -135,6 +142,7 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
         </Output>
       </Outputs>
     </Preset>
+```
 
 ## <a name="example-of-a-one-image-at-a-specific-timestamp-preset"></a>"特定のタイムスタンプで 1 つの画像" プリセットの例
 
@@ -142,6 +150,7 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
 
 ### <a name="json-preset"></a>JSON プリセット
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -169,9 +178,10 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
         }
       ]
     }
-    
+```
+
 ### <a name="xml-preset"></a>XML プリセット
-    
+```xml
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -191,7 +201,8 @@ Media Encoder Standard を使用してビデオ入力から 1 つまたは複数
         </Output>
       </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-a-thumbnails-at-different-resolutions-preset"></a>"さまざまな解像度のサムネイル" プリセットの例
 
 次のプリセットは、1 つのタスクでさまざまな解像度のサムネイルを生成するために使用できます。 例では、入力タイムラインの位置、5%、15%、…、95%でエンコーダーにより 2 個の画像 (入力ビデオ解像度が 100% の画像と 50% の画像) が生成されます。
@@ -200,6 +211,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 
 ### <a name="json-preset"></a>JSON プリセット
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -234,9 +246,10 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
         }
       ]
     }
+```
 
 ### <a name="xml-preset"></a>XML プリセット
-
+```xml
     <?xml version="1.0" encoding="utf-8"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
     <Encoding>
@@ -261,7 +274,8 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
       </Output>
     </Outputs>
     </Preset>
-    
+```
+
 ## <a name="example-of-generating-a-thumbnail-while-encoding"></a>エンコード中のサムネイルの生成の例
 
 上記の例ではすべて、画像のみを生成するエンコード タスクを送信する方法を説明していますが、ビデオ/オーディオ エンコードをサムネイルの生成と組み合わせることもできます。 次の JSON および XML プリセットは、**Media Encoder Standard** にエンコード中にサムネイルを生成するよう指示します。
@@ -269,6 +283,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 ### <a id="json"></a>JSON プリセット
 スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)の記事をご覧ください。
 
+```json
     {
       "Version": 1.0,
       "Codecs": [
@@ -328,10 +343,12 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
         }
       ]
     }
+```
 
 ### <a id="xml"></a>XML プリセット
 スキーマの詳細については、[こちら](https://msdn.microsoft.com/library/mt269962.aspx)の記事をご覧ください。
-    
+
+```csharp
     <?xml version="1.0" encoding="utf-16"?>
     <Preset xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" Version="1.0" xmlns="http://www.windowsazure.com/media/encoding/Preset/2014/03">
       <Encoding>
@@ -381,6 +398,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
         </Output>
       </Outputs>
     </Preset>   
+```
 
 ## <a id="code_sample"></a>.NET を使用したビデオのエンコードとサムネイルの生成
 
@@ -400,7 +418,7 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 
 開発環境のセットアップ方法については、「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」を参照してください。
 
-```
+```csharp
 using System;
 using System.Configuration;
 using System.IO;
@@ -542,7 +560,7 @@ namespace EncodeAndGenerateThumbnails
   * 既定: Start:{Best}
 * 各画像形式の出力形式は明示的に指定する必要があります (Jpg/Png/BmpFormat)。 指定されている場合、MES は JpgVideo を JpgFormat などに対応付けます。 OutputFormat には新しい画像コーデック固有のマクロである {Index} が導入されました。このマクロは、画像出力形式を指定する場合に (1 度だけ) 指定する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 エンコード ジョブが保留になっているときに、[ジョブの進行状況](media-services-check-job-progress.md)を確認できます。
 

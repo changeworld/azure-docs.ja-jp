@@ -14,16 +14,16 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako;cenkdin
-ms.openlocfilehash: 8ffd310573d0800593bd9d93d74da4bcece61fa4
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: dd7e332eb1c935ee70a617124bd4d86e160366c7
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="creating-filters-with-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK を使用したフィルターの作成
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-dynamic-manifest.md)
-> * [REST ()](media-services-rest-dynamic-manifest.md)
+> * [REST](media-services-rest-dynamic-manifest.md)
 > 
 > 
 
@@ -46,6 +46,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 ## <a name="createupdatereaddelete-global-filters"></a>グローバル フィルターの作成、更新、読み取り、削除
 次のコードは .NET を使用し、資産フィルターを作成、更新、読み取り、削除する方法を示しています。
 
+```csharp
     string filterName = "GlobalFilter_" + Guid.NewGuid().ToString();
 
     List<FilterTrackSelectStatement> filterTrackSelectStatements = new List<FilterTrackSelectStatement>();
@@ -70,11 +71,12 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
 
     // Delete
     filter.Delete();
-
+```
 
 ## <a name="createupdatereaddelete-asset-filters"></a>資産フィルターの作成、更新、読み取り、削除
 次のコードは .NET を使用し、資産フィルターを作成、更新、読み取り、削除する方法を示しています。
 
+```csharp
     string assetName = "AssetFilter_" + Guid.NewGuid().ToString();
     var asset = _context.Assets.Create(assetName, AssetCreationOptions.None);
 
@@ -100,7 +102,7 @@ Media Services のリリース 2.17 以降では、資産にフィルターを�
     // Delete
     filterUpdated.Delete();
 
-
+```
 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>フィルターを使用するストリーミング URL の構築

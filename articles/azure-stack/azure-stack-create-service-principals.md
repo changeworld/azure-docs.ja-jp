@@ -3,25 +3,25 @@ title: "Azure Stack のサービス プリンシパルを作成する | Microsof
 description: "Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しいサービス プリンシパルを作成する方法について説明します。"
 services: azure-resource-manager
 documentationcenter: na
-author: heathl17
-manager: byronr
+author: mattbriggs
+manager: femila
 ms.assetid: 7068617b-ac5e-47b3-a1de-a18c918297b6
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/17/2017
-ms.author: helaw
-ms.openlocfilehash: 96d5cdfc28759fd516eab5fd97c6cf444af08cf6
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.date: 02/25/2018
+ms.author: mabrigg
+ms.openlocfilehash: 64c424ee7045ae20b3fba6433166039580387d76
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack 内の Azure Resource Manager を通じてリソースをデプロイまたは構成するためのアクセスがアプリケーションに必要な場合は、アプリケーションの資格情報であるサービス プリンシパルを作成します。  サービス プリンシパルには必要な権限のみを委任できます。  
 
@@ -83,15 +83,15 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 自動化パラメーターの入力として、次の情報が必要です。
 
 
-|パラメーター|Description|例|
+|パラメーター|[説明]|例|
 |---------|---------|---------|
-|名前|SPN アカウントの名前|MyAPP|
+|Name|SPN アカウントの名前|MyAPP|
 |ClientCertificates|証明書オブジェクトの配列|X509 証明書|
 |ClientRedirectUris<br>(省略可能)|アプリケーションのリダイレクト URI|         |
 
 **例**
 
-1. 管理者特権の Windows PowerShell セッションを開き、次のコマンドを実行します。
+1. Windows PowerShell セッションを管理者特権で開き、次のコマンドを実行します。
 
    > [!NOTE]
    > この例では、自己署名証明書を作成します。 運用環境でこれらのコマンドを実行する場合、Get-Certificate を利用して、使用する証明書の証明書オブジェクトを取得します。
@@ -111,7 +111,7 @@ ERCS 仮想マシン上で、特権エンドポイントからスクリプトが
 
 2. 自動化が完了すると、SPN を使用するために必要な詳細が表示されます。 
 
-   For example:
+   例: 
 
    ```
    ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
@@ -160,7 +160,7 @@ Add-AzureRmAccount -EnvironmentName "<AzureStackEnvironmentName>" `
 
 サービス プリンシパルを作成してロールを割り当てたら、アプリケーション内でこれを使用して、Azure Stack リソースにアクセスできます。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [AD FS のユーザーの追加](azure-stack-add-users-adfs.md)
 [ユーザーのアクセス許可の管理](azure-stack-manage-permissions.md)

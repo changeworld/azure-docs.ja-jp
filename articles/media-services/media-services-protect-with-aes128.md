@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: juliako
-ms.openlocfilehash: 013c14c00096c9958a732d1f0eaacc9248f57da9
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: 2d1a635c1e2bde140df19f8c26f6ae5a6978eff5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-aes-128-dynamic-encryption-and-the-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
 > [!div class="op_single_selector"]
@@ -126,6 +126,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 ## <a name="get-a-test-token"></a>テスト トークンを取得する
 キー認証ポリシーに使用されたトークンによる制限に基づいて、テスト トークンを取得します。
 
+```csharp
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate = 
@@ -136,6 +137,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
     //so you have to add it in front of the token string. 
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
+```
 
 [Azure Media Services Player](http://amsplayer.azurewebsites.net/azuremediaplayer.html) を使用して、ストリームをテストできます。
 
@@ -145,6 +147,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
 ### <a name="manifest-files"></a>マニフェスト ファイル
 クライアントはマニフェスト ファイルから URL 値 (コンテンツ キー ID [kid] も含まれる) を抽出する必要があります。 その後、クライアントは、キー配信サービスからの暗号化キーの取得を試みます。 また、クライアントは、IV 値を抽出し、それを使ってストリームの暗号化を解除する必要もあります。 次のスニペットでは、Smooth Streaming マニフェストの <Protection> 要素を示します。
 
+```xml
     <Protection>
       <ProtectionHeader SystemID="B47B251A-2409-4B42-958E-08DBAE7B4EE9">
         <ContentProtection xmlns:sea="urn:mpeg:dash:schema:sea:2012" schemeIdUri="urn:mpeg:dash:sea:2012">
@@ -156,6 +159,7 @@ Smooth Streaming、DASH、または HLS のストリーミング URL をユー�
         </ContentProtection>
       </ProtectionHeader>
     </Protection>
+```
 
 HLS の場合、ルート マニフェストはセグメント ファイルに分割されます。 
 
@@ -191,6 +195,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 
 次のコードは、キー配信 URI (マニフェストから抽出) とトークンを使用して、Media Services のキー配信サービスに要求を送信する方法を示しています (STS から SWT を取得する方法は、このトピックでは扱いません)。
 
+```csharp
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
     {
         HttpWebRequest request = (HttpWebRequest)WebRequest.Create(keyDeliveryUri);
@@ -230,6 +235,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
         Array.Copy(buffer, key, length);
         return key;
     }
+```
 
 ## <a name="protect-your-content-with-aes-128-by-using-net"></a>.NET を使用して AES 128 でコンテンツを保護する
 
@@ -239,8 +245,10 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
 
 2. app.config ファイルで定義されている appSettings に次の要素を追加します。
 
-        <add key="Issuer" value="http://testacs.com"/>
-        <add key="Audience" value="urn:test"/>
+    ```xml
+            <add key="Issuer" value="http://testacs.com"/>
+            <add key="Audience" value="urn:test"/>
+    ```
 
 ### <a id="example"></a>例
 
@@ -251,7 +259,9 @@ Program.cs ファイルのコードを、このセクションで示されてい
 
 必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
 
+```csharp
     [!code-csharp[Main](../../samples-mediaservices-encryptionaes/DynamicEncryptionWithAES/DynamicEncryptionWithAES/Program.cs)]
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

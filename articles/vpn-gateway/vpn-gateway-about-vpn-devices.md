@@ -56,7 +56,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | Check Point |セキュリティ ゲートウェイ |R77.30 |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |[構成ガイド](https://supportcenter.checkpoint.com/supportcenter/portal?eventSubmit_doGoviewsolutiondetails=&solutionid=sk101275) |
 | Cisco              |ASA       |8.3<br>8.4 以降 (IKEv2*) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASA) |[構成ガイド*](vpn-gateway-3rdparty-device-config-cisco-asa.md) |
 | Cisco |ASR |PolicyBased: IOS 15.1<br>RouteBased: IOS 15.2 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ASR) |
-| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[構成のサンプル**](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
+| Cisco |ISR |PolicyBased: IOS 15.0<br>RouteBased*: IOS 15.1 |[構成のサンプル](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |[構成のサンプル\*\*](https://github.com/Azure/Azure-vpn-config-samples/tree/master/Cisco/Current/ISR) |
 | Cisco |Meraki |該当なし |互換性なし |互換性なし |
 | Citrix |NetScaler MPX、SDX、VPX |10.1 以上 |[構成ガイド](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |互換性なし |
 | F5 |BIG-IP シリーズ |12.0 |[構成ガイド](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[構成ガイド](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -78,7 +78,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 >
 > (*) Cisco ASA バージョン 8.4 以降では IKEv2 のサポートが追加されており、"UsePolicyBasedTrafficSelectors" オプションでカスタム IPsec/IKE ポリシーを使用して、Azure VPN ゲートウェイに接続できます。 こちらの[ハウツー記事](vpn-gateway-connect-multiple-policybased-rm-ps.md)を参照してください。
 >
-> (**) ISR 7200 シリーズのルーターでは、PolicyBased の VPN のみがサポートされています。
+> (\*\*) ISR 7200 シリーズのルーターでは、PolicyBased の VPN のみがサポートされています。
 
 ## <a name="additionaldevices"></a>未検証の VPN デバイス
 

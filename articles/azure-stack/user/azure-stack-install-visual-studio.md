@@ -3,26 +3,25 @@ title: "Visual Studio をインストールして Azure Stack に接続する | 
 description: "Visual Studio をインストールして Azure Stack に接続するために必要な手順を説明します。"
 services: azure-stack
 documentationcenter: 
-author: heathl17
-manager: byronr
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: 2022dbe5-47fd-457d-9af3-6c01688171d7
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: f85584b02f6b2f7436f711e794bb8fcad00ced4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: 5eae2553af1e41ace878a2f8f2c1a1656c63a7c4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio をインストールして Azure Stack に接続する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Visual Studio を使用して、Azure Resource Manager [テンプレート](azure-stack-arm-templates.md)を作成し、それを Azure Stack にデプロイします。 この記事の手順に従って、[Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) を使用するか、[VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 経由で接続している場合は Windows ベースの外部クライアントを使用して、Visual Studio をインストールできます。 これらの手順を実行すると、Visual Studio 2015 Community Edition が新規にインストールされます。 他の Visual Studio バージョンとの[共存](https://msdn.microsoft.com/library/ms246609.aspx)に関する記事も参照してください。
 
@@ -51,6 +50,6 @@ Visual Studio を使用して、Azure Resource Manager [テンプレート](azur
 
 ログインしたら、[テンプレートをデプロイ](azure-stack-deploy-template-visual-studio.md)するか、使用可能なリソースの種類やリソース グループを参照して独自のテンプレートを作成することができます。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
  - [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)

@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 2ab743cadf91be05e1d2b2edf3143d8c14ae2bdb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 91f117c3b1b166a069b93c238380140f19e49280
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="protect-your-hls-content-with-apple-fairplay-or-microsoft-playready"></a>Apple FairPlay または Microsoft PlayReady による HLS コンテンツの保護
 Azure Media Services では、次の形式を使用して HTTP ライブ ストリーミング (HLS) コンテンツを動的に暗号化することができます。  
@@ -146,8 +146,10 @@ FairPlay で暗号化されたストリームを再生するには、まず実�
 1. 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
 2. app.config ファイルで定義されている **appSettings** に次の要素を追加します。
 
-        <add key="Issuer" value="http://testacs.com"/>
-        <add key="Audience" value="urn:test"/>
+    ```xml
+            <add key="Issuer" value="http://testacs.com"/>
+            <add key="Audience" value="urn:test"/>
+    ```
 
 ## <a name="example"></a>例
 
@@ -160,7 +162,7 @@ Program.cs ファイルのコードを、このセクションで示されてい
 
 必ず変数を更新して、入力ファイルが置かれているフォルダーをポイントするようにしてください。
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;

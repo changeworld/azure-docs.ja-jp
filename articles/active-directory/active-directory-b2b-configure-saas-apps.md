@@ -3,7 +3,7 @@ title: "Azure Active Directory での B2B コラボレーション用の SaaS �
 description: "Azure Active Directory B2B コラボレーションのコードと PowerShell サンプル"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 05/23/2017
-ms.author: sasubram
-ms.openlocfilehash: dc0bb3950f30b2ea676de406538e3a463ad21429
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: e2206ca8ddee867b9ea48911f70793010989ad69
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-saas-apps-for-b2b-collaboration"></a>B2B コラボレーション用の SaaS アプリの構成
 
@@ -83,7 +84,7 @@ SAML プロトコルに基づくフェデレーションを使用して、ユー
 
   ![Box のシングル サインオンを構成する](media/active-directory-b2b-configure-saas-apps/configure-box-sso.png)
 
- a. **[サインオン URL]** ボックスで、サインオン URL が Azure Portal で Box 用に適切に設定されていることを確認します。 この URL は、Box.com テナントの URL です。 名前付け規則 (*https://.box.com*) に従う必要があります。  
+ a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスで、サインオン URL が Azure Portal で Box 用に適切に設定されていることを確認します。 この URL は、Box.com テナントの URL です。 名前付け規則 (*https://.box.com*) に従う必要があります。  
  **[識別子]** はこのアプリには該当しませんが、必須フィールドとして表示されます。
 
  b. **[ユーザー識別子]** ボックスに、「**user.mail**」と入力します (ゲスト アカウントの SSO 用)。
@@ -100,7 +101,7 @@ SAML プロトコルに基づくフェデレーションを使用して、ユー
 
 Dropbox での招待されるユーザーのように、Box での招待されるユーザーも、Box アプリからの招待に応じる必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure AD B2B コラボレーションに関する以下の記事を参照してください。
 

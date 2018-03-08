@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2017
 ms.author: juliako
-ms.openlocfilehash: 1f8e22dc5e277407860b7ed31409caed15be59cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 362773bbefa754fc90aa4dbd471889245b4b6cf5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>.NET での Azure Media Services テレメトリの構成
 
@@ -42,19 +42,23 @@ ms.lasthandoff: 12/11/2017
 - Media Services アカウントに接続されたストレージ アカウントの資格情報を取得します。 
 - 通知エンドポイントを作成します。**EndPointType** は **AzureTable** に設定し、endPointAddress はストレージ テーブルを指すように指定します。
 
+```csharp
         INotificationEndPoint notificationEndPoint = 
                       _context.NotificationEndPoints.Create("monitoring", 
                       NotificationEndPointType.AzureTable,
                       "https://" + _mediaServicesStorageAccountName + ".table.core.windows.net/");
+```
 
 - 監視するサービスの監視構成設定を作成します。 許可される監視構成設定は 1 つだけです。 
-  
+
+```csharp
         IMonitoringConfiguration monitoringConfiguration = _context.MonitoringConfigurations.Create(notificationEndPoint.Id,
             new List<ComponentMonitoringSetting>()
             {
                 new ComponentMonitoringSetting(MonitoringComponent.Channel, MonitoringLevel.Normal),
                 new ComponentMonitoringSetting(MonitoringComponent.StreamingEndpoint, MonitoringLevel.Normal)
             });
+```
 
 ## <a name="consuming-telemetry-information"></a>テレメトリ情報の使用
 
@@ -66,13 +70,15 @@ ms.lasthandoff: 12/11/2017
 
 2. app.config ファイルで定義されている **appSettings** に次の要素を追加します。
 
-    <add key="StorageAccountName" value="storage_name" />
+    ```xml
+        <add key="StorageAccountName" value="storage_name" />
+    ```
  
 ## <a name="example"></a>例  
     
 次の例では、指定した AMS アカウントのテレメトリを有効にする方法と、Azure Media Services .NET SDK を使用してメトリックにクエリを実行する方法を説明します。  
 
-```
+```csharp
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -219,7 +225,7 @@ namespace AMSMetrics
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

@@ -3,7 +3,7 @@ title: "Azure Active Directory 管理者が B2B コラボレーション ユー�
 description: "管理者は、Azure Active Directory B2B コラボレーションを使用してパートナー組織から Azure AD にゲスト ユーザーを追加できます。"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -14,12 +14,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
 ms.date: 03/15/2017
-ms.author: sasubram
-ms.openlocfilehash: 43bf961e64d94ff57a3aeb395fbe134ef8b45a6a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 42be57a81f75025686de022a3879f26598b1108d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法
 

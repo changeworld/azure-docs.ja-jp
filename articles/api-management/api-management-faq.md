@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 1903655a262583f1ba78b728bf404a81278e2275
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 091cfaaf8fa1cccf2f8b819732946bbbd08fd426
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -122,7 +122,7 @@ IP アドレス (複数リージョンのデプロイの場合は複数個) は 
 Active Directory フェデレーション サービス (AD FS) セキュリティを使用して OAuth 2.0 承認サーバーを構成する方法の詳細については、「[Using ADFS in API Management (API Management での AD FS の使用)](https://phvbaars.wordpress.com/2016/02/06/using-adfs-in-api-management/)」を参照してください。
 
 ### <a name="what-routing-method-does-api-management-use-in-deployments-to-multiple-geographic-locations"></a>複数の地理的な場所へのデプロイでは、API Management はどのようなルーティング方法を使用しますか。
-API Management では、複数の地理的な場所へのデプロイで[パフォーマンス トラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#priority)を使用します。 着信トラフィックは、最も近い API ゲートウェイにルーティングされます。 1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。 ルーティング方法の詳細については、[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)に関するページを参照してください。
+API Management では、複数の地理的な場所へのデプロイで[パフォーマンス トラフィック ルーティング方法](../traffic-manager/traffic-manager-routing-methods.md#performance)を使用します。 着信トラフィックは、最も近い API ゲートウェイにルーティングされます。 1 つのリージョンがオフラインになった場合、着信トラフィックは自動的に次に最も近いゲートウェイにルーティングされます。 ルーティング方法の詳細については、[Traffic Manager のルーティング方法](../traffic-manager/traffic-manager-routing-methods.md)に関するページを参照してください。
 
 ### <a name="can-i-use-an-azure-resource-manager-template-to-create-an-api-management-service-instance"></a>Azure Resource Manager テンプレートを使用して API Management サービス インスタンスを作成することはできますか。
 はい。 詳細については、[Azure API Management サービス](http://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。

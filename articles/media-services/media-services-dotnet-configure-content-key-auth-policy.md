@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;mingfeiy
-ms.openlocfilehash: 39782bd687c9c1b50699c05e61e57d9c767a8d32
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: e215b21c8010bce6fb2a6ac540ba925f4c1a79a2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]
@@ -56,7 +56,7 @@ Media Services は STS を提供しません。 カスタム STS を作成する
 オープン制限とは、キーを要求するすべてのユーザーに、システムがキーを提供することを意味します。 この制限は、テストに便利です。
 
 次の例では、オープン承認ポリシーを作成し、それをコンテンツ キーに追加します。
-
+```csharp
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
         // Create ContentKeyAuthorizationPolicy with Open restrictions
@@ -92,14 +92,14 @@ Media Services は STS を提供しません。 カスタム STS を作成する
         IContentKey updatedKey = contentKey.UpdateAsync().Result;
         Console.WriteLine("Adding Key to Asset: Key ID is " + updatedKey.Id);
     }
-
+```
 
 ### <a name="token-restriction"></a>トークン制限
 このセクションでは、コンテンツ キー承認ポリシーを作成し、それをコンテンツ キーに関連付ける方法について説明します。 承認ポリシーには、ユーザーがキーを受け取ることを承認されているかどうかを判断するために、承認要求が満たす必要がある内容について記載されています。 たとえば、トークンの署名に使用されたキーが検証キー一覧に含まれているかどうかなどです。
 
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、次の XML スキーマに準拠する必要があります。
-
-#### <a name="token-restriction-schema"></a>トークン制限スキーマ
+```csharp
+#### Token restriction schema
     <?xml version="1.0" encoding="utf-8"?>
     <xs:schema xmlns:tns="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/Azure/MediaServices/KeyDelivery/TokenRestrictionTemplate/v1" xmlns:xs="http://www.w3.org/2001/XMLSchema">
       <xs:complexType name="TokenClaim">
@@ -146,12 +146,12 @@ Media Services は STS を提供しません。 カスタム STS を作成する
       </xs:complexType>
       <xs:element name="SymmetricVerificationKey" nillable="true" type="tns:SymmetricVerificationKey" />
     </xs:schema>
-
+```
 トークン制限ポリシーを構成する際には、プライマリ検証キー、発行者、および対象ユーザーの各パラメーターを指定する必要があります。 プライマリ検証キーには、トークンの署名に使用されたキーが含まれています。 発行者は、トークンを発行する STS です。 対象ユーザー (スコープとも呼ばれる) には、トークンの目的、またはトークンがアクセスを承認するリソースが記述されます。 Media Services キー配信サービスでは、トークン内のこれらの値がテンプレート内の値と一致することが検証されます。
 
 Media Services SDK for .NET を使用する場合、TokenRestrictionTemplate クラスを使用して制限トークンを生成できます。
 次の例では、トークン制限を含む承認ポリシーを作成します。 この例では、クライアントが署名キー (VerificationKey)、トークン発行者、必要な要求を含むトークンを提示する必要があります。
-
+```csharp
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
         string tokenTemplateString = GenerateTokenRequirements();
@@ -205,10 +205,10 @@ Media Services SDK for .NET を使用する場合、TokenRestrictionTemplate ク
 
         return TokenRestrictionTemplateSerializer.Serialize(template);
     }
-
+```
 #### <a name="test-token"></a>テスト トークン
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、次の処理を行います。
-
+```csharp
     // Deserializes a string containing an Xml representation of a TokenRestrictionTemplate
     // back into a TokenRestrictionTemplate class instance.
     TokenRestrictionTemplate tokenTemplate =
@@ -224,7 +224,7 @@ Media Services SDK for .NET を使用する場合、TokenRestrictionTemplate ク
     string testToken = TokenRestrictionTemplateSerializer.GenerateTestToken(tokenTemplate, null, rawkey);
     Console.WriteLine("The authorization token is:\nBearer {0}", testToken);
     Console.WriteLine();
-
+```
 
 ## <a name="playready-dynamic-encryption"></a>PlayReady 動的暗号化
 Media Services により、ユーザーが保護されたコンテンツを再生する際に、PlayReady DRM ランタイムに適用される権限と制限を構成できます。 
@@ -238,6 +238,7 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
 
 次の例では、オープン承認ポリシーを作成し、それをコンテンツ キーに追加します。
 
+```csharp
     static public void AddOpenAuthorizationPolicy(IContentKey contentKey)
     {
 
@@ -274,10 +275,12 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
         contentKey.AuthorizationPolicyId = contentKeyAuthorizationPolicy.Id;
         contentKey = contentKey.UpdateAsync().Result;
     }
+```
 
 ### <a name="token-restriction"></a>トークン制限
 トークン制限オプションを構成するには、XML を使用してトークンの承認要件を記述する必要があります。 トークン制限の構成 XML は、「[トークン制限スキーマ](#token-restriction-schema)」セクションで示した XML スキーマに準拠する必要があります。
 
+```csharp
     public static string AddTokenRestrictedAuthorizationPolicy(IContentKey contentKey)
     {
         string tokenTemplateString = GenerateTokenRequirements();
@@ -383,20 +386,25 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
 
         return MediaServicesLicenseTemplateSerializer.Serialize(responseTemplate);
     }
-
+```
 
 キー承認ポリシーに使用されたトークン制限に基づいてテスト トークンを取得するには、「[テスト トークン](#test-token)」のセクションをご覧ください。 
 
 ## <a id="types"></a>ContentKeyAuthorizationPolicy を定義するときに使用される種類
 ### <a id="ContentKeyRestrictionType"></a>ContentKeyRestrictionType
+
+```csharp
     public enum ContentKeyRestrictionType
     {
         Open = 0,
         TokenRestricted = 1,
         IPRestricted = 2,
     }
+```
 
 ### <a id="ContentKeyDeliveryType"></a>ContentKeyDeliveryType
+
+```csharp 
     public enum ContentKeyDeliveryType
     {
       None = 0,
@@ -404,14 +412,18 @@ PlayReady および Widevine でコンテンツを暗号化する方法につい
       BaselineHttp = 2,
       Widevine = 3
     }
+```
 
 ### <a id="TokenType"></a>TokenType
+
+```csharp
     public enum TokenType
     {
         Undefined = 0,
         SWT = 1,
         JWT = 2,
     }
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

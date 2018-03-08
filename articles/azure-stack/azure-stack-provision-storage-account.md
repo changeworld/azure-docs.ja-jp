@@ -3,22 +3,21 @@ title: "Azure Stack のストレージ アカウントについて | Microsoft D
 description: "Azure Stack のストレージ アカウントの作成方法について説明します。"
 services: azure-stack
 documentationcenter: 
-author: vhorne
-manager: byronr
-editor: 
+author: mattbriggs
+manager: femila
 ms.assetid: e1152110-b756-4c1a-9fa2-73fe3ab0ad8e
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 3/1/2017
-ms.author: victorh
-ms.openlocfilehash: 41c9ee37c43d4ad41c51ea2ed023d3b47d460dd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: a599d809ba3da8487a6c5d115bf04922a546e6ad
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure Stack のストレージ アカウント
 ストレージ アカウントには、BLOB や Table service、およびストレージ データ オブジェクトの一意の名前空間が含まれます。 既定では、アカウントのデータはストレージ アカウント所有者だけが使用できます。
@@ -33,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 
     ![](media/azure-stack-provision-storage-account/image03.png)
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 [Azure Resource Manager テンプレートの使用](user/azure-stack-arm-templates.md)
 
 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)

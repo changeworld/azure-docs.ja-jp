@@ -3,7 +3,7 @@ title: "初めてのデータ ファクトリの作成 (REST) | Microsoft Docs"
 description: "このチュートリアルでは、Data Factory REST API を使用して、サンプルの Azure Data Factory パイプラインを作成します。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: monicar
 ms.assetid: 7e0a2465-2d85-4143-a4bb-42e03c273097
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/01/2017
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4caff18728f2f0f1246f4a05ac121cecdaaeaf04
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: deee54fe55aeab6b97c0b31064b6893e334f6796
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -488,7 +488,7 @@ Azure ポータルを使用して、スライスを監視し、問題のトラ�
 この記事では、オンデマンド Azure HDInsight クラスターで Hive スクリプトを実行する変換アクティビティ (HDInsight アクティビティ) を含むパイプラインを作成しました。 コピー アクティビティを使用して Azure BLOB から Azure SQL にデータをコピーする方法については、「 [チュートリアル: Azure BLOB から Azure SQL にデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)」を参照してください。
 
 ## <a name="see-also"></a>関連項目
-| Topic | [説明] |
+| トピック | [説明] |
 |:--- |:--- |
 | [Data Factory REST API リファレンス](/rest/api/datafactory/) |Data Factory コマンドレットに関する包括的なドキュメントです。 |
 | [パイプライン](data-factory-create-pipelines.md) |この記事では、Azure Data Factory のパイプラインとアクティビティの概要、およびそれらを利用して実際のシナリオやビジネスのためにエンド ツー エンドのデータ主導ワークフローを作成する方法を説明します。 |
