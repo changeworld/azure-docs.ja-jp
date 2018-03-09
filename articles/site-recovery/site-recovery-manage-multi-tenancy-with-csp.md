@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/27/2018
 ms.author: manayar
 ms.openlocfilehash: 6dc8b573e66eaae1b5cb923ae72333fb959d0969
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="manage-multi-tenancy-with-the-cloud-solution-provider-csp-program"></a>クラウド ソリューション プロバイダー (CSP) プログラムによるマルチテナントの管理
 

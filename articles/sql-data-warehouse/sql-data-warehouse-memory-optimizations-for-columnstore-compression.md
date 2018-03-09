@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/23/2017
 ms.author: barbkess
-ms.openlocfilehash: 0476afb875616ed0758835aa52fb2334b63959a9
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 6640ed8958f6b05c015fb6c61d07aeea95b18022
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 
@@ -139,7 +139,7 @@ OPTION (MAXDOP 1);
 
 DWU のサイズとユーザー リソースのクラスによって、ユーザー クエリで使用可能なメモリの量が決まります。 読み込みクエリのメモリ許可を増やすために、DWU の数を増やすか、リソース クラスを増やすことができます。
 
-- DWU を増やす方法については、[パフォーマンスのスケーリング方法](sql-data-warehouse-manage-compute-overview.md#scale-compute)に関するセクションを参照してください。
+- DWU を増やす方法については、[パフォーマンスのスケーリング方法](quickstart-scale-compute-portal.md)に関するセクションを参照してください。
 - クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)」を参照してください。
 
 たとえば、DWU 100 の場合、smallrc リソース クラス内のユーザーはディストリビューションごとに 100 MB のメモリを使用できます。 詳細については、[SQL Data Warehouse での同時実行](sql-data-warehouse-develop-concurrency.md)に関する記事を参照してください。
@@ -150,7 +150,7 @@ DWU のサイズとユーザー リソースのクラスによって、ユーザ
 - DWU 600 と largerc を使用すると、メモリ許可は 800 MB です。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 SQL Data Warehouse でのパフォーマンスを向上させるその他の方法については、[パフォーマンスの概要](sql-data-warehouse-overview-manage-user-queries.md)に関する記事を参照してください。
 

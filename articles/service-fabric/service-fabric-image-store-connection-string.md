@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/10/2018
+ms.date: 02/27/2018
 ms.author: alexwun
-ms.openlocfilehash: 4b64331a4f25ce0cc01b2ee9f32633ab035e3131
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 3c34a3851dbb5c5258b3dc0cf35a510f62cbe14e
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="understand-the-imagestoreconnectionstring-setting"></a>ImageStoreConnectionString 設定を理解する
 
@@ -42,7 +42,9 @@ Service Fabric は、マイクロソフトの社内で数多くの多様なチ�
 
 システム サービス内のイメージ ストアをクラスター自体の内部でホストすることで、パッケージのリポジトリに関する外部依存関係が排除され、ストレージをもっとローカルに制御することができます。 イメージ ストアに関する今後の改善は、まずイメージ ストア プロバイダーを対象とする可能性がありますが、これのみに限定されるわけではありません。 クライアントは既にターゲット クラスターに接続されているために、イメージ ストア サービス プロバイダーの接続文字列には固有の情報はありません。 クライアントが知る必要があるのは、システム サービスを対象とするプロトコルを使用する必要があることだけです。
 
-ファイル システム プロバイダーは、ローカルのワンボックス クラスターの開発時に、クラスターのブート処理を少しでも速くするためにイメージ ストア サービスの代わりに使用されます。 通常、その違いは小さいものですが、開発時には有効な最適化です。 ローカルのワンボックス クラスターを他の種類のストレージ プロバイダーでデプロイすることもできますが、プロバイダーが何であっても、開発/テスト ワークフローは変わらないため、通常はそうする理由がありません。 このような使い方の他に、ファイル システム プロバイダーと Azure Storage プロバイダーは、古いバージョンをサポートするために存在しています。
+ファイル システム プロバイダーは、ローカルのワンボックス クラスターの開発時に、クラスターのブート処理を少しでも速くするためにイメージ ストア サービスの代わりに使用されます。 通常、その違いは小さいものですが、開発時には有効な最適化です。 ローカルのワンボックス クラスターを他の種類のストレージ プロバイダーでデプロイすることもできますが、プロバイダーが何であっても、開発/テスト ワークフローは変わらないため、通常はそうする理由がありません。 Azure Storage プロバイダーは、イメージ ストア サービス プロバイダーがリリースされる前にデプロイされた古いクラスターをサポートする目的でのみ存在します。
+
+また、ファイル システム プロバイダーも Azure Storage プロバイダーも、複数のクラスター間で 1 つのイメージ ストアを共有する手段として使うことは避けてください。それぞれのクラスターによってイメージ ストアに競合するデータが書き込まれる可能性があるため、クラスターの構成データの破損につながります。 プロビジョニングしたアプリケーション パッケージを複数のクラスター間で共有する場合は、[sfpkg][12] ファイルを使用してください。このファイルは、ダウンロード URI で任意の外部ストアにアップロードすることができます。
 
 したがって、ImageStoreConnectionString は構成可能ではありますが、通常は、単純に既定の設定を使用します。 Visual Studio から Azure に発行する場合、パラメーターは、状況に応じて自動的に設定されます。 Azure でホストされるクラスターにプログラムでデプロイする場合、接続文字列は常に "fabric:ImageStore" です。 不確かな場合は、[PowerShell](https://docs.microsoft.com/powershell/servicefabric/vlatest/get-servicefabricclustermanifest)、[.NET](https://msdn.microsoft.com/library/azure/mt161375.aspx)、または[REST](https://docs.microsoft.com/rest/api/servicefabric/get-a-cluster-manifest) でクラスター マニフェストを取得することで、その値を常に検証できます。 オンプレミス テストと運用クラスターはどちらも、常にイメージ ストア サービス プロバイダーを使用するように構成する必要があります。
 
@@ -55,4 +57,4 @@ Service Fabric は、マイクロソフトの社内で数多くの多様なチ�
 
 [10]: service-fabric-deploy-remove-applications.md
 [11]: service-fabric-cluster-creation-via-portal.md
-
+[12]: service-fabric-package-apps.md#create-an-sfpkg

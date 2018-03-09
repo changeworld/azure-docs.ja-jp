@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 372e9465eec1a373ff2b59209673e65fa1f994b6
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 4449dfa1b189f51292d24af884ba9d2addf1fe24
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -35,9 +35,9 @@ Azure HDInsight クラスターは、Azure クラウドで実行される使い�
 
 * [cURL](https://curl.haxx.se/) - Web ベースのサービスとの通信に使用します
 * [jq](https://stedolan.github.io/jq/) - JSON ドキュメントの解析に使用します
-* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) (プレビュー) - Azure サービスをリモート管理するために使用します
+* [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) - Azure サービスをリモート管理するために使用します
 
-## <a name="users"></a>Users
+## <a name="users"></a>ユーザー
 
 HDInsight は、[ドメイン参加済み](./domain-joined/apache-domain-joined-introduction.md)でない限り**シングルユーザー** システムであるとみなされます。 このクラスターでは、管理者レベルのアクセス許可を持つ単一の SSH ユーザー アカウントを作成します。 追加の SSH アカウントを作成することもできますが、これらのアカウントもクラスターに対する管理者アクセスを持ちます。
 
@@ -184,7 +184,7 @@ __Azure Storage__ を使用している場合は、次のリンクを参照し�
 * さまざまな SDK:
 
     * [Java](https://github.com/Azure/azure-sdk-for-java)
-    * [Node.js](https://github.com/Azure/azure-sdk-for-node)
+    * [Node.JS](https://github.com/Azure/azure-sdk-for-node)
     * [PHP](https://github.com/Azure/azure-sdk-for-php)
     * [Python](https://github.com/Azure/azure-sdk-for-python)
     * [Ruby](https://github.com/Azure/azure-sdk-for-ruby)
@@ -275,7 +275,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 >
 > カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Windows ベースの HDInsight から Linux ベースへの移行](hdinsight-migrate-from-windows-to-linux.md)
 * [HDInsight での Hive の使用](hadoop/hdinsight-use-hive.md)

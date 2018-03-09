@@ -3,7 +3,7 @@ title: "Azure Data Factory - JSON スクリプトのリファレンス | Microso
 description: "Data Factory のエンティティ用の JSON スキーマを紹介します。"
 services: data-factory
 documentationcenter: 
-author: spelluru
+author: sharonlo101
 manager: jhubbard
 editor: 
 ms.service: data-factory
@@ -12,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 9457e90f378cf7b30810ca9cadfcad139e91e2d4
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 519a762e5f89533f4425d38e4a1ca76d8e3dd40f
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -298,8 +298,8 @@ Azure Data Factory のデータセットは次のように定義されます。
 | --- | --- | --- |
 | name |列の名前です。 |[はい] |
 | 型 |列のデータ型です。  |いいえ  |
-| culture |型を指定するときに使用される .NET ベースのカルチャ。.NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ  |
-| format |型を指定するときに使用される書式指定文字列。.NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ  |
+| culture |型を指定するときに使用される .NET ベースのカルチャ .NET 型の `Datetime` または `Datetimeoffset` です。 既定値は `en-us` です。 |いいえ  |
+| format |型を指定するときに使用される書式指定文字列 .NET 型の `Datetime` または `Datetimeoffset` です。 |いいえ  |
 
 次の例では、データセットに `slicetimestamp`、`projectname`、`pageviews` の 3 つの列があり、それぞれの列の型は、String、String、Decimal です。
 

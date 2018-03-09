@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 69750db615460b3ac69ba9ffe707a970ca8e2e11
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fd4c28c2317356cbc6e3fd4d46a10509c029d530
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow を使用したイベントの集計と収集
 
@@ -32,12 +32,12 @@ EventFlow バイナリは、一連の NuGet パッケージとして入手でき
 
 "Inputs" と "Outputs" のラベルがついた、さまざまなパッケージの一覧が表示されます。 EventFlow は、非常に多様なログ プロバイダーやアナライザーをサポートしています。 EventFlow をホストするサービスには、アプリケーション ログの送信元と送信先に応じた適切なパッケージが含まれる必要があります。 コア ServiceFabric パッケージだけでなく、少なくとも 1 つの構成された入力と出力も必要となります。 たとえば、次のパッケージを追加して、EventSource イベントを Application Insights に送信できます。
 
-* `Microsoft.Diagnostics.EventFlow.Input.EventSource` (サービスの EventSource クラス、および *Microsoft-ServiceFabric-Services* や *Microsoft-ServiceFabric-Actors* などの標準 EventSource からデータをキャプチャするため)
-* `Microsoft.Diagnostics.EventFlow.Output.ApplicationInsights` (ここでは、Azure Application Insights リソースにログを送信します)
+* `Microsoft.Diagnostics.EventFlow.Inputs.EventSource` (サービスの EventSource クラス、および *Microsoft-ServiceFabric-Services* や *Microsoft-ServiceFabric-Actors* などの標準 EventSource からデータをキャプチャするため)
+* `Microsoft.Diagnostics.EventFlow.Outputs.ApplicationInsights` (ここでは、Azure Application Insights リソースにログを送信します)
 * `Microsoft.Diagnostics.EventFlow.ServiceFabric` (Service Fabric サービス構成からの EventFlow パイプラインの初期化を可能にし、診断データの送信に関する問題を Service Fabric 正常性レポートとして報告します)
 
 >[!NOTE]
->`Microsoft.Diagnostics.EventFlow.Input.EventSource` パッケージでは、サービス プロジェクトが .NET Framework 4.6 以降を対象とする必要があります。 このパッケージをインストールする前に、プロジェクトのプロパティで適切な対象フレームワークが設定されていることを確認します。
+>`Microsoft.Diagnostics.EventFlow.Inputs.EventSource` パッケージでは、サービス プロジェクトが .NET Framework 4.6 以降を対象とする必要があります。 このパッケージをインストールする前に、プロジェクトのプロパティで適切な対象フレームワークが設定されていることを確認します。
 
 すべてのパッケージをインストールした後は、サービスで EventFlow を構成して有効にします。
 

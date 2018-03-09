@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: cynthn
 ms.openlocfilehash: ecc13ca614002effb1975b7575215b458981a5e6
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="accelerated-maintenance-frequently-asked-questions-faqs"></a>高速化されたメンテナンスについてよくあるご質問 (FAQ)
 

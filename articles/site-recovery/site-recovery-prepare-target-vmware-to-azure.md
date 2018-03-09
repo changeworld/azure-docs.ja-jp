@@ -15,10 +15,10 @@ ms.workload: backup-recovery
 ms.date: 02/22/2018
 ms.author: bsiva
 ms.openlocfilehash: ec1322e95431d5fd38d8e05a66322239d3184ac0
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/07/2018
 ---
 # <a name="prepare-target-vmware-to-azure"></a>ターゲットを準備する (VMware から Azure)
 > [!div class="op_single_selector"]

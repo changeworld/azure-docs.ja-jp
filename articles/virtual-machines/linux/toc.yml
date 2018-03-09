@@ -203,8 +203,6 @@
           href: maintenance-notifications.md
         - name: 予測実行の軽減
           href: mitigate-se.md
-        - name: 高速化されたメンテナンスに関する FAQ
-          href: accelerated-maintenance.md
         - name: スケジュールされたイベント
           href: scheduled-events.md
         - name: メタデータの監視

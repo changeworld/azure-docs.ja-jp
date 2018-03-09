@@ -6,16 +6,16 @@ keywords:
 author: chrissie926
 manager: timlt
 ms.author: menchi
-ms.date: 02/12/2018
+ms.date: 03/02/2018
 ms.topic: article
 ms.service: iot-edge
 ms.custom: mvc
 ms.reviewer: kgremban
-ms.openlocfilehash: ce3e979428233af578d71dee5ed10103e105f4f4
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 1986c9881c09ffa480103e009dc42d18aad4e2aa
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="deploy-modules-to-an-iot-edge-device-using-iot-extension-for-azure-cli-20"></a>Azure CLI 2.0 の IoT 拡張機能を使用して、IoT Edge デバイスにモジュールをデプロイする
 
@@ -96,7 +96,7 @@ IoT Edge デバイスを作成します。
              "edgeAgent": {
                "type": "docker",
                "settings": {
-                 "image": "edgepreview.azurecr.io/azureiotedge/edge-agent:1.0-preview",
+                 "image": "microsoft/azureiotedge-agent:1.0-preview",
                  "createOptions": "{}"
                }
              },
@@ -105,7 +105,7 @@ IoT Edge デバイスを作成します。
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "edgepreview.azurecr.io/azureiotedge/edge-hub:1.0-preview",
+                 "image": "microsoft/azureiotedge-hub:1.0-preview",
                  "createOptions": "{}"
                }
              }
@@ -117,7 +117,7 @@ IoT Edge デバイスを作成します。
                "status": "running",
                "restartPolicy": "always",
                "settings": {
-                 "image": "edgepreview.azurecr.io/azureiotedge/simulated-temperature-sensor:1.0-preview",
+                 "image": "microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview",
                  "createOptions": "{}"
                }
              }

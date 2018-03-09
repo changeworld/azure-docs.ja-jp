@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/06/2018
 ms.author: sajagtap
-ms.openlocfilehash: 43e22e553b5243d6edc413c7a667089793f95396
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 1b473a6aef87e5f4c75be2becbf814ecaaab6f3a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-azure-media-content-moderator-to-detect-possible-adult-and-racy-content"></a>Azure Media Content Moderator を使用して、成人向けやわいせつな可能性のあるコンテンツを検出する
 
@@ -90,6 +90,7 @@ JSON 形式のモデレート済み出力には、自動検出されたショッ
 ソース コード全体と Visual Studio プロジェクトについては、[Content Moderator のビデオのモデレートに関するクイックスタート](../cognitive-services/Content-Moderator/video-moderation-api.md)に関するページをご覧ください。
 
 
+```csharp
     /// <summary>
     /// Run the Content Moderator job on the designated Asset from local file or blob storage
     /// </summary>
@@ -155,14 +156,14 @@ JSON 形式のモデレート済み出力には、自動検出されたショッ
         DownloadAsset(job.OutputMediaAssets.First(), OUTPUT_FOLDER);
     }
 
-ソース コード全体と Visual Studio プロジェクトについては、[Content Moderator のビデオのモデレートに関するクイックスタート](../cognitive-services/Content-Moderator/video-moderation-api.md)に関するページをご覧ください。
+For the full source code and the Visual Studio project, check out the [Content Moderator video quickstart](../cognitive-services/Content-Moderator/video-moderation-api.md).
 
-### <a name="json-output"></a>JSON 出力
+### JSON output
 
-次の Content Moderator の JSON 出力例は途中までです。
+The following example of a Content Moderator JSON output was truncated.
 
 > [!NOTE]
-> キーフレームの位置 (秒単位) = timestamp/timescale
+> Location of a keyframe in seconds = timestamp/timescale
 
     {
     "version": 2,
@@ -213,7 +214,7 @@ JSON 形式のモデレート済み出力には、自動検出されたショッ
     }
     ]
     }
-
+```
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
