@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/15/2018
+ms.date: 02/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 7cdeb0a996835f976e6c80e9831479a2ff917434
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a30b5d08377594b8ad7e10b63a23e2a9d168af9c
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -41,6 +41,256 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
 
 
+
+## <a name="february-2018"></a>2018 年 2 月
+ 
+
+### <a name="improved-navigation-for-managing-users-and-groups"></a>ユーザーとグループの管理に関するナビゲーションの改善
+
+**タイプ:** 変更の計画  
+**サービス カテゴリ:** ディレクトリ管理  
+**製品の機能:** ディレクトリ
+ 
+
+ユーザーとグループを管理する際のナビゲーションの操作性が向上しています。 ディレクトリの概要から全ユーザーの一覧に直接移動できるようになりました。削除済みのユーザーの一覧にもアクセスしやすくなっています。 また、全グループの一覧にもディレクトリの概要から直接移動できるようになり、グループ管理の設定にアクセスしやすくなりました。 さらに、ディレクトリの概要ページから、ユーザーやグループ、エンタープライズ アプリケーション、アプリの登録を検索することもできます。
+ 
+
+---
+
+
+### <a name="availability-of-sign-ins-and-audit-reports-in-microsoft-azure-operated-by-21vianet-azure-china-21vianet"></a>21Vianet (Azure China 21Vianet) が運用する Microsoft Azure でサインイン レポートと監査レポートが利用可能に
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** ソブリン クラウド  
+**製品の機能:** 監視とレポート
+ 
+
+21Vianet (Azure China 21Vianet) インスタンスで運用される Microsoft Azure で、Azure AD アクティビティ ログ レポートが利用できるようになりました。 次のログが対象となります。
+
+- **サインイン アクティビティ ログ** - ご利用のテナントに関連付けられているすべてのサインイン ログが対象となります。
+
+- **セルフサービス パスワード監査ログ** - すべての SSPR 監査ログが対象となります。
+
+- **ディレクトリ管理監査ログ** - ディレクトリ管理に関連したすべての監査ログが対象となります (ユーザー管理、アプリ管理など)。
+
+これらのログを通じて、自分が管理する環境がどのような状態にあるのかの分析情報を得ることができます。 レポートから得たデータによって次のことが可能となります。
+
+- 管理下にあるユーザーがアプリとサービスをどのように利用しているかを明らかにする。
+
+- ユーザーの作業を妨げている問題をトラブルシューティングする。
+
+レポートの使い方について詳しくは、「[Azure Active Directory レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)」をご覧ください。
+ 
+
+---
+
+
+### <a name="use-report-reader-role-non-admin-role-to-view-azure-ad-activity-reports"></a>"レポート リーダー" ロール (非管理者ロール) を使用して Azure AD アクティビティ レポートを閲覧する
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** レポート  
+**製品の機能:** 監視とレポート
+ 
+
+Azure AD のアクティビティ ログに非管理者ロールでアクセスできるようにするというカスタマー フィードバックの一環として、"レポート リーダー" ロールのユーザーを対象に、Azure Portal 内のサインイン アクティビティや監査アクティビティにアクセスしたり、Graph API を使用したりする機能を用意しました。 
+
+レポートの使い方について詳しくは、「[Azure Active Directory レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)」をご覧ください。 
+
+---
+ 
+
+
+### <a name="employeeid-claim-available-as-user-attribute-and-user-identifier"></a>EmployeeID の信頼性情報がユーザー属性やユーザー ID として利用可能に
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** SSO
+ 
+
+SAML ベースのサインオンを使用したアプリケーションでは、メンバー ユーザーや B2B ゲストのユーザー識別子およびユーザー属性として **EmployeeID** をエンタープライズ アプリケーションの UI から構成することができます。
+
+詳細については、「[Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)」を参照してください。
+ 
+
+---
+
+
+### <a name="simplified-application-management-using-wildcards-in-azure-ad-application-proxy"></a>Azure Active Directory アプリケーション プロキシでワイルドカードを使用してアプリケーション管理を単純化
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** アプリケーション プロキシ  
+**製品の機能:** ユーザー認証
+ 
+
+アプリケーションをデプロイしやすくして管理オーバーヘッドを低減するために、ワイルドカードを使ってアプリケーションを発行する機能に対応しました。 ワイルドカード アプリケーションの発行は、標準的なアプリケーション発行フローに沿って行われますが、内部 URL と外部 URL にはワイルドカードが使用されます。
+
+詳細については、「[Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-application-proxy-wildcard)」を参照してください。
+
+ 
+
+---
+ 
+### <a name="new-cmdlets-to-support-configuration-of-application-proxy"></a>アプリケーション プロキシの構成をサポートする新しいコマンドレット
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** アプリケーション プロキシ  
+**製品の機能:** プラットフォーム
+ 
+
+AzureAD PowerShell Preview モジュールの最新リリースには、PowerShell を使ってユーザーがアプリケーション プロキシ アプリケーションを構成できる新しいコマンドレットが備わっています。
+
+新たに追加されたコマンドレットは次のとおりです。 
+
+- Get-AzureADApplicationProxyApplication
+- Get-AzureADApplicationProxyApplicationConnectorGroup
+- Get-AzureADApplicationProxyConnector
+- Get-AzureADApplicationProxyConnectorGroup
+- Get-AzureADApplicationProxyConnectorGroupMembers
+- Get-AzureADApplicationProxyConnectorMemberOf
+- New-AzureADApplicationProxyApplication
+- New-AzureADApplicationProxyConnectorGroup
+- Remove-AzureADApplicationProxyApplication
+- Remove-AzureADApplicationProxyApplicationConnectorGroup
+- Remove-AzureADApplicationProxyConnectorGroup
+- Set-AzureADApplicationProxyApplication
+- Set-AzureADApplicationProxyApplicationConnectorGroup
+- Set-AzureADApplicationProxyApplicationCustomDomainCertificate
+- Set-AzureADApplicationProxyApplicationSingleSignOn
+- Set-AzureADApplicationProxyConnector
+- Set-AzureADApplicationProxyConnectorGroup
+
+
+ 
+
+---
+ 
+
+### <a name="new-cmdlets-to-support-configuration-of-groups"></a>グループの構成をサポートする新しいコマンドレット
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** アプリケーション プロキシ  
+**製品の機能:** プラットフォーム
+ 
+
+AzureAD PowerShell モジュールの最新リリースには、Azure AD 内のグループを管理するためのコマンドレットが備わっています。 これらのコマンドレットは、AzureADPreview モジュールで従来から提供されていましたが、新たに AzureAD モジュールにも追加されました。
+
+新たに一般提供向けにリリースされた Group のコマンドレットは次のとおりです。 
+
+- Get-AzureADMSGroup
+- New-AzureADMSGroup
+- Remove-AzureADMSGroup
+- Set-AzureADMSGroup
+- Get-AzureADMSGroupLifecyclePolicy
+- New-AzureADMSGroupLifecyclePolicy
+- Remove-AzureADMSGroupLifecyclePolicy
+- Add-AzureADMSLifecyclePolicyGroup
+- Remove-AzureADMSLifecyclePolicyGroup
+- Reset-AzureADMSLifeCycleGroup   
+- Get-AzureADMSLifecyclePolicyGroup
+ 
+
+---
+ 
+### <a name="a-new-release-of-azure-ad-connect-is-available"></a>Azure AD Connect の新しいリリースが利用可能に
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** AD Sync  
+**製品の機能:** プラットフォーム
+ 
+
+Azure AD とオンプレミス データ ソース (Windows Server Active Directory や LDAP) との間でデータを同期するためのツールとしては Azure AD Connect が推奨されています。
+
+**重要**
+ 
+このビルドでは、スキーマと同期ルールに変更が加えられています。 アップグレードの後、フル インポートの手順と完全同期の手順が Azure AD Connect 同期サービスによってトリガーされます。 この動作を変更する方法については、「[アップグレード後に完全な同期を保留にする方法](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-upgrade-previous-version#how-to-defer-full-synchronization-after-upgrade)」を参照してください。
+
+このリリースで行われた更新や変更を以下に示します。
+
+**修正された問題**
+
+- 次のページに切り替えるときの、パーティション フィルター処理ページのバック グラウンド タスクにおけるタイミング ウィンドウの修正。
+- ConfigDB カスタム アクションの実行中にアクセス違反を引き起こしていたバグを修正しました
+- SQL 接続のタイムアウトから復旧できるようにバグを修正しました。
+- SAN ワイルドカードを含む証明書で前提条件の確認に失敗するバグを修正しました。
+- AAD コネクタのエクスポート中に miiserver.exe がクラッシュするバグを修正しました。
+- AAD Connect ウィザードを実行しているときに DC に間違ったパスワードの試行が記録されると構成が変更されるバグを修正しました。
+
+**新機能と機能強化**
+
+- GDPR では、Microsoft と共有するお客様のデータの種類 (テレメトリ、正常性など) を示し、詳細なオンライン ドキュメントへのリンクを表示する必要があります。また、ユーザー設定を変更する手段をお客様に提供しなければなりません。  このチェックインにより、以下が追加されます。
+    - クリーン インストール EULA ページでのデータ共有とプライバシーに関する通知。
+
+    - アップグレード ページでのデータ共有とプライバシーに関する通知。
+
+    - 新しい追加タスク "**プライバシーの設定**"。ユーザーはこれを使用してユーザー設定を変更できます。
+ 
+- アプリケーション テレメトリ - このデータ クラスのオン/オフは、管理者が切り替えることができます。
+
+- Azure AD の正常性データ - 正常性の設定を制御するには、管理者が正常性ポータルにアクセスする必要があります。 サービス ポリシーが変更された場合、エージェントがこれを読み取って強制します。
+
+- デバイスの書き戻し構成アクションと、ページの初期化の進行状況バーを追加しました。
+
+- HTML レポートでの一般的な診断と、ZIP テキスト/HTML レポートの完全なデータ コレクションが向上しました。
+
+- 自動アップグレードの信頼性が向上しました。また、サーバーの正常性を確認できるように、テレメトリを追加しました。
+
+- AD コネクタ アカウントの特権アカウントで使用できるアクセス許可が制限されています。 新規インストールの場合、MSOL アカウントの作成後に特権アカウントが MSOL アカウントに対して持つアクセス許可がウィザードによって制限されます。 この変更は、自動作成アカウントでの高速インストールとカスタム インストールに影響します。
+
+- AADConnect のクリーン インストールで SA 特権が求められないようにインストーラーを変更しました。
+
+- 特定のオブジェクトの同期に関する問題のトラブルシューティングを行う新しいユーティリティを追加しました。 現時点では、このユーティリティは以下を確認します。
+
+    - 同期されたユーザー オブジェクトと Azure AD テナントのユーザー アカウントの間の UserPrincipalName の不一致。
+  
+    - ドメインのフィルター処理によって、オブジェクトが同期からフィルター処理されているかどうか
+  
+    - 組織単位 (OU) のフィルター処理によって、オブジェクトが同期からフィルター処理されているかどうか
+
+- 特定のユーザー アカウントを対象に、オンプレミス Active Directory に格納されている現在のパスワード ハッシュを同期する新しいユーティリティを追加しました。 このユーティリティでは、パスワードの変更は必要ありません。 
+ 
+
+---
+ 
+
+### <a name="applications-supporting-intune-app-protection-policies-added-for-use-with-azure-ad-application-based-conditional-access"></a>Azure AD アプリケーション ベースの条件付きアクセスで使用できるアプリケーションに Intune App Protection ポリシー対応アプリケーションを追加
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** 条件付きアクセス  
+**製品の機能:** ID のセキュリティと保護
+ 
+
+アプリケーション ベースの条件付きアクセスをサポートするアプリケーションが増えました。 今後は、これらの承認されたクライアント アプリを使用して、Office 365 などの Azure AD 接続クラウド アプリにアクセスすることができます。
+
+2 月末までに次のアプリケーションが追加される予定です。 
+
+- Microsoft PowerBI
+
+- Microsoft Launcher
+
+- Microsoft Invoicing
+
+詳細については、次を参照してください。
+
+- [承認されたクライアント アプリケーションの要件](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference#approved-client-app-requirement)
+- [Azure AD のアプリベースの条件付きアクセス](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+
+ 
+
+---
+ 
+
+### <a name="terms-of-use-update-to-mobile-experience"></a>モバイル エクスペリエンス向けに使用条件を更新 
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** 使用条件  
+**製品の機能:** ガバナンス
+ 
+
+使用条件が表示されたときに **[表示に問題がある場合は、ここをクリックします]** をクリックできるようになりました。 このリンクをクリックすると、お使いのデバイスでネイティブに使用条件が表示されます。 ドキュメントのフォント サイズやデバイスの画面サイズに関係なく、必要に応じてズームしてドキュメントを読むことができます。 
+ 
+
+---
+ 
 ## <a name="january-2018"></a>2018 年 1 月
  
 

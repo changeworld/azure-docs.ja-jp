@@ -15,11 +15,11 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: f0376070a8bec7d97f54e9a198d5d67a9751334c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0dc8bc81ca6125d40d1784ce39fd0facaf9e736a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 02/21/2018
 
 5. 検索ボックスに、検索するフィールドを指定し、**Enter** キーを押します。 入力を開始すると、一致候補と使用できる操作が表示されます。 
 
-   たとえば、発生した上位 10 件のイベントを検索するには、**Category=WorkflowRuntime |top 10** という検索クエリを入力して選択します。
+   たとえば、発生した上位 10 件のイベントを検索するには、**search Category == "WorkflowRuntime" | limit 10** という検索クエリを入力して選択します。
 
    ![検索文字列を入力する](media/logic-apps-monitor-your-logic-apps/oms-start-query.png)
 

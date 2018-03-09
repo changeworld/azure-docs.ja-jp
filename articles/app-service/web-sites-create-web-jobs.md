@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: 91839d8f547340d55f6badb3350a393a48a13c7d
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -78,14 +78,14 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjcontinuous.png)
 
-   | 設定      | 値の例   | Description  |
+   | Setting      | 値の例   | [説明]  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
-   | **型** | 継続的 | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
+   | **種類** | 継続的 | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **スケール** | 複数のインスタンス | 継続的 Web ジョブでのみ使用できます。 プログラムまたはスクリプトがすべてのインスタンスで実行されるか、1 つのインスタンスだけで実行されるかどうかを決定します。 複数のインスタンスで実行するオプションは、Free または Shared [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)には適用されません。 | 
 
-4. **[OK]**をクリックします。
+4. Click **OK**.
 
    **[Web ジョブ]** ページに新しい Web ジョブが表示されます。
 
@@ -116,14 +116,14 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjtriggered.png)
 
-   | 設定      | 値の例   | Description  |
+   | Setting      | 値の例   | [説明]  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myTriggeredWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。|
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
-   | **型** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
+   | **種類** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **トリガー** | マニュアル | |
 
-4. **[OK]**をクリックします。
+4. Click **OK**.
 
    **[Web ジョブ]** ページに新しい Web ジョブが表示されます。
 
@@ -154,15 +154,15 @@ when making changes in one don't forget the other two.
 
    ![[Web ジョブの追加] ページ](./media/web-sites-create-web-jobs/addwjscheduled.png)
 
-   | 設定      | 値の例   | Description  |
+   | Setting      | 値の例   | [説明]  |
    | ------------ | ----------------- | ------------ |
    | **名前** | myScheduledWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
-   | **型** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
+   | **種類** | トリガー | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
    | **トリガー** | スケジュール | スケジュールを確実に動作させるために、Always On 機能を有効にします。 Always On 機能は、Basic、Standard、および Premium の価格レベルでのみ利用できます。|
    | **CRON 式** | 0 0/20 * * * * | [CRON 式](#cron-expressions)については、次のセクションで説明します。 |
 
-4. **[OK]**をクリックします。
+4. Click **OK**.
 
    **[Web ジョブ]** ページに新しい Web ジョブが表示されます。
 

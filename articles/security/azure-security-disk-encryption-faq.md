@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: 1144533cd64e80ed2b15c70732c94e332ea06c3d
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: f3cb11bc13ad2561e62c096d840c0b8e4471d271
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
 
@@ -49,10 +49,11 @@ ms.lasthandoff: 01/24/2018
 | --- | --- |--- |
 | Ubuntu | 16.04-DAILY-LTS | OS とデータ ディスク |
 | Ubuntu | 14.04.5-DAILY-LTS | OS とデータ ディスク |
-| RHEL | 7.3 | OS とデータ ディスク |
-| RHEL | 7.2 | OS とデータ ディスク |
-| RHEL | 6.8 | OS とデータ ディスク |
-| RHEL | 6.7 | データ ディスク |
+| RHEL | 7.4 | データ ディスク* |
+| RHEL | 7.3 | データ ディスク* |
+| RHEL | 7.2 | データ ディスク* |
+| RHEL | 6.8 | データ ディスク* |
+| RHEL | 6.7 | データ ディスク* |
 | CentOS | 7.3 | OS とデータ ディスク |
 | CentOS | 7.2n | OS とデータ ディスク |
 | CentOS | 6.8 | OS とデータ ディスク |
@@ -67,6 +68,8 @@ ms.lasthandoff: 01/24/2018
 | SLES | HPC 12 | データ ディスク |
 | SLES | 優先順位: 11-SP4 | データ ディスク |
 | SLES | 11 SP4 | データ ディスク |
+
+*__ADE は、RHEL のデータ ディスクでサポートされます。現在の ADE 実装は OS ディスクでも動作しますが、現時点で共同ではサポートされていません。ソリューションの共同サポートに向けて、Microsoft と Red Hat の双方が取り組んでいるところです。Linux OS ディスクの暗号化については、差し当たり、[こちら](https://docs.microsoft.com/en-us/azure/security/azure-security-disk-encryption)の ADE ホワイトペーパーを参照してください。__
 
 **Q:** Azure Disk Encryption の使用を開始するにはどうすればよいですか。
 

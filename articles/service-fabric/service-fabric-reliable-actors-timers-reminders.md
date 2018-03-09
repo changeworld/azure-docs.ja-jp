@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: f61743a7925c26767118dcb2d18799c26f880156
-ms.sourcegitcommit: c7215d71e1cdeab731dd923a9b6b6643cee6eb04
+ms.openlocfilehash: 09a979d05757adab363d9ab0c48cad9ff3b529dd
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="actor-timers-and-reminders"></a>アクターのタイマーとアラーム
 アクターは、タイマーまたはアラームを登録することで、自身の定期的な作業をスケジュールできます。 ここでは、タイマーとアラームの使用方法と、これらの違いについて説明します。
@@ -146,8 +146,8 @@ protected override async Task OnActivateAsync()
     IActorReminder reminderRegistration = await this.RegisterReminderAsync(
         reminderName,
         BitConverter.GetBytes(amountInDollars),
-        TimeSpan.FromDays(3),
-        TimeSpan.FromDays(1));
+        TimeSpan.FromDays(3),    //The amount of time to delay before firing the reminder
+        TimeSpan.FromDays(1));    //The time interval between firing of reminders
 }
 ```
 
@@ -226,7 +226,7 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 
 上記の例のように、`UnregisterReminderAsync`(C#) メソッドまたは `unregisterReminderAsync`(Java) メソッドは、`IActorReminder`(C#) インターフェースまたは `ActorReminder`(Java) インターフェイスを受け入れます。 アクターの基本クラスは、アラーム名で渡すことで、`IActorReminder`(C#) インターフェイスまたは `ActorReminder`(Java) インターフェイスを取得できる `GetReminder`(C#) メソッドまたは `getReminder`(Java) メソッドをサポートします。 これにより、アクターが `RegisterReminder`(C#) メソッドまたは `registerReminder`(Java) メソッドの呼び出しから返された `IActorReminder`(C#) インターフェイスまたは `ActorReminder`(Java) インターフェイスを永続化する必要がなくなるため便利です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Reliable Actor のイベントと再入について学習します。
 * [アクター イベント](service-fabric-reliable-actors-events.md)
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)

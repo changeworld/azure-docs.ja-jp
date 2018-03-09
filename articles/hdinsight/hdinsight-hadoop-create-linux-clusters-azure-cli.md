@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/01/2017
+ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 0ae573922938b775900b839a24a917e4211fbadc
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 983e167d248d711efde9c64a70f59d5a9e81769a
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Azure CLI を使用した HDInsight クラスターの作成
 
@@ -29,8 +29,9 @@ ms.lasthandoff: 12/11/2017
 このドキュメントの手順では、Azure CLI 1.0 を使用して HDInsight 3.5 クラスターをプロセスを順を追って説明します。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
+> このトピックでは、Azure CLI 1.0 を使用して HDInsight クラスターを作成する方法について説明します。 このバージョンの CLI は非推奨となっています。また、Azure CLI 2.0 には、HDInsight クラスターの作成機能がまだ追加されていません。
+>
+> HDInsight クラスターの作成と管理は、Azure PowerShell を使用して行うこともできます。 詳しくは、[Azure PowerShell を使用した HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)に関するページをご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -41,7 +42,7 @@ ms.lasthandoff: 12/11/2017
 * **Azure CLI**。 このドキュメントの手順は、Azure CLI バージョン 0.10.14 で最後にテストされました。
 
     > [!IMPORTANT]
-    > このドキュメントの手順は、Azure CLI 2.0 では動作しません。 Azure CLI 2.0 では、HDInsight クラスターの作成がサポートされていません。
+    > Azure CLI 1.0 は非推奨となっています。また、Azure CLI 2.0 には、HDInsight クラスターの作成機能がまだ追加されていません。
 
 ## <a name="log-in-to-your-azure-subscription"></a>Azure サブスクリプションにログイン
 
@@ -127,7 +128,7 @@ PowerShell または Bash などのコマンド ラインから、次の手順�
 
 HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure CLI を使用して HDInsight クラスターを作成したら、クラスターの使用方法について、以下のトピックを参照してください。
 

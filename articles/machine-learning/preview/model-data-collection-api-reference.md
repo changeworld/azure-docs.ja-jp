@@ -4,18 +4,18 @@ description: "Azure Machine Learning モデル データ収集 API のリファ�
 services: machine-learning
 author: aashishb
 ms.author: aashishb
-manager: neerajkh
-ms.reviewer: garyericson, jasonwhowell, mldocs
+manager: hjerez
+ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 7a0fda8a44d13bcaba84b4124d9b693c05874154
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2de5e8bc8880fea5e7f57c88590e32a9fbb60ac6
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-model-data-collection-api-reference"></a>Azure Machine Learning モデル データ収集 API リファレンス
 
@@ -53,22 +53,22 @@ dc = ModelDataCollector(model_name, identifier='default', feature_names=None, mo
 クラスとパラメーターの詳細は以下のとおりです。
 
 ### <a name="class"></a>クラス
-| 名前 | Description |
+| Name | [説明] |
 |--------------------|--------------------|
 | ModelDataCollector | azureml.datacollector 名前空間のクラスです。 このクラスのインスタンスが、モデル データの収集に使われます。 1 つのスコア付けファイルに、複数の ModelDataCollector を含めることができます。 収集されるデータのスキーマの一貫性が保たれるように (つまり、入力と予測)、スコア付けファイルの 1 つの独立した場所でのデータ収集に、各インスタンスを使う必要があります。|
 
 
 ### <a name="parameters"></a>parameters
 
-| 名前 | 型 | Description |
+| Name | type | [説明] |
 |-------------|------------|-------------------------|
-| model_name | string | データが収集対象であるモデルの名前です。 |
-| identifier | string | このデータを示すコード内の場所です。つまり、"RawInput" または "Prediction" です。 |
+| model_name | 文字列 | データが収集対象であるモデルの名前です。 |
+| identifier | 文字列 | このデータを示すコード内の場所です。つまり、"RawInput" または "Prediction" です。 |
 | feature_names | string のリスト | 指定すると CSV のヘッダーになる機能の一覧です。 |
-| model_management_account_id | string | このモデルが格納されるモデル管理アカウントの識別子です。 これは、AML によりモデルが運用可能化されるときに自動的に設定されます。 |
-| webservice_name | string | このモデルが現在デプロイされている Web サービスの名前です。 これは、AML によりモデルが運用可能化されるときに自動的に設定されます。 |
-| model_id | string | モデル管理アカウントのコンテキストにおけるこのモデルの一意識別子です。 これは、AML によりモデルが運用可能化されるときに自動的に設定されます。 |
-| model_version | string | モデル管理アカウントのコンテキストにおけるこのモデルのバージョン番号です。 これは、AML によりモデルが運用可能化されるときに自動的に設定されます。 |
+| model_management_account_id | 文字列 | このモデルが格納されるモデル管理アカウントの識別子です。 これは、AML によりモデルが運用可能化されるときに自動的に設定されます。 |
+| webservice_name | 文字列 | このモデルが現在デプロイされている Web サービスの名前です。 これは、AML によりモデルが運用可能化されるときに自動的に設定されます。 |
+| model_id | 文字列 | モデル管理アカウントのコンテキストにおけるこのモデルの一意識別子です。 これは、AML によりモデルが運用可能化されるときに自動的に設定されます。 |
+| model_version | 文字列 | モデル管理アカウントのコンテキストにおけるこのモデルのバージョン番号です。 これは、AML によりモデルが運用可能化されるときに自動的に設定されます。 |
 
 
 
@@ -82,16 +82,16 @@ dc = ModelDataCollector(model_name, identifier='default', feature_names=None, mo
 
 メソッドとパラメーターの詳細は以下のとおりです。
 
-### <a name="method"></a>メソッド
-| 名前 | Description |
+### <a name="method"></a>方法
+| Name | [説明] |
 |--------------------|--------------------|
 | collect | モデルの入力または予測のデータを収集するために使います。|
 
 
 ### <a name="parameters"></a>parameters
 
-| 名前 | 型 | Description |
+| Name | type | [説明] |
 |-------------|------------|-------------------------|
 | input_data | 複数の型 | 収集対象のデータです (現在受け付けられる型: list、numpy.array、pandas.DataFrame、pyspark.sql.DataFrame)。 DataFrame 型の場合、機能名のヘッダーが存在すると、その情報が対象のデータに組み込まれます (ModelDataCollector コンストラクターで機能名を明示的に渡す必要はありません)。 |
-| user_correlation_id | string | オプションの相関 ID です。これは、この予測を関連付けるためにユーザーが提供できます。 |
+| user_correlation_id | 文字列 | オプションの相関 ID です。これは、この予測を関連付けるためにユーザーが提供できます。 |
 

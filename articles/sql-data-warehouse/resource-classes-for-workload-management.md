@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/23/2017
 ms.author: joeyong;barbkess;kavithaj
-ms.openlocfilehash: 122646f73b6e4e7c62eb0e6d4b6672b603d8acb2
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: c76fb73c9beda93c407d1af29e157682c7fe58c0
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="resource-classes-for-workload-management"></a>ワークロード管理用のリソース クラス
 Azure SQL Data Warehouse のクエリで、リソース クラスを使用して、同時に実行される同時クエリの数とコンピューティング リソース を管理するためのガイダンスです。
@@ -85,6 +85,11 @@ EXEC sp_droprolemember 'largerc', 'loaduser';
 
 サービス管理者のリソース クラスは固定され、変更できません。  サービス管理者はプロビジョニング プロセス中に作成されるユーザーです。
 
+> [!NOTE]
+> Active Directory 管理者として定義されたユーザーまたはグループは、サービス管理者でもあります。
+>
+>
+
 ### <a name="default-resource-class"></a>既定のリソース クラス
 既定では、各ユーザーは小規模リソース クラス **smallrc** のメンバーです。 
 
@@ -122,7 +127,7 @@ Removed as these two are not confirmed / supported under SQLDW
 - REDISTRIBUTE
 -->
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 お勧めするのは、特定の種類のクエリまたは読み込み操作を実行する専用のユーザーを作成することです。 頻繁にリソース クラスを変更する代わりに、そのユーザーに永続的なリソース クラスを指定します。 静的リソース クラスを指定すると、ワークロード全体が制御しやすくなります。さらに、動的リソース クラスを検討する前に、まず静的リソース クラスを使用することをお勧めします。
 
 ### <a name="resource-classes-for-load-users"></a>読み込みユーザー用のリソース クラス
@@ -501,7 +506,7 @@ GO
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 データベース ユーザーの管理とセキュリティの詳細については、「[SQL Data Warehouse でのデータベース保護][Secure a database in SQL Data Warehouse]」を参照してください。 大規模なリソース クラスを使用してクラスター化列ストア インデックスの品質を向上させる方法については、[列ストアを圧縮するためのメモリの最適化](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)に関する記事を参照してください。
 
 <!--Image references-->

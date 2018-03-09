@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/16/2018
+ms.date: 02/26/2018
 ms.author: vidarmsft
-ms.openlocfilehash: 8b0ff2c100878e568e0a4c67e79864006512bd78
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 4d27bc3660035ace25436a4f756c41e88200649d
+ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 02/28/2018
 ---
 # <a name="storsimple-data-manager-solution-overview"></a>StorSimple Data Manager ソリューションの概要
 
@@ -56,9 +56,9 @@ StorSimple Data Manager は、次の 7 つのリージョンで利用できま�
 
 ただし、StorSimple Data Manager は、以下のリージョンのデータの変換に使うことができます。 
 
-![データに利用可能なリージョン](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions.png)
+![データに利用可能なリージョン](./media/storsimple-data-manager-overview/data-manager-job-definition-different-regions-m.png)
 
-上のいずれかのリージョンにリソースを展開すると、下の一覧のリージョンで変換処理を開始できるため、下のセットの方が大きくなっています。 そのため、26 のリージョンのいずれかにデータが存在すれば、このサービスを使ってデータを変換できます。
+上のいずれかのリージョンにリソースを展開すると、下の一覧のリージョンで変換処理を開始できるため、下のセットの方が大きくなっています。 そのため、19 のリージョンのいずれかにデータが存在すれば、このサービスを使ってデータを変換できます。
 
 
 ## <a name="choosing-a-region"></a>リージョンの選択
