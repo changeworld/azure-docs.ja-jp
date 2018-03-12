@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/22/2018
+ms.date: 2/28/2018
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 0f3e28f7726afab02211902b5ba2e478ae8065df
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7f2ec78da38f3c97fde810fb8fc965cfbb6fda08
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="identity-architecture-for-azure-stack"></a>Azure Stack の ID アーキテクチャ
 Azure Stack で使用する ID プロバイダーを選択する前に、Azure Active Directory (Azure AD) と Active Directory フェデレーション サービス (AD FS) のオプションの重要な違いを理解してください。 
@@ -86,7 +86,7 @@ AD FS トポロジは、次のいずれかの条件に該当する場合に必�
 
   AD と対話するために、Graph API には、AD の読み取り専用アクセス許可を持つ AD ユーザーの資格情報が必要です。 
   - 組み込みの AD FS は、Server 2016 がベースになっています。 
-  - 使用する AD FS と AD は、Server 2012 またはそれ以前がベースである必要があります。 
+  - 使用する AD FS と AD は、Server 2012 またはそれ以降がベースである必要があります。  
   
   使用する AD と組み込み AD FS の間で、対話は OpenID Connect に限定されず、相互にサポートされている任意のプロトコルを使用できます。  
   - ユーザー アカウントは、オンプレミスの AD で作成され、管理されます。

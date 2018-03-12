@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: quickstart
 ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 50bb3f8ca1032e704b9805beb54fbd4ea4f8e7c1
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: feb99ae5bae16125d65a6c6e5776e6f3f286f0e3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用した Azure Database for PostgreSQL の作成
 Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して、Azure Database for PostgreSQL サーバーを [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)に作成する方法を説明します。
@@ -47,6 +47,26 @@ az group create --name myresourcegroup --location westus
 ```azurecli-interactive
 az extension add --name rdbms
 ``` 
+
+正しいバージョンの拡張機能がインストールされていることを確認します。 
+```azurecli-interactive
+az extension list
+```
+
+返される JSON には、次の内容が含まれている必要があります。 
+```json
+{
+    "extensionType": "whl",
+    "name": "rdbms",
+    "version": "0.0.3"
+}
+```
+
+バージョン 0.0.3 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
+```azurecli-interactive
+az extension update --name rdbms
+```
+
 ## <a name="create-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL サーバーの作成
 
 [az postgres server create](/cli/azure/postgres/server#az_postgres_server_create) コマンドを使用して、[Azure Database for PostgreSQL サーバー](overview.md)を作成します。 サーバーには、ひとまとめにして管理される一連のデータベースが含まれています。 
@@ -136,9 +156,9 @@ CREATE DATABASE mypgsqldb;
 \c mypgsqldb
 ```
 
-## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>pgAdmin を使用して PostgreSQL サーバーに接続
+## <a name="connect-to-the-postgresql-server-using-pgadmin"></a>pgAdmin を使用して PostgreSQL サーバーに接続する
 
-pgAdmin は PostgreSQL で使用されるオープン ソース ツールです。 [pgAdmin の Web サイト](http://www.pgadmin.org/)からインストールできます。 使用する pgAdmin バージョンは、このクイック スタートで使用されているものと異なる可能性があります。 追加のガイダンスが必要な場合は、pgAdmin ドキュメントをご覧ください。
+pgAdmin は PostgreSQL で使用されるオープンソース ツールです。 [pgAdmin の Web サイト](http://www.pgadmin.org/)からインストールできます。 使用する pgAdmin のバージョンは、このクイック スタートで使用されているものと異なる可能性があります。 追加のガイダンスが必要な場合は、pgAdmin のドキュメントをご覧ください。
 
 1. クライアント コンピューターで pgAdmin アプリケーションを開きます。
 
@@ -160,19 +180,19 @@ pgAdmin は PostgreSQL で使用されるオープン ソース ツールです�
     ユーザー名 | サーバー管理者ログイン名 | 前の手順で Azure Database for PostgreSQL サーバーを作成したときに指定したサーバー管理者ログイン ユーザー名。 ユーザー名を覚えていない場合は、前のセクションの手順に従って接続情報を取得してください。 形式は *username@servername* です。
     パスワード | 管理者パスワード | このクイック スタートでサーバーを作成したときに選択したパスワードです。
     役割 | 空白 | この時点でロール名を指定する必要はありません。 このフィールドは空白にしてください。
-    SSL モード | *必須* | PgAdmin の [SSL] タブで、SSL モードを設定できます。既定では、すべての Azure Database for PostgreSQL サーバーは SSL 適用がオンの状態で作成されます。 SSL 適用をオフにする方法については、[SSL の適用](./concepts-ssl-connection-security.md)に関する記事をご覧ください。
+    SSL モード | "*必須*" | pgAdmin の [SSL] タブで、SSL モードを設定できます。既定では、すべての Azure Database for PostgreSQL サーバーは SSL の強制がオンの状態で作成されます。 SSL の強制をオフにする方法については、[SSL の強制](./concepts-ssl-connection-security.md)に関する記事をご覧ください。
     
 5. **[保存]** を選択します。
 
 6. 左側の **[ブラウザー]** ウィンドウで **[サーバー]** ノードを展開します。 **mydemoserver** など、ご利用のサーバーを選択します。 クリックして接続します。
 
-7. サーバー ノードを展開し、その下の **[Databases]\(データベース\)** を展開します。 一覧にはご利用の既存の *postgres* データベースと、作成した他のデータベースすべてを含める必要があります。 Azure Database for PostgreSQL では、サーバーごとに複数のデータベースを作成できます。
+7. サーバー ノードを展開し、その下の **[Databases]\(データベース\)** を展開します。 一覧には既存の *postgres* データベースと、作成した他のデータベースすべてを含める必要があります。 Azure Database for PostgreSQL では、サーバーごとに複数のデータベースを作成できます。
 
 8. **[データベース]** を右クリックし、**[作成]** メニューを選択して **[データベース]** を選択します。
 
 9. **[データベース]** フィールドに、任意のデータベース名 (**mypgsqldb2** など) を入力します。
 
-10. データベースの**所有者**をリスト ボックスから選択します。 ご利用のサーバー管理者ログイン名 (例に示した **my admin** など) を選択します。
+10. データベースの**所有者**をリスト ボックスから選択します。 サーバー管理者ログイン名 (例に示した **my admin** など) を選択します。
 
    ![pgadmin でデータベースを作成する](./media/quickstart-create-server-database-azure-cli/11-pgadmin-database.png)
 

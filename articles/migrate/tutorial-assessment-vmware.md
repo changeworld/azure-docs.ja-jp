@@ -7,11 +7,11 @@ ms.topic: tutorial
 ms.date: 02/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 3c8d345d8846994ac1e286d977b62d9ae2b7d660
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: bbd08637894c43c543aeb8236f515e5ed9c5fc19
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="discover-and-assess-on-premises-vmware-vms-for-migration-to-azure"></a>Azure に移行するためにオンプレミスの VMware VM を検出して評価する
 
@@ -84,6 +84,14 @@ Azure Migrate は、コレクター アプライアンスと呼ばれるオン�
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - 使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. 生成されたハッシュは、次の設定と一致する必要があります。
+
+    OVA バージョン 1.0.9.5 の場合
+
+    **アルゴリズム** | **ハッシュ値**
+    --- | ---
+    MD5 | fb11ca234ed1f779a61fbb8439d82969
+    SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
+    SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
     
     OVA バージョン 1.0.9.2 の場合
 

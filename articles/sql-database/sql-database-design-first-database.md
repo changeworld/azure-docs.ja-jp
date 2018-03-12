@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 01/29/2018
 ms.author: carlrab
-ms.openlocfilehash: 5c5402c89091b84cd3b49815d892c9fa0d59e22a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 52ec8afa693e6ac3c8c73f070f748a01116ec68f
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="design-your-first-azure-sql-database"></a>最初の Azure SQL Database の設計
 
@@ -139,7 +139,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名を取得します。 その完全修飾サーバー名は、SQL Server Management Studio でのサーバーへの接続に使用します。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
+2. 左側のメニューの **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。
 
    ![接続情報](./media/sql-database-get-started-portal/server-name.png)

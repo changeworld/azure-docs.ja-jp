@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: tutorial
 ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 779e6b48a20dd49967a189293ed37b07bc5e1cda
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a609bbdf70599d0cceaf988a9a0bef51bc28716d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="design-your-first-azure-database-for-mysql-database"></a>最初の Azure Database for MySQL データベースを設計する
 
@@ -54,6 +54,26 @@ az group create --name myresourcegroup --location westus
 ```azurecli-interactive
 az extension add --name rdbms
 ``` 
+
+正しいバージョンの拡張機能がインストールされていることを確認します。 
+```azurecli-interactive
+az extension list
+```
+
+返される JSON には、次の内容が含まれている必要があります。 
+```json
+{
+    "extensionType": "whl",
+    "name": "rdbms",
+    "version": "0.0.3"
+}
+```
+
+バージョン 0.0.3 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
+```azurecli-interactive
+az extension update --name rdbms
+```
+
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 az mysql server create コマンドを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
 

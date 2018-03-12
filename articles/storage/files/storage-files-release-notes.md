@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: 9b6dfec6465482efcbf55d0441e44a0278f44a22
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5f57edb33770acd7a97287d5cfd650b7fe8366f4
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-file-sync-agent-release-notes"></a>Azure File Sync エージェントのリリース ノート
 Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
@@ -30,11 +30,25 @@ Azure File Sync でサポートされるバージョンは次のとおりです�
 
 | エージェントのバージョン番号 | リリース日 | サポート対象 |
 |----------------------|--------------|------------------|
+| 2.1.0.0 | 2018-02-28 | 現在のバージョン |
 | 2.0.11.0 | 2018-02-08 | 現在のバージョン |
 | 1.1.0.0 | 2017-09-26 | 2018-07-30 |
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-2100"></a>エージェント バージョン 2.1.0.0
+次のリリース ノートは、2018 年 2 月 28 日にリリースされたエージェント バージョン 2.1.0 のものです。 ここでは、バージョン 2.0.11.0 のリリース ノート (下記参照) に対する追加となる内容を紹介しています
+
+今月の更新プログラムに特有の変更は次のとおりです。
+- クラスター フェールオーバーの処理を改善しました。
+- 階層化ファイルの処理の信頼性を強化しました。
+- 2008R2 ドメイン環境に追加されたドメイン コントローラー マシンにエージェントをインストールできるようになりました。
+- 多くのファイルが存在するサーバーについて、診断が過剰に生成されていた問題を修正しました。
+- セッションの失敗のエラー処理を改善しました。
+- ファイル転送の問題のエラー処理を改善しました。
+- サーバー エンドポイントでクラウドへの階層化が有効になっている場合の階層化の実行間隔の既定値を 1 時間に変更しました。 
+- Azure File Sync (ストレージ同期サービス) のリソースを新しい Azure サブスクリプションに移行する操作は、一時的にブロックしています
 
 ## <a name="agent-version-20110"></a>エージェント バージョン 2.0.11.0
 次のリリース ノートは、2018 年 2 月 9 日にリリースされたエージェント バージョン 2.0.11.0 のものです。 

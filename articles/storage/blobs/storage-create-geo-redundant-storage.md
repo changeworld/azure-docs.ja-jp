@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.date: 02/20/2018
 ms.author: tamram
 ms.custom: mvc
-ms.openlocfilehash: 7b7625b3250d7e5b4cdb4090f34072eb58dda07c
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5b1c443cae8481d98c32a3f4d9e3899621d1dd89
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="make-your-application-data-highly-available-with-azure-storage"></a>Azure Storage を使用してアプリケーション データを高可用にする
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/22/2018
    | ------------ | ------------------ | ------------------------------------------------- |
    | **名前** | mystorageaccount | ストレージ アカウント用の一意の値 |
    | **デプロイ モデル** | リソース マネージャー  | Resource Manager には最新の機能が含まれています。|
-   | **アカウントの種類** | 汎用 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
+   | **アカウントの種類** | StorageV2 | アカウントの種類の詳細については、「[ストレージ アカウントの種類](../common/storage-introduction.md#types-of-storage-accounts)」を参照してください |
    | **パフォーマンス** | 標準 | このサンプル シナリオでは、標準で十分です。 |
    | **レプリケーション**| 読み取りアクセス geo 冗長ストレージ (RA-GRS) | サンプルが動作するには、この設定が必要です。 |
    |**安全な転送が必須** | 無効| このシナリオでは、安全な転送は必要ありません。 |
@@ -77,7 +77,7 @@ ms.lasthandoff: 02/22/2018
    |**ResourceGroup** | myResourceGroup |有効なリソース グループ名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 |
    |**場所** | 米国東部 | 場所を選択します。 |
 
-![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/figure1.png)
+![ストレージ アカウントの作成](media/storage-create-geo-redundant-storage/createragrsstracct.png)
 
 ## <a name="download-the-sample"></a>サンプルのダウンロード
 

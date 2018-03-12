@@ -11,18 +11,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 01/22/2018
+ms.date: 03/01/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: f7ec8872849ad7881fb46bca5831c2985d003c13
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0112e5bf53f24150708b9c03440cd6183601f069
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 
 このクイックスタートでは、Azure Databricks ワークスペースと、そのワークスペース内の Apache Spark クラスターを作成する方法を示します。 最後に、Databricks クラスターで Spark ジョブを実行する方法を説明します。 Azure Databricks の詳細については、「[Azure Databricks とは](what-is-azure-databricks.md)」を参照してください。
+
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
@@ -62,7 +64,8 @@ ms.lasthandoff: 02/21/2018
     ![Azure で Databricks Spark クラスターを作成する](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Azure で Databricks Spark クラスターを作成する")
 
     * クラスターの名前を入力します。
-    * **[Terminate after ___ minutes of activity]\(アクティビティが ___ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
+    * この記事では、**4.0 (ベータ)** ランタイムを使用してクラスターを作成します。 
+    * **[Terminate after ____ minutes of inactivity]\(アクティビティが ____ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
     * 他の値はすべて既定値のままにします。 
     * **[Create cluster]\(クラスターの作成\)** をクリックします。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
@@ -70,7 +73,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="run-a-spark-sql-job"></a>Spark SQL ジョブを実行する
 
-このセクションで始める前に、次のことを行う必要があります。
+このセクションで始める前に、次の前提条件を満たす必要があります。
 
 * [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)を作成します。 
 * [GitHub から](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)サンプルの JSON ファイルをダウンロードします。 
@@ -88,11 +91,27 @@ ms.lasthandoff: 02/21/2018
 
     **Create** をクリックしてください。
 
-3. 次のスニペットで、`{YOUR STORAGE ACCOUNT NAME}` を作成した Azure ストレージ アカウント名に、`{YOUR STORAGE ACCOUNT ACCESS KEY}` をストレージ アカウントのアクセス キーに置き換えます。 スニペットをノートブックの空のセルに貼り付け、Shift + Enter キーを押してコードのセルを実行します。 このスニペットは、Azure Blob Storage からデータを読み取るようにノートブックを構成します。
+3. この手順では、Azure Storage アカウントを Databricks Spark クラスターに関連付けます。 それには 2 つの方法があります。Azure Storage アカウントを Databricks Filesystem (DBFS) にマウントする方法と、作成したアプリケーションから Azure Storage アカウントに直接アクセスする方法です。  
 
-       spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
-    
-    ストレージ アカウント キーを取得する方法については、「[ストレージ アクセス キーの管理](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」をご覧ください。
+    > [!IMPORTANT]
+    >この記事では、**DBFS のストレージにマウントする方法**を使用します。 この方法では、マウントされたストレージがクラスター ファイル システム自体に確実に関連付けられます。 そのため、クラスターにアクセスするすべてのアプリケーションが、関連付けられているストレージも使用できます。 直接アクセスする方法は、アクセスの構成を行うアプリケーションに限定されます。
+    >
+    > マウントする方法を使用するには、Databricks ランタイム バージョン **4.0 (ベータ)** で Spark クラスターを作成する必要があります。これは、この記事で選択したバージョンです。
+
+    次のスニペットで、`{YOUR CONTAINER NAME}`、`{YOUR STORAGE ACCOUNT NAME}`、および `{YOUR STORAGE ACCOUNT ACCESS KEY}` を Azure Storage アカウントの適切な値に置き換えてください。 スニペットをノートブックの空のセルに貼り付け、Shift + Enter キーを押してコードのセルを実行します。
+
+    * **DBFS を使用してストレージ アカウントにマウントする (推奨)**。 このスニペットでは、Azure Storage アカウントのパスが `/mnt/mypath` にマウントされています。 そのため、今後 Azure Storage アカウントにアクセスする場合は、完全なパスを指定する必要はありません。 単に `/mnt/mypath` を使用することができます。
+
+          dbutils.fs.mount(
+            source = "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/",
+            mountPoint = "/mnt/mypath",
+            extraConfigs = Map("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net" -> "{YOUR STORAGE ACCOUNT ACCESS KEY}"))
+
+    * **ストレージ アカウントに直接アクセスする**
+
+          spark.conf.set("fs.azure.account.key.{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net", "{YOUR STORAGE ACCOUNT ACCESS KEY}")
+
+    ストレージ アカウント キーを取得する方法については、「[ストレージ アクセス キーの管理](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
     > [!NOTE]
     > Azure Databricks 上の Spark クラスターで Azure Data Lake Store を使うこともできます。 方法については、[Azure Databricks での Data Lake Store の使用に関するページ](https://go.microsoft.com/fwlink/?linkid=864084)をご覧ください。
@@ -101,10 +120,11 @@ ms.lasthandoff: 02/21/2018
 
     ```sql
     %sql 
-    CREATE TEMPORARY TABLE radio_sample_data
+    DROP TABLE IF EXISTS radio_sample_data
+    CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
-     path "wasbs://{YOUR CONTAINER NAME}@{YOUR STORAGE ACCOUNT NAME}.blob.core.windows.net/small_radio_json.json"
+     path "/mnt/mypath/small_radio_json.json"
     )
     ```
 

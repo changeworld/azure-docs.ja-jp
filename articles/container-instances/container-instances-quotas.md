@@ -6,13 +6,13 @@ author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 01/11/2018
+ms.date: 02/27/2018
 ms.author: marsma
-ms.openlocfilehash: baf93d4a2a4ba1e05bbf558d0c056fa3aa833fef
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 008b07402cb0b937174488982cac64811baa5d5d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quotas-and-region-availability-for-azure-container-instances"></a>Azure Container Instances のクォータとリージョンの可用性
 
@@ -28,10 +28,14 @@ Azure Container Instances は、指定された CPU とメモリ制限を備え�
 
 | 場所 | OS | CPU | メモリ (GB) |
 | -------- | -- | :---: | :-----------: |
-| 西ヨーロッパ、米国西部、米国東部、東南アジア | Linux | 4 | 14 |
-| 西ヨーロッパ、米国西部、米国東部、東南アジア  | Windows | 4 | 14 |
+| 西ヨーロッパ、米国西部、米国東部 | Linux | 4 | 14 |
+| 東南アジア  | Linux | 1 | 1.5 |
+| 西ヨーロッパ、米国西部、米国東部 | Windows | 4 | 14 |
+| 東南アジア  | Windows | 2 | 3.5 |
 
 これらのリソース制限内で作成されたコンテナー インスタンスは、デプロイ リージョン内での利用の対象になります。 リージョンでの負荷が高い場合、インスタンスのデプロイ時に失敗することがあります。 このようなデプロイの失敗を減らすために、より低い CPU とメモリの設定でインスタンスをデプロイしてみるか、デプロイを後で試してみてください。
+
+[aka.ms/aci/feedback](https://aka.ms/aci/feedback).で、リージョンの追加の必要性または CPU/メモリ制限の増加についてチームにお知らせください。
 
 コンテナー インスタンスのデプロイに関するトラブルシューティングの詳細については、「[Azure Container Instances でのデプロイに関する問題をトラブルシューティングする](container-instances-troubleshooting.md)」をご覧ください。
 

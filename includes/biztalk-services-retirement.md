@@ -1,10 +1,27 @@
+---
+title: "インクルード ファイル"
+description: "インクルード ファイル"
+services: biztalk-services
+author: MandiOhlinger
+ms.service: biztalk-services
+ms.topic: include
+ms.date: 11/09/2017
+ms.author: mandia
+ms.custom: include file
+ms.openlocfilehash: 81e053c8258d24177d5c7ea499595c4dd4a3b0f0
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/05/2018
+---
 > [!IMPORTANT]
-> Microsoft Azure BizTalk Services (MABS) は提供終了となり、Azure Logic Apps に置き換えられます。 現在 MABS を使用している場合は、「[Move from BizTalk Services to Logic Apps (BizTalk Services から Logic Apps への)](../articles/logic-apps/logic-apps-move-from-mabs.md)」をご覧ください。ご利用の統合ソリューションを Logic Apps に移行する方法のガイダンスが記載されています。 
+> Microsoft Azure BizTalk Services (MABS) は提供終了となり、Azure Logic Apps に置き換えられます。
+> 現在 MABS を使用している場合、統合ソリューションを Logic Apps に移行するためのガイダンスについては、[BizTalk Services から Logic Apps への移行](../articles/logic-apps/logic-apps-move-from-mabs.md)に関する記事を参照してください。 
 > 
-> Logic Apps を初めてご利用になる場合は、まず次のページをご覧になることをお勧めします。 
+> Logic Apps を初めて使用する場合は、まず、以下のページを参照してください。 
 > 
-> - [ロジック アプリとは](../articles/logic-apps/logic-apps-what-are-logic-apps.md)  
+> * [Azure Logic Apps とは](../articles/logic-apps/logic-apps-overview.md)  
 > 
-> - [初めてのロジック アプリの作成](../articles/logic-apps/logic-apps-create-a-logic-app.md)または[既製のテンプレート](../articles/logic-apps/logic-apps-use-logic-app-templates.md)の使い方に関するページ  
+> * [初めてのロジック アプリの作成](../articles/logic-apps/quickstart-create-first-logic-app-workflow.md)または[既製のテンプレート](../articles/logic-apps/logic-apps-use-logic-app-templates.md)の使い方に関するページ
 > 
-> - ロジック アプリで[利用できるすべてのコネクタの一覧](../articles/connectors/apis-list.md)
+> * ロジック アプリで利用できる[すべてのコネクタの一覧](../articles/connectors/apis-list.md)

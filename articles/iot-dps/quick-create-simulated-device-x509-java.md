@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: d966a1ce5f30531668c05e68bfe709057c6dee35
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7e4ad361df8a37d4a82c1bc50c6fb134a1ad5159
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -76,6 +76,9 @@ ms.lasthandoff: 02/09/2018
 
         1. _[Do you want to input Verification Code]\(確認コードを入力しますか\)_ に「**Y**」と入力し、クイックスタートで後で使用できるようにプログラムを開いたままにします。 _[Client Cert]\(クライアント証明書\)_、_[Client Cert Private Key]\(クライアント証明書の秘密キー\)_、_[Signer Cert]\(署名者証明書\)_、および _[Root Cert]\(ルート証明書\)_ の値をメモします。
 
+        > [!NOTE]
+        > 上の `Root Cert` は、コンソールの出力で作成された証明書にのみ適用します。その後追加されるクライアント証明書に対する署名には使用できません。 さらに堅牢なテスト証明書のセットが必要な場合には、「[Managing CA Certificates Sample (CA 証明書の管理のサンプル)](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」を参照してください。
+        >
 
 ## <a name="create-a-device-enrollment-entry"></a>デバイス登録エントリを作成する
 
@@ -189,7 +192,7 @@ ms.lasthandoff: 02/09/2018
             String rootPem = "<Your Root Certificate here>";
                 
             signerCertificates.add(intermediatePem);
-            signerCertificates.add(root);
+            signerCertificates.add(rootPem);
             ```
     
             - 次の形式で証明書を含めます。

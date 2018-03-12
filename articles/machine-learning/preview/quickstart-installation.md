@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 2/22/2018
-ms.openlocfilehash: 186a7b5632c1680e80e087e8f855eaacf3448207
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 33ced510dc9579248b75fb21520d55bd747a6a5c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>クイック スタート: Azure Machine Learning サービスのインストールと基本操作
 Azure Machine Learning サービス (プレビュー) は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -29,7 +29,9 @@ Azure Machine Learning サービス (プレビュー) は、統合されたエ�
 * コマンド ライン インターフェイス (CLI) にアクセスする
 
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+Azure Machine Learning サービスは Microsoft Azure のポートフォリオの一部であるため、ご利用には Azure サブスクリプションが必要です。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+また、リソース グループや仮想マシンなどのアセットを作成するための適切な権限も必要になります。 
 
 <a name="prerequisites"></a>Azure Machine Learning Workbench アプリケーションは、次のオペレーティング システムにインストールできます。
 - Windows 10 または Windows Server 2016
@@ -63,7 +65,7 @@ Azure Portal を使用して Azure Machine Learning アカウントをプロビ�
    場所 | _ユーザーに最も近いリージョン_ | ユーザーとデータ リソースに最も近い場所を選択します。
    [Number of seats]\(シート数\) | 2 | 接続クライアント数を入力します。 [シートあたりの価格](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。<br/><br/>このクイック スタートで必要なシート数は 2 つだけです。 シートは、必要に応じて Azure Portal から追加したり削除したりすることができます。
    ストレージ アカウント | "_一意の名前_" | **[新規作成]** を選択し、[Azure Storage アカウント](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal)を作成するための名前を指定します。 または、**[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のストレージ アカウントを選択します。 このストレージ アカウントは、プロジェクト アーティファクトと実行履歴データを保持するために必要であり、そのために使用されます。 
-   [Workspace for Experimentation account]\(実験アカウントのワークスペース\) | IrisGarden | このアカウントのワークスペースの名前を指定します。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
+   [Workspace for Experimentation account]\(実験アカウントのワークスペース\) | IrisGarden<br/>(チュートリアルで使用する名前) | このアカウントのワークスペースの名前を指定します。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
    [Assign owner for the workspace]\(ワークスペースの所有者の割り当て\) | "_自分のアカウント_" | ご自身のアカウントをワークスペースの所有者として選択します。
    [Create Model Management account]\(モデル管理アカウントを作成する\) | **check** |リアルタイム Web サービスとしてモデルをデプロイしたり管理したりする必要が生じたときにこのリソースが利用できるよう、ここでモデル管理アカウントを作成しておきます。 <br/><br/>必須ではありませんが、モデル管理アカウントは実験アカウントと同時に作成することをお勧めします。
    アカウント名 | "_一意の名前_" | モデル管理アカウントを識別する一意の名前を選択します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 

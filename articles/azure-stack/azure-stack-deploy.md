@@ -1,6 +1,6 @@
 ---
-title: "Azure Stack 開発キットのデプロイの前提条件 | Microsoft Docs"
-description: "Azure Stack 開発キットの環境とハードウェアの要件を確認できます (クラウド オペレーター)。"
+title: "Azure Stack Development Kit のデプロイの前提条件 | Microsoft Docs"
+description: "Azure Stack Development Kit の環境とハードウェアの要件を確認できます (クラウド オペレーター)。"
 services: azure-stack
 documentationcenter: 
 author: jeffgilb
@@ -12,20 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2017
+ms.date: 03/02/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 0fa0d00112e731a9f2effd453ba74f5561fca358
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 03682e7f5867360cc3d854f0dff2bc5d1c1c9619
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack のデプロイの前提条件
 
-*適用対象: Azure Stack 開発キット*
+*適用対象: Azure Stack Development Kit*
 
-[Azure Stack Development Kit](azure-stack-poc.md) をデプロイする前に、コンピューターが次の要件を満たしていることを確認してください。
+[Azure Stack Development Kit (ASDK)](azure-stack-poc.md) をデプロイする前に、開発キットのホスト コンピューターがこの記事で説明されている要件を満たしていることを確認してください。
 
+> [!NOTE]
+> ASDK は、物理ホスト コンピューターにインストールする必要があります。 Azure VM への ASDK のインストールはサポートされていません。
 
 ## <a name="hardware"></a>ハードウェア
 | コンポーネント | 最小値 | 推奨 |
@@ -90,10 +92,10 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
    
    | **Azure Active Directory アカウント** | **サポートの有無** |
    | --- | --- |
-   | 有効なパブリック Azure サブスクリプションのある職場または学校アカウント |あり |
-   | 有効なパブリック Azure サブスクリプションの Microsoft アカウント |あり |
-   | 有効な中国の Azure サブスクリプションのある職場または学校アカウント |あり |
-   | 有効な米国政府の Azure サブスクリプションのある職場または学校アカウント |あり |
+   | 有効なパブリック Azure サブスクリプションのある職場または学校アカウント |[はい] |
+   | 有効なパブリック Azure サブスクリプションの Microsoft アカウント |[はい] |
+   | 有効な中国の Azure サブスクリプションのある職場または学校アカウント |[はい] |
+   | 有効な米国政府の Azure サブスクリプションのある職場または学校アカウント |[はい] |
 
 ## <a name="network"></a>ネットワーク
 ### <a name="switch"></a>スイッチ
@@ -123,8 +125,7 @@ NIC を接続するネットワークで使用できる DHCP サーバーがあ�
 Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレスによって) MAS-BGPNAT01 に割り当てられた IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
 
 
-## <a name="next-steps"></a>次のステップ
-[Azure Stack 開発キット デプロイ パッケージをダウンロードする](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
+## <a name="next-steps"></a>次の手順
+[Azure Stack Development Kit デプロイ パッケージをダウンロードする](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
-[Azure Stack 開発キットをデプロイする](azure-stack-run-powershell-script.md)
-
+[Azure Stack Development Kit をデプロイする](azure-stack-run-powershell-script.md)

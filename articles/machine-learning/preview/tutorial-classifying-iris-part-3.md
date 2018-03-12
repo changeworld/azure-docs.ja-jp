@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 02/28/2018
-ms.openlocfilehash: d7e07104153aed36a3e426e053847551d2b2093c
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 761e7193cc64699e8aa25a1fd625ba45f65eed88
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>チュートリアル: あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
 
-このチュートリアルは、3 部構成のシリーズのパート 3 になります。 チュートリアルのこのパートでは、Machine Learning (プレビュー) を使って次の作業を行います。
+このチュートリアルは、**3 部構成のシリーズのパート 3** になります。 チュートリアルのこのパートでは、Machine Learning (プレビュー) を使って次の作業を行います。
 
 > [!div class="checklist"]
 > * モデル ファイルを探す

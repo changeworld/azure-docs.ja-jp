@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 03/01/2018
 ms.author: jgao
-ms.openlocfilehash: a96612e09e51db8941a7828f8fe9cb7bbced837d
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 11c0a583ab671b27a5c5a65c4bb36032a8582466
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="hadoop-tutorial-get-started-using-hadoop-in-hdinsight"></a>Hadoop チュートリアル: HDInsight で Hadoop を使用する
 
-この記事では、[Hadoop](http://hadoop.apache.org/) クラスターを HDInsight で作成する方法と、HDInsight で Hive ジョブを実行する方法について説明します。 [Apache Hive](https://hive.apache.org/) は Hadoop エコシステムで最もよく使用されているコンポーネントです。 現在、HDInsight には [7 種類のクラスター](apache-hadoop-introduction.md#overview)が用意されています。 クラスターの種類はそれぞれ異なるコンポーネント セットをサポートしていますが、 Hive は全種類のクラスターでサポートされています。 HDInsight でサポートされているコンポーネントの一覧については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](../hdinsight-component-versioning.md)」を参照してください。  
+この記事では、[Hadoop](http://hadoop.apache.org/) クラスターを HDInsight で作成する方法と、HDInsight で Hive ジョブを実行する方法について説明します。 [Apache Hive](https://hive.apache.org/) は Hadoop エコシステムで最もよく使用されているコンポーネントです。 現在、HDInsight には [7 種類のクラスター](./apache-hadoop-introduction.md#cluster-types-in-hdinsight)が用意されています。 クラスターの種類はそれぞれ異なるコンポーネント セットをサポートしていますが、 Hive は全種類のクラスターでサポートされています。 HDInsight でサポートされているコンポーネントの一覧については、「[HDInsight で提供される Hadoop クラスター バージョンの新機能](../hdinsight-component-versioning.md)」を参照してください。  
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
@@ -45,16 +45,16 @@ Hadoop ジョブのほとんどはバッチ ジョブです。 クラスター�
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-ssh-password%2Fazuredeploy.json" target="_blank"><img src="./media/apache-hadoop-linux-tutorial-get-started/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
 2. 次の値を入力または選択します。
-   
-    ![HDInsight Linux の使用。ポータルの Resource Manager テンプレート](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "Azure Portal とリソース グループ マネージャー テンプレートを使用して HDInsight で Hadoop クラスターをデプロイする")。
-   
+
     * **[サブスクリプション]**: Azure サブスクリプションを選択します。
     * **[リソース グループ]**: リソース グループを作成するか、既存のリソース グループを選択します。  リソース グループとは、Azure コンポーネントのコンテナーです。  この場合、リソース グループには、HDInsight クラスターおよび依存する Azure ストレージ アカウントが含まれています。 
     * **[場所]**: クラスターを作成する Azure の場所を選択します。  パフォーマンスを向上させるため、お近くの場所を選択してください。 
     * **クラスターの種類**: このチュートリアルでは、**hadoop** を選択します。
     * **[クラスター名]**: Hadoop クラスターの名前を入力します。 HDInsight のすべてのクラスターでは同じ DNS 名前空間が共有されるため、この名前は一意である必要があります。 この名前は、文字、数字、ハイフンを含む最大 59 文字で構成できます。 名前の先頭と末尾の文字をハイフンにすることはできません。
-    * **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。
-    * **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。  この名前は変更できます。 
+    * **クラスターのログイン名とパスワード**: 既定のログイン名は **admin** です。パスワードは 10 文字以上で、数字、大文字、小文字、英数字以外の文字 (' " ` を除く\) が少なくとも 1 つずつ含まれる必要があります。 
+    * **SSH ユーザー名とパスワード**: 既定のユーザー名は **sshuser** です。  SSH ユーザー名は、変更が可能です。  SSH ユーザーのパスワードには、クラスターのログイン パスワードと同じ要件が適用されます。   
+   
+    ![HDInsight Linux の使用。ポータルの Resource Manager テンプレート](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-linux-get-started-arm-template-on-portal.png "Azure Portal とリソース グループ マネージャー テンプレートを使用して HDInsight で Hadoop クラスターをデプロイする")。
      
     一部のプロパティは、テンプレートにハードコーディングされています。  これらの値はテンプレートから構成することができます。
     
@@ -124,9 +124,11 @@ Hive ジョブが完了したら、[結果を Azure SQL データベースまた
 
 **クラスターと既定のストレージ アカウントを削除するには、次の手順に従います。**
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
-2. ポータルのダッシュボードで、クラスターの作成時に使用したリソース グループ名が表示されているタイルをクリックします。
-3. クラスターと既定のストレージ アカウントが含まれたリソース グループを削除するには、**[リソース グループの削除]** をクリックします。または、**[リソース]** タイルでクラスター名をクリックしてから、**[削除]** をクリックします。 リソース グループを削除するとストレージ アカウントも削除されます。 ストレージ アカウントを残しておく場合は、クラスターのみを削除してください。
+1. ブラウザーの Azure Portal を開いているタブに戻ります。 [クラスターの概要] ページが表示されているはずです。 必要な操作がクラスターの削除だけで、既定のストレージ アカウントをそのまま保持する場合には、**[削除]** をクリックします。
+
+    ![HDInsight におけるクラスターの削除](./media/apache-hadoop-linux-tutorial-get-started/hdinsight-delete-cluster.png "HDInsight クラスターの削除")
+1. 画面右側で (上のスクリーンショットで強調表示している) リソース グループ名をクリックし、リソース グループのページを開きます。
+2. クラスターと既定のストレージ アカウントが含まれたリソース グループを削除するには、**[リソース グループの削除]** をクリックします。または、**[リソース]** タイルでクラスター名をクリックしてから、**[削除]** をクリックします。 リソース グループを削除するとストレージ アカウントも削除されます。 ストレージ アカウントを残しておく場合は、クラスターのみを削除してください。
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
