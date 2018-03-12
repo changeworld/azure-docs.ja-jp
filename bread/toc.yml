@@ -18,6 +18,9 @@
         - name: Privileged Identity Management
           tocHref: /azure/active-directory/privileged-identity-management/
           topicHref: /azure/active-directory/privileged-identity-management/
+        - name: 管理対象のサービス ID
+          tocHref: /azure/active-directory/managed-service-identity/
+          topicHref: /azure/active-directory/managed-service-identity/
     - name: Active Directory B2C
       tocHref: /azure/active-directory-b2c/
       topicHref: /azure/active-directory-b2c/
@@ -101,7 +104,7 @@
     - name: サポート
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
-    - name: Backup
+    - name: バックアップ
       tocHref: /azure/backup/
       topicHref: /azure/backup/
     - name: Batch

@@ -17,11 +17,11 @@ metadata:
   ms.technology: azure
   ms.devlang: multiple
   ms.service: multiple
-  ms.openlocfilehash: 1ef8924da3622ae853c88c19c4dc82b13e889f6d
-  ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+  ms.openlocfilehash: c455ee4d6c315de9d2366ff9a9d672639c1026cf
+  ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/23/2018
+  ms.lasthandoff: 03/09/2018
 sections:
 - items:
   - type: markdown
@@ -84,7 +84,7 @@ sections:
     style: unordered
     items:
     - html: "<a href=\"https://azure.microsoft.com/resources/samples/app-service-java-deploy-image-from-acr-to-linux/\">App Service を使ってみる - Container Registry を使って Linux Web アプリを管理する (Java)</a>"
-    - html: "<a href=\"https://azure.microsoft.com/resources/samples/service-fabric-dotnet-containers/\">Service Fabric コンテナーのサンプル</a>"
+    - html: "<a href=\"https://azure.microsoft.com/resources/samples/service-fabric-containers/\">Service Fabric コンテナーのサンプル</a>"
     - html: "<a href=\"https://azure.microsoft.com/resources/samples/container-service-python-manage/\">Azure クラスターに Docker コンテナーをデプロイして接続する</a>"
 - title: "ステップバイステップのチュートリアル"
   items:

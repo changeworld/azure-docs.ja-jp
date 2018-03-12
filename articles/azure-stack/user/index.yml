@@ -14,11 +14,11 @@ metadata:
   ms.topic: landing-page
   ms.date: 10/02/2017
   ms.author: carolz
-  ms.openlocfilehash: 6ab2ecc6e2082939b51eef8a95fe68a9303ab47c
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: 5a4a9b6ad3a1de27a722a6b5b250e68aa72e52e7
+  ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 03/09/2018
 abstract:
   description: "Azure Stack は、会社またはサービス プロバイダーのデータセンターからの Azure サービスの使用を可能にするハイブリッド クラウド プラットフォームです。 開発者は Azure Stack でアプリを作成できます。 その後、そのアプリを Azure Stack と Azure にデプロイできます。また、Azure Stack クラウドと Azure 間の接続を利用するハイブリッド アプリを作成することもできます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、リソースを作成し、アプリをデプロイする方法を確認してください。<br/><br/>インフラストラクチャの管理およびサービスの提供を行う Azure Stack オペレーターは、<a href=\"/azure/azure-stack/\">オペレーター ドキュメント</a>を参照してください。"
 sections:
@@ -66,11 +66,11 @@ sections:
     style: ordered
     items:
     - html: "<a href=\"/azure/azure-stack/user/azure-stack-solution-pipeline\">Azure Stack と Azure にアプリをデプロイする</a>"
-- title: "参照"
+- title: "リファレンス"
   items:
   - type: list
     style: cards
     className: cardsD
     items:
     - title: "コマンド ライン"
-      html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/?view=azure-cli-2017-03-09-profile">Azure Stack CLI</a></p>
+      html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p><p><a href="/cli/azure/reference-index?view=azure-cli-2017-03-09-profile">Azure Stack CLI</a></p>

@@ -20,6 +20,10 @@
 ## [バックアップと復元](analysis-services-backup.md)
 ## [REST API を使用した更新](analysis-services-async-refresh.md)
 ## [スケールアウトの構成](analysis-services-scale-out.md)
+## 管理タスクの自動化
+### [サービス プリンシパルの作成 - Azure Portal](../azure-resource-manager/resource-group-create-service-principal-portal.md)
+### [サービス プリンシパルの作成 - PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md)
+### [サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)
 ## サーバー管理
 ### [サーバー名の別名の構成](analysis-services-server-alias.md)
 ### [サーバーの管理](analysis-services-manage.md)

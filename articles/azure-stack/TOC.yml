@@ -10,6 +10,8 @@
           href: azure-stack-asdk-release-notes.md
         - name: 統合システムのリリース ノート
           items:
+            - name: 1802 更新プログラム
+              href: azure-stack-update-1802.md
             - name: 1712 更新プログラム
               href: azure-stack-update-1712.md
             - name: 1711 更新プログラム
@@ -133,14 +135,18 @@
           href: azure-stack-monitor-health.md
         - name: ネットワーク リソースの管理
           href: azure-stack-viewing-public-ip-address-consumption.md
-        - name: ストレージ リソースの管理
-          href: azure-stack-manage-storage-accounts.md
-        - name: ストレージ容量の管理
-          href: azure-stack-manage-storage-shares.md
         - name: Windows Azure Pack VM の管理
           href: azure-stack-manage-windows-azure-pack.md
         - name: Azure Stack の開始および停止
           href: azure-stack-start-and-stop.md
+        - name: 容量の管理
+          items:
+            - name: ストレージ リソースの管理
+              href: azure-stack-manage-storage-accounts.md
+            - name: ストレージ容量の管理
+              href: azure-stack-manage-storage-shares.md
+            - name: Azure Stack の物理ストレージ容量を管理する
+              href: azure-stack-manage-storage-physical-capacity.md
         - name: ハードウェアの交換
           items:
             - name: ノード アクション

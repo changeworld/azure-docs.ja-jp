@@ -45,12 +45,14 @@
       href: sql-database-design-first-database.md
     - name: 1 - .NET を使用して DB を設計する
       href: sql-database-design-first-database-csharp.md
-    - name: 2 - SQL Server DB の移行
+    - name: 2 - SQL Server DB への移行
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 - SQL DB をセキュリティ保護する
       href: sql-database-security-tutorial.md
     - name: 4 - 地理的に分散したデータベースの実装
       href: sql-database-implement-geo-distributed-database.md
+    - name: 5 - マネージ インスタンスの作成
+      href: sql-database-managed-instance-tutorial-portal.md
 - name: サンプル
   items:
     - name: コード サンプル
@@ -61,26 +63,26 @@
       href: sql-database-powershell-samples.md
 - name: 概念
   items:
-    - name: データベース サービス
-      items:
-        - name: サーバーとデータベース
-          href: sql-database-servers-databases.md
-        - name: サービス階層
-          href: sql-database-service-tiers.md
-        - name: リソース制限
-          href: sql-database-resource-limits.md
-        - name: Single Database
-          href: sql-database-single-database-resources.md
-        - name: エラスティック プール
-          href: sql-database-elastic-pool.md
-        - name: 接続のアーキテクチャ
-          href: sql-database-connectivity-architecture.md
-        - name: DTU と eDTU
-          href: sql-database-what-is-a-dtu.md
-        - name: DTU ベンチマーク
-          href: sql-database-benchmark-overview.md
-        - name: SQL Server の共通機能
-          href: sql-database-features.md
+    - name: サーバーとデータベース
+      href: sql-database-servers-databases.md
+    - name: マネージ インスタンス
+      href: sql-database-managed-instance.md
+    - name: サービス階層
+      href: sql-database-service-tiers.md
+    - name: リソース制限
+      href: sql-database-resource-limits.md
+    - name: Single Database
+      href: sql-database-single-database-resources.md
+    - name: エラスティック プール
+      href: sql-database-elastic-pool.md
+    - name: 接続のアーキテクチャ
+      href: sql-database-connectivity-architecture.md
+    - name: DTU と eDTU
+      href: sql-database-what-is-a-dtu.md
+    - name: DTU ベンチマーク
+      href: sql-database-benchmark-overview.md
+    - name: SQL Server の共通機能
+      href: sql-database-features.md
     - name: 高可用性
       href: sql-database-high-availability.md
     - name: セキュリティ
@@ -101,8 +103,10 @@
           href: sql-database-ssms-mfa-authentication.md
         - name: 監査
           href: sql-database-auditing.md
-        - name: 脅威の検出
+        - name: 脅威の検出 - SQL Database
           href: sql-database-threat-detection.md
+        - name: 脅威の検出 - マネージ インスタンス
+          href: sql-database-managed-instance-threat-detection.md
         - name: テーブルの監査と TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
         - name: 動的データ マスク
@@ -137,11 +141,15 @@
           href: sql-database-disaster-recovery-drills.md
     - name: SQL Database への移行
       items:
-        - name: 概要
+        - name: SQL Database への移行
           href: sql-database-cloud-migrate.md
-        - name: T-SQL の変更
+        - name: マネージ インスタンスへの移行
+          href: sql-database-managed-instance-migrate.md
+        - name: SQL Database T-SQL の詳細
           href: sql-database-transact-sql-information.md
-        - name: 移行後のデータベースの管理
+        - name: マネージ インスタンス T-SQL の詳細
+          href: sql-database-managed-instance-transact-sql-information.md
+        - name: 移行後の SQL Database の管理
           href: sql-database-manage-after-migration.md
     - name: データの読み込みと移動
       items:
@@ -265,6 +273,16 @@
           href: sql-database-elastic-query-horizontal-partitioning.md
         - name: スキーマが異なるテーブル間のクエリ
           href: sql-database-elastic-query-vertical-partitioning.md
+    - name: マネージ インスタンス
+      items:
+        - name: VNet 構成
+          href: sql-database-managed-instance-vnet-configuration.md
+        - name: '[カスタム DNS]'
+          href: sql-database-managed-instance-custom-dns.md
+        - name: アプリケーションの接続
+          href: sql-database-managed-instance-connect-app.md
+        - name: ネットワーク構成の同期
+          href: sql-database-managed-instance-sync-network-configuration.md
     - name: セキュリティ
       items:
         - name: Azure AD 認証の構成
@@ -472,4 +490,4 @@
     - name: アーキテクチャ センター
       href: /azure/architecture/
     - name: 顧客事例
-      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'
+      href: 'https://customers.microsoft.com/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'

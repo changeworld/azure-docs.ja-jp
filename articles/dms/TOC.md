@@ -6,6 +6,7 @@
 
 # チュートリアル
 ## [SQL Server を Azure SQL DB に移行する](tutorial-sql-server-to-azure-sql.md)
+## [SQL Server を Azure SQL DB マネージ インスタンスに移行する](tutorial-sql-server-to-managed-instance.md)
 
 # ハウツー ガイド
 ## [PowerShell を使用した SQL Server の移行](howto-sql-server-to-azure-sql-powershell.md)
@@ -19,4 +20,4 @@
 ## [前提条件の概要](pre-reqs.md)
 ## [FAQ](faq.md)
 ## [サービスの更新情報](https://azure.microsoft.com/en-us/updates/?product=database-migration)
-
+## [Azure SQL DB マネージ インスタンスへの移行のネットワーク トポロジ](resource-network-topologies.md)

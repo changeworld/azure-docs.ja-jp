@@ -6,7 +6,7 @@
 ## [主要な概念](azure-operations-guide.md#azure-key-concepts)
 ### [Microsoft Azure ポータルの概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) 
 ### [ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)
-### [Azure PowerShell のインストールおよび構成方法](/powershell/azure/install-azurerm-ps)
+### [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)
 ### [Azure CLI のインストール](/cli/azure/install-azure-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure REST SDK リファレンス](https://docs.microsoft.com/rest/api/index)
 
@@ -16,7 +16,7 @@
 ### [オンライン料金計算ツール](http://azure.microsoft.com/pricing/calculator)
 ### [課金アラートのセットアップ](../../billing/billing-set-up-alerts.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
-## [Azure リソース マネージャー](azure-operations-guide.md#azure-resource-manager)
+## [Azure Resource Manager](azure-operations-guide.md#azure-resource-manager)
 
 ### [Azure リソース マネージャーのテンプレートの作成](../../resource-group-authoring-templates.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ###[Azure ポータルを使用したテンプレートのデプロイ](../../azure-resource-manager/resource-group-template-deploy-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -88,9 +88,9 @@
 
 
 ## [仮想ネットワーク](azure-operations-guide.md#azure-virtual-network)
-### [Azure Portal を使用した仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure PowerShell を使用した仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Azure CLI を使用した仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure Portal を使用した仮想ネットワークの作成](../../virtual-network/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure PowerShell を使用した仮想ネットワークの作成](../../virtual-network/quick-create-powershell.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
+### [Azure CLI を使用した仮想ネットワークの作成](../../virtual-network/quick-create-cli.md#create-a-virtual-network?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../../virtual-network/virtual-networks-nsg.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### 仮想ネットワークのチュートリアル
 #### [VM の負荷分散](../../virtual-machines/linux/tutorial-load-balance-nodejs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)

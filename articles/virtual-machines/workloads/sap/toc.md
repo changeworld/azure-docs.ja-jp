@@ -1,5 +1,5 @@
 # 概要
-## [概要](get-started.md)
+## [使ってみる](get-started.md)
 ## [認定](sap-certifications.md)
 # SAP HANA on Azure (L インスタンス)
 ## [概要とアーキテクチャ](hana-overview-architecture.md)
@@ -14,7 +14,11 @@
 ## [単一インスタンスの SAP HANA のインストール](hana-get-started.md)
 ## [S/4 HANA または BW/4 HANA SAP CAL のデプロイ ガイド](cal-s4h.md)
 ## [SAP HANA on Azure 運用ガイド](hana-vm-operations.md)
-## [Azure VM での SAP HANA の高可用性](sap-hana-high-availability.md)
+## Azure Virtual Machines での SAP HANA の可用性
+### [SAP HANA on Azure の可用性の概要](sap-hana-availability-overview.md)
+### [1 つの Azure リージョン内での SAP HANA on Azure の可用性](sap-hana-availability-one-region.md)
+### [複数の Azure リージョン間における SAP HANA on Azure の可用性](sap-hana-availability-across-regions.md)
+## [Azure VM での SAP HANA システム レプリケーションのセットアップ](sap-hana-high-availability.md)
 ## [SAP HANA のバックアップの概要](sap-hana-backup-guide.md)
 ## [SAP HANA のファイル レベルのバックアップ](sap-hana-backup-file-level.md)
 ## [SAP HANA のストレージ スナップショット バックアップ](sap-hana-backup-storage-snapshots.md)
