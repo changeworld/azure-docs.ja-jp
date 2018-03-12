@@ -63,6 +63,10 @@
 ### [ファイル圧縮](cdn-troubleshoot-compression.md)
 
 # リファレンス
+##  [ルール エンジンのリファレンス](cdn-rules-engine-reference.md)
+### [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
+### [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
+### [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
 ## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
@@ -70,10 +74,6 @@
 ## [REST](/rest/api/cdn/)
 
 # リソース
-##  [ルール エンジンのリファレンス](cdn-rules-engine-reference.md)
-### [ルール エンジンの条件式](cdn-rules-engine-reference-conditional-expressions.md)
-### [ルール エンジンの機能](cdn-rules-engine-reference-features.md)
-### [ルール エンジンの一致条件](cdn-rules-engine-reference-match-conditions.md)
 ## [Azure CDN の POP の場所](cdn-pop-locations.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)

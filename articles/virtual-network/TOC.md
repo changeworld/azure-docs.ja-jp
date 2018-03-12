@@ -27,7 +27,8 @@
 ### [ネットワーク セキュリティ グループ](virtual-networks-nsg.md)
 
 ## デプロイ
-### [仮想ネットワーク](virtual-networks-create-vnet-arm-pportal.md)
+### 仮想ネットワーク
+#### [Azure Portal](virtual-networks-create-vnet-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
@@ -42,27 +43,25 @@
 ##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
 ##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
 
-### ユーザー定義のルート
-#### [Azure Portal](create-user-defined-route-portal.md)
-#### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [Azure CLI](virtual-network-create-udr-arm-cli.md)
+### ルート テーブル
+#### [Azure Portal](tutorial-create-route-table-portal.md)
+#### [Azure PowerShell](tutorial-create-route-table-powershell.md)
+#### [Azure CLI](tutorial-create-route-table-cli.md)
 #### [テンプレート](virtual-network-create-udr-arm-template.md)
 #### クラシック
 ##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
 ##### [Azure CLI](virtual-network-create-udr-classic-cli.md)
 
 ### 仮想ネットワーク ピアリング
-#### [同じデプロイメント モデル - 同じサブスクリプション](virtual-network-create-peering.md)
+#### 同じデプロイメント モデル - 同じサブスクリプション
+##### [Azure Portal](tutorial-connect-virtual-networks-portal.md)
+##### [Azure PowerShell](tutorial-connect-virtual-networks-powershell.md)
+##### [Azure CLI](tutorial-connect-virtual-networks-cli.md)
 #### [同じデプロイメント モデル - 異なるサブスクリプション](create-peering-different-subscriptions.md)
 #### [異なるデプロイメント モデル - 同じサブスクリプション](create-peering-different-deployment-models.md)
 #### [異なるデプロイメント モデル - 異なるサブスクリプション](create-peering-different-deployment-models-subscriptions.md)
 
 ### [仮想ネットワーク サービスのエンドポイント](virtual-network-service-endpoints-configure.md)
-
-### パブリック IP アドレス - 可用性ゾーン
-#### [Azure Portal](create-public-ip-availability-zone-portal.md)
-#### [Azure CLI](create-public-ip-availability-zone-cli.md)
-#### [PowerShell](create-public-ip-availability-zone-powershell.md)
 
 ### 仮想マシン
 #### [仮想マシン ネットワーク スループット](virtual-machine-network-throughput.md)
@@ -147,7 +146,7 @@
 ##### [Azure PowerShell](virtual-networks-acl-powershell.md)
 
 ## [管理]
-### [仮想ネットワーク](virtual-network-manage-network.md)
+### [仮想ネットワーク](manage-virtual-network.md)
 #### [サブネット](virtual-network-manage-subnet.md)
 #### [ピアリング](virtual-network-manage-peering.md)
 #### クラシック

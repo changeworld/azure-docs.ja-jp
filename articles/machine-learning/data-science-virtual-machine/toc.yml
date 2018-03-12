@@ -8,6 +8,8 @@
       href: overview.md
     - name: ディープ ラーニング VM とは
       href: deep-learning-dsvm-overview.md
+    - name: geo AI データ サイエンス VM とは
+      href: geo-ai-dsvm-overview.md
 - name: 作業開始
   items:
     - name: Windows データ サイエンス VM の作成
@@ -18,6 +20,8 @@
       href: linux-dsvm-intro.md
     - name: ディープ ラーニング VM の作成
       href: provision-deep-learning-dsvm.md
+    - name: geo AI データ サイエンス VM の作成
+      href: provision-geo-ai-dsvm.md
 - name: 方法
   items:
     - name: Windows データ サイエンス VM の使用
@@ -26,6 +30,8 @@
       href: linux-dsvm-walkthrough.md
     - name: ディープ ラーニング VM の使用
       href: use-deep-learning-dsvm.md
+    - name: geo AI データ サイエンス VM の使用
+      href: use-geo-ai-dsvm.md
 - name: リファレンス
   expanded: true
   items:

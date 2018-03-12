@@ -11,7 +11,7 @@
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
 #### [.NET](iot-hub-csharp-csharp-getstarted.md)
 #### [Java](iot-hub-java-java-getstarted.md)
-#### [Node.js](iot-hub-node-node-getstarted.md)
+#### [Node.JS](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
@@ -39,6 +39,9 @@
 ### [iothub-explorer を使用したデバイス管理](iot-hub-device-management-iothub-explorer.md)
 ### [Azure CLI 2.0 の IoT 拡張機能を使用したデバイス管理](iot-hub-device-management-iot-extension-azure-cli-2-0.md)
 ### [Logic Apps を使用したリモートの監視と通知](iot-hub-monitoring-notifications-with-azure-logic-apps.md)
+
+## MXChip IoT DevKit の使用
+### [Azure Cognitive Services での音声メッセージの翻訳](iot-hub-arduino-iot-devkit-az3166-translator.md)
 
 # ハウツー ガイド
 ## プラン
@@ -78,7 +81,7 @@
 ### メッセージのルーティング
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.JS](iot-hub-node-node-process-d2c.md)
+#### [Node.js](iot-hub-node-node-process-d2c.md)
 #### [Python](iot-hub-python-python-process-d2c.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)

@@ -33,6 +33,9 @@
 #### [PowerShell を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-powershell.md)
 #### [CLI を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-cli.md)
 
+### SQL Database
+#### [SQL Database での可用性ゾーン](../sql-database/sql-database-high-availability.md#availability-zones)
+
 ### Storage
 #### [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage)
 

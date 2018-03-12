@@ -19,10 +19,16 @@
       href: tutorial-prioritized-routes.md
 - name: 概念
   items:
+    - name: ズーム レベルとタイル グリッド
+      href: zoom-levels-and-tile-grid.md
     - name: ジオコーディングの対象範囲
       href: geocoding-coverage.md
     - name: トラフィックの対象範囲
       href: traffic-coverage.md
+    - name: カバレッジをレンダリングする
+      href: render-coverage.md
+    - name: カバレッジをルーティングする
+      href: routing-coverage.md
 - name: ハウツー ガイド
   items:
     - name: アカウントとキーの管理

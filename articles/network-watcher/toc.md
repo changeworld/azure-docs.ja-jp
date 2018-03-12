@@ -73,6 +73,7 @@
 ### [オープン ソース ツールを使用してネットワーク トラフィック パターンを視覚化する](network-watcher-using-open-source-tools.md)
 ## NSG フロー ログの分析
 ### [NSG フロー ログの読み取り](network-watcher-read-nsg-flow-logs.md)
+### [Traffic Analytics の使用](traffic-analytics.md)
 ### [Power BI の使用](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ### [Elastic Stack の使用](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [Grafana の使用](network-watcher-nsg-grafana.md)

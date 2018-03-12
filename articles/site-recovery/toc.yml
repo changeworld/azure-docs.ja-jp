@@ -69,6 +69,8 @@
           href: physical-azure-architecture.md
         - name: Hyper-V からセカンダリ サイトへのアーキテクチャ
           href: hyper-v-vmm-architecture.md
+        - name: VMware ディザスター リカバリのためのマルチテナントのサポートの概要
+          href: vmware-azure-multi-tenant-overview.md
     - name: サポート要件のマトリックス
       items:
         - name: Azure から Azure へのサポート マトリックス
@@ -84,7 +86,7 @@
         - name: ワークロードのディザスター リカバリー
           href: site-recovery-workload.md
         - name: Azure への移行
-          href: site-recovery-migrate-to-azure.md
+          href: migrate-overview.md
     - name: ロールベースのアクセス許可
       href: site-recovery-role-based-linked-access-control.md
     - name: Azure Traffic Manager と Azure Site Recovery
@@ -101,7 +103,7 @@
           href: azure-to-azure-network-mapping.md
         - name: Azure VM フェールオーバー後の IP アドレス指定を設定する
           href: site-recovery-retain-ip-azure-vm-failover.md
-        - name: オンプレミスから Azure へのディザスター リカバリーのネットワーク インターフェイスを管理する
+        - name: オンプレミスから Azure へのレプリケーションのネットワーク インターフェイスを管理する
           href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
         - name: Hyper-V VM ディザスター リカバリーのネットワーク マッピングを準備する
           href: hyper-v-vmm-network-mapping.md
@@ -123,8 +125,8 @@
           href: site-recovery-test-failover-to-azure.md
         - name: セカンダリ サイトへの Hyper-V VM のディザスター リカバリー訓練を実行する
           href: hyper-v-vmm-test-failover.md
-        - name: Azure への、マルチテナントをサポートしている VMware VM のディザスター リカバリ
-          href: site-recovery-multi-tenant-support-vmware-using-csp.md
+        - name: マルチテナントのサポートと CSP を利用した VMware VM のディザスター リカバリ
+          href: vmware-azure-multi-tenant-csp-disaster-recovery.md
     - name: フェールオーバーとフェールバック
       items:
         - name: 復旧計画を設定する
@@ -133,6 +135,8 @@
           href: site-recovery-runbook-automation.md
         - name: 復旧計画に VMM スクリプトを追加する
           href: hyper-v-vmm-recovery-script.md
+        - name: フェールバックのために Azure でプロセス サーバーをセットアップおよび管理する
+          href: vmware-azure-set-up-process-server-azure.md
         - name: フェールオーバー
           items:
             - name: フェールオーバーについて
@@ -146,19 +150,19 @@
             - name: Azure セカンダリ リージョンからプライマリへの再保護
               href: azure-to-azure-how-to-reprotect.md
             - name: Azure からオンプレミスへの再保護
-              href: site-recovery-how-to-reprotect.md
+              href: vmware-azure-reprotect.md
         - name: Azure からのフェールバック
           items:
             - name: Azure から VMware へのフェールバック
-              href: site-recovery-how-to-failback-azure-to-vmware.md
+              href: vmware-azure-failback.md
             - name: Azure から Hyper-V へのフェールバック
               href: hyper-v-azure-failback.md
         - name: フェールバック用の Linux マスター ターゲット サーバーの設定
-          href: site-recovery-how-to-install-linux-master-target.md
+          href: vmware-azure-install-linux-master-target.md
     - name: 移行
       items:
         - name: 移行について
-          href: site-recovery-migrate-to-azure.md
+          href: migrate-overview.md
         - name: 別のリージョンへの移行後に Azure VM をレプリケートする
           href: azure-to-azure-replicate-after-migration.md
     - name: 容量とスケーリング
@@ -177,7 +181,7 @@
             - name: コスト見積もりレポートの分析
               href: site-recovery-vmware-deployment-planner-cost-estimation.md
         - name: VMware レプリケーション用のプロセス サーバーのスケールアウト
-          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
+          href: vmware-azure-set-up-process-server-scale.md
         - name: Hyper-V から Azure へのレプリケーションのための Deployment Planner ツール
           href: null
           items:
@@ -196,23 +200,23 @@
         - name: ソース環境をセットアップする
           items:
             - name: VMware から Azure への場合のソース環境
-              href: site-recovery-set-up-vmware-to-azure.md
+              href: vmware-azure-set-up-source.md
             - name: VMware ディザスター リカバリー用の構成サーバーのデプロイ
-              href: how-to-deploy-configuration-server.md
+              href: vmware-azure-deploy-configuration-server.md
             - name: 物理から Azure への場合のソース環境
-              href: site-recovery-set-up-physical-to-azure.md
+              href: physical-azure-set-up-source.md
         - name: ターゲット環境をセットアップする
           items:
             - name: VMware から Azure への場合のターゲット環境
-              href: site-recovery-prepare-target-vmware-to-azure.md
+              href: vmware-azure-set-up-target.md
             - name: 物理から Azure への場合のターゲット環境
-              href: site-recovery-prepare-target-physical-to-azure.md
+              href: physical-azure-set-up-target.md
         - name: レプリケーションの設定を構成する
           items:
             - name: VMware から Azure へのレプリケーション設定の構成
-              href: site-recovery-setup-replication-settings-vmware.md
+              href: vmware-azure-set-up-replication.md
             - name: VMware から Azure へのレプリケーションからディスクを除外する
-              href: site-recovery-exclude-disk.md
+              href: vmware-azure-exclude-disk.md
             - name: Hyper-V から Azure へのレプリケーションからディスクを除外する
               href: hyper-v-exclude-disk.md
         - name: レプリケーションを有効にする
@@ -220,19 +224,19 @@
             - name: Azure から Azure へのレプリケーションを有効にする
               href: azure-to-azure-how-to-enable-replication.md
             - name: VMware から Azure へのレプリケーションを有効にする
-              href: site-recovery-replicate-vmware-to-azure.md
+              href: vmware-azure-enable-replication.md
         - name: VMware 用にモビリティ サービスをデプロイする
           items:
             - name: モビリティ サービスについて
-              href: site-recovery-vmware-to-azure-install-mob-svc.md
+              href: vmware-azure-install-mobility-service.md
             - name: System Center Configuration Manager を使用してモビリティ サービスをデプロイする
-              href: site-recovery-install-mobility-service-using-sccm.md
+              href: vmware-azure-mobility-install-configuration-mgr.md
             - name: Azure Automation DSC を使用してモビリティ サービスをデプロイする
-              href: site-recovery-automate-mobility-service-install.md
+              href: vmware-azure-mobility-deploy-automation-dsc.md
     - name: 自動化
       items:
         - name: PowerShell を使用して VMware 仮想マシンを Azure にレプリケートする
-          href: site-recovery-vmware-to-azure-powershell.md
+          href: vmware-azure-disaster-recovery-powershell.md
         - name: PowerShell を使用して Azure への Hyper-V のレプリケーションを設定する (VMM なし)
           href: hyper-v-azure-powershell-resource-manager.md
         - name: PowerShell を使用して Azure への Hyper-V のレプリケーションを設定する (VMM を使用)
@@ -265,31 +269,29 @@
           href: 'site-recovery-workload.md#workload-summary'
     - name: '[管理]'
       items:
-        - name: Azure でのプロセス サーバーの管理
-          href: site-recovery-vmware-setup-azure-ps-resource-manager.md
         - name: VMware ディザスター リカバリー用の構成サーバーの管理
-          href: site-recovery-vmware-to-azure-manage-configuration-server.md
+          href: vmware-azure-manage-configuration-server.md
         - name: 物理マシン ディザスター リカバリー用の構成サーバーの管理
           href: physical-manage-configuration-server.md
         - name: vCenter サーバーの管理
-          href: site-recovery-vmware-to-azure-manage-vCenter.md
-        - name: CSP によるマルチテナントの管理
-          href: site-recovery-manage-multi-tenancy-with-csp.md
+          href: vmware-azure-manage-vcenter.md
+        - name: プロセス サーバーの管理
+          href: vmware-azure-manage-process-server.md
         - name: サーバーの削除と保護の無効化
           href: site-recovery-manage-registration-and-protection.md
         - name: コンテナーの削除
           href: delete-vault.md
     - name: 監視とトラブルシューティング
       items:
-        - name: Azure から Azure へのレプリケーションの問題
+        - name: Azure から Azure へのレプリケーションに関するトラブルシューティング
           href: azure-to-azure-troubleshoot-errors.md
-        - name: オンプレミスから Azure へのレプリケーションの問題
-          href: site-recovery-vmware-to-azure-protection-troubleshoot.md
-        - name: モビリティ サービスの問題
-          href: site-recovery-vmware-to-azure-push-install-error-codes.md
-        - name: Azure へのフェールオーバーの問題
+        - name: VMware から Azure へのレプリケーションに関するトラブルシューティング
+          href: vmware-azure-troubleshoot-replication.md
+        - name: VMware と物理サーバーのレプリケーションにおけるモビリティ サービスのトラブルシューティング
+          href: vmware-azure-troubleshoot-push-install.md
+        - name: Azure へのフェールオーバーに関するトラブルシューティング
           href: site-recovery-failover-to-azure-troubleshoot.md
-        - name: 再保護とフェールバックの問題
+        - name: Azure からの VMware VM の再保護とフェールバックに関するトラブルシューティング
           href: vmware-azure-troubleshoot-failback-reprotect.md
         - name: Azure Site Recovery の監視
           href: site-recovery-monitor-and-troubleshoot.md
