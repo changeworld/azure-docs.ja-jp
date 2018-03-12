@@ -13,14 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 1/5/2018
+ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: a16db0f23f93083e9a17d2b12f9215a964e07c9a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.custom: mvc
+ms.openlocfilehash: 600c4a29d7d7daabbbf6d1825671d109ea499c4b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -36,26 +36,26 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 
 **複数のストレージ オプション** - 高可用性によってストレージ レプリケーションが実現します。 Azure Backup には、[ローカル冗長ストレージ](../storage/common/storage-redundancy.md#locally-redundant-storage)と [geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)の 2 種類のレプリケーションが用意されています。 必要に応じて、いずれかのバックアップ ストレージ オプションを選択します。
 
-* ローカル冗長ストレージ (LRS) では、同じリージョンのペアリングされているデータセンターにデータが 3 回レプリケートされます (データのコピーが 3 つ作成されます)。 LRS は、ローカル ハードウェアの障害からデータを保護するための低コストのオプションです。
+* ローカル冗長ストレージ (LRS) では、データセンターのストレージ スケール ユニットにデータが 3 回レプリケートされます (データのコピーが 3 つ作成されます)。 データのすべてのコピーは、同じリージョン内に存在します。 LRS は、ローカル ハードウェアの障害からデータを保護するための低コストのオプションです。
 
-* geo 冗長ストレージ (GRS) では、(ソース データのプライマリの場所から数百マイル離れた) セカンダリ リージョンにデータがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、より高いレベルのデータ持続性が確保されます。
+* geo 冗長ストレージ (GRS) は、既定の推奨レプリケーション オプションです。 GRS では、セカンダリ リージョン (ソース データのプライマリの場所から数百マイル離れた場所) にデータがレプリケートされます。 GRS は LRS よりもコストがかかりますが、地域的な障害が発生しても、より高いレベルのデータ持続性が確保されます。
 
 **無制限のデータ転送** - 転送する受信データまたは送信データ量に制限がありません。 転送データに対して料金は発生しません。 ただし、Azure Import/Export サービスを使用して大量のデータをインポートする場合は、受信データに対してコストがかかります。 このコストの詳細については、「[Azure Backup でのオフライン バックアップのワークフロー](backup-azure-backup-import-export.md)」を参照してください。 送信データとは、復元操作中に Recovery Services コンテナーから転送されるデータを指します。
 
 **データの暗号化** - データの暗号化によって、パブリック クラウドでデータを安全に送信および保存できます。 暗号化パスフレーズはローカルに保存されます。転送されたり Azure に保存されたりすることはありません。 データを復元する必要がある場合、暗号化パスフレーズ (キー) を持っているのはご本人のみです。
 
-**アプリケーションの整合性のバックアップ** - ファイル サーバー、仮想マシン、SQL データベースのどれをバックアップする場合でも、バックアップ コピーの復元に必要なすべてのデータが、回復ポイントにあることを把握しておく必要があります。 Azure Backup は、アプリケーション整合性バックアップを提供することで、追加の修正なしでデータを復元できるようにします。 アプリケーション整合性データの復元により復元時間が短縮され、迅速に実行状態に戻ることができます。
+**アプリケーション整合性バックアップ** - アプリケーション整合性バックアップは、復旧ポイントがバックアップ コピーを復元するために必要なすべてのデータを持っていることを意味します。 Azure Backup は、アプリケーション整合性バックアップを提供することで、追加の修正なしでデータを復元できるようにします。 アプリケーション整合性データの復元により復元時間が短縮され、迅速に実行状態に戻ることができます。
 
-**長期保存** - バックアップ コピーをディスクからテープに切り替え、テープをオフサイトの場所に移動するのではなく、短期および長期の保存に Azure を使用できます。 Azure では、バックアップ コンテナーまたは Recovery Services コンテナーにデータを保持する時間に制限はありません。 任意の期間、コンテナーにデータを保持することができます。 Azure Backup では、保護されているインスタンスごとの復旧ポイントが 9,999 個に制限されます。 この制限によるバックアップのニーズへの影響の説明については、この記事の「[バックアップと保持](backup-introduction-to-azure-backup.md#backup-and-retention)」セクションを参照してください。  
+**長期保存** - 短期および長期のデータ保有のために、Recovery Services コンテナーを使用することができます。 Azure では、Recovery Services コンテナーにデータを保持する時間に制限はありません。 任意の期間、コンテナーにデータを保持することができます。 Azure Backup では、保護されているインスタンスごとの復旧ポイントが 9,999 個に制限されます。 この制限によるバックアップのニーズへの影響の説明については、この記事の「[バックアップと保持](backup-introduction-to-azure-backup.md#backup-and-retention)」セクションを参照してください。
 
 ## <a name="which-azure-backup-components-should-i-use"></a>使用する Azure Backup コンポーネント
-ご自身のニーズに合った Azure Backup コンポーネントがわからない場合は、次の表で、各コンポーネントの保護対象に関する情報を確認してください。 Azure Portal にはウィザードが組み込まれており、コンポーネントを選択して、ダウンロードおよびデプロイするお手伝いをします。 このウィザードは、Recovery Services コンテナーの作成に含まれており、バックアップの目的と、保護対象のデータやアプリケーションを選択する手順を説明します。
+次の表で、各 Azure Backup コンポーネントの保護対象に関する情報を確認してください。 
 
 | コンポーネント | メリット | 制限 | 保護対象 | バックアップの保存場所 |
 | --- | --- | --- | --- | --- |
 | Azure Backup (MARS) エージェント |<li>物理または仮想 Windows OS でファイルとフォルダーをバックアップ (VM はオンプレミスまたは Azure に配置できます)<li>個別のバックアップ サーバーが不要。 |<li>バックアップは 1 日に 3 回 <li>アプリケーション非対応。ファイル、フォルダー、およびボリューム レベルの復元のみ。 <li>  Linux は未サポート。 |<li>ファイル、 <li>フォルダー、 <li>システム状態 |Recovery Services コンテナー |
-| System Center DPM |<li>アプリケーション対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Recovery Services コンテナーを使用できる<li>Hyper-V と VMware VM での Linux のサポート <li>DPM 2012 R2 を使用した VMware VM のバックアップと復元 |Oracle ワークロードをバックアップできない。|<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Recovery Services コンテナー、<li> ローカルに接続されたディスク、<li>  テープ (オンプレミスのみ) |
-| Azure Backup Server |<li>アプリケーション対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Recovery Services コンテナーを使用できる<li>Hyper-V と VMware VM での Linux のサポート<li>VMware VM のバックアップと復元 <li>System Center ライセンスは不要 |<li>Oracle ワークロードをバックアップできない。<li>必ずライブ Azure サブスクリプションが必要<li>テープ バックアップには非対応 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード |<li>Recovery Services コンテナー、<li> ローカルに接続されたディスク |
+| System Center DPM |<li>アプリケーション対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Recovery Services コンテナーを使用できる<li>Hyper-V と VMware VM での Linux のサポート <li>DPM 2012 R2 を使用した VMware VM のバックアップと復元 |Oracle ワークロードをバックアップできない。|<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード <li>システム状態 |<li>Recovery Services コンテナー、<li> ローカルに接続されたディスク、<li>  テープ (オンプレミスのみ) |
+| Azure Backup Server |<li>アプリケーション対応スナップショット (VSS)<li>柔軟にバックアップを作成<li>回復の単位 (すべて)<li>Recovery Services コンテナーを使用できる<li>Hyper-V と VMware VM での Linux のサポート<li>VMware VM のバックアップと復元 <li>System Center ライセンスは不要 |<li>Oracle ワークロードをバックアップできない。<li>必ずライブ Azure サブスクリプションが必要<li>テープ バックアップには非対応 |<li>ファイル、 <li>フォルダー、<li> ボリューム、 <li>VM、<li> アプリケーション、<li> ワークロード、 <li>システム状態 |<li>Recovery Services コンテナー、<li> ローカルに接続されたディスク |
 | Azure IaaS VM のバックアップ |<li>アプリケーション対応スナップショット (VSS)<li>Windows/Linux のネイティブ バックアップ<li>特定のエージェント インストールが不要<li>バックアップ インフラストラクチャを必要としないファブリック レベルのバックアップ |<li>1 日に 1 回 VM をバックアップ <li>ディスク レベルでのみ VM を復元<li>オンプレミスでバックアップできない |<li>VM、 <li>すべてのディスク (PowerShell を使用) |<p>Recovery Services コンテナー</p> |
 
 ## <a name="what-are-the-deployment-scenarios-for-each-component"></a>各コンポーネントのデプロイ シナリオ
@@ -104,7 +104,7 @@ Premium Storage VM をバックアップすると、Backup サービスによっ
 >
 
 ### <a name="restore-premium-storage-vms"></a>Premium Storage VM の復元
-Premium Storage VM は、Premium Storage と Standard Storage のどちらかに復元することができます。 Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、復元の一般的なプロセスです。 ただし、Premium Storage VM の復旧ポイント Standard Storage に復元する方がコスト効率が良い場合があります。 このような復元は、VM の一部のファイルのみが必要な場合に利用できます。
+Premium Storage VM は、Premium Storage と Standard Storage のどちらかに復元することができます。 Premium Storage VM の復旧ポイントを Premium Storage に復元する方法が、一般的なプロセスです。 ただし、VM のファイルのサブセットが必要な場合は、Premium Storage VM の復旧ポイントを Standard Storage に復元する方がコスト効率が良いことがあります。
 
 ## <a name="using-managed-disk-vms-with-azure-backup"></a>Azure Backup による管理ディスク VM の使用
 Azure Backup は、管理ディスク VM を保護します。 管理ディスクにより、仮想マシンのストレージ アカウントの管理から解放され、VM プロビジョニングが大幅に簡略化されます。
@@ -157,7 +157,7 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 
 **差分バックアップ**によって格納されるのは、最初の完全バックアップ後に変更されたブロックだけです。このため、ネットワークおよび記憶域の消費量が少なくなります。 差分バックアップでは、変更されていないデータの冗長コピーは保持されませんが、 変更されていないデータ ブロックが以降のバックアップに転送されたうえで、格納されるため、効率的ではありません。 この例では 2 か月目に、変更されたブロック A2、A3、A4、および A9 がバックアップされます。 3 か月目は、既にバックアップ済みのブロックが再度バックアップされたうえで、変更された A5 がバックアップされます。 変更されたブロックは、次回完全バックアップが行われるまでバックアップされ続けます。
 
-**増分バックアップ**では、前回のバックアップ以降に変更されたデータ ブロックのみが格納されるため、記憶域とネットワークで高い効率性が実現します。 増分バックアップでは、完全バックアップを定期的に実行する必要はありません。 この例では、最初の月に完全バックアップが行われた後、2 か月目に変更された A2、A3、A4、および A9 が変更済みとしてマークされ、転送されます。 3 か月目は、変更された A5 のみがマークされ、転送されます。 データ移動が少ないためストレージおよびネットワーク リソースを節約でき、TCO が削減されます。   
+**増分バックアップ**では、前回のバックアップ以降に変更されたデータ ブロックのみが格納されるため、記憶域とネットワークで高い効率性が実現します。 増分バックアップでは、完全バックアップを定期的に実行する必要はありません。 この例では、最初の月に完全バックアップが行われた後、A2、A3、A4、および A9 が変更済みとしてマークされ、2 か月目に転送されます。 3 か月目は、変更された A5 のみがマークされ、転送されます。 データ移動が少ないためストレージおよびネットワーク リソースを節約でき、TCO が削減されます。
 
 ### <a name="security"></a>セキュリティ
 | Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
@@ -219,12 +219,9 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Recovery Services コンテナーとは
-Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 サブスクリプション内に任意の数の Recovery Services コンテナーを作成できます。
+Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 各 Azure サブスクリプション内に、Azure リージョンあたり最大 25 個の Recovery Services コンテナーを作成できます。 データの格納先を検討する場合、すべてのリージョンが同じではありません。 リージョンの組み合わせと追加のストレージに関する考慮事項については、「[geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)」を参照してください。
 
-Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 バックアップ コンテナーをポータルで作成することはできなくなりましたが、バックアップ コンテナーは引き続きサポートされます。 バックアップ コンテナーの管理には、Azure Portal を使用する必要があります。
-
-> [!IMPORTANT]
-> バックアップ コンテナーは Recovery Services コンテナーにアップグレードできます。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> 2017 年 11 月 30 日以降は PowerShell を使用してバックアップ資格情報コンテナーを作成することはできなくなり、残りのすべてのバックアップ資格情報コンテナーは自動的に Recovery Services コンテナーにアップグレードされます。
+Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 Backup コンテナーを作成することはできなくなり、既存のすべての Backup コンテナーが Recovery Services コンテナーにアップグレードされました。 Azure Portal を使用して、Recovery Services コンテナーにアップグレードされたコンテナーを管理することができます。
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Azure Backup と Azure Site Recovery はどのように違いますか
 Backup と Azure Site Recovery は両方とも、データをバックアップして、そのデータを復元できるとうい点で関連していますが、 これらのサービスは、業務にビジネス継続性とディザスター リカバリーの機能を提供するために、異なる目的で使用されます。 より細かいレベルでデータの保護と復元を行うには、Azure Backup を使用します。 たとえば、ノート PC のプレゼンテーションが破損した場合は、Azure Backup を使用して、プレゼンテーションを復元します。 VM 上の構成とデータを別のデータセンターにレプリケートする場合は、Azure Site Recovery を使用します。
@@ -233,7 +230,7 @@ Azure Backup は、オンプレミスのデータとクラウドのデータを�
 
 バックアップと障害復旧に関する意思決定を行うにあたっては、次の概念が役立ちます。
 
-| 概念 | 詳細 | Backup | ディザスター リカバリー (DR) |
+| 概念 | 詳細 | バックアップ | ディザスター リカバリー (DR) |
 | --- | --- | --- | --- |
 | 目標復旧時点 (RPO) |復旧を行う必要がある場合に許容されるデータ損失の量です。 |バックアップ ソリューションの許容されるRPO には幅があります。 仮想マシンのバックアップの RPO は通常 1 日であるのに対し、データベースのバックアップの RPO は最低 15 分です。 |障害復旧ソリューションでは RPO が低くなります。 DR コピーは、数秒遅れまたは数分遅れのことがあります。 |
 | 目標復旧時間 (RTO) |復旧または復元の完了に要する時間です。 |RPO が大きくなるほど、一般的にはバックアップ ソリューションで処理が必要なデータ量が増えるため、RTO は長くなります。 たとえば、オフサイトの場所からテープを輸送するのにかかる時間によっては、テープからのデータの復元に日単位の時間を要する場合があります。 |障害復旧ソリューションは、よりソースと同期されているため、RTO は短くなります。 必要な変更は少数です。 |

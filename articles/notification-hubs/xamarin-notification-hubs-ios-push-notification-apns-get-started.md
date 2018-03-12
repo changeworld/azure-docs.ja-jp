@@ -15,11 +15,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: edb48cd8de9b1f7357c40cea73fa4b9a422cb8fa
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 38ad8a15fcc4077926e735e01f877a4ee66718ef
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="get-started-with-azure-notification-hubs-for-xamarinios-apps"></a>Azure Notification Hubs の使用 (Xamarin iOS アプリケーション)
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -82,7 +82,7 @@ ms.lasthandoff: 01/02/2018
 
 2. アプリケーション名と組織の識別子を入力し、**[次へ]**、**[作成]** の順にクリックします。
 
-3. ソリューション ビューの *Into.plist* をクリックし、**[ID]** で、バンドル識別子がプロビジョニング プロファイルの作成時に使用した識別子と一致することを確認します。 **[署名]** で、**[チーム]** に Developer アカウントを選択し、[Automatically manage signing]\(署名を自動的に管理する\) をオンにし、署名証明書とプロビジョニング プロファイルが自動的に選択されることを確認します。
+3. ソリューション ビューの *Info.plist* をクリックし、**[ID]** で、バンドル識別子がプロビジョニング プロファイルの作成時に使用した識別子と一致することを確認します。 **[署名]** で、**[チーム]** に Developer アカウントを選択し、[Automatically manage signing]\(署名を自動的に管理する\) をオンにし、署名証明書とプロビジョニング プロファイルが自動的に選択されることを確認します。
 
     ![Visual Studio - iOS アプリの構成][32]
 

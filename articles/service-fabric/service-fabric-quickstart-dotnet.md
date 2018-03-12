@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 01/25/2018
 ms.author: mikhegn
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ea0d32674aa770b5f25b0b62eb69007f3fd6bf5c
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5187aadf686a49f6d78fc4f5c2b2c42487e56c13
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="quickstart-create-a-net-service-fabric-application-in-azure"></a>クイック スタート: Azure に .NET Service Fabric アプリケーションを作成する
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -94,9 +94,9 @@ git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 Visual Studio でアプリケーションをデバッグするときは、ローカルの Service Fabric 開発クラスターを使用します。 デバッグのエクスペリエンスは実際のシナリオに合わせて調整することができます。 このアプリケーションでは、データは信頼性の高いディクショナリを使ってバックエンド サービスに保存されます。 既定では、デバッガーを停止すると、Visual Studio によってアプリケーションが削除されます。 アプリケーションが削除されると、バックエンド サービス内のデータも削除されます。 デバッグ セッションの終了後もデータを維持するには、Visual Studio の **Voting** プロジェクトのプロパティで、**[アプリケーション デバッグ モード]** を変更してください。
 
 コードでどのような処理が実行されているのかを確認するには、次の手順に従います。
-1. **/VotingWeb/Controllers/VotesController.cs** ファイルを開き、Web API の **Put** メソッド (47 行目) にブレークポイントを設定します。このファイルは、Visual Studio のソリューション エクスプローラーで検索できます。
+1. **/VotingWeb/Controllers/VotesController.cs** ファイルを開き、Web API の **Put** メソッド (69 行目) にブレークポイントを設定します。このファイルは、Visual Studio のソリューション エクスプローラーで検索できます。
 
-2. **/VotingData/Controllers/VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (50 行目) にブレークポイントを設定します。
+2. **/VotingData/Controllers/VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (54 行目) にブレークポイントを設定します。
 
 3. ブラウザーに戻り、投票の選択肢をクリックするか、新しい選択肢を追加します。 Web フロントエンドの API コントローラーで 1 つ目のブレークポイントに到達します。
     - ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。

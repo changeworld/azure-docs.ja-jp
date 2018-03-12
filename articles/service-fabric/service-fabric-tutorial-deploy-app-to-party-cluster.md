@@ -1,10 +1,10 @@
 ---
-title: "クラスターに Azure Service Fabric アプリケーションをデプロイする | Microsoft Docs"
-description: "このチュートリアルでは、Service Fabric クラスターにアプリケーションをデプロイする方法について説明します。"
+title: "Visual Studio で Azure Service Fabric アプリケーションをクラスターにデプロイする | Microsoft Docs"
+description: "Visual Studio でアプリケーションをクラスターにデプロイする方法を説明します"
 services: service-fabric
 documentationcenter: .net
-author: mikkelhegn
-manager: msfussell
+-author: mikkelhegn
+-manager: msfussell
 editor: 
 ms.assetid: 
 ms.service: service-fabric
@@ -12,29 +12,31 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2017
-ms.author: mikhegn
+ms.date: 02/21/2018
+ms.author: mikkelhegn
 ms.custom: mvc
-ms.openlocfilehash: 35ddf77b1e9a9b355ed2cee4731e3c5d87c4a701
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 21c991a4e3f9ae19a4ad4a96427fdc1c91c55a1c
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="tutorial-deploy-an-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターにアプリケーションをデプロイする
-このチュートリアルはシリーズの第 2 部です。Azure で実行されているクラスターに Azure Service Fabric アプリケーションをデプロイする方法について説明します。
+このチュートリアルはシリーズの第 2 部です。ここでは、Visual Studio で直接 Azure Service Fabric アプリケーションを Azure の新しいクラスターにデプロイする方法について説明します。
 
-シリーズの第 2 部で学習する内容は次のとおりです。
+このチュートリアルで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * Visual Studio でクラスターを作成する
+> * Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする
+
+
+このチュートリアル シリーズで学習する内容は次のとおりです。
 > [!div class="checklist"]
 > * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)
 > * アプリケーションをリモート クラスターにデプロイする
 > * [Visual Studio Team Services を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 > * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
-このチュートリアル シリーズで学習する内容は次のとおりです。
-> [!div class="checklist"]
-> * Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする
-> * Service Fabric Explorer を使用してクラスターからアプリケーションを削除する
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に
@@ -49,84 +51,56 @@ ms.lasthandoff: 02/24/2018
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
 ```
 
-## <a name="set-up-a-party-cluster"></a>パーティ クラスターをセットアップする
-パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 無料試用版をお試しください!
+## <a name="deploy-the-sample-application"></a>サンプル アプリケーションをデプロイする
 
-パーティ クラスターへのアクセス権を取得するには、次のサイト (http://aka.ms/tryservicefabric) を参照し、指示に従ってクラスターへのアクセス権を取得します。 パーティ クラスターへのアクセス権を取得するには、Facebook または GitHub アカウントが必要です。
+### <a name="select-a-service-fabric-cluster-to-which-to-publish"></a>発行先の Service Fabric クラスターを選択する
+これでアプリケーションの準備ができたので、Visual Studio から直接クラスターにデプロイできます。
 
-必要に応じて、パーティー クラスターではなく、独自のクラスターを使用できます。  ASP.NET Core Web フロントエンドは、リバース プロキシを使用して、ステートフル サービス バックエンドと通信します。  パーティー クラスターとローカル開発クラスターは、既定でリバース プロキシを有効にしています。  投票サンプル アプリケーションを自分のクラスターにデプロイする場合は、[クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy.md#setup-and-configuration)必要があります。
+デプロイには 2 つのオプションがあります。
+- Visual Studio でクラスターを作成します。 このオプションでは、お好きな構成を使用して、セキュリティで保護されたクラスターを Visual Studio で直接作成できます。 この種類のクラスターはテスト シナリオに最適です。Visual Studio 内でクラスターを作成して、それに対して直接発行できます。
+- サブスクリプションで既存のクラスターに発行します。
 
+このチュートリアルでは、Visual Studio でクラスターを作成する手順を実行します。 その他のオプションについては、接続エンドポイントをコピーして貼り付けるか、サブスクリプションから選択できます。
 > [!NOTE]
-> パーティ クラスターはセキュリティで保護されないため、ご利用のアプリケーションとそれに入力するデータが他のユーザーに表示される可能性があります。 他のユーザーに見せたくないものは一切デプロイしないでください。 使用条件の詳細に必ず目を通してください。
+> 多くのサービスは、リバース プロキシを使用して相互に通信します。 Visual Studio で作成されたクラスターとパーティ クラスターでは、既定でリバース プロキシが有効です。  既存のクラスターを使用する場合、[クラスターでリバース プロキシを有効にする](service-fabric-reverseproxy.md#setup-and-configuration)必要があります。
 
-サインインし、[Windows クラスターに参加](http://aka.ms/tryservicefabric)します。 **[PFX]** リンクをクリックして、PFX 証明書をコンピューターにダウンロードします。 証明書と **[接続のエンドポイント]** の値は、次の手順で使用します。
+### <a name="deploy-the-app-to-the-service-fabric-cluster"></a>アプリを Service Fabric クラスターにデプロイする
 
-![PFX と接続エンドポイント](./media/service-fabric-quickstart-containers/party-cluster-cert.png)
+1. ソリューション エクスプローラーでアプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
 
-Windows コンピューターで、*CurrentUser\My* 証明書ストアに PFX をインストールします。
+2. サブスクリプションにアクセスできるように、Azure アカウントを使用してサインインします。 パーティ クラスターを使用する場合、この手順はオプションです。
 
-```powershell
-PS C:\mycertificates> Import-PfxCertificate -FilePath .\party-cluster-873689604-client-cert.pfx -CertStoreLocation Cert:
-\CurrentUser\My
+3. **[接続のエンドポイント]** ドロップダウンを選択して、"<Create New Cluster...>" オプションを選択します。
+    
+    ![[発行] ダイアログ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
+    
+4. [クラスターの作成] ダイアログで、次の設定を変更します。
 
+    1. [クラスター名] フィールドでクラスターの名前を変更します。また、使用したいサブスクリプションと場所を指定します。
+    2. 省略可能: ノードの数を変更できます。 既定では、Service Fabric のシナリオをテストするのに最低限必要な 3 ノードになっています。
+    3. [証明書] タブを選択します。このタブでは、クラスターの証明書をセキュリティで保護するために使用されるパスワードを入力します。 この証明書は、クラスターのセキュリティ保護に役立ちます。 また、証明書を保存したい場所にパスを変更することもできます。 アプリケーションをクラスターに発行するうえで必要な手順であるため、Visual Studio では証明書を自動でインポートすることもできます。
+    4. [VM の詳細] タブを選択します。クラスターを構成する仮想マシン (VM) に使用したいパスワードを指定します。 ユーザー名とパスワードは、VM へのリモート接続に使用できます。 また、VM マシン サイズを選択できるほか、必要に応じて VM イメージを変更できます。
+    5. 省略可能: [詳細設定] タブでは、クラスターと同時に作成されるロード バランサーでオープンにするポートの一覧を変更できます。 さらに、アプリケーション ログ ファイルのルーティングに使用される既存の Application Insights キーを追加することもできます。
+    6. 設定の変更が完了したら、[作成] ボタンを選択します。 作成の完了には数分かかります。クラスターが完全に作成されると、出力ウィンドウにそのことが示されます。
+    
+    ![[クラスターの作成] ダイアログ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/create-cluster.png)
 
-  PSParentPath: Microsoft.PowerShell.Security\Certificate::CurrentUser\My
-
-Thumbprint                                Subject
-----------                                -------
-3B138D84C077C292579BA35E4410634E164075CD  CN=zwin7fh14scd.westus.cloudapp.azure.com
-```
-
-
-## <a name="deploy-the-app-to-the-azure"></a>Azure にアプリケーションをデプロイする
-これで、アプリケーションの準備ができたので、Visual Studio から直接パーティ クラスターにデプロイできます。
-
-1. ソリューション エクスプローラーで **[Voting]** を右クリックして、**[発行]** を選択します。 
-
-    ![[発行] ダイアログ](./media/service-fabric-quickstart-containers/publish-app.png)
-
-2. パーティ クラスター ページの**接続のエンドポイント**を **[接続のエンドポイント]** フィールドにコピーします。 たとえば、「`zwin7fh14scd.westus.cloudapp.azure.com:19000`」のように入力します。 **[詳細な接続パラメーター]** をクリックし、次の情報を入力します。  *FindValue* と *ServerCertThumbprint* の値は、前の手順でインストールした証明書の拇印に一致する必要があります。 **[発行]**をクリックします。 
+4. 使用するクラスターの準備が整ったら、アプリケーション プロジェクトを右クリックし、**[発行]** を選択します。
 
     発行が完了した後は、ブラウザーからアプリケーションに要求を送信できます。
 
-3. 好みのブラウザーを開き、クラスター アドレス (ポート情報を除いた接続エンドポイント。たとえば、win1kw5649s.westus.cloudapp.azure.com) を入力します。
+5. 好みのブラウザーを開き、クラスター アドレス (ポート情報を除いた接続エンドポイント。たとえば、win1kw5649s.westus.cloudapp.azure.com) を入力します。
 
     アプリケーションをローカルで実行するときに確認したのと同じ結果が表示されます。
 
     ![クラスターからの API 応答](./media/service-fabric-tutorial-deploy-app-to-party-cluster/response-from-cluster.png)
 
-## <a name="remove-the-application-from-a-cluster-using-service-fabric-explorer"></a>Service Fabric Explorer を使用してクラスターからアプリケーションを削除する
-Service Fabric Explorer は、Service Fabric クラスター内のアプリケーションを参照および管理するためのグラフィカル ユーザー インターフェイスです。
-
-パーティ クラスターからアプリケーションを削除するには:
-
-1. パーティ クラスターのサインアップ ページで提供されるリンクを使用して、Service Fabric Explorer を参照します。 たとえば https://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html を使用します。
-
-2. Service Fabric Explorer で、左側にあるツリービューの **[fabric:/Voting]** ノードに移動します。
-
-3. 右側の **[基本]** ウィンドウの **[アクション]** をクリックして、**[アプリケーションの削除]** を選択します。 アプリケーション インスタンスの削除を承認すると、クラスターで実行されているアプリケーション インスタンスが削除されます。
-
-![Service Fabric Explorer でのアプリケーションの削除](./media/service-fabric-tutorial-deploy-app-to-party-cluster/delete-application.png)
-
-## <a name="remove-the-application-type-from-a-cluster-using-service-fabric-explorer"></a>Service Fabric Explorer を使用してクラスターからアプリケーションの型を削除する
-アプリケーションは、Service Fabric クラスター内にアプリケーションの型としてデプロイされます。これにより、アプリケーションの複数のインスタンスやバージョンをクラスター内で実行できます。 アプリケーションの実行中のインスタンスを削除した後は、その型も削除でき、デプロイのクリーンアップを完了できます。
-
-Service Fabric のアプリケーション モデルの詳細については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」を参照してください。
-
-1. ツリービューの **[VotingType]** ノードに移動します。
-
-2. 右側の **[基本]** ウィンドウの **[アクション]** をクリックして、**[Unprovision Type]\(型のプロビジョニングを解除\)** を選択します。 アプリケーションの型のプロビジョニング解除を承認します。
-
-![Service Fabric Explorer でのアプリケーションの型のプロビジョニング解除](./media/service-fabric-tutorial-deploy-app-to-party-cluster/unprovision-type.png)
-
-これでチュートリアルは終了します。
-
 ## <a name="next-steps"></a>次の手順
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
+> * Visual Studio でクラスターを作成する
 > * Visual Studio を使用してリモート クラスターにアプリケーションをデプロイする
-> * Service Fabric Explorer を使用してクラスターからアプリケーションを削除する
 
 次のチュートリアルに進みます。
 > [!div class="nextstepaction"]

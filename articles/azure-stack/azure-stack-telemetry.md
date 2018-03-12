@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/08/2017
+ms.date: 03/01/2018
 ms.author: jeffgilb
 ms.reviewer: comartin
-ms.openlocfilehash: 5cd8d4045764b753c5fdd81ade98d69c72709881
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 87f7157f8ab826553d8fb638b9f28d5594f68ed6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-telemetry"></a>Azure Stack のテレメトリ
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack システムのデータ (テレメトリ) は、"接続ユーザー エクスペリエンス" を介して自動的に Microsoft にアップロードされます。 Azure Stack のテレメトリから収集されたデータは、カスタマー エクスペリエンスを高めること、またセキュリティや正常性、品質、パフォーマンスを分析することを主な目的として Microsoft のチームが使用します。
 
@@ -38,11 +38,11 @@ Azure Stack テレメトリの基盤になっているのは、Windows Server 20
 > テレメトリ データ フローをサポートするには、ネットワークでポート 443 (HTTPS) を開く必要があります。 "接続ユーザー エクスペリエンスとテレメトリ" コンポーネントから Microsoft Data Management サービスへの接続には、https://v10.vortex-win.data.microsoft.com が使用されます。また、"接続ユーザー エクスペリエンスとテレメトリ" コンポーネントは、構成情報をダウンロードする目的で https://settings-win.data.microsoft.com にも接続します。
 
 ## <a name="privacy-considerations"></a>プライバシーに関する考慮事項
-テレメトリ データは、ETW サービスによって、保護されたクラウド ストレージに戻されます。 テレメトリ データへのアクセスには、最小特権の原則が適用されます。 テレメトリ データへのアクセスは、業務上の正当な必要性がある Microsoft 担当者にしか認められません。 お客様の判断による場合や、[Azure Stack のプライバシーに関する声明](http://windows.microsoft.com/windows/preview-privacy-statement)に記載されている限定的な目的を除き、Microsoft がお客様の個人データを第三者と共有することはありません。 ただし Microsoft は、集計されて匿名化されたテレメトリ情報を含んだビジネス レポートについては、OEM やパートナーと共有します。 データ共有の決定は、プライバシー、法務、データ管理の関係者を含む Microsoft 社内のチームが行います。
+テレメトリ データは、ETW サービスによって、保護されたクラウド ストレージに戻されます。 テレメトリ データへのアクセスには、最小特権の原則が適用されます。 テレメトリ データへのアクセスは、業務上の正当な必要性がある Microsoft 担当者にしか認められません。 お客様の判断による場合や、[Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/PrivacyStatement)に記載されている限定的な目的を除き、Microsoft がお客様の個人データを第三者と共有することはありません。 ただし、集計されて匿名化されたテレメトリ情報を含んだビジネス レポートについては、OEM やパートナーと共有します。 データ共有の決定は、プライバシー、法務、データ管理の関係者を含む Microsoft 社内のチームが行います。
 
 Microsoft は、情報量の最小化に賛同し、実践しています。 必要な情報だけを収集するよう努め、サービスまたは分析に必要な期間のみ保存しています。 Azure Stack システムや Azure サービスがどのように機能しているかについての情報は、その大半が 6 か月以内に削除されます。 要約されたデータや集計されたデータの保存期間は、それよりも長くなります。
 
-お客様の情報のプライバシーとセキュリティがいかに重要であるかを Microsoft は理解しています。  Azure Stack では、お客様のプライバシーとデータ保護に関して、熟慮を重ねながら包括的な取り組みを行ってきました。 各種機能やプライバシー設定は、IT 管理者の権限でいつでもカスタマイズできます。 透明性と信用を確保するために、Microsoft は以下のことを表明しています。
+Microsoft は、お客様の情報のプライバシーとセキュリティがいかに重要であるかを理解しています。  Azure Stack では、お客様のプライバシーとデータ保護に関して、熟慮を重ねながら包括的な取り組みを行ってきました。 各種機能やプライバシー設定は、IT 管理者の権限でいつでもカスタマイズできます。 透明性と信用を確保するために、Microsoft は以下のことを表明しています。
 - 収集するデータの種類をありのままお客様に伝えます。
 - 企業ユーザーによる独自管理を可能にします。お客様は自社のプライバシー設定を独自にカスタマイズすることができます。
 - お客様のプライバシーとセキュリティを最優先事項とします。
@@ -59,7 +59,7 @@ Microsoft が意図して機密情報 (クレジット カード番号、ユー�
 たとえば、Azure Stack ロールに関連付けられているコンテナー、ストレージ、ネットワーク構成が、お客様によってどのように使用されているか、といった情報が挙げられます。 そのような洞察も、Microsoft の管理ソリューションと監視ソリューションの改善やインテリジェンスに活かされます。  その結果、お客様は品質の問題を診断しやすくなり、また、Microsoft サポートへの問い合わせの件数が減ることでコストの削減にもつながります。
 
 ## <a name="manage-telemetry-collection"></a>テレメトリの収集を管理する
-テレメトリは製品の機能強化や安定性の向上に寄与するデータであるため、組織でテレメトリを無効にすることはお勧めできません。 ただし、それが必要になる状況も、ときにはあることを十分に理解しています。 
+テレメトリは製品の機能強化や安定性の向上に寄与するデータであるため、組織でテレメトリを無効にすることはお勧めしません。 ただし、それが必要になる状況も、ときにはあることを十分に理解しています。 
 
 そのような場合は、Microsoft に送信するテレメトリのレベルを構成することができます。これは、デプロイ前はレジストリ設定を、デプロイ後はテレメトリ エンドポイントを使用して行います。
 
@@ -92,7 +92,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
  - ストレージ属性 (ドライブの数、種類、サイズなど)
 - **テレメトリの機能**: アップロードされたイベントの割合、ドロップされたイベントの割合、前回のアップロード時刻などが収集されます。
 - **品質関連の情報**: Microsoft は、この情報を通じて、Azure Stack がどのように実行されているかについての基本的な理解を深めることができます。 たとえば、特定のハードウェア構成に関する重要なアラートの件数が該当します。
-- **互換性データ**: システムや仮想マシンにインストールされているリソース プロバイダーを把握したり、互換性に関する問題のリスクを特定したりするために役立てられます。
+- **互換性データ: システムや仮想マシンにインストールされているリソース プロバイダーを把握したり、互換性に関する問題のリスクを特定したりするために役立てられます。
 
 **2 (Enhanced)**。 さらに詳しい洞察につながるデータ。Basic レベルと Security レベルからのデータに加え、オペレーティング システムや他の Azure Stack サービスがどのように使用され、どのように実行されているかについてのデータ、詳細な信頼性データが対象となります。 
 
@@ -101,7 +101,7 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 > [!NOTE]
 > 既定のテレメトリ レベル値は 2 (Enhanced) です。
 
-Windows と Azure Stack のテレメトリをオフにすると、SQL のテレメトリも無効となることに注意してください。 Windows Server のテレメトリ設定の作用について詳しくは、[Windows テレメトリのホワイトペーパー](https://aka.ms/winservtelemetry)を参照してください。 
+Windows と Azure Stack のテレメトリをオフにすると、SQL のテレメトリも無効になります。 Windows Server のテレメトリ設定の作用に関する詳細については、[Windows テレメトリのホワイトペーパー](https://aka.ms/winservtelemetry)を参照してください。 
 
 > [!IMPORTANT]
 > これらのテレメトリ レベルが適用されるのは、Microsoft Azure Stack のコンポーネントだけです。 Azure Stack ハードウェア パートナーのハードウェア ライフサイクル ホストで動作する、Microsoft 以外のソフトウェア コンポーネントやサービスは、前述したどのレベルにも該当しないテレメトリ レベルで、そのクラウド サービスと通信を行うことが考えられます。 そのテレメトリ ポリシーの具体的な内容と、オプトイン/オプトアウトの方法については、ご利用の Azure Stack ハードウェア ソリューション プロバイダーにお問い合わせください。 
@@ -143,8 +143,8 @@ if($psSession)
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
-[Azure Stack 開発キット デプロイ パッケージをダウンロードする](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
+## <a name="next-steps"></a>次の手順
+[Azure Stack Development Kit デプロイ パッケージをダウンロードする](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
-[Azure Stack 開発キットをデプロイする](azure-stack-run-powershell-script.md)
+[Azure Stack Development Kit をデプロイする](azure-stack-run-powershell-script.md)
 

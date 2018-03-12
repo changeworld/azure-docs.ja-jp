@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 11/16/2017
+ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3c8bbb06fd511321a67e01772caeaa316ddb6e2a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: c53007530fe80f03cefbf138193cfad4b0e8292a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -171,13 +171,9 @@ Batch API を使用して仮想マシン構成プールを作成するときに�
 
 ### <a name="size-of-the-compute-nodes"></a>コンピューティング ノードのサイズ
 
-**Cloud Services の構成** のコンピューティング ノードのサイズについては、「 [Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。 Batch は、`ExtraSmall`、`STANDARD_A1_V2`、`STANDARD_A2_V2` を除くすべての Cloud Services サイズに対応しています。
+Azure Batch プールを作成する場合に、Azure で使用可能なほぼすべての VM ファミリとサイズを選択することができます。 Azure には、さまざまなワークロードに対応した各種の VM サイズが用意されています。たとえば、特殊な [HPC](../virtual-machines/linux/sizes-hpc.md) または [GPU 対応の](../virtual-machines/linux/sizes-gpu.md) VM サイズなどです。 
 
-**仮想マシンの構成**のコンピューティング ノード サイズについては、「[Azure の仮想マシンのサイズ](../virtual-machines/linux/sizes.md)」(Linux) および「[Azure の仮想マシンのサイズ](../virtual-machines/windows/sizes.md)」(Windows) を参照してください。 Batch は、Premium Storage を使用する VM (`STANDARD_GS`、`STANDARD_DS`、`STANDARD_DSV2` シリーズ) と `STANDARD_A0` を除くすべての Azure VM サイズに対応しています。
-
-コンピューティング ノードのサイズを選択するときは、ノード上で実行するアプリケーションの特性と要件を考慮してください。 アプリケーションがマルチスレッドであるかどうかや、どのくらいのメモリが消費されるかという点が、最も適切でコスト効率の高いノード サイズを選ぶうえでのヒントになります。 ノードのサイズは、そこで一度に実行されるタスクが 1 つであるという想定で選択するのが一般的です。 しかしジョブの実行中には、コンピューティング ノードで複数のタスク (ひいては複数のアプリケーション インスタンス) が[並列実行](batch-parallel-node-tasks.md)される可能性もあります。 そのような場合は、タスクを並列に実行するという需要の増大に対応するために、より大きなノード サイズを選ぶことが基本です。 詳細については、「[タスクのスケジューリング ポリシー](#task-scheduling-policy)」を参照してください。
-
-同じプール内のノードはすべて同じサイズとなります。 システム要件や負荷水準の異なる複数のアプリケーションを実行する場合は、プールを分けることをお勧めします。
+詳細については、「[Choose a VM size for compute nodes in an Azure Batch pool (Azure Batch プールのコンピューティング ノード用の VM サイズを選択する)](batch-pool-vm-sizes.md)」を参照してください。
 
 ### <a name="scaling-policy"></a>スケーリング ポリシー
 

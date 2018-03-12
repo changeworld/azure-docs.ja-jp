@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 14e5e7613fd5df650625cf8997d569b754ceb689
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+ms.openlocfilehash: 2f1ae92c05e02dffa22fb2c64c6c076a0adfc176
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-and-service-sdk-and-group-enrollments-for-iot-hub-device-provisioning-service"></a>シミュレートされた X.509 デバイスを IoT Hub Device Provisioning Service 対応の Java device and service SDK と登録グループを使用して作成、プロビジョニングする
 
@@ -39,9 +39,7 @@ ms.lasthandoff: 01/20/2018
     > この手順には [OpenSSL](https://www.openssl.org/) が必要です。OpenSSL をソースからビルドしてインストールするか、または[サード パーティ](https://wiki.openssl.org/index.php/Binaries) ([例](https://sourceforge.net/projects/openssl/)) からダウンロードしてインストールしてください。 "_ルート証明書_"、"_中間証明機関の証明書_"、"_デバイス証明書_" が既にある場合は、この手順を省略してかまいません。
     >
 
-1. 登録グループの情報を作成します。
-
-    1. **手順 1.** と**手順 2.** の作業を行って、"_ルート証明書_" と "_中間証明機関の証明書_" を作成します。
+    1. 最初の 2 つの手順の作業を行って、"_ルート証明書_" と "_中間証明機関の証明書_" を作成します。
 
     1. Azure Portal にログインし、左側のメニューの **[すべてのリソース]** をクリックして、Provisioning Service を開きます。
 
@@ -56,16 +54,16 @@ ms.lasthandoff: 01/20/2018
 
         1. 新しく作成された証明書を選択します。
             - **[確認コードを生成します]** をクリックします。 生成されたコードをコピーします。
-            - **手順 3.** の作業を行います。 "_確認コード_" を入力するか、または右クリックして実行中の PowerShell ウィンドウに貼り付けます。  **Enter** キーを押します。
+            - 確認の手順を実行します。 "_確認コード_" を入力するか、または右クリックして実行中の PowerShell ウィンドウに貼り付けます。  **Enter** キーを押します。
             - 新しく作成した **_verifyCert4.pem_** ファイルを Azure Portal で選択します。 **[確認]** をクリックします。
 
             ![証明書を検証する](./media/tutorial-group-enrollments/validate-certificate.png)
 
-1. 最後に**手順 4.** と**手順 5.** を実行してデバイス証明書を作成し、リソースをクリーンアップします。
+    1. 最後に、デバイス証明書を作成し、リソースをクリーンアップする手順を実行します。
 
-> [!NOTE]
-> デバイス証明書を作成するとき、デバイス名には必ず小文字の英数字とハイフンだけを使ってください。
->
+    > [!NOTE]
+    > デバイス証明書を作成するとき、デバイス名には必ず小文字の英数字とハイフンだけを使ってください。
+    >
 
 
 ## <a name="create-a-device-enrollment-entry"></a>デバイス登録エントリを作成する

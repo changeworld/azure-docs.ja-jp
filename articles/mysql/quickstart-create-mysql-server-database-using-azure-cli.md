@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: quickstart
 ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: a2efce07dac65eb8af59e6bc1bd5a51bfc62d69e
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 2cd867f09550f922479955b885f10ff329715c1c
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="create-an-azure-database-for-mysql-server-using-azure-cli"></a>Azure CLI を使用した Azure Database for MySQL サーバーの作成
 このクイック スタートでは、Azure CLI を使用して、約 5 分で Azure Database for MySQL サーバーを Azure リソース グループに作成する方法を説明します。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。
@@ -45,6 +45,25 @@ az group create --name myresourcegroup --location westus
 ```azurecli-interactive
 az extension add --name rdbms
 ``` 
+
+正しいバージョンの拡張機能がインストールされていることを確認します。 
+```azurecli-interactive
+az extension list
+```
+
+返される JSON には、次の内容が含まれている必要があります。 
+```json
+{
+    "extensionType": "whl",
+    "name": "rdbms",
+    "version": "0.0.3"
+}
+```
+
+バージョン 0.0.3 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
+```azurecli-interactive
+az extension update --name rdbms
+```
 
 ## <a name="create-an-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
 **[az mysql server create](/cli/azure/mysql/server#az_mysql_server_create)** コマンドを使用して、Azure Database for MySQL サーバーを作成します。 1 つのサーバーで複数のデータベースを管理できます。 通常は、プロジェクトまたはユーザーごとに個別のデータベースを使用します。
@@ -201,7 +220,7 @@ mysql>
 az group delete --name myresourcegroup
 ```
 
-新しく作成した 1 つのサーバーを削除するだけの場合は、[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete) コマンドを実行してください。
+新しく作成した 1 つのサーバーを削除するだけの場合は、**[az mysql server delete](/cli/azure/mysql/server#az_mysql_server_delete)** コマンドを実行してください。
 ```azurecli-interactive
 az mysql server delete --resource-group myresourcegroup --name mydemoserver
 ```
