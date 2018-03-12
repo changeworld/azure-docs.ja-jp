@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 ms.openlocfilehash: 6b5939341ad05fb8f80415c5335c24d216fc2555
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Azure App Service におけるオペレーティング システムの機能
 この記事では、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)上で動作するすべてのアプリが利用できる基本的なオペレーティング システムの機能について説明します。 これらの機能には、ファイル アクセス、ネットワーク アクセス、レジストリ アクセス、診断ログ、イベントがあります。 
