@@ -87,6 +87,8 @@
       items:
         - name: SSH ノード アクセス
           href: aks-ssh.md
+        - name: kubelet ログの取得
+          href: kubelet-logs.md
 - name: リファレンス
   items:
     - name: Azure CLI

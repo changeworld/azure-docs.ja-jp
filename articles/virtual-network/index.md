@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 6ae5c9019f292a18bc4ae8afe8d615977e8e6c9d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aa08bf5e3a7b69c1779a835bb614831d3f3ed9a7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="virtual-network-documentation"></a>Virtual Network のドキュメント
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 10/11/2017
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-network/virtual-networks-create-vnet-arm-pportal">
+        <a href="/azure/virtual-network/quick-create-portal">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -78,7 +78,7 @@ ms.lasthandoff: 10/11/2017
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-network/virtual-networks-create-vnet-arm-ps">
+        <a href="/azure/virtual-network/quick-create-powershell">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">
@@ -96,7 +96,7 @@ ms.lasthandoff: 10/11/2017
         </a>
     </li>
     <li>
-        <a href="/azure/virtual-network/virtual-networks-create-vnet-arm-cli">
+        <a href="/azure/virtual-network/quick-create-cli">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

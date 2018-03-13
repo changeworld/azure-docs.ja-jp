@@ -114,6 +114,12 @@
       items:
         - name: 接続済みソリューション
           href: security-center-partner-solutions.md
+        - name: 検出されたソリューション
+          href: 'security-center-partner-integration.md#discovered-solutions'
+        - name: 外部ソリューションの接続
+          href: quick-security-solutions.md
+        - name: Application Gateway の接続
+          href: security-center-connect-application-gateway.md
         - name: Microsoft ATA の接続
           href: security-center-ata-integration.md
         - name: Azure AD Identity Protection の接続

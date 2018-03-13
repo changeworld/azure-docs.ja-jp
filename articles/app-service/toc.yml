@@ -97,7 +97,7 @@
       items:
         - name: アプリケーションのデプロイ
           items:
-            - name: ZIP ファイルのデプロイ
+            - name: ZIP または WAR のデプロイ
               href: app-service-deploy-zip.md
             - name: FTP 経由でのデプロイ
               href: app-service-deploy-ftp.md

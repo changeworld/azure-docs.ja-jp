@@ -35,6 +35,7 @@
 ### リモート デスクトップの構成
 #### [ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
 #### [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
+#### [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 ## デプロイ
 ### [ポータルでのクラウド サービスの作成とデプロイ](cloud-services-how-to-create-deploy-portal.md)
