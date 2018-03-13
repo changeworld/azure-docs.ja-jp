@@ -21,7 +21,7 @@
 ### [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 ### [REST](network-watcher-packet-capture-manage-rest.md)
 ## VM との間の IP フローの確認
-### [Azure ポータル](network-watcher-check-ip-flow-verify-portal.md)
+### [Azure Portal](network-watcher-check-ip-flow-verify-portal.md)
 ### [Azure PowerShell](network-watcher-check-ip-flow-verify-powershell.md)
 ### [Azure CLI 1.0](network-watcher-check-ip-flow-verify-cli-nodejs.md)
 ### [Azure CLI](network-watcher-check-ip-flow-verify-cli.md)
@@ -73,7 +73,9 @@
 ### [オープン ソース ツールを使用してネットワーク トラフィック パターンを視覚化する](network-watcher-using-open-source-tools.md)
 ## NSG フロー ログの分析
 ### [NSG フロー ログの読み取り](network-watcher-read-nsg-flow-logs.md)
-### [Traffic Analytics の使用](traffic-analytics.md)
+### Traffic Analytics
+#### [Traffic Analytics の使用](traffic-analytics.md)
+#### [よく寄せられる質問](traffic-analytics-faq.md)
 ### [Power BI の使用](network-watcher-visualize-nsg-flow-logs-power-bi.md)
 ### [Elastic Stack の使用](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
 ### [Grafana の使用](network-watcher-nsg-grafana.md)

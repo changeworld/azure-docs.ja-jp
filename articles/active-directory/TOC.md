@@ -76,7 +76,7 @@
 
 ## [グループとメンバーの管理](active-directory-manage-groups.md)
 ### グループの管理
-#### [Azure ポータル](active-directory-groups-create-azure-portal.md)
+#### [Azure Portal](active-directory-groups-create-azure-portal.md)
 #### [Azure PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 ### [グループ メンバーを管理する](active-directory-groups-members-azure-portal.md)
 ### [グループ所有者を管理する](active-directory-accessmanagement-managing-group-owners.md)
@@ -290,9 +290,10 @@
 ### [管理者ロール](active-directory-assign-admin-roles-azure-portal.md)
 #### [ユーザーに管理者ロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 #### [メンバーとゲスト ユーザーのアクセス許可の比較](users-default-permissions.md)
+### [特権アクセスのセキュリティ保護](admin-roles-best-practices.md) 
+### [緊急アクセス用管理者アカウントの作成](active-directory-admin-manage-emergency-access-accounts.md)
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
-### [緊急アクセス用管理者アカウントを管理する](active-directory-admin-manage-emergency-access-accounts.md)
 
 ## アクセス レビュー
 ### [アクセス レビューの概要](active-directory-azure-ad-controls-access-reviews-overview.md)

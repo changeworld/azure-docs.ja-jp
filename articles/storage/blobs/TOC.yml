@@ -12,6 +12,8 @@
       href: ../common/storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: BLOB の使用 - Azure Portal
       href: storage-quickstart-blobs-portal.md
+    - name: BLOB の使用 - Storage Explorer
+      href: storage-quickstart-blobs-storage-explorer.md
     - name: BLOB の使用 - PowerShell
       href: storage-quickstart-blobs-powershell.md
     - name: BLOB の使用 - CLI
@@ -28,8 +30,8 @@
       href: storage-quickstart-blobs-ruby.md
     - name: BLOB の使用 - Node.js
       href: storage-quickstart-blobs-nodejs.md
-    - name: BLOB の使用 - Storage Explorer
-      href: storage-quickstart-blobs-storage-explorer.md
+    - name: BLOB の使用 - PHP
+      href: storage-quickstart-blobs-php.md
 - name: チュートリアル
   items:
     - name: 画像をアップロードして処理する

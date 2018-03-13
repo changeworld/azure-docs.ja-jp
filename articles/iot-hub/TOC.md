@@ -11,7 +11,7 @@
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
 #### [.NET](iot-hub-csharp-csharp-getstarted.md)
 #### [Java](iot-hub-java-java-getstarted.md)
-#### [Node.JS](iot-hub-node-node-getstarted.md)
+#### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
@@ -42,6 +42,7 @@
 
 ## MXChip IoT DevKit の使用
 ### [Azure Cognitive Services での音声メッセージの翻訳](iot-hub-arduino-iot-devkit-az3166-translator.md)
+### [Azure Functions を使用して Twitter メッセージを取得する](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 
 # ハウツー ガイド
 ## プラン
@@ -91,7 +92,7 @@
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
-#### [Node.JS](iot-hub-node-node-file-upload.md)
+#### [Node.js](iot-hub-node-node-file-upload.md)
 #### [Python](iot-hub-python-python-file-upload.md)
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)

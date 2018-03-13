@@ -290,6 +290,8 @@
           href: transform-data-using-stored-procedure.md
         - name: Data Lake U-SQL アクティビティ
           href: transform-data-using-data-lake-analytics.md
+        - name: Databricks ノートブック アクティビティ
+          href: transform-data-using-databricks-notebook.md
         - name: カスタム アクティビティ
           href: transform-data-using-dotnet-custom-activity.md
         - name: コンピューティングのリンクされたサービス

@@ -264,14 +264,24 @@
           items:
             - name: 概要
               href: azure-stack-billing-and-chargeback.md
-            - name: 使用量データ レポート
-              href: azure-stack-usage-reporting.md
-            - name: プロバイダー使用量 API
-              href: azure-stack-provider-resource-api.md
-            - name: テナント使用量 API
-              href: azure-stack-tenant-resource-usage-api.md
-            - name: 使用量に関する FAQ
-              href: azure-stack-usage-related-faq.md
+            - name: 使用量と課金を CSP として管理する
+              href: azure-stack-add-manage-billing-as-a-csp.md
+            - name: 使用量と課金のためのテナントを追加する
+              href: azure-stack-csp-howto-register-tenants.md
+            - name: テナントの登録を管理する
+              href: azure-stack-csp-ref-operations.md
+            - name: 使用量と課金のリファレンス
+              items:
+                - name: 使用量データ レポート
+                  href: azure-stack-usage-reporting.md
+                - name: クラウド サービス プロバイダー向けの使用量レポート インフラストラクチャ
+                  href: azure-stack-csp-ref-infrastructure.md
+                - name: プロバイダー使用量 API
+                  href: azure-stack-provider-resource-api.md
+                - name: テナント使用量 API
+                  href: azure-stack-tenant-resource-usage-api.md
+                - name: 使用量に関する FAQ
+                  href: azure-stack-usage-related-faq.md
         - name: Azure への接続
           items:
             - name: VPN を使用した接続

@@ -27,6 +27,7 @@
 ### [認証とセキュリティ モデルの概要](event-hubs-authentication-and-security-model-overview.md)
 ### [可用性と一貫性](event-hubs-availability-and-consistency.md)
 ### [スループット単位の自動スケール](event-hubs-auto-inflate.md)
+### [Apache Spark を Event Hubs と統合する](event-hubs-spark-connector.md)
 ## 開発
 ### [.NET Framework を使用したイベントの送信](event-hubs-dotnet-framework-getstarted-send.md)
 ### [.NET Framework を使用したイベントの受信](event-hubs-dotnet-framework-getstarted-receive-eph.md)

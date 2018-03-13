@@ -91,8 +91,10 @@
           maintainContext: true
     - name: Spark ストリーミング
       items:
-        - name: 概要
+        - name: ストリーミングの概要
           href: apache-spark-streaming-overview.md
+        - name: 構造化ストリーミングの概要
+          href: apache-spark-structured-streaming-overview.md
         - name: YARN で可用性の高い Spark ストリーミング ジョブを作成する
           href: apache-spark-streaming-high-availability.md
         - name: Event Hubs を使用した構造化ストリーミング
