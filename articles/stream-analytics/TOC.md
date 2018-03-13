@@ -77,7 +77,7 @@
 
 ## Machine Learning との統合
 ### [ML モデルを利用したセンチメント分析](stream-analytics-machine-learning-integration-tutorial.md)
-### [異常検出](stream-analytics-machine-learning-anomaly-detection.md)
+### [Anomaly detection](stream-analytics-machine-learning-anomaly-detection.md) (異常検出)
 ### [REST API の使用](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 
 
