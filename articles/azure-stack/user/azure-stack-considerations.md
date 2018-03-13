@@ -15,14 +15,14 @@ ms.topic: overview
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack でサービスを使用する場合やアプリを作成する場合、Azure Stack と Azure では違いがあることを理解する必要があります。 この記事では、ハイブリッド クラウド開発環境として Azure Stack をターゲットとする場合の主な考慮事項の概要を示します。
 
@@ -46,7 +46,7 @@ Azure に関する技術的な内容は、Azure Stack ではなく、Azure サ�
 | 領域 | Azure (グローバル) | Azure Stack |
 | -------- | ------------- | ----------|
 | 担当 | Microsoft | 組織またはサービス プロバイダー。|
-| サポートに関する連絡先 | Microsoft | 統合システムについては、(組織またはサービス プロバイダーの) Azure Stack オペレーターにお問い合わせください。<br><br>Azure Stack Development Kit のサポートについては、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurestack)にアクセスして確認してください。 開発キットは評価環境として提供されるものであるため、Microsoft カスタマー サポート サービス (CSS) を通じて公式なサポートは提供されません。
+| サポートに関する連絡先 | Microsoft | 統合システムについては、(組織またはサービス プロバイダーの) Azure Stack オペレーターにお問い合わせください。<br><br>Azure Stack Development Kit のサポートについては、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=azurestack)にアクセスして確認してください。 開発キットは評価環境として提供されるものであるため、Microsoft カスケード スタイル シート (CSS) を通じて公式なサポートは提供されません。
 | 利用可能なサービス | [Azuer 製品](https://azure.microsoft.com/services/?b=17.04b)の一覧を参照してください。 利用可能なサービスは Azure リージョンによって異なります。 | Azure Stack では Azure サービスのサブセットがサポートされます。 提供される実際のサービスは、組織またはサービス プロバイダーによる選択内容によって異なります。
 | Azure Resource Manager のエンドポイント* | https://management.azure.com | Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供されたエンドポイントを使用します。<br><br>開発キットの場合は、https://management.local.azurestack.external を使用します。
 | ポータル URL* | [https://portal.azure.com](https://portal.azure.com) | Azure Stack 統合システムの場合は、Azure Stack オペレーターによって提供された URL にアクセスします。<br><br>開発キットの場合は、https://portal.local.azurestack.external を使用します。
@@ -86,7 +86,7 @@ Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}
 
 出力例 (一部): ![Get-AzureRmResourceProvider コマンドの出力例](media/azure-stack-considerations/image1.png)
  
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 サービス レベルでの違いの詳細については、以下を参照してください。
 
