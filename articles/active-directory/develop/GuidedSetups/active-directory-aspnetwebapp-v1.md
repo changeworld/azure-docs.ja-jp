@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 12/08/2017
 ms.author: andret
 ms.openlocfilehash: b23afd26f7ac1828381a0410d2455206c8f43c88
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 <!--start-intro-->
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-web-app"></a>ASP.NET Web アプリへの "Microsoft でサインイン" の追加
