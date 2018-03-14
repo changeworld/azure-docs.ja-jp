@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 11/15/2017
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 803b0bbff12c8ce471c0bff5e22e24601b8ce07f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 16d9431ec0a0425c8433557fe384864bb599bf1f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-from-the-azure-portal-to-a-windows-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Azure Portal から Windows デバイスに展開する - プレビュー
 
@@ -122,6 +122,12 @@ docker logs -f tempSensor
 
 また、[IoT Hub エクスプローラー ツール][lnk-iothub-explorer]を使用して、デバイスが送信しているテレメトリを表示することもできます。 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+作成したシミュレートされたデバイスを削除したい場合は、各モジュールで起動された Docker コンテナーと共に、次のコマンドを使用します。 
+
+```cmd
+iotedgectl uninstall
+```
 
 作成した IoT ハブが不要になったら、[az iot hub delete][lnk-delete] コマンドを使用して、リソースとそれに関連付けられているデバイスを削除できます。
 

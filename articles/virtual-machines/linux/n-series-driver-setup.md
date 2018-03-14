@@ -13,32 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 02/01/2018
+ms.date: 03/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 421e594f7bd4df1bc1c5faedc2c8bfab0540ca61
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 201734661873c7ac7f7a5dd710009eb324cedc86
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
 Linux を実行する Azure N シリーズ VM の GPU 機能を利用するには、サポートされている NVIDIA グラフィック ドライバーをインストールします。 この記事では、N シリーズ VM をデプロイした後のドライバーのセットアップ手順について説明します。 ドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でも利用可能です。
 
-
 N シリーズ VM の仕様、ストレージの容量、およびディスクの詳細については、「[GPU Linux VM のサイズ](sizes-gpu.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。 
-
-
 
 [!INCLUDE [virtual-machines-n-series-linux-support](../../../includes/virtual-machines-n-series-linux-support.md)]
 
-## <a name="install-cuda-drivers-for-nc-ncv2-and-nd-vms"></a>NC、NCv2、ND VM 用の CUDA ドライバーのインストール
+## <a name="install-cuda-drivers-for-nc-ncv2-ncv3-and-nd-series-vms"></a>NC、NCv2、NCv3、ND シリーズ VM 用の CUDA ドライバーのインストール
 
-NVIDIA CUDA Toolkit から NVIDIA ドライバーを Linux NC VM にインストールする手順は次のとおりです。 
+NVIDIA CUDA Toolkit から N シリーズ VM に NVIDIA ドライバーをインストールする手順は次のとおりです。 
 
 C および C++ の開発者は、GPU アクセラレータを使用したアプリケーションを構築するために、必要に応じて Toolkit 全体をインストールできます。 詳細については、[CUDA インストール ガイド](http://docs.nvidia.com/cuda/cuda-installation-guide-linux/index.html)を参照してください。
-
 
 > [!NOTE]
 > ここで示されている CUDA ドライバーのダウンロード リンクは、公開された時点のものです。 最新の CUDA ドライバーについては、[NVIDIA](https://developer.nvidia.com/cuda-zone) の Web サイトを参照してください。
@@ -113,9 +109,9 @@ sudo reboot
 2. Install the latest Linux Integration Services for Hyper-V.
 
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.4.tar.gz
  
-  tar xvzf lis-rpms-4.2.3-5.tar.gz
+  tar xvzf lis-rpms-4.2.4.tar.gz
  
   cd LISISO
  
@@ -152,16 +148,13 @@ sudo reboot
 
 5. VM を再起動して、インストールの確認に進みます。
 
-
 ### <a name="verify-driver-installation"></a>ドライバーのインストールの確認
-
 
 GPU デバイスの状態を照会するには、VM に SSH 接続し、ドライバーと共にインストールされる [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) コマンド ライン ユーティリティを実行します。 
 
 ドライバーがインストールされると、次のような出力が表示されます。 **GPU-Util** は、その時点で VM で GPU ワークロードを実行していない限り、0% と表示されます。 ドライバーのバージョンと GPU の詳細は、次の表示と異なる場合があります。
 
 ![NVIDIA デバイスの状態](./media/n-series-driver-setup/smi.png)
-
 
 ## <a name="rdma-network-connectivity"></a>RDMA ネットワーク接続
 
@@ -180,9 +173,9 @@ Azure Marketplace で、N シリーズ VM の RDMA 接続をサポートする�
 > 
 
 
-## <a name="install-grid-drivers-for-nv-vms"></a>NV VM 用の GRID ドライバーのインストール
+## <a name="install-grid-drivers-for-nv-series-vms"></a>NV シリーズ VM 用の GRID ドライバーのインストール
 
-NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM に SSH 接続を作成して、Linux ディストリビューションの手順に従います。 
+NV シリーズ VM に NVIDIA GRID ドライバーをインストールするには、各 VM への SSH 接続を作成して、Linux ディストリビューションに応じた手順に従います。 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -265,9 +258,9 @@ NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM 
 3. VM を再起動して再接続し、HYPER-V の最新の Linux Integration Services をインストールします。
  
   ```bash
-  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.3-5.tar.gz
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.4.tar.gz
 
-  tar xvzf lis-rpms-4.2.3-5.tar.gz
+  tar xvzf lis-rpms-4.2.4.tar.gz
 
   cd LISISO
 
@@ -348,7 +341,6 @@ if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 * カードを照会する必要があるときにコマンドがより高速に出力されるように、`nvidia-smi` を使って永続化モードを設定できます。 永続化モードを設定するには、`nvidia-smi -pm 1` を実行します。 VM を再起動すると、モード設定は消失することに注意してください。 常にスタートアップ時に実行するように、モード設定をスクリプト処理できます。
-
 
 ## <a name="next-steps"></a>次の手順
 

@@ -14,21 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 506781ac83e75d558badbd3a8842533e314a8dfa
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 5558a69756075dd83f890d5e9e00c9944d841591
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
 
-この記事は、Azure File Sync のデプロイで発生する可能性がある問題のトラブルシューティングと解決を支援することを目的としています。 問題をさらに調査する必要がある場合に、システムから重要なログを収集する方法についても説明します。 質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
+この記事は、Azure File Sync のデプロイで発生する可能性がある問題のトラブルシューティングと解決を支援することを目的としています。 問題をさらに調査する必要がある場合に、システムから重要なログを収集する方法についても説明します。 ご質問に対する回答がここで見つからない場合は、次のチャネルでお問い合わせください (上から順に)。
 
 1. この記事のコメント セクション。
 2. [Azure Storage フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)。
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)。 
 4. Microsoft サポート。 新しいサポート要求を作成するには、Azure Portal の **[ヘルプ]** タブで、**[ヘルプとサポート]** ボタンを選択し、**[新しいサポート要求]** を選択します。
+
+## <a name="storage-sync-service-object-management"></a>Storage 同期サービスオブジェクトの管理
+1 つのサブスクリプションから別のサブスクリプションにリソースを移動する場合、ファイル同期 (Storage Sync Service) リソースは移動をブロックされます。 
 
 ## <a name="agent-installation-and-server-registration"></a>エージェントのインストールとサーバー登録
 <a id="agent-installation-failures"></a>**エージェントのインストール エラーをトラブルシューティングする**  

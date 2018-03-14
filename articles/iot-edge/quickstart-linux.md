@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 440b70f4d04728973d77e54e7f6303e1ad7fcd89
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 827fe91c14a44cbaf8a9bb5921e5c9962d984414
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Linux または Mac デバイスにデプロイする - プレビュー
 
@@ -25,12 +25,12 @@ Azure IoT Edge は、クラウドの機能をご使用のモノのインター�
 
 このクイック スタートでは、自分のコンピューターまたは仮想マシンをモノのインターネット デバイスのように使用します。 マシンを IoT Edge デバイスにするには、次のサービスが必要です。
 
-* Python pip (IoT Edge ランタイムをインストールするため)。
-   * Linux: `sudo apt-get install python-pip`。
-   * MacOS: `sudo easy_install pip`。
+* Python pip (IoT Edge ランタイムをインストールするため)
+   * Linux: `sudo apt-get install python-pip`.
+   * MacOS: `sudo easy_install pip`.
 * Docker (IoT Edge モジュールを実行するため)
-   * [Docker を Linux にインストールし][lnk-docker-ubuntu]、稼働していることを確認します。 
-   * [Docker を Mac にインストールし][lnk-docker-mac]、稼働していることを確認します。 
+   * [Docker for Linux をインストール][lnk-docker-ubuntu]し、稼働していることを確認します。 
+   * [Docker for Mac をインストール][lnk-docker-mac]し、稼働していることを確認します。 
 
 ## <a name="create-an-iot-hub-with-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
@@ -70,22 +70,22 @@ IoT ハブを Azure サブスクリプションで作成します。 このク�
 IoT Edge ランタイムはすべての IoT Edge デバイスに展開されます。 これは 2 つのモジュールから構成されます。 まず、IoT Edge エージェントは、IoT Edge デバイスでのモジュールの展開と監視を容易にします。 次に、IoT Edge ハブは、IoT Edge デバイス上のモジュール間、およびデバイスと IoT ハブの間の通信を管理します。 
 
 IoT Edge デバイスを実行するマシン上に、IoT Edge 制御スクリプトをダウンロードします。
-```cmd
+```bash
 sudo pip install -U azure-iot-edge-runtime-ctl
 ```
 
 前のセクションで保存した IoT Edge デバイス接続文字列を使用してランタイムを構成します。
-```cmd
+```bash
 sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
 ```
 
 ランタイムを開始します。
-```cmd
+```bash
 sudo iotedgectl start
 ```
 
 Docker を調べて、IoT Edge エージェントがモジュールとして実行されていることを確認します。
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -101,7 +101,7 @@ sudo docker ps
 
 シミュレートされたデバイスを実行しているコンピューターで、もう一度コマンド プロンプトを開きます。 IoT Edge デバイスで、クラウドからデプロイされたモジュールが実行されていることを確認します。
 
-```cmd
+```bash
 sudo docker ps
 ```
 
@@ -109,7 +109,7 @@ sudo docker ps
 
 tempSensor モジュールからクラウドに送信されているメッセージを確認します。
 
-```cmd
+```bash
 sudo docker logs -f tempSensor
 ```
 
@@ -118,6 +118,12 @@ sudo docker logs -f tempSensor
 また、[IoT Hub エクスプローラー ツール][lnk-iothub-explorer]を使用して、デバイスが送信しているテレメトリを表示することもできます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+作成したシミュレートされたデバイスを削除したい場合は、各モジュールで起動された Docker コンテナーと共に、次のコマンドを使用します。 
+
+```bash
+sudo iotedgectl uninstall
+```
 
 作成した IoT ハブが不要になったら、[az iot hub delete][lnk-delete] コマンドを使用して、リソースとそれに関連付けられているデバイスを削除できます。
 

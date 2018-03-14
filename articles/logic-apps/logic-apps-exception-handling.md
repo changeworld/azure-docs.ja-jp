@@ -2,45 +2,53 @@
 title: "Azure での Logic Apps のエラーと例外の処理 | Microsoft Docs"
 description: "Logic Apps におけるエラーと例外の処理パターン。"
 services: logic-apps
-documentationcenter: .net,nodejs,java
-author: derek1ee
+documentationcenter: 
+author: dereklee
 manager: anneta
 editor: 
 ms.assetid: e50ab2f2-1fdc-4d2a-be40-995a6cc5a0d4
 ms.service: logic-apps
-ms.devlang: multiple
+ms.devlang: 
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: integration
-ms.date: 10/18/2016
-ms.author: LADocs; deli
-ms.openlocfilehash: a74c7d18306359c9152f139299de1208b5932fe5
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.workload: logic-apps
+ms.date: 01/31/2018
+ms.author: deli; LADocs
+ms.openlocfilehash: 91819d0fba30dd2ada981435fa13b8ae0a7fcc45
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Logic Apps におけるエラーと例外の処理
 
-Azure の Logic Apps には、安定した統合を実現すると共に障害からの回復力を高めるためのツールとパターンが豊富に用意されています。 すべての統合アーキテクチャには、依存システムによって発生するダウンタイムや問題を適切に処理できるようにするという課題があります。 Logic Apps は、最上級のエクスペリエンスでエラーを処理します。 ワークフローの例外とエラーを操作するために必要なツールが用意されています。
+依存システムによって発生するダウンタイムや問題を適切に処理することは、すべての統合アーキテクチャにとって課題になる可能性があります。 Logic Apps では、問題や障害に対して回復力の高い堅牢な統合を作成するために、エラーと例外を処理するための最上級のエクスペリエンスが提供されます。 
 
 ## <a name="retry-policies"></a>再試行ポリシー
 
-例外とエラーを処理するうえで最も基本的な方法が再試行ポリシーです。 最初の要求がタイムアウトになるか失敗した場合 (要求への応答として 429 または 5xx が返された場合)、再試行ポリシーは、アクションを再試行するかどうかと再試行方法を定義します。 
+例外とエラーを処理する最も基本的な方法としては再試行ポリシーを使用します。 最初の要求がタイムアウトになるか失敗した場合 (要求への応答として 429 または 5xx が返された場合) に、アクションによって要求を再試行するかどうかと再試行する方法は、このポリシーによって定義されます。 
 
-再試行ポリシーには、既定、なし、固定間隔、および指数関数的な間隔の 4 種類があります。 ワークフロー定義に再試行ポリシーが指定されていない場合は、サービスによって定義された既定のポリシーが使用されます。 
+再試行ポリシーには、既定、なし、固定間隔、および指数関数的な間隔の 4 種類があります。 ワークフロー定義に再試行ポリシーが指定されていない場合は、サービスによって定義された既定のポリシーが代わりに使用されます。
 
-再試行ポリシーを特定のアクションの *inputs* で構成するか、再試行可能な場合にトリガーできます。 同様に、ロジック アプリ デザイナーで再試行ポリシーを構成できます (該当する場合)。 再試行ポリシーを設定するには、ロジック アプリ デザイナーで特定のアクションの **[設定]**に移動します。
-
-再試行ポリシーの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)」を参照してください。 サポートされる構文の詳細については、「[ワークフローのトリガーとアクション][retryPolicyMSDN]」の再試行ポリシーに関するセクションを参照してください。
-
-### <a name="default"></a>既定
-
-再試行ポリシーを定義しない (**retryPolicy** が未定義) 場合は、既定のポリシーが使用されます。 既定のポリシーは、指数関数的な間隔を使用するポリシーであり、7.5 秒で指数関数的に増加する間隔で、最大 4 回の再試行を送信します。 間隔は 5 ～ 45 秒に制限されます。 この既定のポリシーは、次の HTTP ワークフロー定義例で使用されているポリシーに相当します。
+再試行ポリシーを設定するには、ロジック アプリ デザイナーでロジック アプリを開き (該当する場合)、そのロジック アプリで特定のアクションの **[設定]** に移動します。 または、ワークフロー定義内で、特定のアクションまたはトリガー (再試行できる場合) の **inputs** セクションに再試行ポリシーを定義できます。 一般的な構文を次に示します。
 
 ```json
-"HTTP":
-{
+"retryPolicy": {
+    "type": "<retry-policy-type>",
+    "interval": <retry-interval>,
+    "count": <number-of-retry-attempts>
+}
+```
+
+構文と **inputs** について詳しくは、[ワークフローのアクションとトリガーに関するページの再試行ポリシーのセクション][retryPolicyMSDN]をご覧ください。 再試行ポリシーの制限については、「[Logic Apps の制限と構成](../logic-apps/logic-apps-limits-and-config.md)」をご覧ください。 
+
+### <a name="default"></a>既定値
+
+**retryPolicy** セクションに再試行ポリシーを定義しないと、ロジック アプリは既定ポリシーを使用します。これは、[指数関数的な間隔のポリシー](#exponential-interval)であり、7.5 秒で指数関数的に延長される間隔で、最大 4 回まで再試行を送信します。 間隔の範囲は 5 秒から 45 秒です。 このポリシーは、次の HTTP ワークフロー定義例で使用されているポリシーに相当します。
+
+```json
+"HTTP": {
+    "type": "Http",
     "inputs": {
         "method": "GET",
         "uri": "http://myAPIendpoint/api/action",
@@ -52,60 +60,63 @@ Azure の Logic Apps には、安定した統合を実現すると共に障害�
             "maximumInterval": "PT45S"
         }
     },
-    "runAfter": {},
-    "type": "Http"
+    "runAfter": {}
 }
 ```
 
 ### <a name="none"></a>なし
 
-**retryPolicy** が **none** に設定されている場合、失敗した要求は再試行されません。
+**retryPolicy** が **none** に設定されると、そのポリシーは、失敗した要求を再試行しません。
 
-| 要素名 | 必須 | 型 | 説明 |
-| ------------ | -------- | ---- | ----------- |
-| type | はい | String | "**なし**" |
+| 要素名 | 必須 | type | [説明] | 
+| ------------ | -------- | ---- | ----------- | 
+| 型 | [はい] | String | "**なし**" | 
+||||| 
 
 ### <a name="fixed-interval"></a>固定間隔
 
-**retryPolicy** が **fixed** に設定されている場合、ポリシーは、指定された時間待機した後で次の要求を送信することで、失敗した要求を再試行します。
+**retryPolicy** が **fixed** に設定されると、そのポリシーは、指定された時間待機した後で次の要求を送信することで、失敗した要求を再試行します。
 
-| 要素名 | 必須 | 型 | 説明 |
+| 要素名 | 必須 | type | [説明] |
 | ------------ | -------- | ---- | ----------- |
-| type | はい | String | **fixed** |
-| count | はい | Integer | 再試行回数。 1 ～ 90 の間である必要があります。 |
-| interval | はい | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)の再試行間隔。 PT5S ～ PT1D の間である必要があります。 |
+| 型 | [はい] | String | **fixed** |
+| count | [はい] | 整数 | 再試行の回数。1 - 90 で指定する必要があります。 | 
+| interval | [はい] | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)の再試行の間隔。PT5S と PT1D の間で指定する必要があります。 | 
+||||| 
+
+<a name="exponential-interval"></a>
 
 ### <a name="exponential-interval"></a>指数関数的な間隔
 
-**retryPolicy**が **exponential** に設定されている場合、ポリシーは、指数関数的に増加する範囲のランダムな時間間隔で、失敗した要求を再試行します。 各々の再試行は、**minimumInterval** より大きく **maximumInterval** より小さいランダムな間隔で送信されることが保証されています。 次の表に示されている範囲の均一のランダム変数が、再試行ごとに最大 **count** 回生成されます。
+**retryPolicy**が **exponential** に設定されると、ポリシーは、指数関数的に延長されるランダムな時間間隔で、失敗した要求を再試行します。 このポリシーでは、各々の再試行は、**minimumInterval** より大きく **maximumInterval** より小さいランダムな間隔で送信されることも保証されています。 指数関数的なポリシーでは、**count** と **interval** が必須ですが、**minimumInterval** と **maximumInterval** の値はオプションです。 既定値の PT5S と PT1D それぞれを上書きする場合は、次の値を追加できます。
+
+| 要素名 | 必須 | type | [説明] |
+| ------------ | -------- | ---- | ----------- |
+| 型 | [はい] | String | **exponential** |
+| count | [はい] | 整数 | 再試行の回数。1 - 90 で指定する必要があります。  |
+| interval | [はい] | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)の再試行の間隔。PT5S と PT1D の間で指定する必要があります。 |
+| minimumInterval | いいえ  | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)の再試行の最小間隔。PT5S と **interval** の間で指定する必要があります。 |
+| maximumInterval | いいえ  | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)の再試行の最小間隔。**interval** と PT1D の間で指定する必要があります。 | 
+||||| 
+
+次の表では、示されている範囲の均一のランダム変数が、再試行ごとに最大 **count** 回生成されることがわかります。
 
 **ランダム変数の範囲**
 
 | 再試行回数 | 最小間隔 | 最大間隔 |
-| ------------ |  ------------ |  ------------ |
+| ------------ | ---------------- | ---------------- |
 | 1 | Max(0, **minimumInterval**) | Min(interval, **maximumInterval**) |
 | 2 | Max(interval, **minimumInterval**) | Min(2 * interval, **maximumInterval**) |
 | 3 | Max(2 * interval, **minimumInterval**) | Min(4 * interval, **maximumInterval**) |
 | 4 | Max(4 * interval, **minimumInterval**) | Min(8 * interval, **maximumInterval**) |
-| ... |
+| .... | | | 
+|||| 
 
-指数関数的な種類のポリシーでは、**count** と **interval** は必須です。 **minimumInterval** と **maximumInterval** の値は省略可能です。 それらを追加して、既定値である PT5S と PT1D をそれぞれ上書きできます。
+## <a name="catch-and-handle-failures-with-the-runafter-property"></a>runAfter プロパティを使用してエラーをキャッチして処理する
 
-| 要素名 | 必須 | 型 | 説明 |
-| ------------ | -------- | ---- | ----------- |
-| 型 | はい | String | **exponential** |
-| count | はい | Integer | 再試行回数。 1 ～ 90 の間である必要があります。  |
-| interval | はい | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)の再試行間隔。 PT5S ～ PT1D の間である必要があります。 |
-| minimumInterval | いいえ  | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)の再試行の最小間隔。 PT5S ～ **interval** の間である必要があります。 |
-| maximumInterval | いいえ  | String | [ISO 8601 形式](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)の再試行の最小間隔。 **interval** ～ PT1D の間である必要があります。 |
+ロジック アプリの各アクションは、そのアクションが開始する前に終了する必要があるアクションを宣言します。これは、ワークフローのステップの順序を指定する方法と同じです。 アクションの定義において、**runAfter** プロパティはこの順序を定義します。また、このプロパティは、特定のアクションを実行するうえでの前提条件となるアクションとその状態を記述するオブジェクトです。
 
-## <a name="catch-failures-with-the-runafter-property"></a>runAfter プロパティを使用してエラーをキャッチする
-
-ロジック アプリの各アクションは、そのアクションを開始する前にどのアクションが完了されている必要があるかを宣言します。 それは、ワークフローのステップを順序付けすることに似ています。 アクション定義では、この順序付けは、**runAfter** プロパティで指定されます。 
-
-**runAfter** プロパティは、特定のアクションを実行するうえでの前提条件となるアクションとその状態を記述するオブジェクトです。 既定では、ロジック アプリ デザイナーを使用して追加されたすべてのアクションは、先行する手順の結果が **Succeeded** であれば、その手順の次に実行されるように設定されます。 
-
-ただし、**runAfter** の値をカスタマイズして、先行するアクションの結果が **Failed**、**Skipped**、またはこれらの値の可能なセットである場合に、アクションを開始するように設定できます。 特定のアクションである **Insert_Row** が失敗した後、指定した Azure Service Bus トピックに項目を追加する場合は、次の **runAfter** 構成を使用できます。
+既定では、ロジック アプリ デザイナーで追加されたすべてのアクションは、先行する手順の結果が **Succeeded** であれば、その手順の次に実行されるように設定されます。 ただし、**runAfter** の値をカスタマイズして、先行するアクションの結果が **Failed** や **Skipped** (または組み合わせ) の場合にもアクションが起動するようにできます。 たとえば、特定の **Insert_Row** アクションが失敗した後で、特定の Service Bus トピックに項目を追加するには、次の例の **runAfter** 定義を使用できます。
 
 ```json
 "Send_message": {
@@ -133,7 +144,7 @@ Azure の Logic Apps には、安定した統合を実現すると共に障害�
 }
 ```
 
-**runAfter** は、**Insert_Row** アクションの結果が **Failed** の場合に開始するように設定されていることに注意してください。 アクションの状態が **Succeeded**、**Failed**、または **Skipped** の場合にアクションを実行するには、次の構文を使用します。
+この **runAfter** プロパティは、**Insert_Row** アクションの状態が **Failed** のときに実行するように設定されています。 アクションの状態が **Succeeded**、**Failed**、または **Skipped** の場合にアクションを実行するには、次の構文を使用します。
 
 ```json
 "runAfter": {
@@ -144,27 +155,31 @@ Azure の Logic Apps には、安定した統合を実現すると共に障害�
 ```
 
 > [!TIP]
-> 先行するアクションが失敗した後で実行され、正常に完了したアクションは **Succeeded** とマークされます。 この動作は、ワークフロー内で発生したすべてのエラーが正常にキャッチされた場合、実行そのものは **Succeeded** とマークされることを意味します。
+> 先行するアクションが失敗した後で実行され、正常に完了したアクションは **Succeeded** とマークされます。 この動作は、ワークフロー内で発生したすべてのエラーが正常にキャッチされた場合、その実行そのものは **Succeeded** としてマークされることを意味します。
 
-## <a name="scopes-and-results-to-evaluate-actions"></a>アクションを評価するためのスコープと結果
+<a name="scopes"></a>
 
-複数のアクションを[スコープ](../logic-apps/logic-apps-loops-and-scopes.md)内にグループ化して、個々のアクションを実行するのと同じように実行できます。 スコープは、アクションの論理グループとして機能します。 
+## <a name="evaluate-actions-with-scopes-and-their-results"></a>スコープとその結果を使用してアクションを評価する
 
-スコープを活用して、ロジック アプリのアクションを体系化したり、スコープの状態に対して全体的な評価を実行したりできます。 スコープ自体には、スコープ内のすべてのアクションが完了した後に状態が返されます。 スコープの状態は、実行条件と同じ条件で判定されます。 実行分岐の最後のアクションが **Failed** または **Aborted** である場合、状態は **Failed** になります。
+**runAfter** プロパティを使用して個々のアクションの後で手順を実行するように、アクションを[スコープ](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)にまとめることができます。 アクションを論理的にグループ化し、スコープの集合的な状態を調査し、その状態に基づいてアクションを実行する場合は、スコープを使用できます。 そのスコープ内のすべてのアクションの実行が完了すると、スコープが独自の状態を取得します。 
 
-スコープ内で何らかのエラーが発生した場合に特定のアクションを実行するには、**Failed** とマークされたスコープで **runAfter** を使用できます。 スコープ内の "*いずれかの*" アクションが失敗したときに、スコープに対して **runAfter** を使用する場合は、エラーをキャッチする 1 つのアクションを作成できます。
+スコープの状態を調べるには、ロジック アプリの実行状態を調べるのと同じ基準 (**Succeeded** や **Failed** など) を使用できます。 
 
-### <a name="get-the-context-of-failures-with-results"></a>結果を使用してエラーのコンテキストを取得する
+既定では、スコープのすべてのアクションが成功すると、そのスコープの状態は **Succeeded** とマークされます。 スコープの最後のアクションが **Failed** または **Aborted** になると、スコープの状態は **Failed** とマークされます。 
+
+**Failed** スコープの例外をキャッチして、そのエラーを処理するアクションを実行するには、その **Failed** スコープの **runAfter** プロパティを使用できます。 このように、スコープ内の "*いずれかの*" アクションが失敗したときに、そのスコープに対して **runAfter** プロパティを使用している場合、エラーをキャッチする 1 つのアクションを作成できます。
+
+スコープの制限については、[制限と構成](../logic-apps/logic-apps-limits-and-config.md)に関するページをご覧ください。
+
+### <a name="get-context-and-results-for-failures"></a>エラーのコンテキストと結果を取得する
 
 スコープ単位でエラーをキャッチできるのは便利ですが、失敗したアクションや返されたエラーまたは状態コードを正確に把握するためには、スコープの結果だけでなくコンテキストが必要となります。 **@result()** ワークフロー関数を使用すると、スコープ内のすべてのアクションの結果に関するコンテキストが得られます。
 
-**@result()** 関数は、単一のパラメーター (スコープ名) を受け取り、そのスコープに含まれるアクションの結果をすべて含んだ配列を返します。 これらのアクション オブジェクトには、**@actions()** オブジェクトと同じ属性が存在します (アクションの開始時刻と終了時刻、アクションの状態、アクションの入力、アクションの相関関係 ID、アクションの出力など)。 
+**@result()** 関数は、単一のパラメーター (スコープの名前) を受け取り、そのスコープに含まれるアクションの結果をすべて含んだ配列を返します。 これらのアクションのオブジェクトには、アクションの開始時刻、終了時刻、状態、入力、相関 ID、出力など、**@actions()** オブジェクトと同じ属性を含まれます。 **@result()** 関数と **runAfter** プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
 
-**@result()** 関数と **runAfter** プロパティを組み合わせるだけで、スコープ内で失敗したすべてのアクションのコンテキストを受け取ることができます。
+スコープ内の **Failed** となったアクション "*ごとに*" アクションを実行し、失敗したアクションに到達するまで結果の配列をフィルター処理するには、**@result()** を **[[配列のフィルター処理]](../connectors/connectors-native-query.md)** アクションと **[ForEach](../logic-apps/logic-apps-control-flow-loops.md)** ループと組み合わせて使用します。 抽出した結果の配列を **ForEach** ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。 
 
-スコープ内の **Failed** となったアクション "*ごとに*" 特定のアクションを実行し、結果の配列をフィルター処理して失敗したアクションを抽出するには、**@result()** を [Filter_array](../connectors/connectors-native-query.md) アクションと [foreach](../logic-apps/logic-apps-loops-and-scopes.md) ループと組み合わせて使用します。 抽出した結果の配列を **foreach** ループに渡すことで、それぞれのエラーに対してアクションを実行することができます。 
-
-My_Scope というスコープ内で失敗したアクションの応答本文で HTTP POST 要求を送信する例を次に示します。
+次の例では、"My_Scope" というスコープ内で失敗したすべてのアクションの応答本文を含む HTTP POST 要求が送信されます (詳細については例の後に記載)。
 
 ```json
 "Filter_array": {
@@ -207,19 +222,20 @@ My_Scope というスコープ内で失敗したアクションの応答本文�
 
 上の例における実際の動作についての詳細は以下のとおりです。
 
-1. My_Scope 内のすべてのアクションの結果を取得するために、**Filter_array** アクションによって **@result('My_Scope')** をフィルター処理します。
+1. "My_Scope" 内のすべてのアクションの結果を取得するために、**[配列のフィルター処理]** アクションによって **@result('My_Scope')** をフィルター処理します。
 
-2. **Filter_array** の条件は、状態が **Failed** と等しいすべての **@result()** 要素です。 この条件により、My_Scope のすべてのアクションの結果を含む配列がフィルター処理され、失敗したアクションの結果のみを抽出した配列が得られます。
+2. **[配列のフィルター処理]** の条件は、状態が **Failed** と等しいすべての **@result()** 要素です。 この条件により、"My_Scope" のすべてのアクションの結果を含む配列がフィルター処理され、失敗したアクションの結果のみを抽出した配列が得られます。
 
-3. *フィルター後の配列*の出力に対して **foreach** アクションを実行します。 このステップでは、フィルター処理済みの失敗したアクションの結果 "*ごとに*" 特定のアクションが実行されます。
+3. *フィルター後の配列*の出力に対して **For Each** ループ アクションを実行します。 このステップでは、フィルター処理済みの失敗したアクションの結果 "*ごとに*" 特定のアクションが実行されます。
 
-    スコープ内の 1 つのアクションが失敗した場合、**foreach** 内のアクションは 1 回だけ実行されます。 失敗したアクションが複数ある場合は、エラーごとに 1 つのアクションが実行されます。
+   スコープ内の 1 つのアクションが失敗した場合、**foreach** 内のアクションは 1 回だけ実行されます。 
+   失敗したアクションが複数ある場合は、エラーごとに 1 つのアクションが実行されます。
 
-4. **foreach** 要素の応答本文または **@item()['outputs']['body']** で HTTP POST を送信します。 **@result()** 要素のシェイプは、**@actions()** のシェイプと同じです。 それは同じ方法で解析できます。
+4. **foreach** 要素の応答本文すなわち **@item()['outputs']['body']** で HTTP POST を送信します。 **@result()** 要素の構造は **@actions()** と同じであり、同じ方法で解析することができます。
 
 5. **@item()['name']** と **@item()['clientTrackingId']** という 2 つのカスタム ヘッダーが含まれます。前者は失敗したアクションの名前、後者は失敗した実行のクライアント追跡 ID です。
 
-参考までに単一の **@result()** 要素の例を次に示します。 それは、前の例で解析される **name**、**body**、および **clientTrackingId** の各プロパティを示しています。 **foreach** アクションの外側では、**@result()** によってこれらのオブジェクトの配列が返されます。
+参考例として、前述の例で解析した **name**、**body**、**clientTrackingId** の各プロパティを含む 1 つの **@result()** 要素を次に示します。 **foreach** アクションの外側では、**@result()** によってこれらのオブジェクトの配列が返されます。
 
 ```json
 {
@@ -251,20 +267,21 @@ My_Scope というスコープ内で失敗したアクションの応答本文�
 }
 ```
 
-さまざまな例外処理パターンで、この記事で説明した式を使用できます。 フィルターで抽出したエラーの配列全体を、スコープ外の単一の例外処理アクションに渡して実行してもかまいません。その場合、**foreach** は不要です。 前述した **@result()** の応答には、他にも便利なプロパティがあるので、それらを含めることもできます。
+この記事の前出の式を使用することで、さまざまな例外処理パターンを実行できます。 フィルターで抽出したエラーの配列全体を、スコープ外の単一の例外処理アクションに渡して実行してもかまいません。その場合、**foreach** アクションは不要です。 前述した **@result()** の応答には、他にも便利なプロパティがあるので、それらを含めることもできます。
 
 ## <a name="azure-diagnostics-and-telemetry"></a>Azure 診断とテレメトリ
 
-この記事で取り上げたパターンは、実行時に発生したエラーや例外を処理するうえで、きわめて効果的な方法ですが、実行そのものとは切り離して、エラーを特定して対応することもできます。 ワークフローで発生したあらゆるイベント (実行とアクションのすべての状態を含みます) は、[Azure 診断](../logic-apps/logic-apps-monitor-your-logic-apps.md)を使用することで簡単に Azure Storage アカウントや Azure Event Hub のイベント ハブに送信できます。 
+ここで取り上げたパターンは、発生したエラーや例外を実行中に処理するうえで、きわめて効果的な方法です。しかし実行そのものとは切り離して、エラーを特定し、対応することもできます。 
+[Azure 診断](../logic-apps/logic-apps-monitor-your-logic-apps.md)を使用すると、ワークフローで発生したあらゆるイベントを、実行とアクションのすべての状態を含めて、簡単に Azure Storage アカウントや Azure Event Hubs で作成されたイベント ハブに送信できます。 
 
-ログやメトリックを監視したり、それらを好きな監視ツールに発行したりすることによって、実行の状態を評価できます。 その中の一つの方法として、すべてのイベントを Event Hub を介して [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) にストリーミングすることが考えられます。 Stream Analytics では、診断ログから得られる異常、平均値、またはエラーに基づいて適宜必要なクエリを記述できます。 Stream Analytics を使用して、キュー、トピック、SQL、Azure Cosmos DB、Power BI などのその他のデータ ソースに情報を送信できます。
+ログやメトリックを監視したり、それらを好きな監視ツールに発行したりすることによって、実行の状態を評価することができます。 その中の一つの方法として、すべてのイベントを Event Hubs を介して [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) にストリーミングすることが考えられます。 Stream Analytics では、診断ログから得られる異常、平均値、またはエラーに基づいて適宜必要なクエリを記述できます。 Stream Analytics を使用して、キュー、トピック、SQL、Azure Cosmos DB、Power BI などのその他のデータ ソースに情報を送信できます。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure での Logic Apps を使用したエラー処理の構築方法を確認する](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)。
-* [さらに他の Logic Apps の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)。
-* [ロジック アプリの自動デプロイの作成方法を確認する](../logic-apps/logic-apps-create-deploy-template.md)。
-* [Visual Studio でロジック アプリをビルドしてデプロイする方法を確認する](logic-apps-deploy-from-vs.md)。
+* [Azure Logic Apps を使用したエラー処理の構築方法を確認する](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
+* [さらに他の Logic Apps の例とシナリオを見る](../logic-apps/logic-apps-examples-and-scenarios.md)
+* [ロジック アプリの自動デプロイの作成方法を確認する](../logic-apps/logic-apps-create-deploy-template.md)
+* [Visual Studio でロジック アプリをビルドしてデプロイする](logic-apps-deploy-from-vs.md)
 
 <!-- References -->
 [retryPolicyMSDN]: https://docs.microsoft.com/rest/api/logic/actions-and-triggers#Anchor_9

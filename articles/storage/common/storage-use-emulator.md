@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: tamram
-ms.openlocfilehash: 7d86d5e8547d977c07cfbb0597b74382172a8472
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13aee7bbbe58c0a4183eddc0881aaed8cbebd956
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
@@ -43,6 +43,14 @@ Microsoft Azure ストレージ エミュレーターでは、Azure の BLOB、Q
 ストレージ エミュレーターと Azure のストレージ サービスには、いくつかの機能上の違いがあります。 これらの違いの詳細については、この記事で後述する「[ストレージ エミュレーターと Azure ストレージとの違い](#differences-between-the-storage-emulator-and-azure-storage)」を参照してください。
 
 ## <a name="start-and-initialize-the-storage-emulator"></a>ストレージ エミュレーターの起動と初期化
+
+### <a name="run-the-azure-storage-emulator-in-dockerhttpshubdockercomrmicrosoftazure-storage-emulator"></a>[Docker での Azure ストレージ エミュレーターの実行](https://hub.docker.com/r/microsoft/azure-storage-emulator/)
+```
+docker run -p 10000:10000 -p 10001:10001 -p 10002:10002 microsoft/azure-storage-emulator
+```
+
+### <a name="using-sdk"></a>SDK の使用
+
 Azure ストレージ エミュレーターを起動するには、次の手順を実行します。
 1. **[スタート]** を選択するか、**Windows** キーを押します。
 1. 「`Azure Storage Emulator`」と入力を開始します。
@@ -168,7 +176,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 ### <a name="options"></a>オプション
 オプションの一覧を表示するには、コマンド プロンプトで「 `/help` 」と入力します。
 
-| オプション | Description | コマンド | 引数 |
+| オプション | [説明] | コマンド | 引数 |
 | --- | --- | --- | --- |
 | **Start** |ストレージ エミュレーターを起動します。 |`AzureStorageEmulator.exe start [-inprocess]` |*-inprocess*: 新しいプロセスを作成せずに、現在のプロセスでエミュレーターを起動します。 |
 | **Stop** |ストレージ エミュレーターを停止します。 |`AzureStorageEmulator.exe stop` | |
@@ -260,7 +268,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 * ストレージ エミュレーターのグラフィカル ユーザー インターフェイスが、スクリプト可能なコマンド ライン インターフェイスを優先して、廃止されました。 コマンド ライン インターフェイスの詳細については、ストレージ エミュレーター コマンド ライン ツールのリファレンスを参照してください。 グラフィカル インターフェイスはバージョン 3.0 までは引き続き存在しますが、計算エミュレーターがインストールされている場合にシステム トレイ アイコンを右クリックして [ストレージ エミュレーター UI の表示] を選択することによってのみアクセスできます。
 * Azure ストレージ サービスのバージョン 2013-08-15 が、完全にサポートされるようになりました。 (以前は、このバージョンはストレージ エミュレーター バージョン 2.2.1 プレビューだけでサポートされていました。)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * コミュニティで管理されているオープン ソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/arafato/azurite) を評価します。 
 * 「[.NET を使用した Azure Storage サンプル](../storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。

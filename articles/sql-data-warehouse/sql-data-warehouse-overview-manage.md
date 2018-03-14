@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.openlocfilehash: d7b81c12c31fe7de40acca6baa8972e65c306ee0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: acf521bdc15dfab4c7e43081159bc1385768838e
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="manage-databases-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でのデータベースの管理
 SQL Data Warehouse を利用すると、データベース管理の自動化を進めることができます。 たとえば、パフォーマンスのスケーリングについては、調整後、最適なコンピューティング リソースの料金をお支払いいただけば、あとは SQL Data Warehouse がパフォーマンスの拡張/縮小をすべて行います。
@@ -34,7 +34,7 @@ SQL Data Warehouse を利用すると、データベース管理の自動化を�
 * パフォーマンスのベスト プラクティス
 * クエリの監視
 * セキュリティ
-* バックアップと復元
+* バックアップおよび復元
 
 ## <a name="management-tools"></a>管理ツール
 SQL Data Warehouse では、さまざまなツールを使用してデータベースを管理することができます。 データベースを管理するにつれて、実行するタスクのタイプに応じたお好みのツールがはっきりしてくることでしょう。
@@ -47,7 +47,7 @@ Azure Portal の使用については、[SQL Data Warehouse の作成 (Azure Por
 ### <a name="sql-server-data-tools-in-visual-studio"></a>Visual Studio での SQL Server Data Tools
 Visual Studio の [SQL Server Data Tools][SQL Server Data Tools] (SSDT) を使用すると、データベースへの接続、管理、および開発を行うことができます。 Visual Studio やその他の統合開発環境 (IDE) を使い慣れているアプリケーション開発者には、Visual Studio の SSDT の使用をお勧めします。
 
-SSDT には SQL Server Object Explorer が含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプト実行を行うことができます。 SQL Data Warehouse にすばやく接続するには、Azure Portal にデータベース詳細が表示されているときに、コマンド バーで **[Visual Studio で開く]** をクリックするだけです。  
+SSDT には SQL Server オブジェクト エクスプローラーが含まれており、これを使用して SQL Data Warehouse データベースに対する視覚化、接続、およびスクリプト実行を行うことができます。 SQL Data Warehouse にすばやく接続するには、Azure Portal にデータベース詳細が表示されているときに、コマンド バーで **[Visual Studio で開く]** をクリックするだけです。  
 
 Visual Studio の SSDT を使用する手順については、[Visual Studio を使用した Azure SQL Data Warehouse に対するクエリ][Query Azure SQL Data Warehouse with Visual Studio]に関する記事をご覧ください。
 
@@ -60,7 +60,7 @@ SQL Data Warehouse の管理において最も重要なのが動的管理ビュ�
 最初に、[SQLCMD を使用した接続とクエリ][Connect and query with sqlcmd]に関する記事と、[データベースの作成 (PowerShell)][Create a database (PowerShell)] をご覧ください。
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
-SQL Data Warehouse では、CPU、メモリ、および I/O 帯域幅のコンピューティング リソースを増減させることにより、パフォーマンスの拡張と縮小をすばやく行うことができます。 パフォーマンスのスケーリングに必要なことは、SQL Data Warehouse からデータベースに割り当てられている Data Warehouse ユニット (DWU) の数を調整するだけです。 SQL Data Warehouse がすばやく変更を行い、ハードウェアやソフトウェアに対する基本的な変更をすべて処理します。
+SQL Data Warehouse では、CPU、メモリ、および I/O 帯域幅のコンピューティング リソースを増減させることにより、パフォーマンスの拡張と縮小をすばやく行えます。 パフォーマンスのスケーリングに必要なことは、SQL Data Warehouse からデータベースに割り当てられている Data Warehouse ユニット (DWU) の数を調整するだけです。 SQL Data Warehouse がすばやく変更を行い、ハードウェアやソフトウェアへの基本的な変更をすべて処理します。
 
 DWU のスケーリングの詳細については、「[パフォーマンスのスケーリング]」をご覧ください。
 
@@ -84,10 +84,10 @@ DWU のスケーリングの詳細については、「[パフォーマンスの
 
 セキュリティの管理については、[セキュリティの概要][Security overview]に関する記事をご覧ください。
 
-## <a name="backup-and-restore"></a>バックアップと復元
+## <a name="back-up-and-restore"></a>バックアップおよび復元
 信頼性の高いデータのバックアップは、あらゆる実稼働データベースで必要不可欠です。 SQL Data Warehouse では、一定の間隔でアクティブなデータベースを自動的にバックアップして、データを安全に保ちます。 データが破損したときや、データまたはデータベースを誤って削除したときは、これらのバックアップを使用して復旧することができます。  データのバックアップ スケジュール、保持ポリシー、データベースの復元方法については、[スナップショットからの復元][Restore from snapshot]に関するページを参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 優れたデータベース設計方針を使用することにより、SQL Data Warehouse でのデータベース管理が容易になります。 詳細については、[開発の概要][Development overview]に関する記事を参照してください。
 
 <!--Image references-->
@@ -100,10 +100,10 @@ DWU のスケーリングの詳細については、「[パフォーマンスの
 [Connect and query with sqlcmd]: sql-data-warehouse-get-started-connect-sqlcmd.md
 [Development overview]: sql-data-warehouse-overview-develop.md
 [Monitor your workload using DMVs]: sql-data-warehouse-manage-monitor.md
-[Pause compute]: sql-data-warehouse-manage-compute-overview.md#pause-compute-bk
+[Pause compute]: pause-and-resume-compute-portal.md#pause-compute
 [Restore from snapshot]: sql-data-warehouse-restore-database-overview.md
-[Resume compute]: sql-data-warehouse-manage-compute-overview.md#resume-compute-bk
-[パフォーマンスのスケーリング]: sql-data-warehouse-manage-compute-overview.md#scale-compute
+[Resume compute]: pause-and-resume-compute-portal.md#resume-compute
+[パフォーマンスのスケーリング]: quickstart-scale-compute-portal.md#scale-compute
 [Security overview]: sql-data-warehouse-overview-manage-security.md
 [SQL Data Warehouse Best Practices]: sql-data-warehouse-best-practices.md
 [SQL Data Warehouse system views]: sql-data-warehouse-reference-tsql-system-views.md
