@@ -15,18 +15,21 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: owend
-ms.openlocfilehash: 43eab587a1e5209069a248f1e2e1f57af158a2b8
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: e0be0c69b501d7e93c65bcf23d4dd1b6bfa89caf
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="import-a-power-bi-desktop-file"></a>Power BI Desktop ファイルをインポートする
 
-Power BI Desktop (pbix) ファイルをインポートすることにより、Azure AS で新しいモデルを作成することができます。 モデルのメタデータ、キャッシュ データ、およびデータ ソース接続がインポートされます。 レポートや視覚エフェクトはインポートされません。 サーバーにインポートした後は、pbix を更新して再インポートするか、ポータルで Web デザイナー (プレビュー) 機能を使うか、または SQL Server Management Studio (SSMS) を使うことにより、モデルを変更できます。 インポートしたモデルを、Visual Studio で開いたり、Visual Studio にエクスポートしたりすることはできません。
+Power BI Desktop (pbix) ファイルをインポートすることにより、Azure AS で新しいモデルを作成することができます。 モデルのメタデータ、キャッシュ データ、およびデータ ソース接続がインポートされます。 レポートや視覚エフェクトはインポートされません。
 
-> [!NOTE]
-> pbix モデルがオンプレミスのデータ ソースに接続する場合は、[オンプレミスのゲートウェイ](analysis-services-gateway.md)をサーバー用に構成する必要があります。
+**制限事項**   
+- pbix モデルは、必ず [Analysis Services でサポートされたデータ ソース](analysis-services-datasource.md)に接続する必要があります。 
+- pbix モデルでは、ライブ接続や DirectQuery 接続は使用できません。 
+- pbix モデルがオンプレミスのデータ ソースに接続する場合は、[オンプレミスの データ ゲートウェイ](analysis-services-gateway.md)を Analysis Services サーバー用に構成する必要があります。
+- Analysis Services でサポートされていないメタデータが pbix データ モデルに含まれている場合は、インポートが失敗する可能性があります。
 
 ## <a name="to-import-from-pbix"></a>pbix からインポートするには
 

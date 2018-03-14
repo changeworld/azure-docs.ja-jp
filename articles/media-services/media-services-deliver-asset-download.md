@@ -14,20 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako
-ms.openlocfilehash: d8e740e969f68c85842f42c109328423da1b4414
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc7748c3058cd2aca907e3bc564b2ad18090db28
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-deliver-an-asset-by-download"></a>方法: ダウンロードによってアセットを配信する
-このトピックでは、Media Services にアップロードされたメディア アセットを配信するためのオプションについて説明します。 メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。 メディア アセットをダウンロードするか、ロケーターを使用してアクセスすることができます。 メディア コンテンツは、別のアプリケーションまたは別のコンテンツ プロバイダーに送ることができます。 パフォーマンスとスケーラビリティを高めるために、Content Delivery Network (CDN) を使用してコンテンツを配信することもできます。
+この記事では、Media Services にアップロードされたメディア アセットを配信するためのオプションについて説明します。 メディア サービスのコンテンツ配信には、さまざまな方法を適用できます。 エンコード後、生成されたメディア アセットをダウンロードするか、ストリーミング ロケーターを使用してアクセスします。 パフォーマンスとスケーラビリティを高めるために、Content Delivery Network (CDN) を使用してコンテンツを配信することもできます。
 
 この例では、メディア アセットを Media Services からローカル コンピューターにダウンロードする方法を紹介しています。 このコードは、ジョブ ID によってメディア サービス アカウントに関連付けられたジョブのクエリを実行し、 **OutputMediaAssets** コレクション (ジョブの実行の結果である 1 つまたは複数の出力メディア アセットのセット) にアクセスします。 この例では、ジョブから出力メディア アセットをダウンロードしていますが、同じ方法で他のアセットをダウンロードすることもできます。
 
 >[!NOTE]
->さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
+>さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使います (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、[こちらの記事](media-services-dotnet-manage-entities.md#limit-access-policies)を参照してください。
 
+```csharp
     // Download the output asset of the specified job to a local folder.
     static IAsset DownloadAssetToLocal( string jobId, string outputFolder)
     {
@@ -76,7 +77,7 @@ ms.lasthandoff: 10/11/2017
     {
         Console.WriteLine(string.Format("{0} % download progress. ", e.Progress));
     }
-
+```
 
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス

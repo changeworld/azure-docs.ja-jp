@@ -13,21 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/12/2017
+ms.date: 3/1/2018
 ms.author: jdial
-ms.openlocfilehash: 892aa03bd058b50fc4868a225dfe602624ff19ef
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fadc1994cd930df36387a5bfb302c00d66f74fad
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="azure-virtual-network"></a>Azure Virtual Network
+# <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
-Microsoft Azure Virtual Network サービスでは、Azure リソースを利用して、仮想ネットワーク内の他のサービスと安全に相互通信できるようにしています。 仮想ネットワークは、サブスクリプション専用の Azure クラウドを論理的に分離したものです。 他の仮想ネットワークまたはオンプレミス ネットワークに仮想ネットワークを接続できます。 次の図は、Azure Virtual Network サービスの機能の一部を示しています。
+Azure Virtual Network では、Azure リソースが相互に通信したり、インターネットと通信したりすることができます。 仮想ネットワークでは、リソースが Azure クラウド内の他のリソースから分離されます。 他の仮想ネットワークまたはオンプレミス ネットワークに仮想ネットワークを接続できます。 
 
-![ネットワーク図](./media/virtual-networks-overview/virtual-network-overview.png)
-
-次の Azure Virtual Network の機能の詳細については、各機能をクリックしてください。
+Azure Virtual Network では、次に示す広範な機能が提供されます。
 - **[分離:](#isolation)** 仮想ネットワークは相互に分離されます。 同じ CIDR (10.0.0.0/0 など) アドレス ブロックを使用する開発、テスト、運用環境に個別の仮想ネットワークを作成できます。 逆に、異なる CIDR アドレス ブロックを使用する複数の仮想ネットワークを作成し、ネットワークをまとめて接続することもできます。 仮想ネットワークは、複数のサブネットに分割できます。 Azure では、仮想ネットワークにデプロイされたリソースの内部名前解決が提供されます。 必要に応じて、Azure の内部名前解決を使用する代わりに、独自の DNS サーバーを使用するよう仮想ネットワークを構成できます。
 - **[インターネット通信:](#internet)** 仮想ネットワークにデプロイされている仮想マシンなどのリソースは、既定でインターネットにアクセスできます。 また、必要に応じて、特定のリソースへの着信アクセスを有効にすることもできます。
 - **[Azure リソース通信:](#within-vnet)** 仮想ネットワークにデプロイされている Azure リソースは、リソースが異なるサブネットにデプロイされている場合でも、プライベート IP アドレスを使用して相互に通信できます。 Azure では、サブネット、接続された仮想ネットワーク、オンプレミスのネットワークの間に既定のルーティングを提供しているため、ルートの構成と管理は必要ありません。 必要な場合は、Azure のルーティングをカスタマイズできます。
@@ -41,12 +39,12 @@ Microsoft Azure Virtual Network サービスでは、Azure リソースを利用
 各 Azure [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)と Azure [リージョン](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region)内に複数の仮想ネットワークを実装できます。 各仮想ネットワークは、他の仮想ネットワークから分離されています。 各仮想ネットワークに対して、次の操作を実行できます。
 - パブリックおよびプライベート (RFC 1918) アドレスを使用して、カスタム プライベート IP アドレス空間を指定する。 Azure は、ユーザー自身が割り当てるアドレス空間のプライベート IP アドレスに、仮想ネットワーク内のリソースを割り当てる。
 - 仮想ネットワークを 1 つ以上のサブネットに分割し、各サブネットに仮想ネットワークのアドレス空間の一部を割り当てる。
-- Azure で提供される名前解決を使用するか、仮想ネットワーク内のリソースで使用する独自の DNS サーバーを指定する。 仮想ネットワークでの名前解決について詳しくは、[仮想ネットワーク内のリソースの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事をご覧ください。
+- Azure で提供される名前解決を使用するか、仮想ネットワーク内のリソースで使用する独自の DNS サーバーを指定する。 仮想ネットワークでの名前解決について詳しくは、[仮想ネットワーク内でのリソースの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)に関する記事をご覧ください。
 
 ## <a name = "internet"></a>インターネット通信
-仮想ネットワーク内のすべてのリソースでは、インターネットへ送信するための通信が可能です。 既定では、リソースのプライベート IP アドレスは、Azure インフラストラクチャによって選択されたパブリック IP アドレスへの送信元ネットワーク アドレス変換 (SNAT) が行われています。 インターネットへの送信接続の詳細については、「[Azure の送信用接続の詳細](..\load-balancer\load-balancer-outbound-connections.md)」を参照してください。 インターネットへの送信接続を回避するために、カスタム ルートまたはトラフィック フィルターを実装できます。
+仮想ネットワーク内のすべてのリソースでは、インターネットへ送信するための通信が可能です。 既定では、リソースのプライベート IP アドレスは、Azure インフラストラクチャによって選択されたパブリック IP アドレスへの送信元ネットワーク アドレス変換 (SNAT) が行われています。 インターネットへの送信接続について詳しくは、「[Azure の送信用接続の詳細](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。 インターネットへの送信接続を回避するために、カスタム ルートまたはトラフィック フィルターを実装できます。
 
-インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスの詳細については、「[パブリック IP アドレス](virtual-network-public-ip-address.md)」を参照してください。
+インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスについて詳しくは、「[パブリック IP アドレス](virtual-network-public-ip-address.md)」をご覧ください。
 
 ## <a name="within-vnet"></a>Azure リソース間の安全な通信
 
@@ -77,19 +75,12 @@ Azure App Service Environment や Azure Virtual Machine Scale Sets などの仮�
 ## <a name="routing"></a>ネットワーク トラフィックをルーティングする
 
 Azure では、仮想ネットワーク内の任意のサブネットに接続されている複数のリソースの相互通信とインターネット通信を可能にするルート テーブルが既定で作成されます。 次のオプションのいずれかまたは両方を実装して、Azure によって作成される既定のルートを上書きできます。
-- **ユーザー定義ルート:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 ユーザー定義ルートの詳細については、[ユーザー定義ルート](virtual-networks-udr-overview.md#user-defined)に関するページをご覧ください。
+- **ルート テーブル:** サブネットごとにトラフィックのルーティング先を制御するルートを含むカスタム ルート テーブルを作成できます。 カスタム ルーティングについて詳しくは、[カスタム ルーティング](virtual-networks-udr-overview.md#user-defined)に関する記事をご覧ください。
 - **BGP のルート:** Azure VPN ゲートウェイまたは ExpressRoute 接続を使用して仮想ネットワークをオンプレミス ネットワークに接続する場合、BGP ルートを仮想ネットワークに伝達できます。
-
-## <a name="pricing"></a>価格
-
-仮想ネットワーク、サブネット、ルート テーブル、ネットワーク セキュリティ グループには料金がかかりません。 送信インターネット帯域幅の使用量、パブリック IP アドレス、仮想ネットワーク ピアリング、VPN ゲートウェイ、ExpressRoute それぞれには、独自の料金体系が用意されています。 詳細については、[Virtual Network](https://azure.microsoft.com/pricing/details/virtual-network)、[VPN Gateway](https://azure.microsoft.com/pricing/details/vpn-gateway)、[ExpressRoute](https://azure.microsoft.com/pricing/details/expressroute) の価格に関するページを参照してください。
-
-## <a name="faq"></a>FAQ
-
-Azure Virtual Network についてよく寄せられる質問を確認するには、[Virtual Network の FAQ](virtual-networks-faq.md) に関する記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[最初の仮想ネットワークの作成](quick-create-portal.md)」の手順を実行して、最初の仮想ネットワークを作成し、そこにいくつかの仮想ネットワークをデプロイします。
-- [ポイント対サイト接続の構成](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関するページの手順を実行して、仮想ネットワークへのポイント対サイト接続を作成します。
-- Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)について参照してください。
+Azure Virtual Network の概要については以上です。 次に、仮想ネットワークを作成し、その中に Azure Virtual Machines をデプロイして、Azure Virtual Network の機能を使用する方法について説明します。
+
+> [!div class="nextstepaction"]
+> [仮想ネットワークの作成](quick-create-portal.md)

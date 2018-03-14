@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 23f063d89c5030d440d50765eee9d121b4d8f5ba
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: e55dbe4bd8fde8293c7fcd681bb18967dc4edad6
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/11/2018
 次の手順は、*MaxDiskQuotaInMB* という新しい設定を *[診断]* セクションに追加する方法を示しています。
 
 1. https://resources.azure.com へ移動します。
-2. **[サブスクリプション]** -> **[リソース グループ]** -> **[Microsoft.ServiceFabric]** -> **\<クラスター名>** の順に展開してサブスクリプションに移動します。
+2. **[サブスクリプション]** -> **\<ご使用のサブスクリプション>** -> **[resourceGroups]** -> **\<ご使用のリソース グループ>** -> **[プロバイダー]** -> **[Microsoft.ServiceFabric]** -> **[クラスター]** -> **\<ご使用のクラスター名 >** の順に展開して、サブスクリプションに移動します
 3. 右上隅の **[読み取り/書き込み]** を選択します。
 4. **[編集]** を選択して `fabricSettings` JSON 要素を更新し、新しい要素を追加します。
 
@@ -385,6 +385,7 @@ ms.lasthandoff: 02/11/2018
 |CommonName2Ntlmx509StoreLocation|string、既定値は L"LocalMachine"| 静的|NTLM 認証を使用するときに、CommonName2NtlmPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの場所 |
 |CommonName2Ntlmx509StoreName|string、既定値は L"MY"|静的| NTLM 認証を使用するときに、CommonName2NtlmPasswordSecret で HMAC を生成するために使用する X509 証明書のストアの名前 |
 |CommonName2Ntlmx509CommonName|string、既定値は L""|静的|NTLM 認証を使用するときに、CommonName2NtlmPasswordSecret で HMAC を生成するために使用する X509 証明書の共通名 |
+|GenerateV1CommonNameAccount| ブール値、既定値は TRUE|静的|ユーザー名 V1 生成アルゴリズムを使用したアカウントを生成するかどうかを指定します。 Service Fabric バージョン 6.1 以降では、常に v2 生成を使用したアカウントが作成されます。 V1 アカウントは、V2 生成をサポートしていないバージョン (6.1 以前) からのアップグレード (またはそれらのバージョンへのアップグレード) に必要となります。|
 
 ### <a name="section-name-imagestoreservice"></a>セクション名: ImageStoreService
 | **パラメーター** | **使用できる値** | **アップグレード ポリシー** | **ガイダンスまたは簡単な説明** |

@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: crdun
-ms.openlocfilehash: a9c7c5dbbc50ccf8c5383be28e96dfb82af48559
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 3ed607d80e6d40a9a466c5277eca636203c13ec2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Xamarin.Forms アプリにプッシュ通知を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -152,6 +152,7 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
         using Android.App;
         using Android.Content;
         using Android.Media;
+        using Android.Support.V7.App;
         using Android.Util;
         using Firebase.Messaging;
 
@@ -182,7 +183,7 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
                 intent.AddFlags(ActivityFlags.ClearTop);
                 var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
 
-                var notificationBuilder = new Notification.Builder(this)
+                var notificationBuilder = new NotificationCompat.Builder(this)
                     .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
                     .SetContentTitle("New Todo Item")
                     .SetContentText(messageBody)
@@ -202,7 +203,7 @@ FCM を使用してバックエンドを構成すると、コンポーネント�
 ### <a name="test-push-notifications-in-your-android-app"></a>Android アプリでプッシュ通知をテストする
 最初の 2 つの手順は、エミュレーターでテストする場合にのみ必要です。
 
-1. 次に示すように Android Virtual Device Manager で Google API がターゲットとして設定された仮想デバイスに対してデプロイまたはデバッグする必要があります。
+1. 必ず Google Play 開発者サービスで構成されたデバイスまたはエミュレーターに対してデプロイまたはデバッグします。 これを確かめるには、**Play** アプリがデバイスまたはエミュレーターにインストールされていることを確認します。
 2. **[アプリ]** > **[設定]** > **[アカウントの追加]** をクリックして Android デバイスに Google アカウントを追加します。 プロンプトに従って既存の Google アカウントをデバイスに追加するか、新たにアカウントを作成します。
 3. Visual Studio または Xamarin Studio で、**Droid** プロジェクトを右クリックし、**[スタートアップ プロジェクトに設定]** をクリックします。
 4. **[実行]** をクリックしてプロジェクトをビルドし、Android デバイスまたはエミュレーターでアプリを起動します。

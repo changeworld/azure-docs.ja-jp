@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 9384752c7f12074aae6ff165241e954eb2a4a01e
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 0dead955f9eb723dfa232d3ce751498a09ce1b29
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="schedule-tasks-and-workflows-that-run-regularly-with-logic-apps"></a>定期的に実行されるタスクとワークフローをロジック アプリでスケジューリングする
+# <a name="create-and-schedule-regularly-running-tasks-with-azure-logic-apps"></a>Azure Logic Apps を使用して定期的に実行されるタスクを作成し、スケジュールを設定する
 
 定期的に実行されるタスク、アクション、ワークロード、プロセスをスケジューリングするには、**[スケジュール - 繰り返し]** [トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)で開始するロジック アプリ ワークフローを作成します。 このトリガーを使用すると、タスクの実行の繰り返しを開始する日時と繰り返しのスケジュールを設定できます。たとえば、次のような例があります。
 
@@ -109,7 +109,7 @@ ms.lasthandoff: 01/19/2018
 
 ## <a name="json-example"></a>JSON の例
 
-繰り返しトリガーの定義例を次に示します。
+[繰り返しトリガーの定義](../logic-apps/logic-apps-workflow-actions-triggers.md#recurrence-trigger)の例を次に示します。
 
 ``` json
 {

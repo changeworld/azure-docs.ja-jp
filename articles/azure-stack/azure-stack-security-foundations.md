@@ -3,8 +3,8 @@ title: "Azure Stack セキュリティ コントロールを理解する | Micro
 description: "サービス管理者として、Azure Stack に適用されるセキュリティ コントロールについて学びます。"
 services: azure-stack
 documentationcenter: 
-author: Heathl17
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: helaw
-ms.openlocfilehash: 106fcf7b0edc095a52e82d58ad48a73084b65d1e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/28/2018
+ms.author: mabrigg
+ms.openlocfilehash: fa0800f03d823769dcd9f01601689122b0d09ec5
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Azure Stack インフラストラクチャのセキュリティ体制
 
@@ -31,10 +31,10 @@ Azure Stack では、2 つのセキュリティ体制レイヤーが共存して
 ## <a name="security-approach"></a>セキュリティ手法
 Azure Stack は、セキュリティ手法を使って最新の脅威から防御するために設計され、主要なコンプライアンス標準の要件を満たすように構築されています。 その結果、Azure Stack インフラストラクチャのセキュリティ体制が、次の 2 本の柱で構成されます。
 
- - **セキュリティ侵害の想定。** システムが既に侵害されているものと想定して、*侵害の影響の検出と抑制*および攻撃の防止に重点を置いて取り組みます。 
- - **既定でセキュリティ機能を組込み。**  適切に定義されたハードウェアとソフトウェア上でインフラストラクチャが実行されているため、通常は実装が顧客に委ねられる*セキュリティ機能の有効化、構成、および検証*を当社が行います。
+ - **セキュリティ侵害の想定。** システムが既に侵害されているものと想定して、"*侵害の影響の検出と抑制*" および攻撃の防止に重点を置きます。 
+ - **既定でセキュリティ機能を組込み。**  適切に定義されたハードウェアとソフトウェア上でインフラストラクチャが実行されているため、実装が顧客に委ねられる "*セキュリティ機能を有効化、構成、および検証*" します。
 
-Azure Stack が統合システムとして配布されるため、、Azure Stack インフラストラクチャのセキュリティ体制は Microsoft によって定義されます。  Azure と同様に、テナントは、テナント ワークロードのセキュリティ体制を定義する責任を負います。 このドキュメントでは、Azure Stack インフラストラクチャのセキュリティ体制に関する基本的知識について説明します。
+Azure Stack が統合システムとして配布されるため、、Azure Stack インフラストラクチャのセキュリティ体制は Microsoft によって定義されます。 Azure と同様に、テナントは、テナント ワークロードのセキュリティ体制を定義する責任を負います。 このドキュメントでは、Azure Stack インフラストラクチャのセキュリティ体制に関する基本的知識について説明します。
 
 ## <a name="data-at-rest-encryption"></a>保存データの暗号化
 すべての Azure Stack インフラストラクチャとテナントのデータは、保存時に Bitlocker を使用して暗号化されます。 この暗号化は、Azure Stack の ストレージ コンポーネントの物理的損失や盗難から保護します。 
@@ -54,7 +54,7 @@ Azure Stack インフラストラクチャは、パスワードなど、さま�
 ## <a name="code-integrity"></a>コードの整合性
 Azure Stack スタックは、最新の Windows Server 2016 セキュリティ機能を使用します。 これらの 1 つに Windows Defender Device Guard があります。この機能は、アプリケーション ホワイトリスト登録を提供し、Azure Stack インフラストラクチャ内では、承認済みのコードだけが実行されることを保証します。 
 
-承認済みのコードは Microsoft または OEM パートナーのいずれかによって署名され、Microsoft が定義したポリシーで指定されている認定ソフトウェアのリストに含まれています。 つまり、Azure Stack インフラストラクチャでの実行が承認されているソフトウェアのみを実行することができます。 未承認のコードを実行しようとしてもブロックされて、監査が生成されます。
+承認済みのコードは Microsoft または OEM パートナーのいずれかによって署名され、Microsoft が定義したポリシーで指定されている認定ソフトウェアのリストに含まれています。 つまり、Azure Stack インフラストラクチャでの実行が承認されているソフトウェアのみを実行することができます。 未承認のコードを実行しようとしてもブロックされ、監査が生成されます。
 
 Device Guard ポリシーは、Azure Stack インフラストラクチャでサード パーティ製のエージェントまたはソフトウェアを実行することを禁止しています。
 
@@ -71,7 +71,7 @@ Azure Stack 内の管理は、それぞれが特定の目的をもつ、次の 3
 3. データ センターの統合やサポート シナリオなど、特定の低レベルの操作では、Azure Stack は、[特権エンドポイント](azure-stack-privileged-endpoint.md)と呼ばれる PowerShell エンドポイントを公開します。 このエンドポイントは、コマンドレットのホワイトリストのセットのみを公開し、これは厳重に監査されます。
 
 ## <a name="network-controls"></a>ネットワーク制御
-Azure Stack インフラストラクチャには、ネットワーク アクセス制御リスト (ACL) の複数のレイヤーが付属しています。  ACL は、インフラストラクチャ コンポーネントへの不正アクセスを防止し、インフラストラクチャがその機能を果たすために必要なパスとだけ通信するように制限します。 
+Azure Stack インフラストラクチャには、ネットワーク アクセス制御リスト (ACL) の複数のレイヤーが付属しています。 ACL は、インフラストラクチャ コンポーネントへの不正アクセスを防止し、インフラストラクチャがその機能を果たすために必要なパスとだけ通信するように制限します。 
 
 ネットワークの ACL には、次の 3 つのレイヤーが適用されます。
 1.  ラック スイッチの最上部

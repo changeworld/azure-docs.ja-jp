@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 2/21/2018
 ms.author: raynew
-ms.openlocfilehash: 886977764517f1fec89eee77fc3263d30ff9ab31
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: bcbb2ace6686e4052149a5dde1ed837a16c36bad
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="dependency-visualization"></a>依存関係の視覚化
 
@@ -34,6 +34,19 @@ Azure Migrate は、依存関係の視覚化のために [Log Analytics](../log-
 依存関係の視覚化を使用するには、分析するオンプレミスの各マシンにエージェントをダウンロードしてインストールする必要があります。  
 
 ## <a name="do-i-need-to-pay-for-it"></a>使用料金が必要になる場合
+
+Azure Migrate は、追加料金なしで利用できます。 Azure Migrate で依存関係の視覚化機能を使用するには、Service Map が必要です。 Azure Migrate プロジェクトを作成すると、新しい Log Analytics ワークスペースが自動的に作成されます。
+
+> [!NOTE]
+> 依存関係の視覚化機能では、サービス マップは Log Analytics ワークスペース経由で使用されます。 Azure Migrate の一般提供が発表された 2018 年 2 月 28 日以降は、この機能を追加料金なしで使用できるようになりました。 無料のワークスペースを使用するには、新しいプロジェクトを作成する必要があります。 一般提供が開始される前の既存のワークスペースは課金対象のままとなるため、新しいプロジェクトに移動することをお勧めします。
+
+1. この Log Analytics ワークスペース内で Service Map 以外のソリューションを使用すると、Standard の Log Analytics 料金が適用されます。 
+2. 追加コストなしの移行シナリオをサポートするため、Service Map ソリューションでは、Azure Migrate プロジェクトを作成してから最初の 180 日間は料金が発生せず、それ以降に標準料金が適用されます。
+3. 無料で使用できるのは、プロジェクト作成の一部として作成されたワークスペースに限られます。
+
+ワークスペースにエージェントを登録する際には、エージェントのインストール手順のページで、プロジェクトによって指定された ID とキーを使用します。 既存のワークスペースを使用し、それを Azure Migrate プロジェクトに関連付けることはできません。
+
+Azure Migrate プロジェクトが削除される際、それに伴ってワークスペースが削除されることはありません。 プロジェクトが削除された後は、Service Map を無料で使用することはできず、各ノードは Log Analytics ワークスペースの階層に応じて課金されます。
 
 Azure Migrate の価格については、[こちら](https://azure.microsoft.com/pricing/details/azure-migrate/)を参照してください。 
 

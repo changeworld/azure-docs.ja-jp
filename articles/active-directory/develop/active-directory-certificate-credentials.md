@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 9267a7d2b27930fbcd0aa70ec9e2ddc62b6b0b2a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: d05456912324c06a0895cd4cf049b60c9d126904
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 
-Azure Active Directory では、OAuth 2.0 クライアント資格情報の付与フローや On-Behalf-Of フローなどで、アプリケーションが認証用の独自の資格情報を使用することを許可しています。
+Azure Active Directory では、OAuth 2.0 クライアント資格情報の付与フロー ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)) や On-Behalf-Of フロー ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)) などで、アプリケーションが認証用の独自の資格情報を使用することを許可しています。
 使用できる資格情報の 1 つの形式は、アプリケーションが所有している証明書で署名された JSON Web トークン(JWT) アサーションです。
 
 ## <a name="format-of-the-assertion"></a>アサーションの形式
@@ -41,7 +41,7 @@ Azure Active Directory では、OAuth 2.0 クライアント資格情報の付�
 
 | パラメーター |  注記 |
 | --- | --- | --- |
-| `aud` | 対象: 必ず **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** |
+| `aud` | 対象: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** です |
 | `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。|
 | `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) です |
 | `jti` | GUID: JWT ID |

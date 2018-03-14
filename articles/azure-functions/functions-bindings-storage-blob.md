@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: e44261e8ee62ce6a91110da0ec0bc489c426f688
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 6ef2719a100ff65d69caa8d05ccfee23851adbcb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/24/2018
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
 > [!NOTE]
-> [BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)はサポートされていません。 Blob ストレージのトリガーとバインドには、汎用のストレージ アカウントが必要です。 
+> [BLOB のみのストレージ アカウント](../storage/common/storage-create-storage-account.md#blob-storage-accounts)は BLOB トリガーではサポートされていません。 Blob Storage のトリガーには、汎用のストレージ アカウントが必要です。 入出力バインドについては、BLOB のみのストレージ アカウントをご利用いただけます。
 
 ## <a name="trigger"></a>トリガー
 
@@ -759,7 +759,7 @@ JavaScript では、`context.bindings.<name from function.json>` を使用して
 | バインド |  リファレンス |
 |---|---|
 | BLOB | [BLOB エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/blob-service-error-codes) |
-| BLOB、テーブル、キュー |  [Storage エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
+| BLOB、テーブル、キュー |  [ストレージ エラー コード](https://docs.microsoft.com/rest/api/storageservices/fileservices/common-rest-api-error-codes) |
 | BLOB、テーブル、キュー |  [トラブルシューティング](https://docs.microsoft.com/rest/api/storageservices/fileservices/troubleshooting-api-operations) |
 
 ## <a name="next-steps"></a>次の手順

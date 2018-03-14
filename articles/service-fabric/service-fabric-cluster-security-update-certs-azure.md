@@ -1,24 +1,8 @@
----
-title: "Azure Service Fabric クラスターでの証明書の管理 | Microsoft Docs"
-description: "Service Fabric クラスターに対して新しい証明書を追加、証明書をロールオーバー、および証明書を削除する方法について説明します。"
-services: service-fabric
-documentationcenter: .net
-author: ChackDan
-manager: timlt
-editor: 
-ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74
-ms.service: service-fabric
-ms.devlang: dotnet
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 03/09/2017
-ms.author: chackdan
-ms.openlocfilehash: c433e8683755e454f9561f094269c3daccf78a62
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+-- title: Azure Service Fabric クラスターでの証明書の管理 | Microsoft Docs description: Service Fabric クラスターに対して新しい証明書を追加、証明書をロールオーバー、および証明書を削除する方法について説明します。
+services: service-fabric documentationcenter: .net author: ChackDan manager: timlt editor: ''
+
+ms.assetid: 91adc3d3-a4ca-46cf-ac5f-368fb6458d74 ms.service: service-fabric ms.devlang: dotnet ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 02/23/2018 ms.author: chackdan
+
 ---
 # <a name="add-or-remove-certificates-for-a-service-fabric-cluster-in-azure"></a>Azure Service Fabric クラスターの証明書の追加と削除
 Service Fabric で X.509 証明書がどのように使用されるかを理解するために[クラスターのセキュリティに関するシナリオ](service-fabric-cluster-security.md)を読むことをお勧めします。 先に進む前に、クラスター証明書とは何であり、何の目的で使用されるかを理解しておく必要があります。
@@ -49,6 +33,8 @@ Azure Portal では、セカンダリのクラスター証明書を追加でき�
 プライマリとマークされた証明書を削除することが目的の場合は、まずセカンダリ証明書とスワップし、アップグレードが完了した後にセカンダリを削除します。
 
 ## <a name="add-a-secondary-certificate-using-resource-manager-powershell"></a>Resource Manager PowerShell を使用してセカンダリ証明書を追加する
+> [!UPDATE] [Add-AzureRmServiceFabricClusterCertificate](https://docs.microsoft.com/powershell/module/azurerm.servicefabric/add-azurermservicefabricclustercertificate?view=azurermps-5.3.0) を使用してセカンダリ証明書を追加する、より優れた簡単な方法が可能になりました。 Add-AzureRmServiceFabricClusterCertificate を使用する場合は、このセクションの以下の手順に従う必要はありません。
+
 
 以下の手順は、Resource Manager の動作方法を理解していること、Resource Manager テンプレートを使用して少なくとも 1 つの Service Fabric クラスターをデプロイしていること、クラスターをセットアップするために使用したテンプレートが手元にあることを前提としています。 また、JSON を使いこなせることを前提としています。
 
@@ -297,7 +283,7 @@ Get-ServiceFabricClusterHealth
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クラスター管理の詳細については、次の記事を参照してください。
 
 * [Service Fabric クラスターのアップグレード プロセスと機能](service-fabric-cluster-upgrade.md)

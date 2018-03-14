@@ -3,7 +3,7 @@ title: "B2B コラボレーションの招待メールの要素 - Azure Active D
 description: "Azure Active Directory B2B コラボレーションの招待メール テンプレート"
 services: active-directory
 documentationcenter: 
-author: sasubram
+author: twooley
 manager: mtillman
 editor: 
 tags: 
@@ -12,12 +12,13 @@ ms.service: active-directory
 ms.topic: article
 ms.workload: identity
 ms.date: 05/23/2017
-ms.author: sasubram
-ms.openlocfilehash: d3529397762cdb814e939b53d8c789add4955149
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.author: twooley
+ms.reviewer: sasubram
+ms.openlocfilehash: 0d26fc4758b2defc3f1b8b5643daafdac4d2baac
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="the-elements-of-the-b2b-collaboration-invitation-email---azure-active-directory"></a>B2B コラボレーションの招待メールの要素 - Azure Active Directory
 
@@ -32,7 +33,7 @@ ms.lasthandoff: 02/01/2018
 電子メールの件名は、"&lt;テナント名&gt; 組織に招待されました" というパターンに従います。
 
 ### <a name="from-address"></a>差出人アドレス
-差出人アドレスには、LinkedIn と同様のパターンが使用されています。  招待元がどの会社のだれであるかを明らかにし、電子メールが Microsoft の電子メール アドレスから送信されていることを明確に示す必要があります。 形式は次のようになります。&lt;テナント名&gt;の&lt;招待元の表示名&gt; (Microsoft 経由)<invites@microsoft.com>
+差出人アドレスには、LinkedIn と同様のパターンが使用されています。  招待元がどの会社のだれであるかを明らかにし、電子メールが Microsoft の電子メール アドレスから送信されていることを明確に示す必要があります。 形式は &lt;テナント名&gt; の &lt;招待元の表示名&gt; (Microsoft 経由) <invites@microsoft.com> です
 
 ### <a name="reply-to"></a>返信
 電子メールの返信先は招待元の電子メール アドレス (使用可能な場合) に設定されるので、電子メールに返信すると、招待元に送信されます。

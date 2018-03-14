@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: logic-apps
-ms.date: 09/13/2017
+ms.date: 01/31/18
 ms.author: LADocs; jehollan
-ms.openlocfilehash: b88d0c1ccb7a729c95299bcdc3cba5fd73fcdeac
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: b979096731caa7513c02a9fb398c14da4d4819ae
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
 
@@ -63,14 +63,15 @@ ms.lasthandoff: 01/19/2018
 * [webhook で外部イベントとアクションに応答する](../logic-apps/logic-apps-create-api-app.md)
 * [HTTP 要求に対する同期応答によってワークフローを呼び出したり、トリガーしたり、または入れ子にする](../logic-apps/logic-apps-http-endpoint.md)
 * [チュートリアル: AI で動くソーシャル ダッシュボードを Logic Apps と Power BI を使用して数分で構築する](http://aka.ms/logicappsdemo)
-* [チュートリアル: Twilio SMS webhook に応答してテキストで返信する](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
+* [ビデオ: Twilio SMS webhook に応答してテキストで返信する](https://channel9.msdn.com/Blogs/Windows-Azure/Azure-Logic-Apps-Walkthrough-Webhook-Functions-and-an-SMS-Bot)
 
 ## <a name="control-flow-error-handling-and-logging-capabilities"></a>制御フロー、エラー処理、およびログの機能
 
 ロジック アプリには、条件、スイッチ、ループ、スコープなど、高度な制御フローの機能が多数用意されています。 耐障害性を備えたソリューションを実現するために、ワークフローにエラーおよび例外処理を実装することもできます。 ワークフロー実行ステータスの通知および診断ログについては、Azure Logic Apps によって監視やアラートも提供されます。
 
-* [ロジック アプリのループとバッチを使用して配列とコレクションで項目を処理する](../logic-apps/logic-apps-loops-and-scopes.md)
-* [スイッチ ステートメントでさまざまなアクションを実行する](../logic-apps/logic-apps-switch-case.md)
+* [条件付きステートメント](../logic-apps/logic-apps-control-flow-conditional-statement.md)と [switch ステートメント](../logic-apps/logic-apps-control-flow-switch-statement.md)に基づいてさまざまなアクションを実行する
+* [ループを使用してステップを繰り返したり、配列やコレクションの項目を処理したりする](../logic-apps/logic-apps-control-flow-loops.md)
+* [スコープを使用してアクションをグループ化する](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
 * [ワークフローでエラーおよび例外処理を作成する](../logic-apps/logic-apps-exception-handling.md)
 * [ユース ケース: 医療関連企業が HL7 FHIR ワークフローのロジック アプリの例外処理を使用する方法](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)
 * [既存のロジック アプリで監視、ログ記録、アラートをオンにする](../logic-apps/logic-apps-monitor-your-logic-apps.md)
@@ -98,15 +99,22 @@ Azure Logic Apps [ワークフロー定義言語](http://aka.ms/logicappsdocs)�
 
 * [Azure Serverless でリアルタイムのソーシャル ダッシュ ボードを作成する](../logic-apps/logic-apps-scenario-social-serverless.md)
 * [ロジック アプリから Azure Functions を呼び出す](../logic-apps/logic-apps-azure-functions.md)
-* [シナリオ: Azure Functions を使用してロジック アプリをトリガーする](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [チュートリアル: Azure Functions を使用してロジック アプリをトリガーする](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
+* [チュートリアル: Azure Event Grid と Logic Apps を使用して仮想マシンの変更を監視する](../event-grid/monitor-virtual-machine-changes-event-grid-logic-app.md)
+* [チュートリアル: Azure Logic Apps および Microsoft Cognitive Services と統合して Twitter の投稿のセンチメントを分析する関数を作成する](../azure-functions/functions-twitter-email.md)
+* [チュートリアル: Azure Logic Apps で IoT ハブとメールボックスに接続した状態での IoT リモート監視と通知](../iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md)
 * [ブログ: ロジック アプリから SOAP エンドポイントを呼び出す](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
 
 ## <a name="end-to-end-scenarios"></a>エンド ツー エンドのシナリオ
 
-* [ホワイト ペーパー: Logic Apps などの Azure サービスを使用したエンタープライズ統合のエンド ツー エンド ケース管理](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+* [ホワイト ペーパー: Logic Apps などの Azure サービスを使用したエンド ツー エンドのケース管理の統合](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
+
+## <a name="customer-stories"></a>顧客事例
+
+他の Azure サービスや Microsoft 製品と共に Azure Logic Apps を使用して、複雑なプロセスを簡素化、整理、自動化、調整することで、俊敏性を高め、コア ビジネスに集中できるようになった[企業の事例](https://aka.ms/logic-apps-customer-stories)をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [ワークフロー定義言語でワークフロー定義を作成する](../logic-apps/logic-apps-author-definitions.md)
+* [JSON を使用してロジック アプリ定義を編集する](../logic-apps/logic-apps-author-definitions.md)
 * [ロジック アプリでエラーと例外を処理する](../logic-apps/logic-apps-exception-handling.md)
-* [Azure Logic Apps を強化する方法に関するコメント、質問、フィードバック、提案を送信する](https://feedback.azure.com/forums/287593-logic-apps)
+* [Azure Logic Apps の強化に関するコメント、質問、フィードバック、提案を送信する](https://feedback.azure.com/forums/287593-logic-apps)

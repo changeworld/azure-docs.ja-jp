@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
-ms.openlocfilehash: be0fc51574950cad0558a85b3f20f8b14eafda13
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 499c78737b95885b753589c06f2614ce917adfea
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="embedding-an-mpeg-dash-adaptive-streaming-video-in-an-html5-application-with-dashjs"></a>DASH.js を使用した HTML5 アプリケーションへの MPEG-DASH アダプティブ ストリーミング ビデオの埋め込み
 ## <a name="overview"></a>概要
-MPEG DASH は、高品質なアダプティブ ビデオ ストリーミング出力を配信する必要があるユーザーに多くのメリットを提供するビデオ コンテンツのアダプティブ ストリーミングの ISO 標準です。 MPEG DASH では、ネットワークが混雑すると自動的にビデオ ストリームが低解像度に変更されます。 これにより、プレーヤーが次に再生する数秒分をダウンロードする間 (バッファリング)、視聴者に「一時停止された」状態のビデオが表示される可能性が減少します。 ネットワークの混雑が緩和されると、ビデオ プレーヤーは高品質ストリームに戻ります。 この機能は必要な帯域幅に対応するもので、結果的にビデオの開始時間が高速化されます。 つまり、最初の数秒は高速にダウンロードされる低品質のセグメントで再生され、十分なコンテンツがバッファリングされると、より高い品質にステップアップします。
+MPEG DASH は、高品質なアダプティブ ビデオ ストリーミング出力を配信する必要がある開発者に多くのメリットを提供する、ビデオ コンテンツのアダプティブ ストリーミングの ISO 標準です。 MPEG DASH では、ネットワークが混雑すると、ビデオ ストリームが自動的に低解像度に調整されます。 これにより、プレーヤーが次に再生する数秒分をダウンロードする間 (バッファリング)、視聴者に「一時停止された」状態のビデオが表示される可能性が減少します。 ネットワークの混雑が緩和されると、ビデオ プレーヤーは高品質ストリームに戻ります。 この機能は必要な帯域幅に対応するもので、結果的にビデオの開始時間が高速化されます。 つまり、最初の数秒は高速にダウンロードされる低品質のセグメントで再生され、十分なコンテンツがバッファリングされると、より高い品質にステップアップします。
 
 Dash.js は JavaScript で記述された、オープン ソースの MPEG-DASH ビデオ プレーヤーです。 ビデオ再生機能を必要とするアプリケーションで自由に再使用できる、堅牢なクロスプラットフォーム プレイヤーを提供することが目的です。 W3C Media Source Extensions (MSE) をサポートするどのブラウザーでも MPEG-DASH を再生できるようになります。現在では Chrome、Microsoft Edge、IE11 がこれに該当します (他のブラウザーも今後 MSE に対応する予定です)。 DASH.js の詳細については、「jGitHub dash.js リポジトリ」をご覧ください。
 
@@ -41,6 +41,7 @@ Dash.js は JavaScript で記述された、オープン ソースの MPEG-DASH 
 ## <a name="creating-the-html-page"></a>HTML ページの作成
 最初の手順では、**ビデオ** 要素を含む標準の HTML ページを作成し、以下の例のようにこのファイルを basicplayer.html に保存します。
 
+```html
     <!DOCTYPE html>
     <html>
       <head><title>Adaptive Streaming in HTML5</title></head>
@@ -49,18 +50,21 @@ Dash.js は JavaScript で記述された、オープン ソースの MPEG-DASH 
         <video id="videoplayer" controls></video>
       </body>
     </html>
+```
 
 ## <a name="adding-the-dashjs-player"></a>DASH.js プレーヤーの追加
 dash.js リファレンス実装をアプリケーションに追加するには、dash.js プロジェクトの 1.0 リリースから dash.all.js ファイルを入手する必要があります。 このファイルはアプリケーションの JavaScript フォルダーに保存します。 このファイルは、必要なすべての dash.js コードを 1 つのファイルにまとめることのできる便利なファイルです。 dash.js リポジトリを参照すると、個別のファイルやテスト コードなどさまざまな情報が見つかりますが、dash.js の使用のみが目的であれば、必要になるのは dash.all.js ファイルのみです。
 
 dash.js プレーヤーをアプリケーションを追加するには、basicPlayer.html のヘッド セクションにスクリプト タグを追加します。
 
+```html
     <!-- DASH-AVC/265 reference implementation -->
     < script src="js/dash.all.js"></script>
-
+```
 
 次に、ページの読み込み時にプレーヤーを初期化する関数を作成します。 dash.all.js を読み込む行の後ろに次のスクリプトを追加します。
 
+```html
     <script>
     // setup the video element and attach it to the Dash player
     function setupVideo() {
@@ -72,25 +76,30 @@ dash.js プレーヤーをアプリケーションを追加するには、basicP
                       player.attachSource(url);
     }
     </script>
+```
 
 この関数では、まず DashContext が作成されます。 これは、特定のランタイム環境でのアプリケーションの構成に使用されます。 技術的な観点では、この関数はアプリケーションの構築時に依存関係挿入フレームワークが使用するクラスを定義します。 ほとんどの場合、Dash.di.DashContext を使用します。
 
 次に、dash.js フレームワークの MediaPlayer のプライマリ クラスをインスタンス化します。 このクラスには、再生や一時停止などの必要なコア メソッドが含まれ、ビデオ要素との関係の管理や再生するビデオを示す Media Presentation Description (MPD) ファイルの解釈が管理されます。
 
-プレーヤーがビデオを再生する準備ができていることを確認するため、MediaPlayer クラスの startup() 関数が呼び出されます。 特に、この関数では、すべての必要な (コンテキストで定義されたとおりの) クラスが正常に読み込まれたことを確認できます。 プレイヤーの準備が整ったら、attachView() 関数を使用して、ビデオ要素をアタッチします。 これにより、MediaPlayer がビデオ ストリームを要素に挿入し、必要に応じて再生をコントロールできるようになります。
+プレーヤーがビデオを再生する準備ができていることを確認するため、MediaPlayer クラスの startup() 関数が呼び出されます。 特に、その関数では、すべての必要な (コンテキストで定義されたとおりの) クラスが正常に読み込まれたことを確認できます。 プレイヤーの準備が整ったら、attachView() 関数を使用して、ビデオ要素をアタッチします。 スタートアップ関数により、MediaPlayer がビデオ ストリームを要素に挿入し、必要に応じて、再生をコントロールすることもできます。
 
 MediaPlayer に MPD ファイルの URL を渡して、再生予定のビデオについて通知します。 作成した setupVideo() 関数は、ページを完全に読み込んだ後に実行する必要があります。 この操作は、Body 要素の OnLoad イベントを使用して行います。 <body> 要素を次に変更します。
 
+```html
     <body onload="setupVideo()">
+```
 
 最後に、CSS を使用してビデオ要素のサイズを設定します。 アダプティブ ストリーミング環境では、ネットワークの状況に応じて再生するビデオのサイズが変化するため、この操作は特に重要です。 以下の簡単なデモでは、次の CSS をページのヘッド セクションに追加して、ビデオ要素を利用可能なブラウザー ウィンドウの 80% に設定します。
 
+```html
     <style>
     video {
       width: 80%;
       height: 80%;
     }
     </style>
+```
 
 ## <a name="playing-a-video"></a>ビデオの再生
 ビデオを再生するには、basicPlayback.html ファイルでブラウザーをポイントし、表示されるビデオ プレーヤーで再生をクリックします。

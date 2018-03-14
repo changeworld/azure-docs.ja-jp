@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
-ms.openlocfilehash: 2a6ac8d9c2f3694cf08357d6ccec874f7e076514
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 61f84233b90cb3c82ed928d59ad2a090f7eb50b7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン
 この記事では、Windows Server の Active Directory Domain Services (AD DS) および Active Directory フェデレーション サービス (AD FS) に関して、オンプレミスへのデプロイと Microsoft Azure 仮想マシンへのデプロイとの大きな違いについて説明します。
@@ -433,7 +433,7 @@ SYSPREP を使用して DC をデプロイしたり複製したりしないで�
 Windows Server AD DS のデータベース、ログ、SYSVOL を検索する場所を選択します。 これらのデータは Azure データ ディスクにデプロイする必要があります。
 
 > [!NOTE]
-> Azure データ ディスクは 4 TB に制限されます。
+> Azure データ ディスクは 4 TB に制限されています。
 > 
 > 
 

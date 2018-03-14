@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 12/15/2017
 ms.author: mahender; mblythe
-ms.openlocfilehash: 7482ca27c2edcb281180fb8fbbfb1884a515d379
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 2d7ef0d4b2669b774b1d218d244052083e883517
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 12/18/2017
 同様に、組織内での API の利用範囲を広げるには、アプリとフローのビルダーで API を使用できるようにする必要があります。 このトピックでは、[Azure Functions](../azure-functions/functions-overview.md) または [Azure App Service](../app-service/app-service-web-overview.md) を使って構築した API をエクスポートする方法を示します。 エクスポートされた API は、PowerApps や Microsoft Flow で組み込みのコネクタのように使用される*カスタム コネクタ*になります。
 
 ## <a name="create-and-export-an-api-definition"></a>API 定義を作成してエクスポートする
-API をエクスポートする前に、OpenAPI 定義 (以前は [Swagger](http://swagger.io/) ファイルと呼ばれていたもの) を使用して API を記述する必要があります 。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。 PowerApps と Microsoft Flow では、任意の OpenAPI 2.0 定義に対応するカスタム コネクタを作成できます。 Azure Functions と Azure App Service には、OpenAPI 定義を作成、ホスト、管理するためのサポートが組み込まれています。 詳細については、[Azure Web Apps での RESTful API の作成](../app-service/app-service-web-tutorial-rest-api.md)に関するページを参照してください。
+API をエクスポートする前に、OpenAPI 定義 (以前は [Swagger](http://swagger.io/) ファイルと呼ばれていたもの) を使用して API を記述する必要があります 。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。 PowerApps と Microsoft Flow では、任意の OpenAPI 2.0 定義に対応するカスタム コネクタを作成できます。 Azure Functions と Azure App Service には、OpenAPI 定義を作成、ホスト、管理するためのサポートが組み込まれています。 詳細については、[Azure App Service での CORS を使用した RESTful API のホスト](../app-service/app-service-web-tutorial-rest-api.md)に関するページをご覧ください。
 
 > [!NOTE]
 > OpenAPI 定義を使用せずに、PowerApps と Microsoft Flow の UI でカスタム コネクタをビルドすることもできます。 詳細については、「[PowerApps でのカスタム コネクタの登録と使用](https://powerapps.microsoft.com/tutorials/register-custom-api/)」および「[Microsoft Flow でカスタム コネクタを登録して使用する](https://flow.microsoft.com/documentation/register-custom-api/)」をご覧ください。
@@ -68,7 +68,7 @@ API 定義をエクスポートするには、次の手順を実行します。
 
 2. 次の表で指定されている設定を使用してください。
 
-    |設定|[説明]|
+    |Setting|[説明]|
     |--------|------------|
     |**Environment**|カスタム コネクタの保存先の環境を選択します。 詳細については、「[環境の概要](https://powerapps.microsoft.com/tutorials/environments-overview/)」を参照してください。|
     |**カスタム API 名**|名前を入力すると、PowerApps および Microsoft Flow ビルダーがコネクタ一覧に表示されます。|

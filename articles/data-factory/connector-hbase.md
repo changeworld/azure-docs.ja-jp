@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 02/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 47a4f6a56c1e5a47f70bb6d6ba2dd980346653ad
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 543d0ec5d0c94b793b1e825d44356039b366908a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Azure Data Factory を使用して HBase からデータをコピーする 
 
@@ -45,19 +45,19 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **HBase** に設定する必要があります | [はい] |
-| host | HBase サーバーの IP アドレスまたはホスト名。 (例: 192.168.222.160)  | [はい] |
+| host | HBase サーバーの IP アドレスまたはホスト名。 (つまり、192.168.222.160、[clustername].azurehdinsight.net)  | [はい] |
 | ポート | HBase インスタンスがクライアント接続のリッスンに使用する TCP ポート。 既定値は 9090 です。  | いいえ  |
 | httpPath | HBase サーバーに対応する部分的な URL。 (/gateway/sandbox/hbase/version など)  | いいえ  |
 | authenticationType | HBase サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**Basic** | [はい] |
 | username | HBase インスタンスへの接続に使用されるユーザー名。  | いいえ  |
-| password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
 | trustedCertPath | SSL 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR で SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ  |
 | allowHostNameCNMismatch | SSL 経由で接続するときに、CA が発行した SSL 証明書名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は false です。  | いいえ  |
 | allowSelfSignedServerCert | サーバーからの自己署名証明書を許可するかどうかを指定します。 既定値は false です。  | いいえ  |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
-**例:**
+**HDInsights HBase の例:**
 
 ```json
 {
@@ -65,9 +65,36 @@ HBase のリンクされたサービスでは、次のプロパティがサポ�
     "properties": {
         "type": "HBase",
         "typeProperties": {
-            "host" : "<host>",
+            "host" : "<cluster name>.azurehdinsight.net",
+            "port" : "443",
+            "httpPath" : "<e.g. hbaserest>",
+            "authenticationType" : "Basic",
+            "username" : "<username>",
+            "password": {
+                 "type": "SecureString",
+                 "value": "<password>"
+            },
+            "enableSsl" : true
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+**ジェネリックの HBase の例:**
+
+```json
+{
+    "name": "HBaseLinkedService",
+    "properties": {
+        "type": "HBase",
+        "typeProperties": {
+            "host" : "<host e.g. 192.168.222.160>",
             "port" : "<port>",
-            "httpPath" : "/gateway/sandbox/hbase/version",
+            "httpPath" : "<e.g. /gateway/sandbox/hbase/version>",
             "authenticationType" : "Basic",
             "username" : "<username>",
             "password": {

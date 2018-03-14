@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 01/29/2018
+ms.date: 03/01/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: 
-ms.openlocfilehash: c2728545aeb202bdd216e00fd4a7e464e483b1da
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 66b2ef53e613a9c61eea17746a25357119cf6900
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="activate-azure-subscriptions-and-accounts-with-azure-cost-management"></a>Azure Cost Management で Azure サブスクリプションとアカウントをアクティブ化する
 
@@ -56,7 +56,7 @@ CloudynCollector アプリケーションを割り当てるには、Azure サブ
 
 ### <a name="update-a-subscription"></a>サブスクリプションを更新する
 
-1. アカウント管理で Azure Cost Management に既に存在する "_アクティブ化されていない_" サブスクリプションを更新する場合は、"_テナントの GUID_" の右側にある編集用の鉛筆アイコンをクリックします。
+1. アカウント管理で Azure Cost Management に既に存在する "_アクティブ化されていない_" サブスクリプションを更新する場合は、親 "_テナントの GUID_" の右側にある編集用の鉛筆アイコンをクリックします。 サブスクリプションは親テナントの下でグループ化されるため、サブスクリプションを個別にアクティブ化しないようにします。
     ![サブスクリプションの再検出](./media/activate-subs-accounts/existing-sub.png)
 2. 必要に応じて、テナント ID を入力します。 テナント ID がわからない場合は、次の手順を使って調べます。
     1. [Azure Portal](https://portal.azure.com) にログインします。
@@ -86,7 +86,7 @@ Azure Cost Management ポータルを初めて使うとき、Enterprise Agreemen
 
 - **Azure Cost Management 設定**ウィザード: *The specified API key is not a top level enrollment key* (指定された API キーは、最上位レベルの登録キーではありません)。
 - Enterprise Agreement ポータル: *Direct Enrollment – No* (直接登録 – いいえ)。
-- Azure Cost Management ポータル: *No usage data was found for the last 30 days.Please contact your distributor to make sure markup was enabled for your Azure account* (過去 30 日間に使用状況データが見つかりませんでした。ディストリビューターに連絡してお使いの Azure アカウントに対してマークアップが有効になっていることを確認してください)。
+- Cloudyn ポータルに *No usage data was found for the last 30 days.Please contact your distributor to make sure markup was enabled for your Azure account* (過去 30 日間に使用状況データが見つかりませんでした。ディストリビューターに連絡してお使いの Azure アカウントに対してマークアップが有効になっていることを確認してください)。
 
 前述のメッセージは、Azure Enterprise Agreement を再販業者または CSP から購入したことを示します。 Azure Cost Management でデータを確認するには、再販業者または CSP がユーザーの Azure アカウントの "_マークアップ_" を有効にする必要があります。
 

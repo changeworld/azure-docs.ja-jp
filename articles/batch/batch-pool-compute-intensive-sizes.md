@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 03/01/2018
 ms.author: danlep
-ms.openlocfilehash: 181e9bd7c17e4618edd63dd92d70947a61c68758
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 5a73e926b5979e573ccb0402ff2d23eae2463232
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Batch プールでの RDMA 対応または GPU 対応インスタンスの使用
 
@@ -33,11 +33,11 @@ ms.lasthandoff: 02/23/2018
 
 ## <a name="subscription-and-account-limits"></a>サブスクリプションとアカウントの制限
 
-* **クォータと制限** - [Batch アカウントごとの専用コア クォータ](batch-quota-limit.md#resource-quotas)により、Batch プールに追加できるノードの数または種類が制限されることがあります。 RDMA 対応、GPU 対応、または他のマルチコアの VM サイズを選択すると、クォータに達する可能性が高くなります。 [優先順位の低い VM](batch-low-pri-vms.md) を使用している場合、これらの VM には個別のクォータが適用されます。 
+* **クォータと制限** - [Batch アカウントごとのコア クォータ](batch-quota-limit.md#resource-quotas)により、Batch プールに追加できる指定されたサイズのノードの数を制限できます。 RDMA 対応、GPU 対応、または他のマルチコアの VM サイズを選択すると、クォータに達する可能性が高くなります。 
 
-  さらに、NCv2 や ND などの Batch アカウントで特定の VM ファミリを使用することは、容量が限られているため制限されています。 このようなファミリを使用するには、既定の 0 コアからクォータの増加を要求する必要があります。  
+  さらに、NCv2、NCv3、ND などの Batch アカウントで特定の VM ファミリを使用することは、容量が限られているため制限されています。 このようなファミリを使用するには、既定の 0 コアからクォータの増加を要求する必要があります。  
 
-  クォータの増量を要求する必要がある場合は、[オンライン カスタマー サポートに申請](../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。
+  これが必要な場合は、[クォータの増加を要求](batch-quota-limit.md#increase-a-quota)します (無料)。
 
 * **利用可能なリージョン** - コンピューティング集中型 VM は、Batch アカウントを作成したリージョンで使用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
 
@@ -52,10 +52,10 @@ ms.lasthandoff: 02/23/2018
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
-| [NC、NCv2、ND シリーズ*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms) | NVIDIA Tesla GPU (シリーズによって異なります) | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または 7.4、または<br/>CentOS 7.3 または 7.4<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit ドライバー | 該当なし | 
-| [NV シリーズ](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID ドライバー | 該当なし |
+| [NC、NCv2、NCv3、ND シリーズ*](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または 7.4、または<br/>CentOS 7.3 または 7.4<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit ドライバー | 該当なし | 
+| [NV シリーズ](../virtual-machines/linux/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS 7.3<br/>(Azure Marketplace) | NVIDIA GRID ドライバー | 該当なし |
 
-* NC24r、NC24rs_v2、および ND24r VM の RDMA 接続は、Intel MPI がインストールされた Ubuntu 16.04 LTS (Azure Marketplace から入手) でサポートされます。
+*RDMA 対応 N シリーズ VM の RDMA 接続には、ディストリビューションによって異なる[追加の構成](../virtual-machines/linux/n-series-driver-setup.md#rdma-network-connectivity)が必要になる可能性があります。
 
 
 
@@ -64,10 +64,10 @@ ms.lasthandoff: 02/23/2018
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2016、2012 R2、または<br/>2012 (Azure Marketplace) | Microsoft MPI 2012 R2 以降または<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 拡張機能 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
-| [NC、NCv2、ND シリーズ*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Windows Server 2016 または <br/>2012 R2 (Azure Marketplace) | NVIDIA Tesla ドライバーまたは CUDA Toolkit ドライバー| 該当なし | 
+| [NC、NCv2、NCv3、ND シリーズ*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla GPU (シリーズによって異なります) | Windows Server 2016 または <br/>2012 R2 (Azure Marketplace) | NVIDIA Tesla ドライバーまたは CUDA Toolkit ドライバー| 該当なし | 
 | [NV シリーズ](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 または<br/>2012 R2 (Azure Marketplace) | NVIDIA GRID ドライバー | 該当なし |
 
-* NC24r、NC24rs_v2、および ND24rs VM の RDMA 接続は、HpcVMDrivers 拡張機能と Microsoft MPI または Intel MPI がインストールされた Windows Server 2016 または Windows Server 2012 R2 (Azure Marketplace から入手) でサポートされます。
+* RDMA 対応 N シリーズ VM の RDMA 接続は、HpcVMDrivers 拡張機能と Microsoft MPI または Intel MPI がインストールされた Windows Server 2016 または Windows Server 2012 R2 (Azure Marketplace から入手) でサポートされます。
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows プール - クラウド サービス構成
 
@@ -123,8 +123,8 @@ Azure A8 ノードのプールで Windows MPI アプリケーションを実行�
 
 Linux NC ノードのプールで CUDA アプリケーションを実行するには、CUDA Toolkit 9.0 をノードにインストールする必要があります。 この Toolkit により、必要な NVIDIA Tesla GPU ドライバーがインストールされます。 GPU ドライバーがインストールされたカスタム Ubuntu 16.04 LTS イメージをデプロイする手順の例を次に示します。
 
-1. Ubuntu 16.04 LTS を実行する Azure NC6 VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 管理ディスクを使用して VM を作成してください。
-2. VM に接続し、[CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-ncv2-and-nd-vms)する手順に従います。
+1. Ubuntu 16.04 LTS を実行する Azure NC シリーズ VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 管理ディスクを使用して VM を作成してください。
+2. VM に接続し、[CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md)する手順に従います。
 3. Linux エージェントをプロビジョニング解除した後、[Linux VM イメージをキャプチャ](../virtual-machines/linux/capture-image.md)します。
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。
 5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-custom-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。

@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: brenduns
 ms.reviewer: 
-ms.openlocfilehash: 7a0fe4e02cf7a5feee90c3a0bf5596b44d5f9038
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e2b98391bab5806b59d8a16ec7dc24295a0d224
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Azure Stack でのサービスの提供の概要
 
@@ -44,5 +44,5 @@ ms.lasthandoff: 02/21/2018
 **委任されたプロバイダー**: 他のユーザーにご利用の環境でオファーを作成する権限を与えることができます。 たとえば、サービス プロバイダーの場合は、この権限を再販業者に[委任](azure-stack-delegated-provider.md)できます。 また、組織の場合は、他の部門/子会社に委任できます。
 
 ## <a name="next-steps"></a>次の手順
-[オファー、プラン、クォータ、およびサブスクリプションの詳細](azure-stack-plan-offer-quota-overview.md)
+[Azure Stack でのオファーの作成](azure-stack-create-offer.md)
 

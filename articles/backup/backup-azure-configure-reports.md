@@ -15,11 +15,11 @@ ms.workload: storage-backup-recovery
 ms.date: 11/10/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1c6cc4ba95f440f09f11a93927fd67873f8813e8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f51d85da1bda0d9483883301b71c20e405724b9b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
 この記事では、Recovery Services コンテナーを使用する Azure Backup のレポートを構成し、Power BI を使用してそのレポートにアクセスする手順を説明します。 この手順を実行すると、Power BI に直接アクセスしてすべてのレポートを表示し、レポートのカスタマイズおよび作成を行えるようになります。 

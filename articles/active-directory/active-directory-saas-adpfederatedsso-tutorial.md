@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と ADP Federated SSO の統合 | Microsoft Docs"
-description: "Azure Active Directory と ADP Federated SSO の間のシングル サインオンを構成する方法について説明します。"
+title: "チュートリアル: Azure Active Directory と ADP の統合 | Microsoft Docs"
+description: "Azure Active Directory と ADP の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 02/27/2018
 ms.author: jeedes
-ms.openlocfilehash: ad12dfd525afe1bde7026535dceb25556abf0a96
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1e0a35fd76f9eb6335685f05b8936b0b5105f6b2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-adp-federated-sso"></a>チュートリアル: Azure Active Directory と ADP Federated SSO の統合
+# <a name="tutorial-azure-active-directory-integration-with-adp"></a>チュートリアル: Azure Active Directory と ADP の統合
 
-このチュートリアルでは、ADP Federated SSO と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、ADP と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-ADP Federated SSO と Azure AD の統合には、次の利点があります。
+ADP と Azure AD の統合には、次の利点があります。
 
-- ADP Federated SSO にアクセスするユーザーを Azure AD 上でコントロールできます。
-- ユーザーが自分の Azure AD アカウントで自動的に ADP Federated SSO にサインオン (シングル サインオン) できるようにします。
+- ADP にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで ADP に自動的にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure AD と ADP Federated SSO の統合を構成するには、次のものが必要です。
+ADP と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- ADP Federated SSO が有効なサブスクリプション
+- ADP が有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -50,13 +50,13 @@ Azure AD と ADP Federated SSO の統合を構成するには、次のものが�
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの ADP Federated SSO の追加
+1. ギャラリーからの ADP の追加
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-adp-federated-sso-from-the-gallery"></a>ギャラリーからの ADP Federated SSO の追加
-Azure AD への ADP Federated SSO の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ADP Federated SSO を追加する必要があります。
+## <a name="adding-adp-from-the-gallery"></a>ギャラリーからの ADP の追加
+Azure AD への ADP の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に ADP を追加する必要があります。
 
-**ギャラリーから ADP Federated SSO を追加するには、次の手順に従います。**
+**ギャラリーから ADP を追加するには、次の手順を実行します。**
 
 1.  Microsoft Azure の ID プロバイダー環境に管理者としてログオンします。
 
@@ -72,35 +72,35 @@ Azure AD への ADP Federated SSO の統合を構成するには、ギャラリ�
 
     ![[新しいアプリケーション] ボタン][3]
 
-5. 検索ボックスに「**ADP Federated SSO**」と入力し、結果パネルで **[ADP Federated SSO]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+5. 検索ボックスに「**ADP**」と入力し、結果パネルで **[ADP]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の ADP Federated SSO](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_addfromgallery.png)
+    ![結果一覧の ADP](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーを基に、ADP Federated SSO で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、"Britta Simon" という名前のテスト ユーザーに基づいて、ADP で Azure AD のシングル サインオンを構成およびテストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する ADP Federated SSO ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと ADP Federated SSO の関連ユーザーの間で、リンク関係が確立されている必要があります。
+シングル サインオンを機能させるには、Azure AD が Azure AD のユーザーに対応する ADP のユーザーを認識している必要があります。 言い換えると、Azure AD ユーザーと ADP の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-ADP Federated SSO で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
+ADP で、Azure AD の **[ユーザー名]** の値を **[Username]** の値として割り当ててリンク関係を確立します。
 
-ADP Federated SSO で Azure AD のシングル サインオンを構成およびテストするには、次の構成要素を完了する必要があります。
+ADP で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[ADP Federated SSO のテスト ユーザーの作成](#create-an-adp-federated-sso-test-user)** - ADP Federated SSO で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **[ADP のテスト ユーザーの作成](#create-an-adp-test-user)** - ADP で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、ADP Federated SSO アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、ADP アプリケーションでシングル サインオンを構成します。
 
-**ADP Federated SSO で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**ADP で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **ADP Federated SSO** アプリケーション統合ページで、**[プロパティ]** タブをクリックし、次の手順を実行します。 
+1. Azure Portal の **ADP** アプリケーション統合ページで、**[プロパティ]** タブをクリックし、次の手順を実行します。 
 
-    ![シングル サインオンのプロパティ](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_prop.png)
+    ![シングル サインオンのプロパティ](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_prop.png)
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[ユーザーのサインインが有効になっていますか?]** フィールドの値を **[はい]** に設定します。
 
@@ -110,25 +110,25 @@ ADP Federated SSO で Azure AD のシングル サインオンを構成および
 
     d. **[ユーザーに表示しますか?]** フィールドの値を **[いいえ]** に設定します。
 
-2. **ADP Federated SSO** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+2. **ADP** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
 3. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_samlbase.png)
+    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_samlbase.png)
 
-4. **[ADP Federated SSO Domain and URLs]\(ADP Federated SSO のドメインと URL\)** セクションで、次の手順を実行します。
+4. **[ADP Domain and URLs]\(ADP のドメインと URL\)** セクションで、次の手順を実行します。
 
-    ![[ADP Federated SSO Domain and URLs]\(ADP Federated SSO のドメインと URL\) のシングル サインオン情報](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_url.png)
+    ![[ADP Domain and URLs]\(ADP のドメインと URL\) のシングル サインオン情報](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_url.png)
 
     **[識別子]** ボックスに次の URL を入力します。`https://fed.adp.com/` 
     
-5. ADP Federated SSO アプリケーションは特定の形式の SAML アサーションを予測しているため、SAML トークン属性の構成にカスタム属性マッピングを追加する必要があります。 次のスクリーンショットはその例です。 クレームの名前は常に **"PersonImmutableID"** であり、その値は **employeeid** にマップされています。 
+5. ADP アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 クレームの名前は常に **"PersonImmutableID"** であり、その値は **employeeid** にマップされています。 
 
-    ここで、Azure AD から ADP Federated SSO へのユーザー マッピングは **employeeid** で完了しますが、これをアプリケーションの設定に基づいて別の値にマップできます。 そのため、まず [ADP サポート チーム](https://www.adp.com/contact-us/overview.aspx)と協力してユーザーの正しい識別子を使用し、その値を **"PersonImmutableID"** クレームとマップしてください。
+    ここで、Azure AD から ADP へのユーザー マッピングは **employeeid** で完了しますが、これをアプリケーションの設定に基づいて別の値にマップできます。 そのため、まず [ADP サポート チーム](https://www.adp.com/contact-us/overview.aspx)と協力してユーザーの正しい識別子を使用し、その値を **"PersonImmutableID"** クレームとマップしてください。
 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_attribute.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_attribute.png)
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -153,9 +153,9 @@ ADP Federated SSO で Azure AD のシングル サインオンを構成および
 
 7. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![証明書のダウンロードのリンク](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_certificate.png) 
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_certificate.png) 
 
-8. **ADP Federated SSO** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [ADP Federated SSO の Web サイト](https://adpfedsso.adp.com/public/login/index.fcc)にアップロードする必要があります。
+8. **ADP** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [ADP の Web サイト](https://adpfedsso.adp.com/public/login/index.fcc)にアップロードする必要があります。
 
 > [!NOTE]  
 > このプロセスは数日かかることがあります。 
@@ -178,13 +178,13 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**ADP Federated SSO**」と入力し、結果パネルで **[ADP Federated SSO]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**ADP**」と入力し、結果パネルで **[ADP]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の ADP Federated SSO](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_addservicegallery.png)
+    ![結果一覧の ADP](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_addservicegallery.png)
 
-5. Azure Portal の **ADP Federated SSO** アプリケーション統合ページで、**[プロパティ]** タブをクリックし、次の手順を実行します。  
+5. Azure Portal の **ADP** アプリケーション統合ページで、**[プロパティ]** タブをクリックし、次の手順を実行します。  
 
-    ![シングル サインオンのリンクされたプロパティ](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linkedproperties.png)
+    ![シングル サインオンのリンクされたプロパティ](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linkedproperties.png)
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[ユーザーのサインインが有効になっていますか?]** フィールドの値を **[はい]** に設定します。
 
@@ -192,19 +192,19 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
     c.  **[ユーザーに表示しますか?]** フィールドの値を **[はい]** に設定します。
 
-6. **ADP Federated SSO** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+6. **ADP** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
-7. **[シングル サインオン]** ダイアログで、**[モード]** として **[リンクされたサインオン]** を選択し、アプリケーションを **ADP Federated SSO** にリンクします。
+7. **[シングル サインオン]** ダイアログで、**[モード]** として **[リンクされたサインオン]** を選択します。 アプリケーションを **ADP** にリンクさせます。
 
-    ![リンクされたシングル サインオン](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linked.png)
+    ![リンクされたシングル サインオン](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linked.png)
 
 8. **[サインオン URL の構成]** セクションに移動し、次の手順を実行します。
 
-    ![シングル サインオンのプロパティ](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_linkedsignon.png)
+    ![シングル サインオンのプロパティ](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_linkedsignon.png)
                                                               
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上記の **[プロパティ]** タブ (メインの ADP Federated SSO アプリケーション) からコピーした、**ユーザーのアクセス URL** を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上記の **[プロパティ]** タブ (メインの ADP アプリケーション) からコピーした、**ユーザーのアクセス URL** を貼り付けます。
                                                              
     b. 次の 5 つのアプリは、異なる**リレー状態 URL** をサポートしています。 特定のアプリケーションの適切な**リレー状態 URL** の値を、**ユーザーのアクセス URL** に手動で追加する必要があります。
     
@@ -274,25 +274,25 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
     d. **Create** をクリックしてください。
  
-### <a name="create-an-adp-federated-sso-test-user"></a>ADP Federated SSO のテスト ユーザーの作成
+### <a name="create-an-adp-test-user"></a>ADP テスト ユーザーを作成する
 
-このセクションの目的は、ADP Federated SSO で Britta Simon というユーザーを作成することです。 [ADP サポート チーム](https://www.adp.com/contact-us/overview.aspx)と協力して、ADP Federated SSO アカウントにユーザーを追加します。
+このセクションの目的は、ADP で Britta Simon というユーザーを作成することです。 [ADP サポート チーム](https://www.adp.com/contact-us/overview.aspx)と協力して、ADP アカウントにユーザーを追加します。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、ADP Federated SSO へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
+このセクションでは、ADP へのアクセス権を付与することによって、Britta Simon が Azure シングル サインオンを使用できるようにします。
 
 ![ユーザー ロールを割り当てる][200] 
 
-**ADP Federated SSO に Britta Simon を割り当てるには、次の手順を実行します。**
+**ADP に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[ADP Federated SSO]** を選択します。
+2. アプリケーションの一覧で **[ADP]**を選択します。
 
-    ![アプリケーションの一覧の ADP Federated SSO のリンク](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adpfederatedsso_app.png)  
+    ![アプリケーションの一覧の [ADP] リンク](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_app.png)  
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -312,15 +312,13 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで ADP Federated SSO のタイルをクリックすると、自動的に ADP Federated SSO アプリケーションにサインオンします。
+アクセス パネルで ADP のタイルをクリックすると、ADP アプリケーションに自動的にサインオンします。
 アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-
-
 
 <!--Image references-->
 

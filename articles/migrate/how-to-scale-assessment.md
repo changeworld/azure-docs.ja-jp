@@ -6,11 +6,11 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 01/08/2018
 ms.author: raynew
-ms.openlocfilehash: d1063d1f2777095c880896b49249f6de4cda6f3a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9d9ebef66be269c63a62d393eda76254946b13e7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="discover-and-assess-a-large-vmware-environment"></a>大規模な VMware 環境の検出と評価
 
@@ -30,22 +30,24 @@ ms.lasthandoff: 02/27/2018
 | **エンティティ** | **マシンの制限** |
 | ---------- | ----------------- |
 | Project    | 1,500              | 
-| 探索  | 1,000              |
-| 評価 | 400               |
+| 探索  | 1,500              |
+| 評価 | 1,500               |
 
-- 検出およびアクセスするマシンが 400 台未満の場合、必要になるのは 1 つのプロジェクトと 1 回の検出です。 要件に応じて、1 回の評価ですべてのマシンを評価するか、マシンを複数回の評価に分けることができます。 
-- 400 台から 1,000 台のマシンを検出するには、1 つのプロジェクトと 1 回の検出が必要です。 ただし、1 回の評価に含めることができるのは最大 400 台のマシンなので、これらのマシンを評価するには複数回の評価が必要です。
-- マシンの数が 1,001 台から 1,500 台であれば、1 つのプロジェクトと、そのプロジェクト内での 検出が 2 回必要になります。
-- マシンの数が 1,500 台を超える場合は、要件に従って複数のプロジェクトを作成し、複数回の検出を実行する必要があります。 例: 
-    - マシンの数が 3,000 台の場合、2 つのプロジェクトでそれぞれ 検出を 2 回設定するか、3 つのプロジェクトで 検出を 1 回設定するかを選択できます。
-    - 5,000 台のマシンがある場合は、4 つのプロジェクトを設定して、3 つのプロジェクトで 1,500 台のマシンを検出し、もう 1 つのプロジェクトで 500 台のマシンを検出できます。 あるいは、5 つのプロジェクトそれぞれに検出を 1 つセットアップすることもできます。 
+<!-- 
+- If you have fewer than 400 machines to discover and assess, you need a single project and a single discovery. Depending on your requirements, you can either assess all the machines in a single assessment or split the machines into multiple assessments. 
+- If you have 400 to 1,000 machines to discover, you need a single project with a single discovery. But you will need multiple assessments to assess these machines, because a single assessment can hold up to 400 machines.
+- If you have 1,001 to 1,500 machines, you need a single project with two discoveries in it.
+- If you have more than 1,500 machines, you need to create multiple projects, and perform multiple discoveries, according to your requirements. For example:
+    - If you have 3,000 machines, you can set up two projects with two discoveries, or three projects with a single discovery.
+    - If you have 5,000 machines, you can set up four projects: three with a discovery of 1,500 machines, and one with a discovery of 500 machines. Alternatively, you can set up five projects with a single discovery in each one. 
+-->
 
 ## <a name="plan-multiple-discoveries"></a>複数の検出を計画する
 
 同じ Azure Migrate コレクターを使用して、1 つ以上のプロジェクトに対して複数の検出を行うことができます。 このような計画の場合は、以下の事項を考慮してください。
  
 - Azure Migrate コレクターを使用して検出を行う場合、検出範囲を vCenter Server フォルダー、データセンター、クラスター、またはホストに設定できます。
-- 2 つ以上の検出を行うには、検出を行う VM が、マシンの数が 1000 台という制限に対応しているフォルダー、データセンター、クラスター、またはホスト内にあることを、vCenter Server で確認します。
+- 2 つ以上の検出を行うには、検出を行う VM が、マシンの数が 1500 台という制限に対応しているフォルダー、データセンター、クラスター、またはホスト内にあることを、vCenter Server で確認します。
 - 評価を目的としている場合は、複数のマシンを同じプロジェクトと同じ評価内にまとめ、相互に依存関係にある状態にすることをお勧めします。 そして vCenter Server で、依存関係にあるマシンが評価のために同じフォルダー、データセンター、またはクラスター内にあることを確認してください。
 
 
@@ -83,6 +85,14 @@ OVA ファイルをデプロイする前に、そのファイルが安全であ�
 
    使用例: ```C:\>CertUtil -HashFile C:\AzureMigrate\AzureMigrate.ova SHA256```
 3. 生成されたハッシュが次の設定と一致することを確認します。
+
+    OVA バージョン 1.0.9.5 の場合
+
+    **アルゴリズム** | **ハッシュ値**
+    --- | ---
+    MD5 | fb11ca234ed1f779a61fbb8439d82969
+    SHA1 | 5bee071a6334b6a46226ec417f0d2c494709a42e
+    SHA256 | b92ad637e7f522c1d7385b009e7d20904b7b9c28d6f1592e8a14d88fbdd3241c  
 
     OVA バージョン 1.0.9.2 の場合
 

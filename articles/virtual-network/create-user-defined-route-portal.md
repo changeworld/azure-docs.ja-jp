@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
 ms.openlocfilehash: 0319029277091611673f15c94604604850cbfcbe
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/06/2018
 ---
 # <a name="create-a-user-defined-route---azure-portal"></a>Azure Portal を使用してユーザー定義ルートを作成する
 
@@ -82,7 +82,7 @@ ms.lasthandoff: 02/13/2018
     - ページ上部の **[リソースの検索]** ボックスに「*myVm-Nva*」と入力します。
     - 検索結果に **myVm-Nva** が表示されたら、それをクリックします。
     - 左側にある **[設定]** で **[ネットワーク]** をクリックします。
-    - **[myVm-Nva - ネットワーク インターフェイス]** でネットワーク インターフェイスの名前をクリックします。 名前は、**myvm nva * * * X*ここで、 *X*ポータルによって割り当てられる番号です。
+    - **[myVm-Nva - ネットワーク インターフェイス]** でネットワーク インターフェイスの名前をクリックします。 名前は **myvm-nva***X* です。ここで、*X* は、ポータルによって割り当てられる番号です。
     - 次の図に示すように、ネットワーク インターフェイスの **[設定]** で **[IP 構成]** をクリックします。
 
         ![ネットワーク インターフェイスの設定](./media/create-user-defined-route/network-interface-settings.png)

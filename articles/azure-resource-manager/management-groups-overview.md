@@ -10,17 +10,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 2/22/2018
+ms.date: 2/28/2018
 ms.author: rithorn
-ms.openlocfilehash: d1974ff9716d6b84a5f4b4f1795a84483d277a05
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 1264bf77b6d922f5beb22177d1ac63efa9386ef2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループのリソースを整理する 
 
-サブスクリプションが複数ある場合は、"管理グループ" と呼ばれるコンテナーにサブスクリプションをまとめて、サブスクリプション間のアクセス、ポリシー、コンプライアンスを管理しやすくすることができます。 これらのコンテナーを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。  
+サブスクリプションが複数ある場合は、"管理グループ" と呼ばれるコンテナーにサブスクリプションをまとめて、サブスクリプション間のアクセス、ポリシー、コンプライアンスを管理しやすくすることができます。 管理グループを使うと、サブスクリプションの種類に関係なく、大きな規模でエンタープライズ レベルの管理を行うことができます。  
 
 管理グループ機能は、パブリック プレビューで使用できます。 管理グループを使い始めるには、[Azure Portal](https://portal.azure.com) にログインし、**[すべてのサービス]** セクションで **[管理グループ]** を探します。 
 
