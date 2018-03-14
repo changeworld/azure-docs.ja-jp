@@ -4,20 +4,20 @@ description: "Azure Active Directory とSlack の間にシングル サインオ
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: ffc5e73f-6c38-4bbb-876a-a7dd269d4e1c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/08/2017
+ms.date: 02/28/2018
 ms.author: jeedes
-ms.openlocfilehash: 67d95b48520cd990428447dc775d9af22528c0f0
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cd0cecde7f98e73911e7dec734cffeeee6f09a72
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>チュートリアル: Azure Active Directory と Slack の統合
 
@@ -63,11 +63,11 @@ Azure AD への Slack の統合を構成するには、ギャラリーから管�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに「**Slack**」と入力します。
 
@@ -86,11 +86,11 @@ Slack で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 Slack で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Slack のテスト ユーザーの作成](#creating-a-slack-test-user)** - Slack で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクします。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,26 +100,29 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
 1. Azure Portal の **Slack** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_slack_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-slack-tutorial/tutorial_slack_samlbase.png)
 
 3. **[Slack のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_slack_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-slack-tutorial/tutorial_slack_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.slack.com` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<companyname>.slack.com` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、URL として「`https://slack.com`」を入力します。
+    b. **[識別子]** ボックスに次の URL を入力します。`https://slack.com`
 
     > [!NOTE] 
-    > これは実際の値ではありません。 この値は実際のサインオン URL で更新する必要があります。 この値を取得するには、[Slack サポート チーム](https://slack.com/help/contact)にお問い合わせください。
+    > この値は実際のものではありません。 この値は実際のサインオン URL で更新する必要があります。 この値を取得するには、[Slack サポート チーム](https://slack.com/help/contact)にお問い合わせください。
      
 4. Slack アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 この属性の値は、アプリケーション統合ページの **[User Attributer]** セクションで管理できます。 次のスクリーンショットはその例です。
     
-    ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute.png)
+
+    > [!NOTE] 
+    > ユーザーの**メールアドレス**が Office 365 を使用して割り当てられている場合に、それだけが設定されます。それ以外の場合、**メールアドレス** クレームは SAML トークンに表示されません。
 
 5. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、**[ユーザー識別子]** として **[user.mai]l** を選択し、以下の表に示す行ごとに、次の手順を実行します。
     
@@ -130,27 +133,29 @@ Slack で Azure AD のシングル サインオンを構成してテストする
     | User.Email | User.mail |  
     | User.Username | user.userprincipalname |
 
-    a. **[属性]** をクリックして **[属性の編集]** ダイアログ ボックスを開き、次の手順を実行します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性]** をクリックして **[属性の編集]** ダイアログ ボックスを開き、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-slack-tutorial/tutorial_slack_attribute1.png)
 
-    a. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに、その行に対して表示される属性名を入力します。
     
     b. **[値]** 一覧から、その行に対して表示される属性値を選択します。
+
+    c. **[名前空間]**は空白のままにします。
     
-    c. **[OK]**
+    d. **[OK]**
 
 6. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-slack-tutorial/tutorial_slack_certificate.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-slack-tutorial/tutorial_slack_certificate.png)
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-slack-tutorial/tutorial_general_400.png)
 
 8. **[Slack Configuration]** (Slack 構成) セクションで、**[Configure Slack]** (Slack を構成する) をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-slack-tutorial/tutorial_slack_configure.png) 
 
 9.  別の Web ブラウザー ウィンドウで、Slack 企業サイトに管理者としてログインします。
 
@@ -166,7 +171,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-slack-tutorial/tutorial_slack_003.png)
 
-    a.  **[SAML 2.0 エンドポイント (HTTP)]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[SAML 2.0 エンドポイント (HTTP)]** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
     b.  **[ID プロバイダーの発行者]** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
@@ -183,7 +188,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
     f.  As **Authentication for your team must be used by**, select **It’s optional**. -->
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -209,7 +214,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-slack-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -240,7 +245,7 @@ Slack で Azure AD のシングル サインオンを構成してテストする
 
 2. アプリケーションの一覧で **[Slack]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-slack-tutorial/tutorial_slack_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-slack-tutorial/tutorial_slack_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

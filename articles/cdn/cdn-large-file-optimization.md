@@ -1,5 +1,5 @@
 ---
-title: "Azure Content Delivery Network を介した大容量ファイルのダウンロードの最適化"
+title: "Azure CDN を介した大きなファイルのダウンロードの最適化"
 description: "大容量ファイルのダウンロードの最適化を詳細に説明"
 services: cdn
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.openlocfilehash: 7a5d5d1d0de24ebb0a5115ede1e572f38454bd78
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6e6266fdaaac6a1a1a5d3a5595c10f79fd9f01a7
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="large-file-download-optimization-via-the-azure-content-delivery-network"></a>Azure Content Delivery Network を介した大容量ファイルのダウンロードの最適化
+# <a name="large-file-download-optimization-via-azure-cdn"></a>Azure CDN を介した大きなファイルのダウンロードの最適化
 
 インターネット経由で配信されるコンテンツのファイル サイズは、機能の強化、グラフィックスの向上、リッチ メディア コンテンツの普及により、常に拡大し続けています。 この拡大は、ブロードバンドの浸透、低価格ストレージ デバイスの大容量化、高解像度ビデオの広範な増加、インターネットに接続されるデバイス (IoT) などの多くの要因によってもたらされています。 このような大きなファイルの高速で効率的な配信メカニズムは、お客様がスムーズで楽しい経験をすることを可能にするために極めて重要です。
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="configure-a-cdn-endpoint-to-optimize-delivery-of-large-files"></a>大きなファイルの配信を最適化するための CDN エンドポイントの構成
 
-CDN エンドポイントは、Azure Portal 経由での大容量ファイルの配信を最適化するように構成することができます。 REST API またはクライアント SDK のいずれかを使ってこれを行うこともできます。 次の手順は、Azure Portal 経由の処理を示しています。
+CDN エンドポイントは、Azure Portal 経由での大容量ファイルの配信を最適化するように構成することができます。 REST API またはクライアント SDK を使用してこれを行うこともできます。 次の手順は、Azure Portal 経由の処理を示しています。
 
 1. 新しいエンドポイントを追加するには、**[CDN プロファイル]** ページで **[エンドポイント]** を選択します。
 
@@ -63,7 +63,7 @@ CDN エッジに届いたチャンクはキャッシュされ、即座にユー�
 
 CDN は受信したチャンクをすべてキャッシュします。 ファイル全体を CDN のキャッシュに保存する必要はありません。 ファイルまたはバイト範囲に対する後続の要求は CDN キャッシュから処理されます。 すべてのチャンクが CDN にキャッシュされていない場合、プリフェッチを使用して配信元にチャンクが要求されます。 この最適化は、配信元サーバーのバイト範囲要求をサポートする機能に依存します。 _配信元サーバーがバイト範囲要求をサポートしていない場合、この最適化の効果はありません。_ 
 
-### <a name="caching"></a>Caching (キャッシュ)
+### <a name="caching"></a>キャッシュ
 大きなファイルの最適化で使用する既定のキャッシュの有効期限は、一般的な Web 配信のものと異なります。 HTTP 応答コードに基づいて、正のキャッシュと負のキャッシュを区別します。 配信元サーバーが応答の cache-control または expires ヘッダーで有効期限を指定している場合、CDN はその値を優先させます。 配信元で指定されず、ファイルがこの最適化の種類のファイルの種類とサイズの条件と一致する場合、CDN は大きいファイルの最適化に既定値を使います。 それ以外の場合は、CDN は一般的な Web 配信用の既定値を使います。
 
 

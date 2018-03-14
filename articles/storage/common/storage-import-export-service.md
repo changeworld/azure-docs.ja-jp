@@ -3,22 +3,16 @@ title: "Azure Import/Export を使用した Azure Storage との間でのデー�
 description: "Azure Portal でインポートおよびエクスポート ジョブを作成して、Azure Storage との間でデータを転送する方法について説明します。"
 author: muralikk
 manager: syadav
-editor: tysonn
 services: storage
-documentationcenter: 
-ms.assetid: 668f53f2-f5a4-48b5-9369-88ec5ea05eb5
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 0c34b7ce028ef0fae77322513f62557fa9f9929c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e9fce2530bc4e654304b946cea1715ac8e2ce6fa
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
 この記事では、Azure Import/Export サービスを使用してディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage と Azure Files に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure Files にインポートできます。 
@@ -31,25 +25,34 @@ ms.lasthandoff: 02/21/2018
 ディスク上のデータを Azure Storage にインポートする場合は、次の手順に従います。
 ### <a name="step-1-prepare-the-drives-using-waimportexport-tool-and-generate-journal-files"></a>手順 1: WAImportExport ツールを使用して、1 台または複数のドライブを準備し、1 つまたは複数のジャーナル ファイルを生成する
 
-1.  Azure Storage にインポートするデータを特定します。 これは、ローカル サーバーまたはネットワーク共有上のディレクトリやスタンドアロン ファイルなどです。
+1.  Azure Storage にインポートするデータを特定します。 インポートできるのは、ローカル サーバーまたはネットワーク共有上のディレクトリやスタンドアロン ファイルです。
 2.  データの合計サイズに応じて、2.5 インチ SSD か、2.5 (または 3.5) インチ SATA II または III ハード ディスク ドライブを必要な数だけ調達します。
 3.  SATA または外部 USB アダプターを使用して、ハード ドライブを Windows コンピューターに直接接続します。
-4.  各ハード ドライブ上に 1 つの NTFS ボリュームを作成し、このボリュームにドライブ文字を割り当てます。 マウントポイントは不要です。
-5.  Windows コンピューターで暗号化を有効にするには、NTFS ボリュームで BitLocker の暗号化を有効にします。 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx の手順に従ってください。
-6.  コピーと貼り付けまたはドラッグ アンド ドロップまたは Robocopy または任意のそのようなツールを使用して、ディスク上のこれらの暗号化された 1 つの NTFS ボリュームにデータを完全にコピーします。
+1.  各ハード ドライブ上に 1 つの NTFS ボリュームを作成し、このボリュームにドライブ文字を割り当てます。 マウントポイントは不要です。
+2.  Windows コンピューターで暗号化を有効にするには、NTFS ボリュームで BitLocker の暗号化を有効にします。 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx の手順に従ってください。
+3.  コピーと貼り付けまたはドラッグ アンド ドロップまたは Robocopy または任意のそのようなツールを使用して、ディスク上のこれらの暗号化された 1 つの NTFS ボリュームにデータを完全にコピーします。
 7.  https://www.microsoft.com/en-us/download/details.aspx?id=42659 から WAImportExport V1 をダウンロードします。
 8.  既定のフォルダー waimportexportv1 に解凍します。 たとえば、C:\WaImportExportV1 などです。  
 9.  管理者として実行し、PowerShell またはコマンド ラインを開き、解凍したフォルダーにディレクトリを変更します。 たとえば、cd C:\WaImportExportV1 などです。
-10. 次のコマンド ラインをメモ帳にコピーし、それを編集して、コマンド ラインを作成します。
-  ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ /skipwrite
+10. 次のコマンド ラインをテキスト エディターにコピーし、それを編集して、コマンド ラインを作成します。
+
+    ```
+    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ 
+    ```
     
-    /j: .jrn 拡張子のジャーナル ファイルと呼ばれるファイルの名前。 ジャーナル ファイルはドライブごとに生成されるため、ジャーナル ファイル名としてディスクのシリアル番号を使用することをお勧めします。
-    /sk: Azure Storage アカウント キー。 /t: 送付するディスクのドライブ文字。 たとえば、D /bk: は、ドライブの Bitlocker キーで、/srcdir: は送付されるディスクのドライブ文字で、後に :\ が続きます。 たとえば D:\ などです。
-    /dstdir: データのインポート先の Azure Storage コンテナーの名前。
-    /skipwrite 
-    
-11. 送付する必要があるディスクごとに手順 10 を繰り返します。
-12. /j: パラメーターで指定された名前のジャーナル ファイルは、コマンド ラインの実行のたびに作成されます。
+    これらのコマンド ライン オプションについては次の表で説明します。
+
+    |オプション  |[説明]  |
+    |---------|---------|
+    |/j:     |ジャーナル ファイルの名前 (拡張子は .jrn)。 ジャーナル ファイルはドライブごとに 1 つ生成されます。 ディスクのシリアル番号をジャーナル ファイル名と使用することをお勧めします。         |
+    |/sk:     |Azure Storage アカウント キー。         |
+    |/t:     |送付するディスクのドライブ文字。 例: ドライブ `D`。         |
+    |/bk:     |ドライブの BitLocker キー。         |
+    |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「`D:\`」のように入力します。         |
+    |/dstdir:     |Azure Storage 内の保存先コンテナーの名前         |
+
+1. 送付する必要があるディスクごとに手順 10 を繰り返します。
+2. /j: パラメーターで指定された名前のジャーナル ファイルは、コマンド ラインの実行のたびに作成されます。
 
 ### <a name="step-2-create-an-import-job-on-azure-portal"></a>手順 2: Azure Portal でインポート ジョブを作成する
 
@@ -88,6 +91,11 @@ Azure DC にパッケージを発送するには、FedEx、UPS、または DHL �
 
 ### <a name="storage-account"></a>ストレージ アカウント
 既存の Azure サブスクリプション、または、Import/Export サービスを使用するための 1 つ以上のストレージ アカウントを持っている必要があります。 Azure Import/Export では、クラシック、Blob Storage アカウントおよび汎用目的 v1 ストレージ アカウントのみがサポートされます。 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+
+> [!IMPORTANT] 
+> Azure Import Export サービスでは、[仮想ネットワークのサービス エンドポイント](../../virtual-network/virtual-network-service-endpoints-overview.md)機能が有効になっているストレージ アカウントはサポートされません。 
+> 
+> 
 
 ### <a name="data-types"></a>データの種類
 Azure Import/Export サービスを使用して、データを**ブロック** BLOB、**ページ** BLOB、あるいは **Files** にコピーできます。 逆に言うと、このサービスを使用して Azure Storage からエクスポートできるのは、**ブロック** BLOB、**ページ** BLOB、**追加** BLOB に限られます。 このサービスは、Azure Files の Azure Storage へのインポートのみをサポートします。 Azure Files のエクスポートは、現在サポートされていません。

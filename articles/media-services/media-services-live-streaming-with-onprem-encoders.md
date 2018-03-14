@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: d7c33dc0a3c1f01cc53a91e05feb33272cb21f47
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: 1266c7b6c1539f84eafea1007999fb4360184857
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング
 ## <a name="overview"></a>概要
@@ -182,9 +182,9 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 | チャネルの状態 | ポータル UI インジケーター | 課金対象 |
 | --- | --- | --- | --- |
 | **開始中** |**開始中** |いいえ (遷移状態) |
-| **実行中** |**準備完了** (実行中プログラムなし)<p><p>または<p>**ストリーミング** (実行中プログラムが最低 1 つ存在) |はい |
+| **実行中** |**準備完了** (実行中プログラムなし)<p><p>or<p>**ストリーミング** (実行中プログラムが最低 1 つ存在) |[はい] |
 | **停止中** |**停止中** |いいえ (遷移状態) |
-| **Stopped** |**Stopped** |いいえ |
+| **Stopped** |**Stopped** |いいえ  |
 
 ## <a id="cc_and_ads"></a>クローズド キャプションと広告の挿入
 次の表は、サポートされているクローズド キャプションや広告挿入の標準を示しています。
@@ -209,6 +209,10 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 チャネルと関連コンポーネントの作業に関するその他の考慮事項は次のとおりです。
 
 * ライブ エンコーダーを再構成する際は、毎回チャネルで **Reset** メソッドを呼び出します。 チャネルをリセットする前に、プログラムを停止する必要があります。 チャネルをリセットしたら、プログラムを再起動します。
+
+  > [!NOTE]
+  > プログラムを再起動したら、新しいアセットに関連付けて、新しいロケーターを作成する必要があります。 
+  
 * チャネルを停止できるのは、チャネルが**実行中**の状態で、チャネルのすべてのプログラムが停止しているときのみです。
 * 既定では、Media Services アカウントに追加できるチャネルは 5 つのみです。 詳細については、「[クォータと制限](media-services-quotas-and-limitations.md)」をご覧ください。
 * チャネルが**実行中**状態のときにのみ課金されます。 詳細については、「[チャネルの状態と課金](media-services-live-streaming-with-onprem-encoders.md#states)」をご覧ください。

@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 01/02/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 1fd3b2c251860e883519744b11fcfc2b925cd2fa
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 561729e5e495500222ccec5b4b536a3152cb25e3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Azure Container Instances でのデプロイに関する問題をトラブルシューティングする
 
@@ -91,6 +91,10 @@ az container show --resource-group myResourceGroup --name mycontainer
 ## <a name="common-deployment-issues"></a>一般的なデプロイ問題
 
 デプロイで発生するほとんどのエラーの主な原因となる少数の一般的な問題があります。
+
+## <a name="image-version-not-supported"></a>イメージ バージョンがサポートされない
+
+Azure Container Instances がサポートできないイメージが指定された場合、フォーム `ImageVersionNotSupported` でエラーが返されます。 エラーの値には `The version of image '{0}' is not supported.` が表示されます。 このエラーは、LTS Windows イメージの使用を軽減するために、現時点では Windows 1709 イメージに適用されます。 Windows 1709 イメージのサポートは実施されています。
 
 ## <a name="unable-to-pull-image"></a>イメージをプルできない
 

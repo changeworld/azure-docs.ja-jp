@@ -14,13 +14,16 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 05099e868e62f612be0a3354eb8b339507ac7e4a
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 46cdd8523117e1100e7ce2a29ade9eb2dc0afe75
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="stateful-singletons-in-durable-functions---counter-sample"></a>Durable Functions のステートフル シングルトン - カウンター サンプル
+
+> [!NOTE]
+> このサンプルは現在書き換えています。 コード スニペットは削除されています。これは、新しいサンプルの新しい記事に置き換えられます。
 
 ステートフル シングルトンは、長時間実行される (永久に実行される可能性がある) オーケストレーター関数であり、状態を保存でき、他の関数による呼び出しとクエリが可能な関数です。 ステートフル シングルトンは、分散コンピューティングにおける[アクター モデル](https://en.wikipedia.org/wiki/Actor_model)に似ています。
 
@@ -30,7 +33,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Durable Functions のインストール](durable-functions-install.md)に関するページの指示に従って、サンプルを設定します。
+* 「[Durable Functions をインストールする](durable-functions-install.md)」の指示に従って、サンプルを設定します。
 * この記事では、[Hello シーケンス](durable-functions-sequence.md) サンプルのチュートリアルを既に終了していることを前提としています。
 
 ## <a name="scenario-overview"></a>シナリオの概要
@@ -55,11 +58,11 @@ Durable Functions は、この種のシナリオの実装をありふれたも�
 
 function.json ファイル:
 
-[!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)]
+<!-- [!code-json[Main](~/samples-durable-functions/samples/csx/E3_Counter/function.json)] -->
 
 run.csx ファイル:
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)]
+<!-- [!code-csharp[Main](~/samples-durable-functions/samples/csx/E3_Counter/run.csx)] -->
 
 ### <a name="precompiled-c"></a>プリコンパイル済み C# 
 
@@ -67,7 +70,7 @@ run.csx ファイル:
 
 オーケストレーター関数を実装するコードを次に示します。
 
-[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)]
+<!-- [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/Counter.cs)] -->
 
 ### <a name="explanation-of-the-code"></a>コードの説明
 
@@ -85,7 +88,7 @@ run.csx ファイル:
 > [!NOTE]
 > `ContinueAsNew` メソッドには、永続的オーケストレーション以外のユースケースがあります。 詳細については、[外部オーケストレーション](durable-functions-eternal-orchestrations.md)に関する記事を参照してください。
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 
 次の HTTP POST 要求を送信してオーケストレーションを開始できます。 `counterState` をゼロ (`int` の既定値) で開始できるように、この要求には内容がありません。
 
@@ -150,7 +153,7 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb50
 > [!WARNING]
 > この記事の執筆時点では、`ContinueAsNew` の呼び出しと、外部イベントや終了要求などのメッセージの処理が並行して発生した場合に競合状態が発生することがわかっています。 これらの競合状態に関する最新の情報については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-extension/issues/67)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このサンプルでは、[ステートフル シングルトン](durable-functions-singletons.md)で[外部イベント](durable-functions-external-events.md)を処理し、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)を実装する方法について説明しました。 次のサンプルでは、外部イベントと[持続的タイマー](durable-functions-timers.md)を使用してユーザーの操作を処理する方法について説明します。
 

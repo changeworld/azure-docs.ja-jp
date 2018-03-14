@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: simorjay
-ms.openlocfilehash: 41b36a25eab9c1564dc59a40acd7daefde888b7f
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 2bca630bb98b3d9c2be566fbd23ae3313c6a5a47
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-security-and-compliance-blueprint---hipaahitrust-health-data-and-ai"></a>Azure のセキュリティとコンプライアンスのブループリント - HIPAA/HITRUST のヘルス データと AI
 
@@ -40,21 +40,15 @@ ms.lasthandoff: 02/28/2018
 
 -   この基本アーキテクチャを使用して構築されたソリューションのセキュリティとコンプライアンスの適切なレビューは、お客様が実施する必要があります。
 
-このソリューションの機能の概要を簡単に把握するために、ソリューションのデプロイの説明とデモンストレーションを行っている[このビデオ](https://aka.ms/healthblueprintvideo)をご覧ください。
-
 ## <a name="deploying-the-automation"></a>Automation のデプロイ
 
 - ソリューションをデプロイするには、デプロイ ガイダンスに記載されている手順に従います。 
 
 [![](./images/deploy.png)](https://aka.ms/healthblueprintdeploy)
 
+このソリューションの機能の概要を簡単に把握するために、ソリューションのデプロイの説明とデモンストレーションを行っている[このビデオ](https://aka.ms/healthblueprintvideo)をご覧ください。
+
 - よくある質問については、[FAQ](https://aka.ms/healthblueprintfaq) ガイダンスをご覧ください。
-
-
-## <a name="solution-components"></a>ソリューションのコンポーネント
-
-
-この基本アーキテクチャは次のコンポーネントで構成されています。
 
 -   **アーキテクチャ図**:  この図は、ブループリントとユース ケース シナリオの例で使用される参照アーキテクチャを示します。
 
@@ -66,12 +60,16 @@ ms.lasthandoff: 02/28/2018
 -   モジュールのインストールと[グローバル管理者](/azure/active-directory/active-directory-assign-admin-roles-azure-portal)のセットアップ スクリプト。インストールを行い、必要な PowerShell モジュールとグローバル管理者ロールが正しく構成されていることを確認するために使用します。 
 -   インストール PowerShell スクリプト。ソリューションをデプロイするために使用します。事前に構築されたデモ機能を含む .zip ファイルで提供されます。
 
+## <a name="solution-components"></a>ソリューションのコンポーネント
+
+
+この基本アーキテクチャは次のコンポーネントで構成されています。
 
 -   **[脅威モデル](https://aka.ms/healththreatmodel)**: [Microsoft Threat Modeling Tool](https://www.microsoft.com/en-us/download/details.aspx?id=49168) で使用するために、包括的な脅威モデルが tm7 形式で提供され、ソリューションのコンポーネント、コンポーネント間のデータ フロー、信頼境界が示されます。 このモデルは、機械学習コンポーネントや他の変更点を開発するときに、システム インフラストラクチャの潜在的なリスク箇所を理解するのに役立ちます。
 
--   **[お客様の責任マトリックス](https://aka.ms/healthcrmblueprint)**: Microsoft Excel ブックに、関連する HITRUST の要件が示され、各要件を満たす際に Microsoft とお客様が負う責任が記載されます。
+-   **[お客様の実装マトリックス](https://aka.ms/healthcrmblueprint)**: Microsoft Excel ブックに、関連する HITRUST の要件が示され、各要件を満たす際に Microsoft とお客様が負う責任が記載されます。
 
--   **[ヘルス レビュー。 このソリューションは、Coalfire systems, Inc. によってレビューされました。「Health Compliance (HIPAA, and HITRUST)\' Review and guidance for implementation (ヘルス コンプライアンス (HIPAA/HITRUST) レビューおよび実装のガイダンス)」には、監査担当者によるソリューションのレビューと、このブループリントを実稼働可能なデプロイに変える際の考慮事項が記載されています。
+-   **[ヘルス レビュー。](https://aka.ms/healthreviewpaper)** このソリューションは、Coalfire systems, Inc. によってレビューされました。「Health Compliance (HIPAA, and HITRUST)\' Review and guidance for implementation (ヘルス コンプライアンス (HIPAA/HITRUST) レビューおよび実装のガイダンス)」には、監査担当者によるソリューションのレビューと、このブループリントを実稼働可能なデプロイに変える際の考慮事項が記載されています。
 
 # <a name="architectural-diagram"></a>アーキテクチャ図
 

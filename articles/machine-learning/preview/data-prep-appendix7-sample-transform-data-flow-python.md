@@ -5,18 +5,18 @@ services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: 
 ms.devlang: 
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 8146c2a41a2b8fc241131a42ec74227795867609
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: aa213a3b1a8949f0fca5e4bbb7ec5a6a775ae6ec
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="sample-of-custom-data-flow-transforms-python"></a>カスタム データ フロー変換のサンプル (Python) 
 メニューでのこの変換の名前は、「**データ フローの変換 (スクリプト)**」です。 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事をご覧ください。
@@ -42,8 +42,8 @@ score 列に対して計算された最初と最後の集計を使用して新�
 
 ## <a name="transform-data-flow"></a>データ フローを変換する
 ### <a name="fill-down"></a>フィル ダウン 
-フィル ダウンには 2 つの変換が必要です。 次のようなデータを仮定します。
 
+フィル ダウンには 2 つの変換が必要です。 次の表のようなデータを仮定します。
 
 |State         |City       |
 |--------------|-----------|
@@ -58,16 +58,17 @@ score 列に対して計算された最初と最後の集計を使用して新�
 |              |サンアントニオ|
 |              |ヒューストン    |
 
-まず、次のコードを含む「列の追加 (スクリプト)」変換を作成します。
+1. 次のコードを使用して、"列の追加 (スクリプト)" 変換を作成します。
 ```python
     row['State'] if len(row['State']) > 0 else None
 ```
-ここで、次のコードを含む「データ フローの変換 (スクリプト)」変換を作成します。
+
+2. 次のコードを含む "データ フローの変換 (スクリプト)" 変換を作成します。
 ```python
     df = df.fillna( method='pad')
 ```
 
-この時点で、データは次のようになります。
+この時点で、データは次の表のようになります。
 
 |State         |newState         |City       |
 |--------------|--------------|-----------|

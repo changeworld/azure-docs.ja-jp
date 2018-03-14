@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: dab336da4e010d0a78de9a2bdd62536d8fdd9bf1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: klam; LADocs
+ms.openlocfilehash: de4f4ee086fbf3799fcac1f1b008d9237b5e7a09
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする
 
@@ -30,12 +30,12 @@ HTTP エンドポイントを作成するには、ロジック アプリで受�
 
 * [要求](../connectors/connectors-native-reqres.md)
 
-* [API 接続 Webhook](logic-apps-workflow-actions-triggers.md#api-connection-trigger)
+* [API 接続 Webhook](../logic-apps/logic-apps-workflow-actions-triggers.md#apiconnection-trigger)
 
 * [HTTP Webhook](../connectors/connectors-native-webhook.md)
 
    > [!NOTE]
-   > この例では**要求**トリガーを使用しますが、表示されているあらゆる HTTP トリガーを使用できます。また、すべての原則が他の種類のトリガーにも同様に適用されます。
+   > 以下の例では**要求**トリガーを使用しますが、ここに示すどの HTTP トリガーでもご利用いただけます。また、すべての原則が他の種類のトリガーにも同様に適用されます。
 
 ## <a name="set-up-an-http-endpoint-for-your-logic-app"></a>ロジック アプリ用の HTTP エンドポイントを設定する
 
@@ -166,6 +166,7 @@ HTTP エンドポイントの URL でパラメーターを受け取る場合は�
     `Hello 123456`
 
 <a name="generated-tokens"></a>
+
 ### <a name="tokens-generated-from-json-schemas-for-your-logic-app"></a>ロジック アプリ用に JSON スキーマから生成されるトークン
 
 **要求**トリガーに JSON スキーマを指定すると、ロジック アプリ デザイナーでそのスキーマのプロパティ用のトークンが生成されます。 これらのトークンは、ロジック アプリのワークフローを介してデータを渡すために使用できます。
@@ -206,6 +207,9 @@ HTTP エンドポイントの URL でパラメーターを受け取る場合は�
 
 HTTP エンドポイントを作成したら、完全な URL への `POST` メソッドを通じてロジック アプリをトリガーすることができます。 ロジック アプリでは、直接アクセス エンドポイントの組み込みがサポートされています。
 
+> [!NOTE] 
+> ロジック アプリを手動で実行するには、ロジック アプリ デザイナーまたはロジック アプリ コード ビューのツール バーで **[実行]** をクリックします。
+
 ## <a name="reference-content-from-an-incoming-request"></a>受信要求からコンテンツを参照する
 
 コンテンツの種類が `application/json` である場合は、受信要求からプロパティを参照できます。 それ以外の場合は、コンテンツは他の API に渡すことができる単一バイナリ ユニットとして扱われます。 ワークフロー内でコンテンツを参照するには、このコンテンツを変換する必要があります。 たとえば、`application/xml` コンテンツを渡す場合は、`@xpath()` を使用して XPath 抽出を行ったり、`@json()` を使用して XML から JSON に変換することができます。 詳しくは、[コンテンツの種類](../logic-apps/logic-apps-content-type.md)に関する記事をご覧ください。
@@ -234,13 +238,13 @@ HTTP エンドポイントを作成したら、完全な URL への `POST` メ�
 
 ### <a name="construct-the-response"></a>応答を作成する
 
-応答本文には、複数のヘッダーと任意の種類のコンテンツを含めることができます。 この応答の例では、ヘッダーで、応答のコンテンツの種類に `application/json` を指定しています。 本文には、**要求**トリガー用に前もって更新した JSON スキーマに基づいて、`title` と `name` が含まれます。
+応答本文には、複数のヘッダーと任意の種類のコンテンツを含めることができます。 この応答の例では、ヘッダーで、応答のコンテンツの種類として `application/json` を指定しています。 本文には、**要求**トリガー用に前もって更新した JSON スキーマに基づいて、`title` と `name` が含まれます。
 
 ![HTTP 応答アクション][3]
 
 応答には、次のプロパティがあります。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | StatusCode |受信要求に応答するための HTTP 状態コードを指定します。 2xx、4xx、または 5xx で始まる任意の有効な状態コードを使用できます。 ただし、3xx 状態コードは指定できません。 |
 | headers |応答に含める任意の数のヘッダーを定義します。 |
@@ -309,7 +313,7 @@ A: 変更内容を以下にまとめました。
 
 [Azure Logic Apps ユーザー フィードバック サイト](http://aka.ms/logicapps-wish)でアイデアへの投票やアイデアの投稿を行って、Azure Logic Apps とコネクタの改善にご協力ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ロジック アプリの定義を作成する](./logic-apps-author-definitions.md)
 * [エラーと例外を処理する](./logic-apps-exception-handling.md)

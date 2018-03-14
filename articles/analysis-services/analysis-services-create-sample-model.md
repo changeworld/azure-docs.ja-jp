@@ -1,6 +1,6 @@
 ---
-title: "Azure Analysis Services サーバーのサンプル表形式モデルを作成する | Microsoft Docs"
-description: "Azure Analysis Services でサンプル モデルを作成する方法を説明します。"
+title: "Azure Analysis Services サーバーのサンプル表形式モデルを追加する | Microsoft Docs"
+description: "Azure Analysis Services でサンプル モデルを追加する方法を説明します。"
 services: analysis-services
 documentationcenter: 
 author: minewiskan
@@ -13,17 +13,17 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/27/2018
+ms.date: 02/28/2018
 ms.author: owend
-ms.openlocfilehash: 1cc36ebf4c410d4764eb28ab89d7f2a5e7749ae5
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: df83f5dd86d1edf857378ae69b16a86b57f9a2fe
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="tutorial-create-a-sample-model"></a>チュートリアル: サンプル モデルを作成する
+# <a name="tutorial-add-a-sample-model"></a>チュートリアル: サンプル モデルを追加する
 
-このチュートリアルでは、Adventure Works のサンプル モデルを作成します。 このサンプル モデルは、Adventure Works Internet Sales (1200) データ モデリング チュートリアルの完成版です。 サンプル モデルは、モデル管理のテスト、ツールおよびクライアント アプリケーションとの接続、モデル データのクエリなどに便利です。
+このチュートリアルでは、Adventure Works のサンプル モデルをサーバーに追加します。 このサンプル モデルは、Adventure Works Internet Sales (1200) データ モデリング チュートリアルの完成版です。 サンプル モデルは、モデル管理のテスト、ツールおよびクライアント アプリケーションとの接続、モデル データのクエリなどに便利です。
 
 ## <a name="before-you-begin"></a>開始する前に
 

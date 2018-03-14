@@ -2,7 +2,7 @@
 title: "制限と構成 - Azure Logic Apps | Microsoft Docs"
 description: "Azure Logic Apps のサービスの制限と構成値"
 services: logic-apps
-documentationcenter: .net,nodejs,java
+documentationcenter: 
 author: jeffhollan
 manager: anneta
 editor: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 5c4597ede16f01c36e147dc0d70acf4b4f5635e8
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 54a35607e107a09188373cc5f71bb3068b4c6bab
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps の制限と構成
 
@@ -28,13 +28,13 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="http-request-limits"></a>HTTP 要求の制限
 
-これらの制限は、1 回の HTTP 要求またはコネクタ呼び出しに適用されます。
+1 つの HTTP 要求またはコネクタ呼び出しの制限を次に示します。
 
 #### <a name="timeout"></a>タイムアウト
 
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
-| 要求タイムアウト | 120 秒 | 必要に応じて[非同期パターン](../logic-apps/logic-apps-create-api-app.md)または[ until ループ](logic-apps-loops-and-scopes.md)で対応できます。 |
+| 要求タイムアウト | 120 秒 | 必要に応じて[非同期パターン](../logic-apps/logic-apps-create-api-app.md)または[ until ループ](logic-apps-control-flow-loops.md)で対応できます。 | 
 |||| 
 
 #### <a name="message-size"></a>メッセージ サイズ
@@ -56,28 +56,21 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="run-duration-and-retention"></a>実行継続時間とリテンション期間
 
-これらの制限は、ロジック アプリの 1 回の実行に適用されます。
+ロジック アプリの 1 回の実行の制限を次に示します。
 
-| Name | 既定値 | 制限 |
-| ---- | ------- | ----- |
-| 時間継続時間   | 90 日間 | 7 ～ 90 日間 |
-| ストレージのリテンション期間 | 実行の開始時刻から 90 日間 |  実行の開始時刻から 7 ～ 90 日間 |
-||||
+| Name | 制限 | 
+| ---- | ----- | 
+| 時間継続時間 | 90 日間 | 
+| ストレージのリテンション期間 | 実行の開始時刻から 90 日間 | 
+| 最小の繰り返し間隔 | 1 秒 </br>App Service プランを持つロジック アプリの場合: 15 秒 | 
+| 最大の繰り返し間隔 | 500 日 | 
+||| 
 
-通常の処理フローで実行継続期間またはストレージ リテンション期間の制限を超える場合の要件の詳細については、[製品チームにお問い合わせ](mailto://logicappsemail@microsoft.com)ください。
-
-
-### <a name="recurrence-interval"></a>繰り返し間隔
-
-| Name | 制限 |
-| ---- | ------- |
-| 最小の繰り返し間隔 | 1 秒 </br>App Service プランを持つロジック アプリの場合: 15 秒 |
-| 最大の繰り返し間隔 | 500 日 |
-|||
+通常の処理フローで実行継続時間またはストレージ リテンション期間の制限を超えるには、要件の詳細について [Logic Apps チームにお問い合わせください](mailto://logicappsemail@microsoft.com)。
 
 ### <a name="looping-and-debatching-limits"></a>ループと分割処理の制限
 
-これらの制限は、ロジック アプリの 1 回の実行に適用されます。
+ロジック アプリの 1 回の実行の制限を次に示します。
 
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
@@ -89,22 +82,22 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="throughput-limits"></a>スループットの制限
 
-これらの制限は、ロジック アプリの 1 つのリソースに適用されます。
+1 つのロジック アプリ インスタンスの制限を次に示します。
 
 | Name | 制限 | メモ | 
 | ----- | ----- | ----- | 
-| 5 分間のアクション実行数 | 100,000 |<p>`High Througput` モードでロジック アプリを実行することで、制限値を 300,000 に増やすことができます。 高スループット モードは、ワークフロー リソースの `runtimeConfiguration` にある `operationOptions` プロパティを `OptimizedForHighThroughput` に設定することで構成できます。 <p>高スループット モードはプレビュー段階であることに注意してください。 必要に応じて複数のアプリにワークロードを分散することもできます。 | 
+| 5 分間のアクション実行数 | 100,000 | 制限を 300,000 に増やすには、`High Througput` モードでロジック アプリを実行します。 高スループット モードを構成するには、ワークフロー リソースの `runtimeConfiguration` で、`operationOptions` プロパティを `OptimizedForHighThroughput` に設定します。 <p>**注**: 高スループット モードはプレビュー段階です。 また、必要に応じて複数のアプリにワークロードを分散することができます。 | 
 | 同時発信呼び出しアクション数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮します。 | 
 | ランタイム エンドポイント: 同時受信呼び出し数 |～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮します。 | 
 | ランタイム エンドポイント: 5 分間の読み取り呼び出し数  | 60,000 | 必要に応じて複数のアプリにワークロードを分散することができます。 | 
 | ランタイム エンドポイント: 5 分間の起動呼び出し数| 45,000 |必要に応じて複数のアプリにワークロードを分散することができます。 | 
 |||| 
 
-通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行する場合の要件の詳細については、[製品チームにお問い合わせ](mailto://logicappsemail@microsoft.com)ください。
+通常の処理でこれらの制限を超えるか、これらの制限を超える可能性のある負荷テストを実行するには、要件について [Logic Apps チームにお問い合わせください](mailto://logicappsemail@microsoft.com)。
 
 ### <a name="logic-app-definition-limits"></a>ロジック アプリ定義の制限
 
-これらの制限は、ロジック アプリの 1 つの定義に適用されます。
+1 つのロジック アプリ定義の制限を次に示します。
 
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
@@ -136,7 +129,7 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="integration-account-limits"></a>統合アカウントの制限
 
-これらの制限は、統合アカウントに追加できる成果物に適用されます。
+統合アカウントに追加できる成果物の制限を次に示します。
 
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
@@ -155,7 +148,7 @@ ms.lasthandoff: 02/28/2018
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 
 | アグリーメント | 10 | | 
-| その他の成果物の種類 | 25 |成果物の種類には、パートナー、スキーマ、証明書、およびマップが含まれます。 各種類は、成果物の最大数まで指定することができます。 | 
+| その他の成果物の種類 | 25 | 成果物の種類には、パートナー、スキーマ、証明書、およびマップが含まれます。 各種類は、成果物の最大数まで指定することができます。 | 
 |||| 
 
 #### <a name="standard-pricing-tier"></a>Standard 価格レベル
@@ -167,7 +160,7 @@ ms.lasthandoff: 02/28/2018
 
 ### <a name="b2b-protocols-as2-x12-edifact-message-size"></a>B2B プロトコル (AS2、X12、EDIFACT) のメッセージのサイズ
 
-これらの制限は、B2B プロトコルに適用されます。
+B2B プロトコルに適用される制限を次に示します。
 
 | Name | 制限 | メモ | 
 | ---- | ----- | ----- | 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: 8f98fd7773acb960ae79e743663aceb216f217c4
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: ddbfb415f062396f022f0f58cb975f6e3a5f1807
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure Load Balancer Standard の概要 (プレビュー)
 
@@ -466,6 +466,7 @@ Load Balancer Basic SKU は、引き続き無料でご利用いただけます�
 - 可用性ゾーンのコンテキストでは、ゾーンのパブリック IP アドレスをゾーン間で移動することはできません。
 - [Azure Monitor アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)は、現時点ではサポートされていません。
 - ポータルでは、拡張されたプレビュー リージョンがまだサポートされていません。  回避策として、テンプレート、Azure CLI 2.0、PowerShell などのクライアント ツールを使用してください。
+- サブスクリプションの移動操作はサポートされていません。
 
 
 ## <a name="next-steps"></a>次の手順

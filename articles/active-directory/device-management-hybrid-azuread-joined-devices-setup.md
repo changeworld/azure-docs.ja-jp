@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 5eb53d13ed85093616f43b79b58d43ba62ffbd67
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
@@ -33,6 +33,8 @@ Azure Active Directory (Azure AD) のデバイス管理を使用して、ユー�
 環境内でハイブリッド Azure AD 参加済みデバイスの構成を開始する前に、サポートされるシナリオと制約を理解しておく必要があります。  
 
 [システム準備ツール (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)) を利用している場合は、必ず Azure AD にまだ登録されていない Windows のインストールからイメージを作成してください。
+
+Windows 10 Anniversary Update および Windows Server 2016 が実行されているすべてのドメイン参加済みデバイスは、以下の構成手順が完了したら、デバイスの再起動時またはユーザーのサインイン時に Azure AD に自動的に登録されます。 この自動登録の動作が優先されない場合、または制御されたロールアウトが必要な場合は、もう一方の構成手順に従う前に、以下の「デプロイとロールアウトの制御」セクションの手順に従って、自動ロールアウトを選択的に有効または無効にしてください。  
 
 説明を読みやすくするために、このトピックでは以下の用語を使用します。 
 
@@ -566,7 +568,8 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
    > [!NOTE]
    > このグループ ポリシー テンプレートは、以前のバージョンのグループ ポリシー管理コンソールから変更されています。 以前のバージョンのコンソールを使用している場合は、`Computer Configuration > Policies > Administrative Templates > Windows Components > Workplace Join > Automatically workplace join client computers` の順に移動します。 
 
-7. **[有効]** を選択し、**[適用]** をクリックします。
+7. **[有効]** を選択し、**[適用]** をクリックします。 ポリシーを使用して、このグループ ポリシーで制御されているデバイスが Azure AD に自動的に登録されないようにするには、**[無効]** を選択する必要があります。
+
 8. Click **OK**.
 9. グループ ポリシー オブジェクトを選択した場所にリンクします。 たとえば、特定の組織単位に関連付けることができます。 また、Azure AD に自動的に参加するコンピューターの特定のセキュリティ グループに関連付けることもできます。 組織内のすべてのドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターに対してこのポリシーを設定するには、このグループ ポリシー オブジェクトをドメインに関連付けてください。
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 02/28/2018
 ms.author: mimig
-ms.openlocfilehash: b63c778f02b88bea4d68206f441aef7b32172c24
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d263c4f5ad14f6692a7c8f6e66429b439a52a84a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
 Azure Cosmos DB の [要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が新たに公開されました。 詳細については、「 [スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照してください。
@@ -92,6 +92,10 @@ await client.ReplaceOfferAsync(offer);
 ```
 
 スループットを変更しても、コンテナーの可用性には影響しません。 通常、新しく予約されたスループットは、数秒後にアプリケーションで有効になります。
+
+## <a name="throughput-isolation-in-globally-distributed-databases"></a>グローバルな分散型データベースのスループット分離
+
+データベースを複数のリージョンにレプリケートした場合、Azure Cosmos DB はスループット分離を提供することで、あるリージョンの RU の使用が、別のリージョンの RU の使用状況に影響を及ぼさないようにします。 たとえば、あるリージョンにデータを書き込み、別のリージョンからデータを読み取る場合、リージョン A の書き込み操作の実行に使用された RU によって、リージョン B の読み取り操作に使用された RU の機能が低下することはありません。RU は、デプロイした複数のリージョンの枠を越えては分割されません。 データベースがレプリケートされた各リージョンには、RU の全容量がプロビジョニングされます。 グローバル レプリケーションの詳細については、「[Azure Cosmos DB を使用してデータをグローバルに分散させる方法](distribute-data-globally.md)」をご覧ください。
 
 ## <a name="request-unit-considerations"></a>要求ユニットの考慮事項
 Azure Cosmos DB コンテナー用に予約する要求ユニット数を推定する際は、以下の変数についても検討することが重要です。
@@ -209,7 +213,7 @@ Azure Cosmos DB サービスからの各応答には、要求で使用される�
 6. 予想される 1 秒あたりの操作実行数の推定値に基づいて、必要な要求ユニットを計算します。
 
 ## <a id="GetLastRequestStatistics"></a> MongoDB 用 API の GetLastRequestStatistics コマンドを使用する
-MongoDB 用 API は、指定した操作の要求の使用量を取得するためのカスタム コマンド*getLastRequestStatistics* をサポートしています。
+MongoDB API は、指定した操作の要求の使用量を取得するためのカスタム コマンド *getLastRequestStatistics* をサポートしています。
 
 たとえば、Mongo シェルで、要求の使用量を確認する操作を実行します。
 ```
@@ -235,10 +239,10 @@ MongoDB 用 API は、指定した操作の要求の使用量を取得するた�
 > 
 > 
 
-## <a name="use-api-for-mongodbs-portal-metrics"></a>MongoDB 用 API のポータルのメトリックを使用する
-MongoDB データベース用 API の要求ユニットの適切な推定使用量を取得する簡単な方法は、[Azure Portal](https://portal.azure.com) のメトリックを使用することです。 "*要求数*" のグラフと "*要求の使用量*" のグラフから、各操作が使用している要求単位の数と、互いに使用する要求単位の数を推定できます。
+## <a name="use-mongodb-api-portal-metrics"></a>MongoDB API ポータルのメトリックの使用
+MongoDB API データベースの要求ユニットの適切な推定使用量を取得する簡単な方法は、[Azure Portal](https://portal.azure.com) のメトリックを使用することです。 "*要求数*" のグラフと "*要求の使用量*" のグラフから、各操作が使用している要求単位の数と、互いに使用する要求単位の数を推定できます。
 
-![MongoDB 用 API のポータルのメトリック][6]
+![MongoDB API ポータルのメトリック][6]
 
 ## <a name="a-request-unit-estimation-example"></a>要求ユニット推定の例
 次の 1 KB 未満のドキュメントについて考えてみましょう。
@@ -343,8 +347,8 @@ MongoDB データベース用 API の要求ユニットの適切な推定使用�
 
 複数のクライアントが上述の要求レートで累積的に操作を実行している場合は、既定の再試行動作では十分な結果が得られず、クライアントは状態コード 429 で DocumentClientException をアプリケーションにスローします。 こうした場合は、再試行動作とアプリケーションのエラー処理ルーチンのロジックを制御するか、対象コンテナーの予約済みスループットを増やすことを検討します。
 
-## <a id="RequestRateTooLargeAPIforMongoDB"></a> MongoDB 用 API での予約されたスループット上限の超過
-コレクションに対してプロビジョニングされた要求単位を超過したアプリケーションは、そのレートが予約されたレベルを下回るまで調整されます。 調整が発生すると、バックエンドは、エラー コード *16500* ("*要求が多すぎます*") で機先を制して要求を終了します。 既定では、MongoDB 用 API は、"*要求が多すぎる*" ことを示すエラー コードを返す前に、最大 10 回の再試行を自動的に実行します。 "*要求が多すぎる*" ことを示すエラー コードが多数発生する場合は、アプリケーションのエラー処理ルーチンに再試行動作を追加するか、[コレクションの予約済みスループットを増やす](set-throughput.md)ことを検討することができます。
+## <a id="RequestRateTooLargeAPIforMongoDB"></a> MongoDB API での予約されたスループット上限の超過
+コレクションに対してプロビジョニングされた要求単位を超過したアプリケーションは、そのレートが予約されたレベルを下回るまで調整されます。 調整が発生すると、バックエンドは、エラー コード *16500* ("*要求が多すぎます*") で機先を制して要求を終了します。 既定では、MongoDB API は、"*要求が多すぎる*" ことを示すエラー コードを返す前に、最大 10 回の再試行を自動的に実行します。 "*要求が多すぎる*" ことを示すエラー コードが多数発生する場合は、アプリケーションのエラー処理ルーチンに再試行動作を追加するか、[コレクションの予約済みスループットを増やす](set-throughput.md)ことを検討することができます。
 
 ## <a name="next-steps"></a>次の手順
 Azure Cosmos DB データベースの予約済みスループットの詳細については、以下のリソースを参照してください。

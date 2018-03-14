@@ -1,7 +1,7 @@
 ---
-title: "JSON でワークフローを定義する - Azure Logic Apps | Microsoft Docs"
-description: "JSON でロジック アプリのワークフロー定義を記述する方法"
-author: jeffhollan
+title: "JSON を使用したロジック アプリ定義の編集 - Azure Logic Apps | Microsoft Docs"
+description: "パラメーターの追加、文字列の処理、パラメーターのマップの作成、日付関数を使用したデータの取得を行います。"
+author: ecfan
 manager: anneta
 editor: 
 services: logic-apps
@@ -13,197 +13,202 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.custom: H1Hack27Feb2017
-ms.date: 03/29/2017
-ms.author: LADocs; jehollan
-ms.openlocfilehash: 7dde5bc4733af1aba34199f332379d2faf566725
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.date: 01/31/2018
+ms.author: LADocs; estfan
+ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/05/2018
 ---
-# <a name="create-workflow-definitions-for-logic-apps-using-json"></a>JSON を使用してロジック アプリのワークフロー定義を作成する
+# <a name="build-on-your-logic-app-definition-with-json"></a>JSON を使用したロジック アプリ定義の編集
 
-単純な宣言型の JSON 言語を使用して、[Azure Logic Apps](logic-apps-overview.md) のワークフロー定義を作成できます。 まだ作成したことがない場合は、最初に、[ロジック アプリ デザイナーで初めてのロジック アプリを作成する方法](quickstart-create-first-logic-app-workflow.md)に関する記事を確認してください。 また、[ワークフロー定義言語の詳細](http://aka.ms/logicappsdocs)に関する記事も参照してください。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) でより高度なタスクを実行するには、コード ビューで単純な宣言型の JSON 言語を使用してロジック アプリ定義を編集します。 ロジック アプリをまだ作成していない場合は、最初に、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を確認してください。 また、[ワークフロー定義言語の詳細](http://aka.ms/logicappsdocs)に関する記事も参照してください。
 
-## <a name="repeat-steps-over-a-list"></a>リストに対してステップを繰り返す
+> [!NOTE]
+> パラメーターなど、Azure Logic Apps の一部の機能は、ロジック アプリの定義についてコード ビューで作業する場合にのみ使用できます。 パラメーターを使用すると、ロジック アプリ全体にわたって値を再利用できます。 たとえば、複数のアクションで同じ電子メール アドレスを使用する場合は、その電子メール アドレスをパラメーターとして定義します。
 
-最大 10,000 個の項目を含む配列に対して反復処理を行い、各項目に対してアクションを実行するには、[foreach タイプ](logic-apps-loops-and-scopes.md)を使用します。
+## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>ロジック アプリ定義を JSON で表示して編集する
 
-## <a name="handle-failures-if-something-goes-wrong"></a>問題が発生した場合にエラーを処理する
+1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。
 
-一般的には、"*修復ステップ*" を含めます。これは、1 つ以上の呼び出しが失敗した "*場合に限り*" 実行されるいくつかのロジックです。 この例では、さまざまな場所からデータを取得しますが、呼び出しに失敗した場合は、後でそのエラーを追跡できるように、どこかにメッセージを POST する必要があります。  
+2. 左側のメニューの **[その他のサービス]** を選択します。 **[Enterprise Integration]** の **[Logic Apps]** を選択します。 自分のロジック アプリを選択します。
 
+3. ロジック アプリ メニューで、**[開発ツール]** の **[ロジック アプリ コード ビュー]** を選択します。
+
+   コード ビュー ウィンドウが開き、ロジック アプリ定義が表示されます。
+
+## <a name="parameters"></a>parameters
+
+パラメーターを使用すると、ロジック アプリ全体にわたって値を再利用できるので、頻繁に変更する可能性のある値の置き換えに適しています。 たとえば、複数の場所で使用する電子メール アドレスがある場合、その電子メール アドレスをパラメーターとして定義します。 
+
+パラメーターは、さまざまな環境でパラメーターをオーバーライドする必要がある場合にも役立ちます。[デプロイのパラメーター](#deployment-parameters)の詳細と、[Azure Logic Apps 用 REST API のドキュメント](https://docs.microsoft.com/rest/api/logic)をご覧ください。
+
+> [!NOTE]
+> パラメーターはコード ビューでのみ使用できます。
+
+[最初のロジック アプリの例](../logic-apps/quickstart-create-first-logic-app-workflow.md)では、Web サイトの RSS フィードに 新しい投稿が表示されたときに電子メールを送信するワークフローを作成しました。 フィードの URL はハードコードされているので、この例では、フィードの URL をより簡単に変更できるように、クエリ値をパラメーターに置き換える方法を説明します。
+
+1. コード ビューで、`parameters : {}` オブジェクトを見つけて、`currentFeedUrl` オブジェクトを追加します。
+
+   ``` json
+     "currentFeedUrl" : {
+      "type" : "string",
+            "defaultValue" : "http://rss.cnn.com/rss/cnn_topstories.rss"
+   }
+   ```
+
+2. `When_a_feed-item_is_published` アクションで、`queries` セクションを見つけて、クエリ値を `"feedUrl": "#@{parameters('currentFeedUrl')}"` に置き換えます。 
+
+   **変更前**
+   ``` json
+   }
+      "queries": {
+          "feedUrl": "https://s.ch9.ms/Feeds/RSS"
+       }
+   },   
+   ```
+
+   **変更後**
+   ``` json
+   }
+      "queries": {
+          "feedUrl": "#@{parameters('currentFeedUrl')}"
+       }
+   },   
+   ```
+
+   2 つ以上の文字列を結合する場合、`concat` 関数を使用することもできます。 
+   たとえば、`"@concat('#',parameters('currentFeedUrl'))"` は上記の例と同様に動作します。
+
+3.  完了したら、**[保存]** を選択します。 
+
+これで、`currentFeedURL` オブジェクトから別の URL を渡すことで、Web サイトの RSS フィードを変更できるようになりました。
+
+<a name="deployment-parameters"></a>
+
+## <a name="deployment-parameters-for-different-environments"></a>さまざまな環境のデプロイ パラメーター
+
+通常、デプロイのライフサイクルには、開発、ステージング、運用の各環境があります。 たとえば、これらのすべての環境で同じロジック アプリ定義を使用する一方で、異なるデータベースをご利用いただけます。 同様に、高可用性を確保するためにさまざまなリージョンで同じ定義を使用し、各ロジック アプリ インスタンスではそのリージョンのデータベースを使用することもできます。 
+
+> [!NOTE] 
+> このシナリオは、`trigger()` 関数を使用する必要があるため、"*実行時*" にパラメーターを受け取る方法とは異なります。
+
+基本的な定義を次に示します。
+
+``` json
+{
+    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "uri": {
+            "type": "string"
+        }
+    },
+    "triggers": {
+        "request": {
+          "type": "request",
+          "kind": "http"
+        }
+    },
+    "actions": {
+        "readData": {
+            "type": "Http",
+            "inputs": {
+                "method": "GET",
+                "uri": "@parameters('uri')"
+            }
+        }
+    },
+    "outputs": {}
+}
 ```
+ロジック アプリの実際の `PUT` 要求で、`uri` パラメーターを指定できます。 それぞれの環境で、`connection` パラメーターに異なる値を指定できます。 既定値は存在しないため、ロジック アプリのペイロードではこのパラメーターが必要です。
+
+``` json
+{
+    "properties": {},
+        "definition": {
+          /// Use the definition from above here
+        },
+        "parameters": {
+            "connection": {
+                "value": "https://my.connection.that.is.per.enviornment"
+            }
+        }
+    },
+    "location": "westus"
+}
+``` 
+
+詳細については、[Azure Logic Apps 用 REST API のドキュメント](https://docs.microsoft.com/rest/api/logic/)をご覧ください。
+
+## <a name="process-strings-with-functions"></a>関数を使用して文字列を処理する
+
+Logic Apps には、文字列を操作するためのさまざまな関数があります。 たとえば、注文の会社名を別のシステムに渡すとします。 しかし、文字エンコードの適切な処理がわかりません。 この場合、この文字列の Base64 エンコードを実行できますが、URL のエスケープを回避するために、いくつかの文字を置き換えることができます。 また、最初の 5 文字は使用されないため、会社名の部分文字列のみが必要です。 
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
-  "parameters": {},
+  "parameters": {
+    "order": {
+      "defaultValue": {
+        "quantity": 10,
+        "id": "myorder1",
+        "companyName": "NAME=Contoso"
+      },
+      "type": "Object"
+    }
+  },
   "triggers": {
-    "Request": {
-      "type": "request",
-      "kind": "http"
-    }
-  },
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      }
-    },
-    "postToErrorMessageQueue": {
-      "type": "ApiConnection",
-      "inputs": "...",
-      "runAfter": {
-        "readData": [
-          "Failed"
-        ]
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-`readData` が `Failed` になった後のみに `postToErrorMessageQueue` が実行されるよう指定するには、`runAfter` プロパティを使用します。たとえば、指定できる値のリストを指定するには、`runAfter` は `["Succeeded", "Failed"]` になります。
-
-最後に、この例ではエラーが処理されるため、実行は `Failed` としてマークされなくなります。 この例ではこのエラーを処理するステップを追加したため、1 つのステップは `Failed` となりましたが、実行は `Succeeded` となっています。
-
-## <a name="execute-two-or-more-steps-in-parallel"></a>複数のステップを並列実行する
-
-複数のアクションを並列実行するには、その `runAfter` プロパティが実行時に統一されている必要があります。 
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {},
-  "triggers": {
-    "Request": {
-      "kind": "http",
-      "type": "Request"
-    }
-  },
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      }
-    },
-    "branch1": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "branch2": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-この例では、`branch1` と `branch2` の両方が `readData` の後で実行されるように設定されています。 その結果、この 2 つの分岐は並列実行されます。 両方の分岐のタイムスタンプが一致します。
-
-![並列](media/logic-apps-author-definitions/parallel.png)
-
-## <a name="join-two-parallel-branches"></a>2 つの並列分岐の結合
-
-並列実行するように設定された 2 つのアクションは、前の例のように、`runAfter` プロパティに項目を追加することで結合できます。
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-04-01-preview/workflowdefinition.json#",
-  "actions": {
-    "readData": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {}
-    },
-    "branch1": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "branch2": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "readData": [
-          "Succeeded"
-        ]
-      }
-    },
-    "join": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://myurl"
-      },
-      "runAfter": {
-        "branch1": [
-          "Succeeded"
-        ],
-        "branch2": [
-          "Succeeded"
-        ]
-      }
-    }
-  },
-  "parameters": {},
-  "triggers": {
-    "Request": {
+    "request": {
       "type": "Request",
-      "kind": "Http",
+      "kind": "Http"
+    }
+  },
+  "actions": {
+    "order": {
+      "type": "Http",
       "inputs": {
-        "schema": {}
+        "method": "GET",
+        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
       }
     }
   },
-  "contentVersion": "1.0.0.0",
   "outputs": {}
 }
 ```
 
-![並列](media/logic-apps-author-definitions/join.png)
+次の手順は、この例でこの文字列がどのように処理されるのかを示しています。内側から外側に向かって処理が行われます。
 
-## <a name="map-list-items-to-a-different-configuration"></a>リスト項目を別の構成にマップする
-
-次に、プロパティの値に基づいて異なるコンテンツを取得する必要があるとします。 取得先に対する値のマップをパラメーターとして作成できます。  
-
+``` 
+"uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').companyName,5,sub(length(parameters('order').companyName), 5) )),'+','-') ,'/' ,'_' )}"
 ```
+
+1. 会社名の [`length()`](../logic-apps/logic-apps-workflow-definition-language.md) を取得します。これにより、文字数の合計を取得します。
+
+2. 取得する文字列を短くするために、`5` を減算します。
+
+3. [`substring()`](../logic-apps/logic-apps-workflow-definition-language.md) を取得します。 インデックス `5` から開始し、文字列の残りの部分に移動します。
+
+4. この部分文字列を [`base64()`](../logic-apps/logic-apps-workflow-definition-language.md) 文字列に変換します。
+
+5. 次に、[`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) で、すべての `+` 文字を `-` 文字に置き換えます。
+
+6. 最後に、[`replace()`](../logic-apps/logic-apps-workflow-definition-language.md) で、すべての `/` 文字を `_` 文字に置き換えます。
+
+## <a name="map-list-items-to-property-values-then-use-maps-as-parameters"></a>リスト項目をプロパティ値にマップし、マップをパラメーターとして使用する
+
+プロパティの値に基づいて異なる結果を取得するには、各プロパティ値を結果に対応付けるマップを作成し、そのマップをパラメーターとして使用します。 
+
+たとえば、このワークフローでは、いくつかのカテゴリをパラメーターとして定義し、それらのカテゴリを特定の URL に対応付けるマップを定義します。 ワークフローでは、まず、記事のリストを取得します。 次に、マップを使用して、各記事のカテゴリに一致する URL を検索します。
+
+*   [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) 関数は、そのカテゴリが定義済みの既知のカテゴリと一致するかどうかを確認します。
+
+*   一致するカテゴリを取得したら、`parameters[...]` のように角かっこを使用して、マップから項目を取り出します。
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
@@ -271,21 +276,29 @@ ms.lasthandoff: 01/19/2018
 }
 ```
 
-この場合、最初に記事のリストを取得します。 2 番目のステップでは、パラメーターとして定義されたカテゴリに基づき、マップを使用して、コンテンツの取得元である URL を検索します。
+## <a name="get-data-with-date-functions"></a>日付関数を使用してデータを取得する
 
-ここでは、次のことに注意してください。 
+"*トリガー*" をネイティブにサポートしていないデータ ソースからデータを取得するには、代わりに日付関数を使用して日付と時刻を処理します。 たとえば、次の式では、このワークフローのステップの所要時間を確認します。内側から外側に向かって処理が行われます。
 
-*   [`intersection()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#intersection) 関数は、定義済みの既知のカテゴリのいずれかとそのカテゴリが一致するかどうかを確認します。
-
-*   カテゴリを取得したら、`parameters[...]` のように、角かっこを使用してマップの項目を取り出すことができます。
-
-## <a name="process-strings"></a>文字列を処理する
-
-文字列の操作には、さまざまな関数を使用できます。 たとえば、システムに渡す必要がある文字列があっても、文字エンコードが正しく処理されるかどうかについて確信を持てない場合があるとします。 1 つのオプションとして、この文字列に Base64 エンコードを使用します。 ただし、URL 内のエスケープを回避するために、いくつかの文字を置き換えます。 
-
-また、最初の 5 文字は使用されないため、注文の名前の部分文字列も必要になります。
-
+``` json
+"expression": "@less(actions('order').startTime,addseconds(utcNow(),-1))",
 ```
+
+1. `order` アクションから `startTime` を抽出します。 
+2. `utcNow()` を使用して現在の時刻を取得します。
+3. 1 秒減算します。
+
+   [`addseconds(..., -1)`](../logic-apps/logic-apps-workflow-definition-language.md) 
+
+   このとき、`minutes` や `hours` のような他の時間単位も使用できます。 
+
+3. これで、この 2 つの値を比較できます。 
+
+   最初の値が 2 番目の値より小さい場合、最初に注文が実行されてから 2 秒以上経過しています。
+
+日付を書式設定するには、文字列フォーマッタを使用します。 たとえば、RFC1123 を取得するには、[`utcnow('r')`](../logic-apps/logic-apps-workflow-definition-language.md) を使用します。 日付の書式設定の詳細については、[こちら](../logic-apps/logic-apps-workflow-definition-language.md)をご覧ください。
+
+``` json
 {
   "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
   "contentVersion": "1.0.0.0",
@@ -293,58 +306,7 @@ ms.lasthandoff: 01/19/2018
     "order": {
       "defaultValue": {
         "quantity": 10,
-        "id": "myorder1",
-        "orderer": "NAME=Contoso"
-      },
-      "type": "Object"
-    }
-  },
-  "triggers": {
-    "request": {
-      "type": "request",
-      "kind": "http"
-    }
-  },
-  "actions": {
-    "order": {
-      "type": "Http",
-      "inputs": {
-        "method": "GET",
-        "uri": "http://www.example.com/?id=@{replace(replace(base64(substring(parameters('order').orderer,5,sub(length(parameters('order').orderer), 5) )),'+','-') ,'/' ,'_' )}"
-      }
-    }
-  },
-  "outputs": {}
-}
-```
-
-次のように、内側から外側に向かって処理が行われます。
-
-1. 注文者の名前の [`length()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#length) を取得します。これにより、文字数の合計が返されます。
-
-2. 文字列を短くする必要があるため、5 を引きます。
-
-3. 実際には [`substring()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#substring) を使用します。 ここでは、インデックス `5` から開始し、文字列の残りの部分を取得します。
-
-4. この部分文字列を [`base64()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#base64) 文字列に変換します。
-
-5. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) で、すべての `+` 文字を `-` 文字に置き換えます。
-
-6. [`replace()`](https://msdn.microsoft.com/library/azure/mt643789.aspx#replace) で、すべての `/` 文字を `_` 文字に置き換えます。
-
-## <a name="work-with-date-times"></a>日付と時刻を処理する
-
-日付と時刻は、特に、"*トリガー*" を本来サポートしていないデータ ソースからデータを取り出すときに、役立つ場合があります。 また、日付と時刻を使用すると、さまざまなステップにかかる時間を確認することもできます。
-
-```
-{
-  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-  "contentVersion": "1.0.0.0",
-  "parameters": {
-    "order": {
-      "defaultValue": {
-        "quantity": 10,
-        "id": "myorder1"
+        "id": "myorder-id"
       },
       "type": "Object"
     }
@@ -386,67 +348,13 @@ ms.lasthandoff: 01/19/2018
 }
 ```
 
-この例では、前のステップから `startTime` を抽出しています。 その後、現在の時刻を取得し、1 秒引いています。
 
-[`addseconds(..., -1)`](https://msdn.microsoft.com/library/azure/mt643789.aspx#addseconds) 
+## <a name="next-steps"></a>次の手順
 
-このとき、`minutes` や `hours` のような他の時間単位も使用できます。 最後に、この 2 つの値を比較できます。 最初の値が 2 番目の値より小さい場合、最初に注文が実行されてから 2 秒以上経過しています。
-
-日付の書式を設定するには、文字列フォーマッタを使用できます。 たとえば、RFC1123 を取得するには、[`utcnow('r')`](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow) を使用します。 日付の書式設定については、「[Workflow Definition Language (ワークフロー定義言語)](https://msdn.microsoft.com/library/azure/mt643789.aspx#utcnow)」を参照してください。
-
-## <a name="deployment-parameters-for-different-environments"></a>さまざまな環境のデプロイ パラメーター
-
-一般に、デプロイのライフサイクルには、開発環境、ステージング環境、運用環境があります。 たとえば、これらすべての環境で同じ定義を使用する一方で、異なるデータベースを使用する場合があります。 同様に、高可用性を確保するためにさまざまなリージョン間で同じ定義を使用する一方で、各ロジック アプリのインスタンスではそのリージョンのデータベースと通信することが必要な場合もあります。
-このシナリオは、前の例で説明したように `trigger()` 関数を使用する必要があるため、"*実行時*" にパラメーターを受け取る方法とは違います。
-
-次の例のように、基本的な定義から始めることができます。
-
-```
-{
-    "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "uri": {
-            "type": "string"
-        }
-    },
-    "triggers": {
-        "request": {
-          "type": "request",
-          "kind": "http"
-        }
-    },
-    "actions": {
-        "readData": {
-            "type": "Http",
-            "inputs": {
-                "method": "GET",
-                "uri": "@parameters('uri')"
-            }
-        }
-    },
-    "outputs": {}
-}
-```
-
-ロジック アプリの実際の `PUT` 要求で、`uri` パラメーターを指定できます。 既定値は存在しないため、ロジック アプリのペイロードではこのパラメーターが必要です。
-
-```
-{
-    "properties": {},
-        "definition": {
-          // Use the definition from above here
-        },
-        "parameters": {
-            "connection": {
-                "value": "https://my.connection.that.is.per.enviornment"
-            }
-        }
-    },
-    "location": "westus"
-}
-``` 
-
-それぞれの環境で、`connection` パラメーターに異なる値を指定できます。 
-
-ロジック アプリの作成と管理用に用意されているすべてのオプションについては、[REST API のドキュメント](https://msdn.microsoft.com/library/azure/mt643787.aspx)を参照してください。 
+* [条件に基づいてステップを実行する (条件付きステートメント)](../logic-apps/logic-apps-control-flow-conditional-statement.md)
+* [さまざまな値に基づいてステップを実行する (switch ステートメント)](../logic-apps/logic-apps-control-flow-switch-statement.md)
+* [ステップを実行して繰り返す (ループ)](../logic-apps/logic-apps-control-flow-loops.md)
+* [並列ステップを実行または結合する (分岐)](../logic-apps/logic-apps-control-flow-branches.md)
+* [グループ化されたアクションの状態に基づいてステップを実行する (スコープ)](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)
+* [Azure Logic Apps のワークフロー定義言語スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)の詳細を確認する
+* [Azure Logic Apps のワークフローのアクションとトリガー](../logic-apps/logic-apps-workflow-actions-triggers.md)の詳細を確認する
