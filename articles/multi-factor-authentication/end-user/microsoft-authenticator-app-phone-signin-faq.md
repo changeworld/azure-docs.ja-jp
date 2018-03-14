@@ -16,10 +16,10 @@ ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.openlocfilehash: 86cf6ba2f2ec86a609b4ec60cc143b07d9e542b3
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>パスワードではなく携帯電話でサインインする
 
@@ -87,7 +87,7 @@ PC の場合は、Windows 10 で顔、指紋、または PIN を使って Window
 ### <a name="can-i-sign-in-with-my-windows-phone"></a>Windows Phone でサインインできますか。  
 現時点では、Windows Phone の Microsoft Authenticator 用のこの機能は開発されていません。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Microsoft Authenticator アプリをダウンロードしていない場合は、ダウンロードしてください。このアプリは [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で使用でき、携帯電話でのサインインは [Android](http://go.microsoft.com/fwlink/?Linkid=825072) および [iOS](http://go.microsoft.com/fwlink/?Linkid=825073) 用の Microsoft Authenticator アプリで使用できます。
 
 アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](microsoft-authenticator-app-faq.md)」をご覧ください。

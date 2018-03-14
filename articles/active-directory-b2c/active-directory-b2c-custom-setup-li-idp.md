@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -37,7 +37,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Lin
 
 2. **[新しいアプリケーションの作成]** ページで次の手順を実行します。
 
-    a. **会社名**を入力し、会社の説明的な**名前**と新しいアプリの**説明**を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **会社名**を入力し、会社の説明的な**名前**と新しいアプリの**説明**を入力します。
 
     b. **アプリケーションのロゴ**をアップロードします。
 
@@ -47,7 +47,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Lin
 
     e. **勤務先の電子メール** アドレスと**勤務先電話番号**を入力します。
 
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 ページ下部の使用条件を確認して同意し、**[送信]** を選択します。
+    f. ページ下部の使用条件を確認して同意し、**[送信]** を選択します。
 
     ![LinkedIn アカウント - アプリケーションのプロパティを構成する](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app2.png)
 

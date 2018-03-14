@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 12/26/2017
 ms.author: willzhan;juliako;johndeu
 ms.openlocfilehash: ed78d6c6d4c695b841dbfbf917cd1681adc44ee7
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-the-azure-media-services-api-with-rest"></a>REST で Azure AD 認証を使用して Azure Media Services API にアクセスする
 
@@ -57,7 +57,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 
 Media Services API にアクセスするには、以下のデータ ポイントを収集する必要があります。
 
-|設定|例|説明|
+|Setting|例|[説明]|
 |---|-------|-----|
 |Azure Active Directory テナント ドメイン|microsoft.onmicrosoft.com|セキュア トークン サービス (STS) エンドポイントとしての Azure AD は、https://login.microsoftonline.com/{your-aad-tenant-name.onmicrosoft.com}/oauth2/token という形式で作成されます。 Azure AD は、リソース (アクセス トークン) にアクセスするために JWT を発行します。|
 |REST API エンドポイント|https://amshelloworld.restv2.westus.media.azure.net/api/|これは、アプリケーションのすべての Media Services REST API 呼び出しの呼び出し先エンドポイントです。|

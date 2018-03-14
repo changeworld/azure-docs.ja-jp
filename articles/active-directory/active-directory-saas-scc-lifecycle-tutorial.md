@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>チュートリアル: Azure Active Directory と SCC LifeCycle の統合
 このチュートリアルでは、Azure と SCC LifeCycle の統合について説明します。  
