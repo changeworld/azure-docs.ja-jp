@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 34d9d207225327758d535a11c870019f3db31cb0
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Azure Stack の管理者ポータルの使用
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack には、管理者ポータルとユーザー ポータル (*テナント* ポータルとも呼ばれることもあります) の 2 つのポータルがあります。 Azure Stack オペレーターは、管理者ポータルを使用して Azure Stack の日常的な管理と操作を行うことができます。 
 
@@ -79,6 +79,6 @@ Azure Stack オペレーター向けドキュメントにアクセスするに�
 - 統合システムを使用している場合は、Microsoft カスタマー サポート サービス (CSS) のサポート チケットを直接開くことができるサイトが開きます。 Microsoft サポートと OEM (Original Equipment Manufacturer) ハードウェア ベンダーのサポートのどちらに連絡するかについては、「[Azure Stack の管理の基本](azure-stack-manage-basics.md)」の「サポートが受けられる場所」セクションをご覧ください。
 - 開発キットを使用している場合は、Azure Stack フォーラムのサイトが直接開きます。 これらのフォーラムは定期的にチェックされています。 開発キットは評価環境であるため、Microsoft CSS を通した正式なサポートは提供されていません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Stack でのリージョンの管理](azure-stack-region-management.md)

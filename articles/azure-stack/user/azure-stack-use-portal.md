@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 7c34d7a225be63da95f664525b0366ff89b28838
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="using-the-azure-stack-portal"></a>Azure Stack ポータルの使用
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Azure Stack サービスのコンシューマーは Azure Stack ポータルを使用して、パブリックのオファーをサブスクライブしたり、それらのオファーを介して公開されているサービスを使用したりできます。 以前に Azure ポータルを使用したことがある場合、ユーザー インターフェースには既に慣れています。
 
@@ -31,7 +31,7 @@ Azure Stack サービスのコンシューマーは Azure Stack ポータルを�
 Azure Stack オペレーター (サービス プロバイダーまたは組織内の管理者のどちらか) から、ポータルにアクセスするための正しい URL が通知されます。 
 
 - 統合システムの場合、URL はオペレーターの地域および外部ドメイン名によって異なり、https://portal.&lt;*region*&gt;.&lt;*FQDN*&gt; の形式になります。
-- Azure Stack 開発キットを使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
+- Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
 
 ![Azure Stack ユーザー ポータルのスクリーンショット](media/azure-stack-use-portal/UserPortal.png)
 
@@ -68,8 +68,8 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 
 追加のサポートが必要な場合は、所属組織またはサービス プロバイダーにお問い合わせください。 
 
-Azure Stack 開発キットを使用している場合、[Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)が唯一のサポート方法です。
+Azure Stack Development Kit を使用している場合、[Azure Stack フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)が唯一のサポート方法です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](azure-stack-considerations.md)

@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
 このガイドでは、Azure Toolkit for Eclipse 内で Azure の Access Control Service (ACS) を使用する方法について説明します。 ACS の詳細については、「 [次のステップ](#next_steps) 」を参照してください。
@@ -121,7 +121,7 @@ Azure で Access Control Service (ACS) の使用を開始するには、ACS 名�
    4. **[戻り先 URL]** で、ACS がセキュリティ トークンを返す URL を入力します。 このタスクでは、「**http://localhost:8080/MyACSHelloWorld/index.jsp**」と入力します。
       ![コンピューティング エミュレーターで使用する証明書利用者の戻り先 URL][relying_party_return_url_emulator]
    5. その他のフィールドは、既定値のままにします。
-4. **[Save]**をクリックします。
+4. **[Save]** をクリックします。
 
 これで、Azure コンピューティング エミュレーターで実行される Java Web アプリケーション (http://localhost:8080/) が ACS 名前空間の RP として正常に構成されました。 次に、ACS が RP のクレームを処理するために使用する規則を作成します。
 
@@ -208,7 +208,7 @@ ACS 管理ポータルの [アプリケーション統合] ページでは、Jav
 7. アプリケーションを実行するために、ブラウザーで <http://localhost:8080/MyACSHelloWorld/> を開きます (または **[Require HTTPS connections]** チェック ボックスをオンにした場合は、<https://localhost:8080/MyACSHelloWorld/> を開きます)。 Windows Live ID でログインするように求められます。その資格情報は指定した証明書利用者アプリケーションの戻り先 URL に送信されます。
 8. アプリケーションの表示が完了したら、 **[Reset Azure Emulator]** ボタンをクリックします。
 
-## <a name="deploy-to-azure"></a>Azure へのデプロイ
+## <a name="deploy-to-azure"></a>[Deploy to Azure (Azure へのデプロイ)]
 Azure にデプロイするには、ACS 名前空間の証明書利用者領域と戻り先 URL を変更する必要があります。
 
 1. Microsoft Azure 管理ポータルの **[証明書利用者アプリケーションの編集]** ページで、デプロイするサイトの URL になる**領域**を変更します。 **example** を、指定した展開の DNS 名に置き換えます。
@@ -257,7 +257,7 @@ ACS によってアプリケーションに返される SAML (Security Assertion
    4. **[Add Component]** ダイアログ ボックスは次のようになります。
       
        ![証明書コンポーネントの追加][add_cert_component]
-   5. **[OK]**をクリックします。
+   5. Click **OK**.
 
 これで、証明書はデプロイに追加されました。 WAR ファイルに証明書を埋め込むか、コンポーネントとしてデプロイに追加するかにかかわらず、「[ACS 名前空間への証明書のアップロード][Upload a certificate to your ACS namespace]」セクションで説明しているように、証明書を名前空間にアップロードする必要があることに注意してください。
 
