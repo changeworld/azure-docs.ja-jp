@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/11/2018
+ms.date: 03/01/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: 028a3f4411e6984b70e0f98c5cf3284e5be1c3b2
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.reviewer: calebb
+ms.openlocfilehash: c9712cf0cf20bbcfc089eb18896370f9e02eb571
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="location-conditions-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスの場所の条件 
 
@@ -120,9 +120,12 @@ Azure AD を使用すると、パブリック インターネットに接続で�
 
 条件付きアクセス ポリシーは、次のときに評価されます。 
 
-- ユーザーが最初にサインインするとき 
+- ユーザーが Web アプリ、モバイルまたはデスクトップ アプリケーションに最初にサインインするとき。 
 
-- 条件付きアクセス ポリシーが設定されているクラウド アプリのトークンを Azure AD が発行するとき 
+- 最新の認証を使用するモバイルまたはデスクトップ アプリケーションが、更新トークンを使用して新しいアクセス トークンを取得するとき。 既定では、これは 1 時間に 1 回です。 
+
+つまり、最新の認証を使用しているモバイルおよびデスクトップ アプリケーションについては、ネットワークの場所を変更してから 1 時間以内に、場所の変更が検出されます。 最新の認証を使用していないモバイルおよびデスクトップ アプリケーションの場合、ポリシーは、トークン要求ごとに適用されます。 要求の頻度は、アプリケーションによって異なります。 同様に、Web アプリケーションについては、ポリシーは、Web アプリケーションへの最初のサインイン時に適用され、セッションの有効期間にわたって有効です。 アプリケーションによってセッションの有効期間が異なるため、ポリシー評価の間隔も異なります。 ポリシーは、アプリケーションが新しいサインイン トークンを要求するたびに適用されます。
+
 
 既定で、Azure AD は 1 時間ごとにトークンを発行します。 社内ネットワークから離れた後、1 時間以内に最新の認証を使用するアプリケーションに対してポリシーが適用されます。
 

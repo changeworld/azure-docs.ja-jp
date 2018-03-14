@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2017
+ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: bf20a0f15b1bc285a598c64c7e9f2de0082b2904
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 3884eec0e65f856be87505d45c25cad7d3742bab
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -40,7 +40,9 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 この問題を解決するには、次の手順に従ってください。
 
-1. 次の証明書が正しい場所にあることを確認します。
+1. 証明書マネージャーを開く: **[開始]** をクリックし、「**コンピューター証明書の管理**」と入力して、検索結果の **[コンピューター証明書の管理]** をクリックします。
+
+2. 次の証明書が正しい場所にあることを確認します。
 
     | 証明書 | 場所 |
     | ------------- | ------------- |
@@ -48,7 +50,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
     | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
     | AzureGateway-*GUID*.cloudapp.net、AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
 
-2. Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
+3. Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
 
 クライアント証明書をインストールする方法の詳細については、[ポイント対サイト接続の証明書の生成とエクスポート](vpn-gateway-certificates-point-to-site.md)に関する記事をご覧ください。
 

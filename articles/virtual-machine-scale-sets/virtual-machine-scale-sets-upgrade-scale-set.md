@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: 836d56012afa9e5d5bdec35d85c37dd4b0b788ce
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: cdd1015f63e80b7ec51565c18f3440ce1828fb03
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
 この記事では、既存のスケール セットを変更する方法について説明します。 これには、スケール セットの構成を変更する方法、スケール セットで実行されているアプリケーションの構成を変更する方法、可用性を管理する方法などが含まれます。
@@ -255,7 +255,7 @@ CLI: `az vmss update-instances -g {resourceGroupName} -n {vmScaleSetName} --inst
 > Service Fabric クラスターは自動モードのみを使用できますが、更新は別途処理されます。 Service Fabric の更新について詳しくは、[Service Fabric のドキュメント](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade)をご覧ください。
 
 >[!NOTE]
-> グローバル スケール セットのプロパティに対する変更には、アップグレード ポリシーに従わない種類が 1 つあります。 これらは、スケール セット OS プロファイルに対する変更 (たとえば、管理者ユーザー名とパスワードなど) です。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM の "再イメージ化" を行う必要があります。 この再イメージ化は、以下を使用して行うことができます。
+> グローバル スケール セットのプロパティに対する変更には、アップグレード ポリシーに従わない種類が 1 つあります。 これらは、スケール セット OS プロファイルに対する変更 (たとえば、管理者ユーザー名とパスワードなど) です。 これらのプロパティは、バージョン 2017-12-01 以降の API でのみ変更できます。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM の "再イメージ化" を行う必要があります。 この再イメージ化は、以下を使用して行うことができます。
 
 REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)をご覧ください)
 

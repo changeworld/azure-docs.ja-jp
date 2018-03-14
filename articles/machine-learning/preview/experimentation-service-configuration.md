@@ -5,16 +5,16 @@ services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: bd152cc79c08124a1acab2aefc8652c7d162ea2c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: f93c74d0c2f66e6a5001289efca07f074e3d3c5a
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="configuring-azure-machine-learning-experimentation-service"></a>Azure Machine Learning 実験サービスの構成
 
@@ -27,9 +27,10 @@ Python または PySpark スクリプトを Workbench プロジェクトでロ�
 
 次の環境でスクリプトを実行できます。 
 
-* Workbench によってインストールされたローカル コンピューター上の Python (3.5.2) 環境。
+* Workbench によってインストールされたローカル コンピューター上の Python (3.5.2) 環境
 * ローカル コンピューター上の Docker コンテナー内の Conda Python 環境
-* リモート Linux マシン上の Docker コンテナー内の Conda Python 環境。 [Azure 上の Ubuntu ベースの DSVM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) などです。
+* リモート Linux マシン上で所有および管理している Python 環境
+* リモート Linux マシン上の Docker コンテナー内の Conda Python 環境。 たとえば、[Azure 上の Ubuntu ベースの DSVM] (https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) などです。
 * Azure 上の [HDInsight for Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/)
 
 >[!IMPORTANT]
@@ -47,6 +48,7 @@ CLI で_az ml computetarget attach_ コマンドを実行すると、実行で�
 サポートされているコンピューティング ターゲットを次に示します。
 * Workbench によってインストールされたコンピューター上のローカル Python (3.5.2) 環境。
 * コンピューター上のローカル Docker
+* リモート Linux-Ubuntu VM 上のユーザーが管理する Python 環境。 [Azure 上の Ubuntu ベースの DSVM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) などです。
 * Linux-Ubuntu VM 上のリモート Docker。 [Azure 上の Ubuntu ベースの DSVM](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) などです。
 * Azure 上の [HDInsight for Spark クラスター](https://azure.microsoft.com/services/hdinsight/apache-spark/)
 
@@ -69,14 +71,14 @@ Workbench の既定のランタイム上で実行する場合は、お好みの�
 ### <a name="run-configuration"></a>実行構成
 コンピューティング ターゲットと実行環境だけでなく、Azure Machine Learning は、*実行構成*の定義と変更を行うためのフレームワークも提供します。 さまざまな実験を行うなかで、繰り返し行う実験の一部で異なる構成が必要になる場合があります。 異なるパラメーター範囲やデータ ソースを使用したり、Spark パラメーターを調整したりできます。 実験サービスは、実行構成を管理するためのフレームワークを提供します。
 
-_az ml computetarget attach_ コマンドの実行により、ご使用のプロジェクト内の **aml_config** フォルダーに .compute と .runconfig という 2 つのファイルが作成されます。これらのファイルは、_<your_computetarget_name>.compute_ と _<your_computetarget_name>.runconfig_ という命名規則に従っています。 コンピューティング ターゲットの作成時には、利便性のために .runconfig ファイルが自動作成されます。 CLI で _az ml runconfigurations_ コマンドを使用して、他の実行構成を作成し、管理できます。 ファイル システム上で作成し、編集することもできます。
+_az ml computetarget attach_ コマンドの実行により、ご使用のプロジェクト内の **aml_config** フォルダーに ".compute" と ".runconfig" という 2 つのファイルが作成されます。これらのファイルは、_<your_computetarget_name>.compute_ と _<your_computetarget_name>.runconfig_ という命名規則に従っています。 コンピューティング ターゲットの作成時には、利便性のために .runconfig ファイルが自動作成されます。 CLI で _az ml runconfigurations_ コマンドを使用して、他の実行構成を作成し、管理できます。 ファイル システム上で作成し、編集することもできます。
 
 Workbench の実行構成には、環境変数を指定することもできます。 ご使用の .runconfig ファイルに次のセクションを追加すると、環境変数を指定してそれをコードで使用できます。 
 
 ```
 EnvironmentVariables:
-"EXAMPLE_ENV_VAR1": "Example Value1"
-"EXAMPLE_ENV_VAR2": "Example Value2"
+    "EXAMPLE_ENV_VAR1": "Example Value1"
+    "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
 これらの環境変数には、コードでアクセスできます。 たとえば、この Phyton コード スニペットでは、"EXAMPLE_ENV_VAR1" という環境変数が出力されます
@@ -101,7 +103,7 @@ CLI を簡単に起動するには、Workbench でプロジェクトを開き、
 このコマンドを実行すると、ターミナル ウィンドウが起動されます。ここで、現在のプロジェクト フォルダー内のスクリプトを実行するコマンドを入力できます。 このターミナル ウィンドウは、Workbench によってインストールされる Python 3.5.2 環境を使用して構成されます。
 
 >[!NOTE]
-> コマンド ウィンドウから _az ml_ コマンドを実行する場合、ユーザーが Azure に対して認証されている必要があります。 CLI では、デスクトップ アプリから独立した認証キャッシュを使用しているため、Workbench にログインできても、CLI 環境で認証されているとは限りません。 認証するには、次の手順に従ってください。 認証トークンは一定期間ローカルにキャッシュされるため、これらの手順を繰り返す必要があるのは、トークンの有効期限が切れた場合のみです。 トークンの有効期限が切れたか、認証エラーが発生した場合は、次のコマンドを実行します。
+> コマンド ウィンドウから _az ml_ コマンドを実行する場合、ユーザーが Azure に対して認証されている必要があります。 CLI では、デスクトップ アプリから独立した認証キャッシュを使用しているため、Workbench にログインできても、CLI 環境で認証されているとは限りません。 認証するには次の手順を使用します。 認証トークンは一定期間ローカルにキャッシュされるため、これらの手順を繰り返す必要があるのは、トークンの有効期限が切れた場合のみです。 トークンの有効期限が切れたか、認証エラーが発生した場合は、次のコマンドを実行します。
 
 ```
 # to authenticate 
@@ -124,7 +126,7 @@ $ az account show
 ## <a name="running-scripts-and-experiments"></a>スクリプトと実験の実行
 Workbench では、_az ml experiment submit_ コマンドを使用して、さまざまなコンピューティング ターゲットに対して Python スクリプトと PySpark スクリプトを実行できます。 このコマンドでは、実行構成定義が必要となります。 
 
-ユーザーがコンピューティング ターゲットを作成すると、Workbench によって対応する .runconfig ファイルが作成されますが、_az ml runconfiguration  create_ コマンドを使用して追加の実行構成を作成できます。 実行構成ファイルを手動で編集することもできます。
+ユーザーがコンピューティング ターゲットを作成すると、Workbench によって対応する runconfig ファイルが作成されますが、_az ml runconfiguration  create_ コマンドを使用して追加の実行構成を作成できます。 実行構成ファイルを手動で編集することもできます。
 
 実行構成は、Workbench の実験実行エクスペリエンスの一部として表示されます。 
 
@@ -213,9 +215,50 @@ $ az ml experiment submit -c remotevm myscript.py
 >[!TIP]
 >初回実行向けに Docker イメージを構築して待ち時間が発生しないようにするには、次のコマンドを使用して、スクリプトを実行する前にコンピューティング ターゲットを準備します。 az ml experiment prepare -c remotedocker
 
-
 _**Python スクリプトのリモート VM 実行の概要:**_
 ![](media/experimentation-service-configuration/remote-vm-run.png)
+
+## <a name="running-a-script-on-a-remote-vm-targeting-user-managed-environments"></a>リモート VM 上でユーザー管理環境をターゲットとするスクリプトを実行する
+実験サービスは、リモート Ubuntu 仮想マシン内にあるユーザーの Python 環境でのスクリプトの実行もサポートしています。 これにより、実行のために自らの環境を管理しながら、Azure Machine Learning 機能を引き続き使用できます。 
+
+自らの環境でスクリプトを実行するには次の手順に従います。
+* リモート Ubuntu VM または DSVM に依存関係をインストールして、自らの Python 環境を準備します。
+* 次のコマンドを使用して Azure Machine Learning の要件をインストールします。
+
+```
+pip install -I --index-url https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.python.org/simple azureml-requirements
+```
+
+>[!TIP]
+>場合によっては、このコマンドを sudo モードで実行する必要があります。これは権限によって異なります。 
+```
+sudo pip install -I --index-url https://azuremldownloads.azureedge.net/python-repository/preview --extra-index-url https://pypi.python.org/simple azureml-requirements
+```
+ 
+* 次のコマンドを使用して、リモート VM 実行上のユーザー管理実行のために、コンピューティング ターゲット定義と実行構成の両方を作成できます。
+```
+az ml computetarget attach remote --name "remotevm" --address "remotevm_IP_address" --username "sshuser" --password "sshpassword" 
+```
+>[!NOTE]
+>.compute 構成ファイルの "userManagedEnvironment" パラメーターが true に設定されます。
+
+* Python ランタイム実行可能ファイルの場所を .compute ファイルに設定します。 python 実行可能ファイルの完全なパスを指定する必要があります。 
+```
+pythonLocation: python3
+```
+
+コンピューティング ターゲットを構成したら、次のコマンドを使用してスクリプトを実行できます。
+```
+$ az ml experiment submit -c remotevm myscript.py
+```
+
+>[!NOTE]
+> DSVM で実行する場合は、次のコマンドを使用する必要があります。
+
+DSVM のグローバル python 環境で直接実行する場合には、次のコマンドを実行します。
+```
+sudo /anaconda/envs/py35/bin/pip install <package>
+```
 
 
 ## <a name="running-a-script-on-an-hdinsight-cluster"></a>HDInsight クラスター上でのスクリプトの実行
@@ -279,6 +322,6 @@ az ml computetarget attach remotedocker --name "remotevm" --address "remotevm_IP
 az ml experiment prepare -c remotevm
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Machine Learning を作成およびインストールする](quickstart-installation.md)
 * [モデル管理](model-management-overview.md)

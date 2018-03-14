@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: bd09e2a21c25097fa4b378cb2dbe2787edbb1967
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 4139e3675e2202cc42b6b8d7ff7562e9c9d693bb
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="metric-telemetry-application-insights-data-model"></a>メトリック テレメトリ: Application Insights データ モデル
 
@@ -31,7 +31,7 @@ Application Insights でサポートされているよく知られているい�
 | **.NET の名前**             | **プラットフォームに依存しない名前** | **REST API の名前** | **説明**
 | ------------------------- | -------------------------- | ----------------- | ---------------- 
 | `\Processor(_Total)\% Processor Time` | 作業中... | [processorCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessorCpuPercentage) | コンピューターの CPU の合計
-| `\Memory\Available Bytes`                 | 作業中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | ディスクの使用可能メモリ
+| `\Memory\Available Bytes`                 | 作業中... | [memoryAvailableBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FmemoryAvailableBytes) | コンピューターで実行されているプロセスが利用できる物理メモリの量をバイト単位で表示します。 これは、ゼロ メモリ、空きメモリ、スタンバイ メモリの一覧の領域を合計することで計算されます。 空きメモリはメモリを使用する準備が整っているメモリです。ゼロ メモリはゼロで満たされたメモリのページで構成されており、後続のプロセスが、前のプロセスによって使用されたデータを見ることができないようにします。スタンバイ メモリは、ディスクへのルート上でプロセスのワーキング セット (プロセスの物理メモリ) から削除されたメモリですが、引き続き再度呼び出すことができます。 「[Memory Object (メモリ オブジェクト)](https://msdn.microsoft.com/library/ms804008.aspx)」を参照してください
 | `\Process(??APP_WIN32_PROC??)\% Processor Time` | 作業中... | [processCpuPercentage](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessCpuPercentage) | アプリケーションをホストするプロセスの CPU
 | `\Process(??APP_WIN32_PROC??)\Private Bytes`      | 作業中... | [processPrivateBytes](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessPrivateBytes) | アプリケーションをホストするプロセスで使用されるメモリ
 | `\Process(??APP_WIN32_PROC??)\IO Data Bytes/sec` | 作業中... | [processIOBytesPerSecond](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FprocessIOBytesPerSecond) | アプリケーションをホストしているプロセスで実行される I/O 操作の速度
@@ -40,7 +40,7 @@ Application Insights でサポートされているよく知られているい�
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time`   | 作業中... | [requestExecutionTime](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestExecutionTime) | 平均要求実行時間
 | `\ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue` | 作業中... | [requestsInQueue](https://dev.applicationinsights.io/apiexplorer/metrics?appId=DEMO_APP&apiKey=DEMO_KEY&metricId=performanceCounters%2FrequestsInQueue) | キューで処理を待っている要求の数
 
-## <a name="name"></a>名前
+## <a name="name"></a>Name
 
 Application Insights ポータルと UI に表示するメトリックの名前。 
 
@@ -48,7 +48,7 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 
 測定の単一の値。 集計での個別の測定値の合計。
 
-## <a name="count"></a>カウント
+## <a name="count"></a>Count
 
 集計メトリックのメトリックの重み。 測定には設定しないでください。
 
@@ -70,7 +70,7 @@ Application Insights ポータルと UI に表示するメトリックの名前�
 
 [!INCLUDE [application-insights-data-model-properties](../../includes/application-insights-data-model-properties.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [カスタムのイベントとメトリックのための Application Insights API](app-insights-api-custom-events-metrics.md#trackmetric) の使用方法を確認します。
 - Application Insights の型とデータ モデルについては、[データ モデル](application-insights-data-model.md)に関するページを参照してください。

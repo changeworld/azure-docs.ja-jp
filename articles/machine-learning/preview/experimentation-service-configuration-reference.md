@@ -5,16 +5,16 @@ services: machine-learning
 author: gokhanuluderya-msft
 ms.author: gokhanu
 manager: haining
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/28/2017
-ms.openlocfilehash: aaa9705aed59b5cf78100eda9997bb1ca74845b9
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 00e98ff07d144db791fcf074699614f1e664634b
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="azure-machine-learning-experimentation-service-configuration-files"></a>Azure Machine Learning 実験サービス構成ファイル
 
@@ -34,7 +34,7 @@ Azure Machine Learning (Azure ML) Workbench でスクリプトを実行すると
 ## <a name="condadependenciesyml"></a>conda_dependencies.yml
 このファイルは、コードが依存している Python ランタイム バージョンおよびパッケージを指定する [conda 環境ファイル](https://conda.io/docs/using/envs.html#create-environment-file-by-hand)です。 Azure ML ワークベンチは Docker コンテナーや HDInsight クラスターでスクリプトを実行するときに、スクリプトを実行するための [conda 環境](https://conda.io/docs/using/envs.html)を作成します。 
 
-このファイルでは、スクリプトが実行に必要な Python パッケージを指定します。 Azure ML 実験サービスは、依存関係の一覧に従って Docker イメージ内に conda 環境を作成します。 このパッケージの一覧には、実行エンジンから到達できる必要があります。 そのため、パッケージは次のようなチャネルに一覧表示される必要があります。
+このファイルでは、スクリプトが実行に必要な Python パッケージを指定します。 Azure ML 実験サービスは、依存関係の一覧に従って conda 環境を作成します。 ここに一覧されているパッケージには、次のようなチャンネルを通して実行エンジンから接続できる必要があります。
 
 * [continuum.io](https://anaconda.org/conda-forge/repo)
 * [PyPI](https://pypi.python.org/pypi)
@@ -68,13 +68,13 @@ dependencies:
      - C:\temp\my_private_python_pkg.whl
 ```
 
-Azure ML ワークベンチは、**conda_dependencies.yml** が損なわれずにいる限り、リビルドせずに同じ conda 環境を使用します。 ただし、このファイルで何らかの変更が生じた場合は、Docker イメージがリビルドされます。
+Azure ML ワークベンチは、**conda_dependencies.yml** に変更がない限り、リビルドせずに同じ conda 環境を使用します。 依存関係が変更されると、環境が再構築されます。
 
 >[!NOTE]
 >_ローカル_ コンピューティング コンテキストを実行の対象とする場合、**conda_dependencies.yml** ファイルは使用され**ません**。 ローカル Azure ML ワークベンチ Python 環境のパッケージの依存関係は、手動でインストールする必要があります。
 
 ## <a name="sparkdependenciesyml"></a>spark_dependencies.yml
-このファイルは、インストールする必要のある PySpark スクリプトおよび Spark パッケージを送信するときに、Spark アプリケーション名を指定します。 すべてのパブリック Maven リポジトリのほか、これらの Maven リポジトリに含まれる Spark パッケージも指定できます。
+このファイルは、インストールする必要のある PySpark スクリプトおよび Spark パッケージを送信するときに、Spark アプリケーション名を指定します。 パブリック Maven リポジトリのほか、これらの Maven リポジトリに含まれる Spark パッケージも指定できます。
 
 たとえば次のようになります。
 
@@ -103,13 +103,13 @@ packages:
 ```
 
 >[!NOTE]
->worker サイズやコアなどのクラスター チューニング パラメーター は、spark_dependecies.yml ファイル内の "configuration" セクションに入れる必要があります 
+>worker サイズやコアなどのクラスター チューニング パラメーターは、spark_dependecies.yml ファイル内の "configuration" セクションに入れる必要があります 
 
 >[!NOTE]
->Python 環境でスクリプトを実行している場合、*spark_dependencies.yml* ファイルは無視されます。 Spark に対して (Docker または HDInsight クラスター上で) 実行している場合にのみ効果があります。
+>Python 環境でスクリプトを実行している場合、*spark_dependencies.yml* ファイルは無視されます。 Spark に対して (Docker または HDInsight クラスター上で) 実行している場合にのみ使用されます。
 
 ## <a name="run-configuration"></a>実行構成
-特定の実行構成を指定するには、1 組のファイルが必要です。 これらのファイルは通常、CLI コマンドを使用して生成されます。 ただし、既存のものを複製し、その名前を変更して、編集することもできます。
+特定の実行構成を指定するには、.compute ファイルと .runconfig ファイルが必要です。 これらのファイルは通常、CLI コマンドを使用して生成されます。 既存のものを複製し、その名前を変更して、編集することもできます。
 
 ```azurecli
 # create a compute target pointing to a VM via SSH
@@ -129,6 +129,7 @@ _\<コンピューティング ターゲット名>.compute_ ファイルは、�
 
 **type**: コンピューティング環境の種類。 サポートされる値は次のとおりです。
   - local
+  - リモート
   - docker
   - remotedocker
   - cluster
@@ -147,8 +148,10 @@ _\<コンピューティング ターゲット名>.compute_ ファイルは、�
 
 **nativeSharedDirectory**: このプロパティは、同じコンピューティング ターゲットでの複数の実行で共有するためにファイルを保存できるベース ディレクトリ (例: _~/.azureml/share/_) を指定します。 Docker コンテナーでの実行時にこの設定を使用する場合、_sharedVolumes_ を true に設定する必要があります。 それ以外の場合、実行は失敗します。
 
+**userManagedEnvironment**: このプロパティは、この計算ターゲットがユーザーによって直接管理されるか、あるいは実験サービスを介して管理されるかどうかを指定します。  
+
 ### <a name="run-configuration-namerunconfig"></a>\<実行構成名>.runconfig
-_\<実行構成名>.runconfig_ は、Azure ML 実験の実行動作を指定します。 実行履歴の追跡や使用するコンピューティング ターゲットなど、多くの実行動作を構成できます。 実行構成ファイルの名前は、Azure ML ワークベンチのデスクトップ アプリケーションでの実行コンテキスト ドロップダウンの作成に使用されます。
+_\<実行構成名>.runconfig_ は、Azure ML 実験の実行動作を指定します。 実行履歴の追跡や、使用するコンピューティング ターゲットなど、多くの実行動作を構成できます。 実行構成ファイルの名前は、Azure ML ワークベンチのデスクトップ アプリケーションでの実行コンテキスト ドロップダウンの作成に使用されます。
 
 **ArgumentVector**: このセクションでは、この実行の一部として行われるスクリプトと、スクリプトのパラメーターを指定します。 たとえば、"<run configuration name>.runconfig" ファイルに次のスニペットがある場合 
 
@@ -170,7 +173,7 @@ EnvironmentVariables:
   "EXAMPLE_ENV_VAR2": "Example Value2"
 ```
 
-これらの環境変数には、ユーザーのコードでアクセスできます。 たとえば、この Phyton コードでは、"EXAMPLE_ENV_VAR" という環境変数が出力されます
+これらの環境変数には、ユーザーのコードでアクセスできます。 たとえば、この Python コードでは、"EXAMPLE_ENV_VAR" という環境変数が出力されます
 ```
 print(os.environ.get("EXAMPLE_ENV_VAR1"))
 ```
@@ -189,7 +192,7 @@ print(os.environ.get("EXAMPLE_ENV_VAR1"))
 
 **DataSourceSettings**: この構成セクションは、データ ソース設定を指定します。 このセクションでは、ユーザーは、実行の一部として使用される特定のデータ ソースの既存のデータ サンプルを指定します。 
 
-次の構成設定は、"MySample" という名前のサンプルが、"MyDataSource" という名前のデータソースに使用されることを指定します
+次の構成設定は、"MySample" という名前のサンプルが、"MyDataSource" という名前のデータソースに使用されることを指定します。
 ```
 DataSourceSettings:
     MyDataSource.dsource:

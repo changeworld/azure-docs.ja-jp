@@ -14,11 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.openlocfilehash: 9f9ed8043d3671beacb9fabeb9e96604a8f065ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4f3814ac2dbc8b74cef8f5fcb0540b7509efa0d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Java による Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -99,6 +99,10 @@ ms.lasthandoff: 10/11/2017
 バッチ操作では、そのバッチ操作のすべての行で同じ KEK が使用されます。これは、クライアント ライブラリで、各バッチ操作あたり 1 つの options オブジェクト (従って、1 ポリシー/KEK) のみが許可されるためです。 ただし、クライアント ライブラリは、バッチ内の行ごとに 1 つの新しいランダム IV とランダム CEK を内部的に生成します。 ユーザーは、暗号化リゾルバーでこの動作を定義することで、バッチの各操作で個別のプロパティを暗号化することも選択できます。
 
 ### <a name="queries"></a>クエリ
+> [!NOTE]
+> エンティティは暗号化されているため、暗号化されたプロパティでフィルター処理を行うクエリを実行できません。  実行しようとすると、暗号化されたデータと、暗号化されていないデータの比較が行われるため、結果が不正確になります。
+> 
+>
 クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。 クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。 クエリでサーバー側のプロジェクションが実行される場合、クライアント ライブラリは既定で、特別な暗号化メタデータ プロパティ (_ClientEncryptionMetadata1 および _ClientEncryptionMetadata2) を選択した列に追加します。
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
@@ -247,7 +251,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 ## <a name="encryption-and-performance"></a>暗号化とパフォーマンス
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。 コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。 このオーバーヘッドは、暗号化されるデータの量によって異なります。 開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Storage Client Library for Java の Maven パッケージ](http://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
 * [Azure Storage Client Library for Java のソースコード](https://github.com/Azure/azure-storage-java)   
 * Java Maven パッケージの Azure Key Vault Maven Library をダウンロードする:

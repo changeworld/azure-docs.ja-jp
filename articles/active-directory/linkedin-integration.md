@@ -9,21 +9,21 @@ ms.workload: identity
 ms.tgt_pltfrm: 
 ms.devlang: 
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 02/28/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 5ebc44d0ef6200baeacf4f1f8c4371e2d1eed9db
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cdfb5458b020e9d3a3f33cecbeb0ee7b9a48909d
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="linkedin-integration-for-office-applications"></a>Office アプリケーションの LinkedIn の統合
 この記事では、LinkedIn の統合機能が利用できるユーザーを Azure Active Directory (Azure AD) で制限する方法について説明します。 LinkedIn の統合は、テナントに追加されたときに既定で有効になるため、ユーザーは一部の Microsoft アプリからパブリックな LinkedIn データにアクセスすることができます。 それぞれのユーザーが個別に、その職場または学校アカウントを LinkedIn アカウントに接続することもできます。
 
 > [!IMPORTANT]
-> LinkedIn の統合は、すべての Azure AD テナントに対して同時にデプロイされるわけではありません。 Azure テナントへのロールアウト後に、LinkedIn の統合が既定で有効になります。 LinkedIn の統合は、go-local、Sovereign、および政府機関の各テナントでは使用できません。 
+> LinkedIn の統合は、すべての Azure AD テナントに対して同時にデプロイされるわけではありません。 Azure テナントへのロールアウト後に、LinkedIn の統合が既定で有効になります。 LinkedIn の統合は、go-local、Sovereign、および政府機関の各テナントでは使用できません。 ロールアウト情報の最新にビューについては、「[Office 365 ロードマップ](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)」ページを参照してください。
 
 ## <a name="linkedin-integration-from-the-user-perspective"></a>ユーザーの視点から見た LinkedIn の統合
 組織内のユーザーは、その LinkedIn アカウントを職場または学校アカウントに接続するとき、その組織が用意している Microsoft のアプリやサービスで使用される[データの提供を LinkedIn に許可](https://www.linkedin.com/help/linkedin/answer/84077)することになります。 [ユーザーはアカウントを切断](https://www.linkedin.com/help/linkedin/answer/85097)することができ、その場合は、LinkedIn が Microsoft とデータを共有するために必要なアクセス許可が削除されます。 LinkedIn の統合では、公開されている LinkedIn プロフィールの情報が使用されます。 LinkedIn のプライバシー設定を使用することで、ユーザーはそのプロフィールを Microsoft のアプリで閲覧できるかどうかなど、[自分の LinkedIn プロフィールの公開方法を制御](https://www.linkedin.com/help/linkedin/answer/83)することができます。
@@ -37,8 +37,8 @@ Azure AD の既定では、企業の LinkedIn の統合は有効です。 Linked
 ### <a name="enable-or-disable-linkedin-integration-for-your-organization-in-the-azure-portal"></a>組織に対する LinkedIn の統合を Azure Portal で有効または無効にする
 
 1. [Azure Active Directory 管理センター](https://aad.portal.azure.com/)に、Azure AD テナントの全体管理者のアカウントでサインインします。
-2. **[ユーザーとグループ]** を選択します。
-3. **[ユーザーとグループ]** ブレードで、**[ユーザー設定]** を選択します。
+2. **[ユーザー]** を選択します。
+3. **[ユーザー]** ウィンドウで、**[ユーザー設定]** を選択します。
 4. **[LinkedIn の統合]** で **[はい]** を選択すると LinkedIn が有効に、**[いいえ]** を選択すると無効になります。
    ![LinkedIn の統合を有効にする](./media/linkedin-integration/LinkedIn-integration.PNG)
 

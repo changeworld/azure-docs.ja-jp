@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: LADocs; stepsic
-ms.openlocfilehash: 3df59ec172b037daaeed9e3eb69ffb990d70d8a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7a240bf5b7ed5e7780b90f438d2e336ee79f0b3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="deploy-and-call-custom-apis-from-logic-app-workflows"></a>ロジック アプリ ワークフローからカスタム API をデプロイして呼び出す
 
@@ -39,13 +39,13 @@ ms.lasthandoff: 10/11/2017
 
    ![カスタム API の OpenAPI ファイルへのリンク](./media/logic-apps-custom-api-deploy-call/custom-api-swagger-url.png)
 
-3. **[API]** で **[CORS]** を選択します。 **[許可されたオリジン]** の CORS ポリシーを **'*'** に設定します (すべて許可)。
+3. **[API]** で **[CORS]** を選択します。 **[許可されたオリジン]** の CORS ポリシーを **'*'** (すべて許可) に設定します。
 
    この設定により、ロジック アプリ デザイナーからの要求が許可されます。
 
    ![ロジック アプリ デザイナーからカスタム API への要求を許可する](./media/logic-apps-custom-api-deploy-call/custom-api-cors.png)
 
-詳細については、「[Node.js RESTful API をビルドして Azure で API アプリにデプロイする](../app-service/app-service-web-tutorial-rest-api.md)」を参照してください。
+詳細については、[Azure App Service での CORS を使用した RESTful API のホスト](../app-service/app-service-web-tutorial-rest-api.md)に関する記事をご覧ください。
 
 ## <a name="call-your-custom-api-from-logic-app-workflows"></a>ロジック アプリ ワークフローからカスタム API を呼び出す
 
@@ -57,6 +57,6 @@ API 定義プロパティと CORS を設定すると、カスタム API のト�
 
 *  [HTTP アクション](../connectors/connectors-native-http.md)を使用した要求をいつでも作成し、OpenAPI ドキュメントがない API や OpenAPI ドキュメントを公開しない API を含む、あらゆる API を呼び出すことができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [カスタム コネクタの概要](../logic-apps/custom-connector-overview.md)

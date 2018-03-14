@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: tamram
-ms.openlocfilehash: fe8023729bd1294dedd2a4e4723a8be0976731d6
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 6b26261994bd1e64bf998cf3838ec9e52f844e54
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="client-side-encryption-and-azure-key-vault-for-microsoft-azure-storage"></a>Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 [.NET Nuget パッケージ用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage) は、開発者が Azure Storage にアップロードする前にクライアント アプリケーション内のデータを暗号化し、クライアントにダウンロードするときにデータを復号化する作業を支援します。 また、このライブラリは [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) の統合にも役立ち、ストレージ アカウント キー管理に利用することもできます。
 
 クライアント側の暗号化と Azure Key Vault を使用して BLOB を暗号化するプロセスを紹介するステップ バイ ステップ チュートリアルについては、「 [チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)」をご覧ください。
@@ -103,6 +103,10 @@ Java によるクライアント側の暗号化については、「 [Java に�
 バッチ操作では、そのバッチ操作のすべての行で同じ KEK が使用されます。これは、クライアント ライブラリで、各バッチ操作あたり 1 つの options オブジェクト (従って、1 ポリシー/KEK) のみが許可されるためです。 ただし、クライアント ライブラリは、バッチ内の行ごとに 1 つの新しいランダム IV とランダム CEK を内部的に生成します。 ユーザーは、暗号化リゾルバーでこの動作を定義することで、バッチの各操作で個別のプロパティを暗号化することも選択できます。
 
 ### <a name="queries"></a>クエリ
+> [!NOTE]
+> エンティティは暗号化されているため、暗号化されたプロパティでフィルター処理を行うクエリを実行できません。  実行しようとすると、暗号化されたデータと、暗号化されていないデータの比較が行われるため、結果が不正確になります。
+> 
+> 
 クエリ操作を実行するには、結果セット内のすべてのキーを解決できる Key Resolver を指定する必要があります。 クエリの結果に含まれたエンティティをプロバイダーに解決できない場合、クライアント ライブラリでエラーがスローされます。 クエリでサーバー側のプロジェクションを実行する場合、クライアント ライブラリは選択した列に特別な暗号化メタデータ プロパティ (_ClientEncryptionMetadata1 と _ClientEncryptionMetadata2) を既定で追加します。
 
 ## <a name="azure-key-vault"></a>Azure Key Vault
@@ -241,7 +245,7 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 ## <a name="encryption-and-performance"></a>暗号化とパフォーマンス
 ストレージ データを暗号化すると、パフォーマンスのオーバーヘッドが増えることに注意してください。 コンテンツ キーと IV を生成する必要があり、コンテンツ自体を暗号化する必要があります。また、追加のメタデータをフォーマットおよびアップロードする必要もあります。 このオーバーヘッドは、暗号化されるデータの量によって異なります。 開発中に、アプリケーションのパフォーマンスを常にテストすることをお勧めします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [チュートリアル: Azure Key Vault を使用した Microsoft Azure Storage 内の BLOB の暗号化と復号化](../blobs/storage-encrypt-decrypt-blobs-key-vault.md)
 * [Azure Storage Client Library for .NET NuGet package](https://www.nuget.org/packages/WindowsAzure.Storage)
 * Azure Key Vault NuGet [Core](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core/)、[Client](http://www.nuget.org/packages/Microsoft.Azure.KeyVault/)、[Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions/) の 3 つのパッケージをダウンロードする  

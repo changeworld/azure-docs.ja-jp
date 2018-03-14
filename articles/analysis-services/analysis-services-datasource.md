@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/27/2018
 ms.author: owend
-ms.openlocfilehash: e2f7e356b260c0e5af67d28811bd88a63a601312
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 9f2a4acdd0a2b29bc1485f62c0049f0065cbf711
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="data-sources-supported-in-azure-analysis-services"></a>Azure Analysis Services でサポートされるデータ ソース
 
@@ -48,7 +48,7 @@ Azure データ ソースに接続するメモリ内モデルおよび DirectQue
 
 ## <a name="on-premises-data-sources"></a>オンプレミス データ ソース
 
-オンプレミスのデータ ソースに接続するには、オンプレミスのゲートウェイが必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーがインストールされていることを確認してください。
+Azure AS サーバーからオンプレミスのデータ ソースに接続するには、オンプレミスのゲートウェイが必要です。 ゲートウェイを使うときは、64 ビットのプロバイダーが必要です。
 
 ### <a name="in-memory-and-directquery"></a>メモリ内と DirectQuery
 
@@ -60,31 +60,26 @@ Azure データ ソースに接続するメモリ内モデルおよび DirectQue
 | Teradata |OLE DB Provider for Teradata、Teradata Data Provider for .NET |Teradata Data Provider for .NET | |
 | | | |
 
-\* 表形式 1400 モデルのみ。
-
 ### <a name="in-memory-only"></a>メモリ内のみ
-
-> [!IMPORTANT]
-> 以下のデータ ソース用のプロバイダーはテスト中です。 
 
 |データソース  |  
 |---------|---------|
 |Access データベース     |  
 |Active Directory*     |  
-|Analysis Services     | 
+|Analysis Services     |  
 |Analytics Platform System     |  
 |Dynamics CRM*     |  
-|Excel ブック     | 
+|Excel ブック     |  
 |Exchange*     |  
 |フォルダー*     | 
 |JSON ドキュメント*     |  
 |バイナリからの行*     | 
 |MySQL Database     | 
-|OData フィード*     | 
+|OData フィード*     |  
 |ODBC クエリ     | 
-|OLE DB     |  
+|OLE DB     |   
 |Postgre SQL データベース*    | 
-|SAP HANA*    |   
+|SAP HANA*    |  
 |SAP Business Warehouse*    |  
 |SharePoint*     |   
 |Sybase データベース     |  

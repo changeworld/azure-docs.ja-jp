@@ -12,19 +12,19 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 01/17/2018
+ms.date: 02/22/2018
 ms.author: damaerte
-ms.openlocfilehash: ca11a0db4cdb435aef26e7ae214cca24679c6ea1
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 52ee832b643af573d8236b266df17d36e485ead2
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/02/2018
 ---
-# <a name="troubleshooting-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティング
+# <a name="troubleshooting--limitations-of-azure-cloud-shell"></a>Azure Cloud Shell のトラブルシューティングと制限事項
 
-Azure Cloud Shell での問題に対する既知の解決策は以下のとおりです。
+Azure Cloud Shell に関する問題のトラブルシューティングを行うための既知の解決策は以下のとおりです。
 
-## <a name="general-resolutions"></a>一般的な解決策
+## <a name="general-troubleshooting"></a>一般的なトラブルシューティング
 
 ### <a name="early-timeouts-in-firefox"></a>FireFox での早期タイムアウト
 - **詳細**: Cloud Shell は開いている WebSocket を使ってお使いのブラウザーに入力/出力を渡します。 FireFox には WebSocket を途中で閉じることができる事前設定されたポリシーがあり、Cloud Shell の早期タイムアウトの原因になります。
@@ -42,7 +42,7 @@ Azure Cloud Shell での問題に対する既知の解決策は以下のとお�
  - **詳細**: Cloud Shell では、Cloud Shell インフラストラクチャへの WebSocket 接続を確立できる必要があります。
  - **解決策**: HTTPS 要求および WebSocket 要求の *.console.azure.com のドメインへの送信を有効にするようにネットワーク設定を構成していることを確認します。
 
-## <a name="bash-resolutions"></a>Bash の解決策
+## <a name="bash-troubleshooting"></a>Bash のトラブルシューティング
 
 ### <a name="cannot-run-az-login"></a>az login を実行できない
 
@@ -54,7 +54,7 @@ Azure Cloud Shell での問題に対する既知の解決策は以下のとお�
 - **詳細**: Cloud Shell では、コンテナーを利用してシェル環境をホストするため、デーモンを実行することが許可されていません。
 - **解決策**: 既定でインストールされている [Docker マシン](https://docs.docker.com/machine/overview/)を利用して、リモート Docker ホストから Docker コンテナーを管理します。
 
-## <a name="powershell-resolutions"></a>PowerShell の解決策
+## <a name="powershell-troubleshooting"></a>PowerShell のトラブルシューティング
 
 ### <a name="no-home-directory-persistence"></a>$Home ディレクトリが永続化されない
 
@@ -70,7 +70,6 @@ Azure Cloud Shell での問題に対する既知の解決策は以下のとお�
 
 - **詳細**: ユーザーが GUI アプリを起動しても、プロンプトが返りません。 たとえば、ユーザーが 2 要素認証が有効なプライベート GitHub リポジトリを閉じると、2 要素認証を完了するためのダイアログ ボックスが表示されます。  
 - **解決策**: シェルをいったん閉じて、再び開きます。
-
 
 ### <a name="get-help--online-does-not-open-the-help-page"></a>Get-Help -online でヘルプ ページが開かない
 
@@ -97,3 +96,55 @@ Azure Cloud Shell での問題に対する既知の解決策は以下のとお�
 
 - **詳細**: `dir` の結果は Azure ドライブにキャッシュされます。
 - **解決策**: Azure ドライブ ビューでリソースを作成または削除した後に、`dir -force` を実行して更新します。
+
+## <a name="general-limitations"></a>一般的な制限事項
+Azure Cloud Shell には、次の既知の制限があります。
+
+### <a name="system-state-and-persistence"></a>システム状態と永続化
+
+Cloud Shell セッションを提供するマシンは一時的であり、セッションが 20 分間非アクティブの状態になると、リサイクルされます。 Cloud Shell では、Azure ファイル共有がマウントされている必要があります。 そのため、Cloud Shell にアクセスするには、ご利用のサブスクリプションでストレージ リソースをセットアップできることが必要です。 その他の考慮事項:
+
+* マウントされたストレージでは、`clouddrive` ディレクトリ内の変更のみが永続化されます。 Bash では、`$Home` ディレクトリも永続化されます。
+* Azure ファイル共有は、[割り当て済みリージョン](persisting-shell-storage.md#mount-a-new-clouddrive)内からのみマウントできます。
+  * Bash では、`env` を実行して、`ACC_LOCATION` として設定されたリージョンを検索します。
+* Azure Files は、ローカル冗長ストレージと geo 冗長ストレージのアカウントのみをサポートします。
+
+### <a name="browser-support"></a>ブラウザーのサポート
+
+Cloud Shell では、Microsoft Edge、Microsoft Internet Explorer、Google Chrome、Mozilla Firefox、および Apple Safari の最新バージョンがサポートされます。 プライベート モードの Safari はサポートされません。
+
+### <a name="copy-and-paste"></a>コピーと貼り付け
+
+[!include [copy-paste](../../includes/cloud-shell-copy-paste.md)]
+
+### <a name="for-a-given-user-only-one-shell-can-be-active"></a>特定のユーザーがアクティブにできるシェルは 1 つだけである
+
+ユーザーは、一度に 1 種類のシェル (**Bash** または **PowerShell**) だけを起動できます。 ただし、Bash または PowerShell の複数のインスタンスを同時に実行できます。 Bash と PowerShell の間でスワップを行うと、Cloud Shell が再起動し、既存セッションが終了します。
+
+### <a name="usage-limits"></a>Usage limits (使用状況の制限)
+
+Cloud Shell は対話型のユース ケースを想定しています。 そのため、実行時間の長い非対話型セッションは、警告なしで終了します。
+
+## <a name="bash-limitations"></a>Bash の制限事項
+
+### <a name="user-permissions"></a>ユーザーのアクセス許可
+
+権限は、sudo アクセスのない、通常のユーザーとして設定されます。 `$Home` ディレクトリ外のインストールはすべて失われます。
+
+### <a name="editing-bashrc"></a>.bashrc の編集
+
+.bashrc を編集すると Cloud Shell で予期しないエラーが発生する可能性があるため、編集には注意が必要です。
+
+## <a name="powershell-limitations"></a>PowerShell の制限事項
+
+### <a name="slow-startup-time"></a>起動時間が遅い
+
+Azure Cloud Shell (プレビュー) の PowerShell は、プレビュー期間中は、初期化に最大で 60 秒かかる場合があります。
+
+### <a name="default-file-location-when-created-from-azure-drive"></a>Azure ドライブから作成された場合の既定のファイルの場所
+
+ユーザーは、PowerShell コマンドレットを使用して Azure ドライブにファイルを作成することができません。 Vim や Nano などの他のツールを使用して新しいファイルを作成すると、ファイルは既定で C:\Users フォルダーに保存されます。 
+
+### <a name="gui-applications-are-not-supported"></a>GUI アプリケーションがサポートされていない
+
+Windows ダイアログ ボックスを作成するコマンド (`Connect-AzureAD` や `Login-AzureRMAccount` など) をユーザーが実行すると、`Unable to load DLL 'IEFRAME.dll': The specified module could not be found. (Exception from HRESULT: 0x8007007E)` のようなエラー メッセージが表示されます。

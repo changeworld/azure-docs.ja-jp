@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.openlocfilehash: f174766d4ab909fea0feea517a17b9d648722c2a
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: 2aa35cf814f8de2af89c6f7e0eda1f919301d6a3
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -119,7 +119,7 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 | | |
 |-|-|
-| ![Azure Portal の関数 アプリ API Swagger の定義](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions では Swagger がサポートされ、クライアントが、HTTP によってトリガーされる関数をもっと簡単に使用できます。 Swagger を使用した API 定義の作成の詳細については、[Azure での API Apps と Swagger の使用](../app-service/app-service-web-tutorial-rest-api.md)に関するページを参照してください。 Functions Proxies を使用して、複数の関数に対して 1 つの API サーフェスを定義することをもできます。 詳細については、「[Azure Functions Proxies の操作](functions-proxies.md)」を参照してください。 |
+| ![Azure Portal の関数 アプリ API Swagger の定義](./media/functions-how-to-use-azure-function-app-settings/function-app-api-definition.png) | Functions では Swagger がサポートされ、クライアントが、HTTP によってトリガーされる関数をもっと簡単に使用できます。 Swagger を使用した API 定義の作成の詳細については、[Azure App Service での CORS を使用した RESTful API のホスト](../app-service/app-service-web-tutorial-rest-api.md)に関するページをご覧ください。 Functions Proxies を使用して、複数の関数に対して 1 つの API サーフェスを定義することをもできます。 詳細については、「[Azure Functions Proxies の操作](functions-proxies.md)」を参照してください。 |
 
 ![Function App の API の構成](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-apidef.png)
 

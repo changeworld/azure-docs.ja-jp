@@ -3,29 +3,30 @@ title: "Azure Stack とデータセンターの統合 - エンドポイントの
 description: "データセンターで Azure Stack のエンドポイントを公開する方法を学習します"
 services: azure-stack
 author: jeffgilb
+manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/16/2018
+ms.date: 02/28/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: 
-ms.openlocfilehash: 8af533147f3cc12f2334a43e7b672c69d0d25802
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8dec686b9ccf87009a23cedf6023f15b84a0f155
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack とデータセンターの統合 - エンドポイントの公開
-Azure Stack は、そのインフラストラクチャ ロールのためにいくつかの仮想 IP アドレス (VIP) を設定します。 この VIP はパブリック IP アドレス プールから割り当てられます。 各 VIP は、ソフトウェア定義のネットワーク レイヤーで、アクセス制御リスト (ACL) で保護されます。 ACL は、ソリューションをさらに強化するために、さまざまな物理スイッチ (TOR や BMC) でも使われます。 デプロイ時に指定した外部 DNS ゾーン内のエンドポイントごとに DNS エントリが作成されます。
+Azure Stack は、そのインフラストラクチャ ロールのために仮想 IP アドレス (VIP) を設定します。 この VIP はパブリック IP アドレス プールから割り当てられます。 各 VIP は、ソフトウェア定義のネットワーク レイヤーで、アクセス制御リスト (ACL) で保護されます。 ACL は、ソリューションをさらに強化するために、さまざまな物理スイッチ (TOR や BMC) でも使われます。 デプロイ時に指定された外部 DNS ゾーン内のエンドポイントごとに DNS エントリが作成されます。
 
 
 次のアーキテクチャ図は、さまざまなネットワーク レイヤーと ACL を示しています。
 
-![アーキテクチャ図](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
+![構造の画像](media/azure-stack-integrate-endpoints/Integrate-Endpoints-01.png)
 
 ## <a name="ports-and-protocols-inbound"></a>ポートとプロトコル (受信)
 
-Azure Stack エンドポイントを外部ネットワークに公開するために必要なインフラストラクチャ VIP を次に示します。 この一覧では、各エンドポイント、必要なポート、そしてプロトコルを示しています。 特定のリソースプロバイダーの展開に関するドキュメントでは、SQL のリソースプロバイダーなどのような、追加のリソースプロバイダーに必要なエンドポイントについて説明します。
+Azure Stack エンドポイントを外部ネットワークに公開するには、一連のインフラストラクチャ VIP が必要です。 "*エンドポイント (VIP)*" の表は、各エンドポイント、必要なポート、およびプロトコルを示しています。 SQL のリソース プロバイダーなど、追加のリソース プロバイダーを必要とするエンドポイントについては、特定のリソース プロバイダーの展開に関するドキュメントを参照してください。
 
 社内インフラストラクチャの VIP は Azure Stack の発行には不要なため、記載されていません。
 
@@ -70,4 +71,5 @@ Azure Stack は、透過的なプロキシ サーバーのみをサポートし�
 
 
 ## <a name="next-steps"></a>次の手順
+
 [Azure Stack PKI の要件](azure-stack-pki-certs.md)

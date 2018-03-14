@@ -12,17 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
+ms.date: 03/01/2018
 ms.author: jodehavi;stgriffi
-ms.openlocfilehash: 793f35bfd2e5e6b22e0804f01a69c0c20990d211
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: edc9a870257536235c2bef139dc4d1ead7dd7a8f
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>エンド ツー エンドのキー ローテーションと監査で Azure Key Vault を設定する
 ## <a name="introduction"></a>はじめに
 Key Vault を作成したら、そのコンテナーを使って、キーとシークレットを保存できます。 アプリケーションでキーやシークレットを保持する必要がなくなりました。キーやシークレットは、必要に応じてキー コンテナーに要求します。 これによりアプリケーションの動作に影響を与えずにキーとシークレットを更新できるため、キーおよびシークレット管理を取り巻く可能性の幅が広がります。
+
+>[!IMPORTANT]
+> この記事の例は、説明のためにのみ示されています。 運用環境での使用は意図していません。 
 
 この記事では、Azure Key Vault を使ってシークレット (ここでは、アプリケーションがアクセスする Azure Storage アカウント キー) を格納する例について説明します。 また、そのストレージ アカウント キーのスケジュールされたローテーションの実装も紹介します。 最後に、キー コンテナー監査ログを監視し、予期しない要求が行われたときにアラートを生成する方法のデモを見ていきます。
 

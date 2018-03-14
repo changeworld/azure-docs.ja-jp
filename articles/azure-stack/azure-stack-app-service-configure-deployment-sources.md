@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/29/2018
 ms.author: brenduns
 ms.reviewer: anwestg
-ms.openlocfilehash: 310bea356ac611a92d9e3899da5d4fb19c50e94e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 277ed277b14886d386e097e0ce4bef8add5d4ba1
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="configure-deployment-sources"></a>デプロイ ソースを構成する
 *適用先: Azure Stack 統合システムと Azure Stack Development Kit*
@@ -56,7 +56,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 7.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。
 8.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
 9. **[Source control configuration (ソース管理構成)]** をクリックします。
-10. **[Client ID (クライアント ID)]** と**[Client Secret (クライアント シークレット)]** をコピーして、GitHub 用の対応する入力ボックスに貼り付けます。
+10. **クライアント ID** と**クライアント シークレット**をコピーして、GitHub 用の対応する入力ボックスに貼り付けます。
 11. **[Save]** をクリックします。
 
 ## <a name="configure-bitbucket"></a>BitBucket を構成する
@@ -79,7 +79,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 9.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。
 10.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
 11. **[Source control configuration (ソース管理構成)]** をクリックします。
-12. **[Key (キー)]**をコピーして BitBucket 用の **[クライアント ID]** 入力ボックスに、**[Secret (シークレット)]** をコピーして BitBucket 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
+12. **キー**をコピーして BitBucket 用の **[クライアント ID]** 入力ボックスに、**シークレット**をコピーして BitBucket 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
 13. **[Save]** をクリックします。
 
 
@@ -94,7 +94,8 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 2. **[マイ アプリケーション]** で **[アプリを追加]** をクリックします。
 ![OneDrive アプリケーション][10]
 3. 新しく登録するアプリケーションの **[名前]** を入力します。「**App Service on Azure Stack**」と入力し、**[アプリケーションの作成]** をクリックします。
-4. 次の画面に、新しいアプリケーションのプロパティが表示されます。 **[アプリケーション ID]** をメモします。![OneDrive アプリケーションのプロパティ][11]
+4. 次の画面に、新しいアプリケーションのプロパティが表示されます。 **アプリケーション ID** をメモします。
+![OneDrive アプリケーションのプロパティ][11]
 5. **[アプリケーション シークレット]** で **[新しいパスワードを生成]** をクリックします。 **新しく生成されたパスワード**をメモします。 これがお客様のアプリケーション シークレットになります。**[OK]** をクリックした後、この段階でもう一度取得することはできません。
 6. **[プラットフォーム]** で **[プラットフォームの追加]** をクリックし、**[Web]** を選択します。
 7. **[リダイレクト URI]** を入力します。  Azure Stack の既定のデプロイでは、リダイレクト URI は https://portal.local.azurestack.external/tokenauthorize の形式になっています。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。![OneDrive アプリケーション - Web プラットフォームの追加][12]
@@ -106,7 +107,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 10.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。
 11.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
 12. **[Source control configuration (ソース管理構成)]** をクリックします。
-13. **[アプリケーション ID]** をコピーして OneDrive 用の **[クライアント ID]** 入力ボックスに、**[パスワード]** をコピーして OneDrive 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
+13. **アプリケーション ID** をコピーして OneDrive 用の **[クライアント ID]** 入力ボックスに、**パスワード**をコピーして OneDrive 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
 14. **[Save]** をクリックします。
 
 ## <a name="configure-dropbox"></a>DropBox を構成する
@@ -130,7 +131,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 9.  新しいブラウザー タブまたはウィンドウで、Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサービス管理者としてログインします。
 10.  **[リソースプロバイダー]** に移動し、**[App Service Resource Provider Admin (App Service リソース プロバイダー管理)]** を選択します。
 11. **[Source control configuration (ソース管理構成)]** をクリックします。
-12. **[Application Key (アプリケーション キー)]** をコピーして DropBox 用の **[クライアント ID]** 入力ボックスに、**[App secret (アプリ シークレット)]** をコピーして DropBox 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
+12. **アプリケーション キー**をコピーして DropBox 用の **[クライアント ID]** 入力ボックスに、**アプリ シークレット**をコピーして DropBox 用の **[クライアント シークレット]** 入力ボックスに貼り付けます。
 13. **[Save]** をクリックします。
 
 

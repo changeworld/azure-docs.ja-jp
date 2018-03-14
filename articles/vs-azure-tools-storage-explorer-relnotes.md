@@ -14,17 +14,82 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
-ms.openlocfilehash: d23ddfb881695b2310d379a9112e6ab8305c0cce
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0e5523e297979a89ffd4b4ed51c8476fb1354419
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート
 
-この記事には、Azure Storage Explorer 0.9.5 (プレビュー) リリースのリリース ノート、および以前のバージョンのリリース ノートが含まれています。
+この記事には、Azure Storage Explorer 0.9.6 (プレビュー) リリースのリリース ノート、および以前のバージョンのリリース ノートが含まれています。
 
 [Microsoft Azure ストレージ エクスプローラー (プレビュー)](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
+
+## <a name="version-096"></a>バージョン 0.9.6
+2018/02/28
+
+### <a name="download-azure-storage-explorer-096-preview"></a>Azure Storage Explorer 0.9.6 (プレビュー) をダウンロードする
+- [Windows 用 Azure Storage Explorer 0.9.6 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure Storage Explorer 0.9.6 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure Storage Explorer 0.9.6 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
+
+### <a name="fixes"></a>修正
+* 予期される BLOB/ファイルがエディターに表示されない問題がありました。 この問題は修正されています。
+* スナップショット ビューを切り替えた際に、項目が正しく表示されない問題がありました。 この問題は修正されています。
+
+### <a name="known-issues"></a>既知の問題
+* Storage Explorer では ADFS アカウントがサポートされません。
+* Azure Stack を対象にしている場合、一部のファイルについては、追加 BLOB としてアップロードできない可能性があります。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、[こちら](https://github.com/Azure/azure-storage-node/issues/317)で説明したフィルターのキャンセル回避策を使用しているためです。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* サブスクリプションをフィルターするために資格情報の再入力が必要であると、アカウント設定パネルに表示されることがあります。
+* BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
+* 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
+* Storage Explorer で使用されている Electron シェルには、一部の GPU (グラフィックス処理装置) ハードウェア アクセラレータで問題が発生します。 Storage Explorer に空白 (空) のメイン ウィンドウが表示される場合は、コマンド ラインから Storage Explorer を起動し、`--disable-gpu` スイッチを追加して、GPU アクセラレータを無効にしてみてください: 
+
+```
+./StorageExplorer.exe --disable-gpu
+```
+
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
+
+## <a name="previous-releases"></a>以前のリリース
+
+* [バージョン 0.9.5](#version-095)
+* [バージョン 0.9.4 および 0.9.3](#version-094-and-093)
+* [バージョン 0.9.2](#version-092)
+* [バージョン 0.9.1 および 0.9.0](#version-091-and-090)
+* [バージョン 0.8.16](#version-0816)
+* [Version 0.8.14](#version-0814)
+* [バージョン 0.8.13](#version-0813)
+* [バージョン 0.8.12 および 0.8.11 および 0.8.10](#version-0812-and-0811-and-0810)
+* [バージョン 0.8.9 および 0.8.8](#version-089-and-088)
+* [バージョン 0.8.7](#version-087)
+* [バージョン 0.8.6](#version-086)
+* [バージョン 0.8.5](#version-085)
+* [バージョン 0.8.4](#version-084)
+* [バージョン 0.8.3](#version-083)
+* [バージョン 0.8.2](#version-082)
+* [バージョン 0.8.0](#version-080)
+* [バージョン 0.7.20160509.0](#version-07201605090)
+* [バージョン 0.7.20160325.0](#version-07201603250)
+* [バージョン 0.7.20160129.1](#version-07201601291)
+* [バージョン 0.7.20160105.0](#version-07201601050)
+* [バージョン 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-095"></a>バージョン 0.9.5
 2018/02/06
@@ -80,7 +145,7 @@ ms.lasthandoff: 02/21/2018
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-094--093"></a>バージョン 0.9.4/0.9.3
+## <a name="version-094-and-093"></a>バージョン 0.9.4 および 0.9.3
 2018/01/21
 
 ### <a name="download-azure-storage-explorer-094-preview"></a>Azure Storage Explorer 0.9.4 (プレビュー) をダウンロードする
@@ -129,28 +194,6 @@ ms.lasthandoff: 02/21/2018
     ```
     sudo apt-get install libgconf-2-4
     ```
-
-## <a name="previous-releases"></a>以前のリリース
-
-* [バージョン 0.9.2](#version-092)
-* [バージョン 0.9.1 / 0.9.0](#version-091)
-* [バージョン 0.8.16](#version-0816)
-* [Version 0.8.14](#version-0814)
-* [バージョン 0.8.13](#version-0813)
-* [バージョン 0.8.12 / 0.8.11 / 0.8.10](#version-0812--0811--0810)
-* [バージョン 0.8.9 / 0.8.8](#version-089--088)
-* [バージョン 0.8.7](#version-087)
-* [バージョン 0.8.6](#version-086)
-* [バージョン 0.8.5](#version-085)
-* [バージョン 0.8.4](#version-084)
-* [バージョン 0.8.3](#version-083)
-* [バージョン 0.8.2](#version-082)
-* [バージョン 0.8.0](#version-080)
-* [バージョン 0.7.20160509.0](#version-07201605090)
-* [バージョン 0.7.20160325.0](#version-07201603250)
-* [バージョン 0.7.20160129.1](#version-07201601291)
-* [バージョン 0.7.20160105.0](#version-07201601050)
-* [バージョン 0.7.20151116.0](#version-07201511160)
 
 ## <a name="version-092"></a>バージョン 0.9.2
 11/01/2017
@@ -214,7 +257,7 @@ ms.lasthandoff: 02/21/2018
     sudo apt-get install libgconf-2-4
     ```
 
-## <a name="version-091--090-preview"></a>バージョン 0.9.1/0.9.0 (プレビュー)
+## <a name="version-091-and-090"></a>バージョン 0.9.1 および 0.9.0
 10/20/2017
 ### <a name="new"></a>新規
 * Azure Cosmos DB のプレビューのサポート:
@@ -370,7 +413,7 @@ ms.lasthandoff: 02/21/2018
     ```
 
 
-### <a name="version-0812--0811--0810"></a>バージョン 0.8.12 / 0.8.11 / 0.8.10
+### <a name="version-0812-and-0811-and-0810"></a>バージョン 0.8.12 および 0.8.11 および 0.8.10
 04/07/2017
 
 #### <a name="new"></a>新規
@@ -413,7 +456,7 @@ ms.lasthandoff: 02/21/2018
     ```
 
 
-### <a name="version-089--088"></a>バージョン 0.8.9 / 0.8.8
+### <a name="version-089-and-088"></a>バージョン 0.8.9 および 0.8.8
 02/23/2017
 
 >[!VIDEO https://www.youtube.com/embed/R6gonK3cYAc?ecver=1]

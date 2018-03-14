@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/11/2017
+ms.date: 2/28/2018
 ms.author: oanapl
-ms.openlocfilehash: f2a07d58938ae77701d8df8099ec0aedf1524d6b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: def4f1cdcd173e26964f9be11266d0e1a20fcafa
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -31,7 +31,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 システム正常性レポートは、クラスターとアプリケーションの動作状況を可視化し、問題にフラグを設定します。 システム正常性レポートは、アプリケーションとサービスを対象に、エンティティが実装されて正しく動作していることを Service Fabric の観点から確認します。 レポートは、サービスのビジネス ロジックの正常性モニタリングやハングしたプロセスの検出を提供するものではありません。 ユーザー サービスでロジックに固有の情報を追加して正常性データを強化できます。
 
 > [!NOTE]
-> ユーザー ウォッチドッグによって送信された正常性レポートは、システム コンポーネントでエンティティが作成された *後* にのみ表示できます。 エンティティが削除されると、正常性ストアは関連付けられているすべての正常性レポートを自動的に削除します。 エンティティの新しいインスタンスが作成される (たとえば、サービス レプリカのステートフルな永続化インスタンスが新しく作成される) 場合も同じことが当てはまります。 古いインスタンスに関連付けられているすべてのレポートが削除され、ストアからクリーンアップされます。
+> ユーザー ウォッチドッグによって送信された正常性レポートは、システム コンポーネントでエンティティが作成された *後* にのみ表示できます。 エンティティが削除されると、正常性ストアは関連付けられているすべての正常性レポートを自動的に削除します。 エンティティの新しいインスタンスが作成される場合も同じことが当てはまります。 たとえば、サービス レプリカのステートフルな永続化インスタンスが新しく作成されるときです。 古いインスタンスに関連付けられているすべてのレポートが削除され、ストアからクリーンアップされます。
 > 
 > 
 
@@ -40,7 +40,7 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 いくつかのシステム レポートを確認して、何がレポートのトリガーになっているかを理解し、レポートに表示された問題を修正する方法を学習しましょう。
 
 > [!NOTE]
-> Service Fabric では、指定した条件に関するレポートが継続的に追加され、クラスターおよびアプリケーションの状況をより詳細に把握できます。既存のレポートに詳細情報を追加して改善し、問題の迅速なトラブルシューティングに役立てることもできます。
+> Service Fabric では、指定した条件に関するレポートが継続的に追加され、クラスターおよびアプリケーションの状況をより詳細に把握できます。 既存のレポートに詳細情報を追加して改善し、迅速に問題を解決することができます。
 > 
 > 
 
@@ -54,22 +54,25 @@ Azure Service Fabric コンポーネントは、追加の設定なしで、ク�
 
 * **SourceId**: System.Federation
 * **プロパティ**: **Neighborhood** で始まり、ノードの情報が含まれます。
-* **次のステップ**: ネットワーク コンピューターが消失した原因を調査します (たとえば、クラスター ノード間の通信をチェックします)。
+* **次のステップ**: ネットワーク コンピューターが消失した原因を調査します。 たとえば、クラスター ノード間の通信をチェックします。
 
 ### <a name="rebuild"></a>再構築
 
-クラスター ノードに関する情報は、**Failover Manager** サービス (**FM**) によって管理されます。 FM がそのデータを失う (データの損失状態になる) と、クラスター ノードに関する情報が最新であることを FM は保証できなくなります。 その場合、システムが**再構築**処理へと移行し、**System.FM** は、その状態を再構築するために、クラスター内のすべてのノードからデータを収集します。 再構築処理は、ネットワークの問題やノードの問題によって途中で停止してしまうこともあります。 同じことは、**Failover Manager Master** サービス (**FMM**) でも起こる可能性があります。 **FMM** は、クラスターに含まれるすべての **FM** の所在を追跡するステートレスなシステム サービスです。 **FMM** のプライマリは常に、ID が最も 0 に近いノードです。 このノードがドロップした場合に**再構築**がトリガーされます。
+クラスター ノードに関する情報は、Failover Manager (FM) サービスによって管理されます。 FM がそのデータを失う (データの損失状態になる) と、クラスター ノードに関する情報が最新であることを FM は保証できなくなります。 その場合、システムが再構築処理へと移行し、System.FM は、その状態を再構築するために、クラスター内のすべてのノードからデータを収集します。 再構築処理は、ネットワークの問題やノードの問題によって途中で停止してしまうこともあります。 同じことは、Failover Manager Master (FMM) サービスでも起こる可能性があります。 FMM は、クラスターに含まれるすべての FM の所在を追跡するステートレスなシステム サービスです。 FMM のプライマリは常に、ID が最も 0 に近いノードです。 このノードがドロップした場合に再構築がトリガーされます。
 前述したいずれかの症状が起こると、**System.FM** または **System.FMM** から、エラー レポートを通じてその旨が警告されます。 再構築が停止するタイミングとしては、次の 2 つのフェーズが考えられます。
 
-* ブロードキャストを待機しているとき: **FM/FMM** は、ブロードキャスト メッセージに対して他のノードから返される応答を待機します。 ノード間にネットワーク接続の問題が生じているかどうかを調査することが**次のステップ**となります。   
-* ノードを待機しているとき: **FM/FMM** は既に、他のノードからブロードキャストへの応答を受信しており、特定のノードからの応答を待機しています。 正常性レポートには、**FM/FMM** がどのノードの応答を待機しているが一覧表示されます。 **FM/FMM** と一覧に表示されているノードとの間のネットワーク接続を調査することが**次のステップ**となります。 一覧表示されている各ノードについて、他の問題の可能性も調べてください。
+* **ブロードキャストを待機しているとき**: FM/FMM は、ブロードキャスト メッセージに対して他のノードから返される応答を待機します。
+
+  * ノード間にネットワーク接続の問題が生じているかどうかを調査することが**次のステップ**となります。
+* **ノードを待機しているとき**: FM/FMM は既に、他のノードからブロードキャストへの応答を受信しており、特定のノードからの応答を待機しています。 正常性レポートには、FM/FMM がどのノードの応答を待機しているが一覧表示されます。
+   * FM/FMM と一覧に表示されているノードとの間のネットワーク接続を調査することが**次のステップ**となります。 一覧表示されている各ノードについて、他の問題の可能性も調べてください。
 
 * **SourceID**: System.FM または System.FMM
 * **プロパティ**: 再構築。
 * **次のステップ**: ノード間のネットワーク接続を調査すると共に、正常性レポートの説明に記載されているノードがあれば、その特定のノードの状態を調査します。
 
 ## <a name="node-system-health-reports"></a>ノード システム正常性レポート
-**System.FM**は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます。 詳細については、[RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync) に関する記事をご覧ください。
+System.FMは Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます。 詳細については、[RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync) に関する記事をご覧ください。
 
 ### <a name="node-updown"></a>ノードを上/下に移動
 System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。 ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。 正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。 その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。 そのノードにデプロイされたエンティティは、ノードが System.FM によって起動されたものとしてレポートされた場合、エンティティに関連付けられているインスタンスと同じインスタントと共に、クエリを通じて公開されます。 System.FM によってノードの停止または再起動が新規インスタンスとして報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
@@ -118,18 +121,18 @@ Service Fabric Load Balancer は、ノード容量違反を検出すると警告
 クラスター マニフェストで定義されているノード容量が、リソース ガバナンス メトリック (メモリと CPU コア数) の実際のノード容量よりも大きい場合、System.Hosting が警告を報告します。 [リソース ガバナンス](service-fabric-resource-governance.md)を使用する最初のサービス パッケージが指定されたノードに登録された時点で、正常性レポートが表示されます。
 
 * **SourceId**: System.Hosting
-* **プロパティ**: ResourceGovernance
-* **次のステップ**: このことは、サービス パッケージの管理が想定どおりに適用されず、[リソース ガバナンス](service-fabric-resource-governance.md)が正しく機能しなくなるため、問題になります。 これらのメトリックについて適切なノード容量を設定してクラスター マニフェストを更新するか、またはノード容量をまったく指定せずに、利用可能なリソースを Service Fabric に自動検出させてください。
+* **プロパティ**: **ResourceGovernance**
+* **次のステップ**: これは、サービス パッケージの管理が想定どおりに適用されず、[リソース ガバナンス](service-fabric-resource-governance.md)が正しく機能しなくなるため、問題になります。 これらのメトリックについて適切なノード容量を設定してクラスター マニフェストを更新するか、またはノード容量を指定せずに、利用可能なリソースを Service Fabric に自動検出させてください。
 
 ## <a name="application-system-health-reports"></a>アプリケーション システム正常性レポート
-**System.CM**は Cluster Manager サービスを表し、アプリケーションに関する情報を管理する権限です。
+System.CM は Cluster Manager サービスを表し、アプリケーションに関する情報を管理する権限です。
 
 ### <a name="state"></a>State
 System.CM は、アプリケーションが作成または更新されたときに OK を報告します。 アプリケーションが削除されると、ストアからアプリケーションを削除できるように、正常性ストアに通知します。
 
 * **SourceId**: System.CM
 * **プロパティ**: State
-* **次のステップ**: アプリケーションが作成または更新されたら、Cluster Manager 正常性レポートを含める必要があります。 作成されなかった場合は、クエリを発行してアプリケーションの状態を確認します (例: PowerShell コマンドレット **Get-ServiceFabricApplication -ApplicationName** *applicationName*)。
+* **次のステップ**: アプリケーションが作成または更新されたら、Cluster Manager 正常性レポートを含める必要があります。 作成されなかった場合は、クエリを発行してアプリケーションの状態を確認します。 たとえば、PowerShell コマンドレット **Get-ServiceFabricApplication -ApplicationName** *applicationName* を使用します。
 
 **fabric:/WordCount** アプリケーションの State イベントの例を次に示します。
 
@@ -155,7 +158,7 @@ HealthEvents                    :
 ```
 
 ## <a name="service-system-health-reports"></a>サービス システム正常性レポート
-**System.FM**は Failover Manager サービスを表し、サービスに関する情報を管理する権限です。
+System.FM は Failover Manager サービスを表し、サービスに関する情報を管理する権限です。
 
 ### <a name="state"></a>State
 System.FM は、サービスが作成されると OK を報告します。 サービスが削除されたら、正常性ストアからエンティティを削除します。
@@ -193,11 +196,11 @@ HealthEvents          :
 **System.PLB** は、アフィニティ チェーンを作成する別のサービスにサービスの更新が関連付けられたことを検出すると、エラーを報告します。 このレポートは、更新が成功した場合にクリアされます。
 
 * **SourceId**: System.PLB
-* **プロパティ**: ServiceDescription
+* **プロパティ**: **ServiceDescription**
 * **次のステップ**: 関連するサービスの説明を確認します。
 
 ## <a name="partition-system-health-reports"></a>パーティション システム正常性レポート
-**System.FM**は Failover Manager サービスを表し、サービス パーティションに関する情報を管理する権限です。
+System.FM は Failover Manager サービスを表し、サービス パーティションに関する情報を管理する権限です。
 
 ### <a name="state"></a>State
 System.FM は、パーティションが作成されており、正常な場合に、OK を報告します。 パーティションが削除されると、正常性ストアからエンティティを削除します。
@@ -407,7 +410,7 @@ HealthEvents          :
 ### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus、ReplicaCloseStatus、ReplicaChangeRoleStatus
 このプロパティは、レプリカを開いたり、閉じたり、レプリカのロールを切り替えたりする場合に生じる警告またはエラーを示すために使用されます。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 API 呼び出しからスローされる例外や、その時点のサービス ホスト プロセスのクラッシュといったエラーが考えられます。 C# コードからの API 呼び出しに起因するエラーの場合、Service Fabric によって正常性レポートに例外とスタック トレースが追加されます。
 
-これらの正常性警告は、対象アクションを何回か (回数はポリシーによって異なります) ローカルに試行した後に生じます。 Service Fabric は、最大しきい値に達するまでアクションを再試行します。 最大しきい値に達した後で、状況を修正するためのアクションを試行する場合があります。 この試行により、Service Fabric はこのノードでのアクションの実行をあきらめるので、これらの警告がクリアされることがあります。 たとえば、レプリカをノードで開けない場合、Service Fabric は正常性警告を発生させます。 その後もレプリカを開けない場合、Service Fabric は自己修復のためのアクションを実行します。 このアクションにおいて、別のノードで同じ操作を試行することがあります。 これにより、このレプリカで生じている警告がクリアされます。 
+これらの正常性警告は、対象アクションを何回か (回数はポリシーによって異なります) ローカルに試行した後に生じます。 Service Fabric は、最大しきい値に達するまでアクションを再試行します。 最大しきい値に達した後で、状況を修正するためのアクションを試行する場合があります。 この試行により、Service Fabric はこのノードでのアクションの実行をあきらめるので、これらの警告がクリアされることがあります。 たとえば、レプリカをノードで開けない場合、Service Fabric は正常性警告を発生させます。 その後もレプリカを開けない場合、Service Fabric は自己修復のためのアクションを実行します。 このアクションにおいて、別のノードで同じ操作を試行することがあります。 この試行により、このレプリカで生じている警告がクリアされます。 
 
 * **SourceId**: System.RA
 * **プロパティ**: **ReplicaOpenStatus**、**ReplicaCloseStatus**、**ReplicaChangeRoleStatus**
@@ -506,7 +509,7 @@ HealthEvents          :
 まれなケースとして、対象ノードと Failover Manager サービス間の通信などの問題が原因で再構成がスタックすることもあります。
 
 * **SourceId**: System.RA
-* **プロパティ**: **Reconfiguration**
+* **プロパティ**: Reconfiguration
 * **次のステップ**: 正常性レポートの内容に応じて、ローカル レプリカまたはリモート レプリカを調査します。
 
 次の例は、ローカル レプリカで再構成がスタックしている正常性レポートを示しています。 この例では、サービスがキャンセル トークンを考慮しないことが原因です。
@@ -634,7 +637,7 @@ HealthEvents          :
 
 **IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 例: 
 
-- **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。これは、パーティションのレプリカのレプリカ状態を確認するか、スタック再構成の System.FM 正常性レポートを確認することで判別できます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 プライマリの `CommittedSequenceNumber` の後ろにある `LastAppliedReplicationSequenceNumber` が含まれるレプリカに問題があります。
+- **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。 これに該当するかを確認するには、パーティションのレプリカのレプリカ状態を調べるか、スタック再構成の System.FM 正常性レポートを調べます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 問題があるレプリカの `LastAppliedReplicationSequenceNumber` 値は、プライマリの `CommittedSequenceNumber` 値の後ろにあります。
 
 - **IReplicator.BuildReplica (<Remote ReplicaId>)**: この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
 
@@ -644,14 +647,14 @@ HealthEvents          :
 
 * **SourceId**: System.Replicator
 * **プロパティ**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**
-* **次の手順**: レポートがプライマリにある場合は、クラスター内のノード間の接続を確認します。 すべての接続が正常な場合は、1 つ以上のセカンダリが低速で、操作を適用するためのディスクの待ち時間が長い可能性があります。 レポートがセカンダリにある場合は、ノードのディスク使用量とパフォーマンスを最初に確認してから、低速なノードからプライマリへの発信接続を確認します。
+* **次の手順**: レポートがプライマリにある場合は、クラスター内のノード間の接続を確認します。 すべての接続が正常な場合は、1 つ以上のセカンダリが低速で、操作を適用するためのディスクの待ち時間が長い可能性があります。 レポートがセカンダリにある場合は、まずノードのディスク使用量とパフォーマンスを確認します。 次に、低速のノードからプライマリへの発信接続を確認します。
 
 **RemoteReplicatorConnectionStatus:**
-プライマリ レプリカの **System.Replicator** は、セカンダリ (リモート) レプリケーターへの接続が正常でない場合に警告を表示します。 レポートのメッセージにリモート リプリケーターのアドレスが表示されるため、間違った構成が渡されたかどうかや、レプリケーター間にネットワークの問題があるかどうかを簡単に確認できます。
+プライマリ レプリカの **System.Replicator** は、セカンダリ (リモート) レプリケーターへの接続が正常でない場合に警告を表示します。 レポートのメッセージにリモート レプリケーターのアドレスが表示されるため、間違った構成が渡されたかどうかや、レプリケーター間にネットワークの問題があるかどうかを簡単に確認できます。
 
 * **SourceId**: System.Replicator
 * **プロパティ**: **RemoteReplicatorConnectionStatus**
-* **次の手順**: エラー メッセージを確認し、リモート リプリケーターのアドレスが正しく構成されていることを確認します (たとえば、リモート リプリケーターが "localhost" リッスン アドレスで開かれている場合、外部からアクセスできません)。 アドレスが正しいようであれば、プライマリ ノードとリモート アドレスの間の接続を確認して、考えられるネットワークの問題を探します。
+* **次のステップ**: エラー メッセージを確認し、リモート レプリケーターのアドレスが正しく構成されていることを確認します。 たとえば、リモート レプリケーターが "localhost" リッスン アドレスで開かれている場合、外部からアクセスできません。 アドレスが正しいようであれば、プライマリ ノードとリモート アドレスの間の接続を確認して、考えられるネットワークの問題を探します。
 
 ### <a name="replication-queue-full"></a>レプリケーション キュー満杯
 **System.Replicator** は、レプリケーション キューが満杯の場合、警告を報告します。 プライマリでレプリケーション キューが満杯になる原因は、通常、1 つまたは複数のセカンダリ レプリカで、処理の確認に時間がかかることです。 セカンダリでこの状態が発生する原因は、通常、サービスでの操作の適用に時間がかかることです。 キューが満杯でなくなると、警告はクリアされます。
@@ -660,10 +663,10 @@ HealthEvents          :
 * **プロパティ**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**
 
 ### <a name="slow-naming-operations"></a>名前付け操作が遅い
-**System.NamingService** は、名前付け操作にかかる時間が許容範囲を超える場合に、そのプライマリ レプリカの正常性を報告します。 名前付け操作の例として、[CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) または [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) があります。 FabricClient には、[サービス管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)や[プロパティ管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)など、その他多くのメソッドが見つかります。
+**System.NamingService** は、名前付け操作にかかる時間が許容範囲を超える場合に、そのプライマリ レプリカの正常性を報告します。 名前付け操作の例として、[CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) または [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) があります。 FabricClient ではその他多くのメソッドが見つかります。 たとえば、[サービス管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)や[プロパティ管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)にあります。
 
 > [!NOTE]
-> ネーム サービスは、サービス名を解決してクラスター内の場所に対応付けて、ユーザーによるサービス名とプロパティの管理を可能にします。 これは、Service Fabric のパーティション分割型の永続化されたサービスです。 パーティションの 1 つは、Service Fabric のすべての名前とサービスに関するメタデータを含む *Authority Owner* を表します。 Service Fabric の名前は、*Name Owner* パーティションという各種パーティションにマップされるため、サービスは拡張可能です。 詳細については、[ネーム サービス](service-fabric-architecture.md)に関するページをご覧ください。
+> 名前付けサービスによって、サービス名がクラスター内の場所に解決されます。 ユーザーはこれを使用してサービス名とプロパティを管理できます。 これは、Service Fabric のパーティション分割型の永続化されたサービスです。 パーティションの 1 つは、Service Fabric のすべての名前とサービスに関するメタデータを含む *Authority Owner* を表します。 Service Fabric の名前は、*Name Owner* パーティションという各種パーティションにマップされるため、サービスは拡張可能です。 詳細については、[ネーム サービス](service-fabric-architecture.md)に関するページをご覧ください。
 > 
 > 
 
@@ -727,7 +730,7 @@ HealthEvents          :
 System.Hosting は、アプリケーションがノードで正常にアクティブ化されていると OK を報告します。 それ以外の場合、エラーを報告します。
 
 * **SourceId**: System.Hosting
-* **プロパティ**: ロールアウト バージョンを含むアクティブ化
+* **プロパティ**: ロールアウト バージョンを含む**Activation**
 * **次のステップ**: アプリケーションが正常でない場合、アクティブ化が失敗した原因を調査します。
 
 アクティブ化の成功例を次に示します。
@@ -762,7 +765,7 @@ HealthEvents                       :
 System.Hosting は、アプリケーション パッケージのダウンロードが失敗した場合、エラーを報告します。
 
 * **SourceId**: System.Hosting
-* **プロパティ**: **Download:***RolloutVersion*
+* **プロパティ**: ロールアウト バージョンを含む **Download**
 * **次のステップ**: ノードでダウンロードが失敗した原因を調査します。
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage システム正常性レポート
@@ -779,7 +782,7 @@ System.Hosting は、ノードでのサービス パッケージのアクティ�
 System.Hosting は、各コード パッケージのアクティブ化が成功すると、OK を報告します。 アクティブ化に失敗した場合は、構成されているとおりに警告を報告します。 **CodePackage** がアクティブ化に失敗したか、構成されている **CodePackageHealthErrorThreshold** より大きいエラーで終了した場合、Hosting はエラーを報告します。 サービス パッケージに複数のコード パッケージが含まれている場合、コード パッケージごとにアクティブ化レポートが生成されます。
 
 * **SourceId**: System.Hosting
-* **プロパティ**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:***CodePackageName*:*SetupEntryPoint/EntryPoint* の形でコード パッケージの名前とエントリ ポイントを含みます。 たとえば、**CodePackageActivation:Code:SetupEntryPoint** のようになります。
+* **プロパティ**: プレフィックス **CodePackageActivation** を使用し、*CodePackageActivation:CodePackageName:SetupEntryPoint/EntryPoint* の形でコード パッケージの名前とエントリ ポイントを含みます。 たとえば、**CodePackageActivation:Code:SetupEntryPoint** のようになります。
 
 ### <a name="service-type-registration"></a>サービスの種類の登録
 System.Hosting は、サービスの種類が正常に登録されていると、OK を報告します。 (**ServiceTypeRegistrationTimeout** を使用して構成されている) 時間内に登録が行われなかった場合は、エラーを報告します。 ランタイムが終了すると、サービスの種類はノードの登録から削除され、Hosting から警告が報告されます。
@@ -840,7 +843,7 @@ HealthEvents               :
 System.Hosting は、サービス パッケージのダウンロードが失敗すると、エラーを報告します。
 
 * **SourceId**: System.Hosting
-* **プロパティ**: **Download:***RolloutVersion*
+* **プロパティ**: ロールアウト バージョンを含む **Download**
 * **次のステップ**: ノードでダウンロードが失敗した原因を調査します。
 
 ### <a name="upgrade-validation"></a>アップグレードの検証
@@ -854,15 +857,15 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 ノード容量がクラスター マニフェストで定義されておらず、自動検出の構成がオフになっている場合に、System.Hosting は警告を報告します。 [リソース ガバナンス](service-fabric-resource-governance.md)を使用する最初のサービス パッケージが指定されたノードに登録された時点で、Service Fabric が正常性の警告を出します。
 
 * **SourceId**: System.Hosting
-* **プロパティ**: ResourceGovernance
+* **プロパティ**: **ResourceGovernance**
 * **次のステップ**: この問題を解決するには、クラスター マニフェストを変更して使用可能なリソースの自動検出を有効にすることをお勧めします。 もう 1 つの方法として、これらのメトリックに対して適切なノード容量を指定してクラスター マニフェストを更新することもできます。
 
 ## <a name="next-steps"></a>次の手順
-[Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
+* [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
 
-[サービス正常性のレポートとチェックの方法](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
+* [サービス正常性のレポートとチェックの方法](service-fabric-diagnostics-how-to-report-and-check-service-health.md)
 
-[ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
+* [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
-[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
+* [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
 

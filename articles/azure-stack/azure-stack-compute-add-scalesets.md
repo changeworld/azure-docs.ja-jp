@@ -8,15 +8,15 @@ editor:
 ms.assetid: 
 ms.service: azure-stack
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 02/28/2018
 ms.author: brenduns
 ms.reviewer: anajod
 keywords: 
-ms.openlocfilehash: 6e4c1145b8ff4665024b4532cf9cc9ac6a0a24a1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cb8ac5435b7a5c6deb9d4571696c79b2ed15c93a
+ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/02/2018
 ---
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>仮想マシン スケール セットを Azure Stack で使用できるようにする
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 02/21/2018
 
 仮想マシン スケール セットは Azure Stack のコンピューティング リソースです。 これらを使用して同一の仮想マシン セットをデプロイおよび管理できます。 すべての仮想マシンが同一に構成されているため、スケール セットでは仮想マシンを事前にプロビジョニングする必要がありません。 ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
 
-このトピックでは、Azure Stack Marketplace でスケール セットを使用できるようにするプロセスについて説明します。 この手順を完了すると、ユーザーは各自のサブスクリプションに仮想マシン スケール セットを追加できます。
+この記事では、Azure Stack Marketplace でスケール セットを使用できるようにするプロセスについて説明します。 この手順を完了すると、ユーザーは各自のサブスクリプションに仮想マシン スケール セットを追加できます。
 
 Azure Stack の仮想マシン スケール セットは、Azure の仮想マシン スケール セットと同様です。 詳細については、次のビデオをご覧ください。
 * [Mark Russinovich が語る Azure Scale Sets](https://channel9.msdn.com/Blogs/Regular-IT-Guy/Mark-Russinovich-Talks-Azure-Scale-Sets/)
@@ -81,7 +81,7 @@ Add-AzsVMSSGalleryItem -Location $Location
     Remove-AzsVMSSGalleryItem
 
 > [!NOTE]
-> ギャラリー アイテムはすぐに削除されない場合があります。 Marketplace から削除されるまで、ポータルを数回更新する必要がある場合があります。
+> ギャラリー アイテムはすぐに削除されない場合があります。 Marketplace からアイテムが削除済みとして表示されるまで、ポータルを数回更新する必要がある場合があります。
 
 
 ## <a name="next-steps"></a>次の手順

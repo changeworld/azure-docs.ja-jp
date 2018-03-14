@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: gwallace
-ms.openlocfilehash: bb20137cc3ac8daf82ee21300be6981e09ce3fe0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 9280925cdd5cccf8d1d2f2b33a7de8523a07cd14
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/05/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -56,8 +56,8 @@ Update Management で管理されるコンピューターでは、評価と更�
 
 |オペレーティング システム  |メモ  |
 |---------|---------|
-|Windows Server 2008 以上     | 更新プログラムの評価のみをサポートします         |
-|Windows Server 2008 R2 SP1 以上     |Windows Server 2008 R2 SP1 については、.NET Framework 4.5 および WMF 5.0 以降が必要です<br>Nano Server はサポートされていません         |
+|Windows Server 2008、Windows Server 2008 R2 RTM    | 更新プログラムの評価のみをサポートします         |
+|Windows Server 2008 R2 SP1 以上     |Windows Server 2008 R2 SP1 については、.NET Framework 4.5 および WMF 5.0 以降が必要です        |
 |CentOS 6 (x86/x64) および 7 (x64)      | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |Red Hat Enterprise 6 (x86/x64) および 7 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
 |SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)     | Linux エージェントは、更新リポジトリへのアクセスが必要です。        |
@@ -70,7 +70,7 @@ Update Management で管理されるコンピューターでは、評価と更�
 |オペレーティング システム  |メモ  |
 |---------|---------|
 |Windows クライアント     | クライアント オペレーティング システム (Windows 7、Windows 10 など) はサポートされていません。        |
-|Nano Server     | Nano Server は Windows 2016 に含まれています。        |
+|Windows Server 2016 Nano Server     | サポートされていません       |
 
 ### <a name="client-requirements"></a>クライアントの要件
 

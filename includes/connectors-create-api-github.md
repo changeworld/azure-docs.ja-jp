@@ -1,18 +1,43 @@
-### <a name="prerequisites"></a>前提条件
-* [GitHub](http://GitHub.com) アカウント 
+---
+title: "インクルード ファイル"
+description: "インクルード ファイル"
+services: logic-apps
+author: MandiOhlinger
+ms.service: logic-apps
+ms.topic: include
+ms.date: 03/02/2018
+ms.author: mandia
+ms.custom: include file
+ms.openlocfilehash: ec5b3ca9ccd139cbdf17768056eb1d835336e7a7
+ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/05/2018
+---
+1. [Azure Portal](https://portal.azure.com) で、空のロジック アプリを作成します。 
 
-ロジック アプリで GitHub アカウントを使用するには、GitHub アカウントに接続するロジック アプリを承認する必要があります。 幸い、Azure Portal のロジック アプリ内から簡単に実行できます。 
+2. Logic Apps デザイナーで、フィルターとして "github" を入力します。 
 
-次に、GitHub アカウントに接続するロジック アプリを承認する手順を示します。
+3. 使用する GitHub コネクタとトリガーを選択します。
 
-1. GitHub への接続を作成するには、ロジック アプリ デザイナーのドロップダウン リストから **[Microsoft が管理している API を表示]** を選択し、検索ボックスに「*GitHub*」と入力します。 使用するトリガーまたはアクションを選択します。  
-   ![](./media/connectors-create-api-github/github-1.png)
-2. これまでに GitHub への接続を作成していない場合は、GitHub の資格情報を指定するよう求められます。 この資格情報を使用して、接続するロジック アプリの承認と、GitHub アカウントのデータへのアクセスが行われます。  
-   ![](./media/connectors-create-api-github/github-2.png)
-3. GitHub のユーザー名とパスワードを入力して、ロジック アプリを承認します。  
-   ![](./media/connectors-create-api-github/github-3.png)   
-4. 操作の目的を確認します。  
-   ![](./media/connectors-create-api-github/github-4.png)   
-5. ポータルで接続が作成されたことを確認します。 これで、ロジック アプリを作成し、その中で GitHub を使用することができます。   
-   ![](./media/connectors-create-api-github/github-5.png)   
+   ![GitHub コネクタとトリガーの選択](./media/connectors-create-api-github/github-connector.png)
+
+   > [!NOTE]
+   > すべてのロジック アプリ ワークフローが、トリガーによって開始する必要があります。 アクションを選択できるのは、使用しているロジック ワークフローが既にトリガーによって開始されているときだけです。 
+
+4. 以前に接続を作成していない場合は、**[サインイン]** を選択し、メッセージが表示されたら GitHub の資格情報を入力します。  
+
+   ![GitHub の資格情報でサインイン](./media/connectors-create-api-github/github-connector-sign-in-credentials.png)
+
+   ロジック アプリはこれらの資格情報を使用して、GitHub アカウントのデータへの接続とアクセスを承認します。 
+
+5. GitHub のユーザー名とパスワードを入力して、承認を確認します。
+
+   ![資格情報を入力して承認を確認](./media/connectors-create-api-github/github-connector-authorize.png)   
+
+   Azure Portal で接続が作成され、いつでもご利用いただけます。
+
+6. ロジック アプリ ワークフローを引き続き定義する。
+
+   ![その他のアクションをロジック アプリ ワークフローに追加する](./media/connectors-create-api-github/github-connector-logic-app.png)
 
