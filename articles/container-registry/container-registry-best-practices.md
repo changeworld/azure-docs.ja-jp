@@ -8,11 +8,11 @@ ms.service: container-registry
 ms.topic: quickstart
 ms.date: 12/20/2017
 ms.author: marsma
-ms.openlocfilehash: d94c6801f96ce684ebb912667dc4aa381c171216
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 684b778f57da4adb331958c5daef6b9906b6d253
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Azure Container Registry のベスト プラクティス
 
@@ -101,7 +101,7 @@ Azure Container Registry には、いくつかのレベル (SKU) があり、そ
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az_acr_repository_delete
-[azure-cli]: /cli/azure/overview
+[azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-skus]: container-registry-skus.md

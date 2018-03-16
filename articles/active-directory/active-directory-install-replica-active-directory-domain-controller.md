@@ -16,11 +16,11 @@ ms.date: 11/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 3f7624d588e958985a73c5b40e8010e18e8879cb
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f4e64fbc6c2fda026297b69bd54471d49b6785a1
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="install-a-replica-active-directory-domain-controller-in-an-azure-virtual-network"></a>Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール
 この記事では、Azure 仮想ネットワークの Azure 仮想マシン (VM) に、オンプレミス Active Directory ドメインのレプリカ DC として使用される追加のドメイン コントローラー (DC) をインストールする方法を説明します。 [Azure 仮想ネットワーク上に Windows Server Active Directory フォレストをインストールする](active-directory-new-forest-virtual-machine.md)こともできます。 Azure 仮想ネットワークに Active Directory Domain Services (AD DS) をインストールする方法については、「[Azure の仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン](https://msdn.microsoft.com/library/azure/jj156090.aspx)」を参照してください。
@@ -50,7 +50,7 @@ DC ロールをホストする VM を作成するには、「[Azure ポータル
 
 Azure ポータルではなく Windows PowerShell を使用して VM を作成する方法については、[Azure PowerShell を使用した Windows ベースの Virtual Machines の作成と事前構成](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事を参照してください。
 
-DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azure/overview) し、Set-AzureStaticVNetIP コマンドレットを実行します。 For example:
+DC ロールを実行する VM の静的 IP アドレスを予約します。 静的 IP アドレスを予約するには、Microsoft Web Platform Installer をダウンロードして、 [Azure PowerShell をインストール](/powershell/azure/overview) し、Set-AzureStaticVNetIP コマンドレットを実行します。 例: 
 
 ````
 Get-AzureVM -ServiceName AzureDC1 -Name AzureDC1 | Set-AzureStaticVNetIP -IPAddress 10.0.0.4 | Update-AzureVM
@@ -62,7 +62,7 @@ VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続�
 
 ## <a name="reconfigure-dns-server-for-the-virtual-network"></a>仮想ネットワークの DNS サーバーを再構成する
 1. 仮想ネットワーク名の一覧を取得するには、[Azure ポータル](https://portal.azure.com)で "*仮想ネットワーク*" を検索し、**[仮想ネットワーク]** を選択して一覧を表示します。 
-2. 管理する仮想ネットワークを開き、オンプレミス DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用するように[仮想ネットワークの DNS サーバーの IP アドレスを再構成](../virtual-network/virtual-network-manage-network.md#dns-servers)します。
+2. 管理する仮想ネットワークを開き、オンプレミス DNS サーバーの IP アドレスではなく、レプリカ DC に割り当てられた静的 IP アドレスを使用するように[仮想ネットワークの DNS サーバーの IP アドレスを再構成](../virtual-network/manage-virtual-network.md#change-dns-servers)します。
 3. 仮想ネットワーク上のすべてのレプリカ DC VM が、仮想ネットワーク上の DNS サーバーを使用するように構成されていることを確認するには:
   1. **[仮想マシン]** を選択します。
   2. VM を選択し、**[再起動]** を選択します。 
@@ -72,7 +72,7 @@ VM にサインインし、サイト間 VPN 接続または ExpressRoute 接続�
 
 アプリケーション サーバー ロールをホストする VM を作成するには、「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md)」の手順に従います。 Azure ポータルではなく Microsoft PowerShell を使用して VM を作成する方法については、[Azure PowerShell を使用した Windows ベースの Virtual Machines の作成と構成](../virtual-machines/windows/classic/create-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関する記事を参照してください。 次の表は、推奨する設定を示しています。
 
-| 設定 | 値 |
+| Setting | 値 |
 | --- | --- |
 |  **イメージの選択** | Windows Server 2012 R2 Datacenter |
 |  **仮想マシンの構成** |<p>仮想マシン名: 単一ラベルの名前 (例: AppServer1) を入力します。</p><p>新しいユーザー名: ユーザーの名前を入力します。 このユーザーは、VM 上のローカルの Administrators グループのメンバーになります。 最初に VM にサインインするときは、この名前でサインインする必要があります。 Administrator という名前の組み込みのアカウントは機能しません。</p><p>新しいパスワード/確認: パスワードを入力します。</p> |

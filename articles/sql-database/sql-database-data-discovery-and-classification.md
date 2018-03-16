@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: giladm
-ms.openlocfilehash: 1ff7f3509ccdaa6911cee0487d5a6d90b11eb79f
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: da4f72e61607dcad7314a2fe65324da4635752c5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Azure SQL Database のデータの検出と分類
 データの検出と分類 (現在プレビュー段階) では、Azure SQL Database に組み込まれる、データベースの機微なデータの**検出**、**分類**、**ラベル付け** & **保護**を行う高度な機能が用意されます。
@@ -95,12 +95,12 @@ ms.lasthandoff: 02/11/2018
 
 機密データへのアクセスを監視できることは、情報保護パラダイムの重要な要素の 1 つです。
 
-[Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) が拡張され、監査ログに *data_sensitivity_information* という名前の新しいフィールドが追加されています。このフィールドには、クエリによって返された実際のデータの重大度の分類 (ラベル) が記録されます。
+[Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) が拡張され、監査ログに *data_sensitivity_information* という名前の新しいフィールドが追加されています。このフィールドには、クエリによって返された実際のデータの重大度の分類 (ラベル) が記録されます。
 
 ![ナビゲーション ウィンドウ][11]
 
 ## <a id="subheading-4"></a>次のステップ
-分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Database Auditing](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-auditing) を構成することを検討します。
+分類済みの機密データへのアクセスを監視および監査するように [Azure SQL Database Auditing](https://docs.microsoft.com/azure/sql-database/sql-database-auditing) を構成することを検討します。
 
 <!--Anchors-->
 [SQL Data Discovery & Classification overview]: #subheading-1

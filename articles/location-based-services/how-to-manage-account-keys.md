@@ -3,17 +3,17 @@ title: "Azure Location Based Services アカウントとキーを管理する方
 description: "Azure Portal を使用して、Azure Location Based Services アカウントを管理し、アクセス キーを管理することができます。"
 services: location-based-services
 keywords: "SEO チャンプを確認せずに、キーワードを追加または編集しないでください。"
-author: philmea
-ms.author: philmea
+author: kgremban
+ms.author: kgremban
 ms.date: 11/14/2017
 ms.topic: article
 ms.service: location-based-services
 manager: timlt
-ms.openlocfilehash: b82ff3edc3515d9dce465c7a7ed6084a2bfe25c2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8ea7beae054157800ee404cf237772d0677574ca
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-manage-your-azure-location-based-services-account-and-keys"></a>Azure Location Based Services アカウントとキーを管理する方法
 

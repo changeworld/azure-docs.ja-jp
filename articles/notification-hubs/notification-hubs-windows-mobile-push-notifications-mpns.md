@@ -13,13 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 12/22/2017
+ms.date: 03/06/2018
 ms.author: jawh
-ms.openlocfilehash: 7d44d0a0f8683ad6ad55136ad17879e98e26498b
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 38d60001293a3bae6eb9f90179abb8af7815fbe7
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="get-started-with-azure-notification-hubs-for-windows-phone-apps"></a>Azure Notification Hubs の使用 (Windows Phone アプリ)
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -67,7 +67,7 @@ ms.lasthandoff: 01/02/2018
 ## <a name="connecting-your-app-to-the-notification-hub"></a>Notification Hub にアプリを接続する
 1. Visual Studio で、新しい Windows Phone 8 アプリケーションを作成します。
    
-       ![Visual Studio - New Project - Windows Phone App][13]
+    ![Visual Studio - New Project - Windows Phone App][13]
    
     Visual Studio 2013 Update 2 以降では、代わりに Windows Phone Silverlight アプリケーションを作成します。
    
@@ -119,9 +119,9 @@ ms.lasthandoff: 01/02/2018
    > 
 6. ソリューション エクスプローラーで **[プロパティ]** を展開して `WMAppManifest.xml` ファイルを開き、**[機能]** タブで **ID_CAP_PUSH_NOTIFICATION** 機能がオンであることを確認します。
    
-       ![Visual Studio - Windows Phone App Capabilities][14]
+    ![Visual Studio - Windows Phone App Capabilities][14]
    
-       This ensures that your app can receive push notifications. Without it, any attempt to send a push notification to the app will fail.
+    これにより、アプリケーションでプッシュ通知の受信が有効になります。 オンになっていないと、アプリへのプッシュ通知の送信が失敗します。
 7. `F5` キーを押してアプリケーションを実行します。
    
     登録メッセージがアプリに表示されます。

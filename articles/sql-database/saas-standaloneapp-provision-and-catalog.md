@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: billgib
-ms.openlocfilehash: a13eeb79320360da078ee19a61cc32a2e1f35354
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: dd43ede94d6f219f3b551091fc6e4b59f56386d1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="provision-and-catalog-new-tenants-using-the--application-per-tenant-saas-pattern"></a>テナントごとのアプリケーション SaaS パターンを使用して、新しいテナントのプロビジョニングとカタログ化を行います
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/22/2018
     * チュートリアルでは、テナントごとのスタンドアロン アプリ パターンに適合する Wingtip Tickets サンプル SaaS アプリケーションを使用します。
 
 ## <a name="standalone-application-per-tenant-pattern"></a>テナントごとのスタンドアロン アプリケーション パターン
-テナントごとのスタンドアロン アプリ パターンは、マルチテナント SaaS アプリケーションのさまざまなパターンのうちの 1 つです。  このパターンでは、各テナントに対してスタンドアロン アプリがプロビジョニングされます。 アプリケーションは、アプリケーション レベルのコンポーネントと SQL データベースで構成されます。  各テナントのアプリは、ベンダーのサブスクリプション内にデプロイできます。  または、アプリをテナントのサブスクリプション内にデプロイし、テナントに代わってベンダーが管理できる[マネージ アプリケーション プログラム](https://docs.microsoft.com/en-us/azure/managed-applications/overview)が Azure によって提供されます。 
+テナントごとのスタンドアロン アプリ パターンは、マルチテナント SaaS アプリケーションのさまざまなパターンのうちの 1 つです。  このパターンでは、各テナントに対してスタンドアロン アプリがプロビジョニングされます。 アプリケーションは、アプリケーション レベルのコンポーネントと SQL データベースで構成されます。  各テナントのアプリは、ベンダーのサブスクリプション内にデプロイできます。  または、アプリをテナントのサブスクリプション内にデプロイし、テナントに代わってベンダーが管理できる[マネージ アプリケーション プログラム](https://docs.microsoft.com/azure/managed-applications/overview)が Azure によって提供されます。 
 
    ![テナントごとのアプリケーション パターン](media/saas-standaloneapp-provision-and-catalog/standalone-app-pattern.png)
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 02/22/2018
 テナント カタログは、テナント ID とテナント データベース間のマッピングを保持することで、ID をサーバーとデータベース名に解決できます。  Wingtip SaaS アプリでは、テナント ID はテナント名のハッシュとして計算されますが、他のスキームも使用できます。  スタンドアロン アプリケーションは接続を管理するためにカタログを必要としません。カタログは、他の操作の範囲をテナント データベースのセットに設定するために使用できます。 たとえば、エラスティック クエリでは、カタログを使用して、テナント間レポートのためにクエリが分散されるデータベースのセットを決定できます。
 
 ## <a name="elastic-database-client-library"></a>Elastic Database クライアント ライブラリ
-Wingtip サンプル アプリケーションでは、カタログは、[Elastic Database クライアント ライブラリ](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-elastic-database-client-library) (EDCL) のシャード管理機能によって実装されます。  このライブラリによって、アプリケーションは、データベースに格納されるシャード マップを作成、管理、および使用できます。 Wingtip Tickets サンプルでは、カタログは、"*テナント カタログ*" データベースに格納されます。  シャードは、テナントのデータが格納される シャード (データベース) にテナント キーをマップします。  EDCL 関数は、"*テナント カタログ*" データベース内のテーブルに格納される "*グローバル シャード マップ*" と、各シャードに格納される "*ローカル シャード マップ*" を管理します。
+Wingtip サンプル アプリケーションでは、カタログは、[Elastic Database クライアント ライブラリ](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL) のシャード管理機能によって実装されます。  このライブラリによって、アプリケーションは、データベースに格納されるシャード マップを作成、管理、および使用できます。 Wingtip Tickets サンプルでは、カタログは、"*テナント カタログ*" データベースに格納されます。  シャードは、テナントのデータが格納される シャード (データベース) にテナント キーをマップします。  EDCL 関数は、"*テナント カタログ*" データベース内のテーブルに格納される "*グローバル シャード マップ*" と、各シャードに格納される "*ローカル シャード マップ*" を管理します。
 
 アプリケーションまたは PowerShell スクリプトから EDCL 関数を呼び出して、シャード マップのエントリを作成して管理できます。 その他の EDCL 関数を使用して、シャード セットを取得したり、特定のテナント キーの適切なデータベースに接続したりできます。 
     
@@ -69,7 +69,7 @@ Azure Resource Manager テンプレートを使用して、アプリケーショ
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。 
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
-* 3 つのサンプル テナント アプリがデプロイされている。 これらのアプリを 5 分未満でデプロイするには、「[Wingtip Tickets SaaS スタンドアロン アプリケーションをデプロイする](https://docs.microsoft.com/en-us/azure/sql-database/saas-standaloneapp-get-started-deploy)」を参照してください。
+* 3 つのサンプル テナント アプリがデプロイされている。 これらのアプリを 5 分未満でデプロイするには、「[Wingtip Tickets SaaS スタンドアロン アプリケーションをデプロイする](https://docs.microsoft.com/azure/sql-database/saas-standaloneapp-get-started-deploy)」を参照してください。
 
 ## <a name="provision-the-catalog"></a>カタログをプロビジョニングする
 このタスクでは、すべてのテナント データベースを登録するために使用するカタログをプロビジョニングする方法を学習します。 このチュートリアルの内容は次のとおりです。 
@@ -149,4 +149,4 @@ Azure Portal で作成された新しいリソースを検査できます。
 > * アプリを構成するサーバーおよびデータベースについて。
 > * サンプル リソースを削除して、関連する課金を停止する方法。
 
-[Wingtip Tickets SaaS アプリケーション](https://docs.microsoft.com/en-us/azure/sql-database/saas-dbpertenant-wingtip-app-overview)のテナントごとのデータベース バージョンを使用して、さまざまなテナント間シナリオをサポートするためにカタログを使用する方法を調べることができます。  
+[Wingtip Tickets SaaS アプリケーション](https://docs.microsoft.com/azure/sql-database/saas-dbpertenant-wingtip-app-overview)のテナントごとのデータベース バージョンを使用して、さまざまなテナント間シナリオをサポートするためにカタログを使用する方法を調べることができます。  

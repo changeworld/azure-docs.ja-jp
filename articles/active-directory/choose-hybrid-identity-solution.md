@@ -6,18 +6,18 @@ author: jeffgilb
 manager: mtillman
 ms.reviewer: jsnow
 ms.author: billmath
-ms.date: 01/03/2018
+ms.date: 03/02/2018
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.openlocfilehash: 78813cfbfc9d28e9578f1970083e17d423e071b5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: 9f9099c0ebd65ba84e171314e6f04d858648a805
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="microsoft-hybrid-identity-solutions"></a>Microsoft ハイブリッド ID ソリューション
 [Microsoft Azure Active Directory (Azure AD)](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) ハイブリッド ID ソリューションを使用すると、オンプレミスのディレクトリ オブジェクトと Azure AD を同期したまま、オンプレミスでユーザーを管理できます。 オンプレミスの Windows Server Active Directory と Azure AD との同期を計画する際に最初に行う決断は、同期済み ID を使用するかフェデレーション済み ID を使用するかです。 同期済み ID (およびオプションでパスワード ハッシュ) を使用すると、ユーザーは、オンプレミスとクラウドベースの両方の組織リソースへのアクセスに同じパスワードを使用できます。 シングル サインオン (SSO) やオンプレミスの MFA などのより高度なシナリオ要件では、Active Directory フェデレーション サービス (AD FS) をフェデレーション済み ID にデプロイする必要があります。 
@@ -50,9 +50,6 @@ ms.lasthandoff: 01/03/2018
 
 - Windows Server 2012 R2 以降
 - ユーザーの検証が行われるフォレスト内のドメインに参加済みであること
-
-現在のところ、Azure AD に参加している Windows 10 デバイスを使用している場合は、パススルー認証はサポートされません。 ただし、自動フォールバックとしてパスワード ハッシュ同期を使用して、Windows 10 および前記の従来のクライアントをサポートできます。 プレビューでは、Azure AD Connect のサインイン オプションとしてパススルー認証を選択した場合、パスワード ハッシュ同期が既定で有効になります。
-
 
 ## <a name="federated-identity-ad-fs"></a>フェデレーション ID (AD FS)
 Office 365 やその他のクラウド サービスにユーザーがアクセスする方法をさらに制御するために、[Active Directory フェデレーション サービス (AD FS)](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/whats-new-active-directory-federation-services-windows-server-2016) を使用して、シングル サイン オン (SSO) でディレクトリの同期をセットアップできます。 AD FS でユーザーのサインインのフェデレーション処理を行うと、ユーザーの資格情報を検証するオンプレミスのサーバーに認証が委任されます。 このモデルでは、オンプレミスの Active Directory の資格情報が Azure AD に渡されることはありません。

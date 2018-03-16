@@ -10,14 +10,14 @@ ms.devlang: python
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/25/2017
+ms.date: 03/02/2018
 ms.author: dkshir
 ms.custom: na
-ms.openlocfilehash: acc237afc5c7eccbf2caf876973c147eb8574d7b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 2c14176a3d45b85ae94c27549e5d6448e240ed98
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>Python を使用してシミュレートされたデバイスを IoT ハブに接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
@@ -37,7 +37,7 @@ ms.lasthandoff: 12/08/2017
 * [Python 2.x または 3.x][lnk-python-download]。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 インストール中に求められた場合は、プラットフォーム固有の環境変数に Python を追加します。 Python 2.x を使用する場合は、[*pip* (Python パッケージ管理システム) をインストールまたはアップグレード][lnk-install-pip]することが必要な場合があります。
 * Windows OS を使用している場合は、[Visual C++ 再頒布可能パッケージ][lnk-visual-c-redist]。これは、Python からネイティブ DLL を使用できるようにするためです。
 * [Node.js 4.0 以降][lnk-node-download]。 必ず、セットアップに必要な 32 ビットまたは 64 ビットのインストールを使用してください。 これは、[IoT Hub エクスプローラー ツール][lnk-iot-hub-explorer]をインストールするために必要です。
-* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 
 > [!NOTE]
 > `azure-iothub-service-client` と `azure-iothub-device-client` の *pip* パッケージは現在、Windows OS でのみ利用できます。 Linux/Mac OS については、[Python に必要な開発環境の準備][lnk-python-devbox]に関する記事で、Linux と Mac OS の各セクションを参照してください。
@@ -138,7 +138,7 @@ IoT Hub の作成は以上です。 以降の作業で IoT Hub ホスト名と I
 > 
 
 
-## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
+## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
 このセクションでは、デバイスをシミュレートし、デバイスからクラウドへのメッセージを IoT ハブに送信する Python コンソール アプリを作成する手順を示します。
 
 1. 新しいコマンド プロンプトを開き、次のように Azure IoT Hub Device SDK for Python をインストールします。 インストールしたら、コマンド プロンプトを閉じます。
@@ -282,7 +282,7 @@ IoT Hub の作成は以上です。 以降の作業で IoT Hub ホスト名と I
 
     ![Python でのデバイスからクラウドへのメッセージ][2]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージを IoT Hub に送信できるようにするために、このデバイス ID を使用しました。 IoT Hub エクスプローラー ツールを利用して、IoT ハブが受信したメッセージを確認しました。 
 
 Python SDK for Azure IoT Hub の使用の詳細については、[こちらの Git Hub リポジトリ][lnk-python-github]を参照してください。 Azure IoT Hub Service SDK for Python のメッセージング機能を確認するには、[iothub_messaging_sample.py][lnk-messaging-sample] をダウンロードして実行してください。 Azure IoT Hub Service SDK for Python を使用したデバイス側のシミュレーションについては、[iothub_client_sample.py][lnk-client-sample] をダウンロードして実行してください。

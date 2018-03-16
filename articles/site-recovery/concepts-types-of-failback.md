@@ -2,25 +2,20 @@
 title: "Azure Site Recovery でのフェールバック | Microsoft Docs"
 description: "この記事では、さまざまな種類のフェールバックの概要のほか、Azure Site Recovery サービスを使用してオンプレミスにフェールバックする際に考慮すべき注意事項を示します。"
 services: site-recovery
-documentationcenter: 
 author: rajani-janaki-ram
 manager: guaravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 12/18/2017
+ms.date: 03/05/2018
 ms.author: rajanki
-ms.openlocfilehash: 07dc05c0bd89e69b6bfcff7577919494647efed0
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 372a7867b47960338d7a1bf7e646fb9fffbe72e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="overview-of-failback"></a>フェールバックの概要
+
 Azure にフェールオーバーした後、オンプレミス サイトにフェールバックすることができます。 Azure Site Recovery で可能なフェールバックには 2 種類あります。 
 
 - 元の場所にフェールバックする 
@@ -55,5 +50,5 @@ Azure にフェールオーバーした後、オンプレミス サイトにフ�
 
 ## <a name="next-steps"></a>次の手順
 
-手順に従って[フェールバック操作](site-recovery-how-to-failback-azure-to-vmware.md)を実行します。
+手順に従って[フェールバック操作](vmware-azure-failback.md)を実行します。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
-ms.openlocfilehash: 46b1be5bdd4fa400f437bca274e7f3f6e0dfec08
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.openlocfilehash: 4d47b5426da5d857085991767faa5fb227476408
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>Azure での StorSimple Cloud Appliance のデプロイと管理 (Update 3 以降)
 
@@ -78,7 +78,7 @@ StorSimple Cloud Appliance と StorSimple 物理デバイスの主な相違点�
 クラウド アプライアンスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
 
 * StorSimple 8000 シリーズの物理デバイス (モデル 8100 または 8600) がデータセンターにデプロイされて実行されていることを確認します。 StorSimple Cloud Appliance の作成対象となる同じ StorSimple デバイス マネージャー サービスにこのデバイスを登録してください。
-* クラウド アプライアンス用に、[Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium Storage リージョンとは、[リージョン別の Azure サービスの一覧](https://azure.microsoft.com/regions/services/)の "Disk Storage" 行に該当しているリージョンです。
+* クラウド アプライアンス用に、[Azure の仮想ネットワークを構成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium Storage リージョンとは、[リージョン別の Azure サービスの一覧](https://azure.microsoft.com/regions/services/)の "Disk Storage" 行に該当しているリージョンです。
 * 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。 DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、クラウド アプライアンスの作成は失敗します。
 * ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。 必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。
 * クラウド アプライアンスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-windows-quick-create-portal.md) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。
@@ -273,6 +273,6 @@ DR の前提条件:
 5. `nslookup` が失敗する場合は、インターネット接続エラーが原因でクラウド アプライアンスが StorSimple デバイス マネージャー サービスに登録できていません。
 6. クラウド アプライアンスが "_windows.net_" などの Azure サイトにアクセスできるように、必要な変更を仮想ネットワークに加えます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [StorSimple デバイス マネージャー サービスを使用してクラウド アプライアンスを管理する](storsimple-8000-manager-service-administration.md)方法を確認します。
 * [バックアップ セットから StorSimple ボリュームを復元する](storsimple-8000-restore-from-backup-set-u2.md)方法について理解します。

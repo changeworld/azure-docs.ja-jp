@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/09/2018
 ms.author: babanisa
-ms.openlocfilehash: a915473c67a7577582837b56d1a9ccec4d21c461
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 888196225ec5998405113842344469d02a2cf5c7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
 
@@ -66,7 +66,7 @@ PUT /subscriptions/{subscription-id}/resourceGroups/examplegroup/providers/Micro
       }
     },
     "filter": {
-      "includedEventTypes": [ "blobCreated", "blobDeleted" ],
+      "includedEventTypes": [ "Microsoft.Storage.BlobCreated", "Microsoft.Storage.BlobDeleted" ],
       "subjectBeginsWith": "blobServices/default/containers/mycontainer/log",
       "subjectEndsWith": ".jpg",
       "subjectIsCaseSensitive": "true"

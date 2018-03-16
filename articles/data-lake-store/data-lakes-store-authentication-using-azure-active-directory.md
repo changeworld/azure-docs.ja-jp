@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
 ms.openlocfilehash: 7e6e37c0f5c8447b0e6d147a297b460d323b8894
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用した認証
 

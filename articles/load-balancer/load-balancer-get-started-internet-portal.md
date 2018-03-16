@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: ff61008710766830640c0de31bf9fd23198946fd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 35632cc93c9a0650b45220ba84b4983679de3d9c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>Azure ポータルを使用したインターネットに接続するロード バランサーの作成
 
@@ -54,7 +54,7 @@ Azure Resource Manager でのロード バランサー コンポーネントの�
 ## <a name="set-up-a-load-balancer-in-azure-portal"></a>Azure ポータルでロード バランサーを設定する
 
 > [!IMPORTANT]
-> この例では、 **myVNet**という名前の仮想ネットワークが存在すことを前提としています。 そのためには、 [仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md) に関するページを参照してください。 また、**myVNet** 内に **LB-Subnet-BE** という名前のサブネットがあり、**web1** と **web2** という名前の 2 つの VM が **myVNet** の **myAvailSet** という名前の同じ可用性セット内に存在することも前提としています。 VM を作成するには、 [このリンク](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を参照してください。
+> この例では、 **myVNet**という名前の仮想ネットワークが存在すことを前提としています。 そのためには、 [仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network) に関するページを参照してください。 また、**myVNet** 内に **LB-Subnet-BE** という名前のサブネットがあり、**web1** と **web2** という名前の 2 つの VM が **myVNet** の **myAvailSet** という名前の同じ可用性セット内に存在することも前提としています。 VM を作成するには、 [このリンク](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を参照してください。
 
 1. ブラウザーから Azure ポータル ( [http://portal.azure.com](http://portal.azure.com) ) に移動し、Azure アカウントでログインします。
 2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。

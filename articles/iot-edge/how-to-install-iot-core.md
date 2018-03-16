@@ -7,14 +7,14 @@ author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.reviewer: veyalla
-ms.date: 12/06/2017
+ms.date: 03/05/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: cc34e5cecafe485608ba428395b690ba57f71e9c
-ms.sourcegitcommit: 4ac89872f4c86c612a71eb7ec30b755e7df89722
+ms.openlocfilehash: 75d2b370ed6118a30153a001a4b654d7212b56cd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="install-the-iot-edge-runtime-on-windows-iot-core---preview"></a>IoT Edge ランタイムを Windows IoT Core にインストールする - プレビュー
 
@@ -30,7 +30,7 @@ Azure IoT Edge と [Windows IoT Core](https://docs.microsoft.com/windows/iot-cor
 1. PowerShell コンソールで、コンテナー ランタイムをインストールします。 
 
    ```powershell
-   Invoke-WebRequest https://master.dockerproject.org/windows/x86_64/docker-17.06.0-dev.zip -o temp.zip
+   Invoke-WebRequest https://master.dockerproject.org/windows/x86_64/docker-0.0.0-dev.zip -o temp.zip
    Expand-Archive .\temp.zip $env:ProgramFiles -f
    Remove-Item .\temp.zip
    $env:Path += ";$env:programfiles\docker"
@@ -54,7 +54,7 @@ Azure IoT Edge と [Windows IoT Core](https://docs.microsoft.com/windows/iot-cor
 
 リモートの PowerShell ウィンドウに、iotedgectl.exe ツールからの情報出力が緑色で表示される場合があります。 これは必ずしもエラーを示すものではありません。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Edge ランタイムを実行するデバイスが準備できたので、[IoT Edge モジュールを大規模にデプロイし、監視する][lnk-deploy]方法について学習してください。
 

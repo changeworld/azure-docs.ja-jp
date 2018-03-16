@@ -16,17 +16,17 @@ ms.tgt_pltfrm: na
 ms.workload: Active
 ms.date: 02/05/2018
 ms.author: v-daljep
-ms.openlocfilehash: a1b10c1a12d9a9215022cc77615901a0e4d144f8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 611c30639b5fb36bb08ebd3e73c90f8aa2bd09d4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>自動チューニングの電子メール通知
 
 SQL Database のチューニング推奨情報は、Azure SQL Database の[自動チューニング機能](sql-database-automatic-tuning.md)によって生成されます。 このソリューションは、SQL Database のワークロードを継続的に監視して分析し、個別のデータベースそれぞれについて、インデックスの作成や削除、クエリ実行プランの最適化に関するカスタマイズされたチューニング推奨情報を提供します。
 
-SQL Database 自動チューニングの推奨情報は、[REST API](https://docs.microsoft.com/en-us/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 呼び出しで取得するか、[T-SQL](https://azure.microsoft.com/en-us/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) や [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) のコマンドを使用して、[Azure Portal](sql-database-advisor-portal.md) で確認できます。 この記事は、PowerShell スクリプトを使用して自動チューニングに関する推奨情報を取得する方法に基づいています。
+SQL Database 自動チューニングの推奨情報は、[REST API](https://docs.microsoft.com/rest/api/sql/databaserecommendedactions/listbydatabaseadvisor) 呼び出しで取得するか、[T-SQL](https://azure.microsoft.com/blog/automatic-tuning-introduces-automatic-plan-correction-and-t-sql-management/) や [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/get-azurermsqldatabaserecommendedaction) のコマンドを使用して、[Azure Portal](sql-database-advisor-portal.md) で確認できます。 この記事は、PowerShell スクリプトを使用して自動チューニングに関する推奨情報を取得する方法に基づいています。
 
 ## <a name="automate-email-notifications-for-automatic-tuning-recommendations"></a>自動チューニング推奨情報の電子メール通知を自動化する
 
@@ -34,7 +34,7 @@ SQL Database 自動チューニングの推奨情報は、[REST API](https://doc
 
 ## <a name="create-azure-automation-account"></a>Azure Automation アカウントを作成する
 
-Azure Automation を使用するには、まず Automation アカウントを作成し、PowerShell スクリプトの実行に使用する Azure リソースに対して構成します。 Azure Automation とその機能について詳しくは、[Azure Automation の使用](https://docs.microsoft.com/en-us/azure/automation/automation-offering-get-started)に関する記事をご覧ください。
+Azure Automation を使用するには、まず Automation アカウントを作成し、PowerShell スクリプトの実行に使用する Azure リソースに対して構成します。 Azure Automation とその機能について詳しくは、[Azure Automation の使用](https://docs.microsoft.com/azure/automation/automation-offering-get-started)に関する記事をご覧ください。
 
 次の手順に従い、Marketplace で Automation アプリを選択して構成する方法により、Azure Automation アカウントを作成します。
 
@@ -47,7 +47,7 @@ Azure Automation を使用するには、まず Automation アカウントを作
 
 - [Automation アカウントの作成] が表示されたら、**[作成]** をクリックします。
 - 必要な情報を設定します。この Automation アカウントの名前を入力し、PowerShell スクリプトの実行に使用する Azure サブスクリプション ID と Azure リソースを選択します。
-- **[Azure 実行アカウントの作成]** オプションでは **[はい]** を選択し、Azure Automation を利用して PowerShell スクリプトを実行するためのアカウントの種類を構成します。 アカウントの種類について詳しくは、[実行アカウント](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account)に関する記事をご覧ください。
+- **[Azure 実行アカウントの作成]** オプションでは **[はい]** を選択し、Azure Automation を利用して PowerShell スクリプトを実行するためのアカウントの種類を構成します。 アカウントの種類について詳しくは、[実行アカウント](https://docs.microsoft.com/azure/automation/automation-create-runas-account)に関する記事をご覧ください。
 - **[作成]** をクリックして、Automation アカウントの作成を完了します。
 
 > [!TIP]
@@ -58,7 +58,7 @@ Azure Automation を使用するには、まず Automation アカウントを作
 
 ## <a name="update-azure-automation-modules"></a>Azure Automation モジュールを更新する
 
-自動チューニング推奨情報を取得する PowerShell スクリプトは、[Get-AzureRmResource](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Resources/Get-AzureRmResource) コマンドと [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/en-us/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) コマンドを使用します。これらのコマンドのためには Azure モジュールをバージョン 4 以上に更新することが必要です。
+自動チューニング推奨情報を取得する PowerShell スクリプトは、[Get-AzureRmResource](https://docs.microsoft.com/powershell/module/AzureRM.Resources/Get-AzureRmResource) コマンドと [Get-AzureRmSqlDatabaseRecommendedAction](https://docs.microsoft.com/powershell/module/AzureRM.Sql/Get-AzureRmSqlDatabaseRecommendedAction) コマンドを使用します。これらのコマンドのためには Azure モジュールをバージョン 4 以上に更新することが必要です。
 
 次の手順に従って Azure PowerShell モジュールを更新します。
 
@@ -195,7 +195,7 @@ PowerShell スクリプトをニーズに合わせてカスタマイズして、
 2. **[Azure Automation - Get job output]\(Azure Automation - ジョブ出力の取得\)** – 実行した PowerShell スクリプトの出力を取得します。
 3. **Office 365 Outlook – 電子メールの送信** – 電子メールを送信します。 電子メールは、フロー作成者の Office 365 アカウントを使用して送信されます。
 
-Microsoft Flow の機能について詳しくは、「[Microsoft Flow を使ってみる](https://docs.microsoft.com/en-us/flow/getting-started)」をご覧ください。
+Microsoft Flow の機能について詳しくは、「[Microsoft Flow を使ってみる](https://docs.microsoft.com/flow/getting-started)」をご覧ください。
 
 この手順の前提条件として、[Microsoft Flow](https://flow.microsoft.com) アカウントを新規登録してログインします。 ソリューションにログインしたら、次の手順に従って**新しいフロー**を設定します。
 

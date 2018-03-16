@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/29/2017
 ms.author: juliako
 ms.openlocfilehash: ab66994b0212593aff1384b0801f3359eb0a3751
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 

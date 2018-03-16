@@ -4,13 +4,13 @@ description: "この記事では、Azure Site Recovery サービスを使用し�
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 03/09/2018
 ms.author: raynew
-ms.openlocfilehash: e8a5f4fad75ea6211e96ba216c8b506306dcfa34
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a8af2ee4a32925603d24aee2403ab504a0ca05a8
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="physical-server-to-azure-replication-architecture"></a>物理サーバーから Azure へのレプリケーション アーキテクチャ
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/28/2018
 **構成サーバー** | 1 台のオンプレミス物理マシンまたは VMware VM が、オンプレミスの Site Recovery のコンポーネントを実行するためにデプロイされています。 この VM は、構成サーバー、プロセス サーバー、マスター ターゲット サーバーを実行します。 | 構成サーバーは、オンプレミスと Azure の間の通信を調整し、データのレプリケーションを管理します。
  **プロセス サーバー**:  | 構成サーバーと共に既定でインストールされます。 | レプリケーション ゲートウェイとして機能します。 レプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure Storage に送信します。<br/><br/> プロセス サーバーには、レプリケートするサーバー上のモビリティ サービスもインストールされます。<br/><br/> デプロイの拡大に合わせて、増大するレプリケーション トラフィックの処理を実行する独立したプロセス サーバーを追加できます。
  **マスター ターゲット サーバー** | 構成サーバーと共に既定でインストールされます。 | Azure からのフェールバック中にレプリケーション データを処理します。<br/><br/> 大規模なデプロイでは、フェールバック用に別のマスター ターゲット サーバーを追加できます。
-**レプリケートされるサーバー** | レプリケートする各サーバーにモビリティ サービスがインストールされます。 | プロセス サーバーから自動的にインストールできるようにすることをお勧めします。 また、サービスを手動でインストールしたり、System Center Configuration Manager などの自動デプロイ方法を使用できます。 
+**レプリケートされるサーバー** | レプリケートする各サーバーにモビリティ サービスがインストールされます。 | プロセス サーバーから自動的にインストールできるようにすることをお勧めします。 また、サービスを手動でインストールしたり、System Center Configuration Manager などの自動デプロイ方法を使用できます。
 
 **物理から Azure へのアーキテクチャ**
 

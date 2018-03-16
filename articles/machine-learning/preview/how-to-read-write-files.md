@@ -5,24 +5,24 @@ services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f5c75b95d9019c15bb402313ce7407fa9abb81d4
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 099ff69b396c35730471d684b59115f03ccf67d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>変更の保持と大きなファイルの操作
 Azure Machine Learning 実験サービスでは、さまざまな実行ターゲットを構成できます。 ターゲットは、ローカル (ローカル コンピューターやローカル コンピューター上の Docker コンテナーなど) の場合もあれば、 リモート (リモート コンピューター上の Docker コンテナーや HDInsight クラスターなど) の場合もあります。 詳細については、[Azure Machine Learning 実験実行サービスの概要](experimentation-service-configuration.md)に関する記事をご覧ください。 
 
-ターゲットで実行するには、プロジェクト フォルダーをそのコンピューティング ターゲットにコピーする必要があります。 ローカルの一時フォルダーをこのために使用するローカル実行でもこれを行う必要があります。 
+ターゲットで実行するには、まずプロジェクト フォルダーをそのコンピューティング ターゲットにコピーする必要があります。 このため、ローカルの一時フォルダーを使用するローカル実行でもこれを行う必要があります。 
 
 ## <a name="execution-isolation-portability-and-reproducibility"></a>実行の分離性、移植性、再現性
-この設計の目的は、実行の分離性、再現性、移植性を確保することです。 同じコンピューティング ターゲットまたは別のコンピューティング ターゲットで、同じスクリプトを 2 回実行した場合、同じ結果が得られます。 最初の実行中に行われた変更が、2 番目の実行に影響を及ぼすことはありません。 この設計により、コンピューティング ターゲットを、完了後に実行されるジョブとのアフィニティがないステートレスな計算リソースとして扱うことができます。
+この設計の目的は、実行の分離性、再現性、移植性を確保することです。 同一または別のコンピューティング ターゲットで、同じスクリプトを 2 回実行すると、同じ結果が得られます。 最初の実行中に行われた変更が、2 回目の実行での変更に影響を与えてはなりません。 この設計により、コンピューティング ターゲットを、完了後に実行されるジョブとのアフィニティがないステートレスな計算リソースとして扱うことができます。
 
 ## <a name="challenges"></a>課題
 この設計には、移植性と再現性というメリットがある一方で、いくつかの固有の課題もあります。
@@ -30,9 +30,9 @@ Azure Machine Learning 実験サービスでは、さまざまな実行ターゲ
 ### <a name="persisting-state-changes"></a>状態の変更の保持
 スクリプトによって計算コンテキストの状態が変更された場合、それらの変更は次回の実行では保持されず、クライアント コンピューターに自動的に反映されるわけではありません。 
 
-具体的には、スクリプトによってサブフォルダーの作成やファイルの書き込みが行われた場合、そのフォルダーやファイルは実行後のプロジェクト ディレクトリには含まれません。 ファイルは、コンピューティング ターゲット環境の一時フォルダーに保存されます。 それらをデバッグに使用することはできますが、常に存在するとは限らないことに注意してください。
+具体的には、スクリプトによってサブフォルダーの作成やファイルの書き込みが行われた場合、そのフォルダーやファイルは実行後のプロジェクト ディレクトリには存在しません。 ファイルは、コンピューティング ターゲット環境の一時フォルダーに保存されます。 それらをデバッグに使用することはできますが、常に存在するとは限らないことに注意してください。
 
-### <a name="working-with-large-files-in-the-project-folder"></a>プロジェクト フォルダーの大きなファイルの操作
+### <a name="working-with-large-files-in-the-project-folder"></a>プロジェクト フォルダー内の大きなファイルの操作
 
 プロジェクト フォルダーに大きなファイルが含まれている場合、実行の開始時にフォルダーがターゲット コンピューティング環境にコピーされるときに待ち時間が発生します。 実行がローカルで行われる場合でも、回避すべき不要なディスク トラフィックが発生します。 そのため、現在、プロジェクトの最大サイズは 25 MB に制限されています。
 
@@ -40,7 +40,7 @@ Azure Machine Learning 実験サービスでは、さまざまな実行ターゲ
 この方法は、次のすべての条件に該当する場合に推奨されます。
 * スクリプトでファイルが生成される。
 * 実験を実行するたびにファイルが変更されると予想される。
-* これらのファイルの履歴を保持する。 
+* これらのファイルの履歴を保持 したい。 
 
 一般的なユース ケースは次のとおりです。
 * Training a model
@@ -194,6 +194,6 @@ attach_storage_container(spark, "<storage account name>", "<storage key>”)
 ## <a name="conclusion"></a>まとめ
 Azure Machine Learning ではプロジェクト フォルダー全体をターゲット計算コンテキストにコピーしてスクリプトを実行するため、大きな入力ファイル、出力ファイル、中間ファイルには特に注意が必要です。 大きなファイルのトランザクションには、特殊な outputs フォルダー、`AZUREML_NATIVE_SHARE_DIRECTORY` 環境変数を使用してアクセスできる共有フォルダー、または外部の永続ストレージを使用できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure Machine Learning Workbench 実行構成ファイル](experimentation-service-configuration-reference.md)に関する記事を確認する。
 - [あやめの分類](tutorial-classifying-iris-part-1.md)チュートリアル プロジェクトで、outputs フォルダーを使用してトレーニング済みのモデルを保持する方法を確認する。

@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: cbc4b8cdb0ff9255d0be02b998e67686921921ea
-ms.sourcegitcommit: f67f0bda9a7bb0b67e9706c0eb78c71ed745ed1d
+ms.openlocfilehash: fd20405c284161a1a66493056f21c147efa632cb
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -46,7 +46,7 @@ Web サイトまたは Web アプリケーション、Web API、または[モバ
 Azure でリソースをデプロイするときに使われる 2 つの [デプロイ モデル](resource-manager-deployment-model.md) のうちの 1 つ (新しいモデルは Azure Resource Manager です)。 Azure サービスには、Resource Manager デプロイ モデルだけをサポートするもの、クラシック デプロイ モデルだけをサポートするもの、その両方をサポートするものがあります。 各 Azure サービスでサポートされるモデルについては、該当するドキュメントをご覧ください。
 
 ## <a name="cli"></a>Azure コマンド ライン インターフェイス (CLI)
-Windows、macOS、Linux から Azure サービスを管理するためのコマンド ライン インターフェイス。  サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。 「[Azure CLI 2.0](/cli/azure/overview)」をご覧ください。
+Windows、macOS、Linux から Azure サービスを管理するためのコマンド ライン インターフェイス。  サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。 「[Azure CLI 2.0](/cli/azure)」をご覧ください。
 
 ## <a name="powershell"></a>Azure PowerShell
 Windows PC からコマンド ラインを使って Azure サービスを管理するためのコマンド ライン インターフェイス。 サービスやサービスの機能によっては、PowerShell または CLI でしか管理できないものもあります。
@@ -68,7 +68,7 @@ Microsoft Azure でリソースをデプロイするために使用される 2 �
 「[Azure SQL Database のアクティブ geo レプリケーション](sql-database/sql-database-geo-replication-overview.md)」をご覧ください。
 <!-- The meaning of "geo" in this term seems to be different than the meaning provided in the "geo" entry -->
 
-## <a name="image"></a>イメージ
+## <a name="image"></a>image
 任意の数の仮想マシンを作成するために使用できるアプリケーション構成とオペレーティング システムが含まれるファイル。 Azure では、VM イメージと OS イメージの 2 種類があります。 VM イメージには、オペレーティング システムと、イメージの作成時に、仮想マシンにアタッチされているすべてのディスクが含まれています。 OS イメージには汎用オペレーティング システムのみが含まれ、データ ディスク構成はありません。  
 「[Powershell または CLI を使用した Azure での Windows 仮想マシン イメージへの移動と選択](virtual-machines/windows/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 

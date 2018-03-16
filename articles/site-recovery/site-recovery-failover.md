@@ -2,23 +2,17 @@
 title: "Site Recovery でのフェールオーバー | Microsoft Docs"
 description: "Azure Site Recovery は、仮想マシンと物理サーバーのレプリケーション、フェールオーバー、回復を調整します。 Azure またはセカンダリ データセンターへのフェールオーバーについて説明します。"
 services: site-recovery
-documentationcenter: 
-author: prateek9us
-manager: gauravd
-editor: 
-ms.assetid: 44813a48-c680-4581-a92e-cecc57cc3b1e
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 09/25/2017
-ms.author: pratshar
-ms.openlocfilehash: afdab6e5ee5ae3bb8bc553afd93ff8f1ee18147f
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.date: 03/09/2018
+ms.author: ponatara
+ms.openlocfilehash: f7a60cd82508629ad3cf46882564aa68995ba3e6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="failover-in-site-recovery"></a>Site Recovery でのフェールオーバー
 この記事では、Site Recovery によって保護された仮想マシンと物理サーバーをフェールオーバーする方法について説明します。
@@ -96,18 +90,18 @@ Site Recovery を使用して保護されている仮想マシン/物理サー�
 一部のケースでは、仮想マシンのフェールオーバーに、通常 8 ～ 10 分かかる特別な中間ステップが必要となります。 次の場合、フェールオーバーに要する時間は通常より長くなります。
 
 * VMware 仮想マシンで使用されているモビリティ サービスのバージョンが 9.8 未満
-* 物理サーバー 
+* 物理サーバー
 * VMware Linux 仮想マシン
 * 物理サーバーとして保護されている Hyper-V 仮想マシン
-* ブート ドライバーとして次のドライバーが存在していない VMware 仮想マシン 
-    * storvsc 
-    * vmbus 
-    * storflt 
-    * intelide 
+* ブート ドライバーとして次のドライバーが存在していない VMware 仮想マシン
+    * storvsc
+    * vmbus
+    * storflt
+    * intelide
     * atapi
 * DHCP サービス (DHCP と静的 IP アドレスのどちらでも可) が有効になっていない VMware 仮想マシン
 
-その他すべてのケースでは、この中間ステップは不要であり、フェールオーバーに要する時間は短くなります。 
+その他すべてのケースでは、この中間ステップは不要であり、フェールオーバーに要する時間は短くなります。
 
 
 
@@ -118,7 +112,7 @@ Site Recovery を使用して保護されている仮想マシン/物理サー�
 
 ## <a name="post-failover-considerations"></a>フェールオーバー後の考慮事項
 フェールオーバー後には、次の推奨事項を考慮することができます。
-### <a name="retaining-drive-letter-after-failover"></a>フェールオーバー後のドライブ文字の維持 
+### <a name="retaining-drive-letter-after-failover"></a>フェールオーバー後のドライブ文字の維持
 フェールオーバー後に仮想マシンのドライブ文字を維持するには、仮想マシンの **SAN ポリシー**を **OnlineAll** に設定します。 詳細については、[こちら](https://support.microsoft.com/en-us/help/3031135/how-to-preserve-the-drive-letter-for-protected-virtual-machines-that-are-failed-over-or-migrated-to-azure)を参照してください。
 
 
@@ -126,8 +120,8 @@ Site Recovery を使用して保護されている仮想マシン/物理サー�
 ## <a name="next-steps"></a>次の手順
 
 > [!WARNING]
-> 仮想マシンのフェールオーバー後、オンプレミスのデータ センターが復旧したら、オンプレミス データ センターをレプリケーション先として、VMware 仮想マシンを[**再保護**](site-recovery-how-to-reprotect.md)する必要があります。
+> 仮想マシンのフェールオーバー後、オンプレミスのデータ センターが復旧したら、オンプレミス データ センターをレプリケーション先として、VMware 仮想マシンを[**再保護**](vmware-azure-reprotect.md)する必要があります。
 
-Azure からオンプレミスに Hyper-V 仮想マシンを**フェールバック**するには、[**[計画されたフェールオーバー]**](site-recovery-failback-from-azure-to-hyper-v.md) オプションを使用します。
+Azure からオンプレミスに Hyper-V 仮想マシンを**フェールバック**するには、[**[計画されたフェールオーバー]**](hyper-v-azure-failback.md) オプションを使用します。
 
 VMM サーバーによって管理された別のオンプレミス データ センターに Hyper-V 仮想マシンをフェールオーバーした後、プライマリ データ センターが稼働状態になった場合は、**[レプリケーションの反転]** オプションを使用して、プライマリ データ センターへの逆レプリケーションを開始してください。

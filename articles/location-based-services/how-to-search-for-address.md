@@ -3,16 +3,16 @@ title: "Azure Location Based Services (プレビュー) Search サービス | Mi
 description: "Azure Location Based Services (プレビュー) Search サービスを使用して住所を検索する方法について説明します。"
 services: location-based-services
 keywords: "SEO チャンプを確認せずに、キーワードを追加または編集しないでください。"
-author: philmea
-ms.author: philmea
+author: kgremban
+ms.author: kgremban
 ms.date: 11/29/2017
 ms.topic: article
 ms.service: location-based-services
-ms.openlocfilehash: cacaaab869d3a7752b5a750f01bbfbdaf79814f7
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: dd8026c55d71f6e421b976d8e7ae12f1cfd679a1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-find-an-address-using-the-azure-location-based-services-preview-search-service"></a>Azure Location Based Services (プレビュー) Search サービスを使用して住所を見つける方法
 Search サービスは、開発者が住所、場所、関心地点、事業所一覧、およびその他の地理情報を検索するために設計した RESTful API のセットです。 Search サービスでは、特定の住所、交差点、地理的特徴、関心地点に対して緯度/経度を割り当てます。 Search サービスの API から返される緯度と経度の値は、経路および交通量に関する API など、他の Azure Location Based Services のパラメーターとして使用できます。

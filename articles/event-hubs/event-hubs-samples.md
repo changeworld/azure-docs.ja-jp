@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/19/2017
+ms.date: 03/05/2018
 ms.author: sethm
-ms.openlocfilehash: e037d0e291384849739825ae7ad59064a135db95
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a581b7039a3631b7f1dc35816175242f892bd7dd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-hubs-samples"></a>Event Hubs サンプル 
 
@@ -61,10 +61,6 @@ ms.lasthandoff: 02/03/2018
 
 [イベント処理のスケール アウト](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-45f43fc3)のサンプルは、[イベント プロセッサ ホスト](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/)を使用して、Event Hubs ストリーム消費のワークロードを分散する方法を示しています。 **EventProcessor** と **EventProcessorFactory** オブジェクトを実装して、イベント ストリームを管理する方法を示します。 
 
-### <a name="pull-web-data-into-an-event-hub"></a>イベント ハブへの Web データのプル 
-
-[Web からのデータ インポート](https://github.com/Azure-Samples/event-hubs-dotnet-importfromweb) サンプルは、パブリック フィード (定時運航データのトラフィック情報フィードなど) からデータをプルし、それをイベント ハブにプッシュする方法を示しています。
-
 ## <a name="next-steps"></a>次の手順
 
 .NET Framework バージョンの詳細については、次のリンク先を参照してください。
@@ -75,5 +71,5 @@ ms.lasthandoff: 02/03/2018
 Event Hubs の詳細については、次の記事を参照してください。
 
 - [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
-- [イベント ハブの作成](event-hubs-create.md)
+- [Event Hubs の機能](event-hubs-features.md)
 - [Event Hubs の FAQ](event-hubs-faq.md)

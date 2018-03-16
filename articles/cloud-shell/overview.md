@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juluk
-ms.openlocfilehash: da415f4fb276f3d86d3ff1634a08fa11eabe6e7f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 72338a4c168b4d3b7c918fbb16758724f73fefc2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Azure Cloud Shell の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
@@ -54,7 +54,7 @@ Cloud Shell は Microsoft によって管理されており、広く使われて
 Cloud Shell は、以下から使用できる柔軟なツールです。
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Azure CLI 2.0 の "お試しください" のドキュメント](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)
+* [Azure CLI 2.0 の "お試しください" のドキュメント](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
 * [Azure Mobile App](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [VS Code Azure Account の拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

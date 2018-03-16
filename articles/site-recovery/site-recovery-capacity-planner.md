@@ -12,17 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 11/28/2017
+ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: bfeefde53aa2b3645934f068d580c0714714dd69
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: d9c2645be73c4b6e34d194d6b2444a700e3900d2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="plan-capacity-for-protecting-hyper-v-vms-with-site-recovery"></a>Site Recovery を使用して Hyper-V VM を保護するための容量計画
 
-[Hyper-V から Azure デプロイへの Azure Site Recovery Deployment Planner](site-recovery-hyper-v-deployment-planner.md) の新しい強化されたバージョンが使用可能になりました。 これは従来のツールに代わるものです。 デプロイの計画には新しいツールを使用します。 このツールでは次のガイドラインが提供されます。
+[Hyper-V から Azure デプロイへの Azure Site Recovery Deployment Planner](site-recovery-hyper-v-deployment-planner.md) の新しい強化されたバージョンが使用可能になりました。 これは従来のツールに代わるものです。 デプロイの計画には新しいツールを使用します。
+このツールでは次のガイドラインが提供されます。
 
 * ディスク数、ディスク サイズ、IOPS、変更頻度、いくつかの VM 特性に基づく VM の適格性評価
 * ネットワーク帯域幅ニーズと RPO の評価
@@ -45,7 +46,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 * VM、VM あたりのディスク数、ディスクあたりのストレージなど、環境の情報を収集します。
 * レプリケートされたデータの 1 日の変更 (チャーン) 率を識別します。 [Hyper-V 容量計画ツール](https://www.microsoft.com/download/details.aspx?id=39057)をダウンロードして変更率を得ます。 [こちら](site-recovery-capacity-planning-for-hyper-v-replication.md) を参照してください。 このツールは 1 週間にわたって実行して平均値をキャプチャすることをお勧めします。
-   
+
 
 ## <a name="run-the-quick-planner"></a>クイック プランナーの実行
 1. [Site Recovery Capacity Planner](http://aka.ms/asr-capacity-planner-excel) をダウンロードして起動します。 マクロを実行する必要があります。 メッセージが表示されたら、編集とコンテンツを有効にするよう選択します。
@@ -58,7 +59,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シナリオの選択]** で **[Hyper-V から Azure]** または **[VMware/物理から Azure]** を選択します。
 
-   b. **[Average daily data change rate (%)]\(1 日の平均データ変更率 (%)\)** に [Hyper-V 容量計画ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。 
+   b. **[Average daily data change rate (%)]\(1 日の平均データ変更率 (%)\)** に [Hyper-V 容量計画ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。
 
    c. **[Compression]\(圧縮\)** 設定は、Hyper-V VM を Azure にレプリケートする場合には使用されません。 圧縮する場合は、Riverbed などのサードパーティのアプライアンスを使用します。
 
@@ -147,7 +148,7 @@ AA から AE の列が出力され、各 VM の情報が示されます。
 ### <a name="submit-data-in-capacity-planner"></a>Capacity Planner でのデータの送信
 1. **Capacity Planner** ワークシートを開くと、指定した設定に基づいてデータが入力されます。 **[Infra inputs source]\(Infra 入力ソース\)** セルに "Workload" という語が表示され、この入力が **Workload Qualification** ワークシートのものであることを示します。
 
-2. 変更する場合、**Workload Qualification** ワークシートを変更する必要があります。 その後、**[Submit data to the planner tool]\(データをプランナー ツールに送信\)** をもう一度選択します。 
+2. 変更する場合、**Workload Qualification** ワークシートを変更する必要があります。 その後、**[Submit data to the planner tool]\(データをプランナー ツールに送信\)** をもう一度選択します。
 
    ![Capacity Planner](./media/site-recovery-capacity-planner/capacity-planner.png)
 

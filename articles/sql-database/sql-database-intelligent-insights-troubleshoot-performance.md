@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: cce112929ff2f4fb48c2c6e2ddc2d4eee743b790
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 0efb8b80bc98931f33991dc67f8f4aa1953bb491
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 
@@ -129,7 +129,7 @@ SQL エンジンで実行されたトランザクションが、使用がロッ�
 
 問題を緩和する最も簡単で安全な方法は、トランザクションを常に短くして、最もコストの高いクエリのロック フットプリントを低減させることです。 大きい操作のバッチを小さい操作に分割できます。 クエリをできるだけ効率化して、クエリのロック フットプリントを低減させることをお勧めします。 大規模なスキャンは、デッドロックの可能性を高め、データベースの全体のパフォーマンスに悪影響を及ぼすので、減らします。 ロックの原因として特定されたクエリについては、新しいインデックスを作成したり、既存のインデックスに列を追加したりして、テーブル スキャンを回避できます。 
 
-その他の推奨事項については、「[SQL Server でロックのエスカレーションが原因で発生するブロッキング問題を解決する方法](https://support.microsoft.com/en-us/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)」をご覧ください。
+その他の推奨事項については、「[SQL Server でロックのエスカレーションが原因で発生するブロッキング問題を解決する方法](https://support.microsoft.com/help/323630/how-to-resolve-blocking-problems-that-are-caused-by-lock-escalation-in)」をご覧ください。
 
 ## <a name="increased-maxdop"></a>MAXDOP の増加
 
@@ -289,7 +289,7 @@ SQL データベースでは、クエリ実行コストが最も低いクエリ�
 
 診断ログには、過去 7 日間のワークロードの動作と比較して、パフォーマンスの低下の原因となった、最近加えられたデータベース スコープの構成の変更が出力されます。 構成の変更を前の値に元に戻すことができます。 目的のパフォーマンス レベルに達するまで、値を 1 つずつチューニングすることもできます。 満足のいくパフォーマンスを達成している同様のデータベースから、データベース スコープの構成値をコピーできます。 パフォーマンスのトラブルシューティングが難しい場合は、SQL Database の既定値に戻して、この基準値から微調整を行います。
 
-データベース スコープの構成の最適化と、構成の変更に使用する T-SQL 構文について詳しくは、「[ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](https://msdn.microsoft.com/en-us/library/mt629158.aspx)」をご覧ください。
+データベース スコープの構成の最適化と、構成の変更に使用する T-SQL 構文について詳しくは、「[ALTER DATABASE SCOPED CONFIGURATION (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx)」をご覧ください。
 
 ## <a name="slow-client"></a>処理速度が低いクライアント
 
@@ -330,7 +330,7 @@ Azure SQL Analytics に移動して、Azure Portal から Intelligent Insights �
 
 Intelligent Insights では、パフォーマンスの問題の根本原因の解析に通常 1 時間かかります。 Intelligent Insights で問題を見つけることができず、問題を見つけることが重要であるときは、クエリ データ ストアを使って、手動でパフォーマンスの問題の根本原因を特定します  (通常、これらの問題とは 1 時間以内のものです)。詳しくは、「[クエリのストアを使用した、パフォーマンスの監視](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Intelligent Insights](sql-database-intelligent-insights.md) の概念の習得。
 - [Intelligent Insights Azure SQL Database パフォーマンス診断ログ](sql-database-intelligent-insights-use-diagnostics-log.md)の使用。
 - [Azure SQL Analytics を使用した Azure SQL Database](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-sql) の監視。

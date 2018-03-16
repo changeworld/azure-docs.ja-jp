@@ -5,17 +5,17 @@ services: machine-learning
 author: SerinaKaye
 ms.author: serinak
 manager: hjerez
-ms.reviewer: garyericson, j-martens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: 07d5d1438995a509c68b46481e007f9a5435aaff
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: b76fe7c0caa4a9aca76a9a3f50d1fced0ab67cba
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Azure Machine Learning コンピューティング (MLC) クラスターでの SSL の有効化 
 

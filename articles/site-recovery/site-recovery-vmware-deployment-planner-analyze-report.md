@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/04/2017
+ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: d8c4f5431d8e2d406cd5b203b468c447d4dd6e17
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: dce374d85ef32fe1fbfc88502780fa2ad7a5eae4
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-report"></a>Azure Site Recovery Deployment Planner レポート
 生成された Microsoft Excel レポートには、次のシートが含まれています。
@@ -132,16 +132,16 @@ What-if 分析は、設定する帯域幅を引き下げて、必要な RPO を 
 ![コスト見積もりの概要](media/site-recovery-vmware-deployment-planner-analyze-report/cost-estimation-summary-v2a.png)
 
 Azure Site Recovery を使用してすべての適合 VM を Azure に保護する場合に、ストレージ、コンピューティング、ネットワーク、ライセンスに関して支払う必要のあるコストを把握できます。 コスト計算で加味されるのは適合 VM です。プロファイリングの対象となったすべての VM が対象になるわけではありません。  
- 
+
 コストは月単位または年単位で表示することができます。 詳細については、「[サポートされるターゲット リージョン](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-target-regions)」と「[サポートされる通貨](./site-recovery-vmware-deployment-planner-cost-estimation.md#supported-currencies)」を参照してください。
 
 **[Cost by components]\(コンポーネントごとのコスト\)** DR コストの合計が、コンピューティング、ストレージ、ネットワーク、Azure Site Recovery ライセンス コストの 4 つのコンポーネントに分けて表示されます。 コストは、コンピューティング、ストレージ (Premium と Standard)、オンプレミス サイトと Azure の間に構成されている ExpressRoute/VPN、Azure Site Recovery ライセンスに関して、レプリケーション中および DR ドリル時に発生する消費量に基づいて計算されます。
 
-**[Cost by states]\(状態ごとのコスト\)** ディザスター リカバリー (DR) の合計コストが、レプリケーションと DR ドリルという 2 種類の状態に基づいて分類されます。 
+**[Cost by states]\(状態ごとのコスト\)** ディザスター リカバリー (DR) の合計コストが、レプリケーションと DR ドリルという 2 種類の状態に基づいて分類されます。
 
-**[Replication cost]\(レプリケーション コスト\)**: レプリケーション時に発生するコスト。 ストレージ、ネットワーク、Azure Site Recovery ライセンスのコストが含まれます。 
+**[Replication cost]\(レプリケーション コスト\)**: レプリケーション時に発生するコスト。 ストレージ、ネットワーク、Azure Site Recovery ライセンスのコストが含まれます。
 
-**[DR-Drill cost]\(DR ドリル コスト\)**: テスト フェールオーバー時に発生するコスト。 テスト フェールオーバー中は、Azure Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。 
+**[DR-Drill cost]\(DR ドリル コスト\)**: テスト フェールオーバー時に発生するコスト。 テスト フェールオーバー中は、Azure Site Recovery によって VM がスピンアップされます。 DR ドリル コストには、実行中の VM のコンピューティング コストとストレージ コストが含まれます。
 
 **[Azure storage cost per Month/Year]\(月/年単位の Azure Storage コスト\)** Premium ストレージと Standard ストレージに関して、レプリケーションと DR ドリルで生じる合計ストレージ コストが表示されます。
 VM ごとの詳細なコスト分析は、[[Cost Estimation]\(コスト見積もり\)](site-recovery-vmware-deployment-planner-cost-estimation.md) シートで確認できます。
@@ -266,7 +266,7 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[Boot Type (ブートの種類)]**: VM のブートの種類です。 BIOS と EFI のどちらかになります。  現在の Azure Site Recovery では、ブート ディスク内のパーティションの数が 4 個未満で、ブート セクターのサイズが 512 バイトの場合に、Windows Server EFI VM (Windows Server 2012、2012 R2、2016) がサポートされます。 EFI VM を保護するには、Azure Site Recovery モビリティ サービスのバージョンが 9.13 以上である必要があります。 EFI VM でサポートされているのはフェールオーバーだけです。 フェールバックはサポートされていません。
 
-**[OS の種類]**: VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。 
+**[OS の種類]**: VM の OS の種類です。 これは、Windows または Linux、あるいは VM の作成時に VMware vSphere で選択されたテンプレートに基づくその他の OS の場合があります。
 
 ## <a name="azure-site-recovery-limits"></a>Azure Site Recovery の制限
 以下の表は、Azure Site Recovery の制限を示したものです。 上記の制限は、弊社のテストに基づいて公開されていますが、アプリケーション I/O として想定されるすべての組み合わせを網羅したものではありません。 実際の結果は、ご使用のアプリケーションで発生するさまざまな I/O によって異なることが考えられます。 理想的な結果を得るために、デプロイ計画後も必ず、テスト フェールオーバーを実行してアプリケーションのテストを徹底し、そのパフォーマンスの真の姿を把握することをお勧めします。
@@ -282,15 +282,15 @@ Premium P20、P30、P40、または P50 ディスク | 16 KB 以上 |10 MB/s | (
 
 **ソース データ変更頻度** | **上限**
 ---|---
-VM あたりの平均データ変更頻度| 25 MB/秒 
+VM あたりの平均データ変更頻度| 25 MB/秒
 VM 上の全ディスクにおけるデータ変更頻度のピーク | 54 MB/秒
-プロセス サーバーでサポートされる 1 日あたりのデータ変更頻度の上限 | 2 TB 
+プロセス サーバーでサポートされる 1 日あたりのデータ変更頻度の上限 | 2 TB
 
 前述の数値は、I/O のオーバーラップを 30% とした場合の平均値です。 Site Recovery は、オーバーラップ比に基づくより高いスループットと、より大きな書き込みサイズ、そして実ワークロード I/O 動作を扱うことができます。 上記の数値には、標準的なバックログとして約 5 分が想定されています。 つまりデータはアップロード後 5 分以内に処理されて復旧ポイントが作成されます。
 
 
 ## <a name="cost-estimation"></a>コスト見積もり
-[コスト見積もり](site-recovery-vmware-deployment-planner-cost-estimation.md)について詳しい情報をご覧ください。 
+[コスト見積もり](site-recovery-vmware-deployment-planner-cost-estimation.md)について詳しい情報をご覧ください。
 
 
 ## <a name="next-steps"></a>次の手順

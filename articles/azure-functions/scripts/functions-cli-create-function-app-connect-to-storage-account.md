@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b4dad0bba7a147f294c5d9ce3a1a1aa8e95058f3
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: cbe7bf95574ca7a77d666981691da05357ce9a0d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-function-app-that-connects-to-an-azure-storage-account"></a>Azure Storage アカウントに接続する関数アプリの作成
 
@@ -53,7 +53,7 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 
 | コマンド | メモ |
 |---|---|
-| [az login](https://docs.microsoft.com/cli/azure/#az_login) | Azure にログインします。 |
+| [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login) | Azure にログインします。 |
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 任意の場所にリソース グループを作成します |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | ストレージ アカウントの作成 |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 新しい Function App を作成します |
@@ -61,6 +61,6 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。
