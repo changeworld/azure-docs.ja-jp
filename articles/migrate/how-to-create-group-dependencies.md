@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 12/22/2017
 ms.author: raynew
 ms.openlocfilehash: 3b10765894501791004e3a9221363f196cc0c91d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>グループの依存関係マッピングを使用したグループの絞り込み
 

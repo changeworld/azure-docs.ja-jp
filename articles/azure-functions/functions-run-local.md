@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/12/2017
 ms.author: glenga
 ms.openlocfilehash: 59a15697641dd8e4bdfdb974436d46a34b47ffb5
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 

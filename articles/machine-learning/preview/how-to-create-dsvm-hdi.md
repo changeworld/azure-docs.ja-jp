@@ -5,16 +5,16 @@ services: machine-learning
 author: hning86
 ms.author: haining
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 2560ca144f8ce4041aa592554f9945ed546cc49b
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 15cdee0fb3994874c88b16bebec35f5eae9f8de2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>コンピューティング ターゲットとしての DSVM および HDI Spark クラスターの作成
 
@@ -182,7 +182,7 @@ $ az ml experiment prepare -c <compute target name>
 ```
 これで、この Spark クラスター上で実験を実行する準備が整いました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 各項目の詳細情報
 - [Azure Machine Learning 実験サービスの概要](experimentation-service-configuration.md)

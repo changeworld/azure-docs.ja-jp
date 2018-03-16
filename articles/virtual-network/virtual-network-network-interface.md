@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: e8a6722c74f044b5310ce0fcb937002f5a1e8fa2
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6c3fb08a43bce6193aa0094992616a290129bac8
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>ネットワーク インターフェイスの作成、変更、削除
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/05/2018
 
 ## <a name="create-a-network-interface"></a>ネットワーク インターフェイスの作成
 
-Azure Portal を使用して仮想マシンを作成すると、既定の設定で自動的にネットワーク インターフェイスが作成されます。 その代わりにすべてのネットワーク インターフェイス設定を指定する場合は、カスタム設定を使用してネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスを仮想マシンにアタッチすることができます (PowerShell または Azure CLI を使用)。 ネットワーク インターフェイスを作成して、それを既存の仮想マシンに追加することもできます (PowerShell または Azure CLI を使用)。 既存のネットワーク インターフェイスを使用して仮想マシンを作成する方法や、既存の仮想マシンに対してネットワーク インターフェイスを追加または削除する方法については、[ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)についての記事を参照してください。 ネットワーク インターフェイスを作成する前に、ネットワーク インターフェイスを作成するのと同じ場所およびサブスクリプションに[仮想ネットワーク](virtual-networks-create-vnet-arm-pportal.md)が作成されている必要があります。
+Azure Portal を使用して仮想マシンを作成すると、既定の設定で自動的にネットワーク インターフェイスが作成されます。 その代わりにすべてのネットワーク インターフェイス設定を指定する場合は、カスタム設定を使用してネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスを仮想マシンにアタッチすることができます (PowerShell または Azure CLI を使用)。 ネットワーク インターフェイスを作成して、それを既存の仮想マシンに追加することもできます (PowerShell または Azure CLI を使用)。 既存のネットワーク インターフェイスを使用して仮想マシンを作成する方法や、既存の仮想マシンに対してネットワーク インターフェイスを追加または削除する方法については、[ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)についての記事を参照してください。 ネットワーク インターフェイスを作成する前に、ネットワーク インターフェイスを作成するのと同じ場所およびサブスクリプションに[仮想ネットワーク](manage-virtual-network.md#create-a-virtual-network)が作成されている必要があります。
 
 1. ご利用のサブスクリプションのネットワーク作成協力者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで [Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」の記事をご覧ください。
 2. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*ネットワーク インターフェイス*" と入力します。 検索結果に **[ネットワーク インターフェイス]** が表示されたら、それをクリックします。

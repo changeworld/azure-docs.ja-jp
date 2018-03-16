@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: b279ec2358a860a71da25f0ffaea7462a80f8339
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 258c2a5bbce1f15c78690cb01dc9b66fef4bb8f5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用してカスタム ディスクをアップロードし、Linux VM を作成する
 この記事では、Azure CLI 2.0 を使用して仮想ハード ディスク (VHD) を Azure Storage アカウントにアップロードし、そのカスタム ディスクから Linux VM を作成する方法について説明します。 これらの手順は、[Azure CLI 1.0](upload-vhd-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。 この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/09/2018
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VHD を Azure にアップロードするための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#requirements)。
 
-[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインしていることを確認します。
+[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`mystorageaccount`、および `mydisks` が含まれています。
 
@@ -95,7 +95,7 @@ az vm create --resource-group myResourceGroup --location westus \
   * ストレージ アカウントと、カスタム ディスクおよび作成した VM の両方を保持するコンテナーを作成します。
   * VM をすべて作成したら、ディスクを安全に削除することができます。
 
-[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインしていることを確認します。
+[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
 
 次の例では、パラメーター名を独自の値を置き換えます。 パラメーター名の例には、`myResourceGroup`、`mystorageaccount`、および `mydisks` が含まれています。
 

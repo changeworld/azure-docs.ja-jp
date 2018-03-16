@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/19/2017
 ms.author: sethm
-ms.openlocfilehash: 6965e80cf10b732d4d0a8fb78447f188c133979d
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 7b9901ee3478cb193c808b65d2dbbcf8b596a3c1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="managed-service-identity-preview"></a>管理対象サービス ID (プレビュー)
 
@@ -62,17 +62,17 @@ MSI では、Azure プラットフォームがこのランタイム ID を管理
 
 ### <a name="run-the-app"></a>アプリの実行
 
-次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity)の Web アプリケーション コードを使用することもできます。 
+次に、作成した ASP.NET アプリケーションの既定のページを変更します。 [こちらの GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/ManagedServiceIdentity)の Web アプリケーション コードを使用することもできます。
 
 Default.aspx ページはランディング ページです。 コードは Default.aspx.cs ファイルにあります。 いくつかの入力フィールドと、Service Bus に接続してメッセージを送受信するための **send** ボタンおよび **receive** ボタンを備えた最小限の Web アプリケーションが作成されます。
 
-[MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) オブジェクトを初期化する方法に注意してください。 共有アクセス トークン (SAS) トークン プロバイダーを使用するのではなく、コードで `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.EventHubAudience)` を呼び出して管理対象サービス ID のトークン プロバイダーを作成します。 そのため、保持および使用するシークレットはありません。 管理対象サービス ID コンテキストから Service Bus へのフローと承認ハンドシェイクは、トークン プロバイダーによって自動的に処理されます。これは SAS の使用よりも単純なモデルです。
+[MessagingFactory](/dotnet/api/microsoft.servicebus.messaging.messagingfactory) オブジェクトを初期化する方法に注意してください。 共有アクセス トークン (SAS) トークン プロバイダーを使用するのではなく、コードで `TokenProvider.CreateManagedServiceIdentityTokenProvider(ServiceAudience.ServiceBusAudience)` を呼び出して管理対象サービス ID のトークン プロバイダーを作成します。 そのため、保持および使用するシークレットはありません。 管理対象サービス ID コンテキストから Service Bus へのフローと承認ハンドシェイクは、トークン プロバイダーによって自動的に処理されます。これは SAS の使用よりも単純なモデルです。
 
 これらの変更を行ったら、アプリケーションを発行して実行します。 適切な発行データを簡単に取得するには、Visual Studio で発行プロファイルをダウンロードしてインポートします。
 
 ![](./media/service-bus-managed-service-identity/msi3.png)
  
-メッセージを送受信するには、名前空間の名前と作成したエンティティの名前を入力し、**[send]** または **[receive]** をクリックします。 
+メッセージを送受信するには、名前空間の名前と作成したエンティティの名前を入力し、**[send]** または **[receive]** をクリックします。
  
 管理対象サービス ID は、Azure 環境内と、その ID を構成した App Service デプロイでのみ機能します。 また、現時点では、管理対象サービス ID は App Service デプロイ スロットでは機能しません。
 

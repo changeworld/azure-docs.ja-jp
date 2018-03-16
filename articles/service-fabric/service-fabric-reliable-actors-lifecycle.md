@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: d49afd9e5cfe80ddc2d919c76eaa0cb168280c15
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: dd45acd75e1cf263029c869d88c87b28f56d50cc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>アクターのライフ サイクル、自動ガベージ コレクション、および手動による削除
 アクターは、いずれかのメソッドが最初に呼び出された時点でアクティブ化されます。 一定期間 (値は構成可能) 使用されていない場合、アクターは非アクティブ化されます (アクター ランタイムでガベージ コレクションが発生します)。 アクターとその状態はいつでも手動で削除できます。
@@ -144,13 +144,13 @@ myActorServiceProxy.deleteActorAsync(actorToDelete);
 
 アクターが自身のアクター メソッドで自身に対する削除メソッドを呼び出すことはできません。これは、アクター呼び出しのコンテキスト内で実行中のアクターを削除することはできないためです。このとき、ランタイムはアクターの呼び出しに関するロックを取得して、シングル スレッド アクセスを適用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)
 * [アクター イベント](service-fabric-reliable-actors-events.md)
 * [アクターの再入](service-fabric-reliable-actors-reentrancy.md)
 * [アクターの診断とパフォーマンスの監視](service-fabric-reliable-actors-diagnostics.md)
 * [Actor API リファレンス ドキュメント](https://msdn.microsoft.com/library/azure/dn971626.aspx)
-* [C# コード サンプル](https://github.com/Azure/servicefabric-samples)
+* [C# コード サンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
 * [Java コード サンプル](http://github.com/Azure-Samples/service-fabric-java-getting-started)
 
 <!--Image references-->

@@ -3,7 +3,7 @@ title: "Azure Stack のストレージ容量を管理する | Microsoft Docs"
 description: "Azure Stack で使用できる記憶域スペースを管理します。"
 services: azure-stack
 documentationcenter: 
-author: brenduns
+author: mattbriggs
 manager: femila
 editor: 
 ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
-ms.author: brenduns
+ms.date: 02/22/2017
+ms.author: mabrigg
 ms.reviewer: jiahan
-ms.openlocfilehash: 30e5265fbad66ab3c68bc5d5e90687b1a968167b
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 749a02b38d6b074d4136bc7bb44910ee7c947b05
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-storage-capacity-for-azure-stack"></a>Azure Stack のストレージ容量を管理する
 

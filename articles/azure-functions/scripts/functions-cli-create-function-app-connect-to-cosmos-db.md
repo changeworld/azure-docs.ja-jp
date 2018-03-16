@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 01/22/2018
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 2049de0adfd4be164cda69ca85782c528aeaf55c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 092e0681b0491fc1c54c19e234aafdac6d428fd1
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Azure Cosmos DB に接続する Azure 関数の作成
 
@@ -46,7 +46,7 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 
 | コマンド | メモ |
 |---|---|
-| [az login](https://docs.microsoft.com/cli/azure/#az_login) | Azure にログインします。 |
+| [az login](https://docs.microsoft.com/cli/azure/reference-index#az_login) | Azure にログインします。 |
 | [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 任意の場所にリソース グループを作成します |
 | [az storage accounts create](https://docs.microsoft.com/cli/azure/storage/account) | ストレージ アカウントの作成 |
 | [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 新しい Function App を作成します |
@@ -55,7 +55,7 @@ CLI をローカルで使う場合は、Azure CLI バージョン 2.0 以降を�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。
 

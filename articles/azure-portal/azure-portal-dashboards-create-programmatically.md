@@ -13,11 +13,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: adamab
-ms.openlocfilehash: d2131a9fbb8fcb77a00045924169420773893f91
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 0e84ff61346f2788cf475cee2783ba2056a091ad
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="programmatically-create-azure-dashboards"></a>プログラムによる Azure ダッシュボードの作成
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/27/2018
 
 ## <a name="overview"></a>概要
 
-Azure 内の共有ダッシュボードは、仮想マシンやストレージ アカウントと同様に[リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)です。  このため、共有ダッシュボードは、[Azure Resource Manager REST API](/rest/api/)、または [Azure CLI](https://docs.microsoft.com/cli/azure/overview)、[Azure PowerShell コマンド](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0)、およびこれらの API を使用して構築されたその他の多数の [Azure ポータル](https://portal.azure.com)機能を使用してプログラム的に管理でき、リソース管理を簡易化できます。  
+Azure 内の共有ダッシュボードは、仮想マシンやストレージ アカウントと同様に[リソース](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)です。  このため、共有ダッシュボードは、[Azure Resource Manager REST API](/rest/api/)、または [Azure CLI](https://docs.microsoft.com/cli/azure)、[Azure PowerShell コマンド](https://docs.microsoft.com/powershell/azure/get-started-azureps?view=azurermps-4.2.0)、およびこれらの API を使用して構築されたその他の多数の [Azure ポータル](https://portal.azure.com)機能を使用してプログラム的に管理でき、リソース管理を簡易化できます。  
 
 これらの API とツールを使用することにより、リソースの作成、一覧表示、取得、変更、および削除を実行できます。  ダッシュボードはリソースであるため、使用する API やツールを任意に選択できます。
 

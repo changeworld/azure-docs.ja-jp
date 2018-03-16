@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: jgao
-ms.openlocfilehash: e2f4601daf9aa3537f9170c3516d62ab1bd602e5
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: e96003de4a0dd4a5d8b060bb5883e51291827316
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sqoop-with-hadoop-in-hdinsight"></a>HDInsight の Hadoop での Sqoop の使用
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
@@ -118,7 +118,7 @@ Azure PowerShell を使用してクラスターと SQL Database を作成する�
   > 
   > 
   
-  * 仮想ネットワークの作成と構成については、「[Azure ポータルを使用した仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」をご覧ください。
+  * 仮想ネットワークの作成と構成については、「[Azure ポータルを使用した仮想ネットワークの作成](../../virtual-network/quick-create-portal.md)」をご覧ください。
     
     * SQL Server をデータセンター内で使っている場合は、仮想ネットワークを*サイト間*または*ポイント対サイト*として構成する必要があります。
       

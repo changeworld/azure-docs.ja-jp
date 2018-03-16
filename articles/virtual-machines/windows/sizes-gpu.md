@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: jonbeck
 ms.openlocfilehash: fcfdf9fe9bda5428e369e081e95912f698c89e9f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>GPU 最適化済み仮想マシンのサイズ
 

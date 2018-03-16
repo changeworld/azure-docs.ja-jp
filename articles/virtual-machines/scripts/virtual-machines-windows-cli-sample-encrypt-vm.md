@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: iainfou
-ms.openlocfilehash: 7e1e9a69d226b03e6722c2d19b7a091cfe4e71c7
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 9d7b2b0c731c5fc820fe649394a13ee586e47606
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Azure における Windows 仮想マシンの暗号化
 
@@ -59,6 +59,6 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%windows%2ftoc.json)のページにあります。

@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/04/2017
+ms.date: 02/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3ca71abb1b84f619cfafbf4c25b0c0cb95430858
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: ad258cf6c73b2c1ea5f208ebef9906a0e3d35ea4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Azure Stack で使用する CLI をインストールして構成する
 
-この記事では、Azure コマンド ライン インターフェイス (CLI) を使用して、Linux および Mac クライアントのプラットフォームから Azure Stack 開発キットのリソースを管理するプロセスについて説明します。 
+この記事では、Azure コマンド ライン インターフェイス (CLI) を使用して、Linux および Mac クライアントのプラットフォームから Azure Stack Development Kit のリソースを管理するプロセスについて説明します。 
 
 ## <a name="install-cli"></a>CLI のインストール
 

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cb99f121a1ddf079008ed97edde71b067d6b5edb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 4827fabf1d8cde366dda8b3a782a2fefe01db8d5
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループの作成
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/09/2018
 
 前述のシナリオに基づいて *NSG-FrontEnd* という名前の NSG を作成するには、次の手順に従います。
 
-1. まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。 
+1. まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。 
 
 2. [az network nsg create](/cli/azure/network/nsg#az_network_nsg_create) コマンドを使用して NSG を作成します。 
 

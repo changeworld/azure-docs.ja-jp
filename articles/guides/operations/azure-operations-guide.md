@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 4a913e188dd40b0306be375b016b9e8a3739ed72
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 8d7cbe27e5acfe741aeb5ed85756bf3c7ce2160b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>クラウド コンピューティングと Microsoft Azure の概要
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 12/11/2017
 
 Microsoft はたくさんの Azure データセンターを世界中にデプロイしており、今後もさらに追加する予定です。 また、Microsoft は、中国やドイツなどの地域で、独立したクラウドを増やしています。 このようにデータセンターをデプロイできるのはグローバルな大企業だけです。Azure を利用することで、あらゆる規模の企業が自社のサービスを顧客の近くに簡単にデプロイできます。
 
-小規模な事業では Azure を低コストのエントリ ポイントで使用できます。さらに多くの計算処理能力が必要になったら、すぐに拡張できます。 インフラストラクチャに大規模な先行投資をする必要がなくなります。必要に応じてシステムを柔軟に設計したり、設計をやり直したりできます。 クラウド コンピューティングは、ベンチャー企業の成長モデルである「Scale-Fast Fail-Fast (早く展開し、早く失敗を積み重ねて成長する)」に最適です。
+小規模な事業では Azure を低コストのエントリ ポイントで使用できます。さらに多くの計算処理能力が必要になったら、すぐに拡張できます。 インフラストラクチャに大規模な先行投資をする必要がなくなります。必要に応じてシステムを柔軟に設計したり、設計をやり直したりできます。 クラウド コンピューティングは、ベンチャー企業の成長モデルである「Scale-Fast Fail-Fast (早く展開し、フェールファストを積み重ねて成長する)」に最適です。
 
 Azure リージョンに関する詳細については、「[Azure リージョン](https://azure.microsoft.com/regions/)」を参照してください。
 
@@ -98,7 +98,7 @@ Azure は、そのクラウド コンピューティング プラットフォー
 
 -   Azure Storage (Azure BLOB、Queue、Table、File サービスから構成)
 
--   Azure SQL Database
+-   の接続文字列
 
 -   Azure Cosmos DB
 
@@ -145,7 +145,7 @@ Azure は、世界中のさまざまな地域で一般的に利用できるグ�
 
 Azure を使用する利点の 1 つは、世界中のさまざまなデータセンターにアプリケーションをデプロイできるということです。 選択したリージョンによっては、アプリケーションのパフォーマンスが変わることがあります。 大部分の顧客に近いリージョンを選択すると、ネットワーク要求における待ち時間が少なくなります。 特定の国でアプリを配信するための法的要件を満たせるリージョンを選択することもあります。
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure ポータル
 
 
 Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は https://portal.azure.com にあります。Azure リソースを管理するためのダッシュボードとツールがあり、カスタマイズも可能です。 課金とサブスクリプションに関する情報も確認できます。 詳細は、「[Microsoft Azure Portal の概要](https://azure.microsoft.com/documentation/articles/azure-portal-overview/)」と「[ポータルを使用した Azure リソースの管理](https://docs.microsoft.com/azure/azure-portal/resource-group-portal)」を参照してください。
@@ -238,7 +238,7 @@ Azure では、サービスごとに価格が異なります。 多くの Azure 
 
 Azure でアプリケーションまたはソリューションをデプロイした後は、アラートを作成し、アラートに定義されている使用制限に近づいたときに電子メールを送信できます。 詳細については、「[Microsoft Azure サブスクリプションの課金アラートの設定](../../billing/billing-set-up-alerts.md)」を参照してください。
 
-## <a name="azure-resource-manager"></a>Azure リソース マネージャー
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 
 Azure Resource Manager は、Azure リソースをデプロイ、管理、整理するためのメカニズムを提供します。 Resource Manager を利用すれば、個々のさまざまなリソースをリソース グループにまとめることができます。
 
@@ -410,7 +410,7 @@ File Storage 共有は標準の SMB ファイル共有であるため、Azure �
 
 Azure Table Storage は、NoSQL の構造化データをクラウド内に格納するサービスです。 Table Storage は、スキーマなしの設計によるキーまたは属性ストアです。 Table Storage はスキーマがないため、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 あらゆる種類のデータに、高速かつ経済的にアクセスできます。 Table Storage は、通常、従来の SQL と比較して、同様の容量のデータをはるかに低コストで保存できます。
 
-Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。 任意の数のエンティティをテーブルに保存できます。 ストレージ アカウントには、ストレージ アカウントの容量の上限を超えない限り、任意の数のテーブルを含めることができます。
+テーブル ストレージを使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。 任意の数のエンティティをテーブルに保存できます。 ストレージ アカウントには、ストレージ アカウントの容量の上限を超えない限り、任意の数のテーブルを含めることができます。
 
 詳細については、「[Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)」をご覧ください。
 
@@ -491,19 +491,19 @@ Azure 仮想ネットワークはオンプレミス ネットワークに接続�
 
 **ポータル**
 
-Azure 仮想ネットワークで仮想マシンをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しい仮想ネットワークを新しいリソース グループや既存のリソース グループにデプロイできます。 ポータルから新しい仮想マシンを作成するとき、既存の仮想ネットワークを選択するか、新しい仮想ネットワークを作成できます。 詳細については、「[Azure Portal を使用した仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」をご覧ください。
+Azure 仮想ネットワークで仮想マシンをデプロイする場合、有効な Azure サブスクリプションと Web ブラウザーへのアクセスが必要になります。 新しい仮想ネットワークを新しいリソース グループや既存のリソース グループにデプロイできます。 ポータルから新しい仮想マシンを作成するとき、既存の仮想ネットワークを選択するか、新しい仮想ネットワークを作成できます。 詳細については、「[Azure Portal を使用した仮想ネットワークの作成](../../virtual-network/quick-create-portal.md)」をご覧ください。
 
 Azure Portal から Azure 仮想ネットワークをデプロイするだけでなく、ポータルから Azure Resource Manager テンプレートをデプロイできます。 仮想ネットワーク リソースを含め、テンプレートに定義されているすべてのリソースがデプロイされ、構成されます。 詳細については、「[Deploy resources with Resource Manager templates and Azure portal](../../azure-resource-manager/resource-group-template-deploy-portal.md)」 (Resource Manager テンプレートと Azure Portal を使用したリソースのデプロイ) を参照してください。
 
 **PowerShell**
 
-PowerShell を利用し、Azure 仮想ネットワークをデプロイする方法では、ストレージ アカウントのデプロイを完全に自動化できます。 詳細については、「[PowerShell を使用した仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-ps.md)」を参照してください。
+PowerShell を利用し、Azure 仮想ネットワークをデプロイする方法では、ストレージ アカウントのデプロイを完全に自動化できます。 詳細については、「[PowerShell を使用した仮想ネットワークの作成](../../virtual-network/quick-create-powershell.md)」を参照してください。
 
 Azure リソースを個別にデプロイする以外に、Azure PowerShell モジュールを利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
 
 **コマンド ライン インターフェイス (CLI)**
 
-PowerShell モジュールの場合と同様に、Azure コマンド ライン インターフェイスでデプロイを自動化できます。Windows、OS X、Linux システムで利用できます。 Azure CLI **network vnet create** コマンドを利用し、仮想ネットワークを作成できます。 詳細については、「[Azure CLI を使用した仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-cli.md)」をご覧ください。
+PowerShell モジュールの場合と同様に、Azure コマンド ライン インターフェイスでデプロイを自動化できます。Windows、OS X、Linux システムで利用できます。 Azure CLI **network vnet create** コマンドを利用し、仮想ネットワークを作成できます。 詳細については、「[Azure CLI を使用した仮想ネットワークの作成](../../virtual-network/quick-create-cli.md)」をご覧ください。
 
 同様に、Azure CLI を利用し、Azure Resource Manager テンプレートをデプロイできます。 詳細については、「[Deploy resources with Resource Manager templates and Azure CLI](../../azure-resource-manager/resource-group-template-deploy-cli.md)」 (Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ) を参照してください。
 
@@ -511,7 +511,7 @@ PowerShell モジュールの場合と同様に、Azure コマンド ライン �
 
 ネットワーク セキュリティ グループを利用し、Azure 仮想ネットワークを保護できます。 NSG には、Virtual Network の VM インスタンスに対するネットワーク トラフィックを許可または拒否する一連のアクセス制御リスト (ACL) 規則が含まれています。 NSG は、サブネットまたはそのサブネット内の個々の VM インスタンスと関連付けることができます。 NSG がサブネットに関連付けられている場合、ACL 規則はそのサブネット内のすべての VM インスタンスに適用されます。 また、NSG を直接 VM に関連付けることにより、その個々の VM に対するトラフィックをさらに制限できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../../virtual-network/virtual-networks-nsg.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Windows VM の作成](/virtual-machines/windows/quick-create-portal.md)
 - [Linux VM の作成](../../virtual-machines/linux/quick-create-portal.md)

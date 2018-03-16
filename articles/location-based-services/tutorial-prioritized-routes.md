@@ -3,8 +3,8 @@ title: "Azure Location Based Services を使用した複数のルート | Micros
 description: "Azure Location Based Services を使用してさまざまなトラベルのモードのルートを見つけます"
 services: location-based-services
 keywords: 
-author: dsk-2015
-ms.author: dkshir
+author: kgremban
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: tutorial
 ms.service: location-based-services
@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 9501f3c8fa1abb6bcbfee086c542139596ab5504
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 986e8667ca421baa78647e77e43fef92d81a7982
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="find-routes-for-different-modes-of-travel-using-azure-location-based-services"></a>Azure Location Based Services を使用してさまざまなトラベルのモードのルートを見つけます
 

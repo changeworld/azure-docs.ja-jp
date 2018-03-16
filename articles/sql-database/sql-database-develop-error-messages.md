@@ -6,7 +6,7 @@ ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202 ms.service: sql-database ms.cus
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 
-この記事では、データベース接続エラー、一時的なエラー (一時的な障害)、リソース ガバナンス エラー、データベース コピーの問題、エラスティック プール、その他のエラーなど、SQL Database クライアント アプリケーションの SQL エラー コードの一覧を示します。 大半は Azure SQL Database に固有のカテゴリで、Microsoft SQL Server には当てはまりません。 [システム エラー メッセージ](https://technet.microsoft.com/en-us/library/cc645603(v=sql.105).aspx)もご覧ください。
+この記事では、データベース接続エラー、一時的なエラー (一時的な障害)、リソース ガバナンス エラー、データベース コピーの問題、エラスティック プール、その他のエラーなど、SQL Database クライアント アプリケーションの SQL エラー コードの一覧を示します。 大半は Azure SQL Database に固有のカテゴリで、Microsoft SQL Server には当てはまりません。 [システム エラー メッセージ](https://technet.microsoft.com/library/cc645603(v=sql.105).aspx)もご覧ください。
 
 ## <a name="database-connection-errors-transient-errors-and-other-temporary-errors"></a>データベース接続エラー、一時的なエラー、その他の一時的なエラー
 次の表に、接続喪失エラーや、アプリケーションが SQL Database にアクセスしようとしたときに発生する可能性がある一時的なエラーを示します。 Azure SQL Database への接続方法のチュートリアルの概要については、 [Azure SQL Database への接続](sql-database-libraries.md)に関するページをご覧ください。

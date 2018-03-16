@@ -7,13 +7,13 @@ author: mayanknayar
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: e07b868883b0154ad38ba2f7f51dd2db663525a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: df5f40a49aa7359c082b0feb9e047818a642a871
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-site-recovery-to-protect-active-directory-and-dns"></a>Azure Site Recovery を使用して Active Directory と DNS を保護する
 
@@ -73,7 +73,7 @@ Site Recovery を使用してレプリケートされたドメイン コント�
 
 ほとんどのアプリケーションでは、ドメイン コントローラーまたは DNS サーバーが存在する必要があります。 そのため、アプリケーションでフェールオーバーを実行する前に、テスト フェールオーバーに使用する分離されたネットワークでドメイン コントローラーを作成する必要があります。 これを行う最も簡単な方法は、Site Recovery を使用して、ドメイン コントローラーまたは DNS をホストする仮想マシンをレプリケートすることです。 その後で、アプリケーションの復旧プランのテスト フェールオーバーを実行する前に、ドメイン コントローラー仮想マシンのテスト フェールオーバーを実行します。 その方法は次のとおりです。
 
-1. Site Recovery を使用して、ドメイン コントローラーまたは DNS をホストする仮想マシンを[レプリケート](site-recovery-replicate-vmware-to-azure.md)します。
+1. Site Recovery を使用して、ドメイン コントローラーまたは DNS をホストする仮想マシンを[レプリケート](vmware-azure-tutorial.md)します。
 2. 分離されたネットワークを作成します。 既定では、Azure に作成するすべての仮想ネットワークは、その他のネットワークから分離されます。 このネットワークの IP アドレス範囲は、運用ネットワークと同じものを使用することをお勧めします。 このネットワーク上でサイト間接続を有効化しないでください。
 3. 分離されたネットワークに DNS の IP アドレスを指定します。 DNS 仮想マシンに取得させる IP アドレスを使用します。 Azure にレプリケートする場合は、フェールオーバーで使用される仮想マシンの IP アドレスを指定します。 IP アドレスを入力するには、レプリケートされる仮想マシンの **[コンピューティングとネットワーク]** 設定で、**[ターゲット IP]** 設定を選択します。
 

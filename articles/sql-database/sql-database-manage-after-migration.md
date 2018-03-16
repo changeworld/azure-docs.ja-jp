@@ -18,11 +18,11 @@ ms.author: Joe.Sack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: b65236fb2d11473d626ee2602237ed4a49380702
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: ee1d847e04e1f1fa0472d8702c7022d622b9fe0f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 
@@ -46,9 +46,9 @@ Azure SQL DB ではバックアップを作成しません。なぜなら必要�
 
 |パフォーマンス レベル|保有期間の日数|
 |---|:---:|
-|基本|7|
+|Basic|7|
 |標準|35|
-|プレミアム|35|
+|Premium|35|
 |||
 
 さらに、[長期保存 (LTR)](sql-database-long-term-retention.md) 機能を使うと、はるかに長期 (最大 10 年) にわたりバックアップ ファイルを保持することができ、その期間内の任意の時点でこれらのバックアップからデータを復元できます。 また、データベース バックアップは geo レプリケートされたストレージに保持されるので、リージョン レベルの災害からの回復力が保証されます。 Azure リージョン内のバックアップを保有期間の任意の時点に復元することもできます。 [ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
@@ -133,7 +133,7 @@ SQL Database では、既定により、記憶域サブシステムのデータ 
 |**特性**|**常に暗号化**|**透過的なデータ暗号化**|
 |---|---|---|
 |**暗号化の範囲**|End-to-end|保存データ|
-|**データベース サーバーは機微なデータにアクセスできる**|いいえ|はい (暗号化は保存データに対するものであるため)|
+|**データベース サーバーは機微なデータにアクセスできる**|いいえ |はい (暗号化は保存データに対するものであるため)|
 |**許可される T-SQL の操作**|等値比較|T-SQL のすべての公開されている部分を使用できます|
 |**機能を使うために必要なアプリの変更**|最小限|極めて最小限|
 |**暗号化の細分性**|列レベル|データベース レベル|
@@ -260,8 +260,8 @@ SQL Database では、特定のクラスのデータ破損にデータを失う�
 ### <a name="how-do-i-synchronize-data-between-sql-database-and-sql-server"></a>SQL Database と SQL Server の間でデータを同期するにはどうすればよいですか?
 これを行うには、いくつかの方法があります。 
 - **[データ同期](sql-database-sync-data.md)** – この機能を使うと、複数のオンプレミス SQL Server データベースと SQL Database の間でデータを双方向に同期することができます。 オンプレミスの SQL Server データベースと同期するには、ローカル コンピューターに同期エージェントをインストールして構成し、発信 TCP ポート 1433 を開く必要があります。
-- **[トランザクション レプリケーション](https://azure.microsoft.com/en-us/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – トランザクション レプリケーションを使うと、オンプレミスをパブリッシャー、Azure SQL DB をサブスクライバーにして、オンプレミスから Azure SQL DB にデータを同期できます。 現時点では、このセットアップのみがサポートされています。 最小限のダウンタイムでオンプレミスから Azure SQL にデータを移行する方法について詳しくは、「[トランザクション レプリケーションの使用](sql-database-cloud-migrate.md#method-2-use-transactional-replication)」をご覧ください
+- **[トランザクション レプリケーション](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – トランザクション レプリケーションを使うと、オンプレミスをパブリッシャー、Azure SQL DB をサブスクライバーにして、オンプレミスから Azure SQL DB にデータを同期できます。 現時点では、このセットアップのみがサポートされています。 最小限のダウンタイムでオンプレミスから Azure SQL にデータを移行する方法について詳しくは、「[トランザクション レプリケーションの使用](sql-database-cloud-migrate.md#method-2-use-transactional-replication)」をご覧ください
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [SQL Database](sql-database-technical-overview.md) についての詳細情報。
 

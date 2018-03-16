@@ -8,11 +8,11 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 1025fd10b00bc07872e23cb10da2682fa8cca394
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9d2b32df6e4b931539eac34d09135ea33069b936
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -63,7 +63,7 @@ SubscriptionValidationEvent の例を以下に示します。
 
 イベント サブスクリプションを作成するときに、webhook URL にクエリ パラメーターを追加することで、webhook エンドポイントをセキュリティで保護できます。 これらのクエリ パラメーターのいずれかを、[アクセス トークン](https://en.wikipedia.org/wiki/Access_token)などのシークレットとして設定します。webhook は、これを使用して、イベントが有効なアクセス許可を持つ Event Grid からのものであることを が認識できます。 Event Grid には、webhook へのすべてのイベント配信にこれらのクエリ パラメーターが含められます。
 
-イベント サブスクリプションを編集すると、Azure [CLI](https://docs.microsoft.com/en-us/cli/azure/overview?view=azure-cli-latest) で [--include-full-endpoint-url](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) パラメーターを使用した場合を除き、クエリ パラメーターが表示されなくなるか、返されなくなります。
+イベント サブスクリプションを編集すると、Azure [CLI](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) で [--include-full-endpoint-url](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) パラメーターを使用した場合を除き、クエリ パラメーターが表示されなくなるか、返されなくなります。
 
 最後に、Azure Event Grid がサポートするのは HTTPS webhook エンドポイントのみであることに中尉してください。
 

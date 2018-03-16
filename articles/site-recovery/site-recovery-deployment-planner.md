@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/04/2017
+ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 7e3e0cebbb1ae0c7c63de586f458814f5dc6f202
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 77e76e5f9960f8a7c54ebcb82321784be5c1aa99
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>VMware から Azure 用の Azure Site Recovery Deployment Planner
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -36,7 +36,7 @@ Azure Site Recovery を使用して VMware 仮想マシン (VM) を保護する�
 **適合性の評価**
 
 * ディスク数、ディスク サイズ、IOPS、変更頻度、ブートの種類 (EFI/BIOS)、OS バージョンに基づく VM の適格性評価
- 
+
 **ネットワーク帯域幅ニーズと RPO の評価**
 
 * 差分レプリケーションに必要な推定ネットワーク帯域幅
@@ -93,13 +93,16 @@ Site Recovery Deployment Planner の実行中のインスタンスごとにプ�
 >
 
 ## <a name="download-and-extract-the-deployment-planner-tool"></a>Deployment Planner ツールのダウンロードと抽出
-1. 最新バージョンの [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) をダウンロードします。 ツールは .zip フォルダーにパッケージされています。 VMware から Azure へのレプリケーション シナリオに対応しているのは、このツールの最新バージョンのみです。
+1. 最新バージョンの [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner) をダウンロードします。
+ツールは .zip フォルダーにパッケージされています。 VMware から Azure へのレプリケーション シナリオに対応しているのは、このツールの最新バージョンのみです。
 
-2. ツールの実行場所となる Windows Server に .zip フォルダーをコピーします。 このツールは、プロファイリングの対象となる VM のホスト (vCenter サーバー/vSphere ESXi ホスト) にネットワークで接続されている Windows Server 2012 R2 から実行することができます。 ただしこのツールは、[構成サーバーのサイズ ガイドライン](https://aka.ms/asr-v2a-on-prem-components)に準拠したハードウェア構成のサーバーで実行することをお勧めします。 Site Recovery のコンポーネントをオンプレミスにデプロイ済みである場合は、その構成サーバーからツールを実行してください。
+2. ツールの実行場所となる Windows Server に .zip フォルダーをコピーします。
+このツールは、プロファイリングの対象となる VM のホスト (vCenter サーバー/vSphere ESXi ホスト) にネットワークで接続されている Windows Server 2012 R2 から実行することができます。 ただしこのツールは、[構成サーバーのサイズ ガイドライン](https://aka.ms/asr-v2a-on-prem-components)に準拠したハードウェア構成のサーバーで実行することをお勧めします。 Site Recovery のコンポーネントをオンプレミスにデプロイ済みである場合は、その構成サーバーからツールを実行してください。
 
     ツールの実行起点となるサーバーには、(プロセス サーバーを一体化した) 構成サーバーと同じハードウェア構成を使用することをお勧めします。 そのような構成によって、Site Recovery がレプリケーションを実行している間の実際のスループットを正確に反映したレポートを得ることができます。 スループットの計算は、サーバーで利用できるネットワーク帯域幅とそのサーバーのハードウェア構成 (CPU、記憶域など) に左右されます。 その他のサーバーからツールを実行した場合、計算されるのは、そのサーバーから Azure へのスループットです。 しかもそのサーバーには、構成サーバーとは異なるハードウェア構成が使用されていることが考えられます。そうなると、達成スループットとしてツールから報告される値の精度が低下してしまいます。
 
-3. zip フォルダーを展開します。 このフォルダーには、複数のファイルとサブフォルダーが格納されています。 実行可能ファイルは、親フォルダーにある ASRDeploymentPlanner.exe です。
+3. zip フォルダーを展開します。
+このフォルダーには、複数のファイルとサブフォルダーが格納されています。 実行可能ファイルは、親フォルダーにある ASRDeploymentPlanner.exe です。
 
     例: .zip ファイルを E:\ ドライブにコピーして展開します。
     E:\ASR Deployment Planner_v2.1zip

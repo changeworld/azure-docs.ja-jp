@@ -5,17 +5,17 @@ services: machine-learning
 author: raymondl
 ms.author: raymondl
 manager: mwinkle
-ms.reviewer: garyericson, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 49e22c5136da67f62a43374817fb1e462fcbcaf0
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 690068edf749a2c79d328337618d94936520d501
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Web サービスのスループットを管理するためのクラスターのスケーリング
 
@@ -83,7 +83,7 @@ az ml service update realtime -i <service id> --autoscale-enabled true --autosca
 たとえば、`autoscale-min-replicas` を 5 に設定すると、5 つのレプリカが作成されます。 Web サービスに最適な数を見つけるには、この数に 10 などの値を設定し、503 エラー メッセージの数を監視します。 その後、この数を適宜調整します。
 
 
-| パラメーター名 | 型 | 説明 |
+| パラメーター名 | type | [説明] |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | ブール値 | 自動スケールを有効にするかどうかを指定します。 既定値: true |
 | `autoscale-min-replicas` | integer | ポッドの最小数を指定します。 0 以上にする必要があります。 既定値: 1 |

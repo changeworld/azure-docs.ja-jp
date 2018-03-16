@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
+ms.date: 3/9/2018
 ms.author: vturecek
-ms.openlocfilehash: 694d75807d978ece6296b945bf348f08688d3b5d
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 48504f258b13a7ff5f4c91db2d9de09269e92424
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="advanced-usage-of-the-reliable-services-programming-model"></a>Reliable Services プログラミング モデルの詳細な使用方法
 Azure Service Fabric により、信頼性の高いステートレス サービスとステートフル サービスの作成と管理が簡素化されます。 このガイドでは、サービスを細かく制御し、柔軟性を高めるために、Reliable Services の高度な使用方法について説明します。 このガイドをお読みになる前に、 [Reliable Services プログラミング モデル](service-fabric-reliable-services-introduction.md)について理解しておいてください。
@@ -41,11 +41,6 @@ Azure Service Fabric により、信頼性の高いステートレス サービ�
 
 ## <a name="stateful-service-replica-lifecycle"></a>ステートフル サービス レプリカのライフサイクル
 
-> [!NOTE]
-> ステートフル Reliable Services は Java ではまだサポートされていません。
->
->
-
 ステートフル サービス レプリカのライフサイクルは、ステートレス サービス インスタンスよりもかなり複雑です。 開く、終了、中止の各イベントに加え、ステートフル サービス レプリカでは、有効期間中にロールの変更が発生します。 ステートフル サービス レプリカがロールを変更すると、 `OnChangeRoleAsync` イベントがトリガーされます。
 
 * `Task OnChangeRoleAsync(ReplicaRole, CancellationToken)` OnChangeRoleAsync は、ステートフル サービス レプリカのロールが、プライマリやセカンダリなどに変更されるときに呼び出されます。 プライマリ レプリカには書き込み状態が与えられます (Reliable Collection の作成と Reliable Collection への書き込みが可能)。 セカンダリ レプリカには読み取り状態が与えられます (既存の Reliable Collection からの読み取りのみが可能)。 ステートフル サービスの作業のほとんどは、プライマリ レプリカで実行されます。 セカンダリ レプリカでは、読み取り専用の検証、レポートの生成、データ マイニングなど、読み取り専用のジョブを実行できます。
@@ -62,7 +57,7 @@ Azure Service Fabric により、信頼性の高いステートレス サービ�
 * void OnAbort()
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Service Fabric に関するさらに高度なトピックについては、次の記事をご覧ください。
 
 * [ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)

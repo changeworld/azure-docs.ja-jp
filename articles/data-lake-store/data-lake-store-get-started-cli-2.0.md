@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/09/2018
 ms.author: nitinme
-ms.openlocfilehash: 976ddf25a57dd1eff66e121c5a66bc31f664a9dc
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: b93b9a801b3e5e1fd869cda7f3d67554e2d03195
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/10/2018
 
 Azure CLI 2.0 を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、[Data Lake Store の概要](data-lake-store-overview.md)に関する記事をご覧ください。
 
-Azure CLI 2.0 は、Azure リソースを管理するための、Azure の新しいコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 詳細については、[Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure/overview)に関するページを参照してください。 コマンドと構文の完全な一覧については、[Azure Data Lake Store CLI 2.0 リファレンス](https://docs.microsoft.com/cli/azure/dls)を参照することもできます。
+Azure CLI 2.0 は、Azure リソースを管理するための、Azure の新しいコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows で使用できます。 詳細については、[Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure)に関するページを参照してください。 コマンドと構文の完全な一覧については、[Azure Data Lake Store CLI 2.0 リファレンス](https://docs.microsoft.com/cli/azure/dls)を参照することもできます。
 
 
 ## <a name="prerequisites"></a>前提条件

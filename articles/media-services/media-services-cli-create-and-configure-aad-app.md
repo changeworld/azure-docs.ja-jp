@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 01a2bb6d99776feec936315bc882c3097ce832d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 205e554fa42b1c28ed78add3e84c046855875872
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>CLI 2.0 で AAD アプリを作成し、Azure Media Services API にアクセスするよう構成する
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="use-the-azure-cloud-shell"></a>Azure Cloud Shell の使用
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ポータルの上部のナビゲーション ウィンドウから Cloud Shell を起動します。
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 
@@ -42,10 +42,10 @@ ms.lasthandoff: 10/11/2017
 ```azurecli
 az login
 az ad sp create-for-rbac --name <appName> --password <strong password>
-az role assignment create -- assignee < user/app id> --role Contributor --scope <subscription/subscription id>
+az role assignment create --assignee < user/app id> --role Contributor --scope <subscription/subscription id>
 ```
 
-For example:
+例: 
 
 ```azurecli
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
@@ -63,6 +63,6 @@ az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role
 
 また、「[Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理](../active-directory/role-based-access-control-manage-access-azure-cli.md)」も参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [アカウントへのファイルのアップロード](media-services-portal-upload-files.md)を開始します。

@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: mbullwin
-ms.openlocfilehash: e821a640d3d75e712c022bd681eb07b83da91911
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.openlocfilehash: 5d4abbf8194d633305877275e3dd273352906ad3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Application Insights におけるテレメトリの相関付け
 
@@ -98,13 +98,13 @@ Open Tracing の概念の定義については、[仕様](https://github.com/ope
 
 ASP.NET Core 2.0 は、HTTP ヘッダーの抽出と新しいアクティビティの開始をサポートします。 
 
-バージョン `<fill in>` から開始される `System.Net.HttpClient`は、相関付け HTTP ヘッダーの自動挿入とアクティビティとしての HTTP 呼び出しの追跡をサポートします。
+バージョン `4.1.0` から開始される `System.Net.HttpClient`は、相関付け HTTP ヘッダーの自動挿入とアクティビティとしての HTTP 呼び出しの追跡をサポートします。
 
 ASP.NET Classic 用の新しい HTTP モジュール [Microsoft.AspNet.TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/) があります。 このモジュールは、DiagnosticsSource を使用して、テレメトリの相関付けを実装します。 それは、受信要求ヘッダーに基づいてアクティビティを開始します。 さらに、要求処理のさまざまな段階のテレメトリを相関付けます。 IIS 処理のすべての段階が異なる管理スレッドで実行されている場合でも、これを行います。
 
 Application Insights SDK は、バージョン `2.4.0-beta1` から DiagnosticsSource とアクティビティを使用してテレメトリを収集し、それを現在のアクティビティに関連付けます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [カスタム テレメトリを記述します](app-insights-api-custom-events-metrics.md)。
 - Application Insights でマイクロ サービスのすべてのコンポーネントの利用を開始します。 [サポートされているプラットフォームを調べます](app-insights-platforms.md)。

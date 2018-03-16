@@ -16,20 +16,20 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f4a1562983ffa68dbd6586a2ae3a569f766387b5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1ec6d8d5327ec6d5ebb92e125cb4c52a7a929c0e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-network-classic-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、Resource Manager とクラシックの [2 種類のデプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)があります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新規仮想ネットワークは、[Resource Manager](virtual-networks-create-vnet-arm-pportal.md) デプロイメント モデルを使用して作成することをお勧めします。
+> Azure には、リソースの作成と操作に関して、Resource Manager とクラシックの [2 種類のデプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)があります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 ほとんどの新規仮想ネットワークは、[Resource Manager](quick-create-portal.md) デプロイメント モデルを使用して作成することをお勧めします。
 
 このチュートリアルでは、パブリック用とプライベート用に別個のサブネットを含んだ基本的な Azure 仮想ネットワーク (クラシック) の作成方法について説明します。 サブネット内の仮想マシンやクラウド サービスなどの Azure リソースを作成することができます。 仮想ネットワーク (クラシック) に作成されるリソースは、相互に通信することも、仮想ネットワークに接続されている他のネットワーク内のリソースと通信することもできます。
 
-すべての[仮想ネットワーク](virtual-network-manage-network.md)と[サブネット](virtual-network-manage-subnet.md)の設定について説明します。
+すべての[仮想ネットワーク](manage-virtual-network.md)と[サブネット](virtual-network-manage-subnet.md)の設定について説明します。
 
 > [!WARNING]
 > 仮想ネットワーク (クラシック) は、[サブスクリプションが無効になる](../billing/billing-subscription-become-disable.md?toc=%2fazure%2fvirtual-network%2ftoc.json#you-reached-your-spending-limit)とすぐに Azure によって削除されます。 仮想ネットワーク (クラシック) は、リソースが仮想ネットワーク上に存在するかどうかに関係なく削除されます。 後でもう一度サブスクリプションを有効にした場合は、仮想ネットワークに存在していたリソースを再作成する必要があります。
@@ -161,7 +161,7 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="next-steps"></a>次の手順
 
-- すべての仮想ネットワークとサブネットの設定について詳しくは、[仮想ネットワークの管理](virtual-network-manage-network.md)、および[仮想ネットワークのサブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。 運用環境の仮想ネットワークとサブネットを使用して別の要件を満たすには、さまざまなオプションがあります。
+- すべての仮想ネットワークとサブネットの設定について詳しくは、[仮想ネットワークの管理](manage-virtual-network.md)、および[仮想ネットワークのサブネットの管理](virtual-network-manage-subnet.md)に関する記事をご覧ください。 運用環境の仮想ネットワークとサブネットを使用して別の要件を満たすには、さまざまなオプションがあります。
 - 受信方向と送信方向のサブネット トラフィックをフィルタリングするには、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を作成してサブネットに適用します。
 - [Windows 仮想マシン](../virtual-machines/windows/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Linux 仮想マシン](../virtual-machines/linux/classic/createportal-classic.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を作成して、既存の仮想ネットワークに接続します。
 - 同じ Azure の場所の 2 つの仮想ネットワークを接続するには、仮想ネットワーク間の[仮想ネットワーク ピアリング](create-peering-different-deployment-models.md)を作成します。 仮想ネットワーク (Resource Manager) を仮想ネットワーク (クラシック) にピアリングすることはできますが、2 つの仮想ネットワーク (クラシック) 間でピアリングを作成することはできません。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: magoedte
 ms.openlocfilehash: 2944b62cb3dc6146573041533d56d45b6cc87f18
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure Automation のシナリオ - Automation ソース管理と GitHub Enterprise の統合
 

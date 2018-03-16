@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: billgib; sstein
-ms.openlocfilehash: 90510520e5f6bbfa8aea4026d7437a4a4881984f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7747092d5613a40fa0aff09cfbdfb9b786b37954
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する
 
@@ -132,7 +132,7 @@ OMS ポータルでは、ワークスペース内のログとメトリック デ
 
 Log Analytics と OMS での監視とアラートは、Azure ポータルの各リソースで定義されているアラートとは異なり、ワークスペース内のデータに対するクエリに基づいています。 アラートがクエリに基づくようにすることで、すべてのデータベースを対象とする単一のアラートを定義でき、データベース別に 1 つずつアラートを定義する必要はありません。 クエリは、ワークスペースで利用可能なデータによってのみ制限されます。
 
-OMS を使用してクエリを実行し、アラートを設定する方法の詳細については、「[Log Analytics のアラート ルールの操作](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-alerts-creating)」をご覧ください。
+OMS を使用してクエリを実行し、アラートを設定する方法の詳細については、「[Log Analytics のアラート ルールの操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)」をご覧ください。
 
 Log Analytics for SQL Database は、ワークスペース内のデータ量に基づいて課金されます。 このチュートリアルでは、Free ワークスペースを作成しました。このワークスペースの制限は、1 日あたり 500 MB です。 この制限に達すると、データはワークスペースに追加されなくなります。
 

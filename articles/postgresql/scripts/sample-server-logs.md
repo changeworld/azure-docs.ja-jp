@@ -11,11 +11,11 @@ ms.devlang: azure-cli
 ms.topic: sample
 ms.custom: mvc
 ms.date: 02/28/2018
-ms.openlocfilehash: 195a9d1162798e916a9fc8fc6efce58a0af9f2eb
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 1e62868523bece0d6154f0b4a32ea6231ecec1b3
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="enable-and-download-server-slow-query-logs-of-an-azure-database-for-postgresql-server-using-azure-cli"></a>Azure CLI で Azure Database for PostgreSQL サーバーの低速クエリ ログを有効にしてダウンロードする
 この CLI のサンプル スクリプトでは、単一の Azure Database for PostgreSQL サーバーの、低速クエリ ログを有効にしてダウンロードします。
@@ -46,6 +46,6 @@ CLI をローカルで実行する場合、この記事では、Azure CLI バー
 | [az group delete](/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次の手順
-- Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure/overview)
+- Azure CLI に関する詳細を読む: [Azure CLI ドキュメント](/cli/azure)
 - 他のスクリプトを試す: [Azure Database for PostgreSQL の Azure CLI サンプル](../sample-scripts-azure-cli.md)
 - [Azure Portal でのサーバー ログの構成とアクセス](../howto-configure-server-logs-in-portal.md)

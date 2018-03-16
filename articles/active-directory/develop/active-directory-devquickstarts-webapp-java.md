@@ -16,10 +16,10 @@ ms.date: 11/30/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 281ce23d7fdb1a94bcc7389f3326d45a9b4e99b5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-ad-java-web-app-getting-started"></a>Azure AD Java Web アプリの概要
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

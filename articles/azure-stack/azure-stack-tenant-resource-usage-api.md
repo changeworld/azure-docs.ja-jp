@@ -3,8 +3,8 @@ title: "テナント リソース使用量 API | Microsoft Docs"
 description: "Azure Stack の使用状況情報を取得するリソース使用状況 API のリファレンス。"
 services: azure-stack
 documentationcenter: 
-author: AlfredoPizzirani
-manager: byronr
+author: mattbriggs
+manager: femila
 editor: 
 ms.assetid: b9d7c7ee-e906-4978-92a3-a2c52df16c36
 ms.service: azure-stack
@@ -12,15 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2016
-ms.author: alfredop
-ms.openlocfilehash: f2eaf1c766d6c86741cf0fd561c131eacb34d782
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: bc0b9993119342f07c28ed0384c11ae0f15bc439
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tenant-resource-usage-api"></a>テナント リソース使用量 API
+
 テナントは、テナント API を使用して、テナントの独自のリソース使用状況データを表示できます。 この API は、Azure 使用状況 API (現在プライベート プレビュー中) と一貫性があります。
 
 Windows PowerShell コマンドレット **Get-UsageAggregates** を使用して、Azure と同様に使用状況データを取得できます。
@@ -44,7 +46,7 @@ Windows PowerShell コマンドレット **Get-UsageAggregates** を使用して
 | *api-version* |この要求を行うために使用するプロトコルのバージョン。 2015-06-01-preview を使用する必要があります。 |
 | *continuationToken* |使用状況 API プロバイダーへの最後の呼び出しから取得されたトークン。 このトークンは、応答が 1,000 行より大きい場合に必要であり、進行状況のブックマークとして機能します。 これが存在しない場合、渡された単位に基づいて、日または時間の開始から、データが取得されます。 |
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&api-version=1.0
 
 ```json
@@ -84,7 +86,8 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 | *quantity* |この期間に発生したリソース使用量 |
 | *meterId* |使用されたリソースの一意の ID (*ResourceID* とも呼ばれる) |
 
-## <a name="next-steps"></a>次のステップ
+
+## <a name="next-steps"></a>次の手順
 [プロバイダー リソース使用量 API](azure-stack-provider-resource-api.md)
 
 [使用量に関するよくあるご質問 (FAQ)](azure-stack-usage-related-faq.md)

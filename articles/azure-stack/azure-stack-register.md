@@ -12,17 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 1/8/2018
+ms.date: 2/27/2018
 ms.author: jeffgilb
-ms.openlocfilehash: b58b3fc538d2237c12a860d268d550c4223155ba
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 8d520e1917d63b56a2adf3823ddbb741721fe751
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Azure サブスクリプションを使用した Azure Stack の登録
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 [Azure Stack](azure-stack-poc.md) を Azure に登録して Azure からマーケットプレース項目をダウンロードし、Microsoft への商取引データの事後レポートを設定できます。
 

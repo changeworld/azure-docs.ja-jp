@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0639a2b7e71878103542d3e037040f8a7444976f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 095bfe328f3e3ed220de71b3410e34b9be86cff1
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="run-applications-in-azure-container-service-aks"></a>Azure Container Service (AKS) でのアプリケーションの実行
 
@@ -46,16 +46,10 @@ ACR ログイン サーバー名を取得するには、[az acr list][az-acr-lis
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-マニフェスト ファイルは、ログイン サーバー名 `microsoft` で事前作成されています。 任意のテキスト エディターでファイルを開きます。 この例では、ファイルは `vi` で開きます。
+マニフェスト ファイルは、ログイン サーバー名 `microsoft` で事前作成されています。 任意のテキスト エディターでファイルを開きます。 この例では、ファイルは `nano` で開きます。
 
 ```console
-vi azure-vote-all-in-one-redis.yaml
-```
-
-Windows で作業する場合には、Visual Studio Code も利用できます。
-
-```console
-code azure-vote-all-in-one-redis.yaml
+nano azure-vote-all-in-one-redis.yaml
 ```
 
 `microsoft` を ACR ログイン サーバー名に置き換えます。 この値は、マニフェスト ファイルの **47** 行にあります。

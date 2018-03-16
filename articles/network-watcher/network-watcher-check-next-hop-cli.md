@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.openlocfilehash: aa77b1db03dc03f2b4fa1006a0fae823bb113615
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 873bd0f8c98cfa67c77841df8aa53eb2b895cd54
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="find-out-what-the-next-hop-type-is-using-the-next-hop-capability-in-azure-network-watcher-using-azure-cli-20"></a>Azure Network Watcher の Next Hop 機能で Azure CLI 2.0 を使用して次ホップの種類を検索する
 
@@ -50,7 +50,7 @@ Next Hop は Network Watcher の機能の 1 つであり、指定された仮想
 
 次ホップを取得するには、`az network watcher show-next-hop` コマンドレットを呼び出します。 このコマンドレットには、Network Watcher リソース グループ、Network Watcher、仮想マシン ID、送信元 IP アドレス、宛先 IP アドレスを渡します。 この例では、宛先 IP アドレスは別の仮想ネットワークにある VM です。 2 つの仮想ネットワークの間には、仮想ネットワーク ゲートウェイがあります。
 
-まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。 次に、次のコマンドを実行します。
+まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。 次に、次のコマンドを実行します。
 
 ```azurecli
 az network watcher show-next-hop --resource-group <resourcegroupName> --vm <vmNameorID> --source-ip <source-ip> --dest-ip <destination-ip>

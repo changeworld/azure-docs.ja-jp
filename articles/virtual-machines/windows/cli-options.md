@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.openlocfilehash: 11d30931bd549f7e877264b4a33f8e06c6b1c802
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: e54ea62b7b7a7adb4874866a540ed9a6a097fc42
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-the-azure-cli-on-windows"></a>Windows 上での Azure CLI の使用
 
 Azure コマンド ライン インターフェイス (CLI) は、Azure リソースの作成と管理のためのコマンドラインとスクリプト環境を提供します。 Azure CLI は、macOS、Linux、および Windows オペレーティング システムで使用できます。 これらのオペレーティング システムにわたって CLI コマンドは同じですが、オペレーティング システム固有のスクリプト構文は異なることがあります。
 
-このドキュメントでは、Windows 上で Azure CLI をインストールおよび実行する方法、およびそれぞれの構文上の考慮事項について詳細に説明します。 詳細な Azure CLI のドキュメントについては、[Azure CLI のドキュメント]( https://docs.microsoft.com/cli/azure/overview)を参照してください。
+このドキュメントでは、Windows 上で Azure CLI をインストールおよび実行する方法、およびそれぞれの構文上の考慮事項について詳細に説明します。 詳細な Azure CLI のドキュメントについては、[Azure CLI のドキュメント]( https://docs.microsoft.com/cli/azure)を参照してください。
 
 ## <a name="windows-subsystem-for-linux"></a>Windows Subsystem for Linux
 
@@ -56,7 +56,7 @@ docker run -it azuresdk/azure-cli-python:latest bash
 
 完了すると、Azure CLI ツールが事前に読み込まれた Bash セッションが開始されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure 仮想マシン用の CLI サンプル](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

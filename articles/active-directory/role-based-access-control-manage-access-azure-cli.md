@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: rolyon
 ms.reviewer: rqureshi
-ms.openlocfilehash: 5c099a7fd8848c2934603ec9b2db8947885226f9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6c9df11e528601d94cb72a8e3ef0868dc7781e12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-role-based-access-control-with-the-azure-command-line-interface"></a>Azure コマンド ライン インターフェイスを使用したロールベースの Access Control の管理
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 02/22/2018
 
 Azure CLI を使用して RBAC を管理するには、以下の前提条件が整っている必要があります。
 
-* [Azure CLI 2.0](/cli/azure/overview)。 ブラウザーの [Azure Cloud Shell](../cloud-shell/overview.md) で使用できるほか、macOS、Linux、Windows に[インストール](/cli/azure/install-azure-cli)してコマンド ラインで実行することもできます。
+* [Azure CLI 2.0](/cli/azure)。 ブラウザーの [Azure Cloud Shell](../cloud-shell/overview.md) で使用できるほか、macOS、Linux、Windows に[インストール](/cli/azure/install-azure-cli)してコマンド ラインで実行することもできます。
 
 ## <a name="list-roles"></a>ロールの一覧表示
 

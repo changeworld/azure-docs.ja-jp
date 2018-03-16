@@ -14,11 +14,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: cynthn
-ms.openlocfilehash: 26e09f4e408b92034594215f602d5ca0ff259c5a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 511a3f1b1bc29514baaa3198125d7d236a6101ab
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-copy-of-a-linux-vm-by-using-azure-cli-20-and-managed-disks"></a>Azure CLI 2.0 と Managed Disks を使用して Linux VM のコピーを作成する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 02/09/2018
 
 -   [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールする。
 
--   [az login](/cli/azure/#az_login) で Azure アカウントにサインインする。
+-   [az login](/cli/azure/reference-index#az_login) で Azure アカウントにサインインする。
 
 -   コピーのソースとして使用する Azure VM がある。
 

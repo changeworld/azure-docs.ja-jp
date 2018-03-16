@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 34d9d207225327758d535a11c870019f3db31cb0
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Azure Stack の管理者ポータルの使用
 

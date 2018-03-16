@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.openlocfilehash: be282f79445c505ece7c6115df7a29c20a6a5f02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f3e236cab559ffc1779ab301b153232d63ca2336
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-virtual-machine-from-a-snapshot-with-cli"></a>CLI でスナップショットから仮想マシンを作成する
 
@@ -52,8 +52,8 @@ az group delete --name myResourceGroup
 | [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | スナップショット ID、ディスク名、記憶域の種類、およびサイズを使用して、スナップショットから管理ディスクを作成します。  |
 | [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 管理 OS ディスクを使用して VM を作成する |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。

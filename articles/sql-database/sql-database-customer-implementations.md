@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: Inactive
 ms.date: 03/03/2017
 ms.author: carlrab
-ms.openlocfilehash: b22307ee0cade40370b096ee49bb15dcfd2f0071
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 3da41adfa0865c0741c61b5d15c3ef1741eb6118
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL Database 顧客実装技術スタディ
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/31/2017
 
 - [Quorum](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database): Quorum 社は、SQL Database を使用して DTU を 70% 下げながら、主要なデータベースのワークロードを 2 倍にしました。
 
-- [Quest](https://customers.microsoft.com/en-US/story/quest): Quest 社では 1 つの目標を念頭に置いて、Spotlight on SQL Server Enterprise サービスを提供しています。その目標とは、データの保護、そのデータの移動、およびデータベース操作の監視に使用できる最適なツールをデータベースの専門家に提供することです。 Spotlight と Microsoft Azure および Azure SQL Database を使用することで、SQL Server データベース管理者は職場や自宅などの場所を問わず、SQL Server におけるパフォーマンスの問題を監視、検出、診断でき、問題を解決するための方法を提供できます。
+- [Quest](https://customers.microsoft.com/story/quest): Quest 社では 1 つの目標を念頭に置いて、Spotlight on SQL Server Enterprise サービスを提供しています。その目標とは、データの保護、そのデータの移動、およびデータベース操作の監視に使用できる最適なツールをデータベースの専門家に提供することです。 Spotlight と Microsoft Azure および Azure SQL Database を使用することで、SQL Server データベース管理者は職場や自宅などの場所を問わず、SQL Server におけるパフォーマンスの問題を監視、検出、診断でき、問題を解決するための方法を提供できます。
 
 - [Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): この簡単なケース スタディは、完全に管理されたサービスとしてのソフトウェア (SaaS) オファリングをお客様に提供するために、Dynamics 365 for Operations 製品チームが Azure SQL Database に移行した経験から得たベスト プラクティスと教訓に重点を置いています。 Azure SQL Database を使用することで、Dynamics 365 for Operations チームは非常に少ない人員でサービスを管理および運営し、データベースの自動バックアップ、データベースのバックアップ保持、高可用性およびディザスター リカバリー機能など、すぐに使用できる管理容易性機能を利用して簡単にスケーリングすることができました。 単純な自動化によるデータベースのプロビジョニング機能と共に使用することで、Azure SQL Database は大規模なサービスに対応できる優れたプラットフォームとなりました。
 

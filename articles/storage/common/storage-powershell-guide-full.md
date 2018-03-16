@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: robinsh
-ms.openlocfilehash: f94febfa1610795cd46b4315bbbbe56aa2bca861
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 7bd8d17d5a2c918f2bef770c224398e7332785f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -136,8 +136,6 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 * **SKU** は、LRS (ローカル冗長ストレージ) など、ストレージ アカウントのレプリケーション設定です。 たとえば、Standard\_LRS を Standard\_GRS または Standard\_RAGRS に変更できます。 Standard\_ZRS や Premium\_LRS をその他の SKU に変更したり、その他の SKU を Standard_ZRS や Premium_LRS に変更したりすることはできません。
 
 * Blob Storage アカウントの**アクセス層**。 アクセス層の値は**ホット**または**クール**に設定されます。この値を使用すると、ストレージ アカウントの使用方法に合致したアクセス層を選択してコストを最小限に抑えることができます。 詳細については、「[Azure Blob Storage: ホット、クール、およびアーカイブ (プレビュー) ストレージ層](../blobs/storage-blob-storage-tiers.md)」を参照してください。
-
-* Blob Storage や File Storage の Storage Service Encryption の設定。 SSE の詳細については、「[Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)」を参照してください。
 
 * HTTPS トラフィックのみを許可。 
 

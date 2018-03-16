@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/09/2018
 ms.author: asgang
-ms.openlocfilehash: 8ffc4a5a573b1c5951fab98fb766aed36f626fe4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b390f6c62a6ddf8c800f79b42a36dac2c4f4c908
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする
 
@@ -51,13 +51,13 @@ Site Recovery を使用して Dynamics AX アプリケーションのディザ�
 
 **シナリオ** | **セカンダリ サイトへ** | **Azure へ**
 --- | --- | ---
-**Hyper-V** | はい | はい
-**VMware** | はい | はい
-**物理サーバー** | はい | あり
+**Hyper-V** | [はい] | [はい]
+**VMware** | [はい] | [はい]
+**物理サーバー** | [はい] | [はい]
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery を使用して Dynamics AX アプリケーションのディザスター リカバリーを可能にする
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX アプリケーションを保護する
-アプリケーションの完全なレプリケーションとリカバリーを可能にするには、Dynamics AX の各コンポーネントを保護する必要があります。 
+アプリケーションの完全なレプリケーションとリカバリーを可能にするには、Dynamics AX の各コンポーネントを保護する必要があります。
 
 ### <a name="1-set-up-active-directory-and-dns-replication"></a>1.Active Directory と DNS レプリケーションを設定する
 
@@ -73,7 +73,7 @@ Dynamics AX アプリケーションが機能するには、ディザスター �
 
  詳細については、[ディザスター リカバリー サイトでドメイン コントローラーを使用できるようにする](site-recovery-active-directory.md)ための記事を参照してください。 これ以降のドキュメントでは、ドメイン コントローラーがディザスター リカバリー サイトで使用可能になっていることを前提とします。
 
-### <a name="2-set-up-sql-server-replication"></a>手順 2.SQL Server レプリケーションをセットアップする
+### <a name="2-set-up-sql-server-replication"></a>2.SQL Server レプリケーションをセットアップする
 SQL 層を保護するための推奨されるオプションの技術的なガイダンスについては、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
 
 ### <a name="3-enable-protection-for-the-dynamics-ax-client-and-application-object-server-vms"></a>手順 3.Dynamics AX クライアントと Application Object Server VM の保護を有効にする
@@ -137,7 +137,7 @@ Application Object Server VM グループが立ち上がった後、そのグル
 
 ### <a name="perform-a-test-failover"></a>テスト フェールオーバーの実行
 
-テスト フェールオーバー中の Active Directory 固有の詳細については、Active Directory のディザスター リカバリー ソリューションに関する必携ガイドを参照してください。 
+テスト フェールオーバー中の Active Directory 固有の詳細については、Active Directory のディザスター リカバリー ソリューションに関する必携ガイドを参照してください。
 
 テスト フェールオーバー中の SQL Server 固有の詳細については、[SQL Server と Azure Site Recovery を使用したアプリケーションのレプリケート](site-recovery-sql.md)に関する記事を参照してください。
 
@@ -186,8 +186,8 @@ Application Object Server VM グループが立ち上がった後、そのグル
 
 フェールバックの実行の詳細については、[VMware VM の Azure からオンプレミスへのフェールバック](site-recovery-failback-azure-to-vmware.md)に関する記事を参照してください。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 Site Recovery を使用することで、Dynamics AX アプリケーション用の完全に自動されたディザスター リカバリー計画を作成できます。 障害発生時には、任意の場所から数秒以内にフェールオーバーを開始し、数分以内にアプリケーションを稼働させることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Site Recovery によるエンタープライズ ワークロード保護の詳細については、「[Azure Site Recovery で保護できるワークロード](site-recovery-workload.md)」をご覧ください。

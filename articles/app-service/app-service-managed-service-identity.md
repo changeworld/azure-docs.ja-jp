@@ -11,11 +11,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 45fcbc3af02dd8afbd9581e8bc38ad10369a2747
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 736a82d282e5769fb403c66ffd5d44107c6d3218
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>App Service および Azure Functions で管理対象のサービス ID (パブリック プレビュー) を使用する方法
 
@@ -56,7 +56,7 @@ Azure CLI を使用して、管理対象のサービス ID を設定するには
 
 次の手順では、CLI を使用して、Web アプリを作成し、ID を割り当てる方法について説明します。
 
-1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/#az_login) を使用して Azure にサインインします。 次のように、アプリケーションをデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/reference-index#az_login) を使用して Azure にサインインします。 次のように、アプリケーションをデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
 
     ```azurecli-interactive
     az login
@@ -126,13 +126,13 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 アプリは、その ID を使って、AAD で保護されている他のリソース (Azure Key Vault など) へのトークンを取得できます。 これらのトークンは、アプリケーションの特定のユーザーではなく、リソースにアクセスしているアプリケーションを表します。 
 
 > [!IMPORTANT]
-> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 管理対象のサービス ID のトークンをサポートしているリソースについて詳しくは、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/msi-overview.md#which-azure-services-support-managed-service-identity)」をご覧ください。
+> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 管理対象のサービス ID のトークンをサポートしているリソースについて詳しくは、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/pp/msi-overview.md#which-azure-services-support-managed-service-identity)」をご覧ください。
 
 App Service と Azure Functions には、トークンを取得するための簡単な REST プロトコルがあります。 .NET アプリケーションの場合は、Microsoft.Azure.Services.AppAuthentication ライブラリがこのプロトコルの抽象化を提供し、ローカル開発エクスペリエンスをサポートします。
 
 ### <a name="asal"></a>.NET 用の Microsoft.Azure.Services.AppAuthentication ライブラリの使用
 
-.NET アプリケーションと Functions の場合、管理対象のサービス ID を使う最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス]に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
+.NET アプリケーションと Functions の場合、管理対象のサービス ID を使う最も簡単な方法は、Microsoft.Azure.Services.AppAuthentication パッケージを利用することです。 このライブラリを使うと、Visual Studio、[Azure CLI 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)、または Active Directory 統合認証のユーザー アカウントを使って、開発用コンピューターでローカルにコードをテストすることもできます。 このライブラリでのローカル開発オプションについて詳しくは、[Microsoft.Azure.Services.AppAuthentication のリファレンス]に関するページをご覧ください。 このセクションでは、コードでライブラリを使い始める方法を示します。
 
 1. [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) および [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) NuGet パッケージに対する参照をアプリケーションに追加します。
 

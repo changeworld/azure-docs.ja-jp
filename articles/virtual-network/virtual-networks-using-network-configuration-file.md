@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: jdial
 ms.custom: 
-ms.openlocfilehash: f1e3ae26b6525f2235a6b0d53546b334dc027b94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1bb75b8bd1d525f3104fb517cb4a09b2e33caaca
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>ネットワーク構成ファイルを使用した仮想ネットワーク (クラシック) の構成
 > [!IMPORTANT]
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="create-or-modify-a-network-configuration-file"></a>ネットワーク構成ファイルの作成または変更
 
-ネットワーク構成ファイルは、XML ファイル (PowerShell を使用した場合) または json ファイル (Azure CLI を使用した場合) です。 任意のテキスト エディターまたは XML/json エディターでファイルを編集することができます。 [ネットワーク構成ファイルのスキーマ設定](https://msdn.microsoft.com/library/azure/jj157100.aspx)に関する記事に、すべての設定の詳細が記載されています。 設定の詳しい説明については、「[仮想ネットワークと設定の表示](virtual-network-manage-network.md#view-vnet)」を参照してください。 このファイルに変更を加えるときは、次の点に注意してください。
+ネットワーク構成ファイルは、XML ファイル (PowerShell を使用した場合) または json ファイル (Azure CLI を使用した場合) です。 任意のテキスト エディターまたは XML/json エディターでファイルを編集することができます。 [ネットワーク構成ファイルのスキーマ設定](https://msdn.microsoft.com/library/azure/jj157100.aspx)に関する記事に、すべての設定の詳細が記載されています。 設定の詳しい説明については、「[仮想ネットワークと設定の表示](manage-virtual-network.md#view-virtual-networks-and-settings)」を参照してください。 このファイルに変更を加えるときは、次の点に注意してください。
 
 - スキーマに準拠する必要があります。準拠していないと、ネットワーク構成ファイルのインポートに失敗します。
 - ご利用のサブスクリプションの既存のネットワーク設定がすべて上書きされます。変更する際は、十分に注意してください。 実際の例については、以下に掲載されているネットワーク構成ファイルのサンプルを参照してください。 たとえば、元のファイルに 2 つの **VirtualNetworkSite** インスタンスが含まれていて、それを例のように変更したとします。 そのファイルで削除した **VirtualNetworkSite** インスタンスの仮想ネットワークは、ファイルをインポートすると削除されます。 このシナリオは簡略化のため、仮想ネットワークにリソースが存在しないことを前提としています。仮にリソースが存在していた場合、仮想ネットワークを削除できず、インポートでエラーが発生するためです。

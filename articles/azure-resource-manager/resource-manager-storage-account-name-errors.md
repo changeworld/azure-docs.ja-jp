@@ -11,13 +11,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: dc045827fbd38054a334ff22eb30e0db6a31bac8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c266e1073722733ec8b7353c6fdddc3ae341ab20
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-storage-account-names"></a>ストレージ アカウント名のエラーの解決
 
@@ -48,16 +48,12 @@ Message=The storage account named mystorage is already taken.
 
 ## <a name="solution"></a>解決策
 
-### <a name="solution-1"></a>解決策 1
-
 ストレージ アカウント名は必ず一意にしてください。 一意の名前を作成するには、使用している命名規則に、 [uniqueString](resource-group-template-functions-string.md#uniquestring) 関数の結果を連結します。
 
 ```json
 "name": "[concat('storage', uniqueString(resourceGroup().id))]",
 "type": "Microsoft.Storage/storageAccounts",
 ```
-
-### <a name="solution-2"></a>解決策 2
 
 ストレージ アカウント名が 24 文字を超えないようにしてください。 [uniqueString](resource-group-template-functions-string.md#uniquestring) 関数は 13 文字を返します。 **uniqueString** の結果にプレフィックスまたはポストフィックスを連結する場合は、11 文字以下の値を指定してください。
 
@@ -73,7 +69,5 @@ Message=The storage account named mystorage is already taken.
     }
 }
 ```
-
-### <a name="solution-3"></a>解決策 3
 
 ストレージ アカウント名には、大文字や特殊文字を含めないでください。

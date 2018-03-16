@@ -12,20 +12,20 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 12/04/2017
+ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 9aedd5561397c78622a43f39f423c618000a2a33
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 87e124b1dc14ad34d1d790d463ce1f5ded18f74b
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="run-azure-site-recovery-deployment-planner-for-vmware-to-azure"></a>Azure Site Recovery Deployment Planner の実行 (VMware から Azure)
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
 
 
 ## <a name="modes-of-running-deployment-planner"></a>Deployment Planner の実行モード
-このコマンドライン ツール (ASRDeploymentPlanner.exe) は、次の 4 とおりのモードで実行できます。 
+このコマンドライン ツール (ASRDeploymentPlanner.exe) は、次の 4 とおりのモードで実行できます。
 
 1.  [プロファイリング](#profile-vmware-vms)
 2.  [レポートの生成](#generate-report)
@@ -49,8 +49,8 @@ ms.lasthandoff: 01/16/2018
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
 4. Connect-VIServer がコマンドレットの名前として認識されない場合は、別途次のコマンドを実行する必要があります。
- 
-            Add-PSSnapin VMware.VimAutomation.Core 
+
+            Add-PSSnapin VMware.VimAutomation.Core
 
 5. vCenter サーバー/vSphere ESXi ホスト上にあるすべての VM の名前を取得して、リストを .txt ファイルに格納するには、次の 2 つのコマンドを実行します。
 &lsaquo;server name&rsaquo;、&lsaquo;user name&rsaquo;、&lsaquo;password&rsaquo;、&lsaquo;outputfile.txt&rsaquo; は、実際の値に置き換えてください。
@@ -101,7 +101,7 @@ VM のプロファイリング期間は 7 日間より長くすることをお�
 <!-- Maximum number of vms supported-->
 <add key="MaxVmsSupported" value="1000"/>
 ```
-既定の設定では、たとえば 1,500 台の VM をプロファイリングする場合に 2 つの VMList.txt ファイルを作成します。 1 つのリストには 1,000 台の VM が含まれており、もう 1 つのリストには 500 台の VM が含まれています。 一方に VMList1.txt を使用し、もう一方に VMList2.txt を使用して、ASR Deployment Planner で 2 つのインスタンスを実行します。 両方の VMList VM のプロファイリング データを格納するために、同じディレクトリ パスを使用できます。 
+既定の設定では、たとえば 1,500 台の VM をプロファイリングする場合に 2 つの VMList.txt ファイルを作成します。 1 つのリストには 1,000 台の VM が含まれており、もう 1 つのリストには 500 台の VM が含まれています。 一方に VMList1.txt を使用し、もう一方に VMList2.txt を使用して、ASR Deployment Planner で 2 つのインスタンスを実行します。 両方の VMList VM のプロファイリング データを格納するために、同じディレクトリ パスを使用できます。
 
 ハードウェア構成 (特にレポートを生成するためにツールが実行されるサーバーの RAM サイズ) によっては、メモリ不足で操作が失敗する可能性があることが確認されています。 優れたハードウェアを使用している場合、MaxVMsSupported をより高い値に変更できます。  
 
@@ -293,4 +293,3 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 
 ## <a name="next-steps"></a>次の手順
 * [生成されたレポートの分析](site-recovery-vmware-deployment-planner-analyze-report.md)
-

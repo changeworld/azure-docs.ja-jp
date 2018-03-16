@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: ded90be3da52770a88dd1746fae2bd3584ba9280
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f717aca4f68811b5973fcee8791ac7db3a66e74a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Azure CLI を使用して Linux VM の仮想ハード ディスクを拡張する方法
 Azure の Linux 仮想マシン (VM) では、通常、オペレーティング システム (OS) の既定の仮想ハード ディスク サイズは 30 GB です。 [データ ディスクを追加](add-disk.md)して記憶域スペースを追加できますが、既存のデータ ディスクを拡張することもできます。 この記事では、Azure CLI 2.0 を使用して、Linux VM の管理ディスクを拡張する方法について詳しく説明します。 [Azure CLI 1.0](expand-disks-nodejs.md) を使用して、非管理対象 OS ディスクを拡張することもできます。
@@ -27,7 +27,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
 > ディスクのサイズ変更操作を実行する前に、常にデータをバックアップしていることを確認してください。 詳細については、「[Azure での Linux 仮想マシンのバックアップ](tutorial-backup-vms.md)」を参照してください。
 
 ## <a name="expand-azure-managed-disk"></a>Azure Managed Disks の拡張
-[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインしていることを確認します。
+[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしていることを確認します。
 
 この記事では、少なくとも 1 つのデータ ディスクが接続され、準備ができている Azure の既存の VM が必要です。 使用できる VM をまだ用意していない場合は、[データ ディスク付きの VM の作成と準備](tutorial-manage-disks.md#create-and-attach-disks)に関するページを参照してください。
 

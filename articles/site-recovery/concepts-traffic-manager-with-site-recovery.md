@@ -5,20 +5,15 @@ services: site-recovery
 documentationcenter: 
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: 3192c67938fe118e79aa68ee6194e76f21d65d98
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8305a354588875926cab52a55d99d3a29bcfb509
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-traffic-manager-with-azure-site-recovery"></a>Azure Traffic Manager と Azure Site Recovery
 
@@ -49,11 +44,11 @@ Traffic Manager では、ドメイン ネーム システム (DNS) を使用し�
 
 ビジネス要件によっては、**A 社**はより高い、またはより低い[プローブ頻度](../traffic-manager/traffic-manager-monitoring.md)を選んで障害時にオンプレミスと Azure の間を切り替え、ユーザーのダウンタイムを最小限に抑えることができます。
 
-障害がなくなると、**A 社**は Azure Site Recovery を使って Azure からオンプレミス環境にフェールバックできます ([VMware](site-recovery-how-to-failback-azure-to-vmware.md) または [Hyper-V](site-recovery-failback-from-azure-to-hyper-v.md))。 Traffic Manager は、**Primary** エンドポイントが再び正常になったことを検出すると、自動的に DNS 応答で **Primary** エンドポイントを利用するようになります。
+障害がなくなると、**A 社**は Azure Site Recovery を使って Azure からオンプレミス環境にフェールバックできます ([VMware](vmware-azure-failback.md) または [Hyper-V](hyper-v-azure-failback.md))。 Traffic Manager は、**Primary** エンドポイントが再び正常になったことを検出すると、自動的に DNS 応答で **Primary** エンドポイントを利用するようになります。
 
 ## <a name="on-premises-to-azure-migration"></a>オンプレミスから Azure への移行
 
-ディザスター リカバリーだけでなく、Azure Site Recovery を使って [Azure に移行する](site-recovery-migrate-to-azure.md)こともできます。 Azure Site Recovery の強力なテスト フェールオーバー機能を使うと、オンプレミスの環境に影響を与えずに、Azure でアプリケーションのパフォーマンスを評価できます。 移行する準備が整ったら、ワークロード全体の一括移行または段階的な移行とスケーリングのどちらかを選ぶことができます。
+ディザスター リカバリーだけでなく、Azure Site Recovery を使って [Azure に移行する](migrate-overview.md)こともできます。 Azure Site Recovery の強力なテスト フェールオーバー機能を使うと、オンプレミスの環境に影響を与えずに、Azure でアプリケーションのパフォーマンスを評価できます。 移行する準備が整ったら、ワークロード全体の一括移行または段階的な移行とスケーリングのどちらかを選ぶことができます。
 
 Azure Traffic Manager の[加重](../traffic-manager/traffic-manager-configure-weighted-routing-method.md)ルーティング方法を使うと、受信トラフィックの一部だけを Azure に送り、大部分のトラフィックをオンプレミス環境に送ることができます。 この方法は、Azure に割り当てる加重を少しずつ増やして Azure のワークロードを大きくしながら、スケール パフォーマンスを評価するのに便利です。
 

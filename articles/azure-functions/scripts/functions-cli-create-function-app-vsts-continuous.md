@@ -9,11 +9,11 @@ ms.date: 01/09/2018
 ms.topic: sample
 ms.service: functions
 ms.custom: mvc
-ms.openlocfilehash: 789f4e0b325475ddc3ff7aeb6e014f3814ac3458
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0bd2e0896758b4d9f019b0c9520c5e9e1f3afd94
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-function-app-and-deploy-function-code-from-visual-studio-team-services"></a>関数アプリの作成と Visual Studio Team Services からの関数コードのデプロイ
 
@@ -53,6 +53,6 @@ Azure CLI をローカルで使用する場合は、バージョン 2.0 以降�
 
 ## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
 その他の Azure Functions CLI のサンプル スクリプトは、[Azure Functions のドキュメント](../functions-cli-samples.md)で確認できます。

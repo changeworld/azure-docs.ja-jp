@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/16/2017
 ms.author: vvasic
-ms.openlocfilehash: 87bbbd1fdcb9afb59de0bda29e99e23e0b9ad104
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2d0a2d5966c8c99e7d71d97d4819d58a1474c2fe
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -385,7 +385,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 |query_hash_s|使用可能な場合は、失敗したクエリのクエリ ハッシュ。|
 |query_plan_hash_s|使用可能な場合は、失敗したクエリのクエリ プラン ハッシュ。|
 
-[Azure SQL Server エラー メッセージ](https://msdn.microsoft.com/en-us/library/cc645603.aspx)の詳細。
+[Azure SQL Server エラー メッセージ](https://msdn.microsoft.com/library/cc645603.aspx)の詳細。
 
 ### <a name="database-wait-statistics-dataset"></a>データベースの待機統計データセット
 

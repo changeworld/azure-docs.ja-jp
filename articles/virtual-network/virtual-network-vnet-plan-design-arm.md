@@ -4,7 +4,7 @@ description: "分離、接続、場所の要件に基づき、Azure で仮想ネ
 services: virtual-network
 documentationcenter: na
 author: jimdial
-manager: carmonm
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 3a4a9aea-7608-4d2e-bb3c-40de2e537200
 ms.service: virtual-network
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: 9a0126235c9ff3fec05d7709bdee95ab4832a33b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecdc3a847821fd83718f9cfc42308667460feabc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Azure Virtual Network の計画と設計
-試験的に VNet を作成することは簡単ですが、あなたはおそらく、組織の運用ニーズに対応するために、時間の経過と共に複数の VNet をデプロイすることになるでしょう。 ある程度の計画と設計を行うことで、より効率的に VNet をデプロイし、必要なリソースを接続できます。 VNet に慣れていない場合、続行する前に [VNet の概要](virtual-networks-overview.md)と[デプロイ方法](virtual-networks-create-vnet-arm-pportal.md)について学習することが推奨されます。
+試験的に VNet を作成することは簡単ですが、あなたはおそらく、組織の運用ニーズに対応するために、時間の経過と共に複数の VNet をデプロイすることになるでしょう。 ある程度の計画と設計を行うことで、より効率的に VNet をデプロイし、必要なリソースを接続できます。 VNet に慣れていない場合、続行する前に [VNet の概要](virtual-networks-overview.md)と[デプロイ方法](quick-create-portal.md)について学習することが推奨されます。
 
 ## <a name="plan"></a>プラン
 Azure サブスクリプション、リージョン、ネットワーク リソースについて完全に理解することが成功のために不可欠です。 出発点として以下の考慮事項一覧をご利用ください。 これらの考慮事項を理解すると、ネットワーク設計の要件が決まります。
@@ -58,7 +58,7 @@ VNet とサブネット リソースは、Azure で実行するワークロー�
 
 VNet には、次のプロパティが含まれています。
 
-| プロパティ | Description | 制約 |
+| プロパティ | [説明] | 制約 |
 | --- | --- | --- |
 | **name** |VNet の名前 |最大 80 文字の文字列。 文字、数字、アンダー スコア、ピリオド、ハイフンを使用できます。 先頭は文字か数字にします。 末尾は文字、数字、アンダー スコアのいずれかにします。 大文字または小文字を使用できます。 |
 | **location** |Azure の場所 (リージョンとも呼ばれます)。 |有効な Azure の場所にする必要があります。 |
@@ -71,7 +71,7 @@ VNet には、次のプロパティが含まれています。
 
 サブネットには、次のプロパティが含まれています。
 
-| プロパティ | Description | 制約 |
+| プロパティ | [説明] | 制約 |
 | --- | --- | --- |
 | **name** |サブネット名 |最大 80 文字の文字列。 文字、数字、アンダー スコア、ピリオド、ハイフンを使用できます。 先頭は文字か数字にします。 末尾は文字、数字、アンダー スコアのいずれかにします。 大文字または小文字を使用できます。 |
 | **location** |Azure の場所 (リージョンとも呼ばれます)。 |有効な Azure の場所にする必要があります。 |
@@ -247,7 +247,7 @@ VNet ごとにアドレス空間を指定する必要もあります。 オン�
 
 以上の要件に基づき、ネットワーク チームから各サブスクリプションに組み込まれている **ネットワークの共同作業者** にユーザーを追加し、各サブスクリプションでアプリケーション開発者にカスタム ロールを作成し、既存のサブネットに VM を追加する権限を与えることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [仮想ネットワークをデプロイ](virtual-networks-create-vnet-arm-template-click.md) します。
 * IaaS VM の[負荷を分散](../load-balancer/load-balancer-overview.md)し、[複数の Azure リージョンでルーティングを管理](../traffic-manager/traffic-manager-overview.md)する方法を理解します。
 * [NSG の概要と NSG ソリューションの計画と設計の方法](virtual-networks-nsg.md) について詳しく学習します。

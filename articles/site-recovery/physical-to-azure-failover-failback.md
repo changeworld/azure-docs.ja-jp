@@ -5,13 +5,13 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/09/2018
 ms.author: raynew
-ms.openlocfilehash: bbad2a0ea1a58834eaf32e0d3286f6e8a794d364
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d58dfd482b66d90748f0ca661e56fa281c14598a
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="fail-over-and-fail-back-physical-servers-replicated-to-azure"></a>Azure にレプリケートされた物理サーバーのフェールオーバーとフェールバック
 
@@ -30,7 +30,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 
 ## <a name="verify-server-properties"></a>サーバーのプロパティを確認する
 
-サーバーのプロパティで、サーバーが Azure VMの [Azure の要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認します。
+サーバーのプロパティで、サーバーが Azure VMの [Azure の要件](vmware-physical-azure-support-matrix.md#replicated-machines)に準拠していることを確認します。
 
 1. **[保護されたアイテム]** で、**[レプリケートされたアイテム]** をクリックし、マシンを選びます。
 
@@ -62,7 +62,7 @@ Site Recovery を使用して Azure にレプリケートされた物理サー�
 
 - テスト目的の Azure ExpressRoute 接続がある場合は、構成サーバーに自動的にインストールされたオンプレミス プロセス サーバーを使用できます。
 - VPN 接続がある場合、または運用環境でフェールバックを実行している場合、フェールバック用に Azure ベースのプロセス サーバーとして Azure VM を設定する必要があります。
-- Azure でプロセス サーバーを設定するには、[この記事](site-recovery-vmware-setup-azure-ps-resource-manager.md)の手順を実行してください。
+- Azure でプロセス サーバーを設定するには、[この記事](vmware-azure-set-up-process-server-azure.md)の手順を実行してください。
 
 ## <a name="configure-the-master-target-server"></a>マスター ターゲット サーバーを構成する
 

@@ -1,7 +1,7 @@
 ---
 title: "Azure Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する | Microsoft Docs"
 description: "Azure Event Grid は、Azure Storage での BLOB アップロードをトリガーできます。 これを使って、Azure Storage にアップロードされたイメージ ファイルを、サイズ変更や他の改善のために Azure Functions などの他のサービスに送信することができます。"
-services: event-grid
+services: event-grid, functions
 author: ggailey777
 manager: cfowler
 editor: 
@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: b0fccd058620537f6dcfaf37ee14c1ff0cb8857a
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 68343c3ffd87496ed4ae89b478ee5c8119ed67f5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -133,7 +133,7 @@ Event Grid の通知から関数に渡されるデータには、BLOB の URL �
     
     ![Azure Portal で関数からイベント サブスクリプションを作成する](./media/resize-images-on-storage-blob-upload-event/event-subscription-create-flow.png)
 
-    | 設定      | 推奨値  | Description                                        |
+    | Setting      | 推奨値  | Description                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **名前** | imageresizersub | 新しいイベント サブスクリプションを示す名前。 | 
     | **トピックの種類** |  ストレージ アカウント | ストレージ アカウント イベント プロバイダーを選びます。 | 

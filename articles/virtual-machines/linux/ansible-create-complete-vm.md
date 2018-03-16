@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: iainfou
-ms.openlocfilehash: d5e3f3db4726bfb16cbb389cf99b9bf7c511da97
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5efb666652bf124160df836b5d12305903d907ba
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-a-complete-linux-virtual-machine-environment-in-azure-with-ansible"></a>Ansible によって Azure に完全な Linux 仮想マシンの環境を作成する
 Ansible を使用すると、環境内のリソースのデプロイと構成を自動化することができます。 Ansible を使用すると、他のリソースと同じように、Azure で仮想マシン (VM) を管理できます。 この記事では、Ansible を使用して、完全な Linux 環境とサポート リソースを作成する方法を示します。 [Ansible を使用して基本的な VM を作成する](ansible-create-vm.md)方法も説明します。
@@ -44,7 +44,7 @@ Ansible プレイブックの次のセクションでは、*10.0.0.0/16* アド�
   azure_rm_virtualnetwork:
     resource_group: myResourceGroup
     name: myVnet
-    address_prefixes: "10.10.0.0/16"
+    address_prefixes: "10.0.0.0/16"
 ```
 
 サブネットを追加するには、次のセクションで、*myVnet* 仮想ネットワークに *mySubnet* という名前のサブネットを作成します。
@@ -81,7 +81,7 @@ Ansible プレイブックの次のセクションでは、*10.0.0.0/16* アド�
     name: myNetworkSecurityGroup
     rules:
       - name: SSH
-        protocol: TCP
+        protocol: Tcp
         destination_port_range: 22
         access: Allow
         priority: 1001

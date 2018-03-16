@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: juliako
 ms.openlocfilehash: 3f3972232a4342bfb7d8579d747d0cc4250963bc
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="dynamic-encryption-configure-a-content-key-authorization-policy"></a>動的暗号化: コンテンツ キー承認ポリシーを構成する
 [!INCLUDE [media-services-selector-content-key-auth-policy](../../includes/media-services-selector-content-key-auth-policy.md)]

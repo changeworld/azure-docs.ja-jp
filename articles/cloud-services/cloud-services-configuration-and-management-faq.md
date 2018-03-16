@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: genli
 ms.openlocfilehash: 916fbb436806c64ded9ebf9fdd9c57c42d0809f0
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題についてよくあるご質問 (FAQ)
 
@@ -180,7 +180,7 @@ Windows 10 と Windows Server 2016 は、クライアントとサーバー側の
 5. サーバーを再起動します。
 6. **[既定の Web サイト]** に移動し、**[バインド]** で、作成した自己署名証明書を使用して新しい TLS バインドを作成します。 
 
-詳細については、「
+詳細については、次を参照してください。
 
 - [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2) (IIS 上の HTTP/2)
 - [ビデオ: HTTP/2 in Windows 10: Browser, Apps and Web Server](https://channel9.msdn.com/Events/Build/2015/3-88) (Windows 10 の HTTP/2: ブラウザー、アプリ、Web サーバー)

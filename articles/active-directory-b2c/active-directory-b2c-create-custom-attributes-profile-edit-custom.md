@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
-ms.openlocfilehash: 0d4ee064c15c914eea7353900c6bb5a77b3e3b3b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 33c9e4322444895a3affc16e11af5443f2db6b6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性の作成と使用
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/11/2017
 [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)に関する記事の手順を完了します。
 
 ## <a name="use-custom-attributes-to-collect-information-about-your-customers-in-azure-active-directory-b2c-using-custom-policies"></a>カスタム属性を使用して、カスタム ポリシーを使用している Azure Active Directory B2C の顧客に関する情報を収集する
-Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの属性セット (名、姓、市区町村、郵便番号、userPrincipalName など) が用意されています。多くの場合、独自の属性を作成する必要があります。  For example:
+Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの属性セット (名、姓、市区町村、郵便番号、userPrincipalName など) が用意されています。多くの場合、独自の属性を作成する必要があります。  例: 
 * 顧客向けアプリケーションでは、"LoyaltyNumber" などの属性を保持する必要があります。
 * ID プロバイダーは、"uniqueUserGUID" など、保存する必要がある一意のユーザー識別子を保持しています。
 * カスタム ユーザー体験では、"migrationStatus" など、ユーザーの状態を保持する必要があります。
@@ -152,7 +152,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
             <InputClaim ClaimTypeReferenceId="userPrincipalName" />
 
             <!-- Optional claims. These claims are collected from the user and can be modified. Any claim added here should be updated in the
-                 ValidationTechnicalProfile referenced below so it can be written to directory after being updateed by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
+                 ValidationTechnicalProfile referenced below so it can be written to directory after being updated by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
             <InputClaim ClaimTypeReferenceId="givenName" />
             <InputClaim ClaimTypeReferenceId="surname" />
             <InputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -162,7 +162,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
             <OutputClaim ClaimTypeReferenceId="executed-SelfAsserted-Input" DefaultValue="true" />
 
             <!-- Optional claims. These claims are collected from the user and can be modified. Any claim added here should be updated in the
-                 ValidationTechnicalProfile referenced below so it can be written to directory after being updateed by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
+                 ValidationTechnicalProfile referenced below so it can be written to directory after being updated by the user, i.e. AAD-UserWriteProfileUsingObjectId. -->
             <OutputClaim ClaimTypeReferenceId="givenName" />
             <OutputClaim ClaimTypeReferenceId="surname" />
             <OutputClaim ClaimTypeReferenceId="extension_loyaltyId"/>
@@ -227,7 +227,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 >[!IMPORTANT]
 >IncludeTechnicalProfile 要素では、この TechnicalProfile に AAD-Common のすべての要素が追加されています。
 
-## <a name="test-the-custom-policy-using-run-now"></a>[今すぐ実行] を使用してカスタム ポリシーをテストする
+## <a name="test-the-custom-policy-using-run-now"></a>"Run Now" を使用してカスタム ポリシーをテストする
 1. **[Azure AD B2C] ブレード**を開き、**[Identity Experience Framework] > [カスタム ポリシー]** に移動します。
 1. アップロードしたカスタム ポリシーを選択し、**[Run now]**(今すぐ実行) ボタンをクリックします。
 1. メール アドレスを使用してサインアップできることを確認します。
@@ -251,7 +251,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>以下に示す TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 この 2 つの TechnicalProfile は、ユーザー オブジェクトのロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
 ```xml

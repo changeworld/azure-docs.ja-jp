@@ -6,13 +6,13 @@ author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: cba28ada79ea806ead4ae9165abba2dc4e04f001
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1a27dfd61850d9dfa1f232eacf7f09d66202cafe
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-blob-snapshot"></a>BLOB のスナップショットの作成
 
@@ -31,8 +31,6 @@ BLOB のスナップショットを作成すると、BLOB のシステム プロ
 ベース BLOB に関連付けられているリースはスナップショットにコピーされません。 スナップショットはリースを取得することはできません。
 
 VHD ファイルは、VM ディスクの現時点の情報と状態の格納に使用します。 ディスクを VM 内から切断するか、VM をシャットダウンしてから、その VHD ファイルのスナップショットを撮ることができます。 このスナップショットを後に使用して、その時点での VHD ファイルを取得して VM を再作成することができます。
-
-BLOB が存在するストレージ アカウントで Storage Service Encryption (SSE) が 有効になっている場合、その BLOB について撮られたスナップショットは暗号化されて保存されます。
 
 ## <a name="create-a-snapshot"></a>スナップショットの作成
 次のコード例は、[.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)を使用して、スナップショットを作成する方法を示しています。 この例では、スナップショットの作成時に別のメタデータを指定しています。

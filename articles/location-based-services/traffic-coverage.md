@@ -3,8 +3,8 @@ title: "Azure Location Based Services のトラフィックの対象範囲 | Mic
 description: "Azure Location Based Services でのトラフィックの対象範囲について説明します"
 services: location-based-services
 keywords: 
-author: dsk-2015
-ms.author: dkshir
+author: kgremban
+ms.author: kgremban
 ms.date: 11/28/2017
 ms.topic: article
 ms.service: location-based-services
@@ -12,11 +12,11 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 5bfda1cd211eb08f80527aa0116815023ff93931
-ms.sourcegitcommit: 310748b6d66dc0445e682c8c904ae4c71352fef2
+ms.openlocfilehash: 251c736e0f607ffeea144639f437900eb337b6ea
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-location-based-services---traffic-coverage"></a>Azure Location Based Services - トラフィックの対象範囲
 
@@ -95,4 +95,4 @@ Azure Location Based Services (LBS) ではフローとインシデントの形�
 |(ガーンジー島とジャージー島)     |✓         |✓         |
 |マン島     |✓         |✓         |
 |米国     |✓         |✓        |
-|+ プエルトリコ     |✓         |✓          |
+|+ プエルトリコ     |✓         |✓         |

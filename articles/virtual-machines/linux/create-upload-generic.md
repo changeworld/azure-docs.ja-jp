@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
-ms.openlocfilehash: ae266b0fc78083250c5d14ff2978cd59d394b202
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 631557e0ad712827bb3375c4f152c0e2185fda18
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="information-for-non-endorsed-distributions"></a>動作保証外のディストリビューションに関する情報
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
@@ -150,8 +150,6 @@ Red Hat Enterprise Linux バージョン **6.0-6.3**の変形を実行する場�
 * GRUB または GRUB2 でカーネルのブート行を変更して次のパラメーターを含めます。 これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
   
         console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300
-  
-    これにより、すべてのコンソール メッセージが最初のシリアル ポートに送信され、メッセージを Azure での問題のデバッグに利用できるようになります。
   
     上記のほかに、次のパラメーターを *削除* することをお勧めします (ある場合)。
   

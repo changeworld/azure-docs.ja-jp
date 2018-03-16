@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/19/2017
 ms.author: rclaus
-ms.openlocfilehash: 5c0011da9d7c57a532589b4b8ae19643ab554c35
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c99023d794dfb3b78b26ef721d89302e126f5cb1
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="implement-oracle-golden-gate-on-an-azure-linux-vm"></a>Azure Linux VM での Oracle Golden Gate の実装 
 
@@ -50,7 +50,7 @@ Oracle Golden Gate のインストールを実行するには、同じ可用性�
 
 ### <a name="sign-in-to-azure"></a>Azure へのサインイン 
 
-[az login](/cli/azure/#az_login) コマンドを使用して、Azure サブスクリプションにサインインします。 その後、画面の指示に従います。
+[az login](/cli/azure/reference-index#az_login) コマンドを使用して、Azure サブスクリプションにサインインします。 その後、画面の指示に従います。
 
 ```azurecli
 az login
@@ -243,7 +243,7 @@ Look at the log file "/u01/app/oracle/cfgtoollogs/dbca/cdb1/cdb1.log" for more d
 
 ```bash
 $ ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
-$ ORACLE_SID=gg1; export ORACLE_SID
+$ ORACLE_SID=cdb1; export ORACLE_SID
 $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 ```
 
@@ -253,7 +253,7 @@ $ LD_LIBRARY_PATH=ORACLE_HOME/lib; export LD_LIBRARY_PATH
 # add oracle home
 export ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
 # add oracle sid
-export ORACLE_SID=gg1
+export ORACLE_SID=cdb1
 # add Oracle library path
 export LD_LIBRARY_PATH=$ORACLE_HOME/lib
 ```

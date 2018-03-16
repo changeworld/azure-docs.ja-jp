@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/13/2017
 ms.author: jdial
-ms.openlocfilehash: ee418537fb52dbfb3eacca6e99d8572152a60910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 6a5ab1ba44197c0103e1e7d353a116dc01dfc163
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 01/19/2018
 1. Azure Portal (http://portal.azure.com) にログインします。Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 2. Azure Portal の左上隅にある **[リソースの作成]** をクリックします。
 3. **[ネットワーク]** を選択してから、**[仮想ネットワーク]** を選択します。
-4. 任意に選択した設定で、仮想ネットワークを作成します。 仮想ネットワークの作成の詳細については、「[複数のサブネットを含んだ仮想ネットワークを作成する](virtual-networks-create-vnet-arm-pportal.md)」を参照してください。 **[DDoS 保護]** で、**[有効]** をクリックしてから、**[作成]** をクリックします。 **DDoS protection** が表示されない場合、お使いのサブスクリプションがその機能に登録されていない可能性があります。 **DDoS protection** が表示されるには、事前に[登録](http://aka.ms/ddosprotection)を完了し、サブスクリプションがその機能で有効になったという通知を受信している必要があります。
+4. 任意に選択した設定で、仮想ネットワークを作成します。 仮想ネットワークの作成の詳細については、「[複数のサブネットを含んだ仮想ネットワークを作成する](manage-virtual-network.md#create-a-virtual-network)」を参照してください。 **[DDoS 保護]** で、**[有効]** をクリックしてから、**[作成]** をクリックします。 **DDoS protection** が表示されない場合、お使いのサブスクリプションがその機能に登録されていない可能性があります。 **DDoS protection** が表示されるには、事前に[登録](http://aka.ms/ddosprotection)を完了し、サブスクリプションがその機能で有効になったという通知を受信している必要があります。
 
     ![Create virtual network](./media/ddos-protection-manage-portal/ddos-create-vnet.png)   
 

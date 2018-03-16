@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 46d026802668fd77ae184b374439ca78cf51393d
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 86ef8acf46cef2b057596d8224c6c29f3a0f534d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure Machine Learning に関してよく寄せられる質問
 
@@ -119,17 +119,15 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 
 **ワークベンチは IDE ですか?**
 
-
 いいえ。 Machine Learning ワークベンチは Jupyter Notebook、Visual Studio Code、PyCharm などの一般的な IDE の付属品として設計されており、すべての機能が搭載された IDE ではありません。 Machine Learning ワークベンチには基本的なテキスト編集機能はいくつか用意されていますが、IntelliSense などの一般に使用される IDE 機能はサポートされません。 コードの開発、編集、デバッグにはお好みの IDE を使用することをお勧めします。 
 
 **Azure Machine Learning Workbench の使用に料金はかかりますか?**
-
 
 いいえ。 Azure Machine Learning Workbench は無料のアプリケーションです。 マシンとユーザーの数に応じて必要なだけダウンロード可能です。 Azure Machine Learning Workbench を使用するには、実験アカウントが必要になります。 が必要です。  
 
 **コマンドライン機能はサポートされますか?**
 
-はい。Azure Machine Learning では完全な CLI インターフェイスを提供しています。 Machine Learning CLI は、既定では Azure Machine Learning Workbench とともにインストールされます。 この CLI は、Azure 上の Linux Data Science 仮想マシンの一部としても提供されており、[Azure CLI](https://docs.microsoft.com/cli/azure/overview?view=azure-cli-latest) への統合が予定されています。
+はい。Azure Machine Learning では完全な CLI インターフェイスを提供しています。 Machine Learning CLI は、既定では Azure Machine Learning Workbench とともにインストールされます。 この CLI は、Azure 上の Linux Data Science 仮想マシンの一部としても提供されており、[Azure CLI](https://docs.microsoft.com/cli/azure?view=azure-cli-latest) への統合が予定されています。
 
 
 **ワークベンチで Jupyter Notebook を使用できますか?**

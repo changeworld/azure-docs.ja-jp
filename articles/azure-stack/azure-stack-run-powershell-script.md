@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/15/2017
+ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 470a45aea253e1e238983527427b600117e413fe
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 6a5912117a475c7af028f01ea47a7042677992ca
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Azure Stack Development Kit のデプロイ
 
-*適用対象: Azure Stack 開発キット*
+*適用対象: Azure Stack Development Kit*
 
 [Azure Stack Development Kit](azure-stack-poc.md) をデプロイするには、次の手順を完了する必要があります。
 
@@ -70,6 +70,7 @@ ASDK をホスト コンピューターにインストールする前に、ASDK 
 3. 次のスクリプトを実行して、開発キットのインストーラー ファイル (asdk-installer.ps1) を [Azure Stack の GitHub ツール リポジトリ](https://github.com/Azure/AzureStack-Tools)から開発キットのホスト コンピューターの **C:\AzureStack_Installer** フォルダーにダウンロードします。
 
   ```powershell
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
   # Variables
   $Uri = 'https://raw.githubusercontent.com/Azure/AzureStack-Tools/master/Deployment/asdk-installer.ps1'
   $LocalPath = 'C:\AzureStack_Installer'
@@ -216,7 +217,7 @@ $aadcred = Get-Credential "<Azure AD global administrator account name>" #Exampl
 ```
 
 ### <a name="asdk-installazurestackpocps1-optional-parameters"></a>ASDK InstallAzureStackPOC.ps1 の省略可能なパラメーター
-|パラメーター|必須/省略可能|説明|
+|パラメーター|必須/省略可能|[説明]|
 |-----|-----|-----|
 |AdminPassword|必須|開発キットのデプロイの一環として作成されたすべての仮想マシンのローカル管理者アカウントと他のすべてのユーザー アカウントを設定します。 このパスワードは、ホスト上の現在のローカル管理者パスワードと一致する必要があります。|
 |InfraAzureDirectoryTenantName|必須|テナント ディレクトリを設定します。 このパラメーターを使用して、AAD アカウントに複数のディレクトリを管理するアクセス許可がある特定のディレクトリを指定します。 AAD ディレクトリ テナントのフル ネーム (.onmicrosoft.com 形式) または Azure AD 確認済みカスタム ドメイン名。|
@@ -257,7 +258,7 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 5. **[Maximum password age Properties]\(パスワードの有効期間プロパティ\)** ダイアログ ボックスで、**[パスワードの有効期限]** の値を 180 に変更し、**[OK]** をクリックします。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [Azure Stack への接続](azure-stack-connect-azure-stack.md)
 

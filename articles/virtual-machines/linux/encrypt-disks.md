@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: iainfou
-ms.openlocfilehash: 4a10df360249b4b0b28ecbe4762bbb165ef9bb8d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b87d187eadff98ba84aa6478c2d233f2ec1c203c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Linux VM の仮想ディスクを暗号化する方法
 仮想マシン (VM) のセキュリティとコンプライアンスを強化するために、仮想ディスクと VM 自体を暗号化できます。 VM は、Azure Key Vault で保護されている暗号化キーを使って暗号化されます。 これらの暗号化キーを制御し、その使用を監査することができます。 この記事では、Azure CLI 2.0 を使用して Linux VM の仮想ディスクを暗号化する方法について詳しく説明します。 これらの手順は、[Azure CLI 1.0](encrypt-disks-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/09/2018
 ## <a name="quick-commands"></a>クイック コマンド
 タスクをすばやく実行する必要がある場合のために、次のセクションでは、VM の仮想ディスクを暗号化するための基本的なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#overview-of-disk-encryption)。
 
-最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインしている必要があります。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myKey*、*myVM* といったパラメーター名にします。
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myKey*、*myVM* といったパラメーター名にします。
 
 まず、[az provider register](/cli/azure/provider#az_provider_register) を使用して Azure サブスクリプションで Azure Key Vault プロバイダーを有効にし、[az group create](/cli/azure/group#az_group_create) を使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
@@ -158,7 +158,7 @@ VM 暗号化のプロセスは次のとおりです。
 
 
 ## <a name="create-azure-key-vault-and-keys"></a>Azure Key Vault とキーを作成する
-最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインしている必要があります。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myKey*、*myVM* といったパラメーター名にします。
+最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) がインストールされ、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインしている必要があります。 次の例では、パラメーター名を独自の値を置き換えます。 たとえば、*myResourceGroup*、*myKey*、*myVM* といったパラメーター名にします。
 
 最初に、暗号化キーを格納する Azure Key Vault を作成します。 Azure Key Vault は、キー、シークレット、パスワードを格納して、アプリケーションとサービスに安全に実装できるようにします。 仮想ディスクの暗号化では、仮想ディスクの暗号化または暗号化解除に使われる暗号化キーを格納するために Key Vault を使います。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/26/2017
 ms.author: magoedte
-ms.openlocfilehash: 624c861db9bb318c368cef04965da0a73dd028d8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 5fb7fd0be8b131ee098689b06c34c4e7c333801e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Log Analytics の Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -103,7 +103,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 タイルのいずれかを選択すると、特定のパースペクティブでドリルダウン レポートが開きます。 パースペクティブを選択すると、ドリル ダウン レポートが開きます。
 
-![Azure SQL Analytics のタイムアウト](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
+![Azure SQL Analytics のタイムアウト](./media/log-analytics-azure-sql/azure-sql-sol-metrics.png)
 
 各パースペクティブは、サブスクリプション、サーバー、エラスティック プール、およびデータベース レベルの概要を提供します。 さらに、各パースペクティブは、右側にパースペクティブ特定のレポートを示します。 一覧からサブスクリプション、サーバー、プール、またはデータベースを選択するとドリル ダウンが続行されます。
 
@@ -148,13 +148,19 @@ Azure SQL Database [Intelligent Insights](../sql-database/sql-database-intellige
 *高 DTU (Azure SQL Database 上)*
 
 ```
-AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
+AzureMetrics 
+| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/DATABASES/" and MetricName=="dtu_consumption_percent" 
+| summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 *高 DTU (Azure SQL Database エラスティック プール上)*
 
 ```
-AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" | summarize avg(Maximum) by ResourceId
+AzureMetrics 
+| where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "/ELASTICPOOLS/" and MetricName=="dtu_consumption_percent" 
+| summarize AggregatedValue = max(Maximum) by bin(TimeGenerated, 5m)
+| render timechart
 ```
 
 こうしたアラートに基づくクエリを使用して、Azure SQL Database とエラスティック プールの両方の特定のしきい値に関してアラートを生成することができます。 Log Analytics ワークスペースのアラートを構成するには、次の手順を実行します。
@@ -167,7 +173,7 @@ AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "
 4. いずれかのクエリの例を実行します。
 5. [ログ検索] で **[アラート]** をクリックします。  
 ![検索でアラートを作成](./media/log-analytics-azure-sql/create-alert01.png)
-6. **[アラート ルールの追加]** ページで、適切なプロパティと特定のしきい値を構成し、**[保存]** をクリックします。  
+6. **[アラート ルールの追加]** ページで、適切なプロパティと特定のしきい値を構成し、**[保存]** をクリックします。 
 ![アラート ルールの追加](./media/log-analytics-azure-sql/create-alert02.png)
 
 ## <a name="next-steps"></a>次の手順

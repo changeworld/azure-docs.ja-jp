@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: c1e0be0e305ba4d53d8e26c55a92b63e1291171d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fbb6c39d2e29678130dd8f495a1bf552bf89d9e4
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-vm-with-docker"></a>Docker がインストールされた VM の作成
 
@@ -54,8 +54,8 @@ az group delete --name myResourceGroup
 | [azure vm extension set](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | VM に仮想マシン拡張機能を追加して実行します。 このサンプルでは、Docker VM 拡張機能を使用して Docker ホストを構成します。|
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
+Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。

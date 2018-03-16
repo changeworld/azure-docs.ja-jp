@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/29/2018
+ms.date: 02/20/2018
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: 18578f87ec6b58d72da7a7a81cbdc3d2c98ffaf6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 730753efb6efaad659e1a713b0b68329032b3983
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]

@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c936518c3cc431bb74dcdfe7f967687d3dc71e42
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a9fe7020719079e11150c62068650aa6ca17b056
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Azure CLI を使用して仮想マシンのプライベート IP アドレスを構成する
 
@@ -35,13 +35,13 @@ ms.lasthandoff: 02/09/2018
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
 > [!NOTE]
-> 次のサンプル Azure CLI コマンドは、既存の単純な環境を想定しています。 このドキュメントに表示されているコマンドを実行する場合は、まず、[vnet の作成](virtual-networks-create-vnet-arm-cli.md)に関する記事に示されているテスト環境を構築します。
+> 次のサンプル Azure CLI コマンドは、既存の単純な環境を想定しています。 このドキュメントに表示されているコマンドを実行する場合は、まず、[vnet の作成](quick-create-cli.md)に関する記事に示されているテスト環境を構築します。
 
 ## <a name="specify-a-static-private-ip-address-when-creating-a-vm"></a>VM 作成時に静的プライベート IP アドレスを指定する
 
 静的プライベート IP *192.168.1.101* を使用して、*TestVNet* という名前の VNet の *FrontEnd* サブネットで *DNS01* という名前の VM を作成するには、次の手順を実行します。
 
-1. まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインします。 
+1. まだ行っていない場合は、最新の [Azure CLI 2.0](/cli/azure/install-az-cli2) をインストールして構成し、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインします。 
 
 2. [az network public-ip create](/cli/azure/network/public-ip#az_network_public_ip_create) コマンドを使用して VM のパブリック IP を作成します。 出力の後に表示される一覧では、使用されたパラメーターについて説明されています。
 
