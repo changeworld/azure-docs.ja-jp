@@ -380,7 +380,6 @@
             - name: テナントのプロビジョニング
               href: saas-standaloneapp-provision-and-catalog.md
         - name: テナントごとのデータベース
-          href: saas-dbpertenant-wingtip-app-overview.md
           items:
             - name: チュートリアルの概要
               href: saas-dbpertenant-wingtip-app-overview.md
