@@ -79,7 +79,7 @@ ms.lasthandoff: 03/02/2018
 ## <a name="roles"></a>ロール
 
 
-このブループリントでは、管理ユーザー (オペレーター) の 2 つのロールと、病院管理および患者ケアに従事するユーザーの 3 つのロールが定義されています。 6 番目の役割は、HIPAA や他の規制の遵守を評価する監査担当者向けに定義されています。 Azure のロールベースのアクセス制御 (RBAC) は、組み込みロールとカスタム ロールによって、ソリューションの各ユーザーの厳密に対象を絞ったアクセス管理を実現します。 RBAC、ロール、アクセス許可の詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)」および「[Azure ロールベースのアクセス制御の組み込みロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)」をご覧ください。
+このブループリントでは、管理ユーザー (オペレーター) の 2 つのロールと、病院管理および患者ケアに従事するユーザーの 3 つのロールが定義されています。 6 番目の役割は、HIPAA や他の規制の遵守を評価する監査担当者向けに定義されています。 Azure のロールベースのアクセス制御 (RBAC) は、組み込みロールとカスタム ロールによって、ソリューションの各ユーザーの厳密に対象を絞ったアクセス管理を実現します。 RBAC、ロール、アクセス許可の詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](https://docs.microsoft.com/azure/active-directory/role-based-access-control-what-is)」および「[Azure ロールベースのアクセス制御の組み込みロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)」をご覧ください。
 
 ### <a name="site-administrator"></a>サイト管理者
 
