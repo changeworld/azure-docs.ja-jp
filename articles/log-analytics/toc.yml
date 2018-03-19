@@ -50,7 +50,7 @@
     - name: ログ検索
       items:
         - name: ログ検索の概要
-          href: log-analytics-log-search-new.md
+          href: log-analytics-log-search.md
         - name: ログ検索ポータル
           href: log-analytics-log-search-portals.md
 - name: ハウツー ガイド
@@ -117,20 +117,6 @@
           href: log-analytics-flow-tutorial.md
         - name: Log Search API
           href: 'https://dev.loganalytics.io/'
-    - name: 従来のログ検索
-      items:
-        - name: ログ検索の概要
-          href: log-analytics-log-searches.md
-        - name: 検索リファレンス
-          href: log-analytics-search-reference.md
-          items:
-            - name: 正規表現
-              href: log-analytics-log-searches-regex.md
-        - name: Log Search API
-          href: log-analytics-log-search-api.md
-          items:
-            - name: Python
-              href: log-analytics-log-search-api-python.md
     - name: データを分析する
       items:
         - name: ダッシュボード

@@ -10,15 +10,15 @@ metadata:
   manager: carolz
   ms.service: sql-database
   ms.tgt_pltfrm: na
-  ms.devlang: na
+  ms.devlang: 
   ms.topic: landing-page
   ms.date: 05/03/2017
   ms.author: carolz
-  ms.openlocfilehash: 662d4f32cb6abb8694253a50d17daa242b55e409
-  ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+  ms.openlocfilehash: 4acc092e4c6006263dda31ab2a54038e60e57651
+  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 01/12/2018
+  ms.lasthandoff: 03/16/2018
 abstract:
   description: "Azure SQL Database とは、Microsoft SQL Server エンジンを使用したサービスとしてのリレーショナル データベースです。 SQL Database はパフォーマンス、信頼性、セキュリティの面で優れたデータベースであり、好きなプログラミング言語でデータ主導のアプリケーションと Web サイトを構築することができます。その際、インフラストラクチャの管理は不要です。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、SQL Database の使用方法を確認してください。"
   aside:
@@ -82,7 +82,7 @@ sections:
     items:
     - html: <a href="/azure/sql-database/sql-database-powershell-samples">Azure PowerShell</a>
     - html: <a href="/azure/sql-database/sql-database-cli-samples">Azure CLI</a>
-- title: "参照"
+- title: "リファレンス"
   items:
   - type: list
     style: cards
@@ -91,7 +91,7 @@ sections:
     - title: "コマンド ライン"
       html: "<p><a href=\"/powershell/module/azurerm.sql/#sql\">Azure PowerShell</a></p><p><a href=\"/powershell/module/elasticdatabasejobs/#elasticdatabasejobs\">Azure PowerShell (エラスティック データベース)</a></p><p><a href=\"/cli/azure/sql\">Azure CLI</a></p>"
     - title: "言語"
-      html: <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.js</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
+      html: <p><a href="/dotnet/api/microsoft.azure.management.sql.models">.NET</a></p><p><a href="/java/api/com.microsoft.azure.management.sql">Java</a></p><p><a href="https://msdn.microsoft.com/library/mt652093.aspx">Node.JS</a></p><p><a href="https://msdn.microsoft.com/library/mt652092.aspx">Python</a></p><p><a href="https://msdn.microsoft.com/library/mt691981.aspx">Ruby</a></p><p><a href="https://msdn.microsoft.com/library/dn865013.aspx">PHP</a></p><p><a href="https://msdn.microsoft.com/library/azure/bb510741.aspx">T-SQL</a></p>
     - title: REST ()
       html: "<p><a href=\"/rest/api/sql/\">REST API リファレンスに関するページ</a></p>"
     - title: SQL Server Tools
