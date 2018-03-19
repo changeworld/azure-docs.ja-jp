@@ -151,10 +151,6 @@
           href: security-center-events-dashboard.md
         - name: Search
           href: security-center-search.md
-    - name: Azure ログ統合
-      href: security-center-integrating-alerts-with-log-integration.md
-    - name: SIEM へのデータ エクスポート
-      href: security-center-export-data-to-siem.md
     - name: シナリオ
       items:
         - name: インシデント対応

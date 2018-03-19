@@ -27,11 +27,6 @@
 ### [ネットワーク セキュリティ グループ](virtual-networks-nsg.md)
 
 ## デプロイ
-### 仮想ネットワーク
-#### [Azure Portal](virtual-networks-create-vnet-arm-pportal.md)
-#### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
-#### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
 
 ### ネットワーク セキュリティ グループ
 #### [Azure Portal](virtual-networks-create-nsg-arm-pportal.md)
