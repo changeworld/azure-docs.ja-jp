@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Log Analytics のカスタム ログの収集 | Microsoft Docs"
 description: "Log Analytics は、Windows コンピューターと Linux コンピューターの両方のテキスト ファイルからイベントを収集できます。  この記事では、Log Analytics ワークスペースで作成したレコードの新しいカスタム ログと詳細を定義する方法について説明します。"
 services: log-analytics

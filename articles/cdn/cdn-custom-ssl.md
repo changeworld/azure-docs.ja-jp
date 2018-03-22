@@ -78,7 +78,7 @@ webmaster@&lt;your-domain-name.com&gt;
 hostmaster@&lt;your-domain-name.com&gt;  
 postmaster@&lt;your-domain-name.com&gt;  
 
-数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、admin@digicert.com をホワイトリストに追加してくださいす。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
+数分以内に、要求の承認を求める次の例のようなメールを受け取ります。 スパム フィルターを使っている場合は、admin@digicert.com をホワイトリストに追加してください。 24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
     
 ![ドメイン検証メール](./media/cdn-custom-ssl/domain-validation-email.png)
 
