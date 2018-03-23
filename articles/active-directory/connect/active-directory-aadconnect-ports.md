@@ -15,20 +15,20 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: billmath
 ms.openlocfilehash: 79c339c136e614be8a98461533c63d244dabc166
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
 次のドキュメントは、ハイブリッド ID ソリューションを実装するために必要なポートとプロトコルに関するテクニカル リファレンスです。 次の図を使用して、対応する表を参照してください。
 
-![Azure AD Connect とは](./media/active-directory-aadconnect-ports/required3.png)
+![What is Azure AD Connect](./media/active-directory-aadconnect-ports/required3.png)
 
 ## <a name="table-1---azure-ad-connect-and-on-premises-ad"></a>表 1 - Azure AD Connect とオンプレミスの AD
 この表は、Azure AD Connect サーバーとオンプレミスの AD 間の通信に必要なポートとプロトコルについて説明しています。
 
-| プロトコル | ポート | Description |
+| プロトコル | ポート | [説明] |
 | --- | --- | --- |
 | DNS |53 (TCP/UDP) |送信先フォレストでの DNS 参照です。 |
 | Kerberos |88 (TCP/UDP) |AD フォレストに対する Kerberos 認証です。 |
@@ -41,7 +41,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="table-2---azure-ad-connect-and-azure-ad"></a>表 2 - Azure AD Connect と Azure AD
 この表は、Azure AD Connect サーバーと Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
 
-| プロトコル | ポート | Description |
+| プロトコル | ポート | [説明] |
 | --- | --- | --- |
 | HTTP |80 (TCP/UDP) |SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
 | HTTPS |443 (TCP/UDP) |Azure AD と同期するために使用されます。 |
@@ -51,7 +51,7 @@ ms.lasthandoff: 12/11/2017
 ## <a name="table-3---azure-ad-connect-and-ad-fs-federation-serverswap"></a>表 3 - Azure AD Connect と AD FS フェデレーション サーバー/WAP
 この表は、Azure AD Connect サーバーと AD FS フェデレーション/WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。  
 
-| プロトコル | ポート | Description |
+| プロトコル | ポート | [説明] |
 | --- | --- | --- |
 | HTTP |80 (TCP/UDP) |SSL 証明書を検証するための CRL (証明書失効リスト) をダウンロードするために使用されます。 |
 | HTTPS |443 (TCP/UDP) |Azure AD と同期するために使用されます。 |
@@ -60,14 +60,14 @@ ms.lasthandoff: 12/11/2017
 ## <a name="table-4---wap-and-federation-servers"></a>表 4 - WAP とフェデレーション サーバー
 この表は、フェデレーション サーバーと WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。
 
-| プロトコル | ポート | Description |
+| プロトコル | ポート | [説明] |
 | --- | --- | --- |
 | HTTPS |443 (TCP/UDP) |認証で使用されます。 |
 
 ## <a name="table-5---wap-and-users"></a>表 5 - WAP とユーザー
 この表は、ユーザーと WAP サーバー間の通信に必要なポートとプロトコルについて説明しています。
 
-| プロトコル | ポート | Description |
+| プロトコル | ポート | [説明] |
 | --- | --- | --- |
 | HTTPS |443 (TCP/UDP) |デバイスの認証で使用されます。 |
 | TCP |49443 (TCP) |証明書の認証で使用されます。 |
@@ -76,7 +76,7 @@ ms.lasthandoff: 12/11/2017
 次の表は、Azure AD Connect と Azure AD 間の通信に必要なポートとプロトコルについて説明しています。
 
 ### <a name="table-6a---pass-through-authentication-with-sso"></a>表 6a - SSO でのパススルー認証のトラブルシューティング
-|プロトコル|ポート番号|説明
+|プロトコル|ポート番号|[説明]
 | --- | --- | ---
 |HTTP|80|SSL などのセキュリティ検証用の送信 HTTP トラフィックに使用されます。 コネクタの自動更新機能が正常に機能するためにも必要です。
 |HTTPS|443| 機能の有効化と無効化、コネクタの登録、コネクタ更新プログラムのダウンロード、およびすべてのユーザー サインイン要求の処理などの操作のために、送信 HTTPS トラフィックを有効にします。
@@ -85,7 +85,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="table-6b---password-hash-sync-with-sso"></a>表 6b - SSO でのパスワード ハッシュ同期
 
-|プロトコル|ポート番号|説明
+|プロトコル|ポート番号|[説明]
 | --- | --- | ---
 |HTTPS|443| SSO 登録を有効にします (SSO 登録プロセスでのみ必要です)。
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 12/11/2017
 ### <a name="table-7a---ports-and-protocols-for-azure-ad-connect-health-agent-for-ad-fssync-and-azure-ad"></a>表 7a - Azure AD Connect Health エージェント (AD FS/Sync) と Azure AD 用のポートとプロトコル
 この表は、Azure AD Connect Health エージェントと Azure AD 間の通信に必要な以下の送信ポートとプロトコルについて説明しています。  
 
-| プロトコル | ポート | Description |
+| プロトコル | ポート | [説明] |
 | --- | --- | --- |
 | HTTPS |443 (TCP/UDP) |送信 |
 | Azure Service Bus |5671 (TCP/UDP) |送信 |

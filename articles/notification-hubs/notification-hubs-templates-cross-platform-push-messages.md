@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 1ca24a4bf08ecdbe1c1e47a931613144309a04a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="templates"></a>テンプレート
 ## <a name="overview"></a>概要
@@ -114,7 +114,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
 
 次の表に、テンプレートで使用できる言語を示します。
 
-| 式 | 説明 |
+| 式 | [説明] |
 | --- | --- |
 | $ (prop) |指定された名前のイベント プロパティを参照します。 プロパティ名では、大文字と小文字は区別されません。 この式は、プロパティのテキスト値に解決されます。ただし、プロパティが存在しない場合は空の文字列に解決されます。 |
 | $(prop, n) |上記と同じですが、テキストは明示的に n 文字に省略されます。たとえば $(title, 20) は title プロパティの内容を 20 文字に省略します。 |
@@ -139,7 +139,7 @@ Windows ストア クライアント アプリ用の同様のテンプレート�
     </tile>
 
 
-前述のように、連結を使用する場合は式を中かっこで囲む必要があります。 次に例を示します。
+前述のように、連結を使用する場合は式を中かっこで囲む必要があります。 例: 
 
     <tile>
       <visual>

@@ -4,17 +4,17 @@ description: SQL Server データベースをクラウド内の Azure SQL Databa
 keywords: データベースの移行, SQL Server データベースの移行, データベース移行ツール, データベースを移行する, SQL データベースを移行する
 services: sql-database
 author: CarlRabeler
-manager: Craig.Guyer
+manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 32377b4a80fcafd1d997daa11a90699b581093a6
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 59ee56e225623295dd63bf5ae303bfe1aa8e95cf
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
 
@@ -33,7 +33,7 @@ SQL Server 2005 以降のデータベースを Azure SQL Database の単一デ�
 
  ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプール データベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](sql-database-migrate-your-sql-server-database.md)を参照してください。
 
-次の一覧は、単一データベースまたはプール データベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 マネージ インスタンスへの移行については、[マネージ インスタンスへの移行に関するページ](sql-database-cloud-migrate.md#migration-to-azure-sql-database-managed-instance)を参照してください。
+次の一覧は、単一データベースまたはプール データベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 マネージ インスタンスへの移行については、[マネージ インスタンスへの移行に関するページ](sql-database-managed-instance-migrate.md)を参照してください。
 
   ![VSSSDT の移行ダイアグラム](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 

@@ -1,23 +1,19 @@
 ---
 title: 高可用性 - Azure SQL Database サービス | Microsoft Docs
 description: Microsoft Azure SQL Database サービスの高可用性機能および特色について説明します。
-keywords: ''
 services: sql-database
 author: anosov1960
-manager: jhubbard
+manager: craigg
 ms.service: sql-database
-ms.custom: ''
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.date: 03/07/2018
+ms.date: 03/16/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 86a839102e98a1b8e7cd9927c697cacf1f41a1a6
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8deb78ba108aafc3297e6b96d6d88d0c56c60afd
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="high-availability-and-azure-sql-database"></a>高可用性と Microsoft Azure SQL Database
 マイクロソフトは、Azure SQL Database PaaS サービスの開発当初から、お客様が操作したり、特別なロジックを追加したり、高可用性に関する意思決定をしなくても実現できる高可用性 (HA) をサービスに組み込むことをお約束してきました。 マイクロソフトは、お客様に SLA を提供し、HA システム構成および運用を完全に制御します。 HA SLA は、領域内の SQL データベースに適用され、マイクロソフトの妥当な制御の及ばない事象 (自然災害、戦争、テロ行為、暴動、政府の行為、または、お客様の施設、またはお客様の施設とマイクロソフトのデータ センターの間を含む、マイクロソフトのデータ センター外のネットワークまたはデバイスの障害など) に起因する、領域全体の障害の場合の保護は提供できません。
@@ -56,7 +52,7 @@ Microsoft Azure SQL Database の高可用性ソリューションは、SQL Serve
 
 この構成では、各データベースは、制御リング内の管理サービス (MS) によってオンラインになります。 1 つのプライマリ レプリカと 2 つ以上のセカンダリ レプリカ (クォーラム セット) は、同じデータ センター内の 3 つの独立した物理サブシステムにまたがるテナント リング内に存在します。 すべて読み取りおよび書き込み操作は、プライマリ レプリカへのゲートウェイ (GW) によって送信され、書き込み操作はセカンダリ レプリカに非同期的にレプリケートされます。 Microsoft Azure SQL Database は、トランザクションがコミットされる前に、データがプライマリ レプリカと 1 つ以上のセカンダリ レプリカに書き込まれる、クォーラム ベースのコミット スキームを使用します。
 
-ノードで障害が発生すると、[Service Fabric](/service-fabric/service-fabric-overview.md) フェールオーバー システムは自動的にレプリカを再構築し、ノードが離れシステムに加わる間、クォーラム セットのメンバーシップを保持します。 計画的なメンテナンスは、クォーラム セットがレプリカ最小数 (通常、2) を下回らないよう慎重に調整されます。 このモデルは Premium データベースに適していますが、コンピューティングとストレージの両方のコンポーネントで冗長性を必要とするため、コストが高くなります。
+ノードで障害が発生すると、[Service Fabric](../service-fabric/service-fabric-overview.md) フェールオーバー システムは自動的にレプリカを再構築し、ノードが離れシステムに加わる間、クォーラム セットのメンバーシップを保持します。 計画的なメンテナンスは、クォーラム セットがレプリカ最小数 (通常、2) を下回らないよう慎重に調整されます。 このモデルは Premium データベースに適していますが、コンピューティングとストレージの両方のコンポーネントで冗長性を必要とするため、コストが高くなります。
 
 ## <a name="remote-storage-configuration"></a>リモート ストレージの構成
 

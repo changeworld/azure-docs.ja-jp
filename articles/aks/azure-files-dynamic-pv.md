@@ -9,19 +9,19 @@ ms.topic: article
 ms.date: 03/06/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 1bcaf350fc6c1ba4a5f998c35f0c3a9d351c9c4d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: a5126bc4c5e7c9cd9832f33fc908e6c8b9e02b91
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="persistent-volumes-with-azure-files"></a>Azure ファイルを含む永続ボリューム
 
-永続ボリュームとは、Kubernetes クラスターで使用するためにプロビジョニングされたストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 このドキュメントでは、Azure ファイル共有を AKS クラスター内の Kubernetes 永続ボリュームとして動的にプロビジョニングする方法について詳しく説明します。 
+永続ボリュームとは、Kubernetes クラスターで使用するためにプロビジョニングされたストレージの一部です。 永続ボリュームは 1 つまたは複数のポッドで使用でき、動的または静的にプロビジョニングできます。 このドキュメントでは、、Azure ファイル共有を AKS クラスター内の Kubernetes 永続ボリュームとして動的にプロビジョニングする方法について詳しく説明します。 
 
 Kubernetes 永続ボリュームについて詳しくは、[Kubernetes 永続ボリューム][kubernetes-volumes]に関するページをご覧ください。
 
-## <a name="create-storage-account"></a>ストレージ アカウントの作成
+## <a name="create-storage-account"></a>[ストレージ アカウントの作成]
 
 Azure ファイル共有を Kubernetes ボリュームとして動的にプロビジョニングするときは、AKS クラスターと同じリソース グループに含まれている限り、任意のストレージ アカウントを使用できます。 必要であれば、AKS クラスターと同じリソース グループ内にストレージ アカウントを作成します。 
 
@@ -31,7 +31,7 @@ Azure ファイル共有を Kubernetes ボリュームとして動的にプロ�
 az group list --output table
 ```
 
-`MC_clustername_clustername_locaton` に似た名前を持つリソース グループを検索します。clustername は AKS クラスターの名前、location はクラスターがデプロイされている Azure リージョンです。
+`MC_clustername_clustername_locaton` のような名前のリソース グループを検索します。clustername は AKS クラスターの名前、location はクラスターが展開されている Azure リージョンです。
 
 ```
 Name                                 Location    Status
@@ -42,7 +42,7 @@ myAKSCluster                         eastus      Succeeded
 
 [az storage account create][az-storage-account-create] コマンドを使用して、ストレージ アカウントを作成します。 
 
-この例を使用して、`--resource-group` をリソース グループの名前に、`--name` を任意の名前に更新します。
+この例を参考にして、`--resource-group` をリソース グループの名前に、`--name` を任意の名前に更新します。
 
 ```azurecli-interactive
 az storage account create --resource-group MC_myAKSCluster_myAKSCluster_eastus --name mystorageaccount --location eastus --sku Standard_LRS
@@ -97,7 +97,7 @@ spec:
 [kubectl create][kubectl-create] コマンドを使用して、永続ボリューム要求を作成します。
 
 ```azurecli-interactive
-kubectl create -f azure-file-sc.yaml
+kubectl create -f azure-file-pvc.yaml
 ```
 
 完了すると、ファイル共有が作成されます。 接続情報と資格情報を含む Kubernetes シークレットも作成されます。

@@ -5,17 +5,17 @@ keywords: データベースの移行, SQL Server データベースの移行, �
 services: sql-database
 author: bonova
 ms.reviewer: carlrab
-manager: cguyer
+manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
 ms.date: 03/07/2018
 ms.author: bonova
-ms.openlocfilehash: 2ff8c6cad7f9c63fe6403fbf292fa3eab3373aed
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: fd8225b2c5c4f897bbf3d7e1b2ba7659f564409d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Azure SQL Database マネージ インスタンスへの SQL Server インスタンスの移行
 
@@ -109,7 +109,7 @@ SAS 資格情報を使用したマネージ インスタンスへのデータベ
 
 ### <a name="migrate-using-bacpac-file"></a>BACPAC ファイルを使用した移行
 
-Azure SQL Database とマネージ インスタンスは、BACPAC ファイル内のデータと共に元のデータベースのコピーからインポートできます。 「[BACPAC ファイルを新しい Azure SQL Database にインポートする](sql-database-import.md)」をご覧ください。
+Azure SQL Database とマネージ インスタンスは、BACPAC ファイル内のデータと共に元のデータベースのコピーからインポートできます。 「[BACPAC ファイルを新しい Azure SQL Database にインポートする](sql-database-import.md)」を参照してください。
 
 ## <a name="monitor-applications"></a>アプリケーションの監視
 

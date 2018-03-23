@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.openlocfilehash: 9e5b124643b753f404ba6012d3df998f567be59a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
 
@@ -206,7 +206,7 @@ SAP HANA のバックアップ サイズの見積もりは重要です。 この
 
 HANA Studio バックアップ コンソールでは、HANA バックアップ ファイルの最大ファイル サイズを制限できます。 サンプル環境でこの機能を使用すると、230 GB のバックアップ ファイルを 1 つ取得する代わりに、小さなバックアップ ファイルを多数取得することができます。 ファイル サイズを小さくするとパフォーマンスに大きな影響があります (関連記事「[ファイル レベルの SAP HANA Azure バックアップ](sap-hana-backup-file-level.md)」を参照)。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 次の表に、テスト結果に基づいて、Azure 仮想マシンで実行されている SAP HANA データベースのバックアップ ソリューションの長所と短所が示されています。
 
@@ -230,7 +230,7 @@ HANA Studio バックアップ コンソールでは、HANA バックアップ �
 |Azure Backup サービス                               | BLOB スナップショットに基づいた VM のバックアップが可能 | ファイル レベルの復元を使用しない場合、復元プロセスで新しい VM の作成が必要 (つまり、新しい SAP HANA ライセンス キーが必要)|
 |手動の BLOB スナップショット                              | 一意の VM ID を変更することなく特定の VM ディスクを作成して復元できる柔軟性|すべての作業がお客様による手動操作|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 「[ファイル レベルの SAP HANA Azure バックアップ](sap-hana-backup-file-level.md)」では、ファイルベースのバックアップ方法について説明されています。
 * 「[ストレージ スナップショットに基づいた SAP HANA のバックアップ](sap-hana-backup-storage-snapshots.md)」では、ストレージ スナップショットベースのバックアップ方法について説明されています。
 * SAP HANA on Azure (L インスタンス) の高可用性を確保し、ディザスター リカバリーを計画する方法を確認するには、「[Azure での SAP HANA (L インスタンス) の高可用性とディザスター リカバリー](hana-overview-high-availability-disaster-recovery.md)」を参照してください。

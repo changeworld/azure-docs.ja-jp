@@ -175,8 +175,8 @@
           href: durable-functions-sequence.md
         - name: ファンアウト/ファンイン
           href: durable-functions-cloud-backup.md
-        - name: ステートフル シングルトン
-          href: durable-functions-counter.md
+        - name: モニター
+          href: durable-functions-monitor.md
         - name: 人による操作
           href: durable-functions-phone-verification.md
         - name: 単体テスト
