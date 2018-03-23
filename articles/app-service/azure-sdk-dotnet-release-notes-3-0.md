@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako
-ms.openlocfilehash: eea4e569ac2d0192ed7872d2fcb9bed03614832b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 207aa137b25e44baf73e7f481ebc8b6362dfa245
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Azure SDK for .NET 3.0 リリース ノート
 
 このトピックには、Azure SDK for .NET のバージョン 3.0 のリリース ノートが含まれています。
 
-##<a name="azure-sdk-for-net-30-release-summary"></a>Azure SDK for .NET 3.0 リリースの概要
+## <a name="azure-sdk-for-net-30-release-summary"></a>Azure SDK for .NET 3.0 リリースの概要
 
 リリース日: 03/07/2017
  
@@ -45,7 +45,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="known-issues"></a>既知の問題
 
-- Azure .NET SDK 3.0 では、Visual Studio 2015 との並列構成の Visual Studio 2017 を削除したときに問題が発生します。  Azure SDK を Visual Studio 2015 用にインストールした場合、Microsoft Azure ストレージ エミュレーターおよび Microsoft Azure コンピューティング エミュレーターは、Visual Studio 2017 をアンインストールすると削除されます。  このため、Visual Studio 2015 で新しいクラウド サービス プロジェクトを作成およびデバッグするとエラーが生成されます。 この問題を解決するには、Web Platform Installer から Azure SDK を再インストールします。  この問題は、今後の Visual Studio 2017 アップデートで解決されます。  に関するセクションをご覧ください。
+- Azure .NET SDK 3.0 では、Visual Studio 2015 との並列構成の Visual Studio 2017 を削除したときに問題が発生します。  Azure SDK を Visual Studio 2015 用にインストールした場合、Microsoft Azure ストレージ エミュレーターおよび Microsoft Azure コンピューティング エミュレーターは、Visual Studio 2017 をアンインストールすると削除されます。  このため、Visual Studio 2015 で新しいクラウド サービス プロジェクトを作成およびデバッグするとエラーが生成されます。 この問題を解決するには、Web Platform Installer から Azure SDK を再インストールします。  この問題は、今後の Visual Studio 2017 アップデートで解決されます。  が必要です。
 
  
 ### <a name="azure-in-role-cache"></a>Azure In-Role Cache 

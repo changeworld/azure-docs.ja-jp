@@ -1,11 +1,11 @@
 ---
-title: "Azure Virtual Machine Scale Sets の FAQ | Microsoft Docs"
-description: "仮想マシン スケール セットについてよく寄せられる質問の回答を示します。"
+title: Azure Virtual Machine Scale Sets の FAQ | Microsoft Docs
+description: 仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -17,10 +17,10 @@ ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
 ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -216,11 +216,11 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
     }
 ```
  
-linuxConfiguration の要素名 | 必須 | type | [説明]
+linuxConfiguration の要素名 | 必須 | 型 | 説明
 --- | --- | --- | --- |  ---
 ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
-パス | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
-keyData | [はい] | String | Base64 でエンコードされた SSH 公開キーを指定します。
+path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
+keyData | はい | String | Base64 でエンコードされた SSH 公開キーを指定します。
 
 実際の例については、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
 

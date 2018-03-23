@@ -1,26 +1,20 @@
 ---
-title: "Azure SQL Database を使用するマルチテナント アプリで新しいテナントをプロビジョニングする | Microsoft Docs"
-description: "Azure SQL Database のマルチテナント SaaS アプリで新しいテナントをプロビジョニングしてカタログ化する方法について説明します。"
-keywords: "SQL データベース チュートリアル"
+title: Azure SQL Database を使用するマルチテナント アプリで新しいテナントをプロビジョニングする | Microsoft Docs
+description: Azure SQL Database のマルチテナント SaaS アプリで新しいテナントをプロビジョニングしてカタログ化する方法について説明します。
+keywords: SQL データベース チュートリアル
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: 79b3743054f73914c6755a3c9b102b613b1944f2
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 21f0bca3a16164ead4e0990842a968fd9b95c33f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="learn-how-to-provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する方法の詳細
 
@@ -99,8 +93,8 @@ Wingtip Tickets アプリケーションで新しいテナント プロビジョ
 
 次の記述は、明示的に従う手順ではなく、スクリプトのデバッグ中にたどるワークフローの説明です。
 
-1. **SubscriptionManagement.psm1 モジュールのインポート**。このモジュールには、Azure にサインインして、使用する Azure サブスクリプションを選択するための関数が含まれています。
 1. **CatalogAndDatabaseManagement.psm1 モジュールのインポート**。このモジュールは、カタログとテナントレベルで[シャード管理](sql-database-elastic-scale-shard-map-management.md)関数を抽象化するものです。 このモジュールは、カタログ パターンの大部分をカプセル化するため、確認する価値があります。
+1. **SubscriptionManagement.psm1 モジュールのインポート**。このモジュールには、Azure にサインインして、使用する Azure サブスクリプションを選択するための関数が含まれています。
 1. **構成情報の取得**。 (F11 キーを押して) Get-Configuration にステップ インして、アプリの構成がどのように指定されているかを確認します。 リソース名などのアプリ固有の値は、ここで定義されています。スクリプトに慣れていないうちは、これらの値を変更しないでください。
 1. **カタログ オブジェクトの取得**。 より高いレベルのスクリプトで使用されるカタログ オブジェクトを構成して返す Get-Catalog にステップ インします。  この関数では、**AzureShardManagement.psm1**からインポートされたシャード管理関数を使用します。 カタログ オブジェクトは、以下の要素で構成されています。
    * $catalogServerFullyQualifiedName。これは、標準的なステム部分とユーザー名を組み合わせた構成になっています (例: _catalog-\<ユーザー\>.database.windows.net_)。

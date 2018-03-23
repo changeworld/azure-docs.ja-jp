@@ -1,24 +1,24 @@
 ---
-title: "Azure Machine Learning Studio でテキスト分析モデルを作成する | Microsoft Docs"
-description: "テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法"
+title: Azure Machine Learning Studio でテキスト分析モデルを作成する | Microsoft Docs
+description: テキストの前処理、N グラム、または特徴ハッシュ用のモジュールを使って Azure Machine Learning Studio でテキスト分析モデルを作成する方法
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: rastala
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 08cd6723-3ae6-4e99-a924-e650942e461b
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/06/2016
+ms.date: 03/14/2018
 ms.author: roastala
-ms.openlocfilehash: a43dc7162be4b2f3cfd122c6a87921caf2e3e418
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 0c2dc3bad6973b7b00f0ed44231e78298f4422fb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-text-analytics-models-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でテキスト分析モデルを作成する
 Azure Machine Learning を使用して、テキスト分析モデルを構築し、運用可能な状態にすることができます。 こうしたモデルは、たとえば、ドキュメントの分類やセンチメント分析の問題を解決するのに役立ちます。

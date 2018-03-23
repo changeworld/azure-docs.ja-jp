@@ -1,31 +1,29 @@
 ---
-title: "転送中の個人データを Azure の暗号化で保護する | Microsoft Docs"
-description: "Azure の暗号化を使って個人データを保護する"
+title: 転送中の個人データを Azure の暗号化で保護する | Microsoft Docs
+description: 個人のデータを保護する Azure 暗号化に関する情報は、一般データ保護規則 (GDPR) に準拠するための取り組みに役立ちます。
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 461ddfda796bfe6639e27f6c4cd53e82b4e397d1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 6975358d40206a497a53de16731d16ef374db905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Azure 暗号化テクノロジ: 転送中の個人データを暗号化で保護する
 
-この記事では、転送中のデータをセキュリティで保護する Azure 暗号化テクノロジを理解して使用できるようにします。 
-
-ネットワーク経由でやり取りされる個人データのプライバシーの保護は、マルチレイヤーの多層防御セキュリティ戦略の重要な部分です。 転送中の暗号化は、伝送を傍受する攻撃者によるデータの表示や使用を防ぐように設計されています。
+この記事では、転送中のデータをセキュリティで保護する Azure 暗号化テクノロジを理解して使用できるようにします。 ネットワーク経由でやり取りされる個人データのプライバシーの保護は、マルチレイヤーの多層防御セキュリティ戦略の重要な部分です。 転送中の暗号化は、伝送を傍受する攻撃者によるデータの表示や使用を防ぐように設計されています。 この記事に含まれる情報は、組織が一般データ保護規則 (GDPR) に従うために役立ちます。
 
 ## <a name="scenario"></a>シナリオ
 
@@ -181,11 +179,11 @@ Microsoft では、暗号化を使って、顧客と Azure Cloud Services の間
 
 転送中のデータは常に [Data Lake Store] (https://docs.microsoft.com/azure/data-lake-store/data-lake-store-security-overview) で暗号化されます。 データは永続メディアに格納される前に暗号化されるうえ、転送中も HTTPS を使用して常にセキュリティ保護されます。 HTTPS は、Data Lake Store REST インターフェイスでサポートされる唯一のプロトコルです。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 会社は、Azure Storage への HTTPS 接続を強制し、Shared Access Signatures を使い、ストレージ アカウントで [安全な転送が必須] を有効にして、個人データとそのプライバシーの保護の目標を達成できます。 SMB 3.0 接続を使い、クライアント側暗号化を実装して、個人データを保護することもできます。 企業ネットワークから Azure 仮想ネットワークへのサイト間 VPN 接続と、個々のユーザーからのポイント対サイト VPN 接続では、個人データを安全に移動できるセキュリティで保護されたトンネルが作成されます。 Microsoft の既定の暗号化プラクティスは、個人データのプライバシーをさらに保護します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure のデータ セキュリティと暗号化のベスト プラクティス](https://docs.microsoft.com/azure/security/azure-security-data-encryption-best-practices)
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure ファイル同期のトラブルシューティング (プレビュー) | Microsoft Docs"
-description: "Azure File Sync の一般的な問題をトラブルシューティングします。"
+title: Azure ファイル同期のトラブルシューティング (プレビュー) | Microsoft Docs
+description: Azure File Sync の一般的な問題をトラブルシューティングします。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: wmgries
 manager: klaasl
 editor: jgerend
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5558a69756075dd83f890d5e9e00c9944d841591
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 4f022bf227c8d460d014ea9bbc5dc426f0ada511
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -51,7 +51,7 @@ installer.log をレビューして、インストールが失敗した原因を
 この問題を解決するには、Windows Server 2012R2 以降を実行している別のドメイン コントローラーに PDC ロールを転送してから、同期エージェントをインストールします。
 
 <a id="agent-installation-websitename-failure"></a>**エージェントのインストールが "Storage Sync Agent Wizard ended prematurely"(Storage Sync Agent ウィザードが中断されました) というエラーで失敗する**  
-この問題は、IIS Web サイトの既定の名前が変更された場合に発生する可能性があります。 この問題を回避するには、IIS の既定の Web サイト名を "既定の Web サイト" に変更して、インストールを再試行してください。 この問題は、エージェントの今後の更新プログラムで修正される予定です。 
+この問題は、バージョン 1.x エージェントで、IIS Web サイトの既定の名前が変更された場合に発生する可能性があります。 この問題を回避するには、2.0.11+ エージェントを使用します。
 
 <a id="server-registration-missing"></a>**Azure Portal の [登録済みサーバー] にサーバーが表示されない**  
 サーバーがストレージ同期サービスの **[登録済みサーバー]** に表示されない場合:

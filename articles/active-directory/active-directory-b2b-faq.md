@@ -1,26 +1,26 @@
 ---
-title: "Azure Active Directory B2B コラボレーションの FAQ | Microsoft Docs"
-description: "Azure Active Directory B2B コラボレーションに関してよく寄せられる質問への回答を示します。"
+title: Azure Active Directory B2B コラボレーションの FAQ | Microsoft Docs
+description: Azure Active Directory B2B コラボレーションに関してよく寄せられる質問への回答を示します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 01/08/2018
+ms.date: 03/06/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 21511b37eba2cd2e87d8720f3e9cfe453b50d88c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 409bb14635afbfc6d31efd853837677c74851b41
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B コラボレーションの FAQ
 
@@ -84,8 +84,8 @@ B2B コラボレーション ユーザーは、制限付き管理者または全
 ### <a name="is-password-reset-available-for-guest-users-in-a-just-in-time-jit-or-viral-tenant-who-accepted-invitations-with-a-work-or-school-email-address-but-who-didnt-have-a-pre-existing-azure-ad-account"></a>Just-In-Time (JIT) または "バイラル" テナントのゲスト ユーザーで、職場または学校の電子メール アドレスで招待を承諾たが、既存の Azure AD アカウントを持っていないユーザーは、パスワード リセットを利用できますか。
 はい。 ユーザーが JIT テナントで自分のパスワードをリセットできるパスワード リセット メールを送信できます。
 
-### <a name="does-microsoft-dynamics-crm-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics CRM は、Azure AD B2B コラボレーションをオンラインでサポートしていますか。
-現在、Microsoft Dynamics CRM では、Azure AD B2B コラボレーションをオンラインでサポートしていません。 ただし、将来これをサポートする予定です。
+### <a name="does-microsoft-dynamics-365-provide-online-support-for-azure-ad-b2b-collaboration"></a>Microsoft Dynamics 365 は、Azure AD B2B コラボレーションをオンラインでサポートしていますか。
+はい、Dynamics 365 (オンライン) は、Azure AD B2B コラボレーションをサポートしています。 詳細については、Dynamics 365 に関する記事「[Azure Active Directory B2B コラボレーションでユーザーを招待する](https://docs.microsoft.com/en-us/dynamics365/customer-engagement/admin/invite-users-azure-active-directory-b2b-collaboration)」を参照してください。
 
 ### <a name="what-is-the-lifetime-of-an-initial-password-for-a-newly-created-b2b-collaboration-user"></a>新しく作成した B2B コラボレーション ユーザー用の初期パスワードの有効期間はどうなっていますか。
 Azure AD には、文字、パスワードの強度、およびアカウント ロックアウトに関する要件の固定セットがあり、これはすべての Azure AD クラウド ユーザー アカウントにも同様に適用されます。 クラウド ユーザー アカウントは、次のような別の ID プロバイダーとフェデレーションされないアカウントです。 

@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Factory での自己ホスト型統合ランタイムの作成 | Microsoft Docs"
-description: "Azure Data Factory で自己ホスト型統合ランタイムを作成する方法について説明します。これにより、データ ファクトリがプライベート ネットワーク内のデータ ストアにアクセスすることができます。"
+title: Azure Data Factory での自己ホスト型統合ランタイムの作成 | Microsoft Docs
+description: Azure Data Factory で自己ホスト型統合ランタイムを作成する方法について説明します。これにより、データ ファクトリがプライベート ネットワーク内のデータ ストアにアクセスすることができます。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
 manager: jhubbard
 editor: monicar
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 92f773d3bbabe763d342366f0d56a77621829487
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3f1b55f2752821de447e6c03bcbf79f01d9f8264
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。
@@ -65,6 +65,7 @@ ms.lasthandoff: 01/23/2018
 - 自己ホスト型統合ランタイムは、Azure 仮想ネットワーク内のデータの統合をサポートするために使用する必要があります。
 - **ExpressRoute**を使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを扱います。 自己ホスト型統合ランタイムを使用してサービスとデータ ソースの間の接続を確立します。
 - データ ストアが**Azure IaaS 仮想マシン**上のクラウド内にある場合でも、自己ホスト型統合ランタイムを使用する必要があります。
+- タスクは、FIPS 準拠の暗号化が有効になっている Windows サーバーに Microsoft Integration Runtime (セルフホステッド) がインストールされている場合に失敗する可能性があります。 この問題を回避するには、サーバー上の FIPS 準拠の暗号化を無効にします。 FIPS 準拠の暗号化を無効にするには、次のレジストリ値を 1 (有効) から 0 (無効) に変更します`HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`。
 
 ## <a name="prerequisites"></a>前提条件
 

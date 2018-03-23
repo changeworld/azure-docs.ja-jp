@@ -1,9 +1,9 @@
 ---
-title: "Hive ODBC ドライバーを使用した Excel から Hadoop への接続 - Azure HDInsight | Microsoft Docs"
-description: "Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。"
+title: Hive ODBC ドライバーを使用した Excel から Hadoop への接続 - Azure HDInsight | Microsoft Docs
+description: Excel 用の Microsoft Hive ODBC ドライバーを使用できるようにセットアップし、Microsoft Excel から HDInsight クラスターのデータを照会する方法を説明します。
 keywords: hadoop excel,hive excel,hive odbc
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 tags: azure-portal
@@ -17,11 +17,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/22/2018
 ms.author: jgao
-ms.openlocfilehash: b2b5427f037203e86f6b73610084993892ed4a37
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2050741b46699043836cae1e6465e18dbae87d25
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
 
@@ -31,10 +31,7 @@ Microsoft のビッグ データ ソリューションでは、Azure HDInsight �
 
 また、Microsoft Power Query for Excel アドインを使用して Excel から HDInsight クラスターや、その他の (HDInsight 以外の) Hadoop クラスターなどのデータ ソースを接続することもできます。 Power Query のインストール方法と使用方法については、「[Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]」を参照してください。
 
-> [!NOTE]
-> この記事の手順は、Linux と Windows ベースの HDInsight クラスターのどちらにも使用できますが、クライアント ワークステーションには Windows が必要です。
-> 
-> 
+
 
 **前提条件**:
 

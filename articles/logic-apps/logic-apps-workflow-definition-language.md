@@ -1,11 +1,11 @@
 ---
-title: "ワークフロー定義言語スキーマ - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps のワークフロー定義スキーマに基づいてワークフローを定義します"
+title: ワークフロー定義言語スキーマ - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps のワークフロー定義スキーマに基づいてワークフローを定義します
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 26c94308-aa0d-4730-97b6-de848bffff91
 ms.service: logic-apps
 ms.workload: integration
@@ -126,14 +126,14 @@ outputs では、ワークフローの実行から返すことができる情報
 > [!NOTE]
 > 一部の式は、実行開始時には存在しない可能性のある値を実行時のアクションから取得します。 **関数**を使って、これらの値の一部を取得できます。  
   
-式は、JSON 文字列値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式であると特定されると、アットマーク (@) を削除することによって式の本体が抽出されます。 @ で始まるリテラル文字列が必要な場合は、@@ を使って文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
+式は、JSON 文字列値内の任意の場所で使うことができ、常に別の JSON 値になります。 JSON 値が式であると特定されると、アットマーク \(\@) を削除することによって式の本体が抽出されます。 \@ で始まるリテラル文字列が必要な場合は、\@@ を使って文字列をエスケープする必要があります。 式の評価方法の例を次に示します。  
   
 |JSON 値|結果|  
 |----------------|------------|  
 |"parameters"|文字 "parameters" が返されます。|  
 |"parameters [1]"|文字 "parameters[1]" が返されます。|  
-|"@@"|"@" を含む 1 文字の文字列が返されます。|  
-|" @"|" @" を含む 2 文字の文字列が返されます。|  
+|\"\@\@\"|\"\@\" を含む 1 文字の文字列が返されます。|  
+|\" \@\"|\" \@\" を含む 2 文字の文字列が返されます。|  
   
 "*文字列の補間*" により、式が `@{ ... }` にラップされている文字列の内部で式を使うこともできます。 例:  <p>`"name" : "First Name: @{parameters('firstName')} Last Name: @{parameters('lastName')}"`
 
@@ -142,12 +142,12 @@ outputs では、ワークフローの実行から返すことができる情報
 |JSON 値|結果|  
 |----------------|------------|  
 |"@parameters('myString')"|`sampleString` が文字列として返されます。|  
-|"@{parameters('myString')}"|`sampleString` が文字列として返されます。|  
+|\"\@{parameters('myString')}"|`sampleString` が文字列として返されます。|  
 |"@parameters('myNumber')"|`42` が "*数値*" として返されます。|  
-|"@{parameters('myNumber')}"|`42` が "*文字列*" として返されます。|  
-|"Answer is: @{parameters('myNumber')}"|文字列 `Answer is: 42` が返されます。|  
+|\"\@{parameters('myNumber')}"|`42` が "*文字列*" として返されます。|  
+|"Answer is: \@{parameters('myNumber')}"|文字列 `Answer is: 42` が返されます。|  
 |"@concat('Answer is: ', string(parameters('myNumber')))"|文字列 `Answer is: 42` が返されます。|  
-|"Answer is: @@{parameters('myNumber')}"|文字列 `Answer is: @{parameters('myNumber')}` が返されます。|  
+|"Answer is: \@\@{parameters('myNumber')}"|文字列 `Answer is: @{parameters('myNumber')}` が返されます。|  
   
 ## <a name="operators"></a>演算子  
 

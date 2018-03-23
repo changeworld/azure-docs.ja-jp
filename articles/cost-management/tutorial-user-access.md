@@ -1,8 +1,8 @@
 ---
-title: "チュートリアル - Azure Cost Management でのアクセスの割り当て | Microsoft Docs"
-description: "このチュートリアルでは、エンティティへのアクセス レベルを定義するユーザー アカウントを使って、コスト管理データへのアクセス権を割り当てる方法について説明します。"
+title: チュートリアル - Azure Cost Management でのアクセスの割り当て | Microsoft Docs
+description: このチュートリアルでは、エンティティへのアクセス レベルを定義するユーザー アカウントを使って、コスト管理データへのアクセス権を割り当てる方法について説明します。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 0e2edc946c5d6ada1049fbd6a960ec138f7088f2
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 6434eb9780eefdcd492273f11f8675668d8d6479
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-assign-access-to-cost-management-data"></a>チュートリアル: コスト管理データへのアクセスを割り当てる
 
@@ -54,7 +54,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ![ユーザー アクセス権を持つ新規ユーザーの追加](.\media\tutorial-user-access\new-user-access.png)
 
-ユーザーの追加に関するチュートリアル ビデオを見るには、「[Adding Users to Azure Cost Management by Cloudyn](https://youtu.be/Nzn7GLahx30)」(Cloudyn の Azure Cost Management にユーザーを追加する) をご覧ください。
+ユーザーの追加に関するチュートリアル ビデオを見るには、[Azure Cost Management へのユーザーの追加](https://youtu.be/Nzn7GLahx30)に関するページを参照してください。
 
 ## <a name="create-entities"></a>エンティティを作成する
 
@@ -75,9 +75,9 @@ Cloudyn ポータルで、右上にある **[設定]** をクリックして **[
 完了したら、エンティティを **[保存]** します。
 
 
-コスト エンティティ階層の作成に関するチュートリアル ビデオを見るには、「[Creating a Cost Entity Hierarchy in Azure Cost Management by Cloudyn](https://youtu.be/dAd9G7u0FmU)」(Cloudyn の Azure Cost Management でコスト エンティティ階層を作成する) をご覧ください。
+コスト エンティティ階層の作成に関するチュートリアル ビデオを見るには、[Azure Cost Management でのコスト エンティティ階層の作成](https://youtu.be/dAd9G7u0FmU)に関するページを参照してください。
 
-Azure Enterprise Agreement ユーザーの場合は、「[Connecting to Azure Resource Manager with Azure Cost Management by Cloudyn](https://youtu.be/oCIwvfBB6kk)」(Cloudyn の Azure Cost Management に Azure Resource Manager を接続する) のアカウントとサブスクリプションのエンティティとの関連付けに関するチュートリアル ビデオをご覧ください。
+Azure Enterprise Agreement ユーザーの場合は、[Azure Cost Management での Azure Resource Manager への接続](https://youtu.be/oCIwvfBB6kk)に関するページで、アカウントとサブスクリプションをエンティティに関連付ける操作のチュートリアル ビデオをご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

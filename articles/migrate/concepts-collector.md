@@ -1,17 +1,17 @@
 ---
-title: "Azure Migrate のコレクター アプライアンス | Microsoft Docs"
-description: "コレクター アプライアンスの概要とその構成方法について説明します。"
+title: Azure Migrate のコレクター アプライアンス | Microsoft Docs
+description: コレクター アプライアンスの概要とその構成方法について説明します。
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/23/2017
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: fcf6d2bf13af785eae26ff60035a4754f6ec702e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 49f3d5ba55a9c1abfcd6dcb50058ed7a001a2eec
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="collector-appliance"></a>コレクター アプライアンス
 
@@ -26,6 +26,20 @@ Azure Migrate Collector は、オンプレミスの vCenter 環境の検出に�
 コレクター アプライアンスは、Azure Migrate プロジェクトからダウンロードできる OVF です。 4 コア、8 GB の RAM、および 80 GB のディスク 1 台を装備した VMware 仮想マシンをインスタンス化します。 アプライアンスのオペレーティング システムは Windows Server 2012 R2 (64 ビット) です。
 
 [コレクター VM の作成方法](tutorial-assessment-vmware.md#create-the-collector-vm)の手順を実行してコレクターを作成できます。
+
+## <a name="collector-communication-diagram"></a>コレクターの通信ダイアグラム
+
+![コレクターの通信ダイアグラム](./media/tutorial-assessment-vmware/portdiagram.PNG)
+
+
+| コンポーネント      | 通信の対象   | 必要なポート                            | 理由                                   |
+| -------------- | --------------------- | ---------------------------------------- | ---------------------------------------- |
+| コレクター      | Azure Migrate サービス | TCP 443                                  | コレクターは、SSL ポート 443 経由でサービスと通信できる必要があります。 |
+| コレクター      | vCenter Server        | 既定の 443                             | コレクターは、vCenter Server と通信できる必要があります。 既定では、443 経由で vCenter に接続します。 vCenter が別のポートをリッスンしている場合は、そのポートがコレクターの送信ポートとして使用可能である必要があります。 |
+| コレクター      | RDP|   | TCP 3389 | RDP でコレクター マシンに接続できるようにするには |
+
+
+
 
 
 ## <a name="collector-pre-requisites"></a>コレクターの前提条件
@@ -158,6 +172,32 @@ vCenter に接続すると、検出範囲を選択できます。 検出範囲�
 コレクターは、マシン データのみを検出し、プロジェクトに送信します。 プロジェクトによっては、ポータルに検出されたデータが表示され、評価の作成を開始できるまで時間がかかる場合があります。
 
 選択された検出範囲にある仮想マシンの数によっては、プロジェクトに静的メタデータを送信するまで最大 15 分かかる場合があります。 静的メタデータがポータルに表示されると、ポータルにマシンの一覧が表示され、グループの作成を開始できます。 コレクション ジョブが完了し、プロジェクトでデータが処理されるまで、評価は作成できません。 選択された検出範囲にある仮想マシンの数によっては、コレクション ジョブがコレクターで完了してからポータルにパフォーマンス データが表示されるまで、最大 1 時間かかることがあります。
+
+## <a name="how-to-upgrade-collector"></a>コレクターをアップグレードする方法
+
+OVA を再度ダウンロードせずに、コレクターを最新バージョンにアップグレードできます。
+
+1. 最新の[アップグレード パッケージ](https://aka.ms/migrate/col/latestupgrade)をダウンロードします。
+2. ダウンロードした修正プログラムが安全であることを確認するために、管理者コマンド ウィンドウを開き、以下のコマンドを実行して、zip ファイルのハッシュを生成します。 生成されたハッシュは、その特定のバージョンのハッシュと一致する必要があります。
+
+    ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
+    
+    (たとえば、C:\>CertUtil -HashFile C:\AzureMigrate\CollectorUpdate_release_1.0.9.5.zip SHA256 のように使用します)
+3. zip ファイルを Azure Migrate コレクター仮想マシン (コレクター アプライアンス) にコピーします。
+4. zip ファイルを右クリックし、[すべて展開] を選択します。
+5. Setup.ps1 を右クリックして [Run with PowerShell]\(PowerShell で実行\) を選択し、画面に指示に従って更新プログラムをインストールします。
+
+### <a name="list-of-updates"></a>更新プログラムのリスト
+
+#### <a name="upgrade-to-version-1095"></a>バージョン 1.0.9.5 へのアップグレード
+
+バージョン 1.0.9.5 にアップグレードするには、[パッケージ](https://aka.ms/migrate/col/upgrade_9_5)をダウンロードします。
+
+**アルゴリズム** | **ハッシュ値**
+--- | ---
+MD5 | d969ebf3bdacc3952df0310d8891ffdf
+SHA1 | f96cc428eaa49d597eb77e51721dec600af19d53
+SHA256 | 07c03abaac686faca1e82aef8b80e8ad8eca39067f1f80b4038967be1dc86fa1
 
 ## <a name="next-steps"></a>次の手順
 

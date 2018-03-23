@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT Edge で Machine Learning を展開する | Microsoft Docs"
-description: "Azure Machine Learning をモジュールとしてエッジ デバイスに展開します"
+title: Azure IoT Edge で Machine Learning を展開する | Microsoft Docs
+description: Azure Machine Learning をモジュールとしてエッジ デバイスに展開します
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/13/2017
+ms.date: 03/06/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: a0131fdbbf926d59eae06089cde109649a1433b8
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: e2314f589456f604c8c008e10fb8084e0524575d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
@@ -27,14 +27,13 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 > * Azure Machine Learning モジュールを IoT Edge デバイスに展開する
 > * 生成されたデータを表示する
 
-このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成される温度データを読み取り、故障 (異常と呼びます) が予測されるときにだけ、上流の Azure IoT Hub にメッセージを送信します。 
-
+このチュートリアルで作成した Azure Machine Learning モジュールは、デバイスによって生成された環境データを読み取り、メッセージに異常か否かのラベル付けを行います。 
 
 ## <a name="prerequisites"></a>前提条件
 
 * クイック スタートまたは最初のチュートリアルで作成した Azure IoT Edge デバイス。
 * IoT Edge デバイスの接続先 IoT ハブに対する IoT ハブ接続文字列。
-* Azure Machine Learning アカウント。 アカウントを作成するには、[Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-accounts)に関するセクションの手順に従ってください。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
+* Azure Machine Learning アカウント。 アカウントを作成するには、[Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench のインストール](../machine-learning/preview/quickstart-installation.md#create-azure-machine-learning-services-accounts)に関するセクションの手順に従ってください。 このチュートリアルを進めるために Workbench アプリケーションをインストールする必要はありません。 
 * お使いのマシン上での Azure ML のモジュール管理。 環境をセットアップしてアカウントを作成するには、「[モデル管理のセットアップ](https://docs.microsoft.com/azure/machine-learning/preview/deployment-setup-configuration)」の手順に従います。
 
 ## <a name="create-the-azure-ml-container"></a>Azure ML コンテナーを作成する
@@ -108,7 +107,7 @@ Windows:
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
-Visual Studio Code 用の Azure IoT Toolkit の拡張機能を使用して、IoT Edge デバイスから送信される device-to-cloud メッセージを表示できます。 
+[IoT Hub エクスプローラー](https://github.com/azure/iothub-explorer)または Visual Studio Code 用の Azure IoT Toolkit の拡張機能を使用して、IoT Edge デバイスから送信される device-to-cloud メッセージを表示できます。 
 
 1. Visual Studio Code で、**[IoT Hub Devices]\(IoT Hub デバイス\)** を選択します。 
 2. **[...]** を選択した後、メニューで **[Set IoT Hub Connection String]\(IoT Hub の接続文字列の設定\)** を選択します。 
@@ -117,7 +116,7 @@ Visual Studio Code 用の Azure IoT Toolkit の拡張機能を使用して、IoT
 
 3. ページの上部に表示されるテキスト ボックスに、IoT Hub の iothubowner の接続文字列を入力します。 IoT Hub デバイスの一覧に、お使いの IoT Edge デバイスが表示されます。
 4. もう一度 **[...]** を選択した後で、**[Start monitoring D2C message]\(D2C メッセージの監視を開始する\)** を選択します。
-5. 5 秒おきに tempSensor からメッセージを受信することを確認します。このメッセージには、machinelearningmodule によってデバイスの正常性に関する評価が追加されています。 
+5. 5 秒ごとに tempSensor から送られるメッセージを確認します。 メッセージ本文には、machinelearningmodule によって true または false 値が提供される **anomaly** というプロパティが含まれています。 **AzureMLResponse** プロパティには、モジュールの実行に成功した場合、"OK" という値が含まれます。 
 
    ![メッセージ本文の Azure ML の応答](./media/tutorial-deploy-machine-learning/ml-output.png)
 

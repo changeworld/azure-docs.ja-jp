@@ -1,23 +1,21 @@
 ---
-title: "Azure Automation Runbook に JSON オブジェクトを渡す | Microsoft Docs"
-description: "JSON オブジェクトとして Runbook にパラメーターを渡す方法"
+title: Azure Automation Runbook に JSON オブジェクトを渡す
+description: JSON オブジェクトとして Runbook にパラメーターを渡す方法
 services: automation
-documentationcenter: dev-center-name
-author: georgewallace
-manager: carmonm
-keywords: powershell, runbook, json, azure automation
 ms.service: automation
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: TBD
-ms.date: 06/15/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5390ba34a25713aed84d6e778335e30f27c2b1f8
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+keywords: powershell, runbook, json, azure automation
+ms.openlocfilehash: c5ceced9f37cb76c8c760a7f2d1c680f98e704c3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Azure Automation Runbook に JSON オブジェクトを渡す
 
@@ -112,7 +110,7 @@ Azure PowerShell を使用して、ローカル コンピューターから Runb
 
 Runbook は、JSON ファイルの値を使用して、VM を開始します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * テキスト エディターを使用した PowerShell および PowerShell ワークフロー Runbook の編集の詳細については、「 [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md) 
 * Runbook の作成およびインポートの詳細については、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。

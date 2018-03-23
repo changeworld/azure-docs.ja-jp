@@ -1,11 +1,11 @@
 ---
-title: "Service Fabric クラスターの容量計画 | Microsoft Docs"
-description: "Service Fabric クラスターの容量計画に関する考慮事項。 ノード タイプ, 操作, 持続性レベルと信頼性レベル"
+title: Service Fabric クラスターの容量計画 | Microsoft Docs
+description: Service Fabric クラスターの容量計画に関する考慮事項。 ノード タイプ, 操作, 持続性レベルと信頼性レベル
 services: service-fabric
 documentationcenter: .net
 author: ChackDan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4c584f4a-cb1f-400c-b61f-1f797f11c982
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: 8e2fceaf7e8a0d6c177d3122bd07de5b8c11f295
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -88,10 +88,11 @@ ms.lasthandoff: 01/05/2018
  
 1. 仮想マシン スケール セットやその他の関連する Azure リソースへのデプロイが遅れたり、タイムアウトしたりする可能性があり、クラスターまたはインフラストラクチャ レベルの問題によって完全にブロックされる可能性があります。 
 2. Azure インフラストラクチャの操作中に自動化されたノードの非アクティブ化により[レプリカ ライフサイクル イベント](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle ) (プライマリ スワップなど) の数が増えます。
+3. Azure プラットフォーム ソフトウェアまたはハードウェア メンテナンス アクティビティが発生している期間中は、ノードの稼働を停止します。 これらのアクティビティの最中は、ノードのステータスが [無効化中] や [無効] と表示されます。 これにより、一時的にクラスターの容量が削減されますが、クラスターまたはアプリケーションの可用性に影響はありません。
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>どのような場合に Silver または Gold 耐久性レベルを使用するか
 
-Silver または Gold 耐久性は、頻繁なスケールイン (VM インスタンス数の削減) が予測されるステートフル サービスをホストするすべてのノード タイプに適しており、またこれらのスケールイン操作を簡略化するためにデプロイ操作が遅れることを厭わない場合に適しています。 スケールアウト シナリオ (VM インスタンスの追加) は、耐久性レベルの選択では問題になりません。問題になるのは、スケールインのみです。
+Silver または Gold 耐久性は、頻繁なスケールイン (VM インスタンス数の削減) が予測されるステートフル サービスをホストするすべてのノード タイプに適しており、またこれらのスケールイン操作を簡略化するためにデプロイ操作の遅延や容量の減少を厭わない場合に適しています。 スケールアウト シナリオ (VM インスタンスの追加) は、耐久性レベルの選択では問題になりません。問題になるのは、スケールインのみです。
 
 ### <a name="changing-durability-levels"></a>持続性レベルの変更
 - シルバーまたはゴールドの持続性レベルのノード型は、ブロンズにダウングレードできません。

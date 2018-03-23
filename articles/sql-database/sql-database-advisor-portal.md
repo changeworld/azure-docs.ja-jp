@@ -1,25 +1,19 @@
 ---
-title: "パフォーマンスに関する推奨事項の適用 - Azure SQL Database | Microsoft Docs"
-description: "Azure Portal を使用して、Azure SQL Database のパフォーマンスを最適化できるパフォーマンスの推奨事項を調べます。"
+title: パフォーマンスに関する推奨事項の適用 - Azure SQL Database | Microsoft Docs
+description: Azure Portal を使用して、Azure SQL Database のパフォーマンスを最適化できるパフォーマンスの推奨事項を調べます。
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: monicar
-ms.assetid: cda8a646-0584-4368-b28a-85cdd9b54fcd
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: fe76be59d6ee09049ed8c1343d1a91e42646c262
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a5772e67d5b91ff989ac6d049b14b1ccad5c952e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -37,7 +31,7 @@ Azure Portal でパフォーマンスに関する推奨事項を調べるには�
 
 パフォーマンスの推奨事項は、次の図のようなテーブルに表示されます。
 
-![推奨事項](./media/sql-database-advisor-portal/recommendations.png)
+![Recommendations](./media/sql-database-advisor-portal/recommendations.png)
 
 推奨事項は、パフォーマンスへの潜在的な影響ごとに、次のカテゴリの順に表示されます。
 

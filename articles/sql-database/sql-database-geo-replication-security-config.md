@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database セキュリティを障害復旧用に構成する | Microsoft Docs"
-description: "データベースの復元やセカンダリ サーバーへのフェールオーバーを行った後の、セキュリティ構成やセキュリティ管理に関する考慮事項について説明します。"
+title: Azure SQL Database セキュリティをディザスター リカバリー用に構成する | Microsoft Docs
+description: データベースの復元やセカンダリ サーバーへのフェールオーバーを行った後の、セキュリティ構成やセキュリティ管理に関する考慮事項について説明します。
 services: sql-database
-documentationcenter: na
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: c7c898c9-69d4-4e16-8b7e-720bbb3353dd
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 10/13/2016
 ms.author: sashan
-ms.openlocfilehash: 5bdcdba4956a12b54559b8accf822a4f41656045
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 758096692c83ae08c8ef2bce8ec67dd9bc6e878d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する 
 
@@ -30,9 +24,9 @@ ms.lasthandoff: 10/31/2017
 >  
 
 ## <a name="disaster-recovery-with-contained-users"></a>包含ユーザーによる障害復旧
-従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。 これには 2 つ利点があります。 障害復旧のシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。 また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。 
+従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。 これには 2 つ利点があります。 ディザスター リカバリーのシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。 また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。 
 
-主なトレードオフは、大規模な障害復旧プロセスの管理が困難になることです。 同じログインを使用するデータベースが複数ある場合、複数のデータベースで包含ユーザーを使用して資格情報を維持すると、包含ユーザーの利点が損なわれる場合があります。 たとえば、パスワード ローテーション ポリシーでは、マスター データベースで 1 回だけログイン用パスワードを変更するのではなく、複数のデータベースで一貫して変更を行う必要があります。 このような理由から、同じユーザー名とパスワードを使用するデータベースが複数ある場合、包含ユーザーの使用は推奨されません。 
+主なトレードオフは、大規模なディザスター リカバリー プロセスの管理が困難になることです。 同じログインを使用するデータベースが複数ある場合、複数のデータベースで包含ユーザーを使用して資格情報を維持すると、包含ユーザーの利点が損なわれる場合があります。 たとえば、パスワード ローテーション ポリシーでは、マスター データベースで 1 回だけログイン用パスワードを変更するのではなく、複数のデータベースで一貫して変更を行う必要があります。 このような理由から、同じユーザー名とパスワードを使用するデータベースが複数ある場合、包含ユーザーの使用は推奨されません。 
 
 ## <a name="how-to-configure-logins-and-users"></a>ログインとユーザーを構成する方法
 包含ユーザーではなくログインとユーザーを使用している場合は、追加の手順を実行して、マスター データベースに同じログインが存在することを確認する必要があります。 次のセクションでは、関連する手順とその他の考慮事項について概要を説明します。
@@ -96,7 +90,7 @@ geo レプリケーション セカンダリに対するユーザー アクセ�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * データベースへのアクセスとログインの管理の詳細については、「 [SQL Database のセキュリティ: データベースのアクセスとログインのセキュリティの管理](sql-database-manage-logins.md)」を参照してください。
 * 包含データベース ユーザーの詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。
 * アクティブ geo レプリケーションの使用および構成の方法については、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を参照してください。

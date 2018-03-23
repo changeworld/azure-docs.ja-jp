@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: パススルー認証 - スマート ロックアウト | Microsoft Docs"
-description: "この記事では、Azure Active Directory (Azure AD) パススルー認証がクラウドのブルート フォース パスワード攻撃からオンプレミスのアカウントを保護する方法について説明します"
+title: 'Azure AD Connect: パススルー認証 - スマート ロックアウト | Microsoft Docs'
+description: この記事では、Azure Active Directory (Azure AD) パススルー認証がクラウドのブルート フォース パスワード攻撃からオンプレミスのアカウントを保護する方法について説明します
 services: active-directory
-keywords: "Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
-documentationcenter: 
+keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: fc46fe1d68538757ba5a8c5aa1acb4b51f8a171b
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 9477d47824213d7ea15bcf6c6b615a220bae2e48
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory パススルー認証: スマート ロックアウト
 
 ## <a name="overview"></a>概要
 
-Azure Active Directory (Azure AD) は、ブルート フォース パスワード攻撃から保護し、正規のユーザーが Office 365 および SaaS アプリケーションからロックアウトされることを防ぎます。 *スマート ロックアウト*と呼ばれるこの機能は、サインイン方法としてパススルー認証を使っている場合にサポートされます。 スマート ロックアウトはすべてのテナントに対して既定で有効で、お使いのユーザー アカウントを継続的に保護します。
+Azure Active Directory (Azure AD) は、ブルート フォース パスワード攻撃から保護し、正規のユーザーが Office 365 および SaaS アプリケーションからロックアウトされることを防ぎます。 *スマート ロックアウト*と呼ばれるこの機能は、サインイン方法としてパススルー認証を使っている場合にサポートされます。 スマート ロックアウトは、パススルー認証を使用しているテナントだけでなく、すべてのテナントに対して既定で有効であり、お使いのユーザー アカウントを継続的に保護します。
 
 スマート ロックアウトは、失敗したサインインの試行を追跡します。 特定の*ロックアウトしきい値*の後に、*ロックアウト期間*を開始します。 スマート ロックアウトはロックアウト期間中に攻撃者がサインインしようとしても拒否します。 攻撃が継続して発生する場合、ロックアウト期間終了後にサインインの試行が失敗すると、ロックアウト期間がさらに長くなります。
 

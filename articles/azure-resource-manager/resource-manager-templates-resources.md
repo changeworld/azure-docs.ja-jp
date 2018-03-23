@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager テンプレートの構造と構文 | Microsoft Docs"
-description: "宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。"
+title: Azure Resource Manager テンプレートの構造と構文 | Microsoft Docs
+description: 宣言型 JSON 構文を使用した Azure Resource Manager テンプレートの構造とプロパティについて説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2017
 ms.author: tomfitz
-ms.openlocfilehash: 89e4b52e7d306bd495c426bcf775f59d0f30eb55
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: b5438080f71fa8f5c4f03006b75b826f1cfa576a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resources-section-of-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース セクション
 
@@ -213,7 +213,7 @@ az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites']
 ```
 
 ## <a name="tags"></a>タグ
-[!INCLUDE [resource-manager-tag-introduction](../../includes/resource-manager-tag-introduction.md)]
+[!INCLUDE [resource-manager-governance-tags](../../includes/resource-manager-governance-tags.md)]
 
 ### <a name="add-tags-to-your-template"></a>テンプレートにタグを追加する
 

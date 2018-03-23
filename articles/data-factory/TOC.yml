@@ -76,10 +76,16 @@
               href: tutorial-incremental-copy-change-tracking-feature-powershell.md
     - name: 6 - クラウドのデータを変換する
       items:
-        - name: ユーザー インターフェイス (UI)
-          href: tutorial-transform-data-spark-portal.md
-        - name: Azure PowerShell
-          href: tutorial-transform-data-spark-powershell.md
+        - name: HDInsight Spark
+          items:
+            - name: ユーザー インターフェイス (UI)
+              href: tutorial-transform-data-spark-portal.md
+            - name: Azure PowerShell
+              href: tutorial-transform-data-spark-powershell.md
+        - name: Databricks Notebook
+          items:
+            - name: ユーザー インターフェイス (UI)
+              href: transform-data-using-databricks-notebook.md
     - name: 7 - 仮想ネットワーク内のデータを変換する
       items:
         - name: ユーザー インターフェイス (UI)
@@ -291,7 +297,7 @@
         - name: Data Lake U-SQL アクティビティ
           href: transform-data-using-data-lake-analytics.md
         - name: Databricks ノートブック アクティビティ
-          href: transform-data-using-databricks-notebook.md
+          href: transform-data-databricks-notebook.md
         - name: カスタム アクティビティ
           href: transform-data-using-dotnet-custom-activity.md
         - name: コンピューティングのリンクされたサービス

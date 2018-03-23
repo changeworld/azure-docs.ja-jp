@@ -1,8 +1,8 @@
 ---
-title: "脅威の検出 - Azure SQL Database | Microsoft Docs"
-description: "脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。"
+title: 脅威の検出 - Azure SQL Database | Microsoft Docs
+description: 脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: rmatchoro
 manager: shaik
 editor: v-romcal
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: 889f65a796aee20d7902964b8c47af46dd9149cb
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="sql-database-threat-detection"></a>SQL Database の脅威の検出
 
@@ -30,7 +30,7 @@ SQL の脅威の検出で提供される新しいセキュリティ階層は、�
 
 たとえば、SQL インジェクションはインターネットにおける Web アプリケーションの一般的なセキュリティ問題の 1 つであり、データ駆動型アプリケーションの攻撃に使用されます。 攻撃者は、アプリケーションの脆弱性を利用してアプリケーションの入力フィールドに悪意のある SQL ステートメントを挿入し、データベースのデータを侵害または変更します。
 
-SQL の脅威の検出によるアラートは [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/) と統合されています。保護対象の各 SQL Database サーバーは、Azure Security Center Standard レベルの価格 (15 ドル/ノード/月) で課金されます。保護対象の SQL Database サーバーは、それぞれ 1 つのノードとしてカウントされます。  
+SQL の脅威の検出によるアラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。保護対象の各 SQL Database サーバーは、Azure Security Center Standard レベルの価格 (15 ドル/ノード/月) で課金されます。保護対象の SQL Database サーバーは、それぞれ 1 つのノードとしてカウントされます。  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Azure Portal でデータベースの脅威検出を設定する
 1. [https://portal.azure.com](https://portal.azure.com) で Azure Portal を起動します。
@@ -60,7 +60,7 @@ SQL の脅威の検出によるアラートは [Azure Security Center](https://a
 
 ## <a name="explore-threat-detection-alerts-for-your-database-in-the-azure-portal"></a>Azure Portal でデータベースの脅威検出のアラートを調査する
 
-SQL Database の脅威の検出では、アラートが [Azure Security Center](https://azure.microsoft.com/en-us/services/security-center/) と統合されています。 Azure Portal のデータベース ページ内のライブ SQL セキュリティ タイルでは、アクティブな脅威の状態が追跡されます。 
+SQL Database の脅威の検出では、アラートが [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。 Azure Portal のデータベース ページ内のライブ SQL セキュリティ タイルでは、アクティブな脅威の状態が追跡されます。 
 
    ![ナビゲーション ウィンドウ][6]
    
@@ -75,10 +75,10 @@ SQL Database の脅威の検出では、アラートが [Azure Security Center](
 
 ## <a name="next-steps"></a>次の手順
 
-* 脅威の検出の詳細については、[Azure ブログ](https://azure.microsoft.com/en-us/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/)を参照してください 
+* 脅威の検出の詳細については、[Azure ブログ](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-general-availability-in-spring-2017/)を参照してください 
 * [Azure SQL Database 監査](sql-database-auditing.md)の詳細について参照してください
 * [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) の詳細について参照してください
-* 価格の詳細については、[SQL Database の料金のページ](https://azure.microsoft.com/en-us/pricing/details/sql-database/)を参照してください  
+* 価格の詳細については、[SQL Database の価格のページ](https://azure.microsoft.com/pricing/details/sql-database/)を参照してください  
 * PowerShell スクリプトの例については、[PowerShell を使用した監査と脅威検出の構成](scripts/sql-database-auditing-and-threat-detection-powershell.md)に関するページを参照してください
 
 

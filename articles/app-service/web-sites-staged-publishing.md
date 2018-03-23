@@ -1,8 +1,8 @@
 ---
-title: "Azure App Service の Web アプリのステージング環境を設定する | Microsoft Docs"
-description: "Azure App Service の Web アプリのステージングされた発行を使用する方法について説明します。"
+title: Azure App Service の Web アプリのステージング環境を設定する | Microsoft Docs
+description: Azure App Service の Web アプリのステージングされた発行を使用する方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 writer: cephalin
 manager: erikre
@@ -15,31 +15,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: 55c023e8f6b41c17e85ba441f862a7682b2f2599
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 18f6ef3997ba60f588040f641ebe9e9aca8d091a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
 
-使用している App Service プラン モードが **Standard** または **Premium** である場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、API アプリを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする際、既定の運用スロットではなく、個別のデプロイ スロットにデプロイすることができます。 デプロイ スロットは、実際には固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 デプロイ スロットにアプリケーションをデプロイすることには、次のメリットがあります。
+使用している App Service プラン レベルが **Standard** または **Premium** である場合は、Web アプリ、Linux 上の Web アプリ、モバイル バック エンド、API アプリを [App Service](http://go.microsoft.com/fwlink/?LinkId=529714) にデプロイする際、既定の運用スロットではなく、個別のデプロイ スロットにデプロイすることができます。 デプロイ スロットは、実際には固有のホスト名を持つライブ アプリです。 アプリのコンテンツと構成の各要素は、(運用スロットを含む) 2 つのデプロイ スロットの間でスワップすることができます。 デプロイ スロットにアプリケーションをデプロイすることには、次のメリットがあります。
 
 * ステージング デプロイ スロットでアプリの変更を検証した後に、運用スロットにスワップできます。
 * スロットにアプリをデプロイした後に運用サイトにスワップすると、運用サイトへのスワップ前にスロットのすべてのインスタンスが準備されます。 これにより、アプリをデプロイする際のダウンタイムがなくなります。 トラフィックのリダイレクトはシームレスであるため、スワップ操作によりドロップされる要求はありません。 このワークフロー全体は、スワップ前の検証が必要ない場合、 [自動スワップ](#Auto-Swap) を構成することで自動化できます。
 * スワップ後も、以前のステージング アプリ スロットに元の運用アプリが残っているため、 運用スロットにスワップした変更が想定どおりでない場合は、適切な動作が確認されている元のサイトにすぐに戻すことができます。
 
-サポートされるデプロイ スロット数は、App Service のプラン モードごとに異なります。 使用しているアプリのモードでサポートされるスロット数を確認するには、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
+サポートされるデプロイ スロット数は、App Service プラン レベルごとに異なります。 使用しているアプリのレベルでサポートされるスロット数を確認するには、「[App Service の価格](https://azure.microsoft.com/pricing/details/app-service/)」をご覧ください。
 
-* アプリに複数のスロットがある場合は、モードを変更することはできません。
+* アプリに複数のスロットがある場合は、レベルを変更することはできません。
 * スケーリングは運用サイト スロットでのみ有効になります。
-* リンク済みリソースの管理は運用サイト スロットでのみサポートされています。 [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) を使用している場合のみ、非運用スロットを異なる App Service プラン モードに変更することで、この運用スロットに対する影響を回避することができます。 なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じモードにする必要があります。
+* リンク済みリソースの管理は運用サイト スロットでのみサポートされています。 [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) を使用している場合のみ、非運用スロットを異なる App Service プラン レベルに変更することで、この運用スロットに対する影響を回避することができます。 なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じレベルにする必要があります。
 
 <a name="Add"></a>
 
 ## <a name="add-a-deployment-slot"></a>デプロイ スロットの追加
-複数のデプロイ スロットを有効にするには、アプリが **Standard** または **Premium** モードで実行されている必要があります。
+複数のデプロイ スロットを有効にするには、アプリが **Standard** または **Premium** レベルで実行されている必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) でアプリの[リソース ブレード](../azure-resource-manager/resource-group-portal.md#manage-resources)を開きます。
 2. **[デプロイ スロット]** オプションを選択し、**[スロットの追加]** をクリックします。
@@ -47,7 +47,7 @@ ms.lasthandoff: 01/29/2018
     ![新しいデプロイ スロットの追加][QGAddNewDeploymentSlot]
    
    > [!NOTE]
-   > アプリがまだ **Standard** または **Premium** モードでない場合は、ステージングされた発行を有効にするためのモードを示すメッセージが表示されます。 その場合は、操作を継続する前に、**[アップグレード]** を選択してアプリの **[スケール]** タブに移動できます。
+   > アプリがまだ **Standard** または **Premium** レベルでない場合は、ステージングされた発行を有効にするためのレベルを示すメッセージが表示されます。 その場合は、操作を継続する前に、**[アップグレード]** を選択してアプリの **[スケール]** タブに移動できます。
    > 
    > 
 3. **[スロットの追加]** ブレードで、スロット名を設定し、別の既存のデプロイ スロットからアプリ構成を複製するかどうかを選択します。 チェック マークをクリックして続行します。

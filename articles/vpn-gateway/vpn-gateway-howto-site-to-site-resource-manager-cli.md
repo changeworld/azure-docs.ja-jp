@@ -1,25 +1,25 @@
 ---
-title: "オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN: CLI | Microsoft Docs"
-description: "パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、CLI を使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。"
+title: 'オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN: CLI | Microsoft Docs'
+description: パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、CLI を使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/09/2017
+ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 64c08400c39013f2bfc5bcc57eb21839ad69490b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 76df3a03b559a1be04a969351ecbfafe3da67714
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成
 
@@ -89,7 +89,7 @@ az group create --name TestRG1 --location eastus
 まだ仮想ネットワークがない場合は、[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) コマンドを使って作成します。 仮想ネットワークを作成する際は、指定したアドレス空間がオンプレミス ネットワーク内に存在するあらゆるアドレス空間と重複していないことを確認します。
 
 >[!NOTE]
->この VNet をオンプレミスの場所に接続するには、オンプレミスのネットワーク管理者と調整を行って、この仮想ネットワーク専用に使用できる IP アドレスの範囲を見つけ出す必要があります。 そうしないと、VPN 接続の両側に重複するアドレス範囲が存在する場合、トラフィックが正しくルーティングされなくなります。
+>この VNet をオンプレミスの場所に接続するには、オンプレミスのネットワーク管理者と調整を行って、この仮想ネットワーク専用に使用できる IP アドレスの範囲を見つけ出す必要があります。 VPN 接続の両側に重複するアドレス範囲が存在する場合、トラフィックが期待どおりにルーティングされない可能性があります。 また、この VNet を別の VNet に接続する場合、アドレス空間を他の VNet と重複させることはできません。 したがって、慎重にネットワーク構成を計画してください。
 >
 >
 
@@ -101,17 +101,16 @@ az network vnet create --name TestVNet1 --resource-group TestRG1 --address-prefi
 
 ## 4.<a name="gwsub"></a>ゲートウェイ サブネットを作成する
 
-[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
-この構成には、ゲートウェイ サブネットも必要です。 仮想ネットワーク ゲートウェイでは、VPN ゲートウェイ サービスが使用する IP アドレスが含まれているゲートウェイ サブネットを使用します。 ゲートウェイ サブネットを作成する際は、名前を "GatewaySubnet " にする必要があります。 別の名前を付けてサブネットを作成しても、Azure はそれをゲートウェイ サブネットとして扱いません。
-
-指定したゲートウェイ サブネットのサイズは、作成する VPN ゲートウェイの構成によって異なります。 /29 と同程度の小規模なゲートウェイ サブネットを作成することはできますが、/28 または /27 を選択してさらに多くのアドレスが含まれる大規模なサブネットを作成することをお勧めします。 大規模なゲートウェイ サブネットを使用すると、将来の構成に対応するのに十分な IP アドレスを確保できます。
+[!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 
 ゲートウェイ サブネットを作成するには、[azure network vnet subnet create](/cli/azure/network/vnet/subnet#az_network_vnet_subnet_create) コマンドを使用します。
 
 ```azurecli
 az network vnet subnet create --address-prefix 10.11.255.0/27 --name GatewaySubnet --resource-group TestRG1 --vnet-name TestVNet1
 ```
+
+[!INCLUDE [vpn-gateway-no-nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="localnet"></a>5.ローカル ネットワーク ゲートウェイを作成する
 

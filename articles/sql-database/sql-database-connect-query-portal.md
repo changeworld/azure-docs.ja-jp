@@ -1,27 +1,20 @@
 ---
-title: "Azure Portal：クエリ エディターを使用した Azure SQL Database の照会 | Microsoft Docs"
-description: "SQL クエリ エディターを使用して、Azure Portal で SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。"
-metacanonical: 
-keywords: "sql database への接続, azure portal, ポータル, クエリ エディター"
+title: Azure Portal：クエリ エディターを使用した Azure SQL Database の照会 | Microsoft Docs
+description: SQL クエリ エディターを使用して、Azure Portal で SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
+keywords: sql database への接続, azure portal, ポータル, クエリ エディター
 services: sql-database
-documentationcenter: 
 author: ayoolubeko
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: data-management
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: aa4df1854b15198ede1ee143afeff47b24dc567f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: e5c1a5a991284fcbeac53d2ce35be4e2634514fa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: SQL クエリ エディターを使用した接続とデータの照会
 

@@ -1,29 +1,27 @@
 ---
-title: "SQL Server データベースの Azure SQL Database への移行 | Microsoft Docs"
-description: "SQL Server データベースをクラウド内の Azure SQL Database に移行する方法について説明します。"
-keywords: "データベースの移行, SQL Server データベースの移行, データベース移行ツール, データベースを移行する, SQL データベースを移行する"
+title: SQL Server データベースの Azure SQL Database への移行 | Microsoft Docs
+description: SQL Server データベースをクラウド内の Azure SQL Database に移行する方法について説明します。
+keywords: データベースの移行, SQL Server データベースの移行, データベース移行ツール, データベースを移行する, SQL データベースを移行する
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 9cf09000-87fc-4589-8543-a89175151bc2
+manager: Craig.Guyer
 ms.service: sql-database
 ms.custom: migrate
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Active
-ms.date: 11/07/2017
+ms.date: 03/07/2018
 ms.author: carlrab
-ms.openlocfilehash: 8a31ed948fe9387720db61018e0edded530cd900
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 32377b4a80fcafd1d997daa11a90699b581093a6
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>SQL Server データベースのクラウド内の SQL Database への移行
-この記事では、SQL Server 2005 以降のデータベースを Azure SQL Database に移行するための 2 つの主な方法について説明します。 1 つ目の方法の方が簡単ですが、移行中にダウンタイムが必要です。これは長時間にわたる可能性があります。 2 つ目の方法はより複雑ですが、移行中のダウンタイムは大幅に解消されます。
+# <a name="sql-server-database-migration-to-azure-sql-database"></a>SQL Server データベースの Azure SQL Database への移行
+
+この記事では、SQL Server 2005 以降のデータベースを Azure SQL Database の単一データベースまたはプール データベースに移行するための主な方法について説明します。 マネージ インスタンスへの移行については、[SQL Server インスタンスの Azure SQL Database マネージ インスタンスへの移行 (プレビュー) に関するページ](sql-database-managed-instance-migrate.md)を参照してください。 
+
+## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>単一データベースまたはプール データベースに移行する
+SQL Server 2005 以降のデータベースを Azure SQL Database の単一データベースまたはプール データベースに移行するには、主に 2 つの方法があります。 1 つ目の方法の方が簡単ですが、移行中にダウンタイムが必要です。これは長時間にわたる可能性があります。 2 つ目の方法はより複雑ですが、移行中のダウンタイムは大幅に解消されます。
 
 どちらの場合も、[Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用してソース データベースに Azure SQL Database との互換性があることを確認する必要があります。 SQL Database V12 は、SQL Server との[機能の同等性](sql-database-features.md)を目指していますが、サーバーレベルの操作とデータベース間の操作に関連した問題は残っています。 データベースやアプリケーションで、[部分的にしかサポートされていない機能またはサポートされていない機能](sql-database-transact-sql-information.md)を使用している場合には、SQL Server データベースの移行前に[リエンジニアリングを実施してこれらの非互換性を修正する](sql-database-cloud-migrate.md#resolving-database-migration-compatibility-issues)必要があります。
 
@@ -31,19 +29,22 @@ ms.lasthandoff: 12/08/2017
 > Microsoft Access、Sybase、MySQL Oracle、DB2 などの SQL Server 以外のデータベースを Azure SQL Database に移行する場合は、 [SQL Server Migration Assistant](https://blogs.msdn.microsoft.com/datamigration/2017/09/29/release-sql-server-migration-assistant-ssma-v7-6/)チームのブログ記事を参照してください。
 > 
 
-## <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1: 移行中にダウンタイムを伴う移行
+### <a name="method-1-migration-with-downtime-during-the-migration"></a>方法 1: 移行中にダウンタイムを伴う移行
 
- ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用してください。 チュートリアルについては、[SQL Server データベースを移行する](sql-database-migrate-your-sql-server-database.md)を参照してください。
+ ある程度のダウンタイムが許容される場合、または将来の移行に備えて運用データベースの移行をテストする場合には、この方法を使用して、単一データベースまたはプール データベースを移行します。 チュートリアルについては、[SQL Server データベースを移行する](sql-database-migrate-your-sql-server-database.md)を参照してください。
 
-次の一覧は、この方法を使用した SQL Server データベース移行の一般的なワークフローを示します。
+次の一覧は、単一データベースまたはプール データベースの SQL Server データベースをこの方法で移行する場合の一般的なワークフローを示します。 マネージ インスタンスへの移行については、[マネージ インスタンスへの移行に関するページ](sql-database-cloud-migrate.md#migration-to-azure-sql-database-managed-instance)を参照してください。
 
   ![VSSSDT の移行ダイアグラム](./media/sql-database-cloud-migrate/azure-sql-migration-sql-db.png)
 
 1. [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) の最新バージョンを使用して、データベースの互換性を[評価](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)します。
 2. 必要な修正を Transact-SQL スクリプトとして準備します。
-3. トランザクション上の一貫性が維持された、移行元のソース データベースのコピーを作成し、ソース データベースにそれ以上変更が行われないようにします (移行が完了した後に、このような変更を手動で適用できます)。 クライアント接続を無効にしたり、 [データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成したりするなど、データベースはさまざまな方法で停止できます。
+3. 移行するソース データベースについて、トランザクション上一貫性のあるコピーを作成するか、または移行の実行中にソース データベースで新規トランザクションが発生しないようにします。 後者のオプションを実行するには、クライアント接続を無効にする方法と、[データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成する方法があります。 移行が完了した後、トランザクション レプリケーションを使用して、移行したデータベースを更新すると、移行のカットオフ後に発生した変更を反映させることができます。 [トランザクション移行を使用した移行に関するセクション](sql-database-cloud-migrate.md#method-2-use-transactional-replication)を参照してください。  
 4. Transact-SQL スクリプトをデプロイして、データベースのコピーに修正を適用します。
 5. Data Migration Assistant を使用して、データベースのコピーを新しい Azure SQL Database に[移行](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql)します。
+
+> [!NOTE]
+> DMA を使用せずに、BACPAC ファイルを使用することもできます。 「[BACPAC ファイルを新しい Azure SQL Database にインポートする](sql-database-import.md)」を参照してください。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>移行中のデータ転送パフォーマンスの最適化 
 
@@ -60,7 +61,7 @@ ms.lasthandoff: 12/08/2017
 
 移行が完了した後に、フル スキャンを実施して[統計を更新](https://msdn.microsoft.com/library/ms187348.aspx)します。
 
-## <a name="method-2-use-transactional-replication"></a>方法 2: トランザクション レプリケーションの使用
+### <a name="method-2-use-transactional-replication"></a>方法 2: トランザクション レプリケーションの使用
 
 移行中、SQL Server データベースを外す余裕がない場合、移行ソリューションとして SQL Server トランザクション レプリケーションを使用できます。 この方法を使用するには、ソース データベースが[トランザクション レプリケーションの要件](https://msdn.microsoft.com/library/mt589530.aspx)を満たしているほか、Azure SQL Database に対する互換性を持っている必要があります。 AlwaysOn を使った SQL レプリケーションの詳細については、「[Always On 可用性グループのレプリケーションの構成 (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server)」をご覧ください。
 
@@ -90,16 +91,16 @@ ms.lasthandoff: 12/08/2017
    -  [SQL Server Management Studio (SSMS) を使用する](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_0)
    -  [Transact-SQL を使用する](https://msdn.microsoft.com/library/ms152566.aspx#Anchor_1)
 
-### <a name="some-tips-and-differences-for-migrating-to-sql-database"></a>SQL Database への移行に関するヒントと相違点
+SQL Database への移行に関するヒントと相違点
 
-1. ローカル ディストリビューターを使用します。 
+- ローカル ディストリビューターを使用します。 
    - これにより、サーバーのパフォーマンスに影響が生じます。 
    - パフォーマンスへの影響を許容できない場合は、別のサーバーを使用できますが、管理がさらに複雑になります。
-2. スナップショット フォルダーを選択する際は、選択したフォルダーが、レプリケートするすべてのテーブルの BCP を保持するのに十分な大きさであることを確認してください。 
-3. スナップショットの作成では、その処理が完了するまで関連付けられたテーブルがロックされるため、スナップショットは適宜スケジュールしてください。 
-4. Azure SQL Database でサポートされているのは、プッシュ サブスクリプションのみです。 サブスクライバーを追加できるのは、ソース データベースからのみです。
+- スナップショット フォルダーを選択する際は、選択したフォルダーが、レプリケートするすべてのテーブルの BCP を保持するのに十分な大きさであることを確認してください。 
+- スナップショットの作成では、その処理が完了するまで関連付けられたテーブルがロックされるため、スナップショットは適宜スケジュールしてください。 
+- Azure SQL Database でサポートされているのは、プッシュ サブスクリプションのみです。 サブスクライバーを追加できるのは、ソース データベースからのみです。
 
-## <a name="resolving-database-migration-compatibility-issues"></a>データベース移行に関する互換性の問題の解決
+### <a name="resolving-database-migration-compatibility-issues"></a>データベース移行に関する互換性の問題の解決
 ソース データベースの SQL Server のバージョンと移行するデータベースの複雑さに応じて、さまざまな互換性の問題が発生する可能性があります。 SQL Server のバージョンが古いほど、互換性の問題が多く発生します。 任意の検索エンジンを使用する対象のインターネット検索に加え、以下のリソースを使用します。
 
 * [SQL Server database features not supported in Azure SQL Database (Azure SQL Database でサポートされない SQL Server データベースの機能)](sql-database-transact-sql-information.md)
@@ -111,7 +112,11 @@ ms.lasthandoff: 12/08/2017
 
 インターネット検索やこれらのリソースの参照に加えて、[MSDN SQL Server コミュニティ フォーラム](https://social.msdn.microsoft.com/Forums/sqlserver/home?category=sqlserver)や [StackOverflow](http://stackoverflow.com/) も参照してください。
 
-## <a name="next-steps"></a>次のステップ
+> [!IMPORTANT]
+> SQL Database マネージ インスタンスを使用すると、互換性の問題をゼロまたは最小限に抑えながら、既存の SQL Server インスタンスとそのデータベースを移行できます。 「[What is an Managed Instance](sql-database-managed-instance.md)」(マネージ インスタンスとは) を参照してください。
+
+
+## <a name="next-steps"></a>次の手順
 * Azure SQL EMEA Engineers のブログにあるスクリプトを使用して、[移行中の tempdb の使用状況を監視](https://blogs.msdn.microsoft.com/azuresqlemea/2016/12/28/lesson-learned-10-monitoring-tempdb-usage/)します。
 * Azure SQL EMEA Engineers のブログにあるスクリプトを使用して、[移行中にデータベースのトランザクション ログ領域を監視](https://blogs.msdn.microsoft.com/azuresqlemea/2016/10/31/lesson-learned-7-monitoring-the-transaction-log-space-of-my-database/0)します。
 * BACPAC ファイルを使用した移行に関する SQL Server Customer Advisory Team のブログについては、「[Migrating from SQL Server to Azure SQL Database using BACPAC Files (BACPAC ファイルを使用した SQL Server から Azure SQL Database への移行)](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/)」を参照してください。

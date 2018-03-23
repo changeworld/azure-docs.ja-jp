@@ -1,8 +1,8 @@
 ---
-title: "Azure での Windows データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs"
-description: "分析と機械学習を行うために、Azure でデータ サイエンス用仮想マシンを構成および作成します。"
+title: Azure での Windows データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs
+description: 分析と機械学習を行うために、Azure でデータ サイエンス用仮想マシンを構成および作成します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 6f933c75d4829e3b2c5198aeee324f15490d8a93
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9f01ba69f6511a3f9a7f99e379522be3c00554f5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="provision-the-windows-data-science-virtual-machine-on-azure"></a>Azure での Windows データ サイエンス仮想マシンのプロビジョニング
 Microsoft データ サイエンス用仮想マシンは、プレインストールの Windows Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。 含まれているツールは、次のとおりです。
@@ -39,8 +39,7 @@ Microsoft データ サイエンス用仮想マシンは、プレインストー
   * [Weka](http://www.cs.waikato.ac.nz/ml/weka/): Java のビジュアル データ マイニングと機械学習ソフトウェア。
   * [Apache Drill](https://drill.apache.org/): Hadoop、NoSQL、およびクラウド ストレージ向けのスキーマフリーの SQL クエリ エンジン。  ODBC と JDBC のインターフェイスをサポートし、PowerBI、Excel、Tableau などの標準の BI ツールから NoSQL やファイルに対してクエリを実行できます。
 * Azure Machine Learning などの Azure サービスで使用する R と Python のライブラリ
-* GitHub、Visual Studio Team Services を含むソース コード リポジトリを操作する Git Bash を含む Git
-* コマンド プロンプトからアクセスできる、いくつかの一般的な Linux コマンドライン ユーティリティ (awk、sed、perl、grep、find、wget、curl などを含む) の Windows のポート。 
+* GitHub、Visual Studio Team Services を含むソース コード リポジトリを操作する Git Bash を含む Git。git-bash およびコマンド プロンプト上の両方でアクセス可能な、よく使用される複数の Linux コマンドライン ユーティリティ (awk、sed、perl、grep、find、wget、curl などを含む) が用意されています。 
 
 データ サイエンスでは、次の一連のタスクを反復処理します。
 
@@ -73,7 +72,7 @@ Microsoft データ サイエンス仮想マシンのインスタンスを作成
    1. **基本**
       
       1. **名前**: 作成するデータ サイエンス サーバーの名前です。
-      2. **VM ディスクの種類**: SSD または HDD を選択します。 GPU (NC シリーズ) の場合、**[HDD]** をディスクの種類として選択します。 
+      2. **VM ディスクの種類**: SSD または HDD を選択します。 NC_v1 GPU インスタンス (NVidia Tesla K80 ベース) の場合、ディスクの種類として **HDD** を選択します。 
       3. **ユーザー名**: 管理者アカウントのログイン ID です。
       4. **パスワード**: 管理者アカウントのパスワードです。
       5. **サブスクリプション**: 複数のサブスクリプションがある場合は、マシンが作成されて課金されるサブスクリプションを選択します。
@@ -99,35 +98,28 @@ VM が作成され、プロビジョニングされた後は、VM にインス�
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft データ サイエンス仮想マシンにインストールされているツール
 
-### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench はデスクトップ アプリおよびコマンド ライン インターフェイスです。 Workbench には、ユーザーが実行したデータ準備手順を学習する組み込みのデータ準備機能が用意されています。 また、生産性を向上させるプロジェクト管理、実行履歴、ノートブック統合も提供しています。 モデルを開発するには、TensorFlow、Cognitive Toolkit、Spark ML、scikit-learn など、最良のオープンソース フレームワークを使用できます。 DSVM では、各ユーザーの %LOCALAPPDATA% ディレクトリに Azure Machine Learning Workbench をローカルに抽出するためのデスクトップ アイコン (InstallAMLFromLocal) を提供しています。 Workbench を使用する必要がある各ユーザーは、[InstallAMLFromLocal] デスクトップ アイコンをダブルクリックする 1 回限りの操作を実行して、Workbench のインスタンスをインストールする必要があります。 また、Azure Machine Learning では、%LOCALAPPDATA%\amlworkbench\python で抽出されるユーザーごとの Python 環境を作成して使用します。
 
 ### <a name="microsoft-ml-server-developer-edition"></a>Microsoft ML Server Developer エディション
 分析のためのスケーラブルな R または Python 用の Microsoft エンタープライズ ライブラリを使用したい場合、VM に Microsoft ML Server Developer エディション (以前は Microsoft R Server と呼ばれていました) をインストールします。 Microsoft ML Server は R および Python の両方で使用でき、幅広くデプロイできる企業クラスの分析プラットフォームであり、スケーラブルかつ商業用にサポートされていて、安全です。 さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートする ML Server は、幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。 オープン ソース R および Python を使用、拡張することで、Microsoft ML Server は R および Python スクリプト、関数、CRAN / pip / Conda パッケージと完全に互換性のある形式で、エンタープライズ規模でデータを分析します。 データの並列処理とチャンク処理を追加することで、オープン ソース R のメモリ内制限も対処します。 これにより、メイン メモリに収まりきるよりもはるかに大きなデータに対して、分析を実行することができます。  VM に搭載されている Visual Studio Community Edition には R Tools for Visual Studio と、R または Python を操作するための完全な IDE を提供する Python tools for Visual Studio が含まれています。 また、[RStudio](http://www.rstudio.com) や [PyCharm Community エディション](https://www.jetbrains.com/pycharm/)などの他の IDE も VM 上に提供しています。 
 
 ### <a name="python"></a>Python
-Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.5 がインストールされています。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 Visual Studio 2015 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。 検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。
+Python を使用して開発するために、Anaconda Python ディストリビューション 2.7 および 3.6 がインストールされています。 このディストリビューションには、基本 Python と、約 300 の最も一般的な数学、エンジニアリング、およびデータ分析パッケージが含まれています。 Visual Studio 2017 Community 版でインストールされている、または IDLE や Spyder など、Anaconda でバンドルされている IDE の 1 つである Python Tools for Visual Studio (PTVS) を利用できます。 検索バーで検索して (**Win** + **S** キー)、いずれかの IDE を起動できまます。
 
 > [!NOTE]
-> Anaconda Python 2.7 と 3.5 における Visual Studio の Python ツールをポイントするには、各バージョン用のカスタム環境を作成する必要があります。 **[ツール]** -> **[Python Tools]** -> **[Python Environments]** の順に移動し、**[+ Custom]** をクリックして、Visual Studio 2015 Community Edition にこれらの環境パスを設定します。 
+> Anaconda Python 2.7 で Python Tools for Visual Studio をポイントするには、各バージョン用のカスタム環境を作成する必要があります。 **[ツール]** -> **[Python Tools]** -> **[Python Environments]** の順に移動し、**[+ Custom]** をクリックして、Visual Studio 2017 Community Edition にこれらの環境パスを設定します。 
 > 
 > 
 
-Anaconda Python 2.7 のインストール先は C:\Anaconda、Anaconda Python 3.5 は c:\Anaconda\envs\py35 です。 詳細な手順については、 [PTVS のドキュメント](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) をご覧ください。 
+Anaconda Python 3.6 のインストール先は C:\Anaconda、Anaconda Python 2.7 は c:\Anaconda\envs\python2 です。 詳細な手順については、 [PTVS のドキュメント](/visualstudio/python/python-environments.md#selecting-and-installing-python-interpreters) をご覧ください。 
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
-Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook サーバーには、Python 2.7、Python 3.5、PySpark、Julia、および R カーネルがあらかじめ構成されています。 Jupyter サーバーを開始して Notebook サーバーにアクセスするためにブラウザーを起動する、"Jupyter Notebook" という名前のデスクトップ アイコンがあります。 
-
-> [!NOTE]
-> 証明書の警告が表示されても続行してください。 
-> 
-> 
+Anaconda ディストリビューションは、コードと分析を共有するための環境である Jupyter Notebook にも付属しています。 Jupyter Notebook サーバーには、Python 2.7、Python 3.x、PySpark、Julia、および R カーネルがあらかじめ構成されています。 Jupyter サーバーを開始して Notebook サーバーにアクセスするためにブラウザーを起動する、"Jupyter Notebook" という名前のデスクトップ アイコンがあります。 
 
 Python および R には、複数のサンプル ノートブックがパッケージングされています。Jupyter にアクセスすると、Microsoft ML Server、SQL Server ML Services (In-Database 分析)、Python、Microsoft Cognitive ToolKit、Tensorflow、およびその他の Azure テクノロジの使用方法が Jupyter Notebook に表示されます。 前の手順で作成したパスワードを使用して Jupyter ノートブックを認証すると、ノートブックのホーム ページにサンプルへのリンクを表示できます。 
 
 ### <a name="visual-studio-2017-community-edition"></a>Visual Studio 2017 Community エディション
-Visual Studio Community エディションが VM にインストールされています。 これは、Microsoft の人気のある IDE の無料版で、評価用または小規模なチーム用に使用できます。 ライセンス条項は、 [ここ](https://www.visualstudio.com/support/legal/mt171547)で確認することができます。  Visual Studio を開くには、デスクトップ アイコンをダブルクリックするか、 **[スタート]** メニューを使用します。 **Win** + **S** キーを押し、「Visual Studio」と入力することで、プログラムを検索することもできます。 C#、Python、R、Node.JSなどの言語でプロジェクトを作成できます。 また、インストールされたプラグインにより、Azure Data Catalog、Azure HDInsight (Hadoop、Spark)、Azure Data Lake などの Azure サービスを簡単に操作できるようになります。 
+Visual Studio Community エディションが VM にインストールされています。 これは、Microsoft の人気のある IDE の無料版で、評価用または小規模なチーム用に使用できます。 ライセンス条項は、 [ここ](https://www.visualstudio.com/support/legal/mt171547)で確認することができます。  Visual Studio を開くには、デスクトップ アイコンをダブルクリックするか、 **[スタート]** メニューを使用します。 **Win** + **S** キーを押し、「Visual Studio」と入力することで、プログラムを検索することもできます。 C#、Python、R、Node.JSなどの言語でプロジェクトを作成できます。 また、インストールされたプラグインにより、Azure Data Catalog、Azure HDInsight (Hadoop、Spark)、Azure Data Lake などの Azure サービスを簡単に操作できるようになります。 Azure Machine Learning とシームレスに統合し、AI アプリケーションの迅速な構築に役立つ、```Visual Studio Tools for AI``` というプラグインもあります。 
 
 > [!NOTE]
 > 評価期間が終了したことを示すメッセージが表示される場合があります。 Visual Studio Community エディションにアクセスするには、Microsoft アカウント資格情報を入力するか、新しい無料アカウントを作成してください。 
@@ -170,6 +162,10 @@ VM には複数の Azure ツールがインストールされます。
 > 
 > 
 
+### <a name="azure-machine-learning-workbench"></a>Azure Machine Learning Workbench
+
+Azure Machine Learning Workbench はデスクトップ アプリおよびコマンド ライン インターフェイスです。 Workbench には、ユーザーが実行したデータ準備手順を学習する組み込みのデータ準備機能が用意されています。 また、生産性を向上させるプロジェクト管理、実行履歴、ノートブック統合も提供しています。 モデルを開発するには、TensorFlow、Cognitive Toolkit、Spark ML、scikit-learn など、最良のオープンソース フレームワークを使用できます。 DSVM では、個々のユーザーの %LOCALAPPDATA% ディレクトリに Azure Machine Learning ワークベンチをインストールするためのデスクトップ アイコンを提供しています。 Workbench を使用する必要がある各ユーザーは、```AzureML Workbench Setup``` デスクトップ アイコンをダブルクリックする 1 回限りの操作を実行して、Workbench のインスタンスをインストールする必要があります。 また、Azure Machine Learning では、%LOCALAPPDATA%\amlworkbench\python で抽出されるユーザーごとの Python 環境を作成して使用します。
+
 ## <a name="additional-microsoft-development-tools"></a>その他の Microsoft 開発ツール
 [**Microsoft Web Platform Installer**](https://www.microsoft.com/web/downloads/platform.aspx) は、他の Microsoft 開発ツールを検出し、ダウンロードするために使用できます。 Microsoft データ サイエンス仮想マシンのデスクトップにはツールのショートカットもあります。  
 
@@ -177,10 +173,10 @@ VM には複数の Azure ツールがインストールされます。
 | 項目 | Directory |
 | --- | --- |
 | Jupyter Notebook サーバーの構成 |C:\ProgramData\jupyter |
-| Jupyter Notebook のサンプルのホーム ディレクトリ |c:\dsvm\notebooks |
+| Jupyter Notebook のサンプルのホーム ディレクトリ |c:\dsvm\notebooks および c:\users\<ユーザー名>\notebooks|
 | その他のサンプル |c:\dsvm\samples |
-| Anaconda (既定: Python 2.7) |c:\Anaconda |
-| Anaconda Python 3.5 環境 |c:\Anaconda\envs\py35 |
+| Anaconda (既定: Python 3.6) |c:\Anaconda |
+| Anaconda Python 2.7 環境 |c:\Anaconda\envs\python2 |
 | Microsoft ML Server スタンドアロンの Python  | C:\Program Files\Microsoft\ML Server\PYTHON_SERVER |
 | 既定の R インスタンス (ML Server スタンドアロン) |C:\Program Files\Microsoft\ML Server\R_SERVER |
 | SQL ML Services の In-Database インスタンスのディレクトリ |C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER |
@@ -188,7 +184,7 @@ VM には複数の Azure ツールがインストールされます。
 | その他のツール |c:\dsvm\tools |
 
 > [!NOTE]
-> 1.5.0 より前 (2016 年 9 月 3 日より前) に作成された Microsoft データ サイエンス仮想マシンのインスタンスは、上記の表に示したのとは若干異なるディレクトリ構造を使用しています。 
+> DSVM の Windows Server 2012 エディションおよび 2018 年 3 月以前の Windows Server 2016 ディションでは、既定の Anaconda 環境は Python 2.7 です。 セカンダリ環境は、c:\Anaconda\envs\py35 に配置されている Python 3.5 です。 
 > 
 > 
 

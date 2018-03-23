@@ -24,14 +24,12 @@
 
 ### Load Balancer
 #### [Load Balancer とは](../load-balancer/load-balancer-standard-overview.md)
+#### [Load Balancer Standard と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)
 #### [Azure Portal を使用してゾーン冗長パブリック Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-portal.md)
 #### [PowerShell を使用してゾーン冗長 Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
 #### [CLI を使用してゾーン冗長パブリック Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-cli.md)
 
-### パブリック IP アドレス
-#### [Azure Portal を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-portal.md)
-#### [PowerShell を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-powershell.md)
-#### [CLI を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-cli.md)
+### [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
 ### SQL Database
 #### [SQL Database での可用性ゾーン](../sql-database/sql-database-high-availability.md#availability-zones)

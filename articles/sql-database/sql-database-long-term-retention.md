@@ -1,26 +1,19 @@
 ---
-title: "最大で 10 年間 Azure SQL Database のバックアップを格納する | Microsoft Docs"
-description: "Azure SQL Database が最大で 10 年間バックアップの格納をサポートする方法について説明します。"
-keywords: 
+title: 最大で 10 年間 Azure SQL Database のバックアップを格納する | Microsoft Docs
+description: Azure SQL Database が最大で 10 年間バックアップの格納をサポートする方法について説明します。
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: 
-ms.assetid: 66fdb8b8-5903-4d3a-802e-af08d204566e
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 12/22/2016
 ms.author: sashan
-ms.openlocfilehash: e44c92c3f37b3f1e3397d1c8cdb8c8f6d0f9942e
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 2f31e89fce2746e57d6a670aef949d0d534af4c1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期のバックアップ リテンション期間機能を使用して、最大で 10 年間 SQL Database のバックアップを Azure Recovery Services コンテナーに保存できます。 コンテナーあたり最大 1000 個のデータベースを格納できます。 新しいデータベースとして復元する任意のバックアップを資格情報コンテナーで選択できます。
@@ -164,5 +157,5 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName 'RG1' -Se
 * フェールオーバーが発生してデータベースがプライマリ データベースになった場合、完全バックアップが実行され、それがコンテナーにアップロードされます。
 * セカンダリ データベースに対して長期のバックアップ リテンション期間を設定しても、お客様への追加料金は発生しません。
 
-## <a name="next-steps"></a>次のステップ
-データベース バックアップは、データの不慮の破損または削除から保護するため、ビジネス継続性および障害復旧戦略の最も重要な部分です。 その他の SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+## <a name="next-steps"></a>次の手順
+データベース バックアップは、データの不慮の破損または削除から保護するため、ビジネス継続性およびディザスター リカバリー戦略の最も重要な部分です。 その他の SQL Database ビジネス継続性ソリューションの概要については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。

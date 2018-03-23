@@ -1,31 +1,25 @@
 ---
-title: "エラスティック データベース ジョブ ツールのアンインストール方法"
-description: "Azure ポータルまたは PowerShell を使用してエラスティック データベース ジョブ コンポーネントをアンインストールする方法を説明します。"
+title: エラスティック データベース ジョブ ツールのアンインストール方法
+description: Azure ポータルまたは PowerShell を使用してエラスティック データベース ジョブ コンポーネントをアンインストールする方法を説明します。
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: bfc9d820-edbd-4fca-bfbf-1f339cfcc448
+manager: craigg
+author: stevestein
 ms.service: sql-database
-ms.workload: Inactive
 ms.custom: scale out apps
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 5e665ee8cc9efacbd31111dc0458ad6096e457c0
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: e6a86a3571301f6fa2a356714721daa141e696bf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="uninstall-elastic-database-jobs-components"></a>エラスティック データベース ジョブ コンポーネントのアンインストール
 **Elastic Database ジョブ** コンポーネントのアンインストールには、ポータルまたは PowerShell を使用できます。
 
 ## <a name="uninstall-elastic-database-jobs-components-using-the-azure-portal"></a>Azure ポータルを使用してエラスティック データベース ジョブ コンポーネントをアンインストールする
-1. [Azure ポータル](https://portal.azure.com/)を開きます。
+1. [Azure Portal](https://portal.azure.com/)を開きます。
 2. **エラスティック データベース ジョブ** コンポーネントを含むサブスクリプション (つまりエラスティック データベース ジョブ コンポーネントをインストールしたサブスクリプション) に移動します。
 3. **[参照]** をクリックして、**[リソース グループ]** をクリックします。
 4. "__ElasticDatabaseJob" という名前のリソース グループを選択します。
@@ -55,7 +49,7 @@ ms.lasthandoff: 10/31/2017
         Remove-AzureResourceGroup -Name $ResourceGroupName -Force
         Write-Host "Completed removing the Azure Resource Group: $ResourceGroupName.  Elastic database job compoennts are now uninstalled."
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 エラスティック データベース ジョブを再インストールする方法については、「 [エラスティック データベース ジョブ コンポーネントのインストール](sql-database-elastic-jobs-service-installation.md)
 
 エラスティック データベース ジョブの概要については、「 [エラスティック データベース ジョブの概要](sql-database-elastic-jobs-overview.md)」を参照してください。

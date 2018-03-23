@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: シームレス シングル サインオン - よく寄せられる質問 | Microsoft Docs"
-description: "Azure Active Directory シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。"
+title: 'Azure AD Connect: シームレス シングル サインオン - よく寄せられる質問 | Microsoft Docs'
+description: Azure Active Directory シームレス シングル サインオンに関してよく寄せられる質問への回答を示します。
 services: active-directory
-keywords: "Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
-documentationcenter: 
+keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: bbaed9ee5db895810fac476ea5bf560800b0bdec
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 8a91960f150e9298515cd52fe192ec1abdd89f9c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
@@ -34,12 +34,20 @@ ms.lasthandoff: 01/05/2018
 
 ## <a name="is-seamless-sso-available-in-the-microsoft-azure-germany-cloudhttpwwwmicrosoftdecloud-deutschland-and-the-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>シームレス SSO は [Microsoft Azure Germany クラウド](http://www.microsoft.de/cloud-deutschland)および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
 
-
 いいえ。 シームレス SSO は、Azure AD のワールドワイド インスタンスでのみご利用いただけます。
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>どのアプリケーションがシームレス SSO の `domain_hint` または `login_hint` 機能を利用していますか。
 
-これらのパラメーターを送信するおよび送信しないアプリケーションの一覧を現在作成中です。 関心のあるアプリケーションがある場合は、コメント セクションからお知らせください。
+Azure AD にこれらのパラメーターを送信し、その結果、シームレス SSO を使用するサイレント サインオン エクスペリエンスをユーザーに提供するアプリケーションの一部を以下に示します。
+
+| アプリケーション名 | 使用するアプリケーションの URL |
+| -- | -- |
+| アクセス パネル | myapps.microsoft.com/contoso.com |
+| Web 上の Outlook | outlook.office365.com/contoso.com |
+
+テナントの適切なアプリケーションの URL を取得するには、上記の表の "contoso.com" をご使用のドメイン名で置き換えます。
+
+他のアプリケーションにご興味がある場合は、コメント セクションからお知らせください。
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>シームレス SSO で、ユーザー名として `userPrincipalName` の代わりに `Alternate ID` をサポートしていますか。
 
@@ -67,7 +75,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 ### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>手順 1. シームレス SSO が有効になっている AD フォレストのリストの取得
 
 1. 最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。
-2. 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
+2. 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)をダウンロードしてインストールします。
 3. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
 4. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
 5. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。

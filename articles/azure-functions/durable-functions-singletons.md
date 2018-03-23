@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions のシングルトン - Azure"
-description: "Azure Functions の Durable Functons 拡張機能でシングルトンを使用する方法"
+title: Durable Functions のシングルトン - Azure
+description: Azure Functions の Durable Functons 拡張機能でシングルトンを使用する方法
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8384d17405653a29207cdfa4f6143504d0db2022
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: ea8b5db946d6b35ea4583d9170ec36e5f95e16cd
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions のシングルトン オーケストレーター (Azure Functions)
 
@@ -61,10 +61,7 @@ public static async Task<HttpResponseMessage> RunSingle(
 
 オーケストレーター関数の 実装の詳細は、実際は問題ではありません。 開始して完了する通常のオーケストレーター関数でも、永久に実行される関数 (つまり、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)) でも可能です。 重要な点は、インスタンスが 1 度に 1 つだけ実行されていることです。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [サブオーケストレーションを呼び出す方法を知る](durable-functions-sub-orchestrations.md)
-
-> [!div class="nextstepaction"]
-> [サンプル シングルトンを実行する](durable-functions-counter.md)

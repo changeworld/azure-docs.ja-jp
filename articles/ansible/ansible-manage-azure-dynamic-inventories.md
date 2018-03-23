@@ -1,18 +1,18 @@
 ---
-title: "Ansible を使用した Azure の動的インベントリの管理"
-description: "Ansible を使用して Azure の動的インベントリを管理する方法について説明します"
+title: Ansible を使用した Azure の動的インベントリの管理
+description: Ansible を使用して Azure の動的インベントリを管理する方法について説明します
 ms.service: ansible
-keywords: "Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ"
+keywords: Ansible, Azure, DevOps, Bash, Cloud Shell, 動的インベントリ
 author: tomarcher
 manager: routlaw
 ms.author: tarcher
 ms.date: 01/14/2018
 ms.topic: article
-ms.openlocfilehash: 8753d039582abdf22f105bf7f139a35c224e7c59
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 799be6d2bb521de38af952376bf8ee14a18846de
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-ansible-to-manage-your-azure-dynamic-inventories"></a>Ansible を使用した Azure の動的インベントリの管理
 Ansible を使用して、(Azure などのクラウド ソースを含む) さまざまなソースから "*動的インベントリ*" にインベントリ情報をプルすることができます。 この記事では、[Azure Cloud Shell](./ansible-run-playbook-in-cloudshell.md) を使用して、Ansible Azure 動的インベントリを構成します。この動的インベントリに 2 つの仮想マシンを作成した後、そのうちの 1 つの仮想マシンにタグを付け、タグを付けた仮想マシンに Nginx をインストールします。
@@ -59,7 +59,7 @@ Ansible を使用して、(Azure などのクラウド ソースを含む) さ�
 次の [az resource tag](/cli/azure/resource?view=azure-cli-latest.md#az_resource_tag) コマンドを入力して、仮想マシン `ansible-inventory-test-vm1` にキー `nginx` を使用してタグを付けます。
 
 ```azurecli-interactive
-az resource tag --tags nginx --id /subscriptions/&lt;YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
+az resource tag --tags nginx --id /subscriptions/<YourAzureSubscriptionID>/resourceGroups/ansible-inventory-test-rg/providers/Microsoft.Compute/virtualMachines/ansible-inventory-test-vm1
 ```
 
 ## <a name="generate-a-dynamic-inventory"></a>動的インベントリの生成

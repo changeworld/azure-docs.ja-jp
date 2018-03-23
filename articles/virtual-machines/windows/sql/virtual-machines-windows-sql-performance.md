@@ -1,11 +1,11 @@
 ---
-title: "Azure における SQL Server のパフォーマンスに関するベスト プラクティス | Microsoft Docs"
-description: "Microsoft Azure VM で SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。"
+title: Azure における SQL Server のパフォーマンスに関するベスト プラクティス | Microsoft Docs
+description: Microsoft Azure VM で SQL Server のパフォーマンスを最適化するためのベスト プラクティスを紹介します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: a0c85092-2113-4982-b73a-4e80160bac36
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2018
 ms.author: jroth
-ms.openlocfilehash: d0668a5fff3e5a69162c1893c07d5f4c2a015a28
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3458e2f1a09b597c50c01d59eb6522b3fa521310
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="performance-best-practices-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス
 
@@ -171,4 +171,4 @@ Premium Storage (DS シリーズ、DSv2 シリーズ、および GS シリーズ
 
 セキュリティのベスト プラクティスについては、[Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項](virtual-machines-windows-sql-security.md)に関するページをご覧ください。
 
-SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。
+SQL Server Virtual Machines に関する他の記事については、[Azure Virtual Machines 上の SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)に関するページをご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページをご覧ください。

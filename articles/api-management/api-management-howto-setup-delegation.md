@@ -1,11 +1,11 @@
 ---
-title: "ユーザーの登録と成果物のサブスクリプションを委任する方法"
-description: "ユーザーの登録と製品のサブスクリプションを Azure API Management でサード パーティに委任する方法について説明します。"
+title: ユーザーの登録と成果物のサブスクリプションを委任する方法
+description: ユーザーの登録と製品のサブスクリプションを Azure API Management でサード パーティに委任する方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: antonba
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8b7ad5ee-a873-4966-a400-7e508bbbe158
 ms.service: api-management
 ms.workload: mobile
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: fc8c5774eb616c33c00ecebeacd31e2a07b36e0c
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-delegate-user-registration-and-product-subscription"></a>ユーザーの登録と成果物のサブスクリプションを委任する方法
 委任を使用すると、開発者のサインイン/サインアップおよび成果物のサブスクリプション処理を、開発者ポータルの組み込みの機能ではなく、お客様の既存の Web サイトを使用して行うことができます。 これにより、お客様の Web サイトでユーザー データを保持し、独自の方法でこれらのステップの検証を実行できます。
@@ -44,7 +44,7 @@ ms.lasthandoff: 02/28/2018
 
 1. 次の形式の要求を受け取ります。
    
-   > "*http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={元のページの URL}&salt={文字列}&sig={文字列}*"
+   > *http://www.yourwebsite.com/apimdelegation?operation=SignIn&returnUrl={URL of source page}&salt={string}&sig={string}*
    > 
    > 
    
@@ -101,7 +101,7 @@ ms.lasthandoff: 02/28/2018
 
 1. 次の形式の要求を受け取ります。
    
-   > "*http://www.yourwebsite.com/apimdelegation?operation={操作}&productId={サブスクライブする成果物}&userId={要求元のユーザー}&salt={文字列}&sig={文字列}*"
+   > *http://www.yourwebsite.com/apimdelegation?operation={operation}&productId={product to subscribe to}&userId={user making request}&salt={string}&sig={string}*
    > 
    > 
    

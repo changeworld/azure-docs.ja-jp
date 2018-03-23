@@ -1,26 +1,26 @@
 ---
-title: "Azure CLI を使用した Linux VM の作成と管理 | Microsoft Docs"
-description: "チュートリアル - Azure CLI を使用した Linux VM の作成と管理"
+title: Azure CLI を使用した Linux VM の作成と管理 | Microsoft Docs
+description: チュートリアル - Azure CLI を使用した Linux VM の作成と管理
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: b2e9324cbe7ae683a472ecc0ee93329773886f88
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e7dab67b46a2853e9585c88c8e4d4263f844c3b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
 

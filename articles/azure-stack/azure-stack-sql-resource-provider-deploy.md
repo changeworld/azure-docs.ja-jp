@@ -1,23 +1,24 @@
 ---
-title: "Azure Stack での SQL データベースの使用 | Microsoft Docs"
-description: "SQL データベースを Azure Stack にサービスとしてデプロイする方法と、SQL Server リソース プロバイダー アダプターの簡単なデプロイ手順について説明します。"
+title: Azure Stack での SQL データベースの使用 | Microsoft Docs
+description: SQL データベースを Azure Stack にサービスとしてデプロイする方法と、SQL Server リソース プロバイダー アダプターの簡単なデプロイ手順について説明します。
 services: azure-stack
-documentationCenter: 
-author: JeffGoldner
-manager: bradleyb
-editor: 
+documentationCenter: ''
+author: mattbriggs
+manager: femila
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
-ms.author: JeffGo
-ms.openlocfilehash: bf52ed4986b4e0930b57721c0e38bbf748045a36
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.date: 03/07/2018
+ms.author: mabrigg
+ms.reviewer: jeffgo
+ms.openlocfilehash: 4d2a00f04e5b07aeb3585fb3ab6c8966e0de7e19
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-sql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で SQL データベースを使用する
 
@@ -40,9 +41,12 @@ SQL Server をホストする仮想マシン (VM) を毎回プロビジョニン
 
 1 つ (以上) の SQL Server インスタンスを作成する、または外部 SQL Server インスタンスへのアクセスを提供する、あるいはその両方が必要です。
 
+> [!NOTE]
+> Azure Stack 統合システムにインストールされたホスティング サーバーは、テナント サブスクリプションから作成する必要があります。 既定のプロバイダー サブスクリプションからは作成できません。 それらは、テナント ポータルから、または適切なサインインで PowerShell セッションから作成する必要があります。 すべてのホスティング サーバーは課金対象の仮想マシンであり、適切なライセンスを必要とします。 サービス管理者は、テナント サブスクリプションの所有者になることができます。
+
 ## <a name="deploy-the-resource-provider"></a>リソース プロバイダーのデプロイ
 
-1. まだ開発キットを登録していない場合は登録して、Marketplace の管理からダウンロードできる Windows Server 2016 Datacenter Core イメージをダウンロードします。 Windows Server 2016 Core イメージを使用する必要があります。 スクリプトを使用して [Windows Server 2016 イメージ](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)を作成することもできます  (コア オプションを必ず選択してください)。 .NET 3.5 ランタイムは必要なくなりました。
+1. まだ開発キットを登録していない場合は登録して、Marketplace の管理からダウンロードできる Windows Server 2016 Datacenter Core イメージをダウンロードします。 Windows Server 2016 Core イメージを使用する必要があります。 スクリプトを使用して [Windows Server 2016 イメージ](https://docs.microsoft.com/azure/azure-stack/azure-stack-add-default-image)を作成することもできます。 (コア オプションを必ず選択してください)
 
 2. 特権エンドポイント VM にアクセスできるホストにサインインします。
 
@@ -57,16 +61,17 @@ SQL Server をホストする仮想マシン (VM) を毎回プロビジョニン
 3. SQL リソース プロバイダー バイナリをダウンロードします。 次に、自己解凍ツールを実行して、その内容を一時ディレクトリに抽出します。
 
     >[!NOTE] 
-    > リソース プロバイダーのビルドは、Azure Stack のビルドに対応します。 必ず実行されている Azure Stack のバージョンに適合する正しいバイナリをダウンロードしてください。
+    > リソース プロバイダーには、対応する最低限の Azure Stack ビルドがあります。 必ず実行されている Azure Stack のバージョンに適合する正しいバイナリをダウンロードしてください。
 
     | Azure Stack のビルド | SQL リソース プロバイダー インストーラー |
     | --- | --- |
-    |1.0.180102.3, 1.0.180103.2 または 1.0.180106.1 (マルチノード) | [SQL RP バージョン 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
-    | 1.0.171122.1 | [SQL RP バージョン 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
-    | 1.0.171028.1 | [SQL RP バージョン 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
+    | 1802: 1.0.180302.1 | [SQL RP バージョン 1.1.18.0](https://aka.ms/azurestacksqlrp1802) |
+    | 1712: 1.0.180102.3、1.0.180103.2 または 1.0.180106.1 (マルチノード) | [SQL RP バージョン 1.1.14.0](https://aka.ms/azurestacksqlrp1712) |
+    | 1711: 1.0.171122.1 | [SQL RP バージョン 1.1.12.0](https://aka.ms/azurestacksqlrp1711) |
+    | 1710: 1.0.171028.1 | [SQL RP バージョン 1.1.8.0](https://aka.ms/azurestacksqlrp1710) |
   
 
-4. Azure Stack のルート証明書は、特権エンドポイントから取得されます。 Azure Stack SDK では、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
+4. Azure Stack のルート証明書は、特権エンドポイントから取得されます。 Azure Stack SDK では、このプロセスの一環として自己署名証明書が作成されます。 統合システムの場合は、適切な証明書を提供する必要があります。
 
    独自の証明書を提供するには、次のように .pfx ファイルを **DependencyFilesLocalPath** に配置します。
 
@@ -74,7 +79,7 @@ SQL Server をホストする仮想マシン (VM) を毎回プロビジョニン
 
     - この証明書は信頼できる必要があります。 つまり、信頼チェーンが中間証明書の必要なしに存在する必要があります。
 
-    - DependencyFilesLocalPath には 1 つの証明書ファイルしか存在しません。
+    - DependencyFilesLocalPath パラメーターによって示されるディレクトリには証明書ファイル 1 つのみが存在できます。
 
     - このファイル名に特殊文字を含めることはできません。
 
@@ -91,12 +96,12 @@ SQL Server をホストする仮想マシン (VM) を毎回プロビジョニン
     - 手順 1 で作成した Windows Server 2016 イメージを使用して VM をデプロイした後、リソース プロバイダーをインストールします。
     - リソース プロバイダー VM にマップされるローカル DNS レコードを登録します。
     - リソース プロバイダーをローカル Azure Resource Manager (ユーザーと管理者) に登録します。
+    - RP のインストール時に、必要に応じて、1 つの Windows 更新プログラムをインストールする
 
-> [!NOTE]
-> インストールが 90 分以上かかっている場合は、失敗している可能性があります。 インストールが失敗した場合は、画面とログ ファイルにエラー メッセージが表示されますが、デプロイは失敗した手順から再試行されます。 推奨されるメモリと vCPU 仕様を満たしていないシステムは、SQL リソース プロバイダーをデプロイできない場合があります。
->
+8. Marketplace の管理から最新の Windows Server 2016 Core のイメージをダウンロードすることをお勧めします。 更新プログラムをインストールする必要がある場合は、ローカルの依存関係のパスに .MSU パッケージを 1 つ配置できます。 MSU ファイルが複数検出されると、スクリプトは失敗します。
 
-PowerShell プロンプトから実行できる例を示します  (必要に応じてアカウント情報とパスワードを変更してください)。
+
+PowerShell プロンプトから実行できる例を示します。 (必要に応じてアカウント情報とパスワードを変更してください)。
 
 ```
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
@@ -104,11 +109,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
@@ -118,7 +123,7 @@ $serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# Set credentials for the new Resource Provider VM.
+# Set credentials for the new resource provider VM local administrator account
 $vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("sqlrpadmin", $vmLocalAdminPass)
 
@@ -142,7 +147,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 ### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 パラメーター
 これらのパラメーターをコマンド ラインで指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。
 
-| パラメーター名 | 説明 | コメントまたは既定値 |
+| パラメーター名 | [説明] | コメントまたは既定値 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ |
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
@@ -152,8 +157,8 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
 | **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 |
 | **RetryDuration** | 再試行間のタイムアウト間隔 (秒単位)。 | 120 |
-| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ |
-| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ |
+| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ  |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  |
 
 
 ## <a name="verify-the-deployment-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用してデプロイを確認する
@@ -170,14 +175,20 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 
 ## <a name="update-the-sql-resource-provider-adapter-multi-node-only-builds-1710-and-later"></a>SQL リソース プロバイダー アダプターを更新する (マルチノードのみ、ビルド 1710 以降)
-Azure Stack ビルドが更新されると、新しい SQL リソース プロバイダー アダプターが毎回リリースされます。 既存のアダプターが動作し続ける場合があります。 ただし、Azure Stack を更新した後、最新のビルドにできるだけ早く更新することをお勧めします。 
+Azure Stack ビルドの更新時に、新しい SQL リソース プロバイダー アダプターがリリースされる場合があります。 既存のアダプターが動作し続けている場合でも、できるだけ早く最新のビルドに更新することをお勧めします。 更新プログラムは指定された順序でインストールする必要があります: バージョンを省略することはできません (手順 3. [リソース プロバイダーをデプロイする](#deploy-the-resource-provider)の表を参照してください)。
 
-更新プロセスは、既に説明したインストール プロセスに似ています。 最新のリソース プロバイダー コードを使用して新しい VM を作成します。 さらに、データベースとホスト サーバーの情報を含む設定をこの新しいインスタンスに移行します。 必要な DNS レコードも移行します。
+リソース プロバイダーの更新には *UpdateSQLProvider.ps1* スクリプトを使用します。 プロセスは、この記事の[リソース プロバイダーをデプロイする](#deploy-the-resource-provider)セクションに記述されている、リソース プロバイダーをインストールするプロセスと類似しています。 スクリプトはリソース プロバイダーのダウンロードに含まれています。
 
-すでに説明したのと同じ引数を使用して UpdateSQLProvider.ps1 スクリプトを使用します。 ここでも証明書を指定する必要があります。
+*UpdateSQLProvider.ps1* スクリプトは、最新のリソース プロバイダーのコードを使って新しい VM を作成し、古い VM から新しい VM に設定を移行します。 移行される設定には、データベースおよびホスティング サーバーの情報や、必要な DNS レコードが含まれます。
+
+スクリプトでは、DeploySqlProvider.ps1 スクリプト用に記述されているものと同じ引数の使用が必要になります。 証明書も同様に指定します。 
+
+Marketplace の管理から最新の Windows Server 2016 Core のイメージをダウンロードすることをお勧めします。 更新プログラムをインストールする必要がある場合は、ローカルの依存関係のパスに .MSU パッケージを 1 つ配置できます。 MSU ファイルが複数検出されると、スクリプトは失敗します。
+
+次に、PowerShell プロンプトから実行することができる *UpdateSQLProvider.ps1* スクリプトの例を示します。 必要に応じてアカウント情報とパスワードを変更してください。 
 
 > [!NOTE]
-> この更新プロセスは、マルチノード システムでのみサポートされています。
+> 更新プロセスは、統合システムにのみに適用されます。
 
 ```
 # Install the AzureRM.Bootstrapper module, set the profile, and install the AzureRM and AzureStack modules.
@@ -185,11 +196,11 @@ Install-Module -Name AzureRm.BootStrapper -Force
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack and the default prefix is AzS.
-# For integrated systems, the domain and the prefix are the same.
+# Use the NetBIOS name for the Azure Stack domain. On the Azure Stack SDK, the default is AzureStack but could have been changed at install time.
 $domain = "AzureStack"
-$prefix = "AzS"
-$privilegedEndpoint = "$prefix-ERCS01"
+
+# For integrated systems, use the IP address of one of the ERCS virtual machines
+$privilegedEndpoint = "AzS-ERCS01"
 
 # Point to the directory where the resource provider installation files were extracted.
 $tempDir = 'C:\TEMP\SQLRP'
@@ -223,7 +234,7 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 ### <a name="updatesqlproviderps1-parameters"></a>UpdateSQLProvider.ps1 パラメーター
 これらのパラメーターをコマンド ラインで指定できます。 必須パラメーターの指定がない場合、またはいずれかのパラメーターの検証が失敗した場合は、指定することを求められます。
 
-| パラメーター名 | 説明 | コメントまたは既定値 |
+| パラメーター名 | [説明] | コメントまたは既定値 |
 | --- | --- | --- |
 | **CloudAdminCredential** | 特権エンドポイントへのアクセスに必要な、クラウド管理者の資格情報。 | _必須_ |
 | **AzCredential** | Azure Stack サービス管理者アカウントの資格情報。 Azure Stack のデプロイに使用したのと同じ資格情報を使用します。 | _必須_ |
@@ -233,10 +244,107 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 | **DefaultSSLCertificatePassword** | .pfx 証明書のパスワード。 | _必須_ |
 | **MaxRetryCount** | 障害がある場合に各操作を再試行する回数。| 2 |
 | **RetryDuration** |再試行間のタイムアウト間隔 (秒単位)。 | 120 |
-| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ |
-| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ |
+| **アンインストール** | リソース プロバイダーと関連付けられているすべてのリソースを削除します (以下のメモを参照してください)。 | いいえ  |
+| **DebugMode** | 障害発生時に自動クリーンアップが行われないようにします。 | いいえ  |
 
 
+## <a name="collect-diagnostic-logs"></a>診断ログの収集
+SQL リソース プロバイダーは、ロック ダウンされた仮想マシンです。 仮想マシンからログを収集することが必要になった場合は、、そのために PowerShell Just Enough Administration (JEA) エンドポイント _DBAdapterDiagnostics_ が提供されています。 このエンドポイントで使用できる 2 つのコマンドが 2 つあります。
+
+* Get AzsDBAdapterLog - は、RP 診断ログを含む zip パッケージを準備し、セッションのユーザー ドライブに配置します。 コマンドは、パラメーターなしで呼び出すことができ、過去 4 時間分のログが収集されます。
+* Remove-AzsDBAdapterLog - リソース プロバイダー VM 上の既存のログ パッケージを削除します。
+
+RP 展開中または更新中に、RP ログを抽出するための診断エンドポイントに接続するための _dbadapterdiag_ ユーザー アカウントが作成されます。 このアカウントのパスワードは、展開/更新中に指定したローカル管理者アカウントのパスワードと同じです。
+
+これらのコマンドを使用するには、リソース プロバイダーの仮想マシンにリモート PowerShell セッションを作成し、コマンドを呼び出す必要があります。 必要に応じて、FromDate および ToDate パラメーターを指定できます。 これらの一方または両方を指定しない場合、FromDate は現在の時刻より 4 時間前になり、ToDate は現在の時刻になります。
+
+このサンプル スクリプトは、これらのコマンドの使用方法を示します。
+
+```
+# Create a new diagnostics endpoint session.
+$databaseRPMachineIP = '<RP VM IP>'
+$diagnosticsUserName = 'dbadapterdiag'
+$diagnosticsUserPassword = '<see above>'
+
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+        ($diagnosticsUserName, $diagnosticsUserPassword)
+$session = New-PSSession -ComputerName $databaseRPMachineIP -Credential $diagCreds `
+        -ConfigurationName DBAdapterDiagnostics
+
+# Sample captures logs from the previous one hour
+$fromDate = (Get-Date).AddHours(-1)
+$dateNow = Get-Date
+$sb = {param($d1,$d2) Get-AzSDBAdapterLog -FromDate $d1 -ToDate $d2}
+$logs = Invoke-Command -Session $session -ScriptBlock $sb -ArgumentList $fromDate,$dateNow
+
+# Copy the logs
+$sourcePath = "User:\{0}" -f $logs
+$destinationPackage = Join-Path -Path (Convert-Path '.') -ChildPath $logs
+Copy-Item -FromSession $session -Path $sourcePath -Destination $destinationPackage
+
+# Cleanup logs
+$cleanup = Invoke-Command -Session $session -ScriptBlock {Remove- AzsDBAdapterLog }
+# Close the session
+$session | Remove-PSSession
+```
+
+## <a name="maintenance-operations-integrated-systems"></a>保守操作 (統合システム)
+SQL リソース プロバイダーは、ロック ダウンされた仮想マシンです。 リソース プロバイダー仮想マシンのセキュリティの更新は、PowerShell Just Enough Administration (JEA) エンドポイント _DBAdapterMaintenance_ から実行できます。
+
+これらの操作のためのスクリプトが、RP のインストール パッケージで提供されています。
+
+### <a name="update-the-virtual-machine-operating-system"></a>仮想マシンのオペレーティング システムの更新
+Windows Server VM を更新するには、いくつかの方法があります。
+* 現在パッチが適用された Windows Server 2016 Core イメージを使用して最新のリソース プロバイダーのパッケージをインストールする
+* RP の更新またはインストール中に Windows 更新プログラム パッケージをインストールする
+
+
+### <a name="update-the-virtual-machine-windows-defender-definitions"></a>仮想マシンの Windows Defender の定義を更新する
+
+これらの手順に従って Defender の定義を更新します。
+
+1. [Windows Defender の定義](https://www.microsoft.com/en-us/wdsi/definitions)から Windows Defender 定義の更新をダウンロードします。
+
+    そのページの [Manually download and install the definitions]\(手動でダウンロードして、定義ファイルをインストール\) から "Windows Defender Antivirus for Windows 10 および Windows 8.1" 64 ビット ファイルをダウンロードします。 
+    
+    直接リンク: https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64
+
+2. SQL RP アダプター仮想マシンのメンテナンス エンドポイントに対し PowerShell セッションを作成します。
+3. メンテナンス エンドポイントのセッションを使用して DB アダプター コンピューターに、定義更新ファイルをコピーします。
+4. メンテナンス PowerShell セッションで _Update-DBAdapterWindowsDefenderDefinitions_ コマンドを呼び出します。
+5. インストール後に使用される定義更新ファイルを削除することをお勧めします。 定義更新ファイルは、メンテナンス セッションで _Remove-ItemOnUserDrive)_ コマンドを使用して削除できます。
+
+
+Defender の定義を更新するサンプル スクリプトを次に示します (仮想マシンのアドレスまたは名前を実際の値に置き換えてください)。
+
+```
+# Set credentials for the diagnostic user
+$diagPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$diagCreds = New-Object System.Management.Automation.PSCredential `
+    ("dbadapterdiag", $vmLocalAdminPass)$diagCreds = Get-Credential
+
+# Public IP Address of the DB adapter machine
+$databaseRPMachine  = "XX.XX.XX.XX"
+$localPathToDefenderUpdate = "C:\DefenderUpdates\mpam-fe.exe"
+ 
+# Download Windows Defender update definitions file from https://www.microsoft.com/en-us/wdsi/definitions. 
+Invoke-WebRequest -Uri https://go.microsoft.com/fwlink/?LinkID=121721&arch=x64 `
+    -Outfile $localPathToDefenderUpdate 
+
+# Create session to the maintenance endpoint
+$session = New-PSSession -ComputerName $databaseRPMachine `
+    -Credential $diagCreds -ConfigurationName DBAdapterMaintenance
+# Copy defender update file to the db adapter machine
+Copy-Item -ToSession $session -Path $localPathToDefenderUpdate `
+     -Destination "User:\mpam-fe.exe"
+# Install the update file
+Invoke-Command -Session $session -ScriptBlock `
+    {Update-AzSDBAdapterWindowsDefenderDefinitions -DefinitionsUpdatePackageFile "User:\mpam-fe.exe"}
+# Cleanup the definitions package file and session
+Invoke-Command -Session $session -ScriptBlock `
+    {Remove-AzSItemOnUserDrive -ItemPath "User:\mpam-fe.exe"}
+$session | Remove-PSSession
+```
 
 ## <a name="remove-the-sql-resource-provider-adapter"></a>SQL リソースプロバイダー アダプターを削除する
 

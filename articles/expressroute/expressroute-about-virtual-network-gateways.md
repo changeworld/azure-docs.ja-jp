@@ -1,11 +1,11 @@
 ---
-title: "ExpressRoute 用の仮想ネットワーク ゲートウェイについて | Microsoft Docs"
-description: "ExpressRoute 用の仮想ネットワーク ゲートウェイについて説明します。"
+title: ExpressRoute 用の仮想ネットワーク ゲートウェイについて | Microsoft Docs
+description: ExpressRoute 用の仮想ネットワーク ゲートウェイについて説明します。
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: carmonm
-editor: 
+editor: ''
 tags: azure-resource-manager, azure-service-management
 ms.assetid: 7e0d9658-bc00-45b0-848f-f7a6da648635
 ms.service: expressroute
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/05/2017
+ms.date: 03/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: a6363fa380d0bab05d7500141cc6019d1d3f68b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0517caed3a7d6632c1a5650147f4db240dbe0a17
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="about-virtual-network-gateways-for-expressroute"></a>ExpressRoute 用の仮想ネットワーク ゲートウェイについて
 仮想ネットワーク ゲートウェイは、Azure 仮想ネットワークとオンプレミスの場所の間でネットワーク トラフィックの送信に使用されます。 ExpressRoute 接続を構成するときに、仮想ネットワーク ゲートウェイ、および仮想ネットワーク ゲートウェイの接続を作成して構成する必要があります。
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
 ゲートウェイをより強力なゲートウェイ SKU にアップグレードする場合、ほとんどの場合 "Resize-AzureRmVirtualNetworkGateway" PowerShell コマンドレットを使用できます。 これは、Standard および HighPerformance SKU へのアップグレードの場合でも機能します。 ただし、UltraPerformance SKU へのアップグレードでは、ゲートウェイを再作成する必要があります。
 
 ### <a name="aggthroughput"></a>ゲートウェイ SKU の予測される合計スループット
-次の表は、ゲートウェイの種類、および予測される合計スループットを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
+次の表は、ゲートウェイの種類と、予測される合計スループットを示したものです。 この表は、リソース マネージャーとクラシック デプロイ モデルの両方に適用されます。
 
 [!INCLUDE [expressroute-table-aggthroughput](../../includes/expressroute-table-aggtput-include.md)]
 
@@ -53,6 +53,7 @@ ms.lasthandoff: 10/11/2017
 | [PowerShell](https://msdn.microsoft.com/library/mt270335.aspx) |[PowerShell](https://msdn.microsoft.com/library/mt163510.aspx) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
-## <a name="next-steps"></a>次のステップ
-使用可能な接続構成の詳細については、 [ExpressRoute の概要](expressroute-introduction.md) に関するページを参照してください。 
+## <a name="next-steps"></a>次の手順
+使用可能な接続構成の詳細については、 [ExpressRoute の概要](expressroute-introduction.md) に関するページを参照してください。
 
+ExpressRoute ゲートウェイの作成の詳細については、[ExpressRoute 用の仮想ネットワーク ゲートウェイの作成](expressroute-howto-add-gateway-resource-manager.md)に関するページを参照してください。

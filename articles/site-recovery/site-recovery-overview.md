@@ -1,18 +1,18 @@
 ---
-title: "Azure Site Recovery について | Microsoft Docs"
-description: "Azure Site Recovery サービスの概要について説明し、デプロイ シナリオについてまとめます。"
+title: Azure Site Recovery について | Microsoft Docs
+description: Azure Site Recovery サービスの概要について説明し、デプロイ シナリオについてまとめます。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: overview
-ms.date: 01/07/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 4cc5d849630114577709f8373d08f0ce659e7e65
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 57b191a5dbdea487a0105c6af2866cdc037864e2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="about-site-recovery"></a>Site Recovery について
 
@@ -57,8 +57,8 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 --- | ---
 **レプリケーション シナリオ** | Azure VM を 1 つの Azure リージョンから別のリージョンにレプリケートします。<br/><br/>  オンプレミスの VMware VM、Hyper-V VM、物理サーバー (Windows および Linux) を Azure にレプリケートします。<br/><br/> オンプレミスの VMware VM、System Center VMM で管理されている HYPER-V VM、および物理サーバーを、セカンダリ サイトにレプリケートします。
 **リージョン** | Site Recovery の[サポートされているリージョン](https://azure.microsoft.com/regions/services/)を確認してください。 |
-**レプリケートされたマシン** | [Azure VM](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)、[オンプレミスの VM](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)、および[物理サーバー](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)のレプリケーション要件を確認してください。
-**VMware サーバー/ホスト** | レプリケートする VMware VM は、[サポートされている vSphere ホスト/vCenter サーバー](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)に配置できます。
+**レプリケートされたマシン** | [Azure VM](azure-to-azure-support-matrix.md#support-for-replicated-machine-os-versions) レプリケーション、[オンプレミスの VMware VM と物理サーバー](vmware-physical-azure-support-matrix.md#replicated-machines)、および[オンプレミスの Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) のレプリケーション要件を確認してください。
+**VMware サーバー/ホスト** | レプリケートする VMware VM は、[サポートされているホストおよび仮想化サーバー](vmware-physical-azure-support-matrix.md)に配置できます。
 **ワークロード** | レプリケーションがサポートされているマシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
 
 

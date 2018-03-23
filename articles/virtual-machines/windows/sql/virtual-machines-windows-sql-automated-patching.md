@@ -1,11 +1,11 @@
 ---
-title: "SQL Server VM の自動修正 (Resource Manager) | Microsoft Docs"
-description: "Azure で実行されている SQL Server Virtual Machines に対する、Resource Manager を使用した自動修正機能について説明します。"
+title: SQL Server VM の自動修正 (Resource Manager) | Microsoft Docs
+description: Azure で実行されている SQL Server Virtual Machines に対する、Resource Manager を使用した自動修正機能について説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
 ms.service: virtual-machines-sql
@@ -13,24 +13,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 01/05/2018
+ms.date: 03/07/2018
 ms.author: jroth
-ms.openlocfilehash: ae722b4da9131d98e6dc3424fcd6b50e77ae672b
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 398e682db6c42bd7f4864113ddf10a6a75e2b65b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-resource-manager"></a>Azure Virtual Machines での SQL Server の自動修正 (Resource Manager)
 > [!div class="op_single_selector"]
 > * [Resource Manager](virtual-machines-windows-sql-automated-patching.md)
 > * [クラシック](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
-自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。 このメンテナンス期間にのみ、自動更新プログラムをインストールできます。 これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。 自動修正は、 [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
+自動修正では、SQL Server を実行している Azure 仮想マシンのメンテナンス期間が設定されます。 このメンテナンス期間にのみ、自動更新プログラムをインストールできます。 これにより、SQL Server では、システムの更新とこれに関連する再起動が、データベースに最適な時間帯に実行されるようになります。 
 
-[!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-rm-include.md)]
+> [!IMPORTANT]
+> **重要**と書かれた Windows 更新プログラムのみがインストールされています。 累積更新プログラムなどの他の SQL Server 更新プログラムは、手動でインストールする必要があります。 
 
-この記事のクラシック バージョンを確認するには、「[Azure Virtual Machines での SQL Server の自動修正 (クラシック)](../sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)」をご覧ください。
+自動修正は、 [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に依存します。
 
 ## <a name="prerequisites"></a>前提条件
 自動修正を使用するには、次の前提条件を検討してください。
@@ -65,7 +66,7 @@ ms.lasthandoff: 02/27/2018
 | **メンテナンス スケジュール** |毎日、月曜日、火曜日、水曜日、木曜日、金曜日、土曜日、日曜日 |仮想マシンの Windows、SQL Server、および Microsoft の更新プログラムをダウンロードしてインストールするスケジュール。 |
 | **メンテナンスの開始時間** |0 ～ 24 |仮想マシンを更新するローカルの開始時刻。 |
 | **メンテナンス時間** |30 ～ 180 |更新プログラムのダウンロードとインストールを完了するのに許可されている時間 (分単位) |
-| **パッチのカテゴリ** |重要: |ダウンロードしてインストールする更新プログラムのカテゴリ。 |
+| **パッチのカテゴリ** |重要: | ダウンロードしてインストールする Windows 更新プログラムのカテゴリ。|
 
 ## <a name="configuration-in-the-portal"></a>ポータルでの構成
 Azure ポータルを使用して、プロビジョニング中または既存の VM 用に、自動修正を構成することができます。
@@ -100,7 +101,7 @@ Resource Manager デプロイメント モデルで新しい SQL Server 仮想�
 ## <a name="configuration-with-powershell"></a>PowerShell での構成
 SQL VM をプロビジョニングしたら、PowerShell を使用して自動修正を構成します。
 
-次の例では、PowerShell を使用して、既存の SQL Server VM で自動修正を構成しています。 **AzureRM.Compute\New-AzureVMSqlServerAutoPatchingConfig** コマンドは、自動更新の新しいメンテナンス期間を構成します。
+次の例では、PowerShell を使用して、既存の SQL Server VM で自動修正を構成しています。 **AzureRM.Compute\New-AzureRmVMSqlServerAutoPatchingConfig** コマンドは、自動更新の新しいメンテナンス期間を構成します。
 
     $vmname = "vmname"
     $resourcegroupname = "resourcegroupname"
@@ -118,11 +119,11 @@ SQL VM をプロビジョニングしたら、PowerShell を使用して自動�
 | **DayOfWeek** |毎週木曜日に修正プログラムがインストールされます。 |
 | **MaintenanceWindowStartingHour** |午前 11 時に更新が開始されます。 |
 | **MaintenanceWindowsDuration** |修正プログラムを 120 分以内にインストールする必要があります。 開始時刻に基づき、修正プログラムのインストールは午後 1 時までに完了する必要があります。 |
-| **PatchCategory** |このパラメーターに指定可能な設定は **Important**だけです。 |
+| **PatchCategory** |このパラメーターに指定可能な設定は **Important**だけです。 これにより、"重要" と書かれた Windows 更新プログラムがインストールされます。このカテゴリに含まれていない SQL Server 更新プログラムはインストールされません。 |
 
 SQL Server IaaS エージェントのインストールと構成には数分かかる場合があります。
 
-自動修正を無効にするには、**AzureRM.Compute\New-AzureVMSqlServerAutoPatchingConfig** の **-Enable** パラメーターを指定せずに、同じスクリプトを実行します。 **-Enable** パラメーターがない場合は、機能を無効にするコマンドが伝えられます。
+自動修正を無効にするには、**AzureRM.Compute\New-AzureRmVMSqlServerAutoPatchingConfig** の **-Enable** パラメーターを指定せずに、同じスクリプトを実行します。 **-Enable** パラメーターがない場合は、機能を無効にするコマンドが伝えられます。
 
 ## <a name="next-steps"></a>次の手順
 その他の利用可能なオートメーション タスクについては、 [SQL Server IaaS Agent 拡張機能](virtual-machines-windows-sql-server-agent-extension.md)に関するページをご覧ください。

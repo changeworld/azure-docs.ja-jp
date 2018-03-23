@@ -1,25 +1,19 @@
 ---
-title: "Azure Automation を使用した Azure SQL データベースの管理 | Microsoft Docs"
-description: "Azure Automation サービスを使用して、規模に応じて Azure SQL データベースを管理する方法について説明します。"
+title: Azure Automation を使用した Azure SQL データベースの管理 | Microsoft Docs
+description: Azure Automation サービスを使用して、規模に応じて Azure SQL データベースを管理する方法について説明します。
 services: sql-database, automation
-documentationcenter: 
-author: jodoglevy
-manager: jhubbard
-editor: monicar
-ms.assetid: 77c262a1-9b93-456d-b3c7-b2f23bdfcd61
+author: CarlRabeler
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
-ms.author: jhubbard
-ms.openlocfilehash: c5f7e6da09c6ca8ddc6cc3ddcbcf7c5b53116e26
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.author: carlrab
+ms.openlocfilehash: 0174b2b1dd5942e17ea60c2dce624c87fd1289c8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Azure Automation を使用した Azure SQL データベースの管理
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure SQL データベースの管理を簡略化する方法について紹介します。
@@ -43,7 +37,7 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 * [データベースがその最大サイズに近づいた場合の SQL テーブルの切り捨て](https://gallery.technet.microsoft.com/scriptcenter/Azure-Automation-Your-SQL-30f8736b)
 * [Azure SQL データベースにおけるテーブルの断片化率が高い場合のインデックス作成](https://gallery.technet.microsoft.com/scriptcenter/Indexes-tables-in-an-Azure-73a2a8ea)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure SQL データベースを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
 * [Azure Automation Overview (Azure Automation の概要)](../automation/automation-intro.md)

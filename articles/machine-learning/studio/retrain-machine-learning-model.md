@@ -1,11 +1,12 @@
 ---
-title: "Machine Learning モデルの再トレーニング | Microsoft Docs"
-description: "Azure Machine Learning でモデルの再トレーニングをして Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。"
+title: Machine Learning モデルの再トレーニング | Microsoft Docs
+description: Azure Machine Learning でモデルの再トレーニングをして Web サービスを更新し、新しくトレーニングを行ったモデルを使用する方法について説明します。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: raymondl
-editor: 
+documentationcenter: ''
+author: serinakaye
+ms.author: serinak
+manager: mwinkle
+editor: ''
 ms.assetid: d1cb6088-4f7c-4c32-94f2-f7523dad9059
 ms.service: machine-learning
 ms.workload: data-services
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
-ms.author: raymondl
-ms.openlocfilehash: 614517c5b9a54fc11cf0b8f8b6e298b9aec5cf76
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 65c5e86e47528aab36972507b7ee8324040b9beb
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="retrain-a-machine-learning-model"></a>Machine Learning モデルの再トレーニング
 Azure Machine Learning における Machine Learning のモデル運用プロセスの一環として、モデルのトレーニングと保存が行われます。 その後、このモデルを使用して、予測 Web サービスを作成します。 これによって、Web サイト、ダッシュボード、モバイル アプリでこの Web サービスを使用できます。 

@@ -1,6 +1,6 @@
 ---
-title: "AD FS オンプレミス アプリを Azure に移行します。 | Microsoft Docs"
-description: "このドキュメントは、オンプレミス アプリケーションを Azure AD に移行する方法の理解に役立つことを目的としています。特に、フェデレーション SaaS アプリケーションに重点を置いています。"
+title: AD FS オンプレミス アプリを Azure に移行します。 | Microsoft Docs
+description: このドキュメントは、オンプレミス アプリケーションを Azure AD に移行する方法の理解に役立つことを目的としています。特に、フェデレーション SaaS アプリケーションに重点を置いています。
 services: active-directory
 author: billmath
 manager: mtillman
@@ -9,13 +9,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/29/2018
+ms.date: 03/02/2018
 ms.author: billmath
-ms.openlocfilehash: ec0731534da2543d48bedc575bf882b790fa136b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f1256e2fefe1ad3d37403f37804888ab9dcf6e99
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>AD FS オンプレミス アプリを Azure に移行する 
 
@@ -166,7 +166,7 @@ Azure AD で構成するには追加の手順が必要な構成もいくつか�
 - トークン機能内の要求
     - オンプレミスのグループ名を要求として発行
     - Azure AD 以外のストアからの要求
-    - 複雑な要求発行変換規則 (サポートされている要求マッピングについては、こちらとこちらのドキュメントを参照してください)
+    - 複雑な要求発行変換規則 (サポートされている要求マッピングについては、[こちら](https://docs.microsoft.com/azure/active-directory/active-directory-claims-mapping)と[こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)のドキュメントを参照してください)
     - ディレクトリ拡張機能を要求として発行
     - NameID 形式のカスタム仕様
     - 複数値属性の発行

@@ -1,11 +1,11 @@
 ---
-title: "Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件 | Microsoft Docs"
-description: "他のユーザーが購入できる仮想マシン イメージを作成して Azure Marketplace にデプロイするための要件を理解します。"
+title: Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件 | Microsoft Docs
+description: 他のユーザーが購入できる仮想マシン イメージを作成して Azure Marketplace にデプロイするための要件を理解します。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 63c16966-0304-4b17-a715-368a0a5ccb2c
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 04/29/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: af3e2ad623d8d7bfafe676411f9ae3fbee78aab8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: cf1f061c28dd0c106823d34ad39aac5e577c8b41
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="technical-prerequisites-for-creating-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージを作成するための技術的な前提条件
 始める前にプロセスをよく読み、各ステップをどこで、なぜ実行するのかを理解してください。 可能な限り、会社の情報と他のデータを準備し、必要なツールをダウンロードし、技術コンポーネントを作成してから、プラン作成プロセスを開始する必要があります。 この記事を読んでよく理解してください。  

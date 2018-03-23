@@ -1,25 +1,19 @@
 ---
-title: "アプリケーションのローリング アップグレード - Azure SQL Database | Microsoft Docs"
-description: "Azure SQL Database で geo レプリケーションを使用してクラウド アプリケーションのオンライン アップグレードをサポートする方法について説明します。"
+title: アプリケーションのローリング アップグレード - Azure SQL Database | Microsoft Docs
+description: Azure SQL Database で geo レプリケーションを使用してクラウド アプリケーションのオンライン アップグレードをサポートする方法について説明します。
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: 58f42859-1e37-463c-a3d8-a3ca2e867148
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 07/16/2016
 ms.author: sashan
-ms.openlocfilehash: deb91d55e5b796f7b1b53a99866156fe492e0a24
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 6efc14e5f8fab5baafff50e8eb6844f8decca1c9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>SQL Database アクティブ geo レプリケーションを使用したクラウド アプリケーションのローリング アップグレードの管理
 > [!NOTE]
@@ -45,7 +39,7 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 > 準備の手順は運用スロットのアプリケーションに影響を与えず、アプリケーションはフル アクセス モードで動作できます。
 >  
 
-![SQL Database Go-Replication configuration. Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
+![SQL Database Go-Replication configuration. クラウド ディザスター リカバリー 。](media/sql-database-manage-application-rolling-upgrade/Option1-1.png)
 
 準備の手順が完了すると、アプリケーションを実際にアップグレードできるようになります。 次の図は、アップグレード処理で必要な手順を示しています。 
 
@@ -53,14 +47,14 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 2. 計画終了モードを使用して、セカンダリ データベースを切断します (4)。 これにより、完全に同期されたプライマリ データベースの独立したコピーが作成されます。 このデータベースがアップグレードされます。
 3. プライマリ データベースで読み取り/書き込みモードを有効にして、ステージング スロットでアップグレード スクリプトを実行します (5)。     
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
+![SQL Database の geo レプリケーションの構成。 クラウド ディザスター リカバリー 。](media/sql-database-manage-application-rolling-upgrade/Option1-2.png)
 
 アップグレードが正常に完了すると、エンドユーザーをアプリケーションのステージング コピーに切り替えられるようになります。 これがアプリケーションの運用スロットになります。  これには、次の図に示すように、いくつかの手順がさらに必要になります。
 
 1. WATM プロファイルのオンライン エンドポイントを <i>contoso-2.azurewebsites.net</i> に切り替えます。このエンドポイントは、V2 バージョンの Web サイトを表します (6)。 これが、V2 アプリケーションを備えた運用スロットになり、エンド ユーザー トラフィックがここに直接転送されます。  
 2. V1 アプリケーション コンポーネントが不要になった場合は、その V1 アプリケーション コンポーネントを安全に削除できます (7)。   
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
+![SQL Database の geo レプリケーションの構成。 クラウド ディザスター リカバリー 。](media/sql-database-manage-application-rolling-upgrade/Option1-3.png)
 
 アップグレード スクリプトのエラーなどによりアップグレード処理が失敗した場合は、ステージング スロットが侵害されたと見なされます。 アプリケーションをアップグレード前の状態にロールバックするには、単純に運用スロットのアプリケーションをフル アクセスに戻します。 必要な手順は、次の図に示すとおりです。    
 
@@ -74,7 +68,7 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 > 
 > 
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
+![SQL Database の geo レプリケーションの構成。 クラウド ディザスター リカバリー 。](media/sql-database-manage-application-rolling-upgrade/Option1-4.png)
 
 この方法の主な**メリット**は、一連の簡単な手順を使用して単一のリージョンでアプリケーションをアップグレードできる点です。 アップグレードのコストは比較的安価になります。 主な **トレードオフ** は、アップグレード中に致命的なエラーが発生した場合、アップグレード前の状態に回復するには、別のリージョンでアプリケーションを再度デプロイし、geo リストアを使用してバックアップからデータベースを復元する必要がある点です。 この処理により、大幅なダウンタイムが生じます。   
 
@@ -96,7 +90,7 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 > 
 > 
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
+![SQL Database の geo レプリケーションの構成。 クラウド ディザスター リカバリー 。](media/sql-database-manage-application-rolling-upgrade/Option2-1.png)
 
 準備の手順が完了すると、ステージング スロットでアップグレードの用意ができます。 次の図は、アップグレードの手順を示します。
 
@@ -104,14 +98,14 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 2. 計画された終了モードを使用して、同じリージョンのセカンダリ データベースを切断します (7)。 これにより、完全に同期されたプライマリ データベースの独立したコピーが作成されます。これは、終了後に自動的にプライマリになります。 このデータベースがアップグレードされます。
 3. ステージング スロットのプライマリ データベースで読み取り/書き込みモードを有効にして、アップグレード スクリプトを実行します (8)。    
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
+![SQL Database の geo レプリケーションの構成。 クラウド ディザスター リカバリー 。](media/sql-database-manage-application-rolling-upgrade/Option2-2.png)
 
 アップグレードが正常に完了すると、エンドユーザーを V2 バージョンのアプリケーションに切り替えられるようになります。 次の図に、必要な手順を示します。
 
 1. WATM プロファイルのアクティブ エンドポイントを <i>contoso-2.azurewebsites.net</i> に切り替えます。このエンドポイントは、V2 バージョンの Web サイトを指します (9)。 これが、V2 アプリケーションを持つ運用スロットになり、エンド ユーザー トラフィックがここに転送されます。 
 2. V1 アプリケーションが不要になった場合は、そのV1 アプリケーションを安全に削除できます (10 および 11)。  
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
+![SQL Database の geo レプリケーションの構成。 クラウド ディザスター リカバリー 。](media/sql-database-manage-application-rolling-upgrade/Option2-3.png)
 
 アップグレード スクリプトのエラーなどによりアップグレード処理が失敗した場合は、ステージング スロットが侵害されたと見なされます。 アプリケーションをアップグレード前の状態にロールバックするには、フル アクセスを持つ運用スロットのアプリケーションを使用するように戻すだけです。 必要な手順は、次の図に示すとおりです。    
 
@@ -125,14 +119,14 @@ SQL Database で [geo レプリケーション](sql-database-geo-replication-ove
 > 
 > 
 
-![SQL Database の geo レプリケーションの構成。 Cloud disaster recovery.](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
+![SQL Database の geo レプリケーションの構成。 クラウド ディザスター リカバリー 。](media/sql-database-manage-application-rolling-upgrade/Option2-4.png)
 
 この方法の主な **メリット** は、アップグレード中にビジネス継続性を損なうことなく、アプリケーションと geo 冗長性を持つコピーの両方を並行してアップグレードできる点です。 主な **トレードオフ** は、各アプリケーション コンポーネントが 2 倍の冗長性を必要とするため、コストが増加する点です。 また、より複雑なワークフローが必要になります。 
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 この記事で説明している 2 種類のアップグレード方法の違いは、複雑さとコストです。ただし、両方とも、エンドユーザーの操作が読み取り専用に制限される時間を最小限に抑えることに焦点を合わせています。 この時間は、直接的にはアップグレード スクリプトの時間で決まります。 データベースのサイズ、選択したサービス レベル、Web サイトの構成、制御が容易でないその他の要因には左右されません。 その理由は、すべての準備の手順が、アップグレードの手順から切り離されていて、運用アプリケーションに影響を与えずに実行できるためです。 アップグレード スクリプトの効率性は、アップグレード中のエンド ユーザー エクスペリエンスを決定する重要な要素です。 これを改善できる最適な方法は、アップグレード スクリプトをできる限り効率的にすることに集中して取り組むことです。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
 * 自動バックアップを使用して復旧する方法については、[自動化されたバックアップからのデータベース復元](sql-database-recovery-using-backups.md)を参照してください。

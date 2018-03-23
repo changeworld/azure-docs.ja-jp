@@ -9,6 +9,12 @@
   items:
     - name: Databricks ワークスペースの作成
       href: quickstart-create-databricks-workspace-portal.md
+- name: チュートリアル
+  items:
+    - name: Event Hubs を使用したデータのストリーミング
+      href: databricks-stream-from-eventhubs.md
+    - name: Cognitive Services を使用した感情分析
+      href: databricks-sentiment-analysis-cognitive-services.md
 - name: ハウツー ガイド
   items:
     - name: Excel、R、Python を使用した接続

@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric での ASP.NET Core サービスの監視と診断 | Microsoft Docs"
-description: "このチュートリアルでは、Azure Service Fabric の ASP.NET Core アプリケーションの監視と診断をセットアップする方法を説明します。"
+title: Azure Service Fabric での ASP.NET Core サービスの監視と診断 | Microsoft Docs
+description: このチュートリアルでは、Azure Service Fabric の ASP.NET Core アプリケーションの監視と診断をセットアップする方法を説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: tutorial
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 26cca3604faa46e7398b24a2e8c25a6ad9650c18
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0f51b52d9f4d5c8979ba636311e63089c11cd114
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>チュートリアル: Service Fabric の ASP.NET Core アプリケーションを監視および診断する
 このチュートリアルは、シリーズの第 4 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を設定する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションからテレメトリを収集します。 
@@ -104,15 +104,16 @@ Application Insights では、シナリオによって使い分けられる Serv
     これにより、お使いのテレメトリに*サービス コンテキスト*が追加され、Application Insights のテレメトリのソースをより深く理解できるようになります。 *VotingWeb.cs* の入れ子になった *return* ステートメントは、次のようになります。
     
     ```csharp
-    return new WebHostBuilder().UseWebListener()
+    return new WebHostBuilder()
+        .UseKestrel()
         .ConfigureServices(
             services => services
+                .AddSingleton<HttpClient>(new HttpClient())
+                .AddSingleton<FabricClient>(new FabricClient())
                 .AddSingleton<StatelessServiceContext>(serviceContext)
-                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
-                .AddSingleton<HttpClient>())
+                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
-        .UseApplicationInsights()
         .UseServiceFabricIntegration(listener, ServiceFabricIntegrationOptions.None)
         .UseUrls(url)
         .Build();
@@ -126,8 +127,8 @@ Application Insights では、シナリオによって使い分けられる Serv
         .ConfigureServices(
             services => services
                 .AddSingleton<StatefulServiceContext>(serviceContext)
-                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext))
-                .AddSingleton<IReliableStateManager>(this.StateManager))
+                .AddSingleton<IReliableStateManager>(this.StateManager)
+                .AddSingleton<ITelemetryInitializer>((serviceProvider) => FabricTelemetryInitializerExtension.CreateFabricTelemetryInitializer(serviceContext)))
         .UseContentRoot(Directory.GetCurrentDirectory())
         .UseStartup<Startup>()
         .UseApplicationInsights()

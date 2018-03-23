@@ -1,29 +1,23 @@
 ---
-title: "Azure Automation の Runbook の種類 | Microsoft Docs"
-description: "Azure Automation で使用できる Runbook の種類、および使用する種類を決定するときの考慮事項について説明します。 "
+title: Azure Automation の Runbook の種類
+description: 'Azure Automation で使用できる Runbook の種類、および使用する種類を決定するときの考慮事項について説明します。 '
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 9265c975-4281-4819-a84f-d86641277f36
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 06/01/2017
-ms.author: bwren
-ms.openlocfilehash: e4a8ab0e68d6614fea1b44f0115a1c633f145277
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.openlocfilehash: f3a6b15891a4a1564073d149a198f6789b407342
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-automation-runbook-types"></a>Azure Automation の Runbook の種類
 Azure Automation がサポートする数種類の Runbook について次の表で簡単に説明します。  その後のセクションでは、使用するときの考慮事項など、各種類に関して詳しく説明します。
 
-| 型 | Description |
+| type | [説明] |
 |:--- |:--- |
 | [グラフィカル](#graphical-runbooks) |Windows PowerShell に基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |
 | [グラフィカル PowerShell ワークフロー](#graphical-runbooks) |Windows PowerShell ワークフローに基づいており、Azure ポータルのグラフィカル エディターで完全に作成および編集されます。 |
@@ -104,7 +98,7 @@ Python Runbook に関する現在の既知の問題は次のとおりです。
 * グラフィカル Runbook からテキスト Runbook への変換、およびこの逆の変換を行うことはできません。
 * 異なる種類の Runbook を子 Runbook として使用する場合は制限があります。  詳細については、「 [Azure Automation での子 Runbook](automation-child-runbooks.md) 」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * グラフィカル Runbook 作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 * Runbook 用の PowerShell と PowerShell ワークフローとの違いについては、「 [Windows PowerShell ワークフローについて](automation-powershell-workflow.md)
 * Runbook を作成またはインポートする方法については、「 [Runbook の作成またはインポート](automation-creating-importing-runbook.md)

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 10e7e7c95dc0dd614c7c01581cb746f1e854a9e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce3699f4838c30eaaa0ab2938190c05de1feb781
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
-#<a name="traffic-manager-documentation"></a>Traffic Manager のドキュメント
+# <a name="traffic-manager-documentation"></a>Traffic Manager のドキュメント
 
 最適なアプリケーション パフォーマンスと信頼性のために、Traffic Manager を使用して着信トラフィックをルーティングする方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Azure または外部サービス エンドポイントに対するトラフィックを管理する方法を紹介します。
 

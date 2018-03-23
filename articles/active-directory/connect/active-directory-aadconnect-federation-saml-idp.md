@@ -1,6 +1,6 @@
 ---
-title: "Azure AD Connect: シングル サインオンに SAML 2.0 ID プロバイダーを使用する | Microsoft Docs"
-description: "このトピックでは、シングル サインオンに SAML 2.0 に準拠している IdP を使用する方法について説明します。"
+title: 'Azure AD Connect: シングル サインオンに SAML 2.0 ID プロバイダーを使用する | Microsoft Docs'
+description: このトピックでは、シングル サインオンに SAML 2.0 に準拠している IdP を使用する方法について説明します。
 services: active-directory
 author: billmath
 manager: mtillman
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 46c65e0efdc91b70c5d0d2afdf83d7205efc8057
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2018
+ms.lasthandoff: 03/13/2018
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する
 
@@ -45,7 +45,7 @@ Microsoft では、このサインオン エクスペリエンスを、Office 36
 
 SAML 2.0 ID プロバイダーの出力メッセージが、用意されているサンプル トレースのメッセージとできるだけ類似していることを確認することをお勧めします。 また、可能であれば、提供されている Azure AD メタデータの特定の属性値を使用してください。 出力メッセージに問題がなければ、後で説明する Microsoft 接続アナライザーでテストできます。
 
-Azure AD メタデータは、次の URL からダウンロードできます: [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml)。
+Azure AD メタデータは、この URL [https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml](http://https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml) からダウンロードできます。
 Office 365 の中国固有のインスタンスを使用している中国国内のお客様は、次のフェデレーション エンドポイントを使用する必要があります: [https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml](https://nexus.partner.microsoftonline-p.cn/federationmetadata/saml20/federationmetadata.xml)。
 
 ## <a name="saml-protocol-requirements"></a>SAML プロトコル要件
@@ -149,7 +149,7 @@ SAML 応答メッセージでは、署名ノードにメッセージ自体のデ
 このトピックには、SAML 2.0 ID プロバイダーを Azure AD とフェデレーションするように構成して、SAML 2.0 プロトコルを使用して 1 つまたは複数の Microsoft クラウド サービス (Office 365 など) にシングル サインオンできるようにする方法に関するガイドラインが含まれています。 このシナリオで使用される Microsoft クラウド サービスの SAML 2.0 証明書利用者は Azure AD です。
 
 ## <a name="add-azure-ad-metadata"></a>Azure AD メタデータを追加する
-SAML 2.0 ID プロバイダーは、Azure AD 証明書利用者に関する情報を使用する必要があります。 Azure AD は、メタデータを次の URL に発行します: https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml。
+SAML 2.0 ID プロバイダーは、Azure AD 証明書利用者に関する情報を使用する必要があります。 Azure AD は、メタデータを https://nexus.microsoftonline-p.com/federationmetadata/saml20/federationmetadata.xml で発行します。
 
 SAML 2.0 ID プロバイダーを構成するときは、常に最新の Azure AD メタデータをインポートすることをお勧めします。 Azure AD が ID プロバイダーからメタデータを読み取ることはありません。
 
@@ -182,7 +182,7 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
 
     `<IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"> <KeyDescriptor use="signing"> <KeyInfo xmlns="http://www.w3.org/2000/09/xmldsig#"> <X509Data> <X509Certificate>MIIC5jCCAc6gAwIBAgIQLnaxUPzay6ZJsC8HVv/QfTANBgkqhkiG9w0BAQsFADAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwHhcNMTMxMTA0MTgxMzMyWhcNMTQxMTA0MTgxMzMyWjAvMS0wKwYDVQQDEyRBREZTIFNpZ25pbmcgLSBmcy50ZWNobGFiY2VudHJhbC5vcmcwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQCwMdVLTr5YTSRp+ccbSpuuFeXMfABD9mVCi2wtkRwC30TIyPdORz642MkurdxdPCWjwgJ0HW6TvXwcO9afH3OC5V//wEGDoNcI8PV4enCzTYFe/h//w51uqyv48Fbb3lEXs+aVl8155OAj2sO9IX64OJWKey82GQWK3g7LfhWWpp17j5bKpSd9DBH5pvrV+Q1ESU3mx71TEOvikHGCZYitEPywNeVMLRKrevdWI3FAhFjcCSO6nWDiMqCqiTDYOURXIcHVYTSof1YotkJ4tG6mP5Kpjzd4VQvnR7Pjb47nhIYG6iZ3mR1F85Ns9+hBWukQWNN2hcD/uGdPXhpdMVpBAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAK7h7jF7wPzhZ1dPl4e+XMAr8I7TNbhgEU3+oxKyW/IioQbvZVw1mYVCbGq9Rsw4KE06eSMybqHln3w5EeBbLS0MEkApqHY+p68iRpguqa+W7UHKXXQVgPMCpqxMFKonX6VlSQOR64FgpBme2uG+LJ8reTgypEKspQIN0WvtPWmiq4zAwBp08hAacgv868c0MM4WbOYU0rzMIR6Q+ceGVRImlCwZ5b7XKp4mJZ9hlaRjeuyVrDuzBkzROSurX1OXoci08yJvhbtiBJLf3uPOJHrhjKRwIt2TnzS9ElgFZlJiDIA26Athe73n43CT0af2IG6yC7e6sK4L3NEXJrwwUZk=</X509Certificate> </X509Data> </KeyInfo> </KeyDescriptor>` 
 
-"Set-MsolDomainAuthentication" の詳細については、[http://technet.microsoft.com/library/dn194112.aspx](http://technet.microsoft.com/library/dn194112.aspx) を参照してください。
+"Set-MsolDomainAuthentication" の詳細については [http://technet.microsoft.com/library/dn194112.aspx](http://technet.microsoft.com/library/dn194112.aspx) を参照してください。
 
 >[!NOTE]
 >"$ecpUrl = "https://WS2012R2-0.contoso.com/PAOS"" は、ID プロバイダーに対して ECP 拡張機能を設定する場合にのみ実行する必要があります。 Outlook Web Application (OWA) を除く Exchange Online クライアントは、POST ベースのアクティブなエンドポイントを活用します。 SAML 2.0 STS でアクティブなエンドポイントの Shibboleth の ECP 実装に似たアクティブなエンドポイントを実装すると、これらのリッチ クライアントが Exchange Online サービスと対話することが可能になる場合があります。
@@ -210,7 +210,7 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
         -LicenseAssignment "samlp2test:ENTERPRISEPACK" 
         -UsageLocation "US" ` 
 
-"New-MsolUser" のチェック アウトの詳細については、[http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx) を参照してください。
+"New-MsolUser" チェックアウトの詳細については、[http://technet.microsoft.com/library/dn194096.aspx](http://technet.microsoft.com/library/dn194096.aspx) を参照してください。
 
 >[!NOTE]
 >"UserPrinciplName" 値は SAML 2.0 要求で送信する "IDPEmail" の値と一致し、"ImmutableID" 値は "NameID" アサーションで送信される値と一致する必要があります。
@@ -242,7 +242,7 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 
 
 
-1. [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client) から接続アナライザーをダウンロードします。
+1. 接続アナライザーは、[https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client) からダウンロードしてください。
 2.  [今すぐインストール] をクリックして、ツールのダウンロードとインストールを開始します。
 3.  [I can’t set up federation with Office 365, Azure, or other services that use Azure Active Directory]\(Office 365、Azure、または Azure Active Directory を使用するその他のサービスとのフェデレーションを設定できません\) を選択します。
 4.  ツールがダウンロードされて実行されると、[接続診断] ウィンドウが表示されます。 ツールが示す手順に従って、フェデレーションの接続をテストします。

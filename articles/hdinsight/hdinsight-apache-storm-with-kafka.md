@@ -1,8 +1,8 @@
 ---
-title: "HDInsight 上の Storm で Apache Kafka を使用する -Azure | Microsoft Docs"
-description: "HDInsight での Apache Storm には、Apache Kafka がインストールされています。 Storm に付属する KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して、Kafka への書き込みおよび読み取りを行う方法について説明します。 また、Flux フレームワークを使用して Storm トポロジを定義し送信する方法についても説明します。"
+title: HDInsight 上の Storm で Apache Kafka を使用する -Azure | Microsoft Docs
+description: HDInsight での Apache Storm には、Apache Kafka がインストールされています。 Storm に付属する KafkaBolt コンポーネントと KafkaSpout コンポーネントを使用して、Kafka への書き込みおよび読み取りを行う方法について説明します。 また、Flux フレームワークを使用して Storm トポロジを定義し送信する方法についても説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/26/2018
+ms.date: 03/08/2018
 ms.author: larryfr
-ms.openlocfilehash: eca3f95b672a7334d77ac027b4774addf4efed2c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 0c74e46f37319a9d1eb0ea1587087e24312de451
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-apache-kafka-with-storm-on-hdinsight"></a>HDInsight の Storm での Apache Kafka の使用
 
@@ -66,9 +66,9 @@ Azure 仮想ネットワーク、Kafka、および Storm クラスターは手�
 
 1. 次のボタンを使用して Azure にサインインし、Azure Portal でテンプレートを開きます。
    
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Farmtemplates%2Fcreate-linux-based-kafka-storm-cluster-in-vnet-v2.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
+    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fhdinsight-storm-java-kafka%2Fmaster%2Fcreate-kafka-storm-clusters-in-vnet.json" target="_blank"><img src="./media/hdinsight-apache-storm-with-kafka/deploy-to-azure.png" alt="Deploy to Azure"></a>
    
-    Azure Resource Manager テンプレートは、**https://hditutorialdata.blob.core.windows.net/armtemplates/create-linux-based-kafka-storm-cluster-in-vnet-v2.json** にあります。 このテンプレートは次のリソースを作成します。
+    Azure Resource Manager テンプレートは **https://github.com/Azure-Samples/hdinsight-storm-java-kafka/blob/master/create-kafka-storm-clusters-in-vnet.json** にあります。 このテンプレートは次のリソースを作成します。
     
     * Azure リソース グループ
     * Azure Virtual Network
@@ -155,7 +155,7 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
 
 ## <a name="configure-the-topology"></a>トポロジの構成
 
-1. 次のいずれかのメソッドを使用して Kafka Broker ホストを検出します。
+1. 次のいずれかの方法を使用して、HDInsight クラスター上の **Kafka** の Kafka Broker ホストを検出します。
 
     ```powershell
     $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -167,12 +167,12 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
     ($brokerHosts -join ":9092,") + ":9092"
     ```
 
+    > [!IMPORTANT]
+    > 次の Bash の例では、`$CLUSTERNAME` に __Kafka__ クラスターの名前が含まれていることを前提とします。 また、[jq](https://stedolan.github.io/jq/) バージョン 1.5 以降がインストールされているものとします。 プロンプトが表示されたら、クラスターのログイン アカウントのパスワードを入力してください。
+
     ```bash
     curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/KAFKA/components/KAFKA_BROKER" | jq -r '["\(.host_components[].HostRoles.host_name):9092"] | join(",")' | cut -d',' -f1,2
     ```
-
-    > [!IMPORTANT]
-    > Bash の例では、`$CLUSTERNAME` に HDInsight クラスターの名前が含まれていること、 また、[jq](https://stedolan.github.io/jq/) バージョン 1.5 以降がインストールされているものとします。 プロンプトが表示されたら、クラスターのログイン アカウントのパスワードを入力してください。
 
     次のテキストのような値が返されます。
 
@@ -181,7 +181,7 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
     > [!IMPORTANT]
     > クラスターに 2 つ以上のブローカー ホストがある場合でも、すべてのホストの完全な一覧をクライアントに提供する必要はありません。 1 つまたは 2 つで十分です。
 
-2. 次のいずれかのメソッドを使用して Kafka Zookeeper ホストを検出します。
+2. 次のいずれかのを使用して、HDInsight クラスタ上の __Kafka__ の Kafka Broker ホストを検出します。
 
     ```powershell
     $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"
@@ -193,12 +193,12 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
     ($zookeeperHosts -join ":2181,") + ":2181"
     ```
 
+    > [!IMPORTANT]
+    > 次の Bash の例では、`$CLUSTERNAME` に __Kafka__ クラスターが含まれていることを前提とします。 および [jq](https://stedolan.github.io/jq/) がインストールされいていることを前提としています。 プロンプトが表示されたら、クラスターのログイン アカウントのパスワードを入力してください。
+
     ```bash
     curl -su admin -G "https://$CLUSTERNAME.azurehdinsight.net/api/v1/clusters/$CLUSTERNAME/services/ZOOKEEPER/components/ZOOKEEPER_SERVER" | jq -r '["\(.host_components[].HostRoles.host_name):2181"] | join(",")' | cut -d',' -f1,2
     ```
-
-    > [!IMPORTANT]
-    > Bash の例では、`$CLUSTERNAME` に HDInsight クラスターの名前が含まれていること、 および [jq](https://stedolan.github.io/jq/) がインストールされいていることを前提としています。 プロンプトが表示されたら、クラスターのログイン アカウントのパスワードを入力してください。
 
     次のテキストのような値が返されます。
 
@@ -209,13 +209,13 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
 
     この値を保存します。これは後で使用します。
 
-3. プロジェクトのルートにある `dev.properties` ファイルを編集します。 このファイルの該当する行に、Broker ホストと Zookeeper ホストの情報を追加します。 次の例は、前の手順のサンプルの値を使用して構成されています。
+3. プロジェクトのルートにある `dev.properties` ファイルを編集します。 このファイルの該当する行に、__Kafka__ クラスターの Broker ホストと Zookeeper ホストの情報を追加します。 次の例は、前の手順のサンプルの値を使用して構成されています。
 
         kafka.zookeeper.hosts: zk0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181,zk2-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:2181
         kafka.broker.hosts: wn0-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092,wn1-kafka.53qqkiavjsoeloiq3y1naf4hzc.ex.internal.cloudapp.net:9092
         kafka.topic: stormtopic
 
-4. `dev.properties` ファイルを保存し、次のコマンドを使用して Storm クラスターにアップロードします。
+4. `dev.properties` ファイルを保存し、次のコマンドを使用して **Storm** クラスターにアップロードします。
 
      ```bash
     scp dev.properties USERNAME@storm-BASENAME-ssh.azurehdinsight.net:dev.properties
@@ -225,7 +225,12 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
 
 ## <a name="start-the-writer"></a>ライターの起動
 
-1. 次のコマンドを使用して、SSH で Storm クラスターに接続します。 **USERNAME** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
+> [!IMPORTANT]
+> このセクションの手順では、このドキュメント内にある Azure Resource Manager テンプレートへのリンクを使用して Kafka および Storm クラスターを作成していることを前提としています。 このテンプレートを使用すると、Kafka クラスター用のトピック を自動作成できます。
+>
+> 既定では、HDInsight 上の Kafka ではトピックの自動作成は許可されないため、Kafka クラスターを他の方法で作成した場合は、トピックを手動で作成する必要があります。 トピックを手動で作成する方法については、「[HDInsight での Apache Kafka の開始](./kafka/apache-kafka-get-started.md)」ドキュメントを参照してください。
+
+1. 次のコマンドを使用して、SSH 経由で **Storm** クラスターに接続します。 **USERNAME** は、クラスターの作成時に使用した SSH ユーザー名に置き換えます。 **BASENAME** は、クラスターの作成時に使用したベース名に置き換えます。
 
   ```bash
   ssh USERNAME@storm-BASENAME-ssh.azurehdinsight.net
@@ -234,14 +239,6 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
     メッセージが表示されたら、クラスターの作成時に使用したパスワードを入力します。
    
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-2. SSH 接続から、次のコマンドを使用して、トポロジで使用される Kafka トピックを作成します。
-
-    ```bash
-    /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create --replication-factor 3 --partitions 8 --topic stormtopic --zookeeper $KAFKAZKHOSTS
-    ```
-
-    `$KAFKAZKHOSTS` を、前のセクションで取得した Zookeeper ホスト情報に置き換えます。
 
 2. Storm クラスターに SSH で接続してから、次のコマンドを使用してライター トポロジを起動します。
 
@@ -261,11 +258,12 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
 
 5. トポロジが起動したら、次のコマンドを使用して、Kafka トピックにデータを書き込んでいることを確認します。
 
+    > [!IMPORTANT]
+    > __Kafka__ クラスター用に、Zookeeper ホスト情報を `$KAFKAZKHOSTS` で置き換えてください。
+
   ```bash
   /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh --zookeeper $KAFKAZKHOSTS --from-beginning --topic stormtopic
   ```
-
-    `$KAFKAZKHOSTS` を、前のセクションで取得した Zookeeper ホスト情報に置き換えます。
 
     このコマンドでは、Kafka に付属のスクリプトを使用してトピックを監視します。 少ししてから、トピックに書き込まれたランダムな文が返され始めます。 出力は次の例のようになります。
 

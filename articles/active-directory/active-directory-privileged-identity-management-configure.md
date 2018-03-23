@@ -1,32 +1,40 @@
 ---
-title: "Azure AD Privileged Identity Management の構成 | Microsoft Docs"
-description: "Azure AD Privileged Identity Management (PIM) の機能と、PIM を使用してクラウド セキュリティを向上させる方法について説明します。"
+title: Azure AD Privileged Identity Management の構成 | Microsoft Docs
+description: Azure AD Privileged Identity Management (PIM) の機能と、PIM を使用してクラウド セキュリティを向上させる方法について説明します。
 services: active-directory
-documentationcenter: 
-author: barclayn
+documentationcenter: ''
+author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c548ed2e-06e3-4eaf-a63d-0f02ee72da25
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
-ms.author: barclayn
+ms.date: 03/07/2018
+ms.author: billmath
 ms.custom: pim
-ms.openlocfilehash: 94855cf102764532fa0a6718541beffe93230fd1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 827e3521be8918f4de00113fd9eaf4e01679cac5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management とは
 
 組織内のアクセス権は、Azure Active Directory (AD) Privileged Identity Management で管理、制御、監視することができます。 その対象には、Azure AD や Azure リソース (プレビュー) をはじめとする各種 Microsoft Online Services (Office 365、Microsoft Intune など) 内のリソースへのアクセスが含まれます。
 
 > [!NOTE]
-> Azure Active Directory の Premium P2 版のライセンスを管理者に与えると、Privileged Identity Management を組織全体で利用できます。 詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
+> テナントの Privileged Identity Management を有効にすると、サービスを使用するユーザーまたはサービスから利益を受けるユーザーごとに、有効な Azure AD Premium P2 または Enterprise Mobility および Security E5 の有料または試用版のライセンスが必要になります。 例には、以下のユーザーまたはグループ内のユーザーが含まれます。
+>
+>- 特権ロール管理者のロールに割り当て済み 
+>- PIM を介して管理可能な他のディレクトリ ロールの対象として割り当て済み 
+>- PIM で要求を承認または却下できる 
+>- Just In Time 割り当てまたは直接割り当て (時間ベース) を使用して Azure リソース ロールに割り当て済み  
+>- アクセス レビューに割り当て済み
+>
+>詳細については、「 [Azure Active Directory のエディション](active-directory-editions.md)」をご覧ください。
 
 組織では、セキュリティで保護された情報またはリソースへのアクセス権を持つユーザーの数を最小限に抑える必要があります。こうすることで、悪意のあるユーザーがこのようなアクセス権を手にしたり、権限のあるユーザーの不注意で機微なリソースのセキュリティが損なわれたりする可能性が抑えられるためです。  しかし一方で、ユーザーは Azure AD、Azure、Office 365、または SaaS アプリケーションで特権操作を実行する必要があります。 組織は、サブスクリプションや Azure AD など、各種 Azure リソースへの特権アクセスをユーザーに付与する場合があります。 そこで、そうしたユーザーが管理特権で何をしているかについて監視することが必要となります。 Azure AD Privileged Identity Management は、アクセス権の過剰、無駄、乱用に伴うリスクを軽減するうえで役に立ちます。
 
@@ -54,7 +62,7 @@ Azure AD Privileged Identity Management の使用は、 [Azure Portal](https://p
 
 1. ディレクトリのグローバル管理者として [Azure ポータル](https://portal.azure.com/) にサインインします。
 2. 組織に複数のディレクトリがある場合は、Azure Portal の右上隅に表示されているユーザー名を選択し、 Azure AD Privileged Identity Management を使用するディレクトリを選択します。
-3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使って **Azure AD Privileged Identity Management** を検索します。
+3. **[すべてのサービス]** を選択し、[フィルター] ボックスを使用して **Azure AD Privileged Identity Management** を検索します。
 4. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。 Privileged Identity Management アプリケーションが起動します。
 
 ディレクトリ内で Azure AD Privileged Identity Management を最初に使用したユーザーが、Azure AD ディレクトリ ロールに移動すると、初回割り当て操作を案内する[セキュリティ ウィザード](active-directory-privileged-identity-management-security-wizard.md)の画面が表示されます。 手順を実行した後、ディレクトリの最初の**セキュリティ管理者**と**特権ロール管理者**に自動的に設定されます。

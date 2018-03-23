@@ -1,13 +1,13 @@
 ---
-title: "SAP NetWeaver のための Azure Virtual Machines 高可用性 | Microsoft Docs"
-description: "Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガイド"
+title: SAP NetWeaver のための Azure Virtual Machines 高可用性 | Microsoft Docs
+description: Azure Virtual Machines (VM) 上の SAP NetWeaver の高可用性ガイド
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: goraco
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: 5e514964-c907-4324-b659-16dd825f6f87
 ms.service: virtual-machines-windows
 ms.devlang: NA
@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ae90fe1d6d9e91bffa3fd4c6a7d79d069ab604a2
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: f2216a2d5c30e95fcd02b4df56305153335511e0
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -293,7 +293,7 @@ ms.lasthandoff: 11/02/2017
 [sap-ha-guide-10.2]:high-availability-guide.md#5e959fa9-8fcd-49e5-a12c-37f6ba07b916
 [sap-ha-guide-10.3]:high-availability-guide.md#755a6b93-0099-4533-9f6d-5c9a613878b5
 
-[sap-ha-multi-sid-guide]:high-availability-multi-sid.md (SAP multi-SID high-availability configuration)
+[sap-ha-multi-sid-guide]:high-availability-multi-sid.md (SAP マルチ SID 高可用性構成)
 
 
 [sap-ha-guide-figure-1000]:media/virtual-machines-shared-sap-high-availability-guide/1000-wsfc-for-sap-ascs-on-azure.png
@@ -367,7 +367,7 @@ ms.lasthandoff: 11/02/2017
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
-[sap-pam]:https://support.sap.com/pam (SAP Product Availability Matrix)
+[sap-pam]:https://support.sap.com/pam (SAP 製品の可用性マトリックス)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -422,7 +422,7 @@ ms.lasthandoff: 11/02/2017
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
+[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
@@ -1018,11 +1018,11 @@ _**図 15:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷�
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1.  Azure Portal で、 **<*SID*>-lb-ascs ロード バランサー** > **負荷分散規則**の順に選択します。
+1.  Azure Portal で、**<[*SID*>-lb-ascs ロード バランサー]** > **[負荷分散規則]** の順に選びます。
 2.  SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
-  * 名前
-  * Port
+  * Name
+  * ポート
   * バックエンド ポート
 
   たとえば、既定の ASCS インスタンス番号を 00 から 31 に変更する場合は、表 1 に記載されているすべてのポートについて変更する必要があります。
@@ -1549,7 +1549,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
   }
   ```
 
-  **SAP <*SID*>** クラスターの役割をオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
+  **SAP <*SID*>** クラスター ロールをオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>

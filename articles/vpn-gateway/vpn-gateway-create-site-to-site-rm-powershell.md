@@ -1,11 +1,11 @@
 ---
-title: "オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN: PowerShell | Microsoft Docs"
-description: "パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、PowerShell を使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。"
+title: 'オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN: PowerShell | Microsoft Docs'
+description: パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、PowerShell を使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: fcc2fda5-4493-4c15-9436-84d35adbda8e
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/12/2017
+ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 177c7474a69ba550c5e7984354d7f309b3bedb20
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 84df8b286bd9f3ae3012f297c3a929ef57369ff6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>PowerShell を使用してサイト間 VPN 接続を備えた VNet を作成する
 
@@ -136,7 +136,7 @@ New-AzureRmResourceGroup -Name TestRG1 -Location 'East US'
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
 
-## 3.<a name="localnet"></a>ローカル ネットワーク ゲートウェイを作成する
+## 手順 3.<a name="localnet"></a>ローカル ネットワーク ゲートウェイを作成する
 
 ローカル ネットワーク ゲートウェイは通常、オンプレミスの場所を指します。 サイトに Azure が参照できる名前を付け、接続を作成するオンプレミス VPN デバイスの IP アドレスを指定します。 また、VPN ゲートウェイを介して VPN デバイスにルーティングされる IP アドレスのプレフィックスも指定します。 指定するアドレスのプレフィックスは、オンプレミス ネットワークのプレフィックスです。 オンプレミス ネットワークが変わった場合は、プレフィックスを簡単に更新できます。
 
@@ -252,7 +252,7 @@ VPN 接続を検証する方法はいくつかあります。
 
 [!INCLUDE [Modify gateway IP address](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 *  接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。

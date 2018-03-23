@@ -1,26 +1,20 @@
 ---
-title: "SQL Database の拡張イベント | Microsoft Docs"
-description: "Azure SQL Database での拡張イベント (XEvents) について、またイベント セッションが Microsoft SQL Server におけるイベント セッションと若干異なる点について説明します。"
+title: SQL Database の拡張イベント | Microsoft Docs
+description: Azure SQL Database での拡張イベント (XEvents) について、またイベント セッションが Microsoft SQL Server におけるイベント セッションと若干異なる点について説明します。
 services: sql-database
-documentationcenter: 
 author: MightyPen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 3b28cf15-f820-4b3c-8310-908d6d5b9d0c
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: f4e41d340b38a5f29387d75b8f65b68c5fb31eb9
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: dc4660b33d8df28fd59929838e054f6703c48107
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="extended-events-in-sql-database"></a>SQL Database の拡張イベント
 [!INCLUDE [sql-database-xevents-selectors-1-include](../../includes/sql-database-xevents-selectors-1-include.md)]
@@ -85,7 +79,7 @@ Azure SQL Database と Microsoft SQL Server の拡張イベントについては
 
 拡張イベント機能をサポートする [カタログ ビュー](http://msdn.microsoft.com/library/ms174365.aspx)がいくつかあります。 カタログ ビューでは、現在のデータベースにおけるユーザー作成のイベント セッションの *メタデータまたは定義* がわかります。 ビューでは、アクティブなイベント セッションのインスタンスについてはわかりません。
 
-| カタログ ビューの名前<br/>カタログ ビュー | 説明 |
+| カタログ ビューの名前<br/>カタログ ビュー | [説明] |
 |:--- |:--- |
 | **sys.database_event_session_actions** |イベント セッションの各イベントに対する操作ごとに行を返します。 |
 | **sys.database_event_session_events** |イベント セッションのイベントごとに行を返します。 |
@@ -99,7 +93,7 @@ Microsoft SQL Server では、同様のカタログ ビュー名には *.databas
 
 Azure SQL Database には、拡張イベントをサポートする [動的管理ビュー (DMV)](http://msdn.microsoft.com/library/bb677293.aspx) があります。 DMV では *アクティブな* イベント セッションについて参照できます。
 
-| DMV の名前 | 説明 |
+| DMV の名前 | [説明] |
 |:--- |:--- |
 | **sys.dm_xe_database_session_event_actions** |イベント セッション アクションに関する情報を返します。 |
 | **sys.dm_xe_database_session_events** |セッション イベントに関する情報を返します。 |

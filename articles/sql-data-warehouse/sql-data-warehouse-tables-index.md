@@ -1,25 +1,24 @@
 ---
-title: "SQL Data Warehouse でのテーブルのインデックス作成 | Microsoft Azure"
-description: "Azure SQL Data Warehouse でのテーブルのインデックス作成の概要です。"
+title: SQL Data Warehouse でのテーブルのインデックス作成 | Microsoft Azure
+description: Azure SQL Data Warehouse でのテーブルのインデックス作成の概要です。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
-ms.assetid: 3e617674-7b62-43ab-9ca2-3f40c41d5a88
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 672270536a7405e617edbcf5ec0e6eff68be7fde
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f0e19be5ec7453a76ff4f22ead6d3885e50beca8
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのインデックス作成
 > [!div class="op_single_selector"]
@@ -295,7 +294,7 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 
 `CTAS` を使用したパーティションの再作成の詳細については、[パーティション][Partition]に関する記事を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、[テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのパーティション分割][Partition]、[テーブルの統計の管理][Statistics]、[一時テーブル][Temporary]に関する各記事を参照してください。  ベスト プラクティスの詳細については、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事を参照してください。
 
 <!--Image references-->
@@ -308,7 +307,7 @@ ALTER TABLE [dbo].[FactInternetSales_20000101_20010101] SWITCH PARTITION 2 TO  [
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
-[Concurrency]: ./sql-data-warehouse-develop-concurrency.md
+[Concurrency]: ./resource-classes-for-workload-management.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 

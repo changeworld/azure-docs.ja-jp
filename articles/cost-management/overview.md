@@ -1,8 +1,8 @@
 ---
-title: "Azure Cost Management by Cloudyn の概要 | Microsoft Docs"
-description: "Azure Cost Management by Cloudyn は、Azure や他のクラウド リソースを使うときに役立つマルチクラウド コスト管理ソリューションです。"
+title: Azure Cost Management の概要 | Microsoft Docs
+description: Azure Cost Management は、Azure や他のクラウド リソースを使用する際に役立つマルチクラウド コスト管理ソリューションです。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,17 +10,17 @@ ms.topic: overview
 ms.service: cost-management
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: f09bb135d4521325ab3e3e12af2f69d862434b75
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e2f12a989eb275e645c8b3bde3494928c5cbdb47
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Azure Cost Management とは
 
-Azure Cost Management by Cloudyn では、クラウドの使用状況と、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーに対する支出を追跡することができます。 わかりやすいダッシュボードのレポートは、コストの割り当てとショーバック/チャージバックに役立ちます。 Cost Management を使うと、使用率が低いリソースを識別して管理、調整することにより、クラウドの支出を最適化できます。
+Microsoft の子会社である Cloudyn によってライセンスが供与される Azure Cost Management では、クラウドの使用状況と、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーに対する支出を追跡することができます。 わかりやすいダッシュボードのレポートは、コストの割り当てとショーバック/チャージバックに役立ちます。 Cost Management を使うと、使用率が低いリソースを識別して管理、調整することにより、クラウドの支出を最適化できます。
 
-入門ビデオを視聴するには、「[Azure Cost Management by Cloudyn の概要](https://youtu.be/NWIRny6Wpsk)」を参照してください。
+入門ビデオを視聴するには、[Azure Cost Management の概要](https://youtu.be/NWIRny6Wpsk)に関するページを参照してください。
 
 ## <a name="monitor-usage-and-spending"></a>使用状況と支出の監視
 

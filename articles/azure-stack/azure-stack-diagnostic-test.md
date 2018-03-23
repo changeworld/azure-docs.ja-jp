@@ -1,6 +1,6 @@
 ---
-title: "Azure Stack で検証テストを実行する | Microsoft Docs"
-description: "Azure Stack の診断のログ ファイルを収集する方法"
+title: Azure Stack で検証テストを実行する | Microsoft Docs
+description: Azure Stack の診断のログ ファイルを収集する方法
 services: azure-stack
 author: mattbriggs
 manager: femila
@@ -11,17 +11,17 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 02/26/2018
 ms.author: mabrigg
-ms.openlocfilehash: 53ef19628b40c4a008143c867c9e7867ac91854d
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: 4f86397d4db5a0e67b294befd92087166d6b8109
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="run-a-validation-test-for-azure-stack"></a>Azure Stack の検証テストを実行する
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
  
 Azure Stack の状態を検証できます。 問題が発生している場合は、Microsoft カスタマー サービス サポートに連絡してください。 サポートは、ユーザーに管理ノードから Test-AzureStack を実行するよう依頼します。 この検証テストによって障害が分離されます。 それによりサポートは詳細なログを分析し、エラーが発生した領域に焦点を絞って、問題の解決でユーザーと協力することができます。
 
@@ -57,17 +57,17 @@ Azure Stack の状態を検証します。 このコマンドレットは、Azur
   Test-AzureStack
 ````
 
-#### <a name="parameters"></a>parameters
+#### <a name="parameters"></a>パラメーター
 
 | パラメーター               | 値           | 必須 | 既定値 |
 | ---                     | ---             | ---      | ---     |
 | ServiceAdminCredentials | PSCredential    | いいえ        | FALSE   |
 | DoNotDeployTenantVm     | SwitchParameter | いいえ        | FALSE   |
 | AdminCredential         | PSCredential    | いいえ        | 該当なし      |
-| StorageConnectionString | String          | いいえ        | 該当なし      |
-| 一覧表示                    | SwitchParameter | いいえ        | FALSE   |
-| 無視                  | String          | いいえ        | 該当なし      |
-| Include (含める)                 | String          | いいえ        | 該当なし      |
+<!-- | StorageConnectionString | String          | いいえ        | 該当なし      | 1802 ではサポートされていません -->
+| List                    | SwitchParameter | いいえ        | FALSE   |
+| Ignore                  | String          | いいえ        | 該当なし      |
+| Include                 | String          | いいえ        | 該当なし      |
 
 Test-AzureStack コマンドレットは、Verbose、Debug、ErrorAction、ErrorVariable、WarningAction、WarningVariable、OutBuffer、PipelineVariable、および OutVariable の一般的なパラメーターをサポートしています。 詳細については、「[About Common Parameters (一般的なパラメーターについて)](http://go.microsoft.com/fwlink/?LinkID=113216)」を参照してください。 
 
@@ -148,7 +148,7 @@ PEP セッションで、次を実行します。
 
 次の表は、Test-AzureStack による検証テストの実行をまとめたものです。
 
-| Name                                                                                                                              |
+| 名前                                                                                                                              |
 |-----------------------------------------------------------------------------------------------------------------------------------|-----------------------|
 | Azure Stack クラウド ホスティング インフラストラクチャの概要                                                                                  |
 | Azure Stack ストレージ サービスの概要                                                                                              |

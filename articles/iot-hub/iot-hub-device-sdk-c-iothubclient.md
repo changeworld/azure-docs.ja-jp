@@ -1,11 +1,11 @@
 ---
-title: "C 用 Azure IoT device SDK – IoTHubClient | Microsoft Docs"
-description: "C 用 Azure IoT device SDK で IoTHubClient ライブラリを使用し、IoT Hub と通信するデバイス アプリを作成する方法。"
+title: C 用 Azure IoT device SDK – IoTHubClient | Microsoft Docs
+description: C 用 Azure IoT device SDK で IoTHubClient ライブラリを使用し、IoT Hub と通信するデバイス アプリを作成する方法。
 services: iot-hub
-documentationcenter: 
-author: olivierbloch
+documentationcenter: ''
+author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 828cf2bf-999d-4b8a-8a28-c7c901629600
 ms.service: iot-hub
 ms.devlang: cpp
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
-ms.author: obloch
-ms.openlocfilehash: 8428857bcd444f99ba2c0f6b31ff662d5596b591
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: yizhon
+ms.openlocfilehash: 6efd2980ce4dde99d934b3fe174d341fb68fac03
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
 本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)で、**C 用 Azure IoT device SDK** を紹介しました。その記事では、SDK に 2 つのアーキテクチャの層が存在することを説明しました。 その基礎となるのが、IoT Hub との通信を直接管理する **IoTHubClient** ライブラリです。 これを土台にしシリアル化サービスを提供する **serializer** ライブラリもあります。 この記事では、 **IoTHubClient** ライブラリについてさらに詳しく説明します。
@@ -264,7 +264,7 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 バッチ処理オプションは重要です。 既定では、このライブラリはイベントを個別に入力します (**IoTHubClient\_LL\_SendEventAsync** に渡したものが 1 つのイベントになります)。 バッチ処理オプションが **true**の場合、ライブラリはバッファーから可能な限りの (IoT Hub が許容する最大メッセージ サイズまでの) イベントを収集します。  イベントのバッチは、(個々のイベントが JSON 配列にまとめられて) 単一の HTTPS 呼び出しで IoT Hub に送信されます。 バッチ処理を有効にすると、通常はネットワーク ラウンドトリップが減少するため、パフォーマンスの大幅な向上につながります。 個別の各イベントの一連のヘッダーではなく、イベント バッチで一連の HTTPS ヘッダーが送信されるため、帯域幅が大幅に削減されます。 それ以外の方法で実行する特別な理由がない限り、一般的にバッチ処理を有効にします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 [次の記事](iot-hub-device-sdk-c-serializer.md) では、 **serializer** ライブラリについて同様に詳細を紹介します。
 
 IoT Hub の開発に関する詳細については、「[Azure IoT SDKs (Azure IoT SDK)][lnk-sdks]」を参照してください。

@@ -1,26 +1,19 @@
 ---
-title: "最初の Azure SQL Database の設計 | Microsoft Docs"
-description: "Azure ポータルで SQL Server Management Studio を使用して、最初の Azure SQL データベースを設計する方法について説明します。"
+title: 最初の Azure SQL Database の設計 | Microsoft Docs
+description: Azure ポータルで SQL Server Management Studio を使用して、最初の Azure SQL データベースを設計する方法について説明します。
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,develop databases
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 01/29/2018
+ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: 52ec8afa693e6ac3c8c73f070f748a01116ec68f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 12301d46b497b49032b1b8bdefe2056a7df143d1
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="design-your-first-azure-sql-database"></a>最初の Azure SQL Database の設計
 

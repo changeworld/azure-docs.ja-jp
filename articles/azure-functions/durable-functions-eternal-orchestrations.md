@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions での永続的オーケストレーション - Azure"
-description: "Azure Functions の Durable Functions 拡張機能を使用して永続的オーケストレーションを実装する方法について説明します。"
+title: Durable Functions での永続的オーケストレーション - Azure
+description: Azure Functions の Durable Functions 拡張機能を使用して永続的オーケストレーションを実装する方法について説明します。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 8560921734e5037182955d8fe9605cc9831bf1b4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: cb4115b98091f55a0324ea795ffcc83cb29223a4
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions での永続的オーケストレーション (Azure Functions)
 
@@ -94,6 +94,3 @@ public static async Task Run(
 
 > [!div class="nextstepaction"]
 > [単一のオーケストレーションを実装する方法を確認する](durable-functions-singletons.md)
-
-> [!div class="nextstepaction"]
-> [永続的オーケストレーションの例を実行する](durable-functions-counter.md)

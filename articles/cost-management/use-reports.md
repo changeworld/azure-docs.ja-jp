@@ -1,20 +1,20 @@
 ---
-title: "Azure Cost Management の Cost Management レポートの使用 | Microsoft Docs"
-description: "この記事では、Cloudyn ポータルでさまざまな Cost Management レポートを使用する方法について説明します。"
+title: Azure Cost Management の Cost Management レポートの使用 | Microsoft Docs
+description: この記事では、Cloudyn ポータルでさまざまな Cost Management レポートを使用する方法について説明します。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 0a4f6a5940ccffe897a5609b837ddaeea98d87aa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.custom: ''
+ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="use-cost-management-reports"></a>Cost Management レポートの使用
 
@@ -152,7 +152,7 @@ Cloudyn では、会計アフィニティを適用して、リンク付けされ
 3. グループを追加します。
 4. 事前に作成したコスト モデルを選択します。
 5. 実績コストまたは償却コストを選択します。
-6. 生の課金データ ビューを表示するために配賦ルールを割り当てるか、または Cloudyn ビューによる再計算されたコストに対して割り当てるかを選択します。
+6. 生の課金データ ビューを表示するために配賦ルールを割り当てるか、または再計算されたコスト ビューに割り当てるかを選択します。
 
 レポートの例を次に示します。
 

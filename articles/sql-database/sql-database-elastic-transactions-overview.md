@@ -1,25 +1,20 @@
 ---
-title: "クラウド データベースにまたがる分散トランザクション"
-description: "Azure SQL Database を使用した Elastic Database トランザクションの概要"
+title: クラウド データベースにまたがる分散トランザクション
+description: Azure SQL Database を使用した Elastic Database トランザクションの概要
 services: sql-database
-documentationcenter: 
-author: torsteng
-manager: jhubbard
-editor: torsteng
-ms.assetid: e14df7a3-7788-4cfb-bcd1-7ad6433ef1f9
+author: stevestein
+manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
+ms.custom: scale out apps
 ms.workload: On Demand
 ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: 012fc38075285b898599517f3e6ed5a3c9eb854d
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 65657a4813467edd45a6eee4fa98964b4a781663
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>クラウド データベースにまたがる分散トランザクション
 Azure SQL Database (SQL DB) のエラスティック データベース トランザクションは、SQL DB 内の複数のデータベースにまたがるトランザクションを実行する機能です。 SQL DB の Elastic Database トランザクションは、.NET アプリケーションから ADO .NET を介して利用できます。[System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) クラスを使用することで、これまでに培ったプログラミングの経験を活かすことが可能です。 ライブラリを入手するには、[.NET Framework 4.6.1 (Web インストーラー)](https://www.microsoft.com/download/details.aspx?id=49981) をご覧ください。
@@ -133,9 +128,9 @@ Azure App Services では、ゲスト OS のアップグレードは現在サポ
 
 次の DMV が特に重要となります。
 
-* **sys.dm\_tran\_active\_transactions**: 現在アクティブなトランザクションとその状態を一覧表示します。 同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。 同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。 詳細については、 [DMV のドキュメント](https://msdn.microsoft.com/library/ms174302.aspx) を参照してください。
-* **sys.dm\_tran\_database\_transactions**: トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。 詳細については、 [DMV のドキュメント](https://msdn.microsoft.com/library/ms186957.aspx) を参照してください。
-* **sys.dm\_tran\_locks**: 現在実行中のトランザクションによって保持されているロックの情報が表示されます。 詳細については、 [DMV のドキュメント](https://msdn.microsoft.com/library/ms190345.aspx) を参照してください。
+* **sys.dm\_tran\_active\_transactions**: 現在アクティブなトランザクションとその状態を一覧表示します。 同じ分散トランザクションに属している子トランザクションは、UOW (Unit Of Work: 作業単位) 列で確認できます。 同じ分散トランザクションに属しているトランザクションはすべて同じ UOW 値を共有します。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms174302.aspx)をご覧ください。
+* **sys.dm\_tran\_database\_transactions**: トランザクションに関する追加情報 (ログにおけるトランザクションの位置など) が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms186957.aspx)をご覧ください。
+* **sys.dm\_tran\_locks**: 現在実行中のトランザクションによって保持されているロックの情報が表示されます。 詳細については、[DMV ドキュメント](https://msdn.microsoft.com/library/ms190345.aspx)をご覧ください。
 
 ## <a name="limitations"></a>制限事項
 SQL DB のエラスティック データベース トランザクションには現在、次の制限が適用されます。
@@ -144,7 +139,7 @@ SQL DB のエラスティック データベース トランザクションに�
 * サポートされるのは、.NET アプリケーションからクライアント側で調整されるトランザクションだけです。 将来的には、サーバー側の T-SQL サポート (BEGIN DISTRIBUTED TRANSACTION など) が予定されていますが、現時点では利用できません。 
 * WCF サービスをまたがるトランザクションはサポートされません。 たとえば、トランザクションを実行する WCF サービス メソッドがあるとします。 トランザクション スコープ内にこの呼び出しを囲い込むと、 [System.ServiceModel.ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception)として失敗します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 質問がある場合は、[SQL Database のフォーラム](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted)に投稿してください。機能に関するご要望は、[SQL Database に関するフィードバック フォーラム](https://feedback.azure.com/forums/217321-sql-database/)にお寄せください。
 
 <!--Image references-->

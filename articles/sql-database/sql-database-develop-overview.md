@@ -1,25 +1,20 @@
 ---
-title: "SQL Database アプリケーションの開発の概要 | Microsoft Docs"
-description: "SQL Database に接続するアプリケーションで使用できる接続ライブラリとベスト プラクティスについて説明します。"
+title: SQL Database アプリケーションの開発の概要 | Microsoft Docs
+description: SQL Database に接続するアプリケーションで使用できる接続ライブラリとベスト プラクティスについて説明します。
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: genemi
-ms.assetid: 67c02204-d1bd-4622-acce-92115a7cde03
+manager: craigg
+ms.reviewer: genemi
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.openlocfilehash: 5948db9a52dc24d75f3fecc4ed166dd327061b37
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: ec3569d37d399590b0c306a85f199221e7812253
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。
@@ -74,5 +69,5 @@ Elastic Scale は、スケール アウト (およびスケール イン) のプ
 * [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)。
 * [Azure SQL Database Elastic Scale プレビューの概要](sql-database-elastic-scale-get-started.md)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [SQL Database の機能](sql-database-technical-overview.md)すべてを確認します。

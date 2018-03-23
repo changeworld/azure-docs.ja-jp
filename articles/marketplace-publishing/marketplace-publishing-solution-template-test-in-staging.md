@@ -1,11 +1,11 @@
 ---
-title: "Marketplace のソリューション テンプレート プランのテスト | Microsoft Docs"
-description: "Azure Marketplace のソリューション テンプレート プランをテストする方法を理解します。"
+title: Marketplace のソリューション テンプレート プランのテスト | Microsoft Docs
+description: Azure Marketplace のソリューション テンプレート プランをテストする方法を理解します。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: ef8f9b5e-b98c-49f3-913f-cdf772c14c12
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2015
-ms.author: hascipio; v-divte
-ms.openlocfilehash: da1fc4713fd1d832c7ba91226f72cbef63b241bc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: e789d0996e72c935ed9d5f456f9868b73d5ef4ee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="test-your-solution-template-offer-in-staging"></a>ステージングでのソリューション テンプレート プランのテスト
 ステージングとは、プランをプライベートの「サンドボックス」にデプロイすることです。そこでは、本番にプッシュする前に、機能をテストおよび検証できます。 ステージングでは、プランはそれをデプロイしたお客様に表示されるのと同じように表示されます。 プランをステージングにプッシュするには認定を受ける必要があります。
@@ -36,7 +36,7 @@ ms.lasthandoff: 10/11/2017
    * パフォーマンス テストとストレス テストの実行
    * トポロジがベスト プラクティスに準拠しているか
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 結果に問題がなければ、プラン発行の最終段階である**手順 4** の「[Marketplace へのプランのデプロイ](marketplace-publishing-push-to-production.md)」に進むことができます。 問題があれば、プランに変更を加え、もう一度認定を要求してください。
 
 > [!NOTE]

@@ -1,28 +1,22 @@
 ---
-title: "移行後の管理 - Azure SQL Database | Microsoft Docs"
-description: "Azure SQL Database への移行後のデータベースの管理方法について説明します。"
+title: 移行後の管理 - Azure SQL Database | Microsoft Docs
+description: Azure SQL Database への移行後のデータベースの管理方法について説明します。
 services: sql-database
-documentationcenter: 
 author: joesackmsft
-manager: jhubbard
-editor: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
-ms.date: 12/06/2016
-ms.author: Joe.Sack
+ms.date: 03/16/2018
+ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: migration
-ms.openlocfilehash: ee1d847e04e1f1fa0472d8702c7022d622b9fe0f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4e50a1be3437ab1b027c1ca0f160402239e13e92
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>クラウドの新しい DBA – Azure SQL Database でのデータベースの管理
 

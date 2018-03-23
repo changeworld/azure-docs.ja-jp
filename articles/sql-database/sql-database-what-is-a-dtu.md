@@ -1,26 +1,20 @@
 ---
-title: "SQL Database: DTU とは  | Microsoft Docs"
-description: "Azure SQL Database トランザクション ユニットについて説明します。"
-keywords: "データベース オプション, データベース パフォーマンス"
+title: 'SQL Database: DTU とは  | Microsoft Docs'
+description: Azure SQL Database トランザクション ユニットについて説明します。
+keywords: データベース オプション, データベース パフォーマンス
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: CarlRabeler
-ms.assetid: 89e3e9ce-2eeb-4949-b40f-6fc3bf520538
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
 ms.date: 04/14/2017
 ms.author: carlrab
-ms.openlocfilehash: 4ab447cd2ad71a787e4d6bb6052299cec52d73d0
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 9d13541444f487ad6afb9f59c6c6ac646091d42c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU)
 この記事では、データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) について説明します。また、DTU または eDTU が最大数に達した場合に何が起こるかについても解説します。  
@@ -60,7 +54,7 @@ DTU は、さまざまなパフォーマンス レベルとサービス層の Az
 ## <a name="what-happens-when-i-hit-my-maximum-dtus"></a>DTU が最大数に達した場合に起こること
 選択したサービス レベル/パフォーマンス レベルで許可されている最大限度までデータベース ワークロードを実行するため、必要なリソースを提供できるようにパフォーマンス レベルが調整、制御されます。 ワークロードが CPU/データ IO/ログ IO のいずれかの上限に達した場合、許可される最大レベルでリソースを引き続き受け取りますが、クエリの待ち時間が長くなる場合があります。 上限に達してもエラーにはなりませんが、ワークロードが遅くなり、遅延が深刻になった場合はクエリのタイムアウトが発生するようになります。許可される同時ユーザー セッション/要求 (ワーカー スレッド) の上限に達した場合は、明示的なエラーが発生します。 CPU、メモリ、データの I/O、トランザクション ログの I/O 以外のリソースに対する制限については、「 [Azure SQL Database のリソース制限]( sql-database-resource-limits.md#what-happens-when-database-and-elastic-pool-resource-limits-are-reached) 」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 単一データベースとエラスティック プールで使用できる DTU と eDTU、および CPU、メモリ、データ I/O、トランザクション ログ I/O 以外のリソースの制限については、[サービス レベル](sql-database-service-tiers.md)に関するページをご覧ください。
 * (DTU の) 消費量を確認する場合には、「 [SQL Database Query Performance Insight](sql-database-query-performance.md) 」を参照してください。
 * DTU の各構成要素の割合を決める際に使用する OLTP ワークロードの裏で具体的にどのような方法論が採用されているかについては、「 [Azure SQL Database ベンチマークの概要](sql-database-benchmark-overview.md) 」を参照してください。

@@ -1,24 +1,19 @@
 ---
-title: "スケールアウトされたクラウド データベース間のデータ移動 | Microsoft Docs"
-description: "エラスティック データベース API を使用して、シャードを操作し、自己ホスト サービス経由でデータを移動する方法について説明します。"
+title: スケールアウトされたクラウド データベース間のデータ移動 | Microsoft Docs
+description: エラスティック データベース API を使用して、シャードを操作し、自己ホスト サービス経由でデータを移動する方法について説明します。
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 204fd902-0397-4185-985a-dea3ed7c7d9f
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 328989c4fc1f9a404d4c048eb148a95e9105bdf5
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 9e2b231ad2e9fc5ab07532daef44da9870cef4ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 お客様がサービスとしてのソフトウェアの開発者で、突然、アプリが多大な要求を受けた場合、その増加に対応する必要があります。 そのため、データベース (シャード) を追加します。 データの整合性を破壊することなく、新しいデータベースにデータを再分散する方法 **Split-Merge ツール**を使用して、データを制約付きデータベースから新しいデータベースに移動します。  
@@ -27,7 +22,7 @@ Split-Merge ツールは、Azure Web サービスとして実行されます。 
 
 ![概要][1]
 
-## <a name="download"></a>ダウンロード
+## <a name="download"></a>[ダウンロード]
 [Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>ドキュメント
@@ -138,7 +133,7 @@ Split-Merge サービスの現在の実装には、次の要件と制限が適�
 ## <a name="billing"></a>課金
 Split-Merge サービスは、Microsoft Azure サブスクリプションのクラウド サービスとして実行されます。 そのため、クラウド サービスの料金がサービスのインスタンスに適用されます。 移動/分割/マージ操作を頻繁に実行する場合を除き、Split-Merge クラウド サービスを削除することをお勧めします。 こうすることで、実行中のまたはデプロイされたクラウド サービス インスタンスに対して発生するコストを削減できます。 分割/マージの操作を実行する必要があるときはいつでも簡単に実行可能な構成を再デプロイして開始することができます。 
 
-## <a name="monitoring"></a>Monitoring
+## <a name="monitoring"></a>監視
 ### <a name="status-tables"></a>状態テーブル
 Split-Merge サービスでは、完了した要求と実行中の要求を監視するための **RequestStatus** テーブルがメタデータ ストア データベースに用意されています。 このテーブルには、この Split-Merge サービスのインスタンスに送信されたそれぞれの Split-Merge 要求データが行として含まれます。 それぞれの要求に対して、次の情報が含まれます。
 
@@ -186,7 +181,7 @@ NuGet パッケージで提供される Web ロール用と worker ロール用�
 
 ![構成][3]
 
-## <a name="performance"></a>パフォーマンス
+## <a name="performance"></a>[パフォーマンス]
 一般に、Azure SQL Database の上位のより高パフォーマンスのサービス階層ほど、より高いパフォーマンスを期待できます。 上位のサービス階層で提供されるより優れた IO、CPU、およびメモリ割り当ては、Split-Merge サービスが使用する一括コピーおよび削除操作に役立ちます。 そのため、定義された一定期間のデータベースに対してのみサービス階層を増やします。
 
 サービスでは、検証クエリが通常の操作の一部としても実行されます。 検証クエリは、ターゲット範囲に想定外のデータが存在していないことを確認して、すべての分割/マージ/移動操作が一貫性のある状態で開始されることを保証します。 これらのクエリは、操作のスコープと要求の定義の一部として提供されたバッチ サイズによって定義されたシャーディング キー範囲に作用します。 これらのクエリは、先頭の列にシャーディング キーを含むインデックスがあるときに最高のパフォーマンスを発揮します。 

@@ -1,11 +1,11 @@
 ---
-title: "オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN: ポータル | Microsoft Docs"
-description: "パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、ポータルを使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。"
+title: 'オンプレミスのネットワークを Azure 仮想ネットワークに接続する: サイト間 VPN: ポータル | Microsoft Docs'
+description: パブリック インターネットを経由したオンプレミスのネットワークから Azure 仮想ネットワークへの IPsec 接続を作成する手順。 これらの手順は、ポータルを使用してクロスプレミスのサイト間 VPN Gateway 接続を作成する際に役立ちます。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 827a4db7-7fa5-4eaf-b7e1-e1518c51c815
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/17/2017
+ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4f5e249238020429b6c6e0d39c580c83bc43969e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 3f85893884d11e89c1780db83f347005859b170a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure Portal でサイト間接続を作成する
 
@@ -79,9 +79,11 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="gatewaysubnet"></a>3.ゲートウェイ サブネットを作成する
 
-[!INCLUDE [vpn-gateway-aboutgwsubnet](../../includes/vpn-gateway-about-gwsubnet-include.md)]
+[!INCLUDE [about gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-s2s-rm-portal-include.md)]
+
+[!INCLUDE [no nsg](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ## <a name="VNetGateway"></a>4.VPN ゲートウェイを作成する
 
@@ -133,7 +135,7 @@ ms.lasthandoff: 12/18/2017
 3. "サイト対サイト" を使用して接続している場合で、かつまだ接続先となるサイトのローカル ネットワーク ゲートウェイを作成していない場合は、新たに作成することができます。
 4. 使用する共有キーを指定し、**[OK]** をクリックして接続を作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * BGP の詳細については、[BGP の概要](vpn-gateway-bgp-overview.md)に関する記事と [BGP の構成方法](vpn-gateway-bgp-resource-manager-ps.md)に関する記事を参照してください。
 * 強制トンネリングについては、[強制トンネリング](vpn-gateway-forced-tunneling-rm.md)に関する記事を参照してください。

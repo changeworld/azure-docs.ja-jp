@@ -1,11 +1,11 @@
 ---
-title: "ハイブリッド Azure Active Directory 参加済みデバイスの構成方法 | Microsoft Docs"
-description: "ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。"
+title: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法 | Microsoft Docs
+description: ハイブリッド Azure Active Directory 参加済みデバイスの構成方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 54e1b01b-03ee-4c46-bcf0-e01affc0419d
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 203e36b198186db63b7e902db296adeaa9ffb4ee
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
@@ -34,7 +34,7 @@ Azure Active Directory (Azure AD) のデバイス管理を使用して、ユー�
 
 [システム準備ツール (Sysprep)](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-vista/cc721940(v=ws.10)) を利用している場合は、必ず Azure AD にまだ登録されていない Windows のインストールからイメージを作成してください。
 
-Windows 10 Anniversary Update および Windows Server 2016 が実行されているすべてのドメイン参加済みデバイスは、以下の構成手順が完了したら、デバイスの再起動時またはユーザーのサインイン時に Azure AD に自動的に登録されます。 この自動登録の動作が優先されない場合、または制御されたロールアウトが必要な場合は、もう一方の構成手順に従う前に、以下の「デプロイとロールアウトの制御」セクションの手順に従って、自動ロールアウトを選択的に有効または無効にしてください。  
+Windows 10 Anniversary Update および Windows Server 2016 が実行されているすべてのドメイン参加済みデバイスは、以下の構成手順が完了したら、デバイスの再起動時またはユーザーのサインイン時に Azure AD に自動的に登録されます。 **この自動登録の動作が優先されない場合、または制御されたロールアウトが必要な場合**は、もう一方の構成手順に従う前に、以下の「手順 4: デプロイとロールアウトの制御」セクションの手順に従って、自動ロールアウトを選択的に有効または無効にしてください。  
 
 説明を読みやすくするために、このトピックでは以下の用語を使用します。 
 
@@ -542,7 +542,7 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 
 ### <a name="remarks"></a>解説
 
-- ドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターについては、自動登録のロールアウトをグループ ポリシー オブジェクトで制御することができます。
+- ドメイン参加済み Windows 10 コンピューターおよび Windows Server 2016 コンピューターについては、自動登録のロールアウトをグループ ポリシー オブジェクトで制御することができます。 **これらのデバイスを Azure AD に自動登録したくない場合、または登録を制御したい場合は**、構成手順を開始する前に、自動登録を無効にするグループ ポリシーをそのすべてのデバイスに展開する必要があります。 構成が完了し、テストする準備ができたら、自動登録を有効にするグループ ポリシーを、最初はテスト デバイスにのみ展開し、その後、他のすべてのデバイスに好きなように展開します。
 
 - Windows 10 November 2015 Update は、ロールアウト グループ ポリシー オブジェクトが**設定されている場合にのみ**、自動的に Azure AD に参加します。
 

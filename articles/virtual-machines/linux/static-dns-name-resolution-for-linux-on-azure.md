@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI 2.0 で VM の名前解決に内部 DNS を使用する | Microsoft Docs"
-description: "仮想ネットワーク インターフェイス カードの作成方法および Azure CLI 2.0 で Azure での VM の名前解決に内部 DNS を使用する方法"
+title: Azure CLI 2.0 で VM の名前解決に内部 DNS を使用する | Microsoft Docs
+description: 仮想ネットワーク インターフェイス カードの作成方法および Azure CLI 2.0 で Azure での VM の名前解決に内部 DNS を使用する方法
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: vlivech
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -15,11 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: v-livech
-ms.openlocfilehash: fd85ab12a552f83a407dfeeca7ee455dcf731989
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: bb7234b6b046963a6b3a649cc521655b88cd9875
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-virtual-network-interface-cards-and-use-internal-dns-for-vm-name-resolution-on-azure"></a>仮想ネットワーク インターフェイス カードを作成して Azure での VM の名前解決に内部 DNS を使用する
 この記事では、仮想ネットワーク インターフェイス カード (vNIC) と DNS ラベル名を Azure CLI 2.0 と共に使用して Linux VM の静的な内部 DNS 名を設定する方法を説明します。 これらの手順は、[Azure CLI 1.0](static-dns-name-resolution-for-linux-on-azure-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。 静的 DNS 名は、このドキュメントで使用している Jenkins ビルド サーバーや、Git サーバーなどの永続的なインフラストラクチャ サービスに使用されます。
@@ -30,7 +30,7 @@ ms.lasthandoff: 02/09/2018
 * [SSH パブリック キー ファイルおよびプライベート キー ファイル](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="quick-commands"></a>クイック コマンド
-タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。 これらの手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/#az_login) を使用して Azure アカウントにログインする必要があります。
+タスクをすばやく実行する必要がある場合のために、次のセクションでは、必要なコマンドの詳細について説明します。 詳細な情報と各手順のコンテキストが、ドキュメントの残りの部分に記載されています。[ここからお読みください](#detailed-walkthrough)。 これらの手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。
 
 前提条件: リソース グループ、仮想ネットワークおよびサブネット、SSH 受信が設定されたネットワーク セキュリティ グループ。
 
@@ -76,7 +76,7 @@ az group create --name myResourceGroup --location westus
 
 ## <a name="create-the-virtual-network"></a>仮想ネットワークの作成
 
-次に、VM をデプロイする仮想ネットワークを構築します。 このチュートリアルでは、仮想ネットワークにサブネットを 1 つ含めます。 Azure 仮想ネットワークの詳細については、[Azure CLI を使用した仮想ネットワークの作成](../../virtual-network/virtual-networks-create-vnet-arm-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。 
+次に、VM をデプロイする仮想ネットワークを構築します。 このチュートリアルでは、仮想ネットワークにサブネットを 1 つ含めます。 Azure 仮想ネットワークの詳細については、[仮想ネットワークの作成](../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)に関するページを参照してください。 
 
 [az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) で仮想ネットワークを作成します。 次の例では、`myVnet` という名前の仮想ネットワークと `mySubnet` という名前のサブネットを作成します。
 

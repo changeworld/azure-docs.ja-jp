@@ -1,24 +1,24 @@
 ---
-title: "Azure Log Analytics Linux エージェントのトラブルシューティング | Microsoft Docs"
-description: "Log Analytics Linux エージェントで最も一般的な問題の現象、原因、解決方法を説明します。"
+title: Azure Log Analytics Linux エージェントのトラブルシューティング | Microsoft Docs
+description: Log Analytics Linux エージェントで最も一般的な問題の現象、原因、解決方法を説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/24/2018
+ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 895a77a66f50b4c5217ec7d672f6441b85bf1856
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 80d7e39b284554ebfa8cac4488e1663b3e3648e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-troubleshoot-issues-with-the-linux-agent-for-log-analytics"></a>Log Analytics 用 Linux エージェントに関する問題のトラブルシューティング方法
 
@@ -37,12 +37,12 @@ ms.lasthandoff: 02/01/2018
 2. 「[プロキシ設定を更新する](log-analytics-agent-manage.md#update-proxy-settings)」セクションを参照して、プロキシ サーバー経由で通信するようにエージェントを正しく構成したことを確認します。    
 * 以下の Log Analytics サービス エンドポイントが許可リストに載っていることを再確認します。
 
-    |エージェントのリソース| ポート |  
-    |------|---------|  
-    |*.ods.opinsights.azure.com | ポート 443|   
-    |*.oms.opinsights.azure.com | ポート 443|   
-    |ods.systemcenteradvisor.com | ポート 443|   
-    |*.blob.core.windows.net/ | ポート 443|   
+    |エージェントのリソース| ポート | 方向 |
+    |------|---------|----------|  
+    |*.ods.opinsights.azure.com | ポート 443| 受信および送信 |  
+    |*.oms.opinsights.azure.com | ポート 443| 受信および送信 |  
+    |*.blob.core.windows.net | ポート 443| 受信および送信 |  
+    |*.azure-automation.net | ポート 443| 受信および送信 | 
 
 ## <a name="issue-you-receive-a-403-error-when-trying-to-onboard"></a>問題: オンボードしようとすると 403 エラーが発生する
 

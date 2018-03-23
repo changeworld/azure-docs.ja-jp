@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー | Microsoft Docs"
-description: "Microsoft やコミュニティからの Runbook とモジュールを Azure Automation 環境にインストールして使用できます。  この記事では、これらのリソースにアクセスしたり、自分の Runbook をギャラリーに投稿したりする方法について説明します。"
+title: Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
+description: Microsoft やコミュニティからの Runbook とモジュールを Azure Automation 環境にインストールして使用できます。  この記事では、これらのリソースにアクセスしたり、自分の Runbook をギャラリーに投稿したりする方法について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: d3fee7b4-630a-4c10-8425-9bf51d7c9e58
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/29/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 91aa10b1e7dfbe47107257fa0a5fe14f7b43ff71
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+manager: carmonm
+ms.openlocfilehash: 6a9298c0b7331bfa8af76eb904d256f6302816bf
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー
 Azure Automation で独自の Runbook およびモジュールを作成するのではなく、マイクロソフトやコミュニティによって既に作成されているさまざまなシナリオにアクセスできます。  これらのシナリオを変更しないでそのまま使用することも、特定の要件に合うように編集することもできます。
@@ -58,7 +52,7 @@ Runbook ギャラリーから直接インポートできるのは、Azure ポー
 * アップロードの概要が Runbook ギャラリーの結果に表示されるので、ユーザーが Runbook の機能を特定するのに役立つ詳細な情報を提供する必要があります。
 * 次のタグから 1 ～ 3 個をアップロードに割り当てる必要があります。  ウィザードでは、Runbook はそのタグに一致するカテゴリの下に表示されます。  この一覧にないタグは、ウィザードによって無視されます。 一致するタグを指定しないと、Runbook はその他のカテゴリに表示されます。
   
-  * Backup
+  * バックアップ
   * 容量管理
   * Change Control
   * コンプライアンス

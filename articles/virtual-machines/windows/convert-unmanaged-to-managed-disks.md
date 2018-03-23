@@ -1,13 +1,13 @@
 ---
-title: "Windows 仮想マシンを非管理対象ディスクから管理ディスクに変換する - Azure Managed Disks |Microsoft Docs"
-description: "Resource Manager デプロイメント モデルで PowerShell を使用して Windows VM を非管理対象ディスクから管理ディスクに変換する方法"
+title: Windows 仮想マシンを非管理対象ディスクから管理ディスクに変換する - Azure Managed Disks |Microsoft Docs
+description: Resource Manager デプロイメント モデルで PowerShell を使用して Windows VM を非管理対象ディスクから管理ディスクに変換する方法
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/03/2018
 ms.author: cynthn
-ms.openlocfilehash: dd9ebaf9a1c8b3112623af4228efa0d9063c1e52
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 92168ba5605e119d42ba40ee694cebb3ad116041
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="convert-a-windows-virtual-machine-from-unmanaged-disks-to-managed-disks"></a>Windows 仮想マシンを非管理対象ディスクから管理ディスクに変換します
 
@@ -50,17 +50,12 @@ ms.lasthandoff: 01/04/2018
   Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
   ```
 
-2. [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) コマンドレットを使用して、VM を Managed Disks に変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む前の VM を変換します。
+2. [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) コマンドレットを使用して、VM を Managed Disks に変換します。 次のプロセスでは、OS ディスクとすべてのデータ ディスクを含む前の VM を変換し、仮想マシンを起動します。
 
   ```azurepowershell-interactive
   ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vmName
   ```
 
-3. Managed Disks に変換した後、[Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm) で VM を起動します。 次の例では、前の VM を再起動します。
-
-  ```azurepowershell-interactive
-  Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-  ```
 
 
 ## <a name="convert-vms-in-an-availability-set"></a>可用性セットの VM を変換する
@@ -84,7 +79,7 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
   Update-AzureRmAvailabilitySet -AvailabilitySet $avSet -Sku Aligned
   ```
 
-2. 可用性セット内の VM の割り当てを解除し、変換します。 次のスクリプトは、[Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) コマンドレットを使用して各 VM の割り当てを解除し、これを [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) を使用して変換し、[Start-AzureRmVM](/powershell/module/azurerm.compute/start-azurermvm) を使用して再起動します。
+2. 可用性セット内の VM の割り当てを解除し、変換します。 次のスクリプトは、[Stop-AzureRmVM](/powershell/module/azurerm.compute/stop-azurermvm) コマンドレットを使用して各 VM の割り当てを解除し、これを [ConvertTo-AzureRmVMManagedDisk](/powershell/module/azurerm.compute/convertto-azurermvmmanageddisk) を使用して変換し、変換プロセスの一環として自動的に再起動します。
 
   ```azurepowershell-interactive
   $avSet = Get-AzureRmAvailabilitySet -ResourceGroupName $rgName -Name $avSetName
@@ -94,7 +89,6 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
      $vm = Get-AzureRmVM -ResourceGroupName $rgName | Where-Object {$_.Id -eq $vmInfo.id}
      Stop-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name -Force
      ConvertTo-AzureRmVMManagedDisk -ResourceGroupName $rgName -VMName $vm.Name
-     Start-AzureRmVM -ResourceGroupName $rgName -Name $vm.Name
   }
   ```
 

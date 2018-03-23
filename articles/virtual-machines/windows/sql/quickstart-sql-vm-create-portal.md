@@ -1,6 +1,6 @@
 ---
-title: "ポータルで SQL Server Windows VM を作成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。"
+title: ポータルで SQL Server Windows VM を作成する | Microsoft Docs
+description: このチュートリアルでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 12/12/2017
 ms.author: jroth
-ms.openlocfilehash: e6ae3937a9805dfec8784efaf8370117754a03ad
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 080fecc7e89d9a76a9b160ba2ff4ba9dc31d0925
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="quickstart-create-a-sql-server-2017-windows-virtual-machine-in-the-azure-portal"></a>クイック スタート: Azure Portal で SQL Server 2017 Windows 仮想マシンを作成する
 
@@ -29,6 +29,11 @@ ms.lasthandoff: 02/21/2018
 
 > [!TIP]
 > このクイック スタートでは、SQL VM を迅速にプロビジョニングしてそこに接続する方法について説明します。 その他の SQL VM プロビジョニング オプションについては、[Azure Portal での Windows SQL Server VM のプロビジョニング ガイド](virtual-machines-windows-portal-sql-server-provision.md)を参照してください。
+
+> [!TIP]
+> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページをご覧ください。
+
+## <a id="subscription"></a>Azure サブスクリプションを取得する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

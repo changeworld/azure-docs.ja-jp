@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション | Microsoft Docs"
-description: "Azure Active Directory アプリケーション プロキシでワイルドカード アプリケーションを使用する方法について説明します。"
+title: Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション | Microsoft Docs
+description: Azure Active Directory アプリケーション プロキシでワイルドカード アプリケーションを使用する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: d5450da1-9e06-4d08-8146-011c84922ab5
@@ -15,11 +15,11 @@ ms.date: 02/06/2018
 ms.author: markvi
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 28e43d48b4fa27202d58ee081a60e2fb5bfe9d99
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: f97b2541bb755a9b7ab8e3602dfad90f50ada740
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="wildcard-applications-in-the-azure-active-directory-application-proxy"></a>Azure Active Directory アプリケーション プロキシのワイルドカード アプリケーション 
 
@@ -70,7 +70,7 @@ Azure Active Directory (Azure AD) では、大量のオンプレミス アプリ
 
 > `<yourAADTenantId>.tenant.runtime.msappproxy.net`
 
-CNAME を正しく構成したことを確認するには、いずれかのターゲット エンドポイントで [nslookup](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup) を使用できます (例: `expenses.adventure-works.com`)。  応答には、既に述べたエイリアス (`<Id.tenant>.runtime.msappproxy.net`) が含まれます。
+CNAME を正しく構成したことを確認するには、いずれかのターゲット エンドポイントで [nslookup](https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/nslookup) を使用できます (例: `expenses.adventure-works.com`)。  応答には、既に述べたエイリアス (`<yourAADTenantId>.tenant.runtime.msappproxy.net`) が含まれます。
 
 
 ## <a name="considerations"></a>考慮事項

@@ -1,11 +1,11 @@
 ---
-title: "Cloud Services と管理証明書 | Microsoft Docs"
-description: "Microsoft Azure で証明書を作成し、使用する方法を学習します。"
+title: Cloud Services と管理証明書 | Microsoft Docs
+description: Microsoft Azure で証明書を作成し、使用する方法を学習します。
 services: cloud-services
 documentationcenter: .net
 author: Thraka
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fc70d00d-899b-4771-855f-44574dc4bfc6
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.openlocfilehash: 4032a429901c675436cb5e7fb04aa5645925fa30
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6a1e4f5316cc0321c1409f9e48daeae6ee483bf6
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使われます ([管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure に[デプロイ](#deploy)する方法について説明します。
@@ -47,8 +47,6 @@ Azure Portal または Azure クラシック デプロイメント モデルを�
 
 ### <a name="limitations"></a>制限事項
 各サブスクリプションでは、管理証明書の数は 100 個までに制限されています。 また、特定のサービス管理者のユーザー ID の下にあるすべてのサブスクリプションでも、管理証明書の数は 100 個までに制限されています。 アカウント管理者のユーザー ID が既に 100 の管理証明書の追加に使用されていて、さらに証明書が必要な場合は、証明書を追加する共同管理者を追加できます。 
-
-100 を超える証明書を追加する前に既存の証明書を再利用できるかどうかをご確認ください。 共同管理者を使用すると、証明書の管理プロセスが不必要に複雑になる場合があります。
 
 <a name="create"></a>
 ## <a name="create-a-new-self-signed-certificate"></a>新しい自己署名証明書を作成する
@@ -92,7 +90,7 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 ### <a name="linux"></a>Linux
 [この](../virtual-machines/linux/mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)記事では、SSH で証明書を作成する方法について説明します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [サービス証明書を Azure Portal にアップロードします](cloud-services-configure-ssl-certificate-portal.md)。
 
 [管理 API 証明書](../azure-api-management-certs.md) を Azure Portal にアップロードします。

@@ -1,12 +1,12 @@
 ---
-title: "高速ネットワークを使った Azure 仮想マシンの作成 | Microsoft Docs"
-description: "高速ネットワークを使った Linux 仮想マシンの作成方法について説明します。"
+title: 高速ネットワークを使った Azure 仮想マシンの作成 | Microsoft Docs
+description: 高速ネットワークを使った Linux 仮想マシンの作成方法について説明します。
 services: virtual-network
-documentationcenter: 
+documentationcenter: ''
 author: jdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 01/04/2018
 ms.author: jimdial
-ms.openlocfilehash: f4908963e0650be9b12b745f6868a1ba6ad933e4
-ms.sourcegitcommit: d6984ef8cc057423ff81efb4645af9d0b902f843
+ms.openlocfilehash: c0017b8759a1f01b010172be562ed869d1d51a25
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-windows-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った Windows 仮想マシンの作成
 
 > [!IMPORTANT] 
-> 仮想マシンは、高速ネットワークを有効にして作成する必要があります。 この機能は、既存の仮想マシンでは有効にできません。 高速ネットワークを有効にするには、以下の手順を実行します。
+> 仮想マシンは、高速ネットワークを有効にして作成する必要があります。 この機能は、既存の仮想マシンでは有効にできません。 高速ネットワークを有効にするには、次の手順に従ってください。
 >   1. 仮想マシンの削除
 >   2. 高速ネットワークを有効にして仮想マシンを再作成する
 >
@@ -60,6 +60,8 @@ VM インスタンスの詳細については、[Windows VM のサイズ](../vir
 * **ネットワーク インターフェイスの作成:** 高速ネットワークは、新しい NIC でのみ有効にできます。 既存の NIC に対して有効にすることはできません。
 * **VM の作成:** 高速ネットワークを有効にした NIC は、VM の作成時にのみ VM に接続できます。 既存の VM に NIC を接続することはできません。 VM を既存の可用性セットに追加する場合は、可用性セット内のすべての VM でも高速ネットワークが有効になっている必要があります。
 * **Azure Resource Manager でのデプロイのみ:** 仮想マシン (クラシック) は高速ネットワークを使用してデプロイできません。
+
+この記事では、高速ネットワークを使用した仮想マシンを、Azure PowerShell を使って作成する手順について説明しますが、[高速ネットワークを使用した仮想マシンは、Azure Portal を使って作成することもできます](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)。 ポータルで、サポートされているオペレーティング システムと VM サイズで仮想マシンを作成する際に、**[設定]** の **[高速ネットワーク]** で **[有効]** を選択します。 仮想マシンが作成されたら、「[オペレーティング システムでドライバーがインストールされていることを確認する](#confirm-the-driver-is-installed-in-the-operating-system)」の手順を完了する必要があります。
 
 ## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 

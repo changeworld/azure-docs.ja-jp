@@ -1,25 +1,25 @@
 ---
-title: "開発者のための Azure Active Directory | Microsoft Docs"
-description: "Azure Active Directory 開発者ガイドのガイドおよびリファレンス記事の全一覧。"
+title: 開発者のための Azure Active Directory | Microsoft Docs
+description: Azure Active Directory 開発者ガイドのガイドおよびリファレンス記事の全一覧。
 services: active-directory
 documentationcenter: dev-center-name
 author: bryanla
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5c872c89-ef04-4f4c-98de-bc0c7460c7c2
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/19/2017
+ms.date: 03/08/2018
 ms.author: bryanla
 ms.custom: aaddev
-ms.openlocfilehash: b6190f64633034bb5fc28a1caf7ffa6c09215ef1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ccad1f12e4f99074763f116596b4467e822d9f35
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="articles-in-the-azure-ad-developer-guide"></a>Azure AD 開発者ガイドの記事
 次に示すのは、Azure Active Directory 開発者ガイドで扱っているすべてのトピックの一覧です。
@@ -43,6 +43,7 @@ ms.lasthandoff: 12/11/2017
 | [Office 365 販売者ダッシュボード](https://msdn.microsoft.com/office/office365/howto/submit-web-apps-seller-dashboard)               | O365 販売者ダッシュ ボードにアプリケーションを発行する方法 |
 | [Visual Studio 接続済みサービス](vs-active-directory-dotnet-getting-started.md)                                               | Visual Studio の MVC プロジェクトとの Azure AD 統合を使用する方法 |
 | [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers) | ADFS を使用してオンプレミスの Active Directory と統合する方法 |
+| [ADAL のエラー処理のベスト プラクティス](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-devhowto-adal-error-handling) | 耐障害性のあるエラー処理を構築し、ログ記録を有効にする方法 |
 
 ## <a name="reference"></a>リファレンス
 以下の記事は、REST と認証ライブラリ API、プロトコル、エラー、コード サンプル、エンドポイントの基礎を説明します。

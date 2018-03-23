@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Authenticator アプリのヘルプとサポート | Microsoft Docs"
-description: "Microsoft 認証アプリと Multi-factor Authentication に関してよく寄せられる質問の一覧を提供します。"
+title: Microsoft Authenticator アプリのヘルプとサポート | Microsoft Docs
+description: Microsoft 認証アプリと Multi-factor Authentication に関してよく寄せられる質問の一覧を提供します。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: f04d5bce-e99e-4f75-82d1-ef6369be3402
@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
-ms.author: barlan
+ms.date: 03/08/2018
+ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user
-ms.openlocfilehash: 2c109a53866f9fff8c61a157cf1194fe4dd6e1ac
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: aa3c6bb9196a17ae41c05458533f73f3ec315bd8
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="microsoft-authenticator-app-faq"></a>Microsoft Authenticator アプリに関する FAQ
 
@@ -28,6 +28,14 @@ ms.lasthandoff: 01/29/2018
 Microsoft Authenticator アプリは、Azure Authenticator アプリに置き換わり、Azure 多要素認証を使用するときに推奨されるアプリです。 Microsoft Authenticator アプリは、[Android](https://go.microsoft.com/fwlink/?linkid=866594)、[iOS](https://go.microsoft.com/fwlink/?linkid=866594)、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で利用できます。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
+
+### <a name="what-data-does-the-authenticator-store-on-my-behalf-and-how-can-i-delete-it"></a>Authenticator でユーザーについてどのようなデータが格納されますか? また、どうすれば削除できますか?
+
+Microsoft Authenticator には、アカウントの追加時に作成するアカウント情報が格納されます。 Authenticator を使用すると、診断ログがデバッグ目的で作成されます。これには、予期しない問題をマイクロソフトが診断するときに役立つ情報が格納されます。 ログ データにアクセスするには、**[ヘルプ]** > **[ログの送信]** > **[ログの表示]** の順に開きます。
+
+データを削除するには、アカウント タイルを削除します。 これにより、ログを含め、アプリケーションによって使用されているすべてのアカウント情報が削除されます。 
+
+マイクロソフトがユーザー データをどのように使用するかについて詳しくは、https://servicetrust.microsoft.com/ViewPage/PrivacyGettingStarted をご覧ください。
 
 ### <a name="what-are-the-codes-in-the-app-for-why-does-the-number-keep-counting-down"></a>アプリのコードの目的は何ですか。 番号が常にカウントダウンされるのはなぜですか。
 

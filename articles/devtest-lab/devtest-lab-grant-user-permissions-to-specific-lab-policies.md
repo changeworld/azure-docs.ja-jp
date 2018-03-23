@@ -1,11 +1,11 @@
 ---
-title: "特定のラボ ポリシーに対するアクセス許可をユーザーに付与する | Microsoft Docs"
-description: "各ユーザーのニーズに基づいて DevTest ラボの特定のラボ ポリシーに対するアクセス許可をユーザーに付与する方法について説明します。"
+title: 特定のラボ ポリシーに対するアクセス許可をユーザーに付与する | Microsoft Docs
+description: 各ユーザーのニーズに基づいて DevTest ラボの特定のラボ ポリシーに対するアクセス許可をユーザーに付与する方法について説明します。
 services: devtest-lab,virtual-machines,visual-studio-online
 documentationcenter: na
 author: craigcaseyMSFT
 manager: douge
-editor: 
+editor: ''
 ms.assetid: 5ca829f0-eb69-40a1-ae26-03a629db1d7e
 ms.service: devtest-lab
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2016
 ms.author: v-craic
 ms.openlocfilehash: f92ad5e991bdb066bb9680b4865501076d43f450
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>特定のラボ ポリシーに対するアクセス許可をユーザーに付与する
 ## <a name="overview"></a>概要
@@ -34,7 +34,7 @@ DevTest ラボでは、ポリシーはリソースの種類の 1 つで、RBAC �
 RBAC のカスタム ロールの詳細については、[カスタム ロールのアクセス制御](../active-directory/role-based-access-control-custom-roles.md)に関するページを参照してください。
 
 ## <a name="creating-a-lab-custom-role-using-powershell"></a>PowerShell を使用してラボ カスタム ロールを作成する
-作業を開始する場合は、Azure PowerShell コマンドレットをインストールして構成する方法を説明する記事 ( [https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre)) をお読みください。
+作業を開始する場合は、Azure PowerShell コマンドレットをインストールして構成する方法を説明する記事 ([https://azure.microsoft.com/blog/azps-1-0-pre](https://azure.microsoft.com/blog/azps-1-0-pre)) をお読みください。
 
 Azure PowerShell コマンドレットを設定すると、次のタスクを実行できるようになります。
 

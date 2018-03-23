@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database によるスケール アウト | Microsoft Docs"
-description: "これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。"
+title: Azure SQL Database によるスケール アウト | Microsoft Docs
+description: これらのツールを使用すると、Software as a Service (SaaS) の開発者は柔軟で拡張性の高いデータベースを簡単に作成できます。
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: d15a2e3f-5adf-41f0-95fa-4b945448e184
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
-ms.author: ddove
-ms.openlocfilehash: a99607a0a57087c313d1718ff0b77af3637e1fa9
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 784f244f64464c92f1b04ce0523e8850f66b8383
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Azure SQL Database によるスケール アウト
 **Elastic Database** ツールを使用すると、Azure SQL Database を簡単にスケールアウトできます。 これらのツールと機能では、**Azure SQL Database** のデータベースのリソースを使用して、トランザクションのワークロードに対するソリューション、特にサービスとしてのソフトウェア (SaaS) アプリケーションを作成できます。 Elastic Database は、次の機能で構成されています。
@@ -88,7 +82,7 @@ ms.lasthandoff: 10/31/2017
 ### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>マルチテナントデータベースからシングルテナント データベースへのデータ移動
 SaaS アプリケーションを作成する場合は、見込顧客に試用版のソフトウェアを提供するのが一般的です。 この場合は、データにマルチテナント データベースを使用すると費用対効果を高めることができます。 ただし、見込顧客が実際に顧客になった場合、シングルテナント データベースを使用した方がパフォーマンスが向上します。 このため、顧客が試用期間中にデータを作成していた場合には、 [分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md) を使用して、マルチテナント データベースから新しいシングルテナント データベースにデータを移動します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クライアント ライブラリの使い方を示すサンプル アプリについては、「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)」をご覧ください。
 
 ツールを使用するように既存のデータベースを変換する方法については、「[既存のデータベースを移行してスケールアウト](sql-database-elastic-convert-to-use-elastic-tools.md)」をご覧ください。

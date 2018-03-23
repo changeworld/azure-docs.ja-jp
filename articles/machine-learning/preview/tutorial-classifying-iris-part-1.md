@@ -1,21 +1,21 @@
 ---
-title: "Azure Machine Learning サービス (プレビュー) であやめの分類のチュートリアル用のデータを準備する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Machine Learning サービス (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 これはパート 1 であり、データの準備について説明します。"
+title: Azure Machine Learning サービス (プレビュー) であやめの分類のチュートリアル用のデータを準備する | Microsoft Docs
+description: このチュートリアルでは、Azure Machine Learning サービス (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 これはパート 1 であり、データの準備について説明します。
 services: machine-learning
 author: hning86
 ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 12cba3d4acf0e6018cea6e76df9208bcf380d976
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: caddfff329d0e8f4c4007386b377ea56a51249a5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-1---preparing-the-data"></a>チュートリアル: あやめの分類 (パート 1) - データを準備する
 
@@ -60,8 +60,8 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    プロジェクト名 | myIris |アカウントを識別する一意の名前を入力します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
    プロジェクト ディレクトリ | c:\Temp\ | プロジェクトの作成先となるディレクトリを指定します。
    プロジェクトの説明 | "_空白のまま_" | 省略可能なフィールド。プロジェクトの説明を入力することができます。
-   Visualstudio.com |"_空白のまま_" | 省略可能なフィールド。 プロジェクトは、ソース管理とコラボレーションのために、Visual Studio Team Services で Git リポジトリに関連付けることができます。 [セットアップ方法](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)に関するページを参照してください。 
-   ワークスペース | IrisGarden (存在する場合) | Azure Portal で実験アカウント用に作成したワークスペースを選択します。 <br/>このクイック スタートの手順に従っている場合、ワークスペースの名前は IrisGarden です。 それ以外の場合は、実験アカウントの作成時に作ったワークスペースを選択してください。それ以外に使いたいワークスペースがあれば、そちらを選んでもかまいません。
+   Visualstudio.com の GIT リポジトリの URL |"_空白のまま_" | 省略可能なフィールド。 プロジェクトは、ソース管理とコラボレーションのために、Visual Studio Team Services で Git リポジトリに関連付けることができます。 [セットアップ方法](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)に関するページを参照してください。 
+   選択したワークスペース | IrisGarden (存在する場合) | Azure Portal で実験アカウント用に作成したワークスペースを選択します。 <br/>このクイック スタートの手順に従っている場合、ワークスペースの名前は IrisGarden です。 それ以外の場合は、実験アカウントの作成時に作ったワークスペースを選択してください。それ以外に使いたいワークスペースがあれば、そちらを選んでもかまいません。
    プロジェクト テンプレート | あやめの分類 | テンプレートには、製品に習熟するうえで役立つスクリプトとデータが含まれています。 このクイック スタートに必要なスクリプトとデータ、そしてこのドキュメント サイトに存在する他のチュートリアルで使用するスクリプトとデータも、このテンプレートに含まれています。 
 
    ![新しいプロジェクト](media/tutorial-classifying-iris/new_project.png)
@@ -73,11 +73,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-data-preparation-package"></a>データ準備パッケージを作成する
 
-次に、Azure Machine Learning Workbench でデータを確認してデータの準備を開始できます。 Workbench で実行する変換はそれぞれ、JSON 形式でローカルのデータ準備パッケージ (*.dprep ファイル) に格納されます。 このデータ準備パッケージが、Workbench におけるデータ準備作業の主要なコンテナーとなります。
+次に、Azure Machine Learning Workbench でデータを確認して準備を開始できます。 Workbench で実行する変換はそれぞれ、JSON 形式でローカルのデータ準備パッケージ (*.dprep ファイル) に格納されます。 このデータ準備パッケージが、Workbench におけるデータ準備作業の主要なコンテナーとなります。
 
 このデータ準備パッケージは、後でランタイム (ローカル C#/CoreCLR、Scala/Spark、Scala/HDI など) に渡すことができます。 
 
-1. フォルダー アイコンを選択してファイル ビューを開き、**iris.csv** を選択して、そのファイルを開きます。  
+1. フォルダー アイコンを選択してファイル ビューを開き、**iris.csv** を選択して、そのファイルを開きます。
 
    このファイルには、5 つの列と 50 個の行を含んだテーブルがあります。 4 つの列は数値特徴列です。 5 つ目の列は文字列ターゲット列です。 どの列にもヘッダー名はありません。
 
@@ -90,28 +90,25 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![Azure Machine Learning Workbench のデータ ビュー](media/tutorial-classifying-iris/data_view.png)
 
-3. **[テキスト ファイル (*.csv、.json、.txt, ...)]** を選択し、**[次へ]** をクリックします。
+3. **[テキスト ファイル (\*.csv、\*.json、\*.txt、...)]** を選択し、**[次へ]** をクリックします。
    ![Azure Machine Learning Workbench のデータ ソース](media/tutorial-classifying-iris/data-source.png)
-   
 
-4. **iris.csv** ファイルを参照して、**[次へ]** をクリックします。  
+4. **iris.csv** ファイルを参照して、**[完了]** をクリックします。 区切り記号やデータ型などのパラメーターには、既定値が使用されます。
 
    >[!IMPORTANT]
    >この演習用の現在のプロジェクト ディレクトリ内の **iris.csv** ファイルを必ず選択してください。 そうしないと、以降の手順が失敗する可能性があります。
  
    ![iris を選択する](media/tutorial-classifying-iris/select_iris_csv.png)
    
-5. このオプションを既定値のままにし、**[完了]** をクリックします。
-
-6. **iris-1.dsource** という名前の新しいファイルが作成されます。 サンプル プロジェクトに番号なしの **iris.dsource** ファイルが既に含まれているため、このファイルには "-1" が付いた一意の名前が付けられています。  
+5. **iris-1.dsource** という名前の新しいファイルが作成されます。 サンプル プロジェクトに番号なしの **iris.dsource** ファイルが既に含まれているため、このファイルには "-1" が付いた一意の名前が付けられています。  
 
    ファイルが開き、データが表示されます。 一連の列ヘッダー (**Column1** から **Column5**) がこのデータ セットに自動的に追加されます。 下部までスクロールし、データ セットの最後の行が空であることに注意してください。 この行が空になっているのは、CSV ファイルに余分な改行があるためです。
 
    ![iris データ ビュー](media/tutorial-classifying-iris/iris_data_view.png)
 
-1. **[メトリック]** ボタンを選択します。 ヒストグラムが生成され、画面に表示されます。
+1. **[メトリック]** ボタンを選択します。 ヒストグラムが生成され、表示されます。
 
-   **[データ]** ボタンを選択して、データ ビューに戻します。 
+   **[データ]** ボタンを選択して、データ ビューに戻ることができます。
    
    ![iris データ ビュー](media/tutorial-classifying-iris/iris_data_view_metrics.png)
 
@@ -121,7 +118,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 8. **[準備]** ボタンを選択して、データ準備パッケージの作成を開始します。 **[準備]** ダイアログ ボックスが開きます。 
 
-   サンプル プロジェクトには、既定で **iris.dprep** データ準備ファイルが含まれています。 
+   サンプル プロジェクトには、既定で選択される **iris.dprep** データ準備ファイルが含まれています。 
 
    ![iris データ ビュー](media/tutorial-classifying-iris/prepare.png)
 
@@ -129,7 +126,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![iris データ ビュー](media/tutorial-classifying-iris/prepare_new.png)
 
-1. パッケージの名前に新しい値を入力し、**iris-1** を使用して、**[OK]** を選択します。
+1. パッケージの名前に新しい値 (**iris-1** を使用) を入力して、**[OK]** を選択します。
 
    **iris-1.dprep** という名前の新しいデータ準備パッケージが作成され、データ準備エディターで開かれます。
 
@@ -148,7 +145,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    1. 右クリックしてそれを選択します。 
    1. ドロップダウン メニューから **[Value Counts]\(値のカウント\)** を選択します。 
 
-   データの下に **[Inspectors]\(インスペクター\)** ウィンドウが表示されます。 4 つのバーのあるヒストグラムが表示されます。 ターゲット列には、**Iris_virginica**、**Iris_versicolor**、**Iris-setosa** の 3 種類の値と、**(null)** 値が含まれています。
+   データの下に **[Inspectors]\(インスペクター\)** ウィンドウが表示されます。 4 つのバーのあるヒストグラムが表示されます。 ターゲット列には、**Iris-virginica**、**Iris-versicolor**、**Iris-setosa**、および **(null)** という 4 種類の値が含まれています。
 
    ![[Value Counts]\(値のカウント\) を選択する](media/tutorial-classifying-iris/value_count.png)
 
@@ -164,7 +161,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![手順](media/tutorial-classifying-iris/steps.png)
 
-1. データ準備エディターを閉じます。 グラフ アイコンが付いた **[iris-1]** タブの X アイコンを選択して、このタブを閉じます。作業内容は、**[Data Preparations]\(データ準備\)** という見出しの下に表示された **iris-1.dprep** ファイルに自動的に保存されます。
+1. データ準備エディターを閉じます。 グラフ アイコンが付いた **[iris-1]** タブの **X** アイコンを選択して、このタブを閉じます。作業内容は、**[Data Preparations]\(データ準備\)** という見出しの下に表示された **iris-1.dprep** ファイルに自動的に保存されます。
 
    ![閉じます](media/tutorial-classifying-iris/close.png)
 
@@ -197,7 +194,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
    df.head(10)
    ```
 
-   このコードが実行されるコンテキストに応じて、`df` はデータフレームの種類を表します。 
+   このコードが実行されるコンテキストに応じて、`df` は異なるデータフレームの種類を表します。
    + Python ランタイムで実行すると、[pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) が使用されます。
    + Spark コンテキストで実行すると、[Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html) が使用されます。 
    

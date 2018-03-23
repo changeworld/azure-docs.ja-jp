@@ -1,25 +1,19 @@
 ---
-title: "Azure Portal: SQL Database の geo レプリケーション | Microsoft Docs"
-description: "Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成してフェールオーバーを開始する"
+title: 'Azure Portal: SQL Database の geo レプリケーション | Microsoft Docs'
+description: Azure Portal を使用して Azure SQL Database の geo レプリケーションを構成してフェールオーバーを開始する
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: d0b29822-714f-4633-a5ab-fb1a09d43ced
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 03/06/2016
 ms.author: carlrab
-ms.openlocfilehash: d880a2f1aef3fa1bfc824f14650088bac4cb8693
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 33e67c9415ddf3504d593858d56f15cdc7282d69
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-active-geo-replication-for-azure-sql-database-in-the-azure-portal-and-initiate-failover"></a>Azure Portal を使用して Azure SQL Database のアクティブ geo レプリケーションを構成してフェールオーバーを開始する
 
@@ -93,7 +87,7 @@ Azure Portal を使ってアクティブ geo レプリケーションを構成�
     ![セカンダリ データベースの削除](./media/sql-database-geo-replication-portal/remove-secondary.png)
 5. 確認ウィンドウが開きます。 **[はい]** をクリックして geo レプリケーション パートナーシップからデータベースを削除します。 (データベースを読み取り/書き込みデータベースに設定することは、レプリケーションの一部ではありません)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * アクティブ geo レプリケーションについて詳しくは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページを参照してください。
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 

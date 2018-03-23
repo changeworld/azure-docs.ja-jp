@@ -1,26 +1,26 @@
 ---
-title: "Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs"
-description: "JavaScript を使用して関数を開発する方法について説明します。"
+title: Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs
+description: JavaScript を使用して関数を開発する方法について説明します。
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.service: functions
 ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 03/04/2018
 ms.author: tdykstra
-ms.openlocfilehash: f613e480f6699b323c18402f01873e565768f10f
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 0a436a929696f759cdbe9807faa2a15902b7ce6d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
 [!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
@@ -116,7 +116,7 @@ context.log(message)
 既定のトレース レベルでストリーミング コンソール ログに書き込むことができます。 `context.log` で利用可能な、他のトレース レベルでコンソール ログに書き込むことができるログ記録方法が他にあります。
 
 
-| メソッド                 | Description                                |
+| 方法                 | [説明]                                |
 | ---------------------- | ------------------------------------------ |
 | **error(_message_)**   | エラー レベルのログ、またはそれ以下に書き込みます。   |
 | **warn(_message_)**    | 警告レベルのログ、またはそれ以下に書き込みます。 |
@@ -206,7 +206,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `request` オブジェクトには、次のプロパティがあります。
 
-| プロパティ      | 説明                                                    |
+| プロパティ      | [説明]                                                    |
 | ------------- | -------------------------------------------------------------- |
 | _body_        | 要求の本文を格納するオブジェクト。               |
 | _headers_     | 要求ヘッダーを格納するオブジェクト。                   |
@@ -221,7 +221,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 
 `response` オブジェクトには、次のプロパティがあります。
 
-| プロパティ  | 説明                                               |
+| プロパティ  | [説明]                                               |
 | --------- | --------------------------------------------------------- |
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
@@ -265,7 +265,15 @@ HTTP トリガーを使用する場合、HTTP 要求オブジェクトと応答�
     ```  
 
 ## <a name="node-version-and-package-management"></a>Node のバージョンとパッケージの管理
-Node のバージョンは、現在、 `6.5.0`にロックされています。 現在、さまざまなバージョンのサポートを追加して構成できるようにするために、調査しています。
+
+次の表は、使用される Node.js バージョンを、Functions ランタイムのメジャー バージョンごとに示しています。
+
+| Functions バージョン | Node.js バージョン | 
+|---|---|
+| 1.x | 6.11.2 (ランタイムによりロック) |
+| 2.x  |現在の LTS 8.9.4 を備えた 8.4.0 以上を推奨。 WEBSITE_DEFAULT_NODE_VERSION [アプリ設定](functions-how-to-use-azure-function-app-settings.md#settings)を使用してバージョンを設定します。|
+
+ランタイムが使用している現在のバージョンを確認するには、任意の関数から `process.version` を出力します。
 
 次の手順で、関数アプリにパッケージを含めることができます。 
 
@@ -324,7 +332,7 @@ App Service プランを使用する関数アプリを作成するときは、�
 ### <a name="typescript-and-coffeescript-support"></a>TypeScript と CoffeeScript のサポート
 ランタイムによる TypeScript/CoffeeScript の自動コンパイルはまだ直接サポートされていません。そのため、デプロイ時にランタイムの外部ですべて処理する必要があります。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)

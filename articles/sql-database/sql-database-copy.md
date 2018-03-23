@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database のコピーの作成 | Microsoft Docs"
-description: "トランザクション上一貫性のある既存の Azure SQL Database のコピーを、同じサーバーまたは別のサーバーのいずれかに作成します。"
+title: Azure SQL Database のコピーの作成 | Microsoft Docs
+description: トランザクション上一貫性のある既存の Azure SQL Database のコピーを、同じサーバーまたは別のサーバーのいずれかに作成します。
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 5aaf6bcd-3839-49b5-8c77-cbdf786e359b
+manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.devlang: NA
 ms.date: 06/15/2017
 ms.author: carlrab
-ms.workload: On Demand
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.openlocfilehash: 7999c52a81165a9f8efb2f1302d04c9cb851faca
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c4a3836cfd0bbbb8d26a42af2980deab5f9d7681
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="copy-an-azure-sql-database"></a>Azure SQL Database のコピー
 
@@ -105,7 +99,7 @@ sys.databases ビューと sys.dm_database_copies ビューを照会して、コ
 
 別の論理サーバーにデータベースをコピーする場合のユーザーおよびログインの管理の詳細については、「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * ログインについては、「[ログインの管理](sql-database-manage-logins.md)」および「[障害復旧後にセキュリティを管理する方法](sql-database-geo-replication-security-config.md)」をご覧ください。
 * データベースをエクスポートするには、「[BACPAC へのデータベースのエクスポート](sql-database-export.md)」をご覧ください。

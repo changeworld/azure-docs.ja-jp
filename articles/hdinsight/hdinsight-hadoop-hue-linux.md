@@ -1,9 +1,9 @@
 ---
-title: "Linux ベースの HDInsight クラスターの Hadoop で Hue を使用する - Azure | Microsoft Docs"
-description: "HDInsight クラスターに Hue をインストールし、トンネリングを利用して Hue に要求を送信する方法について学習します。 Hue を使用して、ストレージを参照したり Hive または Pig を実行したりします。"
+title: Linux ベースの HDInsight クラスターの Hadoop で Hue を使用する - Azure | Microsoft Docs
+description: HDInsight クラスターに Hue をインストールし、トンネリングを利用して Hue に要求を送信する方法について学習します。 Hue を使用して、ストレージを参照したり Hive または Pig を実行したりします。
 keywords: hue hadoop
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 12/11/2017
 ms.author: nitinme
 ms.openlocfilehash: 5cef5e72af8a8b7c007b688b029f875e89d163ae
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Hue をインストールして使用する
 
@@ -48,7 +48,7 @@ Hue は Hadoop クラスターとの情報のやりとりに使用される一�
 
 ## <a name="install-hue-using-script-actions"></a>スクリプト アクションを使用した Hue のインストール
 
-Linux ベースの HDInsight クラスターに Hue をインストールするためのスクリプトは、https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh で入手できます。このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Store を使用してクラスターに Hue をインストールできます。
+Linux ベースの HDInsight クラスターに Hue をインストールするスクリプトは https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.shにあります。このスクリプトを使用すると、既定のストレージとして Azure Storage Blob (WASB) または Azure Data Lake Store を使用してクラスターに Hue をインストールできます。
 
 このセクションでは、Azure Portal を使ってクラスターをプロビジョニングする際にこのスクリプトを使用する方法について説明します。
 
@@ -68,7 +68,7 @@ Linux ベースの HDInsight クラスターに Hue をインストールする�
     ![Hue のスクリプト アクション パラメーターを指定する](./media/hdinsight-hadoop-hue-linux/hue-script-action.png "Hue のスクリプト アクション パラメーターを指定する")
 
    * **[名前]**: スクリプト アクションの表示名を入力します。
-   * **SCRIPT URI**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
+   * **[スクリプト URI]**: https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh
    * **[ヘッド]**: このオプションをオンにします。
    * **[ワーカー]**: 空白のままにします。
    * **[ZOOKEEPER]**: 空白のままにします。

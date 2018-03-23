@@ -1,23 +1,23 @@
 ---
-title: "Azure SSIS 統合ランタイムをスケジュール設定する方法 | Microsoft Docs"
-description: "この記事では、Azure Automation とデータ ファクトリを使用して、Azure SSIS 統合ランタイムの開始と停止をスケジュール設定する方法を説明します。"
+title: Azure SSIS 統合ランタイムをスケジュール設定する方法 | Microsoft Docs
+description: この記事では、Azure Automation とデータ ファクトリを使用して、Azure SSIS 統合ランタイムの開始と停止をスケジュール設定する方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
 ms.date: 01/25/2018
 ms.author: douglasl
-ms.openlocfilehash: 522e9b6831c31a90337126380ccc9f2cb6d8713b
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 5a9d1ba4d72bc6d4b297695c478438079d34c6e7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-schedule-starting-and-stopping-of-an-azure-ssis-integration-runtime"></a>Azure SSIS 統合ランタイムの開始と停止をスケジュール設定する方法 
 Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実行には料金が設定されています。 このため、SSIS パッケージを Azure で実行する必要がある場合のみ IR を実行し、必要ないときには停止する必要があります。 データ ファクトリ UI または Azure PowerShell を使用すると、[Azure SSIS IR を手動で開始または停止](manage-azure-ssis-integration-runtime.md)できます。 この記事では、Azure Automation と Azure Data Factory を使用して、Azure SSIS 統合ランタイム (IR) の開始と停止をスケジュール設定する方法を説明します。 この記事で説明する手順の概要を次に示します。
@@ -25,7 +25,7 @@ Azure SSIS (SQL Server Integration Services) 統合ランタイム (IR) の実�
 1. **Azure Automation Runbook を作成してテストします。** この手順では、Azure SSIS IR を開始または停止するスクリプトを含む PowerShell Runbook を作成します。 次に、開始と停止両方のシナリオで Runbook をテストし、IR の開始または停止を確認します。 
 2. **Runbook の 2 つのスケジュールを作成します。** 1 つ目のスケジュールでは、操作として開始を含む Runbook を構成します。 2 つ目のスケジュールでは、操作として停止を含む Runbook を構成します。 どちらのスケジュールでも、Runbook を実行する間隔を指定します。 たとえば、1 つ目を毎日午前 8 時に実行し、2 つ目を毎日午後 11 時に実行するようにスケジュール設定するとします。 最初の Runbook が実行すると、Azure SSIS IR が開始されます。 次の Runbook が実行すると、Azure SSIS IR が停止します。 
 3. **Runbook に対して 2 つの webhook を作成します。**1 つは開始操作用、もう 1 つは停止操作用です。 データ ファクトリ パイプラインで Web アクティビティを構成するときは、これらの webhook の URL を使用します。 
-4. **データ ファクトリ パイプラインを作成します**。 作成するパイプラインは、4 つのアクティビティで構成されます。 最初の **Web** アクティビティは、最初の webhook を呼び出して Azure SSIS IR を開始します。 **待機** アクティビティは、Azure SSIS IR が開始するまで 30 分 (1800 秒) 間待機します。 **ストアド プロシージャ** アクティビティは、SSIS パッケージを実行する SQL スクリプトを実行します。 2 つ目の **Web** アクティビティは Azure SSIS IR を停止します。 ストアド プロシージャ アクティビティを使用して、データ ファクトリ パイプラインから SSIS パッケージを呼び出す方法について詳しくは、[SSIS パッケージの呼び出し](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事をご覧ください。 次に、スケジュール トリガーを作成し、パイプラインが指定した間隔で実行するようにスケジュール設定します。
+4. **データ ファクトリ パイプラインを作成します**。 作成するパイプラインは、3 つのアクティビティで構成されます。 最初の **Web** アクティビティは、最初の webhook を呼び出して Azure SSIS IR を開始します。 **ストアド プロシージャ** アクティビティは、SSIS パッケージを実行する SQL スクリプトを実行します。 2 つ目の **Web** アクティビティは Azure SSIS IR を停止します。 ストアド プロシージャ アクティビティを使用して、データ ファクトリ パイプラインから SSIS パッケージを呼び出す方法について詳しくは、[SSIS パッケージの呼び出し](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事をご覧ください。 次に、スケジュール トリガーを作成し、パイプラインが指定した間隔で実行するようにスケジュール設定します。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[バージョン 1 でストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す方法](v1/how-to-invoke-ssis-package-stored-procedure-activity.md)に関するページを参照してください。
@@ -223,12 +223,11 @@ Azure Automation アカウントを持っていない場合は、この手順の
 ## <a name="create-and-schedule-a-data-factory-pipeline-that-startsstops-the-ir"></a>IR を開始または停止するデータ ファクトリ パイプラインを作成してスケジュール設定する
 このセクションでは、Web アクティビティを使用して、前のセクションで作成した webhook を呼び出す方法を説明します。
 
-作成するパイプラインは、4 つのアクティビティで構成されます。 
+作成するパイプラインは、3 つのアクティビティで構成されます。 
 
 1. 最初の **Web** アクティビティは、最初の webhook を呼び出して Azure SSIS IR を開始します。 
-2. **待機** アクティビティは、Azure SSIS IR が開始するまで 30 分 (1800 秒) 間待機します。 
-3. **ストアド プロシージャ** アクティビティは、SSIS パッケージを実行する SQL スクリプトを実行します。 2 つ目の **Web** アクティビティは Azure SSIS IR を停止します。 ストアド プロシージャ アクティビティを使用して、データ ファクトリ パイプラインから SSIS パッケージを呼び出す方法について詳しくは、[SSIS パッケージの呼び出し](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事をご覧ください。 
-4. 2 つ目の **Web** アクティビティは、Azure SSIS IR を停止する webhook を呼び出します。 
+2. **ストアド プロシージャ** アクティビティは、SSIS パッケージを実行する SQL スクリプトを実行します。 2 つ目の **Web** アクティビティは Azure SSIS IR を停止します。 ストアド プロシージャ アクティビティを使用して、データ ファクトリ パイプラインから SSIS パッケージを呼び出す方法について詳しくは、[SSIS パッケージの呼び出し](how-to-invoke-ssis-package-stored-procedure-activity.md)に関する記事をご覧ください。 
+3. 2 つ目の **Web** アクティビティは、Azure SSIS IR を停止する webhook を呼び出します。 
 
 パイプラインを作成してテストしたら、スケジュール トリガーを作成して、パイプラインに関連付けます。 スケジュール トリガーによってパイプラインのスケジュールが定義されます。 たとえば、毎日午後 11 時に実行するようにスケジュール設定されたトリガーを作成します。 このトリガーは、毎日午後 11 時にパイプラインを実行します。 パイプラインが、Azure SSIS IR を開始し、SSIS パッケージを実行し、その後 Azure SSIS IR を停止します。 
 
@@ -279,11 +278,6 @@ Azure Automation アカウントを持っていない場合は、この手順の
     3. **[本文]** には、「`{"message":"hello world"}`」を入力します。 
    
         ![最初の Web アクティビティ - [設定] タブ](./media/how-to-schedule-azure-ssis-integration-runtime/first-web-activity-settnigs-tab.png)
-4. **[アクティビティ]** ツール ボックスで **[Iteration & Conditions]\(繰り返しと条件\)** を展開し、パイプライン デザイナー画面に **[待機]** アクティビティをドラッグ アンド ドロップします。 **[全般]** タブで、アクティビティの名前を「**WaitFor30Minutes**」を変更します。 
-5. **プロパティ** ウィンドウで **[設定]** タブに切り替えます。 **[Wait time in seconds]\(待機時間 (秒)\)** に「**1800**」を入力します。 
-6. **[Web]** アクティビティと **[待機]** アクティビティを接続します。 これらを接続するには、[Web] アクティビティに付いている緑色の四角形を [待機] アクティビティにドラッグします。 
-
-    ![[Web] と [待機] を接続する](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-wait.png)
 5. **[アクティビティ]** ツールボックスの **[全般]** セクションから、[ストアド プロシージャ] アクティビティをドラッグ アンド ドロップします。 アクティビティの名前を「**RunSSISPackage**」に設定します。 
 6. **プロパティ** ウィンドウの **[SQL アカウント]** タブに切り替えます。 
 7. **[リンクされたサービス]** では、**[+ 新規]** をクリックします。
@@ -296,7 +290,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
     5. **[パスワード]** に、ユーザーのパスワードを入力します。 
     6. **[テスト接続]** ボタンをクリックして、データベースへの接続をテストします。
     7. **[保存]** ボタンをクリックして、リンクされたサービスを保存します。
-1. **プロパティ**ウィンドウで **[SQL アカウント]** タブから **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
+9. **プロパティ**ウィンドウで **[SQL アカウント]** タブから **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 
 
     1. **[ストアド プロシージャ名]** では、**[編集]** オプションを選択し、「**sp_executesql**」を入力します。 
     2. **[ストアド プロシージャ パラメーター]** セクションで **[+ 新規]** を選択します。 
@@ -307,12 +301,37 @@ Azure Automation アカウントを持っていない場合は、この手順の
         SQL クエリで、**folder_name**、**project_name**、および **package_name** パラメーターに適切な値を指定します。 
 
         ```sql
-        DECLARE @return_value INT, @exe_id BIGINT, @err_msg NVARCHAR(150)    EXEC @return_value=[SSISDB].[catalog].[create_execution] @folder_name=N'<FOLDER name in SSIS Catalog>', @project_name=N'<PROJECT name in SSIS Catalog>', @package_name=N'<PACKAGE name>.dtsx', @use32bitruntime=0, @runinscaleout=1, @useanyworker=1, @execution_id=@exe_id OUTPUT    EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1    EXEC [SSISDB].[catalog].[start_execution] @execution_id=@exe_id, @retry_count=0    IF(SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id=@exe_id)<>7 BEGIN SET @err_msg=N'Your package execution did not succeed for execution ID: ' + CAST(@exe_id AS NVARCHAR(20)) RAISERROR(@err_msg,15,1) END   
-        ```
-10. **[待機]** アクティビティを**[ストアド プロシージャ]** アクティビティに接続します。 
+        DECLARE       @return_value int, @exe_id bigint, @err_msg nvarchar(150)
 
-    ![[待機] アクティビティと [ストアド プロシージャ] アクティビティを接続する](./media/how-to-schedule-azure-ssis-integration-runtime/connect-wait-sproc.png)
-11. **[Web]** アクティビティを **[ストアド プロシージャ]** アクティビティの右側にドラッグ アンド ドロップします。 アクティビティの名前を「**StopIR**」に設定します。 
+        -- Wait until Azure-SSIS IR is started
+        WHILE NOT EXISTS (SELECT * FROM [SSISDB].[catalog].[worker_agents] WHERE IsEnabled = 1 AND LastOnlineTime > DATEADD(MINUTE, -10, SYSDATETIMEOFFSET()))
+        BEGIN
+            WAITFOR DELAY '00:00:01';
+        END
+
+        EXEC @return_value = [SSISDB].[catalog].[create_execution] @folder_name=N'YourFolder',
+            @project_name=N'YourProject', @package_name=N'YourPackage',
+            @use32bitruntime=0, @runincluster=1, @useanyworker=1,
+            @execution_id=@exe_id OUTPUT 
+
+        EXEC [SSISDB].[catalog].[set_execution_parameter_value] @exe_id, @object_type=50, @parameter_name=N'SYNCHRONIZED', @parameter_value=1
+
+        EXEC [SSISDB].[catalog].[start_execution] @execution_id = @exe_id, @retry_count = 0
+
+        -- Raise an error for unsuccessful package execution, check package execution status = created (1)/running (2)/canceled (3)/failed (4)/
+        -- pending (5)/ended unexpectedly (6)/succeeded (7)/stopping (8)/completed (9) 
+        IF (SELECT [status] FROM [SSISDB].[catalog].[executions] WHERE execution_id = @exe_id) <> 7 
+        BEGIN
+            SET @err_msg=N'Your package execution did not succeed for execution ID: '+ CAST(@execution_id as nvarchar(20))
+            RAISERROR(@err_msg, 15, 1)
+        END
+
+        ```
+10. **[Web]** アクティビティを **[ストアド プロシージャ]** アクティビティに接続します。 
+
+    ![[Web] アクティビティと [ストアド プロシージャ] アクティビティを接続する](./media/how-to-schedule-azure-ssis-integration-runtime/connect-web-sproc.png)
+
+11. 別の **[Web]** アクティビティを **[ストアド プロシージャ]** アクティビティの右側にドラッグ アンド ドロップします。 アクティビティの名前を「**StopIR**」に設定します。 
 12. **プロパティ** ウィンドウで **[設定]** タブに切り替え、以下の操作を行います。 
 
     1. **[URL]** には、Azure SSIS IR を停止する webhook の URL を貼り付けます。 
@@ -372,7 +391,7 @@ Azure Automation アカウントを持っていない場合は、この手順の
 6. トリガーの実行とパイプラインの実行を監視するには、左側の **[監視]** タブを使用します。 手順について詳しくは、「[パイプラインの監視](quickstart-create-data-factory-portal.md#monitor-the-pipeline)」をご覧ください。
 
     ![パイプライン実行](./media/how-to-schedule-azure-ssis-integration-runtime/pipeline-runs.png)
-7. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列にある最初のリンク (**[View Activity Runs]\(アクティビティの実行の表示\)**) をクリックします。 パイプラインの各アクティビティ (最初の Web アクティビティ、待機アクティビティ、ストアド プロシージャ アクティビティ、2 つ目の Web アクティビティ) に関連している 4 つのアクティビティ実行を確認できます。 戻ってパイプラインの実行を表示するには、上部の **[パイプライン]** リンクをクリックします。
+7. パイプラインの実行に関連付けられているアクティビティの実行を表示するには、**[アクション]** 列にある最初のリンク (**[View Activity Runs]\(アクティビティの実行の表示\)**) をクリックします。 パイプラインの各アクティビティ (最初の Web アクティビティ、ストアド プロシージャ アクティビティ、2 つ目の Web アクティビティ) に関連している 3 つのアクティビティ実行を確認できます。 戻ってパイプラインの実行を表示するには、上部の **[パイプライン]** リンクをクリックします。
 
     ![アクティビティの実行](./media/how-to-schedule-azure-ssis-integration-runtime/activity-runs.png)
 8. また、一番上の **[Pipeline Runs]\(パイプラインの実行\)** の横にあるドロップダウン リストから **[Trigger runs]\(トリガーの実行\)** を選択して、トリガーの実行を表示することもできます。 

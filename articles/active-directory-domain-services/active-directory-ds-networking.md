@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Domain Services: ネットワーク ガイドライン | Microsoft Docs"
-description: "Azure Active Directory Domain Services のネットワークに関する考慮事項"
+title: 'Azure AD Domain Services: ネットワーク ガイドライン | Microsoft Docs'
+description: Azure Active Directory Domain Services のネットワークに関する考慮事項
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/01/2017
+ms.date: 03/08/2018
 ms.author: maheshu
-ms.openlocfilehash: a6f0089f13de10ba8bc1f9a656a2d21f9c559047
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: eee7905db4faedef3217118e8d491e2cb019fa30
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
@@ -53,6 +53,7 @@ ms.lasthandoff: 01/18/2018
 * 管理対象ドメインの専用サブネットに NSG を適用しないでください。 この専用サブネットに NSG を適用する必要がある場合は、**ドメインのサービス提供および管理に必要なポートがブロックされていない**ことを確認してください。
 * 管理対象ドメインの専用サブネット内で使用できる IP アドレスの数を過度に制限しないでください。 このような制限により、サービスが管理対象ドメインに対して 2 つのドメイン コントローラーを利用できなくなります。
 * 仮想ネットワークの**ゲートウェイ サブネットでは Azure AD Domain Services を有効にしないでください**。
+* 管理対象ドメインが有効になっているサブネットからの発信アクセスをブロックしないでください。
 
 > [!WARNING]
 > Azure AD Domain Services が有効になっているサブネットに NSG を関連付けると、Microsoft によるドメインのサービス提供および管理機能が中断される可能性があります。 さらに、Azure AD テナントと管理対象ドメインの間の同期が中断されます。 **SLA は、Azure AD Domain Services によるドメインの更新と管理をブロックする NSG が適用されているデプロイには適用されません。**
@@ -89,6 +90,8 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 * インターネット経由で管理対象ドメインへの Secure LDAP によるアクセスを有効にするために使用されます。
 * NSG でこのポートを開くかどうかは任意です。 インターネット経由で Secure LDAP によるアクセスを有効にしている場合にのみ、ポートを開きます。
 * このポートへの受信アクセスを、Secure LDAP での接続が見込まれる送信元 IP アドレスに限定できます。
+
+**発信アクセス** AAD ドメイン サービスには、管理対象ドメインを管理、バックアップ、監視するために、他のさまざまな Azure サービスへの発信アクセスが必要です。 管理対象ドメインが有効になっている専用サブネットからの発信アクセスをブロックしないでください。
 
 
 ## <a name="network-security-groups"></a>ネットワーク セキュリティ グループ

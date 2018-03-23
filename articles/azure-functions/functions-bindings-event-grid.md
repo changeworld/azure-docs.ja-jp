@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions の Event Grid トリガー"
-description: "Azure Functions で Event Grid イベントを処理する方法を説明します。"
+title: Azure Functions の Event Grid トリガー
+description: Azure Functions で Event Grid イベントを処理する方法を説明します。
 services: functions
 documentationcenter: na
 author: tdykstra
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 01/26/2018
 ms.author: tdykstra
-ms.openlocfilehash: 2a6fe85c2c3d6d4f44dc197db6c28ebbc2b1d431
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: a1ffd9311f6ff171502efe64557463abc49ad636
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="event-grid-trigger-for-azure-functions"></a>Azure Functions の Event Grid トリガー
 
@@ -33,6 +33,16 @@ Event Grid は、"*パブリッシャー*" 内で発生したイベントにつ�
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
+## <a name="packages"></a>パッケージ
+
+Event Grid トリガーは、[Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-functions-eventgrid-extension](https://github.com/Azure/azure-functions-eventgrid-extension) GitHub リポジトリにあります。
+
+このパッケージは、[C# クラス ライブラリ開発](functions-triggers-bindings.md#local-c-development-using-visual-studio-or-vs-code)と [Functions v2 バインド拡張機能登録](functions-triggers-bindings.md#local-development-azure-functions-core-tools)に使用されます。
+
+<!--
+If you want to bind to the `Microsoft.Azure.EventGrid.Models.EventGridEvent` type instead of `JObject`, install the [Microsoft.Azure.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.EventGrid) package.
+-->
+
 ## <a name="example"></a>例
 
 Event Grid トリガーの言語固有の例をご覧ください。
@@ -45,24 +55,58 @@ HTTP トリガーの例については、後の「[HTTP トリガーを使用す
 
 ### <a name="c-example"></a>C# の例
 
-次の例では、すべてのイベントに共通するフィールドの一部とイベント固有のすべてのデータをログに記録する、[C# 関数](functions-dotnet-class-library.md)を示します。
+次の例は、`JObject` にバインドする[ C# 関数](functions-dotnet-class-library.md)を示したものです。
 
 ```cs
-[FunctionName("EventGridTest")]
-public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEvent, TraceWriter log)
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+namespace Company.Function
 {
-    log.Info("C# Event Grid function processed a request.");
-    log.Info($"Subject: {eventGridEvent.Subject}");
-    log.Info($"Time: {eventGridEvent.EventTime}");
-    log.Info($"Data: {eventGridEvent.Data.ToString()}");
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTriggerCSharp")]
+        public static void Run([EventGridTrigger]JObject eventGridEvent, TraceWriter log)
+        {
+            log.Info(eventGridEvent.ToString(Formatting.Indented));
+        }
+    }
 }
 ```
 
-属性 `EventGridTrigger` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) で定義されています。
+<!--
+The following example shows a [C# function](functions-dotnet-class-library.md) that binds to `EventGridEvent`:
+
+```cs
+using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Host;
+using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+
+namespace Company.Function
+{
+    public static class EventGridTriggerCSharp
+    {
+        [FunctionName("EventGridTest")]
+            public static void EventGridTest([EventGridTrigger] Microsoft.Azure.EventGrid.Models.EventGridEvent eventGridEvent, TraceWriter log)
+        {
+            log.Info("C# Event Grid function processed a request.");
+            log.Info($"Subject: {eventGridEvent.Subject}");
+            log.Info($"Time: {eventGridEvent.EventTime}");
+            log.Info($"Data: {eventGridEvent.Data.ToString()}");
+        }
+    }
+}
+```
+-->
+
+詳しくは、「[パッケージ](#packages)」、「[属性](#attributes)」、「[構成](#configuration)」、および「[使用法](#usage)」をご覧ください。
 
 ### <a name="c-script-example"></a>C# スクリプトの例
 
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。 この関数は、すべてのイベントに共通するフィールドの一部とイベント固有のすべてのデータを、ログに記録します。
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドが使用される [C# スクリプト関数](functions-reference-csharp.md)を示しています。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -79,12 +123,30 @@ public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEven
 }
 ```
 
-C# スクリプト コードを次に示します。
+`JObject` にバインドする C# スクリプト コードを次に示します。
+
+```cs
+#r "Newtonsoft.Json"
+
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+
+public static void Run(JObject eventGridEvent, TraceWriter log)
+{
+    log.Info(eventGridEvent.ToString(Formatting.Indented));
+}
+```
+
+<!--
+Here's C# script code that binds to `EventGridEvent`:
 
 ```csharp
 #r "Newtonsoft.Json"
 #r "Microsoft.Azure.WebJobs.Extensions.EventGrid"
+#r "Microsoft.Azure.EventGrid"
+
 using Microsoft.Azure.WebJobs.Extensions.EventGrid;
+Using Microsoft.Azure.EventGrid.Models;
 
 public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
 {
@@ -94,10 +156,13 @@ public static void Run(EventGridEvent eventGridEvent, TraceWriter log)
     log.Info($"Data: {eventGridEvent.Data.ToString()}");
 }
 ```
+-->
+
+詳しくは、「[パッケージ](#packages)」、「[属性](#attributes)」、「[構成](#configuration)」、および「[使用法](#usage)」をご覧ください。
 
 ### <a name="javascript-example"></a>JavaScript の例
 
-次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、すべてのイベントに共通するフィールドの一部とイベント固有のすべてのデータを、ログに記録します。
+次の例は、*function.json* ファイルのトリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。
 
 *function.json* ファイルのバインディング データを次に示します。
 
@@ -128,13 +193,13 @@ module.exports = function (context, eventGridEvent) {
      
 ## <a name="attributes"></a>属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.EventGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.EventGrid) で定義されている [EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) 属性を使います。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[EventGridTrigger](https://github.com/Azure/azure-functions-eventgrid-extension/blob/master/src/EventGridExtension/EventGridTriggerAttribute.cs) 属性を使用します。
 
 メソッド シグネチャでの `EventGridTrigger` 属性を次に示します。
 
 ```csharp
 [FunctionName("EventGridTest")]
-public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEvent, TraceWriter log)
+public static void EventGridTest([EventGridTrigger] JObject eventGridEvent, TraceWriter log)
 {
     ...
 }
@@ -154,7 +219,11 @@ public static void EventGridTest([EventGridTrigger] EventGridEvent eventGridEven
 
 ## <a name="usage"></a>使用法
 
-C# および F# の関数では、トリガー入力の型を `EventGridEvent` 型またはカスタム型として宣言します。 カスタム型の場合、Functions ランタイムはイベントの JSON を解析して、オブジェクトのプロパティを設定しようとします。
+C# および F# 関数については、Event Grid トリガーに次のパラメーター型を使用できます。
+
+* `JObject`
+* `string`
+* `Microsoft.Azure.WebJobs.Extensions.EventGrid.EventGridEvent`- すべてのイベントの種類に共通するフィールドのプロパティを定義します。 **この型は使用されなくなりました**が、それに置き換わるものがまだ NuGet に公開されていません。
 
 JavaScript 関数では、*function.json* `name` プロパティによって指定されているパラメーターが、イベント オブジェクトへの参照を保持しています。
 
@@ -315,7 +384,7 @@ Event Grid 関数をローカルで実行します。
 * 次のパターンを使って、Event Grid トリガー関数の URL に投稿します。
 
 ```
-http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={methodname}
+http://localhost:7071/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
 
 `functionName` パラメーターには、`FunctionName` 属性で指定されている名前を指定する必要があります。
@@ -376,7 +445,7 @@ ngrok の URL は Event Grid によって特別に処理されないので、サ
 テストする種類の Event Grid サブスクリプションを作成し、次のパターンを使って、それに ngrok のエンドポイントを提供します。
 
 ```
-https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={methodname}
+https://{subdomain}.ngrok.io/admin/extensions/EventGridExtensionConfig?functionName={functionname}
 ``` 
 
 `functionName` パラメーターには、`FunctionName` 属性で指定されている名前を指定する必要があります。

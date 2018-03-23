@@ -1,25 +1,20 @@
 ---
-title: "Elastic Database ツールの用語集 | Microsoft Docs"
-description: "エラスティック データベース ツールで使用される用語の説明"
+title: Elastic Database ツールの用語集 | Microsoft Docs
+description: エラスティック データベース ツールで使用される用語の説明
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: a23a4e81-6706-452d-afc1-a550e5e47af9
+documentationcenter: ''
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: db8ce257479888db63758e681393c0244af01ce7
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 75abd818b29c78a4ae7499741904637e8ed6798c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="elastic-database-tools-glossary"></a>Elastic Database ツールの用語集
 Azure SQL Database の機能である [Elastic Database ツール](sql-database-elastic-scale-introduction.md)に関する用語の定義を次に示します。 このツールは、[シャード マップ](sql-database-elastic-scale-shard-map-management.md)の管理に使用するものであり、[クライアント ライブラリ](sql-database-elastic-database-client-library.md)、[分割/マージ ツール](sql-database-elastic-scale-overview-split-and-merge.md)、[エラスティック プール](sql-database-elastic-pool.md)、および[クエリ](sql-database-elastic-query-overview.md)が含まれます。 

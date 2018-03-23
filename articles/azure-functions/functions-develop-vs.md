@@ -1,11 +1,11 @@
 ---
-title: "Visual Studio を使用する Azure Functions の開発 | Microsoft Docs"
-description: "Azure Functions Tools for Visual Studio 2017 を使用して、Azure Functions を開発およびテストする方法を説明します。"
+title: Visual Studio を使用する Azure Functions の開発 | Microsoft Docs
+description: Azure Functions Tools for Visual Studio 2017 を使用して、Azure Functions を開発およびテストする方法を説明します。
 services: functions
 documentationcenter: .net
 author: ggailey777
 manager: cfowler
-editor: 
+editor: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: dotnet
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: glenga
-ms.openlocfilehash: ec9258a123774607ffee8705a1bc5391525567f5
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools for Visual Studio  
 
@@ -52,14 +52,15 @@ Azure Functions Tools は、[Visual Studio 2017 バージョン 15.4](https://ww
 
 [!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-create.md)]
 
-
-## <a name="configure-the-project-for-local-development"></a>ローカル開発用のプロジェクトを構成する
-
-Azure Functions テンプレートを使用して、新しいプロジェクトを作成する場合は、次のファイルを含む空の C# プロジェクトを取得します。
+プロジェクト テンプレートでは、C# プロジェクトの作成、`Microsoft.NET.Sdk.Functions` NuGet パッケージのインストール、およびターゲット フレームワークの設定が行われます。 Functions 1.x の対象は .NET Framework で、Functions 2.x の対象は .NET Standard です。 新しいプロジェクトには次のファイルが含まれます。
 
 * **host.json**: Functions のホストを構成することができます。 これらの設定は、ローカルでの実行時と Azure での実行時の両方に適用されます。 詳細については、[host.json](functions-host-json.md) のリファレンスを参照してください。
     
 * **local.settings.json**: 関数をローカルで実行するときに使用される設定を保持します。 これらの設定は Azure では使用されず、[Azure Functions Core Tools](functions-run-local.md) で使用されます。 このファイルを使用して、他の Azure サービスに対する接続文字列などの設定を指定します。 新しいキーを、プロジェクトの関数に必要な各接続の **Values** 配列に追加します。 詳細については、Azure Functions Core Tools トピックの[ローカル設定ファイル](functions-run-local.md#local-settings-file)に関する記述を参照してください。
+
+詳細については、「[関数クラス ライブラリ プロジェクト](functions-dotnet-class-library.md#functions-class-library-project)」を参照してください。
+
+## <a name="configure-the-project-for-local-development"></a>ローカル開発用のプロジェクトを構成する
 
 Functions ランタイムでは内部的に Azure Storage アカウントを使用します。 HTTP と webhook 以外のすべてのトリガーの種類については、**Values.AzureWebJobsStorage** キーを有効な Azure Storage アカウントの接続文字列に設定する必要があります。 
 
@@ -147,5 +148,6 @@ Azure の関数アプリに必要な設定をアップロードする最も簡�
 
 Azure Functions Tools の詳細については、[Visual Studio 2017 Tools for Azure Functions](https://blogs.msdn.microsoft.com/webdev/2017/05/10/azure-function-tools-for-visual-studio-2017/) ブログ投稿のよく寄せられる質問を参照してください。
 
-Azure Functions Core Tools の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。  
+Azure Functions Core Tools の詳細については、「[Azure Functions をローカルでコーディングしてテストする](functions-run-local.md)」を参照してください。
+
 .NET クラス ライブラリとしての関数の開発の詳細については、「[Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-dotnet-class-library.md)」を参照してください。 このトピックは、Azure Functions でサポートされる各種バインディングを宣言するための属性の使用例にもリンクしています。    

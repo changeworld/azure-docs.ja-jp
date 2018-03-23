@@ -18,7 +18,7 @@
 
 
 # チュートリアル
-## [1 - BLOB からデータを読み込む](load-data-from-azure-blob-storage-using-polybase.md)
+## [1 - WideWorldImporters の読み込み](load-data-wideworldimportersdw.md)
 
 # 概念
 ## サービスの機能
@@ -101,6 +101,7 @@
 
 
 ## データの読み込みと移動
+### [ニューヨークのタクシー データ](load-data-from-azure-blob-storage-using-polybase.md)
 ### [Contoso のパブリック データ](sql-data-warehouse-load-from-azure-blob-storage-with-polybase.md)
 ### [Azure Data Lake Store](sql-data-warehouse-load-from-azure-data-lake-store.md)
 ### [BCP](sql-data-warehouse-load-with-bcp.md)

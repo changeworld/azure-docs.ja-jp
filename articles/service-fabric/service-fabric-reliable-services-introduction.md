@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric の Reliable Services プログラミング モデルの概要 | Microsoft Docs"
-description: "Service Fabric の Reliable Service プログラミング モデルについて学び、独自のサービスを作成しましょう。"
+title: Service Fabric の Reliable Services プログラミング モデルの概要 | Microsoft Docs
+description: Service Fabric の Reliable Service プログラミング モデルについて学び、独自のサービスを作成しましょう。
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 3/9/2018
 ms.author: masnider;
-ms.openlocfilehash: cf647c078728c9fbe357fea5bef4aa6dfb86c975
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 1cbc116a8d595cfea0e87cd17b556e005f276774
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reliable-services-overview"></a>Reliable Services の概要
 Azure Service Fabric により、ステートレスおよびステートフルな Reliable Service の作成と管理が簡素化されます。 このトピックの内容は次のとおりです。
@@ -34,7 +34,7 @@ Service Fabric では、プロビジョニングとデプロイからアップ�
 ## <a name="what-are-reliable-services"></a>Reliable Services について
 Reliable Services は、重要な機能をアプリケーションに組み込むためのシンプルかつ強力な最上位レベルのプログラミング モデルを提供します。 Reliable Services プログラミング モデルを使用すると、以下のことを実現できます。
 
-* 残りの Service Fabric プログラミング API の使用。 [ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)としてモデル化された Service Fabric Services とは異なり、Reliable Services は残りの Service Fabric API を直接使用します。 これにより、サービスで次のことが可能になります。
+* 残りの Service Fabric プログラミング API の使用。 [ゲスト実行可能ファイル](service-fabric-guest-executables-introduction.md)としてモデル化された Service Fabric Services とは異なり、Reliable Services は残りの Service Fabric API を直接使用します。 これにより、サービスで次のことが可能になります。
   * システムのクエリを実行する
   * クラスター内のエンティティに関する正常性レポート
   * 構成とコードの変更に関する通知を受け取る

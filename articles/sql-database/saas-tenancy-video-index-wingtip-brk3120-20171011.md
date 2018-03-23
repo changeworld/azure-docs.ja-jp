@@ -1,25 +1,19 @@
 ---
-title: "インデックス付きビデオ、Azure SaaS SQL アプリ | Microsoft Docs"
-description: "この記事では、2017 年 10 月 11 日に開催された Ignite カンファレンスで公開された、SaaS DB テナント アプリの設計に関する 81 分間のビデオのさまざまな時点のインデックスを示します。 興味のある部分にスキップできます。 少なくとも 3 つのパターンについて説明されています。 開発と管理を簡略化する Azure の機能が説明されています。"
-ms.custom: 
+title: インデックス付きビデオ、Azure SaaS SQL アプリ | Microsoft Docs
+description: この記事では、2017 年 10 月 11 日に開催された Ignite カンファレンスで公開された、SaaS DB テナント アプリの設計に関する 81 分間のビデオのさまざまな時点のインデックスを示します。 興味のある部分にスキップできます。 少なくとも 3 つのパターンについて説明されています。 開発と管理を簡略化する Azure の機能が説明されています。
+services: sql-database
 ms.date: 12/06/2017
-ms.prod: 
 ms.service: sql-database
 ms.reviewer: billgib
-ms.suite: 
-ms.technology:
-- database-engine
-ms.tgt_pltfrm: 
 ms.topic: article
 author: MightyPen
 ms.author: genemi
 manager: craigg
-ms.workload: Inactive
-ms.openlocfilehash: 5e8d5467e676ee178b77c02e387bdfd2c54e6071
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0d9182abda03aef3ffe35e10114fa045d8b0ca74
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="video-indexed-and-annotated-for-mulit-tenant-saas-app-using-azure-sql-database"></a>Azure SQL Database を使用するマルチテナント SaaS アプリに関するインデックスおよび注釈付きのビデオ
 

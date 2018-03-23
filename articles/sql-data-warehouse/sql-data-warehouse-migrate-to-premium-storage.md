@@ -1,11 +1,11 @@
 ---
-title: "Premium Storage への既存の Azure データ ウェアハウスの移行 | Microsoft Docs"
-description: "Premium Storage へ既存のデータ ウェアハウスを移行する手順"
+title: Premium Storage への既存の Azure データ ウェアハウスの移行 | Microsoft Docs
+description: Premium Storage へ既存のデータ ウェアハウスを移行する手順
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: barbkess
-editor: 
+editor: ''
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 11/29/2016
 ms.author: elbutter;barbkess
-ms.openlocfilehash: 751f553c277cec579327771beb2f3256664452b1
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 1e216da55a4c425fe112215464cdedb59c8db585
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="migrate-your-data-warehouse-to-premium-storage"></a>Premium Storage へのデータ ウェアハウスの移行
 Azure SQL Data Warehouse では最近、パフォーマンス予測能力の向上を目的として [Premium Storage][premium storage for greater performance predictability] が導入されました。 これにより、現在 Standard Storage 上に存在するデータ ウェアハウスを Premium Storage に移行できるようになりました。 移行は自動で行われますが、移行のタイミングを制御する必要がある場合は、手動で行うこともできます (移行の際にはダウンタイムが生じます)。
@@ -31,13 +31,13 @@ Azure SQL Data Warehouse では最近、パフォーマンス予測能力の向�
 
 | **[リージョン]** | **この日付より前にデータ ウェアハウスを作成** |
 |:--- |:--- |
-| オーストラリア東部 |Premium Storage はまだ利用できません |
+| オーストラリア東部 |2018 年 1 月 1 日 |
 | 中国 (東部) |2016 年 11 月 1 日 |
 | 中国 (北部) |2016 年 11 月 1 日 |
 | ドイツ中部 |2016 年 11 月 1 日 |
 | ドイツ北東部 |2016 年 11 月 1 日 |
-| インド西部 |Premium Storage はまだ利用できません |
-| 西日本 |Premium Storage はまだ利用できません |
+| インド西部 |2018 年 2 月 1 日 |
+| 西日本 |2018 年 2 月 1 日 |
 | 米国中北部 |2016 年 11 月 10 日 |
 
 ## <a name="automatic-migration-details"></a>自動移行の詳細
@@ -69,14 +69,14 @@ Microsoft は、次の手順に従って移行を完了します (お客様に�
 
 | **[リージョン]** | **開始予定日** | **終了予定日** |
 |:--- |:--- |:--- |
-| オーストラリア東部 |未定 |未定 |
-| 中国 (東部) |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
-| 中国 (北部) |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
-| ドイツ中部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
-| ドイツ北東部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
-| インド西部 |未定 |未定 |
-| 西日本 |未定 |未定 |
-| 米国中北部 |2017 年 1 月 9 日 |2017 年 1 月 13 日 |
+| オーストラリア東部 |2018 年 3 月 19 日 |2018 年 3 月 20 日 |
+| 中国 (東部) |移行済み |移行済み |
+| 中国 (北部) |移行済み |移行済み |
+| ドイツ中部 |移行済み |移行済み |
+| ドイツ北東部 |移行済み |移行済み |
+| インド西部 |2018 年 3 月 19 日 |2018 年 3 月 20 日 |
+| 西日本 |2018 年 3 月 19 日 |2018 年 3 月 20 日 |
+| 米国中北部 |移行済み |移行済み |
 
 ## <a name="self-migration-to-premium-storage"></a>Premium Storage への手動移行
 ダウンタイムの発生するタイミングを制御する必要がある場合は、以下の手順に従って Standard Storage 上の既存のデータ ウェアハウスを Premium Storage に移行することができます。 手動移行を選択した場合、対象のリージョンで自動移行が開始される前に、手動移行を完了する必要があります。 そうすることで、自動移行によって競合が引き起こされる危険を回避することができます (「[自動移行スケジュール][automatic migration schedule]」を参照)。
@@ -84,11 +84,14 @@ Microsoft は、次の手順に従って移行を完了します (お客様に�
 ### <a name="self-migration-instructions"></a>手動移行の手順
 データ ウェアハウスを手動で移行するには、バックアップと復元の機能を使用します。 移行処理の復元部分にかかる時間は、各データ ウェアハウスで 1 TB (テラバイト) ストレージあたり約 1 時間と予想されています。 移行後に同じ名前を保持する必要がある場合は、[移行時の名前変更][steps to rename during migration]の手順に従ってください。
 
-1. データ ウェアハウスを[一時停止][Pause]します。 自動バックアップが表示されます。
+1. データ ウェアハウスを[一時停止][Pause]します。 
 2. 最新のスナップショットから[復元][Restore]します。
 3. Standard Storage 上の既存のデータ ウェアハウスを削除します。 **この手順を行わないと、両方のデータ ウェアハウスに対して課金されることになります。**
 
 > [!NOTE]
+>
+> データ ウェアハウスを復元する場合は、データ ウェアハウスが停止した後に、利用可能な最近の復元ポイントを使用することを確認します。
+>
 > 移行処理の一部として、次の各設定が引き継がれることはありません。
 >
 > * データベース レベルでの監査は再度有効化する必要があります。
@@ -105,60 +108,13 @@ Microsoft は、次の手順に従って移行を完了します (お客様に�
    ```
    ALTER DATABASE CurrentDatabasename MODIFY NAME = NewDatabaseName;
    ```
-2. "MyDW_BeforeMigration" を[一時停止][Pause]します。 自動バックアップが表示されます。
+2. "MyDW_BeforeMigration" を[一時停止][Pause]します。 
 3. 最新のスナップショットから、以前の名前 ("MyDW" など) の新しいデータベースを[復元][Restore]します。
 4. "MyDW_BeforeMigration" を削除します。 **この手順を行わないと、両方のデータ ウェアハウスに対して課金されることになります。**
 
 
 ## <a name="next-steps"></a>次の手順
 Premium Storage の変更により、データ ウェアハウスの基になるアーキテクチャでデータベース BLOB ファイルの数も増えています。 この変更のパフォーマンスの利点を最大化するには、以下のスクリプトを使用して、クラスター化列ストア インデックスを再構築します。 このスクリプトにより、既存のデータの一部が追加の BLOB に転送されます。 何も行わない場合、データ ウェアハウスのテーブルに読み込むデータが増えるにつれて、データは自然に再配布されます。
-
-**前提条件:**
-
-- データ ウェアハウスは 1,000 DWU 以上で実行する必要があります (「[コンピューティング能力のスケーリング][scale compute power]」セクションを参照)。
-- このスクリプトを実行するユーザーは、[mediumrc ロール][mediumrc role]以上である必要があります。 このロールにユーザーを追加するには、次のコマンドを実行します。````EXEC sp_addrolemember 'xlargerc', 'MyUser'````
-
-````sql
--------------------------------------------------------------------------------
--- Step 1: Create table to control index rebuild
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-create table sql_statements
-WITH (distribution = round_robin)
-as select
-    'alter index all on ' + s.name + '.' + t.NAME + ' rebuild;' as statement,
-    row_number() over (order by s.name, t.name) as sequence
-from
-    sys.schemas s
-    inner join sys.tables t
-        on s.schema_id = t.schema_id
-where
-    is_external = 0
-;
-go
-
---------------------------------------------------------------------------------
--- Step 2: Execute index rebuilds. If script fails, the below can be re-run to restart where last left off.
--- Run as user in mediumrc or higher
---------------------------------------------------------------------------------
-
-declare @nbr_statements int = (select count(*) from sql_statements)
-declare @i int = 1
-while(@i <= @nbr_statements)
-begin
-      declare @statement nvarchar(1000)= (select statement from sql_statements where sequence = @i)
-      print cast(getdate() as nvarchar(1000)) + ' Executing... ' + @statement
-      exec (@statement)
-      delete from sql_statements where sequence = @i
-      set @i += 1
-end;
-go
--------------------------------------------------------------------------------
--- Step 3: Clean up table created in Step 1
---------------------------------------------------------------------------------
-drop table sql_statements;
-go
-````
 
 データ ウェアハウスで問題が発生した場合は、[サポート チケットを作成][create a support ticket]し、考えられる原因を "Premium Storage への移行" としてください。
 

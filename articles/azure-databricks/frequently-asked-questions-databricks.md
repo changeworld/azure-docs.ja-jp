@@ -1,8 +1,8 @@
 ---
-title: "Azure Databricks: 一般的な質問とヘルプ | Microsoft Docs"
-description: "Azure Databricks に関する一般的な質問の回答とトラブルシューティング情報を確認します。"
+title: 'Azure Databricks: 一般的な質問とヘルプ | Microsoft Docs'
+description: Azure Databricks に関する一般的な質問の回答とトラブルシューティング情報を確認します。
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: nitinme
 ms.openlocfilehash: 5da6ffc346cc0e7f0f83bf4a4c33600b668a17ca
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Azure Databricks についてよく寄せられる質問
 
@@ -46,7 +46,7 @@ Databricks のプロビジョニングの一部として、新しい仮想ネッ
 
 #### <a name="error-message"></a>エラー メッセージ
 
-"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションを登録する方法については https://aka.ms/rps-not-found をご覧ください。 (コード: MissingSubscriptionRegistration)"
+"このサブスクリプションは名前空間 ‘Microsoft.Databricks’ を使用するように登録されていません。 サブスクリプションの登録方法については、https://aka.ms/rps-not-found を参照してください。 (コード: MissingSubscriptionRegistration)"
 
 #### <a name="solution"></a>解決策
 
@@ -101,7 +101,7 @@ Databricks クラスターは、ノードごとに 1 つのパブリック IP �
 #### <a name="error-message"></a>エラー メッセージ
 
 "クラウド プロバイダーの起動エラー: クラスターの設定中にクラウド プロバイダーのエラーが発生しました。 詳細については、Databricks ガイドを参照してください。
-Azure のエラー コード: MissingSubscriptionRegistration Azure エラー メッセージ: サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません。 サブスクリプションを登録する方法については https://aka.ms/rps-not-found をご覧ください。"
+Azure のエラー コード: MissingSubscriptionRegistration Azure エラー メッセージ: サブスクリプションが名前空間 'Microsoft.Compute' を使用するように登録されていません。 サブスクリプションの登録方法については、https://aka.ms/rps-not-found を参照してください。
 
 #### <a name="solution"></a>解決策
 

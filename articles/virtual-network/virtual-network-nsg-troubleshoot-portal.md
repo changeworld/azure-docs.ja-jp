@@ -1,11 +1,11 @@
 ---
-title: "ネットワーク セキュリティ グループのトラブルシューティング - ポータル | Microsoft Docs"
-description: "Azure Resource Manager デプロイメント モデルで、Azure Portal を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。"
+title: ネットワーク セキュリティ グループのトラブルシューティング - ポータル | Microsoft Docs
+description: Azure Resource Manager デプロイメント モデルで、Azure Portal を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
 manager: narayan
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a54feccf-0123-4e49-a743-eb8d0bdd1ebc
 ms.service: virtual-network
@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: 5998aa0e0b281ead859c24d792c3e175e3cca899
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループのトラブルシューティング
 > [!div class="op_single_selector"]
@@ -46,7 +46,7 @@ VM の NSG のトラブルシューティングを行うには、次の手順を
 
 NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧できます。 操作を行う権限を持っていれば、有効な規則のブレードから NIC とサブネット両方の NSG ルールを追加、変更、削除できます。
 
-1. Azure アカウントを使用して Azure ポータル (https://portal.azure.com) にログインします。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
+1. Azure アカウントを使用して Azure Portal (https://portal.azure.com) にログインします。 ネットワーク インターフェイス用の *Microsoft.Network/networkInterfaces/effectiveNetworkSecurityGroups/action* 操作がアカウントに割り当てられている必要があります。 アカウントに操作を割り当てる方法については、「[Azure のロールベースのアクセス制御のためのカスタム ロールを作成する](../active-directory/role-based-access-control-custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#actions)」を参照してください。
 2. **[すべてのサービス]** をクリックし、表示される一覧で **[仮想マシン]** をクリックします。
 3. 表示される一覧からトラブルシューティングを実行する VM を選択すると、VM のブレードとオプションが表示されます。
 4. **[問題の診断と解決]** をクリックし、一般的な問題を選択します。 例として、 **[Windows VM に接続できません]** を選択します。 
@@ -95,7 +95,7 @@ NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧�
 ### <a name="nic"></a>ネットワーク インターフェイスの有効なセキュリティ規則を表示する
 特定の NIC で VM トラフィックが影響を受けている場合は、次の手順を使用してネットワーク インターフェイスのコンテキストから NIC の有効な規則の完全な一覧を表示できます。
 
-1. https://portal.azure.com で Azure ポータルにログインします。
+1. Azure Portal (https://portal.azure.com) にログインします。
 2. **[すべてのサービス]** をクリックし、表示される一覧で **[ネットワーク インターフェイス]** をクリックします。
 3. ネットワーク インターフェイスを選択します。 次の図では、 *VM1 NIC1* という名前の NIC が選択されています。
    
@@ -112,7 +112,7 @@ NIC の有効なセキュリティ規則の完全な一覧は、VM から閲覧�
 ## <a name="nsg"></a>ネットワーク セキュリティ グループ (NSG) の有効なセキュリティ規則を表示する
 NSG 規則を変更する際、特定の VM に追加された規則による影響を確認できます。 NSG が適用されているすべての NIC の有効なセキュリティ規則の完全な一覧は、NSG ブレードからコンテキストを切り替えることなく確認できます。 NSG 内で有効な規則をトラブルシューティングするには、次の手順を実行します。
 
-1. https://portal.azure.com で Azure ポータルにログインします。
+1. Azure Portal (https://portal.azure.com) にログインします。
 2. **[すべてのサービス]** をクリックし、表示される一覧で **[ネットワーク セキュリティ グループ]** をクリックします。
 3. NSG を選択します。 次の図では、「VM1-nsg」という名前の NSG が選択されています。
    

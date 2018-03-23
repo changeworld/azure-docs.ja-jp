@@ -1,26 +1,20 @@
 ---
-title: "Azure Site Recovery を使用して IIS ベースの多層 Web アプリケーションをレプリケートする | Microsoft Docs"
-description: "Azure Site Recovery を使用して IIS Web ファームの仮想マシンをレプリケートする方法について説明します。"
+title: Azure Site Recovery を使用して IIS ベースの多層 Web アプリケーションをレプリケートする | Microsoft Docs
+description: Azure Site Recovery を使用して IIS Web ファームの仮想マシンをレプリケートする方法について説明します。
 services: site-recovery
-documentationcenter: 
 author: nsoneji
 manager: gauravd
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/05/2018
 ms.author: nisoneji
-ms.openlocfilehash: a4a8ea14fecac73b187c9c7d3f9ca318bb2671c5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 1ed0184ac76b5fb3e607458559327da5e8fe90c5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="replicate-a-multi-tier-iis-based-web-application-by-using-site-recovery"></a>Site Recovery を使用して IIS ベースの多層 Web アプリケーションをレプリケートする
+# <a name="replicate-a-multi-tier-iis-based-web-application"></a>多層 IIS ベース Web アプリケーションをレプリケートする
 
 アプリケーション ソフトウェアは、組織のビジネス生産性の原動力です。 さまざまな Web アプリケーションが組織のさまざまな目的に役立ちます。 アプリケーションによっては、組織にとって不可欠なものとなる場合もあります (給与処理、財務、顧客向け Web サイトに使用されるアプリケーションなど)。 生産性の低下を防ぐには、それらのアプリケーションを常時稼働させる必要があります。 さらに、それらのアプリケーションを一貫性をもって使用できるようにすることは、組織のブランドやイメージが損なわれるのを防ぐことにもつながります。
 
@@ -36,7 +30,7 @@ ms.lasthandoff: 02/24/2018
 
 この記事の内容を学習するには、次のタスクの実行方法を知っている必要があります。
 
-* [仮想マシンを Azure にレプリケートする](site-recovery-vmware-to-azure.md)
+* [仮想マシンを Azure にレプリケートする](vmware-azure-tutorial.md)
 * [復旧ネットワークを設計する](site-recovery-network-design.md)
 * [Azure へのテスト フェールオーバーを実行する](site-recovery-test-failover-to-azure.md)
 * [Azure へのフェールオーバーを実行する](site-recovery-failover.md)
@@ -75,7 +69,7 @@ Azure|該当なし|[はい]
 
 すべての IIS Web ファーム仮想マシンを Azure にレプリケートするには、「[Site Recovery での Azure へのフェールオーバーをテストする](site-recovery-test-failover-to-azure.md)」のガイダンスに従います。
 
-静的 IP アドレスを使用している場合は、仮想マシンに割り当てる IP アドレスを指定できます。 IP アドレスを設定するには、**[コンピューティングとネットワーク] の設定** > [**[ターゲット IP]**](./site-recovery-replicate-vmware-to-azure.md#view-and-manage-vm-properties) に移動します。
+静的 IP アドレスを使用している場合は、仮想マシンに割り当てる IP アドレスを指定できます。 IP アドレスを設定するには、**[コンピューティングとネットワーク] の設定** > **[ターゲット IP]** に移動します。
 
 ![Site Recovery の [コンピューティングとネットワーク] ウィンドウでターゲット IP を設定する方法を示したスクリーン ショット](./media/site-recovery-active-directory/dns-target-ip.png)
 

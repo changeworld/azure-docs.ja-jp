@@ -62,6 +62,8 @@
           href: module-development.md
         - name: 構成
           href: module-composition.md
+        - name: Edge エージェントとハブのプロパティ
+          href: module-edgeagent-edgehub.md
     - name: IoT Edge ランタイム
       href: iot-edge-runtime.md
     - name: デプロイメント

@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL データ同期 (プレビュー) のトラブルシューティング | Microsoft Docs"
-description: "Azure SQL データ同期 (プレビュー) における一般的な問題のトラブルシューティングの方法について説明します。"
+title: Azure SQL データ同期 (プレビュー) のトラブルシューティング | Microsoft Docs
+description: Azure SQL データ同期 (プレビュー) における一般的な問題のトラブルシューティングの方法について説明します。
 services: sql-database
 ms.date: 11/13/2017
 ms.topic: article
@@ -8,11 +8,11 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 50cabbaa584671e52c1ea7efbd2ad990b8438272
-ms.sourcegitcommit: 1d8612a3c08dc633664ed4fb7c65807608a9ee20
+ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/20/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) に関する問題のトラブルシューティング
 
@@ -135,7 +135,7 @@ Windows インストーラーによって実行されるすべてのインスト
 
 クライアント エージェントを使用しようとすると、次のメッセージが表示されます。
 
-"Sync failed with exception (例外で同期に失敗しました) There was an error while trying to deserialize parameter www.microsoft.com/.../05:GetBatchInfoResult. (パラメーター www.microsoft.com/.../05:GetBatchInfoResult を逆シリアル化しようとしているときにエラーが発生しました。) See InnerException for more details. (詳細については、InnerException を参照してください。)"
+"Sync failed with exception (例外で同期に失敗しました) There was an error while trying to deserialize parameter www.microsoft.com/.../05:GetBatchInfoResult. (パラメーター www.microsoft.com/.../05:GetBatchInfoResult を逆シリアル化しようとしているときにエラーが発生しました。) 詳細については、InnerException をご覧ください。
 
 "Inner exception message: Type 'Microsoft.Synchronization.ChangeBatch' is an invalid collection type since it does not have a default constructor. (内部例外メッセージ: タイプ 'Microsoft.Synchronization.ChangeBatch' は、既定のコンストラクターがないため無効なコレクション型です。)"
 
@@ -214,7 +214,7 @@ SQL Server をホストしているコンピューターで、エージェント
 エージェントのパスワードを現在のサーバー パスワードに更新します。
 
 1. [SQL Data Sync (Preview) client agent Preview]\(SQL データ同期 (プレビュー) クライアント エージェント プレビュー\) サービスを見つけます。  
-    a. **[開始]** を選択します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[開始]** を選択します。  
     b. 検索ボックスに「**services.msc**」と入力します。  
     c. 検索結果で、**[サービス]** を選択します。  
     d. **[サービス]** ウィンドウで、**[SQL Data Sync (Preview) Agent Preview]\(SQL データ同期 (プレビュー) エージェント プレビュー\)** のエントリまでスクロールします。  
@@ -292,7 +292,7 @@ SQL データ同期 (プレビュー) クライアント エージェントに�
 
 1. アプリを終了します。  
 2. [コンポーネント サービス] パネルを開きます。  
-    a. タスク バーの検索ボックスに「**services.msc**」と入力します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 タスク バーの検索ボックスに「**services.msc**」と入力します。  
     b. 検索結果で、**[サービス]** をダブルクリックします。  
 3. **[SQL Data Sync (Preview) Preview]\(SQL データ同期 (プレビュー) プレビュー\)** サービスを停止します。
 4. **[SQL Data Sync (Preview) Preview]\(SQL データ同期 (プレビュー) プレビュー\)** サービスを再開します。  
@@ -334,10 +334,10 @@ SQL データ同期 (プレビュー) クライアント エージェントに�
 
 -   クライアント エージェントがオンラインになっていることを確認してから、再試行します。
 -   クライアント エージェントがアンインストールされているか、見つからない場合:  
-    a. SQL データ同期 (プレビュー) のインストール フォルダーにエージェント XML ファイルがある場合は、このファイルを削除します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 SQL データ同期 (プレビュー) のインストール フォルダーにエージェント XML ファイルがある場合は、このファイルを削除します。  
     b. オンプレミスのコンピューター (同じコンピューターでも別のコンピューターでもかまいません) にエージェントをインストールします。 次に、オフラインと表示されているエージェント用にポータルで生成されたエージェント キーを送信します。
 -   SQL データ同期 (プレビュー) サービスが実行されていることを確認します。  
-    a. **[スタート]** メニューで、**サービス**を検索します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[スタート]** メニューで、**サービス**を検索します。  
     b. 検索結果で、**[サービス]** を選択します。  
     c. **[SQL Data Sync (Preview) Preview]\(SQL データ同期 (プレビュー) プレビュー\)** サービスを見つけます。  
     d. このサービスの状態が **[停止]** の場合は、サービス名を右クリックして **[開始]** を選択します。
@@ -357,12 +357,12 @@ SQL データ同期 (プレビュー) クライアント エージェントに�
 この操作を実行しても同期グループからデータベースを削除できない場合は、次の手順を実行します。
 
 1. クライアント エージェント ホスト サービスをいったん停止した後、再び開始します。  
-    a. **[スタート]** メニューを選択します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[スタート]** メニューを選択します。  
     b. 検索ボックスに「**services.msc**」と入力します。  
     c. 検索結果ウィンドウの **[プログラム]** セクションで、**[サービス]** をダブルクリックします。  
     d. **[SQL Data Sync (Preview)]\(SQL データ同期 (プレビュー)\)** サービスを右クリックします。  
     e. サービスが実行中の場合は、停止します。  
-    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 サービスを右クリックして、**[開始]** を選択します。  
+    f. サービスを右クリックして、**[開始]** を選択します。  
     g. データベースがまだ登録されているかどうかを確認します。 登録が解除されている場合は、作業は終了です。 それ以外の場合は、次の手順に進みます。
 2. クライアント エージェント アプリ (SqlAzureDataSyncAgent) を開きます。
 3. **[資格情報の編集]** を選択し、データベースの資格情報を入力します。
@@ -427,7 +427,7 @@ SQL データ同期 (プレビュー) では、45 日以上サービスでオフ
 1. 関連付けられている同期エージェントがオンラインのときに同期グループを削除します (推奨)。
 2. エージェントがオフラインになっているもののインストールはされている場合は、オンプレミスのコンピューターでオンラインにします。 次に、SQL データ同期 (プレビュー) ポータルでエージェントの状態が **[Online]\(オンライン\)** と表示されるまで待機します。 その後、同期グループを削除します。
 3. エージェントがアンインストールされたためにオフラインになっている場合は、次の手順を実行します。  
-    a.  SQL データ同期 (プレビュー) のインストール フォルダーにエージェント XML ファイルがある場合は、このファイルを削除します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  SQL データ同期 (プレビュー) のインストール フォルダーにエージェント XML ファイルがある場合は、このファイルを削除します。  
     b.  オンプレミスのコンピューター (同じコンピューターでも別のコンピューターでもかまいません) にエージェントをインストールします。 次に、オフラインと表示されているエージェント用にポータルで生成されたエージェント キーを送信します。  
     c. 同期グループを削除します。
 
@@ -435,8 +435,8 @@ SQL データ同期 (プレビュー) では、45 日以上サービスでオフ
 
 紛失または破損したデータベースをバックアップから復元した場合、データベースが属している同期グループのデータが収束しない可能性があります。
 
-## <a name="next-steps"></a>次のステップ
-SQL データ同期 (プレビュー) の詳細については以下を参照してください。
+## <a name="next-steps"></a>次の手順
+SQL データ同期 (プレビュー) の詳細については、以下をご覧ください。
 
 -   [Azure SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する](sql-database-sync-data.md)  
 -   [Azure SQL データ同期 (プレビュー) のセットアップ](sql-database-get-started-sql-data-sync.md)  
@@ -447,7 +447,7 @@ SQL データ同期 (プレビュー) の詳細については以下を参照し
     -   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)  
 -   [SQL データ同期 (プレビュー) の REST API ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 
-SQL データベースについて詳しくは、次を参照してください。
+SQL Database の詳細については、以下をご覧ください。
 
 -   [SQL Database の概要](sql-database-technical-overview.md)
 -   [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)

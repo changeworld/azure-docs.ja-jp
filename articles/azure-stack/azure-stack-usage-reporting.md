@@ -1,24 +1,24 @@
 ---
-title: "Azure Stack 使用状況データの Azure への報告 | Microsoft Docs"
-description: "Azure Stack で使用状況データ レポートを設定する方法について説明します。"
+title: Azure Stack 使用状況データの Azure への報告 | Microsoft Docs
+description: Azure Stack で使用状況データ レポートを設定する方法について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: 2A397C83-1A6C-4290-B0EF-FDC34EE290CD
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
-ms.author: mabrigg;AlfredoPizzirani
-ms.openlocfilehash: 451e8c604e48d9cfc42284f2413fa5ed4fea03bc
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 29d53f63bf3d551823ca27df04f0e385a92cdec7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack 使用状況データの Azure への報告 
 
@@ -76,7 +76,6 @@ Azure Stack Development Kit の場合、Azure Stack リソースは課金され�
 
 ## <a name="are-users-charged-for-the-infrastructure-vms"></a>ユーザーはインフラストラクチャ VM に対して課金されますか?
 
-
 いいえ。 一部の Azure Stack リソース プロバイダー VM の使用状況データは Azure に報告されますが、これらの VM に対する課金はなく、Azure Stack インフラストラクチャを有効にするためにデプロイ中に作成された VM も課金の対象になりません。  
 
 課金は、テナント サブスクリプションの下で実行されている VM に対してのみ行われます。 すべてのワークロードは、Azure Stack のライセンス条項に従って、テナント サブスクリプションでデプロイする必要があります。
@@ -104,8 +103,9 @@ Azure Stack Development Kit では、使用状況データ レポートにはグ
 
 Azure Stack の Usage API を使用して使用状況データを報告する場合と、Azure アカウント センターを使用して使用状況データを報告する場合とでは常に時間差があります。 この遅延は、使用状況データを Azure Stack から Azure コマースにアップロードするために必要な時間です。 この遅延のために、午前 0 時の少し前に発生した使用状況は翌日 Azure に表示される可能性があります。 [Azure Stack 使用状況 API](azure-stack-provider-resource-api.md) を使用し、その結果を Azure 課金ポータルで報告された使用状況と比較すると、違いを確認できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [プロバイダー使用量 API](azure-stack-provider-resource-api.md)  
 * [テナント使用量 API](azure-stack-tenant-resource-usage-api.md)
 * [使用量に関する FAQ](azure-stack-usage-related-faq.md)
+* [クラウド サービス プロバイダーとして使用状況と課金を管理する](azure-stack-add-manage-billing-as-a-csp.md)

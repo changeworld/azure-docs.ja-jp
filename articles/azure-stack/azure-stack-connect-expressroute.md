@@ -1,12 +1,12 @@
 ---
-title: "ExpressRoute を使用して Azure Stack を Azure に接続する"
-description: "ExpressRoute を使用して Azure Stack 内の仮想ネットワークを Azure 内の仮想ネットワークに接続する方法です。"
+title: ExpressRoute を使用して Azure Stack を Azure に接続する
+description: ExpressRoute を使用して Azure Stack 内の仮想ネットワークを Azure 内の仮想ネットワークに接続する方法です。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 8ec733c01b19f01951d0b53265daaef32c3afe73
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.reviewer: ''
+ms.openlocfilehash: 544fc1bcc9212fd38938d58447f5050df2a08796
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-azure-stack-to-azure-using-expressroute"></a>ExpressRoute を使用して Azure Stack を Azure に接続する
 
@@ -273,7 +273,7 @@ Azure でデプロイするリソースは、Azure Stack でデプロイした�
 3. 10.100.0.0/16 アドレス範囲を使用してスポーク VNet とサブネットを作成します。
 
 
-Azure での仮想ネットワークの作成の詳細については、「[複数のサブネットを含んだ仮想ネットワークを作成する](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」を参照してください。
+Azure での仮想ネットワークの作成の詳細については、「[Create a virtual network (仮想ネットワークの作成)](../virtual-network/manage-virtual-network.md#create-a-virtual-network)」を参照してください。
 
 ### <a name="configure-an-expressroute-circuit"></a>ExpressRoute 回線を構成する
 

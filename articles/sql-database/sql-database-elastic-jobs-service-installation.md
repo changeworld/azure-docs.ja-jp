@@ -1,25 +1,19 @@
 ---
-title: "Elastic Database ジョブのインストールの概要 | Microsoft Docs"
-description: "弾力性ジョブの機能のインストールについて説明します。"
+title: Elastic Database ジョブのインストールの概要 | Microsoft Docs
+description: 弾力性ジョブの機能のインストールについて説明します。
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: ddove
-editor: 
-ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: ef5a8931eeda0f7ddc485632acaf2d76b71dccde
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: 7e5258e0ccb88c8e2f3fe3277f69444ae5424cd0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
 [**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)は、PowerShell または Azure Portal を使用してインストールできます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。
@@ -64,7 +58,7 @@ ms.lasthandoff: 12/14/2017
 <table style="width:100%">
   <tr>
     <th>パラメーター</th>
-    <th>説明</th>
+    <th>[説明]</th>
   </tr>
 
 <tr>
@@ -125,7 +119,7 @@ ms.lasthandoff: 12/14/2017
 <table style="width:100%">
   <tr>
   <th>パラメーター</th>
-  <th>説明</th>
+  <th>[説明]</th>
 </tr>
 
   <tr>
@@ -173,7 +167,7 @@ ms.lasthandoff: 12/14/2017
 
 アンインストールが必要な場合は、リソース グループを削除します。 「 [エラスティック データベース ジョブ コンポーネントのアンインストール方法](sql-database-elastic-jobs-uninstall.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 スクリプトを実行できる適切な権限を持つ資格情報がグループ内の各データベースに作成されていることを確認します。詳細については、「[SQL Database の保護](sql-database-manage-logins.md)」をご覧ください。
 概要については、「[エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」をご覧ください。
 

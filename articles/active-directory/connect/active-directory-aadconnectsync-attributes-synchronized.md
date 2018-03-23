@@ -1,24 +1,24 @@
 ---
-title: "Azure AD Connect によって同期される属性 | Microsoft Docs"
-description: "Azure Active Directory に同期される属性の一覧を示します。"
+title: Azure AD Connect によって同期される属性 | Microsoft Docs
+description: Azure Active Directory に同期される属性の一覧を示します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c2bb36e0-5205-454c-b9b6-f4990bcedf51
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/05/2018
 ms.author: billmath
-ms.openlocfilehash: 1d935b73e1087d5ad858bdbee9af68dd1cf5cd1e
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: d3c1c080c1198fd75916a119d4bb08c8db50a05d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-connect-sync-attributes-synchronized-to-azure-active-directory"></a>Azure AD Connect Sync: Azure Active Directory に同期される属性
 このトピックでは、Azure AD Connect Sync によって同期される属性の一覧を示します。  
@@ -421,17 +421,17 @@ Windows 10 のドメイン参加コンピューター (デバイス) は、一�
 ## <a name="exchange-hybrid-writeback"></a>Exchange ハイブリッドの書き戻し
 次の属性は、 **Exchange ハイブリッド**を有効にした場合に Azure AD からオンプレミスの Active Directory に書き戻されます。 Exchange のバージョンに応じて、同期される属性が少なくなる場合があります。
 
-| 属性名 | User | 連絡先 | グループ | Comment (コメント) |
-| --- |:---:|:---:|:---:| --- |
-| msDS ExternalDirectoryObjectID |○ | | |Azure AD の cloudAnchor から派生します。 この属性は、Exchange 2016 と Windows Server 2016 AD で導入されました。 |
-| msExchArchiveStatus |○ | | |オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。 |
-| msExchBlockedSendersHash |○ | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
-| msExchSafeRecipientsHash |○ | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
-| msExchSafeSendersHash |○ | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
-| msExchUCVoiceMailSettings |○ | | |ユニファイド メッセージング (UM) の有効化 - オンラインのボイス メール: Microsoft Lync Server の統合で使用され、オンプレミスの Lync Server に対して、ユーザーがオンライン サービスでボイス メールを使用していることを示します。 |
-| msExchUserHoldPolicies |○ | | |訴訟ホールド: クラウド サービスが訴訟ホールド状態のユーザーを特定できるようにします。 |
-| proxyAddresses |○ |○ |○ |Exchange Online の x500 アドレスのみが挿入されます。 |
-| publicDelegates |○ | | |オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できます。 Azure AD Connect ビルド 1.1.552.0 以降が必要です。 |
+| 属性名 (Connect の UI) |属性名 (オンプレミスの AD) | User | 連絡先 | グループ | Comment (コメント) |
+| --- |:---:|:---:|:---:| --- |---|
+| msDS ExternalDirectoryObjectID| ms-DS-External-Directory-Object-Id |○ | | |Azure AD の cloudAnchor から派生します。 この属性は、Exchange 2016 と Windows Server 2016 AD で導入されました。 |
+| msExchArchiveStatus| ms-Exch-ArchiveStatus |○ | | |オンライン アーカイブ: 顧客によるメールのアーカイブを有効にします。 |
+| msExchBlockedSendersHash| ms-Exch-BlockedSendersHash |○ | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
+| msExchSafeRecipientsHash| ms-Exch-SafeRecipientsHash  |○ | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
+| msExchSafeSendersHash| ms-Exch-SafeSendersHash  |○ | | |フィルター処理: オンプレミスのフィルター処理、オンラインの安全性、ブロックされた送信者データをクライアントから書き戻します。 |
+| msExchUCVoiceMailSettings| ms-Exch-UCVoiceMailSettings |○ | | |ユニファイド メッセージング (UM) の有効化 - オンラインのボイス メール: Microsoft Lync Server の統合で使用され、オンプレミスの Lync Server に対して、ユーザーがオンライン サービスでボイス メールを使用していることを示します。 |
+| msExchUserHoldPolicies| ms-Exc-hUserHoldPolicies |○ | | |訴訟ホールド: クラウド サービスが訴訟ホールド状態のユーザーを特定できるようにします。 |
+| proxyAddresses| proxyAddresses |○ |○ |○ |Exchange Online の x500 アドレスのみが挿入されます。 |
+| publicDelegates| ms-Exch-Public-Delegates  |○ | | |オンプレミスの Exchange メールボックスを持つユーザーに送信するための SendOnBehalfTo 権限を、Exchange Online メールボックスに付与できます。 Azure AD Connect ビルド 1.1.552.0 以降が必要です。 |
 
 ## <a name="exchange-mail-public-folder"></a>Exchange メールのパブリック フォルダー
 次の属性は、**Exchange メールのパブリック フォルダー**を有効にすると、オンプレミス Active Directory から Azure AD に同期されます。

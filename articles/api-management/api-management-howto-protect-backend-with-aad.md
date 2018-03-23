@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory と API Management で Web API バックエンドを保護する | Microsoft Docs"
-description: "Azure Active Directory と API Management で Web API バックエンドを保護する方法について説明します。"
+title: Azure Active Directory と API Management で Web API バックエンドを保護する | Microsoft Docs
+description: Azure Active Directory と API Management で Web API バックエンドを保護する方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/30/2017
 ms.author: apimpm
-ms.openlocfilehash: 2a5be24aba8a675290045b282cc64dda4b7c594e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: b7fc48412799aea0c4bba971102b4912dbb18e05
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
 
@@ -179,7 +179,7 @@ API は、API パブリッシャー ポータルから構成されます。こ�
 
 ![発行者ポータル][api-management-management-console]
 
-操作は [API に手動で追加する](api-management-howto-add-operations.md)ことも、インポートすることもできます。 このビデオでは、操作は 6:40 から始まる Swagger 形式でインポートされます。
+操作は [API に手動で追加する](api-management-howto-add-operations.md)ことも、インポートすることもできます。
 
 次の内容のファイルを `calcapi.json` という名前で作成し、コンピューターに保存します。 `host` 属性がお使いの Web API バックエンドを指定していることを確認します。 この例では、`"host": "apimaaddemo.azurewebsites.net"` が使用されます。
 

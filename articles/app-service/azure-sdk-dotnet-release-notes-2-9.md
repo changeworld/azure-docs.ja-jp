@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-ms.openlocfilehash: 199f0906f73d693d7cd4b73c928f23ae83b99596
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a62268cee0750c544703fb4c3f7e91238e26b872
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="azure-sdk-for-net-29-release-notes"></a>Azure SDK for .NET 2.9 リリース ノート
 
 このトピックには、Azure SDK for .NET のバージョン 2.9 および 2.9.6 のリリース ノートが含まれています。
 
-##<a name="azure-sdk-for-net-296-release-summary"></a>Azure SDK for .NET 2.9.6 リリースの概要
+## <a name="azure-sdk-for-net-296-release-summary"></a>Azure SDK for .NET 2.9.6 リリースの概要
 
 リリース日: 2016 年 11 月 16 日
  
@@ -59,7 +59,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="azure-sdk-for-net-29-summary"></a>Azure SDK for .NET 2.9 の概要
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このドキュメントには、Azure SDK for .NET 2.9 リリースのリリース ノートが含まれます。 
 
 このリリースの詳細については、「 [Azure SDK 2.9 アナウンスの投稿](https://azure.microsoft.com/blog/announcing-visual-studio-azure-tools-and-sdk-2-9/)」をご覧ください。
@@ -85,7 +85,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="hdinsight-tools"></a>HDInsight ツール
 **HDInsight Tools** for Visual Studio で HDInsight Version 3.3 がサポートされるようになりました。これには、Tez グラフの表示やその他の言語の修正が含まれています。
 
-## <a name="azure-resource-manager"></a>Azure リソース マネージャー
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 このリリースでは、Resource Manager テンプレートの [KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) サポートが追加されています。
 
 ## <a name="see-also"></a>関連項目

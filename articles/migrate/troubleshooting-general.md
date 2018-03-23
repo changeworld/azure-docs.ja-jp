@@ -1,16 +1,16 @@
 ---
-title: "Azure Migrate に関する問題のトラブルシューティング | Microsoft Docs"
-description: "Azure Migrate サービスの既知の問題についての概要を説明し、一般的なエラーのトラブルシューティングのヒントを提供します。"
+title: Azure Migrate に関する問題のトラブルシューティング | Microsoft Docs
+description: Azure Migrate サービスの既知の問題についての概要を説明し、一般的なエラーのトラブルシューティングのヒントを提供します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: troubleshooting
 ms.date: 02/21/2018
 ms.author: raynew
-ms.openlocfilehash: 249de45dbd9bedf1b3c2d2a5957acf31d6c0d243
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: e1e7a1a57f780ef477379dfb1ceaead0c8654970
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="troubleshoot-azure-migrate"></a>Azure Migrate のトラブルシューティング
 
@@ -126,5 +126,23 @@ Windows イベント トレーシング を収集するには、次の操作を�
 7. 開発者ツールを閉じます。
  
 
+## <a name="vcenter-errors"></a>vCenter のエラー
 
+### <a name="error-unhandledexception-internal-error-occured-systemiofilenotfoundexception"></a>エラー UnhandledException 内部エラーが発生しました: System.IO.FileNotFoundException
+
+これは、コレクター バージョン 1.0.9.5 未満で見られる問題です。 コレクター バージョン 1.0.9.2、または 1.0.8.59 などの GA 前バージョンをご使用の場合は、この問題が発生します。 [詳細な回答については、フォーラムへのこちらのリンク](https://social.msdn.microsoft.com/Forums/azure/en-US/c1f59456-7ba1-45e7-9d96-bae18112fb52/azure-migrate-connect-to-vcenter-server-error?forum=AzureMigrate)に従ってください。
+
+[コレクターをアップグレードして問題を解決](https://aka.ms/migrate/col/checkforupdates)します。
+
+### <a name="error-unabletoconnecttoserver"></a>エラー UnableToConnectToServer
+
+vCenter Server "Servername.com:9443" に接続できません。原因となったエラー: メッセージを受信できる https://Servername.com:9443/sdk でリッスンしているエンドポイントがありませんでした。
+
+これは、コレクター マシンが、指定された vCenter サーバー名を解決できないか、指定されたポートが間違っている場合に発生します。 既定では、ポートが指定されていない場合、コレクターはポート番号 443 への接続を試みます。
+
+1. コレクターのマシンから Servername.com に ping を実行してみてください。
+2. 手順 1. が失敗した場合は、IP アドレスで vCenter サーバーへの接続を再試行してください。
+3. 正しいポート番号を識別して vCenter に接続します。
+4. 最後に、vCenter サーバーが起動されていて実行中かどうかを確認します。
+ 
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure Cloud Services のロールでのリモート デスクトップ接続の有効化 | Microsoft Docs"
-description: "Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法"
+title: Azure Cloud Services のロールでのリモート デスクトップ接続の有効化 | Microsoft Docs
+description: Azure クラウド サービス アプリケーションを構成してリモート デスクトップ接続を許可する方法
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: mmccrory
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 73ea1d64-1529-4d72-b58e-f6c10499e6bb
 ms.service: cloud-services
 ms.workload: tbd
@@ -14,26 +14,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: mmccrory
-ms.openlocfilehash: b9ae4442f57170746eb0de94849b09625be51264
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 2169fd95f51b468770a2e1e4c185d493babf220f
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="enable-remote-desktop-connection-for-a-role-in-azure-cloud-services"></a>Azure Cloud Services のロールでのリモート デスクトップ接続の有効化
+
 > [!div class="op_single_selector"]
-> * [Azure ポータル](cloud-services-role-enable-remote-desktop-new-portal.md)
+> * [Azure Portal](cloud-services-role-enable-remote-desktop-new-portal.md)
 > * [PowerShell](cloud-services-role-enable-remote-desktop-powershell.md)
-> * [Visual Studio](../vs-azure-tools-remote-desktop-roles.md)
+> * [Visual Studio](cloud-services-role-enable-remote-desktop-visual-studio.md)
 
 リモート デスクトップを使用して、Azure で実行されているロールのデスクトップにアクセスできます。 リモート デスクトップ接続を使用すると、アプリケーションの実行中にそのアプリケーションの問題のトラブルシューティングや診断を行うことができます。
 
 サービス定義にリモート デスクトップ モジュールを含めることで開発時にロールのリモート デスクトップ接続を有効にするか、リモート デスクトップ拡張機能を使用してリモート デスクトップを有効にすることができます。 アプリケーションのデプロイ後でもアプリケーションを再デプロイすることなくリモート デスクトップを有効にできるため、リモート デスクトップ拡張機能を使用する方法が推奨されます。
 
 ## <a name="configure-remote-desktop-from-the-azure-portal"></a>Azure Portal からリモート デスクトップを構成する
-Azure Portal では、アプリケーションのデプロイ後でもリモート デスクトップを有効化できるように、リモート デスクトップ拡張機能の方法を使用します。 クラウド サービスの **[リモート デスクトップ]** ブレードでは、リモート デスクトップの有効化、仮想マシンへの接続に使用するローカル管理者アカウントや認証に使用する証明書の変更、および有効期限の設定を行うことができます。
 
-1. **[クラウド サービス]** をクリックし、クラウド サービスの名前をクリックして、**[リモート デスクトップ]** をクリックします。
+Azure Portal では、アプリケーションのデプロイ後でもリモート デスクトップを有効化できるように、リモート デスクトップ拡張機能の方法を使用します。 クラウド サービスの **[リモート デスクトップ]** 設定では、リモート デスクトップの有効化、仮想マシンへの接続に使用するローカル管理者アカウントや認証に使用する証明書の変更、および有効期限の設定を行うことができます。
+
+1. **[クラウド サービス]** をクリックし、クラウド サービスの名前を選択して、**[リモート デスクトップ]** を選択します。
 
     ![クラウド サービスのリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop.png)
 
@@ -44,17 +46,17 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
     ![クラウド サービスのリモート デスクトップ](./media/cloud-services-role-enable-remote-desktop-new-portal/CloudServices_Remote_Desktop_Details.png)
 
    > [!WARNING]
-   > 初めてリモート デスクトップを有効にして [OK] \(チェックマーク) をクリックしたときは、すべてのロール インスタンスが再起動されます。 再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。 再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) して、このダイアログに戻ります。
-   >
-   >
-3. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
+   > 初めてリモート デスクトップを有効にして **[OK]** (チェックマーク) を選択したときは、すべてのロール インスタンスが再起動されます。 再起動を防止するには、パスワードの暗号化に使用した証明書がロールにインストールされている必要があります。 再起動を防止するには、[クラウド サービスの証明書をアップロード](cloud-services-configure-ssl-certificate-portal.md#step-3-upload-a-certificate) して、このダイアログに戻ります。
 
-4. 構成の更新が完了したら、**[保存]** をクリックします。 ロール インスタンスが接続を受信する準備が完了するまで数分間かかります。
+4. **[ロール]** で、更新するロールを選択します。すべてのロールの場合は、**[すべて]** をクリックします。
+
+5. 構成の更新が完了したら、**[保存]** を選択します。 ロール インスタンスが接続を受信する準備が完了するまで数分間かかります。
 
 ## <a name="remote-into-role-instances"></a>ロール インスタンスへのリモート接続
+
 ロールに対してリモート デスクトップが有効になったら、Azure Portal から直接接続を開始できます。
 
-1. **[インスタンス]** をクリックして、**[インスタンス]** ブレードを開きます。
+1. **[インスタンス]** をクリックして、**[インスタンス]** 設定を開きます。
 2. リモート デスクトップが構成されたロール インスタンスを選択します。
 3. **[接続]** をクリックしてロール インスタンス用の RDP ファイルをダウンロードします。
 
@@ -68,4 +70,3 @@ Azure Portal では、アプリケーションのデプロイ後でもリモー�
 ## <a name="additional-resources"></a>その他のリソース
 
 [Cloud Services の構成方法](cloud-services-how-to-configure-portal.md)
-[Cloud Services に関する FAQ - リモート デスクトップ](cloud-services-faq.md)

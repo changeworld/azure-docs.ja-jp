@@ -1,9 +1,9 @@
 ---
-title: "イベント ハブへの Azure 診断ログのストリーミング | Microsoft Docs"
-description: "Azure 診断ログをイベント ハブにストリーミングする方法について説明します。"
+title: イベント ハブへの Azure 診断ログのストリーミング | Microsoft Docs
+description: Azure 診断ログをイベント ハブにストリーミングする方法について説明します。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 42bc4845-c564-4568-b72d-0614591ebd80
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/22/2017
+ms.date: 03/06/2018
 ms.author: johnkem
-ms.openlocfilehash: bcb9fcb2371217e7082d96ddbba4a095e6d9a00f
-ms.sourcegitcommit: a648f9d7a502bfbab4cd89c9e25aa03d1a0c412b
+ms.openlocfilehash: 72876e38f77aa7a13c0dd9a8cdf9479e058f4a0d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/22/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Azure 診断ログをイベント ハブにストリーミングする
 **[Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)**は、ポータルに組み込まれた [Event Hubs にエクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI を使用して診断設定でイベント ハブ承認規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。
@@ -83,10 +83,10 @@ ms.lasthandoff: 12/22/2017
 [Azure PowerShell コマンドレット](insights-powershell-samples.md)を使用してストリーミングを有効にするには、次のパラメーターを指定して `Set-AzureRmDiagnosticSetting` コマンドレットを使用します。
 
 ```powershell
-Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -ServiceBusRuleId [your Service Bus rule ID] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizationRuleId [your Event Hub namespace auth rule ID] -Enabled $true
 ```
 
-Service Bus 規則 ID は、`{Service Bus resource ID}/authorizationrules/{key name}` の形式の文字列です。たとえば、`/subscriptions/{subscription ID}/resourceGroups/Default-ServiceBus-WestUS/providers/Microsoft.ServiceBus/namespaces/{Service Bus namespace}/authorizationrules/RootManageSharedAccessKey` のようになります。 現時点では、PowerShell を使って特定のイベント ハブ名を選択することはできません。
+イベント ハブ承認規則 ID は、`{Event Hub namespace resource ID}/authorizationrules/{key name}` という形式の文字列です。たとえば、`/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey` のようになります。 現時点では、PowerShell を使って特定のイベント ハブ名を選択することはできません。
 
 ### <a name="via-azure-cli"></a>Azure CLI の使用
 [Azure CLI](insights-cli-samples.md) を使用してストリーミングを有効にするには、次のように `insights diagnostic set` コマンドを使用します。
@@ -95,7 +95,7 @@ Service Bus 規則 ID は、`{Service Bus resource ID}/authorizationrules/{key n
 azure insights diagnostic set --resourceId <resourceID> --serviceBusRuleId <serviceBusRuleID> --enabled true
 ```
 
-Service Bus 規則 ID には、PowerShell コマンドレットのセクションで説明したものと同じ形式を使用します。 現時点では、Azure CLI を使って特定のイベント ハブ名を選択することはできません。
+イベント ハブ承認規則 ID には、PowerShell コマンドレットのセクションで説明したものと同じ形式を使用します。 現時点では、Azure CLI を使って特定のイベント ハブ名を選択することはできません。
 
 ## <a name="how-do-i-consume-the-log-data-from-event-hubs"></a>Event Hubs からログ データを使用する方法
 Event Hubs からのサンプル出力データを次に示します。

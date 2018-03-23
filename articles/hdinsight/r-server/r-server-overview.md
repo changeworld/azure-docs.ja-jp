@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.openlocfilehash: 860099b2634765f3088199c89341f0b48b20b801
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 2106e5f0c9b6a27da3747bc67aad0937f2356873
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 02/22/2018
 ---
-#<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での R Server とオープン ソース R の機能の概要
+# <a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での R Server とオープン ソース R の機能の概要
 
 Azure で HDInsight クラスターを作成するときのデプロイ オプションとして Microsoft R Server を選択できるようになりました。 この新しい機能により、データ サイエンティスト、統計学者、R プログラマは、HDInsight でのスケーラブルで分散型の分析手法にオンデマンドでアクセスできるようになります。
 

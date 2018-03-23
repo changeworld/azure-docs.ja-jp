@@ -1,12 +1,12 @@
 ---
-title: "Web App for Containers のカスタム Docker イメージを使用する - Azure | Microsoft Docs"
-description: "Web App for Containers のカスタム Docker イメージを使用する方法。"
-keywords: "Azure App Service, Web アプリ, Linux, Docker, コンテナー"
+title: Web App for Containers のカスタム Docker イメージを使用する - Azure | Microsoft Docs
+description: Web App for Containers のカスタム Docker イメージを使用する方法。
+keywords: Azure App Service, Web アプリ, Linux, Docker, コンテナー
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: SyntaxC4
 manager: SyntaxC4
-editor: 
+editor: ''
 ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.service: app-service
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: b7f05f02249f86e6bee7f89c6ecf8016ede9c4fb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: acfe066d9ad4882bcff85b7fd51dc7d3b2278235
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
@@ -193,7 +193,7 @@ Azure Web Apps を使用して、クラウドにネイティブの Linux アプ�
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux-no-h.md)] 
 
 ### <a name="create-a-linux-app-service-plan"></a>Linux App Service プランの作成
 

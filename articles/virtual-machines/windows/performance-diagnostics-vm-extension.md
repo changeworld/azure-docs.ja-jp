@@ -1,12 +1,12 @@
 ---
-title: "Windows 用 Azure パフォーマンス診断 VM 拡張機能 | Microsoft Docs"
-description: "Windows 用の Azure パフォーマンス診断 VM 拡張機能について説明します。"
+title: Windows 用 Azure パフォーマンス診断 VM 拡張機能 | Microsoft Docs
+description: Windows 用の Azure パフォーマンス診断 VM 拡張機能について説明します。
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 5a7dc313f1d6453562e4d5a11ceca03e4459b043
-ms.sourcegitcommit: 3fca41d1c978d4b9165666bb2a9a1fe2a13aabb6
+ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -29,7 +29,7 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 この拡張機能は、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、および Windows Server 2016 にインストールできます。 また、Windows 8.1 および Windows 10 にインストールすることもできます。
 
 ## <a name="extension-schema"></a>拡張機能のスキーマ
-次に示す JSON は、Azure パフォーマンス診断 VM 拡張機能のスキーマです。 この拡張機能では、診断の出力とレポートを保存するために、ストレージ アカウントの名前とキーが必要です。 これらの値は機密性が高く、保護された設定構成内に格納する必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **storageAccountName** と **storageAccountKey** は大文字と小文字が区別されることに注意してください。 他の必要なパラメーターについては、以下のセクションで示します。
+次に示す JSON は、Azure パフォーマンス診断 VM 拡張機能のスキーマです。 この拡張機能では、診断の出力とレポートを保存するために、ストレージ アカウントの名前とキーが必要です。 これらは機密性の高い値です。 ストレージ アカウント キーは、保護された設定構成内に格納する必要があります。 Azure VM 拡張機能の保護された設定データは暗号化され、ターゲットの仮想マシンでのみ、暗号化が解除されます。 **storageAccountName** と **storageAccountKey** は大文字と小文字が区別されることに注意してください。 他の必要なパラメーターについては、以下のセクションで示します。
 
 ```JSON
     {
@@ -43,19 +43,19 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
 ```
@@ -71,10 +71,11 @@ Azure パフォーマンス診断 VM 拡張機能は、Windows VM からパフ�
 |performanceScenario|basic|データをキャプチャするパフォーマンス シナリオ。 有効な値: **basic**、**vmslow**、**azurefiles**、**custom**。
 |traceDurationInSeconds|300|いずれかのトレース オプションを選択した場合、トレースの期間。
 |perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
-|networkTrace|n|ネットワーク トレースを有効にするオプション。 有効な値: **n**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
+|networkTrace|n|ネットワーク トレースを有効にするオプション。 有効な値は、**n** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
 |xperfTrace|○|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |storPortTrace|s|StorPort のトレースを有効にするオプション。 有効な値は、**s** または空の値です。 このトレースをキャプチャしない場合は、値を空のままにします。
 |srNumber|123452016365929|サポート チケット番号 (ある場合)。 ない場合は、値を空のままにします。
+|requestTimeUtc|2017-09-28T22:08:53.736Z|現在の日時 (UTC)。 ポータルを使ってこの拡張機能をインストールしている場合は、この値を指定する必要はありません。
 |storageAccountName|mystorageaccount|診断ログと結果を格納するストレージ アカウントの名前。
 |storageAccountKey|lDuVvxuZB28NNP…hAiRF3voADxLBTcc==|ストレージ アカウントのキー。
 
@@ -182,19 +183,19 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
         "typeHandlerVersion": "1.0",
         "autoUpgradeMinorVersion": true,
         "settings": {
+            "storageAccountName": "[parameters('storageAccountName')]",
             "performanceScenario": "[parameters('performanceScenario')]",
-                  "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
-                  "perfCounterTrace": "[parameters('perfCounterTrace')]",
-                  "networkTrace": "[parameters('networkTrace')]",
-                  "xperfTrace": "[parameters('xperfTrace')]",
-                  "storPortTrace": "[parameters('storPortTrace')]",
+            "traceDurationInSeconds": "[parameters('traceDurationInSeconds')]",
+            "perfCounterTrace": "[parameters('perfCounterTrace')]",
+            "networkTrace": "[parameters('networkTrace')]",
+            "xperfTrace": "[parameters('xperfTrace')]",
+            "storPortTrace": "[parameters('storPortTrace')]",
             "srNumber": "[parameters('srNumber')]",
             "requestTimeUtc":  "[parameters('requestTimeUtc')]"
         },
-          "protectedSettings": {
-            "storageAccountName": "[parameters('storageAccountName')]",
+        "protectedSettings": {            
             "storageAccountKey": "[parameters('storageAccountKey')]"        
-            }
+        }
       }
     }
   ]
@@ -202,13 +203,13 @@ Azure 仮想マシン拡張機能は、Azure Resource Manager テンプレート
 ````
 
 ## <a name="powershell-deployment"></a>PowerShell でのデプロイ
-`Set-AzureRmVMExtension` コマンドを使って、Azure パフォーマンス診断 VM 拡張機能を既存の仮想マシンにデプロイすることができます。 このコマンドを実行する前に、パブリック構成とプライベート構成を PowerShell ハッシュ テーブルに格納します。
+`Set-AzureRmVMExtension` コマンドを使って、Azure パフォーマンス診断 VM 拡張機能を既存の仮想マシンにデプロイすることができます。
 
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
+$PublicSettings = @{ "storageAccountName"="mystorageaccount";"performanceScenario"="basic";"traceDurationInSeconds"=300;"perfCounterTrace"="p";"networkTrace"="";"xperfTrace"="";"storPortTrace"="";"srNumber"="";"requestTimeUtc"="2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountKey"="mystoragekey" }
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `
@@ -218,7 +219,7 @@ Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -TypeHandlerVersion 1.0 `
     -Settings $PublicSettings `
     -ProtectedSettings $ProtectedSettings `
-    -Location WestUS `
+    -Location WestUS
 ````
 
 ## <a name="information-on-the-data-captured"></a>キャプチャされるデータについて

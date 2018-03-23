@@ -38,6 +38,7 @@
 #### [Azure CLI 2.0 の使用](virtual-machine-scale-sets-encrypt-disks-cli.md)
 ### [大規模なスケール セットを処理する](virtual-machine-scale-sets-placement-groups.md)
 ### [スケール セット テンプレートを変換して管理ディスクを使用する](virtual-machine-scale-sets-convert-template-to-md.md)
+### [優先順位の低い VM を使用する](virtual-machine-scale-sets-use-low-priority.md)
 
 ## [管理]
 ### 一般的な管理タスク

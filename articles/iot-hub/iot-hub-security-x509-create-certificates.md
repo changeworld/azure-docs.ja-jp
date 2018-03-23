@@ -1,11 +1,11 @@
 ---
-title: "PowerShell を使用して X.509 証明書を作成する方法 | Microsoft Docs"
-description: "PowerShell を使用してローカルで X.509 証明書を作成し、シミュレーション環境の Azure IoT Hub で X.509 ベースのセキュリティを有効にする方法。"
+title: PowerShell を使用して X.509 証明書を作成する方法 | Microsoft Docs
+description: PowerShell を使用してローカルで X.509 証明書を作成し、シミュレーション環境の Azure IoT Hub で X.509 ベースのセキュリティを有効にする方法。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: dsk-2015
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: na
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 12/10/2017
 ms.author: dkshir
 ms.openlocfilehash: b2f78e8debd367f86ee9bb06bf7de50590c61ad7
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="powershell-scripts-to-manage-ca-signed-x509-certificates"></a>CA が署名した X.509 証明書を管理する PowerShell スクリプト
 

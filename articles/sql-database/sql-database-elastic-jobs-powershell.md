@@ -1,24 +1,19 @@
 ---
-title: "PowerShell を使用したエラスティック ジョブの作成と管理 | Microsoft Docs"
-description: "Azure SQL Database プールを管理するために使用するPowerShell"
+title: PowerShell を使用したエラスティック ジョブの作成と管理 | Microsoft Docs
+description: Azure SQL Database プールを管理するために使用するPowerShell
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 737d8d13-5632-4e18-9cb0-4d3b8a19e495
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 357937aad5eb13ca87267629eb542cc43119dc0a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: sstein
+ms.openlocfilehash: 17e4176129da747925596c66ca9df936a3828c2d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
 
@@ -43,7 +38,7 @@ ms.lasthandoff: 12/11/2017
 <table style="width:100%">
   <tr>
     <th>オブジェクトの種類</th>
-    <th>Description</th>
+    <th>[説明]</th>
     <th>関連する PowerShell API</th>
   </tr>
   <tr>
@@ -510,7 +505,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
     Write-Output $childTargets
 
 ### <a name="create-a-job-to-execute-a-script-across-a-custom-database-collection-target"></a>カスタム データベース コレクション ターゲット全体に対してスクリプトを実行するジョブを作成する
-[**New-AzureSqlJob**](/powershell/module/elasticdatabasejobs/new-azuresqljob) コマンドレットを使用して、カスタム データベース コレクション ターゲットに定義されているデータベース グループに対するジョブを作成します。 エラスティック データベース ジョブによって、カスタム データベース コレクション ターゲットに関連付けられているデータベースに対応する複数の子ジョブにまでジョブの対象が拡張されるので、各データベースに対して確実にスクリプトが実行されます。 ここでも、スクリプトをべき等にして、再試行に対して回復力を持たせるようにすることが重要です。
+[**New-AzureSqlJob**](/powershell/module/elasticdatabasejobs/new-azuresqljob) コマンドレットを使用して、カスタム データベース コレクション ターゲットに定義されているデータベース グループに対するジョブを作成します。 Elastic Database ジョブによって、カスタム データベース コレクション ターゲットに関連付けられているデータベースに対応する複数の子ジョブにまでジョブの対象が拡張されるので、各データベースに対して確実にスクリプトが実行されます。 ここでも、スクリプトをべき等にして、再試行に対して回復力を持たせるようにすることが重要です。
 
     $jobName = "{Job Name}"
     $scriptName = "{Script Name}"

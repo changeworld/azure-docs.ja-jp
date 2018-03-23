@@ -1,9 +1,9 @@
 ---
-title: "Azure CLI 1.0 のインストール | Microsoft Docs"
-description: "Mac、Linux、および Windows に Azure CLI 1.0 をインストールして Azure サービスの利用を開始する"
-editor: 
+title: Azure CLI 1.0 のインストール | Microsoft Docs
+description: Mac、Linux、および Windows に Azure CLI 1.0 をインストールして Azure サービスの利用を開始する
+editor: ''
 manager: timlt
-documentationcenter: 
+documentationcenter: ''
 author: squillace
 services: virtual-machines-linux,virtual-network,storage,azure-resource-manager
 tags: azure-resource-manager,azure-service-management
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: rasquill
-ms.openlocfilehash: 67aa5bb122b277e998119506bb2a574d6b4fde5e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a1ca71a81f4fa6dd36b9ed3a2b16fcca0e29601c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="install-the-azure-cli-10"></a>Azure CLI 1.0 のインストール
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 
 > [!IMPORTANT]
 > このトピックでは、Azure CLI 1.0 のインストール方法について説明します。 この CLI は廃止されており、"従来の" リソースを使用した Azure サービス管理 (ASM) モデルのサポートにのみ使用されます。
-> Azure Resource Manager (ARM) のデプロイには、[Azure CLI 2.0](/cli/azure/overview) を使用します。
+> Azure Resource Manager のデプロイには、[Azure CLI 2.0](/cli/azure) を使用します。
 
 Azure コマンド ライン インターフェイス (Azure CLI 1.0) を簡単にインストールして、コマンド ライン シェルからオープン ソースのコマンドを使って Microsoft Azure 上のリソースを作成したり管理したりすることができます。 お使いのコンピューターにこれらのクロスプラットフォーム ツールをインストールするオプションは複数あります。
 
@@ -128,7 +128,7 @@ echo 'source ~/azure.completion.sh' >> ~/.bash_profile
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [CLI から Azure サブスクリプションへの接続](/cli/azure/authenticate-azure-cli) を行い、Azure リソースを作成および管理します。
 * Azure CLI の詳細、ソース コードのダウンロード、問題のレポート、プロジェクトへの協力については、 [GitHub リポジトリの Azure CLI](https://github.com/azure/azure-xplat-cli)のページを参照してください。
 * Azure CLI または Azure の使用に関してご不明な点がある場合は、 [Azure のフォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurescripting)をご覧ください。

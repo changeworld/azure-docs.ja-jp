@@ -1,24 +1,20 @@
 ---
-title: "スケールアウトされたクラウド データベース全体をレポートする | Microsoft Docs"
-description: "行方向のパーティション分割でエラスティック クエリを設定する方法"
+title: スケールアウトされたクラウド データベース全体をレポートする | Microsoft Docs
+description: 行方向のパーティション分割でエラスティック クエリを設定する方法
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+documentationcenter: ''
+manager: craigg
 author: MladjoA
-ms.assetid: f86eccb8-6323-4ba7-8559-8a7c039049f3
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 41accea2e94fc763d0dcbba709829ec07453da78
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: ec47a10fcfcb3ef52810ba2b3da9599b65db375a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
 ![シャード間のクエリ][1]
@@ -191,7 +187,7 @@ sp\_execute\_remote では、起動パラメーターで指定された外部デ
 * シャーディング キーによる述語で特定のシャードを処理から安全に除外できる場合、エラスティック クエリでは、現在のところ、シャードの除去を実行しません。
 * エラスティック クエリは、計算の大部分をシャード上で実行できるクエリに最適です。 通常、最適なクエリ パフォーマンスが得られるのは、シャード上で評価可能な選択的なフィルター述語を使用した場合、またはすべてのシャード上でパーティション分割方法により実行可能な、パーティション分割キーによる結合を使用した場合となります。 その他のクエリ パターンでは、シャードからヘッド ノードに大量のデータを読み込むことが必要になる場合があり、パフォーマンスが低下する可能性があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * エラスティック クエリの概要については、「[Azure SQL Database エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md)」をご覧ください。
 * 列方向のパーティション分割のチュートリアルについては、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](sql-database-elastic-query-getting-started-vertical.md)」をご覧ください。

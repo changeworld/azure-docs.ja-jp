@@ -1,11 +1,11 @@
 ---
-title: "Azure Logic Apps での Dropbox コネクタ | Microsoft Docs"
-description: "Azure App Service を使用してロジック アプリを作成します。 Dropbox に接続してファイルを管理します。 Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。"
+title: Azure Logic Apps での Dropbox コネクタ | Microsoft Docs
+description: Azure App Service を使用してロジック アプリを作成します。 Dropbox に接続してファイルを管理します。 Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: cb0ae033-aba7-4ac9-beaa-be561a0f0cac
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 07/15/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 3fecdc33a08c82d9ad13226e75d0d704a5557f98
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 7ac72cf5b18fa19bc0294abc67bf0a7089774a89
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-dropbox-connector"></a>Dropbox コネクタの使用
 Dropbox に接続してファイルを管理します。 Dropbox のファイルのアップロード、更新、取得、削除など、多様なアクションを実行できます。

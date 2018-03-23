@@ -1,25 +1,19 @@
 ---
-title: "パフォーマンスの監視と向上 - Azure SQL Database | Microsoft Docs"
-description: "Azure SQL Database では、現在のクエリのパフォーマンスを向上させる余地がある領域を識別するのに役立つパフォーマンス ツールを提供します。"
+title: パフォーマンスの監視と向上 - Azure SQL Database | Microsoft Docs
+description: Azure SQL Database では、現在のクエリのパフォーマンスを向上させる余地がある領域を識別するのに役立つパフォーマンス ツールを提供します。
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: monicar
-ms.assetid: a60b75ac-cf27-4d73-8322-ee4d4c448aa2
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 07/19/2016
 ms.author: sstein
-ms.openlocfilehash: 49b24619372d41ff25f815ca493ca7e6ce69ef9c
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 1d327e33a84917688e70f234df311e7b7cf4b30b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-and-improve-performance"></a>パフォーマンスの監視と向上
 Azure SQL Database は、データベース内の潜在的な問題を識別し、インテリジェントなチューニング アクションと推奨事項を提供することによって、ワークロードのパフォーマンスの向上に役立つアクションを提案します。
@@ -39,7 +33,7 @@ Azure SQL Database は、データベース内の潜在的な問題を識別し�
 ## <a name="performance-overview"></a>パフォーマンスの概要
 このビューにデータベースのパフォーマンスの概要が表示され、パフォーマンスのチューニングとトラブルシューティングを実行できます。 
 
-![パフォーマンス](./media/sql-database-performance/performance.png)
+![[パフォーマンス]](./media/sql-database-performance/performance.png)
 
 * **[推奨事項]** タイルには、データベースのチューニングに関する推奨事項の内訳が表示されます (推奨事項が 4 つ以上ある場合は、上から 3 番目までが表示されます)。 このタイルをクリックすると、**[[パフォーマンスの推奨事項]](#performance-recommendations)** が表示されます。 
 * **[Tuning activity]** タイルには、データベースに対して進行中のチューニング操作と完了したチューニング操作の概要が表示され、チューニング操作の履歴を簡単に確認できます。 このタイルをクリックすると、データベースのチューニング履歴がすべて表示されます。
@@ -53,7 +47,7 @@ Azure SQL Database は、データベース内の潜在的な問題を識別し�
 * データベースでスキーマの問題が識別された場合の推奨事項。
 * パラメーター化されたクエリがクエリに役立つ場合の推奨事項。
 
-![パフォーマンス](./media/sql-database-performance/recommendations.png)
+![[パフォーマンス]](./media/sql-database-performance/recommendations.png)
 
 また、過去に適用されたチューニング アクションの履歴すべてを表示することもできます。
 

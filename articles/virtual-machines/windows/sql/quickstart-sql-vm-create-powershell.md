@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell で SQL Server Windows VM を作成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure PowerShell で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。"
+title: Azure PowerShell で SQL Server Windows VM を作成する | Microsoft Docs
+description: このチュートリアルでは、Azure PowerShell で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: a9976810a67d47d92d6b04cd33c83fb35bf3d466
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: daa5043a948e660b6c3e685e933855afff8f7671
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="quickstart-create-a-sql-server-windows-virtual-machine-with-azure-powershell"></a>クイック スタート: Azure PowerShell で SQL Server Windows 仮想マシンを作成する
 
@@ -26,7 +26,15 @@ ms.lasthandoff: 02/21/2018
 > [!TIP]
 > このクイック スタートでは、SQL VM を迅速にプロビジョニングしてそこに接続する方法について説明します。 SQL VM を作成するためのその他の Azure PowerShell オプションについては、[Azure PowerShell を使用した SQL Server VM のプロビジョニング ガイド](virtual-machines-windows-ps-sql-create.md)を参照してください。
 
+> [!TIP]
+> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページをご覧ください。
+
+## <a id="subscription"></a>Azure サブスクリプションを取得する
+
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+
+
+## <a id="powershell"></a>Azure PowerShell を入手する
 
 このクイック スタートには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 

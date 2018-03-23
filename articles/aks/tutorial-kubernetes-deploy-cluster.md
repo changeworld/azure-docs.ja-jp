@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes on Azure のチュートリアル - クラスターのデプロイ"
-description: "AKS チュートリアル - クラスターのデプロイ"
+title: Kubernetes on Azure のチュートリアル - クラスターのデプロイ
+description: AKS チュートリアル - クラスターのデプロイ
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: d02229739e3f358e4a6510dfbb0585939e947f9c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -85,7 +85,7 @@ k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.9
 
 ## <a name="configure-acr-authentication"></a>ACR 認証を構成する
 
-AKS クラスターと ACR レジストリとの間で認証が構成されている必要があります。 その際、ACR レジストリからイメージをプルするための適切な権限を ACS の ID に付与することになります。
+AKS クラスターと ACR レジストリとの間で認証が構成されている必要があります。 その際、ACR レジストリからイメージをプルするための適切な権限を AKS の ID に付与することになります。
 
 まず、AKS に対して構成されているサービス プリンシパルの ID を取得します。 リソース グループの名前と AKS クラスターの名前は、お使いの環境に合わせて更新してください。
 

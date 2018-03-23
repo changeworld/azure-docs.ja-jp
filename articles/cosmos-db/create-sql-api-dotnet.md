@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB: .NET と SQL API による Web アプリのビルド | Microsoft Docs"
-description: "Azure Cosmos DB SQL API への接続とクエリに使用できる .NET コード サンプルについて説明します"
+title: 'Azure Cosmos DB: .NET と SQL API による Web アプリのビルド | Microsoft Docs'
+description: Azure Cosmos DB SQL API への接続とクエリに使用できる .NET コード サンプルについて説明します
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/15/2017
 ms.author: mimig
-ms.openlocfilehash: 9541fa7331a5a6a5a5405244dd79eb8a92d96386
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b5ab66371b47bdd0f3bd7a4c9e86e419efebe902
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: .NET と Azure Portal による SQL API Web アプリのビルド
 
@@ -97,19 +97,19 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 アプリで何が行われているかを簡単に確認してみましょう。 DocumentDBRepository.cs ファイルを開くと、これらのコード行によって、Azure Cosmos DB リソースが作成されることがわかります。 
 
-* 78 行目では、DocumentClient が初期化されます。
+* 76 行目では、DocumentClient が初期化されます。
 
     ```csharp
     client = new DocumentClient(new Uri(ConfigurationManager.AppSettings["endpoint"]), ConfigurationManager.AppSettings["authKey"]);
     ```
 
-* 93 行目では、新しいデータベースが作成されます。
+* 91 行目では、新しいデータベースが作成されます。
 
     ```csharp
     await client.CreateDatabaseAsync(new Database { Id = DatabaseId });
     ```
 
-* 112 行目では、新しいコレクションが作成されます。
+* 110 行目では、新しいコレクションが作成されます。
 
     ```csharp
     await client.CreateDocumentCollectionAsync(
@@ -117,10 +117,9 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
         new DocumentCollection { Id = CollectionId },
         new DocumentCollection
             {
-               Id = CollectionId,
-               PartitionKey = new PartitionKeyDefinition() { Paths = new Collection<string>() { "/category" } }
+               Id = CollectionId
             },
-        new RequestOptions { OfferThroughput = 1000 });
+        new RequestOptions { OfferThroughput = 400 });
     ```
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する

@@ -1,11 +1,11 @@
 ---
-title: "最初に: Recovery Services コンテナーを使用した Azure VM の保護 | Microsoft Docs"
-description: "Recovery Services コンテナーを使用して Azure VM を保護します。 Resource Manager デプロイによる VM、クラシック デプロイによる VM、Premium Storage VM、暗号化された VM、Managed Disks 上の VM のバックアップを使用して、データを保護します。 Recovery Services コンテナーを作成して登録します。 Azure で VM の登録、ポリシーの作成、VM の保護を行います。"
+title: '最初に: Recovery Services コンテナーを使用した Azure VM の保護 | Microsoft Docs'
+description: Recovery Services コンテナーを使用して Azure VM を保護します。 Resource Manager デプロイによる VM、クラシック デプロイによる VM、Premium Storage VM、暗号化された VM、Managed Disks 上の VM のバックアップを使用して、データを保護します。 Recovery Services コンテナーを作成して登録します。 Azure で VM の登録、ポリシーの作成、VM の保護を行います。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 keyword: backups; vm backup
 ms.assetid: 45e773d6-c91f-4501-8876-ae57db517cd1
 ms.service: backup
@@ -16,11 +16,11 @@ ms.topic: hero-article
 ms.date: 01/05/2018
 ms.author: markgal;jimpark
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6cd6e9ba575a0efe6e612a2185076d5a6c189525
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3a450e3432a629a4fae9627c0e2df58102ad3387
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="back-up-azure-virtual-machines-to-recovery-services-vaults"></a>Recovery Services コンテナーへの Azure 仮想マシンのバックアップ
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/02/2018
 * Azure Disk Encryption を使って暗号化された VM
 * VSS を使用する Windows VM と、カスタム プリスナップショット スクリプトおよびポストスナップショット スクリプトを使用する Linux VM のアプリケーション整合性バックアップ
 
-Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 管理ディスク VM のサポートの詳細については、[管理ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。 Linux VM バックアップの事前および事後スクリプト フレームワークの詳細については、事前スクリプトおよび事後スクリプトを使用したアプリケーション整合性 Linux VM バックアップ (https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent) に関するページを参照してください。
+Premium Storage VM の保護の詳細については、[Premium Storage VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-premium-storage-vms-with-azure-backup)に関する記事をご覧ください。 管理ディスク VM のサポートの詳細については、[管理ディスクの VM のバックアップと復元](backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup)に関するページをご覧ください。 Linux VM バックアップの事前および事後スクリプト フレームワークの詳細については、[事前スクリプトおよび事後スクリプトを使用したアプリケーション整合性 Linux VM バックアップ](https://docs.microsoft.com/azure/backup/backup-azure-linux-app-consistent)に関するページを参照してください。
 
 バックアップできるデータの可否について詳しくは、[こちら](backup-azure-arm-vms-prepare.md#limitations-when-backing-up-and-restoring-a-vm)をご覧ください。
 

@@ -1,26 +1,20 @@
 ---
-title: "Azure Site Recovery でのオンプレミスから Azure へのシナリオでネットワーク インターフェイスを管理する | Microsoft Docs"
-description: "Azure Site Recovery でのオンプレミスから Azure へのシナリオでネットワーク インターフェイスを管理する方法について説明します"
+title: Azure Site Recovery を使用してオンプレミスから Azure へレプリケーションしてネットワーク インターフェイスを管理する | Microsoft Docs
+description: Azure Site Recovery を使用してオンプレミスから Azure へレプリケーションしてネットワーク インターフェイスを管理する方法について説明します。
 services: site-recovery
-documentationcenter: 
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
 ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/05/2018
 ms.author: manayar
-ms.openlocfilehash: ab8582d9c32cf13bd7b21a59031af8fde58effbf
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: a0d42608dc689e5f084f4ec91858531feeac8033
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
-# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-scenarios"></a>オンプレミスから Azure へのシナリオで仮想マシン ネットワーク インターフェイスを管理する
+# <a name="manage-virtual-machine-network-interfaces-for-on-premises-to-azure-replication"></a>オンプレミスから Azure へレプリケーションして仮想マシンのネットワーク インターフェイスを管理する
 
 Azure 内の仮想マシン (VM) には少なくとも 1 つのネットワーク インターフェイスがアタッチされている必要があります。 VM のサイズが対応できるだけの数のネットワーク インターフェイスをアタッチすることができます。
 

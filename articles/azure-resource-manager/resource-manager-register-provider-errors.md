@@ -1,23 +1,23 @@
 ---
-title: "Azure リソース プロバイダーの登録エラー | Microsoft Docs"
-description: "Azure リソース プロバイダーの登録エラーを解決する方法について説明します。"
+title: Azure リソース プロバイダーの登録エラー | Microsoft Docs
+description: Azure リソース プロバイダーの登録エラーを解決する方法について説明します。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/09/2018
 ms.author: tomfitz
-ms.openlocfilehash: d6a99917e732a3439a31cafa5608348694014054
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 303b3ae0ee7b4baeda974d2b3c62fefa0a68796f
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-errors-for-resource-provider-registration"></a>リソース プロバイダーの登録エラーの解決
 
@@ -40,6 +40,8 @@ Code: MissingSubscriptionRegistration
 Message: The subscription is not registered to use namespace {resource-provider-namespace}
 ```
 
+サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。
+
 ## <a name="cause"></a>原因
 
 これらのエラーの原因として、次の 3 つの理由のいずれかが考えられます。
@@ -48,11 +50,7 @@ Message: The subscription is not registered to use namespace {resource-provider-
 1. リソース タイプでサポートされた API バージョンに該当しない
 1. リソース タイプでサポートされた場所に該当しない
 
-## <a name="solution"></a>解決策
-
-サポートされる場所や API バージョンがエラー メッセージに提示されます。 提示されたいずれかの値を使用するようにテンプレートを変更してください。 ほとんどのプロバイダーは、Azure ポータルまたはご使用のコマンド ライン インターフェイスによって自動的に登録されますが、登録されない場合もあります。 まだ使ったことがないリソース プロバイダーについては、手動で登録しなければならない場合があります。 リソース プロバイダーの詳細については、PowerShell か Azure CLI で確認します。
-
-### <a name="solution-1"></a>解決策 1
+## <a name="solution-1---powershell"></a>解決策 1 - PowerShell
 
 PowerShell では、**Get-AzureRmResourceProvider** を使用して登録の状態を確認します。
 
@@ -78,9 +76,7 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Cdn
 ((Get-AzureRmResourceProvider -ProviderNamespace Microsoft.Web).ResourceTypes | Where-Object ResourceTypeName -eq sites).ApiVersions
 ```
 
-### <a name="solution-2"></a>解決策 2
-
-**Azure CLI**
+## <a name="solution-2---azure-cli"></a>解決策 2 - Azure CLI
 
 プロバイダーが登録されているかどうかを確認するには、 `az provider list` コマンドを使用します。
 
@@ -100,7 +96,7 @@ az provider register --namespace Microsoft.Cdn
 az provider show -n Microsoft.Web --query "resourceTypes[?resourceType=='sites'].locations"
 ```
 
-### <a name="solution-3"></a>解決策 3
+## <a name="solution-3---azure-portal"></a>解決策 3 - Azure Portal
 
 ポータルを利用すると、登録の状態を確認したり、リソース プロバイダー名前空間を登録したりできます。
 

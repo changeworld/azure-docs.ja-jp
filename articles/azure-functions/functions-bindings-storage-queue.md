@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions における Azure Queue Storage のバインド"
-description: "Azure Functions で Azure Queue Storage トリガーと出力バインドを使用する方法について説明します。"
+title: Azure Functions における Azure Queue Storage のバインド
+description: Azure Functions で Azure Queue Storage トリガーと出力バインドを使用する方法について説明します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: e2f9c75ba6e43f93aeb742b9eceebf846ec85cbf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b139fbadb03ae2893331e763bc49b249c0dd05d7
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 
@@ -58,7 +58,7 @@ public static class QueueFunctions
 
 ### <a name="trigger---c-script-example"></a>トリガー - C# スクリプトの例
 
-次の例は、*function.json* ファイルの BLOB トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
+次の例は、*function.json* ファイルのキュー トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
 
 *function.json* ファイルを次に示します。
 
@@ -112,7 +112,7 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
 
 ### <a name="trigger---javascript-example"></a>トリガー - JavaScript の例
 
-次の例は、*function.json* ファイルの BLOB トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
+次の例は、*function.json* ファイルのキュー トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数は、キュー項目が処理されるたびに `myqueue-items` キューをポーリングし、ログを書き込みます。
 
 *function.json* ファイルを次に示します。
 
@@ -223,9 +223,9 @@ function.json の `name` プロパティで名前が指定された `myQueueItem
 
 ## <a name="trigger---usage"></a>トリガー - 使用方法
  
-C# および C# スクリプトでは、`Stream paramName` のようなメソッド パラメーターを使用して BLOB データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
+C# および C# スクリプトでは、`string paramName` のようなメソッド パラメーターを使用してメッセージ データにアクセスします。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 次の型のいずれにでもバインドできます。
 
-* POCO オブジェクト - Functions ランタイムは、JSON ペイロードを POCO オブジェクトに逆シリアル化します。 
+* オブジェクト - Functions ランタイムは、JSON ペイロードを、コードで定義されている任意のクラスのインスタンスに逆シリアル化します。 
 * `string`
 * `byte[]`
 * [CloudQueueMessage]
@@ -302,7 +302,7 @@ public static class QueueFunctions
 
 ### <a name="output---c-script-example"></a>出力 - C# スクリプトの例
 
-次の例は、*function.json* ファイルの BLOB トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 この関数では、受け取った HTTP 要求ごとに POCO ペイロードを使用してキュー項目を作成します。
+次の例は、*function.json* ファイルの HTTP トリガー バインディングと、バインディングを使用する [C# スクリプト (.csx)](functions-reference-csharp.md) コードを示しています。 この関数では、受け取った HTTP 要求ごとに **CustomQueueMessage** ペイロードを使用してキュー項目を作成します。
 
 *function.json* ファイルを次に示します。
 
@@ -353,17 +353,17 @@ public static CustomQueueMessage Run(CustomQueueMessage input, TraceWriter log)
 ```cs
 public static void Run(
     CustomQueueMessage input, 
-    ICollector<CustomQueueMessage> myQueueItem, 
+    ICollector<CustomQueueMessage> myQueueItems, 
     TraceWriter log)
 {
-    myQueueItem.Add(input);
-    myQueueItem.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
+    myQueueItems.Add(input);
+    myQueueItems.Add(new CustomQueueMessage { PersonName = "You", Title = "None" });
 }
 ```
 
 ### <a name="output---javascript-example"></a>出力 - JavaScript の例
 
-次の例は、*function.json* ファイルの BLOB トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、受け取った HTTP 要求ごとにキュー項目を作成します。
+次の例は、*function.json* ファイルの HTTP トリガー バインドと、そのバインドを使用する [JavaScript 関数](functions-reference-node.md)を示しています。 この関数では、受け取った HTTP 要求ごとにキュー項目を作成します。
 
 *function.json* ファイルを次に示します。
 
@@ -459,7 +459,7 @@ public static string Run([HttpTrigger] dynamic input,  TraceWriter log)
  
 C# と C# スクリプトで単一のキュー メッセージを書き込むには、`out T paramName` などのメソッドのパラメーターを使用します。 C# スクリプトでは、`paramName` は *function.json* の `name` プロパティで指定された値です。 `out` パラメーターではなくメソッドの戻り値の型を使用することができます。`T` は次に示すいずれかの型の場合があります。
 
-* JSON としてシリアル化可能な POCO
+* JSON としてシリアル化可能なオブジェクト
 * `string`
 * `byte[]`
 * [CloudQueueMessage] 

@@ -1,11 +1,11 @@
 ---
-title: "OMS ゲートウェイを使ってコンピューターを接続する | Microsoft Docs"
-description: "デバイスと Operations Manager で監視されたコンピューターがインターネットにアクセスできないときに、OMS ゲートウェイを使ってそれらを接続して Azure Automation および Log Analytics サービスにデータを送信します。"
+title: OMS ゲートウェイを使ってコンピューターを接続する | Microsoft Docs
+description: デバイスと Operations Manager で監視されたコンピューターがインターネットにアクセスできないときに、OMS ゲートウェイを使ってそれらを接続して Azure Automation および Log Analytics サービスにデータを送信します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: magoedte
-ms.openlocfilehash: daf3cc236ef04ae27731e023d35cfe2aa82fc70a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 10422af5a57fc4da77958f15af5b2db61c023e40
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って接続する
 このドキュメントでは、直接接続されたコンピューターまたは Operations Manager で監視されているコンピューターがインターネットにアクセスできないときに、OMS ゲートウェイを使用して Azure Automation および Log Analytics との通信を構成する方法について説明します。  OMS ゲートウェイは、HTTP CONNECT コマンドを使って HTTP トンネリングをサポートする HTTP 転送プロキシであり、インターネットにアクセスできないコンピューターに代わってデータを収集し、Azure Automation および Log Analytics に送ることができます。  

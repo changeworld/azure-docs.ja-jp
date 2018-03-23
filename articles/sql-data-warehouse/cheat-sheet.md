@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Data Warehouse のチート シート | Microsoft Docs"
-description: "Azure SQL Data Warehouse ソリューションをすばやく構築するためのリンクとベスト プラクティスが見つかります。"
+title: Azure SQL Data Warehouse のチート シート | Microsoft Docs
+description: Azure SQL Data Warehouse ソリューションをすばやく構築するためのリンクとベスト プラクティスが見つかります。
 services: sql-data-warehouse
 documentationcenter: NA
 author: acomet
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 51f1e444-9ef7-4e30-9a88-598946c45196
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 02/20/2018
 ms.author: acomet
-ms.openlocfilehash: 6c8278be32ae6c6452283ba946a36f363dd4d76d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c67d56ff63f70baa052be17c119d943c558d398f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のチート シート
 このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
@@ -146,12 +146,12 @@ SQL Database と Azure Analysis Services はハブとスポークのアーキテ
 [概要]:media/sql-data-warehouse-cheat-sheet/picture-flow.png
 
 <!--Article references-->
-[データ読み込み]:./design-elt-data-loading.md
-[deeper guidance]: ./guidance-for-loading-data.md
-[インデックス]:./sql-data-warehouse-tables-index.md
-[パーティション]:./sql-data-warehouse-tables-partition.md
-[統計]:./sql-data-warehouse-tables-statistics.md
-[リソース クラスと同時実行]:./sql-data-warehouse-develop-concurrency.md
+[データ読み込み]:design-elt-data-loading.md
+[deeper guidance]:guidance-for-loading-data.md
+[インデックス]:sql-data-warehouse-tables-index.md
+[パーティション]:sql-data-warehouse-tables-partition.md
+[統計]:sql-data-warehouse-tables-statistics.md
+[リソース クラスと同時実行]:resource-classes-for-workload-management.md
 
 <!--MSDN references-->
 

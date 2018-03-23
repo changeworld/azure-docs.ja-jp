@@ -1,12 +1,12 @@
 ---
-title: "Microsoft Azure で PerfInsights を使用する方法 | Microsoft Docs"
-description: "PerfInsights を使用して Windows VM のパフォーマンスに関する問題のトラブルシューティングを行う方法を説明します。"
+title: Microsoft Azure で PerfInsights を使用する方法 | Microsoft Docs
+description: PerfInsights を使用して Windows VM のパフォーマンスに関する問題のトラブルシューティングを行う方法を説明します。
 services: virtual-machines-windows'
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
 editor: na
-tags: 
+tags: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 11/03/2017
 ms.author: genli
-ms.openlocfilehash: f15875610e2035c6f4c10c36e19c02f3e045b3ea
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: ee8334cbe9256b7a5ecd5e96afa2f15d6389afa8
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法 
 
-[PerfInsights](http://aka.ms/perfinsightsdownload) は、役立つ診断情報を収集する自動化されたスクリプトです。 また、I/O ストレス読み込みを実行し、Azure で Windows 仮想マシンのパフォーマンスの問題をトラブルシューティングするのに役立つ分析レポートを提供します。 これは、仮想マシンでスタンドアロン スクリプトとして実行することも、[Azure パフォーマンス診断 VM 拡張機能](performance-diagnostics-vm-extension.md)をインストールしてポータルから直接実行することもできます。
+[PerfInsights](http://aka.ms/perfinsightsdownload) は、診断データを収集および解析するセルフヘルプ診断ツールで、Azure での Windows 仮想マシンのパフォーマンス問題をトラブルシューティングする際に役立ちます。 PerfInsights は、仮想マシンでスタンドアロン ツールとして実行することも、[Azure パフォーマンス診断 VM 拡張機能](performance-diagnostics-vm-extension.md)をインストールしてポータルから直接実行することもできます。
 
-仮想マシンでパフォーマンスの問題が発生している場合は、サポートに連絡する前にこのスクリプトを実行してください。
+仮想マシンでパフォーマンスの問題が発生している場合は、サポートに連絡する前にこのツールを実行してください。
 
 ## <a name="supported-troubleshooting-scenarios"></a>サポートされているトラブルシューティングのシナリオ
 
@@ -41,8 +41,6 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 -   ネットワークとファイアウォールの構成設定
 
 -   システムで現在実行されているすべてのアプリケーションのタスク一覧
-
--   仮想マシンに対して msinfo32 によって作成された情報ファイル
 
 -   Microsoft SQL Server データベースの構成設定 (SQL Server を実行しているサーバーとして VM が識別されている場合)
 
@@ -67,15 +65,7 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 
 ### <a name="slow-vm-analysis"></a>低速 VM の分析 
 
-このシナリオでは、Generalcounters.txt ファイルで指定されているカウンターを使用して、[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) トレースを実行します。 VM が、SQL Server を実行しているサーバーとして識別された場合は、パフォーマンス カウンター トレースを実行します。 それを、Sqlcounters.txt ファイル内にあるカウンターを使用して実行します。ここには、パフォーマンス診断データも含まれています。
-
-### <a name="slow-vm-analysis-and-benchmarking"></a>低速 VM の分析とベンチマーク
-
-このシナリオでは、[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) トレースに続けて [Diskspd](https://github.com/Microsoft/diskspd) ベンチマーク テストを実行します。 
-
-> [!Note]
-> このシナリオはシステムに影響する可能性があるため、稼働中の運用システムでは実行しないでください。 また、このシナリオは、問題を回避するために、必要に応じて、専用のメンテナンス期間に実行してください。 トレースまたはベンチマーク テストによってワークロードが増加すると、VM のパフォーマンスに悪影響を及ぼす場合があります。
->
+このシナリオでは、RuleEngineConfig.json ファイルで指定されているカウンターを使用して、[パフォーマンス カウンター](https://msdn.microsoft.com/library/windows/desktop/aa373083(v=vs.85).aspx) トレースを実行します。 VM が、SQL Server を実行しているサーバーとして識別された場合は、パフォーマンス カウンター トレースを実行します。 これは RuleEngineConfig.json ファイルに含まれているカウンターを使用して実行します。 このシナリオには、パフォーマンス診断データも含まれます。
 
 ### <a name="azure-files-analysis"></a>Azure Files 分析 
 
@@ -101,40 +91,40 @@ PerfInsights は、いくつかの種類の情報を収集して分析できま�
 
 ### <a name="custom-slow-vm-analysis"></a>低速 VM のカスタム分析 
 
-低速 VM のカスタム分析を実行する場合は、並行して実行するトレースを選択します。 必要に応じて、それらのすべて (パフォーマンス カウンター、Xperf、ネットワーク、および StorPort) を実行できます。 トレースが完了した後、このツールは Diskspd ベンチマークを実行します (選択されている場合)。 
+低速 VM のカスタム分析を実行する場合は、並行して実行するトレースを選択します。 必要に応じて、それらのすべて (パフォーマンス カウンター、Xperf、ネットワーク、および StorPort) を実行できます。  
 
 > [!Note]
 > このシナリオはシステムに影響する可能性があるため、稼働中の運用システムでは実行しないでください。 また、このシナリオは、問題を回避するために、必要に応じて、専用のメンテナンス期間に実行してください。 トレースまたはベンチマーク テストによってワークロードが増加すると、VM のパフォーマンスに悪影響を及ぼす場合があります。
 >
 
-## <a name="what-kind-of-information-is-collected-by-the-script"></a>スクリプトで収集される情報の種類
+## <a name="what-kind-of-information-is-collected-by-perfinsights"></a>PerfInsights で収集される情報の種類
 
 Windows VM、ディスクまたは記憶域プールの構成、パフォーマンス カウンター、ログ、およびさまざまなトレースに関する情報が収集されます。 これは、使用しているパフォーマンス シナリオによって異なります。 次の表で詳細に説明します。
 
 |収集されるデータ                              |  |  | パフォーマンス シナリオ |  |  | |
 |----------------------------------|----------------------------|------------------------------------|--------------------------|--------------------------------|----------------------|----------------------|
-|                              | 収集の基本構成 | ベンチマーク | 低速 VM の分析 | 低速 VM の分析とベンチマーク | Azure Files 分析 | 低速 VM のカスタム分析 |
-| イベント ログの情報      | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| システム情報               | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| ボリューム マップ                       | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| ディスク マップ                         | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| 実行中のタスク                    | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| ストレージの信頼性カウンター     | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| ストレージ情報              | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| Fsutil 出力                    | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| フィルター ドライバー情報               | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| Netstat 出力                   | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| ネットワーク構成            | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| ファイアウォールの構成           | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| SQL Server 構成         | [はい]                        | [はい]                                | [はい]                      | [はい]                            | [はい]                  | [はい]                  |
-| パフォーマンス診断トレース * | [はい]                        | [はい]                                | [はい]                      |                                | [はい]                  | [はい]                  |
-| パフォーマンス カウンター トレース **     |                            |                                    |                          |                                |                      | [はい]                  |
-| SMB カウンター トレース **             |                            |                                    |                          |                                | [はい]                  |                      |
-| SQL Server カウンター トレース **      |                            |                                    |                          |                                |                      | [はい]                  |
-| XPerf トレース                      |                            |                                    |                          |                                |                      | [はい]                  |
-| StorPort トレース                   |                            |                                    |                          |                                |                      | [はい]                  |
-| ネットワーク トレース                    |                            |                                    |                          |                                | [はい]                  | [はい]                  |
-| Diskspd ベンチマーク トレース ***      |                            | [はい]                                |                          | [はい]                            |                      |                      |
+|                               | 収集の基本構成 | ベンチマーク | 低速 VM の分析 | Azure Files 分析 | 低速 VM のカスタム分析 |
+| イベント ログの情報       | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| システム情報                | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| ボリューム マップ                        | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| ディスク マップ                          | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| 実行中のタスク                     | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| ストレージの信頼性カウンター      | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| ストレージ情報               | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| Fsutil 出力                     | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| フィルター ドライバー情報                | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| Netstat 出力                    | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| ネットワーク構成             | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| ファイアウォールの構成            | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| SQL Server 構成          | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| パフォーマンス診断トレース *  | [はい]                        | [はい]                                | [はい]                      | [はい]                  | [はい]                  |
+| パフォーマンス カウンター トレース **      |                            |                                    | [はい]                      |                      | [はい]                  |
+| SMB カウンター トレース **              |                            |                                    |                          | [はい]                  |                      |
+| SQL Server カウンター トレース **       |                            |                                    | [はい]                      |                      | [はい]                  |
+| XPerf トレース                       |                            |                                    |                          |                      | [はい]                  |
+| StorPort トレース                    |                            |                                    |                          |                      | [はい]                  |
+| ネットワーク トレース                     |                            |                                    |                          | [はい]                  | [はい]                  |
+| Diskspd ベンチマーク トレース ***       |                            | [はい]                                |                          |                      |                      |
 |       |                            |                         |                                                   |                      |                      |
 
 ### <a name="performance-diagnostics-trace-"></a>パフォーマンス診断トレース (*)
@@ -168,116 +158,87 @@ Windows VM、ディスクまたは記憶域プールの構成、パフォーマ�
 ### <a name="diskspd-benchmark-trace-"></a>Diskspd ベンチマーク トレース (***)
 Diskspd I/O ワークロード テスト (OS ディスク [書き込み] とプール ドライブ [読み取り/書き込み])
 
-## <a name="run-the-perfinsights-script-on-your-vm"></a>VM で PerfInsights スクリプトを実行する
+## <a name="run-the-perfinsights-tool-on-your-vm"></a>VM での PerfInsights ツールの実行
 
-### <a name="what-do-i-have-to-know-before-i-run-the-script"></a>スクリプトを実行する前の確認事項 
+### <a name="what-do-i-have-to-know-before-i-run-the-tool"></a>ツールを実行する前の確認事項 
 
-#### <a name="script-requirements"></a>スクリプトの要件
+#### <a name="tool-requirements"></a>ツールの要件
 
--  このスクリプトは、パフォーマンスに問題がある VM で実行する必要があります。 
+-  このツールを、パフォーマンスに問題がある VM で実行する必要があります。 
 
 -  Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016、Windows 8.1、および Windows 10 のオペレーティング システムがサポートされています。
 
-#### <a name="possible-problems-when-you-run-the-script-on-production-vms"></a>運用 VM でこのスクリプトを実行するときに発生する可能性のある問題
+#### <a name="possible-problems-when-you-run-the-tool-on-production-vms"></a>運用 VM でこのツールを実行したときに発生する可能性のある問題
 
--  Xperf または Diskspd を使用するように構成された任意のベンチマーク シナリオまたは "低速 VM のカスタム分析" シナリオの場合、このスクリプトは VM のパフォーマンスに悪影響を与える可能性があります。 運用環境ではこれらのシナリオを実行しないでください。
+-  Xperf または Diskspd を使用するように構成された任意のベンチマーク シナリオまたは "低速 VM のカスタム分析" シナリオの場合、このツールは VM のパフォーマンスに悪影響を与える可能性があります。 運用環境ではこれらのシナリオを実行しないでください。
 
 -  Diskspd を使用するように構成された任意のベンチマーク シナリオまたは "低速 VM のカスタム分析" シナリオの場合は、I/O ワークロードに干渉するバックグラウンド アクティビティが他に存在しないことを確認してください。
 
--  既定では、スクリプトは、一時ストレージ ドライブを使用してデータを収集します。 トレースが長時間有効になっている場合は、収集されたデータ量が関連している可能性があります。 これにより使用できる一時ディスク上の領域が減ることがあるため、このドライブに依存するすべてのアプリケーションに影響を与える場合があります。
+-  既定では、ツールは、一時ストレージ ドライブを使用してデータを収集します。 トレースが長時間有効になっている場合は、収集されたデータ量が関連している可能性があります。 これにより使用できる一時ディスク上の領域が減ることがあるため、このドライブに依存するすべてのアプリケーションに影響を与える場合があります。
 
 ### <a name="how-do-i-run-perfinsights"></a>PerfInsights の実行方法 
 
-PerfInsights は、[Azure パフォーマンス診断 VM 拡張機能](performance-diagnostics-vm-extension.md)をインストールすることによって仮想マシンで実行できます。 また、スタンドアロン スクリプトとしても実行できます。 
+PerfInsights は、[Azure パフォーマンス診断 VM 拡張機能](performance-diagnostics-vm-extension.md)をインストールすることによって仮想マシンで実行できます。 また、スタンドアロン ツールとしても実行できます。 
 
 **Azure Portal から PerfInsights をインストールして実行する**
 
 このオプションの詳細については、「[Install Azure Performance Diagnostics VM Extension (Azure パフォーマンス診断 VM 拡張機能をインストールする)](performance-diagnostics-vm-extension.md#install-the-extension)」を参照してください。  
 
-**スタンドアロン モードで PerfInsights スクリプトを実行する**
+**スタンドアロン モードで PerfInsights を実行する**
 
-PerfInsights スクリプトを実行するには、次の手順のようにします。
+PerfInsights ツールを実行するには、次の手順に従います。
 
 
 1. [PerfInsights.zip](http://aka.ms/perfinsightsdownload) をダウンロードします。
 
-2. PerfInsights.zip ファイルのブロックを解除します。 これを行うには、PerfInsights.zip ファイルを右クリックし、**[プロパティ]** を選択します。 **[全般]** タブで **[ブロックの解除]** を選択し、**[OK]** を選択します。 これにより、追加のセキュリティ プロンプトは表示されずに、確実にスクリプトが実行されます。  
+2. PerfInsights.zip ファイルのブロックを解除します。 これを行うには、PerfInsights.zip ファイルを右クリックし、**[プロパティ]** を選択します。 **[全般]** タブで **[ブロックの解除]** を選択し、**[OK]** を選択します。 これにより、追加のセキュリティ プロンプトは表示されずに、確実にツールが実行されます。  
 
     ![[ブロックの解除] が強調表示された PerfInsights プロパティのスクリーンショット](media/how-to-use-perfInsights/unlock-file.png)
 
-3.  圧縮された PerfInsights.zip ファイルを一時ドライブ (既定では通常、D ドライブ) に展開します。 圧縮されたファイルには、次のファイルとフォルダーが含まれます。
+3.  圧縮された PerfInsights.zip ファイルを一時ドライブ (既定では通常、D ドライブ) に展開します。 
 
-    ![zip フォルダー内のファイルのスクリーンショット](media/how-to-use-perfInsights/file-folder.png)
-
-4.  Windows PowerShell を管理者として開き、PerfInsights.ps1 スクリプトを実行します。
+4.  管理者として Windows コマンド プロンプトを開いて PerfInsights.exe を実行し、使用可能なコマンド ライン パラメーターを表示します。
 
     ```
-    cd <the path of PerfInsights folder >
-    Powershell.exe -ExecutionPolicy UnRestricted -NoProfile -File .\\PerfInsights.ps1
+    cd <the path of PerfInsights folder>
+    PerfInsights
     ```
-
-    実行ポリシーを変更することを確認するために "y" の入力が必要になる場合があります。
-
-    **[Notice and Consent] (注意事項および同意)** ダイアログ ボックスには、Microsoft サポートと診断情報を共有するためのオプションがあります。 続行するには、ライセンス契約に同意する必要もあります。 選択を行ってから、**[スクリプトの実行]** を選択します。
-
-    ![[Notice and Consent] (注意事項および同意) ダイアログ ボックスのスクリーンショット](media/how-to-use-perfInsights/disclaimer.png)
-
-5.  スクリプトを実行するときは、サポート案件番号を送信します (入手可能な場合)。 **[OK]** をクリックします。
+    ![PerfInsights コマンドライン出力のスクリーン ショット](media/how-to-use-perfInsights/PerfInsightsCommandline.png)
     
-    ![サポート ID ダイアログ ボックスのスクリーンショット](media/how-to-use-perfInsights/enter-support-number.png)
+    PerfInsights シナリオを実行する基本構文は次のとおりです。
+    
+    ```
+    PerfInsights /run <ScenarioName> [AdditionalOptions]
+    ```
 
-6.  一時ストレージ ドライブを選択します。 このスクリプトは、ドライブのドライブ文字を自動検出できます。 この段階で問題が発生した場合は、ドライブを選択するように求められることがあります (既定のドライブは D)。 生成されたログは、そのドライブの log\_collection フォルダーに格納されます。 ドライブ文字を入力するか、または受け入れたら、**[OK]** を選択します。
+    5 分間低速で VM を実行するシナリオの以下の例を使用できます。
+    
+    ```
+    PerfInsights /run vmslow /d 300 /AcceptDisclaimerAndShareDiagnostics
+    ```
 
-    ![一時ドライブ ダイアログ ボックスのスクリーンショット](media/how-to-use-perfInsights/enter-drive.png)
+    5 分間 Xperf とパフォーマンス カウンターをトレースするカスタム シナリオを実行する、以下の例を使用できます。
+    
+    ```
+    PerfInsights /run custom xp /d 300 /AcceptDisclaimerAndShareDiagnostics
+    ```
 
-7.  表示された一覧から、トラブルシューティングのシナリオを選択します。
+    **/list** コマンドを使用すると、利用可能なすべてのシナリオとオプションを検索できます。
+    
+    ```
+    PerfInsights /list
+    ```
 
-       ![トラブルシューティング シナリオの一覧のスクリーンショット](media/how-to-use-perfInsights/select-scenarios.png)
+    >[!Note]
+    >シナリオを実行する前に、PerfInsights から、診断情報を共有し、使用許諾契約書に同意するよう求めるプロンプトが表示されます。 これらのプロンプトを省略するには、**/AcceptDisclaimerAndShareDiagnostics** オプションを使用します。 
+    >
+    >有効な Microsoft のサポート チケットをお持ちで、サポート エンジニアからの依頼に従って PerfInsights を実行している場合は、 **/sr** オプションを使用してサポート チケット番号を入力してください。
+    >
+    >既定では、PerfInsights は自動的に最新バージョンに更新されます。 自動更新を省略するには、**/SkipAutoUpdate** または **/sau** パラメーターを使用してください。  
+    >
+    >期間を切り替えるスイッチ **/d** が指定されていない場合は、PerfInsights から、vmslow、azurefiles およびカスタムのシナリオを実行しながら問題を報告するよう求められます。 
 
-UI を使わずに PerfInsights を実行することもできます。 次のコマンドは、UI なしで "低速 VM の分析" のトラブルシューティング シナリオを実行します。 手順 4 で示されたものと同じ免責事項と EULA に同意するように求められます。
-
-        powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -NoGui -Scenario vmslow -TracingDuration 30"
-
-PerfInsights をサイレント モードで実行する場合は、**- AcceptDisclaimerAndShareDiagnostics** パラメーターを使用します。 たとえば、次のコマンドを使用します。
-
-        powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -NoGui -Scenario vmslow -TracingDuration 30 -AcceptDisclaimerAndShareDiagnostics"
-
-### <a name="how-do-i-troubleshoot-issues-while-running-the-script"></a>スクリプトの実行中に問題のトラブルシューティングを行う方法
-
-スクリプトが異常終了した場合は、次のように、スクリプトを cleanup スイッチと共に実行することによって整合性のある状態に戻ることができます。
-
-    powershell.exe -ExecutionPolicy UnRestricted -NoProfile -Command ".\\PerfInsights.ps1 -Cleanup"
-
-一時ドライブの自動検出中に問題が発生した場合は、そのドライブを選択するように求められることがあります (既定のドライブは D)。
-
-![一時ドライブ ダイアログ ボックスのスクリーンショット](media/how-to-use-perfInsights/enter-drive.png)
-
-スクリプトによってユーティリティ ツールがアンインストールされ、一時フォルダーが削除されます。
-
-### <a name="troubleshoot-other-script-issues"></a>スクリプトに関するその他の問題をトラブルシューティングする 
-
-スクリプトの実行時に何からの問題が発生した場合は、Ctrl + C キーを押してスクリプトを中断します。 数回試行した後も引き続きスクリプトの失敗が発生する場合は、起動時に "-Debug" パラメーター オプションを使用して、デバッグ モードでスクリプトを実行します。
-
-障害が発生した後、PowerShell コンソールの出力全体をコピーして、問題のトラブルシューティングを支援する Microsoft サポート担当者に送信します。
-
-### <a name="how-do-i-run-the-script-in-custom-slow-vm-analysis-mode"></a>"低速 VM のカスタム分析" モードでスクリプトを実行する方法
-
-**[低速 VM のカスタム分析]** を選択することによって、複数のトレースを並行して有効にできます (複数のトレースを選択するには、Shift キーを使用します)。
-
-![シナリオの一覧のスクリーンショット](media/how-to-use-perfInsights/select-scenario.png)
-
-パフォーマンス カウンター トレース、Xperf トレース、ネットワーク トレース、または Storport トレースのシナリオを選択したら、以降のダイアログ ボックスの手順に従います。 トレースを開始した後、低速なパフォーマンスの問題の再現を試みてください。
-
-トレースは、次のダイアログ ボックスで開始します。
-
-![[Start Performance Counter Trace] (パフォーマンス カウンター トレースの開始) ダイアログ ボックスのスクリーンショット](media/how-to-use-perfInsights/start-trace-message.png)
-
-トレースを停止するには、2 番目のダイアログ ボックスで、コマンドを確認する必要があります。
-
-![[Stopping Performance Counter Trace] (パフォーマンス カウンター トレースの停止)ダイアログ ボックスのスクリーンショット](media/how-to-use-perfInsights/stop-trace-message.png)
-![[Stopping All traces] (すべてのトレースの停止)ダイアログ ボックスのスクリーンショット](media/how-to-use-perfInsights/ok-trace-message.png)
-
-トレースまたは操作が完了すると、D:\\log\_collection (または一時ドライブ) に新しいファイルが生成されます。 このファイルの名前は **CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip** です。 このファイルは、分析のためにサポート担当者に送信できます。
+トレースまたは操作が完了すると、D:\\log\_collection (または一時ドライブ) に新しいファイルが生成されます。 このファイルの名前は **CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip** です。 このファイルをサポート エージェントに送信して解析してもらったり、ZIP ファイル内のレポートを開いて、調査結果や推奨事項を参照できます。
 
 ## <a name="review-the-diagnostics-report"></a>診断レポートを確認する
 

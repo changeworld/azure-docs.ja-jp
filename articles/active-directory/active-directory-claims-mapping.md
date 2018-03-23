@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory での要求のマッピング (パブリック プレビュー) | Microsoft Docs"
-description: "このページでは、Azure Active Directory の要求のマッピングについて説明します。"
+title: Azure Active Directory での要求のマッピング (パブリック プレビュー) | Microsoft Docs
+description: このページでは、Azure Active Directory の要求のマッピングについて説明します。
 services: active-directory
 author: billmath
 manager: mtillman
@@ -11,11 +11,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.openlocfilehash: 1bc669dfa5a41e38b35751af62560ff650575a08
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: b0dae074734b13046fb0d90e178e05f81399b5c6
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory での要求のマッピング (パブリック プレビュー)
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/11/2018
 - 特定の要求で出力されたデータのソースを選択または変更する。
 
 >[!NOTE]
->この機能は現在パブリック プレビューの段階です。 変更を元に戻すか、削除できるように準備しておいてください。 機能は、パブリック プレビュー期間中、すべての Azure Active Directory (Azure AD) サブスクリプションで使用できます。 しかし、機能が一般公開されたら、機能の一部で Azure Active Directory Premium サブスクリプションが必要になる場合があります。
+>この機能は現在パブリック プレビューの段階です。 変更を元に戻すか、削除できるように準備しておいてください。 機能は、パブリック プレビュー期間中、すべての Azure Active Directory (Azure AD) サブスクリプションで使用できます。 しかし、機能が一般公開されたら、機能の一部で Azure Active Directory Premium サブスクリプションが必要になる場合があります。 この機能は、WS-Fed、SAML、OAuth、OpenID Connect の各プロトコルについて、要求のマッピング ポリシーの構成をサポートしています。
 
 ## <a name="claims-mapping-policy-type"></a>要求のマッピング ポリシーの種類
 Azure AD では、**ポリシー** オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。

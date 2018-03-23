@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)"
-description: "C# を使用して Azure Functions を開発する方法について説明します。"
+title: Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
+description: C# を使用して Azure Functions を開発する方法について説明します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: functions
 ms.devlang: dotnet
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 9e9aa8a36d363ce28d61c5ba3cfe758520a626cf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 70c4d6276970a781517fe49ec47e9b2ddb884c78
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-functions-c-developer-reference"></a>Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 
@@ -134,7 +134,50 @@ public static class BindingExpressionsExample
 }
 ```
 
-*function.json* ファイルの生成は、NuGet パッケージ ([Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)) によって実行されます。 ソース コードは、GitHub リポジトリ ([azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk)) で利用できます。
+### <a name="microsoftnetsdkfunctions-nuget-package"></a>Microsoft.NET.Sdk.Functions NuGet パッケージ
+
+*function.json* ファイルの生成は、NuGet パッケージ ([Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions)) によって実行されます。 
+
+Functions ランタイムのバージョン 1.x と 2.x では同じパッケージが使用されます。 1.x プロジェクトと 2.x プロジェクトの違いはターゲット フレームワークです。 次に示すのは *.csproj* ファイルの関連する部分で、ターゲット フレームが異なっていることと、`Sdk` パッケージが同じであることがわかります。
+
+**Functions 1.x**
+
+```xml
+<PropertyGroup>
+  <TargetFramework>net461</TargetFramework>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+
+**Functions 2.x**
+
+```xml
+<PropertyGroup>
+  <TargetFramework>netstandard2.0</TargetFramework>
+  <AzureFunctionsVersion>v2</AzureFunctionsVersion>
+</PropertyGroup>
+<ItemGroup>
+  <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="1.0.8" />
+</ItemGroup>
+```
+
+`Sdk` パッケージ間の依存関係はトリガーとバインドです。 1.x のトリガーとバインドの対象は .NET Framework であるため、1.x プロジェクトは 1.x のトリガーとバインドを参照します。一方、2.x のトリガーとバインドの対象は .NET Core です。
+
+`Sdk` パッケージも、[Newtonsoft.Json](http://www.nuget.org/packages/Newtonsoft.Json) に依存しており、間接的に [WindowsAzure.Storage](http://www.nuget.org/packages/WindowsAzure.Storage) に依存します。 これらの依存関係により、ユーザーのプロジェクトでは、必ずそのプロジェクト用の Functions ランタイム バージョンで動作するパッケージ バージョンが使用されます。 たとえば、`Newtonsoft.Json` のバージョンが .NET Framework 4.6.1 用のバージョン 11 だとします。ところが、.NET Framework 4.6.1 を対象とする Functions ランタイムは `Newtonsoft.Json` 9.0.1 としか互換性がありません。 この場合は、そのプロジェクトの関数コードも `Newtonsoft.Json` 9.0.1 を使用する必要があります。
+
+`Microsoft.NET.Sdk.Functions` のソース コードは、GitHub リポジトリ ([azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk)) で利用できます。
+
+### <a name="runtime-version"></a>ランタイム バージョン
+
+Visual Studio では、[Azure Functions Core Tools](functions-run-local.md#install-the-azure-functions-core-tools) を使用して、Functions プロジェクトを実行します。 Core Tools は、Functions ランタイム用のコマンド ライン インターフェイスです。
+
+npm を使用して Core Tools をインストールする場合、これは Visual Studio で使用される Core Tools バージョンには影響しません。 Functions ランタイム バージョン 1.x の場合、Visual Studio は Core Tools のバージョンを *%USERPROFILE%\AppData\Local\Azure.Functions.Cli* に格納し、そこに格納されている中で最も新しいバージョンを使用します。 Functions 2.x の場合、Core Tools は **Azure Functions と Web ジョブ ツール**の拡張機能に含まれます。 1.x と 2.x の両方について、使用されているバージョンは、Functions プロジェクトを実行するときに、コンソール出力で確認できます。
+
+```terminal
+[3/1/2018 9:59:53 AM] Starting Host (HostId=contoso2-1518597420, Version=2.0.11353.0, ProcessId=22020, Debug=False, Attempt=0, FunctionsExtensionVersion=)
+```
 
 ## <a name="supported-types-for-bindings"></a>バインドでサポートされる型
 
@@ -144,7 +187,7 @@ public static class BindingExpressionsExample
 
 ## <a name="binding-to-method-return-value"></a>メソッドの戻り値へのバインド
 
-出力バインドのメソッドの戻り値を使用するには、属性をメソッドの戻り値に適用します。 例については、[トリガーとバインド](functions-triggers-bindings.md#using-the-function-return-value)に関するページを参照してください。
+出力バインドのメソッドの戻り値を使用するには、属性をメソッドの戻り値に適用します。 例については、[トリガーとバインディング](functions-triggers-bindings.md#using-the-function-return-value)に関するページを参照してください。
 
 ## <a name="writing-multiple-output-values"></a>複数の出力値の書き込み
 
@@ -212,9 +255,9 @@ public static class AsyncExample
 
 ## <a name="cancellation-tokens"></a>キャンセル トークン
 
-関数は、[CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) パラメーターを受け取ることができます。これによって、関数が中断しそうな場合に、オペレーティング システムからコードに通知を受けることができます。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
+関数は [CancellationToken](https://msdn.microsoft.com/library/system.threading.cancellationtoken.aspx) パラメーターを受け付けることができます。これにより、オペレーティング システムは、その関数をいつ終了しようとしているかをコードに通知できます。 この通知を使用すれば、関数が予期せず終了してデータが不整合な状態になることを防止できます。
 
-次の例では、関数の終了が迫っているかどうかを確認する方法を示します。
+次の例は、関数の終了が迫っているかどうかを確認する方法を示しています。
 
 ```csharp
 public static class CancellationTokenExample
@@ -338,7 +381,7 @@ public static class IBinderExampleMultipleAttributes
 
 | トリガー | 入力 | 出力|
 |------   | ------    | ------  |
-| [BlobTrigger](functions-bindings-storage-blob.md#trigger---attributes)。| [BLOB](functions-bindings-storage-blob.md#input---attributes)| [BLOB](functions-bindings-storage-blob.md#output---attributes)|
+| [BlobTrigger](functions-bindings-storage-blob.md#trigger---attributes)| [BLOB](functions-bindings-storage-blob.md#input---attributes)| [BLOB](functions-bindings-storage-blob.md#output---attributes)|
 | [CosmosDBTrigger](functions-bindings-cosmosdb.md#trigger---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#input---attributes)| [DocumentDB](functions-bindings-cosmosdb.md#output---attributes) |
 | [EventHubTrigger](functions-bindings-event-hubs.md#trigger---attributes)|| [EventHub](functions-bindings-event-hubs.md#output---attributes) |
 | [HTTPTrigger](functions-bindings-http-webhook.md#trigger---attributes)|||

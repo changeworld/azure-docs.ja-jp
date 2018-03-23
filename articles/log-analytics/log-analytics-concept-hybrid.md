@@ -1,24 +1,24 @@
 ---
-title: "Azure Log Analytics を使用して環境からデータを収集する | Microsoft Docs"
-description: "このトピックは、オンプレミスでまたは他のクラウド環境でホストされているコンピューターで、Log Analytics を使用してデータの収集と監視を行う方法を理解するために役立ちます。"
+title: Azure Log Analytics を使用して環境からデータを収集する | Microsoft Docs
+description: このトピックは、オンプレミスでまたは他のクラウド環境でホストされているコンピューターで、Log Analytics を使用してデータの収集と監視を行う方法を理解するために役立ちます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/14/2018
 ms.author: magoedte
-ms.openlocfilehash: 85fde471f0d99b976e319d552c6a031d63854cf4
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 9346e9a9ad310a21c6d6ce388b76ce491041289c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="collect-data-from-computers-in-your-environment-with-log-analytics"></a>Azure Log Analytics を使用して環境内のコンピューターからデータを収集する
 
@@ -77,14 +77,14 @@ Windows エージェントが Log Analytics と通信するために必要なプ
 * SUSE Linux Enterprise Server 11 および 12 (x86/x64)
 
 #### <a name="network-configuration"></a>ネットワーク構成
-Linux エージェントが Log Analytics と通信するために必要なプロキシとファイアウォールの構成情報を次に示します。 トラフィックはネットワークから Log Analytics サービスへの送信です。 
+Linux エージェントが Log Analytics と通信するために必要なプロキシとファイアウォールの構成情報を次に示します。  
 
-|エージェントのリソース| ポート |  
-|------|---------|  
-|*.ods.opinsights.azure.com | ポート 443|   
-|*.oms.opinsights.azure.com | ポート 443|   
-|*.blob.core.windows.net | ポート 443|   
-|*.azure-automation.net | ポート 443|  
+|エージェントのリソース| ポート | 方向 |  
+|------|---------|--------|  
+|*.ods.opinsights.azure.com | ポート 443 | 受信および送信|  
+|*.oms.opinsights.azure.com | ポート 443 | 受信および送信|  
+|*.blob.core.windows.net | ポート 443 | 受信および送信|  
+|*.azure-automation.net | ポート 443 | 受信および送信|  
 
 Linux エージェントは、HTTPS プロトコルを使用したプロキシ サーバーまたは OMS ゲートウェイ経由の Log Analytics サービスへの通信をサポートします。  匿名認証と基本認証 (ユーザー名/パスワード) の両方がサポートされます。  プロキシ サーバーは、インストール中、またはインストール後に proxy.conf 構成ファイルを変更して指定することができます。  
 

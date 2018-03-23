@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation の Linux Hybrid Runbook Worker | Microsoft Docs"
-description: "この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのコンピューターで Runbook を実行できるようにする方法について説明します。"
+title: Azure Automation の Linux Hybrid Runbook Worker
+description: この記事では、Azure Automation Hybrid Runbook Worker をインストールして、ローカル データ センターやクラウド環境にある Linux ベースのコンピューターで Runbook を実行できるようにする方法について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: 
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/14/2018
-ms.author: magoedte
-ms.openlocfilehash: 9926ceef9777032d52c7655e4c2d03f63a4a6af7
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b68e8f7e67f767cff19e57f5864db89d6f059316
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のデプロイ方法
 

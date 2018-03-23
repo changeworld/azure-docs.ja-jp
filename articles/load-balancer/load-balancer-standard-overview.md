@@ -1,12 +1,12 @@
 ---
-title: "Azure Load Balancer Standard の概要 | Microsoft Docs"
-description: "Azure Load Balancer Standard の機能の概要"
+title: Azure Load Balancer Standard の概要 | Microsoft Docs
+description: Azure Load Balancer Standard の機能の概要
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/04/2018
 ms.author: kumud
-ms.openlocfilehash: ddbfb415f062396f022f0f58cb975f6e3a5f1807
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e4fa38145ac21aaca8efa37250cc32ef1b1655c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure Load Balancer Standard の概要 (プレビュー)
 
@@ -327,7 +327,7 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-現在、Load Balancer Standard はすべてのパブリック クラウド リージョンで利用できます。
+現在、Load Balancer Standard は、米国西部以外のすべてのパブリック クラウド リージョンで利用できます。
 
 >[!IMPORTANT]
 > 初期起動リージョン (米国東部 2、米国中部、北ヨーロッパ、米国中西部、西ヨーロッパ、東南アジア) の外部のリージョンに短期間アクセスするには、追加のサブスクリプション機能 (AllowLBPreviewWave2 と AllowLBPreviewWave3) の登録が必要です。  [こちらに記した手順に従ってください](#additionalpreviewregions)。 以前に AllowLBPreview にサインアップしたことがある場合でも、これらの手順をすべて実行してください。
@@ -467,6 +467,7 @@ Load Balancer Basic SKU は、引き続き無料でご利用いただけます�
 - [Azure Monitor アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)は、現時点ではサポートされていません。
 - ポータルでは、拡張されたプレビュー リージョンがまだサポートされていません。  回避策として、テンプレート、Azure CLI 2.0、PowerShell などのクライアント ツールを使用してください。
 - サブスクリプションの移動操作はサポートされていません。
+- 米国西部では使用できません。
 
 
 ## <a name="next-steps"></a>次の手順

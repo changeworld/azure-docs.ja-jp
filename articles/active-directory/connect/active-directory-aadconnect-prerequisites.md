@@ -1,24 +1,24 @@
 ---
-title: "Azure AD Connect: 前提条件とハードウェア |Microsoft Docs"
-description: "このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。"
+title: 'Azure AD Connect: 前提条件とハードウェア |Microsoft Docs'
+description: このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 91b88fda-bca6-49a8-898f-8d906a661f07
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 03/09/2018
 ms.author: billmath
-ms.openlocfilehash: d82a91aa51b6684e6bf88de142d00705a0ceddba
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: d6d6eadf0ae8996b019a0564715f843913101944
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="prerequisites-for-azure-ad-connect"></a>Azure AD Connect の前提条件
 このトピックでは、Azure AD Connect を使用するための前提条件とハードウェア要件について説明します。
@@ -31,6 +31,7 @@ Azure AD Connect をインストールする前に、いくつか必要な項目
   * [Azure Portal](https://portal.azure.com) を使用することもできます。 このポータルでは、Azure AD ライセンスは必要ありません。
 * [ドメインを追加して検証](../active-directory-domains-add-azure-portal.md) します。 たとえば、ユーザー向けに contoso.com を使用する予定の場合は、そのドメインが検証されていることと、使用しているドメインが既定のドメインである contoso.onmicrosoft.com だけではないことを確認します。
 * Azure AD テナントでは、既定では 50,000 個のオブジェクトを使用できます。 ドメインを検証すると、制限が 300,000 個のオブジェクトに増加します。 Azure AD でさらに多くのオブジェクトが必要な場合は、制限を緩和するサポート ケースを開く必要があります。 500,000 個を超えるオブジェクトが必要な場合は、Office 365、Azure AD Basic、Azure AD Premium、Enterprise Mobility and Security などのライセンスが必要です。
+* ADSyncPrep は、Azure AD Connect 向けに Active Directory 環境を準備するために使用される関数を提供する PowerShell スクリプト モジュールです。  ADSyncPrep には、[Azure AD の Microsoft Online v1.1 PowerShell モジュール](https://docs.microsoft.com/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0)が必要です。  バージョン 2 は機能しません。  このモジュールは、`Install-Module` コマンドレットを使用してインストールできます。  詳細については、記載されているリンクを参照してください。
 
 ### <a name="prepare-your-on-premises-data"></a>オンプレミスのデータの準備
 * Azure AD および Office 365 に同期する前に、[IdFix](https://support.office.com/article/Install-and-run-the-Office-365-IdFix-tool-f4bd2439-3e41-4169-99f6-3fabdfa326ac) を使用して、ディレクトリ内の重複部分や書式の問題などのエラーを特定してください。

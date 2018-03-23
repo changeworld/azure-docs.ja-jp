@@ -1,46 +1,44 @@
 ---
-title: "Azure での仮想ネットワークの作成 - PowerShell | Microsoft Docs"
-description: "PowerShell を使用した仮想ネットワークの作成方法を簡単に説明します。 仮想ネットワークでは、プライベートで相互通信するために、たくさんの種類の Azure リソースを使用できます。"
+title: Azure Virtual Network の作成 - PowerShell | Microsoft Docs
+description: PowerShell を使用した仮想ネットワークの作成方法を簡単に説明します。 仮想ネットワークによって、仮想マシンなどの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
-ms.devlang: 
-ms.topic: 
+ms.devlang: ''
+ms.topic: ''
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 01/25/2018
+ms.date: 03/09/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: dd8203763eb6abd19e2b3483636dc4d80f7effdf
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.custom: ''
+ms.openlocfilehash: 13d36e6861a30473e6cb5d54d94a3c23a1e4cc59
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-a-virtual-network-using-powershell"></a>PowerShell を使用して仮想ネットワークを作成する
 
-この記事では、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成した後は、仮想ネットワークに 2 つの仮想マシンをデプロイして、それらのマシン間でプライベート ネットワーク通信をテストします。
+仮想ネットワークによって、仮想マシン (VM) などの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。 この記事では、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成したら、2 つの VM を仮想ネットワークにデプロイします。 その後、インターネットから 1 つの VM に接続し、2 つの VM の間でプライベートに通信します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-powershell.md)]
 
-PowerShell をインストールしてローカルで使用する場合、この記事では AzureRM PowerShell モジュール バージョン 5.1.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
+PowerShell をインストールしてローカルで使用する場合、この記事では AzureRM PowerShell モジュール バージョン 5.4.1 以降が必要になります。 インストールされているバージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 PowerShell をローカルで実行している場合、`Login-AzureRmAccount` を実行して Azure との接続を作成することも必要です。
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
+## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-[New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。 Azure リソースはすべて、Azure の場所 (リージョン) 内に作成されます。
+仮想ネットワークを作成するには、その前に、仮想ネットワークを含めるリソース グループを作成する必要があります。 [New-AzureRmResourceGroup](/powershell/module/AzureRM.Resources/New-AzureRmResourceGroup) を使用してリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
 ```
-
-## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、*EastUS* の場所にある *myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
 
@@ -49,12 +47,10 @@ $virtualNetwork = New-AzureRmVirtualNetwork `
   -ResourceGroupName myResourceGroup `
   -Location EastUS `
   -Name myVirtualNetwork `
-  -AddressPrefix 10.0.0.0/24
+  -AddressPrefix 10.0.0.0/16
 ```
 
-すべての仮想ネットワークには、1 つまたは複数のアドレス プレフィックスが割り当てられています。 アドレス範囲は、CIDR 表記で指定されます。 アドレス空間 10.0.0.0/24 は、10.0.0.0 ～ 10.0.0.254 を含みます。 仮想ネットワークは、それらのアドレス空間内に 0 個または 1 つ以上のサブネットを保持します。 リソースは、仮想ネットワークのサブネットにデプロイされます。 
-
-[New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用してサブネット構成を作成します。 すべてのサブネットには、仮想ネットワークのアドレス プレフィックス内に存在するアドレス プレフィックスがあります。 この例では、仮想ネットワークのアドレス プレフィックスと同じアドレス プレフィックスで、サブネット構成が作成されています。
+Azure リソースは仮想ネットワーク内のサブネットにデプロイされるため、サブネットを作成する必要があります。 [New-AzureRmVirtualNetworkSubnetConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworksubnetconfig) を使用してサブネット構成を作成します。 
 
 ```azurepowershell-interactive
 $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
@@ -63,21 +59,19 @@ $subnetConfig = Add-AzureRmVirtualNetworkSubnetConfig `
   -VirtualNetwork $virtualNetwork
 ```
 
-サブネット アドレス プレフィックスは 10.0.0.0 ～ 10.0.0.254 を含みますが、Azure では最初の 4 つのアドレス (0 ～ 3) と各サブネットの最後のアドレスを予約しているため、アドレス 10.0.0.4 ～ 10.0.0.254 のみが使用可能です。 サブネット アドレス プレフィックスは仮想ネットワーク アドレスのプレフィックスと同じなので、この仮想ネットワークには 1 つのサブネットだけが存在することになります。
-
-[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) を使って、仮想ネットワークにサブネット構成を書き込みます。これにより、サブネットが作成されます。
+[Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/Set-AzureRmVirtualNetwork) を使用して、仮想ネットワークにサブネット構成を書き込みます。これにより、仮想ネットワークにサブネットが作成されます。
 
 ```azurepowershell-interactive
 $virtualNetwork | Set-AzureRmVirtualNetwork
 ```
 
-## <a name="test-network-communication"></a>ネットワーク通信をテストする
+## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-仮想ネットワークでは、プライベートで相互通信するために、複数の種類の Azure リソースを使用できます。 仮想ネットワークにデプロイできるリソースの種類の 1 つは、仮想マシンです。 仮想ネットワークに 2 つの仮想マシンを作成して、後の手順でそれらの間のプライベート通信を確認できるようにします。
+仮想ネットワークに 2 つの VM を作成します。
 
-### <a name="create-virtual-machines"></a>仮想マシンを作成する
+### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使って、仮想マシンを作成します。 この手順の実行時に、資格情報の入力を求められます。 入力した値は、仮想マシンのユーザー名とパスワードとして構成されます。 仮想マシンを作成する場所は、仮想ネットワークが存在する場所と同じ場所にする必要があります。 この記事では同じになっていますが、仮想マシンは、該当の仮想マシンと同じリソース グループ内に配置する必要はありません。 `-AsJob` パラメーターを使用すると、バック グラウンドでコマンドが実行されるため、次のタスクで続行することができます。
+[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使用して VM を作成します。 次のコマンドを実行するとき、資格情報の入力を求められます。 入力した値は、VM のユーザー名とパスワードとして構成されます。 `-AsJob` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -89,7 +83,7 @@ New-AzureRmVm `
     -AsJob
 ```
 
-次の出力例と同様の出力が返され、Azure はバックグラウンドで仮想マシンの作成を開始します。
+次の出力例と同様の出力が返され、Azure はバックグラウンドで VM の作成を開始します。
 
 ```powershell
 Id     Name            PSJobTypeName   State         HasMoreData     Location             Command                  
@@ -97,9 +91,9 @@ Id     Name            PSJobTypeName   State         HasMoreData     Location   
 1      Long Running... AzureLongRun... Running       True            localhost            New-AzureRmVM     
 ```
 
-*既定*のサブネットで使用できる最初のアドレスは 10.0.0.4 なので、Azure DHCP はこれを仮想マシンに自動的に割り当てます。
+### <a name="create-the-second-vm"></a>2 つ目の VM を作成する 
 
-2 番目の仮想マシンを作成します。 
+次のコマンドを入力します。
 
 ```azurepowershell-interactive
 New-AzureRmVm `
@@ -108,57 +102,51 @@ New-AzureRmVm `
   -SubnetName "default" `
   -Name "myVm2"
 ```
-仮想マシンの作成には、数分かかります。 作成されると、Azure は、作成された仮想マシンに関する出力を返します。 返された出力ではわかりませんが、サブネットで使用できる次のアドレスは *10.0.0.5* なので、Azure はこれを *myVm2* 仮想マシンに割り当てました。
 
-### <a name="connect-to-a-virtual-machine"></a>仮想マシンへの接続
+VM の作成には数分かかります。 前のコマンドが実行され、PowerShell に出力が返されるまでは、次の手順に進まないでください。
 
-仮想マシンのパブリック IP アドレスを返す [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) コマンドを使用します。 Azure では既定で、インターネット ルーティング可能なパブリック IP アドレスを各仮想マシンに割り当てます。 パブリック IP アドレスは、[各 Azure リージョンに割り当てられているアドレスのプール](https://www.microsoft.com/download/details.aspx?id=41653)から、仮想マシンに割り当てられます。 Azure ではどのパブリック IP アドレスが仮想マシンに割り当てられているかを把握していますが、仮想マシンで実行されているオペレーティング システムが、割り当てられたパブリック IP アドレスを認識することはありません。 次の例では、*myVm1* 仮想マシンのパブリック IP アドレスを返しています。
+## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
+
+[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress) を使用して、VM のパブリック IP アドレスを返します。 次の例では、*myVm1* VM のパブリック IP アドレスを返しています。
 
 ```azurepowershell-interactive
-Get-AzureRmPublicIpAddress -Name myVm1 -ResourceGroupName myResourceGroup | Select IpAddress
+Get-AzureRmPublicIpAddress `
+  -Name myVm1 `
+  -ResourceGroupName myResourceGroup `
+  | Select IpAddress
 ```
 
-次のコマンドを使用して、お使いのローカル コンピューターから、*myVm1* 仮想マシンでリモート デスクトップ セッションを作成します。 `<publicIpAddress>` を前のコマンドで返された IP アドレスに置き換えます。
+次のコマンドの `<publicIpAddress>` を、前のコマンドで返されたパブリック IPアドレスで置換して、次のコマンドを入力します。 
 
 ```
 mstsc /v:<publicIpAddress>
 ```
 
-リモート デスクトップ プロトコル (.rdp) ファイルが作成され、お使いのコンピューターにダウンロードされて開かれます。 仮想マシンを作成するときに指定したユーザー名とパスワードを入力して、**[OK]**  をクリックします。 サインイン処理中に証明書の警告が表示される場合があります。 **[はい]** または **[続行]** をクリックして接続処理を続行します。
+リモート デスクトップ プロトコル (.rdp) ファイルが作成され、お使いのコンピューターにダウンロードされます。 ダウンロードされた rdp ファイルを開きます。 メッセージが表示されたら、**[Connect]** を選択します。 VM の作成時に指定したユーザー名とパスワードを入力します。 場合によっては、**[その他]**、**[別のアカウントを使用する]** を選択して、VM の作成時に入力した資格情報を指定する必要があります。 **[OK]**を選択します。 サインイン処理中に証明書の警告が表示される場合があります。 警告を受け取ったら、**[はい]** または **[続行]** を選択して接続処理を続行します。
 
-### <a name="validate-communication"></a>通信を検証する
+## <a name="communicate-privately-between-vms"></a>VM 間でプライベートに通信する
 
-Windows ファイアウォールでは既定で ping が許可されていないため、Windows 仮想マシンへの ping を試行すると、エラーになります。 *myVm1* への ping を許可するには、コマンド プロンプトから以下のコマンドを入力します。
+*myVm1* VM に対して PowerShell で `ping myvm2` を入力します。 ping はインターネット制御メッセージ プロトコル (ICMP) を使用し、既定では ICMP は Windows ファイアウォールで許可されないため、ping は失敗します。
 
-```
-netsh advfirewall firewall add rule name=Allow-ping protocol=icmpv4 dir=in action=allow
-```
+後の手順で *myVm2* が *myVm1* に ping できるようにするには、PowerShell から次のコマンドを入力します。これで、Windows ファイアウォールからの ICMP インバウンドが許可されます。
 
-*myVm2* との通信を検証するには、*myVm1* 仮想マシン上でコマンド プロンプトから以下のコマンドを入力します。 仮想マシンを作成したときに使用した資格情報を提供して、接続を完了します。
-
-```
-mstsc /v:myVm2
+```powershell
+New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
 ```
 
-両方の仮想マシンが*既定の*サブネットから割り当てられたプライベート IP アドレスを保持し、かつ、リモート デスクトップが既定で Windows ファイアウォール経由で開かれたため、リモート デスクトップ接続に成功します。 Azure は仮想ネットワーク内のすべてのホストに DNS 名前解決を自動的に提供するので、*myVm2* にはホスト名で接続できます。 コマンド プロンプトで、*myVm2* から *myVm1* を ping します。
+*myVm1* へのリモート デスクトップ接続を閉じます。 
 
-```
-ping myvm1
-```
+「[インターネットから VM に接続する](#connect-to-a-vm-from-the-internet)」の手順をもう一度実行します。ただし、ここでは *myVm2* に接続します。 
 
-前の手順で *myVm1* 仮想マシン上の Windows ファイアウォール経由での ping を許可したため、ping に成功します。 インターネットへの送信方向の通信を確認するには、以下のコマンドを入力します。
+*myVm2* VM のコマンド プロンプトで `ping myvm1` と入力します。
 
-```
-ping bing.com
-```
+*myVm1* から応答を受信します。これは、前の手順で *myVm1* VM での Windows ファイアウォール経由の ICMP を許可したためです。
 
-bing.com から 4 つの応答を受信します。既定では、仮想ネットワークにあるどの仮想マシンも、インターネットへの送信方向の通信が可能です。
-
-リモート デスクトップ セッションを終了します。 
+*myVm2* へのリモート デスクトップ接続を閉じます。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要なくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使用して、リソース グループとその中のすべてのリソースを削除できます。
+必要なくなったら、[Remove-AzureRmResourcegroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) を使用して、リソース グループとその中のすべてのリソースを削除できます。
 
 ```azurepowershell-interactive 
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
@@ -166,7 +154,9 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、1 つのサブネットを含む既定の仮想ネットワークをデプロイしました。 複数のサブネットでカスタム仮想ネットワークを作成する方法を習得するには、カスタム仮想ネットワークの作成に関するチュートリアルに進んでください。
+この記事では、既定の仮想ネットワークと 2 つの VM を作成しました。 インターネットから 1 つの VM に接続し、その VM ともう 1 つの VM のプライベート通信を行いました。 仮想ネットワーク設定について詳しくは、[仮想ネットワークの管理](manage-virtual-network.md)に関する記事をご覧ください。 
+
+既定で、Azure では仮想マシン間の無制限のプライベート通信が許可されますが、インターネットから Windows VM へはインバウンド リモート デスクトップ接続のみが許可されます。 VM に対するさまざまな種類のネットワーク通信を許可または制限する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [カスタム仮想ネットワークの作成](virtual-networks-create-vnet-arm-pportal.md#powershell)
+> [ネットワーク トラフィックをフィルター処理する](virtual-networks-create-nsg-arm-ps.md)

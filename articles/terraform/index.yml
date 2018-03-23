@@ -1,8 +1,8 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Terraform on Azure のドキュメント"
+title: Terraform on Azure のドキュメント
 metadata:
-  title: "Terraform on Azure のドキュメント - チュートリアルとリファレンス"
+  title: Terraform on Azure のドキュメント - チュートリアルとリファレンス
   meta.description: Learn how to use Terraform to reliably provision virtual machines and other infrastructure on Azure.
   services: terraform
   author: rloutlaw
@@ -13,54 +13,55 @@ metadata:
   ms.topic: landing-page
   ms.date: 09/21/2017
   ms.author: routlaw
-  ms.openlocfilehash: 0a49fda383b025f80e4f1a066330a0e64b159366
-  ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+  ms.openlocfilehash: 71ffbc2f8d6728a414a8e001198b8c9f9b36c485
+  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/01/2018
+  ms.lasthandoff: 03/16/2018
 abstract:
-  description: "Terraform を使用すると、Azure 上で確実にインフラストラクチャのバージョン管理と作成を行うことができます。 Microsoft が提供するクイックスタートとチュートリアルを使用して、リソースの作成、Azure Terraform モジュールの使用、インフラストラクチャの管理をコードで行う方法を確認します。"
+  description: Terraform を使用すると、Azure 上で確実にインフラストラクチャのバージョン管理と作成を行うことができます。 Microsoft が提供するクイックスタートとチュートリアルを使用して、リソースの作成、Azure Terraform モジュールの使用、インフラストラクチャの管理をコードで行う方法を確認します。
 sections:
-- title: "クイック スタート"
+- title: クイック スタート
   items:
   - type: paragraph
-    text: "Azure に Linux VM を作成するには、Terraform を構成して使用します。"
+    text: Azure に Linux VM を作成するには、Terraform を構成して使用します。
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/azure/media/index/azure_dev-9.svg
-      text: "Terraform のインストールと構成"
+      text: Terraform のインストールと構成
       href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure
     - image:
         src: https://docs.microsoft.com/azure/media/index/VirtualMachine.svg
-      text: "Linux VM の作成"
+      text: Linux VM の作成
       href: https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm
-- title: "ステップバイステップのチュートリアル"
+- title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: "Terraform を使用してコードから Azure コンピューティングとネットワーク インフラストラクチャを作成する方法を確認してください。"
+    text: Terraform を使用してコードから Azure コンピューティングとネットワーク インフラストラクチャを作成する方法を確認してください。
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"/azure/terraform/terraform-create-vm-cluster-module\">Azure Terraform モジュールを使用して負荷分散 VM クラスターを作成する</a>"
-    - html: "<a href=\"/azure/terraform/terraform-create-vm-cluster-with-infrastructure\">Azure Cloud Shell に負荷分散 VM クラスターを作成する</a>"
-    - html: "<a href=\"/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl\">ネットワークとストレージで VM スケール セットを構成する</a>"
-    - html: "<a href=\"/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl\">Packer カスタム イメージから VM スケール セットをプロビジョニングする。</a>"
-- title: "サンプル"
+    - html: <a href="/azure/terraform/terraform-vm-msi">Azure Marketplace イメージを使用して、MSI 認証が有効な Terraform VM を作成する</a>。
+    - html: <a href="/azure/terraform/terraform-create-vm-cluster-module">Azure Terraform モジュールを使用して負荷分散 VM クラスターを作成する</a>
+    - html: <a href="/azure/terraform/terraform-create-vm-cluster-with-infrastructure">Azure Cloud Shell に負荷分散 VM クラスターを作成する</a>
+    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-hcl">ネットワークとストレージで VM スケール セットを構成する</a>
+    - html: <a href="/azure/terraform/terraform-create-vm-scaleset-network-disks-using-packer-hcl">Packer カスタム イメージから VM スケール セットをプロビジョニングする。</a>
+- title: サンプル
   items:
   - type: paragraph
-    text: "一般的なデプロイ タスク用のサンプル構成テンプレート。"
+    text: 一般的なデプロイ タスク用のサンプル構成テンプレート。
   - type: list
     style: unordered
     className: spaced noBullet
     items:
     - html: <a href="https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples">GitHub</a>
-- title: "リファレンス"
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "Azure Terraform モジュール"
+    - title: Azure Terraform モジュール
       html: <p><a href="https://registry.terraform.io/modules/Azure/database/azurerm">Azure RM for Database</a></p><p><a href="https://registry.terraform.io/modules/Azure/loadbalancer">Azure RM for Load Balancer</a></p><p><a href="https://registry.terraform.io/modules/Azure/computegroup">Azure RM Compute Group</a></p><p><a href="https://registry.terraform.io/modules/Azure/network">Azure RM Network</a></p><p><a href="https://registry.terraform.io/modules/Azure/compute">Azure RM Compute</a></p>

@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse の容量制限 | Microsoft Docs"
-description: "SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。"
+title: SQL Data Warehouse の容量制限 | Microsoft Docs
+description: SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: e1eac122-baee-4200-a2ed-f38bfa0f67ce
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 12/14/2017
+ms.date: 03/15/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: 3a8edb3806f981ebb6f8c1ca6c994ae198df2ec2
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: b1ff33f80a8dd0a0861a5c39731c9f59689db101
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/16/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 以下の表に、Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
@@ -96,7 +96,7 @@ ms.lasthandoff: 12/16/2017
 <!--Article references-->
 [Data Warehouse Units (DWU)]: ./sql-data-warehouse-overview-what-is.md
 [SQL Data Warehouse reference overview]: ./sql-data-warehouse-overview-reference.md
-[Workload management]: ./sql-data-warehouse-develop-concurrency.md
+[Workload management]: ./resource-classes-for-workload-management.md
 [Tempdb]: ./sql-data-warehouse-tables-temporary.md
 [data type]: ./sql-data-warehouse-tables-data-types.md
 [creating a support ticket]: /sql-data-warehouse-get-started-create-support-ticket.md

@@ -1,29 +1,29 @@
 ---
-title: "Microsoft Azure での個人データの保護 | Microsoft Docs"
-description: "Azure を使用して個人データを保護するための最初の記事"
+title: Microsoft Azure での個人データの保護 | Microsoft Docs
+description: この記事は、Azure を使用して個人データを保護し、一般データ保護規則 (GDPR) に準拠するために役立ちます。
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 4dbdb2dc11bdc515fb3856dd45203868122c7726
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 741fb17be315faacef6483cbaaa565136622cb45
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-in-microsoft-azure"></a>Microsoft Azure を使用して個人データを保護する
 
-この記事では、Azure のセキュリティ テクノロジおよびサービスを使用して個人データを保護するための記事を紹介します。 これは、多くの企業にとって、業界のコンプライアンスおよびガバナンス イニシアチブのために重要な要件です。 このシナリオには、問題の説明と会社の目標が含まれています。
+この記事では、Azure のセキュリティ テクノロジおよびサービスを使用して個人データを保護するための記事を紹介します。 これは、多くの企業にとって、業界のコンプライアンスおよびガバナンス イニシアチブのために重要な要件です。 たとえば、この一連の記事で提供されている情報を使用して、一般データ保護規則 (GDPR) に準拠できます。 このシナリオには、問題の説明と会社の目標が含まれています。
 
 ## <a name="scenario-and-problem-statement"></a>シナリオと問題の説明
 
@@ -62,17 +62,17 @@ ms.lasthandoff: 10/11/2017
 
 - [Azure のネットワーク セキュリティ テクノロジ](protect-personal-data-network-security.md)
 
-- [Azure Security Center](protect-personal-data-azure-security-center.md)
+- [[Azure Security Center] (Azure Security Center)](protect-personal-data-azure-security-center.md)
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure セキュリティに関する情報サイト](https://aka.ms/AzureSecInfo)
 
 - [Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/default.aspx)
 
-- [Azure Security Center](https://azure.microsoft.com/services/security-center/)
+- [[Azure Security Center] (Azure Security Center)](https://azure.microsoft.com/services/security-center/)
 
 - [Azure セキュリティ チームのブログ](https://www.azuresecurityorg)
 

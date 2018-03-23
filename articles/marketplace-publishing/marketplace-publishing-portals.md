@@ -1,11 +1,11 @@
 ---
-title: "Marketplace のプランを作成するために必要なさまざまなポータルの概要 | Microsoft Docs"
-description: "Marketplace のプランを作成するために必要なさまざまなポータルの概要"
+title: Marketplace のプランを作成するために必要なさまざまなポータルの概要 | Microsoft Docs
+description: Marketplace のプランを作成するために必要なさまざまなポータルの概要
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 89ce82b3-c28a-4b0d-b37a-db3112160a4e
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
-ms.author: hascipio
-ms.openlocfilehash: 093d3ee3ecce89c86a12e7e216072ece57f82f9d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 663d9a01b80b0c41e37037b0cbec10c93511d24c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="portals-you-will-need"></a>必要なポータル
 プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。 以下に、デベロッパー センター、Azure 発行ポータル、および Azure Portal の概要を、やり取りする順番で示します。                                                                            
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="developer-center"></a>デベロッパー センター
 [http://dev.windows.com/registration?accountprogram=azure](http://dev.windows.com/registration?accountprogram=azure)
 
-### <a name="description"></a>説明
+### <a name="description"></a>[説明]
 Microsoft デベロッパー センター アカウントの作成は、1 回限りのタスクです。 作成する前に、デベロッパー センター アカウントを会社が既に所有していないことを確認してください。 このプロセスでは、銀行口座の情報、税情報、および会社の住所情報が収集されます。
 
 > [!NOTE]
@@ -45,7 +45,7 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 ## <a name="publishing-portal"></a>発行ポータル
 [https://publish.windowsazure.com](https://publish.windowsazure.com)
 
-### <a name="description"></a>説明
+### <a name="description"></a>[説明]
 このポータルではプランを処理し、それを発行します (該当する場合、マーケティング、価格設定、発行、認定など)。
 
 ### <a name="identityaccount-used"></a>使用する ID とアカウント
@@ -54,7 +54,7 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 ## <a name="azure-portal"></a>Azure Portal
 [https://portal.azure.com](https://portal.azure.com)
 
-### <a name="description"></a>説明
+### <a name="description"></a>[説明]
 このポータルでは、Azure Marketplace でステージングされたプランと発行されたプランを表示できます (VM、ソリューション テンプレート、および Azure リソース マネージャー ベースの開発者サービスに適用)。
 
 ### <a name="identityaccount-used"></a>使用する ID とアカウント

@@ -1,8 +1,8 @@
 ---
-title: "スクリプト アクションを使って HDInsight クラスターをカスタマイズする - Azure | Microsoft Docs"
-description: "スクリプト アクションを使用して Linux ベースの HDInsight クラスターにカスタム コンポーネントを追加します。 スクリプト アクションは、クラスター ノード上の Bash スクリプトであり、クラスター構成のカスタマイズや、サービスとユーティリティ (Hue、Solr、R など) の追加に使用できます。"
+title: スクリプト アクションを使って HDInsight クラスターをカスタマイズする - Azure | Microsoft Docs
+description: スクリプト アクションを使用して Linux ベースの HDInsight クラスターにカスタム コンポーネントを追加します。 スクリプト アクションは、クラスター ノード上の Bash スクリプトであり、クラスター構成のカスタマイズや、サービスとユーティリティ (Hue、Solr、R など) の追加に使用できます。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -160,13 +160,13 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 | Name | スクリプト |
 | --- | --- |
-| **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh。「[HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md)」を参照してください。 |
-| **Hue のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh。[HDInsight クラスターでの Hue のインストールおよび使用](hdinsight-hadoop-hue-linux.md)に関する記事を参照してください。 |
-| **Presto のインストール** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh「[HDInsight Hadoop クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md)」を参照してください。 |
-| **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh。「 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md)」をご覧ください。 |
-| **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh。「 [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md)」をご覧ください。 |
-| **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh。「[HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」を参照してください。 |
-| **Mono のインストールまたは更新** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash 「[HDInsight での Mono のインストールまたは更新](hdinsight-hadoop-install-mono.md)」を参照してください。 |
+| **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh. [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md) を参照してください。 |
+| **Hue のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. [HDInsight クラスターでの Hue のインストールおよび使用](hdinsight-hadoop-hue-linux.md) に関する記事を参照してください。  |
+| **Presto のインストール** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh[HDInsight Hadoop クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md) を参照してください。 |
+| **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh。 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md) をご覧ください。 |
+| **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh. [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md) をご覧ください。 |
+| **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. [HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」 を参照してください。 |
+| **Mono のインストールまたは更新** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash  [HDInsight での Mono のインストールまたは更新](hdinsight-hadoop-install-mono.md) を参照してください。 |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>クラスターの作成時にスクリプト アクションを使用する
 
@@ -174,7 +174,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>クラスターの作成時に Azure Portal からスクリプト アクションを使用する
 
-1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事の説明に従って、クラスターの作成を開始します。 __[クラスターの概要]__ セクションに達したら、停止します。
+1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md) に関する記事の説明に従って、クラスターの作成を開始します。 __[クラスターの概要]__ セクションに達したら、停止します。
 
 2. __[クラスターの概要]__ セクションで、__[詳細設定]__ の __[編集]__ リンクを選択します。
 

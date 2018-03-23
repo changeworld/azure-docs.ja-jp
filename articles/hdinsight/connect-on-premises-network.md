@@ -1,7 +1,7 @@
 ---
-title: "オンプレミス ネットワークへの HDInsight の接続 - Azure HDInsight | Microsoft Docs"
-description: "Azure Virtual Network で HDInsight クラスターを作成して、ご使用のオンプレミス ネットワークに接続する方法について説明します。 カスタム DNS サーバーを使用して、HDInsight とオンプレミス ネットワークとの間で名前解決を構成する方法について説明します。"
-documentationcenter: 
+title: オンプレミス ネットワークへの HDInsight の接続 - Azure HDInsight | Microsoft Docs
+description: Azure Virtual Network で HDInsight クラスターを作成して、ご使用のオンプレミス ネットワークに接続する方法について説明します。 カスタム DNS サーバーを使用して、HDInsight とオンプレミス ネットワークとの間で名前解決を構成する方法について説明します。
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/23/2018
 ms.author: larryfr
-ms.openlocfilehash: 03214f25858ae340908a1d1b7f3ff7f62d545dc9
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9470e052b4f57e52fa140b53fa7c32d199c58e1e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
@@ -273,13 +273,13 @@ nslookup dnsproxy.icb0d0thtw0ebifqt0g1jycdxd.ex.internal.cloudapp.net 196.168.0.
 
 > [!WARNING]
 > HDInsight では、Azure クラウド内の特定の IP アドレスからの着信アクセスと、制限のない発信アクセスが必要です。 NSG または UDR を使用してトラフィックを制御する場合は、次の手順を実行する必要があります。
->
-> 1. 仮想ネットワークがある場所の IP アドレスを調べます。 場所ごとの必須 IP アドレスの一覧については、「[必須 IP アドレス](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)」を参照してください。
->
-> 2. IP アドレスからの受信トラフィックを許可します。
->
->    * __NSG__: __インターネット__からのポート __443__ の__受信__トラフィックを許可します。
->    * __UDR__: __インターネット__へのルートの__次ホップ__を設定します。
+
+1. 仮想ネットワークがある場所の IP アドレスを調べます。 場所ごとの必須 IP アドレスの一覧については、「[必須 IP アドレス](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-ip)」を参照してください。
+
+2. 手順 1 で識別された IP アドレスについて、その IP アドレスからの受信トラフィックを許可します。
+
+   * __NSG__ を使用している場合: IP アドレスについて、__443__ ポートでの__受信__トラフィックを許可します。
+   * __UDR__ を使用している場合: IP アドレスについて、ルートの__次ホップ__の種類を__インターネット__に設定します。
 
 Azure PowerShell または Azure CLI を使用して NSG を作成する例については、「[Azure Virtual Network を使用した HDInsight 機能の拡張](./hdinsight-extend-hadoop-virtual-network.md#hdinsight-nsg)」を参照してください。
 

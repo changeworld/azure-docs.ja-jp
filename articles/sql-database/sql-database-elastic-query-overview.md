@@ -1,24 +1,19 @@
 ---
-title: "Azure SQL Database のエラスティック クエリの概要 | Microsoft Docs"
-description: "エラスティック クエリを使用すると、複数のデータベースにまたがる Transact-SQL クエリを実行できます。"
+title: Azure SQL Database のエラスティック クエリの概要 | Microsoft Docs
+description: エラスティック クエリを使用すると、複数のデータベースにまたがる Transact-SQL クエリを実行できます。
 services: sql-database
-documentationcenter: 
-manager: jhubbard
+manager: craigg
 author: MladjoA
-ms.assetid: a8bf0e2c-bc74-44d0-9b1e-bcc9a6aa2e33
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 6389702b1be5e52c7191e6e57d17b48289e800b2
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 76a8332b99639bacee994824b69624d7fd457a7f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 エラスティック クエリ機能 (プレビュー) を使うと、Azure SQL Database の複数のデータベースにまたがる Transact-SQL クエリを実行することができます。 データベース間クエリを実行してリモート テーブルにアクセスしたり、Microsoft 製およびサード パーティ製ツール (Excel、PowerBI、Tableau など) を接続して複数のデータベースが含まれるデータ層間でクエリを実行したりできます。 この機能により、クエリを SQL Database 内の大規模なデータ層にスケールアウトし、結果をビジネス インテリジェンス (BI) レポートで視覚化することができます。
@@ -143,7 +138,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 ## <a name="feedback"></a>フィードバック
 以下に示す Livefyre、MSDN フォーラム、または Stackoverflow で、エラスティック クエリに関するノウハウを共有してください。 サービスに関して何でもご意見とご感想をお寄せください (障害、機能差、悪口など)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 列方向のパーティション分割のチュートリアルについては、「[クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)](sql-database-elastic-query-getting-started-vertical.md)」をご覧ください。
 * 列方向にパーティション分割されたデータの構文とサンプル クエリについては、「[例: 列方向にパーティション分割されたデータベースのクエリ](sql-database-elastic-query-vertical-partitioning.md)」をご覧ください。

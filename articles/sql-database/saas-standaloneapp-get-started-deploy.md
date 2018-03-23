@@ -1,26 +1,20 @@
 ---
-title: "マルチテナント SaaS チュートリアル - Azure SQL Database | Microsoft Docs"
-description: "Azure SQL Database を使用するスタンドアロン シングルテナント SaaS アプリケーションをデプロイおよび操作します。"
-keywords: "SQL データベース チュートリアル"
+title: マルチテナント SaaS チュートリアル - Azure SQL Database | Microsoft Docs
+description: Azure SQL Database を使用するスタンドアロン シングルテナント SaaS アプリケーションをデプロイおよび操作します。
+keywords: SQL データベース チュートリアル
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: genemi
-ms.openlocfilehash: fbc63cebe8c1456f5eb34666d15f4e00fd55fe5b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e30f096a9f02214839550c2dc143ab665e1cd85c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Azure SQL Database を使用するスタンドアロン シングルテナント アプリケーションをデプロイおよび操作する
 

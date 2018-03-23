@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database でのデータ依存ルーティング | Microsoft Docs"
-description: "データ依存ルーティング (Azure SQL Database のシャード化されたデータベースの機能) のために .NET アプリで ShardMapManager クラスを使う方法について説明します。"
+title: Azure SQL Database でのデータ依存ルーティング | Microsoft Docs
+description: データ依存ルーティング (Azure SQL Database のシャード化されたデータベースの機能) のために .NET アプリで ShardMapManager クラスを使う方法について説明します。
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-editor: 
-ms.assetid: cad09e15-5561-4448-aa18-b38f54cda004
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: ddove
-ms.openlocfilehash: 2add03568f1d111010cdfb49d850d33cdab8e21b
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sstein
+ms.openlocfilehash: 5685c1e1c502b5f3700fb1c4487778d38ff19d1e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="data-dependent-routing"></a>データ依存ルーティング
 **データ依存ルーティング** は、クエリ内のデータを使用して、要求を適切なデータベースにルーティングできる機能です。 これは、シャード化されたデータベースを操作するときの基本的なパターンです。 特にシャーディング キーがクエリの一部でない場合は、要求コンテキストを使用して要求をルーティングすることもできます。 データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに 1 つに制限されています。 Azure SQL Database Elastic ツールでは、このルーティングは **ShardMapManager** ([Java](/java/api/com.microsoft.azure.elasticdb.shard.mapmanager._shard_map_manager)、[.NET](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)) クラスで実行します。
@@ -167,7 +161,7 @@ Configuration.SqlRetryPolicy.ExecuteAction(() =&gt;
 ## <a name="transactional-consistency"></a>トランザクションの整合性
 トランザクションのプロパティは、シャードにとってローカルなすべての操作で保証されています。 たとえば、データ依存ルーティングを通じて送信されるトランザクションは、接続するターゲット シャードの範囲内で実行されます。 現時点では、複数の接続を 1 つのトランザクションに登録するために提供された機能はありません。したがって、複数のシャードにまたがる操作にもトランザクション上の保証はありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 シャードをデタッチまたは再アタッチする方法については、「 [RecoveryManager クラスを使用したシャード マップに関する問題の解決](sql-database-elastic-database-recovery-manager.md)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

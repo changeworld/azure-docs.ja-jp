@@ -1,11 +1,11 @@
 ---
-title: "Azure Logic Apps での RSS コネクタ | Microsoft Docs"
-description: "Azure App Service を使用してロジック アプリを作成します。 RSS コネクタを使用して、フィード アイテムを発行および取得できます。 また、新しいアイテムがフィードに発行されたときに操作をトリガーすることもできます。"
+title: Azure Logic Apps での RSS コネクタ | Microsoft Docs
+description: Azure App Service を使用してロジック アプリを作成します。 RSS コネクタを使用して、フィード アイテムを発行および取得できます。 また、新しいアイテムがフィードに発行されたときに操作をトリガーすることもできます。
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: a10a6277-ed29-4e68-a881-ccdad6fd0ad8
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: fca2b9983e70b754e3b4cb736023c47c598bedfc
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 493ee8a961e5d5a57c6276868a55b524dec28018
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-rss-connector"></a>RSS コネクタの使用
 RSS は、ブログ記事やニュースのヘッドラインのように、頻繁に更新されるコンテンツを発行するために使用する一般的な Web 配信形式です。  多くのコンテンツ発行元は、ユーザーがサブスクライブすることができる RSS フィードを提供します。  新しい項目を RSS フィードに発行するときに、RSS コネクタを使用してフィード情報を取得しフローをトリガーします。

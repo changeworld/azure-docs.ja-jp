@@ -1,25 +1,25 @@
 ---
-title: "Azure Stack の主要な機能と概念 | Microsoft Docs"
-description: "Azure Stack の主要な機能と概念について説明します。"
+title: Azure Stack の主要な機能と概念 | Microsoft Docs
+description: Azure Stack の主要な機能と概念について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 09ca32b7-0e81-4a27-a6cc-0ba90441d097
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 02/27/2018
 ms.author: jeffgilb
-ms.reviewer: unknown
-ms.openlocfilehash: 6c02ec42874e4e3221c53e6d6e85378bbe2e414a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.reviewer: ''
+ms.openlocfilehash: b773ddc5da12f92960ef3378decac8569dac9ab9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
 
@@ -91,6 +91,7 @@ Microsoft Azure Stack によって、プロバイダーは、仮想マシンや 
 
 管理者に対して、デプロイ中に既定のプロバイダー サブスクリプションが作成されます。 このサブスクリプションを使用して、Azure Stack の管理、他のリソース プロバイダのデプロイ、およびテナント向けのプランとオファーの作成を実行できます。 このサブスクリプションは、顧客ワークロードとアプリケーションを実行するために使用すべきではありません。 
 
+
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 Azure Resource Manager を使用することで、インフラストラクチャのリソースをテンプレート ベースの宣言型モデルで操作できます。   それは、ソリューション コンポーネントのデプロイと管理に使用できる単一のインターフェイスを備えています。 詳しい説明とガイダンスについては、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
@@ -127,6 +128,25 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 
 ### <a name="keyvault"></a>KeyVault
 KeyVault RP は、パスワードや証明書などのシークレットの管理と監査を提供します。 たとえば、テナントは、KeyVault RP を使用して、VM のデプロイ中に管理者のパスワードやキーを指定できます。
+
+## <a name="high-availability-for-azure-stack"></a>Azure Stack の高可用性
+*対象: Azure Stack 1802 以降のバージョン*
+
+Azure でのマルチ VM による実稼働システムの高可用性を実現するため、VM は、複数の障害ドメインと更新ドメインに分散される可用性セットに配置されます。 この方法では、[可用性セットに配置された VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets) は、次の図に示すように、障害から回復できるようにするために、複数のサーバー ラックに互いに物理的に分離されます。
+
+  ![Azure Stack の高可用性](media/azure-stack-key-features/high-availability.png)
+
+### <a name="availablity-sets-in-azure-stack"></a>Azure Stack の可用性セット
+Azure Stack のインフラストラクチャは既に障害に対する回復性を備えていますが、基盤となっているテクノロジ (フェールオーバー クラスタリング) では、ハードウェア障害が発生した場合にその影響を受ける物理サーバー上の VM に多少のダウンタイムが発生します。 Azure Stack では、Azure との一貫性がある最大 3 つの障害ドメインを持つ可用性セットを用意することをサポートしています。
+
+- **障害ドメイン**。 可用性セットに配置された VM は、複数の障害ドメイン (Azure Stack ノード) にできる限り均等に分散させることによって、互いに物理的に分離されます。 ハードウェア障害が発生した場合は、障害が発生した障害ドメインの VM は、他の障害ドメインで再起動されますが、可能であれば、同じ可用性セット内の他の VM とは別の障害ドメインに保持されます。 ハードウェアがオンラインに戻ると、高可用性を維持するために VM の再分配が行われます。 
+ 
+- **更新ドメイン**。 更新ドメインは、可用性セットに高可用性を提供する Azure の別の概念です。 更新ドメインは、メンテナンスを同時に実行できる、基盤となるハードウェアの論理グループです。 同じ更新ドメイン内の VM は、計画済みメンテナンス中に同時に再起動されます。 テナントが可用性セット内に VM を作成すると、Azure プラットフォームは、これらの更新ドメインに VM を自動的に分散します。 Azure Stack では、VM のホストが更新される前に、クラスター内の他のオンライン ホストに VM がライブで移行されます。 ホスト更新中のテナントのダウンタイムはないため、Azure Stack の更新ドメイン機能は、Azure とのテンプレートの互換性を保つためにのみ存在します。 
+
+### <a name="upgrade-scenarios"></a>アップグレードのシナリオ 
+Azure Stack バージョン 1802 より前に作成された可用性セット内の VM には、既定数の障害ドメインと更新ドメインが与えられています (前者は 1、後者は 1 )。 既存の可用性セット内の VM に対する高可用性を実現するには、既存の VM を削除した後、「[Windows VM の可用性セットの変更](https://docs.microsoft.com/azure/virtual-machines/windows/change-availability-set)」の説明に従って、適切な数の障害ドメインと更新ドメインを持つ新しい可用性セットに再デプロイする必要があります。 
+
+VM スケール セット用の可用性セットは、既定数の障害ドメインと更新ドメイン (前者は 3、後者は 5) で内部的に作成されます。 1802 update より前に作成されたすべての VM スケール セットは、既定数の障害ドメインと更新ドメイン (前者は 1、後者は 1) を持つ可用性セットに配置されます。 これらの VM スケール セット インスタンスを新しく分散されるように更新するには、1802 update より前に存在していたインスタンス数によって VM スケール セットをスケール アウトした後、VM スケール セットの古いインスタンスを削除します。 
 
 ## <a name="role-based-access-control-rbac"></a>ロールベースの Access Control (RBAC)
 RBAC を使用して、承認されたユーザー、グループ、およびサービスに対してサブスクリプション、リソース グループ、または個々のリソース レベルでロールを割り当てることによって、システムへのアクセスを許可することができます。 各ロールは、Microsoft Azure Stack のリソースに対するユーザー、グループ、またはサービスのアクセス レベルを定義します。

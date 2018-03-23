@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal での Windows SQL Server VM のプロビジョニング ガイド | Microsoft Docs"
-description: "このハウツー ガイドでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成するためのオプションについて説明します。"
+title: Azure Portal での Windows SQL Server VM のプロビジョニング ガイド | Microsoft Docs
+description: このハウツー ガイドでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成するためのオプションについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -14,17 +14,20 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
 ms.date: 02/15/2018
 ms.author: jroth
-ms.openlocfilehash: 23a1f008e2c51325b7e9c7676847d55d7ccb7d44
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7e55227773820af26435100b11dfefce058e7e78
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal で Windows SQL Server 仮想マシンをプロビジョニングする方法
 
 このガイドでは、Azure Portal で Windows SQL Server 仮想マシンを作成する際に使用できるさまざまなオプションについて説明します。 この記事では、[SQL Server VM のクイック スタート](quickstart-sql-vm-create-portal.md)で説明されていない構成オプションについて、プロビジョニング タスクの一例を通じて詳しく説明します。 
 
 このガイドは、SQL Server VM を作成する目的にも使用できますし、 Azure Portal で使用できるオプションを参照する目的にも使用できます。
+
+> [!TIP]
+> SQL Server の仮想マシンに関するご質問については、[よくあるご質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページをご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

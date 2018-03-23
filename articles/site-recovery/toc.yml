@@ -67,6 +67,8 @@
       items:
         - name: Azure へのレプリケーション
           items:
+            - name: VMware から Azure へのレプリケーションに関する一般的な質問
+              href: vmware-azure-common-questions.md
             - name: VMware/物理から Azure へのサポート マトリックス
               href: vmware-physical-azure-support-matrix.md
             - name: VMware から Azure へのアーキテクチャ
@@ -77,6 +79,8 @@
               href: vmware-azure-multi-tenant-overview.md
             - name: モビリティ サービスについて
               href: vmware-azure-install-mobility-service.md
+            - name: フェールバック場所のオプション
+              href: concepts-types-of-failback.md
         - name: セカンダリ サイトへのレプリケーション
           items:
             - name: VMware/物理からセカンダリ サイトへのサポート マトリックス
@@ -117,7 +121,7 @@
               href: azure-to-azure-about-networking.md
             - name: Azure VM ディザスター リカバリーにおけるネットワーク マッピングを準備する
               href: azure-to-azure-network-mapping.md
-            - name: Azure VM フェールオーバー後の IP アドレス指定を設定する
+            - name: フェールオーバーの IP アドレス指定を設定する
               href: site-recovery-retain-ip-azure-vm-failover.md
         - name: ディザスター リカバリー
           items:
@@ -139,7 +143,7 @@
           items:
             - name: オンプレミスから Azure へのレプリケーションのネットワーク インターフェイスを管理する
               href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
-            - name: Azure へのフェールオーバー後の IP アドレス指定を設定する
+            - name: フェールオーバーの IP アドレス指定を設定する
               href: concepts-on-premises-to-azure-networking.md
         - name: 容量計画
           items:
@@ -241,7 +245,7 @@
           items:
             - name: オンプレミスから Azure へのレプリケーションのネットワーク インターフェイスを管理する
               href: site-recovery-manage-network-interfaces-on-premises-to-azure.md
-            - name: Azure へのフェールオーバー後の IP アドレス指定を設定する
+            - name: フェールオーバーの IP アドレス指定を設定する
               href: concepts-on-premises-to-azure-networking.md
         - name: 容量計画
           items:
@@ -255,8 +259,6 @@
                   href: hyper-v-deployment-planner-analyze-report.md
                 - name: コスト見積もりレポートの分析
                   href: hyper-v-deployment-planner-cost-estimation.md
-            - name: セカンダリ サイトへの Hyper-V レプリケーションのパフォーマンス スケール テスト
-              href: hyper-v-vmm-performance-results.md
         - name: ディザスター リカバリー
           items:
             - name: PowerShell を使用して Azure への Hyper-V のレプリケーションを設定する (VMM なし)
@@ -295,12 +297,14 @@
           href: hyper-v-vmm-powershell-resource-manager.md
         - name: セカンダリ サイトへの Hyper-V VM のディザスター リカバリー訓練を実行する
           href: hyper-v-vmm-test-failover.md
-        - name: セカンダリ サイトへのフェールオーバー後の IP アドレス指定を設定する
+        - name: フェールオーバーの IP アドレス指定を設定する
           href: hyper-v-vmm-networking.md
         - name: 復旧計画に VMM スクリプトを追加する
           href: hyper-v-vmm-recovery-script.md
         - name: オンプレミス サイト間のフェールオーバーとフェールバックを実行する
           href: hyper-v-vmm-failover-failback.md
+        - name: セカンダリ サイトへの Hyper-V レプリケーションのパフォーマンス スケール テスト
+          href: hyper-v-vmm-performance-results.md
     - name: アプリのレプリケート
       items:
         - name: Active Directory と DNS

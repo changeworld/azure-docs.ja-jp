@@ -1,25 +1,20 @@
 ---
-title: "スケールアウトされたクラウド データベースの管理 | Microsoft Docs"
-description: "エラスティック データベース ジョブ サービスを使用して、データベース グループ全体に対してスクリプトを実行します。"
+title: スケールアウトされたクラウド データベースの管理 | Microsoft Docs
+description: エラスティック データベース ジョブ サービスを使用して、データベース グループ全体に対してスクリプトを実行します。
 metakeywords: azure sql database elastic databases
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 6fa47cf2-1162-4534-a206-6e2d95b78580
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: f709cd38a690ba666ca290cc029caa2ce4f9dff0
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 1f0e022eb98619b22f7e62e0602d36ba821def22
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベースの管理
 スケールアウトされシャード化されたデータベースを管理するために、**Elastic Database ジョブ**機能 (プレビュー) を利用すると、次を含むデータベースのグループ全体で、信頼できる方法で Transact-SQL (T-SQL) スクリプトを実行できます。
@@ -64,7 +59,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 > 
 > 
 
-## <a name="applications"></a>アプリケーション
+## <a name="applications"></a>[アプリケーション]
 * 新しいスキーマのデプロイなどの管理タスクを実行します。
 * 参照データ、すなわちすべてのデータベースに共通の製品情報を更新します。 または、平日の営業時間終了後に自動更新されるようにスケジュールします。
 * インデックスを再構築して、クエリのパフォーマンスを向上します。 ピーク時以外の時間などに、データベース コレクション全体に対して定期的に実行するように再構築を構成できます。
@@ -134,7 +129,7 @@ Azure SQL Database のカスタム グループを定義し、ジョブを実行
 4. すべてのジョブのタスクが完了すると、コントローラーのジョブの状態は完了に更新されます。 
    ジョブ実行中の任意の時点で、ジョブ実行の現在の状態を確認する PowerShell API を使用できます。 PowerShell API から返されるすべての時刻は、UTC 形式です。 必要に応じて、取り消し要求を開始してジョブを停止できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [コンポーネントをインストール](sql-database-elastic-jobs-service-installation.md)し、[データベース グループ内の各データベースにログインを作成し、追加](sql-database-manage-logins.md)します。 ジョブの作成と管理の詳細については、「 [エラスティック データベース ジョブの作成と管理](sql-database-elastic-jobs-create-and-manage.md)」を参照してください。 「 [Elastic Database ジョブの概要](sql-database-elastic-jobs-getting-started.md)」も参照してください。
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]

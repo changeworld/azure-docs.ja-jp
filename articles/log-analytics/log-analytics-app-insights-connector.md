@@ -1,11 +1,11 @@
 ---
-title: "Azure Application Insights アプリのデータを表示する | Microsoft Docs"
-description: "Application Insights Connector ソリューションを使用すると、Application Insights でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。"
+title: Azure Application Insights アプリのデータを表示する | Microsoft Docs
+description: Application Insights Connector ソリューションを使用すると、Application Insights でアプリを監視しているときにパフォーマンスに関する問題を診断し、ユーザーがアプリで何を行っているかを理解することができます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 49280cad-3526-43e1-a365-c6a3bf66db52
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: magoedte
-ms.openlocfilehash: bf3259909a84e1e1f5325ff4e39d5c10f1abc831
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 1556e91710990351d6723325789201afa99b1943
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="application-insights-connector-management-solution-preview"></a>Application Insights Connector 管理ソリューション (プレビュー)
 
@@ -64,7 +64,7 @@ Application Insights Connector ソリューションを使用すると、[Applic
 その他の留意点:
 
 - Application Insights アプリは、1 つの Log Analytics ワークスペースにのみリンクできます。
-- [Standard または Premium の Application Insights リソース](https://azure.microsoft.com/pricing/details/application-insights)は、Log Analytics にのみリンクできます。 ただし、Log Analytics の Free レベルを使用することができます。
+- [Basic または Enterprise の Application Insights リソース](https://azure.microsoft.com/pricing/details/application-insights)は、Log Analytics にのみリンクできます。 ただし、Log Analytics の Free レベルを使用することができます。
 
 ## <a name="management-packs"></a>管理パック
 

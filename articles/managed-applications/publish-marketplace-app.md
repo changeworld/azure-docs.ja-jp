@@ -1,6 +1,6 @@
 ---
-title: "Marketplace の Azure マネージ アプリケーション | Microsoft Docs"
-description: "Marketplace を介して利用できる Azure マネージ アプリケーションについて説明します。"
+title: Marketplace の Azure マネージ アプリケーション | Microsoft Docs
+description: Marketplace を介して利用できる Azure マネージ アプリケーションについて説明します。
 services: azure-resource-manager
 author: tfitzmac
 manager: timlt
@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 01/18/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: fccc2dbb7623f4ceb0d3decc7037f75a05858910
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 61815098a4935983f19b3dcea6e001230aee4771
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-managed-applications-in-the-marketplace"></a>Marketplace の Azure マネージ アプリケーション
 
@@ -42,7 +42,7 @@ Azure Marketplace の発行元になるには、次のことを行う必要が�
 
 1. Microsoft ID を作成する - 個人ではなく会社のドメインに属する電子メール アドレスを使用して、Microsoft アカウントを作成します。 この電子メール アドレスは、Microsoft デベロッパー センターと Cloud パートナー ポータルの両方で使用されます。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
 1. [Azure Marketplace Nomination Form (Azure Marketplace 申請フォーム)](https://aka.ms/ampnomination) を送信する - **[Solution that you intend to publish?]\(公開したいソリューション\)** で、**[Managed Application]\(マネージ アプリケーション\)** を選択します。 フォームが送信されると、Marketplace オンボード チームによって申し込みが確認され、申請が検証されます。 この承認プロセスには 1 ～ 3 日かかります。 申請が承認されると、お客様にご利用コードが送信されます。このコードを使用すると、デベロッパー センターの登録料金が免除されます。 Marketplace Nomination Form (Marketplace 申請フォーム) に入力**しない**場合、99 ドルの登録料金の支払いを求められます。
-1. [デベロッパー センター](https://developer.microsoft.com)に登録する - Microsoft により、お客様の組織が、登録先の国の有効な税 ID を持つ合法的な法人であることが検証されます。 この承認プロセスには 5 ～ 10 日かかります。 登録料金の支払い免除を受けるには、申請プロセスの電子メールで受け取ったご利用コードを使用します。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
+1. [デベロッパー センター](http://dev.windows.com/registration?accountprogram=azure)に登録する - Microsoft により、お客様の組織が、登録先の国の有効な税 ID を持つ合法的な法人であることが検証されます。 この承認プロセスには 5 ～ 10 日かかります。 登録料金の支払い免除を受けるには、申請プロセスの電子メールで受け取ったご利用コードを使用します。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
 1. [Cloud パートナー ポータル](https://cloudpartner.azure.com)にログインする - 発行プロファイルで、お客様のデベロッパー センター アカウントを Marketplace Publisher プロファイルに関連付けます。 詳細については、「[Azure Marketplace Publisher Guide](https://aka.ms/sellerguide)」(Azure Marketplace 発行元ガイド) をご覧ください。
 
 ## <a name="create-a-new-azure-application-offer"></a>新しい Azure アプリケーション プランの作成

@@ -1,8 +1,8 @@
 ---
-title: "Azure Cloud Services のリソースでホストされているアプリケーションの Application Insights Profiler を有効にする | Microsoft Docs"
-description: "Azure Cloud Services で実行されているアプリケーションに Application Insights Profiler を設定する方法について説明します。"
+title: Azure Cloud Services のリソースでホストされているアプリケーションの Application Insights Profiler を有効にする | Microsoft Docs
+description: Azure Cloud Services で実行されているアプリケーションに Application Insights Profiler を設定する方法について説明します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: ramach-msft
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: ramach
-ms.openlocfilehash: 278d8241ddd67b6df64b7280d4a17c6d3152f223
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: a24695f7bbb5fb0546e27c934319a60a3418b9e1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="enable-application-insights-profiler-for-azure-vms-service-fabric-and-azure-cloud-services"></a>Azure VM、Service Fabric、および Azure Cloud Services で Application Insights Profiler を有効化する
 
@@ -46,8 +46,7 @@ Profiler を完全に有効にするには、次の 3 つの箇所で構成を�
 
    ![インストルメンテーション キーの場所](./media/enable-profiler-compute/CopyAIKey.png)
 
-3. 「[プロファイラーを有効にする](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler)」の手順を実行して、Profiler 用の Application Insights インスタンスの設定を完了します。  
-    アプリ サービス リソースに固有の手順であるため、Web アプリをリンクする必要はありません。 **[Configure Profiler]\(Application Insights Profiler の構成\)** ウィンドウで、プロファイラーが有効になっていることを確認してください。
+3. 「プロファイラーを有効にする」の手順を実行して、Profiler 用の Application Insights インスタンスの設定を完了します。 アプリ サービス リソースに固有の手順であるため、Web アプリをリンクする必要はありません。 **[Configure Profiler]\(Application Insights Profiler の構成\)** ウィンドウで、プロファイラーが有効になっていることを確認してください。
 
 
 ## <a name="set-up-the-application-source-code"></a>アプリケーションのソース コードを設定する
@@ -157,6 +156,8 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
       デプロイ テンプレートへの診断拡張機能の追加の詳細については、「[Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-diagnostics-template?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
+> [!TIP]
+> Virtual Machines では、上記の json ベースの手順に代わる方法として、Azure Portal で **[Virtual Machines]** > **[診断設定]** > **[シンク]** に移動し、Application Insights への診断データの送信を **[有効]** に設定し、Application Insights アカウントまたは特定の ikey を選択します。
 
 ### <a name="azure-cloud-services"></a>Azure クラウド サービス
 
@@ -196,7 +197,7 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
 1. 変更された環境のデプロイ定義をデプロイします。  
 
-   通常、変更を適用するには、完全なテンプレートをデプロイするか、PowerShell コマンドレットまたは Visual Studio を使用してクラウド サービスを発行します。  
+   通常、変更を適用するには、完全なテンプレートのデプロイか、PowerShell コマンドレットまたは Visual Studio を使用したクラウド サービス ベースの発行が含まれます。  
 
    Azure 診断拡張機能のみを使用する既存の仮想マシン向けの代替アプローチを次に紹介します。  
 
@@ -211,7 +212,7 @@ Profiler とアプリケーションが実行される環境は、仮想マシ�
 
 2. [IIS](https://www.microsoft.com/web/platform/server.aspx) 経由で目的のアプリケーションが実行されている場合は、次の操作を実行して `IIS Http Tracing` Windows 機能を有効にします。  
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
+   a. この環境に対するリモート アクセスを確立し、[[Windows 機能の追加]]( https://docs.microsoft.com/iis/configuration/system.webserver/tracing/) ウィンドウ使用するか (管理者として) PowerShell で次のコマンドを実行します。  
 
     ```powershell
     Enable-WindowsOptionalFeature -FeatureName IIS-HttpTracing -Online -All

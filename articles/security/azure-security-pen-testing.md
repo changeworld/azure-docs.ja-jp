@@ -1,6 +1,6 @@
 ---
-title: "侵入テスト | Microsoft Docs"
-description: "この記事では、侵入テスト プロセスの概要と、Azure インフラストラクチャで実行されているアプリに対して侵入テストを行う方法について提供します。"
+title: 侵入テスト | Microsoft Docs
+description: この記事では、侵入テスト プロセスの概要と、Azure インフラストラクチャで実行されているアプリに対して侵入テストを行う方法について提供します。
 services: security
 documentationcenter: na
 author: YuriDio
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/08/2017
-ms.author: yurid
-ms.openlocfilehash: dd5c874406ec184a2526a9eb0843cd6f3b6b3aa1
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.date: 03/13/2018
+ms.author: barclayn
+ms.openlocfilehash: 5f2a72d133218e72d1db86b787c998cc50269d3a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="pen-testing"></a>侵入テスト
 アプリケーションのテストとデプロイに Azure を使用するメリットの 1 つが、環境をすばやく作成できることです。  オンプレミスのハードウェアの要求、取得、および “ラックとスタック” に関して心配する必要はありません。
@@ -31,7 +31,7 @@ Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft
 
 どうすればよいでしょうか。
 
-2017 年 6 月 15 日時点で、Microsoft は Azure リソースに対する侵入テストを実施する際に事前承認を求めなくなりました。 Microsoft Azure に対する今後の侵入テストの契約を正式に文書化することをご希望のお客様は、[Azure サービス侵入テスト通知フォーム](https://portal.msrc.microsoft.com/engage/pentest)に記入することをお勧めします。 このプロセスは Microsoft Azure にのみ関連するものであり、その他の Microsoft Cloud サービスには適用されません。 
+2017 年 6 月 15 日時点で、Microsoft は Azure リソースに対する侵入テストを実施する際に事前承認を求めなくなりました。 Microsoft Azure に対する今後の侵入テストの契約を正式に文書化することをご希望のお客様は、[Azure サービス侵入テスト通知フォーム](https://portal.msrc.microsoft.com/en-us/engage/pentest)に記入することをお勧めします。 このプロセスは Microsoft Azure にのみ関連するものであり、その他の Microsoft Cloud サービスには適用されません。 
 
 >[!IMPORTANT] 
 >侵入テストのアクティビティを Microsoft に通知する必要はなくなりましたが、お客様は「[Microsoft Cloud Unified Penetration Testing Rules of Engagement (Microsoft Cloud 統合侵入テストの活動規則)](https://technet.microsoft.com/en-us/mt784683)」に引き続き従う必要があります。 
@@ -44,6 +44,6 @@ Microsoft が [Azure 環境の侵入テスト](https://gallery.technet.microsoft
 
 実行できないテストの種類の 1 つは、 [サービス拒否 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻撃です。 これには、Dos 攻撃自体を開始したり、DoS 攻撃の種類の判断、デモンストレーション、またはシミュレートを実行する可能性がある関連テストを実行したりすることも含まれます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Microsoft Azure でホストされているアプリケーションの侵入テストを行う準備はできていますか? その場合は、「 [侵入テストの概要](https://technet.microsoft.com/library/mt784683.aspx) 」ページに進みます (また、ページの下部にある [テスト要求を作成] ボタンをクリックします)。 

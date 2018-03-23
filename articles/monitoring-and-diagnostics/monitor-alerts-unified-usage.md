@@ -1,9 +1,9 @@
 ---
-title: "Azure Monitor を使用したアラートの作成、表示、管理 - Alerts (プレビュー) | Microsoft Docs"
-description: "新しい Azure アラートの統合されたエクスペリエンスを使用して、1 か所でメトリックとログ アラート ルールを作成、表示、管理します。"
+title: Azure Monitor を使用したアラートの作成、表示、管理 - Alerts (プレビュー) | Microsoft Docs
+description: 新しい Azure アラートの統合されたエクスペリエンスを使用して、1 か所でメトリックとログ アラート ルールを作成、表示、管理します。
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 36729da3-e002-4a64-86b2-2513ca2cbb58
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: vinagara
-ms.openlocfilehash: b537bb42d43c4232c100061322e09bf492f2a20f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: b6b6bfee5b9e9036a6d7ff17ff1a8d4de542bbd3
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-view-and-manage-alerts-using-azure-monitor---alerts-preview"></a>Azure Monitor を使用したアラートの作成、表示、管理 - Alerts (プレビュー)
 
@@ -65,13 +65,13 @@ Alerts (プレビュー) では、**ログ アラート**という用語を使�
 
     > 統合アラート (プレビュー) も、アクティビティ ログ アラートをサポートしています。 [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
 
-5. *メトリック アラート*: **[リソースの種類]** が選択したプラットフォームまたは監視サービス (*Log Analytics* を除く) であることを確認し、適切な**リソース**を選択したら、*[完了]* をクリックして [アラートの作成] に戻ります。 次に **[条件の追加]** を使用して、シグナル オプションの一覧にある特定のシグナル、それらの監視サービス、先ほど選択したリソースで使用可能な種類を選択します。
+5. "*メトリック アラート*": **[リソースの種類]** がシグナルの種類と共に **[メトリック]** として選択されていることを確認し、適切な**リソース**を選択したら、"*[完了]*" をクリックして [アラートの作成] に戻ります。 次に **[条件の追加]** を使用して、シグナル オプションの一覧にある特定のシグナル、それらの監視サービス、先ほど選択したリソースで使用可能な種類を選択します。
 
     ![リソースの選択](./media/monitor-alerts-unified/AlertsPreviewResourceSelection.png)
 
     > [!NOTE]
 
-    > 迅速なアラート設定のために導入された新しいメトリック機能は、プラットフォーム サービスからのメトリックとしてシグナルの種類にのみ含まれています
+    >  すべての[ほぼリアルタイムのアラート](monitoring-near-real-time-metric-alerts.md)対応リソースは、モニター サービスが **[プラットフォーム]**、シグナルの種類が **[メトリック]** として一覧表示されます
 
 6. *メトリック アラート*: シグナルを選択すると、アラート設定のロジックを宣言できます。 参考として、直近の 6 時間から最後の週までさまざまな時間枠を **[履歴の表示]** を使用して微調整するオプションとともに、シグナルの履歴データが表示されます。 所定の視覚エフェクトを使用して、表示される [条件]、[集計]、[しきい値] のオプションから**アラート ロジック**を選択できます。 ロジックのプレビューから分かるように、シグナルの履歴とともに条件が視覚エフェクトで表示され、アラートがトリガーされた時間を示します。 最後に、**[期間]** オプションから選択して Alert が指定条件を探す期間を指定し、**[頻度]** を選択して Alert が実行される頻度を指定します。
 
@@ -81,7 +81,7 @@ Alerts (プレビュー) では、**ログ アラート**という用語を使�
 
     ![多次元メトリックのシグナル ロジックの構成](./media/monitor-alerts-unified/AlertsPreviewCriteriaMultiDim.png)
 
-8. *[ログ アラート]*: **[リソースの種類]** が *Log Analytics* または *Application Insights* のような分析ソースであることを確認し、適切な**リソース**を選択したら、*[完了]* をクリックします。 次に **[条件の追加]** をクリックして、そのリソースで使用できるシグナル オプションの一覧を表示し、シグナル一覧から、*Log Analytics* または *Application Insights* などの選択したログ監視サービスの **[Custom log search]\(カスタム ログ検索\)** オプションを選択します。
+8. "*ログ アラート*": **[リソースの種類]** が *Log Analytics* または *Application Insights* のような分析ソースであり、シグナルの種類が **[ログ]** であることを確認し、適切な**リソース**を選択したら、"*[完了]*" をクリックします。 次に **[条件の追加]** をクリックして、そのリソースで使用できるシグナル オプションの一覧を表示し、シグナル一覧から、*Log Analytics* または *Application Insights* などの選択したログ監視サービスの **[Custom log search]\(カスタム ログ検索\)** オプションを選択します。
 
    ![リソースの選択 - カスタム ログ検索](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog.png)
 
@@ -121,8 +121,8 @@ Alerts (プレビュー) では、**ログ アラート**という用語を使�
 
     **ログ アラート**の場合、既定のアクションを上書きするためにいくつかの他の機能を使用できます。
 
-    - **[電子メール通知]**: アクション グループを介して送信される電子メールの件名を上書きします。 電子メールの本文を変更することはできません。
-    - **[カスタム Json ペイロードを含める]**: アクション グループが使用する webhook Json を上書きし、代わりに既定のペイロードをカスタムのペイロードに置き換えます。 webhook 形式の詳細については、[ログ アラートの webhook アクション](monitor-alerts-unified-log-webhook.md)に関するページを参照してください
+    - **電子メール通知**: 前述のアクション グループに 1 つ以上の電子メール アクションが存在する場合、アクションのグループ経由で送信された電子メール内の "*電子メールの件名*" を上書きします。 メールの本文は変更できず、このフィールドは電子メール アドレス用では**ありません**。
+    - **カスタム JSON ペイロードを含める**: 前述のアクション グループに 1 つ以上の webhook アクションが存在する場合、アクション グループによって使用される webhook JSON を上書きします。 ユーザーは、関連付けられているアクション グループで構成されているすべての webhook に使用する JSON の形式を指定できます。webhook 形式について詳しくは、「[ログ アラート ルールの webhook アクション](monitor-alerts-unified-log-webhook.md)」をご覧ください。 webhook オプションは、**テスト**目的のみを意味するラベルが付けられたサンプル JSON とこのオプションを使用して、形式および宛先による処理を確認するために用意されています。
 
         ![ログ アラートのアクションの上書き](./media/monitor-alerts-unified/AlertsPreviewOverrideLog.png)
 

@@ -1,29 +1,29 @@
 ---
-title: "Microsoft Azure で個人データを検出、特定、分類する | Microsoft Docs"
-description: "データの検索、分類、検出、および特定について説明します"
+title: Microsoft Azure で個人データを検出、特定、分類する | Microsoft Docs
+description: Azure でデータを検索、分類、検出、および識別すると、一般データ保護規則 (GDPR) に従うのに役立ちます。
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TShinder
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 011fe26c297ff991af1282c1ff3914031a99f1e4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 21308faf5d3efd3908eccab4f37acb0cfccdcb8e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="discover-identify-and-classify-personal-data-in-microsoft-azure"></a>Microsoft Azure で個人データを検出、特定、分類する
 
-この記事では、Azure Data Catalog、Azure Active Directory、SQL Database、Azure HDInsight の Hadoop クラスター用 Power Query、Azure Information Protection、Azure Search、Azure Cosmos DB 用の SQL クエリなど、複数の Azure ツールおよびサービスで、個人データを検出、特定、分類する方法についてのガイダンスを提供します。
+この記事では、Azure Data Catalog、Azure Active Directory、SQL Database、Azure HDInsight の Hadoop クラスター用 Power Query、Azure Information Protection、Azure Search、Azure Cosmos DB 用の SQL クエリなど、複数の Azure ツールおよびサービスで、個人データを検出、特定、分類する方法についてのガイダンスを提供します。 これらのツールとプロセスを使用すると、一般データ保護規則 (GDPR) に従うことができます。
 
 ## <a name="scenario-problem-statement-and-goal"></a>シナリオ、問題の説明、および目標
 
@@ -114,7 +114,7 @@ New-AzureRmSQLDatabase -ResourceGroupName $resourcegroupname `
 >[!Note]
 Windows 管理者は PowerShell を使用する傾向がありますが、人によっては Azure CLI を選ぶ場合もあります。
 
-### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>Azure Portal で SQL データベースの個人情報を検索する方法**
+### <a name="how-do-i-search-for-personal-data-in-sql-database-in-the-azure-portal"></a>Azure Portal で SQL データベースの個人情報を検索する方法
 
 Azure Portal に組み込まれているクエリ エディター ツールを使用して、個人データを検索できます。 SQL サーバー管理者のログインとパスワードを使用してツールにログインし、クエリを入力します。
 

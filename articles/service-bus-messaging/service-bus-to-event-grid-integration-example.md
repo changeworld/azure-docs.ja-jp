@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus と Event Grid の統合の例 | Microsoft Docs"
-description: "Service Bus メッセージングと Event Grid の統合の例"
+title: Azure Service Bus と Event Grid の統合の例 | Microsoft Docs
+description: Service Bus メッセージングと Event Grid の統合の例
 services: service-bus-messaging
 documentationcenter: .net
 author: ChristianWolf42
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 2a4d17673340d145de9a3514f920c74f7eebf6b6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 3819a274696762861fbe76a9684b8495f1724f6a
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-service-bus-to-azure-event-grid-examples"></a>Azure Service Bus と Azure Event Grid の例
 
@@ -118,7 +118,7 @@ public class GridEvent
 
 ## <a name="connect-function-and-namespace-via-event-grid"></a>Event Grid による関数と名前空間の接続
 
-次の手順では、関数と Service Bus 名前空間を関連付けます。 たとえば、Azure Portal を使用します。 PowerShell または Azure CLI を使用して同じことを実現する方法を確認するには、[コンセプト](service-bus-to-event-grid-integration-concept.md に関するページを参照してください。
+次の手順では、関数と Service Bus 名前空間を関連付けます。 たとえば、Azure Portal を使用します。 PowerShell または Azure CLI を使用して同じことを実現する方法を確認するには、[概念](service-bus-to-event-grid-integration-concept.md)に関するページを参照してください。
 
 新しい Azure Event Grid サブスクリプションを作成するには、Azure Portal で名前空間に移動して、[イベント グリッド] ブレードを選択します。 + [イベント サブスクリプション] をクリックします。
 

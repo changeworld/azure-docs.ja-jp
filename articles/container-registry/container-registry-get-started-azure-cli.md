@@ -1,25 +1,25 @@
 ---
-title: "クイック スタート - Azure CLI を使用した Azure のプライベート Docker レジストリの作成"
-description: "Azure CLI を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。"
+title: クイック スタート - Azure CLI を使用した Azure のプライベート Docker レジストリの作成
+description: Azure CLI を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
 author: neilpeterson
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/07/2017
+ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: a74a1ce5c9401d6445f5feec4af8d5cb771d2c64
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: db1fb3deec4b70a9341753a59910aeb0e002bca0
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>Azure CLI を使用したコンテナー レジストリの作成
 
-Azure Container Registry は、プライベート Docker コンテナー イメージを保管するための管理された Docker コンテナー レジストリ サービスです。 このガイドでは、Azure Container Registry インスタンスを Azure CLI で作成する方法について詳しく説明します。
+Azure Container Registry は、プライベート Docker コンテナー イメージを保管するための管理された Docker コンテナー レジストリ サービスです。 このガイドでは、Azure CLI を使って Azure Container Registry インスタンスを作成し、そのレジストリにコンテナー イメージをプッシュして、最後に Azure Container Instances (ACI) に対してレジストリからコンテナーをデプロイする方法について詳しく説明します。
 
-このクイック スタートでは、Azure CLI バージョン 2.0.25 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli]」をご覧ください。
+このクイック スタートでは、Azure CLI バージョン 2.0.27 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール][azure-cli]」をご覧ください。
 
 Docker もローカルにインストールする必要があります。 Docker では、[Mac][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
@@ -29,13 +29,13 @@ Docker もローカルにインストールする必要があります。 Docker
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-```azurecli-interactive
+```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-このクイックスタートでは、*基本*のレジストリを作成します。 次の表で簡単に説明されているように、Azure Container Registry はいくつかの SKU で使用できます。 それぞれの詳細については、「[Azure Container Registry SKU][container-registry-skus]」を参照してください。
+このクイックスタートでは、*Basic* のレジストリを作成します。 次の表で簡単に説明されているように、Azure Container Registry はいくつかの SKU で使用できます。 それぞれの詳細については、「[Azure Container Registry SKU][container-registry-skus]」を参照してください。
 
 [!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
@@ -138,20 +138,64 @@ Result
 v1
 ```
 
+## <a name="deploy-image-to-aci"></a>ACI へのイメージのデプロイ
+
+作成したレジストリからコンテナー インスタンスをデプロイするためには、デプロイ時にレジストリの資格情報を指定する必要があります。 運用環境のシナリオでは、コンテナー レジストリにアクセスするために[サービス プリンシパル][container-registry-auth-aci]を使用する必要がありますが、このクイック スタートでは、要点をわかりやすく伝えるために、レジストリ上の管理者ユーザーを有効にします。次のコマンドを使用してください。
+
+```azurecli
+az acr update --name <acrName> --admin-enabled true
+```
+
+管理者を有効にした後は、レジストリ名と同じユーザー名になります。次のコマンドでパスワードを取得できます。
+
+```azurecli
+az acr credential show --name <acrName> --query "passwords[0].value"
+```
+
+1 CPU コアおよび 1 GB メモリでコンテナー イメージをデプロイするには、次のコマンドを実行します。 `<acrName>`、`<acrLoginServer>`、`<acrPassword>` は、前のコマンドから取得した値に置き換えてください。
+
+```azurecli
+az container create --resource-group myResourceGroup --name acr-quickstart --image <acrLoginServer>/aci-helloworld:v1 --cpu 1 --memory 1 --registry-username <acrName> --registry-password <acrPassword> --dns-name-label aci-demo --ports 80
+```
+
+Azure Resource Manager から最初の応答が、対象コンテナーについての詳しい情報と共に返されます。 コンテナーのステータスを監視して、実行されるタイミングを調べるために、[az container show][az-container-show] を繰り返します。 通常は 1 分かかりません。
+
+```azurecli
+az container show --resource-group myResourceGroup --name acr-quickstart --query instanceView.state
+```
+
+## <a name="view-the-application"></a>アプリケーションを表示する
+
+ACI へのデプロイが正常に完了したら、[az container show][az-container-show] コマンドを使ってコンテナーの FQDN を取得します。
+
+```azurecli
+az container show --resource-group myResourceGroup --name acr-quickstart --query ipAddress.fqdn
+```
+
+出力例: `"aci-demo.eastus.azurecontainer.io"`
+
+実行中のアプリケーションを表示するには、お使いのブラウザーでパブリック IP アドレスにアクセスします。
+
+![ブラウザーでの Hello World アプリ][aci-app-browser]
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 必要がなくなったら、[az group delete][az-group-delete] コマンドを使用して、リソース グループ、ACR インスタンス、およびすべてのコンテナー イメージを削除できます。
 
-```azurecli-interactive
+```azurecli
 az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure CLI を使用して Azure Container Registry を作成しました。 Azure Container Instances と一緒に Azure Container Registry を使用する場合は、Azure Container Instances のチュートリアルに進みます。
+このクイック スタートでは、Azure CLI を使って Azure Container Registry を作成し、レジストリにコンテナー イメージをプッシュして、そのインスタンスを Azure Container Instances で起動しました。 Azure Container Instances のチュートリアルに進んで、ACI についての理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル][container-instances-tutorial-prepare-app]
+
+<!-- IMAGES> -->
+[aci-app-browser]: ../container-instances/media/container-instances-quickstart/aci-app-browser.png
+
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms
@@ -167,5 +211,7 @@ az group delete --name myResourceGroup
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli]: /cli/azure/install-azure-cli
+[az-container-show]: /cli/azure/container#az_container_show
 [container-instances-tutorial-prepare-app]: ../container-instances/container-instances-tutorial-prepare-app.md
 [container-registry-skus]: container-registry-skus.md
+[container-registry-auth-aci]: container-registry-auth-aci.md

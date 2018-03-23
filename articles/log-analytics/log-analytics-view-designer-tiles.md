@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics のビュー デザイナー タイルへのリファレンス ガイド | Microsoft Docs"
-description: "Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペース内にさまざまなデータ視覚化を表示するカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能なタイルの設定へのリファレンス ガイドです。"
+title: Azure Log Analytics のビュー デザイナー タイルへのリファレンス ガイド | Microsoft Docs
+description: Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペース内にさまざまなデータ視覚化を表示するカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能なタイルの設定へのリファレンス ガイドです。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 41787c8f-6c13-4520-b0d3-5d3d84fcf142
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: bwren
-ms.openlocfilehash: a14a6bf196c165bdffa0a9d5d343c0430cff7f29
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f341cb9430c7750909c1fc1f50c15f0620e74366
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-log-analytics"></a>Log Analytics のビュー デザイナー タイルへのリファレンス ガイド
 Azure Log Analytics のビュー デザイナーを使用すると、Azure Portal で Log Analytics ワークスペース内にさまざまなデータ視覚化を提供するカスタム ビューを作成できます。 この記事は、カスタム ビューで使用可能なタイルの設定へのリファレンス ガイドです。
@@ -28,8 +28,6 @@ Azure Log Analytics のビュー デザイナーを使用すると、Azure Porta
 * [ビュー デザイナー](log-analytics-view-designer.md): ビュー デザイナーの概要と、カスタム ビューを作成および編集するための手順について説明します。
 * [視覚化パーツのリファレンス](log-analytics-view-designer-parts.md): カスタム ビューで使用可能な視覚化パーツの設定へのリファレンス ガイドを提供します。
 
-> [!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、すべてのビューのクエリを[新しいクエリ言語](https://go.microsoft.com/fwlink/?linkid=856078)で記述する必要があります。 ワークスペースのアップグレードの前に作成されたビューは、すべて自動的に変換されます。
 
 使用可能なビュー デザイナー タイルを次の表で説明します。  
 

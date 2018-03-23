@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Factory (ベータ) を使用して Google BigQuery からデータをコピーする | Microsoft Docs"
-description: "データ ファクトリ パイプラインでコピー アクティビティを使用して、Google BigQuery からサポートされているシンク データ ストアへデータをコピーする方法について説明します。"
+title: Azure Data Factory を使用して Google BigQuery からデータをコピーする | Microsoft Docs
+description: データ ファクトリ パイプラインでコピー アクティビティを使用して、Google BigQuery からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -13,21 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 35f61f6bd38b59a2df0613ba2506d047c1daeaaa
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 955de6cf4b17f1df1e545ccc196856c7c898edfe
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory-beta"></a>Azure Data Factory (ベータ) を使用して Google BigQuery からデータをコピーする
+# <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Azure Data Factory を使用して Google BigQuery からデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Google BigQuery からデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開されている Data Factory サービスのバージョン 1 を使用する場合は、[バージョン 1 でのコピー アクティビティ](v1/data-factory-data-movement-activities.md)に関する記事をご覧ください。
-
-> [!IMPORTANT]
-> このコネクタは、現在ベータ版です。 実際にお試しいただき、フィードバックをお寄せください。 運用環境では使用しないでください。
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
@@ -60,8 +57,8 @@ Google BigQuery のリンクされたサービスでは、次のプロパティ�
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | clientId | 更新トークンの生成に使用されるアプリケーションの ID。 | いいえ  |
-| clientSecret | 更新トークンの生成に使用されるアプリケーションのシークレット。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
-| refreshToken | BigQuery へのアクセスを承認するために使用される、Google から取得した更新トークン。 取得方法については、「[Obtaining OAuth 2.0 access tokens (OAuth 2.0 アクセス トークンの取得)](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)」を参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| clientSecret | 更新トークンの生成に使用されるアプリケーションのシークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| refreshToken | BigQuery へのアクセスを承認するために使用される、Google から取得した更新トークン。 取得方法については、「[Obtaining OAuth 2.0 access tokens (OAuth 2.0 アクセス トークンの取得)](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens)」を参照してください。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 
 **例:**
 

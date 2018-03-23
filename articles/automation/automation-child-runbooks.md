@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation での子 Runbook | Microsoft Docs"
-description: "Azure Automation で別の Runbook から Runbook を開始し、それらの間で情報共有する異なる方法について説明します。"
+title: Azure Automation での子 Runbook
+description: Azure Automation で別の Runbook から Runbook を開始し、それらの間で情報共有する異なる方法について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 919887b9-43e2-4c16-883c-f81807fe37db
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 02/02/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 5c18444b5a2767ccdd9a61a3bc9218fa4c0aac04
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: e8fe3b0023d2cdb9061b5a2c15c3b2c7095c128e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="child-runbooks-in-azure-automation"></a>Azure Automation での子 Runbook
 Azure Automation では、他の Runbook でも使用できる個別の関数で再利用可能なモジュールの Runbook を作成することをお勧めします。 親 Runbook は多くの場合、必要な機能を実行する 1 つまたは複数の子 Runbook を呼び出します。 子 Runbook を呼び出すには 2 つの方法があります。それぞれの特徴的な相違点を理解しておくと、さまざまな状況でどちらが適しているかを判断できるようになります。

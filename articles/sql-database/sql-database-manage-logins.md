@@ -1,27 +1,20 @@
 ---
-title: "Azure SQL のログインとユーザー | Microsoft Docs"
-description: "SQL Database のセキュリティ管理 (具体的にはサーバーレベル プリンシパル アカウントを使用してデータベースのアクセスとログインのセキュリティを管理する方法) について説明します。"
-keywords: "SQL Database のセキュリティ,データベース セキュリティ管理,ログイン セキュリティ,データベース セキュリティ,データベース アクセス"
+title: Azure SQL のログインとユーザー | Microsoft Docs
+description: SQL Database のセキュリティ管理 (具体的にはサーバーレベル プリンシパル アカウントを使用してデータベースのアクセスとログインのセキュリティを管理する方法) について説明します。
+keywords: SQL Database のセキュリティ,データベース セキュリティ管理,ログイン セキュリティ,データベース セキュリティ,データベース アクセス
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 0a65a93f-d5dc-424b-a774-7ed62d996f8c
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 01/23/2017
+ms.date: 03/16/2018
 ms.author: carlrab
-ms.openlocfilehash: 4963e67317f22140c318e29bcd03bce4b9f57ab6
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 1f512cdbb0275e9ae2d868a326df0e4e5dd2ee24
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="controlling-and-granting-database-access"></a>データベース アクセスの制御と許可
 
@@ -155,7 +148,7 @@ GRANT ALTER ANY USER TO Mary;
 データベース ロールは、**db_owner**、**db_ddladmin**、**db_datawriter**、**db_datareader**、**db_denydatawriter**、**db_denydatareader** などの組み込みロールを指定できます。 **db_owner** は、少数のユーザーのみに完全なアクセス許可を付与する際によく使用されます。 他の固定データベース ロールは、開発段階の単純なデータベースをすばやく取得するには便利ですが、運用段階のほとんどのデータベースには推奨されません。 たとえば、**db_datareader** 固定データベース ロールは、データベース内のすべてのテーブルへの読み取りアクセスを許可しますが、これは、通常、必要以上のことです。 [CREATE ROLE](https://msdn.microsoft.com/library/ms187936.aspx) ステートメントを使用して独自のユーザー定義データベース ロールを作成し、各ロールに対してビジネスのニーズに応じて必要な最小限のアクセス許可を慎重に付与することをお勧めします。 ユーザーが複数のロールのメンバーである場合は、それらのアクセス許可すべてが集約されます。
 
 ## <a name="permissions"></a>アクセス許可
-SQL Database では、個別に許可または拒否できるアクセス許可が 100 個を超えています。 これらのアクセス許可の多くは、入れ子になっています。 たとえば、スキーマに対する `UPDATE` アクセス許可には、そのスキーマ内の各テーブルに対する `UPDATE` アクセス許可が含まれています。 ほとんどのアクセス許可システムと同様に、アクセス許可の拒否は許可より優先されます。 入れ子になっている性質と、アクセス許可の数により、データベースを正しく保護するのに適切なアクセス許可システムを設計するには、慎重な調査を行う場合があります。 まず「[権限 (データベース エンジン)](https://msdn.microsoft.com/library/ms191291.aspx)」でアクセス許可の一覧を確認してから、アクセス許可の[ポスター サイズの図](http://go.microsoft.com/fwlink/?LinkId=229142)も確認してください。
+SQL Database では、個別に許可または拒否できるアクセス許可が 100 個を超えています。 これらのアクセス許可の多くは、入れ子になっています。 たとえば、スキーマに対する `UPDATE` アクセス許可には、そのスキーマ内の各テーブルに対する `UPDATE` アクセス許可が含まれています。 ほとんどのアクセス許可システムと同様に、アクセス許可の拒否は許可より優先されます。 入れ子になっている性質と、アクセス許可の数により、データベースを正しく保護するのに適切なアクセス許可システムを設計するには、慎重な調査を行う場合があります。 まず「[権限 (データベース エンジン)](https://docs.microsoft.com/sql/relational-databases/security/permissions-database-engine)」でアクセス許可の一覧を確認してから、アクセス許可の[ポスター サイズの図](https://docs.microsoft.com/sql/relational-databases/security/media/database-engine-permissions.png)も確認してください。
 
 
 ### <a name="considerations-and-restrictions"></a>考慮事項と制限

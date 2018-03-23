@@ -1,29 +1,36 @@
 ---
-title: "Azure Virtual Machines における SQL Server の効率的なコスト管理 | Microsoft Docs"
-description: "適切な SQL Server 仮想マシンの料金モデルを選択するためのベスト プラクティスについて説明します。"
+title: Azure Virtual Machines における SQL Server の効率的なコスト管理 | Microsoft Docs
+description: 適切な SQL Server 仮想マシンの料金モデルを選択するためのベスト プラクティスについて説明します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 10/17/2017
+ms.date: 02/20/2018
 ms.author: jroth
-ms.openlocfilehash: fe04aa382a3e829b201dbe92442f841fb29fff15
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3103ca2c659e40fd945b597ed4671fe96daf1905
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="pricing-guidance-for-sql-server-azure-vms"></a>SQL Server Azure VM の料金ガイダンス
 
-この記事では、Azure における SQL Server 仮想マシンの料金ガイダンスを説明します。 コストに影響するいくつかのオプションがあるため、コストとビジネス要件が釣り合うように適切なイメージを選択することが重要です。
+この記事では、Azure における [SQL Server 仮想マシン](virtual-machines-windows-sql-server-iaas-overview.md)の料金ガイダンスを説明します。 コストに影響するいくつかのオプションがあるため、コストとビジネス要件が釣り合うように適切なイメージを選択することが重要です。
+
+> [!TIP]
+> SQL Server エディションと仮想マシン サイズの特定の組み合わせに対して、コストの見積もりを見定めることだけが目的の場合は、[料金ページ](https://azure.microsoft.com/pricing/details/virtual-machines/windows)をご覧ください。 **OS / ソフトウェア**の一覧から、お使いのオペレーティング システムと SQL Server エディションを選択します。
+>
+> ![VM 料金ページの UI](./media/virtual-machines-windows-sql-server-pricing-guidance/virtual-machines-pricing-ui.png)
+>
+> または、[料金計算ツール](https://azure.microsoft.com/pricing/#explore-cost)を使用して、仮想マシンを追加して構成します。 
 
 ## <a name="free-licensed-sql-server-editions"></a>無料ライセンスの SQL Server エディション
 
@@ -56,7 +63,7 @@ ms.lasthandoff: 02/21/2018
 
 ### <a name="pay-per-usage"></a>使用した分を支払う
 
-**使用した分の SQL Server ライセンス料金を支払う**方法では、Azure VM を実行する分単位のコストに SQL Server ライセンスのコストが含まれます。 さまざまな SQL Server エディション (Web、Standard、Enterprise) の料金は、[Azure VM の料金に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard)で確認できます。 コストはすべてのバージョンの SQL Server (2012 SP3 から 2017 まで) で同じです。 一般的な SQL Server ライセンスと同様に、分あたりのライセンス コストは VM コアの数によって変わります。
+**使用した分の SQL Server ライセンス料金を支払う**方法では、Azure VM を実行する分単位のコストに SQL Server ライセンスのコストが含まれます。 さまざまな SQL Server エディション (Web、Standard、Enterprise) の料金は、[Azure VM の料金に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)で確認できます。 コストはすべてのバージョンの SQL Server (2012 SP3 から 2017 まで) で同じです。 一般的な SQL Server ライセンスと同様に、分あたりのライセンス コストは VM コアの数によって変わります。
 
 使用した分だけ SQL Server ライセンス料金を支払う方法は、次の場合にお勧めします。
 
@@ -147,6 +154,6 @@ SQL Server のライセンス コストはコアの数に直接関連します�
 
 Azure の一般的な料金ガイダンスについては、「[Azure の課金とコスト管理で予想外のコストを防ぐ](../../../billing/billing-getting-started.md)」をご覧ください。
 
-SQL Server を含め、仮想マシンの最新の料金については、[Azure VM の料金に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-standard)をご覧ください。
+SQL Server を含め、仮想マシンの最新の料金については、[Azure VM の料金に関するページ](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)をご覧ください。
 
 [SQL Server Windows VM](virtual-machines-windows-sql-server-iaas-overview.md) と [SQL Server Linux VM](../../linux/sql/sql-server-linux-virtual-machines-overview.md) の両方について、SQL Server 仮想マシンの詳細を確認します。

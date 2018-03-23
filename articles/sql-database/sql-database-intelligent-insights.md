@@ -1,25 +1,20 @@
 ---
-title: "Intelligent Insights でデータベースの使用状況を監視する - Azure SQL Database | Microsoft Docs"
-description: "Azure SQL Database Intelligent Insights は、組み込まれているインテリジェンスを使って、人工知能によりデータベースの使用状況を継続的に監視し、パフォーマンス低下の原因となる破壊的なイベントを検出します。"
+title: Intelligent Insights でデータベースの使用状況を監視する - Azure SQL Database | Microsoft Docs
+description: Azure SQL Database Intelligent Insights は、組み込まれているインテリジェンスを使って、人工知能によりデータベースの使用状況を継続的に監視し、パフォーマンス低下の原因となる破壊的なイベントを検出します。
 services: sql-database
-documentationcenter: 
 author: danimir
-manager: drasumic
-editor: carlrab
-ms.assetid: 
+manager: craigg
+ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 823855d88396a14ff7e5428a12d71384cdfe95a1
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 8654c35bb9c6e46a47f52dee6ab7969f996b42f4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="intelligent-insights"></a>Intelligent Insights
 
@@ -172,7 +167,7 @@ Intelligent Insights ログには、エラーになった要求数が出力さ�
 
 監視対象の重大な例外のいずれかが、システムによって管理されている絶対しきい値を超えた場合は、インテリジェントな洞察が重大な例外の詳細と共に生成されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Intelligent Insights を使用した SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)の習得
 * [Intelligent Insights SQL Database パフォーマンス診断ログ](sql-database-intelligent-insights-use-diagnostics-log.md)の使用
 * [SQL Analytics を使用した SQL Database の監視](../log-analytics/log-analytics-azure-sql.md)の習得

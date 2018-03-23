@@ -1,30 +1,29 @@
 ---
-title: "Azure で管理対象イメージを作成する | Microsoft Docs"
-description: "Azure で一般化された VM または VHD の管理対象イメージを作成します。 イメージを使って、管理対象ディスクを使う複数の VM を作成することができます。"
+title: Azure で管理対象イメージを作成する | Microsoft Docs
+description: Azure で一般化された VM または VHD の管理対象イメージを作成します。 イメージを使って、管理対象ディスクを使う複数の VM を作成することができます。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 03/06/2018
 ms.author: cynthn
-ms.openlocfilehash: 84f6f0c13e8c06aa934d98ecc3c3e4a61f95c641
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: f18defbec79638cf2c3363e6429ddcac01b1502e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
 ストレージ アカウントに管理対象ディスクまたは非管理対象ディスクとして格納されている一般化された VM から管理対象イメージ リソースを作成できます。 イメージは複数の VM の作成に使用できます。 
-
 
 ## <a name="generalize-the-windows-vm-using-sysprep"></a>Sysprep を使用して Windows VM を一般化する
 
@@ -33,7 +32,9 @@ ms.lasthandoff: 02/24/2018
 コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
 
 > [!IMPORTANT]
-> 初めて VHD を Azure にアップロードする前に Sysprep を実行する場合、Sysprep の実行前に [VM の準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ができていることを確認してください。 
+> 仮想マシンで sysprep を実行すると*一般化*されたと見なされ、再起動できなくなります。 VM の一般化プロセスは元に戻せません。 元の VM の機能を保持する場合は、[VM のコピー](create-vm-specialized.md#option-3-copy-an-existing-azure-vm)を作成し、コピーを一般化してください。 
+>
+> 初めて VHD を Azure にアップロードする前に Sysprep を実行する場合、Sysprep の実行前に [VM の準備](prepare-for-upload-vhd-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ができていることを確認してください。  
 > 
 > 
 

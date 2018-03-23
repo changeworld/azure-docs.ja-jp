@@ -1,24 +1,24 @@
 ---
 title: Azure Active Directory Terms of Use| Microsoft Docs
-description: "Azure AD Terms of Use を使うと、Azure AD サービスのユーザーに使用条件を提供できます。"
+description: Azure AD Terms of Use を使うと、Azure AD サービスのユーザーに使用条件を提供できます。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: d55872ef-7e45-4de5-a9a0-3298e3de3565
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 12/14/2017
+ms.date: 03/06/2018
 ms.author: billmath
-ms.openlocfilehash: c01ea7c6a05c77244ab29fe6eec00ed1e49b6f7e
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: e29e842a54d286e19d23c1c91c08d55933a0eada
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-terms-of-use-feature-preview"></a>Azure Active Directory Terms of Use 機能 (プレビュー)
 Azure AD Terms of Use は、エンド ユーザーに情報を提示するために使うことができる簡単な方法を提供します。  これにより、ユーザーは法律またはコンプライアンスの要件に関する免責事項を確認できます。
@@ -128,7 +128,7 @@ A: 使用条件を受け入れたユーザーは監査ログに書き込まれ�
 A: はい、管理者は使用条件を変更でき、ユーザーは新しい条件に同意し直す必要があります。
 
 **Q: 使用条件は複数の言語をサポートしていますか?**</br>
-A: いいえ、現在は、1 つの使用条件で複数の言語を使うことはできません。  ただし、グループを対象にすることができます (たとえば、フランスの使用条件は英国の使用条件と異なります)。 
+A: はい。  現時点では、管理者が 1 つの使用条件に対して構成できる言語が 18 あります。 
 
 **Q: 使用条件はいつトリガーされますか?**</br>
 A: 使用条件は、サインイン エクスペリエンスの間にトリガーされます。

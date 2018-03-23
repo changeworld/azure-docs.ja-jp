@@ -1,26 +1,21 @@
 ---
-title: "監視とパフォーマンスのチューニング - Azure SQL Database | Microsoft Docs"
-description: "評価と改善を通じて Azure SQL Database のパフォーマンスをチューニングするためのヒントを紹介します。"
+title: 監視とパフォーマンスのチューニング - Azure SQL Database | Microsoft Docs
+description: 評価と改善を通じて Azure SQL Database のパフォーマンスをチューニングするためのヒントを紹介します。
 services: sql-database
-documentationcenter: 
 author: v-shysun
-manager: felixwu
-editor: 
-keywords: "SQL のパフォーマンスのチューニング, データベース パフォーマンスのチューニング, SQL のパフォーマンスのチューニングのヒント, SQL Database のパフォーマンスのチューニング"
-ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
+manager: craigg
+editor: ''
+keywords: SQL のパフォーマンスのチューニング, データベース パフォーマンスのチューニング, SQL のパフォーマンスのチューニングのヒント, SQL Database のパフォーマンスのチューニング
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/03/2017
 ms.author: v-shysun
-ms.openlocfilehash: 1791c56f86ee1997177daa95638c4f14068f8115
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: 273a80134975fb9aa4d40b132c1403cc27246371
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 
@@ -46,7 +41,7 @@ Azure SQL Database を使用すると、簡単にデータベースの使用状�
 
 ## <a name="optimize-database-to-improve-performance"></a>データベースを最適化してパフォーマンスを向上させる
 
-Azure SQL Database では、[パフォーマンス チューニングの推奨事項](sql-database-advisor.md)を確認することで、リソースを変更することなくクエリのパフォーマンスを改善および最適化する機会を見極めることができます。 データベースのパフォーマンスが悪い一般的な理由は、インデックスの欠落や最適化が不十分なクエリです。 このようなチューニングの推奨事項を適用すると、ワークロードのパフォーマンスを向上させることができます。
+Azure SQL Database では、[パフォーマンス チューニングの推奨事項](sql-database-advisor.md)を確認することで、リソースを変更することなくクエリのパフォーマンスを改善および最適化する機会を見極めることができます。 インデックスの不足や、最適化が不完全なクエリは、データベース パフォーマンスが低下する一般的な原因です。 このようなチューニングの推奨事項を適用すると、ワークロードのパフォーマンスを向上させることができます。
 識別されたすべての推奨事項を適用し、それによってデータベースのパフォーマンスが向上することを確認することで、Azure SQL Database で[クエリのパフォーマンスを自動的に最適化](sql-database-automatic-tuning.md)することもできます。 データベースのパフォーマンス向上には、次のオプションを使用できます。
 
 1. [SQL Database Advisor](sql-database-advisor-portal.md) を使用して、インデックスの作成と削除、クエリのパラメーター化、およびスキーマの問題の修正に関する推奨事項を表示します。
@@ -63,7 +58,7 @@ Azure SQL Database では、[パフォーマンス チューニングの推奨�
 データベースの使用、インデックスの変更、計画の強制的な適用、データベースをワークロードに手動で適合させるためのヒントの使用をより最適に行うために、アプリケーション コードを変更することができます。 手動によるチューニングとコードの書き直しに関するガイダンスとヒントについては、[パフォーマンス ガイダンスのトピック](sql-database-performance-guidance.md)を参照してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Azure SQL Database で自動チューニングを有効にし、自動チューニング機能でワークロードを完全に管理できるようにするには、「[Enable automatic tuning (自動チューニングの有効化)](sql-database-automatic-tuning-enable.md)」を参照してください。
 - 手動チューニングを使用するには、[Azure Portal のチューニングに関する推奨事項](sql-database-advisor-portal.md)を確認したうえで、クエリのパフォーマンスを向上させる推奨事項を手動で適用してください。

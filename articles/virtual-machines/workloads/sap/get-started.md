@@ -1,27 +1,27 @@
 ---
-title: "Azure VM で SAP を使用する | Microsoft Docs"
-description: "Microsoft Azure 上の仮想マシン (VM) で実行される SAP ソリューションについて説明します"
+title: Azure VM で SAP を使用する | Microsoft Docs
+description: Microsoft Azure 上の仮想マシン (VM) で実行される SAP ソリューションについて説明します
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-keywords: 
+keywords: ''
 ms.assetid: ad8e5c75-0cf6-4564-ae62-ea1246b4e5f2
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/02/2018
+ms.date: 03/05/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6a0dcb941db5038b7c904c9eaa8599c5a1dc6e83
-ms.sourcegitcommit: 2e540e6acb953b1294d364f70aee73deaf047441
+ms.openlocfilehash: 729fbd93566115499a6044f79a714232cdbc2f64
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -227,7 +227,7 @@ ms.lasthandoff: 01/03/2018
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
-[sap-pam]:https://support.sap.com/pam (SAP Product Availability Matrix)
+[sap-pam]:https://support.sap.com/pam (SAP 製品の可用性マトリックス)
 [sap-templates-2-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-2-tier-os-disk]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-disk%2Fazuredeploy.json
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
@@ -279,7 +279,7 @@ ms.lasthandoff: 01/03/2018
 [virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
-[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
+[virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/manage-virtual-network.md#create-a-virtual-network
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
 [virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
@@ -298,7 +298,7 @@ Microsoft Azure を SAP 対応クラウド パートナーとして選択する�
 
 SAP NetWeaver シナリオをさまざまな DBMS を使用して Azure でホストすることに加え、その他の SAP ワークロード シナリオ (SAP BI など) も Azure でホストできます。 Azure のネイティブ Virtual Machines での SAP NetWeaver のデプロイに関するドキュメントについては、「Azure Virtual Machines 上の SAP NetWeaver」セクションを参照してください。
 
-Azure には、SAP HANA を活用する SAP ワークロードに対応するように CPU とメモリ リソースのサイズを大きくする、ネイティブ Azure Virtual Machine 製品があります。 このトピックの詳細については、「Azure Virtual Machines 上の SAP HANA」セクションを参照してください。
+Azure には、SAP HANA を活用する SAP ワークロードに対応するように CPU とメモリ リソースのサイズを大きくする、ネイティブ Azure Virtual Machine 製品があります。 この領域の詳細については、「Azure Virtual Machines 上の SAP HANA」セクションを参照してください。
 
 Azure for SAP HANA の独自性は、その製品の独自性にあります。これにより、Azure は、競合製品の中で特に優れています。 SAP HANA が関与するより多くのメモリと CPU リソースを必要とする SAP シナリオをホストできるようにするため、Azure では、お客様専用のベア メタル ハードウェアの使用を提案しています。その目的は、S/4HANA またはその他の SAP HANA ワークロードで最大 20 TB (60 TB のスケールアウト) のメモリを必要とする SAP HANA のデプロイを実行することです。 このSAP HANA on Azure (L インスタンス) の独自の Azure ソリューションによって、SAP アプリケーション レイヤーまたはネイティブ Azure Virtual Machines でホストされるワークロードのミドルウェア レイヤーを使用して、SAP HANA を専用のベア メタル ハードウェア上で実行できます。 このソリューションについては、さまざまなドキュメントの「SAP HANA on Azure (L インスタンス)」セクションで説明されています。   
 
@@ -310,7 +310,7 @@ Azure で SAP ワークロードをホストするシナリオでは、さまざ
 ### <a name="overview-and-architecture-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 タイトル: SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ
 
-概要: これは、アーキテクチャ/テクニカル デプロイ ガイドであり、Azure の新しい SAP HANA on Azure (L インスタンス) で SAP をデプロイする場合に役立つ情報を提供します。 SAP ソリューションの特定のセットアップを取り扱った包括的なガイドではなく、初期のデプロイメントと継続的な操作に役立つ情報を提供することを意図しています。 SAP HANA のインストールに関連する SAP ドキュメント (またはこのトピックについて取り上げた多くの SAP サポート ノート) の代わりとしてこのガイドを使用しないでください。 概要を説明し、Azure (L インスタンス) に SAP HANA をインストールする際の追加情報を提供するものです。
+概要: これは、アーキテクチャ/テクニカル デプロイ ガイドであり、Azure の新しい SAP HANA on Azure (L インスタンス) で SAP をデプロイする場合に役立つ情報を提供します。 SAP ソリューションの特定のセットアップを取り扱った包括的なガイドではなく、初期のデプロイメントと継続的な操作に役立つ情報を提供することを意図しています。 SAP HANA のインストールに関連する SAP ドキュメント (またはこの領域について取り上げた多くの SAP サポート ノート) の代わりとしてこのガイドを使用しないでください。 概要を説明し、Azure (L インスタンス) に SAP HANA をインストールする際の追加情報を提供するものです。
 
 更新日: 2017 年 10 月
 
@@ -337,7 +337,7 @@ Azure で SAP ワークロードをホストするシナリオでは、さまざ
 ### <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の高可用性とディザスター リカバリー | Microsoft Docs
 タイトル: SAP HANA on Azure (L インスタンス) の高可用性と障害復旧
 
-概要: 高可用性 (HA) と障害復旧 (DR) は、ミッション クリティカルな SAP HANA on Azure (L インスタンス) サーバーを実行する場合の重要な要素です。 正しい HA/DR 戦略を適切に構築、実装するには、SAP、システム インテグレーター、Microsoft と協力することが重要です。 環境に固有の目標復旧時点 (RPO) と目標復旧時間 (RTO) のような重要な考慮事項を検討する必要があります。  このドキュメントでは、お客様に必要なレベルの HA と DR を実現するためのオプションについて説明します。
+概要: 高可用性 (HA) とディザスター リカバリー (DR) は、ミッション クリティカルな SAP HANA on Azure (L インスタンス) サーバーを実行する場合の重要な要素です。 正しい HA/DR 戦略を適切に構築、実装するには、SAP、システム インテグレーター、Microsoft と協力することが重要です。 環境に固有の目標復旧時点 (RPO) と目標復旧時間 (RTO) のような重要な考慮事項を検討する必要があります。  このドキュメントでは、お客様に必要なレベルの HA と DR を実現するためのオプションについて説明します。
 
 更新日: 2017 年 10 月
 

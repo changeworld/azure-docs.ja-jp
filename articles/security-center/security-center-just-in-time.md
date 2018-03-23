@@ -1,31 +1,31 @@
 ---
-title: "Azure Security Center でのジャスト イン タイム仮想マシン アクセス | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center でのジャスト イン タイム VM アクセスにより、Azure 仮想マシンへのアクセスを制御しやすくする方法を示します。"
+title: Azure Security Center でのジャスト イン タイム仮想マシン アクセス | Microsoft Docs
+description: このドキュメントでは、Azure Security Center でのジャスト イン タイム VM アクセスにより、Azure 仮想マシンへのアクセスを制御しやすくする方法を示します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/26/2018
+ms.date: 03/06/2018
 ms.author: terrylan
-ms.openlocfilehash: a15857f0df5c967031aed00d89e71b3199eed0c4
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f1ea31d1081bc263cf85cf4dcc3d73d4cc0b842d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="manage-virtual-machine-access-using-just-in-time-preview"></a>ジャスト イン タイム (プレビュー) を使用した仮想マシン アクセスの管理
+# <a name="manage-virtual-machine-access-using-just-in-time"></a>ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する
 
 ジャスト イン タイム仮想マシン (VM) アクセスを使用すると、Azure VM への受信トラフィックをロックダウンすることができるので、攻撃に対する露出が減り、VM への接続が必要な場合は簡単にアクセスできます。
 
 > [!NOTE]
-> ジャスト イン タイム機能はプレビュー段階であり、Security Center の Standard レベルで利用できます。  Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+> ジャスト イン タイム機能は、Security Center の Standard レベルで利用できます。  Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
 >
 >
 

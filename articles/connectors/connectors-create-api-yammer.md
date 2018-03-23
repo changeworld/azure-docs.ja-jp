@@ -1,11 +1,11 @@
 ---
-title: "Azure Logic Apps に Yammer コネクタを追加する | Microsoft Docs"
-description: "Yammer コネクタと REST API パラメーターの概要"
+title: Azure Logic Apps に Yammer コネクタを追加する | Microsoft Docs
+description: Yammer コネクタと REST API パラメーターの概要
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b5ae0827-fbb3-45ec-8f45-ad1cc2e7eccc
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 37f72d829fc50a0f967f08e068c553f5026f35eb
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 7f1758e9b95f534b23188f427ae0edaddbb29a48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-yammer-connector"></a>Yammer コネクタの使用
 Yammer に接続し、エンタープライズ ネットワークの会話にアクセスします。 Yammer で次のことができます。

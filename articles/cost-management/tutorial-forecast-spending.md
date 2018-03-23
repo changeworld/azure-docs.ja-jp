@@ -1,8 +1,8 @@
 ---
-title: "チュートリアル - Azure Cost Management を使用した支出の予測 | Microsoft Docs"
-description: "このチュートリアルでは、使用量の履歴と支出データを使用して支出を予測する方法について説明します。"
+title: チュートリアル - Azure Cost Management を使用した支出の予測 | Microsoft Docs
+description: このチュートリアルでは、使用量の履歴と支出データを使用して支出を予測する方法について説明します。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 35142cb40560db848c71da266bbaa1881f12e15d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 20046d8bb475ddce8962915e5bd8215117261ac6
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-forecast-future-spending"></a>チュートリアル: 将来の支出の予測
 
-Azure Cost Management by Cloudyn では、使用量の履歴と支出データを利用して将来の支出予測を支援します。 Cloudyn レポートを使用して、すべての予想コスト データを確認できます。 このチュートリアルの例では、このレポートを使用して予想コストを確認する方法を説明します。 このチュートリアルで学習する内容は次のとおりです。
+Azure Cost Management では、使用量の履歴と支出データを利用して将来の支出予測を支援します。 Cloudyn レポートを使用して、すべての予想コスト データを確認できます。 このチュートリアルの例では、このレポートを使用して予想コストを確認する方法を説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * 将来の支出の予測

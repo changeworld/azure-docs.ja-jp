@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス"
-description: "ADAL クライアント アプリケーションのエラー処理に関するガイダンスとベスト プラクティスを提供します。"
+title: Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
+description: ADAL クライアント アプリケーションのエラー処理に関するガイダンスとベスト プラクティスを提供します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: danieldobalian
 manager: mtillman
 ms.author: bryanla
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/11/2017
-ms.custom: 
-ms.openlocfilehash: 275ab65569a1861f046c8ee77914e0859d41d5f7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.date: 02/27/2017
+ms.custom: ''
+ms.openlocfilehash: 2b4c945f5707c158c76c8edbd233d1a8b034111f
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="error-handling-best-practices-for-azure-active-directory-authentication-library-adal-clients"></a>Azure Active Directory Authentication Library (ADAL) クライアントのエラー処理のベスト プラクティス
 
@@ -479,6 +479,9 @@ catch (AdalException e) {
 
 ## <a name="error-and-logging-reference"></a>エラーとログ記録のリファレンス
 
+### <a name="logging-personal-identifiable-information-pii--organizational-identifiable-information-oii"></a>組織を特定できる情報 (OII) と個人を特定できる情報 (PII) のログ記録
+既定では、ADAL ログには PII や OII は取得または記録されません。 アプリ開発者はライブラリの Logger クラスの setter から、この設定をオンにできます。 PII または OII の設定をオンにすると、アプリは、規制の要件に準拠して、高度な機密データを安全に処理する責任を負います。
+
 ### <a name="net"></a>.NET
 
 #### <a name="adal-library-errors"></a>ADAL ライブラリ エラー
@@ -487,7 +490,7 @@ catch (AdalException e) {
 
 #### <a name="guidance-for-error-logging-code"></a>エラーのログ記録コードに関するガイダンス
 
-ADAL .NET のログ記録は、作業しているプラットフォームに応じて変わります。 ログ記録を有効にする方法についてのコードは、[ログ記録に関するドキュメント](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet#diagnostics)をご覧ください。
+ADAL .NET のログ記録は、作業しているプラットフォームに応じて変わります。 ログ記録を有効にするコードについては、[ログ記録 Wiki](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Logging-in-ADAL.Net) をご覧ください。
 
 ### <a name="android"></a>Android
 
@@ -497,14 +500,9 @@ ADAL .NET のログ記録は、作業しているプラットフォームに応�
 
 #### <a name="operating-system-errors"></a>オペレーティング システム エラー
 
-ADAL の AuthenticationException を通じて公開されている Android OS エラーは "SERVER_INVALID_REQUEST" として識別可能で、エラーの説明を通じてさらに細かく分類できます。 アプリで UI を表示するために選択できる 2 つの代表的なメッセージは次のとおりです。
+ADAL の AuthenticationException を通じて公開されている Android OS エラーは "SERVER_INVALID_REQUEST" として識別可能で、エラーの説明を通じてさらに細かく分類できます。 
 
-- SSL エラー 
-  - [エンド ユーザーが Chrome 53 を使っています](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue)
-  - [証明書チェーンに追加ダウンロードとしてマークされた証明書があります (ユーザーが IT 管理者に問い合わせる必要があります)](https://vkbexternal.partners.extranet.microsoft.com/VKBWebService/ViewContent.aspx?scid=KB;EN-US;3203929)
-  - ルート CA がデバイスによって信頼されていません。 IT 管理者にお問い合わせください。 
-- ネットワーク関連のエラー 
-  - [SSL 証明書の検証に関連する可能性のあるネットワークの問題](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki/SSL-Certificate-Validation-Issue)では、再試行を 1 回行うことができます
+よくあるエラーと、アプリやエンドユーザーがそれに遭遇した場合の対策の詳細一覧については、[ADAL Android Wiki ](https://github.com/AzureAD/azure-activedirectory-library-for-android/wiki)を参照してください。 
 
 #### <a name="guidance-for-error-logging-code"></a>エラーのログ記録コードに関するガイダンス
 
@@ -521,6 +519,15 @@ Logger.getInstance().setExternalLogger(new ILogger() {
 
 // 2. Set the log level
 Logger.getInstance().setLogLevel(Logger.LogLevel.Verbose);
+
+// By default, the `Logger` does not capture any PII or OII
+
+// PII or OII will be logged
+Logger.getInstance().setEnablePII(true);
+
+// To STOP logging PII or OII, use the following setter
+Logger.getInstance().setEnablePII(false);
+
 
 // 3. Send logs to logcat.
 adb logcat > "C:\logmsg\logfile.txt";
@@ -576,7 +583,7 @@ window.Logging = {
 
 Microsoft のコンテンツ改善のため、以下のコメント セクションよりご意見をお寄せください。
 
-[![[サインイン] ボタン][AAD-Sign-In]][AAD-Sign-In]
+[![サインイン ボタン][AAD-Sign-In]][AAD-Sign-In]
 <!--Reference style links -->
 [AAD-Auth-Libraries]: ./active-directory-authentication-libraries.md
 [AAD-Auth-Scenarios]: ./active-directory-authentication-scenarios.md

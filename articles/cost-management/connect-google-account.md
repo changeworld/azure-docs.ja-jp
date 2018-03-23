@@ -1,20 +1,20 @@
 ---
-title: "Google Cloud Platform アカウントを Azure Cost Management に接続する | Microsoft Docs"
-description: "Google Cloud Platform アカウントを接続して、Cost Management レポートにコストや使用状況のデータを表示します。"
+title: Google Cloud Platform アカウントを Azure Cost Management に接続する | Microsoft Docs
+description: Google Cloud Platform アカウントを接続して、Cost Management レポートにコストや使用状況のデータを表示します。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/05/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 81a38f471ee1f2f8064a956eca121fd0e6feb235
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.custom: ''
+ms.openlocfilehash: 8f8c157be0a369817099afa211015ba7587017e3
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="connect-a-google-cloud-platform-account"></a>Google Cloud Platform アカウントの接続
 
@@ -73,4 +73,4 @@ Google アカウントはアカウントの一覧に表示され、**[Authentica
 
 ## <a name="next-steps"></a>次の手順
 
-- Cloudyn の Azure Cost Management の詳細については、引き続き Cost Management に関する「[使用状況とコストを確認する](./tutorial-review-usage.md)」チュートリアルを参照してください。
+- Azure Cost Management の詳細については、Cost Management に関する「[使用状況とコストを確認する](./tutorial-review-usage.md)」チュートリアルに進んでください。

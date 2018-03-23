@@ -1,11 +1,11 @@
 ---
-title: "Azure App Service での Web アプリの構成"
-description: "Azure App Service での Web アプリの構成方法"
+title: Azure App Service での Web アプリの構成
+description: Azure App Service での Web アプリの構成方法
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: cephalin
-ms.openlocfilehash: 3f735b8742f22110b4de264bfb5661651a899afb
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 58c27c0872978c3a6a4c47be37e6fa6078309286
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
 
@@ -129,12 +129,12 @@ Web アプリでは、静的コンテンツを提供する代わりに URL に�
 
 ## <a name="other-configuration-tasks"></a>その他の 構成タスク
 ### <a name="ssl"></a>SSL
-基本モードまたは標準モードでは、カスタム ドメインの SSL 証明書をアップロードすることができます。 詳細については、Web アプリに対する HTTPS の有効化に関するページをご覧ください。 
+基本モードまたは標準モードでは、カスタム ドメインの SSL 証明書をアップロードすることができます。 詳細については、[Web アプリに対する HTTPS の有効化](app-service-web-tutorial-custom-ssl.md)に関するページをご覧ください。 
 
 アップロードされた証明書を表示するには、 **[すべての設定]** > **[カスタム ドメインと SSL]**を使用して Web アプリを構成する方法について説明します。
 
 ### <a name="domain-names"></a>ドメイン名
-Web アプリのカスタム ドメイン名を追加します。 詳細については、Azure App Service での Web アプリのカスタム ドメイン名の構成に関するページをご覧ください。
+Web アプリのカスタム ドメイン名を追加します。 詳細については、[Azure App Service での Web アプリのカスタム ドメイン名の構成](app-service-web-tutorial-custom-domain.md)に関するページをご覧ください。
 
 ドメイン名を表示するには、 **[すべての設定]** > **[カスタム ドメインと SSL]**を使用して Web アプリを構成する方法について説明します。
 

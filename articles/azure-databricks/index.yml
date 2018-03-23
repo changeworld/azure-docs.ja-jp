@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Databricks プレビューのドキュメント"
+title: Azure Databricks プレビューのドキュメント
 metadata:
-  title: "Azure Databricks のドキュメント - チュートリアル | Microsoft Docs"
-  description: "ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。"
+  title: Azure Databricks のドキュメント - チュートリアル | Microsoft Docs
+  description: ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。
   services: azure-databricks
   author: nitinme
   manager: cgronlun
@@ -13,44 +13,44 @@ metadata:
   ms.topic: landing-page
   ms.date: 11/15/2017
   ms.author: nitinme
-  ms.openlocfilehash: cc51070b4ff41107700585160cff8bbe41cc5d7d
-  ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+  ms.openlocfilehash: c94a3e7ecaf89612238b80ed83474af792c3efc4
+  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/05/2018
+  ms.lasthandoff: 03/16/2018
 abstract:
-  description: "ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。 Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。"
+  description: ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。 Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。
   aside:
     image:
       alt: 
       height: 110
       src: media/index/video.png
       width: 250
-    title: "Azure Databricks の概要 (3 分 38 秒)"
+    title: Azure Databricks の概要 (3 分 38 秒)
     href: https://azure.microsoft.com/resources/videos/connect-2017-introduction-to-azure-databricks/
     width: 250
 sections:
-- title: "5 分間のクイック スタート"
+- title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: "Azure Databricks ワークスペースと Spark クラスターを作成してから、ジョブを実行する方法について説明します。"
+    text: Azure Databricks ワークスペースと Spark クラスターを作成してから、ジョブを実行する方法について説明します。
   - type: list
     style: icon48
     items:
     - image:
         src: /azure/azure-databricks/media/index/portal.svg
-      text: "Azure ポータル"
+      text: Azure ポータル
       href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
-- title: "ステップバイステップのチュートリアル"
+- title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: "Azure Databricks を操作する方法について説明します。"
+    text: Azure Databricks を操作する方法について説明します。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/getting-started.html\" target=\"_blank\">Azure Databricks の概要</a>"
-    - html: "<a href=\"https://go.microsoft.com/fwlink/?linkid=864083\" target=\"_blank\">Azure Storage からのデータのインポート</a>"
+    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Azure Databricks を使用した、Event Hubs からのデータ ストリーミング</a>
+    - html: <a href="https://go.microsoft.com/fwlink/?linkid=864083" target="_blank">Azure Storage からのデータのインポート</a>
     - hmtl: <a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>
-    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/notebooks/index.html\" target=\"_blank\">Notebook の使用</a>"
-    - html: "<a href=\"https://docs.azuredatabricks.net/user-guide/jobs.html\" target=\"_blank\">Spark ジョブの実行</a>"
-    - html: "<a href=\"https://docs.azuredatabricks.net/spark/latest/data-sources/index.html\" target=\"_blank\">Spark データ ソースの使用</a>"
+    - html: <a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">Notebook の使用</a>
+    - html: <a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">Spark ジョブの実行</a>
+    - html: <a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">Spark データ ソースの使用</a>

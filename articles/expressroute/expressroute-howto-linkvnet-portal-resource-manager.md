@@ -1,11 +1,11 @@
 ---
-title: "仮想ネットワークを ExpressRoute 回線にリンクする: Azure Portal | Microsoft Docs"
-description: "Azure ExpressRoute 回線に VNet を接続する 手順を説明します。"
+title: '仮想ネットワークを ExpressRoute 回線にリンクする: Azure Portal | Microsoft Docs'
+description: Azure ExpressRoute 回線に VNet を接続する 手順を説明します。
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f5cb5441-2fba-46d9-99a5-d1d586e7bda4
 ms.service: expressroute
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: cherylmc
-ms.openlocfilehash: 95b732229f151b8f27dce1dcc3825d9aa2e1d1ed
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c2bef1d79d3133ea6306928a8c917e1bc3000a58
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-the-portal"></a>ポータルを使用して仮想ネットワークを ExpressRoute 回線に接続する
 > [!div class="op_single_selector"]
@@ -35,15 +35,19 @@ ms.lasthandoff: 02/28/2018
 ## <a name="before-you-begin"></a>開始する前に
 
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認します。
-* アクティブな ExpressRoute 回線が必要です。
 
+* アクティブな ExpressRoute 回線が必要です。
   * 手順に従って、 [ExpressRoute 回線を作成](expressroute-howto-circuit-portal-resource-manager.md) し、接続プロバイダー経由で回線を有効にしてください。
   * 回線用に Azure プライベート ピアリングが構成されていることを確認してください。 ルーティング手順については、 [ルーティングの構成](expressroute-howto-routing-portal-resource-manager.md) に関する記事を参照してください。
   * Azure プライベート ピアリングが構成されていることを確認します。また、エンド ツー エンド接続を有効にできるように、ネットワークと Microsoft の間の BGP ピアリングを起動しておく必要があります。
   * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを作成](expressroute-howto-add-gateway-resource-manager.md)します。 ExpressRoute 用の仮想ネットワーク ゲートウェイは、VPN ではなく GatewayType 'ExpressRoute' を使用します。
 
-* 最大 10 個の仮想ネットワークを標準 ExpressRoute 回線に接続できます。 標準 ExpressRoute 回線を使用する場合は、すべての仮想ネットワークが同じ地理的リージョンに存在する必要があります。 
+* 最大 10 個の仮想ネットワークを標準 ExpressRoute 回線に接続できます。 標準 ExpressRoute 回線を使用する場合は、すべての仮想ネットワークが同じ地理的リージョンに存在する必要があります。
+
+* 単一の VNet を最大 4 つの ExpressRoute 回線にリンクできます。 以下のプロセスを使用して、接続先の各 ExpressRoute 回線の新しい接続オブジェクトを作成します。 ExpressRoute 回線は、同じサブスクリプション、異なるサブスクリプション、または両方の組み合わせにすることができます。
+
 * ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクしたり、さらに多くの仮想ネットワークを ExpressRoute 回線にリンクしたりすることができます。 Premium アドオンの詳細については、 [FAQ](expressroute-faqs.md) を確認してください。
+
 * 手順をより理解するため、開始する前に[ビデオを参照](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)できます。
 
 ## <a name="connect-a-vnet-to-a-circuit---same-subscription"></a>VNet を回線に接続する - 同じサブスクリプション

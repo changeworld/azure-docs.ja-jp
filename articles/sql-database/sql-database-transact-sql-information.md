@@ -1,26 +1,19 @@
 ---
-title: "Azure SQL Database への移行時に T-SQL の相違点を解決する | Microsoft Docs"
-description: "Azure SQL Database では完全にサポートされない Transact-SQL ステートメント"
+title: Azure SQL Database への移行時に T-SQL の相違点を解決する | Microsoft Docs
+description: Azure SQL Database では完全にサポートされない Transact-SQL ステートメント
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: c05abd9e-28a7-4c97-9bdf-bc60d08fc92e
+manager: craigg
 ms.service: sql-database
 ms.custom: migrate
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 10/23/2017
 ms.author: carlrab
-ms.openlocfilehash: f311c0d139d5ec35cbd85a34bd5a5e991bccba3a
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: acc2c2556763650e0a0aff93fd247d882cb37852
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>SQL Database への移行時に Transact-SQL の相違点を解決する   
 SQL Server から Azure SQL サーバーに[データベースを移行](sql-database-cloud-migrate.md)する場合、SQL Server を移行する前にデータベースの再構築が必要だと気づくことがあります。 この記事では、再構築を実行し、再構築が必要な根本的な原因を理解するうえで役立つガイダンスを提供します。 非互換性を検出するには、[データ移行アシスタント (DMA)](https://www.microsoft.com/download/details.aspx?id=53595) を使用します。

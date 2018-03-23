@@ -1,8 +1,8 @@
 ---
-title: "AD FS での Azure AD Connect Health の使用 | Microsoft Docs"
-description: "オンプレミスの AD FS インフラストラクチャを監視する方法を説明する Azure AD Connect Health のページです。"
+title: AD FS での Azure AD Connect Health の使用 | Microsoft Docs
+description: オンプレミスの AD FS インフラストラクチャを監視する方法を説明する Azure AD Connect Health のページです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 editor: curtand
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4928364ffd732f587e41a788c4d834e91339a7fc
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: f363119ae75a1adb5a01d584de70fba0f3852dfc
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -115,9 +115,12 @@ Azure AD Connect Health for AD FS では、無効なユーザー名またはパ�
 | 最後のエラー IP |直近の無効な要求のクライアント IP アドレスを示します。 |
 
 > [!NOTE]
-> このレポートは 12 時間ごとに自動的に更新され、その間に収集された新しい情報が反映されます。 そのため、直近の 2 時間に行われたログインの試行は、レポートに反映されていない可能性があります。
+> このレポートは 12 時間ごとに自動的に更新され、その間に収集された新しい情報が反映されます。 そのため、直近の 12 時間に行われたログインの試行は、レポートに反映されていない可能性があります。
 >
 >
+
+### <a name="risky-ip-report"></a>危険な IP レポート 
+プレビューが近日公開される予定です。
 
 ## <a name="related-links"></a>関連リンク
 * [Azure AD Connect Health](active-directory-aadconnect-health.md)

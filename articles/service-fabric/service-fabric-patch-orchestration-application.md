@@ -1,24 +1,24 @@
 ---
-title: "Azure Service Fabric パッチ オーケストレーション アプリケーション | Microsoft Docs"
-description: "Service Fabric クラスターでオペレーティング システムへのパッチの適用を自動化するためのアプリケーション。"
+title: Azure Service Fabric パッチ オーケストレーション アプリケーション | Microsoft Docs
+description: Service Fabric クラスターでオペレーティング システムへのパッチの適用を自動化するためのアプリケーション。
 services: service-fabric
 documentationcenter: .net
 author: novino
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: de7dacf5-4038-434a-a265-5d0de80a9b1d
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 1/16/2018
+ms.date: 3/07/2018
 ms.author: nachandr
-ms.openlocfilehash: bb3afdd3afa81664589f738945a63d20013d5291
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 43a0675b1613e7bcf338537c1203de7df9a02fc4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="patch-the-windows-operating-system-in-your-service-fabric-cluster"></a>Service Fabric クラスターでの Windows オペレーティング システムへのパッチの適用
 
@@ -136,7 +136,9 @@ Windows Update の自動更新を有効にすると、複数のクラスター �
 
 ## <a name="download-the-app-package"></a>アプリ パッケージのダウンロード
 
-このアプリケーションは、[こちらのダウンロード リンク](https://go.microsoft.com/fwlink/P/?linkid=849590)からダウンロードできます。
+インストール スクリプトを備えたアプリケーションは、[アーカイブ リンク](https://go.microsoft.com/fwlink/?linkid=869566)からダウンロード可能です。
+
+sfpkg 形式のアプリケーションは、[sfpkg リンク](https://go.microsoft.com/fwlink/?linkid=869567)からダウンロード可能です。 これは、[Azure Resource Manager に基づくアプリケーションのデプロイ](service-fabric-application-arm-resource.md)に便利です。
 
 ## <a name="configure-the-app"></a>Configure the app
 
@@ -361,8 +363,12 @@ Windows Update の問題によって、特定のノードまたはアップグ�
 ### <a name="version-111"></a>バージョン 1.1.1
 - NodeAgentNTService をインストールできない NodeAgentService の SetupEntryPoint のバグを修正しました。
 
-### <a name="version-120-latest"></a>バージョン 1.2.0 (最新)
+### <a name="version-120"></a>バージョン 1.2.0
 
 - システム再起動ワークフローに関連するバグを修正しました。
 - 修復タスクの準備中に正常性チェックが予定どおりに実行されないために発生する RM タスク作成時のバグを修正しました。
 - Windows サービス POANodeSvc のスタートアップ モードを auto から delayed-auto に変更しました。
+
+### <a name="version-121-latest"></a>バージョン 1.2.1 (最新)
+
+- クラスターのスケール ダウン ワークフローのバグ修正。 導入された POA 用のガベージ コレクション ロジックは、存在しないノードに属するタスクを修正します。

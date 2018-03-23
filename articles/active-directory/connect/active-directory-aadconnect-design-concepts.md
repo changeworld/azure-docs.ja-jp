@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: 設計概念 |Microsoft Docs"
-description: "このトピックでは、特定の実装設計の各領域について詳しく説明します。"
+title: 'Azure AD Connect: 設計概念 |Microsoft Docs'
+description: このトピックでは、特定の実装設計の各領域について詳しく説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4114a6c0-f96a-493c-be74-1153666ce6c9
 ms.service: active-directory
 ms.custom: azure-ad-connect
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 510efc4ae6674a3987c2bb5d7cd155ea8c710c83
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 179a669e4c9567950d22ed76a693ec6ab7a2db8d
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
 このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 ここでは特定の領域について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
@@ -59,7 +59,7 @@ sourceAnchor 属性では、大文字小文字が区別されます。 値 "John
 
 フォレスト間およびドメイン間でユーザーを移動する場合は、変更されない属性、または移動時にユーザーと共に移動できる属性を探す必要があります。 お勧めする方法は、合成属性を導入することです。 GUID のような情報を保持可能な属性が適しています。 オブジェクトの作成中に、新しい GUID が作成され、ユーザーに設定されます。 同期エンジン サーバーでは、 **objectGUID** に基づいてこの値を作成し、ADDS の選択した属性を更新するカスタム同期ルールを作成できます。 オブジェクトを移動するときは、この値の内容も必ずコピーしてください。
 
-別の方法は、変更されないことがわかっている既存の属性を選択することです。 一般的に使用される属性に **employeeID**があります。 文字が含まれる属性を採用する場合は、属性値の文字 (大文字と小文字) が変更される可能性がないことを確認します。 使用しない方がよい属性として、ユーザーの名前を含む属性があります。 名前は、結婚や離婚によって変更されることが予想されるため、この属性には使用できません。 これは、**userPrincipalName**、**mail**、**targetAddress** などの属性を Azure AD Connect のインストール ウィザードで選択できない理由の 1 つでもあります。 これらの属性に含まれる "\@\" 文字も sourceAnchor では使用できません。
+別の方法は、変更されないことがわかっている既存の属性を選択することです。 一般的に使用される属性に **employeeID**があります。 文字が含まれる属性を採用する場合は、属性値の文字 (大文字と小文字) が変更される可能性がないことを確認します。 使用しない方がよい属性として、ユーザーの名前を含む属性があります。 名前は、結婚や離婚によって変更されることが予想されるため、この属性には使用できません。 これは、**userPrincipalName**、**mail**、**targetAddress** などの属性を Azure AD Connect のインストール ウィザードで選択できない理由の 1 つでもあります。 これらの属性に含まれる "@" 文字も sourceAnchor では使用できません。
 
 ### <a name="changing-the-sourceanchor-attribute"></a>sourceAnchor 属性の変更
 Azure AD でオブジェクトを作成して、ID を同期した後に、sourceAnchor 属性の値を変更することはできません。
@@ -117,7 +117,7 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
 ![カスタム インストール - sourceAnchor 構成](./media/active-directory-aadconnect-design-concepts/consistencyGuid-02.png)
 
-| Setting | Description |
+| Setting | [説明] |
 | --- | --- |
 | ソース アンカーの管理を Azure に任せる | Azure AD に属性を選択させる場合は、このオプションを選択します。 このオプションを選択した場合、Azure AD Connect ウィザードで[高速インストール時に使用される sourceAnchor 属性の選択ロジック](#express-installation)が同じように適用されます。 高速インストールと同様、どの属性がソース アンカー属性として選択されたかは、カスタム インストールの完了後、ウィザードに表示されます。 |
 | 特有の属性 | sourceAnchor 属性として既存の AD 属性を指定する場合は、このオプションを選択します。 |
@@ -195,5 +195,5 @@ John は、contoso.com に属するユーザーです。Azure AD ディレクト
 
 ルーティング不可能なドメイン環境で実行している場合、その環境が Azure AD Connect で検出され、簡単設定を続行するかどうかについて適切な警告が表示されます。 ルーティング不可能なドメインで運用している場合は、ユーザーの UPN でもルーティング不可能なサフィックスが使用されている可能性があります。 たとえば、contoso.local で運用している場合、Azure AD Connect では簡単設定を使用するのではなく、カスタム設定を使用するように推奨されます。 カスタム設定を使用すると、ユーザーの Azure AD への同期後に Azure へのサインインで UPN として使用する属性を指定できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。

@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: パススルー認証 - 現在の制限事項 | Microsoft Docs"
-description: "この記事では、Azure Active Directory (Azure AD) パススルー認証の現在の制限事項について説明します"
+title: 'Azure AD Connect: パススルー認証 - 現在の制限事項 | Microsoft Docs'
+description: この記事では、Azure Active Directory (Azure AD) パススルー認証の現在の制限事項について説明します
 services: active-directory
-keywords: "Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
-documentationcenter: 
+keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: aee90f278476a899e0d47fc572c4f375bf926de2
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
@@ -31,18 +31,18 @@ ms.lasthandoff: 01/11/2018
 
 - すべての Web ブラウザー ベースのアプリケーションへのユーザー サインイン
 - [先進認証](https://aka.ms/modernauthga)をサポートする Office アプリケーションへのユーザー サインイン: Office 2016、および Office 2013 (先進認証_あり_)
+- Exchange ActiveSync、SMTP、POP、IMAP などの従来のプロトコルを使用した Outlook クライアントへのユーザー サインイン。
 - 先進認証 (オンライン トポロジとハイブリッド トポロジを含む) をサポートする Skype for Business へのユーザー サインイン。 サポートされているトポロジについて詳しくは、[こちら](https://technet.microsoft.com/library/mt803262.aspx)をご覧ください。
 - Azure AD ドメインの Windows 10 デバイスへの参加
-- Exchange ActiveSync のサポート
+- Multi-Factor Authentication のアプリ パスワード。
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
 次のシナリオはサポートされて_いません_。
 
-- 従来の Office クライアント アプリケーションへのユーザー サインイン: Office 2010、および Office 2013 (先進認証_なし_)。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 先進認証により、パススルー認証のサポートが可能になります。 Azure Multi-factor Authentication などの[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)機能を使用して、ユーザー アカウントをセキュリティで保護することもできます。
+- Outlook を除く、従来の Office クライアント アプリケーションへのユーザー サインイン: Office 2010、および Office 2013 (先進認証 "_なし_")。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 先進認証により、パススルー認証のサポートが可能になります。 Azure Multi-factor Authentication などの[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)機能を使用して、ユーザー アカウントをセキュリティで保護することもできます。
 - Skype for Business クライアント アプリケーションへのユーザー サインイン (先進認証_なし_)。
 - PowerShell バージョン 1.0 へのユーザー サインイン。 PowerShell バージョン 2.0 を使用することをお勧めします。
-- Multi-Factor Authentication のアプリ パスワード。
 - [資格情報が漏洩した](../active-directory-reporting-risk-events.md#leaked-credentials)ユーザーの検出。
 - Azure AD Domain Services を使用するには、パスワード ハッシュの同期をテナントで有効にする必要があります。 そのため、パススルー認証_のみ_を使用するテナントは、Azure AD Domain Services を必要とするシナリオに対応していません。
 - パススルー認証は [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) にはTS統合されていません。
@@ -63,4 +63,3 @@ ms.lasthandoff: 01/11/2018
 - [セキュリティの詳細](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md): パススルー認証機能に関する詳細な技術情報を取得します。
 - [Azure AD シームレス SSO](active-directory-aadconnect-sso.md): この補完的な機能の詳細を確認します。
 - [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Azure Active Directory フォーラムで、新しい機能の要望を出します。
-

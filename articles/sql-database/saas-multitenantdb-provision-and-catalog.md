@@ -1,27 +1,21 @@
 ---
-title: "SaaS マルチテナント Azure でのプロビジョニング | Microsoft Docs"
-description: "Azure SQL Database のマルチテナント SaaS アプリで新しいテナントをプロビジョニングしてカタログ化する方法について説明します。"
-keywords: "SQL データベース チュートリアル"
+title: SaaS マルチテナント Azure でのプロビジョニング | Microsoft Docs
+description: Azure SQL Database のマルチテナント SaaS アプリで新しいテナントをプロビジョニングしてカタログ化する方法について説明します。
+keywords: SQL データベース チュートリアル
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: MightyPen
 ms.reviewer: billgib;andrela;genemi
-ms.assetid: 
 ms.service: sql-database
 ms.custom: saas apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: billgib
-ms.openlocfilehash: 42bbb6131aa71520410b22af4d74e99a63fe81cf
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: fb2f2bcbbc8b7f0b0012c4e7baf4a274671d4af0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="provision-and-catalog-new-tenants-in-a-saas-application-using-a-sharded-multi-tenant-azure-sql-database"></a>シャード マルチテナント Azure SQL データベースを使用した SaaS アプリケーションの新しいテナントのプロビジョニングとカタログ化
 
@@ -167,7 +161,7 @@ Wingtip アプリが共有データベースに新しいテナントのプロビ
 
 2. ブレークポイントを追加します。追加するためには、38 行目 (*New-Tenant `* と記述されている行) のどこかにカーソルを置いて、**F9** キーを押します。
 
-   ![ブレークポイント](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
+   ![ブレーク ポイント](media/saas-multitenantdb-provision-and-catalog/breakpoint.png)
 
 3. **F5** キーを押してスクリプトを実行します。
 

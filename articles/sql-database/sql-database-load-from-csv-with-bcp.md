@@ -1,25 +1,19 @@
 ---
-title: "CSV ファイルから Azure SQL Database へのデータの読み込み (bcp) | Microsoft Docs"
-description: "データ サイズが小さい場合は、bcp を使用して Azure SQL Database にデータをインポートできます。"
+title: CSV ファイルから Azure SQL Database へのデータの読み込み (bcp) | Microsoft Docs
+description: データ サイズが小さい場合は、bcp を使用して Azure SQL Database にデータをインポートできます。
 services: sql-database
-documentationcenter: NA
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 875f9b8d-f1a1-4895-b717-f45570fb7f80
+manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 2f00a740b3cc59c4e7b3b378c06cfa8cb05e8380
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: c9bc6d2de6647d0ec047a600a52d14ad24ccbae9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="load-data-from-csv-into-azure-sql-database-flat-files"></a>CSV から Azure SQL Database へのデータの読み込み (フラット ファイル)
 bcp コマンドライン ユーティリティを使用して、CSV ファイルから Azure SQL Database にデータをインポートできます。
@@ -55,7 +49,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 
-## <a name="2-create-a-source-data-file"></a>手順 2.ソース データ ファイルを作成する
+## <a name="2-create-a-source-data-file"></a>2.ソース データ ファイルを作成する
 メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。 このデータは ASCII 形式です。
 
 ```
@@ -79,7 +73,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 bcp <TableName> out C:\Temp\DimDate2_export.txt -S <ServerName> -d <DatabaseName> -U <Username> -P <Password> -q -c -t , 
 ```
 
-## <a name="3-load-the-data"></a>3.データを読み込む
+## <a name="3-load-the-data"></a>手順 3.データを読み込む
 データを読み込むには、コマンド プロンプトを開き、次のコマンドを実行します。ここでは、ServerName、DatabaseName、Username、および Password を自身の情報に置き換えます。
 
 ```bcp
@@ -109,7 +103,7 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 SQL Server データベースを移行するには、 [SQL Server データベースの移行](sql-database-cloud-migrate.md)に関するページを参照してください。
 
 <!--MSDN references-->

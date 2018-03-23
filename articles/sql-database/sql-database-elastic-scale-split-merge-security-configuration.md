@@ -1,25 +1,20 @@
 ---
-title: "Split-Merge セキュリティの構成 | Microsoft Docs"
-description: "Elastic Scale の Split/Merge サービスを使用して暗号化するための x409 資格情報を設定します。"
+title: Split-Merge セキュリティの構成 | Microsoft Docs
+description: Elastic Scale の Split/Merge サービスを使用して暗号化するための x409 資格情報を設定します。
 metakeywords: Elastic Database certificates security
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-ms.assetid: f9e89c57-61a0-484f-b787-82dae2349cb6
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
-ms.author: torsteng
-ms.openlocfilehash: 98f046a943c1fe33b421b3ab6830d78e6c4304a0
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.author: sstein
+ms.openlocfilehash: c07ba1e74daace546bae4f4209842312136914a3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="split-merge-security-configuration"></a>Split-Merge セキュリティの構成
 Split/Merge サービスを使用するには、セキュリティが正しく構成されていなければなりません。 このサービスは、Microsoft Azure SQL Database の Elastic Scale 機能の一部です。 詳しくは、「 [Elastic Scale の分割とマージ サービス チュートリアル](sql-database-elastic-scale-configure-deploy-split-and-merge.md)」をご覧ください。
@@ -391,7 +386,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 4. **[追加]**をクリックします。
 5. 証明書ストアの場所を選択します。
 6. **[完了]**をクリックします。
-7. **[OK]**をクリックします。
+7. Click **OK**.
 8. **[証明書]**を展開します。
 9. 証明書ストアを展開します。
 10. 証明書の子ノードを展開します。
@@ -411,7 +406,7 @@ Split/Merge サービスを使用するには、セキュリティが正しく�
 9. 証明書が格納されているファイル名を入力するか参照します (拡張子 .PFX を使用)。
 10. **[次へ]** をクリックします。
 11. **[完了]**をクリックします。
-12. **[OK]**をクリックします。
+12. Click **OK**.
 
 ## <a name="import-certificate"></a>証明書のインポート
 証明書のインポート ウィザードで次のように実行します。

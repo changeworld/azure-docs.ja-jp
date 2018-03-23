@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: cbdd210f2fe46228daa8c138815826df2b3b0fd7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d40cd906abbee8b1d33f9e67c1940918ba4acb28
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
-#<a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database のドキュメント
+# <a name="sql-server-stretch-database-documentation"></a>SQL Server Stretch Database のドキュメント
 
 SQL Server Stretch Database を使用して、透過的かつ安全にコールド データを Azure クラウドに移行する方法について説明します。 チュートリアルなどのドキュメントは、既存のクエリやアプリケーションに変更を加える必要なく、使用頻度の低いデータを含むデータベース用にコスト効率の高い可用性を設定するのに役立ちます。
 

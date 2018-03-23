@@ -26,9 +26,9 @@
 #### [Node.js での Intel Edison](iot-hub-intel-edison-kit-node-get-started.md)
 #### [C での Intel Edison](iot-hub-intel-edison-kit-c-get-started.md)
 
-#### [Arduino IDE での Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
-#### [Arduino IDE での Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
-#### [Arduino IDE での Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
+#### [Arduino での Adafruit Feather HUZZAH ESP8266](iot-hub-arduino-huzzah-esp8266-get-started.md)
+#### [Arduino での Sparkfun ESP8266 Thing Dev](iot-hub-sparkfun-esp8266-thing-dev-get-started.md)
+#### [Arduino での Adafruit Feather M0](iot-hub-adafruit-feather-m0-wifi-kit-arduino-get-started.md)
 
 ## IoT の拡張シナリオ
 ### [iothub-explorer を使用したクラウド デバイス メッセージングの管理](iot-hub-explorer-cloud-device-messaging.md)
@@ -82,12 +82,12 @@
 ### メッセージのルーティング
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.js](iot-hub-node-node-process-d2c.md)
+#### [Node.JS](iot-hub-node-node-process-d2c.md)
 #### [Python](iot-hub-python-python-process-d2c.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
-#### [Node.js](iot-hub-node-node-c2d.md)
+#### [Node.JS](iot-hub-node-node-c2d.md)
 #### [Python](iot-hub-python-python-c2d.md)
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)

@@ -1,26 +1,19 @@
 ---
-title: "SQL Database の XEvent リング バッファー コード | Microsoft Docs"
-description: "Azure SQL Database で、リング バッファー ターゲットの使用によって簡素化された TRANSACT-SQL のコード サンプルを提供します。"
+title: SQL Database の XEvent リング バッファー コード | Microsoft Docs
+description: Azure SQL Database で、リング バッファー ターゲットの使用によって簡素化された TRANSACT-SQL のコード サンプルを提供します。
 services: sql-database
-documentationcenter: 
 author: MightyPen
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 2510fb3f-c8f2-437a-8f49-9d5f6c96e75b
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: genemi
-ms.openlocfilehash: 61251eb9b125209ffd15adafdb0bace495e7cadd
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f553933d5a1435a96421939af8522daf53db1ff3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-sql-database"></a>SQL Database での拡張イベント向けリング バッファー ターゲット コード
 
@@ -58,7 +51,7 @@ ms.lasthandoff: 10/31/2017
 
 ## <a name="code-sample"></a>サンプル コード
 
-わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。 異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「_database」というノード名があることです。 次に例を示します。
+わずかな変更を加えると、以下のリング バッファーのコード サンプルを、Azure SQL Database または Microsoft SQL Server のいずれかで実行できます。 異なる点は、手順 5. の FROM 句で使用されるいくつかの動的管理ビュー (DMV) の名前の中に「_database」というノード名があることです。 例: 
 
 * sys.dm_xe**_database**_session_targets
 * sys.dm_xe_session_targets

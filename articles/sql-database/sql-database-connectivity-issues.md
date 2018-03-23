@@ -1,26 +1,20 @@
 ---
-title: "SQL 接続エラー、一時エラーの修正 | Microsoft Docs"
-description: "Azure SQL Database での SQL 接続エラーまたは一時エラーのトラブルシューティング、診断、防止の方法について説明します。"
-keywords: "sql 接続, 接続文字列, 接続の問題, 一時エラー, 接続エラー"
+title: SQL 接続エラー、一時エラーの修正 | Microsoft Docs
+description: Azure SQL Database での SQL 接続エラーまたは一時エラーのトラブルシューティング、診断、防止の方法について説明します。
+keywords: sql 接続, 接続文字列, 接続の問題, 一時エラー, 接続エラー
 services: sql-database
-documentationcenter: 
 author: dalechen
-manager: cshepard
-editor: 
-ms.assetid: efb35451-3fed-4264-bf86-72b350f67d50
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: troubleshooting
+ms.topic: article
 ms.date: 11/29/2017
 ms.author: daleche
-ms.openlocfilehash: 7d393cd08ef5c20ef680e4e1ab3aded191abe932
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: f6b5f825d7f8111075fe37b5dc29d174928d913e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止
 この記事では、クライアント アプリケーションが Azure SQL Database とやり取りする際に発生する接続エラーと一時エラーを防止、トラブルシューティング、診断、軽減する方法について説明します。 再試行ロジックの構成方法、接続文字列の作成方法、およびその他の接続設定の調整方法について説明します。
@@ -258,7 +252,7 @@ Enterprise Library 6 (EntLib60) には、ログ記録をサポートする .NET 
 ### <a name="diagnostics-examine-system-logs-for-errors"></a>診断: エラーの発生をシステム ログで調べる
 以下に示したのは、エラー ログや各種情報を照会する Transact-SQL SELECT ステートメントの例です。
 
-| ログのクエリ | 説明 |
+| ログのクエリ | [説明] |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |[sys.event_log](http://msdn.microsoft.com/library/dn270018.aspx) ビューには、一時エラーや接続障害を引き起こす可能性のあるものを含む、個々のイベントに関する情報が表示されます。<br/><br/>理想的には、**start_time** や **end_time** の値を、クライアント プログラムに問題が発生した時間の情報に関連付けます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |[sys.database_connection_stats](http://msdn.microsoft.com/library/dn269986.aspx) ビューには、イベントの種類ごとに集計されたカウントが表示され、詳しい診断を行うことができます。<br/><br/>このクエリを実行するには、"*マスター*" データベースに接続する必要があります。 |
@@ -427,7 +421,7 @@ public bool IsTransient(Exception ex)
 ```
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * SQL Database の他の一般的な接続の問題のトラブルシューティングの詳細については、「[Azure SQL Database との接続に関する一般的な問題のトラブルシューティング](sql-database-troubleshoot-common-connection-issues.md)」をご覧ください。
 * [SQL Database と SQL Server の接続ライブラリ](sql-database-libraries.md)
 * [SQL Server の接続プール (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)

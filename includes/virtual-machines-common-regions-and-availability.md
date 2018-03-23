@@ -55,8 +55,8 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 
 | レプリケーションの方法 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 複数施設にわたってのデータのレプリケート |いいえ |可能  |あり |はい |
-| 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ |いいえ |いいえ |はい |
+| 複数施設にわたってのデータのレプリケート |いいえ  |可能  |[はい] |[はい] |
+| 1 次拠点と 2 次拠点からデータの読み取りが可能 |いいえ  |いいえ  |いいえ  |[はい] |
 | 個別のノードで保持されるデータ コピーの数 |3 |3 |6 |6 |
 
 詳細については、 [Azure ストレージのレプリケーション オプションのページ](../articles/storage/common/storage-redundancy.md)を参照してください。 管理ディスクについて詳しくは、「[Azure Managed Disks overview](../articles/virtual-machines/windows/managed-disks-overview.md)」(Azure Managed Disks の概要) をご覧ください。
@@ -75,7 +75,7 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 さまざまなストレージの種類と可用性オプションの料金情報については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」をご覧ください。
 
 ## <a name="availability-sets"></a>可用性セット
-可用性セットはデータセンター内の VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 1 つの VM が [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 
+可用性セットはデータセンター内の VM の論理グループで、これによって Azure は、冗長性と可用性を提供するためにアプリケーションが構築された方法を理解することができます。 高可用性アプリケーションを提供し、[99.95% Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) に適合するために、1 つの可用性セット内に 2 つ以上の VM を作成することをお勧めします。 可用性セット自体にはコストはかかりません。料金は、作成した各 VM インスタンスに対してのみ発生します。 1 つの VM が [Azure Premium Storage](../articles/virtual-machines/windows/premium-storage.md) を使用している場合、Azure SLA は計画外メンテナンス イベントに適用されます。 
 
 可用性セットは、ハードウェアの障害から保護する障害ドメイン (FD) と、更新の安全な適用を可能にする更新ドメイン (UD) という 2 つの追加グループで構成されています。 [Linux VM](../articles/virtual-machines/linux/manage-availability.md) または [Windows VM](../articles/virtual-machines/windows/manage-availability.md) の可用性を管理する方法については、詳細をお読みください。
 
@@ -83,7 +83,7 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 障害ドメインは、オンプレミスのデータ センター内のラックのように、共通の電源やネットワーク スイッチを共有する基盤となるハードウェアの論理グループです。 可用性セット内に作成した VM は、Azure プラットフォームにより自動で複数の障害ドメインに分散して配布されます。 これにより、物理ハードウェアの障害、ネットワークの停止、または停電が発生した場合の影響を抑えることが可能になります。
 
 ### <a name="update-domains"></a>更新ドメイン
-更新ドメインは、メンテナンスや再起動が同時に行われる可能性のある、基盤となるハードウェアの論理グループです。 可用性セット内に作成した VM は、Azure プラットフォームにより自動で複数の更新ドメインに分散して配布されます。 これにより、Azure プラットフォームに定期メンテナンスを実施している間もアプリケーションのインスタンスが常に 1 つは稼働している状態を確保することができます。 計画済みメンテナンス中は、更新ドメインの再起動が順番に処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみです。
+更新ドメインは、メンテナンスや再起動が同時に行われる可能性のある、基盤となるハードウェアの論理グループです。 可用性セット内に作成した VM は、Azure プラットフォームにより自動で複数の更新ドメインに分散して配布されます。 これにより、Azure プラットフォームに定期メンテナンスを実施している間もアプリケーションのインスタンスが常に 1 つは稼働している状態を確保することができます。 計画的メンテナンス中は、更新ドメインの再起動が順番に処理されない場合がありますが、一度に再起動される更新ドメインは 1 つのみです。
 
 ### <a name="managed-disk-fault-domains"></a>管理ディスクの障害ドメイン
 [Azure Managed Disks](../articles/virtual-machines/windows/faq-for-disks.md) を使用している VM の場合、VM は管理対象の可用性セットを使用している場合に管理ディスクの障害ドメインに合わせて配置されます。 この配置により、VM に接続されたすべての管理ディスクは必ず同じ管理ディスクの障害ドメイン内にあります。 管理対象の可用性セットには、管理ディスクを持つ VM だけを作成できます。 管理ディスクの障害ドメインの数はリージョンによって異なり、管理ディスクの障害ドメインはリージョンあたり 2 つまたは 3 つになります。 [Linux VM](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) または [Windows VM](../articles/virtual-machines/linux/manage-availability.md?#use-managed-disks-for-vms-in-an-availability-set) のこれらの管理対象ディスク障害ドメインの詳細を参照してください。
@@ -98,6 +98,6 @@ Azure のリージョンと Geo を理解することは、使用可能なスト
 
 可用性ゾーンに [Windows](../articles/virtual-machines/windows/create-powershell-availability-zone.md) または [Linux](../articles/virtual-machines/linux/create-cli-availability-zone.md) の VM をデプロイする方法の詳細をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 可用性と冗長性の機能を使って、Azure 環境を構築できるようになりました。 ベスト プラクティスに関する情報については、[Azure の可用性のベスト プラクティス](../articles/best-practices-availability-checklist.md)に関するページをご覧ください。
 

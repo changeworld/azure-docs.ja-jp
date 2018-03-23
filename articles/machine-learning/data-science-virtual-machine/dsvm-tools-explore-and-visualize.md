@@ -1,25 +1,25 @@
 ---
-title: "データの探索と視覚化のツール - Azure | Microsoft Docs"
-description: "データ サイエンス仮想マシン用の、データの探索と視覚化のツール。"
-keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
+title: データの探索と視覚化のツール - Azure | Microsoft Docs
+description: データ サイエンス仮想マシン用の、データの探索と視覚化のツール。
+keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 03/16/2018
 ms.author: gokuma;bradsev
-ms.openlocfilehash: d8f0616f17dbaa02082492cc1c68f1d989ea5aae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96f8d1bcf5a7e51823ed55a1b924d1397eba9da5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンの、データの探索と視覚化のツール。
 

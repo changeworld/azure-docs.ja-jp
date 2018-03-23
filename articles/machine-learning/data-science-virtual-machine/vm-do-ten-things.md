@@ -1,8 +1,8 @@
 ---
-title: "Azure のデータ サイエンス仮想マシンでできる 10 のこと | Microsoft Docs"
-description: "データの探索とモデリングに伴うさまざまな作業をデータ サイエンス仮想マシンで実行します。"
+title: Azure のデータ サイエンス仮想マシンでできる 10 のこと | Microsoft Docs
+description: データの探索とモデリングに伴うさまざまな作業をデータ サイエンス仮想マシンで実行します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -14,21 +14,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: gokuma;weig;bradsev
-ms.openlocfilehash: 622bb5971a6ad774e770f00d2d9f44999b844d12
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 71745260f45c5a5c150fdd3eac4e9a8221b8bce4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでできる 10 のこと
 
 Microsoft データ サイエンス仮想マシン (DSVM) は、データの探索とモデリングに関連したさまざま作業に対応する強力なデータ サイエンス開発環境です。 あらかじめ環境が構築され、広く使われているいくつかのデータ分析ツールが同梱されているため、初めて利用する方でも、オンプレミスのクラウド デプロイとハイブリッド デプロイの分析をすばやく行うことができます。 DSVM は、さまざまな Azure サービスと密接に連携します。Azure SQL Data Warehouse、Azure Data Lake、Azure Storage、Azure Cosmos DB として既に Azure に保存されているデータを読み取って処理することが可能です。 Azure Machine Learning や Azure Data Factory などのその他の分析ツールを活用することもできます。
 
-この記事では、DSVM を使用してさまざまなデータ サイエンス タスクを実行したり、他の Azure サービスと連携したりする方法についてわかりやすく説明します。 DSVM では次のことを実行できます。
+この記事では、DSVM を使用してさまざまなデータ サイエンス タスクを実行したり、他の Azure サービスと連携したりする方法について説明します。 DSVM では次のことを実行できます。
 
-1. DSVM 上で Microsoft R Server または Python を使用してローカルからデータを探索し、モデルを開発する
-2. ブラウザーから Jupyter Notebook を使用し、Python 2、Python 3、Microsoft R (スケーラビリティとパフォーマンスを重視して設計された企業向けの R) を使用してデータを探索する
-3. R や Python を使って構築されたモデルを Azure Machine Learning で運用可能な状態にし、クライアント アプリケーションからシンプルな Web サービス インターフェイスを使ってモデルにアクセスできるようにする
+1. DSVM 上で Microsoft ML Server または Python を使用してローカルからデータを探索し、モデルを開発する
+2. ブラウザーから Jupyter Notebook を使用し、Python 2、Python 3、Microsoft R (パフォーマンスを重視して設計された企業向けの R) を使用してデータを探索する
+3. R や Python を使って構築されたモデルを Azure Machine Learning でデプロイして、クライアント アプリケーションからシンプルな Web サービス インターフェイスを使ってモデルにアクセスできるようにする
 4. Azure Portal または PowerShell を使用して Azure リソースを管理する
 5. DSVM にマウント可能なドライブとして Azure File Storage を作成することによって記憶域を拡張し、大規模なデータセット/コードをチーム全体で共有する
 6. GitHub を使ってチームでコードを共有し、プレインストールされる Git クライアント (Git Bash、Git GUI) を使ってリポジトリにアクセスする。
@@ -38,7 +38,7 @@ Microsoft データ サイエンス仮想マシン (DSVM) は、データの探�
 10. 仮想マシンに追加のツールをインストールする   
 
 > [!NOTE]
-> この記事に掲載されているその他のデータ ストレージ サービスや分析サービスの多くでは、追加の使用料金が適用されます。 詳細については、「 [Azure の価格](https://azure.microsoft.com/pricing/) 」を参照してください。
+> この記事に掲載されているその他のデータ ストレージ サービスや分析サービスの多くでは、追加の使用料金が適用されます。 詳細については、「[Azure の価格](https://azure.microsoft.com/pricing/)」をご覧ください。
 > 
 > 
 
@@ -47,15 +47,15 @@ Microsoft データ サイエンス仮想マシン (DSVM) は、データの探�
 * Azure サブスクリプションが必要です。 [こちら](https://azure.microsoft.com/free/)で無料試用版にサインアップできます。
 * Azure ポータルでデータ サイエンス仮想マシンをプロビジョニングする手順については、 [仮想マシンの作成](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm)に関するページをご覧ください。
 
-## <a name="1-explore-data-and-develop-models-using-microsoft-r-server-or-python"></a>1.Microsoft R Server または Python を使用してデータを探索し、モデルを開発する
+## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1.Microsoft ML Server または Python を使用してデータを探索し、モデルを開発する
 R や Python などの言語を使用して、DSVM 上で直接データ分析を実行できます。
 
-R に関しては、[スタート] メニューまたはデスクトップに表示される "Revolution R Enterprise 8.0" という IDE を使用できます。 マイクロソフトでは、並列チャンク分析を実行することによってメモリ サイズを超える大きなデータの分析とスケーラブルな分析に対応した特別なライブラリを、オープン ソース R や CRAN R に追加する形で提供してきました。 また、 [RStudio](https://www.rstudio.com/products/rstudio-desktop/)など、好みの R IDE をインストールすることもできます。
+R に関しては、スタート メニュー、デスクトップ、または R Tools for Visual Studio で見つけられる RStudio などの IDE を使用できます。 マイクロソフトでは、並列チャンク分析を実行することによってメモリ サイズを超える大きなデータの分析とスケーラブルな分析に対応した特別なライブラリを、オープン ソース R や CRAN R に追加する形で提供してきました。 
 
-Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能がプレインストールされる Visual Studio Community Edition などの IDE を使用できます。 PTVS 上に既定で構成されるのは、必要最小限の Python 2.7 だけです (SciKit、Pandas などの分析ライブラリは含まれません)。 Anaconda Python 2.7 と 3.5 を有効にするには、次の作業を行う必要があります。
+Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能がプレインストールされる Visual Studio Community Edition などの IDE を使用できます。 既定では、Python 3.6 のみ、ルート Conda 環境が PTVS 上に構成されます。 Anaconda Python 2.7 を有効にするために、次の手順を実行する必要があります。
 
 * Visual Studio 2015 Community Edition の **[ツール]** -> **[Python Tools (Python ツール)]** -> **[Python Environments (Python 環境)]** の順に移動し、**[+ Custom (+ カスタム)]** をクリックして、各バージョンのカスタム環境を作成します。
-* 環境の説明を入力し、プレフィックス パス (Anaconda Python 2.7 の場合は *c:\anaconda*、Anaconda Python 3.5 の場合は *c:\anaconda\envs\py35*) を設定します。
+* 環境の説明を入力し、プレフィックス パス (Anaconda Python 2.7 の場合は *c:\anaconda\envs\python2*) を設定します。
 * **[Auto Detect (自動検出)]** をクリックし、**[Apply (適用)]** をクリックして環境を保存します。
 
 以下のスクリーンショットは、Visual Studio でカスタム環境のセットアップを行っているところです。
@@ -64,14 +64,14 @@ Python に関しては、Python Tools for Visual Studio (PTVS) 拡張機能が�
 
 Python 環境の作成方法の詳細については、 [PTVS のドキュメント](https://github.com/Microsoft/PTVS/wiki/Selecting-and-Installing-Python-Interpreters#hey-i-already-have-an-interpreter-on-my-machine-but-ptvs-doesnt-seem-to-know-about-it) を参照してください。
 
-これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]** -> **[新規作成]** -> **[プロジェクト]** -> **[Python]** の順に移動し、作成している Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Anaconda 2.7 または 3.5) に設定できます。これには、**[Python environment (Python 環境)]** を右クリックして、**[Add/Remove Python Environments (Python 環境の追加/削除)]** を選択し、プロジェクトに関連付ける目的の環境を選択します。 PTVS の操作方法の詳細については、製品の[ドキュメント](https://github.com/Microsoft/PTVS/wiki) ページを参照してください。
+これで、新しい Python プロジェクトを作成する準備が整いました。 **[ファイル]** -> **[新規作成]** -> **[プロジェクト]** -> **[Python]** の順に移動し、作成している Python アプリケーションの種類を選択します。 現在のプロジェクトの Python 環境を目的のバージョン (Anaconda 2.7 または 3.6) に設定できます。これには、**[Python environment (Python 環境)]** を右クリックして、**[Add/Remove Python Environments (Python 環境の追加/削除)]** を選択し、目的の環境を選択します。 PTVS の操作方法の詳細については、製品の[ドキュメント](https://github.com/Microsoft/PTVS/wiki) ページを参照してください。
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2.Jupyter Notebook から Python または R を使用してデータの探索とモデリングを行う
 Jupyter Notebook は、ブラウザー ベースの "IDE" でデータの探索とモデリングを行うことができる強力な環境です。 Jupyter Notebook では Python 2 と Python 3 のほか R (オープン ソース R と Microsoft R Server の両方に対応) を使用できます。
 
-Jupyter Notebook を起動するには、[スタート] メニューまたはデスクトップにある **[Jupyter Notebook]**というアイコンをクリックします。 また、DSVM で "https://localhost:9999/" に移動して、Jupyter Notebook にアクセスすることもできます。 パスワードの入力を求められた場合は、「[Microsoft データ サイエンス仮想マシンのプロビジョニング](provision-vm.md)」の「***Jupyter ノートブック サーバーに強力なパスワードを作成する方法***」を参考にして、Jupyter Notebook にアクセスするための強力なパスワードを作成します。 
+Jupyter Notebook を起動するには、[スタート] メニューまたはデスクトップにある **[Jupyter Notebook]** というアイコンをクリックします。 また、DSVM コマンド プロンプトで既存の Notebook が配置されているディレクトリ、または新しい Notebook を作成するディレクトリから、コマンド ```jupyter notebook``` を実行することもできます。  
 
-Jupyter Notebook を開いたら、DSVM に同梱されているいくつかのサンプル Notebook を含んだディレクトリが表示されます。 ここでは、次の操作を実行できます。
+Jupyter が開始されたら、DSVM に同梱されているいくつかのサンプル Notebook を含んだディレクトリが表示されます。 ここでは、次の操作を実行できます。
 
 * Notebook をクリックしてコードを参照する。
 * **Shift キーを押しながら Enter キー**を押すことで各セルを実行する。
@@ -79,13 +79,13 @@ Jupyter Notebook を開いたら、DSVM に同梱されているいくつかの�
 * 新しい Notebook を作成する。これには、Jupyter アイコン (左上隅) をクリックし、右側の **[New (新規)]** ボタンをクリックして、Notebook の言語 (カーネルとも呼ばれます) を選択します。   
 
 > [!NOTE]
-> 現在は、Python 2.7、Python 3.5、R に対応しています。R カーネルでは、オープン ソース R に加え、企業向けのスケーラブルな Microsoft R Server でのプログラミングがサポートされています。   
+> 現在は、Jupyter の Python 2.7、Python 3.6、R、Julia、および PySpark カーネルがサポートされています。 R カーネルでは、Open source R および パフォーマンスに優れた Microsoft R の両方でのプログラミングをサポートしています。   
 > 
 > 
 
 Notebook から、任意のライブラリを使って、データの探索、モデルの構築、モデルのテストを実行することができます。
 
-## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>3.R または Python を使ってモデルを構築し、Azure Machine Learning を使って運用可能な状態にする
+## <a name="3-build-models-using-r-or-python-and-operationalize-them-using-azure-machine-learning"></a>手順 3.R または Python を使ってモデルを構築し、Azure Machine Learning を使って運用可能な状態にする
 モデルを構築して検証したら、次にそれを運用環境にデプロイすることになります。 クライアント アプリケーションは、運用環境にデプロイされたモデルを通じて、リアルタイムまたはバッチ モードでそのモデルの予測を呼び出すことができます。 R または Python で構築されたモデルを運用可能な状態にするためのメカニズムは、Azure Machine Learning によって提供されます。
 
 Azure Machine Learning でモデルを運用可能な状態にすると、REST 形式の Web サービスが公開されます。クライアントは、この Web サービスに入力パラメーターを渡し、モデルに基づく予測を出力として受け取ることが可能です。   
@@ -135,18 +135,17 @@ Python のモデルを Azure Machine Learning にデプロイするには、モ�
 > 
 
 ### <a name="build-and-operationalize-r-models"></a>R のモデルを構築して運用可能な状態にする
-データ サイエンス仮想マシンやその他の環境で構築された R のモデルは、Python の場合と同様の方法で Azure Machine Learning にデプロイすることができます。 手順は次のとおりです。
+データ サイエンス仮想マシンやその他の環境で構築された R のモデルは、Python の場合と同様の方法で Azure Machine Learning にデプロイすることができます。 手順は次のようになります。
 
-* 以下のコード サンプルに示すように、ワークスペース ID と認証トークンを提供する settings.json ファイルを作成します。
+* ワークスペース ID と認証トークンを提供する settings.json ファイルを作成します。 
 * モデルの予測関数のラッパーを作成します。
 * Azure Machine Learning ライブラリで ```publishWebService``` を呼び出し、関数ラッパーを渡します。  
 
 Azure Machine Learning でモデルを Web サービスとして設定、ビルド、発行、利用するために使用できる手順とコード スニペットを次に示します。
 
-#### <a name="setup"></a>[Setup]
-1. Revolution R Enterprise 8.0 IDE またはお使いの R IDE で「```install.packages("AzureML")```」と入力し、Machine Learning R パッケージをインストールします。
-2. RTools を [こちら](https://cran.r-project.org/bin/windows/Rtools/)からダウンロードします。 R パッケージを Machine Learning で運用可能な状態にするには、パスに zip ユーティリティ (と名前付きの zip.exe) が必要です。
-3. ホーム ディレクトリの ```.azureml``` というディレクトリの下に settings.json ファイルを作成し、Azure Machine Learning ワークスペースのパラメーターを入力します。
+#### <a name="setup"></a>セットアップ
+
+* ホーム ディレクトリの ```.azureml``` というディレクトリの下に settings.json ファイルを作成し、Azure Machine Learning ワークスペースのパラメーターを入力します。
 
 settings.json ファイルの構造は次のとおりです。
 
@@ -198,10 +197,10 @@ Azure サブスクリプションとクラウド リソースは、ブラウザ�
 Azure PowerShell は、デスクトップ上のショートカットから実行できるほか、"Microsoft Azure Powershell" というスタート メニューから実行できます。 Windows PowerShell スクリプトを使って Azure サブスクリプションとリソースを管理する方法の詳細については、 [Microsoft Azure PowerShell のドキュメント](../../powershell-azure-resource-manager.md) をご覧ください。
 
 ## <a name="5-extend-your-storage-space-with-a-shared-file-system"></a>5.共有ファイル システムで記憶域を拡張する
-データ サイエンティストは、大きなデータセットやコードなどのリソースをチーム内で共有することができます。 DSVM 自体は、約 70 GB の領域が利用できます。 記憶域を拡張するには、Azure File Service を使用して、記憶域を DSVM にマウントするか、REST API 経由で記憶域にアクセスします。   
+データ サイエンティストは、大きなデータセットやコードなどのリソースをチーム内で共有することができます。 DSVM 自体は、約 45 GB の領域が利用できます。 記憶域を拡張するには、Azure File Service を使用して、記憶域を 1 つまたは複数の DSVM インスタンスにマウントするか、REST API 経由で記憶域にアクセスします。  また、[Azure Portal](../../virtual-machines/windows/attach-managed-disk-portal.md) を使用するか、または [Azure Powershell](../../virtual-machines/windows/attach-disk-ps.md) を使用して、専用の追加データ ディスクを追加することも可能です。 
 
 > [!NOTE]
-> Azure ファイル サービス共有の最大領域は 5 TB です。個々のファイル サイズの上限は 1 TB となります。   
+> Azure ファイル サービス共有の最大領域は 5 TB です。個々のファイル サイズの上限は 1 TB となります。 
 > 
 > 
 
@@ -242,9 +241,9 @@ GitHub は、開発者コミュニティが共有するコードのリポジト�
 
 DSVM には、GitHub リポジトリにアクセスするためのクライアント ツールとして、コマンド ライン版と GUI 版が付属しています。 Git と GitHub を扱うためのコマンド ライン ツールは、Git Bash と呼ばれています。 DSVM にインストールされている Visual Studio には、Git 拡張機能が備わっています。 これらのツールを起動するためのアイコンは、[スタート] メニューとデスクトップにあります。
 
-GitHub リポジトリからコードをダウンロードするには、```git clone``` コマンドを使います。 たとえば、マイクロソフトが発行しているデータ サイエンス リポジトリを現在のディレクトリにダウンロードするには、 ```git-bash```から次のコマンドを実行します。
+GitHub リポジトリからコードをダウンロードするには、```git clone``` コマンドを使います。 たとえば、マイクロソフトが発行しているデータ サイエンス リポジトリを現在のディレクトリにダウンロードするには、```git-bash``` から次のコマンドを実行します。
 
-    git clone https://github.com/Azure/Azure-MachineLearning-DataScience.git
+    git clone https://github.com/Azure/DataScienceVM.git
 
 Visual Studio から同じクローン操作を行うこともできます。 下のスクリーンショットでは、Visual Studio で Git と GitHub ツールにアクセスする方法を示しています。
 
@@ -254,7 +253,7 @@ Git を使った GitHub リポジトリの操作の詳細については、githu
 
 ## <a name="7-access-various-azure-data-and-analytics-services"></a>7.Azure のさまざまなデータ サービスと分析サービスにアクセスする
 ### <a name="azure-blob"></a>Azure BLOB
-Azure BLOB は、大規模データにも小規模データにも対応する信頼性と経済性に優れたクラウド ストレージです。 データを Azure BLOB に移動し、Azure BLOB に格納されたデータにアクセスする方法を見てみましょう。
+Azure BLOB は、大規模データにも小規模データにも対応する信頼性と経済性に優れたクラウド ストレージです。 このセクションでは、データを Azure BLOB に移動し、Azure BLOB に格納されたデータにアクセスする方法について説明します。
 
 **前提条件**
 
@@ -262,7 +261,7 @@ Azure BLOB は、大規模データにも小規模データにも対応する信
 
 ![Create_Azure_Blob](./media/vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* プレインストールされたコマンド ライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```にあることを確認します。 azcopy.exe を含むディレクトリを PATH 環境変数に追加すると、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、 [AzCopy のドキュメント](../../storage/common/storage-use-azcopy.md)
+* プレインストールされたコマンド ライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```にあることを確認します。 azcopy.exe を含むディレクトリが既に PATH 環境変数にあり、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、[AzCopy のドキュメント](../../storage/common/storage-use-azcopy.md)をご覧ください。
 * Azure ストレージ エクスプローラー ツールを起動します。 このツールは、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。 
 
 ![AzureStorageExplorer_v4](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -354,7 +353,7 @@ Azure Machine Learning Studio では、 **データのインポート モジュ�
 ![IPNB_data_readin](./media/vm-do-ten-things/IPNB_data_readin.PNG)
 
 ### <a name="azure-data-lake"></a>Azure Data Lake
-Azure Data Lake Storage は、ビッグ データ分析ワークロード用のハイパースケール リポジトリであり、Hadoop 分散ファイルシステム (HDFS) と互換性があります。 また、Hadoop エコシステムと Azure Data Lake Analytics の両方と連携します。 ここでは、データを Azure Data Lake Store に移動し、Azure Data Lake Analytics を使用して分析を実行する方法について説明します。
+Azure Data Lake Storage は、ビッグ データ分析ワークロード用のハイパースケール リポジトリであり、Hadoop 分散ファイルシステム (HDFS) と互換性があります。 Hadoop、Spark、および Azure Data Lake Analytics で動作します。 このセクションでは、データを Azure Data Lake Store に移動し、Azure Data Lake Analytics を使用して分析を実行する方法について説明します。
 
 **前提条件**
 
@@ -372,7 +371,7 @@ Azure Data Lake Storage は、ビッグ データ分析ワークロード用の�
 
 ![Azure_Data_Lake_UploadData](./media/vm-do-ten-things/Azure_Data_Lake_UploadData.PNG)
 
-また、 [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/)を使用して、Azure Data Lake との間のデータ移動を可能にするデータ パイプラインを作成することもできます。 データ パイプラインを作成する手順については、こちらの [記事](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/) をご覧ください。
+また、[Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/) を使用して、Azure Data Lake との間のデータ移動を運用可能にするデータ パイプラインを作成することもできます。 データ パイプラインを作成する手順については、こちらの[記事](https://azure.microsoft.com/blog/creating-big-data-pipelines-using-azure-data-lake-and-azure-data-factory/)をご覧ください。
 
 **Azure BLOB から Data Lake にデータを読み取る (U-SQL)**
 
@@ -453,11 +452,11 @@ Azure HDInsight は、クラウド上で管理されている Apache Hadoop、Sp
 
 * [Azure ポータル](../team-data-science-process/customize-hadoop-cluster.md)
   
-  * 作成したストレージ アカウントは、この HDInsight クラスターに対して作成時にリンクする必要があります。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
+  * 作成したストレージ アカウントは、この HDInsight クラスターに対して作成時にリンクします。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
 
 ![作成したストレージ アカウントを HDInsight クラスターにリンクする](./media/vm-do-ten-things/Create_HDI_v4.PNG)
 
-* 作成したら、クラスターのヘッド ノードへの**リモート アクセス**を有効にする必要があります。 ここで指定するリモート アクセス資格情報を覚えておいてください (作成時にクラスターに指定したものとは異なります)。その後の手順を実行するために必要です。
+* 作成したら、クラスターのヘッド ノードへの**リモート アクセス**を有効にします。 ここで指定するリモート アクセスの資格情報は、以降の手順で必要になるため、記憶しておいてください。
 
 ![リモート アクセスの有効化](./media/vm-do-ten-things/Create_HDI_dashboard_v3.PNG)
 
@@ -796,14 +795,14 @@ Machine Learning Studio で **リーダー** モジュールを使用して、Ha
 ### <a name="azure-sql-data-warehouse--databases"></a>Azure SQL Data Warehouse と Azure SQL データベース
 Azure SQL Data Warehouse は、エンタープライズ規模の SQL Server エクスペリエンスを備えた、サービスとしてのエラスティック データ ウェアハウスです。
 
-Azure SQL Data Warehouse は、こちらの [記事](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)で説明されている手順に従ってプロビジョニングできます。 Azure SQL Data Warehouse をプロビジョニングしたら、こちらの [チュートリアル](../team-data-science-process/sqldw-walkthrough.md) を使って、SQL Data Warehouse 内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
+Azure SQL Data Warehouse は、こちらの [記事](../../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)で説明されている手順に従ってプロビジョニングできます。 Azure SQL Data Warehouse をプロビジョニングしたら、こちらの[チュートリアル](../team-data-science-process/sqldw-walkthrough.md)を使って、SQL Data Warehouse 内のデータを使用したデータのアップロード、探索、モデリングを実行できます。
 
 #### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 Azure Cosmos DB は、クラウドにおける NoSQL データベースです。 これにより、JSON などのドキュメントを扱うことも、そうしたドキュメントを格納したり照会したりすることもできます。
 
-DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件を満たす必要があります。
+以下に、DSVM から Azure Cosmos DB にアクセスするための前提条件となる手順を示します。
 
-1. Azure Cosmos DB Python SDK をインストールします (コマンド プロンプトから ```pip install pydocumentdb``` を実行)
+1. Azure Cosmos DB Python SDK が既に DSVM 上にインストールされています (コマンド プロンプトから ```pip install pydocumentdb --upgrade``` を実行して更新します)。
 2. [Azure Portal](https://portal.azure.com) で Azure Cosmos DB アカウントとデータベースを作成します。
 3. [こちら](http://www.microsoft.com/downloads/details.aspx?FamilyID=cda7703a-2774-4c07-adcc-ad02ddc1a44d) から "Azure Cosmos DB 移行ツール" をダウンロードし、任意のディレクトリに展開します
 4. 移行ツール (Cosmos DB 移行ツールをインストールしたディレクトリの dtui.exe) に次のコマンド パラメーターを指定して、 [パブリック BLOB](https://cahandson.blob.core.windows.net/samples/volcano.json) に格納されている JSON データ (volcano データ) を Cosmos DB にインポートします。 これらのパラメーターでインポート元とインポート先の場所を入力します。
@@ -813,7 +812,7 @@ DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件�
 データのインポート後、Jupyter にアクセスして、*DocumentDBSample* というタイトルの Notebook を開くことができます。この Notebook には、Azure Cosmos DB にアクセスして基本的なクエリを実行する Python コードが含まれています。 Cosmos DB の詳細については、サービスの[ドキュメント ページ](https://docs.microsoft.com/azure/cosmos-db/)をご覧ください。
 
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.Power BI Desktop を使ってレポートとダッシュボードを作成する
-先ほどの例の Cosmos DB で使用した Volcano JSON ファイルを Power BI で視覚化してみましょう。データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。
+先ほどの例の Cosmos DB からの Volcano JSON ファイルを Power BI で視覚化して、データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。
 
 1. Power BI Desktop を開いて "データを取得" します。 URL として https://cahandson.blob.core.windows.net/samples/volcano.json と指定します。
 2. リストとしてインポートされた JSON レコードが表示されます。
@@ -841,7 +840,7 @@ DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件�
 
 ![Power BI Desktop](./media/vm-do-ten-things/PowerBIVolcanoData.png)
 
-このデータ モデルを使ってレポートの作成と視覚化の作業を開始できます。 レポートを作成するには、こちらの [Power BI の記事](../../cosmos-db/powerbi-visualize.md#build-the-reports) にある手順に従います。 最終的に次のようなレポートが得られます。
+このデータ モデルを使ってレポートの作成と視覚化の作業を開始できます。 レポートを作成するには、こちらの [Power BI の記事](../../cosmos-db/powerbi-visualize.md#build-the-reports) にある手順に従います。 出力は次のようなレポートになります。
 
 ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/vm-do-ten-things/power_bi_connector_pbireportview2.png)
 
@@ -853,17 +852,17 @@ DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件�
 > 
 > 
 
-大規模な分析で CPU の処理能力やメモリ量、ディスク容量が足りなくなった場合は、CPU コア数、メモリ容量、ディスクの種類 (ソリッド ステート ドライブなど) の観点から、処理能力や予算のニーズに応じて大きな VM サイズを選ぶことができます。 VM とその時間単位のコンピューティング料金をまとめた一覧については、「 [Azure Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/) 」ページをご覧ください。
+大規模な分析で CPU の処理能力やメモリ量、ディスク容量が足りなくなった場合は、CPU コア数、ディープ ラーニングの GPU ベース インスタンス、メモリ容量、ディスクの種類 (ソリッド ステート ドライブなど) の観点から、処理能力や予算のニーズに応じて大きな VM サイズを選ぶことができます。 VM とその時間単位のコンピューティング料金をまとめた一覧については、「 [Azure Virtual Machines の価格](https://azure.microsoft.com/pricing/details/virtual-machines/) 」ページをご覧ください。
 
 同様に、さほど大きな処理能力が VM に必要なくなった場合 (主なワークロードを Hadoop または Spark クラスターに移動したなど)、 [Azure ポータル](https://portal.azure.com) から、対象となる VM インスタンスの設定にアクセスして、クラスターをスケールダウンすることができます。 スクリーンショットを次に示します。
 
 ![VM インスタンスの設定](./media/vm-do-ten-things/VMScaling.PNG)
 
 ## <a name="10-install-additional-tools-on-your-virtual-machine"></a>10.仮想マシンに追加のツールをインストールする
-データ分析のさまざまなニーズを満たすうえで必要と考えられるいくつかのツールをパッケージングしました。これにより、環境を個別にインストールして構成する必要がなくなり、使用したリソースの料金のみを支払います。
+多くの一般的なデータ分析のニーズに対応できる、DSVM に事前に組み込まれた複数のツールがあります。 これにより、1 つずつインストールして環境を構成しなくてもよいため、時間を節約できると共に、使用するリソースのみに対して支払いを行うことで、コストを節約できます。
 
-この記事の中で取り上げた他の Azure データ サービスと Azure 分析サービスを利用して、分析環境を強化することができます。 サード パーティが独自に開発したツールなど、特別なツールが必要になることもあるでしょう。 新しいツールが必要となった場合、インストールには、仮想マシンに対するフル管理者アクセス権が必要です。 プレインストールされない、Python と R の追加パッケージをインストールすることもできます。 Python の場合、```conda``` または ```pip``` を使用できます。 R の場合は、R コンソールで ```install.packages()``` を使用するか、IDE で **[Packages (パッケージ)]** -> **[Install Packages (パッケージのインストール)]** を選択できます。
+この記事の中で取り上げた他の Azure データ サービスと Azure 分析サービスを利用して、分析環境を強化することができます。 場合によっては、サード パーティが独自に開発したツールなど、特別なツールが必要になることもあります。 新しいツールが必要となった場合、インストールには、仮想マシンに対するフル管理者アクセス権が必要です。 プレインストールされない、Python と R の追加パッケージをインストールすることもできます。 Python の場合、```conda``` または ```pip``` を使用できます。 R の場合は、R コンソールで ```install.packages()``` を使用するか、IDE で **[Packages (パッケージ)]** -> **[Install Packages (パッケージのインストール)]** を選択できます。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。 他にもさまざまな手段で分析環境を強化することができます。
 

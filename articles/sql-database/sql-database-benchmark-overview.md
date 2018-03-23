@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database ベンチマークの概要"
-description: "このトピックでは、Azure SQL Database のパフォーマンス測定で使用される Azure SQL Database ベンチマークについて説明します。"
+title: Azure SQL Database ベンチマークの概要
+description: このトピックでは、Azure SQL Database のパフォーマンス測定で使用される Azure SQL Database ベンチマークについて説明します。
 services: sql-database
-documentationcenter: na
 author: jan-eng
 manager: jhubbard
-editor: monicar
-ms.assetid: e26f8a66-2c12-49d7-8297-45b4d48a5c01
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: fb8a5f205ddc143dc47349829048f46f88963d05
-ms.sourcegitcommit: 6a6e14fdd9388333d3ededc02b1fb2fb3f8d56e5
+ms.openlocfilehash: 25685f663d976674ad877bcfa1409ef016dd02ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/07/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Azure SQL Database ベンチマークの概要
 ## <a name="overview"></a>概要
@@ -51,7 +45,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 ## <a name="transactions"></a>トランザクション
 ワークロードは、次の表で示すように、9 種類のトランザクションで構成されます。 各トランザクションは、データベース エンジンおよびシステム ハードウェアの特定のシステム特性セットが強調され、他のトランザクションとの違いがはっきりわかるように設計されています。 この方法では、異なるコンポーネントのパフォーマンス全体に対する影響を簡単に評価できます。 たとえば、トランザクション "読み取り (高負荷)" では、ディスクからの読み取り操作が大量に生成されます。
 
-| トランザクションの種類 | 説明 |
+| トランザクションの種類 | [説明] |
 | --- | --- |
 | 読み取り (低負荷) |SELECT、メモリ内、読み取りのみ |
 | 読み取り (中負荷) |SELECT、ほぼメモリ内、読み取りのみ |
@@ -100,7 +94,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 
 | サービス階層 (パフォーマンス レベル) | ユーザー | データベース サイズ |
 | --- | --- | --- |
-| 基本 |5 |720 MB |
+| Basic |5 |720 MB |
 | Standard (S0) |10 |1 GB |
 | Standard (S1) |20 |2.1 GB |
 | Standard (S2) |50 |7.1 GB |
@@ -119,7 +113,7 @@ ASDB は、オンライン トランザクション処理 (OLTP) ワークロー
 
 | サービスのクラス | スループットの測定 | 応答時間の要件 |
 | --- | --- | --- |
-| プレミアム |1 秒あたりのトランザクション数 |0.5 秒で第 95 百分位数 |
+| Premium |1 秒あたりのトランザクション数 |0.5 秒で第 95 百分位数 |
 | 標準 |1 分あたりのトランザクション数 |1.0 秒で第 90 百分位数 |
 | 基本 |1 時間あたりのトランザクション数 |2.0 秒で第 80 百分位数 |
 

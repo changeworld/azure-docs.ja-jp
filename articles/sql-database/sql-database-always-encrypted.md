@@ -1,26 +1,20 @@
 ---
-title: "Always Encrypted: Azure SQL Database - Windows 証明書ストア | Microsoft Docs"
-description: "この記事では、SQL Server Management Studio (SSMS) の Always Encrypted ウィザードを使って、SQL Database 内の機密データを保護する方法について説明します。 さらに、Windows 証明書ストアにキーを格納する方法も説明します。"
-keywords: "データの暗号化, sql 暗号化, データベースの暗号化, 機密データ, Always Encrypted"
+title: 'Always Encrypted: Azure SQL Database - Windows 証明書ストア | Microsoft Docs'
+description: この記事では、SQL Server Management Studio (SSMS) の Always Encrypted ウィザードを使って、SQL Database 内の機密データを保護する方法について説明します。 さらに、Windows 証明書ストアにキーを格納する方法も説明します。
+keywords: データの暗号化, sql 暗号化, データベースの暗号化, 機密データ, Always Encrypted
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: cgronlun
-ms.assetid: ce7e052e-8bf6-4d7c-9204-4c6f4afeba4b
 ms.service: sql-database
 ms.custom: security
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 03/02/2017
 ms.author: sstein
-ms.openlocfilehash: 8e86648195811a666a197b6ee06ad610a1c8d568
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1bb3f6bd3b4bfc1546e992734a85921248eff8fd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Always Encrypted: データベース暗号化を使用して SQL Database で機密データを保護し、Windows 証明書ストアで暗号化キーを格納する
 

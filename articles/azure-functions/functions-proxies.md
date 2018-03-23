@@ -1,12 +1,12 @@
 ---
-title: "Azure Functions でのプロキシの操作 | Microsoft Docs"
-description: "Azure Functions Proxies の使用方法の概要"
+title: Azure Functions でのプロキシの操作 | Microsoft Docs
+description: Azure Functions Proxies の使用方法の概要
 services: functions
-documentationcenter: 
+documentationcenter: ''
 author: alexkarcher-msft
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/22/2018
 ms.author: alkarche
-ms.openlocfilehash: 75b568c12fd58d5599b6878dedb6c2266b6cb649
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0e7fe474c3b247baa6550770c661af62e83b3737
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 02/13/2018
 3. プロキシの名前を指定します。
 4. **ルート テンプレート**と **HTTP メソッド**を指定して、この関数アプリで公開されるエンドポイントを構成します。 これらのパラメーターは、[HTTP トリガー]の規則に従って動作します。
 5. **バックエンド URL** を他のエンドポイントに設定します。 このエンドポイントは、別の関数アプリ内の関数にすることも、他の任意の API にすることもできます。 静的な値である必要はありません。[アプリケーション設定]や[元のクライアント要求のパラメーター]を参照することもできます。
-6. **[作成]** をクリックします。
+6. **Create** をクリックしてください。
 
 これで、プロキシが関数アプリの新しいエンドポイントになりました。 クライアントの観点からは、Azure Functions の HttpTrigger と同じです。 プロキシの URL をコピーし、任意の HTTP クライアントでテストすることで、新しいプロキシを試してみることができます。
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 02/13/2018
 
 ## <a name="debugProxies"></a>プロキシのトラブルシューティング
 
-フラグ `"debug":true` を `proxy.json` 内の任意のプロキシに追加することで、デバッグ ログを有効にします。 ログは、`D:\home\LogFiles\Application\Proxies\DetailedTrace` に格納され、高度なツール (Kudu) を使用してアクセスできます。 すべての HTTP 応答には、`Proxy-Trace-Location` ヘッダーと、ログ ファイルにアクセスするための URL も含まれます。
+フラグ `"debug":true` を `proxies.json` 内の任意のプロキシに追加することで、デバッグ ログを有効にします。 ログは、`D:\home\LogFiles\Application\Proxies\DetailedTrace` に格納され、高度なツール (Kudu) を使用してアクセスできます。 すべての HTTP 応答には、`Proxy-Trace-Location` ヘッダーと、ログ ファイルにアクセスするための URL も含まれます。
 
 `true` に設定した `Proxy-Trace-Enabled` ヘッダーを追加することによって、クライアント側からプロキシをデバッグできます。 これにより、ファイル システムのトレースもログに記録され、応答のヘッダーとしてトレースの URL が返されます。
 
@@ -114,7 +114,7 @@ ms.lasthandoff: 02/13/2018
 
 セキュリティ上の理由から、トレースを生成するためのサービスの呼び出しは許可しないことをお勧めします。 ログイン資格情報なしでトレース コンテンツにアクセスすることはできませんが、トレースを生成するとリソースが消費され、Functions プロキシを使用していることが公開されます。
 
-`proxy.json` 内の特定のプロキシに `"debug":false` を追加することで、トレースを完全に無効にします。
+`proxies.json` 内の特定のプロキシに `"debug":false` を追加することで、トレースを完全に無効にします。
 
 ## <a name="advanced-configuration"></a>詳細な構成
 

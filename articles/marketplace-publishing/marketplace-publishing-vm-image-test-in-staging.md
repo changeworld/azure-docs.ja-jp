@@ -1,11 +1,11 @@
 ---
-title: "Marketplace の VM プランのテスト | Microsoft Docs"
-description: "Azure Marketplace の VM イメージをテストする方法を理解します。"
+title: Marketplace の VM プランのテスト | Microsoft Docs
+description: Azure Marketplace の VM イメージをテストする方法を理解します。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 7a41c3c6-625c-4478-b804-e124dee89040
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2016
-ms.author: hascipio
-ms.openlocfilehash: 26f856059b381be91b9cdd1f98a11dc90813c0c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 7f225f113dd465f79d5d195b59a809fe3be6a1f8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="test-your-vm-offer-for-the-azure-marketplace-in-staging"></a>ステージングでの Azure Marketplace の VM プランのテスト
 ステージングとは、SKU をプライベートの「サンドボックス」にデプロイすることです。そこから、Marketplace にデプロイする前に、機能をテストおよび検証できます。 ステージングでは、SKU はそれをデプロイしたお客様に表示されるのと同じように表示されます。 VM イメージをステージングにプッシュするには認定を受ける必要があります。
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、プランは「ステージングされた」状態になり、その機能とマーケティング コンテンツがテストされたので、最終発行段階である **手順 4**の「 [Azure Marketplace へのプランのデプロイ](marketplace-publishing-push-to-production.md)」に進むことができます。
 
 ## <a name="see-also"></a>関連項目

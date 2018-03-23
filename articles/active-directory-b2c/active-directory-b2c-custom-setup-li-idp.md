@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を OAuth2 ID プロバイダーとして追加する"
-description: "OAuth2 プロトコルとカスタム ポリシーを使用した LinkedIn アプリケーションの設定に関するハウツー記事"
+title: 'Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を OAuth2 ID プロバイダーとして追加する'
+description: OAuth2 プロトコルとカスタム ポリシーを使用した LinkedIn アプリケーションの設定に関するハウツー記事
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: yoelhor
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -53,7 +53,7 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Lin
 
 3. **[認証]** を選択し、**[クライアント ID]** と **[クライアント シークレット]** の値を書き留めます。
 
-4. **[Authorized redirect URLs]\(承認済みのリダイレクト URL\)** ボックスに、**https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** を貼り付けます。 {*tenant*} を実際のテナントの名前に置き換えます (例: contosob2c.onmicrosoft.com)。 HTTPS スキームを使用していることを確認します。 
+4. **[Authorized redirect URLs]\(承認済みのリダイレクトURL\)** ボックスに、**https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** を貼り付けます。 {*tenant*} を実際のテナントの名前に置き換えます (例: contosob2c.onmicrosoft.com)。 HTTPS スキームを使用していることを確認します。 
 
     ![LinkedIn アカウント - 認証済みのリダイレクト URL の設定](media/active-directory-b2c-custom-setup-li-idp/adb2c-ief-setup-li-idp-new-app3.png)
 

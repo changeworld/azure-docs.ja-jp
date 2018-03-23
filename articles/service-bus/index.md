@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 03/14/2017
 ms.author: carolz
-ms.openlocfilehash: 9651d93f4d29121e561108845ed48558e46e42f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ce116da6fe3651a4ed50805660ced2c2e5ac61d
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
-#<a name="service-bus-documentation"></a>Service Bus のドキュメント
+# <a name="service-bus-documentation"></a>Service Bus のドキュメント
 
 Service Bus と Relay を使用して、オンプレミス環境とクラウド環境を接続する方法について説明します。 チュートリアル、ビデオ、API リファレンスなどのドキュメントでは、アプリケーションやサービス間のクラウド メッセージングを設定する方法を紹介します。
 

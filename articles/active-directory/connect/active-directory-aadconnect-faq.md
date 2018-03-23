@@ -1,8 +1,8 @@
 ---
 title: 'Azure Active Directory Connect: FAQ | Microsoft Docs'
-description: "このページでは、Azure AD Connect についてよく寄せられる質問を紹介します。"
+description: このページでは、Azure AD Connect についてよく寄せられる質問を紹介します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 4e47a087-ebcd-4b63-9574-0c31907a39a3
@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/12/2017
+ms.date: 03/09/2017
 ms.author: billmath
-ms.openlocfilehash: 13f12f39fb72bd7d4e32056753a012c38034f807
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 07b0209ef94f91c00b98b8801323a58cd9d14494
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect についてよく寄せられる質問
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 12/11/2017
 また、「 [Azure AD Connect 同期サービスの機能](active-directory-aadconnectsyncservice-features.md)」に記載された手順に従って、同期エンジンによる userPrincipalName の更新が許可されるように Azure AD を構成することもできます。
 
 **Q: オンプレミスの AD グループ/連絡先オブジェクトと既存の Azure AD グループ/連絡先オブジェクトとのあいまい一致はサポートされていますか。**  
-いいえ。現在これはサポートされていません。
+はい、これは proxyAddress に基づきます。  メールが有効でないグループに対して、あいまい一致はサポートされていません。
 
 **Q: 既存の Azure AD グループ/連絡先オブジェクトに対して手動で設定された ImmutableId 属性とオンプレミスの AD グループ/連絡先オブジェクトとの完全一致はサポートされていますか。**  
 いいえ。現在これはサポートされていません。

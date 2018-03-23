@@ -1,25 +1,19 @@
 ---
-title: "XTP インメモリ ストレージの監視 | Microsoft Docs"
-description: "XTP インメモリ ストレージの使用量と容量を推定し、監視します。また、容量不足エラー 41823 を解決します。"
+title: XTP インメモリ ストレージの監視 | Microsoft Docs
+description: XTP インメモリ ストレージの使用量と容量を推定し、監視します。また、容量不足エラー 41823 を解決します。
 services: sql-database
-documentationcenter: 
 author: jodebrui
-manager: jhubbard
-editor: 
-ms.assetid: b617308e-692c-4938-8fa2-070034a3ecef
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: jodebrui
-ms.openlocfilehash: 1e7088e80cc86e3c7cf8ae8ea180d797de613e71
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c1adc6e98f7d101a6e5f3227f44b0035d9b9d157
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの監視
 [インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳しくは、[単一データベースのリソース制限に関する記事](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)および[エラスティック プールのリソース制限に関する記事](sql-database-resource-limits.md#elastic-pool-change-storage-size)をご覧ください。 この上限を超過すると、挿入操作や更新操作が、スタンドアロン データベースの場合はエラー 41823 で、エラスティック プールの場合はエラー 41840 で、失敗し始めることがあります。 その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。

@@ -1,26 +1,20 @@
 ---
-title: "Azure SQL データ同期 (プレビュー) | Microsoft Docs"
-description: "この概要では、Azure SQL データ同期 (プレビュー) について説明します。"
+title: Azure SQL データ同期 (プレビュー) | Microsoft Docs
+description: この概要では、Azure SQL データ同期 (プレビュー) について説明します。
 services: sql-database
-documentationcenter: 
 author: douglaslms
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
-ms.custom: load & move data
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.custom: data-sync
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: 5cf74140969fb354e426c41552d4d73a06c76890
-ms.sourcegitcommit: a036a565bca3e47187eefcaf3cc54e3b5af5b369
+ms.openlocfilehash: 5abe3e5a56dfca263f109b86f473ac490da3eac7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) を使用して複数のクラウドおよびオンプレミス データベース間でデータを同期する
 
@@ -164,7 +158,7 @@ SQL データ同期 (プレビュー) を使ってデータのバックアップ
 
 フェデレーション ルート データベースは、SQL データ同期 (プレビュー) サービスで制限なしに使うことができます。 現在のバージョンの SQL データ同期 (プレビュー) には、フェデレーション データベースのエンドポイントを追加できません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 SQL データ同期の詳細については、以下を参照してください。
 

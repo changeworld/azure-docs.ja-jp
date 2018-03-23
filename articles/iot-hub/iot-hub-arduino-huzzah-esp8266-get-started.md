@@ -1,12 +1,12 @@
 ---
-title: "ESP8266 をクラウドへ - Feather HUZZAH ESP8266 を Azure IoT Hub に接続する | Microsoft Docs"
-description: "このチュートリアルでは、Adafruit Feather HUZZAH ESP8266 を Azure IoT Hub に接続し、Azure クラウド プラットフォームにデータを送信する方法について説明します。"
+title: ESP8266 をクラウドへ - Feather HUZZAH ESP8266 を Azure IoT Hub に接続する | Microsoft Docs
+description: このチュートリアルでは、Adafruit Feather HUZZAH ESP8266 を Azure IoT Hub に接続し、Azure クラウド プラットフォームにデータを送信する方法について説明します。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: 
+tags: ''
+keywords: ''
 ms.assetid: c505aacf-89a8-40ed-a853-493b75bec524
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/15/2017
 ms.author: xshi
-ms.openlocfilehash: 6a450579c848fe6030a328ddf410f139baae2324
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e8f0397797d8f4c3349afcdfb02de071a6593c72
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connect-adafruit-feather-huzzah-esp8266-to-azure-iot-hub-in-the-cloud"></a>Adafruit Feather HUZZAH ESP8266 をクラウドの Azure IoT Hub に接続する
 
@@ -60,7 +60,10 @@ Adafruit Feather HUZZAH ESP8266 を、作成する IoT Hub に接続します。
 * Mac PC または Windows か Ubuntu をインストールした PC。
 * Feather HUZZAH ESP8266 を接続するワイヤレス ネットワーク。
 * 構成ツールをダウンロードするためのインターネット接続。
-* [Arduino IDE](https://www.arduino.cc/en/main/software) バージョン1.6.8 以降。 それより前のバージョンでは AzureIoT ライブラリを使用できません。
+* [Ansible 用 Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino)。
+
+> [!Note]
+> Ansible 用 Visual Studio Code 拡張機能で使用する Arduino IDE のバージョンは、1.6.8 以降でなければなりません。 それより前のバージョンでは AzureIoT ライブラリを使用できません。
 
 次のものは、センサーがない場合のオプションです。 シミュレートされたセンサー データを使用するオプションもあります。
 
@@ -77,7 +80,7 @@ Adafruit Feather HUZZAH ESP8266 を、作成する IoT Hub に接続します。
 
 次のように、接続にはブレッドボードとジャンパー ワイヤを使用します。 センサーがない場合は、シミュレートされたセンサー データを代わりに使用できますので、このセクションをスキップしてください。
 
-![接続の参照](media/iot-hub-arduino-huzzah-esp8266-get-started/15_connections_on_breadboard.png)
+![接続の参照](media/iot-hub-arduino-huzzah-esp8266-get-started/17_connections_on_breadboard.png)
 
 
 センサーの各ピンで、次のように接続します。
@@ -149,33 +152,41 @@ Ubuntu を使用する場合は、Feather HUZZAH ESP8266 の USB ポートを操
    git clone https://github.com/Azure-Samples/iot-hub-feather-huzzah-client-app.git
    ```
 
-Arduino IDE の Feather HUZZAH ESP8266 パッケージをインストールします。
+Visual Studio Code の Feather HUZZAH ESP8266 パッケージをインストールします。
 
 1. サンプル アプリケーションが格納されているフォルダーを開きます。
-1. Arduino IDE のアプリ フォルダーにある app.ino ファイルを開きます。
+1. Visual Studio Code のアプリ フォルダーにある app.ino ファイルを開きます。
 
-   ![Arduino IDE のサンプル アプリケーションを開く](media/iot-hub-arduino-huzzah-esp8266-get-started/10_arduino-ide-open-sample-app.png)
+   ![Visual Studio Code でサンプル アプリケーションを開く](media/iot-hub-arduino-huzzah-esp8266-get-started/10_vscode-open-sample-app.png)
 
-1. Arduino IDE で、**[ファイル]** > **[環境設定]** をクリックします。
-1. **[環境設定]** ダイアログ ボックスで、**[追加のボードマネージャのURL]** ボックスの横にあるアイコンをクリックします。
-1. ポップアップ ウィンドウで次の URL を入力し、**[OK]** をクリックします。
+1. Visual Studio Code で、`F1` を入力します。
+1. 「**Arduino**」と入力し、**[Arduino: Board Manager]\(Arduino: Board Manager\)** を選択します。
+1. **[Arduino Board Manager]\(Arduino Board Manager\)** タブで、**[追加の URL]** をクリックします。
 
-   `http://arduino.esp8266.com/stable/package_esp8266com_index.json`
+   ![VS Code Arduino Board Manager](media/iot-hub-arduino-huzzah-esp8266-get-started/11_vscode-arduino-board-manager.png)
 
-   ![Arduino IDE で パッケージの URL を指定する](media/iot-hub-arduino-huzzah-esp8266-get-started/11_arduino-ide-package-url.png)
+1. **[ユーザー設定]** ウィンドウで、以下の内容をコピーして、ファイルの最後に貼り付けます。
 
-1. **[環境設定]** ダイアログ ボックスで、**[OK]** をクリックします。
-1. 次に**[ツール]** > **[ボード]** > **[ボードマネージャ]** をクリックし、「esp8266」を検索します。
+   `"arduino.additionalUrls": "http://arduino.esp8266.com/stable/package_esp8266com_index.json"`
+
+   ![VS Code で Arduino パッケージの URL を構成する](media/iot-hub-arduino-huzzah-esp8266-get-started/12_vscode-package-url.png)
+
+1. ファイルを保存して **[ユーザー設定]** タブを閉じます。
+1. **[Refresh Package Indexes]\(パッケージ インデックスの更新\)** をクリックします。 更新が完了したら、**esp8266** を検索します。
+1. esp8266 の **[インストール]** ボタンをクリックします。
 
    ESP8266 バージョン 2.2.0 以降がインストールされていることがボード マネージャーに表示されます。
 
-   ![ESP8266 のインストール](media/iot-hub-arduino-huzzah-esp8266-get-started/12_arduino-ide-esp8266-installed.png)
+   ![ESP8266 のインストール](media/iot-hub-arduino-huzzah-esp8266-get-started/13_vscode-esp8266-installed.png)
 
-1. **[ツール]** > **[ボード]** > **[Adafruit HUZZAH ESP8266]** をクリックします。
+1. 「`F1`」と入力してから、「**Arduino**」と入力し、**[Arduino: Board Config]\(Arduino: Board Config\)** を選択します。
+1. **[Selected Board:]\(選択済みのボード:\)** のボックスをクリックし、「**esp8266**」と入力してから、**[Adafruit HUZZAH ESP8266 (esp8266)]\(Adafruit HUZZAH ESP8266 (esp8266)\)** を選択します。
+
+   ![esp8266 ボードを選択する](media/iot-hub-arduino-huzzah-esp8266-get-started/14_vscode-select-esp8266.png)
 
 ### <a name="install-necessary-libraries"></a>必要なライブラリをインストールする
 
-1. Arduino IDE で、**[スケッチ]** > **[ライブラリをインクルード]** > **[ライブラリを管理]** をクリックします。
+1. Visual Studio Code で、「`F1`」と入力してから、「**Arduino**」と入力し、**[Arduino: Library Manager]\(Arduino: Library Manager\)** を選択します。
 1. 1 つずつ次のライブラリ名を検索します。 検索したライブラリごとに、**[インストール]** をクリックします。
    * `AzureIoTHub`
    * `AzureIoTUtility`
@@ -193,20 +204,20 @@ DHT22 センサーがない場合は、サンプル アプリケーションで�
    ```c
    define SIMULATED_DATA true
    ```
-   ![シミュレートされたデータをサンプル アプリケーションで使用するための構成](media/iot-hub-arduino-huzzah-esp8266-get-started/13_arduino-ide-configure-app-use-simulated-data.png)
+   ![シミュレートされたデータをサンプル アプリケーションで使用するための構成](media/iot-hub-arduino-huzzah-esp8266-get-started/15_vscode-configure-app-use-simulated-data.png)
 
-1. ファイルを `Control-s` という名前で保存します。
+1. ファイルを保存します。
 
 ### <a name="deploy-the-sample-application-to-feather-huzzah-esp8266"></a>サンプル アプリケーションを Feather HUZZAH ESP8266 にデプロイする
 
-1. Arduino IDEで、**[ツール]** > **[ポート]** をクリックし、次に Feather HUZZAH ESP8266 のシリアル ポートをクリックします。
-1. **[スケッチ]** > **[マイコンボードに書き込む]** をクリックし、サンプル アプリケーションを Feather HUZZAH ESP8266 にビルドし、デプロイします。
+1. Visual Studio Code のステータス バーにある **<Select Serial Port>** をクリックし、Feather HUZZAH ESP8266 のシリアル ポートをクリックします。
+1. 「`F1`」と入力してから、「**Arduino**」と入力します。次に、サンプル アプリケーションをビルドして Feather HUZZAH ESP8266 にデプロイするために、**[Arduino: Upload]\(Arduino: Upload\)** を選択します。
 
 ### <a name="enter-your-credentials"></a>資格情報を入力する
 
 アップロードが正常に完了したら、次の手順に従って資格情報を入力します。
 
-1. Arduino IDE で、**[ツール]** > **[シリアルモニタ]** をクリックします。
+1. Arduino IDE を開き、**[ツール]** > **[シリアルモニタ]** をクリックします。
 1. [シリアルモニタ] ウィンドウで、右下隅の 2 つのドロップダウン リストを確認します。
 1. 左のドロップダウン リストで **[改行なし]** を選択します。
 1. 右のドロップダウン リストで **[115200 baud]** を選択します。
@@ -222,9 +233,9 @@ DHT22 センサーがない場合は、サンプル アプリケーションで�
 
 [シリアルモニタ] ウィンドウで次のような出力を確認し、Feather HUZZAH ESP8266 の LED が点滅していることを確認できれば、サンプル アプリケーションは正常に実行されています。
 
-![Arduino IDE での最終出力](media/iot-hub-arduino-huzzah-esp8266-get-started/14_arduino-ide-final-output.png)
+![Arduino IDE での最終出力](media/iot-hub-arduino-huzzah-esp8266-get-started/16_arduino-ide-final-output.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Feather HUZZAH ESP8266 を IoT Hub に接続し、キャプチャしたセンサー データを IoT Hub に送信できるようになりました。 
 

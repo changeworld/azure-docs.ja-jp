@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation の Windows Hybrid Runbook Worker | Microsoft Docs"
-description: "この記事では、お使いのローカル データ センターまたはクラウド 環境内の Windows ベースのコンピューターで Runbook を実行できるようにする Azure Automation Hybrid Runbook Worker のインストールについて説明します。"
+title: Azure Automation の Windows Hybrid Runbook Worker
+description: この記事では、お使いのローカル データ センターまたはクラウド 環境内の Windows ベースのコンピューターで Runbook を実行できるようにする Azure Automation Hybrid Runbook Worker のインストールについて説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: 
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 08/07/2017
-ms.author: magoedte
-ms.openlocfilehash: 4232634f57f9650a35c40ee769cbeb0a3e009dfb
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+manager: carmonm
+ms.openlocfilehash: c03b124e21603056219a6ff6458469b4ecd60969
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="how-to-deploy-a-windows-hybrid-runbook-worker"></a>Windows Hybrid Runbook Worker のデプロイ方法
 

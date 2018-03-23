@@ -1,23 +1,23 @@
 ---
-title: "チュートリアル: Azure Active Directory と People の統合 | Microsoft Docs"
-description: "Azure Active Directory と People の間でシングル サインオンを構成する方法について確認します。"
+title: 'チュートリアル: Azure Active Directory と People の統合 | Microsoft Docs'
+description: Azure Active Directory と People の間でシングル サインオンを構成する方法について確認します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
-manager: mtillman
+manager: femila
 ms.assetid: 7c9b6202-11dd-4bb6-a679-8fb0a7a0ef4e
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 03/06/2017
 ms.author: jeedes
-ms.openlocfilehash: cf3c633aec5fd55d3525c0e010e1aca68407ef33
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: a76701e23771efa79ef39ebd6deb29cec8acaa8a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-people"></a>チュートリアル: Azure Active Directory と People の統合
 
@@ -63,11 +63,11 @@ Azure AD への People の統合を構成するには、ギャラリーから管
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **People**」と入力します。
 
@@ -86,11 +86,11 @@ People で、Azure AD の **[ユーザー名]** の値を **[Username]** の値�
 
 People で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[People テスト ユーザーの作成](#creating-a-people-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを People で作成します。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,49 +100,49 @@ People で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure Portal の **People** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_people_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_samlbase.png)
 
 3. **[People のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_people_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<company name>.peoplehr.com/` のパターンを使用して URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[サインオン URL]** ボックスに、`https://<company name>.peoplehr.net` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://www.peoplehr.com` の形式で URL を入力します。
+    b. **[識別子]** ボックスに次の URL を入力します。`https://www.peoplehr.com`
 
     c. **[応答 URL]** ボックスに、`https://<company name>.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx` のパターンを使用して URL を入力します。
-
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際の識別子、応答 URL、サインオン URL でこれらの値を更新します。 これらの値を取得するには、[People クライアント サポート チーム](mailto:customerservices@peoplehr.com)に連絡してください。
+    
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際の応答 URLとサインオン URL でこれらの値を更新します。 これらの値を取得するには、[People クライアント サポート チーム](mailto:customerservices@peoplehr.com)に連絡してください。 
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-people-tutorial/tutorial_people_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_general_400.png)
     
 7. アプリケーションに合わせて SSO を構成するには、管理者として People テナントにサインオンする必要があります。
    
 8. 左側にあるメニューで、**[設定]** をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_people_001.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_001.png)
 
 9. **[会社]**をクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_people_002.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_002.png)
 
 10. **[シングル サインオン SAML メタデータ ファイルのアップロード]** で **[参照]** をクリックし、ダウンロードしたメタデータ ファイルをアップロードします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_people_003.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_003.png)
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -168,7 +168,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-people-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -194,7 +194,7 @@ People で Azure AD のシングル サインオンを構成してテストす�
 
 2. アプリケーションの一覧で **[People]**を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-people-tutorial/tutorial_people_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-people-tutorial/tutorial_people_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

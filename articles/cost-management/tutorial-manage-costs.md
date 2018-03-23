@@ -1,8 +1,8 @@
 ---
-title: "チュートリアル - Azure Cost Management を使用したコスト管理 | Microsoft Docs"
-description: "このチュートリアルでは、コストの配賦とショーバック/チャージバック レポートを使用してコストを管理します。"
+title: チュートリアル - Azure Cost Management を使用したコスト管理 | Microsoft Docs
+description: このチュートリアルでは、コストの配賦とショーバック/チャージバック レポートを使用してコストを管理します。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,15 +10,15 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 7e9f11e702dbbe8864f8a0c307777c922e5f028d
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 238964540bffaf8d05148c587462256ce20d87f4
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="tutorial-manage-costs-by-using-azure-cost-management"></a>チュートリアル: Azure Cost Management を使用したコスト管理
 
-Azure Cost Management by Cloudyn では、タグに基づいてコストを配賦することによって、コストを管理したりショーバック レポートを生成したりします。 消費されたクラウド リソースには、コスト配賦プロセスでコストを割り当てます。 すべてのリソースがタグで分類されたとき、コストが完全に配賦済みとなります。 コストの配賦後、ダッシュボードおよびレポートを使ってユーザーにショーバックまたはチャージバックを行うことができます。 しかし、Cost Management を使い始めてみると、タグ付けが済んでいないリソースや、タグ付けができないリソースが多く存在する場合があります。
+Azure Cost Management では、タグに基づいてコストを配賦することによって、コストを管理したりショーバック レポートを生成したりします。 消費されたクラウド リソースには、コスト配賦プロセスでコストを割り当てます。 すべてのリソースがタグで分類されたとき、コストが完全に配賦済みとなります。 コストの配賦後、ダッシュボードおよびレポートを使ってユーザーにショーバックまたはチャージバックを行うことができます。 しかし、Cost Management を使い始めてみると、タグ付けが済んでいないリソースや、タグ付けができないリソースが多く存在する場合があります。
 
 たとえば、エンジニアリングにかかった経費を精算してもらいたい場合があるとします。 リソース コストに基づいて、特定の金額が必要であることをエンジニアリング チームに示せる必要があります。 "*エンジニアリング*" というタグの付いたすべての消費リソースのレポートを提示することができます。
 

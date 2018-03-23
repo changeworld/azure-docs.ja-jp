@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する"
-description: "OAuth1 プロトコルを使用して ID プロバイダーとして Twitter を使用する"
+title: 'Azure Active Directory B2C: カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する'
+description: OAuth1 プロトコルを使用して ID プロバイダーとして Twitter を使用する
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: yoelhor
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 10/23/2017
 ms.author: yoelh
 ms.openlocfilehash: 629e0bbaa7c62ef5d381085588c6a99c203c41cb
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="azure-active-directory-b2c-add-twitter-as-an-oauth1-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して Twitter を OAuth1 ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -39,9 +39,9 @@ Azure Active Directory B2C (Azure AD B2C) で ID プロバイダーとして Twi
  
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 新しいアプリの **[Name]** と **[Description]** を入力します。 
 
-    b. **[Website]** ボックスに、**https://login.microsoftonline.com** を貼り付けます。 
+    b. **[Web サイト]** ボックスに、**https://login.microsoftonline.com** を貼り付けます。 
 
-    c. **[Callback URL]** ボックスに、**https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** を貼り付けます。 {*tenant*} を実際のテナントの名前に置き換えます (例: contosob2c.onmicrosoft.com)。 HTTPS スキームを使用していることを確認します。 
+    c. **[コールバック URL]** ボックスに **https://login.microsoftonline.com/te/{tenant}.onmicrosoft.com/oauth2/authresp** を貼り付けます。 {*tenant*} を実際のテナントの名前に置き換えます (例: contosob2c.onmicrosoft.com)。 HTTPS スキームを使用していることを確認します。 
 
     d. ページの下部に記載されている条項を読んで同意し、**[Create your Twitter application]** を選択します。
 

@@ -1,133 +1,142 @@
 ---
-title: "Azure SQL Database の機能の比較 | Microsoft Docs"
-description: "この記事では、SQL Server と Azure SQL Database の機能を比較し、それらの違いを示します。"
+title: Azure SQL Database の機能の比較 | Microsoft Docs
+description: この記事では、Azure SQL Database およびマネージ インスタンスの機能の相互比較と、SQL Server との比較を行います。
 services: sql-database
-documentationcenter: na
-author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: d1a46fa4-53d2-4d25-a0a7-92e8f9d70828
+documentationcenter: ''
+author: jovanpop-msft
+ms.reviewer: bonova, carlrab
 ms.service: sql-database
-ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 02/08/2018
-ms.author: carlrab
-ms.openlocfilehash: dc9a7fa0a7fa0e029f71510cc516496ed12a6274
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.date: 02/28/2018
+ms.author: jovanpop
+manager: cguyer
+ms.openlocfilehash: 34aafdc377acf0b67674dbac2e67237440ed1420
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較: Azure SQL Database と SQL Server 
 
-Azure SQL Database は、SQL Server と共通コード ベースを共有します。また、データベース レベルでほとんどの同じ機能をサポートします。 Azure SQL Database と SQL Server の機能の主な違いは、インスタンス レベルにあります。 
+Azure SQL Database は、SQL Server と共通のコード ベースを共有します。 Azure SQL Database でサポートされる SQL Server の機能は、作成する Azure SQL データベースの種類に応じて変わります。 Azure SQL Database を利用すると、[マネージ インスタンス](sql-database-managed-instance.md)の一部としてデータベースを作成するか (現在はパブリック プレビューにあります)、単一のデータベースまたはエラスティック プールに属するデータベースのどちらかのデータベースを作成できます。 
 
-Azure SQL Database には継続的に機能が追加されます。 したがって、Azure のサービス更新情報に関する Web ページにアクセスし、次のフィルターを使用することをお勧めします。
+マイクロソフトは、Azure SQL Database に継続的に機能を追加します。 最新の更新プログラムについては、以下のフィルターを使用して、Azure のサービスの更新情報 Web ページを参照してください。
 
 * サービスを [[SQL Database]](https://azure.microsoft.com/updates/?service=sql-database)でフィルター処理します。
 * SQL Database の機能について、[General Availability] [(GA) のアナウンス](http://azure.microsoft.com/updates/?service=sql-database&update-type=general-availability) でフィルター処理します。
 
 ## <a name="sql-server-and-sql-database-feature-support"></a>SQL Server と SQL Database 機能のサポート
 
-次の表は、SQL Server の主な機能の一覧です。各機能がサポートされるかどうかの情報と、機能の詳細情報のリンクについてまとめています。 既存のデータベース ソリューションを移行するときに考慮する必要がある Transact-SQL の相違点については、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。
+次の表は、SQL Server の主要な機能を一覧にして、その機能が一部または完全にサポートされるかに関する情報と、機能に関する詳細情報へのリンクを示します。 
 
-
-| **SQL Server 機能** | **Azure SQL Database でのサポート** | 
-| --- | --- |  
-| [常に暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください|
-| [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | 高可用性は、すべてのデータベースに含まれています。 「[高可用性と Microsoft Azure SQL Database](sql-database-high-availability.md)」を参照してください。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-geo-replication-overview.md)」を参照してください |
-| [データベースの接続](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | いいえ  |
-| [アプリケーション ロール](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | [はい] |
-|[監査](/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [はい](sql-database-auditing.md)|
-| [自動チューニング](/sql/relational-databases/automatic-tuning/automatic-tuning)| [はい](sql-database-automatic-tuning.md)|
-| [BACPAC ファイル (エクスポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | ○ - [SQL Database のエクスポート](sql-database-export.md)に関する記事を参照してください |
-| [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | ○ - [SQL Database のインポート](sql-database-import.md)に関する記事を参照してください |
-| [BACKUP コマンド](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | × - [自動バックアップ](sql-database-automated-backups.md)に関する記事を参照してください |
-| [組み込み関数](https://docs.microsoft.com/sql/t-sql/functions/functions) | ほとんどの場合 - 個々の関数に関する記事を参照してください |
-| [変更データのキャプチャ](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | いいえ  |
-| [変更の追跡](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | [はい] |
-| [照合順序ステートメント](https://docs.microsoft.com/sql/t-sql/statements/collations) | [はい] |
-| [列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | ○ - [Premium Edition のみ](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |
-| [共通言語ランタイム (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | いいえ  |
-| [包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | [はい] |
-| [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | [はい] |
-| [フロー制御言語のキーワード](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | [はい] |
-| [複数データベース間のクエリ](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/cross-database-queries) | 部分的 - [エラスティック クエリ](sql-database-elastic-query-overview.md)に関する記事を参照してください |
-| [カーソル](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | [はい] | 
-| [データ圧縮](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | [はい] |
-| [データベース メール](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | いいえ  |
-| [データベース ミラーリング](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server) | いいえ  |
-| [データベースの構成設定](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) | [はい] |
-| [Data Quality Services (DQS)](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | いいえ  |
-| [データベース スナップショット](https://docs.microsoft.com/sql/relational-databases/databases/database-snapshots-sql-server) | いいえ  |
-| [データ型](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql) | [はい] |  
-| [DBCC ステートメント](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください |
-| [DDL ステートメント](https://docs.microsoft.com/sql/t-sql/statements/statements) | [はい] |
-| [DDL トリガー](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | データベースのみ |
-| [分散トランザクション - MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | × - [エラスティック トランザクション](sql-database-elastic-transactions-overview.md)に関する記事を参照してください |
-| [DML ステートメント](https://docs.microsoft.com/sql/t-sql/queries/queries) | [はい] |
-| [DML トリガー](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください | 
-| [DMV](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | 一部 - 個々の DMV に関する記事を参照してください |
-|[動的データ マスク](/sql/relational-databases/security/dynamic-data-masking)|[はい](sql-database-dynamic-data-masking-get-started.md)|
-| [イベント通知](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | × - [アラート](sql-database-insights-alerts-portal.md)に関する記事を参照してください |
-| [式](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |[はい] |
-| [拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | 一部 - 「[SQL Database の拡張イベント](sql-database-xevent-db-diff-from-svr.md)」を参照してください |
-| [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | いいえ  |
-| [ファイルおよびファイル グループ](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | プライマリ ファイル グループのみ |
-| [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | いいえ  |
-| [フルテキスト検索](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) | サード パーティのワード ブレーカーはサポートされていません |
-| [関数](https://docs.microsoft.com/sql/t-sql/functions/functions) | ほとんどの場合 - 個々の関数に関する記事を参照してください |
-| [グラフの処理](/sql/relational-databases/graphs/sql-graph-overview) | [はい] |
-| [メモリ内の最適化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | ○ - [Premium Edition のみ](sql-database-in-memory.md) |
-| [JSON データのサポート](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [はい] |
-| [言語要素](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | ほとんどの場合 - 個々の要素に関する記事を参照してください |  
-| [リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | × - [エラスティック クエリ](sql-database-elastic-query-horizontal-partitioning.md)に関する記事を参照してください |
-| [ログ配布](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | 高可用性は、すべてのデータベースに含まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-geo-replication-overview.md)」を参照してください |
-| [マスター データ サービス (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | いいえ  |
-| [一括インポートでの最小ログ記録](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | いいえ  |
-| [システム データの変更](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | いいえ  |
-| [オンライン インデックス操作](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) | [はい] |
-| [演算子](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | ほとんどの場合 - 個々の演算子に関する記事を参照してください |
-| [データベースのポイントインタイム リストア](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | ○ - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください |
-| [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | いいえ  |
-| [ポリシーベースの管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | いいえ  |
-| [述語](https://docs.microsoft.com/sql/t-sql/queries/predicates) | [はい] |
-| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | プレビュー リリース: [Machine Learning の新機能](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) に関する記事をご覧ください  |
-| [リソース ガバナー](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | いいえ  |
-| [RESTORE ステートメント](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | いいえ  | 
-| [バックアップからデータベースを復元する](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 組み込みのバックアップからのみ - [SQL Database の復旧](sql-database-recovery-using-backups.md)に関する記事を参照してください |
-| [行レベルのセキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) | [はい] |
-| [セマンティック検索](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) | いいえ  |
-| [シーケンス番号](https://docs.microsoft.com/sql/relational-databases/sequence-numbers/sequence-numbers) | [はい] |
-| [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | いいえ  |
-| [サーバーの構成設定](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | いいえ  |
-| [SET ステートメント](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください 
-| [Spatial](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | [はい] |
-| [SQL Server エージェント](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | × - [エラスティック ジョブ](sql-database-elastic-jobs-getting-started.md)に関する記事を参照してください |
-| [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | 「[Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/)」を参照してください |
-| [SQL Server 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | × - [SQL Database の監査](sql-database-auditing.md)に関する記事を参照してください |
-| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | ○ - [SQL Server Integration Services のワークロードのクラウドへのリフロとシフト](https://docs.microsoft.com/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview)に関する記事を参照してください。 |
-| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | [はい] |
-| [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | × - [拡張イベント](sql-database-xevent-db-diff-from-svr.md)に関する記事を参照してください |
-| [SQL Server レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [トランザクション レプリケーションとスナップショット レプリケーションのサブスクライバーのみ](sql-database-cloud-migrate.md) |
-| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | いいえ  |
-| [ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | [はい] |
-| [システム ストアド関数](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | 一部 - 個々の関数に関する記事を参照してください |
-| [システム ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | 一部 - 個々のストアド プロシージャに関する記事を参照してください |
-| [システム テーブル](https://docs.microsoft.com/sql/relational-databases/system-tables/system-tables-transact-sql) | 一部 - 個々のテーブルに関する記事を参照してください |
-| [システム カタログ ビュー](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | 一部 - 個々のビューに関する記事を参照してください |
-| [テーブル パーティション](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | ○ - プライマリ ファイルグループのみ |
-| [一時テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) | ローカルおよびデータベース スコープのグローバル一時テーブルのみ |
-| [テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [はい] |
-| [変数](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | [はい] | 
-| [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | [はい] |
-| [Windows Server フェールオーバー クラスタリング](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | 高可用性は、すべてのデータベースに含まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-geo-replication-overview.md)」を参照してください |
-| [XML インデックス](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | [はい] |
+| **SQL の機能** | **Azure SQL Database でのサポート** | **マネージ インスタンス (プレビュー)** |
+| --- | --- | --- |
+| [常に暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください | ○ - [証明書ストア](sql-database-always-encrypted.md)と[キー コンテナー](sql-database-always-encrypted-azure-key-vault.md)に関する記事を参照してください |
+| [AlwaysOn 可用性グループ](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください |
+| [データベースの接続](https://docs.microsoft.com/sql/relational-databases/databases/attach-a-database) | いいえ  | いいえ  |
+| [アプリケーション ロール](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/application-roles) | [はい] | [はい] |
+|[監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | [はい](sql-database-auditing.md)| はい - [監査の相違点](sql-database-managed-instance-transact-sql-information.md#auditing)に関するページを参照してください |
+| [自動バックアップ](sql-database-automated-backups.md) | [はい] | [はい] |
+| [自動チューニング (プランの強制)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [はい](sql-database-automatic-tuning.md)| [はい](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning) |
+| [自動チューニング (インデックス)](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)| [はい](sql-database-automatic-tuning.md)| いいえ  |
+| [BACPAC ファイル (エクスポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/export-a-data-tier-application) | ○ - [SQL Database のエクスポート](sql-database-export.md)に関する記事を参照してください | [はい] |
+| [BACPAC ファイル (インポート)](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/import-a-bacpac-file-to-create-a-new-user-database) | ○ - [SQL Database のインポート](sql-database-import.md)に関する記事を参照してください | [はい] |
+| [BACKUP コマンド](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql) | いいえ、システムによって開始された自動バックアップのみ - [自動バックアップ](sql-database-automated-backups.md)に関するページを参照してください | システムによって開始された自動バックアップと、ユーザーによって開始されたコピー専用バックアップ - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)に関するページを参照してください |
+| [組み込み関数](https://docs.microsoft.com/sql/t-sql/functions/functions) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers)に関するページを参照してください |
+| [変更データのキャプチャ](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-data-capture-sql-server) | いいえ  | [はい] |
+| [変更の追跡](https://docs.microsoft.com/sql/relational-databases/track-changes/about-change-tracking-sql-server) | [はい] |[はい] |
+| [照合順序ステートメント](https://docs.microsoft.com/sql/t-sql/statements/collations) | [はい] | [はい] |
+| [列ストア インデックス](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) | ○ - [Premium Edition のみ](https://docs.microsoft.com/sql/relational-databases/indexes/columnstore-indexes-overview) |[はい] |
+| [共通言語ランタイム (CLR)](https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-clr-integration-programming-concepts) | いいえ  | はい - [CLR の相違点](sql-database-managed-instance-transact-sql-information.md#clr)に関する記事を参照してください |
+| [包含データベース](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases) | [はい] | [はい] |
+| [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | [はい] | [はい] |
+| [フロー制御言語のキーワード](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | [はい] | [はい] |
+| [複数データベース間のクエリ](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | いいえ - [エラスティック クエリ](sql-database-elastic-query-overview.md)に関する記事を参照してください | はい - [エラスティック クエリ](sql-database-elastic-query-overview.md)に関する記事も参照してください |
+| [データベースにまたがるトランザクション]((https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine)) | いいえ  | [はい] |
+| [カーソル](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | [はい] |[はい] | 
+| [データ圧縮](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | [はい] |[はい] |
+| [データベース メール](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | いいえ  | [はい] |
+| [データ移行サービス (DMS)](https://docs.microsoft.com/sql/dma/dma-overview) | [はい] | [はい] |
+| [データベース ミラーリング](https://docs.microsoft.com/sql/database-engine/database-mirroring/database-mirroring-sql-server) | いいえ  | いいえ  |
+| [データベースの構成設定](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql) | [はい] | [はい] |
+| [Data Quality Services (DQS)](https://docs.microsoft.com/sql/data-quality-services/data-quality-services) | いいえ  | いいえ  |
+| [データベース スナップショット](https://docs.microsoft.com/sql/relational-databases/databases/database-snapshots-sql-server) | いいえ  | いいえ  |
+| [データ型](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql) | [はい] |[はい] |
+| [DBCC ステートメント](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-transact-sql) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください | はい - [DBCC の相違点](sql-database-managed-instance-transact-sql-information.md#dbcc)に関する記事を参照してください |
+| [DDL ステートメント](https://docs.microsoft.com/sql/t-sql/statements/statements) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください | はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
+| [DDL トリガー](https://docs.microsoft.com/sql/relational-databases/triggers/ddl-triggers) | データベースのみ |  [はい] |
+| [分散パーティション ビュー](https://docs.microsoft.com/sql/t-sql/statements/create-view-transact-sql#partitioned-views) | いいえ  | [はい] |
+| [分散トランザクション - MS DTC](https://docs.microsoft.com/sql/relational-databases/native-client-ole-db-transactions/supporting-distributed-transactions) | × - [エラスティック トランザクション](sql-database-elastic-transactions-overview.md)に関する記事を参照してください |  × - [エラスティック トランザクション](sql-database-elastic-transactions-overview.md)に関する記事を参照してください |
+| [DML ステートメント](https://docs.microsoft.com/sql/t-sql/queries/queries) | [はい] | [はい] |
+| [DML トリガー](https://docs.microsoft.com/sql/relational-databases/triggers/create-dml-triggers) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください |  [はい] |
+| [DMV](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views) | ほとんどの場合 - 個々の DMV に関する記事を参照してください |  はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
+|[動的データ マスク](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking)|[はい](sql-database-dynamic-data-masking-get-started.md)| [はい] |
+| [エラスティック プール](sql-database-elastic-pool.md) | [はい] | 単一のマネージ インスタンスは、同じリソース プールを共有する複数のデータベースを保持できます。 |
+| [イベント通知](https://docs.microsoft.com/sql/relational-databases/service-broker/event-notifications) | × - [アラート](sql-database-insights-alerts-portal.md)に関する記事を参照してください | [はい] |
+| [式](https://docs.microsoft.com/sql/t-sql/language-elements/expressions-transact-sql) |[はい] | [はい] |
+| [拡張イベント](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events) | 一部 - 「[SQL Database の拡張イベント](sql-database-xevent-db-diff-from-svr.md)」を参照してください | はい - [拡張イベントの相違点](sql-database-managed-instance-transact-sql-information.md#extended-events)を参照してください |
+| [拡張ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/extended-stored-procedures-programming/creating-extended-stored-procedures) | いいえ  | いいえ  |
+[ファイルおよびファイル グループ](https://docs.microsoft.com/sql/relational-databases/databases/database-files-and-filegroups) | プライマリ ファイル グループのみ | [はい] |
+| [FileStream](https://docs.microsoft.com/sql/relational-databases/blob/filestream-sql-server) | いいえ  | いいえ  |
+| [フルテキスト検索](https://docs.microsoft.com/sql/relational-databases/search/full-text-search) |  サード パーティのワード ブレーカーはサポートされていません |サード パーティのワード ブレーカーはサポートされていません |
+| [関数](https://docs.microsoft.com/sql/t-sql/functions/functions) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers)に関するページを参照してください |
+| [geo リストア](sql-database-recovery-using-backups.md#geo-restore) | [はい] | いいえ (定期的に取得する COPY_ONLY の完全バックアップを復元できます) - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)と[復元の相違点](sql-database-managed-instance-transact-sql-information.md#restore-statement)に関する記事を参照してください |
+| [geo レプリケーション](sql-database-geo-replication-overview.md) | [はい] | いいえ  |
+| [グラフの処理](https://docs.microsoft.com/sql/relational-databases/graphs/sql-graph-overview) | [はい] | [はい] |
+| [メモリ内の最適化](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization) | ○ - [Premium Edition のみ](sql-database-in-memory.md) | いいえ  |
+| [JSON データのサポート](https://docs.microsoft.com/sql/relational-databases/json/json-data-sql-server) | [はい] | [はい] |
+| [言語要素](https://docs.microsoft.com/sql/t-sql/language-elements/language-elements-transact-sql) | ほとんどの場合 - 個々の要素に関する記事を参照してください |  はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
+| [リンク サーバー](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | × - [エラスティック クエリ](sql-database-elastic-query-horizontal-partitioning.md)に関する記事を参照してください | SQL Server に対してのみ |
+| [ログ配布](https://docs.microsoft.com/sql/database-engine/log-shipping/about-log-shipping-sql-server) | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください |[高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください |
+| [マスター データ サービス (MDS)](https://docs.microsoft.com/sql/master-data-services/master-data-services-overview-mds) | いいえ  | いいえ  |
+| [一括インポートでの最小ログ記録](https://docs.microsoft.com/sql/relational-databases/import-export/prerequisites-for-minimal-logging-in-bulk-import) | いいえ  | いいえ  |
+| [システム データの変更](https://docs.microsoft.com/sql/relational-databases/databases/system-databases) | いいえ  | [はい] |
+| [オンライン インデックス操作](https://docs.microsoft.com/sql/relational-databases/indexes/perform-index-operations-online) | [はい] | [はい] |
+| [演算子](https://docs.microsoft.com/sql/t-sql/language-elements/operators-transact-sql) | ほとんどの場合 - 個々の演算子に関する記事を参照してください |はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
+| [パーティション分割](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | [はい] | [はい] |
+| [データベースのポイントインタイム リストア](https://docs.microsoft.com/sql/relational-databases/backup-restore/restore-a-sql-server-database-to-a-point-in-time-full-recovery-model) | ○ - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください | ○ - [SQL Database の復旧](sql-database-recovery-using-backups.md#point-in-time-restore)に関する記事を参照してください |
+| [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | いいえ  | いいえ  |
+| [ポリシーベースの管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | いいえ  | いいえ  |
+| [述語](https://docs.microsoft.com/sql/t-sql/queries/predicates) | [はい] | [はい] |
+| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | プレビュー リリース: [Machine Learning の新機能](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) に関する記事をご覧ください  | いいえ  |
+| [リソース ガバナー](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | いいえ  | いいえ  |
+| [RESTORE ステートメント](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | いいえ  | はい - [復元の相違点](sql-database-managed-instance-transact-sql-information.md#restore-statement)に関する記事を参照してください |
+| [バックアップからデータベースを復元する](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 自動バックアップからのみ - [SQL Database の復旧](sql-database-recovery-using-backups.md)に関する記事をご覧ください | 自動バックアップから - [SQL Database の復旧](sql-database-recovery-using-backups.md)を参照してください。完全バックアップから - [バックアップの相違点](sql-database-managed-instance-transact-sql-information.md#backup)を参照してください |
+| [行レベルのセキュリティ](https://docs.microsoft.com/sql/relational-databases/security/row-level-security) | [はい] | [はい] |
+| [セマンティック検索](https://docs.microsoft.com/sql/relational-databases/search/semantic-search-sql-server) | いいえ  | いいえ  |
+| [シーケンス番号](https://docs.microsoft.com/sql/relational-databases/sequence-numbers/sequence-numbers) | [はい] | [はい] |
+| [Service Broker](https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker) | いいえ  | はい - [Service Broker の相違点](sql-database-managed-instance-transact-sql-information.md#service-broker)に関する記事を参照してください |
+| [サーバーの構成設定](https://docs.microsoft.com/sql/database-engine/configure-windows/server-configuration-options-sql-server) | いいえ  | はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
+| [SET ステートメント](https://docs.microsoft.com/sql/t-sql/statements/set-statements-transact-sql) | ほとんどの場合 - 個々のステートメントに関する記事を参照してください | はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください|
+| [SMO](https://docs.microsoft.com/sql/relational-databases/server-management-objects-smo/sql-server-management-objects-smo-programming-guide) | [はい] | [はい] |
+| [Spatial](https://docs.microsoft.com/sql/relational-databases/spatial/spatial-data-sql-server) | [はい] | [はい] |
+| [SQL データ同期](sql-database-get-started-sql-data-sync.md) | [はい] | [はい] |
+| [SQL Operations Studio](https://docs.microsoft.com/sql/sql-operations-studio/what-is) | [はい] | [はい] |
+| [SQL Server エージェント](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent) | × - [エラスティック ジョブ](sql-database-elastic-jobs-getting-started.md)に関する記事を参照してください | はい - [SQL Server エージェントの相違点](sql-database-managed-instance-transact-sql-information.md#sql-server-agent)に関する記事を参照してください |
+| [SQL Server Analysis Services (SSAS)](https://docs.microsoft.com/sql/analysis-services/analysis-services) | いいえ - [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) に関する記事を参照してください | × - [Azure Analysis Services](https://azure.microsoft.com/services/analysis-services/) に関する記事を参照してください |
+| [SQL Server 監査](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) | × - [SQL Database の監査](sql-database-auditing.md)に関する記事を参照してください | はい - [監査の相違点](sql-database-managed-instance-transact-sql-information.md#auditing)に関するページを参照してください |
+| [SQL Server Data Tools (SSDT)] (https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt) | [はい] | [はい] |
+| [SQL Server Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/sql-server-integration-services) | 一部 – SQL Server Data Tools のパッケージ開発はサポートされません | いいえ、パブリック プレビューにはありません |
+| [SQL Server Management Studio (SSMS)](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) | [はい] | [はい] |
+| [SQL Server PowerShell](https://docs.microsoft.com/sql/relational-databases/scripting/sql-server-powershell) | [はい] | [はい] |
+| [SQL Server Profiler](https://docs.microsoft.com/sql/tools/sql-server-profiler/sql-server-profiler) | × - [拡張イベント](sql-database-xevent-db-diff-from-svr.md)に関する記事を参照してください | [はい] |
+| [SQL Server レプリケーション](https://docs.microsoft.com/sql/relational-databases/replication/sql-server-replication) | [トランザクション レプリケーションとスナップショット レプリケーションのサブスクライバーのみ](sql-database-cloud-migrate.md) | いいえ  |
+| [SQL Server Reporting Services (SSRS)](https://docs.microsoft.com/sql/reporting-services/create-deploy-and-manage-mobile-and-paginated-reports) | いいえ - [Power BI](https://docs.microsoft.com/power-bi/) に関する記事を参照してください | いいえ - [Power BI](https://docs.microsoft.com/power-bi/) に関する記事を参照してください |
+| [ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/stored-procedures/stored-procedures-database-engine) | [はい] | [はい] |
+| [システム ストアド関数](https://docs.microsoft.com/sql/relational-databases/system-functions/system-functions-for-transact-sql) | ほとんどの場合 - 個々の関数に関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers)に関するページを参照してください |
+| [システム ストアド プロシージャ](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/system-stored-procedures-transact-sql) | 一部 - 個々のストアド プロシージャに関する記事を参照してください | はい - [ストアド プロシージャ、関数、トリガーの相違点](sql-database-managed-instance-transact-sql-information.md#stored-procedures-functions-triggers)に関するページを参照してください |
+| [システム テーブル](https://docs.microsoft.com/sql/relational-databases/system-tables/system-tables-transact-sql) | 一部 - 個々のテーブルに関する記事を参照してください | はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
+| [システム カタログ ビュー](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/catalog-views-transact-sql) | 一部 - 個々のビューに関する記事を参照してください | はい - [T-SQL の相違点](sql-database-managed-instance-transact-sql-information.md)に関する記事を参照してください |
+| [一時テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#database-scoped-global-temporary-tables-azure-sql-database) | ローカルおよびデータベース スコープのグローバル一時テーブル | ローカルおよびインスタンス スコープのグローバル一時テーブル |
+| [テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | [はい] | [はい] |
+| [トレース フラグ](https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql) | いいえ  | いいえ  |
+| [変数](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | [はい] | [はい] |
+| [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | [はい] | いいえ、パブリック プレビューにはありません |
+[VNet](../virtual-network/virtual-networks-overview.md) | 一部 - [VNET エンドポイント](sql-database-vnet-service-endpoint-rule-overview.md)に関する記事を参照してください | はい (Resource Manager モデルのみ) |
+| [Windows Server フェールオーバー クラスタリング](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください | [高可用性](sql-database-high-availability.md)は、どのデータベースにも組み込まれています。 ディザスター リカバリーに関する解説は、「[Azure SQL Database によるビジネス継続性の概要](sql-database-business-continuity.md)」を参照してください |
+| [XML インデックス](https://docs.microsoft.com/sql/t-sql/statements/create-xml-index-transact-sql) | [はい] | [はい] |
 
 ## <a name="next-steps"></a>次の手順
 
 - Azure SQL Database のサービスについては、「[SQL Database とは](sql-database-technical-overview.md)」を参照してください。
-- Transact-SQL のサポートと違いについては、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。
+- マネージ インスタンスについては、「[What is a Managed Instance?](sql-database-managed-instance.md)」(マネージ インスタンスとは) を参照してください。

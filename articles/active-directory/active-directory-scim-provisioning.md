@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory で SCIM を使用してアプリのプロビジョニングを自動化する | Microsoft Docs"
-description: "Azure Active Directory では、SCIM プロトコル仕様のインターフェイスを持つ Web サービスによってアクセスされるアプリケーションや ID ストアにユーザーやグループを自動的にプロビジョニングできます"
+title: Azure Active Directory で SCIM を使用してアプリのプロビジョニングを自動化する | Microsoft Docs
+description: Azure Active Directory では、SCIM プロトコル仕様のインターフェイスを持つ Web サービスによってアクセスされるアプリケーションや ID ストアにユーザーやグループを自動的にプロビジョニングできます
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser-msft
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 4d86f3dc-e2d3-4bde-81a3-4a0e092551c0
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: asmalser
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 17732ae616339020f11bc8973dc57b6d0fff4884
-ms.sourcegitcommit: 7edfa9fbed0f9e274209cec6456bf4a689a4c1a6
+ms.openlocfilehash: 3b7f2f104046313e7d60cea4ef296f265d204aec
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/17/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="using-system-for-cross-domain-identity-management-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>System for Cross-Domain Identity Management を使用して Azure Active Directory からユーザーとグループをアプリケーションに自動的にプロビジョニングする
 
@@ -685,7 +685,7 @@ Azure Active Directory は、2 種類のリソースを SCIM Web サービスに
 ## <a name="group-provisioning-and-de-provisioning"></a>グループのプロビジョニングとプロビジョニング解除
 次の図は、別の ID ストア内にあるグループのライフサイクルを管理するために Azure AD から SCIM サービスに送信されるメッセージを示しています。  これらのメッセージは、ユーザーの場合のメッセージと次の 3 つの点で異なっています。 
 
-* グループ リソースのスキーマは、http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group として識別されます。  
+* グループ リソースのスキーマは、`http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group` として識別されます。  
 * グループを取得する要求では、要求に対する応答で提供されるリソースから members 属性を除外するよう指定されます。  
 * 参照属性に特定の値があるかどうかを判別する要求は、members 属性に関する要求になります。  
 

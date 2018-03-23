@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database インメモリ テクノロジ | Microsoft Docs"
-description: "Azure SQL Database インメモリは、トランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上するテクノロジです。"
+title: Azure SQL Database インメモリ テクノロジ | Microsoft Docs
+description: Azure SQL Database インメモリは、トランザクション ワークロードと分析ワークロードのパフォーマンスを大幅に向上するテクノロジです。
 services: sql-database
-documentationCenter: 
 author: jodebrui
-manager: jhubbard
-editor: 
-ms.assetid: 250ef341-90e5-492f-b075-b4750d237c05
+manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2017
 ms.author: jodebrui
-ms.openlocfilehash: 23b313a473b93ba0eab7fc4cf97a5d26bfa31505
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 107df78f0ec6ce924785f5027958ee66f2a86c7c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>SQL Database でのインメモリ テクノロジを使用したパフォーマンスの最適化
 
@@ -164,7 +158,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 3. [インメモリ OLTP Transact-SQL スクリプト](https://raw.githubusercontent.com/Microsoft/sql-server-samples/master/samples/features/in-memory/t-sql-scripts/sql_in-memory_oltp_sample.sql) をクリップボードにコピーします。 この T-SQL スクリプトによって、手順 1. で作成した AdventureWorksLT サンプル データベース内に、必要なインメモリ オブジェクトが作成されます。
 
-4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 `MEMORY_OPTIMIZED = ON` 句の CREATE TABLE ステートメントが重要です。 次に例を示します。
+4. T-SQL スクリプトを SSMS に貼り付け、スクリプトを実行します。 `MEMORY_OPTIMIZED = ON` 句の CREATE TABLE ステートメントが重要です。 例: 
 
 
 ```
@@ -493,7 +487,7 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [クイック スタート 1: T-SQL のパフォーマンスの高速化のためのインメモリ OLTP テクノロジ](http://msdn.microsoft.com/library/mt694156.aspx)
 
@@ -526,7 +520,7 @@ P2 価格レベルのデータベースでは、クラスター化列ストア �
 
 #### <a name="tools"></a>ツール
 
-- [Azure ポータル](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

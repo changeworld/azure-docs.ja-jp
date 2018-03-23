@@ -11,6 +11,7 @@
 ## [IPv6 サポート](load-balancer-ipv6-overview.md)
 ## [複数の VIP](load-balancer-multivip-overview.md)
 ## [送信用接続の詳細](load-balancer-outbound-connections.md)
+## [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)
 
 # 作業の開始
 
@@ -49,6 +50,7 @@
 ### [Azure Load Balancer のトラブルシューティング](load-balancer-troubleshoot.md)
 
 ## クラシック デプロイメント モデルに関する記事
+### [送信接続 (クラシック)](load-balancer-outbound-connections-classic.md)
 ### [Cloud Services の内部ロード バランサーを構成する](load-balancer-get-started-ilb-classic-cloud.md)
 #### [Cloud Services の内部ロード バランサーを構成する (PowerShell)](load-balancer-get-started-ilb-classic-ps.md)
 #### [Cloud Services の内部ロード バランサーを構成する (CLI)](load-balancer-get-started-ilb-classic-cli.md)
@@ -62,7 +64,7 @@
 ## [Azure CLI](/cli/azure/network/lb)
 ## [.NET](/dotnet/api/microsoft.azure.management.network.models)
 ## [Java](/java/api/com.microsoft.azure.management.network)
-## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html)
+## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations)
 ## [REST](https://msdn.microsoft.com/library/azure/mt163651.aspx)

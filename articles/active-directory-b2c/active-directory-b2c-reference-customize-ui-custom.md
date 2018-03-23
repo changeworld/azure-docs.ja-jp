@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory B2C: リファレンス: カスタム ポリシーでユーザー体験の UI をカスタマイズする | Microsoft Docs"
-description: "Azure Active Directory B2C のカスタム ポリシーに関するトピック"
+title: 'Azure Active Directory B2C: リファレンス: カスタム ポリシーでユーザー体験の UI をカスタマイズする | Microsoft Docs'
+description: Azure Active Directory B2C のカスタム ポリシーに関するトピック
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: rojasja
 manager: mtillman
 editor: rojasja
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
 ms.openlocfilehash: 40245c25a7f80db27a25a0d34eb20f1057fc5e02
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -75,7 +75,7 @@ Azure AD B2C では、さまざまなページでのユーザー エクスペリ
 > コンテンツをホストしているサイトで CORS が有効になっていることを確認し、CORS 要求をテストするには、サイト http://test-cors.org/ を使用します。 このサイトでは、(CORS がサポートされているかどうかをテストするために) CORS 要求をリモート サーバー、または (CORS の特定の機能を使ってみるために) テスト サーバーに送信できます。
 
 > [!TIP]
-> サイト http://enable-cors.org/ では、CORS の非常に有用なリソースが構成されています。
+> サイト http://enable-cors.org/ では、CORS に有用なリソースが構成されています。
 
 この CORS ベースのアプローチにより、エンド ユーザーはアプリケーションと Azure AD B2C によって提供されたページの間で、一貫したエクスペリエンスを得ることができます。
 
@@ -122,7 +122,7 @@ Azure AD B2C Premium でコンテンツの読み込みに使用するエンド�
 
 コンテンツをホストしているストレージで CORS が有効になっていることを確認するために、次の手順に進みます。
 
-1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、https://contoso369b2c.blob.core.windows.net/b2c/unified.html などです。
+1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、「https://contoso369b2c.blob.core.windows.net/b2c/unified.html」のように入力します。
 2. http://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)

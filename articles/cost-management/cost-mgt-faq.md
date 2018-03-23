@@ -1,24 +1,24 @@
 ---
-title: "Azure Cost Management に関してよく寄せられる質問 | Microsoft Docs"
-description: "Azure Cost Management についてよく寄せられる質問にお答えします。"
+title: Azure Cost Management に関してよく寄せられる質問 | Microsoft Docs
+description: Azure Cost Management についてよく寄せられる質問にお答えします。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/14/2018
 ms.topic: article
 ms.service: cost-management
 manager: carmonm
-ms.custom: 
-ms.openlocfilehash: 0d33f434dccae7836ae7774afbdf9b80d4685eb4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 8920ff082fa1b442aa147068080085c40760e290
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="frequently-asked-questions-for-azure-cost-management"></a>Azure Cost Management に関してよく寄せられる質問
 
-この記事では、Azure Cost Management についてよく寄せられる質問にお応えします (Cloudyn とも呼ばれます)。 Cost Management について質問がある場合は、「[FAQs for Azure Cost Management by Cloudyn (Azure Cost Management by Cloudyn に関する FAQ)](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn)」で質問してください。
+この記事では、Azure Cost Management についてよく寄せられる質問にお応えします (Cloudyn とも呼ばれます)。 Cost Management について質問がある場合は、「[FAQs for Azure Cost Management (Azure Cost Management に関する FAQ)](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn)」で質問してください。
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>間接加入契約のエンタープライズ設定に関する問題全般を解決するにはどうすればよいですか
 
@@ -143,7 +143,6 @@ Azure から Cloudyn へのデータの送信が遅延した場合、データ�
 Azure Resource Manager アクセスを追加し、データが収集されると、**オプティマイザー** オプションが表示されます。 Azure Resource Manager アクセスをアクティブにするには、「[Azure の資格情報でアクティブになっていないアカウントをアクティブにする方法を教えてください](#how-do-i-activate-unactivated-accounts-with-azure-credentials)」を参照してください
 
 ## <a name="is-cost-managementcloudyn-agent-based"></a>Cost Management/Cloudyn エージェントがベースになっていますか
-
 
 いいえ。 エージェントは使用されていません。 VM の Azure 仮想マシンのメトリック データは、Microsoft Insights API から収集されます。 Azure VM からメトリック データを収集する場合は、診断設定を有効にする必要があります。
 

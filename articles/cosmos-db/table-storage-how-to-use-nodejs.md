@@ -1,6 +1,6 @@
 ---
-title: "Node.js から Azure Table Storage を使用する方法 | Microsoft Docs"
-description: "NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
+title: Node.js から Azure Table Storage または Azure Cosmos DB を使用する方法 | Microsoft Docs
+description: Azure Table Storage または Azure Cosmos DB を使用して、構造化データをクラウドに格納します。
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,25 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/06/2018
 ms.author: mimig
-ms.openlocfilehash: 0b412be8b93e1f871c09b7a4452141ac334d53ae
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: dcd729da0b9e913046da1ad5619594f5ce485bdb
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Node.js から Azure Table Storage を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>概要
-このトピックでは、Node.js アプリケーションで Azure Table service を使用して一般的なシナリオを実行する方法について説明します。
-
-このトピックのコード例は、既に Node.js アプリケーションがあることを前提としています。 Azure で Node.js アプリケーションを作成する方法については、次のいずれかのトピックを参照してください。
-
-* [Azure App Service での Node.js Web アプリの作成](../app-service/app-service-web-get-started-nodejs.md)
-* [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (Windows PowerShell を使用)
+この記事では、Node.js アプリケーションで Azure Storage Table サービスまたは Azure Comsos DB を使用して一般的なシナリオを実行する方法について説明します。
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
@@ -53,7 +48,7 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
        +-- readable-stream@1.0.33 (string_decoder@0.10.31, isarray@0.0.1, inherits@2.0.1, core-util-is@1.0.1)
        +-- xml2js@0.2.7 (sax@0.5.2)
        +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
-3. 手動で **ls** コマンドを実行して、**node\_modules** フォルダーが作成されたことを確認することもできます。 このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
+3. 手動で **ls** コマンドを実行して、**node_modules** フォルダーが作成されたことを確認することもできます。 このフォルダーに **azure-storage** パッケージがあります。このパッケージには、ストレージにアクセスするために必要なライブラリが含まれています。
 
 ### <a name="import-the-package"></a>パッケージをインポートする
 アプリケーションの **server.js** ファイルの先頭に次のコードを追加します。
@@ -62,11 +57,22 @@ Azure Storage を使用するには、Azure Storage SDK for Node.js が必要で
 var azure = require('azure-storage');
 ```
 
-## <a name="set-up-an-azure-storage-connection"></a>Azure Storage の接続文字列の設定
-Azure モジュールは、Azure のストレージ アカウントに接続するために必要な情報として、環境変数 AZURE\_STORAGE\_ACCOUNT と AZURE\_STORAGE\_ACCESS\_KEY、または AZURE\_STORAGE\_CONNECTION\_STRING を読み取ります。 これらの環境変数が設定されていない場合、 **TableService**を呼び出すときにアカウント情報を指定する必要があります。
+## <a name="add-an-azure-storage-connection"></a>Azure Storage 接続を追加する
+Azure モジュールは、Azure Storage アカウントに接続するために必要な情報として、環境変数の AZURE_STORAGE_ACCOUNT と AZURE_STORAGE_ACCESS_KEY、または AZURE_STORAGE_CONNECTION_STRING を読み取ります。 これらの環境変数が設定されていない場合、 **TableService**を呼び出すときにアカウント情報を指定する必要があります。 たとえば、次のコードでは、**TableService** オブジェクトを作成します。
+
+```nodejs
+var tableSvc = azure.createTableService('myaccount', 'myaccesskey');
+```
+
+## <a name="add-an-azure-comsos-db-connection"></a>Azure Comsos DB 接続を追加する
+Azure Cosmos DB 接続を追加するには、**TableService** オブジェクトを作成し、アカウント名、主キー、およびエンドポイントを指定します。 これらの値は、自分の Cosmos DB アカウントの Azure Portal で **[設定]** > **[接続文字列]** を選択することによりコピーできます。 例: 
+
+```nodejs
+var tableSvc = azure.createTableService('myaccount', 'myprimarykey', 'myendpoint');
+```  
 
 ## <a name="create-a-table"></a>テーブルを作成する
-次のコードは、 **TableService** オブジェクトを作成し、これを使用して新しいテーブルを作成します。 **server.js**ファイルの先頭付近に次の内容を追加します。
+次のコードは、 **TableService** オブジェクトを作成し、これを使用して新しいテーブルを作成します。 
 
 ```nodejs
 var tableSvc = azure.createTableService();
@@ -82,22 +88,22 @@ tableSvc.createTableIfNotExists('mytable', function(error, result, response){
 });
 ```
 
-新しいテーブルを作成する場合、`result.created`は `true` になります。テーブルが既に存在する場合は `false` になります。 `response`には要求に関する情報が含まれます。
+新しいテーブルを作成する場合、`result.created` は `true` です。テーブルが既に存在する場合は `false` です。 `response` には要求に関する情報が含まれます。
 
 ### <a name="filters"></a>フィルター
-オプションのフィルター操作は、**TableService** を使って行われる操作に適用できます。 フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
+オプションのフィルタリングは、**TableService** を使って行われる操作に適用できます。 フィルター操作には、ログや自動的な再試行などが含まれる場合があります。フィルターは、次のシグネチャを持つメソッドを実装するオブジェクトです。
 
 ```nodejs
 function handle (requestOptions, next)
 ```
 
-要求オプションに対するプリプロセスを行った後で、このメソッドは "next" を呼び出して、次のシグネチャのコールバックを渡す必要があります。
+要求オプションに対するプリプロセスを行った後で、このメソッドは **next** を呼び出して、次のシグネチャのコールバックを渡す必要があります。
 
 ```nodejs
 function (returnObject, finalCallback, next)
 ```
 
-このコールバックで、returnObject (サーバーへの要求からの応答) の処理の後に、コールバックは next を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に finalCallback を呼び出す必要があります (サービス呼び出しを終了する場合)。
+このコールバックで、**returnObject** (サーバーへの要求からの応答) の処理の後に、コールバックは **next** を呼び出すか (他のフィルターの処理を続けるために next が存在する場合)、単に **finalCallback** を呼び出す必要があります (サービス呼び出しを終了する場合)。
 
 再試行のロジックを実装する 2 つのフィルター (**ExponentialRetryPolicyFilter** と **LinearRetryPolicyFilter**) が、Azure SDK for Node.js に含まれています。 次のコードは、**ExponentialRetryPolicyFilter** を使う **TableService** オブジェクトを作成します。
 
@@ -161,7 +167,7 @@ tableSvc.insertEntity('mytable',task, function (error, result, response) {
 ```
 
 > [!NOTE]
-> 既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。 このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、 `result`の一部として返されるようにすると便利です。 そのためには、次のように **echoContent** を有効にします。
+> 既定では、**insertEntity** は、`response` 情報の一部として、挿入されたエンティティを返しません。 このエンティティに対して他の操作を実行する予定がある場合、または情報をキャッシュする場合は、`result` の一部として返されるようにすると便利です。 そのためには、次のように **echoContent** を有効にします。
 >
 > `tableSvc.insertEntity('mytable', task, {echoContent: true}, function (error, result, response) {...}`
 >
@@ -196,7 +202,7 @@ tableSvc.replaceEntity('mytable', updatedTask, function(error, result, response)
 >
 >
 
-**replaceEntity** と **mergeEntity** では、更新されるエンティティが存在しない場合、更新操作は失敗します。 したがって、既に存在しているかどうかに関係なくエンティティを格納するには、代わりに **insertOrReplaceEntity** または **insertOrMergeEntity** を使います。
+**replaceEntity** および **mergeEntity** では、更新するエンティティが存在しないと、更新操作が失敗します。したがって、更新するエンティティが既に存在するかどうかにかかわらずにエンティティを格納する場合は、**insertOrReplaceEntity** または **insertOrMergeEntity** を使用します。
 
 成功した更新操作の `result` には、更新されたエンティティの **Etag** が含まれます。
 
@@ -231,10 +237,10 @@ tableSvc.executeBatch('mytable', batch, function (error, result, response) {
 });
 ```
 
-バッチ操作が成功した場合、 `result` にはバッチ内の各操作の情報が含まれます。
+バッチ操作が成功した場合、`result` にはバッチ内の各操作の情報が含まれます。
 
 ### <a name="work-with-batched-operations"></a>バッチ操作の処理
-バッチに追加された操作は、 `operations` プロパティで確認できます。 次のメソッドを使用して操作を処理できます。
+バッチに追加された操作を検査するには、`operations` プロパティを確認します。 次のメソッドを使用して操作を処理できます。
 
 * **clear** - バッチのすべての操作をクリアします。
 * **getOperations** - バッチから操作を取得します。
@@ -253,7 +259,7 @@ tableSvc.retrieveEntity('mytable', 'hometasks', '1', function(error, result, res
 });
 ```
 
-この操作を完了すると、 `result` にはエンティティが含まれます。
+この操作を完了すると、`result` にはエンティティが含まれます。
 
 ## <a name="query-a-set-of-entities"></a>エンティティのセットを照会する
 テーブルを照会するには、 **TableQuery** オブジェクトを使用し、以下の句を使用してクエリ式を作成します。
@@ -283,7 +289,7 @@ tableSvc.queryEntities('mytable',query, null, function(error, result, response) 
 });
 ```
 
-成功した場合は、 `result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、 `result.continuationToken` は*null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
+成功した場合は、`result.entries` にはクエリに一致するエンティティの配列が含まれます。 クエリですべてのエンティティを返すことができなかった場合、`result.continuationToken` は*null* 以外になり、さらに結果を取得するために、これを **queryEntities** の 3 番目のパラメーターとして使用できます。 最初のクエリでは、3 番目のパラメーターに *null* を使用します。
 
 ### <a name="query-a-subset-of-entity-properties"></a>エンティティ プロパティのサブセットを照会する
 テーブルに対するクエリでは、ごくわずかのフィールドだけをエンティティから取得できます。
@@ -333,9 +339,9 @@ tableSvc.deleteTable('mytable', function(error, response){
 ## <a name="use-continuation-tokens"></a>継続トークンを使用する
 テーブルに対するクエリによって大量の結果が返される場合は、継続トークンを探します。 クエリの対象となるデータは大量になる可能性があります。継続トークンが存在するときにわかるようにしていない場合はこの事実に気付かない可能性があります。
 
-エンティティを照会したときに返される結果オブジェクトは、このようなトークンが存在する場合に `continuationToken` プロパティを設定します。 クエリを実行するときにこれを使用して、後続のパーティションおよびテーブル エンティティに移動できます。
+エンティティを照会したときに返される **results** オブジェクトは、このようなトークンが存在する場合に `continuationToken` プロパティを設定します。 クエリを実行するときにこれを使用して、後続のパーティションおよびテーブル エンティティに移動できます。
 
-クエリを実行するとき、クエリ オブジェクト インスタンスとコールバック関数の間に continuationToken パラメーターを指定することができます。
+クエリを実行するとき、クエリ オブジェクト インスタンスとコールバック関数の間に `continuationToken` パラメーターを指定することができます。
 
 ```nodejs
 var nextContinuationToken = null;
@@ -356,7 +362,7 @@ dc.table.queryEntities(tableName,
 
 `continuationToken` オブジェクトには `nextPartitionKey`、`nextRowKey`、`targetLocation` などのプロパティがあり、これらを使用してすべての結果を反復処理できます。
 
-GitHub の Azure Storage の Node.js のリポジトリには継続のサンプルも用意されています。 `examples/samples/continuationsample.js`を参照してください。
+GitHub の [azure-storage-node リポジトリ](https://github.com/Azure/azure-storage-node/tree/master/examples/samples) には、継続のサンプル (continuationsample.js) もあります。 
 
 ## <a name="work-with-shared-access-signatures"></a>共有アクセス署名を操作する
 共有アクセス署名 (SAS) は、ストレージ アカウントの名前またはキーを指定せずにテーブルへの細密なアクセスを提供する安全な方法です。 多くの場合、SAS は、モバイル アプリでのレコードの照会などデータへの限定的なアクセスのために使用されます。
@@ -399,7 +405,7 @@ sharedTableService.queryEntities(query, null, function(error, result, response) 
 });
 ```
 
-SAS がクエリ アクセスのみで生成された場合は、エンティティの挿入、更新、または削除を試行するとエラーが返されます。
+SAS がクエリ アクセスのみで生成されたので、エンティティの挿入、更新、または削除を試行するとエラーが返されます。
 
 ### <a name="access-control-lists"></a>アクセス制御リスト
 SAS のアクセス ポリシーを設定するために、アクセス制御リスト (ACL) も使用できます。 複数のクライアントにテーブルへのアクセスを許可し、各クライアントに異なるアクセス ポリシーを提供する場合に便利です。
@@ -447,6 +453,7 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 詳細については、次のリソースを参照してください。
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
-* [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) リポジトリ
-* [Node.js デベロッパー センター](/develop/nodejs/)
-* [Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ](../app-service/app-service-web-get-started-nodejs.md)
+* GitHub の [Azure Storage SDK for Node.js](https://github.com/Azure/azure-storage-node) リポジトリ
+* [Node.js 開発者向けの Azure](https://docs.microsoft.com/javascript/azure/?view=azure-node-latest)
+* [Azure で Node.js Web アプリを作成する](../app-service/app-service-web-get-started-nodejs.md)
+* [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (Windows PowerShell を使用)

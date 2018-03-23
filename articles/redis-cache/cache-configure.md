@@ -1,6 +1,6 @@
 ---
-title: "Azure Redis Cache の構成方法 | Microsoft Docs"
-description: "Azure Redis Cache の既定の Redis 構成を理解し、Azure Redis Cache インスタンスの構成方法について説明します。"
+title: Azure Redis Cache の構成方法 | Microsoft Docs
+description: Azure Redis Cache の既定の Redis 構成を理解し、Azure Redis Cache インスタンスの構成方法について説明します。
 services: redis-cache
 documentationcenter: na
 author: wesmc7777
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: a65832a30a570944ff30d02c2f173df345bde32c
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: fa78c42ce93729379d3c532f94bc67bb8c069d53
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache の構成方法
-このトピックでは、Azure Redis Cache インスタンスの構成を確認し、更新する方法と、Azure Redis Cache インスタンス用の既定の Redis サーバー構成について説明します。
+このトピックでは、Azure Redis Cache インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Redis Cache インスタンスの既定の Redis サーバー構成についても説明します。
 
 > [!NOTE]
 > Premium キャッシュ機能の構成と使用の詳細については、[永続化の構成方法](cache-how-to-premium-persistence.md)、[クラスタリングの構成方法](cache-how-to-premium-clustering.md)、[Virtual Network のサポートの構成方法](cache-how-to-premium-vnet.md)に関する各記事をご覧ください。
@@ -79,7 +79,7 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 
 ### <a name="access-control-iam"></a>アクセス制御 (IAM)
 
-**[アクセス制御 (IAM)]** セクションでは、Azure ポータルでのロールベースのアクセス制御 (RBAC) をサポートしているため、組織はアクセス管理の要件を簡単かつ正確に満たすことができます。 詳細については、 [Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページをご覧ください。
+**[アクセス制御 (IAM)]** セクションでは、Azure Portal でのロールベースのアクセス制御 (RBAC) のサポートが提供されます。 この構成により、組織は簡単かつ正確にアクセス管理要件を満たすことができます。 詳細については、 [Azure ポータルでのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページをご覧ください。
 
 ### <a name="tags"></a>タグ
 
@@ -136,7 +136,7 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 
 **[Maxmemory ポリシー]** ではキャッシュの削除ポリシーが構成されます。次の削除ポリシーから選択できます。
 
-* `volatile-lru` - 既定のプランです。
+* `volatile-lru` -これは、既定の削除ポリシーです。
 * `allkeys-lru`
 * `volatile-random`
 * `allkeys-random`
@@ -147,9 +147,9 @@ Azure Redis Cache の設定の表示と構成は、**[Redis Cache]** ブレー�
 
 **maxmemory-reserved** 設定は、フェールオーバーに伴うレプリケーションなどのキャッシュ以外の操作のために予約されているメモリの量を、MB 単位で構成するものです。 この値を設定すると、負荷が変化するときでも、Redis サーバーの稼働状態がより安定します。 この値は、書き込みが大量に発生するワークロードに対しては、高く設定する必要があります。 メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
 
-**[maxfragmentationmemory-reserved]** 設定では、メモリの断片化に対応するために予約されるメモリ量を MB 単位で構成します。 この値を設定すると、キャッシュがいっぱいになった場合や、キャッシュがほとんどいっぱいで断片化の割合も高い場合でも、Redis サーバーの動作がより安定します。 メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
+**[maxfragmentationmemory-reserved]** 設定では、メモリの断片化に対応するために予約されるメモリ量を MB 単位で構成します。 この値を設定すると、キャッシュがいっぱいになった場合や、キャッシュがほとんどいっぱいで断片化の割合が高い場合でも、Redis サーバーの動作がより安定します。 メモリがこのような操作のために予約されていると、キャッシュされたデータの保存に使用できなくなります。
 
-新しいメモリ予約値 (**maxmemory-reserved** または **maxfragmentationmemory-reserved**) を選択する際には、この変更によってすでに大量のデータが入っているキャッシュがどのような影響を受けるのかを考慮する必要があります。 たとえば、53 GB のキャッシュに 49 GB のデータが入っているときに、予約値を 8 GB に変更すると、システムで利用可能な最大メモリは 45 GB まで低下します。 現在の `used_memory` または `used_memory_rss` が新しい上限値の 45 GB よりも大きい場合、システムでは、`used_memory` と `used_memory_rss` の両方が 45 GB を下回るまでデータを削除しなければならなくなります。 削除することによってサーバーの負荷やメモリの断片化が増える可能性もあります。 `used_memory` や `used_memory_rss` などのキャッシュに関するメトリックの詳細については、「[使用可能なメトリックとレポート期間](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)」をご覧ください。
+新しいメモリ予約値 (**maxmemory-reserved** または **maxfragmentationmemory-reserved**) を選択する際には、この変更によってすでに大量のデータが入っているキャッシュがどのような影響を受けるのかを考慮する必要があります。 たとえば、53 GB のキャッシュに 49 GB のデータが入っているときに、予約値を 8 GB に変更した場合、この変更によりシステムで利用可能な最大メモリは 45 GB まで低下します。 現在の `used_memory` または `used_memory_rss` が新しい上限値の 45 GB よりも大きい場合、システムでは、`used_memory` と `used_memory_rss` の両方が 45 GB を下回るまでデータを削除しなければならなくなります。 削除することによってサーバーの負荷やメモリの断片化が増える可能性もあります。 `used_memory` や `used_memory_rss` などのキャッシュに関するメトリックの詳細については、「[使用可能なメトリックとレポート期間](cache-how-to-monitor.md#available-metrics-and-reporting-intervals)」をご覧ください。
 
 > [!IMPORTANT]
 > **maxmemory-reserved** と **maxfragmentationmemory-reserved** 設定は、Standard キャッシュと Premium キャッシュにのみ使用可能です。
@@ -269,7 +269,9 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 ### <a name="firewall"></a>ファイアウォール
 
-Premium Azure Redis Cache のファイアウォール ルールを表示して構成するには、**[ファイアウォール]** をクリックします。
+ファイアウォール ルール構成は、すべての Azure Redis Cache 層で利用できます。
+
+キャッシュのファイアウォール ルールを表示して構成するには、**[ファイアウォール]** をクリックします。
 
 ![ファイアウォール](./media/cache-configure/redis-firewall-rules.png)
 
@@ -386,7 +388,7 @@ Export では、Azure Redis Cache に格納されたデータを、Redis と互�
 新しい Azure Redis Cache インスタンスに適用される既定の Redis 構成値は、次のとおりです。
 
 > [!NOTE]
-> `StackExchange.Redis.IServer.ConfigSet` メソッドを使用してこのセクションの設定を変更することはできません。 このセクションのいずれかのコマンドでこのメソッドを呼び出すと、次のような例外がスローされます。  
+> `StackExchange.Redis.IServer.ConfigSet` メソッドを使用してこのセクションの設定を変更することはできません。 このセクションのいずれかのコマンドでこのメソッドを呼び出すと、次の例のような例外がスローされます。  
 > 
 > `StackExchange.Redis.RedisServerException: ERR unknown command 'CONFIG'`
 > 
@@ -394,10 +396,10 @@ Export では、Azure Redis Cache に格納されたデータを、Redis と互�
 > 
 > 
 
-| 設定 | 既定値 | [説明] |
+| Setting | 既定値 | [説明] |
 | --- | --- | --- |
 | `databases` |16 |データベースの既定の数は 16 ですが、価格レベルに基づいてさまざまな数を構成できます。<sup>1</sup> 既定のデータベースは DB 0 です。`dbid` が `0` ～ `databases - 1` の間の数値である `connection.GetDatabase(dbid)` を使用して、接続ごとに異なるデータベースを選択できます。 |
-| `maxclients` |価格レベルによって異なります。<sup>2</sup> |これは、同時に接続が許可されているクライアントの最大数です。 制限に達すると、Redis はすべての新しい接続を終了し、"max number of clients reached" エラーを返します。 |
+| `maxclients` |価格レベルによって異なります。<sup>2</sup> |この値は、同時に接続が許可されているクライアントの最大数です。 制限に達すると、Redis はすべての新しい接続を終了し、"max number of clients reached" エラーを返します。 |
 | `maxmemory-policy` |`volatile-lru` |Maxmemory ポリシーとは、`maxmemory` (キャッシュ作成時に選択したキャッシュのサイズ) に達したときに、Redis が削除する項目を選択する方法についての設定です。 Azure Redis Cache の既定の設定は `volatile-lru` で、LRU アルゴリズムを使用して有効期限が設定されたキーを削除します。 この設定は、Azure ポータルで構成できます。 詳細については、「[メモリ ポリシー](#memory-policies)」をご覧ください。 |
 | `maxmemory-samples` |3 |LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、メモリを節約するための近似アルゴリズムです。 既定では、Redis はキーを 3 つ確認し、直近の使用頻度が比較的低いものを 1 つ選択します。 |
 | `lua-time-limit` |5,000 |Lua スクリプトの最大実行時間 (ミリ秒)。 最大実行時間に達した場合は、Redis は、最大許容時間の後もスクリプトが実行中であることをログに記録し、クエリに対してエラーを知らせる応答を開始します。 |

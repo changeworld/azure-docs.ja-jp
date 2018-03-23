@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect 同期: 既定の構成について | Microsoft Docs"
-description: "この記事では、Azure AD Connect 同期の既定の構成について説明します。"
+title: 'Azure AD Connect 同期: 既定の構成について | Microsoft Docs'
+description: この記事では、Azure AD Connect 同期の既定の構成について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ed876f22-6892-4b9d-acbe-6a2d112f1cd1
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 87f513ffd2e8854085d9dfcd399148082de37698
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: dba7a6fcf936e9610a5f1f04e367d32e9aae6643
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成について
 この記事では、既定の構成ルールについて説明します。 規則とそれが構成に与える影響について記載されています。 また、Azure AD Connect 同期の既定の構成についても説明します。この記事の目標は、宣言型のプロビジョニングと呼ばれる構成モデルのしくみを実例を用いて読者に理解してもらうことです。 この記事では、インストール ウィザードを使用して既に Azure AD Connect 同期をインストールし、構成していることを前提としています。
@@ -50,7 +50,7 @@ ms.lasthandoff: 01/18/2018
 * Exchange Online で機能しないオブジェクトは同期しないでください。
   `CBool(IIF(IsPresent([msExchRecipientTypeDetails]),BitAnd([msExchRecipientTypeDetails],&H21C07000) > 0,NULL))`  
   このビットマスク (&amp;H21C07000) で次のオブジェクトが除外されます。
-  * メール対応のパブリック フォルダー
+  * メールが有効なパブリック フォルダー (バージョン 1.1.524.0 時点でプレビュー)
   * システム アテンダント メールボックス
   * メールボックス データベース メールボックス (システム メールボックス)
   * ユニバーサル セキュリティ グループ (ユーザーには適用されませんが、旧システムのために存在します)

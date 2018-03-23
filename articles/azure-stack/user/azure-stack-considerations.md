@@ -1,11 +1,11 @@
 ---
-title: "サービスを使用する場合やアプリを作成する場合の Azure と Azure Stack の主な違い | Microsoft Docs"
-description: "Azure Stack でサービスを使用する場合やアプリを作成する場合に知っておくべき内容。"
+title: サービスを使用する場合やアプリを作成する場合の Azure と Azure Stack の主な違い | Microsoft Docs
+description: Azure Stack でサービスを使用する場合やアプリを作成する場合に知っておくべき内容。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: c81f551d-c13e-47d9-a5c2-eb1ea4806228
 ms.service: azure-stack
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.openlocfilehash: 695824ef2537a97ea0530f2c33ad24d5cd9e20f8
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成
 

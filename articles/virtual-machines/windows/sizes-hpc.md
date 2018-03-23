@@ -1,25 +1,25 @@
 ---
-title: "Azure Windows VM のサイズ - HPC | Microsoft Docs"
-description: "Azure の Windows ハイ パフォーマンス コンピューティング仮想マシンで使用できるさまざまなサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。"
+title: Azure Windows VM のサイズ - HPC | Microsoft Docs
+description: Azure の Windows ハイ パフォーマンス コンピューティング仮想マシンで使用できるさまざまなサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: jonbeck7
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 02/21/2018
+ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: dfeb6b0cbd74ff5a5b11b730c6413df189096ab8
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 6f2c72689811d26f95a64fdf5f473606f3ea3f7d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="high-performance-compute-vm-sizes"></a>ハイ パフォーマンス コンピューティング VM のサイズ
 
@@ -29,16 +29,8 @@ ms.lasthandoff: 02/22/2018
 
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
-## <a name="rdma-capable-instances"></a>RDMA 対応のインスタンス
-コンピューティング集中型インスタンス (H16r、H16mr、A8、A9) のサブセットには、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 このインターフェイスは、標準の Azure ネットワーク インターフェイスと同様に、他の VM サイズでも利用可能です。 
-  
-このインターフェイスにより、RDMA 対応インスタンスは InfiniBand ネットワークを介して通信することができ、H16r と H16mr の仮想マシンでは FDR のレートで、A8 と A9 の仮想マシンでは QDR のレートで動作します。 これらの RDMA 機能により、Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。
-
-RDMA 対応の Windows VM が Azure RDMA ネットワークにアクセスするための要件は、次のとおりです。 
 
 * **オペレーティング システム** - Windows Server 2016、Windows Server 2012 R2、Windows Server 2012
-
-* **可用性セットまたはクラウド サービス** – RDMA 対応の VM を、同じ可用性セット (Azure Resource Manager デプロイメント モデルを使用する場合)、または同じクラウド サービス (クラシック デプロイメント モデルを使用している場合) 内にデプロイします。 Azure Batch を使用する場合、RDMA 対応の仮想マシンは同じプールにある必要があります。
 
 * **MPI** -Microsoft MPI (MS-MPI) 2012 R2 以降、Intel MPI ライブラリ 5.x
 
@@ -61,7 +53,6 @@ RDMA 対応の Windows VM が Azure RDMA ネットワークにアクセスする
 ## <a name="using-hpc-pack"></a>HPC Pack の使用
 
 [Microsoft HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) (Microsoft が無償で提供している HPC クラスターとジョブの管理ソリューション) は、Windows ベースの MPI アプリケーションとその他の HPC ワークロードを実行するコンピューティング クラスターを Azure で作成するための 1 つの選択肢として使用できます。 HPC Pack 2012 R2 以降のバージョンには、RDMA 対応の VM 上にデプロイした場合に Azure RDMA ネットワークを使用する MS-MPI 用のランタイム環境が含まれています。
-
 
 
 

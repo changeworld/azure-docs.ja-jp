@@ -1,11 +1,11 @@
 ---
-title: "Load Balancer のカスタム プローブを使用して正常性の状態を監視する | Microsoft Docs"
-description: "Azure Load Balancer でカスタム プローブを使用して、Load Balancer の背後にあるインスタンスを監視する方法を説明します"
+title: Load Balancer のカスタム プローブを使用して正常性の状態を監視する | Microsoft Docs
+description: Azure Load Balancer でカスタム プローブを使用して、Load Balancer の背後にあるインスタンスを監視する方法を説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
 ms.service: load-balancer
@@ -13,21 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/8/2018
 ms.author: kumud
-ms.openlocfilehash: 266132d8cbb6f9922ce7b49759981132c2c17f47
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: be0359889f48f2fe16104f2bee5d1c85ab883b34
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="understand-load-balancer-probes"></a>Load Balancer のプローブを理解する
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
-Azure Load Balancer には、プローブを使用してサーバー インスタンスの正常性を監視する機能があります。 プローブが応答できない場合、Load Balancer は異常なインスタンスへの新しい接続の送信を停止します。 既存の接続への影響はなく、新しい接続が正常なインスタンスに送信されます。
+Azure Load Balancer では、正常性プローブを使用して、どのバックエンド プール インスタンスが新しいフローを受信する必要があるかを決定します。 正常性プローブが失敗すると、Azure Load Balancer は、問題のある各インスタンスへの新しいフローの送信を停止しますが、そのインスタンス上の既存のフローは影響を受けません。  すべてのバックエンド プール インスタンス プローブがダウン している場合は、すべての既存のフローはバックエンド プール内のすべてのインスタンスでタイムアウトします。
 
-クラウド サービス ロール (worker ロールと Web ロール) では、ゲスト エージェントを使用してプローブを監視します。 Load Balancer の背後にある VM を使う場合は、TCP または HTTP カスタム プローブを構成する必要があります。
+クラウド サービス ロール (worker ロールと Web ロール) では、ゲスト エージェントを使用してプローブを監視します。 Azure Load Balancer の背後にある VM を使用する場合は、TCP または HTTP カスタム正常性プローブを構成する必要があります。
 
 ## <a name="understand-probe-count-and-timeout"></a>プローブの数とタイムアウトについて
 

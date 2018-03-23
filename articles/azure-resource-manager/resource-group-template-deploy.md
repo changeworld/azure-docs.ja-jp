@@ -1,6 +1,6 @@
 ---
-title: "PowerShell とテンプレートを使用してリソースをデプロイする | Microsoft Docs"
-description: "Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。"
+title: PowerShell とテンプレートを使用してリソースをデプロイする | Microsoft Docs
+description: Azure Resource Manager と Azure PowerShell を使用してリソースを Azure にデプロイします。 リソースは Resource Manager テンプレートで定義されます。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/06/2017
 ms.author: tomfitz
-ms.openlocfilehash: 464308da13be6a33ce80871f8753f999e34d8c83
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3378c13934a5a0743aa40ebb19940f1afa71fc71
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ
 
@@ -84,6 +84,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName ExampleResourceGroup -Temp
 ## <a name="deploy-to-more-than-one-resource-group-or-subscription"></a>複数のリソース グループまたはサブスクリプションにデプロイする
 
 テンプレートに含まれているリソースはすべて 1 つのリソース グループにデプロイするのが一般的です。 一方、さまざまなリソースを 1 つにまとめたうえで、複数のリソース グループまたはサブスクリプションにデプロイしたい状況もあります。 単一のデプロイにデプロイできるリソース グループは 5 つまでです。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](resource-manager-cross-resource-group-deployment.md)」を参照してください。
+
+<a id="parameter-file" />
 
 ## <a name="parameter-files"></a>パラメーター ファイル
 

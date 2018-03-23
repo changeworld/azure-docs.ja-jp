@@ -1,13 +1,13 @@
 ---
 layout: HubPage
-hide_bc: True
-title: "Microsoft Azure のドキュメント"
-description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
-ms.openlocfilehash: 85745cf147296e053824a879108c1ea607343f57
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+hide_bc: ''
+title: Microsoft Azure のドキュメント
+description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
+ms.openlocfilehash: 5084e6f9ab8d73e2c8ffefc95a376bc85222320c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/09/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -134,6 +134,11 @@ ms.lasthandoff: 12/11/2017
                                                         <span>Python</span>
                                                     </a>
                                                 </div>
+                                                <div class="ico48Link">
+                                                    <a href="/go/azure/">
+                                                        <span>Go</span>
+                                                    </a>
+                                                </div>
                                                 <div>
                                                     <h4>アプリ モデル</h4>
                                                     <ul class="noBullet">
@@ -179,7 +184,7 @@ ms.lasthandoff: 12/11/2017
                                             <div class="cardText">
                                                 <h3>コマンド ライン ツール</h3>
                                                 <div class="ico48Link">
-                                                    <a href="/cli/azure/overview">
+                                                    <a href="/cli/azure">
                                                         <img src="media/index/azure_dev-7.svg" alt="">
                                                         <span>Azure<br />CLI</span>
                                                     </a>
@@ -252,7 +257,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>関数</p>
+                                                <p>Functions</p>
                                             </a>
                                         </li>
                                         <li>
@@ -438,7 +443,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/virtual-network/">
                                                 <img src="media/index/VirtualNetwork.svg" alt="" />
-                                                <p>Virtual Network</p>
+                                                <p>仮想ネットワーク</p>
                                             </a>
                                         </li>
                                         <li>
@@ -627,7 +632,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/cognitive-services/recommendations/overview">
                                                 <img src="media/index/API_Know_Recommendations.svg" alt="" />
-                                                <p>推奨事項</p>
+                                                <p>Recommendations</p>
                                             </a>
                                         </li>
                                         <li>
@@ -676,7 +681,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/storage/">
                                                 <img src="media/index/Storage.svg" alt="" />
-                                                <p>ストレージ</p>
+                                                <p>Storage</p>
                                             </a>
                                         </li>
                                         <li>
@@ -694,7 +699,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup</p>
+                                                <p>バックアップ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -715,7 +720,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/machine-learning/">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning</p>
+                                                <p>機械学習</p>
                                             </a>
                                         </li>
                                         <li>
@@ -784,7 +789,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/application-insights/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
-                                                <p>Application Insights</p>
+                                                <p>アプリケーション インサイト</p>
                                             </a>
                                         </li>
                                         <li>
@@ -841,7 +846,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/machine-learning/">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning</p>
+                                                <p>機械学習</p>
                                             </a>
                                         </li>
                                         <li>
@@ -960,7 +965,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/application-insights/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
-                                                <p>Application Insights</p>
+                                                <p>アプリケーション インサイト</p>
                                             </a>
                                         </li>
                                         <li>
@@ -978,7 +983,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>Backup</p>
+                                                <p>バックアップ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1020,7 +1025,7 @@ ms.lasthandoff: 12/11/2017
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/AzureDefaultBlack.svg" alt="" />
-                                                <p>Azure リソース マネージャー</p>
+                                                <p>Azure Resource Manager</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1138,7 +1143,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Functions</h3>
-                                                    <p>サーバー不要のコードを使用してイベントを処理します</p>
+                                                    <p>サーバーレス コードを使用してイベントを処理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1236,7 +1241,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Virtual Network</h3>
+                                                    <h3>仮想ネットワーク</h3>
                                                     <p>プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続</p>
                                                 </div>
                                             </div>
@@ -1412,7 +1417,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>ストレージ</h3>
+                                                    <h3>Storage</h3>
                                                     <p>耐久性があり、高度にスケーラブルな高可用性クラウド ストレージ</p>
                                                 </div>
                                             </div>
@@ -1489,7 +1494,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>プライベート クラウドの保護と回復を調整します</p>
+                                                    <p>プライベート クラウドの保護と回復を調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1513,7 +1518,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Web Apps</h3>
-                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイします</p>
+                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1589,7 +1594,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>CDN</h3>
-                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信します </p>
+                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信 </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1727,7 +1732,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Fabric</h3>
-                                                    <p>マイクロサービスを開発し、Windows または Linux のコンテナーを調整します</p>
+                                                    <p>マイクロサービスを開発し、Windows または Linux のコンテナーを調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2121,7 +2126,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning</h3>
+                                                    <h3>機械学習</h3>
                                                     <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
                                                 </div>
                                             </div>
@@ -2141,7 +2146,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Stream Analytics</h3>
-                                                    <p>数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理します</p>
+                                                    <p>数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2217,7 +2222,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
-                                                    <p>データの変換と移動を調整および管理します</p>
+                                                    <p>データの変換と移動を調整、管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2392,7 +2397,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning</h3>
+                                                    <h3>機械学習</h3>
                                                     <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
                                                 </div>
                                             </div>
@@ -2531,7 +2536,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張します</p>
+                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2550,7 +2555,7 @@ ms.lasthandoff: 12/11/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
-                                                    <p>データの変換と移動を調整および管理します</p>
+                                                    <p>データの変換と移動を調整、管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2768,7 +2773,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Application Insights</h3>
+                                                    <h3>アプリケーション インサイト</h3>
                                                     <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断</p>
                                                 </div>
                                             </div>
@@ -2830,7 +2835,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Application Insights</h3>
+                                                    <h3>アプリケーション インサイト</h3>
                                                     <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断</p>
                                                 </div>
                                             </div>
@@ -2887,7 +2892,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Backup</h3>
+                                                    <h3>バックアップ</h3>
                                                     <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
@@ -3020,7 +3025,7 @@ ms.lasthandoff: 12/11/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure リソース マネージャー</h3>
+                                                    <h3>Azure Resource Manager</h3>
                                                     <p>Azure リソースをデプロイおよび管理します</p>
                                                 </div>
                                             </div>
@@ -3249,6 +3254,29 @@ ms.lasthandoff: 12/11/2017
                                         <div class="card">
                                             <div class="cardImageOuter">
                                                 <div class="cardImage">
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+                                                    <a href="/go/azure/">Go SDK の入手</a>
+                                                </h3>
+                                                <p>
+                                                    <a href="/go/azure/azure-sdk-go-qs-vm">作業開始</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://godoc.org/github.com/Azure/azure-sdk-for-go">リファレンス</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
                                                     <img src="media/index/azure_dev-6.svg" alt="" />
                                                 </div>
                                             </div>
@@ -3284,7 +3312,7 @@ ms.lasthandoff: 12/11/2017
                                             <div class="cardText">
                                                 <h3>Azure CLI 2.0 </h3>
                                                 <p>
-                                                    <a href="/cli/azure/overview">作業開始</a>
+                                                    <a href="/cli/azure">作業開始</a>
                                                 </p>
                                                 <p>
                                                     <a href="/cli/azure/install-azure-cli">Azure CLI 2.0 のダウンロード</a>

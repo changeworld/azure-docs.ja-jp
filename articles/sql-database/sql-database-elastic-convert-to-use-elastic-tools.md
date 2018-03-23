@@ -1,25 +1,19 @@
 ---
-title: "既存のデータベースを移行してスケール アウト | Microsoft Docs"
-description: "シャード マップ マネージャーを作成することで、エラスティック データベース ツールを使用するようにシャード化されたデータベースを変換します"
+title: 既存のデータベースを移行してスケール アウト | Microsoft Docs
+description: シャード マップ マネージャーを作成することで、エラスティック データベース ツールを使用するようにシャード化されたデータベースを変換します
 services: sql-database
-documentationcenter: 
-author: ddove
-manager: jhubbard
-editor: 
-ms.assetid: 8c851d8e-8fd5-4327-89c1-9178b20ddd69
+author: stevestein
+manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 10/24/2016
-ms.author: ddove
-ms.openlocfilehash: 356c4223ff3ae844552b7bee40aa3ffc6aad7ea0
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: d82994f3ab925fa3ace0d0dbe1631a01dd1df586
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>既存のデータベースを移行してスケール アウト
 Azure SQL Database のデータベース ツール ( [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)など) を使用して、既存のスケールアウトされたシャード化されたデータベースを簡単に管理できます。 最初に、 [シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)を使用するように既存のデータベース セットを変換します。 
@@ -150,10 +144,10 @@ ShardMapManager オブジェクトを使用してシャード マップを作成
     Get-Shards -ShardMap $ShardMap 
     Get-Mappings -ShardMap $ShardMap 
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 セットアップが完了すると、Elastic Database クライアント ライブラリの使用を開始できます。 [データ依存ルーティング](sql-database-elastic-scale-data-dependent-routing.md)および[マルチシャード クエリ](sql-database-elastic-scale-multishard-querying.md)を使用することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「[Azure SQL DB - Elastic Database tools scripts (Azure SQL DB - エラスティック データベース ツール スクリプト)](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db)」から PowerShell スクリプトを取得します。
 
 ツールは GitHub ( [Azure/elastic-db-tools](https://github.com/Azure/elastic-db-tools)) にもあります。

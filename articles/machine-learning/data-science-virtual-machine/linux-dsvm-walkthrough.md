@@ -1,8 +1,8 @@
 ---
-title: "Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス | Microsoft Docs"
-description: "Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。"
+title: Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス | Microsoft Docs
+description: Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: bradsev;paulsh
-ms.openlocfilehash: 650b11d66f3ca32266b9842af77c909e125b4e4d
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 9b8a9b9bba242fd7c86dc285a77317a5821948df
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -477,7 +477,7 @@ psql (PostgreSQL の対話型ターミナル) を組み込みの postgres ユー
 * 「*Spam database*」という名前を付け、**[Driver (ドライバー)]** ボックスの一覧の **[PostgreSQL]** を選択します。
 * URL を「*jdbc:postgresql://localhost/spam*」に設定します。
 * "*ユーザー名*" と "*パスワード*" を入力します。
-* **[OK]**をクリックします。
+* Click **OK**.
 * **[Connection (接続)]** ウィンドウを開くには、***Spam database*** エイリアスをダブルクリックします。
 * **[接続]**を選択します。
 
@@ -527,7 +527,7 @@ sqlcmd を使用してクエリを実行します。
 
 Squirrel SQL を使用してクエリを実行することもできます。 Microsoft MSSQL Server JDBC Driver (***/usr/share/java/jdbcdrivers/sqljdbc42.jar*** で見つけることができます) を使用して、PostgreSQL の同様の手順に従います。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [Team Data Science Process](http://aka.ms/datascienceprocess)に関するページをご覧ください。
 
 シナリオごとの Team Data Science Process の手順を示したエンド ツー エンドのチュートリアルの詳細については、「 [Team Data Science Process のチュートリアル](../team-data-science-process/walkthroughs.md)」をご覧ください。 これらのチュートリアルでは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法についても説明します。

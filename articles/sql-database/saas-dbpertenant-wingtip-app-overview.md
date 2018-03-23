@@ -1,23 +1,20 @@
 ---
-title: "Azure SQL Database マルチテナント アプリの例 - Wingtip SaaS | Microsoft Docs"
-description: "Azure SQL Database を使用するマルチテナント アプリケーションのサンプルを使って、Wingtip SaaS の例について説明します"
-keywords: "SQL データベース チュートリアル"
+title: Azure SQL Database マルチテナント アプリの例 - Wingtip SaaS | Microsoft Docs
+description: Azure SQL Database を使用するマルチテナント アプリケーションのサンプルを使って、Wingtip SaaS の例について説明します
+keywords: SQL データベース チュートリアル
 services: sql-database
 author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
 ms.author: sstein
-ms.openlocfilehash: 2871d2b1208013808958e8a5b0c62fce31af86ec
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 451e1fc87fc5f626e78760d8cd5c4115ea02bb0d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="introduction-to-a-multi-tenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>SQL Database によるテナントごとのデータベース パターンを使用するマルチテナント SaaS アプリケーションの概要
 
@@ -40,7 +37,7 @@ Wingtip SaaS アプリでは、テナント単位のデータベース モデル
 アプリをデプロイしたら、初期デプロイを前提とする以下のチュートリアルを参照してください。 これらのチュートリアルでは、SQL Database、SQL Data Warehouse、およびその他の Azure サービスに組み込まれた機能を活用した一般的な SaaS パターンを確認できます。 チュートリアルには、PowerShell スクリプトとその詳細な説明が含まれています。これらを利用すると、SaaS 管理パターンの理解、およびお使いのアプリケーションでの同じ SaaS 管理パターンの実装を大幅に簡略化できます。
 
 
-| チュートリアル | 説明 |
+| チュートリアル | [説明] |
 |:--|:--|
 | [Azure SQL Database のマルチテナント SaaS アプリ例のガイダンスとヒント](saas-tenancy-wingtip-app-guidance-tips.md) | **ここから開始** PowerShell スクリプトをダウンロードして実行し、アプリケーションの各部分を準備します。 |
 |[Wingtip SaaS アプリケーションをデプロイして調査する](saas-dbpertenant-get-started-deploy.md)|  Wingtip SaaS アプリケーションをお使いの Azure サブスクリプションにデプロイして調査する |

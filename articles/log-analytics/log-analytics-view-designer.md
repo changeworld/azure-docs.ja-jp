@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics のビューを作成してデータを分析する | Microsoft Docs"
-description: "Log Analytics のビュー デザイナーを使用すると、Azure Portal に表示されるカスタム ビューを作成し、Log Analytics ワークスペースのデータをさまざまな方法で視覚化することができます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。"
+title: Log Analytics のビューを作成してデータを分析する | Microsoft Docs
+description: Log Analytics のビュー デザイナーを使用すると、Azure Portal に表示されるカスタム ビューを作成し、Log Analytics ワークスペースのデータをさまざまな方法で視覚化することができます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: ce41dc30-e568-43c1-97fa-81e5997c946a
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: bwren
-ms.openlocfilehash: 08d0e557f03f771901c9ac92fb080e74e5966452
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d63d47c39054230307416e24ed1c8295fbf68d93
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
 [Azure Log Analytics](log-analytics-overview.md) のビュー デザイナーを使用すると、Log Analytics ワークスペースでデータを視覚化するのに役立つさまざまなカスタム ビューを Azure Portal で作成できます。 この記事では、ビュー デザイナーの概要と、カスタム ビューの作成と編集を行うための手順について説明します。
@@ -28,8 +28,6 @@ ms.lasthandoff: 02/21/2018
 * [タイルのリファレンス](log-analytics-view-designer-tiles.md): カスタム ビューで使用できる各タイルの設定に関するリファレンス ガイドです。
 * [視覚化パーツのリファレンス](log-analytics-view-designer-parts.md): カスタム ビューで使用可能な視覚化パーツの設定へのリファレンス ガイドを提供します。
 
->[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、すべてのビューのクエリを[新しいクエリ言語](https://go.microsoft.com/fwlink/?linkid=856078)で記述する必要があります。 ワークスペースのアップグレードの前に作成されたビューは、すべて自動的に変換されます。
 
 ## <a name="concepts"></a>概念
 ビューは、Azure Portal の Log Analytics ワークスペースの **[概要]**ページに表示されます。 各カスタム ビューのタイルは、同じワークスペースにインストールされたソリューションのタイルと共に、アルファベット順に表示されます。

@@ -64,6 +64,7 @@
 ## Visual Studio Tools
 ### [ツールのインストール](stream-analytics-tools-for-visual-studio-install.md)
 ### [クラウド ジョブの開発](stream-analytics-tools-for-visual-studio.md)
+### [Edge ジョブの開発](stream-analytics-tools-for-visual-studio-edge-jobs.md)
 ### [CI/CD パイプラインの設定](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## トラブルシューティング

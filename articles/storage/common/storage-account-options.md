@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage アカウントの種類 | Microsoft Docs"
-description: "Azure Storage の種類と選択について説明します。"
+title: Azure Storage アカウントの種類 | Microsoft Docs
+description: Azure Storage の種類と選択について説明します。
 services: storage
 author: jirwin
 manager: jwillis
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: aa8704b9991dde639b50a5b6c9a27ad5cd08ad02
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2c69519b865169b477950bc8fa659d5ad9081bbf
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="azure-storage-account-options"></a>Azure Storage アカウントの種類
 
@@ -78,7 +78,7 @@ BLOB ストレージ アカウントは、GPv2 とまったく同じブロック
 > [!NOTE]
 > BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB のみをサポートします。ページ BLOB はサポートしません。
 
-## <a name="recommendations"></a>推奨事項
+## <a name="recommendations"></a>Recommendations
 
 ストレージ アカウントの詳細については、「[Azure ストレージ アカウントについて](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」を参照してください。
 
@@ -237,7 +237,7 @@ BLOB ストレージのデータ アクセス パターンを監視するには�
 
 ### <a name="utilizing-usage-metrics-to-estimate-costs"></a>コストを見積もるための使用状況メトリックの利用
 
-#### <a name="storage-costs"></a>ストレージのコスト
+#### <a name="storage-costs"></a>ストレージ コスト
 
 行キー *"data"* がある容量メトリック テーブル *$MetricsCapacityBlob* の最新のエントリは、ユーザー データによって使用されたストレージ容量を示します。 行キー *"analytics"* がある容量メトリック テーブル *$MetricsCapacityBlob* の最新のエントリは、分析ログによって使用されたストレージ容量を示します。
 
@@ -298,8 +298,8 @@ Azure クライアント ライブラリのいずれかまたは Azure ストレ
 
 詳細については、[Azure Blob Storage の使用](../blobs/storage-dotnet-how-to-use-blobs.md)に関するページを参照してください。
 
-> [!NOTE]
-> クライアント側の暗号化を使用して暗号化された BLOB には、その BLOB と共に格納される暗号化関連メタデータが格納されます。 すべてのコピー メカニズムで、BLOB メタデータと、特に暗号化に関連するメタデータが必ず保持されることが重要です。 このメタデータなしで BLOB をコピーした場合、BLOB コンテンツを再度取得することはできません。 暗号化関連メタデータの詳細については、[Azure Storage のクライアント側の暗号化](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
+> [!IMPORTANT]
+> クライアント側の暗号化を使用して暗号化された BLOB には、BLOB と共に暗号化関連メタデータが格納されます。 クライアント側の暗号化で暗号化された BLOB をコピーする場合は、コピー操作の際に BLOB メタデータ、特に暗号化関連のメタデータが保持されるようにしてください。 暗号化メタデータなしで BLOB をコピーした場合、BLOB コンテンツを再度取得することはできません。 暗号化関連メタデータの詳細については、[Azure Storage のクライアント側の暗号化](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
 
 ## <a name="faq"></a>FAQ
 
@@ -338,7 +338,6 @@ GPv2 ストレージ アカウントと BLOB ストレージ アカウントの�
 クール ストレージ層内の BLOB は、ホット ストレージ層に格納された BLOB よりも可用性サービス レベル (SLA) が若干低くなります。 詳細については、「[Storage の SLA](https://azure.microsoft.com/support/legal/sla/storage)」を参照してください。
 
 **BLOB ストレージ アカウントにページ BLOB と仮想マシンのディスクを保存できますか。**
-
 
 いいえ。 BLOB ストレージ アカウントは、ブロック BLOB と追加 BLOB のみをサポートします。ページ BLOB はサポートしません。 Azure の仮想マシンのディスクではページ BLOB が使用されるため、BLOB ストレージ アカウントは仮想マシンのディスクの格納に使用できません。 ただし、仮想マシンのディスクのバックアップを BLOB ストレージ アカウント内にブロック BLOB として格納することはできます。 これは、BLOB ストレージ アカウントではなく GPv2 の使用が検討される理由の 1 つです。
 

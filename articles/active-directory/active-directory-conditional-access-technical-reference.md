@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory の条件付きアクセス設定に関するリファレンス | Microsoft Docs"
-description: "Azure Active Directory の条件付きアクセス ポリシーでサポートされる設定の概要を説明します。"
+title: Azure Active Directory の条件付きアクセス設定に関するリファレンス | Microsoft Docs
+description: Azure Active Directory の条件付きアクセス ポリシーでサポートされる設定の概要を説明します。
 services: active-directory.
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 56a5bade-7dcc-4dcf-8092-a7d4bf5df3c1
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2018
+ms.date: 03/07/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: fd82d77e79f05a67f8e818095753b8dc22ccf314
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ba93e1b597bb6bdb752563f2873b8e0c5f7a8181
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -136,9 +136,19 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 | macOS                  | Chrome、Safari                      | ![○][1] |
 
 
-> [!NOTE]
-> Chrome サポートの場合、Windows 10 Creators Update (バージョン 1703) 以降を使用する必要があります。<br>
-> [この拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールできます。
+
+#### <a name="chrome-support"></a>Chrome のサポート
+
+**Windows 10 Creators Update (バージョン 1703)** 以降で Chrome をサポートするには、[この拡張機能](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)をインストールしてください。
+
+**Windows 8.1 および 7** で Chrome をサポートするには、次のレジストリ キーを作成してください。
+
+|    |    |
+|--- | ---|
+|パス | HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Chrome\AutoSelectCertificateForUrls |
+|Name | 1 |
+|type | REG_SZ (文字列) |
+|データ | {"pattern":"https://device.login.microsoftonline.com","filter":{"ISSUER":{"CN":"MS-Organization-Access"}}}|
 
 これらのブラウザーはデバイス認証をサポートしており、デバイスを識別してポリシーで検証することができます。 ブラウザーがプライベート モードで実行している場合、デバイス チェックは失敗します。 
 
@@ -183,6 +193,10 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 この設定は、以下のクライアント アプリに適用されます。
 
 
+- Microsoft Intune Managed Browser
+- Microsoft PowerBI
+- Microsoft Invoicing
+- Microsoft Launcher
 - Microsoft Azure Information Protection
 - Microsoft Excel
 - Microsoft Kaizala 

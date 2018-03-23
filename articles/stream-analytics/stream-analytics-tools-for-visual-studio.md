@@ -1,8 +1,8 @@
 ---
-title: "Visual Studio の Azure Stream Analytics ツールの使用 | Microsoft Docs"
-description: "Visual Studio の Azure Stream Analytics ツールに関する入門チュートリアル"
+title: Visual Studio の Azure Stream Analytics ツールの使用 | Microsoft Docs
+description: Visual Studio の Azure Stream Analytics ツールに関する入門チュートリアル
 keywords: Visual Studio
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
 author: su-jie
 manager: jhubbard
@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 03/28/2017
+ms.date: 03/05/2018
 ms.author: sujie
-ms.openlocfilehash: b06eae6b85f2ca41390955cde2499af2531e2e12
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 71e7247226f9432b3f9590ca87ac33883ea576ce
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールの使用
 Visual Studio の Azure Stream Analytics ツールが一般公開されます。 これらのツールを使用すると、Stream Analytics ユーザーのトラブルシューティング エクスペリエンスがさらに充実すると共に、複雑なクエリを記述したり、ローカルでクエリを記述することができます。 また、Stream Analytics ジョブを Visual Studio プロジェクトにエクスポートすることもできます。
 
 ## <a name="introduction"></a>はじめに
-このチュートリアルでは、Visual Studio の Stream Analytics ツールを使用して、Stream Analytics ジョブの作成、ローカルでのテスト、管理、デバッグを行う方法について説明します。 
+このチュートリアルでは、Visual Studio の Stream Analytics ツールを使用して、Stream Analytics ジョブの作成、ローカルでのテスト、管理、デバッグを行う方法について説明します。 ジョブを作成した後、CI/CD Nuget パッケージを使用して継続的インテグレーションと Azure へのデプロイ プロセスを設定できます。詳細については、[Analytics VS ツールをストリーム化して CI/CD パイプラインを設定する](stream-analytics-tools-for-visual-studio-cicd.md)方法に関する記事をご覧ください。
 
 このチュートリアルを読むと、次のことができるようになります。
 
@@ -264,7 +264,7 @@ Visual Studio で、**[ファイル]** > **[新しいプロジェクト]** を�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

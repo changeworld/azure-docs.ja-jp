@@ -1,18 +1,18 @@
 ---
-title: "Azure Site Recovery を使用して、プライマリ Azure リージョンに戻すフェールオーバーされた Azure VM を再保護する | Microsoft Docs"
-description: "Azure Site Recovery を使用して、プライマリ リージョンからフェールオーバーした後に、セカンダリ リージョン内の Azure VM を再保護する方法について説明します。"
+title: Azure Site Recovery を使用して、プライマリ Azure リージョンに戻すフェールオーバーされた Azure VM を再保護する | Microsoft Docs
+description: Azure Site Recovery を使用して、プライマリ リージョンからフェールオーバーした後に、セカンダリ リージョン内の Azure VM を再保護する方法について説明します。
 services: site-recovery
 author: rajani-janaki-ram
 manager: gauravd
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/05/2018
 ms.author: rajanaki
-ms.openlocfilehash: d24376c57c468a562fc6d6dd52b4e9b01b53c3da
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 47056c85c6cb66a7fa28d623a4472b827d970dab
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="reprotect-failed-over-azure-vms-to-the-primary-region"></a>プライマリ リージョンに対してフェールオーバーされた Azure VM を再保護する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 02/13/2018
 - 再保護が完了して、VM がレプリケートされると、セカンダリからプライマリ リージョンにフェールオーバーすることができます。
 
 > [!WARNING]
-> プライマリからセカンダリ リージョンにマシンを[移行](site-recovery-migrate-to-azure.md#what-do-we-mean-by-migration)すると、VM を別のリソース グループに移動した場合、または Azure VM を削除した場合は、VM を再保護したり、フェールバックしたりすることはできません。
+> プライマリからセカンダリ リージョンにマシンを[移行](migrate-overview.md#what-do-we-mean-by-migration)すると、VM を別のリソース グループに移動した場合、または Azure VM を削除した場合は、VM を再保護したり、フェールバックしたりすることはできません。
 
 
 ## <a name="prerequisites"></a>前提条件
@@ -51,7 +51,7 @@ ms.lasthandoff: 02/13/2018
 
 再保護中にカスタマイズできるのは、ターゲット VM の次のプロパティです。
 
-![[カスタマイズ]](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
+![カスタマイズ](./media/site-recovery-how-to-reprotect-azure-to-azure/customizeblade.png)
 
 |プロパティ |メモ  |
 |---------|---------|

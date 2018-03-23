@@ -1,25 +1,25 @@
 ---
-title: "Azure Stack 統合システムの Azure 登録 | Microsoft Docs"
-description: "マルチノード Azure Stack の Azure に接続されたデプロイのための Azure 登録プロセスについて説明します。"
+title: Azure Stack 統合システムの Azure 登録 | Microsoft Docs
+description: マルチノード Azure Stack の Azure に接続されたデプロイのための Azure 登録プロセスについて説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/27/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: d5b77bb43c48bd286708ca96699b20be0f761baa
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 27bd44f936e19890526c0834e14084647dcec086
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="register-azure-stack-with-azure"></a>Azure を使用した Azure Stack の登録
 Azure Stack を Azure に登録して Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データを設定したりできます。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。
@@ -54,6 +54,7 @@ Azure Stack ツールの GitHub リポジトリには、Azure Stack 機能 (登�
 cd \
 
 # Download the tools archive.
+  [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
   invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip

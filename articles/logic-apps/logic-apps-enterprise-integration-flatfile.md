@@ -1,11 +1,11 @@
 ---
-title: "Azure Logic Apps でフラット ファイルをエンコードまたはデコードする | Microsoft Docs"
-description: "ロジック アプリで Enterprise Integration Pack のファイル エンコーダーまたはデコーダーを使用する方法"
+title: Azure Logic Apps でフラット ファイルをエンコードまたはデコードする | Microsoft Docs
+description: ロジック アプリで Enterprise Integration Pack のファイル エンコーダーまたはデコーダーを使用する方法
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: divyaswarnkar
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 82152dab-c7ad-43df-b721-596559703be8
 ms.service: logic-apps
 ms.workload: integration
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
-ms.author: LADocs; mandia
-ms.openlocfilehash: 8795687c002282b68ebd1a4fa3fe18a9b102af4a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: LADocs; divswa
+ms.openlocfilehash: 410f2e184a92b879d4f75b31216da783e82dc953
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>フラット ファイルでのエンタープライズ統合の概要
 

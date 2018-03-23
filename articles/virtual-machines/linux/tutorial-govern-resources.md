@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI で Azure 仮想マシンを管理する | Microsoft Docs"
-description: "チュートリアル - Azure CLI で RBAC、ポリシー、ロック、タグを適用することによって Azure 仮想マシンを管理します"
+title: Azure CLI で Azure 仮想マシンを管理する | Microsoft Docs
+description: チュートリアル - Azure CLI で RBAC、ポリシー、ロック、タグを適用することによって Azure 仮想マシンを管理します
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 86ac3ec390c7aa9bc24a90ef2ee582f97f8b5407
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: ac6f7b0d32479e9e7e9945f83dc63a5847cba6a4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-cli"></a>Azure CLI での仮想マシンの管理
 
-[!include[Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
+[!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -29,7 +29,7 @@ CLI をインストールしてローカルで使用するには、「[Install A
 
 ## <a name="understand-scope"></a>スコープを理解する
 
-[!include[Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
+[!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
 このチュートリアルでは、すべての管理設定をリソース グループに適用して、完了したらこれらの設定を容易に削除できるようにします。
 
@@ -71,7 +71,7 @@ az role assignment create --assignee-object-id $adgroupId --role "Virtual Machin
 
 ## <a name="azure-policies"></a>Azure のポリシー
 
-[!include[Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
+[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
 
 ### <a name="apply-policies"></a>ポリシーを適用する
 
@@ -179,7 +179,7 @@ az group delete --name myResourceGroup
 
 Azure リソースに[タグ](../../azure-resource-manager/resource-group-using-tags.md)を適用すると、カテゴリ別に論理的に整理できます。 各タグは名前と値で構成されます。 たとえば、運用環境のすべてのリソースには名前 "環境" と値 "運用" を適用できます。
 
-[!include[Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
+[!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 
 仮想マシンにタグを適用するには、[az resource tag](/cli/azure/resource#az_resource_tag) コマンドを使います。 リソースの既存のタグは保持されません。
 
@@ -206,7 +206,7 @@ az vm stop --ids $(az resource list --tag Environment=Test --query "[?type=='Mic
 
 ### <a name="view-costs-by-tag-values"></a>タグ値でコストを表示する
 
-[!include[Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
+[!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

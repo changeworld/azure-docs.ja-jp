@@ -1,6 +1,6 @@
 ---
-title: "Azure の仮想ネットワーク ピアリング | Microsoft Docs"
-description: "Azure の仮想ネットワーク ピアリングについて説明します。"
+title: Azure の仮想ネットワーク ピアリング | Microsoft Docs
+description: Azure の仮想ネットワーク ピアリングについて説明します。
 services: virtual-network
 documentationcenter: na
 author: NarayanAnnamalai
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: 7c384f07ec6b71596dcdbc5b7214fa7ce65d0b7d
-ms.sourcegitcommit: 99d29d0aa8ec15ec96b3b057629d00c70d30cfec
+ms.openlocfilehash: 23281067021dd6e4b8959fe73f3c8a11a651d9d2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 01/25/2018
 
 ## <a name="requirements-constraints"></a>要件と制約
 
-* 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン内の仮想ネットワーク ピアリングは、現在、米国中西部、カナダ中部、米国西部 2、韓国南部、英国南部、英国西部、カナダ東部、インド南部、インド中部、およびインド西部でプレビューになっています。 別のリージョンにある仮想ネットワークをピアリングする前に、最初にプレビュー版用に[サブスクリプションを登録する](virtual-network-create-peering.md#register)必要があります。 プレビュー版用の登録を完了していないと、異なるリージョンの仮想ネットワーク間でピアリングを作成する試みは失敗します。
+* 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン内の仮想ネットワーク ピアリングは、現在、米国中西部、カナダ中部、米国西部 2、韓国南部、英国南部、英国西部、カナダ東部、インド南部、インド中部、およびインド西部でプレビューになっています。 別のリージョンにある仮想ネットワークをピアリングする前に、最初にプレビュー版用に[サブスクリプションを登録する](tutorial-connect-virtual-networks-powershell.md#register)必要があります。 プレビュー版用の登録を完了していないと、異なるリージョンの仮想ネットワーク間でピアリングを作成する試みは失敗します。
     > [!WARNING]
     > リージョン間で作成された仮想ネットワーク ピアリングでは、一般公開リリースにおけるピアリングと同じレベルの可用性と信頼性が得られない可能性があります。 また、一部の機能が制限されている場合があります。一部の Azure リージョンではご利用いただけない場合もあります。 この機能の可用性とステータスに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)に関するページをご覧ください。
 
@@ -126,7 +126,7 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
     |Azure デプロイメント モデル  | [サブスクリプション]  |
     |---------|---------|
-    |両方が Resource Manager |[同じ](virtual-network-create-peering.md)|
+    |両方が Resource Manager |[同じ](tutorial-connect-virtual-networks-portal.md)|
     | |[異なる](create-peering-different-subscriptions.md)|
     |一方が Resource Manager、もう一方がクラシック     |[同じ](create-peering-different-deployment-models.md)|
     | |[異なる](create-peering-different-deployment-models-subscriptions.md)|

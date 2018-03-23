@@ -1,8 +1,8 @@
 ---
-title: "Azure リソースを新しいサブスクリプションまたはリソース グループに移動する | Microsoft Docs"
-description: "Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。"
+title: Azure リソースを新しいサブスクリプションまたはリソース グループに移動する | Microsoft Docs
+description: Azure Resource Manager を使用して、リソースを新しいリソース グループまたはサブスクリプションに移動します。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 6a1d56a270ae0c44db18f26091cc3c550a37e420
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -99,7 +99,7 @@ ms.lasthandoff: 03/05/2018
 * リソースを新しい Azure アカウント (および Azure Active Directory テナント) に移動するにあたり、前出のセクションの手順に関して支援が必要。
 * クラシック リソースを移動するときに制限事項に関連する問題が発生した。
 
-## <a name="services-that-enable-move"></a>移動が可能なサービス
+## <a name="services-that-can-be-moved"></a>移動可能なサービス
 
 新しいリソース グループへの移動と新しいサブスクリプションへの移動の両方が可能なサービスは、次のとおりです。
 
@@ -149,7 +149,7 @@ ms.lasthandoff: 03/05/2018
 * Virtual Networks - 「[Virtual Networks の制限事項](#virtual-networks-limitations)」を参照してください。
 * VPN Gateway
 
-## <a name="services-that-do-not-enable-move"></a>移動が不可能なサービス
+## <a name="services-that-cannot-be-moved"></a>移動不可能なサービス
 
 現在、リソースの移動が不可能なサービスは、次のとおりです。
 

@@ -1,11 +1,11 @@
 ---
-title: "Service Fabric とコンテナーの概要 | Microsoft Docs"
-description: "Service Fabric に関する説明と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法の概要を示します。 この記事では、コンテナーの使い方と、Service Fabric で利用可能な機能の概要について説明しています。"
+title: Service Fabric とコンテナーの概要 | Microsoft Docs
+description: Service Fabric に関する説明と、コンテナーを使用してマイクロサービス アプリケーションをデプロイする方法の概要を示します。 この記事では、コンテナーの使い方と、Service Fabric で利用可能な機能の概要について説明しています。
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c98b3fcb-c992-4dd9-b67d-2598a9bf8aab
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/20/2017
 ms.author: msfussell
-ms.openlocfilehash: 412107db2dc446eb5a6a433bfb7fc3bc5e760c27
-ms.sourcegitcommit: e19f6a1709b0fe0f898386118fbef858d430e19d
+ms.openlocfilehash: f12dc08953372b2dfae773df11cf1f47b42a1b89
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
 > [!NOTE]
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/13/2018
 > 
 
 ## <a name="introduction"></a>はじめに
-Azure Service Fabric は、マシンのクラスター全体にわたるサービスの[オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)であり、Microsoft の大規模なサービスで長年にわたって使用され、最適化されてきました。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)の使用や[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)のデプロイなどの多くの方法で、サービスを開発することができます。 既定では、Service Fabric はこれらのサービスをプロセスとしてデプロイし、アクティブ化します。 プロセスとしてこれらを実施することで、これまでになくアクティブ化が高速になり、クラスターにおけるリソースの使用に無駄もなくなります。 さらに、Service Fabric では、コンテナー イメージ内のサービスもデプロイできます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。   
+Azure Service Fabric は、マシンのクラスター全体にわたるサービスの[オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)であり、Microsoft の大規模なサービスで長年にわたって使用され、最適化されてきました。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)の使用や[ゲスト実行可能ファイル](service-fabric-guest-executables-introduction.md)のデプロイなどの多くの方法で、サービスを開発することができます。 既定では、Service Fabric はこれらのサービスをプロセスとしてデプロイし、アクティブ化します。 プロセスとしてこれらを実施することで、これまでになくアクティブ化が高速になり、クラスターにおけるリソースの使用に無駄もなくなります。 さらに、Service Fabric では、コンテナー イメージ内のサービスもデプロイできます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスを同じアプリケーション内で混在させることができます。   
 
 ## <a name="what-are-containers"></a>コンテナーとは
 コンテナーとは、カプセル化された、個別にデプロイが可能なコンポーネントです。同じカーネル上でそれぞれが分離されたインスタンスとして動作し、オペレーティング システムが提供する仮想化を活かすことができます。 そのため、各アプリケーションとそのランタイム、依存関係、システム ライブラリはコンテナー内で動作し、オペレーティング システム構成のコンテナー独自の分離されたビューへの完全なプライベート アクセスが提供されます。 移植性のみならず、この高度なセキュリティおよびリソースの分離は、Service Fabric でコンテナーを利用するうえでの主なメリットとなります。この方法でなければ、サービスはプロセスとして実行されるためです。
@@ -72,7 +72,7 @@ Hyper-V をサポートする Windows コンテナーでは、各コンテナー
 ## <a name="service-fabric-support-for-containers"></a>Service Fabric によるコンテナーのサポート
 Service Fabric では、Linux での Docker コンテナーのデプロイと、Windows Server 2016 での Windows Server コンテナーのデプロイをサポートしています。また、Hyper-V の分離モードもサポートしています。 
 
-Service Fabric の [アプリケーション モデル](service-fabric-application-model.md)では、コンテナーは複数のサービス レプリカが配置されたアプリケーション ホストを表します。 Service Fabric は任意のコンテナーを実行できます。このシナリオは、コンテナー内に既存のアプリケーションをパッケージ化する[ゲスト実行可能ファイルのシナリオ](service-fabric-deploy-existing-app.md)と似ています。 このシナリオは、コンテナーによく見られるユース ケースです。たとえば、組み込みの Service Fabric プログラミング モデルを使用せずに、任意の言語またはフレームワークを使用して作成されたアプリケーションの実行などです。
+Service Fabric の [アプリケーション モデル](service-fabric-application-model.md)では、コンテナーは複数のサービス レプリカが配置されたアプリケーション ホストを表します。 Service Fabric は任意のコンテナーを実行できます。このシナリオは、コンテナー内に既存のアプリケーションをパッケージ化する[ゲスト実行可能ファイルのシナリオ](service-fabric-guest-executables-introduction.md)と似ています。 このシナリオは、コンテナーによく見られるユース ケースです。たとえば、組み込みの Service Fabric プログラミング モデルを使用せずに、任意の言語またはフレームワークを使用して作成されたアプリケーションの実行などです。
 
 また、[コンテナー内で Service Fabric サービスを実行する](service-fabric-services-inside-containers.md)こともできます。 コンテナー内で Service Fabric サービスを実行するためのサポートは現時点では限定されていますが、今後のリリースで強化される予定です。
 

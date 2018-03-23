@@ -1,35 +1,35 @@
 ---
-title: "Azure ID とアクセスの制御で個人データを保護する | Microsoft Docs"
-description: "Azure ID とアクセスの制御を使った個人データの保護"
+title: Azure ID とアクセスの制御で個人データを保護する | Microsoft Docs
+description: Azure ID とアクセス制御は、個人データの保護に役立つとともに、一般データ保護規則 (GDPR) への準拠にも役立ちます。
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/13/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: e6de9526a1a72cfc81caca51207e000f8b3673cc
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.custom: ''
+ms.openlocfilehash: fd3beb57cda4993f922fb935263b0e962b38da6a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-and-multi-factor-authentication-protect-personal-data-with-identity-and-access-controls"></a>Azure Active Directory と Multi-Factor Authentication: ID とアクセスの制御による個人のデータの保護
 
-この記事では、Azure Active Directory と Multi-Factor Authentication のセキュリティ機能およびサービスを使って個人データを保護するために使用できる情報と手順を示します。
+この記事では、Azure Active Directory と Multi-Factor Authentication のセキュリティ機能およびサービスを使って個人データを保護するために使用できる情報と手順を示します。 この記事の情報は、一般データ保護規則 (GDPR) に従うために役立ちます。
 
 ## <a name="scenario"></a>シナリオ
 
 米国に本社を置く大手クルーズ会社が、地中海、アドリア海、バルト海だけでなくイギリス諸島での旅程を提供できるように、事業を拡張しています。 この会社は、これらの取り組みを支援するために、イタリア、ドイツ、デンマーク、英国に拠点を置くいくつかの小規模なクルーズ会社を買収しました。 
 
-その会社では、クラウドに会社のデータを保存するために Microsoft Azure を使います。 これには、グローバルな顧客ベースの名前や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 また、住所、電話番号、納税者番号など、あらゆる場所の会社の従業員に関する標準的な人事情報も含まれます。 このクルーズ会社では、現在と過去の顧客とのリレーションシップを追跡するための個人情報を含む、特典やロイヤリティ プログラム メンバーの大規模なデータベースも管理しています。
+その会社では、クラウドに会社のデータを保存するために Microsoft Azure を使います。 これには、グローバルな顧客ベースの氏名や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 また、住所、電話番号、納税者番号など、あらゆる場所の会社の従業員に関する標準的な人事情報も含まれます。 このクルーズ会社は報酬やロイヤリティ プログラム メンバーについての大規模なデータベースも管理しており、このデータベースには現在および過去の顧客との関係を追跡できる個人情報なども含まれています。
 
 この企業の従業員は、会社の支社からネットワークにアクセスし、世界各地に存在する旅行代理店の社員は、一部の会社リソースにアクセスできます。
 
@@ -178,7 +178,7 @@ Azure クラウドで MFA をデプロイするには、最初にそれを有効
 
 Azure MFA 設定を構成して、不正アクセスのアラートの設定、ワンタイム バイパスの作成、カスタム音声メッセージの使用、キャッシュの構成、信頼できる IP の指定、アプリ パスワードの作成、ユーザーが信頼するデバイスに対する MFA の記憶、検証方法の選択を行う方法については、「[Azure Multi-Factor Authentication の設定を構成する](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure AD での特権アクセスのセキュリティ保護](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/active-directory-securing-privileged-access)
 

@@ -1,11 +1,11 @@
 ---
-title: "Testability: サービス通信 | Microsoft Docs"
-description: "サービス間通信は、Service Fabric アプリケーションの重要な統合ポイントです。 この記事では、設計の考慮事項とテスト手法について説明します。"
+title: 'Testability: サービス通信 | Microsoft Docs'
+description: サービス間通信は、Service Fabric アプリケーションの重要な統合ポイントです。 この記事では、設計の考慮事項とテスト手法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 017557df-fb59-4e4a-a65d-2732f29255b8
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: 4c6b53673dd4c79ce435c1593e7d08c7dd4a1cb0
-ms.sourcegitcommit: 3df3fcec9ac9e56a3f5282f6c65e5a9bc1b5ba22
+ms.openlocfilehash: c87b5d82b6eef2b1d28a3280cc2fa07c28084f90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/04/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Service Fabric Testability シナリオ: サービス通信
 マイクロサービスおよびサービス指向アーキテクチャ スタイルは、Azure Service Fabric に無理なく適用できます。 このような種類の分散アーキテクチャでは、コンポーネント化されたマイクロサービス アプリケーションは、相互に通信する必要がある複数のサービスで構成されることが一般的です。 一般的に、最も単純な場合でも、相互に通信する必要があるステートレス Web サービスとステートフル データ ストレージ サービスが最低限必要です。
@@ -67,7 +67,7 @@ Service Fabric の Testability ツールを使用して、このような状況�
    
     ```powershell
    
-    PS > Restart-ServiceFabricNode -NodeName Node_1
+    PS > Stop-ServiceFabricNode -NodeName Node_1
    
     ```
 
@@ -89,7 +89,7 @@ PS > Invoke-ServiceFabricPartitionQuorumLoss -ServiceName fabric:/Myapplication/
 
 この例では、`QuorumLossMode` を `QuorumReplicas` に設定して、すべてのレプリカを停止させることなくクォーラム損失を誘発させることを指示します。 これにより、読み取り操作は引き続き可能です。 パーティション全体が使用できない状況をテストする場合は、このスイッチを `AllReplicas`に設定することができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Testability アクションの詳細](service-fabric-testability-actions.md)
 
 [Testability シナリオの詳細](service-fabric-testability-scenarios.md)

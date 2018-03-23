@@ -1,12 +1,12 @@
 ---
-title: "Azure Backup の失敗のトラブルシューティング: ゲスト エージェントの状態を確認できない | Microsoft Docs"
-description: "エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。"
+title: 'Azure Backup の失敗のトラブルシューティング: ゲスト エージェントの状態を確認できない | Microsoft Docs'
+description: エージェント、拡張機能、ディスクに関する Azure Backup のエラーの症状、原因、解決策。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: genlin
 manager: cshepard
-editor: 
-keywords: "Azure Backup; VM エージェント; ネットワーク接続;"
+editor: ''
+keywords: Azure Backup; VM エージェント; ネットワーク接続;
 ms.assetid: 4b02ffa4-c48e-45f6-8363-73d536be4639
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 01/09/2018
 ms.author: genli;markgal;sogup;
-ms.openlocfilehash: c205023b025a477ee05ddcbfc536573f31426167
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.openlocfilehash: a18718aba3ef7f70caa541c6eb56311082d02bed
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
@@ -30,9 +30,6 @@ ms.lasthandoff: 02/01/2018
 ## <a name="vm-agent-unable-to-communicate-with-azure-backup"></a>VM エージェントが Azure Backup と通信できない
 
 エラー メッセージ: "VM Agent unable to communicate with Azure Backup (VM エージェントが Azure Backup と通信できません)"
-
-> [!NOTE]
-> Azure Linux VM のバックアップで 2018 年 1 月 4 日以降にこのエラーが発生した場合、VM で `sudo rm -f /var/lib/waagent/*.[0-9]*.xml` コマンドを実行し、バックアップを再試行してください。
 
 Backup サービスに VM を登録してスケジュール設定すると、Backup サービスは、VM エージェントと通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされずにバックアップが失敗する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。
 
@@ -58,9 +55,8 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 Azure Backup サービスに VM を登録して、スケジュール設定すると、Backup サービスは、VM のバックアップ拡張機能と通信してジョブを開始し、ポイントインタイム スナップショットを作成します。 以下のいずれかの状況によって、スナップショットをトリガーできない場合があります。 スナップショットがトリガーされなかった場合、バックアップ エラーが発生する可能性があります。 次のトラブルシューティング手順を上から順に実行した後で、必要な操作を再試行してください。  
 **原因 1:[ スナップショットの状態を取得できないか、スナップショットを作成できない](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken)**  
 **原因 2:[ バックアップ拡張機能の更新または読み込みに失敗した](#the-backup-extension-fails-to-update-or-load)**  
-**原因 3:[ VM がインターネットにアクセスできない](#the-vm-has-no-internet-access)**  
-**原因 4:[ エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
-**原因 5:[ VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
+**原因 3:[ エージェントが VM にインストールされているが応答しない (Windows VM の場合)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**  
+**原因 4:[ VM にインストールされているエージェントが古くなっている (Linux VM の場合)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**
 
 ## <a name="backup-fails-because-the-vm-agent-is-unresponsive"></a>VM エージェントが応答しないためにバックアップに失敗する
 
@@ -179,7 +175,6 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 
 | 原因 | 解決策 |
 | --- | --- |
-| VM で SQL Server のバックアップが構成されている。 | 既定では、VM のバックアップは Windows VM でボリューム シャドウ コピー サービス (VSS) 完全バックアップとして実行されます。 SQL Server ベースのサーバーを実行し、SQL Server のバックアップが構成されている VM では、スナップショットの実行の遅延が発生する場合があります。<br><br>スナップショットに関する問題によりバックアップ エラーが発生する場合は、次のレジストリ キーを設定してください。<br><br>**[HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\BCDRAGENT] "USEVSSCOPYBACKUP"="TRUE"** |
 | VM が リモート デスクトップ プロトコル (RDP) でシャットダウンされているため、VM の状態が正しく報告されない。 | RDP で VM をシャットダウンした場合は、ポータルでその VM の状態が正しいかどうかを確認します。 正しくない場合は、VM のダッシュボードの **[シャットダウン]** オプションを使用して、ポータルで VM をシャットダウンします。 |
 | VM が DHCP からホスト/ファブリック アドレスを取得できない。 | IaaS VM バックアップが正しく機能するには、ゲスト内で DHCP が有効になっている必要があります。 VM が DHCP 応答 245 からホスト/ファブリック アドレスを取得できない場合は、拡張機能をダウンロードしたり実行したりできません。 静的プライベート IP が必要な場合は、プラットフォームを通じて構成する必要があります。 VM 内の DHCP オプションは有効のままにしておいてください。 詳細については、[静的内部プライベート IP の設定](../virtual-network/virtual-networks-reserved-private-ip.md)に関するページをご覧ください。 |
 
@@ -188,12 +183,7 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 
 #### <a name="solution"></a>解決策
 
-**Windows ゲストの場合:** iaasvmprovider サービスが有効になっていて、そのスタートアップの種類が *[自動]* であることを確認します。 サービスがこのように構成されていない場合は、そのサービスを有効にして、次のバックアップが成功するかどうかを確認します。
-
-**Linux ゲストの場合:** 最新バージョンの VMSnapshot for Linux (Backup で使用される拡張機能) が 1.0.91.0 であることを確認します。<br>
-
-
-バックアップ拡張機能の更新または読み込みがまだ失敗する場合は、拡張機能をアンインストールして、VMSnapshot 拡張機能が強制的に再度読み込まれる状態にします。 次回のバックアップ時に、拡張機能が再度読み込まれます。
+VMSnapshot 拡張機能に再読み込みを強制する 拡張機能をアンインストールします。 次回のバックアップ時に、拡張機能が再度読み込まれます。
 
 拡張機能をアンインストールするには、次の手順を実行します。
 

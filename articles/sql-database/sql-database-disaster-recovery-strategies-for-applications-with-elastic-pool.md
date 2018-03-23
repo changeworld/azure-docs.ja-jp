@@ -1,36 +1,32 @@
 ---
-title: "ディザスター リカバリー ソリューションの設計 - Azure SQL Database | Microsoft Docs"
-description: "フェールオーバー パターンを適切に選んで、ディザスター リカバリーを実現するクラウド ソリューションを設計する方法について説明します。"
+title: ディザスター リカバリー ソリューションの設計 - Azure SQL Database | Microsoft Docs
+description: フェールオーバー パターンを適切に選んで、ディザスター リカバリーを実現するクラウド ソリューションを設計する方法について説明します。
 services: sql-database
-documentationcenter: 
 author: anosov1960
-manager: jhubbard
-editor: monicar
-ms.assetid: 2db99057-0c79-4fb0-a7f1-d1c057ec787f
+manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.date: 12/13/2017
+ms.date: 03/05/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.workload: Inactive
-ms.openlocfilehash: 9d12fb8a7dbd3bb763e42fd0981d7ef18b57248b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 6ec202237a0b3fb1b7f0b7158c0aa454b4d65770
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>SQL Database エラスティック プールを使用したアプリケーションの障害復旧戦略
-長年にわたって、私たちはクラウド サービスが絶対確実なものではなく、壊滅的な状況になる可能性があることを学んできました。 SQL Database には、そのような状況が発生した場合にアプリケーションのビジネス継続性を提供するための機能がいくつかあります。 
-            [エラスティック プール](sql-database-elastic-pool.md)と Single Database は、同様のディザスター リカバリー機能をサポートしています。 この記事では、SQL Database のこれらのビジネス継続性機能を活用する、エラスティック プールのいくつかの DR 戦略について説明します。
+長年にわたって、私たちはクラウド サービスが絶対確実なものではなく、壊滅的な状況になる可能性があることを学んできました。 SQL Database には、そのような状況が発生した場合にアプリケーションのビジネス継続性を提供するための機能がいくつかあります。 [エラスティック プール](sql-database-elastic-pool.md)と Single Database は、同様のディザスター リカバリー機能をサポートしています。 この記事では、SQL Database のこれらのビジネス継続性機能を活用する、エラスティック プールのいくつかの DR 戦略について説明します。
 
 この記事では、次のような標準的な SaaS ISV アプリケーション パターンを使用します。
 
 <i>最新のクラウド ベースの Web アプリケーションが、エンド ユーザーごとに 1 つの SQL Database をプロビジョニングします。ISV は多数の顧客を抱えており、テナント データベースと呼ばれる多数のデータベースを使用します。通常、テナント データベースのアクティビティ パターンは予測できないため、ISV はエラスティック プールを使用して、長期間にわたるデータベース コストを予測可能にします。エラスティック プールは、ユーザー アクティビティが急増した場合のパフォーマンスの管理も簡略化します。アプリケーションは、テナント データベースだけでなく、ユーザー プロファイルの管理、セキュリティの確保、使用パターンの収集などのためのデータベースもいくつか使用します。個々のテナントの可用性は、アプリケーションの可用性全体には影響しません。ただし、管理データベースの可用性とパフォーマンスは、アプリケーションの機能にとって重要であり、管理データベースがオフラインになると、アプリケーション全体がオフラインになります。</i>  
 
 この記事では、費用重視型スタートアップ アプリケーションから、厳しい可用性要件があるアプリケーションまで、さまざまなシナリオを対象とした DR 戦略について説明します。
+
+> [!NOTE]
+> Premium データベースとプールを使用している場合、これらをゾーン冗長デプロイ構成 (現在はプレビュー内) に変換することで、リージョン障害に対する回復性を与えることができます。 「[ゾーン冗長データベース](sql-database-high-availability.md)」をご覧ください。
 
 ## <a name="scenario-1-cost-sensitive-startup"></a>シナリオ 1. 費用重視型スタートアップ
 <i>新規事業を立ち上げたところであり、コストに非常に敏感になっています。アプリケーションのデプロイと管理は簡略化する一方で、個々の顧客に対する SLA は制限付きでもよいと思っています。ただし、全体的には、アプリケーションがオフラインになることがないようにしたいと考えています。</i>
@@ -79,7 +75,7 @@ ms.lasthandoff: 12/14/2017
 
 プライマリ リージョンで障害が発生した場合にアプリケーションをオンラインにするための復旧手順を、次の図に示します。
 
-![図 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
+![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-5.png)
 
 * すぐに管理データベースを DR リージョンにフェールオーバーします (3)。
 * アプリケーションの接続文字列を、DR リージョンを示す文字列に変更します。 これで、新しいアカウントとテナント データベースがすべて DR リージョンに作成されるようになります。 既存の試用版の顧客は、一時的にデータを使用できなくなります。
@@ -92,7 +88,7 @@ ms.lasthandoff: 12/14/2017
 
 DR リージョンでアプリケーションを復元した *後* で、Azure によってプライマリ リージョンが復旧される場合は、DR リージョンでアプリケーションを実行し続けることも、プライマリ リージョンにフェールバックすることもできます。 フェールオーバー処理が完了する "*前*" に、プライマリ リージョンが復旧される場合は、直ちにフェールバックすることを考慮する必要があります。 フェールバックの手順は、次の図のようになります。 
 
-![Figure 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
+![図 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-6.png)
 
 * 未処理のすべての geo リストア要求を取り消します。   
 * 管理データベースをフェールオーバーします (8)。 リージョンの復旧後、古いプライマリは自動的にセカンダリになります。 これが再びプライマリになります。  
@@ -124,7 +120,7 @@ DR リージョンでアプリケーションを復元した *後* で、Azure �
 
 次の図は、リージョン A で障害が発生した場合に実行する復旧手順を示しています。
 
-![図 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
+![Figure 5](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-8.png)
 
 * すぐに管理データベースをリージョン B にフェールオーバーします (3)。
 * アプリケーションの接続文字列を、リージョン B 内の管理データベースを示す文字列に変更します。管理データベースに変更を施し、新しいアカウントとテナント データベースがリージョン B に作成されるようにすると共に、既存のテナント データベースもそこで見つかるようにします。 既存の試用版の顧客は、一時的にデータを使用できなくなります。
@@ -141,7 +137,7 @@ DR リージョンでアプリケーションを復元した *後* で、Azure �
 
 リージョン A が復旧するときに、試用版の顧客のためにリージョン B を使用するか、試用版の顧客のリージョン A のプールを使用してフェールバックするかを判断する必要があります。判断条件の 1 つは、復旧以降に変更された試用テナント データベースの割合です。 判断に関係なく 2 つのプール間で有料のテナントを再調整する必要があります。 次の図は、試用版のテナント データベースがリージョン A にフェールバックするときの処理を示しています。  
 
-![Figure 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
+![図 6](./media/sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool/diagram-9.png)
 
 * 試用 DR プールへの未処理のすべての geo リストア要求を取り消します。   
 * 管理データベースをフェールオーバーします (8)。 リージョンの復旧後、古いプライマリは自動的にセカンダリになっています。 これが再びプライマリになります。  
@@ -164,10 +160,10 @@ DR リージョンでアプリケーションを復元した *後* で、Azure �
 * 管理データベースに、より複雑な設計が必要になります。 たとえば、各テナント レコードには、フェールオーバーとフェールバック時に変更する必要がある場所タグが必要です。  
 * リージョン B のプールのアップグレードが完了するまで、有料の顧客に対するパフォーマンスが通常よりも低下することがあります。 
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 この記事では、SaaS ISV マルチテナント アプリケーションで使用されるデータベース層のディザスター リカバリー戦略に焦点を当てています。 戦略は、ビジネス モデル、顧客に提供する SLA、予算の制約など、アプリケーションのニーズに基づいて選択する必要があります。各戦略のメリットとトレードオフの概要が説明されているため、それを参考にして判断できます。 また、アプリケーションによっては、他の Azure コンポーネントが含まれることがあります。 したがって、ビジネス継続性ガイダンスを確認し、こうしたコンポーネントとデータベース層の復旧を調整する必要があります。 Azure でデータベース アプリケーションの復旧を管理する方法の詳細については、[ディザスター リカバリーのためのクラウド ソリューションの設計](sql-database-designing-cloud-solutions-for-disaster-recovery.md)に関するページをご覧ください。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
 * ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 * 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)に関するページをご覧ください
