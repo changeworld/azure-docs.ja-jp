@@ -1,24 +1,24 @@
 ---
-title: "Azure Devtest Labs のドキュメント - チュートリアル | Microsoft Docs"
-description: "再利用可能なアーティファクトを使用して、アプリケーションのテスト環境を短時間で作成する方法について説明します。 チュートリアルやビデオなどで、ラボを作成、管理、保護する方法を紹介します。"
+title: Azure Devtest Labs のドキュメント - チュートリアル | Microsoft Docs
+description: 再利用可能なアーティファクトを使用して、アプリケーションのテスト環境を短時間で作成する方法について説明します。 チュートリアルやビデオなどで、ラボを作成、管理、保護する方法を紹介します。
 services: devtest-lab
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: devtest-lab
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 92aab190dfba196d48feacbfcc81a0097102b810
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41b7ae5ecf87f4ca544e03c3e62b6c850cf799d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="devtest-labs-documentation"></a>DevTest Labs ドキュメント
+# <a name="devtest-labs-documentation"></a>DevTest Labs ドキュメント
 
 Devtest Labs を使用して、再利用可能なアーティファクトを用いてアプリケーションのテスト環境を短時間で作成する方法について説明します。 チュートリアル、ビデオ、その他のドキュメントでは、ラボの作成、管理、保護と、アーティファクトの追加と管理の方法を紹介します。
 

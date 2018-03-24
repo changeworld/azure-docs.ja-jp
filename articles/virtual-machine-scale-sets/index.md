@@ -1,24 +1,24 @@
 ---
-title: "Azure Virtual Machine Scale Sets のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Virtual Machine Scale Sets を使用して、大規模なコンピューティング、ビッグ データ、コンテナー化されたソリューション向けに自動スケールの Windows または Linux VM を作成する方法について説明します。"
+title: Azure Virtual Machine Scale Sets のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Virtual Machine Scale Sets を使用して、大規模なコンピューティング、ビッグ データ、コンテナー化されたソリューション向けに自動スケールの Windows または Linux VM を作成する方法について説明します。
 services: virtual-machine-scale-sets
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f6c51a605a3fe28fb906e8c35a68a885a46136ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53a6db483ff760c143d98a209e622e1214762ce3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="virtual-machine-scale-sets-documentation"></a>Virtual Machine Scale Sets のドキュメント
+# <a name="virtual-machine-scale-sets-documentation"></a>Virtual Machine Scale Sets のドキュメント
 
 Virtual Machine Scale Sets を使用して、同一の自動スケールの Windows または Linux VM のセットをデプロイおよび管理する方法について説明します。 ドキュメントでは、Scale Sets を使用して、大規模なコンピューティング、ビッグ データ、コンテナー化されたソリューションを対象としたサービスをサポートする方法を紹介します。
 

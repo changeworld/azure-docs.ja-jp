@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。  チュートリアル、ビデオ、API リファレンスなどを提供します。"
+title: Azure Service Bus のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。  チュートリアル、ビデオ、API リファレンスなどを提供します。
 services: service-bus
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-bus
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -13,10 +13,10 @@ ms.topic: landing-page
 ms.date: 03/14/2017
 ms.author: carolz
 ms.openlocfilehash: 7ce116da6fe3651a4ed50805660ced2c2e5ac61d
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="service-bus-documentation"></a>Service Bus のドキュメント
 

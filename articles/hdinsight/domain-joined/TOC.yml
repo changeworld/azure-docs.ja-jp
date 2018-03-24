@@ -6,8 +6,6 @@
       href: apache-domain-joined-introduction.md
     - name: ドメイン参加済みクラスターの計画
       href: apache-domain-joined-architecture.md
-    - name: ドメイン参加済みサンドボックス環境の構成
-      href: apache-domain-joined-configure.md
     - name: Azure AD DS によるドメイン参加済みクラスターの構成
       href: apache-domain-joined-configure-using-azure-adds.md
     - name: HDInsight クラスターへの Azure AD ユーザーの同期

@@ -1,24 +1,24 @@
 ---
-title: "Azure ExpressRoute のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "オンプレミス インフラストラクチャまたは共用施設から Microsoft クラウド サービスへのプライベート ExpressRoute 接続を構成および管理する方法について説明します。"
+title: Azure ExpressRoute のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: オンプレミス インフラストラクチャまたは共用施設から Microsoft クラウド サービスへのプライベート ExpressRoute 接続を構成および管理する方法について説明します。
 services: expressroute
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 8c12fd74d131538e736d6357da586c5debb9929c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9255a4166809568258d733c2894e5788d27cd612
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="expressroute-documentation"></a>ExpressRoute のドキュメント
+# <a name="expressroute-documentation"></a>ExpressRoute のドキュメント
 
 ExpressRoute を使用して、オンプレミス インフラストラクチャや共用施設から Microsoft クラウド サービスへの高速なプライベート接続を設定する方法について説明します。 チュートリアルや REST API などのドキュメントは、ExpressRoute 回線の構成と管理に役立ちます。
 

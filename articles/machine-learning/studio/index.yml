@@ -1,73 +1,73 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: "Azure Machine Learning Studio のドキュメント"
+title: Azure Machine Learning Studio のドキュメント
 metadata:
-  title: "Azure Machine Learning Studio のドキュメント"
-  description: "Azure Machine Learning Studio の使用方法を学習します。"
+  title: Azure Machine Learning Studio のドキュメント
+  description: Azure Machine Learning Studio の使用方法を学習します。
   services: machine-learning
-  author: carolz
-  manager: carolz
+  author: j-martens
+  manager: cgronlun
   ms.service: machine-learning
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/18/2018
-  ms.author: carolz
-  ms.openlocfilehash: dd55c06d62f7678a5b5e721be80f3483c96be0f0
-  ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+  ms.author: jmartens
+  ms.openlocfilehash: 7a12213df1ba496ea19b3d2d93bf7b62a6a0bb29
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 02/13/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
-  description: "Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 チュートリアル、ビデオ、サンプル モデルでは、Studio を使用して機械学習モデルを構築し、デプロイする方法を紹介しています。"
+  description: Azure Machine Learning Studio は、データを活用した予測分析ソリューションの構築、テスト、デプロイをドラッグ アンド ドロップで行うことができる、コラボレーションに対応したツールです。 チュートリアル、ビデオ、サンプル モデルでは、Studio を使用して機械学習モデルを構築し、デプロイする方法を紹介しています。
 sections:
-- title: "5 分間のクイック スタート"
+- title: 5 分間のクイック スタート
   items:
   - type: paragraph
-    text: "Machine Learning Studio の基本的な使用方法を学習します。"
+    text: Machine Learning Studio の基本的な使用方法を学習します。
   - type: list
     style: unordered
     items:
-    - html: "<a href=\"create-experiment\">初めての実験を作成する</a>"
-    - html: "<a href=\"algorithm-choice\">最適なアルゴリズムを選択する</a>"
-    - html: "<a href=\"deploy-consume-web-service-guide\">モデルを運用化する</a>"
-    - html: "<a href=\"data-science-for-beginners-the-5-questions-data-science-answers\">データ サイエンスについて学習する</a>"
-- title: "ステップバイステップのチュートリアル"
+    - html: <a href="create-experiment">初めての実験を作成する</a>
+    - html: <a href="algorithm-choice">最適なアルゴリズムを選択する</a>
+    - html: <a href="deploy-consume-web-service-guide">モデルを運用化する</a>
+    - html: <a href="data-science-for-beginners-the-5-questions-data-science-answers">データ サイエンスについて学習する</a>
+- title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
-    text: "モデルの作成とデプロイについて説明する広範なチュートリアルに従います。"
+    text: モデルの作成とデプロイについて説明する広範なチュートリアルに従います。
   - type: list
     style: ordered
     items:
-    - html: "<a href=\"walkthrough-develop-predictive-solution\">予測ソリューションを作成およびデプロイする</a>"
-    - html: "<a href=\"azure-ml-customer-churn-scenario\">顧客離れの例</a>"
-- title: "その他の Azure Machine Learning テクノロジ"
+    - html: <a href="walkthrough-develop-predictive-solution">予測ソリューションを作成およびデプロイする</a>
+    - html: <a href="azure-ml-customer-churn-scenario">顧客離れの例</a>
+- title: その他の Azure Machine Learning テクノロジ
   items:
   - type: paragraph
-    text: "Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。"
+    text: Azure Machine Learning で利用できるその他のテクノロジは次のとおりです。
   - type: list
     style: cards
     className: cardsFTitle
     items:
-    - title: "Azure Machine Learning サービス (プレビュー)"
+    - title: Azure Machine Learning サービス (プレビュー)
       href: /azure/machine-learning/preview/
       image:
         src: media/index/i_machine-learning.svg
         href: /azure/machine-learning/preview/
-    - title: "データ サイエンス仮想マシン"
+    - title: データ サイエンス仮想マシン
       href: /azure/machine-learning/data-science-virtual-machine/
       image:
         src: media/index/virtual-machines.svg
         href: /azure/machine-learning/data-science-virtual-machine/
-- title: "リファレンス"
+- title: リファレンス
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: "コマンド ライン"
-      html: "<p><a href=\"/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning\">PowerShell モジュール (新規)</a></p><p><a href=\"powershell-module\">PowerShell モジュール (クラシック)</a></p>"
-    - title: "モジュール"
-      html: "<p><a href=\"https://msdn.microsoft.com/library/azure/dn905974.aspx\">アルゴリズムとモジュールのリファレンス</a></p>"
+    - title: コマンド ライン
+      html: <p><a href="/powershell/resourcemanager/azurerm.machinelearning/v0.11.1/azurerm.machinelearning">PowerShell モジュール (新規)</a></p><p><a href="powershell-module">PowerShell モジュール (クラシック)</a></p>
+    - title: モジュール
+      html: <p><a href="https://msdn.microsoft.com/library/azure/dn905974.aspx">アルゴリズムとモジュールのリファレンス</a></p>
     - title: REST ()
-      html: "<p><a href=\"/rest/api/machinelearning\">REST 管理 API</a></p><p><a href=\"web-service-error-codes\">Web サービスのエラー コード</a></p>"
+      html: <p><a href="/rest/api/machinelearning">REST 管理 API</a></p><p><a href="web-service-error-codes">Web サービスのエラー コード</a></p>

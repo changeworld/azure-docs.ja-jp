@@ -1,24 +1,24 @@
 ---
-title: "Azure Notification Hubs のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Notification Hubs を使ってバックエンドからモバイル デバイスにプッシュ通知を送信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
+title: Azure Notification Hubs のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Notification Hubs を使ってバックエンドからモバイル デバイスにプッシュ通知を送信する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。
 services: notification-hubs
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: notification-hubs
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: f7b8560d4ce7374e36d5f7e8a5d2056396e4f089
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f4921e4c7571b05bb8612dcd6fe9750f83a7142
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="notification-hubs-documentation"></a>Notification Hubs のドキュメント
+# <a name="notification-hubs-documentation"></a>Notification Hubs のドキュメント
 
 数百万のメッセージを迅速に送信できる、マルチプラットフォームのスケーラブルなプッシュ通知エンジンである Notification Hubs の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、プッシュ通知を設定してバックエンドからモバイル デバイスに送信する方法を紹介します。 
 
