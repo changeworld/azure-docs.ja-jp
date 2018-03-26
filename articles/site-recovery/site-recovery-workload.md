@@ -1,24 +1,24 @@
 ---
-title: "Azure Site Recovery で保護できるワークロード | Microsoft Docs"
-description: "Azure Site Recovery サービスによるディザスター リカバリーを使用して保護できるワークロードについて説明します。"
+title: Azure Site Recovery で保護できるワークロード | Microsoft Docs
+description: Azure Site Recovery サービスによるディザスター リカバリーを使用して保護できるワークロードについて説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
 manager: cfreeman
-editor: 
+editor: ''
 ms.assetid: 4953948f-26c0-4699-8fe7-59d3bfc1d3da
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/15/2017
+ms.date: 3/16/2018
 ms.author: raynew
-ms.openlocfilehash: 03d311f84a4b9bc5f3a4c3c488ee7c84b1ef49ad
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 3b138546ffb1cb6d5bec0aaf2bb11510ab399933
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
 
@@ -62,7 +62,7 @@ Site Recovery は、サポート対象のマシンで実行されているすべ
 | Dynamics AX |Y |Y |Y |Y |Y|
 | Oracle |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み) |Y (Microsoft によってテスト済み)|
 | Windows ファイル サーバー |Y |Y |Y |Y |Y|
-| Citrix XenApp と XenDesktop |Y|N/A |Y |N/A |Y |
+| Citrix XenApp と XenDesktop |Y|該当なし |Y |該当なし |Y |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory と DNS のレプリケート
 Active Directory と DNS インフラストラクチャは多くのエンタープライズ アプリにとって不可欠な要素です。 障害復旧の際は、これらのインフラストラクチャ コンポーネントを保護して復旧した後に、ワークロードとアプリケーションを復旧することが必要になります。

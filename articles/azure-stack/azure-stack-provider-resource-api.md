@@ -1,24 +1,24 @@
 ---
-title: "プロバイダー リソース使用量 API | Microsoft Docs"
-description: "Azure Stack の使用状況情報を取得するリソース使用量 API のリファレンス"
+title: プロバイダー リソース使用量 API | Microsoft Docs
+description: Azure Stack の使用状況情報を取得するリソース使用量 API のリファレンス
 services: azure-stack
-documentationcenter: 
-author: AlfredoPizzirani
-manager: byronr
-editor: 
-ms.assetid: b6055923-b6a6-45f0-8979-225b713150ae
+documentationcenter: ''
+author: mattbriggs
+manager: femila
+editor: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
-ms.author: alfredop
-ms.openlocfilehash: 0c45ce3bc93945ed8700464beebabcda07e8d77c
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.date: 02/22/2018
+ms.author: mabrigg
+ms.reviewer: alfredop
+ms.openlocfilehash: 763b0af9c258a70392e8c7ebbb4c107e94fce5b2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="provider-resource-usage-api"></a>プロバイダー リソース使用量 API
 *プロバイダー*という用語は、サービス管理者と委任されたすべてのプロバイダーに適用されます。 Azure Stack オペレーターおよび委任されたプロバイダーは、プロバイダー使用量 API を使用して、直接のテナントの使用状況を表示できます。 たとえば、図に示したように、P0 はプロバイダー API を呼び出して、P1 と P2 の直接の使用状況に関する情報を取得でき、P1 は P3 と P4 の使用状況情報を呼び出すことができます。
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/31/2017
 | *api-version* |この要求を行うために使用するプロトコルのバージョン。 この値は *2015-06-01-preview* に設定されます。 |
 | *continuationToken* |使用状況 API プロバイダーへの最後の呼び出しから取得されたトークン。 このトークンは、応答が 1,000 行より大きい場合に必要であり、進行状況のブックマークとして機能します。 トークンが存在しない場合、渡された単位に基づいて、日または時間の開始点から、データが取得されます。 |
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 GET /subscriptions/sub1/providers/Microsoft.Commerce/subscriberUsageAggregates?reportedStartTime=reportedStartTime=2014-05-01T00%3a00%3a00%2b00%3a00&reportedEndTime=2015-06-01T00%3a00%3a00%2b00%3a00&aggregationGranularity=Daily&subscriberId=sub1.1&api-version=1.0
 
 ```json
@@ -89,7 +89,19 @@ meterID1",
 | *quantity* |この期間に発生したリソース使用量 |
 | *meterId* |使用されたリソースの一意の ID (*ResourceID* とも呼ばれます) |
 
-## <a name="next-steps"></a>次のステップ
+
+## <a name="retrieve-usage-information"></a>使用量情報を取得する
+
+使用量データを生成するには、実行されていて、システムをアクティブに使っているリソース (アクティブな仮想マシンや、データを格納しているストレージ アカウントなど) が必要です。Azure Stack Marketplace で実行されているリソースがあるかどうか不明な場合は、仮想マシン (VM) をデプロイし、実行されているかどうか仮想マシン監視ブレードを確認します。 使用量データを表示するには、次の PowerShell コマンドレットを使います。
+
+1. [PowerShell for Azure Stack をインストールします。](azure-stack-powershell-install.md)
+2. [Azure Stack ユーザー](user/azure-stack-powershell-configure-user.md)または [Azure Stack オペレーター](azure-stack-powershell-configure-admin.md)の PowerShell 環境を構成します 
+3. 使用量データを取得するには、[Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) PowerShell コマンドレットを使います。
+```powershell
+Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>
+```
+
+## <a name="next-steps"></a>次の手順
 [テナント リソース使用量 API リファレンス](azure-stack-tenant-resource-usage-api.md)
 
 [使用量に関するよくあるご質問 (FAQ)](azure-stack-usage-related-faq.md)

@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Andromeda SCM の統合 | Microsoft Docs"
-description: "Azure Active Directory と Andromeda SCM の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Andromeda の統合 | Microsoft Docs'
+description: Azure Active Directory と Andromeda の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
+ms.date: 03/07/2018
 ms.author: jeedes
-ms.openlocfilehash: 72b66eec34995c334c6d65a1d03637fe21b9dc80
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7e2a140ba6dc4825283801ed4f3435136b307153
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-andromeda-scm"></a>チュートリアル: Azure Active Directory と Andromeda SCM の統合
+# <a name="tutorial-azure-active-directory-integration-with-andromeda"></a>チュートリアル: Azure Active Directory と Andromeda の統合
 
-このチュートリアルでは、Andromeda SCM と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、Andromeda と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-Andromeda SCM と Azure AD の統合には、次の利点があります。
+Andromeda と Azure AD の統合には、次の利点があります。
 
-- Andromeda SCM にアクセスするユーザーを Azure AD で管理できます。
-- ユーザーが自分の Azure AD アカウントで自動的に Andromeda SCM にサインオン (シングル サインオン) できるようにします。
+- Andromeda にアクセスするユーザーを Azure AD で管理できます。
+- ユーザーが自分の Azure AD アカウントで自動的に Andromeda にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-Andromeda SCM と Azure AD の統合を構成するには、次のものが必要です。
+Andromeda と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- Andromeda SCM でのシングル サインオンが有効なサブスクリプション
+- Andromeda でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -50,13 +50,13 @@ Andromeda SCM と Azure AD の統合を構成するには、次のものが必�
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの Andromeda SCM の追加
+1. ギャラリーからの Andromeda の追加
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-andromeda-scm-from-the-gallery"></a>ギャラリーからの Andromeda SCM の追加
-Azure AD への Andromeda SCM の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Andromeda SCM を追加する必要があります。
+## <a name="adding-andromeda-from-the-gallery"></a>ギャラリーからの Andromeda の追加
+Azure AD への Andromeda の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に Andromeda を追加する必要があります。
 
-**ギャラリーから Andromeda SCM を追加するには、次の手順を実行します。**
+**ギャラリーから Andromeda を追加するには、次の手順を実行します。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
@@ -70,31 +70,31 @@ Azure AD への Andromeda SCM の統合を構成するには、ギャラリー�
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**Andromeda SCM**」と入力し、結果パネルで **[Andromeda SCM]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**Andromeda** 」と入力し、結果パネルで **[Andromeda ]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の Andromeda SCM](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_addfromgallery.png)
+    ![結果一覧の Andromeda](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Andromeda SCM で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Andromeda で Azure AD のシングル サインオンを構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する Andromeda SCM ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Andromeda SCM の関連ユーザーの間で、リンク関係が確立されている必要があります。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する Andromeda ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Andromeda の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-Andromeda SCM で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+Andromeda で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Andromeda SCM のテスト ユーザーの作成](#create-an-andromeda-scm-test-user)** - Andromeda SCM で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
+3. **[Andromeda のテスト ユーザーの作成](#create-an-andromeda-test-user)** - Andromeda で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Andromeda SCM アプリケーションでシングル サインオンを構成します。
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、Andromeda アプリケーションでシングル サインオンを構成します。
 
-**Andromeda SCM で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**Andromeda で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **Andromeda SCM** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **Andromeda** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
@@ -102,24 +102,24 @@ Andromeda SCM で Azure AD のシングル サインオンを構成してテス�
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_samlbase.png)
 
-3. **[Andromeda SCM のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+3. **[Andromeda のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
-    ![[Andromeda SCM のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
+    ![[Andromeda のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://<tenantURL>` の形式で URL を入力します。
+    a. **[識別子]** ボックスに、`https://<tenantURL>.ngcxpress.com/` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、`https://<tenantURL>` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://<tenantURL>.ngcxpress.com/SAMLConsumer.aspx` のパターンを使用して URL を入力します。
 
 4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
 
-    ![[Andromeda SCM のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url1.png)
+    ![[Andromeda のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_url1.png)
 
-    **[サインオン URL]** ボックスに、`https://<tenantURL>/SAMLLogon.aspx` のパターンを使用して URL を入力します。
+    **[サインオン URL]** ボックスに、`https://<tenantURL>.ngcxpress.com/SAMLLogon.aspx` のパターンを使用して URL を入力します。
      
     > [!NOTE] 
     > 上記の値は、実際の値ではありません。 実際の識別子、応答 URL、サインオン URL に値を置き換えます。実際の値については後で説明します。
 
-5. Andromeda SCM アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
+5. Andromeda アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成します。 これらの属性の値は、アプリケーション統合ページの **[ユーザー属性]** セクションで管理できます。 次のスクリーンショットはその例です。
     
     ![シングル サインオンの構成の属性](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attribute.png)
 
@@ -129,15 +129,15 @@ Andromeda SCM で Azure AD のシングル サインオンを構成してテス�
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
     | 属性名 | 属性値 |
-    | ------------------- | -------------------- |    
-    | role        | DEMO |
-    | 型        | DEFAULT |
-    | company       | COMP02    |
+    | -------------- | -------------------- |    
+    | role        | アプリ固有のロール |
+    | type        | アプリの種類 |
+    | company       | CompanyName    |
 
     > [!NOTE]
     > これらは実際の値ではありません。 これらの値はデモ用なので、実際の組織のロールを使ってください。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
     ![シングル サインオンの構成の追加](./media/active-directory-saas-andromedascm-tutorial/tutorial_attribute_04.png)
 
@@ -159,31 +159,31 @@ Andromeda SCM で Azure AD のシングル サインオンを構成してテス�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-andromedascm-tutorial/tutorial_general_400.png)
     
-9. **[Andromeda SCM 構成]** セクションで、**[Andromeda SCM の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+9. **[Andromeda 構成]** セクションで、**[Andromeda の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![Andromeda SCM の構成](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_configure.png)
+    ![Andromeda の構成](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_configure.png)
 
-10. Andromeda SCM 企業サイトに管理者としてサインオンします。
+10. Andromeda 企業サイトに管理者としてサインオンします。
 
 11. メニュー バーの上部にある **[Admin]\(管理者\)** をクリックし、**[Administration]\(管理\)** に移動します。
 
-    ![Andromeda SCM 管理者](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_admin.png)
+    ![Andromeda 管理者](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_admin.png)
 
 12. ツール バーの左側の **[Interfaces]\(インターフェイス\)** セクションで、**[SAML Configuration]\(SAML の構成\)** をクリックします。
 
-    ![Andromeda SCM saml](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_saml.png)
+    ![Andromeda SAML](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_saml.png)
 
 13. **[SAML Configuration]\(SAML の構成\)** セクション ページで、次の手順を実行します。
 
-    ![Andromeda SCM の構成](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
+    ![Andromeda の構成](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_config.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Enable SSO with SAML]\(SAML で SSO を有効にする\)** をオンにします。
+    a. **[Enable SSO with SAML]\(SAML で SSO を有効にする\)** をオンにします。
 
-    b. **[Andromeda Information]\(Andromeda 情報\)** セクションで、**[SP Identity]\(SP ID\)** の値をコピーして、**[Andromeda SCM のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
+    b. **[Andromeda Information]\(Andromeda 情報\)** セクションで、**[SP Identity]\(SP ID\)** の値をコピーして、**[Andromeda のドメインと URL]** セクションの **[識別子]** ボックスに貼り付けます。
 
-    c. **[Consumer URL]\(コンシューマー URL\)** の値をコピーし、**[Andromeda SCM のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
+    c. **[Consumer URL]\(コンシューマー URL\)** の値をコピーし、**[Andromeda のドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
 
-    d. **[Logon URL]\(ログオン URL\)** の値をコピーし、**[Andromeda SCM のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます。
+    d. **[Logon URL]\(ログオン URL\)** の値をコピーし、**[Andromeda のドメインと URL]** セクションの **[サインオン URL]** ボックスに貼り付けます。
 
     e. **[SAML Identity Provider]\(SAML ID プロバイダー\)** セクションで、IDP 名を入力します。
 
@@ -193,9 +193,9 @@ Andromeda SCM で Azure AD のシングル サインオンを構成してテス�
     
     h. 以下の属性を対応する値にマップし、Azure AD からの SSO ログインを容易にします。 **ユーザー ID** 属性はログインに必要です。 プロビジョニングの場合は、**電子メール**、**会社**、**ユーザーの種類**、**ロール**が必要です。 このセクションでは、Azure Portal 内で定義されている値に関連付ける属性マッピング (名前と値) を定義します。
 
-    ![Andromeda SCM の属性マップ](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
+    ![Andromeda 属性マップ](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_attbmap.png)
 
-    i. **[Save]** をクリックします。
+    i. **[保存]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -232,28 +232,28 @@ Andromeda SCM で Azure AD のシングル サインオンを構成してテス�
 
     d. **Create** をクリックしてください。
  
-### <a name="create-an-andromeda-scm-test-user"></a>Andromeda SCM テスト ユーザーの作成
+### <a name="create-an-andromeda-test-user"></a>Andromeda テスト ユーザーの作成
 
-このセクションの目的は、Andromeda SCM で Britta Simon というユーザーを作成することです。 Andromeda SCM では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Andromeda SCM にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
+このセクションの目的は、Andromeda で Britta Simon というユーザーを作成することです。 Andromeda では、Just-In-Time プロビジョニングがサポートされています。この設定は、既定で有効になっています。 このセクションでは、ユーザー側で必要な操作はありません。 Andromeda にアクセスしようとすると、ユーザーがまだ存在しない場合は新しいユーザーが作成されます。
 
 >[!Note]
->ユーザーを手動で作成する必要がある場合は、[Andromeda SCM クライアント サポート チーム](https://www.ngcsoftware.com/support/)にお問い合わせください。
+>ユーザーを手動で作成する必要がある場合は、[Andromeda クライアント サポート チーム](https://www.ngcsoftware.com/support/)にお問い合わせください。
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に Andromeda SCM へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に Andromeda へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 ![ユーザー ロールを割り当てる][200] 
 
-**Andromeda SCM に Britta Simon を割り当てるには、次の手順に従います。**
+**Andromeda に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[Andromeda SCM]** を選択します。
+2. アプリケーションの一覧で **[Andromeda]** を選択します。
 
-    ![アプリケーションの一覧の [Andromeda SCM] リンク](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_app.png)  
+    ![アプリケーションの一覧の [Andromeda] リンク](./media/active-directory-saas-andromedascm-tutorial/tutorial_andromedascm_app.png)  
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -273,7 +273,7 @@ Andromeda SCM で Azure AD のシングル サインオンを構成してテス�
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで Andromeda SCM のタイルをクリックすると、自動的に Andromeda SCM アプリケーションにサインオンします。
+アクセス パネルで Andromeda のタイルをクリックすると、自動的に Andromeda アプリケーションにサインオンします。
 アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース
@@ -296,4 +296,3 @@ Andromeda SCM で Azure AD のシングル サインオンを構成してテス�
 [201]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-andromedascm-tutorial/tutorial_general_203.png
-

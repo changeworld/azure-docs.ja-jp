@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と SCC LifeCycle の統合 | Microsoft Docs"
-description: "Azure Active Directory で SCC LifeCycle を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と SCC LifeCycle の統合 | Microsoft Docs'
+description: Azure Active Directory で SCC LifeCycle を使用して、シングル サインオンや自動プロビジョニングなどを有効にする方法について説明します。
 services: active-directory
 author: jeevansd
 documentationcenter: na
@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 943698311d10b479879fd92d2482d827650e2b0c
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-scc-lifecycle"></a>チュートリアル: Azure Active Directory と SCC LifeCycle の統合
 このチュートリアルでは、Azure と SCC LifeCycle の統合について説明します。  

@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database の動的データ マスク | Microsoft Docs"
-description: "SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。"
+title: Azure SQL Database の動的データ マスク | Microsoft Docs
+description: SQL Database 動的データ マスクは、特権のないユーザーに対してデリケートなデータをマスクし、データの公開を制限します。
 services: sql-database
-documentationcenter: 
 author: ronitr
-manager: shaik
-editor: 
-ms.assetid: 4b36d78e-7749-4f26-9774-eed1120a9182
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 03/09/2017
 ms.author: ronitr
-ms.openlocfilehash: 883a00176207701a0bbda8d196114d9964ce8f17
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 543b4bc15177cc198aaa3c312b563a4bd6e844fc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-dynamic-data-masking"></a>SQL Database の動的データ マスク
 

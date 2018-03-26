@@ -1,50 +1,47 @@
 ---
-title: "仮想ネットワークの作成 - Azure CLI | Microsoft Docs"
-description: "Azure CLI を使用した仮想ネットワークの作成について簡単に説明します。 仮想ネットワークでは、プライベートで相互通信するために、たくさんの種類の Azure リソースを使用できます。"
+title: Azure Virtual Network の作成 - Azure CLI | Microsoft Docs
+description: Azure CLI を使用した仮想ネットワークの作成について簡単に説明します。 仮想ネットワークによって、仮想マシンなどの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 01/25/2018
+ms.date: 03/09/2018
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 792b92731f89f3d0bab4f23221223e469ddf9550
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.custom: ''
+ms.openlocfilehash: 46fec48720c817072ce838dd2e4c07725be5a7fe
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Azure CLI を使用した仮想ネットワークの作成
 
-この記事では、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成した後は、仮想ネットワークに 2 つの仮想マシンをデプロイして、それらのマシン間のプライベート ネットワーク通信をテストします。
+仮想ネットワークによって、仮想マシン (VM) などの Azure リソースが互いにプライベートな通信を行ったりインターネットと通信したりできるようになります。 この記事では、仮想ネットワークの作成方法について説明します。 仮想ネットワークを作成したら、2 つの VM を仮想ネットワークにデプロイします。 その後、インターネットから 1 つの VM に接続し、もう 1 つの VM とプライベートに通信します。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.28 以降を実行していることが要件です。 インストールされているバージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。 Azure リソースはすべて、Azure の場所 (リージョン) 内に作成されます。
+仮想ネットワークを作成するには、その前に、仮想ネットワークを含めるリソース グループを作成する必要があります。 [az group create](/cli/azure/group#az_group_create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli-interactive 
 az group create --name myResourceGroup --location eastus
 ```
 
-## <a name="create-a-virtual-network"></a>仮想ネットワークの作成
-
-[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) コマンドを使って、仮想ネットワークを作成します。 次の例では、*既定* という名前のサブネットを使って、*myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。 場所が指定されていないため、Azure はリソース グループと同じ場所に仮想ネットワークを作成します。
+[az network vnet create](/cli/azure/network/vnet#az_network_vnet_create) を使用して仮想ネットワークを作成します。 次の例では、*default* という名前のサブネットを使って、*myVirtualNetwork* という名前の既定の仮想ネットワークを作成します。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -53,26 +50,13 @@ az network vnet create \
   --subnet-name default
 ```
 
-仮想ネットワークが作成された後、返される情報の一部を次に示します。
+## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-```azurecli
-"newVNet": {
-    "addressSpace": {
-      "addressPrefixes": [
-        "10.0.0.0/16"
-```
+仮想ネットワークに 2 つの VM を作成します。
 
-すべての仮想ネットワークには、1 つまたは複数のアドレス プレフィックスが割り当てられています。 仮想ネットワークを作成するときに、アドレス プレフィックスが指定されなかったので、Azure は既定で、10.0.0.0/16 アドレス空間を定義しました。 アドレス範囲は、CIDR 表記で指定されます。 アドレス空間 10.0.0.0/16 は、10.0.0.0 ～ 10.0.255.254 を含みます。
+### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-返された情報の別の箇所では、コマンドに指定された*既定*のサブネットの **addressPrefix** は *10.0.0.0/24* になっています。 仮想ネットワークは、0 個または 1 つ以上のサブネットを保持します。 コマンドによって *既定*という名前の単一のサブネットが作成されましたが、サブネットのアドレス プレフィックスは指定されませんでした。 仮想ネットワークまたはサブネットのアドレス プレフィックスが指定されていない場合、Azure では既定で、最初のサブネットのアドレス プレフィックスとして 10.0.0.0/24 を定義します。 結果として、サブネットは 10.0.0.0 ～ 10.0.0.254 を含みますが、Azure では各サブネットで最初の 4 つのアドレス (0 ～ 3) と最後のアドレスを予約しているため、10.0.0.4 ～ 10.0.0.254 のみが使用可能です。
-
-## <a name="test-network-communication"></a>ネットワーク通信をテストする
-
-仮想ネットワークでは、プライベートで相互通信するために、複数の種類の Azure リソースを使用できます。 仮想ネットワークにデプロイできるリソースの種類の 1 つは、仮想マシンです。 仮想ネットワークに 2 つの仮想マシンを作成して、後の手順でそれらの間のプライベート通信を検証できるようにします。
-
-### <a name="create-virtual-machines"></a>仮想マシンを作成する
-
-仮想マシンを作成するには、[az vm create](/cli/azure/vm#az_vm_create) コマンドを使用します。 次の例では、*myVm1* という名前の仮想マシンを作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、仮想マシンはバックグラウンドで作成されるため、次の手順に進むことができます。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。 次の例では、*myVm1* という名前の VM を作成します。
 
 ```azurecli-interactive 
 az vm create \
@@ -83,9 +67,7 @@ az vm create \
   --no-wait
 ```
 
-仮想ネットワークがリソース グループ内に存在し、コマンドでは仮想ネットワークやサブネットが指定されていないため、Azure では自動的に、*myVirtualNetwork* 仮想ネットワークの*既定*のサブネットに仮想マシンを作成します。 *既定*のサブネットで使用できる最初のアドレスは 10.0.0.4 なので、Azure DHCP はこれを仮想マシンに自動的に割り当てました。 仮想マシンを作成する場所は、仮想ネットワークが存在する場所と同じ場所にする必要があります。 この記事では同じになっていますが、仮想マシンは、該当の仮想ネットワークと同じリソース グループ内に配置する必要はありません。
-
-2 番目の仮想マシンを作成します。 また、既定では、Azure は*既定*のサブネットにこの仮想マシンを作成します。
+### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
 
 ```azurecli-interactive 
 az vm create \
@@ -95,7 +77,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-仮想マシンの作成には、数分かかります。 仮想マシンが作成された後、Azure CLI は次の例のような出力を返します。 
+VM の作成には数分かかります。 VM が作成された後、Azure CLI は次の例のような出力を返します。 
 
 ```azurecli 
 {
@@ -110,39 +92,31 @@ az vm create \
 }
 ```
 
-例では、**privateIpAddress** は *10.0.0.5* であることがわかります。 *既定*のサブネットで使用できる次のアドレスは *10.0.0.5* なので、Azure DHCP はこれを仮想マシンに自動的に割り当てました。 **publicIpAddress** を書き留めておきます。 このアドレスは、以降の手順で、インターネットから仮想マシンにアクセスするときに使用されます。 パブリック IP アドレスは、仮想ネットワークまたはサブネットのアドレス プレフィックス内からは割り当てられません。 パブリック IP アドレスは、[各 Azure リージョンに割り当てられたアドレスのプール](https://www.microsoft.com/download/details.aspx?id=41653)から割り当てられます。 Azure ではどのパブリック IP アドレスが仮想マシンに割り当てられているかを把握していますが、仮想マシンで実行されているオペレーティング システムが、割り当てられたパブリック IP アドレスを認識することはありません。
+**publicIpAddress** を書き留めておきます。 このアドレスは、次の手順でインターネットから VM に接続するために使用します。
 
-### <a name="connect-to-a-virtual-machine"></a>仮想マシンへの接続
+## <a name="connect-to-a-vm-from-the-internet"></a>インターネットから VM に接続する
 
-次のコマンドを使用して、 *myVm2* 仮想マシンとの SSH セッションを作成します。 `<publicIpAddress>` をお使いの仮想マシンのパブリック IP アドレスに置き換えます。 上記の例では、IP アドレスは *40.68.254.142* です。
+`<publicIpAddress>` を *myVm2* VM のパブリック IP アドレスで置換して、次のコマンドを入力します。
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-### <a name="validate-communication"></a>通信を検証する
+## <a name="communicate-privately-between-vms"></a>VM 間でプライベートに通信する
 
-次のコマンドを使用して、*myVm2* から *myVm1* との通信を確認します。
+*myVm2* VM と *myVm1* VM の間のプライベートな通信を確認するには、次のコマンドを入力します。
 
 ```bash
 ping myVm1 -c 4
 ```
 
-*10.0.0.4* から 4 つの応答を受信します。 どちらの仮想マシンも*既定*のサブネットから割り当てられたプライベート IP アドレスを保持しているため、*myVm2* から *myVm1* と通信できます。 Azure は仮想ネットワーク内のすべてのホストに DNS 名前解決を自動的に提供するので、ホスト名で ping できます。
+*10.0.0.4* から 4 つの応答を受信します。
 
-以下のコマンドを入力して、インターネットへの送信方向の通信を確認します。
-
-```bash
-ping bing.com -c 4
-```
-
-bing.com から 4 つの応答を受信します。既定では、仮想ネットワークにあるどの仮想マシンも、インターネットへの送信方向の通信が可能です。
-
-VM の SSH セッションを終了します。
+*myVm2* VM との SSH セッションを終了します。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-必要がなくなったら、[az group delete](/cli/azure/group#az_group_delete) コマンドを使用して、リソース グループと含まれているすべてのリソースを削除できます。
+不要になったら、[az group delete](/cli/azure/group#az_group_delete) を使用して、リソース グループとそのグループに含まれているすべてのリソースを削除できます。
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes
@@ -150,7 +124,9 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、1 つのサブネットを含む既定の仮想ネットワークをデプロイしました。 複数のサブネットを含むカスタム仮想ネットワークを作成する方法を習得するには、カスタム仮想ネットワークの作成に関するチュートリアルに進んでください。
+この記事では、既定の仮想ネットワークと 2 つの VM を作成しました。 インターネットから 1 つの VM に接続し、その VM ともう 1 つの VM のプライベート通信を行いました。 仮想ネットワーク設定について詳しくは、[仮想ネットワークの管理](manage-virtual-network.md)に関する記事をご覧ください。 
+
+既定で、Azure では仮想マシン間の無制限のプライベート通信が許可されますが、インターネットから Linux VM へはインバウンド SSH セッションのみが許可されます。 VM に対するさまざまな種類のネットワーク通信を許可または制限する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [カスタム仮想ネットワークの作成](virtual-networks-create-vnet-arm-pportal.md#azure-cli)
+> [ネットワーク トラフィックをフィルター処理する](virtual-networks-create-nsg-arm-cli.md)

@@ -1,35 +1,35 @@
 ---
-title: "Azure Security Center を使って個人データを保護する | Microsoft Docs"
-description: "Azure Security Center を使って個人データを保護する"
+title: Azure Security Center を使って個人データを保護する | Microsoft Docs
+description: Security Center で個人データを保護します。 これを使用することにより、一般データ保護規則 (GDPR) に従うことができます。
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 3a941389713a4d3dbffbbfe8a717409927d85c6d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 118752a030a1c300306aa3e05571bb9b624a2c20
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-from-breaches-and-attacks-azure-security-center"></a>個人データを侵害や攻撃から保護する: Azure Security Center
 
-この記事は、Azure Security Center を使って個人データを侵害や攻撃から保護する方法を理解するのに役立ちます。
+この記事は、Azure Security Center を使って個人データを侵害や攻撃から保護する方法を理解するのに役立ちます。 ここに記載する情報は、一般データ保護規則 (GDPR) に従うために役立ちます。
 
 ## <a name="scenario"></a>シナリオ 
 
 米国に本社を置く大規模なクルーズ会社が、地中海とバルト海だけでなくイギリス諸島での旅程を提案して、その事業を拡大しています。 こうした取り組みを進めるために、イタリア、ドイツ、デンマーク、英国に拠点を置く、小規模なクルーズ会社をいくつか買収しました。
 
-この会社は、Microsoft Azure を使用して、クラウドに会社のデータを保存しています。 これには、名前や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 また、次のような人事情報も含まれます。
+その会社では、クラウドに会社のデータを保存するために Microsoft Azure を使用しています。 これには、名前や住所、電話番号、クレジット カード情報など、個人を特定できる情報が含まれます。 また、次のような人事情報も含まれます。
 
 - アドレス
 - 電話番号
@@ -84,7 +84,7 @@ JIT が有効になっている場合、Security Center では、NSG ルール�
 
 3. **[VM]** で有効にする VM を選択します。 VM の横にチェックマークが付きます。 
 4. VM に対して **[JIT の有効化]** を選びます。
-5. [ **保存**] を選択します。
+5. **[保存]** を選択します。
 
 JIT を有効にすることが ASC で推奨されている、既定のポートを確認できるようになります。 ジャスト イン タイム ソリューションを有効にする新しいポートを追加して構成することもできます。 Security Center 内の **[Just in time VM access]\(ジャスト イン タイムでの VM へのアクセス\)** タイルに、JIT アクセス用に構成されている VM の数が表示されます。 過去 1 週間に行われた承認済みアクセス要求の数も表示されます。
 
@@ -197,7 +197,7 @@ Qualys エージェントは、Qualys 管理プラットフォームに脆弱性
 
 脆弱性評価ソリューションを実装する方法の詳細については、「[Azure Security Center での脆弱性評価](https://docs.microsoft.com/azure/security-center/security-center-vulnerability-assessment-recommendations)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Security Center クイック スタート ガイド](https://docs.microsoft.com/azure/security-center/security-center-get-started)
 

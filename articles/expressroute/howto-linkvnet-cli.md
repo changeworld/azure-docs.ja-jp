@@ -1,25 +1,25 @@
 ---
-title: "ExpressRoute 回線への仮想ネットワークのリンク: CLI: Azure | Microsoft Docs"
-description: "このドキュメントでは、Resource Manager デプロイメント モデルと CLI を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。"
+title: 'ExpressRoute 回線への仮想ネットワークのリンク: CLI: Azure | Microsoft Docs'
+description: このドキュメントでは、Resource Manager デプロイメント モデルと CLI を使用して ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要について説明します。
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlit
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.date: 03/08/2018
 ms.author: anzaman,cherylmc
-ms.openlocfilehash: fa55cbad9fca799faff4e4cef87f9eedb8d2023f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 5e8d1739aa3d7f5be6c6450edcad43bc83db71fb
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-cli"></a>CLI を使用して仮想ネットワークを ExpressRoute 回線に接続する
 
@@ -36,7 +36,9 @@ ms.lasthandoff: 12/21/2017
 ## <a name="configuration-prerequisites"></a>構成の前提条件
 
 * 最新バージョンのコマンド ライン インターフェイス (CLI) が必要となります。 詳細については、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」を参照してください。
+
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認する必要があります。
+
 * アクティブな ExpressRoute 回線が必要です。 
   * 手順に従って、 [ExpressRoute 回線を作成](howto-circuit-cli.md) し、接続プロバイダー経由で回線を有効にしてください。 
   * 回線用に Azure プライベート ピアリングが構成されていることを確認してください。 ルーティング手順については、 [ルーティングの構成](howto-routing-cli.md) に関する記事を参照してください。 
@@ -44,6 +46,8 @@ ms.lasthandoff: 12/21/2017
   * 仮想ネットワークと仮想ネットワーク ゲートウェイを作成し、完全にプロビジョニングします。 指示に従って [ExpressRoute 用の仮想ネットワーク ゲートウェイを構成](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)します。 `--gateway-type ExpressRoute` を使用してください。
 
 * 最大 10 個の仮想ネットワークを標準 ExpressRoute 回線に接続できます。 標準 ExpressRoute 回線を使用する場合は、すべての仮想ネットワークが同じ地理的リージョンに存在する必要があります。 
+
+* 単一の VNet を最大 4 つの ExpressRoute 回線にリンクできます。 以下のプロセスを使用して、接続先の各 ExpressRoute 回線の新しい接続オブジェクトを作成します。 ExpressRoute 回線は、同じサブスクリプション、異なるサブスクリプション、または両方の組み合わせにすることができます。
 
 * ExpressRoute Premium アドオンを有効にした場合は、ExpressRoute 回線の地理的リージョンの外部にある仮想ネットワークをリンクしたり、さらに多くの仮想ネットワークを ExpressRoute 回線にリンクしたりすることができます。 Premium アドオンの詳細については、[FAQ](expressroute-faqs.md) を参照してください。
 
@@ -142,6 +146,6 @@ az network vpn-connection create --name ERConnection --resource-group ExpressRou
 
 ExpressRoute 回線を仮想ネットワークにリンクしている接続を削除することで、承認を解除できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

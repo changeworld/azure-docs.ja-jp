@@ -124,6 +124,8 @@
           href: security-center-ata-integration.md
         - name: Azure AD Identity Protection の接続
           href: security-center-aadip-integration.md
+        - name: SIEM へのデータ エクスポート
+          href: security-center-export-data-to-siem.md
     - name: 脅威の調査
       href: security-center-detection-capabilities.md
       items:

@@ -1,25 +1,19 @@
 ---
-title: "Elastic Database ツールを使用してシャードを追加する | Microsoft Docs"
-description: "Elastic Scale API を使用して新しいシャードをシャード セットに追加する方法。"
+title: Elastic Database ツールを使用してシャードを追加する | Microsoft Docs
+description: Elastic Scale API を使用して新しいシャードをシャード セットに追加する方法。
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: 62a349db-bebe-406f-a120-2f1986f2b286
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: ddove
-ms.openlocfilehash: c3abbae20772cfc37fb8c58dc97209ac42dde358
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.author: sstein
+ms.openlocfilehash: 7fd62fff5426dd6aaefaf6dc7d571ab4e7df9cc9
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="adding-a-shard-using-elastic-database-tools"></a>Elastic Database ツールを使用してシャードを追加する
 ## <a name="to-add-a-shard-for-a-new-range-or-key"></a>新しい範囲またはキー用のシャードを追加するには

@@ -1,24 +1,24 @@
 ---
-title: "Microsoft Advanced Threat Analytics を Azure Security Center に接続する | Microsoft Docs"
-description: "Azure Security Center と Microsoft Advanced Threat Analytics を統合する方法について説明します。"
+title: Microsoft Advanced Threat Analytics を Azure Security Center に接続する | Microsoft Docs
+description: Azure Security Center と Microsoft Advanced Threat Analytics を統合する方法について説明します。
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: MBaldwin
-editor: 
+editor: ''
 ms.assetid: 5d80bf91-16c3-40b3-82fc-e0805e6708db
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/13/2017
+ms.date: 03/05/2018
 ms.author: yurid
-ms.openlocfilehash: e1b9e598af3b55c1d9591e5c1e529a80ae3319ca
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 02e14315018f6586644eb560894785e6b6eb022e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="connecting-microsoft-advanced-threat-analytics-to-azure-security-center"></a>Microsoft Advanced Threat Analytics を Azure Security Center に接続する
 このドキュメントは、Microsoft Advanced Threat Analytics と Azure Security Center 間の統合を構成する場合に役立ちます。
@@ -39,7 +39,7 @@ ATA が既にインストールされ、オンプレミスで適切に動作し�
 
     ![通知](./media/security-center-ata-integration/security-center-ata-integration-fig2.png)
 
-5. [ **Save**] をクリックします。
+5. **[Save]** をクリックします。
 6. **[Security Center]** ダッシュボードを開きます。
 7. 左側のウィンドウで **[セキュリティ ソリューション]** をクリックします。
 8. **[Advanced Threat Analytics]** で **[追加]** をクリックします。
@@ -61,9 +61,9 @@ ATA が既にインストールされ、オンプレミスで適切に動作し�
 12. ATA Center でこのエージェントをインストールします。 インストール中に **[Azure ログ分析 (OMS) にエージェントを接続する]** オプションをオンにして、指示に従って*ワークスペース ID* と*プライマリ キー*を入力します。
 
 
-インストールを完了し、統合が完了すると、ATA から Security Center に送信された新しいアラートを **[セキュリティ アラート]** と **[検索]** で確認できるようになります。 ソリューションは **[接続済みソリューション]** の **[セキュリティ ソリューション]** に表示されます。 
+インストールを完了し、統合が完了すると、ATA から Security Center に送信された新しいアラートを **[検索]** 結果で確認できるようになります。 ソリューションは **[接続済みソリューション]** の **[セキュリティ ソリューション]** に表示されます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このドキュメントでは、Microsoft ATA を Security Center に接続する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
 * [Azure Active Directory Identity Protection を Azure Security Center に接続する](security-center-aadip-integration.md)

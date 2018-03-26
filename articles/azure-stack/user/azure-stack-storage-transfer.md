@@ -1,28 +1,28 @@
 ---
-title: "Azure Stack Storage のツール"
-description: "Azure Stack Storage のデータ転送ツールについて説明します。"
+title: Azure Stack Storage のツール
+description: Azure Stack Storage のデータ転送ツールについて説明します。
 services: azure-stack
-documentationcenter: 
-author: xiaofmao
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: mattbriggs
+manager: femila
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 9/25/2017
-ms.author: xiaofmao
-ms.openlocfilehash: 9799498a11449a9ed496d0fdb40312603eda064e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 02/21/2018
+ms.author: mabrigg
+ms.reviewer: xiaofmao
+ms.openlocfilehash: 9318b7af3c3dd545207f1896c9008207f562b735
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="tools-for-azure-stack-storage"></a>Azure Stack Storage のツール
 
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
 Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、およびアカウント管理機能のストレージ サービスのセットを提供します。 Azure Stack Storage のデータを管理または移動する場合は、Azure Storage のツールのセットを使用ですることができます。 この記事では、使用可能なツールについて簡単に説明します。
 
@@ -50,7 +50,11 @@ Azure と Azure Stack の間の記憶域サービスの違いにより、次の�
 AzCopy は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure BLOB とテーブルのストレージ間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。 AzCopy には、AzCopy on Windows と AzCopy on Linux という 2 つのバージョンがあります。 Azure Stack は、Windows バージョンのみをサポートします。 
  
 ### <a name="download-and-install-azcopy"></a>AzCopy のダウンロードとインストール 
-Azure Stack 用の AzCopy のサポートされている Windows バージョンを[ダウンロード](https://aka.ms/azcopyforazurestack)します。 Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../../storage/common/storage-use-azcopy.md)」を参照してください。 
+
+Azure Stack でサポートされている Windows バージョンの AzCopy を[ダウンロード](https://aka.ms/azcopyforazurestack)します。 Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../../storage/common/storage-use-azcopy.md)」を参照してください。 
+
+ - 1802 update 以降のバージョンでは、[AzCopy 7.1.0 をダウンロード](https://aka.ms/azcopyforazurestack20170417)します。
+ - それより前のバージョンでは、[AzCopy 5.0.0 をダウンロード](https://aka.ms/azcopyforazurestack20150405)します。
 
 ### <a name="azcopy-command-examples-for-data-transfer"></a>データ転送するための AzCopy コマンドの例
 以下の例では、Azure Stack BLOB との間でデータをコピーするさまざまなシナリオを紹介しています。 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../../storage/storage-use-azcopy.md)」を参照してください。 
@@ -63,14 +67,14 @@ AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer 
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
 #### <a name="move-data-between-azure-and-azure-stack-storage"></a>Azure と Azure Stack Storage 間でデータを移動します。 
-Azure Storage と Azure Stack との間の非同期のデータ転送がサポートされていません。 `/SyncCopy` オプションで転送を指定する必要があります。 
+Azure Storage と Azure Stack との間の非同期のデータ転送がサポートされていません。 **/SyncCopy** オプションで転送を指定する必要があります。 
 ```azcopy 
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
 ```
 
 ### <a name="azcopy-known-issues"></a>Azcopy の既知の問題
 * ファイル ストレージは、Azure Stack で使用できないために、ファイル ストレージに関する AzCopy 操作は使用できません。
-* Azure Storage と Azure Stack との間の非同期のデータ転送がサポートされていません。 `/SyncCopy` オプションを使用して転送を指定し、データをコピーすることができます。
+* Azure Storage と Azure Stack との間の非同期のデータ転送がサポートされていません。 **/SyncCopy** オプションを使用して転送を指定し、データをコピーすることができます。
 * Azure Stack Storage では、Azcopy の Linux バージョンはサポートされていません。 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
@@ -224,11 +228,10 @@ echo "Done"
 
 Microsoft Azure Storage Explorer は、Microsoft のスタンドアロン アプリです。 このツールは、Windows、macOS、および Linux で Azure Storage および Azure Stack Storage の両方のデータを簡単に操作できます。 簡単に、Azure Stack Storage データを簡単に管理する方法が必要な場合は、Microsoft Azure Storage Explorer の使用を検討してください。
 
-Azure Stack を操作する Microsoft Azure Storage Explorer の構成の詳細については、「[Connect Storage Explorer to an Azure Stack subscription](azure-stack-storage-connect-se.md)」 (Microsoft Azure Storage Explorer を Azure Stack サブスクリプションに接続する) を参照してください。
+ - Azure Stack を操作する Azure Storage Explorer の構成の詳細については、「[Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack-storage-connect-se.md)」を参照してください。
+ - Microsoft Azure Storage Explorer の詳細については、「[Microsoft Azure Storage Explorer (プレビュー) の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)」を参照してください。
 
-Microsoft Azure Storage Explorer の詳細については、「[Microsoft Azure Storage Explorer (プレビュー) の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)」を参照してください。
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack-storage-connect-se.md)
 * [Microsoft Azure Storage Explorer (プレビュー) の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)

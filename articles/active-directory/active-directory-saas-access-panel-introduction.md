@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory のアクセス パネルの概要 | Microsoft Docs"
-description: "アクセス パネルの各種構成 (Web ブラウザー、Android アプリ、iPhone および iPad アプリ) を使用して、SaaS アプリにアクセスする方法について説明します。"
+title: Azure Active Directory のアクセス パネルの概要 | Microsoft Docs
+description: アクセス パネルの各種構成 (Web ブラウザー、Android アプリ、iPhone および iPad アプリ) を使用して、SaaS アプリにアクセスする方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: c0252d01-7e6e-4f79-a70e-600479577dfd
@@ -11,21 +11,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/06/2018
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c9069cb0b46ddc1155c64bd63a7fcd8a685abbad
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: c9b647e8f731995537a8797ab28248a1c42b6460
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-the-access-panel"></a>アクセス パネルの概要
 
-アクセス パネルは Web ベースのポータルです。 Azure Active Directory (Azure AD) の職場または学校アカウントがある場合は、アクセス パネルを使用して、Azure AD 管理者によってアクセスが許可されたクラウドベースのアプリケーションを表示および起動できます。 また、アクセス パネルからは、セルフサービスのグループおよびアプリ管理機能を利用することもできます。
+アクセス パネルは Web ベースのポータルです。 Azure Active Directory (Azure AD) の職場または学校アカウントがある場合は、アクセス パネルを使用して、Azure AD 管理者がアクセスを許可したクラウドベースのアプリケーションを表示および起動できます。 また、アクセス パネルからは、セルフサービスのグループおよびアプリ管理機能を利用することもできます。
 
-アクセス パネルは Azure Portal から独立しています。 Azure サブスクリプションを持っている必要はありません。
+アクセス パネルは Azure Portal とは別のものです。 Azure サブスクリプションを持っている必要はありません。
 
 ![アクセス パネル][1]アクセス パネルを使用すると、プロファイル設定を編集し、次の作業を行うことができます。
 
@@ -67,6 +67,9 @@ Azure または Office 365 のサブスクリプションを持っていて、Az
 ## <a name="web-browser-requirements"></a>Web ブラウザーの要件
 
 アクセス パネルには、少なくとも、JavaScript をサポートする CSS 対応のブラウザーが必要です。 パスワード ベースのシングル サインオン (SSO) を使ってアプリケーションにサインインするには、ブラウザーにアクセス パネルの拡張機能をインストールする必要があります。 この拡張機能は、パスワード ベースの SSO 用に構成されているアプリケーションを選ぶと、自動的にダウンロードされます。
+
+インストーラーはアーキテクチャ固有です。 ダウンロード リンクをクリックした場合、現在実行している OS アーキテクチャ向けのインストーラーのみが取得されます。 64 ビットと 32 ビットのインストーラーを取得するには、アプリケーション デプロイ管理者は、必ず両方のデバイスからダウンロード リンクにアクセスしてください。
+
 
 現在、アクセス パネルの拡張機能は次で使用できます。
 - **Edge**: Windows 10 Anniversary Edition 以降。 

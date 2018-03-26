@@ -1,26 +1,26 @@
 ---
-title: "Azure の Linux 仮想マシンと Azure Security Center | Microsoft Docs"
-description: "Azure Security Center による Azure Linux 仮想マシンのセキュリティについて説明します。"
+title: Azure の Linux 仮想マシンと Azure Security Center | Microsoft Docs
+description: Azure Security Center による Azure Linux 仮想マシンのセキュリティについて説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: neilpeterson
+author: iainfoulds
 manager: timlt
 editor: tysonn
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/07/2017
-ms.author: nepeters
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dbba39f5b9f18aaca6449e08aa584224fc2126d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b791b2e1dbaffc90145c325dea7a85bd8abd98c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-virtual-machine-security-by-using-azure-security-center"></a>Azure Security Center を使った仮想マシン セキュリティの監視
 
@@ -42,7 +42,7 @@ Azure ポータルから Security Center ダッシュボードにアクセスす
 
 Security Center の機能はデータを検出するだけではありません。検出された問題についての推奨事項が提供されます。 たとえばネットワーク セキュリティ グループが関連付けられていない状態で VM がデプロイされていた場合、Security Center によって推奨事項と修復手順が表示されます。 修復は自動化されており、Security Center を離れる必要はありません。  
 
-![推奨事項](./media/tutorial-azure-security/recommendations.png)
+![Recommendations](./media/tutorial-azure-security/recommendations.png)
 
 ## <a name="set-up-data-collection"></a>データ収集を設定する
 
@@ -110,7 +110,7 @@ Security Center による構成データの収集が開始されると、設定�
 
 多くの場合、Security Center を離れることなくその場で問題を修復するための手順が表示されます。 以下の例では、ネットワーク セキュリティ グループに割り当てられている受信の規則が無制限になっていることが、Security Center によって検出されています。 推奨事項ページで **[受信の規則を編集する]** ボタンを選択できます。 規則を編集するために必要な UI が表示されます。 
 
-![推奨事項](./media/tutorial-azure-security/remediation.png)
+![Recommendations](./media/tutorial-azure-security/remediation.png)
 
 推奨事項の内容に従って問題を修復すると、解決済みとしてマークされます。 
 
@@ -135,7 +135,7 @@ Security Center には、リソースの構成に関する推奨事項を提示�
 
 ![RDP 攻撃](./media/tutorial-azure-security/rdp-attack.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure Security Center を設定した後、Security Center で VM を確認しました。 以下の方法について学習しました。
 
 > [!div class="checklist"]

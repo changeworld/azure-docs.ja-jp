@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Manager のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Resource Manager を使用して、ソリューション リソース (グループなど) をデプロイおよび管理したり、一貫性のある繰り返し可能なリソースのデプロイ用にテンプレートを作成したりする方法について説明します。"
+title: Azure Resource Manager のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Resource Manager を使用して、ソリューション リソース (グループなど) をデプロイおよび管理したり、一貫性のある繰り返し可能なリソースのデプロイ用にテンプレートを作成したりする方法について説明します。
 services: azure-resource-manager
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure-resource-manager
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: ab6725298c9e9c496d2e20b4e68ff72af1432bb2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 471ed43d5eec54a138262b7c4c89802020683fdc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="azure-resource-manager-documentation"></a>Azure Resource Manager のドキュメント
+# <a name="azure-resource-manager-documentation"></a>Azure Resource Manager のドキュメント
 
 Resource Manager を使用して、グループなどのソリューション リソースをデプロイ、監視、管理する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、リソース グループを設定し、一貫性のある繰り返し可能なデプロイ用にテンプレートを作成する方法を紹介します。
 

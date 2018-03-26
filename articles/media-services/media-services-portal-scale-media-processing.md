@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal を使用したメディア処理のスケール設定 | Microsoft Docs"
-description: "このチュートリアルでは、Azure Portal を使用したメディア処理のスケール設定の手順について説明します。"
+title: Azure Portal を使用したメディア処理のスケール設定 | Microsoft Docs
+description: このチュートリアルでは、Azure Portal を使用したメディア処理のスケール設定の手順について説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: e500f733-68aa-450c-b212-cf717c0d15da
 ms.service: media-services
 ms.workload: media
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/04/2017
 ms.author: juliako
-ms.openlocfilehash: d2312803a4471e207d3696ca8350a86e3c4761e6
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f65ba489d70a3844169780c4680fcc43b3064b54
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="change-the-reserved-unit-type"></a>予約ユニットの種類の変更
 > [!div class="op_single_selector"]
 > * [.NET](media-services-dotnet-encoding-units.md)
 > * [ポータル](media-services-portal-scale-media-processing.md)
-> * [REST ()](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
+> * [REST](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 > * [Java](https://github.com/southworkscom/azure-sdk-for-media-services-java-samples)
 > * [PHP](https://github.com/Azure/azure-sdk-for-php/tree/master/examples/MediaServices)
 > 
@@ -54,16 +54,15 @@ Media Services アカウントは、メディア処理タスクを処理する�
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** ウィンドウで **[メディア占有ユニット]** をクリックします。
    
-    選択した予約ユニットの種類の予約ユニット数を変更するには、 **[Media Serverd Units (メディア予約ユニット)]** スライダーを使用します。
+    選択した予約ユニットの種類の予約ユニット数を変更するには、画面上部にある **[Media Served Units]\(メディア予約ユニット\)** スライダーを使用します。
    
-    **[占有ユニットの種類]**を変更するには、[S1]、[S2]、または [S3] をクリックします。
+    **[占有ユニットの種類]** を変更するには、**[Speed of reserved processing units]\(占有処理ユニットの速度\)** バーをクリックします。 次に、必要な価格レベルとして、S1、S2、または S3 を選択します。
    
-    ![[プロセッサ] ページ](./media/media-services-portal-scale-media-processing/media-services-scale-media-processing.png)
 3. [保存] ボタンを押して、変更を保存します。
    
     [保存] をクリックすると、新しい予約ユニットが割り当てられます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Media Services のラーニング パスを確認します。
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

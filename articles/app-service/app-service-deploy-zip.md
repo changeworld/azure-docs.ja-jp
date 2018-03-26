@@ -1,27 +1,27 @@
 ---
-title: "ZIP ファイルを使用した Azure App Service へのアプリのデプロイ | Microsoft Docs"
-description: "ZIP ファイルを使用して Azure App Service にアプリをデプロイする方法について説明します。"
+title: ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ | Microsoft Docs
+description: ZIP ファイル (Java 開発者の場合は WAR ファイル) を使用して Azure App Service にアプリをデプロイする方法について説明します。
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 03/07/2018
 ms.author: cephalin;sisirap
-ms.openlocfilehash: a0e4df0ef0a1c873f1efcac1d8dbfe3cada18218
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 6ecbf111bad96bce310109ac1a3e8f3bb846be6c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="deploy-your-app-to-azure-app-service-with-a-zip-file"></a>ZIP ファイルを使用した Azure App Service へのアプリのデプロイ
+# <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>ZIP または WAR ファイルを使用した Azure App Service へのアプリのデプロイ
 
-この記事では、ZIP ファイルを使用して Web アプリを [Azure App Service](app-service-web-overview.md) にデプロイする方法について説明します。 
+この記事では、ZIP または WAR ファイルを使用して Web アプリを [Azure App Service](app-service-web-overview.md) にデプロイする方法について説明します。 
 
 この ZIP ファイル デプロイでは、Kudu サービスを使用することで、継続的な統合ベース デプロイを効率化できます。 Kudu では、ZIP ファイルでのデプロイについて次の機能がサポートされています。 
 
@@ -31,6 +31,10 @@ ms.lasthandoff: 12/14/2017
 - デプロイ ログ。 
 
 詳しくは、[Kudu ドキュメント](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)をご覧ください。
+
+WAR ファイルの展開では、Java Web アプリを実行するために [WAR](https://wikipedia.org/wiki/WAR_(file_format)) ファイルを App Service に展開します。 「[WAR ファイルの展開](#deploy-war-file)」を参照してください。
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -58,35 +62,50 @@ zip -r <file-name>.zip .
 Compress-Archive -Path * -DestinationPath <file-name>.zip
 ``` 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [Deploy ZIP file](../../includes/app-service-web-deploy-zip.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="deploy-zip-file-with-azure-cli"></a>Azure CLI を使って ZIP ファイルを展開する
 
-## <a name="upload-zip-file-to-cloud-shell"></a>Cloud Shell に ZIP ファイルをアップロードする
+Azure CLI バージョンが 2.0.21 以降であることを確認します。 使用しているバージョンを確認するには、ターミナル ウィンドウで `az --version` コマンドを実行します。
 
-ローカル ターミナルから Azure CLI を実行する場合は、この手順をスキップしてください。
-
-次の手順に従って、Cloud Shell に ZIP ファイルをアップロードします。 
-
-[!INCLUDE [app-service-web-upload-zip.md](../../includes/app-service-web-upload-zip-no-h.md)]
-
-詳細については、「[Azure Cloud Shell でファイルを永続化する](../cloud-shell/persisting-shell-storage.md)」をご覧ください。
-
-## <a name="deploy-zip-file"></a>ZIP ファイルのデプロイ
-
-[az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) コマンドを使用して、アップロードされた ZIP ファイルを Web アプリにデプロイします。 Cloud Shell を使用しない場合は、Azure CLI のバージョンが 2.0.21 以降であることを確認してください。 使用しているバージョンを確認するには、ローカル ターミナル ウィンドウで `az --version` コマンドを実行します。 
+[az webapp deployment source config-zip](/cli/azure/webapp/deployment/source?view=azure-cli-latest#az_webapp_deployment_source_config_zip) コマンドを使用して、アップロードされた ZIP ファイルを Web アプリにデプロイします。  
 
 次に示すのは、アップロードした ZIP ファイルをデプロイするコマンドの例です。 Azure CLI のローカル インストールを使用する場合は、`--src` にローカル ZIP ファイルのパスを指定します。   
 
 ```azurecli-interactive
-az webapp deployment source config-zip --resource-group myResouceGroup --name <app_name> --src clouddrive/<filename>.zip
+az webapp deployment source config-zip --resource-group myResourceGroup --name <app_name> --src clouddrive/<filename>.zip
 ```
 
 このコマンドは、ファイルとディレクトリを ZIP ファイルから既定の App Service アプリケーション フォルダー (`\home\site\wwwroot`) にデプロイし、アプリを再起動します。 任意の追加のカスタム ビルド プロセスが構成されている場合、そのプロセスも実行されます。 詳しくは、[Kudu ドキュメント](https://github.com/projectkudu/kudu/wiki/Deploying-from-a-zip-file)をご覧ください。
 
-このアプリに対するデプロイの一覧を表示するには、REST API を使用する必要があります (次のセクションを参照)。 
-
 [!INCLUDE [app-service-deploy-zip-push-rest](../../includes/app-service-deploy-zip-push-rest.md)]  
+
+## <a name="deploy-war-file"></a>WAR ファイルの展開
+
+WAR ファイルを App Services に展開するには、POST 要求を https://<アプリ名>.scm.azurewebsites.net/api/wardeploy に送信します。 POST 要求のメッセージの本文に .war ファイルを含める必要があります。 アプリの展開資格情報は、HTTP 基本認証を使って要求で提供します。 
+
+HTTP BASIC 認証では、App Service 展開資格情報が必要です。 自分の展開資格情報を設定する方法については、「[ユーザー レベルの資格情報の設定とリセット](app-service-deployment-credentials.md#userscope)」を参照してください。
+
+### <a name="with-curl"></a>cURL を使用する
+
+次の例は cURL ツールを使用して .war ファイルを展開します。 プレースホルダー `<username>`、`<war_file_path>`、`<app_name>` を置き換えます。 cURL によって要求されたら、パスワードを入力します。
+
+```bash
+curl -X POST -u <username> --data-binary @"<war_file_path>" https://<app_name>.scm.azurewebsites.net/api/wardeploy
+```
+
+### <a name="with-powershell"></a>PowerShell の場合
+
+次の例では、[Invoke-RestMethod](/powershell/module/microsoft.powershell.utility/invoke-restmethod)を使って、.war ファイルを含む要求を送信します。 プレースホルダー `<deployment_user>`、`<deployment_password>`、`<zip_file_path>`、`<app_name>` を置き換えます。
+
+```PowerShell
+$username = "<deployment_user>"
+$password = "<deployment_password>"
+$filePath = "<war_file_path>"
+$apiUrl = "https://<app_name>.scm.azurewebsites.net/api/wardeploy"
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $username, $password)))
+Invoke-RestMethod -Uri $apiUrl -Headers @{Authorization=("Basic {0}" -f $base64AuthInfo)} -Method POST -InFile $filePath -ContentType "multipart/form-data"
+```
 
 ## <a name="next-steps"></a>次の手順
 

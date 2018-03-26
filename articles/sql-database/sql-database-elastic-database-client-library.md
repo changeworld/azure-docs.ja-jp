@@ -1,25 +1,19 @@
 ---
-title: "スケーラブルなクラウド データベースの構築 | Microsoft Docs"
-description: "エラスティック データベース クライアント ライブラリでスケーラブルな .NET データベース アプリを構築します。"
+title: スケーラブルなクラウド データベースの構築 | Microsoft Docs
+description: エラスティック データベース クライアント ライブラリでスケーラブルな .NET データベース アプリを構築します。
 services: sql-database
-documentationcenter: 
 manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: 1f11c52d-13c1-4994-b9b1-5b1ae2f9255f
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2017
-ms.author: ddove
-ms.openlocfilehash: 0674aba66b48b26b70b3ab32d9283de5c63a267a
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.author: sstein
+ms.openlocfilehash: e15254fd529d98f2b92acea8dd1ed908a82841ea
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="building-scalable-cloud-databases"></a>スケーラブルなクラウド データベースの構築
 Azure SQL Database 用のスケーラブルなツールと機能を使用して、データベースのスケール アウトを簡単に実現できます。 具体的には、 **Elastic Database クライアント ライブラリ** を使用して、スケールアウトされたデータベースを作成および管理できます。 この機能により、数百から数千もの Azure SQL データベースを使用して、シャード化されたアプリケーションを簡単に開発できます。 [エラスティック ジョブ](sql-database-elastic-jobs-powershell.md) を使用すると、こうしたデータベースを容易に操作できます。
@@ -58,7 +52,7 @@ Azure SQL Database 用のスケーラブルなツールと機能を使用して�
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Elastic Database クライアント ライブラリ ([Java](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-elasticdb-tools%22)、[.NET](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)) - ライブラリを**ダウンロード**します。
 

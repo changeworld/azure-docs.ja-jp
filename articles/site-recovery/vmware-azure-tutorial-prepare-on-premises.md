@@ -1,19 +1,19 @@
 ---
-title: "VMware VM から Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する | Microsoft Docs"
-description: "Azure Site Recovery サービスを使用して、Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する方法を説明します。"
+title: VMware VM から Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する | Microsoft Docs
+description: Azure Site Recovery サービスを使用して、Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する方法を説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/08/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6b5c16e5b4136acc06c4ace4b16e8eb0e3522d24
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -86,7 +86,7 @@ VM が次の表にまとめた Azure の要件に準拠していることを確�
 **VM 名** | 1 ～ 63 文字で指定します。<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。 VM 名の最初と最後は、文字か数字とする必要があります。
 **VM の種類** | 第 1 世代 - Linux または Windows<br/><br/>第 2 世代 - Windows のみ
 
-VM もサポートされているオペレーティング システムを実行している必要があります。 サポートされているバージョンの完全な一覧については [Site Recovery のサポート マトリックス](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)関する記事をご覧ください。
+VM もサポートされているオペレーティング システムを実行している必要があります。 サポートされているバージョンの完全な一覧については、[VMware と物理サーバーのサポート マトリックス](vmware-physical-azure-support-matrix.md#replicated-machines)に関するページを参照してください。
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
 

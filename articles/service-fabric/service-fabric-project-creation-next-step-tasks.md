@@ -1,11 +1,11 @@
 ---
-title: "Service Fabric プロジェクトの作成の次の手順 | Microsoft Docs"
-description: "Visual Studio で作成したアプリケーション プロジェクトについて説明します。  チュートリアルを使用してサービスを構築する方法を説明し、Service Fabric のサービスの開発について詳しく説明します。"
+title: Service Fabric プロジェクトの作成の次の手順 | Microsoft Docs
+description: Visual Studio で作成したアプリケーション プロジェクトについて説明します。  チュートリアルを使用してサービスを構築する方法を説明し、Service Fabric のサービスの開発について詳しく説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 299d1f97-1ca9-440d-9f81-d1d0dd2bf4df
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: rwike77
-ms.openlocfilehash: 17eb1e7c2184fe9cae19685a47ea80716292b754
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 1e5b8523422aae00655b003bf15103d5467b4177
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Service Fabric アプリケーションと次の手順
 Azure Service Fabric アプリケーションが作成されました。 この記事では、試してみるべきチュートリアル、プロジェクトの構成、その他の詳細情報、考えられる次のステップについて説明します。
@@ -55,7 +55,7 @@ Azure Service Fabric アプリケーションが作成されました。 この�
 
 
 ## <a name="learn-more-about-the-programming-models"></a>プログラミング モデルの詳細
-Service Fabric には、サービスの記述と管理に使用できる複数の方法が用意されています。  [ステートレスおよびステートフル Reliable Services](service-fabric-reliable-services-introduction.md)、[Reliable Actors](service-fabric-reliable-actors-introduction.md)、[コンテナー](service-fabric-containers-overview.md)、[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)、[ステートレスおよびステートフル ASP.NET Core サービス](service-fabric-reliable-services-communication-aspnetcore.md)の概要と概念情報をご覧ください。
+Service Fabric には、サービスの記述と管理に使用できる複数の方法が用意されています。  [ステートレスおよびステートフル Reliable Services](service-fabric-reliable-services-introduction.md)、[Reliable Actors](service-fabric-reliable-actors-introduction.md)、[コンテナー](service-fabric-containers-overview.md)、[ゲスト実行可能ファイル](service-fabric-guest-executables-introduction.md)、[ステートレスおよびステートフル ASP.NET Core サービス](service-fabric-reliable-services-communication-aspnetcore.md)の概要と概念情報をご覧ください。
 
 ## <a name="learn-about-service-communication"></a>サービスの通信について
 Service Fabric アプリケーションはさまざまなサービスで構成されており、各サービスがそれぞれに特化したタスクを実行します。 これらのサービスは相互に通信できます。また、サービスに接続して通信するクライアント アプリケーションがクラスターの外部に存在する場合もあります。 Service Fabric のサービスとの通信やサービス間での通信を設定する方法については、[こちら](service-fabric-connect-and-communicate-with-services.md)をご覧ください。 
@@ -68,7 +68,7 @@ Service Fabric アプリケーションはさまざまなサービスで構成�
 ## <a name="learn-about-the-application-lifecycle"></a>アプリケーション ライフサイクルについて
 他のプラットフォームと同様に、通常、Service Fabric アプリケーションは、設計、開発、テスト、デプロイ、アップグレード、保守、削除の各フェーズを通過します。 [この記事](service-fabric-application-lifecycle.md)では、API の概要と、Service Fabric アプリケーション ライフサイクルの各フェーズでさまざまなロールが API をどのように使用するかについて説明しています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Azure での Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 - [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) を使用したクラスターの視覚化 (デプロイ済みのアプリケーションや物理的なレイアウトなど)
 - [サービスのアップグレードとバージョン管理](service-fabric-application-upgrade-tutorial.md)

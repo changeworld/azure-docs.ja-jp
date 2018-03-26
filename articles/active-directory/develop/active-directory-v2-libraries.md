@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory v2.0 認証ライブラリ | Microsoft Docs"
-description: "Azure Active Directory v2.0 エンドポイントと互換性のあるクライアント ライブラリおよびサーバーのミドルウェア ライブラリ、関連するライブラリ、ソース、サンプル リンク。"
+title: Azure Active Directory v2.0 認証ライブラリ | Microsoft Docs
+description: Azure Active Directory v2.0 エンドポイントと互換性のあるクライアント ライブラリおよびサーバーのミドルウェア ライブラリ、関連するライブラリ、ソース、サンプル リンク。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 19cec615-e51f-4141-9f8c-aaf38ff9f746
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 08/22/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: a1e2c4db54ca81325751ed85b26b904174e94078
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 60abada0a6683ee5cc8118c37336fe67cd51b2f0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 認証ライブラリ
 [Azure Active Directory (Azure AD) v2.0 エンドポイント](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-compare)は、業界標準の OAuth 2.0 および OpenID Connect 1.0 プロトコルをサポートします。 v2.0 エンドポイントでは、Microsoft およびその他の組織のさまざまなライブラリを使用することができます。
@@ -27,9 +27,9 @@ ms.lasthandoff: 12/11/2017
 v2.0 エンドポイントを使用するアプリケーションを構築する場合は、[Microsoft が使用する][Microsoft-SDL]ような Microsoft Security Development Lifecycle (SDL) の手法を採用するプロトコル ドメインの専門家が記述したライブラリを使用することをお勧めします。 プロトコルのサポートをハンド コードする場合は、SDL 手法に従い、各プロトコルの標準仕様におけるセキュリティ上の考慮事項によく注意することをお勧めします。
 
 > [!NOTE]
-> Azure AD v1.0 ライブラリ (ADAL) をお探しの場合は、 [ADAL ライブラリ ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)を確認してください。 
-> 
-> 
+> Azure AD v1.0 ライブラリ (ADAL) をお探しの場合は、 [ADAL ライブラリ ガイド](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)を確認してください。
+>
+>
 
 ## <a name="types-of-libraries"></a>ライブラリの種類
 Azure AD v2.0 エンドポイントは、次の 2 種類のライブラリに対応します。
@@ -53,7 +53,7 @@ v2.0 エンドポイントで動作するライブラリの一覧については
 > [!IMPORTANT]
 > MSAL プレビュー ライブラリは、運用環境での使用に適しています。 これらのライブラリには、現在の運用ライブラリ (ADAL) と同様の運用レベル サポートが提供されています。 プレビュー中に、それらのライブラリの MSAL API、内部キャッシュ フォーマット、およびその他のメカニズムが予告なく変更されることがあり、それらをバグ フィックスや機能改善とともに取り込むことが必要になります。 これは、アプリケーションに影響を与える場合があります。 たとえば、キャッシュ フォーマットの変更は、再度サインインが必要になるなどユーザーに影響を与える場合があります。 API の変更では、コードの更新が必要な場合があります。 リリースの一般提供が開始されると、プレビュー バージョンのライブラリを使用して作成されたアプリケーションが機能しなくなるため、6 か月以内に一般提供バージョンに更新していただく必要があります。
 
-| プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス
+| プラットフォーム | ライブラリ | [ダウンロード] | ソース コード | サンプル | リファレンス
 | --- | --- | --- | --- | --- | --- |
 | .NET クライアント、Windows ストア、UWP、Xamarin iOS、Android | MSAL .NET (プレビュー) |[NuGet](https://www.nuget.org/packages/Microsoft.Identity.Client) |[GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet) | [デスクトップ アプリ](guidedsetups/active-directory-mobileanddesktopapp-windowsdesktop-intro.md) |  |
 | JavaScript | MSAL.js (プレビュー) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [GitHub](https://github.com/AzureAD/microsoft-authentication-library-for-js) | [シングル ページ アプリケーション](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2) |  |
@@ -62,7 +62,7 @@ v2.0 エンドポイントで動作するライブラリの一覧については
 
 ## <a name="microsoft-supported-server-middleware-libraries"></a>Microsoft がサポートするサーバー ミドルウェア ライブラリ
 
-| プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス
+| プラットフォーム | ライブラリ | [ダウンロード] | ソース コード | サンプル | リファレンス
 | --- | --- | --- | --- | --- | --- |
 | .NET 4.x | OWIN OpenID Connect ミドルウェア |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect) |[CodePlex](http://katanaproject.codeplex.com) |[MVC アプリ](guidedsetups/active-directory-serversidewebapp-aspnetwebappowin-intro.md) | |
 | .NET 4.x | AzureAD 用 OWIN OAuth Bearer ミドルウェア |[NuGet](https://www.nuget.org/packages/Microsoft.Owin.Security.ActiveDirectory/) |[CodePlex](http://katanaproject.codeplex.com) |  | |
@@ -78,13 +78,8 @@ v2.0 エンドポイントで動作するライブラリの一覧については
 | Android |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib/wiki) |0.2.1 |[OIDCAndroidLib](https://github.com/kalemontes/OIDCAndroidLib) |[ネイティブ アプリのサンプル](active-directory-v2-devquickstarts-android.md) |
 | iOS |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |1.2.8 |[NXOAuth2Client](https://github.com/nxtbgthng/OAuth2Client) |[ネイティブ アプリのサンプル](active-directory-v2-devquickstarts-ios.md) |
 | JavaScript |[Hello.js](https://adodson.com/hello.js/) |1.13.5 |[Hello.js](https://github.com/MrSwitch/hello.js) |[SPA](https://github.com/Azure-Samples/active-directory-javascript-graphapi-web-v2) |
-
-## <a name="compatible-server-middleware-libraries"></a>互換性のあるサーバー ミドルウェア ライブラリ
-| プラットフォーム | ライブラリ名 | テスト済みのバージョン | ソース コード | サンプル |
-|:---:|:---:|:---:|:---:|:---:|
 | Java | [Scribe Java scribejava](https://github.com/scribejava/scribejava) | [バージョン 3.2.0](https://github.com/scribejava/scribejava/releases/tag/scribejava-3.2.0) | [ScribeJava](https://github.com/scribejava/scribejava/archive/scribejava-3.2.0.zip) | |
 | PHP | [PHP League oauth2-client](https://github.com/thephpleague/oauth2-client) | [バージョン 1.4.2](https://github.com/thephpleague/oauth2-client/releases/tag/1.4.2) | [oauth2-client](https://github.com/thephpleague/oauth2-client/archive/1.4.2.zip) | |
-| Python-Flask |[Flask-OAuthlib](https://github.com/lepture/flask-oauthlib) |0.9.3 |[Flask-OAuthlib](https://github.com/lepture/flask-oauthlib) |[Web アプリ](https://github.com/Azure-Samples/active-directory-python-flask-graphapi-web-v2) |
 | Ruby |[OmniAuth](https://github.com/omniauth/omniauth/wiki) |omniauth:1.3.1</br>omniauth-oauth2:1.4.0 |[OmniAuth](https://github.com/omniauth/omniauth)</br>[OmniAuth OAuth2](https://github.com/intridea/omniauth-oauth2) |  |
 
 ## <a name="related-content"></a>関連コンテンツ

@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database Azure 導入事例 - Umbraco | Microsoft Docs"
-description: "Umbraco が SQL Database を使用して、クラウド上の数千のテナントに、サービスの迅速なプロビジョニングとスケールをどのように行っているかをご紹介します"
+title: Azure SQL Database Azure 導入事例 - Umbraco | Microsoft Docs
+description: Umbraco が SQL Database を使用して、クラウド上の数千のテナントに、サービスの迅速なプロビジョニングとスケールをどのように行っているかをご紹介します
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 5243d31e-3241-4cb0-9470-ad488ff28572
+manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: c25a66daa87da96d4e77c9021a1ceb4366d7a224
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: af59c22279eeee4b3e5d699da4c98094df815c1f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="umbraco-uses-azure-sql-database-to-quickly-provision-and-scale-services-for-thousands-of-tenants-in-the-cloud"></a>Umbraco、Azure SQL Database を使用して、クラウド上の数千のテナント向けに迅速にサービスをプロビジョニングおよびスケール
 ![Umbraco ロゴ](./media/sql-database-implementation-umbraco/umbracologo.png)

@@ -1,29 +1,28 @@
 ---
-title: "Azure のレポート ツールによる、個人データのドキュメント保護 | Microsoft Docs"
-description: "個人データのプライバシーを保護するために Azure のレポート サービスとテクノロジを使用する方法。"
+title: Azure のレポート ツールによる、個人データのドキュメント保護 | Microsoft Docs
+description: 一般的なデータ保護規制 (GDPR) に準拠するために、Azure レポート サービスを使用して、イニシアチブで個人のデータのプライバシーを保護します。
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/24/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 397161cf2eaea9712fec352a45f5fc49e8da486c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 2c677a1dea001c6a414304fbaa683c3787b355b1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="document-protection-of-personal-data-with-azure-reporting-tools"></a>Azure のレポート ツールによる、個人データのドキュメント保護
 
-この記事では、Azure のレポート サービスとテクノロジを使用して個人データのプライバシーを保護する方法について説明します。
-
+この記事では、Azure のレポート サービスとテクノロジを使用して個人データのプライバシーを保護する方法について説明します。 この情報は、一般データ保護規則 (GDPR) などの業界や政府の要件に従うために使用できます。
 ## <a name="scenario"></a>シナリオ
 
 米国に本社を置く大手クルーズ会社が、地中海、アドリア海、バルト海だけでなくイギリス諸島での旅程を提供できるように、事業を拡張しています。 この取り組みの中で、この会社は、イタリア、ドイツ、デンマーク、英国に拠点を置くいくつかの小規模クルーズ会社を買収しました。

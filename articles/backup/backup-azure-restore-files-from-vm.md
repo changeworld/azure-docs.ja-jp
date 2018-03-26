@@ -1,11 +1,11 @@
 ---
-title: "Azure Backup: Azure VM のバックアップからファイルとフォルダーを回復する | Microsoft Docs"
-description: "Azure 仮想マシンの回復ポイントからファイルを回復します"
+title: 'Azure Backup: Azure VM のバックアップからファイルとフォルダーを回復する | Microsoft Docs'
+description: Azure 仮想マシンの回復ポイントからファイルを回復します
 services: backup
 documentationcenter: dev-center-name
 author: pvrk
 manager: shivamg
-keywords: "アイテム レベルの回復; Azure VM のバックアップからのファイルの回復; Azure VM からのファイルの復元"
+keywords: アイテム レベルの回復; Azure VM のバックアップからのファイルの回復; Azure VM からのファイルの復元
 ms.assetid: f1c067a2-4826-4da4-b97a-c5fd6c189a77
 ms.service: backup
 ms.devlang: na
@@ -14,17 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 12/20/2017
 ms.author: pullabhk;markgal
-ms.openlocfilehash: d1ebda145b7e355bd9763025dece742d2a23239b
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 0fce38db010a77ac61145ef63f616e0e466c95e2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
 Azure Backup は、[Azure 仮想マシン (VM) とディスク](./backup-azure-arm-restore-vms.md)を Azure VM のバックアップ (復元ポイントとも呼ばれる) から復元する機能を提供します。 この記事では、Azure VM のバックアップからファイルやフォルダーを回復する方法について説明します。 ファイルやフォルダーを回復する機能は、Resource Manager モデルを使用してデプロイされ、Recovery Services コンテナーに保護されている Azure VM に対してのみ使用できます。
 
 > [!Note]
+> この機能は、Resource Manager モデルを使用してデプロイされ、Recovery Services コンテナーに保護されている Azure VM に対して使用できます。
 > 暗号化された VM バックアップからのファイルの回復はサポートされていません。
 >
 

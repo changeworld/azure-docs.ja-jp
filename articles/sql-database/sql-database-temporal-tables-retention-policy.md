@@ -1,25 +1,19 @@
 ---
-title: "リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理 | Microsoft Docs"
-description: "一時的なリテンション ポリシーを使用して、履歴データを管理する方法について説明します。"
+title: リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理 | Microsoft Docs
+description: 一時的なリテンション ポリシーを使用して、履歴データを管理する方法について説明します。
 services: sql-database
-documentationcenter: 
 author: bonova
-manager: drasumic
-editor: 
-ms.assetid: 76cfa06a-e758-453e-942c-9f1ed6a38c2a
+manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 10/12/2016
 ms.author: bonova
-ms.openlocfilehash: b4e1524008837094b57a3df469439ceaebf9c166
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 36ce6889cccbf5ae7df519c5c73846f12eed4a08
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>リテンション ポリシーを使用したテンポラル テーブルでの履歴データの管理
 特に履歴データを長期間保持する場合に、テンポラル テーブルは通常のテーブルよりもデータベースのサイズの増大に大きく影響することがあります。 したがって、履歴データのリテンション ポリシーは、あらゆるテンポラル テーブルのライフサイクルの計画と管理において重要な要素となります。 Azure SQL Database のテンポラル テーブルには、こういったタスクの実行に役立つ、使いやすい保持メカニズムが備わっています。
@@ -121,13 +115,13 @@ ON T1.history_table_id = T2.object_id WHERE T1.temporal_type = 2
 
 *Msg 13765, Level 16, State 1 <br></br> Setting finite retention period failed on system-versioned temporal table 'temporalstagetestdb.dbo.WebsiteUserInfo' because the history table 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' does not contain required clustered index. (履歴テーブル 'temporalstagetestdb.dbo.WebsiteUserInfoHistory' に必要なクラスター化インデックスがないため、システム バージョンのテンポラル テーブル 'temporalstagetestdb.dbo.WebsiteUserInfo' で有限のリテンション期間の設定が失敗しました)Consider creating a clustered columnstore or B-tree index starting with the column that matches end of SYSTEM_TIME period, on the history table. (SYSTEM_TIME 期間終了に一致する列から始まるクラスター化列ストアまたは B ツリーを履歴テーブルに作成することを検討してください)*
 
-Azure SQL Database で作成した既定の履歴テーブルには、既に、リテンション ポリシーに準拠したクラスター化インデックスがあります。 有限のリテンション期間を持つテーブルのインデックスを削除しようとすると、次のエラーが表示されて操作が失敗します。
+Azure SQL Database で作成した既定の履歴テーブルには、既に、リテンション ポリシーに準拠しているクラスター化インデックスがあります。 有限のリテンション期間を持つテーブルのインデックスを削除しようとすると、次のエラーが表示されて操作が失敗します。
 
 *Msg 13766, Level 16, State 1 <br></br> Cannot drop the clustered index 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' because it is being used for automatic cleanup of aged data. (期限切れのデータの自動クリーンアップに使用されているため、クラスター化インデックス 'WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory' を削除できません)Consider setting HISTORY_RETENTION_PERIOD to INFINITE on the corresponding system-versioned temporal table if you need to drop this index. (このインデックスの削除が必要な場合は、対応するシステム バージョンのテンポラル テーブルで HISTORY_RETENTION_PERIOD を INFINITE に設定することを検討してください)*
 
 履歴行を昇順で (期間終了列順)、SYSTEM_VERSIONIOING メカニズムによって排他的履歴テーブルのデータを設定する場合、大文字と小文字は常に挿入する場合、クラスター化列ストア インデックスのクリーンアップは最適に動作します。 履歴テーブルの行が期間終了列を基準にして並べられていない場合 (既存の履歴データを移行したような場合)、パフォーマンスを最適化するためには、適切に並べられた B ツリー行ストア インデックスの最上部にクラスター化列ストア インデックスを再作成する必要があります。
 
-システム バージョンの操作によって自然に作成された行グループ内の順序が変更されることがあるため、有限のリテンション期間を持つ履歴テーブルのクラスター化列ストア インデックスは再構築しないでください。 履歴テーブルのクラスター化列ストア インデックスの再構築が必要な場合は、互換性のある B ツリー インデックスの最上部に再作成してください。そうすることで、通常のデータ クリーンアップに必要な行グループの順番が保持されます。 データの順番を気にせずに、クラスター化列インデックスを持つ既存の履歴テーブルを持つテンポラル テーブルを作成する場合も、同じ方法で実行します。
+システム バージョンの操作によって自然に作成された行グループ内の順序が変更されることがあるため、有限のリテンション期間を持つ履歴テーブルのクラスター化列ストア インデックスは再構築しないでください。 履歴テーブルのクラスター化列ストア インデックスの再構築が必要な場合は、準拠している B ツリー インデックスの最上部に再作成してください。そうすることで、通常のデータ クリーンアップに必要な行グループの順番が保持されます。 データの順番を気にせずに、クラスター化列インデックスを持つ既存の履歴テーブルを持つテンポラル テーブルを作成する場合も、同じ方法で実行します。
 
 ````
 /*Create B-tree ordered by the end of period column*/
@@ -180,7 +174,7 @@ ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ````
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 アプリケーションでテンポラル テーブルを使用する方法については、「[Azure SQL Database のテンポラル テーブルの概要](sql-database-temporal-tables.md)」をご覧ください。
 
 Channel 9 にアクセスして、[テンポラル テーブル導入による実際の成功事例](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions)や[テンポラル技術のライブ デモンストレーション](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016)をご覧ください。

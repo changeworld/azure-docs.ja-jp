@@ -1,24 +1,19 @@
 ---
-title: "Recovery Manager を使用したシャード マップに関する問題の解決 | Microsoft Docs"
-description: "RecoveryManager クラスを使用したシャード マップに関する問題の解決"
+title: Recovery Manager を使用したシャード マップに関する問題の解決 | Microsoft Docs
+description: RecoveryManager クラスを使用したシャード マップに関する問題の解決
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-ms.assetid: 45520ca3-6903-4b39-88ba-1d41b22da9fe
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2016
-ms.author: ddove
-ms.openlocfilehash: 967a64fa41a9f9ff16ce173b76231052b22cda99
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 45dc16c7bf54f34c89f2e9208a7cee06de03c0da
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager クラスを使用したシャード マップに関する問題の解決
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) クラスを使用すると、ADO.Net アプリケーションで、シャード化されたデータベース環境におけるグローバル シャード マップ (GSM) とローカル シャード マップ (LSM) 間の不整合を簡単に検出して修正できます。 
@@ -42,7 +37,7 @@ GSM と LSM は、次の理由により、同期されなくなる可能性が�
 
 Azure SQL Database の Elastic Database ツール、geo レプリケーション、および復元の詳細については、以下をご覧ください。 
 
-* [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース障害復旧](sql-database-business-continuity.md) 
+* [概要: SQL Database を使用したクラウド ビジネス継続性とデータベース ディザスター リカバリー](sql-database-business-continuity.md) 
 * [エラスティック データベース ツールの概要](sql-database-elastic-scale-get-started.md)  
 * [ShardMap 管理](sql-database-elastic-scale-shard-map-management.md)
 

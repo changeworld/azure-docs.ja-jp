@@ -15,6 +15,8 @@
       maintainContext: true
 - name: チュートリアル
   items:
+    - name: MSI が有効な Terraform VM の作成
+      href: terraform-vm-msi.md
     - name: Terraform モジュールを使用した VM クラスターの作成
       href: terraform-create-vm-cluster-module.md
     - name: Terraform と HCL を使用して VM クラスターを作成する

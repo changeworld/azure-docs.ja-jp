@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Workday を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs"
-description: "Workday を Active Directory および Azure Active Directory の ID データのソースとして使用する方法について説明します。"
+title: 'チュートリアル: Workday を構成し、Azure Active Directory を使用した自動ユーザー プロビジョニングに対応させる | Microsoft Docs'
+description: Workday を Active Directory および Azure Active Directory の ID データのソースとして使用する方法について説明します。
 services: active-directory
 author: asmalser-msft
 documentationcenter: na
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 2db9e60fe2807b1aa8ed7cab7eed6f7db8059a89
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -249,7 +249,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
    * **管理者パスワード –** Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のよう になります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のようになります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。
 
    * **Active Directory フォレスト -** Get ADForest powershell コマンドレットによって返された Active Directory フォレストの "名前"。 これは通常、*contoso.com* のような文字列です。
 
@@ -426,8 +426,8 @@ Azure Active Directory テナントが EU データ センターのいずれか�
 1. **Services.msc** を開いて、**Microsoft Azure AD Connect プロビジョニング エージェント** サービスを停止します。
 2. エージェント インストール フォルダー (例: C:\Program files \microsoft Azure AD Connect プロビジョニング エージェント) に移動します。
 3. テキスト エディターで **SyncAgnt.exe.config** を開きます。
-4. https://manage.hub.syncfabric.windowsazure.com/Management を **https://eu.manage.hub.syncfabric.windowsazure.com/Management** に置き換えます
-5. https://provision.hub.syncfabric.windowsazure.com/Provisioning を **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning** に置き換えます
+4. https://manage.hub.syncfabric.windowsazure.com/Management を **https://eu.manage.hub.syncfabric.windowsazure.com/Management** で置き換えます
+5. https://provision.hub.syncfabric.windowsazure.com/Provisioning を **https://eu.provision.hub.syncfabric.windowsazure.com/Provisioning** で置き換えます
 6. **SyncAgnt.exe.config** ファイルを保存します。
 7. **Services.msc** を開いて、**Microsoft Azure AD Connect プロビジョニング エージェント** サービスを開始します。
 
@@ -504,7 +504,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **管理者パスワード –** Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のよう になります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。 この URL が不明の場合は、Workday 統合パートナーまたはサポート担当者に連絡して、使用する正しい URL を確認してください。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のようになります。contoso4 は適切テナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます。 この URL が不明の場合は、Workday 統合パートナーまたはサポート担当者に連絡して、使用する正しい URL を確認してください。
 
    * **メール通知 –** メール アドレスを入力し、[send email if failure occurs (失敗した場合にメールを送信する)] チェック ボックスをオンにします。
 
@@ -609,7 +609,7 @@ Azure AD Connect の設定手順については、[Azure AD Connect に関する
 
    * **管理者パスワード –** Workday 統合システム アカウントのパスワードを入力します
 
-   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のよう になります。contoso4 は適切なテナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます (必要な場合)。
+   * **テナント URL –** テナントの Workday Web サービス エンドポイントへの URL を入力します。 これは https://wd3-impl-services1.workday.com/ccx/service/contoso4 のようになります。contoso4 は適切なテナント名に置き換え、wd3-impl は適切な環境文字列に置き換えます (必要な場合)。
 
    * **メール通知 –** メール アドレスを入力し、[send email if failure occurs (失敗した場合にメールを送信する)] チェック ボックスをオンにします。
 
@@ -654,7 +654,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 1. [Workday Studio](https://community.workday.com/studio-download) をダウンロードしてインストールします。 インストーラーにアクセスするには、Workday コミュニティ アカウントが必要です。
 
-2. Workday Human_Resources WDSL ファイルをダウンロードします。URL は https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl です。
+2. 次の URL から Workday Human_Resources WDSL ファイルをダウンロードします: https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Human_Resources.wsdl
 
 3. Workday Studio を起動します。
 
@@ -768,12 +768,27 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
 
 * EU の Azure AD テナントに監査ログが表示されないという以前の問題は解決されています。 ただし、EU のAzure AD テナントには追加エージェント構成が必要です。 詳細については、「[パート 3: オンプレミスの同期エージェントの構成](#Part 3: Configure the on-premises synchronization agent)」を参照してください
 
+## <a name="gdpr-compliance"></a>GDPR コンプライアンス
 
-## <a name="additional-resources"></a>その他のリソース
-* [チュートリアル: Workday と Azure Active Directory の間のシングル サインオンの構成](active-directory-saas-workday-tutorial.md)
-* [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
-* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+[一般データ保護規則 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR は、EU 内で人々に製品やサービスを提供したり、EU 居住者に関連するデータを収集および分析したりする企業、政府機関、非営利組織やその他の組織を対象とするルールです。 
+
+Azure AD プロビジョニング サービスは、Microsoft の他のサービスおよび機能と共に GDPR に準拠しています。 Microsoft の GDPR ストーリーについて詳しくは、[サービス利用規約](https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=31)に関するページをご覧ください。
+
+ただし、Active Directory の Workday プロビジョニング ソリューションでは、ドメインに参加しているサーバーに同期エージェントをインストールする必要があるため、GDPR 準拠を維持していることの監視が必要な場合があります。
+ 
+エージェントはログを **Windows イベント ログ**に作成し、ここには個人を特定できる情報が含まれることがあります。
+
+GDPR 準拠を維持する方法は 2 つあります。
+
+1. 要求を受けた際、個人のデータを抽出し、Windows イベント ログからその個人のデータを削除する。 
+2. AADSyncAgent プロセスに由来する Windows イベント ログのリテンション期間を 48 時間未満に維持する
+
+Windows イベント ログのデータ保有期間の構成方法については、「[Settings for event logs (イベント ログの設定)](https://technet.microsoft.com/en-us/library/cc952132.aspx)」をご覧ください。 Windows イベント ログの一般情報については、[この記事](https://msdn.microsoft.com/en-us/library/windows/desktop/aa385772.aspx)をご覧ください。
+
 
 ## <a name="next-steps"></a>次の手順
 
 * [プロビジョニング アクティビティのログの確認方法およびレポートの取得方法](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting)
+* [Workday と Azure Active Directory の間でシングル サインオンを構成する方法](active-directory-saas-workday-tutorial.md)
+* [他の SaaS アプリケーションを Azure Active Directory と統合する方法](active-directory-saas-tutorial-list.md)
+

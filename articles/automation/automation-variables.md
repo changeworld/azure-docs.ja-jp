@@ -1,10 +1,10 @@
 ---
-title: "Azure Automation の変数資産 | Microsoft Docs"
-description: "変数アセットとは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。  この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。"
+title: Azure Automation の変数資産 | Microsoft Docs
+description: 変数アセットとは、Azure Automation のすべての Runbook と DSC 構成に使用できる値です。  この記事では、変数の詳細およびテキスト作成とグラフィカル作成の両方で変数を使用する方法について説明します。
 services: automation
-documentationcenter: 
+documentationcenter: ''
 author: georgewallace
-manager: jwhit
+manager: carmonm
 editor: tysonn
 ms.assetid: b880c15f-46f5-4881-8e98-e034cc5a66ec
 ms.service: automation
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/09/2017
+ms.date: 03/07/2018
 ms.author: magoedte;bwren
-ms.openlocfilehash: f166b420dcd424b38f89275e1befd42a505b5785
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 2ed4cf16615a0ca1789b789a635de564af568eb9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
 
@@ -30,16 +30,16 @@ ms.lasthandoff: 01/29/2018
 
 - ポータルから値を管理する。または、Runbook や DSC 構成 (たとえば、特定の VM 名リスト、特定のリソース グループ、AD ドメイン名などの一般的な構成項目) で使用される、Windows PowerShell コマンドラインから値を管理する。  
 
-Automation 変数は、Runbook または DSC 構成でエラーが発生した場合でも継続して使用できるように保存されます。  また、1 つの Runbook または DSC 構成で設定された値を他のユーザーが使用できるようにしたり、次回実行時に同じ Runbook で使用したりすることができます。
+Automation 変数は、Runbook または DSC 構成でエラーが発生した場合でも継続して使用できるように保存されます。 また、1 つの Runbook または DSC 構成で設定された値を他のユーザーが使用できるようにしたり、次回実行時に同じ Runbook で使用したりすることができます。
 
-変数が作成されると、暗号化して保存するように指定できます。  変数が暗号化されると、Azure Automation に安全に保存され、その値は Azure PowerShell モジュールに含まれている [Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx) コマンドレットからは取得できません。  暗号化された値は、Runbook または DSC 構成の **Get-AutomationVariable** アクティビティからのみ取得できます。
+変数が作成されると、暗号化して保存するように指定できます。 変数が暗号化されると、Azure Automation に安全に保存され、その値は Azure PowerShell モジュールに含まれている [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) コマンドレットからは取得できません。 暗号化された値は、Runbook または DSC 構成の **Get-AutomationVariable** アクティビティからのみ取得できます。
 
 > [!NOTE]
 > Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。 このキーはマスター証明書によって暗号化され、Azure Automation に保存されます。 セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
 
 ## <a name="variable-types"></a>変数の型
 
-Azure Portal で変数を作成する場合、変数値を入力するための適切な制御をポータルに表示できるように、ドロップダウン リストからデータ型を指定する必要があります。 変数は、このデータ型に制限されませんが、別の型の値を指定する場合は、Windows PowerShell を使用して変数を設定する必要があります。 **Not defined** を指定した場合、変数の値は **$null** に設定され、[Set-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913767.aspx) コマンドレットまたは **Set-AutomationVariable** アクティビティを使用して値を設定する必要があります。  ポータルでは複雑な変数の型の値を作成したり、変更したりすることはできませんが、Windows PowerShell を使用すれば、任意の型の値を指定することが可能です。 複合型は [PSCustomObject](http://msdn.microsoft.com/library/system.management.automation.pscustomobject.aspx)として返されます。
+Azure Portal で変数を作成する場合、変数値を入力するための適切な制御をポータルに表示できるように、ドロップダウン リストからデータ型を指定する必要があります。 変数は、このデータ型に制限されませんが、別の型の値を指定する場合は、Windows PowerShell を使用して変数を設定する必要があります。 **Not defined** を指定した場合、変数の値は **$null** に設定され、[Set-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable) コマンドレットまたは **Set-AutomationVariable** アクティビティを使用して値を設定する必要があります。 ポータルでは複雑な変数の型の値を作成したり、変更したりすることはできませんが、Windows PowerShell を使用すれば、任意の型の値を指定することが可能です。 複合型は [PSCustomObject](/dotnet/api/system.management.automation.pscustomobject) として返されます。
 
 配列またはハッシュ テーブルを作成し、それを変数に保存することによって、複数の値を 1 つの変数に格納することができます。
 
@@ -52,14 +52,14 @@ Automation で使用できる変数の型の一覧を次に示します。
 * Null
 
 ## <a name="azurerm-powershell-cmdlets"></a>AzureRM PowerShell コマンドレット
-AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。  これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview) に付属しています。
+AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [AzureRM.Automation モジュール](/powershell/azure/overview) に付属しています。
 
 | コマンドレット | [説明] |
 |:---|:---|
-|[Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)|既存の変数の値を取得します。|
-|[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx)|新しい変数を作成し、その値を設定します。|
-|[Remove-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt619354.aspx)|既存の変数を削除します。|
-|[Set-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603601.aspx)|既存の変数の値を設定します。|
+|[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|既存の変数の値を取得します。|
+|[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|新しい変数を作成し、その値を設定します。|
+|[Remove-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Remove-AzureRmAutomationVariable)|既存の変数を削除します。|
+|[Set-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Set-AzureRmAutomationVariable)|既存の変数の値を設定します。|
 
 ## <a name="activities"></a>アクティビティ
 次の表のアクティビティは、Runbook および DSC 構成で資格情報にアクセスするために使用されます。
@@ -92,7 +92,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 ### <a name="to-create-a-new-variable-with-windows-powershell"></a>Windows PowerShell で新しい変数を作成するには
 
-[New-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603613.aspx) コマンドレットは、新しい変数を作成し、その初期値を設定します。 [Get-AzureRmAutomationVariable](https://msdn.microsoft.com/library/mt603849.aspx)を使用して、値を取得することができます。 値が単純型である場合、その同じ型が返されます。 値が複合型である場合、 **PSCustomObject** が返されます。
+[New-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) コマンドレットは、新しい変数を作成し、その初期値を設定します。 [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)を使用して、値を取得することができます。 値が単純型である場合、その同じ型が返されます。 値が複合型である場合、 **PSCustomObject** が返されます。
 
 次のサンプル コマンドは、文字列型の変数を作成してから、その値を返す方法を示しています。
 
@@ -116,7 +116,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Runbook または DSC 構成で変数を使用する
 
-**Set-AutomationVariable** アクティビティを使用して、PowerShell Runbook または DSC 構成の Automation 変数の値を設定し、**Get-AutomationVariable** を使用して Automation 変数の値を取得します。  **Set-AzureAutomationVariable** または **Get-AzureAutomationVariable** コマンドレットはワークフローのアクティビティよりも低効率であるため、Runbook または DSC 構成では使用しないでください。  また、 **Get-AzureAutomationVariable**を使用して、セキュリティで保護された変数の値を取得することもできません。  Runbook または DSC 構成内から新しい変数を作成する唯一の方法は、[New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx) コマンドレットを使用することです。
+**Set-AutomationVariable** アクティビティを使用して、PowerShell Runbook または DSC 構成の Automation 変数の値を設定し、**Get-AutomationVariable** を使用して Automation 変数の値を取得します。 **Set-AzureRMAutomationVariable** または **Get-AzureRMAutomationVariable** コマンドレットはワークフローのアクティビティよりも低効率であるため、Runbook または DSC 構成では使用しないでください。 また、**Get-AzureRMAutomationVariable** を使用して、セキュリティで保護された変数の値を取得することもできません。 Runbook または DSC 構成内から新しい変数を作成する唯一の方法は、[New-AzureRMAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable) コマンドレットを使用することです。
 
 
 ### <a name="textual-runbook-samples"></a>テキスト形式の Runbook のサンプル
@@ -153,7 +153,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 
 #### <a name="setting-and-retrieving-a-collection-in-a-variable"></a>変数でのコレクションの設定および取得
 
-次のサンプル コードは、テキスト形式の Runbook で複合値のコレクションで変数を使用する方法を示しています。 このサンプルでは、複数の Azure 仮想マシンは **Get-AzureVM** で取得され、既存の Automation 変数に保存されます。  [変数の型](#variable-types)で説明したように、これは PSCustomObject のコレクションとして格納されます。
+次のサンプル コードは、テキスト形式の Runbook で複合値のコレクションで変数を使用する方法を示しています。 このサンプルでは、複数の Azure 仮想マシンは **Get-AzureVM** で取得され、既存の Automation 変数に保存されます。 [変数の型](#variable-types)で説明したように、これは PSCustomObject のコレクションとして格納されます。
 
     $vms = Get-AzureVM | Where -FilterScript {$_.Name -match "my"}     
     Set-AutomationVariable -Name 'MyComplexVariable' -Value $vms
@@ -197,7 +197,7 @@ AzureRM の場合、Windows PowerShell で Automation 資格情報資産を作�
 ![キャンバスへの変数の追加](media/automation-variables/runbook-variable-add-canvas.png)
 
 #### <a name="setting-values-in-a-variable"></a>変数での値の設定
-次の図は、グラフィカルな Runbook の単純値で変数を更新するサンプル アクティビティを示しています。 このサンプルでは、1 つの Azure 仮想マシンは **Get-AzureRmVM** で取得され、コンピューター名は既存の Automation 変数に文字列型で保存されます。  出力では 1 つのオブジェクトのみが期待されているため、 [リンクがパイプラインかシーケンス](automation-graphical-authoring-intro.md#links-and-workflow) かどうかは関係ありません。
+次の図は、グラフィカルな Runbook の単純値で変数を更新するサンプル アクティビティを示しています。 このサンプルでは、1 つの Azure 仮想マシンは **Get-AzureRmVM** で取得され、コンピューター名は既存の Automation 変数に文字列型で保存されます。 出力では 1 つのオブジェクトのみが期待されているため、[リンクがパイプラインかシーケンス](automation-graphical-authoring-intro.md#links-and-workflow)かどうかは関係ありません。
 
 ![単純変数の設定](media/automation-variables/runbook-set-simple-variable.png)
 

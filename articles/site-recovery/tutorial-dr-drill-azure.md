@@ -1,17 +1,17 @@
 ---
-title: "Azure Site Recovery を使用して オンプレミスのコンピューターの Azure へのディザスター リカバリー訓練を実行する | Microsoft Docs"
-description: "Azure Site Recovery を使用した オンプレミスから Azure へのディザスター リカバリー訓練の実行について説明します"
+title: Azure Site Recovery を使用して オンプレミスのコンピューターの Azure へのディザスター リカバリー訓練を実行する | Microsoft Docs
+description: Azure Site Recovery を使用した オンプレミスから Azure へのディザスター リカバリー訓練の実行について説明します
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 12/31/2017
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: f7dc5e2df95a64685a8b70d25e839c371d4fc2de
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 2ac15e4da411efa6f018a3e3fb620023bc8964cc
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="run-a-disaster-recovery-drill-to-azure"></a>Azure へのディザスター リカバリー訓練を実行する
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 01/02/2018
 
 ## <a name="verify-vm-properties"></a>VM のプロパティを確認する
 
-テスト フェールオーバーを実行する前に、VM のプロパティで、VM が [Azure の要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していることを確認します。
+テスト フェールオーバーを実行する前に、VM のプロパティで、Hyper-V VM[hyper-v-azure-support-matrix.md#replicated-vms]、[VMware VM、または物理サーバー](vmware-physical-azure-support-matrix.md#replicated-machines)が Azure の要件に準拠していることを確認します。
 
 1. **[保護されているアイテム]** で、**[レプリケートされたアイテム]** をクリックし、VM をクリックします。
 2. **[レプリケートされたアイテム]** ウィンドウには、VM 情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
@@ -66,4 +66,4 @@ ms.lasthandoff: 01/02/2018
 ## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
-> [オンプレミス の VMware VM のフェールオーバーとフェールバックを実行する](tutorial-vmware-to-azure-failover-failback.md)
+> [オンプレミス の VMware VM のフェールオーバーとフェールバックを実行する](vmware-azure-tutorial-failover-failback.md)

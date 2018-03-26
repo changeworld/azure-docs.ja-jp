@@ -1,26 +1,20 @@
 ---
-title: "テナント単位データベース SaaS チュートリアル - Azure SQL Database | Microsoft Docs"
-description: "Azure SQL Database を使用して Database per Tenant およびその他の SaaS パターンを示す、Wingtip Tickets SaaS マルチ テナント アプリケーションをデプロイおよび操作します。"
-keywords: "SQL データベース チュートリアル"
+title: テナント単位データベース SaaS チュートリアル - Azure SQL Database | Microsoft Docs
+description: Azure SQL Database を使用して Database per Tenant およびその他の SaaS パターンを示す、Wingtip Tickets SaaS マルチ テナント アプリケーションをデプロイおよび操作します。
+keywords: SQL データベース チュートリアル
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/07/2017
 ms.author: genemi
-ms.openlocfilehash: cbe8a04abbf2dada7cc43e57e823c3a41bf83fe7
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8aa4c8691093779bd8febee80fca88efad93dc00
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-and-explore-a-multi-tenant-saas-application-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Azure SQL Database によるテナント単位データベース パターンを使用するマルチテナント SaaS アプリケーションのデプロイと操作
 
@@ -133,7 +127,7 @@ Wingtip アプリケーションでは、[*Azure Traffic Manager*](../traffic-ma
 
 上記の形式の各部分の説明を次の表に示します。
 
-| URL の部分        | 説明       |
+| URL の部分        | [説明]       |
 | :-------------- | :---------------- |
 | http://events.wingtip-dpt | Wingtip アプリのイベントの部分。<br /><br /> *-dpt* によって、Wingtip Tickets の*テナントごとのデータベース*の実装が他の実装と区別されます。 たとえば、テナントごとの "*スタンドアロン* " アプリ (*-sa*) の実装や "*マルチテナント データベース*" (*-mt*) の実装です。 |
 | .*&lt;ユーザー&gt;* | この例では *af1*。 |

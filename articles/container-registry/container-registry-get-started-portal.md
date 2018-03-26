@@ -1,23 +1,23 @@
 ---
-title: "クイックスタート - Azure Portal を使用した Azure のプライベート Docker レジストリの作成"
-description: "Azure Portal を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。"
+title: クイックスタート - Azure Portal を使用した Azure のプライベート Docker レジストリの作成
+description: Azure Portal を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: quickstart
-ms.date: 12/06/2017
+ms.date: 03/03/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 1a4c5b365b93b30987ff6541aba762cbf8a4b7a5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: db112f7f8f486093509a86f9781c30133925c25f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Azure Portal を使用したコンテナー レジストリの作成
 
-Azure Container Registry は、プライベート Docker コンテナー イメージを保存および管理する Azure のプライベート Docker レジストリです。 このクイックスタートでは、Azure Portal を使用してコンテナー レジストリを作成します。
+Azure Container Registry は、プライベート Docker コンテナー イメージを保存および管理する Azure のプライベート Docker レジストリです。 このクイック スタートでは、Azure Portal を使ってコンテナー レジストリを作成し、そのレジストリにコンテナー イメージをプッシュして、最後に Azure Container Instances (ACI) に対してレジストリからコンテナーをデプロイします。
 
 このクイック スタートを完了するには、Docker をローカルにインストールする必要があります。 Docker では、[Mac][docker-mac]、[Windows][docker-windows]、または [Linux][docker-linux] システムで Docker を簡単に構成できるパッケージが提供されています。
 
@@ -73,13 +73,13 @@ docker pull microsoft/aci-helloworld
 
 イメージをレジストリにプッシュする前に、イメージに ACR ログイン サーバー名を使用してタグを付ける必要があります。 [docker tag][docker-tag] コマンドを使用してイメージにタグ付けします。 *login server* を前述の手順でメモしたログイン サーバー名で置き換えます。
 
-```
+```bash
 docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
 ```
 
 最後に、[docker push][docker-push] を使用して、ACR インスタンスにイメージをプッシュします。 *login server* を ACR インスタンスのログイン サーバー名で置き換えます。
 
-```
+```bash
 docker push <login server>/aci-helloworld:v1
 ```
 
@@ -104,15 +104,43 @@ ACR インスタンスのイメージ一覧を表示するには、ポータル�
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-09]
 
+## <a name="deploy-image-to-aci"></a>ACI へのイメージのデプロイ
+
+レジストリからインスタンスをデプロイするためには、リポジトリ (aci-helloworld) に移動して、v1 の横にある省略記号をクリックする必要があります。
+
+![Azure Container Instances をポータルから起動][qs-portal-10]
+
+コンテキスト メニューが表示されたら **[実行インスタンス]** を選択します。
+
+![ACI を起動するためのコンテキスト メニュー][qs-portal-11]
+
+**[コンテナー名]** を入力し、サブスクリプションが正しく選択されていることを確認して、既存の**リソース グループ**の "myResourceGroup" を選択し、**[OK]** をクリックして、Azure Container Instances を起動します。
+
+![ACI のデプロイ開始オプション][qs-portal-12]
+
+デプロイが開始すると、デプロイの進捗状況を示すタイルがポータル ダッシュボードに配置されます。 デプロイが完了するとタイルが更新され、新しい **mycontainer** コンテナー グループが表示されます。
+
+![ACI のデプロイ状態][qs-portal-13]
+
+mycontainer コンテナー グループを選択して、コンテナー グループのプロパティを表示します。 コンテナー グループの **[IP address]\(IP アドレス\)** と、コンテナーの **[STATUS]\(状態\)** をメモします。
+
+![ACI コンテナーの詳細][qs-portal-14]
+
+## <a name="view-the-application"></a>アプリケーションを表示する
+
+コンテナーが **[Running]\(稼働中\)** 状態になったら、前のステップでメモした IP アドレスに移動してアプリケーションを表示します。
+
+![ブラウザーでの Hello World アプリ][qs-portal-15]
+
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-不要になったら、**myResourceGroup** リソース グループを削除します。 リソース グループを削除すると、リソース グループだけでなく、ACR インスタンスとすべてのコンテナー イメージも削除されます。
+リソースをクリーンアップするには、ポータルの **myResourceGroup** リソース グループに移動します。 リソース グループが読み込まれたら、**[リソース グループの削除]** をクリックして、リソース グループ、Azure Container Registry、およびすべての Azure Container Instances を削除します。
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-08]
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure Portal を使用して Azure Container Registry を作成しました。 Azure Container Instances と一緒に Azure Container Registry を使用する場合は、Azure Container Instances のチュートリアルに進みます。
+このクイック スタートでは、Azure CLI を使って Azure Container Registry を作成し、そのインスタンスを Azure Container Instances で起動しました。 Azure Container Instances のチュートリアルに進んで、ACI についての理解を深めましょう。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル][container-instances-tutorial-prepare-app]
@@ -127,6 +155,12 @@ ACR インスタンスのイメージ一覧を表示するには、ポータル�
 [qs-portal-07]: ./media/container-registry-get-started-portal/qs-portal-07.png
 [qs-portal-08]: ./media/container-registry-get-started-portal/qs-portal-08.png
 [qs-portal-09]: ./media/container-registry-get-started-portal/qs-portal-09.png
+[qs-portal-10]: ./media/container-registry-get-started-portal/qs-portal-10.png
+[qs-portal-11]: ./media/container-registry-get-started-portal/qs-portal-11.png
+[qs-portal-12]: ./media/container-registry-get-started-portal/qs-portal-12.png
+[qs-portal-13]: ./media/container-registry-get-started-portal/qs-portal-13.png
+[qs-portal-14]: ./media/container-registry-get-started-portal/qs-portal-14.png
+[qs-portal-15]: ./media/container-registry-get-started-portal/qs-portal-15.png
 
 <!-- LINKS - external -->
 [docker-linux]: https://docs.docker.com/engine/installation/#supported-platforms

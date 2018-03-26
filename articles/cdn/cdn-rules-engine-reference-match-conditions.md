@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN ルール エンジンの一致条件 | Microsoft Docs"
-description: "Azure Content Delivery Network ルール エンジンの一致条件に関するリファレンス ドキュメント"
+title: Azure CDN ルール エンジンの一致条件 | Microsoft Docs
+description: Azure Content Delivery Network ルール エンジンの一致条件に関するリファレンス ドキュメント
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -737,7 +737,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
     
 - 複数の URL パスを指定するには、各パスを単一のスペースで区切ります。
 
-   例: /marketing/asset.* /sales/*.htm
+   例: /marketing/asset.\* /sales/\*.htm
 
 - URL のクエリ文字列は無視されます。
     
@@ -753,11 +753,11 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 
 値                   | 基準    | 結果 
 ------------------------|----------------|-------
-*/test.html */test.php  | ルートまたは配信元 | 任意のフォルダーの "test.html" または "test.php" という名前の資産の要求が、このパターンに一致します。
+\*/test.html \*/test.php  | ルートまたは配信元 | 任意のフォルダーの "test.html" または "test.php" という名前の資産の要求が、このパターンに一致します。
 /80ABCD/origin/text/*   | ルート           | 要求された資産が次の条件を満たしている場合、このパターンに一致します。 <br />- "origin" という顧客配信元に存在する。 <br />- 相対パスが "text" というフォルダーで始まる  (つまり、要求された資産が、"text" フォルダーまたは再帰サブフォルダーに存在する)
 */css/* */js/*          | ルートまたは配信元 | css または js フォルダーを含むすべての CDN URL またはエッジ CNAME URL が、このパターンに一致します。
 *.jpg *.gif *.png       | ルートまたは配信元 | .jpg、.gif、または .png で終わる すべての CDN URL またはエッジ CNAME URL が、このパターンに一致します。 このパターンを指定する別の方法は、「[URL Path Extension (URL パス拡張子)](#url-path-extension)」一致条件を使用することです。
-/images/* /media/*      | Origin (配信元)         | 相対パスが "images" または "media" フォルダーで始まる CDN URL またはエッジ CNAME URL が、このパターンに一致します。 <br />- CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/images/sales/event1.png<br />- サンプル エッジ CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
+/images/\* /media/\*      | Origin (配信元)         | 相対パスが "images" または "media" フォルダーで始まる CDN URL またはエッジ CNAME URL が、このパターンに一致します。 <br />- CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/images/sales/event1.png<br />- サンプル エッジ CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
 

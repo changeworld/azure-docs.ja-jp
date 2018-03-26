@@ -1,8 +1,8 @@
 ---
-title: "Azure IoT Edge のトラブルシューティング | Microsoft Docs"
-description: "Azure IoT Edge での一般的な問題を解決し、トラブルシューティング スキルについて説明します"
+title: Azure IoT Edge のトラブルシューティング | Microsoft Docs
+description: Azure IoT Edge での一般的な問題を解決し、トラブルシューティング スキルについて説明します
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.date: 12/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 5de069eb35e88c1dce6dcfa5a1661e8ab87302b1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7b9f9f8295aac0920ae4726289c535aae12c4482
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -30,10 +30,10 @@ ms.lasthandoff: 02/21/2018
    docker logs <container name>
    ```
 
-* Edge ハブを通過したメッセージを確認し、ランタイム コンテナーからの詳細なログでデバイスのプロパティの更新についての洞察を収集します。
+* Edge ハブを通過したメッセージを確認し、ランタイム コンテナーからの詳細なログでデバイスのプロパティの更新についての洞察を収集します。 クイック スタートの記事に従っている場合は、必要に応じて "--auto-cert-gen-force-no-passwords" オプションを追加してください。
 
    ```cmd
-   iotedgectl setup --runtime-log-level DEBUG
+   iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
    ```
 
 * 接続の問題が発生している場合は、デバイスの接続文字列など、Edge デバイスの環境変数を調べます。
@@ -96,6 +96,23 @@ Edge エージェントに、モジュールのイメージにアクセスする
 
 ### <a name="resolution"></a>解決策
 `iotedgectl login` コマンドをもう一度実行してみます。
+
+## <a name="iotedgectl-cant-find-docker"></a>iotedgectl で Docker が検出されない
+iotedgectl が setup コマンドまたは start コマンドに失敗し、次のメッセージがログに出力されます。
+```output
+File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
+  info = self._client.info()
+File "/usr/local/lib/python2.7/dist-packages/docker/client.py", line 174, in info
+  return self.api.info(*args, **kwargs)
+File "/usr/local/lib/python2.7/dist-packages/docker/api/daemon.py", line 88, in info
+  return self._result(self._get(self._url("/info")), True)
+```
+
+### <a name="root-cause"></a>根本原因
+前提条件である Docker を iotedgectl が検出できません。
+
+### <a name="resolution"></a>解決策
+Docker をインストールし、実行されていることを確認してから再試行してください。
 
 ## <a name="next-steps"></a>次の手順
 IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iot-edge/issues)してください。 

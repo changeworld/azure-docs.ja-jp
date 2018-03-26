@@ -1,0 +1,39 @@
+- name: Batch AI のドキュメント
+  href: index.md
+- name: 概要
+  items:
+    - name: Batch AI とは
+      href: overview.md
+- name: 作業開始
+  expanded: true
+  items:
+    - name: トレーニング ジョブの実行 - CLI
+      href: quickstart-cli.md
+    - name: トレーニング ジョブの実行 - Python
+      href: quickstart-python.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/batchai
+    - name: .NET
+      href: /dotnet/api/overview/azure/batchai
+    - name: Java
+      href: /java/api/overview/azure/batchai
+    - name: Node.js
+      href: /javascript/api/overview/azure/batchai
+    - name: Python
+      href: /python/api/overview/azure/batchai
+    - name: REST ()
+      href: /rest/api/batchai
+- name: リソース
+  items:
+    - name: トレーニングのレシピ
+      href: 'https://github.com/Azure/BatchAI'
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/batch-ai'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: リージョン別の提供状況
+      href: 'https://azure.microsoft.com/regions/services/'

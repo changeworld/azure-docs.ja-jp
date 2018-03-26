@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Factory でのビジュアルの作成 | Microsoft Docs"
-description: "Azure Data Factory でビジュアルの作成機能を使用する方法について説明します"
+title: Azure Data Factory でのビジュアルの作成 | Microsoft Docs
+description: Azure Data Factory でビジュアルの作成機能を使用する方法について説明します
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/9/2018
 ms.author: shlo
-ms.openlocfilehash: 81b97bb6b6abb5431bedd4efec5f807fa577c4e4
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 209afba99ac2b43c252d93c32930908ec1f957f9
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Azure Data Factory でのビジュアルの作成
 Azure Data Factory ユーザー インターフェイス エクスペリエンス (UX) を使用すると、コードを記述することなくデータ ファクトリ用リソースを視覚的に作成してデプロイできます。 パイプライン キャンバスにアクティビティをドラッグし、テストの実行を行い、反復的にデバッグを行い、パイプラインの実行を展開して監視することができます。 UX を使用してビジュアルの作成機能を実行するには 2 つの方法があります。
@@ -39,6 +39,9 @@ UX **作成キャンバス**を使用して Data Factory サービスで直接�
 
 ## <a name="author-with-vsts-git-integration"></a>VSTS Git 統合での作成
 VSTS Git 統合を使ったビジュアルの作成では、データ ファクトリ パイプラインの使用にあたりソース管理とコラボレーションがサポートされています。 データ ファクトリを VSTS Git アカウント リポジトリと関連付けて、ソース管理、コラボレーション、バージョン管理などを行うことができます。 1 つの VSTS Git アカウントで複数のリポジトリを使うことができますが、1 つの VSTS Git リポジトリに関連付けられるのは 1 つのデータ ファクトリのみです。 VSTS アカウントまたはリポジトリを持っていない場合は、[この手順](https://docs.microsoft.com/vsts/accounts/create-account-msa-or-work-student)に従ってリソースを作成します。
+
+> [!NOTE]
+> Data Factory パイプラインは、VSTS Git リポジトリに格納されているファイルにはアクセスできません。 このため、データ ファイルおよびスクリプト ファイルなどの、データ ファクトリ パイプラインでの操作に使用されるファイルは VSTS Git リポジトリに格納できません。
 
 ### <a name="configure-a-vsts-git-repository-with-azure-data-factory"></a>Azure Data Factory で VSTS Git リポジトリを構成する
 データ ファクトリで VSTS Git リポジトリを構成するには 2 つの方法があります。

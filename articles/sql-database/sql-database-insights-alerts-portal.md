@@ -1,25 +1,19 @@
 ---
-title: "Azure Portal での SQL Database アラートの作成 | Microsoft Docs"
-description: "Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。"
+title: Azure Portal での SQL Database アラートの作成 | Microsoft Docs
+description: Azure Portal を使用して SQL Database アラートを作成します。このアラートにより、指定した条件が満たされたときに通知やオートメーションをトリガーできます。
 author: aamalvea
-manager: jhubbard
-editor: 
+manager: craigg
 services: sql-database
-documentationcenter: 
-ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
 ms.service: sql-database
 ms.custom: monitor and tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2017
 ms.author: aamalvea
-ms.openlocfilehash: fd21c9b5e573ac6a47fef88c2a9d31c52618ecb8
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 611b88c540902bc7a72d53671dacd098d9798b48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Azure Portal を使用した SQL Database と Data Warehouse のアラートの作成
 
@@ -39,7 +33,7 @@ ms.lasthandoff: 10/31/2017
 
 アラート ルールを構成したり、その情報を取得したりするには、以下を使用します
 
-* [Azure ポータル](../monitoring-and-diagnostics/insights-alerts-portal.md)
+* [Azure Portal](../monitoring-and-diagnostics/insights-alerts-portal.md)
 * [PowerShell](../monitoring-and-diagnostics/insights-alerts-powershell.md)
 * [コマンド ライン インターフェイス (CLI)](../monitoring-and-diagnostics/insights-alerts-command-line-interface.md)
 * [Azure 監視 REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx)
@@ -52,7 +46,7 @@ ms.lasthandoff: 10/31/2017
    
      ![監視](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButton.png)
   
-   - **SQL DW のみ**: [主なタスク] セクションで [**監視**] を選択します。 [**DWU 利用状況**] グラフをクリックします。
+   - **SQL DW のみ**: 主なタスク セクションで **監視** を選択します。 **[DWU 利用状況]** グラフをクリックします。
 
      ![主なタスク](../monitoring-and-diagnostics/media/insights-alerts-portal/AlertRulesButtonDW.png)
 
@@ -120,7 +114,7 @@ ms.lasthandoff: 10/31/2017
 ||||||
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure での監視の概要](../monitoring-and-diagnostics/monitoring-overview.md) 情報を入手します。
 * [アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)に関する詳細情報を確認します。
 * [診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 情報を入手し、サービスに関する詳細な頻度の高いメトリックを収集します。

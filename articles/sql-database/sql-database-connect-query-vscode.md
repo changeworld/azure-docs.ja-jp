@@ -1,27 +1,20 @@
 ---
-title: "VS Code: Azure SQL Database に接続してデータを照会する | Microsoft Docs"
-description: "Visual Studio Code を使用して Azure SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。"
-metacanonical: 
-keywords: "SQL Database への接続"
+title: 'VS Code: Azure SQL Database に接続してデータを照会する | Microsoft Docs'
+description: Visual Studio Code を使用して Azure SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
+keywords: SQL Database への接続
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 676bd799-a571-4bb8-848b-fb1720007866
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/22/2017
 ms.author: carlrab
-ms.openlocfilehash: c52ac86ad5f3ad97a2e6dca38a84444b45bd73e5
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: 689b54704b46f852f62f7d97496c7c04649f2ff1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-use-visual-studio-code-to-connect-and-query-data"></a>Azure SQL Database: Visual Studio Code を使って接続とデータの照会を行う
 
@@ -92,7 +85,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 4. プロンプトに従って、新しい接続プロファイルの接続プロパティを指定します。 それぞれの値を指定したら、**Enter** キーを押して続行します。 
 
-   | 設定       | 推奨値 | 説明 |
+   | Setting       | 推奨値 | [説明] |
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名] | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
    | **[データベース名]** | mySampleDatabase | 接続先のデータベースの名前です。 |
@@ -180,7 +173,7 @@ Visual Studio Code を使用して、Azure SQL Database サーバーに対する
 
 2. **Ctrl + Shift + E** キーを押して、Product テーブルの指定した行を削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - SQL Server Management Studio を使用して接続とクエリを実行するには、[SSMS を使用した接続とクエリ](sql-database-connect-query-ssms.md)に関するページを参照してください。
 - Azure Portal を使用して接続とクエリを実行するには、[Azure Portal の SQL クエリ エディターを使用した接続とクエリ実行](sql-database-connect-query-portal.md)に関するページをご覧ください。

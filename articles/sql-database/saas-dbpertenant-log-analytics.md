@@ -1,26 +1,21 @@
 ---
-title: "SQL Database のマルチテナント アプリで Log Analytics を使用する | Microsoft Docs"
-description: "マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する"
-keywords: "SQL データベース チュートリアル"
+title: SQL Database のマルチテナント アプリで Log Analytics を使用する | Microsoft Docs
+description: マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する
+keywords: SQL データベース チュートリアル
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: billgib; sstein
-ms.openlocfilehash: 7747092d5613a40fa0aff09cfbdfb9b786b37954
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: sstein
+ms.reviewer: billgib
+ms.openlocfilehash: b141ca521ae9c4d9bf6a4be620bc8e5432c52f83
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する
 

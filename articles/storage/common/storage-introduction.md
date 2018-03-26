@@ -1,24 +1,18 @@
 ---
-title: "Azure Storage の概要 | Microsoft Docs"
-description: "クラウドにおける Microsoft のデータ ストレージ Azure Storage について概要を紹介します。"
+title: Azure Storage の概要 | Microsoft Docs
+description: クラウドにおける Microsoft のデータ ストレージ Azure Storage について概要を紹介します。
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: a4a1bc58-ea14-4bf5-b040-f85114edc1f1
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
-ms.date: 01/21/2018
+ms.date: 03/06/2018
 ms.author: tamram
-ms.openlocfilehash: 088a58bf5bfe3736a158d2384c69cb5928b53556
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 799636d0a702407be06bbe8cebae552b34d860db
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
 
@@ -137,7 +131,7 @@ Storage サービスには、2 種類の基本的な暗号化を使用できま�
 
 保存時の Azure Storage Service Encryption (SSE) は、データを保護して安全性を確保し、組織のセキュリティとコンプライアンスの要件を満たすお手伝いをします。 この機能を使用すると、Azure Storage はストレージに保存する前にデータを自動的に暗号化し、取得する前に復号化します。 暗号化、復号化、キーの管理は、ユーザーにはまったく意識されずに行われます。
 
-BLOB ストレージまたは Azure Files (プレビュー) に対しては、ストレージ サービスの暗号化 (SSE) を有効にすることができます。 有効にした場合、特定のサービスに書き込まれるすべてのデータは、書き込みの前に暗号化されます。 データを読み取るときは、暗号化が解除されてからデータが返されます。
+SSE は、すべてのパフォーマンス層 (Standard および Premium)、すべてのデプロイメント モデル (Azure Resource Manager とクラシック)、すべての Azure Storage サービス (BLOB、Queue、Table、File) のデータを自動的に暗号化します。 SSE は、Azure Storage のパフォーマンスに影響しません。
 
 保存時の SSE 暗号化の詳細については、「[Azure Storage Service Encryption for Data at Rest](storage-service-encryption.md)」を参照してください。
 

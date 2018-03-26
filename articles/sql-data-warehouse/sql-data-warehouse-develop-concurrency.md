@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse での同時実行とワークロード管理 | Microsoft Docs"
-description: "ソリューション開発のための Azure SQL Data Warehouse での同時実行とワークロード管理を理解します。"
+title: SQL Data Warehouse での同時実行とワークロード管理 | Microsoft Docs
+description: ソリューション開発のための Azure SQL Data Warehouse での同時実行とワークロード管理を理解します。
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
 ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>SQL Data Warehouse での同時実行とワークロード管理
 Microsoft Azure SQL Data Warehouse では、予測可能なパフォーマンスを大規模に実現するために、メモリと CPU の優先順位付けのようなリソース割り当てに加えて、同時実行レベルを制御できるようになっています。 この記事では、同時実行とワークロード管理の機能がどのように実装されたか、そしてこれらの機能をデータ ウェアハウスでどのように制御できるかについて説明しながら、両機能の概念を紹介します。 SQL Data Warehouse のワークロード管理は、マルチユーザー環境をサポートすることを目的としています。 マルチテナント ワークロードは想定されていません。

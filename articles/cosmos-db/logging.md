@@ -1,24 +1,24 @@
 ---
-title: "Azure Cosmos DB 診断ログ | Microsoft Docs"
-description: "このチュートリアルを使用すると、Azure Cosmos DB のログ記録を簡単に始めることができます。"
+title: Azure Cosmos DB 診断ログ | Microsoft Docs
+description: このチュートリアルを使用すると、Azure Cosmos DB のログ記録を簡単に始めることができます。
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/20/2018
+ms.date: 03/07/2018
 ms.author: mimig
-ms.openlocfilehash: 0d76e3bea8b3d24c4232c699354320f6b873722e
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f647387b4e80c36339a456b8e9a2cfade7ac8102
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -32,9 +32,16 @@ Azure Cosmos DB アカウントの監視を始める前に、ログと監視に�
 
 ![さまざまな種類の Azure ログ](./media/logging/azurelogging.png)
 
+上記の図の**コンピューティング リソース**とは、ユーザーがゲスト OS にアクセスできる Azure リソースを表します。 たとえば、Microsoft Azure Virtual Machines、Virtual Machine のスケール セット、Azure Container Service などが、コンピューティング リソースと見なされます。 コンピューティング リソースは、アクション ログ、診断ログとアプリケーション ログを生成します。 詳細については、[Azure Monitoring – コンピューティング リソース](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---compute-subset)に関する記事を参照してください。
+
+**非コンピューティング リソース**とは、ユーザーが基盤となる OS にアクセスできず、リソースに直接作業するリソースです。 たとえば、ネットワーク セキュリティ グループ、Azure Logic Apps などが挙げられます。**Cosmos DB** は、非コンピューティング リソースです。 非コンピューティング リソースのログは、アクティビティ ログで確認するか、ポータルの [診断ログ] オプションを有効にすることで表示できます。 詳細については、[Azure Monitoring – 非コンピューティング リソース](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md#azure-monitor-sources---everything-else)に関する記事を参照してください。
+
+アクティビティ ログは、ListKeys、DatabaseAccounts などの Cosmos DB のサブスクリプション レベルの操作を記録します。 診断ログは、より詳細なログ記録を提供し、DataPlaneRequests (Create, Read, Query.. ) と MongoRequests を記録できます。
+
+
 この記事では、Azure アクティビティ、Azure 診断、およびメトリックに注目します。 この 3 つのログの違いは何でしょうか。 
 
-### <a name="azure-activity-log"></a>Azure アクティビティ ログ
+### <a name="azure-activity-log"></a>[Azure Activity Log (Azure アクティビティ ログ)]
 
 Azure アクティビティ ログは、Azure で発生したサブスクリプション レベルのイベントの分析に利用できるサブスクリプション ログです。 アクティビティ ログは、サブスクリプションのコントロール プレーン イベントを管理カテゴリで報告します。 アクティビティ ログを使用すると、サブスクリプションのリソースに対して発生する書き込み操作 (PUT、POST、DELETE) すべてについて、"いつ誰が何を" 行ったのかを確認できます。 さらに、操作の状態など、重要性の大きなプロパティを確認することもできます。 
 
@@ -431,7 +438,7 @@ Azure Storage と Log Analytics に格納されている診断データは、ス
 
 次の表は、各ログ エントリの内容をまとめた一覧です。
 
-| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | 説明 |
+| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | [説明] |
 | --- | --- | --- |
 | time | TimeGenerated | 操作が発生した日時 (UTC)。 |
 | ResourceId | リソース | ログが有効になっている Azure Cosmos DB アカウント。|

@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 10/23/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 159a1d34caba829750da33dbc4ad403fb21cd147
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="backup-and-restore-in-sql-data-warehouse"></a>SQL Data Warehouse でのバックアップおよび復元
 この記事では、SQL Data Warehouse のバックアップの詳細について説明します。 データ ウェアハウスのバックアップを使用して、プライマリ リージョンにデータベース スナップショットを復元したり、geo ペア リージョンに geo バックアップを復元したりします。 

@@ -1,32 +1,27 @@
 ---
-title: "SQL Database のディザスター リカバリー | Microsoft Docs"
-description: "Azure SQL Database のアクティブ geo レプリケーションと geo リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。"
+title: SQL Database のディザスター リカバリー | Microsoft Docs
+description: Azure SQL Database のアクティブ geo レプリケーションと geo リストア機能を使用して、地域のデータ センターの停止や障害からデータベースを復旧する方法について説明します。
 services: sql-database
-documentationcenter: 
 author: anosov1960
 manager: jhubbard
-editor: monicar
-ms.assetid: 4800960e-3f9d-40ce-9e55-fb7f2784c067
 ms.service: sql-database
 ms.custom: business continuity
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
-ms.date: 12/13/2017
+ms.date: 03/05/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 224c0b9f12595ec6cdc65e3d397fb62dba504d06
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.openlocfilehash: e9ec0a0a602965561b77619123588db57c59993c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="restore-an-azure-sql-database-or-failover-to-a-secondary"></a>Azure SQL Database を復元する、またはセカンダリにフェールオーバーする
 Azure SQL Database は、障害から回復するために次の機能を備えています。
 
 * [アクティブ geo レプリケーションおよびフェールオーバー グループ](sql-database-geo-replication-overview.md)
 * [geo リストア](sql-database-recovery-using-backups.md#point-in-time-restore)
+* [ゾーン冗長データベース](sql-database-high-availability.md)
 
 ビジネス継続性のシナリオと、こうしたシナリオをサポートする機能の詳細については、 [ビジネス継続性](sql-database-business-continuity.md)に関するページをご覧ください。
 
@@ -36,14 +31,13 @@ Azure SQL Database は、障害から回復するために次の機能を備え�
 ### <a name="prepare-for-the-event-of-an-outage"></a>障害に備える
 フェールオーバー グループまたは geo 冗長バックアップのいずれかを使用して、他のデータ領域に適切に復旧するには、必要な場合に備えて、サーバーを、他のデータ センターが停止したときに新しいプライマリ サーバーとして使用できるように準備する必要があります。また、スムーズに復旧できるように、明確に定義された手順を文書化およびテストする必要もあります。 この準備手順を次に示します。
 
-* 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 geo リストアの場合は、通常、データベースが配置されているリージョンの [ペア リージョン](../best-practices-availability-paired-regions.md) にあるサーバーです。 これにより、geo 復元操作中の余分なトラフィック コストを排除できます。
+* 他のリージョンで、新しいプライマリ サーバーとして使用する論理サーバーを特定します。 geo リストアの場合は、通常、データベースが配置されているリージョンの[ペア リージョン](../best-practices-availability-paired-regions.md)にあるサーバーです。 これにより、geo 復元操作中の余分なトラフィック コストを排除できます。
 * ユーザーが新しいプライマリ データベースにアクセスするのに必要なサーバー レベルのファイアウォール規則を特定し、必要に応じて定義します。
 * 新しいプライマリ サーバーにユーザーをリダイレクトする方法を決めます。たとえば、接続文字列を変更したり、DNS エントリを変更したりすることでリダイレクトできます。
 * 新しいプライマリ サーバーのマスター データベースに必要なログインを特定し、必要に応じて作成します。また、マスター データベースにあるこれらのログインに、適切なアクセス許可が付与されていることを確認します (ある場合)。 詳細については、[障害復旧後の SQL Database のセキュリティ](sql-database-geo-replication-security-config.md)に関するページをご覧ください。
 * 更新して新しいプライマリ データベースにマップする必要があるアラート ルールを特定します。
 * 現在のプライマリ データベースで監査の構成を文書化します
-* 
-            [ディザスター リカバリーの訓練](sql-database-disaster-recovery-drills.md)を実行します。 geo リストアの障害をシミュレートするには、ソース データベースを削除するか、名前を変更します。これにより、アプリケーションの接続エラーが発生します。 フェールオーバー グループを使用して障害をシミュレートするには、データベースに接続されている Web アプリケーションまたは仮想マシンを無効にするか、データベースをフェールオーバーして、アプリケーションの接続エラーを発生させます。
+* [ディザスター リカバリーの訓練](sql-database-disaster-recovery-drills.md)を実行します。 geo リストアの障害をシミュレートするには、ソース データベースを削除するか、名前を変更します。これにより、アプリケーションの接続エラーが発生します。 フェールオーバー グループを使用して障害をシミュレートするには、データベースに接続されている Web アプリケーションまたは仮想マシンを無効にするか、データベースをフェールオーバーして、アプリケーションの接続エラーを発生させます。
 
 ## <a name="when-to-initiate-recovery"></a>復旧を開始するタイミング
 復旧操作はアプリケーションに影響します。 SQL 接続文字列の変更または DNS によるリダイレクトが必要で、永続的にデータが失われる可能性があります。 そのため、アプリケーションの目標復旧時間が経過しても、障害が解決されない可能性が高い場合にのみ行ってください。 アプリケーションが実稼働環境にデプロイされている場合は、アプリケーションの健全性の定期的な監視を実行し、次のデータ ポイントを使用して、復旧が保証されていることをアサートします。
@@ -101,8 +95,8 @@ geo リストアを使用して障害から復旧する場合は、通常のア�
 ### <a name="enable-auditing"></a>監査を有効にする
 データベースにアクセスするために監査が必要な場合は、データベースの復旧後に監査を有効にする必要があります。 詳しくは、「[SQL Database の監査](sql-database-auditing.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
-* Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)
+## <a name="next-steps"></a>次の手順
+* Azure SQL Database 自動バックアップの詳細については、[SQL Database の自動バックアップ](sql-database-automated-backups.md)を参照してください。
 * ビジネス継続性の設計および復旧シナリオについては、 [継続性のシナリオ](sql-database-business-continuity.md)
-* 自動バックアップを使用して復旧する方法については、 [サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)
+* 自動バックアップを使用して復旧する方法については、[サービス主導のバックアップからのデータベース復元](sql-database-recovery-using-backups.md)を参照してください。
 

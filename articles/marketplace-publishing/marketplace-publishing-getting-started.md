@@ -1,11 +1,11 @@
 ---
-title: "プランを作成して Marketplace にデプロイする方法の概要 |Microsoft Docs"
-description: "Microsoft 認定開発者として、仮想マシン イメージ、テンプレート、データ サービス、または開発者向けサービスを作成して Azure Marketplace にデプロイするために必要な手順を理解します"
+title: プランを作成して Marketplace にデプロイする方法の概要 |Microsoft Docs
+description: Microsoft 認定開発者として、仮想マシン イメージ、テンプレート、データ サービス、または開発者向けサービスを作成して Azure Marketplace にデプロイするために必要な手順を理解します
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 5343bd26-c6e4-4589-85b7-4a2c00bba8ab
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2017
-ms.author: hascipio
-ms.openlocfilehash: 82580fbab68eab28a2027cd277213f1fb2a76e07
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.author: mbaldwin
+ms.openlocfilehash: 02df78de48c8466f3488ef5f8346e1852b4e3ded
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 > [!NOTE]
 > このドキュメントは最新ではなく、情報は正確ではありません。 代わりに Azure Marketplace の[販売者ガイド](https://docs.microsoft.com/azure/marketplace/seller-guide/cloud-partner-portal-seller-guide)にアクセスして、Azure Marketplace へのプランの発行についてのガイダンスをご覧ください。
@@ -59,7 +59,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 ソリューションを Marketplace に公開するには、次の手順に従います。
 1. 技術面以外の前提条件を満たします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 [技術面以外の前提条件](marketplace-publishing-pre-requisites.md)を満たします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [技術面以外の前提条件](marketplace-publishing-pre-requisites.md)を満たします。
 
     b. [VM の技術面の前提条件](marketplace-publishing-vm-image-creation-prerequisites.md)を満たします。
 
@@ -67,7 +67,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 2. プランを作成します。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [仮想マシン](marketplace-publishing-vm-image-creation.md) プランを作成します。
 
     b. [ソリューション テンプレート](marketplace-publishing-solution-template-creation.md) プランを作成します。
 
@@ -75,7 +75,7 @@ Microsoft アカウントを [Microsoft 開発者アカウント](marketplace-pu
 
 4. ステージング環境でプランをテストします。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 VM プランを[ステージング環境](marketplace-publishing-vm-image-test-in-staging.md)でテストします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 VM プランを[ステージング環境](marketplace-publishing-vm-image-test-in-staging.md)でテストします。
 
     b. ソリューション テンプレート プランを[ステージング環境](marketplace-publishing-solution-template-test-in-staging.md)でテストします。
 

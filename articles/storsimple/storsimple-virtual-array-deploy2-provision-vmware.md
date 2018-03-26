@@ -1,11 +1,11 @@
 ---
-title: "VMware で StorSimple Virtual Array をプロビジョニングする | Microsoft Docs"
-description: "StorSimple Virtual Array のデプロイ シリーズの 2 番目のチュートリアルには、VMware での仮想デバイスのプロビジョニングが含まれます。"
+title: VMware で StorSimple Virtual Array をプロビジョニングする | Microsoft Docs
+description: StorSimple Virtual Array のデプロイ シリーズの 2 番目のチュートリアルには、VMware での仮想デバイスのプロビジョニングが含まれます。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 11/14/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 495ef6a93ee06423495269306ad06e76dda13e10
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: be737550aa1cff22bc413ee8ce243f8d8588f6a5
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -98,7 +98,7 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 7. **[Datastore Browser]** ウィンドウが表示されます。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. ツール バーで ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) アイコンをクリックして、新しいフォルダーを作成します。 フォルダー名を指定して、メモしておきます。 このフォルダー名は後で仮想マシンを作成するときに使用します (推奨されるベスト プラクティス)。 **[OK]**をクリックします。
+8. ツール バーで ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) アイコンをクリックして、新しいフォルダーを作成します。 フォルダー名を指定して、メモしておきます。 このフォルダー名は後で仮想マシンを作成するときに使用します (推奨されるベスト プラクティス)。 Click **OK**.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. **Datastore Browser** の左側のウィンドウに新しいフォルダーが表示されます。
@@ -127,7 +127,7 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 17. **[Storage]** ページで、VM のプロビジョニングに使用するデータストアを選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. **[仮想マシンのバージョン]** ページで **[仮想マシンバージョン: 8]** を選択します。 バージョン 8 ～ 11 がすべてサポートされています。
+18. **[仮想マシンのバージョン]** ページで **[仮想マシンバージョン: 8]** を選択します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
 19. **[Guest Operating System]** ページで、**[Guest Operating System]** に **[Windows]** を選択します。 **[Version]** には、ドロップダウンリストから **[Microsoft Windows Server 2012 (64-bit)]** を選択します。
@@ -243,6 +243,6 @@ VMware ESXi 5.0、5.5、または 6.0 を実行しているホスト システ�
 * 診断テストを実行して [Web UI のセットアップのトラブルシューティング](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors)を行う。
 * [ログ パッケージを生成してログ ファイルを表示する](storsimple-ova-web-ui-admin.md#generate-a-log-package)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [StorSimple Virtual Array をファイル サーバーとして設定する](storsimple-virtual-array-deploy3-fs-setup.md)
 * [StorSimple Virtual Array を iSCSI サーバーとして設定する](storsimple-virtual-array-deploy3-iscsi-setup.md)

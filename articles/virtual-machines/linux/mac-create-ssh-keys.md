@@ -1,11 +1,11 @@
 ---
-title: "Azure での Linux VM 用の SSH キー ペアの作成と使用 | Microsoft Docs"
-description: "Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成し、認証プロセスのセキュリティを向上させる方法について説明します。"
+title: Azure での Linux VM 用の SSH キー ペアの作成と使用 | Microsoft Docs
+description: Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成し、認証プロセスのセキュリティを向上させる方法について説明します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 34ae9482-da3e-4b2d-9d0d-9d672aa42498
 ms.service: virtual-machines-linux
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: a37bfa01343527a60193d893c7913e4e9c50d210
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: ecd3a01ee5591cb09140edb1b1290ff2d4510200
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="how-to-create-and-use-an-ssh-public-and-private-key-pair-for-linux-vms-in-azure"></a>Azure に Linux VM 用の SSH 公開キーと秘密キーのペアを作成して使用する方法
 Secure Shell (SSH) キー ペアを使用すると、認証に SSH キーを使う仮想マシン (VM) を Azure に作成でき、ログインするためのパスワードが不要になります。 この記事では、Linux VM 用に SSH プロトコル バージョン 2 RSA の公開キー ファイルと秘密キー ファイルのペアを短時間で生成し、使用する方法について説明します。 これらの手順を実行するには、Azure Cloud Shell、macOS または Linux ホスト、あるいは Windows Subsystem for Linux を使用することができます。 詳細な手順と補足的な例については、[SSH キー ペアと証明書を作成するための詳細な手順](create-ssh-keys-detailed.md)に関するページをご覧ください。
 
 ## <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
-`ssh-keygen` コマンドを使用して、SSH 公開キー ファイルと秘密キー ファイルを作成できます。ファイルは既定で `~/.ssh` ディレクトリに作成されますが、プロンプトが表示されたときに別の場所や追加のパスフレーズ (秘密キー ファイルにアクセスするためのパスワード) を指定できます。 これを行うには、Bash シェルから次のコマンドを実行し、使用したい情報をプロンプトで指定します。
+`ssh-keygen` コマンドを使用して、SSH 公開キー ファイルおよび秘密キー ファイルを作成します。これらのファイルは、既定では `~/.ssh` ディレクトリに作成されます。 入力を求められたときに、別の場所を指定したり、追加のパスフレーズ (秘密キー ファイルにアクセスするためのパスワード) を指定したりできます。 SSH キー ペアが現在の場所にある場合、SSH キー ペアは上書きされます。
 
 ```bash
 ssh-keygen -t rsa -b 2048

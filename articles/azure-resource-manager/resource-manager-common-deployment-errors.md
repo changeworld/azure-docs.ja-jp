@@ -1,25 +1,25 @@
 ---
-title: "Azure へのデプロイで発生する一般的なエラーのトラブルシューティング | Microsoft Docs"
-description: "Azure Resource Manager を使用した Azure へのリソースのデプロイ時に発生する一般的なエラーの解決方法について説明します。"
+title: Azure へのデプロイで発生する一般的なエラーのトラブルシューティング | Microsoft Docs
+description: Azure Resource Manager を使用した Azure へのリソースのデプロイ時に発生する一般的なエラーの解決方法について説明します。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 tags: top-support-issue
 author: tfitzmac
 manager: timlt
 editor: tysonn
-keywords: "デプロイのエラー、Azure へのデプロイ、Azure へのデプロイ"
+keywords: デプロイのエラー、Azure へのデプロイ、Azure へのデプロイ
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: support-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: ca7e3cb541948e6cc0b8d077616f3611e3ab2477
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.openlocfilehash: 2cf31b32e02923aa573d5586b8ca24bf30b7d97b
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -37,6 +37,7 @@ ms.lasthandoff: 12/20/2017
 | BadRequest | Resource Manager で予期される値と一致しないデプロイ値を送信しました。 トラブルシューティングの方法については、内部ステータス メッセージを確認してください。 | [テンプレート リファレンス](/azure/templates/)と[サポートされている場所](resource-manager-templates-resources.md#location) |
 | 競合 | リソースの現在の状態では許可されていない操作を要求しています。 たとえば、ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。 | |
 | DeploymentActive | このリソース グループへの同時実行デプロイが完了するまで待ちます。 | |
+| DeploymentFailed | DeploymentFailed エラーは、解決する必要があるエラーの詳細が示されない一般的なエラーです。 エラー コードのエラー詳細で情報を確認してください。 | [エラー コードを見つける](#find-error-code) |
 | DnsRecordInUse | DNS レコード名は、一意の名前にする必要があります。 別の名前を指定するか、既存のレコードを変更してください。 | |
 | ImageNotFound | VM イメージの設定を確認してください。 |  |
 | InUseSubnetCannotBeDeleted | リソースを更新しようとするときにこのエラーが発生することがありますが、リソースを削除して作成すると、要求が処理されます。 変更されていないすべての値を指定してください。 | [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -44,7 +45,7 @@ ms.lasthandoff: 12/20/2017
 | InvalidContentLink | これは、入れ子になった無効なテンプレートにリンクしようとしたことが原因と考えられます。 入れ子になったテンプレートに指定した URI を十分に確認してください。 ストレージ アカウントにテンプレートがある場合は、URI がアクセス可能であることを確認してください。 場合によっては、SAS トークンを渡す必要があります。 | [リンク済みテンプレート](resource-group-linked-templates.md) |
 | InvalidParameter | リソースに対して指定したいずれかの値が、予期される値に一致しません。 このエラーはさまざまな状況が原因となって発生する可能性があります。 たとえば、パスワードが十分でない場合や、BLOB 名が正しくない場合があります。 エラー メッセージを確認して、どの値を修正する必要があるかを判断してください。 | |
 | InvalidRequestContent | デプロイの値に予期されない値が含まれているか、必要な値が不足しています。 リソースの種類の値を確認してください。 | [テンプレート リファレンス](/azure/templates/) |
-| InvalidRequestFormat | デプロイを実行するときにデバッグ ログを有効にし、要求の内容を確認してください。 | [デバッグ ログ](resource-manager-troubleshoot-tips.md#enable-debug-logging) |
+| InvalidRequestFormat | デプロイを実行するときにデバッグ ログを有効にし、要求の内容を確認してください。 | [デバッグ ログ](#enable-debug-logging) |
 | InvalidResourceNamespace | **type** プロパティに指定したリソース名前空間を確認してください。 | [テンプレート リファレンス](/azure/templates/) |
 | InvalidResourceReference | リソースがまだ存在しないか、正しく参照されていません。 依存関係を追加する必要があるかどうかを確認してください。 シナリオに必要なパラメーターを含めて **reference** 関数を使用しているかどうかを確認してください。 | [依存関係を解決する](resource-manager-not-found-errors.md) |
 | InvalidResourceType | **type** プロパティに指定したリソースの種類を確認してください。 | [テンプレート リファレンス](/azure/templates/) |
@@ -75,7 +76,124 @@ ms.lasthandoff: 12/20/2017
 
 ## <a name="find-error-code"></a>エラー コードを見つける
 
-デプロイ中にエラーが発生した場合、Resource Manager がエラー コードを返します。 エラー メッセージは、ポータル、PowerShell、または Azure CLI を介して確認できます。 外部エラー メッセージは、一般的すぎてトラブルシューティングに向かない可能性があります。 エラーに関する詳細情報が記載された内部メッセージを探してください。 詳細については、「[エラー コードの判断](resource-manager-troubleshoot-tips.md#determine-error-code)」を参照してください。
+発生する可能性のあるエラーには、次の 2 種類があります。
+
+* 検証エラー
+* デプロイ エラー
+
+検証エラーは、デプロイ前に判断できるシナリオで発生します。 これには、テンプレートに構文エラーがある場合や、サブスクリプション クォータを超えるリソースをデプロイしようとしている場合などがあります。 デプロイ エラーは、デプロイ プロセスで発生する状況に起因します。 これには、並列でデプロイされているリソースにアクセスしようとしている場合などがあります。
+
+この 2 種類のエラーでは、デプロイのトラブルシューティングに使用するエラー コードが返されます。 どちらの種類のエラーも[アクティビティ ログ](resource-group-audit.md)に表示されます。 ただし、検証エラーは、デプロイが開始されていないため、デプロイ履歴には表示されません。
+
+### <a name="validation-errors"></a>検証エラー
+
+ポータルでのデプロイ時に、値を送信した後に検証エラーを確認します。
+
+![ポータルの検証エラーの表示](./media/resource-manager-common-deployment-errors/validation-error.png)
+
+詳細については、メッセージを選択します。 次の図では、**InvalidTemplateDeployment** エラーとポリシーがデプロイをブロックしていることを示すメッセージが示されます。
+
+![検証の詳細の表示](./media/resource-manager-common-deployment-errors/validation-details.png)
+
+### <a name="deployment-errors"></a>デプロイ エラー
+
+操作で検証を通過しますが、デプロイ中に失敗した場合、通知でエラーが表示されます。 通知を選択します。
+
+![通知エラー](./media/resource-manager-common-deployment-errors/notification.png)
+
+デプロイに関する詳細を表示します。 オプションを選択して、エラーの詳細を確認します。
+
+![デプロイの失敗](./media/resource-manager-common-deployment-errors/deployment-failed.png)
+
+エラー メッセージとエラー コードを表示します。 2 つのエラー コードがあることを確認します。 最初のエラー コード (**DeploymentFailed**) は、解決する必要があるエラーの詳細が示されない一般的なエラーです。 2 つ目のエラー コード (**StorageAccountNotFound**) は、必要な詳細が示されます。 
+
+![エラーの詳細](./media/resource-manager-common-deployment-errors/error-details.png)
+
+## <a name="enable-debug-logging"></a>デバッグ ログの有効化
+
+問題が発生した原因を調べるには、要求と応答の詳細が必要な場合があります。 PowerShell または Azure CLI を使用して、デプロイ時に追加情報をログに記録することを要求できます。
+
+- PowerShell
+
+   PowerShell では、**DeploymentDebugLogLevel** パラメーターを All、ResponseContent、または RequestContent に設定します。
+
+  ```powershell
+  New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile c:\Azure\Templates\storage.json -DeploymentDebugLogLevel All
+  ```
+
+   次のコマンドレットを使用して、要求の内容を確認します。
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.request | ConvertTo-Json
+  ```
+
+   次のコマンドレットを使用して、応答の内容を確認します。
+
+  ```powershell
+  (Get-AzureRmResourceGroupDeploymentOperation -DeploymentName storageonly -ResourceGroupName startgroup).Properties.response | ConvertTo-Json
+  ```
+
+   この情報は、テンプレートの値が正しく設定されているかどうかを確認するのに役立ちます。
+
+- Azure CLI
+
+   次のコマンドでデプロイ操作を確認します。
+
+  ```azurecli
+  az group deployment operation list --resource-group ExampleGroup --name vmlinux
+  ```
+
+- 入れ子になったテンプレート
+
+   入れ子になったテンプレートのデバッグ情報をログに記録するには、**debugSetting** 要素を使用します。
+
+  ```json
+  {
+      "apiVersion": "2016-09-01",
+      "name": "nestedTemplate",
+      "type": "Microsoft.Resources/deployments",
+      "properties": {
+          "mode": "Incremental",
+          "templateLink": {
+              "uri": "{template-uri}",
+              "contentVersion": "1.0.0.0"
+          },
+          "debugSetting": {
+             "detailLevel": "requestContent, responseContent"
+          }
+      }
+  }
+  ```
+
+## <a name="create-a-troubleshooting-template"></a>トラブルシューティング用テンプレートの作成
+
+場合によっては、テンプレートのトラブルシューティングの最も簡単な方法は、テンプレートの一部をテストすることです。 エラーの原因と考えられる部分に注目できる簡略化されたテンプレートを作成できます。 たとえば、リソースの参照時にエラーが発生しているとします。 この場合、テンプレート全体を処理するのではなく、問題の原因と考えられる部分を返すテンプレートを作成します。 これにより、適切なパラメーターを渡しているかどうか、テンプレート関数を正しく使用しているかどうか、求めているリソースを取得しているかどうかを確認できます。
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "storageName": {
+        "type": "string"
+    },
+    "storageResourceGroup": {
+        "type": "string"
+    }
+  },
+  "variables": {},
+  "resources": [],
+  "outputs": {
+    "exampleOutput": {
+        "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageName')), '2016-05-01')]",
+        "type" : "object"
+    }
+  }
+}
+```
+
+または、設定の誤った依存関係に関連すると思われるデプロイ エラーが発生していると仮定します。 テンプレートをテストするには、これを簡略化されたテンプレートに分解します。 最初に、1 つのリソース (SQL Server など) のみをデプロイするテンプレートを作成します。 そのリソースを正しく定義したことを確認したら、それに依存するリソース (SQL Database など) を追加します。 これら 2 つのリソースを正しく定義したことを確認したら、その他の依存リソース (監査ポリシーなど) を追加します。 各テスト デプロイの合間に、リソース グループを削除して、依存関係を適切にテストしていることを確認します。
+
 
 ## <a name="next-steps"></a>次の手順
 * 監査アクションについては、「 [リソース マネージャーの監査操作](resource-group-audit.md)」をご覧ください。

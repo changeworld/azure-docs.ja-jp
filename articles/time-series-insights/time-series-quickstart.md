@@ -1,6 +1,6 @@
 ---
-title: "クイック スタート - Azure Time Series Insights エクスプローラー | Microsoft Docs"
-description: "このクイック スタートでは、大量の IoT データを視覚化するために Web ブラウザーで Azure Time Series Insights エクスプローラーの使用を開始する方法を示します。 デモ環境で主な機能について説明します。"
+title: クイック スタート - Azure Time Series Insights エクスプローラー | Microsoft Docs
+description: このクイック スタートでは、大量の IoT データを視覚化するために Web ブラウザーで Azure Time Series Insights エクスプローラーの使用を開始する方法を示します。 デモ環境で主な機能について説明します。
 services: time-series-insights
 ms.service: time-series-insights
 author: MarkMcGeeAtAquent
@@ -53,7 +53,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![項目を追加する](media/quickstart/quickstart5.png)
 
-7. グラフでは、リージョンを選択し、そのリージョンを右クリックして **[Explore Events] (イベントの探索)** を選択できます。
+7. グラフでは、リージョンを選択し、そのリージョンを右クリックして **[Explore Events] \(イベントの探索)** を選択できます。
  
    ![[Explore Events] (イベントの探索)](media/quickstart/quickstart6.png)
 
@@ -65,7 +65,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![用語を追加する](media/quickstart/quickstart8.png)
 
-9. アドホックのシリーズ フィルター処理を行うには、**[Filter series...] (シリーズのフィルター処理...)** ボックスにフィルター用語を入力します。 クイック スタートの場合は、「**Station5**」と入力して、そのステーションの温度と圧力を相互に関連付けます。
+9. アドホックのシリーズ フィルター処理を行うには、**[Filter series...] \(シリーズのフィルター処理...)** ボックスにフィルター用語を入力します。 クイック スタートの場合は、「**Station5**」と入力して、そのステーションの温度と圧力を相互に関連付けます。
  
    ![[Filter series] (シリーズのフィルター処理)](media/quickstart/quickstart9.png)
 

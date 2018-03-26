@@ -1,11 +1,11 @@
 ---
-title: "Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する | Microsoft Docs"
-description: "カスタム ドメインを使って Azure CDN エンドポイントの HTTPS を有効または無効にする方法について説明します。"
+title: Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する | Microsoft Docs
+description: カスタム ドメインを使って Azure CDN エンドポイントの HTTPS を有効または無効にする方法について説明します。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: dksimpson
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 10337468-7015-4598-9586-0b66591d939b
 ms.service: cdn
 ms.workload: media

@@ -1,13 +1,13 @@
 ---
-title: "データ サイエンス仮想マシンのデータ取り込みツール - Azure | Microsoft Docs"
-description: "データ サイエンス仮想マシンのデータ取り込みツール"
-keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
+title: データ サイエンス仮想マシンのデータ取り込みツール - Azure | Microsoft Docs
+description: データ サイエンス仮想マシンのデータ取り込みツール
+keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: a2422d8a79d102accb72476f6934bae38603973a
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 8526e949aee2935824a03a0972d9e45c71d6601b
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/22/2018
 | サポートされている DSVM バージョン      | Windows      |
 | 一般的な用途      | Azure ストレージから Azure Data Lake Store に複数の BLOB をインポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、`adlcopy` と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [AdlCopy を使用] https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
+| サンプルへのリンク      | [AdlCopy を使用](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob)      |
 | DSVM 上の関連ツール      | AzCopy、Azure コマンド ライン     |
 
 ## <a name="azure-command-line"></a>Azure コマンド ライン
@@ -46,7 +46,7 @@ ms.lasthandoff: 02/22/2018
 | サポートされている DSVM バージョン      | Windows、Linux     |
 | 一般的な用途      | Azure ストレージ、Azure Data Lake Store との間でデータをインポートおよびエクスポートします。      |
 |  使用/実行方法    |   コマンド プロンプトを開き、`az` と入力してヘルプを表示します。    |
-| サンプルへのリンク      | [Azure CLI の使用](https://docs.microsoft.com/cli/azure/?viee-cli-latest)     |
+| サンプルへのリンク      | [Azure CLI の使用](https://docs.microsoft.com/cli/azure)     |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy      |
 
 
@@ -93,7 +93,7 @@ ms.lasthandoff: 02/22/2018
 | サポートされている DSVM バージョン      | Linux      |
 | 一般的な用途      | コンテナー内の BLOB へ読み取りと書き込み      |
 |  使用/実行方法    |   端末で _blobfuse_ を実行します。    |
-| サンプルへのリンク      | [GitHub の blobfuse)[https://github.com/Azure/azure-storage-fuse]      |
+| サンプルへのリンク      | [GitHub の blobfuse](https://github.com/Azure/azure-storage-fuse)      |
 | DSVM 上の関連ツール      | Azure コマンド ライン      |
 
 

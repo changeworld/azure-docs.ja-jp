@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database のパフォーマンス チューニング ガイダンス | Microsoft Docs"
-description: "推奨事項を使用して、Microsoft Azure SQL Database のクエリ パフォーマンスを向上する方法について説明します。"
+title: Azure SQL Database のパフォーマンス チューニング ガイダンス | Microsoft Docs
+description: 推奨事項を使用して、Microsoft Azure SQL Database のクエリ パフォーマンスを向上する方法について説明します。
 services: sql-database
-documentationcenter: na
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: dd8d95fa-24b2-4233-b3f1-8e8952a7a22b
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 02/12/2018
 ms.author: carlrab
-ms.openlocfilehash: 0a7bce49a73d60785f09f270894afc4037661e10
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 63a8b9f8c81ad3dc122bf25d8a06cdf242a0f35b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Azure SQL Database のパフォーマンスのチューニング
 

@@ -1,27 +1,27 @@
 ---
-title: "Azure リソースが見つからないエラー | Microsoft Docs"
-description: "リソースが見つからない場合に、エラーを解決する方法について説明します。"
+title: Azure リソースが見つからないエラー | Microsoft Docs
+description: リソースが見つからない場合に、エラーを解決する方法について説明します。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: c76c965c43ca8217faa9488c01975ce09a21daaf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6844c1c2938873b0a74fe66e846dc733a4bd6ff7
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Azure リソースが見つからないエラーを解決する
 
-この記事では、デプロイ時にリソースが見つからない場合に発生するエラーについて説明します。 
+この記事では、デプロイ時にリソースが見つからない場合に発生するエラーについて説明します。
 
 ## <a name="symptom"></a>症状
 
@@ -44,11 +44,9 @@ group {resource group name} was not found.
 
 Resource Manager はリソースのプロパティを取得する必要がありますが、サブスクリプション内のリソースを識別できません。
 
-## <a name="solution"></a>解決策
+## <a name="solution-1---set-dependencies"></a>解決策 1 - 依存関係を設定する
 
-### <a name="solution-1"></a>解決策 1
-
-不足しているリソースをテンプレートにデプロイする場合は、依存関係を追加する必要があるかどうかを確認してください。 Resource Manager は、可能であれば複数のリソースを並列して作成することで、デプロイを最適化しています。 リソースを順番にデプロイする必要がある場合は、テンプレートで **dependsOn** 要素を使用して、他のリソースへの依存関係を作成してください。 たとえば、Web アプリをデプロイする場合は、App Service プランが存在する必要があります。 Web アプリが App Service プランに依存していることを指定しなかった場合、Resource Manager では同時に両方のリソースが作成されます。 また、App Service プランのリソースが見つからないというエラーが発生します。これは、Web アプリにプロパティを設定しようとしたときに、そのリソースがまだ存在しないためです。 このエラーは、Web アプリに依存関係を設定することで回避します。
+不足しているリソースをテンプレートにデプロイする場合は、依存関係を追加する必要があるかどうかを確認してください。 Resource Manager は、可能であれば複数のリソースを並列して作成することで、デプロイを最適化しています。 リソースを順番にデプロイする必要がある場合は、テンプレートで **dependsOn** 要素を使用する必要があります。 たとえば、Web アプリをデプロイする場合は、App Service プランが存在する必要があります。 Web アプリが App Service プランに依存していることを指定しなかった場合、Resource Manager では同時に両方のリソースが作成されます。 また、App Service プランのリソースが見つからないというエラーが発生します。これは、Web アプリにプロパティを設定しようとしたときに、そのリソースがまだ存在しないためです。 このエラーは、Web アプリに依存関係を設定することで回避します。
 
 ```json
 {
@@ -61,9 +59,27 @@ Resource Manager はリソースのプロパティを取得する必要があり
 }
 ```
 
-依存関係に関するエラーのトラブルシューティングのヒントについて詳しくは、「[デプロイの順序の確認](resource-manager-troubleshoot-tips.md#check-deployment-sequence)」をご覧ください。
+また、不要な依存関係を設定するのは望ましくありません。 不要な依存関係があると、相互に依存していないリソースを並行してデプロイすることを妨げるため、デプロイ時間が長くなります。 さらに、循環依存関係が作成されてデプロイがブロックされる恐れがあります。 [reference](resource-group-template-functions-resource.md#reference) 関数は、リソースが同じテンプレートにデプロイされる場合、参照されたリソースに対する暗黙的な依存関係を作成します。 このため、**dependsOn** プロパティで指定したよりも多くの依存関係が作成されることがあります。 [resourceId](resource-group-template-functions-resource.md#resourceid) 関数は暗黙的な依存関係を作成しません。また、リソースの存在を検証することもしません。
 
-### <a name="solution-2"></a>解決策 2
+依存関係の問題が発生した場合は、リソースのデプロイ順序を把握する必要があります。 デプロイ操作の順序を確認するには、次の手順に従います。
+
+1. リソース グループのデプロイ履歴を選択します。
+
+   ![デプロイ履歴の選択](./media/resource-manager-not-found-errors/select-deployment.png)
+
+2. 履歴からデプロイを選択し、**[イベント]** を選択します。
+
+   ![デプロイ イベントの選択](./media/resource-manager-not-found-errors/select-deployment-events.png)
+
+3. 各リソースのイベントの順序を調べます。 各操作の状態に注意してください。 たとえば、次の図には、並列でデプロイされた 3 つのストレージ アカウントが示されています。 3 つとも同時に開始されていることがわかります。
+
+   ![並列デプロイ](./media/resource-manager-not-found-errors/deployment-events-parallel.png)
+
+   次の図には、並列でデプロイされていない 3 つのストレージ アカウントが示されています。 2 つ目のストレージ アカウントは最初のストレージ アカウントに依存し、3 つ目のストレージ アカウントは 2 つ目のストレージ アカウントに依存します。 最初のストレージ アカウントの開始、受け入れ、完了の後に次のストレージ アカウントが開始されます。
+
+   ![連続デプロイ](./media/resource-manager-not-found-errors/deployment-events-sequence.png)
+
+## <a name="solution-2---get-resource-from-different-resource-group"></a>解決策 2 - 別のリソース グループからリソースを取得する
 
 デプロイ先とは別のリソース グループにリソースが存在する場合は、[resourceId 関数](resource-group-template-functions-resource.md#resourceid)を使用して、リソースの完全修飾名を取得します。
 
@@ -74,7 +90,7 @@ Resource Manager はリソースのプロパティを取得する必要があり
 }
 ```
 
-### <a name="solution-3"></a>解決策 3
+## <a name="solution-3---check-reference-function"></a>解決策 3 - reference 関数を確認する
 
 [reference](resource-group-template-functions-resource.md#reference) 関数を含む式を検索してください。 指定する値は、リソースが同じテンプレート、リソース グループ、およびサブスクリプション内にあるかどうかに応じて異なります。 シナリオで必要なパラメーター値を指定していることを再確認してください。 リソースが別のリソース グループ内にある場合は、完全なリソース ID を指定します。 たとえば、別のリソース グループのストレージ アカウントを参照するには、次のコードを使用します。
 

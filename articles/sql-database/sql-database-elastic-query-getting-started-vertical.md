@@ -1,24 +1,19 @@
 ---
-title: "クロスデータベース クエリの概要 (列方向のパーティション分割) | Microsoft Docs"
-description: "垂直にパーティション分割されたデータベースでエラスティック データベース クエリを使用する方法"
+title: クロスデータベース クエリの概要 (列方向のパーティション分割) | Microsoft Docs
+description: 垂直にパーティション分割されたデータベースでエラスティック データベース クエリを使用する方法
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: torsteng
-ms.assetid: e5b44b10-c432-4f96-b20e-08615ff4d5dd
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
-ms.author: torsteng
-ms.openlocfilehash: ca715c0ef41ccb4aed2924898d7729bed659b0ca
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.author: sstein
+ms.openlocfilehash: 0731ddfea83d287c88118cf4b48e86427d8f520f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 Azure SQL Database 用の エラスティック データベース クエリ (プレビュー) を使用すると、1 つの接続ポイントで複数のデータベースにまたがる T-SQL クエリを実行することができます。 このトピックは [垂直にパーティション分割されたデータベース](sql-database-elastic-query-vertical-partitioning.md)に適用されます。  
@@ -104,7 +99,7 @@ CustomerInformation テーブルの定義に一致する外部テーブルを Or
 
 料金情報については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database)」を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * エラスティック クエリの概要については、「[Azure SQL Database エラスティック データベース クエリの概要 (プレビュー)](sql-database-elastic-query-overview.md)」をご覧ください。
 * 列方向にパーティション分割されたデータの構文とサンプル クエリについては、「[例: 列方向にパーティション分割されたデータベースのクエリ](sql-database-elastic-query-vertical-partitioning.md)」をご覧ください。

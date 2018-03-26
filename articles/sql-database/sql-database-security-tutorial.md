@@ -1,26 +1,19 @@
 ---
-title: "Azure SQL データベースのセキュリティ保護 | Microsoft Docs"
-description: "Azure SQL データベースをセキュリティで保護する手法と機能について説明します。"
+title: Azure SQL データベースのセキュリティ保護 | Microsoft Docs
+description: Azure SQL データベースをセキュリティで保護する手法と機能について説明します。
 services: sql-database
-documentationcenter: 
 author: DRediske
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,security
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 06/28/2017
 ms.author: daredis
-ms.openlocfilehash: 90c03f1538197e1cd1c90165417a4ec74c9c5961
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: 99b719c302bb02e96e4bfa0ea4588862e9f304e2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="secure-your-azure-sql-database"></a>Azure SQL データベースのセキュリティ保護
 
@@ -47,9 +40,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 - Microsoft Excel がインストールされていること。
 - Azure SQL のサーバーとデータベースが作成されていること - 「[Azure ポータルで Azure SQL データベースを作成する](sql-database-get-started-portal.md)」、「[Azure CLI を使用して単一の Azure SQL データベースを作成する](sql-database-get-started-cli.md)」、「[PowerShell を使用して単一の Azure SQL データベースを作成する](sql-database-get-started-powershell.md)」を参照してください。 
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
-[Azure ポータル](https://portal.azure.com/)にログインします。
+[Azure Portal](https://portal.azure.com/) にログインします。
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
 
@@ -184,7 +177,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
    > 監査レポートのテンプレートを最大限活用するには、すべての監査済みデータベースに同じストレージ アカウントを使用してください。
    > 
 
-5. **[ Save]** をクリックします。
+5. **[Save]** をクリックします。
 
 > [!IMPORTANT]
 > 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[SQL データベースの監査](sql-database-auditing.md)」をご覧ください。
@@ -238,7 +231,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 11. **[SQL 監査ログ]** シートに結果が表示されます。このシートでは、検出された異常なアクティビティを詳細に分析し、アプリケーションでのセキュリティ イベントの影響を軽減できます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、いくつかの簡単な手順に従うだけで、悪意のあるユーザーや未承認のアクセスからデータベースを今まで以上に強力に保護する方法を学習しました。  以下の方法について学習しました。 
 
 > [!div class="checklist"]

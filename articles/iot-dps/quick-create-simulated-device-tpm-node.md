@@ -1,22 +1,22 @@
 ---
-title: "シミュレートされた TPM デバイスを Node.js を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs"
-description: "Azure クイック スタート - Azure IoT Hub Device Provisioning Service 対応の Node.js デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする"
+title: シミュレートされた TPM デバイスを Node.js を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
+description: Azure クイック スタート - Azure IoT Hub Device Provisioning Service 対応の Node.js デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 services: iot-dps
-keywords: 
+keywords: ''
 author: msebolt
 ms.author: v-masebo
 ms.date: 03/01/2018
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 3cc667286e9c643f31d9c704a8a2dfac18312bb3
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 5ade9eca4b16e4864ec4e9d7bc6977c1e8322daa
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-nodejs-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の Node.js デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 03/05/2018
     > 以下のサンプルでは、`azure-iot-provisioning-device-http` および `azure-iot-device-mqtt` トランスポートを使用します。
     > 
 
-    コマンド プロンプトで、**registereddevice** フォルダーから次のコマンドを実行することで、これらすべてを一度にインストールできます。
+    コマンド プロンプトで、**registerdevice** フォルダーから次のコマンドを実行することで、これらすべてのパッケージを一度にインストールできます。
 
         ```cmd/sh
         npm install --save azure-iot-device azure-iot-device-mqtt azure-iot-security-tpm azure-iot-provisioning-device-http azure-iot-provisioning-device

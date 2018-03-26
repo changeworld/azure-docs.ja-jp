@@ -1,8 +1,8 @@
 ---
-title: "クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する | Microsoft Docs"
-description: "このクイックスタートでは、Azure Portal を使用して Azure Databricks ワークスペースと Apache Spark クラスターを作成し、Spark ジョブを実行する方法を示します。"
+title: 'クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する | Microsoft Docs'
+description: このクイックスタートでは、Azure Portal を使用して Azure Databricks ワークスペースと Apache Spark クラスターを作成し、Spark ジョブを実行する方法を示します。
 services: azure-databricks
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: cgronlun
 editor: cgronlun
@@ -11,14 +11,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/01/2018
+ms.date: 03/09/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 0112e5bf53f24150708b9c03440cd6183601f069
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6a0e69e1ab2c52586b447d8a249b52b09bbff705
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 
@@ -48,12 +48,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     * **[サブスクリプション]** では、ドロップダウン リストから Azure サブスクリプションを選びます。
     * **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを使用するかを指定します。 リソース グループは、Azure ソリューションの関連するリソースを保持するコンテナーです。 詳しくは、[Azure リソース グループの概要](../azure-resource-manager/resource-group-overview.md)に関するページをご覧ください。
     * **[場所]** では、**[米国東部 2]** を選びます。 使用可能な他のリージョンについては、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
+    * **[価格レベル]** では、**[Standard]** または **[Premium]** を選択します。 これらのレベルの詳細については、[Databricks の価格に関するページ](https://azure.microsoft.com/pricing/details/databricks/)を参照してください。
 
-4. **Create** をクリックしてください。
+    **Create** をクリックしてください。
+
+4. アカウントの作成には数分かかります。 アカウント作成時に、ポータルの右側に **[Azure Databricks のデプロイを送信しています]** タイルが表示されます。 このタイルを表示するために、ダッシュボードを右へスクロールしなければならない場合があります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
+
+    ![Databricks のデプロイのタイル](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks のデプロイのタイル")
 
 ## <a name="create-a-spark-cluster-in-databricks"></a>Databricks に Spark クラスターを作成する
 
-1. Azure Portal で、作成した Databricks ワークスペースに移動して、**[Initialize Workspace]\(ワークスペースの初期化\)** をクリックします。
+1. Azure Portal で、作成した Databricks ワークスペースに移動して、**[Launch Workspace]\(ワークスペースの起動\)** をクリックします。
 
 2. Azure Databricks ポータルにリダイレクトされます。 ポータルで **[クラスター]** をクリックします。
 
@@ -64,7 +69,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![Azure で Databricks Spark クラスターを作成する](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Azure で Databricks Spark クラスターを作成する")
 
     * クラスターの名前を入力します。
-    * この記事では、**4.0 (ベータ)** ランタイムを使用してクラスターを作成します。 
+    * この記事では、**4.0** ランタイムを使用してクラスターを作成します。 
     * **[Terminate after ____ minutes of inactivity]\(アクティビティが ____ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
     * 他の値はすべて既定値のままにします。 
     * **[Create cluster]\(クラスターの作成\)** をクリックします。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
@@ -96,7 +101,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     > [!IMPORTANT]
     >この記事では、**DBFS のストレージにマウントする方法**を使用します。 この方法では、マウントされたストレージがクラスター ファイル システム自体に確実に関連付けられます。 そのため、クラスターにアクセスするすべてのアプリケーションが、関連付けられているストレージも使用できます。 直接アクセスする方法は、アクセスの構成を行うアプリケーションに限定されます。
     >
-    > マウントする方法を使用するには、Databricks ランタイム バージョン **4.0 (ベータ)** で Spark クラスターを作成する必要があります。これは、この記事で選択したバージョンです。
+    > マウントする方法を使用するには、Databricks ランタイム バージョン **4.0** で Spark クラスターを作成する必要があります。これは、この記事で選択したバージョンです。
 
     次のスニペットで、`{YOUR CONTAINER NAME}`、`{YOUR STORAGE ACCOUNT NAME}`、および `{YOUR STORAGE ACCOUNT ACCESS KEY}` を Azure Storage アカウントの適切な値に置き換えてください。 スニペットをノートブックの空のセルに貼り付け、Shift + Enter キーを押してコードのセルを実行します。
 

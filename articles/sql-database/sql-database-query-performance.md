@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database の Query Performance Insight | Microsoft Docs"
-description: "クエリのパフォーマンスを監視して、Azure SQL Database の CPU 消費量の多いクエリを明らかにします。"
+title: Azure SQL Database の Query Performance Insight | Microsoft Docs
+description: クエリのパフォーマンスを監視して、Azure SQL Database の CPU 消費量の多いクエリを明らかにします。
 services: sql-database
-documentationcenter: 
 author: stevestein
-manager: jhubbard
-editor: monicar
-ms.assetid: c2f580b2-3835-453f-89f5-140e02dd2ea7
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 015f3255d0ff9691168899df1e983e70f35215b1
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 18d03ffcd586a809b37cbc1ca9a7843c25c7758d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Azure SQL Database Query Performance Insight
 リレーショナル データベースのパフォーマンスの管理とチューニングは、かなりの専門知識と時間の投入を必要とする困難な作業です。 Query Performance Insight を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
@@ -86,7 +80,7 @@ Query Performance Insight は簡単に使用できます。
    * クエリの数
    * 集計関数
      
-     ![[設定]](./media/sql-database-query-performance/custom-tab.png)
+     ![設定](./media/sql-database-query-performance/custom-tab.png)
 
 ## <a name="viewing-individual-query-details"></a>個々のクエリの詳細表示
 クエリの詳細を表示するには:
@@ -209,7 +203,7 @@ Query Performance Insight の使用中に、次のようなクエリ ストア �
 ## <a name="summary"></a>まとめ
 Query Performance Insight を使うと、クエリ ワークロードの影響や、データベース リソース消費量との関係を理解できます。 この機能では、消費量上位クエリがわかり、問題になる前に簡単に識別して修正できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [[Query Performance Insight]](sql-database-advisor.md) ブレードで **[推奨事項]** をクリックして、SQL Database のパフォーマンスの向上に関するその他の推奨事項を確認します。
 
 ![Performance Advisor](./media/sql-database-query-performance/ia.png)

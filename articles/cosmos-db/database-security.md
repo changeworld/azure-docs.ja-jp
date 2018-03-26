@@ -1,12 +1,12 @@
 ---
-title: "データベースのセキュリティ - Azure Cosmos DB | Microsoft Docs"
-description: "Azure Cosmos DB がデータベースの保護とデータのセキュリティを提供する方法について説明します。"
-keywords: "NoSQL データベースのセキュリティ, 情報のセキュリティ, データのセキュリティ, データベースの暗号化, データベースの保護, セキュリティ ポリシー, セキュリティ テスト"
+title: データベースのセキュリティ - Azure Cosmos DB | Microsoft Docs
+description: Azure Cosmos DB がデータベースの保護とデータのセキュリティを提供する方法について説明します。
+keywords: NoSQL データベースのセキュリティ, 情報のセキュリティ, データのセキュリティ, データベースの暗号化, データベースの保護, セキュリティ ポリシー, セキュリティ テスト
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: a02a6a82-3baf-405c-9355-7a00aaa1a816
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/15/2017
 ms.author: mimig
-ms.openlocfilehash: 2f0f6578b14b2fdd3807303eb94df077df92ba77
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.openlocfilehash: f6e05d410a8018f0a88a378e767f7a7e6fde6f0c
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-cosmos-db-database-security"></a>Azure Cosmos DB データベースのセキュリティ
 
@@ -89,7 +89,7 @@ ms.lasthandoff: 11/15/2017
 
 次のスクリーン ショットは、監査ログとアクティビティ ログを使用して自分のアカウントを監視する方法を示しています。![Azure Cosmos DB のアクティビティ ログ](./media/database-security/nosql-database-security-application-logging.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 マスター キーとリソース トークンの詳細については、「[Azure Cosmos DB のデータへのアクセスのセキュリティ保護](secure-access-to-data.md)」を参照してください。
 

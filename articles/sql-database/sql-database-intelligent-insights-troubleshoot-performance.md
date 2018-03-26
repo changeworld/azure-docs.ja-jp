@@ -1,25 +1,20 @@
 ---
-title: "Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング | Microsoft Docs"
-description: "Intelligent Insights は Azure SQL Database のパフォーマンスに関する問題のトラブルシューティングに役立ちます。"
+title: Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング | Microsoft Docs
+description: Intelligent Insights は Azure SQL Database のパフォーマンスに関する問題のトラブルシューティングに役立ちます。
 services: sql-database
-documentationcenter: 
 author: danimir
-manager: drasumic
-editor: carlrab
-ms.assetid: 
+manager: craigg
+ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: 0efb8b80bc98931f33991dc67f8f4aa1953bb491
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 0f23a76506a6692dd907a0b9fc7cfadfe7cd8f40
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング
 

@@ -1,25 +1,20 @@
 ---
-title: "C と C++ を使用して SQL Database に接続する | Microsoft Docs"
-description: "このクイック スタートのコード サンプルを使用して、C++ で最新のアプリケーションを構築し、Azure SQL Database を使用してクラウドの強力なリレーショナル データベースでバックアップします。"
+title: C と C++ を使用して SQL Database に接続する | Microsoft Docs
+description: このクイック スタートのコード サンプルを使用して、C++ で最新のアプリケーションを構築し、Azure SQL Database を使用してクラウドの強力なリレーショナル データベースでバックアップします。
 services: sql-database
-documentationcenter: 
 author: edmacauley
-manager: jhubbard
-editor: 
-ms.assetid: 07d9e0b1-3234-4f17-a252-a7559160a9db
+manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
 ms.devlang: cpp
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: edmacauley
-ms.openlocfilehash: 7c78f90c14c1915c760720948d6d7ae99ceb6f1d
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 659b413b2686a50a0681e7307b51188e6e6d0859
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-to-sql-database-using-c-and-c"></a>C と C++ を使用して SQL Database に接続する
 これは Azure SQL DB に接続を試みる C および C++ の開発者向けの投稿です。 セクションに分かれているため、興味のあるセクションから読み進めてください。 
@@ -27,7 +22,7 @@ ms.lasthandoff: 10/31/2017
 ## <a name="prerequisites-for-the-cc-tutorial"></a>C/C++ チュートリアルの前提条件
 以下のものがそろっていることを確認してください。
 
-* アクティブな Azure アカウント。 これがない場合は、 [Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 これがない場合は、 [Azure の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * [Visual Studio](https://www.visualstudio.com/downloads/)。 このサンプルをビルドして実行するには、C++ 言語コンポーネントをインストールする必要があります。
 * [Visual Studio Linux Development](https://visualstudiogallery.msdn.microsoft.com/725025cf-7067-45c2-8d01-1e0fd359ae6e)。 Linux で開発する場合は、Visual Studio Linux 拡張機能もインストールする必要があります。 
 
@@ -75,7 +70,7 @@ Visual Studio でビルドする[こちらのサンプルを使用すれば、Wi
 
 ![DSN ファイルを作成する](./media/sql-database-develop-cplusplus-simple/datasource.png)
 
-ご利用ありがとうございます。 これで、C++ と Windows の ODBC を使用して Azure SQL に正しく接続できました。 引き続き Linux プラットフォーム向けの同様の記事もご覧ください。 
+お疲れさまでした。 これで、C++ と Windows の ODBC を使用して Azure SQL に正しく接続できました。 引き続き Linux プラットフォーム向けの同様の記事もご覧ください。 
 
 ## <a id="Linux"></a>手順 5: Linux C/C++ アプリケーションから接続する
 まだご存じないかもしれませんが、Visual Studio では C++ Linux アプリケーションを開発できるようになりました。 これについての詳細は、ブログ記事「[Visual C++ for Linux Development (Visual C++ で Linux 向けの開発)](https://blogs.msdn.microsoft.com/vcblog/2016/03/30/visual-c-for-linux-development/) をご覧ください。 Linux 向けにビルドするには、Linux ディストリビューションを実行しているリモート コンピューターが必要です。 お持ちでない場合は、[Linux Azure 仮想マシン](../virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して簡単に設定できます。 
@@ -119,7 +114,7 @@ SSH 経由で接続が確立されたら、空のプロジェクト (Linux) テ�
 
 ![Linux コンソール ウィンドウの出力](./media/sql-database-develop-cplusplus-simple/linuxconsolewindow.png)
 
-ご利用ありがとうございます。 これでチュートリアルは終わりです。これで、Windows および Linux プラットフォームの C++ から Azure SQL DB に接続できるようになりました。
+お疲れさまでした。 これでチュートリアルは終わりです。これで、Windows および Linux プラットフォームの C++ から Azure SQL DB に接続できるようになりました。
 
 ## <a id="GetSolution"></a>詳細な C++ チュートリアル ソリューションを確認する
 github では、この記事のすべてのサンプルを含む GetStarted ソリューションをご利用いただけます。
@@ -127,7 +122,7 @@ github では、この記事のすべてのサンプルを含む GetStarted ソ�
 * [ODBC C++ Windows サンプル](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28windows%29): Azure SQL に接続するための、Windows C++ ODBC サンプルをダウンロードします
 * [ODBC C++ Linux サンプル](https://github.com/Microsoft/VCSamples/tree/master/VC2015Samples/ODBC%20database%20sample%20%28linux%29): Azure SQL に接続するための、Linux C++ ODBC サンプルをダウンロードします
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 「 [SQL Database の開発: 概要](sql-database-develop-overview.md)
 * [ODBC API リファレンス](https://docs.microsoft.com/sql/odbc/reference/syntax/odbc-api-reference/)
 

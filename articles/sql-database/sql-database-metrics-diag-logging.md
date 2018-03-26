@@ -1,25 +1,20 @@
 ---
-title: "Azure SQL Database のメトリックと診断のロギング | Microsoft Docs"
-description: "Azure SQL Database リソースを構成して、リソースの使用状況、接続性、およびクエリ実行の統計情報を保存する方法について説明します。"
+title: Azure SQL Database のメトリックと診断のロギング | Microsoft Docs
+description: Azure SQL Database リソースを構成して、リソースの使用状況、接続性、およびクエリ実行の統計情報を保存する方法について説明します。
 services: sql-database
-documentationcenter: 
+documentationcenter: ''
 author: veljko-msft
-manager: jhubbard
-editor: 
-ms.assetid: 89c2a155-c2fb-4b67-bc19-9b4e03c6d3bc
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 09/16/2017
+ms.date: 03/16/2018
 ms.author: vvasic
-ms.openlocfilehash: 2d0a2d5966c8c99e7d71d97d4819d58a1474c2fe
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 11ffb1a6260fca52ccb173cb842c1a2d5adbf139
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
 Azure SQL Database では、監視を容易にするためのメトリックと診断ログを出力することができます。 リソース使用率、ワーカーとセッション、および接続性を次の Azure リソースのいずれかに格納するように SQL Database を構成することができます。
@@ -52,8 +47,8 @@ Azure SQL Database では、監視を容易にするためのメトリックと�
 - [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): CPU 使用率、クエリ実行時間など、クエリのランタイム統計に関する情報が含まれます。
 - [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): CPU、ログ、ロック状態など、クエリが何を待機したかを示すクエリ待機統計に関する情報が含まれます。
 - [Errors](sql-database-metrics-diag-logging.md#errors-dataset): このデータベースで発生した SQL エラーに関する情報が含まれます。
-- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-waits-dataset): データベースが各種の待機に費やした時間に関する情報が含まれます。
-- [Time-outs](sql-database-metrics-diag-logging.md#timeouts-dataset): データベースで発生したタイムアウトに関する情報が含まれます。
+- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): データベースが各種の待機に費やした時間に関する情報が含まれます。
+- [Time-outs](sql-database-metrics-diag-logging.md#time-outs-dataset): データベースで発生したタイムアウトに関する情報が含まれます。
 - [Blockings](sql-database-metrics-diag-logging.md#blockings-dataset): データベースで発生したブロック イベントに関する情報が含まれます。
 - [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): Intelligent Insights が含まれます。 [Intelligent Insights](sql-database-intelligent-insights.md) の詳細。
 
@@ -257,7 +252,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="download-metrics-and-logs-from-storage"></a>Azure Storage からメトリックとログをダウンロードする
 
-[メトリックと診断ログをストレージからダウンロードする](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)を参照してください。
+[メトリックと診断ログをストレージからダウンロードする](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application)を参照してください。
 
 ## <a name="metrics-and-logs-available"></a>利用可能なメトリックとログ
 
@@ -478,4 +473,4 @@ Event Hubs の詳細については、次の資料を参照してください。
 * [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
 * [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 
-ストレージの詳細については[メトリックと診断ログをストレージからダウンロードする](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)を参照してください。
+ストレージの詳細については[メトリックと診断ログをストレージからダウンロードする](../storage/blobs/storage-quickstart-blobs-dotnet.md#download-the-sample-application)を参照してください。

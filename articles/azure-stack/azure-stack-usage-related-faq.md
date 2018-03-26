@@ -1,24 +1,9 @@
----
-title: "Usage API のよくあるご質問 (FAQ) | Microsoft Docs"
-description: "Azure Stack の測定、Azure Usage API との比較、使用時間と報告時間、エラー コードの一覧。"
-services: azure-stack
-documentationcenter: 
-author: brenduns
-manager: femila
-editor: 
-ms.assetid: 847f18b2-49a9-4931-9c09-9374e932a071
-ms.service: azure-stack
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 01/30/2018
-ms.author: alfredop
-ms.openlocfilehash: 855d74698f2109fa426d34044cbc89b83c224e6f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-ms.translationtype: HT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ ---
+タイトル: Usage API のよくあるご質問 | Microsoft Docs 説明: Azure Stack の測定、Azure Usage API との比較、使用時間と報告時間、エラー コードの一覧。
+services: azure-stack documentationcenter: '' author: mattbriggs manager: femila editor: ''
+
+ms.assetid: 847f18b2-49a9-4931-9c09-9374e932a071 ms.service: azure-stack ms.workload: na ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 03/09/2018 ms.author: mabrigg ms.reviewer: alfredop
+
 ---
 # <a name="frequently-asked-questions-in-azure-stack-usage-api"></a>Azure Stack Usage API のよくあるご質問
 この記事では、Azure Stack Usage API についてよくあるご質問 (FAQ) とその回答を紹介します。
@@ -30,34 +15,39 @@ ms.lasthandoff: 02/01/2018
 | --- | --- | --- | --- | --- |
 | **ネットワーク** |F271A8A388C44D93956A063E1D2FA80B |静的 IP アドレスの使用状況 |IP アドレス| 使用中の IP アドレス数。 使用状況 API を日単位の細分性で呼び出した場合、メーターは IP アドレスに時間数を乗算して返します。 |
 | |9E2739BA86744796B465F64674B822BA |動的 IP アドレスの使用状況 |IP アドレス| 使用中の IP アドレス数。 使用状況 API を日単位の細分性で呼び出した場合、メーターは IP アドレスに時間数を乗算して返します。 |
-| **Storage** |B4438D5D-453B-4EE1-B42A-DC72E377F1E4 |TableCapacity |GB\*時 |テーブルによって使用された合計容量 |
-| |B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*時 |ページ BLOB によって使用された合計容量 |
-| |B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*時 |キューによって使用された合計容量 |
-| |09F8879E-87E9-4305-A572-4B7BE209F857 |BlockBlobCapacity |GB\*時 |ブロック BLOB によって使用された合計容量 |
-| |B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90 |TableTransactions |10,000 秒間の要求数 |Table service 要求 (10,000 秒間) |
-| |50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D |TableDataTransIn |GB 単位の受信データ |GB 単位の Table service データ受信 |
+| **Storage** |B4438D5D-453B-4EE1-B42A-DC72E377F1E4 |TableCapacity |GB\*時 |テーブルによって使用された合計容量。 |
+| |B5C15376-6C94-4FDD-B655-1A69D138ACA3 |PageBlobCapacity |GB\*時 |ページ BLOB によって使用された合計容量。 |
+| |B03C6AE7-B080-4BFA-84A3-22C800F315C6 |QueueCapacity |GB\*時 |キューによって使用された合計容量。 |
+| |09F8879E-87E9-4305-A572-4B7BE209F857 |BlockBlobCapacity |GB\*時 |ブロック BLOB によって使用された合計容量。 |
+| |B9FF3CD0-28AA-4762-84BB-FF8FBAEA6A90 |TableTransactions |10,000 秒間の要求数 |Table service 要求 (10,000 秒間)。 |
+| |50A1AEAF-8ECA-48A0-8973-A5B3077FEE0D |TableDataTransIn |GB 単位の受信データ |GB 単位の Table service データ受信。 |
 | |1B8C1DEC-EE42-414B-AA36-6229CF199370 |TableDataTransOut |GB 単位のエグレス |GB 単位の Table service データ送信 |
-| |43DAF82B-4618-444A-B994-40C23F7CD438 |BlobTransactions |10,000 秒間の要求数 |Blob service 要求 (10,000 秒間) |
-| |9764F92C-E44A-498E-8DC1-AAD66587A810 |BlobDataTransIn |GB 単位の受信データ |GB 単位の Blob service データ受信 |
-| |3023FEF4-ECA5-4D7B-87B3-CFBC061931E8 |BlobDataTransOut |GB 単位のエグレス |GB 単位の Blob service データ送信 |
-| |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |10,000 秒間の要求数 |Queue サービス要求 (10,000 秒間) |
-| |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |GB 単位の受信データ |GB 単位の Queue サービス データ受信 |
+| |43DAF82B-4618-444A-B994-40C23F7CD438 |BlobTransactions |10,000 秒間の要求数 |Blob service 要求 (10,000 秒間)。 |
+| |9764F92C-E44A-498E-8DC1-AAD66587A810 |BlobDataTransIn |GB 単位の受信データ |GB 単位の Blob service データ受信。 |
+| |3023FEF4-ECA5-4D7B-87B3-CFBC061931E8 |BlobDataTransOut |GB 単位のエグレス |GB 単位の Blob service データ送信。 |
+| |EB43DD12-1AA6-4C4B-872C-FAF15A6785EA |QueueTransactions |10,000 秒間の要求数 |Queue サービス要求 (10,000 秒間)。 |
+| |E518E809-E369-4A45-9274-2017B29FFF25 |QueueDataTransIn |GB 単位の受信データ |GB 単位の Queue サービス データ受信。 |
 | |DD0A10BA-A5D6-4CB6-88C0-7D585CEF9FC2 |QueueDataTransOut |GB 単位のエグレス |GB 単位の Queue サービス データ送信 |
 | **Sql RP**            | CBCFEF9A-B91F-4597-A4D3-01FE334BED82 | DatabaseSizeHourSqlMeter   | MB\*時   | 作成時のデータベースの合計容量。 使用状況 API を日単位の細分性で呼び出した場合、メーターは MB に時間数を乗算して返します。 |
 | **MySql RP**          | E6D8CFCD-7734-495E-B1CC-5AB0B9C24BD3 | DatabaseSizeHourMySqlMeter | MB\*時    | 作成時のデータベースの合計容量。 使用状況 API を日単位の細分性で呼び出した場合、メーターは MB に時間数を乗算して返します。 |
-| **Compute** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |ベース VM サイズ時間 |仮想コア時間 | VM が実行された時間を乗算した仮想コア数 |
-| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM サイズ時間 |仮想コア時間 | VM が実行された時間を乗算した仮想コア数 |
-| |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |VM サイズ時間 |VM 時間 |ベース VM と Windows VM の両方をキャプチャ。 コアの調整なし |
-| **Key Vault** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |Key Vault トランザクション | 10,000 秒間の要求数| Key Vault データ プレーンによって受信された REST API 要求数 |
-| **App Service** |190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA  | App Service   | 仮想コア時間  | App Service を実行するのに使用した仮想コア数 |
-|             | 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE | 関数 - コンピューティング要求数      | 10 個の要求              | 関数に適用  |
-|             | 957E9F36-2C14-45A1-B6A1-1723EF71A01D | Shared App Service 時間          | 1 時間                   |                       |
-|             | 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9 | Free App Service 時間            | 1 時間                   |                       |
-|             | 88039D51-A206-3A89-E9DE-C5117E2D10A6 | 小規模 Standard App Service 時間  | 1 時間                   |                       |
-|             | 83A2A13E-4788-78DD-5D55-2831B68ED825 | 中規模 Standard App Service 時間 | 1 時間                   |                       |
-|             | 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6 | 大規模 Standard App Service 時間  | 1 時間                   |                       |
-|             | 264ACB47-AD38-47F8-ADD3-47F01DC4F473 | SNI SSL                           | Per SNI SSL バインディングあたり      | AppService に適用 |
-|             | 60B42D72-DC1C-472C-9895-6C516277EDB4 | IP SSL                            | IP ベースの SSL バインディングあたり | AppService に適用 |
+| **Compute** |FAB6EB84-500B-4A09-A8CA-7358F8BBAEA5 |ベース VM サイズ時間 |仮想コア時間 | VM が実行された時間を乗算した仮想コア数。 |
+| |9CD92D4C-BAFD-4492-B278-BEDC2DE8232A |Windows VM サイズ時間 |仮想コア時間 | VM が実行された時間を乗算した仮想コア数。 |
+| |6DAB500F-A4FD-49C4-956D-229BB9C8C793 |VM サイズ時間 |VM 時間 |ベース VM と Windows VM の両方をキャプチャ。 コアの調整なし。 |
+| **Key Vault** |EBF13B9F-B3EA-46FE-BF54-396E93D48AB4 |Key Vault トランザクション | 10,000 秒間の要求数| Key Vault データ プレーンによって受信された REST API 要求数。 |
+| |2C354225-B2FE-42E5-AD89-14F0EA302C87 |高度なキー トランザクション | 10K のトランザクション|     RSA 3K/4K、ECC キー トランザクション。 (プレビュー)。 |
+| **App Service** | 190C935E-9ADA-48FF-9AB8-56EA1CF9ADAA | App Service | 仮想コア時間 | App Service を実行するのに使用した仮想コア数。 注意: マイクロソフトはこの測定を使用して、Azure Stack の App Service の料金を請求します。 クラウド サービス プロバイダーは、他の App Service の測定 (下記) を使用して、テナントの使用状況を計算できます。 |
+|  | 67CC4AFC-0691-48E1-A4B8-D744D1FEDBDE | 関数の要求 | 10 個の要求 | 要求された実行の合計数 (実行 10 回あたり)。 実行回数は、イベントに応じて、またはバインドによってトリガーされて、関数が実行されるたびにカウントされます。 |
+|  | D1D04836-075C-4F27-BF65-0A1130EC60ED | 関数 - コンピューティング | GB/秒 | ギガバイト/秒 (GB/秒) 単位で測定されたリソース使用量。 **実際のリソース使用量**は、平均メモリ サイズ (GB) に関数の実行にかかった時間 (ミリ秒) を乗じて計算されます。 関数によって使用されたメモリは、128 MB 単位で切り上げて測定されます。最大メモリ サイズは 1,536 MB です。実行時間は 1 ミリ秒単位で切り上げて計算されます。 1 つの関数の実行の最小実行時間は 100 ミリ秒、最小メモリは 128 MB です。 |
+|  | 957E9F36-2C14-45A1-B6A1-1723EF71A01D | Shared App Service 時間 | 1 時間 | Shared App Service プランの 1 時間あたりの使用量。 プランはアプリ単位で課金されます。 |
+|  | 539CDEC7-B4F5-49F6-AAC4-1F15CFF0EDA9 | Free App Service 時間 | 1 時間 | Free App Service プランの 1 時間あたりの使用量。 プランはアプリ単位で課金されます。 |
+|  | 88039D51-A206-3A89-E9DE-C5117E2D10A6 | 小規模 Standard App Service 時間 | 1 時間 | インスタンスのサイズと数に基づいて計算されます。 |
+|  | 83A2A13E-4788-78DD-5D55-2831B68ED825 | 中規模 Standard App Service 時間 | 1 時間 | インスタンスのサイズと数に基づいて計算されます。 |
+|  | 1083B9DB-E9BB-24BE-A5E9-D6FDD0DDEFE6 | 大規模 Standard App Service 時間 | 1 時間 | インスタンスのサイズと数に基づいて計算されます。 |
+|  | *カスタム worker 層* | カスタム worker 層 | 時間 | 決定論決的測定 ID は、SKU とカスタム worker 層の名前に基づいて作成されます。 この測定 ID は各カスタム worker 層で位置値です。 |
+|  | 264ACB47-AD38-47F8-ADD3-47F01DC4F473 | SNI SSL | Per SNI SSL バインディングあたり | App Service がサポートする SSL 接続には、Server Name Indication (SNI) SSL 接続と、IP アドレス SSL 接続の 2 種類があります。 SNI ベースの SSL は、最新のブラウザーで使用できますが、IP ベースの SSL はすべてのブラウザーで使用できます。 |
+|  | 60B42D72-DC1C-472C-9895-6C516277EDB4 | IP SSL | IP ベースの SSL バインディングあたり | App Service がサポートする SSL 接続には、Server Name Indication (SNI) SSL 接続と、IP アドレス SSL 接続の 2 種類があります。 SNI ベースの SSL は、最新のブラウザーで使用できますが、IP ベースの SSL はすべてのブラウザーで使用できます。 |
+|  | 73215A6C-FA54-4284-B9C1-7E8EC871CC5B | Web プロセス |  | 1 時間あたりとしてアクティブ サイトごとに計算されます。 |
+|  | 5887D39B-0253-4E12-83C7-03E1A93DFFD9 | 外部送信帯域幅 | GB | 受信要求応答の合計バイト数 + 送信要求応答の合計バイト数 + 受信 FTP 要求応答の合計バイト数 + 受信 Web デプロイ要求応答の合計バイト数。 |
 
 ## <a name="how-do-the-azure-stack-usage-apis-compare-to-the-azure-usage-apihttpsmsdnmicrosoftcomlibraryazure1ea5b323-54bb-423d-916f-190de96c6a3c-currently-in-public-preview"></a>Azure Stack Usage API は [Azure Usage API](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) (現在パブリック プレビュー中) と比較してどうですか。
 * Tenant Usage API は、Azure API と一貫性がありますが、唯一の例外として、現在 Azure Stack では *showDetails* フラグがサポートされていません。

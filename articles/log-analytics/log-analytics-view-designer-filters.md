@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/31/2017
 ms.author: bwren
 ms.openlocfilehash: 5c2201292eb085dcc043e4257580c7971dbaffbd
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="filters-in-log-analytics-views"></a>Log Analytics ビューのフィルター
 [Log Analytics ビュー](log-analytics-view-designer.md)の**フィルター**では、ビュー自体を変更せずに、特定のプロパティの値によってビュー内のデータをフィルター処理することができます。  たとえば、ビューのユーザーが、特定のコンピューターまたは複数のコンピューターからのデータだけをフィルター表示したビューを利用できます。  1 つのビューに複数のフィルターを作成して、ユーザーが複数のプロパティでフィルター処理することが可能です。  この記事では、フィルターの使用方法およびカスタム ビューへの追加方法について説明します。
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/01/2017
 
 フィルターの設定を次の表に示します。
 
-| 設定 | Description |
+| Setting | [説明] |
 |:---|:---|
 | フィールド名 | フィルター処理に使用されるフィールドの名前です。  これは**値のクエリ**の集計フィールドと一致している必要があります。 |
 | 値のクエリ | ユーザー用のフィルターのドロップダウン リストを設定するために実行するクエリ。  特定のフィールドに対して一意の値を指定するには、ここで [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) または [distinct](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/distinct-operator) のいずれかを使用する必要があります。また、**フィールド名**に一致する必要があります。  [sort](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator) を使用すると、ユーザーに表示される値を並び替えることができます。 |
@@ -52,9 +52,9 @@ ms.lasthandoff: 11/01/2017
 
 | フィールド名 | 値のクエリ | タグ |
 |:--|:--|:--|
-| コンピューター   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | [Computers (コンピューター)] |
-| EventLevelName | Event &#124; distinct EventLevelName | Severity |
-| SeverityLevel | Syslog &#124; distinct SeverityLevel | Severity |
+| Computer   | Heartbeat &#124; distinct Computer &#124; sort by Computer asc | [Computers (コンピューター)] |
+| EventLevelName | Event &#124; distinct EventLevelName | 重大度 |
+| SeverityLevel | Syslog &#124; distinct SeverityLevel | 重大度 |
 | SvcChangeType | ConfigurationChange &#124; distinct svcChangeType | ChangeType |
 
 
@@ -74,5 +74,5 @@ Severity という別のフィルターを追加した場合は、両方のフ�
 
     Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * カスタム ビューに追加できる[視覚エフェクト パーツ](log-analytics-view-designer-parts.md)の詳細についてはこちらをご覧ください。

@@ -1,23 +1,23 @@
 ---
-title: "Azure Virtual Machines (VM) 上の SAP HANA の高可用性 | Microsoft Docs"
-description: "Azure Virtual Machines (VM) 上の SAP HANA の高可用性を実現する。"
+title: Azure Virtual Machines (VM) 上での SAP HANA システム レプリケーションのセットアップ | Microsoft Docs
+description: Azure Virtual Machines (VM) 上の SAP HANA の高可用性を実現する。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: MSSedusch
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 04/25/2017
+ms.date: 12/12/2017
 ms.author: sedusch
-ms.openlocfilehash: 5f6ef18e93b8f77162b3524f31cb632e1db38f80
-ms.sourcegitcommit: 094061b19b0a707eace42ae47f39d7a666364d58
+ms.openlocfilehash: 2bf9ed176f37c315aa4496894315f2318370ce7f
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) 上の SAP HANA の高可用性 | Microsoft Docs
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 12/08/2017
 [template-converged]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-converged%2Fazuredeploy.json
 
 オンプレミスでは、HANA システム レプリケーションまたは共有記憶域を使用して、SAP HANA の高可用性を実現できます。
-現在は、Azure での HANA システム レプリケーションのセットアップのみがサポートされています。 SAP HANA レプリケーション は、1 つのマスター ノードと、少なくとも 1 つのスレーブ ノードで構成されています。 マスター ノードのデータに対する変更は、スレーブ ノードに同期的または非同期的にレプリケートされます。
+Azure 上では、Azure VM HANA システム レプリケーションが現在サポートされている唯一の高可用性機能です。 SAP HANA レプリケーション は、1 つのプライマリ ノードと、少なくとも 1 つのセカンダリ ノードで構成されています。 プライマリ ノードのデータに対する変更は、セカンダリ ノードに同期的または非同期的にレプリケートされます。
 
 この記事では、仮想マシンのデプロイおよび構成方法、クラスター フレームワークのインストール方法、SAP HANA システム レプリケーションのインストールおよび構成方法について説明します。
 サンプルの構成では、インストールのコマンドで、インスタンス番号として 03、HANA システム ID としてHDB が使用されています。
@@ -83,16 +83,16 @@ Azure Marketplace には、BYOS (サブスクリプション持ち込み) 付き
 1. 可用性セットを作成します  
    更新ドメインの最大数を設定します
 1. ロード バランサー (内部) を作成します  
-   上記手順の VNET を選択します
-1. 仮想マシン 1 を作成します  
-   SLES4SAP 12 SP1 以上を使用します。この例では、SLES4SAP 12 SP1 BYOS イメージ (https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1) を使用します  
-   SLES For SAP Applications 12 SP1 (BYOS)  
-   ストレージ アカウント 1 を選択します  
+   2 番目の手順で作成された VNet を選択します
+1. 仮想マシン 1 を作成します   
+   SLES4SAP 12 SP1 以上を使用します。この例では、SLES4SAP 12 SP1 BYOS イメージ (https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1)  
+   SLES For SAP Applications 12 SP1 (BYOS) が使用されています  
+   ストレージ アカウント 1 を選択します   
    可用性セットを選択します  
-1. 仮想マシン 2 を作成します  
-   SLES4SAP 12 SP1 以上を使用します。この例では、SLES4SAP 12 SP1 BYOS イメージ (https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1) を使用します  
-   SLES For SAP Applications 12 SP1 (BYOS)  
-   ストレージ アカウント 2 を選択します   
+1. 仮想マシン 2 を作成します   
+   SLES4SAP 12 SP1 以上を使用します。この例では、SLES4SAP 12 SP1 BYOS イメージ (https://portal.azure.com/#create/suse-byos.sles-for-sap-byos12-sp1)  
+   SLES For SAP Applications 12 SP1 (BYOS) が使用されています  
+   ストレージ アカウント 2 を選択します    
    可用性セットを選択します  
 1. データ ディスクを追加します
 1. ロード バランサーを構成します
@@ -126,18 +126,19 @@ Azure Marketplace には、BYOS (サブスクリプション持ち込み) 付き
 ### <a name="deploy-with-template"></a>テンプレートを使用したデプロイ
 GitHub にあるいずれかのクイック スタート テンプレートを使用して、必要なすべてのリソースをデプロイできます。 テンプレートでは、仮想マシン、ロード バランサー、可用性セットなどをデプロイできます。テンプレートをデプロイするには、次の手順に従います。
 
-1. Azure Portal で、[データベース テンプレート][template-multisid-db]または[集約型テンプレート][template-converged]を開きます。データベース テンプレートでは、データベースの負荷分散規則しか作成できませんが、集約型テンプレートでは、ASCS/SCS および ERS (Linux のみ) のインスタンスの負荷分散規則も作成できます。 SAP NetWeaver ベースのシステムをインストールして、同じコンピューターに ASCS/SCS インスタンスもインストールする場合は、[集約型テンプレート][template-converged]を使用します。
+1. Azure Portal で、[データベース テンプレート][template-multisid-db]または[集約型テンプレート][template-converged]を開きます。 
+   データベース テンプレートでは、データベースの負荷分散規則しか作成できませんが、集約型テンプレートでは、ASCS/SCS および ERS (Linux のみ) のインスタンスの負荷分散規則も作成できます。 SAP NetWeaver ベースのシステムをインストールして、同じコンピューターに ASCS/SCS インスタンスもインストールする場合は、[集約型テンプレート][template-converged]を使用します。
 1. 次のパラメーターを入力します
     1. SAP システム ID  
-       インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
-    1. スタックの種類 (集約型テンプレートを使用する場合のみ適用可能)  
+       インストールする SAP システムの SAP システム ID を入力します。 この ID は、デプロイされるリソースのプレフィックスとして使用されます。
+    1. スタックの種類 (集約型テンプレートを使用する場合のみ適用可能)   
        SAP NetWeaver のスタックの種類を選択します
     1. OS の種類  
        いずれかの Linux ディストリビューションを選択します。 この例では、SLES 12 BYOS を選択します
     1. データベースの種類  
        HANA を選択します
     1. Sap System Size (SAP システムのサイズ)  
-       新しいシステムで提供する SAPS の量。 システムで必要な SAPS の量が不明な場合、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
+       新しいシステムで提供する SAPS の量。 システムに必要な SAPS の数がわからない場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
     1. システムの可用性  
        [HA] を選択します
     1. [管理ユーザー名] と[管理パスワード]  
@@ -145,7 +146,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     1. New Or Existing Subnet (新規または既存のサブネット)  
        新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを決定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、既存のものを選択します。
     1. サブネット ID  
-    仮想マシンを接続するサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続する VPN または Expressroute 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/`<subscription ID`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`> のようになります。
+    仮想マシンを接続するサブネットの ID。 仮想マシンをオンプレミス ネットワークに接続するには、VPN または Express Route 仮想ネットワークのサブネットを選択します。 通常、ID は /subscriptions/`<subscription ID`>/resourceGroups/`<resource group name`>/providers/Microsoft.Network/virtualNetworks/`<virtual network name`>/subnets/`<subnet name`> のようになります。
 
 ## <a name="setting-up-linux-ha"></a>Linux HA のセットアップ
 
@@ -310,7 +311,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     
     ```
 
-1. [A] 他のトランスポートを使用したり、ノードリストを追加したりできるように、corosync を構成します。 この作業をしないとクラスターが機能しません。
+1. [A] 他のトランスポートを使用したり、ノードリストを追加したりできるように、corosync を構成します。 それ以外の場合、クラスターは動作しません。 
     ```bash
     sudo vi /etc/corosync/corosync.conf    
     
@@ -352,7 +353,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
 
 ## <a name="installing-sap-hana"></a>SAP HANA のインストール
 
-[SAP HANA SR Performance Optimized Scenario (SAP HANA SR パフォーマンス最適化シナリオ) ガイド][suse-hana-ha-guide]の 4 章に従って、SAP HANA システム レプリケーションをインストールします。
+SAP HANA システム レプリケーションをインストールするには、[SAP HANA SR Performance Optimized Scenario (SAP HANA SR パフォーマンス最適化シナリオ) ガイド][suse-hana-ha-guide]の 4 章に従います。
 
 1. [A] HANA DVD から hdblcm を実行します
     * Choose installation (インストールの選択) -> 1
@@ -362,7 +363,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     * Do you want to add additional hosts to the system? (システムに別のホストを追加しますか?)  (y/n) [n]: -> ENTER
     * Enter SAP HANA System ID (SAP HANA のシステム ID を入力): <SID of HANA e.g. HDB>
     * Enter Instance Number [00] \(インスタンス番号 (00) の入力):   
-  HANA のインスタンス番号です。 Azure テンプレートを使用した場合、または上記サンプルに従った場合は、「03」を使用します
+  HANA のインスタンス番号です。 Azure テンプレートを使用した場合、または手動デプロイを行った場合は、「03」を使用します
     * Select Database Mode / Enter Index [1] \(データベース モードの選択/インデックス (1) の入力): -> ENTER
     * Select System Usage / Enter Index [4] \(システム使用率の選択/インデックス (4) の入力):  
   システムの使用率を選択します
@@ -381,7 +382,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     * Enter Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを入力):
     * Confirm Database User (SYSTEM) Password (データベース ユーザー (SYSTEM) のパスワードを確認):
     * Restart system after machine reboot? (コンピューターの再起動後にシステムを再起動しますか?)  [n]: -> ENTER
-    * Do you want to continue? (続行してもよろしいですか?)  (y/n):  
+    * Do you want to continue? (続行してもよろしいですか?)  (y/n):   
   内容を確認し、「y」を入力して続行します
 1. [A] SAP Host Agent をアップグレードします  
   [SAP ソフトウェアセンター][sap-swcenter]から最新の SAP Host Agent アーカイブをダウンロードし、次のコマンドを実行してエージェントをアップグレードします。 アーカイブのパスを置き換えて、ダウンロードしたファイルを示すようにします。
@@ -446,11 +447,11 @@ sudo crm configure load update crm-defaults.txt
 
 ### <a name="create-stonith-device"></a>STONITH デバイスの作成
 
-STONITH デバイスは、サービス プリンシパルを使用して Microsoft Azure を承認します。 サービス プリンシパルを作成するには、次に手順に従ってください。
+STONITH デバイスは、サービス プリンシパルを使用して Microsoft Azure を承認します。 サービス プリンシパルを作成するには、次に手順に従います。
 
 1. <https://portal.azure.com> に移動します
 1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリ ID をメモします。 これは、**テナント ID** です。
+   [プロパティ] に移動し、ディレクトリ ID をメモします。 この ID は、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
 1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost) を入力します。その後、[作成] をクリックします
@@ -460,7 +461,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
 1. アプリケーション ID をメモします。 これは、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
-既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。
+既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与してください。
 
 1. https://portal.azure.com に移動します
 1. [All resources] \(すべてのリソース) ブレードを開きます
@@ -468,7 +469,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. [アクセス制御 (IAM)] を選択します
 1. [追加] をクリックします。
 1. [所有者] のロールを選択します
-1. 上記で作成したアプリケーションの名前を入力します
+1. 上記の手順で作成したアプリケーションの名前を入力します
 1. [OK] をクリックします
 
 仮想マシンのアクセス許可を編集したあとで、クラスターの STONITH デバイスを構成できます。
@@ -553,7 +554,7 @@ sudo crm configure load update crm-saphana.txt
 </pre>
 
 ### <a name="test-cluster-setup"></a>クラスターのセットアップのテスト
-次の章では、セットアップをテストする方法について説明します。 テストはすべて root で行い、仮想マシン saphanavm1 で SAP HANA マスターが実行されていることを前提とします。
+この章では、セットアップをテストする方法について説明します。 テストはすべて root で行い、仮想マシン saphanavm1 で SAP HANA マスターが実行されていることを前提とします。
 
 #### <a name="fencing-test"></a>フェンスのテスト
 
@@ -566,7 +567,7 @@ sudo ifdown eth0
 クラスターの構成によって、仮想マシンが再起動するか停止します。
 stonith-action を off に設定すると、仮想マシンが停止し、実行中の仮想マシンにリソースが移行します。
 
-AUTOMATED_REGISTER を false に設定した場合、仮想マシンを再起動すると、SAP HANA リソースがセカンダリとしての起動に失敗します。 この場合、次のコマンドを実行して HANA のインスタンスをセカンダリとして構成する必要があります。
+AUTOMATED_REGISTER を false に設定した場合、仮想マシンを再起動すると、SAP HANA リソースがセカンダリとしての起動に失敗します。 その場合は、次のコマンドを実行して HANA のインスタンスをセカンダリとして構成してください。
 
 <pre><code>
 su - <b>hdb</b>adm
@@ -587,7 +588,7 @@ crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 service pacemaker stop
 </code></pre>
 
-フェールオーバー後、サービスを再度開始できます。 AUTOMATED_REGISTER を false に設定した場合、saphanavm1 の SAP HANA リソースがセカンダリとしての起動に失敗します。 この場合、次のコマンドを実行して HANA のインスタンスをセカンダリとして構成する必要があります。
+フェールオーバー後、サービスを再度開始できます。 AUTOMATED_REGISTER を false に設定した場合、saphanavm1 の SAP HANA リソースがセカンダリとしての起動に失敗します。 その場合は、次のコマンドを実行して HANA のインスタンスをセカンダリとして構成してください。
 
 <pre><code>
 service pacemaker start
@@ -598,7 +599,7 @@ sapcontrol -nr <b>03</b> -function StopWait 600 10
 hdbnsutil -sr_register --remoteHost=<b>saphanavm2</b> --remoteInstance=<b>03</b> --replicationMode=sync --name=<b>SITE1</b> 
 
 
-# switch back to root and cleanup the failed state
+# Switch back to root and cleanup the failed state
 exit
 crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 </code></pre>
@@ -611,8 +612,8 @@ crm resource migrate msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm2</b>
 crm resource migrate g_ip_<b>HDB</b>_HDB<b>03</b> <b>saphanavm2</b>
 </code></pre>
 
-この場合、SAP HANA マスター ノードおよび仮想 IP アドレスを含むグループが saphanavm2 に移行します。
-AUTOMATED_REGISTER を false に設定した場合、saphanavm1 の SAP HANA リソースがセカンダリとしての起動に失敗します。 この場合、次のコマンドを実行して HANA のインスタンスをセカンダリとして構成する必要があります。
+AUTOMATED_REGISTER を false に設定した場合、この一連のコマンドを実行すると、SAP HANA マスター ノードおよび仮想 IP アドレスを含むグループが saphanavm2 に移行します。
+saphanavm1 の SAP HANA リソースは、セカンダリとしての起動に失敗します。 その場合は、次のコマンドを実行して HANA のインスタンスをセカンダリとして構成してください。
 
 <pre><code>
 su - <b>hdb</b>adm
@@ -627,19 +628,19 @@ hdbnsutil -sr_register --remoteHost=<b>saphanavm2</b> --remoteInstance=<b>03</b>
 <pre><code>
 crm configure edited
 
-# delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
+# Delete location constraints that are named like the following contraint. You should have two constraints, one for the SAP HANA resource and one for the IP address group.
 location cli-prefer-g_ip_<b>HDB</b>_HDB<b>03</b> g_ip_<b>HDB</b>_HDB<b>03</b> role=Started inf: <b>saphanavm2</b>
 </code></pre>
 
 また、セカンダリ ノードのリソースの状態をクリーンアップする必要があります
 
 <pre><code>
-# switch back to root and cleanup the failed state
+# Switch back to root and cleanup the failed state
 exit
 crm resource cleanup msl_SAPHana_<b>HDB</b>_HDB<b>03</b> <b>saphanavm1</b>
 </code></pre>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [SAP のための Azure Virtual Machines の計画と実装][planning-guide]
 * [SAP のための Azure Virtual Machines のデプロイ][deployment-guide]
 * [SAP のための Azure Virtual Machines DBMS のデプロイ][dbms-guide]

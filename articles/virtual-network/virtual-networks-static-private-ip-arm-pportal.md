@@ -1,6 +1,6 @@
 ---
-title: "VM のプライベート IP アドレスの構成 - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する方法について説明します。"
+title: VM のプライベート IP アドレスの構成 - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/04/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2679c7cb75c438402f3ab64c3e14c964cb8a85d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d551758277373995a6f92e1a25a59d170464fe5e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal"></a>Azure Portal を使用して仮想マシンのプライベート IP アドレスを構成する
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 02/21/2018
 
 [!INCLUDE [virtual-networks-static-ip-scenario-include](../../includes/virtual-networks-static-ip-scenario-include.md)]
 
-次のサンプルの手順では、単純な環境が既に作成されていると想定します。 このドキュメントに表示されている手順を実行する場合は、まず、 [vnet の作成](virtual-networks-create-vnet-arm-pportal.md)に関する記事に示されているテスト環境を構築します。
+次のサンプルの手順では、単純な環境が既に作成されていると想定します。 このドキュメントに表示されている手順を実行する場合は、まず、[仮想ネットワークの作成](quick-create-portal.md)に関する記事に示されているテスト環境を構築してください。
 
 ## <a name="how-to-create-a-vm-for-testing-static-private-ip-addresses"></a>静的プライベート IP アドレスをテストするために VM を作成する方法
 Azure ポータルを使用して、リソース マネージャー デプロイ モードで VM を作成する際に、静的プライベート IP アドレスを設定することはできません。 まず、VM を作成してから、そのプライベート IP が静的になるように設定する必要があります。

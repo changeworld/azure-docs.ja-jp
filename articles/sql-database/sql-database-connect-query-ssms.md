@@ -1,27 +1,20 @@
 ---
-title: "SSMS: Azure SQL Database に接続してデータを照会する | Microsoft Docs"
-description: "SQL Server Management Studio (SSMS) を使用して Azure で SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。"
-metacanonical: 
-keywords: "SQL データベースへの接続、SQL Server Management Studio"
+title: 'SSMS: Azure SQL Database に接続してデータを照会する | Microsoft Docs'
+description: SQL Server Management Studio (SSMS) を使用して Azure で SQL Database に接続する方法について説明します。 また、Transact-SQL (T-SQL) ステートメントを実行して、データの照会と編集を行います。
+keywords: SQL データベースへの接続、SQL Server Management Studio
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: 7cd2a114-c13c-4ace-9088-97bd9d68de12
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: quickstart
 ms.date: 11/28/2017
 ms.author: carlrab
-ms.openlocfilehash: c60158c07fb517e12d73f9739286fe871afeca2e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 987429dce79fe2adc852f33d98adc048d2e86937
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-use-sql-server-management-studio-to-connect-and-query-data"></a>Azure SQL Database: SQL Server Management Studio を使って接続とデータの照会を行う
 
@@ -53,7 +46,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | 設定      | 推奨値    | Description | 
+   | Setting      | 推奨値    | [説明] | 
    | ------------ | ------------------ | ----------- | 
    | **サーバーの種類** | データベース エンジン | この値は必須です。 |
    | **[サーバー名]** | 完全修飾サーバー名 | 名前は **mynewserver20170313.database.windows.net** のような形式で指定する必要があります。 |
@@ -90,7 +83,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
 3. ツール バーの **[実行]** をクリックして、Product と ProductCategory のテーブルからデータを取得します。
 
-    ![query](./media/sql-database-connect-query-ssms/query.png)
+    ![クエリ](./media/sql-database-connect-query-ssms/query.png)
 
 ## <a name="insert-data"></a>データを挿入する
 
@@ -153,7 +146,7 @@ SQL Server Management Studio を使用して、Azure SQL Database サーバー�
 
     <img src="./media/sql-database-connect-query-ssms/delete.png" alt="delete" style="width: 780px;" />
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Transact-SQL を使ったサーバーとデータベースの作成および管理については、[Azure SQL Database のサーバーとデータベース](sql-database-servers-databases.md)に関するページを参照してください。
 - SSMS については、「[Use SQL Server Management Studio (SQL Server Management Studio の使用)](https://msdn.microsoft.com/library/ms174173.aspx)」を参照してください。

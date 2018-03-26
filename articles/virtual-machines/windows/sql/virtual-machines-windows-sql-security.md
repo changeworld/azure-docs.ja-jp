@@ -1,11 +1,11 @@
 ---
-title: "Azure における SQL Server のセキュリティに関する考慮事項 | Microsoft Docs"
-description: "このトピックでは、Azure の仮想マシンで実行されている SQL Server をセキュリティで保護するための一般的なガイダンスを示します。"
+title: Azure における SQL Server のセキュリティに関する考慮事項 | Microsoft Docs
+description: このトピックでは、Azure の仮想マシンで実行されている SQL Server をセキュリティで保護するための一般的なガイダンスを示します。
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
 manager: craigg
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: d710c296-e490-43e7-8ca9-8932586b71da
 ms.service: virtual-machines-sql
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2017
 ms.author: jroth
-ms.openlocfilehash: fa6568d33e86c055c12eb748eb67c8a2e7cc0f93
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 609e18cf2bdfdd84c71b67e31b66cd0ca7d47577
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のセキュリティに関する考慮事項
 
@@ -98,5 +98,5 @@ SQL Server が既定以外のポートをリッスンしている場合は、接
 
 パフォーマンスに関するベスト プラクティスにも関心がある場合は、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」をご覧ください。
 
-Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」をご覧ください。
+Azure VM での SQL Server の実行に関するその他のトピックについては、「[Azure Virtual Machines における SQL Server の概要](virtual-machines-windows-sql-server-iaas-overview.md)」をご覧ください。 SQL Server の仮想マシンに関するご質問については、[よくあるご質問に関するページ](virtual-machines-windows-sql-server-iaas-faq.md)をご覧ください。
 

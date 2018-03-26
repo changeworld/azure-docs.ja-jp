@@ -1,12 +1,12 @@
 ---
-title: "クラウドでの Azure Batch による大規模な並列ジョブの実行 | Microsoft Docs"
-description: "大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。"
+title: クラウドでの Azure Batch による大規模な並列ジョブの実行 | Microsoft Docs
+description: 大規模な並列ワークロードと HPC ワークロードに関する Azure Batch サービスの使用方法について説明します。
 services: batch
-documentationcenter: 
+documentationcenter: ''
 author: mscurrell
 manager: jkabat
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: batch
 ms.workload: big-compute
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: 93eabc0bdf4889d89f8dc3fc30f99dafa1b3a47a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d6a0355874e9fc98e551a2a05c776109c916d90a
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは
 
@@ -85,7 +85,7 @@ Batch の一般的なシナリオでは、3D シーンの画像のレンダリ�
 
 これは Batch の利用方法の 1 つにすぎません。このシナリオでは、機能のほんの一部のみを紹介しています。 たとえば、各コンピューティング ノードで、[複数のタスクを並列](batch-parallel-node-tasks.md)で実行できます。 または、[ジョブの準備と完了のタスク](batch-job-prep-release.md)を利用してジョブのノードを準備し、後で消去することができます。 
 
-プール、ノード、ジョブ、タスクの詳細や、Batch アプリケーションを構築するときに使用できる多くの API 機能の詳細については、[開発者向けの Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。 
+プール、ノード、ジョブ、タスクの詳細や、Batch アプリケーションを構築するときに使用できる多くの API 機能の詳細については、[開発者向けの Batch 機能の概要](batch-api-basics.md)に関するページを参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

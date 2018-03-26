@@ -1,10 +1,10 @@
 ---
-title: "Azure Stream Analytics と Machine Learning の統合 | Microsoft Docs"
-description: "Stream Analytics ジョブで、ユーザー定義関数および Machine Learning を使用する方法"
-keywords: 
-documentationcenter: 
+title: Azure Stream Analytics と Machine Learning の統合 | Microsoft Docs
+description: Stream Analytics ジョブで、ユーザー定義関数および Machine Learning を使用する方法
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
+author: SnehaGunda
 manager: jhubbard
 editor: cgronlun
 ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 07/06/2017
-ms.author: samacha
-ms.openlocfilehash: d06681c687f5cd3eb10d375499266c7e78be1558
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.date: 03/01/2018
+ms.author: sngun
+ms.openlocfilehash: 10d514aeb50dcd24f28ed879875b23b25578cebb
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="performing-sentiment-analysis-by-using-azure-stream-analytics-and-azure-machine-learning"></a>Azure Stream Analytics と Azure Machine Learning を使用した感情分析の実行
 この記事では、Azure Machine Learning を統合する単純な Azure Stream Analytics ジョブをすばやくセットアップする方法について説明します。 ここでは、Cortana Intelligence ギャラリーの Machine Learning 感情分析モデルを利用して、ストリーミング テキスト データを分析し、リアルタイムでセンチメント スコアを決定します。 Cortana Intelligence Suite を使用すると、感情分析モデルを構築する複雑な作業を心配することなくこのタスクを実行できます。
@@ -57,9 +57,7 @@ ms.lasthandoff: 02/21/2018
 ## <a name="create-a-storage-container-and-upload-the-csv-input-file"></a>Storage コンテナーを作成して CSV 入力ファイルをアップロードする
 この手順では、GitHub から入手できるファイルなど、あらゆる CSV ファイルを使用できます。
 
-1. Azure Portal で、**[リソースの作成]** &gt; **[Storage]** &gt; **[ストレージ アカウント]** の順にクリックします。
-
-   ![新しいストレージ アカウントを作成する](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-create-storage-account.png)
+1. Azure Portal では、**[リソースの作成]** > **[ストレージ]** > **[ストレージ アカウント]** をクリックします。
 
 2. 名前 (この例では `samldemo`) を指定します。 名前には小文字と数字だけを使用できます。名前は Azure 全体で一意である必要があります。 
 
@@ -81,9 +79,7 @@ ms.lasthandoff: 02/21/2018
 
     ![コンテナーの [アップロード] ボタン](./media/stream-analytics-machine-learning-integration-tutorial/create-sa-upload-button.png)
 
-8. **[BLOB のアップロード]** ブレードで、このチュートリアルで使用する CSV ファイルを指定します。 **[BLOB の種類]** には **[ブロック BLOB]** を選択し、ブロック サイズを 4 MB に設定します。このチュートリアルにはこれで十分です。
-
-    ![BLOB ファイルをアップロードする](./media/stream-analytics-machine-learning-integration-tutorial/create-sa4.png)
+8. **[BLOB のアップロード]** ブレードで、以前にダウンロードした **sampleinput.csv** ファイルをアップロードします。 **[BLOB の種類]** には **[ブロック BLOB]** を選択し、ブロック サイズを 4 MB に設定します。このチュートリアルにはこれで十分です。
 
 9. ブレードの下部にある **[アップロード]** ボタンをクリックします。
 
@@ -130,8 +126,6 @@ ms.lasthandoff: 02/21/2018
 
 2. **[リソースの作成]** > **[モノのインターネット]** > **[Stream Analytics ジョブ]** の順にクリックします。 
 
-   ![新しい Stream Analytics ジョブに至る Azure Portal のパス](./media/stream-analytics-machine-learning-integration-tutorial/azure-portal-new-iot-sa-job.png)
-   
 3. ジョブに `azure-sa-ml-demo` と名前を付け、サブスクリプションを指定し、既存のリソース グループを指定するか新しく作成し、ジョブの場所を選択します。
 
    ![新しい Stream Analytics ジョブの設定を指定する](./media/stream-analytics-machine-learning-integration-tutorial/create-job-1.png)
@@ -140,46 +134,43 @@ ms.lasthandoff: 02/21/2018
 ### <a name="configure-the-job-input"></a>ジョブの入力を構成する
 このジョブは、以前に BLOB ストレージにアップロードした CSV ファイルから入力を取得します。
 
-1. ジョブの作成後に、ジョブ ブレード内の **[ジョブ トポロジ]** の下の **[入力]** ボックスをクリックします。  
+1. ジョブの作成後に、ジョブ ブレード内の **[ジョブ トポロジ]** の下の **[入力]** オプションをクリックします。    
+
+2. **[入力]** ブレードで、**[ストリーム入力の追加]** >**[Blob ストレージ]** をクリックします。
+
+3. **[Blob ストレージ]** ブレードに以下の値を入力します。
+
    
-   ![Stream Analytics ジョブ ブレードの [入力] ボックス](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input.png)  
+   |フィールド  |値  |
+   |---------|---------|
+   |**入力のエイリアス** | 名前 `datainput` を使用して、**[Select blob storage from your subscription]\(自分のサブスクリプションから Blob ストレージを選択する\)** を選択します。       |
+   |**ストレージ アカウント**  |  以前に作成したストレージ アカウントを選択します。  |
+   |**コンテナー**  | 以前に作成したコンテナー (`azuresamldemoblob`) を選択します。        |
+   |**イベントのシリアル化の形式**  |  **[CSV]** を選択します。       |
 
-2. **[入力]** ブレードで、**[+ 追加]** をクリックします。
+   ![新しいジョブ入力の設定](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
 
-   ![Stream Analytics ジョブに入力を追加するための [追加] ボタン](./media/stream-analytics-machine-learning-integration-tutorial/create-job-add-input-button.png)  
-
-3. **[新しい入力]** ブレードに次の値を記入します。
-
-    * **[入力のエイリアス]**: `datainput` という名前を使います。
-    * **[ソースの種類]**: **[データ ストリーム]** を選択します。
-    * **[ソース]**: **[Blob Storage]** を選択します。
-    * **[インポート オプション]**: **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。 
-    * **[ストレージ アカウント]**。 以前に作成したストレージ アカウントを選択します。
-    * **[コンテナー]**。 以前に作成したコンテナー (`azuresamldemoblob`) を選択します。
-    * **[イベントのシリアル化の形式]**。 **[CSV]** を選択します。
-
-    ![新しいジョブ入力の設定](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
-
-4. **Create** をクリックしてください。
+4. **[Save]** をクリックします。
 
 ### <a name="configure-the-job-output"></a>ジョブの出力を構成する
 このジョブは、入力を取得したのと同じ BLOB ストレージに結果を送信します。 
 
-1. **[ジョブ トポロジ]** ジョブ ブレードの下の **[出力]** ボックスをクリックします。  
-  
-   ![Stream Analytics ジョブの新しい出力を作成する](./media/stream-analytics-machine-learning-integration-tutorial/create-output.png)  
+1. **[ジョブ トポロジ]** ジョブ ブレードの下の **[出力]** オプションをクリックします。  
 
-2. **[出力]** ブレードで、**[+ 追加]** をクリックしてから、別名 `datamloutput` の出力を追加します。 
+2. **[出力]** ブレードで、**[追加]** >**[Blob Storage]** をクリックしてから、別名 `datamloutput` の出力を追加します。 
 
-3. **[シンク]**については、**[Blob Storage]** を選択します。 次のように、入力に使用したのと同じ BLOB ストレージの値を使用して、残りの出力設定を記入します。
+3. **[Blob ストレージ]** ブレードに以下の値を入力します。
 
-    * **[ストレージ アカウント]**。 以前に作成したストレージ アカウントを選択します。
-    * **[コンテナー]**。 以前に作成したコンテナー (`azuresamldemoblob`) を選択します。
-    * **[イベントのシリアル化の形式]**。 **[CSV]** を選択します。
+   |フィールド  |値  |
+   |---------|---------|
+   |**出力エイリアス** | 名前 `datainput` を使用して、**[Select blob storage from your subscription]\(自分のサブスクリプションから Blob ストレージを選択する\)** を選択します。       |
+   |**ストレージ アカウント**  |  以前に作成したストレージ アカウントを選択します。  |
+   |**コンテナー**  | 以前に作成したコンテナー (`azuresamldemoblob`) を選択します。        |
+   |**イベントのシリアル化の形式**  |  **[CSV]** を選択します。       |
 
    ![新しいジョブ出力の設定](./media/stream-analytics-machine-learning-integration-tutorial/create-output2.png) 
 
-4. **Create** をクリックしてください。   
+4. **[Save]** をクリックします。   
 
 
 ### <a name="add-the-machine-learning-function"></a>Machine Learning 関数を追加する 
@@ -189,22 +180,19 @@ ms.lasthandoff: 02/21/2018
 
 1. 以前ダウンロードした Web サービス URL と API キーが Excel ブックにあることをご確認ください。
 
-2. ジョブ概要ブレードに戻ります。
+2. お使いのジョブ ブレードから、**[関数]** > **[+ 追加]** > **[AzureML]** の順に移動します。
 
-3. **[設定]** の下で、**[関数]** を選択してから、**[+ 追加]** をクリックします。
+3. **[Azure Machine Learning 関数]** ブレードに以下の値を入力します。
 
-   ![Stream Analytics ジョブに関数を追加する](./media/stream-analytics-machine-learning-integration-tutorial/create-function1.png) 
-
-4. 関数の別名として `sentiment` を入力し、次の値を使用してブレードの残りの部分に記入します。
-
-    * **[関数の種類]**: **[Azure ML]** を選択します。
-    * **[インポート オプション]**: **[別のサブスクリプションからインポートする]** を選択します。 URL とキーを入力できるようになります。
-    * **[URL]**: Web サービスの URL を貼り付けます。
-    * **[キー]**: API キーを貼り付けます。
+   |フィールド  |値  |
+   |---------|---------|
+   | **関数のエイリアス** | 名前 `sentiment` を使用して、URL とキーを入力するためのオプションを提示する **[手動で Azure Machine Learning 関数設定を指定します]** を選択します。      |
+   | **URL**| Web サービス URL を貼り付けます。|
+   |**キー** | API キーを貼り付けます。 |
   
-    ![Machine Learning 関数を Stream Analytics ジョブに追加するための設定](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
+   ![Machine Learning 関数を Stream Analytics ジョブに追加するための設定](./media/stream-analytics-machine-learning-integration-tutorial/add-function.png)  
     
-5. **Create** をクリックしてください。
+4. **[Save]** をクリックします。
 
 ### <a name="create-a-query-to-transform-the-data"></a>データを変換するためのクエリを作成する
 
@@ -213,8 +201,6 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 1. ジョブ概要ブレードに戻ります。
 
 2.  **[ジョブ トポロジ]** の下の **[クエリ]** ボックスをクリックします。
-
-    ![Stream Analytics ジョブに関するクエリを作成する](./media/stream-analytics-machine-learning-integration-tutorial/create-query.png)  
 
 3. 次のクエリを入力します。
 
@@ -241,8 +227,6 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
 1. ジョブ概要ブレードに戻ります。
 
 2. ブレードの上部にある **[開始]** をクリックします。
-
-    ![Stream Analytics ジョブに関するクエリを作成する](./media/stream-analytics-machine-learning-integration-tutorial/start-job.png)  
 
 3. **[ジョブの開始]** で **[カスタム]** を選択し、CSV ファイルを BLOB ストレージにアップロードした時刻の 1 日前を選びます。 終了したら **[開始]**をクリックします。  
 

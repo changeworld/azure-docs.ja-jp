@@ -1,9 +1,9 @@
 ---
-title: "Azure Monitor の新しいアラート (プレビュー) エクスペリエンスを使用したアクティビティ ログ アラートの作成と管理 | Microsoft Docs"
-description: "この記事では、Azure Monitor の [アラート (プレビュー)] タブからアクティビティ ログ アラートを作成する方法について説明します。 この記事では、この機能の新しいユーザー エクスペリエンスについて詳しく説明します。"
+title: Azure Monitor の新しいアラート (プレビュー) エクスペリエンスを使用したアクティビティ ログ アラートの作成と管理 | Microsoft Docs
+description: この記事では、Azure Monitor の [アラート (プレビュー)] タブからアクティビティ ログ アラートを作成する方法について説明します。 この記事では、この機能の新しいユーザー エクスペリエンスについて詳しく説明します。
 author: JYOTHIRMAISURI
 manager: vvithal
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: aabc0e57-78cd-44dd-a8d1-af5e1e567360
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: v-jysur
-ms.custom: 
-ms.openlocfilehash: afdd82617c47f0dee22c229feba87bdf79b90a69
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.custom: ''
+ms.openlocfilehash: a7553e4155df0d4ee49b798f44ca636dc7ecdcd2
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="create-activity-log-alerts-using-the-new-alerts-preview-experience"></a>新しいアラート (プレビュー) のエクスペリエンスを使用してアクティビティ ログ アラートを作成する
 
@@ -89,7 +89,7 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 
      ![ターゲットを選択する](./media/monitoring-activity-log-alerts-new-experience/select-target.png)
 
-    - **[対象の条件]** で、**[条件の追加]** をクリックし、**アクティビティ ログ**としてシグナルの種類を選択します。
+    - **[対象の条件]** で、**[条件の追加]** をクリックし、**[アクティビティ ログ]** としてシグナルの種類を選択します。
 
     - 表示された一覧からシグナルを選択します。
 

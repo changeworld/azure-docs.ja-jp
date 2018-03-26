@@ -1,25 +1,25 @@
 ---
-title: "Azure Backup Server を使用してワークロードを Azure にバックアップする | Microsoft Docs"
-description: "Azure Backup Server を使用してワークロードを保護し、Azure Portal にバックアップします。"
+title: Azure Backup Server を使用してワークロードを Azure にバックアップする | Microsoft Docs
+description: Azure Backup Server を使用してワークロードを保護し、Azure Portal にバックアップします。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: PVRK
 manager: shivamg
-editor: 
-keywords: "Azure Backup Server; ワークロードの保護; ワークロードのバックアップ"
+editor: ''
+keywords: Azure Backup Server; ワークロードの保護; ワークロードのバックアップ
 ms.assetid: e7fb1907-9dc1-4ca1-8c61-50423d86540c
 ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/20/2017
+ms.date: 3/5/2018
 ms.author: masaran;trinadhk;pullabhk;markgal;adigan
-ms.openlocfilehash: addb4312ce1eb57ce86afae449eb3d31d0037418
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: c33cea62dac1c06dd1cb4031897af8c822e61661
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="preparing-to-back-up-workloads-using-azure-backup-server"></a>Azure Backup Server を使用してワークロードをバックアップするための準備
 > [!div class="op_single_selector"]
@@ -44,11 +44,11 @@ Infrastructure as a Server (IaaS) ワークロード (Azure の VM など) を�
 
 Azure Backup Server には、Data Protection Manager (DPM) のワークロード バックアップ機能の大半が継承されています。 この記事は、DPM ドキュメントと連動し、いくつかの共通の機能について説明しています。 Azure Backup Server には DPM と同じ機能が多数存在しますが、 Azure Backup Server は、テープへのバックアップ機能は持たず、System Center とも連携しません。
 
-## <a name="1-choose-an-installation-platform"></a>1.インストール プラットフォームを選択する
+## <a name="choose-an-installation-platform"></a>インストール プラットフォームを選択する
 Azure Backup Server を準備して実行するための最初の手順は、Windows Server のセットアップです。 サーバーの設置場所は Azure でもオンプレミスでもかまいません。
 
 ### <a name="using-a-server-in-azure"></a>Azure に設置されたサーバーを使用する場合
-Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は A2 Standard (2 コア、3.5 GB RAM) です。
+Azure Backup Server の実行に使用するサーバーを選ぶときは、まず Windows Server 2012 R2 Datacenter または Windows Server 2016 Datacenter のギャラリー イメージにアクセスすることをお勧めします。 Azure で推奨される仮想マシンの作成方法については、[Azure Portalで初めての Windows 仮想マシンを作成する方法](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。Azure を使用したことがなくてもわかりやすいように説明されています。 サーバー仮想マシン (VM) に推奨される最小要件は A2 Standard (2 コア、3.5 GB RAM) です。
 
 Azure Backup Server を使用したワークロードの保護には、数多くの注意点があります。 これらの注意点については、「 [Azure Virtual Machine として DPM をインストールする](https://technet.microsoft.com/library/jj852163.aspx)」の記事で説明されています。 マシンをデプロイする前に、この記事によく目を通してください。
 
@@ -75,7 +75,7 @@ Windows Server の重複除去を使用して DPM ストレージの重複を除
 
 Azure Backup Server は、常にドメインに参加させる必要があります。 サーバーを別のドメインに移動する場合には、Azure Backup Server のインストール前に新しいドメインにサーバーを参加させることをお勧めします。 デプロイ後の、新しいドメインへの既存の Azure Backup Server マシンの移動は *サポートされていません*。
 
-## <a name="2-recovery-services-vault"></a>2.Recovery Services コンテナー
+## <a name="recovery-services-vault"></a>Recovery Services コンテナー
 バックアップ データを Azure に送信する場合でも、ローカルに保存する場合でも、ソフトウェアを Azure に接続する必要があります。 具体的には、Azure Backup Server マシンを Recovery Services コンテナーに登録する必要があります。
 
 Recovery Services コンテナーを作成するには、次の手順に従います。
@@ -112,7 +112,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 
     コンテナーのストレージ オプションを選択したら、VM をコンテナーに関連付けることができます。 関連付けを開始するには、Azure 仮想マシンを検出して登録する必要があります。
 
-## <a name="3-software-package"></a>手順 3.ソフトウェア パッケージ
+## <a name="software-package"></a>ソフトウェア パッケージ
 ### <a name="downloading-the-software-package"></a>ソフトウェア パッケージのダウンロード
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 2. 既に Recovery Services コンテナーが開かれている場合は、手順 3. に進みます。 Recovery Services コンテナーが開かれていない場合は、Azure Portal でハブ メニューの **[参照]** をクリックします。
@@ -231,7 +231,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
 >
 >
 
-## <a name="4-network-connectivity"></a>4.ネットワーク接続
+## <a name="network-connectivity"></a>ネットワーク接続
 Azure Backup Server が正常に動作するためには、Azure Backup サービスに接続されている必要があります。 マシンが Azure に接続されているかどうかを確認するには、Azure Backup Server PowerShell コンソールで ```Get-DPMCloudConnection``` コマンドレットを使用します。 コマンドレットの出力が TRUE の場合、マシンは接続されていますが、それ以外の場合は接続されていません。
 
 同時に、Azure のサブスクリプションが正常な状態である必要があります。 サブスクリプションの状態を確認および管理するには、[サブスクリプション ポータル](https://account.windowsazure.com/Subscriptions)にログインします。

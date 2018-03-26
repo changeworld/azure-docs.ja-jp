@@ -1,8 +1,8 @@
 ---
-title: "Linux VM ユーザー割り当て MSI を使用した Azure Resource Manager へのアクセス"
-description: "Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。"
+title: Linux VM ユーザー割り当て MSI を使用した Azure Resource Manager へのアクセス
+description: Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
 editor: daveba
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: arluca
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7013cb48738d4dccb328728fe1e47b3f43bff4f6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c2b6d70e441dc3d300f49adff1c02d7cc65788d2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-resource-manager"></a>Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Resource Manager にアクセスする
 
@@ -146,7 +146,7 @@ az role assignment create --assignee <MSI PRINCIPALID> --role 'Reader' --scope "
    アクセス トークンを取得するための CURL 要求を次の例に示します。 `<CLIENT ID>` は、必ず「[ユーザー割り当て MSI を作成する](#create-a-user-assigned-msi)」の `az identity create` コマンドによって返された `clientId` プロパティで置き換えてください。 
     
    ```bash
-   curl -H Metadata:true "http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<CLIENT ID>"   
+   curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>"   
    ```
     
     > [!NOTE]

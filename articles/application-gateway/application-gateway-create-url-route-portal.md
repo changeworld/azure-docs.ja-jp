@@ -1,6 +1,6 @@
 ---
-title: "URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。"
+title: URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
+description: Azure Portal を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。
 services: application-gateway
 author: davidmu1
 manager: timlt
@@ -141,8 +141,8 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 
 1. **[ルール]**、**[パス ベース]** の順にクリックします。
 2. 名前として「*rule2*」を入力します。
-3. 最初のパスの名前として「*イメージ*」と入力します。 パスとして「*/images/**」を入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
-4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスとして「*/video/**」を入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
+3. 最初のパスの名前として「*イメージ*」と入力します。 パスとして「*/images/*\*」を入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
+4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスとして「*/video/*\*」を入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
 
     ![パス ベース ルールの作成](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
 

@@ -1,21 +1,21 @@
 ---
-title: "Azure Machine Learning サービスのインストールに関するクイックスタート | Microsoft Docs"
-description: "このクイック スタートでは、Azure Machine Learning のリソースを作成する方法について説明します。また、Azure Machine Learning Workbench のインストールと基本操作の方法についても説明します。"
+title: Azure Machine Learning サービスのインストールに関するクイックスタート | Microsoft Docs
+description: このクイック スタートでは、Azure Machine Learning のリソースを作成する方法について説明します。また、Azure Machine Learning Workbench のインストールと基本操作の方法についても説明します。
 services: machine-learning
 author: hning86
-ms.author: haining, raymondl, chhavib, j-martens
+ms.author: chhavib
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 2/22/2018
-ms.openlocfilehash: 33ced510dc9579248b75fb21520d55bd747a6a5c
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: c760901b108d8aaeb990f0e726adc7f139a5163a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-install-and-get-started-with-azure-machine-learning-services"></a>クイック スタート: Azure Machine Learning サービスのインストールと基本操作
 Azure Machine Learning サービス (プレビュー) は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 プロフェッショナルなデータ サイエンティストは、これを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -64,12 +64,12 @@ Azure Portal を使用して Azure Machine Learning アカウントをプロビ�
    リソース グループ | "_リソース グループ名_" | サブスクリプションの既存のリソース グループを使用するか、任意の名前を入力してこの実験アカウント用に新しいリソース グループを作成します。 
    場所 | _ユーザーに最も近いリージョン_ | ユーザーとデータ リソースに最も近い場所を選択します。
    [Number of seats]\(シート数\) | 2 | 接続クライアント数を入力します。 [シートあたりの価格](https://azure.microsoft.com/pricing/details/machine-learning/)を参照してください。<br/><br/>このクイック スタートで必要なシート数は 2 つだけです。 シートは、必要に応じて Azure Portal から追加したり削除したりすることができます。
-   ストレージ アカウント | "_一意の名前_" | **[新規作成]** を選択し、[Azure Storage アカウント](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal)を作成するための名前を指定します。 または、**[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のストレージ アカウントを選択します。 このストレージ アカウントは、プロジェクト アーティファクトと実行履歴データを保持するために必要であり、そのために使用されます。 
+   ストレージ アカウント | "_一意の名前_" | **[新規作成]** を選択し、[Azure Storage アカウント](https://docs.microsoft.com/en-us/azure/storage/common/storage-quickstart-create-account?tabs=portal)を作成するための名前を指定します。 名前は 3 文字以上 24 文字以下にする必要があり、英数字だけを使用することができます。 または、**[Use existing (既存のものを使用)]** を選択し、ドロップダウン リストから既存のストレージ アカウントを選択します。 このストレージ アカウントは、プロジェクト アーティファクトと実行履歴データを保持するために必要であり、そのために使用されます。 
    [Workspace for Experimentation account]\(実験アカウントのワークスペース\) | IrisGarden<br/>(チュートリアルで使用する名前) | このアカウントのワークスペースの名前を指定します。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 このワークスペースには、実験を管理および公開するのに必要なツールが用意されています。
    [Assign owner for the workspace]\(ワークスペースの所有者の割り当て\) | "_自分のアカウント_" | ご自身のアカウントをワークスペースの所有者として選択します。
    [Create Model Management account]\(モデル管理アカウントを作成する\) | **check** |リアルタイム Web サービスとしてモデルをデプロイしたり管理したりする必要が生じたときにこのリソースが利用できるよう、ここでモデル管理アカウントを作成しておきます。 <br/><br/>必須ではありませんが、モデル管理アカウントは実験アカウントと同時に作成することをお勧めします。
    アカウント名 | "_一意の名前_" | モデル管理アカウントを識別する一意の名前を選択します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
-   [Model Management pricing tier]\(モデル管理の価格レベル\) | **DEVTEST** | **[価格レベルが選択されていません]** を選択して、新しいモデル管理アカウントの価格レベルを指定します。 コストを抑えるために、該当するサブスクリプションで利用できる場合は **DEVTEST** 価格レベルを選択してください (利用には制限があります)。 利用できない場合は、S1 価格レベルを選択してコストを抑えます。 **[選択]** をクリックして、価格レベルの選択を保存します。 
+   [Model Management pricing tier]\(モデル管理の価格レベル\) | **DEVTEST** | **[価格レベルが選択されていません]** を選択して、新しいモデル管理アカウントの価格レベルを指定します。 コストを抑えるために、該当するサブスクリプションで利用できる場合は **DEVTEST** 価格レベルを選択してください (利用には制限があります)。 利用できない場合は、S1 価格レベルを選択します。 **[選択]** をクリックして、価格レベルの選択を保存します。 
    [ダッシュボードにピン留めする] | _check_ | **[ダッシュボードにピン留めする]** チェック ボックスをオンにすると、Azure Portal のフロント ダッシュボード ページで Machine Learning 実験アカウントを簡単に追跡できます。
 
    ![Machine Learning 実験アカウントの構成](media/quickstart-installation/portal-create-experimentation.png)
@@ -78,7 +78,7 @@ Azure Portal を使用して Azure Machine Learning アカウントをプロビ�
 
    ![Machine Learning 実験アカウントの構成](media/quickstart-installation/portal-create-experimentation-button.png)
 
-   アカウントの作成には、しばらく時間がかかる場合があります。 デプロイ プロセスのステータスは、Azure Portal ツール バーのベル アイコンをクリックして確認できます。
+   アカウントの作成には、しばらく時間がかかる場合があります。 デプロイ プロセスの状態は、Azure Portal ツール バーの [通知] アイコン (ベル) をクリックして確認できます。
    
    ![Azure Portal の通知](media/quickstart-installation/portal-notification.png)
 
@@ -110,30 +110,29 @@ Azure Machine Learning Workbench には Windows 版と macOS 版があります�
    
    | |Azure Machine Learning Workbench のインストール パス|
    |--------|------------------------------------------------|
-   |Windows|C:\Users\<user>\AppData\Local\AmlWorkbench|
+   |Windows|C:\Users\\<user\>\AppData\Local\AmlWorkbench|
    |macOS|/Applications/Azure ML Workbench.app|
 
-   必要な依存コンポーネントが、インストーラーによってすべてダウンロードされ、セットアップされます (Python、Miniconda、その他の関連ライブラリなど)。    このインストールには、Azure のクロスプラットフォーム コマンドライン ツール (Azure CLI) も含まれます。
+   必要な依存コンポーネントが、インストーラーによってすべてダウンロードされ、セットアップされます (Python、Miniconda、その他の関連ライブラリなど)。 このインストールには、Azure のクロスプラットフォーム コマンドライン ツール (Azure CLI) も含まれます。
 
-  
 1. インストーラーの最後の画面で **[Launch Workbench]\(Workbench の起動\)** ボタンを選択し、Workbench を起動します。 
 
-   インストーラーを閉じた場合でも問題ありません。 
+   インストーラーを閉じた場合は、次のようにします。
    + Windows の場合は、**Machine Learning Workbench** のデスクトップ ショートカットを使用して起動します。 
    + macOS の場合は、Launchpad で **[Azure ML Workbench]** を選択します。
 
-1. 最初の画面で **[サインイン]** を選択し、Azure Machine Learning Workbench に対する認証を行います。 Azure Portal で実験アカウントとモデル管理アカウントを作成する際に使用したものと同じ資格情報を使用してください。 
+1. 最初の画面で **[Sign in with Microsoft]\(Microsoft にサインイン\)** を選択し、Azure Machine Learning Workbench に対する認証を行います。 Azure Portal で実験アカウントとモデル管理アカウントを作成する際に使用したものと同じ資格情報を使用してください。 
 
-   サインイン後、ご利用の Azure サブスクリプションに見つかった最初の実験アカウントが使用されます。  Workbench によって検出された最初の実験アカウントが使用され、そのアカウントに関連付けられているワークスペースとプロジェクトがすべて表示されます。 
+   サインインすると、Workbench によって Azure サブスクリプション内で検出された最初の実験アカウントが使用され、そのアカウントに関連付けられているワークスペースとプロジェクトがすべて表示されます。 
 
    >[!TIP]
    > Workbench アプリケーション ウィンドウの左下隅にあるアイコンを使用して別の実験アカウントに切り替えることができます。
 
 ## <a name="create-a-project-in-workbench"></a>Workbench でプロジェクトを作成する
 
-Azure Machine Learning におけるプロジェクトとは、問題を解決するために実行されているすべての作業の論理コンテナーです。 プロジェクトはローカル ディスク上の 1 つのファイル フォルダーにマップされ、ファイルやサブ フォルダーを追加することができます。 
+Azure Machine Learning におけるプロジェクトとは、問題を解決するために実行されているすべての作業の論理コンテナーです。 プロジェクトはローカル ディスク上の 1 つのフォルダーにマップされ、ファイルやサブフォルダーをそれに追加することができます。 
 
-ここでは、[あやめデータセット](https://en.wikipedia.org/wiki/iris_flower_data_set)を含んだテンプレートを使用して、新しい Workbench プロジェクトを作成します。 このクイック スタートに続く一連のチュートリアルでは、あやめの種類をその物理的な特性に基づいて予測するモデルを、このデータを使って構築することになります。  
+ここでは、[あやめデータセット](https://en.wikipedia.org/wiki/Iris_flower_data_set)を含んだテンプレートを使用して、新しい Workbench プロジェクトを作成します。 このクイック スタートに続く一連のチュートリアルでは、あやめの種類をその物理的な特性に基づいて予測するモデルを、このデータを使って構築することになります。  
 
 1. Azure Machine Learning Workbench を開き、**[プロジェクト]** ウィンドウの正符号 (+) を選択して **[新しいプロジェクト]** を選択します。  
 
@@ -146,8 +145,8 @@ Azure Machine Learning におけるプロジェクトとは、問題を解決す
    プロジェクト名 | myIris |アカウントを識別する一意の名前を入力します。 独自の名前を使用できるほか、実験を識別するうえで最適な部門またはプロジェクトの名前を使用できます。 この名前は 2 ～ 32 文字で指定します。 これには、英数字とダッシュ (-) 文字のみを使用してください。 
    プロジェクト ディレクトリ | c:\Temp\ | プロジェクトの作成先となるディレクトリを指定します。
    プロジェクトの説明 | "_空白のまま_" | 省略可能なフィールド。プロジェクトの説明を入力することができます。
-   Visualstudio.com |"_空白のまま_" | 省略可能なフィールド。 プロジェクトは、ソース管理とコラボレーションのために、必要に応じて Visual Studio Team Services で Git リポジトリに関連付けることができます。 [セットアップ方法](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)に関するページを参照してください。 
-   ワークスペース | IrisGarden (存在する場合) | Azure Portal で実験アカウント用に作成したワークスペースを選択します。 <br/>このクイック スタートの手順に従っている場合、ワークスペースの名前は IrisGarden です。 それ以外の場合は、実験アカウントの作成時に作ったワークスペースを選択してください。それ以外に使いたいワークスペースがあれば、そちらを選んでもかまいません。
+   Visualstudio.com の GIT リポジトリの URL |"_空白のまま_" | 省略可能なフィールド。 プロジェクトは、ソース管理とコラボレーションのために、必要に応じて Visual Studio Team Services で Git リポジトリに関連付けることができます。 [セットアップ方法](https://docs.microsoft.com/en-us/azure/machine-learning/preview/using-git-ml-project#step-3-set-up-a-machine-learning-project-and-git-repo)に関するページを参照してください。 
+   選択したワークスペース | IrisGarden (存在する場合) | Azure Portal で実験アカウント用に作成したワークスペースを選択します。 <br/>このクイック スタートの手順に従っている場合、ワークスペースの名前は IrisGarden です。 それ以外の場合は、実験アカウントの作成時に作ったワークスペースを選択してください。それ以外に使いたいワークスペースがあれば、そちらを選んでもかまいません。
    プロジェクト テンプレート | あやめの分類 | テンプレートには、製品に習熟するうえで役立つスクリプトとデータが含まれています。 このクイック スタートに必要なスクリプトとデータ、そしてこのドキュメント サイトに存在する他のチュートリアルで使用するスクリプトとデータも、このテンプレートに含まれています。 
 
    ![新しいプロジェクト](media/tutorial-classifying-iris/new_project.png)
@@ -159,7 +158,7 @@ Azure Machine Learning におけるプロジェクトとは、問題を解決す
 
 ## <a name="run-a-python-script"></a>Python スクリプトを実行する
 
-以上で、ローカル コンピューターから **iris_sklearn.py** スクリプトを実行する準備が整いました。 このスクリプトは、**あやめの分類**プロジェクト テンプレートに既定で同梱されています。 このスクリプトは、広く使われている Python [scikit-learn](http://scikit-learn.org/stable/index.html) ライブラリの[ロジスティック回帰](https://en.wikipedia.org/wiki/logistic_regression)アルゴリズムでモデルを構築するものです。
+以上で、ローカル コンピューターから **iris_sklearn.py** スクリプトを実行する準備が整いました。 このスクリプトは、**あやめの分類**プロジェクト テンプレートに既定で同梱されています。 スクリプトは、広く使われている Python [scikit-learn](http://scikit-learn.org/stable/index.html) ライブラリを使用して[ロジスティック回帰](https://en.wikipedia.org/wiki/Logistic_regression)モデルを構築します。
 
 1. **[プロジェクト ダッシュボード]** ページ上部のコマンド バーから、実行ターゲットとして **[ローカル]** を選択し、実行するスクリプトとして **[iris_sklearn.py]** を選択します。 既定では、これらの値があらかじめ選択されています。 
 
@@ -167,19 +166,19 @@ Azure Machine Learning におけるプロジェクトとは、問題を解決す
 
    ![コマンド バー](media/quickstart-installation/run_control.png)
 
-1. **[引数]** テキスト ボックスに「**0.01**」と入力します。 この数値は、正則化率を設定するスクリプト コードで使用されます。 これは、線形回帰モデルをどのようにトレーニングするかを構成するために使用される値です。 
+1. **[引数]** テキスト ボックスに「**0.01**」と入力します。 この番号は正則化項に対応しており、ロジスティック回帰モデルを構成するスクリプトで使用します。 
 
-1. **[実行]** を選択すると、お使いのコンピューターでスクリプトの実行が開始されます。 その直後、スクリプトの実行を監視できるよう、右側の **[ジョブ]** パネルに **iris_sklearn** ジョブが表示されます。
+1. **[実行]** を選択すると、お使いのコンピューターでスクリプトの実行が開始されます。 右側の **[ジョブ]** パネルに **iris_sklearn.py** ジョブがすぐに表示されるので、スクリプトの実行を監視することができます。
 
    お疲れさまでした。 Azure Machine Learning Workbench で Python スクリプトを正常に実行できました。
 
-1. 引数の値を **0.001** から **10** の範囲で変化させながら、手順 2. から手順 3. を何度か繰り返します。 それぞれの実行ジョブが **[ジョブ]** ウィンドウに表示されます。
+1. 引数の値を **0.001** から **10** の範囲で変化させながら、手順 2. から手順 3. を何度か繰り返します (たとえば、10 の累乗を使用します)。 それぞれの実行が、**[ジョブ]** ウィンドウに表示されます。
 
-1. **[実行]** ビューを選択して実行履歴を表示し、実行一覧から **[iris_sklearn.py]** を選択して、このスクリプトの実行履歴を表示します。 
+1. **[実行]** ビューを選択し、実行一覧から **[iris_sklearn.py]** を選択して、実行履歴を調べます。 
 
    ![実行履歴ダッシュボード](media/quickstart-installation/run_view.png)
 
-   そこでは、**iris_sklearn.py** に対して実行したすべての実行が表示されます。 実行履歴ダッシュボードには、上位のメトリック、一連の既定のグラフ、各実行のメトリックの一覧も表示されます。 
+   このビューには、**iris_sklearn.py** に対して行われたすべての実行が表示されます。 実行履歴ダッシュボードには、上位のメトリック、一連の既定のグラフ、各実行のメトリックの一覧も表示されます。 
 
 1. このビューは、歯車アイコンやフィルター アイコンを使用してカスタマイズすることができます。並べ替えやフィルター処理を行ったり、構成を調整したりすることが可能です。
 
@@ -191,9 +190,9 @@ Azure Machine Learning におけるプロジェクトとは、問題を解決す
 
 Azure Machine Learning のコマンド ライン インターフェイス (CLI) もインストールされます。 CLI インターフェイスから Azure Machine Learning サービスにアクセスして対話的に操作することが可能です。エンド ツー エンドのデータ サイエンス ワークフローに必要なタスクはすべて `az` コマンドを使用して実行できます。 [詳細情報。](tutorial-iris-azure-cli.md)
 
-Workbench のツール バーから **[ファイル]、[コマンド プロンプトを開く]** の順に選択して azure-cli-ml CLI を起動してください。
+Workbench のツール バーから **[ファイル]、[コマンド プロンプトを開く]** の順に選択して、Azure Machine Learning CLI を起動することができます。
 
-azure-cli-ml CLI のコマンドに関するヘルプは、--help 引数を使用して表示できます。
+Azure Machine Learning CLI のコマンドに関するヘルプは、--help 引数を使用して表示できます。
 
 ```az ml --help```
 
@@ -202,7 +201,7 @@ azure-cli-ml CLI のコマンドに関するヘルプは、--help 引数を使�
 [!INCLUDE [aml-delete-resource-group](../../../includes/aml-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次の手順
-これで必要な Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench アプリケーションのインストールは終了です。 このアプリケーションでプロジェクトを作成し、スクリプトを実行した後、そのスクリプトの実行履歴を確認しました。
+これで、必要な Azure Machine Learning アカウントの作成と Azure Machine Learning Workbench アプリケーションのインストールは終了です。 また、プロジェクトを作成し、スクリプトを実行した後、スクリプトの実行履歴を確認しました。
 
 あやめのモデルを Web サービスとしてデプロイする方法など、このワークフローをさらに深く体験したい場合は、"*あやめの分類*" のチュートリアルを最後まで進めてください。 このチュートリアルでは、[データの準備](tutorial-classifying-iris-part-1.md)、[実験](tutorial-classifying-iris-part-2.md)、[モデル管理](tutorial-classifying-iris-part-3.md)の詳細な手順を説明しています。 
 
@@ -210,4 +209,4 @@ azure-cli-ml CLI のコマンドに関するヘルプは、--help 引数を使�
 > [チュートリアル : あやめの分類 (パート 1)](tutorial-classifying-iris-part-1.md)
 
 >[!NOTE]
-> モデル管理アカウントは用意できましたが、Web サービスをデプロイするために必要な環境がまだセットアップされていません。  [デプロイ環境](deployment-setup-configuration.md)のセットアップ方法を確認してください。
+> モデル管理アカウントは作成しましたが、Web サービスをデプロイするために必要な環境がまだセットアップされていません。 [デプロイ環境](deployment-setup-configuration.md)のセットアップ方法を確認してください。

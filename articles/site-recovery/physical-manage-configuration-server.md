@@ -1,17 +1,17 @@
 ---
 title: " Azure Site Recovery での物理サーバー ディザスター リカバリーのために構成サーバーを管理する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery サービスで、Azure への物理サーバー ディザスター リカバリー用に既存の構成サーバーを管理する方法について説明します。"
+description: この記事では、Azure Site Recovery サービスで、Azure への物理サーバー ディザスター リカバリー用に既存の構成サーバーを管理する方法について説明します。
 services: site-recovery
 author: AnoopVasudavan
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/05/2018
 ms.author: anoopkv
-ms.openlocfilehash: 7fe68f072ef438e21f3e6d3d52aee9e86e537687
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2fdccade577788d3fc5bc076604547b2ab6690d9
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-the-configuration-server-for-physical-server-disaster-recovery"></a>物理サーバー ディザスター リカバリー用の構成サーバーの管理
 
@@ -36,7 +36,7 @@ Azure への物理サーバーのディザスター リカバリーに [Azure Si
 | IIS | - 既存の Web サイトが存在しない <br> - [匿名認証](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない<br>|
 | NIC の種類 | VMXNET3 (VMware VM としてデプロイされている場合) |
 | IP アドレスの種類 | 静的 |
-| インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (スケールアウト プロセス サーバーの場合は不要) <br> - time.nist.gov <br> - time.windows.com |
+| インターネットへのアクセス | サーバーは、次の URL にアクセスできる必要があります。 <br> - \*.accesscontrol.windows.net<br> - \*.backup.windowsazure.com <br>- \*.store.core.windows.net<br> - \*.blob.core.windows.net<br> - \*.hypervrecoverymanager.windowsazure.com <br> - dc.services.visualstudio.com <br> - https://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi (スケールアウト プロセス サーバーの場合は不要) <br> - time.nist.gov <br> - time.windows.com |
 | ポート | 443 (コントロール チャネルのオーケストレーション)<br>9443 (データ転送)|
 
 ## <a name="download-the-latest-installation-file"></a>最新のインストール ファイルのダウンロード
@@ -164,7 +164,7 @@ ProxyPassword="Password"
   ```
 
   >[!WARNING]
-  追加のプロセス サーバーがこの構成サーバーに接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーでプロキシ設定を修正する](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server)必要があります。
+  追加のプロセス サーバーがこの構成サーバーに接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーでプロキシ設定を修正する](vmware-azure-manage-process-server.md#modify-proxy-settings-for-an-on-premises-process-server)必要があります。
 
 ## <a name="reregister-a-configuration-server-with-the-same-vault"></a>同じコンテナーに構成サーバーを再登録する
   1. 構成サーバーにログインします。
@@ -184,7 +184,7 @@ ProxyPassword="Password"
       ```
 
   >[!WARNING]
-  複数のプロセス サーバーがある場合は、[それらを再登録](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server)必要があります。
+  複数のプロセス サーバーがある場合は、[それらを再登録](vmware-azure-manage-process-server.md#reregister-a-process-server)必要があります。
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>構成サーバーを別のコンテナーに登録する
 
@@ -233,8 +233,8 @@ ProxyPassword="Password"
 > [!WARNING]
 > 構成サーバーの使用停止操作を始める前に、次のことを確認します。
 > 1. この構成サーバーのすべての仮想マシンの[保護を無効化](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)します。
-> 2. 構成サーバーからすべてのレプリケーション ポリシーの[関連付けを解除](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy)し、レプリケーション ポリシーを[削除](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy)します。
-> 3. 構成サーバーに関連付けられているすべての vCenter サーバー/vSphere ホストを[削除](site-recovery-vmware-to-azure-manage-vCenter.md#delete-a-vcenter-in-azure-site-recovery)します。
+> 2. 構成サーバーからすべてのレプリケーション ポリシーの[関連付けを解除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)し、レプリケーション ポリシーを[削除](vmware-azure-set-up-replication.md#disassociate-or-delete-a-replication-policy)します。
+> 3. 構成サーバーに関連付けられているすべての vCenter サーバー/vSphere ホストを[削除](vmware-azure-manage-vcenter.md#delete-a-vcenter-server)します。
 
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>Azure Portal から構成サーバーを削除する

@@ -1,8 +1,8 @@
 ---
-title: "車両の状態と運転習慣を予測する方法の詳細 - Azure | Microsoft Docs"
-description: "Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。"
+title: 車両の状態と運転習慣を予測する方法の詳細 - Azure | Microsoft Docs
+description: Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/24/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: a21316ef6ab05918f07a09243b5ce04950ecd9dc
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 370ab807ef85240238c51d1693796c26981edb15
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook-deep-dive-into-the-solution"></a>車両テレメトリ分析ソリューション プレイブック: ソリューションの詳細
 このメニューは、このプレイブック内の各セクションにリンクされています。 
@@ -40,7 +40,7 @@ ms.lasthandoff: 12/01/2017
 
 JSON 形式のこのデータ セットには、次のスキーマが含まれています。
 
-| 分割 | Description | 値 |
+| 分割 | [説明] | 値 |
 | --- | --- | --- |
 | VIN |ランダムに生成された VIN |ランダムに生成された 10,000 個の VIN が含まれているマスター リストから取得される |
 | Outside temperature |車両運転時の外部温度 |ランダムに生成された 0 - 100 の数値 |
@@ -662,7 +662,7 @@ Power BI は、このソリューションに機能豊富なダッシュボー�
 
 ![Power BI ダッシュボード](./media/cortana-analytics-playbook-vehicle-telemetry-deep-dive/fig30-vehicle-telematics-powerbi-dashboard.png)
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 このドキュメントには、車両テレメトリ分析ソリューションの詳細な説明が含まれています。 ラムダ アーキテクチャ パターンは、予測と行動によるリアルタイム分析と一括分析のために使用されます。 このパターンは、ホット パス (リアルタイム) 分析およびコールド パス (一括) 分析を必要とする幅広いユース ケースに適用されます。 
 
 ### <a name="references"></a>参照

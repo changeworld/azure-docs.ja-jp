@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service の SSL 証明書を購入して構成する | Microsoft Docs"
-description: "App Service 証明書を購入して App Service アプリにバインドする方法を説明します。"
+title: Azure App Service の SSL 証明書を購入して構成する | Microsoft Docs
+description: App Service 証明書を購入して App Service アプリにバインドする方法を説明します。
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
 ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 

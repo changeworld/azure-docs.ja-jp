@@ -1,13 +1,13 @@
 ---
-title: "データ サイエンス仮想マシンの開発ツール - Azure | Microsoft Docs"
-description: "データ サイエンス仮想マシンの開発ツール。"
-keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
+title: データ サイエンス仮想マシンの開発ツール - Azure | Microsoft Docs
+description: データ サイエンス仮想マシンの開発ツール。
+keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.openlocfilehash: 6aef0fbe44e19b515c2bc10c0e7c38fabac10dae
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0d7ee9a54c2c11f814ce041c5c7e5bd9f2e605e5
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシン上の開発ツール
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 02/22/2018
 | 紹介   | 汎用 IDE      |
 | サポートされている DSVM バージョン      | Windows      |
 | 一般的な用途      | ソフトウェア開発    |
-| DSVM での構成/インストール方法      | データ サイエンス ワークロード (Python および R ツール)、Azure ワークロード (Hadoop、Data Lake)、Node.js、SQL Server ツール    |
+| DSVM での構成/インストール方法      | データ サイエンス ワークロード (Python および R ツール)、Azure ワークロード (Hadoop、Data Lake)、Node.js、SQL Server ツール、[Visual Studio Tools for AI](https://github.com/Microsoft/vs-tools-for-ai)    |
 | 使用/実行方法      | デスクトップ ショートカット (`C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\IDE\devenv.exe`)    |
 | DSVM 上の関連ツール      |     Visual Studio Code、RStudio、Juno  |
 

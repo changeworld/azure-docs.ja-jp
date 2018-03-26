@@ -1,25 +1,19 @@
 ---
-title: "Azure SQL Database Azure 導入事例 - GEP| Microsoft Docs"
-description: "SQL Database を活用することで、GEP がどのように世界中の顧客とつながり、高い効率性を実現したのかご紹介します。"
+title: Azure SQL Database Azure 導入事例 - GEP| Microsoft Docs
+description: SQL Database を活用することで、GEP がどのように世界中の顧客とつながり、高い効率性を実現したのかご紹介します。
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: ae8bcb10-c251-4bac-b666-10a253918583
+manager: craigg
 ms.service: sql-database
 ms.custom: reference
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: bced4e04f541dde58410e25fe0c3aa5493a5e5fd
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: 093f891ea9dd36a2766d0a797c4f0a67b11aa8a4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>GEP 社のグローバルな事業展開と効率性向上を Azure が支援
 ![GEP ロゴ](./media/sql-database-implementation-gep/geplogo.png)

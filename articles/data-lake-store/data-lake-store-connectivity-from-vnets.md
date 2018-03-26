@@ -1,8 +1,8 @@
 ---
-title: "VNET から Azure Data Lake Store への接続 | Microsoft Docs"
-description: "Azure VNET から Azure Data Lake Store への接続"
+title: VNET から Azure Data Lake Store への接続 | Microsoft Docs
+description: Azure VNET から Azure Data Lake Store への接続
 services: data-lake-store,data-catalog
-documentationcenter: 
+documentationcenter: ''
 author: esung22
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 01/31/2018
 ms.author: elsung
-ms.openlocfilehash: c1bb9d8f5759ece8fe6384441c692adea190aba8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 483406c6929844a8355dffcb86c1e3a3dabda061
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="access-azure-data-lake-store-from-vms-within-an-azure-vnet"></a>Azure VNET 内の VM から Azure Data Lake Store へのアクセス
 Azure Data Lake Store は、パブリック インターネット IP アドレスで動作する PaaS サービスです。 パブリック インターネットに接続できるサーバーは、通常、Azure Data Lake Store エンドポイントにも接続できます。 既定では、Azure VNET 内のすべての VM はインターネットにアクセスできるため、Azure Data Lake Store にアクセスできます。 ただし、VNET 内の VM をインターネットにアクセスできないように構成することもできます。 そのような VM では、Azure Data Lake Store へのアクセスも制限されます。 Azure VNET 内の VM のパブリック インターネット アクセスをブロックするには、次のいずれかの方法を使用します。
@@ -30,7 +30,7 @@ Azure Data Lake Store は、パブリック インターネット IP アドレ�
 この記事では、上に示した 3 つの方法のいずれかを使用してリソースへのアクセスが制限されている Azure VM から Azure Data Lake Store へのアクセスを有効にする方法について説明します。
 
 ## <a name="enabling-connectivity-to-azure-data-lake-store-from-vms-with-restricted-connectivity"></a>接続が制限されている VM から Azure Data Lake Store への接続を有効にする
-このような VM から Azure Data Lake Store にアクセスするには、Azure Data Lake Store アカウントが使用可能である IP アドレスにアクセスするように VM を構成する必要があります。 Data Lake Store アカウントの IP アドレスは、アカウントの DNS 名 (`<account>.azuredatalakestore.net`) を解決することによって調べることができます。 そのためには、**nslookup** などのツールを使用できます。 コンピューターでコマンド プロンプトを開き、次のコマンドを実行します。
+このような VM から Azure Data Lake Store にアクセスするには、Azure Data Lake Store アカウントが使用可能である IP アドレスにアクセスするように VM を構成する必要があります。 Data Lake Store アカウントの IP アドレスは、アカウントの DNS 名 (`<account>.azuredatalakestore.net`) を解決することによって調べることができます。 アカウントの DNS 名を解決するには、**nslookup** などのツールを使用できます。 コンピューターでコマンド プロンプトを開き、次のコマンドを実行します。
 
     nslookup mydatastore.azuredatalakestore.net
 
@@ -43,10 +43,10 @@ Azure Data Lake Store は、パブリック インターネット IP アドレ�
 
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-nsg"></a>NSG を使用して制限されている VM からの接続を有効にする
-NSG ルールを使用してインターネットへのアクセスがブロックされている場合は、Data Lake Store の IP アドレスへのアクセスを許可する別の NSG を作成できます。 NSG ルールの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関するページを参照してください。 NSG を作成する方法については、「[How to manage NSGs using the Azure portal (Azure Portal を使用して NSG を管理する方法)](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)」を参照してください。
+NSG ルールを使用してインターネットへのアクセスがブロックされている場合は、Data Lake Store の IP アドレスへのアクセスを許可する別の NSG を作成できます。 NSG ルールの詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md)に関するページを参照してください。 NSG を作成する方法については、[Azure Portal を使用した NSG の管理方法](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)に関するページを参照してください。
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-udr-or-expressroute"></a>UDR または ExpressRoute を使用して制限されている VM からの接続を有効にする
-ルート (UDR または BGP 交換ルート) を使用してインターネットへのアクセスがブロックされている場合は、そのようなサブネット内の VM が Data Lake Store エンドポイントにアクセスできるように、特別なルートを構成する必要があります。 詳細については、[ユーザー定義のルート](../virtual-network/virtual-networks-udr-overview.md)に関するページを参照してください。 UDR の作成方法の詳細については、[Resource Manager での UDR の作成](../virtual-network/virtual-network-create-udr-arm-ps.md)に関するページを参照してください。
+ルート (UDR または BGP 交換ルート) を使用してインターネットへのアクセスがブロックされている場合は、そのようなサブネット内の VM が Data Lake Store エンドポイントにアクセスできるように、特別なルートを構成する必要があります。 詳細については、[ユーザー定義のルートの概要](../virtual-network/virtual-networks-udr-overview.md)に関するページを参照してください。 UDR の作成方法の詳細については、[Resource Manager での UDR の作成](../virtual-network/tutorial-create-route-table-powershell.md)に関するページを参照してください。
 
 ### <a name="enabling-connectivity-from-vms-restricted-by-using-expressroute"></a>ExpressRoute を使用して制限されている VM からの接続を有効にする
 ExpressRoute 回線を構成すると、オンプレミスのサーバーはパブリック ピアリングを介して Data Lake Store にアクセスできます。 パブリック ピアリングのための ExpressRoute の構成の詳細については、「[ExpressRoute FAQs (ExpressRoute に関する FAQ)](../expressroute/expressroute-faqs.md)」を参照してください。

@@ -1,6 +1,6 @@
 ---
-title: "Microsoft Azure 仮想データ センター | Microsoft Docs"
-description: "Azure で仮想データ センターを構築する方法について説明します"
+title: 'Microsoft Azure 仮想データセンター: ネットワークの観点 | Microsoft Docs'
+description: Azure で仮想データ センターを構築する方法について説明します
 services: networking
 author: tracsman
 manager: rossort
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.openlocfilehash: 7dcc6b77bde8b8a7b485525105c1a07c53301f8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c4693d91fe81ce55c6faa6610ea19219ac5cfcb5
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/12/2018
 ---
-# <a name="microsoft-azure-virtual-data-center"></a>Microsoft Azure 仮想データ センター
+# <a name="microsoft-azure-virtual-datacenter-a-network-perspective"></a>Microsoft Azure 仮想データセンター: ネットワークの観点
 **Microsoft Azure**: 移行の高速化、コストの削減、オンプレミスのアプリとデータの統合
 
 ## <a name="overview"></a>概要
@@ -295,7 +295,7 @@ OMS のログ分析は、オペレーティング システム、アプリケー
 SLA に関する問題だけでなく、複数の vDC をデプロイすることに意味がある一般的なシナリオがいくつかあります。
 
 -   リージョン/グローバルへの配置
--   障害復旧
+-   ディザスター リカバリー
 -   DC 間でトラフィックを転送するメカニズム
 
 #### <a name="regionalglobal-presence"></a>リージョン/グローバルへの配置
@@ -303,7 +303,7 @@ Azure データ センターは世界中の多数のリージョンに存在し�
 
 vDC がホストされている Azure リージョンは、組織が運営される法的管轄によって確立された規制の要件に準拠している必要もあります。
 
-#### <a name="disaster-recovery"></a>障害復旧
+#### <a name="disaster-recovery"></a>ディザスター リカバリー
 ディザスター リカバリー計画の実装は、関連するワークロードの種類と、異なる vDC 間でワークロードの状態を同期する機能に強く関係します。 ほとんどのユーザーは、2 つの異なる vDC で実行するデプロイ間でアプリケーション データを同期し、高速のフェールオーバー メカニズムを実装することを望みます。 ほとんどのアプリケーションは待機時間の影響を受けやすく、データ同期がタイムアウトしたり遅延する可能性があります。
 
 異なる vDC 内のアプリケーションの同期またはハートビート監視には、それらの間での通信が必要です。 異なるリージョン内の 2 つの vDC は、次の方法で接続できます。
@@ -338,7 +338,7 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
  - vDC のハブとスポーク設計の基礎となるテクノロジである [VNet ピアリング][VNetPeering]について理解します
  - [AAD][AAD] を実装して [RBAC][RBAC] の調査を始めます
  - 組織の構造、要件、ポリシーを満たすサブスクリプションとリソースの管理モデルおよび RBAC モデルを開発します。 最も重要なアクティビティは計画です。 再編成、合併、新製品ラインなどの場合は、可能な限り計画してください。

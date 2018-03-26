@@ -1,11 +1,11 @@
 ---
-title: "クロスプレミス Azure 接続用の VPN Gateway の設定 | Microsoft Docs"
-description: "Azure 仮想ネットワーク ゲートウェイ用の VPN Gateway の設定について説明します。"
+title: クロスプレミス Azure 接続用の VPN Gateway の設定 | Microsoft Docs
+description: Azure 仮想ネットワーク ゲートウェイ用の VPN Gateway の設定について説明します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: ae665bc5-0089-45d0-a0d5-bc0ab4e79899
 ms.service: vpn-gateway
@@ -13,19 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/12/2017
+ms.date: 03/05/2018
 ms.author: cherylmc
-ms.openlocfilehash: d265c72cfc02710afb630f3b8258602c936d1ebc
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: e4f02e2b001b6821e732cead660aa0b758f1133e
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
 VPN ゲートウェイは、仮想ネットワークとオンプレミスの場所の間でパブリック接続を使って暗号化されたトラフィックを送信する仮想ネットワーク ゲートウェイの一種です。 VPN ゲートウェイを使用して、Azure バックボーン経由で仮想ネットワーク間にトラフィックを送信できます。
 
 VPN Gateway の接続は複数のリソースの構成に依存し、それぞれに構成可能な設定が含まれます。 このセクションでは、Resource Manager デプロイメント モデル に作成される仮想ネットワークの VPN ゲートウェイに関するリソースと設定について説明します。 各接続ソリューションの説明とトポロジ ダイアグラムについては、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」をご覧ください。
+
+>[!NOTE]
+> この記事の値は、-GatewayType 'Vpn' を使用する仮想ネットワーク ゲートウェイに適用されます。 そのため、これらの値は VPN ゲートウェイとして参照されます。 -GatewayType 'ExpressRoute' に適用される値については、「[ExpressRoute 用の仮想ネットワーク ゲートウェイについて](../expressroute/expressroute-about-virtual-network-gateways.md)」をご覧ください。 ExpressRoute ゲートウェイの値は、VPN ゲートウェイに使用するものと同じ値ではありません。
+>
+>
 
 ## <a name="gwtype"></a>ゲートウェイの種類
 
@@ -52,7 +57,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 
 ### <a name="configure-the-gateway-sku"></a>ゲートウェイ SKU の構成
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure ポータル
 
 Azure Portal を使用して Resource Manager の仮想ネットワーク ゲートウェイを作成する場合、ドロップダウンを使用してワーク ゲートウェイ SKU を選択できます。 表示されるオプションは、選択したゲートウェイの種類と VPN の種類に対応します。
 
@@ -155,6 +160,6 @@ VPN Gateway 構成に対して REST API、PowerShell コマンドレット、ま
 | [REST API](https://msdn.microsoft.com/library/jj154113) |[REST API](/rest/api/network/virtualnetworkgateways) |
 | サポートされていません | [Azure CLI](/cli/azure/network/vnet-gateway)|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 使用可能な接続構成の詳細については、「[VPN Gateway の構成設定について](vpn-gateway-about-vpngateways.md)」を参照してください。

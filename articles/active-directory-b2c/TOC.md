@@ -33,7 +33,7 @@
 ### [ASP.NET API の保護](active-directory-b2c-tutorials-web-api.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 ### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
-### [Node.js](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+### [Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
 ### [.NET Web API の呼び出し](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # ガイド
@@ -61,6 +61,7 @@
 ## [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
 ## [Reporting API の使用](active-directory-b2c-reference-usage-reporting-api.md)
 ## [ユーザーの移行](active-directory-b2c-user-migration.md)
+## [ソーシャル ID の移行](active-directory-b2c-social-migration.md)
 
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)

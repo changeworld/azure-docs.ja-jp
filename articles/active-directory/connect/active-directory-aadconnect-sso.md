@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: シームレス シングル サインオン | Microsoft Docs"
-description: "このトピックでは、Azure Active Directory (Azure AD) シームレス シングル サインオンについて説明します。この機能により、企業ネットワーク内の企業のデスクトップ ユーザーに真のシングル サインオンを提供できます。"
+title: 'Azure AD Connect: シームレス シングル サインオン | Microsoft Docs'
+description: このトピックでは、Azure Active Directory (Azure AD) シームレス シングル サインオンについて説明します。この機能により、企業ネットワーク内の企業のデスクトップ ユーザーに真のシングル サインオンを提供できます。
 services: active-directory
-keywords: "Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
-documentationcenter: 
+keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: b71a2f19fee370ab1d732becd1c3b644505e2233
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 14018db3cbe34c9eca9048ceaf376ff3a06a4353
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -51,17 +51,19 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - サインインのユーザー名には、オンプレミスの既定のユーザー名 (`userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID`) を指定できます。 シームレス SSO は Kerberos チケットの `securityIdentifier` 要求を使用して Azure AD で対応するユーザー オブジェクトを検索するので、どちらを使用しても問題ありません。
 - シームレス SSO は便宜的な機能です。 これが何らかの理由で失敗した場合、ユーザーのサインイン エクスペリエンスは通常の動作に戻ります。つまり、ユーザーはサインイン ページでパスワードを入力する必要があります。
 - アプリケーションが Azure AD サインイン要求で `domain_hint` (OpenID Connect) パラメーターや `whr` (SAML) パラメーター (テナントを識別する)、または `login_hint` パラメーター (ユーザーを識別する) を転送する場合、ユーザーはユーザー名やパスワードを入力することなく自動的にサインインします。
+- サインアウトがサポートされています。 そのため、ユーザーは、シームレス SSO を使用して自動的にサインインするのではなく、サインインに別の Azure AD アカウントを使用することを選択できます。
+- Office 365 クライアント (16.0.8730.xxxx 以降) では、非対話型フローの使用がサポートされています。
 - この機能は、Azure AD Connect を使用して有効にできます。
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](https://aka.ms/modernauthga)をサポートする Office クライアントでサポートされています。
 
 | OS\ブラウザー |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|[はい]|いいえ |[はい]|はい\*|N/A
-|Windows 8.1|[はい]|N/A|[はい]|はい\*|N/A
-|Windows 8|[はい]|N/A|[はい]|はい\*|N/A
-|Windows 7|[はい]|N/A|[はい]|はい\*|該当なし 
-|Mac OS X|N/A|N/A|はい\*|はい\*|はい\*
+|Windows 10|[はい]|いいえ |[はい]|はい\*|該当なし
+|Windows 8.1|[はい]|該当なし|[はい]|はい\*|該当なし
+|Windows 8|[はい]|該当なし|[はい]|はい\*|該当なし
+|Windows 7|[はい]|該当なし|[はい]|はい\*|該当なし 
+|Mac OS X|該当なし|該当なし|はい\*|はい\*|はい\*
 
 \*[追加の構成](active-directory-aadconnect-sso-quick-start.md#browser-considerations)が必要
 

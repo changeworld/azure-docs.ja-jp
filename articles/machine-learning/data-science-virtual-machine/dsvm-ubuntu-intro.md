@@ -1,8 +1,8 @@
 ---
-title: "Azure での Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs"
-description: "分析と機械学習を行うために、Azure で Linux (Ubuntu) データ サイエンス用仮想マシンの構成と作成を行います。"
+title: Azure での Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング | Microsoft Docs
+description: 分析と機械学習を行うために、Azure で Linux (Ubuntu) データ サイエンス用仮想マシンの構成と作成を行います。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 03/16/2018
 ms.author: bradsev
-ms.openlocfilehash: 557eab702175b1741cdcde62045947f2c031fbcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 721b18845a3b839d59c7eb0a04646635fa8d9fe7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
@@ -83,7 +83,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
 2. 下部にある **[作成]** をクリックして、ウィザードを起動します。![configure-data-science-vm](./media/dsvm-ubuntu-intro/configure-data-science-virtual-machine.png)
 3. 以下のセクションでは、Microsoft データ サイエンス仮想マシンの作成に使用されるウィザードの各ステップ (上の図の右側に列挙) での入力について説明します。 以下は、これらの各ステップを構成するために必要な入力項目です。
    
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[基本]**:
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[基本]**:
    
    * **名前**: 作成するデータ サイエンス サーバーの名前です。
    * **ユーザー名**: 最初のアカウントのサインイン ID。
@@ -212,10 +212,10 @@ Python 3.5 は、 */anaconda/envs/py35/bin*にインストールされていま�
 
 シェルで「 **python** 」と入力するだけで、Python の対話型セッションを呼び出すことができます。 グラフィカル インターフェイスを使用している場合や X11 転送を設定している場合は、「**pycharm**」と入力して PyCharm Python IDE を起動します。
 
-追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ````pip```` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 For example:
+追加の Python ライブラリをインストールするには、sudo 権限で ```conda``` または ````pip```` コマンドを実行し、Python パッケージ マネージャー (conda または pip) の完全パスを指定して適切な Python 環境にインストールする必要があります。 例: 
 
-    sudo /anaconda/bin/pip install <package> #for Python 2.7 environment
-    sudo /anaconda/envs/py35/bin/pip install <package> # for Python 3.5 environment
+    sudo /anaconda/bin/pip install -n <package> #for Python 2.7 environment
+    sudo /anaconda/envs/py35/bin/pip install -n <package> # for Python 3.5 environment
 
 
 ### <a name="jupyter-notebook"></a>Jupyter Notebook
@@ -409,7 +409,7 @@ Rattle を実行するには、グラフィカル デスクトップのサイン
 
 Rattle と R を終了できます。これで、生成された R スクリプトを変更することも、そのまま使用することもできます。スクリプトは、いつでも実行して、Rattle UI 内で実行されたすべての操作を繰り返すことができます。 これは、特に R の初心者にとって簡単な方法です。この方法では、シンプルなグラフィカル インターフェイスで分析と機械学習をすばやく実行することができ、変更または学習する R のコードを自動的に生成できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 学習と調査をどのように続ければよいかを以下に示します。
 
 * チュートリアル「[Data science on the Data Science Virtual Machine for Linux](linux-dsvm-walkthrough.md)」(Linux データ サイエンス仮想マシンでのデータ サイエンス) では、ここでプロビジョニングされた Linux データ サイエンス VM を使用して、一般的なデータ サイエンス タスクをいくつか実行する方法を示します。 

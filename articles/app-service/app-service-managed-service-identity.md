@@ -1,28 +1,28 @@
 ---
-title: "App Service および Azure Functions での管理対象のサービス ID | Microsoft Docs"
-description: "Azure App Service および Azure Functions での管理対象のサービス ID の概念と設定に関するガイドです"
+title: App Service および Azure Functions での管理対象のサービス ID | Microsoft Docs
+description: Azure App Service および Azure Functions での管理対象のサービス ID の概念と設定に関するガイドです
 services: app-service
 author: mattchenderson
 manager: cfowler
-editor: 
+editor: ''
 ms.service: app-service
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
-ms.openlocfilehash: 736a82d282e5769fb403c66ffd5d44107c6d3218
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 09e848abaf09811ff3f2b8ad009cd23dedb6645d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>App Service および Azure Functions で管理対象のサービス ID (パブリック プレビュー) を使用する方法
 
 > [!NOTE] 
 > 現在、App Service および Azure Functions のための管理対象のサービス ID はプレビュー段階です。
 
-このトピックでは、App Service および Azure Functions アプリケーション用の管理対象アプリ ID を作成し、それを使って他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory の管理対象のサービス ID を使うと、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 管理対象のサービス ID について詳しくは、「[Managed Service Identity overview](../active-directory/msi-overview.md)」(管理対象のサービス ID の概要) をご覧ください。
+このトピックでは、App Service および Azure Functions アプリケーション用の管理対象アプリ ID を作成し、それを使って他のリソースにアクセスする方法を説明します。 アプリで Azure Active Directory の管理対象のサービス ID を使うと、他の AAD で保護されたリソース (Azure Key Vault など) に簡単にアクセスできます。 ID は Azure プラットフォームによって管理され、ユーザーがシークレットをプロビジョニングまたはローテーションする必要はありません。 管理対象のサービス ID について詳しくは、「[Managed Service Identity overview](../active-directory/managed-service-identity/overview.md)」(管理対象のサービス ID の概要) をご覧ください。
 
 ## <a name="creating-an-app-with-an-identity"></a>ID を持つアプリの作成
 
@@ -126,7 +126,7 @@ Azure Resource Manager テンプレートを使って、Azure リソースのデ
 アプリは、その ID を使って、AAD で保護されている他のリソース (Azure Key Vault など) へのトークンを取得できます。 これらのトークンは、アプリケーションの特定のユーザーではなく、リソースにアクセスしているアプリケーションを表します。 
 
 > [!IMPORTANT]
-> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 管理対象のサービス ID のトークンをサポートしているリソースについて詳しくは、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/pp/msi-overview.md#which-azure-services-support-managed-service-identity)」をご覧ください。
+> アプリケーションからのアクセスを許可するように、対象のリソースを構成することが必要な場合があります。 たとえば、Key Vault に対するトークンを要求する場合、アプリケーションの ID を含むアクセス ポリシーを追加する必要があります。 追加しないと、トークンを含めた場合でも、Key Vault の呼び出しは拒否されます。 管理対象のサービス ID のトークンをサポートしているリソースについて詳しくは、「[Azure AD 認証をサポートしている Azure サービス](../active-directory/managed-service-identity/overview.md#which-azure-services-support-managed-service-identity)」をご覧ください。
 
 App Service と Azure Functions には、トークンを取得するための簡単な REST プロトコルがあります。 .NET アプリケーションの場合は、Microsoft.Azure.Services.AppAuthentication ライブラリがこのプロトコルの抽象化を提供し、ローカル開発エクスペリエンスをサポートします。
 

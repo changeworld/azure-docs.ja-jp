@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)"
-description: "Azure Site Recovery サービスを使用して、別の Azure リージョンへの Azure VM のディザスター リカバリーを設定する方法について説明します。"
+title: Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)
+description: Azure Site Recovery サービスを使用して、別の Azure リージョンへの Azure VM のディザスター リカバリーを設定する方法について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 12/11/2017
+ms.date: 03/16/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: ed604209a8db4f2b39d433eb9596064da6104145
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 47d9a1e8aecde8ba0f01034f1d172c3fbd87ccfe
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)
 

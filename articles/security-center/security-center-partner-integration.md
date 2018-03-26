@@ -1,24 +1,24 @@
 ---
-title: "Azure Security Center でのセキュリティ ソリューションの統合 | Microsoft Docs"
-description: "Azure Security Center とパートナーの統合によって Azure リソースの全体的なセキュリティを強化する方法について説明します。"
+title: Azure Security Center でのセキュリティ ソリューションの統合 | Microsoft Docs
+description: Azure Security Center とパートナーの統合によって Azure リソースの全体的なセキュリティを強化する方法について説明します。
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
-editor: 
+editor: ''
 ms.assetid: 6af354da-f27a-467a-8b7e-6cbcf70fdbcb
 ms.service: security-center
 ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/08/2018
 ms.author: yurid
-ms.openlocfilehash: 42cbc442d03cdca04d380d05d9e904355476099e
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 48648c2e84d2a2e4de01f04495fb08df603c6017
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -41,13 +41,13 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 
 | エンドポイント保護               | プラットフォーム                             | Security Center のインストール | Security Center の検出 |
 |-----------------------------------|---------------------------------------|------------------------------|---------------------------|
-| Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | いいえ、OS に組み込まれている           | あり                       |
-| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 | 拡張機能を介して                | あり                       |
-| Trend Micro – すべてのバージョン         | Windows Server ファミリ                 | 拡張機能を介して                | あり                       |
-| Symantec v12.1.1100 以降                     | Windows Server ファミリ                 | いいえ                           | あり                        |
-| MacAfee                           | Windows Server ファミリ                 | いいえ                           | いいえ                        |
-| Kaspersky                         | Windows Server ファミリ                 | いいえ                           | いいえ                        |
-| Sophos                            | Windows Server ファミリ                 | いいえ                           | いいえ                        |
+| Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | いいえ、OS に組み込まれている           | [はい]                       |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 | 拡張機能を介して                | [はい]                       |
+| Trend Micro – すべてのバージョン         | Windows Server ファミリ                 | 拡張機能を介して                | [はい]                       |
+| Symantec v12.1.1100 以降                     | Windows Server ファミリ                 | いいえ                            | [はい]                        |
+| MacAfee                           | Windows Server ファミリ                 | いいえ                            | いいえ                         |
+| Kaspersky                         | Windows Server ファミリ                 | いいえ                            | いいえ                         |
+| Sophos                            | Windows Server ファミリ                 | いいえ                            | いいえ                         |
 
 
 
@@ -63,7 +63,15 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 ## <a name="manage-integrated-azure-security-solutions-and-other-data-sources"></a>統合された Azure セキュリティ ソリューションとその他のデータ ソースの管理
 
-デプロイ後に、統合された Azure セキュリティ ソリューションの正常性に関する情報を表示し、基本的な管理タスクを実行することができます。 また、共通イベント形式 (CEF) の Azure Active Directory Identity Protection のアラートやファイアウォール ログなど、他の種類のセキュリティ データ ソースを接続することもできます。 Security Center ダッシュボードで [セキュリティ ソリューション] を選択します。
+1. [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインします。
+
+2. **[Microsoft Azure]** メニューの **[セキュリティ センター]** を選択します。 **[セキュリティ センター - 概要]** が開きます。
+
+  ![Security Center の概要](./media/security-center-partner-integration/overview.png)
+
+3. **[概要]** で、**[セキュリティ ソリューション]** を選択します。
+
+**[セキュリティ ソリューション]** では、統合された Azure セキュリティ ソリューションの正常性に関する情報を表示し、基本的な管理タスクを実行することができます。 また、共通イベント形式 (CEF) の Azure Active Directory Identity Protection のアラートやファイアウォール ログなど、他の種類のセキュリティ データ ソースを接続することもできます。
 
 ### <a name="connected-solutions"></a>接続済みソリューション
 
@@ -71,13 +79,22 @@ Security Center からデプロイされている Azure セキュリティ ソ�
 
 ![接続済みソリューション](./media/security-center-partner-integration/security-center-partner-integration-fig4.png)
 
+詳細については、[接続済みのパートナー ソリューションの管理](security-center-partner-solutions.md)に関するページを参照してください。
+
 ### <a name="discovered-solutions"></a>検出されたソリューション
 
-**[検出されたソリューション]** セクションには、Azure 経由で追加されたすべてのソリューションが表示されます。 また、Security Center が提案する、それに接続する必要があるソリューションがすべて表示されます。
+Security Center は、Azure で実行されていても Security Center に接続されていないセキュリティ ソリューションを自動的に検出し、**[検出されたソリューション]** セクションにソリューションを表示します。 これには、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) などの Azure ソリューションだけでなく、パートナー ソリューションも含まれます。
+
+> [!NOTE]
+> "検出されたソリューション" 機能は、Security Center の Standard レベルで利用できます。 Security Center の価格レベルの詳細については、[価格](security-center-pricing.md)に関するページを参照してください。
+>
+>
+
+ソリューションの下の **[接続]** を選択して、Security Center と統合し、セキュリティのアラートが通知されるようにします。
 
 ![検出されたソリューション](./media/security-center-partner-integration/security-center-partner-integration-fig5.png)
 
-Security Center は、Azure で実行されている他のセキュリティ ソリューションを自動的に検出します。 これには、[Azure AD Identity Protection](https://docs.microsoft.com/azure/active-directory/active-directory-identityprotection) などの Azure ソリューションに加え、Azure で実行されているパートナー ソリューションも含まれます。 これらのソリューションを Security Center と統合するには、**[接続]** を選択します。
+Security Center は、共通イベント形式 (CEF) のログを転送することができる、サブスクリプションにデプロイされたソリューションも検出します。 Security Center に、CEF ログを使用する[セキュリティ ソリューションを接続](quick-security-solutions.md)する方法を参照してください。
 
 ### <a name="add-data-sources"></a>データ ソースの追加
 
@@ -86,11 +103,10 @@ Security Center は、Azure で実行されている他のセキュリティ ソ
 ![データ ソース](./media/security-center-partner-integration/security-center-partner-integration-fig7.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 この記事では、Security Center でパートナー ソリューションを統合する方法について説明しました。 Security Center の詳細については、次の記事を参照してください。
 
-* [Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
 * [Microsoft Advanced Threat Analytics を Azure Security Center に接続する](security-center-ata-integration.md)
 * [Azure Active Directory Identity Protection を Azure Security Center に接続する](security-center-aadip-integration.md)
 * [Security Center でのセキュリティ正常性の監視](security-center-monitoring.md)。 Azure リソースの正常性を監視する方法について説明しています。

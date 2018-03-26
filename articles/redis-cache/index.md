@@ -1,24 +1,24 @@
 ---
-title: "Azure Redis Cache のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "アプリケーションでのデータへの高速アクセスを可能にする、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカーである Azure Redis Cache の使用方法について説明します。 チュートリアルや API リファレンスなどを提供します。"
+title: Azure Redis Cache のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: アプリケーションでのデータへの高速アクセスを可能にする、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカーである Azure Redis Cache の使用方法について説明します。 チュートリアルや API リファレンスなどを提供します。
 services: redis-cache
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: redis-cache
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 6528d900ba3641189f8000db8d2535c9b215d148
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b772df55f8862330da9e557b9bf2ed11b9e2347
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="redis-cache-documentation"></a>Redis Cache のドキュメント
+# <a name="redis-cache-documentation"></a>Redis Cache のドキュメント
 
 アプリケーションに対してスループットが高く待機時間の短いデータ アクセスを提供する、セキュリティで保護されたデータ キャッシュおよびメッセージング ブローカー、Azure Redis Cache の使用方法について説明します。 チュートリアルや API リファレンスなどのドキュメントでは、Azure 上の任意のアプリケーションから Redis Cache を使用する方法を紹介します。
 

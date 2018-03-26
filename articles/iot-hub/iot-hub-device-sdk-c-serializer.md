@@ -1,11 +1,11 @@
 ---
-title: "C 用 Azure IoT device SDK – シリアライザー | Microsoft Docs"
-description: "C 用 Azure IoT device SDK でシリアライザー ライブラリを使用し、IoT Hub と通信するデバイス アプリを作成する方法。"
+title: C 用 Azure IoT device SDK – シリアライザー | Microsoft Docs
+description: C 用 Azure IoT device SDK でシリアライザー ライブラリを使用し、IoT Hub と通信するデバイス アプリを作成する方法。
 services: iot-hub
-documentationcenter: 
-author: olivierbloch
+documentationcenter: ''
+author: yzhong94
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: defbed34-de73-429c-8592-cd863a38e4dd
 ms.service: iot-hub
 ms.devlang: cpp
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2016
-ms.author: obloch
-ms.openlocfilehash: d8b9e147b68d16c6c166e92cbabf5b5b63e23e8d
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.author: yizhon
+ms.openlocfilehash: da9a2dd8bad68c03bb75d1772cf9e5dc539892aa
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)で、**C 用 Azure IoT device SDK** を紹介しました。それに続く記事では、[**IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md) について詳しく説明しました。 今回の記事では、残りのコンポーネントである **シリアライザー** ライブラリについて詳しく説明し、SDK の対応範囲をすべて説明します。
@@ -64,7 +64,7 @@ END_NAMESPACE(WeatherStation);
 ### <a name="supported-data-types"></a>サポートされているデータ型
 次のデータの型は、 **シリアライザー** ライブラリを使用して作成されたモデルでサポートされます。
 
-| 型 | Description |
+| type | [説明] |
 | --- | --- |
 | double |倍精度浮動小数点数 |
 | int |32 ビット整数 |
@@ -74,7 +74,7 @@ END_NAMESPACE(WeatherStation);
 | int16\_t |16 ビット整数型 |
 | int32\_t |32 ビット整数 |
 | int64\_t |64 ビット整数 |
-| bool |boolean |
+| bool |ブール値 |
 | ascii\_char\_ptr |ASCII 文字列 |
 | EDM\_DATE\_TIME\_OFFSET |日時オフセット |
 | EDM\_GUID |GUID |
@@ -662,7 +662,7 @@ serializer_deinit();
 
 それ以外の場合、上に示したその他の機能はすべて、**シリアライザー** ライブラリの場合でも **IoTHubClient** ライブラリの場合と同じように動作します。 これらのいずれかのトピックの詳細については、このシリーズの [前回の記事](iot-hub-device-sdk-c-iothubclient.md) を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、**C 用 Azure IoT device SDK** に含まれている**シリアライザー** ライブラリの独自の側面について詳しく説明しました。説明した情報により、モデルを使用してイベントを送信したり、IoT Hub からメッセージを受信したりする方法についての理解が深まります。
 
 また、この記事は、**C 用 Azure IoT device SDK** を使用したアプリケーションの開発方法に関する 3 部構成のシリーズの最終回でもあります。この記事を読むことで、API の概要だけでなく、API のしくみについて理解するための十分な情報を得ることができます。 追加情報として、ここで取り上げなかった SDK のサンプルがいくつかあります。 さらに、詳細を知るために役立つリソースとして、 [SDK ドキュメント](https://github.com/Azure/azure-iot-sdk-c) も参照してください。

@@ -1,32 +1,31 @@
 ---
-title: "Azure: 個人の保存データを暗号化で保護する | Microsoft Docs"
-description: "この記事は、Azure を使用して個人のデータを保護する場合に役立つシリーズの一部です"
+title: 'Azure: 個人の保存データを暗号化で保護する | Microsoft Docs'
+description: この記事をご覧になると、一般データ保護規則 (GDPR) などの業界や政府の要件に従うことができます。
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/31/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 31e41f9befd9319115e5d147b473756486100c6e
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.custom: ''
+ms.openlocfilehash: 37da3d91df4be871d6647b6290768ea4999a5010
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-at-rest-with-encryption"></a>Azure の暗号化テクノロジ: 個人の保存データを暗号化で保護する
 
 この記事では、保存データをセキュリティで保護する Azure の暗号化テクノロジについて説明します。
 
-保存データの暗号化は、機密データや個人データを保護し、コンプライアンスとデータのプライバシー要件を満たすベスト プラクティスです。
-Encryption at Rest は、データをディスク上で確実に暗号化することで、暗号化されていないデータに攻撃者がアクセスできないよう設計されています。
+保存データの暗号化は、機密データや個人データを保護し、コンプライアンスとデータのプライバシー要件を満たすベスト プラクティスです。 Encryption at Rest は、データをディスク上で確実に暗号化することで、暗号化されていないデータに攻撃者がアクセスできないよう設計されています。 この記事の情報をご覧になると、一般データ保護規則 (GDPR) に従うことができます。
 
 ## <a name="scenario"></a>シナリオ 
 
@@ -161,13 +160,13 @@ REST API または PowerShell を使用して、Azure Portal で TDE を構成�
 
 TDE を有効にする方法と、TDE で保護されたデータベースの複合化に関する情報の詳細については、[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database) に関する記事をご覧ください。
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 Azure のクラウドに個人データを格納して暗号化することで、会社の目標を達成できます。 Azure Disk Encryption を使用してボリューム全体を保護することで実現します。 これには、オペレーティング システム ファイルと、個人を特定できる情報などの機密データを含むデータ ファイルの両方が含まれている場合があります。 Azure Storage サービスの暗号化は、BLOB やファイルに格納される個人データを保護するために使用されます。 Azure SQL データベースに格納されるデータは、Transparent Data Encryption によって個人情報への不正アクセスから保護されます。
 
 Azure でデータを暗号化するために使用されるキーを保護するには、Azure Key Vault を使用します。 これにより、キー管理プロセスを合理化し、会社は個人データにアクセスして暗号化するキーの制御を維持できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Disk Encryption トラブルシューティング ガイド](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-tsg)
 

@@ -79,6 +79,8 @@
           href: jenkins-continuous-deployment.md
         - name: AKS での OpenFaaS の使用
           href: openfaas.md
+        - name: AKS での Spark ジョブの実行
+          href: spark-job.md
     - name: Kubernetes の基本
       items:
         - name: Kubernetes ダッシュボードの使用

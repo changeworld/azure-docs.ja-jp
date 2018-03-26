@@ -1,12 +1,12 @@
 ---
-title: "Azure 診断拡張機能の構成スキーマのバージョンと履歴 |Microsoft Docs"
-description: "Azure Virtual Machines、VM Scale Sets、Service Fabric、および Cloud Services のパフォーマンス カウンターの収集に関連しています。"
+title: Azure 診断拡張機能の構成スキーマのバージョンと履歴 |Microsoft Docs
+description: Azure Virtual Machines、VM Scale Sets、Service Fabric、および Cloud Services のパフォーマンス カウンターの収集に関連しています。
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,13 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: robb
-ms.openlocfilehash: 119e8a237f24cdc80a1ab8e376f2b308c9eada05
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 45a092452bc702a6a593cd6c21a8d2eaf4ff44bd
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/08/2018
 ---
-# <a name="azure-diagnostics-extention-configuration-schema-versions-and-history"></a>Azure 診断拡張機能の構成スキーマのバージョンと履歴
+# <a name="azure-diagnostics-extension-configuration-schema-versions-and-history"></a>Azure 診断拡張機能の構成スキーマのバージョンと履歴
 このページでは、Microsoft Azure SDK に付属する Azure 診断拡張機能のスキーマのバージョン一覧を示します。  
 
 > [!NOTE]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 > 
 > このページは、これらのサービスのいずれかを使用している場合にのみ該当します。
 
-Azure 診断拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。 詳細については、[Microsoft の監視ツールの概要](monitoring-overview.md)に関するページ参照してください。
+Azure 診断拡張機能は、Azure Monitor、Application Insights、Log Analytics など、他の Microsoft 診断製品と共に使用します。 詳細については、[Microsoft の監視ツールの概要に関するページ](monitoring-overview.md)を参照してください。
 
 ## <a name="azure-sdk-and-diagnostics-versions-shipping-chart"></a>Azure SDK のバージョンと診断のバージョンの一覧  
 
@@ -135,13 +135,13 @@ Sink 要素と、診断データを [Application Insights](../application-insigh
 ### <a name="azure-sdk-26-and-diagnostics-extension-13"></a>Azure SDK 2.6 と診断拡張 1.3 
 Visual Studio のクラウド サービス プロジェクトで、次の変更が行われました  (これらの変更はそれ以降のバージョンの Azure SDK にも当てはまります)。
 
-* ローカル エミュレーターで診断がサポートされるようになりました。 つまり Visual Studio での開発およびテスト時に診断データを収集し、開発中のアプリケーションで正しくトレースが作成されることを確認できます。 Visual Studio で Azure ストレージ エミュレーターを使ってクラウド サービス プロジェクトを実行している間に行われる診断データ収集が、接続文字列 `UseDevelopmentStorage=true` を指定すると有効になります。 すべての診断データは、(開発ストレージ) ストレージ アカウントに収集されます。
+* ローカル エミュレーターで診断がサポートされるようになりました。 この変更により、Visual Studio での開発およびテスト時に診断データを収集し、開発中のアプリケーションで正しくトレースが作成されることを確認できるようになりました。 Visual Studio で Azure ストレージ エミュレーターを使ってクラウド サービス プロジェクトを実行している間に行われる診断データ収集が、接続文字列 `UseDevelopmentStorage=true` を指定すると有効になります。 すべての診断データは、(開発ストレージ) ストレージ アカウントに収集されます。
 * 診断ストレージ アカウントの接続文字列 (Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString) の保存先が、再びサービス構成 (.cscfg) ファイルに戻されました。 Azure SDK 2.5 では、診断ストレージ アカウントが diagnostics.wadcfgx ファイルで指定されていました。
 
 Azure SDK 2.4 以前と Azure SDK 2.6 以降とで、接続文字列の働きに大きな違いがいくつかあります。
 
-* Azure SDK 2.4 以前では、診断プラグインが診断ログを転送するためのストレージ アカウント情報を取得する目的でラインタイムとして接続文字列を使用していました。
-* Azure SDK 2.6 以降では、Visual Studio が発行時に適切なストレージ アカウント情報を使って診断拡張機能を構成する目的で診断接続文字列を使用します。 Visual Studio が発行時に使用する各種サービス構成に対し、異なるストレージ アカウントを接続文字列で定義することができます。 しかし、(Azure SDK 2.5 以降) 診断プラグインが使用できなくなったため、.cscfg ファイルだけでは診断拡張機能を有効にできません。 Visual Studio や PowerShell などのツールを使用して個別に拡張機能を有効にする必要があります。
+* Azure SDK 2.4 以前では、実行時に診断プラグインが診断ログを転送するためのストレージ アカウント情報を取得する目的で接続文字列を使用していました。
+* Azure SDK 2.6 以降では、Visual Studio が診断接続文字列を使用して、発行時に診断拡張機能を適切なストレージ アカウント情報で構成します。 Visual Studio が発行時に使用する各種サービス構成に対し、異なるストレージ アカウントを接続文字列で定義することができます。 しかし、(Azure SDK 2.5 以降) 診断プラグインが使用できなくなったため、.cscfg ファイルだけでは診断拡張機能を有効にできません。 Visual Studio や PowerShell などのツールを使用して個別に拡張機能を有効にする必要があります。
 * PowerShell を使用して診断拡張機能を構成するプロセスを単純化するために、Visual Studio からの出力パッケージには、ロールごとの診断拡張機能のパブリック構成 XML も含まれます。 Visual Studio は、診断接続文字列を使用して、パブリック構成に存在するストレージ アカウント情報を取り込みます。 このパブリック構成ファイルは、PaaSDiagnostics<RoleName>.PubConfig.xml という名前で拡張機能フォルダーに作成されます。 このファイルを PowerShell ベースのデプロイで使用し、各構成をロールにマップすることができます。
 * .cscfg ファイル内の接続文字列は、Azure Portal で診断データにアクセスするときにも使用されるため、**[監視]** タブで確認できます。ポータルで監視データを詳細出力するようにサービスを構成するには、この接続文字列が必要となります。
 

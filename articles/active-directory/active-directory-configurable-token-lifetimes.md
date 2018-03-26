@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory における構成可能なトークンの有効期間 | Microsoft Docs"
-description: "Azure AD によって発行されたトークンの有効期間を設定する方法について説明します。"
+title: Azure Active Directory における構成可能なトークンの有効期間 | Microsoft Docs
+description: Azure AD によって発行されたトークンの有効期間を設定する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 06f5b317-053e-44c3-aaaa-cf07d8692735
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: eaf9e7088c8c88140ea690c13ff7e0c7026b8f86
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (パブリック プレビュー)
 Azure Active Directory (Azure AD) によって発行されたトークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。
@@ -34,6 +34,11 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 
 組織の既定のポリシーとして、ポリシーを指定できます。 ポリシーは、優先度が高いポリシーによって上書きされない限り、組織内のすべてのアプリケーションに適用されます。 ポリシーを特定のアプリケーションに割り当てることもできます。 優先順位の順序は、ポリシーの種類によって異なります。
 
+> [!NOTE]
+> SharePoint Online では、構成可能なトークンの有効期間ポリシーをサポートしていません。  PowerShell を使用してこのポリシーを作成することはできますが、SharePoint Online はこのポリシーを認識しません。 アイドル状態のセッションのタイムアウトの構成に関する詳細については、[SharePoint Online のブログ](https://techcommunity.microsoft.com/t5/SharePoint-Blog/Introducing-Idle-Session-Timeout-in-SharePoint-and-OneDrive/ba-p/119208)を参照してください。
+>* SharePoint Online のアクセス トークンの既定の有効期間は 1 時間です。 
+>* SharePoint Online の更新トークンの既定の最大非アクティブ時間は 90 日間です。
+>
 
 ## <a name="token-types"></a>トークンの種類
 

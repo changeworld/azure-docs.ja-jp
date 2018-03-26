@@ -1,6 +1,6 @@
 ---
-title: "OMS Log Analytics を使用した Azure SQL データ同期の監視 | Microsoft Docs"
-description: "OMS Log Analytics を使用して Azure SQL データ同期を監視する方法について説明します。"
+title: OMS Log Analytics を使用した Azure SQL データ同期の監視 | Microsoft Docs
+description: OMS Log Analytics を使用して Azure SQL データ同期を監視する方法について説明します。
 services: sql-database
 ms.date: 11/07/2017
 ms.topic: article
@@ -8,11 +8,12 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 8683b3aec569f210529c1188cbbf514f7956b340
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: data-sync
+ms.openlocfilehash: 423614227b16ad6cfa6dadfab1c5f2b93c5bbe62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="monitor-sql-data-sync-preview-with-oms-log-analytics"></a>OMS Log Analytics を使用した SQL データ同期 (プレビュー) の監視 
 
@@ -92,7 +93,7 @@ Runbook の作成の詳細については、「[初めての PowerShell Runbook]
 
     2.  同期グループの情報。
 
-    3.  OMS の情報。 これらの情報は、[OMS ポータル] | [設定] | [Connected Sources] (接続されたソース) で見つけます。 Log Analytics へのデータ送信の詳細については、「[Send data to Log Analytics with the HTTP Data Collector API (HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー))](../log-analytics/log-analytics-data-collector-api.md)」を参照してください。
+    3.  OMS の情報。 これらの情報は、[OMS ポータル] | [設定] | [Connected Sources] (接続されたソース) で見つけます。 Log Analytics へのデータ送信の詳細については、「[Send data to Log Analytics with the HTTP Data Collector API (HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (プレビュー))](../log-analytics/log-analytics-data-collector-api.md)」を参照してください。
 
 11. [テスト] ペインで Runbook を実行します。 それが成功したことを確認します。
 

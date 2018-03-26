@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: ccompy
 ms.openlocfilehash: 3da0e4b7f1db7173124d2b33ee4c9634a253aa31
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment の管理アドレス
 

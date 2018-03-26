@@ -1,11 +1,11 @@
 ---
-title: "Linux VM のコンピューティング ベンチマーク スコア | Microsoft Docs"
-description: "Linux を実行する Azure VM の CoreMark コンピューティング ベンチマーク スコアを比較します。"
+title: Linux VM のコンピューティング ベンチマーク スコア | Microsoft Docs
+description: Linux を実行する Azure VM の CoreMark コンピューティング ベンチマーク スコアを比較します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: cynthn
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 93e812c1-79dd-40c5-b97b-aa79f5cd7d76
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
-ms.author: cynthn
-ms.openlocfilehash: 3c7b34652ea4c9340b9fe7f6ada3f9992642aeac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cynthn;davberg
+ms.openlocfilehash: 1d3db66c54769a3efc91a4e909d9c53fc2650743
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="compute-benchmark-scores-for-linux-vms"></a>Linux VM のコンピューティング ベンチマーク スコア
 次の CoreMark ベンチマーク スコアは、Ubuntu を実行している、Azure の 高パフォーマンス VM ラインアップについてのコンピューティング パフォーマンスを示します。 コンピューティング ベンチマーク スコアは [Windows VM](../windows/compute-benchmark-scores.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にも利用できます。
@@ -86,7 +86,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="about-coremark"></a>CoreMark について
 Linux の数値は、Ubuntu 上で [CoreMark](http://www.eembc.org/coremark/faq.php) を実行して計算しました。 CoreMark は、スレッド数を仮想 CPU の数に設定し、同時実行数を PThreads に設定して構成しました。 目標の反復の回数は、少なくとも 20 秒 (通常はもっとはるかに長い) のランタイムを提供するために予期されるパフォーマンスに基づいて調整されました。 最終のスコアは、完了した反復の回数をテストの実行にかかった秒数で割った値を表します。 VM ごとに各テストを少なくとも 7 回実行しました。 テスト (H シリーズを除く) は、2015 年 10 月に、実行当日に VM がサポートされているすべての Azure パブリック リージョンで、複数の VM 上で実行されました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * ストレージの容量、ディスクの詳細、VM のサイズを選択する際のその他の考慮事項については、 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
 * Linux VM 上で CoreMark スクリプトを実行するには、 [CoreMark スクリプト パック](http://download.microsoft.com/download/3/0/5/305A3707-4D3A-4599-9670-AAEB423B4663/AzureCoreMarkScriptPack.zip)をダウンロードします。
 

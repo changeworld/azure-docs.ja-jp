@@ -1,12 +1,12 @@
 ---
-title: "Azure Backup エージェントを使用したファイルとフォルダーのバックアップ | Microsoft Docs"
-description: "Microsoft Azure Backup エージェントを使用して、Windows のファイルとフォルダーを Azure にバックアップします。 Recovery Services コンテナーの作成、Backup エージェントのインストール、バックアップ ポリシーの定義、ファイルとフォルダーの初回バックアップを行います。"
+title: Azure Backup エージェントを使用したファイルとフォルダーのバックアップ | Microsoft Docs
+description: Microsoft Azure Backup エージェントを使用して、Windows のファイルとフォルダーを Azure にバックアップします。 Recovery Services コンテナーの作成、Backup エージェントのインストール、バックアップ ポリシーの定義、ファイルとフォルダーの初回バックアップを行います。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;"
+editor: ''
+keywords: バックアップ コンテナー; Windows サーバーのバックアップ; Windows のバックアップ;
 ms.assetid: 7f5b1943-b3c1-4ddb-8fb7-3560533c68d5
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 1/5/2018
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 0adb2565299a2cd613068539736d4272d59a2397
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 88a588322d88f817937cf06e25b5b25a147f03d0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="back-up-a-windows-server-or-client-to-azure-using-the-resource-manager-deployment-model"></a>Resource Manager デプロイメント モデルで Windows Server または Windows クライアントを Azure にバックアップする
 この記事では、Resource Manager デプロイメント モデルを使用して、Azure Backup で Windows Server または Windows クライアントのファイルやフォルダーを Azure にバックアップする方法について説明します。
@@ -143,6 +143,9 @@ Recovery Services コンテナーは、経時的に作成されたすべての�
   コンテナー資格情報は、ダウンロード フォルダーにダウンロードされます。 コンテナー資格情報のダウンロードが完了すると、資格情報を開くか保存するかをたずねるポップアップが表示されます。 **[Save]** をクリックします。 誤って **[開く]** をクリックすると、コンテナー資格情報を開こうとして失敗します。 コンテナー資格情報を開くことはできません。 次の手順に進みます。 コンテナー資格情報はダウンロード フォルダーにあります。   
 
   ![コンテナー資格情報のダウンロード完了](./media/backup-try-azure-backup-in-10-mins/vault-credentials-downloaded.png)
+
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="install-and-register-the-agent"></a>エージェントをインストールして登録する
 

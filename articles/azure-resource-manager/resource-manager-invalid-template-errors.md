@@ -1,23 +1,23 @@
 ---
-title: "Azure の無効なテンプレート エラー | Microsoft Docs"
-description: "無効なテンプレート エラーを解決する方法について説明します。"
+title: Azure の無効なテンプレート エラー | Microsoft Docs
+description: 無効なテンプレート エラーを解決する方法について説明します。
 services: azure-resource-manager,azure-portal
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
-editor: 
+editor: ''
 ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: support-article
-ms.date: 09/13/2017
+ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 87bc6e4def624785c5052a9a25f579b022c940ec
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9626b3caaa7188a4e9a37f83d1fbf091951714f4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="resolve-errors-for-invalid-template"></a>無効なテンプレートのエラーを解決する
 
@@ -38,9 +38,9 @@ Message=<varies>
 
 このエラーは、さまざまな種類のエラーが原因となって発生する場合があります。 通常、テンプレートの構文や構造にエラーがあります。
 
-## <a name="solution"></a>解決策
+<a id="syntax-error" />
 
-### <a name="solution-1---syntax-error"></a>解決策 1 - 構文エラー
+## <a name="solution-1---syntax-error"></a>解決策 1 - 構文エラー
 
 テンプレートの検証に失敗したことを示すエラー メッセージが表示された場合、テンプレートに構文エラーが存在する可能性があります。
 
@@ -59,7 +59,9 @@ Message=Deployment template validation failed
 
 この種類のエラーが発生したら、式の構文を慎重に確認してください。 [Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) や [Visual Studio Code](resource-manager-vs-code.md) など、構文エラーの指摘が可能な JSON エディターの使用を検討してください。
 
-### <a name="solution-2---incorrect-segment-lengths"></a>解決策 2 - セグメントの長さが不適切
+<a id="incorrect-segment-lengths" />
+
+## <a name="solution-2---incorrect-segment-lengths"></a>解決策 2 - セグメントの長さが不適切
 
 テンプレートが無効であるために発生するエラーは他にもあります。たとえばリソース名が正しい形式になっていないとエラーが発生します。
 
@@ -118,9 +120,11 @@ for type {resource-type} has incorrect segment lengths.
 }
 ```
 
-### <a name="solution-3---parameter-is-not-valid"></a>解決策 3 - パラメーターが無効
+<a id="parameter-not-valid" />
 
-パラメーターに使用できる値がテンプレートで指定されている場合に、それ以外の値を指定すると、次のようなエラー メッセージが表示されます。
+## <a name="solution-3---parameter-is-not-valid"></a>解決策 3 - パラメーターが無効
+
+許可されているパラメーター値以外の値を指定すると、次のようなエラー メッセージが表示されます。
 
 ```
 Code=InvalidTemplate;
@@ -129,12 +133,40 @@ for the template parameter {parameter name} is not valid. The parameter value is
 part of the allowed values
 ```
 
-テンプレートで許可された値を十分に確認し、デプロイの際はその値を用いてください。
+テンプレートで許可された値を十分に確認し、デプロイの際はその値を用いてください。 許可されているパラメーター値の詳細については、「[Azure Resource Manager テンプレートの parameters セクション](resource-manager-templates-parameters.md)」をご覧ください。
 
-### <a name="solution-4---too-many-target-resource-groups"></a>解決策 4 - ターゲット リソース グループが多すぎる
+<a id="too-many-resource-groups" />
+
+## <a name="solution-4---too-many-target-resource-groups"></a>解決策 4 - ターゲット リソース グループが多すぎる
 
 1 つのデプロイに 5 つを超えるターゲット リソース グループを指定すると、このエラーが発生します。 デプロイ内のリソース グループの数を統合するか、一部のテンプレートを別個のデプロイとしてデプロイすることを検討してください。 詳細については、「[複数のサブスクリプションまたはリソース グループに Azure リソースをデプロイする](resource-manager-cross-resource-group-deployment.md)」を参照してください。
 
-### <a name="solution-5---circular-dependency-detected"></a>解決策 5 - 循環依存関係が検出された
+<a id="circular-dependency" />
+
+## <a name="solution-5---circular-dependency-detected"></a>解決策 5 - 循環依存関係が検出された
 
 このエラーは、リソース同士の依存関係がデプロイの開始を妨げるときに受け取ります。 相互依存関係の組み合わせにより、2 つ以上のリソースが同じく待機しているその他のリソースを待機します。 たとえば、resource1 が resource3 に依存、resource2 が resource1 に依存、resource3 が resource2 している場合などです。 通常、この問題は不要な依存関係を削除することによって解決できます。
+
+循環依存関係を解決するには:
+
+1. テンプレートで、循環依存関係が検出されたリソースを検索します。 
+2. **dependsOn** プロパティと**参照**関数の使用を確認し、そのリソースが依存しているリソースを調べます。 
+3. それらのリソースが依存しているリソースを確認します。 元のリソースに依存するリソースを見つけるまで依存関係を辿ります。
+5. 循環依存関係に関連するリソースについては、すべての **dependsOn** プロパティを調べ、不要な依存関係を特定します。 それら不要な依存関係を削除します。 依存関係が必要であるかどうか確証がない場合は、削除してみてください。 
+6. テンプレートを再デプロイします。
+
+**dependsOn** プロパティから値を削除すると、テンプレートをデプロイするときにエラーが発生することがあります。 エラーが発生した場合は、テンプレートの依存関係を元に戻します。 
+
+このアプローチで循環依存関係が解決しない場合は、デプロイ ロジックの一部 (拡張機能や構成設定など) を子リソースに移行することを検討してください。 それらの子リソースを、循環依存関係に関連するリソースの後にデプロイするように構成します。 たとえば、2 つの仮想マシンをデプロイする場合を考えてみます。それぞれ互いに参照するプロパティを設定する必要があるとします。 この仮想マシンは、次の順序でデプロイできます。
+
+1. vm1
+2. vm2
+3. vm1 の拡張機能は vm1 と vm2 に依存します。 拡張機能は vm2 から取得した値を vm1 に設定します。
+4. vm2 の拡張機能は vm1 と vm2 に依存します。 拡張機能は vm1 から取得した値を vm2 に設定します。
+
+このアプローチは App Service アプリでも有効です。 構成値をアプリ リソースの子リソースに移動することを検討してください。 2 つの Web アプリは次の順序でデプロイできます。
+
+1. webapp1
+2. webapp2
+3. webapp1 の config は webapp1 と webapp2 に依存します。 アプリの設定には webapp2 からの値が含まれています。
+4. webapp2 の config は webapp1 と webapp2 に依存します。 アプリの設定には webapp1 からの値が含まれています。

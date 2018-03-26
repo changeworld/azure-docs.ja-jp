@@ -1,11 +1,11 @@
 ---
-title: "SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続 | Microsoft Docs"
-description: "SAP HANA on Azure (L インスタンス) を使用するために必要な接続インフラストラクチャを構成します。"
+title: SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続 | Microsoft Docs
+description: SAP HANA on Azure (L インスタンス) を使用するために必要な接続インフラストラクチャを構成します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: RicksterCDN
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: infrastructure
 ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7a44fdbfb973d75c21aa87e9b9d0eea8fb2b3392
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: d94e491d12ac43a4d85a638c79bcd3b24a4bc0ef
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="sap-hana-large-instances-infrastructure-and-connectivity-on-azure"></a>Azure での SAP HANA on Azure (L インスタンス) のインフラストラクチャと接続 
 
@@ -75,7 +75,7 @@ Azure VNet 側をよく見ると、次のものが必要であることがわか
 >[!Note]
 >Azure VNet for HANA L インスタンスは、Azure Resource Manager デプロイメント モデルを使って作成する必要があります。 クラシック デプロイメント モデルとして一般的に知られている以前の Azure デプロイメント モデルは、HANA L インスタンス ソリューションではサポートされていません。
 
-VNet は、Azure Portal、PowerShell、Azure テンプレート、または Azure CLI を使用して作成することができます ([Azure Portal を使用した仮想ネットワークの作成](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください)。 以下の例では、Azure Portal で作成した VNet について詳しく説明しています。
+VNet は、Azure Portal、PowerShell、Azure テンプレート、または Azure CLI を使用して作成することができます ([Azure Portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)に関するページを参照してください)。 以下の例では、Azure Portal で作成した VNet について詳しく説明しています。
 
 Azure VNet の定義を Azure Portal で見ながら、いくつかの定義と、それらがさまざまな IP アドレス範囲の一覧とどのように関係しているかを見ていきます。 ここで用いている**アドレス空間**とは、Azure VNet が使用できるアドレス空間を意味します。 このアドレス空間は、VNet が BGP ルートの伝播に使用するアドレス範囲でもあります。 この**アドレス空間**は、次の画面で確認できます。
 
@@ -250,7 +250,7 @@ IP アドレスまたはサブネットを追加するには、Azure Portal、Po
 
 この場合、集約した範囲を新たに作成するのではなく、新しい IP アドレス範囲を新しい範囲として VNet アドレス空間に追加することをお勧めします。 どちらにしても、新しい IP アドレス範囲のクライアントから HANA L インスタンス ユニットへの接続を許可するためには、この変更を Microsoft に提出する必要があります。 追加する新しい VNet アドレス空間を取得するために、Azure サポート要求を開くことができます。 確認通知を受信したら、次の手順を実行します。
 
-追加のサブネットを Azure Portal で作成するには、「[Azure Portal を使用した仮想ネットワークの作成](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。PowerShell で作成するには、「[PowerShell を使用した仮想ネットワークの作成](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+追加のサブネットを Azure Portal で作成するには、「[Azure Portal を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)」を参照してください。PowerShell で作成するには、「[PowerShell を使用した仮想ネットワークの作成](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#create-a-virtual-network)」を参照してください。
 
 ## <a name="adding-vnets"></a>VNet の追加
 
@@ -277,15 +277,13 @@ SAP HANA on Azure サービス管理に問い合わせてください。ExpressR
 
 VNet のサブネットを削除するには、Azure Portal、PowerShell、CLI のいずれかを使用することができます。 Azure VNet の IP アドレス範囲/Azure VNet アドレス空間の範囲が集約されている場合、Microsoft のフォローアップはありません。 ただし、削除したサブネットを含む BGP ルート アドレス空間が依然として VNet から伝播されている場合は除きます。 Azure VNet IP アドレス範囲/Azure VNet アドレス空間を複数の IP アドレス範囲として定義した場合で、かつそのいずれかが、削除したサブネットに割り当てられていた場合、そのアドレス範囲を SAP HANA on Azure (L インスタンス) の通信可能範囲から削除するには、該当するアドレス範囲を VNet アドレス空間から削除したうえで、SAP HANA on Azure の Service Management に伝える必要があります。
 
-まだ具体的な手順にはなっていませんが、Azure.com のサブネットの削除専用ガイダンス (サブネットの削除の手順) は、追加時とは逆の手順となります。 サブネットの作成の詳細については、[Azure Portal を使用した仮想ネットワークの作成](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページを参照してください。
+サブネットを削除するには、[サブネットの削除](../../../virtual-network/virtual-network-manage-subnet.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-subnet)を参照してください。
 
 ## <a name="deleting-a-vnet"></a>VNet の削除
 
-VNet を削除するには、Azure Portal、PowerShell、CLI のいずれかを使用します。 SAP HANA on Azure Service Management は、SAP HANA on Azure (L インスタンス) の ExpressRoute 回線での既存の承認を取り消し、HANA L インスタンスとの通信に使用される Azure VNet IP アドレス範囲/Azure VNet アドレス空間を削除します。
+仮想ネットワークを削除するには、[仮想ネットワークの削除](../../../virtual-network/manage-virtual-network.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#delete-a-virtual-network)を参照してください。 SAP HANA on Azure Service Management は、SAP HANA on Azure (L インスタンス) の ExpressRoute 回線での既存の承認を取り消し、HANA L インスタンスとの通信に使用される Azure VNet IP アドレス範囲/Azure VNet アドレス空間を削除します。
 
 VNet が削除された後、Azure サポート要求を開き、削除する IP アドレス空間範囲を指定します。
-
-まだ具体的な手順にはなっていませんが、Azure.com の VNet の削除専用ガイダンス (VNet の削除の手順) は、上で説明されている追加時の手順とは逆になります。 VNet の作成の詳細については、「[Azure Portal を使用した仮想ネットワークの作成](../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」と「[PowerShell を使用した仮想ネットワークの作成](../../../virtual-network/virtual-networks-create-vnet-arm-ps.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
 
 すべてを確実に削除するために、次の項目を削除します。
 

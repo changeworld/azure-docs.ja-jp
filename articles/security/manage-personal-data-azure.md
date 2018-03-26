@@ -1,28 +1,28 @@
 ---
-title: "Microsoft Azure での個人データの管理 | Microsoft Docs"
-description: "Azure Active Directory と Azure SQL Database で個人データを修正、更新、削除、およびエクスポートする方法についてのガイダンス"
+title: Microsoft Azure での個人データの管理 | Microsoft Docs
+description: Azure Active Directory および Azure SQL Database で一般データ保護規則 (GDPR) に従うように個人データを修正、更新、削除、およびエクスポートする方法
 services: security
 documentationcenter: na
 author: barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/21/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.openlocfilehash: 51dca8955745b40a9126b142ea15e707fe58bc72
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 41c0cc4eb3697aa79abeabddc98a84598ce4ea50
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="manage-personal-data-in-microsoft-azure"></a>Microsoft Azure での個人データの管理
 
-この記事では、Azure Active Directory と Azure SQL Database で個人データを修正、更新、削除、およびエクスポートする方法について説明します。
+この記事では、Azure Active Directory および Azure SQL Database で一般データ保護規則 (GDPR) に従うように個人データを修正、更新、削除、およびエクスポートする方法について説明します。
 
 ## <a name="scenario"></a>シナリオ
 

@@ -1,8 +1,8 @@
 ---
-title: "チュートリアル: Azure Cost Management での使用状況とコストの確認 | Microsoft Docs"
-description: "このチュートリアルでは、使用状況とコストを確認して、傾向を追跡し、非効率性を検出してアラートを作成します。"
+title: 'チュートリアル: Azure Cost Management での使用状況とコストの確認 | Microsoft Docs'
+description: このチュートリアルでは、使用状況とコストを確認して、傾向を追跡し、非効率性を検出してアラートを作成します。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 02/27/2018
@@ -10,18 +10,18 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: e8f09a90ae9a4dd54d81335de2494f0dcbe09485
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 558dcd65051c0134a87205dcd8bbf432d7763fd2
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/09/2018
 ---
 <!-- Intent: As a cloud-consuming user, I need to view usage and costs for my cloud resources and services.
 -->
 
 # <a name="tutorial-review-usage-and-costs"></a>チュートリアル: 使用状況とコストを確認する
 
-Cloudyn の Azure Cost Management では使用状況とコストが表示されるため、傾向を追跡し、非効率性を検出してアラートを作成できます。 使用状況とコストのすべてのデータは、Cloudyn ダッシュボードとレポートに表示されます。 このチュートリアルの例では、ダッシュボードとレポートを使用して、使用状況とコストを確認する方法を説明します。 このチュートリアルで学習する内容は次のとおりです。
+Azure Cost Management では使用状況とコストが表示されるため、傾向を追跡し、非効率性を検出してアラートを作成できます。 使用状況とコストのすべてのデータは、Cloudyn ダッシュボードとレポートに表示されます。 このチュートリアルの例では、ダッシュボードとレポートを使用して、使用状況とコストを確認する方法を説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * 使用状況とコストの傾向を追跡する
@@ -57,7 +57,7 @@ Cloudyn ポータルですべての使用状況とコストを確認します。
 
 この例では、2017-08-31 以降の Azure Storage のコストが低下している一方で、他の Azure サービスの支出が横ばいになっていることがよくわかります。 ここで、支出低下の原因を確認します。 この例では、一部の従業員が休暇で仕事を離れており、Azure Storage サービスを使用していませんでした。
 
-利用状況の追跡とコストの傾向に関するチュートリアル ビデオを見るには、「[Azure Cost Management by Cloudyn を使用したクラウドの課金データと時間の分析](https://youtu.be/7LsVPHglM0g)」をご覧ください。
+利用状況の追跡とコストの傾向に関するチュートリアル ビデオを見るには、[Azure Cost Management を使用したクラウドの課金データと時間の分析](https://youtu.be/7LsVPHglM0g)に関するページを参照してください。
 
 ## <a name="detect-usage-inefficiencies"></a>使用の非効率性を検出する
 
@@ -81,7 +81,7 @@ Cloudyn ポータルですべての使用状況とコストを確認します。
 
 ![候補リスト](./media/tutorial-review-usage/sizing03.png)
 
-使用状況の非効率性の検出に関するチュートリアル ビデオを見るには、「[Azure Cost Management by Cloudyn に VM サイズを最適化する](https://youtu.be/1xaZBNmV704)」を参照してください。
+使用状況の非効率性の検出に関するチュートリアル ビデオを見るには、[Azure Cost Management での VM サイズの最適化](https://youtu.be/1xaZBNmV704)に関するページを参照してください。
 
 ## <a name="create-alerts-for-unusual-spending"></a>異常な支出に対するアラートを作成する
 

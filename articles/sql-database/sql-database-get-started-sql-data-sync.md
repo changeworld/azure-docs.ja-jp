@@ -1,26 +1,20 @@
 ---
-title: "Azure SQL データ同期 (プレビュー) をセットアップする | Microsoft Docs"
-description: "このチュートリアルでは、Azure SQL データ同期 (プレビュー) をセットアップする方法を示します"
+title: Azure SQL データ同期 (プレビュー) をセットアップする | Microsoft Docs
+description: このチュートリアルでは、Azure SQL データ同期 (プレビュー) をセットアップする方法を示します
 services: sql-database
-documentationcenter: 
 author: douglaslms
 manager: craigg
-editor: 
-ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
 ms.service: sql-database
 ms.custom: load & move data
-ms.workload: Active
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
 ms.author: douglasl
 ms.reviewer: douglasl
-ms.openlocfilehash: b356bc9db9e883c2514953b516d6dd51c1807610
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: 237a34c955f8ef36e25c30a6b13787f6a9296612
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) をセットアップする
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。
@@ -270,7 +264,7 @@ SQL データ同期 (プレビュー) サービスは、クライアント エ�
 
 5. 到達不能と表示されるすべてのデータベースに対し、データベースの資格情報を指定します。 これらのデータベースには、エージェントをインストールした新しいコンピューターから到達可能でなければなりません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 おめでとうございます。 SQL Database インスタンスと SQL Server データベースの両方を含む同期グループを作成しました。
 
 SQL データ同期の詳細については、以下を参照してください。

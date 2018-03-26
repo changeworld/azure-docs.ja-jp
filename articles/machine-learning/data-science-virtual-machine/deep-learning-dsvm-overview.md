@@ -1,9 +1,9 @@
 ---
-title: "ディープ ラーニング仮想マシンの概要 - Azure | Microsoft Docs"
-description: "ディープ ラーニング仮想マシンの主要な分析シナリオおよびコンポーネント。"
-keywords: "ディープ ラーニング、AI、データ サイエンス ツール、データ サイエンス仮想マシン、データ サイエンス用ツール、Linux データ サイエンス"
+title: ディープ ラーニング仮想マシンの概要 - Azure | Microsoft Docs
+description: ディープ ラーニング仮想マシンの主要な分析シナリオおよびコンポーネント。
+keywords: ディープ ラーニング、AI、データ サイエンス ツール、データ サイエンス仮想マシン、データ サイエンス用ツール、Linux データ サイエンス
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: gopitk
 manager: cgronlun
 editor: cgronlun
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2017
+ms.date: 03/16/2018
 ms.author: gokuma
-ms.openlocfilehash: a3e4c989c1dbb31b237115acfcc032aa2dee4f2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f74b5c68c2c04eebc1d6f1e59fac8cbb11fef46a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="introduction-to-the-deep-learning-virtual-machine"></a>ディープ ラーニング仮想マシンの概要
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="what-is-deep-learning-virtual-machine"></a>ディープ ラーニング仮想マシンとは 
 ディープ ラーニング仮想マシンは、ディープ ラーニング モデルをトレーニングするための GPU ベースの VM インスタンスの使用をより簡単にするために、[データ サイエンス仮想マシン](overview.md) (DSVM) を特別に構成したものです。 これは、Windows 2016 および Ubuntu データ サイエンス仮想マシンでサポートされています。  DSVM と同じコア VM イメージ (したがって、豊富なツールセットのすべて) を共有していますが、ディープ ラーニングをより容易にするように構成されています。 当社はまた、実世界の多くの AI シナリオに幅広く適用できる、イメージおよびテキスト理解のためのエンド ツー エンドのサンプルも提供しています。 ディープ ラーニング仮想マシンはまた、仮想マシン上のツールやサンプルのカタログを明らかにすることによって、DSVM 上の豊富なツールセットやサンプルをより容易に検出できるようにします。 ツールの点から見ると、ディープ ラーニング仮想マシンは、いくつかの一般的なディープ ラーニング フレームワーク、イメージおよびテキスト データを取得して前処理するためのツールを提供します。 ツールの包括的な一覧については、[データ サイエンス仮想マシンの概要ページ](overview.md#whats-included-in-the-data-science-vm)を参照できます。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の手順でディープ ラーニング仮想マシンの使用を開始します。
 

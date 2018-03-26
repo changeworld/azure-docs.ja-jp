@@ -1,25 +1,25 @@
 ---
-title: "機械学習ツールとデータ サイエンス ツール - Azure | Microsoft Docs"
-description: "機械学習ツールとデータ サイエンス ツール"
-keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
+title: 機械学習ツールとデータ サイエンス ツール - Azure | Microsoft Docs
+description: 機械学習ツールとデータ サイエンス ツール
+keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 03/16/2018
 ms.author: gokuma;bradsev
-ms.openlocfilehash: c772fa16b94d09e0fc0450ce86503553c26f8a24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1897f793b5907a304af0859a1ab321a06d1ce808
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="machine-learning-and-data-science-tools"></a>機械学習ツールとデータ サイエンス ツール
 データ サイエンス仮想マシン (DSVM) には、Python、R、Julia などの一般的な言語で使用可能な、機械学習用のツールおよびライブラリの豊富なセットがあります。 

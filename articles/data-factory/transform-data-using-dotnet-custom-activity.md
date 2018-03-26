@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Factory パイプラインでカスタム アクティビティを使用する"
-description: "カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。"
+title: Azure Data Factory パイプラインでカスタム アクティビティを使用する
+description: カスタム アクティビティを作成して Azure Data Factory パイプラインで使用する方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shengc
-ms.openlocfilehash: 4b9714bc456ad28d9dd46742ca16f52e68c61399
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 6aaeaaacdc9ee67ebbed3ea3090455dde2357c3d
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -298,40 +298,40 @@ namespace SampleApp
   > - activity.json、linkedServices.json、datasets.json は、Batch タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、"https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" パスに格納されます。 必要に応じて、パスを個別にクリーンアップする必要があります。 
   > - リンクされたサービスでセルフホステッド統合ランタイムを使用している場合、顧客が定義したプライベート ネットワーク環境内に資格情報を保持できるように、セルフホステッド統合ランタイムによってキーやパスワードなどの機密情報が暗号化されます。 この場合、カスタム アプリケーション コードから一部の機密フィールドを参照したときにフィールドが見つからない可能性があります。 必要に応じて、リンクされたサービスの参照を使用するのではなく、extendedProperties で SecureString を使用してください。 
 
-## <a name="difference-between-custom-activity-in-azure-data-factory-version-2-and-custom-dotnet-activity-in-azure-data-factory-version-1"></a>Azure Data Factory バージョン 2 のカスタム アクティビティと Azure Data Factory バージョン 1 の (カスタム) DotNet アクティビティの違い
+## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a>v2 カスタム アクティビティとバージョン 1 (カスタム) DotNet アクティビティを比較する
 
-  Azure Data Factory バージョン 1 では、IDotNetActivity インターフェイスの Execute メソッドを実装するクラスを含む .Net クラス ライブラリ プロジェクトを作成して (カスタム) DotNet アクティビティ コードを実装します。 (カスタム) DotNet アクティビティ JSON ペイロードのリンクされたサービス、データセット、および拡張プロパティは、厳密に型指定されたオブジェクトとして Execution メソッドに渡されます。 詳細については、[バージョン 1 の (カスタム) DotNet](v1/data-factory-use-custom-activities.md) に関するページを参照してください。 この実装のため、カスタム コードは、.Net Framework 4.5.2 で記述し、Windows ベースの Azure Batch プール ノードで実行する必要があります。 
+  Azure Data Factory バージョン 1 では、`IDotNetActivity` インターフェイスの `Execute` メソッドを実装するクラスを含む .Net クラス ライブラリ プロジェクトを作成して (カスタム) DotNet アクティビティを実装します。 (カスタム) DotNet アクティビティの JSON ペイロードのリンクされたサービス、データセット、および拡張プロパティは、厳密に型指定されたオブジェクトとして Execution メソッドに渡されます。 バージョン 1 のビヘイビアーの詳細については、[バージョン 1 の (カスタム) DotNet](v1/data-factory-use-custom-activities.md) に関するページを参照してください。 この実装のため、バージョン 1 DotNet アクティビティ コードは、.Net Framework 4.5.2 をターゲットにする必要があります。 バージョン 1 の DotNet アクティビティは、Windows ベースの Azure Batch プールのノードで実行する必要があります。 
 
-  Azure Data Factory V2 のカスタム アクティビティでは、.Net インターフェイスを実装する必要はありません。 コマンドとスクリプトを直接実行できるようになり、実行可能ファイルとしてコンパイルされた独自のカスタム コードを実行できるようになりました。 これは、folderPath プロパティと共に Command プロパティを指定することによって実現します。 カスタム アクティビティによって folderpath 内の実行可能ファイルと依存関係がアップロードされ、コマンドが実行されます。 
+  Azure Data Factory V2 のカスタム アクティビティでは、.Net インターフェイスを実装する必要はありません。 コマンドとスクリプトを直接実行できるようになり、実行可能ファイルとしてコンパイルされた独自のカスタム コードを実行できるようになりました。 この実装を構成するには、`Command` プロパティと `folderPath` プロパティを一緒に指定する必要があります。 カスタム アクティビティにより、実行可能ファイルとその依存関係が `folderpath` にアップロードされ、コマンドが実行されます。 
 
-  カスタム アクティビティの JSON ペイロードに定義されたリンクされたサービス、(referenceObjects に定義されている) データセット、および拡張プロパティには、実行可能ファイルから JSON ファイルとしてアクセスできます。 前述の SampleApp.exe コード サンプルに示すように、JSON シリアライザーを使用して、必要なプロパティにアクセスできます。 
+  Data Factory v2 カスタム アクティビティの JSON ペイロードに定義されたリンクされたサービス、(referenceObjects に定義されている) データセット、および拡張プロパティには、実行可能ファイルから JSON ファイルとしてアクセスできます。 前述の SampleApp.exe コード サンプルに示すように、JSON シリアライザーを使用して、必要なプロパティにアクセスできます。 
 
-  Azure Data Factory V2 のカスタム アクティビティに導入された変更により、カスタム コード ロジックを任意の言語で記述し、Azure Batch でサポートされている Windows および Linux オペレーション システムで自由に実行することができます。 
+  Data Factory V2 カスタム アクティビティに導入された変更により、カスタム コード ロジックを任意の言語で記述し、Azure Batch でサポートされている Windows および Linux オペレーション システムで実行することができます。 
 
   次の表では、Data Factory V2 カスタム アクティビティと Data Factory V1 (カスタム) DotNet アクティビティの違いを示します。 
 
 
 |相違点      |バージョン 2 カスタム アクティビティ      | バージョン 1 (カスタム) DotNet アクティビティ      |
 | ---- | ---- | ---- |
-|カスタム ロジックの定義方法      |任意の実行可能ファイルを実行する (既存の実行可能ファイルを使うか、独自の実行可能ファイルを実装)      |.Net DLL を実装する      |
+|カスタム ロジックの定義方法      |実行可能ファイルを提供する      |.Net DLL を実装する      |
 |カスタム ロジックの実行環境      |Windows または Linux      |Windows (.Net Framework 4.5.2)      |
 |スクリプトの実行      |スクリプトの直接実行をサポート (例: Windows VM 上で "cmd /c echo hello world")      |.Net DLL に実装することが必要      |
 |データセットは必要か      |省略可能      |アクティビティを連鎖して情報を渡すために必要      |
 |アクティビティからカスタム ロジックへの情報の受け渡し      |ReferenceObjects (LinkedServices と Datasets) および ExtendedProperties (カスタム プロパティ) を使用      |ExtendedProperties (カスタム プロパティ)、入力および出力データセットを使用      |
-|カスタム ロジックでの情報の取得      |実行可能ファイルと同じフォルダーに格納されている activity.json、linkedServices.json、datasets.json を解析      |.Net SDK (.Net Frame 4.5.2) を使用      |
+|カスタム ロジックでの情報の取得      |実行可能ファイルと同じフォルダーに格納されている activity.json、linkedServices.json、および datasets.json を解析      |.Net SDK (.Net Frame 4.5.2) を使用      |
 |ログの記録      |STDOUT に直接書き込む      |.Net DLL でロガーを実装する      |
 
 
-  バージョン 1 (カスタム) DotNet アクティビティ用に書かれた .Net コードが既にあり、これを バージョン 2 カスタム アクティビティで使用するには、コードを変更する必要があります。変更に関する大まかなガイドラインを次に示します。  
+  バージョン 1 (カスタム) DotNet アクティビティ用に書かれた .Net コードが既にあり、これをバージョン 2 カスタム アクティビティで使用するには、コードを変更する必要があります。 以下のガイドラインの概要に従って、コードを更新します。  
 
    - プロジェクトを .Net クラス ライブラリからコンソール アプリに変更します。 
-   - Main メソッドでアプリケーションを起動します。IDotNetActivity インターフェイスの Execute メソッドは、もはや必要ありません。 
-   - 厳密に型指定されたオブジェクトではなく JSON シリアライザーを使用して、リンクされたサービス、データセット、およびアクティビティの読み取りと解析を行い、必要なプロパティの値をメインのカスタム コード ロジックに渡します。 前述の SampleApp.exe コードをサンプルとして参照してください。 
-   - ロガー オブジェクトはサポートされなくなりました。実行可能ファイルの出力は、コンソールに印刷でき、stdout.txt に保存されます。 
+   - `Main` メソッドでアプリケーションを起動します。 `IDotNetActivity` インターフェイスの `Execute` メソッドは、必要なくなりました。 
+   - JSON シリアライザーを使用して、リンクされたサービス、データセット、およびアクティビティを、厳密に型指定されたオブジェクトとしてではなく読み取り、解析します。 必要なプロパティの値をメインのカスタム コード ロジックに渡します。 前述の SampleApp.exe コードをサンプルとして参照してください。 
+   - ロガー オブジェクトは、現在サポートされていません。 実行可能ファイルからの出力をコンソールに出力できます。この出力は、stdout.txt に保存されます。 
    - Microsoft.Azure.Management.DataFactories NuGet パッケージは、もはや必要ありません。 
-   - コードをコンパイルし、実行可能ファイルと依存関係を Azure Storage にアップロードし、folderPath プロパティにパスを定義します。 
+   - コードをコンパイルし、実行可能ファイルとその依存関係を Azure Storage にアップロードし、`folderPath` プロパティにパスを定義します。 
 
-エンド ツー エンドの DLL とパイプラインの方法の完全なサンプルについては、Data Factory バージョン 1 のドキュメント「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)」で説明されているサンプルを Data Factory バージョン 2 カスタム アクティビティのスタイルに書き直すことができます。 [Data Factory バージョン 2 カスタム アクティビティのサンプル](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)をご覧ください。 
+Data Factory バージョン 1 の記事「[Azure Data Factory パイプラインでカスタム アクティビティを使用する](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities)」で説明されているエンド ツー エンドの DLL とパイプラインを Data Factory バージョン 2 カスタム アクティビティとして書き直す詳細な例については、[Data Factory バージョン 2 カスタム アクティビティのサンプルに関するページ](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/ADFv2CustomActivitySample)を参照してください。 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch の自動スケール
 **自動スケール** 機能で、Azure Batch プールを作成することもできます。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。 

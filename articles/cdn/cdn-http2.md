@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: rli
-ms.openlocfilehash: 4f8dd685c3ae89535217d7a17a01c5129ca7e6e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a58ab1165f3886484fb695170100422c2f1b0486
+ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/22/2018
 ---
 # <a name="http2-support-in-azure-cdn"></a>Azure CDN での HTTP/2 サポート
 
 HTTP/2 は HTTP/1.1 に対するメジャー リビジョンです。 これにより、Web パフォーマンスの高速化、応答時間の短縮、ユーザー エクスペリエンスの向上が実現される一方で、使い慣れた HTTP メソッド、状態コード、およびセマンティクスは維持されます。 HTTP/2 は HTTP や HTTPS と連携して動作するように設計されていますが、多くのクライアント Web ブラウザーは HTTP/2 over TLS のみをサポートしています。
 
-###<a name="http2-benefits"></a>HTTP/2 の利点
+### <a name="http2-benefits"></a>HTTP/2 の利点
 
 HTTP/2 の利点には、次のものがあります。
 
@@ -40,7 +40,7 @@ HTTP/2 の利点には、次のものがあります。
     ストリームの依存関係により、クライアントはサーバーにどのリソースに優先順位が割り当てられているかを示すことができます。
 
 
-##<a name="http2-browser-support"></a>HTTP/2 のブラウザーサポート
+## <a name="http2-browser-support"></a>HTTP/2 のブラウザーサポート
 
 主要なブラウザーはすべて、現在のバージョンで HTTP/2 サポートを実装しています。 サポートされていないブラウザーは、自動的に HTTP/1.1 にフォールバックします。
 
@@ -52,11 +52,11 @@ HTTP/2 の利点には、次のものがあります。
 |Opera| 32|
 |Safari| 9|
 
-##<a name="enabling-http2-support-in-azure-cdn"></a>Azure CDN での HTTP/2 サポートの有効化
+## <a name="enabling-http2-support-in-azure-cdn"></a>Azure CDN での HTTP/2 サポートの有効化
 
 現在、HTTP/2 サポートは **Azure CDN from Akamai** および **Azure CDN from Verizon** プロファイルに対してアクティブです。 顧客からのそれ以上のアクションは必要ありません。
 
-##<a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 アクションにおける HTTP/2 の利点を確認するには、[Akamai のこのデモ](https://http2.akamai.com/demo)を参照してください。
 

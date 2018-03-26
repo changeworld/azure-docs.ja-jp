@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory の AppSource 認定を取得する方法 | Microsoft Docs"
-description: "Azure Active Directory の AppSource 認定を取得する方法について説明します。"
+title: Azure Active Directory の AppSource 認定を取得する方法 | Microsoft Docs
+description: Azure Active Directory の AppSource 認定を取得する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: andretms
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 21206407-49f8-4c0b-84d1-c25e17cd4183
 ms.service: active-directory
 ms.devlang: na
@@ -16,10 +16,10 @@ ms.date: 08/03/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 5601ad80e271364fec519cf34bcdc2f650f3bb92
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-get-appsource-certified-for-azure-active-directory"></a>Azure Active Directory の AppSource 認定を取得する方法
 [Microsoft AppSource](https://appsource.microsoft.com/) は、ビジネス ユーザーが基幹業務の SaaS アプリケーション (スタンドアロン SaaS と既存の Microsoft SaaS 製品のアドオン) を検索し、試し、管理するためのサービスです。
@@ -35,7 +35,7 @@ Azure Active Directory を持つ会社または組織のユーザーのサイン
 
 アプリケーションでマルチテナント機能を有効にするには
 - [Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredApps) のアプリケーションの登録の情報画面で `Multi-Tenanted` プロパティを `Yes` に設定します (既定では、Azure Portal で作成されたアプリケーションは*シングルテナント*として構成されます)
-- コードを更新して要求を `common` エンドポイントに送信します (エンドポイントを *https://login.microsoftonline.com/{yourtenant}* から *https://login.microsoftonline.com/common* に更新します)
+- 要求を "`common`" エンドポイントに送信するようにコードを更新します (エンドポイントを *https://login.microsoftonline.com/{yourtenant}* から *https://login.microsoftonline.com/common* に更新します)
 - ASP.NET などの一部のプラットフォームでは、コードを更新して複数の発行者を許可する必要もあります
 
 マルチテナントの詳細については、「[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](./active-directory-devhowto-multi-tenant-overview.md)」をご覧ください。

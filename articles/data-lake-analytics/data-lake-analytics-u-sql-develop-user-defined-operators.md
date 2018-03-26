@@ -1,10 +1,10 @@
 ---
-title: "U-SQL ユーザー定義演算子 (UDO) の開発 | Microsoft Docs"
-description: "Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。 "
+title: U-SQL ユーザー定義演算子 (UDO) の開発 | Microsoft Docs
+description: 'Data Lake Analytics ジョブで使用および再使用されるユーザー定義演算子の開発方法について説明します。 '
 services: data-lake-analytics
-documentationcenter: 
-author: edmacauley
-manager: jhubbard
+documentationcenter: ''
+author: saveenr
+manager: kfile
 editor: cgronlun
 ms.assetid: e5189e4e-9438-46d1-8686-ed4836bf3356
 ms.service: data-lake-analytics
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
-ms.author: edmaca
-ms.openlocfilehash: 5e534f96b908d2aa1f4d7c48655509ece8dcf43e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: saveenr
+ms.openlocfilehash: 7c0b9c193f8f1c3a3043824186e337f942ebfd56
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-u-sql-user-defined-operators-udos"></a>U-SQL ユーザー定義演算子 (UDO) の開発
 U-SQL ジョブ内のデータを処理するユーザー定義演算子を開発する方法について説明します。
@@ -29,7 +29,7 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
 **U-SQL ジョブを作成して送信するには**
 
 1. Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]、[ U-SQL プロジェクト]** の順に選択します。
-2. **[OK]**をクリックします。 Visual Studio によって、Script.usql ファイルを使用するソリューションが作成されます。
+2. Click **OK**. Visual Studio によって、Script.usql ファイルを使用するソリューションが作成されます。
 3. **ソリューション エクスプローラー**で、Script.usql を展開してから **Script.usql.cs** をダブルクリックします。
 4. 以下のコードをファイルに貼り付けます。
 
@@ -121,7 +121,7 @@ U-SQL の汎用アセンブリを開発する手順については、「[Develop
 8. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトのビルド]** をクリックします。
 9. **ソリューション エクスプローラー**で **Script.usql** を右クリックし、**[スクリプトの送信]** をクリックします。
 10. Azure サブスクリプションに接続していない場合は、Azure アカウント資格情報の入力を求められます。
-11. **[Submit]**をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
+11. **[送信]**をクリックします。 送信が完了すると、[結果] ウィンドウに送信結果とジョブのリンクが示されます。
 12. 最新のジョブの状態を表示して、画面を更新するには、**[更新]** ボタンをクリックします。
 
 **出力を表示するには**

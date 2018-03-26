@@ -1,8 +1,8 @@
 ---
-title: "Azure エンタープライズ契約を Azure Cost Management に登録する | Microsoft Docs"
-description: "エンタープライズ契約を使用して、Cloudyn の Azure Cost Management に登録します。"
+title: Azure エンタープライズ契約を Azure Cost Management に登録する | Microsoft Docs
+description: エンタープライズ契約を使用して、Azure Cost Management に登録します。
 services: cost-management
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/30/2018
@@ -10,15 +10,15 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 1b552ba5a0c3afd066e2ac62c8b3a90dd7696185
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 75ae3aabf51a14ceb3326e7f3cee3e20d9b98579
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure エンタープライズ契約を登録してコスト データを表示する
 
-Azure エンタープライズ契約を使用して、Cloudyn の Azure Cost Management に登録します。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
+Azure エンタープライズ契約を使用して、Azure Cost Management に登録します。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
@@ -41,13 +41,13 @@ Azure エンタープライズ契約を使用して、Cloudyn の Azure Cost Man
 7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に、電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、**[次へ]** をクリックします。 Azure の登録のサイズによっては、すべての課金データが Cloudyn に追加されるまでに最大 24 時間かかることがあります。
 8. **[Cloudyn に移動]** をクリックして、Cloudyn ポータルを開くと、**[Cloud Accounts Management]\(クラウド アカウント管理\)** ページに、登録した EA アカウント情報が表示されます。
 
-Enterprise Agreement の登録に関するチュートリアル ビデオを見るには、「[Azure Cost Management by Cloudyn で使用する EA 登録 ID と API キーを検索する方法](https://youtu.be/u_phLs_udig)」を参照してください。
+Enterprise Agreement の登録に関するチュートリアル ビデオを見るには、[Azure Cost Management で使用する EA 登録 ID と API キーの検索方法](https://youtu.be/u_phLs_udig)に関するページを参照してください。
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>次の手順
 
-このクイック スタートでは、Azure エンタープライズ契約情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの表示を開始しました。 Cloudyn の Azure Cost Management については、Cost Management のチュートリアルで続きを説明します。
+このクイック スタートでは、Azure エンタープライズ契約情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Azure Cost Management については、Cost Management のチュートリアルで続きを説明します。
 
 > [!div class="nextstepaction"]
 > [使用状況とコストを確認する](./tutorial-review-usage.md)

@@ -1,21 +1,21 @@
 ---
-title: "Azure Machine Learning サービス (プレビュー) のモデル構築チュートリアル | Microsoft Docs"
-description: "このチュートリアルでは、Azure Machine Learning サービス (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 このパート 2 では、実験について説明します。"
+title: Azure Machine Learning サービス (プレビュー) のモデル構築チュートリアル | Microsoft Docs
+description: このチュートリアルでは、Azure Machine Learning サービス (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 このパート 2 では、実験について説明します。
 services: machine-learning
 author: hning86
 ms.author: haining, j-martens
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs
+ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 9a1613e2137e178d00a24f9f5b3c802f8a894b15
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.date: 3/7/2018
+ms.openlocfilehash: 3e7f1b25757dc627f0f42a34c1a42b2d421c06c9
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="tutorial-classify-iris-part-2---build-a-model"></a>チュートリアル: あやめの分類 (パート 2) - モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -66,13 +66,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    - [scikit-learn](http://scikit-learn.org/stable/index.html) 機械学習ライブラリを使ってロジスティック回帰モデルを構築します。 
 
-   - [pickle](https://docs.python.org/2/library/pickle.html) ライブラリを挿入してモデルを `outputs` フォルダーのファイルにシリアル化します。 その後それがスクリプトによって読み込まれ、逆シリアル化されてメモリに展開されます。
+   - [pickle](https://docs.python.org/3/library/pickle.html) ライブラリを使用して、モデルを `outputs` フォルダーのファイルにシリアル化します。 その後それがスクリプトによって読み込まれ、逆シリアル化されてメモリに展開されます。
 
    - 逆シリアル化されたモデルを使用して、新しいレコードに対する予測を行います。 
 
    - [matplotlib](https://matplotlib.org/) ライブラリを使用して、混同行列と多クラス ROC (Receiver Operating Characteristic: 受信者動作特性) 曲線という 2 つのグラフをプロットし、それらを `outputs` フォルダーに保存します。
 
-   - `run_logger` オブジェクトは、正則化項とモデル精度をログに記録する目的で終始使用されます。 また、ログは実行履歴に自動的にプロットされます。
+   - `run_logger` オブジェクトは、正則化項とモデル精度をログに記録する目的で終始使用されます。 これらの値は、実行履歴に自動的にプロットされます。
 
 
 ## <a name="execute-irissklearnpy-script-in-a-local-environment"></a>ローカル環境で iris_sklearn.py スクリプトを実行する
@@ -92,30 +92,31 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 3. Workbench アプリのウィンドウに戻ります。 
 
-4. **[iris_sklearn.py]** タブの上部にあるツール バーで、**[保存]** アイコンの横にあるドロップダウン メニューを選択して開き、**[実行構成]** を選択します。 実行環境として **[ローカル]** を選択し、実行するスクリプトとして `iris_sklearn.py` を入力します。
+4. **[iris_sklearn.py]** タブの上部のツール バーで、実行環境として **[ローカル]** を選択し、実行するスクリプトとして `iris_sklearn.py` を選択します。
 
-5. 次に、ツール バーの右側に移動し、**[引数]** フィールドに「`0.01`」と入力します。 
+5. 次に、ツール バーの右側に移動し、**[引数]** フィールドに「`0.01`」と入力します。 この値は、ロジスティック回帰モデルの正則化項に対応します。
 
    ![実行コントロール](media/tutorial-classifying-iris/run_control.png)
 
 6. **[実行]** ボタンを選択します。 ジョブが直ちにスケジュールされます。 Workbench ウィンドウの右側の **[ジョブ]** ウィンドウにジョブが一覧表示されます。 
 
-7. しばらくすると、ジョブの状態が **[送信しています]** から **[実行中]** になり、その後 **[完了]** になります。
+7. しばらくすると、ジョブの状態が **[送信しています]** から **[実行中]** になり、最後に **[完了]** に変化します。
 
    ![sklearn の実行](media/tutorial-classifying-iris/run_sklearn.png)
 
-8. **[ジョブ]** ウィンドウで、ジョブの状態テキストの **[完了]** をクリックします。 ポップアップ ウィンドウが開いて、実行中のスクリプトの標準出力 (stdout) テキストが表示されます。 stdout テキストを閉じるには、ポップアップ ウィンドウの右上にある **[閉じる]** (**x**) ボタンを選択します。
+8. **[ジョブ]** ウィンドウで、ジョブの状態テキストの **[完了]** をクリックします。 ポップアップ ウィンドウが開いて、実行の標準出力 (stdout) テキストが表示されます。 stdout テキストを閉じるには、ポップアップ ウィンドウの右上にある **[閉じる]** (**x**) ボタンを選択します。
 
 9. **[ジョブ]** ウィンドウの同じジョブの状態で、**[完了]** 状態と開始時刻のすぐ上に表示されている青色のテキスト **iris_sklearn.py [n]** (_n_ は実行回数) を選択します。 **[Run Properties]\(実行プロパティ\)** ウィンドウが開き、その特定の実行について、次の情報が表示されます。
    - **実行プロパティ**情報
-   - **出力**ファイル
+   - **Outputs**
+   - **メトリック**
    - **視覚化** (存在する場合)
    - **ログ** 
 
    実行が完了すると、ポップアップ ウィンドウに次の結果が表示されます。
 
    >[!NOTE]
-   >トレーニング セットにはあらかじめランダム化を組み込んでいるため、実際の結果はこちらに示した結果と異なる場合があります。
+   >トレーニング セットにはあらかじめランダム化を組み込んでいるため、結果はここで示した結果と異なる場合があります。
 
    ```text
    Python version: 3.5.2 |Continuum Analytics, Inc.| (default, Jul  5 2016, 11:41:13) [MSC v.1900 64 bit (AMD64)]
@@ -148,9 +149,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 10. **[Run Properties]\(実行プロパティ\)** タブを閉じて **[iris_sklearn.py]** タブに戻ります。 
 
-11. 実行を繰り返します。 
+11. 追加の実行を繰り返します。 
 
-    **[引数]** フィールドには、`0.001` ～ `10` の範囲で一連の異なる数値を入力してください。 **[実行]** を選択して、さらに何度かコードを実行します。 コードのロジスティック回帰アルゴリズムに渡す引数の値を毎回変えることで、その都度異なる結果が出力されます。
+    **[引数]** フィールドには、`0.001` から `10` の範囲で一連の値を入力してください。 **[実行]** を選択して、さらに何度かコードを実行します。 コードのロジスティック回帰モデルに渡す引数の値を毎回変えることで、そのたびに異なる結果になります。
 
 ## <a name="review-the-run-history-in-detail"></a>実行履歴を詳しく確認する
 Azure Machine Learning Workbench では、スクリプトの実行がすべて実行履歴レコードとしてキャプチャされます。 **[実行]** ビューを開くと、特定のスクリプトの実行履歴を表示することができます。
@@ -175,16 +176,16 @@ Azure Machine Learning Workbench では、スクリプトの実行がすべて�
 
 ## <a name="execute-scripts-in-the-local-docker-environment"></a>ローカル Docker 環境でスクリプトを実行する
 
-Machine Learning では、Docker などの追加の実行環境を簡単に構成し、それらの環境でスクリプトを実行することができます。 
+Docker などの追加の実行環境を簡単に構成し、それらの環境でスクリプトを実行することができます。 
 
 >[!IMPORTANT]
->この手順を実施するためには、あらかじめ Docker エンジンをローカルにインストールして起動しておく必要があります。 詳しくは、Docker のインストール手順をご覧ください。
+>この手順を実施するためには、あらかじめ Docker エンジンをローカルにインストールして起動しておく必要があります。 詳細については、[Docker のインストール手順](https://docs.docker.com/install/)を参照してください。
 
 1. 左側のウィンドウで**フォルダー** アイコンを選択して、目的のプロジェクトの**ファイル**を一覧表示します。 `aml_config` フォルダーを展開します。 
 
-2. あらかじめ構成されているいくつかの環境が存在することに注目してください (**docker-python**、**docker-spark**、**local** など)。 
+2. あらかじめ構成されているいくつかの環境が存在します (**docker-python**、**docker-spark**、および **local**)。 
 
-   それぞれの環境には、2 つのファイルがあります (`docker-python.compute` と `docker-python.runconfig` など)。 各ファイルをテキスト エディターで開くと、特定のオプションを構成することができます。  
+   各環境に、2 つのファイルがあります。たとえば、`docker.compute` (**docker-python** および **docker-spark** の場合) と `docker-python.runconfig` などです。 各ファイルをテキスト エディターで開くと、特定のオプションを構成することができます。  
 
    邪魔にならないように、開いているテキスト エディターのタブで **[閉じる]** (**x**) を選択してください。
 
@@ -198,7 +199,7 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
 
 4. 新しいジョブが開始されることがわかります。 これは Workbench ウィンドウの右側の **[ジョブ]** ウィンドウに一覧表示されます。
 
-   Docker に対して初めて実行するときは、完了までに数分程度余分に時間がかかります。 
+   Docker に対して初めて実行するときは、ジョブの完了までに数分程度余分に時間がかかります。 
 
    Azure Machine Learning Workbench によって新しい Docker ファイルがバックグラウンドで構築されます。 
    その新しいファイルから、`docker.compute` ファイルに指定された基本 Docker イメージと `conda_dependencies.yml` ファイルに指定された Python の依存関係パッケージが参照されます。 
@@ -213,13 +214,13 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
 
    最終的には、対象の環境に **[local]** を選んだときとまったく同じ結果になります。
 
-5. 今度は Spark を試してみましょう。 Docker の基本イメージには、プレインストールされて構成済みの Spark インスタンスが含まれています。 したがってそのインスタンスで PySpark スクリプトを実行することができます。 これにより、Spark のインストールと構成に時間を費やすことなく、Spark プログラムの開発とテストを簡単に行うことができます。 
+5. 今度は Spark を試してみましょう。 Docker の基本イメージには、プレインストールされて構成済みの Spark インスタンスが含まれており、これを使用して PySpark スクリプトを実行することができます。 Spark のインストールと構成に時間を費やすことなく、Spark プログラムの開発とテストを簡単に行うことができます。 
 
    `iris_spark.py` ファイルを開きます。 このスクリプトは、`iris.csv` データ ファイルを読み込み、Spark Machine Learning ライブラリのロジスティック回帰アルゴリズムを使って、あやめデータセットを分類します。 実行環境を **[docker-spark]** に変更し、スクリプトを **[iris_spark.py]** に変更して、再度実行します。 このプロセスは、先ほどよりも少し時間がかかります。これは、Docker コンテナー内で Spark セッションを作成して開始する必要があるためです。 また、stdout も `iris_spark.py` の場合とは異なります。
 
 6. 引数を変えながら、さらに数回実行します。 
 
-7. `iris_spark.py` ファイルを開いて、Spark Machine Learning ライブラリを使って構築されたロジスティック回帰モデルを確認します。 
+7. `iris_spark.py` ファイルを開いて、Spark Machine Learning ライブラリを使用して構築されたロジスティック回帰モデルを確認します。 
 
 8. **[ジョブ]** ウィンドウを操作し、履歴リスト ビューのほか、異なる実行環境で行われた実行の詳細ビューを開きます。
 
@@ -242,7 +243,7 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    az account list -o table
    
    REM sets the current Azure subscription to the one you want to use
-   az account set -s <subscriptionId>
+   az account set -s <SubscriptionId>
    
    REM verifies that your current subscription is set correctly
    az account show
@@ -269,6 +270,7 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    REM executes iris_spark.py in the local Docker container Spark environment
    az ml experiment submit -c docker-spark .\iris_spark.py 0.1
    ```
+
 6. Workbench で、左側のウィンドウにある**フォルダー** アイコンを選択してプロジェクト ファイルを一覧表示し、**run.py** という名前の Python スクリプトを開きます。 
 
    このスクリプトは、正則化項を変化させながら試すのに便利です。 さまざまな正則化項で実験を複数回実行してください。 このスクリプトは、`10.0` という極端に大きな正則化項で `iris_sklearn.py` ジョブを開始します。 その後、ループで実行を繰り返しながら正則化項を半分にしていき、`0.005` 以下になったところでループを抜けます。 
@@ -283,22 +285,22 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
        reg = reg / 2
    ```
 
-   コマンド ラインで **run.py** スクリプトを開くには、次のコマンドを実行します。
+   コマンド ラインで **run.py** スクリプトを実行するには、次のコマンドを実行します。
 
    ```cmd
    REM submits iris_sklearn.py multiple times with different regularization rates
    python run.py
    ```
 
-   `run.py` が完了すると、Workbench の実行履歴リスト ビューにグラフが表示されます。
+   `run.py` が完了すると、Workbench の実行履歴リスト ビューにさまざまなメトリックのグラフが表示されます。
 
 ## <a name="execute-in-a-docker-container-on-a-remote-machine"></a>リモート マシンで Docker コンテナーを実行する
-リモート Linux マシンの Docker コンテナーでスクリプトを実行するには、そのリモート マシンへの SSH アクセス (ユーザー名とパスワード) が必要です。 また、このリモート マシンには、Docker エンジンがインストールされ実行されている必要があります。 このような Linux マシンを入手する方法としては、Azure 上に Ubuntu ベースのデータ サイエンス仮想マシン (DSVM) を作成するのが最も簡単です。 [Azure ML Workbench で使用する Ubuntu DSVM を作成する方法](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal)に関するページを参照してください。
+リモート Linux マシンの Docker コンテナーでスクリプトを実行するには、そのリモート マシンへの SSH アクセス (ユーザー名とパスワード) が必要です。 また、マシンには Docker エンジンがインストールされ、実行されている必要があります。 このような Linux マシンを入手する方法としては、Azure 上に Ubuntu ベースのデータ サイエンス仮想マシン (DSVM) を作成するのが最も簡単です。 [Azure ML Workbench で使用する Ubuntu DSVM を作成する方法](how-to-create-dsvm-hdi.md#create-an-ubuntu-dsvm-in-azure-portal)に関するページを参照してください。
 
 >[!NOTE] 
 >CentOS ベースの DSVM はサポート "*されません*"。
 
-1. VM を作成した後、`.runconfig` と `.compute` という一対のファイルを生成すれば、その VM を実行環境としてアタッチすることができます。 次のコマンドを使用してファイルを生成します。 この新しい環境に `myvm` という名前を付けましょう。
+1. VM を作成した後、`.runconfig` と `.compute` という一対のファイルを生成して、その VM を実行環境としてアタッチすることができます。 次のコマンドを使用してファイルを生成します。 この新しい環境に `myvm` という名前を付けましょう。
  
    ```azurecli
    REM creates an myvm compute target
@@ -306,7 +308,10 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    ```
    
    >[!NOTE]
-   >IP アドレスは、パブリックにアドレス指定可能な完全修飾ドメイン名 (FQDN) にすることもできます (例: `vm-name.southcentralus.cloudapp.azure.com`)。 DSVM に FQDN を追加し、ここで、それを IP アドレスの代わりに使うことをお勧めします。 お勧めする理由は、いずれコストを抑えるために VM を停止されることも考えられるからです。 さらに、次回 VM を起動したときには、IP アドレスが変わっている可能性があります。
+   >IP アドレスは、パブリックにアドレス指定可能な完全修飾ドメイン名 (FQDN) にすることもできます (例: `vm-name.southcentralus.cloudapp.azure.com`)。 DSVM に FQDN を追加し、それを IP アドレスの代わりに使うことをお勧めします。 お勧めする理由は、いずれコストを抑えるために VM を停止されることも考えられるからです。 さらに、次回 VM を起動したときには、IP アドレスが変わっている可能性があります。
+
+   >[!NOTE]
+   >ユーザー名とパスワードの認証に加えて、`--private-key-file` オプションと `--private-key-passphrase` オプション (必要な場合) を使用して、秘密キーとそれに対応するパスフレーズ (ある場合) を指定することができます。
 
    次に、次のコマンドを実行して VM に Docker イメージを作成し、スクリプトを実行できる状態にします。
    
@@ -315,17 +320,17 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    az ml experiment prepare -c myvm
    ```
    >[!NOTE]
-   >`myvm.runconfig` の `PrepareEnvironment` の値は、既定値の `false` から `true` に変更することもできます。 これで初回実行時に Docker コンテナーが自動的に準備されます。
+   >`myvm.runconfig` の `PrepareEnvironment` の値は、既定値の `false` から `true` に変更することもできます。 これで初回実行の一環として Docker コンテナーが自動的に準備されます。
 
 2. `aml_config` に生成された `myvm.runconfig` ファイルを編集し、フレームワークを既定値の `PySpark` から `Python` に変更します。
 
    ```yaml
-   "Framework": "Python"
+   Framework: Python
    ```
    >[!NOTE]
-   >フレームワークの設定を PySpark のままにしても動作上の問題はありません。 しかし Python スクリプトを実行するうえで Spark セッションが必要ないなら、やや非効率と言えます。
+   >PySpark も機能するはずですが、Python スクリプトを実行するために実際には Spark セッションを必要としない場合は、Python を使用する方が効率的です。
 
-3. 先ほど CLI ウィンドウで実行したものと同じコマンドを実行します。ただし、対象の環境は _myvm_ とします。
+3. 先ほど CLI ウィンドウで実行したものと同じコマンドを実行します。ただし、今度は対象を _myvm_ にします。
    ```azurecli
    REM executes iris_sklearn.py in a remote Docker container
    az ml experiment submit -c myvm iris_sklearn.py
@@ -334,11 +339,11 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
 
 4. コンテナー内の Spark を試してみましょう。 エクスプローラーを開きます。 基本的なファイル操作コマンドに慣れている場合は CLI ウィンドウでこの作業を行うこともできます。 `myvm.runconfig` ファイルをコピーして `myvm-spark.runconfig` という名前を付けます。 新しいファイルを編集し、`Framework` の設定を `Python` から `PySpark` に変更します。
    ```yaml
-   "Framework": "PySpark"
+   Framework: PySpark
    ```
-   `myvm.compute` ファイルには一切変更を加えないでください。 同じ VM 上の同じ Docker イメージが Spark の実行に使用されます。 新しい `myvm-spark.runconfig` の `target` フィールドから、同じ `myvm.compute` ファイルがその名前 (`myvm`) で参照されます。
+   `myvm.compute` ファイルには一切変更を加えないでください。 同じ VM 上の同じ Docker イメージが Spark の実行に使用されます。 新しい `myvm-spark.runconfig` の `Target` フィールドから、同じ `myvm.compute` ファイルがその名前 (`myvm`) で参照されます。
 
-5. 次のコマンドを入力し、リモート Docker コンテナーの Spark インスタンスで実行します。
+5. 次のコマンドを入力し、リモート Docker コンテナー内で実行されている Spark インスタンスで **iris_spark.py** スクリプトを実行します。
    ```azureli
    REM executes iris_spark.py in a Spark instance on a remote Docker container
    az ml experiment submit -c myvm-spark .\iris_spark.py
@@ -365,7 +370,7 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
    >[!NOTE]
    >`username` はクラスターの SSH ユーザー名です。 HDInsight のセットアップ時に変更しなかった場合、既定値は `sshuser` となります。 `admin` (クラスターの管理者 Web サイトへのアクセス用としてセットアップ時に作成される別のユーザー) ではありません。 
 
-2. 次のコマンドを実行すると、スクリプトが HDInsight クラスターで実行されます。
+2. 次のコマンドを実行して、HDInsight クラスターで **iris_spark.py** スクリプトを実行します。
 
    ```azurecli
    REM executes iris_spark on the HDInsight cluster
@@ -374,7 +379,6 @@ Machine Learning では、Docker などの追加の実行環境を簡単に構�
 
    >[!NOTE]
    >リモート HDInsight クラスターで実行するときは、`admin` ユーザー アカウントを使って YARN (Yet Another Resource Negotiator) ジョブの実行情報を `https://<cluster_name>.azurehdinsight.net/yarnui` で確認することもできます。
-
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

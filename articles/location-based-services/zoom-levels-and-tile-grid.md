@@ -1,0 +1,73 @@
+---
+title: Azure Location Based Services でのズーム レベルとタイル グリッド | Microsoft Docs
+description: Azure Location Based Services のズーム レベルとタイル グリッドについて説明します
+services: location-based-services
+keywords: ''
+author: jinzh-azureiot
+ms.author: jinzh
+ms.date: 3/6/2018
+ms.topic: article
+ms.service: location-based-services
+documentationcenter: ''
+manager: cpendle
+ms.devlang: na
+ms.custom: mvc
+ms.openlocfilehash: 3a86bf84ad31933cc5008591a275d4f4aa52c9f1
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/08/2018
+---
+# <a name="zoom-levels-and-tile-grid"></a>ズーム レベルとタイル グリッド
+Azure Location Based Services では、球面メルカトル図法の座標系 (EPSG: 3857) が使用されます。
+
+世界地図は、四角形のタイルに分割されます。 レンダー (ラスター) には 19 のズーム レベルがあり、0 から 18 までの番号が付けられます。 レンダー (ベクター) には 21 のズーム レベルがあり、0 から 20 までの番号が付けられます。 ズーム レベルが 0 の場合は、世界地図が 1 つのタイルに表示されます。
+
+![世界地図のタイル](./media/zoom-levels-and-tile-grid/world0.png)
+
+ズーム レベル 1 では、4 つのタイル (2 × 2 個の正方形) を使用して世界地図がレンダリングされます
+
+![左上の世界地図タイル](./media/zoom-levels-and-tile-grid/world1a.png)     ![右上の世界地図タイル](./media/zoom-levels-and-tile-grid/world1c.png) 
+
+![左下の世界地図タイル](./media/zoom-levels-and-tile-grid/world1b.png)     ![右下の世界地図タイル](./media/zoom-levels-and-tile-grid/world1d.png) 
+
+
+ズーム レベルを 1 つ増やすごとに、タイルが 4 分割され、2<sup>ズーム</sup> x 2<sup>ズーム</sup> 個のグリッドが作成されます。 ズーム レベル 20 の場合、グリッドは 2<sup>20</sup> x 2<sup>20</sup> となり、1,048,576 x 1,048,576 個のタイル (合計 109,951,162,778 個) になります。
+
+各ズーム レベルに対応する値を次の表に示します。
+
+|ズーム レベル|メートル/ピクセル|メートル/タイル一辺|
+|--- |--- |--- |
+|0|156543|40075008|
+|1|78271.5|20037504|
+|2|39135.8|10018764.8|
+|3|19567.9|5009382.4|
+|4|9783.9|2504678.4|
+|5|4892|1252352|
+|6|2446|626176|
+|7|1223|313088|
+|8|611.5|156544|
+|9|305.7|78259.2|
+|10|152.9|39142.4|
+|11|76.4|19558.4|
+|12|38.2|9779.2|
+|13|19.1|4889.6|
+|14|9.6|2457.6|
+|15|4.8|1228.8|
+|16|2.4|614.4|
+|17|1.2|307.2|
+|18|0.6|152.8|
+|19|0.3|76.4|
+|20|0.15|38.2|
+
+タイルは、ズーム レベルと、そのズーム レベルのグリッド上でのタイル位置に対応する x および y 座標によって呼び出されます。
+
+使用するズーム レベルを決定する際には、それぞれの場所が、そのタイル上の固定された位置に配置されるということに注意してください。 つまり、特定の区域を表示するために必要なタイル数は、ズーム グリッドが世界地図上のどこに配置されるかによって左右されます。 たとえば、互いに 900 メートル離れた 2 つの地点がある場合、ズーム レベル 17 では、それらの地点間のルートを 3 つのタイルで表示できる*場合もあります*が、 西側の地点がタイルの右寄りにあり、東側の地点がタイルの左寄りにある場合は、タイルが 4 個必要になる可能性もあります。
+
+![ズームのデモ スケール](./media/zoom-levels-and-tile-grid/zoomdemo_scaled.png) 
+
+ズーム レベルが決定したら、x と y の値を計算できます。 各ズーム グリッドの左上隅のタイルは x=0、y=0 となり、右下隅のタイルは x=2<sup>ズーム -1</sup>, y=2<sup>ズーム-1</sup> となります。
+
+次に示すのは、ズーム レベル 1 のズーム グリッドです。
+
+![ズーム レベル 1 のズーム グリッド](./media/zoom-levels-and-tile-grid/api_x_y.png)

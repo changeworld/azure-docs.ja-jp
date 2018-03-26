@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation の概要 | Microsoft Docs"
-description: "この記事では、Azure Automation サービスの概要について説明します。 ここでは、Azure Marketplace のサービスを利用開始するための準備における設計と実装の詳細をレビューします。"
+title: Azure オートメーションの使用
+description: この記事では、Azure Automation サービスの概要について説明します。 ここでは、Azure Marketplace のサービスを利用開始するための準備における設計と実装の詳細をレビューします。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 08/31/2017
-ms.author: magoedte
-ms.openlocfilehash: d6ee5c35ce9866f6106c7b5dbc51599b666c3eb1
-ms.sourcegitcommit: 817c3db817348ad088711494e97fc84c9b32f19d
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: dab404178b45828732e137835213046cedaf0d03
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/20/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="get-started-with-azure-automation"></a>Azure オートメーションの使用
 
@@ -73,12 +69,12 @@ Automation アカウントを作成または更新したり、この記事で説
 * Automation アカウントを作成するには、Azure Active Directory (Azure AD) ユーザー アカウントが、**Microsoft.Automation** リソースの所有者ロールに相当するアクセス許可を持つロールに追加されている必要があります。 詳細については、「[Azure Automation におけるロールベースのアクセス制御](automation-role-based-access-control.md)」を参照してください。  
 * Azure Portal の **[Azure Active Directory]** > **[管理]** > **[アプリの登録]** で、(**[アプリの登録]** が **[はい]** に設定されている場合)、Azure AD テナント内の管理者以外のユーザーは [Active Directory アプリケーションを登録](../azure-resource-manager/resource-group-create-service-principal-portal.md#check-azure-subscription-permissions)できます。 **[アプリの登録]** が **[いいえ]** に設定されている場合、このアクションを実行するユーザーは Azure AD 内のグローバル管理者である必要があります。 
 
-サブスクリプションのグローバル管理者/共同管理者ロールに追加される前にそのサブスクリプションの Active Directory インスタンスのメンバーでない場合は、ゲストとして Active Directory に追加されます。 このシナリオでは、**[Automation アカウントの追加]** ページに "You do not have permissions to create (作成するためのアクセス許可がありません)" というメッセージが表示されます。 
+サブスクリプションの Active Directory インスタンスのメンバーになっていない状態で、サブスクリプションのグローバル管理者/共同管理者ロールに追加された場合、Active Directory にはゲストとして追加されます。 このシナリオでは、**[Automation アカウントの追加]** ページに "作成するためのアクセス許可がありません" というメッセージが表示されます。 
 
-ユーザーが最初にグローバル管理者/共同管理者ロールに追加された場合は、そのユーザーをサブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザー ロールに再度追加できます。
+ユーザーが先にグローバル管理者/共同管理者ロールに追加された場合は、そのユーザーをサブスクリプションの Active Directory インスタンスから削除した後、Active Directory の完全なユーザー ロールに再度追加できます。
 
-ユーザー ロールを確認するには:
-1. Azure Portal で、**[Azure Active Directory]** ペインに移動します。
+ユーザー ロールを確認するには
+1. Azure Portal で、**[Azure Active Directory]** ウィンドウに移動します。
 2. **[ユーザーとグループ]** を選択します。
 3. **[すべてのユーザー]** を選択します。 
 4. 特定のユーザーを選択した後、**[プロファイル]** を選択します。 ユーザーのプロファイルの下にある **[ユーザー タイプ]** 属性の値が **[ゲスト]** であってはいけません。

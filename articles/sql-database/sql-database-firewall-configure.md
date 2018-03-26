@@ -1,27 +1,20 @@
 ---
-title: "Azure SQL Database ファイアウォール規則 | Microsoft Docs"
-description: "アクセスを管理するために、サーバー レベルおよびデータベース レベルのファイアウォール規則を使用して SQL データベース ファイアウォールを構成する方法について説明します。"
-keywords: "データベース ファイアウォール"
+title: Azure SQL Database ファイアウォール規則 | Microsoft Docs
+description: アクセスを管理するために、サーバー レベルおよびデータベース レベルのファイアウォール規則を使用して SQL データベース ファイアウォールを構成する方法について説明します。
+keywords: データベース ファイアウォール
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: cgronlun
-tags: 
-ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: 1988bc7ab5b498db32d7bb40623f1194d7290b94
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: cde076dfdcc2f3aea69081def7ea86be2744ccc7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 
 

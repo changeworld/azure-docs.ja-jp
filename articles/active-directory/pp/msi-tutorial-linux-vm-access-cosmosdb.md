@@ -1,11 +1,11 @@
 ---
-title: "Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Cosmos DB にアクセスする"
-description: "Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Cosmos DB にアクセスするプロセスについて説明するチュートリアルです。"
+title: Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Cosmos DB にアクセスする
+description: Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Cosmos DB にアクセスするプロセスについて説明するチュートリアルです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 02/14/2018
 ms.author: skwan
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 2c0c3597999e80af86f079385653d94ddfcab245
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dbb5e9e8f9accd618599010ab2bbb4a8760e534f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-a-user-assigned-managed-service-identity-msi-on-a-linux-vm-to-access-azure-cosmos-db"></a>Linux VM 上でユーザー割り当て管理対象サービス ID (MSI) を使用して Azure Cosmos DB にアクセスする 
 
@@ -158,10 +158,10 @@ az role assignment create --assignee <MSI PRINCIPALID> --role '<ROLE NAME>' --sc
 3. 次に、**Linux VM** の作成時に追加した**パスワード**の入力を求められます。 パスワードを入力すると、正常にサインインできます。  
 4. CURL を使用して Azure Resource Manager のアクセス トークンを取得します。  
 
-    アクセス トークンの CURL 要求と応答を次に示します。  <CLIENT ID> をユーザー割り当て MSI の clientId 値で置き換えます。
+    アクセス トークンの CURL 要求と応答を次に示します。  <CLIENT ID> をユーザー割り当て MSI の clientId 値で置き換えます。 
     
     ```bash
-    curl 'http://localhost:50342/oauth2/token?resource=https://management.azure.com/&client_id=<CLIENT ID>' -H "Metadata:true"
+    curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>" 
     ```
     
     > [!NOTE]

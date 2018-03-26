@@ -1,25 +1,20 @@
 ---
-title: "Azure SQL データベースに対する分析クエリの実行 | Microsoft Docs"
-description: "複数の Azure SQL Database データベースから抽出されたデータを使用した、クロステナント分析クエリについて説明します。"
-keywords: "SQL チュートリアル"
+title: Azure SQL データベースに対する分析クエリの実行 | Microsoft Docs
+description: 複数の Azure SQL Database データベースから抽出されたデータを使用した、クロステナント分析クエリについて説明します。
+keywords: SQL チュートリアル
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: jhubbard
-editor: MightyPen
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: 
-ms.devlang: 
 ms.topic: article
 ms.date: 11/08/2017
 ms.author: anjangsh; billgib; genemi
-ms.openlocfilehash: c6c83f4ac93dd105b2f311250061b8880f5d2a5b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 7f04ca4bf324586e0cb34effa324b1703d92d065
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="cross-tenant-analytics-using-extracted-data"></a>抽出されたデータを使用したクロステナント分析
 

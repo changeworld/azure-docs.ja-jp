@@ -1,25 +1,24 @@
 ---
-title: "Azure SQL Data Warehouse の Data Warehouse ユニット (DWU、cDWU) の概要 | Microsoft Docs"
-description: "Azure SQL Data Warehouse のパフォーマンス スケールアウト機能。 DWU、cDWU を調整してスケールアウトする方法や、コンピューティング リソースを一時停止および再開してコストを節約する方法を説明します。"
+title: Azure SQL Data Warehouse の Data Warehouse ユニット (DWU、cDWU) の概要 | Microsoft Docs
+description: Azure SQL Data Warehouse のパフォーマンス スケールアウト機能。 DWU、cDWU を調整してスケールアウトする方法や、コンピューティング リソースを一時停止および再開してコストを節約する方法を説明します。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
-ms.assetid: e13a82b0-abfe-429f-ac3c-f2b6789a70c6
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 11/10/2017
+ms.date: 03/15/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: 02998c48dcab5d3ed191b168665c9e47bbfbd232
-ms.sourcegitcommit: 659cc0ace5d3b996e7e8608cfa4991dcac3ea129
+ms.openlocfilehash: f634bdde2c71f7563df11f686d7ce217311df81d
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/13/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-warehouse-units-dwus-and-compute-data-warehouse-units-cdwus"></a>Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU)
 ここでは、Azure SQL Data Warehouse の Data Warehouse ユニット (DWU) とコンピューティング Data Warehouse ユニット (cDWU) について説明します。 また、最適な Data Warehouse ユニットの数の選択についての推奨事項と、Data Warehouse ユニットの数を変更する方法も示します。 
@@ -101,7 +100,7 @@ DWU または cDWU を変更するには、次の手順に従います。
 
 2. **[スケール]** で、スライダーを左または右に移動して DWU 設定を変更します。
 
-3. **[ Save]** をクリックします。 確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、**[いいえ]** をクリックします。
+3. **[Save]** をクリックします。 確認メッセージが表示されます。 **[はい]** をクリックして確定します。キャンセルするには、**[いいえ]** をクリックします。
 
 ### <a name="powershell"></a>PowerShell
 DWU または cDWU を変更するには、[Set-AzureRmSqlDatabase][Set-AzureRmSqlDatabase] PowerShell コマンドレットを使用します。 次の例では、MyServer サーバーにホストされているデータベース MySQLDW のサービスレベル目標を DW1000 に設定します。
@@ -179,7 +178,7 @@ AND       major_resource_id = 'MySQLDW'
 - スケールアップ操作の場合、システムは追加のコンピューティングをプロビジョニングした後で、ストレージ レイヤーに再アタッチします。 
 - スケールダウン操作の場合は、不要なノードがストレージからデタッチされ、残りのノードに再アタッチします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 その他の主要なパフォーマンスの概念を理解するために、次の記事を参照してください。
 
 * [ワークロードと同時実行の管理][Workload and concurrency management]
@@ -201,7 +200,7 @@ AND       major_resource_id = 'MySQLDW'
 [Check database state with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#check-database-state
 [Check database state with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#check-database-state
 
-[Workload and concurrency management]: ./sql-data-warehouse-develop-concurrency.md
+[Workload and concurrency management]: ./resource-classes-for-workload-management.md
 [Table design overview]: ./sql-data-warehouse-tables-overview.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md
 [Table indexing]: ./sql-data-warehouse-tables-index.md

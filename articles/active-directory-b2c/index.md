@@ -1,24 +1,24 @@
 ---
-title: "Azure Active Directory B2C のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "クラウドで包括的なコンシューマーの ID 管理をデプロイする方法について説明します。 ドキュメントでは、コンシューマー向けの Web アプリとモバイル アプリを保護する方法を紹介します。"
+title: Azure Active Directory B2C のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: クラウドで包括的なコンシューマーの ID 管理をデプロイする方法について説明します。 ドキュメントでは、コンシューマー向けの Web アプリとモバイル アプリを保護する方法を紹介します。
 services: active-directory-b2c
 author: czeumault
 manager: mtillman
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory-b2c
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: a1b3517ddae732ffdfb6653507c43348ec1455ad
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7724bc1392a65d7628b97142cd8801acf7f5448f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="active-directory-b2c-documentation"></a>Active Directory B2C のドキュメント
+# <a name="active-directory-b2c-documentation"></a>Active Directory B2C のドキュメント
 
 Active Directory B2C を使って、クラウド内の包括的なコンシューマーの ID 管理を設定および管理する方法について説明します。 チュートリアルやリファレンスなどのドキュメントでは、セキュリティで保護されたサインインで、コンシューマー向けの Web アプリケーションやモバイル アプリケーションを保護する方法を紹介します。
 

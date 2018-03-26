@@ -1,8 +1,8 @@
 ---
-title: "Azure Windows 仮想マシンでの SQL Server の概要 | Microsoft Docs"
-description: "Azure Virtual Machines で各 SQL Server エディションを実行する方法について説明します。"
+title: Azure Windows 仮想マシンでの SQL Server の概要 | Microsoft Docs
+description: Azure Virtual Machines で各 SQL Server エディションを実行する方法について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: craigg
 tags: azure-service-management
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 12/14/2017
+ms.date: 02/28/2018
 ms.author: jroth
-ms.openlocfilehash: 268ae1dae1a247ee63adef22403f89680daa4961
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c5c480db8586db7ef125d5c992ff66f5cc28c1e2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Azure Virtual Machines 上の SQL Server とは何か (Windows)
 
@@ -51,10 +51,7 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 まず、必要なバージョン、エディション、オペレーティング システムの SQL Server 仮想マシン イメージを選んでください。 以下のセクションでは、SQL Server 仮想マシン ギャラリー イメージに関する、Azure Portal へのリンクを記載しています。
 
 > [!TIP]
-> これらのイメージの VM と SQL の料金については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
-
-> [!TIP]
-> SQL Server 仮想マシン ギャラリー イメージの更新とライフ サイクル ポリシーを理解するには、[SQL Server VM の FAQ](virtual-machines-windows-sql-server-iaas-faq.md#images) に関する記事を参照してください。
+> SQL イメージの料金について詳しくは、「[SQL Server Azure VM の料金ガイダンス](virtual-machines-windows-sql-server-pricing-guidance.md)」をご覧ください。 
 
 ### <a id="payasyougo"></a> 従量課金制
 次の表に示したのは、従量課金制で提供されている SQL Server イメージの一覧です。
@@ -86,6 +83,9 @@ Azure 仮想マシンは、さまざまなワークロードのニーズを満�
 
 ### <a name="migrate-your-data"></a>データの移行
 既存のデータベースがある場合は、新たにプロビジョニングした SQL VM にそれを移動することがあります。 移行オプションの一覧とガイダンスについては、 [Azure VM の SQL Server へのデータベースの移行](virtual-machines-windows-migrate-sql.md)に関するページを参照してください。
+
+## <a id="lifecycle"></a>SQL VM イメージの更新ポリシー
+Azure に保持される仮想マシン イメージは、サポートされるオペレーティング システム、バージョン、エディションの組み合わせごとに 1 つだけです。 つまりイメージは、いずれ更新され、古いイメージは削除されていくことになります。 詳細については、[SQL Server VM の FAQ](virtual-machines-windows-sql-server-iaas-faq.md#images) に関するページの「**イメージ**」セクションを参照してください。
 
 ## <a name="customer-experience-improvement-program-ceip"></a>カスタマー エクスペリエンス向上プログラム (CEIP)
 既定では、カスタマー エクスペリエンス向上プログラム (CEIP) が有効です。 これにより、レポートが定期的に Microsoft に送信され、SQL Server の改善に役立ちます。 プロビジョニング後に無効にする場合を除き、CEIP で必要な管理タスクはありません。 リモート デスクトップで VM に接続することで、CEIP をカスタマイズしたり無効にしたりすることができます。 その後、 **SQL Server エラーと使用状況レポート** ユーティリティを実行します。 レポートを無効にするには、指示に従います。 データの収集の詳細については、「[SQL Server のプライバシーに関する声明](https://www.microsoft.com/EN-US/privacystatement/SQLServer/Default.aspx)」を参照してください。

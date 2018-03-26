@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Database のリソース制限 | Microsoft Docs"
-description: "このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。"
+title: Azure SQL Database のリソース制限 | Microsoft Docs
+description: このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 884e519f-23bb-4b73-a718-00658629646a
 ms.service: sql-database
 ms.custom: DBs & servers
@@ -13,15 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 02/27/2018
+ms.date: 02/28/2018
 ms.author: carlrab
-ms.openlocfilehash: 839705b902b8e1343c1e0bda97a2ec1dc6b47042
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: eea4362e33ff2587758601758db463ffa82382b3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限
+
+> [!IMPORTANT]
+> Azure SQL Database のマネージ インスタンスのリソース制限事項については、 [SQL Database マネージ インスタンス](sql-database-managed-instance.md#managed-instance-service-tier)に関する記事をご覧ください。
 
 ## <a name="single-database-storage-sizes-and-performance-levels"></a>単一データベース: ストレージ サイズとパフォーマンス レベル
 
@@ -79,7 +82,6 @@ P11 および P15 データベースで 1 TB を超える最大サイズは、�
 
 > [!NOTE]
 > エラスティック プール内の個々のリソース制限は、一般的に DTU やサービス層に基づくプール外の単一のデータベースのリソース制限と同じです。 たとえば、S2 データベースの最大同時実行ワーカー数は 120 ワーカーです。 そのため、プール内の各データベースの最大 DTU が 50 DTU (S2 と同じ) の場合、Standard プール内のデータベースの最大同時実行ワーカー数も 120 ワーカーです。
->
 
 [!INCLUDE [SQL DB service tiers table for elastic pools](../../includes/sql-database-service-tiers-table-elastic-pools.md)]
 

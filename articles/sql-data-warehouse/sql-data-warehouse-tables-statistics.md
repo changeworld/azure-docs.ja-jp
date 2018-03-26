@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse のテーブルの統計の管理 | Microsoft Docs"
-description: "Azure SQL Data Warehouse のテーブルの統計の概要です。"
+title: SQL Data Warehouse のテーブルの統計の管理 | Microsoft Docs
+description: Azure SQL Data Warehouse のテーブルの統計の概要です。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
+editor: ''
 ms.assetid: faa1034d-314c-4f9d-af81-f5a9aedf33e4
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 11/06/2017
 ms.author: barbkess
-ms.openlocfilehash: b007e1894f163d50dbf31e3c09b4b5ff329adb59
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: 5e7fd3c8790bb9a1a7ae8662f9a7047ae54892d2
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="managing-statistics-on-tables-in-sql-data-warehouse"></a>SQL Data Warehouse のテーブルの統計の管理
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ Azure SQL Data Warehouse がデータに関する情報を多く持っている�
 さまざまなシナリオの推奨事項を次に示します。
 | **シナリオ** | 推奨 |
 |:--- |:--- |
-| **作業開始** | SQL Data Warehouse への移行後にすべての列を更新 |
+| **概要** | SQL Data Warehouse への移行後にすべての列を更新 |
 | **最も重要な列の統計** | ハッシュ分散キー |
 | **次に重要な列の統計** | パーティション キー |
 | **その他の重要な列の統計** | Date、頻繁な JOIN、GROUP BY、HAVING と WHERE |
@@ -223,6 +223,11 @@ CREATE PROCEDURE    [dbo].[prc_sqldw_create_stats]
 )
 AS
 
+IF @create_type IS NULL
+BEGIN
+    SET @create_type = 1;
+END;
+
 IF @create_type NOT IN (1,2,3)
 BEGIN
     THROW 151000,'Invalid value for @stats_type parameter. Valid range 1 (default), 2 (fullscan) or 3 (sample).',1;
@@ -275,7 +280,7 @@ SELECT  [table_schema_name]
         WHEN 2
         THEN    CAST('CREATE STATISTICS '+QUOTENAME('stat_'+table_schema_name+ '_' + table_name + '_'+column_name)+' ON '+QUOTENAME(table_schema_name)+'.'+QUOTENAME(table_name)+'('+QUOTENAME(column_name)+') WITH FULLSCAN' AS VARCHAR(8000))
         WHEN 3
-        THEN    CAST('CREATE STATISTICS '+QUOTENAME('stat_'+table_schema_name+ '_' + table_name + '_'+column_name)+' ON '+QUOTENAME(table_schema_name)+'.'+QUOTENAME(table_name)+'('+QUOTENAME(column_name)+') WITH SAMPLE '+@sample_pct+'PERCENT' AS VARCHAR(8000))
+        THEN    CAST('CREATE STATISTICS '+QUOTENAME('stat_'+table_schema_name+ '_' + table_name + '_'+column_name)+' ON '+QUOTENAME(table_schema_name)+'.'+QUOTENAME(table_name)+'('+QUOTENAME(column_name)+') WITH SAMPLE '+CONVERT(varchar(4),@sample_pct)+' PERCENT' AS VARCHAR(8000))
         END AS create_stat_ddl
 FROM T
 ;
@@ -297,11 +302,24 @@ END
 DROP TABLE #stats_ddl;
 ```
 
-このプロシージャを使用して、テーブルのすべての列の統計を作成するには、プロシージャを呼び出すだけです。
+既定値を使用してテーブルのすべての列の統計を作成するには、プロシージャを呼び出すだけです。
 
 ```sql
-prc_sqldw_create_stats;
+EXEC [dbo].[prc_sqldw_create_stats] 1, NULL;
 ```
+フルスキャンを使用してテーブルのすべての列の統計を作成するには、次のプロシージャを呼び出します。
+
+```sql
+EXEC [dbo].[prc_sqldw_create_stats] 2, NULL;
+```
+テーブルのすべての列にサンプルの統計を作成するには、「3」およびサンプル率を入力します。  このプロシージャでは、20% のサンプル レートを使用します。
+
+```sql
+EXEC [dbo].[prc_sqldw_create_stats] 3, 20;
+```
+
+
+すべての列にサンプルの統計を作成するには 
 
 ## <a name="examples-update-statistics"></a>例: 統計の更新
 統計を更新するには、次の操作を行います。

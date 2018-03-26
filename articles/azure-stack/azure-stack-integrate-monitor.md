@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack と外部の監視ソリューションとの統合 | Microsoft Docs"
-description: "Azure Stack とデータセンターの外部の監視ソリューションを統合する方法を説明します。"
+title: Azure Stack と外部の監視ソリューションとの統合 | Microsoft Docs
+description: Azure Stack とデータセンターの外部の監視ソリューションを統合する方法を説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
@@ -16,10 +16,10 @@ ms.date: 02/01/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 ms.openlocfilehash: 3435ada40afb9f1c6e57be64d1b9086d0cdaefd9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="integrate-external-monitoring-solution-with-azure-stack"></a>Azure Stack と外部の監視ソリューションとの統合
 
@@ -75,7 +75,7 @@ Nagios 監視プラグインは、制約のない無料ソフトウェア ライ
 
 プラグイン ファイルの "Azurestack_plugin.py" を次のパラメーターで構成します。
 
-| パラメーター | [説明] | 例 |
+| パラメーター | 説明 | 例 |
 |---------|---------|---------|
 | *arm_endpoint* | Azure Resource Manager (管理者) エンドポイント |https://adminmanagement.local.azurestack.external |
 | *api_endpoint* | Azure Resource Manager (管理者) エンドポイント  | https://adminmanagement.local.azurestack.external |
@@ -143,7 +143,7 @@ REST API 呼び出しを使用して、アラートを取得したり、アラ�
 
 **引数**
 
-|引数  |[説明]  |
+|引数  |説明  |
 |---------|---------|
 |armendpoint     |  ご利用の Azure Stack 環境の Azure Resource Manager エンドポイント。形式は https://adminmanagement.{RegionName}.{External FQDN}。 たとえば、外部の FQDN が *azurestack.external* でリージョン名が *local* の場合、Resource Manager エンドポイントは https://adminmanagement.local.azurestack.external になります。       |
 |subid     |   呼び出しを行っているユーザーのサブスクリプション ID。 この API を使用して、既定のプロバイダー サブスクリプションへのアクセス許可を持つユーザーにだけクエリを実行できます。      |
@@ -202,7 +202,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 **応答の詳細**
 
 
-|  引数  |[説明]  |
+|  引数  |説明  |
 |---------|---------|
 |*id*     |      アラートの一意の ID。   |
 |*name*     |     アラートの内部名。   |
@@ -246,7 +246,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 **引数**
 
 
-|引数  |[説明]  |
+|引数  |説明  |
 |---------|---------|
 |*armendpoint*     |   ご利用の Azure Stack 環境の Resource Manager エンドポイント。形式は https://adminmanagement.{RegionName}.{External FQDN}。 たとえば、外部の FQDN が *azurestack.external* でリージョン名が *local* の場合、Resource Manager エンドポイントは https://adminmanagement.local.azurestack.external になります。      |
 |*subid*     |    呼び出しを行っているユーザーのサブスクリプション ID。 この API を使用して、既定のプロバイダー サブスクリプションへのアクセス許可を持つユーザーにだけクエリを実行できます。     |
@@ -345,7 +345,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 **応答の詳細**
 
 
-|  引数  |[説明]  |
+|  引数  |説明  |
 |---------|---------|
 |*id*     |      アラートの一意の ID。   |
 |*name*     |     アラートの内部名。   |
@@ -391,7 +391,7 @@ PUT https://adminmanagement.local.azurestack.external//subscriptions/<Subscripti
 **引数**
 
 
-|引数  |[説明]  |
+|引数  |説明  |
 |---------|---------|
 |*armendpoint*     |    ご利用の Azure Stack 環境の Resource Manager エンドポイント。形式は https://adminmanagement.{RegionName}.{External FQDN}。 たとえば、外部の FQDN が azurestack.external でリージョン名が local の場合、Resource Manager エンドポイントは https://adminmanagement.local.azurestack.external になります。     |
 |*subid*     |     呼び出しを行っているユーザーのサブスクリプション ID。 この API を使用して、既定のプロバイダー サブスクリプションへのアクセス許可を持つユーザーにだけクエリを実行できます。    |
@@ -431,7 +431,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 **応答の詳細**
 
 
-|引数  |[説明]  |
+|引数  |説明  |
 |---------|---------|
 |*Id*     |   アラートの一意の ID。      |
 |*name*     |  アラートの内部名。       |
@@ -499,7 +499,7 @@ GET https://adminmanagement.local.azurestack.external/subscriptions/<Subscriptio
 
 **応答の詳細**
 
-|引数  |[説明]  |
+|引数  |説明  |
 |---------|---------|
 |*Id*     |   アラートの一意の ID。      |
 |*name*     |  アラートの内部名。       |

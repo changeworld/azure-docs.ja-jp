@@ -52,6 +52,7 @@ sql-database-single-database-resources.md
 | 最大同時セッション数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 |||||||
 
+
 > [!IMPORTANT]
 > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
 >
@@ -59,3 +60,4 @@ sql-database-single-database-resources.md
 > 
 >\*\* Standard におけるデータベースあたりの最大 DTU 数 (200 DTU 以上) はプレビュー段階です。
 >
+

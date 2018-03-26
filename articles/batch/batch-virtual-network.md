@@ -1,6 +1,6 @@
 ---
-title: "仮想ネットワークで Azure Batch プールをプロビジョニングする | Microsoft Docs"
-description: "ファイル サーバーなど、ネットワーク内の他の VM と計算ノードが安全に通信できるように、仮想ネットワークで Batch プールを作成できます。"
+title: 仮想ネットワークで Azure Batch プールをプロビジョニングする | Microsoft Docs
+description: ファイル サーバーなど、ネットワーク内の他の VM と計算ノードが安全に通信できるように、仮想ネットワークで Batch プールを作成できます。
 services: batch
 author: dlepow
 manager: jeconnoc
@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 02/05/2018
 ms.author: danlep
-ms.openlocfilehash: 626319a458575d255af4c4f8de93fca542b48890
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5a06ad5086a42bb00147e085227f3c71c357544e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>仮想ネットワーク内に Azure Batch プールを作成する
 
@@ -32,7 +32,7 @@ Azure Batch プールには、計算ノードが互いに通信する (たとえ
 
 * **[認証]**:  Azure VNet を使用するには、Batch クライアント API で Azure Active Directory (AD) 認証を使用する必要があります。 Azure AD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。 
 
-* **Azure VNet**。 1 つまたは複数のサブネットを持つ VNet を前もって用意するために、Azure Portal、Azure PowerShell、Azure コマンドライン インターフェイス (CLI)、その他の方法を利用できます。 Azure Resource Manager ベースの VNet を作成する方法については、「[複数のサブネットを含んだ仮想ネットワークを作成する](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」を参照してください。 クラシック VNet を作成する方法については、「[複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する](../virtual-network/create-virtual-network-classic.md)」を参照してください。
+* **Azure VNet**。 1 つまたは複数のサブネットを持つ VNet を前もって用意するために、Azure Portal、Azure PowerShell、Azure コマンドライン インターフェイス (CLI)、その他の方法を利用できます。 Azure Resource Manager ベースの VNet を作成する方法については、[仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network)に関するページを参照してください。 クラシック VNet を作成する方法については、「[複数のサブネットを含んだ仮想ネットワーク (クラシック) を作成する](../virtual-network/create-virtual-network-classic.md)」を参照してください。
 
 ### <a name="vnet-requirements"></a>VNet に関する要件
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
@@ -70,4 +70,4 @@ VNet を作成し、それにサブネットを割り当てたら、その VNet 
 ## <a name="next-steps"></a>次の手順
 
 - Batch の詳細な概要については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」を参照してください。
-- ユーザー定義ルートの作成の詳細については、「[Azure Portal を使用してユーザー定義ルートを作成する](../virtual-network/create-user-defined-route-portal.md)」を参照してください。
+- ユーザー定義ルートの作成の詳細については、「[Azure Portal を使用してユーザー定義ルートを作成する](../virtual-network/tutorial-create-route-table-portal.md)」を参照してください。

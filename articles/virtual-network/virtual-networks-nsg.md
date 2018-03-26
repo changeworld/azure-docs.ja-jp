@@ -1,6 +1,6 @@
 ---
-title: "Azure のネットワーク セキュリティ グループ | Microsoft Docs"
-description: "ネットワーク セキュリティ グループを使用した Azure でのファイアウォールの分散により、仮想ネットワーク内のトラフィック フローを分離および制御する方法について説明します。"
+title: Azure のネットワーク セキュリティ グループ | Microsoft Docs
+description: ネットワーク セキュリティ グループを使用した Azure でのファイアウォールの分散により、仮想ネットワーク内のトラフィック フローを分離および制御する方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: 5eca18ca2f34097d98ce947c61c635abc6ab27b8
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: bd15b7786552d21c8791eeb307aa8c87066b2bcd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング
 
 ネットワーク セキュリティ グループ (NSG) には、Azure Virtual Network (VNet) に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 NSG をサブネットに関連付けた場合、そのサブネットに接続されているすべてのリソースにその NSG のルールが適用されます。 加えて VM や NIC にも NSG を関連付けることで、トラフィックをさらに制限することができます。
-
+ 
 > [!NOTE]
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、両方のモデルについて取り上げていますが、最新のデプロイではリソース マネージャー モデルの使用をお勧めします。
 
@@ -98,7 +98,7 @@ VM、NIC、サブネットには、使用しているデプロイ モデルに�
 
 * **VM (クラシックのみ):** セキュリティ規則は、VM との間で送受信されるすべてのトラフィックに適用されます。 
 * **NIC (Resource Manager のみ):** セキュリティ規則は、NSG が関連付けられている NIC との間で送受信されるすべてのトラフィックに適用されます。 複数の NIC が使用されている VM の場合、各 NIC にそれぞれ異なる (または同じ) NSG を適用することができます。 
-* **サブネット (Resource Manager とクラシック):** セキュリティ規則は、VNet に接続されたすべてのリソースとの間で送受信されるトラフィックに適用されます。
+* **サブネット (Resource Manager とクラシック):** セキュリティ規則は、サブネットに接続されたすべてのリソースとの間で送受信されるトラフィックに適用されます。
 
 VM (デプロイメント モデルによっては NIC) に関連付ける NSG と、NIC または VM の接続先となるサブネットに関連付ける NSG とが異なっていてもかまいません。 セキュリティ規則は、各 NSG 内の優先度に基づき、次の順番でトラフィックに適用されます。
 

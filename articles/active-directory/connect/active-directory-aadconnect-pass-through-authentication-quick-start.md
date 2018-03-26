@@ -1,9 +1,9 @@
 ---
-title: "Azure AD パススルー認証 - クイック スタート | Microsoft Docs"
-description: "この記事では、Azure Active Directory (Azure AD) パススルー認証を使用する方法について説明します。"
+title: Azure AD パススルー認証 - クイック スタート | Microsoft Docs
+description: この記事では、Azure Active Directory (Azure AD) パススルー認証を使用する方法について説明します。
 services: active-directory
-keywords: "Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン"
-documentationcenter: 
+keywords: Azure AD Connect パススルー認証, Active Directory のインストール, Azure AD に必要なコンポーネント, SSO, シングル サインオン
+documentationcenter: ''
 author: swkrish
 manager: mtillman
 ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 03/07/2018
 ms.author: billmath
-ms.openlocfilehash: 1da7c064030501b5c6547b65c091b1a50da93899
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: b592eb8ca43e5bf3eebe2b0c47d8f17dbec7b238
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-quick-start"></a>Azure Active Directory パススルー認証: クイック スタート
 
@@ -116,22 +116,40 @@ Azure AD Connect を初めてインストールする場合は、[カスタム �
 
 ## <a name="step-5-ensure-high-availability"></a>手順 5: 高可用性を確保する
 
-運用環境にパススルー認証をデプロイする場合は、スタンドアロン認証エージェントをインストールする必要があります。 この 2 番目の認証エージェントを、Azure AD Connect が実行されている、最初の認証エージェント "_以外_" のサーバーにインストールします。 この設定により、サインイン要求の高可用性が確保されます。 次の手順に従って、スタンドアロン認証エージェントをデプロイします。
+運用環境にパススルー認証をデプロイする場合は、スタンドアロン認証エージェントを少なくとももう 1 つインストールする必要があります。 これらの認証エージェントは、Azure AD Connect を実行しているサーバー "_以外_" のサーバーにインストールします。 この設定により、ユーザー サインイン要求の高可用性が確保されます。
 
-1. 認証エージェントの最新バージョン (バージョン 1.5.193.0 以降) をダウンロードします。 テナントのグローバル管理者の資格情報を使って、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
+次の手順に従って、認証エージェント ソフトウェアをダウンロードします。
+
+1. 最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードするには、テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 2. 左ウィンドウで、**[Azure Active Directory]** を選択します。
 3. **[Azure AD Connect]**、**[パススルー認証]**、**[エージェントのダウンロード]** の順に選択します。
 4. **[使用条件に同意してダウンロードする]** をクリックします。
-5. 前の手順でダウンロードした実行可能ファイルを実行して、最新バージョンの認証エージェントをインストールします。 求められたら、テナントのグローバル管理者の資格情報を入力します。
 
 ![Azure Active Directory 管理センター: 認証エージェントのダウンロード ボタン](./media/active-directory-aadconnect-pass-through-authentication/pta9.png)
 
 ![Azure Active Directory 管理センター: [エージェントのダウンロード] ウィンドウ](./media/active-directory-aadconnect-pass-through-authentication/pta10.png)
 
 >[!NOTE]
->[Azure Active Directory 認証エージェント](https://aka.ms/getauthagent)をダウンロードすることもできます。 認証エージェントをインストールする "_前_" に[サービス使用条件](https://aka.ms/authagenteula)を確認して同意してください。
+>認証エージェント ソフトウェアは[ここ](https://aka.ms/getauthagent)から直接ダウンロードすることもできます。 認証エージェントをインストールする "_前_" に[サービス使用条件](https://aka.ms/authagenteula)を確認して同意してください。
 
-## <a name="next-steps"></a>次のステップ
+スタンドアロン認証エージェントをデプロイする方法は 2 つあります。
+
+1 つ目は、ダウンロードした認証エージェントの実行可能ファイルを実行し、メッセージが表示されたらテナントのグローバル管理者の資格情報を提供することにより、対話的に行うことができます。
+
+2 つ目は、自動デプロイ スクリプトを作成して実行できます。 これは、一度に複数の認証エージェントをデプロイするときや、ユーザー インターフェイスが有効になっていない、またはリモート デスクトップでアクセスできない Windows サーバーに認証エージェントをインストールするときに便利です。 この方法を使用する手順を以下に示します。
+
+1. 次のコマンドを実行して、認証エージェント `AADConnectAuthAgentSetup.exe REGISTERCONNECTOR="false" /q` をインストールしてください。
+2. 認証エージェントは、Windows PowerShell を使用して Microsoft のサービスに登録できます。 テナントのグローバル管理者のユーザー名とパスワードを格納する PowerShell 資格情報オブジェクト `$cred` を作成します。 *\<username\>* と *\<password\>* を置き換えて、次のコマンドを実行します。
+   
+        $User = "<username>"
+        $PlainPassword = '<password>'
+        $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
+        $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
+3. **C:\Program Files\Microsoft Azure AD Connect 認証エージェント**に移動し、作成済みの `$cred` オブジェクトを使用して次のスクリプトを実行します。
+   
+        RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft Azure AD Connect Authentication Agent\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature PassthroughAuthentication
+
+## <a name="next-steps"></a>次の手順
 - [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md): ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成する方法を確認します。
 - [現在の制限](active-directory-aadconnect-pass-through-authentication-current-limitations.md): パススルー認証でサポートされているシナリオと、サポートされていないシナリオを確認します。
 - [技術的な詳細](active-directory-aadconnect-pass-through-authentication-how-it-works.md): パススルー認証機能のしくみを理解します。

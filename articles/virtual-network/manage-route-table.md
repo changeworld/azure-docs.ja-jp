@@ -1,13 +1,13 @@
 ---
-title: "Azure ルート テーブルの作成、変更、削除 | Microsoft Docs"
-description: "ルート テーブルの作成、変更、削除の方法について説明します。"
+title: Azure ルート テーブルの作成、変更、削除 | Microsoft Docs
+description: ルート テーブルの作成、変更、削除の方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
@@ -15,15 +15,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 7edc73f337a72c24fd24d94468ee590b75dfa7df
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 7630fd82cf62f1fcb0df80cec5b5e0030da81a85
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="create-change-or-delete-a-route-table"></a>ルート テーブルの作成、変更、削除
 
-Azure では、Azure のサブネット、仮想ネットワーク、およびオンプレミスのネットワーク間のトラフィックが自動的にルーティングされます。 Azure の既定のルーティングを変更する場合は、ルート テーブルを作成して変更します。 Azure ルーティングを使い慣れていない場合は、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを参照し、[ルート テーブルを使用したネットワーク トラフィックのルーティング](create-user-defined-route-portal.md)のチュートリアルを実行してから、この記事のタスクを実行することをお勧めします。
+Azure では、Azure のサブネット、仮想ネットワーク、およびオンプレミスのネットワーク間のトラフィックが自動的にルーティングされます。 Azure の既定のルーティングを変更する場合は、ルート テーブルを作成して変更します。 Azure ルーティングを使い慣れていない場合は、[ルーティングの概要](virtual-networks-udr-overview.md)に関するページを参照し、[ルート テーブルを使用したネットワーク トラフィックのルーティング](tutorial-create-route-table-portal.md)のチュートリアルを実行してから、この記事のタスクを実行することをお勧めします。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -38,7 +38,7 @@ Azure では、Azure のサブネット、仮想ネットワーク、および�
 
 Azure の場所およびサブスクリプションあたりの作成可能なルート テーブル数は、制限されています。 詳細については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
 
-1. ポータルの左上隅にある **[+ 新規]** を選択します。
+1. ポータルの左上隅にある **[+ リソースの作成]** を選択します。
 2. **[ネットワーク]**、**[ルート テーブル]** の順に選択します。
 3. ルート テーブルの**名前**を入力し、**サブスクリプション**を選択して、新しい**リソース グループ**を作成するか、既存のリソース グループを選択し、**場所**を選択してから、**[作成]** を選択します。 **[BGP ルート伝達を無効にする]** オプションは、オンプレミスのルートが BGP を使用して Azure の仮想ネットワークに伝達されないようにします。 仮想ネットワークが Azure ネットワーク ゲートウェイ (VPN または ExpressRoute) に接続されていない場合は、このオプションを *[無効]* のままにします。 
 

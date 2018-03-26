@@ -16,10 +16,10 @@ ms.custom: reference
 ms.date: 10/31/2016
 ms.author: barbkess
 ms.openlocfilehash: c56c1c262aa1a88e3f7a3d6638176cb9f97011d3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="reference-topics-for-sql-data-warehouse"></a>SQL Data Warehouse の参照トピック
 これらの記事には、SQL Data Warehouse に関する参照情報が含まれています。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 * [Transact-SQL システム ビュー][Transact-SQL system views]
 * [PowerShell コマンドレット][PowerShell cmdlets]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、「[SQL Data Warehouse の設計上の決定と コーディング技法][development overview]」を参照してください。
 
 <!--Image references-->

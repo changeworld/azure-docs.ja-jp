@@ -1,11 +1,11 @@
 ---
-title: "Access Control の使用方法 (Java) | Microsoft Docs"
-description: "Azure 上で Java により Access Control を開発して使用する方法について説明します。"
+title: Access Control の使用方法 (Java) | Microsoft Docs
+description: Azure 上で Java により Access Control を開発して使用する方法について説明します。
 services: active-directory
 documentationcenter: java
 author: rmcmurray
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 247dfd59-0221-4193-97ec-4f3ebe01d3c7
 ms.service: active-directory
 ms.workload: identity
@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: b555ef40fae8156d2957643697d6450ef22b215a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="how-to-authenticate-web-users-with-azure-access-control-service-using-eclipse"></a>Eclipse を使用して Azure の Access Control Service で Web ユーザーを認証する方法
 このガイドでは、Azure Toolkit for Eclipse 内で Azure の Access Control Service (ACS) を使用する方法について説明します。 ACS の詳細については、「 [次のステップ](#next_steps) 」を参照してください。
@@ -78,9 +78,9 @@ ACS を構成して、IP を信頼する場合、システムは、その IP に
 このガイドのタスクを完了するには、次のものが必要です。
 
 * A Java Developer Kit (JDK) v 1.6 以降。
-* Eclipse IDE for Java EE Developers Indigo 以降。 <http://www.eclipse.org/downloads/> からダウンロードできます。 
+* Eclipse IDE for Java EE Developers Indigo 以降。 これは <http://www.eclipse.org/downloads/> からダウンロードできます。 
 * Java ベースの Web サーバーまたはアプリケーション サーバーのディストリビューション (Apache Tomcat、GlassFish、JBoss Application Server、Jetty など)。
-* Azure サブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から入手できます。
+* Azure サブスクリプション。<http://www.microsoft.com/windowsazure/offers/> から取得できます。
 * Azure Toolkit for Eclipse、2014 年 4 月のリリース以降。 詳細については、「 [Azure Toolkit for Eclipse のインストール](http://msdn.microsoft.com/library/windowsazure/hh690946.aspx)」を参照してください。
 * アプリケーションで使用する X.509 証明書。 この証明書は .cer (公開証明書) と .PFX (Personal Information Exchange) の両方の形式のものが必要です。 (この証明書の作成方法についてはこのチュートリアルで後で説明)。
 * [Azure 用の Hello World アプリケーションを Eclipse で作成する方法に関するトピック](http://msdn.microsoft.com/library/windowsazure/hh690944.aspx)で説明されている、Azure コンピューティング エミュレーターとそのエミュレーターへのデプロイ手法に精通していること。

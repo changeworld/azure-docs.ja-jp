@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes on Azure のチュートリアル - クラスターのデプロイ"
-description: "AKS チュートリアル - クラスターのデプロイ"
+title: Kubernetes on Azure のチュートリアル - クラスターのデプロイ
+description: AKS チュートリアル - クラスターのデプロイ
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 975069dbe9283c98482d7d0d5741a595ef323b35
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 6ea26a2d4214c41faa5d63b7c72667955a43d6a2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -85,7 +85,7 @@ k8s-myAKSCluster-36346190-0   Ready     49m       v1.7.9
 
 ## <a name="configure-acr-authentication"></a>ACR 認証を構成する
 
-AKS クラスターと ACR レジストリとの間で認証が構成されている必要があります。 その際、ACR レジストリからイメージをプルするための適切な権限を ACS の ID に付与することになります。
+AKS クラスターと ACR レジストリとの間で認証が構成されている必要があります。 その際、ACR レジストリからイメージをプルするための適切な権限を AKS の ID に付与することになります。
 
 まず、AKS に対して構成されているサービス プリンシパルの ID を取得します。 リソース グループの名前と AKS クラスターの名前は、お使いの環境に合わせて更新してください。
 
@@ -96,7 +96,7 @@ CLIENT_ID=$(az aks show --resource-group myResourceGroup --name myAKSCluster --q
 ACR レジストリのリソース ID を取得します。レジストリ名は実際の ACR レジストリの名前に、またリソース グループは、その ACR レジストリが存在するリソース グループに置き換えてください。
 
 ```azurecli
-ACR_ID=$(az acr show --name myACRRegistry --resource-group myResourceGroup --query "id" --output tsv)
+ACR_ID=$(az acr show --name <acrName> --resource-group myResourceGroup --query "id" --output tsv)
 ```
 
 適切なアクセス権を付与するロールの割り当てを作成します。

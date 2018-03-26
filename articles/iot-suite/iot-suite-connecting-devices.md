@@ -1,25 +1,25 @@
 ---
-title: "C を使用してリモート監視するために Windows デバイスをプロビジョニングする - Azure | Microsoft Docs"
-description: "C で記述され、Windows で実行されるアプリケーションを使用して、デバイスを Azure IoT Suite 構成済みリモート管理ソリューションに接続する方法について説明します。"
-services: 
+title: C を使用してリモート監視するために Windows デバイスをプロビジョニングする - Azure | Microsoft Docs
+description: C で記述され、Windows で実行されるアプリケーションを使用して、デバイスを Azure IoT Suite 構成済みリモート管理ソリューションに接続する方法について説明します。
+services: ''
 suite: iot-suite
 documentationcenter: na
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 34e39a58-2434-482c-b3fa-29438a0c05e8
 ms.service: iot-suite
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/12/2017
+ms.date: 03/14/2018
 ms.author: dobett
-ms.openlocfilehash: a6453c8d84b7025f1f510db5e675cde8685c23ed
-ms.sourcegitcommit: 922687d91838b77c038c68b415ab87d94729555e
+ms.openlocfilehash: 83d0427a3ba8c634699608c38ab22efb1f275e52
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/13/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-your-device-to-the-remote-monitoring-preconfigured-solution-windows"></a>デバイスをリモート監視構成済みソリューションに接続する (Windows)
 
@@ -95,7 +95,7 @@ Parson JSON ライブラリを **RMDevice** プロジェクトに追加し、必
     #include "schemaserializer.h"
     #include "azure_c_shared_utility/threadapi.h"
     #include "azure_c_shared_utility/platform.h"
-    #include "parson.h"
+    #include <string.h>
     ```
 
     > [!NOTE]
@@ -117,7 +117,7 @@ Parson JSON ライブラリを **RMDevice** プロジェクトに追加し、必
     }
     ```
 
-1. **[ビルド]**、**[ソリューションのビルド]** の順に選択して、デバイス アプリケーションをビルドします。 **gmtime** 関数に関する警告は無視します。
+1. **[ビルド]**、**[ソリューションのビルド]** の順に選択して、デバイス アプリケーションをビルドします。
 
 1. **ソリューション エクスプローラー**で、**RMDevice** プロジェクトを右クリックし、**[デバッグ]**、**[新しいインスタンスを開始]** の順に選択して、サンプルを実行します。 コンソールには、次のメッセージが表示されます。
 

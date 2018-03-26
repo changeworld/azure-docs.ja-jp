@@ -1,8 +1,8 @@
 ---
-title: "Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする | Microsoft Docs"
-description: "Data Factory を使用して、サポートされるソース データ ストアのデータを Azure Cosmos DB にコピーしたり、Cosmos DB のデータをサポートされるシンク ストアにコピーしたりできます。"
+title: Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする | Microsoft Docs
+description: Data Factory を使用して、サポートされるソース データ ストアのデータを Azure Cosmos DB にコピーしたり、Cosmos DB のデータをサポートされるシンク ストアにコピーしたりできます。
 services: data-factory, cosmosdb
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: c791f335bfa9ec6073eb83149068571ceb253f82
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b54aba19ecb92867bc817cbbb921f4e6537ef70c
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする
 
@@ -54,7 +54,7 @@ Azure Cosmos DB のリンクされたサービスでは、次のプロパティ�
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **CosmosDb** に設定する必要があります。 | [はい] |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString としてマークして Data Factory にデータ ファクトリに安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**
@@ -162,7 +162,7 @@ Azure Cosmos DB からデータをコピーするには、コピー アクティ
 
 ### <a name="azure-cosmos-db-as-sink"></a>シンクとしての Azure Cosmos DB
 
-Azure Cosmos DB からデータをコピーするには、コピー アクティビティのシンクの種類を **DocumentDbCollectionSink** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
+Azure Cosmos DB へデータをコピーするには、コピー アクティビティのシンクの種類を **DocumentDbCollectionSink** に設定します。 コピー アクティビティの **source** セクションでは、次のプロパティがサポートされます。
 
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |

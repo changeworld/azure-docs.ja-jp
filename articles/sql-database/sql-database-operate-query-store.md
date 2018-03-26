@@ -1,26 +1,19 @@
 ---
-title: "Azure SQL Database のクエリ ストアの動作"
-description: "Azure SQL Database でクエリ ストアがどのように動作するかについて説明します"
-keywords: 
+title: Azure SQL Database のクエリ ストアの動作
+description: Azure SQL Database でクエリ ストアがどのように動作するかについて説明します
 services: sql-database
-documentationcenter: 
 author: bonova
-manager: jhubbard
-editor: 
-ms.assetid: 0cccf6bd-1327-44f7-a6f9-8eff0c210463
+manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: sqldb-performance
-ms.workload: Inactive
 ms.date: 11/08/2016
 ms.author: bonova
-ms.openlocfilehash: e57f1c51ef5c551f3b2e5d0f0a51a1f462b6c1af
-ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
+ms.openlocfilehash: f0c3780f6efe87437742af7c1b8f6a3e6d0ee243
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Azure SQL Database のクエリ ストアの動作
 Azure のクエリ ストアは、すべてのクエリに関する詳細な履歴情報を継続的に収集して提示する、完全に管理されたデータベース機能です。 クエリ ストアは、航空機のフライト データ レコーダーに似ていると考えることができます。この機能によって、クラウドとオンプレミスのユーザーの両方が、クエリ パフォーマンスのトラブルシューティングを大幅に簡素化できます。 この記事では、Azure でのクエリ ストアの動作の特定の側面について説明します。 この事前収集されたクエリ データを使用してパフォーマンスの問題をすばやく診断して解決することで、業務に向ける時間を増やすことができます。 
@@ -35,7 +28,7 @@ Azure のクエリ ストアは、すべてのクエリに関する詳細な履�
 ## <a name="optimal-query-store-configuration"></a>クエリ ストアの最適構成
 このセクションでは、クエリ ストアと、 [SQL Database Advisor やパフォーマンス ダッシュボード](https://azure.microsoft.com/updates/sqldatabaseadvisorga/)などの依存機能の信頼できる動作を保証するように考えられた、最適構成の既定値について説明します。 既定の構成は、データ収集が継続的に実施される (OFF/READ_ONLY 状態の時間が最小限になる) ように最適化されています。
 
-| 構成 | Description | 既定値 | コメント |
+| 構成 | [説明] | 既定値 | Comment (コメント) |
 | --- | --- | --- | --- |
 | MAX_STORAGE_SIZE_MB |クエリ ストアがユーザーのデータベース内で使用するデータ領域の制限を指定します。 |100 |新しいデータベースに適用 |
 | INTERVAL_LENGTH_MINUTES |クエリ プランで収集されたランタイム統計が集計されて保存される間隔を定義します。 すべてのアクティブなクエリ プランには、この構成で定義された期間の行が最大で 1 行含まれます。 |60 |新しいデータベースに適用 |
@@ -52,7 +45,7 @@ Azure のクエリ ストアは、すべてのクエリに関する詳細な履�
 
 カスタム設定を維持する場合は、 [ALTER DATABASE とクエリ ストア オプション](https://msdn.microsoft.com/library/bb522682.aspx) を使用して、構成を前の状態に戻します。 「 [クエリ ストアを使用する際の推奨事項](https://msdn.microsoft.com/library/mt604821.aspx) 」で、よく選ばれている最適構成のパラメーターを確認してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [SQL Database Performance Insight](sql-database-performance.md)
 
 ## <a name="additional-resources"></a>その他のリソース

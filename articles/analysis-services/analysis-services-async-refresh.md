@@ -1,30 +1,30 @@
 ---
-title: "Azure Analysis Services モデルの非同期更新 | Microsoft Docs"
-description: "REST API を使用して非同期更新のコードを記述する方法を説明します。"
+title: Azure Analysis Services モデルの非同期更新 | Microsoft Docs
+description: REST API を使用して非同期更新のコードを記述する方法を説明します。
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: analysis-services
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 02/14/2018
+ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 1f31c05554db16d604a9825ef9b1317a0f281456
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
 
-データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの要素の数によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (Tabular Object Model)、[PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (Tabular Model Scripting Language) などの既存のメソッドを使用して呼び出していました。 しかし、多くの場合、これらのメソッドは信頼性が低く実行時間が長い HTTP 接続を必要とします。
+データ更新操作は、データ ボリュームや、パーティションを使用した最適化のレベルなどの数多くの要因によって、ある程度時間がかかる場合があります。これらの操作は、従来は [TOM](https://docs.microsoft.com/sql/analysis-services/tabular-model-programming-compatibility-level-1200/introduction-to-the-tabular-object-model-tom-in-analysis-services-amo) (表形式オブジェクト モデル)、[PowerShell](https://docs.microsoft.com/sql/analysis-services/powershell/analysis-services-powershell-reference) コマンドレット、または [TMSL](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) (表形式モデル スクリプト言語) などの既存の方法を使用して呼び出されていました。 しかし、多くの場合、これらの方法は信頼性が低く実行時間が長い HTTP 接続を必要とします。
 
 Azure Analysis Services 用の REST API なら、データ更新操作を非同期で実行できます。 REST API を使用すれば、クライアント アプリケーションからの実行時間の長い HTTP 接続は不要になります。 他にも、自動の再試行やバッチ処理されたコミットなどの信頼性を高める組み込み機能もあります。
 
@@ -67,8 +67,11 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 すべての呼び出しは、Authorization ヘッダー内の有効な Azure Active Directory (OAuth 2) トークンで認証する必要があり、次の要件を満たす必要があります。
 
 - そのトークンはユーザー トークンまたはアプリケーション サービス プリンシパルのどちらかである必要があります。
-- そのユーザーまたはアプリケーションは、要求された呼び出しを実行するために、サーバーまたはモデルに対する十分なアクセス許可を与えられている必要があります。 そのアクセス許可のレベルは、モデル、またはサーバー上の管理者グループ内のロールによって決定されます。
 - そのトークンは正しい対象ユーザーを `https://*.asazure.windows.net` に設定している必要があります。
+- そのユーザーまたはアプリケーションは、要求された呼び出しを実行するために、サーバーまたはモデルに対する十分なアクセス許可を与えられている必要があります。 そのアクセス許可のレベルは、モデル、またはサーバー上の管理者グループ内のロールによって決定されます。
+
+    > [!IMPORTANT]
+    > 現時点では、**サーバー管理者**ロールのアクセス許可が必要です。
 
 ## <a name="post-refreshes"></a>POST /refreshes
 
@@ -96,10 +99,10 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>parameters
+### <a name="parameters"></a>パラメーター
 パラメーターを指定する必要はありません。 既定値が適用されます。
 
-|Name  |type  |[説明]  |既定値  |
+|名前  |型  |説明  |既定値  |
 |---------|---------|---------|---------|
 |type     |  列挙型       |  実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、add、defragment) と一致します。       |   automatic      |
 |CommitMode     |  列挙型       |  オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |
@@ -107,14 +110,14 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 |RetryCount    |    int     |   失敗前の操作の再試行回数を示します。      |     0    |
 |オブジェクト     |   array      |   処理されるオブジェクトの配列です。 各オブジェクトには、テーブル全体を処理する時には "table" が、またはパーティションを処理する時には "table" と "partition" が含まれます。 オブジェクトが指定されていない場合は、モデル全体が更新されます。 |   モデル全体を処理      |
 
-CommitMode は partialBatch と同じです。 これは、読み込みに何時間もかかる可能性がある大規模なデータセットを最初に読み込む時に使用されます。 1 つ以上のバッチのコミットに成功したあとに更新操作が失敗すると、コミットに成功したバッチはコミットされたままになります (コミットに成功したバッチはロールバックされません)。
+CommitMode は partialBatch と同じです。 これは、読み込みに何時間もかかる可能性がある大規模なデータセットを最初に読み込む時に使用されます。 1 つまたは複数のバッチのコミットに成功したあとに更新操作が失敗すると、コミットに成功したバッチはコミットされたままになります (コミットに成功したバッチはロールバックされません)。
 
 > [!NOTE]
-> 書き込み時、バッチ サイズは MaxParallelism の値になりますが、この値は変更可能です。
+> 書き込み時、バッチ サイズは MaxParallelism の値になりますが、この値は変わる可能性があります。
 
 ## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
 
-更新操作の状態を確認するには、更新 ID に対して GET 動詞を使用します。 応答の本文の例を次に示します。 操作が進行中の場合、状態として **inProgress** 返されます。
+更新操作の状態を確認するには、更新 ID に対して GET 動詞を使用します。 応答の本文の例を次に示します。 操作が進行中の場合、状態として **inProgress** が返されます。
 
 ```
 {
@@ -143,7 +146,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 モデルの更新操作の履歴リストを取得するには、/refreshes コレクションに対して GET 動詞を使用します。 応答の本文の例を次に示します。 
 
 > [!NOTE]
-> 書き込み時、直近の 30 日間の更新操作が保存され返されますが、この日数は変更可能です。
+> 書き込み時、直近の 30 日間の更新操作が保存され返されますが、この日数は変わる可能性があります。
 
 ```
 [
@@ -215,7 +218,7 @@ syncstate の値は次のとおりです。
 
 2.  **[作成]** で名前を入力し、アプリケーションの種類として **[ネイティブ]** を選択します。 **[リダイレクト URI]** に「**urn:ietf:wg:oauth:2.0:oob**」と入力してから **[作成]** をクリックします。
 
-    ![設定](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
+    ![[設定]](./media/analysis-services-async-refresh/aas-async-app-reg-name.png)
 
 3.  アプリを選択してから **[アプリケーション ID]** をコピーして保存します。
 

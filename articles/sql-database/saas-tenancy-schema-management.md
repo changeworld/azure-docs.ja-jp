@@ -1,26 +1,21 @@
 ---
-title: "マルチテナント アプリで Azure SQL Database スキーマを管理する | Microsoft Docs"
-description: "Azure SQL Database を使用するマルチテナント アプリケーションで複数のテナントのスキーマを管理します"
-keywords: "SQL データベース チュートリアル"
+title: マルチテナント アプリで Azure SQL Database スキーマを管理する | Microsoft Docs
+description: Azure SQL Database を使用するマルチテナント アプリケーションで複数のテナントのスキーマを管理します
+keywords: SQL データベース チュートリアル
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
-ms.author: billgib; sstein
-ms.openlocfilehash: ac60888d1464d3245bb35e2e3505b16ef4128d36
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.author: sstein
+ms.reviewer: billgib
+ms.openlocfilehash: a473e87934ba573cc22b2c248ea0398bc5a4c29b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>テナントごとのデータベース パターンを使用した Azure SQL Database での SaaS アプリケーション内のスキーマの管理
 
@@ -40,7 +35,7 @@ ms.lasthandoff: 02/22/2018
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* Wingtip Tickets SaaS Database Per Tenant アプリがデプロイされている。 5 分未満でデプロイするには、[テナントごとのデータベースを使用する Wingtip Tickets SaaS アプリケーションのデプロイと探索](saas-dbpertenant-get-started-deploy.md)に関する記事を参照してください。
+* Wingtip Tickets SaaS Database Per Tenant アプリをデプロイします。 5 分未満でデプロイするには、[テナントごとのデータベースを使用する Wingtip Tickets SaaS アプリケーションのデプロイと探索](saas-dbpertenant-get-started-deploy.md)に関する記事を参照してください。
 * Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
 * 最新バージョンの SQL Server Management Studio (SSMS) のインストール。 [SSMS をダウンロードしてインストールします](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)。
 

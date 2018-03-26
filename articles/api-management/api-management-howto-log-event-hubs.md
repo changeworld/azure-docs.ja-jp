@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management で Azure Event Hubs にイベントを記録する方法 | Microsoft Docs"
-description: "Azure API Management で Azure Event Hubs にイベントを記録する方法について説明します。"
+title: Azure API Management で Azure Event Hubs にイベントを記録する方法 | Microsoft Docs
+description: Azure API Management で Azure Event Hubs にイベントを記録する方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 88f6507d-7460-4eb2-bffd-76025b73f8c4
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: apimpm
-ms.openlocfilehash: 77c3e41dd4b1fdf7e518de67b353f69fcb758c60
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 3f4da70d94d28496f5b08035ead0ef7acf1ca3bc
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="how-to-log-events-to-azure-event-hubs-in-azure-api-management"></a>Azure API Management で Azure Event Hubs にイベントを記録する方法
 Azure Event Hubs は、1 秒間に数百万件のイベントを取り込むことができる高度にスケーラブルなデータ受信サービスであり、接続されたデバイスとアプリケーションで生成される大量のデータを処理および分析できます。 Event Hubs はイベント パイプラインの「玄関」として機能し、Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーまたはバッチ処理/ストレージ アダプターを使用して変換および格納できます。 Event Hubs はイベント ストリームの生成とイベントの使用を分離し、イベント コンシューマーが独自のスケジュールでイベントにアクセスできるようにします。
@@ -36,7 +36,7 @@ API Management のロガーは、 [API Management REST API](http://aka.ms/smapi)
 
 ロガーを作成するには、次の URL テンプレートを使用して HTTP PUT 要求を送信します。
 
-`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2014-02-14-preview`
+`https://{your service}.management.azure-api.net/loggers/{new logger name}?api-version=2017-03-01`
 
 * `{your service}` は、実際の API Management サービス インスタンスの名前です。
 * `{new logger name}` は、新しいロガーに付ける名前です。 [log-to-eventhub](https://msdn.microsoft.com/library/azure/dn894085.aspx#log-to-eventhub) ポリシーを構成するときに、この名前を参照します。
@@ -51,7 +51,7 @@ API Management のロガーは、 [API Management REST API](http://aka.ms/smapi)
 
 ```json
 {
-  "loggertype" : "AzureEventHub",
+  "loggerType" : "AzureEventHub",
   "description" : "Sample logger description",
   "credentials" : {
     "name" : "Name of the Event Hub from the Azure Classic Portal",
@@ -60,7 +60,7 @@ API Management のロガーは、 [API Management REST API](http://aka.ms/smapi)
 }
 ```
 
-* `loggertype` は `AzureEventHub` に設定する必要があります。
+* `loggerType` は `AzureEventHub` に設定する必要があります。
 * `description` は、ロガーの説明です (省略可能)。必要に応じて、長さゼロの文字列にしてください。
 * `credentials` には、Azure Event Hubs の `name` と `connectionString` が含まれます。
 

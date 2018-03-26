@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想マシンのバックアップ アラートを監視する | Microsoft Docs"
-description: "Azure 仮想マシンのバックアップ ジョブからのイベントとアラートを監視します。 アラートに基づいて電子メールを送信します。"
+title: Azure 仮想マシンのバックアップ アラートを監視する | Microsoft Docs
+description: Azure 仮想マシンのバックアップ ジョブからのイベントとアラートを監視します。 アラートに基づいて電子メールを送信します。
 services: backup
 documentationcenter: dev-center-name
 author: markgalioto
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: fed32015-2db2-44f8-b204-d89f6fd1bea2
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: markgal;trinadhk;giridham;
-ms.openlocfilehash: 0f92d63d6eabe48bfac444b79bc10e090df239ca
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fbdce5c244d733a2978d473f01c8d875cbeaa65e
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="monitor-alerts-for-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップ アラートの監視
 アラートはサービスから返され、イベントのしきい値が満たされていること、またはしきい値を超えたことを示します。 ビジネス コストを抑えるには、問題が発生したときに、それを把握することが重要です。 通常、アラートはスケジュールに基づいて発生するわけではないため、発生後にできるだけ早く通知されると便利です。 たとえば、バックアップ ジョブまたは復元ジョブが失敗した場合、エラーの発生後 5 分以内にアラートが発生します。 コンテナーのダッシュボードの [バックアップ アラート] タイルには、重大なアラートと警告レベルのアラートが発生しているイベントが表示されます。 [バックアップ アラート] 設定では、すべてのイベントを確認することができますが、 別の問題に対応しているときに、アラートが発生したらどうでしょう。 アラートが発生したことを知らなくても、大きな問題にはならないかもしれませんが、データのセキュリティ侵害につながることもあります。 アラートが発生したことを、適切なユーザーに確実に知らせるには、アラート通知を電子メールで送信するようにサービスを構成します。 電子メール通知の設定の詳細については、「[通知の構成](backup-azure-monitor-vms.md#configure-notifications)」を参照してください。
 
 ## <a name="how-do-i-find-information-about-the-alerts"></a>アラートに関する情報の見つけ方
-アラートが生成されたイベントに関する情報を表示するには、[バックアップ アラート] ブレードを開く必要があります。 [バックアップ アラート] ブレードは、コンテナーのダッシュボードの [バックアップ アラート] タイルから開くか、[アラートとイベント] ブレードから開きます。
+アラートが生成されたイベントに関する情報を表示するには、[バックアップ アラート] セクションを開く必要があります。 [バックアップ アラート] セクションは、コンテナーのダッシュボードの [バックアップ アラート] タイルから開くか、[アラートとイベント] セクションから開きます。
 
 [バックアップ アラート] タイルから [バックアップ アラート] ブレードを開くには:
 
@@ -32,16 +32,16 @@ ms.lasthandoff: 02/24/2018
 
     ![[バックアップ アラート] タイル](./media/backup-azure-monitor-vms/backup-alerts-tile.png)
 
-[アラートとイベント] ブレードから [バックアップ アラート] ブレードを開くには:
+[アラートとイベント] セクションから [バックアップ アラート] ブレードを開くには:
 
 1. コンテナーのダッシュボードから、 **[すべての設定]**をクリックします。 ![[すべての設定] ボタン](./media/backup-azure-monitor-vms/all-settings-button.png)
 2. **[設定]** ブレードで **[アラートとイベント]** をクリックします。 ![[アラートとイベント] ボタン](./media/backup-azure-monitor-vms/alerts-and-events-button.png)
 3. **[アラートとイベント]** ブレードで、**[バックアップ アラート]** をクリックします。 ![[バックアップ アラート] ボタン](./media/backup-azure-monitor-vms/backup-alerts.png)
 
-    **[バックアップ アラート]** ブレードが開き、フィルター処理されたアラートが表示されます。
+    **[バックアップ アラート]** セクションが開き、フィルター処理されたアラートが表示されます。
 
     ![[バックアップ アラート] タイル](./media/backup-azure-monitor-vms/backup-alerts-critical.png)
-4. 特定のアラートに関する詳しい情報を表示するには、イベントの一覧から目的のアラートをクリックして、その **[詳細]** ブレードを開きます。
+4. 特定のアラートに関する詳しい情報を表示するには、イベントの一覧から目的のアラートをクリックして、その **[詳細]** セクションを開きます。
 
     ![イベントの詳細](./media/backup-azure-monitor-vms/audit-logs-event-detail.png)
 
@@ -56,10 +56,10 @@ ms.lasthandoff: 02/24/2018
 
     ![[バックアップ アラート] メニュー](./media/backup-azure-monitor-vms/backup-alerts-menu.png)
 
-    [通知の構成] ブレードが開きます。
+    [通知の構成] セクションが開きます。
 
     ![[構成の通知] ブレード](./media/backup-azure-monitor-vms/configure-notifications.png)
-2. [通知の構成] ブレードで、電子メール通知に対して **[オン]**をクリックします。
+2. [通知の構成] セクションで、電子メール通知に対して **[オン]** をクリックします。
 
     受信者と重大度は必須情報であるため、そのダイアログの横には星マークが付いています。 1 つ以上の電子メール アドレスを指定し、1 つ以上の重大度を選択します。
 3. **[受信者 (メール)]** ダイアログ ボックスに、通知を受け取る電子メール アドレスを、 username@domainname.com の形式で入力します。複数の電子メール アドレスを入力する場合は、セミコロン (;) で区切ります。
@@ -82,135 +82,53 @@ ms.lasthandoff: 02/24/2018
 * バックアップ ジョブがトリガーされ失敗した後、別のバックアップ ジョブが進行中である。
 * Resource Manager に対応する VM のスケジュールされたバックアップ ジョブが開始されたが、VM が存在しない。
 
-## <a name="customize-your-view-of-events"></a>イベントのビューのカスタマイズ
-**[監査ログ]** 設定には、操作イベント情報を示す事前定義済みの一連のフィルターと列が用意されています。 イベントのビューは、 **[イベント]** ブレードを開いたときに必要な情報が表示されるように、カスタマイズすることができます。
+## <a name="using-activity-logs-to-get-notifications-for-successful-backups"></a>アクティビティ ログを使用して、成功したバックアップの通知を取得する
 
-1. [資格情報コンテナーのダッシュボード](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard)で **[監査ログ]** に移動してクリックし、**[イベント]** ブレードを開きます。
+バックアップが正常に実行した後に通知を受ける場合は、コンテナーの[アクティビティ ログ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit)上に構築されたアラートを使用できます。
 
-    ![Audit Logs](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
+### <a name="login-into-azure-portal"></a>Azure Portal にログインする
+Azure Portal にログインし、関連する Azure Recovery Services コンテナーに進み、プロパティの [アクティビティ ログ] セクションをクリックします。
 
-    **[イベント]** ブレードには、現在のコンテナーに該当する操作イベントのみが表示されます。
+### <a name="identify-appropriate-log"></a>適切なログを識別する
 
-    ![Audit Logs Filter](./media/backup-azure-monitor-vms/audit-logs-filter.png)
+成功したバックアップのアクティビティ ログを受信しているかどうかを確認するため、次の図に示すようにフィルターを適用します。 レコードを表示する期間を適宜変更します。
 
-    このブレードには、過去 1 週間に発生した重大イベント、エラー イベント、警告イベント、情報イベントが一覧表示されます。 この期間は、 **[フィルター]**に設定されている既定値です。 **[イベント]** ブレードには、イベントがいつ発生したかを追跡する棒グラフも表示されます。 棒グラフを非表示にするには、**[イベント]** メニューの **[グラフの非表示]** をクリックしてグラフをオフに切り替えます。 イベントの既定のビューには、操作、レベル、状態、リソース、および時刻の情報が表示されます。 追加のイベント属性の表示については、 [イベント情報の展開](backup-azure-monitor-vms.md#view-additional-event-attributes)に関するセクションをご覧ください。
-2. 操作イベントの詳細については、**[操作]** 列で操作イベントをクリックして、ブレードを開きます。 ブレードにはイベントに関する詳細情報が含まれています。 イベントは、関連付け ID によってグループ化されています。また、特定の期間に発生したイベントの一覧も表示されます。
+![アクティビティ ログ](./media/backup-azure-monitor-vms/activity-logs-identify.png)
 
-    ![操作の詳細](./media/backup-azure-monitor-vms/audit-logs-details-window.png)
-3. 特定のイベントに関する詳しい情報を表示するには、イベントの一覧から目的のイベントをクリックして、その **[詳細]** ブレードを開きます。
+[JSON] セグメントをクリックすると、より詳細な情報を取得して、それをコピーしてテキスト エディターに貼り付けることによって見ることができます。 コンテナーの詳細と、バックアップ項目などのアクティビティ ログをトリガーした項目が表示されます。
 
-    ![イベントの詳細](./media/backup-azure-monitor-vms/audit-logs-details-window-deep.png)
+[アクティビティ ログ アラートの追加] をクリックし、このようなすべてのログに対しアラートを生成します。
 
-    イベント レベルの情報は、得られた内容がそのままの詳細度で表示されます。 各イベントに関するこの大量の情報を確認し、その詳細情報を **[イベント]** ブレードに追加する必要がある場合は、 [イベント情報の展開](backup-azure-monitor-vms.md#view-additional-event-attributes)に関するセクションをご覧ください。
+### <a name="add-activity-log-alert"></a>アクティビティ ログ アラートを追加する
 
-## <a name="customize-the-event-filter"></a>イベント フィルターのカスタマイズ
-**フィルター** を使用して、特定のブレードに表示される情報を調整または選択します。 イベント情報をフィルター処理するには:
+[アクティビティ ログ アラートの追加] をクリックすると、次のような画面が表示されます。
 
-1. [資格情報コンテナーのダッシュボード](backup-azure-manage-vms.md#open-a-recovery-services-vault-in-the-dashboard)で **[監査ログ]** に移動してクリックし、**[イベント]** ブレードを開きます。
+![アクティビティ ログ アラート](./media/backup-azure-monitor-vms/activity-logs-alerts-successful.png)
+    
+サブスクリプションとリソース グループは、アラートの保存に使用されます。 条件は自動的に入力されます。 すべての値が要件に適切であることを確認します。
 
-    ![Audit Logs](./media/backup-azure-monitor-vms/audit-logs-1606-1.png)
+バックアップが成功した場合は、[レベル] は [情報]、[状態] は [成功] と記録されます。
 
-    **[イベント]** ブレードには、現在のコンテナーに該当する操作イベントのみが表示されます。
+上記で [リソース] を選択した場合は、そのリソースまたはコンテナーに対しアクティビティ ログが記録されると、アラートが生成されます。 すべてのコンテナーにルールを適用する場合は、[リソース] を空のままにします。
 
-    ![Audit Logs Filter](./media/backup-azure-monitor-vms/audit-logs-filter.png)
-2. **[イベント]** メニューで、**[フィルター]** をクリックして、そのブレードを開きます。
+### <a name="define-action-on-alert-firing"></a>アラート発生時のアクションを定義する
 
-    ![open filter blade](./media/backup-azure-monitor-vms/audit-logs-filter-button.png)
-3. **[フィルター]** ブレードで、**[レベル]**、**[期間]**、**[呼び出し元]** の各フィルターを調整します。 その他のフィルターは、現在の Recovery Services コンテナーの情報を提供するように設定されているため利用できません。
+[アクション グループ] を使用してアラート発生時のアクションを定義します。 [アクションの種類] をクリックすると、電子メール/SMS/ITSM との統合などの使用できるアクションに関する詳細が表示されます。
 
-    ![Audit Logs-query details](./media/backup-azure-monitor-vms/filter-blade.png)
+![アクティビティ ログのアクション グループ](./media/backup-azure-monitor-vms/activity-logs-alerts-action-group.png)
 
-    イベントの **レベル** には、重大、エラー、警告、情報のいずれかを指定できます。 イベントのレベルは複数選んで組み合わせることができますが、少なくとも 1 つは選択する必要があります。 目的のレベルのオン/オフを指定してください。 イベントの収集対象期間は、 **[期間]** フィルターで指定できます。 カスタムの期間を使用する場合は、開始と終了のタイミングを設定できます。
-4. フィルターを使って操作ログを照会する準備が整ったら、 **[更新]**をクリックします。 その結果が **[イベント]** ブレードに表示されます。
 
-    ![操作の詳細](./media/backup-azure-monitor-vms/edited-list-of-events.png)
-
-### <a name="view-additional-event-attributes"></a>追加のイベント属性の表示
-**[列]** ボタンを使用して、**[イベント]** ブレード上の一覧に追加のイベント属性を表示できます。 イベントの既定の一覧には、操作、レベル、状態、リソース、および時刻の情報が表示されます。 追加の属性を有効にするには:
-
-1. **[イベント]** ブレードで、**[列]** をクリックします。
-
-    ![列を開く](./media/backup-azure-monitor-vms/audi-logs-column-button.png)
-
-    **[列の選択]** ブレードが開きます。
-
-    ![[列] ブレード](./media/backup-azure-monitor-vms/columns-blade.png)
-2. 属性を選択するには、チェック ボックスをクリックします。 属性のチェック ボックスのオンとオフを切り替えます。
-3. **[イベント]** ブレードで、**[リセット]** をクリックして属性の一覧をリセットします。 一覧で属性を追加または削除したら、 **[リセット]** を使用して、新しいイベント属性の一覧を表示します。
-4. **[更新]** をクリックして、イベント属性のデータを更新します。 次の表は、各属性の情報を示しています。
-
-| 列名 | [説明] |
-| --- | --- |
-| 操作 |操作の名前 |
-| Level |操作のレベル。値は、情報、警告、エラー、重大のいずれかです |
-| 状態 |操作の状態の説明 |
-| リソース |リソースを識別する URL。リソース ID とも呼ばれます |
-| Time |イベントが発生した時間。現在の時間から測定します |
-| Caller |イベントを呼び出した、またトリガーしたシステムまたはユーザー |
-| Timestamp |イベントがトリガーされた時間 |
-| リソース グループ |関連付けられているリソース グループ |
-| リソースの種類 |Resource Manager によって使用される内部リソースの種類 |
-| サブスクリプション ID |関連付けられているサブスクリプション ID |
-| カテゴリ |イベントのカテゴリ |
-| 関連付け ID |関連するイベントの共通の ID |
-
-## <a name="use-powershell-to-customize-alerts"></a>PowerShell を使用したアラートのカスタマイズ
-ポータルで、ジョブのカスタム アラート通知を受け取ることができます。 ジョブの通知を受け取るには、操作ログ イベントに対して PowerShell ベースのアラート ルールを定義します。 " *PowerShell Version 1.3.0 以降*" を使用します。
-
-バックアップに失敗した場合に警告するカスタム通知を定義するには、次のスクリプトのようなコマンドを使用します。
-
-```
-PS C:\> $actionEmail = New-AzureRmAlertRuleEmail -CustomEmail contoso@microsoft.com
-PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -ResourceGroup RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US -OperationName Microsoft.RecoveryServices/recoveryServicesVault/Backup -Status Failed -TargetResourceId /subscriptions/86eeac34-eth9a-4de3-84db-7a27d121967e/resourceGroups/RecoveryServices-DP2RCXUGWS3MLJF4LKPI3A3OMJ2DI4SRJK6HIJH22HFIHZVVELRQ-East-US/providers/Microsoft.RecoveryServices/vaults/trinadhVault -Actions $actionEmail
-```
-
-**ResourceId** : ResourceId は監査ログから取得できます。 ResourceId は操作ログの Resource 列に記録されている URL です。
-
-**OperationName**: OperationName の形式は "Microsoft.RecoveryServices/recoveryServicesVault/<*イベント名*>" です。ここで、<*イベント名*> は次のいずれかです:<br/>
-
-* Register <br/>
-* Unregister  <br/>
-* ConfigureProtection  <br/>
-* Backup  <br/>
-* Restore <br/>
-* StopProtection  <br/>
-* DeleteBackupData  <br/>
-* CreateProtectionPolicy  <br/>
-* DeleteProtectionPolicy  <br/>
-* UpdateProtectionPolicy  <br/>
-
-**Status** : サポートされる値は、Started、Succeeded、または Failed です。
-
-**ResourceGroup** : 対象リソースが属しているリソース グループです。 生成するログに Resource Group 列を追加することができます。 リソース グループは、入手できるイベント情報の種類の 1 つです。
-
-**Name** : アラート ルールの名前です。
-
-**CustomEmail** : アラート通知を送信する先のカスタム電子メール アドレスを指定します
-
-**SendToServiceOwners** : このオプションを指定すると、サブスクリプションの管理者と共同管理者すべてにアラート通知が送信されます。 これは、 **New-AzureRmAlertRuleEmail** コマンドレットで使用できます
+[OK] をクリックするとアクティビティ ログ アラートが生成され、その後バックアップが成功したときに記録されたアクティビティ ログによって、アクション グループで定義されているアクションが始動します。
 
 ### <a name="limitations-on-alerts"></a>アラートに関する制限事項
 イベント ベースのアラートには、次の制限事項が適用されます。
 
 1. アラートは、Recovery Services コンテナー内のすべての仮想マシン上でトリガーされます。 Recovery Services コンテナーの仮想マシンのサブセットに対して、アラートをカスタマイズすることはできません。
-2. この機能はプレビュー段階にあります。 [詳細情報](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
-3. アラートは "alerts-noreply@mail.windowsazure.com" から送信されます。 現時点で、電子メールの送信者を変更することはできません。
+2. アラートは "alerts-noreply@mail.windowsazure.com" から送信されます。 現時点で、電子メールの送信者を変更することはできません。
 
 ## <a name="next-steps"></a>次の手順
-イベント ログは、バックアップ操作の事後分析や監査を行うのに役立ちます。 次の操作が記録されます。
+復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-arm-restore-vms.md)に関するページをご覧ください。
 
-* Register 
-* Unregister 
-* 保護の構成
-* バックアップ (オンデマンド バックアップとスケジュールされたバックアップの両方)
-* Restore 
-* 保護の停止
-* バックアップ データの削除
-* ポリシーの追加
-* ポリシーの削除
-* ポリシーの更新
-* ジョブの取り消し
+仮想マシンの保護については、 [Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 
 
-Azure サービス全般のイベント、操作、および監査ログの概要については、「 [View events and audit logs (イベントと監査ログの表示)](../monitoring-and-diagnostics/insights-debugging-with-events.md)」を参照してください。
-
-復旧ポイントからの仮想マシンの再作成については、 [Azure VM の復元](backup-azure-arm-restore-vms.md)に関するページをご覧ください。 仮想マシンの保護については、 [Recovery Services コンテナーへの VM のバックアップ](backup-azure-vms-first-look-arm.md)に関するページをご覧ください。 VM バックアップの管理タスクについては、 [Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。
+VM バックアップの管理タスクについては、[Azure 仮想マシンのバックアップの管理](backup-azure-manage-vms.md)に関するページをご覧ください。

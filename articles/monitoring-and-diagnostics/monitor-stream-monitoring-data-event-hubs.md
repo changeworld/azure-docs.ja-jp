@@ -1,9 +1,9 @@
 ---
-title: "Event Hubs への Azure 監視データのストリーミング | Microsoft Docs"
-description: "パートナー SIEM または分析ツールにデータを取得するために、すべての Azure 監視データをイベント ハブにストリーミングする方法を説明します。"
+title: Event Hubs への Azure 監視データのストリーミング | Microsoft Docs
+description: パートナー SIEM または分析ツールにデータを取得するために、すべての Azure 監視データをイベント ハブにストリーミングする方法を説明します。
 author: johnkemnetz
 manager: robb
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.service: monitoring-and-diagnostics
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/13/2018
+ms.date: 3/05/2018
 ms.author: johnkem
-ms.openlocfilehash: d449be98cd59756e2bafc584e0501b8c83c594eb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 1b1c50f106be8848fb1f32deefa6cb9acb7a298a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>外部ツールで使用する Azure 監視データのイベント ハブへのストリーミング
 
@@ -36,7 +36,18 @@ Azure 環境内には監視データの "層" がいくつかあり、各層の�
 
 どの層のデータも、イベント ハブに送信し、パートナー ツールに取り込むことができます。 以降のセクションでは、各層のデータをイベント ハブにストリーミングするように構成する方法について説明します。 手順では、その層のアセットが既に監視されるようになっていることを前提としています。
 
-開始する前に、[Event Hubs 名前空間とイベント ハブを作成](../event-hubs/event-hubs-create.md)する必要があります。 この名前空間とイベント ハブが、すべての監視データの送信先です。
+## <a name="set-up-an-event-hubs-namespace"></a>Event Hubs 名前空間を設定する
+
+開始する前に、[Event Hubs 名前空間とイベント ハブを作成](../event-hubs/event-hubs-create.md)する必要があります。 この名前空間とイベント ハブが、すべての監視データの送信先です。 Event Hubs 名前空間は、同じアクセス ポリシーを共有するイベント ハブの論理的なグループであり、ストレージ アカウントがそのストレージ アカウント内に個別の BLOB ストレージを持つのと似たようなものです。 Event Hubs 名前空間やイベント ハブの作成にあたっては、以下に点に注意してください。
+* Standard Event Hubs 名前空間を使用することをお勧めします。
+* 通常、必要なスループット単位は 1 つだけです。 ログの使用量が増加し、スケール アップする必要が生じた場合は、名前空間のスループット単位数を後からいつでも手動で増やすことができますし、自動インフレを有効にすることもできます。
+* イベント ハブのスループット スケールは、スループット単位の数によって増やすことができます。 多数のコンシューマー間での消費量は、パーティションの数によって並列化することができます。 1 つのパーティションで、最大 20MBps まで対応できます (1 秒あたり約 20,000 件のメッセージ)。 データの消費元のツールによっては、複数のパーティションからの消費をサポートできない場合もあります。 設定するべきパーティションの数がよくわからない場合は、4 つのパーティションから始めることをお勧めします。
+* イベント ハブでのメッセージのリテンション期間は 7 日間に設定することをお勧めします。 そうすれば、消費元のツールが 1 日以上ダウンした場合でも、ダウンした時点から (最大 7 日前までのイベントを) 復旧することができます。
+* イベント ハブには既定のコンシューマー グループを使用することをお勧めします。 2 つの異なるコンシューマー グループが同じイベント ハブから同じデータを使用するのでないかぎり、他のコンシューマー グループを作成したり、個別のコンシューマー グループを使用する必要はありません。
+* Azure Activity Log については、Event Hubs 名前空間を選択すると、Azure Monitor によってその名前空間 (insights-logs-operationallogs) 内にイベント ハブが作成されます。 その他のログ タイプについては、既存のイベント ハブを選択する (同じ insights-logs-operationallogs イベント ハブを再利用できます) か、Azure Monitor によってログ カテゴリごとにイベント ハブを作成することができます。
+* 通常、イベント ハブからデータを消費するコンピューターでは、ポート 5671 と 5672 を開く必要があります。
+
+「[Event Hubs のよく寄せられる質問](../event-hubs/event-hubs-faq.md)」もご覧ください。
 
 ## <a name="how-do-i-set-up-azure-platform-monitoring-data-to-be-streamed-to-an-event-hub"></a>Azure プラットフォーム監視データがイベント ハブにストリーミングされるようにセットアップする方法
 

@@ -1,8 +1,8 @@
 ---
-title: "AzCopy on Windows を使用して Azure Storage にデータをコピーまたは移動する | Microsoft Docs"
-description: "AzCopy on Windows ユーティリティを使用して、BLOB、テーブル、およびファイル コンテンツ間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。"
+title: AzCopy on Windows を使用して Azure Storage にデータをコピーまたは移動する | Microsoft Docs
+description: AzCopy on Windows ユーティリティを使用して、BLOB、テーブル、およびファイル コンテンツ間でデータを移動またはコピーします。 ローカル ファイルから Azure ストレージにデータをコピーする、またはストレージ アカウント内またはその間でデータをコピーします。 Azure Storage にデータを簡単に移行します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: seguler
 manager: jahogg
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: seguler
-ms.openlocfilehash: 7d875a1e43908f49424f4e40fe923639cfa02385
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 13e09a3081c9dfa2d88625489a82c687d6722f20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="transfer-data-with-the-azcopy-on-windows"></a>AzCopy on Windows を使ったデータの転送
 AzCopy は、最適なパフォーマンスのためのシンプルなコマンドを使用して Microsoft Azure Blob Storage、File Storage、および Table Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ファイル システムとストレージ アカウント間、またはストレージ アカウント間でデータをコピーできます。  
@@ -56,7 +56,7 @@ AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfo
 ### <a name="download-a-single-blob-from-the-secondary-region"></a>セカンダリ リージョンから 1 つの BLOB をダウンロードする
 
 ```azcopy
-AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:abc.txt
+AzCopy /Source:https://myaccount-secondary.blob.core.windows.net/mynewcontainer /Dest:C:\myfolder /SourceKey:key /Pattern:"abc.txt"
 ```
 
 セカンダリ リージョンにアクセスするには、読み取りアクセス geo 冗長ストレージが有効になっている必要があります。
@@ -106,7 +106,7 @@ AzCopy /Source:https://myaccount.blob.core.windows.net/mycontainer /Dest:C:\myfo
     C:\myfolder\abc1.txt
     C:\myfolder\abc2.txt
 
-プレフィックスは仮想ディレクトリに適用され、BLOB 名の最初の部分に付けられます。 前述の例では、仮想ディレクトリは指定されたプレフィックスと一致しないので、ダウンロードされません。 さらに、オプション `\S` が指定されていない場合、AzCopy では BLOB はダウンロードされません。
+プレフィックスは仮想ディレクトリに適用され、BLOB 名の最初の部分に付けられます。 前述の例では、仮想ディレクトリは指定されたプレフィックスと一致しないので、ダウンロードされません。 さらに、オプション `/S` が指定されていない場合、AzCopy では BLOB はダウンロードされません。
 
 ### <a name="set-the-last-modified-time-of-exported-files-to-be-same-as-the-source-blobs"></a>エクスポートしたファイルの最終変更時刻をソース BLOB と同時刻に設定する
 
@@ -616,7 +616,7 @@ AzCopy /Source:https://127.0.0.1:10002/myaccount/mytable/ /Dest:C:\myfolder /Sou
 
 * AzCopy に関する詳細なコマンド ライン ヘルプを表示する場合: `AzCopy /?`
 * AzCopy パラメーターに関する詳細なヘルプを表示する場合: `AzCopy /?:SourceKey`
-* コマンド ラインの例を表示する場合: `AzCopy /?:Samples`
+* コマンド ラインの例を表示する場合: `AzCopy /?:Sample`
 
 ### <a name="sourcesource"></a>/Source:"source"
 

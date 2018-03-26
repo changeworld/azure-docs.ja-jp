@@ -1,11 +1,11 @@
 ---
-title: "Azure でのレプリケーション容量の見積 | Microsoft Docs"
-description: "Azure Site Recovery を使用してレプリケーションを行う場合は、この記事に従って容量を見積もってください"
+title: Azure でのレプリケーション容量の見積 | Microsoft Docs
+description: Azure Site Recovery を使用してレプリケーションを行う場合は、この記事に従って容量を見積もってください
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: 0a1cd8eb-a8f7-4228-ab84-9449e0b2887b
 ms.service: site-recovery
 ms.devlang: na
@@ -57,7 +57,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 3. **Capacity Planner** ワークシートに、必要な情報を入力します。 以下のスクリーンショットの赤の丸が付いているすべてのフィールドに入力します。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[シナリオの選択]** で **[Hyper-V から Azure]** または **[VMware/物理から Azure]** を選択します。
+   a. **[シナリオの選択]** で **[Hyper-V から Azure]** または **[VMware/物理から Azure]** を選択します。
 
    b. **[Average daily data change rate (%)]\(1 日の平均データ変更率 (%)\)** に [Hyper-V 容量計画ツール](site-recovery-capacity-planning-for-hyper-v-replication.md)または [Site Recovery Deployment Planner](./site-recovery-deployment-planner.md) を使用して収集した情報を入力します。
 
@@ -95,7 +95,7 @@ Site Recovery Capacity Planner は、ソース環境とワークロードの分�
 
 3. **Workload Qualification** ワークシートに、必要な情報を入力します。 マークが付いているフィールドはすべて入力する必要があります。
 
-   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Processor Cores]\(プロセッサ コア\)** には、ソース サーバー上のコアの総数を指定します。
+   a. **[Processor Cores]\(プロセッサ コア\)** には、ソース サーバー上のコアの総数を指定します。
 
    b. **[Memory allocation (in MBs)]\(メモリの割り当て (MB)\)** には、ソース サーバーの RAM サイズを指定します。
 

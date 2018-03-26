@@ -1,18 +1,18 @@
 ---
-title: "インクルード ファイル"
-description: "インクルード ファイル"
+title: インクルード ファイル
+description: インクルード ファイル
 services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 03/01/2018
-ms.author: danlep
+ms.date: 03/05/2018
+ms.author: danlep;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 34b38ff02d401e87be10f1f72cb2025b66317c9e
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 96826b2f8acd579cbfe30f2e524d94ce4867df30
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 GPU 最適化済み VM サイズは、1 つまたは複数の NVIDIA GPU を備えた、特殊な用途に特化した仮想マシンです。 これらのサイズは、コンピューティング処理やグラフィック処理の負荷が高い視覚化ワークロードを意図して設計されています。 この記事では、このグループ内の各サイズのストレージのスループットとネットワーク帯域幅に加え、GPU、vCPU、データ ディスク、NIC の数や種類に関する情報を提供します。 
 
@@ -34,7 +34,7 @@ NC シリーズ VM は [NVIDIA の Tesla K80](http://images.nvidia.com/content/p
 
 1 GPU = K80 カードの 2 分の 1 相当。
 
-* RDMA 対応
+*RDMA 対応
 
 ## <a name="ncv2-series"></a>NCv2 シリーズ
 
@@ -53,7 +53,7 @@ NCv2 シリーズ VM は [NVIDIA Tesla P100](http://images.nvidia.com/content/te
 
 1 GPU = P100 カード 1 枚
 
-* RDMA 対応
+*RDMA 対応
 
 ## <a name="ncv3-series"></a>NCv3 シリーズ
 
@@ -72,7 +72,7 @@ NCv3 シリーズ VM は [NVIDIA Tesla V100](http://www.nvidia.com/content/PDF/V
 
 1 GPU = V100 カード 1 枚。
 
-* RDMA 対応
+*RDMA 対応
 
 ## <a name="nd-series"></a>ND シリーズ
 
@@ -91,18 +91,20 @@ ND シリーズは、AI やディープ ラーニングのワークロードを�
 
 1 GPU = P40 カード 1 枚
 
-* RDMA 対応
+*RDMA 対応
 
 ## <a name="nv-series"></a>NV シリーズ
 
-NV シリーズは、[NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU およびデスクトップ アクセラレータ アプリケーションや仮想デスクトップ向けの NVIDIA GRID テクノロジを備えていて、お客様は、データやシミュレーションを視覚化することができます。 NV インスタンスでは、グラフィックス処理を要するワークフローを視覚化して優れたグラフィックス機能を活用し、さらにエンコードやレンダリングなどの単精度のワークロードを実行することもできます。 
+NV シリーズの仮想マシンは、[NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) GPU およびデスクトップ アクセラレータ アプリケーションや仮想デスクトップ向けの NVIDIA GRID テクノロジを備えていて、お客様は、データやシミュレーションを視覚化することができます。 NV インスタンスでは、グラフィックス処理を要するワークフローを視覚化して優れたグラフィックス機能を活用し、さらにエンコードやレンダリングなどの単精度のワークロードを実行することもできます。 
 
-| サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | GPU | 最大データ ディスク数 | 最大 NIC 数 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Standard_NV6 |6 |56 |380 | 1 | 24 | 1 |
-| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 |
-| Standard_NV24 |24 |224 |1440 | 4 | 64 | 4 |
+NV インスタンスの GPU ごとに GRID ライセンスが付属します。 このライセンスでは柔軟性が確保され、NV インスタンスを仮想ワークステーションとして 1 人のユーザーに対して使用したり、仮想アプリケーションのシナリオで 25 人のユーザーが同時に VM に接続したりできます。
+
+| サイズ | vCPU | メモリ: GiB | 一時ストレージ (SSD) GiB | GPU | 最大データ ディスク数 | 最大 NIC 数 | 仮想ワークステーション | 仮想アプリケーション | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NV6 |6 |56 |380 | 1 | 24 | 1 | 1 | 25 |
+| Standard_NV12 |12 |112 |680 | 2 | 48 | 2 | 2 | 50 |
+| Standard_NV24 |24 |224 |1440 | 4 | 64 | 4 | 4 | 100 |
 
 1 GPU = M60 カードの 2 分の 1 相当。
 
-
+ 

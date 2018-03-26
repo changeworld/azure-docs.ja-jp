@@ -1,23 +1,20 @@
 ---
-title: "SQL Database のマルチテナント アプリ例のガイダンス - Wingtip SaaS | Microsoft Docs"
-description: "Azure SQL Database を使用する、サンプルのマルチ テナント アプリケーション (Wingtip Tickets SaaS サンプル) をインストールして実行するための手順とガイダンスを示します。"
-keywords: "SQL データベース チュートリアル"
+title: SQL Database のマルチテナント アプリ例のガイダンス - Wingtip SaaS | Microsoft Docs
+description: Azure SQL Database を使用する、サンプルのマルチ テナント アプリケーション (Wingtip Tickets SaaS サンプル) をインストールして実行するための手順とガイダンスを示します。
+keywords: SQL データベース チュートリアル
 services: sql-database
 author: MightyPen
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: On Demand
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: genemi
-ms.openlocfilehash: ebf1c4948816746fa02b867d1ea66afc64b882b0
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: 0bdb91fc9eb2fa23f8cf1e3f69206a89a93ceaee
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="general-guidance-for-working-with-wingtip-tickets-sample-saas-apps"></a>Wingtip Tickets サンプル SaaS アプリを使用する場合の一般的なガイダンス
 
@@ -35,7 +32,7 @@ ms.lasthandoff: 11/22/2017
 3. **[Download zip]** をクリックして、ファイルを保存します。
 4. zip ファイルを右クリックし、**[プロパティ]** を選びます。 zip ファイルの名前は、リポジトリ名に対応します。 (例:  _WingtipTicketsSaaS-DbPerTenant-master.zip_)
 5. **[全般]** タブで **[ブロックの解除]** を選択します。
-6. **[OK]**をクリックします。
+6. Click **OK**.
 7. ファイルを解凍します。
 
 スクリプトは、*..\\Learning Modules* フォルダーにあります。
@@ -115,7 +112,7 @@ PowerShell スクリプトの調査およびステップ実行に関するヒン
 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Wingtip Tickets SaaS スタンドアロン アプリケーションをデプロイする](saas-standaloneapp-get-started-deploy.md)
 - [Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイ](saas-dbpertenant-get-started-deploy.md)
 - [Wingtip Tickets SaaS マルチテナント データベース アプリケーションをデプロイする](saas-multitenantdb-get-started-deploy.md)

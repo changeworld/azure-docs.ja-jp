@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell で Azure 仮想マシンを管理する | Microsoft Docs"
-description: "チュートリアル - Azure PowerShell で RBAC、ポリシー、ロック、タグを適用することによって Azure 仮想マシンを管理します"
+title: Azure PowerShell で Azure 仮想マシンを管理する | Microsoft Docs
+description: チュートリアル - Azure PowerShell で RBAC、ポリシー、ロック、タグを適用することによって Azure 仮想マシンを管理します
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: tfitzmac
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9952660dc177b542d8477dc85c62d76d16e8c54e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9fbe9318e52f8299c3ef46f73c3be177de6d4a0c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="virtual-machine-governance-with-azure-powershell"></a>Azure PowerShell での仮想マシンの管理
 
-[!include[Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
+[!INCLUDE [Resource Manager governance introduction](../../../includes/resource-manager-governance-intro.md)]
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -29,7 +29,7 @@ PowerShell をローカルにインストールして使用することを選択
 
 ## <a name="understand-scope"></a>スコープを理解する
 
-[!include[Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
+[!INCLUDE [Resource Manager governance scope](../../../includes/resource-manager-governance-scope.md)]
 
 このチュートリアルでは、すべての管理設定をリソース グループに適用して、完了したらこれらの設定を容易に削除できるようにします。
 
@@ -76,7 +76,7 @@ New-AzureRmRoleAssignment -ObjectId $adgroup.ObjectId `
 
 ## <a name="azure-policies"></a>Azure のポリシー
 
-[!include[Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
+[!INCLUDE [Resource Manager governance policy](../../../includes/resource-manager-governance-policy.md)]
 
 ### <a name="apply-policies"></a>ポリシーを適用する
 
@@ -176,7 +176,7 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Azure リソースに[タグ](../../azure-resource-manager/resource-group-using-tags.md)を適用すると、カテゴリ別に論理的に整理できます。 各タグは名前と値で構成されます。 たとえば、運用環境のすべてのリソースには名前 "環境" と値 "運用" を適用できます。
 
-[!include[Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
+[!INCLUDE [Resource Manager governance tags Powershell](../../../includes/resource-manager-governance-tags-powershell.md)]
 
 仮想マシンにタグを適用するには、[Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource) コマンドを使います。
 
@@ -206,7 +206,7 @@ Find-AzureRmResource -TagName Environment -TagValue Test | Where-Object {$_.Reso
 
 ### <a name="view-costs-by-tag-values"></a>タグ値でコストを表示する
 
-[!include[Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
+[!INCLUDE [Resource Manager governance tags billing](../../../includes/resource-manager-governance-tags-billing.md)]
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

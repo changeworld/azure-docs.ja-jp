@@ -1,25 +1,25 @@
 ---
-title: "データ サイエンス仮想マシン用データ プラットフォーム - Azure | Microsoft Docs"
-description: "データ サイエンス仮想マシン用データ プラットフォーム。"
-keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
+title: データ サイエンス仮想マシン用データ プラットフォーム - Azure | Microsoft Docs
+description: データ サイエンス仮想マシン用データ プラットフォーム。
+keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: 9b8beb51c555c6125fa3b0abbad892d627a180b9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 03/16/2018
+ms.author: gokuma;
+ms.openlocfilehash: 921ccf67e5e0320e742066186b7929643536424f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="data-platforms"></a>データ プラットフォーム
 
@@ -41,7 +41,7 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 > SQL Server 2016 developer edition は、開発およびテスト目的でのみ使用できます。 実稼働環境で実行するには、ライセンスまたはいずれかの SQL Server VM が必要です。 
 
 
-### <a name="setup"></a>[Setup]
+### <a name="setup"></a>セットアップ
 
 データベース サーバーは既に事前構成されており、SQL Server に関連する Windows サービス (`SQL Server (MSSQLSERVER)` など) は自動的に実行されるように設定されています。 手動で実行する唯一の手順は、Microsoft R を使用した In-Database 分析を有効にすることです。これを行うには、コンピューターの管理者としてログインした後、SQL Server Management Studio (SSMS) での一時アクションとして次のコマンドを実行し、SSMS で [New Query] \(新しいクエリ) を開き、選択されているデータベースが `master` であることを確認してから、次を実行します。 
 
@@ -49,7 +49,7 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 
         (Please replace the %COMPUTERNAME% with your VM name)
        
-SQL Server Management Studio を実行するには、プログラムの一覧から "SQL Server Management Studio" を探すか、または Windows 検索を使用してこのプログラムを探して実行します。 資格情報の入力を求められたら、[Windows Authentication] \(Windows 認証) を選択し、[SQL Server Name] \(SQL Server 名) にはコンピューター名または ```localhost``` を使用します。 
+SQL Server Management Studio を実行するには、プログラムの一覧から "SQL Server Management Studio" を探すか、または Windows 検索を使用してこのプログラムを探して実行します。 資格情報の入力を求められたら、[Windows Authentication] (Windows 認証) を選択し、[SQL Server Name] (SQL Server 名) にはコンピューター名または ```localhost``` を使用します。 
 
 ### <a name="how-to-use--run-it"></a>使用/実行方法  
 
@@ -82,7 +82,7 @@ DSVM で使用可能な SparkR、Sparklyr、Microsoft R Server などのライ�
 
 
 
-### <a name="setup"></a>[Setup]
+### <a name="setup"></a>セットアップ
 Ubuntu Linux DSVM エディション上の Microsoft R Server で Spark コンテキストで実行する前に、1 回限りのセットアップ手順を実行して、単一ノードのローカル Hadoop (HDFS と Yarn) インスタンスを有効にする必要があります。 Hadoop サービスはインストールされていますが、既定では DSVM で無効になっています。 これを有効にするには、最初に次のコマンドを root 権限で実行する必要があります。
 
     echo -e 'y\n' | ssh-keygen -t rsa -P '' -f ~hadoop/.ssh/id_rsa

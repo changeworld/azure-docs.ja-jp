@@ -1,18 +1,18 @@
 ---
-title: "Azure Site Recovery: よく寄せられる質問 | Microsoft Docs"
-description: "この記事では、Azure Site Recovery に関してよく寄せられる質問について説明します。"
+title: 'Azure Site Recovery: よく寄せられる質問 | Microsoft Docs'
+description: この記事では、Azure Site Recovery に関してよく寄せられる質問について説明します。
 services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/18/2018
+ms.date: 03/08/2018
 ms.author: raynew
-ms.openlocfilehash: 1a7d57c1f1f84e7ce3b931c2911ae7394b066f8d
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 5d1010a65a112b97124a8d7d46caceb3d61e2cac
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事には、Azure Site Recovery に関してよく寄せられる質問が含まれます。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
@@ -55,14 +55,14 @@ Site Recovery を使用すると、サポートされている VM または物�
 はい。 VMM クラウド内の Hyper-V サーバー上にある VM を Azure にレプリケートすることも、同じサーバー上の VMM クラウド間でレプリケートすることもできます。 オンプレミス間のレプリケーションには、プライマリ サイトとセカンダリ サイトの両方に VMM サーバーを配置することをお勧めします。  
 
 ### <a name="what-physical-servers-can-i-protect"></a>どの物理サーバーを保護できますか。
-Windows および Linux を実行している物理サーバーを、Azure またはセカンダリ サイトにレプリケートできます。 [こちら](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements) をご覧ください。  物理サーバーを Azure にレプリケートする場合も、セカンダリ サイトにレプリケートする場合も、同じ要件が適用されます。
+Windows および Linux を実行している物理サーバーを、Azure またはセカンダリ サイトにレプリケートできます。 [Azure へのレプリケーション](vmware-physical-azure-support-matrix.md#replicated-machines)、および[セカンダリ サイトへのレプリケーション](vmware-physical-secondary-support-matrix.md#replicated-vm-support)のための要件について説明します。
 
 
 オンプレミスのサーバーがダウンした場合には、物理サーバーは Azure では VM として実行されることに注意してください。 オンプレミスの物理サーバーへのフェールバックは、現在サポートされていません。 物理保護されているマシンの場合は、VMware 仮想マシンにのみフェールバックできます。
 
 ### <a name="what-vmware-vms-can-i-protect"></a>どの VMware VM を保護できますか。
 
-VMware VM を保護するには、vSphere ハイパーバイザーに加え、VMware ツールが実行されている仮想マシンが必要です。 また、VMware vCenter サーバーでハイパーバイザーを管理することをお勧めします。 Azure またはセカンダリ サイトへの VMware サーバーと VM のレプリケートに関する要件については、[こちら](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)をご覧ください。
+VMware VM を保護するには、vSphere ハイパーバイザーに加え、VMware ツールが実行されている仮想マシンが必要です。 また、VMware vCenter サーバーでハイパーバイザーを管理することをお勧めします。 [Azure へのレプリケーション](vmware-physical-azure-support-matrix.md#replicated-machines)、または[セカンダリ サイトへのレプリケーション](vmware-physical-secondary-support-matrix.md#replicated-vm-support)のための要件について説明します。
 
 
 ### <a name="can-i-manage-disaster-recovery-for-my-branch-offices-with-site-recovery"></a>Site Recovery を使用してブランチ オフィスのディザスター リカバリーを管理できますか。
@@ -93,7 +93,7 @@ Azure Site Recovery は、パブリック エンドポイント経由で Azure �
 はい。ExpressRoute を使用して Azure に仮想マシンをレプリケートできます。 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)を設定する必要があります。 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)を使用して、それらのマシンにアクセスできます。
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>仮想マシンを Azure にレプリケートするための前提条件はありますか。
-Azure にレプリケートする仮想マシンは、 [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に適合している必要があります。
+Azure にレプリケートする [VMware VM](vmware-physical-azure-support-matrix.md#replicated-machines) や [Hyper-V VM](hyper-v-azure-support-matrix.md#replicated-vms) は、Azure 要件に適合している必要があります。
 
 Azure ユーザー アカウントには、新しい仮想マシンを Azure にレプリケートできるようにするための特定の[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)が必要です。
 
@@ -106,8 +106,9 @@ Azure ユーザー アカウントには、新しい仮想マシンを Azure に
 ### <a name="can-i-automate-site-recovery-scenarios-with-an-sdk"></a>SDK を使用して Site Recovery のシナリオを自動化できますか。
 はい。 Rest API、PowerShell、Azure SDK のいずれかを使用して、Site Recovery ワークフローを自動化することができます。 PowerShell を使用した Site Recovery のデプロイについて、現在サポートされているシナリオは次のとおりです。
 
-* [VMM クラウドの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](site-recovery-vmm-to-azure-powershell-resource-manager.md)
-* [VMM なしの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](site-recovery-deploy-with-powershell-resource-manager.md)
+* [VMM クラウドの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](hyper-v-vmm-powershell-resource-manager.md)
+* [VMM なしの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](hyper-v-azure-powershell-resource-manager.md)
+* [PowerShell Resource Manager を使用して Azure へ VMware をレプリケートする](vmware-azure-disaster-recovery-powershell.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>Azure にレプリケートする場合、どの種類のストレージ アカウントが必要ですか。
 LRS または GRS ストレージ アカウントが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。 Azure Portal に Site Recovery をデプロイする場合、VMware VM、Hyper-V VM、および物理サーバーのレプリケーションで Premium Storage がサポートされます。
@@ -123,7 +124,7 @@ LRS または GRS ストレージ アカウントが必要です。 地域的障
 これはサポートされていません。 [フィードバック フォーラム](http://feedback.azure.com/forums/256299-site-recovery/suggestions/6227386-support-for-offline-replication-data-transfer-from)でこの機能を要求してください。
 
 ### <a name="can-i-exclude-specific-disks-from-replication"></a>レプリケーションから特定のディスクを除外することはできますか。
-これは、Azure Portal を使用して Azure に [VMware VM と Hyper-V VM をレプリケート](site-recovery-exclude-disk.md)する場合にサポートされます。
+これは、Azure Portal を使用して Azure に VMware VM と Hyper-V VM をレプリケートする場合にサポートされます。
 
 ### <a name="can-i-replicate-virtual-machines-with-dynamic-disks"></a>ダイナミック ディスクを持つ仮想マシンをレプリケートできますか。
 ダイナミック ディスクは Hyper-V 仮想マシンのレプリケート時にサポートされますが、 Azure への VMware VM および物理マシンのレプリケート時にもサポートされます。 オペレーティング システム ディスクはベーシック ディスクである必要があります。
@@ -170,7 +171,6 @@ Azure は復元するように設計されています。 Site Recovery は、�
 はい。Site Recovery は、専用および共有のインフラストラクチャ モデルの両方をサポートしています。
 
 ### <a name="for-a-service-provider-is-the-identity-of-my-tenant-shared-with-the-site-recovery-service"></a>サービス プロバイダーの場合、テナントの ID は Site Recovery サービスと共有されますか。
-
 いいえ。 テナント ID は匿名のままです。 テナントは Site Recovery ポータルにアクセスする必要はありません。 ポータルを操作するのは、サービス プロバイダーの管理者だけです。
 
 ### <a name="will-tenant-application-data-ever-go-to-azure"></a>テナントのアプリケーション データは Azure に送信されますか。
@@ -179,7 +179,6 @@ Azure は復元するように設計されています。 Site Recovery は、�
 Azure にレプリケートする場合、アプリケーション データは Site Recovery サービスではなく、Azure ストレージに送信されます。 データは、転送中に暗号化され、暗号化された状態のまま Azure に残ります。
 
 ### <a name="will-my-tenants-receive-a-bill-for-any-azure-services"></a>テナントに Azure サービスの請求書が届きますか。
-
 いいえ。 Azure の請求関係は、サービス プロバイダーとの直接的な関係です。 サービス プロバイダーは、そのテナントに対して固有の請求書を生成する必要があります。
 
 ### <a name="if-im-replicating-to-azure-do-we-need-to-run-virtual-machines-in-azure-at-all-times"></a>Azure にレプリケートする場合、仮想マシンを Azure で常時実行する必要がありますか。

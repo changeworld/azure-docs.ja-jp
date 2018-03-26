@@ -1,11 +1,11 @@
 ---
-title: "Azure の課金内容の確認"
-description: "Azure サブスクリプションの使用状況と課金内容を確認して理解する方法について説明します"
-services: 
-documentationcenter: 
+title: Azure の課金内容の確認
+description: Azure サブスクリプションの使用状況と課金内容を確認して理解する方法について説明します
+services: ''
+documentationcenter: ''
 author: tonguyen10
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 32eea268-161c-4b93-8774-bc435d78a8c9
 ms.service: billing

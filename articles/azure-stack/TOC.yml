@@ -232,14 +232,22 @@
               href: azure-stack-app-service-capacity-planning.md
             - name: 開始する前に
               href: azure-stack-app-service-before-you-get-started.md
+            - name: 障害ドメインに分散して Azure App Service on Azure Stack を再配布する方法
+              href: azure-stack-app-service-fault-domain-update.md
             - name: App Service リソース プロバイダーのデプロイ
               href: azure-stack-app-service-deploy.md
             - name: App Service のオフライン デプロイ
               href: azure-stack-app-service-deploy-offline.md
+            - name: App Service の更新
+              href: azure-stack-app-service-update.md
+            - name: App Service のオフライン更新
+              href: azure-stack-app-service-update-offline.md
             - name: Web worker ロールの追加
               href: azure-stack-app-service-add-worker-roles.md
             - name: デプロイ ソースを構成する
               href: azure-stack-app-service-configure-deployment-sources.md
+            - name: App Service 更新プログラム 1 のリリース ノート
+              href: azure-stack-app-service-release-notes-update-one.md
         - name: Marketplace の設定
           items:
             - name: Marketplace の概要

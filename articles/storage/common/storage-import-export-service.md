@@ -1,6 +1,6 @@
 ---
-title: "Azure Import/Export を使用した Azure Storage との間でのデータの転送 | Microsoft Docs"
-description: "Azure Portal でインポートおよびエクスポート ジョブを作成して、Azure Storage との間でデータを転送する方法について説明します。"
+title: Azure Import/Export を使用した Azure Storage との間でのデータの転送 | Microsoft Docs
+description: Azure Portal でインポートおよびエクスポート ジョブを作成して、Azure Storage との間でデータを転送する方法について説明します。
 author: muralikk
 manager: syadav
 services: storage
@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: e9fce2530bc4e654304b946cea1715ac8e2ce6fa
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
 この記事では、Azure Import/Export サービスを使用してディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage と Azure Files に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure Files にインポートできます。 
@@ -294,7 +294,7 @@ Azure Portal の次の画像では、サンプル ジョブのドライブの状
 | 該当なし | ジョブの対象でないドライブは、別のジョブを通じてデータ センターに配送されます。 | これらのドライブは追加ドライブとしてマークされ、元のパッケージに関連付けられたジョブが完了したときに、お客様に返送されます。 |
 
 ### <a name="time-to-process-job"></a>ジョブの処理の所要時間
-インポート/エクスポート ジョブの処理にかかる時間は、運送時間、ジョブの種類、コピーするデータの種類とサイズ、用意されたディスクのサイズなど、さまざまな要素によって変わります。 Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 REST API を使用すると、ジョブの進行状況を詳細に追跡できます。 ジョブの一覧表示操作には、コピーの進行状況を示す完了率パラメーターがあります。 タイム クリティカルなインポート/エクスポート ジョブの推定所要時間が必要な場合は、Microsoft にお問い合わせください。
+インポート/エクスポート ジョブの処理にかかる時間は、運送時間、データセンターの負荷、ジョブの種類、コピーするデータのサイズ、ジョブのディスク数など、いくつもの要素によって変わります。 Import/Export サービスに SLA はありませんが、ディスクの到着後 7 日から 10 日以内にコピーが完了するよう努力しております。 Azure Portal に掲載される状態に加え、REST API を使用してジョブの進行状況を追跡できます。 List Jobs 操作 API 呼び出しの達成率パラメーターでは、コピーの進捗率が示されます。
 
 ### <a name="pricing"></a>価格
 **ドライブ処理料金**
@@ -498,11 +498,9 @@ Import/Export サービスで、1 つのインポート ジョブまたはエク
 
 **ドライブは返送前にフォーマットされるのですか。**
 
-
 いいえ。 ドライブはすべて BitLocker で暗号化されます。
 
 **インポート/エクスポート ジョブのドライブを Microsoft から購入できますか。**
-
 
 いいえ。 インポート ジョブとエクスポート ジョブの両方で、自分のドライブを発送する必要があります。
 
@@ -519,7 +517,6 @@ Azure ストレージ アカウント内のデータには、Azure Portal から
 ドライブを準備するときに、データセット CSV の /Disposition:<rename|no-overwrite|overwrite> というフィールドを使用して、コピー先のファイルを上書きするか無視するかを指定できます。 既定では、既存の BLOB またはファイルは上書きされず、新しいファイルの名前が変更されます。
 
 **WAImportExport ツールは、32 ビット オペレーティング システムと互換性がありますか。**
-
 いいえ。 WAImportExport ツールは、64 ビット Windows オペレーティング システムとのみ互換性があります。 サポートされる OS バージョンの一覧については、「 [前提条件](#pre-requisites) 」の「オペレーティング システム」セクションをご覧ください。
 
 **ハード ディスク ドライブ以外のものをパッケージに含める必要はありますか。**

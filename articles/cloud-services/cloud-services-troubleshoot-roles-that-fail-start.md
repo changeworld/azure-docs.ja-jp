@@ -1,11 +1,11 @@
 ---
-title: "起動しないロールのトラブルシューティング | Microsoft Docs"
-description: "クラウド サービス ロールが起動に失敗する一般的な原因をいくつか取り上げます。 これらの問題に対する解決策も紹介します。"
+title: 起動しないロールのトラブルシューティング | Microsoft Docs
+description: クラウド サービス ロールが起動に失敗する一般的な原因をいくつか取り上げます。 これらの問題に対する解決策も紹介します。
 services: cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: simonxjx
 manager: felixwu
-editor: 
+editor: ''
 tags: top-support-issue
 ms.assetid: 674b2faf-26d7-4f54-99ea-a9e02ef0eb2f
 ms.service: cloud-services
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/03/2017
 ms.author: v-six
-ms.openlocfilehash: d24a55fd3b93760035f852a24537c1cec9e4bab2
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: 36966151b616a14e429807feb63df93503e7b249
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="troubleshoot-cloud-service-roles-that-fail-to-start"></a>クラウド サービス ロールが起動しないときのトラブルシューティング
 ここでは、Azure Cloud Services ロールの起動失敗に関連した一般的な問題と解決法を取り上げます。
@@ -62,7 +62,7 @@ Web ロールの web.config でカスタム エラー モードをオフに設�
 離れた場所からリモート デスクトップを使用してロールにアクセスし、詳細なエラー情報を参照することができます。 リモート デスクトップを使用してエラーを参照するには、次の手順に従います。
 
 1. Azure SDK 1.3 以上がインストールされていることを確認します。
-2. Visual Studio を使ったソリューションのデプロイの間に、[リモート デスクトップ接続の構成] を選びます。 リモート デスクトップ接続の構成の詳細については、「 [Azure ロールでのリモート デスクトップの使用](../vs-azure-tools-remote-desktop-roles.md)」をご覧ください。
+2. Visual Studio を使ったソリューションのデプロイの間に、リモート デスクトップを有効にします。 詳しくは、「[Enable Remote Desktop Connection for a Role in Azure Cloud Services using Visual Studio (Visual Studio を使用して Azure Cloud Services のロールでリモート デスクトップ接続を有効にする)](cloud-services-role-enable-remote-desktop-visual-studio.md)」をご覧ください。
 3. Microsoft Azure Portal で、インスタンスのステータスが **[準備完了]** と表示されたら、インスタンスにリモート接続します。 Cloud Services でリモート デスクトップを使う方法について詳しくは、「[ロール インスタンスへのリモート接続](cloud-services-role-enable-remote-desktop-new-portal.md#remote-into-role-instances)」をご覧ください。
 5. リモート デスクトップの構成中に指定した資格情報を使用して仮想マシンにサインインします。
 6. コマンド ウィンドウを開きます。
@@ -77,7 +77,7 @@ Web サイトにアクセスすると、詳しいエラー メッセージが表
 * 説明: 現在の Web 要求を実行中に、ハンドルされていない例外が発生しました。 エラーに関する詳細および例外の発生場所については、スタック トレースを参照してください。
 * 例外の詳細: System.IO.FIleNotFoundException: ファイルまたはアセンブリ ’Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf856ad364e35’、またはその依存関係の 1 つが読み込めませんでした。 指定されたファイルが見つかりません。
 
-次に例を示します。
+例: 
 
 ![Explicit Server Error in '/' Application](./media/cloud-services-troubleshoot-roles-that-fail-start/ic503389.png)
 
@@ -121,7 +121,7 @@ IntelliTrace を有効にしてサービスをデプロイするには、以下�
 
 すべてのエラーを修正済みであることが確認できたら、 **[.NET 4 のロールに対して IntelliTrace を有効にします]** チェック ボックスをオフにしてサービスをデプロイできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 クラウド サービスの他の [トラブルシューティングに関する記事](https://azure.microsoft.com/documentation/articles/?tag=top-support-issue&product=cloud-services) を参照します。
 
 Azure PaaS コンピューターの診断データを使用してクラウド サービス ロールの問題をトラブルシューティングする方法については、 [Kevin Williamson によるブログ シリーズ](http://blogs.msdn.com/b/kwill/archive/2013/08/09/windows-azure-paas-compute-diagnostics-data.aspx)をご覧ください。

@@ -1,25 +1,19 @@
 ---
-title: "Elastic Database クライアント ライブラリの資格情報を管理する | Microsoft Docs"
-description: "エラスティック データベース アプリの適切な資格情報のレベルを設定する方法 (管理者から読み取り専用)"
+title: Elastic Database クライアント ライブラリの資格情報を管理する | Microsoft Docs
+description: エラスティック データベース アプリの適切な資格情報のレベルを設定する方法 (管理者から読み取り専用)
 services: sql-database
-documentationcenter: 
-manager: jhubbard
-author: ddove
-editor: 
-ms.assetid: 72e0edaf-795e-4856-84a5-6594f735fb7e
+manager: craigg
+author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: ddove
-ms.openlocfilehash: 0f266f3be8bf8c1699b3b19bea96c83d32f1bd69
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.author: sstein
+ms.openlocfilehash: 26d83779b218f8c936c020d63651861f45bafa2f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="credentials-used-to-access-the-elastic-database-client-library"></a>Elastic Database クライアント ライブラリへのアクセスに使用する資格情報
 [Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)では、3 種類の資格情報を使用して[シャード マップ マネージャー](sql-database-elastic-scale-shard-map-management.md)にアクセスします。 必要に応じて、最低レベルのアクセスが可能な資格情報を使用します。

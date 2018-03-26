@@ -1,12 +1,12 @@
 ---
-title: "Azure Backup エージェントの FAQ | Microsoft Docs"
-description: "一般的な質問への回答: Azure Backup エージェントの動作、バックアップとリテンション期間の制限。"
+title: Azure Backup エージェントの FAQ | Microsoft Docs
+description: '一般的な質問への回答: Azure Backup エージェントの動作、バックアップとリテンション期間の制限。'
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
-keywords: "バックアップと障害復旧; バックアップ サービス"
+editor: ''
+keywords: バックアップと障害復旧; バックアップ サービス
 ms.assetid: 778c6ccf-3e57-4103-a022-367cc60c411a
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,14 +15,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: trinadhk;pullabhk;
-ms.openlocfilehash: 227cdc87f3e2c8ed393145f4bbde7f74606bdf3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8777b2265666a4505a3432aca6683e2510519cac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="questions-about-the-azure-backup-agent"></a>Azure Backup エージェントについての質問
 この記事では、Azure Backup エージェントの構成要素が理解しやすいよう、よく寄せられる質問とその回答を記載しています。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
+
+[!INCLUDE [backup-upgrade-mars-agent.md](../../includes/backup-upgrade-mars-agent.md)]
 
 ## <a name="configure-backup"></a>バックアップの構成
 ### <a name="where-can-i-download-the-latest-azure-backup-agent-br"></a>最新の Azure Backup エージェントはどこでダウンロードできますか。 <br/>

@@ -1,9 +1,9 @@
 ---
-title: "Azure Monitor でのログ アラート - Alerts (プレビュー) | Microsoft Docs"
-description: "Azure Alerts (プレビュー) に関して指定した複合クエリ条件が満たされたときに、電子メール、通知、Web サイト URL (webhook)の呼び出し、またはオートメーションをトリガーします。"
+title: Azure Monitor でのログ アラート - Alerts (プレビュー) | Microsoft Docs
+description: Azure Alerts (プレビュー) に関して指定した複合クエリ条件が満たされたときに、電子メール、通知、Web サイト URL (webhook)の呼び出し、またはオートメーションをトリガーします。
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: f7457655-ced6-4102-a9dd-7ddf2265c0e2
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/02/2018
 ms.author: vinagara
-ms.openlocfilehash: 438776e7f0885dbdb0d66ccdd18d854e14beb299
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Azure Monitor でのログ アラート - Alerts (プレビュー)
-この記事では、Analytics クエリのアラート ルールが Azure Alerts (プレビュー) でどのように機能するかについて詳しく紹介し、また各種ログ アラートの相違点について説明します。
+この記事では、Analytics クエリのアラート ルールが Azure Alerts (プレビュー) でどのように機能するかについて詳しく紹介し、また各種ログ アラートの相違点について説明します。 ログを使用するメトリック アラートの詳細については、「[Near Real Time Metric Alerts](monitoring-near-real-time-metric-alerts.md)」(ほぼリアルタイムのメトリック アラート) を参照してください。
 
 現在、Azure アラート (プレビュー) は、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) および [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) からのクエリに関するログ アラートをサポートしています。
 
@@ -96,7 +96,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 **間隔**:  データを集計する間隔を定義します。  たとえば、**5 分**を指定した場合には、アラートに対して指定した期間にわたり、グループ フィールドの各インスタンスについて、5 分間隔でレコードが作成されます。
 > [!NOTE]
-> クエリでは Bin 関数を使用する必要があります。 また、Bin 関数の使用により時間枠に対して等しくない時間間隔が生成された場合、アラートは代わりに bin_at 関数を使用して、固定された点が確実に存在するようにします。
+> クエリでは Bin 関数を使用する必要があります。 bin() で返される時間間隔が等しくない場合があります。そのため、実行時、アラートは、適切な時間が指定された bin_at 関数を代わりに使用して、固定小数点を持つ結果が得られるようにします。
 
 **しきい値**: メトリック測定アラート ルールのしきい値は、集計値と違反数によって定義されます。  ログ検索でいずれかのデータ ポイントが一定の値を超えると、抵触が 1 回発生したと判定されます。  そして、結果に含まれるオブジェクトの抵触の発生回数が指定された値を超えたときに、そのオブジェクトについて警告が生成されます。
 

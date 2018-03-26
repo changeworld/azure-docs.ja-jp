@@ -1,24 +1,24 @@
 ---
-title: "Azure Load Balancer のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "Load Balancer を使用して、アプリのネットワーク パフォーマンスを向上させる方法について説明します。 仮想マシンとクラウド リソースのトラフィックやクロスプレミス仮想ネットワーク内のトラフィックを管理できます。"
+title: Azure Load Balancer のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: Load Balancer を使用して、アプリのネットワーク パフォーマンスを向上させる方法について説明します。 仮想マシンとクラウド リソースのトラフィックやクロスプレミス仮想ネットワーク内のトラフィックを管理できます。
 services: load-balancer
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 169ca89ccd80e5a70f3e9ab07b3c34358c154be7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4642b0108343b417dc09bbc5978b6a18a58d39a9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="load-balancer-documentation"></a>Load Balancer のドキュメント
+# <a name="load-balancer-documentation"></a>Load Balancer のドキュメント
 
 Load Balancer を構成して、高い可用性と優れたネットワーク パフォーマンスをアプリケーションに提供する方法について説明します。 ドキュメントでは、仮想マシンやクラウド リソースの間のトラフィックと、クロスプレミス仮想ネットワーク内のトラフィックを負荷分散する方法を紹介します。
 
@@ -122,7 +122,7 @@ Load Balancer を構成して、高い可用性と優れたネットワーク �
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.management.network.models">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.management.network">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html">Node.JS</a></p>
+                        <p><a href="http://azure.github.io/azure-sdk-for-node/azure-arm-network/latest/LoadBalancers.html">Node.js</a></p>
                         <p><a href="http://www.rubydoc.info/gems/azure_mgmt_network/Azure/ARM/Network/LoadBalancers">Ruby</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.LoadBalancersOperations#azure.mgmt.network.operations.LoadBalancersOperations">Python</a></p>
                    </div>

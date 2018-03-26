@@ -1,29 +1,29 @@
 ---
-title: "Azure ネットワーク セキュリティ機能を使って個人データを保護する | Microsoft Docs"
-description: "Azure ネットワーク セキュリティ機能を使って個人データを保護する"
+title: Azure ネットワーク セキュリティ機能を使って個人データを保護する | Microsoft Docs
+description: Azure ネットワーク セキュリティ機能を使って個人データを保護します。 この機能を使用すると、一般データ保護規則 (GDPR) に従うことができます。
 services: security
 documentationcenter: na
 author: Barclayn
 manager: MBaldwin
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 03/06/2018
 ms.author: barclayn
-ms.custom: 
-ms.openlocfilehash: 2510a4aed34b6a156cc9a9da6215de5956aac023
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.custom: ''
+ms.openlocfilehash: 54aeb22a501e248105931df341d23e524448155a
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="protect-personal-data-with-network-security-features-azure-application-gateway-and-network-security-groups"></a>ネットワークのセキュリティ機能を使用した個人データの保護: Azure Application Gateway とネットワーク セキュリティ グループ
 
-この記事では、Azure Application Gateway とネットワーク セキュリティ グループを使用して個人データを保護するための情報を提供し、手順を説明します。
+この記事では、Azure Application Gateway とネットワーク セキュリティ グループを使用して個人データを保護するための情報を提供し、手順を説明します。 この情報は、一般データ保護規則 (GDPR) に従うために役立ちます。
 
 SQL インジェクションやクロスサイト スクリプティングなど一般的な脆弱性の悪用に対する対策は、個人データのプライバシーを保護する多階層セキュリティ戦略の重要な要素です。 機密データをセキュリティ侵害の危険性から守るには、Azure 仮想ネットワークから不要なネットワーク トラフィックを排除する必要があり、Microsoft Azure は攻撃者からデータを保護するためのツールを提供します。
 

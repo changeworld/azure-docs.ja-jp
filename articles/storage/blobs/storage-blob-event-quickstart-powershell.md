@@ -1,18 +1,18 @@
 ---
-title: "Azure Blob ストレージ イベントをカスタム Web エンドポイントにルーティングする - Powershell | Microsoft Docs"
-description: "Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。"
+title: Azure Blob ストレージ イベントをカスタム Web エンドポイントにルーティングする - Powershell | Microsoft Docs
+description: Blob Storage のイベントをサブスクライブするには、Azure Event Grid を使用します。
 services: storage,event-grid
-keywords: 
+keywords: ''
 author: david-stanford
 ms.author: dastanfo
 ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: 329a79511b810159244b5530a49a5916440d2046
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 374a24448eb1bf366e26bb55fdf09e470b030c89
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/12/2018
 ---
 # <a name="route-blob-storage-events-to-a-custom-web-endpoint-with-powershell"></a>PowerShell を使って Blob Storage のイベントをカスタム Web エンドポイントにルーティングする
 
@@ -21,7 +21,7 @@ Azure Event Grid は、クラウドのイベント処理サービスです。 �
 通常、webhook や Azure 関数など、イベントに応答するエンドポイントが、イベントの送信先になります。 この記事では、紹介している例を単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サードパーティ製ツール ([RequestBin](https://requestb.in/) または [Hookbin](https://hookbin.com/)) を使用して作成します。
 
 > [!NOTE]
-> **RequestBin**および **Hookbin** は、高いスループットでの使用を意図していません。 これらのツールの使用は、デモンストレーションのみを目的としています。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
+> **RequestBin** と **Hookbin** は、高いスループットでの使用を目的としていません。 ここでは、デモンストレーションのためにこれらのツールを使用します。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
 
 この記事の手順の最後に、イベント データがエンドポイントに送信済みであることを確認できます。
 
@@ -63,9 +63,9 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-Blob ストレージ イベントを使用するには、[Blob ストレージ アカウント](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)または[汎用 v2 ストレージ アカウント](../common/storage-account-options.md#general-purpose-v2)のどちらかが必要です。 **汎用 v2 (GPv2)** は、Blobs、Files、Queues、および Tables などすべてのストレージ サービスの全機能をサポートするストレージ アカウントです。 **Blob Storage アカウント**は、Azure Storage の Blob (オブジェクト) として非構造化データを格納するための特殊化されたストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。  
+Blob ストレージ イベントを使用するには、[Blob ストレージ アカウント](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts)または[汎用 v2 ストレージ アカウント](../common/storage-account-options.md#general-purpose-v2)のどちらかが必要です。 **汎用 v2 (GPv2)** は、BLOB、Files、Queues、Tables をはじめとする全ストレージ サービスに関して、すべての機能をサポートするストレージ アカウントです。 **BLOB ストレージ アカウント**とは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。  
 
-[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) を使って LRS レプリケーションで Blob Storage アカウントを作成し、使用するストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントで作業するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。 この例では、ローカル冗長ストレージ(LRS) および Blob 暗号化 (既定で有効) を使って、**gridstorage** と呼ばれるストレージ アカウントを作成します。 
+[New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) を使って LRS レプリケーションで Blob Storage アカウントを作成し、使用するストレージ アカウントを定義するストレージ アカウント コンテキストを取得します。 ストレージ アカウントで作業するとき、資格情報を繰り返し入力する代わりに、このコンテキストを参照します。 この例では、ローカル冗長ストレージ(LRS) を使って、**gridstorage** と呼ばれるストレージ アカウントを作成します。 
 
 > [!NOTE]
 > このスクリプトで提供されている名前に数個のランダムな文字を追加する必要があるので、ストレージ アカウント名はグローバル名前空間にあります。
@@ -84,15 +84,15 @@ $ctx = $storageAccount.Context
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
-トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin および Hookbin は、エンドポイントの作成と、エンドポイントに送信された要求の表示を可能にするサードパーティ製ツールです。 [RequestBin](https://requestb.in/), に移動して **[Create a RequestBin]\(RequestBin の作成\)** をクリックするか、または[Hookbin](https://hookbin.com/) に移動して **[新しいエンドポイントの作成]** をクリックします。 bin の URL をコピーして、次のスクリプトの `<bin URL>` を置き換えます。
+トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin と Hookbin は、エンドポイントの作成と、エンドポイントに送信された要求の表示を可能にする、サード パーティ製のツールです。 [RequestBin](https://requestb.in/), に移動して **[Create a RequestBin]\(RequestBin の作成\)** をクリックするか、または[Hookbin](https://hookbin.com/) に移動して **[新しいエンドポイントの作成]** をクリックします。 bin の URL をコピーして、次のスクリプトの `<bin URL>` を置き換えます。
 
 ```powershell
 $binEndPoint = "<bin URL>"
 ```
 
-## <a name="subscribe-to-your-storage-account"></a>ストレージ アカウントにサブスクライブする
+## <a name="subscribe-to-your-storage-account"></a>ストレージ アカウントをサブスクライブする
 
-どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したストレージ アカウントにサブスクライブし、RequestBin または Hookbin からの URL をイベント通知のエンドポイントとして渡します。 
+どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したストレージ アカウントをサブスクライブし、RequestBin または Hookbin からの URL をイベント通知のエンドポイントとして渡します。 
 
 ```powershell
 $storageId = (Get-AzureRmStorageAccount -ResourceGroupName $resourceGroup -AccountName $storageName).Id
@@ -115,7 +115,7 @@ echo $null >> gridTestFile.txt
 Set-AzureStorageBlobContent -File gridTestFile.txt -Container $containerName -Context $ctx -Blob gridTestFile.txt
 ```
 
-以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成したエンドポイント URL を参照します。 または、開いているブラウザーで [更新] をクリックします。 先ほど送信したイベントが表示されます。 
+以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成したエンドポイント URL に移動します。 または、開いているブラウザーで [更新] をクリックします。 先ほど送信したイベントが表示されます。 
 
 ```json
 [{

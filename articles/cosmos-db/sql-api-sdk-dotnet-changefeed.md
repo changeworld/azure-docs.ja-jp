@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB .NET Change Feed Processor API、SDK およびリソース | Microsoft Docs"
-description: "リリース日、提供終了日、.NET Change Feed Processor SDK の各バージョン間の変更など、Change Feed Processor API と SDK に関するあらゆる詳細を提供します。"
+title: Azure Cosmos DB .NET Change Feed Processor API、SDK およびリソース | Microsoft Docs
+description: リリース日、提供終了日、.NET Change Feed Processor SDK の各バージョン間の変更など、Change Feed Processor API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
 documentationcenter: .net
 author: ealsur
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/05/2017
+ms.date: 03/07/2018
 ms.author: maquaran
-ms.openlocfilehash: 962ad3aca82e34fa22da925a274a1e82e2086e03
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7e53cf67bc6e03a5f45de5ad4e23ff91624874f4
+ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/08/2018
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>.NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -39,10 +39,15 @@ ms.lasthandoff: 03/02/2018
 |---|---|
 |**SDK のダウンロード**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)|
 |**API ドキュメント**|[Change Feed Processor ライブラリ API リファレンス ドキュメント](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)|
-|**作業の開始**|[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)|
+|**作業開始**|[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)|
 |**現在サポートされているフレームワーク**| [Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</br> [Microsoft .NET Core](https://www.microsoft.com/net/download/core) |
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
+* 安定性が向上しました。
+* 手動チェックポイント処理をサポートします。
+* [SQL .NET SDK](sql-api-sdk-dotnet.md) バージョン 1.21 以降と互換性があります。
 
 ### <a name="a-name120120"></a><a name="1.2.0"/>1.2.0
 * .NET Standard 2.0 のサポートを追加します。 このパッケージで `netstandard2.0`と`net451` フレームワーク モニカーがサポートされるようになりました。
@@ -72,6 +77,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.3.0](#1.3.0) |2018 年 3 月 7 日 |--- |
 | [1.2.0](#1.2.0) |2017 年 10 月 31 日 |--- |
 | [1.1.1](#1.1.1) |2017 年 8 月 29 日 |--- |
 | [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |

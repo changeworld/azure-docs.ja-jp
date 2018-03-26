@@ -27,6 +27,8 @@
       href: overview-general-concepts.md
 - name: ハウツー ガイド
   items:
+    - name: 上位の CLI タスク
+      href: cli-for-azure-machine-learning.md
     - name: Workbench の使用
       items:
         - name: Python IDE での作業

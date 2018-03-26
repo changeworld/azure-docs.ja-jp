@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Authenticator で携帯電話からサインインする - Azure アカウントと Microsoft アカウント | Microsoft Docs"
-description: "パスワードを入力する代わりに、携帯電話を使って Microsoft アカウントにサインインします。 この記事では、この機能についてのよく寄せられる質問に回答します。"
+title: Microsoft Authenticator で携帯電話からサインインする - Azure アカウントと Microsoft アカウント | Microsoft Docs
+description: パスワードを入力する代わりに、携帯電話を使って Microsoft アカウントにサインインします。 この記事では、この機能についてのよく寄せられる質問に回答します。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.openlocfilehash: 86cf6ba2f2ec86a609b4ec60cc143b07d9e542b3
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/14/2018
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>パスワードではなく携帯電話でサインインする
 

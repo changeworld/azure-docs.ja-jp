@@ -1,25 +1,24 @@
 ---
-title: "列ストア インデックスのパフォーマンスを上げる - Azure SQL Data WareHouse | Microsoft Docs"
-description: "メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。"
+title: 列ストア インデックスのパフォーマンスを上げる - Azure SQL Data WareHouse | Microsoft Docs
+description: メモリ要件を減らすか、使用可能なメモリを増やして列ストア インデックスが各行グループに圧縮する行の数を最大限にします。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jhubbard
-editor: 
-ms.assetid: ef170f39-ae24-4b04-af76-53bb4c4d16d3
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 10/23/2017
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 6640ed8958f6b05c015fb6c61d07aeea95b18022
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 74e641f9da418d678bdbef0c69f9f59ccee32303
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="maximizing-rowgroup-quality-for-columnstore"></a>列ストアの行グループの品質を最大限にする
 
@@ -140,9 +139,9 @@ OPTION (MAXDOP 1);
 DWU のサイズとユーザー リソースのクラスによって、ユーザー クエリで使用可能なメモリの量が決まります。 読み込みクエリのメモリ許可を増やすために、DWU の数を増やすか、リソース クラスを増やすことができます。
 
 - DWU を増やす方法については、[パフォーマンスのスケーリング方法](quickstart-scale-compute-portal.md)に関するセクションを参照してください。
-- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)」を参照してください。
+- クエリのリソース クラスを変更する方法については、「[ユーザー リソース クラスの変更例](resource-classes-for-workload-management.md#assigning-resource-classes)」を参照してください。
 
-たとえば、DWU 100 の場合、smallrc リソース クラス内のユーザーはディストリビューションごとに 100 MB のメモリを使用できます。 詳細については、[SQL Data Warehouse での同時実行](sql-data-warehouse-develop-concurrency.md)に関する記事を参照してください。
+たとえば、DWU 100 の場合、smallrc リソース クラス内のユーザーはディストリビューションごとに 100 MB のメモリを使用できます。 詳細については、[SQL Data Warehouse での同時実行](resource-classes-for-workload-management.md)に関する記事を参照してください。
 
 高品質の行グループのサイズを取得するには 700 MB のメモリが必要と判断したと仮定します。 これらの例では、十分なメモリで読み込みクエリを実行する方法を示します。
 

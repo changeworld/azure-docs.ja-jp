@@ -1,4 +1,4 @@
-- name: Azure 上の Jenkins のドキュメント
+- name: Azure 上の Jenkins
   href: index.yml
 - name: 概要
   items:
@@ -46,7 +46,7 @@
 - name: サンプル
   items:
     - name: サンプルのジョブとスクリプト
-      href: 'https://github.com/Azure/azure-devops-utils/tree/master/jenkins'
+      href: 'https://github.com/azure/jenkins'
 - name: リソース
   items:
     - name: プラグイン
@@ -75,3 +75,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Jenkins ホーム
       href: 'https://jenkins.io/'
+    - name: Jenkins アーキテクチャ
+      href: /azure/architecture/reference-architectures/jenkins/
+      maintainContext: true

@@ -21,12 +21,14 @@
       href: tutorial-forecast-spending.md
     - name: 3 - コストを管理する
       href: tutorial-manage-costs.md
-    - name: 4 - データへのアクセスを制御する
+    - name: 4 - 予約インスタンスを最適化する
+      href: tutorial-optimize-reserved-instances.md
+    - name: 5 - データへのアクセスを制御する
       href: tutorial-user-access.md
 - name: 概念
   items:
     - name: コスト レポートについて
-      href: understading-cost-reports.md
+      href: understanding-cost-reports.md
 - name: ハウツー ガイド
   items:
     - name: Azure サブスクリプションとアカウントのアクティブ化

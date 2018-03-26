@@ -1,11 +1,11 @@
 ---
-title: "開発者向け Azure Batch の概要 | Microsoft Docs"
-description: "開発の観点から、Batch サービスとその API の機能について説明します。"
+title: 開発者向け Azure Batch の概要 | Microsoft Docs
+description: 開発の観点から、Batch サービスとその API の機能について説明します。
 services: batch
 documentationcenter: .net
 author: dlepow
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 416b95f8-2d7b-4111-8012-679b0f60d204
 ms.service: batch
 ms.devlang: multiple
@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c53007530fe80f03cefbf138193cfad4b0e8292a
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b0a18f975530d2a291e529308ee53d6d48a68e42
+ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/09/2018
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/05/2018
 [REST API][batch_rest_api] を直接呼び出す分散コンピューティング アプリケーションまたはサービスを開発する場合も、いずれかの [Batch SDK](batch-apis-tools.md#azure-accounts-for-batch-development) を使う場合も、この記事で紹介するさまざまなリソースや機能を活用することができます。
 
 > [!TIP]
-> Batch サービスの基本については、「 [Azure Batch の基礎](batch-technical-overview.md)」を参照してください。
+> Batch サービスの基本については、「 [Azure Batch の基礎](batch-technical-overview.md)」を参照してください。 また、最新の [Batch サービスの更新](https://azure.microsoft.com/updates/?product=batch)も参照してください。
 >
 >
 

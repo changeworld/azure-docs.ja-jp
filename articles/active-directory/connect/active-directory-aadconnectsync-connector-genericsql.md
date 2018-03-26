@@ -1,11 +1,11 @@
 ---
-title: "Generic SQL コネクタ | Microsoft Docs"
-description: "この記事では、Microsoft の Generic SQL コネクタを構成する方法について説明します。"
+title: Generic SQL コネクタ | Microsoft Docs
+description: この記事では、Microsoft の Generic SQL コネクタを構成する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: bhu
-editor: 
+editor: ''
 ms.assetid: fd8ccef3-6605-47ba-9219-e0c74ffc0ec9
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2017
 ms.author: billmath
-ms.openlocfilehash: 66e3559c244a76101be7b7d944a48cd6dd99bd4c
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 5ac8aff7e302a255efb86606416131ecf8088137
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/06/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Generic SQL コネクタに関するテクニカル リファレンス
 この記事では Generic SQL コネクタについて説明します。 この記事は次の製品に適用されます。
@@ -152,7 +152,7 @@ Generic SQL コネクタを作成するには、**[同期サービス]** で **[
 ![グローバルパラメーター3](./media/active-directory-aadconnectsync-connector-genericsql/any-option.png)
 
 >[!IMPORTANT]
- 2017 年 5 月の時点で、“*” (別名、**任意のオプション**) が変更され、インポートおよびエクスポート フローをサポートするようになりました。 このオプションを使用する場合、複数値のテーブル/ビューに、オブジェクトの種類を含む属性を追加する必要があります。
+ 2017 年 5 月の時点で、"\*" (別名、**任意のオプション**) が変更され、インポートおよびエクスポート フローをサポートするようになりました。 このオプションを使用する場合、複数値のテーブル/ビューに、オブジェクトの種類を含む属性を追加する必要があります。
 
 ![](./media/active-directory-aadconnectsync-connector-genericsql/any-02.png)
 

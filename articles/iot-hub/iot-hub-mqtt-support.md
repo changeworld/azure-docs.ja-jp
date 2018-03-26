@@ -1,25 +1,25 @@
 ---
-title: "Azure IoT Hub の MQTT サポートについて | Microsoft Docs"
-description: "開発者ガイド - MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。"
+title: Azure IoT Hub の MQTT サポートについて | Microsoft Docs
+description: 開発者ガイド - MQTT プロトコルを使用して IoT Hub デバイスに接続されているエンドポイントに接続するデバイスのサポート。 Azure IoT デバイス SDK での組み込み MQTT サポートについての情報も含まれます。
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1d71c27c-b466-4a40-b95b-d6550cf85144
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/19/2018
+ms.date: 03/05/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a22c20a26ee4750c79c23fbba69de72a0084dfe7
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 9acda980583319414cc9e8668424907947a257db
+ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/13/2018
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -100,6 +100,8 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 
 MQTT の接続パケットおよび切断パケットの場合、IoT Hub は **操作の監視** チャネルでイベントを発行します。 このイベントには、接続の問題をトラブルシューティングするために役立つ追加情報があります。
 
+デバイス アプリは、**CONNECT** パケットに **Will** メッセージを指定できます。 また、デバイス アプリは、`devices/{device_id}/messages/events/{property_bag}` または `devices/{device_id}/messages/events/{property_bag}` を **Will** トピック名として使用することで、テレメトリ メッセージとして転送される **Will** メッセージ を定義する必要があります。 この場合、ネットワーク接続が閉じているが、**DISCONNECT** パケットがデバイスからまだ受信されていなければ、IoT Hub は、**CONNECT** パケットで提供される **Will** メッセージをテレメトリ チャネルに送信します。 テレメトリ チャネルは、既定の**イベント** エンドポイントにすることも、IoT Hub ルーティングで定義されるカスタム エンドポイントにすることもできます。 メッセージには **iothub-MessageType** プロパティが含まれており、その値には **Will** が割り当てられています。
+
 ### <a name="tlsssl-configuration"></a>TLS または SSL の構成
 
 MQTT プロトコルを直接使用するには、クライアントは TLS または SSL 経由で接続する "*必要があります*"。 この手順をスキップすると、接続エラーで失敗します。
@@ -165,7 +167,7 @@ RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-en
 > [!NOTE]
 > この `{property_bag}` 要素は、HTTPS プロトコルでクエリ文字列に使用したのと同じエンコーディングを使用します。
 
-また、デバイス アプリは、`devices/{device_id}/messages/events/{property_bag}` を **Will トピック名**として使用することで、テレメトリ メッセージとして転送される "*Will メッセージ*" を定義することもできます。
+IoT Hub 実装固有のビヘイビアーのリストを以下に示します。
 
 * IoT Hub では、QoS 2 メッセージはサポートされません。 デバイス アプリから **QoS 2** を使用したメッセージが発行されると、IoT Hub はネットワーク接続を閉じます。
 * IoT Hub では、Retain メッセージは保持されません。 デバイスが **RETAIN** フラグを 1 に設定してメッセージを送信すると、IoT Hub はそのメッセージに **x-opt-retain** アプリケーション プロパティを追加します。 この場合、IoT Hub は、Retain メッセージを保持するのではなく、バックエンド アプリにそのメッセージを渡します。
@@ -209,7 +211,7 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 使用できる状態コードは次のとおりです。
 
-|状態 | 説明 |
+|状態 | [説明] |
 | ----- | ----------- |
 | 200 | 成功 |
 | 429 | 要求が多すぎます (スロットル)。[IoT Hub スロットル][lnk-quotas]に関するページを参照してください。 |
@@ -238,7 +240,7 @@ IoT Hub のデバイス ツインで報告されるプロパティをデバイ�
 
 使用できる状態コードは次のとおりです。
 
-|状態 | 説明 |
+|状態 | [説明] |
 | ----- | ----------- |
 | 200 | 成功 |
 | 400 | 正しくない要求。 無効な形式の JSON |
