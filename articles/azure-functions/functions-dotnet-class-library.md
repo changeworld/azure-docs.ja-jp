@@ -364,8 +364,8 @@ public static class IBinderExampleMultipleAttributes
         log.Info($"CreateBlobInDifferentStorageAccount function processed: {myQueueItem}");
         var attributes = new Attribute[]
         {
-        new BlobAttribute($"samples-output/{myQueueItem}", FileAccess.Write),
-        new StorageAccountAttribute("MyStorageAccount")
+            new BlobAttribute($"samples-output/{myQueueItem}", FileAccess.Write),
+            new StorageAccountAttribute("MyStorageAccount")
         };
         using (var writer = await binder.BindAsync<TextWriter>(attributes))
         {
