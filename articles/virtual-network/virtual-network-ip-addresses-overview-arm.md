@@ -1,11 +1,11 @@
 ---
-title: "Azure における IP アドレスの種類 | Microsoft Docs"
-description: "Azure でのパブリックおよびプライベート IP アドレスについて説明します。"
+title: Azure における IP アドレスの種類 | Microsoft Docs
+description: Azure でのパブリックおよびプライベート IP アドレスについて説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 610b911c-f358-4cfe-ad82-8b61b87c3b7e
 ms.service: virtual-network
@@ -125,10 +125,10 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
-| 仮想マシン |Linux |はい |あり |
-| インターネットに接続するロード バランサー |フロント エンド構成 |あり |はい |
+| 仮想マシン |Linux |はい |はい |
+| インターネットに接続するロード バランサー |フロント エンド構成 |はい |はい |
 | VPN Gateway |ゲートウェイ IP の構成 |はい |いいえ |
-| フロント エンド |フロント エンド構成 |あり |いいえ |
+| フロント エンド |フロント エンド構成 |はい |いいえ |
 
 ## <a name="private-ip-addresses"></a>プライベート IP アドレス
 プライベート IP アドレスを使用すると、Azure リソースは、インターネットが到達可能な IP アドレスを使用せずに、 [仮想ネットワーク](virtual-networks-overview.md) の他のリソース、あるいはオンプレミスのネットワーク (VPN ゲートウェイまたは ExpressRoute 回線経由) と通信することができます。
@@ -174,8 +174,8 @@ Azure で管理される DNS サーバーで構成されている仮想マシン
 | 最上位リソース | IP アドレスの関連付け | 動的 | 静的 |
 | --- | --- | --- | --- |
 | 仮想マシン |Linux |はい |はい |
-| Load Balancer |フロント エンド構成 |あり |はい |
-| フロント エンド |フロント エンド構成 |あり |はい |
+| Load Balancer |フロント エンド構成 |はい |はい |
+| フロント エンド |フロント エンド構成 |はい |はい |
 
 ## <a name="limits"></a>制限
 IP アドレス指定に対する制限は、Azure の[ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#networking-limits)の完全なセットに示されています。 この制限は、リージョンとサブスクリプションごとに存在します。 ビジネス上のニーズに基づいて既定の制限を上限まで引き上げるには、 [サポートにお問い合わせください](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) 。

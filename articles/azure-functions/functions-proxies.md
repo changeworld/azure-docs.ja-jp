@@ -1,6 +1,6 @@
 ---
 title: Azure Functions でのプロキシの操作 | Microsoft Docs
-description: Azure Functions Proxies の使用方法の概要
+description: Azure Functions プロキシ の使用方法の概要
 services: functions
 documentationcenter: ''
 author: alexkarcher-msft
@@ -22,7 +22,7 @@ ms.lasthandoff: 03/16/2018
 ---
 # <a name="work-with-azure-functions-proxies"></a>Azure Functions プロキシの操作
 
-この記事では、Azure Functions Proxies を構成および操作する方法について説明します。 この機能を使用すると、他のリソースによって実装される、関数アプリのエンドポイントを指定することができます。 これらのプロキシを使用して、大きな API を複数の関数アプリに分割できます (マイクロサービス アーキテクチャでのように)。その場合でも、クライアントには単一の API サーフェスとして表示されます。
+この記事では、Azure Functions プロキシ を構成および操作する方法について説明します。 この機能を使用すると、他のリソースによって実装される、関数アプリのエンドポイントを指定することができます。 これらのプロキシを使用して、大きな API を複数の関数アプリに分割できます (マイクロサービス アーキテクチャでのように)。その場合でも、クライアントには単一の API サーフェスとして表示されます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
