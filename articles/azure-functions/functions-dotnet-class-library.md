@@ -1,4 +1,4 @@
----
+﻿---
 title: Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)
 description: C# を使用して Azure Functions を開発する方法について説明します。
 services: functions
