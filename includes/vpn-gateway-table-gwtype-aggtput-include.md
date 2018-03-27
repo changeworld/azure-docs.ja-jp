@@ -1,5 +1,19 @@
-Azure では、次の VPN ゲートウェイ SKU を提供しています。
-
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: c9457e51858d4a073d8baffdd435c8100d95d566
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 |**SKU**   | **S2S/VNet 間<br>トンネル** | **P2S<br>接続** | **合計<br>スループット ベンチマーク** |
 |---       | ---                             | ---                    | ---                         |
 |**VpnGw1**| 最大 30                         | 最大 128               | 650 Mbps                    |
@@ -13,3 +27,5 @@ Azure では、次の VPN ゲートウェイ SKU を提供しています。
 - 料金情報については、[価格](https://azure.microsoft.com/pricing/details/vpn-gateway)に関するページをご覧ください。
 
 - SLA (サービス レベル アグリーメント) 情報は [SLA](https://azure.microsoft.com/support/legal/sla/vpn-gateway/) のページで確認できます。
+
+- VpnGw1、VpnGw2、および VpnGw3 は、Resource Manager デプロイメント モデルを使用する VPN ゲートウェイでのみサポートされます。

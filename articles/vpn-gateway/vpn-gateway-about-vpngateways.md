@@ -1,11 +1,11 @@
 ---
-title: "VPN Gateway の概要: Azure 仮想ネットワークへのクロスプレミス VPN 接続を作成する | Microsoft Docs"
-description: "この記事では、VPN Gateway の概要のほか、インターネット経由の VPN 接続を使用して Azure 仮想ネットワークに接続する方法について説明します。 基本的な接続構成の図が含まれています。"
+title: 'VPN Gateway の概要: Azure 仮想ネットワークへのクロスプレミス VPN 接続を作成する | Microsoft Docs'
+description: この記事では、VPN Gateway の概要のほか、インターネット経由の VPN 接続を使用して Azure 仮想ネットワークに接続する方法について説明します。 基本的な接続構成の図が含まれています。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: 2358dd5a-cd76-42c3-baf3-2f35aadc64c8
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/16/2018
+ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: dadddeaac2a7856f8e249db981b018de070e1f3f
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: ef6d61e9dfc7c30910d897478f07dabc14136b48
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="about-vpn-gateway"></a>VPN Gateway について
 
@@ -53,12 +53,15 @@ VPN ゲートウェイを構成する手順は、仮想ネットワークの作�
 
 次の表は、ソリューションに最適な接続オプションを決定するのに役立ちます。
 
-[!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
-
+[!INCLUDE [cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
 ## <a name="gwsku"></a>ゲートウェイの SKU
 
-[!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
+仮想ネットワーク ゲートウェイを作成するときは、使用するゲートウェイの SKU を指定します。 ワークロード、スループット、機能、および SLA の種類に基づいて、要件を満たす SKU を選択します。 サポートされる機能、実稼働環境と開発テスト環境、構成手順など、ゲートウェイ SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpn-gateway-settings.md#gwsku)」を参照してください。
+
+### <a name="benchmark"></a>各ゲートウェイ SKU のトンネル数、接続数、およびスループット
+
+[!INCLUDE [Aggregated throughput by SKU](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
 ## <a name="diagrams"></a>接続トポロジの図
 
@@ -86,7 +89,7 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 ### <a name="deployment-models-and-methods-for-site-to-site-and-multi-site"></a>サイト間接続とマルチサイト接続で使用できるデプロイメント モデルとデプロイ方法
 
-[!INCLUDE [vpn-gateway-table-site-to-site](../../includes/vpn-gateway-table-site-to-site-include.md)]
+[!INCLUDE [site-to-site and multi-site table](../../includes/vpn-gateway-table-site-to-site-include.md)]
 
 ## <a name="P2S"></a>ポイント対サイト (VPN over IKEv2 または SSTP)
 

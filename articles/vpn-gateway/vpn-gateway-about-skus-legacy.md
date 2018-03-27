@@ -1,25 +1,25 @@
 ---
-title: "従来の Azure 仮想ネットワーク ゲートウェイ SKU | Microsoft Docs"
-description: "以前の仮想ネットワーク ゲートウェイ SKU について説明します。"
+title: 従来の Azure 仮想ネットワーク VPN ゲートウェイ SKU | Microsoft Docs
+description: 古い仮想ネットワーク ゲートウェイ SKU (Basic、Standard、HighPerformance) を使用する方法。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
-manager: timlt
-editor: 
+manager: jpconnock
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/31/2017
+ms.date: 03/20/2018
 ms.author: cherylmc
-ms.openlocfilehash: d5127c7fa512bad49817fa4c8edf3a16ca2f7d60
-ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
+ms.openlocfilehash: 4feecb9c1e91e1bc6c66a610c092e7bf894886e5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
@@ -37,35 +37,29 @@ ms.lasthandoff: 11/01/2017
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 
-## <a name="resize"></a>ゲートウェイのサイズを変更する (ゲートウェイ SKU を変更する)
+## <a name="resize"></a>ゲートウェイのサイズを変更する
 
-同じ SKU ファミリ内のゲートウェイ SKU のサイズを変更することができます。 たとえば、Standard SKU の場合は、HighPerformance SKU にサイズ変更可能です。 古い SKU と新しい SKU ファミリとの間で VPN ゲートウェイのサイズを変更することはできません。 たとえば、Standard SKU を VpnGw2 SKU にすることはできません。
+使用しているゲートウェイのサイズを、同じ SKU ファミリ内のゲートウェイ SKU のサイズに変更できます。 たとえば、Standard SKU の場合は、HighPerformance SKU にサイズ変更可能です。 ただし、古い SKU と新しい SKU ファミリとの間で VPN ゲートウェイのサイズを変更することはできません。 たとえば、Standard SKU から VpnGw2 SKU にしたり、Basic SKU から VpnGw1 にしたりすることはできません。
 
->[!IMPORTANT]
->ゲートウェイのサイズを変更する場合、サイズの変更中にそのゲートウェイには 20 ～ 30 分のダウンタイムが発生します。
->
->
-
-クラシック デプロイメント モデルのゲートウェイ SKU のサイズを変更するには、次のコマンドを使用します。
+クラシック デプロイメント モデルのゲートウェイのサイズを変更するには、次のコマンドを使用します。
 
 ```powershell
 Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
 ```
 
-Resource Manager デプロイメント モデルのゲートウェイ SKU のサイズを変更するには、次のコマンドを使用します。
+Resource Manager デプロイメント モデルのゲートウェイのサイズを変更するには、PowerShell で次のコマンドを使用します。
 
 ```powershell
 $gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
 Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
 ```
+ゲートウェイのサイズ変更は、Azure Portal でも行うことができます。
 
-## <a name="migrate"></a>新しいゲートウェイ SKU に移行する
+## <a name="change"></a>新しいゲートウェイ SKU に変更する
 
-Resource Manager デプロイメント モデルで作業している場合は、新しいゲートウェイ SKU に移行することができます。 クラシック デプロイメント モデルで作業している場合は、新しい SKU に移行することはできません。したがって、引き続き従来の SKU を使用する必要があります。
+[!INCLUDE [Change to the new SKUs](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
-[!INCLUDE [Migrate SKU](../../includes/vpn-gateway-migrate-legacy-sku-include.md)]
-
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 新しいゲートウェイ SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 
