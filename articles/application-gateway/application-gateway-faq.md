@@ -1,6 +1,6 @@
----
-title: "Application Gateway に関してよく寄せられる質問 | Microsoft Docs"
-description: "このページでは、Azure Application Gateway に関してよく寄せられる質問の回答を紹介します"
+﻿---
+title: Application Gateway に関してよく寄せられる質問 | Microsoft Docs
+description: このページでは、Azure Application Gateway に関してよく寄せられる質問の回答を紹介します
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -94,7 +94,7 @@ Application Gateway でサポートされるパブリック IP アドレスは 1
 
 Application Gateway は IP 接続がある限り、仮想ネットワークの外部にあるインスタンスと通信できます。 内部 IP をバックエンド プールのメンバーとして使用する場合は、[VNET ピアリング](../virtual-network/virtual-network-peering-overview.md)または [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md) が必要です。
 
-**Q.Application Gateway サブネット内に他のリソースをデプロイできますか?**
+**Q.Application Gateway サブネット内に何か他にデプロイできるものはありますか?**
 
 いいえ。ただし、サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできます。
 

@@ -103,6 +103,8 @@
               href: hyper-v-vmm-architecture.md
     - name: アプリのディザスター リカバリー
       href: site-recovery-workload.md
+    - name: 復旧計画について
+      href: recovery-plan-overview.md
     - name: 移行について
       href: migrate-overview.md
     - name: Site Recovery を使用したロールベースのアクセス制御について
@@ -273,6 +275,12 @@
           items:
             - name: Azure へのディザスター リカバリー訓練を実行する
               href: site-recovery-test-failover-to-azure.md
+            - name: 復旧計画を設定する
+              href: site-recovery-create-recovery-plans.md
+            - name: 復旧計画に VMM スクリプトを追加する
+              href: hyper-v-vmm-recovery-script.md
+            - name: 復旧計画に Azure Runbook を追加する
+              href: site-recovery-runbook-automation.md
             - name: Azure へのフェールオーバーを実行する
               href: site-recovery-failover.md
             - name: Azure から Hyper-V へのフェールバック

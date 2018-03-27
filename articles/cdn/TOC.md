@@ -74,7 +74,9 @@
 ## [REST](/rest/api/cdn/)
 
 # リソース
-## [Azure CDN の POP の場所](cdn-pop-locations.md)
+## Azure CDN の POP の場所
+### [リージョン別の POP の場所](cdn-pop-locations.md)
+### [略称別の POP の場所](cdn-pop-abbreviations.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn)
 ## [料金](https://azure.microsoft.com/pricing/details/cdn/)

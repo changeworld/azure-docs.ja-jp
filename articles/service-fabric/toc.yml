@@ -131,6 +131,8 @@
           items:
             - name: アーキテクチャ
               href: service-fabric-reliable-actors-platform.md
+            - name: サービスレベルの機能の実装
+              href: service-fabric-reliable-actors-using.md
             - name: ライフサイクルとガベージ コレクション
               href: service-fabric-reliable-actors-lifecycle.md
             - name: 状態管理
@@ -389,7 +391,15 @@
               href: service-fabric-reliable-services-backup-restore.md
         - name: Reliable Actors サービスの構築
           items:
-            - name: 通知を送信する
+            - name: アクターの状態へのアクセス、保存、削除
+              href: service-fabric-reliable-actors-access-save-remove-state.md
+            - name: アクターの列挙
+              href: service-fabric-reliable-actors-enumerate.md
+            - name: アクターとその状態の削除
+              href: service-fabric-reliable-actors-delete-actors.md
+            - name: アクターのバックアップおよび復元
+              href: service-fabric-reliable-actors-backup-and-restore.md
+            - name: アクター通知の送信
               href: service-fabric-reliable-actors-events.md
             - name: タイマーとアラームの設定
               href: service-fabric-reliable-actors-timers-reminders.md

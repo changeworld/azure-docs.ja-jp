@@ -131,6 +131,8 @@
   items:
     - name: Azure Stack のオペレーター ドキュメント
       href: /azure/azure-stack/
+    - name: ASDK のドキュメント
+      href: /azure/azure-stack/asdk/
 - name: リソース
   items:
     - name: Azure Stack のロードマップ

@@ -56,7 +56,10 @@
 #### [異なるデプロイメント モデル - 同じサブスクリプション](create-peering-different-deployment-models.md)
 #### [異なるデプロイメント モデル - 異なるサブスクリプション](create-peering-different-deployment-models-subscriptions.md)
 
-### [仮想ネットワーク サービスのエンドポイント](virtual-network-service-endpoints-configure.md)
+### Virtual Network サービスのエンドポイント
+#### [Azure Portal](tutorial-restrict-network-access-to-resources.md)
+#### [Azure PowerShell](tutorial-restrict-network-access-to-resources-powershell.md)
+#### [Azure CLI](tutorial-restrict-network-access-to-resources-cli.md)
 
 ### 仮想マシン
 #### [仮想マシン ネットワーク スループット](virtual-machine-network-throughput.md)
@@ -176,8 +179,12 @@
 ### [VM 間の接続に関する問題](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 ### [SMTP バナー チェック用の PTR の構成](create-ptr-for-smtp-service.md)
 
+## サンプルのスクリプト
+### [Azure CLI](cli-samples.md)
+### [Azure PowerShell](powershell-samples.md)
+
 # リファレンス
-## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=virtual-network)
 ## [Azure PowerShell (Resource Manager)](/powershell/module/azurerm.network)
 ## [Azure PowerShell (クラシック)](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)

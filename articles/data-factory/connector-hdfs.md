@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Factory を使用して HDFS からデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HDFS ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。"
+title: Azure Data Factory を使用して HDFS からデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、クラウドまたはオンプレミスの HDFS ソースからサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
@@ -247,7 +247,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 * オプション 1: [セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる](#kerberos-join-realm)
 * オプション 2: [Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm">オプション 1: セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる</a>
+### <a name="kerberos-join-realm"></a>オプション 1: セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる
 
 #### <a name="requirements"></a>必要条件
 
@@ -333,7 +333,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.  **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、`RULE:[1:$1@$0](.*@AD.COM)s/@.*//` を追加します。
+3.  **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、を追加します`RULE:[1:$1@$0](.*@AD.COM)s/@.*//`。
 
 **ドメイン コントローラーで、以下を実行します。**
 
@@ -362,11 +362,11 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 4.  Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
 
-    1. 管理ツールを起動し、**[Active Directory ユーザーとコンピュータ]** を選択します。
+    1. 管理ツールを起動し、**Active Directory ユーザーとコンピュータを選択します**。
 
     2. **[ビュー]**  >  **[高度な機能]** をクリックして、高度な機能を構成します。
 
-    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **[名前のマッピング]**を表示し、**[Kerberos 名]** タブをクリックします。
+    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **名前のマッピング**を表示し、**Kerberos 名** タブをクリックします。
 
     4. 領域からプリンシパルを追加します。
 

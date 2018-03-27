@@ -77,11 +77,15 @@
           href: search-performance-optimization.md
     - name: セキュリティ
       items:
-        - name: データと運用上のセキュリティ
+        - name: セキュリティの概要
           href: search-security-overview.md
-        - name: ID フィルターを使用したセキュリティ保護
+        - name: サービス キーの管理
+          href: search-security-api-keys.md
+        - name: ロール ベースの管理者アクセス
+          href: search-security-rbac.md
+        - name: セキュリティ フィルター
           href: search-security-trimming-for-azure-search.md
-        - name: Active Directory を使用したセキュリティ保護
+        - name: AAD の ID のフィルター処理
           href: search-security-trimming-for-azure-search-with-aad.md
     - name: 開発
       items:

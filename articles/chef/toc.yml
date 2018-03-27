@@ -1,0 +1,25 @@
+- name: Chef のドキュメント
+  href: index.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: '自動化: クイック スタート テンプレート'
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/chef-software.chef-automate?tab=Overview'
+- name: チュートリアル
+  items:
+    - name: VM の自動化
+      href: /azure/virtual-machines/windows/chef-automation
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 'ブログ: VSTS と Chef'
+      href: 'https://blog.chef.io/2017/05/10/integrate-chef-into-your-build-and-release-pipelines-with-microsoft-visual-studio-team-services/'
+    - name: Chef と Azure PS
+      href: 'https://docs.microsoft.com/powershell/module/azure/get-azurevmchefextension?view=azuresmps-4.0.0'
+    - name: Chef と VSTS
+      href: 'https://github.com/chef-partners/vsts-chef/wiki/Getting-Started'
+    - name: Chef サイト
+      href: 'https://www.chef.io'
+    - name: 'ビデオ: Chef と VSTS'
+      href: 'https://channel9.msdn.com/Events/TechDaysOnline/UK-TechDays-Online-2016/Release-Management-with-VSTS--integration-with-Azure--Chef-Deployment'

@@ -18,6 +18,7 @@
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
+## [Azure AD Connect Health のアラート カタログ](active-directory-aadconnect-health-alert-catalog.md)
 ## [GDPR コンプライアンスと Azure AD Connect Health](active-directory-aadconnect-health-gdpr.md)
 
 # 関連項目
