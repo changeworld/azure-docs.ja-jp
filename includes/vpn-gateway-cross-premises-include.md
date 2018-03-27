@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: fa9c27457b1da4d233aaea2a6621af9f5d01149d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 |  | **ポイント対サイト** | **サイト間** | **ExpressRoute** |
 | --- | --- | --- | --- |
 | **Azure でサポートされるサービス** |Cloud Services および Virtual Machines |Cloud Services および Virtual Machines |[サービス一覧](../articles/expressroute/expressroute-faqs.md#supported-services) |
@@ -10,4 +26,3 @@
 | **料金** |[料金](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[料金](https://azure.microsoft.com/pricing/details/vpn-gateway/) |[料金](https://azure.microsoft.com/pricing/details/expressroute/) |
 | **テクニカル ドキュメント** |[VPN Gateway のドキュメント](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[VPN Gateway のドキュメント](https://azure.microsoft.com/documentation/services/vpn-gateway/) |[ExpressRoute のドキュメント](https://azure.microsoft.com/documentation/services/expressroute/) |
 | **FAQ** |[VPN Gateway に関する FAQ](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[VPN Gateway に関する FAQ](../articles/vpn-gateway/vpn-gateway-vpn-faq.md) |[ExpressRoute の FAQ](../articles/expressroute/expressroute-faqs.md) |
-

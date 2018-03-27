@@ -162,10 +162,10 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 | --- | --- |
 | **Azure のストレージ アカウントの追加** |https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh. [HDInsight に Azure ストレージ アカウントを追加する](hdinsight-hadoop-add-storage.md) を参照してください。 |
 | **Hue のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh. [HDInsight クラスターでの Hue のインストールおよび使用](hdinsight-hadoop-hue-linux.md) に関する記事を参照してください。  |
-| **Presto のインストール** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh[HDInsight Hadoop クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md) を参照してください。 |
+| **Presto のインストール** |https://raw.githubusercontent.com/hdinsight/presto-hdinsight/master/installpresto.sh. [HDInsight Hadoop クラスターに Presto をインストールして使用する](hdinsight-hadoop-install-presto.md) を参照してください。 |
 | **Solr のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxsolrconfigactionv01/solr-installer-v01.sh。 [HDInsight クラスターに Solr をインストールして使用する](hdinsight-hadoop-solr-install-linux.md) をご覧ください。 |
 | **Giraph のインストール** |https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh. [HDInsight クラスターに Giraph をインストールして使用する](hdinsight-hadoop-giraph-install-linux.md) をご覧ください。 |
-| **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. [HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md)」 を参照してください。 |
+| **Hive ライブラリの事前読み込み** |https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh. [HDInsight クラスター作成時の Hive ライブラリの追加](hdinsight-hadoop-add-hive-libraries.md) を参照してください。 |
 | **Mono のインストールまたは更新** | https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash  [HDInsight での Mono のインストールまたは更新](hdinsight-hadoop-install-mono.md) を参照してください。 |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>クラスターの作成時にスクリプト アクションを使用する

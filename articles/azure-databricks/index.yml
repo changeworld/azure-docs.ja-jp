@@ -1,6 +1,6 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure Databricks プレビューのドキュメント
+title: Azure Databricks のドキュメント
 metadata:
   title: Azure Databricks のドキュメント - チュートリアル | Microsoft Docs
   description: ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。
@@ -11,13 +11,13 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 11/15/2017
+  ms.date: 03/19/2018
   ms.author: nitinme
-  ms.openlocfilehash: 8bbb8bb020c8c64e11d072729b59074a406a03ca
-  ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+  ms.openlocfilehash: 2c0bbbe6d9799258b983723c5d6980754a9908ae
+  ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
   ms.translationtype: HT
   ms.contentlocale: ja-JP
-  ms.lasthandoff: 03/17/2018
+  ms.lasthandoff: 03/23/2018
 abstract:
   description: ここで提供されるクイックスタートとその他のリンクを使用して、Azure Databricks の使用方法をご確認ください。 Azure Databricks は、Microsoft Azure クラウド サービス プラットフォームに最適化された Apache Spark ベースの分析プラットフォームです。 Apache Spark の創始者たちと共に設計され、Azure に統合された Databricks では、ワンクリックでのセットアップと効率的なワークフローのほか、データ サイエンティスト、データ エンジニア、ビジネス アナリストが共同作業できるインタラクティブなワークスペースが実現されています。
   aside:
@@ -41,6 +41,10 @@ sections:
         src: /azure/azure-databricks/media/index/portal.svg
       text: Azure ポータル
       href: /azure/azure-databricks/quickstart-create-databricks-workspace-portal
+    - image:
+        src: /azure/azure-databricks/media/index/logo_azure_resource_manager.svg
+      text: Resource Manager テンプレート
+      href: /azure/azure-databricks/quickstart-create-databricks-workspace-resource-manager-template
 - title: ステップバイステップのチュートリアル
   items:
   - type: paragraph
@@ -48,10 +52,15 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Azure Databricks を使用した、Event Hubs からのデータ ストリーミング</a>
-    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Azure Databricks と Cognitive Services を使用した感情分析</a>
-    - html: <a href="https://go.microsoft.com/fwlink/?linkid=864083" target="_blank">Azure Storage からのデータのインポート</a>
-    - hmtl: <a href="https://go.microsoft.com/fwlink/?linkid=864084" target="_blank">Import data from Azure Data Lake Store</a>
-    - html: <a href="https://docs.azuredatabricks.net/user-guide/notebooks/index.html" target="_blank">Notebook の使用</a>
-    - html: <a href="https://docs.azuredatabricks.net/user-guide/jobs.html" target="_blank">Spark ジョブの実行</a>
-    - html: <a href="https://docs.azuredatabricks.net/spark/latest/data-sources/index.html" target="_blank">Spark データ ソースの使用</a>
+    - html: <a href="/azure/azure-databricks/databricks-extract-load-sql-data-warehouse">データの抽出、変換、読み込み</a>
+    - html: <a href="/azure/azure-databricks/databricks-stream-from-eventhubs">Event Hubs からのデータのストリーム配信</a>
+    - html: <a href="/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services">Cognitive Services を使用した感情分析</a>
+    - html: <a href="https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html" target="_blank">HDInsight Kafka からのデータのストリーム配信</a>
+- title: リファレンス
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: REST ()
+      html: <p><a href="/rest/api/databricks">REST API</a></p>

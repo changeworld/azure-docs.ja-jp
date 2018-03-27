@@ -7,6 +7,8 @@
 ## [Azure DNS による DNS 委任](dns-domain-delegation.md)
 ## [DNS に関する FAQ](dns-faq.md)
 ## [プライベート DNS ゾーンの使用](private-dns-overview.md)
+## [プライベート DNS のシナリオ](private-dns-scenarios.md)
+
 
 # 作業の開始
 
@@ -17,6 +19,7 @@
 
 ## プライベート DNS ゾーンとレコードの作成
 ### [PowerShell](private-dns-getstarted-powershell.md)
+### [Azure CLI](private-dns-getstarted-cli.md)
 ## [Azure DNS にドメインを委任する](dns-delegate-domain-azure-dns.md)
 ## [Web アプリのカスタム DNS レコードの作成](dns-web-sites-custom-domain.md)
 
@@ -52,7 +55,7 @@
 ## [Azure CLI](/cli/azure/network/dns)
 ## [.NET](/dotnet/api/microsoft.azure.management.dns.models)
 ## [Java](/java/api/com.microsoft.azure.management.dns)
-## [Node.js](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
+## [Node.JS](http://azure.github.io/azure-sdk-for-node/azure-arm-dns/latest/)
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_dns/0.8.0)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-dns.html)
 ## [REST](/rest/api/dns/)

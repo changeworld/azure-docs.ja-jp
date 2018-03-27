@@ -6,18 +6,14 @@
       href: azure-stack-poc.md
     - name: リリース ノート
       items:
-        - name: Development Kit のリリース ノート
-          href: azure-stack-asdk-release-notes.md
-        - name: 統合システムのリリース ノート
-          items:
-            - name: 1802 更新プログラム
-              href: azure-stack-update-1802.md
-            - name: 1712 更新プログラム
-              href: azure-stack-update-1712.md
-            - name: 1711 更新プログラム
-              href: azure-stack-update-1711.md
-            - name: 1710 更新プログラム
-              href: azure-stack-update-1710.md
+        - name: 1802 更新プログラム
+          href: azure-stack-update-1802.md
+        - name: 1712 更新プログラム
+          href: azure-stack-update-1712.md
+        - name: 1711 更新プログラム
+          href: azure-stack-update-1711.md
+        - name: 1710 更新プログラム
+          href: azure-stack-update-1710.md
 - name: クイック スタート
   expanded: true
   items:
@@ -67,8 +63,6 @@
               href: validate-pki-certs.md
         - name: ID の統合
           href: azure-stack-integrate-identity.md
-        - name: Azure Stack の登録
-          href: azure-stack-registration.md
         - name: 外部の監視
           href: azure-stack-integrate-monitor.md
         - name: セキュリティの統合
@@ -77,30 +71,14 @@
       href: azure-stack-servicing-policy.md
     - name: 主要機能および概念
       href: azure-stack-key-features.md
-    - name: Development Kit のアーキテクチャ
-      href: azure-stack-architecture.md
     - name: 管理の基本
       href: azure-stack-manage-basics.md
 - name: ハウツー ガイド
   items:
-    - name: ASDK のデプロイ
-      items:
-        - name: 前提条件
-          href: azure-stack-deploy.md
-        - name: テレメトリ
-          href: azure-stack-telemetry.md
-        - name: デプロイ
-          href: azure-stack-run-powershell-script.md
-        - name: PowerShell をインストールする
-          href: azure-stack-powershell-install.md
-        - name: Register
-          href: azure-stack-register.md
-        - name: Azure Stack への接続
-          href: azure-stack-connect-azure-stack.md
-        - name: 既定のイメージの追加
-          href: azure-stack-add-default-image.md
-        - name: テスト VM の作成
-          href: azure-stack-provision-vm.md
+    - name: テレメトリの収集の構成
+      href: azure-stack-telemetry.md
+    - name: Azure Stack の登録
+      href: azure-stack-registration.md
     - name: '[管理]'
       items:
         - name: リージョンの管理
@@ -246,7 +224,7 @@
               href: azure-stack-app-service-add-worker-roles.md
             - name: デプロイ ソースを構成する
               href: azure-stack-app-service-configure-deployment-sources.md
-            - name: App Service 更新プログラム 1 のリリース ノート
+            - name: App Service on Azure Stack Update 1 のリリース ノート
               href: azure-stack-app-service-release-notes-update-one.md
         - name: Marketplace の設定
           items:
@@ -318,6 +296,8 @@
   items:
     - name: Azure Stack のユーザー ドキュメント
       href: /azure/azure-stack/user/
+    - name: ASDK のドキュメント
+      href: /azure/azure-stack/asdk/
 - name: リソース
   items:
     - name: Azure Stack のロードマップ

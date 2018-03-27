@@ -41,6 +41,7 @@
 ### [Twitter センチメントの分析](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [リアルタイムでの不正検出](stream-analytics-real-time-fraud-detection.md)
 ### [IoT Edge でのジョブの実行](stream-analytics-edge.md) 
+### [料金所のセンサー データの分析](stream-analytics-build-an-iot-solution-using-stream-analytics.md)
 ### [JavaScript UDA の実行](stream-analytics-javascript-user-defined-aggregates.md)
 ### [高頻度取引](stream-analytics-high-frequency-trading.md)
 ### [Azure Functions の実行](stream-analytics-with-azure-functions.md)

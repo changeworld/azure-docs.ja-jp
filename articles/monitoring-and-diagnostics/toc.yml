@@ -7,7 +7,7 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: メトリックの条件に基づくアラート
+    - name: メトリックの条件に基づくアラート (クラシック)
       href: monitor-quick-resource-metric-alert-portal.md
     - name: サブスクリプションのアクティビティに基づくアラート
       href: monitor-quick-audit-notify-action-in-subscription.md
@@ -21,66 +21,45 @@
   items:
     - name: 監視データのソース
       href: monitoring-data-sources.md
+    - name: Azure Monitor
+      href: monitoring-overview-azure-monitor.md
+    - name: メトリック
+      href: monitoring-overview-metrics.md
+    - name: Autoscale
+      href: monitoring-overview-autoscale.md
+    - name: 診断ログ
+      href: monitoring-overview-of-diagnostic-logs.md
+    - name: アクティビティ ログ
+      href: monitoring-overview-activity-logs.md
+    - name: アラート
+      href: monitoring-overview-unified-alerts.md
+    - name: アラート (クラシック)
+      href: monitoring-overview-alerts.md
+    - name: ログ アラート
+      href: monitor-alerts-unified-log.md
+    - name: アクティビティ ログ アラート (プレビュー)
+      href: monitoring-activity-log-alerts-new-experience.md
+    - name: OMS から Azure にアラートを拡張する
+      href: monitoring-alerts-extend.md
+    - name: アクション グループ
+      href: monitoring-action-groups.md
+    - name: Azure 診断拡張機能
+      href: azure-diagnostics.md
     - name: ロールのアクセス許可とセキュリティ
       href: monitoring-roles-permissions-security.md
     - name: パートナー統合
       href: monitoring-partners.md
-    - name: その他の概要
-      items:
-        - name: Azure Monitor
-          href: monitoring-overview-azure-monitor.md
-        - name: メトリック
-          href: monitoring-overview-metrics.md
-        - name: アラート
-          href: monitoring-overview-alerts.md
-        - name: アラート (プレビュー)
-          href: monitoring-overview-unified-alerts.md
-        - name: ログ アラート
-          href: monitor-alerts-unified-log.md
-        - name: Autoscale
-          href: monitoring-overview-autoscale.md
-        - name: アクティビティ ログ
-          href: monitoring-overview-activity-logs.md
-        - name: アクティビティ ログ アラート (プレビュー)
-          href: monitoring-activity-log-alerts-new-experience.md
-        - name: アクション グループ
-          href: monitoring-action-groups.md
-        - name: 診断ログ
-          href: monitoring-overview-of-diagnostic-logs.md
-        - name: Azure 診断拡張機能
-          href: azure-diagnostics.md
-    - name: スキーマ
-      items:
-        - name: Azure 診断拡張機能のスキーマ
-          href: azure-diagnostics-schema.md
-          items:
-            - name: 1
-              href: azure-diagnostics-schema-1dot0.md
-            - name: 1.2
-              href: azure-diagnostics-schema-1dot2.md
-            - name: 1.3 以降
-              href: azure-diagnostics-schema-1dot3-and-later.md
 - name: ハウツー ガイド
   items:
-    - name: チュートリアル
-      items:
-        - name: Azure Monitor のチュートリアル
-          href: monitoring-get-started.md
-        - name: 自動スケールのチュートリアル
-          href: monitoring-autoscale-get-started.md
-        - name: 多次元メトリックス エクスプローラー
-          href: monitoring-metric-charts.md
-        - name: Azure CLI 1.0 のサンプル
-          href: insights-cli-samples.md
-        - name: Azure PowerShell のサンプル
-          href: insights-powershell-samples.md
+    - name: Azure Monitor のチュートリアル
+      href: monitoring-get-started.md
     - name: アラートの使用
       items:
-        - name: Azure Portal でほぼリアルタイムのアラートを構成する
+        - name: Azure Portal で新しいアラートを構成する
           href: monitoring-near-real-time-metric-alerts.md
-        - name: Azure Portal でアラートを構成する
+        - name: Azure Portal でクラシック アラートを構成する
           href: insights-alerts-portal.md
-        - name: Azure Portal でアラート (プレビュー) のメトリックまたはログ アラートを構成する
+        - name: Azure Portal でメトリックまたはログのアラートを構成する
           href: monitor-alerts-unified-usage.md
         - name: CLI を使用してアラートを構成する
           href: insights-alerts-command-line-interface.md
@@ -90,8 +69,12 @@
           href: monitor-alerts-unified-log-webhook.md
         - name: Resource Manager テンプレートでのメトリック アラートの作成
           href: monitoring-enable-alerts-using-template.md
+        - name: OMS から Azure へのアラート拡張の開始
+          href: monitoring-alerts-extend-tool.md
     - name: 自動スケールの使用
       items:
+        - name: 自動スケールのチュートリアル
+          href: monitoring-autoscale-get-started.md
         - name: 自動スケール設定について
           href: monitoring-understanding-autoscale-settings.md
         - name: ベスト プラクティス
@@ -142,7 +125,7 @@
           href: monitoring-create-action-group-with-resource-manager-template.md
     - name: 診断ログの使用
       items:
-        - name: Archive
+        - name: アーカイブ
           href: monitoring-archive-diagnostic-logs.md
         - name: Log Analytics への送信
           href: monitor-stream-diagnostic-logs-log-analytics.md
@@ -151,10 +134,6 @@
         - name: Resource Manager テンプレートを使用して診断設定を有効にする
           href: monitoring-enable-diagnostic-logs-using-template.md
     - name: REST API の使用
-      items:
-        - name: REST API を使用したチュートリアル
-          href: monitoring-rest-api-walkthrough.md
-    - name: Azure 診断拡張機能の使用
       items:
         - name: Application Insights への送信
           href: azure-diagnostics-configure-application-insights.md
