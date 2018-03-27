@@ -1,0 +1,21 @@
+- name: OpenShift のドキュメント
+  href: index.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: 'OpenShift: コミュニティ テンプレート'
+      href: 'https://azure.microsoft.com/en-us/resources/templates/openshift-origin-rhel/'
+- name: チュートリアル
+  items:
+    - name: Azure VM へのデプロイ
+      href: /azure/virtual-machines/linux/openshift-get-started
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: OpenShift コンテナー テンプレート
+      href: 'https://github.com/Microsoft/openshift-container-platform'
+    - name: OpenShift Origin
+      href: 'https://docs.openshift.org/latest/getting_started/index.html'
+    - name: OpenShift サイト
+      href: 'https://docs.openshift.org/latest/welcome/index.html'

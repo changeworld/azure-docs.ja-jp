@@ -66,7 +66,7 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [作業開始](active-directory-b2c-get-started-custom.md)
+### [作業の開始](active-directory-b2c-get-started-custom.md)
 ### OIDC/OAUTH プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
@@ -91,7 +91,8 @@
 #### [パスワードの複雑さ](active-directory-b2c-reference-password-complexity-custom.md)
 #### [パスワードの変更](active-directory-b2c-reference-password-change-custom.md)
 #### [[サインインしたままにする] を有効にする](active-directory-b2c-reference-kmsi-custom.md)
-### トラブルシューティング
+### トラブルシューティングとイベント ログ
+#### [Application Insights を使ったカスタム イベントの作成](active-directory-b2c-custom-guide-eventlogger-appins.md)
 #### [Application Insights を使用したログの収集](active-directory-b2c-troubleshoot-custom.md)
 ## リファレンス
 ### [リリース ノート](active-directory-b2c-developer-notes-custom.md)

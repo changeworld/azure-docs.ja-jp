@@ -7,20 +7,40 @@
 - name: クイック スタート
   expanded: true
   items:
-    - name: Databricks ワークスペースの作成
+    - name: Databricks ワークスペースの作成 - ポータル
       href: quickstart-create-databricks-workspace-portal.md
+    - name: Databricks ワークスペースの作成 - Resource Manager テンプレート
+      href: quickstart-create-databricks-workspace-resource-manager-template.md
 - name: チュートリアル
   items:
+    - name: ETL 操作の実行
+      href: databricks-extract-load-sql-data-warehouse.md
     - name: Event Hubs を使用したデータのストリーミング
       href: databricks-stream-from-eventhubs.md
     - name: Cognitive Services を使用した感情分析
       href: databricks-sentiment-analysis-cognitive-services.md
+    - name: HDInsight Kafka からのデータのストリーム配信
+      href: 'https://docs.azuredatabricks.net/spark/latest/structured-streaming/kafka.html'
 - name: ハウツー ガイド
   items:
+    - name: Spark クラスターの作成
+      href: 'https://docs.azuredatabricks.net/user-guide/clusters/index.html'
+    - name: Notebook の使用
+      href: 'https://docs.azuredatabricks.net/user-guide/notebooks/index.html'
+    - name: Spark ジョブの実行
+      href: 'https://docs.azuredatabricks.net/user-guide/jobs.html'
+    - name: データ ソースへの接続
+      href: databricks-connect-to-data-sources.md
     - name: Excel、R、Python を使用した接続
       href: connect-databricks-excel-python-r.md
     - name: Azure Cloud Shell からの Databricks CLI の使用
       href: databricks-cli-from-azure-cloud-shell.md
+    - name: BI ツールの使用
+      href: 'https://docs.azuredatabricks.net/user-guide/bi/index.html'
+- name: リファレンス
+  items:
+    - name: REST API
+      href: /rest/api/databricks
 - name: リソース
   items:
     - name: 一般的な質問

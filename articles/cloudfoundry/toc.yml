@@ -1,0 +1,27 @@
+- name: Cloud Foundry のドキュメント
+  href: index.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Marketplace テンプレート
+      href: 'https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry'
+- name: チュートリアル
+  items:
+    - name: CF アプリを Azure にデプロイする
+      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+    - name: Azure での Cloud Foundry
+      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+    - name: CF OMS Nozzle のデプロイ
+      href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Cloud Foundry サイト
+      href: 'https://docs.cloudfoundry.org/'
+    - name: Azure への CF のインストール
+      href: 'https://docs.pivotal.io/pivotalcf/1-11/customizing/pcf_azure.html'
+    - name: Pivotal と Azure
+      href: 'https://pivotal.io/partners/microsoft'
+    - name: CF 用の VSTS プラグイン
+      href: 'https://github.com/Microsoft/vsts-cloudfoundry'

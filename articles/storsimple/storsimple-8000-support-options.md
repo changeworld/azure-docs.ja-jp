@@ -120,7 +120,7 @@ StorSimple 8000 シリーズ ストレージ アレイのサポートは、StorS
 
 *<text> * Premium の範囲は、すべての場所で使用可能なわけではありません。StorSimple Premium サポートを購入する前に、地理的範囲について、Microsoft (SSSupOps@microsoft.com) にお問い合わせください。*
 
-**\*お客様が Premium StorSimple サポートに無料アップグレードできるようにするには、StorSimple アプライアンスを、お客様が Premier サポートの対象である地域にデプロイする必要があります。*
+** *お客様が Premium StorSimple サポートに無料アップグレードできるようにするには、StorSimple アプライアンスを、お客様が Premier サポートの対象である地域にデプロイする必要があります。*
 
 
 ASAP+ のお客様は、Standard サポートが含まれるサブスクリプション モデルに切り替えることができます。 サブスクリプションの価格を確認するには、StorSimple 料金計算ツールを使用してください。何かご質問がありましたら、SSSupOps@microsoft.com までお問い合わせください。 切り替えは、ASAP+ からサブスクリプションへの 1 方向のみです。

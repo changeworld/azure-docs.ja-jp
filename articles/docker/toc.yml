@@ -1,0 +1,33 @@
+- name: Docker のドキュメント
+  href: index.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Docker Marketplace テンプレート
+      href: 'https://azuremarketplace.microsoft.com/en-us/marketplace/apps/CanonicalandMSOpenTech.DockerOnUbuntuServer1404LTS'
+- name: チュートリアル
+  items:
+    - name: Docker と PostgreSQL を使用した Python Web アプリ
+      href: /azure/app-service-web/app-service-web-tutorial-docker-python-postgresql-app
+    - name: Docker Swarm と VSTS を使用した CI/CD
+      href: /azure/container-service/container-service-docker-swarm-mode-setup-ci-cd-acs-engine
+    - name: Docker、Jenkins、Linux を使用した CI/CD
+      href: /azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd
+- name: ハウツー ガイド
+  items:
+    - name: Docker VM 拡張機能
+      href: /azure/virtual-machines/linux/dockerextension
+    - name: Docker マシン
+      href: /azure/virtual-machines/linux/docker-machine
+    - name: Docker コンテナー レジストリ
+      href: /azure/container-registry/container-registry-get-started-portal
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Docker の Azure ドライバー
+      href: 'https://docs.docker.com/machine/drivers/azure/'
+    - name: Docker for Azure サイト
+      href: 'https://www.docker.com/docker-azure'
+    - name: Docker サイト
+      href: 'https://docker.com'

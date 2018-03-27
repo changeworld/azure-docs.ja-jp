@@ -237,8 +237,6 @@
                   href: sql-api-python-samples.md
             - name: リソース
               items:
-                - name: SQL の文法チート シート
-                  href: sql-api-sql-query-cheat-sheet.md
                 - name: ビデオ
                   href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: サービスの更新情報
@@ -435,6 +433,8 @@
           href: graph-sdk-dotnet.md
 - name: リソース
   items:
+    - name: クエリ チート シート
+      href: query-cheat-sheet.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Azure Cosmos DB を無料で試す

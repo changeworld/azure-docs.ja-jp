@@ -236,6 +236,7 @@
 ## [REST](/rest/api/media/mediaservice)
 ## 仕様
 ### [ライブ取り込み - フラグメント化 MP4 ライブ取り込みの仕様](media-services-fmp4-live-ingest-overview.md)
+### [ライブ取り込み - ライブ ストリーミングでの時限メタデータのシグナル発信](media-services-specifications-live-timed-metadata.md)
 ### [スムーズ ストリーミング HEVC](media-services-specifications-ms-sstr-ammendment-hevc.md)
 
 # リソース

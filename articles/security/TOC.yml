@@ -2,7 +2,7 @@
   href: index.md
 - name: アーキテクチャと設計
   href: azure-security.md
-  expanded: true
+  expanded: false
   items:
     - name: 高度な脅威検出
       href: azure-threat-detection.md
@@ -67,6 +67,8 @@
       items:
         - name: ベスト プラクティス
           href: azure-security-identity-management-best-practices.md
+        - name: サブスクリプション管理者に対する MFA の適用
+          href: azure-security-global-admin.md
     - name: ネットワークのセキュリティ
       href: security-network-overview.md
       items:
