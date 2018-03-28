@@ -1,25 +1,25 @@
 ---
-title: "Azure ExpressRoute 上のパブリック ピアリングの Microsoft ピアリングへの移行 | Microsoft Docs"
-description: "この記事では、ExpressRoute でパブリック ピアリングを Microsoft ピアリングに移行する手順を示します。"
+title: Azure ExpressRoute 上のパブリック ピアリングの Microsoft ピアリングへの移行 | Microsoft Docs
+description: この記事では、ExpressRoute でパブリック ピアリングを Microsoft ピアリングに移行する手順を示します。
 services: expressroute
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/09/2017
+ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4fd0f1cbba36957ae5ecc1b7436d1f1734a3ef79
-ms.sourcegitcommit: 6a22af82b88674cd029387f6cedf0fb9f8830afd
+ms.openlocfilehash: 02d7c3f587a4cbfb11fc3b6863f75ca30b4d6c51
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>パブリック ピアリングを Microsoft ピアリングに移行する
 
@@ -50,7 +50,7 @@ Microsoft ピアリングがまだ作成されていない場合は、次のい�
 
 Microsoft ピアリングが有効になっており、アドバタイズされたパブリック プレフィックスが構成された状態にあることを確認します。
 
-  * [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md#getmsft)
+  * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md#getmsft)
   * [Azure PowerShell](expressroute-howto-routing-arm.md#getmsft)
   * [Azure CLI](howto-routing-cli.md#getmsft)
 
@@ -73,7 +73,11 @@ Microsoft ピアリングが構成されており、消費するプレフィッ�
   * [Delete Azure public peering using Azure portal (Azure Portal を使用して Azure パブリック ピアリングを削除する)](expressroute-howto-routing-portal-resource-manager.md#deletepublic)
   * [Delete Azure public peering using Azure PowerShell (Azure PowerShell を使用して Azure パブリック ピアリングを削除する)](expressroute-howto-routing-arm.md#deletepublic)
   * [Delete Azure public peering using CLI (CLI を使用して Azure パブリック ピアリングを削除する)](howto-routing-cli.md#deletepublic)
+  
+## <a name="view"></a>5.ピアリングの表示
+  
+Azure Portal で、すべての ExpressRoute 回線とピアリングの一覧を表示できます。 詳細については、[Microsoft ピアリングの詳細表示](expressroute-howto-routing-portal-resource-manager.md#getmsft)に関するセクションをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

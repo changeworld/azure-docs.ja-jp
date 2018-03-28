@@ -94,8 +94,8 @@ Get-AzureStorageTableRowByColumnName -table $storageTable `
 |----|----|
 | userid | 1 |
 | username | Chris |
-| PartitionKey | partition1 |
-| RowKey      | CA |
+| パーティション キー | partition1 |
+| 行キー      | CA |
 
 #### <a name="retrieve-entities-using-a-custom-filter"></a>カスタム フィルターを使用したエンティティの取得 
 
@@ -104,7 +104,7 @@ Get-AzureStorageTableRowByColumnName -table $storageTable `
 ```powershell
 Get-AzureStorageTableRowByCustomFilter `
     -table $storageTable `
-    -customFilter "(userid eq '1')"
+    -customFilter "(userid eq 1)"
 ```
 
 このクエリは、1 つのレコードを取得します。
@@ -113,8 +113,8 @@ Get-AzureStorageTableRowByCustomFilter `
 |----|----|
 | userid | 1 |
 | username | Chris |
-| PartitionKey | partition1 |
-| RowKey      | CA |
+| パーティション キー | partition1 |
+| 行キー      | CA |
 
 ### <a name="updating-entities"></a>エンティティの更新 
 
@@ -148,8 +148,8 @@ Get-AzureStorageTableRowByCustomFilter -table $storageTable `
 |----|----|
 | userid | 2 |
 | username | Jessie2 |
-| PartitionKey | partition2 |
-| RowKey      | NM |
+| パーティション キー | partition2 |
+| 行キー      | NM |
 
 ### <a name="deleting-table-entities"></a>テーブル エンティティの削除
 
@@ -180,7 +180,7 @@ Get-AzureStorageTableRowAll -table $storageTable | ft
 テーブル内のすべてのエンティティを削除するには、それらのエンティティを取得し、結果を削除コマンドレットにパイプします。 
 
 ```powershell
-# Get all rows and pipe it into the remove cmdlet.
+# Get all rows and pipe the result into the remove cmdlet.
 Get-AzureStorageTableRowAll `
     -table $storageTable | Remove-AzureStorageTableRow -table $storageTable 
 

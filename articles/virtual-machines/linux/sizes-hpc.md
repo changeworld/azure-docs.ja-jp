@@ -1,25 +1,25 @@
 ---
-title: "Azure Linux VM のサイズ - HPC | Microsoft Docs"
-description: "Azure の Linux ハイ パフォーマンス コンピューティング仮想マシンで使用できるさまざまなサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。"
+title: Azure Linux VM のサイズ - HPC | Microsoft Docs
+description: Azure の Linux ハイ パフォーマンス コンピューティング仮想マシンで使用できるさまざまなサイズを一覧表示します。 このシリーズのストレージのスループットとネットワーク帯域幅に加え、vCPU、データ ディスク、NIC の数に関する情報を一覧表示します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: jonbeck7
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager,azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2017
+ms.date: 03/15/2018
 ms.author: jonbeck
-ms.openlocfilehash: cdfd09d90be9696dacc151e138920944c8bbd2c9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 5f867140981649b73bf6d0bc13eca539c7dc2209
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="high-performance-compute-virtual-machine-sizes"></a>ハイ パフォーマンス コンピューティング仮想マシンのサイズ
 
@@ -29,12 +29,11 @@ ms.lasthandoff: 02/09/2018
 
 [!INCLUDE [virtual-machines-common-a8-a9-a10-a11-specs](../../../includes/virtual-machines-common-a8-a9-a10-a11-specs.md)]
 
-## <a name="rdma-capable-instances"></a>RDMA 対応のインスタンス
-コンピューティング集中型インスタンス (H16r、H16mr、NC24r、A8、A9) のサブセットには、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 このインターフェイスは、標準の Azure ネットワーク インターフェイスと同様に、他の VM サイズでも利用可能です。 
-  
-このインターフェイスにより、RDMA 対応インスタンスは InfiniBand ネットワークを介して通信することができ、H16r、H16mr、および NC24r の仮想マシンでは FDR のレートで、A8 と A9 の仮想マシンでは QDR のレートで動作します。 これらの RDMA 機能により、Intel MPI 5.x でのみ、実行している Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。 Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure RDMA ドライバーと互換性がありません。
 
-RDMA 対応の VM を、同じ可用性セット (Azure Resource Manager デプロイメント モデルを使用している場合) または同じクラウド サービス (クラシック デプロイメント モデルを使用している場合) 内にデプロイします。 RDMA 対応の Linux VM が Azure RDMA ネットワークにアクセスするための追加の要件が発生します。
+### <a name="mpi"></a>MPI 
+
+Intel MPI 5.x バージョンのみがサポートされています。 Intel MPI ランタイム ライブラリの以降のバージョン (2017、2018) は、Azure Linux RDMA ドライバーと互換性がありません。
+
 
 ### <a name="distributions"></a>ディストリビューション
  
@@ -50,7 +49,7 @@ RDMA 接続をサポートする Azure Marketplace で、イメージの 1 つ�
   sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
   ```
     
-* **CentOS ベース HPC** - CentOS ベース 7.3 HPC, CentOS ベース 7.1 HPC、CentOS ベース 6.8 HPC、または CentOS ベース 6.5 HPC (H シリーズの場合、バージョン 7.1 以降が推奨されます)。 RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。  
+* **CentOS ベース HPC** - CentOS ベース 6.5 HPC 以降のバージョン (H シリーズの場合、バージョン 7.1 以降が推奨されます)。 RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。  
  
   > [!NOTE]
   > CentOS ベースの HPC イメージでは、 **yum** 構成ファイルでのカーネルの更新は無効にされています。 これは、Linux RDMA ドライバーが RPM パッケージとして配布されており、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があるためです。
@@ -63,7 +62,8 @@ RDMA 接続をサポートする Azure Marketplace で、イメージの 1 つ�
 ### <a name="network-topology-considerations"></a>ネットワーク トポロジに関する考慮事項
 * Azure の RDMA 対応 Linux VM の場合、Eth1 は RDMA のネットワーク トラフィック用に予約されています。 Eth1 設定や、このネットワークを参照する構成ファイル内の情報を変更しないでください。 Eth0 は Azure の通常のネットワーク トラフィック用に予約されています。
 
-* Azure では、IP over InfiniBand (IB) はサポートされません。 RDMA over IB のみがサポートされます。
+* Azure の RDMA ネットワークでは、アドレス空間 172.16.0.0/16 は予約済みです。 
+
 
 ## <a name="using-hpc-pack"></a>HPC Pack の使用
 [HPC Pack](https://technet.microsoft.com/library/jj899572.aspx) (Microsoft が無償で提供している HPC クラスターとジョブの管理ソリューション) は、Linux でコンピューティング集中型インスタンスを使用するための選択肢の 1 つです。 最新リリースの HPC Pack では、Azure VM にデプロイされ、Windows Server ヘッド ノードで管理されるコンピューティング ノードで、複数の Linux ディストリビューションを実行できるようになりました。 HPC Pack を使用すると、Intel MPI を実行する RDMA 対応 Linux コンピューティング ノードで、RDMA ネットワークにアクセスする MPI アプリケーションのスケジュール設定と実行が可能です。 「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](classic/hpcpack-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」を参照してください。

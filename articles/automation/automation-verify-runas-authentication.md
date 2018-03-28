@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation アカウントの構成を検証する | Microsoft Docs"
-description: "この記事では、Automation アカウントの構成が正しく設定されていることを確認する方法について説明します。"
+title: Azure Automation アカウントの構成を検証する
+description: この記事では、Automation アカウントの構成が正しく設定されていることを確認する方法について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 08/07/2017
-ms.author: magoedte
-ms.openlocfilehash: 1413b5d9625ebc2e3b2419f50e7e78be994d8d68
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+manager: carmonm
+ms.openlocfilehash: 5359a12d5b241eff80203c9e9bf04107ce4d3159
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="test-azure-automation-run-as-account-authentication"></a>Azure Automation 実行アカウントの認証をテストする
 Automation アカウントが正常に作成されたら、新しく作成または更新された Automation 実行アカウントを使用して Azure Resource Manager または Azure クラシック デプロイメントで正常に認証できることを確認する簡単なテストを実行できます。    

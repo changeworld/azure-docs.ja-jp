@@ -1,26 +1,21 @@
 ---
-title: "Azure SQL を参照する DNS エイリアス用の PowerShell | Microsoft Docs"
-description: "New-AzureRMSqlServerDNSAlias などの PowerShell コマンドレットを使用すると、クライアントの構成を手動で変更することなく、新しいクライアント接続を別の Azure SQL Database サーバーにリダイレクトできます。"
+title: Azure SQL を参照する DNS エイリアス用の PowerShell | Microsoft Docs
+description: New-AzureRMSqlServerDNSAlias などの PowerShell コマンドレットを使用すると、クライアントの構成を手動で変更することなく、新しいクライアント接続を別の Azure SQL Database サーバーにリダイレクトできます。
 keywords: DNS SQL Database
 services: sql-database
-documentationcenter: 
 author: MightyPen
 manager: craigg
-editor: 
 ms.service: sql-database
-ms.custom: 
-ms.workload: 
-ms.tgt_pltfrm: 
 ms.devlang: PowerShell
 ms.topic: article
 ms.date: 02/05/2018
 ms.reviewer: genemi;amagarwa;maboja
 ms.author: dmalik
-ms.openlocfilehash: ec638d7b48b443cda5755e3077c6304b0c5ad78e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 2aae669364c3de2e9b00ffe8e28b1521d3a781e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="powershell-for-dns-alias-to-azure-sql-database"></a>Azure SQL Database を参照する DNS エイリアス用の PowerShell
 
@@ -50,7 +45,7 @@ SQL Server Management Studio (SSMS) などのクライアントでは、特定�
 
 この記事で紹介した PowerShell デモ スクリプトを実行する際は、次の前提条件となるものを用意する必要があります。
 
-- Azure サブスクリプションおよびアカウント。 無料試用版を取得するには、次の URL をクリックしてください。[https://azure.microsoft.com/free/][https://azure.microsoft.com/free/]
+- Azure サブスクリプションおよびアカウント。 無料試用版については、[https://azure.microsoft.com/free/][https://azure.microsoft.com/free/] をクリックしてください。
 
 - コマンドレット **New-AzureRMSqlServerDNSAlias** が含まれている Azure PowerShell モジュール。
     - インストールまたはアップグレードするには、[Azure PowerShell モジュールのインストール][install-azurerm-ps-84p]に関するページを参照してください。

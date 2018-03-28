@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage Table 設計ガイド | Microsoft Docs"
-description: "Azure テーブル ストレージでスケーラビリティとパフォーマンスに優れたテーブルを設計する"
+title: Azure Storage Table 設計ガイド | Microsoft Docs
+description: Azure テーブル ストレージでスケーラビリティとパフォーマンスに優れたテーブルを設計する
 services: cosmos-db
 documentationcenter: na
 author: mimig1
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/03/2017
 ms.author: mimig
-ms.openlocfilehash: a5511b8b2e76c6c651a8e05bda1322293601c92c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: fadb81e16a6c641ca15efb4f910a51de4fe7c997
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド: スケーラブルな設計とハイパフォーマンスなテーブル
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -232,7 +232,7 @@ Table service ソリューションでは、読み取り、書き込み、また
 * [異種のエンティティ種類の使用](#working-with-heterogeneous-entity-types)  
 
 ### <a name="choosing-an-appropriate-partitionkey"></a>適切な PartitionKey の選択
-選択した **PartitionKey** は複数のパーティションでエンティティを配布するための要件に対し (一貫性を確保するため) EGT の使用を可能にするため、必要性のバランスを取る必要があります (スケーラブルなソリューションの確保のため) 。  
+選択した **PartitionKey** は複数のパーティションでエンティティを配布するための要件に対し (一貫性を確保するため) EGT の使用を可能にするため、必要性のバランスを取る必要があります (スケーラブルなソリューションの確保のため)。  
 
 すべてのエンティティを 1 つのパーティションに格納することも可能ですが、そうするとソリューションのスケーラビリティが制限され、Table サービスで要求を負荷分散できなくなる可能性があります。 逆に、パーティションごとに 1 つのエンティティを格納することもできます。このようにすると、スケーラビリティが高まり、Table サービスで要求を負荷分散できるようになるものの、エンティティ グループ トランザクションは使用できなくなります。  
 
@@ -261,7 +261,7 @@ Table service は、**PartitionKey** 次に **RowKey** に基づいた昇順で�
 
 * [パーティション内のセカンダリ インデックス パターン](#intra-partition-secondary-index-pattern) -異なる RowKey 値(同じパーティション) を使用して各エンティティの複数のコピーを格納し、異なる RowKey 値を使用して効果的な検索と代替的な並べ替え順序を可能にします。  
 * [パーティション内のセカンダリ インデックス パターン](#inter-partition-secondary-index-pattern) -別個のテーブルの別個のパーティションの異なる RowKey 値を使用して各エンティティの複数のコピーを格納し、異なる RowKey 値を使用して効果的な検索と代替的な並べ替え順序を可能にします。
-* [ログ テール パターン](#log-tail-pattern) - 逆の日付と時間順で並べ替える **RowKey** 値を使用して、パーティションに最も新しく追加された *n* 件のエンティティを取得します。  
+* [ログ テール パターン](#log-tail-pattern) - 逆の日付と時間順で並べ替える *RowKey* 値を使用して、パーティションに最も新しく追加されたエンティティ **n** を取得します。  
 
 ## <a name="design-for-data-modification"></a>データの変更に対応した設計
 このセクションでは、挿入、更新、削除の操作を最適化するための設計上の考慮事項を示します。 場合によっては、リレーショナル データベースの設計と同様に、クエリ向けの最適化とデータ変更向けの最適化のトレードオフを評価する必要があります (設計のトレードオフを管理する手法はリレーショナル データベースでは異なります)。 [テーブルの設計パターン](#table-design-patterns) のセクションでは、Table service の詳細な設計パターンをいくつか説明し、これらのトレードオフに注目します。 実際のところ、クエリ向けに最適化された設計の多くは、エントリの変更にも適していることがおわかりになると思います。  
@@ -296,7 +296,7 @@ Table service は、**PartitionKey** 次に **RowKey** に基づいた昇順で�
 [テーブルの設計パターン](#table-design-patterns) セクションの以下のパターンでは、 効率的なクエリの設計と効率的なデータ変更の設計の間のトレードオフについて説明します。  
 
 * [複合キー パターン](#compound-key-pattern) -複合 **RowKey** 値を使用して、1 つのポイント クエリに関連するデータを検索するクライアントを有効にします。  
-* [ログ テール パターン](#log-tail-pattern) - 逆の日付と時間順で並べ替える **RowKey** 値を使用して、パーティションに最も新しく追加された *n* 件のエンティティを取得します。  
+* [ログ テール パターン](#log-tail-pattern) - 逆の日付と時間順で並べ替える *RowKey* 値を使用して、パーティションに最も新しく追加されたエンティティ **n** を取得します。  
 
 ## <a name="encrypting-table-data"></a>テーブル データの暗号化
 .NET Azure Storage クライアント ライブラリでは、挿入および置換操作の文字列エンティティ プロパティの暗号化がサポートされます。 暗号化された文字列はバイナリ プロパティとしてサービスで保存され、復号化された後、文字列に変換されて戻されます。    
@@ -718,10 +718,10 @@ $filter=(PartitionKey eq 'Sales')、(RowKey ge 'empid_000123')、(RowKey lt 'emp
 * [最終的に一貫性のあるトランザクション パターン](#eventually-consistent-transactions-pattern)  
 
 ### <a name="log-tail-pattern"></a>ログ テール パターン
-逆の日付と時間順で並べ替える **RowKey** 値を使用して、パーティションに最も新しく追加された *n* 件のエンティティを取得します。  
+逆の日付と時間順でソートする *RowKey* 値を 使用して最も最近追加された **n** を取得します。  
 
 #### <a name="context-and-problem"></a>コンテキストと問題
-よく、最近作成されたエンティティ (従業員が提出した経費請求を日時の新しいものから 10 件など) を取得できることが必要な場合があります。 Table クエリは **$top** クエリ操作をサポートしています。これは最初の *n* 件のエンティティをセットから返すクエリです。セットの最後の n 件のエンティティを返す同等のクエリ操作はありません。  
+よく、最近作成されたエンティティ (従業員が提出した経費請求を日時の新しいものから 10 件など) を取得できることが必要な場合があります。 Table クエリは **$top** クエリ操作をサポートして、最初の *n* 件のエンティティをセットから返します。セットの最終 n 件のエンティティを返す同等のクエリの操作はありません。  
 
 #### <a name="solution"></a>解決策
 自然に最新のエントリを逆の日付と時刻順で並べ替える **RowKey** を使用してエンティティの保存、するため、表の一番上に直近のエントリが表示されます。  

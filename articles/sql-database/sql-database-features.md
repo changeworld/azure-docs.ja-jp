@@ -2,19 +2,18 @@
 title: Azure SQL Database の機能の比較 | Microsoft Docs
 description: この記事では、Azure SQL Database およびマネージ インスタンスの機能の相互比較と、SQL Server との比較を行います。
 services: sql-database
-documentationcenter: ''
 author: jovanpop-msft
 ms.reviewer: bonova, carlrab
 ms.service: sql-database
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.author: jovanpop
-manager: cguyer
-ms.openlocfilehash: 34aafdc377acf0b67674dbac2e67237440ed1420
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+manager: craigg
+ms.openlocfilehash: 4c50adeef0d6e811af6e144aa7351d9b65c1bd76
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="feature-comparison-azure-sql-database-versus-sql-server"></a>機能の比較: Azure SQL Database と SQL Server 
 
@@ -52,7 +51,7 @@ Azure SQL Database は、SQL Server と共通のコード ベースを共有し�
 | [包含ユーザー](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable) | [はい] | [はい] |
 | [フロー制御言語のキーワード](https://docs.microsoft.com/sql/t-sql/language-elements/control-of-flow) | [はい] | [はい] |
 | [複数データベース間のクエリ](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | いいえ - [エラスティック クエリ](sql-database-elastic-query-overview.md)に関する記事を参照してください | はい - [エラスティック クエリ](sql-database-elastic-query-overview.md)に関する記事も参照してください |
-| [データベースにまたがるトランザクション]((https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine)) | いいえ  | [はい] |
+| [データベースにまたがるトランザクション](https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine) | いいえ  | [はい] |
 | [カーソル](https://docs.microsoft.com/sql/t-sql/language-elements/cursors-transact-sql) | [はい] |[はい] | 
 | [データ圧縮](https://docs.microsoft.com/sql/relational-databases/data-compression/data-compression) | [はい] |[はい] |
 | [データベース メール](https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail) | いいえ  | [はい] |

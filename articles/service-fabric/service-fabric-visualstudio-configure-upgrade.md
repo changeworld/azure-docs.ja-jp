@@ -1,6 +1,6 @@
 ---
-title: "Service Fabric アプリケーションのアップグレードの構成 | Microsoft Docs"
-description: "Microsoft Visual Studio を使用して、Service Fabric アプリケーションをアップグレードするための設定を構成する方法について説明します。"
+title: Service Fabric アプリケーションのアップグレードの構成 | Microsoft Docs
+description: Microsoft Visual Studio を使用して、Service Fabric アプリケーションをアップグレードするための設定を構成する方法について説明します。
 services: service-fabric
 documentationcenter: na
 author: mikkelhegn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/29/2017
 ms.author: mikkelhegn
-ms.openlocfilehash: 314b29a56e4651222822f40a116af97a7372ff2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ff85991e87a4996890520a566b3909d331ed27f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-the-upgrade-of-a-service-fabric-application-in-visual-studio"></a>Visual Studio での Service Fabric アプリケーションのアップグレードの構成
 Visual Studio Service Fabric ツールは、ローカルまたはリモート クラスターへの発行のアップグレード サポートを提供します。 テストやデバッグ中にアプリケーションを置き換えるのではなく、アプリケーションを新しいバージョンにアップグレードしたくなるシナリオが 3 つあります。
@@ -85,5 +85,5 @@ Service Fabric アプリケーションの各サービスでは、既定値を�
     </HealthPolicy>
 </Policies>
 ```
-## <a name="next-steps"></a>次のステップ
-アプリケーションのデプロイの詳細については、「 [Azure Service Fabric への既存のアプリケーションのデプロイ](service-fabric-deploy-existing-app.md)」をご覧ください。
+## <a name="next-steps"></a>次の手順
+アプリケーションのアップグレードの詳細については、[Visual Studio を使用したアプリケーションのアップグレード](service-fabric-application-upgrade-tutorial.md)に関するページを参照してください。

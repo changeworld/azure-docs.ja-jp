@@ -1,11 +1,11 @@
 ---
-title: "SQL Data Warehouse でのテーブルのパーティション分割 | Microsoft Docs"
-description: "Azure SQL Data Warehouse でのテーブルのパーティション分割の概要です。"
+title: SQL Data Warehouse でのテーブルのパーティション分割 | Microsoft Docs
+description: Azure SQL Data Warehouse でのテーブルのパーティション分割の概要です。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
+editor: ''
 ms.assetid: 6cef870c-114f-470c-af10-02300c58885d
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 12/06/2017
 ms.author: barbkess
-ms.openlocfilehash: a28cb1f8a2e48332b344566620dc49b29d9d3c99
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f94bc3770fbd7e707194032cb99c67b09f8a0618
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="partitioning-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのパーティション分割
 > [!div class="op_single_selector"]
@@ -49,10 +49,10 @@ SQL Data Warehouse でパーティション分割する主なメリットは、�
 ## <a name="partition-sizing-guidance"></a>パーティションのサイズ設定のガイダンス
 パーティション分割を使用すると一部のシナリオのパフォーマンスが向上する可能性がありますが、パーティションが **多すぎる** テーブルを作成すると、特定の状況でパフォーマンスが低下する可能性があります。  これらの問題は、特にクラスター化列ストア テーブルに当てはまります。  パーティション分割が役立つように、パーティション分割を使用する時期と作成するパーティション数を把握することが重要です。  パーティションの数が多すぎるかどうかについて厳格なルールはなく、データと、同時に読み込むパーティションの数によります。  パーティション分割構成が成功すると、通常、パーティションの数は数十個から数百個程度であり、数千個にまでなることはありません。
 
-**クラスター化列ストア** テーブルでパーティションを作成するときは、各パーティションに属している行数が重要になります。  クラスター化列ストア テーブルの圧縮とパフォーマンスを最適化するためには、ディストリビューションおよびパーティションあたり少なくとも 100 万行が必要です。  SQL Data Warehouse では、パーティションが作成される前に、各テーブルが 60 個の分散データベースに既に分割されています。  テーブルに追加されるすべてのパーティション分割は、バックグラウンドで作成されたディストリビューションに追加されたものです。  この例を使用して、売上のファクト テーブルに 36 か月のパーティションが含まれる場合、SQL Data Warehouse に 60 のディストリビューションがあるとすると、売上のファクト テーブルは 1 か月あたり 6 千万行、すべての月を指定する場合は 21 億行を含む必要があります。  テーブルに含まれる行が、パーティションごとの推奨される最小の行数よりも大幅に少ない場合、パーティションあたりの行数を増やすためにパーティション数を少なくすることを検討する必要があります。  また、[インデックス作成][Index]に関する記事も参照してください。この記事には、クラスター化列ストア インデックスの質を評価するために SQL Data Warehouse で実行できるクエリについて記載されています。
+**クラスター化列ストア** テーブルでパーティションを作成するときは、各パーティションに属している行数が重要になります。  クラスター化列ストア テーブルの圧縮とパフォーマンスを最適化するためには、ディストリビューションおよびパーティションあたり少なくとも 100 万行が必要です。  SQL Data Warehouse では、パーティションが作成される前に、各テーブルが 60 個の分散データベースに既に分割されています。  テーブルに追加されるすべてのパーティション分割は、バックグラウンドで作成されたディストリビューションに追加されたものです。  この例を使用して、売上のファクト テーブルに 36 か月のパーティションが含まれる場合、SQL Data Warehouse に 60 のディストリビューションがあるとすると、売上のファクト テーブルは 1 か月あたり 6 千万行、すべての月を指定する場合は 21 億行を含む必要があります。  テーブルに含まれる行が、パーティションごとの推奨される最小の行数よりも少ない場合、パーティションあたりの行数を増やすためにパーティション数を少なくすることを検討する必要があります。  また、[インデックス作成][Index]に関する記事も参照してください。この記事には、クラスター化列ストア インデックスの質を評価するために SQL Data Warehouse で実行できるクエリについて記載されています。
 
 ## <a name="syntax-difference-from-sql-server"></a>SQL Server との構文の違い
-SQL Data Warehouse では、SQL Server とは少し異なり、パーティションの簡略化された定義方法を導入しています。  パーティション関数とパーティション構成は、SQL Server のものであるため、SQL Data Warehouse では使用されません。  代わりに、必要なのは、パーティション分割された列と境界点を特定することだけです。  パーティション分割の構文は、SQL Server と若干異なる場合がありますが、基本的な概念は同じです。  SQL Server および SQL Data Warehouse は、テーブルごとに 1 つのパーティション列をサポートします。このパーティション列で、範囲指定によるパーティションを指定することができます。  パーティション分割の詳細については、「[パーティション テーブルとパーティション インデックス][Partitioned Tables and Indexes]」をご覧ください。
+SQL Data Warehouse には、SQL Server よりも簡単なパーティションの定義方法が導入されています。  パーティション関数とパーティション構成は、SQL Server のものであるため、SQL Data Warehouse では使用されません。  代わりに、必要なのは、パーティション分割された列と境界点を特定することだけです。  パーティション分割の構文は、SQL Server と若干異なる場合がありますが、基本的な概念は同じです。  SQL Server および SQL Data Warehouse は、テーブルごとに 1 つのパーティション列をサポートします。このパーティション列で、範囲指定によるパーティションを指定することができます。  パーティション分割の詳細については、「[パーティション テーブルとパーティション インデックス][Partitioned Tables and Indexes]」をご覧ください。
 
 次の例は、SQL Data Warehouse のパーティション分割が指定された [CREATE TABLE][CREATE TABLE] ステートメントを示しています。FactInternetSales テーブルが OrderDateKey 列でパーティション分割されます。
 
@@ -125,7 +125,7 @@ GROUP BY    s.[name]
 ## <a name="workload-management"></a>ワークロード管理
 テーブル パーティションを決定する際の考慮事項の最後の部分として、[ワークロード管理][workload management]があります。  SQL Data Warehouse のワークロード管理は、主にメモリと同時実行の管理です。  SQL Data Warehouse では、リソース クラスによって、クエリの実行中に各ディストリビューションに割り当てられる最大メモリが管理されます。  理論的には、パーティションは、クラスター化列ストア インデックスの作成に必要なメモリなどのその他の要因を考慮してサイズ変更されます。  多くのメモリを割り当てると、クラスター化列ストア インデックスのメリットが大きくなります。  したがって、パーティション インデックスの再構築でメモリ不足にならないようにする必要があります。 クエリで使用できるメモリの量を増やすには、既定のロール smallrc から largerc などの他のいずれかのロールに切り替えます。
 
-ディストリビューションごとのメモリの割り当てに関する情報は、リソース ガバナーの動的管理ビューを照会することで入手できます。 実際には、メモリ許可は次の数値よりも少なくなります。 ただし、データ管理操作のためにパーティションのサイズを設定するときに、これがある程度の目安になります。  非常に大きなリソース クラスで提供されるメモリ許可を上回るパーティション サイズに設定しないようにしてください。 パーティションのサイズがこの数値を上回ると、メモリ負荷のリスクが生じ、最適に圧縮できなくなります。
+ディストリビューションごとのメモリの割り当てに関する情報は、Resource Governor の動的管理ビューを照会することで入手できます。 実際には、メモリ許可は次のクエリの結果よりも少なくなります。 ただし、データ管理操作のためにパーティションのサイズを設定するときに、このクエリがある程度の目安になります。  非常に大きなリソース クラスで提供されるメモリ許可を上回るパーティション サイズに設定しないようにしてください。 パーティションのサイズがこの数値を上回ると、メモリ負荷のリスクが生じ、最適に圧縮できなくなります。
 
 ```sql
 SELECT  rp.[name]                                AS [pool_name]
@@ -146,12 +146,12 @@ AND     rp.[name]    = 'SloDWPool'
 ## <a name="partition-switching"></a>パーティションの切り替え
 SQL Data Warehouse では、パーティションの分割、結合、および切り替えをサポートします。 これらの各機能は、[ALTER TABLE][ALTER TABLE] ステートメントを使用して実行されます。
 
-2 つのテーブル間でパーティションを切り替えるには、それぞれの境界に合わせてパーティションが配置されていることと、テーブル定義が一致していることを確認する必要があります。 テーブルで値の範囲を適用する際に CHECK 制約は使用できないため、ソース テーブルにターゲットテーブルと同じパーティション境界が含まれている必要があります。 そうでない場合、パーティションのメタデータが同期されないため、パーティションの切り替えは失敗します。
+2 つのテーブル間でパーティションを切り替えるには、それぞれの境界に合わせてパーティションが配置されていることと、テーブル定義が一致していることを確認する必要があります。 テーブルで値の範囲を適用する際に CHECK 制約は使用できないため、ソース テーブルにターゲットテーブルと同じパーティション境界が含まれている必要があります。 パーティション境界が同じでない場合、パーティションのメタデータが同期されないため、パーティションの切り替えは失敗します。
 
 ### <a name="how-to-split-a-partition-that-contains-data"></a>データが含まれたパーティションを分割する方法
 既にデータが含まれているパーティションを分割する最も効率的な方法は、 `CTAS` ステートメントを使用することです。 パーティション テーブルがクラスター化列ストアの場合、テーブルのパーティションを分割するには、パーティションを空にしておく必要があります。
 
-各パーティションに行が 1 つ含まれた、パーティション分割された列ストア テーブルのサンプルを次に示します。
+次の例は、パーティション分割された列ストア テーブルを作成します。 各パーティションに 1 つの行を挿入します。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales]
@@ -185,11 +185,11 @@ CREATE STATISTICS Stat_dbo_FactInternetSales_OrderDateKey ON dbo.FactInternetSal
 ```
 
 > [!NOTE]
-> 統計オブジェクトを作成することによって、テーブルのメタデータをより正確なものにすることができます。 統計の作成を省略した場合は、SQL Data Warehouse では既定値が使用されます。 統計の詳細については､[統計][statistics]に関する記事をご覧ください。
+> 統計オブジェクトを作成することで、テーブルのメタデータがより正確になります。 統計を省略した場合、SQL Data Warehouse では既定値が使用されます。 統計の詳細については､[統計][statistics]に関する記事をご覧ください。
 > 
 > 
 
-次に、 `sys.partitions` カタログ ビューを使用して行数を照会できます。
+次のクエリは、`sys.partitions` カタログ ビューを使用して、行数を検索します。
 
 ```sql
 SELECT  QUOTENAME(s.[name])+'.'+QUOTENAME(t.[name]) as Table_name
@@ -206,7 +206,7 @@ WHERE t.[name] = 'FactInternetSales'
 ;
 ```
 
-このテーブルを分割しようとすると、次のエラーが発生します。
+次の分割コマンドは、エラー メッセージを受信します。
 
 ```sql
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
@@ -214,7 +214,7 @@ ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 
 パーティションが空でないため、ALTER PARTITION ステートメントの Msg 35346, Level 15, State 1, Line 44 SPLIT 句が失敗しました。  テーブルに列ストア インデックスが存在する場合、分割できるのは空のパーティションだけです。 ALTER PARTITION ステートメントを発行する前に列ストア インデックスを無効にし、ALTER PARTITION が完了したら列ストア インデックスを再構築することを検討します。
 
-ただし、 `CTAS` を使用して、データを保持する新しいテーブルを作成できます。
+ただし、`CTAS` を使用して、データを保持する新しいテーブルを作成できます。
 
 ```sql
 CREATE TABLE dbo.FactInternetSales_20000101
@@ -240,7 +240,7 @@ ALTER TABLE FactInternetSales SWITCH PARTITION 2 TO  FactInternetSales_20000101 
 ALTER TABLE FactInternetSales SPLIT RANGE (20010101);
 ```
 
-後は、 `CTAS` を使用して新しいパーティション境界に合わせてデータを配置し、データをメイン テーブルに切り替えるだけです。
+後は、`CTAS` を使用して新しいパーティション境界に合わせてデータを配置し、データをメイン テーブルに切り替えるだけです。
 
 ```sql
 CREATE TABLE [dbo].[FactInternetSales_20000101_20010101]
@@ -261,7 +261,7 @@ AND     [OrderDateKey] <  20010101
 ALTER TABLE dbo.FactInternetSales_20000101_20010101 SWITCH PARTITION 2 TO dbo.FactInternetSales PARTITION 2;
 ```
 
-データの移動が完了したら、ターゲット テーブルの統計に、それぞれのパーティションのデータの新しいディストリビューションが正確に反映されるように、統計を更新することをお勧めします。
+データの移動が完了したら、ターゲット テーブルの統計を更新することをお勧めします。 統計を更新することで、各パーティション内のデータの新しい分散が統計に正確に反映されます。
 
 ```sql
 UPDATE STATISTICS [dbo].[FactInternetSales];
@@ -349,7 +349,7 @@ DROP TABLE #partitions;
 
 この方法では、ソース管理のコードを静的なコードとして維持し、パーティション境界値は動的にすることが可能になるので、時間の経過に伴って、ウェアハウスとともに進化させることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [テーブルの概要][Overview]、[テーブルのデータ型][Data Types]、[テーブルの分散][Distribute]、[テーブルのインデックス作成][Index]、[テーブルの統計の管理][Statistics]、[一時テーブル][Temporary]に関する各記事で詳細を確認します。  [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]に関する記事でベスト プラクティスの詳細を確認します。
 
 <!--Image references-->
@@ -362,7 +362,7 @@ DROP TABLE #partitions;
 [Partition]: ./sql-data-warehouse-tables-partition.md
 [Statistics]: ./sql-data-warehouse-tables-statistics.md
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
-[workload management]: ./sql-data-warehouse-develop-concurrency.md
+[workload management]: ./resource-classes-for-workload-management.md
 [SQL Data Warehouse Best Practices]: ./sql-data-warehouse-best-practices.md
 
 <!-- MSDN Articles -->

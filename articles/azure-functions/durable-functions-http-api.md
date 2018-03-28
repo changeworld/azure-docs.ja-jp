@@ -1,12 +1,12 @@
 ---
-title: "Azure のDurable Functions での HTTP API"
-description: "Azure Functions の Durable Functions 拡張機能で HTTP API を実装する方法を説明します。"
+title: Azure のDurable Functions での HTTP API
+description: Azure Functions の Durable Functions 拡張機能で HTTP API を実装する方法を説明します。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: bb5361022e4c9693812753ae33df5aeb037b5aaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fa5d9e66912bdeffdf553ddc0cb7d3feb0a5b77
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="http-apis-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) での HTTP API
 
@@ -27,6 +27,7 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 * オーケストレーション インスタンスの状態を取得します。
 * 待機中のオーケストレーション インスタンスにイベントを送信します。
 * 実行中のオーケストレーション インスタンスを終了します。
+
 
 これらの各 HTTP API は、Durable Task 拡張機能によって直接処理される webhook 操作です。 関数アプリの関数に固有のものではありません。
 
@@ -41,7 +42,7 @@ Durable Task 拡張機能は、次のタスクの実行で使用できる一連�
 
 この例の関数では、次の JSON 応答データが生成されます。 すべてのフィールドのデータ型は `string` です。
 
-| フィールド             |Description                           |
+| フィールド             |説明                           |
 |-------------------|--------------------------------------|
 | id                |オーケストレーション インスタンスの ID。 |
 | statusQueryGetUri |オーケストレーション インスタンスの状態の URL。 |
@@ -78,18 +79,20 @@ Location: https://{host}/webhookextensions/handler/DurableTaskExtension/instance
 このプロトコルでは、HTTP エンドポイントのポーリングと `Location` ヘッダーのフォローをサポートする、外部のクライアントまたはサービスでの実行時間の長いプロセスを調整できます。 基本の部分は、Durable Functions HTTP API に既に組み込まれています。
 
 > [!NOTE]
-> 既定では、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) によって提供される HTTP ベースのすべてのアクションで、標準的な非同期操作パターンがサポートされています。 これにより、実行時間の長い Durable Functions を Logic Apps ワークフローの一部として組み込むことができます。 Logic Apps での非同期 HTTP パターンのサポートについて詳しくは、[Azure Logic Apps ワークフロー アクションおよびトリガーに関するドキュメント](../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns)をご覧ください。
+> 既定では、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) によって提供される HTTP ベースのすべてのアクションで、標準的な非同期操作パターンがサポートされています。 この機能により、実行時間の長い Durable Functions を Logic Apps ワークフローの一部として組み込むことができます。 Logic Apps での非同期 HTTP パターンのサポートについて詳しくは、[Azure Logic Apps ワークフロー アクションおよびトリガーに関するドキュメント](../logic-apps/logic-apps-workflow-actions-triggers.md#asynchronous-patterns)をご覧ください。
 
 ## <a name="http-api-reference"></a>HTTP API リファレンス
 
 拡張機能によって実装されるすべての HTTP API では、次のパラメーターを指定します。 すべてのパラメーターのデータ型は `string` です。
 
-| パラメーター  | パラメーターのタイプ  | Description |
+| パラメーター  | パラメーターのタイプ  | 説明 |
 |------------|-----------------|-------------|
 | instanceId | URL             | オーケストレーション インスタンスの ID。 |
 | taskHub    | クエリ文字列    | [タスク ハブ](durable-functions-task-hubs.md)の名前。 指定しない場合は、現在の関数アプリのタスク ハブの名前が想定されます。 |
 | connection | クエリ文字列    | ストレージ アカウントの接続文字列の**名前**。 指定しない場合は、関数アプリの既定の接続文字列が想定されます。 |
 | systemKey  | クエリ文字列    | API の呼び出しに必要な承認キー。 |
+| showHistory| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、オーケストレーションの実行履歴が応答ペイロードに含まれます。| 
+| showHistoryOutput| クエリ文字列    | 省略可能なパラメーター。 `true` に設定した場合、アクティビティの出力がオーケストレーションの実行履歴に含まれます。| 
 
 `systemKey` は、Azure Functions ホストによって自動生成される承認キーです。 このキーにより、Durable Task 拡張機能 API へのアクセスが特別に許可されます。また、このキーは[他の承認キー](https://github.com/Azure/azure-webjobs-sdk-script/wiki/Key-management-API)と同じ方法で管理できます。 前述の `CreateCheckStatusResponse` API を使用すると、`systemKey` 値を最も簡単に検出できます。
 
@@ -110,10 +113,10 @@ GET /admin/extensions/DurableTaskExtension/instances/{instanceId}?taskHub={taskH
 Functions 2.0 形式では、パラメーターはすべて同じですが、URL プレフィックスが若干異なります。
 
 ```http
-GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}
+GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskHub={taskHub}&connection={connection}&code={systemKey}&showHistory={showHistory}&showHistoryOutput={showHistoryOutput}
 ```
 
-#### <a name="response"></a>応答
+#### <a name="response"></a>Response
 
 返される可能性がある状態コード値は、いくつかあります。
 
@@ -124,27 +127,66 @@ GET /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}?taskH
 
 **HTTP 200** と **HTTP 202** の場合の応答ペイロードは、次のフィールドを持つ JSON オブジェクトです。
 
-| フィールド           | データ型 | Description |
+| フィールド           | データ型 | 説明 |
 |-----------------|-----------|-------------|
-| runtimeStatus   | string    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
+| runtimeStatus   | 文字列    | インスタンスの実行時状態。 値には、*Running*、*Pending*、*Failed*、*Canceled*、*Terminated*、*Completed* があります。 |
 | input           | JSON      | インスタンスを初期化するために使用される JSON データ。 |
 | output          | JSON      | インスタンスの JSON の出力。 インスタンスが完了状態でない場合、このフィールドは `null` です。 |
-| createdTime     | string    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
-| lastUpdatedTime | string    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
+| createdTime     | 文字列    | インスタンスが作成された時刻。 ISO 8601 の拡張された表記を使用します。 |
+| lastUpdatedTime | 文字列    | インスタンスが最後に保持されていた時刻。 ISO 8601 の拡張された表記を使用します。 |
+| historyEvents   | JSON      | オーケストレーションの実行履歴を含む JSON 配列。 このフィールドは、`showHistory` クエリ文字列パラメーターが `true`に設定されていない限り、`null` です。  | 
 
-応答ペイロードの例を次に示します (読みやすいように書式設定されています)。
+オーケストレーションの実行履歴とアクティビティの出力を含む応答ペイロードの例を次に示します (読みやすい形式になっています)。
 
 ```json
 {
-  "runtimeStatus": "Completed",
-  "input": null,
-  "output": [
-    "Hello Tokyo!",
-    "Hello Seattle!",
-    "Hello London!"
+  "createdTime": "2018-02-28T05:18:49Z",
+  "historyEvents": [
+      {
+          "EventType": "ExecutionStarted",
+          "FunctionName": "E1_HelloSequence",
+          "Timestamp": "2018-02-28T05:18:49.3452372Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello Tokyo!",
+          "ScheduledTime": "2018-02-28T05:18:51.3939873Z",
+          "Timestamp": "2018-02-28T05:18:52.2895622Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello Seattle!",
+          "ScheduledTime": "2018-02-28T05:18:52.8755705Z",
+          "Timestamp": "2018-02-28T05:18:53.1765771Z"
+      },
+      {
+          "EventType": "TaskCompleted",
+          "FunctionName": "E1_SayHello",
+          "Result": "Hello London!",
+          "ScheduledTime": "2018-02-28T05:18:53.5170791Z",
+          "Timestamp": "2018-02-28T05:18:53.891081Z"
+      },
+      {
+          "EventType": "ExecutionCompleted",
+          "OrchestrationStatus": "Completed",
+          "Result": [
+              "Hello Tokyo!",
+              "Hello Seattle!",
+              "Hello London!"
+          ],
+          "Timestamp": "2018-02-28T05:18:54.3660895Z"
+      }
   ],
-  "createdTime": "2017-10-06T18:30:24Z",
-  "lastUpdatedTime": "2017-10-06T18:30:30Z"
+  "input": null,
+  "lastUpdatedTime": "2018-02-28T05:18:54Z",
+  "output": [
+      "Hello Tokyo!",
+      "Hello Seattle!",
+      "Hello London!"
+  ],
+  "runtimeStatus": "Completed"
 }
 ```
 
@@ -168,11 +210,11 @@ Functions 2.0 形式では、パラメーターはすべて同じですが、URL
 POST /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection={connection}&code={systemKey}
 ```
 
-この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれています。
+この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド       | パラメーターのタイプ  | データ型 | Description |
+| フィールド       | パラメーターの種類  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
-| eventName   | URL             | string    | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
+| eventName   | URL             | 文字列    | ターゲット オーケストレーション インスタンスが待機しているイベントの名前。 |
 | {content}   | 要求内容 | JSON      | JSON 形式のイベント ペイロード。 |
 
 #### <a name="response"></a>応答
@@ -184,7 +226,7 @@ POST /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/rais
 * **HTTP 404 (Not Found)**: 指定されたインスタンスが見つからなかった。
 * **HTTP 410 (Gone)**: 指定されたインスタンスが完了または失敗し、発生したイベントを処理できない。
 
-**operation** という名前のイベント ([Counter](durable-functions-counter.md) サンプルから取得) を待機するインスタンスに JSON 文字列 `"incr"` を送信する要求の例を次に示します。
+**operation** という名前のイベントを待機するインスタンスに JSON 文字列 `"incr"` を送信する要求の例を次に示します。
 
 ```
 POST /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code=XXX
@@ -216,9 +258,9 @@ DELETE /webhookextensions/handler/DurableTaskExtension/instances/{instanceId}/te
 
 この API の要求パラメーターには、前述の既定のセットと、次の固有のパラメーターが含まれます。
 
-| フィールド       | パラメーターのタイプ  | データ型 | Description |
+| フィールド       | パラメーターの種類  | データ型 | 説明 |
 |-------------|-----------------|-----------|-------------|
-| reason      | クエリ文字列    | string    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
+| reason      | クエリ文字列    | 文字列    | 省略可能。 オーケストレーション インスタンスの終了の理由。 |
 
 #### <a name="response"></a>応答
 
@@ -236,7 +278,7 @@ DELETE /admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52b
 
 この API の応答には内容は含まれません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [エラーの対処方法を知る](durable-functions-error-handling.md)

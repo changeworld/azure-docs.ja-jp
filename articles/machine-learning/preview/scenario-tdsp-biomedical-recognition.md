@@ -1,12 +1,12 @@
 ---
-title: "生体エンティティ認識 - Team Data Science Process - Azure Machine Learning | Microsoft Docs"
-description: "Azure Machine Learning Workbench でディープ ラーニングを使って生体エンティティ認識を行う Team Data Science Process プロジェクトのクイックスタート。"
+title: 生体エンティティ認識 - Team Data Science Process - Azure Machine Learning | Microsoft Docs
+description: Azure Machine Learning Workbench でディープ ラーニングを使って生体エンティティ認識を行う Team Data Science Process プロジェクトのクイックスタート。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: 7de3a30e477fcec66ce703b6c3fec7d17d79d3ab
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 4e8450cc20718185a3cea02bf8fbb6b97dd91ddb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Team Data Science Process (TDSP) テンプレートを使った生体エンティティ認識
 
@@ -32,13 +32,13 @@ ms.lasthandoff: 12/18/2017
 
 4. Azure Machine Learning Workbench 内の次の機能を示します。
 
-    * [Team Data Science Process (TDSP) 構造とテンプレート](how-to-use-tdsp-in-azure-ml.md)のインスタンス化。
+    * [Team Data Science Process (TDSP) 構造とテンプレート](how-to-use-tdsp-in-azure-ml.md)のインスタンス化
     * ダウンロードとインストールを含む、プロジェクトの依存関係の自動管理。
-    * さまざまなコンピューティング環境での Python スクリプトの実行。
-    * Python スクリプトの実行履歴の追跡。
-    * HDInsight Spark 2.1 クラスターを使った、リモート Spark コンピューティング コンテキストでのジョブの実行。
-    * Azure 上のリモート GPU VM でのジョブの実行。
-    * Azure Container Services (ACS) での、Web サービスとしてのディープ ラーニング モデルの簡単な運用化。
+    * さまざまなコンピューティング環境での Python スクリプトの実行
+    * Python スクリプトの実行履歴の追跡
+    * HDInsight Spark 2.1 クラスターを使った、リモート Spark コンピューティング コンテキストでのジョブの実行
+    * Azure 上のリモート GPU VM でのジョブの実行
+    * Azure Container Services (ACS) での、Web サービスとしてのディープ ラーニング モデルの簡単な運用化
 
 ## <a name="use-case-overview"></a>ユース ケースの概要
 生体名前付きエンティティ認識 (固有表現抽出) は、生物医学に関する次のような複雑な NLP タスクを行うための重要なステップです。 
@@ -139,7 +139,7 @@ ms.lasthandoff: 12/18/2017
 * センテンス分割、トークン化、ケース (大文字小文字) の正規化など、要旨のテキストを前処理する。
 * 要旨フィールドのテキストが空または短い論文を除外する。 
 * トレーニングする要旨からワード ボキャブラリを作成する。
-* 単語埋め込みニューラル モデルをトレーニングする。 詳しくは、[GitHub のコード](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md)を参照してください。
+* 単語埋め込みニューラル モデルをトレーニングする。 詳細については、[GitHub のコード](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md)を参照してください。
 
 
 XML ファイルの解析後、データの形式は次のようになります。 
@@ -167,7 +167,7 @@ Word2Vec は、ラベル付けされていないトレーニング コーパス�
 
 ![Skip Gram モデル](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
-このモデルでは、パフォーマンスを最適化するために階層的ソフトマックスとネガティブ サンプリングを使用します。 階層的ソフトマックス (H-SoftMax) はバイナリ ツリーに似ています。 H-SoftMax は、基本的にフラットなソフトマックス層を単語のリーフ (葉) を持つ階層に置換します。 これにより、1 つ 1 つの単語の確率計算を連続する確率計算に分解することができ、コストがかかる正規化をすべての単語に対して計算する必要がなくなります。 均衡の取れたバイナリ ツリーの深さは log2(|V|) (V はボキャブラリ) であるため、最大でも log2(|V|) のノードを評価すれば、単語の最終的な確率が得られます。 c というコンテキストで w という単語が出現する確率は、単純にそのリーフ ノードに至るために右に曲がる確率と左に曲がる確率の積になります。 頻出する単語をより短く表現できるように、データセット内の単語の出現頻度に基づいて Huffman ツリーを構築することができます。 詳しくは、[こちらのリンク](http://sebastianruder.com/word-embeddings-softmax/)を参照してください。
+このモデルでは、パフォーマンスを最適化するために階層的ソフトマックスとネガティブ サンプリングを使用します。 階層的ソフトマックス (H-SoftMax) はバイナリ ツリーに似ています。 H-SoftMax は、基本的にフラットなソフトマックス層を単語のリーフ (葉) を持つ階層に置換します。 これにより、1 つ 1 つの単語の確率計算を連続する確率計算に分解することができ、コストがかかる正規化をすべての単語に対して計算する必要がなくなります。 均衡の取れたバイナリ ツリーの深さは log2(|V|) (V はボキャブラリ) であるため、最大でも log2(|V|) のノードを評価すれば、単語の最終的な確率が得られます。 c というコンテキストで w という単語が出現する確率は、単純にそのリーフ ノードに至るために右に曲がる確率と左に曲がる確率の積になります。 頻出する単語をより短く表現できるように、データセット内の単語の出現頻度に基づいて Huffman ツリーを構築することができます。 詳細については、[このリンク](http://sebastianruder.com/word-embeddings-softmax/)をご覧ください。
 図の出典は[こちら](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/)です。
 
 ##### <a name="visualization"></a>グラフ
@@ -198,7 +198,7 @@ Word2Vec は、ラベル付けされていないトレーニング コーパス�
 
 「[ニューラル エンティティ抽出のトレーニング](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation/ReadMe.md)」を参照してください。
 
-フィード フォワード ニューラル ネットワーク アーキテクチャには、各入出力を他の入出力とは独立したものとして扱うという問題があります。 このアーキテクチャでは、機械翻訳やエンティティ抽出のような、シーケンスからシーケンスにラベリングするタスクをモデル化することができません。 再帰型ニューラル ネットワーク モデルは現在までに計算された情報を次のノードに渡すことができるので、この問題を解決できます。 これは、次の図に示すように、以前に計算された情報を利用できることから、ネットワークにメモリを持っているという言い方もされます。
+フィードフォワード ニューラル ネットワーク アーキテクチャには、各入出力を他の入出力とは独立したものとして扱うという問題があります。 このアーキテクチャでは、機械翻訳やエンティティ抽出のような、シーケンスからシーケンスにラベリングするタスクをモデル化することができません。 再帰型ニューラル ネットワーク モデルは現在までに計算された情報を次のノードに渡すことができるので、この問題を解決できます。 これは、次の図に示すように、以前に計算された情報を利用できることから、ネットワークにメモリを持っているという言い方もされます。
 
 ![RNN](./media/scenario-tdsp-biomedical-recognition/rnn-expanded.png)
 
@@ -266,7 +266,7 @@ Spark 上で Word2Vec アルゴリズムを使って単語埋め込みをトレ�
 
 * Tomas Mikolov, Kai Chen, Greg Corrado, and Jeffrey Dean. 2013a. Efficient estimation of word representations in vector space. In Proceedings of ICLR.
 * Tomas Mikolov, Ilya Sutskever, Kai Chen, Greg S Corrado, and Jeff Dean. 2013b. Distributed representations of words and phrases and their compositionality. In Proceedings of NIPS, pp. 3111–3119.
-* Billy Chiu, Gamal Crichton, Anna Korhonen and Sampo Pyysalo. 2016. [How to Train Good Word Embeddings for Biomedical NLP](http://aclweb.org/anthology/W/W16/W16-2922.pdf), In Proceedings of the 15th Workshop on Biomedical Natural Language Processing, pp. 166–174.
+* Billy Chiu, Gamal Crichton, Anna Korhonen, and Sampo Pyysalo. 2016. [How to Train Good Word Embeddings for Biomedical NLP](http://aclweb.org/anthology/W/W16/W16-2922.pdf), In Proceedings of the fifteenth Workshop on Biomedical Natural Language Processing, pp. 166–174.
 * [Vector Representations of Words](https://www.tensorflow.org/tutorials/word2vec)
 * [Recurrent Neural Networks](https://www.tensorflow.org/tutorials/recurrent)
 * [Problems encountered with Spark ml Word2Vec](https://intothedepthsofdataengineering.wordpress.com/2017/06/26/problems-encountered-with-spark-ml-word2vec/)

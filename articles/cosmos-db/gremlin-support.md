@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB での Gremlin のサポート | Microsoft Docs"
-description: "Apache TinkerPop の Gremlin 言語の概要と、Azure Cosmos DB で使用できる Gremlin の機能とステップについて説明します。"
+title: Azure Cosmos DB での Gremlin のサポート | Microsoft Docs
+description: Apache TinkerPop の Gremlin 言語の概要と、Azure Cosmos DB で使用できる Gremlin の機能とステップについて説明します。
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 6016ccba-0fb9-4218-892e-8f32a1bcc590
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 01/02/2018
 ms.author: lbosq
-ms.openlocfilehash: 59d926f54c8dfc2991929f2eb42b20056e3a09c3
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: b32838dfaf83ea3acfb7125322bb99124370bd8e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-gremlin-graph-support"></a>Azure Cosmos DB での Gremlin グラフのサポート
 Azure Cosmos DB では、[Apache Tinkerpop](http://tinkerpop.apache.org) のグラフ トラバーサル言語である [Gremlin](http://tinkerpop.apache.org/docs/current/reference/#graph-traversal-steps) をサポートしています。これは、グラフ エンティティを作成し、グラフ クエリ操作を実行するための Graph API です。 Gremlin 言語を使用して、グラフ エンティティ (頂点と辺) の作成、エンティティ内のプロパティの変更、クエリとトラバーサルの実行、エンティティの削除を行うことができます。 
@@ -84,7 +84,7 @@ TinkerPop は、さまざまなグラフ テクノロジに対応する標準で
 | 変数機能 | ブール値、整数、Byte、Double、Float、Long、文字列をサポートしています。 | プリミティブ型をサポートしています。データ モデルを介して複雑な型と互換性があります。 |
 | 頂点機能 | RemoveVertices、MetaProperties、AddVertices、MultiProperties、StringIds、UserSuppliedIds、AddProperty、RemoveProperty をサポートしています。  | 頂点の作成、変更、削除をサポートしています。 |
 | 頂点プロパティ機能 | StringIds、UserSuppliedIds、AddProperty、RemoveProperty、BooleanValues、ByteValues、DoubleValues、FloatValues、IntegerValues、LongValues、StringValues | 頂点プロパティの作成、変更、削除をサポートしています。 |
-| 辺機能 | AddEges、RemoveEdges、StringIds、UserSuppliedIds、AddProperty、RemoveProperty | 辺の作成、変更、削除をサポートしています。 |
+| 辺機能 | AddEdges、RemoveEdges、StringIds、UserSuppliedIds、AddProperty、RemoveProperty | 辺の作成、変更、削除をサポートしています。 |
 | 辺プロパティ機能 | Properties、BooleanValues、ByteValues、DoubleValues、FloatValues、IntegerValues、LongValues、StringValues | 辺プロパティの作成、変更、削除をサポートしています。 |
 
 ## <a name="gremlin-wire-format-graphson"></a>Gremlin のワイヤ形式: GraphSON

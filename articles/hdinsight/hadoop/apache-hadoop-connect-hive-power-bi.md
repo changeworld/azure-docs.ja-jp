@@ -1,34 +1,41 @@
 ---
-title: "Azure HDInsight の Power BI でビッグ データを視覚化する | Microsoft Docs"
-description: "Microsoft Power BI を利用し、Azure HDInsight で処理された Hive データを視覚化する方法について説明します。"
-keywords: "hdinsight,hadoop,hive,対話型クエリ,対話型 hive,LLAP,odbc"
+title: Azure HDInsight の Power BI でビッグ データを視覚化する | Microsoft Docs
+description: Microsoft Power BI を利用し、Azure HDInsight で処理された Hive データを視覚化する方法について説明します。
+keywords: hdinsight,hadoop,hive,対話型クエリ,対話型 hive,LLAP,odbc
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/03/2018
+ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: 8b4347fde274d0d7520ef3acbd081fdb83d7dc7d
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: e543fba4c382501024bd33bed3853e7806d081ae
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visualize-hive-data-with-microsoft-power-bi-using-odbc-in-azure-hdinsight"></a>Azure HDInsight の Microsoft Power BI で ODBC を使用して Hive データを視覚化する
 
-ODBC を使用して Microsoft Power BI を Azure HDInsight に接続し、Hive データを視覚化する方法について説明します。 このチュートリアルでは、hivesampletable Hive テーブルから Power BI にデータを読み込みます。 Hive テーブルには、携帯電話の使用データが含まれます。 その使用データを世界地図に示します。
+ODBC を使用して Microsoft Power BI を Azure HDInsight に接続し、Hive データを視覚化する方法について説明します。 
+
+>[!IMPORTANT]
+> Power BI Desktop の汎用 ODBC コネクタを介してインポートするために、Hive ODBC ドライバーを利用することができます。 ただし、Hive クエリ エンジンの非対話的な性質を与えられた BI ワークロードに対しては、この方法はお勧めしません。 この場合は、[HDInsight 対話型クエリ コネクタ](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)および [HDInsight Spark コネクタ](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)を選択した方が、良いパフォーマンスを得られます。
+
+このチュートリアルでは、hivesampletable Hive テーブルから Power BI にデータを読み込みます。 Hive テーブルには、携帯電話の使用データが含まれます。 その使用データを世界地図に示します。
 
 ![HDInsight Power BI の地図レポート](./media/apache-hadoop-connect-hive-power-bi/hdinsight-power-bi-visualization.png)
 
 この情報は、新しい[対話型クエリ](../interactive-query/apache-interactive-query-get-started.md) クラスター タイプにも適用されます。 直接クエリを使用して HDInsight 対話型クエリに接続する方法については、「[Azure HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Hive データを視覚化する](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md)」をご覧ください。
+
+
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。

@@ -1,12 +1,12 @@
 ---
-title: "Azure Machine Learning でのディープ ラーニングを使った感情分析 | Microsoft Docs"
-description: "Azure ML Workbench でディープ ラーニングを使って感情分析を行う方法を説明します。"
+title: Azure Machine Learning でのディープ ラーニングを使った感情分析 | Microsoft Docs
+description: Azure ML Workbench でディープ ラーニングを使って感情分析を行う方法を説明します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: miprasad
 manager: kristin.tolle
 editor: miprasad
-ms.assetid: 
+ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 3b0a5bfc911f3edf91367cbf4fde907cbf98e114
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ead8edcefa8705af82f4b223512a671c1245718a
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Azure Machine Learning でのディープ ラーニングを使った感情分析
 
 感情分析は、自然言語処理の分野ではよく知られているタスクです。 与えられた一連のテキストについて、その感情を判断します。 このソリューションの目的は、ディープ ラーニングを使用して映画のレビューの感情を予測することです。
 
-このソリューションは https://github.com/Azure/MachineLearningSamples-SentimentAnalysis にあります。
+ソリューションは、https://github.com/Azure/MachineLearningSamples-SentimentAnalysis に保存されています。
 
 ## <a name="link-to-the-gallery-github-repository"></a>ギャラリーの GitHub リポジトリへのリンク
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/01/2018
 |--|-----------|------|
 | 1 | [`SentimentAnalysisDataPreparation.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisDataPreparation.md) | 'data/sampleReviews.txt' |
 | 2 | [`SentimentAnalysisModelingKeras.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisModelingKeras.md) | 'SentimentExtraction.py' |
-| 4 | [`SentimentAnalysisOperationalization.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisOperationalization.md) | 'Operaionalization' |
+| 3 | [`SentimentAnalysisOperationalization.md`](https://github.com/Azure/MachineLearningSamples-SentimentAnalysis/blob/master/docs/SentimentAnalysisOperationalization.md) | 'Operaionalization' |
 
 ## <a name="conclusion"></a>まとめ
 

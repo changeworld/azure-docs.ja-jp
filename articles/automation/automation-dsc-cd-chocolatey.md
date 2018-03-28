@@ -1,24 +1,20 @@
 ---
-title: "Chocolatey を使用した Azure Automation DSC の継続的なデプロイメント | Microsoft Docs"
-description: "Azure Automation DSC と Chocolatey パッケージ マネージャーを使用した DevOps の継続的なデプロイメント。  完全な JSON の ARM テンプレートと PowerShell ソースの例です。"
+title: Chocolatey を使用した Azure Automation DSC の継続的なデプロイ
+description: Azure Automation DSC と Chocolatey パッケージ マネージャーを使用した DevOps の継続的なデプロイメント。  完全な JSON の ARM テンプレートと PowerShell ソースの例です。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: c0baa411-eb76-4f91-8d14-68f68b4805b6
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: na
-ms.date: 10/29/2016
-ms.author: golive
-ms.openlocfilehash: f9957d745ed910fbdcbeeee7d9ddb24a51da141b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: 8c1427bd40a6fd75a755c4709d88a4b8e4c55571
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-dsc-and-chocolatey"></a>使用例: Automation DSC と Chocolatey を使用した仮想マシンへの継続的なデプロイ
 DevOps 領域には、継続的な統合パイプラインのさまざまなポイントで役立つ多くのツールがあります。  Azure Automation Desired State Configuration (DSC) は、DevOps チームが採用できる新たに追加された待望のオプションです。  この記事では、Windows コンピューター用の継続的なデプロイメント (CD) の設定について説明します。  必要な数の Windows コンピューターをロール (Web サイトなど) に含め、さらにそこから追加ロールにも含めるために手法を簡単に拡張することができます。
