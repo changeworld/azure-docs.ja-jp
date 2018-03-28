@@ -1,24 +1,24 @@
 ---
-title: "Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題"
-description: "Azure Active Directory の管理対象サービス ID の既知の問題です。"
+title: Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題
+description: Azure Active Directory の管理対象サービス ID の既知の問題です。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 2097381a-a7ec-4e3b-b4ff-5d2fb17403b6
 ms.service: active-directory
-ms.devlang: 
+ms.devlang: ''
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: identity
 ms.date: 12/12/2017
 ms.author: daveba
-ms.openlocfilehash: bd931b220c417f91b47278c82707d38de5c7f65e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 84390f73fdac6554699dd43a0a36d16eace9a2bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題
 
@@ -37,6 +37,10 @@ ms.lasthandoff: 03/08/2018
 ### <a name="does-msi-work-with-the-active-directory-authentication-library-adal-or-the-microsoft-authentication-library-msal"></a>MSI は Active Directory Authentication Library (ADAL) または Microsoft Authentication Library (MSAL) で動作しますか。
 
 いいえ、MSI はまだ ADAL または MSAL と統合されていません。 MSI REST エンドポイントを使用した MSI トークンの取得の詳細については、「[トークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法](how-to-use-vm-token.md)」をご覧ください。
+
+### <a name="what-is-the-security-boundary-of-a-managed-service-identity"></a>管理対象サービス ID のセキュリティ境界は何ですか。
+
+ID のセキュリティ境界は、ID のアタッチ先リソースです。 たとえば、仮想マシン MSI のセキュリティ境界は仮想マシンです。 その VM で実行しているすべてのコードは、MSI エンドポイントを呼び出して、トークンを要求できます。 MSI をサポートする他のリソースでも同じように作動します。
 
 ### <a name="what-are-the-supported-linux-distributions"></a>どのような Linux ディストリビューションがサポートされていますか。
 

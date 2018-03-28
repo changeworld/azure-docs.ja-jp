@@ -1,11 +1,11 @@
 ---
-title: "Azure AD での証明書資格情報 | Microsoft Docs"
-description: "この記事では、アプリケーションを認証するための証明書資格情報の登録と使用について説明します"
+title: Azure AD での証明書資格情報 | Microsoft Docs
+description: この記事では、アプリケーションを認証するための証明書資格情報の登録と使用について説明します
 services: active-directory
 documentationcenter: .net
 author: navyasric
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 88f0c64a-25f7-4974-aca2-2acadc9acbd8
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: d05456912324c06a0895cd4cf049b60c9d126904
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 
@@ -32,7 +32,7 @@ Azure Active Directory では、OAuth 2.0 クライアント資格情報の付�
 #### <a name="header"></a>ヘッダー
 
 | パラメーター |  注記 |
-| --- | --- | --- |
+| --- | --- |
 | `alg` | **RS256** です |
 | `typ` | **JWT** です |
 | `x5t` | X.509 証明書 SHA-1 サムプリントです |
@@ -40,8 +40,8 @@ Azure Active Directory では、OAuth 2.0 クライアント資格情報の付�
 #### <a name="claims-payload"></a>要求 (ペイロード)
 
 | パラメーター |  注記 |
-| --- | --- | --- |
-| `aud` | 対象: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** です |
+| --- | --- |
+| `aud` | 対象ユーザー: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** である必要があります。 |
 | `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。|
 | `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) です |
 | `jti` | GUID: JWT ID |
@@ -49,9 +49,11 @@ Azure Active Directory では、OAuth 2.0 クライアント資格情報の付�
 | `sub` | 件名: `iss` については、client_id (クライアント サービスのアプリケーション ID) です |
 
 #### <a name="signature"></a>署名
+
 署名は、[JSON Web トークン RFC7519 仕様](https://tools.ietf.org/html/rfc7519)の説明に従って、証明書を適用することで計算されます
 
 ### <a name="example-of-a-decoded-jwt-assertion"></a>デコードされた JWT アサーションの例
+
 ```
 {
   "alg": "RS256",
@@ -73,6 +75,7 @@ Azure Active Directory では、OAuth 2.0 クライアント資格情報の付�
 ```
 
 ### <a name="example-of-an-encoded-jwt-assertion"></a>エンコードされた JWT アサーションの例
+
 次の文字列は、エンコードされたアサーションの例です。 よく見ると、ピリオド (.) で区切られた 3 つのセクションがあることがわかります。
 最初のセクションはヘッダーを、2 番目のセクションはペイロードをエンコードします。最後のセクションは、最初の 2 つのセクションのコンテンツの証明書によって計算された署名です。
 ```
@@ -81,14 +84,17 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 ```
 
 ### <a name="register-your-certificate-with-azure-ad"></a>Azure AD に証明書を登録する
+
 Azure AD で証明書資格情報をクライアント アプリケーションに関連付けるには、アプリケーション マニフェストを編集する必要があります。
 証明書を入手したら、次を計算する必要があります。
+
 - `$base64Thumbprint`。証明書ハッシュの base64 エンコード
 - `$base64Value`。証明書生データの base64 エンコード
 
 また、GUID を指定して、アプリケーション マニフェストでキーを特定する必要もあります (`$keyId`)。
 
 クライアント アプリケーションの Azure アプリ登録で、アプリケーション マニフェストを開き、次のスキーマを使用して *keyCredentials* プロパティを新しい証明書情報に置き換えます。
+
 ```
 "keyCredentials": [
     {

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/07/2018
+ms.date: 03/13/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: ba93e1b597bb6bdb752563f2873b8e0c5f7a8181
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e65371396b91c1dc97f504bac8b969093f5c518
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Azure Active Directory の条件付きアクセス設定に関するリファレンス
 
@@ -164,24 +164,25 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 この設定は、以下のモバイル アプリおよびデスクトップ クライアントからのアクセス試行に影響を与えます。 
 
 
-|クライアント アプリ|対象サービス|プラットフォーム|
-|---|---|---|
-|Azure リモート アプリ|Azure Remote App サービス|Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X|
-|Dynamics CRM アプリ|Dynamics CRM|Windows 10、Windows 8.1、Windows 7、iOS、Android|
-|メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)|Office 365 Exchange Online|Windows 10|
-|アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。 |任意のマイ アプリ アプリ サービス|Android および iOS|
-|Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する|Microsoft Teams|Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS |
-|Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)|Office 365 SharePoint Online|Windows 8.1、Windows 7|
-|Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定|Office 365 SharePoint Online|Windows 10|
-|Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定|Office 365 SharePoint Online|Mac OS X|
-|Office モバイル アプリ|Office 365 SharePoint Online|Android、iOS|
-|Office Yammer アプリ|Office 365 Yammer|Windows 10、iOS、Android|
-|Outlook 2016 (Office for macOS)|Office 365 Exchange Online|Mac OS X|
-|Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)|Office 365 Exchange Online|Windows 8.1、Windows 7|
-|Outlook Mobile アプリ|Office 365 Exchange Online|Android、iOS|
-|PowerBI アプリ|PowerBI サービス|Windows 10、Windows 8.1、Windows 7、iOS|
-|Skype for Business|Office 365 Exchange Online|Android、IOS |
-|Visual Studio Team Services アプリ|Visual Studio Team Services|Windows 10、Windows 8.1、Windows 7、iOS、Android|
+| クライアント アプリ| 対象サービス| プラットフォーム |
+| --- | --- | --- |
+| Azure リモート アプリ| Azure Remote App サービス| Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X|
+| Dynamics CRM アプリ| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS、Android|
+| メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)| Office 365 Exchange Online| Windows 10|
+| アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス| Android および iOS|
+| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android、および macOS|
+| Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)| Office 365 SharePoint Online| Windows 8.1、Windows 7|
+| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定| Office 365 SharePoint Online| Windows 10|
+| Office 2016 for macOS (Word、Excel、PowerPoint、OneNote のみ)。 OneDrive for Business は将来サポート予定| Office 365 SharePoint Online| Mac OS X|
+| Office モバイル アプリ| Office 365 SharePoint Online| Android、iOS|
+| Office Yammer アプリ| Office 365 Yammer| Windows 10、iOS、Android|
+| Outlook 2016 (Office for macOS)| Office 365 Exchange Online| Mac OS X|
+| Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)| Office 365 Exchange Online| Windows 8.1、Windows 7|
+| Outlook Mobile アプリ| Office 365 Exchange Online| Android、iOS|
+| PowerBI アプリ| PowerBI サービス| Windows 10、Windows 8.1、Windows 7、Android、iOS|
+| Skype for Business| Office 365 Exchange Online| Android、IOS|
+| Visual Studio Team Services アプリ| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS、Android|
+
 
 
 ## <a name="approved-client-app-requirement"></a>承認されたクライアント アプリケーションの要件 
@@ -221,10 +222,6 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 - **[承認されたクライアント アプリが必要です]** 要件:
 
     - [デバイス プラットフォームの条件](#device-platforms-condition)については iOS と Android のみをサポートしています。
-
-    - [クライアント アプリの条件](#supported-browsers)の **[ブラウザー]** オプションはサポートしていません。
-    
-    - [クライアント アプリの条件](#supported-mobile-apps-and-desktop-clients)の **[モバイル アプリとデスクトップ クライアント]** オプションが選択されている場合、それに取って代わります。
 
 
 ## <a name="next-steps"></a>次の手順

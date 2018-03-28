@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Gateway で SSL ポリシーを構成する - PowerShell | Microsoft Docs"
-description: "このページでは、Azure Application Gateway で SSL ポリシーを構成する方法を説明します"
+title: Azure Application Gateway で SSL ポリシーを構成する - PowerShell | Microsoft Docs
+description: このページでは、Azure Application Gateway で SSL ポリシーを構成する方法を説明します
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: 407b62042d3f0d5c68234c4faeaa139c5e21b3a6
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: fa192ca1ee0dc5ee7190b6c63b64297c7406291d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configure-ssl-policy-versions-and-cipher-suites-on-application-gateway"></a>Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する
 
@@ -75,7 +75,7 @@ AvailableProtocols:
 
 ## <a name="list-pre-defined-ssl-policies"></a>定義済み SSL ポリシーの一覧表示
 
-アプリケーション ゲートウェイには、3 つの使用可能な定義済みポリシーがあります。 これらのポリシーは `Get-AzureRmApplicationGatewaySslPredefinedPolicy` コマンドレットで取得します。 各ポリシーには、それぞれ異なるプロトコルのバージョンと有効な暗号スイートがあります。 これらの定義済みポリシーを使用して、アプリケーション ゲートウェイですばやく SSL ポリシーを構成できます。 固有の SSL ポリシーが定義されていない場合は、既定で **AppGwSslPolicy20170401** が選択されます。
+アプリケーション ゲートウェイには、3 つの使用可能な定義済みポリシーがあります。 これらのポリシーは `Get-AzureRmApplicationGatewaySslPredefinedPolicy` コマンドレットで取得します。 各ポリシーには、それぞれ異なるプロトコルのバージョンと有効な暗号スイートがあります。 これらの定義済みポリシーを使用して、アプリケーション ゲートウェイですばやく SSL ポリシーを構成できます。 固有の SSL ポリシーが定義されていない場合は、既定で **AppGwSslPolicy20150501** が選択されます。
 
 次に `Get-AzureRmApplicationGatewaySslPredefinedPolicy` の実行例を示します。
 

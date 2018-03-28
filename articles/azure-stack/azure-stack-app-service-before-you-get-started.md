@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: anwestg
-ms.openlocfilehash: 3261a312cde9ebdf41f6dadb82c14d108715f8f7
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5323fe505adfd9b3495dd85ce41d6f141125184b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
@@ -47,9 +47,9 @@ Azure App Service on Azure Stack をデプロイする前に、この記事に�
 
 ## <a name="high-availability"></a>高可用性
 
-Azure Stack の 1802 リリースでは、障害ドメインへのサポートが追加されたため、Azure App Service on Azure Stack の新規デプロイメントが障害ドメイン間で分散され、フォールト トレランスを実現します。  1802 更新プログラムのリリース前にデプロイされていた Azure App Service on Azure Stack の既存のデプロイメントについては、デプロイメントを再調整する方法をドキュメント (azure-stack-app-service-fault-domain-update.md) で確認してください。
+Azure Stack の 1802 リリースでは、障害ドメインへのサポートが追加されたため、Azure App Service on Azure Stack の新規デプロイメントが障害ドメイン間で分散され、フォールト トレランスを実現します。  1802 更新プログラムのリリース前に Azure Stack に展開されていた Azure App Service の既存の展開の場合は、[こちらのドキュメント](azure-stack-app-service-fault-domain-update.md)で展開を再調整する方法を確認してください。
 
-高可用性のための Azure App Service on Azure Stack に加えて、必要なファイル サーバーと SQL Server インスタンスを高可用性構成でデプロイします。 
+高可用性のための Azure App Service on Azure Stack に加えて、必要なファイル サーバーと SQL Server インスタンスを高可用性構成で展開します。 
 
 ## <a name="get-certificates"></a>証明書を取得する
 

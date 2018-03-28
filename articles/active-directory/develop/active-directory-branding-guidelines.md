@@ -1,11 +1,11 @@
 ---
-title: "アプリケーションのブランド化ガイドライン | Microsoft Docs"
-description: "Azure Active Directory の開発者向けリソースの包括的なガイド"
+title: アプリケーションのブランド化ガイドライン | Microsoft Docs
+description: Azure Active Directory の開発者向けリソースの包括的なガイド
 services: active-directory
 documentationcenter: dev-center-name
 author: skwan
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.devlang: na
@@ -15,14 +15,14 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
-ms.openlocfilehash: 51adb13e15312130841c065f5678209508457559
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: e5ce970913d767dbf6b13381cf18c1f7b05d252f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
-このトピックでは、Azure Active Directory (Azure AD) でアプリケーションを開発するときに使用するブランド化ガイドラインについて説明します。 Azure AD で管理されている職場または学校のアカウント、あるいは個人のアカウントをサインアップやサインインに使用したいと考えているアプリケーションの利用者向けの案内としてお役立てください。
+この記事では、Azure Active Directory (Azure AD) でアプリケーションを開発するときに使用するブランド化ガイドラインについて説明します。 Azure AD で管理されている職場または学校のアカウント、あるいは個人のアカウントをサインアップやサインインに使用したいと考えているアプリケーションの利用者向けの案内としてお役立てください。
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>Microsoft の個人アカウントと職場または学校アカウント
 Microsoft は次の 2 種類のユーザー アカウントを管理しています。
@@ -44,7 +44,7 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 ## <a name="signing-up-and-signing-in-with-azure-ad"></a>Azure AD によるサインアップとサインイン
 アプリケーションでは、サインアップとサインインに別々のパスを示すことがあります。以下のセクションでは、この 2 つのシナリオの表示に関するガイダンスを示します。
 
-**アプリケーションがエンド ユーザーのサインアップをサポートしている場合 (無料評価版やフリーミアム モデルなど)**: ユーザーが、その職場のアカウントまたは個人のアカウントを使用してアプリケーションにアクセスできるようにするための**サインイン** ボタンを表示できます。 Azure AD は、ユーザーがアプリケーションに初めてアクセスしたときに同意プロンプトを表示します。
+**アプリケーションがエンド ユーザーのサインアップをサポートしている場合 (無料試用版やフリーミアム モデルなど)**: ユーザーが、その職場のアカウントまたは個人のアカウントを使用してアプリケーションにアクセスできるようにするための**サインイン** ボタンを表示できます。 Azure AD は、ユーザーがアプリケーションに初めてアクセスしたときに同意プロンプトを表示します。
 
 **アプリケーションに管理者だけが同意できるアクセス許可が必要な場合、またはアプリケーションに組織のライセンスが必要な場合**: 管理者による取得をユーザー サインインから分離する必要があります。 **"このアプリケーションを入手" ボタン** で管理者をサインインにリダイレクトし、組織のユーザーに代わって同意を与えるよう求めます。 これには、アプリケーションの同意プロンプトをエンド ユーザーに表示しないという付加的なメリットもあります。
 
@@ -55,9 +55,9 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 ![アプリケーションの種類とシナリオ](./media/active-directory-branding-guidelines/add-to-my-org.png)
 
-ただし、ボタンに頼るのではなく、説明文を作成することをお勧めします。 次に例を示します。
+ただし、ボタンに頼るのではなく、説明文を作成することをお勧めします。 例: 
 
-> 「*Office 365 や Microsoft の他のビジネス サービスを既にお使いの場合は、組織のデータへのアクセス権を <your_app_name> に簡単に付与できます。これにより、ユーザーは既存の職場アカウントを使用して <your_app_name> にアクセスできるようになります。*」
+> 「*Office 365 や Microsoft の他のビジネス サービスを既にお使いの場合は、組織のデータへのアクセス権を <your_app_name> に付与できます。これにより、ユーザーは既存の職場アカウントを使用して <your_app_name> にアクセスできるようになります。*」
 > 
 > 
 
@@ -77,10 +77,12 @@ Microsoft は、Azure または Active Directory のブランド名をエンド 
 
 ![アプリケーションの種類とシナリオ](./media/active-directory-branding-guidelines/sign-in-dark.png)
 
+これらのイメージをアプリで使うためにダウンロードするには、使用するものを右クリックして、コンピューターに保存します。 
+
 ## <a name="branding-dos-and-donts"></a>ブランド化に関する注意事項
 "職場または学校アカウント" は、"Microsoft でサインイン" ボタンと組み合わせて**使用してください**。補足的な説明を与えることで、その使用の可否をエンド ユーザーが認識しやすいようにします。 "企業アカウント"、"ビジネス アカウント"、"会社アカウント" などの言葉は**使用しないでください**。
 
-"Office 365 ID" または"Azure ID" を使用し**ないでください** 。 Office 365 は、Azure AD を認証に使用しない Microsoft のコンシューマー向け製品の名前でもあります。
+"Office 365 ID" または"Azure ID" を使用し**ないでください**。 Office 365 は、Azure AD を認証に使用しない Microsoft のコンシューマー向け製品の名前でもあります。
 
 Microsoft のロゴを変更 **しない** でください。
 

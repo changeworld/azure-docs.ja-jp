@@ -1,84 +1,90 @@
 ---
-title: "Visual Studio MVC プロジェクトで Azure AD の使用を開始する | Microsoft Docs"
-description: "Visual Studio 接続済みサービスを使用して Azure Active Directory を接続または作成した後に、MVC プロジェクトで Azure AD の使用を開始する方法について説明します。"
+title: Visual Studio .NET MVC プロジェクトで Azure AD の使用を開始する | Microsoft Docs
+description: Visual Studio 接続済みサービスを使用して Azure Active Directory を接続または作成した後に、.NET MVC プロジェクトで Azure AD の使用を開始する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
-manager: mtillman
-editor: 
+manager: ghogen
+editor: ''
 ms.assetid: 1c8b6a58-5144-4965-a905-625b9ee7b22b
 ms.service: active-directory
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 03/12/2018
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: efe12842cf0dd5ac865d95902f53e68affcbe54f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 07fa4655d9e7ad74cae33391d55c7c9be1d446a6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="getting-started-with-azure-active-directory-and-visual-studio-connected-services-mvc-projects"></a>Azure Active Directory と Visual Studio 接続済みサービスの概要 (MVC プロジェクト)
+# <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Azure Active Directory (ASP.NET MVC プロジェクト) の使用の開始
+
 > [!div class="op_single_selector"]
-> * [作業の開始](vs-active-directory-dotnet-getting-started.md)
-> * [変更内容](vs-active-directory-dotnet-what-happened.md)
-> 
-> 
+> - [作業の開始](vs-active-directory-dotnet-getting-started.md)
+> - [変更内容](vs-active-directory-dotnet-what-happened.md)
+
+この記事では、Visual Studio の **[プロジェクト] > [接続済みサービス]** コマンドを使用して Active Directory を ASP.NET MVC プロジェクトに追加した後のガイダンスを説明します。 プロジェクトにサービスをまだ追加していない場合は、いつでも行うことができます。
+
+接続済みサービスを追加したときにプロジェクトに加えられる変更について詳しくは、[MVC プロジェクトの変更点](vs-active-directory-dotnet-what-happened.md)に関する記事をご覧ください。
 
 ## <a name="requiring-authentication-to-access-controllers"></a>コントローラーへのアクセスに対して認証を要求する
-プロジェクトに含まれるすべてのコントローラーには、 **Authorize** 属性が設定されています。 この属性により、ユーザーがこれらのコントローラーにアクセスする際に認証が求められます。 これらのコントローラーに匿名でアクセスできるようにするには、コントローラーからこの属性を削除します。 より細かなレベルでアクセス許可を設定するには、コントローラー クラスではなく、認証を必要とするそれぞれのメソッドに対してこの属性を割り当てます。
+
+プロジェクトに含まれるすべてのコントローラーには、 `[Authorize]` 属性が設定されています。 この属性により、ユーザーがこれらのコントローラーにアクセスする際に認証が求められます。 これらのコントローラーに匿名でアクセスできるようにするには、コントローラーからこの属性を削除します。 より細かなレベルでアクセス許可を設定するには、コントローラー クラスではなく、認証を必要とするそれぞれのメソッドに対してこの属性を割り当てます。
 
 ## <a name="adding-signin--signout-controls"></a>SignIn/SignOut コントロールを追加する
-ビューに SignIn/SignOut コントロールを追加するには、**_LoginPartial.cshtml** 部分ビューを使用してこの機能をいずれかのビューに追加します。 この機能を標準 **_Layout.cshtml** ビューに追加した例を次に示します。 (div class="navbar-collapse collapse" の最後の要素にご注目ください):
 
-<pre>
-    &lt;!DOCTYPE html&gt; 
-     &lt;html&gt; 
-     &lt;head&gt; 
-         &lt;meta charset="utf-8" /&gt; 
-        &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt; 
-        &lt;title&gt;@ViewBag.Title - My ASP.NET Application&lt;/title&gt; 
-        @Styles.Render("~/Content/css") 
-        @Scripts.Render("~/bundles/modernizr") 
-    &lt;/head&gt; 
-    &lt;body&gt; 
-        &lt;div class="navbar navbar-inverse navbar-fixed-top"&gt; 
-            &lt;div class="container"&gt; 
-                &lt;div class="navbar-header"&gt; 
-                    &lt;button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse"&gt; 
-                        &lt;span class="icon-bar"&gt;&lt;/span&gt; 
-                        &lt;span class="icon-bar"&gt;&lt;/span&gt; 
-                        &lt;span class="icon-bar"&gt;&lt;/span&gt; 
-                    &lt;/button&gt; 
-                    @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" }) 
-                &lt;/div&gt; 
-                &lt;div class="navbar-collapse collapse"&gt; 
-                    &lt;ul class="nav navbar-nav"&gt; 
-                        &lt;li&gt;@Html.ActionLink("Home", "Index", "Home")&lt;/li&gt; 
-                        &lt;li&gt;@Html.ActionLink("About", "About", "Home")&lt;/li&gt; 
-                        &lt;li&gt;@Html.ActionLink("Contact", "Contact", "Home")&lt;/li&gt; 
-                    &lt;/ul&gt; 
-                    <span style="background-color:yellow">@Html.Partial("_LoginPartial")</span> 
-                &lt;/div&gt; 
-            &lt;/div&gt; 
-        &lt;/div&gt; 
-        &lt;div class="container body-content"&gt; 
-            @RenderBody() 
-            &lt;hr /&gt; 
-            &lt;footer&gt; 
-                &lt;p&gt;&amp;copy; @DateTime.Now.Year - My ASP.NET Application&lt;/p&gt; 
-            &lt;/footer&gt; 
-        &lt;/div&gt; 
-        @Scripts.Render("~/bundles/jquery") 
-        @Scripts.Render("~/bundles/bootstrap") 
-        @RenderSection("scripts", required: false) 
-    &lt;/body&gt; 
-    &lt;/html&gt;
-</pre>
+ビューに SignIn/SignOut コントロールを追加するには、`_LoginPartial.cshtml` 部分ビューを使用してこの機能をいずれかのビューに追加します。 この機能を標準 `_Layout.cshtml` ビューに追加した例を次に示します。 (div class="navbar-collapse collapse" の最後の要素にご注目ください):
 
-## <a name="next-steps"></a>次のステップ
-- [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/) 
+```html
+<!DOCTYPE html>
+ <html>
+ <head>
+     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody() 
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+```
 
+## <a name="next-steps"></a>次の手順
+
+- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](guidedsetups/active-directory-aspnetwebapp-v1.md)

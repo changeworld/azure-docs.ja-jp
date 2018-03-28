@@ -2,25 +2,19 @@
 title: Azure SQL Database のセキュリティの概要 | Microsoft Docs
 description: Azure SQL Database と SQL Server のセキュリティについて説明します。クラウドとオンプレミス SQL Server の違いなどが含まれます。
 services: sql-database
-documentationcenter: ''
 author: giladm
-manager: shaik
+manager: craigg
 ms.reviewer: carlrab
-editor: ''
-ms.assetid: a012bb85-7fb4-4fde-a2fc-cf426c0a56bb
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
-ms.date: 01/29/2018
+ms.date: 03/12/2018
 ms.author: giladm
-ms.openlocfilehash: 41051944af863c4c50595ea843e2adf3513b3a12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1dc34f021fa6482c65cce0e922951ae329987c43
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="securing-your-sql-database"></a>SQL Database の保護
 
@@ -62,7 +56,6 @@ SQL Database では、ファイアウォール規則、ユーザーに ID の入
 
 ### <a name="authentication"></a>認証
 SQL データベース認証とは、データベースへの接続時に ID を証明する方法のことです。 SQL Database は、2 種類の認証をサポートしています。
-
 * **SQL 認証**。ユーザー名とパスワードを使用します。 データベースの論理サーバーを作成したときに、ユーザー名とパスワードによる "サーバー管理" ログインを指定したとします。 これらの資格情報を使用すると、データベース所有者、つまり "dbo" として、そのサーバーにある任意のデータベースを認証できます。 
 * **Azure Active Directory 認証**。Azure Active Directory で管理されている ID を使用します。管理および統合されたドメインの場合にサポートされます。 [可能であれば](https://msdn.microsoft.com/library/ms144284.aspx)、Active Directory 認証 (統合セキュリティ) を使用します。 Azure Active Directory 認証を使用する場合は、"Azure AD 管理者" という、Azure AD ユーザーとグループを管理できるサーバー管理者を別に作成する必要があります。 この管理者は、通常のサーバー管理者が実行できるすべての操作も実行できます。 Azure AD 管理者を作成して Azure Active Directory 認証を有効にする方法のチュートリアルについては、「 [Azure Active Directory の認証を使用して SQL Database に接続する](sql-database-aad-authentication.md) 」を参照してください。
 
@@ -86,6 +79,21 @@ SQL Database Auditing は、データベース イベントを Azure Storage ア
  
 ## <a name="compliance"></a>コンプライアンス
 アプリケーションがさまざまなセキュリティ要件を満たすために役立つ上記の機能以外にも、Azure SQL Database は定期的な監査に参加し、さまざまなコンプライアンス基準に認定されています。 詳細については、「[Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)」をご覧ください。ここから最新の [SQL Database コンプライアンス証明書](https://azure.microsoft.com/support/trust-center/services/)の一覧を入手できます。
+
+
+## <a name="security-management"></a>セキュリティ管理
+
+SQL Database には、データベース スキャン機能と [SQL の脆弱性評価](sql-vulnerability-assessment.md)を使用する一元化されたセキュリティ ダッシュボードがあるので、データのセキュリティ管理に役立ちます。
+
+**脆弱性評価**: [SQL の脆弱性評価](sql-vulnerability-assessment.md) (現在プレビュー中) は、Azure SQL Database に組み込まれている構成が簡単なツールです。潜在的なデータベースの脆弱性の検出、追跡、修復に役立ちます。 脆弱性評価では、データベースに対して脆弱性スキャンが実行され、レポートが生成されます。このレポートで、セキュリティの問題を解決し、データベースのセキュリティを強化できる実践的な手順を含め、セキュリティの状態を把握できます。 アクセス許可の構成、機能の構成、データベースの設定の許容されるベースラインを設定することで、環境に合わせて評価レポートをカスタマイズできます。 脆弱性評価は以下のために役立ちます。
+
+- データベース スキャン レポートが必要なコンプライアンス要件を満たします。 
+
+- データのプライバシー基準を満たします。 
+
+- 変更の追跡が困難な動的データベース環境を監視します。
+
+詳細については、「[SQL の脆弱性評価](sql-vulnerability-assessment.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,25 +1,25 @@
 ---
-title: "Azure Stack 用の Azure Marketplace アイテム | Microsoft Docs"
-description: "Azure Stack ではここで説明する Azure Marektplace アイテムを使うことができます。"
+title: Azure Stack 用の Azure Marketplace アイテム | Microsoft Docs
+description: Azure Stack ではここで説明する Azure Marektplace アイテムを使うことができます。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/09/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: c82ee87b341de4e85e2eab566f7a3c6fcffdace1
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: ae269c532773862e99884d84a05235cb904d13d4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Stack 用の Azure Marketplace アイテム
 
@@ -36,9 +36,11 @@ ms.lasthandoff: 02/28/2018
 |![](media/azure-stack-marketplace-azure-items/dsc.png) | [ PowerShell DSC 拡張機能 ](https://docs.microsoft.com/azure/virtual-machines/windows/extensions-dsc-overview)| この更新プログラムは、<b>PowerShell DSC 拡張機能のインボックス バージョンにダウンロードします。</b> | Microsoft | Windows |
 | ![](media/azure-stack-marketplace-azure-items/cse.png) | [ Microsoft マルウェア対策拡張機能 ](https://docs.microsoft.com/en-us/azure/security/azure-security-antimalware)| Azure 向け Microsoft マルウェア対策は、アプリケーションおよびテナント環境のための単一エージェント ソリューションであり、ユーザーの介入なしにバック グラウンドで実行するように作られています。 | Microsoft | Windows |
 | ![](media/azure-stack-marketplace-azure-items/dockerextension.png) | [Docker](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft.docker-arm) | Linux 仮想マシン用の Docker 拡張機能。 | Microsoft | Linux |
-| ![](media/azure-stack-marketplace-azure-items/cse.png) | [Linux 用 VM Access](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>この更新プログラムを、Linux 用 VMAccess 拡張機能のインボックス バージョンにダウンロードします。これは、Debian Linux VM を使う予定の場合に重要です。</b> | Microsoft | Linux |
+| ![](media/azure-stack-marketplace-azure-items/cse.png) | [Linux 用 VM Access](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/)| <b>この更新プログラムを、Linux 用 VMAccess 拡張機能のインボックス バージョンにダウンロードします。この更新プログラムは、Debian Linux VM を使う予定の場合に重要です。</b> | Microsoft | Linux |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [ Linux 用の Acronis Backup 拡張機能 ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-lin-arm) | Microsoft Azure 用の Acronis Backup 拡張機能は、データ保護製品のAcronis Backup ファミリーの一部です。 | Acronis International GmbH。 | Linux |
 | ![](media/azure-stack-marketplace-azure-items/acronis.png) | [ Windows 用の Acronis Backup 拡張機能 ](https://azuremarketplace.microsoft.com/marketplace/apps/Acronis.acronis-backup-win-arm) | Microsoft Azure 用の Acronis Backup 拡張機能は、データ保護製品のAcronis Backup ファミリーの一部です。 | Acronis International GmbH。 | Windows |
+| ![](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM Extension for Linux ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、暗号化します。 | Dell EMC | Linux |
+| ![](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM Extension for Windows ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、暗号化します。 | Dell EMC | Windows |
 
 ## <a name="microsoft-virtual-machine-images-and-solution-templates"></a>Microsoft 仮想マシン イメージおよびソリューション テンプレート
 
@@ -88,7 +90,7 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![](media/azure-stack-marketplace-azure-items/roguewave.png) | [CentOS-based 7.4-LVM](https://azuremarketplace.microsoft.com/marketplace/apps/RogueWave.CentOSbased74LVM) | この Linux のディストリビューションは CentOS に基づいており、Rogue Wave Software によって提供されます。 | Rogue Wave Software (以前の OpenLogic) |
 | ![](media/azure-stack-marketplace-azure-items/suse.png) | [SLES 12 SP3 (BYOS) ](https://azuremarketplace.microsoft.com/marketplace/apps/SUSE.SUSELinuxEnterpriseServer12SP3BringYourOwnSubscription) | SUSE Linux Enterprise Server 12 SP3。 | SUSE |
 
-## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>サード パーティの BYOL、無償版および試用版イメージ、およびソリューション テンプレート
+## <a name="third-party-byol-free-and-trial-images-and-solution-templates"></a>サードパーティの BYOL、無料、および試用版のイメージとソリューション テンプレート
 
 |  | 項目名 | [説明] | 発行元 |
 | --- | --- | --- | --- |
@@ -204,8 +206,12 @@ Microsoft Azure Stack では、次の Azure Marketplace 仮想マシンおよび
 | ![](media/azure-stack-marketplace-azure-items/x2enginesalescrm.png) | [X2Engine Sales CRM](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.x2enginesalescrm) | コンパクトなマーケティング、販売、および顧客サービス アプリケーション。 | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/xoops.png) | [Xoops](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.xoops) | CMS および動的な Web サイトを作成する Web ポータル プログラム。 | Bitnami |
 | ![](media/azure-stack-marketplace-azure-items/zurmo.png) | [Zurmo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.zurmo) | オープン ソースの CRM システム (Mobile、Social、および Gamified)。 | Bitnami |
+| ![](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Application Security Control Center](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-app-sec-control-center) | 複数の Barracuda Web Application Firewalls (WAF) を一元管理します。 | Barracuda Networks, Inc. |
+| ![](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Email Security Gateway](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.barracuda-email-security-gateway) | 受信電子メールによる脅威から保護する電子メール セキュリティ ゲートウェイです。 | Barracuda Networks, Inc. |
+| ![](media/azure-stack-marketplace-azure-items/barracuda.png) | [Barracuda Web Application Firewall (WAF)](https://azuremarketplace.microsoft.com/marketplace/apps/barracudanetworks.waf) | 自動化されたターゲット攻撃に対するセキュリティと DDoS 保護。 | Barracuda Networks, Inc. |
 | ![](media/azure-stack-marketplace-azure-items/checkpoint.png) | [Check Point vSEC セキュリティ管理](https://azuremarketplace.microsoft.com/marketplace/apps/checkpoint.vsec) | Check Point vSEC は、Azure 内の顧客の資産をマルウェアや高度な脅威から保護する高性能の多層脅威防止機能を提供します。 <b>両方の Check Point vSEC Marketplace アイテムをダウンロードしてください。</b> | Check Point |
 | ![](media/azure-stack-marketplace-azure-items/chefautomate.png) | [Chef Automate](https://azuremarketplace.microsoft.com/marketplace/apps/chef-software.chef-automate) | Chef Automate を使用して Continuous Automation Platform をビルド、デプロイ、管理します。 <b>両方の Chef Marketplace アイテムをダウンロードしてください</b> | Chef Software, Inc |
+| ![](media/azure-stack-marketplace-azure-items/cloudlink.png) | [ CloudLink SecureVM ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/cloudlink.cloudlink-securevm)  | 簡単かつ確実に VM を制御、監視、暗号化します。 <b>すべての CloudLink SecureVM 項目をダウンロードします。<b> | Dell EMC |
 | ![](media/azure-stack-marketplace-azure-items/hortonworks.png) | [Hortonworks Data Platform (HDP) サンドボックス](https://azuremarketplace.microsoft.com/marketplace/apps/hortonworks.hortonworks-sandbox) | HDP 2.5 を使用した、100% オープン ソースのプラットフォーム (Hadoop、Spark、Storm、HBase、Kafka、Hive、Ambari に対応)。 | Hortonworks |
 | ![](media/azure-stack-marketplace-azure-items/kemp.png) | [LoadMaster ロード バランサー ADC コンテンツ スイッチ](https://azuremarketplace.microsoft.com/marketplace/apps/kemptech.vlm-azure) | レイヤー 4 ～ 7 のアプリケーション配信コントローラー (ADC) ロード バランサー、コンテンツ スイッチ、および Traffic Manager。 | KEMP Technologies Inc. |
 | ![](media/azure-stack-marketplace-azure-items/noobaa.png) | [NooBaa Hybrid AWS S3 互換 - Community Edition](https://azuremarketplace.microsoft.com/marketplace/apps/noobaa.noobaa-hybrid-s3-archive-05) | パブリックとオンプレミスのキャパシティ リソースに対応した、S3 互換のストレージ サービス。 | NooBaa |

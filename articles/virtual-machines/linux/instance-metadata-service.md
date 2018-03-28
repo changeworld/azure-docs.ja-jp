@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: a291aaf8456fd800edcf5a2df5d68c386d9f87c1
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5c65157d1fdb0effd272437cc92c305ca4d1a510
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-instance-metadata-service"></a>Azure Instance Metadata Service
 
@@ -36,7 +36,7 @@ Azure の Instance Metadata Service は、[Azure Resource Manager](https://docs.
 
 リージョン                                        | 提供状況                                 | サポートされているバージョン
 -----------------------------------------------|-----------------------------------------------|-----------------
-[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01(このバージョンは UK リージョンでは使用できません)
+[一般公開されている全世界のすべての Azure リージョン](https://azure.microsoft.com/regions/)     | 一般公開   | 2017-04-02、2017-08-01、2017-12-01
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | 一般公開 | 2017-04-02、2017-08-01
 [Azure China](https://www.azure.cn/)                                                           | 一般公開 | 2017-04-02、2017-08-01
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | 一般公開 | 2017-04-02、2017-08-01
@@ -405,7 +405,7 @@ Visual Basic | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.vb
 5. `500 Internal Server Error` エラーが発生します。なぜですか。
    * 指数バックオフ システムに基づいて、要求を再試行してください。 問題が解決しない場合は、Azure サポートにお問い合わせください。
 6. その他の質問/コメントはどこで共有すればいいですか。
-   * http://feedback.azure.com でコメントをお送りください。
+   * コメントは http://feedback.azure.com で送信してください。
 7. このサービスは仮想マシン スケール セット インスタンスで機能しますか。
    * はい。Metadata Service は、スケール セット インスタンスで利用できます。 
 8. このサービスのサポートを受けるにはどうすればよいですか。

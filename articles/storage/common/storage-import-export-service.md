@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: muralikk
-ms.openlocfilehash: 7eaf4c3c9b390e87dd8494cd6bfb2ea155451608
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d096d6fd4664fecc9c759d683ed79e76cda9b6af
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
 この記事では、Azure Import/Export サービスを使用してディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage と Azure Files に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure Files にインポートできます。 
@@ -29,15 +29,15 @@ ms.lasthandoff: 03/12/2018
 2.  データの合計サイズに応じて、2.5 インチ SSD か、2.5 (または 3.5) インチ SATA II または III ハード ディスク ドライブを必要な数だけ調達します。
 3.  SATA または外部 USB アダプターを使用して、ハード ドライブを Windows コンピューターに直接接続します。
 1.  各ハード ドライブ上に 1 つの NTFS ボリュームを作成し、このボリュームにドライブ文字を割り当てます。 マウントポイントは不要です。
-2.  Windows コンピューターで暗号化を有効にするには、NTFS ボリュームで BitLocker の暗号化を有効にします。 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx の手順に従ってください。
+2.  Windows コンピューターで暗号化を有効にするには、NTFS ボリュームで BitLocker の暗号化を有効にします。 https://technet.microsoft.com/en-us/library/cc731549(v=ws.10).aspx の手順を使います。
 3.  コピーと貼り付けまたはドラッグ アンド ドロップまたは Robocopy または任意のそのようなツールを使用して、ディスク上のこれらの暗号化された 1 つの NTFS ボリュームにデータを完全にコピーします。
-7.  https://www.microsoft.com/en-us/download/details.aspx?id=42659 から WAImportExport V1 をダウンロードします。
+7.  https://www.microsoft.com/en-us/download/details.aspx?id=42659 から WAImportExport V1 をダウンロードします
 8.  既定のフォルダー waimportexportv1 に解凍します。 たとえば、C:\WaImportExportV1 などです。  
 9.  管理者として実行し、PowerShell またはコマンド ラインを開き、解凍したフォルダーにディレクトリを変更します。 たとえば、cd C:\WaImportExportV1 などです。
 10. 次のコマンド ラインをテキスト エディターにコピーし、それを編集して、コマンド ラインを作成します。
 
     ```
-    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ 
+    ./WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#1 /sk:***== /t:D /bk:*** /srcdir:D:\ /dstdir:ContainerName/ /skipwrite 
     ```
     
     これらのコマンド ライン オプションについては次の表で説明します。
@@ -47,16 +47,16 @@ ms.lasthandoff: 03/12/2018
     |/j:     |ジャーナル ファイルの名前 (拡張子は .jrn)。 ジャーナル ファイルはドライブごとに 1 つ生成されます。 ディスクのシリアル番号をジャーナル ファイル名と使用することをお勧めします。         |
     |/sk:     |Azure Storage アカウント キー。         |
     |/t:     |送付するディスクのドライブ文字。 例: ドライブ `D`。         |
-    |/bk:     |ドライブの BitLocker キー。         |
+    |/bk:     |ドライブの BitLocker キー。 ` manage-bde -protectors -get D: ` の出力からの数値パスワードです      |
     |/srcdir:     |送付するディスクのドライブ文字の末尾に `:\` を付けます。 たとえば、「`D:\`」のように入力します。         |
     |/dstdir:     |Azure Storage 内の保存先コンテナーの名前         |
-
+    |/skipwrite:     |コピーする必要がある新しいデータがなく、ディスク上の既存のデータを準備する必要があることを指定するオプション         |
 1. 送付する必要があるディスクごとに手順 10 を繰り返します。
 2. /j: パラメーターで指定された名前のジャーナル ファイルは、コマンド ラインの実行のたびに作成されます。
 
 ### <a name="step-2-create-an-import-job-on-azure-portal"></a>手順 2: Azure Portal でインポート ジョブを作成する
 
-1. https://portal.azure.com/ にログオンし、[その他のサービス] 、[ストレージ]、[インポート/エクスポート ジョブ] の順に移動して、**[インポート/エクスポート ジョブの作成]** をクリックします。
+1. https://portal.azure.com/ にログオンし、[その他のサービス]、[ストレージ]、[インポート/エクスポート ジョブ] の順に移動して、**[インポート/エクスポート ジョブの作成]** をクリックします。
 
 2. [基本] セクションで、[Azure へインポート] を選択してジョブ名の文字列を入力し、サブスクリプションを選択してリソース グループを入力または選択します。 インポート ジョブのわかりやすい名前を入力します。 名前に含めることができるのは、アルファベットの小文字、数字、ハイフン、アンダースコアだけです。また、先頭の文字はアルファベットにします。スペースを含めることはできません。 ここで入力した名前を使って、ジョブの進行中および完了後にジョブを追跡します。
 

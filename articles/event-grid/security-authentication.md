@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid のセキュリティと認証"
-description: "Azure Event Grid とその概念について説明します。"
+title: Azure Event Grid のセキュリティと認証
+description: Azure Event Grid とその概念について説明します。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d2b32df6e4b931539eac34d09135ea33069b936
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0b7ef71cf940f82f46a7f053e5c9f7ef64342b6e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid のセキュリティと認証 
 
@@ -24,7 +24,7 @@ Azure Event Grid には、3 種類の認証があります。
 
 ## <a name="webhook-event-delivery"></a>webHook のイベント配信
 
-webhook は、Azure Event Grid からリアルタイムでイベントを受信する多数ある方法の 1 つです。 新しいイベントの配信が可能になるたびに、Event Grid webhook は、本文にイベントが含まれる HTTP 要求を構成済み HTTP エンドポイントに送信します。
+webhook は、Azure Event Grid からイベントを受信する多数ある方法の 1 つです。 新しいイベントの準備ができるたびに、Event Grid webhook は、本文にイベントが含まれる HTTP 要求を構成済み HTTP エンドポイントに送信します。
 
 Event Grid に独自の webhook エンドポイントを登録すると、エンドポイントの所有権を証明するために、単純な検証コードを含む POST 要求が送信されます。 アプリからは検証コードをエコーで応答する必要があります。 Event Grid は、検証に合格していない webhook エンドポイントにイベントを配信しません。
 
@@ -34,6 +34,7 @@ Event Grid に独自の webhook エンドポイントを登録すると、エン
 * このイベントには、ヘッダー値 "Aeg-Event-Type: SubscriptionValidation" が含まれています。
 * イベント本文のスキーマは、他の Event Grid イベントと同じです。
 * イベント データには、ランダムに生成された文字列を持つ "validationCode" プロパティが含まれています。 たとえば、"validationCode: acb13…" のようなプロパティです。
+* 配列には、検証イベントのみが含まれています。 その他のイベントは、検証コードをエコーで返した後、別の要求で送信されます。
 
 SubscriptionValidationEvent の例を以下に示します。
 
@@ -52,7 +53,7 @@ SubscriptionValidationEvent の例を以下に示します。
 }]
 ```
 
-エンドポイントの所有権を証明するために、次の例に示すように、validationResponse プロパティで検証コードをエコーで返します。
+エンドポイントの所有権を証明するには、次の例に示すように、validationResponse プロパティで検証コードをエコーで返します。
 
 ```json
 {
@@ -65,7 +66,7 @@ SubscriptionValidationEvent の例を以下に示します。
 
 イベント サブスクリプションを編集すると、Azure [CLI](https://docs.microsoft.com/en-us/cli/azure?view=azure-cli-latest) で [--include-full-endpoint-url](https://docs.microsoft.com/en-us/cli/azure/eventgrid/event-subscription?view=azure-cli-latest#az_eventgrid_event_subscription_show) パラメーターを使用した場合を除き、クエリ パラメーターが表示されなくなるか、返されなくなります。
 
-最後に、Azure Event Grid がサポートするのは HTTPS webhook エンドポイントのみであることに中尉してください。
+最後に、Azure Event Grid がサポートするのは HTTPS webhook エンドポイントのみであることにご注意ください。
 
 ## <a name="event-subscription"></a>イベント サブスクリプション
 
@@ -103,7 +104,7 @@ aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==
 
 Event Grid の SAS トークンには、リソース、有効期限、および署名が含まれます。 SAS トークンの形式は `r={resource}&e={expiration}&s={signature}` です。
 
-リソースは、イベントを送信するトピックのパスです。 たとえば、有効なリソース パスは次のとおりです。`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
+リソースは、イベントを送信する Event Grid グリッド トピックのパスです。 たとえば、有効なリソース パスは次のとおりです。`https://<yourtopic>.<region>.eventgrid.azure.net/eventGrid/api/events`
 
 キーから署名を生成します。
 
@@ -140,7 +141,7 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 ## <a name="management-access-control"></a>管理アクセス制御
 
-Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス確認 (RBAC) を利用します。
+Azure Event Grid を使用すると、イベント サブスクリプションの一覧表示、新しいサブスクリプションの作成、キーの生成など、多様な管理操作を実行する各ユーザーに付与するアクセス レベルを制御できます。 Event Grid は、Azure のロール ベースのアクセス確認 (RBAC) を使います。
 
 ### <a name="operation-types"></a>操作の種類
 
