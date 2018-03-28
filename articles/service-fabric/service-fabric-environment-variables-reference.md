@@ -1,10 +1,10 @@
 ---
-title: "Azure Service Fabric の環境変数 | Microsoft Docs"
-description: "Service Fabric の環境変数に関するリファレンス ドキュメントです"
+title: Azure Service Fabric の環境変数 | Microsoft Docs
+description: Service Fabric の環境変数に関するリファレンス ドキュメントです
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/07/2017
 ms.author: mikhegn
-ms.openlocfilehash: a4bf082f5bd5a57bb5eb7641a25176e3a06503a3
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: a9faefb43b9d5da81dddef8f326a3867b32842f7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="service-fabric-environment-variables"></a>Service Fabric の環境変数
 
@@ -36,7 +36,7 @@ Service Fabric には、サービス インスタンスごとに設定される�
 | Fabric_NodeId                                | プロセスを実行しているノードのノード ID です                            | bf865279ba277deb864a976fbf4c200e                                     |
 | Fabric_NodeIPOrFQDN                          | クラスターのマニフェスト ファイルで指定されている、ノードの IP アドレスまたは FQDN です | localhost または 10.0.0.1                                                |
 | Fabric_NodeName                              | プロセスを実行しているノードのノード名です                          | _Node_0                                                              |
-| Fabric_ServiceName                           | サービスが ExclusiveProcess モードでホストされている場合、サービスの名前です  | MyService                                               |
+| Fabric_ServiceName                           | サービスが ExclusiveProcess モードでホストされている場合の、サービスの名前です。 この変数の値は、ServicePackageActivationMode ExclusiveProcess を使用してサービスを作成する場合にのみ使用できます。  | MyService                                               |
 | Fabric_ServicePackageActivationId            | ServicePackageActivationId です                                         | GUID                                                               |
 | Fabric_ServicePackageName                    | プロセスがその一部であるサービス パッケージの名前です                     | Web1Pkg                                                              |
 

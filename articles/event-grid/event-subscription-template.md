@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
 ms.openlocfilehash: ee0b2c228ae4ea53c0ee9794529aa190334ceed9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-resource-manager-template-for-event-grid-subscription"></a>Event Grid サブスクリプションに Resource Manager テンプレートを使用する
 

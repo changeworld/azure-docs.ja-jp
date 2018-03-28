@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions の概要 - Azure (プレビュー)"
-description: "Azure Functions の Durable Functions 拡張機能の概要です。"
+title: Durable Functions の概要 - Azure (プレビュー)
+description: Azure Functions の Durable Functions 拡張機能の概要です。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: f1def2a43edee58bc8b5a33880e206130a1b4687
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: b5269bb51c787c927b4224b3520d5514b6d24501
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="durable-functions-overview-preview"></a>Durable Functions の概要 (プレビュー)
 
@@ -153,44 +153,43 @@ public static async Task<HttpResponseMessage> Run(
 
 [DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) `starter`パラメーターは、Durable Functions 拡張機能の一部である `orchestrationClient` 出力バインドからの値です。 このパラメーターは、新しいまたは既存のオーケストレーター関数インスタンスの開始や終了、インスタンスへのイベント送信やクエリ送信のためのメソッドを提供します。 上の例では、HTTP によりトリガーされる関数は受信 URL からの `functionName` の値を受け取って、その値を [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) に渡しています。 次にこのバインド API は、`Location` ヘッダーとともに、開始されたインスタンスの状態を後で調べるため、またはインスタンスを終了するために使用するインスタンスの追加情報を含めた応答を返します。
 
-## <a name="pattern-4-stateful-singletons"></a>パターン #4: ステートフル シングルトン
+## <a name="pattern-4-monitoring"></a>パターン 4: 監視
 
-ほとんどの関数には明示的な開始と終了があり、直接外部のイベント ソースとやりとりをすることはありません。 しかし、オーケストレーションは[ステートフル シングルトン](durable-functions-singletons.md) パターンをサポートしており、このパターンは関数を分散コンピューティングにおける信頼できる[アクター](https://en.wikipedia.org/wiki/Actor_model)として振る舞わせることができます。
+モニター パターンは、ワークフローの柔軟な "*繰り返し*" プロセスを参照します。たとえば、特定の条件が満たされるまでポーリングします。 通常のタイマー トリガーは、定期的なクリーンアップ ジョブなどの単純なシナリオに対処できますが、その間隔は静的であり、インスタンスの有効期間の管理は複雑になります。 Durable Functions では、柔軟な繰り返し間隔とタスクの有効期間の管理を実行でき、1 つのオーケストレーションから複数のモニター プロセスを作成する機能も備えています。
 
-次の図は、外部ソースから受け取ったイベントの処理中に、無限ループを実行している関数を示しています。
+例として、前述の非同期 HTTP API のシナリオの逆があります。 外部クライアントのエンドポイントを公開して実行時間の長い操作を監視する代わりに、長時間実行されるモニターで、外部エンドポイントを使用して、何らかの状態変更が発生するまで待機します。
 
-![ステートフル シングルトンの図](media/durable-functions-overview/stateful-singleton.png)
+![モニター ダイアグラム](media/durable-functions-overview/monitor.png)
 
-Durable Functions はアクター モデルの実装ではありませんが、オーケストレーター関数には、そのランタイムと同じ特性が数多くあります。 たとえば、実行時間が長く (無限の場合もあります)、ステートフルで、信頼でき、シングル スレッドで、ロケーションが透過的で、グローバルにアドレス可能であるなどの特性です。 このため、オーケストレーター関数は "アクター" のようなシナリオで役立ちます。
-
-通常の関数はステートレスであるため、ステートフル シングルトン パターンの実装には不向きです。 しかし、Durable Functions 拡張機能を使用すれば、ステートフル シングルトン パターンを比較的簡単に実装できます。 次のコードは、カウンターを実装するシンプルなオーケストレーター関数です。
+Durable Functions を使用して、任意のエンドポイントを観察する複数のモニターを、数行のコードで作成できます。 モニターは、何らかの条件が満たされた場合、または [DurableOrchestrationClient](durable-functions-instance-management.md) によって実行を終了でき、待機間隔は、何らかの条件に基づいて変更できます (つまり指数バックオフを実装します)。次のコードは、基本的なモニターを実装します。
 
 ```cs
 public static async Task Run(DurableOrchestrationContext ctx)
 {
-    int counterState = ctx.GetInput<int>();
-
-    string operation = await ctx.WaitForExternalEvent<string>("operation");
-    if (operation == "incr")
+    int jobId = ctx.GetInput<int>();
+    int pollingInterval = GetPollingInterval();
+    DateTime expiryTime = GetExpiryTime();
+    
+    while (ctx.CurrentUtcDateTime < expiryTime) 
     {
-        counterState++;
-    }
-    else if (operation == "decr")
-    {
-        counterState--;
+        var jobStatus = await ctx.CallActivityAsync<string>("GetJobStatus", jobId);
+        if (jobStatus == "Completed")
+        {
+            // Perform action when condition met
+            await ctx.CallActivityAsync("SendAlert", machineId);
+            break;
+        }
+
+        // Orchestration will sleep until this time
+        var nextCheck = ctx.CurrentUtcDateTime.AddSeconds(pollingInterval);
+        await ctx.CreateTimer(nextCheck, CancellationToken.None);
     }
 
-    ctx.ContinueAsNew(counterState);
+    // Perform further work here, or let the orchestration end
 }
 ```
 
-このコードは "永続的オーケストレーション" と呼ばれることがあるものです。&mdash; つまり、開始しても終了することがないコードです。 これは次の手順を実行します。
-
-* `counterState` の入力値で開始します。
-* `operation` と呼ばれるメッセージを永久に待機します。
-* いくつかのロジックを実行してそのローカルの状態を更新します。
-* `ctx.ContinueAsNew` を呼び出すことで、それ自身を "再起動" します。
-* もう一度、次の操作を永久に待機します。
+要求が受信されると、そのジョブ ID 用の新しいオーケストレーション インスタンスが作成されます。 インスタンスは、条件が満たされてループが終了するまで、状態をポーリングします。 ポーリング間隔を制御するために永続的タイマーが使用されます。 さらに作業を実行するか、オーケストレーションを終了できます。 `ctx.CurrentUtcDateTime` が `expiryTime` を超えると、モニターが終了します。
 
 ## <a name="pattern-5-human-interaction"></a>パターン #5: 人による操作
 

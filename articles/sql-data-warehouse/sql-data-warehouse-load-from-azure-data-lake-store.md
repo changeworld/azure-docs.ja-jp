@@ -1,33 +1,33 @@
 ---
-title: "Azure Data Lake Store から SQL Data Warehouse への読み込み | Microsoft Docs"
-description: "PolyBase 外部テーブルを使用して Azure Data Lake Store から Azure SQL Data Warehouse にデータを読み込む方法について説明します。"
+title: Azure Data Lake Store から SQL Data Warehouse への読み込み | Microsoft Docs
+description: PolyBase 外部テーブルを使用して Azure Data Lake Store から Azure SQL Data Warehouse にデータを読み込む方法について説明します。
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
 manager: barbkess
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: loading
-ms.date: 12/14/2017
+ms.date: 3/14/2018
 ms.author: cakarst;barbkess
-ms.openlocfilehash: a2a7d15eb51374b828d1d641e0e6754115f7aaf6
-ms.sourcegitcommit: 357afe80eae48e14dffdd51224c863c898303449
+ms.openlocfilehash: f8cd293236255e227f80a42e78d25aebd8789bdd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/15/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="load-data-from-azure-data-lake-store-into-sql-data-warehouse"></a>Azure Data Lake Store から Azure SQL Data Warehouse へのデータの読み込み
 このドキュメントでは、PolyBase を使用して Azure Data Lake Store (ADLS) から SQL Data Warehouse にデータを読み込むために必要なすべての手順について説明します。
-外部テーブルを使用すると、ADLS に格納されているデータに対してアドホック クエリを実行できます。ただし、ベスト プラクティスとしては、SQL Data Warehouse にデータをインポートすることをお勧めします。
+外部テーブルを使用すると、ADLS に格納されているデータに対してアドホック クエリを実行できます。ただし、パフォーマンスを最大限高めるには、SQL Data Warehouse にデータをインポートすることをお勧めします。
 
 このチュートリアルで学習する内容は次のとおりです。
 
-1. Azure Data Lake Store から読み込む外部データベース オブジェクトを作成する。
+1. Azure Data Lake Store から読み込む必要のあるデータベース オブジェクトを作成する。
 2. Azure Data Lake Store ディレクトリに接続する。
 3. Azure SQL Data Warehouse にデータを読み込む。
 
@@ -42,9 +42,9 @@ ms.lasthandoff: 12/15/2017
 
 * SQL Server Management Studio または SQL Server Data Tools。SSMS をダウンロードして接続する方法については、[SSMS に対してクエリを実行する](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-query-ssms)方法に関するページを参照してください。
 
-* Azure SQL Data Warehouse。作成方法については、https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision を参照してください。
+* Azure SQL Data Warehouse。作成方法については、次を参照してください。https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-get-started-provision
 
-* Azure Data Lake Store。作成方法については、https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal を参照してください。
+* Azure Data Lake Store。作成方法については、次を参照してください。https://docs.microsoft.com/azure/data-lake-store/data-lake-store-get-started-portal
 
 
 ###  <a name="create-a-credential"></a>資格情報を作成する
@@ -82,7 +82,7 @@ WITH
 
 
 ### <a name="create-the-external-data-source"></a>外部データ ソースを作成する
-データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使用します。 Azure Portal で ADL URI を見つけるには、Azure Data Lake Store に移動し、[基本] パネルを確認します。
+データの場所を格納するには、この [CREATE EXTERNAL DATA SOURCE][CREATE EXTERNAL DATA SOURCE] コマンドを使用します。 
 
 ```sql
 -- C: Create an external data source
@@ -99,8 +99,8 @@ WITH (
 ```
 
 ## <a name="configure-data-format"></a>データ形式の構成
-ADLS からデータをインポートするには、外部ファイル形式を指定する必要があります。 このコマンドには、ファイルの形式ごとにデータの記述に関するオプションが用意されています。
-[CREATE EXTERNAL FILE FORMAT][CREATE EXTERNAL FILE FORMAT] の完全な一覧については、T-SQL のドキュメントを参照してください。
+ADLS からデータをインポートするには、外部ファイル形式を指定する必要があります。 このオブジェクトでは、ADLS にファイルを書き込む方法が定義されます。
+完全な一覧については、T-SQL のドキュメント、[外部ファイル形式の作成][CREATE EXTERNAL FILE FORMAT]に関するページをご覧ください。
 
 ```sql
 -- D: Create an external file format
@@ -155,7 +155,7 @@ WITH
 外部テーブルは厳密に型指定されます。 これは、取り込むデータの各行がテーブルのスキーマ定義を満たす必要があることを意味します。
 ある行がスキーマ定義に一致しない場合、その行の読み込みは拒否されます。
 
-REJECT_TYPE および REJECT_VALUE オプションでは、最終的なテーブルに存在する必要がある行数またはデータの割合を定義できます。読み込み中に、拒否される値に達した場合、その読み込みは失敗します。 行が拒否される最も一般的な原因は、スキーマ定義との不一致です。 たとえば、ファイルに含まれるデータが文字列の場合に、列に int 型のスキーマが指定されていると、すべての行の読み込みが失敗します。
+REJECT_TYPE および REJECT_VALUE オプションでは､最終のテーブルに存在する必要がある行数またはデータの割合を定義することができます｡  読み込み中に値が定義した数または割合に達すると、読み込み操作が失敗します。 行が拒否される最も一般的な原因は、スキーマ定義との不一致です。 たとえば、ファイルに含まれるデータが文字列の場合に、列に int 型のスキーマが指定されていると、すべての行の読み込みが失敗します。
 
  Azure Data Lake Store は、ロール ベースのアクセス制御 (RBAC) を使って、データへのアクセスを制御します。 つまり、サービス プリンシパルは、Location パラメーターで定義されているディレクトリと、最終的なディレクトリとファイルの子に対する、読み取りアクセス許可を持っている必要があります。 これにより、PolyBase は認証を行って、そのデータを読み込むことができます。 
 
@@ -201,7 +201,7 @@ ALTER INDEX ALL ON [dbo].[DimProduct] REBUILD;
 データが Azure SQL Data Warehouse に正常に読み込まれました。 すばらしい結果です。
 
 ## <a name="next-steps"></a>次の手順
-データの読み込みは、SQL Data Warehouse を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 [テーブル](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)と [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops.md) に関する開発リソースを確認してください。
+データの読み込みは、SQL Data Warehouse を使ってデータ ウェアハウス ソリューションを開発する際の最初の手順です。 [テーブル](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-tables-overview)と [T-SQL](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-develop-loops) に関する開発リソースを確認してください。
 
 
 <!--Image references-->

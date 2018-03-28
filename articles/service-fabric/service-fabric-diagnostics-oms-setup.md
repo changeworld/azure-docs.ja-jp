@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric - OMS Log Analytics での監視の設定 | Microsoft Docs"
-description: "Azure Service Fabric クラスターを監視するために Operations Management Suite を使用したイベントの視覚化と分析を設定する方法について説明します。"
+title: Azure Service Fabric - OMS Log Analytics での監視の設定 | Microsoft Docs
+description: Azure Service Fabric クラスターを監視するために Operations Management Suite を使用したイベントの視覚化と分析を設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 1/17/2017
 ms.author: dekapur
-ms.openlocfilehash: 288c7482058cd9f824b6001bb9ad36d1a5e0f8bf
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>クラスターの Operations Management Suite Log Analytics を設定する
 
@@ -48,7 +48,7 @@ Windows を使っている場合は、次の手順に進み、クラスター �
 >[!NOTE]
 >Linux クラスターではこのエクスペリエンスを有効にすることはまだできません。 
 
-### <a name="add-the-oms-agent-to-your-cluster"></a>OMS エージェントをクラスターに追加する 
+### <a name="connect-the-oms-workspace-to-your-cluster"></a>OMS ワークスペースをクラスターに接続する 
 
 1. ワークスペースは、クラスターから取得する診断データとの接続を維持しておく必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 **[ServiceFabric\<nameOfOMSWorkspace\>]** を選択し、概要ページに移動します。 ここで、ソリューションの設定、ワークスペースの設定、OMS ポータルへのアクセスを変更できます。
 

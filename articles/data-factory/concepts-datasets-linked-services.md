@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Factory のデータセットとリンクされたサービス | Microsoft Docs"
-description: "Data Factory のデータセットとリンクされたサービスについて説明します。 リンクされたサービスは、計算/データ ストアをデータ ファクトリにリンクします。 データセットは、入力/出力データを表します。"
+title: Azure Data Factory のデータセットとリンクされたサービス | Microsoft Docs
+description: Data Factory のデータセットとリンクされたサービスについて説明します。 リンクされたサービスは、計算/データ ストアをデータ ファクトリにリンクします。 データセットは、入力/出力データを表します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
 manager: jhubbard
 editor: spelluru
@@ -10,14 +10,14 @@ ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: bfc95588378466fe1e83bcc4e899eca6b66b358a
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 98d58b97457cc64954094d7e8d8b4defca7e05ff
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="datasets-and-linked-services-in-azure-data-factory"></a>Azure Data Factory のデータセットとリンクされたサービス 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -184,31 +184,37 @@ typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルな�
 }
 ```
 ## <a name="dataset-structure"></a>データセット構造
-**structure** セクションは省略できます。 このセクションでは、列の名前とデータ型のコレクションを含めることで、データセットのスキーマを定義します。 structure セクションを使用して、変換元から変換先への型の変換や列のマップに使用される型の情報を指定します。 次の例では、データセットに timestamp、projectname、pageviews の 3 つの列があります。 それぞれの列の型は、String、String、Decimal です。
-
-```json
-[
-    { "name": "timestamp", "type": "String"},
-    { "name": "projectname", "type": "String"},
-    { "name": "pageviews", "type": "Decimal"}
-]
-```
+**structure** セクションは省略できます。 このセクションでは、列の名前とデータ型のコレクションを含めることで、データセットのスキーマを定義します。 structure セクションを使用して、変換元から変換先への型の変換や列のマップに使用される型の情報を指定します。
 
 structure の各列には次のプロパティが含まれます。
 
 プロパティ | [説明] | 必須
 -------- | ----------- | --------
 name | 列の名前です。 | [はい]
-型 | 列のデータ型です。 | いいえ 
+型 | 列のデータ型です。 Data Factory は、使用できる値として、中間データ型の **Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Boolean、String、Guid、Datetime、Datetimeoffset、および Timespan** をサポートしています。 | いいえ 
 culture | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される .NET ベースのカルチャ。 既定では、 `en-us`です。 | いいえ 
-format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 | いいえ 
+format | .NET 型 (`Datetime` または `Datetimeoffset`) の場合に使用される書式設定文字列。 日時の書式を設定する方法については、「[カスタム日時書式指定文字列](https://docs.microsoft.com/en-us/dotnet/standard/base-types/custom-date-and-time-format-strings)」を参照してください。 | いいえ 
 
-構造情報を含めるべき状況と、**structure** セクションに含める内容については、次のガイドラインに従ってください。
+### <a name="example"></a>例
+次の例は、ソース BLOB データが、CSV 形式であり、userid、name、lastlogindate の 3 つの列を含むことを前提としています。 その型は、それぞれ、Int64、String、Datetime (曜日を表すフランス語の省略形を使用するカスタムの日付/時刻形式) です。
 
-- **構造化データ ソース**の場合は、ソース列をシンク列とマップする必要があって、その列名が同じでない場合にのみ、"structure" セクションを指定します。 このような構造化データ ソースでは、データ自体と共にデータ スキーマと型情報が格納されています。 構造化データ ソースの例には、SQL Server、Oracle、Azure SQL Database などがあります。<br/><br/>構造化データ ソースでは型情報が既に提供されているため、"structure" セクションを含める場合は、型情報を含めないでください。
-- **読み取りデータ ソースのスキーマの場合 (具体的には Blob Storage)**、データと共にスキーマや型情報を格納せずに、データを格納することができます。 このようなデータ ソースでは、ソース列をシンク列にマップする必要がある場合に "structure" 列を含めます。 また、データセットがコピー アクティビティの入力データセットである場合にも、"structure" 列を含めます。ソース データセットのデータ型はシンクのネイティブ型に変換する必要があります。<br/><br/> Data Factory は、構造体の型情報を提供するため、値 `Int16, Int32, Int64, Single, Double, Decimal, Byte[], Boolean, String, Guid, Datetime, Datetimeoffset, and Timespan` をサポートしています。 
+BLOB データセットの構造を、列の型の定義と共に次のように定義します。
 
-データ ファクトリが[スキーマと型マッピング]( copy-activity-schema-and-type-mapping.md)からシンクにソース データをマップする方法および構造体の情報を指定する場合の詳細を確認してください。
+```json
+"structure":
+[
+    { "name": "userid", "type": "Int64"},
+    { "name": "name", "type": "String"},
+    { "name": "lastlogindate", "type": "Datetime", "culture": "fr-fr", "format": "ddd-MM-YYYY"}
+]
+```
+
+### <a name="guidance"></a>ガイダンス
+
+構造情報を含めるべき状況と、**structure** セクションに含める内容については、次のガイドラインに従ってください。 データ ファクトリがシンクにソース データをマップする方法および構造体の情報を指定する場合の詳細を[スキーマと型マッピング](copy-activity-schema-and-type-mapping.md)に関するページで確認してください。
+
+- **強力なスキーマのデータ ソースの場合は**、ソース列をシンク列とマップする必要があって、その列名が同じでない場合にのみ、"structure" セクションを指定します。 このような構造化データ ソースでは、データ自体と共にデータ スキーマと型情報が格納されています。 構造化データ ソースの例には、SQL Server、Oracle、Azure SQL Database などがあります。<br/><br/>構造化データ ソースでは型情報が既に提供されているため、"structure" セクションを含める場合は、型情報を含めないでください。
+- **スキーマのない、またはスキーマが弱いデータ ソース (Blob Storage 内のテキスト ファイルなど) の場合は**、データセットがコピー アクティビティの入力データ セットであるときに "structure" 列を含めます。ソース データセットのデータ型はシンクのネイティブ型に変換する必要があります。 また、ソース列をシンク列にマップする必要がある場合に "structure" 列を含めます。
 
 ## <a name="create-datasets"></a>データセットを作成する
 データセットの作成には、[.NET API](quickstart-create-data-factory-dot-net.md)、[PowerShell](quickstart-create-data-factory-powershell.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Resource Manager テンプレート、Azure Portal のいずれかのツール、またはいずれかの SDK を使用できます

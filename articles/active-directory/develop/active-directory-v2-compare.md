@@ -1,11 +1,11 @@
 ---
-title: "Azure AD v2.0 エンドポイントの変更点 | Microsoft Docs"
-description: "元の Azure AD と v2.0 エンドポイントの比較。"
+title: Azure AD v2.0 エンドポイントの変更点 | Microsoft Docs
+description: 元の Azure AD と v2.0 エンドポイントの比較。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: dstrockis
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: 4216c2215f494a81935cd4cdca52427b0cbac143
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 502bfa128422a029878513d6aa4533718bdddbb5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="whats-different-about-the-v20-endpoint"></a>v2.0 エンドポイントの変更点
 Azure Active Directory を使い慣れている場合、または以前にアプリを Azure AD に統合した場合は、v2.0 エンドポイントで予想外の違いを体験する可能性があります。  このドキュメントでは、それらの違いについて説明します。

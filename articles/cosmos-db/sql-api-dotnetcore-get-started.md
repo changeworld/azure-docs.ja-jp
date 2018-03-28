@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB: .NET Core で SQL API を使用するチュートリアル | Microsoft Docs"
-description: "Azure Cosmos DB SQL API .NET Core SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成するチュートリアル。"
+title: 'Azure Cosmos DB: .NET Core で SQL API を使用するチュートリアル | Microsoft Docs'
+description: Azure Cosmos DB SQL API .NET Core SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成するチュートリアル。
 services: cosmos-db
 documentationcenter: .net
 author: arramac
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 9f93e276-9936-4efb-a534-a9889fa7c7d2
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 03/12/2018
 ms.author: arramac
 ms.custom: devcenter
-ms.openlocfilehash: 0b19071bf871029b488b26d3f125d08d7d2a2dd4
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 90b720c174ab5730237f27d5ebb253976a70b071
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-sql-api-and-net-core"></a>Azure Cosmos DB: SQL API と .NET Core を使ってみる
 > [!div class="op_single_selector"]
@@ -63,7 +63,7 @@ SQL API および .NET Core SDK を使用して Xamarin iOS、Android、また�
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [!INCLUDE [cosmos-db-emulator-vs](../../includes/cosmos-db-emulator-vs.md)] 
+* まだ Visual Studio 2017 をインストールしていない場合は、[無料](https://www.visualstudio.com/downloads/)の Visual Studio 2017 Community エディションをダウンロードして使用できます。 ユニバーサル Windows プラットフォーム (UWP) アプリを開発している場合は、**バージョン 15.4 以降の Visual Studio 2017** を使う必要があります。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
     * MacOS または Linux で作業している場合、選択したプラットフォーム用の [.NET Core SDK](https://www.microsoft.com/net/core#macos) をインストールすることで、コマンド ラインから .NET Core アプリを開発できます。 
     * Windows で作業している場合、[.NET Core SDK](https://www.microsoft.com/net/core#windows) をインストールすることで、コマンド ラインから .NET Core アプリを開発できます。 
     * 独自のエディターを使用するか、[Visual Studio Code](https://code.visualstudio.com/) をダウンロードできます。Visual Studio Code は無料で、Windows、Linux、MacOS で動作します。 
@@ -218,7 +218,7 @@ private async Task GetStartedDemo()
 ```csharp
     this.client = new DocumentClient(new Uri(EndpointUri), PrimaryKey);
 
-    await this.client.CreateDatabaseIfNotExists("FamilyDB_oa");
+    await this.client.CreateDatabaseIfNotExistsAsync("FamilyDB_oa");
 
     // ADD THIS PART TO YOUR CODE
     await this.client.CreateDocumentCollectionIfNotExistsAsync(UriFactory.CreateDatabaseUri("FamilyDB_oa"), new DocumentCollection { Id = "FamilyCollection_oa" });
@@ -318,7 +318,7 @@ private async Task CreateFamilyDocumentIfNotExists(string databaseName, string c
 `// ADD THIS PART TO YOUR CODE` に続くコードをコピーし、**GetStartedDemo** メソッドのドキュメント コレクションの作成処理の下に貼り付けます。
 
 ```csharp
-await this.CreateDatabaseIfNotExists("FamilyDB_oa");
+await this.CreateDatabaseIfNotExistsAsync("FamilyDB_oa");
 
 await this.CreateDocumentCollectionIfNotExists("FamilyDB_oa", "FamilyCollection_oa");
 
@@ -464,15 +464,8 @@ Azure Cosmos DB は、JSON ドキュメントの置換をサポートします�
 // ADD THIS PART TO YOUR CODE
 private async Task ReplaceFamilyDocument(string databaseName, string collectionName, string familyName, Family updatedFamily)
 {
-    try
-    {
-        await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
-        this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
-    }
-    catch (DocumentClientException de)
-    {
-        throw;
-    }
+    await this.client.ReplaceDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, familyName), updatedFamily);
+    this.WriteToConsoleAndPromptToContinue("Replaced Family {0}", familyName);
 }
 ```
 
@@ -505,15 +498,8 @@ Azure Cosmos DB は、JSON ドキュメントの削除をサポートします�
 // ADD THIS PART TO YOUR CODE
 private async Task DeleteFamilyDocument(string databaseName, string collectionName, string documentName)
 {
-    try
-    {
-        await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
-        Console.WriteLine("Deleted Family {0}", documentName);
-    }
-    catch (DocumentClientException de)
-    {
-        throw;
-    }
+    await this.client.DeleteDocumentAsync(UriFactory.CreateDocumentUri(databaseName, collectionName, documentName));
+    Console.WriteLine("Deleted Family {0}", documentName);
 }
 ```
 

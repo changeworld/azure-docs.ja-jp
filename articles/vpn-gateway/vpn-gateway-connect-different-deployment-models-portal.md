@@ -1,6 +1,6 @@
 ---
 title: 'クラシック仮想ネットワークを Azure Resource Manager VNet に接続する: ポータル | Microsoft Docs'
-description: VPN Gateway とポータルを使用して、クラシック VNet と Resource Manager VNet の間に VPN 接続を作成します
+description: VPN Gateway とポータルを使用して従来の VNets を Resource Manager VNets に接続する手順
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/13/2018
+ms.date: 03/13/2018
 ms.author: cherylmc
-ms.openlocfilehash: 90a3c51fa9acbcd9701d4c2b135688ef5148bbf8
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ad6b33b5411d3e38f099726df01fcafc8dc90d38
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -157,9 +157,9 @@ Resource Manager VNet を所有しておらず、これらの手順を演習と�
 
 仮想ネットワーク ゲートウェイを作成する前に、まずゲートウェイ サブネットを作成する必要があります。 CIDR カウント /28 以上 (/27、/26 など) で、ゲートウェイ サブネットを作成します。 練習としてこれを作成している場合、例の値を使用できます。
 
-[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
-
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
+
+[!INCLUDE [vpn-gateway-no-nsg-include](../../includes/vpn-gateway-no-nsg-include.md)]
 
 ### <a name="creategw"></a>3.仮想ネットワーク ゲートウェイの作成
 

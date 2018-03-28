@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation での接続資産 | Microsoft Docs"
-description: "Azure Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。 この記事では、接続の詳細およびテキスト作成とグラフィカル作成の両方で接続を使用する方法について説明します。"
+title: Azure Automation での接続資産
+description: Azure Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。 この記事では、接続の詳細およびテキスト作成とグラフィカル作成の両方で接続を使用する方法について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: f0239017-5c66-4165-8cca-5dcb249b8091
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/15/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 01/13/2017
-ms.author: magoedte; bwren
-ms.openlocfilehash: c1e56f00e46dc3d04f6ac3bb42df6c1935c5c8b0
-ms.sourcegitcommit: 7d4b3cf1fc9883c945a63270d3af1f86e3bfb22a
+ms.openlocfilehash: 547ec5a7de7a58e591a2ea44b8e54804ca41974c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
@@ -26,14 +22,14 @@ Automation の接続資産には、Runbook または DSC 構成から外部サ�
 
 接続を作成するときは、 *接続の種類*を指定する必要があります。 接続の種類は、一連のプロパティを定義しているテンプレートです。 接続では、その接続の種類で定義されている各プロパティの値を定義します。 接続の種類は Azure Automation の統合モジュールに追加されるか、[Azure Automation API](http://msdn.microsoft.com/library/azure/mt163818.aspx) によって作成され (統合モジュールに接続の種類が含まれていない場合)、Automation アカウントにインポートされます。 それ以外の場合は、Automation の接続の種類を指定するメタデータ ファイルを作成する必要があります。  詳細については、「[Azure Automation 統合モジュール](automation-integration-modules.md)」を参照してください。  
 
->[!NOTE] 
->Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使用して暗号化され、Azure Automation に保存されます。 このキーはマスター証明書によって暗号化され、Azure Automation に保存されます。 セキュリティで保護された資産を格納する前に、オートメーション アカウントのキーがマスター証明書を使用して復号化され、資産の暗号化に使用されます。
+>[!NOTE]
+>Azure Automation でセキュリティ保護される資産としては、資格情報、証明書、接続、暗号化された変数などがあります。 これらの資産は、各 Automation アカウント用に生成された一意のキーを使って暗号化され、Azure Automation に保存されます。 このキーは Key Vault に格納されます。 セキュリティで保護された資産を保存する前に、キーが Key Vault から読み込まれ、資産の暗号化に使われます。
 
 ## <a name="windows-powershell-cmdlets"></a>Windows PowerShell コマンドレット
 
 Windows PowerShell で Automation 接続を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
 
-|コマンドレット|[説明]|
+|コマンドレット|説明|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|接続を取得します。 接続のフィールドの値のハッシュ テーブルが含まれます。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|新しい接続を作成します。|
@@ -44,7 +40,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 次の表のアクティビティは、Runbook または DSC 構成で接続にアクセスするために使用されます。
 
-|アクティビティ|[説明]|
+|アクティビティ|説明|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|使用する接続を取得します。 接続のプロパティのハッシュ テーブルを返します。|
 
@@ -55,7 +51,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 ## <a name="python2-functions"></a>Python2 関数 
 次の表の関数を使用して、Python2 Runbook の接続にアクセスします。 
 
-| 関数 | [説明] | 
+| 関数 | 説明 | 
 |:---|:---| 
 | automationassets.get_automation_connection | 接続を取得します。 接続のプロパティでディクショナリを返します。 | 
 

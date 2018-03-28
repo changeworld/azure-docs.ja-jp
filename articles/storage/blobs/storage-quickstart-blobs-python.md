@@ -1,19 +1,19 @@
 ---
-title: "Azure クイック スタート - Python を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs"
-description: "このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Python 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。"
+title: Azure クイック スタート - Python を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs
+description: このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Python 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: a82ec92449730a784e7cd36d7f364a9a4516c15f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: d4c489bc41a9c04b15e2ee28b944edc1f15ef81c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>クイック スタート: Python を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 02/24/2018
 
 このクイック スタートを完了するには、以下が必要です。 
 * [Python](https://www.python.org/downloads/) のインストール
-* [Azure Storage SDK for Python](storage-python-how-to-use-blob-storage.md#download-and-install-azure-storage-sdk-for-python) をダウンロードしてインストールします。 
+* [Azure Storage SDK for Python](storage-python-how-to-use-blob-storage.md) をダウンロードしてインストールします。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
@@ -160,6 +160,18 @@ block_blob_service.delete_container(container_name)
 os.remove(full_path_to_file)
 os.remove(full_path_to_file2)
 ```
+## <a name="resources-for-developing-python-applications-with-blobs"></a>BLOB を使用する Python アプリケーションを開発するためのリソース
+
+Blob Storage を使用する Python 開発については、以下の追加リソースを参照してください。
+
+### <a name="binaries-and-source-code"></a>バイナリとソース コード
+
+- GitHub で Azure Storage 用の [Python クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-python)を確認し、ダウンロードしてインストールします。
+
+### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
+
+- Python クライアント ライブラリの詳細については、[Python API リファレンス](https://docs.microsoft.com/python/api/overview/azure/storage)を参照してください。
+- Python クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob)を確認します。
 
 ## <a name="next-steps"></a>次の手順
  
@@ -168,5 +180,4 @@ os.remove(full_path_to_file2)
 > [!div class="nextstepaction"]
 > [Blob Storage の操作方法](./storage-python-how-to-use-blob-storage.md)
  
-
 Storage Explorer と BLOB について詳しくは、「[ストレージ エクスプローラーを使用した Azure Blob Storage リソースの管理](../../vs-azure-tools-storage-explorer-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)」をご覧ください。

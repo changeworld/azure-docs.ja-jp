@@ -1,19 +1,19 @@
 ---
-title: "Azure Container Instances のコンテナー グループ"
-description: "Azure Container Instances のコンテナー グループのしくみを理解します"
+title: Azure Container Instances のコンテナー グループ
+description: Azure Container Instances のコンテナー グループのしくみを理解します
 services: container-instances
 author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 03/19/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: a42c01917926a4297c97cf9c5dfd1333dbef6793
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 6f7f0d9aea86594140c302e6d12e6528e802b9e7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -30,12 +30,17 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 この例のコンテナー グループは:
 
 * 単一のホスト コンピューター上にスケジュール設定されます。
+* DNS 名ラベルが割り当てられます。
 * 単一のパブリック IP アドレスを公開し、1 つの公開ポートを持ちます。
 * 次の 2 つのコンテナーから構成されます。 片方のコンテナーはポート 80 でリッスンし、他方のポートはポート 5000 でリッスンします。
 * ボリューム マウントとして 2 つの Azure ファイル共有が含まれています。各コンテナーは共有のいずれかをローカルにマウントします。
 
 > [!NOTE]
 > 複数コンテナー グループは、現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
+
+### <a name="deployment"></a>デプロイ
+
+**コンテナー グループ**には、最小限のリソースとして 1 vCPU と 1 GB メモリが割り当てられています。 個々の**コンテナー**は、1 vCPU と 1 GB メモリ未満でプロビジョニングできます。 コンテナー グループ内では、コンテナー グループ レベルで確立された制限内で複数のコンテナーに配分するようにリソースをカスタマイズできます。 たとえば、それぞれが 0.5 vCPU を持つ 2 つのコンテナーを、1 vCPU が割り当てられたコンテナー グループ内に存在させることができます。
 
 ### <a name="networking"></a>ネットワーク
 
@@ -47,7 +52,7 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
 
-単一の機能タスクを少数のコンテナー イメージに分割する場合は、マルチコンテナー グループが便利です。これにより、異なるチームによる配信が可能になり、別々のリソース要件を適用できます。
+複数コンテナー グループは、1 つの機能タスクを少数のコンテナー イメージに分割する場合に便利です。 これらのイメージは複数のチームによって配布可能であり、異なるリソース要件を持っています。
 
 次のような使用例が考えられます。
 

@@ -1,9 +1,9 @@
 ---
-title: "Azure Machine Learning デプロイのトラブルシューティング ガイド | Microsoft Docs"
-description: "デプロイとサービス作成のトラブルシューティング ガイド"
+title: Azure Machine Learning デプロイのトラブルシューティング ガイド | Microsoft Docs
+description: デプロイとサービス作成のトラブルシューティング ガイド
 services: machine-learning
-author: raymondl
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 4cf372f17c3ded5c25a6ebde70b17b2c095a7169
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 7b8d2f4fb52c6d4faed8e813779e3b01d1817355
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="troubleshooting-service-deployment-and-environment-setup"></a>サービスのデプロイと環境のセットアップのトラブルシューティング
 次の情報は、モデル管理環境のセットアップ中に発生したエラーの原因の特定に役立ちます。
@@ -87,7 +87,7 @@ Python の例:
 ```
 
 ## <a name="other-common-problems"></a>その他の一般的な問題
-- Windows マシン上で azure-cli-ml の pip インストールが "`cannot find the path specified`" というエラーで失敗した場合、長いパスのサポートを有効にする必要があります。 https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/ を参照してください。 
+- Windows マシン上で azure-cli-ml の pip インストールが "`cannot find the path specified`" というエラーで失敗した場合、長いパスのサポートを有効にする必要があります。 https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/ をご覧ください。 
 - `env setup` コマンドが `LocationNotAvailableForResourceType` で失敗する場合は、使用している機械学習リソースの場所 (リージョン) が間違っている可能性があります。 `-l` パラメーターに指定されている場所が `eastus2`、`westcentralus`、または `australiaeast` であることを確認してください。
 - `env setup` コマンドが `Resource quota limit exceeded` で失敗する場合は、サブスクリプションで使用できるコアが十分にあること、およびリソースが他のプロセスによって使い尽くされていないことを確認してください。
 - `env setup` コマンドが `Invalid environment name. Name must only contain lowercase alphanumeric characters` で失敗する場合は、サービス名に大文字、記号、または アンダースコア (_) (例: *my_environment*)が 含まれていないことを確認してください。

@@ -1,26 +1,20 @@
 ---
-title: "Azure Portal: SQL データベースの作成 | Microsoft Docs"
-description: "Azure Portal で SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、およびデータベースを作成し、クエリを実行します。"
-keywords: "SQL データベース チュートリアル, SQL データベースの作成"
+title: 'Azure Portal: SQL データベースの作成 | Microsoft Docs'
+description: Azure Portal で SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、およびデータベースを作成し、クエリを実行します。
+keywords: SQL データベース チュートリアル, SQL データベースの作成
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/16/2018
+ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: 56fb52cb2dbca1939aac2eb9dd4971a93bf8c0dc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 2c1e8d8f59e42e75a5895b58e4e7500a2fa2c9a2
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
@@ -93,7 +87,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
    > [!IMPORTANT]
    > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。
    >
-   >\* Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+   >\*Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
    >
 
 9. サーバーのレベル、DTU 数、ストレージの容量を選択したら、**[適用]** をクリックします。  

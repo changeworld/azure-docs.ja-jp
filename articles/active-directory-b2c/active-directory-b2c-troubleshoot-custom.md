@@ -1,8 +1,8 @@
 ---
-title: "Application Insights を使用したカスタム ポリシーのトラブルシューティング - Azure AD B2C | Microsoft Docs"
-description: "カスタム ポリシーの実行を追跡するための Application Insights の設定方法"
+title: Application Insights を使用したカスタム ポリシーのトラブルシューティング - Azure AD B2C | Microsoft Docs
+description: カスタム ポリシーの実行を追跡するための Application Insights の設定方法
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: saeedakhter-msft
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: saeda
-ms.openlocfilehash: 65a39479b4d4b86d569501636e4a0678b052d426
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: 4f71380917a5a29497da9831791cd9f86ec4c8ca
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-collecting-logs"></a>Azure Active Directory B2C: ログの収集
 
@@ -94,7 +94,7 @@ Azure AD B2C では、Application Insights にデータを送信するための�
 1. Application Insights で新しいタブを開きます。
 1. 次に示すのは、ログを確認するために使用できるクエリの一覧です
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 |---------------------|--------------------|
 traces | Azure AD B2C によって生成されたすべてのログを確認します |
 traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された直近 1 日分のすべてのログを確認します
@@ -105,6 +105,8 @@ traces \| where timestamp > ago(1d) | Azure AD B2C によって生成された�
 
 >[!NOTE]
 >ID 開発者を支援するためのユーザー体験ビューアーがコミュニティによって開発されています。  Microsoft によってサポートされていないこのビューアーは、厳密に現状のまま利用可能です。  このビューアーは、Application Insights インスタンスからデータを読み取り、ユーザー体験イベントの適切に構造化された表示を提供します。  ソース コードを入手し、独自のソリューションでデプロイできます。
+
+Application Insights からイベントを読み取るビューア―のバージョンは、[こちら](https://github.com/Azure-Samples/active-directory-b2c-advanced-policies/tree/master/wingtipgamesb2c/src/WingTipUserJourneyPlayerWebApplication)にあります。
 
 >[!NOTE]
 >現在、ここで説明する詳細なアクティビティ ログは、カスタム ポリシーの開発**のみ**を支援するように設計されています。 実稼働環境では開発モードを使わないでください。  ログは、開発中に ID プロバイダーとの間で送受信されるすべての要求を収集します。  実稼働環境で使う場合、開発者は、自分が所有する App Insights ログに PII (個人を特定できる情報) が収集されることに対して責任を追うことになります。  これらの詳細ログは、ポリシーが**開発モード**で配置されている場合にのみ収集されます。

@@ -1,6 +1,6 @@
 ---
-title: "Azure での Service Fabric の概要 | Microsoft Docs"
-description: "拡張性と復元性を提供する多くのマイクロサービスでアプリケーションが構成されている Service Fabric の概要です。 Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。"
+title: Azure での Service Fabric の概要 | Microsoft Docs
+description: 拡張性と復元性を提供する多くのマイクロサービスでアプリケーションが構成されている Service Fabric の概要です。 Service Fabric とは、スケーラブルで信頼性が高く管理しやすいクラウド向けアプリケーションの構築に使用される分散型システム プラットフォームです。
 services: service-fabric
 documentationcenter: .net
 author: msfussell
@@ -15,18 +15,17 @@ ms.workload: NA
 ms.date: 09/20/2017
 ms.author: msfussell
 ms.custom: mvc
-ms.openlocfilehash: aab15e6981e4f5f3c69ea6a85995fd2db69ff8b8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: d5bd75dfff87e73fa4104901c1c0ac0989b1e3bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド ネイティブ アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。 Service Fabric は、コンテナーで実行するこれらのエンタープライズ クラスの Tier-1 クラウド スケール アプリケーションを構築して管理するための次世代プラットフォームの代表例です。
 
-こちらの 短いビデオ では、Service Fabric とマイクロサービスを紹介しています。 <center><a target="_blank" href="https://aka.ms/servicefabricvideo">  
-<img src="./media/service-fabric-overview/OverviewVid.png" WIDTH="360" HEIGHT="244">  
-</a></center>
+こちらの短いビデオでは、Service Fabric とマイクロサービスを紹介しています。
+> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Service-Fabric/player]
 
 ## <a name="applications-composed-of-microservices"></a>マイクロサービスで構成されたアプリケーション 
 Service Fabric を使用すると、マシンの共有プール (クラスターと呼ばれる) 上で高密度で実行されるマイクロサービスで構成された、スケーラブルで信頼性の高いアプリケーションを構築して管理することができます。 コンテナーで実行する分散型のスケーラブルなステートレスおよびステートフル マイクロサービスを構築するための高度な軽量ランタイムを提供します。 また、コンテナー化されたサービスを含むデプロイ済みのアプリケーションをプロビジョニング、デプロイ、監視、アップグレード/修正、削除するための包括的なアプリケーション管理機能も提供します。
@@ -42,7 +41,7 @@ Service Fabric は、これらのマイクロサービスで構成されたア�
 マイクロサービスの手法について詳しくは、「 [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
 
 ## <a name="container-deployment-and-orchestration"></a>コンテナーのデプロイとオーケストレーション
-Service Fabric は、マシン クラスター全体にマイクロサービスをデプロイする Microsoft の[コンテナー オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)です。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)や [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) の使用から[任意のコード](service-fabric-deploy-existing-app.md)のデプロイまで、多くの方法でマイクロサービスを開発することができます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスの両方を同じアプリケーション内で混在させることができます。 [コンテナーのデプロイと管理](service-fabric-containers-overview.md)だけを行う場合は、Service Fabric がコンテナー オーケストレーターとして最適な選択肢です。
+Service Fabric は、マシン クラスター全体にマイクロサービスをデプロイする Microsoft の[コンテナー オーケストレーター](service-fabric-cluster-resource-manager-introduction.md)です。 [Service Fabric プログラミング モデル](service-fabric-choose-framework.md)や [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) の使用から[任意のコード](service-fabric-guest-executables-introduction.md)のデプロイまで、多くの方法でマイクロサービスを開発することができます。 重要なこととして、プロセスとしてのサービスとコンテナー内のサービスの両方を同じアプリケーション内で混在させることができます。 [コンテナーのデプロイと管理](service-fabric-containers-overview.md)だけを行う場合は、Service Fabric がコンテナー オーケストレーターとして最適な選択肢です。
 
 ## <a name="any-os-any-cloud"></a>すべての OS、すべてのクラウド
 Service Fabric はどこでも動きます。 Azure、オンプレミス、Windows Server、Linux を含むさまざまな環境で Service Fabric クラスターを作成できます。 他のパブリック クラウド上にクラスターを作成することさえできます。 さらに、SDK の開発環境は、エミュレーターが含まれない運用環境と**同一**です。 つまり、ローカルの開発クラスターで実行した場合、他の環境内のクラスターにデプロイされます。

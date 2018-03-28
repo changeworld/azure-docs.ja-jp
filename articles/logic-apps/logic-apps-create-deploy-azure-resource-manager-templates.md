@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Manager テンプレートを使用してロジック アプリを作成する | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用してロジック アプリのワークフローを作成してデプロイする"
+title: Azure Resource Manager テンプレートを使用してロジック アプリを作成する | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用してロジック アプリのワークフローを作成してデプロイする
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 7574cc7c-e5a1-4b7c-97f6-0cffb1a5d536
 ms.service: logic-apps
 ms.workload: integration
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/15/2017
-ms.author: LADocs; mandia
-ms.openlocfilehash: e30ed8b1b8e2241bbebab1d7c5f337fabf37e1dd
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: LADocs; estfan
+ms.openlocfilehash: 9e696f6e4614052456cf2b55123d98d61b8b3b9c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-deploy-logic-apps-with-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用してロジック アプリを作成してデプロイする
 
@@ -82,7 +82,7 @@ Azure Logic Apps には、ワークフローを自動化するためのロジッ
 
 テンプレート内のパラメーターの説明を次に示します。
 
-| パラメーター | 説明 | JSON 定義の例 | 
+| パラメーター | [説明] | JSON 定義の例 | 
 | --------- | ----------- | ----------------------- | 
 | `logicAppName` | テンプレートで作成するロジック アプリの名前を定義します。 | "logicAppName": { "type": "string", "metadata": { "description": "myExampleLogicAppName" } } |
 | `testUri` | ping テスト用の場所を定義します。 | "testUri": { "type": "string", "defaultValue": "http://azure.microsoft.com/status/feed/"} | 
@@ -126,7 +126,7 @@ azure group deployment create --template-uri https://raw.githubusercontent.com/A
 * 質問がある場合は、[Azure Logic Apps フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)にアクセスしてください。
 * 機能のアイデアについて投稿や投票を行うには、[Logic Apps のユーザー フィードバック サイト](http://aka.ms/logicapps-wish)にアクセスしてください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [ロジック アプリの監視](../logic-apps/logic-apps-monitor-your-logic-apps.md)

@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 825bf3f6a3ea07cb229f00c81ad699d792ac53f9
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/13/2018
 
 * **Workday へのメール アドレスの書き戻し** - Azure AD ユーザー プロビジョニング サービスでは、メール アドレスなどの Azure AD ユーザー属性を Workday に書き戻すことができます。
 
-### <a name="scenarios-covered"></a>対象となるシナリオ
+### <a name="what-human-resources-scenarios-does-it-cover"></a>対象になる人事管理シナリオ
 
 Azure AD のユーザー プロビジョニング サービスでサポートされている Workday ユーザー プロビジョニング ワークフローは、次の人事管理および ID ライフサイクル管理シナリオを自動化します。
 
@@ -46,6 +46,20 @@ Azure AD のユーザー プロビジョニング サービスでサポートさ
 * **従業員の退職** - Workday で従業員が退職状態になると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](active-directory-saas-app-provisioning.md)でユーザー アカウントが自動的に無効になります。
 
 * **従業員の再雇用** - Workday で従業員が再雇用されると、Active Directory、Azure Active Directory、必要に応じて Office 365 や [Azure AD によってサポートされているその他の SaaS アプリケーション](active-directory-saas-app-provisioning.md)に以前のアカウントが (設定に応じて) 自動的に再アクティブ化または再プロビジョニングされます。
+
+### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>このユーザー プロビジョニング ソリューションが最適な場合
+
+この Workday ユーザー プロビジョニング ソリューションは、現在パブリック プレビュー段階です。このソリューションは次のお客様に最適です。
+
+* Workday ユーザー プロビジョニング用に事前に構築されたクラウドベースのソリューションを求めている組織
+
+* Workday から Active Directory、または Azure Active Directory への直接ユーザー プロビジョニングを必要とする組織
+
+* Workday HCM モジュールから取得したデータを使用してユーザーをプロビジョニングする必要がある組織 ([Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) を参照してください) 
+
+* 1 つ以上の Active Directory フォレスト、ドメイン、および OU と同期するために、Workday HCM モジュールで検出された変更情報のみに基づいてユーザーの登録、移動、削除を行う必要がある組織 ([Get_Workers](https://community.workday.com/sites/default/files/file-hosting/productionapi/Human_Resources/v21.1/Get_Workers.html) を参照してください)
+
+* 電子メールに Office 365 を使用している組織
 
 
 ## <a name="planning-your-solution"></a>ソリューションの設計
@@ -62,10 +76,9 @@ Workday の統合を開始する前に、以下の前提条件を確認し、現
 * Active Directory へのユーザー プロビジョニングの場合、[オンプレミス同期エージェント](https://go.microsoft.com/fwlink/?linkid=847801)をホストするために、Windows Service 2012 以上を実行するドメインに参加しているサーバーが必要です
 * Active Directory と Azure AD を同期する [Azure AD Connect](connect/active-directory-aadconnect.md)
 
-
 ### <a name="solution-architecture"></a>ソリューションのアーキテクチャ
 
-Azure ADには、Workday から Active Directory、Azure AD、SaaS アプリなどへのプロビジョニングおよび ID ライフサイクル管理を解決するための豊富なプロビジョニング コネクタが用意されています。 使用する機能とソリューションの設定方法は、組織の環境と要件によって異なります。 最初の手順として、次のうちどれが組織内に存在し、展開されているかを確認します。
+Azure AD には、Workday から Active Directory、Azure AD、SaaS アプリなどへのプロビジョニングおよび ID ライフ サイクル管理を解決するための豊富なプロビジョニング コネクタが用意されています。 使用する機能とソリューションの設定方法は、組織の環境と要件によって異なります。 最初の手順として、次のうちどれが組織内に存在し、展開されているかを確認します。
 
 * 使用中の Active Directory フォレスト数
 * 使用中の Active Directory ドメイン数
@@ -74,6 +87,7 @@ Azure ADには、Workday から Active Directory、Azure AD、SaaS アプリな�
 * Active Directory と Azure Active Directory の両方にプロビジョニングする必要があるユーザー ("ハイブリッド" ユーザーなど) の有無
 * Azure Active Directory にプロビジョニングする必要があるが、Active Directory にはプロビジョニングの必要がないユーザー（"クラウドのみ" ユーザーなど）の有無
 * ユーザーのメール アドレスを Workday に書き戻す必要の有無
+
 
 これらの質問に答えたあと、以下のガイダンスに従って、Workday プロビジョニングの展開を計画します。
 
@@ -144,7 +158,7 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
    
     ![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750981.png "CreateSecurity グループ")
 2. **[セキュリティ グループの作成]** タスクを完了します。  
-3. **[テナント セキュリティ グループの種類]** ドロップダウンから [統合システム セキュリティ グループ - 制約なし] を選択します。
+3. **[Type of Tenanted Security Group]\(テナント セキュリティ グループの種類\)** ドロップダウンから **[Integration System Security Group (Unconstrained)]\(統合システム セキュリティ グループ (制約なし)\)** を選択します。
 4. メンバーが明示的に追加されるセキュリティ グループを作成します。 
    
     ![CreateSecurity グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750982.png "CreateSecurity グループ")
@@ -164,21 +178,11 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
     ![システム セキュリティ グループ](./media/active-directory-saas-workday-inbound-tutorial/IC750985.png "システム セキュリティ グループ")  
 
 ### <a name="configure-security-group-options"></a>セキュリティ グループ オプションの構成
-この手順では、次のドメイン セキュリティ ポリシーによって保護されているワーカー データのアクセス許可をドメイン セキュリティ ポリシーに付与します。
-
-
-| 操作 | ドメイン セキュリティ ポリシー |
-| ---------- | ---------- | 
-| Get と Put |  外部アカウントのプロビジョニング |
-| Get と Put | Worker Data: Public Worker Reports |
-| Get と Put | Worker Data: All Positions |
-| Get と Put | Worker Data: Current Staffing Information |
-| Get と Put | Worker Data: Business Title on Worker Profile |
-| 表示と変更 | Worker Data: Work Email |
+この手順では、worker データのドメイン セキュリティ ポリシーのアクセス許可をセキュリティ グループに付与します。
 
 **セキュリティ グループ オプションを構成するには、次の手順に従います。**
 
-1. 検索ボックスにドメインのセキュリティ ポリシーを入力し、**[機能領域のドメイン セキュリティ ポリシー]** リンクをクリックします。  
+1. 検索ボックスに**ドメインのセキュリティ ポリシー**を入力し、**[機能領域のドメイン セキュリティ ポリシー]** リンクをクリックします。  
    
     ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750986.png "ドメイン セキュリティ ポリシー")  
 2. システムを検索し、 **システム** の機能領域を選択します。  Click **OK**.  
@@ -190,23 +194,17 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 4. **[アクセス許可の編集]** をクリックし、**[アクセス許可の編集]** ダイアログ ページで、**Get** と **Put** の統合アクセス権限を持つセキュリティ グループの一覧に新しいセキュリティ グループを追加します。 
    
     ![アクセス許可の編集](./media/active-directory-saas-workday-inbound-tutorial/IC750989.png "アクセス許可の編集")  
-5. 上記の手順 1. を繰り返して、機能領域を選択する画面に戻ります。今回はスタッフを検索して、**[スタッフ] 機能領域**を選択し、**[OK]** をクリックします。
+    
+5. これらの残りのセキュリティ ポリシーごとに上記の手順 1 から 4 を繰り返します。
+
+| 操作 | ドメイン セキュリティ ポリシー |
+| ---------- | ---------- | 
+| Get と Put | Worker Data: Public Worker Reports |
+| Get と Put | Worker Data: Work Contact Information |
+| 取得 | Worker Data: All Positions |
+| 取得 | Worker Data: Current Staffing Information |
+| 取得 | Worker Data: Business Title on Worker Profile |
    
-    ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750990.png "ドメイン セキュリティ ポリシー")  
-6. [スタッフ] 機能領域のセキュリティ ポリシーの一覧で、**[Worker Data: Staffing]** を展開し、残りの各セキュリティ ポリシーに対して上記の手順 4. を繰り返します。
-
-   * Worker Data: Public Worker Reports
-   * Worker Data: All Positions
-   * Worker Data: Current Staffing Information
-   * Worker Data: Business Title on Worker Profile
-   
-7. 上記の手順 1 を繰り返して、機能領域を選択する画面に戻ります。さらに、今回は **[連絡先情報]** を検索して、[スタッフ] 機能領域を選択し、**[OK]** をクリックします。
-
-8.  [スタッフ] 機能領域のセキュリティ ポリシーの一覧で、**[Worker Data: Work Contact Information (社員データ: 職場の連絡先情報)]** を展開し、下記のセキュリティ ポリシーごとに上記の手順 4 を繰り返します。
-
-    * Worker Data: Work Email
-
-    ![ドメイン セキュリティ ポリシー](./media/active-directory-saas-workday-inbound-tutorial/IC750991.png "ドメイン セキュリティ ポリシー")  
     
 ### <a name="activate-security-policy-changes"></a>セキュリティ ポリシーの変更のアクティブ化
 
@@ -225,6 +223,41 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Workday から Active Directory へのユーザー プロビジョニングの構成
 次の手順に従い、Workday からプロビジョニングを必要とする各 Active Directory フォレストへのユーザー アカウントのプロビジョニングを構成します。
 
+### <a name="planning"></a>計画
+
+Active Directory フォレストへのユーザー プロビジョニングを構成する前に、以下の事項を検討してください。 これらの事項に対する答えで、スコープ フィルターと属性マッピングをどのように設定する必要があるかが決まります。 
+
+* **Workday のユーザーをこの Active Directory フォレストにプロビジョニングする必要はありますか。**
+
+   * *例: Workday の "Company" 属性に値 "Contoso" が含まれ、"Worker_Type" 属性に "Regular" が含まれているユーザー*
+
+* **ユーザーはどのように組織単位 (OU) にルーティングされますか。**
+
+   * *例: Workday の "Municipality" 属性と "Country_Region_Reference" 属性の定義に従って、オフィスの位置に対応する OU にルーティングされるユーザー*
+
+* **次の属性は Active Directory にどのように埋め込む必要がありますか。**
+
+   * 共通名 (cn)
+      * *例: 人事によって設定された Workday の User_ID 値を使用します*
+      
+   * 従業員 ID (employeeId)
+      * *例: Workday の Worker_ID 値を使用します*
+      
+   * SAM アカウント名 (sAMAccountName)
+      * *例: Azure AD プロビジョニング式でフィルター処理された Workday の User_ID 値を使用して、不正な文字を削除します*
+      
+   * ユーザー プリンシパル名 (userPrincipalName)
+      * *例: Azure AD プロビジョニング式で Workday の User_ID 値を使用して、ドメイン名を付加します*
+
+* **Workday と Active Directory の間でどのようにユーザーを対応付ける必要がありますか。**
+
+  * *例: 特定の Workday "Worker_ID" 値を持つユーザーは、"employeeID" が同じ値の Active Directory ユーザーと対応付けます。Active Directory で Worker_ID の値が見つからない場合は、新しいユーザーを作成します。*
+  
+* **Active Directory フォレストには、一致するロジックが動作するために必要なユーザー ID が既に含まれていますか。**
+
+  * *例: Workday を新規にデプロイする場合は、一致するロジックをできるだけ単純にするために、Active Directory に正しい Workday の Worker_ID 値 (または選択した一意の ID 値) をあらかじめ入力することを強く推奨します。*
+    
+    
 ### <a name="part-1-adding-the-provisioning-connector-app-and-creating-the-connection-to-workday"></a>パート 1：プロビジョニング コネクタ アプリの追加と Workday への接続の作成
 
 **Workday を Active Directory プロビジョニングに構成するには、**
@@ -320,39 +353,38 @@ Azure AD のプロビジョニング コネクタ インスタンスとアプリ
 
 **以下にいくつか示すのは、Workday と Active Directory との間の属性マッピングの例と、一般的に使用される式です**
 
--   parentDistinguishedName AD 属性にマッピングする式を使用すると、1 つ以上の Workday ソース属性に基づいて、特定の OU にユーザーをプロビジョニングできます。 この例では、Workday の市区町村データに応じて異なる OU にユーザーを配置します。
+-   parentDistinguishedName 属性にマップされる式を使用すると、1 つ以上の Workday ソース属性に基づいて異なる OU にユーザーをプロビジョニングできます。 この例では、住所の市区町村に基づいて、異なる OU にユーザーを配置しています。
 
--   userPrincipalName AD 属性にマッピングする式は、firstName.LastName@contoso.com の UPN を作成します。それはまた、無効な特殊文字を置き換えます。
+-   Active Directory の userPrincipalName 属性は、Workday のユーザー ID とドメイン サフィックスを連結して生成されます
 
--   [式の記述に関するドキュメントがここにあります](active-directory-saas-writing-expressions-for-attribute-mappings.md)
+-   [式の記述に関するドキュメントについては、こちらを参照してください](active-directory-saas-writing-expressions-for-attribute-mappings.md)。 特殊文字を削除する方法の例についても紹介されています。
 
   
 | WORKDAY 属性 | ACTIVE DIRECTORY 属性 |  ID 一致の有無 | 作成/更新 |
 | ---------- | ---------- | ---------- | ---------- |
-|  **WorkerID**  |  EmployeeID | **はい** | 作成時のみ書き込まれる | 
-|  **Municipality**   |   l   |     | 作成時 + 更新時 |
-|  **Company**         | company   |     |  作成時 + 更新時 |
-|  **CountryReferenceTwoLetter**      |   co |     |   作成時 + 更新時 |
-| **CountryReferenceTwoLetter**    |  c  |     |         作成時 + 更新時 |
-| **SupervisoryOrganization**  | department  |     |  作成時 + 更新時 |
-|  **PreferredNameData**  |  displayName |     |   作成時 + 更新時 |
-| **EmployeeID**    |  cn    |   |   作成時のみ書き込まれる |
-| **Fax**      | facsimileTelephoneNumber     |     |    作成時 + 更新時 |
-| **FirstName**   | givenName       |     |    作成時 + 更新時 |
+| **WorkerID**  |  EmployeeID | **はい** | 作成時のみ書き込まれる | 
+| **UserID**    |  cn    |   |   作成時のみ書き込まれる |
+| **Join("@",[UserID], "contoso.com")**   | userPrincipalName     |     | 作成時のみ書き込まれる 
+| **Replace(Mid(Replace(\[UserID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         作成時のみ書き込まれる |
 | **Switch(\[Active\], , "0", "True", "1",)** |  accountDisabled      |     | 作成時 + 更新時 |
-| **Mobile**  |    mobile       |     |       作成時 + 更新時 |
-| **EmailAddress**    | mail    |     |     作成時 + 更新時 |
+| **FirstName**   | givenName       |     |    作成時 + 更新時 |
+| **LastName**   |   sn   |     |  作成時 + 更新時 |
+| **PreferredNameData**  |  displayName |     |   作成時 + 更新時 |
+| **Company**         | company   |     |  作成時 + 更新時 |
+| **SupervisoryOrganization**  | department  |     |  作成時 + 更新時 |
 | **ManagerReference**   | manager  |     |  作成時 + 更新時 |
+| **BusinessTitle**   |  title     |     |  作成時 + 更新時 | 
+| **AddressLineData**    |  streetAddress  |     |   作成時 + 更新時 |
+| **Municipality**   |   l   |     | 作成時 + 更新時 |
+| **CountryReferenceTwoLetter**      |   co |     |   作成時 + 更新時 |
+| **CountryReferenceTwoLetter**    |  c  |     |         作成時 + 更新時 |
+| **CountryRegionReference** |  st     |     | 作成時 + 更新時 |
 | **WorkSpaceReference** | physicalDeliveryOfficeName    |     |  作成時 + 更新時 |
 | **PostalCode**  |   postalCode  |     | 作成時 + 更新時 |
-| **LocalReference** |  preferredLanguage  |     |  作成時 + 更新時 |
-| **Replace(Mid(Replace(\[EmployeeID\], , "(\[\\\\/\\\\\\\\\\\\\[\\\\\]\\\\:\\\\;\\\\|\\\\=\\\\,\\\\+\\\\\*\\\\?\\\\&lt;\\\\&gt;\])", , "", , ), 1, 20), , "([\\\\.)\*\$](file:///\\.)*$)", , "", , )**      |    sAMAccountName            |     |         作成時のみ書き込まれる |
-| **LastName**   |   sn   |     |  作成時 + 更新時 |
-| **CountryRegionReference** |  st     |     | 作成時 + 更新時 |
-| **AddressLineData**    |  streetAddress  |     |   作成時 + 更新時 |
 | **PrimaryWorkTelephone**  |  telephoneNumber   |     | 作成時 + 更新時 |
-| **BusinessTitle**   |  title     |     |  作成時 + 更新時 |
-| **Join("@",Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Join(".", [FirstName], [LastName]), , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , ), "contoso.com")**   | userPrincipalName     |     | 作成時のみ書き込まれる                                                   
+| **Fax**      | facsimileTelephoneNumber     |     |    作成時 + 更新時 |
+| **Mobile**  |    mobile       |     |       作成時 + 更新時 |
+| **LocalReference** |  preferredLanguage  |     |  作成時 + 更新時 |                                               
 | **Switch(\[Municipality\], "OU=Standard Users,OU=Users,OU=Default,OU=Locations,DC=contoso,DC=com", "Dallas", "OU=Standard Users,OU=Users,OU=Dallas,OU=Locations,DC=contoso,DC=com", "Austin", "OU=Standard Users,OU=Users,OU=Austin,OU=Locations,DC=contoso,DC=com", "Seattle", "OU=Standard Users,OU=Users,OU=Seattle,OU=Locations,DC=contoso,DC=com", “London", "OU=Standard Users,OU=Users,OU=London,OU=Locations,DC=contoso,DC=com")**  | parentDistinguishedName     |     |  作成時 + 更新時 |
   
 ### <a name="part-3-configure-the-on-premises-synchronization-agent"></a>パート 3: オンプレミスの同期エージェントの構成
@@ -696,6 +728,7 @@ Azure AD プロビジョニング サービスは、このリスト (Workday 属
             <wd:Include_Transaction_Log_Data>true</wd:Include_Transaction_Log_Data>
             <wd:Include_Photo>true</wd:Include_Photo>
             <wd:Include_User_Account>true</wd:Include_User_Account>
+            <wd:Include_Roles>true</wd:Include_Roles>
           </wd:Response_Group>
         </wd:Get_Workers_Request>
       </env:Body>

@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI (azure.js) を使用した IoT ハブの作成 | Microsoft Docs"
-description: "クロスプラットフォームの Azure CLI (azure.js) を使用して Azure IoT ハブを作成する方法。"
+title: Azure CLI (azure.js) を使用した IoT ハブの作成 | Microsoft Docs
+description: クロスプラットフォームの Azure CLI (azure.js) を使用して Azure IoT ハブを作成する方法。
 services: iot-hub
 documentationcenter: .net
 author: BeatriceOltean
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 46a17831-650c-41d9-b228-445c5bb423d3
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: boltean
-ms.openlocfilehash: 5e37c6c5e8625ce446ab203f19f9a8b2f1cd5a46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ad0efeeacbdb5dd0185c6336e9bf0e4d7937c99
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli"></a>Azure CLI を使用して IoT ハブを作成する
 
@@ -35,7 +35,7 @@ Azure CLI (azure.js) を使用すると、Azure IoT ハブをプログラムに�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * [Azure CLI 0.10.4][lnk-CLI-install] 以降。 既に Azure CLI がインストールされている場合は、コマンド プロンプトで次のコマンドを使用して、現在のバージョンを確認できます。
 
 ```azurecli
@@ -88,7 +88,7 @@ azure iothub create -g <resource-group> -n <name> -l <location> -s <sku-name> -u
 ```
 
 * **resource-group**。 リソース グループ名。 形式は、英数字 (大文字と小文字を区別しない)、アンダー スコア、ハイフン、長さが 1 ~ 64 です。
-* **name**。 作成する IoT Hub の名前。 形式は、英数字 (大文字と小文字を区別しない)、アンダー スコア、ハイフン、長さが 3 ~ 50 です。
+* **name**。 作成する IoT Hub の名前。 形式は、英数字 (大文字と小文字を区別しない)、ハイフン、長さが 3 ~ 50 です。
 * **location**。 IoT Hub をプロビジョニングする場所 (Azure リージョン/データ センター)。
 * **sku-name**。 SKU の名前。次のいずれかから選択: [F1, S1, S2, S3]。 最新の完全な一覧については、IoT Hub の料金に関するページを参照してください。
 * **units**。 プロビジョニングしたユニットの数。 範囲は: F1 [1-1] : S1, S2 [1-200] : S3 [1-10]。 IoT Hub 単位は、メッセージの合計数と接続するデバイスの数に基づきます。
@@ -114,7 +114,7 @@ azure iothub create -g exampleResourceGroup -n exampleIoTHubName -l westus -k s1
 > azure iothub delete -g exampleResourceGroup -n exampleIoTHubName
 > ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IoT Hub の開発に関する詳細は、以下の記事をご覧ください。
 

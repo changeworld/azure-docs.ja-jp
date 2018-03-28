@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service の Web アプリの診断ログの有効化"
-description: "診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。"
+title: Azure App Service の Web アプリの診断ログの有効化
+description: 診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログ記録された情報にアクセスする方法を説明します。
 services: app-service
 documentationcenter: .net
 author: cephalin
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: a5ac6c02e28c19346abae9e5ea3dba9af4022dde
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: e82bbff908ea5499765edc71e52caa573c816a62
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Azure App Service の Web アプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -39,7 +39,7 @@ App Service Web Apps は、Web サーバーと Web アプリケーションの�
 * **Web サーバーのログ記録** - [W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用した、HTTP トランザクションに関する情報。 これが便利なのは、全体的なサイト指標、たとえば、サイトで処理された要求の数や、特定の IP アドレスからの要求の数を特定するときです。
 
 ### <a name="application-diagnostics"></a>アプリケーション診断
-アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。 For example:
+アプリケーション診断では、Web アプリケーションによって生成された情報を取り込むことができます。 ASP.NET アプリケーションは、 [System.Diagnostics.Trace](http://msdn.microsoft.com/library/36hhw2t6.aspx) クラスを使用して、情報をアプリケーション診断ログに記録できます。 例: 
 
     System.Diagnostics.Trace.TraceError("If you're seeing this, something bad happened");
 
@@ -97,7 +97,7 @@ Web アプリケーション ファイル システムに保存された診断�
 * **失敗した要求トレース** : /LogFiles/W3SVC#########/。 このフォルダーには、1 つの XSL ファイルと 1 つ以上の XML ファイルが格納されます。 この XSL ファイルは、XML ファイルが Internet Explorer で表示されるときに、コンテンツの書式設定とフィルター処理を行う役割を果たすため、必ず XML ファイルと同じディレクトリにダウンロードしてください。
 * **詳細なエラー ログ** : /LogFiles/DetailedErrors/。 このフォルダーには、発生した HTTP エラーに関する詳細な情報を記録した 1 つ以上の .htm ファイルが格納されます。
 * **Web サーバー ログ** : /LogFiles/http/RawLogs。 このフォルダーには、 [W3C 拡張ログ ファイル形式](http://msdn.microsoft.com/library/windows/desktop/aa814385.aspx)を使用して形式が設定された 1 つ以上のテキスト ファイルが格納されます。
-* **デプロイ ログ** : /LogFiles/Git。 このフォルダーには、Git デプロイのログだけでなく、Azure Web Apps が使用する内部デプロイ プロセスによって生成されたログも格納されます。
+* **デプロイ ログ** : /LogFiles/Git。 このフォルダーには、Git デプロイのログだけでなく、Azure Web Apps が使用する内部デプロイ プロセスによって生成されたログも格納されます。 デプロイ ログは D:\home\site\deployments にもあります。
 
 ### <a name="ftp"></a>FTP
 
@@ -159,11 +159,11 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 このコマンドで、**-Name** パラメーターに指定された Web アプリに接続され、ログ イベントが Web アプリで発生したら、PowerShell ウィンドウへの情報のストリーミングが開始されます。 /LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
-特定のイベント (エラーなど) をフィルター処理するには、 **-Message** パラメーターを使用します。 For example:
+特定のイベント (エラーなど) をフィルター処理するには、 **-Message** パラメーターを使用します。 例: 
 
     Get-AzureWebSiteLog -Name webappname -Tail -Message Error
 
-特定のログの種類 (HTTP など) をフィルター処理するには、 **-Path** パラメーターを使用します。 For example:
+特定のログの種類 (HTTP など) をフィルター処理するには、 **-Path** パラメーターを使用します。 例: 
 
     Get-AzureWebSiteLog -Name webappname -Tail -Path http
 
@@ -181,11 +181,11 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 このコマンドで、"webappname" という名前の Web アプリに接続され、ログ イベントが Web アプリで発生したら、ウィンドウへの情報のストリーミングが開始されます。 /LogFiles ディレクトリ (d:/home/logfiles) に格納されており、末尾が .txt、.log、.htm のいずれかになっているファイルに書き込まれた情報は、ローカル コンソールにストリーミングされます。
 
-特定のイベント (エラーなど) をフィルター処理するには、 **-Filter** パラメーターを使用します。 For example:
+特定のイベント (エラーなど) をフィルター処理するには、 **-Filter** パラメーターを使用します。 例: 
 
     az webapp log tail --name webappname --resource-group myResourceGroup --filter Error
 
-特定のログの種類 (HTTP など) をフィルター処理するには、 **--Path** パラメーターを使用します。 For example:
+特定のログの種類 (HTTP など) をフィルター処理するには、 **--Path** パラメーターを使用します。 例: 
 
     az webapp log tail --name webappname --resource-group myResourceGroup --path http
 
@@ -216,7 +216,7 @@ Visual Studio Application Insights には、ログをフィルターおよび検
 
 | プロパティ名 | 値/形式 |
 | --- | --- |
-| PartitionKey |yyyyMMddHH の形式によるイベントの日時 |
+| パーティション キー |yyyyMMddHH の形式によるイベントの日時 |
 | RowKey |このエンティティを一意に識別する GUID 値 |
 | Timestamp |イベントが発生した日時 |
 | EventTickCount |イベントが発生した目盛り形式 (高精度) の日時 |

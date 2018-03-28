@@ -1,11 +1,11 @@
 ---
-title: "ロジック アプリに Azure SQL Database コネクタを追加する | Microsoft Docs"
-description: "Azure SQL Database コネクタと REST API パラメーターの概要"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: ロジック アプリに Azure SQL Database コネクタを追加する | Microsoft Docs
+description: Azure SQL Database コネクタと REST API パラメーターの概要
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: d8a319d0-e4df-40cf-88f0-29a6158c898c
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: def2b65f009c377233c45356f8fa661b86d73f51
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 4313ead0c31ab2e72238701d58dc2f321f116fa6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-azure-sql-database-connector"></a>Azure SQL Database コネクタの概要
 Azure SQL Database コネクタを使用して、テーブル内のデータを管理する組織のワークフローを作成します。 
@@ -29,7 +29,7 @@ SQL Database では次のことを行います。
 * 顧客データベースに新しい顧客を追加するか、注文データベースで注文を更新することで、ワークフローを構築します。
 * データ行の取得、新しい行の挿入、行の削除を行うアクションを使用します。 たとえば、Dynamics CRM Online にレコードが作成されると (トリガー)、Azure SQL Database に行を挿入します (アクション)。 
 
-このトピックでは、ロジック アプリ内で SQL Database コネクタを使用する方法を説明し、アクションの一覧を示します。
+この記事では、ロジック アプリ内で SQL Database コネクタを使用する方法を説明し、アクションの一覧を示します。
 
 Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
@@ -54,11 +54,11 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
 3. テキスト ボックスに「sql」と入力して、使用可能なすべてのアクションの一覧を取得します。
    
     ![](./media/connectors-create-api-sqlazure/sql-1.png) 
-4. この例では、**[SQL Server - Get row (SQL Server - 行を取得する)]** を選択します。 接続が既に存在する場合は、**[テーブル名]** ボックスの一覧でテーブル名を選択し、**[行 ID]** に返される ID を入力します。
+4. この例では、**[SQL Server - Get row]\(SQL Server - 行を取得する\)** を選択します。 接続が既に存在する場合は、**[テーブル名]** ボックスの一覧でテーブル名を選択し、**[行 ID]** に返される ID を入力します。
    
     ![](./media/connectors-create-api-sqlazure/sample-table.png)
    
-    接続情報の入力を求められたら、詳細を入力して接続を作成します。 これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-sqlazure.md#create-the-connection)」を参照してください。 
+    接続情報の入力を求められたら、詳細を入力して接続を作成します。 これらのプロパティについては、この記事の「[接続の作成](connectors-create-api-sqlazure.md#create-the-connection)」を参照してください。 
    
    > [!NOTE]
    > この例では、テーブルから 1 行が返されます。 この行のデータを確認するには、テーブルのフィールドを使用してファイルを作成する別のアクションを追加してください。 たとえば、FirstName フィールドと LastName フィールドを使用してクラウド ストレージ アカウントに新しいファイルを作成する OneDrive アクションを追加します。 

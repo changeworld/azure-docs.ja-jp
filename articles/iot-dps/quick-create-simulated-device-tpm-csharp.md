@@ -1,22 +1,22 @@
 ---
-title: "シミュレートされた TPM デバイスを C# を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs"
-description: "Azure クイックスタート - Azure IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする"
+title: シミュレートされた TPM デバイスを C# を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
+description: Azure クイックスタート - Azure IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 services: iot-dps
-keywords: 
+keywords: ''
 author: JimacoMS2
 ms.author: v-jamebr
 ms.date: 12/21/2017
 ms.topic: hero-article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 6b13f95f00883a12ff0e922567829fa6fac06642
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 7dd8d90ca3201fce0680b88b5530712126997efe
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -80,7 +80,7 @@ ms.lasthandoff: 03/05/2018
 
    登録に成功すると、*[Individual Enrollments]\(個々の登録\)* タブの一覧に、対象デバイスの "*登録 ID*" が表示されます。 
 
-6. Enter キーを押してシミュレートされたデバイスを登録します。 デバイスが起動して Device Provisioning Service に接続し、IoT ハブの情報を取得する動作がシミュレートされるので、そのメッセージに注目してください。 
+6. コマンド ウィンドウで Enter キーを押します。コマンド ウィンドウには、シミュレートされたデバイスの登録に必要な "**_保証キー_**"、"**_登録 ID_**"、提案される "**_デバイス ID_**" が表示されます。 デバイスが起動して Device Provisioning Service に接続し、IoT ハブの情報を取得する動作がシミュレートされるので、そのメッセージに注目してください。 
 
 1. デバイスがプロビジョニングされたことを確認します。 プロビジョニング サービスにリンクされた IoT ハブに対してシミュレートされたデバイスが正常にプロビジョニングされると、ハブの **[IoT デバイス]** ブレードにデバイス ID が表示されます。 
 

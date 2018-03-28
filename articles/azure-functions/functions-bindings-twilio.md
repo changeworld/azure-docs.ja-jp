@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions の Twilio バインド"
-description: "Azure Functions で Twilio バインドを使用する方法を説明します。"
+title: Azure Functions の Twilio バインド
+description: Azure Functions で Twilio バインドを使用する方法を説明します。
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -16,17 +16,23 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 52a45f1b67e3194739fe97daad56de2d3515dee3
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: ff31f8b265452b6864e36323e770f808f87de019
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions の Twilio バインド
 
 この記事では、Azure Functions の [Twilio](https://www.twilio.com/) バインドを使用してテキスト メッセージを送信する方法について説明します。 Azure Functions は、Twilio の出力バインドをサポートします。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>パッケージ
+
+Twilio バインディングは [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="example"></a>例
 
@@ -195,7 +201,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="attributes"></a>属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.Twilio](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Twilio) で定義されている [TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[TwilioSms](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) 属性を使用します。
 
 構成可能な属性プロパティについては、[構成](#configuration)を参照してください。 メソッド シグネチャでの `TwilioSms` 属性の例を次に示します。
 
@@ -219,7 +225,7 @@ public static SMSMessage Run(
 
 次の表は、*function.json* ファイルと `TwilioSms` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 |**type**|| `twilioSms` に設定する必要があります。|
 |**direction**|| `out` に設定する必要があります。|

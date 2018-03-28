@@ -1,24 +1,18 @@
 ---
-title: "Azure の Update Management ソリューション | Microsoft Docs"
-description: "この記事の目的は、このソリューションを使用して Windows コンピューターと Linux コンピューターの更新プログラムを管理する方法の理解を助けることです。"
+title: Azure の Update Management ソリューション
+description: この記事の目的は、このソリューションを使用して Windows コンピューターと Linux コンピューターの更新プログラムを管理する方法の理解を助けることです。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2018
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 9280925cdd5cccf8d1d2f2b33a7de8523a07cd14
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.openlocfilehash: 202c75366477ae3445f607f75d08faf0335de79f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="update-management-solution-in-azure"></a>Azure の Update Management ソリューション
 
@@ -144,11 +138,11 @@ Operations Manager 管理グループが Log Analytics と通信しているこ�
 ### <a name="supported-agents"></a>サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
-| 接続先ソース | サポートされています | [説明] |
+| 接続先ソース | サポートされています | 説明 |
 | --- | --- | --- |
-| Windows エージェント |[はい] |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
-| Linux エージェント |[はい] |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
-| Operations Manager 管理グループ |[はい] |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
+| Windows エージェント |はい |ソリューションは、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |はい |ソリューションは、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |はい |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから Log Analytics ワークスペースに転送されます。 |
 
 ### <a name="collection-frequency"></a>収集の頻度
 管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 Windows API が 15 分ごとに呼び出され、最後の更新時間のクエリによって状態が変更されたかどうかが確認されます。更新されている場合は対応スキャンが開始されます。 管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
@@ -187,9 +181,9 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 新しい更新プログラムの展開を作成するには、画面上部にある **[更新プログラムの展開のスケジュール]** をクリックして、**[新しい更新プログラムの展開]** ページを開きます。 指定する必要があるプロパティの値を次の表に示します。
 
-| プロパティ | [説明] |
+| プロパティ | 説明 |
 | --- | --- |
-| Name |更新プログラムの展開を識別する一意の名前。 |
+| 名前 |更新プログラムの展開を識別する一意の名前。 |
 |オペレーティング システム| Linux または Windows|
 | 更新するマシン |[保存した検索条件] を選択するか、ドロップダウンから [マシン] を選択し、個別のマシンを選択します |
 |更新プログラムの分類|必要な更新プログラムの分類すべてを選択します|
@@ -205,14 +199,14 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
-| クエリ | [説明] |
+| クエリ | 説明 |
 | --- | --- |
-|プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |更新プログラムがインストールされていないすべてのコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" |
-| プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
-| Event<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |Error events for machines that have missing critical or security required updates (必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント) |
-| プライマリの<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム | 
+|Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; project Computer, Title, KBID, Classification, PublishedDate |更新プログラムがインストールされていないすべてのコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" |
+| Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; where Computer == "ContosoVM1.contoso.com"<br>&#124; project Computer, Title, KBID, Product, PublishedDate |特定のコンピューターにインストールされていない更新プログラム (コンピューター名は実際の名前に置き換えてください)|
+| Event<br>&#124; where EventLevelName == "error" and Computer in ((Update &#124; where (Classification == "Security Updates" or Classification == "Critical Updates")<br>&#124; where UpdateState == "Needed" and Optional == false <br>&#124; distinct Computer)) |必要とされている緊急更新プログラムまたはセキュリティ更新プログラムがインストールされていないコンピューターのエラー イベント |
+| Update<br>&#124; where UpdateState == "Needed" and Optional == false<br>&#124; distinct Title |全コンピューターのインストールされていない個別の更新プログラム | 
 | UpdateRunProgress<br>&#124; where InstallationStatus == "failed" <br>&#124; summarize AggregatedValue = count() by Computer, Title, UpdateRunName |更新の実行に失敗した更新プログラムがあるコンピューター<br>次のいずれかを追加して、OS を限定します。<br>OSType = "Windows"<br>OSType == "Linux" | 
-| プライマリの<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能な Linux マシンの一覧 | 
+| Update<br>&#124; where OSType == "Linux"<br>&#124; where UpdateState != "Not needed" and (Classification == "Critical Updates" or Classification == "Security Updates")<br>&#124; summarize AggregatedValue = count() by Computer |重大な脆弱性またはセキュリティの脆弱性に対処するパッケージ更新プログラムが使用可能な Linux マシンの一覧 | 
 | UpdateRunProgress<br>&#124; where UpdateRunName == "DeploymentName"<br>&#124; summarize AggregatedValue = count() by Computer|この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) | 
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合

@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric への既存の実行可能ファイルのデプロイ | Microsoft Docs"
-description: "既存のアプリケーションを Service Fabric クラスターにデプロイできるようにゲスト実行可能ファイルとしてパッケージ化する方法のチュートリアル"
+title: Azure Service Fabric への既存の実行可能ファイルのデプロイ | Microsoft Docs
+description: 既存のアプリケーションを Service Fabric クラスターにデプロイできるようにゲスト実行可能ファイルとしてパッケージ化する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: msfussell
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d799c1c6-75eb-4b8a-9f94-bf4f3dadf4c3
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,68 +14,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.openlocfilehash: c851e1f756957d58d5f7372098620e4b7129b089
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 029a0e297469dd5845a82dbdc8fd5f898cfebccc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="deploy-a-guest-executable-to-service-fabric"></a>Service Fabric へのゲスト実行可能ファイルのデプロイ
-Node.js、Java、C++ など、あらゆる種類のコードをサービスとして Azure Service Fabric 内で実行できます。 このようなサービスを Service Fabric ではゲスト実行可能ファイルと呼びます。
-
-Service Fabric は、ゲスト実行可能ファイルをステートレス サービスと同様に扱います。 これにより、ゲスト実行可能ファイルは可用性などのメトリックに基づいてクラスター内のノードに配置されます。 この記事を読むと、Visual Studio またはコマンド ライン ユーティリティを使用して、ゲスト実行可能ファイルをパッケージ化し、Service Fabric クラスターにデプロイする方法を理解できます。
-
-この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイするための手順について説明します。  
-
-## <a name="benefits-of-running-a-guest-executable-in-service-fabric"></a>Service Fabric でゲスト実行可能ファイルを実行するメリット
-Service Fabric クラスターでゲスト実行可能ファイルを実行するメリットはいくつかあります。
-
-* 高可用性: アプリケーションを Service Fabric で実行すると、可用性が向上します。 Service Fabric によって、アプリケーションのインスタンスが常に稼動している状態が維持されます。
-* 正常性の監視: Service Fabric の正常性監視機能により、アプリケーションが稼動しているかどうかが検出され、障害が発生した場合は診断情報が提供されます。   
-* アプリケーション ライフサイクル管理: Service Fabric を使用すると、ダウンタイムなしでアップグレードを実行できるだけでなく、アップグレード中に正常性に問題が発生したことが報告された場合は前のバージョンに自動的にロールバックされます。    
-* 密度: 各アプリケーションを専用のハードウェアで実行する必要がないクラスターで複数のアプリケーションを実行できます。
-* 探索可能性: REST を使って Service Fabric Naming Service を呼び出し、クラスター内の他のサービスを発見できます。 
-
-## <a name="samples"></a>サンプル
-* [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)
-* [REST を使用してネーム サービス経由で通信する 2 つのゲスト実行可能ファイル (C# と nodejs) のサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-containers)
-
-## <a name="overview-of-application-and-service-manifest-files"></a>アプリケーション マニフェスト ファイルとサービス マニフェスト ファイルの概要
-ゲスト実行可能ファイルのデプロイの一環として、[アプリケーション モデル](service-fabric-application-model.md)に関するページに目を通し、Service Fabric のパッケージ化とデプロイのモデルについて理解しておくと役立ちます。 Service Fabric パッケージ化モデルでは、アプリケーション マニフェストとサービス マニフェストの 2 つの XML ファイルを使用します。 ApplicationManifest.xml ファイルと ServiceManifest.xml ファイルのスキーマ定義が、Service Fabric SDK と共に *C:\Program Files\Microsoft SDKs\Service Fabric\schemas\ServiceFabricServiceModel.xsd* にインストールされています。
-
-* **アプリケーション マニフェスト**: アプリケーション マニフェストは、アプリケーションについて記述するために使用されます。 このファイルには、アプリケーションを構成する複数のサービスとその他のパラメーター (インスタンス数など) が列挙されています。パラメーターは、個々のサービスや複数のサービスをデプロイする方法を定義するために使用されます。
-
-  Service Fabric では、デプロイとアップグレードを行う際に 1 つのアプリケーションをユニットとして扱います。 アプリケーションは 1 つのユニットとしてアップグレードすることができ、エラー (およびロールバック) が発生した場合も 1 つのユニットとして管理されます。 Service Fabric は、アップグレード プロセスが正常完了した場合だけでなく、失敗した場合でも、アプリケーションが不明または不安定な状態にならないことを保証します。
-* **サービス マニフェスト** : サービス マニフェストは、サービスのコンポーネントを記述するために使用されます。 このファイルには、サービスの名前と種類、そのコード、構成などの情報が記載されています。 また、サービスのデプロイ後の構成に使用できるその他のパラメーターも含まれます。
-
-## <a name="application-package-file-structure"></a>アプリケーション パッケージ ファイルの構造
-Service Fabric にアプリケーションをデプロイするには、事前に定義されたディレクトリ構造にアプリケーションが従っている必要があります。 この構造の例を次に示します。
-
-```
-|-- ApplicationPackageRoot
-    |-- GuestService1Pkg
-        |-- Code
-            |-- existingapp.exe
-        |-- Config
-            |-- Settings.xml
-        |-- Data
-        |-- ServiceManifest.xml
-    |-- ApplicationManifest.xml
-```
-
-ApplicationPackageRoot には、アプリケーションを定義する ApplicationManifest.xm ファイルが含まれています。 アプリケーションに含まれる各サービスのサブディレクトリには、サービスに必要なすべてのアーティファクトが含まれています。 これらのサブディレクトリは、ServiceManifest.xml と一般的に次のディレクトリです。
-
-* *Code*。 このディレクトリにはサービス コードが含まれています。
-* *Config*:settings.xml ファイル (および、必要に応じてその他のファイル) が含まれています。実行時にサービスがこのファイルにアクセスし、特定の構成設定を取得します。
-* *Data*:追加のローカル データが格納されている追加ディレクトリ。 サービスでこのデータが必要になる場合があります。 データは、一時的なデータのみを格納します。 フェールオーバー中など、サービスの再配置が必要な場合、Service Fabric ではこのデータ ディレクトリには変更がコピー/レプリケートされません。
-
-> [!NOTE]
-> `config` ディレクトリと `data` ディレクトリは、必要がなければ作成する必要はありません。
->
->
-
-## <a name="package-an-existing-executable"></a>既存の実行可能ファイルのパッケージ化
-ゲスト実行可能ファイルをパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。
+# <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>既存の実行可能ファイルのパッケージ化と Service Fabric へのデプロイ
+[ゲスト実行可能](service-fabric-guest-executables-introduction.md)ファイルを既存の実行可能ファイルとしてパッケージ化する際、Visual Studio プロジェクト テンプレートを使用するか、[アプリケーション パッケージを手動で作成する](#manually)かを選択できます。 Visual Studio を使用する場合、アプリケーション パッケージの構造とマニフェスト ファイルは新しいプロジェクト テンプレートによって作成されます。
 
 > [!TIP]
 > 既存の Windows 実行可能ファイルをパッケージ化してサービスにするには、Visual Studio または Yeoman (Linux の場合) を使用すると最も簡単に行うことができます。
@@ -97,7 +43,9 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
 4. サービスに名前を付けて、**[OK]** をクリックします。
 5. サービスに通信用のエンドポイントが必要な場合は、ServiceManifest.xml ファイルに Protocol、Port、Type を追加できます。 (例: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`)。
 6. これで、ローカル クラスターに対してパッケージ化と発行の操作を使用できるようになりました。この操作を行うには、Visual Studio でソリューションをデバッグします。 準備ができたら、アプリケーションをリモート クラスターに発行するか、ソリューションをソース管理にチェックインすることができます。
-7. Service Fabric Explorer で実行されているゲスト実行可能サービスを表示する方法については、この記事の末尾をご覧ください。
+7. Service Fabric Explorer で実行されているゲスト実行可能サービスを表示する方法については、「[実行中のアプリケーションの確認](#check-your-running-application)」を参照してください。
+
+例のチュートリアルについては、[Visual Studio を使用した最初のゲスト実行可能アプリケーションの作成](quickstart-guest-app.md)に関するページを参照してください。
 
 ## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Linux で Yeoman を使用した既存の実行可能ファイルのパッケージ化とデプロイ
 
@@ -345,7 +293,7 @@ Service Fabric エクスプローラーで、サービスが実行されてい�
 
 ![ログの場所](./media/service-fabric-deploy-existing-app/loglocation.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、ゲスト実行可能ファイルをパッケージ化し、Service Fabric にデプロイする方法について説明しました。 関連する情報やタスクは、次の記事を参照してください。
 
 * [ゲスト実行可能ファイルをパッケージ化してデプロイするためのサンプル](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)。これには、パッケージ化ツールのプレリリース版のリンクが含まれています。

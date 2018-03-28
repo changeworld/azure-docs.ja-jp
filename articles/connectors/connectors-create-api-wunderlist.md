@@ -1,11 +1,11 @@
 ---
-title: "Azure Logic Apps での Wunderlist コネクタ | Microsoft Docs"
-description: "Wunderlist への接続を作成し、この接続を使用してロジック アプリでワークフローを構築します。"
+title: Azure Logic Apps での Wunderlist コネクタ | Microsoft Docs
+description: Wunderlist への接続を作成し、この接続を使用してロジック アプリでワークフローを構築します。
 services: logic-apps
 documentationcenter: .net,nodejs,java
-author: MandiOhlinger
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: e4773ecf-3ad3-44b4-a1b5-ee5f58baeadd
 ms.service: logic-apps
@@ -14,15 +14,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 3657955ca4280fecd3a0fb1ea64b90e0a5c5c765
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 4d1ae30724faa59dcdeffd21be9c67d280d574f6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-wunderlist-connector"></a>Wunderlist コネクタの使用
-Wunderlist では、ユーザーの作業を支援する todo リストとタスク マネージャーを提供します。  買い物メモを家族と共有したり、プロジェクトで作業したり、休暇の計画を立てたりするときも、Wunderlist を使えばタスクを簡単に確認、共有、完了できます。 Wunderlist は携帯電話、タブレット、コンピューター間で即時に同期するため、すべてのタスクにどこからでもアクセスできます。
+Wunderlist は ToDo リストおよびタスク マネージャーとしてユーザーのタスクの実行を支援します。  買い物メモを共有したり、プロジェクトで作業したり、休暇の計画を立てたりするときも、Wunderlist を使えばリスト項目を簡単に確認、共有、完了できます。 Wunderlist は携帯電話、タブレット、コンピューター間で即時に同期するため、すべてのタスクにどこからでもアクセスできます。
 
 まず、ロジック アプリを作成します。[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を参照してください。
 

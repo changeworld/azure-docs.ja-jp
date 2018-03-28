@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions でのインスタンスの管理 - Azure"
-description: "Azure Functions の Durable Functions 拡張機能でインスタンスを管理する方法を説明します。"
+title: Durable Functions でのインスタンスの管理 - Azure
+description: Azure Functions の Durable Functions 拡張機能でインスタンスを管理する方法を説明します。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a938e5949896ad3bfa91903106d56ccdf827c725
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9cea9b18cd7434a34138d5cecad8a8fd7f10d2e5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="manage-instances-in-durable-functions-azure-functions"></a>Durable Functions でのインスタンスの管理 (Azure Functions)
 
@@ -26,7 +26,9 @@ ms.lasthandoff: 02/21/2018
 
 ## <a name="starting-instances"></a>インスタンスの開始
 
-[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) の [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) メソッドは、オーケストレーター関数の新しいインスタンスを開始します。 このクラスのインスタンスを取得するには、`orchestrationClient` バインドを使用します。 内部的には、このメソッドは、メッセージをコントロール キューにエンキューし、これにより `orchestrationTrigger` トリガー バインドを使用する、指定された名前の関数がトリガーされます。
+[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) の [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) メソッドは、オーケストレーター関数の新しいインスタンスを開始します。 このクラスのインスタンスを取得するには、`orchestrationClient` バインドを使用します。 内部的には、このメソッドは、メッセージをコントロール キューにエンキューし、これにより `orchestrationTrigger` トリガー バインドを使用する、指定された名前の関数がトリガーされます。 
+
+タスクが完了するのは、オーケストレーション プロセスが開始するときです。 オーケストレーション プロセスは30 秒以内に開始する必要があります。 これよりも長くかかると `TimeoutException` がスローされます。 
 
 [StartNewAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_StartNewAsync_) のパラメーターは次のとおりです。
 
@@ -68,7 +70,7 @@ module.exports = function (context, input) {
 
 ## <a name="querying-instances"></a>インスタンスの照会
 
-[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスの [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_) メソッドは、オーケストレーション インスタンスの状態を照会します。 このメソッドは `instanceId` をパラメーターとして使用し、次のプロパティを持つオブジェクトを返します。
+[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスの [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_) メソッドは、オーケストレーション インスタンスの状態を照会します。 これは、パラメーターとして `instanceId` (必須)、`showHistory` (省略可能)、`showHistoryOutput` (省略可能) を使用します。 `showHistory` を `true` に設定すると、応答に実行履歴が含まれます。 `showHistoryOutput` も `true` に設定すると、実行履歴にアクティビティ出力が含まれます。 このメソッドは次のプロパティを持つオブジェクトを返します。
 
 * **Name**: オーケストレーター関数の名前。
 * **InstanceId**: オーケストレーションのインスタンス ID (`instanceId` 入力と同じにする必要があります)。
@@ -82,6 +84,7 @@ module.exports = function (context, input) {
     * **ContinuedAsNew**: インスタンスが新しい履歴で再起動されました。 これは遷移状態です。
     * **Failed**: インスタンスが失敗し、エラーが発生しました。
     * **Terminated**: インスタンスが突然終了しました。
+* **History**: オーケストレーションの実行履歴。 このフィールドにデータが設定されるのは、`showHistory` を `true` に設定した場合のみです。
     
 インスタンスが存在しないか、まだ開始されていない場合、このメソッドは `null` を返します。
 
@@ -145,6 +148,60 @@ public static Task Run(
 
 > [!WARNING]
 > 指定した "*インスタンス ID*" のオーケストレーション インスタンスが存在しない場合、または指定した "*イベント名*" でインスタンスが待機していない場合、イベント メッセージは破棄されます。 この動作の詳細については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-extension/issues/29)に関するトピックをご覧ください。
+
+## <a name="wait-for-orchestration-completion"></a>オーケストレーションの完了の待機
+
+[DurableOrchestrationClient](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html) クラスは、オーケストレーション インスタンスから実際の出力を同期して取得するために使用できる [WaitForCompletionOrCreateCheckStatusResponseAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_WaitForCompletionOrCreateCheckStatusResponseAsync_) API を公開します。 このメソッドでは、`timeout` に 10 秒および `retryInterval` に 1 秒の既定値を使用します (設定されていない場合)。  
+
+この API の使用方法を示す HTTP トリガー関数の例を次に示します。
+
+[!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpSyncStart.cs)]
+
+この関数は、次のように 2 秒のタイムアウトと 0.5 秒の再試行間隔を使用して呼び出すことができます。
+
+```bash
+    http POST http://localhost:7071/orchestrators/E1_HelloSequence/wait?timeout=2&retryInterval=0.5
+```
+
+オーケストレーション インスタンスからの応答を取得するために必要な時間に応じて 2 つのケースがあります。
+
+1. オーケストレーション インスタンスが、定義されたタイムアウト (このケースでは 2 秒) 内に完了すると、応答は、同期して提供される実際のオーケストレーション インスタンス出力です。
+
+    ```http
+        HTTP/1.1 200 OK
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:14:29 GMT
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        [
+            "Hello Tokyo!",
+            "Hello Seattle!",
+            "Hello London!"
+        ]
+    ```
+
+2. オーケストレーション インスタンスが、定義されたタイムアウト (このケースでは 2 秒) 内に完了できない場合、応答は「**HTTP API URL の検出**」で説明されている既定のものになります。
+
+    ```http
+        HTTP/1.1 202 Accepted
+        Content-Type: application/json; charset=utf-8
+        Date: Thu, 14 Dec 2017 06:13:51 GMT
+        Location: http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}
+        Retry-After: 10
+        Server: Microsoft-HTTPAPI/2.0
+        Transfer-Encoding: chunked
+
+        {
+            "id": "d3b72dddefce4e758d92f4d411567177",
+            "sendEventPostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/raiseEvent/{eventName}?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "statusQueryGetUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177?taskHub={taskHub}&connection={connection}&code={systemKey}",
+            "terminatePostUri": "http://localhost:7071/admin/extensions/DurableTaskExtension/instances/d3b72dddefce4e758d92f4d411567177/terminate?reason={text}&taskHub={taskHub}&connection={connection}&code={systemKey}"
+        }
+    ```
+
+> [!NOTE]
+> webhook URL の形式は、実行している Azure Functions ホストのバージョンによって異なる場合があります。 上記の例は、Azure Functions 2.0 ホスト用の形式です。
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,31 +1,30 @@
 ---
-title: "Azure でのデータ ウェアハウスの開発に関するリソース | Microsoft Docs"
-description: "SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。"
+title: Azure でのデータ ウェアハウスの開発に関するリソース | Microsoft Docs
+description: SQL Data Warehouse に関する開発コンセプト、設計上の決定、推奨事項、およびコーディング技法。
 services: sql-data-warehouse
 documentationcenter: NA
 author: jrowlandjones
 manager: barbkess
-editor: 
-ms.assetid: 996e3afc-c21c-4e21-b9df-997f953f6dfd
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: develop
-ms.date: 10/31/2016
+ms.date: 03/15/2018
 ms.author: jrj;barbkess
-ms.openlocfilehash: b85a4f09e561e429aa5bf46ec680014487fb40c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 329217faaf865052b79a1d44200cc3c788702046
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="design-decisions-and-coding-techniques-for-sql-data-warehouse"></a>SQL Data Warehouse の設計上の決定と コーディング技法
 SQL Data Warehouse に関する主要な設計上の決定、推奨事項、およびコーディング技法をより深く理解するために、開発に関する次の記事に目を通してください。
 
 ## <a name="key-design-decisions"></a>主要な設計上の決定
-次の記事には、SQL Data Warehouse を使用した分散データ ウェアハウスの開発を理解するのに必要ないくつかの主な概念と設計上の決定事項が概説されています。
+次の記事には、SQL Data Warehouse を使用して分散データウェア ハウスを開発するための概念と設計に関する決定事項が概説されています。
 
 * [接続][connections]
 * [同時実行][concurrency]
@@ -49,13 +48,13 @@ SQL Data Warehouse に関する主要な設計上の決定、推奨事項、お�
 * [オプションでのグループ化][group by options]
 * [変数の代入][variable assignment]
 
-## <a name="next-steps"></a>次のステップ
-開発記事に目を通したら、SQL Data Warehouse でサポートされる構文の詳細について、「[Transact-SQL リファレンス][Transact-SQL reference]」をご覧ください。
+## <a name="next-steps"></a>次の手順
+詳細な参照情報については、SQL Data Warehouse の「[Transact-SQL リファレンス][Transact-SQL reference]」をご覧ください。
 
 <!--Image references-->
 
 <!--Article references-->
-[concurrency]: ./sql-data-warehouse-develop-concurrency.md
+[concurrency]: ./resource-classes-for-workload-management.md
 [connections]: ./sql-data-warehouse-connect-overview.md
 [CTAS]: ./sql-data-warehouse-develop-ctas.md
 [dynamic SQL]: ./sql-data-warehouse-develop-dynamic-sql.md

@@ -2,23 +2,18 @@
 title: 脅威の検出 - Azure SQL Database | Microsoft Docs
 description: 脅威の検出は、データベースに対する潜在的なセキュリティ脅威を示す異常なデータベース アクティビティを検出します。
 services: sql-database
-documentationcenter: ''
 author: rmatchoro
-manager: shaik
-editor: v-romcal
+manager: craigg
 ms.service: sql-database
 ms.custom: security
-ms.devlang: NA
 ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: On Demand
 ms.date: 06/19/2017
 ms.author: ronmat
-ms.openlocfilehash: a01721b10305ac45082943fbe4fb7fb199a0e49f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4cb31eef4ba4b85ea28a58bb9b947b4e07cb0b58
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-database-threat-detection"></a>SQL Database の脅威の検出
 
@@ -33,7 +28,7 @@ SQL の脅威の検出で提供される新しいセキュリティ階層は、�
 SQL の脅威の検出によるアラートは [Azure Security Center](https://azure.microsoft.com/services/security-center/) と統合されています。保護対象の各 SQL Database サーバーは、Azure Security Center Standard レベルの価格 (15 ドル/ノード/月) で課金されます。保護対象の SQL Database サーバーは、それぞれ 1 つのノードとしてカウントされます。  
 
 ## <a name="set-up-threat-detection-for-your-database-in-the-azure-portal"></a>Azure Portal でデータベースの脅威検出を設定する
-1. [https://portal.azure.com](https://portal.azure.com) で Azure Portal を起動します。
+1. Azure Portal ([https://portal.azure.com](https://portal.azure.com)) を開きます。
 2. 監視する SQL Database の構成ページに移動します。 [設定] ページで、**[監査と脅威の検出]** を選択します。 
     ![ナビゲーション ウィンドウ][1]
 3. **[監査と脅威の検出]** 構成ページで、監査を **[ON]** にすると、脅威の検出の設定が表示されます。

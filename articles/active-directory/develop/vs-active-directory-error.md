@@ -1,99 +1,99 @@
 ---
-title: "Azure Active Directory の接続ウィザードでエラーを診断する方法"
-description: "Active Directory の接続ウィザードで、サポートされていない認証の種類が検出された"
+title: Azure Active Directory の接続済みサービスでエラーを診断する方法
+description: Active Directory の接続済みサービスで、サポートされていない認証の種類が検出された
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
-manager: mtillman
-editor: 
+manager: ghogen
+editor: ''
 ms.assetid: dd89ea63-4e45-4da1-9642-645b9309670a
 ms.service: active-directory
 ms.workload: web
 ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
-ms.date: 03/05/2017
+ms.date: 03/12/2018
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: 186bb1ede11c869b1352906b7ebafe57025f4f09
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ab81c3385479a96fbfa7e68c4e81129ff327ed4b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="diagnosing-errors-with-the-azure-active-directory-connection-wizard"></a>Azure Active Directory の接続ウィザードでエラーを診断する
-ウィザードが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。   
+# <a name="diagnosing-errors-with-the-azure-active-directory-connected-service"></a>Azure Active Directory の接続済みサービスでエラーを診断する
 
-## <a name="what-is-being-checked"></a>確認内容
-**注:** プロジェクトで以前の認証コードを正しく検出するには、プロジェクトを構築する必要があります。  このエラーが発生したときに、以前の認証コードがない場合は、再構築して、もう一度やり直してください。
+Azure Active Director 接続済みサービスが以前の認証コードを検出するときに、互換性のない認証の種類が検出されました。
 
-### <a name="project-types"></a>プロジェクトの種類
-ウィザードは、プロジェクトに適切な認証ロジックを挿入できるように、開発しているプロジェクトの種類を確認します。  プロジェクトに `ApiController` から派生したコントローラーが含まれている場合は、WebAPI プロジェクトと見なされます。  プロジェクトに `MVC.Controller` から派生したコントローラーしか含まれていない場合は、MVC プロジェクトと見なされます。  それ以外は、ウィザードでサポートされていません。
+プロジェクトで以前の認証コードを正しく検出するには、プロジェクトを構築する必要があります。  このエラーが発生したときに、以前の認証コードがない場合は、再構築して、もう一度やり直してください。
 
-### <a name="compatible-authentication-code"></a>互換性のある認証コード
-ウィザードは、以前にウィザードで構成されたか、ウィザードと互換性のある認証設定が存在するかどうかも確認します。  すべての設定が存在する場合は、再入可能なケースと見なされ、ウィザードが開き、設定が表示されます。  一部の設定のみが存在する場合は、エラー ケースと見なされます。
+## <a name="project-types"></a>プロジェクトの種類
 
-MVC プロジェクトの場合、ウィザードは、以前にウィザードを使用して構成された次の設定のいずれかが存在するかどうかを確認します。
+接続済みサービスは、プロジェクトに適切な認証ロジックを挿入できるように、開発しているプロジェクトの種類を確認します。 プロジェクトに `ApiController` から派生したコントローラーが含まれている場合は、WebAPI プロジェクトと見なされます。 プロジェクトに `MVC.Controller` から派生したコントローラーしか含まれていない場合は、MVC プロジェクトと見なされます。 接続済みサービスでは他の種類のプロジェクトはサポートされません。
+
+## <a name="compatible-authentication-code"></a>互換性のある認証コード
+
+接続済みサービスは、以前にサービスで構成されたか、サービスと互換性のある認証設定が存在するかどうかも確認します。 すべての設定が存在する場合は、再入可能なケースと見なされ、接続済みサービスが開き、設定が表示されます。  一部の設定のみが存在する場合は、エラー ケースと見なされます。
+
+MVC プロジェクトの場合、接続済みサービスは、以前にサービスを使用して構成された次の設定のいずれかが存在するかどうかを確認します。
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:AADInstance" value="" />
     <add key="ida:PostLogoutRedirectUri" value="" />
 
-さらに、以前にウィザードを使用して構成された、Web API プロジェクトの次の設定のいずれかが存在するかどうかを確認します。
+さらに、以前に接続済みサービスを使用して構成された、Web API プロジェクトの次の設定のいずれかが存在するかどうかを確認します。
 
     <add key="ida:ClientId" value="" />
     <add key="ida:Tenant" value="" />
     <add key="ida:Audience" value="" />
 
-### <a name="incompatible-authentication-code"></a>互換性のない認証コード
-最後に、ウィザードは、Visual Studio の以前のバージョンで構成された認証コードのバージョンを検出しようと試みます。 このエラーが発生した場合、プロジェクトで互換性のない認証の種類が検出されたことを表します。 ウィザードは、Visual Studio の以前のバージョンに対して次の種類の認証を検出します。
+## <a name="incompatible-authentication-code"></a>互換性のない認証コード
 
-* Windows 認証 
-* 個々のユーザー アカウント 
-* 組織アカウント 
+最後に、接続済みサービスは、Visual Studio の以前のバージョンで構成された認証コードのバージョンを検出しようと試みます。 このエラーが発生した場合、プロジェクトで互換性のない認証の種類が検出されたことを表します。 接続済みサービスは、Visual Studio の以前のバージョンに対して次の種類の認証を検出します。
 
-MVC プロジェクトで Windows 認証を検出するために、ウィザードは **web.config** ファイルで `authentication` 要素を探します。
+* Windows 認証
+* 個々のユーザー アカウント
+* 組織アカウント
 
-<pre>
-    &lt;configuration&gt;
-        &lt;system.web&gt;
-            <span style="background-color: yellow">&lt;authentication mode="Windows" /&gt;</span>
-        &lt;/system.web&gt;
-    &lt;/configuration&gt;
-</pre>
+MVC プロジェクトで Windows 認証を検出するために、接続済みサービスは `web.config` ファイルで `authentication` 要素を探します。
 
-Web API プロジェクトで Windows 認証を検出するために、ウィザードはプロジェクトの **.csproj** ファイルで `IISExpressWindowsAuthentication` 要素を探します。
+```xml
+<configuration>
+    <system.web>
+        <span style="background-color: yellow"><authentication mode="Windows" /></span>
+    </system.web>
+</configuration>
+```
 
-<pre>
-    &lt;Project&gt;
-        &lt;PropertyGroup&gt;
-            <span style="background-color: yellow">&lt;IISExpressWindowsAuthentication&gt;enabled&lt;/IISExpressWindowsAuthentication&gt;</span>
-        &lt;/PropertyGroup>
-    &lt;/Project&gt;
-</pre>
+Web API プロジェクトで Windows 認証を検出するために、接続済みサービスはプロジェクトの `.csproj` ファイルで `IISExpressWindowsAuthentication` 要素を探します。
 
-個々のユーザー アカウント認証を検出するために、ウィザードは **Packages.config** ファイルで package 要素を探します。
+```xml
+<Project>
+    <PropertyGroup>
+        <span style="background-color: yellow"><IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication></span>
+    </PropertyGroup>
+</Project>
+```
 
-<pre>
-    &lt;packages&gt;
-        <span style="background-color: yellow">&lt;package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /&gt;</span>
-    &lt;/packages&gt;
-</pre>
+個々のユーザー アカウント認証を検出するために、接続済みサービスは `packages.config` ファイルで package 要素を探します。
 
-組織アカウント認証の古い形式を検出するために、ウィザードは **web.config**ファイルで次の要素を探します:
+```xml
+<packages>
+    <span style="background-color: yellow"><package id="Microsoft.AspNet.Identity.EntityFramework" version="2.1.0" targetFramework="net45" /></span>
+</packages>
+```
 
-<pre>
-    &lt;configuration&gt;
-        &lt;appSettings&gt;
-            <span style="background-color: yellow">&lt;add key="ida:Realm" value="***" /&gt;</span>
-        &lt;/appSettings&gt;
-    &lt;/configuration&gt;
-</pre>
+組織アカウント認証の古い形式を検出するために、接続済みサービスは `web.config`ファイルで次の要素を探します:
 
-認証の種類を変更するには、互換性のない認証の種類を削除して、再度ウィザードを実行します。
+```xml
+<configuration>
+    <appSettings>
+        <span style="background-color: yellow"><add key="ida:Realm" value="***" /></span>
+    </appSettings>
+</configuration>
+```
+
+認証の種類を変更するには、互換性のない認証の種類を削除して、再度接続済みサービスの追加を試行します。
 
 詳細については、「 [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)」を参照してください。
-
-#<a name="next-steps"></a>次のステップ
-- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)

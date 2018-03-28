@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory の Web アクティビティ | Microsoft Docs"
-description: "Data Factory によってサポートされている制御フロー アクティビティの 1 つである Web アクティビティを使用して、パイプラインから REST エンドポイントを呼び出す方法について説明します。"
+title: Azure Data Factory の Web アクティビティ | Microsoft Docs
+description: Data Factory によってサポートされている制御フロー アクティビティの 1 つである Web アクティビティを使用して、パイプラインから REST エンドポイントを呼び出す方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 04b542bf1f77b75c1c92b147b578df630b86d0ac
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 510f9ac95245580cb7f2f51487b5aeacc2a4825c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Azure Data Factory の Web アクティビティ
 Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。 
@@ -69,7 +69,7 @@ Web アクティビティを使用すると、Data Factory パイプラインか
 name | Web アクティビティの名前 | String | [はい]
 型 | **WebActivity** に設定する必要があります。 | String | [はい]
 method | ターゲット エンドポイント用の Rest API メソッド。 | 文字列 をオンにします。 <br/><br/>サポートされるタイプ: "GET"、"POST"、"PUT" | [はい]
-url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式) | [はい]
+url | ターゲット エンドポイントおよびパス | 文字列 (または文字列の resultType を含む式)。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。 | [はい]
 headers | 要求に送信されるヘッダー。 たとえば、要求で言語と種類を設定するには、次のようにします。`"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` | 文字列 (または文字列の resultType を含む式) | あり。Content-type ヘッダーが必要です。 `"headers":{ "Content-Type":"application/json"}`
 body | エンドポイントに送信されるペイロードを表します。 POST/PUT メソッドには必須です。  | 文字列 (または文字列の resultType を含む式)。 <br/><br/>「[要求ペイロードのスキーマ](#request-payload-schema)」セクションにある要求ペイロードのスキーマを参照してください。 | いいえ 
 [認証] | エンドポイントを呼び出すために使用される認証方法。 サポートされるタイプは "Basic" または "ClientCertificate" です。 詳細については、「[認証](#authentication)」セクションを参照してください。 認証が必要ない場合は、このプロパティを除外します。 | 文字列 (または文字列の resultType を含む式) | いいえ 
@@ -77,7 +77,7 @@ body | エンドポイントに送信されるペイロードを表します。 
 linkedServices | エンドポイントに渡されるリンクされたサービスの一覧。 | リンクされたサービスの参照の配列。 空の配列にすることができます。 | [はい]
 
 > [!NOTE]
-> Web アクティビティが呼び出す REST エンドポイントは、型 JSON の応答を返す必要があります。
+> Web アクティビティが呼び出す REST エンドポイントは、型 JSON の応答を返す必要があります。 エンドポイントからの応答がない場合、アクティビティは 1 分でタイムアウトになり、エラーが発生します。
 
 ## <a name="authentication"></a>認証
 

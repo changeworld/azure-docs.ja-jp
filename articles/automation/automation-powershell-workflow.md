@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation の PowerShell ワークフローについて | Microsoft Docs"
-description: "この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いと、Automation Runbook に適用できる概念ついて簡単に説明します。"
+title: Azure Automation の PowerShell ワークフローについて
+description: この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いと、Automation Runbook に適用できる概念ついて簡単に説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: 84bf133e-5343-4e0e-8d6c-bb14304a70db
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 04/21/2017
-ms.author: magoedte;bwren
-ms.openlocfilehash: 90a8229b3d4974b8385039c7d85f916a168947d8
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: b8d78d6dfd258fb51e7b30832b6c214c67ac0fec
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明 
 Azure Automation の Runbook は Windows PowerShell ワークフローとして実装されています。  Windows PowerShell ワークフローは Windows PowerShell スクリプトと似ていますが、新規ユーザーにはわかりにくい大きな違いがいくつかあります。  この記事は、PowerShell ワークフローを使用して Runbook を作成するときに利用することを目的としていますが、チェックポイントを必要とする場合以外は、PowerShell を使用して Runbook を作成することをお勧めします。  PowerShell ワークフローの Runbook を作成する場合は構文の違いがいくつかあるため、効果的なワークフローを記述するにはさらに作業が必要になります。  

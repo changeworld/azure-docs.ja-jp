@@ -7,13 +7,13 @@ manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 03/01/2018
+ms.date: 03/15/2018
 ms.author: tamram
-ms.openlocfilehash: 8d1f09a39e865500aa8e4d093473d4989f134c3d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 716e61840f4bfb5a68a995683e67dae0b43d3854
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-net"></a>クイック スタート: .NET を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -253,13 +253,13 @@ BLOB ストレージを使用する .NET 開発については、以下の追加
 
 ### <a name="binaries-and-source-code"></a>バイナリとソース コード
 
-- [Storage .NET クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンの NuGet パッケージをダウンロードします。 
-- GitHub で [Storage .NET クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-net)を表示します。
+- Azure Storage 用の [.NET クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)の最新バージョンの NuGet パッケージをダウンロードします。 
+- GitHub で [.NET クライアント ライブラリのソース コード](https://github.com/Azure/azure-storage-net)を確認します。
 
 ### <a name="client-library-reference-and-samples"></a>クライアント ライブラリ リファレンスとサンプル
 
-- クライアント ライブラリの詳細については、[Storage .NET API リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/storage)を参照してください。
-- Storage .NET クライアント ライブラリを使用して記述された [BLOB ストレージ サンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)を調べます。
+- .NET クライアント ライブラリの詳細については、[.NET API リファレンス](https://docs.microsoft.com/dotnet/api/overview/azure/storage)を参照してください。
+- .NET クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)を確認します。
 
 ## <a name="next-steps"></a>次の手順
 

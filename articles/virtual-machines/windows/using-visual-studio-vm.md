@@ -1,6 +1,6 @@
 ---
-title: "Azure 仮想マシンでの Visual Studio の使用| Microsoft Docs"
-description: "Azure 仮想マシンでの Visual Studio の使用。"
+title: Azure 仮想マシンでの Visual Studio の使用| Microsoft Docs
+description: Azure 仮想マシンでの Visual Studio の使用。
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: PhilLee-MSFT
@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.prod: vs-devops-alm
-ms.date: 01/30/2018
+ms.date: 03/02/2018
 ms.author: phillee
 keywords: visualstudio
-ms.openlocfilehash: a77fa83ba4fe3f6d7e7ab1ea35929ae610566129
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: e5b289b2be982653461c4f5b933e1ec444fa9716
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visual-studio-images-on-azure"></a>Azure 上の Visual Studio のイメージ
-事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://portal.azure.com/) で入手できます。
+事前に構成済みの Azure 仮想マシン (VM) 上で Visual Studio を使用することは、ゼロから稼働状態の開発環境を構築するための簡単かつ迅速な方法です。 さまざまな Visual Studio 構成のシステム イメージは、[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?search=%22visual%20studio%202017%22&page=1) で入手できます。
 
 Azure を利用するのが初めてであれば、 [無料の Azure アカウントを作成します](https://azure.microsoft.com/free)。
 
@@ -30,16 +30,16 @@ Azure を利用するのが初めてであれば、 [無料の Azure アカウ�
 最新のメジャー バージョン (Visual Studio 2017 および Visual Studio 2015) のイメージは、Azure Marketplace で提供されています。 メジャー バージョンごとに、最初にリリースされたバージョン (RTW) と最新の更新バージョンが表示されます。 これらの各バージョンでは、Visual Studio Enterprise エディションと Visual Studio Community エディションが提供されます。 これらのイメージは、少なくとも月に 1 回は更新され、最新の Visual Studio と Windows の更新プログラムが適用されます。 イメージの名前は変わりませんが、各イメージの説明には、インストールされている製品のバージョンと、その時点のイメージの日付が記載されます。
 
 | リリース バージョン              | エディション            | 製品バージョン     |
-|:------------------------------------------:|:----------------------------:|:-----------------------:|
-| Visual Studio 2017: 最新 (バージョン 15.5) |    Enterprise、Community     |      Version 15.5.3     |
-|         Visual Studio 2017: RTW           |    Enterprise、Community     |      Version 15.0.7     |
+|:-----------------------------------------:|:----------------------------:|:-----------------------:|
+| Visual Studio 2017: 最新 (バージョン 15.5) |    Enterprise、Community     |      バージョン 15.6.0     |
+|         Visual Studio 2017: RTW           |    Enterprise、Community     |      バージョン 15.0.10    |
 |   Visual Studio 2015: 最新 (Update 3)   |    Enterprise、Community     |  Version 14.0.25431.01  |
 |         Visual Studio 2015: RTW           |              なし            | (サービスの有効期限切れ) |
 
 > [!NOTE]
 > Microsoft サービス ポリシーに従って、最初にリリースされた Visual Studio 2015 のバージョン (RTW) のサービスは、期限切れになりました。 Visual Studio 2015 Update 3 は、Visual Studio 2015 製品ラインに提供されているそれ以外のバージョンだけです。
 
-詳細については、[Visual Studio サービス ポリシー](https://www.visualstudio.com/en-us/productinfo/vs-servicing-vs)に関するページをご覧ください。
+詳細については、[Visual Studio サービス ポリシー](https://www.visualstudio.com/productinfo/vs-servicing-vs)に関するページをご覧ください。
 
 ## <a name="what-features-are-installed"></a>どのような機能がインストールされていますか。
 各イメージには、その Visual Studio エディションで推奨される機能セットが含まれています。 一般的に、インストールには以下が含まれます。
@@ -77,16 +77,16 @@ Azure では、さまざまなサイズの仮想マシンが提供されてい�
    * Standard_D2S_v2
    * Standard_D3_v2
     
-最新のマシン サイズについては、「[ Azure の Windows 仮想マシンのサイズ](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/sizes)」をご覧ください。
+最新のマシン サイズについては、「[ Azure の Windows 仮想マシンのサイズ](/azure/virtual-machines/windows/sizes)」をご覧ください。
 
-Azure では、VM サイズを変更して、最初の選択を再調整することもできます。 より適切なサイズで新しい VM をプロビジョニングすることもできますし、既存の VM のサイズを別の基本ハードウェアへと変更することもできます。 詳しくは、「[Windows VM のサイズ変更](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/resize-vm)」をご覧ください。
+Azure では、VM サイズを変更して、最初の選択を再調整することもできます。 より適切なサイズで新しい VM をプロビジョニングすることもできますし、既存の VM のサイズを別の基本ハードウェアへと変更することもできます。 詳しくは、「[Windows VM のサイズ変更](/azure/virtual-machines/windows/resize-vm)」をご覧ください。
 
 ## <a name="after-the-vm-is-running-whats-next"></a>VM を実行したら、次に何をすればよいですか。
 Visual Studio は、Azure の "ライセンス持ち込み" モデルに従って動作します。 私有するハードウェア上のインストールと同様、まずは、Visual Studio インストールのラインセンス付与を行います。 Visual Studio のロックを解除するには、次のいずれかを行います。
 - Visual Studio サブスクリプションに関連付けられた Microsoft アカウントでサインインする 
 - 最初の購入時に提供されたプロダクト キーを使って Visual Studio のロックを解除する
 
-詳しくは、[Visual Studio へのサインイン](https://docs.microsoft.com/en-us/visualstudio/ide/signing-in-to-visual-studio)と [Visual Studio のロック解除方法](https://docs.microsoft.com/en-us/visualstudio/ide/how-to-unlock-visual-studio)に関するページをご覧ください。
+詳しくは、[Visual Studio へのサインイン](/visualstudio/ide/signing-in-to-visual-studio)と [Visual Studio のロック解除方法](/visualstudio/ide/how-to-unlock-visual-studio)に関するページをご覧ください。
 
 ## <a name="how-do-i-save-the-development-vm-for-future-or-team-use"></a>今後の使用やチームでの使用のために、開発用 VM を保存するにはどうすればよいですか。
 
@@ -96,7 +96,7 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 
 <img src="media/using-visual-studio-vm/capture-vm.png" alt="Capture an image through the Azure portal UI" style="border:3px solid Silver; display: block; margin: auto;"><center>*(図 1) Azure Portal の UI を使用してイメージをキャプチャする*</center>
 
-詳しくは、「[Azure で一般化された VM の管理対象イメージを作成する](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/capture-image-resource)」をご覧ください。
+詳しくは、「[Azure で一般化された VM の管理対象イメージを作成する](/azure/virtual-machines/windows/capture-image-resource)」をご覧ください。
 
 > [!IMPORTANT]
 > 必ず、Sysprep を使用して VM を準備してください。 この手順を実行しなかった場合、Azure ではイメージから VM をプロビジョニングできません。
@@ -104,7 +104,7 @@ Visual Studio は、Azure の "ライセンス持ち込み" モデルに従っ�
 > [!NOTE]
 > イメージを保存する分のストレージ コストはかかりますが、VM を必要とするチーム メンバーごとに VM をゼロから再構築するコストに比べれば、追加されるコストは少額で済みます。 たとえば、チーム全体で再利用可能な 127 GB のイメージを作成して 1 か月間保管するには、数ドルのコストがかかります。 しかし、これらのコストは、各従業員が個別使用のために適切に構成した dev ボックスを作成して検証する時間に比べれば、少ないものです。
 
-また、開発タスクや使用するテクノロジによっては、より大規模な環境が必要になる場合があります (多様な開発構成や複数のマシン構成が必要になるなど)。 Azure DevTest Labs を使用すれば、"ゴールデン イメージ" の作成を自動化するための _"レシピ"_ を作成できます。 また、DevTest Labs では、チームで実行する VM のポリシーを管理することもできます。 DevTest Labs の詳細については、「[開発者のための Azure DevTest Labs の使用](https://docs.microsoft.com/en-us/azure/devtest-lab/devtest-lab-developer-lab)」が最適な資料です。
+また、開発タスクや使用するテクノロジによっては、より大規模な環境が必要になる場合があります (多様な開発構成や複数のマシン構成が必要になるなど)。 Azure DevTest Labs を使用すれば、"ゴールデン イメージ" の作成を自動化するための _"レシピ"_ を作成できます。 また、DevTest Labs では、チームで実行する VM のポリシーを管理することもできます。 DevTest Labs の詳細については、「[開発者のための Azure DevTest Labs の使用](/azure/devtest-lab/devtest-lab-developer-lab)」が最適な資料です。
 
 ## <a name="next-steps"></a>次の手順
 事前構成済みの Visual Studio イメージについて確認したので、次の手順では新しい VM を作成します。

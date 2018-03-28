@@ -16,11 +16,11 @@ ms.date: 07/20/2017
 ms.author: billmath
 ms.custom: aaddev
 ms.reviewer: anchitn
-ms.openlocfilehash: 568bf5f0a4cf3eb77b528af2550d9729dcc59878
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 553283f246b701b5084f0a3a9914d7ceb8826fe4
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-public-preview"></a>Azure Active Directory における構成可能なトークンの有効期間 (パブリック プレビュー)
 Azure Active Directory (Azure AD) によって発行されたトークンの有効期間を指定できます。 組織のすべてのアプリ、マルチテナント (複数の組織) アプリケーション、または組織の特定のサービス プリンシパルに対して、トークンの有効期間を設定できます。
@@ -276,7 +276,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
 2.  サービス プリンシパルにポリシーを割り当てます。 サービス プリンシパルの **ObjectId** も取得する必要があります。 
 
-    1.  組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) をクエリできます。 または、[Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) で、Azure AD アカウントにサインインします。
+    1.  組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) または [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) のいずれかに対してクエリを実行します。 また、Azure AD アカウントを使用して、[Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) でテストすることもできます。
 
     2.  サービス プリンシパルの **ObjectId** がある場合、次のコマンドを実行します。
 
@@ -332,7 +332,7 @@ Refresh Token Max Inactive Time プロパティは Single-Factor Token Max Age �
 
     これで、組織全体に適用されるポリシーが得られます。 特定のサービス プリンシパルに対してはこの 30 日間のポリシーを保持しますが、組織の既定のポリシーを "until-revoked" の上限となるよう変更するとします。
 
-    1.  組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) をクエリできます。 または、[Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) で、Azure AD アカウントを使用してサインインします。
+    1.  組織のすべてのサービス プリンシパルを表示するには、[Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/serviceprincipal#properties) または [Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/entity-and-complex-type-reference#serviceprincipal-entity) のいずれかに対してクエリを実行します。 また、Azure AD アカウントを使用して、[Azure AD Graph Explorer](https://graphexplorer.cloudapp.net/) と [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) でテストすることもできます。
 
     2.  サービス プリンシパルの **ObjectId** がある場合、次のコマンドを実行します。
 

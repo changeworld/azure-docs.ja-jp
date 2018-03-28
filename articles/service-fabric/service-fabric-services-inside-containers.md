@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric マイクロサービス (プレビュー) をコンテナー化する方法"
-description: "Azure Service Fabric は、Service Fabric マイクロサービスをコンテナー化する新機能を追加しました。 現在、この機能はプレビュー段階にあります。"
+title: Azure Service Fabric マイクロサービス (プレビュー) をコンテナー化する方法
+description: Azure Service Fabric は、Service Fabric マイクロサービスをコンテナー化する新機能を追加しました。 現在、この機能はプレビュー段階にあります。
 services: service-fabric
 documentationcenter: .net
 author: anmolah
@@ -14,21 +14,20 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/04/2017
 ms.author: anmola
-ms.openlocfilehash: 6f8ad0bad8d1ae861e6b72f7e1a32ab0675813c2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e66e488d8e547e828c014b105a816a14726e5005
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-containerize-your-service-fabric-reliable-services-and-reliable-actors-preview"></a>Service Fabric Reliable Services と Reliable Actors (プレビュー) をコンテナー化する方法
 
 Service Fabric は、Service Fabric マイクロサービス (Reliable Services と Reliable Actor ベースのサービス) のコンテナー化をサポートしています。 詳細については、「[Service Fabric とコンテナー](service-fabric-containers-overview.md)」を参照してください。
 
-
- この機能はプレビュー段階です。この記事では、コンテナー内で実行されているサービスを取得するさまざまな手順について説明します。  
+この機能はプレビュー段階です。この記事では、コンテナー内で実行されているサービスを取得するさまざまな手順について説明します。  
 
 > [!NOTE]
-> この機能はプレビュー段階であり、実稼働環境ではサポートされません。 現在、この機能は Windows でのみ機能します。
+> この機能はプレビュー段階であり、実稼働環境ではサポートされません。 現在、この機能は Windows でのみ機能します。 コンテナーを実行するには、Windows Server 2016 with Containers でクラスターを実行する必要があります。
 
 ## <a name="steps-to-containerize-your-service-fabric-application"></a>Service Fabric アプリケーションをコンテナー化する手順
 
@@ -110,6 +109,6 @@ Service Fabric は、Service Fabric マイクロサービス (Reliable Services 
 
 以上の手順で、クラスターを実行しているコンテナー化された Service Fabric アプリケーションが作成されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Service Fabric でのコンテナー](service-fabric-get-started-containers.md)の実行について確認します。
 * Service Fabric の[アプリケーション ライフサイクル](service-fabric-application-lifecycle.md)について確認します。

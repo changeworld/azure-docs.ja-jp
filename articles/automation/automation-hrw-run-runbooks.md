@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation の Hybrid Runbook Worker での Runbook の実行 | Microsoft Docs"
-description: "この記事では、Hybrid Runbook Worker ロールを持つローカル データセンターまたはクラウド プロバイダーのコンピューターでの Runbook の実行について説明します。"
+title: Azure Automation の Hybrid Runbook Worker での Runbook の実行
+description: この記事では、Hybrid Runbook Worker ロールを持つローカル データセンターまたはクラウド プロバイダーのコンピューターでの Runbook の実行について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
-ms.assetid: 06227cda-f3d1-47fe-b3f8-436d2b9d81ee
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
+manager: carmonm
+ms.devlang: na
 ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 07/22/2017
-ms.author: magoedte
-ms.openlocfilehash: ca63f9c7a11bc072bd73c3d61c63a8d603020e68
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 6e1e6272009b4357162339643580f3d31dc6062e
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Hybrid Runbook Worker での Runbook の実行 
 Azure Automation で実行される Runbook と、Hybrid Runbook Worker で実行される Runbook の構造に違いはありません。 Hybrid Runbook Worker をターゲットとする Runbook は通常ローカル コンピューター自体のリソースまたはデプロイされているローカル環境内のリソースを管理しますが、Azure Automation の Runbook は通常 Azure クラウド内のリソースを管理するため、ほとんどの場合、それぞれで使用する Runbook は大きく異なります。
@@ -35,7 +31,7 @@ Azure Portal で Runbook を開始する際に、**Azure** または**ハイブ�
     Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" –Name "Test-Runbook" -RunOn "MyHybridGroup"
 
 > [!NOTE]
-> The **RunOn** parameter was added to the **Start-AzureAutomationRunbook** cmdlet in version 0.9.1 of Microsoft Azure PowerShell.  以前のバージョンがインストールされている場合は、 [最新バージョンをダウンロード](https://azure.microsoft.com/downloads/) する必要があります。  Windows PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。  ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。  Automation アカウントに最新バージョンの Azure Powershell をインストールする必要があるため、現時点ではある Runbook を別の Runbook の Hybrid Runbook Worker で開始することはできません。  最新バージョンは Azure Automation で自動的に更新され、自動的にワーカーにすぐにプッシュダウンされます。
+> **RunOn** パラメーターは、Microsoft Azure PowerShell のバージョン 0.9.1 で **Start-AzureAutomationRunbook** コマンドレットに追加されました。  以前のバージョンがインストールされている場合は、 [最新バージョンをダウンロード](https://azure.microsoft.com/downloads/) する必要があります。  Windows PowerShell から Runbook を開始するワークステーションでは、このバージョンをインストールするだけです。  ワーカー コンピューターから Runbook を開始する場合を除き、そのコンピューターにインストールする必要はありません。  Automation アカウントに最新バージョンの Azure Powershell をインストールする必要があるため、現時点ではある Runbook を別の Runbook の Hybrid Runbook Worker で開始することはできません。  最新バージョンは Azure Automation で自動的に更新され、自動的にワーカーにすぐにプッシュダウンされます。
 >
 >
 

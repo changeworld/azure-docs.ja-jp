@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2cf31b32e02923aa573d5586b8ca24bf30b7d97b
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: f251fe11c43dc4b3f29c70f937f5bfcb6af6c44e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング
 
@@ -38,6 +38,7 @@ ms.lasthandoff: 03/12/2018
 | 競合 | リソースの現在の状態では許可されていない操作を要求しています。 たとえば、ディスクのサイズ変更が許可されているのは、VM の作成時と VM の割り当て解除時のみです。 | |
 | DeploymentActive | このリソース グループへの同時実行デプロイが完了するまで待ちます。 | |
 | DeploymentFailed | DeploymentFailed エラーは、解決する必要があるエラーの詳細が示されない一般的なエラーです。 エラー コードのエラー詳細で情報を確認してください。 | [エラー コードを見つける](#find-error-code) |
+| DeploymentQuotaExceeded | リソース グループあたり 800 のデプロイという上限に達した場合、不要になった履歴からデプロイを削除します。 Azure CLI の場合は [az group deployment delete](/cli/azure/group/deployment#az_group_deployment_delete) を、PowerShell では [Remove-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/remove-azurermresourcegroupdeployment) を使用して、履歴からエントリを削除できます。 デプロイ履歴からエントリを削除しても、デプロイ リソースには影響しません。 | |
 | DnsRecordInUse | DNS レコード名は、一意の名前にする必要があります。 別の名前を指定するか、既存のレコードを変更してください。 | |
 | ImageNotFound | VM イメージの設定を確認してください。 |  |
 | InUseSubnetCannotBeDeleted | リソースを更新しようとするときにこのエラーが発生することがありますが、リソースを削除して作成すると、要求が処理されます。 変更されていないすべての値を指定してください。 | [リソースを更新する](/azure/architecture/building-blocks/extending-templates/update-resource) |
@@ -49,10 +50,13 @@ ms.lasthandoff: 03/12/2018
 | InvalidResourceNamespace | **type** プロパティに指定したリソース名前空間を確認してください。 | [テンプレート リファレンス](/azure/templates/) |
 | InvalidResourceReference | リソースがまだ存在しないか、正しく参照されていません。 依存関係を追加する必要があるかどうかを確認してください。 シナリオに必要なパラメーターを含めて **reference** 関数を使用しているかどうかを確認してください。 | [依存関係を解決する](resource-manager-not-found-errors.md) |
 | InvalidResourceType | **type** プロパティに指定したリソースの種類を確認してください。 | [テンプレート リファレンス](/azure/templates/) |
+| InvalidSubscriptionRegistrationState | リソース プロバイダーにサブスクリプションを登録してください。 | [登録を解決する](resource-manager-register-provider-errors.md) |
 | InvalidTemplate | テンプレートの構文にエラーがないか確認してください。 | [無効なテンプレートを解決する](resource-manager-invalid-template-errors.md) |
+| InvalidTemplateCircularDependency | 不要な依存関係を削除します。 | [循環依存関係を解決する](resource-manager-invalid-template-errors.md#circular-dependency) |
 | LinkedAuthorizationFailed | デプロイ先のリソース グループと同じテナントに自分のアカウントが属しているかどうかを確認してください。 | |
 | LinkedInvalidPropertyId | リソースのリソース ID が正しく解決されていません。 リソース ID に必要なすべての値 (サブスクリプション ID、リソース グループ名、リソースの種類、親リソース名 (必要な場合)、リソース名など) を指定しているかどうかを確認してください。 | |
 | LocationRequired | リソースの場所を指定します。 | [場所を設定する](resource-manager-templates-resources.md#location) |
+| MismatchingResourceSegments | 入れ子になったリソースの名前と種類でセグメント数が正しいことを確認します。 | [リソース セグメントを解決する](resource-manager-invalid-template-errors.md#incorrect-segment-lengths)
 | MissingRegistrationForLocation | リソース プロバイダーの登録状態、およびサポートされている場所を確認してください。 | [登録を解決する](resource-manager-register-provider-errors.md) |
 | MissingSubscriptionRegistration | リソース プロバイダーにサブスクリプションを登録してください。 | [登録を解決する](resource-manager-register-provider-errors.md) |
 | NoRegisteredProviderFound | リソース プロバイダーの登録状態を確認してください。 | [登録を解決する](resource-manager-register-provider-errors.md) |
@@ -73,6 +77,8 @@ ms.lasthandoff: 03/12/2018
 | StorageAccountAlreadyTaken | ストレージ アカウントに一意の名前を指定してください。 | [ストレージ アカウント名の解決](resource-manager-storage-account-name-errors.md) |
 | StorageAccountNotFound | サブスクリプション、リソース グループ、および使用するストレージ アカウントの名前を確認してください。 | |
 | SubnetsNotInSameVnet | 仮想マシンでは、仮想ネットワークを 1 つのみを持つことができます。 複数の NIC をデプロイするときは、それらが同じ仮想ネットワークに属していることを確認してください。 | [複数の NIC](../virtual-machines/windows/multiple-nics.md) |
+| TemplateResourceCircularDependency | 不要な依存関係を削除します。 | [循環依存関係を解決する](resource-manager-invalid-template-errors.md#circular-dependency) |
+| TooManyTargetResourceGroups | 1 回のデプロイのリソース グループ数を減らします。 | [リソース グループ間のデプロイ](resource-manager-cross-resource-group-deployment.md) |
 
 ## <a name="find-error-code"></a>エラー コードを見つける
 

@@ -1,29 +1,29 @@
 ---
-title: "ExpressRoute の概要: プライベート接続でオンプレミスのネットワークを Azure に拡張する | Microsoft Docs"
-description: "この ExpressRoute の技術概要では、ExpressRoute 接続がプライベート接続を介してオンプレミスのネットワークを Azure に拡張するしくみについて説明します。"
+title: 'ExpressRoute の概要: プライベート接続でオンプレミスのネットワークを Azure に拡張する | Microsoft Docs'
+description: この ExpressRoute の技術概要では、ExpressRoute 接続がプライベート接続を介してオンプレミスのネットワークを Azure に拡張するしくみについて説明します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fd95dcd5-df1d-41d6-85dd-e91d0091af05
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2017
+ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: e5584eee07121fa4644e09e23e3ba6b59fdd5a6e
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 75d69669945d31fbc9876d0c1e709b37f96aee6d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="expressroute-overview"></a>ExpressRoute の概要
 Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提供するプライベート接続で、オンプレミスのネットワークを Microsoft Cloud に拡張できます。 ExpressRoute では、Microsoft Azure、Office 365、Dynamics 365 などの Microsoft クラウド サービスへの接続を確立できます。
 
-接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続では、公共のインターネットを利用できません。 それにより、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 ExpressRoute を使用してネットワークを Microsoft に接続する方法については、「[ExpressRoute connectivity models](expressroute-connectivity-models.md)」(ExpressRoute 接続モデル) をご覧ください。
+接続には、任意の環境間 (IP VPN) 接続、ポイントツーポイントのイーサネット接続、共有施設での接続プロバイダーによる仮想交差接続があります。 ExpressRoute 接続では、公共のインターネットを利用できません。 そのため、ExpressRoute 接続はインターネット経由の一般的な接続に比べて、安全性と信頼性が高く、待機時間も短く、高速です。 ExpressRoute を使用してネットワークを Microsoft に接続する方法については、「[ExpressRoute connectivity models](expressroute-connectivity-models.md)」(ExpressRoute 接続モデル) をご覧ください。
 
 ![](./media/expressroute-introduction/expressroute-connection-overview.png)
 
@@ -45,10 +45,9 @@ Microsoft Azure ExpressRoute を利用すれば、接続プロバイダーが提
 Microsoft は業界標準の動的ルーティング プロトコル (BGP) を利用し、オンプレミス ネットワーク、Azure のインスタンス、および Microsoft パブリック アドレスの間のルートを交換します。  さまざまなトラフィック プロファイルに合わせ、ネットワークとさまざまな BGP セッションを確立します。 詳しくは、 [ExpressRoute の回線とルーティング ドメイン](expressroute-circuit-peerings.md) に関する記事を参照してください。
 
 ### <a name="redundancy"></a>冗長性
-各 ExpressRoute 回線は、接続プロバイダー/ネットワーク エッジから 2 つの Microsoft Enterprise エッジ ルーター (WSEE) への 2 つの接続で構成されます。 Microsoft は接続プロバイダー/あなたの側から 2 つの BGP 接続を必要とします。MSEE につき 1 つです。 あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。 ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。 冗長レイヤー 3 接続構成は [SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
+各 ExpressRoute 回線は、接続プロバイダー/ネットワーク エッジから 2 つの Microsoft Enterprise エッジ ルーター (MSEE) への 2 つの接続で構成されます。 Microsoft は接続プロバイダー/あなたの側から 2 つの BGP 接続を必要とします。MSEE につき 1 つです。 あなたの側で冗長デバイス/イーサネット回線をデプロイしないことを選択できます。 ただし、接続プロバイダーは冗長デバイスを利用することで冗長性が与えられる方法で接続を Microsoft に渡します。 冗長レイヤー 3 接続構成は [SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするための必須条件です。
 
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Microsoft クラウド サービスへの接続
-[!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
 ExpressRoute 接続によって、次のようなサービスにアクセスできます。
 
@@ -56,7 +55,11 @@ ExpressRoute 接続によって、次のようなサービスにアクセスで�
 * Microsoft Office 365 サービス
 * Microsoft Dynamics 365
 
-[ExpressRoute FAQ](expressroute-faqs.md) ページには、ExpressRoute でサポートされているサービスの詳しい一覧があります。
+> [!NOTE]
+> [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
+> 
+
+ExpressRoute でサポートされているサービスの詳しい一覧については、[ExpressRoute FAQ](expressroute-faqs.md) ページを参照してください。 
 
 ### <a name="connectivity-to-all-regions-within-a-geopolitical-region"></a>地政学的な地域内のすべてのリージョンへの接続
 [ピアリングの場所](expressroute-locations.md) の 1 つで Microsoft に接続し、地政学的な領域内のすべてのリージョンにアクセスできます。 
@@ -67,7 +70,7 @@ ExpressRoute 接続によって、次のようなサービスにアクセスで�
 ExpressRoute Premium アドオン機能を有効にすると、地政学的境界を越えて接続を拡張できます。 たとえば、ExpressRoute を介してアムステルダムの Microsoft に接続している場合、世界中のあらゆるリージョンでホストされているすべての Microsoft クラウド サービスにアクセスできます (国内クラウドは除外します)。 北ヨーロッパ リージョンと西ヨーロッパ リージョンにアクセスする場合と同じ方法で南アメリカやオーストラリアにデプロイされているサービスにアクセスできます。
 
 ### <a name="rich-connectivity-partner-ecosystem"></a>大勢の接続パートナーが属するエコシステム
-ExpressRoute のエコシステムには継続的に新しい接続パートナーと SI パートナーが加わり、拡大します。 最新の情報については、 [ExpressRoute のプロバイダーと場所](expressroute-locations.md) に関する記事を参照してください。
+ExpressRoute のエコシステムには継続的に新しい接続パートナーと SI パートナーが加わり、拡大します。 最新の情報については、[ExpressRoute のプロバイダーと場所](expressroute-locations.md)に関する記事を参照してください。
 
 ### <a name="connectivity-to-national-clouds"></a>国内クラウドへの接続
 Microsoft は特殊な地政学的領域と顧客区分のために隔離されたクラウド環境を運営しています。 国内のクラウドとプロバイダーの一覧については、 [ExpressRoute のプロバイダーと場所](expressroute-locations.md) に関するページを参照してください。
@@ -101,7 +104,7 @@ Microsoft は特殊な地政学的領域と顧客区分のために隔離され�
 
 ExpressRoute に関してよく寄せられる質問については、「[ExpressRoute の FAQ](expressroute-faqs.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [ExpressRoute 接続モデル](expressroute-connectivity-models.md)について説明します。
 * ExpressRoute 接続とルーティング ドメインについて説明します。 「 [ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。

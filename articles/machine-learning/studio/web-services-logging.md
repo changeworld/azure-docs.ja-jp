@@ -1,10 +1,11 @@
 ---
-title: "Machine Learning Web サービスのログ記録 | Microsoft Docs"
-description: "Machine Learning Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。"
+title: Machine Learning Web サービスのログ記録 | Microsoft Docs
+description: Machine Learning Web サービスのログ記録を有効にする方法について説明します。 ログ記録では、API のトラブルシューティングに役立つ追加情報を提供します。
 services: machine-learning
-documentationcenter: 
-author: raymondlaghaeian
-manager: jhubbard
+documentationcenter: ''
+author: aashishb
+ms.author: aashishb
+manager: hjerez
 editor: cgronlun
 ms.assetid: c54d41e1-0300-46ef-bbfc-d6f7dca85086
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/15/2017
-ms.author: raymondl;garye
-ms.openlocfilehash: 31497bcae5889590a2261b716574ec4eae21852d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e04ef638c46ef0f3b40fd56d27ba3673565bdc7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="enable-logging-for-machine-learning-web-services"></a>Machine Learning Web サービスのログ記録の有効化
 このドキュメントは、Machine Learning Web サービスのログ記録機能について説明します。 ログ機能を使用すると、エラー番号とメッセージの他に追加の情報を得ることができ、Machine Learning API の呼び出しをトラブルシューティングするときに役立ちます。  
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 [Azure Machine Learning Web Services](https://services.azureml.net) ポータルからログ記録を有効にすることができます。 
 
-1. Azure Machine Learning Web サービス ポータル ([https://services.azureml.net](https://services.azureml.net)) にサインインします。 クラシック Web サービスの場合は、Machine Learning Studio の Machine Learning Web サービス ページで **[New Web Services Experience] \(新しい Web サービス エクスペリエンス\)** をクリックします。
+1. Azure Machine Learning Web サービス ポータル （[https://services.azureml.net](https://services.azureml.net)） にサインインします。 クラシック Web サービスの場合は、Machine Learning Studio の Machine Learning Web サービス ページで **[New Web Services Experience] \(新しい Web サービス エクスペリエンス\)** をクリックします。
 
    ![[New Web Services Experience] \(新しい Web サービス エクスペリエンス\) リンク](./media/web-services-logging/new-web-services-experience-link.png)
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 10/11/2017
 
    ![ログ記録レベルの選択](./media/web-services-logging/enable-logging.png)
 
-6. [ **Save**] をクリックします。
+6. **[Save]** をクリックします。
 
 7. クラシック Web サービスの場合は、**ml-diagnostics** コンテナーを作成します。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 
    2. **[Blob service]** の **[コンテナー]** をクリックします。
 
-   3. コンテナー **ml-diagnostics** が存在しない場合は、**[ コンテナー]** をクリックし、コンテナーに "ml-diagnostics" という名前を付け、**[アクセスの種類]** を "BLOB" に設定します。 **[OK]**をクリックします。
+   3. コンテナー **ml-diagnostics** が存在しない場合は、**[ コンテナー]** をクリックし、コンテナーに "ml-diagnostics" という名前を付け、**[アクセスの種類]** を "BLOB" に設定します。 Click **OK**.
 
       ![ログ記録レベルの選択](./media/web-services-logging/create-ml-diagnostics-container.png)
 

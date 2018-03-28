@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric の詳細 | Microsoft Docs"
-description: "Azure Service Fabric の主要な概念と主な領域について説明します。 Service Fabric のその他の概要と、マイクロサービスを作成する方法を説明します。"
+title: Azure Service Fabric の詳細 | Microsoft Docs
+description: Azure Service Fabric の主要な概念と主な領域について説明します。 Service Fabric のその他の概要と、マイクロサービスを作成する方法を説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/08/2017
 ms.author: ryanwi
-ms.openlocfilehash: 9360d29eb30171651b0bcc688fe7884614b50cf4
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: e9d0691876a417fe8665bed2d712d643a4364120
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。  ただし、Service Fabric は対象領域が広く、習得する必要のあることが多くあります。  この記事では、主要な概念、プログラミング モデル、アプリケーション ライフ サイクル、テスト、クラスター、正常性の監視など、Service Fabric の概念について説明します。 Service Fabric の紹介やこれを使用したマイクロサービスの作成方法については、「[概要](service-fabric-overview.md)」および「[マイクロサービスとは何か](service-fabric-overview-microservices.md)」をご覧ください。 この記事には、包括的な内容の一覧が含まれていませんが、Service Fabric の各領域の概要とファースト ステップ ガイドの記事へのリンクを掲載しています。 
@@ -98,7 +98,7 @@ Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication
 - リライアブル サービス内で実行する。 Service Fabric ランタイムとの統合がより密になり、ステートフルな ASP.NET Core サービスが可能になります。
 
 ### <a name="guest-executables"></a>ゲスト実行可能ファイル
-[ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)は、Service Fabric クラスターで他のサービスとともにホストされる既存の任意の実行可能ファイル (任意の言語で記述されたもの) です。 ゲスト実行可能ファイルは、Service Fabric API に直接統合されません。 ただし、カスタムの正常性と負荷のレポート、REST API を呼び出すことによるサービスの検出可能性など、プラットフォームに備わった機能からメリットを得られます。 また、完全なアプリケーションのライフサイクルのサポートも備えています。 
+[ゲスト実行可能ファイル](service-fabric-guest-executables-introduction.md)は、Service Fabric クラスターで他のサービスとともにホストされる既存の任意の実行可能ファイル (任意の言語で記述されたもの) です。 ゲスト実行可能ファイルは、Service Fabric API に直接統合されません。 ただし、カスタムの正常性と負荷のレポート、REST API を呼び出すことによるサービスの検出可能性など、プラットフォームに備わった機能からメリットを得られます。 また、完全なアプリケーションのライフサイクルのサポートも備えています。 
 
 ## <a name="application-lifecycle"></a>アプリケーションのライフサイクル
 その他のプラットフォームと同様に、通常、Service Fabric のアプリケーションは、デザイン、開発、テスト、デプロイ、アップグレード、保守、削除のフェーズを進みます。 Service Fabric は、開発からデプロイ、日常的な管理、保守、最終的な使用停止に至るまで、クラウド アプリケーションの完全なアプリケーション ライフサイクルに対して高度なサポートを提供します。 そのサービス モデルにより、アプリケーションのライフサイクルで個別に関与するさまざまな役割が有効になります。 「[Service Fabric アプリケーションのライフサイクル](service-fabric-application-lifecycle.md)」では、API の概要と、Service Fabric アプリケーション ライフサイクルのフェーズ全体でさまざまな役割がその API をどのように使用するかを示します。 
@@ -138,7 +138,7 @@ Azure で Service Fabric クラスターを実行すると、Azure の他の機�
 
 [Azure Portal](service-fabric-cluster-creation-via-portal.md) 経由で、[テンプレート](service-fabric-cluster-creation-via-arm.md)から、または [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) から、Azure 上にクラスターを作成できます。
 
-Linux 上の Service Fabric を使用すると、Windows 上と同じように、Linux で可用性とスケーラビリティの高いアプリケーションを構築、デプロイ、および管理できます。 Service Fabric フレームワーク (Reliable Services と Reliable Actors) は、Linux 上で、C# (.NET Core) に加え Java でも使用できるようになりました。 任意の言語またはフレームワークで[ゲスト実行可能サービス](service-fabric-deploy-existing-app.md)を構築することもできます。 調整 Docker コンテナーもサポートされています。 Docker コンテナーは、ゲスト実行可能ファイルまたはネイティブ Service Fabric サービスを実行できます。これらは、Service Fabric フレームワークを使用します。 詳細については、「[Linux 上の Service Fabric](service-fabric-deploy-anywhere.md)」を参照してください。
+Linux 上の Service Fabric を使用すると、Windows 上と同じように、Linux で可用性とスケーラビリティの高いアプリケーションを構築、デプロイ、および管理できます。 Service Fabric フレームワーク (Reliable Services と Reliable Actors) は、Linux 上で、C# (.NET Core) に加え Java でも使用できるようになりました。 任意の言語またはフレームワークで[ゲスト実行可能サービス](service-fabric-guest-executables-introduction.md)を構築することもできます。 調整 Docker コンテナーもサポートされています。 Docker コンテナーは、ゲスト実行可能ファイルまたはネイティブ Service Fabric サービスを実行できます。これらは、Service Fabric フレームワークを使用します。 詳細については、「[Linux 上の Service Fabric](service-fabric-deploy-anywhere.md)」を参照してください。
 
 Windows ではサポートされているものの Linux ではサポートされていない機能が一部存在します。 詳細については、「[Linux での Service Fabric (プレビュー) と Windows での Service Fabric (一般公開) の違い](service-fabric-linux-windows-differences.md)」をご覧ください。
 
@@ -210,7 +210,7 @@ Service Fabric には、正常性ストアに集計された[正常性レポー�
 
 この 3 つの領域すべてに対応する多数の製品があり、それぞれで異なるテクノロジを自由に選択できます。 詳しくは、「[Azure Service Fabric での監視と診断](service-fabric-diagnostics-overview.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure でのクラスター](service-fabric-cluster-creation-via-portal.md)または [Windows でのスタンドアロン クラスター](service-fabric-cluster-creation-for-windows-server.md)を作成する方法を学びます。
 * [Reliable Services](service-fabric-reliable-services-quick-start.md) または [Reliable Actors](service-fabric-reliable-actors-get-started.md) プログラミング モデルを使用してサービスを作成してみます。
 * [Cloud Services から移行する](service-fabric-cloud-services-migration-differences.md)方法を学びます。

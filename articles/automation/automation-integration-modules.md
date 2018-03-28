@@ -1,24 +1,20 @@
 ---
-title: "Azure Automation 統合モジュールの作成 | Microsoft Docs"
-description: "Azure Automation の統合モジュールの作成、テスト、使用例をわかりやすく説明しています。Azure Automation の統合モジュールの作成、テスト、使用例をわかりやすく説明しています。"
+title: Azure Automation 統合モジュールの作成
+description: Azure Automation の統合モジュールの作成、テスト、使用例をわかりやすく説明しています。Azure Automation の統合モジュールの作成、テスト、使用例をわかりやすく説明しています。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: 
-ms.assetid: 27798efb-08b9-45d9-9b41-5ad91a3df41e
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 01/13/2017
-ms.author: magoedte
-ms.openlocfilehash: 4eddce9d355a4b709e266129935766376d352045
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: e1bcdb2938d1dcb2743b4c1c523ccefb322dd428
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation 統合モジュール
 PowerShell は、Azure Automation の基盤となるテクノロジです。 Azure Automation は PowerShell を基盤として構築されているため、PowerShell モジュールが Azure Automation の拡張性の鍵となります。 この記事では、"統合モジュール" と呼ばれる Azure Automation での PowerShell モジュールの使用の詳細と、独自の PowerShell モジュールを作成して、Azure Automation 内で統合モジュールとして確実に動作させるためのベスト プラクティスを紹介します。 
@@ -108,7 +104,7 @@ Service Management Automation をデプロイし、Automation Runbook の統合�
    <br> この情報を指定すると、PowerShell コンソールで **Get-Help** コマンドレットを使用したときにこのヘルプが表示されるだけでなく、Azure Automation 内でもこのヘルプ機能が公開されます。  たとえば、Runbook の作成中にアクティビティを挿入するときです。 [詳細なヘルプの表示] をクリックすると、Azure Automation へのアクセスに使用している Web ブラウザーの別のタブでヘルプ URI が開きます。<br>![Integration Module Help](media/automation-integration-modules/automation-integration-module-activitydesc.png)
 2. リモート システムに対してモジュールが実行される場合は、
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 そのリモート システムに接続するために必要な情報 (つまり、接続の種類) を定義する統合モジュール メタデータ ファイルをモジュールに含める。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 そのリモート システムに接続するために必要な情報 (つまり、接続の種類) を定義する統合モジュール メタデータ ファイルをモジュールに含める。  
     b. モジュール内の各コマンドレットが接続オブジェクト (その接続の種類のインスタンス) をパラメーターとして受け取ることができるようにする。  
 
     接続の種類のフィールドを含むオブジェクトをパラメーターとしてコマンドレットに渡すことができるようにすると、モジュール内のコマンドレットが Azure Automation で使いやすくなります。 この方法では、ユーザーがコマンドレットを呼び出すときに毎回接続資産のパラメーターをコマンドレットの対応するパラメーターにマッピングする必要がありません。 上記の Runbook の例では、CorpTwilio という Twilio 接続資産を使用して、Twilio にアクセスし、アカウントのすべての電話番号を返します。  接続のフィールドをコマンドレットのパラメーターにマッピングする方法を次に示します。<br>

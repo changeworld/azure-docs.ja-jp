@@ -1,25 +1,25 @@
 ---
-title: "Apache Kafka の開始 - Azure HDInsight | Microsoft Docs"
-description: "Azure HDInsight で Apache Kafka クラスターを作成する方法について説明します。 トピック、サブスクライバー、コンシューマーの作成方法について説明します。"
+title: Apache Kafka の開始 - Azure HDInsight | Microsoft Docs
+description: Azure HDInsight で Apache Kafka クラスターを作成する方法について説明します。 トピック、サブスクライバー、コンシューマーの作成方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 43585abf-bec1-4322-adde-6db21de98d7f
 ms.service: hdinsight
 ms.custom: hdinsightactive
-ms.devlang: 
+ms.devlang: ''
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/20/2018
 ms.author: larryfr
-ms.openlocfilehash: e00ab06a26d60dd5beca11362df58f35812491d9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 27e6472480dac104de799ebf0e7579a7987f6c4c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="start-with-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka の開始
 
@@ -39,6 +39,15 @@ HDInsight クラスターで Kafka を作成するには、次の手順に従い
 
     * **[クラスター名]**: HDInsight クラスターの名前。 この名前は一意である必要があります。
     * **[サブスクリプション]**: 使用するサブスクリプションを選択します。
+    * **[クラスターの種類]**: この項目を選択し、**[クラスターの構成]** から次の値を設定します。
+
+        * **[クラスターの種類]**: Kafka
+        * **[バージョン]**: Kafka 0.10.0 (HDI 3.6)
+
+        **[選択]** ボタンを使用して、クラスターの種類の設定を保存します。
+
+        ![クラスターの種類の選択](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
+
     * **[クラスター ログイン ユーザー名]** と **[クラスター ログイン パスワード]**: HTTPS 経由でクラスターにアクセスする場合のログイン。 これらの資格情報を使用して、Ambari Web UI や REST API などのサービスにアクセスします。
     * **[Secure Shell (SSH) username (Secure Shell (SSH) ユーザー名)]**: SSH 経由でクラスターにアクセスする際に使用されるログイン。 既定では、このパスワードは、クラスター ログイン パスワードと同じです。
     * **[リソース グループ]**: クラスターが作成されるリソース グループ。
@@ -49,24 +58,15 @@ HDInsight クラスターで Kafka を作成するには、次の手順に従い
    
  ![サブスクリプションを選択します。](./media/apache-kafka-get-started/hdinsight-basic-configuration.png)
 
-3. **[クラスターの種類]** を選択し、**[クラスターの構成]** から次の値を設定します。
-   
-    * **[クラスターの種類]**: Kafka
-    * **[バージョン]**: Kafka 0.10.0 (HDI 3.6)
+3. __[次へ]__ ボタンを使用して、基本的な構成を完了します。
 
-    最後に、**[選択]** ボタンをクリックして設定を保存します。
-     
- ![クラスターの種類の選択](./media/apache-kafka-get-started/set-hdinsight-cluster-type.png)
-
-4. クラスターの種類を選択したら、__[選択]__ ボタンを使用してクラスターの種類を設定します。 次に、__[次へ]__ ボタンを使用して、基本的な構成を完了します。
-
-5. **[ストレージ]** で、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
+4. **[ストレージ]** で、ストレージ アカウントを選択または作成します。 このドキュメントの手順では、他のフィールドを既定値のままにします。 __[次へ]__ ボタンを使用して、ストレージの構成を保存します。
 
     ![HDInsight のストレージ アカウント設定](./media/apache-kafka-get-started/set-hdinsight-storage-account.png)
 
-6. __[アプリケーション (オプション)]__ で __[次へ]__ を選んで続行します。 この例ではアプリケーションは必要ありません。
+5. __[アプリケーション (オプション)]__ で __[次へ]__ を選んで続行します。 この例ではアプリケーションは必要ありません。
 
-7. __[クラスター サイズ]__ で __[次へ]__ を選んで続行します。
+6. __[クラスター サイズ]__ で __[次へ]__ を選んで続行します。
 
     > [!WARNING]
     > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 詳細については、「[データの高可用性](#data-high-availability)」のセクションを参照してください。
@@ -76,9 +76,9 @@ HDInsight クラスターで Kafka を作成するには、次の手順に従い
     > [!IMPORTANT]
     > **ワーカー ノード エントリごとのディスクの数**は、HDInsight での Kafka のスケーラビリティを構成します。 HDInsight 上の Kafka は、クラスターの仮想マシンのローカル ディスクを使います。 Kafka は I/O が多いため、[Azure Managed Disks](../../virtual-machines/windows/managed-disks-overview.md) を使ってノードごとに高いスループットと多くの記憶域を提供します。 管理ディスクの種類は、__Standard__ (HDD) または __Premium__ (SSD) です。 Premium ディスクは、DS および GS シリーズの VM で使われます。 他の種類の VM はすべて Standard を使います。
 
-8. __[詳細設定]__ で __[次へ]__ を選んで続行します。
+7. __[詳細設定]__ で __[次へ]__ を選んで続行します。
 
-9. **[概要]** でクラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
+8. **[概要]** でクラスターの構成を確認します。 間違った設定を変更するには、__[編集]__ リンクを使用します。 最後に、__[作成]__ ボタンを使用してクラスターを作成します。
    
     ![クラスター構成の概要](./media/apache-kafka-get-started/hdinsight-configuration-summary.png)
    

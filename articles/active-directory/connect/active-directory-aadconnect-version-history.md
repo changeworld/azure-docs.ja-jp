@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: バージョンのリリース履歴 | Microsoft Docs"
-description: "この記事では、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧を示します"
+title: 'Azure AD Connect: バージョンのリリース履歴 | Microsoft Docs'
+description: この記事では、Azure AD Connect と Azure AD Sync のすべてのリリースの一覧を示します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: ef2797d7-d440-4a9a-a648-db32ad137494
 ms.service: active-directory
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/16/2018
 ms.author: billmath
-ms.openlocfilehash: 81d08d3d3d08e9cc96b39cbdf2d639e939fdf3d4
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 0c6a0c43eb7d0187120c3264f1f439af66d73978
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
@@ -36,8 +36,19 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 
 ダウンロード | [Azure AD Connect をダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)します。
 
+## <a name="117500"></a>1.1.750.0
+状態: 一部のお客様にリリース。このリリースは現在、自動アップグレードを有効にしている AADConnect テナントの少数をランダムに選択して配布されています。 自動アップグレードのお客様の 100% がこのリリースを受信できるまで、今後数週間、このテナントのグループを拡大します。 その後は、上記のダウンロード リンクで一般ダウンロード用のビルドを公表します。
+>[!NOTE]
+>この新しいバージョンへのアップグレードが完了すると、Azure AD コネクタの完全同期とフル インポート、および AD コネクタの完全同期が自動的にトリガーされます。 Azure AD Connect 環境のサイズによっては、これには時間がかかる場合があるため、これに対応できるように必要な手順を確実に実施していることを確認してください。また、好都合なタイミングが見つかるまでアップグレードを見合わせるようにしてください。
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+#### <a name="fixed-issues"></a>修正された問題
+
+* 自動アップグレードの状態が一時停止に設定されている場合に、Set-ADSyncAutoUpgrade コマンドレットによって Autoupgrade がブロックされます。 これは変更されました。将来のビルドでは AutoUpgrade はブロックされません。
+
 ## <a name="117490"></a>1.1.749.0
-状態: 一部のお客様にリリース。このリリースは現在、自動アップグレードを有効にしている AADConnect テナントのごく一部に対してランダムに配布されています。 自動アップグレードのお客様の 100% がこのリリースを受信できるまで、今後数週間、このテナントのグループを拡大します。 その後は、上記のダウンロード リンクで一般ダウンロード用のビルドを公表します。現時点では、2018 年 3 月中旬になる予定です。
+状態: 一部のお客様にリリース
+
 >[!NOTE]
 >この新しいバージョンへのアップグレードが完了すると、Azure AD コネクタの完全同期とフル インポート、および AD コネクタの完全同期が自動的にトリガーされます。 Azure AD Connect 環境のサイズによっては、これには時間がかかる場合があるため、これに対応できるように必要な手順を確実に実施していることを確認してください。また、好都合なタイミングが見つかるまでアップグレードを見合わせるようにしてください。
 
@@ -49,11 +60,11 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 
 * SQL 接続のタイムアウトから復旧できるようにバグを修正しました。
 
-* SAN ワイルドカードを含む証明書で前提条件の確認に失敗するというバグを修正しました
+* SAN ワイルドカードを含む証明書で前提条件の確認に失敗するというバグを修正しました。
 
 * Azure AD コネクタのエクスポート中に miiserver.exe がクラッシュするというバグを修正しました。
 
-* Azure AD Connect ウィザードを実行しているときに DC に間違ったパスワードの試行が記録されると構成が変更されるというバグを修正しました
+* Azure AD Connect ウィザードを実行しているときに DC に間違ったパスワードの試行が記録されると構成が変更されるというバグを修正しました。
 
 
 #### <a name="new-features-and-improvements"></a>新機能と機能強化
@@ -223,7 +234,7 @@ Set-ADSyncRestrictedPermissions -ObjectDN "CN=TestAccount1,CN=Users,DC=bvtadwbac
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同期
 >[!NOTE]
-> 注: 同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズするお客様は、組み込みのスケジューラ (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) を使用する必要があります。
+> 注: 同期サービスには、独自のカスタム スケジューラを作成できる WMI インターフェイスがあります。 このインターフェイスは現在非推奨であり、2018 年 6 月 30 日以降にリリースされる Azure AD Connect の将来のバージョンから削除される予定です。 同期スケジュールをカスタマイズしようとする顧客は、組み込みスケジューラ (https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-feature-scheduler) を使用する必要があります。
 
 #### <a name="fixed-issues"></a>修正された問題
 * Azure AD Connect ウィザードで、オンプレミス Active Directory からの変更を同期するために必要な AD Connector アカウントを作成するときに、PublicFolder オブジェクトの読み取りに必要なアクセス許可がアカウントに正しく割り当てられません。 この問題は、高速インストールとカスタム インストールの両方に影響します。 今回の変更により、この問題が修正されました。

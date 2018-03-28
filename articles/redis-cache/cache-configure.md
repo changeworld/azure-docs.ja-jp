@@ -14,11 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/22/2017
 ms.author: wesmc
-ms.openlocfilehash: fa78c42ce93729379d3c532f94bc67bb8c069d53
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 2e2e22c17bce4bdaf4988001db8de31b68f497fc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache の構成方法
 このトピックでは、Azure Redis Cache インスタンスで利用可能な構成について説明します。 このトピックでは、Azure Redis Cache インスタンスの既定の Redis サーバー構成についても説明します。
@@ -280,8 +280,6 @@ IP アドレス範囲の開始アドレスと終了アドレスで、ファイ�
 > [!IMPORTANT]
 > ファイアウォール ルールが構成されている場合でも、Azure Redis Cache 監視システムからの接続は常に許可されます。
 > 
-> ファイアウォール ルールは、Premium レベルのキャッシュにのみ使用できます。
-> 
 > 
 
 ### <a name="properties"></a>[プロパティ]
@@ -404,7 +402,7 @@ Export では、Azure Redis Cache に格納されたデータを、Redis と互�
 | `maxmemory-samples` |3 |LRU アルゴリズムと最小 TTL アルゴリズムは精緻なアルゴリズムではなく、メモリを節約するための近似アルゴリズムです。 既定では、Redis はキーを 3 つ確認し、直近の使用頻度が比較的低いものを 1 つ選択します。 |
 | `lua-time-limit` |5,000 |Lua スクリプトの最大実行時間 (ミリ秒)。 最大実行時間に達した場合は、Redis は、最大許容時間の後もスクリプトが実行中であることをログに記録し、クエリに対してエラーを知らせる応答を開始します。 |
 | `lua-event-limit` |500 |スクリプト イベント キューの最大サイズです。 |
-| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |このクライアントの出力バッファー制限を使用して、なんらかの理由 (一般的には、パブリッシャーがメッセージを作成するのと同じ速度で Pub/Sub クライアントがメッセージを利用できないという理由) により、サーバーから十分な速度でデータを読み込んでいないクライアントを強制的に切断することができます。 詳細については、 [http://redis.io/topics/clients](http://redis.io/topics/clients)を参照してください。 |
+| `client-output-buffer-limit` `normalclient-output-buffer-limit` `pubsub` |0 0 032mb 8mb 60 |このクライアントの出力バッファー制限を使用して、なんらかの理由 (一般的には、パブリッシャーがメッセージを作成するのと同じ速度で Pub/Sub クライアントがメッセージを利用できないという理由) により、サーバーから十分な速度でデータを読み込んでいないクライアントを強制的に切断することができます。 詳細については、[http://redis.io/topics/clients](http://redis.io/topics/clients) を参照してください。 |
 
 <a name="databases"></a>
 <sup>1</sup>`databases` の制限は、Azure Redis Cache の価格レベルによって異なり、キャッシュの作成時に設定できます。 キャッシュの作成中に `databases` を設定しない場合は、既定値の 16 が使用されます。
@@ -471,14 +469,14 @@ Export では、Azure Redis Cache に格納されたデータを、Redis と互�
 > 
 > 
 
-Redis コマンドの詳細については、 [http://redis.io/commands](http://redis.io/commands)を参照してください。
+Redis コマンドの詳細については、[http://redis.io/commands](http://redis.io/commands) を参照してください。
 
 ## <a name="redis-console"></a>Redis コンソール
 **Redis コンソール**を使用して Azure Redis Cache インスタンスにコマンドを安全に発行できます。このコンソールは、Azure Portal で、すべてのキャッシュ レベルで使用できます。
 
 > [!IMPORTANT]
 > - [VNET](cache-how-to-premium-vnet.md) では Redis コンソールを使用できません。 キャッシュが VNET の一部である場合は、VNET のクライアントだけがキャッシュにアクセスできます。 Redis コンソールは、VNET の外部にあるローカル ブラウザーで実行されるため、キャッシュに接続できません。
-> - Azure Redis Cache では、すべての Redis コマンドがサポートされているわけではありません。 Azure Redis Cache で無効な Redis コマンドの一覧については、前の「[Azure Redis Cache でサポートされない Redis コマンド](#redis-commands-not-supported-in-azure-redis-cache)」セクションを参照してください。 Redis コマンドの詳細については、 [http://redis.io/commands](http://redis.io/commands)を参照してください。
+> - Azure Redis Cache では、すべての Redis コマンドがサポートされているわけではありません。 Azure Redis Cache で無効な Redis コマンドの一覧については、前の「[Azure Redis Cache でサポートされない Redis コマンド](#redis-commands-not-supported-in-azure-redis-cache)」セクションを参照してください。 Redis コマンドの詳細については、[http://redis.io/commands](http://redis.io/commands) を参照してください。
 > 
 > 
 

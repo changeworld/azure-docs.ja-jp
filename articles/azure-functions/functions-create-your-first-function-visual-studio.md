@@ -1,27 +1,27 @@
 ---
-title: "Visual Studio を使用して Azure で初めての関数を作成する | Microsoft Docs"
-description: "Azure Functions Tools for Visual Studio を使用して、HTTP によってトリガーされる単純な関数を作成し、Azure に発行します。"
+title: Visual Studio を使用して Azure で初めての関数を作成する | Microsoft Docs
+description: Azure Functions Tools for Visual Studio を使用して、HTTP によってトリガーされる単純な関数を作成し、Azure に発行します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/17/2018
+ms.date: 03/13/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fa17a021526a728c6fabc9607b1d00f5521cbb21
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 9b43ec7106c70b7d9b326208043d2fe874fb7e20
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
 
@@ -37,11 +37,13 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* [Visual Studio 2017 バージョン 15.4](https://www.visualstudio.com/vs/) 以降のバージョン (**Azure 開発**ワークロードを含む) をインストールします。
+* [Visual Studio 2017 バージョン 15.5](https://www.visualstudio.com/vs/) 以降のバージョン (**Azure 開発**ワークロードを含む) をインストールします。
 
     ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
 
-* Azure Functions および WebJobs Tools を最新バージョンに更新します。 この操作を行うには、**[拡張機能と更新プログラム]** で **[更新]** > **[Visual Studio Marketplace]** の順に選択します。
+    Visual Studio がインストール済みである場合、保留中の更新プログラムがあれば、忘れずにインストールしておいてください。 
+
+* Visual Studio 2017 のバージョン 15.4 以前を使って Azure 開発ワークロードをインストールした場合は、さらに[Azure Functions ツール](functions-develop-vs.md#check-your-tools-version)も更新する必要があります。 
     
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

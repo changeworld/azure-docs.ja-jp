@@ -1,27 +1,23 @@
 ---
-title: "Azure Automation での変更の追跡 | Microsoft Docs"
-description: "Change Tracking ソリューションは、ユーザーの環境で起こるソフトウェアと Windows サービスの変更を特定するために役立ちます。"
+title: Azure Automation で変更を追跡する
+description: Change Tracking ソリューションは、ユーザーの環境で起こるソフトウェアと Windows サービスの変更を特定するために役立ちます。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: 
-ms.assetid: f8040d5d-3c89-4f0c-8520-751c00251cb7
 ms.service: automation
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 02/28/2018
+author: georgewallace
 ms.author: gwallace
+ms.date: 03/15/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c5f354c3e63856474e46e2b6928af829604e15
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: 06034a87d6015a057c01c2bc87ae4db9fba1269a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
+# <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
 この記事では、Change Tracking ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows および Linux ファイル、Windows レジストリ キー、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
@@ -72,12 +68,12 @@ ms.lasthandoff: 02/28/2018
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows ファイル]** を選択し、**[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
 |グループ     | ファイルを論理的にグループ化するためのグループ名。        |
-|パスの入力     | ファイル確認のためのパス。例: "c:\temp\myfile.txt"       |
+|パスの入力     | ファイル確認のためのパス (例: "c:\temp\myfile.txt")。       |
 
 ### <a name="configure-windows-registry-keys-to-track"></a>追跡する Windows レジストリ キーを構成する
 
@@ -87,7 +83,7 @@ ms.lasthandoff: 02/28/2018
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows レジストリ]** を選択し、**[+ 追加]** をクリックして、追跡する新しいレジストリ キーを追加します。
 3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |[説明]  |
+|プロパティ  |説明  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -193,7 +189,7 @@ ms.lasthandoff: 02/28/2018
 
 次の表は、このソリューションによって収集された変更レコードを探すログ検索の例です。
 
-|クエリ  |[説明]  |
+|クエリ  |説明  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中として報告されたものを表示します<br>結果はその SoftwareName と Computer の最新のレコードに限定されます      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|削除されたソフトウェアの変更レコードを表示します|

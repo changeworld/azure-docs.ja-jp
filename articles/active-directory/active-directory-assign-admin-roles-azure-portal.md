@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory の管理者ロールの割り当て | Microsoft Docs"
-description: "管理者ロールは、ユーザーの追加、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持ちます。"
+title: Azure Active Directory の管理者ロールの割り当て | Microsoft Docs
+description: 管理者ロールは、ユーザーの追加、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じアクセス許可を持ちます。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 1fed14fc117c7652e677a245625502c1810068ff
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 8ba4787852902f194deb3eee27ff9f0fc28fa5aa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 
@@ -61,9 +61,9 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
   >
   >
 
-* **ゲスト招待元**: このロールが割り当てられたユーザーは、"メンバーは招待ができる" ユーザー設定が "いいえ" に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーション プレビューについて](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
+* **ゲスト招待元**: このロールが割り当てられたユーザーは、"メンバーは招待ができる" ユーザー設定が "いいえ" に設定されている場合に、Azure Active Directory B2B ゲスト ユーザーの招待を管理できます。 B2B コラボレーションの詳細については、「[Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。 その他の権限は含まれません。
 
-* **Information Protection 管理者 (プレビュー)**: このロールが割り当てられたユーザーは、Azure Information Protection サービス上でのみユーザー権利があります。 Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、および Office 365 のセキュリティ/コンプライアンス センター上のユーザー権利は付与されません。 また、Azure Information Protection ポリシーのラベルの構成、保護テンプレートの管理、および保護のアクティブ化を行うことができます。
+* **Information Protection 管理者**: このロールが割り当てられたユーザーは、Azure Information Protection サービス上でのみユーザー権利があります。 Identity Protection Center、Privileged Identity Management、Office 365 サービス正常性の監視、および Office 365 のセキュリティ/コンプライアンス センター上のユーザー権利は付与されません。 また、Azure Information Protection ポリシーのラベルの構成、保護テンプレートの管理、および保護のアクティブ化を行うことができます。
 
 * **Intune サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Intune Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 さらに、このロールはポリシーを関連付けるためにユーザーとデバイスを管理することができ、グループを作成および管理することもできます。
 
@@ -127,7 +127,7 @@ Azure Active Directory でユーザーに管理者ロールを割り当てる方
 | --- | --- |
 | <p>会社情報とユーザー情報の表示</p><p>Office サポート チケットの管理</p><p>パスワードの変更 (ユーザーおよび他のヘルプデスク管理者のみ)</p>|<p>Office 製品の課金および購入操作の実行</p><p>ユーザー ビューの作成と管理</p><p>ユーザーとグループの作成、編集、削除、およびユーザー ライセンスの管理</p><p>ドメインの管理</p><p>会社情報の管理</p><p>他のユーザーへの管理者ロールの委任</p><p>ディレクトリ同期の使用</p><p>レポートを表示する</p>|
 
-### <a name="information-protection-administrator-preview"></a>Information Protection 管理者 (プレビュー)
+### <a name="information-protection-administrator"></a>Information Protection 管理者
 イン | できること
 -------- | ---------
 Azure Information Protection | <li>グローバルとスコープ付きポリシーでのラベルと設定の構成<li>保護テンプレートの構成と管理<li>保護のアクティブ化または非アクティブ化

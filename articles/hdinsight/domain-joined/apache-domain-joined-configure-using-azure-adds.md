@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する - Azure | Microsoft Docs"
-description: "Azure Active Directory Domain Services を使ったドメイン参加済み HDInsight クラスターの設定と構成の方法について説明します。"
+title: Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する - Azure | Microsoft Docs
+description: Azure Active Directory Domain Services を使ったドメイン参加済み HDInsight クラスターの設定と構成の方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bprakash
 manager: jhubbard
 editor: cgronlun
-tags: 
+tags: ''
 ms.service: hdinsight
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 11/10/2017
 ms.author: bhanupr
-ms.openlocfilehash: 08795e6aafc6ccb43bad59189676a8680c03c966
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a0156915c329dfad1424cfd1f10a6ebb27c56acc
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-using-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する
 
@@ -56,6 +56,9 @@ Azure AD ドメイン サービスと HDInsight クラスターは、どちら�
 - **組織単位**: HDInsight クラスターで使用する OU の識別名。 たとえば「OU=HDInsightOU,DC=contoso,DC=onmicrosohift,DC=com」と入力します。この OU が存在しない場合、HDInsight クラスターがこの OU の作成を試みます。 
 - **LDAPS URL**: たとえば、ldaps://contoso.onmicrosoft.com:636 です。
 - **アクセス ユーザー グループ**: クラスターに同期させるユーザーが属しているセキュリティ グループ。 たとえば、HiveUsers です。 複数のユーザー グループを指定する場合は、コンマ (,) で区切ってください。
+ 
+> [!NOTE]
+> Apache Zeppelin はドメイン名を使用して管理サービス アカウントを認証します。このため、サービス アカウントが正常に機能するには、Apache Zeppelin の UPN サフィックスと同じドメイン名が必要です。
  
 次のスクリーンショットは、Azure Portal における構成を示しています。
 

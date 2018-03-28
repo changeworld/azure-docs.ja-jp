@@ -1,27 +1,20 @@
 ---
-title: "Azure SQL Database の Virtual Network サービス エンドポイントと規則 | Microsoft Docs"
-description: "サブネットを Virtual Network サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。"
+title: Azure SQL Database の Virtual Network サービス エンドポイントと規則 | Microsoft Docs
+description: サブネットを Virtual Network サービス エンドポイントとしてマークします。 その後、仮想ネットワーク規則としてのエインドポイントを Azure SQL Database の ACL に追加します。 SQL Database では、すべての仮想マシンとサブネット上の他のノードからの通信を許可します。
 services: sql-database
-documentationcenter: 
+ms.service: sql-database
 author: MightyPen
 manager: craigg
-editor: 
-tags: 
-ms.assetid: 
-ms.service: sql-database
 ms.custom: VNet Service endpoints
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: On Demand
-ms.date: 02/20/2018
+ms.date: 03/15/2018
 ms.reviewer: genemi
 ms.author: dmalik
-ms.openlocfilehash: c1bb1698723af60544b89f4b3168c44a32d31afd
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7622c6e6ffb1410cc2cbd42f6ac3601d281832da
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -237,6 +230,12 @@ SQL Database のエラー メッセージの一覧については、[こちら][
 
 PowerShell スクリプトでも、仮想ネットワーク規則を作成できます。 重要なコマンドレットは **New-AzureRmSqlServerVirtualNetworkRule** です。 ご興味がある方は、「[PowerShell to create a Virtual Network service endpoint and rule for Azure SQL Database (PowerShell で Azure SQL Database の Virtual Network サービス エンドポイントと規則を作成する)][sql-db-vnet-service-endpoint-rule-powershell-md-52d]」をご覧ください。
 
+#### <a name="rest-api-alternative"></a>REST API の代替手段
+
+内部的には、SQL VNet アクション用の PowerShell コマンドレットは REST API を呼び出します。 REST API を直接呼び出すことができます。
+
+- [仮想ネットワーク ルール: 操作][rest-api-virtual-network-rules-operations-862r]
+
 #### <a name="prerequisites"></a>前提条件
 
 保持している 1 つのサブネットが、Azure SQL Database に関連する特定の Virtual Network エンドポイントの*種類名*で既にタグ付けされている必要があります。
@@ -296,6 +295,8 @@ Azure SQL Database の仮想ネットワーク ルール機能は、2017 年 9 �
 ## <a name="next-steps"></a>次の手順
 
 - [PowerShell を使用して、仮想ネットワーク サービス エンドポイントと、Azure SQL Database の仮想ネットワーク ルールを作成する][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
+- [仮想ネットワーク ルール: 操作][rest-api-virtual-network-rules-operations-862r] (REST API を使用)
+
 
 
 <!-- Link references, to images. -->
@@ -336,6 +337,7 @@ Azure SQL Database の仮想ネットワーク ルール機能は、2017 年 9 �
 
 [http-azure-portal-link-ref-477t]: https://portal.azure.com/
 
+[rest-api-virtual-network-rules-operations-862r]: https://docs.microsoft.com/rest/api/sql/virtualnetworkrules
 
 
 

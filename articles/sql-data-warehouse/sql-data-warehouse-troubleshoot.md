@@ -1,25 +1,24 @@
 ---
-title: "Azure SQL Data Warehouse のトラブルシューティング | Microsoft Docs"
-description: "Azure SQL Data Warehouse のトラブルシューティングを行います。"
+title: Azure SQL Data Warehouse のトラブルシューティング | Microsoft Docs
+description: Azure SQL Data Warehouse のトラブルシューティングを行います。
 services: sql-data-warehouse
 documentationcenter: NA
 author: kevinvngo
 manager: jhubbard
-editor: 
-ms.assetid: 51f1e444-9ef7-4e30-9a88-598946c45196
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 03/30/2017
+ms.date: 03/15/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: 48318397f9c5e463c82320ad9d7c23a1a62af77e
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 0829d448e8b925d0dcc032ed143d8fff42ab1b69
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="troubleshooting-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のトラブルシューティング
 このトピックでは、お客様から寄せられる一般的なトラブルシューティングに関する質問の一部を一覧で紹介します。
@@ -27,8 +26,8 @@ ms.lasthandoff: 12/18/2017
 ## <a name="connecting"></a>接続
 | 問題 | 解決策 |
 |:--- |:--- |
-| ユーザー ' NT AUTHORITY\ANONYMOUS LOGON' はログインできませんでした。 (Microsoft SQL Server、エラー: 18456) |このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。  この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、master データベースにユーザーを追加します。  詳細については、[セキュリティの概要][Security overview]に関する記事をご覧ください。 |
-| サーバー プリンシパル"MyUserName" が、現在のセキュリティ コンテキストでデータベース "master" にアクセスできません。 ユーザー既定のデータベースを開けません。 ログインできませんでした。 ユーザー 'MyUserName' はログインできませんでした。 (Microsoft SQL Server、エラー: 916) |このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。  この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、master データベースにユーザーを追加します。  詳細については、[セキュリティの概要][Security overview]に関する記事をご覧ください。 |
+| ユーザー ' NT AUTHORITY\ANONYMOUS LOGON' はログインできませんでした。 (Microsoft SQL Server、エラー: 18456) |このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。  この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、マスター データベースにユーザーを追加します。  詳細については、[セキュリティの概要][Security overview]に関する記事をご覧ください。 |
+| サーバー プリンシパル"MyUserName" が、現在のセキュリティ コンテキストでデータベース "master" にアクセスできません。 ユーザー既定のデータベースを開けません。 ログインできませんでした。 ユーザー 'MyUserName' はログインできませんでした。 (Microsoft SQL Server、エラー: 916) |このエラーは、AAD ユーザーが master データベースに接続しようとするが、マスターにユーザーがいない場合に発生します。  この問題を解決するには、接続時に接続する SQL Data Warehouse を指定するか、マスター データベースにユーザーを追加します。  詳細については、[セキュリティの概要][Security overview]に関する記事をご覧ください。 |
 | CTAIP エラー |このエラーは、ログインが SQL Data Warehouse データベースではなく、SQL Server マスター データベース上で作成された場合に発生する可能性があります。  このエラーが発生した場合は、[セキュリティの概要][Security overview]に関する記事をご覧ください。  この記事では、マスター上にログインとユーザーを作成する方法と、SQL Data Warehouse データベースにユーザーを作成する方法について説明しています。 |
 | ファイアウォールによってブロックされる |Azure SQL Database は、既知の IP アドレスのみがデータベースにアクセスできるように、サーバーとデータベース レベルのファイアウォールによって保護されています。 ファイアウォールは、既定でセキュリティ保護されています。つまり、接続する前に、IP アドレスまたはアドレス範囲を明示的に有効にする必要があります。  アクセスできるようにファイアウォールを構成するには、[プロビジョニングの手順][Provisioning instructions]に関する記事の、[クライアント IP 用のサーバー ファイアウォール アクセスの構成][Configure server firewall access for your client IP]に関するセクションの手順に従ってください。 |
 | ツールまたはドライバーで接続できない |SQL Data Warehouse では、[SSMS][SSMS]、[SSDT for Visual Studio][SSDT for Visual Studio]、または [sqlcmd][sqlcmd] を使用してデータをクエリすることをお勧めします。 ドライバーおよび SQL Data Warehouse への接続の詳細については、「[Azure SQL Data Warehouse のドライバー][Drivers for Azure SQL Data Warehouse]」および「[Azure SQL Data Warehouse への接続][Connect to Azure SQL Data Warehouse]」をご覧ください。 |
@@ -74,7 +73,7 @@ ms.lasthandoff: 12/18/2017
 | UDF が SELECT ステートメントをサポートしていない |これは、UDF の現在の制限です。  サポートされている構文については、[CREATE FUNCTION][CREATE FUNCTION] に関するページをご覧ください。 |
 
 ## <a name="next-steps"></a>次の手順
-上記の方法で問題を解決できなかった場合は、次に示すその他のリソースを参照してください。
+問題の解決策は、以下のその他のリソースで探してみることができます。
 
 * [ブログ]
 * [機能に関する要求]
@@ -113,7 +112,7 @@ ms.lasthandoff: 12/18/2017
 [Temporary]: ./sql-data-warehouse-tables-temporary.md
 [Poor columnstore index quality]: ./sql-data-warehouse-tables-index.md#causes-of-poor-columnstore-index-quality
 [Rebuild indexes to improve segment quality]: ./sql-data-warehouse-tables-index.md#rebuilding-indexes-to-improve-segment-quality
-[Workload management]: ./sql-data-warehouse-develop-concurrency.md
+[Workload management]: ./resource-classes-for-workload-management.md
 [Using CTAS to work around unsupported UPDATE and DELETE syntax]: ./sql-data-warehouse-develop-ctas.md#using-ctas-to-work-around-unsupported-features
 [UPDATE workarounds]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-update-statements
 [DELETE workarounds]: ./sql-data-warehouse-develop-ctas.md#ansi-join-replacement-for-delete-statements

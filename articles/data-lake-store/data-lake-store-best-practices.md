@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store の使用に関するベスト プラクティス | Microsoft Docs"
-description: "データ インジェスト、データのセキュリティ、および Azure Data Lake Store の使用に関連するパフォーマンスに関するベスト プラクティスについて説明します"
+title: Azure Data Lake Store の使用に関するベスト プラクティス | Microsoft Docs
+description: データ インジェスト、データのセキュリティ、および Azure Data Lake Store の使用に関連するパフォーマンスに関するベスト プラクティスについて説明します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: sachinsbigdata
 manager: jhubbard
 editor: cgronlun
@@ -13,13 +13,13 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/02/2018
 ms.author: sachins
-ms.openlocfilehash: d3a0dd70a03f97a9b6bfb243eda7cbd470b0c239
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c394142ba40fc580bdcec11430dcae2816fa9760
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store の概要
+# <a name="best-practices-for-using-azure-data-lake-store"></a>Azure Data Lake Store を使用するためのベスト プラクティス
 この記事では、Azure Data Lake Store の操作に関するベスト プラクティスと考慮事項について説明します。 この記事では、Data Lake Store のセキュリティ、パフォーマンス、回復性、監視に関連する情報を取り上げます。 Data Lake Store が登場するまで、Azure HDInsight などのサービスで大規模なビッグデータを取り扱うことは大変な作業でした。 ペタバイト クラスのストレージとそのスケールでの最適なパフォーマンスを達成できるように、複数の Blob Storage アカウント間でデータをシャードする必要がありました。 Data Lake Store では、サイズやパフォーマンスに関するほとんどのハード制限が取り除かれています。 ただし、Data Lake Store で最適なパフォーマンスを得るための考慮事項がまだいくつか残っています。この記事ではそれについて取り上げます。 
 
 ## <a name="security-considerations"></a>セキュリティに関する考慮事項
@@ -139,7 +139,7 @@ Data Lake Store のログ配布が有効になっていない場合、Azure HDIn
 
     log4j.logger.com.microsoft.azure.datalake.store=DEBUG 
 
-これを設定してノードを再起動すると、Data Lake Store の診断がノード上の YARN ログ (/tmp/<user>/yarn.log) に書き込まれ、エラーやスロットリング (HTTP 429 エラー コード) などの重要な詳細を監視できます。 この同じ情報は、Data Lake Store アカウントの [[診断]](data-lake-store-diagnostic-logs.md) ブレードの OMS や他のログ配布先で監視できます。 少なくともクライアント側のログ記録を有効にするか、Data Lake Store でログ配布のオプションを活用して、運用を可視化し、デバッグを簡単にすることをおすすめします。
+このプロパティを設定してノードを再起動すると、Data Lake Store の診断がノード上の YARN ログ (/tmp/<user>/yarn.log) に書き込まれ、エラーやスロットリング (HTTP 429 エラー コード) などの重要な詳細を監視できます。 この同じ情報は、Data Lake Store アカウントの [[診断]](data-lake-store-diagnostic-logs.md) ブレードの OMS や他のログ配布先で監視できます。 少なくともクライアント側のログ記録を有効にするか、Data Lake Store でログ配布のオプションを活用して、運用を可視化し、デバッグを簡単にすることをおすすめします。
 
 ### <a name="run-synthetic-transactions"></a>代理トランザクションを実行する 
 
@@ -155,7 +155,7 @@ IoT のワークロードでは、データ ストアにランディングでき
 
     {Region}/{SubjectMatter(s)}/{yyyy}/{mm}/{dd}/{hh}/ 
 
-たとえば、英国の飛行機のエンジンのランディング テレメトリは次のようになります。 
+たとえば、英国の飛行機のエンジンのランディング テレメトリは次のような構造になります。 
 
     UK/Planes/BA1293/Engine1/2017/08/11/12/ 
 
@@ -163,7 +163,7 @@ IoT のワークロードでは、データ ストアにランディングでき
 
 ### <a name="batch-jobs-structure"></a>バッチ ジョブの構造 
 
-バッチ処理で一般的に使用される基本的な方法は、"in" フォルダーにデータをランディングする方法です。 次に、データが処理されると、ダウンストリームのプロセスが消費できるように、新しいデータが "out" フォルダーに入ります。 これは、個々のファイルで処理が必要なプロセスで、大規模なデータセット上で膨大な並列処理が必要とされない可能性があるジョブで見られます。 前述の推奨される IoT の構造と同様に、優れたディレクトリ構造にはリージョンや主題 (例: 組織、製品/製造業者) など、親レベルのフォルダーがあります。 これにより、組織全体でデータの安全を確保し、ワークロードのデータをより管理しやすくなります。 さらに、プロセスでより優れた組織、フィルター検索、セキュリティ、自動化を実現するために、構造で日付と時間を考慮します。 日付構造の細分性のレベルは、データがアップロードまたは処理される間隔 (毎時、毎日、毎月など) によって決まります。 
+バッチ処理で一般的に使用される基本的な方法は、"in" フォルダーにデータをランディングする方法です。 次に、データが処理されると、ダウンストリームのプロセスが消費できるように、新しいデータが "out" フォルダーに入ります。 このディレクトリ構造は、個々のファイルで処理が必要なプロセスで、大規模なデータセット上で膨大な並列処理が必要とされない可能性があるジョブで見られます。 前述の推奨される IoT の構造と同様に、優れたディレクトリ構造にはリージョンや主題 (例: 組織、製品/製造業者) など、親レベルのフォルダーがあります。 この構造により、組織全体でデータの安全を確保し、ワークロードのデータをより管理しやすくなります。 さらに、プロセスでより優れた組織、フィルター検索、セキュリティ、自動化を実現するために、構造で日付と時間を考慮します。 日付構造の細分性のレベルは、データがアップロードまたは処理される間隔 (毎時、毎日、毎月など) によって決まります。 
 
 ファイルのプロセスがデータの破損や予期しない形式により失敗することがあります。 このようなケースでは、**/bad** フォルダーにファイルを移動してさらに調査すると便利な場合があります。 また、バッチ ジョブはこれらの "*不良*" ファイルのレポート作成や通知を管理し、手動で介入できるようにします。 次のテンプレート構造を考慮してください。 
 
@@ -171,7 +171,7 @@ IoT のワークロードでは、データ ストアにランディングでき
     {Region}/{SubjectMatter(s)}/Out/{yyyy}/{mm}/{dd}/{hh}/ 
     {Region}/{SubjectMatter(s)}/Bad/{yyyy}/{mm}/{dd}/{hh}/ 
 
-たとえば、ある北米のマーケティング企業が、更新されたお客様情報の抽出データをクライアントから毎日受け取る場合、処理される前と後では次のようになります。 
+たとえば、ある北米のマーケティング企業は、更新されたお客様情報の抽出データをクライアントから毎日受け取ります。 処理される前と後では、次のスニペットのようになります。 
 
     NA/Extracts/ACMEPaperCo/In/2017/08/14/updates_08142017.csv 
     NA/Extracts/ACMEPaperCo/Out/2017/08/14/processed_updates_08142017.csv 

@@ -1,30 +1,27 @@
 ---
-title: "PowerShell を使用した Azure Table Storage 操作の実行 | Microsoft Docs"
-description: "PowerShell を使用した Azure Table Storage 操作の実行"
+title: PowerShell を使用した Azure Table Storage 操作の実行 | Microsoft Docs
+description: PowerShell を使用した Azure Table Storage 操作の実行
 services: cosmos-db
 documentationcenter: storage
 author: robinsh
 manager: timlt
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/02/2017
+ms.date: 03/14/2018
 ms.author: robinsh
-ms.openlocfilehash: 15a4ed2370598cb98565c48b4563bee3a4445827
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: c09809e9cf513dbb9420f675bbf431c176f740bd
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="perform-azure-table-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用した Azure Table Storage 操作の実行 
-
->[!NOTE]
->Azure Cosmos DB Table API は、ターンキー グローバル配布、低待ち時間の読み取りと書き込み、自動セカンダリ インデックス付け、専用スループットなど、テーブル ストレージに対する高度な機能を提供します。 この記事の PowerShell コマンドは、ほとんどの場合、Azure Cosmos DB Table API と Azure Table Storage の両方で機能しますが、この記事は Azure Table Storage に固有のものです。 Azure Cosmos DB Table API を使用している場合は、[Azure PowerShell を使用した Azure Cosmos DB Table API 操作](table-powershell.md)に関するページを参照してください。
->
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 Azure Table Storage は NoSQL データストアであり、これを使用することで、構造化された非リレーショナル データの巨大なセットを格納および照会できます。 このサービスのメイン コンポーネントは、テーブル、エンティティ、プロパティです。 テーブルは、エンティティのコレクションです。 エンティティは、プロパティのセットです。 各エンティティには、最大 252 個のプロパティを含めることができます。これらはすべて名前と値のペアです。 この記事では、Azure Table Storage サービスの概念について理解しているユーザーを対象としています。 詳しくは、「[テーブル サービス データ モデルについて](/rest/api/storageservices/Understanding-the-Table-Service-Data-Model)」および「[.NET を使用して Azure Table Storage を使用する](table-storage-how-to-use-dotnet.md)」をご覧ください。
 
@@ -38,7 +35,7 @@ Azure Table Storage は NoSQL データストアであり、これを使用す�
 > * テーブル エンティティを削除する
 > * テーブルを削除する
 
-このハウツー記事では、作業の完了後に簡単に削除できるように、新しいリソース グループに新しいストレージ アカウントを作成する方法について説明します。 既存のストレージ アカウントを使用したい場合はそうしてもかまいません。
+このハウツー記事では、作業の完了後に簡単に削除できるように、新しいリソース グループに新しい Azure Storage アカウントを作成する方法について説明します。 既存のストレージ アカウントを使用したい場合はそうしてもかまいません。
 
 例を実行するには、Azure PowerShell モジュール バージョン 4.4.0 以降が必要です。 PowerShell ウィンドウで、`Get-Module -ListAvailable AzureRM` を実行して、バージョンを確認します。 何も表示されない場合や、アップグレードが必要な場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
 
@@ -105,7 +102,7 @@ New-AzureStorageTable –Name $tableName –Context $ctx
 [Get-AzureStorageTable](/powershell/module/azure.storage/Get-AzureStorageTable) を使用して、ストレージ アカウントのテーブルの一覧を取得します。
 
 ```powershell
-$storageTable = Get-AzureStorageTable –Context $ctx | select Name
+Get-AzureStorageTable –Context $ctx | select Name
 ```
 
 ## <a name="retrieve-a-reference-to-a-specific-table"></a>特定のテーブルへの参照を取得する

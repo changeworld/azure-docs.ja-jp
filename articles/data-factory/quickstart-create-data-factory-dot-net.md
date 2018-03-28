@@ -1,23 +1,23 @@
 ---
-title: ".NET を使用して Azure データ ファクトリを作成する | Microsoft Docs"
-description: "Azure データ ファクトリを作成して、データを Azure BLOB ストレージ内のある場所から同じ BLOB ストレージ内の別の場所にコピーします。"
+title: .NET を使用して Azure データ ファクトリを作成する | Microsoft Docs
+description: Azure データ ファクトリを作成して、Azure Blob Storage 内のある場所から別の場所にデータをコピーします。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
 manager: jhubbard
 editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: jingwang
-ms.openlocfilehash: b430f5932bcd54d5e2ab787fb6c4491b48dbc416
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4829fde008516aff70652cff337838a162582c24
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -39,7 +39,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ### <a name="azure-roles"></a>Azure ロール
-Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**または**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にある**ユーザー名**をクリックし、**[アクセス許可]** を選択します。 複数のサブスクリプションへのアクセス権がある場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加するサンプル手順については、[ロールの追加](../billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
+Data Factory インスタンスを作成するには、Azure へのログインに使用するユーザー アカウントが、**共同作成者**ロールまたは**所有者**ロールのメンバーであるか、Azure サブスクリプションの**管理者**である必要があります。 サブスクリプションで自分が持っているアクセス許可を表示するには、Azure Portal で右上隅にある**ユーザー名**をクリックし、**[アクセス許可]** を選択します。 複数のサブスクリプションにアクセスできる場合は、適切なサブスクリプションを選択します。 ロールにユーザーを追加するサンプル手順については、[ロールの追加](../billing/billing-add-change-azure-subscription-administrator.md)に関する記事を参照してください。
 
 ### <a name="azure-storage-account"></a>Azure Storage アカウント
 このクイックスタートでは、**ソース** データ ストアと**コピー先**データ ストアの両方に汎用の Azure Storage アカウント (具体的には Blob Storage) を使用します。 汎用の Azure Storage アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 

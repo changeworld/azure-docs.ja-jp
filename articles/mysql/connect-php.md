@@ -1,6 +1,6 @@
 ---
-title: "PHP を使用して Azure Database for MySQL に接続する"
-description: "このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、PHP コード サンプルをいくつか紹介します。"
+title: PHP を使用して Azure Database for MySQL に接続する
+description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、PHP コード サンプルをいくつか紹介します。
 services: mysql
 author: mswutao
 ms.author: wuta
@@ -10,11 +10,11 @@ ms.service: mysql-database
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: d20aaf8a4cabd4e013e7ff43010c0f463eaccb79
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 581d3f181f5237d2cb3e469295b06eacd31b784f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-database-for-mysql-use-php-to-connect-and-query-data"></a>Azure Database for MySQL: PHP を使用した接続とデータの照会
 このクイックスタートでは、[PHP](http://php.net/manual/intro-whatis.php) アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、PHP を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
@@ -230,4 +230,4 @@ mysqli_close($conn);
 
 ## <a name="next-steps"></a>次の手順
 > [!div class="nextstepaction"]
-> [SSL を介した Azure Database for MySQL への接続] (howto-configure-ssl.md)
+> [Azure Database for MySQL に SSL で接続する](howto-configure-ssl.md)

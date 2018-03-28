@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と lr の統合 | Microsoft Docs"
-description: "Azure Active Directory と lr の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と LoginRadius の統合 | Microsoft Docs'
+description: Azure Active Directory と LoginRadius の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,32 +12,32 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/13/2018
 ms.author: jeedes
-ms.openlocfilehash: f7728c37db286b130a79db1353ee40825e8a4336
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 22f937a2ae9a2c715ce0866c2db0ac17769f0399
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-azure-active-directory-integration-with-lr"></a>チュートリアル: Azure Active Directory と lr の統合
+# <a name="tutorial-azure-active-directory-integration-with-loginradius"></a>チュートリアル: Azure Active Directory と LoginRadius の統合
 
-このチュートリアルでは、lr と Azure Active Directory (Azure AD) を統合する方法について説明します。
+このチュートリアルでは、LoginRadius と Azure Active Directory (Azure AD) を統合する方法について説明します。
 
-lr と Azure AD の統合には、次の利点があります。
+LoginRadius と Azure AD の統合には、次の利点があります。
 
-- lr にアクセスする Azure AD ユーザーを制御できます。
-- ユーザーが自分の Azure AD アカウントで lr に自動的にサインオン (シングル サインオン) できるようにします。
+- LoginRadius にアクセスする Azure AD ユーザーを制御できます。
+- ユーザーが自分の Azure AD アカウントで自動的に LoginRadius にサインオン (シングル サインオン) できるようにします。
 - 1 つの中央サイト (Azure Portal) でアカウントを管理できます。
 
 SaaS アプリと Azure AD の統合の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
-lr と Azure AD の統合を構成するには、次のものが必要です。
+LoginRadius と Azure AD の統合を構成するには、次のものが必要です。
 
 - Azure AD サブスクリプション
-- lr でのシングル サインオンが有効なサブスクリプション
+- LoginRadius でのシングル サインオンが有効なサブスクリプション
 
 > [!NOTE]
 > このチュートリアルの手順をテストする場合、運用環境を使用しないことをお勧めします。
@@ -50,13 +50,13 @@ lr と Azure AD の統合を構成するには、次のものが必要です。
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
 
-1. ギャラリーからの lr の追加
+1. ギャラリーからの LoginRadius の追加
 2. Azure AD シングル サインオンの構成とテスト
 
-## <a name="adding-lr-from-the-gallery"></a>ギャラリーからの lr の追加
-Azure AD への lr の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に lr を追加する必要があります。
+## <a name="adding-loginradius-from-the-gallery"></a>ギャラリーからの LoginRadius の追加
+Azure AD への LoginRadius の統合を構成するには、ギャラリーから管理対象 SaaS アプリの一覧に LoginRadius を追加する必要があります。
 
-**ギャラリーから lr を追加するには、次の手順に従います。**
+**ギャラリーから LoginRadius を追加するには、次の手順に従います。**
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
@@ -70,58 +70,58 @@ Azure AD への lr の統合を構成するには、ギャラリーから管理�
 
     ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに「**lr**」と入力し、結果パネルで **[lr]** を選択し、**[追加]** をクリックして、アプリケーションを追加します。
+4. 検索ボックスに「**LoginRadius**」と入力し、結果ウィンドウで **[LoginRadius]** を選び、**[追加]** をクリックして、アプリケーションを追加します。
 
-    ![結果一覧の lr](./media/active-directory-saas-lr-tutorial/tutorial_lr_addfromgallery.png)
+    ![結果一覧の LoginRadius](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_addfromgallery.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 
-このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、lr で Azure AD のシングル サインオンを構成し、テストします。
+このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、LoginRadius で Azure AD のシングル サインオンを構成し、テストします。
 
-シングル サインオンを機能させるには、Azure AD ユーザーに対応する lr ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと lr の関連ユーザーの間で、リンク関係が確立されている必要があります。
+シングル サインオンを機能させるには、Azure AD ユーザーに対応する LoginRadius ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと LoginRadius の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-lr で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
+LoginRadius で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[lr テスト ユーザーの作成](#create-a-lr-test-user)** - Azure AD の Britta Simon にリンクさせるために、対応するユーザーを lr で作成します。
+3. **[ のテスト ユーザーの作成](#create-a-loginradius-test-user)** - LoginRadius で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
 5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
-このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にし、lr でシングル サインオンを構成します。
+このセクションでは、Azure Portal で Azure AD のシングル サインオンを有効にして、LoginRadius アプリケーションでシングル サインオンを構成します。
 
-**lr で Azure AD シングル サインオンを構成するには、次の手順に従います。**
+**LoginRadius で Azure AD シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure Portal の **lr** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
+1. Azure Portal の **LoginRadius** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
     ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-lr-tutorial/tutorial_lr_samlbase.png)
+    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_samlbase.png)
 
-3. **[lr のドメインと URL]** セクションで、次の手順を実行します。
+3. **[LoginRadius Domain and URLs]\(LoginRadius のドメインと URL\)** セクションで、次の手順に従います。
 
-    ![[lr のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-lr-tutorial/tutorial_lr_url.png)
+    ![[LoginRadius Domain and URLs]\(LoginRadius のドメインと URL\) のシングル サインオン情報](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_url.png)
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。  **[サインオン URL]** ボックスに、「`https://secure.loginradius.com/login`」と入力します。
 
-    b. **[識別子]** ボックスに次の URL を入力します。`https://lr.hub.loginradius.com/`
+    b. **[識別子]** ボックスに次の URL を入力します。`https://LoginRadius.hub.loginradius.com/`
      
     > [!NOTE] 
-    > [サインオン URL] ページを開きます。 **[シングル サインオン]** タブをクリックし、[lr サポート チーム](mailto:support@loginradius.com)から提供された**プラグイン名**を入力した後、**[サインイン]** ボタンをクリックします。ログインのために Azure AD ページにリダイレクトされます。 
+    > [サインオン URL] ページを開きます。 **[シングル サインオン]** タブをクリックし、[LoginRadius サポート チーム](mailto:support@loginradius.com)から提供された**プラグイン名**を入力した後、**[サインイン]** ボタンをクリックします。ログインのために Azure AD ページにリダイレクトされます。 
 
 5. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
 
-    ![証明書のダウンロードのリンク](./media/active-directory-saas-lr-tutorial/tutorial_lr_certificate.png) 
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_certificate.png) 
 
 6. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-lr-tutorial/tutorial_general_400.png)
     
-7. **lr** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [lr サポート チーム](mailto:support@loginradius.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+7. **LoginRadius** 側にシングル サインオンを構成するには、ダウンロードした**メタデータ XML** を [ サポート チーム](mailto:support@loginradius.com)に送信する必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -158,25 +158,25 @@ lr で Azure AD のシングル サインオンを構成してテストするに
 
     d. **Create** をクリックしてください。
  
-### <a name="create-a-lr-test-user"></a>lr テスト ユーザーの作成
+### <a name="create-a-loginradius-test-user"></a>LoginRadius テスト ユーザーの作成
 
-このセクションでは、lr で Britta Simon というユーザーを作成します。 [lr サポート チーム](mailto:support@loginradius.com)と連携し、lr プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
+このセクションでは、LoginRadius で Britta Simon というユーザーを作成します。 [LoginRadius サポート チーム](mailto:support@loginradius.com)と連携し、LoginRadius プラットフォームにユーザーを追加してください。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
-このセクションでは、Britta Simon に lr へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
+このセクションでは、Britta Simon に LoginRadius へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
 
 ![ユーザー ロールを割り当てる][200] 
 
-**lr に Britta Simon を割り当てるには、次の手順に従います。**
+**LoginRadius に Britta Simon を割り当てるには、次の手順に従います。**
 
 1. Azure Portal でアプリケーション ビューを開き、ディレクトリ ビューに移動します。次に、**[エンタープライズ アプリケーション]** に移動し、**[すべてのアプリケーション]** をクリックします。
 
     ![ユーザーの割り当て][201] 
 
-2. アプリケーションの一覧で **[lr]** を選択します。
+2. アプリケーションの一覧で **[LoginRadius]**を選択します。
 
-    ![アプリケーションの一覧の lr のリンク](./media/active-directory-saas-lr-tutorial/tutorial_lr_app.png)  
+    ![[アプリケーション] リストの [LoginRadius] リンク](./media/active-directory-saas-lr-tutorial/tutorial_LoginRadius_app.png)  
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
@@ -196,7 +196,7 @@ lr で Azure AD のシングル サインオンを構成してテストするに
 
 このセクションでは、アクセス パネルを使用して Azure AD のシングル サインオン構成をテストします。
 
-アクセス パネルで lr のタイルをクリックすると、lr アプリケーションに自動的にサインオンします。
+アクセス パネルで LoginRadius のタイルをクリックすると、自動的に LoginRadius アプリケーションにサインオンします。
 アクセス パネルの詳細については、[アクセス パネルの概要](active-directory-saas-access-panel-introduction.md)に関する記事を参照してください。 
 
 ## <a name="additional-resources"></a>その他のリソース

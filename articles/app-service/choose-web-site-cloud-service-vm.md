@@ -1,8 +1,8 @@
 ---
-title: "Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較 | Microsoft Docs"
-description: "Web アプリケーションをホストするにあたり、使用するサービス (Azure App Service、Virtual Machines、Service Fabric、Cloud Services) を選択する方法について説明します。"
+title: Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較 | Microsoft Docs
+description: Web アプリケーションをホストするにあたり、使用するサービス (Azure App Service、Virtual Machines、Service Fabric、Cloud Services) を選択する方法について説明します。
 services: app-service\web, virtual-machines, cloud-services
-documentationcenter: 
+documentationcenter: ''
 author: ggailey777
 manager: erikre
 editor: jimbe
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 627782d3d6dd9f2eeff1b79e9cf721f9a4eb4ac2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f930cec984a8b92e00ec613ce3bba91a40518911
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 ## <a name="overview"></a>概要
@@ -49,7 +49,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | 多層アーキテクチャの Web 層または Web サービス層のホスト |○ |○ |○ |○ | |
 | 多層アーキテクチャの中間層のホスト |○ |○ |○ |○ |REST API 中間層は、App Service Web Apps で簡単にホストできます。バックグラウンド処理ジョブは、[Web ジョブ](http://go.microsoft.com/fwlink/?linkid=390226)機能でホストできます。 Web ジョブを専用 Web サイトで実行することにより、その階層のスケーラビリティを個別に確保できます。 |
 | 統合されたサービスとしての MySQL のサポート |○ |○ | | | |
-| ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート |○ |○ |○ |○ |Service Fabric では、[ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) を使用した Web フロントエンドの作成がサポートされています。または、あらゆる種類のアプリケーション (Node.js、Java など) を[ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md)としてデプロイできます。 |
+| ASP.NET、クラシック ASP、Node.js、PHP、Python のサポート |○ |○ |○ |○ |Service Fabric では、[ASP.NET 5](../service-fabric/service-fabric-reliable-services-communication-aspnetcore.md) を使用した Web フロントエンドの作成がサポートされています。または、あらゆる種類のアプリケーション (Node.js、Java など) を[ゲスト実行可能ファイル](../service-fabric/service-fabric-guest-executables-introduction.md)としてデプロイできます。 |
 | 再デプロイなしでの複数インスタンスへのスケールアウト |○ |○ |○ |○ |Virtual Machines は複数のインスタンスにスケールアウトできますが、そこで実行されるサービスが、このようなスケールアウトに対応できるように記述されていなければなりません。要求を複数のコンピューターにルーティングするためのロード バランサーを構成すると共に、アフィニティ グループを作成して、メンテナンスやハードウェアの障害で全インスタンスが同時に再起動するのを防ぐ必要があります。 |
 | SSL のサポート |○ |○ |○ |○ |App Service Web Apps の場合、カスタム ドメイン名の SSL は Basic モードと Standard モードでのみサポートされます。 Web Apps での SSL の使い方については、[Azure Web サイトの SSL 証明書の構成](app-service-web-tutorial-custom-ssl.md)に関するページを参照してください。 |
 | Visual Studio 統合 |○ |○ |○ |○ | |
@@ -59,7 +59,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | [Azure Traffic Manager](/azure/traffic-manager/) |○ |○ |○ |○ | |
 | 統合エンドポイント監視 |○ |○ |○ | | |
 | サーバーへのリモート デスクトップ アクセス | |○ |○ |○ | |
-| カスタム MSI のインストール | |○ |○ |○ |Service Fabric を使用すると、任意の実行可能ファイルを [ゲスト実行可能ファイル](../service-fabric/service-fabric-deploy-existing-app.md) としてホストしたり、任意のアプリを VM にインストールしたりできます。 |
+| カスタム MSI のインストール | |○ |○ |○ |Service Fabric を使用すると、任意の実行可能ファイルを [ゲスト実行可能ファイル](../service-fabric/service-fabric-guest-executables-introduction.md) としてホストしたり、任意のアプリを VM にインストールしたりできます。 |
 | スタートアップ タスクの定義と実行 | |○ |○ |○ | |
 | ETW イベントのリッスン | |○ |○ |○ | |
 
@@ -156,7 +156,7 @@ HTTP ベースの Web サービスを使用すると、モバイル クライア
 * 発行済みのサイトを使用して、モバイル クライアントを含む HTTP クライアントに REST API を提供します。
 
 > [!NOTE]
-> アカウントにサインアップする前に Azure App Service を実際に使ってみるには、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure App Service で、有効期限付きのスターター アプリを無償ですぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
+> アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、<a href="https://trywebsites.azurewebsites.net/">https://trywebsites.azurewebsites.net</a> にアクセスしてください。Azure App Service で有効期間の短いスターター アプリをすぐに無料で作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
 > 
 > 
 

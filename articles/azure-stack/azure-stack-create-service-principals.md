@@ -1,6 +1,6 @@
 ---
-title: "Azure Stack のサービス プリンシパルを作成する | Microsoft Docs"
-description: "Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しいサービス プリンシパルを作成する方法について説明します。"
+title: Azure Stack のサービス プリンシパルを作成する | Microsoft Docs
+description: Azure Resource Manager でロール ベースのアクセス制御と共に使用してリソースへのアクセスを管理できる、新しいサービス プリンシパルを作成する方法について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: mattbriggs
@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/25/2018
+ms.date: 03/15/2018
 ms.author: mabrigg
-ms.openlocfilehash: 64c424ee7045ae20b3fba6433166039580387d76
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 7b7028a92b93f29af10c5e4bc9ab4f671ca23961
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -51,14 +51,14 @@ Azure AD を ID ストアとして使用して Azure Stack をデプロイした
 アプリケーションのサービス プリンシパルが作成されました。
 
 ### <a name="get-credentials"></a>資格情報の取得
-プログラムによってログインするときは、アプリケーションの ID と認証キーを使用します。 これらの値を取得するには、次の手順に従います。
+プログラムでログインする場合、アプリケーションに対しては ID を、Web アプリ/API に対しては認証キーを使用します。 これらの値を取得するには、次の手順に従います。
 
 1. Active Directory の **[アプリの登録]** で、アプリケーションを選択します。
 
 2. **アプリケーション ID** をコピーし、アプリケーション コードに保存します。 「[サンプル アプリケーション](#sample-applications)」の各アプリケーションでは、この値をクライアント ID と呼んでいます。
 
      ![[クライアント ID]](./media/azure-stack-create-service-principal/image12.png)
-3. 認証キーを生成するには、**[キー]** を選択します。
+3. Web アプリ/API に対して認証キーを生成するには、**[設定]** > **[キー]** の順に選択します。 
 
 4. キーの説明を入力し、キーの期間を指定します。 操作が完了したら、**[保存]** をクリックします。
 

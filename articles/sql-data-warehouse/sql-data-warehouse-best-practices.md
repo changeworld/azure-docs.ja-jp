@@ -1,25 +1,24 @@
 ---
-title: "Azure SQL Data Warehouse のベスト プラクティス | Microsoft Docs"
-description: "Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。 これらは、成功に役立ちます。"
+title: Azure SQL Data Warehouse のベスト プラクティス | Microsoft Docs
+description: Azure SQL Data Warehouse のソリューションを開発する際に知っておく必要がある推奨事項とベスト プラクティス。 これらは、成功に役立ちます。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
-ms.assetid: 7b698cad-b152-4d33-97f5-5155dfa60f79
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 02/20/2018
+ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: 50d02b657ec3063b0ca4078844563b4ba7932f37
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 53ad9f654c498f562d66de461a2a489895d0a46b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のベスト プラクティス
 この記事には、Azure SQL Data Warehouse で最適なパフォーマンスを実現するのに役立つさまざまなベスト プラクティスがまとめられています。  この記事で取り上げている概念には、基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。  この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築するときに重視する必要がある重要な領域に対する認識を高めることです。  各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
@@ -89,12 +88,12 @@ DDL を定義するときに、データをサポートする最小のデータ�
 ## <a name="use-larger-resource-class-to-improve-query-performance"></a>大きなリソース クラスを使用して、クエリのパフォーマンスを向上させる
 SQL Data Warehouse では、クエリにメモリを割り当てる方法としてリソース グループを使用します。  既定では、ディストリビューションごとに 100 MB のメモリが与えられる小規模リソース クラスにすべてのユーザーが割り当てられます。  常に 60 個のディストリビューションが存在し、各ディストリビューションに最低 100 MB が割り当てられるため、システム全体のメモリの割り当ての合計は 6,000 MB (6 GB 弱) です。  大規模な結合やクラスター化列ストア テーブルへの読み込みなど、特定のクエリについては、割り当てるメモリを増やすと効果的です。  純粋なスキャンなどのクエリでは、効果はありません。  一方で、より大きなリソース クラスを利用すると、同時実行に影響します。そのため、すべてのユーザーをより大きなリソース クラスに移行する前に、その点を考慮する必要があります。
 
-[同時実行とワークロード管理][Concurrency and workload management]に関するページもご覧ください。
+「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」も参照してください。
 
 ## <a name="use-smaller-resource-class-to-increase-concurrency"></a>小さいリソース クラスを使用して、同時実行を増やす
 ユーザー クエリの遅延が長いと感じている場合は、ユーザーが大きなリソース クラスで実行しており、同時実行スロットを大量に使用していることが原因で、他のクエリがキューに配置されている可能性があります。  ユーザー クエリがキューに配置されているかどうかを確認するには、 `SELECT * FROM sys.dm_pdw_waits` を実行して、行が返されるかどうかを確認します。
 
-[同時実行とワークロード管理][Concurrency and workload management]と [sys.dm_pdw_waits][sys.dm_pdw_waits] に関するページもご覧ください。
+「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」と [sys.dm_pdw_waits][sys.dm_pdw_waits] に関するページも参照してください。
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>DMV を使用して、クエリを監視および最適化する
 SQL Data Warehouse には、クエリの実行を監視するために使用できる DMV がいくつか用意されています。  以下の監視に関する記事では、実行中のクエリの詳細を確認する方法についての詳細な手順を説明しています。  これらの DMV でクエリをすばやく見つけるには、クエリで LABEL オプションを使用すると便利です。
@@ -112,7 +111,6 @@ SQL Data Warehouse には、クエリの実行を監視するために使用で�
 
 <!--Article references-->
 [Create a support ticket]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Create table as select (CTAS)]: ./sql-data-warehouse-develop-ctas.md
 [Table overview]: ./sql-data-warehouse-tables-overview.md
 [Table data types]: ./sql-data-warehouse-tables-data-types.md

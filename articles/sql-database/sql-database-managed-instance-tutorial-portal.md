@@ -1,24 +1,21 @@
 ---
-title: "Azure Portal: SQL Database マネージ インスタンスを作成する | Microsoft Docs"
-description: "VNet で Azure SQL Database マネージ インスタンスを作成し、SSMS を使用して Wide World Importers のデータベース バックアップを復元します。"
-keywords: "SQL Database チュートリアル, SQL Database マネージ インスタンスの作成"
+title: 'Azure Portal: SQL Database マネージ インスタンスを作成する | Microsoft Docs'
+description: VNet で Azure SQL Database マネージ インスタンスを作成し、SSMS を使用して Wide World Importers のデータベース バックアップを復元します。
+keywords: SQL Database チュートリアル, SQL Database マネージ インスタンスの作成
 services: sql-database
 author: bonova
 ms.reviewer: carlrab, srbozovi
 ms.service: sql-database
 ms.custom: managed instance
-ms.workload: Active
-ms.tgt_pltfrm: portal
-ms.devlang: 
 ms.topic: tutorial
-ms.date: 03/07/2018
+ms.date: 03/14/2018
 ms.author: bonova
-manager: cguyer
-ms.openlocfilehash: 0d6261392dfdab0d48cb0c524d1fcf416c85d72c
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: craigg
+ms.openlocfilehash: 774a761465cfd886b85378a35dd43ac656a7ee48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-an-azure-sql-database-managed-instance-in-the-azure-portal"></a>Azure Portal で Azure SQL Database マネージ インスタンスを作成する
 
@@ -26,6 +23,9 @@ ms.lasthandoff: 03/12/2018
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
+> [!IMPORTANT]
+> 現在マネージ インスタンスが提供されているリージョンの一覧については、「[Migrate your databases to a fully managed service with Azure SQL Database Managed Instance (Azure SQL Database マネージ インスタンスを使用してデータベースを完全管理型サービスに移行する)](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)」を参照してください。
+ 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
 [Azure Portal](https://portal.azure.com/#create/Microsoft.SQLManagedInstance) にログインします。
@@ -284,7 +284,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ![Internet Explorer セキュリティ強化の構成](./media/sql-database-managed-instance-tutorial/internet-explorer-security-configuration.png)  
 4. タスク バーから **Internet Explorer** を開きます。
 5. **[お勧めのセキュリティと互換性の設定を使う]** を選択し、**[OK]** をクリックして、Internet Explorer 11 の設定を完了します。
-6. [URL アドレス] ボックスに "https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms" と入力し、**[入力]** をクリックします。 
+6. URL アドレス ボックスに「https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms」と入力し、**Enter** キーを押します。 
 7. SQL Server Management Studio の最新バージョンをダウンロードし、メッセージが表示されたら **[実行]** をクリックします。
 8. メッセージが表示されたら、**[インストール]** をクリックしてインストールを開始します。
 9. インストールが完了したら、**[閉じる]** をクリックします。

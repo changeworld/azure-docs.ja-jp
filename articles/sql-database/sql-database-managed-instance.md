@@ -2,29 +2,26 @@
 title: Azure SQL Database マネージ インスタンスの概要 | Microsoft Docs
 description: このトピックでは、Azure SQL Database マネージ インスタンスについて説明し、さらにそのしくみと Azure SQL Database の単一データベースとの相違点についても説明します。
 services: sql-database
-documentationcenter: na
 author: bonova
 ms.reviewer: carlrab
-manager: cguyer
-editor: ''
-ms.assetid: ''
+manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 03/07/2018
+ms.date: 03/16/2018
 ms.author: bonova
-ms.openlocfilehash: dc3c93a1a13f3e10f9159d26411d6337c0269722
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: bc9c16462f28d129efa8c47183c6325e69bb64f3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージ インスタンス (プレビュー) とは?
 
 Azure SQL Database マネージ インスタンス (プレビュー) は、Azure SQL Database の新しい機能です。SQL Server オンプレミスとの 100% 近い互換性を備えています。またセキュリティに関する一般的な懸念事項に対処するネイティブの[仮想ネットワーク](../virtual-network/virtual-networks-overview.md) (VNet) 実装を提供し、オンプレミスの SQL Server の顧客に有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 マネージ インスタンスにより、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベース変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、マネージ インスタンスでは、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、バックアップ、高可用性) を維持します。
+
+> [!IMPORTANT]
+> 現在マネージ インスタンスが提供されているリージョンの一覧については、「[Migrate your databases to a fully managed service with Azure SQL Database Managed Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)」(Azure SQL Database マネージ インスタンスを使用してデータベースを完全管理型サービスに移行する) を参照してください。
  
 次の図では、マネージ インスタンスの主な機能について概説します。
 
@@ -42,7 +39,7 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 | | 使用シナリオ | 
 | --- | --- | 
 |マネージ インスタンス |顧客が多数のオンプレミスまたは IaaS のアプリ、自社ビルドのアプリ、または ISV 提供のアプリをできるだけ少ない移行作業でる移行することを模索している場合、マネージ インスタンスをご提案します。 Azure で完全に自動化された[データ移行サービス (DMS)](/sql/dma/dma-overview) を使用することにより、顧客はオンプレミスの SQL Server をマネージ インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNET のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、SQL Database マネージ インスタンスでは [SQL Server 用の Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Database マネージ インスタンスはクラウド内の最適な移行先です。 |
-|の接続文字列 |新しい SaaS マルチ テナント アプリケーションを開発する顧客、または既存のオンプレミスのアプリを SaaS マルチテナント アプリに意図的に変換する顧客に対しては、エラスティック プールをご提案します。 このモデルには次の利点があります。 <br><ul><li>ライセンスの販売からサービス サブスクリプションの販売へのビジネス モデルの変換 (ISV の場合)</li></ul><ul><li>簡単かつ堅牢なテナントの分離</li></ul><ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul><ul><li>ハード シーリングに達することなくスケールアウトする可能性</li></ul>ワークロードが安定していて予測可能な、SaaS マルチ テナント以外の新しいアプリを開発する顧客に対しては、単一のデータベースをご提案します。 このモデルには次の利点があります。<ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul>  <ul><li>データベースごとに予測可能なパフォーマンス</li></ul>|
+|Azure SQL Database |**エラスティック プール**: 新しい SaaS マルチ テナント アプリケーションを開発する顧客、または既存のオンプレミスのアプリを SaaS マルチテナント アプリに意図的に変換する顧客に対しては、エラスティック プールをご提案します。 このモデルには次の利点があります。 <br><ul><li>ライセンスの販売からサービス サブスクリプションの販売へのビジネス モデルの変換 (ISV の場合)</li></ul><ul><li>簡単かつ堅牢なテナントの分離</li></ul><ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul><ul><li>ハード シーリングに達することなくスケールアウトする可能性</li></ul>**単一のデータベース**: ワークロードが安定していて予測可能な、SaaS マルチ テナント以外の新しいアプリを開発する顧客に対しては、単一のデータベースをご提案します。 このモデルには次の利点があります。<ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul>  <ul><li>データベースごとに予測可能なパフォーマンス</li></ul>|
 |SQL IaaS |オペレーティング システムまたはデータベース サーバーをカスタマイズする必要があると共に、SQL Server とサード パーティ アプリの並列実行 (同じ VM 上で) に関して特定の要件を持つ顧客については、最適なソリューションとして SQL VM / IaaS をご提案します。|
 |||
 
@@ -87,7 +84,7 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 
 次に汎用のサービス階層の主な機能を概説します。
 
-|Feature | [説明]|
+|機能 | 説明|
 |---|---|
 | vCores* の数 | 8、16、24|
 | SQL Server のバージョン/ビルド | SQL Server (最新版) |
@@ -96,13 +93,13 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 | 期待されるストレージ IOPS | データ ファイルあたり 500 から 7500 IOPS (データ ファイルによって異なる)。 [Premium Storage](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) に関するセクションを参照してください。 |
 | データベースごとのデータ ファイル数 (ROWS) | 複数 | 
 | データベースごとのログ ファイル数 (LOG) | 1 | 
-| 管理される自動バックアップ | [はい] |
+| 管理される自動バックアップ | 可能 |
 | HA | リモート ストレージおよび [Azure Service Fabric](../service-fabric/service-fabric-overview.md) に基づく |
-| インスタンスおよびデータベースに対する組み込みの監視とメトリック | [はい] |
-| 自動的に行われるソフトウェア修正プログラムの適用 | [はい] |
-| VNet - Azure Resource Manager デプロイ | [はい] |
-| VNet - クラシック デプロイ モデル | いいえ  |
-| ポータルのサポート | [はい]|
+| インスタンスおよびデータベースに対する組み込みの監視とメトリック | 可能 |
+| 自動的に行われるソフトウェア修正プログラムの適用 | 可能 |
+| VNet - Azure Resource Manager デプロイ | 可能 |
+| VNet - クラシック デプロイ モデル | 不可能 |
+| ポータルのサポート | 可能|
 |||
 
 \* 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。  

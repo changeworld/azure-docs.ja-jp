@@ -1,6 +1,6 @@
 ---
-title: "C++ で Azure Table Storage を使用する方法 | Microsoft Docs"
-description: "NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
+title: C++ で Azure Table Storage と Azure Cosmos DB を使用する方法 | Microsoft Docs
+description: NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。
 services: cosmos-db
 documentationcenter: .net
 author: mimig1
@@ -12,20 +12,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/12/2018
 ms.author: mimig
-ms.openlocfilehash: a71098583af8722f2e191e0e665ac87ebd30f355
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 69d56c79320931419ff8d71373ec578af2dec921
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="how-to-use-azure-table-storage-with-c"></a>C++ で Azure Table Storage を使用する方法
+# <a name="how-to-use-azure-table-storage-and-azure-cosmos-db-table-api-with-c"></a>C++ で Azure Table Storage と Azure Cosmos DB Table API を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
-[!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
+[!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
 ## <a name="overview"></a>概要
-このガイドでは、Azure テーブル ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは C++ で記述され、 [C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。 紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
+このガイドでは、Azure Table Storage サービスまたは Azure Cosmos DB Table API を使用して、一般的なシナリオを実行する方法について説明します。 サンプルは C++ で記述され、 [C++ 用 Azure ストレージ クライアント ライブラリ](https://github.com/Azure/azure-storage-cpp/blob/master/README.md)を利用しています。 紹介するシナリオは、**テーブルの作成と削除**、**テーブル エンティティの操作**などです。
 
 > [!NOTE]
 > このガイドは、C++ 用 Azure ストレージ クライアント ライブラリ 1.0.0 以上のバージョンを対象としています。 推奨されるバージョンはストレージ クライアント ライブラリ 2.2.0 です。これは、[NuGet](http://www.nuget.org/packages/wastorage) または [GitHub](https://github.com/Azure/azure-storage-cpp/) 経由で入手できます。
@@ -46,7 +46,7 @@ C++ 用 Azure ストレージ クライアント ライブラリをインスト�
   
      Install-Package wastorage
 
-## <a name="configure-your-application-to-access-table-storage"></a>テーブル ストレージにアクセスするようにアプリケーションを構成する
+## <a name="configure-access-to-the-table-client-library"></a>Table のクライアント ライブラリへのアクセスの構成
 Azure Storage API を使用してテーブルにアクセスする C++ ファイルの先頭には、次の include ステートメントを追加します。  
 
 ```cpp
@@ -54,13 +54,24 @@ Azure Storage API を使用してテーブルにアクセスする C++ ファイ
 #include <was/table.h>
 ```
 
+Azure Storage クライアントまたは Cosmos DB クライアントでは、接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントや資格情報を保存します。 クライアント アプリケーションを実行する場合は、ストレージ接続文字列または Azure Cosmos DB 接続文字列を、適切な形式で入力する必要があります。
+
 ## <a name="set-up-an-azure-storage-connection-string"></a>Azure Storage 接続文字列の設定
-Azure ストレージ クライアントでは、ストレージ接続文字列を使用して、データ管理サービスにアクセスするためのエンドポイントおよび資格情報を保存します。 クライアント アプリケーションを実行する場合は、次の形式でストレージ接続文字列を入力する必要があります。 *AccountName* と *AccountKey* の値には、[Azure Portal](https://portal.azure.com) に表示されるストレージ アカウントの名前とストレージ アカウントのストレージ アクセス キーを使用します。 ストレージ アカウントとストレージ アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。 この例では、接続文字列を保持する静的フィールドを宣言する方法を示しています。  
+ *AccountName* と *AccountKey* の値には、[Azure Portal](https://portal.azure.com) で一覧表示されるストレージ アカウントの名前とストレージ アカウントに対するアクセス キーを使用します。 ストレージ アカウントとアクセス キーについて詳しくは、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」を参照してください。 この例では、Azure Storage 接続文字列を保持する静的フィールドを宣言する方法が示されています。  
 
 ```cpp
-// Define the connection string with your values.
+// Define the Storage connection string with your values.
 const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_storage_account;AccountKey=your_storage_account_key"));
 ```
+
+## <a name="set-up-an-azure-cosmos-db-connection-string"></a>Azure Cosmos DB 接続文字列の設定
+*Account Name*、*Primary Key*、*Endpoint* の値には、[Azure Portal](https://portal.azure.com) で一覧表示される Azure Cosmos DB アカウントの名前、主キー、エンドポイントを使用します。 この例では、Azure Cosmos DB 接続文字列を保持する静的フィールドを宣言する方法が示されています。
+
+```cpp
+// Define the Azure Cosmos DB connection string with your values.
+const utility::string_t storage_connection_string(U("DefaultEndpointsProtocol=https;AccountName=your_cosmos_db_account;AccountKey=your_cosmos_db_account_key;TableEndpoint=your_cosmos_db_endpoint"));
+```
+
 
 ローカルの Windows ベースのコンピューターでアプリケーションをテストするには、[Azure SDK](https://azure.microsoft.com/downloads/) と共にインストールされた、Azure [ストレージ エミュレーター](../storage/common/storage-use-emulator.md)を使用できます。 ストレージ エミュレーターは、ローカルの開発マシンで、Azure BLOB、Queue、および Table service をシミュレートするユーティリティです。 次の例では、ローカルのストレージ エミュレーターに接続文字列を保持する静的フィールドを宣言する方法を示しています。  
 
@@ -74,7 +85,7 @@ Azure のストレージ エミュレーターを起動するには、 **[スタ
 次のサンプルでは、これら 2 つのメソッドのいずれかを使用してストレージ接続文字列を取得するとします。  
 
 ## <a name="retrieve-your-connection-string"></a>接続文字列の取得
-**cloud_storage_account** クラスを使用してストレージ アカウント情報を表すことができます。 ストレージ接続文字列からストレージ アカウント情報を取得するには、parse メソッド使用します。
+**cloud_storage_account** クラスを使用してストレージ アカウント情報を表すことができます。 ストレージ接続文字列からストレージ アカウント情報を取得するには、 **parse** メソッド使用します。
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -198,6 +209,9 @@ std::vector<azure::storage::table_result> results = table.execute_batch(batch_op
 ## <a name="retrieve-all-entities-in-a-partition"></a>パーティション内のすべてのエンティティを取得する
 テーブルに対してパーティション内のすべてのエンティティを照会する場合は、**table_query** オブジェクトを使用します。 次のコード例は、'Smith' がパーティション キーであるエンティティに対してフィルターを指定します。 この例は、クエリ結果の各エンティティのフィールドをコンソールに出力します。  
 
+> [!NOTE]
+> 現在、これらの方法は Azure Cosmos DB の C++ 用にはサポートされていません。
+
 ```cpp
 // Retrieve the storage account from the connection string.
 azure::storage::cloud_storage_account storage_account = azure::storage::cloud_storage_account::parse(storage_connection_string);
@@ -232,6 +246,9 @@ for (; it != end_of_results; ++it)
 
 ## <a name="retrieve-a-range-of-entities-in-a-partition"></a>パーティション内の一定範囲のエンティティを取得する
 パーティション内の一部のエンティティのみを照会する場合は、パーティション キー フィルターと行キー フィルターを組み合わせて範囲を指定できます。 次のコード例は、2 つのフィルターを使用して、行キー (名) がアルファベットの 'E' より前の文字で始まる、'Smith' というパーティション内のすべてのエンティティを取得し、クエリ結果を出力します。  
+
+> [!NOTE]
+> 現在、これらの方法は Azure Cosmos DB の C++ 用にはサポートされていません。
 
 ```cpp
 // Retrieve the storage account from the connection string.
@@ -436,23 +453,30 @@ azure::storage::cloud_table_client table_client = storage_account.create_cloud_t
 // Create a cloud table object for the table.
 azure::storage::cloud_table table = table_client.get_table_reference(U("people"));
 
-// Create an operation to retrieve the entity with partition key of "Smith" and row key of "Jeff".
-azure::storage::table_operation retrieve_operation = azure::storage::table_operation::retrieve_entity(U("Smith"), U("Jeff"));
-azure::storage::table_result retrieve_result = table.execute(retrieve_operation);
-
-// Create an operation to delete the entity.
-azure::storage::table_operation delete_operation = azure::storage::table_operation::delete_entity(retrieve_result.entity());
-
-// Submit the delete operation to the Table service.
-azure::storage::table_result delete_result = table.execute(delete_operation);
+// Delete the table if it exists
+if (table.delete_table_if_exists())
+    {
+        std::cout << "Table deleted!";
+    }
+    else
+    {
+        std::cout << "Table didn't exist";
+    }
 ```
 
-## <a name="next-steps"></a>次の手順
-これで、Table ストレージの基本を学習できました。Azure Storage の詳細については、次のリンク先を参照してください。  
+## <a name="troubleshooting"></a>トラブルシューティング
+* Visual Studio 2017 Community エディションでのビルド エラー
 
+  インクルード ファイル storage_account.h と table.h が原因でプロジェクトにビルド エラーが発生する場合は、**/permissive-** コンパイラ スイッチを削除します。 
+  - **ソリューション エクスプローラー**で、プロジェクトを右クリックして **[プロパティ]** を選択します。
+  - **[プロパティ ページ]** ダイアログ ボックスで、**[構成プロパティ]** を展開し、**[C/C++]** を展開し、**[言語]** を選択します。
+  - **[準拠モード]** を **[いいえ]** に設定します。
+   
+## <a name="next-steps"></a>次の手順
+Azure Storage および Azure Cosmos DB の Table API について詳しくは、次のリンクを参照してください。 
+
+* [Table API の概要](table-introduction.md)
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
-* [C++ から BLOB ストレージを使用する方法](../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
-* [C++ から Queue ストレージを使用する方法](../storage/queues/storage-c-plus-plus-how-to-use-queues.md)
 * [C++ での Azure Storage のリソース一覧の取得](../storage/common/storage-c-plus-plus-enumeration.md)
 * [C++ 用ストレージ クライアント ライブラリ リファレンス](http://azure.github.io/azure-storage-cpp)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)

@@ -1,42 +1,63 @@
 ---
-title: "JSON を使用したロジック アプリ定義の編集 - Azure Logic Apps | Microsoft Docs"
-description: "パラメーターの追加、文字列の処理、パラメーターのマップの作成、日付関数を使用したデータの取得を行います。"
+title: ロジック アプリ定義の JSON の作成、編集、拡張 - Azure Logic Apps | Microsoft Docs
+description: JSON でロジック アプリ定義を作成し、カスタマイズします。
 author: ecfan
-manager: anneta
-editor: 
+manager: SyntaxC4
+editor: ''
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
+ms.workload: logic-apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.custom: H1Hack27Feb2017
-ms.date: 01/31/2018
-ms.author: LADocs; estfan
-ms.openlocfilehash: d05f7e34cbe670db6733c199e3420c810c304a84
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.date: 01/01/2018
+ms.author: estfan; LADocs
+ms.openlocfilehash: bde275eb75c97da2a99109484b46b599a5b2f871
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="build-on-your-logic-app-definition-with-json"></a>JSON を使用したロジック アプリ定義の編集
+# <a name="create-edit-or-customize-json-for-logic-app-definitions"></a>ロジック アプリ定義の JSON の作成、編集、カスタマイズ
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) でより高度なタスクを実行するには、コード ビューで単純な宣言型の JSON 言語を使用してロジック アプリ定義を編集します。 ロジック アプリをまだ作成していない場合は、最初に、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事を確認してください。 また、[ワークフロー定義言語の詳細](http://aka.ms/logicappsdocs)に関する記事も参照してください。
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) で自動ワークフローを使用してエンタープライズ統合ソリューションを作成する場合、基になるロジック アプリ定義では、[ワークフロー定義言語 (WDL) スキーマ](../logic-apps/logic-apps-workflow-definition-language.md)と共に単純な宣言型の JavaScript Object Notation (JSON) を記述と検証に使用します。 これらの形式を使用することで、コードに関する詳しい知識がなくても、ロジック アプリ定義を理解しやすくなります。 ロジック アプリの作成とデプロイを自動化するときには、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)に [Azure リソース](../azure-resource-manager/resource-group-overview.md)としてロジック アプリ定義を含めることができます。 ロジック アプリを作成、管理、デプロイするときは、[Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.logicapp)、[Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)、または [Azure Logic Apps REST API](https://docs.microsoft.com/rest/api/logic/) を使用できます。
+
+JSON でロジック アプリ定義を操作するには、Azure Portal または Visual Studio で作業するときにコード ビュー エディターを開くか、任意のエディターに定義をコピーします。 ロジック アプリを初めて使用する場合は、[初めてのロジック アプリを作成する方法](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関する記事をご覧ください。
 
 > [!NOTE]
-> パラメーターなど、Azure Logic Apps の一部の機能は、ロジック アプリの定義についてコード ビューで作業する場合にのみ使用できます。 パラメーターを使用すると、ロジック アプリ全体にわたって値を再利用できます。 たとえば、複数のアクションで同じ電子メール アドレスを使用する場合は、その電子メール アドレスをパラメーターとして定義します。
+> ロジック アプリ定義のパラメーターや複数のトリガーの定義など、Azure Logic Apps の一部の機能は JSON でのみ使用でき、Logic Apps デザイナーでは使用できません。 したがって、これらのタスクについては、コード ビューまたは別のエディターで作業する必要があります。
 
-## <a name="view-and-edit-your-logic-app-definitions-in-json"></a>ロジック アプリ定義を JSON で表示して編集する
+## <a name="edit-json---azure-portal"></a>JSON を編集する - Azure Portal
 
-1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。
+1. <a href="https://portal.azure.com" target="_blank">Azure Portal</a> にサインインします。
 
-2. 左側のメニューの **[その他のサービス]** を選択します。 **[Enterprise Integration]** の **[Logic Apps]** を選択します。 自分のロジック アプリを選択します。
+2. 左側のメニューの **[すべてのサービス]** を選択します。 検索ボックスで "logic apps" を検索し、検索結果からロジック アプリを選択します。
 
-3. ロジック アプリ メニューで、**[開発ツール]** の **[ロジック アプリ コード ビュー]** を選択します。
+3. ロジック アプリのメニューで、**[開発ツール]** の **[ロジック アプリ コード ビュー]** を選択します。
 
-   コード ビュー ウィンドウが開き、ロジック アプリ定義が表示されます。
+   コード ビュー エディターが開き、JSON 形式でロジック アプリ定義が表示されます。
+
+## <a name="edit-json---visual-studio"></a>JSON を編集する - Visual Studio
+
+Visual Studio でロジック アプリ定義を操作する前に、[必要なツールがインストール](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites)されていることを確認します。 Visual Studio でロジック アプリを作成するときは、「[Quickstart: Automate tasks and processes with Azure Logic Apps - Visual Studio (クイックスタート: Azure Logic Apps でタスクとプロセスを自動化する - Visual Studio)](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)」をご覧ください。
+
+Visual Studio では、Azure Portal から直接デプロイされているか、Visual Studio から Azure Resource Manager プロジェクトとしてデプロイされている作成済みのロジック アプリを開くことができます。
+
+1. ロジック アプリを含む、Visual Studio ソリューションまたは [Azureリソース グループ](../azure-resource-manager/resource-group-overview.md) プロジェクトを開きます。
+
+2. ロジック アプリの定義を見つけて開きます。既定では、**LogicApp.json** という名前の [Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)に表示されます。 このテンプレートを使用し、さまざまな環境へのデプロイ用にカスタマイズできます。
+
+3. ロジック アプリ定義とテンプレートのショートカット メニューを開きます。 **[Open With Logic App Designer]\(ロジック アプリ デザイナーで開く\)** を選択します。
+
+   ![Visual Studio ソリューションのロジック アプリを開く](./media/logic-apps-author-definitions/open-logic-app-designer.png)
+
+4. デザイナーの下部で **[コード ビュー]** を選択します。 
+
+   コード ビュー エディターが開き、JSON 形式でロジック アプリ定義が表示されます。
+
+5. デザイナー ビューに戻るには、コード ビュー エディターの下部で **[デザイン]** を選択します。
 
 ## <a name="parameters"></a>parameters
 

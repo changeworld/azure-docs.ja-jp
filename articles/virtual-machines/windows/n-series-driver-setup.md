@@ -1,11 +1,11 @@
 ---
-title: "Windows 用 Azure N シリーズ ドライバー セットアップ | Microsoft Docs"
-description: "Azure で Windows を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法"
+title: Windows 用 Azure N シリーズ ドライバー セットアップ | Microsoft Docs
+description: Azure で Windows を実行する N シリーズ VM 用の NVIDIA GPU ドライバーの設定方法
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: f3950c34-9406-48ae-bcd9-c0418607b37d
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: de585e123555188055b6bd63ab0a6cc68313311f
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: e21115915808899e8455dc6d4f1f4cf8a100f483
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="set-up-gpu-drivers-for-n-series-vms-running-windows-server"></a>Windows Server を実行している N シリーズ VM の GPU ドライバーをセットアップする
 Windows Server 2016 または Windows Server 2012 R2 を実行する Azure N シリーズ VM の GPU 機能を利用するには、サポートされている NVIDIA グラフィック ドライバーをインストールします。 この記事では、N シリーズ VM をデプロイした後のドライバーのセットアップ手順について説明します。 ドライバーのセットアップ情報は、[Linux VM](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) でも利用可能です。
@@ -53,7 +53,7 @@ GPU デバイスの状態を照会するには、ドライバーとともにイ�
 
 ## <a name="rdma-network-connectivity"></a>RDMA ネットワーク接続
 
-RDMA ネットワーク接続は、同じ可用性セットにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA 接続を有効にする Windows ネットワーク デバイス ドライバーをインストールするには、HpcVmDrivers 拡張機能を追加する必要があります。 VM 拡張機能を RDMA 対応の N シリーズ VM に追加するには、Azure Resource Manager 用の [Azure PowerShell](/powershell/azure/overview) コマンドレットを使います。
+RDMA ネットワーク接続は、同じ可用性セットまたは VM スケール セットにデプロイされた NC24r など、RDMA 対応の N シリーズ VM で有効にすることができます。 RDMA 接続を有効にする Windows ネットワーク デバイス ドライバーをインストールするには、HpcVmDrivers 拡張機能を追加する必要があります。 VM 拡張機能を RDMA 対応の N シリーズ VM に追加するには、Azure Resource Manager 用の [Azure PowerShell](/powershell/azure/overview) コマンドレットを使います。
 
 米国西部リージョンの既存の RDMA 対応 VM (myVM) に HpcVMDrivers 拡張機能の最新バージョン 1.1 をインストールするには:
   ```PowerShell

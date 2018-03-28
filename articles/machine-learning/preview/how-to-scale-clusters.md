@@ -1,9 +1,9 @@
 ---
-title: "Machine Learning 向けに Azure Container Service クラスターをスケーリングする方法 | Microsoft Docs"
-description: "ACS クラスターのスケーリング - 自動スケールと静的スケール。クラスター内のノード数のスケーリング"
+title: Machine Learning 向けに Azure Container Service クラスターをスケーリングする方法 | Microsoft Docs
+description: ACS クラスターのスケーリング - 自動スケールと静的スケール。クラスター内のノード数のスケーリング
 services: machine-learning
-author: raymondl
-ms.author: raymondl
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 10/04/2017
-ms.openlocfilehash: 690068edf749a2c79d328337618d94936520d501
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 58709b5a5b060552e1bc349a6f720d3f45348ba0
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="scaling-the-cluster-to-manage-web-service-throughput"></a>Web サービスのスループットを管理するためのクラスターのスケーリング
 
@@ -59,7 +59,7 @@ az acs scale -g <resource group> -n <cluster name> --new-agent-count <new scale>
 
 ### <a name="scaling-the-number-of-kubernetes-pod-replicas-in-a-cluster"></a>クラスター内の Kubernetes ポッド レプリカ数のスケーリング
  
-Azure Machine Learning CLI または [Kubernetes ダッシュボード](https: //kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)を使用して、クラスターに割り当てられたポッド レプリカの数をスケーリングできます。
+Azure Machine Learning CLI または [Kubernetes ダッシュボード] （https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/)） を使用して、クラスターに割り当てられるポッド レプリカの数をスケーリングできます。
 
 Kubernetes レプリカ ポッドの詳細については、[Kubernetes ポッド](https://kubernetes.io/docs/concepts/workloads/pods/pod/)のドキュメントを参照してください。
 
@@ -83,7 +83,7 @@ az ml service update realtime -i <service id> --autoscale-enabled true --autosca
 たとえば、`autoscale-min-replicas` を 5 に設定すると、5 つのレプリカが作成されます。 Web サービスに最適な数を見つけるには、この数に 10 などの値を設定し、503 エラー メッセージの数を監視します。 その後、この数を適宜調整します。
 
 
-| パラメーター名 | type | [説明] |
+| パラメーター名 | 型 | 説明 |
 |--------------------|--------------------|--------------------|
 | `autoscale-enabled` | ブール値 | 自動スケールを有効にするかどうかを指定します。 既定値: true |
 | `autoscale-min-replicas` | integer | ポッドの最小数を指定します。 0 以上にする必要があります。 既定値: 1 |

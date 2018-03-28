@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions における Mobile Apps のバインド"
-description: "Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。"
+title: Azure Functions における Mobile Apps のバインド
+description: Azure Functions で Azure Mobile Apps のバインドを使用する方法について説明します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: functions
 ms.devlang: multiple
 ms.topic: reference
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a1e4f15747031ba75ba5ae589557750919a71853
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: c5fb7bdd88691c9aeab6b348507901c34502b28b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions における Mobile Apps のバインド 
 
@@ -28,6 +28,12 @@ ms.lasthandoff: 01/02/2018
 Mobile Apps のバインドを使用すると、モバイル アプリのデータ テーブルの読み取りや更新を行うことができます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
+
+## <a name="packages"></a>パッケージ
+
+Mobile Apps バインディングは [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) NuGet パッケージで提供されます。 パッケージのソース コードは、[azure-webjobs-sdk-extensions](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) GitHub リポジトリにあります。
+
+[!INCLUDE [functions-package](../../includes/functions-package.md)]
 
 ## <a name="input"></a>入力
 
@@ -128,7 +134,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="input---attributes"></a>入力 - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) で定義されている [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
 
 属性のプロパティについて詳しくは、[この後の構成に関するセクション](#input---configuration)をご覧ください。
 
@@ -136,7 +142,7 @@ module.exports = function (context, myQueueItem) {
 
 次の表は、*function.json* ファイルと `MobileTable` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 | **type**|| "mobileTable" に設定する必要があります。|
 | **direction**||"in" に設定する必要があります。|
@@ -274,7 +280,7 @@ module.exports = function (context, myQueueItem) {
 
 ## <a name="output---attributes"></a>出力 - 属性
 
-[C# クラス ライブラリ](functions-dotnet-class-library.md)では、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) で定義されている [MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
+[C# クラス ライブラリ](functions-dotnet-class-library.md)では、[MobileTable](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) 属性を使用します。
 
 構成可能な属性プロパティについては、「[出力 - 構成](#output---configuration)」を参照してください。 メソッド シグネチャでの `MobileTable` 属性の例を次に示します。
 
@@ -295,7 +301,7 @@ public static object Run(
 
 次の表は、*function.json* ファイルと `MobileTable` 属性で設定したバインド構成のプロパティを説明しています。
 
-|function.json のプロパティ | 属性のプロパティ |[説明]|
+|function.json のプロパティ | 属性のプロパティ |説明|
 |---------|---------|----------------------|
 | **type**|| "mobileTable" に設定する必要があります。|
 | **direction**||"out" に設定する必要があります。|

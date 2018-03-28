@@ -13,29 +13,30 @@ ms.devlang: azurecli
 ms.topic: ''
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 03/06/2018
+ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: df56f2e3e13f80e7ce2c2b6c9cffeac3d03776e5
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bbf2e757e2d9ad76c59394ba0138a61fd4029d15
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
-仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 この記事では、2 つの仮想ネットワークの作成とピアリングについて説明します。 学習内容は次のとおりです。
+仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 この記事では、次のことについて説明します:
 
 > [!div class="checklist"]
 > * 2 つの仮想ネットワークを作成する
-> * 仮想ネットワーク間のピアリングを作成する
-> * ピアリングをテストする
+> * 仮想ネットワーク ピアリングを使用して 2 つの仮想ネットワークを接続する
+> * 各仮想ネットワークに仮想マシン (VM) を展開する
+> * VM 間の通信
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.28 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="create-virtual-networks"></a>仮想ネットワークを作成する
 
@@ -56,7 +57,7 @@ az network vnet create \
   --subnet-prefix 10.0.0.0/24
 ```
 
-アドレス プレフィックスが *10.1.0.0/16* の、*myVirtualNetwork2* という名前の仮想ネットワークを作成します。 アドレス プレフィックスは、*myVirtualNetwork1* 仮想ネットワークのアドレス プレフィックスとは重複しません。 アドレス プレフィックスが重複する仮想ネットワークをピアリングすることはできません。
+アドレス プレフィックスが *10.1.0.0/16* の、*myVirtualNetwork2* という名前の仮想ネットワークを作成します。
 
 ```azurecli-interactive 
 az network vnet create \
@@ -120,17 +121,13 @@ az network vnet peering show \
 
 両方の仮想ネットワークのピアリングの **peeringState** が *Connected* になるまで、一方の仮想ネットワークのリソースともう一方の仮想ネットワークのリソースは通信できません。 
 
-ピアリングは 2 つの仮想ネットワークの間で行われますが、推移的ではありません。 このため、たとえば *myVirtualNetwork2* と *myVirtualNetwork3* をピアリングしたい場合は、仮想ネットワーク *myVirtualNetwork2* と *myVirtualNetwork3* の間に追加ピアリングを作成する必要があります。 *myVirtualNetwork1* が *myVirtualNetwork2* とピアリングされていても、*myVirtualNetwork1* が *myVirtualNetwork3* ともピアリングされている場合は、*myVirtualNetwork1* のリソースがアクセスできるのは *myVirtualNetwork3* のリソースだけです。 
+## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-運用仮想ネットワークをピアリングする前に、[ピアリング概要](virtual-network-peering-overview.md)、[ピアリングの管理](virtual-network-manage-peering.md)、および[仮想ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)について十分に理解しておくことをお勧めします。 この記事は、同じサブスクリプションや同じ場所にある 2 つの仮想ネットワーク間のピアリングについて説明していますが、[異なるリージョン](#register)や[異なる Azure サブスクリプション](create-peering-different-subscriptions.md#cli)の仮想ネットワークをピアリングすることもできます。 [ハブとスポークのネットワーク設計](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)をピアリングで作成することもできます。
+後で仮想ネットワーク間で通信できるように、各仮想ネットワーク内に VM を作成します。
 
-## <a name="test-peering"></a>ピアリングをテストする
+### <a name="create-the-first-vm"></a>最初の VM を作成する
 
-異なる仮想ネットワーク内にある仮想マシン間のピアリングを使用したネットワーク通信をテストするには、仮想マシンを各サブネットにデプロイし、仮想マシン間で通信します。 
-
-### <a name="create-virtual-machines"></a>仮想マシンを作成する
-
-[az vm create](/cli/azure/vm#az_vm_create) を使用して仮想マシンを作成します。 次の例では、*myVirtualNetwork1* 仮想ネットワークで *myVm1* という名前の仮想マシンを作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、仮想マシンはバックグラウンドで作成されるため、次の手順に進むことができます。
+[az vm create](/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVirtualNetwork1* 仮想ネットワークで *myVm1* という名前の VM を作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、コマンドを使って SSH キーを作成します。 特定のキーのセットを使用するには、`--ssh-key-value` オプションを使用します。 `--no-wait` オプションを使用すると、VM はバックグラウンドで作成されるため、次の手順に進むことができます。
 
 ```azurecli-interactive
 az vm create \
@@ -143,9 +140,9 @@ az vm create \
   --no-wait
 ```
 
-*myVirtualNetwork1* の *Subnet1* で使用できる最初の IP アドレスが 10.0.0.4 であるため、Azure では仮想マシンのプライベート IP アドレスとして 10.0.0.4 が自動的に割り当てられます。 
+### <a name="create-the-second-vm"></a>2 つ目の VM を作成する
 
-*myVirtualNetwork2* 仮想ネットワークに仮想マシンを作成します。
+*myVirtualNetwork2* 仮想ネットワーク内に VM を作成します。
 
 ```azurecli-interactive 
 az vm create \
@@ -157,7 +154,7 @@ az vm create \
   --generate-ssh-keys
 ```
 
-仮想マシンの作成には、数分かかります。 仮想マシンが作成された後、Azure CLI は次の例のような情報を表示します。 
+VM の作成には数分かかります。 VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 
 
 ```azurecli 
 {
@@ -172,25 +169,25 @@ az vm create \
 }
 ```
 
-この出力例では、**privateIpAddress** が *10.1.0.4* であることがわかります。 *myVirtualNetwork2* の *Subnet1* で使用できる最初のアドレスが 10.1.0.4 であるため、Azure DHCP では 10.1.0.4 が仮想マシンに自動的に割り当てられます。 **publicIpAddress** を書き留めておきます。 このアドレスは、以降の手順で、インターネットから仮想マシンにアクセスするときに使用されます。
+**publicIpAddress** を書き留めておきます。 このアドレスは、以降の手順で、インターネットから VM にアクセスするときに使用されます。
 
-### <a name="test-virtual-machine-communication"></a>仮想マシンの通信をテストする
+## <a name="communicate-between-vms"></a>VM 間の通信
 
-次のコマンドを使用して、 *myVm2* 仮想マシンとの SSH セッションを作成します。 `<publicIpAddress>` をお使いの仮想マシンのパブリック IP アドレスに置き換えます。 前の例では、パブリック IP アドレスは *13.90.242.231* です。
+次のコマンドを使用して、*myVm2* VM との SSH セッションを作成します。 `<publicIpAddress>` を VM のパブリック IP アドレスに置き換えます。 前の例では、パブリック IP アドレスは *13.90.242.231* です。
 
 ```bash 
 ssh <publicIpAddress>
 ```
 
-*myVirtualNetwork1* で仮想マシンに ping を実行します。
+*myVirtualNetwork1* 内の VM に対して ping を実行します。
 
 ```bash 
 ping 10.0.0.4 -c 4
 ```
 
-4 つの応答を受信します。 仮想マシンの IP アドレスではなく名前 (*myVm1*) で ping を実行すると、ping に失敗します。これは *myVm1* が不明なホスト名であるためです。 Azure の既定の名前解決は、同じ仮想ネットワークの仮想マシン間で機能しますが、異なる仮想ネットワークの仮想マシン間では機能しません。 仮想ネットワークの枠を越えて名前を解決するには、[独自の DNS サーバーをデプロイ](virtual-networks-name-resolution-for-vms-and-role-instances.md)するか、[Azure DNS プライベート ドメイン](../dns/private-dns-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を使用する必要があります。
+4 つの応答を受信します。 
 
-*myVm2* 仮想マシンへの SSH セッションを閉じます。 
+*myVm2* VM への SSH セッションを閉じます。 
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -221,9 +218,9 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、仮想ネットワーク ピアリングを使用して 2 つのネットワークを接続する方法を学習しました。 [ユーザーのコンピューターを VPN 経由で仮想ネットワークに接続](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)し、仮想ネットワーク、またはピアリングされた仮想ネットワークのリソースを操作できます。
+この記事では、仮想ネットワーク ピアリングを使用して 2 つのネットワークを接続する方法を学習しました。 この記事では、同じ Azure の場所内で仮想ネットワーク ピアリングを使用して 2 つのネットワークを接続する方法を学習しました。 [異なる Azure サブスクリプション](create-peering-different-subscriptions.md#portal)の[別のリージョン](#register)内の仮想ネットワークをピアリングし、ピアリングを使用して[ハブとスポーク ネットワーク設計](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)を作成することもできます。 運用仮想ネットワークをピアリングする前に、[ピアリング概要](virtual-network-peering-overview.md)、[ピアリングの管理](virtual-network-manage-peering.md)、および[仮想ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)について十分に理解しておくことをお勧めします。
 
-再利用可能なスクリプトのスクリプト サンプルに進み、仮想ネットワークの記事で説明する多くのタスクを完了します。
+[ユーザーのコンピューターを VPN 経由で仮想ネットワークに接続](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)し、仮想ネットワーク、またはピアリングされた仮想ネットワークのリソースを操作できます。 再利用可能なスクリプトのスクリプト サンプルに進み、仮想ネットワークの記事で説明する多くのタスクを完了します。
 
 > [!div class="nextstepaction"]
 > [仮想ネットワークのサンプル スクリプト](../networking/cli-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

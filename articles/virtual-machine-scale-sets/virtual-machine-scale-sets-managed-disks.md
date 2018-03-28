@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.openlocfilehash: 82fa518e6c0498a13f950ce33c51be8581918f9b
-ms.sourcegitcommit: f46cbcff710f590aebe437c6dd459452ddf0af09
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/20/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM スケール セットと管理ディスク
 
@@ -42,7 +42,7 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 
 また、[Azure Quickstart Templates GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で `vmss` が含まれたフォルダーを探し、スケール セットをデプロイする作成済みのテンプレートの例を参照することもできます。 管理ディスクを既に使用しているテンプレートを確認するには、[こちらの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 管理ディスクの詳細については、[こちらの記事](../virtual-machines/windows/managed-disks-overview.md)をご覧ください。
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 03/15/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 188f02aa69d7b39bc5bc4873b437825107a7ae4e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 34d1ba2e1e84c268442d47d8865d3e3bebb53e53
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
@@ -62,7 +62,13 @@ Windows 10 Anniversary Update および Windows Server 2016 が実行されて�
 
 ## <a name="prerequisites"></a>前提条件
 
-組織内でハイブリッド Azure AD 参加済みデバイスの有効化を開始する前に、最新バージョンの Azure AD Connect を実行していることを確認する必要があります。
+組織内でハイブリッド Azure AD 参加済みデバイスの有効化を開始する前に、以下の点を確認する必要があります。
+
+- Azure AD connect の最新バージョンを実行しています。
+
+- Azure AD Connect は、Azure AD に参加するハイブリッド Azure AD にするデバイスのコンピューター オブジェクトを同期済みです。 コンピューター オブジェクトが特定の組織単位 (OU) に属している場合、これらの OU を Azure AD Connect についても構成する必要があります。
+
+  
 
 Azure AD Connect:
 
@@ -145,7 +151,7 @@ Azure AD Connect のデプロイ方法によっては、SCP オブジェクト�
 `Initialize-ADSyncDomainJoinedComputerSync` コマンドレットは、
 
 - Active Directory PowerShell モジュールと AD DS ツールを使用しますが、そのモジュールとツールは、ドメイン コントローラーで実行されている Active Directory Web サービスに依存しています。 Active Directory Web サービスは、Windows Server 2008 R2 以降が実行されているドメイン コントローラーでサポートされています。
-- **MSOnline PowerShell module version 1.1.166.0** でのみサポートされます。 このモジュールをダウンロードするには、この[リンク](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)を使用します。   
+- **MSOnline PowerShell module version 1.1.166.0** でのみサポートされます。 このモジュールをダウンロードするには、この[リンク](https://msconfiggallery.cloudapp.net/packages/MSOnline/1.1.166.0/)を使用します。   
 - AD DS ツールがインストールされていない場合、`Initialize-ADSyncDomainJoinedComputerSync` は失敗します。  AD DS ツールをインストールするには、[機能] - [リモート サーバー管理ツール] - [役割管理ツール] の下のサーバー マネージャーを使用します。
 
 Windows Server 2008 またはそれ以前のバージョンが実行されているドメイン コントローラーでは、次のスクリプトを使用してサービス接続ポイントを作成します。
@@ -306,7 +312,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 上記の要求では、
 
-- `<verified-domain-name>` は、Azure AD で検証済みドメイン名のいずれかに置き換える必要があるプレースホルダーです。 たとえば、Value = "http://contoso.com/adfs/services/trust/" などと指定します。
+- `<verified-domain-name>` は、Azure AD で検証済みドメイン名のいずれかに置き換える必要があるプレースホルダーです。 たとえば、Value = "http://contoso.com/adfs/services/trust/" です。
 
 
 

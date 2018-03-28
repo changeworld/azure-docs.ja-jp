@@ -1,19 +1,19 @@
 ---
-title: "クイックスタート - Linux 用 Azure Kubernetes クラスター"
-description: "Azure CLI を使用して AKS で Linux コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。"
+title: クイックスタート - Linux 用 Azure Kubernetes クラスター
+description: Azure CLI を使用して AKS で Linux コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: quickstart
-ms.date: 02/26/2018
+ms.date: 03/14/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 817b204cde8708ff06507c30e1725c0e46185877
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3005023e45bc6516732f077f152aed93564be38b
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -27,10 +27,14 @@ ms.lasthandoff: 03/08/2018
 
 CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.27 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure CLI のインストール][azure-cli-install]に関するページを参照してください。
 
-## <a name="enabling-aks-preview-for-your-azure-subscription"></a>Azure サブスクリプションでの AKS プレビューの有効化
-AKS がプレビューである間、新しいクラスターを作成するには、サブスクリプションに機能フラグが必要です。 使用する任意の数のサブスクリプションに対して、この機能を要求することができます。 AKS プロバイダーを登録するには、次のように `az provider register` コマンドを使用します。
+## <a name="enabling-aks-preview"></a>AKS プレビューの有効化
+
+`az provider register` コマンドを使用して、必要な Azure サービス プロバイダーが有効になっていることを確認します。 
 
 ```azurecli-interactive
+az provider register -n Microsoft.Network
+az provider register -n Microsoft.Storage
+az provider register -n Microsoft.Compute
 az provider register -n Microsoft.ContainerService
 ```
 
@@ -64,7 +68,7 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-aks-cluster"></a>AKS クラスターの作成
 
-次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。
+AKS クラスターを作成するには、[az aks create][az-aks-create] コマンドを使用します。 次の例では、*myAKSCluster* という名前のクラスターを 1 つのノードで作成します。
 
 ```azurecli-interactive
 az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 1 --generate-ssh-keys
@@ -76,14 +80,14 @@ az aks create --resource-group myResourceGroup --name myAKSCluster --node-count 
 
 Kubernetes クラスターを管理するには、Kubernetes のコマンドライン クライアントである [kubectl][kubectl] を使います。
 
-Azure Cloud Shell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合は、次のコマンドを実行します。
+Azure Cloud Shell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合には、[az aks install-cli][az-aks-install-cli] コマンドを使用します。
 
 
 ```azurecli
 az aks install-cli
 ```
 
-Kubernetes クラスターに接続するように kubectl を構成するには、次のコマンドを実行します。 この手順では、資格情報をダウンロードし、Kubernetes CLI を構成してそれらの資格情報を使用します。
+Kubernetes クラスターに接続するように kubectl を構成するには、[az aks get-credentials][az-aks-get-credentials] コマンドを使用します。 この手順では、資格情報をダウンロードし、Kubernetes CLI を構成してそれらの資格情報を使用します。
 
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
@@ -244,7 +248,9 @@ AKS の詳細を参照し、デプロイの例の完全なコードを確認す�
 
 <!-- LINKS - internal -->
 [az-aks-browse]: /cli/azure/aks?view=azure-cli-latest#az_aks_browse
+[az-aks-create]: /cli/azure/aks?view=azure-cli-latest#az_aks_create
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az_aks_get_credentials
+[az aks install-cli]: /cli/azure/aks?view=azure-cli-latest#az_aks_install_cli
 [az-group-create]: /cli/azure/group#az_group_create
 [az-group-delete]: /cli/azure/group#az_group_delete
 [azure-cli-install]: /cli/azure/install-azure-cli

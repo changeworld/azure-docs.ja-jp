@@ -1,6 +1,6 @@
 ---
-title: "C# で Azure Service Fabric のリライアブル サービスを作成する"
-description: "Visual Studio を使用して、Azure Service Fabric を基盤とした Reliable Services アプリケーションを作成、デプロイ、デバッグします。"
+title: C# で Azure Service Fabric のリライアブル サービスを作成する
+description: Visual Studio を使用して、Azure Service Fabric を基盤とした Reliable Services アプリケーションを作成、デプロイ、デバッグします。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/19/2018
+ms.date: 03/14/2018
 ms.author: ryanwi
-ms.openlocfilehash: 43f77a1a2e1bbe28bb646aa23c28c253c20e8dda
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 858e322fd7e516f756aa209be92745efa6cf75f7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-your-first-c-service-fabric-stateful-reliable-services-application"></a>C# で最初の Service Fabric ステートフル Reliable Services アプリケーションを作成する
 
@@ -40,7 +40,7 @@ Windows に初めての .NET 対応 Azure Service Fabric アプリケーショ�
 
    ![Visual Studio の [新しいプロジェクト] ダイアログ ボックス][1]
 
-5. 次のダイアログ ボックスでは、任意の種類の Service Fabric アプリケーションを作成できます。 このクイックスタートでは、**[ステートフル サービス]** を選択します。
+5. 次のダイアログ ボックスでは、任意の種類の Service Fabric アプリケーションを作成できます。 このクイック スタートでは、**[.Net Core 2.0]** > **[ステートフル サービス]** を選択します。
 
 6. サービスに **MyStatefulService** という名前を付けます。 **[OK]** をクリックします。
 

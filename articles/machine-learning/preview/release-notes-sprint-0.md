@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/12/2017
 ms.openlocfilehash: 37e0a4461e8a0de631a6194a1eb8cc16b610954f
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="sprint-0---october-2017"></a>スプリント 0 - 2017 年 10 月 
 

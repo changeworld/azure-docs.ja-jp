@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: dotnet
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 03/13/2018
 ms.author: glenga
-ms.openlocfilehash: 26df11bb010414ba979077c45d01e66f17f6b12e
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: dddb35ea2ba1c02f78234fe33cdb832e9aacbff5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-functions-tools-for-visual-studio"></a>Azure Functions Tools for Visual Studio  
 
@@ -38,15 +38,41 @@ Azure Functions Tools には、次のような利点があります。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Functions Tools は、[Visual Studio 2017 バージョン 15.4](https://www.visualstudio.com/vs/) 以降の Azure 開発ワークロードに含まれています。 Visual Studio 2017 のインストールには、必ず **Azure 開発**ワークロードを含めてください。
+Azure Functions Tools は、[Visual Studio 2017 バージョン 15.5](https://www.visualstudio.com/vs/) 以降の Azure 開発ワークロードに含まれています。 Visual Studio 2017 のインストールには、必ず **Azure 開発**ワークロードを含めてください。
 
 ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+
+Visual Studio が最新であり、Azure Functions ツールの[最新バージョン](#check-your-tools-version)を使用していることを確認します。
+
+### <a name="other-requirements"></a>その他の要件
 
 関数を作成してデプロイするには、以下も必要になります。
 
 * 有効な Azure サブスクリプション Azure サブスクリプションがない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を利用できます。
 
 * Azure Storage のアカウント ストレージ アカウントを作成する場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+
+### <a name="check-your-tools-version"></a>ツールのバージョンを確認する
+
+1. **[ツール]** メニューの **[拡張機能と更新プログラム]** を選択します。 **[インストール済み]** > **[ツール]** メニューを展開し、**[Azure Functions と Web ジョブ ツール]** を選択します。
+
+    ![Functions ツールのバージョンを確認する](./media/functions-develop-vs/functions-vstools-check-functions-tools.png)
+
+2. インストールされている**バージョン**を確認します。 このバージョンと[リリース ノート](https://github.com/Azure/Azure-Functions/blob/master/VS-AzureTools-ReleaseNotes.md)に記載されている最新バージョンを比較します。 
+
+3. インストールされているバージョンが古い場合は、次のセクションの説明に従って Visual Studio でツールを更新します。
+
+### <a name="update-your-tools"></a>ツールを更新する
+
+1. **[拡張機能と更新プログラム]** ダイアログで、**[更新プログラム]** > **[Visual Studio Marketplace]** を展開し、**[Azure Functions と Web ジョブ ツール]**、**[更新]** の順に選択します。
+
+    ![Functions ツールのバージョンを更新する](./media/functions-develop-vs/functions-vstools-update-functions-tools.png)   
+
+2. ツールの更新プログラムをダウンロードしたら、Visual Studio を終了し、VSIX インストーラーを使用してツールの更新プログラムを起動します。
+
+3. インストーラーで **[OK]** を選択して開始し、**[変更]** を選択してツールを更新します。 
+
+4. 更新が完了したら、**[閉じる]** を選択して Visual Studio を再起動します。
 
 ## <a name="create-an-azure-functions-project"></a>Azure Functions プロジェクトを作成する 
 

@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: c4bf3871b4636ce769dd8d84a637b88d4a00db97
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4709ee707aa67c8de531b2b3e0b58dbed5c2667b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -123,7 +123,7 @@ ms.lasthandoff: 03/12/2018
 * HDInsight クラスター - 「[HDInsight の制限事項](#hdinsight-limitations)」を参照
 * IoT Hub
 * Key Vault
-* ロード バランサー
+* Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * Logic Apps
 * 機械学習
 * Media Services
@@ -132,6 +132,7 @@ ms.lasthandoff: 03/12/2018
 * Operational Insights
 * Operations Management
 * Power BI
+* パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
 * Redis Cache
 * Scheduler
 * Search
@@ -161,8 +162,10 @@ ms.lasthandoff: 03/12/2018
 * ExpressRoute
 * DevTest ラボ - 同じサブスクリプション内の新しいリソース グループへの移動が有効になっています。ただし、サブスクリプション間の移動は有効になっていません。
 * Dynamics LCS
+* Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * マネージ アプリケーション
 * Managed Disks - 「[Virtual Machines の制限事項](#virtual-machines-limitations)」を参照してください。
+* パブリック IP - 「[パブリック IP の制限事項](#pip-limitations)」を参照
 * Recovery Services コンテナー - Recovery Services コンテナーに関連付けられているコンピューティング リソース、ネットワーク リソース、ストレージ リソースも移動できません。「[Recovery Services の制限事項](#recovery-services-limitations)」をご覧ください。
 * セキュリティ
 * StorSimple デバイス マネージャー
@@ -320,6 +323,16 @@ HDInsight クラスターを新しいサブスクリプションに移動する�
 
 異なるリージョンにデプロイされている複数の Search リソースを一度に移動することはできません。
 そのような場合は、それらを個別に移動する必要があります。
+
+## <a name="lb-limitations"></a> Load Balancer の制限事項
+
+Basic SKU の Load Balancer は移動できます。
+Standard SKU の Load Balancer は移動できません。
+
+## <a name="pip-limitations"></a> パブリック IP の制限事項
+
+Basic SKU のパブリック IP は移動できます。
+Standard SKU のパブリック IP は移動できません。
 
 ## <a name="use-portal"></a>ポータルの使用
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: SQL .NET Core API、SDK、およびリソース | Microsoft Docs"
-description: "リリース日、提供終了日、Azure Cosmos DB .NET Core SDK の各バージョン間の変更など、SQL .NET Core API と SDK に関するあらゆる詳細を提供します。"
+title: 'Azure Cosmos DB: SQL .NET Core API、SDK、およびリソース | Microsoft Docs'
+description: リリース日、提供終了日、Azure Cosmos DB .NET Core SDK の各バージョン間の変更など、SQL .NET Core API と SDK に関するあらゆる詳細を提供します。
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/08/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55946915573f53bb7e1917d4705e6d8e74abf448
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7c7981bc0388fee763396e68d6de3375a01178a7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-net-core-sdk-for-sql-api-release-notes-and-resources"></a>SQL API 用 Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -59,6 +59,11 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
+
+### <a name="a-name191191"></a><a name="1.9.1"/>1.9.1
+
+* まれなケースにおけるクロス パーティション ORDER BY クエリの KeyNotFoundException を修正しました。
+* LINQ クエリの SELECT 句で JsonProperty 属性が受け入れられないバグを修正しました。
 
 ### <a name="a-name182182"></a><a name="1.8.2"/>1.8.2
 
@@ -170,6 +175,7 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.9.1](#1.9.1) |2018 年 3 月 9 日 |--- |
 | [1.8.2](#1.8.2) |2018 年 2 月 21 日 |--- |
 | [1.8.1](#1.8.1) |2018 年 2 月 5 日 |--- |
 | [1.7.1](#1.7.1) |2017 年 11 月 16 日 |--- |
