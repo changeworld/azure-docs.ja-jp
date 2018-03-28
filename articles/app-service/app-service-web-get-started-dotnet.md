@@ -1,6 +1,6 @@
 ---
 title: "Azure に ASP.NET Core Web アプリを作成する | Microsoft Docs"
-description: "既定の ASP.NET Core Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。"
+description: "既定の ASP.NET Web アプリをデプロイして、Azure App Service で Web アプリを実行する方法を確認します。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -12,24 +12,26 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 02/05/2018
+ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: a7f098b6c66109cb5cafbcb19e463daa15a65b59
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 698f23507da0707a4612f8d33fe7e2995429f361
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="create-an-aspnet-core-web-app-in-azure"></a>Azure に ASP.NET Core Web アプリを作成する
 
 > [!NOTE]
 > この記事では、Windows 上の App Service にアプリをデプロイします。 _Linux_ 上の App Service にデプロイするには、「[App Service on Linux での .NET Core Web アプリの作成](./containers/quickstart-dotnetcore.md)」をご覧ください。
 >
-> ASP.NET Framework アプリ用の手順については、「[Azure に ASP.NET Framework Web アプリを作成する](app-service-web-get-started-dotnet-framework.md)」をご覧ください。 
->
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Azure Web Apps に初めての ASP.NET Core Web アプリをデプロイする方法を示します。 作業が完了すると、デプロイされた Web アプリケーションを使って、App Service プランと Azure Web アプリで構成されるリソース グループを入手できます。
+
+> [!NOTE]
+> ASP.NET Framework Web アプリをビルドしてデプロイする方法については、[この記事](app-service-web-get-started-dotnet-framework.md)を参照してください。 
+>
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -49,7 +51,7 @@ Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]** 
 
 **[新しいプロジェクト]** ダイアログ ボックスで、**[Visual C#]、[Web]、[ASP.NET Core Web アプリケーション]** の順にクリックします。
 
-アプリケーションに _myFirstAzureWebApp_ という名前を付けて **[新しい Git リポジトリの作成]** を選択し、**[OK]** を選択します。
+アプリケーションに _myFirstAzureWebApp_ という名前を付けて、**[OK]** をクリックします。
    
 ![New Project dialog box](./media/app-service-web-get-started-dotnet/new-project.png)
 
@@ -67,82 +69,68 @@ ASP.NET Core プロジェクトが作成されると、ASP.NET Core ウェルカ
 
 ![アプリをローカルで実行する](./media/app-service-web-get-started-dotnet/razor-web-app-running-locally.png)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+## <a name="publish-to-azure"></a>Azure に発行する
 
-[!INCLUDE [Configure deployment user](../../includes/configure-deployment-user.md)] 
+**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、**[発行]** を選択します。
 
-[!INCLUDE [Create resource group](../../includes/app-service-web-create-resource-group.md)] 
+![ソリューション エクスプローラーから発行する](./media/app-service-web-get-started-dotnet/right-click-publish.png)
 
-[!INCLUDE [Create app service plan](../../includes/app-service-web-create-app-service-plan.md)] 
+**[Microsoft Azure App Service]** が選択されていることを確認し、**[発行]** をクリックします。
 
-[!INCLUDE [Create web app](../../includes/app-service-web-create-web-app.md)] 
+![プロジェクトの概要ページから発行する](./media/app-service-web-get-started-dotnet/publish-to-app-service.png)
 
-![空の Web アプリ ページ](media/app-service-web-get-started-html/app-service-web-service-created.png)
+**[App Service の作成]** ダイアログ ボックスが表示されます。このダイアログ ボックスでは、Azure で ASP.NET Core Web アプリを実行するために必要なすべての Azure リソースを作成できます。
 
-## <a name="push-to-azure-from-visual-studio"></a>Visual Studio から Azure へのプッシュ
+## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-Visual Studio に戻り、**[表示]** メニューから **[チーム エクスプローラー]** をクリックします。 **チーム エクスプローラー**が表示されます。
+**[App Service の作成]** ダイアログ ボックスで、**[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既にサインインしている場合は、目的のサブスクリプションを含んだアカウントをドロップダウンから選択します。
 
-**[ホーム]** ビューで、**[設定]** > **[リポジトリの設定]** をクリックします。
+> [!NOTE]
+> 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
+>
+>
+   
+![Azure へのサインイン](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
 
-![チーム エクスプローラーのホーム ビュー](./media/app-service-web-get-started-dotnet/team-explorer.png)
+## <a name="create-a-resource-group"></a>リソース グループの作成
 
-**[リポジトリの設定]** の **[リモート]** セクションで、**[追加]** を選択します。 **[リモートの追加]** ダイアログ ボックスが表示されます。
+[!INCLUDE [resource group intro text](../../includes/resource-group.md)]
 
-**[名前]** フィールドを _[Azure]_ に設定し、**[フェッチ]** フィールドを、「[Web アプリの作成](#create-a-web-app)」で保存した URL に設定します。 **[Save]** をクリックします。
+**[リソース グループ]** の横にある **[新規]** をクリックします。
 
-![チーム エクスプローラーのホーム ビュー](./media/app-service-web-get-started-dotnet/team-explorer-set-remote.png)
+リソース グループに **myResourceGroup** という名前を付けて、**[OK]** をクリックします。
 
-この設定は、Git コマンド `git remote add Azure <URL>` に相当します。
+## <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-上部にある **[ホーム]** ボタンをクリックします。
+[!INCLUDE [app-service-plan](../../includes/app-service-plan.md)]
 
-**[設定]** > **[グローバル設定]** を選択します。 名前とメール アドレスが設定されていることを確認します。 必要に応じて **[更新]** を選択します。
+**[App Service プラン]** の横にある **[新規]** をクリックします。 
 
-Visual Studio によってプロジェクトが作成された時点で、既にすべてのファイルが Git リポジトリにコミットされています。 後は、それらのファイルを Azure にプッシュするだけです。
+**[App Service プランの構成]** ダイアログ ボックスで、スクリーン ショットの次の表に示した設定を使用します。
 
-上部にある **[ホーム]** ボタンをクリックします。 **[同期]** > **[操作]** > **[コマンド プロンプトを開く]** を選択します。 
+![Create App Service plan](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
-コマンド ウィンドウに次のコマンドを入力し、デプロイのパスワードを求められたらそれを入力します。
+| Setting | 推奨値 | [説明] |
+|-|-|-|
+|App Service プラン| myAppServicePlan | App Service プランの名前です。 |
+| 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
+| サイズ | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
-```
-git push Azure master
-```
+**[OK]**を選択します。
 
-このコマンドの実行には、数分かかる場合があります。 実行中、次の例のような情報が表示されます。
+## <a name="create-and-publish-the-web-app"></a>Web アプリを作成して発行する
 
-```
-Counting objects: 4, done.
-Delta compression using up to 8 threads.
-Compressing objects: 100% (4/4), done.
-Writing objects: 100% (4/4), 349 bytes | 349.00 KiB/s, done.
-Total 4 (delta 3), reused 0 (delta 0)
-remote: Updating branch 'master'.
-remote: Updating submodules.
-remote: Preparing deployment for commit id '9e20345e9c'.
-remote: Generating deployment script.
-remote: Project file path: .\myFirstAzureWebApp\myFirstAzureWebApp.csproj
-remote: Solution file path: .\myFirstAzureWebApp.sln
-remote: Generated deployment script files
-remote: Running deployment command...
-remote: Handling ASP.NET Core Web Application deployment.
-remote:   Restoring packages for D:\home\site\repository\myFirstAzureWebApp\myFirstAzureWebApp.csproj...
-remote:   Restoring packages for D:\home\site\repository\myFirstAzureWebApp\myFirstAzureWebApp.csproj...
-...
-remote: Finished successfully.
-remote: Running post deployment command(s)...
-remote: Deployment successful.
-To https://<app_name>.scm.azurewebsites.net/<app_name>.git
- * [new branch]      master -> master
-```
+**[Web アプリ名]** に一意のアプリ名 (有効な文字は `a-z`、`0-9`、および `-`) を入力するか、自動的に生成された一意の名前をそのまま使用します。 Web アプリの URL は`http://<app_name>.azurewebsites.net`です。`<app_name>` には Web アプリの名前を指定します。
 
-## <a name="browse-to-the-app"></a>アプリの参照
+**[作成]** をクリックして、Azure リソースの作成を開始します。
 
-ブラウザーで、Azure Web アプリの URL (`http://<app_name>.azurewebsites.net`) に移動します。
+![Web アプリ名を構成する](./media/app-service-web-get-started-dotnet/web-app-name.png)
 
-ページは、Azure App Service Web アプリとして実行されています。
+ウィザードの完了後に、Azure に ASP.NET Core Web アプリを発行してから、既定のブラウザーでアプリを起動します。
 
 ![Azure で発行された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet/web-app-running-live.png)
+
+Web アプリを[作成して発行する手順](#create-and-publish-the-web-app)で指定した名前が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
 
 ASP.NET Core Web アプリを Azure App Service でライブ実行することができました。
 
@@ -159,15 +147,11 @@ ASP.NET Core Web アプリを Azure App Service でライブ実行すること�
 </div>
 ```
 
-**ソリューション エクスプローラー**で _Pages/Index.cshtml_ を右クリックし、**[コミット]** をクリックします。 変更のコミット メッセージを入力し、**[すべてコミット]** をクリックします。
+Azure に再デプロイするには、**ソリューション エクスプローラー**で **myFirstAzureWebApp** プロジェクトを右クリックし、**[発行]** を選択します。
 
-コマンド プロンプト ウィンドウに戻り、コードの変更を Azure にプッシュします。
+発行ページで **[発行]** をクリックします。
 
-```bash
-git push Azure master
-```
-
-デプロイが完了したら、再度 `http://<app_name>.azurewebsites.net` に移動します。
+発行が完了すると、Visual Studio で Web アプリの URL のブラウザーが起動されます。
 
 ![Azure で更新された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet/web-app-running-live-updated.png)
 
@@ -181,7 +165,7 @@ git push Azure master
 
 Web アプリの [概要] ページを確認します。 ここでは、参照、停止、開始、再開、削除のような基本的な管理タスクを行うことができます。 
 
-![Azure Portal の [App Service] ページ](./media/app-service-web-get-started-dotnet/web-app-blade.png)
+![Azure Portal の App Service ブレード](./media/app-service-web-get-started-dotnet/web-app-blade.png)
 
 左側のメニューは、アプリを構成するためのさまざまなページを示しています。 
 
