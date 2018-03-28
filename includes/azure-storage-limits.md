@@ -11,7 +11,7 @@
 
 <sup>1</sup> Standard および Premium ストレージ アカウントの両方が含まれます。 必要なストレージ アカウントが 200 個を超える場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)からリクエストを送信してください。 Azure Storage チームがビジネス ケースを確認します。承認された場合、最大 250 個のストレージ アカウントが与えられます。 
 
-<sup>2</sup> Standard Storage アカウントの容量、受信/送信レート、要求レートを、公表されている上限以上の水準まで引き上げる必要がある場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)にリクエストしてください。 Azure Storage チームがリクエストを審査し、ケース バイ ケースで上限の引き上げを承認します。
+<sup>2</sup> ストレージ アカウントの制限を拡張する必要がある場合は、[Azure サポート](https://azure.microsoft.com/support/faq/)にお問い合わせください。 Azure Storage チームがリクエストを審査し、ケース バイ ケースで上限の引き上げを承認します。 汎用のストレージ アカウントと BLOB ストレージ アカウントの両方で、容量の増加、イングレス/エグレス、および要求別の要求レートをサポートします。 BLOB ストレージ アカウントの新しい最大値については、「[Announcing larger, higher scale storage accounts](https://azure.microsoft.com/blog/announcing-larger-higher-scale-storage-accounts/)」(大規模な高スケールのストレージ アカウントの発表) を参照してください。
 
 <sup>3</sup> アカウントの送受信制限のみが適用されます。 "*受信*" とは、ストレージ アカウントに送信されるすべてのデータ (要求) のことです。 *送信* とはストレージ アカウントから送信されるすべてのデータ (応答) のことです。  
 

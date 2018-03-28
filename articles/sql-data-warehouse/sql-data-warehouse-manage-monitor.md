@@ -1,28 +1,27 @@
 ---
-title: "DMV を利用してワークロードを監視する | Microsoft Docs"
-description: "DMV を利用してワークロードを監視するについて説明します。"
+title: DMV を利用してワークロードを監視する | Microsoft Docs
+description: DMV を利用してワークロードを監視するについて説明します。
 services: sql-data-warehouse
 documentationcenter: NA
 author: sqlmojo
 manager: jhubbard
-editor: 
-ms.assetid: 69ecd479-0941-48df-b3d0-cf54c79e6549
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: performance
-ms.date: 12/14/2017
+ms.date: 03/15/2018
 ms.author: joeyong;barbkess;kevin
-ms.openlocfilehash: 1895e9c6174dfb05212991040cc265b8cb6e0651
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 7e25a1f8d807fa317e8ce246fd49de034182af96
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>DMV を利用してワークロードを監視する
-この記事では、動的管理ビュー (DMV) を使用し、Azure SQL データ ウェアハウスでワークロードを監視し、クエリの実行を調査する方法について説明します。
+この記事では、動的管理ビュー (DMV) を使用してワークロードを監視する方法について説明します。 Azure SQL Data Warehouse でのクエリの実行の調査が含まれます。
 
 ## <a name="permissions"></a>アクセス許可
 この記事で DMV をクエリするには、VIEW DATABASE STATE または CONTROL のいずれかのアクセス許可が必要です。 通常は、さらに制限の厳しい VIEW DATABASE STATE のアクセス許可を付与することが推奨されます。
@@ -72,7 +71,7 @@ WHERE   [label] = 'My Query';
 
 上記のクエリ結果から、調査するクエリの **要求 ID を書き留めます** 。
 
-**中断** 状態のクエリは、同時実行の制限が原因でクエリが実行されています。 これらのクエリは、UserConcurrencyResourceType 型の sys.dm_pdw_waits 待機クエリにも表示されます。 同時実行の制限の詳細については、 [同時実行とワークロード管理][Concurrency and workload management] に関するページをご覧ください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待機している場合は、この記事の下にある [「リソースを待機しているクエリの調査」][Investigating queries waiting for resources]を参照してください。
+**中断** 状態のクエリは、同時実行の制限が原因でクエリが実行されています。 これらのクエリは、UserConcurrencyResourceType 型の sys.dm_pdw_waits 待機クエリにも表示されます。 同時実行の制限に関する情報については、[パフォーマンス レベル](performance-tiers.md)に関する記事、または「[ワークロード管理用のリソース クラス](resource-classes-for-workload-management.md)」を参照してください。 クエリの待機は、オブジェクト ロックなど、他の理由によっても発生します。  クエリがリソースを待機している場合は、この記事の下にある [「リソースを待機しているクエリの調査」][Investigating queries waiting for resources]を参照してください。
 
 sys.dm_pdw_exec_requests テーブルのクエリの検索を単純化するには、[LABEL][LABEL] を使用して、sys.dm_pdw_exec_requests ビューで検索できるクエリにコメントを割り当てます。
 
@@ -135,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
 * *total_elapsed_time* 列で、特定の配布で他の配布よりデータ移動に大幅に時間がかかっていないか確認します。
-* 実行時間の長い配布に対して、*rows_processed* 列で、その配布から移動された行の数が他の配布より大幅に大きいか確認します。 大きい場合は、基になるデータの傾斜を示している可能性があります。
+* 実行時間の長い配布に対して、*rows_processed* 列で、その配布から移動された行の数が他の配布より大幅に大きいか確認します。 大きい場合、個の検出は、基になるデータの傾斜を示していることがあります。
 
 クエリが実行中の場合は、[DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] を使用して、特定のディストリビューション内で現在実行中の SQL 手順に対する SQL Server プラン キャッシュから、SQL Server 推定プランを取得できます。
 
@@ -174,9 +173,9 @@ ORDER BY waits.object_name, waits.object_type, waits.state;
 クエリが別のクエリからのリソースを積極的に待っている場合、状態は **AcquireResources**になります。  クエリに必要なリソースがすべて揃っている場合、状態は **Granted**になります。
 
 ## <a name="monitor-tempdb"></a>tempdb を監視する
-tempdb の高使用率が、パフォーマンスの低下とメモリ不足の問題の根本原因になることがあります。 クエリの実行中に tempdb がその制限に達していることがわかった場合は、データ ウェアハウスのスケーリングを検討してください。 以下に、各ノードのクエリごとの tempdb 使用率を識別する方法について説明します。 
+tempdb の高使用率が、パフォーマンスの低下とメモリ不足の問題の根本原因になることがあります。 クエリの実行中に tempdb がその制限に達していることがわかった場合は、データ ウェアハウスのスケーリングを検討してください。 次の情報は、各ノードのクエリごとの tempdb 使用率を識別する方法について説明しています。 
 
-以下のビューを作成し、sys.dm_pdw_sql_requests に適切なノード ID を関連付けます。 これにより、他のパススルー DMV を利用して、それらのテーブルを sys.dm_pdw_sql_requests と結合できます。
+以下のビューを作成し、sys.dm_pdw_sql_requests に適切なノード ID を関連付けます。 ノード ID によって、他のパススルー DMV を使用して、それらのテーブルを sys.dm_pdw_sql_requests と結合できます。
 
 ```sql
 -- sys.dm_pdw_sql_requests with the correct node id
@@ -285,7 +284,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 
 ## <a name="next-steps"></a>次の手順
 DMV の詳細については、「[システム ビュー][System views]」を参照してください。
-ベスト プラクティスの詳細については、「[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse best practices]」を参照してください。
+
 
 <!--Image references-->
 
@@ -294,7 +293,6 @@ DMV の詳細については、「[システム ビュー][System views]」を�
 [SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
 [System views]: ./sql-data-warehouse-reference-tsql-system-views.md
 [Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Concurrency and workload management]: ./sql-data-warehouse-develop-concurrency.md
 [Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
 
 <!--MSDN references-->

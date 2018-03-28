@@ -1,11 +1,11 @@
 ---
-title: "Marketplace 用ソリューション テンプレートを作成するためのガイド | Microsoft Docs"
-description: "Azure Marketplace で購入できる複数 VM イメージのソリューション テンプレートを作成、認定、およびデプロイする方法を詳しく説明します。"
+title: Marketplace 用ソリューション テンプレートを作成するためのガイド | Microsoft Docs
+description: Azure Marketplace で購入できる複数 VM イメージのソリューション テンプレートを作成、認定、およびデプロイする方法を詳しく説明します。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: e14e05f2-2385-4ce0-b351-0747cb74ba19
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2016
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 675316b97e821a81ca4946d57a76d7bce978361b
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.author: mbaldwin
+ms.openlocfilehash: 83e69701aa5e8c11354e7551d66f3fdd18289000
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Azure Marketplace 向けソリューション テンプレートの作成ガイド
 手順 1 の[アカウントの作成と登録][link-acct-creation]に関するページの完了後、[ソリューション テンプレートを作成するための技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md)のページで、Azure と互換性のあるソリューション テンプレートの作成について説明しました。 ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で複数の VM を対象としたソリューション テンプレートを作成する手順を紹介します。
@@ -53,7 +53,7 @@ ms.lasthandoff: 11/02/2017
   >
   >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ソリューション テンプレートを作成し、zip ファイルをアップロードしたら、プランをステージングにプッシュする前に、 [Marketplace マーケティング コンテンツ ガイド](marketplace-publishing-push-to-staging.md) の指示に従います。 Marketplace の発行に関する記事をすべて表示する場合は、 [Azure Marketplace へのプランの発行方法の概要](marketplace-publishing-getting-started.md)に関するページをご覧ください。
 
 必要に応じて次の関連する記事も参照してください。

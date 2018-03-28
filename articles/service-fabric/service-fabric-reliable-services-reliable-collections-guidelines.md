@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric の Reliable Collections のガイドラインと推奨事項 | Microsoft Docs"
-description: "Service Fabric Reliable Collections を使用するためのガイドラインと推奨事項"
+title: Azure Service Fabric の Reliable Collections のガイドラインと推奨事項 | Microsoft Docs
+description: Service Fabric Reliable Collections を使用するためのガイドラインと推奨事項
 services: service-fabric
 documentationcenter: .net
 author: mcoskun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 12/10/2017
 ms.author: mcoskun
-ms.openlocfilehash: f9c48598a6bfb33f0151eff74ec5dd0ffb47b228
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 27ea71bcc378100e613a8edd1c57a93f3c9ed925
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Azure Service Fabric の Reliable Collections のガイドラインと推奨事項
 このセクションでは、Reliable State Manager および Reliable Collection を使用するためのガイドラインを提供します。 目標は、ユーザーがよくある問題を回避できるようにすることです。
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/11/2017
 ガイドラインは、*してください*、*検討してください*、*避けてください*、および*しないでください*の言葉を使った簡単な推奨事項として編成されています。
 
 * 読み取り操作 (`TryPeekAsync` や `TryGetValueAsync` など) によって返されるカスタム型のオブジェクトを変更しないでください。 Reliable Collection は、同時実行コレクションのように、コピーではなくオブジェクトへの参照を返すからです。
-* 返されたカスタム型のオブジェクトは、変更する前に詳細コピーしてください。 構造体型と組み込み型は値渡しであるため、詳細コピーを実行する必要はありません。
+* 返されたカスタム型のオブジェクトは、変更する前に詳細コピーしてください。 構造体と組み込み型は値渡しであるため、変更対象の参照型フィールドまたはプロパティが含まれない限り、詳細コピーを実行する必要はありません。
 * タイムアウトに `TimeSpan.MaxValue` を使用しないでください。 タイムアウトはデッドロックの検出に使用してください。
 * コミット、中止、または破棄された後に、トランザクションを使用しないでください。
 * 作成済みのトランザクション スコープの外部で、列挙型を使用しないでください。
@@ -49,7 +49,7 @@ ms.lasthandoff: 12/11/2017
   つまり、1 つのセカンダリから読み取られるデータのバージョンが、誤って進められる可能性があります。
   プライマリからの読み取りは常に安定しており、誤って進められることはありません。
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 * [Reliable Collection での作業](service-fabric-work-with-reliable-collections.md)
 * [トランザクションとロック](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * [Reliable State Manager と Collection の内部](service-fabric-reliable-services-reliable-collections-internals.md)

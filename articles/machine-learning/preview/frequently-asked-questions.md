@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning 2017 のプレビューに関する FAQ | Microsoft Docs"
-description: "この記事では、Azure Machine Learning のプレビュー機能についてよく寄せられる質問とその回答を示します"
+title: Azure Machine Learning 2017 のプレビューに関する FAQ | Microsoft Docs
+description: この記事では、Azure Machine Learning のプレビュー機能についてよく寄せられる質問とその回答を示します
 services: machine-learning
 author: serinakaye
 ms.author: serinak
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 86ef8acf46cef2b057596d8224c6c29f3a0f534d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure Machine Learning に関してよく寄せられる質問
 
@@ -32,7 +32,7 @@ Azure Machine Learning の実験およびモデル管理サービスがサポー
 
 **他にどのような Azure サービスが必要になりますか?**
 
-Azure Machine Learning のすべての機能を完全に利用するには、Visual Studio VSTS アカウント、Azure Blob Storage、Azure Container Registry、データ サイエンス VM または HDInsight コンピューティング、および Azure Container Service が必要です。
+Azure Blob Storage と Azure Container Registry が Azure Machine Learning で使用されます。 さらに、データ サイエンス VM または HDInsight クラスターなどのコンピューティング リソースをプロビジョニングする必要があります。 [Azure Container Service](https://docs.microsoft.com/azure/aks) などの Web サービスをデプロイする場合は、コンピューティングおよびホスティングも必要です。
 
 **Azure Machine Learning と SQL Server 2017 の Microsoft Machine Learning サービスの関係性はどのようなものですか?**   
 
@@ -46,7 +46,7 @@ SQL Server 2017 の Machine Learning サービスは、機械学習のタスク�
 
 MMLSpark では、生産性、実験の容易さ、最新のアルゴリズムに重点を置いて Apache Spark 向けにディープ ラーニング ツールとデータ サイエンス ツールを提供しています。 MMLSpark を使用すると、Spark Machine Learning パイプラインと Microsoft Cognitive Toolkit および OpenCV を統合できます。 画像データおよびテキスト データに対する強力で拡張性に優れた予測モデルと分析モデルを作成可能です。 MMLSpark はオープンソース ライセンスで提供されており、AML Workbench に使用可能なモデルとアルゴリズムのセットとして含まれています。 MMLSpark の詳細については、製品ドキュメントをご覧ください。 
 
-**この新しいツールおよびサービスではどのバージョンの Spark がサポートされていますか?一番上のセクション**
+**この新しいツールおよびサービスではどのバージョンの Spark がサポートされていますか?**
 
 現在 Workbench に含まれサポートされているのは MMLSpark バージョン 0.8 であり、このバージョンは Apache Spark 2.1 と互換性があります。 また、Linux 仮想マシンでは MMLSpark 0.8 の GPU 対応 Docker イメージを使用することもできます。
 
@@ -119,7 +119,7 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 
 **ワークベンチは IDE ですか?**
 
-いいえ。 Machine Learning ワークベンチは Jupyter Notebook、Visual Studio Code、PyCharm などの一般的な IDE の付属品として設計されており、すべての機能が搭載された IDE ではありません。 Machine Learning ワークベンチには基本的なテキスト編集機能はいくつか用意されていますが、IntelliSense などの一般に使用される IDE 機能はサポートされません。 コードの開発、編集、デバッグにはお好みの IDE を使用することをお勧めします。 
+いいえ。 Machine Learning ワークベンチは Jupyter Notebook、Visual Studio Code、PyCharm などの一般的な IDE の付属品として設計されており、すべての機能が搭載された IDE ではありません。 Machine Learning ワークベンチには基本的なテキスト編集機能はいくつか用意されていますが、IntelliSense などの一般に使用される IDE 機能はサポートされません。 コードの開発、編集、デバッグにはお好みの IDE を使用することをお勧めします。 [Visual Studio Code Tools for AI](https://www.visualstudio.com/downloads/ai-tools-vscode) を試すこともできます。
 
 **Azure Machine Learning Workbench の使用に料金はかかりますか?**
 
@@ -159,7 +159,7 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 - ローカルのハード ドライブまたはマッピングされたネットワーク上の保存場所
 - Azure Blob Storage または Azure Storage (Azure サブスクリプションが必要)
 - Azure SQL Server
-- の接続文字列
+- Microsoft SQL Server
 
 
 **どのような種類のデータ ラングリング、データ準備、およびデータ変換を利用できますか?**

@@ -1,6 +1,6 @@
 ---
-title: "リソース マネージャーのテンプレートの関数 | Microsoft Docs"
-description: "値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。"
+title: リソース マネージャーのテンプレートの関数 | Microsoft Docs
+description: 値の取得、文字列の処理、デプロイ情報の取得のために、Azure リソース マネージャーのテンプレートで使用する関数について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/18/2017
 ms.author: tomfitz
-ms.openlocfilehash: 725f12a6b5dcf4b66109512336e8a617013c5974
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 54580abdca8b6be10576cf74ad23e8ff2665341c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure Resource Manager テンプレートの関数
-このトピックでは、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。
+この記事では、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。
 
 テンプレート内の関数はそれぞれかっこ (`[` と `]`) で囲んで追加します。 式は配置時に評価されます。 文字列リテラルとして記述される一方で、式の評価の結果は、配列、オブジェクト、整数など、さまざまな JSON 型にすることができます。 JavaScript の場合と同様に、関数呼び出しは `functionName(arg1,arg2,arg3)` という形式になります。 プロパティの参照には、ドットと [index] 演算子を使用します。
 
@@ -37,6 +37,7 @@ ms.lasthandoff: 10/11/2017
 <a id="empty" />
 <a id="first" />
 <a id="intersection" />
+<a id="json" />
 <a id="last" />
 <a id="length" />
 <a id="min" />
@@ -93,6 +94,21 @@ Resource Manager には、テンプレートで比較を行うための関数が
 * [parameters](resource-group-template-functions-deployment.md#parameters)
 * [variables](resource-group-template-functions-deployment.md#variables)
 
+<a id="and" />
+<a id="bool" />
+<a id="if" />
+<a id="not" />
+<a id="or" />
+
+## <a name="logical-functions"></a>論理関数
+リソース マネージャーには、論理の条件を操作する次の関数が用意されています。
+
+* [and](resource-group-template-functions-logical.md#and)
+* [bool](resource-group-template-functions-logical.md#bool)
+* [if](resource-group-template-functions-logical.md#if)
+* [not](resource-group-template-functions-logical.md#not)
+* [or](resource-group-template-functions-logical.md#or)
+
 <a id="add" />
 <a id="copyindex" />
 <a id="div" />
@@ -103,15 +119,6 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="mod" />
 <a id="mul" />
 <a id="sub" />
-
-## <a name="logical-functions"></a>論理関数
-リソース マネージャーには、論理の条件を操作する次の関数が用意されています。
-
-* [and](resource-group-template-functions-logical.md#and)
-* [bool](resource-group-template-functions-logical.md#bool)
-* [if](resource-group-template-functions-logical.md#if)
-* [not](resource-group-template-functions-logical.md#not)
-* [or](resource-group-template-functions-logical.md#or)
 
 ## <a name="numeric-functions"></a>数値関数
 リソース マネージャーには、整数を操作する次の関数が用意されています。
@@ -155,6 +162,7 @@ Resource Manager には、テンプレートで比較を行うための関数が
 <a id="emptystring" />
 <a id="endswith" />
 <a id="firststring" />
+<a id="guid" />
 <a id="indexof" />
 <a id="laststring" />
 <a id="lastindexof" />

@@ -1,11 +1,11 @@
 ---
-title: "例と一般的なシナリオ - Azure Logic Apps | Microsoft Docs"
-description: "ロジック アプリと例、シナリオ、およびチュートリアルについて詳細に説明します"
+title: 例と一般的なシナリオ - Azure Logic Apps | Microsoft Docs
+description: ロジック アプリと例、シナリオ、およびチュートリアルについて詳細に説明します
 services: logic-apps
 author: jeffhollan
 manager: anneta
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: e06311bc-29eb-49df-9273-1f05bbb2395c
 ms.service: logic-apps
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/18
 ms.author: LADocs; jehollan
-ms.openlocfilehash: b979096731caa7513c02a9fb398c14da4d4819ae
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 02690284e5487dba8e5fb5d973958f944bfa339f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Azure Logic Apps の一般的なシナリオ、例、チュートリアル、手順
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 03/05/2018
 
 Visual Studio、Visual Studio Team Services、またはその他のソース管理および自動ビルド ツールで、ロジック アプリを完全に開発しデプロイできます。 リソース テンプレートでワークフローおよび依存接続のデプロイをサポートするために、ロジック アプリでは、Azure リソース デプロイ テンプレートが使用されます。 こうしたテンプレートは、Visual Studio ツールによって自動的に生成され、バージョン管理のためにソース管理機能にチェックインできます。
 
-* [Visual Studio でのロジック アプリのビルドとデプロイ](../logic-apps/logic-apps-deploy-from-vs.md)
+* [Visual Studio でロジック アプリを作成してデプロイする](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)
 * [既存のロジック アプリで監視、ログ記録、アラートをオンにする](../logic-apps/logic-apps-monitor-your-logic-apps.md)
 * [自動デプロイ テンプレートを作成する](../logic-apps/logic-apps-create-deploy-template.md)
 
@@ -91,7 +91,7 @@ Azure Logic Apps [ワークフロー定義言語](http://aka.ms/logicappsdocs)�
 
 * [ロジック アプリでのワークフロー式の動作](../logic-apps/logic-apps-author-definitions.md)
 * [JSON 以外のコンテンツ タイプを処理する](../logic-apps/logic-apps-content-type.md)。`application/xml`、`application/octet-stream`、`multipart/formdata` など
-* [リファレンス: Azure Logic Apps ワークフロー定義言語](http://aka.ms/logicappsdocs)
+* [Azure Logic Apps のワークフロー定義言語スキーマ](http://aka.ms/logicappsdocs)
 
 ## <a name="other-integrations-and-capabilities"></a>その他の統合と機能
 

@@ -1,8 +1,20 @@
- 
-
-
-
-Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供するため、Azure Compute Unit (ACU) の概念が作成されています。 これは、パフォーマンス ニーズを満たす可能性が最も高い SKU を簡単に見つけるのに役立ちます。  現在、ACU は小さい (Standard_A1) VM を 100 として標準化されており、他のすべての SKU についてはその SKU が標準ベンチマークをそれよりどれくらい速く実行できるかが表されます。 
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn;davberg
+ms.custom: include file
+ms.openlocfilehash: fde43e40a7a5bb87b9e63af47ae795616fac8b3f
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/16/2018
+---
+Azure コンピューティング ユニット (ACU) の概念は、Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供します。 これは、パフォーマンス ニーズを満たす可能性が最も高い SKU を簡単に見つけるのに役立ちます。  現在、ACU は小さい (Standard_A1) VM を 100 として標準化されており、他のすべての SKU についてはその SKU が標準ベンチマークをそれよりどれくらい速く実行できるかが表されます。 
 
 > [!IMPORTANT]
 > ACU はガイドラインに過ぎません。  ワークロードの結果は異なる場合があります。 
@@ -11,7 +23,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 <br>
 
-| SKU ファミリ | ACU \ vCPU | vCPU:Core |
+| SKU ファミリ | ACU \ vCPU | vCPU: コア |
 | --- | --- |---|
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 | 1:1 |
 | [A1 ～ A4](../articles/virtual-machines/windows/sizes-general.md) |100 | 1:1 |

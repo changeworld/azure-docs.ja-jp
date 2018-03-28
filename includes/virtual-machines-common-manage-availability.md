@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines
+author: cynthn
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: cynthn
+ms.custom: include file
+ms.openlocfilehash: 1f4bd0d81d16997a9d627f918d77cb8e770a5b53
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/16/2018
+---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>VM の再起動について - メンテナンスとダウンタイム
 Azure の仮想マシンに影響する可能性のあるシナリオには、計画外のハードウェア メンテナンス、予期しないダウンタイム、および計画メンテナンスの 3 つがあります。
 
@@ -15,7 +31,7 @@ Azure の仮想マシンに影響する可能性のあるシナリオには、�
 
 * [冗長性実現のために複数の仮想マシンを可用性セット内に構成する]
 * [可用性セット内の VM に管理ディスクを使用する]
-* [スケジュールされたイベントを使用して、VM に影響を与えるイベントに事前に対応する](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
+* [VM に影響するイベントにプロアクティブに応答する定期的なイベントを使用する](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-scheduled-events)
 * [各アプリケーション層に対して別々の可用性セットを構成する]
 * [ロード バランサーと可用性セットを結合する]
 * [可用性ゾーンを使ってデータセンター レベルの障害から保護する]

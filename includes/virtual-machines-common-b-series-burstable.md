@@ -1,5 +1,20 @@
-
-B シリーズ VM ファミリでは、ワークロードで必要とされるベース レベル パフォーマンスを備えた VM を選べるだけでなく、負荷が急増した場合に Intel® Broadwell E5-2673 v4 2.3GHz または Intel® Haswell 2.4 GHz E5-2673 v3 プロセッサ vCPU の CPU パフォーマンスを 100% 引き出すことができます。
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: virtual-machines
+author: jonbeck7
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 03/09/2018
+ms.author: azcspmt;jonbeck;cynthn
+ms.custom: include file
+ms.openlocfilehash: 95a78df20f5bed07213dfa3cc2c9b35e283f54e7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/16/2018
+---
+B シリーズ VM ファミリでは、ワークロードで必要とされるベース レベル パフォーマンスを備えた VM を選べるだけでなく、負荷が急増した場合に Intel® Broadwell E5-2673 v4 2.3 GHz または Intel® Haswell 2.4 GHz E5-2673 v3 プロセッサ vCPU の CPU パフォーマンスを 100% 引き出すことができます。
 
 Web サーバー、小規模なデータベース、開発とテストの環境など、CPU が常時最大限のパフォーマンスを発揮する必要のないワークロードでは、B シリーズ VM が最適です。 このようなワークロードでは通常、負荷の急増に対応できることがパフォーマンスの要件となるものです。 B シリーズでは、購入する VM サイズに一定のベースライン パフォーマンスが約束されており、その VM インスタンスの使用量がベースラインを下回る場合には "クレジット" が蓄積されていきます。 VM にクレジットが蓄積されていると、アプリケーションで必要な CPU パフォーマンスが高まった場合にベースライン以上のパフォーマンス (上限: vCPU のパフォーマンスの 100%) を実現できます。
 

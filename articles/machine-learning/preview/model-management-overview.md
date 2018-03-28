@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning モデル管理の概念の概要 | Microsoft Docs"
-description: "このドキュメントでは、Azure Machine Learning のモデル管理の概念について説明します。"
+title: Azure Machine Learning モデル管理の概念の概要 | Microsoft Docs
+description: このドキュメントでは、Azure Machine Learning のモデル管理の概念について説明します。
 services: machine-learning
 author: nk773
 ms.author: padou
@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 931dfae740996325cc62071a861e81ef5f67548b
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 89f95753248f74c7f6cb9ca1f680a01b07dd43d1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-machine-learning-model-management"></a>Azure Machine Learning のモデル管理
 
@@ -99,27 +99,27 @@ Azure Machine Learning モデル管理で提供されている API を使って�
 ![](media/model-management-overview/modelmanagementworkflow.png)
 
 ## <a name="frequently-asked-questions-faq"></a>よく寄せられる質問 (FAQ) 
-- サポートされているデータ型は何ですか。 Web サービスへの入力として NumPy 配列を直接渡すことができますか。
+- **サポートされているデータ型は何ですか。Web サービスへの入力として NumPy 配列を直接渡すことができますか。**
 
    generate_schema SDK を使って作成されたスキーマ ファイルを提供している場合は、NumPy および Pandas DF を渡すことができます。 JSON のシリアル化可能な入力を渡すこともできます。 バイナリ エンコードされた文字列としてイメージを渡すこともできます。
 
-- Web サービスは、複数の入力をサポートしますか。または、異なる入力を解析しますか。 
+- **Web サービスは、複数の入力をサポートしますか。または、異なる入力を解析しますか。**
 
    はい、1 つの JSON 要求にパッケージ化された複数の入力を辞書として取得できます。 各入力は、1 つの一意な辞書キーに対応します。
 
-- Web サービスに対する要求によってアクティブ化される呼び出しは、ブロック呼び出しですか、それとも非同期呼び出しですか。
+- **Web サービスに対する要求によってアクティブ化される呼び出しは、ブロック呼び出しですか、それとも非同期呼び出しですか。**
 
    サービスが CLI または API の一部としてリアルタイム オプションを使って作成された場合は、ブロック/同期呼び出しです。 リアルタイムで高速なことが期待されます。 ただし、クライアント側では、非同期 HTTP ライブラリを使って呼び出し、クライアント スレッドのブロックを回避できます。
 
-- Web サービスは何個の要求を同時に処理できますか。
+- **Web サービスは何個の要求を同時に処理できますか。**
 
    クラスターと Web サービスの規模によって異なります。 サービスのレプリカを 100 個までスケールアウトでき、そうすれば多くの要求を同時に処理できます。 また、レプリカあたりの最大同時要求数を構成して、サービスのスループットを上げることもできます。
 
-- Web サービスは何個の要求をキューに格納できますか。
+- **Web サービスは何個の要求をキューに格納できますか。**
 
    構成可能です。 既定では、1 つのレプリカごとに最大 10 に設定されていますが、アプリケーションの要件に合わせて増減できます。 通常、キューの要求の数を増やすとサービスのスループットが向上しますが、高いパーセンタイルでは待機時間が悪化します。 遅延時間を一定にするには、キューを低い値 (1 ～ 5) に設定して、スループットを処理するレプリカの数を増やします。 また、自動スケールをオンにして、レプリカの数を負荷に基づいて自動的に調整することもできます。 
 
-- 同じコンピューターまたはクラスターを複数の Web サービス エンドポイントに使うことはできますか。
+- **同じコンピューターまたはクラスターを複数の Web サービス エンドポイントに使うことはできますか。**
 
    そして、 同じクラスターで 100 個のサービス/エンドポイントを実行できます。 
 

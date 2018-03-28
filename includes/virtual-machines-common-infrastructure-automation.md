@@ -7,14 +7,14 @@ Azure の仮想マシン (VM) を一貫した方法で大規模に作成およ�
  
 - インフラストラクチャの管理を自動化する
     - ツールには、カスタム VM イメージの作成を自動化するための [Packer](#packer) や、インフラストラクチャの構築プロセスを自動化するための [Terraform](#terraform) があります。
-    - [Azure Automation](#azure-automation) では、Azure およびオンプレミス インフラストラクチャに対してアクションを実行できます。
+    - [Azure Automation](#azure-automation) は、Azure とオンプレミス インフラストラクチャでアクションを実行できます。
 
 - アプリケーションのデプロイと配信を自動化する
     - たとえば、[Visual Studio Team Services](#visual-studio-team-services) や [Jenkins](#jenkins) があります。
 
 
 ## <a name="ansible"></a>Ansible
-[Ansible](https://www.ansible.com/) は、構成の管理、VM の作成、またはアプリケーションのデプロイ用の自動化エンジンです。 Ansible では、ターゲット マシンを認証および管理するために、通常は SSH キーによる、エージェントレス モデルを使用します。 構成タスクは Runbook で定義し、特定のタスクを実行するために利用できるさまざまな Ansible モジュールが用意されています。 詳細については、「[How Ansible works (Ansible のしくみ)](https://www.ansible.com/how-ansible-works)」を参照してください。
+[Ansible](https://www.ansible.com/) は、構成の管理、VM の作成、またはアプリケーションのデプロイ用の自動化エンジンです。 Ansible では、ターゲット マシンを認証および管理するために、通常は SSH キーによる、エージェントレス モデルを使用します。 構成タスクはプレイブックで定義し、特定のタスクを実行するために利用できるさまざまな Ansible モジュールが用意されています。 詳細については、「[How Ansible works (Ansible のしくみ)](https://www.ansible.com/how-ansible-works)」を参照してください。
 
 以下の項目について説明します。
 
@@ -49,11 +49,11 @@ cloud-init はディストリビューション全体でも有効です。 た�
 
 | 発行元 | プラン | SKU | バージョン | cloud-init 対応
 |:--- |:--- |:--- |:--- |:--- |:--- |
-|Canonical |UbuntuServer |16.04 LTS |最新 |○ | 
-|Canonical |UbuntuServer |14.04.5-LTS |最新 |○ |
-|CoreOS |CoreOS |安定版 |最新 |○ |
-|OpenLogic |CentOS |7-CI |最新 |preview |
-|RedHat |RHEL |7-RAW-CI |最新 |preview |
+|Canonical |UbuntuServer |16.04 LTS |最新 |はい | 
+|Canonical |UbuntuServer |14.04.5-LTS |最新 |はい |
+|CoreOS |CoreOS |安定版 |最新 |はい |
+|OpenLogic |CentOS |7-CI |最新 |プレビュー |
+|RedHat |RHEL |7-RAW-CI |最新 |プレビュー |
 
 Azure の cloud-init について詳しくは、次のページをご覧ください。
 
@@ -130,5 +130,5 @@ DSC 構成では、マシンにインストールするものと、ホストを�
 - [Jenkins、GitHub、および Docker を使用して、Azure 内の Linux VM に開発インフラストラクチャを作成する](../articles/virtual-machines/linux/tutorial-jenkins-github-docker-cicd.md)。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure でインフラストラクチャ自動化ツールを使用する方法はたくさんあります。 ニーズや環境に最適なソリューションを自由に使用できます。 Azure に組み込まれているいくつかのツールを使用したり、試したりするには、[Linux](../articles/virtual-machines/linux/tutorial-automate-vm-deployment.md) または [Windows](../articles/virtual-machines/windows/tutorial-automate-vm-deployment.md) VM のカスタマイズを自動化する方法を参照してください。

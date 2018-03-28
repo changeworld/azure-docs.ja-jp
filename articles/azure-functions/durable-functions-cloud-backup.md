@@ -1,12 +1,12 @@
 ---
-title: "Durable Functions のファンアウト/ファンイン シナリオ - Azure"
-description: "Azure Functions の Durable Functions 拡張機能でファンアウト ファンイン シナリオを実装する方法を説明します。"
+title: Durable Functions のファンアウト/ファンイン シナリオ - Azure
+description: Azure Functions の Durable Functions 拡張機能でファンアウト ファンイン シナリオを実装する方法を説明します。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: a5d539172f03246e3c658f2485d29d3ae389ae52
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 446ddbff7d945e90ebfd12bc6e9e7a1f0e18267c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Durable Functions のインストール](durable-functions-install.md)に関するページの指示に従って、サンプルを設定します。
+* 「[Durable Functions をインストールする](durable-functions-install.md)」の指示に従って、サンプルを設定します。
 * この記事では、[Hello シーケンス](durable-functions-sequence.md) サンプルのチュートリアルを既に終了していることを前提としています。
 
 ## <a name="scenario-overview"></a>シナリオの概要
@@ -97,7 +97,7 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 > [!NOTE]
 > これは、I/O 操作を `activityTrigger` 関数に移動させる完璧な例です。 作業を複数の VM に分散できるだけではなく、進行状況のチェックポイント処理のメリットも得ることができます。 ホスト プロセスが何らかの理由で終了した場合でも、どのアップロードが完了しているかがわかります。
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 
 次の HTTP POST 要求を送信してオーケストレーションを開始できます。
 
@@ -156,9 +156,9 @@ Visual Studio プロジェクトの単一の C# ファイルとしてのオー�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/BackupSiteContent.cs)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-このサンプルでは、ファンアウト/ファンイン パターンの実装方法について説明しました。 次のサンプルでは、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)に[ステートフル シングルトン](durable-functions-singletons.md) パターンを実装する方法について説明します。
+このサンプルでは、ファンアウト/ファンイン パターンの実装方法について説明しました。 次のサンプルでは、[永続的タイマー](durable-functions-timers.md)を使用して監視パターンを実装する方法を示します。
 
 > [!div class="nextstepaction"]
-> [ステートフル シングルトンのサンプルを実行する](durable-functions-counter.md)
+> [モニターのサンプルを実行する](durable-functions-monitor.md)

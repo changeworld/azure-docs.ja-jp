@@ -1,24 +1,24 @@
 ---
-title: "Azure ExpressRoute 回線とルーティング ドメイン | Microsoft Docs"
-description: "このページでは、ExpressRoute 回線とルーティング ドメインの概要を示します。"
+title: Azure ExpressRoute 回線とルーティング ドメイン | Microsoft Docs
+description: このページでは、ExpressRoute 回線とルーティング ドメインの概要を示します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 6f0c5d8e-cc60-4a04-8641-2c211bda93d9
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/30/2017
+ms.date: 03/01/2018
 ms.author: ganesr,cherylmc
-ms.openlocfilehash: c8f3c0e87a052b327e9949acd3e7db1d28c1eb46
-ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
+ms.openlocfilehash: 943305c78a17031d647bf2fa0977d10c51213ef5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/30/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="expressroute-circuits-and-routing-domains"></a>ExpressRoute 回線とルーティング ドメイン
  接続プロバイダーを経由してオンプレミス インフラストラクチャを Microsoft に接続するには、 *ExpressRoute 回線* を注文する必要があります。 下の図は、お客様の WAN と Microsoft の接続を論理的に表現したものです。
@@ -60,12 +60,12 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 
 ネットワーク内でカスタム ルート フィルターを定義して、必要なルートのみを使用することができます。 ルーティング構成の詳細については、 [ルーティング](expressroute-routing.md) に関するページを参照してください。 
 
-パブリック ピアリング ルーティング ドメインでサポートされるサービスの詳細については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 
+パブリック ピアリング ルーティング ドメインでサポートされるサービスの詳細については、[FAQ](expressroute-faqs.md) のページを参照してください。
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
 [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]
 
-上記以外の Microsoft オンライン サービス (Office 365、Dynamics 365、Azure PaaS サービスなど) への接続はすべて Microsoft ピアリングを経由します。 Microsoft ピアリング ルーティング ドメイン経由で、ご使用の WAN と Microsoft クラウド サービスの双方向接続を実現できます。 お客様または接続プロバイダーが所有するパブリック IP アドレスのみを使用して Microsoft クラウド サービスに接続する必要があり、定義されてするすべての規則を遵守する必要があります。 詳細については、 [ExpressRoute の前提条件](expressroute-prerequisites.md) に関するページを参照してください。
+Microsoft オンライン サービス (Office 365、Dynamics 365、Azure PaaS サービスなど) への接続は Microsoft ピアリングを経由します。 Microsoft ピアリング ルーティング ドメイン経由で、ご使用の WAN と Microsoft クラウド サービスの双方向接続を実現できます。 お客様または接続プロバイダーが所有するパブリック IP アドレスのみを使用して Microsoft クラウド サービスに接続する必要があり、定義されてするすべての規則を遵守する必要があります。 詳細については、[ExpressRoute の前提条件](expressroute-prerequisites.md)に関するページを参照してください。
 
 サポートされるサービス、料金、および構成の詳細については、 [FAQ のページ](expressroute-faqs.md) を参照してください。 Microsoft ピアリングのサポートを提供している接続プロバイダーの一覧については、 [ExpressRoute の場所](expressroute-locations.md) に関するページを参照してください。
 
@@ -79,7 +79,7 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 | **AS 番号の要件** |プライベートおよびパブリックの AS 番号。 いずれかを使用する場合はパブリックの AS 番号を所有している必要があります。 |プライベートおよびパブリックの AS 番号。 ただし、パブリック IP アドレスの所有権を証明する必要があります。 |プライベートおよびパブリックの AS 番号。 ただし、パブリック IP アドレスの所有権を証明する必要があります。 |
 | **サポート対象 IP プロトコル**| IPv4 | IPv4 | IPv4、IPv6 |
 | **ルーティング インターフェイスの IP アドレス** |RFC1918 およびパブリック IP アドレス |ルーティング レジストリに登録されているパブリック IP アドレス。 |ルーティング レジストリに登録されているパブリック IP アドレス。 |
-| **MD5 ハッシュのサポート** |はい |あり |あり |
+| **MD5 ハッシュのサポート** |[はい] |[はい] |[はい] |
 
 (*) Premium アドオン SKU レベルが必要です
 
@@ -87,7 +87,7 @@ Azure Storage、SQL Database、Websites などのサービスは、パブリッ�
 
 3 つのピアリング セッションすべてを使用する場合は、BGP セッションのペアを 3 つ (ピアリングの種類ごとに 1 つのペア) 設定する必要があります。 BGP セッションのペアによって、高可用性リンクが実現されます。 レイヤー 2 接続プロバイダーを経由して接続している場合、ルーティングの構成と管理はお客様の責任となります。 詳細については、ExpressRoute を設定する [ワークフロー](expressroute-workflows.md) を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * サービス プロバイダーを検索します。 [ExpressRoute のサービス プロバイダーと提供地域](expressroute-locations.md)に関するページをご覧ください。
 * すべての前提条件を満たしていることを確認します。 「 [Azure ExpressRoute の前提条件](expressroute-prerequisites.md)」を参照してください。
 * ExpressRoute 接続を構成します。

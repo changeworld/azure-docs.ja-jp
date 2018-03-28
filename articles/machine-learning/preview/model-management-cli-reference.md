@@ -1,9 +1,9 @@
 ---
-title: "Azure Machine Learning モデル管理のコマンドライン インターフェイスのリファレンス | Microsoft Docs"
-description: "Azure Machine Learning モデル管理のコマンドライン インターフェイスのリファレンス。"
+title: Azure Machine Learning モデル管理のコマンドライン インターフェイスのリファレンス | Microsoft Docs
+description: Azure Machine Learning モデル管理のコマンドライン インターフェイスのリファレンス。
 services: machine-learning
-author: raymondl
-ms.author: raymondl, aashishb
+author: aashishb
+ms.author: aashishb
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 11/08/2017
-ms.openlocfilehash: 219c61d1842369caadaf8e85dcb039242c37ef6c
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 27361c5b92a8748a026d457875fadfc1f3529076
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="model-management-command-line-interface-reference"></a>モデル管理のコマンドライン インターフェイスのリファレンス
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/23/2018
 
 **モデルの管理アカウントを作成する**
 
-次のコマンドを使用してモデルの管理アカウントを作成します。 このアカウントは、課金に使用されます。
+次のコマンドを使用して、課金用のモデル管理アカウントを作成します。
 
 `az ml account modelmanagement create --location [Azure region e.g. eastus2] --name [new account name] --resource-group [resource group name to store the account in]`
 
@@ -76,7 +76,7 @@ setup コマンドには、サブスクリプションの共同作成者のア�
 
 `az ml env setup [-c] --location [location of environment resources] --name[name of environment]`
 
-これにより、Azure 機械学習のストレージ アカウント、ACR レジストリ、およびサブスクリプションで作成した App Insights サービスで使用環境が初期化されます。 既定では、環境は、フラグが指定されていない場合、ローカルの展開用のみ (ACS なし) に初期化されます。 サービスを拡張する必要がある場合は `--cluster` (または `-c`) フラグを指定して、ACS クラスターを作成します。
+このコマンドは、Azure 機械学習のストレージ アカウント、ACR レジストリ、およびサブスクリプションで作成した App Insights サービスで使用環境を初期化します。 既定では、環境は、フラグが指定されていない場合、ローカルの展開用のみ (ACS なし) に初期化されます。 サービスを拡張する必要がある場合は `--cluster` (または `-c`) フラグを指定して、ACS クラスターを作成します。
 
 コマンドの詳細:
 
@@ -89,12 +89,12 @@ setup コマンドには、サブスクリプションの共同作成者のア�
     --cluster -c                   : Flag to provision ACS cluster. Off by default; specify this to force an ACS cluster deployment.
     --key-pem                      : Path to .pem file with certificate key.
     --master-count -m              : Number of master nodes to provision in the ACS cluster. Acceptable values: 1, 3, 5. Default: 1.
-    --resource-group -g            : Resource group in which to create compute resource. Will be created if it does not exist.
-                                     If not provided, resource group will be created with 'rg' appended to 'name.'.
+    --resource-group -g            : Resource group in which to create compute resource. Is created if it does not exist.
+                                     If not provided, resource group is created with 'rg' appended to 'name.'.
     --service-principal-app-id -a  : App ID of service principal to use for configuring ML compute.
     --service-principal-password -p: Password associated with service principal.
     --storage -s                   : ARM ID of storage account to associate with this environment.
-    --yes -y                       : Flag to answer 'yes' to any prompts. Command will fail if user is not logged in.
+    --yes -y                       : Flag to answer 'yes' to any prompts. Command fails if user is not logged in.
 
 グローバル引数
 ```
@@ -143,7 +143,7 @@ setup コマンドには、サブスクリプションの共同作成者のア�
 
 **マニフェストを作成する**
 
-モデルのマニフェスト ファイルを作成します。 
+次のコマンドは、モデルのマニフェスト ファイルを作成します。 
 
 `az ml manifest create --manifest-name [your new manifest name] -f [path to code file] -r [runtime for the image, e.g. spark-py]`
 
@@ -289,7 +289,7 @@ setup コマンドには、サブスクリプションの共同作成者のア�
 
 フラグ `-d` に依存関係を添付するための注記: 既にバンドル (zip、tar など) されていないディレクトリの名前を渡す場合、ディレクトリは自動的に tar 圧縮されて渡され、渡された先で自動的にバンドル解除されます。 
 
-既にバンドルされているディレクトリを渡す場合は、1 つのファイルとして渡されます。 自動的にバンドル解除はされません。コード内でバンドルを解除する必要があります。
+既にバンドルされているディレクトリを渡す場合、ディレクトリは 1 つのファイルとして処理され、現状のままで渡されます。 バンドル解除は自動的に行われます。コード内でそれを処理する必要があります。
 
 **サービスの詳細を取得する**
 

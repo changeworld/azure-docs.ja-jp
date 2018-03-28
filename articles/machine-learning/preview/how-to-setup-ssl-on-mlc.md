@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning コンピューティング (MLC) クラスターでの SSL の有効化 | Microsoft Docs"
-description: "Azure Machine Learning コンピューティング (MLC) クラスターでスコアリング呼び出しの SSL を設定する手順を説明します。"
+title: Azure Machine Learning コンピューティング (MLC) クラスターでの SSL の有効化 | Microsoft Docs
+description: Azure Machine Learning コンピューティング (MLC) クラスターでスコアリング呼び出しの SSL を設定する手順を説明します。
 services: machine-learning
 author: SerinaKaye
 ms.author: serinak
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: b76fe7c0caa4a9aca76a9a3f50d1fced0ab67cba
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 444803eeb77e79a8bfe3271ddf27bd428042c875
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Azure Machine Learning コンピューティング (MLC) クラスターでの SSL の有効化 
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 03/08/2018
 
 前提条件となる作業が完了すると、次の 2 つのファイルが作成されます。
 
-* 証明書のファイル (例: `cert.pem`)
+* 証明書のファイル (例: `cert.pem`)。 ファイルが完全な証明書チェーンを含んでいることを確認します。
 * キーのファイル (例: `key.pem`)
 
 
@@ -55,7 +55,7 @@ Set-AzureRmMlOpCluster -ResourceGroupName my-rg -Name my-cluster -SslStatus Enab
 
 ## <a name="map-the-cname-and-the-ip-address"></a>CNAME と IP アドレスをマップする
 
-前提条件で選択した CNAME とリアルタイム フロントエンド (FE) の IP アドレス間のマッピングを作成します。 FE の IP アドレスを検出するには、次のコマンドを実行します。 リアルタイム クラスター フロントエンドの IP アドレスを含む "publicIpAddress" という名前のフィールドが出力に表示されます。 CNAME レコードを設定するには、DNS プロバイダーの説明を参照してください。
+前提条件で選択した CNAME とリアルタイム フロントエンド (FE) の IP アドレス間のマッピングを作成します。 FE の IP アドレスを検出するには、次のコマンドを実行します。 リアルタイム クラスター フロントエンドの IP アドレスを含む "publicIpAddress" という名前のフィールドが出力に表示されます。 DNS プロバイダーの手順を参照し、CNAME で使用される FQDN からパブリック IP アドレスへのレコードを設定します。
 
 
 

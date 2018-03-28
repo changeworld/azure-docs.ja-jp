@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想マシンに監視と診断を追加する | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを使用して、Azure 診断の拡張機能を備えた新しい Windows 仮想マシンを作成します。"
+title: Azure 仮想マシンに監視と診断を追加する | Microsoft Docs
+description: Azure Resource Manager テンプレートを使用して、Azure 診断の拡張機能を備えた新しい Windows 仮想マシンを作成します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: sbtron
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 8cde8fe7-977b-43d2-be74-ad46dc946058
 ms.service: virtual-machines-windows
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/31/2017
 ms.author: saurabh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e3ea1687e7fb6cc7af00e03b85fb48b0d7911275
-ms.sourcegitcommit: 9ea2edae5dbb4a104322135bef957ba6e9aeecde
+ms.openlocfilehash: e205352ebf4eaf89627c268d78b69bb2d49c3f3e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="use-monitoring-and-diagnostics-with-a-windows-vm-and-azure-resource-manager-templates"></a>Windows VM と Azure Resource Manager テンプレートで監視と診断を利用する
 Azure 診断の拡張機能は、Windows ベースの Azure 仮想マシンに監視および診断機能を提供します。 Azure Resource Manager テンプレートの一部として拡張機能を組み込むことにより、仮想マシンでこれらの機能を有効にすることができます。 仮想マシン テンプレートの一部として拡張機能を含める方法については、「 [VM 拡張機能を使用した Azure リソース マネージャー テンプレートの作成](template-description.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#extensions) 」を参照してください。 この記事では、Windows 仮想マシン テンプレートに Azure 診断の拡張機能を追加する方法について説明します。  
@@ -152,7 +152,7 @@ Windows 仮想マシンで診断の拡張機能を有効にするには、Resour
 "xmlCfg": "[base64(concat(variables('wadcfgxstart'), variables('wadmetricsresourceid'), concat(parameters('vmNamePrefix'), copyindex()), variables('wadcfgxend')))]", 
 ```
 
-*PT1H* と *PT1M* の MetricAggregation 値は、1 分間以上の集計と 1 時間以上の集計を表します。
+*PT1M* と *PT1H* の MetricAggregation 値は、それぞれ 1 分間以上の集計と 1 時間以上の集計を表します。
 
 ## <a name="wadmetrics-tables-in-storage"></a>ストレージの WADMetrics テーブル
 上記のメトリックの構成により、以下の名前付け規則を使用してテーブルが診断ストレージ アカウントに生成されます。
