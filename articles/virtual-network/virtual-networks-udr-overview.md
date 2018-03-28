@@ -1,12 +1,12 @@
 ---
-title: "Azure 仮想ネットワーク トラフィックのルーティング | Microsoft Docs"
-description: "Azure が仮想ネットワーク トラフィックをルーティングするしくみと、Azure のルーティングをカスタマイズする方法について説明します。"
+title: Azure 仮想ネットワーク トラフィックのルーティング | Microsoft Docs
+description: Azure が仮想ネットワーク トラフィックをルーティングするしくみと、Azure のルーティングをカスタマイズする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: get-started-article
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
-ms.custom: 
-ms.openlocfilehash: 4f4c4e9749eb5f0f6ba1950521f459f140cb5221
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.custom: ''
+ms.openlocfilehash: 9afaa7d34665f5c8ef4c4c819fe3b7e995bd71d3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -132,6 +132,9 @@ BGP を使用して Azure とルートを交換すると、仮想ネットワー
 1. ユーザー定義のルート
 2. BGP のルート
 3. システム ルート
+
+> [!NOTE]
+> 仮想ネットワーク、仮想ネットワークのピアリング、または仮想ネットワークのサービス エンドポイントに関連したトラフィックに使用されるシステム ルートは、BGP のルートの方が具体的であったとしても優先されるルートとなります。
 
 たとえば、ルート テーブルに次のルートが含まれているとします。
 

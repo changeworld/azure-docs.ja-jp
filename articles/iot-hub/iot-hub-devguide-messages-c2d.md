@@ -1,23 +1,23 @@
 ---
-title: "Azure IoT Hub の cloud-to-device メッセージの理解 | Microsoft Docs"
-description: "開発者ガイド - IoT Hub での cloud-to-device メッセージの使用方法。 メッセージのライフサイクル、および構成オプションについて説明します。"
+title: Azure IoT Hub の cloud-to-device メッセージの理解 | Microsoft Docs
+description: 開発者ガイド - IoT Hub での cloud-to-device メッセージの使用方法。 メッセージのライフサイクル、および構成オプションについて説明します。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2017
+ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: 1b34e579f2ba40f4d77f7a3ba1841f59f795d292
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>cloud-to-device メッセージを IoT Hub から送信する
 
@@ -81,23 +81,23 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 **Ack** が **full** の場合で、フィードバック メッセージを受信しない場合は、フィードバック メッセージの有効期限が切れたことを意味します。 このとき、元のメッセージがどうなったかをサービスが認識することはできません。 実際には、有効期限切れになる前にフィードバックをサービスが確実に処理できることが必要です。 有効期限は最長 2 日間であるため、障害が発生した場合も、サービスを再び稼働させる時間はあります。
 
-[エンドポイント][lnk-endpoints]に関するページで説明されているように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/feedback**) 経由でメッセージとしてフィードバックを配信します。 フィードバックを受信するためのセマンティクスは C2D メッセージの場合と同様であり、[メッセージのライフサイクル][lnk-lifecycle]も同じです。 可能な限り、メッセージのフィードバックは、次の形式で 1 つのメッセージのバッチとして処理します。
+[エンドポイント][lnk-endpoints]に関するページで説明されているように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/feedback**) 経由でメッセージとしてフィードバックを配信します。 フィードバックを受信するためのセマンティクスは C2D メッセージの場合と同様です。 可能な限り、メッセージのフィードバックは、次の形式で 1 つのメッセージのバッチとして処理します。
 
-| プロパティ     | 説明 |
+| プロパティ     | [説明] |
 | ------------ | ----------- |
-| EnqueuedTime | メッセージが作成された日時を示すタイムスタンプ。 |
+| EnqueuedTime | フィードバック メッセージがハブで受信された日時を示すタイムスタンプ。 |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
 本文はシリアル化された JSON レコードの配列で、それぞれ次のプロパティを持っています。
 
-| プロパティ           | 説明 |
+| プロパティ           | [説明] |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | メッセージの結果が発生した日時を示すタイムスタンプ。 たとえば、デバイスの完了やメッセージの期限切れなどです。 |
+| EnqueuedTimeUtc    | メッセージの結果が発生した日時を示すタイムスタンプ。 たとえば、ハブがフィードバック メッセージを受信したときや、元のメッセージの有効期限が切れたときです。 |
 | OriginalMessageId  | このフィードバック情報が関連する cloud-to-device メッセージの **MessageId** です。 |
 | StatusCode         | 必須の文字列。 IoT Hub によって生成されたフィードバック メッセージで使用されます。 <br/> 'Success' <br/> 'Expired' <br/> 'DeliveryCountExceeded' <br/> 'Rejected' <br/> 'Purged' |
-| Description        | **StatusCode**の文字列値。 |
-| DeviceId           | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの **DeviceId** です。 |
+| [説明]        | **StatusCode**の文字列値。 |
+| deviceId           | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの **DeviceId** です。 |
 | DeviceGenerationId | フィードバックのこの要素が関連する cloud-to-device メッセージのターゲット デバイスの **DeviceGenerationId** です。 |
 
 メッセージのフィードバックを元のメッセージと関連付けることができるように、サービスは C2D メッセージの **MessageId** を指定する必要があります。
@@ -125,7 +125,7 @@ C2D メッセージを送信するときに、サービスは、そのメッセ�
 
 各 IoT hub では、cloud-to-device メッセージング用に次の構成オプションを公開しています。
 
-| プロパティ                  | 説明 | 範囲と既定値 |
+| プロパティ                  | [説明] | 範囲と既定値 |
 | ------------------------- | ----------- | ----------------- |
 | defaultTtlAsIso8601       | C2D メッセージの TTL の既定値。 | 最大 2D の ISO_8601 書式による間隔 (最小 1 分)。 既定値: 1 時間。 |
 | maxDeliveryCount          | デバイスごとの C2D キューの最大配信数。 | 1 ～ 100。 既定値: 10。 |

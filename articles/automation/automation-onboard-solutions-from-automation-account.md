@@ -1,20 +1,21 @@
 ---
-title: "Azure Automation で Update Management、Change Tracking、および Inventory ソリューションの配布準備を行う方法について説明します"
-description: "Azure Automation に含まれる Update Management、Change Tracking、および Inventory ソリューションで、Azure Virtual Machine の配布準備を行う方法について説明します"
+title: Azure Automation で Update Management、Change Tracking、および Inventory ソリューションの配布準備を行う方法について説明します
+description: Azure Automation に含まれる Update Management、Change Tracking、および Inventory ソリューションで、Azure Virtual Machine の配布準備を行う方法について説明します
 services: automation
-keywords: 
+ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 02/28/2018
+ms.date: 03/16/2018
 ms.topic: article
-ms.service: automation
-ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: 670a0c2a11ebfe09406233ab4b454b2e9c2ba0e0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.custom: mvc
+ms.openlocfilehash: 65bf0d98da8111e986d5dbdfd58f1692d40ee286
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Update Management、Change Tracking、および Inventory ソリューションの配布準備
 
@@ -22,7 +23,7 @@ Azure Automation には、オペレーティング システムのセキュリ�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-https://portal.azure.com で Azure にログインします
+Azure にサインインします (https://portal.azure.com)。
 
 ## <a name="enable-solutions"></a>ソリューションの有効化
 
@@ -50,11 +51,11 @@ Update Management ソリューションでは、Azure Windows VM の更新プロ
 
 ## <a name="saved-searches"></a>保存した検索条件
 
-コンピューターが Update Management ソリューション、または Change Tracking および Inventory ソリューションに追加されると、それはワークスペースの保存した 2 つの検索条件のいずれかに追加されます。 保存した検索条件は、これらのソリューションの対象となるコンピューターを含むクエリです。
+コンピューターが Update Management ソリューション、または Change Tracking および Inventory ソリューションに追加されると、それらはワークスペースの 2 つの保存された検索条件のいずれかに追加されます。 保存した検索条件は、これらのソリューションの対象となるコンピューターを含むクエリです。
 
-使用している Automation アカウントに移動し、**[全般]** の **[保存した検索条件]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存した検索条件を示しています。
+使用している Automation アカウントに移動し、**[全般]** の **[保存した検索条件]** を選択します。 次の表は、これらのソリューションで使用される 2 つの保存された検索条件を示しています。
 
-|Name     |カテゴリ  |エイリアス  |
+|名前     |カテゴリ  |エイリアス  |
 |---------|---------|---------|
 |MicrosoftDefaultComputerGroup     |  ChangeTracking       | ChangeTracking__MicrosoftDefaultComputerGroup        |
 |MicrosoftDefaultComputerGroup     | 更新プログラム        | Updates__MicrosoftDefaultComputerGroup         |

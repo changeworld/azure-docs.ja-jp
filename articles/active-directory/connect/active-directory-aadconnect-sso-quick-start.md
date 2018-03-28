@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 58ca992f9fcf9a03d917f0dc250a292c4d5f49e5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 67f6ca36c334a60b634094f07e5d9696a6961eb8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -134,7 +134,7 @@ Mozilla Firefox は、Kerberos 認証を自動的には使用しません。 各
 
 #### <a name="safari-mac-os"></a>Safari (Mac OS)
 
-Mac OS を実行しているコンピューターが Azure AD に参加していることを確認します。 Azure AD への参加の詳細については、『[Best Practices for Integrating OS X with Active Directory (OS X と Active Directory の統合に関するベスト プラクティス)](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf)』をご覧ください。
+Mac OS を実行しているコンピューターが AD に参加していることを確認します。 AD への参加の詳細については、『[Best Practices for Integrating OS X with Active Directory](http://www.isaca.org/Groups/Professional-English/identity-management/GroupDocuments/Integrating-OS-X-with-Active-Directory.pdf)』(OS X と Active Directory の統合に関するベスト プラクティス) を参照してください。
 
 #### <a name="google-chrome-all-platforms"></a>Google Chrome (すべてのプラットフォーム)
 

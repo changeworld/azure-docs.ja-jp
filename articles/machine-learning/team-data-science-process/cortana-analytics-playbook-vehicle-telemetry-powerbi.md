@@ -1,8 +1,8 @@
 ---
-title: "車両の状態および運転習慣の Power BI ダッシュボード - Azure | Microsoft Docs"
-description: "Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。"
+title: 車両の状態および運転習慣の Power BI ダッシュボード - Azure | Microsoft Docs
+description: Cortana Intelligence の機能を使用して、車両の状態と運転の習慣に関するリアルタイムの予測的な洞察を得ます。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/15/2017
+ms.date: 03/14/2018
 ms.author: bradsev
-ms.openlocfilehash: 626987ec0648f9e770499b4a48bc4ca2d175d2b4
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 6a46a05539a7211fbc2a3a9f6ec45a28f5c64039
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="vehicle-telemetry-analytics-solution-template-power-bi-dashboard-setup-instructions"></a>車両テレメトリ分析ソリューション テンプレートの Power BI ダッシュボードのセットアップ手順
 このメニューは、このプレイブック内の各章にリンクされています。 
@@ -42,7 +42,7 @@ ms.lasthandoff: 12/01/2017
 * **Azure HDInsight** は、大規模なデータ変換を行います。
 * **Azure Data Factory** では、オーケストレーション、スケジュール設定、リソース管理、バッチ処理のパイプラインの監視が処理されます。
 
-**Power BI** このソリューションに機能豊富なダッシュボードを提供し、リアルタイムなデータおよび予測分析を視覚化します。 
+**Power BI** は、このソリューションに機能豊富なダッシュボードを提供し、データおよび予測分析を視覚化します。 
 
 このソリューションでは、次の 2 つのデータ ソースを使用します。
 
@@ -101,7 +101,7 @@ ms.lasthandoff: 12/01/2017
 * Vehicles Requiring Maintenance
 * Vehicle Health Statistics
 
-3 つのすべてのリアルタイム レポートを構成することも、いずれかの段階の後で止めることもできます。 その後、バッチ レポートの構成方法に関する次のセクションに進むことができます。 3 つのレポートをすべて作成して、ソリューションのリアルタイム パスに対する詳細な分析情報を視覚化することをお勧めします。  
+3 つのすべてのレポートを構成することも、いずれかの段階の後で止めることもできます。 その後、バッチ レポートの構成方法に関する次のセクションに進むことができます。 3 つのレポートをすべて作成して、ソリューションのリアルタイム パスに対する詳細な分析情報を視覚化することをお勧めします。  
 
 ### <a name="vehicles-in-operation-report"></a>Vehicles in Operation レポート
 1. **[ページ 1]** をダブルクリックして、名前を **Vehicles in Operation** に変更します。
@@ -160,7 +160,7 @@ ms.lasthandoff: 12/01/2017
 
     ![視覚化機能を備えたダッシュボード](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4k.png)
 
-これで、"Vehicles in Operation" リアルタイム レポートが正しく構成されました。 次のリアルタイム レポートを作成することも、ここで終了して、ダッシュボードを構成することもできます。 
+これで、"Vehicles in Operation" レポートが正しく構成されました。 次のリアルタイム レポートを作成することも、ここで終了して、ダッシュボードを構成することもできます。 
 
 ### <a name="vehicles-requiring-maintenance-report"></a>Vehicles Requiring Maintenance レポート
 
@@ -176,7 +176,7 @@ ms.lasthandoff: 12/01/2017
 
 3. **ページ レベル フィルター** を追加して、メンテナンスが必要な車両についてデータを表示するには、次の手順に従います。 
 
-   a. **[MaintenanceLabel]** フィールドを **[ページ レベル フィルター]** にドラッグします。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[MaintenanceLabel]** フィールドを **[ページ レベル フィルター]** にドラッグします。
   
       ![[ページ レベル フィルター]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4n1.png)
 
@@ -198,13 +198,13 @@ ms.lasthandoff: 12/01/2017
 
 6. **[フィールド]** タブで、**[Model]** を **[軸]** 領域にドラッグします。 **[vin]** を **[値]** 領域にドラッグします。 次に、**[Count of vin]** で視覚エフェクトを並べ替えます。 グラフの **[タイトル]** を **Vehicles requiring maintenance by model** に変更します。 
 
-7. **[視覚化]** タブの**[フィールド]** ![[フィールド]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png) セクションで、**[vin]** を **[色の彩度]** にドラッグします。
+7. **[視覚化]** タブの**[フィールド]** ![[フィールド] の画像](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4field.png)セクションで、**[vin]** を **[色の彩度]** にドラッグします。
 
     ![[色の彩度]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4q.png)  
 
 8. **[書式]** セクションで、視覚エフェクトの **[データの色]** を変更します。 
 
-    a. **[最小値]** の色を **F2C812** に変更します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[最小値]** の色を **F2C812** に変更します。
 
     b. **[最大値]** の色を **FF6300** に変更します。
 
@@ -298,7 +298,7 @@ ms.lasthandoff: 12/01/2017
 
     ![集計の種類](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4ff.png)
 
-22. グラフの **[タイトル]** を **Average engine oil, tire pressure, speed and maintenance probability by model** に変更します。
+22. グラフの **[タイトル]** を **Average engine oil, tire pressure, speed, and maintenance probability by model** に変更します。
 
     ![面グラフのタイトル](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/connected-cars-3.4gg.png)
 
@@ -333,7 +333,7 @@ ms.lasthandoff: 12/01/2017
 
 ## <a name="set-up-the-power-bi-batch-processing-dashboard"></a>Power BI バッチ処理ダッシュボードのセットアップ
 > [!NOTE]
-> エンド ツー エンドのバッチ処理パイプラインの実行が完了し、1 年分の生成済みデータが処理されるまでに、(デプロイの正常な完了から) 約 2 時間かかります。 処理が終了するまで待ってから、次の手順に進んでください。 
+> エンド ツー エンドのバッチ処理パイプラインの実行が完了し、1 年分の生成済みデータが処理されるまでに、(デプロイの正常な完了から) 約 2 時間かかります。 処理が終了するまで待ってから、次の手順に進んでください。
 > 
 > 
 
@@ -418,7 +418,7 @@ ms.lasthandoff: 12/01/2017
 
 7. **ページ 3 から**、以下の内容をピン留めします。  
 
-    a. **[Count of vin]**  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Count of vin]**  
 
    ![ページ 3 の [Count of vin]](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard3.png)
 
@@ -428,7 +428,7 @@ ms.lasthandoff: 12/01/2017
 
 8. **ページ 5** から、以下の内容をピン留めします。 
 
-    a. **[Count of vin]**
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Count of vin]**
 
    ![ページ 5 のグラフ 5](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard5.png)
 
@@ -438,7 +438,7 @@ ms.lasthandoff: 12/01/2017
 
 9. **ページ 4 から**、以下の内容をピン留めします。  
 
-    a. **[Count of vin]** 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Count of vin]** 
 
    ![ページ 4 のグラフ 7](./media/cortana-analytics-playbook-vehicle-telemetry-powerbi-dashboard/vehicle-telemetry-dashboard7.png) 
 

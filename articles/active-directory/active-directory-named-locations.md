@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory における名前付きの場所 | Microsoft Docs"
-description: "名前付きの場所とその構成方法について説明します。"
+title: Azure Active Directory で名前付きの場所を構成する | Microsoft Docs
+description: 名前付きの場所を構成する方法を説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: f56e042a-78d5-4ea3-be33-94004f2a0fc3
@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/13/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: b6f80cde24edcbec68309ba033d4da16ee97b731
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3b7bd6f4bea111815f647af09ebaa868696b25bc
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="named-locations-in-azure-active-directory"></a>Azure Active Directory における名前付きの場所
+# <a name="configure-named-locations-in-azure-active-directory"></a>Azure Active Directory で名前付きの場所を構成する
 
 名前付きの場所を使うと、組織内の信頼できる IP アドレス範囲にラベルを付けることができます。 Azure Active Directory は次の場合に名前付きの場所を使います。
 
@@ -89,22 +89,14 @@ ms.lasthandoff: 02/09/2018
 
 
 
-## <a name="what-you-should-know"></a>知っておくべきこと
-
-**一括更新**: 一括更新で名前付きの場所を作成または更新する場合は、IP 範囲を含む CSV ファイルをアップロードまたはダウンロードできます。 アップロードすると、ファイル内の IP 範囲が一覧に追加されます。一覧の内容は上書きされません。
-
-![[アップロード] リンクと [ダウンロード] リンク](./media/active-directory-named-locations/09.png)
-
-
-**制限事項**: 最大 60 の名前付き場所を定義でき、それぞれに 1 つの IP 範囲を割り当てることができます。 構成する名前付き場所が 1 つだけの場合、そこには最大 500 の IP 範囲を定義できます。
-
-
 ## <a name="next-steps"></a>次の手順
 
-関連情報:
+詳細については、次を参照してください。
 
-- **リスク イベント**については、「[Azure Active Directory リスク イベント](active-directory-reporting-risk-events.md)」をご覧ください。
+- [Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 
-- **条件付きアクセス**については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)」をご覧ください。
+- [Azure Active Directory の条件付きアクセスの場所の条件](active-directory-conditional-access-locations.md)
 
-- **リスクの高いサインイン レポート**については、「[Azure Active Directory ポータルのリスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)」をご覧ください。  
+- [Azure Active Directory リスク イベント](active-directory-reporting-risk-events.md)
+
+- [Azure Active Directory ポータルのリスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)  

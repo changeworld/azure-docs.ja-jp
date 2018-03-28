@@ -1,8 +1,8 @@
 ---
-title: "Azure Virtual Network で Hive を使用してデータを変換する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Data Factory で Hive アクティビティを使用してデータを変換するための詳細な手順を説明します。"
+title: Azure Virtual Network で Hive を使用してデータを変換する | Microsoft Docs
+description: このチュートリアルでは、Azure Data Factory で Hive アクティビティを使用してデータを変換するための詳細な手順を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: shengcmsft
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/04/2018
 ms.author: shengc
-ms.openlocfilehash: a7575549225d47e5266ca7e1778c3e61835de1cc
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 8711d7ed1d02f0960ef00c1cf5053e97aa00ad5c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="transform-data-in-azure-virtual-network-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory で Hive アクティビティを使用して Azure Virtual Network のデータを変換する
 このチュートリアルでは、Azure Portal を使用して Data Factory パイプラインを作成します。このパイプラインで、Azure Virtual Network (VNet) にある HDInsight クラスター上の Hive アクティビティを使用してデータを変換します。 このチュートリアルでは、以下の手順を実行します。
@@ -114,7 +114,7 @@ Hadoop クラスターは仮想ネットワーク内にあるため、同じ仮�
 2. **[Integration Runtime Setup]\(統合ランタイムの設定\)** ウィンドウで、**[Perform data movement and dispatch activities to external computes]\(データの移動を実行し、アクティビティを外部コンピューティングにディスパッチする\)** オプションを選択し、**[次へ]** をクリックします。 
 
    ![データの移動を実行し、アクティビティをディスパッチするオプションを選択する](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-perform-data-movement-compute-option.png)
-3. **[パブリック ネットワーク]** を選択し、**[次へ]** をクリックします。
+3. **[プライベート ネットワーク]** を選択し、**[次へ]** をクリックします。
     
    ![[プライベート ネットワーク] の選択](./media/tutorial-transform-data-using-hive-in-vnet-portal/select-private-network.png)
 4. **[名前]** に「**MySelfHostedIR**」と入力し、**[次へ]** をクリックします。 

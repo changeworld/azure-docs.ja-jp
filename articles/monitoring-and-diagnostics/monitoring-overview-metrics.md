@@ -1,9 +1,9 @@
 ---
-title: "Microsoft Azure のメトリックの概要 | Microsoft Docs"
-description: "Microsoft Azure のメトリックとその使用方法の概要"
+title: Microsoft Azure のメトリックの概要 | Microsoft Docs
+description: Microsoft Azure のメトリックとその使用方法の概要
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 405ec51c-0946-4ec9-b535-60f65c4a5bd1
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
-ms.openlocfilehash: 32ca0ce5148ae2641500c98cb04b0d7db1987960
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 4a78236f9c6945bb982466b59690b221f35a1804
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 この記事では、Microsoft Azure のメトリック概要、利点、および使用方法について説明します。  
@@ -116,7 +116,7 @@ Azure Monitor REST API を使用した詳細なチュートリアルについて
 
  ![Azure Monitor のメトリックとアラート ルール](./media/monitoring-overview-metrics/MetricsOverview4.png)
 
-ほぼリアルタイムのアラート (プレビュー): リソースの複数のメトリックおよびしきい値を監視し、[アクション グループ](/monitoring-action-groups.md)経由でユーザーに通知できます。 [ほぼリアルタイムのメトリック アラート](https://aka.ms/azuremonitor/near-real-time-alerts)について詳しくはこちらをご覧ください。
+ほぼリアルタイムのアラート (プレビュー): リソースの複数のメトリックおよびしきい値を監視し、[アクション グループ](/monitoring-action-groups.md)経由でユーザーに通知できます。 ほぼリアルタイムのメトリック アラートについて詳しくは、[こちら](https://aka.ms/azuremonitor/near-real-time-alerts)をご覧ください。
 
 
 ### <a name="autoscale-your-azure-resources"></a>Azure リソースの自動スケール
@@ -127,7 +127,7 @@ Azure リソースの中には、複数のインスタンスをスケールア�
 ## <a name="learn-about-supported-services-and-metrics"></a>サポートされているサービスとメトリックについて
 サポートされているサービスとそのメトリックの詳細な一覧については、[Azure Monitor のメトリック - リソースの種類ごとのサポートされているメトリック](monitoring-supported-metrics.md)に関するページをご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事のリンクを参照してください。 さらに、次の情報も確認します。  
 
 * [自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)

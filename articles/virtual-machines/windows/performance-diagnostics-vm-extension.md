@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: 8f6f3fc8325fb2587dc09b982efa52fbe663e2a9
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e2f8be0f77e220da483dcfb18d6b324d3f203ed
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -227,9 +227,7 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
 
 ## <a name="view-and-share-the-results"></a>結果を表示および共有する
 
-拡張機能の出力はフォルダーに格納されます。 このフォルダーは log_collection という名前で、既定では一時ドライブ (通常は D:\log_collection) の下にあります。 このフォルダーに、診断ログおよび結果と推奨事項に関するレポートを含む zip ファイルがあります。
-
-また、zip ファイルは、インストール時に指定したストレージ アカウントでも見つけることができます。 [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用して 30 日間共有されます。 log_collection フォルダーには *zipfilename*_saslink.txt という名前のテキスト ファイルも作成されます。 このファイルには、zip ファイルをダウンロードするために作成された SAS リンクが含まれます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
+拡張機能の出力は、インストール時に指定したストレージ アカウントにアップロードした zip ファイルに含まれます。このファイルは [Shared Access Signatures (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) を使用して 30 日間共有されます。 この zip ファイルには、診断ログと、結果と推奨事項に関するレポートが含まれています。 出力 zip ファイルへの SAS リンクは、**C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\\\<version>** フォルダー以下の *zipfilename*_saslink.txt というテキスト ファイル内で確認できます。 このリンクがあれば、誰でも zip ファイルをダウンロードできます。
 
 サポート チケットの作業を行うサポート エンジニアを支援するために、Microsoft がこの SAS リンクを使って診断データをダウンロードする場合があります。
 
@@ -249,6 +247,6 @@ PerfInsights ツールは、選んだシナリオに応じて、さまざまな�
     拡張機能の状態で拡張機能が正常にプロビジョニングされたことが示されている限り、この問題は無視しても安全です。
 - インストール中の問題の一部は、拡張ログを使って対処できます。 拡張機能の実行の出力は、次のディレクトリ内のファイルにログ記録されます。
 
-        C:\Packages\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics
+        C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Performance.Diagnostics.AzurePerformanceDiagnostics\<version>
 
 この記事についてさらにヘルプが必要な場合は、いつでも [MSDN の Azure フォーラムと Stack Overflow フォーラム](https://azure.microsoft.com/support/forums/)で Azure エキスパートに問い合わせることができます。 または、Azure サポート インシデントを送信できます。 その場合は、[Azure サポートのサイト](https://azure.microsoft.com/support/options/)に移動して、**[サポートの要求]** をクリックします。 Azure サポートの使用方法の詳細については、「[Microsoft Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」を参照してください。

@@ -1,11 +1,11 @@
 ---
-title: "ロジック アプリに OneDrive コネクタを追加する | Microsoft Docs"
-description: "OneDrive コネクタと REST API パラメーターの概要"
+title: ロジック アプリに OneDrive コネクタを追加する | Microsoft Docs
+description: OneDrive コネクタと REST API パラメーターの概要
 services: logic-apps
-documentationcenter: 
-author: MandiOhlinger
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: 47a8582a-1b1a-4fc3-beb5-97c60c4306fe
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: e988ae22a3d6e47591c37ad0b4c9f781d523bcc8
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 15b88baf21ead5a6b9506c47ca9930d5088b8787
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-onedrive-connector"></a>OneDrive コネクタの使用
 OneDrive に接続して、ファイルのアップロード、取得、削除など、ファイルを管理します。 
@@ -30,7 +30,7 @@ OneDrive では、次の操作を実行できます。
 * OneDrive 内でファイルが作成または更新されたときに、トリガーを使用してワークフローを開始できます。
 * ファイルの作成、ファイルの削除などのアクションを使用できます。 たとえば、添付ファイル付きの新しい Office 365 電子メールを受信したときに (トリガー)、OneDrive に新しいファイルを作成します (アクション)。
 
-このトピックでは、ロジック アプリ内で OneDrive コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
+この記事では、ロジック アプリ内で OneDrive コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
 
 Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic-apps-overview.md)」と[ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)に関するページを参照してください。
 
@@ -52,7 +52,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
    
     ![](./media/connectors-create-api-onedrive/sample-folder.png)
    
-    サインインを求められたら、サインインの詳細を入力して接続を作成します。 この手順については、このトピックの「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。 
+    サインインを求められたら、サインインの詳細を入力して接続を作成します。 その手順については、この記事の「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。 
    
    > [!NOTE]
    > この例では、選択したフォルダー内のファイルが更新されたときに、ロジック アプリが実行されます。 このトリガーの結果を確認するには、自身に電子メールを送信する別のアクションを追加してください。 たとえば、Office 365 Outlook の "*電子メールを送信する*" アクションを追加します。これにより、ファイルが更新されると電子メールが送信されます。 
@@ -76,7 +76,7 @@ Logic Apps の詳細については、「[Logic Apps とは](../logic-apps/logic
    
     ![](./media/connectors-create-api-onedrive/sample-action.png)
    
-    接続情報の入力を求められたら、詳細を入力して接続を作成します。 これらのプロパティについては、このトピックの「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。 
+    接続情報の入力を求められたら、詳細を入力して接続を作成します。 これらのプロパティについては、この記事の「[接続の作成](connectors-create-api-onedrive.md#create-the-connection)」を参照してください。 
    
    > [!NOTE]
    > この例では、OneDrive フォルダーに新しいファイルを作成します。 別のトリガーからの出力を使用して、OneDrive ファイルを作成できます。 たとえば、Office 365 Outlook の "*When a new email arrives (新しい電子メールが届いたとき)*" トリガーを追加します。 次に、OneDrive の "*Create file (ファイルを作成する)*" アクションを追加します。このアクションは、ForEach 内の Attachments フィールドと Content-Type フィールドを使用して OneDrive に新しいファイルを作成します。 

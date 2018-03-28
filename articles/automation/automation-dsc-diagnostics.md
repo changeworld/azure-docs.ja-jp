@@ -1,23 +1,20 @@
 ---
-title: "OMS Log Analytics への Azure Automation DSC レポート データの転送 | Microsoft Docs"
-description: "この記事では、Desired State Configuration (DSC) レポート データを Microsoft Operations Management Suite Log Analytics に送信して、詳細な情報を入手し、きめ細かい管理を実現する方法について説明します。"
+title: Log Analytics への Azure Automation DSC レポート データの転送
+description: この記事では、Desired State Configuration (DSC) レポート データを Log Analytics に送信して、詳しい情報を入手し、きめ細かい管理を実現する方法について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: carmonm
-editor: tysonn
 ms.service: automation
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 05/24/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 5de22072a436e7a2dbaa7d413595c048f730189b
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/16/2018
+ms.topic: article
+manager: carmonm
+ms.devlang: na
+ms.tgt_pltfrm: na
+ms.openlocfilehash: d06ec240477c2defca7a463b2e9338bc5e3930ab
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="forward-azure-automation-dsc-reporting-data-to-oms-log-analytics"></a>OMS Log Analytics への Azure Automation DSC レポート データの転送
 
@@ -121,7 +118,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 
 ### <a name="dscnodestatusdata"></a>DscNodeStatusData
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscNodeStatusData |
@@ -152,7 +149,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 
 ### <a name="dscresourcestatusdata"></a>DscResourceStatusData
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | TimeGenerated |コンプライアンス チェックが実行された日時。 |
 | OperationName |DscResourceStatusData|
@@ -181,7 +178,7 @@ Azure Automation の診断から、Log Analytics に 2 つのカテゴリーの�
 | ResourceType | AUTOMATIONACCOUNTS |
 | CorrelationId |コンプライアンス レポートの相関 ID を示す GUID。 |
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 
 Automation DSC のデータを Log Analytics に送信し、次の対応を行うことで、Automation DSC のノードの状態をより理解できるようになります。
 
@@ -190,7 +187,7 @@ Automation DSC のデータを Log Analytics に送信し、次の対応を行�
 
 Log Analytics によって、Automation DSC のデータの状態をさらに詳しく把握でき、インシデントにより迅速に対処できるようになります。  
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * 各種検索クエリの作成方法と、Log Analytics での Automation DSC ログの確認方法について詳しくは、[Log Analytics におけるログの検索](../log-analytics/log-analytics-log-searches.md)に関するページをご覧ください。
 * Azure Automation DSC の使用について詳しくは、「[Azure Automation DSC の使用](automation-dsc-getting-started.md)」をご覧ください。

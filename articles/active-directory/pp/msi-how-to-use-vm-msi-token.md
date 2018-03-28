@@ -1,11 +1,11 @@
 ---
-title: "ユーザー割り当ての管理対象サービス ID を使用して VM 上にアクセス トークンを取得する方法"
-description: "Azure VM からユーザー割り当て MSI を使用して OAuth アクセス トークンを取得するための詳細な手順と例。"
+title: ユーザー割り当ての管理対象サービス ID を使用して VM 上にアクセス トークンを取得する方法
+description: Azure VM からユーザー割り当て MSI を使用して OAuth アクセス トークンを取得するための詳細な手順と例。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: daveba
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.workload: identity
 ms.date: 12/22/2017
 ms.author: daveba
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: a9513a59ec4540c6d63236519873c6e1e177b65a
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 68454d3f3880df82ca895d1c5f140ebdb6030e77
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="acquire-an-access-token-for-a-vm-user-assigned-managed-service-identity-msi"></a>ユーザー割り当ての管理対象サービス ID (MSI) で VM のアクセス トークンを取得する
 
@@ -26,9 +26,7 @@ ms.lasthandoff: 02/03/2018
 この記事では、トークンの取得に使用する各種コードとスクリプトの例を提供するほか、トークンの有効期限や HTTP エラーの処理などの重要なトピックに関するガイダンスも提供します。
 
 ## <a name="prerequisites"></a>前提条件
-
 [!INCLUDE [msi-core-prereqs](~/includes/active-directory-msi-core-prereqs-ua.md)]
-
 この記事の Azure PowerShell の例を使用する場合は、[Azure PowerShell](https://www.powershellgallery.com/packages/AzureRM) の最新バージョンをインストールする必要があります。
 
 > [!IMPORTANT]
@@ -48,21 +46,28 @@ ms.lasthandoff: 02/03/2018
 
 ## <a name="get-a-token-using-http"></a>HTTP を使用してトークンを取得する 
 
-アクセス トークンの取得に使用する基本的なインターフェイスは REST に基づいているため、HTTP REST の呼び出しを行える VM 上で実行されている、すべてのクライアント アプリケーションにアクセスできます。 これは、クライアントが仮想マシン上の localhost エンドポイントを使用する点以外は、Azure AD のプログラミング モデルと同じです (Azure AD のプログラミング モデルでは、Azure AD エンドポイントを使用)。
+アクセス トークンの取得に使用する基本的なインターフェイスは REST に基づいているため、HTTP REST の呼び出しを行える VM 上で実行されている、すべてのクライアント アプリケーションにアクセスできます。 これは、クライアントが仮想マシン上のエンドポイントを使用する点以外は、Azure AD のプログラミング モデルと同じです (Azure AD のプログラミング モデルでは、Azure AD エンドポイントを使用)。
 
-要求のサンプル:
+インスタンス メタデータ サービス (IMDS) エンドポイントを使用するサンプル要求:
 
 ```
-GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1
-Metadata: true
+GET http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
+```
+
+MSI VM 拡張機能エンドポイントを使用するサンプル要求 (今後廃止予定):
+
+```
+GET http://localhost:50342/oauth2/token?resource=https%3A%2F%2Fmanagement.azure.com%2F&client_id=712eac09-e943-418c-9be6-9fd5c91078bl HTTP/1.1 Metadata: true
 ```
 
 | 要素 | [説明] |
 | ------- | ----------- |
 | `GET` | HTTP 動詞。エンドポイントからデータを取得する必要があることを示します。 この例では、OAuth アクセス トークンです。 | 
-| `http://localhost:50342/oauth2/token` | 構成可能な MSI エンドポイント。既定のポートは 50342 です。 |
+| `http://169.254.169.254/metadata/identity/oauth2/token` | インスタンス メタデータ サービスの MSI エンドポイント。 |
+| `http://localhost:50342/oauth2/token` | VM 拡張機能の構成可能な MSI エンドポイント。既定のポートは 50342 です。 |
+| `api-version`  | クエリ文字列パラメーター。IMDS エンドポイントの API バージョンです。  |
 | `resource` | クエリ文字列パラメーター。ターゲット リソースのアプリ ID URI です。 発行されたトークンの `aud` (audience) 要求にも表示されます。 この例では、アプリ ID URI が https://management.azure.com/ の Azure Resource Manager にアクセスするためのトークンを要求しています。 |
-| `client_id` | ユーザー割り当ての MSI を表すサービス プリンシパルのクライアント ID (アプリ ID とも呼ばれる) を示す、クエリ文字列パラメーター。 この値は、ユーザー割り当て MSI の作成中に `clientId` プロパティに返されます。 この例では、クライアント ID "712eac09-e943-418c-9be6-9fd5c91078bl" のトークンを要求します。 |
+| `client_id` |  ユーザー割り当ての MSI を表すサービス プリンシパルのクライアント ID (アプリ ID とも呼ばれる) を示す、"*省略可能な*" クエリ文字列パラメーター。 システム割り当ての MSI を使用している場合、このパラメーターは必要ありません。 この値は、ユーザー割り当て MSI の作成中に `clientId` プロパティに返されます。 この例では、クライアント ID "712eac09-e943-418c-9be6-9fd5c91078bl" のトークンを要求します。 |
 | `Metadata` | HTTP 要求ヘッダー フィールド。サーバー側のリクエスト フォージェリ (SSRF) 攻撃に対する軽減策として MSI に必要です。 この値は、"true" に設定し、すべて小文字にする必要があります。
 
 応答のサンプル:
@@ -94,6 +99,16 @@ Content-Type: application/json
 ## <a name="get-a-token-using-curl"></a>CURL を使用してトークンを取得する
 
 `client_id` パラメーターの <MSI CLIENT ID> 値では、必ずお使いのユーザー割り当て MSI のサービス プリンシパルのクライアント ID (アプリ ID とも呼ばれる) を使用します。 この値は、ユーザー割り当て MSI の作成中に `clientId` プロパティに返されます。
+  
+インスタンス メタデータ サービス (IMDS) エンドポイントを使用するサンプル要求:
+
+   ```bash
+   response=$(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=<MSI CLIENT ID>")
+   access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
+   echo The MSI access token is $access_token
+   ```
+   
+MSI VM 拡張機能エンドポイントを使用するサンプル要求 (今後廃止予定):
 
    ```bash
    response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/&client_id=<MSI CLIENT ID>" -H Metadata:true -s)
@@ -104,7 +119,7 @@ Content-Type: application/json
    応答の例:
 
    ```bash
-   user@vmLinux:~$ response=$(curl http://localhost:50342/oauth2/token --data "resource=https://management.azure.com/&client_id=9d484c98-b99d-420e-939c-z585174b63bl" -H Metadata:true -s)
+   user@vmLinux:~$ response=$(curl -H Metadata:true "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https%3A%2F%2Fmanagement.azure.com/&client_id=9d484c98-b99d-420e-939c-z585174b63bl")
    user@vmLinux:~$ access_token=$(echo $response | python -c 'import sys, json; print (json.load(sys.stdin)["access_token"])')
    user@vmLinux:~$ echo The MSI access token is $access_token
    The MSI access token is eyJ0eXAiOiJKV1QiLCJhbGciO...
@@ -112,7 +127,7 @@ Content-Type: application/json
 
 ## <a name="handling-token-expiration"></a>トークンの有効期限の処理
 
-ローカル MSI サブシステムではトークンがキャッシュされます。 したがって、トークンは好きなだけ呼び出すことができます。また、次の場合にのみ、Azure AD の結果に対するネットワーク呼び出しが可能です。
+MSI サブシステムではトークンがキャッシュされます。 したがって、トークンは好きなだけ呼び出すことができます。また、次の場合にのみ、Azure AD の結果に対するネットワーク呼び出しが可能です。
 - キャッシュにトークンがないため、キャッシュ ミスが発生した
 - トークンの有効期限が切れている
 
@@ -142,7 +157,7 @@ MSI エンドポイントは、HTTP 応答メッセージのヘッダーに含�
 | ----------- | ----- | ----------------- | -------- |
 | 400 Bad Request | invalid_resource | AADSTS50001: *\<URI\>* という名前のアプリケーションが *\<TENANT-ID\>* という名前のテナントに見つかりませんでした。 このエラーは、アプリケーションがテナントの管理者によってインストールされていない場合や、アプリケーションがテナント内のいずれのユーザーによっても同意されていない場合に発生することがあります。 間違ったテナントに認証要求を送信した可能性があります。\ | (Linux のみ) |
 | 400 Bad Request | bad_request_102 | 必要なメタデータ ヘッダーが指定されていません | 要求で `Metadata` 要求ヘッダー フィールドが見つからないか、形式が正しくありません。 値は `true` として指定し、すべて小文字にする必要があります。 例については、「[HTTP を使用してトークンを取得する](#get-a-token-using-http) 」セクションの「要求のサンプル」をご覧ください。|
-| 401 権限がありません | unknown_source | 不明なソース *\<URI\>* | HTTP GET 要求の URI の形式が正しいことを確認します。 `scheme:host/resource-path` 部分は、`http://localhost:50342/oauth2/token` として指定する必要があります。 例については、「[HTTP を使用してトークンを取得する](#get-a-token-using-http) 」セクションの「要求のサンプル」をご覧ください。|
+| 401 権限がありません | unknown_source | 不明なソース *\<URI\>* | HTTP GET 要求の URI の形式が正しいことを確認します。 `scheme:host/resource-path` 部分は `http://169.254.169.254/metadata/identity/oath2/token` または `http://localhost:50342/oauth2/token` として指定する必要があります。 例については、「[HTTP を使用してトークンを取得する](#get-a-token-using-http) 」セクションの「要求のサンプル」をご覧ください。|
 |           | invalid_request | 要求に必要なパラメーターが含まれていないか、要求に無効なパラメーター値が含まれているか、要求に複数回パラメーターが含まれているか、要求の形式が正しくないかのいずれかです。 |  |
 |           | unauthorized_client | クライアントには、このメソッドを使用してアクセス トークンを要求する権限がありません。 | 拡張機能の呼び出しにローカル ループバックを使用しなかった要求や、MSI が正しく構成されていない VM が原因です。 VM の構成についてサポートが必要な場合は、「[Azure Portal を使用して、VM 管理対象サービス ID (MSI) を構成する](msi-qs-configure-portal-windows-vm.md)」をご覧ください。 |
 |           | access_denied | リソース所有者または承認サーバーによって、要求が拒否されました。 |  |

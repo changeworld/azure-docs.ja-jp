@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Factory パイプラインでの分岐 |Microsoft Docs"
-description: "アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。"
+title: Azure Data Factory パイプラインでの分岐 |Microsoft Docs
+description: アクティビティの分岐と連鎖によって Azure Data Factory 内のデータのフローを制御する方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
 manager: jhubbard
 editor: spelluru
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: 2b1e3fa7fa57d92dbc3a33af20ed258d674e1625
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 00b377b8ed7454c64d146a2de1867eca8ab1fb67
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Data Factory パイプラインでのアクティビティの分岐と連鎖
 このチュートリアルでは、いくつかの制御フロー機能を紹介する Data Factory パイプラインを作成します。 このパイプラインでは、Azure Blob Storage 内のコンテナーから同じストレージ アカウント内の別のコンテナーへの単純なコピーを行います。 コピー アクティビティが成功した場合、成功したコピー操作の詳細 (書き込まれたデータの量など) がパイプラインによって成功電子メールで送信されます。 コピー アクティビティが失敗した場合、コピー失敗の詳細 (エラー メッセージなど) がパイプラインによって失敗電子メールで送信されます。 チュートリアル全体を通じて、パラメーターを渡す方法が示されます。
@@ -309,7 +309,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 3. **[Pipeline Run]\(パイプラインの実行\)** ウィンドウで、次の手順を実行します。 
 
     1. **sourceBlobContainer** パラメーターに「**adftutorial/dummy/input**」を入力します。 ダミー フォルダーが adftutorial コンテナーに存在しないことを確認します。 
-    2. **sinkBlobContainer** パラメーターに「**adftutorial/dummy/inputt**」を入力します。 
+    2. **sinkBlobContainer** パラメーターに「**adftutorial/dummy/output**」を入力します。 
     3. **receiver** の**メール アドレス**を入力します。 
     4. **[完了]**をクリックします。
 

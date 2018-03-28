@@ -1,25 +1,25 @@
 ---
-title: "Azure Stack 統合システムのネットワーク統合に関する考慮事項 | Microsoft Docs"
-description: "マルチノードの Azure Stack とデータセンター ネットワークの統合を計画するためにできることを説明します。"
+title: Azure Stack 統合システムのネットワーク統合に関する考慮事項 | Microsoft Docs
+description: マルチノードの Azure Stack とデータセンター ネットワークの統合を計画するためにできることを説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/12/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-ms.openlocfilehash: a198ff5fe7135e17301025d6a712236b76be0ede
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 04cfe3c4ac6011b9c3d31b7d4ac3c018c350d67b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="network-connectivity"></a>ネットワーク接続
 この記事では、Azure Stack を既存のネットワーク環境に統合する最善の方法を決定するために役立つ Azure Stack ネットワーク インフラストラクチャの情報を提供します。 
@@ -53,7 +53,9 @@ Azure Stack のネットワーク インフラストラクチャは、スイッ�
 ![論理ネットワーク図とスイッチ接続](media/azure-stack-network/NetworkDiagram.png)
 
 ### <a name="bmc-network"></a>BMC ネットワーク
-このネットワークは、すべてのベースボード管理コントローラー (サービス プロセッサとも呼ばれます。iDRAC、iLO、iBMC など) の管理ネットワークへの接続専用です。 存在する場合は、ハードウェア ライフサイクル ホスト (HLH) がこのネットワーク上に配置され、ハードウェアのメンテナンスや監視のための OEM 固有のソフトウェアを提供する可能性があります。 
+このネットワークは、すべてのベースボード管理コントローラー (サービス プロセッサとも呼ばれます。iDRAC、iLO、iBMC など) の管理ネットワークへの接続専用です。 存在する場合は、ハードウェア ライフサイクル ホスト (HLH) がこのネットワーク上に配置され、ハードウェアのメンテナンスまたは監視のための OEM 固有のソフトウェアを提供する可能性があります。 
+
+HLH では、デプロイメント仮想マシン (DVM) もホストされます。 DVM は Azure Stack のデプロイ中に使用され、デプロイが完了すると削除されます。 接続されたデプロイのシナリオでは、DVM には、複数のコンポーネントのテスト、検証、およびアクセスのためにインターネット アクセスが必要です。 これらのコンポーネントは、企業ネットワークの内外に配置できます (たとえば NTP、DNS、Azure)。 接続の要件について詳しくは、[「Azure Stack ファイアウォールの統合」の NAT に関するセクション](azure-stack-firewall.md#network-address-translation)をご覧ください。 
 
 ### <a name="private-network"></a>プライベート ネットワーク
 この /24 (254 のホスト IP) ネットワークは Azure Stack リージョンに対してプライベートであり (Azure Stack リージョンの境界スイッチ デバイスを超えて拡張されません)、2 つのサブネットに分割されます。

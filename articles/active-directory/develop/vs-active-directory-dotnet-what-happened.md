@@ -1,161 +1,170 @@
 ---
-title: "Azure AD への接続時に MVC プロジェクトに行われる変更 | Microsoft Docs"
-description: "Visual Studio 接続済みサービスを使用して Azure AD に接続するときに MVC プロジェクトで何が起こるかについて説明します。"
+title: Azure AD への接続時に MVC プロジェクトに行われる変更 | Microsoft Docs
+description: Visual Studio 接続済みサービスを使用して Azure AD に接続するときに MVC プロジェクトで何が起こるかについて説明します。
 services: active-directory
 documentationcenter: na
 author: kraigb
-manager: mtillman
-editor: 
+manager: ghogen
+editor: ''
 ms.assetid: 8b24adde-547e-4ffe-824a-2029ba210216
 ms.service: active-directory
 ms.workload: web
 ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2017
+ms.date: 03/12/2018
 ms.author: kraigb
 ms.custom: aaddev
-ms.openlocfilehash: eccff00847968b4293b6e7142af0cceff0476c46
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: b17c5fe500f3e2a8370ec5c4a09b62737d9afb84
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-happened-to-my-mvc-project-visual-studio-azure-active-directory-connected-service"></a>MVC プロジェクト (Visual Studio Azure Active Directory 接続済みサービス) の変更点
+
 > [!div class="op_single_selector"]
-> * [作業の開始](vs-active-directory-dotnet-getting-started.md)
-> * [変更内容](vs-active-directory-dotnet-what-happened.md)
-> 
-> 
+> - [作業の開始](vs-active-directory-dotnet-getting-started.md)
+> - [変更内容](vs-active-directory-dotnet-what-happened.md)
 
-## <a name="references-have-been-added"></a>リファレンスが追加されました
-### <a name="nuget-package-references"></a>NuGet パッケージのリファレンス
-* **Microsoft.IdentityModel.Protocol.Extensions**
-* **Microsoft.Owin**
-* **Microsoft.Owin.Host.SystemWeb**
-* **Microsoft.Owin.Security**
-* **Microsoft.Owin.Security.Cookies**
-* **Microsoft.Owin.Security.OpenIdConnect**
-* **Owin**
-* **System.IdentityModel.Tokens.Jwt**
+この記事では、[Visual Studio を使用して Azure Active Directory 接続サービスを](vs-active-directory-add-connected-service.md)追加したときに、ASP.NET MVC プロジェクトに対して行われる正確な変更内容を説明します。
 
-### <a name="net-references"></a>.NET のリファレンス
-* **Microsoft.IdentityModel.Protocol.Extensions**
-* **Microsoft.Owin**
-* **Microsoft.Owin.Host.SystemWeb**
-* **Microsoft.Owin.Security**
-* **Microsoft.Owin.Security.Cookies**
-* **Microsoft.Owin.Security.OpenIdConnect**
-* **Owin**
-* **System.IdentityModel**
-* **System.IdentityModel.Tokens.Jwt**
-* **System.Runtime.Serialization**
+接続済みサービスを使用する方法については、[使用開始](vs-active-directory-dotnet-getting-started.md)に関する記事をご覧ください。
 
-## <a name="code-has-been-added"></a>コードが追加されました
-### <a name="code-files-were-added-to-your-project"></a>コード ファイルがプロジェクトに追加された
-認証スタートアップ クラス **App_Start/Startup.Auth.cs** が Azure AD 認証のスタートアップ ロジックを含むプロジェクトに追加されました。 さらに、**SignIn()** メソッドと **SignOut()** メソッドを含むコントローラー クラス Controllers/AccountController.cs が追加されました。 最後に、SignIn/SignOut のアクション リンクを含む部分ビュー **Views/Shared/_LoginPartial.cshtml** が追加されました。
+## <a name="added-references"></a>追加された参照
 
-### <a name="startup-code-was-added-to-your-project"></a>スタートアップ コードがプロジェクトに追加された
-既にプロジェクトに Startup クラスがある場合、**Configuration** メソッドが **ConfigureAuth(app)** 呼び出しを含むように更新されました。 それ以外の場合は、Startup クラスがプロジェクトに追加されました。
+プロジェクト ファイル (*.NET 参照) と `packages.config` (NuGet 参照) に影響します。
 
-### <a name="your-appconfig-or-webconfig-has-new-configuration-values"></a>app.config または web.config に新しい構成値が含まれる
-次の構成エントリが追加されました。
+| type | リファレンス |
+| --- | --- |
+| .NET; NuGet | Microsoft.IdentityModel.Protocol.Extensions |
+| .NET; NuGet | Microsoft.Owin |
+| .NET; NuGet | Microsoft.Owin.Host.SystemWeb |
+| .NET; NuGet | Microsoft.Owin.Security |
+| .NET; NuGet | Microsoft.Owin.Security.Cookies |
+| .NET; NuGet | Microsoft.Owin.Security.OpenIdConnect |
+| .NET; NuGet | Owin |
+| .NET        | System.IdentityModel |
+| .NET; NuGet | System.IdentityModel.Tokens.Jwt |
+| .NET        | System.Runtime.Serialization |
 
+追加の参照 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
+
+| type | リファレンス |
+| --- | --- |
+| .NET; NuGet | EntityFramework |
+| .NET        | EntityFramework.SqlServer (Visual Studio 2015 のみ) |
+| .NET; NuGet | Microsoft.Azure.ActiveDirectory.GraphClient |
+| .NET; NuGet | Microsoft.Data.Edm |
+| .NET; NuGet | Microsoft.Data.OData |
+| .NET; NuGet | Microsoft.Data.Services.Client |
+| .NET; NuGet | Microsoft.IdentityModel.Clients.ActiveDirectory |
+| .NET        | Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms (Visual Studio 2015 のみ) |
+| .NET; NuGet | System.Spatial |
+
+次の参照は削除されます (Visual Studio 2015 では ASP.NET 4 プロジェクトのみ)。
+
+| type | リファレンス |
+| --- | --- |
+| .NET; NuGet | Microsoft.AspNet.Identity.Core |
+| .NET; NuGet | Microsoft.AspNet.Identity.EntityFramework |
+| .NET; NuGet | Microsoft.AspNet.Identity.Owin |
+
+## <a name="project-file-changes"></a>プロジェクト ファイルの変更
+
+- プロパティ `IISExpressSSLPort` が個別の数に設定されます。
+- プロパティ `WebProject_DirectoryAccessLevelKey` が 0 に設定されます。**[ディレクトリ データの読み取り]** オプションを選択した場合は、1 に設定されます。
+- プロパティ `IISUrl` が `https://localhost:<port>/` に設定されます。このとき `<port>` は `IISExpressSSLPort` の値と一致します。
+
+## <a name="webconfig-or-appconfig-changes"></a>web.config または app.config の変更
+
+- 次の構成エントリが追加されます。
+
+    ```xml
     <appSettings>
-        <add key="ida:ClientId" value="ClientId from the new Azure AD App" />
+        <add key="ida:ClientId" value="<ClientId from the new Azure AD app>" />
         <add key="ida:AADInstance" value="https://login.microsoftonline.com/" />
-        <add key="ida:Domain" value="The selected Azure AD Domain" />
-        <add key="ida:TenantId" value="The Id of your selected Azure AD Tenant" />
-        <add key="ida:PostLogoutRedirectUri" value="Your project start page" />
+        <add key="ida:Domain" value="<your selected Azure domain>" />
+        <add key="ida:TenantId" value="<the Id of your selected Azure AD tenant>" />
+        <add key="ida:PostLogoutRedirectUri" value="<project start page, such as https://localhost:44335>" />
     </appSettings>
+    ```
 
-### <a name="an-azure-active-directory-ad-app-was-created"></a>Azure Active Directory (AD) アプリが作成された
-ウィザードで選択したディレクトリに Azure AD アプリケーションが作成されました。
+- `System.IdentityModel.Tokens.Jwt` と `Microsoft.IdentityModel.Protocol.Extensions`の `<runtime><assemblyBinding>` ノードの下に `<dependentAssembly>` 要素が追加されます。
 
-## <a name="if-i-checked-disable-individual-user-accounts-authentication-what-additional-changes-were-made-to-my-project"></a>*[個々のユーザー アカウントの認証を無効にする]*がオンになっている場合にプロジェクトに対して行われた追加の変更
-NuGet パッケージのリファレンスが削除されるほか、ファイルが削除およびバックアップされます。 プロジェクトの状態によっては、追加のリファレンスやファイルを手動で削除したり、必要に応じてコードを変更しなければならない場合があります。
+追加の変更 (**[ディレクトリ データの読み取り]** オプションを選択した場合):
 
-### <a name="nuget-package-references-removed-for-those-present"></a>削除される NuGet パッケージのリファレンス (存在する場合)
-* **Microsoft.AspNet.Identity.Core**
-* **Microsoft.AspNet.Identity.EntityFramework**
-* **Microsoft.AspNet.Identity.Owin**
+- `<appSettings>` の下に次の構成エントリが追加されます。
 
-### <a name="code-files-backed-up-and-removed-for-those-present"></a>バックアップおよび削除されるコード ファイル (存在する場合)
-以下の各ファイルがバックアップされ、プロジェクトから削除されます。 バックアップ ファイルは、プロジェクト ディレクトリのルートにある "Backup" フォルダーに配置されます。
+    ```xml
+    <add key="ida:ClientSecret" value="<Azure AD app's new client secret>" />
+    ```
 
-* **App_Start\IdentityConfig.cs**
-* **Controllers\ManageController.cs**
-* **Models\IdentityModels.cs**
-* **Models\ManageViewModels.cs**
+- `<configuration>` の下に次の要素が追加されます。project-mdf-file と project-catalog-id の値は異なります。
 
-### <a name="code-files-backed-up-for-those-present"></a>バックアップされるコード ファイル (存在する場合)
-以下の各ファイルがバックアップされてから置き換えられます。 バックアップ ファイルは、プロジェクト ディレクトリのルートにある "Backup" フォルダーに配置されます。
-
-* **Startup.cs**
-* **App_Start\Startup.Auth.cs**
-* **Controllers\AccountController.cs**
-* **Views\Shared\_LoginPartial.cshtml**
-
-## <a name="if-i-checked-read-directory-data-what-additional-changes-were-made-to-my-project"></a>*[ディレクトリ データの読み取り]*がオンになっている場合にプロジェクトに対して行われた追加の変更
-リファレンスがさらに追加されました。
-
-### <a name="additional-nuget-package-references"></a>NuGet パッケージの追加リファレンス
-* **EntityFramework**
-* **Microsoft.Azure.ActiveDirectory.GraphClient**
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.IdentityModel.Clients.ActiveDirectory**
-* **System.Spatial**
-
-### <a name="additional-net-references"></a>追加の .NET リファレンス
-* **EntityFramework**
-* **EntityFramework.SqlServer**
-* **Microsoft.Azure.ActiveDirectory.GraphClient**
-* **Microsoft.Data.Edm**
-* **Microsoft.Data.OData**
-* **Microsoft.Data.Services.Client**
-* **Microsoft.IdentityModel.Clients.ActiveDirectory**
-* **Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms**
-* **System.Spatial**
-
-### <a name="additional-code-files-were-added-to-your-project"></a>コード ファイルがプロジェクトにさらに追加された
-トークンのキャッシュをサポートするために次の 2 つのファイルが追加されました。**Models\ADALTokenCache.cs** と **Models\ApplicationDbContext.cs**。  Azure Graph API を使用するユーザー プロファイル情報へのアクセスについて説明するために、コント ローラーとビューがさらに追加されました。  これらのファイルは **Controllers\UserProfileController.cs** と **Views\UserProfile\Index.cshtml** です。
-
-### <a name="additional-startup-code-was-added-to-your-project"></a>スタートアップ コードがプロジェクトにさらに追加された
-**startup.auth.cs** で、新しい **OpenIdConnectAuthenticationNotifications** オブジェクトが **OpenIdConnectAuthenticationOptions** の **Notifications** メンバーに追加されました。  これは、OAuth コードを受信できるようにして、アクセス トークンと交換するためのものです。
-
-### <a name="additional-changes-were-made-to-your-appconfig-or-webconfig"></a>app.config または web.config にさらに変更が加えられた
-次の構成エントリがさらに追加されました。
-
-    <appSettings>
-        <add key="ida:ClientSecret" value="Your Azure AD App's new client secret" />
-    </appSettings>
-
-次の構成セクションと接続文字列が追加されました。
-
+    ```xml
     <configSections>
-        <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
-        <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
+      <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+      <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false" />
     </configSections>
+
     <connectionStrings>
-        <add name="DefaultConnection" connectionString="Data Source=(localdb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\aspnet-[AppName + Generated Id].mdf;Initial Catalog=aspnet-[AppName + Generated Id];Integrated Security=True" providerName="System.Data.SqlClient" />
+      <add name="DefaultConnection" connectionString="Data Source=(localdb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\<project-mdf-file>.mdf;Initial Catalog=<project-catalog-id>;Integrated Security=True" providerName="System.Data.SqlClient" />
     </connectionStrings>
+
     <entityFramework>
-        <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
-          <parameters>
-            <parameter value="mssqllocaldb" />
-          </parameters>
-        </defaultConnectionFactory>
-        <providers>
-          <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
-        </providers>
+      <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+        <parameters>
+          <parameter value="mssqllocaldb" />
+        </parameters>
+      </defaultConnectionFactory>
+      <providers>
+        <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer" />
+      </providers>
     </entityFramework>
+    ```
 
+- `Microsoft.Data.Services.Client`、`Microsoft.Data.Edm`、`Microsoft.Data.OData` の `<runtime><assemblyBinding>`ノードの下に `<dependentAssembly>` 要素が追加されます。
 
-### <a name="your-azure-active-directory-app-was-updated"></a>Azure Active Directory アプリが更新された
-Azure Active Directory アプリが更新され、*ディレクトリ データの読み取り*アクセス許可が含まれるようになりました。また、*web.config* ファイルで **ida:ClientSecret** として使用される追加のキーが作成されました。
+## <a name="code-changes-and-additions"></a>コードの変更と追加
 
-## <a name="next-steps"></a>次のステップ
-- [Azure Active Directory の詳細を確認する](https://azure.microsoft.com/services/active-directory/)
+- `[Authorize]` 属性が `Controllers/HomeController.cs` および他のすべての既存コントローラーに追加されます。
 
+- Azure AD 認証のスタートアップ ロジックを含む認証スタートアップ クラス `App_Start/Startup.Auth.cs` が追加されます。 **[ディレクトリ データの読み取り]** オプションを選択した場合は、OAuth コードを受け取ってアクセス トークンと交換するコードがこのファイルにも含まれます。
+
+- コントローラー クラス `Controllers/AccountController.cs` が追加されます。これには `SignIn` メソッドと `SignOut` メソッドが含まれます。
+
+- 部分ビュー `Views/Shared/_LoginPartial.cshtml` が追加されます。これには、`SignIn` と `SignOut` のアクション リンクが含まれます。
+
+- 部分ビュー `Views/Account/SignoutCallback.cshtml` が含まれます。これにはサインアウト UI の HTML が含まれます。
+
+- クラスが既に存在する場合は、`Startup.Configuration` メソッドが `ConfigureAuth(app)` の呼び出しを含むように更新されます。それ以外の場合は、そのメソッドを呼び出す `Startup` クラスが追加されます。
+
+- `Connected Services/AzureAD/ConnectedService.json` (Visual Studio 2017) または `Service References/Azure AD/ConnectedService.json` (Visual Studio 2015) が追加されます。これらには Visual Studio が接続済みサービスの追加を追跡するために使用する情報が含まれます。
+
+- **[ディレクトリ データの読み取り]** オプションを選択した場合は、トークンのキャッシュをサポートするために `Models/ADALTokenCache.cs` と `Models/ApplicationDbContext.cs` が追加されます。 Azure Graph API (`Controllers/UserProfileController.cs`、`Views/UserProfile/Index.cshtml`、`Views/UserProfile/Relogin.cshtml`) を使用するユーザー プロファイル情報へのアクセスについて説明するために、コント ローラーとビューも追加されました。
+
+### <a name="file-backup-visual-studio-2015"></a>ファイル バックアップ (Visual Studio 2015)
+
+接続済みサービスを追加するとき、Visual Studio 2015 は変更されるファイルや削除されるファイルをバックアップします。 影響を受けるすべてのファイルがフォルダー `Backup/AzureAD` に保存されます。 Visual Studio 2017 ではバックアップは作成されません。
+
+- `Startup.cs`
+- `App_Start\IdentityConfig.cs`
+- `App_Start\Startup.Auth.cs`
+- `Controllers\AccountController.cs`
+- `Controllers\ManageController.cs`
+- `Models\IdentityModels.cs`
+- `Models\ManageViewModels.cs`
+- `Views\Shared\_LoginPartial.cshtml`
+
+## <a name="changes-on-azure"></a>Azure での変更
+
+- 接続済みサービスを追加するときに選択したドメインに Azure AD アプリケーションが作成されます。
+- **[ディレクトリ データの読み取り]** オプションを選択した場合は、このアクセス許可を含むようにアプリが更新されます。
+
+[Azure Active Directory の詳細を確認します](https://azure.microsoft.com/services/active-directory/)。
+
+## <a name="next-steps"></a>次の手順
+
+- [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)
+- [ASP.NET Web アプリへの "Microsoft でサインイン" の追加](guidedsetups/active-directory-aspnetwebapp-v1.md)

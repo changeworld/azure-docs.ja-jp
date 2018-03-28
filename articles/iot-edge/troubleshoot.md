@@ -10,11 +10,11 @@ ms.date: 12/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7b9f9f8295aac0920ae4726289c535aae12c4482
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4d6dd0d46d909acfbfc04a23be74a571953ce660
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -30,10 +30,16 @@ ms.lasthandoff: 03/08/2018
    docker logs <container name>
    ```
 
-* Edge ハブを通過したメッセージを確認し、ランタイム コンテナーからの詳細なログでデバイスのプロパティの更新についての洞察を収集します。 クイック スタートの記事に従っている場合は、必要に応じて "--auto-cert-gen-force-no-passwords" オプションを追加してください。
+* Edge ハブを通過したメッセージを確認し、ランタイム コンテナーからの詳細なログでデバイスのプロパティの更新についての洞察を収集します。
 
    ```cmd
    iotedgectl setup --connection-string "{device connection string}" --runtime-log-level debug
+   ```
+   
+* iotedgectl コマンドからの詳細ログを確認します。
+
+   ```cmd
+   iotedgectl --verbose DEBUG <command>
    ```
 
 * 接続の問題が発生している場合は、デバイスの接続文字列など、Edge デバイスの環境変数を調べます。

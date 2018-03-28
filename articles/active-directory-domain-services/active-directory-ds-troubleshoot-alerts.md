@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory Domain Services: アラートのトラブルシューティング | Microsoft Docs"
-description: "Azure AD Domain Services のアラートのトラブルシューティング"
+title: 'Azure Active Directory Domain Services: アラートのトラブルシューティング | Microsoft Docs'
+description: Azure AD Domain Services のアラートのトラブルシューティング
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 54319292-6aa0-4a08-846b-e3c53ecca483
 ms.service: active-directory-ds
 ms.workload: identity
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/28/2018
 ms.author: ergreenl
-ms.openlocfilehash: 2f2ebb1dcc8bed86348389d6a5a7c274194efde0
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: e4b8f31fe3eb79f9b38ae01af598290582a2cde3
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-domain-services---troubleshoot-alerts"></a>Azure AD Domain Services - アラートのトラブルシューティング
 この記事では、管理対象ドメインで発生する可能性があるすべてのアラート向けのトラブルシューティング ガイドを提供します。
 
 
-表示されたアラート ID またはメッセージに対応するトラブルシューティング手順を選択してください。
+アラートの ID またはメッセージに対応するトラブルシューティング手順を選択してください。
 
 | **アラート ID** | **アラート メッセージ** | **解決策** |
 | --- | --- | :--- |
@@ -34,12 +34,12 @@ ms.lasthandoff: 03/02/2018
 | AADDS102 | "*Azure AD Domain Services が正常に機能するために必要なサービス プリンシパルが Azure AD ディレクトリから削除されています。この構成は、管理対象ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。*" | [不足しているサービス プリンシパル](active-directory-ds-troubleshoot-service-principals.md) |
 | AADDS103 | "*Azure AD Domain Services を有効にしている仮想ネットワークの IP アドレス範囲がパブリック IP 範囲内にあります。Azure AD Domain Services は、プライベート IP アドレス範囲にある仮想ネットワークで有効にする必要があります。この構成は、管理対象ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。*" | [アドレスがパブリック IP 範囲内である](#aadds103-address-is-in-a-public-ip-range) |
 | AADDS104 | "*この管理対象ドメインのドメイン コントローラーに到達できません。これは、仮想ネットワークに構成されているネットワーク セキュリティ グループ (NSG) が管理対象ドメインへのアクセスをブロックしている場合に発生する可能性があります。他の理由として、インターネットからの着信トラフィックをブロックしているユーザー定義ルートが存在する可能性があります。*" | [ネットワーク エラー](active-directory-ds-troubleshoot-nsg.md) |
-| AADDS500 | "*管理対象ドメインが Azure AD と最後に同期されたのは {0} です。ユーザーが管理対象ドメインでサインインできない、またはグループ メンバーシップが Azure AD と同期されていない可能性があります。*" | [同期がしばらく行われていない](#aadds500-synchronization-has-not-completed-in-a-while) |
-| AADDS501 | "*管理対象ドメインが最後にバックアップされたのは XX です。*" | [バックアップがしばらく行われていない](#aadds501-a-backup-has-not-been-taken-in-a-while) |
+| AADDS105 | "*アプリケーション ID "d87dcbc6-a371-462e-88e3-28ad15ec4e64" のサービス プリンシパルは削除されましたが、再作成できました。このサービス プリンシパルは、パスワード同期のために使用されるもう 1 つのサービス プリンシパルと 1 つのアプリケーションを管理します。管理対象のサービス プリンシパルとアプリケーションは、新たに作成されるサービス プリンシパルの元では権限がありません。同期証明書が失効すると期限切れになります。つまり、新しく作成されるサービス プリンシパルは、管理対象の古いアプリケーションを管理できなくなり、AAD とオブジェクトの同期が影響を受けます。*" | [パスワード同期アプリケーションが古い](active-directory-ds-troubleshoot-service-principals.md#alert-aadds105-password-synchronization-application-is-out-of-date) |
+| AADDS500 | "*管理対象ドメインが Azure AD と最後に同期されたのは [date] です。ユーザーが管理対象ドメインでサインインできない、またはグループ メンバーシップが Azure AD と同期されていない可能性があります。*" | [同期がしばらく行われていない](#aadds500-synchronization-has-not-completed-in-a-while) |
+| AADDS501 | "*管理対象ドメインが最後にバックアップされたのは [date] です。*" | [バックアップがしばらく行われていない](#aadds501-a-backup-has-not-been-taken-in-a-while) |
 | AADDS502 | "*管理対象ドメインのセキュリティで保護された LDAP 証明は XX に有効期限が切れます。*" | [セキュリティで保護された LDAP 証明書の期限切れ間近](active-directory-ds-troubleshoot-ldaps.md#aadds502-secure-ldap-certificate-expiring) |
 | AADDS503 | "*管理対象ドメインは、ドメインに関連付けられている Azure サブスクリプションがアクティブでないため中断されます。*" | [無効にしたサブスクリプションが原因の中断](#aadds503-suspension-due-to-disabled-subscription) |
 | AADDS504 | "*管理対象ドメインは、無効な構成により中断されます。サービスは、管理対象ドメインのドメイン コントローラーの管理、パッチ適用、または更新を長い間行うことができませんでした。*" | [無効な構成が原因の中断](#aadds504-suspension-due-to-an-invalid-configuration) |
-
 
 
 ## <a name="aadds100-missing-directory"></a>AADDS100: 不足しているディレクトリ
@@ -104,7 +104,7 @@ ms.lasthandoff: 03/02/2018
 
 **アラート メッセージ:**
 
-"*管理対象ドメインが Azure AD と最後に同期されたのは {0} です。ユーザーが管理対象ドメインでサインインできない、またはグループ メンバーシップが Azure AD と同期されていない可能性があります。*"
+"*管理対象ドメインが Azure AD と最後に同期されたのは [date] です。ユーザーが管理対象ドメインでサインインできない、またはグループ メンバーシップが Azure AD と同期されていない可能性があります。*"
 
 **解決策:**
 
@@ -115,7 +115,7 @@ ms.lasthandoff: 03/02/2018
 
 **アラート メッセージ:**
 
-"*管理対象ドメインが最後にバックアップされたのは XX です。*"
+"*管理対象ドメインが最後にバックアップされたのは [date] です。*"
 
 **解決策:**
 

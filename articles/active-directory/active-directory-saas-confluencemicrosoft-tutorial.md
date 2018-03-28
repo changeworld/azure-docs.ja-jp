@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と Confluence SAML SSO by Microsoft の統合 | Microsoft Docs"
-description: "Azure Active Directory と Confluence SAML SSO by Microsoft の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と Confluence SAML SSO by Microsoft の統合 | Microsoft Docs'
+description: Azure Active Directory と Confluence SAML SSO by Microsoft の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 02/08/2018
 ms.author: jeedes
-ms.openlocfilehash: 4151811a74fc0e58f6171e11d77e070f3cb40f95
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5b81ca4f5a9f30b2882d86639ca9386e7bbc09e8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-confluence-saml-sso-by-microsoft"></a>チュートリアル: Azure Active Directory と Confluence SAML SSO by Microsoft の統合
 
@@ -136,7 +136,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
 4. **メタデータ** URL を生成するには、次の手順を実行します。
 
-    a. **[アプリの登録]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[アプリの登録]** をクリックします。
     
     ![[Configure Single Sign-On]](./media/active-directory-saas-Confluencemicrosoft-tutorial/appregistrations.png)
    
@@ -164,7 +164,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
     
     ![[Configure Single Sign-On]](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon1.png)
 
-8. [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=56503)からプラグインをダウンロードします。 **[アドオンのアップロード]** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/en-us/servicesagreement/)の対象です。 
+8. [Microsoft ダウンロード センター](https://www.microsoft.com/en-us/download/details.aspx?id=56503)からプラグインをダウンロードします。 **[Upload add-on]\(アドオンのアップロード\)** メニューを使用して、Microsoft が提供しているプラグインを手動でアップロードします。 プラグインのダウンロードは、[Microsoft サービス規約](https://www.microsoft.com/en-us/servicesagreement/)の対象です。 
     
     ![[Configure Single Sign-On]](./media/active-directory-saas-Confluencemicrosoft-tutorial/addon12.png)
 
@@ -179,7 +179,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
     > [!TIP]
     > メタデータの解決でエラーが発生しないように、アプリに対してマップされている証明書が 1 つしかないようにします。 証明書が複数ある場合は、メタデータの解決の際に管理者に対してエラーが表示されます。
 
-    a. **[Metadata URL]\(メタデータ URL\)** に Azure AD から生成した**メタデータ URL** を貼り付け、**[Resolve]\(解決\)** をクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Metadata URL]\(メタデータ URL\)** に Azure AD から生成した**メタデータ URL** を貼り付け、**[Resolve]\(解決\)** をクリックします。 IdP メタデータ URL が読み取られ、すべてのフィールド情報が設定されます。
 
     b. **識別子、応答 URL、サインオン URL** の値をコピーして、Azure Portal の **[Confluence SAML SSO by Microsoft のドメインと URL]** セクションにある **[識別子]、[応答 URL]、[サインオン URL]** ボックスにそれぞれ貼り付けます。
 
@@ -200,6 +200,8 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
     i. **[Save (保存)]** ボタンをクリックして、設定を保存します。
 
+    > [!NOTE]
+    > インストールとトラブルシューティングについて詳しくは、[MS Confluence SSO コネクタ管理者ガイド](ms-confluence-jira-plugin-adminguide.md)のページをご覧ください。[よくあるご質問](ms-confluence-jira-plugin-faq.md)も役立ちます。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
@@ -228,7 +230,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-confluencemicrosoft-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -252,7 +254,7 @@ Confluence SAML SSO by Microsoft で Azure AD のシングル サインオンを
 
     ![従業員の追加](./media/active-directory-saas-confluencemicrosoft-tutorial/user2.png) 
 
-    a. **[Username]\(ユーザー名\)** ボックスに、ユーザーのメール (Britta Simon など) を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Username]\(ユーザー名\)** ボックスに、ユーザーのメール (Britta Simon など) を入力します。
 
     b. **[Full Name]\(フル ネーム\)** ボックスに、ユーザーの氏名 (Britta Simon など) を入力します。
 

@@ -1,6 +1,6 @@
 ---
-title: "Python を使用して Azure Database for MySQL に接続する"
-description: "このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Python コード サンプルをいくつか紹介します。"
+title: Python を使用して Azure Database for MySQL に接続する
+description: このクイックスタートでは、Azure Database for MySQL に接続してデータを照会するために使用できる、Python コード サンプルをいくつか紹介します。
 services: mysql
 author: jasonwhowell
 ms.author: jasonh
@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 02/28/2018
-ms.openlocfilehash: 4003c1258fcc0a6d04c4ae8d234eba4d0224b8a0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 08725493f9d050da762a6527363b77af6eeed6e6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Python を使用した接続とデータの照会
 このクイックスタートでは、[Python](https://python.org) を使用して Azure Database for MySQL に接続する方法を紹介します。 Mac OS、Ubuntu Linux、Windows の各プラットフォームから、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除しています。 このトピックでは、Python を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
@@ -37,7 +37,7 @@ ms.lasthandoff: 02/28/2018
 1. 一般に、Linux (Ubuntu) では、既定の環境の一部として Python がインストールされます。
 2. Bash シェルを起動して Python のインストールを確認します。 大文字の V スイッチを使用して `python -V` コマンドを実行し、バージョン番号を確認してください。
 3. PIP のインストールを確認します。`pip show pip -V` コマンドを実行してバージョン番号を確認してください。 
-4. 一部のバージョンの Python には PIP が含まれている場合があります。 PIP がインストールされていない場合は、`sudo apt-get install python-pip` コマンドを実行して [PIP](https://pip.pypa.io/en/stable/installing/) パッケージをインストールしてください。
+4. 一部のバージョンの Python には PIP が含まれている場合があります。 PIP がインストールされていない場合は、`sudo apt-get install python-pip` コマンドを実行して、[PIP](https://pip.pypa.io/en/stable/installing/) パッケージをインストールしてください。
 5. `pip install -U pip` コマンドを実行して PIP を最新バージョンに更新します。
 6. 次の PIP コマンドを使用して、MySQL Connector for Python とその依存関係をインストールします。
 

@@ -8,11 +8,12 @@ ms.service: sql-database
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: c174f5120ba2e5bf8018cce0f0e34c1fc3f8eb3f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.custom: data-sync
+ms.openlocfilehash: a24e16abd78a89d6143c00fc08a3ef91d7dd8202
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync-preview"></a>SQL データ同期 (プレビュー) に関する問題のトラブルシューティング
 
@@ -239,7 +240,7 @@ SQL Server をホストしているコンピューターで、エージェント
 
 -   SQL データ同期 (プレビュー) Windows サービスが実行されている。  
 -   [SQL Data Sync (Preview) Preview]\(SQL データ同期 (プレビュー) プレビュー\) Windows サービスのサービス アカウントがネットワークにアクセスできる。    
--   クライアント エージェントがロケーター サービスに接続できる。 次のレジストリ キーの値が https://locator.sync.azure.com/LocatorServiceApi.svc であることを確認します。  
+-   クライアント エージェントがロケーター サービスに接続できる。 次のレジストリキーの値が https://locator.sync.azure.com/LocatorServiceApi.svc: であることを確認します。  
     -   x86 コンピューターの場合: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`  
     -   x64 コンピューターの場合: `HKEY\_LOCAL\_MACHINE\\SOFTWARE\\Wow6432Node\\Microsoft\\SQL Azure Data Sync\\LOCATORSVCURI`
 

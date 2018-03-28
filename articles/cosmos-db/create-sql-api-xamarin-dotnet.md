@@ -1,31 +1,34 @@
 ---
-title: "Azure Cosmos DB: Xamarin と Facebook 認証を使用した Web アプリの構築 | Microsoft Docs"
-description: "Azure Cosmos DB への接続とデータの照会に使用できる .NET コード サンプルについて説明します"
+title: 'Azure Cosmos DB: Xamarin と Facebook 認証を使用した Web アプリの構築 | Microsoft Docs'
+description: Azure Cosmos DB への接続とデータの照会に使用できる .NET コード サンプルについて説明します
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: dfaa8d05d999f5528daff875d89e38d4fc442992
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 5074034b18bdf842c34b1208e6cc6312d7a3e6b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: .NET、Xamarin、Facebook 認証を使用した Web アプリの構築
 
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
+[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
-Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
+
+> [!NOTE]
+> CosmosDB を含め、さまざまな Azure プランを表示する基本的なサンプル Xamarin アプリのサンプル コードは、[こちら](https://github.com/xamarinhq/app-geocontacts)の GitHub でご覧いただけます。 このアプリでは、地理的に分散した連絡先を確認し、それらの連絡先がその場所を更新できるようにする方法が紹介されています。
 
 このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 次に、[SQL .NET API](sql-api-sdk-dotnet.md)、[Xamarin](https://www.xamarin.com/)、および Azure Cosmos DB 認証エンジンで構築された ToDo リストの Web アプリケーションを構築およびデプロイします。 ToDo リストの Web アプリでは、ユーザーが Facebook 認証を使用してログインし、独自の ToDo 項目を管理できるようにする、ユーザーごとのデータ パターンを実装します。
 
@@ -48,7 +51,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ここで、GitHub から SQL API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. git ターミナル ウィンドウ (git bash など) を開き、`cd` を実行して作業ディレクトリに移動します。  
+1. git ターミナル ウィンドウ (git bash など) を開き、`cd` を実行して作業ディレクトリに移動します。
 
 2. 次のコマンドを実行して、サンプル レポジトリを複製します。 
 
@@ -56,7 +59,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
     git clone https://github.com/Azure/azure-documentdb-dotnet.git
     ```
 
-3. 次に、Visual Studio の samples/xamarin/UserItems/xamarin.forms フォルダーから DocumentDBTodo.sln ファイルを開きます。 
+3. 次に、Visual Studio の samples/xamarin/UserItems/xamarin.forms フォルダーから DocumentDBTodo.sln ファイルを開きます。
 
 ## <a name="review-the-code"></a>コードの確認
 
@@ -75,7 +78,7 @@ Xamarin フォルダーのコードには以下が含まれています。
 * クライアント アプリは、リソース トークンを使用してユーザーの ToDo 項目にアクセスします。
 
 ![todo アプリとサンプル データ](./media/create-sql-api-xamarin-dotnet/tokenbroker.png)
-    
+
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
@@ -90,7 +93,7 @@ Xamarin フォルダーのコードには以下が含まれています。
 
     `<add key="accountUrl" value="{Azure Cosmos DB account URL}"/>`
 
-4. 次に、ポータルから PRIMARY KEY 値をコピーし、Web.config の accountKey の値に設定します。 
+4. 次に、ポータルから PRIMARY KEY 値をコピーし、Web.config の accountKey の値に設定します。
 
     `<add key="accountKey" value="{Azure Cosmos DB secret}"/>`
 
@@ -109,7 +112,7 @@ Xamarin フォルダーのコードには以下が含まれています。
 
 4. Xamarin プロジェクトを開き、TodoItemManager.cs に移動します。 accountURL、collectionId、databaseId の値を入力し、リソース トークン ブローカーの Web サイトの基本 https URL として resourceTokenBrokerURL の値を入力します。
 
-5. [[How to configure your App Service application to use Facebook login] (Facebook ログインを使用するように App Service アプリケーションを構成する方法)](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md) チュートリアルを完了し、Facebook 認証をセットアップして ResourceTokenBroker の Web サイトを構成します。
+5. [[How to configure your App Service application to use Facebook login]\(Facebook ログインを使用するように App Service アプリケーションを構成する方法\)](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md) チュートリアルを完了し、Facebook 認証をセットアップして ResourceTokenBroker の Web サイトを構成します。
 
     Xamarin アプリを実行します。
 
@@ -119,14 +122,14 @@ Xamarin フォルダーのコードには以下が含まれています。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。 
+このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。
 
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックしてから、作成したリソースの名前をクリックします。 
+1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
-このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、Xamarin アプリを構築およびデプロイする方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
+このクイックスタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、Xamarin アプリを構築およびデプロイする方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)

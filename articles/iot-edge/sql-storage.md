@@ -9,11 +9,11 @@ ms.author: kgremban, ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: ce3c3abd00dba23887b5f811af6cab8d2c83323d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 792e754b84f1dc03a32780ed94d274c833be68f5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server データベースを使用したエッジでのデータの格納
 
@@ -67,7 +67,7 @@ x64 プロセッサ アーキテクチャでは Windows と Linux の両方の�
             "status": "running",
             "restartPolicy": "always",
             "settings": {
-              "image": "localhost:5000/filterfunction:latest",
+              "image": "<docker registry address>/filterfunction:latest",
               "createOptions": "{}"
             }
           },
@@ -94,7 +94,12 @@ x64 プロセッサ アーキテクチャでは Windows と Linux の両方の�
         }
    ```
 
-3. 実行しているオペレーティング システムに応じて、次のコードで SQL モジュールの設定を更新します。 
+3. `<docker registry address>` を、終了したチュートリアル「[Azure 関数を IoT Edge モジュールとして展開する - プレビュー](https://docs.microsoft.com/en-us/azure/iot-edge/tutorial-deploy-function)」で入力したアドレスに置き換えます。
+
+   >[!NOTE]
+   >コンテナー レジストリ アドレスは、レジストリからコピーしたログイン サーバーと同じです。 `<your container registry name>.azurecr.io` の形式にする必要があります。
+
+4. 実行しているオペレーティング システムに応じて、次のコードで SQL モジュールの設定を更新します。 
 
    * Windows:
 
@@ -110,11 +115,11 @@ x64 プロセッサ アーキテクチャでは Windows と Linux の両方の�
       "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"/var/opt/mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-4. ファイルを保存します。 
-5. VS Code コマンド パレットで、**[Edge: Create deployment for Edge device]\(Edge: Edge デバイスのデプロイの作成\)** を選択します。 
-6. IoT Edge デバイス ID を選択します。
-7. 更新した `deployment.json` ファイルを選択します。 出力ウィンドウに、デプロイの対応する出力が表示されます。 
-8. Edge ランタイムを開始するには、コマンド パレットで **[Edge: Start Edge]\(Edge: Edge の開始\)** を選択します。
+5. ファイルを保存します。 
+6. VS Code コマンド パレットで、**[Edge: Create deployment for Edge device]\(Edge: Edge デバイスのデプロイの作成\)** を選択します。 
+7. IoT Edge デバイス ID を選択します。
+8. 更新した `deployment.json` ファイルを選択します。 出力ウィンドウに、デプロイの対応する出力が表示されます。 
+9. Edge ランタイムを開始するには、コマンド パレットで **[Edge: Start Edge]\(Edge: Edge の開始\)** を選択します。
 
 >[!TIP]
 >運用環境で SQL Server コンテナーを作成するときに、[既定のシステム管理者パスワードを変更](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password)する必要があります。

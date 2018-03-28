@@ -1,8 +1,8 @@
 ---
-title: "Microsoft Dynamics CRM と Azure Application Insights | Microsoft Docs"
-description: "Application Insights を使用して Microsoft Dynamics CRM Online からテレメトリを取得します。 設定、データの取得、視覚化、およびエクスポートをしてみましょう。"
+title: Microsoft Dynamics CRM と Azure Application Insights | Microsoft Docs
+description: Application Insights を使用して Microsoft Dynamics CRM Online からテレメトリを取得します。 設定、データの取得、視覚化、およびエクスポートをしてみましょう。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mazharmicrosoft
 manager: carmonm
 ms.assetid: 04c66338-687e-49e5-9975-be935f98f156
@@ -11,13 +11,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 04/16/2017
+ms.date: 03/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 759dac681592d0e5951e09638533b93c6348d899
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: c5a651a24fcf5d1fc64922483045c08321a3b89c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="walkthrough-enabling-telemetry-for-microsoft-dynamics-crm-online-using-application-insights"></a>チュートリアル: Application Insights を使用して Microsoft Dynamics CRM Online のテレメトリを有効にする
 この記事では、[Azure Application Insights](https://azure.microsoft.com/services/application-insights/) を使用して [Microsoft Dynamics CRM Online](https://www.dynamics.com/) からテレメトリ データを取得する方法について説明します。 アプリケーションに Application Insights のスクリプトを追加し、データをキャプチャし、データを視覚化するすべてのプロセスを見てみましょう。
@@ -33,12 +33,12 @@ ms.lasthandoff: 11/01/2017
 ### <a name="create-an-application-insights-resource-in-azure"></a>Azure で Application Insights のリソースを作成する
 1. [Microsoft Azure のアカウント](http://azure.com/pricing)を取得します。 
 2. [Azure Portal](https://portal.azure.com) にサインインし、Application Insights の新しいリソースを追加します。 これは、データを処理し表示する場所になります。
-   
+
     ![[+]、[開発者向けサービス]、[Application Insights] をクリックします。](./media/app-insights-sample-mscrm/01.png)
-   
+
     アプリケーションの種類として ASP.NET を選択します。
 3. [はじめに] ページを開き、[クライアント側アプリケーションの監視と診断] を開きます。
-   
+
     ![Web ページに挿入するためのコード スニペット](./media/app-insights-sample-mscrm/03.png)
 
 **このコードのページは開いたまま** 、別のブラウザー ウィンドウで次の手順を行います。 このコードはすぐに必要になります。 
@@ -46,41 +46,38 @@ ms.lasthandoff: 11/01/2017
 ### <a name="create-a-javascript-web-resource-in-microsoft-dynamics-crm"></a>Microsoft Dynamics CRM で JavaScript の Web リソースを作成する
 1. CRM Online インスタンスを開き、管理者権限でログインします。
 2. Microsoft Dynamics CRM で、[設定]、[カスタマイズ]、[システムのカスタマイズ] の順に開きます。
-   
-    ![Microsoft Dynamics CRM 設定](./media/app-insights-sample-mscrm/04.png)
-   
-    ![[設定]、[カスタマイズ]](./media/app-insights-sample-mscrm/05.png)
 
-    ![[システムのカスタマイズ] オプション](./media/app-insights-sample-mscrm/06.png)
+    ![Microsoft Dynamics CRM 設定](./media/app-insights-sample-mscrm/00001.png)
+
+    ![[設定]、[カスタマイズ]](./media/app-insights-sample-mscrm/00002.png)
 
 1. JavaScript リソースを作成します。
-   
+
     ![新しい [Web リソース] ダイアログ](./media/app-insights-sample-mscrm/07.png)
-   
-    名前を付け、**[ スクリプト (JScript) ]** を選択してテキスト エディターを開きます。
-   
-    ![テキスト エディターを開く](./media/app-insights-sample-mscrm/08.png)
+
+    名前を付け、**[スクリプト (JScript)]** を選択してテキスト エディターを開きます。
+
+    ![テキスト エディターを開く](./media/app-insights-sample-mscrm/00004.png)
 2. Application Insights からコードをコピーします。 コピーの際はスクリプト タグを無視します。 次のスクリーン ショットを参照してください。
-   
-    ![インストルメンテーション キーを設定する](./media/app-insights-sample-mscrm/09.png)
-   
+
+    ![インストルメンテーション キーを設定する](./media/app-insights-sample-mscrm/00005.png)
+
     コードには Application Insights リソースを識別するインストルメンテーション キーが含まれています。
 3. 保存して発行します。
-   
-    ![保存して発行する](./media/app-insights-sample-mscrm/10.png)
+
+    ![保存して発行する](./media/app-insights-sample-mscrm/00006.png)
 
 ### <a name="instrument-forms"></a>フォームをインストルメント化する
 1. Microsoft CRM Online で Account フォームを開きます。
-   
-    ![[取引先企業] フォーム](./media/app-insights-sample-mscrm/11.png)
+
+    ![[取引先企業] フォーム](./media/app-insights-sample-mscrm/00007.png)
 2. フォームのプロパティを開きます。
-   
-    ![[フォームのプロパティ]](./media/app-insights-sample-mscrm/12.png)
+
+    ![[フォームのプロパティ]](./media/app-insights-sample-mscrm/00008.png)
 3. 作成した JavaScript の Web リソースを追加します。
-   
+
     ![[追加] メニュー](./media/app-insights-sample-mscrm/13.png)
-   
-    ![Web リソースを追加する](./media/app-insights-sample-mscrm/14.png)
+
 4. 保存し、フォームのカスタマイズ内容を発行します。
 
 ## <a name="metrics-captured"></a>キャプチャされるメトリック

@@ -1,23 +1,23 @@
 ---
-title: Azure Machine Learning サービス (プレビュー) のモデル デプロイ チュートリアル | Microsoft Docs
-description: このチュートリアルでは、Azure Machine Learning サービス (プレビュー) の使い方をエンド ツー エンドで詳しく説明します。 これは 3 部構成の第 3 部で、デプロイ モデルについて取り上げています。
+title: Azure Machine Learning サービスのモデル デプロイ チュートリアル
+description: このチュートリアルでは、Azure Machine Learning サービスの使い方をエンド ツー エンドで詳しく説明します。 これは 3 部構成の第 3 部で、デプロイ モデルについて取り上げています。
 services: machine-learning
-author: raymondl
-ms.author: raymondl, j-martens, aashishb
+author: aashishb
+ms.author: aashishb
 manager: mwinkle
-ms.reviewer: jmartens, jasonwhowell, mldocs, gcampanella
+ms.reviewer: jmartens, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
-ms.date: 3/7/2018
-ms.openlocfilehash: 13ddc0ef8c7eac86e6cd7abb684ce35ae18fba84
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.date: 3/13/2018
+ms.openlocfilehash: 87d1e605bfd7603e4e07f6b427033fe2c1d2b83e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="tutorial-classify-iris-part-3-deploy-a-model"></a>チュートリアル: あやめの分類 (パート 3): モデルをデプロイする
+# <a name="tutorial-3-classify-iris-deploy-a-model"></a>チュートリアル 3: あやめの分類: モデルをデプロイする
 Azure Machine Learning (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションであり、プロフェッショナルなデータ サイエンティストを対象としています。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
 
 このチュートリアルは、**3 部構成のシリーズのパート 3** になります。 チュートリアルのこのパートでは、Machine Learning (プレビュー) を使って次の作業を行います。
@@ -30,17 +30,15 @@ Azure Machine Learning (プレビュー) は、データ サイエンスと高�
 > * リアルタイム Web サービスを実行する。
 > * 出力された BLOB データを確認する。 
 
-このチュートリアルでは、経時的な変化を伴わない[あやめデータ セット](https://en.wikipedia.org/wiki/iris_flower_data_set)を使用します。 スクリーンショットは Windows のものですが、Mac OS を使用した場合も大きな違いはありません。
-
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+このチュートリアルでは、経時的な変化を伴わない[あやめデータ セット](https://en.wikipedia.org/wiki/Iris_flower_data_set)を使用します。 
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアル シリーズのパート 1 とパート 2 を完了してください。
 
-   * [データの準備に関するチュートリアル](tutorial-classifying-iris-part-1.md)に従って Machine Learning リソースを作成し、Azure Machine Learning Workbench アプリケーションをインストールします。
-   * [モデルの構築に関するチュートリアル](tutorial-classifying-iris-part-2.md)に従って、Machine Learning でロジスティック回帰モデルを作成します。
-
-Docker エンジンをインストールし、ローカルで実行している必要があります。 または、Azure の Azure Container Service クラスターにデプロイすることもできます。
+このチュートリアルを完了するには、次のものが必要です。
+- Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
+- 実験アカウントと Azure Machine Learning Workbench (こちらの[クイック スタート](quickstart-installation.md)の説明に従ってインストールされていること)
+- [チュートリアルのパート 2](tutorial-classifying-iris-part-2.md) で得られた分類モデル
+- Docker エンジン (ローカルにインストールされ、実行されていること)
 
 ## <a name="download-the-model-pickle-file"></a>モデルの pickle ファイルをダウンロードする
 このチュートリアルの前のパートでは、ローカルの Machine Learning Workbench で **iris_sklearn.py** スクリプトを実行しました。 その際、Python オブジェクトのシリアル化パッケージとして広く使われている [pickle](https://docs.python.org/3/library/pickle.html) を使ってロジスティック回帰モデルをシリアル化しました。 
@@ -91,7 +89,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 4. スキーマ ファイルを取得するには、このスクリプトを実行します。 コマンド バーで **[local]** 環境と **[score_iris.py]** スクリプトを選択し、**[実行]** を選択します。 
 
-5. このスクリプトを実行すると、**[出力]** セクションに JSON ファイルが作成されます。このファイルによって、モデルに必要な入力データ スキーマがキャプチャされます。
+   このスクリプトを実行すると、**[出力]** セクションに JSON ファイルが作成されます。このファイルによって、モデルに必要な入力データ スキーマがキャプチャされます。
 
 6. **[プロジェクト ダッシュボード]** ウィンドウの右側の **[ジョブ]** ウィンドウに注目します。 最新の **score_iris.py** ジョブが緑色の **[完了]** 状態になるまで待ちます。 次に、最新のジョブ実行の **score_iris.py** というハイパーリンクを選択すると、実行の詳細が表示されます。 
 
@@ -128,7 +126,10 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 "_ローカル モード_" は、開発とテストに使うことができます。 以降の手順でモデルを運用可能な状態にするためには、Docker エンジンがローカルで実行されている必要があります。 各コマンドの末尾で `-h` フラグを使用すると、対応するヘルプ メッセージを表示することができます。
 
 >[!NOTE]
->ローカルの Docker エンジンがない場合でも、デプロイ用のクラスターを Azure に作成することで手順を続行できます。 それ以上料金が発生しないよう、クラスターはチュートリアル後に必ず削除してください。
+>Docker エンジンがローカルで実行されていない場合、デプロイ用のクラスターを Azure に作成することで手順を続行できます。 クラスターは再利用するために残しておくか、チュートリアルを終えた後は、それ以上料金が発生しないよう削除してください。
+
+>[!NOTE]
+>ローカルにデプロイされた Web サービスは、Azure Portal のサービス一覧には表示されません。 これらは、ローカル コンピューター上の Docker で実行されます。
 
 1. コマンド ライン インターフェイス (CLI) を開きます。
    Machine Learning Workbench アプリケーションの **[ファイル]** メニューの **[コマンド プロンプトを開く]** を選択してください。

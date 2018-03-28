@@ -1,24 +1,18 @@
 ---
-title: "Start/Stop VMs during off-hours ソリューション (プレビュー) | Microsoft Docs"
-description: "この VM 管理ソリューションは、スケジュールに従って Azure Resource Manager 仮想マシンを起動および停止し、Log Analytics からプロアクティブに監視します。"
+title: Start/Stop VMs during off-hours ソリューション (プレビュー)
+description: この VM 管理ソリューションは、スケジュールに従って Azure Resource Manager 仮想マシンを起動および停止し、Log Analytics からプロアクティブに監視します。
 services: automation
-documentationCenter: 
-authors: eslesar
-manager: carmonm
-editor: 
-ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 12/18/2017
-ms.author: magoedte
-ms.openlocfilehash: 7ffd424de2a7224b5ac50fa228289c5397092b2e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+manager: carmonm
+ms.openlocfilehash: ec15859a92527c4e084075b40d3439d7a19fea1a
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="startstop-vms-during-off-hours-solution-preview-in-azure-automation"></a>Azure Automation の Start/Stop VMs during off-hours ソリューション (プレビュー)
 
@@ -79,7 +73,7 @@ Start/Stop VMs during off-hours ソリューションでは、ユーザー定義
 |ScheduledStartStop_Parent | Action: Stop または Start <br> WhatIf: True または False | サブスクリプション内のすべての VM に影響します。 こうしたターゲット リソース グループでのみ実行されるように、**External_Start_ResourceGroupNames** と **External_Stop_ResourceGroupNames** を編集します。 **External_ExcludeVMNames** 変数を更新することで、特定の VM を除外することもできます。 *WhatIf* は他の Runbook と同様に動作します。|  
 |SequencedStartStop_Parent | Action: Stop または Start <br> WhatIf: True または False | 起動/停止アクティビティのシーケンスを指定する各 VM に、**SequenceStart** および **SequenceStop** という名前のタグを作成します。 タグの値は、起動または停止する順序に対応する正の整数 (1、2、3) にする必要があります。 *WhatIf* は他の Runbook と同様に動作します。 <br> **注**: Azure Automation 変数で External_Start_ResourceGroupNames、External_Stop_ResourceGroupNames、および External_ExcludeVMNames として定義されたリソース グループ内に VM が存在する必要があります。 アクションを有効にするための適切なタグが必要です。|
 
-### <a name="variables"></a>variables
+### <a name="variables"></a>変数
 
 次の表は、Automation アカウント内に作成される変数の一覧です。  **External** プレフィックスが付いた変数のみを変更することをお勧めします。 **Internal** プレフィックスが付いた変数を変更すると、望ましくない効果がもたらされます。  
 
@@ -249,10 +243,10 @@ Automation により、ジョブ ログとジョブ ストリームの 2 種類�
 
 ### <a name="job-logs"></a>ジョブ ログ
 
-プロパティ | [説明]|
+プロパティ | 説明|
 ----------|----------|
 Caller |  操作を開始したユーザー。  スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
-カテゴリ | データの種類の分類。  Automation の場合、値は JobLogs です。|
+Category | データの種類の分類。  Automation の場合、値は JobLogs です。|
 CorrelationId | GUID。Runbook ジョブの関連付け ID です。|
 JobId | GUID。Runbook ジョブの ID です。|
 operationName | Azure で実行された操作の種類を指定します。  Automation の場合、値は Job です。|
@@ -271,7 +265,7 @@ Time | Runbook ジョブが実行された日付と時刻。|
 
 ### <a name="job-streams"></a>ジョブ ストリーム
 
-プロパティ | [説明]|
+プロパティ | 説明|
 ----------|----------|
 Caller |  操作を開始したユーザー。  スケジュールされたジョブのシステムまたは電子メール アドレスが記録されます。|
 カテゴリ | データの種類の分類。  Automation の場合、値は JobStreams です。|
@@ -294,7 +288,7 @@ Time | Runbook ジョブが実行された日付と時刻。|
 
 以下の表は、このソリューションによって収集されたジョブ レコードを探すログ検索の例です。 
 
-クエリ | [説明]|
+クエリ | 説明|
 ----------|----------|
 正常に終了した Runbook ScheduledStartStop_Parent のジョブを検索する | search Category == "JobLogs" &#124; where ( RunbookName_s == "ScheduledStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc|
 正常に終了した Runbook SequencedStartStop_Parent のジョブを検索する | search Category == "JobLogs" &#124; where ( RunbookName_s == "SequencedStartStop_Parent" ) &#124; where ( ResultType == "Completed" )  &#124; summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h) &#124; sort by TimeGenerated desc

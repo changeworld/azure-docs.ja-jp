@@ -1,4 +1,8 @@
-**構成情報については、次のリンクを参照してください。**
+**VPN デバイス構成スクリプトをダウンロードするには**
+
+ご利用の VPN デバイスによっては、VPN デバイス構成スクリプトをダウンロードできる場合があります。 詳細については、[VPN デバイス構成スクリプトのダウンロード](../articles/vpn-gateway/vpn-gateway-download-vpndevicescript.md)に関するページを参照してください。
+
+**その他の構成情報については、次のリンクを参照してください**
 
 - 適合する VPN デバイスについては、[VPN デバイス](../articles/vpn-gateway/vpn-gateway-about-vpn-devices.md)に関するページを参照してください。
 

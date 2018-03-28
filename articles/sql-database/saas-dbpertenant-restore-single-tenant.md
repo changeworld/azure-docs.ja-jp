@@ -1,26 +1,21 @@
 ---
-title: "マルチテナント SaaS アプリで Azure SQL Database を復元する | Microsoft Docs"
-description: "データを誤って削除した場合にシングル テナントの SQL データベースを復元する方法について説明します"
-keywords: "SQL データベース チュートリアル"
+title: マルチテナント SaaS アプリで Azure SQL Database を復元する | Microsoft Docs
+description: データを誤って削除した場合にシングル テナントの SQL データベースを復元する方法について説明します
+keywords: SQL データベース チュートリアル
 services: sql-database
-documentationcenter: 
 author: stevestein
 manager: craigg
-editor: 
-ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: Inactive
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
-ms.author: billgib;sstein
-ms.openlocfilehash: 46471073f88247510f45d6c4152afa43be6e1aaa
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.author: sstein
+ms.reviewer: billgib
+ms.openlocfilehash: 7ae8bcb6172d9f9d56c531e149635434057fc2af
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="restore-a-single-tenant-with-a-database-per-tenant-saas-application"></a>テナント SaaS アプリケーションごとの 1 つのデータベースで、単一のテナントを復元します。
 

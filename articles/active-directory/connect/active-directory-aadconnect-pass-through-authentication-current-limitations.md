@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: ac085bf972885819f7c79996b0f6638fc01fc00d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 3e533b8b23c095a3de845d9b26a96aea9d8ee086
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
@@ -30,23 +30,24 @@ ms.lasthandoff: 03/08/2018
 次のシナリオは完全にサポートされています。
 
 - すべての Web ブラウザー ベースのアプリケーションへのユーザー サインイン
-- [先進認証](https://aka.ms/modernauthga)をサポートする Office アプリケーションへのユーザー サインイン: Office 2016、および Office 2013 (先進認証_あり_)
+- [先進認証](https://aka.ms/modernauthga)をサポートする Office アプリケーションへのユーザー サインイン: Office 2016、および Office 2013 (先進認証_あり_)。
 - Exchange ActiveSync、SMTP、POP、IMAP などの従来のプロトコルを使用した Outlook クライアントへのユーザー サインイン。
 - 先進認証 (オンライン トポロジとハイブリッド トポロジを含む) をサポートする Skype for Business へのユーザー サインイン。 サポートされているトポロジについて詳しくは、[こちら](https://technet.microsoft.com/library/mt803262.aspx)をご覧ください。
-- Azure AD ドメインの Windows 10 デバイスへの参加
+- Azure AD ドメインの Windows 10 デバイスへの参加。
 - Multi-Factor Authentication のアプリ パスワード。
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
 次のシナリオはサポートされて_いません_。
 
-- Outlook を除く、従来の Office クライアント アプリケーションへのユーザー サインイン: Office 2010、および Office 2013 (先進認証 "_なし_")。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 先進認証により、パススルー認証のサポートが可能になります。 Azure Multi-factor Authentication などの[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)機能を使用して、ユーザー アカウントをセキュリティで保護することもできます。
+- Outlook を除く、従来の Office クライアント アプリケーションへのユーザー サインイン (前述の「**サポートされるシナリオ**」を参照してください): Office 2010、および Office 2013 (先進認証 _"なし"_)。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 先進認証により、パススルー認証のサポートが可能になります。 Azure Multi-factor Authentication などの[条件付きアクセス](../active-directory-conditional-access-azure-portal.md)機能を使用して、ユーザー アカウントをセキュリティで保護することもできます。
+- Office 2010 上でのみ、Exchange ハイブリッド環境で予定表の共有と空き時間情報にアクセスします。
 - Skype for Business クライアント アプリケーションへのユーザー サインイン (先進認証_なし_)。
 - PowerShell バージョン 1.0 へのユーザー サインイン。 PowerShell バージョン 2.0 を使用することをお勧めします。
 - [資格情報が漏洩した](../active-directory-reporting-risk-events.md#leaked-credentials)ユーザーの検出。
 - Azure AD Domain Services を使用するには、パスワード ハッシュの同期をテナントで有効にする必要があります。 そのため、パススルー認証_のみ_を使用するテナントは、Azure AD Domain Services を必要とするシナリオに対応していません。
 - パススルー認証は [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md) にはTS統合されていません。
-- Apple Device Enrollment Program (Apple DEP) では、先進認証はサポートされていません。  Apple DEP デバイスは、パススルー認証を使用するドメインを Intune に登録できません。
+- iOS 設定アシスタントを使用している Apple Device Enrollment Program (Apple DEP) で、最新の認証がサポートされていません。 この場合、パススルー認証を使用して、管理対象ドメインの Apple DEP デバイスを Intune に登録できません。 代わりに、[ポータル サイト アプリ](https://blogs.technet.microsoft.com/intunesupport/2018/02/08/support-for-multi-token-dep-and-authentication-with-company-portal/)の使用を検討してください。
 
 >[!IMPORTANT]
 >サポートされていないシナリオに対処する場合に_のみ_、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。

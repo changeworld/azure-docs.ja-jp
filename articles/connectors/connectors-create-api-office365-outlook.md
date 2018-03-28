@@ -1,11 +1,11 @@
 ---
-title: "ロジック アプリに Office 365 Outlook コネクタを追加する | Microsoft Docs"
-description: "Office 365 コネクタを含むロジック アプリを作成して Office 365 を操作できるようにします。 たとえば、連絡先や予定表項目の作成、編集、更新を行うことができます。"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: ロジック アプリに Office 365 Outlook コネクタを追加する | Microsoft Docs
+description: Office 365 コネクタを含むロジック アプリを作成して Office 365 を操作できるようにします。 たとえば、連絡先や予定表項目の作成、編集、更新を行うことができます。
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b2f6cc2c-bba2-493a-b0ba-841785462a80
 ms.service: logic-apps
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 51b8e3de639b5cce954547adb77ff13b79ad6747
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: ea0b2f657f808bb6ba4bf427497955b9e520c669
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-office-365-outlook-connector"></a>Office 365 Outlook コネクタの使用
 Office 365 Outlook コネクタを使用すると、Office 365 Outlook の操作が可能になります。 このコネクタを使用すると、連絡先と予定表アイテムの作成、編集、更新に加え、電子メールの取得、送信、返信を行うことができます。
@@ -30,7 +30,7 @@ Office 365 Outlook では、次のことができます。
 * 新しい電子メールを受信したときや予定表アイテムが更新されたときなどに、トリガーを使用してワークフローを開始します。
 * アクションを使用して、電子メールの送信、新しい予定表イベントの作成などの操作を実行します。 たとえば、Salesforce 内に新しいオブジェクトがあるとき (トリガー) に Office 365 Outlook に電子メールを送信します (アクション)。 
 
-このトピックでは、ロジック アプリ内で Office 365 Outlook コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
+この記事では、ロジック アプリ内で Office 365 Outlook コネクタを使用する方法を説明し、トリガーとアクションの一覧を示します。
 
 > [!NOTE]
 > 本記事は、一般公開された Logic Apps の一般公開 (GA) を対象としています。

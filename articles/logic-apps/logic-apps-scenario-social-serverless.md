@@ -1,109 +1,119 @@
 ---
-title: "シナリオ - Azure Serverless を使用して Customer Insights ダッシュボードを作成する | Microsoft Docs"
-description: "Azure Logic Apps と Azure Functions を使用してダッシュボードを構築し、顧客からのフィードバックやソーシャル データなどを管理する方法の例を示します。"
-keywords: 
+title: サーバーレス シナリオ - Azure を使用して Customer Insights ダッシュボードを作成する | Microsoft Docs
+description: Azure Logic Apps と Azure Functions を使用してカスタマーのダッシュボードを構築することで、カスタマーのフィードバックやソーシャル メディアのデータなどを管理する方法について説明します
+keywords: ''
 services: logic-apps
 author: jeffhollan
-manager: anneta
-editor: 
-documentationcenter: 
+manager: SyntaxC4
+editor: ''
+documentationcenter: ''
 ms.assetid: d565873c-6b1b-4057-9250-cf81a96180ae
 ms.service: logic-apps
-ms.workload: integration
+ms.workload: logic-apps
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
-ms.author: jehollan
-ms.openlocfilehash: d3e07b8d7194d83e3ba3986177170edff21e1d7a
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.date: 03/15/2018
+ms.author: jehollan; LADocs
+ms.openlocfilehash: 0a31a71305a4729575c5266b3a6138004d2dbdc6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="create-a-real-time-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用してリアルタイム Customer Insights ダッシュボードを作成する
+# <a name="create-a-streaming-customer-insights-dashboard-with-azure-logic-apps-and-azure-functions"></a>Azure Logic Apps と Azure Functions を使用して Customer Insights ストリーミング ダッシュボードを作成する
 
-Azure Serverless ツールは、インフラストラクチャを気にすることなく、クラウドでアプリケーションをすばやく構築してホストするための強力な機能を提供します。  このシナリオでは、ダッシュボードを作成して顧客からのフィードバックをトリガーし、Machine Learning を使用してフィードバックを分析します。さらに、Power BI や Azure Data Lake などのソースに洞察を発行します。
+Azure には、インフラストラクチャを気にすることなく、クラウドですばやくアプリをビルドしてホストするのに役立つ、サーバーレス ツールが用意されています。 このチュートリアルでは、カスタマーからのフィードバックによってトリガーされ、機械学習を使用してフィードバックを分析し、Power BI や Azure Data Lake などのソースに洞察を発行するダッシュボードを作成することができます。
 
-## <a name="overview-of-the-scenario-and-tools-used"></a>シナリオと使用するツールの概要
+このソリューションに向けて、サーバーレス アプリ用の主要な Azure コンポーネントである [Azure Functions](https://azure.microsoft.com/services/functions/) と [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) を使用します。
+Azure Logic Apps では、サーバーレス コンポーネント間でオーケストレーションを作成したり、200 を超えるサービスや API に接続したりできるように、クラウド内のサーバーレス ワークフロー エンジンが提供されます。 Azure Functions は、クラウド内でサーバーレス コンピューティングを実現します。 このソリューションでは、定義済みのキーワードに基づいてカスタマーのツイートにフラグを設定するために、Azure Functions を使用します。
 
-このソリューションを実装するには、Azure のサーバーレス アプリの主要な 2 つのコンポーネント、[Azure Functions](https://azure.microsoft.com/services/functions/) と [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/) を利用します。
+このシナリオでは、カスタマーからのフィードバックを検出するとトリガーされるロジック アプリを作成します。 カスタマー フィードバックへの応答に役立つコネクタには、Outlook.com、Office 365、Survey Monkey、Twitter、[Web フォームからの HTTP 要求](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/)などがあります。 作成するワークフローは、Twitter のハッシュタグを監視します。
 
-Logic Apps は、クラウド内のサーバーレス ワークフロー エンジンです。  サーバーレス コンポーネント間のオーケストレーションを提供し、100 を超えるサービスと API にも接続します。  このシナリオでは、顧客からのフィードバックをトリガーするロジック アプリを作成します。  顧客からのフィードバックへの対応に役立つコネクタには、Outlook.com、Office 365、Survey Monkey、Twitter、[Web フォームからの](https://blogs.msdn.microsoft.com/logicapps/2017/01/30/calling-a-logic-app-from-an-html-form/) HTTP 要求などがあります。  以下のワークフローでは、Twitter のハッシュタグを監視します。
+[Visual Studio でソリューション全体をビルド](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)し、[Azure Resource Manager テンプレートを使用してソリューションをデプロイ](../logic-apps/logic-apps-create-deploy-template.md)することができます。 このソリューションの作成方法に関するビデオ チュートリアルについては、[こちらの Channel 9 ビデオ](http://aka.ms/logicappsdemo)をご覧ください。 
 
-Functions は、クラウド内でサーバーレス コンピューティングを実現します。  このシナリオでは、Azure Functions を使用して、事前に定義された一連のキーワードに基づいて顧客のツイートにフラグを設定します。
+## <a name="trigger-on-customer-data"></a>カスタマー データによるトリガー
 
-ソリューション全体は [Visual Studio で構築](logic-apps-deploy-from-vs.md)して、[リソース テンプレートの一部としてデプロイ](logic-apps-create-deploy-template.md)できます。  [Channel 9](http://aka.ms/logicappsdemo) に、このシナリオのビデオ チュートリアルもあります。
+1. Azure Portal または Visual Studio で、空のロジック アプリを作成します。 
 
-## <a name="build-the-logic-app-to-trigger-on-customer-data"></a>顧客のデータをトリガーするロジック アプリの構築
+   ロジック アプリを初めて使用する場合は、[Azure Portal 用のクイックスタート](../logic-apps/quickstart-create-first-logic-app-workflow.md)または [Visual Studio 用のクイックスタート](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md)を参照してください。
 
-Visual Studio か Azure Portal で[ロジック アプリを作成](quickstart-create-first-logic-app-workflow.md)した後、次の操作を実行します。
+2. ロジック アプリ デザイナーで、**[新しいツイートが投稿されたら]** アクションを含む Twitter トリガーを検索して追加します。
 
-1. Twitter から **[On New Tweets (新しいツイート)]** にトリガーを追加します。
-2. キーワードまたはハッシュタグに対してツイートをリッスンするようにトリガーを構成します。
+3. キーワードまたはハッシュタグに基づいてツイートをリッスンするようにトリガーを設定します。
 
-   > [!NOTE]
-   > このトリガーの反復プロパティは、ポーリングベースのトリガーに対してロジック アプリが新しいアイテムを確認する頻度を決定します。
+   Twitter トリガーなどのポーリングベースのトリガーでは、反復プロパティによって、ロジック アプリが新しいアイテムを確認する頻度が決定されます。
 
    ![Twitter のトリガーの例][1]
 
-これで、このアプリはすべての新しいツイートに対して起動されます。  そのツイートのデータを取得し、表現されたセンチメントをより深く理解できます。  そのためには、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を使用してテキストのセンチメントを検出します。
+すべての新しいツイートに対してロジック アプリがトリガーされるようになりました。 次に、表現されるセンチメントをより良く把握するために、ツイート データを取得して分析することができます。 
 
-1. **[新しいステップ]** をクリックします。
-1. **[テキスト分析]** コネクタを選択または検索します。
-1. **[Detect Sentiment (センチメントの検出)]** 操作を選択します。
-1. メッセージが表示される場合は、テキスト分析サービス用の有効な Cognitive Services キーを入力します。
-1. 分析対象のテキストとして **[ツイート テキスト]** を追加します。
+## <a name="analyze-tweet-text"></a>ツイート テキストの分析
 
-これで、ツイート データ、ツイートに対する洞察、関連するその他の各種コネクタを用意できました。
-* Power BI - ストリーミング データセットへの行の追加: Power BI ダッシュボードにリアルタイムでツイートを表示します。
-* Azure Data Lake - ファイルの追加: 顧客のデータを Azure Data Lake データセットに追加して Analytics ジョブに含めます。
-* SQL - 行の追加: 後で取得できるようにデータベースにデータを格納します。
-* Slack - メッセージの送信: アクションが必要な否定的なフィードバックについて Slack チャンネルにアラートを送信します。
+テキストの背後にあるセンチメントを検出するために、[Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) を使用できます。
 
-Azure 関数を使用して、データ上でさらにカスタム コンピューティングを行うこともできます。
+1. ロジック アプリ デザイナーのトリガーの下で、**[新しいステップ]** を選択します。
 
-## <a name="enriching-the-data-with-an-azure-function"></a>Azure 関数を使用したデータの強化
+2. **テキスト分析**コネクタを検索します。
 
-関数を作成する前に、Azure サブスクリプションに関数アプリが必要です。  ポータルでの Azure 関数の作成の詳細については、[こちら](../azure-functions/functions-create-first-azure-function-azure-portal.md)を参照してください。
+3. **[Detect Sentiment (センチメントの検出)]** アクションを選択します。
 
-ロジック アプリから直接呼び出される関数の場合は、HTTP トリガー バインディングが必要です。  **HttpTrigger** テンプレートを使用することをお勧めします。
+4. メッセージが表示される場合は、テキスト分析サービス用の有効な Cognitive Services キーを指定します。
 
-このシナリオでは、Azure 関数の要求本文はツイート テキストです。  関数のコードでは、ツイート テキストにキーワードや語句が含まれているかどうかに関するロジックを単に定義します。  関数自体は、シナリオでの必要性に応じて、単純な形のままにすることも、複雑なものにすることもできます。
+5. **[要求本文]** の下で、**[ツイート テキスト]** フィールドを選択します。これにより、ツイート テキストが分析用の入力として提供されます。
 
-関数の最後で、ロジック アプリに何らかのデータと共に応答を返すだけです。  これは、単純なブール値 (`containsKeyword` など) でも複雑なオブジェクトでもかまいません。
+ツイート データとそのツイートに関する洞察を取得したら、その他のいくつかの関連するコネクタと、そのアクションを使用できますようになります。
+
+* **Power BI - ストリーミング データセットへの行の追加**: Power BI ダッシュボードで受信ツイートを表示します。
+* **Azure Data Lake - ファイルの追加**: カスタマーのデータを Azure Data Lake データセットに追加して Analytics ジョブに含めます。
+* **SQL - 行の追加**: 後で取得できるようにデータベースにデータを格納します。
+* **Slack - メッセージの送信**: アクションを必要とする可能性がある否定的なフィードバックについて Slack チャンネルに通知します。
+
+また、データに対してカスタム処理を実行するために、Azure 関数を作成することもできます。 
+
+## <a name="process-data-with-azure-functions"></a>Azure Functions でのデータ処理
+
+関数を作成する前に、Azure サブスクリプションで関数アプリを作成します。 また、ロジック アプリで関数を直接呼び出すには、関数が HTTP トリガー バインディングを持つ必要があります。たとえば、**HttpTrigger** テンプレートを使用します。 詳しくは、[Azure Portal で最初の関数アプリと関数を作成する方法](../azure-functions/functions-create-first-azure-function-azure-portal.md)に関するページを参照してください。
+
+このシナリオでは、Azure 関数の要求本文としてツイート テキストを使用します。 関数コードで、ツイート テキストがキーワードまたはフレーズを含むかどうかを判定するロジックを定義します。 シナリオに応じて、単純または複雑な関数を作成します。
+関数の最後で、データと共にロジック アプリへの応答を返します。データには、たとえば `containsKeyword` のような単純なブール値や複合オブジェクトを使用します。
+
+> [!TIP]
+> ロジック アプリ内で関数からの複雑な応答にアクセスするには、**Parse JSON** アクションを使用します。
+
+完了したら、関数を保存し、構築しているロジック アプリに、アクションとして関数を追加します。
+
+## <a name="add-azure-function-to-logic-app"></a>ロジック アプリへの Azure 関数の追加
+
+1. ロジック アプリ デザイナーの **[Detect Sentiment]\(センチメントの検出\)** アクションで、**[新しいステップ]** を選択します。
+
+2. **Azure Functions** コネクタを検索し、作成した関数を選択します。
+
+3. **[要求本文]** の下で **[ツイート テキスト]** を選択します。
 
 ![構成済みの Azure 関数のステップ][2]
 
-> [!TIP]
-> ロジック アプリ内で関数からの複雑な応答にアクセスする場合は、Parse JSON アクションを使用します。
+## <a name="run-and-monitor-your-logic-app"></a>ロジック アプリの実行と監視
 
-関数を保存すると、上で作成したロジック アプリに追加できます。  ロジック アプリ内で、次の操作を実行します。
+現在または過去のロジック アプリの実行を確認するには、Azure Logic Apps によって提供されるデバッグと監視の豊富な機能を使用できます。これらの機能は、Azure Portal や Visual Studio で、または Azure REST API および SDK を通じて提供されます。
 
-1. **[新しいステップ]** をクリックして追加します。
-1. **[Azure Functions]** コネクタを選択します。
-1. 既存の関数を使用するように選択し、作成した関数を参照します。
-1. **[要求本文]** の **[ツイート テキスト]** を送信します。
+ロジック アプリを簡単にテストするには、ロジック アプリ デザイナーで **[トリガーの実行]** を選択します。 トリガーは、条件を満たすツイートが見つかるまで、指定したスケジュールに基づいてツイートをポーリングします。 実行が進行する間、デザイナーで実行の進行状況がリアルタイムに表示されます。
 
-## <a name="running-and-monitoring-the-solution"></a>ソリューションの実行と監視
+Visual Studio または Azure Portal で過去の実行履歴を表示するには、以下の操作を実行します。 
 
-Logic Apps でサーバーレス オーケストレーションを作成する利点の 1 つが、豊富なデバッグと監視の機能です。  すべての実行 (現在または過去) は、Visual Studio や Azure Portal から、または REST API や SDK を使用して表示できます。
+* Visual Studio Cloud Explorer を開きます。 ロジック アプリを検索し、アプリのショートカット メニューを開きます。 **[実行履歴を開く]** を選択します。
 
-ロジック アプリをテストする最も簡単な方法の 1 つは、デザイナーの **[実行]** ボタンを使用することです。  **[実行]** をクリックすると、イベントが検出されるまで 5 秒ごとにトリガーがポーリングされ、実行の進行状況がリアルタイムに表示されます。
+* Azure Portal でロジック アプリを検索します。 ロジック アプリのメニューで、**[概要]** を選択します。 
 
-以前の実行履歴は、Azure Portal の [概要] ブレードか、Visual Studio Cloud Explorer を使用して確認できます。
+## <a name="create-automated-deployment-templates"></a>自動デプロイ テンプレートを作成する
 
-## <a name="creating-a-deployment-template-for-automated-deployments"></a>自動デプロイ用のデプロイ テンプレートの作成
+ロジック アプリのソリューションを作成したら、アプリをキャプチャし、[Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md#template-deployment)として世界中の Azure リージョンにデプロイすることができます。 この機能を使用して、パラメーターを変更して異なるバージョンのアプリを作成したり、ビルド パイプラインやリリース パイプラインにソリューションを統合したりできます。 Azure Functions をデプロイ テンプレートに含めることもできるので、すべての依存関係を含むソリューション全体を 1 つのテンプレートとして管理できます。 詳しくは、[ロジック アプリのデプロイ テンプレートの作成方法](../logic-apps/logic-apps-create-deploy-template.md)に関するページを参照してください。
 
-ソリューションの開発後、そのソリューションをキャプチャし、Azure デプロイ テンプレートを使用して世界中の任意の Azure リージョンにデプロイすることができます。  これは、このワークフローの別バージョン用にパラメーターを変更する場合や、ビルドとリリースのパイプラインにこのソリューションを統合する場合にも便利です。  デプロイ テンプレートの作成の詳細については、[この記事](logic-apps-create-deploy-template.md)を参照してください。
-
-Azure Functions をデプロイ テンプレートに組み込むこともできるので、すべての依存関係を含むソリューション全体を 1 つのテンプレートとして管理できます。  関数のデプロイ テンプレートの例については、[Azure クイックスタート テンプレート レポジトリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)を参照してください。
+Azure 関数を使用したデプロイ テンプレートの例については、[Azure クイックスタート テンプレート レポジトリ](https://github.com/Azure/azure-quickstart-templates/tree/master/101-function-app-create-dynamic)を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 
-* [Azure Logic Apps のその他の例とシナリオを参照する](logic-apps-examples-and-scenarios.md)
-* [このソリューションのエンド ツー エンドでの作成に関するビデオ チュートリアルを視聴する](http://aka.ms/logicappsdemo)
-* [ロジック アプリ内で例外をキャッチして処理する方法を確認する](logic-apps-exception-handling.md)
+* [Azure Logic Apps のその他の例とシナリオを探す](logic-apps-examples-and-scenarios.md)
 
 <!-- Image References -->
 [1]: ./media/logic-apps-scenario-social-serverless/twitter.png

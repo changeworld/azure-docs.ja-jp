@@ -1,24 +1,24 @@
 ---
-title: "Azure AD Connect Sync: Azure AD Connect Sync で構成を変更する |Microsoft Docs"
-description: "Azure AD Connect Sync の構成に変更する方法について説明します。"
+title: 'Azure AD Connect Sync: Azure AD Connect Sync で構成を変更する |Microsoft Docs'
+description: Azure AD Connect Sync の構成に変更する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 7b9df836-e8a5-4228-97da-2faec9238b31
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/13/2018
+ms.date: 03/16/2018
 ms.author: billmath
-ms.openlocfilehash: e97d3e3e35ee87864c5d38e75e08e62088e25fdb
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 06c715cf5dbf039334adfde8b3111d9bfcb86568
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更する
 この記事の目的は、Azure Active Directory (Azure AD) Connect Sync の既定の構成を変更する方法について説明することです。ここでは、いくつかの一般的なシナリオの手順を紹介します。 この知識があれば、独自のビジネス ルールに基づき独自の構成に対して簡単な変更を加えることができます。
@@ -245,7 +245,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
  1. Synchronization Service Manager の **[コネクタ]** タブに進みます。
  2. **Azure AD コネクタ**を右クリックし、**[プロパティ]** を選択します。
  3. ポップアップ ダイアログ ボックスで **[属性の選択]** タブに移動します。
- 4. 属性の一覧で PreferredDataLocation 属性のチェック ボックスがオンになっていることを確認します。
+ 4. 属性の一覧で UserType 属性のチェック ボックスがオンになっていることを確認します。
  5. **[OK]** をクリックして保存します。
 
 ![Azure AD コネクタのスキーマへのソース属性の追加](./media/active-directory-aadconnectsync-change-the-configuration/usertype2.png)
@@ -258,7 +258,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 3. **[新しいルールの追加]** ボタンをクリックして受信方向の規則を新規作成します。
 4. **[説明]** タブで次の構成を指定します。
 
-    | Attribute | 値 | 詳細 |
+    | 属性 | 値 | 詳細 |
     | --- | --- | --- |
     | Name | *名前を入力します* | 例: *In from AD – User UserType* |
     | [説明] | *説明を入力します* |  |
@@ -270,7 +270,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 5. **[スコープ フィルター]** タブに移動し、次の句を使って**単一のスコープ フィルター グループ**を追加します。
 
-    | Attribute | 演算子 | 値 |
+    | 属性 | 演算子 | 値 |
     | --- | --- | --- |
     | adminDescription | NOTSTARTWITH | ユーザー\_ |
 
@@ -293,14 +293,14 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 ![受信方向の同期規則の作成](./media/active-directory-aadconnectsync-change-the-configuration/usertype3.png)
 
 ### <a name="step-5-create-an-outbound-synchronization-rule-to-flow-the-attribute-value-to-azure-ad"></a>手順 5: Azure AD に属性値を誘導する送信方向の同期規則を作成する
-送信方向の同期規則によって、属性値をメタバースから Azure AD の PreferredDataLocation 属性に誘導することができます。
+送信方向の同期規則によって、メタバースから Azure AD の UserType 属性に属性値が流れるのを許可します。
 
 1. Synchronization Rules Editor に移動します。
 2. 検索フィルターの **[方向]** を **[送信]** に設定します。
 3. **[新しいルールの追加]** ボタンをクリックします。
 4. **[説明]** タブで次の構成を指定します。
 
-    | Attribute | 値 | 詳細 |
+    | 属性 | 値 | 詳細 |
     | ----- | ------ | --- |
     | Name | *名前を入力します* | 例: *Out to AAD – User UserType* |
     | [説明] | *説明を入力します* ||
@@ -312,7 +312,7 @@ UserType 属性の同期を有効にする大まかな手順は次のとおり�
 
 5. **[スコープ フィルター]** タブに移動し、次の 2 つの句を使って**単一のスコープ フィルター グループ**を追加します。
 
-    | Attribute | 演算子 | 値 |
+    | 属性 | 演算子 | 値 |
     | --- | --- | --- |
     | sourceObjectType | EQUAL | User |
     | cloudMastered | NOTEQUAL | True |
