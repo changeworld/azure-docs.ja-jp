@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 0231dc8336bb2442099984947897e5005767a8f5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 166171dc8d8d694ef253ed6809c53b54577535e2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -178,14 +178,14 @@ Azure AD Identity Protection は、アルゴリズムベースの監視および
 
 セキュリティ スコアは、使用している Office 365 サービス (OneDrive、SharePoint、Exchange など) を検出し、設定とアクティビティを参照して、Microsoft によって確立されたベースラインと比較します。 セキュリティに関するベスト プラクティスにどの程度従っているかに基づいてスコアが算出されます。 Office 365 Business Premium または Enterprise サブスクリプションの管理者アクセス許可を持つユーザー (グローバル管理者またはカスタムの管理者ロール) は、[https://securescore.office.com](https://securescore.office.com/) でセキュリティ スコアにアクセスできます。
 
-#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office365"></a>Office 365 セキュリティおよびコンプライアンス ガイダンスを確認する (Office 365 を使用している場合)
+#### <a name="review-the-office-365-security-and-compliance-guidance-if-using-office-365"></a>Office 365 セキュリティおよびコンプライアンス ガイダンスを確認する (Office 365 を使用している場合)
 
 [セキュリティとコンプライアンスの計画](https://support.office.com/article/Plan-for-security-and-compliance-in-Office-365-dc4f704c-6fcc-4cab-9a02-95a824e4fb57)に関するページでは、Office 365 のお客様が Office 365 を構成する方法とその他の EMS 機能を活用する方法のアプローチについて概説しています。 次に、「[Office 365 でデータやサービスへのアクセスを保護する](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e)」の手順 3. ～ 6. と「[Office 365 でセキュリティとコンプライアンスを監視する](https://support.office.com/article/Monitor-security-and-compliance-in-Office-365-b62f1722-fd39-44eb-8361-da61d21509b6)」のガイドを確認します。
 
 
 #### <a name="configure-office-365-activity-monitoring-if-using-office-365"></a>Office 365 アクティビティの監視を構成する (Office 365 を使用している場合)
 
-組織内のユーザーが Office 365 サービスをどのように使用しているかを監視できるため、管理者アカウントを持つユーザーや、ポータルにサインインしていないため Office 365 へのアクセスが必要のないユーザーを識別できます。 詳しくは、「[Office 365 管理センターのアクティビティ レポート](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)」をご覧ください。
+組織内のユーザーが Office 365 サービスをどのように使用しているかを監視できるため、管理者アカウントを持つユーザーや、ポータルにサインインしていないため Office 365 へのアクセスが必要のないユーザーを識別できます。 詳細については、「[Office 365 管理センターのアクティビティ レポート](https://support.office.com/article/Activity-Reports-in-the-Office-365-admin-center-0d6dfb17-8582-4172-a9a9-aed798150263)」を参照してください。
 
 #### <a name="establish-incidentemergency-response-plan-owners"></a>インシデント/緊急時対応計画の所有者を設定する
 
@@ -201,7 +201,7 @@ Azure Active Directory テナントがオンプレミスの Active Directory と
 
 エンタープライズ ポータルと Azure Portal を使用して、運用アプリケーションをホストする組織内のサブスクリプションを識別します。 
 
-#### <a name="remove-microsoft-ccounts-from-admin-roles"></a>Microsoft アカウントを管理者ロールから削除する
+#### <a name="remove-microsoft-accounts-from-admin-roles"></a>Microsoft アカウントを管理者ロールから削除する
 
 Xbox、Live、Outlook などの他のプログラムの Microsoft アカウントは、組織のサブスクリプションの管理者アカウントとして使用しないでください。 すべての Microsoft アカウントから管理状態を除去し、Active Directory (たとえば、chris@contoso.com) の職場または学校アカウントで置き換えます。
 
@@ -244,7 +244,7 @@ Azure アクティビティ ログは、Azure でのサブスクリプション 
 
 #### <a name="review-national-institute-of-standards-and-technology-recommendations-for-handling-incidents"></a>インシデントの処理に関する米国国立標準技術研究所の推奨事項を確認する 
 
-米国国立標準技術研究所 (NIST) は、特にインシデント関連のデータの分析と各インシデントへの適切な対応の決定について、インシデント処理のガイドラインを提供しています。 詳しくは、「[The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2) ((NIST) コンピューター セキュリティ インシデント対応ガイド (SP 800 61、リビジョン 2))](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)」をご覧ください。
+米国国立標準技術研究所 (NIST) は、特にインシデント関連のデータの分析と各インシデントへの適切な対応の決定について、インシデント処理のガイドラインを提供しています。 詳細については、「[The (NIST) Computer Security Incident Handling Guide (SP 800-61, Revision 2)](http://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-61r2.pdf)」((NIST) コンピューター セキュリティ インシデント対応ガイド (SP 800 61、リビジョン 2)) を参照してください。
 
 #### <a name="implement-privileged-identity-management-pim-for-jit-to-additional-administrative-roles"></a>JIT に Privileged Identity Management (PIM) を実装して管理者ロールを追加する
 
@@ -318,7 +318,6 @@ MCAS を使用すると、ファイルを調査し、Azure Information Protectio
 * リスクを最小限に抑え、脅威の防止とポリシーの適用を自動化する
 
 Cloud App Security SIEM エージェントは、Cloud App Security を SIEM サーバーと統合して、Office 365 のアラートとアクティビティの一元的な監視を可能にします。 サーバー上で稼働し、Cloud App Security からのアラートとアクティビティをプルして、SIEM サーバーにストリーム送信します。 詳しくは、「[SIEM の統合](https://docs.microsoft.com/cloud-app-security/siem)」をご覧ください。
-
 
 ## <a name="stage-4-continue-building-defenses-to-a-more-proactive-security-posture"></a>ステージ 4: 防御の構築を継続して予防的なセキュリティ対策を強化する
 
@@ -438,16 +437,16 @@ Microsoft Office 365 がセキュリティ インシデントを処理する方�
 
 ## <a name="next-steps"></a>次の手順
 
-* [製品のセキュリティに関する Microsoft Trust Center](https://www.microsoft.com/trustcenter/security) - Microsoft クラウド製品およびサービスのセキュリティ機能
+* [製品のセキュリティに関する Microsoft Trust Center](https://www.microsoft.com/en-us/trustcenter/security) - Microsoft クラウド製品およびサービスのセキュリティ機能
 
-* [Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/trustcenter/compliance/complianceofferings) - Microsoft のクラウド サービスのコンプライアンス認証の包括的セット
+* [Microsoft Trust Center - コンプライアンス](https://www.microsoft.com/en-us/trustcenter/compliance/complianceofferings) - Microsoft のクラウド サービスのコンプライアンス認証の包括的セット
 
-* [リスク アセスメントの実施方法に関するガイダンス](https://www.microsoft.com/trustcenter/guidance/risk-assessment) - Microsoft クラウド サービスのセキュリティとコンプライアンス要件の管理
+* [リスク アセスメントの実施方法に関するガイダンス](https://www.microsoft.com/en-us/trustcenter/guidance/risk-assessment) - Microsoft クラウド サービスのセキュリティとコンプライアンス要件の管理
 
 ### <a name="other-ms-online-services"></a>その他の MS オンライン サービス 
 
-* [Microsoft Intune のセキュリティ](https://www.microsoft.com/trustcenter/security/intune-security) - Intune は、クラウドからのモバイル デバイス管理、モバイル アプリケーション管理、PC 管理機能を提供します。
+* [Microsoft Intune のセキュリティ](https://www.microsoft.com/en-us/trustcenter/security/intune-security) - Intune は、クラウドからのモバイル デバイス管理、モバイル アプリケーション管理、PC 管理機能を提供します。
 
-* [Microsoft Dynamics 365 のセキュリティ](https://www.microsoft.com/trustcenter/security/dynamics365-security) - Dynamics 365 は、Microsoft クラウドベースのソリューションで、顧客関係管理 (CRM) とエンタープライズ リソース プランニング (ERP) の機能を統合します。
+* [Microsoft Dynamics 365 のセキュリティ](https://www.microsoft.com/en-us/trustcenter/security/dynamics365-security) - Dynamics 365 は、Microsoft クラウドベースのソリューションで、顧客関係管理 (CRM) とエンタープライズ リソース プランニング (ERP) の機能を統合します。
 
  

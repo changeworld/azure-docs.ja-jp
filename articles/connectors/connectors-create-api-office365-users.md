@@ -1,11 +1,11 @@
 ---
-title: "Logic Apps に Office 365 ユーザー コネクタを追加する | Microsoft Docs"
-description: "Office 365 Users コネクタと REST API パラメーターの概要"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: Logic Apps に Office 365 ユーザー コネクタを追加する | Microsoft Docs
+description: Office 365 Users コネクタと REST API パラメーターの概要
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
 ms.assetid: b2146481-9105-4f56-b4c2-7ae340cb922f
 ms.service: multiple
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 08/18/2016
-ms.author: mandia; ladocs
-ms.openlocfilehash: 2e7827e32a03b6f6af46f5bc65f0ed74f3065f86
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 3d281bcb8e1d0ba4d1eb0b636bdd618340399898
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-office-365-users-connector"></a>Office 365 Users コネクタの使用
 Office 365 ユーザーに接続して、プロファイルの取得、ユーザーの検索などを行います。 Office 365 ユーザーは、次のことを行えます。
@@ -36,7 +36,7 @@ Office 365 ユーザーに接続して、プロファイルの取得、ユーザ
 > 
 > 
 
-接続を作成したら、ユーザー ID など、Office 365 ユーザー プロパティを入力します。 これらのプロパティについては、このトピックの **REST API リファレンス** を参照してください。
+接続を作成したら、ユーザー ID など、Office 365 ユーザー プロパティを入力します。 これらのプロパティについては、この記事の **REST API リファレンス**を参照してください。
 
 ## <a name="connector-specific-details"></a>コネクタ固有の詳細
 

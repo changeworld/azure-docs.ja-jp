@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
-ms.openlocfilehash: 413234204175b9361cd2a837e0b318bf5220f58f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: c4fb466443e2f29fb79c3707ce142895f140f9a7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware および物理サーバーの Azure へのレプリケーションのサポート マトリックス
 
@@ -22,15 +22,15 @@ ms.lasthandoff: 03/09/2018
 
 **シナリオ** | **詳細**
 --- | ---
-**VMware VM** | Azure にオンプレミス VMware VM のディザスター リカバリーを実行できます。 このシナリオは、Azure Portal または PowerShell を使用して展開できます。
-**物理サーバー** | Azure にオンプレミス Windows/Linux 物理サーバーのディザスター リカバリーを実行できます。 このシナリオは、Azure Portal で展開できます。
+VMware VM | Azure にオンプレミス VMware VM のディザスター リカバリーを実行できます。 このシナリオは、Azure Portal または PowerShell を使用して展開できます。
+物理サーバー | Azure にオンプレミス Windows/Linux 物理サーバーのディザスター リカバリーを実行できます。 このシナリオは、Azure Portal で展開できます。
 
-## <a name="on-premises-virtualizationhost-servers"></a>オンプレミスの仮想化サーバー/ホスト サーバー
+## <a name="on-premises-virtualization-servers"></a>オンプレミスの仮想化サーバー
 
 **サーバー** | **要件** | **詳細**
 --- | --- | ---
-**VMware** | vCenter Server 6.5、6.0、5.5、または vSphere 6.5、6.0、5.5 | vCenter サーバーを使用することをお勧めします。
-**物理サーバー** | 該当なし
+VMware | vCenter Server 6.5、6.0、5.5、または vSphere 6.5、6.0、5.5 | vCenter サーバーを使用することをお勧めします。
+物理 | 該当なし
 
 
 ## <a name="replicated-machines"></a>レプリケートされるマシン
@@ -39,7 +39,7 @@ ms.lasthandoff: 03/09/2018
 
 **コンポーネント** | **詳細**
 --- | ---
-マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#failed-over-azure-vm-requirements)を満たしている必要があります。
+マシンの設定 | Azure にレプリケートするマシンは、[Azure の要件](#azure-vm-requirements)を満たしている必要があります。
 Windows オペレーティング システム | 64 ビット Windows Server 2016 (Server Core、サーバーおよびデスクトップ エクスペリエンス)、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降。 Windows 2016 の Nano Server はサポートされていません。
 Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.4 <br/><br/>CentOS: 5.2 から 5.11、6.1 から 6.9、7.0 から 7.4 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Debian 7/Debian 8<br/><br/>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/>SUSE Linux Enterprise Server 11 SP3 または SUSE Linux Enterprise Server 11 SP4 <br/><br/>レプリケートされたマシンの SP3 から SP4 へのアップグレードはサポートされていません。 アップグレードするには、いったんレプリケーションを無効にし、アップグレードの後に再び有効にします。
 
@@ -68,9 +68,9 @@ Linux オペレーティング システム | Red Hat Enterprise Linux: 5.2 か�
 
 **コンポーネント** | **サポートされています**
 --- | ---
-ファイル システム | ext3、ext4、ReiserFS (Suse Linux Enterprise Server のみ)、XFS
-ボリューム マネージャー | LVM2
-マルチパス ソフトウェア | デバイス マッパー
+ファイル システム | ext3、ext4、ReiserFS (Suse Linux Enterprise Server のみ)、XFS。
+ボリューム マネージャー | LVM2。
+マルチパス ソフトウェア | デバイス マッパー。
 準仮想化ストレージ デバイス | 準仮想化ドライバーによってエクスポートされたデバイスはサポートされません。
 マルチ キュー ブロック IO デバイス | サポートされていません。
 HP CCISS ストレージ コントローラーを使用する物理サーバー | サポートされていません。
@@ -85,15 +85,15 @@ XFSv5 | メタデータ チェックサムなど、XFS ファイル システム
 **コンポーネント** | **サポートされています**
 --- | ---
 ホスト ネットワークの NIC チーミング | VMware VM でサポートされています。 <br/><br/>物理マシンのレプリケーションではサポートされません。
-ホスト ネットワークの VLAN | [はい]
-ホスト ネットワークの IPv4 | [はい]
-ホスト ネットワークの IPv6 | いいえ 
-ゲスト/サーバー ネットワークの NIC チーミング | いいえ 
-ゲスト/サーバー ネットワークの IPv4 | [はい]
-ゲスト/サーバー ネットワークの IPv6 | いいえ 
-ゲスト/サーバー ネットワークの静的 IP (Windows) | [はい]
-ゲスト/サーバー ネットワークの静的 IP (Linux) | [はい] <br/><br/>フェールバックで DHCP を使用するように VM が構成されます。  
-ゲスト/サーバー ネットワークのマルチ NIC | [はい]
+ホスト ネットワークの VLAN | はい。
+ホスト ネットワークの IPv4 | はい。
+ホスト ネットワークの IPv6 | いいえ。
+ゲスト/サーバー ネットワークの NIC チーミング | いいえ。
+ゲスト/サーバー ネットワークの IPv4 | はい。
+ゲスト/サーバー ネットワークの IPv6 | いいえ。
+ゲスト/サーバー ネットワークの静的 IP (Windows) | はい。
+ゲスト/サーバー ネットワークの静的 IP (Linux) | はい。 <br/><br/>フェールバックで DHCP を使用するように VM が構成されます。
+ゲスト/サーバー ネットワークのマルチ NIC | はい。
 
 
 ## <a name="azure-vm-network-after-failover"></a>Azure VM ネットワーク (フェールオーバー後)
@@ -117,16 +117,16 @@ Azure Virtual Network サービス エンドポイント<br/><br/> (Azure Storag
 ホスト SAN (ISCSI) | [はい]
 ホスト マルチパス (MPIO) | はい - テスト環境: Microsoft DSM、EMC PowerPath 5.7 SP4、EMC PowerPath DSM for CLARiiON
 ゲスト/サーバー VMDK | [はい]
-ゲスト/サーバー EFI/UEFI| ポータル (Azure for Windows Server 2012 およびそれ以降の VMware 仮想マシンへの移行のみ) </br></br> この表の下部の注意事項をご覧ください。
+ゲスト/サーバー EFI/UEFI| ポータル (Azure for Windows Server 2012 およびそれ以降の VMware 仮想マシンへの移行のみ) </br></br> この表の下部の注意事項をご覧ください
 ゲスト/サーバー共有クラスター ディスク | いいえ 
 ゲスト/サーバー暗号化ディスク | いいえ 
 ゲスト/サーバー NFS | いいえ 
 ゲスト/サーバー SMB 3.0 | いいえ 
 ゲスト/サーバー RDM | [はい]<br/><br/> 物理サーバー = 該当なし
 ゲスト/サーバー ディスク > 1 TB | [はい]<br/><br/>最大 4,095 GB
-4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | はい
+4K 論理および 4K 物理セクター サイズのゲスト/サーバー ディスク | [はい]
 4K 論理および 512 バイト物理セクター サイズのゲスト/サーバー ディスク | [はい]
-ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB <br><br/>LVM 論理ボリュームの管理 | [はい]
+ストライピングされたディスクのゲスト/サーバー ボリューム > 4 TB <br><br/>論理ボリューム管理 (LVM)| [はい]
 ゲスト/サーバー - 記憶域スペース | いいえ 
 ゲスト/サーバー ディスクのホット アド/削除 | いいえ 
 ゲスト/サーバー - ディスクの除外 | [はい]
@@ -140,17 +140,17 @@ Azure Virtual Network サービス エンドポイント<br/><br/> (Azure Storag
 > - バージョン 9.13 以降のモビリティ サービスが必要です。
 > - 物理サーバーについてはサポートされません。
 
-## <a name="azure-storage"></a>Azure Storage (Azure Storage)
+## <a name="azure-storage"></a>Azure Storage
 
 **コンポーネント** | **サポートされています**
 --- | ---
-LRS | [はい]
-GRS | [はい]
-RA-GRS | [はい]
+ローカル冗長ストレージ | [はい]
+geo 冗長ストレージ | [はい]
+読み取りアクセス geo 冗長ストレージ | [はい]
 クール ストレージ | いいえ 
 ホット ストレージ| いいえ 
 ブロック blob | いいえ 
-保存時の暗号化 (SSE)| [はい]
+保存時の暗号化 (Storage サービスの暗号化)| [はい]
 Premium Storage | [はい]
 インポート/エクスポート サービス | いいえ 
 Virtual Network サービスのエンドポイント<br/><br/> ターゲット ストレージ/キャッシュ ストレージ アカウント (レプリケーション データの保存に使用) で構成されたストレージ ファイアウォールと仮想ネットワーク | いいえ 
@@ -161,7 +161,7 @@ Virtual Network サービスのエンドポイント<br/><br/> ターゲット �
 **機能** | **サポートされています**
 --- | ---
 可用性セット | [はい]
-ハブ | [はい]   
+ハブ | [はい]
 管理ディスク | [はい]
 
 ## <a name="azure-vm-requirements"></a>Azure VM の要件
@@ -170,20 +170,18 @@ Azure にレプリケートするオンプレミス VM は、この表にまと�
 
 **コンポーネント** | **要件** | **詳細**
 --- | --- | ---
-**ゲスト オペレーティング システム** | [サポートされているオペレーティング システム](#replicated machines)を確認してください | サポートされていない場合、確認は失敗します。 
-**ゲスト オペレーティング システムのアーキテクチャ** | 64 ビット | サポートされていない場合、確認は失敗します。 
-**オペレーティング システムのディスク サイズ** | 最大 2,048 GB | サポートされていない場合、確認は失敗します。 
-**オペレーティング システムのディスク数** | 1 | サポートされていない場合、確認は失敗します。  
-**データ ディスク数** | 64 以下 | サポートされていない場合、確認は失敗します。  
-**データ ディスク VHD のサイズ** | 最大 4,095 GB | サポートされていない場合、確認は失敗します。 
-**ネットワーク アダプター** | 複数のアダプターがサポートされます。 | 
-**共有 VHD** | サポートされていません。 | サポートされていない場合、確認は失敗します。 
-**FC ディスク** | サポートされていません。 | サポートされていない場合、確認は失敗します。 
-**ハード ディスク フォーマット** | VHD  <br/><br/> VHDX | VHDX は現在、Azure でサポートされていませんが、フェールオーバー後に、Site Recovery が VHDX を VHD に自動的に変換します。 オンプレミスにフェールバックした場合、VM は引き続き VHDX 形式を使用します。
-**BitLocker** | サポートされていません | マシンのレプリケーションを有効にする前に、BitLocker を無効にする必要があります。 | 
-**VM 名** | 1 から 63 文字<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。<br/><br/> マシン名の最初と最後は、文字か数字とする必要があります。 |  Site Recovery でマシンのプロパティの値を更新します。
-**VM の種類** | 第 1 世代、第 2 世代 (Windows のみ) |  第 2 世代の VM には基本の OS ディスク (VHDX としてフォーマットされた 1 つまたは 2 つのデータ ボリューム) と、300GB 未満のディスク領域が必要です。 
-第 2 世代の Linux VM はサポートされていません。 
+ゲスト オペレーティング システム | [サポートされているオペレーティング システム](#replicated machines)を確認してください | サポートされていない場合、確認は失敗します。 
+ゲスト オペレーティング システムのアーキテクチャ | 64 ビット。 | サポートされていない場合、確認は失敗します。 
+オペレーティング システムのディスク サイズ | 最大 2,048 GB。 | サポートされていない場合、確認は失敗します。 
+オペレーティング システムのディスク数 | 1 | サポートされていない場合、確認は失敗します。  
+データ ディスク数 | 64 以下。 | サポートされていない場合、確認は失敗します。  
+データ ディスク VHD のサイズ | 最大 4,095 GB | サポートされていない場合、確認は失敗します。 
+ネットワーク アダプター | 複数のアダプターがサポートされます。 | 
+共有 VHD | サポートされていません。 | サポートされていない場合、確認は失敗します。 
+FC ディスク | サポートされていません。 | サポートされていない場合、確認は失敗します。 
+BitLocker | サポートされていません。 | マシンのレプリケーションを有効にする前に、BitLocker を無効にする必要があります。 | 
+VM 名 | 1 から 63 文字。<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。<br/><br/> マシン名の最初と最後は、文字か数字とする必要があります。 |  Site Recovery でマシンのプロパティの値を更新します。
+
 
 ## <a name="vault-tasks"></a>資格情報コンテナーのタスク
 
@@ -197,8 +195,8 @@ Azure にレプリケートするオンプレミス VM は、この表にまと�
 
 **名前** | **説明** | **最新バージョン** | **詳細**
 --- | --- | --- | --- | ---
-**Azure Site Recovery 統合セットアップ** | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 9.12.4653.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
-**モビリティ サービス** | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 9.12.4653.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
+Azure Site Recovery 統合セットアップ | オンプレミスの VMware サーバーと Azure の間の通信を調整します  <br/><br/> オンプレミスの VMware サーバーにインストールされます | 9.12.4653.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
+モビリティ サービス | オンプレミスの VMware サーバー/物理サーバーと Azure/セカンダリ サイトの間のレプリケーションを調整します<br/><br/> レプリケートする VMware VM または物理サーバーにインストールされます | 9.12.4653.1 (ポータルから入手可能) | [最新の機能と修正](https://aka.ms/latest_asr_updates)
 
 
 ## <a name="next-steps"></a>次の手順

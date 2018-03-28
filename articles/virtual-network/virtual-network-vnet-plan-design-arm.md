@@ -1,6 +1,6 @@
 ---
-title: "Azure Virtual Network (VNet) の計画と設計ガイド | Microsoft Docs"
-description: "分離、接続、場所の要件に基づき、Azure で仮想ネットワークを計画し、設計する方法について学習します。"
+title: Azure Virtual Network (VNet) の計画と設計ガイド | Microsoft Docs
+description: 分離、接続、場所の要件に基づき、Azure で仮想ネットワークを計画し、設計する方法について学習します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-ms.openlocfilehash: ecdc3a847821fd83718f9cfc42308667460feabc
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: f11b2d1b4061b395918a274c4c53688bf34fbae1
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="plan-and-design-azure-virtual-networks"></a>Azure Virtual Network の計画と設計
 試験的に VNet を作成することは簡単ですが、あなたはおそらく、組織の運用ニーズに対応するために、時間の経過と共に複数の VNet をデプロイすることになるでしょう。 ある程度の計画と設計を行うことで、より効率的に VNet をデプロイし、必要なリソースを接続できます。 VNet に慣れていない場合、続行する前に [VNet の概要](virtual-networks-overview.md)と[デプロイ方法](quick-create-portal.md)について学習することが推奨されます。
@@ -248,7 +248,7 @@ VNet ごとにアドレス空間を指定する必要もあります。 オン�
 以上の要件に基づき、ネットワーク チームから各サブスクリプションに組み込まれている **ネットワークの共同作業者** にユーザーを追加し、各サブスクリプションでアプリケーション開発者にカスタム ロールを作成し、既存のサブネットに VM を追加する権限を与えることができます。
 
 ## <a name="next-steps"></a>次の手順
-* [仮想ネットワークをデプロイ](virtual-networks-create-vnet-arm-template-click.md) します。
+* [仮想ネットワークを展開します](quick-create-portal.md)。
 * IaaS VM の[負荷を分散](../load-balancer/load-balancer-overview.md)し、[複数の Azure リージョンでルーティングを管理](../traffic-manager/traffic-manager-overview.md)する方法を理解します。
-* [NSG の概要と NSG ソリューションの計画と設計の方法](virtual-networks-nsg.md) について詳しく学習します。
+* NSG ソリューションの[ネットワーク セキュリティ グループ](security-overview.md)の詳細について学習します。
 * [プレミス間と VNet の接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)について詳しく学習します。

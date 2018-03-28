@@ -1,11 +1,11 @@
 ---
-title: "Azure AD でサポートされているさまざまなトークンとクレームの種類について | Microsoft Docs"
-description: "Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド"
+title: Azure AD でサポートされているさまざまなトークンとクレームの種類について | Microsoft Docs
+description: Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド
 documentationcenter: na
-author: dstrockis
+author: hpsin
 services: active-directory
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 166aa18e-1746-4c5e-b382-68338af921e2
 ms.service: active-directory
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/07/2017
-ms.author: dastrock
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 3104b47d7ff8585142674b0ee545012f1e291ddd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: ca8a34c0a29ffad21e6384feac055d7a292311a5
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-ad-token-reference"></a>Azure AD のトークン リファレンス
 Azure Active Directory (Azure AD) は、各認証フローを処理する際に、複数の種類のセキュリティ トークンを出力します。 このドキュメントでは、各トークンの種類の形式、セキュリティ特性、内容について説明します。
@@ -50,10 +50,10 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 #### <a name="claims-in-idtokens"></a>id_token 内の要求
 > [!div class="mx-codeBreakAll"]
-| JWT の要求 | 名前 | Description |
+| JWT の要求 | Name | [説明] |
 | --- | --- | --- |
 | `appid` |アプリケーション ID |トークンを使用してリソースにアクセスするアプリケーションを識別します。 アプリケーションとして識別することもできますが、アプリケーションを使用しているユーザーとして識別することもできます。 アプリケーション ID は通常、アプリケーション オブジェクトを表しますが、Azure AD 内のサービス プリンシパル オブジェクトを表すこともできます。 <br><br> **JWT 値の例**: <br> `"appid":"15CB020F-3984-482A-864D-1D92265E8268"` |
-| `aud` |対象となる読者 |トークンの対象となる受信者。 トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。 <br><br> **SAML 値の例**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT 値の例**: <br> `"aud":"https://contoso.com"` |
+| `aud` |対象ユーザー |トークンの対象となる受信者。 トークンを受信するアプリケーションは、対象ユーザーの値が正しいことを検証し、異なる対象ユーザー向けのトークンをすべて拒否する必要があります。 <br><br> **SAML 値の例**: <br> `<AudienceRestriction>`<br>`<Audience>`<br>`https://contoso.com`<br>`</Audience>`<br>`</AudienceRestriction>` <br><br> **JWT 値の例**: <br> `"aud":"https://contoso.com"` |
 | `appidacr` |アプリケーションの認証コンテキスト クラスの参照 |クライアントが認証された方法を示します。 パブリック クライアントの場合、値は 0 です。 クライアント ID とクライアント シークレットが使用されている場合、値は 1 です。 <br><br> **JWT 値の例**: <br> `"appidacr": "0"` |
 | `acr` |認証コンテキスト クラスの参照 |アプリケーションの認証コンテキスト クラスの参照要求のクライアントとは異なり、サブジェクトが認証された方法を示します。 値 「0」 は、エンドユーザーの認証が ISO/IEC 29115 の要件を満たしていないことを示します。 <br><br> **JWT 値の例**: <br> `"acr": "0"` |
 | 認証のインスタント |認証が行われた日時を記録します。 <br><br> **SAML 値の例**: <br> `<AuthnStatement AuthnInstant="2011-12-29T05:35:22.000Z">` | |
@@ -64,11 +64,11 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 | `iat` |IssuedAt |トークンが発行された時刻が格納されます。 このクレームは、トークンの鮮度を測定するためによく使用されます。 <br><br> **SAML 値の例**: <br> `<Assertion ID="_d5ec7a9b-8d8f-4b44-8c94-9812612142be" IssueInstant="2014-01-06T20:20:23.085Z" Version="2.0" xmlns="urn:oasis:names:tc:SAML:2.0:assertion">` <br><br> **JWT 値の例**: <br> `"iat": 1390234181` |
 | `iss` |発行者 |トークンを構築して返す Security Token Service (STS) を識別します。 Azure AD が返すトークンでは、発行者は sts.windows.net です。 発行者クレーム値の GUID は、Azure AD ディレクトリのテナント ID です。 テナント ID は、変更不可で信頼性の高いディレクトリの識別子です。 <br><br> **SAML 値の例**: <br> `<Issuer>https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/</Issuer>` <br><br> **JWT 値の例**: <br>  `"iss":”https://sts.windows.net/cbb1a5ac-f33b-45fa-9bf5-f37db0fed422/”` |
 | `family_name` |姓 |Azure AD ユーザー オブジェクトで定義されたユーザーの姓や名字を示します。 <br><br> **SAML 値の例**: <br> `<Attribute Name=” http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname”>`<br>`<AttributeValue>Miller<AttributeValue>` <br><br> **JWT 値の例**: <br> `"family_name": "Miller"` |
-| `unique_name` |名前 |トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は、テナント内で一意であるとは限らず、表示目的でのみ使用されます。 <br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **JWT 値の例**: <br> `"unique_name": "frankm@contoso.com"` |
+| `unique_name` |Name |トークンのサブジェクトを識別する、人が判読できる値を提供します。 この値は、テナント内で一意であるとは限らず、表示目的でのみ使用されます。 <br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name”>`<br>`<AttributeValue>frankm@contoso.com<AttributeValue>` <br><br> **JWT 値の例**: <br> `"unique_name": "frankm@contoso.com"` |
 | `oid` |オブジェクト ID |Azure AD 内のオブジェクトの一意の識別子が含まれています。 この値は変更不可で、再割り当ても再利用もできません。 オブジェクト ID を使用すると、Azure AD へのクエリ内のオブジェクトを識別できます。 <br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/identity/claims/objectidentifier">`<br>`<AttributeValue>528b2ac2-aa9c-45e1-88d4-959b53bc7dd0<AttributeValue>` <br><br> **JWT 値の例**: <br> `"oid":"528b2ac2-aa9c-45e1-88d4-959b53bc7dd0"` |
 | `roles` |ロール |グループ メンバーシップを通じて直接的および間接的にサブジェクトに付与されており、ロールベースのアクセス制御を適用するために使用できるすべてのアプリケーション ロールを表します。 アプリケーション ロールは、アプリケーションごとに、アプリケーション マニフェストの `appRoles` プロパティを介して定義されます。 各アプリケーション ロールの `value` プロパティは、ロールの要求内に表示される値です。 <br><br> **SAML 値の例**: <br> `<Attribute Name="http://schemas.microsoft.com/ws/2008/06/identity/claims/role">`<br>`<AttributeValue>Admin</AttributeValue>` <br><br> **JWT 値の例**: <br> `“roles”: ["Admin", … ]` |
 | `scp` |スコープ |クライアント アプリケーションに付与される偽装アクセス許可を示します。 既定のアクセス許可は `user_impersonation`です。 保護されたリソースの所有者は、別の値を Azure AD に登録できます。 <br><br> **JWT 値の例**: <br> `"scp": "user_impersonation"` |
-| `sub` |[件名] |トークンが情報をアサートするプリンシパルを示します (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、安全に承認チェックができます。 サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 <br> `SubjectConfirmation` は要求ではありません。 これは、トークンのサブジェクトの検証方法を示します。 `Bearer` は、トークンを所有していることでサブジェクトが確認されることを示します。 <br><br> **SAML 値の例**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **JWT 値の例**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
+| `sub` |件名 |トークンが情報をアサートするプリンシパルを示します (アプリケーションのユーザーなど)。 この値は変更不可で、再割り当ても再利用もできません。したがってこの値を使用すると、安全に承認チェックができます。 サブジェクトは、Azure AD が発行するトークン内に常に存在するため、汎用性のある承認システムでこの値を使用することをお勧めします。 <br> `SubjectConfirmation` は要求ではありません。 これは、トークンのサブジェクトの検証方法を示します。 `Bearer` は、トークンを所有していることでサブジェクトが確認されることを示します。 <br><br> **SAML 値の例**: <br> `<Subject>`<br>`<NameID>S40rgb3XjhFTv6EQTETkEzcgVmToHKRkZUIsJlmLdVc</NameID>`<br>`<SubjectConfirmation Method="urn:oasis:names:tc:SAML:2.0:cm:bearer" />`<br>`</Subject>` <br><br> **JWT 値の例**: <br> `"sub":"92d0312b-26b9-4887-a338-7b00fb3c5eab"` |
 | `tid` |テナント ID |トークンを発行したディレクトリ テナントを識別する、変更不可で、再利用できない識別子です。 この値を使用すると、マルチ テナント アプリケーションのテナント固有のディレクトリ リソースにアクセスできます。 たとえば、この値を使用すると、Graph API への呼び出しでテナントを識別できます。 <br><br> **SAML 値の例**: <br> `<Attribute Name=”http://schemas.microsoft.com/identity/claims/tenantid”>`<br>`<AttributeValue>cbb1a5ac-f33b-45fa-9bf5-f37db0fed422<AttributeValue>` <br><br> **JWT 値の例**: <br> `"tid":"cbb1a5ac-f33b-45fa-9bf5-f37db0fed422"` |
 | `nbf`、`exp` |トークンの有効期間 |トークンが有効である期間を定義します。 トークンを検証するサービスは、現在の日付がトークンの有効期間内にあることを確認し、有効期限内にない場合は、トークンを拒否する必要があります。 サービスでは、Azure AD とサービスの間のクロック タイムの違い (「時間のずれ」) を考慮して、トークンの有効期間の範囲を最大 5 分まで延長する場合があります。 <br><br> **SAML 値の例**: <br> `<Conditions`<br>`NotBefore="2013-03-18T21:32:51.261Z"`<br>`NotOnOrAfter="2013-03-18T22:32:51.261Z"`<br>`>` <br><br> **JWT 値の例**: <br> `"nbf":1363289634, "exp":1363293234` |
 | `upn` |ユーザー プリンシパル名 |ユーザー プリンシパルのユーザー名が格納されます。<br><br> **JWT 値の例**: <br> `"upn": frankm@contoso.com` |
@@ -90,7 +90,7 @@ eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctODkwYS0y
 
 更新トークンはマルチリソースです。  つまり、あるリソースに対するトークン要求の間に受け取った更新トークンを、まったく異なるリソースに対するアクセス トークンに使用できます。 このために、要求内の `resource` パラメーターを対象のリソースに設定します。
 
-更新トークンは、アプリに対して完全に非透過的です。 有効期間は長いですが、アプリを作成するときに更新トークンが一定期間残っているものと期待することはできません。  更新トークンは、いつでもさまざまな理由で無効になる可能性があります。  アプリで更新トークンが有効かどうかを把握するための唯一の方法は、Azure AD トークン エンドポイントに対してトークン要求を行って更新トークンを利用することです。
+更新トークンは、アプリに対して完全に非透過的です。 有効期間は長いですが、アプリを作成するときに更新トークンが一定期間残っているものと期待することはできません。  更新トークンは、いつでもさまざまな理由で無効になる可能性があります。理由については、「[トークンの失効](#token-revocation)」をご覧ください。  アプリで更新トークンが有効かどうかを把握するための唯一の方法は、Azure AD トークン エンドポイントに対してトークン要求を行って更新トークンを利用することです。
 
 新しいアクセス トークンに対して更新トークンを利用すると、トークン応答で新しい更新トークンが返されます。  新しく発行された更新トークンを保存し、要求で使用したものと置き換える必要があります。  これにより、可能な限り長く更新トークンが有効であることが保証されます。
 
@@ -146,6 +146,24 @@ https://login.microsoftonline.com/common/.well-known/openid-configuration
 * その他にも用途はあります。
 
 アプリが ID トークンに対して実行する必要があるクレーム検証の完全な一覧については、「[OpenID Connect specification (OpenID Connect の仕様)](http://openid.net/specs/openid-connect-core-1_0.html#IDTokenValidation)」を参照してください。 これらの要求に対して予期される値の詳細については、前の [id_token](#id-tokens) のセクションを参照してください。
+
+## <a name="token-revocation"></a>トークンの失効
+
+更新トークンは、いつでもさまざまな理由で無効になる可能性があります。  これらはタイムアウトと失効の 2 つに大きく分けることができます。 
+* トークンのタイムアウト
+  * MaxInactiveTime: 更新トークンが MaxInactiveTime で指示された時間内に使用されなかった場合、更新トークンは無効になります。 
+  * MaxSessionAge: MaxAgeSessionMultiFactor または MaxAgeSessionSingleFactor が既定値 (Until-revoked) 以外に設定された場合、MaxAgeSession* に設定された時間が経過すると、再認証が必要になります。  
+  * 次に例を示します。
+    * テナントの MaxInactiveTime が 5 日間で、ユーザーが 1 週間の休暇を取った場合、7 日間にわたり AAD はユーザーからの新しいトークン要求を認識しません。  ユーザーが次に新しいトークンを要求するとき、更新トークンが失効していることがわかります。資格情報を再び入力する必要があります。 
+    * 機密性の高いアプリケーションで MaxAgeSessionSingleFactor が 1 日に設定されています。  ユーザーが月曜日にログインし、その 25 時間後の火曜日にログインした場合、再認証が必要になります。  
+* 無効化
+  * 自発的なパスワードの変更: ユーザーが自分のパスワードを変更した場合、トークンの取得方法に応じて、いくつかのアプリケーションで再認証が必要になります。  例外については下の「注意」をご覧ください。 
+  * 不本意なパスワードの変更: 管理者がユーザーのパスワード変更を強制した場合、またはパスワードをリセットした場合、そのパスワードを使用して取得されたユーザーのトークンは無効になります。  例外については下の「注意」をご覧ください。 
+  * セキュリティ違反: セキュリティ違反 (たとえば、パスワードのオンプレミス ストアの侵害) が発生した場合、管理者は現在発行されている更新トークンすべてを無効化できます。  これによりすべてのユーザーが強制的に再認証することになります。 
+
+注: 
+
+トークンの取得にパスワード以外の認証方法 (Windows Hello、認証アプリ、顔や指紋などの生体認証) が使用された場合、ユーザーのパスワードを変更しても、ユーザーの再認証は強制されません (ただし、認証アプリの再認証は強制されます)。  これは、選択した認証入力 (顔など) が変わっておらず、再認証のために再び使用できるためです。
 
 ## <a name="sample-tokens"></a>トークンのサンプル
 

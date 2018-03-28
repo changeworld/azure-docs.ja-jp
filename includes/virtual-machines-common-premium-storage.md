@@ -57,10 +57,12 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
     Premium Storage アカウントでは、レプリケーション オプションとしてローカル冗長ストレージのみがサポートされています。 ローカル冗長ストレージでは、1 つのリージョン内にデータのコピーを 3 つ保持します。 リージョンのディザスター リカバリーでは、[Azure Backup](../articles/backup/backup-introduction-to-azure-backup.md) を使用して VM ディスクを別のリージョンにバックアップする必要があります。 また、バックアップ コンテナーとして geo 冗長ストレージ (GRS) アカウントを使用する必要もあります。 
 
-    Azure では、ストレージ アカウントを非管理対象ディスクのコンテナーとして使用します。 非管理対象ディスクを使用する Azure DS シリーズ、DSv2 シリーズ、GS シリーズ、または Fs シリーズの VM を作成し、Premium Storage アカウントを選択すると、オペレーティング システム ディスクとデータ ディスクがそのストレージ アカウントに格納されます。
+    Azure では、ストレージ アカウントを非管理対象ディスクのコンテナーとして使用します。 非管理対象ディスクがある Premium Storage をサポートする Azure VM を作成し、Premium Storage アカウントを選択すると、オペレーティング システム ディスクとデータ ディスクがそのストレージ アカウントに格納されます。
 
 ## <a name="supported-vms"></a>サポート対象の VM
-Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、Fs シリーズ、および B シリーズの VM をサポートしています。 これらの VM の種類では、Standard Storage ディスクと Premium Storage ディスクを使用できます。 Premium Storage に互換性のない VM シリーズで Premium Storage ディスクを使用することはできません。
+
+Premium Storage は、B シリーズ、DS シリーズ、DSv2 シリーズ、DSv3 シリーズ、GS シリーズ、Ls シリーズ、M シリーズ、および Fs シリーズの VM をサポートしています。 これらの VM の種類では、Standard Storage ディスクと Premium Storage ディスクを使用できます。 Premium Storage に互換性のない VM シリーズで Premium Storage ディスクを使用することはできません。
+
 
 Windows 向けの Azure の VM の種類とサイズについては、[Windows VM のサイズ](../articles/virtual-machines/windows/sizes.md)に関する記事を参照してください。 Linux 向けの Azure の VM の種類とサイズについては、[Linux VM のサイズ](../articles/virtual-machines/linux/sizes.md)に関する記事を参照してください。
 

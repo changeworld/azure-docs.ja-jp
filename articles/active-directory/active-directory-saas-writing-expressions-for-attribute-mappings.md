@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory における属性マッピングの式の書き方 | Microsoft Docs"
-description: "Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。"
+title: Azure Active Directory における属性マッピングの式の書き方 | Microsoft Docs
+description: Azure Active Directory で SaaS アプリ オブジェクトを自動プロビジョニングしているときに、式マッピングを使用して属性値を許容される形式に変換する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: b13c51cd-1bea-4e5e-9791-5d951a518943
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
-ms.openlocfilehash: 5549fb8f20ac2eb07b52b3b8e1c418873e467c93
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: f1cf83044eb4f001ba341cabd0771b267c3f996d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="writing-expressions-for-attribute-mappings-in-azure-active-directory"></a>Azure Active Directory における属性マッピングの式の書き方
 SaaS アプリケーションに対してプロビジョニングを構成するときに指定できる属性マッピングの種類の 1 つは、式マッピングです。 この場合は、ユーザーのデータを SaaS アプリケーションが許容可能な形式に変換することができる、スクリプトのような式を記述する必要があります。
@@ -62,7 +62,7 @@ SaaS アプリケーションに対してプロビジョニングを構成する
 | Name | 必須/繰り返し | type | メモ |
 | --- | --- | --- | --- |
 | **source セクション** |必須 |String |通常は、source オブジェクトの属性の名前。 |
-| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、 [http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)を参照してください。 |
+| **inputFormat** |必須 |String |有効な形式の source 値。 サポートされる形式については、[http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx](http://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx) をご覧ください。 |
 | **outputFormat** |必須 |String |出力日付の形式。 |
 
 - - -
@@ -108,7 +108,7 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 
 - - -
 ### <a name="replace"></a>*Views\\Home\\AllDates.cshtml*
-**関数:**<br> ObsoleteReplace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
+**関数:**<br> Replace(source, oldValue, regexPattern, regexGroupName, replacementValue, replacementAttributeName, template)
 
 **説明:**<br>
 文字列内の値を置換します。 指定されたパラメーターに応じて異なる動作をします。
@@ -119,13 +119,13 @@ source 値の 1 つが複数値属性である場合は、その属性のすべ�
 * **oldValue** と **template** が指定された場合:
   
   * **template** に含まれるすべての **OldValue** を **source** 値に置換します。
-* **oldValueRegexPattern**、**oldValueRegexGroupName**、**replacementValue** が指定された場合:
+* **regexPattern**、**regexGroupName**、**replacementValue** が指定された場合:
   
   * source 文字列に含まれる OldValueRegexPattern に一致するすべての値を replacementValue に置換します。
-* **oldValueRegexPattern**、**oldValueRegexGroupName**、**replacementPropertyName** が指定された場合:
+* **regexPattern**、**regexGroupName**、**replacementPropertyName** が指定された場合:
   
-  * **source** に値が指定されている場合は、**source** を返します。
-  * **source** に値が指定されていない場合は、**oldValueRegexPattern** と **oldValueRegexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。 置換値を、結果として返します。
+  * **source** に値が指定されていない場合は、**source** を返します。
+  * **source** に値が指定されている場合は、**regexPattern** と **regexGroupName** を使用して、**replacementPropertyName** を持つプロパティから置換値を抽出します。 置換値を、結果として返します。
 
 **パラメーター:**<br> 
 
@@ -213,6 +213,17 @@ Salesforce Sandbox を使用している場合は、ユーザー名を同期す�
 * **入力** (givenName): "John"
 * **入力** (surname): "Doe"
 * **出力**: "JohDoe"
+
+### <a name="remove-diacritics-from-a-string-and-convert-to-lowercase"></a>文字列から分音記号を取り除いて小文字に変換する
+文字列から特殊文字を取り除いて、大文字を小文字に変換する必要があります。
+
+**Expression:** <br>
+`Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace( Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace(Replace([givenName], , "([Øø])", , "oe", , ), , "[Ææ]", , "ae", , ), , "([äãàâãåáąÄÃÀÂÃÅÁĄA])", , "a", , ), , "([B])", , "b", , ), , "([CçčćÇČĆ])", , "c", , ), , "([ďĎD])", , "d", , ), , "([ëèéêęěËÈÉÊĘĚE])", , "e", , ), , "([F])", , "f", , ), , "([G])", , "g", , ), , "([H])", , "h", , ), , "([ïîìíÏÎÌÍI])", , "i", , ), , "([J])", , "j", , ), , "([K])", , "k", , ), , "([ľłŁĽL])", , "l", , ), , "([M])", , "m", , ), , "([ñńňÑŃŇN])", , "n", , ), , "([öòőõôóÖÒŐÕÔÓO])", , "o", , ), , "([P])", , "p", , ), , "([Q])", , "q", , ), , "([řŘR])", , "r", , ), , "([ßšśŠŚS])", , "s", , ), , "([TŤť])", , "t", , ), , "([üùûúůűÜÙÛÚŮŰU])", , "u", , ), , "([V])", , "v", , ), , "([W])", , "w", , ), , "([ýÿýŸÝY])", , "y", , ), , "([źžżŹŽŻZ])", , "z", , ), " ", , , "", , )`
+
+**サンプル入力/出力:** <br>
+
+* **入力** (givenName): "Zoë"
+* **出力**:  "zoe"
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>特定の形式の文字列として日付を出力する
 SaaS アプリケーションに特定の形式で日付を送信します。 <br>

@@ -1,24 +1,18 @@
 ---
 title: Azure File Sync エージェント (プレビュー) のリリース ノート | Microsoft Docs
-description: Azure File Sync エージェント (プレビュー) のリリース ノート
+description: Azure File Sync エージェント (プレビュー) のリリース ノート。
 services: storage
-documentationcenter: ''
 author: wmgries
-manager: klaasl
-editor: tamram
-ms.assetid: ''
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
-ms.date: 10/08/2017
+ms.topic: article
+ms.date: 03/12/2018
 ms.author: wgries
-ms.openlocfilehash: fabfb02a199744c63c3a2191589fd450cfdd0304
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b42287580078b4391ddbc5b8ff2835131c64236d
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="release-notes-for-the-azure-file-sync-agent-preview"></a>Azure File Sync エージェント (プレビュー) のリリース ノート
 Azure ファイル同期を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 お使いの Windows Server のインストール済み環境が、Azure ファイル共有の高速キャッシュに生まれ変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -28,14 +22,25 @@ Azure ファイル同期を使用すると、オンプレミスのファイル �
 ## <a name="supported-versions"></a>サポートされているバージョン
 Azure File Sync エージェントでサポートされるバージョンは次のとおりです。
 
-| バージョン | リリース日 | サポート終了日 |
-|---------|--------------|------------------|
-| 2.1.0.0 | 2018 年 2 月 28 日 | 現在のバージョン |
-| 2.0.11.0 | 2018 年 2 月 8 日 | 現在のバージョン |
-| 1.1.0.0 | 2017 年 9 月 26 日 | 2018 年 7 月 30 日 |
+| マイルストーン | エージェントのバージョン番号 | リリース日 | 状態 |
+|----|----------------------|--------------|------------------|
+| 3 月の更新プログラム ロールアップ | 2.2.0.0 | 2018 年 3 月 12 日 | サポートされています (推奨されるバージョン) |
+| 2 月の更新プログラム ロールアップ | 2.1.0.0 | 2018 年 2 月 28 日 | サポートされています |
+| 更新 1 | 2.0.11.0 | 2018 年 2 月 8 日 | サポートされています |
+| 1 月の更新プログラム ロールアップ | 1.4.0.0 | 2018 年 1 月 8 日 | 2018 年 5 月 8 までサポートされています<sup>1</sup> |
+| 11 月の更新プログラム ロールアップ | 1.3.0.0 | 2017 年 11 月 30 日 | 2018 年 5 月 8 までサポートされています<sup>1</sup> |
+| 10 月の更新プログラム ロールアップ | 1.2.0.0 | 2017 年 10 月 31 日 | 2018 年 5 月 8 までサポートされています<sup>1</sup> |
+| 初期プレビュー リリース | 1.1.0.0 | 2017 年 9 月 26 日 | 2018 年 5 月 8 までサポートされています<sup>1</sup> |
+
+\[1\]: プレビュー中の Azure File Sync エージェントのリリースは、意図的に更新ポリシーに準拠していません。 Azure File Sync の一般公開が宣言された後、最初のエージェント リリースから更新ポリシーが適用されます。
 
 ### <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
+
+## <a name="agent-version-2200"></a>エージェント バージョン 2.2.0.0
+次のリリース ノートは、2018 年 3 月 12 日リリースにリリースされた Azure File Sync エージェントのバージョン 2.2.0.0 を対象としています。  これらはバージョン 2.1.0.0 と 2.0.11.0 に関して記載されているリリース ノートへの追記となります。
+
+FileSyncSvc が停止しないため、v2.1.0.0 のインストールが失敗することがあります。 この問題は、この更新プログラムで解決します。
 
 ## <a name="agent-version-2100"></a>エージェント バージョン 2.1.0.0
 次のリリース ノートは、2018 年 2 月 28 日にリリースされた Azure File Sync エージェントのバージョン 2.1.0.0 を対象としています。 バージョン 2.0.11.0 に関して記載されているリリース ノートへの追記となります。

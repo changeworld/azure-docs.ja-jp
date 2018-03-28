@@ -1,6 +1,6 @@
 ---
-title: "Reliable Services 通信の概要 | Microsoft Docs"
-description: "サービスのリッスン開始、エンドポイントの解決、サービス間の通信など、Reliable Service 通信モデルの概要について説明します。"
+title: Reliable Services 通信の概要 | Microsoft Docs
+description: サービスのリッスン開始、エンドポイントの解決、サービス間の通信など、Reliable Service 通信モデルの概要について説明します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 11/01/2017
 ms.author: vturecek
-ms.openlocfilehash: 204280c8b81e5f751f3f0b609e04aba0a1cec381
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: eacb4b7d0e33768e0da6ecd43ce1458a4a3bfaa8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-use-the-reliable-services-communication-apis"></a>Reliable Services 通信 API の使用方法
 プラットフォームとしての Azure Service Fabric は、サービス間の通信にまったく依存しません。 UDP から HTTP まで、あらゆるプロトコルとスタックに対応します。 サービスの通信方法の選択は、サービス開発者に委ねられています。 Reliable Services アプリケーション フレームワークには、組み込みの通信スタックと、カスタム通信コンポーネントの構築に使用できる API が用意されています。
@@ -54,7 +54,7 @@ public interface CommunicationListener {
 ステートレスの場合、次のようになります。
 
 ```csharp
-class MyStatelessService : StatelessService
+public class MyStatelessService : StatelessService
 {
     protected override IEnumerable<ServiceInstanceListener> CreateServiceInstanceListeners()
     {
@@ -85,7 +85,7 @@ public class MyStatelessService extends StatelessService {
 ```
 
 ```csharp
-class MyStatefulService : StatefulService
+public class MyStatefulService : StatefulService
 {
     protected override IEnumerable<ServiceReplicaListener> CreateServiceReplicaListeners()
     {
@@ -196,7 +196,7 @@ public CompletableFuture<String> openAsync(CancellationToken cancellationToken)
 Service Fabric は、クライアントや他のサービスがこのアドレスをサービス名で要求するための API を提供します。 これが重要なのは、サービスのアドレスが静的でないためです。 リソースの分散と可用性のために、サービスはクラスター内を移動します。 これは、クライアントがサービスのリッスン アドレスを解決するためのメカニズムです。
 
 > [!NOTE]
-> 通信リスナーの記述方法の詳しいチュートリアルについては、C# の場合は[「OWIN 自己ホストによる Service Fabric Web API サービス」](service-fabric-reliable-services-communication-webapi.md)を参照してください。java の場合は、独自の HTTP サーバー実装を記述することができます。https://github.com/Azure-Samples/service-fabric-java-getting-started にある EchoServer アプリケーションの例を参照してください。
+> 通信リスナーの記述方法の詳しいチュートリアルについては、C# の場合は「[OWIN 自己ホストによる Service Fabric Web API サービス](service-fabric-reliable-services-communication-webapi.md)」を参照してください。Java の場合は、独自の HTTP サーバー実装を記述することができます。https://github.com/Azure-Samples/service-fabric-java-getting-started にある EchoServer アプリケーションの例を参照してください。
 >
 >
 
@@ -275,7 +275,7 @@ CompletableFuture<ResolvedServicePartition> partition =
 通信クライアントはアドレスを受け取り、そのアドレスを使用してサービスに接続します。 クライアントは必要なプロトコルを使用できます。
 
 ```csharp
-class MyCommunicationClient : ICommunicationClient
+public class MyCommunicationClient : ICommunicationClient
 {
     public ResolvedServiceEndpoint Endpoint { get; set; }
 

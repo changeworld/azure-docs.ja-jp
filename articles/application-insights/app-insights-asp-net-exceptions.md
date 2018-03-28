@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights を利用して Web アプリの障害と例外を診断する | Microsoft Docs"
-description: "要求テレメトリと共に ASP.NET アプリから例外を取り込みます。"
+title: Azure Application Insights を利用して Web アプリの障害と例外を診断する | Microsoft Docs
+description: 要求テレメトリと共に ASP.NET アプリから例外を取り込みます。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mbullwin
-ms.openlocfilehash: d6a0b945bad36842142d16a4840c9c3d69e1564e
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: ee04fc3338dec7893f9f33322bd6b9af932199e7
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
@@ -113,8 +113,7 @@ Application Insights には、監視対象のアプリケーションの障害�
 ## <a name="reporting-exceptions-explicitly"></a>例外を明示的に報告する
 最も簡単な方法として、例外ハンドラーに TrackException() の呼び出しを挿入します。
 
-JavaScript
-
+```javascript
     try
     { ...
     }
@@ -124,9 +123,9 @@ JavaScript
         {Game: currentGame.Name,
          State: currentGame.State.ToString()});
     }
+```
 
-C#
-
+```csharp
     var telemetry = new TelemetryClient();
     ...
     try
@@ -144,9 +143,9 @@ C#
        // Send the exception telemetry:
        telemetry.TrackException(ex, properties, measurements);
     }
+```
 
-VB
-
+```VB
     Dim telemetry = New TelemetryClient
     ...
     Try
@@ -162,6 +161,7 @@ VB
       ' Send the exception telemetry:
       telemetry.TrackException(ex, properties, measurements)
     End Try
+```
 
 プロパティと測定値のパラメーターは省略可能ですが、[フィルター処理と、特別な情報を追加する](app-insights-diagnostic-search.md)のに便利です。 たとえば、複数のゲームを実行できるアプリケーションを使用している場合、1 つのゲームに関連する例外レポートをすべて検索できます。 必要な数だけ項目を各辞書に追加できます。
 
@@ -175,8 +175,7 @@ Web フォームの場合、HTTP モジュールは、CustomErrors で構成さ�
 
 ただし、アクティブなリダイレクトがある場合、次の行を Global.asax.cs の Application_Error 関数に追加します。 (Global.asax ファイルがない場合、それを追加します。)
 
-*C#*
-
+```csharp
     void Application_Error(object sender, EventArgs e)
     {
       if (HttpContext.Current.IsCustomErrorEnabled && Server.GetLastError  () != null)
@@ -186,11 +185,28 @@ Web フォームの場合、HTTP モジュールは、CustomErrors で構成さ�
          ai.TrackException(Server.GetLastError());
       }
     }
-
+```
 
 ## <a name="mvc"></a>MVC
+Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Application Insights は、MVC 5+ コントローラーのメソッドでスローされた未処理の例外を自動的に収集します。 そのような例外 (次の例を参照) を追跡するためにカスタム ハンドラーを以前に追加した場合、例外を二重で追跡しないようにハンドラーを取り除くことができます。
+
+例外フィルターが処理できないケースがあります。 例: 
+
+* コントローラー コンストラクターからスローされる例外。
+* メッセージ ハンドラーからスローされる例外。
+* ルーティング中にスローされる例外。
+* 応答コンテンツのシリアル化中にスローされる例外。
+* アプリケーションの起動中にスローされる例外。
+* バックグラウンド タスクでスローされる例外。
+
+アプリケーションによって "*処理される*" すべての例外も手動で追跡する必要があります。 コントローラーで発生した例外を処理しないと、通常は、500 [内部サーバー エラー] の応答になります。 このような応答を、処理済みの例外 (または例外なし) の結果として手動で構成した場合、`ResultCode` 500 を使用して、対応する要求テレメトリで追跡されます。ただし、Application Insights SDK は対応する例外を追跡できません。
+
+### <a name="prior-versions-support"></a>以前のバージョンのサポート
+Application Insights Web SDK 2.5 (および以前) の MVC 4 (および以前) を使用する場合は、次の例を参照して例外を追跡します。
+
 [CustomErrors](https://msdn.microsoft.com/library/h0hfz6fc.aspx) 構成が `Off` の場合、[HTTP モジュール](https://msdn.microsoft.com/library/ms178468.aspx)で例外を収集できます。 ただし、`RemoteOnly` (既定) または `On` の場合、例外は消去され、Application Insights が自動回収する例外はなくなります。 これを解決するには、[System.Web.Mvc.HandleErrorAttribute クラス](http://msdn.microsoft.com/library/system.web.mvc.handleerrorattribute.aspx)をオーバーライドし、次のようにオーバーライドしたクラスを異なる MVC バージョンに適用します ([github ソース](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions/blob/master/MVC2App/Controllers/AiHandleErrorAttribute.cs))。
 
+```csharp
     using System;
     using System.Web.Mvc;
     using Microsoft.ApplicationInsights;
@@ -215,22 +231,26 @@ Web フォームの場合、HTTP モジュールは、CustomErrors で構成さ�
         }
       }
     }
+```
 
 #### <a name="mvc-2"></a>MVC 2
 HandleError 属性をコントローラーの新しい属性で置換します。
 
+```csharp
     namespace MVC2App.Controllers
     {
        [AiHandleError]
        public class HomeController : Controller
        {
     ...
+```
 
 [サンプル](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 Global.asax.cs で `AiHandleErrorAttribute` をグローバル フィルターとして登録します。
 
+```csharp
     public class MyMvcApplication : System.Web.HttpApplication
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -238,12 +258,14 @@ Global.asax.cs で `AiHandleErrorAttribute` をグローバル フィルター�
          filters.Add(new AiHandleErrorAttribute());
       }
      ...
+```
 
 [サンプル](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4、MVC5
 FilterConfig.cs で AiHandleErrorAttribute をグローバル フィルターとして登録します。
 
+```csharp
     public class FilterConfig
     {
       public static void RegisterGlobalFilters(GlobalFilterCollection filters)
@@ -252,12 +274,31 @@ FilterConfig.cs で AiHandleErrorAttribute をグローバル フィルターと
         filters.Add(new AiHandleErrorAttribute());
       }
     }
+```
 
 [サンプル](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
-## <a name="web-api-1x"></a>Web API 1.x
+## <a name="web-api"></a>Web API
+Application Insights Web SDK バージョン 2.6 (beta3 以降) では、Application Insights は、WebAPI 2+ についてコントローラーのメソッドでスローされた未処理の例外を自動的に収集します。 そのような例外 (次の例を参照) を追跡するためにカスタム ハンドラーを以前に追加した場合、例外を二重で追跡しないようにハンドラーを取り除くことができます。
+
+例外フィルターが処理できないケースがあります。 例: 
+
+* コントローラー コンストラクターからスローされる例外。
+* メッセージ ハンドラーからスローされる例外。
+* ルーティング中にスローされる例外。
+* 応答コンテンツのシリアル化中にスローされる例外。
+* アプリケーションの起動中にスローされる例外。
+* バックグラウンド タスクでスローされる例外。
+
+アプリケーションによって "*処理される*" すべての例外も手動で追跡する必要があります。 コントローラーで発生した例外を処理しないと、通常は、500 [内部サーバー エラー] の応答になります。 このような応答を、処理済みの例外 (または例外なし) の結果として手動で構成した場合、`ResultCode` 500 を使用して、対応する要求テレメトリで追跡されます。ただし、Application Insights SDK は対応する例外を追跡できません。
+
+### <a name="prior-versions-support"></a>以前のバージョンのサポート
+Application Insights Web SDK 2.5 (および以前) の WebAPI 1 (および以前) を使用する場合は、次の例を参照して例外を追跡します。
+
+#### <a name="web-api-1x"></a>Web API 1.x
 System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
 
+```csharp
     using System.Web.Http.Filters;
     using Microsoft.ApplicationInsights;
 
@@ -276,9 +317,11 @@ System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
         }
       }
     }
+```
 
 この上書きされた属性を特定のコントローラーに追加するか、WebApiConfig クラスのグローバル フィルター構成に追加できます。
 
+```csharp
     using System.Web.Http;
     using WebApi1.x.App_Start;
 
@@ -298,19 +341,14 @@ System.Web.Http.Filters.ExceptionFilterAttribute を上書きします。
         }
       }
     }
+```
 
 [サンプル](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
-例外フィルターが処理できないケースがあります。 例: 
-
-* コントローラー コンストラクターからスローされる例外。
-* メッセージ ハンドラーからスローされる例外。
-* ルーティング中にスローされる例外。
-* 応答コンテンツのシリアル化中にスローされる例外。
-
-## <a name="web-api-2x"></a>Web API 2.x
+#### <a name="web-api-2x"></a>Web API 2.x
 IExceptionLogger の実装を追加します。
 
+```csharp
     using System.Web.Http.ExceptionHandling;
     using Microsoft.ApplicationInsights;
 
@@ -329,9 +367,11 @@ IExceptionLogger の実装を追加します。
         }
       }
     }
+```
 
 これを WebApiConfig のサービスに追加します。
 
+```csharp
     using System.Web.Http;
     using System.Web.Http.ExceptionHandling;
     using ProductsAppPureWebAPI.App_Start;
@@ -355,7 +395,8 @@ IExceptionLogger の実装を追加します。
             config.Services.Add(typeof(IExceptionLogger), new AiExceptionLogger());
         }
       }
-  }
+     }
+```
 
 [サンプル](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
@@ -367,6 +408,7 @@ IExceptionLogger の実装を追加します。
 ## <a name="wcf"></a>WCF
 Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するクラスを追加します。
 
+```csharp
     using System;
     using System.Collections.Generic;
     using System.Linq;
@@ -416,7 +458,7 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
       }
     }
 
-サービス実装に属性を追加します。
+Add the attribute to the service implementations:
 
     namespace WcfService4
     {
@@ -424,6 +466,7 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
         public class Service1 : IService1
         {
          ...
+```
 
 [サンプル](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
