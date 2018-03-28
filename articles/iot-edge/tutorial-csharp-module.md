@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT Edge C# モジュール | Microsoft Docs"
-description: "C# コードで IoT Edge モジュールを作成し、エッジ デバイスにデプロイする"
+title: Azure IoT Edge C# モジュール | Microsoft Docs
+description: C# コードで IoT Edge モジュールを作成し、エッジ デバイスにデプロイする
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
-ms.author: v-jamebr
-ms.date: 11/15/2017
+ms.author: kgremban
+ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: fd46bb662af72ece799bb545d06d76f9e54ee62c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 605f0cfe34e4fda14030bb38686095882846c7c0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>C# IoT Edge モジュールを開発して、シミュレートしたデバイスにデプロイする - プレビュー
 
@@ -48,7 +48,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 3. **[作成]**を選択します。
 4. コンテナー レジストリが作成されたら、そこに移動し、**[アクセス キー]** を選択します。 
 5. **[管理者ユーザー]** を **[有効]** に切り替えます。
-6. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値を、このチュートリアルで後ほど使用します。 
+6. **ログイン サーバー**、**ユーザー名**、および**パスワード**の値をコピーします。 これらの値は、後ほどこのチュートリアルで、レジストリに Docker イメージを発行するときと、Edge ランタイムにレジストリの資格情報を追加するときに使用します。 
 
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge モジュール プロジェクトを作成する
 以下の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、.NET core 2.0 に基づく IoT Edge モジュールを作成する方法を示します。
@@ -227,15 +227,14 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 2. **[Dockerfile]** ファイルを右クリックし、**[Build IoT Edge module Docker image] \(IoT Edge モジュール Docker イメージのビルド)** をクリックします。 
 3. **[フォルダーの選択]** ウィンドウで、`./bin/Debug/netcoreapp2.0/publish` を参照するか入力します。 **[Select Folder as EXE_DIR] \(EXE_DIR としてフォルダーを選択)** をクリックします。
 4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 たとえば、「 `<your container registry address>/filtermodule:latest`」のように入力します。 コンテナー レジストリ アドレスは、レジストリからコピーしたログイン サーバーと同じです。 `<your container registry name>.azurecr.io` の形式にする必要があります。
-5. VS Code 統合ターミナルで次のコマンドを入力して、Docker にサインインします。 
+5. Azure コンテナー レジストリを作成したときにコピーしたユーザー名、パスワード、およびログイン サーバーを使用して Docker にサインインします。 VS Code 統合ターミナルに次のコマンドを入力します。 
      
    ```csh/sh
-   docker login -u <username> -p <password> <Login server>
+   docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
-        
-   Azure コンテナー レジストリを作成したときにコピーしたユーザー名、パスワード、およびログイン サーバーを使用します。
 
-3. イメージを Docker リポジトリにプッシュします。 **[表示]** > **[コマンド パレット]** を選択し、**[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** メニュー コマンドを検索します。 VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 手順 4. で使用したのと同じイメージ名を使用してください。
+6. コンテナー レジストリにイメージをプッシュします。 **[表示]** > **[コマンド パレット]** を選択し、**[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** メニュー コマンドを検索します。 VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 手順 4. で使用したのと同じイメージ名を使用してください。
+7. Azure Portal でイメージを表示するには、Azure コンテナー レジストリに移動して **[リポジトリ]** を選択します。 **filtermodule** が一覧表示されます。
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>Edge ランタイムにレジストリの資格情報を追加する
 Edge デバイスを実行しているコンピューターの Edge ランタイムに、レジストリの資格情報を追加します。 この資格情報により、コンテナーをプルするためのアクセス権がランタイムに付与されます。 

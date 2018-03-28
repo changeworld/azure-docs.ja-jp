@@ -1,19 +1,19 @@
 ---
-title: "Azure クイック スタート - Ruby を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs"
-description: "このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Ruby 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。"
+title: Azure クイック スタート - Ruby を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs
+description: このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Ruby 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
 author: tamram
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/22/2018
+ms.date: 03/15/2018
 ms.author: seguler
-ms.openlocfilehash: df885849e879317be6379767a09dd30a93687902
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fa92875fe859e7d1364267d6157f7a706d9eb8df
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-ruby"></a>クイック スタート: Ruby を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -177,6 +177,12 @@ blob_client.delete_container(container_name)
 File.delete(full_path_to_file)
 File.delete(full_path_to_file2)    
 ```
+## <a name="resources-for-developing-ruby-applications-with-blobs"></a>BLOB を使用する Ruby アプリケーションを開発するためのリソース
+
+Blob Storage を使用する Ruby 開発については、以下の追加リソースを参照してください。
+
+- GitHub で Azure Storage 用の [Ruby クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-ruby)を確認し、ダウンロードします。
+- Ruby クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=ruby&term=blob)を確認します。
 
 ## <a name="next-steps"></a>次の手順
  

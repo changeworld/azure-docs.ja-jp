@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB についてよく寄せられる質問 | Microsoft Docs"
-description: "グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB についてよく寄せられる質問の回答が得られます。 容量、パフォーマンス レベル、スケーリングについて説明します。"
-keywords: "データベース質問, よく寄せられる質問, documentdb, azure, Microsoft azure"
+title: Azure Cosmos DB についてよく寄せられる質問 | Microsoft Docs
+description: グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB についてよく寄せられる質問の回答が得られます。 容量、パフォーマンス レベル、スケーリングについて説明します。
+keywords: データベース質問, よく寄せられる質問, documentdb, azure, Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b68d1831-35f9-443d-a0ac-dad0c89f245b
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2018
+ms.date: 03/14/2018
 ms.author: mimig
-ms.openlocfilehash: ac0088478701a1796380daa74602569800c1522e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 466abbffd250685baf886b7fc7cc772ee9e327f2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
 ## <a name="azure-cosmos-db-fundamentals"></a>Azure Cosmos DB の基礎
@@ -211,6 +211,7 @@ Azure Cosmos DB Table API は [Azure Portal][azure-portal] で利用できます
 * CORS は現在サポートされていません。
 * Azure Table Storage のテーブル名は大文字小文字が区別されませんが、Azure Cosmos DB Table API では区別されます。
 * 現在、バイナリ フィールドなどのエンコード情報に対する Azure Cosmos DB の内部形式の一部は、それほど効率的ではありません。 そのため、データ サイズの予期しない制限が発生する可能性があります。 たとえば、現在、エンコードによってデータ サイズが増加するため、フル 1 メガのテーブル エンティティを使用してバイナリ データを格納することはできません。
+* エンティティ プロパティ名 "Id" は現在サポートされていません。
 
 REST API に関しては、Azure Cosmos DB Table API によってサポートされないエンドポイント/クエリ オプションがいくつかあります
 | REST メソッド | REST エンドポイント/クエリ オプション | ドキュメントの URL | 説明 |

@@ -8,13 +8,13 @@ ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: quickstart
-ms.date: 03/09/2018
+ms.date: 03/15/2018
 ms.author: rogarana
-ms.openlocfilehash: 474c03921369035cd7334fdddd9806f8f90b7d58
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4adad6fe3da16653bbd654a3e93e14f9e68b7c90
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/17/2018
 ---
 #  <a name="transfer-objects-tofrom-azure-blob-storage-using-php"></a>PHP を使用して Azure Blob Storage との間でオブジェクトを転送する
 このクイック スタートでは、PHP を使って、Azure Blob Storage のコンテナー内のブロック BLOB をアップロード、ダウンロード、および一覧表示する方法を説明します。 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/12/2018
 
 このクイック スタートを完了するには、以下が必要です。 
 * [PHP](http://php.net/downloads.php) のインストール
-* [Azure SDK for PHP](https://github.com/Azure/azure-storage-php) のインストール
+* [Azure Storage SDK for PHP](https://github.com/Azure/azure-storage-php) をインストールします。
 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
@@ -196,6 +196,13 @@ Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB を
     echo "<br />";
     unlink($fileToUpload);   
 ```
+
+## <a name="resources-for-developing-php-applications-with-blobs"></a>BLOB を使用する PHP アプリケーションを開発するためのリソース
+
+Blob Storage を使用する PHP 開発については、以下の追加リソースを参照してください。
+
+- GitHub で Azure Storage 用の [PHP クライアント ライブラリ ソース コード](https://github.com/Azure/azure-storage-php)を確認し、ダウンロードしてインストールします。
+- PHP クライアント ライブラリを使用して記述された [Blob Storage のサンプル](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=php&term=blob)を確認します。
 
 ## <a name="next-steps"></a>次の手順
  

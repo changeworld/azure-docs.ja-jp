@@ -1,6 +1,6 @@
 ---
-title: "最初の Azure Database for MySQL データベースを設計する - Azure Portal"
-description: "このチュートリアルでは、Azure Portal を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。"
+title: 'チュートリアル: Azure Portal を使用して Azure Database for MySQL を設計する'
+description: このチュートリアルでは、Azure Portal を使用して、Azure Database for MySQL サーバーとデータベースを作成および管理する方法について説明します。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -10,13 +10,13 @@ ms.service: mysql-database
 ms.topic: tutorial
 ms.date: 02/28/2018
 ms.custom: mvc
-ms.openlocfilehash: 272c1ba67fb1a907d739d23ce1d965f57c3a1074
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 67f1a1ced8e36adf5d391415aae9b16df43950bb
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="design-your-first-azure-database-for-mysql-database"></a>最初の Azure Database for MySQL データベースを設計する
+# <a name="tutorial-design-an-azure-database-for-mysql-database-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して Azure Database for MySQL データベースを設計する
 Azure Database for MySQL は、高可用性 MySQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure Portal を使用して、簡単にサーバーを管理し、データベースを設計することができます。
 
 このチュートリアルでは、Azure Portal を使用して次のことを行う方法を説明します。

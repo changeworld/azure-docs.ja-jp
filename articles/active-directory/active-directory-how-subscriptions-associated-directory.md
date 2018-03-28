@@ -1,11 +1,11 @@
 ---
-title: "既存の Azure サブスクリプションを Azure AD ディレクトリに追加する方法 | Microsoft Docs"
-description: "既存のサブスクリプションを Azure AD ディレクトリに追加する方法"
+title: 既存の Azure サブスクリプションを Azure AD ディレクトリに追加する方法 | Microsoft Docs
+description: 既存のサブスクリプションを Azure AD ディレクトリに追加する方法
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bc4773c2-bc4a-4d21-9264-2267065f0aea
 ms.service: active-directory
 ms.workload: identity
@@ -16,11 +16,11 @@ ms.date: 12/12/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
-ms.openlocfilehash: e063e6a46b6b99c4bbe749347e6887a930adb882
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.openlocfilehash: 2b9ed5b3374c98740923790dac90cb1eb2f065d8
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Azure サブスクリプションを Azure Active Directory に関連付けるまたは追加する方法
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 01/06/2018
 
 * サブスクリプションに RBAC 所有者のアクセス権を持つアカウントでサインインする必要があります。
 * 対象サブスクリプションが関連付けられている現在のディレクトリとその追加先となるディレクトリとの両方に存在するアカウントでサインインする必要があります。 別のディレクトリへのアクセスの取得の詳細については、「[Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-admin-add-users.md)」を参照してください。
+* CSP (MS-AZR-0145P、MS-AZR-0146P、MS-AZR-159P) および Microsoft Imagine (MS-AZR-0144P) のサブスクリプションでは、この機能は使用できません。
 
 ## <a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>既存のサブスクリプションを Azure AD ディレクトリに関連付けるには
 

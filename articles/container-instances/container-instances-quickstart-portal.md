@@ -1,21 +1,21 @@
 ---
-title: "クイックスタート - Azure ポータルでの最初の Azure Container Instances コンテナーの作成"
-description: "Azure Container Instances でのデプロイおよび作業の開始"
+title: クイックスタート - Azure ポータルでの最初の Azure Container Instances コンテナーの作成
+description: このクイック スタートでは、Azure Portal を使用して Azure Container Instances にコンテナーをデプロイします
 services: container-instances
 author: mmacy
 manager: timlt
 ms.service: container-instances
 ms.topic: quickstart
-ms.date: 01/02/2018
+ms.date: 03/19/2018
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: 63f22544276da07ec98e779cc524879603655db6
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 18238c94ba9acff15497a666a63b65b95779d4ac
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="create-your-first-container-in-azure-container-instances"></a>Azure Container Instances での最初のコンテナーの作成
+# <a name="quickstart-create-your-first-container-in-azure-container-instances"></a>クイック スタート: Azure Container Instances での最初のコンテナーの作成
 
 Azure Container Instances を使用すると、Azure でコンテナーを簡単に作成して管理できます。 このクイックスタートでは、Azure でコンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、Azure ポータルを使用することによって完結します。 わずか数回のクリックで、お使いのブラウザーに次のように表示されます。
 

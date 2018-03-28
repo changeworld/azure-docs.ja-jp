@@ -1,29 +1,29 @@
 ---
-title: "Azure Cosmos DB: Java と MongoDB API によるコンソール アプリの構築 | Microsoft Docs"
-description: "Azure Cosmos DB MongoDB API への接続とクエリに使用できる Java コード サンプルについて説明します。"
+title: 'Azure Cosmos DB: Java と MongoDB API によるコンソール アプリの構築 | Microsoft Docs'
+description: Azure Cosmos DB MongoDB API への接続とクエリに使用できる Java コード サンプルについて説明します。
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: 81bf338d3be18905fd04e07a53284432b5feb491
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 199ea35d7df405ebc148185094a6865a1c373941
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-java-and-the-azure-portal"></a>Azure Cosmos DB: Java と Azure Portal による MongoDB API コンソール アプリの構築
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
 このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 さらに、[MongoDB Java ドライバー](https://docs.mongodb.com/ecosystem/drivers/java/)に基づいたコンソール アプリを構築し、デプロイします。 
 
@@ -58,11 +58,11 @@ github から MongoDB API アプリを複製し、接続文字列を設定して
     git clone https://github.com/Azure-Samples/azure-cosmos-db-mongodb-java-getting-started.git
     ```
 
-3. 次に、Visual Studio でソリューション ファイルを開きます。 
+3. 次に、使い慣れたエディターでコードを開きます。 
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 `Program.cs` ファイルを開くと、これらのコード行によって、Azure Cosmos DB リソースが作成されることがわかります。 
+アプリで何が行われているかを簡単に確認してみましょう。 `Program.java` ファイルを開くと、これらのコード行によって、Azure Cosmos DB リソースが作成されることがわかります。 
 
 * DocumentClient が初期化されます。
 
@@ -94,7 +94,7 @@ github から MongoDB API アプリを複製し、接続文字列を設定して
     System.out.println(queryResult.toJson());       
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列の更新
+## <a name="update-your-connection-string"></a>接続文字列を更新する
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
@@ -121,7 +121,7 @@ github から MongoDB API アプリを複製し、接続文字列を設定して
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、データ エクスプローラーを使用してコレクションを作成し、コンソール アプリを実行する方法を説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 

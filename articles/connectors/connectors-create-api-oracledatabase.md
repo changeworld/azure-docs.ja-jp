@@ -1,25 +1,25 @@
 ---
-title: "Azure Logic Apps に Oracle Database コネクタを追加する | Microsoft Docs"
-description: "ロジック アプリで Oracle Database コネクタを使用します"
-services: 
-documentationcenter: 
-author: MandiOhlinger
+title: Azure Logic Apps に Oracle Database コネクタを追加する | Microsoft Docs
+description: ロジック アプリで Oracle Database コネクタを使用します
+services: ''
+documentationcenter: ''
+author: ecfan
 manager: anneta
-editor: 
+editor: ''
 tags: connectors
-ms.assetid: 
+ms.assetid: ''
 ms.service: logic-apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/29/2017
-ms.author: mandia; ladocs
-ms.openlocfilehash: 4119e72abd568c9b53245a872691f06329b040de
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: estfan; ladocs
+ms.openlocfilehash: 57931b6c2f96debeb9ab7f1a3b6700f23e7d2a7e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="get-started-with-the-oracle-database-connector"></a>Oracle Database コネクタの概要
 
@@ -28,7 +28,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 * 顧客データベースに新しい顧客を追加するか、注文データベースで注文を更新することで、ワークフローを構築します。
 * データ行の取得、新しい行の挿入、行の削除を行うアクションを使用します。 たとえば、Dynamics CRM Online にレコードが作成されると (トリガー)、Oracle Database に行を挿入します (アクション)。 
 
-このトピックでは、ロジック アプリで Oracle Database コネクタを使用する方法について説明します。
+この記事では、ロジック アプリで Oracle Database コネクタを使用する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
   [64 ビット ODAC 12c Release 4 (12.1.0.2.4) for Windows x64](http://www.oracle.com/technetwork/database/windows/downloads/index-090165.html)
 
     > [!TIP]
-    > Oracle クライアントがインストールされていない場合、接続の作成または使用を試みると、エラーが発生します。 このトピックの一般的なエラーに関する説明を参照してください。
+    > Oracle クライアントがインストールされていない場合、接続の作成または使用を試みると、エラーが発生します。 この記事の一般的なエラーに関する説明を参照してください。
 
 
 ## <a name="add-the-connector"></a>コネクタの追加
@@ -104,7 +104,7 @@ Oracle Database コネクタを使用して、既存のデータベースのデ�
 
 **対応策**: ゲートウェイをインストールしたオンプレミスのコンピューターで、そのゲートウェイが実行されていること、およびインターネットに接続できることを確認します。  オフまたはスリープ状態のコンピューターにはゲートウェイをインストールしないことをお勧めします。 オンプレミスのデータ ゲートウェイ サービス (PBIEgwService) を再起動することもできます。
 
-#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-please-visit-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**エラー**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) にアクセスして公式のプロバイダーをインストールしてください。
+#### <a name="error-the-provider-being-used-is-deprecated-systemdataoracleclient-requires-oracle-client-software-version-817-or-greater-see-httpsgomicrosoftcomfwlinkplinkid272376httpsgomicrosoftcomfwlinkplinkid272376-to-install-the-official-provider"></a>**エラー**: 使用中のプロバイダーは非推奨です: System.Data.OracleClient には Oracle クライアント ソフトウェア version 8.1.7 以降が必要です。 [https://go.microsoft.com/fwlink/p/?LinkID=272376](https://go.microsoft.com/fwlink/p/?LinkID=272376) を参照して、公式のプロバイダーをインストールしてください。
 
 **原因**: オンプレミスのデータ ゲートウェイが実行されているコンピューターに Oracle クライアント SDK がインストールされていません。  
 

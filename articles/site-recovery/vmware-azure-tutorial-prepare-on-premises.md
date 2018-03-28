@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 03/08/2018
+ms.date: 03/15/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 07f62775c9286250d33635febe01dbad4362df12
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6898f725d1d3cbf3f8d9d90faeafc13fbc8cb201
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -59,34 +59,16 @@ Site Recovery では、次のことを実行するために、VMware サーバ�
 3. Linux VM にインストールするには、ソースの Linux サーバーにルート アカウントを準備します。
 
 
-## <a name="check-vmware-server-requirements"></a>VMware サーバーの要件を確認する
+## <a name="check-vmware-requirements"></a>VMware の要件を確認する
 
-VMware サーバーが次の要件を満たしていることを確認します。
+VMware サーバーと VM が要件に準拠していることを確認します。
 
-**コンポーネント** | **要件**
---- | ---
-**vCenter サーバー** | vCenter 6.5、6.0、5.5
-**vSphere ホスト** | vSphere 6.5、6.0、5.5
+1. VMware サーバーの要件を[確認](vmware-physical-azure-support-matrix.md#on-premises-virtualization-servers)します。
+2. Linux の場合は、ファイル システムとストレージの要件を[チェック](vmware-physical-azure-support-matrix.md#linux-file-systemsguest-storage)します。 
+3. オンプレミスの[ネットワーク](vmware-physical-azure-support-matrix.md#network)と[ストレージ](vmware-physical-azure-support-matrix.md#storage)のサポートをチェックします。 
+4. [Azure のネットワーク](vmware-physical-azure-support-matrix.md#azure-vm-network-after-failover)、[ストレージ](vmware-physical-azure-support-matrix.md#azure-storage)、[コンピューティング](vmware-physical-azure-support-matrix.md#azure-compute)に関して、フェールオーバー後のサポートをチェックします。
+5. Azure にレプリケートするオンプレミスの VM は、「[Azure VM requirements (Azure VM の要件)](vmware-physical-azure-support-matrix.md#azure-vm-requirements)」に準拠している必要があります。
 
-## <a name="check-vmware-vm-requirements"></a>VMware VM の要件を確認する
-
-VM が次の表にまとめた Azure の要件に準拠していることを確認します。
-
-**VM 要件** | **詳細**
---- | ---
-**オペレーティング システムのディスク サイズ** | 最大 2048 GB
-**オペレーティング システムのディスク数** | 1
-**データ ディスク数** | 64 以下
-**データ ディスク VHD のサイズ** | 最大 4095 GB
-**ネットワーク アダプター** | 複数のアダプターがサポートされます。
-**共有 VHD** | サポートされていません
-**FC ディスク** | サポートされていません
-**ハード ディスク フォーマット** | VHD または VHDX。<br/><br/> VHDX は現在、Azure でサポートされていませんが、Azure にフェールオーバーするとき、Site Recovery が VHDX を VHD に自動的に変換します。 オンプレミスにフェールバックした場合、VM は引き続き VHDX 形式を使用します。
-**Bitlocker** | サポートされていません。 VM のレプリケーションを有効にする前に無効にします。
-**VM 名** | 1 ～ 63 文字で指定します。<br/><br/> 名前に使用できるのは、英文字、数字、およびハイフンのみです。 VM 名の最初と最後は、文字か数字とする必要があります。
-**VM の種類** | 第 1 世代 - Linux または Windows<br/><br/>第 2 世代 - Windows のみ
-
-VM もサポートされているオペレーティング システムを実行している必要があります。 サポートされているバージョンの完全な一覧については、[VMware と物理サーバーのサポート マトリックス](vmware-physical-azure-support-matrix.md#replicated-machines)に関するページを参照してください。
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>フェールオーバー後に Azure VM に接続するための準備をする
 

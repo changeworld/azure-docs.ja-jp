@@ -1,24 +1,24 @@
 ---
-title: "Azure Marketplace と AppSource のパブリッシャー ガイド"
-description: "Azure Marketplace の新しいパブリッシャーのためのステップ バイ ステップ ガイドと公開チェックリスト"
+title: Azure Marketplace と AppSource のパブリッシャー ガイド
+description: Azure Marketplace の新しいパブリッシャーのためのステップ バイ ステップ ガイドと公開チェックリスト
 services: Marketplace, Compute, Storage, Networking, Blockchain, Security
-documentationcenter: 
+documentationcenter: ''
 author: ellacroi
 manager: msmbaldwin
-editor: 
+editor: ''
 ms.assetid: e8d228c8-f9e8-4a80-9319-7b94d41c43a6
 ms.service: marketplace
-ms.workload: 
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.workload: ''
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: d02d6e942dfc503dd87a8ebcb6e2ddcf6b6065c5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace と AppSource のパブリッシャー ガイド
 
@@ -238,7 +238,7 @@ Enterprise Agreement の顧客は、Azure に対する前払いによる金銭�
 
 |**要件**  |**詳細**  |**公開オプション**  |
 |---------|---------|---------|
-|**参加ポリシー**    | [こちら](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)で Azure Marketplace 参加ポリシーを確認してください。       | リスト、試用、トランザクション        |
+|**参加ポリシー**    | Azure Marketplace 参加ポリシーは[こちら](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)で確認してください。       | リスト、試用、トランザクション        |
 |**Microsoft との統合**    | Azure Marketplace のオファリングでは、Compute、Networking、Storage などの Microsoft Azure サービスを利用または拡張し、データベース、セキュリティ、ネットワークなどの Azure Marketplace の既存カテゴリに合わせる必要があります。詳細な一覧については、[こちら](https://azuremarketplace.microsoft.com/marketplace/apps)をご覧ください。        | リスト、試用、トランザクション        |
 |**対象ユーザー**    | Azure Marketplace のオファリングは、IT 専門化、クラウド開発者、または顧客のその他の技術的役割を対象としたものでなければなりません。       |  リスト、試用、トランザクション 
 |**リード管理**    | Marketplace からリードを受け取るには、リード データを受け付けるように CRM (Marketo、Microsoft Dynamics、または Salesforce) を有効にする必要があります。        |   リスト、試用、トランザクション      |
@@ -260,7 +260,7 @@ Enterprise Agreement の顧客は、Azure に対する前払いによる金銭�
 |**要件**  |**詳細** |**公開オプション**  |
 |---------|---------|---------|
 |**請求/メータリング**    |  仮想マシンは、ライセンス持ち込みまたは使用量に基づく毎月の請求をサポートする必要があります。       |    トランザクション    |
-|**Azure と互換性がある仮想ハード ディスク (VHD)**     |   仮想マシンは、[Windows](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) または [Linux](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 上に構築されている必要があります    |   トランザクション      |
+|**Azure と互換性がある仮想ハード ディスク (VHD)**     |   仮想マシンは、[Windows](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) または [Linux](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation) 上に構築されている必要があります。    |   トランザクション      |
 
 ### <a name="prerequisites-specific-to-consulting-services-publishing"></a>コンサルティング サービス公開に固有の前提条件
 
@@ -268,7 +268,7 @@ Enterprise Agreement の顧客は、Azure に対する前払いによる金銭�
 |**要件** |**詳細**  |**公開オプション**  |
 |---------|---------|---------|
 |**サービス オファリングの特性**     | コンサルティング サービスは、固定範囲、固定期間、固定価格 (または無料) エンゲージメント、主として購入前指向、単一顧客限定、オンサイト実施で、提供される必要があります。        |    一覧表示     |
-|**コンサルティング サービスのパートナー要件**    |   **AppSource のみ.**  Dynamics 365 for Customer Engagement の [Silver または Gold クラウド カスタマー リレーションシップ マネジメント コンピテンシー](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). Dynamics 365 for Finance および Operations Enterprise エディション: Silver または Gold [エンタープライズ リソース プラニング](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) コンピテンシー、および以降の 12 か月間にクラウド運用で 25,000 ドル以上の収益。 Dynamics 365 for Finance and Operations、Business エディション: 少なくとも 1 顧客に[クラウド サービス プロバイダー (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) または [デジタル指名パートナー (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) としてサービスを提供している。 Power BI: [ソリューション パートナー](file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20&%20Incentives.pdf)の条件を満たしている。 PowerApps: [パートナー ショーケース] (https://powerapps.microsoft.com/en-us/partner-showcase/) ソリューションを持っている |    一覧表示     |
+|**コンサルティング サービスのパートナー要件**    |   **AppSource のみ.**  Dynamics 365 for Customer Engagement の [Silver または Gold クラウド カスタマー リレーションシップ マネジメント コンピテンシー](https://partner.microsoft.com/en-us/membership/cloud-customer-relationship-management-competency). Dynamics 365 for Finance および Operations Enterprise エディション: Silver または Gold [エンタープライズ リソース プラニング](https://partner.microsoft.com/en-us/membership/enterprise-resource-planning-competency) コンピテンシー、および以降の 12 か月間にクラウド運用で 25,000 ドル以上の収益。 Dynamics 365 for Finance and Operations、Business エディション: 少なくとも 1 顧客に[クラウド サービス プロバイダー (CSP)](https://partner.microsoft.com/en-us/cloud-solution-provider) または [デジタル指名パートナー (DPOR)](https://partner.microsoft.com/en-us/membership/digital-partner-of-record) としてサービスを提供している。 Power BI: [ソリューション パートナー](file:///C:/Users/ellacroi/Downloads/BI%20Partner%20Program%20Overview%20&%20Incentives.pdf)の条件を満たしている。 PowerApps: [パートナー ショーケース](https://powerapps.microsoft.com/en-us/partner-showcase/) ソリューションを持っている |    一覧表示     |
 
 ## <a name="using-azure-active-directory-to-enable-trials"></a>Azure Active Directory を使用して試用を有効にする
 Azure Active Directory (AAD) はクラウド ID サービスであり、業界標準のプロトコル OAuth および OpenID Connect を使って Microsoft 職場または学校アカウントでの認証を有効にします。 AAD について詳しくは、[こちら](https://www.microsoft.com/en-us/cloud-platform/azure-active-directory-features)をご覧ください。 
@@ -521,7 +521,7 @@ Amp-testdrive@microsoft.com |   体験版へのオンボーディング アク�
 
 **@outlook.com** ドメインで新しいメール アドレスを作成することをお勧めします。 次の手順に従います。
 
-1. [https://signup.live.com/signup](https://signup.live.com/signup) に移動して、**[新しいメール アドレスを取得]** を選びます
+1. [https://signup.live.com/signup](https://signup.live.com/signup) に移動して、**[新しいメール アドレスを取得]** を選択します。
 
 
 2. 新しいメール アドレスを作成し、パスワードを入力します。 これにより、新しい Microsoft ID と、outlook.com サービスのメールボックスが作成されます。 アカウントが作成されるまで、登録プロセスを続行します。
@@ -548,7 +548,7 @@ Amp-testdrive@microsoft.com |   体験版へのオンボーディング アク�
    ![アカウント情報](./media/marketplace-publishers-guide/devcenterregistrationaccountinfo.png)
    
    >[!WARNING]
-   >"販売元" の国: Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 詳しくは、「[Marketplace 参加ポリシー](https://azure.microsoft.com/support/legal/marketplace/participation-policies/)」をご覧ください。
+   >"販売元" の国: Azure Marketplace でサービスを販売するには、登録済みエンティティが、承認されたいずれかの "販売元" の国に所在している必要があります。 この制限は、支払いおよび課税上の理由から生じます。 詳細については、Marketplace 参加ポリシーに関するページ (https://azure.microsoft.com/support/legal/marketplace/participation-policies/) を参照してください。
 
 5. [アカウントの種類] として、**[会社]** を選択し、**[次へ]** をクリックします。
 
@@ -614,7 +614,7 @@ Amp-testdrive@microsoft.com |   体験版へのオンボーディング アク�
 
 デベロッパー センター登録で問題が発生した場合は、次の手順でサポート チケットを記録してください。
 
-1. サポート リンク https://developer.microsoft.com/windows/support に移動します
+1. サポート リンク https://developer.microsoft.com/windows/support に移動します。
 2. **[お問い合わせ]** セクションで、**[インシデントを提出]** をクリックします (次のスクリーンショットを参照)。
 3. **[問題の種類]** で [Dev Center のヘルプ] を、**[カテゴリ]** で [アプリの発行と管理] を選択します。 その後、[メールでのお問い合わせ] をクリックします。
 

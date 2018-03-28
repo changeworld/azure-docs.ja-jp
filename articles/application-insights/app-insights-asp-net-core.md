@@ -1,6 +1,6 @@
 ---
 title: Azure Application Insights for ASP.NET Core | Microsoft Docs
-description: "Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。"
+description: Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/21/2018
 ms.author: mbullwin
-ms.openlocfilehash: e9fb3e68db66449d9ca3b43e6974910cb9477e62
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 77c48a22f974e027b4e8858d5e38018bbf5bb54f
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="application-insights-for-aspnet-core"></a>Application Insights for ASP.NET Core
 
@@ -214,5 +214,6 @@ Application Insights の製品グループでは、[完全な .NET Framework SDK
 
 ## <a name="next-steps"></a>次の手順
 * [ユーザー フローの探索](app-insights-usage-flows.md): ユーザーがアプリ内をどのように移動しているかを把握します。
+* [スナップショット コレクションを構成](https://docs.microsoft.com/azure/application-insights/app-insights-snapshot-debugger#configure-snapshot-collection-for-aspnet-core-20-applications)して、例外がスローされたときのソース コードと変数の状態を確認します。
 * [API の使用](app-insights-api-custom-events-metrics.md) : アプリのパフォーマンスと使用の詳細を表示するための独自のイベントとメトリックスを送信します。
 * [可用性テスト](app-insights-monitor-web-app-availability.md) : 世界中からアプリを常にチェックします。

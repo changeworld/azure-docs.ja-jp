@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: .NET と SQL API による Web アプリのビルド | Microsoft Docs'
-description: Azure Cosmos DB SQL API への接続とクエリに使用できる .NET コード サンプルについて説明します
+title: SQL API を使って Azure Cosmos DB による .NET Web アプリを作る | Microsoft Docs
+description: このクイック スタートでは、Azure Cosmos DB SQL API と Azure Portal を使って .NET Web アプリを作成します。
 services: cosmos-db
 documentationcenter: ''
 author: mimig1
@@ -15,13 +15,13 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 12/15/2017
 ms.author: mimig
-ms.openlocfilehash: b5ab66371b47bdd0f3bd7a4c9e86e419efebe902
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: eb361ce596cbb95e01e7dbd82001bd089d51d70e
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-build-a-sql-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: .NET と Azure Portal による SQL API Web アプリのビルド
+# <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>クイック スタート: SQL API と Azure Portal を使って Azure Cosmos DB による .NET Web アプリを作る
 
 [!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 

@@ -1,13 +1,13 @@
 ---
-title: "セルフサービスによるパスワード リセットについての FAQ - Azure Active Directory"
-description: "Azure AD セルフサービスのパスワード リセットについてよく寄せられる質問"
+title: セルフサービスによるパスワード リセットについての FAQ - Azure Active Directory
+description: Azure AD セルフサービスのパスワード リセットについてよく寄せられる質問
 services: active-directory
-keywords: "Active Directory パスワード管理, パスワード管理, Azure AD セルフサービスによるパスワードのリセット"
-documentationcenter: 
+keywords: Active Directory パスワード管理, パスワード管理, Azure AD セルフサービスによるパスワードのリセット
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: seohack1
-ms.openlocfilehash: 686cc2a94af729e6f872c334a6e5fda947d43725
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f5236b81c70caee4417777ffadcababebaa84620
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/22/2018
 
 * **Q: ユーザーが自分のパスワード リセット データを登録することはできますか。**
 
-  > **A:** はい。 パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (https://aka.ms/ssprsetup) に移動して、認証情報を登録できます。 ユーザーは、アクセス パネル (http://myapps.microsoft.com) で登録することもできます。 アクセス パネルで登録するには、自分のプロフィール画像を選び、**[プロファイル]** を選んで、**[パスワード リセットの登録]** オプションを選ぶ必要があります。
+  > **A:** はい。 パスワード リセットが有効になっており、ユーザーにライセンスが付与されている場合は、パスワード リセット登録ポータル (https://aka.ms/ssprsetup) で、認証情報を登録できます。 ユーザーは、アクセス パネル (http://myapps.microsoft.com) で登録することもできます。 アクセス パネルで登録するには、自分のプロフィール画像を選び、**[プロファイル]** を選んで、**[パスワード リセットの登録]** オプションを選ぶ必要があります。
   >
   >
 * **Q: グループに対してパスワード リセットを有効にし、その後全員に対してパスワード リセットを有効にする場合、ユーザーは再登録する必要がありますか。**
@@ -269,7 +269,7 @@ ms.lasthandoff: 02/22/2018
   >
 * **Q: パスワード ライトバックはどのような種類のアカウントで動作しますか。**
 
-  > **A:** パスワード ライトバックは、フェデレーション ユーザーとパスワード ハッシュ同期ユーザーに対して動作します。
+  > **A:** パスワード ライトバックが動作するのは、オンプレミス Active Directory から Azure AD に対して同期化されるユーザー アカウントです (フェデレーション ユーザー、パスワード ハッシュ同期ユーザー、パススルー認証ユーザーなど)。
   >
   >
 * **Q: パスワード ライトバックでは、ドメインのパスワード ポリシーが適用されますか。**

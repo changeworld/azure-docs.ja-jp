@@ -1,11 +1,11 @@
 ---
-title: "Azure Marketplace 向けの仮想マシン イメージの作成 | Microsoft Docs"
-description: "顧客が購入できるように Azure Marketplace 向けの仮想マシン イメージを作成する方法について詳しく説明します。"
+title: Azure Marketplace 向けの仮想マシン イメージの作成 | Microsoft Docs
+description: 顧客が購入できるように Azure Marketplace 向けの仮想マシン イメージを作成する方法について詳しく説明します。
 services: Azure Marketplace
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 5c937b8e-e28d-4007-9fef-624046bca2ae
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
-ms.author: hascipio; v-divte
-ms.openlocfilehash: 0379592f1c4f6e9d3f6fd2127b8e34e99a8b0176
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: mbaldwin
+ms.openlocfilehash: f7b19066ca3fa156456766ff82afeadadc6b1efa
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
 この記事 ( **手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。 VHD は SKU の基礎です。 プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。 この記事では、両方のシナリオについて説明します。 このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
@@ -372,7 +372,7 @@ Azure Storage Explorer を使用して SAS URL を生成するための手順を
 
 Microsoft Azure Storage Explorer を使用して SAS URL を生成するための手順を次に示します。
 
-1.  Microsoft Azure Storage Explorer を [http://storageexplorer.com/](http://storageexplorer.com/) Web サイトからダウンロードします。 [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html) にアクセスして、**[Download for Windows]** (Windows 向けダウンロード) をクリックします。
+1.  [http://storageexplorer.com/](http://storageexplorer.com/) Web サイトから Microsoft Azure Storage Explorer をダウンロードします。 [Microsoft Azure Storage Explorer](http://storageexplorer.com/releasenotes.html) にアクセスして、**[Download for Windows]** (Windows 向けダウンロード) をクリックします。
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_10.png)
 

@@ -1,48 +1,59 @@
 ---
-title: "Azure Active Directory で Office アプリケーションの LinkedIn の統合を有効または無効にする | Microsoft Docs"
-description: "Azure Active Directory で Microsoft アプリの LinkedIn の統合を有効または無効にする方法について説明します。"
+title: Azure Active Directory で Microsoft のアプリとサービスに対する LinkedIn 接続を有効にする | Microsoft Docs
+description: Azure Active Directory で Microsoft のアプリに対する LinkedIn アカウント接続を有効または無効にする方法について説明します
 services: active-directory
 author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/15/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: cdfb5458b020e9d3a3f33cecbeb0ee7b9a48909d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 3bf224edea9e6da0d0eadb6fb6a409248de3d0e3
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/17/2018
 ---
-# <a name="linkedin-integration-for-office-applications"></a>Office アプリケーションの LinkedIn の統合
-この記事では、LinkedIn の統合機能が利用できるユーザーを Azure Active Directory (Azure AD) で制限する方法について説明します。 LinkedIn の統合は、テナントに追加されたときに既定で有効になるため、ユーザーは一部の Microsoft アプリからパブリックな LinkedIn データにアクセスすることができます。 それぞれのユーザーが個別に、その職場または学校アカウントを LinkedIn アカウントに接続することもできます。
+# <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Microsoft のアプリとサービスに対する LinkedIn アカウント接続
+この記事では、Azure Active Directory (Azure AD) 管理センターで、テナントに対する LinkedIn アカウント接続を管理する方法を説明します。 
 
 > [!IMPORTANT]
-> LinkedIn の統合は、すべての Azure AD テナントに対して同時にデプロイされるわけではありません。 Azure テナントへのロールアウト後に、LinkedIn の統合が既定で有効になります。 LinkedIn の統合は、go-local、Sovereign、および政府機関の各テナントでは使用できません。 ロールアウト情報の最新にビューについては、「[Office 365 ロードマップ](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)」ページを参照してください。
+> LinkedIn アカウント接続機能は、現在 Azure AD テナントにロールアウト中です。 テナントにロールアウトされると、既定で有効になります。 米国政府機関向けの顧客、およびオーストラリア、カナダ、中国、フランス、ドイツ、インド、韓国、英国、日本、および南アフリカでホストされている Exchange Online メールボックスを使用する組織は使用できません。 これらのメールボックスの場所に対するサポートは、近日対応予定です。  ロールアウト情報の最新にビューについては、「[Office 365 ロードマップ](https://products.office.com/business/office-365-roadmap?filters=%26freeformsearch=linkedin#abc)」ページを参照してください。
 
-## <a name="linkedin-integration-from-the-user-perspective"></a>ユーザーの視点から見た LinkedIn の統合
-組織内のユーザーは、その LinkedIn アカウントを職場または学校アカウントに接続するとき、その組織が用意している Microsoft のアプリやサービスで使用される[データの提供を LinkedIn に許可](https://www.linkedin.com/help/linkedin/answer/84077)することになります。 [ユーザーはアカウントを切断](https://www.linkedin.com/help/linkedin/answer/85097)することができ、その場合は、LinkedIn が Microsoft とデータを共有するために必要なアクセス許可が削除されます。 LinkedIn の統合では、公開されている LinkedIn プロフィールの情報が使用されます。 LinkedIn のプライバシー設定を使用することで、ユーザーはそのプロフィールを Microsoft のアプリで閲覧できるかどうかなど、[自分の LinkedIn プロフィールの公開方法を制御](https://www.linkedin.com/help/linkedin/answer/83)することができます。
+## <a name="how-linkedin-account-connections-appear-to-the-user"></a>ユーザーへの LinkedIn アカウント接続の表示方法
+LinkedIn アカウント接続では、ユーザーは、一部の Microsoft のアプリの中で、パブリックな LinkedIn プロファイル情報を表示できます。 テナントのユーザーは、自分の LinkedIn と 職場または学校の Microsoft アカウントに接続して、追加の LinkedIn プロファイル情報を表示することを選択できます。 詳細については、「[LinkedIn information and features in Microsoft apps and services](https://go.microsoft.com/fwlink/?linkid=850740)」(Microsoft のアプリとサービスにおける LinkedIn 情報と機能) を参照してください。
+
+組織のユーザーが、自分の LinkedIn アカウントと職場または学校の Microsoft アカウントに接続する際は、2 つのオプションがあります。 
+* 両方のアカウント間でデータを共有する許可を与える。 これは、LinkedIn アカウントに職場または学校の Microsoft アカウントとデータを共有する許可を与え、職場または学校の Microsoft アカウントに LinkedIn アカウントとデータを共有する許可を与えることを意味します。 LinkedIn と共有されるデータは、オンライン サービスから離れます。 
+* データ共有の許可を、LinkedIn アカウントから職場または学校の Microsoft アカウントにのみ与える。
+
+ユーザーの LinkedIn と職場または学校の Microsoft アカウント間で共有されるデータの詳細については、「[LinkedIn in Microsoft applications at your work or school](https://www.linkedin.com/help/linkedin/answer/84077)」(職場または学校での Microsoft アプリケーションにおける LinkedIn) を参照してください。 
+* いつでも[ユーザーは、アカウントとの接続を切断](https://www.linkedin.com/help/linkedin/answer/85097)し、データ共有許可を削除できます。 
+* ユーザーは各自の LinkedIn プロフィールを Microsoft のアプリで閲覧できるかどうかなど、[自分の LinkedIn プロフィールの公開方法を制御](https://www.linkedin.com/help/linkedin/answer/83)することができます。
 
 ## <a name="privacy-considerations"></a>プライバシーに関する考慮事項
-Azure AD で LinkedIn の統合を有効にすると、Microsoft のアプリとサービスはユーザーの LinkedIn 情報の一部にアクセスできるようになります。 Azure AD で LinkedIn の統合を有効にする場合のプライバシーの考慮事項については、「[Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement/)」を参照してください。 
+LinkedIn アカウント接続を有効にすると、Microsoft のアプリとサービスは、ユーザーの LinkedIn 情報の一部にアクセスできるようになります。 Azure AD で LinkedIn アカウント接続を有効にする場合のプライバシーの考慮事項については、「[Microsoft のプライバシーに関する声明](https://privacy.microsoft.com/privacystatement/)」を参照してください。 
 
-## <a name="manage-linkedin-integration"></a>LinkedIn の統合を管理する
-Azure AD の既定では、企業の LinkedIn の統合は有効です。 LinkedIn の統合を有効にすると、組織内のすべてのユーザーは、Outlook で LinkedIn のプロフィールを表示するなど、Microsoft サービス内で LinkedIn 機能を使用できるようになります。 LinkedIn の統合を無効にすると、Microsoft のアプリやサービスから LinkedIn の機能が削除され、Microsoft のサービスを介して LinkedIn と組織との間で実現されていたデータの共有が中止されます。
+## <a name="manage-linkedin-account-connections"></a>LinkedIn アカウント接続を管理する
+LinkedIn アカウント接続機能は、既定ではテナント全体で有効になっています。 テナント全体で LinkedIn アカウント接続を無効にするか、テナント内の選択したユーザーに対する LinkedIn アカウント接続を有効にできます。 
 
-### <a name="enable-or-disable-linkedin-integration-for-your-organization-in-the-azure-portal"></a>組織に対する LinkedIn の統合を Azure Portal で有効または無効にする
+### <a name="enable-or-disable-linkedin-account-connection-for-your-tenant-in-the-azure-portal"></a>Azure Portal でテナントに対する LinkedIn アカウント接続を有効または無効にする
 
 1. [Azure Active Directory 管理センター](https://aad.portal.azure.com/)に、Azure AD テナントの全体管理者のアカウントでサインインします。
 2. **[ユーザー]** を選択します。
 3. **[ユーザー]** ウィンドウで、**[ユーザー設定]** を選択します。
-4. **[LinkedIn の統合]** で **[はい]** を選択すると LinkedIn が有効に、**[いいえ]** を選択すると無効になります。
-   ![LinkedIn の統合を有効にする](./media/linkedin-integration/LinkedIn-integration.PNG)
+4. **[LinkedIn アカウント接続]** で次の操作を行います。
+  * テナント内のすべてのユーザーに対する LinkedIn アカウント接続を有効にするには、**[はい]** を選択します。
+  * テナントの選択したユーザーのみに対する LinkedIn アカウント接続を有効にするには、**[選択済み]** を選択します。
+  * すべてのユーザーの LinkedIn アカウント接続を無効にするようには、**[いいえ]** を選択します。![LinkedIn アカウント接続の有効化](./media/linkedin-integration/LinkedIn-integration.png)
+5. **[保存]** を選択して完了し、設定を保存する。
 
-### <a name="enable-or-disable-linkedin-integration-for-your-organizations-office-2016-apps-using-group-policy"></a>組織の Office 2016 アプリに対する LinkedIn の統合をグループ ポリシーで有効または無効にする
+### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>組織の Office 2016 アプリに対する LinkedIn アカウント接続をグループ ポリシーで有効または無効にする
 
 1. [Office 2016 管理用テンプレート ファイル (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) をダウンロードします。
 2. **ADMX** ファイルを抽出して**中央のリポジトリ**にコピーします。
@@ -60,6 +71,6 @@ Azure AD の既定では、企業の LinkedIn の統合は有効です。 Linked
 * [LinkedIn ヘルプ センター](https://www.linkedin.com/help/linkedin)
 
 ## <a name="next-steps"></a>次の手順
-次のリンクをクリックすると、現在の LinkedIn の統合設定を Azure Portal で確認できます。
+現在の LinkedIn アカウント接続設定を Azure Portal で確認するには、次のリンクをクリックします。
 
-[LinkedIn の統合を構成する](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings) 
+[LinkedIn アカウント接続を管理する](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/UserManagementMenuBlade/UserSettings) 

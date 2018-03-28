@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service Environment で内部ロード バランサーを作成して使用する"
-description: "インターネットから分離された Azure App Service Environment を作成および使用する方法について説明します"
+title: Azure App Service Environment で内部ロード バランサーを作成して使用する
+description: インターネットから分離された Azure App Service Environment を作成および使用する方法について説明します
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -14,11 +14,11 @@ ms.topic: quickstart
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: 7480c1f71a64e31b65cc76f28734df6f424a6b3f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0d08d140ab338d8c742277835fdfb4316862f07b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
 
@@ -139,7 +139,7 @@ SSL 証明書を .pfx ファイルとして変換、保存します。 .pfx フ�
 
 自己署名証明書を作成する場合は、ここで、PowerShell コマンドを使用できます。 *internal.contoso.com* の代わりに、ご使用の ILB ASE ドメイン名を使用してください。 
 
-    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "\*.internal-contoso.com","\*.scm.internal-contoso.com"
+    $certificate = New-SelfSignedCertificate -certstorelocation cert:\localmachine\my -dnsname "*.internal-contoso.com","*.scm.internal-contoso.com"
     
     $certThumbprint = "cert:\localMachine\my\" +$certificate.Thumbprint
     $password = ConvertTo-SecureString -String "CHANGETHISPASSWORD" -Force -AsPlainText

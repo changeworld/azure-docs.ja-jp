@@ -1,8 +1,20 @@
- ---
-title: SQL エラー コード - データベース接続エラー | Microsoft Docs description: 'よくあるデータベース接続エラー、データベース コピーの問題、一般エラーなど、SQL Database クライアント アプリケーションの SQL エラー コードについて説明します。 ' keywords: sql エラー コード,sql アクセス,データベース接続エラー,sql エラー コード services: sql-database documentationcenter: '' author: stevestein manager: jhubbard editor: ''
-
-ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202 ms.service: sql-database ms.custom: develop apps ms.workload: "Active" ms.tgt_pltfrm: na ms.devlang: na ms.topic: article ms.date: 09/28/2017 ms.author: sstein
-
+---
+title: SQL エラー コード - データベース接続エラー | Microsoft Docs
+description: 'よくあるデータベース接続エラー、データベース コピーの問題、一般エラーなど、SQL Database クライアント アプリケーションの SQL エラー コードについて説明します。 '
+keywords: SQL エラー コード,SQL へのアクセス,データベース接続エラー,SQL エラー コード
+services: sql-database
+author: stevestein
+manager: craigg
+ms.service: sql-database
+ms.custom: develop apps
+ms.topic: article
+ms.date: 09/28/2017
+ms.author: sstein
+ms.openlocfilehash: 5031ab1ec8c7b42c65fb35e47c32d10ff2898501
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 
@@ -78,8 +90,8 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 
 | エラー コード | 重大度 | [説明] |
 | ---:| ---:|:--- |
-| 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、「 [http://goに関するページをご覧ください。microsoftに関するページをご覧ください。com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637)に関するページをご覧ください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers.md)」を参照してください。 |
-| 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 詳細については、「 [http://goに関するページをご覧ください。microsoftに関するページをご覧ください。com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637)に関するページをご覧ください。 それ以外の場合は、後でもう一度やり直してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers.md)」を参照してください。 |
+| 10928 |20 |リソース ID: %d。 データベースの %s 制限の %d に達しました。 詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers.md)」を参照してください。 |
+| 10929 |20 |リソース ID: %d。 %s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。 それ以外の場合は、後でもう一度やり直してください。<br/><br/>リソース ID は、制限に達したリソースを示します。 ワーカー スレッドの場合、リソース ID = 1 となります。 セッションの場合、リソース ID = 2 です。<br/><br/>このエラーの詳細および解決方法については、<br/>「[Azure SQL Database のリソース制限](sql-database-service-tiers.md)」を参照してください。 |
 | 40544 |20 |データベースのサイズ クォータに達しました。 データをパーティション分割するか、データを削除するか、インデックスを削除してください。その他の解決方法についてはドキュメントを参照してください。 |
 | 40549 |16 |トランザクションが長時間実行されているため、セッションを終了しました。 トランザクションを短くしてください。 |
 | 40550 |16 |取得したロックの数が多すぎるため、セッションを終了しました。 1 つのトランザクションで読み取る行または変更する行の数を減らしてください。 |
@@ -93,7 +105,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | ErrorNumber | ErrorSeverity | ErrorFormat | ErrorInserts | ErrorCause | ErrorCorrectiveAction |
 |:--- |:--- |:--- |:--- |:--- |:--- |
 | 1132 |EX_RESOURCE |エラスティック プールが、その記憶域の上限に達しました。 エラスティック プールの記憶域の使用率が (%d) MB を超えることはできません。 |エラスティック プール領域の上限 (MB) です。 |エラスティック プールの記憶域が上限に達したときに、データベースにデータを記述しようとしています。 |可能であれば、エラスティック プールの DTU を増やして、その記憶域の上限を上げることを検討する、エラスティック プール内の個々のデータベースで使用される記憶域を減らす、エラスティック プールからデータベースを削除するのいずれかを行ってください。 |
-| 10929 |EX_USER |%s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 詳細については、 [http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) をご覧ください。 それ以外の場合は、後でもう一度やり直してください。 |データベースあたりの DTU の最小値、データベースあたりの DTU の最大値 |エラスティック プール内のすべてのデータベース間での同時実行ワーカー (要求) の合計数が、プールの制限を超えようとしました。 |可能であれば、エラスティック プールの DTU を増やしてワーカーの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
+| 10929 |EX_USER |%s の最低限保証は %d、最大値は %d 、データベースの現在の使用状況は %d です。 ただし、サーバーは現在ビジー状態であり、このデータベースの %d を超える要求をサポートできません。 詳細については、[http://go.microsoft.com/fwlink/?LinkId=267637](http://go.microsoft.com/fwlink/?LinkId=267637) を参照してください。 それ以外の場合は、後でもう一度やり直してください。 |データベースあたりの DTU の最小値、データベースあたりの DTU の最大値 |エラスティック プール内のすべてのデータベース間での同時実行ワーカー (要求) の合計数が、プールの制限を超えようとしました。 |可能であれば、エラスティック プールの DTU を増やしてワーカーの上限を上げることを検討するか、エラスティック プールからデータベースを削除してください。 |
 | 40844 |EX_USER |サーバー '%ls' のデータベース '%ls' は、エラスティック プールの '%ls' エディションのデータベースであり、連続コピー リレーションシップを持つことはできません。 |データベース名、データベースのエディション、サーバー名 |エラスティック プール内の Premium 以外のデータベースには、StartDatabaseCopy コマンドが発行されます。 |近日対応予定 |
 | 40857 |EX_USER |サーバー '%ls ' のエラスティック プールが見つかりませんでした。エラスティック プール名は ' %ls ' です。 |サーバー名、エラスティック プール名 |指定されたエラスティック プールが、指定されたサーバー内にありません。 |有効なエラスティック プール名を指定してください。 |
 | 40858 |EX_USER |エラスティック プール '%ls' は サーバー '%ls' に既に存在します。 |エラスティック プール名、サーバー名 |指定されたエラスティック プールは、指定された論理サーバー内に既に存在します。 |新しいエラスティック プール名を指定してください。 |

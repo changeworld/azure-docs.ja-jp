@@ -1,24 +1,24 @@
 ---
-title: "C# でアクター ベースの Azure マイクロサービスを初めて作成する | Microsoft Docs"
-description: "このチュートリアルでは、Service Fabric Reliable Actors を使用して簡単なアクターベースのサービスを作成、デバッグ、デプロイする手順について説明します。"
+title: C# でアクター ベースの Azure マイクロサービスを初めて作成する | Microsoft Docs
+description: このチュートリアルでは、Service Fabric Reliable Actors を使用して簡単なアクターベースのサービスを作成、デバッグ、デプロイする手順について説明します。
 services: service-fabric
 documentationcenter: .net
 author: vturecek
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d4aebe72-1551-4062-b1eb-54d83297f139
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/20/2017
+ms.date: 03/16/2018
 ms.author: vturecek
-ms.openlocfilehash: ea17cf744779f390fe4b3f4049deb0c1ad985024
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 20786522a9a25d84a32a53e5e111b4b542501287
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="getting-started-with-reliable-actors"></a>Reliable Actors の使用
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Visual Studio 2015 以降を管理者として起動し、新しい **Service Fa
 
 ![Visual Studio 用の Service Fabric ツール - 新しいプロジェクト][1]
 
-次のダイアログ ボックスで、**[アクター サービス]** を選択し、サービスの名前を入力します。
+次のダイアログ ボックスで、**[.Net Core 2.0]** の下の **[アクター サービス]** を選択し、サービスの名前を入力します。
 
 ![Service Fabric プロジェクトのテンプレート][5]
 
@@ -115,7 +115,7 @@ internal class HelloWorld : Actor, IHelloWorld
 
     NuGet パッケージとそのすべての依存関係が、ActorClient プロジェクトにインストールされます。
 
-5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、**[依存関係]** を右クリックし、**[参照の追加]** をクリックします。**[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、**[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  **[OK]**をクリックします。
+5. クライアント プロジェクトには、インターフェイス プロジェクトへの参照も必要です。  ActorClient プロジェクトで、**[依存関係]** を右クリックし、**[参照の追加]** をクリックします。**[プロジェクト] > [ソリューション]** (まだ選択されていない場合) の順に選択し、**[HelloWorld.Interfaces]** の横にあるチェック ボックスをオンにします。  Click **OK**.
     
     ![[参照の追加] ダイアログ][7]
 
@@ -156,7 +156,7 @@ internal class HelloWorld : Actor, IHelloWorld
 > [!TIP]
 > Service Fabric Actors ランタイムは、 [アクター メソッドに関連する一部のイベントとパフォーマンス カウンター](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)を出力します。 これらは、診断やパフォーマンスの監視に役立ちます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 「[Reliable Actors の Service Fabric プラットフォームの使用方法](service-fabric-reliable-actors-platform.md)」で詳細を参照してください。
 
 

@@ -1,26 +1,26 @@
 ---
-title: "Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する | Microsoft Docs"
-description: "Microsoft Power BI を使用して、Azure HDInsight で処理された対話型クエリの Hive データを視覚化する方法について説明します。"
-keywords: "hdinsight,hadoop,hive,対話型クエリ,対話型 hive,LLAP,directquery"
+title: Azure HDInsight の Power BI で対話型クエリの Hive データを視覚化する | Microsoft Docs
+description: Microsoft Power BI を使用して、Azure HDInsight で処理された対話型クエリの Hive データを視覚化する方法について説明します。
+keywords: hdinsight,hadoop,hive,対話型クエリ,対話型 hive,LLAP,directquery
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive,
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/19/2017
+ms.date: 03/14/2018
 ms.author: jgao
-ms.openlocfilehash: 290e600b7be4a6f9fb57afa50bb771e42e6a0624
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: c74e02ea32a5aacf1a5208c0e194a25b0b6bcb48
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="visualize-interactive-query-hive-data-with-microsoft-power-bi-using-direct-query-in-azure-hdinsight"></a>Azure HDInsight の直接クエリを使用して Microsoft Power BI で対話型クエリの Hive データを視覚化する | Microsoft Docs
 
@@ -28,7 +28,7 @@ Microsoft Power BI を Azure HDInsight 対話型クエリ クラスターに接�
 
 ![HDInsight Power BI の地図レポート](./media/apache-hadoop-connect-hive-power-bi-directquery/hdinsight-power-bi-visualization.png)
 
-ODBC を使用して Hive に接続する方法については、[Azure HDInsight の Microsoft Power BI で ODBC を使用して Hive データを視覚化する](../hadoop/apache-hadoop-connect-hive-power-bi.md)に関するページをご覧ください。 
+Power BI Desktop の汎用 ODBC コネクタを介してインポートするために、[Hive ODBC ドライバー](../hadoop/apache-hadoop-connect-hive-power-bi.md)を利用することができます。 ただし、Hive クエリ エンジンの非対話的な性質を与えられた BI ワークロードに対しては、この方法はお勧めしません。 この場合は、[HDInsight 対話型クエリ コネクタ](./apache-hadoop-connect-hive-power-bi-directquery.md)および [HDInsight Spark コネクタ](https://docs.microsoft.com/power-bi/spark-on-hdinsight-with-direct-connect)を選択した方が、良いパフォーマンスを得られます。
 
 ## <a name="prerequisites"></a>前提条件
 この記事の操作を始める前に、以下を用意する必要があります。

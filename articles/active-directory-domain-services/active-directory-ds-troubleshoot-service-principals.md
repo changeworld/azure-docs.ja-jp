@@ -1,33 +1,34 @@
 ---
-title: "Azure Active Directory Domain Services: サービス プリンシパル構成のトラブルシューティング | Microsoft Docs"
-description: "Azure AD Domain Services 向けのサービス プリンシパル構成のトラブルシューティング"
+title: 'Azure Active Directory Domain Services: サービス プリンシパル構成のトラブルシューティング | Microsoft Docs'
+description: Azure AD Domain Services 向けのサービス プリンシパル構成のトラブルシューティング
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: eringreenlee
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: f168870c-b43a-4dd6-a13f-5cfadc5edf2c
 ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/19/2018
+ms.date: 03/12/2018
 ms.author: ergreenl
-ms.openlocfilehash: 7388bb291f665f195355a01d19a82cba9ed453eb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e1be075ba2d3e6ae7512ccc030073fd7f1862502
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-invalid-service-principal-configuration-for-your-managed-domain"></a>管理対象ドメインの無効なサービス プリンシパル構成のトラブルシューティング
 
 この記事は、サービス プリンシパル関連の構成エラーのトラブルシューティングと解決に役立ちます。次のような警告メッセージは、このようなエラーにより表示されます。
 
 ## <a name="alert-aadds102-service-principal-not-found"></a>アラート AADDS102: サービス プリンシパルが見つかりません
+
 **アラート メッセージ:** "*Azure AD Domain Services が正常に機能するために必要なサービス プリンシパルが Azure AD ディレクトリから削除されています。この構成は、管理対象ドメインに対する監視、管理、修正のプログラム適用、および同期を行うための Microsoft の能力に影響します。*"
 
-[サービス プリンシパル](../active-directory/develop/active-directory-application-objects.md)は、Microsoft が管理対象ドメインを管理、更新、および維持するために使用するアプリケーションです。 それらが削除されると、ドメインにサービスを提供する Microsoft の機能が中断します。 
+[サービス プリンシパル](../active-directory/develop/active-directory-application-objects.md)は、Microsoft が管理対象ドメインを管理、更新、および維持するために使用するアプリケーションです。 それらが削除されると、ドメインにサービスを提供する Microsoft の機能が中断します。
 
 
 ## <a name="check-for-missing-service-principals"></a>不足しているサービス プリンシパルを確認する
@@ -51,24 +52,24 @@ Azure AD ディレクトリで ID ```2565bd9d-da50-47d4-8b85-4c97f669dc36``` の
 
 この問題に対処するには、PowerShell ウィンドウで次のコマンドを入力します。
 1. Azure AD PowerShell モジュールをインストールし、インポートします。
-    
-    ```powershell 
+
+    ```powershell
     Install-Module AzureAD
     Import-Module AzureAD
     ```
-    
+
 2. 次の PowerShell コマンドを実行して、Azure AD Domain Services に必要なサービス プリンシパルがディレクトリに不足しているかどうかをチェックします。
-    
+
     ```powershell
     Get-AzureAdServicePrincipal -filter "AppId eq '2565bd9d-da50-47d4-8b85-4c97f669dc36'"
     ```
-    
+
 3. 次の PowerShell コマンドを入力して、サービス プリンシパルを作成します。
 
     ```powershell
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
-    
+
 4. 不足しているサービス プリンシパルを作成した後、2 時間待機してから管理対象ドメインの正常性をチェックします。
 
 
@@ -87,7 +88,32 @@ Azure AD ディレクトリで ID ```443155a6-77f3-45e3-882b-22b3a8d431fb``` ま
 ## <a name="service-principals-that-self-correct"></a>自動修正を行うサービス プリンシパル
 Azure AD ディレクトリで ID ```d87dcbc6-a371-462e-88e3-28ad15ec4e64``` のサービス プリンシパルが不足している場合は、次の手順に従います。
 
-**解決策:** Azure AD Domain Services では、この特定のサービス プリンシパルが不足している、正しく構成されていない、または削除されていることを特定できます。 サービス プリンシパルは、自動的に再作成されます。 サービス プリンシパルが再作成されていることを確認するには、2 時間後に管理対象ドメインの正常性をチェックします。
+**解決策:** Azure AD Domain Services では、この特定のサービス プリンシパルが不足している、正しく構成されていない、または削除されていることを特定できます。 サービス プリンシパルは、自動的に再作成されます。 ただし、アプリケーションと、削除対象のアプリケーションで使用されるオブジェクトを削除する必要があります。証明書がロールオーバーすると、アプリケーションとオブジェクトは新しいサービス プリンシパルによって変更できなくなるためです。 これにより、ドメインで新たなエラーが発生します。 この問題を回避するには、[AADDS105 のセクション](#alert-aadds105-password-synchronization-application-is-out-of-date)で説明した手順に従います。 その後、新しいサービス プリンシパルが再作成されていることを確認するために、2 時間後に管理対象ドメインの正常性をチェックします。
+
+
+## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>アラート AADDS105: パスワード同期アプリケーションが古い
+
+**アラート メッセージ:** アプリケーション ID "d87dcbc6-a371-462e-88e3-28ad15ec4e64" のサービス プリンシパルは削除されましたが、再作成できました。 このサービス プリンシパルは、パスワード同期のために使用されるもう 1 つのサービス プリンシパルと 1 つのアプリケーションを管理します。 管理対象のサービス プリンシパルとアプリケーションは、新たに作成されるサービス プリンシパルの元では権限がありません。同期証明書が失効すると期限切れになります。 つまり、新しく作成されるサービス プリンシパルは、管理対象の古いアプリケーションを管理できなくなり、AAD とオブジェクトの同期が影響を受けます。
+
+
+**解決策:** この手順を完了するには Azure AD PowerShell が必要です。 Azure AD PowerShell のインストールについては、[こちらの記事](https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0.)を参照してください。
+
+この問題に対処するには、PowerShell ウィンドウで次のコマンドを入力します。
+1. Azure AD PowerShell モジュールをインストールし、インポートします。
+
+    ```powershell
+    Install-Module AzureAD
+    Import-Module AzureAD
+    ```
+2. 次の PowerShell コマンドを使用して古いアプリケーションとオブジェクトを削除します。
+
+    ```powershell
+    $app = Get-AzureADApplication -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
+    Remove-AzureADApplication -ObjectId $app.ObjectId
+    $spObject = Get-AzureADServicePrincipal -Filter "DisplayName eq 'Azure AD Domain Services Sync'"
+    Remove-AzureADServicePrincipal -ObjectId $app.ObjectId
+    ```
+3. 両方を削除したら、システムが自らを修正し、パスワード同期に必要なアプリケーションを再作成します。 アラートが修正されたことを確認するには、2 時間待ってからドメインの正常性を確認します。
 
 
 ## <a name="contact-us"></a>お問い合わせ

@@ -1,20 +1,20 @@
 ---
-title: "Azure Policy の概要 | Microsoft Docs"
-description: "Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。"
+title: Azure Policy の概要 | Microsoft Docs
+description: Azure Policy は Azure のサービスであり、Azure 環境でのポリシー定義の作成、割り当て、管理に使うことができます。
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders; nini
-ms.date: 01/17/2018
+ms.date: 03/14/2018
 ms.topic: overview
 ms.service: azure-policy
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: bb6f08e8e6252233c51c47c63ca0aec4636247dd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 72b3e46e4755d50589eeefeeb0478ab9af49e97b
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="what-is-azure-policy"></a>Azure Policy とは
 
@@ -30,6 +30,9 @@ Azure Policy は Azure のサービスであり、ポリシー定義の作成、
 
 - ポリシーを定義するための `Microsoft.Authorization/policydefinitions/write` アクセス許可。
 - ポリシーを割り当てるための `Microsoft.Authorization/policyassignments/write` アクセス許可。
+- イニシアティブを定義するための `Microsoft.Authorization/policySetDefinitions/write` アクセス許可。
+- イニシアティブを割り当てるための `Microsoft.Authorization/policyassignments/write` アクセス許可。
+
 
 これらのアクセス許可は、**共同作成者**ロールには含まれていません。
 

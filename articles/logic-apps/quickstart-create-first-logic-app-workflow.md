@@ -1,12 +1,12 @@
 ---
-title: "初めての自動化されたワークフローの作成 - Azure Logic Apps | Microsoft Docs"
-description: "このクイックスタートでは、Azure Logic Apps によるワークフロー自動化の基本について説明します。システム統合と Enterprise Application Integration (EAI) によってシステムとクラウド サービスの連携を図るシナリオを想定しています。"
+title: 初めての自動化されたワークフローの作成 - Azure Logic Apps | Microsoft Docs
+description: このクイックスタートでは、Azure Logic Apps によるワークフロー自動化の基本について説明します。システム統合と Enterprise Application Integration (EAI) によってシステムとクラウド サービスの連携を図るシナリオを想定しています。
 author: ecfan
 manager: anneta
-editor: 
+editor: ''
 services: logic-apps
-keywords: "ワークフロー, クラウド サービス, システム統合, Enterprise Application Integration, EAI"
-documentationcenter: 
+keywords: ワークフロー, クラウド サービス, システム統合, Enterprise Application Integration, EAI
+documentationcenter: ''
 ms.assetid: ce3582b5-9c58-4637-9379-75ff99878dcd
 ms.service: logic-apps
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 1/12/2018
 ms.author: LADocs; estfan
-ms.openlocfilehash: d382144c202b2b7f5623f2cca2a82c384387e8ca
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ccd00fbb3c5dc0f78a31adcaed31bbe6e4a6e785
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="quickstart-build-your-first-logic-app-workflow---azure-portal"></a>クイックスタート: 初めてのロジック アプリ ワークフローの作成 - Azure Portal
 
@@ -60,6 +60,8 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
    ![空のロジック アプリ テンプレートを選択する](./media/quickstart-create-first-logic-app-workflow/choose-logic-app-template.png)
 
 次に、新しい RSS フィード項目が発行されたときに起動される[トリガー](../logic-apps/logic-apps-overview.md#logic-app-concepts)を追加します。 すべてのロジック アプリは必ずトリガーから起動され、トリガーは、特定のイベントが発生するか特定の条件が満たされたときに起動されます。 トリガーが起動するたびに、Logic Apps エンジンによって、ワークフローを開始および実行するロジック アプリ インスタンスが作成されます。
+
+<a name="add-rss-trigger"></a>
 
 ## <a name="check-rss-feed-with-a-trigger"></a>トリガーを使って RSS フィードをチェックする
 
@@ -144,7 +146,7 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
       ![電子メールの本文の内容を追加する](./media/quickstart-create-first-logic-app-workflow/add-action-send-email-body.png)
 
       | Setting | [説明] | 
-      | ----- | ----------- | 
+      | ------- | ----------- | 
       | **フィード タイトル** | 項目のタイトル | 
       | **フィードの公開日付** | 項目の公開日時 | 
       | **プライマリ フィード リンク** | 項目の URL | 
@@ -156,15 +158,16 @@ Azure アカウントの資格情報で <a href="https://portal.azure.com" targe
 
 ## <a name="run-your-logic-app"></a>ロジック アプリを実行する
 
-ロジック アプリを手動で開始するには、デザイナーのツール バーで **[実行]** を選択します。 または、指定したスケジュール (1 分おき) でロジック アプリが実行されるのを待ちます。 RSS フィードに新しい項目がある場合、ロジック アプリは新しい項目ごとに電子メールを送信します。 ただし、フィードに新しい項目がなかった場合、ロジック アプリはトリガーを起動する手順をスキップし、次の機会を待ってからもう一度項目をチェックします。 
+ロジック アプリを手動で開始するには、デザイナーのツール バーで **[実行]** を選択します。 または、指定したスケジュール (1 分おき) に従ってロジック アプリが RSS フィードをチェックするのを待ちます。 RSS フィードに新しい項目がある場合、ロジック アプリは新しい項目ごとに電子メールを送信します。 それ以外の場合、ロジック アプリは、次の機会を待ってからもう一度チェックします。 
 
-このロジック アプリからは、次のようなメールが送信されます。
+このロジック アプリからは、次のようなメールが送信されます。 電子メールが届かない場合は、迷惑メール フォルダーを確認してください。
 
 ![新しい RSS フィード項目について送信された電子メール](./media/quickstart-create-first-logic-app-workflow/monitor-rss-feed-email.png)
 
-メールが届かない場合は、迷惑メール フォルダーを確認してください。 この種のメールは、迷惑メール フィルターによってリダイレクトされる場合があります。 
+技術的には、トリガーが RSS フィードをチェックして新しい項目を見つけると、トリガーが起動し、ワークフローのアクションを実行するロジック アプリのワークフローのインスタンスが Logic Apps エンジンによって作成されます。
+トリガーで新しい項目が見つからなかった場合、トリガーは起動せず、ワークフローのインスタンス作成は "スキップ" されます。
 
-お疲れさまでした。初めてのロジック アプリを作成し、実行することができました。
+お疲れさまでした。初めてのロジック アプリを Azure Portal で正しく作成し、実行することができました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 

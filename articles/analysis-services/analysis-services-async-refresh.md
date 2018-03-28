@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: owend
-ms.openlocfilehash: 4c317736af30b4181fa975713258a41b42ed0da3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: bb3e50c3e481bcedc436b8382fb55d6402d058b2
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>REST API を使用した非同期更新
 REST 呼び出しをサポートしているプログラミング言語を使用すれば、Azure Analysis Services 表形式モデルでの非同期データ更新操作を実行できます。 これには、クエリのスケールアウトのための読み取り専用レプリカの同期が含まれます。 
@@ -36,7 +36,7 @@ Azure Analysis Services 用の REST API なら、データ更新操作を非同�
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-たとえば、米国西部の Azure リージョンにある myserver という名前のサーバーの、AdventureWorks という名前のモデルの場合、サーバー名は次のようになります。
+たとえば、米国西部の Azure リージョンにある myserver という名前のサーバーの、AdventureWorks という名前のモデルの場合、 サーバー名は次のようになります。
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -48,7 +48,7 @@ asazure://westus.asazure.windows.net/myserver
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/ 
 ```
 
-このベース URL を使用すると、次の条件に基づいたリソースと操作を追加できます。 
+このベース URL を使用すると、次のパラメーターに基づいたリソースと操作を追加できます。 
 
 ![非同期更新](./media/analysis-services-async-refresh/aas-async-refresh-flow.png)
 
@@ -99,14 +99,14 @@ https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refres
 }
 ```
 
-### <a name="parameters"></a>パラメーター
+### <a name="parameters"></a>parameters
 パラメーターを指定する必要はありません。 既定値が適用されます。
 
-|名前  |型  |説明  |既定値  |
+|Name  |type  |[説明]  |既定値  |
 |---------|---------|---------|---------|
 |type     |  列挙型       |  実行する処理の種類です。 この種類は、TMSL の [refresh コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/refresh-command-tmsl)の種類 (full、clearValues、calculate、dataOnly、automatic、add、defragment) と一致します。       |   automatic      |
 |CommitMode     |  列挙型       |  オブジェクトがバッチでコミットされるかどうか、または完了する時間のみを決定します。 Mode には default、transactional、partialBatch が含まれています。  |  transactional       |
-|MaxParallelism     |   int      |  この値は、複数の処理コマンドを並列に実行するスレッドの最大数を決定します。 これは、TMSL の [Sequence コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)やその他のメソッドで設定できる MaxParallelism プロパティと一致します。       | 10        |
+|MaxParallelism     |   int      |  この値は、複数の処理コマンドを並列に実行するスレッドの最大数を決定します。 この値は、TMSL の [Sequence コマンド](https://docs.microsoft.com/sql/analysis-services/tabular-models-scripting-language-commands/sequence-command-tmsl)やその他のメソッドで設定できる MaxParallelism プロパティと一致します。       | 10        |
 |RetryCount    |    int     |   失敗前の操作の再試行回数を示します。      |     0    |
 |オブジェクト     |   array      |   処理されるオブジェクトの配列です。 各オブジェクトには、テーブル全体を処理する時には "table" が、またはパーティションを処理する時には "table" と "partition" が含まれます。 オブジェクトが指定されていない場合は、モデル全体が更新されます。 |   モデル全体を処理      |
 
@@ -188,7 +188,7 @@ CommitMode は partialBatch と同じです。 これは、読み込みに何時
 }
 ```
 
-syncstate の値は次のとおりです。
+`syncstate` の値:
 
 - 0: レプリケーション中。 データベース ファイルはターゲット フォルダーにレプリケートされています。
 - 1: リハイドレート中。 データベースは読み取り専用のサーバー インスタンスにリハイドレートされています。
@@ -228,7 +228,7 @@ syncstate の値は次のとおりです。
 
     ![API アクセス許可の追加](./media/analysis-services-async-refresh/aas-async-add.png)
 
-5.  **[API を選択します]** で、検索ボックスに「**SQL Server Analysis Services**」と入力してから **[Azure Analysis Services (SQL Server Analysis Services Azure)]** を選択します。
+5.  **[API を選択します]** で検索ボックスに「**Azure Analysis Services**」と入力して選択します。
 
     ![API の選択](./media/analysis-services-async-refresh/aas-async-select-api.png)
 
@@ -242,7 +242,7 @@ syncstate の値は次のとおりです。
 
 #### <a name="service-principal"></a>サービス プリンシパル
 
-サービス プリンシパルの設定方法と、Azure Analysis Services で必要なアクセス許可を割り当てる方法については、ブログ記事の「[Automation of Azure Analysis Services with Service Principals and PowerShell (サービス プリンシパルと PowerShell を使用した Azure Analysis Services の自動化)](https://azure.microsoft.com/blog/automation-of-azure-analysis-services-with-service-principals-and-powershell/)」をご覧ください。 このブログ記事で説明されている手順が完了したら、追加で次の手順を完了します。
+Azure AS でサービス プリンシパルを設定し、必要なアクセス許可を割り当てる方法については、[Azure Portal でサービス プリンシパルを作成する方法](../azure-resource-manager/resource-group-create-service-principal-portal.md)に関するページと「[サーバー管理者ロールへのサービス プリンシパルの追加](analysis-services-addservprinc-admins.md)」を参照してください。 これらの手順を完了したら、追加で次の手順を実行します。
 
 1.  コード サンプル内で「**string authority = …**」を見つけたら、「**common**」をご所属の組織のテナント ID に置き換えます。
 2.  コメント化およびコメントの解除を行って、ClientCredential クラスで cred オブジェクトをインスタンス化します。 \<App ID> と \<App Key> の値が安全な方法でアクセスされていることを確認します。または、サービス プリンシパルの証明書ベース認証を使用します。

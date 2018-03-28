@@ -1,20 +1,20 @@
 ---
-title: "Azure に Jenkins サーバーを作成する"
-description: "Jenkins ソリューション テンプレートから Azure Linux 仮想マシンに Jenkins をインストールし、サンプル Java アプリケーションをビルドする方法について説明します。"
-author: mlearned
-manager: douge
+title: Azure に Jenkins サーバーを作成する
+description: Jenkins ソリューション テンプレートから Azure Linux 仮想マシンに Jenkins をインストールし、サンプル Java アプリケーションをビルドする方法について説明します。
+author: tomarcher
+manager: rloutlaw
 ms.service: multiple
 ms.workload: web
-ms.devlang: java
+ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
-ms.author: mlearned
+ms.date: 03/12/2018
+ms.author: tarcher
 ms.custom: Jenkins
-ms.openlocfilehash: 422d133841a380b1ef02e95245207c464089138d
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.openlocfilehash: c9f86ab2536d3c598bb8c7084524395b41f18db0
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Azure Portal から Azure Linux VM に Jenkins サーバーを作成する
 
@@ -28,32 +28,13 @@ ms.lasthandoff: 01/10/2018
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-the-jenkins-vm-from-the-solution-template"></a>ソリューション テンプレートからの Jenkins VM の作成
+Jenkins は、Jenkins サーバーが 1 つ以上のエージェントに作業を委任するモデルをサポートしているので、1 つの Jenkins インストールで多数のプロジェクトをホストすることや、ビルドやテストに必要なさまざまな環境を提供することができます。 このセクションの手順では、Azure に Jenkins サーバーをインストールして構成する方法を説明します。
 
-Web ブラウザーから [Jenkins の Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)を開き、ページ左側から **[今すぐ入手する]** を選択します。 料金の詳細を確認して **[続行]** を選択し、**[作成]** を選択して、Azure Portal で Jenkins サーバーを構成します。 
-   
-![Azure Portal ダイアログ](./media/install-jenkins-solution-template/ap-create.png)
-
-**[基本設定の構成]** タブで、次のフィールドに入力します。
-
-![基本設定を構成する](./media/install-jenkins-solution-template/ap-basic.png)
-
-* **[名前]** には **Jenkins** を使用します。
-* **[ユーザー名]** を入力します。 ユーザー名は、[特定の要件](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしている必要があります。
-* **[認証の種類]** として **[パスワード]** を選択し、パスワードを入力します。 パスワードには、大文字と数字に加え、1 つの特殊文字を含んでいる必要があります。
-* **[リソース グループ]** には「**myJenkinsResourceGroup**」を使用します。
-* **[場所]** ドロップダウンから **[米国東部]** の [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を選択します。
-
-**[OK]** を選択して、**[Configure additional options]\(追加オプションの構成\)** タブに移動します。Jenkins サーバーを識別する一意のドメイン名を入力して、**[OK]** を選択します。
-
-![追加オプションの設定](./media/install-jenkins-solution-template/ap-addtional.png)  
-
- 検証に成功したら、**[概要]** タブから再度 **[OK]** を選択します。最後に、**[購入]** を選択して Jenkins VM を作成します。 サーバーの準備が完了すると、Azure Portal に通知が表示されます。   
-
-![Jenkins の準備が完了したことを示す通知](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
+[!INCLUDE [jenkins-install-from-azure-marketplace-image](../../includes/jenkins-install-from-azure-marketplace-image.md)]
 
 ## <a name="connect-to-jenkins"></a>Jenkins に接続する
 
-Web ブラウザーから対象の仮想マシン (例: http://jenkins2517454.eastus.cloudapp.azure.com/) にアクセスします。 セキュリティで保護されていない HTTP 経由では Jenkins コンソールにアクセスできません。そのためこのページには、ご使用のコンピューターから SSH トンネルを使って安全に Jenkins コンソールにアクセスする手順が掲載されています。
+Web ブラウザーで仮想マシンに移動します (例: http://jenkins2517454.eastus.cloudapp.azure.com/)。 セキュリティで保護されていない HTTP 経由では Jenkins コンソールにアクセスできません。そのためこのページには、ご使用のコンピューターから SSH トンネルを使って安全に Jenkins コンソールにアクセスする手順が掲載されています。
 
 ![Jenkins のロックを解除する](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
 

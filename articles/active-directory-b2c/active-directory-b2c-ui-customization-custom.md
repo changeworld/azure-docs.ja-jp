@@ -1,8 +1,8 @@
 ---
-title: "カスタム ポリシーを使用した UI のカスタマイズ - Azure AD B2C | Microsoft Docs"
-description: "Azure AD B2C でカスタム ポリシーを使用して、ユーザー インターフェイス (UI) をカスタマイズする方法について説明します。"
+title: カスタム ポリシーを使用した UI のカスタマイズ - Azure AD B2C | Microsoft Docs
+description: Azure AD B2C でカスタム ポリシーを使用して、ユーザー インターフェイス (UI) をカスタマイズする方法について説明します。
 services: active-directory-b2c
-documentationcenter: 
+documentationcenter: ''
 author: saeedakhter-msft
 manager: mtillman
 editor: parakhj
@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: c430b488016f038ed1d7a67a8d52c057df1ea40e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: dcd8b6df68a68f5feb428b4fd98aee938b3bfe6c
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="azure-active-directory-b2c-configure-ui-customization-in-a-custom-policy"></a>Azure Active Directory B2C: カスタム ポリシーでの UI カスタマイズの構成
 
@@ -66,7 +66,7 @@ ms.lasthandoff: 12/11/2017
 
 この HTML コンテンツを Blob Storage にホストするには、次の手順を実行します。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **ハブ** メニューで、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** の順にクリックします。
 3. ストレージ アカウント用に一意の**名前**を入力します。
 4. **[デプロイ モデル]** は **[リソース マネージャー]** のまま残してかまいません。
@@ -118,7 +118,7 @@ Blob Storage 内にパブリック コンテナーを作成するには、次の
 
 準備が整ったことを検証するには、次の手順を実行します。
 
-1. [test-cors.org](http://test-cors.org/) Web サイトに移動し、目的の URL を **[Remote URL]\(リモート URL\)** ボックスに貼り付けます。
+1. [www.test-cors.org](http://www.test-cors.org/) Web サイトに移動し、目的の URL を **[リモート URL]** ボックスに貼り付けます。
 2. **[Send Request]\(要求を送信する\)** をクリックします。  
     エラーが発生した場合、[CORS の設定](#configure-cors)が正しいことを確認します。 場合によっては、ブラウザーのキャッシュをクリアするか、Ctrl + Shift + P キーを押してプライベート ブラウズ セッションを開く必要もあります。
 
@@ -159,7 +159,7 @@ git clone https://github.com/azureadquickstarts/b2c-azureblobstorage-client
 
 sample_templates/wingtip フォルダーには、次の HTML ファイルが含まれています。
 
-| HTML5 テンプレート | Description |
+| HTML5 テンプレート | [説明] |
 |----------------|-------------|
 | *phonefactor.html* | このファイルは、多要素認証ページのテンプレートとして使用します。 |
 | *resetpassword.html* | このファイルは、パスワードを忘れた場合のページのテンプレートとして使用します。 |
@@ -169,7 +169,7 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 
 「[サインアップまたはサインイン カスタム ポリシーを変更する](#modify-your-sign-up-or-sign-in-custom-policy)」セクションでは、`api.idpselections` のコンテンツ定義を構成しました。 次の表には、Azure AD B2C Identity Experience Framework で検出されるすべてのコンテンツ定義 ID とその説明を示します。
 
-| コンテンツ定義 ID | Description | 
+| コンテンツ定義 ID | [説明] | 
 |-----------------------|-------------|
 | *api.error* | **エラー ページ**。 このページは、例外またはエラーが発生した場合に表示されます。 |
 | *api.idpselections* | **ID プロバイダーの選択ページ**。 このページには、サインイン時にユーザーが選択できる ID プロバイダーの一覧が含まれます。 ID プロバイダーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、ローカル アカウントのいずれかです。 |
@@ -182,6 +182,6 @@ sample_templates/wingtip フォルダーには、次の HTML ファイルが含�
 | *api.selfasserted.profileupdate* | **プロファイルの更新ページ**。 このページには、ユーザーがプロファイルの更新に使用できるフォームが含まれます。 このページは、パスワード入力フィールドを除いて、ソーシャル アカウントのサインアップ ページに似ています。 |
 | *api.signuporsignin* | **統合されたサインアップ ページまたはサインイン ページ**。 このページは、ユーザーのサインアップとサインインの両方を処理します。ユーザーは、エンタープライズ ID プロバイダー、ソーシャル ID プロバイダー (Facebook や Google+ など)、またはローカル アカウントを使用することができます。  |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 カスタマイズできる UI 要素の詳細については、[組み込みポリシーにおける UI カスタマイズのリファレンス ガイド](active-directory-b2c-reference-ui-customization.md)を参照してください。

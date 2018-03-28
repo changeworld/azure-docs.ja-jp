@@ -1,28 +1,28 @@
 ---
-title: "Azure Cosmos DB でテーブル データのクエリを実行する方法 | Microsoft Docs"
-description: "Azure Cosmos DB でテーブル データのクエリを実行する方法を学習する"
+title: Azure Cosmos DB でテーブル データのクエリを実行する方法 | Microsoft Docs
+description: Azure Cosmos DB でテーブル データのクエリを実行する方法を学習する
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: kanshiG
 manager: jhubbard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 14bcb94e-583c-46f7-9ea8-db010eb2ab43
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 11/15/2017
 ms.author: govindk
 ms.custom: mvc
-ms.openlocfilehash: 80fed91c45ae19193f6b8dfcaef747f8c4253dee
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 969b16457b32cedb7140bb032c1830e95ebed9be
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="azure-cosmos-db-how-to-query-table-data-by-using-the-table-api"></a>Azure Cosmos DB: Table API を使用してテーブル データのクエリを実行する方法
+# <a name="tutorial-query-azure-cosmos-db-by-using-the-table-api"></a>チュートリアル: Table API を使って Azure Cosmos DB を照会する
 
 Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テーブル) データに対する OData クエリと [LINQ](https://docs.microsoft.com/rest/api/storageservices/fileservices/writing-linq-queries-against-the-table-service) クエリがサポートされます。  
 
@@ -33,7 +33,7 @@ Azure Cosmos DB [Table API](table-introduction.md) では、キー/値 (テー�
 
 この記事のクエリは、次の `People` サンプル テーブルを使用します。
 
-| PartitionKey | RowKey | 電子メール | PhoneNumber |
+| パーティション キー | 行キー | 電子メール | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0101 |
 | Smith | Ben | Ben@contoso.com| 425-555-0102 |
@@ -57,7 +57,7 @@ https://<mytableendpoint>/People(PartitionKey='Harp',RowKey='Walter')
 ```
 **結果**
 
-| PartitionKey | RowKey | 電子メール | PhoneNumber |
+| パーティション キー | 行キー | 電子メール | PhoneNumber |
 | --- | --- | --- | --- |
 | Harp | Walter | Walter@contoso.com| 425-555-0104 |
 
@@ -83,7 +83,7 @@ https://<mytableapi-endpoint>/People()?$filter=PartitionKey%20eq%20'Smith'%20and
 
 **結果**
 
-| PartitionKey | RowKey | 電子メール | PhoneNumber |
+| パーティション キー | 行キー | 電子メール | PhoneNumber |
 | --- | --- | --- | --- |
 | Ben |Smith | Ben@contoso.com| 425-555-0102 |
 
@@ -105,7 +105,7 @@ TableQuery<CustomerEntity> query = new TableQuery<CustomerEntity>()
 await table.ExecuteQuerySegmentedAsync<CustomerEntity>(query, null);
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、次の手順を行いました。
 

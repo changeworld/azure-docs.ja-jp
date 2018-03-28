@@ -1,11 +1,11 @@
 ---
-title: "Azure Log Analytics のコンテナー監視ソリューション | Microsoft Docs"
-description: "Log Analytics のコンテナー監視ソリューションを使用すると、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。"
+title: Azure Log Analytics のコンテナー監視ソリューション | Microsoft Docs
+description: Log Analytics のコンテナー監視ソリューションを使用すると、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: e1e4b52b-92d5-4bfa-8a09-ff8c6b5a9f78
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: b3f78f6cc89a3d4bf8712c339f66b5d50f373919
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 0ad267b9694c2f9cdb574b6b6008d4f6fa027fce
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 02/13/2018
 | Kubernetes | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
 | Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
-| サービス<br>Fabric | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| サービス<br>Fabric | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
 | Red Hat Open<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
 | Windows Server<br>(スタンドアロン) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 | Linux サーバー<br>(スタンドアロン) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
@@ -103,7 +103,7 @@ ms.lasthandoff: 02/13/2018
     - Azure Container Service を使用する Kubernetes クラスターをご利用の場合は、「[Kubernetes 用の OMS エージェントを構成する](#configure-an-oms-agent-for-kubernetes)」を確認します。
     - Azure Container Service DC/OS クラスターがある場合、詳細については、「[Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視](../container-service/dcos-swarm/container-service-monitoring-oms.md)」をご覧ください。
     - Docker Swarm モード環境がある場合、詳細については、「[Docker Swarm 用の OMS エージェントを構成する](#configure-an-oms-agent-for-docker-swarm)」をご覧ください。
-    - Service Fabric でコンテナーを使用する場合、詳しくは「[Azure Service Fabric の概要](../service-fabric/service-fabric-overview.md)」をご覧ください。
+    - Service Fabric クラスターがある場合、詳細については、「[OMS Log Analytics でコンテナーを監視](../service-fabric/service-fabric-diagnostics-oms-containers.md)」を参照してください。
 
 Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/12/2018
 ms.author: billmath
-ms.openlocfilehash: 6e81ea9f98733b1b7e0c9bf7466ac844a37b6046
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b383a081141d2fde90cfc574ec4b9ffb16940158
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -34,8 +34,9 @@ ms.lasthandoff: 03/08/2018
 - シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。
 - シームレス SSO は、拡張保護モードがオンの場合は Internet Explorer で動作しません。
 - シームレス SSO は、iOS および Android 上のモバイル ブラウザーでは動作しません。
+- Active Directory でユーザーが属しているグループ数が多すぎる場合、ユーザーの Kerberos チケットが大きすぎて処理できなくなり、シームレス SSO が失敗する可能性があります。 Azure AD HTTPS 要求のヘッダーは最大サイズが 16 KB です。Cookie など、他の Azure AD アーティファクトに対応するには、Kerberos チケットのサイズをはるかに小さくする必要があります。 ユーザーのグループ メンバーシップを減らし、再試行することをお勧めします。
 - 30 以上の Active Directory フォレストを同期している場合は、Azure AD Connect によるシームレス SSO を有効にすることはできません。 この問題を回避するには、テナントでこの機能を[手動で有効](#manual-reset-of-azure-ad-seamless-sso)にします。
-- Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com) を、ローカル イントラネット ゾーンではなく信頼済みサイト ゾーンに追加すると、"*ユーザーのサインインがブロック*" されます。
+- Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com)) を、ローカル イントラネット ゾーンではなく信頼済みサイト ゾーンに追加すると、"*ユーザーのサインインがブロック*" されます。
 - Active Directory の設定で Kerberos での暗号化の種類 **RC4_HMAC_MD5** の使用を無効にすると、シームレス SSO が中断されます。 グループ ポリシー管理エディター ツールで、**[コンピューターの構成]、[Windows 設定]、[セキュリティ設定]、[ローカル ポリシー]、[セキュリティ オプション]、[ネットワーク セキュリティ: Kerberos で許可する暗号化の種類を構成する]** の順に選択して、**[RC4_HMAC_MD5]** のポリシーの値が "有効" になっていることを確認してください。
 
 ## <a name="check-status-of-feature"></a>機能の状態の確認

@@ -1,102 +1,158 @@
 ---
-title: "Azure 仮想マシン スケール セットのディスクの暗号化 | Microsoft Docs"
-description: "接続されたディスクを仮想マシン スケール セット内に暗号化する方法について説明します。"
+title: Azure 仮想マシン スケール セットのディスク暗号化 | Microsoft Docs
+description: Azure PowerShell を使用して、仮想マシン スケール セット内の VM インスタンスと接続ディスクを暗号化する方法について説明します。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 03/09/2018
 ms.author: iainfou
-ms.openlocfilehash: dddcece9f7566961b256369330661e5dbd5d4665
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 856d4bc7dd636b3a2f3d072a10989cafd7efd6a6
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>OS と接続されたデータ ディスクの仮想マシン スケール セット内への暗号化
-Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)では、Azure Disk Encryption (ADE) をサポートします。  Windows と Linux の仮想マシン スケール セットに対して Azure Disk Encryption を有効にして、業界標準の暗号化テクノロジを使用して保存時のスケール セット データを保護できます。 詳細については、Windows と Linux の仮想マシン用の Azure Disk Encryption に関する記事をご覧ください。
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セット内の OS および接続されているデータ ディスクを暗号化する
+業界標準の暗号化テクノロジを使用して保存データを保護および防御するために、仮想マシン スケール セットは Azure Disk Encryption (ADE) をサポートしています。 Windows および Linux の仮想マシン スケール セットで暗号化を有効にすることができます。 詳細については、[Windows 用および Linux 用の Azure Disk Encryption](../security/azure-security-disk-encryption.md) に関するページを参照してください。
 
 > [!NOTE]
->  仮想マシン スケール セット用の Azure Disk Encryption は、現在パブリック プレビュー段階であり、すべての Azure パブリック リージョンで利用可能です。
+>  仮想マシン スケール セット用 Azure Disk Encryption は、現在プレビュー段階であり、すべての Azure パブリック リージョンで利用できます。 
+>
+> 現在のプレビューでは、スケール セット VM の再イメージ操作とアップグレード操作はサポートされていません。 プレビューでは、テスト環境でのみスケール セットの暗号化を使用することをお勧めします。 プレビューでは、OS イメージをアップグレードする必要のある運用環境でディスクの暗号化を有効にしないでください。
 
-Azure Disk Encryption のサポート対象を次に示します。
-- 管理対象ディスクを使用して作成されたスケール セット。ネイティブ (アンマネージ) ディスク スケール セットはサポートされません。
-- Windows スケール セット内の OS とデータ ボリューム。 Windows スケール セット内の OS と データ ボリュームに対する暗号化の無効化がサポートされます。
-- Linux スケール セット内のデータ ボリューム。 Linux スケール セットの現在のプレビューでは、OS ディスクの暗号化はサポートされません。
+Azure Disk Encryption は次の場合にサポートされます。
+- 管理ディスクで作成されたスケール セット。ネイティブ (または管理対象ではない) ディスク スケール セットの場合はサポートされません。
+- Windows スケール セット内の OS とデータ ボリューム。 Windows スケール セットの OS とデータ ボリュームでは、暗号化の無効化がサポートされています。
+- Linux スケール セット内のデータ ボリューム。 Linux スケール セット用の現在のプレビューでは、OS ディスクの暗号化はサポートされていません。
 
-スケール セット VM の再イメージ化操作とアップグレード操作は、現在のプレビューではサポートされません。 仮想マシン スケール セット用の Azure Disk Encryption のプレビューは、テスト環境でのみ推奨されます。 このプレビューでは、実稼働環境でのディスクの暗号化は有効にしないでください。実稼働環境では、暗号化されるスケール セット内の OS イメージをアップグレードする必要があります。
 
 ## <a name="prerequisites"></a>前提条件
-暗号化コマンドが含まれている最新バージョンの [Azure Powershell](https://github.com/Azure/azure-powershell/releases) をインストールします。
+この記事では、Azure PowerShell モジュール バージョン 5.3.0 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
-仮想マシン スケール セット用の Azure Disk Encryption のプレビューでは、次の PowerShell コマンドを使用して、サブスクリプションを自己登録する必要があります。 
+[Register-AzureRmProviderFeature](/powershell/module/azurerm.resources/register-azurermproviderfeature) を使用して、仮想マシン スケール セットのディスク暗号化をプレビューするための Azure サブスクリプションを登録します。 
 
 ```powershell
 Login-AzureRmAccount
 Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Compute -FeatureName "UnifiedDiskEncryption"
 ```
 
-次のコマンドで '登録済み' 状態が返されるまで、約 10 分間待機します。 
+[Get-AzureRmProviderFeature](/powershell/module/AzureRM.Resources/Get-AzureRmProviderFeature) から *Registered* 状態が返されるまで約 10 分間待ってから、`Microsoft.Compute` プロバイダーを再登録します。 
 
 ```powershell
 Get-AzureRmProviderFeature -ProviderNamespace "Microsoft.Compute" -FeatureName "UnifiedDiskEncryption"
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
 ```
 
-## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>ディスクの暗号化が有効な Azure キー コンテナーを作成する
-スケール セットと同じサブスクリプションとリージョン内に新しいキー コンテナーを作成し、'EnabledForDiskEncryption' アクセス ポリシーを設定します。
+
+## <a name="create-an-azure-key-vault-enabled-for-disk-encryption"></a>ディスクの暗号化を有効にした Azure Key Vault を作成する
+Azure Key Vault は、キー、シークレット、パスワードを格納して、アプリケーションとサービスに安全に実装できるようにします。 暗号化キーは、ソフトウェア保護を使って Azure Key Vault に格納されます。または、FIPS 140-2 レベル 2 標準に認定された Hardware Security Module (HSM) でキーをインポートまたは生成することもできます。 これらの暗号化キーは、VM に接続された仮想ディスクの暗号化/暗号化解除に使われます。 これらの暗号化キーの制御を維持し、その使用を監査することができます。
+
+[New-AzureRmKeyVault](/powershell/module/azurerm.keyvault/new-azurermkeyvault) を使用して、Key Vault を作成します。 ディスク暗号化に Key Vault を使用できるようにするには、*EnabledForDiskEncryption* パラメーターを設定します。 次の例では、リソース グループ名、Key Vault 名、および場所の変数も定義しています。 独自の Key Vault 名を指定します。
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VaultName="encryptionvault321"
+$rgName="myResourceGroup"
+$vaultName="myuniquekeyvault"
+$location = "EastUS"
 
-New-AzureRmKeyVault -VaultName $VaultName -ResourceGroupName $rgName -Location southcentralus -EnabledForDiskEncryption
-``` 
-
-または、ディスク暗号化用のスケール セットと同じサブスクリプションとリージョン内の既存のキー コンテナーを有効にします。
-
-```powershell
-$VaultName="encryptionvault321"
-Set-AzureRmKeyVaultAccessPolicy -VaultName $VaultName -EnabledForDiskEncryption
+New-AzureRmResourceGroup -Name $rgName -Location $location
+New-AzureRmKeyVault -VaultName $vaultName -ResourceGroupName $rgName -Location $location -EnabledForDiskEncryption
 ```
+
+
+### <a name="use-an-existing-key-vault"></a>既存の Key Vault を使用する
+この手順は、ディスク暗号化で使用する既存の Key Vault がある場合にのみ必要です。 前のセクションで Key Vault を作成した場合は、この手順をスキップしてください。
+
+[Set-AzureRmKeyVaultAccessPolicy](/powershell/module/AzureRM.KeyVault/Set-AzureRmKeyVaultAccessPolicy) を使用して、ディスク暗号化のスケール セットと同じサブスクリプションとリージョン内にある既存の Key Vault を有効にすることができます。 次のように、*$vaultName* 変数で既存の Key Vault 名を定義します。
+
+```powershell
+$vaultName="myexistingkeyvault"
+Set-AzureRmKeyVaultAccessPolicy -VaultName $vaultName -EnabledForDiskEncryption
+```
+
+
+## <a name="create-a-scale-set"></a>スケール セットを作成する
+まず、[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM インスタンスの管理者のユーザー名とパスワードを設定します。
+
+```powershell
+$cred = Get-Credential
+```
+
+それでは、仮想マシン スケール セットの作成に移りましょう。これには、[New-AzureRmVmss](/powershell/module/azurerm.compute/new-azurermvmss) を使います。 個々の VM インスタンスにトラフィックを分散するために、ロード バランサーも作成されます。 ロード バランサーには、TCP ポート 80 上のトラフィックを分散するルールだけでなく、TCP ポート 3389 上のリモート デスクトップ トラフィックと TCP ポート 5985 上の PowerShell リモート処理を許可するルールも含まれています。
+
+```powershell
+$vmssName="myScaleSet"
+
+New-AzureRmVmss `
+    -ResourceGroupName $rgName `
+    -VMScaleSetName $vmssName `
+    -Location $location `
+    -VirtualNetworkName "myVnet" `
+    -SubnetName "mySubnet" `
+    -PublicIpAddressName "myPublicIPAddress" `
+    -LoadBalancerName "myLoadBalancer" `
+    -UpgradePolicy "Automatic" `
+    -Credential $cred
+```
+
 
 ## <a name="enable-encryption"></a>暗号化を有効にする
-次のコマンドは、同じリソース グループ内のキー コンテナーを使用して、実行中のスケール セット内にデータ ディスクを暗号化します。 テンプレートを使用して、ディスクを実行中の [Windows スケール セット](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox)または [Linux スケール セット](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox)内に暗号化することもできます。
+スケールセット内の VM インスタンスを暗号化するには、まず [Get-AzureRmKeyVault](/powershell/module/AzureRM.KeyVault/Get-AzureRmKeyVault) を使用して Key Vault URI とリソース ID に関する一部の情報を取得します。 [Set-AzureRmVmssDiskEncryptionExtension](/powershell/module/AzureRM.Compute/Set-AzureRmVmssDiskEncryptionExtension) でこれらの変数を使用して暗号化プロセスを開始します。
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-$DiskEncryptionKeyVaultUrl="https://encryptionvault321.vault.azure.net"
-$KeyVaultResourceId="/subscriptions/0754ecc2-d80d-426a-902c-b83f4cfbdc95/resourceGroups/windatadiskencryptiontest/providers/Microsoft.KeyVault/vaults/encryptionvault321"
+$diskEncryptionKeyVaultUrl=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).VaultUri
+$keyVaultResourceId=(Get-AzureRmKeyVault -ResourceGroupName $rgName -Name $vaultName).ResourceId
 
-Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $VmssName `
-    -DiskEncryptionKeyVaultUrl $DiskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $KeyVaultResourceId –VolumeType Data
+Set-AzureRmVmssDiskEncryptionExtension -ResourceGroupName $rgName -VMScaleSetName $vmssName `
+    -DiskEncryptionKeyVaultUrl $diskEncryptionKeyVaultUrl -DiskEncryptionKeyVaultId $keyVaultResourceId –VolumeType "All"
 ```
 
-## <a name="check-encryption-progress"></a>暗号化の進行状況をチェックする
-次のコマンドを使用して、スケール セットの暗号化の状態を表示します。
+プロンプトが表示されたら、「*y*」と入力して、スケール セット VM インスタンス上のディスク暗号化プロセスを続行します。
+
+
+## <a name="check-encryption-progress"></a>暗号化の進行状況を確認する
+ディスク暗号化の状態を確認するには、[Get-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Get-AzureRmVmssDiskEncryption) を使用します。
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
-
-Get-AzureRmVmssVMDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName -InstanceId "4"
+Get-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
+
+VM インスタンスが暗号化されると、*EncryptionSummary* コードで、次の出力例のように *ProvisioningState/succeeded* コードが報告されます。
+
+```powershell
+ResourceGroupName            : myResourceGroup
+VmScaleSetName               : myScaleSet
+EncryptionSettings           :
+  KeyVaultURL                : https://myuniquekeyvault.vault.azure.net/
+  KeyEncryptionKeyURL        :
+  KeyVaultResourceId         : /subscriptions/guid/resourceGroups/myResourceGroup/providers/Microsoft.KeyVault/vaults/myuniquekeyvault
+  KekVaultResourceId         :
+  KeyEncryptionAlgorithm     :
+  VolumeType                 : All
+  EncryptionOperation        : EnableEncryption
+EncryptionSummary[0]         :
+  Code                       : ProvisioningState/succeeded
+  Count                      : 2
+EncryptionEnabled            : True
+EncryptionExtensionInstalled : True
+```
+
 
 ## <a name="disable-encryption"></a>暗号化を無効にする
-次のコマンドを使用して、実行中の仮想マシン スケール セット上の暗号化を無効にします。 テンプレートを使用して、実行中の [Windows スケール セット](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-windows)または [Linux スケール セット](https://github.com/Azure/azure-quickstart-templates/tree/master/201-decrypt-vmss-linux)内の暗号化を無効にすることもできます。
+暗号化された VM インスタンス ディスクを使用しない場合は、次のように [Disable-AzureRmVmssDiskEncryption](/powershell/module/AzureRM.Compute/Disable-AzureRmVmssDiskEncryption) で暗号化を無効にすることができます。
 
 ```powershell
-$rgname="windatadiskencryptiontest"
-$VmssName="nt1vm"
-Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $VmssName
+Disable-AzureRmVmssDiskEncryption -ResourceGroupName $rgName -VMScaleSetName $vmssName
 ```
+
+
+## <a name="next-steps"></a>次の手順
+この記事では、Azure PowerShell を使用して仮想マシン スケール セットを暗号化しました。 また、[Azure CLI 2.0](virtual-machine-scale-sets-encrypt-disks-cli.md) や、[Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) または [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox) 用のテンプレートを使用することもできます。

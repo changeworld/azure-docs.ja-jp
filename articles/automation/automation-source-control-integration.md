@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation でのソース管理の統合 | Microsoft Docs"
-description: "この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。"
+title: Azure Automation でのソース管理の統合
+description: この記事では、Azure Automation での GitHub とのソース管理の統合について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 224d7375-9887-44dd-b137-06ffe396a4b4
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/29/2017
-ms.author: magoedte;sngun
-ms.openlocfilehash: 15e69105d4171c63b4ccef0b072bccf49a2e9ceb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+manager: carmonm
+ms.openlocfilehash: 96b4f38ea990edcb23ae792d40651672a921a7c7
+ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/17/2018
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Azure Automation でのソース管理の統合
 ソース管理の統合により、Automation アカウントの Runbook を GitHub のソース管理リポジトリに関連付けることができます。 ソース管理により、チームとの共同作業、変更の追跡、Runbook の以前のバージョンへのロールバックを簡単に実行できるようになります。 たとえば、開発、テスト、または運用の Automation アカウントに異なるブランチをソース管理で同期できるようになり、開発環境内でテストされたコードを運用の Automation アカウントに昇格することが容易になります。
@@ -65,19 +59,19 @@ GitHub アカウントと、Azure Automation にリンクするリポジトリ�
      
      | **パラメーター** | **値** |
      |:--- |:--- |
-     | Name |Microsoft.Azure.Automation.SourceControl.Connection |
-     | type |String |
+     | 名前 |Microsoft.Azure.Automation.SourceControl.Connection |
+     | 型 |String |
      | 値 |{"Branch":\<*ブランチ名*>,"RunbookFolderPath":\<*Runbookフォルダー パス*>,"ProviderType":\<*GitHub の場合は値 1*>,"Repository":\<*リポジトリ名*>,"Username":\<*Your GitHub ユーザー名*>} |
 
     * **Microsoft.Azure.Automation.SourceControl.OauthToken**変数には、OAuthToken のセキュリティで保護され暗号化された値が格納されます。  
 
     |**パラメーター**            |**値** |
     |:---|:---|
-    | Name  | Microsoft.Azure.Automation.SourceControl.OauthToken |
-    | type | Unknown(Encrypted) |
+    | 名前  | Microsoft.Azure.Automation.SourceControl.OauthToken |
+    | 型 | Unknown(Encrypted) |
     | 値 | <*暗号化された OAuthToken*> |  
 
-    ![variables](media/automation-source-control-integration/automation_04_Variables.png)  
+    ![変数](media/automation-source-control-integration/automation_04_Variables.png)  
 
     * **Automation ソース管理** は、承認済みのアプリケーションとして GitHub アカウントに追加されます。 アプリケーションを表示するには、GitHub のホーム ページから **[プロファイル]** > 、**[設定]** > 、**[アプリケーション]** の順に移動します。 このアプリケーションにより、Azure Automation は GitHub リポジトリを Automation アカウントに同期できます。  
 

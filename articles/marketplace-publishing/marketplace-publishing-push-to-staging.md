@@ -1,11 +1,11 @@
 ---
-title: "プランを準備およびテストして Azure Marketplace にデプロイする | Microsoft Docs"
-description: "マーケティング コンテンツの指定、価格プランの構成、Azure Marketplace へのデプロイ前のプランのテストに関する詳細な手順を説明します。"
+title: プランを準備およびテストして Azure Marketplace にデプロイする | Microsoft Docs
+description: マーケティング コンテンツの指定、価格プランの構成、Azure Marketplace へのデプロイ前のプランのテストに関する詳細な手順を説明します。
 services: marketplace-publishing
-documentationcenter: 
-author: HannibalSII
-manager: hascipio
-editor: 
+documentationcenter: ''
+author: msmbaldwin
+manager: mbaldwin
+editor: ''
 ms.assetid: 3ccd2448-895b-477e-adf6-ab655a21d2fa
 ms.service: marketplace
 ms.devlang: na
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/17/2016
-ms.author: hascipio
-ms.openlocfilehash: 7db86716cdf8f9eb921c3c1813970acae7a3016b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbaldwin
+ms.openlocfilehash: 5bec9ac89487a824b9de9209547f0b96fa5fe678
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="complete-the-offer-creation-with-marketing-content"></a>マーケティング コンテンツを使用したプラン作成の実行
 発行処理のこの手順では、特定のマーケティング コンテンツと Azure Marketplace でのプランと SKU の詳細を指定する必要があります。 たとえば、製品、会社のロゴ、価格プラン、プランの詳細、プランまたは SKU をステージング環境へプッシュするために必要なその他の情報を指定します。 この情報は、Azure ポータルでマーケティング コンテンツとして使用されます。 このプロセスは、[発行ポータル][link-pubportal]で開始します。
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="step-1-provide-marketplace-marketing-content"></a>手順 1: Marketplace のマーケティング コンテンツを指定する
 **英語は、既定で指定され、サポートされる唯一の言語です。** フィールドに指定するすべての情報が英語であることを確認してください。 ステージングにプッシュするまでは、すべての情報をいつでも編集することができます。
 
-1. 発行ポータル ( [https://publish.windowsazure.com](https://publish.windowsazure.com)) に移動します。
+1. 発行ポータル ([https://publish.windowsazure.com](https://publish.windowsazure.com)) に移動します。
 2. 左側のメニューで、 **[マーケティング]** タブをクリックします。
 3. メイン パネルで、 **[英語 (米国)]** をクリックします。
    
@@ -122,7 +122,7 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 
 ## <a name="step-2-set-your-prices"></a>手順 2.: 価格を設定する
 ### <a name="pricing-models"></a>価格モデル
-| 価格モデル | 説明 |
+| 価格モデル | [説明] |
 | --- | --- |
 | 基本 |月額固定料金 (購入時に支払い) 例: 10 ドル/月 |
 | 消費量 (別名:  使用量、メーター) |従量課金。プランの発行者が定義します。 超過料金はシートやユーザーごとなどの方法で定義できません。これは、比例配分を行うためのユーザーまたは容量の分割の概念を採用していないためです。 使用量は、時間単位でパートナーが報告します。 お客様は前払いではなく、月額プランなどの月ごとの請求サイクルで支払います。 |
@@ -139,8 +139,8 @@ Virtual Machine プランについては、一度 Azure Marketplace にプラン
 
 |  | 基本のみ | 消費量のみ | 基本 + 消費量 |
 | --- | --- | --- | --- |
-| 仮想マシン イメージ |いいえ |あり |いいえ |
-| 開発者サービス |あり |あり |はい |
+| 仮想マシン イメージ |いいえ  |[はい] |いいえ  |
+| 開発者サービス |[はい] |[はい] |[はい] |
 
 ### <a name="21-set-your-vm-prices"></a>2.1. VM 料金を設定する
 仮想マシンについては、現在、次の **3 つの課金モデル**
@@ -270,7 +270,7 @@ SKU の BYOL の価格モデルを設定するには、次の手順に従って�
 
 *Azure ポータルのプランの説明の詳細*
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Marketplace コンテンツが読み込まれたので、プランのステージングでのテストに進みましょう。 ただし、手順はプランの種類によって異なるため、以下の一覧から適切なプランの種類を選択する必要があります。
 
 * [ステージング環境での VM プランのテスト](marketplace-publishing-vm-image-test-in-staging.md)

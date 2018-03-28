@@ -1,26 +1,19 @@
 ---
-title: "SQL Server DB を Azure SQL Database に移行する | Microsoft Docs"
-description: "SQL Server データベースを Azure SQL Database に移行する方法について説明します。"
+title: SQL Server DB を Azure SQL Database に移行する | Microsoft Docs
+description: SQL Server データベースを Azure SQL Database に移行する方法について説明します。
 services: sql-database
-documentationcenter: 
 author: CarlRabeler
-manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+manager: craigg
 ms.service: sql-database
 ms.custom: mvc,migrate
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
-ms.workload: Active
-ms.date: 01/29/2018
+ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: acba1aff0af8d54fca44af62ab46e1fd1a9d607e
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: c333fd4f87f30d9aa1ace755c7414423ab348e03
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>SQL Server データベースを Azure SQL Database に移行する
 
@@ -91,7 +84,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
    > [!IMPORTANT]
    > \* 付属のストレージ容量を超えるストレージ サイズはプレビュー段階であり、追加料金が適用されます。 詳細については、「 [SQL Database の価格](https://azure.microsoft.com/pricing/details/sql-database/)」をご覧ください。 
    >
-   >\* Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
+   >\* Premium レベルでは現在、次のリージョンで 1 TB を超えるストレージが使用できます: ブラジル南部、カナダ中部、カナダ東部、米国中部、フランス中部、ドイツ中部、東日本、西日本、韓国中部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、英国南部、英国西部、米国東部 2、米国西部、米国政府バージニア、および西ヨーロッパ。 [P11 ～ P15 の現時点での制限](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)に関するページを参照してください。  
    > 
 
 9. サーバーのレベル、DTU 数、ストレージの容量を選択したら、**[適用]** をクリックします。  
@@ -158,7 +151,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
    | プロジェクトの種類 | 移行 | 移行するデータベースを評価するか、または、同じワークフローの一部として移行を評価するかを選択します。 |
    |プロジェクト名|移行のチュートリアル| わかりやすい名前 |
    |ソース サーバー名| SQL Server | 現在サポートされている唯一のソースです。 |
-   |ターゲット サーバー名| の接続文字列| 含まれるオプション: Azure SQL データベース、SQL Server、Azure の仮想マシン上の SQL Server |
+   |ターゲット サーバー名| Azure SQL Database| 含まれるオプション: Azure SQL データベース、SQL Server、Azure の仮想マシン上の SQL Server |
    |移行スコープ| スキーマとデータ| 含まれるオプション: スキーマとデータ、スキーマのみ、データのみ |
    
    ![Data Migration Assistant の新規プロジェクト](./media/sql-database-migrate-your-sql-server-database/data-migration-assistant-new-project.png)

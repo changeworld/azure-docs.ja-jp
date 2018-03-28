@@ -1,12 +1,12 @@
 ---
-title: "Ruby アプリの作成と App Service on Linux へのデプロイ | Microsoft Docs"
-description: "App Service on Linux で Ruby アプリを作成する方法について説明します。"
+title: Ruby アプリの作成と App Service on Linux へのデプロイ | Microsoft Docs
+description: App Service on Linux で Ruby アプリを作成する方法について説明します。
 keywords: Azure App Service, Linux, OSS, Ruby
 services: app-service
-documentationcenter: 
+documentationcenter: ''
 author: SyntaxC4
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 6d00c73c-13cb-446f-8926-923db4101afa
 ms.service: app-service
 ms.workload: na
@@ -16,11 +16,11 @@ ms.topic: quickstart
 ms.date: 10/10/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: db3086724c22e485e2a9a69c36a990fc5b8016a9
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 6668f02bb7ac9588e1bb11b3848d0a3e25cbed67
+ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/16/2018
 ---
 # <a name="create-a-ruby-app-in-app-service-on-linux"></a>App Service on Linux での Ruby アプリの作成
 
@@ -88,37 +88,23 @@ Web ブラウザーで `http://localhost:3000` に移動して、ローカルで
 
 [!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-## <a name="create-a-ruby-web-app-on-azure"></a>Azure で Ruby Web アプリを作成する
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-linux.md)]
 
-Web アプリに必要なアセットを格納するリソース グループが必要です。 リソース グループを作成するには、[`az group create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを使用します。
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-```azurecli-interactive
-az group create --location westeurope --name myResourceGroup
-```
+## <a name="create-a-web-app"></a>Web アプリを作成する
 
-[`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) コマンドで、Web アプリの App Service プランを作成します。
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-ruby-linux-no-h.md)] 
 
-```azurecli-interactive
-az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --is-linux
-```
-
-次に、[`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) コマンドを発行して、新しく作成されたサービス プランを使用する Web アプリを作成します。 ランタイムが `ruby|2.3` に設定されていることに注意してください。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
-
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> \
---runtime "ruby|2.3" --deployment-local-git
-```
-
-コマンドの出力に、新規作成された Web アプリに関する情報とデプロイ先の URL が表示されます。 出力は次のようになります。 このチュートリアルで後から使用するので、URL をコピーしておきます。
+サイトを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app_name>_ は、Web アプリの名前に置き換えます。
 
 ```bash
-https://<deployment user name>@<app name>.scm.azurewebsites.net/<app name>.git
+http://<app_name>.azurewebsites.net
 ```
 
-Web アプリが作成されたら、**概要**ページを表示できます。 そこに移動します。 次のスプラッシュ ページが表示されます。
+新しい Web アプリは次のようになります。
 
 ![スプラッシュ ページ](./media/quickstart-ruby/splash-page.png)
-
 
 ## <a name="deploy-your-application"></a>アプリケーションをデプロイする
 
