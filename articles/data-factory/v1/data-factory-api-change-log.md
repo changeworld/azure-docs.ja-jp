@@ -1,11 +1,11 @@
 ---
-title: "Data Factory - .NET API の変更ログ | Microsoft Docs"
-description: "Azure Data Factory.の特定のバージョンの .NET API における重大な変更、機能の追加、バグ修正などについて説明します。"
+title: Data Factory - .NET API の変更ログ | Microsoft Docs
+description: Azure Data Factory.の特定のバージョンの .NET API における重大な変更、機能の追加、バグ修正などについて説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.assetid: 8208271b-7f4c-4214-b665-d2ff503c4470
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 21e0807c4b0c43af8c4b98623913d522bf220478
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 110297fd60b4a25f959b451f2952f32d66cb8c3e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---net-api-change-log"></a>Azure Data Factory - .NET API の変更ログ
 > [!NOTE]

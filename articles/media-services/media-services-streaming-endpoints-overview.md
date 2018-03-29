@@ -1,12 +1,12 @@
 ---
-title: "Azure Media Services ストリーミング エンドポイントの概要 | Microsoft Docs"
-description: "このトピックでは、Azure Media Services ストリーミング エンドポイントの概要を説明します。"
+title: Azure Media Services ストリーミング エンドポイントの概要 | Microsoft Docs
+description: このトピックでは、Azure Media Services ストリーミング エンドポイントの概要を説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 writer: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 097ab5e5-24e1-4e8e-b112-be74172c2701
 ms.service: media-services
 ms.workload: media
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.openlocfilehash: 80d625a6ab2d3c6d5de0a90fbff0760888154d70
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: f923a2fb328ee62ce4dc73669fd922f275ba34a0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="streaming-endpoints-overview"></a>ストリーミング エンドポイントの概要 
 
-##<a name="overview"></a>概要
+## <a name="overview"></a>概要
 
 Microsoft Azure Media Services (AMS) では、**ストリーミング エンドポイント**は、コンテンツをクライアント プレーヤー アプリケーションや、再配布のための Content Delivery Network (CDN) に直接配信するストリーミング サービスを表します。 Media Services は、シームレスな Azure CDN 統合もサポートしています。 StreamingEndpoint サービスからの送信ストリームには、ライブ ストリーム、ビデオ オンデマンド、または Media Services アカウントの資産のプログレッシブ ダウンロードを使用します。 各 Azure Media Services アカウントには、既定の StreamingEndpoint が含まれています。 追加の StreamingEndpoint をアカウントで作成できます。 StreamingEndpoint には、1.0 および 2.0 の 2 つのバージョンがあります。 2017 年 1 月 10 日から、新しく作成された AMS アカウントには、バージョン 2.0 が**既定**の StreamingEndpoint として含まれます。 このアカウントに追加する追加のストリーミング エンドポイントも、バージョン 2.0 になります。 この変更は、既存のアカウントに影響しません。既存の StreamingEndpoint はバージョン 1.0 になり、バージョン 2.0 にアップグレードすることができます。 この変更により、動作、課金および機能が変更されます (詳細については、以下で説明する「**ストリーミングのタイプとバージョン**」のセクションを参照してください)。
 

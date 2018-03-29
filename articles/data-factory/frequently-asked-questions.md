@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory: よく寄せられる質問 | Microsoft Docs"
-description: "Azure Data Factory についてよく寄せられる質問とその回答を紹介します。"
+title: 'Azure Data Factory: よく寄せられる質問 | Microsoft Docs'
+description: Azure Data Factory についてよく寄せられる質問とその回答を紹介します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: dd2475d5940927c65cae4d12b9697cbe535b69a8
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 8c240e1a654c80c34f6b612d9126058e5d67c4c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事は、Azure Data Factory サービスのバージョン 2 に適用されます。 Data Factory についてよく寄せられる質問とその回答を紹介します。  
@@ -164,7 +163,6 @@ Azure Data Factory の最新情報を入手するには、次のサイトを参�
 ## <a name="technical-deep-dive"></a>技術的な詳細情報 
 
 ### <a name="can-version-1-and-version-2-pipelines-run-side-by-side"></a>バージョン 1 とバージョン 2 のパイプラインを並行して実行することはできますか?
-
 いいえ。 バージョン 2 およびバージョン 1 のデータ ファクトリに他のバージョンのエンティティ (リンクされているサービス、データ セット、またはパイプライン) を含めることはできません。   
 
 ### <a name="do-i-still-need-to-define-data-sets-in-version-2"></a>バージョン 2 でもデータ セットを定義する必要はありますか?

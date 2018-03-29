@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 02/26/2018
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 5245e53429278f2a346077cdb70426aaca339488
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 92445ffa7954d42ec1a864264fbfc7555986ad58
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-deploy-a-java-application-to-a-service-fabric-cluster-in-azure"></a>チュートリアル: Azure の Service Fabric クラスターに Java アプリケーションをデプロイする
 このチュートリアルはシリーズの第 3 部です。Azure のクラスターに Service Fabric アプリケーションをデプロイする方法について説明します。
@@ -106,7 +106,7 @@ ms.lasthandoff: 03/16/2018
 8. Service Fabric クラスターを作成するときのために、アカウントの SAS URL をコピーし、保存しておきます。 次のような URL になっています。
 
     ```
-    https://teststorageaccount.table.core.windows.net/?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
+    ?sv=2017-04-17&ss=bfqt&srt=sco&sp=rwdlacup&se=2018-01-31T03:24:04Z&st=2018-01-30T19:24:04Z&spr=https,http&sig=IrkO1bVQCHcaKaTiJ5gilLSC5Wxtghu%2FJAeeY5HR%2BPU%3D
     ```
 
 9. Event Hubs のリソースを含んだリソース グループを作成します。 Event Hubs は、ELK のリソースが実行されているサーバーに対して Service Fabric からメッセージを送信する目的で使用します。
@@ -163,10 +163,10 @@ ms.lasthandoff: 03/16/2018
     返された JSON から **sr** フィールドの値をコピーします。 **sr** フィールドの値は、Event Hubs の SAS トークンです。 次の URL は **sr** フィールドの例です。
 
     ```bash
-    https%3A%2F%2Ftesteventhubs.servicebus.windows.net%2Ftesteventhubs&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=<policy_name>
+    https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender
     ```
 
-    Event Hubs の SAS URL は、https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken> という構造になっています。 たとえば、https://testeventhubs.servicebus.windows.net/testeventhubs?sr=https%3A%2F%2Ftesteventhubs.servicebus.windows.net%2Ftesteventhubs&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender のように指定します。
+    Event Hubs の SAS URL は、https://<namespacename>.servicebus.windows.net/<eventhubsname>?sr=<sastoken> という構造になっています。 たとえば、https://testeventhubnamespace.servicebus.windows.net/testeventhub?sr=https%3A%2F%testeventhub.servicebus.windows.net%testeventhub&sig=7AlFYnbvEm%2Bat8ALi54JqHU4i6imoFxkjKHS0zI8z8I%3D&se=1517354876&skn=sender のように指定します。
 
 12. *sfdeploy.parameters.json* ファイルを開いて、次の内容を、先行する手順で得た値に置き換えます。 
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 ## <a name="introduction"></a>はじめに
@@ -376,7 +376,7 @@ Log Analytics の核となる機能は、Azure クラウドでホストされて
 |SQL (v12)| Microsoft.Sql/<br>servers/<br>データベース||       診断||
 ||Microsoft.Sql/<br>servers/<br>elasticPools||||
 |Storage|||         スクリプト| [Azure Storage Analytics (プレビュー)](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-azure-storage-analytics-solution)|
-|[Virtual Machines]|  Microsoft.Compute/<br>virtualMachines|  内線番号|  内線番号||
+|Virtual Machines|  Microsoft.Compute/<br>virtualMachines|  内線番号|  内線番号||
 ||||診断||
 |仮想マシン スケール セット|   Microsoft.Compute/<br>virtualMachines    ||診断||
 ||Microsoft.Compute/<br>virtualMachineScaleSets/<br>virtualMachines||||

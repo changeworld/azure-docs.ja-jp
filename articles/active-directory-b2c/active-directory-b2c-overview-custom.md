@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシー | Microsoft Docs"
-description: "Azure Active Directory B2C のカスタム ポリシーに関するトピック"
+title: 'Azure Active Directory B2C: カスタム ポリシー | Microsoft Docs'
+description: Azure Active Directory B2C のカスタム ポリシーに関するトピック
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 1ff398a4-2079-4615-94f1-57de22c0aad6
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/04/2017
-ms.author: parakhj
-ms.openlocfilehash: 6c59075bb1eacb05599b23be3d8731fa40eabf98
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 269b65662796c092190cd2622c240756f6bd1cf7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシー
 
@@ -102,7 +99,7 @@ Azure AD B2C テナント内の Identity Experience Framework の動作を定義
 
 Azure AD B2C での**組み込みのポリシー**は上に示した 3 つのファイルのパターンに従いますが、ポータルが EXTenstions ファイルへの変更をバックグラウンドで行なっている間、開発者には証明書利用者 (RP) ファイルしか表示されません。  Azure B2C チームの制御下にあり、頻繁に更新される BASE ポリシー ファイルをすべての Azure AD B2C が共有します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 > [!div class="nextstepaction"]
 > [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
-ms.openlocfilehash: e82bbff908ea5499765edc71e52caa573c816a62
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c39a8fafef9a45f5e80d00f8cbc75833201df150
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Azure App Service の Web アプリの診断ログの有効化
 ## <a name="overview"></a>概要
@@ -120,7 +120,7 @@ Web アプリの FTP/S サーバーに接続したら、ログ ファイルが�
 ### <a name="download-with-azure-command-line-interface"></a>Azure コマンド ライン インターフェイスを使用してダウンロードする
 Azure コマンド ライン インターフェイスを使用してログ ファイルをダウンロードするには、新しいコマンド プロンプト、PowerShell、Bash、ターミナル セッションを開き、次のコマンドを入力します。
 
-    azure site log download webappname
+    az webapp log download --name webappname
 
 このコマンドで、"webappname" という名前の Web アプリのログが、現在のディレクトリにある **diagnostics.zip** というファイルに保存されます。
 

@@ -1,10 +1,9 @@
 ---
-title: "Data Factory の関数およびシステム変数 | Microsoft Docs"
-description: "Azure Data Factory の関数およびシステム変数の一覧を提供する"
-documentationcenter: 
+title: Data Factory の関数およびシステム変数 | Microsoft Docs
+description: Azure Data Factory の関数およびシステム変数の一覧を提供する
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 services: data-factory
 ms.assetid: b6b3c2ae-b0e8-4e28-90d8-daf20421660d
 ms.service: data-factory
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: f42ba7ed9c07a9d0bc73929db2a095248ad7d56f
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: b9884dac8a2716cbce6fca7b8172f7d272ad8f2f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 > [!NOTE]

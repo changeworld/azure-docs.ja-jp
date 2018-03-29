@@ -1,10 +1,11 @@
 ---
-title: "Azure AI ギャラリー チュートリアル| Microsoft Docs"
-description: "Azure AI ギャラリーでチュートリアルを発見し、共有します。"
+title: Azure AI ギャラリー チュートリアル| Microsoft Docs
+description: Azure AI ギャラリーでチュートリアルを発見し、共有します。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 70f0eb31-7dca-4907-a5d7-504357dcd889
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: 9a93a027ed5243496a86efff0d86de7092f44b43
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 6f9c765027ccd915d6754839353a744ac0743bc2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-and-share-tutorials-in-azure-ai-gallery"></a>Azure AI ギャラリーでチュートリアルを発見し、共有する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]

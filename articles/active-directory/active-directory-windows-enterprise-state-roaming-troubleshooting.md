@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング | Microsoft Docs"
-description: "設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。"
+title: Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング | Microsoft Docs
+description: 設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。
 services: active-directory
-keywords: "Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問"
-documentationcenter: 
+keywords: Enterprise State Roaming の設定, Windows クラウド, Enterprise State Roaming に関してよく寄せられる質問
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: f45d0515-99f7-42ad-94d8-307bc0d07be5
 ms.service: active-directory
 ms.workload: identity
@@ -17,11 +17,11 @@ ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: tanning
 ms.custom: it-pro
-ms.openlocfilehash: 8ee3b523baf562b06bd5f7d652a431e1d4553d5c
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: d9936da3ee1b0cfb4ee6e834a838798a35140620
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>Azure Active Directory の Enterprise State Roaming の設定のトラブルシューティング
 
@@ -78,7 +78,7 @@ Azure Multi-Factor Authentication が構成されている場合、特定の条�
 
 **潜在的な問題**: 管理者が Active Directory Federation Services Multi-Factor Authentication 条件付きアクセス ポリシーを構成し、デバイスのアクセス トークンの有効期限が切れている場合は、同期が失敗することがあります。 一度サインアウトしてから Microsoft Passport for Work の PIN を使用してサインインし直すか、または他の Azure サービス (Office 365 など) にアクセスしている状態で Multi-Factor Authentication を行ってください。
 
-###<a name="event-viewer"></a>イベント ビューアー
+### <a name="event-viewer"></a>イベント ビューアー
 高度なトラブルシューティング方法として、イベント ビューアーを使って特定のエラーの検出ができるものがあります。 これらについては、下の表に記載します。 [イベント ビューアー] > [アプリケーションとサービス ログ] >**[Microsoft]** > **[Windows]** > **[SettingSync]** でイベントを表示します。同期の ID 関連の問題については、**[Microsoft]** > **[Windows]** > **[Azure AD]** に移動します。
 
 

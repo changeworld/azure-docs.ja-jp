@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation のグラフィカル Runbook におけるエラー処理 | Microsoft Docs"
-description: "この記事では、Azure Automation のグラフィカル Runbook でエラー処理ロジックを実装する方法について説明します。"
+title: Azure Automation のグラフィカル Runbook におけるエラー処理
+description: この記事では、Azure Automation のグラフィカル Runbook でエラー処理ロジックを実装する方法について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 
 ms.service: automation
-ms.workload: tbd
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 12/26/2016
-ms.author: magoedte
-ms.openlocfilehash: 86d62ba7fb12b09a2c19b4689af38bb8c121880b
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+manager: carmonm
+ms.openlocfilehash: 9076178c75bd4d1669ecc8ab0119edb0119f85bd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="error-handling-in-azure-automation-graphical-runbooks"></a>Azure Automation のグラフィカル Runbook におけるエラー処理
 

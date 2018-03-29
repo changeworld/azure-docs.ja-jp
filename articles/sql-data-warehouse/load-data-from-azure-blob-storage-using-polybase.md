@@ -1,31 +1,31 @@
 ---
-title: "チュートリアル: Polybase でのデータの読み込み - Azure Storage Blob から Azure SQL Data Warehouse | Microsoft Docs"
-description: "Azure Portal と SQL Server Management Studio を使ってニューヨークのタクシー データを Azure Blob Storage から Azure SQL Data Warehouse に読み込むチュートリアルです。"
+title: 'チュートリアル: Polybase でのデータの読み込み - Azure Storage Blob から Azure SQL Data Warehouse | Microsoft Docs'
+description: Azure Portal と SQL Server Management Studio を使ってニューヨークのタクシー データを Azure Blob Storage から Azure SQL Data Warehouse に読み込むチュートリアルです。
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: ckarst
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: sql-data-warehouse
 ms.custom: mvc,develop data warehouses
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 11/17/2017
+ms.date: 03/16/2018
 ms.author: cakarst
 ms.reviewer: barbkess
-ms.openlocfilehash: 4bb9b4a01d3efb90486e34d2b0eb5cfeef66e50c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 77e1666a5c8cc51495f2058ff76b2b99a3212db0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-use-polybase-to-load-data-from-azure-blob-storage-to-azure-sql-data-warehouse"></a>チュートリアル: PolyBase を使用して Azure Blob Storage から Azure SQL Data Warehouse にデータを読み込む
 
-PolyBase は、SQL Data Warehouse にデータを取得するための標準読み込みテクノロジです。 このチュートリアルでは、PolyBase を使って、ニューヨークのタクシー データを Azure Blob Storage から Azure SQL Data Warehouse に読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) を使って、次のことを行います。 
+PolyBase は、SQL Data Warehouse にデータを取得するための標準読み込みテクノロジです。 このチュートリアルでは、PolyBase を使って、ニューヨークのタクシー データを Azure Blob Storage から Azure SQL Data Warehouse に読み込みます。 このチュートリアルでは、[Azure Portal](https://portal.azure.com) と [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、次のことを行います。 
 
 > [!div class="checklist"]
 > * Azure Portal でデータ ウェアハウスを作成する
@@ -41,7 +41,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="before-you-begin"></a>開始する前に
 
-このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) をダウンロードしてインストールします。
+このチュートリアルを始める前に、最新バージョンの [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) をダウンロードしてインストールします。
 
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
@@ -91,7 +91,7 @@ Azure SQL Data Warehouse は、定義済みの一連の[コンピューティン
     ![パフォーマンスを構成する](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
 8. **[Apply]**をクリックします。
-9. [SQL Data Warehouse] ページで、空のデータベースの **[照合順序]** を選びます。 このチュートリアルでは、既定の値を使います。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations.md)」を参照してください。
+9. [SQL Data Warehouse] ページで、空のデータベースの **[照合順序]** を選びます。 このチュートリアルでは、既定の値を使います。 照合順序の詳細については、「[Collations (照合順序)](/sql/t-sql/statements/collations)」を参照してください。
 
 11. これで SQL Database フォームの入力が完了したので、**[作成]** をクリックして、データベースをプロビジョニングします。 プロビジョニングには数分かかります。 
 
@@ -146,7 +146,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="connect-to-the-server-as-server-admin"></a>サーバー管理者としてサーバーに接続する
 
-このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms.md) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
+このセクションでは、[SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) を使って、Azure SQL Server に対する接続を確立します。
 
 1. SQL Server Management Studio を開きます。
 
@@ -221,7 +221,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 
 ## <a name="create-external-tables-for-the-sample-data"></a>サンプル データ用の外部テーブルを作成する
 
-新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 このチュートリアルでは、[Polybase](/sql/relational-databases/polybase/polybase-guide.md) を使って Azure Storage Blob からニューヨーク市のタクシーのデータを読み込む方法を示します。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接 SQL Data Warehouse に読み込む方法については、[読み込みの概要](sql-data-warehouse-overview-load.md)に関するページを参照してください。
+新しいデータ ウェアハウスにデータを読み込むプロセスを始める準備ができました。 このチュートリアルでは、[Polybase](/sql/relational-databases/polybase/polybase-guide) を使って Azure Storage Blob からニューヨーク市のタクシーのデータを読み込む方法を示します。 今後の参考として、データを Azure Blob Storage に取得する方法やソースから直接 SQL Data Warehouse に読み込む方法については、[読み込みの概要](sql-data-warehouse-overview-load.md)に関するページを参照してください。
 
 次の SQL スクリプトを実行して、読み込むデータに関する情報を指定します。 この情報には、データが置かれている場所、データの内容の形式、およびデータのテーブル定義が含まれます。 
 
@@ -237,7 +237,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     CREATE MASTER KEY;
     ```
 
-4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql.md) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部のタクシー データの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、**[実行]** をクリックします。
+4. 次の [CREATE EXTERNAL DATA SOURCE](/sql/t-sql/statements/create-external-data-source-transact-sql) ステートメントを実行して、Azure BLOB の場所を定義します。 これは、外部のタクシー データの場所です。  クエリ ウィンドウに追加したコマンドを実行するには、実行するコマンドを強調表示にして、**[実行]** をクリックします。
 
     ```sql
     CREATE EXTERNAL DATA SOURCE NYTPublic
@@ -248,7 +248,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     );
     ```
 
-5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql.md) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。 外部ファイルは Gzip で圧縮されています。 
+5. 次の [CREATE EXTERNAL FILE FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql) T-SQL ステートメントを実行して、外部データ ファイルの書式設定の特性とオプションを指定します。 このステートメントでは、外部データがテキストとして格納されており、値がパイプ ("|") 文字で区切られていることを指定します。 外部ファイルは Gzip で圧縮されています。 
 
     ```sql
     CREATE EXTERNAL FILE FORMAT uncompressedcsv
@@ -273,7 +273,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
     );
     ```
 
-6.  次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql.md) コマンドを実行して、外部ファイルの形式のスキーマを作成します。 スキーマを使って、作成しようとしている外部テーブルを編成できます。
+6.  次の [CREATE SCHEMA](/sql/t-sql/statements/create-schema-transact-sql) コマンドを実行して、外部ファイルの形式のスキーマを作成します。 スキーマを使って、作成しようとしている外部テーブルを編成できます。
 
     ```sql
     CREATE SCHEMA ext;
@@ -456,7 +456,7 @@ Azure Portal で、SQL サーバーの完全修飾サーバー名を取得しま
 > このチュートリアルでは、最終テーブルにデータを直接読み込みます。 運用環境では、通常、CREATE TABLE AS SELECT を使用して、ステージング テーブルに読み込みます。 データがステージング テーブルにある間に、必要な変換を実行できます。 ステージング テーブルのデータを運用テーブルに追加するには、INSERT...SELECT ステートメントを使用します。 詳細については、「[運用テーブルにデータを挿入する](guidance-for-loading-data.md#inserting-data-into-a-production-table)」を参照してください。
 > 
 
-このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse.md) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントが外部テーブルから選択すると、SQL Data Warehouse はデータ ウェアハウスのリレーショナル テーブルにデータをインポートします。 
+このスクリプトは [CREATE TABLE AS SELECT (CTAS)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) T-SQL ステートメントを使って、Azure Storage Blob からデータ ウェアハウスの新しいテーブルにデータを読み込みます。 CTAS は、select ステートメントの結果に基づいて新しいテーブルを作成します。 新しいテーブルでは、select ステートメントの結果と同じ列およびデータ型が保持されます。 select ステートメントが外部テーブルから選択すると、SQL Data Warehouse はデータ ウェアハウスのリレーショナル テーブルにデータをインポートします。 
 
 1. データ ウェアハウス内の新しいテーブルにデータを読み込むには、次のスクリプトを実行します。
 

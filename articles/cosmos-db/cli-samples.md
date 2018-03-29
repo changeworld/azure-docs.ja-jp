@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB の Azure CLI サンプル | Microsoft Docs"
-description: "Azure CLI サンプル - Azure Cosmos DB のアカウント、データベース、コンテナー、リージョン、およびファイアウォールを作成し、管理します。"
+title: Azure Cosmos DB の Azure CLI サンプル | Microsoft Docs
+description: Azure CLI サンプル - Azure Cosmos DB のアカウント、データベース、コンテナー、リージョン、およびファイアウォールを作成し、管理します。
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: mvc
 ms.devlang: azurecli
@@ -15,15 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: database
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: 75199225509554a96168eda7993f0340b75e5493
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 5a649279385da882687c50edd53e16f5ebaed163
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure Cosmos DB の Azure CLI サンプル
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
 次の表には、Azure Cosmos DB の Azure CLI スクリプトのサンプルへのリンクが含まれています。 Azure Cosmos DB CLI のすべてのコマンドのリファレンス ページは、[Azure CLI 2.0 リファレンス](https://docs.microsoft.com/cli/azure/cosmosdb)のページで確認できます。
 

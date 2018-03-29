@@ -1,11 +1,12 @@
 ---
-title: "データが回答できる質問をする - データ サイエンスの問題 - Azure Machine Learning | Microsoft Docs"
-description: "初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。"
-keywords: "データ サイエンスの問題,データ サイエンスの質問,質問の考案,回帰の質問,分類の質問,シャープな質問"
+title: データが回答できる質問をする - データ サイエンスの問題 - Azure Machine Learning | Microsoft Docs
+description: 初心者向けデータ サイエンス ビデオ 3 では、鋭いデータ サイエンスの質問を考案する方法について説明します。 分類の質問と回帰の質問の比較も含まれます。
+keywords: データ サイエンスの問題,データ サイエンスの質問,質問の考案,回帰の質問,分類の質問,シャープな質問
 services: machine-learning
 documentationcenter: na
-author: cjgronlund
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cjgronlund
 ms.assetid: 5b9501e3-9964-417a-8ffc-8913103da77b
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.author: cgronlun
-ms.openlocfilehash: 2f3d8d5c2e7cf1ebc88dc1ff1d7d03bf85383884
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 225414082c447016cdfdfd1a9e5dbe5e5fbcfaec
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="ask-a-question-you-can-answer-with-data"></a>データで回答できる質問をする
 ## <a name="video-3-data-science-for-beginners-series"></a>ビデオ 3: 初心者向けデータ サイエンス シリーズ

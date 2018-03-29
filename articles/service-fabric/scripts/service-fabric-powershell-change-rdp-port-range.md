@@ -1,25 +1,25 @@
 ---
-title: "Azure PowerShell のサンプル スクリプト - RDP ポート範囲の変更 | Microsoft Docs"
-description: "Azure PowerShell のサンプル スクリプト - デプロイしたクラスターの RDP ポート範囲を変更します。"
+title: Azure PowerShell のサンプル スクリプト - RDP ポート範囲の変更 | Microsoft Docs
+description: Azure PowerShell のサンプル スクリプト - デプロイしたクラスターの RDP ポート範囲を変更します。
 services: service-fabric
-documentationcenter: 
+documentationcenter: ''
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 tags: azure-service-management
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.workload: multiple
 ms.devlang: na
 ms.topic: sample
-ms.date: 11/28/2017
+ms.date: 03/19/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 9089d071c69830323a94140a5ebb4e9e865499c6
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 83fb6cc03f605a60b06f31fa6ddd82cd4e3e899e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="update-the-rdp-port-range-values"></a>RDP ポート範囲の値の更新
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/29/2017
 | [Get-AzureRmResource](/powershell/module/azurerm.resources/get-azurermresource) | `Microsoft.Network/loadBalancers` リソースを取得します。 |
 |[Set-AzureRmResource](/powershell/module/azurerm.resources/set-azurermresource)|`Microsoft.Network/loadBalancers` リソースを更新します。|
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 

@@ -1,11 +1,12 @@
 ---
-title: "Azure Machine Learning REST API のエラー コード | Microsoft Docs"
-description: "Azure Machine Learning Web サービスに対する操作では、これらのエラー コードが返されることがあります。"
-keywords: 
+title: Azure Machine Learning REST API のエラー コード | Microsoft Docs
+description: Azure Machine Learning Web サービスに対する操作では、これらのエラー コードが返されることがあります。
+keywords: ''
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 0923074b-3728-439d-a1b8-8a7245e39be4
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
-ms.author: garye
-ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ba44b2a93bcd542db1350def2d0554c8c44233c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="machine-learning-rest-api-error-codes"></a>Machine Learning REST API のエラー コード
  

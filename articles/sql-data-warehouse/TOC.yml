@@ -41,8 +41,8 @@
           href: what-is-a-data-warehouse-unit-dwu-cdwu.md
         - name: スケールアウト、一時停止、再開
           href: sql-data-warehouse-manage-compute-overview.md
-        - name: データ ウェアハウスのバックアップ
-          href: sql-data-warehouse-backups.md
+        - name: バックアップと復元
+          href: backup-and-restore.md
         - name: 監査
           href: sql-data-warehouse-auditing-overview.md
         - name: 容量制限

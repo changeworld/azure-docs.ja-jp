@@ -1,24 +1,21 @@
 ---
-title: "パスワードの複雑さ - Azure AD B2C | Microsoft Docs"
-description: "Azure Active Directory B2C でコンシューマーによって指定されるパスワードの複雑さの要件を構成する方法"
+title: パスワードの複雑さ - Azure AD B2C | Microsoft Docs
+description: Azure Active Directory B2C でコンシューマーによって指定されるパスワードの複雑さの要件を構成する方法
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 53ef86c4-1586-45dc-9952-dbbd62f68afc
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: saeeda
-ms.openlocfilehash: 3906c9fa1def206a8f0a7e155949097242728c2f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: b89a404d583e9d495b65180e145295e6a106b3ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: パスワードの複雑さの要件を構成する
 
@@ -49,7 +46,7 @@ Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時�
 
 ### <a name="comparison-chart"></a>比較チャート
 
-| 複雑さ | 説明 |
+| 複雑さ | [説明] |
 | --- | --- |
 | シンプル | 少なくとも 8 ～ 64 文字のパスワード。 |
 | Strong | 少なくとも 8 ～ 64 文字のパスワード。 小文字、大文字、数字、記号の 4 種類のうち 3 種が必要です。 |

@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: 暗黙的フローを使用するシングルページ アプリ | Microsoft Docs"
-description: "Azure Active Directory B2C で OAuth 2.0 暗黙的フローを使用して、シングルページ アプリケーションを直接構築する方法を説明します。"
+title: 'Azure Active Directory B2C: 暗黙的フローを使用するシングルページ アプリ | Microsoft Docs'
+description: Azure Active Directory B2C で OAuth 2.0 暗黙的フローを使用して、シングルページ アプリケーションを直接構築する方法を説明します。
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: a45cc74c-a37e-453f-b08b-af75855e0792
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
-ms.author: parakhj
-ms.openlocfilehash: 2ce4aaac117920c1da0b8a29797169d536825c1a
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: ac0351ce220da5194d3a447e51185409b7368f21
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: OAuth 2.0 暗黙的フローを使用したシングルページ アプリへのサインイン
 
@@ -90,7 +87,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | [説明] |
 | --- | --- | --- |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。 応答の種類として `token` を含めることもできます。 `token` を使用する場合、アプリは承認エンドポイントへ 2 度目の要求を行うことなく、すぐに承認エンドポイントからアクセス トークンを受け取ることができます。  応答の種類 `token` を使用する場合は、`scope` パラメーターに、トークンを発行するリソースを示すスコープを含める必要があります。 |
@@ -100,7 +97,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 | state |推奨 |要求に含まれ、トークンの応答でも返される値。 使用したい任意の内容の文字列を指定できます。 通常、クロスサイト リクエスト フォージェリ攻撃を防ぐために、ランダムに生成された一意の値が使用されます。 この状態は、認証要求の前にアプリ内でユーザーの状態 (表示中のページなど) に関する情報をエンコードする目的にも使用されます。 |
 | nonce |必須 |要求に追加する (アプリによって生成された) 値。この値が、最終的な ID トークンに要求として追加されます。 アプリでこの値を確認することにより、トークン再生攻撃を緩和することができます。 通常この値はランダム化された一意の文字列になっており、要求の送信元を特定する際に使用できます。 |
 | p |必須 |実行するポリシー。 Azure AD B2C テナントで作成されたポリシーの名前です。 ポリシー名の値は、**b2c\_1\_** で始まっている必要があります。 詳細については、「[Azure AD B2C 組み込みのポリシー](active-directory-b2c-reference-policies.md)」を参照してください。 |
-| prompt |省略可能。 |必要とされている、ユーザーとの対話の種類。 現在有用な値は `login` のみです。 これによってユーザーは、その要求で資格情報の入力を強制されます。 シングル サインオンは作用しません。 |
+| prompt |省略可能 |必要とされている、ユーザーとの対話の種類。 現在有用な値は `login` のみです。 これによってユーザーは、その要求で資格情報の入力を強制されます。 シングル サインオンは作用しません。 |
 
 この時点で、ユーザーはポリシーのワークフローを完了するよう求められます。 ユーザー名とパスワードを入力したり、ソーシャル ID でサインインしたり、ディレクトリにサインアップしたりするなど、いくつかの手順が必要なことがあります。 ユーザー アクションは、ポリシーがどのように定義されているかによって異なります。
 
@@ -119,7 +116,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &state=arbitrary_data_you_sent_earlier
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | access_token |アプリが要求したアクセス トークン。  アクセス トークンはデコードしないようにする必要があります。そうしないと検証が行われます。 不明瞭な文字列として処理できます。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -138,7 +135,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | error |発生したエラーの種類を分類するために使用されるエラー コード文字列。 このエラー コードは、エラー処理にも使用できます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -162,7 +159,7 @@ Azure AD B2C には、OpenID Connect メタデータ エンドポイントがあ
 OpenID Connect メタデータ エンドポイントからメタデータ ドキュメントを取得したら、このエンドポイントにある RSA-256 公開キーを利用し、ID トークンの署名を検証できます。 このエンドポイントには、特定の時点で、それぞれが `kid` によって識別されるキーが複数存在すると表示される場合があります。 `id_token` のヘッダーにも `kid` 要求が含まれています。 これが、これらのキーのうち、どれが ID トークンの署名に使用されたかを示しています。 [トークンの検証](active-directory-b2c-reference-tokens.md#token-validation)を含む詳細については、[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)を参照してください。
 <!--TODO: Improve the information on this-->
 
-ID トークンの署名の検証後に、いくつかの要求で検証が必要になります。 For example:
+ID トークンの署名の検証後に、いくつかの要求で検証が必要になります。 例: 
 
 * トークン再生攻撃を防止するために、`nonce` 要求を検証します。 その値が、サインイン要求で指定した値と一致していることが必要です。
 * ID トークンが自分のアプリのために発行されたことを確認するために、`aud` 要求を検証します。 その値がアプリのアプリケーション ID と一致している必要があります。
@@ -201,7 +198,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_sign_in
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | [説明] |
 | --- | --- | --- |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。  応答の種類として `token` を含めることもできます。 ここで `token` を使用する場合、アプリは承認エンドポイントへ 2 度目の要求を行うことなく、すぐに承認エンドポイントからアクセス トークンを受け取ることができます。 応答の種類 `token` を使用する場合は、`scope` パラメーターに、トークンを発行するリソースを示すスコープを含める必要があります。 |
@@ -228,7 +225,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 &scope=https%3A%2F%2Fapi.contoso.com%2Ftasks.read
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | access_token |アプリが要求したトークン。 |
 | token_type |トークンの種類は常にベアラーになります。 |
@@ -245,7 +242,7 @@ error=user_authentication_required
 &error_description=the+request+could+not+be+completed+silently
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | error |発生したエラーの種類を分類するために使用できるエラー コード文字列。 この文字列はエラーへの対応に利用することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -258,7 +255,7 @@ ID トークンとアクセス トークンは、どちらも短時間で期限�
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
 ユーザーをアプリからサインアウトさせる場合は、サインアウトする Azure AD にユーザーをリダイレクトします。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。 これは、Azure AD のシングル サインオン セッションが有効であるためです。
 
-ユーザーを単純に、「[ID トークンの検証](#validate-the-id-token)」で説明したのと同じ OpenID Connect メタデータ ドキュメントに列挙されている `end_session_endpoint` にリダイレクトすることができます。 For example:
+ユーザーを単純に、「[ID トークンの検証](#validate-the-id-token)」で説明したのと同じ OpenID Connect メタデータ ドキュメントに列挙されている `end_session_endpoint` にリダイレクトすることができます。 例: 
 
 ```
 GET https://login.microsoftonline.com/fabrikamb2c.onmicrosoft.com/oauth2/v2.0/logout?
@@ -266,7 +263,7 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | [説明] |
 | --- | --- | --- |
 | p |必須 |ユーザーをアプリケーションからサインアウトさせるために使用するポリシー。 |
 | post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C はユーザーに一般的なメッセージを表示します。 |

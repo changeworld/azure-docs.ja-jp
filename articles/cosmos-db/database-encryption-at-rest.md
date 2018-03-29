@@ -1,11 +1,11 @@
 ---
-title: "保存時のデータベースの暗号化: Azure Cosmos DB | Microsoft Docs"
-description: "Azure Cosmos DB ですべてのデータが既定で暗号化されるしくみについて説明します。"
+title: '保存時のデータベースの暗号化: Azure Cosmos DB | Microsoft Docs'
+description: Azure Cosmos DB ですべてのデータが既定で暗号化されるしくみについて説明します。
 services: cosmos-db
 author: voellm
 manager: jhubbard
 editor: mimig
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 99725c52-d7ca-4bfa-888b-19b1569754d3
 ms.service: cosmos-db
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: voellm
-ms.openlocfilehash: 193dbede0655376714c6f8f12c826ba3f9bc8933
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: df793fb0511d1289b927caad200eb8252f2b64e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-database-encryption-at-rest"></a>保存時の Azure Cosmos DB データベースの暗号化
 
@@ -53,7 +53,6 @@ A: マイクロソフトには、暗号化キーのローテーションに関�
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>Q: 独自の暗号化キーを使用できますか。
 A: Cosmos DB は PaaS サービスであり、Microsoft はこのサービスの使いやすさを維持するために努力してきました。 この質問は、PCI-DSS などのコンプライアンス要件のクリアに関する代替質問として頻繁に寄せられることがわかりました。 この機能を構築する際に、コンプライアンス監査者の協力を得て、Cosmos DB を使用する顧客が自身でキーを管理しなくても要件を満たすことができるようにしました。
-その結果、現時点ではユーザー自身がキーの管理を負担するオプションは提供していません。
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>Q: どのリージョンで暗号化が有効になっていますか。
 A: すべての Azure Cosmos DB リージョンで、すべてのユーザー データに対して暗号化が有効になっています。

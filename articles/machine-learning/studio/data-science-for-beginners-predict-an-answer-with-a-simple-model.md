@@ -1,11 +1,12 @@
 ---
-title: "単純な回帰モデルで回答を予測する - Azure Machine Learning | Microsoft Docs"
-description: "初心者向けデータ サイエン ビデオ 4 で、単純な回帰モデルを作成して価格を予測する方法。 線形回帰とターゲット データが含まれます。"
-keywords: "モデルを作成する,単純なモデル,価格の予測,単純な回帰モデル"
+title: 単純な回帰モデルで回答を予測する - Azure Machine Learning | Microsoft Docs
+description: 初心者向けデータ サイエン ビデオ 4 で、単純な回帰モデルを作成して価格を予測する方法。 線形回帰とターゲット データが含まれます。
+keywords: モデルを作成する,単純なモデル,価格の予測,単純な回帰モデル
 services: machine-learning
 documentationcenter: na
-author: cjgronlund
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cjgronlund
 ms.assetid: a28f1fab-e2d8-4663-aa7d-ca3530c8b525
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.author: cgronlun
-ms.openlocfilehash: 79c66fe29c8d51a8cd1db24a024974f943e89e74
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 019f3a94e81d0ae581414f62c5e0389c9c2b6813
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="predict-an-answer-with-a-simple-model"></a>単純なモデルで回答を予測する
 ## <a name="video-4-data-science-for-beginners-series"></a>ビデオ 4: 初心者向けデータ サイエンス シリーズ

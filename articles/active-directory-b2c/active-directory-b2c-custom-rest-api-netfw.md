@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する"
-description: "REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合します。"
+title: 'Azure Active Directory B2C: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する'
+description: REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合します。
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/30/2017
-ms.author: yoelh
-ms.openlocfilehash: fd9c95ae78590aa772fde10c8c80914c905767a8
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: 9429f690940e1282d94b4d67ad1c618a24655cb5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-of-user-input"></a>REST API 要求交換をユーザー入力の検証として Azure AD B2C ユーザー体験に統合する
 Azure Active Directory B2C (Azure AD B2C) の基盤となる Identity Experience Framework を使用すると、ユーザー体験における RESTful API と統合することができます。 このチュートリアルでは、Azure AD B2C と .NET Framework RESTful サービス (Web API) がどのようなやり取りをするかを学習します。

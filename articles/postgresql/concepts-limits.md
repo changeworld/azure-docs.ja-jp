@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL の制限事項"
-description: "この記事では、Azure Database for PostgreSQL の制限 (接続数やストレージ エンジンのオプションなど) について説明します。"
+title: Azure Database for PostgreSQL の制限事項
+description: この記事では、Azure Database for PostgreSQL の制限 (接続数やストレージ エンジンのオプションなど) について説明します。
 services: postgresql
 author: kamathsun
 ms.author: sukamat
@@ -8,15 +8,15 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ba05308039e9743dd207333476e61a45c0ca166a
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 7e06cdba7c9c9f7e5c1d621e7421a18c342c0fdb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の制限事項
-Azure Database for PostgreSQL サービスはパブリック プレビューの段階です。 次のセクションでは、データベース サービス容量と機能の制限について説明します。
+次のセクションでは、データベース サービス容量と機能の制限について説明します。
 
 ## <a name="pricing-tier-maximums"></a>価格レベルの上限
 Azure Database for PostgreSQL では、サーバーを作成するときに複数の価格レベルから選ぶことができます。 詳しくは、「[Azure Database for PostgreSQL の価格レベル](concepts-pricing-tiers.md)」をご覧ください。  
@@ -43,7 +43,6 @@ Azure Database for PostgreSQL では、サーバーを作成するときに複�
 |メモリ最適化| Gen 5| 4| 250|
 |メモリ最適化| Gen 5| 8| 480|
 |メモリ最適化| Gen 5| 16| 950|
-|メモリ最適化| Gen 5| 32| 1900|
 
 接続数が制限を超えると、次のエラーが表示される場合があります。
 > FATAL:  sorry, too many clients already

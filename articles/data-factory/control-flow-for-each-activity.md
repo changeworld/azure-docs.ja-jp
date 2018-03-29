@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory の ForEach アクティビティ | Microsoft Docs"
-description: "ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 これは、コレクションに対する反復処理に使用され、指定されたアクティビティを実行します。"
+title: Azure Data Factory の ForEach アクティビティ | Microsoft Docs
+description: ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 これは、コレクションに対する反復処理に使用され、指定されたアクティビティを実行します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: b9a151ac04bc539e337b0007a264e196dc0ae6a3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 2eaa4f6bb49867e0f0f061116551794d6f1dd0ca
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="foreach-activity-in-azure-data-factory"></a>Azure Data Factory の ForEach アクティビティ
 ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
@@ -76,8 +76,7 @@ ForEach アクティビティは、パイプライン内の繰り返し制御フ
 -------- | ----------- | -------------- | --------
 name | ForEach アクティビティの名前。 | String | [はい]
 型 | **ForEach** に設定する必要があります | String | [はい]
-isSequential | ループを順番に実行するか、または並行して実行するかを指定します。  一度に最大 20 のループ反復処理を並行して実行できます。 たとえば、**isSequential** が False に設定された状態で、10 個の異なるソースとシンク データセットがあるコピー アクティビティに対して ForEach アクティビティ反復処理を実行すると、一度にすべてのコピーが実行されます。 既定値は False です。 <br/><br/> "isSequential" が False に設定されている場合は、複数の実行可能ファイルを実行するための正しい構成が存在することを確認してください。 そうでない場合は、書き込みの競合が発生しないようにするために、このプロパティを慎重に使用する必要があります。 詳細については、「[Parallel execution (並列実行)](#parallel-execution)」セクションを参照してください。 | ブール | 
-いいえ。 既定値は False です。
+isSequential | ループを順番に実行するか、または並行して実行するかを指定します。  一度に最大 20 のループ反復処理を並行して実行できます。 たとえば、**isSequential** が False に設定された状態で、10 個の異なるソースとシンク データセットがあるコピー アクティビティに対して ForEach アクティビティ反復処理を実行すると、一度にすべてのコピーが実行されます。 既定値は False です。 <br/><br/> "isSequential" が False に設定されている場合は、複数の実行可能ファイルを実行するための正しい構成が存在することを確認してください。 そうでない場合は、書き込みの競合が発生しないようにするために、このプロパティを慎重に使用する必要があります。 詳細については、「[Parallel execution (並列実行)](#parallel-execution)」セクションを参照してください。 | ブール | いいえ。 既定値は False です。
 項目 | 反復処理される JSON 配列を返す式。 | 式 (これは JSON 配列を返します) | [はい]
 アクティビティ | 実行されるアクティビティ。 | アクティビティの一覧 | [はい]
 

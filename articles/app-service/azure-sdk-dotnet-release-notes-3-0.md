@@ -1,10 +1,10 @@
 ---
-title: "Azure SDK for .NET 3.0 リリース ノート | Microsoft Docs"
-description: "Azure SDK for .NET 3.0 リリース ノート"
+title: Azure SDK for .NET 3.0 リリース ノート | Microsoft Docs
+description: Azure SDK for .NET 3.0 リリース ノート
 services: app-service\web
 documentationcenter: .net
 author: chrissfanos
-editor: 
+editor: ''
 ms.assetid: c83d815b-fc19-4260-821e-7d2a7206dffc
 ms.service: app-service
 ms.devlang: multiple
@@ -14,10 +14,10 @@ ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako
 ms.openlocfilehash: 207aa137b25e44baf73e7f481ebc8b6362dfa245
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Azure SDK for .NET 3.0 リリース ノート
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure Log Analytics の Alert Management ソリューション | Microsoft Docs"
-description: "管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  これは Log Analytics 内で生成されたアラートの統合に加えて、接続されている System Center Operations Manager 管理グループからのアラートを Log Analytics にインポートします。"
+title: Azure Log Analytics の Alert Management ソリューション | Microsoft Docs
+description: 管理対象となる環境内のすべてのアラートは、Log Analytics のアラート管理ソリューションを使用して分析できます。  これは Log Analytics 内で生成されたアラートの統合に加えて、接続されている System Center Operations Manager 管理グループからのアラートを Log Analytics にインポートします。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/19/2018
 ms.author: bwren
-ms.openlocfilehash: c34916913915331020d9fc9789221f790b75a070
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 0d9028b821e4c488186143311c81bfa6d17908ff
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Azure Log Analytics の Alert Management ソリューション
 
@@ -109,20 +109,6 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 以下の表は、このソリューションによって収集されたアラート レコードを探すログ検索の例です。 
 
 | クエリ | [説明] |
-|:--- |:--- |
-| Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR |過去 24 時間以内に発生した重大なアラート |
-| Type=Alert AlertSeverity=warning TimeRaised>NOW-24HOUR |過去 24 時間以内に発生した警告アラート |
-| Type=Alert SourceSystem=OpsManager AlertState!=Closed TimeRaised>NOW-24HOUR &#124; measure count() as Count by SourceDisplayName |過去 24 時間以内に発生したアクティブなアラートが存在するソース |
-| Type=Alert SourceSystem=OpsManager AlertSeverity=error TimeRaised>NOW-24HOUR AlertState!=Closed |過去 24 時間以内に発生し、まだ解決されていない重大なアラート |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-24HOUR AlertState=Closed |過去 24 時間以内に発生したものの、既に解決されている重大なアラート |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY &#124; measure count() as Count by AlertSeverity |過去 1 日以内に発生したアラートを重大度に基づいてグループ化 |
-| Type=Alert SourceSystem=OpsManager TimeRaised>NOW-1DAY &#124; sort RepeatCount desc |過去 1 日以内に発生したアラートを RepeatCount の値で並べ替え |
-
-
->[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、上記のクエリは次のように変更されます。
->
->| クエリ | [説明] |
 |:---|:---|
 | Alert &#124; where SourceSystem == "OpsManager" and AlertSeverity == "error" and TimeRaised > ago(24h) |過去 24 時間以内に発生した重大なアラート |
 | Alert &#124; where AlertSeverity == "warning" and TimeRaised > ago(24h) |過去 24 時間以内に発生した警告アラート |
@@ -131,6 +117,7 @@ Log Analytics ワークスペースに Alert Management ソリューションを
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(24h) and AlertState == "Closed" |過去 24 時間以内に発生したものの、既に解決されている重大なアラート |
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; summarize Count = count() by AlertSeverity |過去 1 日以内に発生したアラートを重大度に基づいてグループ化 |
 | Alert &#124; where SourceSystem == "OpsManager" and TimeRaised > ago(1d) &#124; sort by RepeatCount desc |過去 1 日以内に発生したアラートを RepeatCount の値で並べ替え |
+
 
 
 ## <a name="next-steps"></a>次の手順

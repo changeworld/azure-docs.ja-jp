@@ -1,11 +1,10 @@
 ---
-title: "Data Factory を使用したスケジュール設定と実行 | Microsoft Docs"
-description: "Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。"
+title: Data Factory を使用したスケジュール設定と実行 | Microsoft Docs
+description: Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 088a83df-4d1b-4ac1-afb3-0787a9bd1ca5
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a729b38b2fc0b8ef759037976753e0030557a6fa
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 58274b2255de13efaa1fba8af8beff7b7b59f7a8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory のスケジュール設定と実行
 > [!NOTE]
@@ -236,7 +235,7 @@ Data Factory パイプラインのアクティビティは 0 個以上の入力*
 | ポリシー名 | [説明] | 適用先 | 必須 | 既定値 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB | **Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ  |該当なし |
-| minimumRows | **Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>の接続文字列</li><li>Azure テーブル</li></ul> |いいえ  |該当なし |
+| minimumRows | **Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ  |該当なし |
 
 #### <a name="examples"></a>例
 **minimumSizeMB:**

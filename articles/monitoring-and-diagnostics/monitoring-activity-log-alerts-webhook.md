@@ -1,10 +1,10 @@
 ---
-title: "アクティビティ ログ アラートで使用される webhook スキーマの理解 | Microsoft Docs"
-description: "アクティビティ ログ アラートがアクティブになったときに webhook URL に投稿される JSON のスキーマについて説明します。"
+title: アクティビティ ログ アラートで使用される webhook スキーマの理解 | Microsoft Docs
+description: アクティビティ ログ アラートがアクティブになったときに webhook URL に投稿される JSON のスキーマについて説明します。
 author: johnkemnetz
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: johnkem
-ms.openlocfilehash: 7816efd44c01c3ed60c95d8699042f89cf6de5ec
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: f71714774d7ad54d7eb2132e8c20c87f972157ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
@@ -31,7 +31,7 @@ webhook は、認証のためにトークンベースの承認を使用するこ
 ## <a name="payload-schema"></a>ペイロード スキーマ
 POST 操作に含まれる JSON ペイロードは、ペイロードの data.context.activityLog.eventSource フィールドによって異なります。
 
-###<a name="common"></a>一般
+### <a name="common"></a>一般
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -58,7 +58,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
     }
 }
 ```
-###<a name="administrative"></a>管理
+### <a name="administrative"></a>管理
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",
@@ -85,7 +85,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 }
 
 ```
-###<a name="servicehealth"></a>ServiceHealth
+### <a name="servicehealth"></a>ServiceHealth
 ```json
 {
     "schemaId": "Microsoft.Insights/activityLogs",

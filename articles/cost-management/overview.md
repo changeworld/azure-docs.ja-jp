@@ -10,17 +10,17 @@ ms.topic: overview
 ms.service: cost-management
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: e2f12a989eb275e645c8b3bde3494928c5cbdb47
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 3e5caff5ff1af79154baddf39bf465ddea5aadae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-cost-management"></a>Azure Cost Management とは
 
 Microsoft の子会社である Cloudyn によってライセンスが供与される Azure Cost Management では、クラウドの使用状況と、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーに対する支出を追跡することができます。 わかりやすいダッシュボードのレポートは、コストの割り当てとショーバック/チャージバックに役立ちます。 Cost Management を使うと、使用率が低いリソースを識別して管理、調整することにより、クラウドの支出を最適化できます。
 
-入門ビデオを視聴するには、[Azure Cost Management の概要](https://youtu.be/NWIRny6Wpsk)に関するページを参照してください。
+入門ビデオを視聴するには、[Azure Cost Management の概要](https://azure.microsoft.com/en-us/resources/videos/azure-cost-management-overview-and-demo)に関するページを参照してください。
 
 ## <a name="monitor-usage-and-spending"></a>使用状況と支出の監視
 

@@ -3,22 +3,19 @@ title: 'Azure Active Directory B2C: カスタム ポリシーを使用して Lin
 description: OAuth2 プロトコルとカスタム ポリシーを使用した LinkedIn アプリケーションの設定に関するハウツー記事
 services: active-directory-b2c
 documentationcenter: ''
-author: yoelhor
+author: davidmu1
 manager: mtillman
 editor: ''
-ms.assetid: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/23/2017
-ms.author: yoelh
-ms.openlocfilehash: 77e2b9b283e4051370ffb905681135c27512834e
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.author: davidmu
+ms.openlocfilehash: 9e5235739abcfbee1e530685890098a45a1b093d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-linkedin-as-an-identity-provider-by-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使用して LinkedIn を ID プロバイダーとして追加する
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]

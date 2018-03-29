@@ -1,11 +1,10 @@
 ---
-title: "チュートリアル: コピー アクティビティがあるパイプラインを .NET API で作成する | Microsoft Docs"
-description: "このチュートリアルでは、.NET API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。"
+title: 'チュートリアル: コピー アクティビティがあるパイプラインを .NET API で作成する | Microsoft Docs'
+description: このチュートリアルでは、.NET API を使用して、コピー アクティビティがある Azure Data Factory パイプラインを作成します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 58fc4007-b46d-4c8e-a279-cb9e479b3e2b
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eba262239c759677e445d8e3f8b8fae72804f176
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 1c255e9671e488fa1ced019cb7fafe6b328d8181
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-create-a-pipeline-with-copy-activity-using-net-api"></a>チュートリアル: コピー アクティビティがあるパイプラインを .NET API で作成する
 > [!div class="op_single_selector"]

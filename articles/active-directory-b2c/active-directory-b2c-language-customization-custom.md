@@ -1,23 +1,23 @@
 ---
-title: "Azure Active Directory B2C:カスタム ポリシーでの言語カスタマイズ | Microsoft Docs"
-description: "カスタム ポリシー内でローカライズ コンテンツを使用して、複数の言語に対応する方法について学習します"
+title: Azure Active Directory B2C:カスタム ポリシーでの言語カスタマイズ | Microsoft Docs
+description: カスタム ポリシー内でローカライズ コンテンツを使用して、複数の言語に対応する方法について学習します
 services: active-directory-b2c
-documentationcenter: 
-author: sammak
+documentationcenter: ''
+author: davidmu1
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 11/13/2017
-ms.author: sama
-ms.openlocfilehash: 4ed9791d6590e3982a1bc79b96f8592995bc315c
-ms.sourcegitcommit: 9a61faf3463003375a53279e3adce241b5700879
+ms.author: davidmu
+ms.openlocfilehash: 45cfa152615da1447cc695e0dd201e5b8d046cf4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/15/2017
+ms.lasthandoff: 03/23/2018
 ---
-#<a name="language-customization-in-custom-policies"></a>カスタム ポリシーでの言語のカスタマイズ
+# <a name="language-customization-in-custom-policies"></a>カスタム ポリシーでの言語のカスタマイズ
 
 > [!NOTE]
 > この機能はパブリック プレビュー段階にあります。
@@ -25,7 +25,7 @@ ms.lasthandoff: 11/15/2017
 
 カスタム ポリシーでは、言語のカスタマイズは組み込みのポリシーと同様に動作します。  パラメーターとブラウザーの設定に基づいて言語がどのように選択されるかの動作については、組み込みの[ドキュメント](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-reference-language-customization)を参照してください。
 
-##<a name="enable-supported-languages"></a>サポートされている言語を有効化する
+## <a name="enable-supported-languages"></a>サポートされている言語を有効化する
 ui-locales が指定されなかった場合は、ユーザーのブラウザーで、これらの言語のうちどれを使用するかが尋ねられます (サポートされている言語がユーザーに表示されます)。  
 
 サポートされている言語は、`<BuildingBlocks>` で次の形式で定義されます。
@@ -43,7 +43,7 @@ ui-locales が指定されなかった場合は、ユーザーのブラウザー
 
 既定の言語とサポートされている言語は、組み込みのポリシーでの動作と同様に動作します。
 
-##<a name="enable-custom-language-strings"></a>カスタム言語文字列を有効化する
+## <a name="enable-custom-language-strings"></a>カスタム言語文字列を有効化する
 
 カスタム言語文字列を作成するには、次の 2 つの手順が必要です。
 1. ページの `<ContentDefinition>` を編集して、目的の言語のリソース ID を指定します
@@ -51,7 +51,7 @@ ui-locales が指定されなかった場合は、ユーザーのブラウザー
 
 `<ContentDefinition>` と `<BuildingBlock>` は、継承するすべてのポリシーに変更を反映するかどうかに応じて、拡張ファイルと依存するポリシー ファイルの両方に配置できます。
 
-###<a name="edit-the-contentdefinition-for-the-page"></a>ページの ContentDefinition を編集する
+### <a name="edit-the-contentdefinition-for-the-page"></a>ページの ContentDefinition を編集する
 
 ローカライズするページごとに、各言語コードに対して参照する言語リソースを `<ContentDefinition>` で指定できます。
 
@@ -67,7 +67,7 @@ ui-locales が指定されなかった場合は、ユーザーのブラウザー
 このサンプルでは、フランス語 (fr) と英語 (en) のカスタム文字列が、サインアップまたはサインインの統合ページに追加されています。  各 `LocalizedResourcesReference` の `LocalizedResourcesReferenceId` はそれらのロケールと同じですが、ID には任意の文字列を使用することができます。  ユーザーは、言語とページの組み合わせごとに、対応する `<LocalizedResources>` を作成する必要があります (下記を参照)。
 
 
-###<a name="create-the-localizedresources"></a>LocalizedResources を作成する
+### <a name="create-the-localizedresources"></a>LocalizedResources を作成する
 
 上書きは `<BuildingBlocks>` 内に含まれ、各ページの `<ContentDefinition>` で指定したページと言語のごとに、`<LocalizedResources>` が存在します。  各上書きは、次のサンプルに示すように、`<LocalizedString>` として指定されます。
 

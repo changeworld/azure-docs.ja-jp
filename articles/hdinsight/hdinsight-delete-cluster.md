@@ -1,10 +1,10 @@
 ---
-title: "HDInsight クラスターを削除する方法 - Azure | Microsoft Docs"
-description: "HDInsight クラスターの各種削除方法について説明します。"
+title: HDInsight クラスターを削除する方法 - Azure | Microsoft Docs
+description: HDInsight クラスターの各種削除方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
-manager: jhubbard
+manager: cgronlun
 editor: cgronlun
 ms.assetid: 55f7838b-9786-47ff-96db-1b64437bd0bb
 ms.service: hdinsight
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/17/2018
+ms.date: 03/22/2018
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 04b89b2cceb18a0e3c88d0d1deada1a05b8187f6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: ef4ada501aaf6a5c1218de51e3fcd6838904e5af
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>ブラウザー、PowerShell、または Azure CLI を使用して HDInsight クラスターを削除する
 

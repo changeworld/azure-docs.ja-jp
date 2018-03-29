@@ -1,11 +1,11 @@
 ---
-title: "Azure Virtual Machines 上の SAP HANA のバックアップ ガイド | Microsoft Docs"
-description: "SAP HANA のバックアップ ガイドでは、Azure 仮想マシン上の SAP HANA をバックアップする 2 つの主要な方法について説明します"
+title: Azure Virtual Machines 上の SAP HANA のバックアップ ガイド | Microsoft Docs
+description: SAP HANA のバックアップ ガイドでは、Azure 仮想マシン上の SAP HANA をバックアップする 2 つの主要な方法について説明します
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: hermanndms
 manager: timlt
-editor: 
+editor: ''
 ms.service: virtual-machines-linux
 ms.devlang: NA
 ms.topic: article
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
 ms.openlocfilehash: 9e5b124643b753f404ba6012d3df998f567be59a
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="backup-guide-for-sap-hana-on-azure-virtual-machines"></a>Azure Virtual Machines 上の SAP HANA のバックアップ ガイド
 

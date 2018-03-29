@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用して Phoenix からデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、Phoenix のデータをサポートされているシンク データ ストアにコピーする方法について説明します。"
+title: Azure Data Factory を使用して Phoenix からデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Phoenix のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2017
 ms.author: jingwang
-ms.openlocfilehash: 46efa4c3ce43af04485f383a3e88066aec79acfb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 56559adbc2ebd4e4379326607a28333d538504da
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Azure Data Factory を使用して Phoenix からデータをコピーする 
 
@@ -50,7 +50,7 @@ Phoenix のリンクされたサービスでは、次のプロパティがサポ
 | httpPath | Phoenix サーバーに対応する部分的な URL。 (つまり、/gateway/sandbox/phoenix/version)。 WindowsAzureHDInsightService を使う場合の既定値は `hbasephoenix` です。  | いいえ  |
 | authenticationType | Phoenix サーバーへの接続に使用する認証メカニズム。 <br/>使用可能な値: **Anonymous**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | [はい] |
 | username | Phoenix サーバーへの接続に使用されるユーザー名。  | いいえ  |
-| password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| password | ユーザー名に対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
 | trustedCertPath | SSL 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR で SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ  |
 | useSystemTrustStore | システムの信頼ストアと指定した PEM ファイルのどちらの CA 証明書を使用するかを指定します。 既定値は false です。  | いいえ  |

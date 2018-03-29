@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: B2C テナントへの切り替え | Microsoft Docs"
-description: "Active Directory B2C テナントのコンテキストに切り替える方法"
+title: 'Azure Active Directory B2C: B2C テナントへの切り替え | Microsoft Docs'
+description: Active Directory B2C テナントのコンテキストに切り替える方法
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 0eb1b198-44d3-4065-9fae-16591a8d3eae
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 4/13/2017
-ms.author: parakhj
-ms.openlocfilehash: a9b9f71d0c11aee238661d57fd2e5246f1bf0842
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: davidmu
+ms.openlocfilehash: 6469636ee05c2b28a24b1d559f0ee7569e784393
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントへの切り替え
 

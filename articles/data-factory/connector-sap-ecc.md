@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用して SAP ECC からデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP ECC からサポートされているシンク データ ストアへデータをコピーする方法について説明します。"
+title: Azure Data Factory を使用して SAP ECC からデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、SAP ECC からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2018
 ms.author: jingwang
-ms.openlocfilehash: efca2c129a1c7b8aca6b879d6d1311c6be157be1
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: abd3ef00148795f4b3e79e2ed64dd35f56946455
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-sap-ecc-using-azure-data-factory"></a>Azure Data Factory を使用して SAP ECC からデータをコピーする
 

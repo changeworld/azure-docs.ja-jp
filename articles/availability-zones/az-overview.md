@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/05/2018
+ms.date: 03/19/2018
 ms.author: markgal
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 9274cb1fc490ab61e962e8a7918a9c44976dc755
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b4db442a54b4360b75df40156ca0d4e4ee1eb0d1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-availability-zones-in-azure-preview"></a>Azure の可用性ゾーン (プレビュー) の概要
 
@@ -34,6 +34,7 @@ ms.lasthandoff: 03/16/2018
 - 米国中部
 - 西ヨーロッパ
 - フランス中部
+- 東南アジア
 
 ## <a name="services-that-support-availability-zones"></a>可用性ゾーンをサポートしているサービス
 

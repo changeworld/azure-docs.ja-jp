@@ -1,12 +1,12 @@
 ---
-title: "Azure Active Directory のアプリベースの条件付きアクセス | Microsoft Docs"
-description: "Azure Active Directory のアプリベースの条件付きアクセスのしくみについて学習します。"
+title: Azure Active Directory のアプリベースの条件付きアクセス | Microsoft Docs
+description: Azure Active Directory のアプリベースの条件付きアクセスのしくみについて学習します。
 services: active-directory
-keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
-documentationcenter: 
+keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.workload: identity
 ms.date: 01/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 7814b53a69506f81bc6a75387c62766e36d528d8
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: b35aed3583307c34eadbed3dd13d1ffd51494927
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory のアプリベースの条件付きアクセス  
 
@@ -50,7 +50,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
  
 
 
-##<a name="before-you-begin"></a>開始する前に
+## <a name="before-you-begin"></a>開始する前に
 
 このトピックは、次の事項を熟知していることを前提としています。
 
@@ -114,7 +114,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**デバイス プラットフォーム**と**クライアント アプリ**を構成する必要があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/03.png)
 
@@ -144,7 +144,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**クライアント アプリ**を構成する必要があります。 
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/08.png)
 
@@ -195,7 +195,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**デバイス プラットフォーム**と**クライアント アプリ**を構成する必要があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/03.png)
 
@@ -226,7 +226,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**クライアント アプリ**を構成する必要があります。
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **クライアント アプリ**として、**[Exchange Active Sync]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/08.png)
 
@@ -279,7 +279,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**デバイス プラットフォーム**と**クライアント アプリ**を構成する必要があります。 
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/03.png)
 
@@ -375,7 +375,7 @@ Azure Active Directory のアプリベースの条件付きアクセスを使う
 
 4. **条件:** **条件**として、**デバイス プラットフォーム**と**クライアント アプリ**を構成する必要があります。 
  
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Pluralsight アプリケーションへのサインオンに使用する次の URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **デバイス プラットフォーム**として、**[Android]** と **[iOS]** を選択します。
 
     ![条件付きアクセス](./media/active-directory-conditional-access-mam/03.png)
 

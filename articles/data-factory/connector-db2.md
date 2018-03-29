@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用して DB2 のデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、DB2 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。"
+title: Azure Data Factory を使用して DB2 のデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、DB2 のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 865e6fe1dd13736c1899c72b4e49612d970d45cd
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0ef1ce8b4949c908595473f0183f585a6fd3da80
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -70,7 +70,7 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 | schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ  |
 | authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値: **Basic**。 |[はい] |
 | username |DB2 データベースに接続するユーザー名を指定します。 |[はい] |
-| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| password |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**

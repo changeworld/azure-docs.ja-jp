@@ -1,11 +1,12 @@
 ---
-title: "Machine Learning Studio 機能の概要図 | Microsoft Docs"
-description: "Azure Machine Learning Studio を使用して予測分析実験を開発し、それを Azure クラウドで運用可能にする方法を示す、Azure Machine Learning Studio の機能の印刷可能な図です。"
-keywords: "Machine Learning Studio、概要図、ダウンロード"
+title: Machine Learning Studio 機能の概要図 | Microsoft Docs
+description: Azure Machine Learning Studio を使用して予測分析実験を開発し、それを Azure クラウドで運用可能にする方法を示す、Azure Machine Learning Studio の機能の印刷可能な図です。
+keywords: Machine Learning Studio、概要図、ダウンロード
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: 5b302c6c-41fd-4551-a4ae-0f5b450e1e6b
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/04/2017
-ms.author: haining;garye
-ms.openlocfilehash: f4e53fa46a6b7f8811e4fee67b1466786b81cdc9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55a2355bb0d29f60f96264e3e030835ba4d86427
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Azure Machine Learning Studio 機能の概要図
 **Microsoft Azure Machine Learning Studio 機能の概要** 図には、Machine Learning Studio を使用して予測分析モデルを開発し、Azure クラウドでそれを運用可能にする方法の概要が示されています。

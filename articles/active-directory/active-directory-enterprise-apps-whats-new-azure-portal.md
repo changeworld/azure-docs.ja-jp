@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory でのエンタープライズ アプリケーション管理の新機能 | Microsoft Docs"
-description: "Azure Active Directory でのエンタープライズ アプリケーション管理の新機能について説明します。"
+title: Azure Active Directory でのエンタープライズ アプリケーション管理の新機能 | Microsoft Docs
+description: Azure Active Directory でのエンタープライズ アプリケーション管理の新機能について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
-ms.openlocfilehash: 949eae51c469205489153c271a7c20fcc843ad46
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d1b24708380aeed6055912fcf3538f0e5319e2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory でのエンタープライズ アプリケーション管理の新機能 
 
@@ -147,7 +147,7 @@ Azure Active Directory (Azure AD) では、エンタープライズ アプリケ
 1. 最初に、アプリケーションの左側のナビゲーション メニューから **[セルフサービス]** オプションを選択します。次に、**[Allow users to request access to this application? (このアプリケーションへのアクセス要求をユーザーに許可しますか?)]** オプションを **[はい]** に設定します。 
 2. これで、このアプリケーションへのアクセスを承認できるユーザーと、セルフサービス ユーザーを追加するグループを構成できます。 さらに、アプリケーションがパスワード シングル サインオン用に構成されている場合は、別のオプションも表示されます。このオプションを使用して、承認したユーザーがアプリケーションに割り当てるパスワードを管理することを許可できます。
 
-##<a name="feedback"></a>フィードバック
+## <a name="feedback"></a>フィードバック
 
 改良された Azure AD エクスペリエンスを気に入っていただけることを期待しております。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
 

@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory を使用したファイル システムとの間でのデータのコピー | Microsoft Docs"
-description: "Azure Data Factory を使用して、オンプレミスのファイル システムとの間でデータをコピーする方法について説明します。"
+title: Azure Data Factory を使用したファイル システムとの間でのデータのコピー | Microsoft Docs
+description: Azure Data Factory を使用して、オンプレミスのファイル システムとの間でデータをコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: ce19f1ae-358e-4ffc-8a80-d802505c9c84
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: a717ea57642c0fb56eec176542ae401f83af6841
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 86bec21afcf954796100fed31bcbfdcf6e5cfe3f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-an-on-premises-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスのファイル システムとの間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

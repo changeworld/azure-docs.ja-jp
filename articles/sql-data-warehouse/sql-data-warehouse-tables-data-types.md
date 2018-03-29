@@ -1,11 +1,11 @@
 ---
-title: "データ型のガイダンス - Azure SQL Data Warehouse | Microsoft Docs"
-description: "SQL Data Warehouse と互換性のあるデータ型を定義する場合の推奨事項。"
+title: データ型のガイダンス - Azure SQL Data Warehouse | Microsoft Docs
+description: SQL Data Warehouse と互換性のあるデータ型を定義する場合の推奨事項。
 services: sql-data-warehouse
 documentationcenter: NA
 author: barbkess
 manager: jenniehubbard
-editor: 
+editor: ''
 ms.assetid: d4a1f0a3-ba9f-44b9-95f6-16a4f30746d6
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 12/06/2017
+ms.date: 03/17/2018
 ms.author: barbkess
-ms.openlocfilehash: 2bde5da8593c559e2afb33c9c4842695dc273ac3
-ms.sourcegitcommit: cc03e42cffdec775515f489fa8e02edd35fd83dc
+ms.openlocfilehash: dcdcb6eddf35fe3ec4754353452c68cd3e24f907
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/07/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="guidance-for-defining-data-types-for-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのデータ型の定義に関するガイダンス
 SQL Data Warehouse と互換性のあるテーブルのデータ型を定義する場合は、以下の推奨事項を使用します。 互換性に加え、データ型のサイズを最小化することで、クエリのパフォーマンスが向上します。
@@ -69,7 +69,7 @@ WHERE y.[name] IN ('geography','geometry','hierarchyid','image','text','ntext','
 | 既定値 | 既定値では、リテラルと定数のみがサポートされます。  `GETDATE()` や `CURRENT_TIMESTAMP` など、不明確な式または関数はサポートされていません。 |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、次を参照してください。
 
 - [SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse Best Practices]

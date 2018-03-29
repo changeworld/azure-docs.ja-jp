@@ -1,11 +1,11 @@
 ---
-title: "Azure パブリック IP アドレスの作成、変更、削除 | Microsoft Docs"
-description: "パブリック IP アドレスの作成、変更、削除の方法について説明します。"
+title: Azure パブリック IP アドレスの作成、変更、削除 | Microsoft Docs
+description: パブリック IP アドレスの作成、変更、削除の方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: bb71abaf-b2d9-4147-b607-38067a10caf6
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 8efc0bff4764a7265a5f1bcdd995979af0b22234
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c36a3451dabbb0d08e5e475e0eec14f861bd41ce
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-change-or-delete-a-public-ip-address"></a>パブリック IP アドレスの作成、変更、削除
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 03/05/2018
 
     |Setting|必須|詳細|
     |---|---|---|
-    |SKU|[はい]|SKU の導入前に作成されたパブリック IP アドレスはすべて、**Basic** SKU のパブリック IP アドレスです。  パブリック IP アドレスが作成された後に SKU を変更することはできません。 スタンドアロンの仮想マシン、可用性セット内の仮想マシン、または仮想マシン スケール セットは、Basic または Standard SKU を使用できます。  可用性セットまたはスケール セット内の仮想マシン間での SKU の混在は許可されません。 **Basic** SKU: 可用性ゾーンをサポートするリージョンにパブリック IP アドレスを作成している場合、既定では **[Availability zone] \(可用性ゾーン)** 設定が *[なし]* に設定されます。 パブリック IP アドレス用に特定のゾーンを保証するには、可用性ゾーンを選択できます。 **Standard** SKU: Standard SKU のパブリック IP を仮想マシンまたはロード バランサーのフロント エンドに関連付けることができます。 可用性ゾーンをサポートするリージョンにパブリック IP アドレスを作成している場合、既定では **[Availability zone] \(可用性ゾーン)** 設定が *[Zone-redundant] \(ゾーン冗長)* に設定されます。 可用性ゾーンの詳細については、**[Availability zone] \(可用性ゾーン)** 設定を参照してください。 アドレスを標準のロード バランサーに関連付ける場合は、Standard SKU が必要です。 標準のロード バランサーの詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 Standard SKU は、プレビュー リリース段階にあります。 Standard SKU のパブリック IP アドレスを作成する前に、まず「[Standard SKU プレビューへの登録](#register-for-the-standard-sku-preview)」にある手順を完了し、サポートされている場所 (リージョン) にパブリック IP アドレスを作成する必要があります。 サポートされている場所の一覧については、[[利用可能なリージョン]](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) を参照し、追加のリージョンのサポートについて [[Azure Virtual Network updates] \(Azure Virtual Network の更新)](https://azure.microsoft.com/updates/?product=virtual-network) ページを監視してください。 Standard SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てる場合は、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で目的のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、目的のトラフィックを明示的に許可するまで、そのリソースとの通信は失敗します。|
+    |SKU|[はい]|SKU の導入前に作成されたパブリック IP アドレスはすべて、**Basic** SKU のパブリック IP アドレスです。  パブリック IP アドレスが作成された後に SKU を変更することはできません。 スタンドアロンの仮想マシン、可用性セット内の仮想マシン、または仮想マシン スケール セットは、Basic または Standard SKU を使用できます。  可用性セットまたはスケール セット内の仮想マシン間での SKU の混在は許可されません。 **Basic** SKU: 可用性ゾーンをサポートするリージョンにパブリック IP アドレスを作成している場合、既定では **[Availability zone] \(可用性ゾーン)** 設定が *[なし]* に設定されます。 パブリック IP アドレス用に特定のゾーンを保証するには、可用性ゾーンを選択できます。 **Standard** SKU: Standard SKU のパブリック IP を仮想マシンまたはロード バランサーのフロント エンドに関連付けることができます。 可用性ゾーンをサポートするリージョンにパブリック IP アドレスを作成している場合、既定では **[Availability zone] \(可用性ゾーン)** 設定が *[Zone-redundant] \(ゾーン冗長)* に設定されます。 可用性ゾーンの詳細については、**[Availability zone] \(可用性ゾーン)** 設定を参照してください。 アドレスを標準のロード バランサーに関連付ける場合は、Standard SKU が必要です。 標準のロード バランサーの詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、特定のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、目的のトラフィックを明示的に許可するまで、そのリソースとの通信は失敗します。|
     |Name|[はい]|選択したリソース グループ内で一意となる名前を使用してください。|
     |IP バージョン|[はい]| IPv4 または IPv6 を選びます。 パブリック IPv4 アドレスは複数の Azure リソースに割り当てることができますが、IPv6 のパブリック IP アドレスはインターネットに接続するロード バランサーにのみ割り当てることができます。 ロード バランサーは、複数の Azure 仮想マシンに IPv6 トラフィックを負荷分散できます。 詳細については、[仮想マシンへの IPv6 トラフィックの負荷分散](../load-balancer/load-balancer-ipv6-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。 **Standard SKU** を選択した場合、*IPv6* を選択するオプションはありません。 **Standard SKU** を使用している場合は IPv4 アドレスしか作成できません。|
     |IP アドレスの割り当て|[はい]|**[動的]:** 動的アドレスは、仮想マシンに接続されたネットワーク インターフェイスにパブリック IP アドレスが関連付けられ、仮想マシンが初めて起動された後でのみ割り当てられます。 ネットワーク インターフェイスの接続先の仮想マシンが停止 (割り当て解除) されると、動的アドレスが変化する場合があります。 仮想マシンが再起動された場合や、停止された (ただし、割り当て解除されない) 場合、このアドレスは同じままです。 **[静的]:** 静的アドレスは、パブリック IP アドレスの作成時に割り当てられます。 仮想マシンが停止 (割り当て解除) された状態になっても、静的アドレスは変化しません。 このアドレスは、ネットワーク インターフェイスが削除された場合にのみ解放されます。 ネットワーク インターフェイスの作成後に、割り当て方法を変更することができます。 **[IP バージョン]** として *[IPv6]* を選択した場合、割り当て方法は *[動的]* です。 **[SKU]** として *[Standard]* を選択した場合、割り当て方法は *[静的]* です。|
@@ -88,24 +88,6 @@ ms.lasthandoff: 03/05/2018
 |---|---|
 |CLI|[az network public-ip-list](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_list) (パブリック IP アドレスの一覧表示)、[az network public-ip-show](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_show) (設定の表示)、[az network public-ip update](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_update) (更新)、[az network public-ip delete](/cli/azure/network/public-ip?toc=%2fazure%2fvirtual-network%2ftoc.json#az_network_public_ip_delete) (削除)|
 |PowerShell|[Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) (パブリック IP アドレス オブジェクトの取得とその設定の表示)、[Set-AzureRmPublicIpAddress](/powershell/resourcemanager/azurerm.network/set-azurermpublicipaddress?toc=%2fazure%2fvirtual-network%2ftoc.json) (設定の更新)、[Remove-AzureRmPublicIpAddress](/powershell/module/azurerm.network/remove-azurermpublicipaddress) (削除)|
-
-## <a name="register-for-the-standard-sku-preview"></a>Standard SKU プレビューへの登録
-
-> [!NOTE]
-> プレビュー リリース段階にある機能には、一般公開リリースにある機能と同じレベルの可用性と信頼性がない可能性があります。 プレビュー機能はサポートされず、機能に制約があることがあり、また Azure のすべての場所では使用できない可能性があります。 
-
-Standard SKU のパブリック IP アドレスを作成するには、まずプレビューに登録する必要があります。 プレビューに登録するには、次の手順を完了します。
-
-1. PowerShell から、次のコマンドを入力してプレビューに登録します。
-   
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    ```
-2. 次のコマンドを入力して、プレビューに登録されていることを確認します。
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    ```
 
 ## <a name="next-steps"></a>次の手順
 次の Azure リソースの作成時にパブリック IP アドレスを割り当てます。

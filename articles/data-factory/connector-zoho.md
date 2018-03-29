@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用して Zoho からデータをコピーする (Beta) | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、Zoho のデータをサポートされているシンク データ ストアにコピーする方法について説明します。"
+title: Azure Data Factory を使用して Zoho からデータをコピーする (Beta) | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Zoho のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 5f9d30229dab7589b2e7ba5636f04f5a22b557bb
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e6b5839af6d6d7f4b2dfbb712d5e90de7023747e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-beta"></a>Azure Data Factory を使用して Zoho からデータをコピーする (Beta)
 
@@ -49,7 +49,7 @@ Zoho のリンクされたサービスでは、次のプロパティがサポー
 |:--- |:--- |:--- |
 | 型 | type プロパティは **Zoho** に設定する必要があります | [はい] |
 | endpoint | Zoho サーバーのエンドポイント (`crm.zoho.com/crm/private`)。 | [はい] |
-| accessToken | Zoho 認証のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| accessToken | Zoho 認証のアクセス トークン。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |

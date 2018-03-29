@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory を使用した SFTP サーバーからのデータ移動 | Microsoft Docs"
-description: "Azure Data Factory を使用してオンプレミスまたはクラウド SFTP サーバーからデータを移動する方法について説明します。"
+title: Azure Data Factory を使用した SFTP サーバーからのデータ移動 | Microsoft Docs
+description: Azure Data Factory を使用してオンプレミスまたはクラウド SFTP サーバーからデータを移動する方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 02/12/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 8871012458c97a36b1f8c2cca413319ec7d72e8e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: e43e147fa352a38dd8c051725e92245047921689
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-an-sftp-server-using-azure-data-factory"></a>Azure Data Factory を使用した SFTP サーバーからのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -56,12 +55,10 @@ Data Factory が現在サポートしているのは、SFTP サーバーから�
 | host | SFTP サーバーの名前または IP アドレス。 |[はい] |
 | ポート |SFTP サーバーがリッスンしているポート。 既定値は 21 です |いいえ  |
 | authenticationType |認証の種類を指定します。 指定できる値: **Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「[基本認証を使用する](#using-basic-authentication)」および「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」をそれぞれ参照してください。 |[はい] |
-| skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | 
-いいえ。 既定値: false |
+| skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | いいえ。 既定値: false |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい (`skipHostKeyValidation` が false に設定されている場合)。  |
 | gatewayName |オンプレミスの SFTP サーバーに接続するための Data Management Gateway の名前。 | はい (オンプレミスの SFTP サーバーからデータをコピーする場合)。 |
-| encryptedCredential | SFTP サーバーにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで、基本認証 (ユーザー名とパスワード) または SshPublicKey 認証 (ユーザー名と秘密キーのパスまたはコンテンツ) を指定すると自動生成されます。 | 
-いいえ。 オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
+| encryptedCredential | SFTP サーバーにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで、基本認証 (ユーザー名とパスワード) または SshPublicKey 認証 (ユーザー名と秘密キーのパスまたはコンテンツ) を指定すると自動生成されます。 | いいえ。 オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
 
 ### <a name="using-basic-authentication"></a>基本認証を使用する
 

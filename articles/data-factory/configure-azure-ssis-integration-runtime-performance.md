@@ -1,6 +1,6 @@
 ---
-title: "Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する | Microsoft Docs"
-description: "Azure-SSIS 統合ランタイムのプロパティを高パフォーマンス用に構成する方法について説明します。"
+title: Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する | Microsoft Docs
+description: Azure-SSIS 統合ランタイムのプロパティを高パフォーマンス用に構成する方法について説明します。
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: article
@@ -9,11 +9,11 @@ ms.workload: data-services
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.openlocfilehash: 7d0e75ad85731b10f9a993c2fa62f30c0142ed05
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 3c19ebc601136653a88ca8d2a3073d897af863f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Azure-SSIS 統合ランタイムを高パフォーマンス用に構成する
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 01/23/2018
 
 ## <a name="properties-to-configure"></a>構成するプロパティ
 
-構成スクリプトの次の部分では、Azure-SSIS 統合ランタイムを作成するときに構成できるプロパティが示されています。 PowerShell の完全なスクリプトと説明については、「[SQL Server Integration Services パッケージを Azure にデプロイする](tutorial-deploy-ssis-packages-azure.md)」をご覧ください。
+構成スクリプトの次の部分では、Azure-SSIS 統合ランタイムを作成するときに構成できるプロパティが示されています。 PowerShell の完全なスクリプトと説明については、「[SQL Server Integration Services パッケージを Azure にデプロイする](tutorial-deploy-ssis-packages-azure-powershell.md)」をご覧ください。
 
 ```powershell
 $SubscriptionName = "<Azure subscription name>"

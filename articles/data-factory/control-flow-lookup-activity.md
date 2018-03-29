@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory でのルックアップ アクティビティ | Microsoft Docs"
-description: "ルックアップ アクティビティを使用して外部ソースから値を検索する方法を説明します。 この出力は、後続のアクティビティによってさらに参照できます。"
+title: Azure Data Factory でのルックアップ アクティビティ | Microsoft Docs
+description: ルックアップ アクティビティを使用して外部ソースから値を検索する方法を説明します。 この出力は、後続のアクティビティによってさらに参照できます。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 2f551e97b833460c7c4ccd276b0df1dae562c03b
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: f55e85bb424f4f5973fd6d633b6adf9fbca4d0ef
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="lookup-activity-in-azure-data-factory"></a>Azure Data Factory でのルックアップ アクティビティ
 ルックアップ アクティビティを使用して、任意の外部ソースからレコード、テーブル名、または値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。 
@@ -64,8 +64,7 @@ Name | [説明] | type | 必須
 ---- | ----------- | ---- | --------
 dataset | ルックアップ用のデータセット参照を提供します。 現在サポートされているデータセットの種類は次のとおりです。<ul><li>[Azure Blob Storage ](connector-azure-blob-storage.md#dataset-properties)の場合 `AzureBlobDataset` (ソースとして)</li><li>[ファイル システム](connector-file-system.md#dataset-properties)の場合 `FileShareDataset` (ソースとして)</li><li>[Azure SQL Database](connector-azure-sql-database.md#dataset-properties) または [Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md#dataset-properties) の場合 `AzureSqlTableDataset` (ソースとして)</li><li>[SQL Server](connector-sql-server.md#dataset-properties) の場合 `SqlServerTable` (ソースとして)</li><li>[Azure Table Storage](connector-azure-table-storage.md#dataset-properties) の場合 `AzureTableDataset` (ソースとして)</li> | キーと値のペア | [はい]
 source | データセット固有のソース プロパティを含みます (コピー アクティビティ ソースと同じ)。 対応する各コネクタの記事の「コピー アクティビティのプロパティ」セクションから詳細を取得します。 | キーと値のペア | [はい]
-firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | ブール | 
-いいえ。 既定値は `true` です。
+firstRowOnly | 最初の行のみまたはすべての行のどちらを返すかを示します。 | ブール | いいえ。 既定値は `true` です。
 
 ## <a name="use-the-lookup-activity-result-in-a-subsequent-activity"></a>後続のアクティビティでルックアップ アクティビティの結果を使用する
 

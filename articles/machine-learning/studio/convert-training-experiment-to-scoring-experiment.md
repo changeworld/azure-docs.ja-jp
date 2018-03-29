@@ -1,10 +1,11 @@
 ---
-title: "Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法 | Microsoft Docs"
-description: "Machine Learning Studio のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。"
+title: Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法 | Microsoft Docs
+description: Machine Learning Studio のトレーニング実験を予測実験に変換することで、トレーニング済みのモデルを Web サービスとしてデプロイするための準備方法。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: eb943c45-541a-401d-844a-c3337de82da6
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
-ms.author: garye
-ms.openlocfilehash: 96434d6c5a2cf73e425c02d35d546ab33b7ac13d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 45b8e8812c2c63d60ccdb143656cca9f0dade183
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-prepare-your-model-for-deployment-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法
 

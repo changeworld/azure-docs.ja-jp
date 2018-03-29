@@ -1,23 +1,23 @@
 ---
-title: "Azure Data Factory を使用した SSIS パッケージの呼び出し - ストアド プロシージャ アクティビティ | Microsoft Docs"
-description: "この記事では、ストアド プロシージャ アクティビティを使用して SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。"
+title: Azure Data Factory を使用した SSIS パッケージの呼び出し - ストアド プロシージャ アクティビティ | Microsoft Docs
+description: この記事では、ストアド プロシージャ アクティビティを使用して SQL Server Integration Services (SSIS) パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.devlang: powershell
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: jingwang
-ms.openlocfilehash: 99e3365a846f35262489fdccd753b4ce2e50fa49
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 476dc5fb8a5d9fb7fbcee898517455c52a3a9d73
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory のストアド プロシージャ アクティビティを使用して SSIS パッケージを呼び出す
 この記事では、ストアド プロシージャ アクティビティを使用して SSIS パッケージを Azure Data Factory パイプラインから呼び出す方法を説明します。 
@@ -27,7 +27,7 @@ ms.lasthandoff: 02/01/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-### <a name="azure-sql-database"></a>の接続文字列 
+### <a name="azure-sql-database"></a>Azure SQL Database 
 この記事のチュートリアルでは、SSIS カタログをホストする Azure SQL データベースを使用します。 Azure SQL マネージ インスタンス (プライベート プレビュー) を使用することもできます。
 
 ### <a name="create-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを作成します
@@ -90,9 +90,9 @@ Azure-SSIS 統合ランタイムがない場合は、[SSIS パッケージのデ
 ### <a name="create-a-dummy-dataset-for-output"></a>出力のダミー データセットを作成する
 この出力データセットは、パイプラインのスケジュールを開始するダミーのデータセットです。 頻度は [時間] に設定され、間隔は 1 に設定されています。 したがって、パイプラインは、パイプラインの開始時刻から終了時刻までの間に 1 時間に 1 回実行されます。 
 
-1. Data Factory エディターの左側のペインで、**[...詳細]** -> **[New dataset] \(新しいデータセット)** -> **[Azure SQL]** をクリックします。
+1. Data Factory エディターの左側のペインで、**[...詳細]** -> **[New dataset] (新しいデータセット)** -> **[Azure SQL]** をクリックします。
 
-    ![[詳細] -> [New dataset] \(新しいデータセット)](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-dataset-menu.png)
+    ![[詳細] -> [New dataset] (新しいデータセット)](./media/how-to-invoke-ssis-package-stored-procedure-activity/new-dataset-menu.png)
 2. 次の JSON スニペットを右側のペインの JSON エディターにコピーします。 
     
     ```json

@@ -1,24 +1,19 @@
 ---
-title: "ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン | Microsoft Docs"
-description: "データセンターでの障害発生時にアプリケーションの耐障害性を確保するための Azure のリージョン ペアについて説明します。"
+title: 'ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン | Microsoft Docs'
+description: データセンターでの障害発生時にアプリケーションの耐障害性を確保するための Azure のリージョン ペアについて説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: rayne-wiselman
-manager: cfreeman
-editor: 
-ms.assetid: c2d0a21c-2564-4d42-991a-bc31723f61a4
-ms.service: site-recovery
-ms.workload: storage-backup-recovery
-ms.tgt_pltfrm: na
-ms.devlang: na
+manager: carmonm
+ms.service: multiple
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: raynew
-ms.openlocfilehash: 394f353837433e241e4da6f4accdb5eaa24bae46
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 660ced47b48e981b65c6b9390809e345be8eda2d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン
 
@@ -58,10 +53,10 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 
 表 1 - Azure リージョン ペアの組み合わせ
 
-- > (1) インド西部は、別リージョンと一方向のみでペアになっているため異なります。 インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド中部です。
-- > (2) ブラジル南部は、自身の geo 外のリージョンとペアになっているため特殊です。 ブラジル南部のセカンダリ リージョンは米国中南部ですが、米国中南部のセカンダリ リージョンはブラジル南部ではありません。
-- > (3) 米国政府アイオワのセカンダリ リージョンは米国政府バージニアですが、米国政府バージニアのセカンダリ リージョンは米国政府アイオワではありません。
-- > (4) 米国政府バージニアのセカンダリ リージョンは米国政府テキサスですが、米国政府テキサスのセカンダリ リージョンは米国政府バージニアではありません。
+- (1) インド西部は、別リージョンと一方向のみでペアになっているため異なります。 インド西部のセカンダリ リージョンはインド南部ですが、インド南部のセカンダリ リージョンはインド中部です。
+- (2) ブラジル南部は、自身の geo 外のリージョンとペアになっているため特殊です。 ブラジル南部のセカンダリ リージョンは米国中南部ですが、米国中南部のセカンダリ リージョンはブラジル南部ではありません。
+- (3) 米国政府アイオワのセカンダリ リージョンは米国政府バージニアですが、米国政府バージニアのセカンダリ リージョンは米国政府アイオワではありません。
+- (4) 米国政府バージニアのセカンダリ リージョンは米国政府テキサスですが、米国政府テキサスのセカンダリ リージョンは米国政府バージニアではありません。
 
 
 リージョン ペアの間でワークロードをレプリケートして、Azure の分離と可用性のポリシーを活用することをお勧めします。 たとえば、計画的な Azure システムの更新プログラムは、ペア リージョンに (同時にではなく) 順番にデプロイされます。 つまり、更新プログラムに不具合があっても (めったにありませんが)、両方のリージョンが同時に影響を受けることはありません。 さらに、万一、広範囲にわたって障害が発生した場合は、すべてのペアにおいて、少なくとも一方のリージョンの復旧が優先されます。
@@ -76,7 +71,7 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 ## <a name="cross-region-activities"></a>リージョン間アクティビティ
 図 2 を参照してください。
 
-![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – 災害発生時に他のリージョンでリソースを確実に使用できるように、追加の計算リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](resiliency/resiliency-technical-guidance.md)」を参照してください。
+![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **Azure Compute (PaaS)** – 災害発生時に他のリージョンでリソースを確実に使用できるように、追加の計算リソースを事前にプロビジョニングする必要があります。 詳細については、「[Azure の回復性技術ガイダンス](resiliency/resiliency-technical-guidance.md)」をご覧ください。
 
 ![Storage](./media/best-practices-availability-paired-regions/2Green.png) **Azure Storage** - Azure Storage アカウントの作成時に、geo 冗長ストレージ (GRS) が既定で構成されます。 GRS を使用すると、データはプライマリ リージョン内で 3 回、ペア リージョンで 3 回、自動的にレプリケートされます。 詳細については、「 [Azure Storage 冗長オプション](storage/common/storage-redundancy.md)」をご覧ください。
 

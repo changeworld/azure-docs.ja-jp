@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory を使用した Sybase からのデータ移動 | Microsoft Docs"
-description: "Azure Data Factory を使用して Sybase データベースからデータを移動する方法を説明します。"
+title: Azure Data Factory を使用した Sybase からのデータ移動 | Microsoft Docs
+description: Azure Data Factory を使用して Sybase データベースからデータを移動する方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: b379ee10-0ff5-4974-8c87-c95f82f1c5c6
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 02/02/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 26c0f3216014afdaaa6556537f15f23c844e4c19
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 5bb27fe01a0cfb85c1acb539fdf332b775994805
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

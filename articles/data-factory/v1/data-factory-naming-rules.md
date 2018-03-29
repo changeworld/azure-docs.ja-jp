@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory エンティティに名前を付けるときの規則 | Microsoft Docs"
-description: "Data Factory エンティティの名前付け規則について説明します。"
+title: Azure Data Factory エンティティに名前を付けるときの規則 | Microsoft Docs
+description: Data Factory エンティティの名前付け規則について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: bc5e801d-0b3b-48ec-9501-bb4146ea17f1
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: a6bb9cc567ac9c9658c18bc20e11a6349ec7b930
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 0311c2e2223c60861d2b6c87bfa7747dc079856d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---naming-rules"></a>Azure Data Factory - 名前付け規則
 > [!NOTE]

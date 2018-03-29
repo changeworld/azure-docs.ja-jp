@@ -4,8 +4,8 @@ description: Azure データ ファクトリを作成して、Azure Blob Storage
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: ''
@@ -13,11 +13,11 @@ ms.devlang: python
 ms.topic: hero-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 19e464074bbe5a5453f391c3f50af191580e2fdc
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 83367d85e70a1a83850388c4cb786e93ae194223
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-python"></a>Python を使用してデータ ファクトリとパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

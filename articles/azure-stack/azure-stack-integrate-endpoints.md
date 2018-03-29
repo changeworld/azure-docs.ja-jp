@@ -1,20 +1,20 @@
 ---
-title: "Azure Stack とデータセンターの統合 - エンドポイントの公開"
-description: "データセンターで Azure Stack のエンドポイントを公開する方法を学習します"
+title: Azure Stack とデータセンターの統合 - エンドポイントの公開
+description: データセンターで Azure Stack のエンドポイントを公開する方法を学習します
 services: azure-stack
 author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/21/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
-keywords: 
-ms.openlocfilehash: 8dec686b9ccf87009a23cedf6023f15b84a0f155
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+keywords: ''
+ms.openlocfilehash: 694b8604949406c1c3064fd91bf1fe38f83ee946
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack とデータセンターの統合 - エンドポイントの公開
 Azure Stack は、そのインフラストラクチャ ロールのために仮想 IP アドレス (VIP) を設定します。 この VIP はパブリック IP アドレス プールから割り当てられます。 各 VIP は、ソフトウェア定義のネットワーク レイヤーで、アクセス制御リスト (ACL) で保護されます。 ACL は、ソリューションをさらに強化するために、さまざまな物理スイッチ (TOR や BMC) でも使われます。 デプロイ時に指定された外部 DNS ゾーン内のエンドポイントごとに DNS エントリが作成されます。

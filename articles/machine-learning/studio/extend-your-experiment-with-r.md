@@ -1,10 +1,11 @@
 ---
-title: "R を使用した実験の拡張 | Microsoft Docs"
-description: "R スクリプトの実行モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張する方法。"
+title: R を使用した実験の拡張 | Microsoft Docs
+description: R スクリプトの実行モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張する方法。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 2c038a45-ba4d-42ea-9a88-e67391ef8c0a
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: e9f11ec987a5dd71998f6b23399228554f1dcc11
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99c57cc095c3eb017ada68417b7b36c8773ed3d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="extend-your-experiment-with-r"></a>R を使用した実験の拡張
 [R スクリプトの実行][execute-r-script]モジュール使用して、R 言語によって Azure Machine Learning Studio 機能を拡張できます。

@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory で Azure 統合ランタイムを作成する | Microsoft Docs"
-description: "データのコピーや変換操作のディスパッチに使用される Azure 統合ランタイムを Azure Data Factory で作成する方法を説明します。"
+title: Azure Data Factory で Azure 統合ランタイムを作成する | Microsoft Docs
+description: データのコピーや変換操作のディスパッチに使用される Azure 統合ランタイムを Azure Data Factory で作成する方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: douglasl
-ms.openlocfilehash: 5d665206989ebf41c9ecb2f9fea0134e2e4f52cc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e2ebb3db4d51bf4ec1dea4f2f5cc4cc9dcb2ad70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Azure 統合ランタイムを作成して構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR の詳細については、「[Integration runtime (統合ランタイム)](concepts-integration-runtime.md)」を参照してください。

@@ -1,31 +1,28 @@
 ---
-title: "Visual Studio Mobile Center での Azure Traffic Manager への Real User Measurements の送信 | Microsoft Docs"
-description: "Real User Measurements を Traffic Manager に送信するように、Visual Studio Mobile Center を使用して開発されたモバイル アプリケーションを設定します"
+title: Visual Studio Mobile Center での Azure Traffic Manager への Real User Measurements の送信 | Microsoft Docs
+description: Real User Measurements を Traffic Manager に送信するように、Visual Studio Mobile Center を使用して開発されたモバイル アプリケーションを設定します
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/29/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: 756496e5291d932ee9ac89265291e6892c4304fd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: ''
+ms.openlocfilehash: 893e84b07b365fb0b534e0ddc021b2249c4174cf
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-traffic-manager-with-visual-studio-mobile-center"></a>Visual Studio Mobile Center で Real User Measurements を Traffic Manager に送信する方法
-
->[!NOTE]
->Traffic Manager の Real User Measurements 機能はパブリック プレビューであり、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 この機能の可用性と状態に関する最新の通知については、[Azure Traffic Manager の更新情報](https://azure.microsoft.com/updates/?product=traffic-manager)に関するページをご覧ください。
 
 Real User Measurements を Traffic Manager に送信するように、Visual Studio Mobile Center を使用して開発されたモバイル アプリケーションを設定するには、次の手順に従います。
 
@@ -101,7 +98,7 @@ Real User Measurements を使用するには、次の手順を実行します。
     MobileCenter.start(getApplication(), "<Your Mobile Center AppSecret>", RealUserMeasurements.class);
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Real User Measurements](traffic-manager-rum-overview.md) について確認する
 - [Traffic Manager のしくみ](traffic-manager-overview.md)
 - [Mobile Center](https://docs.microsoft.com/mobile-center/) について確認する

@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: e1bcdb2938d1dcb2743b4c1c523ccefb322dd428
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7b7aa09776045705ce98a472adbbe2f36d827ccc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-integration-modules"></a>Azure Automation 統合モジュール
 PowerShell は、Azure Automation の基盤となるテクノロジです。 Azure Automation は PowerShell を基盤として構築されているため、PowerShell モジュールが Azure Automation の拡張性の鍵となります。 この記事では、"統合モジュール" と呼ばれる Azure Automation での PowerShell モジュールの使用の詳細と、独自の PowerShell モジュールを作成して、Azure Automation 内で統合モジュールとして確実に動作させるためのベスト プラクティスを紹介します。 

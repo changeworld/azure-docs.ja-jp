@@ -1,11 +1,10 @@
 ---
-title: "パイプラインの作成とスケジュール、データ ファクトリのアクティビティの連鎖 | Microsoft Docs"
-description: "Azure Data Factory でデータ パイプラインを作成してデータを移動および変換する方法について説明します。 データ主導ワークフローを作成して、すぐに使える情報を生成します。"
+title: パイプラインの作成とスケジュール、データ ファクトリのアクティビティの連鎖 | Microsoft Docs
+description: Azure Data Factory でデータ パイプラインを作成してデータを移動および変換する方法について説明します。 データ主導ワークフローを作成して、すぐに使える情報を生成します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 13b137c7-1033-406f-aea7-b66f25b313c0
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: c8ddd2b49ca48f3bf232a8650d870a8b7159f66a
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: be071c8138a6782ad144a42d52d737f248ff7a7b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

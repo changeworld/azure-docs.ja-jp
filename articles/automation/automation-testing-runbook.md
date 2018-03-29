@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation での Runbook のテスト | Microsoft Docs"
-description: "Azure Automation で Runbook を発行する前にテストを行い、期待どおりに動作することを確認できます。  この記事では、Runbook のテスト方法と出力の見方について説明します。"
+title: Azure Automation での Runbook のテスト
+description: Azure Automation で Runbook を発行する前にテストを行い、期待どおりに動作することを確認できます。  この記事では、Runbook のテスト方法と出力の見方について説明します。
 services: automation
-documentationcenter: 
-author: georgewallace
-manager: jwhit
-editor: tysonn
-ms.assetid: 7f7db785-52c0-4613-aa12-b02fd32a5182
 ms.service: automation
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 09/12/2016
-ms.author: magoedte;bwren
-ms.openlocfilehash: 49e8dfa341940386f15932ec4346c8811effbf0b
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+manager: carmonm
+ms.openlocfilehash: 531fffe1ed24016d47708a729a3ee7642a1db64a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>Azure Automation での Runbook のテスト
 Runbook のテスト時には [ドラフト バージョン](automation-creating-importing-runbook.md#publishing-a-runbook) が実行され、そのバージョンで行われるすべてのアクションが完了します。 ジョブ履歴は作成されませんが、[テスト出力] ウィンドウに[出力](automation-runbook-output-and-messages.md#output-stream)および[警告とエラー](automation-runbook-output-and-messages.md#message-streams) ストリームが表示されます。 [詳細ストリーム](automation-runbook-output-and-messages.md#message-streams)のメッセージは、[$VerbosePreference 変数](automation-runbook-output-and-messages.md#preference-variables)が [Continue] に設定されている場合のみ [出力] ウィンドウに表示されます。

@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用して MariaDB のデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、MariaDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。"
+title: Azure Data Factory を使用して MariaDB のデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、MariaDB のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 13d1b497ffbe2e5b4b9810acbcd36ef238f9967f
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3c9df676dbf4005c49788ad0128b07348633a2fc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-mariadb-using-azure-data-factory"></a>Azure Data Factory を使用して MariaDB のデータをコピーする 
 
@@ -47,7 +47,7 @@ MariaDB のリンクされたサービスでは、次のプロパティがサポ
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティを **MariaDB** に設定する必要があります。 | [はい] |
-| connectionString | MariaDB に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| connectionString | MariaDB に接続するための ODBC 接続文字列。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例:**

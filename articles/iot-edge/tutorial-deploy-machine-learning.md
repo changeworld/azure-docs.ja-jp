@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/12/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 4201395085dd72eb92b774eaed5980737b2e5de0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1b8a6079a68c50f80b593a1f56bc5256047ef31c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploy-azure-machine-learning-as-an-iot-edge-module---preview"></a>Azure Machine Learning を IoT Edge モジュールとして展開する - プレビュー
 
@@ -44,7 +44,7 @@ Azure ML のモジュール管理を実行しているマシンで、GitHub の 
 このトレーニング済みモデルを使用して、IoT Edge デバイスに展開できるコンテナーを作成します。 次のコマンドを使用します。
 
    * モデルを登録する。
-   * マニフェストを作成する。
+   * マニフェストを作成します。
    * *machinelearningmodule* という名前の Docker コンテナー イメージを作成する。
    * Azure Container Service (AKS) クラスターにイメージをデプロイする。
 

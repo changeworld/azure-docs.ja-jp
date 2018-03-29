@@ -1,12 +1,13 @@
 ---
-title: "Machine Learning アルゴリズムの選択方法 | Microsoft Docs"
-description: "クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning のアルゴリズムを選択する方法"
+title: Machine Learning アルゴリズムの選択方法 | Microsoft Docs
+description: クラスタリング、分類、または回帰の実験で教師あり学習と教師なし学習用の Azure Machine Learning のアルゴリズムを選択する方法
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: pakalra
+ms.author: pakalra
+manager: cgronlun
 editor: cgronlun
-tags: 
+tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.devlang: na
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/18/2017
-ms.author: garye
-ms.openlocfilehash: 1b30e4dbf20cac653c323720de779aa5f8edba68
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: e1c7030a5f0c6e13653b302fcb48e7d4efa232c7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Microsoft Azure Machine Learning のアルゴリズムの選択方法
 「どのような機械学習アルゴリズムを使用すべきか」という質問への答えは、 常に「場合による」です。 データのサイズ、品質、および性質によって異なります。 得られた回答で何を行うかによって異なります。 アルゴリズムの数値演算が使用しているコンピューターの命令にどのように変換されるかによって異なります。 そして、どれだけ時間があるかによって異なります。 最も経験豊富なデータ科学者であっても、試してみる前にどのアルゴリズムが最適か判断することはできません。
@@ -187,7 +187,7 @@ Support vector machine (SVM) は、可能な限り広いマージンでクラス
 
 ***標準的な Support vector machine のクラス境界は、2 つのクラスを分離するマージンを最大化します***
 
-Microsoft Research のもう 1 つの所産である [two-class locally deep SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) (2 クラス ローカル詳細 SVM) は、SVM の非線形バリエーションであり、線形バージョンの速度とメモリ効率性をほぼ維持しています。 線形アプローチでは十分に正確な回答を得られない場合に最適です。 速さを維持するために、問題が多数の小さな線形 SVM 問題に分解されています。 仕組みについては、 [詳細な説明](http://research.microsoft.com/um/people/manik/pubs/Jose13.pdf) をご覧ください。
+Microsoft Research のもう 1 つの所産である [two-class locally deep SVM](https://msdn.microsoft.com/library/azure/dn913070.aspx) (2 クラス ローカル詳細 SVM) は、SVM の非線形バリエーションであり、線形バージョンの速度とメモリ効率性をほぼ維持しています。 線形アプローチでは十分に正確な回答を得られない場合に最適です。 速さを維持するために、問題が多数の小さな線形 SVM 問題に分解されています。 仕組みについては、 [詳細な説明](http://proceedings.mlr.press/v28/jose13.html) をご覧ください。
 
 非線形 SVM の巧妙な拡張機能を使用して、 [one-class SVM](https://msdn.microsoft.com/library/azure/dn913103.aspx) (1 クラス SVM) はデータ セット全体を正確に示す境界を描画します。 異常検出に有効です。 その境界のはるか外側に位置する新しいデータ ポイントは、注目するのに十分な異常値です。
 

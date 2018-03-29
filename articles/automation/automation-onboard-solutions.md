@@ -6,16 +6,14 @@ ms.service: automation
 author: eamonoreilly
 ms.author: eamono
 manager: carmonm
-ms.devlang: na
 ms.topic: tutorial
-ms.tgt_pltfrm: na
 ms.date: 03/16/2018
 ms.custom: mvc
-ms.openlocfilehash: cde701672034b3c0edc46f1439488bcf53704df2
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 97db493b77483d68860c6124f1063bc4a743c3be
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="onboard-update-and-change-tracking-solutions-to-azure-automation"></a>Update と Change Tracking ソリューションの Azure Automation への配布準備をする
 

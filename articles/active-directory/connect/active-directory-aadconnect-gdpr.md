@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect と一般データ保護規則 | Microsoft Docs"
-description: "このドキュメントでは、Azure AD Connect で GDPR コンプライアンスを取得する方法について説明します。"
+title: Azure AD Connect と一般データ保護規則 | Microsoft Docs
+description: このドキュメントでは、Azure AD Connect で GDPR コンプライアンスを取得する方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: billmath
 ms.openlocfilehash: c3956dd379961b119f65bdebe1f5a8038c4fa8f0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="gdpr-compliance-and-azure-ad-connect"></a>GDPR コンプライアンスと Azure AD Connect 
 

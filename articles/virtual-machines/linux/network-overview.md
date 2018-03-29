@@ -1,11 +1,11 @@
 ---
-title: "Azure における仮想ネットワークと Linux 仮想マシン | Microsoft Docs"
-description: "ネットワークは Azure における Linux 仮想マシンの作成の基本に関係するため、ここで説明します。"
+title: Azure における仮想ネットワークと Linux 仮想マシン | Microsoft Docs
+description: ネットワークは Azure における Linux 仮想マシンの作成の基本に関係するため、ここで説明します。
 services: virtual-machines-linux
-documentationcenter: 
-author: davidmu1
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 5493e9f7-7d45-4e98-be9a-657a53708746
 ms.service: virtual-machines-linux
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: davidmu
-ms.openlocfilehash: 9399376e13eac54fa2b539f632ecdd1de5879978
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: iainfou
+ms.openlocfilehash: 71a308f2a39720e9fd1ab9297971574fe35dd3e3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="virtual-networks-and-virtual-machines-in-azure"></a>Azure における仮想ネットワークと仮想マシン 
 

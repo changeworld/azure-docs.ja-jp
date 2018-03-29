@@ -1,11 +1,11 @@
 ---
-title: "アプリケーションの種類 - Azure AD B2C | Microsoft Docs"
-description: "Azure Active Directory B2C で構築できるアプリケーションの種類。"
+title: アプリケーションの種類 - Azure AD B2C | Microsoft Docs
+description: Azure Active Directory B2C で構築できるアプリケーションの種類。
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: bb9d4abe-0db7-4bd9-b0c4-2f43b2c9cf33
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/06/2016
-ms.author: dastrock
-ms.openlocfilehash: 5ff146460ebc603662340d64be5dc59ea579f6a4
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu1
+ms.openlocfilehash: 011426f3d8eab4eb2513270a9bcd1562e3c12b31
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-types-of-applications"></a>Azure Active Directory B2C: アプリケーションの種類
 Azure Active Directory (Azure AD) B2C は、さまざまな最新アプリ アーキテクチャの認証をサポートします。 すべての認証は、業界標準のプロトコルである [OAuth 2.0](active-directory-b2c-reference-protocols.md) または [OpenID Connect](active-directory-b2c-reference-protocols.md) に基づいています。 このドキュメントでは、利用する言語やプラットフォームを問わず、作成できるアプリの種類について簡単に説明します。 また、 [アプリケーションの構築を始める](active-directory-b2c-overview.md#get-started)前にシナリオの概要を理解することもできます。

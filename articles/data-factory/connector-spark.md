@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用して Spark からデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、Spark のデータをサポートされているシンク データ ストアにコピーする方法について説明します。"
+title: Azure Data Factory を使用して Spark からデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Spark のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 2682b6d149fc9a8b1a1a70351ea90fbd701dd4ec
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: fcdcc4cf948550467257fa6cbe9287cd26d49962
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-spark-using-azure-data-factory"></a>Azure Data Factory を使用して Spark からデータをコピーする 
 
@@ -52,7 +52,7 @@ Spark のリンクされたサービスでは、次のプロパティがサポ�
 | thriftTransportProtocol | Thrift レイヤーで使用するトランスポート プロトコル。 <br/>使用可能な値: **Binary**、**SASL**、**HTTP** | いいえ  |
 | authenticationType | Spark サーバーへのアクセスに使用する認証方法。 <br/>使用可能な値: **Anonymous**、**Username**、**UsernameAndPassword**、**WindowsAzureHDInsightService** | [はい] |
 | username | Spark サーバーへのアクセスに使用するユーザー名。  | いいえ  |
-| password | ユーザーに対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
+| password | ユーザーに対応するパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | いいえ  |
 | httpPath | Spark サーバーに対応する部分的な URL。  | いいえ  |
 | enableSsl | SSL を使用して、サーバーへの接続を暗号化するかどうかを指定します。 既定値は false です。  | いいえ  |
 | trustedCertPath | SSL 経由で接続するときにサーバーを検証するための信頼された CA 証明書を含む .pem ファイルの完全なパス。 このプロパティは、セルフホステッド IR で SSL を使用する場合にのみ設定できます。 既定値は、IR でインストールされる cacerts.pem ファイルです。  | いいえ  |

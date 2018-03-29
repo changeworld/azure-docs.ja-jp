@@ -1,31 +1,28 @@
 ---
-title: "Azure Stack ユーザーが仮想マシンを使用できるようにする | Microsoft Docs"
-description: "Azure Stack ユーザーが仮想マシンを使用できるようにするためのチュートリアル"
+title: Azure Stack ユーザーが仮想マシンを使用できるようにする | Microsoft Docs
+description: Azure Stack ユーザーが仮想マシンを使用できるようにするためのチュートリアル
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/23/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: d169a18df8916cfb8dd30b00248099a3d374aacc
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: af97f32736959f8ebf8f3c4fbca400d6b0c41f3e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Azure Stack ユーザーが仮想マシンを使用できるようにする
-
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
-
 Azure Stack のクラウド管理者は、ユーザー (テナントとも呼ばれます) がサブスクライブできるオファーを作成できます。 ユーザーはサブスクリプションを使用して Azure Stack サービスを利用できます。
 
 この記事では、オファーを作成し、それをテストする方法について説明します。 テストの場合は、ユーザーとしてポータルにログインし、オファーにサブスクライブしてから、そのサブスクリプションを使用して仮想マシンを作成します。
@@ -117,7 +114,7 @@ Marketplace にさまざまな項目を追加する方法については、「[A
 
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザーとしてユーザー ポータルにログインし、**[サブスクリプションの取得]** をクリックします。
    - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
-   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
+   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external になります。
 
    ![サブスクリプションの取得](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
@@ -135,7 +132,7 @@ Marketplace にさまざまな項目を追加する方法については、「[A
 
    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 ユーザーとしてユーザー ポータルにログインします。
       - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
-   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
+   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external になります。
 
    b.  ダッシュボードで、**[新規]** > **[コンピューティング]** > **[Windows Server 2016 Datacenter Eval]** の順にクリックし、**[作成]** をクリックします。
 

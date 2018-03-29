@@ -1,24 +1,24 @@
 ---
-title: "OMS の Agent Health ソリューション | Microsoft Docs"
-description: "この記事の目的は、OMS または System Center Operations Manager に対して直接報告を行うエージェントの正常性を Agent Health ソリューションで監視する方法についてわかりやすく説明することです。"
+title: OMS の Agent Health ソリューション | Microsoft Docs
+description: この記事の目的は、OMS または System Center Operations Manager に対して直接報告を行うエージェントの正常性を Agent Health ソリューションで監視する方法についてわかりやすく説明することです。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: operations-management-suite
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 939bf5ae6ee306008567ce62ddf8a6d1f05da60a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.openlocfilehash: d7eb1550a21e66d4ae4cc4932b30a90956c60d1e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 #  <a name="agent-health-solution-in-oms"></a>OMS の Agent Health ソリューション
 OMS の Agent Health ソリューションを使用すると、OMS ワークスペースに対して、または OMS に接続された System Center Operations Manager 管理グループに対して直接報告を行うすべてのエージェントの中で、運用データを送信しているエージェントと応答していないエージェントを効率的に把握できます。  また、デプロイされているエージェントの数や地理的な分布を追跡できるほか、Azure を初めとする各種クラウド環境やオンプレミスにデプロイされているエージェントの分布を把握するためのその他のクエリを実行することができます。    
@@ -98,25 +98,6 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 次の表は、このソリューションによって収集されたレコードを探すログ検索の例です。
 
 | クエリ | [説明] |
-| --- | --- |
-| Type=Heartbeat &#124; distinct Computer |エージェントの総数 |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-24HOURS |直近 24 時間応答がなかったエージェントの数 |
-| Type=Heartbeat &#124; measure max(TimeGenerated) as LastCall by Computer &#124; where LastCall < NOW-15MINUTES |直近 15 分間応答がなかったエージェントの数 |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer IN {Type=Heartbeat TimeGenerated>NOW-24HOURS &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |(直近 24 時間) オンライン状態のコンピューター |
-| Type=Heartbeat TimeGenerated>NOW-24HOURS Computer NOT IN {Type=Heartbeat TimeGenerated>NOW-30MINUTES &#124; distinct Computer} &#124; measure max(TimeGenerated) as LastCall by Computer |(直近 24 時間のうち) 直近 30 分間オフライン状態であったエージェントの総数 |
-| Type=Heartbeat &#124; measure countdistinct(Computer) by OSType |時間の経過に伴うエージェント数の傾向を OSType ごとに取得|
-| Type=Heartbeat&#124;measure countdistinct(Computer) by OSType |OS の種類ごとの分布 |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by Version |エージェントのバージョンごとの分布 |
-| Type=Heartbeat&#124;measure count() by Category |エージェントのカテゴリごとの分布 |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by ManagementGroupName | 管理グループごとの分布 |
-| Type=Heartbeat&#124;measure countdistinct(Computer) by RemoteIPCountry |エージェントの地理的な位置 |
-| Type=Heartbeat IsGatewayInstalled=true&#124;Distinct Computer |インストールされている OMS ゲートウェイの数 |
-
-
->[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)にアップグレードされている場合、上記のクエリは次のように変更されます。
->
->| クエリ | [説明] |
 |:---|:---|
 | Heartbeat &#124; distinct Computer |エージェントの総数 |
 | Heartbeat &#124; summarize LastCall = max(TimeGenerated) by Computer &#124; where LastCall < ago(24h) |直近 24 時間応答がなかったエージェントの数 |
@@ -130,6 +111,9 @@ Operations Manager 管理サーバーに対して報告を行う各エージェ�
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | 管理グループごとの分布 |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |エージェントの地理的な位置 |
 | Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |インストールされている OMS ゲートウェイの数 |
+
+
+
 
 ## <a name="next-steps"></a>次の手順
 

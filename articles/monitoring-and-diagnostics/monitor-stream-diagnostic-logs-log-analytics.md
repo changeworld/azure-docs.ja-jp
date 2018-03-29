@@ -1,12 +1,12 @@
 ---
-title: "Azure 診断ログの Log Analytics へのストリーミング | Microsoft Docs"
-description: "Azure 診断ログを Log Analytics ワークスペースにストリーミングする方法について説明します。"
+title: Azure 診断ログの Log Analytics へのストリーミング | Microsoft Docs
+description: Azure 診断ログを Log Analytics ワークスペースにストリーミングする方法について説明します。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/01/2017
 ms.author: johnkem
-ms.openlocfilehash: 9440bd7f872914887c1f6e50f08a3c273536fcf8
-ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
+ms.openlocfilehash: 517ce3547f471dd1b40c79b2f087b02ad7f51b85
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/02/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Azure 診断ログの Log Analytics へのストリーミング
 Azure Log Analytics には、ポータル、PowerShell コマンドレット、Azure CLI のいずれかの方法を使い、**[Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)**をほぼリアルタイムでストリーミングすることができます。
@@ -40,23 +40,23 @@ Azure Log Analytics は、ログの検索と分析に対応したフレキシブ
 ## <a name="stream-diagnostic-logs-using-the-portal"></a>ポータルを使用して診断ログをストリーミングする
 1. ポータルで、Azure Monitor に移動し、**[診断設定]** をクリックします。
 
-    ![Azure Monitor の [監視] セクション](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-blade.png)
+    ![Azure Monitor の [監視] セクション](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-blade.png)
 
 2. 必要に応じて、リソース グループまたはリソースの種類で一覧をフィルタリングして、診断設定を行うリソースをクリックします。
 
 3. 選択したリソースの設定が存在しない場合は、設定を作成するように求められます。 [診断を有効にする] をクリックします。
 
-   ![診断設定の追加 - 既存の設定が存在しない](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-none.png)
+   ![診断設定の追加 - 既存の設定が存在しない](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-none.png)
 
    リソースに既存の設定が存在する場合は、このリソースで構成済みの設定の一覧が表示されます。 [診断設定の追加] をクリックします。
 
-   ![診断設定の追加 - 既存の設定が存在する](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-multiple.png)
+   ![診断設定の追加 - 既存の設定が存在する](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-multiple.png)
 
 3. 設定に名前を付け、**[Log Analytics への送信]** チェック ボックスをオンにして、Log Analytics ワークスペースを選択します。
    
-   ![診断設定の追加 - 既存の設定が存在する](media/monitoring-stream-diagnostic-logs-to-event-hubs/diagnostic-settings-configure.png)
+   ![診断設定の追加 - 既存の設定が存在する](media/monitoring-stream-diagnostic-logs-to-log-analytics/diagnostic-settings-configure.png)
 
-4. **[ Save]** をクリックします。
+4. **[Save]** をクリックします。
 
 しばらくすると、このリソースの設定一覧に新しい設定が表示され、新しいイベント データが生成されるとすぐに、診断ログがそのワークスペースにストリーミングされます。 イベントが生成されてから、それが Log Analytics に表示されるまでに 15 分ほどかかる場合があるので注意してください。
 
@@ -83,5 +83,5 @@ workspaceId プロパティに指定するのは、ワークスペースの完�
 ポータルの [ログ検索] ブレードまたは Log Analytics の機能である [高度な分析] から、Log Management ソリューションの範囲内の診断ログを AzureDiagnostics テーブルで照会することができます。 他にも、[Azure リソース向けのソリューションがいくつか](../log-analytics/log-analytics-add-solutions.md)存在します。こうしたソリューションをインストールすることで、Log Analytics に送信中のログ データからすぐに洞察を得ることができます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure 診断ログの詳細を確認する](monitoring-overview-of-diagnostic-logs.md)
