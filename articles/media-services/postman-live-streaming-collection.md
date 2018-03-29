@@ -1,11 +1,11 @@
 ---
-title: "Azure Live Streaming REST 呼び出し用の Postman コレクションのインポート"
-description: "この記事では、Azure Media Services REST 呼び出しのための Postman コレクションの定義を示します。"
+title: Azure Live Streaming REST 呼び出し用の Postman コレクションのインポート
+description: この記事では、Azure Media Services REST 呼び出しのための Postman コレクションの定義を示します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2018
 ms.author: juliako
-ms.openlocfilehash: 6d82367a4d1c423be3b46e632c792fac3ca168d1
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: bb691b6266a02663a095703b619bf95b423a6838
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="import-a-postman-collection-with-live-streaming-operations"></a>ライブ ストリーミング操作による Postman コレクションのインポート
 
@@ -137,7 +137,7 @@ ms.lasthandoff: 02/22/2018
                                     "",
                                     "var jsonData = pm.response.json();",
                                     "tests[\"Has State\"] = jsonData.State !== null;",
-                                    "tests[\"Has Encoding\"] = jsonData.EncodingType == \"Basic\";",
+                                    "tests[\"Has Encoding\"] = jsonData.EncodingType == \"Standard\";",
                                     "",
                                     ""
                                 ]
@@ -184,7 +184,7 @@ ms.lasthandoff: 02/22/2018
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\r\n    \"Name\": \"MyPostmanChannel\",\r\n    \"Description\": \"My Live Encoding channel from Postman\",\r\n    \"EncodingType\": \"Basic\",\r\n    \"Encoding\": null,\r\n    \"Slate\": null,\r\n    \"Input\": {\r\n        \"KeyFrameInterval\": null,\r\n        \"StreamingProtocol\": \"RTMP\",\r\n        \"AccessControl\": {\r\n            \"IP\": {\r\n                \"Allow\": [\r\n                    {\r\n                        \"Name\": \"Allow All\",\r\n                        \"Address\": \"0.0.0.0\",\r\n                        \"SubnetPrefixLength\": 0\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"Endpoints\": []\r\n    },\r\n    \"Preview\": {\r\n        \"AccessControl\": {\r\n            \"IP\": {\r\n                \"Allow\": [\r\n                    {\r\n                        \"Name\": \"Allow All\",\r\n                        \"Address\": \"0.0.0.0\",\r\n                        \"SubnetPrefixLength\": 0\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"Endpoints\": []\r\n    },\r\n    \"Output\": {\r\n        \"Hls\": {\r\n            \"FragmentsPerSegment\": \"1\"\r\n        }\r\n    },\r\n    \"CrossSiteAccessPolicies\": {\r\n        \"ClientAccessPolicy\": null,\r\n        \"CrossDomainPolicy\": null\r\n    }\r\n}\r\n"
+                            "raw": "{\r\n    \"Name\": \"MyPostmanChannel\",\r\n    \"Description\": \"My Live Encoding channel from Postman\",\r\n    \"EncodingType\": \"Standard\",\r\n    \"Encoding\": null,\r\n    \"Slate\": null,\r\n    \"Input\": {\r\n        \"KeyFrameInterval\": null,\r\n        \"StreamingProtocol\": \"RTMP\",\r\n        \"AccessControl\": {\r\n            \"IP\": {\r\n                \"Allow\": [\r\n                    {\r\n                        \"Name\": \"Allow All\",\r\n                        \"Address\": \"0.0.0.0\",\r\n                        \"SubnetPrefixLength\": 0\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"Endpoints\": []\r\n    },\r\n    \"Preview\": {\r\n        \"AccessControl\": {\r\n            \"IP\": {\r\n                \"Allow\": [\r\n                    {\r\n                        \"Name\": \"Allow All\",\r\n                        \"Address\": \"0.0.0.0\",\r\n                        \"SubnetPrefixLength\": 0\r\n                    }\r\n                ]\r\n            }\r\n        },\r\n        \"Endpoints\": []\r\n    },\r\n    \"Output\": {\r\n        \"Hls\": {\r\n            \"FragmentsPerSegment\": \"1\"\r\n        }\r\n    },\r\n    \"CrossSiteAccessPolicies\": {\r\n        \"ClientAccessPolicy\": null,\r\n        \"CrossDomainPolicy\": null\r\n    }\r\n}\r\n"
                         },
                         "url": {
                             "raw": "{{ApiEndpoint}}/Channels",

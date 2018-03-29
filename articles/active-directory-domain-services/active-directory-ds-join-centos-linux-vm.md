@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: CentOS VM の管理対象ドメインへの参加 | Microsoft Docs"
-description: "CentOS Linux 仮想マシンを Azure AD Domain Services に参加させる"
+title: 'Azure Active Directory Domain Services: CentOS VM の管理対象ドメインへの参加 | Microsoft Docs'
+description: CentOS Linux 仮想マシンを Azure AD Domain Services に参加させる
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 9f3b6425f3c13080985fb168f46ea1f6be5d18ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: f7095e82605d12221ba7beb0c48fd3eda75a2e7b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-centos-linux-virtual-machine-to-a-managed-domain"></a>CentOS Linux 仮想マシンを管理対象ドメインに参加させる
 この記事では、Azure 内の CentOS Linux 仮想マシンを Azure AD Domain Services の管理対象ドメインに参加させる方法について説明します。
@@ -133,7 +133,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 
 ## <a name="troubleshooting-domain-join"></a>ドメイン参加のトラブルシューティング
-「 [Troubleshooting domain join (ドメイン参加のトラブルシューティング)](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) 」を参照してください。
+「 [Troubleshooting domain join (ドメイン参加のトラブルシューティング)](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) 」を参照してください。
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)

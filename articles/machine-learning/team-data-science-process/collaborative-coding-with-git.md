@@ -1,23 +1,23 @@
 ---
-title: "Git を使用した共同コーディング- Azure Machine Learning | Microsoft Docs"
-description: "アジャイル計画で Git を使用したデータ サイエンス プロジェクトの共同コード開発を行う方法です。"
-documentationcenter: 
+title: Git を使用した共同コーディング- Azure Machine Learning | Microsoft Docs
+description: アジャイル計画で Git を使用したデータ サイエンス プロジェクトの共同コード開発を行う方法です。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: e6808c0d9d4ca14101eeebe8b3e286d64e2328f9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: f3eabf0b754f777f25811d30c158b647b1d3954e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="collaborative-coding-with-git"></a>Git を使用した共同コーディング
 
@@ -57,7 +57,7 @@ Git Bash コマンドで新しいブランチを作成することもできま�
     git checkout -b <new branch name> <base branch name>
 
 
-## 手順 2.<a name='WorkonaBranchandCommittheChanges-2'></a>ブランチで作業し、変更をコミットする 
+## 2.<a name='WorkonaBranchandCommittheChanges-2'></a>ブランチで作業し、変更をコミットする 
 
 作業項目の *data\_ingestion* ブランチに、ローカル コンピューター上のブランチへの R ファイルの追加などの変更を加えるとします。 Git シェルでこの作業項目のブランチにいる場合は、次の Git コマンドを使用して、そのブランチに追加した R ファイルをコミットできます。
 
@@ -68,7 +68,7 @@ Git Bash コマンドで新しいブランチを作成することもできま�
 
 ![5](./media/collaborative-coding-with-git/5-sprint-push-to-branch.png)
 
-## 3.<a name='CreateapullrequestonVSTS-3'></a>VSTS でプル要求を作成する 
+## 手順 3.<a name='CreateapullrequestonVSTS-3'></a>VSTS でプル要求を作成する 
 
 いくつかのコミットとプッシュの後、現在のブランチをそのベース ブランチにマージする準備ができたら、VSTS サーバーに**プル要求**を送信できます。 
 
@@ -110,7 +110,7 @@ Git Bash コマンドで新しいブランチを作成することもできま�
 
 
  
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [データ サイエンス タスクの実行](execute-data-science-tasks.md)に関するページに、ユーティリティを使用して、インタラクティブなデータ探索、データ分析、レポート作成、およびモデル作成などの複数の共通データ サイエンス タスクを完了する方法が示されています。
 

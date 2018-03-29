@@ -2,7 +2,7 @@
 
 1. <a name="getnet"></a>クラスター ネットワーク リソースの名前を取得します。
 
-    a. プライマリ レプリカのホストとなっている Azure 仮想マシンに RDP で接続します。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 プライマリ レプリカのホストとなっている Azure 仮想マシンに RDP で接続します。 
 
     b. フェールオーバー クラスター マネージャーを開きます。
 
@@ -13,7 +13,7 @@
 2. <a name="addcap"></a>クライアント アクセス ポイントを追加します。  
     クライアント アクセス ポイントは、アプリケーションが可用性グループ内のデータベースに接続するために使用するネットワーク名です。 クライアント アクセス ポイントは、フェールオーバー クラスター マネージャーで作成します。
 
-    a. クラスター名を展開して、 **[ロール]**をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 クラスター名を展開して、 **[ロール]**をクリックします。
 
     b. **[ロール]** ウィンドウで、可用性グループ名を右クリックし、**[リソースの追加]** > **[クライアント アクセス ポイント]** の順にクリックします。
 
@@ -26,12 +26,12 @@
 
 3. <a name="congroup"></a>可用性グループの IP リソースを構成します。
 
-    a. **[リソース]** タブをクリックして、作成したクライアント アクセス ポイントを展開します。  
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[リソース]** タブをクリックして、作成したクライアント アクセス ポイントを展開します。  
     クライアント アクセス ポイントはオフラインになっています。
 
    ![クライアント アクセス ポイント](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. IP リソースを右クリックし、プロパティをクリックします。 この IP アドレス名はメモしておき、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
+    b. IP リソースを右クリックし、[プロパティ] をクリックします。 この IP アドレス名はメモしておき、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
 
     c. **[IP アドレス]** で **[静的 IP アドレス]** をクリックします。 静的 IP アドレスを、Azure Portal でロード バランサーのアドレス設定時に使用したものと同じアドレスに設定します。
 
@@ -43,7 +43,7 @@
 
 4. <a name = "dependencyGroup"></a>SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するように設定します。
 
-    a. フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。
 
     b. **[その他のリソース]** の下の **[リソース]** タブで可用性リソース グループを右クリックし、**[プロパティ]** をクリックします。 
 
@@ -51,17 +51,17 @@
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/97-propertiesdependencies.png) 
 
-    d. **[OK]**をクリックします。
+    d. Click **OK**.
 
 5. <a name="listname"></a>クライアント アクセス ポイント リソースが IP アドレスに依存するように設定します。
 
-    a. フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 フェールオーバー クラスター マネージャーで、**[ロール]**、可用性グループの順にクリックします。 
 
     b. **[リソース]** タブで **[サーバー名]** の下にあるクライアント アクセスポイント リソースを右クリックし、**[プロパティ]** をクリックします。 
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. **[依存関係]** タブをクリックします。IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]**をクリックします。 
+    c. **[依存関係]** タブをクリックします。IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 Click **OK**. 
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 
@@ -73,12 +73,12 @@
 
 6. <a name="setparam"></a>PowerShell でクラスターのパラメーターを設定します。
     
-    a. いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。     
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 いずれかの SQL Server インスタンスに次の PowerShell スクリプトをコピーします。 環境に合わせて変数を更新してください。     
     
     ```PowerShell
     $ClusterNetworkName = "<MyClusterNetworkName>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name)
     $IPResourceName = "<IPResourceName>" # the IP Address resource name
-    $ILBIP = “<n.n.n.n>” # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
+    $ILBIP = "<n.n.n.n>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
     [int]$ProbePort = <nnnnn>
     
     Import-Module FailoverClusters

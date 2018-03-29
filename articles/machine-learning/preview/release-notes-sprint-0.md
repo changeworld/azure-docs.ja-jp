@@ -1,6 +1,6 @@
 ---
-title: "Azure ML Workbench リリース ノート: スプリント 0 - 2017 年 10 月"
-description: "このドキュメントでは、Azure ML のスプリント 0 リリースに対する更新について詳しく説明します"
+title: 'Azure ML Workbench リリース ノート: スプリント 0 - 2017 年 10 月'
+description: このドキュメントでは、Azure ML のスプリント 0 リリースに対する更新について詳しく説明します
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 10/12/2017
 ms.openlocfilehash: 37e0a4461e8a0de631a6194a1eb8cc16b610954f
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-0---october-2017"></a>スプリント 0 - 2017 年 10 月 
 

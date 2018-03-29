@@ -1,10 +1,10 @@
 ---
-title: "Azure Batch サービス API を使用してジョブやタスクの出力を Azure Storage に保持する | Microsoft Docs"
-description: "Batch サービス API を使用して Batch タスクおよびジョブの出力を Azure Storage に保持する方法について説明します。"
+title: Azure Batch サービス API を使用してジョブやタスクの出力を Azure Storage に保持する | Microsoft Docs
+description: Batch サービス API を使用して Batch タスクおよびジョブの出力を Azure Storage に保持する方法について説明します。
 services: batch
 author: tamram
 manager: timlt
-editor: 
+editor: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
-ms.openlocfilehash: 2530b7c20347b9fb58aee4dfe693847cf3911741
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa124109bfc9d333469c255c50df0af96a26bebf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
@@ -142,7 +142,7 @@ https://myaccount.blob.core.windows.net/mycontainer/task1/output.txt
 https://myaccount.blob.core.windows.net/mycontainer/task2/output.txt
 ```
 
-Azure Storage 内の仮想ディレクトリの詳細については、「[コンテナー内の BLOB を一覧表示する](../storage/blobs/storage-dotnet-how-to-use-blobs.md#list-the-blobs-in-a-container)」を参照してください。
+Azure Storage 内の仮想ディレクトリの詳細については、「[コンテナー内の BLOB を一覧表示する](../storage/blobs/storage-quickstart-blobs-dotnet.md#list-the-blobs-in-a-container)」を参照してください。
 
 
 ## <a name="diagnose-file-upload-errors"></a>ファイルのアップロード エラーを診断する
@@ -187,7 +187,7 @@ C# 以外の言語で開発している場合は、自分でファイル規則�
 6. サンプルの実行に使用する保持テクノロジを選択するように求められたら、「**2**」と入力して、タスク出力の保持に Batch サービス API を使用してサンプルを実行します。
 7. 必要であれば、サンプルをもう一度実行し、「**3**」と入力して、Batch サービス API を使用して出力を保持するとともに、ファイル規則の標準に準拠して保存先のコンテナーと BLOB のパスに名前を付けます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - .NET 用のファイル規則ライブラリを使用してタスク出力を保持することの詳細については、「[Persist job and task data to Azure Storage with the Batch File Conventions library for .NET to persist](batch-task-output-file-conventions.md) (保持のための .NET 用 Batch ファイル規則ライブラリを使用してジョブやタスクのデータを Azure Storage に保持する)」を参照してください。
 - Azure Batch で出力データを保持するためのその他の方法については、「[ジョブやタスクからの出力を Azure Storage に保存する](batch-task-output.md)」を参照してください。

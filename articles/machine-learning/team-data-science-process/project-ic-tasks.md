@@ -1,27 +1,27 @@
 ---
-title: "個々の共同作成者向けの Team Data Science Process - Azure | Microsoft Docs"
-description: "データ サイエンス チーム プロジェクトの個々の共同作成者のタスクについて概要を説明します。"
-documentationcenter: 
+title: 個々の共同作成者向けの Team Data Science Process - Azure | Microsoft Docs
+description: データ サイエンス チーム プロジェクトの個々の共同作成者のタスクについて概要を説明します。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 526260c3f61a203fe2770a0c6d0d23d95916a2b7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: af60b188fe8db278297e1ece400bf4398e36094a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="individual-contributor-tasks"></a>個々の共同作成者のタスク
 
-このトピックでは、個々の共同作成者がデータ サイエンス チームのために遂行する必要があるタスクの概要を説明します。 [Team Data Science Process](overview.md) (TDSP) を標準とするチーム コラボレーション環境を確立することを目標とします。 このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks](roles-tasks.md)」(Team Data Science Process での役割とタスク) を参照してください。
+このトピックでは、個々の共同作成者がデータ サイエンス チームのために遂行する必要があるタスクの概要を説明します。 目的は、[Team Data Science Process](overview.md) (TDSP) を標準とするチーム コラボレーション環境を確立することです。 このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks](roles-tasks.md)」(Team Data Science Process での役割とタスク) を参照してください。
 
 プロジェクトの TDSP 環境を設定するプロジェクトの個々の共同作成者 (データ サイエンティスト) には、次の図のようなタスクがあります。 
 
@@ -102,7 +102,7 @@ TDSP でデータ サイエンス プロジェクトを実行する手順につ�
 
 Azure ファイル ストレージを DSVM にマウントするには、「[Team Lead tasks for a data science team](team-lead-tasks.md)」(データ サイエンス チームのチーム リーダーのタスク) のセクション 4 の手順を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process で定義されている役割とタスクの詳細な説明へのリンクを次に示します。
 

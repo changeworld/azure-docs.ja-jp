@@ -1,8 +1,8 @@
 ---
-title: "Azure BLOB コンテナー、SQL Server、Hive テーブルのデータのサンプリング | Microsoft Docs"
-description: "さまざまな Azure 環境に格納されているデータを探索する方法について説明します。"
+title: Azure BLOB コンテナー、SQL Server、Hive テーブルのデータのサンプリング | Microsoft Docs
+description: さまざまな Azure 環境に格納されているデータを探索する方法について説明します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: garye;bradsev
-ms.openlocfilehash: 202a70bf17f9cbf655cb4220c4480a5bcc8563f1
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.author: bradsev
+ms.openlocfilehash: 3dede87191b2122168cc9ad2cdf0a27c5e4908b4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="heading"></a>Azure BLOB コンテナー、SQL Server、Hive テーブルのデータのサンプリング
 このドキュメントは、Azure に保存されているデータを収集する方法について取り上げた記事に関連しています。次の 3 つの保存先が対象となります。

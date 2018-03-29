@@ -1,10 +1,10 @@
 ---
-title: "Azure Storage での Shared Access Signatures (SAS) の使用 | Microsoft Docs"
-description: "Shared Access Signature (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage リソースへのアクセスを委任する方法について説明します。"
+title: Azure Storage での Shared Access Signatures (SAS) の使用 | Microsoft Docs
+description: Shared Access Signature (SAS) を使用して、BLOB、キュー、テーブル、ファイルを含む Azure Storage リソースへのアクセスを委任する方法について説明します。
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: craigshoemaker
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 46fd99d7-36b3-4283-81e3-f214b29f1152
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
-ms.author: tamram
-ms.openlocfilehash: 32e92e6ffc376d27297810596691f0371770e86d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: d3f8b3261f9e2e86dbcaa41b92111545abeffe54
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) の使用
 
@@ -113,7 +113,7 @@ BLOB に読み書きアクセス許可を付与するサービス SAS URI の例
 https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=Z%2FRHIX5Xcg0Mq2rqI3OlWTjEg2tYkboXr1P9ZUXDtkk%3D
 ```
 
-| 名前 | SAS の部分 | Description |
+| Name | SAS の部分 | [説明] |
 | --- | --- | --- |
 | Blob URI |`https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt` |BLOB のアドレス。 HTTPS の使用を強くお勧めします。 |
 | ストレージ サービスのバージョン |`sv=2015-04-05` |ストレージ サービス バージョン 2012-02-12 以降では、このパラメーターは、使用するバージョンを示します。 |
@@ -133,7 +133,7 @@ https://myaccount.blob.core.windows.net/sascontainer/sasblob.txt?sv=2015-04-05&s
 https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015-04-05&ss=bf&srt=s&st=2015-04-29T22%3A18%3A26Z&se=2015-04-30T02%3A23%3A26Z&sr=b&sp=rw&sip=168.1.5.60-168.1.5.70&spr=https&sig=F%6GRVAZ5Cdj2Pw4tgU7IlSTkWgn7bUkkAg8P6HESXwmf%4B
 ```
 
-| 名前 | SAS の部分 | Description |
+| Name | SAS の部分 | [説明] |
 | --- | --- | --- |
 | リソース URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Blob service エンドポイントと、(GET を使用して呼び出された場合は) サービスのプロパティを取得するパラメーターまたは (SET を使用して呼び出された場合は) サービスのプロパティを設定するパラメーターです。 |
 | サービス |`ss=bf` |SAS は BLOB およびファイル サービスに適用されます。 |
@@ -223,7 +223,7 @@ Shared Access Signature の使用に関する次の推奨事項に従うと、�
 2. **可能な場合は、保存されているアクセス ポリシーを参照します。** 保存されているアクセス ポリシーを使用すると、ストレージ アカウント キーを再生成せずに、アクセス許可を失効させることが可能になります。 これらの有効期限をきわめて遠い将来 (または無期限) に設定し、それがさらに将来へ移動するように、定期的に更新されるようにします。
 3. **アドホック SAS には、短期間の有効期限を使用します。** こうすると、SAS が侵害された場合でも、有効である期間はほんの短い期間になります。 この方法は、保存されているアクセス ポリシーを参照できない場合に特に重要です。 また、短期間の有効期限は、BLOB にアップロード可能な時間が制限されるので、BLOB に書き込むことのできるデータの量も制限します。
 4. **必要に応じて、クライアントに SAS を自動更新させます。** クライアントは、SAS を提供するサービスが利用不可である場合に再試行する時間を考慮して、有効期限までに余裕を持って SAS を更新する必要があります。 使用する SAS が、すぐに実行する短期間の少数の操作用であり、操作が、指定された有効期限の前に完了する予定である場合は、SAS が更新されないため、この方法は必要ありません。 ただし、クライアントが SAS 経由で日常的に要求を実行する場合は、有効期限に注意が必要になる可能性があります。 重要な考慮事項は、SAS の有効期限を短くする必要性 (前述のように) と、更新の完了前に SAS の期限が切れることによる中断を避けるためにクライアントが早めに更新を要求する必要性とのバランスです。
-5. **SAS の開始時刻に注意します。** SAS の開始時刻を [**現在**] に設定すると、クロック スキュー (さまざまなコンピューター間での現在時刻の差) により、最初の数分間にエラーが断続的に表示される場合があります。 一般に、開始時刻は 15 分以上前になるように設定します。 または、まったく設定せず、すべての場合ですぐに有効になるようにします。 同じことが、一般的には有効期限にも適用されます。どの要求でも、前後 15 分以内のクロック スキューが発生する可能性があることを憶えておいてください。 2012-02-12 より前の REST バージョンを使用するクライアントの場合、保存されているアクセス ポリシーを参照しない SAS の最長期間は 1 時間であり、それより長い期間を指定するポリシーはすべて失敗します。
+5. **SAS の開始時刻に注意します。** SAS の開始時刻を **[現在]** に設定すると、クロック スキュー (さまざまなコンピューター間での現在時刻の差) により、最初の数分間にエラーが断続的に表示される場合があります。 一般に、開始時刻は 15 分以上前になるように設定します。 または、まったく設定せず、すべての場合ですぐに有効になるようにします。 同じことが、一般的には有効期限にも適用されます。どの要求でも、前後 15 分以内のクロック スキューが発生する可能性があることを憶えておいてください。 2012-02-12 より前の REST バージョンを使用するクライアントの場合、保存されているアクセス ポリシーを参照しない SAS の最長期間は 1 時間であり、それより長い期間を指定するポリシーはすべて失敗します。
 6. **アクセス先のリソースを具体的に指定します。** セキュリティのベスト プラクティスは、必要最小限の権限をユーザーに付与することです。 ユーザーに必要なのは、1 つのエンティティへの読み取りアクセスだけの場合は、すべてのエンティティへの読み取り/書き込み/削除アクセスではなく、その 1 つのエンティティへの読み取りアクセスだけをユーザーに許可します。 これは、攻撃者の管理下での SAS の機能を低下させるため、SAS が侵害された場合に損害を抑えるためにも役立ちます。
 7. **アカウントは、SAS によるものも含め、すべての使用について課金されます。** BLOB への書き込みアクセスを許可した場合は、ユーザーが 200 GB の BLOB をアップロードする可能性があります。 ユーザーに読み取りアクセスも許可すると、この BLOB を 10 回ダウンロードする可能性があり、2 TB (テラバイト) の送信料金が発生します。 したがって、悪意のあるユーザーによるリスクが軽減されるように、制限付きアクセス許可を付与してください。 このような脅威が軽減されるように、短期間の SAS を使用してください (ただし、終了時刻のクロック スキューには注意してください)。
 8. **SAS を使用して書き込まれたデータを検証します。** クライアント アプリケーションがストレージ アカウントにデータを書き込む場合は、そのデータに問題がある可能性に注意してください。 データが検証後または認証後に使用可能になることをアプリケーションが要求する場合は、書き込まれたデータをアプリケーションが使用する前に、この検証を実行する必要があります。 これを実行すると、ユーザーが SAS を正当に入手している場合でも、漏えいした SAS を利用している場合でも、破損データまたは悪意によるデータの書き込みからアカウントが保護されます。
@@ -425,7 +425,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 ## <a name="conclusion"></a>まとめ
 Shared Access Signature は、アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。 したがって、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。 ここに示すベスト プラクティスに従うと、アプリケーションのセキュリティを損なうことなく、SAS を使用して、ストレージ アカウントのリソースへのアクセスの柔軟性を高めることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)
 * [Shared Access Signature を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)

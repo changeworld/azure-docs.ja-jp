@@ -1,10 +1,10 @@
 ---
-title: "Hadoop での Apache Sqoop - Azure HDInsight | Microsoft Docs"
-description: "Apache Sqoop を使用して、Hadoop on HDInsight と Azure SQL Database の間でインポートおよびエクスポートを行う方法について説明します。"
+title: Hadoop での Apache Sqoop - Azure HDInsight | Microsoft Docs
+description: Apache Sqoop を使用して、Hadoop on HDInsight と Azure SQL Database の間でインポートおよびエクスポートを行う方法について説明します。
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 tags: azure-portal
 keywords: hadoop sqoop,sqoop
@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2018
+ms.date: 03/26/2018
 ms.author: larryfr
-ms.openlocfilehash: a0a63c414bc68f5125b65e288d78fb546c376c04
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: f98345c012b8507818d0218fe43bc29badf0d4c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight の Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
 
@@ -71,7 +71,7 @@ GO
 1. SSH を使用して、HDInsight クラスターに接続します。 たとえば、次のコマンドは、`mycluster` というクラスターのプライマリ ヘッド ノードに接続します。
 
     ```bash
-    ssh CLUSTERNAME-ssh.azurehdinsight.net
+    ssh mycluster-ssh.azurehdinsight.net
     ```
 
     詳細については、[HDInsight での SSH の使用](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。

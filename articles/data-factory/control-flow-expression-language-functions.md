@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory の式と関数 | Microsoft Docs"
-description: "この記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。"
+title: Azure Data Factory の式と関数 | Microsoft Docs
+description: この記事では、Data Factory エンティティの作成で使用できる式と関数に関する情報を提供します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
-ms.openlocfilehash: 78f21576bb7d839e5b5c4d8c2b721e381d663406
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 1625b37a41082f8536d103701b1356a13a5dd837
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,8 +51,8 @@ ms.lasthandoff: 01/23/2018
 |----------------|------------|  
 |"parameters"|文字 "parameters" が返されます。|  
 |"parameters [1]"|文字 "parameters[1]" が返されます。|  
-|"@@"|"@" を含む 1 文字の文字列が返されます。|  
-|" @"|" @" を含む 2 文字の文字列が返されます。|  
+|"@@"|\"\@\" を含む 1 文字の文字列が返されます。|  
+|\" \@\"|\" \@\" を含む 2 文字の文字列が返されます。|  
   
  また、式が `@{ ... }` にラップされる*文字列補間*と呼ばれる機能を使用して、式を文字列の内部に指定することもできます。 次に例を示します。`"name" : "First Name: @{pipeline().parameters.firstName} Last Name: @{pipeline().parameters.lastName}"`  
   
@@ -261,7 +261,7 @@ ms.lasthandoff: 01/23/2018
 |addseconds|渡されたタイムスタンプ文字列に秒数を表す整数を追加します。 秒数は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T13:27:00Z`<br /><br /> `addseconds('2015-03-15T13:27:36Z', -36)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Seconds<br /><br /> **説明**: 必須。 追加する秒の値です。 負の値にして秒数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |addminutes|渡されたタイムスタンプ文字列に分の値を表す整数を追加します。 分の値は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-03-15T14:00:36Z`<br /><br /> `addminutes('2015-03-15T13:27:36Z', 33)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Minutes<br /><br /> **説明**: 必須。 追加する分の値です。 負の値にして分数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |addhours|渡されたタイムスタンプ文字列に時間数を表す整数を追加します。 時間の値は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-03-16T01:27:36Z`<br /><br /> `addhours('2015-03-15T13:27:36Z', 12)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Hours<br /><br /> **説明**: 必須。 追加する時間数。 負の値にして時間数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
-|adddays|渡されたタイムスタンプ文字列に日数を表す整数を追加します。 日の値は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-02-23T13:27:36Z`<br /><br /> `addseconds('2015-03-15T13:27:36Z', -20)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Days<br /><br /> **説明**: 必須。 追加する日数です。 負の値にして日数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
+|adddays|渡されたタイムスタンプ文字列に日数を表す整数を追加します。 日の値は正でも負でもかまいません。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-02-23T13:27:36Z`<br /><br /> `adddays('2015-03-15T13:27:36Z', -20)`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Timestamp<br /><br /> **説明**: 必須。 時刻を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Days<br /><br /> **説明**: 必須。 追加する日数です。 負の値にして日数を減算できます。<br /><br /> **パラメーター番号**: 3<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 |formatDateTime|日付形式の文字列を返します。 書式指定子が指定されない限り、既定では、結果は ISO 8601 形式 ("o") の文字列です。 例: `2015-02-23T13:27:36Z`<br /><br /> `formatDateTime('2015-03-15T13:27:36Z', 'o')`<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Date<br /><br /> **説明**: 必須。 日付を表す文字列です。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Format<br /><br /> **説明**: 省略可能。 このタイムスタンプの値を書式設定する方法を示す、[単一の書式指定子文字](https://msdn.microsoft.com/library/az4se3k1%28v=vs.110%29.aspx)または[カスタム書式指定パターン](https://msdn.microsoft.com/library/8kb3ddd4%28v=vs.110%29.aspx)です。 形式を指定しないと、ISO 8601 形式 ("o") が使われます。|  
 
 ## <a name="next-steps"></a>次の手順

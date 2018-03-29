@@ -1,8 +1,8 @@
 ---
-title: "Azure Machine Learning 自動化データ パイプライン チート シート | Microsoft Docs"
-description: "データがオンプレミスであるか、ストリーミングであるか、Azure 内にあるか、サード パーティのクラウド サービス内にあるかに応じて自動化されたデータ パイプラインを Azure Machine Learning Web サービスに対して設定する方法を示す印刷可能なチート シートです。"
+title: Azure Machine Learning 自動化データ パイプライン チート シート | Microsoft Docs
+description: データがオンプレミスであるか、ストリーミングであるか、Azure 内にあるか、サード パーティのクラウド サービス内にあるかに応じて自動化されたデータ パイプラインを Azure Machine Learning Web サービスに対して設定する方法を示す印刷可能なチート シートです。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: garyericson
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: mithal;garye
-ms.openlocfilehash: a2b14dd39c0247c35ef006385eceebfa4fbe82d9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: garye
+ms.openlocfilehash: f07e7cc9c97dcd5ef6ebc2d4c16d31b831869352
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
 **Microsoft Azure Machine Learning 自動化データ パイプライン チート シート** は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。

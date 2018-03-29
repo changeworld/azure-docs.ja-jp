@@ -1,11 +1,11 @@
 ---
-title: "Python を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs"
-description: "Azure IoT device SDK for Python を使用して、デバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。"
+title: Python を使用してデバイスから Azure IoT Hub にファイルをアップロードする | Microsoft Docs
+description: Azure IoT device SDK for Python を使用して、デバイスからクラウドにファイルをアップロードする方法。 アップロードしたファイルは Azure Storage Blob コンテナーに格納されます。
 services: iot-hub
 documentationcenter: python
 author: kgremban
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 4759d229-f856-4526-abda-414f8b00a56d
 ms.service: iot-hub
 ms.devlang: python
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/05/2018
 ms.author: kgremban
-ms.openlocfilehash: 5939f87684e92e1f95d39ea5bd52b424ca683acc
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6f1a40f254473ae7d02168f0cfd6ad5c0d461d82
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub"></a>IoT Hub を使用してデバイスからクラウドにファイルをアップロードする
 
@@ -76,10 +76,11 @@ ms.lasthandoff: 03/08/2018
     import os
     from iothub_client import IoTHubClient, IoTHubClientError, IoTHubTransportProvider, IoTHubClientResult, IoTHubError
 
-    CONNECTION_STRING = "{deviceConnectionString}"
+    CONNECTION_STRING = "[Device Connection String]"
     PROTOCOL = IoTHubTransportProvider.HTTP
 
-    FILENAME = 'sample.txt'
+    PATHTOFILE = "[Full path to file]"
+    FILENAME = "[File name on storage after upload]"
     ```
 
 1. **upload_blob** 関数のコールバックを作成します。
@@ -98,14 +99,17 @@ ms.lasthandoff: 03/08/2018
     def iothub_file_upload_sample_run():
         try:
             print ( "IoT Hub file upload sample, press Ctrl-C to exit" )
-        
+
             client = IoTHubClient(CONNECTION_STRING, PROTOCOL)
 
-            client.upload_blob_async(FILENAME, FILENAME, os.path.getsize(FILENAME), blob_upload_conf_callback, 0)
-        
+            f = open(PATHTOFILE, "r")
+            content = f.read()
+
+            client.upload_blob_async(FILENAME, content, len(content), blob_upload_conf_callback, 0)
+
             print ( "" )
             print ( "File upload initiated..." )
-        
+
             while True:
                 time.sleep(30)
 
@@ -116,7 +120,7 @@ ms.lasthandoff: 03/08/2018
             print ( "IoTHubClient sample stopped" )
         except:
             print ( "generic error" )
-        
+
     if __name__ == '__main__':
         print ( "Simulating a file upload using the Azure IoT Hub Device SDK for Python" )
         print ( "    Protocol %s" % PROTOCOL )

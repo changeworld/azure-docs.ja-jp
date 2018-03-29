@@ -1,12 +1,12 @@
 ---
-title: "Azure Security Center でストレージ アカウントの暗号化を有効にする | Microsoft Docs"
-description: "このドキュメントでは、**Azure Storage アカウントの暗号化を有効にする** Azure Security Center の推奨事項を実装する方法について説明します。"
+title: Azure Security Center でストレージ アカウントの暗号化を有効にする | Microsoft Docs
+description: このドキュメントでは、「**Enable encryption for Azure Storage Account**」 (Azure Storage アカウント暗号化の有効化) という Azure Security Center の推奨事項を実装する方法について説明します。
 services: security-center
 documentationcenter: na
 author: TerryLanfear
 manager: MBaldwin
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: security-center
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2016
 ms.author: terrylan
-ms.openlocfilehash: b7b2e8a12cbab68da9c8fcc348e8e3c543607007
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 82bb201c0b518d0b45e06a1eb25d54f60cb3e028
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-encryption-for-azure-storage-account-in-azure-security-center"></a>Azure Security Center での Azure Storage アカウント暗号化の有効化
 Azure Security Center は、Azure Storage Service Encryption for Data at Rest の有効化を勧める場合があります。
@@ -27,7 +27,7 @@ Storage Service Encryption (SSE) は、データが Azure ストレージに書�
 
 
 > [!Note]
-> 暗号化を有効にしたとき、暗号化されるのは新しいデータのみです。 ストレージ アカウント内の既存の BLOB は暗号化されません。 既存の BLOB を暗号化するには、[Storage Service Encryption の FAQ](../storage/common/storage-service-encryption.md#frequently-asked-questions-about-storage-service-encryption-for-data-at-rest) に関する記事を参照してください。
+> 暗号化を有効にしたとき、暗号化されるのは新しいデータのみです。 ストレージ アカウント内の既存の BLOB は暗号化されません。 既存の BLOB を暗号化するには、[Storage Service Encryption の FAQ](../storage/common/storage-service-encryption.md#faq-for-storage-service-encryption) に関する記事を参照してください。
 >
 >
 
@@ -45,7 +45,7 @@ Storage Service Encryption は Resource Manager ストレージ アカウント�
    ![Enable storage encryption][2]
 3. **storageacct1**の**[暗号化]** ブレードが開きます。 **[Enabled]**を選択します。
    ![Encryption blade][3]
-4. [ **保存**] を選択します。
+4. **[保存]** を選択します。
 
 これで、**storageacct1** のストレージ暗号化が有効になりました。
 

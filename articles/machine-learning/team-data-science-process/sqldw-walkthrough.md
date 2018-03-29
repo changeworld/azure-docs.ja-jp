@@ -1,8 +1,8 @@
 ---
-title: "Team Data Science Process の活用: SQL Data Warehouse の使用 | Microsoft Docs"
-description: "Advanced Analytics Process and Technology の活用"
+title: 'Team Data Science Process の活用: SQL Data Warehouse の使用 | Microsoft Docs'
+description: Advanced Analytics Process and Technology の活用
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
-ms.author: bradsev;weig
-ms.openlocfilehash: 9c858427b01f7b94aae87136a46e1d9ae5e09a1c
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.author: bradsev
+ms.openlocfilehash: 6566db5f186b92179df3125deaf5ad17c6f9e974
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
 このチュートリアルでは、公開されている使用可能なデータセット ([NYC Taxi Trips](http://www.andresmh.com/nyctaxitrips/) データセット) で SQL Data Warehouse (SQL DW) を使用して、Machine Learning モデルのビルドとデプロイを行う方法を説明します。 構築された二項分類モデルでは、乗車でチップが支払われたかどうかを予測します。また、支払われるチップ金額の分布を予測する多クラス分類と回帰のモデルについても説明します。
@@ -319,7 +319,7 @@ PowerShell スクリプトを初めて実行するときに、Azure SQL DW と A
 コピー元のファイルとコピー先のファイルが重複する場合は、どのように対処するかを決定する必要があります。
 
 > [!NOTE]
-> パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。 上書きしない場合は、確認を求めるメッセージが表示されたときに「**n**」と入力します。 **すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。 「 **y** 」と入力して、.csv ファイルを個別に上書きすることもできます。
+> パブリック BLOB ストレージからプライベート BLOB ストレージ アカウントにコピーする .csv ファイルが既にプライベート BLOB ストレージ アカウントに存在する場合、AzCopy によってファイルを上書きするかどうかが尋ねられます。 上書きしない場合は、確認を求めるメッセージが表示されたときに「 **n** 」と入力します。 **すべて**上書きする場合は、確認を求めるメッセージが表示されたときに「**a**」と入力します。 「 **y** 」と入力して、.csv ファイルを個別に上書きすることもできます。
 > 
 > 
 
@@ -713,7 +713,7 @@ AzureML ワークスペースを既にセットアップしている場合は、
 
 ![プロット #3][3]
 
-と
+and
 
     pd.Series(trip_dist_bin_id).value_counts().plot(kind='line')
 
@@ -876,7 +876,7 @@ Azure Machine Learning は、トレーニング実験のコンポーネントに
 
 ![Azure ML 発行][11]
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 このチュートリアルで行ったことをまとめると、Azure のデータ サイエンス環境を作成し、データの取得からモデルのトレーニング、Azure Machine Learning Web サービスのデプロイメントまでを通して、Team Data Science Process を活用して大規模な公開されているデータセットを操作したことになります。
 
 ### <a name="license-information"></a>ライセンス情報

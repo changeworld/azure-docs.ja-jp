@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: RHEL VM の管理対象ドメインへの参加 | Microsoft Docs"
-description: "Red Hat Enterprise Linux 仮想マシンのAzure AD ドメイン サービスへの参加"
+title: 'Azure Active Directory Domain Services: RHEL VM の管理対象ドメインへの参加 | Microsoft Docs'
+description: Red Hat Enterprise Linux 仮想マシンのAzure AD ドメイン サービスへの参加
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: maheshu
-ms.openlocfilehash: 9046bdb5bd8ff21429c951cbe7120334bd000621
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b278f5c4c8c87590205aca13a50a82fe8712d909
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-red-hat-enterprise-linux-7-virtual-machine-to-a-managed-domain"></a>Red Hat Enterprise Linux 7 仮想マシンの管理対象ドメインへの参加
 この記事では、Red Hat Enterprise Linux (RHEL) 7 仮想マシンを Azure AD ドメイン サービスの管理対象ドメインに参加させる方法について説明します。
@@ -133,7 +133,7 @@ Linux 仮想マシンに必要なパッケージがインストールされた�
 
 
 ## <a name="troubleshooting-domain-join"></a>ドメイン参加のトラブルシューティング
-「 [Troubleshooting domain join (ドメイン参加のトラブルシューティング)](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) 」を参照してください。
+「 [Troubleshooting domain join (ドメイン参加のトラブルシューティング)](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) 」を参照してください。
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)

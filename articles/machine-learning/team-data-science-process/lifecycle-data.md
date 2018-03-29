@@ -1,24 +1,24 @@
 ---
-title: "Team Data Science Process ライフサイクルのデータの取得と理解のステージ - Azure | Microsoft Docs"
-description: "データ サイエンス プロジェクトのデータの取得と理解のステージの目標、タスク、成果物"
+title: Team Data Science Process ライフサイクルのデータの取得と理解のステージ - Azure | Microsoft Docs
+description: データ サイエンス プロジェクトのデータの取得と理解のステージの目標、タスク、成果物
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 9618653e8f77c69a3a95fe27ee55c4f05c55a66e
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 028992561b1c2481dc72af3c4edcc16f65f25105
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-acquisition-and-understanding"></a>データの取得と理解
 
@@ -72,7 +72,7 @@ TDSP には、データの視覚化と概要レポートの準備に役立つ、
    * **ソリューション アーキテクチャ**: ソリューション アーキテクチャは、モデルの構築後に、新しいデータでのスコア付けや予測の実行に使用されるデータ パイプラインのダイアグラムまたは説明です。 また、新しいデータに基づきモデルを再トレーニングするためのパイプラインも、これに含まれます。 TDSP ディレクトリ構造テンプレートを使用する場合は、[プロジェクト](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) ディレクトリにドキュメントを格納します。
    * **チェックポイント判定**: 特徴エンジニアリングとモデルの構築を本格的に開始する前に、プロジェクトを再評価し、期待される値がそのプロジェクトを続行するために十分であるかどうかを判断できます。 たとえば、先に進む準備ができている、さらに多くのデータを収集する必要がある、質問に回答するためのデータが存在しないためプロジェクトを破棄するといった判断ができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 

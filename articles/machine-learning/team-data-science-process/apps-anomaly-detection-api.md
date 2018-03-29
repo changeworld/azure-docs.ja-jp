@@ -1,8 +1,8 @@
 ---
-title: "Azure Machine Learning 異常検出 API | Microsoft Docs"
-description: "異常検出 API は、Microsoft Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。"
+title: Azure Machine Learning 異常検出 API | Microsoft Docs
+description: 異常検出 API は、Microsoft Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: alokkirpal
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
-ms.author: alok;rotimpe
-ms.openlocfilehash: e2adfffa00a726fe2c452c25dd777ef054319b04
-ms.sourcegitcommit: 0e1c4b925c778de4924c4985504a1791b8330c71
+ms.author: alok
+ms.openlocfilehash: e3f6f0de16fcb84872fe7b420eb0d54e86682f23
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/06/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要
@@ -126,7 +126,7 @@ API を使用するには、Azure Machine Learning Web サービスとしてホ�
 | trenddetector.sensitivity |正傾向検出機能に使用する感度 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
 | tspikedetector.sensitivity |T スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
 | zspikedetector.sensitivity |Z スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
-| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |N/A |
+| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
 
 ### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。 
@@ -157,8 +157,8 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 | 入力パラメーター | [説明] | 既定の設定 | type | 有効範囲 | 推奨範囲 |
 | --- | --- | --- | --- | --- | --- |
 | preprocess.aggregationInterval |入力時系列の集計間隔 (秒単位) |0 (集計は実行されません) |integer |集計をスキップする場合は 0、それ以外の場合は 0 より大きい値 |5 分 ～ 1 日 (時系列に依存) |
-| preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |N/A |
-| preprocess.replaceMissing |欠損データの補完に使用する値 |lkv (last known value) |enumerated |zero、lkv、mean |N/A |
+| preprocess.aggregationFunc |指定の AggregationInterval でデータを集計するための関数 |mean |enumerated |mean、sum、length |該当なし |
+| preprocess.replaceMissing |欠損データの補完に使用する値 |lkv (last known value) |enumerated |zero、lkv、mean |該当なし |
 | detectors.historyWindow |異常スコアの計算に使用された履歴 (データ ポイントの数) |500 |integer |10 ～ 2000 |時系列に依存 |
 | detectors.spikesdips | スパイクのみ、ディップのみ、または両方を検出するかどうか |Both |enumerated |Both、Spikes、Dips |両方 |
 | bileveldetector.sensitivity |双方向のレベル変化検出機能の感度。 |3.25 |double |なし |3.25 ～ 5 (値が小さいほど感度が高い) |
@@ -168,8 +168,8 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 | zspikedetector.sensitivity |Z スパイク検出機能の感度 |3 |integer |1 ～ 10 |3 ～ 5 (値が小さいほど感度が高い) |
 | seasonality.enable |季節性分析を実行するかどうか |true |ブール値 |true、false |時系列に依存 |
 | seasonality.numSeasonality |検出する周期的サイクルの最大数 |1 |integer |1、2 |1 ～ 2 |
-| seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか |deseason |enumerated |none、deseason、deseasontrend |N/A |
-| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |N/A |
+| seasonality.transform |異常検出を適用する前に季節的傾向要因を取り除くかどうか |deseason |enumerated |none、deseason、deseasontrend |該当なし |
+| postprocess.tailRows |出力結果に維持する最新のデータ ポイントの数 |0 |integer |0 (すべてのデータ ポイントを維持する場合) または結果として維持するデータ ポイントの数を指定 |該当なし |
 
 ### <a name="output"></a>出力
 この API は、与えられた時系列データに対してすべての検出機能を実行し、時間ポイントごとの 2 進値のスパイク インジケーターと異常スコアを返します。 以下の表は、API からの出力の一覧です。 
