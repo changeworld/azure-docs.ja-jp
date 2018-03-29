@@ -1,6 +1,6 @@
 ---
-title: "Azure 内部ロード バランサーの概要 | Microsoft Docs"
-description: "Azure の内部ロード バランサーの機能と内部エンドポイントを構成するためのシナリオについて説明します。"
+title: Azure 内部ロード バランサーの概要 | Microsoft Docs
+description: Azure の内部ロード バランサーの機能と内部エンドポイントを構成するためのシナリオについて説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 54e390dbdb07cb4c45c801b638099aa0dcc6db1a
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: 0511165225f5a336291e86e0c504e60989933f3c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="overview-of-azure-internal-load-balancer"></a>Azure 内部ロード バランサーの概要
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Azure 内部ロード バランサー (ILB) は、クラウド サービス内のリソースまたは VPN を使用して Azure インフラストラクチャにアクセスするリソースにのみトラフィックを送信します。 この点で、ILB はインターネットに接続するロード バランサーとは異なります。 Azure インフラストラクチャでは、クラウド サービスの負荷分散仮想 IP (VIP) アドレスまたは仮想ネットワークへのアクセスが制限されます。 VIP アドレスと仮想ネットワークは、インターネット エンドポイントに直接公開されることはありません。 社内の基幹業務アプリケーションは Azure で実行され、Azure 内またはオンプレミス リソースからアクセスされます。
 
@@ -74,7 +74,7 @@ Web 層はインターネット クライアント用のインターネットに
 
 内部ロード バランサー構成では、SNAT はサポートされていません。 この記事では、SNAT はポート マスカレード ソース ネットワーク アドレス変換を伴うシナリオを指します。 ロード バランサー プール内の VM は、それぞれの内部ロード バランサーのフロントエンド IP アドレスに到達する必要があります。 フローの発生元の VM にフローを負荷分散すると、接続エラーが発生します。 これらのシナリオは、ILB ではサポートされていません。 代わりに、プロキシ スタイルのロード バランサーを使用する必要があります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Resource Manager による Azure Load Balancer のサポート](load-balancer-arm.md)
 * [インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)

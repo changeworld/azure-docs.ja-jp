@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 3e02242822283ec8597a7be217228cb95e748761
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 1. ポータルで、仮想ネットワーク ゲートウェイを作成する仮想ネットワークに移動します。
 2. VNet のページの **[設定]** セクションで、**[サブネット]** をクリックして [サブネット] ページを展開します。
 3. **[サブネット]** ページの上部にある **[+ゲートウェイ サブネット]** をクリックして、**[サブネットの追加]** ページを開きます。

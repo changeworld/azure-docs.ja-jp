@@ -1,11 +1,11 @@
 ---
-title: "Azure サブスクリプションの制限とクォータ | Microsoft Docs"
-description: "一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。"
-services: 
-documentationcenter: 
+title: Azure サブスクリプションの制限とクォータ | Microsoft Docs
+description: 一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。
+services: ''
+documentationcenter: ''
 author: rothja
 manager: jeffreyg
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 60d848f9-ff26-496e-a5ec-ccf92ad7d125
 ms.service: billing
@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/27/2018
 ms.author: byvinyal
-ms.openlocfilehash: f2c747f29d1e35b430b30d9aa4ca0bff2e78476f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 3218778640acc5d08cef94849e25323650c42c6c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。

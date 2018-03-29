@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: d562e58b86a6d5c18b10683dc4c14cf9c28c809b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 VNet 間に関する FAQ は VPN Gateway 接続に適用されます。 VNet ピアリングについては、「[仮想ネットワーク ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)」を参照してください。
 
 ### <a name="does-azure-charge-for-traffic-between-vnets"></a>Azure では VNet 間のトラフィックに対して料金が発生しますか。
@@ -22,11 +38,9 @@ VPN Gateway 接続を使用している場合は、同じリージョン内の V
 
 ### <a name="if-the-vnets-are-not-in-the-same-subscription-do-the-subscriptions-need-to-be-associated-with-the-same-ad-tenant"></a>VNet が同じサブスクリプションに存在しない場合、サブスクリプションが同じ AD テナントに関連付けられている必要がありますか?
 
-
 いいえ。
 
 ### <a name="can-i-use-vnet-to-vnet-to-connect-virtual-networks-in-separate-azure-instances"></a>別々の Azure インスタンスに存在する仮想ネットワークを VNet 間接続で接続することはできますか。 
-
 
 いいえ。 VNet 間接続でサポートされるのは、同じ Azure インスタンス内の仮想ネットワークの接続だけです。 たとえば、パブリック Azure と Chinese/German/US Gov の Azure インスタンスとの間で接続を作成することはできません。 これらのシナリオについては、サイト間 VPN 接続の使用をご検討ください。
 
