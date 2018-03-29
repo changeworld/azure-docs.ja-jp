@@ -185,11 +185,11 @@ Edna Benson は受付担当兼、営業部長です。 彼女は、顧客情報�
 
 このアーキテクチャは、暗号化、データベース監査などの手段を使用して保存データを保護します。
 
-#### <a name="azure-storage"></a>Azure Storage (Azure Storage)
+#### <a name="azure-storage"></a>Azure Storage
 
 暗号化された保存データの要件を満たすために、すべての [Azure Storage](https://azure.microsoft.com/services/storage/) で [Storage サービスの暗号化](/azure/storage/storage-service-encryption)が使用されます。
 
-#### <a name="azure-sql-database"></a>の接続文字列
+#### <a name="azure-sql-database"></a>Azure SQL Database
 
 Azure SQL Database インスタンスは、次のデータベース セキュリティ対策を使用します。
 
