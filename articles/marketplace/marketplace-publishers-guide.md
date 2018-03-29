@@ -14,11 +14,11 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 01/18/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7faa34b5528c53c06aeda25be17cbc5f3db2acdf
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0abf25726936a3d5e69c809c9714965936c7c64c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-marketplace-and-appsource-publisher-guide"></a>Azure Marketplace と AppSource のパブリッシャー ガイド
 
@@ -308,7 +308,7 @@ AAD フェデレーション SSO が初めての場合
 - 顧客ごとの "体験版" を開発します
 - SSO を使ってマルチテナント サンプル デモ アプリをビルドします
 
-##<a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>製品別のプロセスの公開 (Office、Dynamics、Power BI)
+## <a name="publishing-processes-by-product-for-office-dynamics-and-power-bi"></a>製品別のプロセスの公開 (Office、Dynamics、Power BI)
 このセクションでは、Office、Dynamics、Power BI を拡張する AppSource アプリについて固有の要件を製品のドキュメントで確認してください。 
 
 

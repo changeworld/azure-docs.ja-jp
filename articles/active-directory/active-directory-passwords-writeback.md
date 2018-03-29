@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 01/11/2018
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: bcb7074a6d590a08ad683c8746156245bc60c5e8
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a7a81f51e0873da38f25deb687e4d03ccf67e11a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="password-writeback-overview"></a>パスワード ライトバックの概要
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/09/2018
 
 * **ゼロ遅延フィードバックの提供**: パスワード ライトバックは同期操作です。 ユーザーのパスワードがポリシーに合わなかった場合や、何らかの理由でリセットまたは変更できなかった場合は、すぐにユーザーに通知します。
 * **Active Directory フェデレーション サービス (AD FS) または他のフェデレーション技術を使っているユーザーのパスワード リセットのサポート**: パスワード ライトバックを使うと、フェデレーション ユーザー アカウントと Azure AD テナントが同期している限り、クラウドからオンプレミスの Active Directory パスワードを管理できます。
-* **[パスワード ハッシュ同期](./connect/active-directory-aadconnectsync-implement-password-synchronization.md)を使っているユーザーのパスワード リセットのサポート**: パスワード リセット サービスは、同期されているユーザー アカウントでパスワード ハッシュ同期が有効になっていることを検出すると、このアカウントのオンプレミスのパスワードとクラウドのパスワードの両方を同時にリセットします。
+* **[パスワード ハッシュ同期](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)を使っているユーザーのパスワード リセットのサポート**: パスワード リセット サービスは、同期されているユーザー アカウントでパスワード ハッシュ同期が有効になっていることを検出すると、このアカウントのオンプレミスのパスワードとクラウドのパスワードの両方を同時にリセットします。
 * **パススルー認証を使っているユーザーのパスワード リセットのサポート**: パスワード ライトバックを使うと、パススルー認証アカウントと Azure AD テナントが同期している限り、クラウドからオンプレミスの Active Directory パスワードを管理できます。
 * **アクセス パネルと Office 365 からのパスワード変更のサポート**: フェデレーション ユーザーかパスワード同期されたユーザーが有効期限切れ、または有効期限切れでないパスワードを変更すると、これらのパスワードはローカル Active Directory 環境に書き戻されます。
 * **管理者が Azure Portal でパスワードをリセットするときのパスワード ライトバックのサポート**: 管理者が [Azure Portal](https://portal.azure.com) でユーザーのパスワードをリセットするときに、そのユーザーがフェデレーションまたはパスワード同期されている場合は、ローカル Active Directory で管理者が選択するパスワードも設定されます。 現在、この機能は Office 管理ポータルではサポートされていません。

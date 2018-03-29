@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS の委任の概要 | Microsoft Docs"
-description: "ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。"
+title: Azure DNS の委任の概要 | Microsoft Docs
+description: ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。
 services: dns
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/18/2017
 ms.author: kumud
-ms.openlocfilehash: 4ba615a1fc607392fa1a2a910b4674cfbcf51da1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: fc79999d240baf18ccf5923908c98791c4e7e7bb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS による DNS ゾーンの委任
 
@@ -42,7 +42,7 @@ DNS サーバーには次の 2 種類があります。
 * *権限のある* DNS サーバーは、DNS ゾーンをホストします。 このサーバーは、これらのゾーン内のレコードに対する DNS クエリのみに応答します。
 * *再帰* DNS サーバーは、DNS ゾーンをホストしません。 このサーバーは、権限のある DNS サーバーを呼び出して必要なデータを収集することで、すべての DNS クエリに応答します。
 
-Azure DNS は、権限のある DNS サービスを提供します。  再帰 DNS サービスは提供しません。 Azure の Cloud Services と VM は、Azure のインフラストラクチャの一部として個別に提供されている再帰 DNS サービスを使用するように自動的に構成されます。 これらの DNS 設定を変更する方法については、[Azure での名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)に関するページを参照してください。
+Azure DNS は、権限のある DNS サービスを提供します。  再帰 DNS サービスは提供しません。 Azure の Cloud Services と VM は、Azure のインフラストラクチャの一部として個別に提供されている再帰 DNS サービスを使用するように自動的に構成されます。 これらの DNS 設定を変更する方法については、[Azure での名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)に関するページを参照してください。
 
 PC やモバイル デバイスの DNS クライアントは、通常、クライアント アプリケーションが必要とする DNS クエリを実行するために、再帰 DNS サーバーを呼び出します。
 
@@ -67,7 +67,7 @@ PC やモバイル デバイスの DNS クライアントは、通常、クラ�
 
 実際に、各委任には、NS レコードの 2 つのコピーがあります。1 つは親ゾーン内で子ゾーンを指すレコード、もう 1 つは子ゾーン自体にあるレコードです。 "contoso.net" ゾーンには、("net" 内の NS レコードだけでなく) "contoso.net" の NS レコードも格納されています。 これらのレコードは、優先する NS レコードと呼ばれ、子ゾーンの頂点に配置されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure DNS にドメインを委任する方法については[こちら](dns-delegate-domain-azure-dns.md)を参照してください。
 

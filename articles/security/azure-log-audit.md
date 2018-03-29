@@ -1,12 +1,12 @@
 ---
-title: "Azure のログと監査 | Microsoft Docs"
-description: "ログ データを使用して、アプリケーションに関する深い洞察を得る方法について説明します。"
+title: Azure のログと監査 | Microsoft Docs
+description: ログ データを使用して、アプリケーションに関する深い洞察を得る方法について説明します。
 services: security
 documentationcenter: na
 author: UnifyCloud
 manager: swadhwa
 editor: TomSh
-ms.assetid: 
+ms.assetid: ''
 ms.service: security
 ms.devlang: na
 ms.topic: article
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
 ms.openlocfilehash: 032aa4a6cedd49ff9c3b4803561b8b187e8f9af5
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-logging-and-auditing"></a>Azure のログと監査
 ## <a name="introduction"></a>はじめに

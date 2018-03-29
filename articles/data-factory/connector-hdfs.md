@@ -4,8 +4,8 @@ description: Azure Data Factory パイプラインでコピー アクティビ�
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 400c58abf04d28dd0e5f1d7aac204f09c43b942e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 98a03bf1637ce21320b749feb7dfb55096bf091c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -60,7 +60,7 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 | url |HDFS への URL |[はい] |
 | authenticationType | 使用可能な値: **Anonymous** または**Windows**。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |[はい] |
 | userName |Windows 認証のユーザー名。 Kerberos 認証の場合は `<username>@<domain>.com` を指定します。 |あり (Windows 認証用) |
-| password |Windows 認証のパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |あり (Windows 認証用) |
+| password |Windows 認証のパスワード。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |あり (Windows 認証用) |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ  |
 
 **例: 匿名認証の使用**
@@ -333,7 +333,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
             Kadmin> addprinc krbtgt/REALM.COM@AD.COM
 
-3.  **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、を追加します`RULE:[1:$1@$0](.*@AD.COM)s/@.*//`。
+3.  **hadoop.security.auth_to_local** HDFS サービス構成ファイルに、`RULE:[1:$1@$0](.*@AD.COM)s/@.*//` を追加します。
 
 **ドメイン コントローラーで、以下を実行します。**
 
@@ -362,11 +362,11 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 
 4.  Windows ドメインで Kerberos プリンシパルを使用するために、ドメイン アカウントと Kerberos プリンシパル間のマッピングを作成します。
 
-    1. 管理ツールを起動し、**Active Directory ユーザーとコンピュータを選択します**。
+    1. 管理ツールを起動し、**[Active Directory ユーザーとコンピュータ]** を選択します。
 
     2. **[ビュー]**  >  **[高度な機能]** をクリックして、高度な機能を構成します。
 
-    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **名前のマッピング**を表示し、**Kerberos 名** タブをクリックします。
+    3. マッピングを作成するアカウントを見つけます。そのアカウントをクリックして **[名前のマッピング]**を表示し、**[Kerberos 名]** タブをクリックします。
 
     4. 領域からプリンシパルを追加します。
 

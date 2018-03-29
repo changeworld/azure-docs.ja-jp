@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: dcbed424ffd6f781639b9dc524a576e963896583
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 4c76083c7b1478ba865f047584ba313d029a1e35
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>仮想ネットワーク ピアリングの作成 - 異なるデプロイメント モデルとサブスクリプション
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/28/2018
 
 クラシック デプロイメント モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 このチュートリアルでは、同じリージョンに存在する仮想ネットワークを使用します。 異なるリージョンの複数の仮想ネットワークをピアリングする機能はプレビュー段階です。 この機能を使用するには、[登録](#register)が必要です。 
 
-異なるサブスクリプションの仮想ネットワークの間で仮想ネットワーク ピアリングを作成する場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 Azure Active Directory テナントがまだない場合は、簡単に[作成](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#start-from-scratch)できます。 異なるサブスクリプションや異なる Azure Active Directory テナント内の仮想ネットワークは、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って接続することができます。
+異なるサブスクリプションの仮想ネットワークの間で仮想ネットワーク ピアリングを作成する場合、両方のサブスクリプションが同じ Azure Active Directory テナントに関連付けられている必要があります。 Azure Active Directory テナントがまだない場合は、簡単に[作成](../active-directory/develop/active-directory-howto-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-new-azure-ad-tenant)できます。 異なるサブスクリプションや異なる Azure Active Directory テナント内の仮想ネットワークは、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-vnet-vnet-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使って接続することができます。
 
 仮想ネットワーク ピアリングは、[Azure Portal](#portal)、Azure [コマンド ライン インターフェイス](#cli) (CLI)、Azure [PowerShell](#powershell) のいずれかを使って作成できます。 いずれかのリンクをクリックすると、そのツールを使って仮想ネットワーク ピアリングを作成するための手順に直接移動します。
 

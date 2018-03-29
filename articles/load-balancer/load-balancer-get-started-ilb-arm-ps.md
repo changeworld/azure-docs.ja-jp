@@ -1,6 +1,6 @@
 ---
-title: "PowerShell を使用した Azure の内部ロード バランサーの作成 | Microsoft Docs"
-description: "Azure Resource Manager で Azure PowerShell モジュールを使用して、内部ロード バランサーを作成する方法について説明します"
+title: PowerShell を使用した Azure の内部ロード バランサーの作成 | Microsoft Docs
+description: Azure Resource Manager と Azure PowerShell モジュールを使用して、内部ロード バランサーを作成する方法について説明します
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 6eea6c9bc7f686096c3cf0c97bfbe65a5507de2a
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 54846ddc142a5bf7cd37c03fd9c069dd0c94897f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-an-internal-load-balancer-by-using-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用した内部ロード バランサーの作成
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
+> * [Azure Portal](../load-balancer/load-balancer-get-started-ilb-arm-portal.md)
 > * [PowerShell](../load-balancer/load-balancer-get-started-ilb-arm-ps.md)
 > * [Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md)
 > * [テンプレート](../load-balancer/load-balancer-get-started-ilb-arm-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
@@ -54,7 +53,7 @@ ms.lasthandoff: 12/18/2017
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>Resource Manager を使用するための PowerShell をセットアップ
 
-最新の製品版 Azure PowerShell モジュールであることを確認します。 PowerShell は、Azure サブスクリプションにアクセスできるように正しく構成する必要があります。
+最新の製品版 Azure PowerShell モジュールを使用していることを確認します。 PowerShell は、ご利用の Azure サブスクリプションにアクセスできるように正しく構成する必要があります。
 
 ### <a name="step-1-start-powershell"></a>手順 1: PowerShell を起動する
 
@@ -108,7 +107,7 @@ $backendSubnet = New-AzureRmVirtualNetworkSubnetConfig -Name LB-Subnet-BE -Addre
 $vnet= New-AzureRmVirtualNetwork -Name NRPVNet -ResourceGroupName NRP-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $backendSubnet
 ```
 
-仮想ネットワークが作成されたら、 **LB-Subnet-BE** サブネットを **NRPVNet** 仮想ネットワークに追加します。 これらの値は **$vnet** 変数に割り当てられます。
+仮想ネットワークが作成されます。 **LB-Subnet-BE** サブネットを **NRPVNet** 仮想ネットワークに追加します。 これらの値は **$vnet** 変数に割り当てられます。
 
 ## <a name="create-the-front-end-ip-pool-and-back-end-address-pool"></a>フロントエンド IP プールとバックエンド アドレス プールを作成する
 
@@ -139,7 +138,7 @@ $beaddresspool= New-AzureRmLoadBalancerBackendAddressPoolConfig -Name "LB-backen
 この例では、次に示す 4 つのルール オブジェクトを作成します。
 
 * リモート デスクトップ プロトコル (RDP) 用の受信 NAT ルール: ポート 3441 に対するすべての受信トラフィックをポート 3389 にリダイレクトします。
-* RDP 用の第 2 受信 NAT ルール: ポート 3442 に対するすべての着信トラフィックをポート 3389 にリダイレクトします。
+* RDP 用の第 2 受信 NAT ルール: ポート 3442 に対するすべての受信トラフィックをポート 3389 にリダイレクトします。
 * 正常性プローブ ルール: HealthProbe.aspx パスの正常性状態を確認します。
 * ロード バランサー ルール: パブリック ポート 80 上のすべての受信トラフィックをバック エンド アドレス プールのローカル ポート 80 に負荷分散します。
 

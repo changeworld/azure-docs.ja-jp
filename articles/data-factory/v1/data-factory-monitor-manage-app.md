@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 5aae5057cccdf8dfbe2a42a39da5b9e70b9166f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f5ca5544a217d66d334ff468d2308af1836c7de8
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-monitoring-and-management-app"></a>監視と管理アプリを使用した Azure Data Factory パイプラインの監視と管理
 > [!div class="op_single_selector"]
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/23/2018
 > [!NOTE]
 > この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[バージョン 2 の Data Factory パイプラインの監視と管理](../monitor-visually.md)に関するページを参照してください。
 
-この記事では、監視と管理アプリを使用して、Azure Data Factory パイプラインを監視、管理、デバッグする方法について説明します。 また、警告を作成して障害時に通知を受け取る方法についての情報も提供します。 次のビデオを見ると、アプリケーションの使用方法の概要を理解できます。
+この記事では、監視と管理アプリを使用して、Azure Data Factory パイプラインを監視、管理、デバッグする方法について説明します。 次のビデオを見ると、アプリケーションの使用方法の概要を理解できます。
 
 > [!NOTE]
 > ビデオに示されるユーザー インターフェイスは、ご使用のポータルに表示されるものと完全には一致しない場合があります。 ビデオのユーザー インターフェイスは若干古いですが、概念は変わりません。 
@@ -296,42 +296,3 @@ Ctrl キーを使用して、複数のパイプラインを同時に選択でき
 Ctrl キーを使用して、複数のパイプラインを複数選択できます。 (次の図の赤い四角形で強調表示されている) コマンド バー ボタンを使用して、これらのパイプラインを一時停止/再開できます。
 
 ![コマンド バーの一時停止/再開ボタン](./media/data-factory-monitor-manage-app/SuspendResumeOnCommandBar.png)
-
-## <a name="create-alerts"></a>アラートを作成する
-**[アラート]** ページでは、アラートの作成や、既存のアラートの表示、編集、削除を行うことができます。 また、アラートを無効/有効にすることもできます。 [アラート] ページを表示するには、**[アラート]** タブをクリックします。
-
-![Alerts tab](./media/data-factory-monitor-manage-app/AlertsTab.png)
-
-### <a name="to-create-an-alert"></a>アラートを作成するには
-1. **[アラートの追加]** をクリックしてアラートを追加します。 **[詳細]** ページが表示されます。
-
-    ![Create Alerts - Details page](./media/data-factory-monitor-manage-app/CreateAlertDetailsPage.png)
-2. アラートの**名前**と**説明**を指定し、**[次へ]** をクリックします。 **[フィルター]** ページが表示されます。
-
-    ![Create Alerts - Filters page](./media/data-factory-monitor-manage-app/CreateAlertFiltersPage.png)
-3. Data Factory サービスのアラートを作成する**イベント**、**状態**、**副状態** (オプション) を選択し、**[次へ]** をクリックします。 **[宛先]** ページが表示されます。
-
-    ![Create Alerts - Recipients page](./media/data-factory-monitor-manage-app/CreateAlertRecipientsPage.png)
-4. **[サブスクリプション管理者に電子メールを送る]** を選択するか、**追加する管理者の電子メール**を入力して、**[完了]** をクリックします。 アラートが一覧に表示されます。
-
-    ![Alerts list](./media/data-factory-monitor-manage-app/AlertsList.png)
-
-[アラート] 一覧で、アラートの編集、削除、無効化、有効化を実行するには、アラートに関連付けられたボタンを使用します。
-
-### <a name="eventstatussubstatus"></a>イベント/状態/副状態
-次の表では、使用できるイベントと状態 (および副状態) の一覧を示します。
-
-| イベント名 | 状態 | 副状態 |
-| --- | --- | --- |
-| アクティビティの実行が開始されました |開始済み |開始中 |
-| アクティビティの実行が完了しました |成功 |成功 |
-| アクティビティの実行が完了しました |失敗 |リソースの割り当ての失敗<br/><br/>失敗した実行<br/><br/>Timed Out<br/><br/>Failed Validation<br/><br/>Abandoned |
-| オンデマンド HDI クラスターの作成が開始されました |開始済み |-|
-| オンデマンド HDI クラスターが正常に作成されました |成功 |-|
-| オンデマンド HDI クラスターが削除されました |成功 |-|
-
-### <a name="to-edit-delete-or-disable-an-alert"></a>アラートを編集、削除、または無効化するには
-
-(赤で強調表示された) 次のボタンを使用して、アラートを編集、削除、または無効化します。
-
-![Alerts buttons](./media/data-factory-monitor-manage-app/AlertButtons.png)

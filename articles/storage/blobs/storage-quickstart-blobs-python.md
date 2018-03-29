@@ -2,18 +2,18 @@
 title: Azure クイック スタート - Python を使用して Azure Storage の BLOB をアップロード、ダウンロード、および一覧表示する | Microsoft Docs
 description: このクイック スタートでは、ストレージ アカウントおよびコンテナーを作成します。 その後、Python 用のストレージ クライアント ライブラリを使用して、Azure Storage への BLOB のアップロード、BLOB のダウンロード、およびコンテナー内の BLOB の一覧表示を行います。
 services: storage
-author: tamram
+author: craigshoemaker
 manager: jeconnoc
 ms.custom: mvc
 ms.service: storage
 ms.topic: quickstart
 ms.date: 03/15/2018
-ms.author: tamram
-ms.openlocfilehash: d4c489bc41a9c04b15e2ee28b944edc1f15ef81c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.author: cshoe
+ms.openlocfilehash: 9ea8fdcd2d21729117101748e20e52029c315e15
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-python"></a>クイック スタート: Python を使用して BLOB をアップロード、ダウンロード、および一覧表示する
 
@@ -23,7 +23,7 @@ ms.lasthandoff: 03/17/2018
 
 このクイック スタートを完了するには、以下が必要です。 
 * [Python](https://www.python.org/downloads/) のインストール
-* [Azure Storage SDK for Python](storage-python-how-to-use-blob-storage.md) をダウンロードしてインストールします。 
+* [Azure Storage SDK for Python](https://github.com/Azure/azure-sdk-for-python) をダウンロードしてインストールします。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 

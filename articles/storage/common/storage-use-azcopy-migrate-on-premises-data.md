@@ -1,20 +1,20 @@
 ---
-title: "AzCopy を使用したオンプレミス データの Azure Storage への移行 | Microsoft Docs"
-description: "AzCopy を使用して、データを移行したり、BLOB、テーブル、およびファイルのコンテンツとの間でデータをコピーしたりできます。 ローカル ストレージから Azure Storage にデータを簡単に移行できます。"
+title: AzCopy を使用したオンプレミス データの Azure Storage への移行 | Microsoft Docs
+description: AzCopy を使用して、データを移行したり、BLOB、テーブル、およびファイルのコンテンツとの間でデータをコピーしたりできます。 ローカル ストレージから Azure Storage にデータを簡単に移行できます。
 services: storage
-author: ruthogunnnaike
+author: roygara
 manager: jeconnoc
 ms.service: storage
 ms.tgt_pltfrm: na
 ms.devlang: azcopy
 ms.topic: tutorial
 ms.date: 12/14/2017
-ms.author: v-ruogun
-ms.openlocfilehash: 3dbfb935ac0b134e127a5dccb7bc76716c688e8a
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.author: rogarana
+ms.openlocfilehash: 1e7292cf4d647b38a6fe8ceb270ba161e548a537
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 #  <a name="migrate-on-premises-data-to-cloud-storage-by-using-azcopy"></a>AzCopy を使用したオンプレミス データのクラウド ストレージへの移行
 

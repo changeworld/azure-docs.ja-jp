@@ -1,10 +1,10 @@
 ---
-title: "Azure Service Fabric で構成ファイルをパラメーター化する方法 | Microsoft Docs"
-description: "Service Fabric で構成ファイルをパラメーター化する方法を示します"
+title: Azure Service Fabric で構成ファイルをパラメーター化する方法 | Microsoft Docs
+description: Service Fabric で構成ファイルをパラメーター化する方法を示します
 documentationcenter: .net
 author: mikkelhegn
 manager: msfussell
-editor: 
+editor: ''
 ms.service: service-fabric
 ms.devlang: dotNet
 ms.topic: article
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 12/06/2017
 ms.author: mikhegn
-ms.openlocfilehash: 1e7d59ecb231440711b8ed3dc0b27a2b105890c4
-ms.sourcegitcommit: 384d2ec82214e8af0fc4891f9f840fb7cf89ef59
+ms.openlocfilehash: 14fbdf27b8735bb3f2dc91ce0891711e9aaf2af3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-parameterize-configuration-files-in-service-fabric"></a>Service Fabric で構成ファイルをパラメーター化する方法
 
@@ -71,8 +71,6 @@ ms.lasthandoff: 01/16/2018
 > ConfigOverride を追加すると、Service Fabric は常に、アプリケーション パラメーターか、アプリケーション マニフェストで指定されている既定値を選びます。
 >
 >
-
-Cloud.xml 発行プロファイルを使って Visual Studio からアプリケーションを発行すると、サービスはポート 80 を使うように構成されます。 MyWebAPI_PortNumber パラメーターを指定しないでアプリケーションを展開すると、サービスはポート 8080 を使います。
 
 ## <a name="next-steps"></a>次の手順
 この記事で説明されている主要な概念の一部について詳しくは、「[複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)」をご覧ください。

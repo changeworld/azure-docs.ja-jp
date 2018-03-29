@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: b2a96aad793d956b3ea3de06fba74bcf68e50786
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 エンタープライズ ソリューション (推奨) を使って生成されたルート証明書を使用するか、または自己署名証明書を生成してください。 ルート証明書の作成後、(秘密キーではなく) 公開証明書データを、Base-64 でエンコードされた X.509 .cer ファイルとしてエクスポートし、公開証明書データを Azure にアップロードします。
 
 * **エンタープライズ証明書:** エンタープライズ ソリューションを使用している場合、既存の証明書チェーンを使うことができます。 使用するルート証明書の .cer ファイルを取得します。

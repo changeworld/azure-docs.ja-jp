@@ -1,24 +1,21 @@
 ---
-title: "アクセス トークンの要求 - Azure AD B2C | Microsoft Docs"
-description: "この記事では、クライアント アプリケーションをセットアップし、アクセス トークンを取得する方法について説明します。"
+title: アクセス トークンの要求 - Azure AD B2C | Microsoft Docs
+description: この記事では、クライアント アプリケーションをセットアップし、アクセス トークンを取得する方法について説明します。
 services: active-directory-b2c
 documentationcenter: android
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 1c75f17f-5ec5-493a-b906-f543b3b1ea66
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
-ms.author: parakhj
-ms.openlocfilehash: 9d2df39118741d4254f7b7fe4c419a00ceb4ba8e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: bd919543072a8d2bf5fb0ebba17e69ba2f467218
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: アクセス トークンの要求
 
@@ -69,7 +66,7 @@ API を構成してスコープを発行したら、Azure Portal を使用して
 1. **[API アクセス]** をクリックします。
 1. **[追加]** をクリックします。
 1. Web API と付与するスコープ (アクセス許可) を選択します。
-1. **[OK]**をクリックします。
+1. Click **OK**.
 
 > [!NOTE]
 > Azure AD B2C がクライアント アプリケーション ユーザーに同意を求めることはありません。 代わりに、上記のアプリケーション間で構成されたアクセス許可に基づいて、すべて管理者が同意します。 アプリケーションに付与されたアクセス許可を取り消すと、そのアクセス許可をこれまで取得できていたすべてのユーザーがアクセス許可を取得できなくなります。
@@ -85,7 +82,7 @@ API を構成してスコープを発行したら、Azure Portal を使用して
 https://login.microsoftonline.com/<tenantName>.onmicrosoft.com/oauth2/v2.0/authorize?p=<yourPolicyId>&client_id=<appID_of_your_client_application>&nonce=anyRandomValue&redirect_uri=<redirect_uri_of_your_client_application>&scope=https%3A%2F%2Fcontoso.onmicrosoft.com%2Fnotes%2Fread&response_type=code 
 ```
 
-同じ要求で複数のアクセス許可を取得するには、1 つの **scope** パラメーターに複数のエントリをスペースで区切って追加します。 次に例を示します。
+同じ要求で複数のアクセス許可を取得するには、1 つの **scope** パラメーターに複数のエントリをスペースで区切って追加します。 例: 
 
 デコードされた URL:
 
@@ -117,17 +114,17 @@ OpenID Connect 標準では、いくつかの特別な "scope" 値を指定し�
 
 (`/authorize` または `/token` エンドポイントから) 正常に発行された **access\_token** では、次の要求が提示されます。
 
-| 名前 | 要求 | 説明 |
+| Name | 要求 | [説明] |
 | --- | --- | --- |
-|対象となる読者 |`aud` |トークンによってアクセスが許可される 1 つのリソースの**アプリケーション ID**。 |
-|Scope |`scp` |付与されるリソースへのアクセス許可。 付与される複数のアクセス許可はスペースで区切られます。 |
+|対象ユーザー |`aud` |トークンによってアクセスが許可される 1 つのリソースの**アプリケーション ID**。 |
+|Scope (スコープ) |`scp` |付与されるリソースへのアクセス許可。 付与される複数のアクセス許可はスペースで区切られます。 |
 |Authorized Party |`azp` |要求を開始したクライアント アプリケーションの**アプリケーション ID**。 |
 
 API は、**access\_token** を受け取ったら、[トークンを検証](active-directory-b2c-reference-tokens.md)して、トークンが認証済みであり、適切な要求が含まれていることを証明する必要があります。
 
 ご意見とご提案をお待ちしております。 このトピックで問題が発生した場合は、Stack Overflow にタグ ['azure-ad-b2c'](https://stackoverflow.com/questions/tagged/azure-ad-b2c) を使用して投稿してください。 機能についてのご要望は、[UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c) までお寄せください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi) を使用した Web API の構築
 * [Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi) を使用した Web API の構築

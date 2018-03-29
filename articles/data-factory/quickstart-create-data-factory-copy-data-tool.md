@@ -4,18 +4,18 @@ description: Azure データ ファクトリを作成し、データのコピー
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: hero-article
 ms.date: 01/16/2018
 ms.author: jingwang
-ms.openlocfilehash: d09422f31a2dda5e14fb891fa07f65fdcceb72c1
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: aea76544f244adba8368a1d8fbe268746060b5a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-copy-data-tool-to-copy-data"></a>データのコピー ツールを使用してデータをコピーする 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service that you are using:"]
