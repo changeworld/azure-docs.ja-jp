@@ -6,6 +6,10 @@
 ## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 作業の開始
+## [ルートベースの VPN ゲートウェイの作成 - Azure Portal](create-routebased-vpn-gateway-portal.md)
+## [ルートベースの VPN ゲートウェイの作成 - PowerShell](create-routebased-vpn-gateway-powershell.md)
+
+# 概念
 ## [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)
 ## [VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)
 ## [VPN デバイスについて](vpn-gateway-about-vpn-devices.md)
