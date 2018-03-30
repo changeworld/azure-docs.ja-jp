@@ -85,8 +85,9 @@
 ### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 ### [コミュニティで推奨される VPN またはファイアウォール デバイスの設定](vpn-gateway-third-party-settings.md)
 ### [ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-### [サイト対サイト接続が断続的に切断される](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
-### [サイト対サイト接続で接続できない](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
+#### [ポイント対サイト接続の問題 - Mac OS X VPN クライアント](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### [サイト対サイト接続の問題](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [サイト対サイト接続が断続的に切断される](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [VNet または VPN 接続の構成および検証](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # リファレンス

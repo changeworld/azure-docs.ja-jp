@@ -27,6 +27,8 @@
   items:
     - name: Azure Stack ポータルの使用
       href: azure-stack-use-portal.md
+    - name: Azure Stack API の使用
+      href: azure-stack-rest-api-use.md
     - name: セキュリティとコンプライアンス
       items:
         - name: RBAC の管理

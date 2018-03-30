@@ -13,9 +13,9 @@
       href: quick-setup-auto-provision.md
     - name: 自動プロビジョニングの設定 - テンプレート
       href: quick-setup-auto-provision-rm.md
-    - name: シミュレートされたデバイスの作成
+    - name: シミュレートされたデバイスの自動プロビジョニング
       items:
-        - name: TPM
+        - name: TPM の構成証明
           items:
             - name: C
               href: quick-create-simulated-device.md
@@ -27,7 +27,7 @@
               href: quick-create-simulated-device-tpm-node.md
             - name: Python
               href: quick-create-simulated-device-tpm-python.md
-        - name: X.509
+        - name: X.509 の構成証明
           items:
             - name: C
               href: quick-create-simulated-device-x509.md
@@ -39,9 +39,9 @@
               href: quick-create-simulated-device-x509-node.md
             - name: Python
               href: quick-create-simulated-device-x509-python.md
-    - name: デバイスを登録する
+    - name: プロビジョニング サービス API を使用したデバイス登録
       items:
-        - name: TPM
+        - name: TPM の構成証明
           items:
             - name: Java
               href: quick-enroll-device-tpm-java.md
@@ -51,7 +51,7 @@
               href: quick-enroll-device-tpm-node.md
             - name: Python
               href: quick-enroll-device-tpm-python.md
-        - name: X.509
+        - name: X.509 の構成証明
           items:
             - name: Java
               href: quick-enroll-device-x509-java.md
@@ -79,12 +79,14 @@
       href: tutorial-group-enrollments.md
 - name: 概念
   items:
-    - name: デバイスの概念
+    - name: 自動プロビジョニング
+      href: concepts-auto-provisioning.md
+    - name: デバイス
       href: concepts-device.md
-    - name: サービスの概念
-      href: concepts-service.md
-    - name: セキュリティの概念
+    - name: セキュリティ
       href: concepts-security.md
+    - name: サービス
+      href: concepts-service.md
 - name: ハウツー ガイド
   items:
     - name: デバイス登録の管理

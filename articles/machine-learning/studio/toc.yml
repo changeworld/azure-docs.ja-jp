@@ -3,8 +3,6 @@
 - name: 概要
   expanded: true
   items:
-    - name: Machine Learning とは
-      href: what-is-machine-learning.md
     - name: Machine Learning Studio
       href: what-is-ml-studio.md
     - name: ML Studio の機能

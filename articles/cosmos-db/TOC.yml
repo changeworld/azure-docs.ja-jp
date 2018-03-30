@@ -288,7 +288,7 @@
               href: table-support.md
             - name: PowerShell を使用したテーブル API 操作
               href: table-powershell.md
-            - name: Azure テーブル ストレージ
+            - name: Azure Table Storage
               items:
                 - name: Table Storage の概要
                   href: table-storage-overview.md
@@ -445,3 +445,5 @@
       href: faq.md
     - name: 野球で説明するデータ整合性
       href: 'http://research.microsoft.com/apps/pubs/default.aspx?id=206913'
+    - name: Azure Cosmos DB のトラブルシューティング
+      href: troubleshoot-azure-cosmosdb.md

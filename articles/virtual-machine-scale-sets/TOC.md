@@ -1,15 +1,38 @@
-# [Virtual Machine Scale Sets のドキュメント](index.md)
+# [Virtual Machine Scale Sets のドキュメント](index.yml)
 
 # 概要
-## [仮想マシン スケール セットとは](virtual-machine-scale-sets-overview.md)
+## [仮想マシン スケール セットとは](overview.md)
 
-# 作業の開始
-## [Azure Portal で作成する](virtual-machine-scale-sets-create-portal.md)
-## [Azure CLI 2.0 を使って作成する](virtual-machine-scale-sets-create-cli.md)
-## [Azure PowerShell を使って作成する](virtual-machine-scale-sets-create-powershell.md)
+# クイック スタート
+## [Azure Portal で作成する](quick-create-portal.md)
+## [Azure CLI 2.0 を使って作成する](quick-create-cli.md)
+## [Azure PowerShell を使って作成する](quick-create-powershell.md)
 ## テンプレートを使って作成する
-### [Linux スケール セット](virtual-machine-scale-sets-create-template-linux.md)
-### [Windows スケール セット](virtual-machine-scale-sets-create-template-windows.md)
+### [Linux スケール セット](quick-create-template-linux.md)
+### [Windows スケール セット](quick-create-template-windows.md)
+
+# チュートリアル
+## 1 - スケール セットの作成/管理
+### [Azure CLI 2.0](tutorial-create-and-manage-cli.md)
+### [Azure PowerShell](tutorial-create-and-manage-powershell.md)
+## 2 - データ ディスクの使用
+### [Azure CLI 2.0](tutorial-use-disks-cli.md)
+### [Azure PowerShell](tutorial-use-disks-powershell.md)
+## 3 - カスタム VM イメージの使用
+### [Azure CLI 2.0](tutorial-use-custom-image-cli.md)
+### [Azure PowerShell](tutorial-use-custom-image-powershell.md)
+## 4 - スケール セットへのアプリのデプロイ
+### [Azure CLI 2.0](tutorial-install-apps-cli.md)
+### [Azure PowerShell](tutorial-install-apps-powershell.md)
+### [テンプレート](tutorial-install-apps-template.md)
+## 5 - スケール セットの自動スケーリング
+### [Azure CLI 2.0](tutorial-autoscale-cli.md)
+### [Azure PowerShell](tutorial-autoscale-powershell.md)
+### [テンプレート](tutorial-autoscale-template.md)
+
+# サンプル
+## [Azure CLI 2.0](cli-samples.md)
+## [PowerShell](powershell-samples.md)
 
 # 方法
 ## 計画と設計
@@ -24,12 +47,9 @@
 
 ## デプロイ
 ### [Visual Studio での作成](virtual-machine-scale-sets-vs-create.md)
-### [スケール セットと管理ディスク](virtual-machine-scale-sets-managed-disks.md)
 ### [可用性ゾーンの使用](virtual-machine-scale-sets-use-availability-zones.md)
 ### [スケール セットの自動スケール](virtual-machine-scale-sets-autoscale-overview.md)
 #### [Azure Portal の使用](virtual-machine-scale-sets-autoscale-portal.md)
-#### [Azure CLI 2.0 の使用](virtual-machine-scale-sets-autoscale-cli.md)
-#### [Azure PowerShell の使用](virtual-machine-scale-sets-autoscale-powershell.md)
 #### [高度な自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [スケール セット上のアプリケーション](virtual-machine-scale-sets-deploy-app.md)
 ### [スケール セットでデータ ディスクを使用する](virtual-machine-scale-sets-attached-disks.md)

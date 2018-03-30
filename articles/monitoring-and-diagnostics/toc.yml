@@ -39,7 +39,7 @@
       href: monitor-alerts-unified-log.md
     - name: アクティビティ ログ アラート (プレビュー)
       href: monitoring-activity-log-alerts-new-experience.md
-    - name: OMS から Azure にアラートを拡張する
+    - name: Log Analytics から Azure へのアラートの拡張
       href: monitoring-alerts-extend.md
     - name: アクション グループ
       href: monitoring-action-groups.md
@@ -53,44 +53,44 @@
   items:
     - name: Azure Monitor のチュートリアル
       href: monitoring-get-started.md
+    - name: メトリックス エクスプローラーでのメトリック グラフの作成
+      href: monitoring-metric-charts.md
     - name: アラートの使用
       items:
-        - name: Azure Portal で新しいアラートを構成する
-          href: monitoring-near-real-time-metric-alerts.md
+        - name: Azure Portal でメトリックまたはログの新しいアラートを構成する
+          href: monitor-alerts-unified-usage.md
         - name: Azure Portal でクラシック アラートを構成する
           href: insights-alerts-portal.md
-        - name: Azure Portal でメトリックまたはログのアラートを構成する
-          href: monitor-alerts-unified-usage.md
-        - name: CLI を使用してアラートを構成する
+        - name: CLI を使用してクラシック アラートを構成する
           href: insights-alerts-command-line-interface.md
-        - name: Azure PowerShell でアラートを構成する
+        - name: Azure PowerShell を使用してクラシック アラートを構成する
           href: insights-alerts-powershell.md
         - name: ログ アラートの webhook アクション
           href: monitor-alerts-unified-log-webhook.md
-        - name: Resource Manager テンプレートでのメトリック アラートの作成
+        - name: Resource Manager テンプレートを使用してクラシック メトリック アラートを作成する
           href: monitoring-enable-alerts-using-template.md
-        - name: OMS から Azure へのアラート拡張の開始
+        - name: OMS ポータルから Azure Portal にアラートをコピーする
           href: monitoring-alerts-extend-tool.md
-    - name: 自動スケールの使用
+    - name: アラートでのアクション グループの使用
       items:
-        - name: 自動スケールのチュートリアル
-          href: monitoring-autoscale-get-started.md
-        - name: 自動スケール設定について
-          href: monitoring-understanding-autoscale-settings.md
-        - name: ベスト プラクティス
-          href: insights-autoscale-best-practices.md
-        - name: 一般的なメトリック
-          href: insights-autoscale-common-metrics.md
-        - name: 一般的なパターン
-          href: monitoring-autoscale-common-scale-patterns.md
-        - name: カスタム メトリックを使用した自動スケール
-          href: monitoring-autoscale-scale-by-custom-metric.md
-        - name: Resource Manager テンプレートを使用した VM スケール セットの自動スケール
-          href: insights-advanced-autoscale-virtual-machine-scale-sets.md
-        - name: VM スケール セットでのマシンの自動スケール
-          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
-        - name: 自動スケールで webhook と電子メール通知を構成する
-          href: insights-autoscale-to-webhook-email.md
+        - name: webhook スキーマの詳細情報
+          href: monitoring-activity-log-alerts-webhook.md
+        - name: SMS アラート動作
+          href: monitoring-sms-alert-behavior.md
+        - name: アラートのレート制限
+          href: monitoring-alerts-rate-limiting.md
+        - name: Resource Manager を使用してアクション グループを作成する
+          href: monitoring-create-action-group-with-resource-manager-template.md
+    - name: 診断ログの使用
+      items:
+        - name: アーカイブ
+          href: monitoring-archive-diagnostic-logs.md
+        - name: Log Analytics への送信
+          href: monitor-stream-diagnostic-logs-log-analytics.md
+        - name: Event Hubs へのストリーム
+          href: monitoring-stream-diagnostic-logs-to-event-hubs.md
+        - name: Resource Manager テンプレートを使用した診断設定の有効化
+          href: monitoring-enable-diagnostic-logs-using-template.md
     - name: アクティビティ ログの使用
       items:
         - name: アクティビティ ログでのイベントの表示
@@ -113,27 +113,13 @@
           href: monitoring-service-notifications.md
         - name: サービスの通知でアラートを構成する
           href: monitoring-activity-log-alerts-on-service-notifications.md
-    - name: アクション グループの使用
+    - name: プログラムによるアクセス
       items:
-        - name: webhook スキーマの詳細情報
-          href: monitoring-activity-log-alerts-webhook.md
-        - name: SMS アラート動作
-          href: monitoring-sms-alert-behavior.md
-        - name: アラートのレート制限
-          href: monitoring-alerts-rate-limiting.md
-        - name: Resource Manager を使用してアクション グループを作成する
-          href: monitoring-create-action-group-with-resource-manager-template.md
-    - name: 診断ログの使用
-      items:
-        - name: アーカイブ
-          href: monitoring-archive-diagnostic-logs.md
-        - name: Log Analytics への送信
-          href: monitor-stream-diagnostic-logs-log-analytics.md
-        - name: Event Hubs へのストリーム
-          href: monitoring-stream-diagnostic-logs-to-event-hubs.md
-        - name: Resource Manager テンプレートを使用して診断設定を有効にする
-          href: monitoring-enable-diagnostic-logs-using-template.md
-    - name: REST API の使用
+        - name: REST API を使用したチュートリアル
+          href: monitoring-rest-api-walkthrough.md
+        - name: Azure PowerShell のサンプル
+          href: insights-powershell-samples.md
+    - name: Azure 診断拡張機能の使用
       items:
         - name: Application Insights への送信
           href: azure-diagnostics-configure-application-insights.md
@@ -141,12 +127,32 @@
           href: azure-diagnostics-streaming-event-hubs.md
         - name: トラブルシューティング
           href: azure-diagnostics-troubleshooting.md
-    - name: メトリックス エクスプローラーでのメトリック グラフの作成
-      href: monitoring-metric-charts.md
-    - name: Grafana へのメトリックの送信
-      href: monitor-send-to-grafana.md
-    - name: イベント ハブへの監視データの送信
-      href: monitor-stream-monitoring-data-event-hubs.md
+    - name: 自動スケールの使用
+      items:
+        - name: 自動スケールのチュートリアル
+          href: monitoring-autoscale-get-started.md
+        - name: 自動スケール設定について
+          href: monitoring-understanding-autoscale-settings.md
+        - name: ベスト プラクティス
+          href: insights-autoscale-best-practices.md
+        - name: 一般的なメトリック
+          href: insights-autoscale-common-metrics.md
+        - name: 一般的なパターン
+          href: monitoring-autoscale-common-scale-patterns.md
+        - name: カスタム メトリックを使用した自動スケール
+          href: monitoring-autoscale-scale-by-custom-metric.md
+        - name: Resource Manager テンプレートを使用した VM スケール セットの自動スケール
+          href: insights-advanced-autoscale-virtual-machine-scale-sets.md
+        - name: VM スケール セットでのマシンの自動スケール
+          href: ../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json
+        - name: 自動スケールで webhook と電子メール通知を構成する
+          href: insights-autoscale-to-webhook-email.md
+    - name: その他の場所へのルーティング
+      items:
+        - name: Grafana へのメトリックの送信
+          href: monitor-send-to-grafana.md
+        - name: イベント ハブへの監視データの送信
+          href: monitor-stream-monitoring-data-event-hubs.md
 - name: リファレンス
   items:
     - name: Azure CLI
@@ -157,6 +163,8 @@
       href: /rest/api/monitor/
     - name: サポートされるメトリック
       href: monitoring-supported-metrics.md
+    - name: 新しいアラートでサポートされるメトリック
+      href: monitoring-near-real-time-metric-alerts.md
     - name: 診断ログのサービス、カテゴリ、スキーマ
       href: monitoring-diagnostic-logs-schema.md
     - name: アクティビティ ログのイベント スキーマ

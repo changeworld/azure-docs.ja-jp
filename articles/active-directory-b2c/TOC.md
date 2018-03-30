@@ -33,7 +33,7 @@
 ### [ASP.NET API の保護](active-directory-b2c-tutorials-web-api.md)
 ### [ASP.NET](active-directory-b2c-devquickstarts-api-dotnet.md)
 ### [ASP.NET Core](https://github.com/Azure-Samples/active-directory-b2c-dotnetcore-webapi)
-### [Node.JS](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi)
+### [Node.JS](active-directory-b2c-devquickstarts-api-node.md)
 ### [.NET Web API の呼び出し](active-directory-b2c-devquickstarts-web-api-dotnet.md)
 
 # ガイド
@@ -66,7 +66,8 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [作業の開始](active-directory-b2c-get-started-custom.md)
+### [概要](active-directory-b2c-get-started-custom.md)
+### [スターター パック](active-directory-b2c-reference-custom-policies-understanding-contents.md)
 ### OIDC/OAUTH プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
