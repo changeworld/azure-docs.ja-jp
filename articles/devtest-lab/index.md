@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 41b7ae5ecf87f4ca544e03c3e62b6c850cf799d0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 347545326b0aa3b16aafa5f78372b5a11769eeda
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="devtest-labs-documentation"></a>DevTest Labs ドキュメント
 
@@ -78,7 +78,7 @@ Devtest Labs を使用して、再利用可能なアーティファクトを用�
         </a>
     </li>
     <li>
-        <a href="/azure/devtest-lab/devtest-lab-add-vm-with-artifacts">
+        <a href="/azure/devtest-lab/devtest-lab-add-vm">
         <div class="cardSize">
             <div class="cardPadding">
                 <div class="card">

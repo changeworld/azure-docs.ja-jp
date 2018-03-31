@@ -1,5 +1,5 @@
 - name: Azure 監視のドキュメント
-  href: management-overview-monitoring.md
+  href: index.md
 - name: 概要
   items:
     - name: Azure での監視
