@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: dfa451a06fbadbb63c83f800ac164db399efd583
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
 
@@ -27,7 +27,7 @@ Azure Application Gateway を使用すると、次の方法でリソースを監
 
 * [バックエンドの正常性](#back-end-health): Application Gateway は、Azure Portal と PowerShell を介して、バックエンド プール内のサーバーの正常性を監視する機能を提供します。 バックエンド プールの正常性は、パフォーマンスの診断ログでも確認できます。
 
-* [ログ](#diagnostic-logs): リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
+* [ログ](#diagnostic-logging): リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
 
 * [メトリック](#metrics): Application Gateway が持つメトリックは現在 1 つです。 このメトリックは、Application Gateway の 1 秒あたりのスループットをバイト単位で測定したものです。
 
