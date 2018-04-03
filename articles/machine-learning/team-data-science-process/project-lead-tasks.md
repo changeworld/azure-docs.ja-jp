@@ -1,23 +1,23 @@
 ---
-title: "Team Data Science Process のプロジェクト リーダーのタスク - Azure | Microsoft Docs"
-description: "データ サイエンス チーム プロジェクトのプロジェクト リーダーのタスクの概要を説明します。"
-documentationcenter: 
+title: Team Data Science Process のプロジェクト リーダーのタスク - Azure | Microsoft Docs
+description: データ サイエンス チーム プロジェクトのプロジェクト リーダーのタスクの概要を説明します。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: fe7cf1e6167de7d0dfaa5ed75c0b7f5ec23b18cf
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5c769fda09e70cfb0a43e0305ffab4923fbe3307
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="project-lead-tasks"></a>プロジェクト リーダーのタスク
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 11/14/2017
 - ***DSProject1*** プロジェクトの Git リポジトリを作成するには、**[作成]** をクリックします。
 
 
-## <a name="2-seed-the-dsproject1-project-repository"></a>手順 2.DSProject1 プロジェクト リポジトリをシードします。
+## <a name="2-seed-the-dsproject1-project-repository"></a>2.DSProject1 プロジェクト リポジトリをシードします。
 
 ここで、タスクは、チーム プロジェクト テンプレート リポジトリ (R3) から **DSProject1** プロジェクト リポジトリ (R5) をシード処理することです。 このシード処理の手順では、ローカル DSVM 上のディレクトリ D3 および D5 を中間ステージング サイトとして使用します。 要約すると、シード処理のパスは R3 -> D3 -> D5 -> R5 です。
 
@@ -115,7 +115,7 @@ VSTS をコード ホスト プラットフォームとして使用している�
 
 この例では、
 
-***https://mysamplegroup.visualstudio.com/MyTeam/_git/MyTeamProjectTemplate*** です。 
+***https://mysamplegroup.visualstudio.com/MyTeam/_git/MyTeamProjectTemplate***。 
 
 ![7](./media/project-lead-tasks/project-leads-7-clone-team-project-template.png)
             
@@ -212,7 +212,7 @@ VSTS を コード ホスト プラットフォームとして使用する場合
 すべてのプロジェクト メンバーが複数の DSVM から同じデータセットにアクセスできるように、プロジェクト 生データなどのデータや、プロジェクトのために作られた機能を共有するために Azure ファイルストレージを作成するには、[データ サイエンス チームのチーム リーダーのタスク](team-lead-tasks.md)のセクション 3 および 4 の説明に従ってください。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process で定義されている役割とタスクの詳細な説明へのリンクを次に示します。
 

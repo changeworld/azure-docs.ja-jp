@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 3b8049515f753cbcf8ca068c1790f716f02d30b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="noconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレスのプレフィックスを変更するには (ゲートウェイに接続していない場合)
 
 #### <a name="to-add-additional-address-prefixes"></a>アドレス プレフィックスを追加するには:
@@ -38,7 +54,7 @@
 3. **[削除]**をクリックします。
 4. **[Save]** をクリックして設定を保存します。
 
-#### <a name="3-recreate-the-connection"></a>3.接続を再作成します。
+#### <a name="3-recreate-the-connection"></a>手順 3.接続を再作成します。
 
 1. VNet の仮想ネットワーク ゲートウェイに移動します  (ローカル ネットワーク ゲートウェイではありません)。
 2. 仮想ネットワーク ゲートウェイの **[設定]** セクションで、**[接続]** をクリックします。

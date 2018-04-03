@@ -1,11 +1,11 @@
 ---
-title: "Windows 仮想マシンの概要 |Microsoft Docs"
-description: "Azure における Windows 仮想マシンの作成と管理について説明します。"
+title: Windows 仮想マシンの概要 |Microsoft Docs
+description: Azure における Windows 仮想マシンの作成と管理について説明します。
 services: virtual-machines-windows
-documentationcenter: 
-author: davidmu1
-manager: timlt
-editor: tysonn
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager,azure-service-management
 ms.assetid: fbae9c8e-2341-4ed0-bb20-fd4debb2f9ca
 ms.service: virtual-machines-windows
@@ -14,13 +14,13 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4e33186b189394172cba6cf550c01954db941c19
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6ab964760ea06c2e82d0c9f69f89fe62dec8ceac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-windows-virtual-machines-in-azure"></a>Azure における Windows 仮想マシンの概要
 
@@ -145,7 +145,7 @@ Azure Portal の [接続] ボタンを使用して、[リモート デスクト�
 ### <a name="manage-availability"></a>可用性の管理
 アプリケーションの[高可用性を確保](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)する方法を把握しておくことが重要です。 この構成では、少なくとも 1 つの VM が実行され続けるように、複数の VM を作成します。
 
-Microsoft が VM に設けている 99.95% というサービス レベル アグリーメントの要件をカスタム デプロイで満たすためには、複数の VM をデプロイし、[可用性セット](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)内でワークロードを実行する必要があります。 この構成により、複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_0/) では、全体としての Azure の可用性の確保について説明します。
+Microsoft が VM に設けている 99.95% というサービス レベル アグリーメントの要件をカスタム デプロイで満たすためには、複数の VM をデプロイし、[可用性セット](tutorial-availability-sets.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)内でワークロードを実行する必要があります。 この構成により、複数の障害ドメインに VM を分散すると共に、メンテナンス期間の異なるホストにデプロイすることができます。 完全な [Azure SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) では、全体としての Azure の可用性の確保について説明します。
 
 ### <a name="back-up-the-vm"></a>VM のバックアップ
 [Recovery Services コンテナー](../../backup/backup-introduction-to-azure-backup.md)は、Azure Backup サービスと Azure Site Recovery サービスの両方でデータと資産を保護するために使用されます。 Recovery Services コンテナーを使用すれば、[Resource Manager でデプロイされた VM のバックアップを PowerShell を使用してデプロイおよび管理できます](../../backup/backup-azure-vms-automation.md)。 

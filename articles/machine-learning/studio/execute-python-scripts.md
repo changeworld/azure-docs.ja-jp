@@ -1,11 +1,12 @@
 ---
-title: "Python Machine Learning スクリプトの実行 |Microsoft Docs"
-description: "Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。"
-keywords: "python の機械の学習、pandas、python pandas、python スクリプト、python スクリプトの実行"
+title: Python Machine Learning スクリプトの実行 |Microsoft Docs
+description: Azure Machine Learning における Python スクリプトのサポート、基本的な使用シナリオ、機能、制限事項の基になる設計原則について説明します。
+keywords: python の機械の学習、pandas、python pandas、python スクリプト、python スクリプトの実行
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: ee9eb764-0d3e-4104-a797-19fc29345d39
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2017
-ms.author: bradsev;garye
-ms.openlocfilehash: c25f31ca72417672298657c4585184ad72db6c99
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: 0efa2a7604b41b791ed3717b7f2b667b7181085d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での Python Machine Learning スクリプトの実行
 
@@ -208,7 +208,7 @@ Azure Machine Learning にインストールされた Anaconda 環境には、Nu
 
 [Python スクリプトの実行][execute-python-script]モジュールに、Python でのモデルのトレーニングや運用などの追加機能を提供し、Azure Machine Learning Studio のコードの開発とデバッグにより優れたサポートを追加する予定です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 詳細については、 [Python デベロッパー センター](https://azure.microsoft.com/develop/python/)を参照してください。
 
 <!-- Module References -->

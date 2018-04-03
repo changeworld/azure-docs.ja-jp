@@ -1,12 +1,12 @@
 ---
-title: "Azure Advisor のコストに関する推奨事項 | Microsoft Docs"
-description: "Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。"
+title: Azure Advisor のコストに関する推奨事項 | Microsoft Docs
+description: Azure Advisor を使用して、Azure のデプロイにかかるコストを最適化します。
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: 7b9c7037271fabd67c1ada80420ad72c340e46bb
-ms.sourcegitcommit: ce934aca02072bdd2ec8d01dcbdca39134436359
+ms.openlocfilehash: 7a8807a580f1a7f1fe67e026a8fbd4cc0e96c41c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="advisor-cost-recommendations"></a>Advisor のコストに関する推奨事項
 
@@ -31,9 +31,6 @@ Advisor には、そのような仮想マシンの使用を継続した場合の
 
 使用率が低い仮想マシンを積極的に特定する場合は、サブスクリプションごとに平均 CPU 使用率ルールを調整できます。
 
-## <a name="use-a-cost-effective-solution-to-manage-performance-goals-of-multiple-sql-databases"></a>コスト効率に優れたソリューションを使用して、複数の SQL データベースのパフォーマンス目標を管理してください。
-Advisor は、エラスティック データベース プールの作成によってメリットを得る可能性がある SQL Server インスタンスを識別します。 エラスティック データベース プールは、多様な使用パターンを持つ複数のデータベースのパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。 Azure エラスティック プールの詳細については、「[Azure エラスティック プールの概要](https://azure.microsoft.com/en-us/documentation/articles/sql-database-elastic-pool/)」を参照してください。
-
 ## <a name="reduce-costs-by-eliminating-unprovisioned-expressroute-circuits"></a>プロビジョニングが解除された ExpressRoute 回線を排除してコストを削減する
 Advisor は、プロバイダーの状態が 1 か月以上 "*未プロビジョニング*" である ExpressRoute 回線を特定し、接続プロバイダーを使用してその回線をプロビジョニングする予定がない場合は回線を削除するよう勧めます。
 
@@ -43,7 +40,7 @@ Advisor は、プロバイダーの状態が 1 か月以上 "*未プロビジョ
 
 2.  Advisor ダッシュボードで、**[コスト]** タブをクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Advisor の推奨事項の詳細については、以下を参照してください。
 * [Advisor 入門](advisor-overview.md)

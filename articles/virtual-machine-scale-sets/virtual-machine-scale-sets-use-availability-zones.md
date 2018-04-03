@@ -1,13 +1,13 @@
 ---
-title: "可用性ゾーンを使用する Azure スケール セットを作成する (プレビュー) | Microsoft Docs"
-description: "障害に対する冗長性を高めるために可用性ゾーンを使用する Azure 仮想マシン スケール セットを作成する方法について説明します"
+title: 可用性ゾーンを使用する Azure スケール セットを作成する (プレビュー) | Microsoft Docs
+description: 障害に対する冗長性を高めるために可用性ゾーンを使用する Azure 仮想マシン スケール セットを作成する方法について説明します
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: iainfou
-ms.openlocfilehash: 2de214f604469025a8a4accde44359fea0ded7e9
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8b497af8bc7e3060e184dd6a029b23ccb2d2bbfb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones-preview"></a>可用性ゾーンを使用する仮想マシン スケール セットを作成する (プレビュー)
 データセンター レベルの障害から仮想マシン スケール セットを保護するには、複数の可用性ゾーンにまたがるスケール セットを作成できます。 可用性ゾーンをサポートする Azure リージョンには少なくとも 3 つの異なるゾーンがあり、それぞれが独自の独立した電源、ネットワーク、冷却装置を備えています。 詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md)に関するページをご覧ください。
@@ -41,7 +41,7 @@ ms.lasthandoff: 02/21/2018
 
 
 ## <a name="use-the-azure-portal"></a>Azure ポータルの使用
-可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](virtual-machine-scale-sets-create-portal.md)で詳しく説明されているものと同じです。 [可用性ゾーン (プレビュー) に登録](http://aka.ms/azenroll)していることを確認します。 次の例で示すように、サポートされている Azure リージョンを選ぶときに、使用可能なゾーンの 1 つにスケール セットを作成できます。
+可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-portal.md)で詳しく説明されているものと同じです。 [可用性ゾーン (プレビュー) に登録](http://aka.ms/azenroll)していることを確認します。 次の例で示すように、サポートされている Azure リージョンを選ぶときに、使用可能なゾーンの 1 つにスケール セットを作成できます。
 
 ![単一の可用性ゾーンにスケール セットを作成する](media/virtual-machine-scale-sets-use-availability-zones/create-portal-single-az.png)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 02/21/2018
 
 
 ## <a name="use-the-azure-cli-20"></a>Azure CLI 2.0 を使用する
-可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](virtual-machine-scale-sets-create-cli.md)で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成し、[可用性ゾーン (プレビュー) に登録](http://aka.ms/azenroll)する必要があります。
+可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-cli.md)で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成し、[可用性ゾーン (プレビュー) に登録](http://aka.ms/azenroll)する必要があります。
 
 `--zones` パラメーターを [az vmss create](/cli/azure/vmss#az_vmss_create) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。 次の例では、*myScaleSet* という名前の単一ゾーン スケール セットをゾーン *1* に作成します。
 
@@ -114,7 +114,7 @@ az vmss create \
 
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
-可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](virtual-machine-scale-sets-create-powershell.md)で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成し、[可用性ゾーン (プレビュー) に登録](http://aka.ms/azenroll)する必要があります。 `-Zone` パラメーターを [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。 
+可用性ゾーンを使うスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-powershell.md)で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成し、[可用性ゾーン (プレビュー) に登録](http://aka.ms/azenroll)する必要があります。 `-Zone` パラメーターを [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) コマンドに追加して、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。 
 
 次の例では、*vmssConfig* という名前の単一ゾーン スケール セット構成を、"*米国東部 2*" のゾーン *1* に作成します。
 
@@ -178,7 +178,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure リソース マネージャー テンプレートの使用
-可用性ゾーンを使うスケール セットを作成するプロセスは、[Linux](virtual-machine-scale-sets-create-template-linux.md) または [Windows](virtual-machine-scale-sets-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成し、[可用性ゾーン (プレビュー) に登録](http://aka.ms/azenroll)する必要があります。 テンプレートの *Microsoft.Compute/virtualMachineScaleSets* のリソースの種類に `zones` プロパティを追加し、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。
+可用性ゾーンを使うスケール セットを作成するプロセスは、[Linux](quick-create-template-linux.md) または [Windows](quick-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 可用性ゾーンを使うには、サポートされている Azure リージョンにスケール セットを作成し、[可用性ゾーン (プレビュー) に登録](http://aka.ms/azenroll)する必要があります。 テンプレートの *Microsoft.Compute/virtualMachineScaleSets* のリソースの種類に `zones` プロパティを追加し、使うゾーンを指定します (ゾーン *1*、*2*、*3* など)。
 
 次の例では、*myScaleSet* という名前の Linux 単一ゾーン スケール セットを、"*米国東部 2*" のゾーン *1* に作成します。
 

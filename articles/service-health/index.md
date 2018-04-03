@@ -10,13 +10,13 @@ ms.service: service-health
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 07/07/2017
+ms.date: 03/27/2018
 ms.author: carolz
-ms.openlocfilehash: f362acf85af392253fe556ed9b97a325f22ca7b0
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: ff22fb228b2b3fc2c456fbf272f0696136d35c38
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-service-health-documentation"></a>Azure Service Health のドキュメント
 

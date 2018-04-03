@@ -1,24 +1,24 @@
 ---
-title: "Team Data Science Process ライフサイクルの顧客による受け入れステージ - Azure | Microsoft Docs"
-description: "データ サイエンス プロジェクトの顧客による受け入れステージの目標、タスク、成果物"
+title: Team Data Science Process ライフサイクルの顧客による受け入れステージ - Azure | Microsoft Docs
+description: データ サイエンス プロジェクトの顧客による受け入れステージの目標、タスク、成果物
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: e150b3e7c7e98443264dd5b8aaeda1bfe6047b2c
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: 0030698bafc3d92a1c6daf944ba496421080912c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="customer-acceptance"></a>顧客による受け入れ
 
@@ -50,7 +50,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
 この最終ステージで生成される主なアーティファクトは、**顧客向けプロジェクトの終了レポート**です。 この技術的なレポートには、システムの運用方法を学習するために役立つプロジェクトのすべての詳細が含まれています。 TDSP には、[終了レポート](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Project/Exit%20Report.md) テンプレートが用意されています。 このテンプレートをそのまま使用することも、特定のクライアントのニーズに合わせてカスタマイズすることもできます。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 

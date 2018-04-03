@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: クライアント証明書を使用して RESTful サービスをセキュリティで保護する"
-description: "クライアント証明書を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する"
+title: 'Azure Active Directory B2C: クライアント証明書を使用して RESTful サービスをセキュリティで保護する'
+description: クライアント証明書を使用して Azure AD B2C でのカスタム REST API 要求交換をセキュリティで保護する
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 09/25/2017
-ms.author: yoelh
-ms.openlocfilehash: 582aadd35821779e307ac285804e3b7fe5c24abd
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: davidmu
+ms.openlocfilehash: f1b9ef9a78715c08c5361e4bab6a31384c5c98d3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="secure-your-restful-service-by-using-client-certificates"></a>クライアント証明書を使用して RESTful サービスをセキュリティで保護する
 関連する記事では、Azure Active Directory B2C (Azure AD B2C) と対話する [RESTful サービスを作成](active-directory-b2c-custom-rest-api-netfw.md)します。

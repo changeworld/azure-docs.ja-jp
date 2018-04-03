@@ -1,11 +1,10 @@
 ---
-title: "Azure SQL Data Warehouse との間でのデータのコピー | Microsoft Docs"
-description: "Azure Data Factory を使用して Azure SQL Data Warehouse との間でデータをコピーする方法を説明します"
+title: Azure SQL Data Warehouse との間でのデータのコピー | Microsoft Docs
+description: Azure Data Factory を使用して Azure SQL Data Warehouse との間でデータをコピーする方法を説明します
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: d90fa9bd-4b79-458a-8d40-e896835cfd4a
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 97782d1437f47a5ec403a98464d38961874d7575
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 709a178d99a34adb9c77086e55270fe41ed84551
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-azure-sql-data-warehouse-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -198,7 +197,7 @@ SQL Data Warehouse の PolyBase は (サービス プリンシパルを使用し
 1. **ソースのリンクされたサービス**の型が **AzureStorage** または **サービス プリンシパルの認証を使用する AzureDataLakeStore** であること。  
 2. **入力データセット**の型が **AzureBlob** または **AzureDataLakeStore** で、`type` プロパティの形式が次の構成で **OrcFormat**、**ParquetFormat** または **TextFormat** であること。
 
-   1. `rowDelimiter` は **\n** である必要があります。
+   1. `rowDelimiter` が **\n** である。
    2. `nullValue` が **空の文字列** ("") に設定されている。または、`treatEmptyAsNull` が **true** に設定されている。
    3. `encodingName` が **utf-8** に設定されている。これは**既定値**です。
    4. `escapeChar`、`quoteChar`、`firstRowAsHeader`、および `skipLineCount` が指定されていない。

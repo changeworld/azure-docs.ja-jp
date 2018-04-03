@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack の管理の基本 | Microsoft Docs"
-description: "Azure Stack を管理するために知っておく必要があることについて説明します。"
+title: Azure Stack の管理の基本 | Microsoft Docs
+description: Azure Stack を管理するために知っておく必要があることについて説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 856738a7-1510-442a-88a8-d316c67c757c
 ms.service: azure-stack
 ms.workload: na
@@ -14,16 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mabrigg
-ms.openlocfilehash: fa77faac195de3be7bf7b2785eb589b030a6e6ce
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 799651caf937ca2bafc79dc76f99ae43e700673a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
-
-*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
-
 Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
 
 ## <a name="understand-the-builds"></a>ビルドを理解する
@@ -32,7 +29,7 @@ Azure Stack の管理経験がない場合は、知っておく必要がある�
 
 Azure Stack 統合システムを使用している場合、Azure Stack の更新バージョンは更新プログラム パッケージを通して配布されます。 これらのパッケージをインポートして、管理者ポータルの [更新] タイルでパッケージを適用できます。
  
-### <a name="development-kit"></a>Development kit
+### <a name="development-kit"></a>開発キット
 
 Azure Stack Development Kit を使用している場合は、「[What is Azure Stack? (Azure Stack とは)](azure-stack-poc.md)」の記事を確認し、Development Kit の目的と制限事項について確実に理解しておいてください。 開発キットは "サンド ボックス" として使用する必要があります。その中では、Azure Stack を評価し、非運用環境でアプリの開発とテストを行うことができます。 (デプロイの情報については、[Azure Stack Development Kit](azure-stack-deploy-overview.md) のデプロイ クイックスタートを参照してください。)
 
@@ -47,7 +44,7 @@ Azure のように、Microsoft は迅速にイノベーションを進めてい�
 Azure Stack をデプロイすると、Azure Stack には既定で以下の "基礎となるサービス" が含まれています。
 
 - コンピューティング
-- ストレージ
+- Storage
 - ネットワーク
 - Key Vault
 
@@ -132,7 +129,7 @@ PowerShell を使用する場合、ユーザーはサービスを使用する前
 
 Development Kit については、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)でサポート関連の質問をすることができます。 管理者ポータルの右上隅にあるヘルプとサポートのアイコン (疑問符) をクリックし、**[新しいサポート要求]** をクリックすると、フォーラムのサイトが直接開かれます。 これらのフォーラムは定期的にチェックされています。 開発キットは評価環境であるため、Microsoft CSS を通した正式なサポートは提供されていません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure Stack でのリージョンの管理](azure-stack-region-management.md)
 

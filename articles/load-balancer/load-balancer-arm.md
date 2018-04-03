@@ -1,6 +1,6 @@
 ---
-title: "Azure Resource Manager による Load Balancer のサポート | Microsoft Docs"
-description: "Azure Resource Manager で Load Balancer に PowerShell を使用します。 ロード バランサーにテンプレートを使用します。"
+title: Azure Resource Manager による Load Balancer のサポート | Microsoft Docs
+description: Azure Resource Manager で Load Balancer に PowerShell を使用します。 ロード バランサーにテンプレートを使用します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 6ba329e55f03cf984ae795c1d3a509e196064e2a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1d098f45c391363523b6a56ec0c6fdb40e64d68
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-azure-resource-manager-support-with-azure-load-balancer"></a>Azure Load Balancer での Azure Resource Manager のサポートの使用
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Azure Resource Manager は、Azure のサービスの優先管理フレームワークです。 Azure Resource Manager ベースの API とツールを使用して Azure Load Balancer を管理できます。
 
@@ -65,7 +65,7 @@ Azure Resource Manager コマンドレット、コマンド ライン ツール�
 * [Azure リソース管理での Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
 * [Load Balancer REST API](https://msdn.microsoft.com/library/azure/mt163651.aspx)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [インターネットに接続するロード バランサーの作成を開始](load-balancer-get-started-internet-arm-ps.md)し、特定のロード バランサーのネットワーク トラフィックの動作に適した種類の[分散モード](load-balancer-distribution-mode.md)を構成することもできます。
 

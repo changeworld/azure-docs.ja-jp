@@ -1,8 +1,8 @@
 ---
-title: "Cortana Intelligence ソリューション評価ツール | Microsoft Docs"
-description: "Microsoft パートナーとして開発した Cortana Intelligence ソリューションを AppSource に公開するために従う必要のあるすべての手順を紹介します。"
+title: Cortana Intelligence ソリューション評価ツール | Microsoft Docs
+description: Microsoft パートナーとして開発した Cortana Intelligence ソリューションを AppSource に公開するために従う必要のあるすべての手順を紹介します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: AnupamMicrosoft
 manager: jhubbard
 editor: cgronlun
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
-ms.author: anupams;v-bruham;garye
-ms.openlocfilehash: c9ea8164d5866662a7ed81672ee1ba776603b193
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: anupams
+ms.openlocfilehash: f678cb9819a2c03f97bcca5a2092160212779328
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence ソリューション評価ツール
 ## <a name="overview"></a>概要
@@ -53,8 +53,8 @@ Azure サブスクリプションに接続し、アプリが含まれている�
 ### <a name="ingestion"></a>データの取り込み
 ここでの取り込みとは、何らかのデータ ソースが利用され、ソリューションの外部からデータがプルされることを意味するか、ソリューションの外部のサービスにより何らかのデータ ソースが利用され、データがソリューションにプッシュされることを意味します。
 
-### <a name="consumption"></a>使用量
-ここでの使用とは、何らかのデータ ソースが利用され、直接的または間接的にエンド ユーザーにデータがプッシュされることを意味します。 For example:
+### <a name="consumption"></a>消費
+ここでの使用とは、何らかのデータ ソースが利用され、直接的または間接的にエンド ユーザーにデータがプッシュされることを意味します。 例: 
 - PowerBI からの直接クエリで使用されるデータセット。
 - WebApp 内でクエリされるデータセット。
 

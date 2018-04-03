@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: b8a785293c4e555b547c4b002f5ef5906a7633c0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 この FAQ は、クラシック デプロイメント モデルを使用した P2S 接続に適用されます。
 
 ### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
@@ -13,7 +29,6 @@
 * Windows 10
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp"></a>SSTP をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
-
 
 いいえ。 上記のバージョンの Windows オペレーティング システムのみがサポートされています。
 

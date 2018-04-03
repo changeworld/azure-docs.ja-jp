@@ -1,24 +1,21 @@
 ---
-title: "承認コード フロー - Azure AD B2C | Microsoft Docs"
-description: "Azure AD B2C と OpenID Connect 認証プロトコルを使用して Web アプリをビルドする方法を説明します。"
+title: 承認コード フロー - Azure AD B2C | Microsoft Docs
+description: Azure AD B2C と OpenID Connect 認証プロトコルを使用して Web アプリをビルドする方法を説明します。
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: c371aaab-813a-4317-97df-b62e2f53d865
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: 99a292c6be66016264e528525a5920667207b605
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: d49a1c97a578726c26f8533476042646b0b302d3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-oauth-20-authorization-code-flow"></a>Azure Active Directory B2C: OAuth 2.0 承認コード フロー
 OAuth 2.0 認証コード付与を利用して、デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えることができます。 Azure Active Directory B2C (Azure AD B2C) で導入された OAuth 2.0 を利用することで、サインアップ、サインイン、その他の ID 管理タスクをモバイル アプリとデスクトップ アプリに追加できます。 この記事は言語に依存しません。 この記事では、オープンソース ライブラリを利用しないで、HTTP メッセージを送受信する方法について説明します。
@@ -76,7 +73,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | [説明] |
 | --- | --- | --- |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
 | response_type |必須 |応答の種類。承認コード フローでは `code` を指定する必要があります。 |
@@ -99,10 +96,10 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...        // the auth
 &state=arbitrary_data_you_can_receive_in_the_response                // the value provided in the request
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | code |アプリが要求した承認コード。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。 承認コードの有効期間は非常に短時間です。 通常、約 10 分で期限が切れます。 |
-| state |詳細については前のセクションの表を参照してください。 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる `state` 値が同一であることをアプリ側で確認する必要があります。 |
+| state |詳細については前のセクションの表を参照してください。 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリは、要求と応答の `state` 値が同一であることを検証する必要があります。 |
 
 アプリ側でエラーを適切に処理できるよう、リダイレクト URI にはエラー応答も送信できます。
 
@@ -113,7 +110,7 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列を使用して、エラーに対処することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -131,7 +128,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | [説明] |
 | --- | --- | --- |
 | p |必須 |認証コードの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは、POST 本文ではなく、" *クエリ文字列*" に追加することに注意してください。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
@@ -152,7 +149,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -170,12 +167,12 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列を使用して、エラーに対処することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
 
-## <a name="3-use-the-token"></a>3.トークンを使用する
+## <a name="3-use-the-token"></a>手順 3.トークンを使用する
 アクセス トークンを正常に取得したら、そのトークンを `Authorization` ヘッダーに追加することによって、バックエンド Web API への要求に使用することができます。
 
 ```
@@ -195,13 +192,13 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6 offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | [説明] |
 | --- | --- | --- |
 | p |必須 |元の更新トークンの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは、POST 本文ではなく、" *クエリ文字列*" に追加することに注意してください。 |
 | client_id |推奨 |[Azure Portal](https://portal.azure.com) でアプリに割り当てられたアプリケーション ID。 |
 | grant_type |必須 |付与の種類。 この段階の承認コード フローでは、付与の種類には `refresh_token` を指定する必要があります。 |
 | scope |推奨 |スコープのスペース区切りリスト。 1 つのスコープ値が、要求されている両方のアクセス許可を Azure AD に示します。 クライアント ID をスコープとして使用することは、同じクライアント ID で表される、独自のサービスまたは Web API に対して使用できるアクセス トークンをアプリが必要とすることを示します。  `offline_access` スコープは、リソースに長期アクセスするためにアプリは更新トークンを必要とすることを示します。  Azure AD B2C に ID トークンを要求するために、`openid` スコープを使用することもできます。 |
-| redirect_uri |省略可能。 |承認コードを受け取った、アプリケーションのリダイレクト URI。 |
+| redirect_uri |省略可能 |承認コードを受け取った、アプリケーションのリダイレクト URI。 |
 | refresh_token |必須 |フローの第 2 段階で取得した元の更新トークン。 |
 
 正常なトークン応答は次のようになります。
@@ -216,7 +213,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは Bearer タイプのみです。 |
@@ -234,9 +231,9 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=90
 }
 ```
 
-| パラメーター | Description |
+| パラメーター | [説明] |
 | --- | --- |
-| error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列を使用して、エラーに対処することもできます。 |
+| error |発生したエラーの種類を分類する際に使用できるエラー コード文字列。 この文字列はエラーへの対応に利用することもできます。 |
 | error_description |認証エラーの根本的な原因を特定しやすいように記述した具体的なエラー メッセージ。 |
 
 ## <a name="use-your-own-azure-ad-b2c-directory"></a>独自の Azure AD B2C ディレクトリを使用する

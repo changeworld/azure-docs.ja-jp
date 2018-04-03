@@ -1,11 +1,11 @@
 ---
-title: "提供が中止された Azure Cosmos DB のパフォーマンス レベル | Microsoft Docs"
-description: "Azure Cosmos DB で以前に提供されていた、S1、S2、S3 パフォーマンス レベルについて説明します。"
+title: 提供が中止された Azure Cosmos DB のパフォーマンス レベル | Microsoft Docs
+description: Azure Cosmos DB で以前に提供されていた、S1、S2、S3 パフォーマンス レベルについて説明します。
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 7dc21c71-47e2-4e06-aa21-e84af52866f4
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,19 +15,17 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4cab6297e45dc7a14826d7bb10cf22a8a300355f
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 62ef3c8988b0f11d6d8bcb69080f4e1b98a44641
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
 
 > [!IMPORTANT] 
 > この記事で説明する S1、S2、S3 パフォーマンス レベルは提供が中止されるため、新しい Azure Cosmos DB アカウントで使用できなくなります。
 >
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 この記事では、S1、S2、S3 パフォーマンス レベルの概要を示し、2017 年の終わり頃にこれらのパフォーマンス レベルを使用するコレクションを単一パーティション コレクションに移行する方法について説明します。 この記事を読むと、次の質問に回答できるようになります。
 

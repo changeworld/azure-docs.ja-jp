@@ -1,11 +1,12 @@
 ---
-title: "機械学習のサンプルから実験を作成する - Azure | Microsoft Docs"
-description: "Azure AI ギャラリーと Azure Machine Learning を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。"
-keywords: "機械学習の例, サンプル実験, 機械学習のサンプル, AI の例"
+title: 機械学習のサンプルから実験を作成する - Azure | Microsoft Docs
+description: Azure AI ギャラリーと Azure Machine Learning を利用して、サンプルの機械学習実験を基に新しい実験を作成する方法について説明します。
+keywords: 機械学習の例, サンプル実験, 機械学習のサンプル, AI の例
 services: machine-learning
-documentationcenter: 
-author: cjgronlund
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 81e6c1d8-682c-4db3-bfd5-d7bfb1150ff3
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/05/2018
-ms.author: cgronlun
-ms.openlocfilehash: 9ea19f137acb23d3527315aae2624c746e138545
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 7cb5c869e4523333ce0651559632070e5a19163c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-machine-learning-experiments-from-working-examples-in-azure-ai-gallery"></a>Azure AI Gallery にある実用的なサンプルから機械学習の実験を作成する
 

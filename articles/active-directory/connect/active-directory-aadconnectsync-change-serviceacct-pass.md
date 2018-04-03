@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect 同期: Azure AD Connect 同期サービス アカウントの変更 | Microsoft Docs"
-description: "このトピックでは、暗号化キーの詳細と、パスワードの変更後にこのキーを破棄する方法について説明します。"
+title: 'Azure AD Connect 同期: Azure AD Connect 同期サービス アカウントの変更 | Microsoft Docs'
+description: このトピックでは、暗号化キーの詳細と、パスワードの変更後にこのキーを破棄する方法について説明します。
 services: active-directory
-keywords: "Azure AD 同期サービス アカウント, パスワード"
-documentationcenter: 
+keywords: Azure AD 同期サービス アカウント, パスワード
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 76b19162-8b16-4960-9e22-bd64e6675ecc
 ms.service: active-directory
 ms.workload: identity
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: c22dd91f236454c774c00371bff668da245d45c6
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: faa6d667b514563516c23e0484437ac9572e52b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="changing-the-azure-ad-connect-sync-service-account-password"></a>Azure AD Connect 同期サービス アカウントのパスワードの変更
 Azure AD Connect 同期サービス アカウントのパスワードを変更すると、暗号化キーを破棄し、Azure AD Connect 同期サービス アカウントのパスワードを再初期化するまで、同期サービスを正常に開始できなくなります。 
@@ -30,7 +30,7 @@ Azure AD Connect は同期サービスの一部として、暗号化キーを使
 
 サービス アカウントのパスワードを変更する必要がある場合は、「[Azure AD Connect 同期の暗号化キーの破棄](#abandoning-the-azure-ad-connect-sync-encryption-key)」の手順に従って変更します。  この手順は、なんらかの理由で暗号化キーを破棄する必要がある場合にも使用してください。
 
-##<a name="issues-that-arise-from-changing-the-password"></a>パスワードの変更により生じる問題
+## <a name="issues-that-arise-from-changing-the-password"></a>パスワードの変更により生じる問題
 サービス アカウントのパスワードを変更する場合、2 つの手順を完了する必要があります。
 
 最初に、Windows サービス コントロール マネージャーでパスワードを変更する必要があります。  この問題を解決するまで、次のエラーが表示されます。

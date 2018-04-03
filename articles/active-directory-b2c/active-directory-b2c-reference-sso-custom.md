@@ -1,24 +1,21 @@
 ---
-title: "カスタム ポリシーを使用した SSO セッション管理 - Azure AD B2C | Microsoft Docs"
-description: "Azure AD B2C でカスタム ポリシーを使用して SSO セッションを管理する方法について説明します。"
+title: カスタム ポリシーを使用した SSO セッション管理 - Azure AD B2C | Microsoft Docs
+description: Azure AD B2C でカスタム ポリシーを使用して SSO セッションを管理する方法について説明します。
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 809f6000-2e52-43e4-995d-089d85747e1f
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: parja
-ms.openlocfilehash: 676b277ae3fbf4554838eee70c5d3e2d8e12c33d
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 3d378d188d9acec06f37ca91e3c67e82fb31fc08
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-single-sign-on-sso-session-management"></a>Azure AD B2C: シングル サインオン (SSO) セッション管理
 
@@ -96,7 +93,7 @@ SSO 管理クラスは、技術プロファイルの `<UseTechnicalProfileForSes
 
 技術プロファイルには 2 つのメタデータ項目があります。
 
-| 項目 | 既定値 | 指定できる値 | 説明
+| 項目 | 既定値 | 指定できる値 | [説明]
 | --- | --- | --- | --- |
 | IncludeSessionIndex | true | true または false | セッション インデックスを格納する必要があることをプロバイダーに指示します。 |
 | RegisterServiceProviders | true | true または false | アサーションが発行された SAML サービス プロバイダーすべてをプロバイダーが登録する必要があることを示します。 |
@@ -106,7 +103,7 @@ SAML ID プロバイダー セッションを保存する際にプロバイダ�
 >[!NOTE]
 > SAML セッションのログアウトを完了するには、`SessionIndex` と `NameID` が必要です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ご意見とご提案をお待ちしています。 このトピックで問題が発生した場合は、Stack Overflow にタグ ['azure-ad-b2c'](https://stackoverflow.com/questions/tagged/azure-ad-b2c) を使用して投稿してください。 機能に関するご要望については、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)で投票してください。
 

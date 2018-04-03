@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Lake Store との間でのデータのコピー | Microsoft Docs"
-description: "Azure Data Factory を使って Data Lake Store に、または Data Lake Store からデータをコピーする方法を説明します"
+title: Azure Data Lake Store との間でのデータのコピー | Microsoft Docs
+description: Azure Data Factory を使って Data Lake Store に、または Data Lake Store からデータをコピーする方法を説明します
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 25b1ff3c-b2fd-48e5-b759-bb2112122e30
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: f4ba8288c1efd443310b4efc305c6f397c8163a0
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: ce5909bd522ab7af77846af598506ea69058bd5c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-and-from-data-lake-store-by-using-data-factory"></a>Data Factory を使用して Data Lake Store との間でデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

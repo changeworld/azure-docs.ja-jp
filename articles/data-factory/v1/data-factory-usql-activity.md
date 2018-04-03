@@ -1,11 +1,10 @@
 ---
-title: "U-SQL スクリプトを使用したデータ変換 - Azure | Microsoft Docs"
-description: "Azure Data Lake Analytics コンピューティング サービスで、U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。"
+title: U-SQL スクリプトを使用したデータ変換 - Azure | Microsoft Docs
+description: Azure Data Lake Analytics コンピューティング サービスで、U-SQL スクリプトを実行してデータを処理または変換する方法について説明します。
 services: data-factory
-documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+documentationcenter: ''
+author: douglaslMS
+manager: craigg
 ms.assetid: e17c1255-62c2-4e2e-bb60-d25274903e80
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2017
-ms.author: spelluru
+ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: ff91a3da978fd027605b3674eae14d1d74b309cd
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.openlocfilehash: 7861a3380ee330241f0c735ee6c5ed84f121e512
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -47,11 +46,11 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 
 次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 サービス プリンシパル認証とユーザー資格情報認証のいずれかをさらに選ぶことができます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 | --- | --- | --- |
-| **type** |type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 |あり |
-| **accountName** |Azure Data Lake Analytics アカウント名。 |あり |
-| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |いいえ |
+| **type** |type プロパティは **AzureDataLakeAnalytics**に設定する必要があります。 |[はい] |
+| **accountName** |Azure Data Lake Analytics アカウント名。 |[はい] |
+| **dataLakeAnalyticsUri** |Azure Data Lake Analytics URI。 |いいえ  |
 | **subscriptionId** |Azure サブスクリプション ID |いいえ (指定されていない場合、Data Factory のサブスクリプションが使用されます)。 |
 | **resourceGroupName** |Azure リソース グループ名 |いいえ (指定されていない場合は Data Factory のリソース グループが使用されます)。 |
 
@@ -63,11 +62,11 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 
 次のプロパティを指定して、サービス プリンシパル認証を使います。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | あり |
-| **servicePrincipalKey** | アプリケーションのキーを取得します。 | あり |
-| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | あり |
+| **servicePrincipalId** | アプリケーションのクライアント ID を取得します。 | [はい] |
+| **servicePrincipalKey** | アプリケーションのキーを取得します。 | [はい] |
+| **tenant** | アプリケーションが存在するテナントの情報 (ドメイン名またはテナント ID) を指定します。 Azure Portal の右上隅をマウスでポイントすることにより取得できます。 | [はい] |
 
 **例: サービス プリンシパル認証**
 ```json
@@ -91,10 +90,10 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
 ### <a name="user-credential-authentication"></a>ユーザー資格情報認証
 また、次のプロパティを指定することで、Data Lake Analytics のユーザー資格情報認証を使用することもできます。
 
-| プロパティ | 説明 | 必須 |
+| プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
-| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | あり |
-| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | あり |
+| **authorization** | Data Factory エディターで **[承認する]** をクリックし、資格情報を入力すると、自動生成された承認 URL がこのプロパティに割り当てられます。 | [はい] |
+| **sessionId** | OAuth 承認セッションからの OAuth セッション ID です。 各セッション ID は一意であり、1 回のみ使うことができます。 Data Factory エディターを使うと、この設定が自動的に生成されます。 | [はい] |
 
 **例: ユーザー資格情報認証**
 ```json
@@ -207,18 +206,18 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。 
 
-| プロパティ            | 説明                              | 必須                                 |
+| プロパティ            | [説明]                              | 必須                                 |
 | :------------------ | :--------------------------------------- | :--------------------------------------- |
-| 型                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | あり                                      |
-| 既定のコンテナー   | Data Factory のリンクされたサービスとして登録されている Azure Data Lake Analytics への参照 | あり                                      |
+| 型                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | [はい]                                      |
+| 既定のコンテナー   | Data Factory のリンクされたサービスとして登録されている Azure Data Lake Analytics への参照 | [はい]                                      |
 | scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | いいえ (スクリプトを使用する場合)                   |
 | scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)                   |
 | script (スクリプト)              | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 たとえば、「 `"script": "CREATE DATABASE test"`」のように入力します。 | いいえ (scriptPath と scriptLinkedService を使用する場合) |
-| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | なし                                       |
-| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | なし                                       |
-| parameters          | U-SQL スクリプトのパラメーター          | いいえ                                       |
-| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ                                       |
-| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。</p> <ul><li>**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。</li><li>**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。</li><li>**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。</li></ul><p>このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 </p> | いいえ                                       |
+| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | いいえ                                        |
+| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | いいえ                                        |
+| parameters          | U-SQL スクリプトのパラメーター          | いいえ                                        |
+| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ                                        |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。</p> <ul><li>**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。</li><li>**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。</li><li>**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。</li></ul><p>このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 </p> | いいえ                                        |
 
 スクリプト定義については、 [SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script) をご覧ください。 
 
@@ -332,7 +331,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 }
 ```
 
-代わりに、動的パラメーターを使用することもできます。 次に例を示します。 
+代わりに、動的パラメーターを使用することもできます。 例:  
 
 ```json
 "parameters": {

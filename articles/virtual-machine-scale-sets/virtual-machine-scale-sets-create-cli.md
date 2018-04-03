@@ -1,13 +1,13 @@
 ---
-title: "Azure CLI 2.0 を使用して仮想マシン スケール セットを作成する | Microsoft Docs"
-description: "Azure PowerShell を使用して仮想マシン スケール セットをすばやく作成する方法を説明します"
+title: Azure CLI 2.0 を使用して仮想マシン スケール セットを作成する | Microsoft Docs
+description: Azure PowerShell を使用して仮想マシン スケール セットをすばやく作成する方法を説明します
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 12/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8794ea7d998293e7ea88ba780f67ef8a021f2298
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="create-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシン スケール セットを作成する
 仮想マシン スケール セットを使用すると、同一の自動スケールの仮想マシンのセットをデプロイおよび管理できます。 スケール セット内の VM の数を手動で拡張したり、CPU などのリソースの使用率、メモリの需要、またはネットワーク トラフィックに基づいて自動的にスケーリングするルールを定義したりできます。 この入門記事では、Azure CLI 2.0 を使用して仮想マシン スケール セットを作成します。 スケール セットは、[Azure PowerShell](virtual-machine-scale-sets-create-powershell.md)または [Azure ポータル](virtual-machine-scale-sets-create-portal.md)を使用して作成することもできます。

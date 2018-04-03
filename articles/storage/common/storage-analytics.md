@@ -1,10 +1,10 @@
 ---
-title: "Azure Storage Analytics を使用したログとメトリック データの収集 | Microsoft Docs"
-description: "Storage Analytics では、すべてのストレージ サービスのメトリック データを追跡し、BLOB、キュー、Table Storage のログを収集できます。"
+title: Azure Storage Analytics を使用したログとメトリック データの収集 | Microsoft Docs
+description: Storage Analytics では、すべてのストレージ サービスのメトリック データを追跡し、BLOB、キュー、Table Storage のログを収集できます。
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 7894993b-ca42-4125-8f17-8f6dfe3dca76
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: tamram
-ms.openlocfilehash: 9ae9dd0b078911a695d441cd3891be720dc204ac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: edda01cbfe1b53d934f9f4a7bb01c645fa680873
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -77,7 +77,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 
 次の表は、ログ名を構成する各属性の説明です。
 
-| Attribute | Description |
+| 属性 | [説明] |
 | --- | --- |
 | <service-name> |ストレージ サービスの名前。 例: blob、table、または queue |
 | YYYY |ログの 4 桁表記の年。 例: 2011 |
@@ -100,7 +100,7 @@ Storage Analytics そのものによる要求 (ログの作成/削除など) は
 ### <a name="log-metadata"></a>ログのメタデータ
 すべてのログ BLOB はメタデータと共に格納されます。このメタデータを使って、BLOB に含まれるログ データを特定できます。 それぞれのメタデータ属性について次の表で説明します。
 
-| Attribute | Description |
+| 属性 | [説明] |
 | --- | --- |
 | LogType |読み取り、書き込み、削除の各操作に関連した情報がログに含まれているかどうかを表します。 この値には、操作の種類が 1 つだけ含まれている場合もあれば、3 つすべてがコンマ区切りで記録されている場合もあります。 例 1: write 例 2: read,write 例 3: read,write,delete |
 | StartTime |ログに含まれる最も古いエントリの時刻です (YYYY-MM-DDThh:mm:ssZ 形式)。 例: 2011-07-31T18:21:46Z |
@@ -177,7 +177,7 @@ Storage Analytics によって実行される次の操作には料金が発生�
 
 Storage Analytics のデータで課金対象の要求を調べるときには、「 [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/azure/hh343260.aspx) 」の表が参考になります。 手元のログ データとメトリック データをステータス メッセージと照らし合わせながら、特定の要求が課金対象であったかどうかを確認できます。 この表は、ストレージ サービスまたは特定の API 操作の可用性を調べるときにも利用できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ### <a name="setting-up-storage-analytics"></a>Storage Analytics の設定
 * [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
 * [Storage Analytics の有効化と構成](https://msdn.microsoft.com/library/hh360996.aspx)

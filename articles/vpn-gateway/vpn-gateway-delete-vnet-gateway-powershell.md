@@ -1,29 +1,29 @@
 ---
-title: "仮想ネットワーク ゲートウェイの削除: PowerShell: Azure Resource Manager | Microsoft Docs"
-description: "Resource Manager デプロイメント モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。"
+title: '仮想ネットワーク ゲートウェイの削除: PowerShell: Azure Resource Manager | Microsoft Docs'
+description: Resource Manager デプロイメント モデルで、PowerShell を使用して仮想ネットワーク ゲートウェイを削除します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: 
+ms.topic: ''
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/20/2017
+ms.date: 03/26/2018
 ms.author: cherylmc
-ms.openlocfilehash: 4d0f085423d5bd60b24d88649ee1d77bcd1d009f
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c7e536b62ecaa374a278aeb8d18ef39489675711
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="delete-a-virtual-network-gateway-using-powershell"></a>PowerShell を使用して仮想ネットワーク ゲートウェイを削除する
 > [!div class="op_single_selector"]
-> * [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
+> * [Azure Portal](vpn-gateway-delete-vnet-gateway-portal.md)
 > * [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 > * [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
 >
@@ -74,7 +74,7 @@ VNet 名: VNet1<br>
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1.削除する仮想ネットワーク ゲートウェイを取得します。
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2.仮想ネットワーク ゲートウェイに接続があるかどうかを確認します。
@@ -84,7 +84,7 @@ get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-obje
 $Conns=get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-object {$_.VirtualNetworkGateway1.Id -eq $GW.Id}
 ```
 
-### <a name="3-delete-all-connections"></a>3.すべての接続を削除します。
+### <a name="3-delete-all-connections"></a>手順 3.すべての接続を削除します。
 
 各接続の削除の確認を求めるメッセージが表示される場合があります。
 
@@ -157,7 +157,7 @@ VNet 名: VNet1<br>
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1.削除する仮想ネットワーク ゲートウェイを取得します。
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-check-to-see-if-the-virtual-network-gateway-has-any-connections"></a>2.仮想ネットワーク ゲートウェイに接続があるかどうかを確認します。
@@ -172,7 +172,7 @@ get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG1" | where-obje
 get-azurermvirtualnetworkgatewayconnection -ResourceGroupName "RG2" | where-object {$_.VirtualNetworkGateway2.Id -eq $GW.Id}
 ```
 
-### <a name="3-get-the-list-of-connections-in-both-directions"></a>3.双方向の接続の一覧を取得します。
+### <a name="3-get-the-list-of-connections-in-both-directions"></a>手順 3.双方向の接続の一覧を取得します。
 
 これは VNet 間の構成であるため、双方向の接続の一覧が必要です。
 
@@ -251,7 +251,7 @@ VNet 名: VNet1<br>
 ### <a name="1-get-the-virtual-network-gateway-that-you-want-to-delete"></a>1.削除する仮想ネットワーク ゲートウェイを取得します。
 
 ```powershell
-$Gateway=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
+$GW=get-azurermvirtualnetworkgateway -Name "GW1" -ResourceGroupName "RG1"
 ```
 
 ### <a name="2-delete-the-virtual-network-gateway"></a>2.仮想ネットワーク ゲートウェイを削除します。
@@ -264,7 +264,7 @@ Remove-AzureRmVirtualNetworkGateway -Name "GW1" -ResourceGroupName "RG1"
 
 この時点で、仮想ネットワーク ゲートウェイは削除されています。 次の手順を使用して、使用されなくなったリソースを削除できます。
 
-### <a name="3-delete-the-public-ip-address-resources"></a>3.パブリック IP アドレス リソースを削除します。
+### <a name="3-delete-the-public-ip-address-resources"></a>手順 3.パブリック IP アドレス リソースを削除します。
 
 仮想ネットワーク ゲートウェイの IP 構成を取得します。
 
@@ -309,7 +309,7 @@ Get-AzureRmResourceGroup
 Find-AzureRmResource -ResourceGroupNameContains RG1
 ```
 
-### <a name="3-verify-the-resources-in-the-list"></a>3.一覧のリソースを確認します。
+### <a name="3-verify-the-resources-in-the-list"></a>手順 3.一覧のリソースを確認します。
 
 一覧が返されたら、内容を調べて、リソース グループ内のすべてのリソースのほか、リソース グループ自体も削除してよいことを確認します。 リソース グループ内の一部のリソースを保持する場合は、この記事の前のセクションに記載した手順を使用して、ゲートウェイを削除します。
 

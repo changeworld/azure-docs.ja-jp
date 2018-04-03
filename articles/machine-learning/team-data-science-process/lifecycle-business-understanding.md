@@ -1,24 +1,24 @@
 ---
-title: "Team Data Science Process ライフサイクルのビジネスの把握ステージ - Azure | Microsoft Docs"
-description: "データ サイエンス プロジェクトのビジネスの把握ステージの目標、タスク、成果物"
+title: Team Data Science Process ライフサイクルのビジネスの把握ステージ - Azure | Microsoft Docs
+description: データ サイエンス プロジェクトのビジネスの把握ステージの目標、タスク、成果物
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 82784cbfd5f12297c376a395b54a817a2ae915a5
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: daaaccaeac196b5f4651183173c8e83085d5184d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="business-understanding"></a>ビジネスの把握
 
@@ -83,7 +83,7 @@ TDSP ライフサイクルを視覚化すると、次のようになります。
    * [データ ソース](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/DataReport/Data%20Defintion.md#raw-data-sources): これは、TDSP プロジェクトのデータ ソースが含まれている **[データ レポート]** フォルダーにある**データ定義**レポートの **[生データ ソース]** セクションです。 このセクションは、生データの元の場所と移動先の場所を指定します。 後のステージで、分析環境にデータを移動するスクリプトなどの詳細を追加します。  
    * [データ辞書](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Data_Dictionaries): このドキュメントはクライアントによって提供されているデータの説明を提供します。 これらの説明にはスキーマ (データ型、検証ルールに関する情報 (ある場合)) とエンティティ関連の図 (ある場合) に関する情報が含まれています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 TDSP のライフサイクルの各ステップへのリンクを次に示します。
 

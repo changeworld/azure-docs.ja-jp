@@ -1,24 +1,24 @@
 ---
-title: "Azure Web Apps 分析データの表示 | Microsoft Docs"
-description: "Azure Web Apps Analytics ソリューションを使用して、すべての Azure Web App リソースのさまざまなメトリックを収集することで、Azure Web Apps について把握することができます。"
+title: Azure Web Apps 分析データの表示 | Microsoft Docs
+description: Azure Web Apps Analytics ソリューションを使用して、すべての Azure Web App リソースのさまざまなメトリックを収集することで、Azure Web Apps について把握することができます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: 20ff337f-b1a3-4696-9b5a-d39727a94220
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 03/19/2018
 ms.author: magoedte
-ms.openlocfilehash: 7c22950c391707cdfe14ca242ea82a317be0e46e
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: b70b626ca618fbfb7cbe25a4fcbc9aae797ce157
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
 
@@ -90,19 +90,18 @@ Azure Web Apps Analytics ソリューションをワークスペースに追加�
 
 **[Azure Web Apps Analytics]** タイルをクリックして、**[Azure Web Apps Analytics]** ダッシュボードを開きます。 ダッシュボードには、次の表に示したブレードが存在します。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、ブレードの一番下にある **[すべて表示]** をクリックするか、ブレード ヘッダーをクリックします。
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | 分割 | [説明] |
 | --- | --- |
 | Azure Webapps |   |
-| Web Apps の要求傾向 | 選択した日付範囲の Web Apps の要求傾向の折れ線グラフが表示され、上位 10 個の Web 要求のリストが表示されます。 折れ線グラフをクリックすると、<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* (MetricName=Requests OR MetricName=Http*) &#124; measure avg(Average) by MetricName interval 1HOUR</code> のログ検索が実行されます。 <br>Web 要求の項目をクリックすると、要求する Web 要求メトリック傾向のログ検索が実行されます。 |
-| Web Apps の応答時間 | 選択した日付範囲の Web Apps の応答時間の折れ線グラフが表示されます。 上位 10 個の Web Apps 応答時間のリストも表示されます。 グラフをクリックすると、ログ検索 (<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"* MetricName="AverageResponseTime" &#124; measure avg(Average) by Resource interval 1HOUR</code>) が実行されます。<br> Web App をクリックすると、ログ検索が実行され、Web App の応答時間が返されます。 |
-| Web Apps のトラフィック | Web Apps のトラフィックの折れ線グラフが MB 単位で表示され、上位の Web Apps のトラフィックがリストされます。 グラフをクリックすると、ログ検索 (<code>Type:AzureMetrics ResourceId=*"/MICROSOFT.WEB/SITES/"*  MetricName=BytesSent OR BytesReceived &#124; measure sum(Average) by Resource interval 1HOUR</code>) が実行されます。<br> 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 Web App をクリックすると、ログ検索が実行され、Web App の送受信バイト数が表示されます。 |
+| Web Apps の要求傾向 | 選択した日付範囲の Web Apps の要求傾向の折れ線グラフが表示され、上位 10 個の Web 要求のリストが表示されます。 折れ線グラフをクリックすると、<code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and (MetricName == "Requests" or MetricName startswith_cs "Http") &#124; summarize AggregatedValue = avg(Average) by MetricName, bin(TimeGenerated, 1h)</code> のログ検索が実行されます。 <br>Web 要求の項目をクリックすると、要求する Web 要求メトリック傾向のログ検索が実行されます。 |
+| Web Apps の応答時間 | 選択した日付範囲の Web Apps の応答時間の折れ線グラフが表示されます。 上位 10 個の Web Apps 応答時間のリストも表示されます。 グラフをクリックすると、ログ検索 (<code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and MetricName == "AverageResponseTime" &#124; summarize AggregatedValue = avg(Average) by Resource, bin(TimeGenerated, 1h)</code>) が実行されます。<br> Web App をクリックすると、ログ検索が実行され、Web App の応答時間が返されます。 |
+| Web Apps のトラフィック | Web Apps のトラフィックの折れ線グラフが MB 単位で表示され、上位の Web Apps のトラフィックがリストされます。 グラフをクリックすると、ログ検索 (<code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SITES/" and (MetricName == "BytesSent" or MetricName == "BytesReceived") &#124; summarize AggregatedValue = sum(Average) by Resource, bin(TimeGenerated, 1h)</code>) が実行されます。<br> 直前の 1 分間にトラフィックが発生した Web Apps がすべて表示されます。 Web App をクリックすると、ログ検索が実行され、Web App の送受信バイト数が表示されます。 |
 | Azure App Service プラン |   |
-| CPU 使用率 &gt; 80% の App Service プラン | CPU 使用率が 80% を超える App Service プランの合計数が表示され、CPU 使用率別に上位 10 個の App Service プランがリストされます。 合計領域をクリックすると、<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=CpuPercentage &#124; measure Avg(Average) by Resource</code> のログ検索が実行されます。<br> App Service プランとそれらの平均 CPU 使用率のリストが表示されます。 App Service プランをクリックすると、ログ検索が実行され、その平均 CPU 使用率が表示されます。 |
-| メモリ使用率 &gt; 80% の App Service プラン | メモリ使用率が 80% を超える App Service プランの合計数が表示され、メモリ使用率別に上位 10 個の App Service プランがリストされます。 合計領域をクリックすると、<code>Type=AzureMetrics ResourceId=*"/MICROSOFT.WEB/SERVERFARMS/"* MetricName=MemoryPercentage &#124; measure Avg(Average) by Resource</code> のログ検索が実行されます。<br> App Service プランとそれらの平均メモリ使用率のリストが表示されます。 App Service プランをクリックすると、ログ検索が実行され、その平均メモリ使用率が表示されます。 |
+| CPU 使用率 &gt; 80% の App Service プラン | CPU 使用率が 80% を超える App Service プランの合計数が表示され、CPU 使用率別に上位 10 個の App Service プランがリストされます。 合計領域をクリックすると、<code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SERVERFARMS/" and MetricName == "CpuPercentage" &#124; summarize AggregatedValue = avg(Average) by Resource</code> のログ検索が実行されます。<br> App Service プランとそれらの平均 CPU 使用率のリストが表示されます。 App Service プランをクリックすると、ログ検索が実行され、その平均 CPU 使用率が表示されます。 |
+| メモリ使用率 &gt; 80% の App Service プラン | メモリ使用率が 80% を超える App Service プランの合計数が表示され、メモリ使用率別に上位 10 個の App Service プランがリストされます。 合計領域をクリックすると、<code>AzureMetrics &#124; where ResourceId == "/MICROSOFT.WEB/SERVERFARMS/" and MetricName == "MemoryPercentage" &#124; summarize AggregatedValue = avg(Average) by Resource</code> のログ検索が実行されます。<br> App Service プランとそれらの平均メモリ使用率のリストが表示されます。 App Service プランをクリックすると、ログ検索が実行され、その平均メモリ使用率が表示されます。 |
 | Azure Web Apps のアクティビティ ログ |   |
-| Azure Web Apps のアクティビティ監査 | Web Apps の合計数と[アクティビティ ログ](log-analytics-activity.md)が表示され、上位 10 個のアクティビティ ログ操作がリストされます。 合計領域をクリックすると、<code>Type=AzureActivity ResourceProvider= "Azure Web Sites" &#124; measure count() by OperationName</code> のログ検索が実行されます。<br> アクティビティ ログ操作のリストが表示されます。 アクティビティ ログ操作をクリックすると、操作のレコードをリストするログ検索が実行されます。 |
+| Azure Web Apps のアクティビティ監査 | Web Apps の合計数と[アクティビティ ログ](log-analytics-activity.md)が表示され、上位 10 個のアクティビティ ログ操作がリストされます。 合計領域をクリックすると、<code>AzureActivity #124; where ResourceProvider == "Azure Web Sites" #124; summarize AggregatedValue = count() by OperationName</code> のログ検索が実行されます。<br> アクティビティ ログ操作のリストが表示されます。 アクティビティ ログ操作をクリックすると、操作のレコードをリストするログ検索が実行されます。 |
 
 
 

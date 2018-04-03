@@ -1,24 +1,28 @@
 ---
-title: "Azure Mobile Engagement のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
-description: "モバイル アプリの使用量とリアルタイムでのユーザーのセグメント化を把握する方法と、コンテキスト感知のプッシュ通知とアプリ内メッセージングを有効にする方法について説明します。"
+title: Azure Mobile Engagement のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+description: モバイル アプリの使用量とリアルタイムでのユーザーのセグメント化を把握する方法と、コンテキスト感知のプッシュ通知とアプリ内メッセージングを有効にする方法について説明します。
 services: mobile-engagement
 author: czeumault
 manager: carolz
 layout: LandingPage
-ms.assetid: 
+ms.assetid: ''
 ms.service: mobile-engagement
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 5f682ba16b52b9a084505b8212c4b6f043bb94c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 874b40e0e1407be9f546c5a5f57cee2d1034a840
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-documentation"></a>Mobile Engagement のドキュメント
+
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
 
 Mobile Engagement を使用して、モバイル アプリの使用量、リテンション、および収益化を高める方法について説明します。 チュートリアルや SDK などのドキュメントでは、モバイル アプリの使用量とリアルタイムでのユーザーのセグメント化を把握する方法と、コンテキスト感知のプッシュ通知とアプリ内メッセージングを有効にする方法を紹介します。
 

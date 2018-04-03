@@ -3,10 +3,14 @@
 - name: 概要
   expanded: true
   items:
-    - name: Azure Machine Learning とは
+    - name: Azure Machine Learning について
       href: overview-what-is-azure-ml.md
     - name: モデル管理の概要
       href: model-management-overview.md
+    - name: その他の ML 製品
+      href: overview-more-machine-learning.md
+    - name: 新機能
+      href: azure-machine-learning-release-notes.md
 - name: クイック スタート
   items:
     - name: インストールと開始
@@ -98,6 +102,8 @@
           href: how-to-setup-ssl-on-mlc.md
         - name: Web サービスのデプロイ
           href: model-management-service-deploy.md
+        - name: コンテナーのカスタマイズ
+          href: model-management-custom-container.md
         - name: IoT Edge デバイスへのデプロイ
           href: deploy-to-iot-edge-device.md
         - name: Web サービスを使用する
@@ -180,18 +186,6 @@
           href: model-management-cli-reference.md
         - name: モデル データ収集 API
           href: model-data-collection-api-reference.md
-    - name: リリース ノート
-      items:
-        - name: スプリント 0 - 2017 年 10 月
-          href: release-notes-sprint-0.md
-        - name: スプリント 1 - 2017 年 11 月
-          href: release-notes-sprint-1.md
-        - name: スプリント 2 - 2017 年 12 月
-          href: release-notes-sprint-2.md
-        - name: スプリント 2 QFE - 2017 年 12 月
-          href: release-notes-sprint-2.1.md
-        - name: スプリント 3 - 2018 年 1 月
-          href: release-notes-sprint-3.md
 - name: リソース
   items:
     - name: よく寄せられる質問
@@ -203,7 +197,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格
-      href: aml-services-pricing.md
+      href: aml-pricing.md
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'
     - name: Team Data Science Process

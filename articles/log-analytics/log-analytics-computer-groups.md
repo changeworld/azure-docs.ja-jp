@@ -1,24 +1,24 @@
 ---
-title: "Azure Log Analytics のログ検索におけるコンピューター グループ | Microsoft Docs"
-description: "Log Analytics では、コンピューター グループを使用して、ログ検索の範囲を特定のコンピューターの集合に限定することができます。  この記事では、コンピューター グループを作成する各種の方法とそれらをログ検索で使用する方法について説明します。"
+title: Azure Log Analytics のログ検索におけるコンピューター グループ | Microsoft Docs
+description: Log Analytics では、コンピューター グループを使用して、ログ検索の範囲を特定のコンピューターの集合に限定することができます。  この記事では、コンピューター グループを作成する各種の方法とそれらをログ検索で使用する方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: a28b9e8a-6761-4ead-aa61-c8451ca90125
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/09/2018
+ms.date: 03/19/2018
 ms.author: bwren
-ms.openlocfilehash: 4d6a80082711f09e9c189d53fb4fda00a7d73c29
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a6f0aa58762966f8da76387f3da7a7895801fcb9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
@@ -66,12 +66,6 @@ OMS Portal でログ検索からコンピューター グループを作成す�
 5. コンピューター グループの各プロパティの値を指定します。 
 
 
->[!NOTE]
-> ワークスペースで[従来の Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)をまだ使用している場合は、コンピューター グループを作成するのと同じ手順を使用しますが、従来のクエリ言語の構文を使用する必要があります。
-
-
-### <a name="log-search-api"></a>Log Search API
-Log Search API を使って作成されたコンピューター グループは、[ログ検索] を使って作成された検索と同じです。  Log Search API を使ったコンピューター グループ作成の詳細については、[「Log Analytics のログ検索 REST API」の「コンピューター グループ」](log-analytics-log-search-api.md#computer-groups)を参照してください。
 
 ### <a name="active-directory"></a>Active Directory
 Active Directory グループのメンバーシップをインポートするように Log Analytics を構成した場合、OMS エージェントがインストールされている、ドメインに参加しているすべてのコンピューターのグループ メンバーシップが分析されます。  Log Analytics には、Active Directory 内のセキュリティ グループごとにコンピューター グループが作成され、それぞれのコンピューターは、属しているセキュリティ グループに対応したコンピューター グループに追加されます。  このメンバーシップは絶えず 4 時間おきに更新されます。  
@@ -129,18 +123,6 @@ Configuration Manager のコレクションをインポートするには、[Log
   UpdateSummary | where Computer in (ADComputers)
   ```
 
-
-
-  
-
->[!NOTE]
-> ワークスペースで[従来の Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)をまだ使用している場合は、次の構文を使用して、ログ検索内のコンピューター グループを参照します。  **Category** の指定は省略可能で、同じ名前でカテゴリが異なるコンピューター グループが存在する場合にのみ必要となります。 
->
->    `$ComputerGroups[Category: Name]`
->
->一般にログ検索では、コンピューター グループが **IN** 句と組み合わせて使用されます。その例を次に示します。
->
->    `Type=UpdateSummary Computer IN $ComputerGroups[My Computer Group]`
 
 
 

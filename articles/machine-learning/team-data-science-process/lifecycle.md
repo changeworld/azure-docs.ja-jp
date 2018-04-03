@@ -1,8 +1,8 @@
 ---
-title: "Team Data Science Process ライフサイクル - Azure | Microsoft Docs"
-description: "データ サイエンス プロジェクトを実行するために必要な手順について説明します"
+title: Team Data Science Process ライフサイクル - Azure | Microsoft Docs
+description: データ サイエンス プロジェクトを実行するために必要な手順について説明します
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 5d69d4d2371b42b3595cf3dc71d99d913e225c59
-ms.sourcegitcommit: 93902ffcb7c8550dcb65a2a5e711919bd1d09df9
+ms.author: bradsev
+ms.openlocfilehash: a971e40bc4338f187991eeae991044248844d8b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>Team Data Science Process ライフサイクル
 
@@ -47,7 +47,7 @@ TDSP ライフサイクルは、繰り返し行う一連のステップとして
    * **実行方法**: 特定のタスクの概要とそれらを完了する方法についてのガイダンス。
    * **アーティファクト**: 成果物と、それらを作成するためのサポート。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 特定のシナリオ のプロセスに伴うすべての手順を初めから終わりまで完全に説明するチュートリアルが用意されています。 [例を含むチュートリアル](walkthroughs.md)の記事に、各シナリオが、簡潔な説明とリンク付きで示されています。 これらのチュートリアルは、クラウドとオンプレミスのツールおよびサービスをワークフローまたはパイプラインに組み込んで、インテリジェントなアプリケーションを作成する方法について説明しています。 
 

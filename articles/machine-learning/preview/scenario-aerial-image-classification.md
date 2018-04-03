@@ -1,6 +1,6 @@
 ---
-title: "航空画像の分類 | Microsoft Docs"
-description: "航空画像の分類に関する実際のシナリオの手順について説明します。"
+title: 航空画像の分類 | Microsoft Docs
+description: 航空画像の分類に関する実際のシナリオの手順について説明します。
 author: mawah
 ms.author: mawah
 manager: mwinkle
@@ -10,11 +10,11 @@ ms.service: machine-learning
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: 76c706496b3bcdbc1604661be85dc31000873ad3
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 42ebb7dc3abf8fdb6049f1114dc8604a7b810a7e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="aerial-image-classification"></a>航空画像の分類
 
@@ -222,7 +222,7 @@ Batch AI クラスターは、ネットワーク ファイル サーバー上の
 1. ネットワーク ファイル サーバーを作成するには、次のコマンドを実行します。
 
     ```
-    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
+    az batchai file-server create -n landuseclassifier -u demoUser -p "Dem0Pa$$w0rd" --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
     ```
 
 1. 次のコマンドを使って、ネットワーク ファイル サーバーのプロビジョニング状態を確認します。
@@ -253,7 +253,7 @@ Batch AI クラスターは、ネットワーク ファイル サーバー上の
 1. 次のコマンドを実行してクラスターを作成します。
 
     ```
-    az batchai cluster create -n landuseclassifier2 -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
+    az batchai cluster create -n landuseclassifier2 -u demoUser -p "Dem0Pa$$w0rd" --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
     ```
 
 1. クラスターのプロビジョニング状態を確認するには、次のコマンドを使います。

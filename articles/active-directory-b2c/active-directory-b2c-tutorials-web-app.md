@@ -1,19 +1,18 @@
 ---
-title: "ASP.NET Web アプリでユーザー認証に Azure Active Directory B2C を使用するチュートリアル"
-description: "ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。"
+title: ASP.NET Web アプリでユーザー認証に Azure Active Directory B2C を使用するチュートリアル
+description: ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザー ログインを提供する方法に関するチュートリアル。
 services: active-directory-b2c
-author: PatAltimore
-ms.author: patricka
-ms.reviewer: saraford
+author: davidmu1
+ms.author: davidmu
 ms.date: 1/23/2018
 ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory-b2c
-ms.openlocfilehash: 1d1e0ce51d86ebcdbf0a2a423ff64b3814413d86
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: c2a52a387860de640e290746b25c164090819654
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-authenticate-users-with-azure-active-directory-b2c-in-an-aspnet-web-app"></a>チュートリアル: ASP.NET Web アプリで Azure Active Directory B2C を使用してユーザーを認証する
 

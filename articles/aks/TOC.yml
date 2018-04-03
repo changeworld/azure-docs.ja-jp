@@ -59,6 +59,8 @@
       items:
         - name: 静的 IP アドレス
           href: static-ip.md
+        - name: 内部ロード バランサー
+          href: internal-lb.md
         - name: イングレスと TLS
           href: ingress.md
     - name: セキュリティと認証

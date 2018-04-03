@@ -1,10 +1,11 @@
 ---
-title: "Azure AI ギャラリー ソリューション | Microsoft Docs"
-description: "Azure AI ギャラリーでソリューションを発見します。"
+title: Azure AI ギャラリー ソリューション | Microsoft Docs
+description: Azure AI ギャラリーでソリューションを発見します。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: c0be3f10-9e54-4fc1-b5df-725c2e919f65
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: 8e8a6ca078e43f757a4f0eb532af35da97513d17
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: a07c517ac3bfeabc1fe87ead07083c9b8b61dc7f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-solutions-in-the-azure-ai-gallery"></a>Azure AI ギャラリー ソリューションを発見する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]

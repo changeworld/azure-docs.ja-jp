@@ -1,10 +1,10 @@
 ---
-title: "Azure Cosmos DB: SQL API の記事 | Microsoft Docs"
-description: "Azure Cosmos DB で SQL API を使用したドキュメント データベース作成に固有の記事の一覧。"
+title: 'Azure Cosmos DB: SQL API の記事 | Microsoft Docs'
+description: Azure Cosmos DB で SQL API を使用したドキュメント データベース作成に固有の記事の一覧。
 services: cosmos-db
 author: mimig1
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 82bec99a-ac2b-474e-b41f-d2fb296c8feb
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,15 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/25/2017
 ms.author: mimig
-ms.openlocfilehash: 8faa8a08d4a5bc323951a594049002fc61eb56b8
-ms.sourcegitcommit: 71fa59e97b01b65f25bcae318d834358fea5224a
+ms.openlocfilehash: 0ad80ce15769cfe823925cf36bbd47f2ddadec21
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-sql-api-documentation"></a>Azure Cosmos DB: SQL API のドキュメント
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 この記事では、SQL API に固有の、すべての Azure Cosmos DB コンテンツへのリンクを提供します。
 
@@ -34,7 +32,7 @@ Azure Cosmos DB の SQL API の学習を開始するにあたり、次のトピ�
 - [SQL API の概要](sql-api-introduction.md)
 - [データベース リソース モデル](sql-api-resources.md)
 - Web サイト: [クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)
-- チート シート: [SQL の文法](sql-api-sql-query-cheat-sheet.md)
+- チート シート: [SQL の文法](query-cheat-sheet.md)
 
 ## <a name="quickstarts"></a>クイック スタート
 
@@ -53,7 +51,7 @@ Azure Cosmos DB の SQL API の学習を開始するにあたり、次のトピ�
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
 - [.NET](sql-api-dotnet-application.md)
-- [Node.js](sql-api-nodejs-application.md) 
+- [Node.JS](sql-api-nodejs-application.md) 
 - [Java](sql-api-java-application.md)
 - [Python](sql-api-python-application.md)
 
@@ -99,10 +97,10 @@ Azure Cosmos DB には、クライアント側でのアプリケーション開�
 - [.NET](sql-api-sdk-dotnet.md)
 - [.NET Change Feed](sql-api-sdk-dotnet-changefeed.md)
 - [.NET Core](sql-api-sdk-dotnet-core.md)
-- [Node.JS](sql-api-sdk-node.md)
+- [Node.js](sql-api-sdk-node.md)
 - [Python](sql-api-sdk-python.md)
 
-## <a name="reference"></a>参照
+## <a name="reference"></a>リファレンス
 
 - [REST](/rest/api/documentdb/)
 - [REST リソース プロバイダー](/rest/api/documentdbresourceprovider/)
@@ -114,5 +112,5 @@ Azure Cosmos DB には、クライアント側でのアプリケーション開�
 サンプル ページには、一般的な SQL API タスクのサンプル コードおよび API リファレンス コンテンツへのリンクがあります。
 
 - [.NET](sql-api-dotnet-samples.md)
-- [Node.js](sql-api-nodejs-samples.md)
+- [Node.JS](sql-api-nodejs-samples.md)
 - [Python](sql-api-python-samples.md) 

@@ -15,15 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/8/2018
 ms.author: kumud
-ms.openlocfilehash: be0359889f48f2fe16104f2bee5d1c85ab883b34
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0aab72fdf48589a72707ae87f90af11f65f35088
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="understand-load-balancer-probes"></a>Load Balancer のプローブを理解する
-
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer では、正常性プローブを使用して、どのバックエンド プール インスタンスが新しいフローを受信する必要があるかを決定します。 正常性プローブが失敗すると、Azure Load Balancer は、問題のある各インスタンスへの新しいフローの送信を停止しますが、そのインスタンス上の既存のフローは影響を受けません。  すべてのバックエンド プール インスタンス プローブがダウン している場合は、すべての既存のフローはバックエンド プール内のすべてのインスタンスでタイムアウトします。
 

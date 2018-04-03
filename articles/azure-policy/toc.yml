@@ -25,6 +25,10 @@
   items:
     - name: Azure Policy の定義の構造
       href: policy-definition.md
+- name: ハウツー ガイド
+  items:
+    - name: プログラムによるポリシーの作成
+      href: policy-insights.md
 - name: リファレンス
   items:
     - name: Azure CLI

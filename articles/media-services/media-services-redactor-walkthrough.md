@@ -1,11 +1,11 @@
 ---
-title: "Azure Media Analytics での顔編集チュートリアル | Microsoft Docs"
-description: "このトピックでは、Azure Media Services Explorer (AMSE) と Azure Media Redactor Visualizer (オープン ソース ツール) を使用して編集ワークフロー全体を実行する方法について詳しく説明します。"
+title: Azure Media Analytics での顔編集チュートリアル | Microsoft Docs
+description: このトピックでは、Azure Media Services Explorer (AMSE) と Azure Media Redactor Visualizer (オープン ソース ツール) を使用して編集ワークフロー全体を実行する方法について詳しく説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: d6fa21b8-d80a-41b7-80c1-ff1761bc68f2
 ms.service: media-services
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: rli; juliako;
-ms.openlocfilehash: 0bd385ba78028a722c52cdf1508f3348ff90f05f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6b33da21a32373196d86ec8c93f180b3d40b1c6e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="redact-faces-with-azure-media-analytics-walkthrough"></a>Azure Media Analytics での顔編集チュートリアル
 
@@ -59,7 +59,7 @@ Redactor の使用を開始する最も簡単な方法は、github のオープ�
 
 ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough004.png)
 
-###<a name="second-pass--redact-mode"></a>2 回目のパス – 編集モード
+### <a name="second-pass--redact-mode"></a>2 回目のパス – 編集モード
 
 1. 元のビデオ資産を最初のパスからの出力にアップロードし、プライマリ資産として設定します。 
 
@@ -78,7 +78,7 @@ Redactor の使用を開始する最も簡単な方法は、github のオープ�
 
     ![顔編集](./media/media-services-redactor-walkthrough/media-services-redactor-walkthrough008.png)
 
-##<a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Visualizer オープン ソース ツール
+## <a name="azure-media-redactor-visualizer-open-source-tool"></a>Azure Media Redactor Visualizer オープン ソース ツール
 
 オープン ソースの [ビジュアライザー ツール](https://github.com/Microsoft/azure-media-redactor-visualizer)は、開発者が注釈形式の解析と出力の使用を開始することを支援するように設計されています。
 
@@ -119,7 +119,7 @@ JSON 注釈データを解析しようとしている開発者は、Models.MetaD
 6.  このファイルを、手順 1 で生成された出力資産にアップロードします。 元のビデオをこの資産にアップロードし、プライマリ資産として設定します。 
 7.  この資産に対して "修正" モードで修正ジョブを実行して、修正後の最終ビデオを取得します。 
 
-## <a name="next-steps"></a>次のステップ 
+## <a name="next-steps"></a>次の手順 
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

@@ -1,27 +1,27 @@
 ---
-title: "Team Data Science Process のグループ マネージャーのタスク - Azure | Microsoft Docs"
-description: "データ サイエンス チーム プロジェクトのグループ マネージャーのタスクの概要を説明します。"
-documentationcenter: 
+title: Team Data Science Process のグループ マネージャーのタスク - Azure | Microsoft Docs
+description: データ サイエンス チーム プロジェクトのグループ マネージャーのタスクの概要を説明します。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 58cea8b0288469a76dd8c4eb967caa8e87cd3dd7
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 3c39ae865ec26567f70706b042dab2aa8e4939d3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="group-manager-tasks"></a>グループ マネージャーのタスク
 
-このトピックでは、グループ マネージャーがデータ サイエンス組織のために遂行する必要があるタスクの概要を説明します。 [Team Data Science Process](overview.md) (TDSP) を標準とするグループ コラボレーション環境を確立することを目標とします。 このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks (Team Data Science Process での役割とタスク)](roles-tasks.md)」をご覧ください。
+このトピックでは、グループ マネージャーがデータ サイエンス組織のために遂行する必要があるタスクの概要を説明します。 [Team Data Science Process](overview.md) (TDSP) を標準とするグループ コラボレーション環境を確立することを目標とします。 このプロセスを標準とするデータ サイエンス チーム メンバーの役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks (Team Data Science Process での役割とタスク)](roles-tasks.md)」をご覧ください。
 
 **グループ マネージャー**とは、企業のデータ サイエンス ユニット全体のマネージャーのことです。 データ サイエンス ユニット内には複数のチームがあり、それぞれのチームが、異なるビジネスの複数のデータ サイエンス プロジェクトに携わっている場合があります。 グループ マネージャーは、そのタスクを代理人に委任する場合もありますが、グループ マネージャーの役割に関連付けられているタスクに変わりはありません。 次の図に示すように、6 つの主要なタスクがあります。
 
@@ -101,13 +101,13 @@ Microsoft アカウントがない場合は、**[Sign up now]\(今すぐサイ�
 
 **[続行]**をクリックします。 
 
-## <a name="2-groupcommon-team-project"></a>手順 2.GroupCommon チーム プロジェクト
+## <a name="2-groupcommon-team-project"></a>2.GroupCommon チーム プロジェクト
 
 VSTS サーバーが作成されると、**GroupCommon** ページ (*https://\<servername\>.visualstudio.com/GroupCommon*) が開きます。
                             
 ![6](./media/group-manager-tasks/server-created-2.PNG)
 
-## <a name="3-create-the-grouputilities-r2-repository"></a>3.GroupUtilities (R2) リポジトリを作成する
+## <a name="3-create-the-grouputilities-r2-repository"></a>手順 3.GroupUtilities (R2) リポジトリを作成する
 
 VSTS サーバーで **GroupUtilities** (R2) リポジトリを作成するには、次の手順を実行します。
 
@@ -311,7 +311,7 @@ GitRepos\GroupCommon\GroupProjectTemplate ディレクトリから次のコマ�
 ![24](./media/group-manager-tasks/add_member_to_group.PNG) 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process で定義されている役割とタスクの詳細な説明へのリンクを次に示します。
 

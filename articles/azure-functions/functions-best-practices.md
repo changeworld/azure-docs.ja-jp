@@ -1,13 +1,13 @@
 ---
-title: "Azure Functions のベスト プラクティス | Microsoft Docs"
-description: "Azure Functions のベスト プラクティスとパターンについて説明します。"
+title: Azure Functions のベスト プラクティス | Microsoft Docs
+description: Azure Functions のベスト プラクティスとパターンについて説明します。
 services: functions
 documentationcenter: na
 author: wesmc7777
 manager: cfowler
-editor: 
-tags: 
-keywords: "Azure Functions, パターン, ベスト プラクティス, 関数, イベント処理, webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
+editor: ''
+tags: ''
+keywords: Azure Functions, パターン, ベスト プラクティス, 関数, イベント処理, webhook, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.service: functions
 ms.devlang: multiple
@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d8088a8a83bcaefce17ac2756360a46119c8eb27
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 19ca9d70f769a19556d131d1d131f1bc9d107ef0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Azure Functions のパフォーマンスと信頼性を最適化する
 
@@ -99,7 +99,7 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>可能な限りメッセージをバッチで受信する
 
-イベント ハブなどの一部のトリガーでは、1 つの呼び出しでメッセージのバッチを受信できます。  メッセージをバッチ処理すると、パフォーマンスが大幅に向上します。  [host.json のリファレンス ドキュメント](functions-host-json.md)で詳述するように、`functions.json` ファイルで最大バッチ サイズを構成できます。
+イベント ハブなどの一部のトリガーでは、1 つの呼び出しでメッセージのバッチを受信できます。  メッセージをバッチ処理すると、パフォーマンスが大幅に向上します。  [host.json のリファレンス ドキュメント](functions-host-json.md)で詳述するように、`host.json` ファイルで最大バッチ サイズを構成できます。
 
 C# 関数の場合、型を厳密に型指定された配列に変更できます。  たとえば、メソッド シグネチャに、`EventData sensorEvent` ではなく `EventData[] sensorEvent` を指定できます。  他の言語の場合、バッチ処理を有効にするには、[こちら](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10)に示すように、`function.json` の cardinality プロパティを明示的に `many` に設定する必要があります。
 

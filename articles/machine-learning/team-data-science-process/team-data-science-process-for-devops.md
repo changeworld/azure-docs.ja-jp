@@ -1,24 +1,24 @@
 ---
-title: "DevOps 向け Team Data Science Process | Microsoft Docs"
-description: "Team Data Science Process と Azure Machine Learning を使用した分析ワークロードを理解するためのガイダンスを提供します。"
+title: DevOps 向け Team Data Science Process | Microsoft Docs
+description: Team Data Science Process と Azure Machine Learning を使用した分析ワークロードを理解するためのガイダンスを提供します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev;BuckWoody
-ms.openlocfilehash: 2ab36da70e2c08b770973f4c4d33eddfdebed9e1
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: 3f9197ff93fe348057294ec15439a4f96bfa2969
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-data-science-process-for-developer-operations"></a>DevOps 向け Team Data Science Process
 
@@ -79,7 +79,7 @@ ms.lasthandoff: 11/30/2017
 |                                                                | Release                                 | [このヘッド リファレンス記事では、CI/CD 環境でのビルド、テスト、リリースの概念について説明します](https://www.visualstudio.com/docs/build/overview)                                                                                                        | Visual Studio Online                                                                                                                                                                                                                                                                                  | 上級                                             | ソフトウェア開発経験、CI/CD 環境に関する知識、SDLC に関する知識                                                                                                                                       |
 |                                                                |                                         | [Runbooks に関するこの過去のリファレンスを使用して、System Center でリリース管理を自動化できます](https://docs.microsoft.com/system-center/orchestrator/automate-runbooks)                                                                                       | System Center                                                                                                                                                                                                                                                                                         | 上級                                             | System Center Orchestrator の使用経験                                                                                                                                                                                |
 |                                                                |                                         | [この記事は、Web アプリ、モバイル アプリ バックエンド、または API アプリのファイルを Azure App Service にデプロイする際の最適なオプションを判断するのに役立ちます。また、選択したオプションの固有の手順が記載された適切なリソースも紹介しています](../../app-service-web/web-sites-deploy.md) | Microsoft Azure のデプロイ                                                                                                                                                                                                                       | 中級                                            | ソフトウェア開発経験、Microsoft Azure Platform の使用経験                                                                                                                                                        |
-|                                                                | 監視                                 | [このリファレンスでは、Application Insights と、それを Advanced Analytics Solutions に追加する方法について説明します](../../application-insights/app-insights-overview.md)                                                                      | Application Insights                                                                                                                                                                                                                                                                                  | 中級                                            | ソフトウェア開発経験、Microsoft Azure Platform に関する知識                                                                                                                                                       |
+|                                                                | 監視                                 | [このリファレンスでは、Application Insights と、それを Advanced Analytics Solutions に追加する方法について説明します](../../application-insights/app-insights-overview.md)                                                                      | アプリケーション インサイト                                                                                                                                                                                                                                                                                  | 中級                                            | ソフトウェア開発経験、Microsoft Azure Platform に関する知識                                                                                                                                                       |
 |                                                                |                                         | [このトピックでは、Operations Manager インフラストラクチャを管理する管理者と Advanced Analytics Solution を監視およびサポートする運用担当者向けに、Operations Manager の基本概念について説明します](https://technet.microsoft.com/library/hh230741.aspx) | System Center                                                                                                                                                                                                                                                                                      | 上級                                             | エンタープライズ監視に関する知識、 System Center Operations Manager の使用経験                                                                                                                                                  |
 |                                                                |                                         | [このブログ エントリでは、Azure Data Factory を使用して Advanced Analytics パイプラインを監視および管理する方法について説明します](https://azure.microsoft.com/blog/azure-data-factory-updates-monitoring-and-management-enhancements/)                                      | Azure Data Factory                                                                                                                                                                                                                                                                                    | 中級                                            | Azure Data Factory に関する知識                                                                                                                                                                                       |
 |                                                                |                                         | [このビデオでは、Azure Log Analytics を使用してログを監視する方法について説明します](https://channel9.msdn.com/Shows/Data-Exposed/Enterprise-HDInsight-Monitoring-with-Operations-Management-Suite)                                                                                    | Azure ログと PowerShell の使用経験                                                                                                                                                                                                                                                                                | 上級                                             | Azure Platform に関する知識                                                                                                                                                                                      |
@@ -92,6 +92,6 @@ ms.lasthandoff: 11/30/2017
 |                                                                |                                         | [このブログ エントリでは、Azure と GitHub を使用した継続的インテグレーションの使用方法について説明します](https://blogs.msdn.microsoft.com/microsoftimagine/2015/09/01/using-continuous-integration-with-azure-github/)                                                                      | Git、Github                                                                                                                                                                                                                                                                                           | 中級                                            | ソフトウェア開発                                                                                                                                                                                                      |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [データ サイエンティスト向け Team Data Science Process](team-data-science-process-for-data-scientists.md)。この記事では、Azure テクノロジを使用して包括的なデータ サイエンス ソリューションを実装するために通常使用される目標のセットについて説明します。
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      

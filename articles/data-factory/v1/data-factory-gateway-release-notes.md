@@ -1,10 +1,9 @@
 ---
-title: "Data Management Gateway のリリース ノート | Microsoft Docs"
-description: "Data Management Gateway のリリース ノート"
+title: Data Management Gateway のリリース ノート | Microsoft Docs
+description: Data Management Gateway のリリース ノート
 services: data-factory
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 14762e82-76d9-41c4-ba9f-14a54da29c36
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 2aeed42d3cf6f4d5b30777d12cb7d51c6e4a6b59
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 7db5795132f5ca61c65a3cbd2caec1bccbf9a080
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 > [!NOTE]

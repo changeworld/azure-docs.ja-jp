@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 8a5d05342a1db5f27d115364798885a278d09fc0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 1. ポータルで、左側の **[+ リソースの作成]** をクリックし、検索ボックスに「仮想ネットワーク ゲートウェイ」と入力します。 検索結果で "**仮想ネットワーク ゲートウェイ**" を探してその項目をクリックします。 **[仮想ネットワーク ゲートウェイ]** ページで、ページ下部の **[作成]** をクリックして **[仮想ネットワーク ゲートウェイの作成]** ページを開きます。
 2. **[仮想ネットワーク ゲートウェイの作成]** ページで、仮想ネットワーク ゲートウェイの値を入力します。
 

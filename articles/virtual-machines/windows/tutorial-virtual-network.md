@@ -1,26 +1,26 @@
 ---
-title: "Azure Virtual Networks と Windows 仮想マシン | Microsoft Docs"
-description: "チュートリアル - Azure PowerShell を使用した Azure Virtual Networks と Windows 仮想マシンの管理"
+title: Azure Virtual Networks と Windows 仮想マシン | Microsoft Docs
+description: チュートリアル - Azure PowerShell を使用した Azure Virtual Networks と Windows 仮想マシンの管理
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/27/2018
-ms.author: davidmu
+ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 3a59d85ea19ba6670ffbb60aa9b764560a3567a0
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: feaef679a3090491b64c69ac69bf22153c281d31
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-azure-virtual-networks-and-windows-virtual-machines-with-azure-powershell"></a>Azure PowerShell を使用した Azure Virtual Networks と Windows 仮想マシンの管理
 

@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: carlrab
-ms.openlocfilehash: ba192b6dba68f01af796a1099b064d6ec0bd3f1b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fb9cb15e96c4098151d220c2bd47fbb7f299687c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限
 
@@ -113,7 +113,7 @@ ms.lasthandoff: 03/17/2018
 | 最大値 | 値 |
 | :--- | :--- |
 | サーバーあたりのデータベース数 | 5000 |
-| サブスクリプションあたりのサービスの数 (リージョンあたり) | 21 |
+| サブスクリプションあたりのサービスの数 (リージョンあたり) | 20 |
 |||
 
 > [!IMPORTANT]
@@ -131,7 +131,7 @@ ms.lasthandoff: 03/17/2018
 - データベースまたエラスティック プールのパフォーマンス レベルを上げて、より多くの DTU または eDTU をデータベースに提供します。 「[単一データベース: DTU を変更する](#single-database-change-dtus)」および「[エラスティック プール: eDTU を変更する](#elastic-pool-change-edtus)」をご覧ください。
 - クエリを最適化して、各クエリのリソース使用率を引き下げます。 詳しくは、「[クエリの調整とヒント](sql-database-performance-guidance.md#query-tuning-and-hinting)」をご覧ください。
 
-### <a name="storage"></a>ストレージ
+### <a name="storage"></a>Storage
 
 使用済みのデータベース容量が最大サイズの上限に達すると、データのサイズが増えるデータベースの挿入および更新は失敗し、クライアントは[エラー メッセージ](sql-database-develop-error-messages.md)を受け取ります。 データベースの SELECTS と DELETES は引き続き成功します。
 

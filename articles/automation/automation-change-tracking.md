@@ -8,14 +8,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06034a87d6015a057c01c2bc87ae4db9fba1269a
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 91a093a44106ad861449b6defb140532698fa668
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Change Tracking ソリューションを使用してユーザーの環境内の変更を追跡する
 
@@ -68,7 +66,7 @@ ms.lasthandoff: 03/17/2018
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows ファイル]** を選択し、**[+ 追加]** をクリックして、追跡する新しいファイルを追加します。
 3. **[変更履歴用の Windows ファイルを追加する]** で、追跡するファイルの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -83,7 +81,7 @@ ms.lasthandoff: 03/17/2018
 2. **[Change Tracking]\(変更の追跡\)** ページで、**[Windows レジストリ]** を選択し、**[+ 追加]** をクリックして、追跡する新しいレジストリ キーを追加します。
 3. **[変更履歴用の Windows レジストリを追加する]** で、追跡するキーの情報を入力し、**[保存]** をクリックします。
 
-|プロパティ  |説明  |
+|プロパティ  |[説明]  |
 |---------|---------|
 |有効     | 設定が適用されるかどうかを決定します。        |
 |Item Name     | 追跡するファイルのフレンドリ名。        |
@@ -189,7 +187,7 @@ ms.lasthandoff: 03/17/2018
 
 次の表は、このソリューションによって収集された変更レコードを探すログ検索の例です。
 
-|クエリ  |説明  |
+|クエリ  |[説明]  |
 |---------|---------|
 |ConfigurationData<br>&#124; where   ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"<br>&#124; where SvcState == "Stopped"<br>&#124; summarize arg_max(TimeGenerated, *) by SoftwareName, Computer         | Windows サービスの最新のインベントリ レコードで、自動に設定されたが、停止中として報告されたものを表示します<br>結果はその SoftwareName と Computer の最新のレコードに限定されます      |
 |ConfigurationChange<br>&#124; where ConfigChangeType == "Software" and ChangeCategory == "Removed"<br>&#124; order by TimeGenerated desc|削除されたソフトウェアの変更レコードを表示します|

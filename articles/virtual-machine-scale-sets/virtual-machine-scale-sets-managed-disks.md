@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想マシン スケール セットでの管理ディスクの使用 | Microsoft Docs"
-description: "仮想マシン スケール セットで管理ディスクを使用する理由と方法について説明します。"
+title: Azure 仮想マシン スケール セットでの管理ディスクの使用 | Microsoft Docs
+description: 仮想マシン スケール セットで管理ディスクを使用する理由と方法について説明します。
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: gatneil
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 76ac7fd7-2e05-4762-88ca-3b499e87906e
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.openlocfilehash: 82fa518e6c0498a13f950ce33c51be8581918f9b
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM スケール セットと管理ディスク
 

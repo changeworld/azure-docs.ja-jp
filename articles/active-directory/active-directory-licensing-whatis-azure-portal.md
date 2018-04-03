@@ -1,27 +1,27 @@
 ---
-title: "Azure Active Directory のグループベースのライセンスとは | Microsoft Docs"
-description: "Azure Active Directory のグループベース ライセンス、使用方法、ベスト プラクティスに関する説明"
+title: Azure Active Directory のグループベースのライセンスとは | Microsoft Docs
+description: Azure Active Directory のグループベース ライセンス、使用方法、ベスト プラクティスに関する説明
 services: active-directory
-keywords: "Azure AD のライセンス"
-documentationcenter: 
+keywords: Azure AD のライセンス
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/29/2017
+ms.date: 03/20/2018
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.openlocfilehash: 9cfa8c42c1f3955adad5e4ce596d96c4e98e40a1
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 1d4151d6c00da618cc008257bcdad4607f8fec49
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスの基礎
 
@@ -31,7 +31,7 @@ Office 365、Enterprise Mobility + Security、Dynamics CRM など、Microsoft �
 
 これらの課題を受けて、Azure AD はグループベース ライセンス機能が搭載されました。 この機能により、1 つのグループに 1 つ以上の製品ライセンスを割り当てることができます。 グループに含まれるメンバー全員に、Azure AD からライセンスが割り当てられるようになります。 新しいメンバーがグループに参加すると、適切なライセンスが割り当てられます。 グループから抜けると、割り当てられていたライセンスが削除されます。 これにより、組織や部門の構造の変化を反映するように PowerShell でユーザーごとのライセンス管理を自動化する必要はなくなりました。
 
-## <a name="features"></a>Features (機能)
+## <a name="features"></a>機能
 
 グループベースのライセンスの主な機能は次のとおりです。
 
@@ -55,12 +55,12 @@ Office 365、Enterprise Mobility + Security、Dynamics CRM など、Microsoft �
 
 ご意見や機能に関するご要望がありましたら、[こちらのフォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/317677-group-based-licensing)をご利用ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 グループベースのライセンスを通じたライセンス管理の他のシナリオについては、以下をご覧ください
 
 * [Azure Active Directory のライセンスの概要](active-directory-licensing-get-started-azure-portal.md)
-* [Azure Active Directory でのグループへのライセンス割り当て](active-directory-licensing-group-assignment-azure-portal.md)
+* [Assigning licenses to a group in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](active-directory-licensing-group-migration-azure-portal.md)
 * [Azure Active Directory グループベース ライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)

@@ -1,25 +1,25 @@
 ---
-title: "Azure Stack 統合システム デプロイのための Azure Stack 公開キー インフラストラクチャ証明書を生成する | Microsoft Docs"
-description: "Azure Stack 統合システムの Azure Stack PKI 証明書のデプロイ プロセスについて説明します。"
+title: Azure Stack 統合システム デプロイのための Azure Stack 公開キー インフラストラクチャ証明書を生成する | Microsoft Docs
+description: Azure Stack 統合システムの Azure Stack PKI 証明書のデプロイ プロセスについて説明します。
 services: azure-stack
-documentationcenter: 
-author: jeffgilb
+documentationcenter: ''
+author: mattbriggs
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2018
-ms.author: jeffgilb
+ms.date: 03/22/2018
+ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 991a94e4ca41bad438a3c8d06e4e1f691cff91bc
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 4a7432260167b8740567ad4308e102417abad82c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="generate-pki-certificates-for-azure-stack-deployment"></a>Azure Stack デプロイのための PKI 証明書を生成する
 これで Azure Stack デプロイのための [PKI 証明書の要件](azure-stack-pki-certs.md)がわかったので、選択した証明機関 (CA) からこれらの証明書を取得する必要があります。 

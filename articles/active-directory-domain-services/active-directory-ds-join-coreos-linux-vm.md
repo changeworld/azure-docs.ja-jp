@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Domain Services: CoreOS Linux VM の管理対象ドメインへの参加 | Microsoft Docs"
-description: "CoreOS Linux 仮想マシンを Azure AD Domain Services に参加させる"
+title: 'Azure Active Directory Domain Services: CoreOS Linux VM の管理対象ドメインへの参加 | Microsoft Docs'
+description: CoreOS Linux 仮想マシンを Azure AD Domain Services に参加させる
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: 790ad85df0dbf68674e2b9c6254858100ddfd0fd
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 6c7290db73645a4e1e745142f266aabc6df735df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="join-a-coreos-linux-virtual-machine-to-a-managed-domain"></a>CoreOS Linux 仮想マシンを管理対象ドメインに参加させる
 この記事では、Azure 内の CoreOS Linux 仮想マシンを Azure AD Domain Services の管理対象ドメインに参加させる方法について説明します。
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="provision-a-coreos-linux-virtual-machine"></a>CoreOS Linux 仮想マシンをプロビジョニングする
 次のいずれかの方法を使用して、Azure で CoreOS 仮想マシンをプロビジョニングします。
-* [Azure ポータル](../virtual-machines/linux/quick-create-portal.md)
+* [Azure Portal](../virtual-machines/linux/quick-create-portal.md)
 * [Azure CLI](../virtual-machines/linux/quick-create-cli.md)
 * [Azure PowerShell](../virtual-machines/linux/quick-create-powershell.md)
 
@@ -140,7 +140,7 @@ SSSD サービスを起動します。 SSH ターミナルで、次のコマン�
 
 
 ## <a name="troubleshooting-domain-join"></a>ドメイン参加のトラブルシューティング
-「 [Troubleshooting domain join (ドメイン参加のトラブルシューティング)](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshooting-domain-join) 」を参照してください。
+「 [Troubleshooting domain join (ドメイン参加のトラブルシューティング)](active-directory-ds-admin-guide-join-windows-vm-portal.md#troubleshoot-joining-a-domain) 」を参照してください。
 
 ## <a name="related-content"></a>関連コンテンツ
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)

@@ -10,15 +10,15 @@ ms.topic: article
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: 8078591b1e2ad120190a23dd29800bd0f1ae33ea
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: fa263a4b6f41e2b31328f46b8d1341d0d74c9a85
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-cost-management-reports"></a>Cost Management レポートの使用
 
-この記事では、Cloudyn ポータルでさまざまな Cost Management レポートを使用する方法について説明します。 ほとんどの Cloudyn レポートは、直感的で、統一感のある外観をしています。 Cloudyn レポートの概要については、「[Understanding cost reports (コスト レポートについて)](understading-cost-reports.md)」をご覧ください。 また、ほとんどのレポートで使用されるさまざまなオプションとフィールドについても、この記事で説明します。
+この記事では、Cloudyn ポータルでさまざまな Cost Management レポートを使用する方法について説明します。 ほとんどの Cloudyn レポートは、直感的で、統一感のある外観をしています。 Cloudyn レポートの概要については、「[Understanding cost reports (コスト レポートについて)](understanding-cost-reports.md)」をご覧ください。 また、ほとんどのレポートで使用されるさまざまなオプションとフィールドについても、この記事で説明します。
 
 ## <a name="cost-analysis-reports"></a>コスト分析レポート
 

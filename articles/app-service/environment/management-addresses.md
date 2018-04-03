@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service Environment の管理アドレス"
-description: "App Service Environment を管理するために使用される管理アドレスを一覧表示します。"
+title: Azure App Service Environment の管理アドレス
+description: App Service Environment を管理するために使用される管理アドレスを一覧表示します。
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: ccompy
 ms.openlocfilehash: 3da0e4b7f1db7173124d2b33ee4c9634a253aa31
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="app-service-environment-management-addresses"></a>App Service Environment の管理アドレス
 

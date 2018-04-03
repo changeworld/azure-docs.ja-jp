@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory のトラブルシューティング"
-description: "Azure Data Factory の使用に関する問題のトラブルシューティングを行う方法について説明します。"
+title: Azure Data Factory のトラブルシューティング
+description: Azure Data Factory の使用に関する問題のトラブルシューティングを行う方法について説明します。
 services: data-factory
-documentationcenter: 
-author: spelluru
-manager: jhubbard
-editor: monicar
+documentationcenter: ''
+author: douglaslMS
+manager: craigg
 ms.assetid: 38fd14c1-5bb7-4eef-a9f5-b289ff9a6942
 ms.service: data-factory
 ms.workload: data-services
@@ -13,13 +12,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2018
-ms.author: spelluru
+ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: d65787c0db2b4e6c7c7d30d69dc77fe25b1ae8d9
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 4cf77a2267cd2a49a873c1a1c742dc4205cad29a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Data Factory のトラブルシューティング
 > [!NOTE]

@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Fabric のリバース プロキシ診断 | Microsoft Docs"
-description: "リバース プロキシの要求処理を監視および診断する方法について説明します。"
+title: Azure Service Fabric のリバース プロキシ診断 | Microsoft Docs
+description: リバース プロキシの要求処理を監視および診断する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: kavyako
 manager: vipulm
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
-ms.openlocfilehash: 1c62d2390709577bfde6225b783642fb55396a6b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e645d86e4527cab1e650575c4d9a10dbd4b9de4e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>リバース プロキシの要求処理の監視と診断
 
 Service Fabric リリース 5.7 以降、リバース プロキシ イベントを収集できるようになりました。 イベントは 2 つのチャネルで使用できます。1 つはリバース プロキシで発生した要求処理エラーに関連するエラー イベントを含むチャネル、もう 1 つは成功した要求と失敗した要求の両方のエントリに関する詳細イベントを含むチャネルです。
 
-ローカルおよび Azure Service Fabric クラスターでこれらのチャネルからのイベントの収集を有効にする方法については、「[リバース プロキシ イベントの収集](service-fabric-diagnostics-event-aggregation-wad.md#collect-reverse-proxy-events)」を参照してください。
+ローカルおよび Azure Service Fabric クラスターでこれらのチャネルからのイベントの収集を有効にする方法については、「[リバース プロキシ イベントの収集](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)」を参照してください。
 
 ## <a name="troubleshoot-using-diagnostics-logs"></a>診断ツールを使用したトラブルシューティング
 ここでは、発生する可能性がある一般的なエラー ログの解釈方法について例をいくつか挙げます。
@@ -195,7 +195,7 @@ Service Fabric リリース 5.7 以降、リバース プロキシ イベント�
 > [!NOTE]
 > 現在、Web ソケット要求処理に関連するイベントはログに記録されていません。 この機能は次のリリースで追加予定です。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 「[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)」では、Azure クラスターでログの収集を有効にする方法について説明します。
 * Visual Studio で Service Fabric イベントを表示するには、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
 * 「[Configure reverse proxy to connect to secure services (セキュリティで保護されたサービスに接続するためのリバース プロキシの構成)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services)」を参照して Azure Resource Manager テンプレートのサンプルを取得し、サービス証明書のさまざまな検証オプションでセキュリティ保護されたリバース プロキシを構成します。

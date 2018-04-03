@@ -56,7 +56,7 @@
 ## Azure AD Connect 同期を管理する
 ### [GDPR コンプライアンスと Azure AD Connect](active-directory-aadconnect-gdpr.md)
 ### [誤って削除されないように保護する](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)
-### [パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)
+### [パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)
 ### [Azure AD サービス アカウント](active-directory-aadconnectsync-howto-azureadaccount.md)
 ### [インストール ウィザード](active-directory-aadconnectsync-installation-wizard.md)
 ### [UserPrincipalName が設定される方法](active-directory-aadconnect-userprincipalname.md)
@@ -86,7 +86,7 @@
 ### [同期中のエラー](active-directory-aadconnect-troubleshoot-sync-errors.md)
 ### [オブジェクトが同期されない](active-directory-aadconnectsync-troubleshoot-object-not-syncing.md)
 ### [トラブルシューティング タスクを使用したオブジェクト同期](active-directory-aadconnect-troubleshoot-objectsync.md)
-### [パスワードの同期](active-directory-aadconnectsync-troubleshoot-password-synchronization.md)
+### [パスワード ハッシュの同期](active-directory-aadconnectsync-troubleshoot-password-hash-synchronization.md)
 ### [userCertificate による LargeObject エラー](active-directory-aadconnectsync-largeobjecterror-usercertificate.md)
 ### [LocalDB の 10 GB 制限からの回復方法](active-directory-aadconnect-recover-from-localdb-10gb-limit.md)
 

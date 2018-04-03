@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/05/2018
 ms.author: juda
 ms.custom: mvc
-ms.openlocfilehash: 06706450d8af6f571f002789815290f75da9623d
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d531bb40421716bf9fb3c253a3e76207b2806912
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-openfaas-on-aks"></a>AKS での OpenFaaS の使用
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 03/08/2018
 * Kubernetes に関する基礎知識。
 * 開発システム上に構成された Azure Container Service (AKS) クラスターおよび AKS 資格情報。
 * 開発システムにインストールされた Azure CLI。
-* システム上にインストールされた Git コマンド ライン ツール。
+* システムにインストールされた Git コマンド ライン ツール。
 
 ## <a name="get-openfaas"></a>OpenFaaS を入手する
 
@@ -230,7 +230,7 @@ curl -s http://52.186.64.52:8080/function/cosmos-query
 
 ![alt text](media/container-service-serverless/OpenFaaSUI.png)
 
-# <a name="next-steps"></a>次の手順
+## <a name="next-steps"></a>次の手順
 
 OpenFaas の既定のデプロイは、OpenFaaS ゲートウェイと関数の両方についてロック ダウンする必要があります。 安全な構成オプションについては、[Alex Ellis のブログ投稿](https://blog.alexellis.io/lock-down-openfaas/)に詳しい説明があります。 
 

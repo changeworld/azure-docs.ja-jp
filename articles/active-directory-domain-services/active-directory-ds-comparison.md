@@ -1,8 +1,8 @@
 ---
-title: "Azure AD Domain Services: Azure AD Domain Services と自作のドメイン コント ローラーの比較 | Microsoft Docs"
-description: "Azure Active Directory Domain Services と自作のドメイン コント ローラーの比較"
+title: 'Azure AD Domain Services: Azure AD Domain Services と自作のドメイン コント ローラーの比較 | Microsoft Docs'
+description: Azure Active Directory Domain Services と自作のドメイン コント ローラーの比較
 services: active-directory-ds
-documentationcenter: 
+documentationcenter: ''
 author: mahesh-unnikrishnan
 manager: mtillman
 editor: curtand
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
 ms.openlocfilehash: c384046d280e03de5a808d245dd273fdf7b44549
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-decide-if-azure-ad-domain-services-is-right-for-your-use-case"></a>Azure AD Domain Services がユースケースに適しているかを判断する方法
 Azure AD Domain Services を利用すると、Azure の ID インフラストラクチャのメンテナンスについて心配することなく、Azure インフラストラクチャ サービスでワークロードをデプロイできます。 管理されたこのサービスは、自分でデプロイおよび管理する、典型的な Windows Server Active Directory デプロイとは異なります。 サービスのデプロイは簡単で、稼働状況の監視および修復を自動的に実行します。 このサービスには定期的に、一般的なデプロイのシナリオのサポートが追加されます。

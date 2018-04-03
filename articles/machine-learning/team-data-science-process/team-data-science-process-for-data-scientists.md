@@ -1,24 +1,24 @@
 ---
-title: "データ サイエンティスト向け Team Data Science Process | Microsoft Docs"
-description: "Team Data Science Process と Azure Machine Learning を使用した分析ワークロードを理解するためのガイダンスを提供します。"
+title: データ サイエンティスト向け Team Data Science Process | Microsoft Docs
+description: Team Data Science Process と Azure Machine Learning を使用した分析ワークロードを理解するためのガイダンスを提供します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/21/2017
-ms.author: bradsev;BuckWoody
-ms.openlocfilehash: 146657c699f55c3e8f692cf0723c3276e4df584a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.author: bradsev
+ms.openlocfilehash: 670f2530887f33defdbdaffd18e5d2652811eb14
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-data-science-process-for-data-scientists"></a>データ サイエンティスト向け Team Data Science Process
 

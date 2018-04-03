@@ -1,12 +1,12 @@
 ---
-title: "Azure Load Balancer の IPv6 の概要 | Microsoft Docs"
-description: "Azure Load Balancer と負荷分散された VM に対する IPv6 サポートについて説明します。"
+title: Azure Load Balancer の IPv6 の概要 | Microsoft Docs
+description: Azure Load Balancer と負荷分散された VM に対する IPv6 サポートについて説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: timlt
-editor: 
-keywords: "ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot"
+manager: jeconnoc
+editor: ''
+keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.assetid: 6a1d583f-a305-40fd-a94b-fa42e1943bbb
 ms.service: load-balancer
 ms.devlang: na
@@ -15,16 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 1902475c81c4f83f8ba69a05f9564bc65a5de833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9622ad4922aa98efe093e7f809a490a8797eb1fd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+>[!NOTE] 
+>Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Basic Load Balancer について説明します。 Standard Load Balancer について詳しくは、[Standard Load Balancer の概要](load-balancer-standard-overview.md)に関するページをご覧ください。
 
 インターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 
@@ -37,7 +38,7 @@ ms.lasthandoff: 10/11/2017
 
 一度デプロイすると、IPv4 または IPv6 対応のインターネット クライアントがインターネットに接続された Azure Load Balancer の IPv4 または IPv6 のパブリック アドレスと通信できるようになります。 ロード バランサーは、ネットワーク アドレス変換 (NAT) を使用して IPv6 のパケットを VM のプライベート IPv6 アドレスにルーティングします。 IPv6 インターネット クライアントは、VM の IPv6 アドレスと直接通信できません。
 
-## <a name="features"></a>Features (機能)
+## <a name="features"></a>機能
 
 Azure Resource Manager を介してデプロイされた VM のネイティブ IPv6 サポートは、次の機能を提供します。
 
@@ -78,7 +79,7 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * IPv6 の loadDistributionMethod パラメーターの変更は、**現在サポートされてません**。
 * 予約済み IPv6 IP (IPAllocationMethod = static) は、**現在サポートされていません**。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 IPv6 でロード バランサーをデプロイする方法について説明します。
 

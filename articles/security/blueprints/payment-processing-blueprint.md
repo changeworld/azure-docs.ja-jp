@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境"
 description: "Azure のセキュリティとコンプライアンスのブループリント - PCI DSS 準拠の支払い処理環境"
 services: security

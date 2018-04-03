@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.date: 02/15/2018
 ms.author: chwolf
-ms.openlocfilehash: 8bd1c431788d78ae937cc047e82cb41504a19075
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: e0c32510ee49b95bc3606ea1efff7e2a6f72799b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Azure Service Bus と Event Grid の統合の概要
 
@@ -142,10 +142,10 @@ Service Bus 名前空間の Event Grid サブスクリプションは、次の 3
 
 次のコードを実行します。
 
-```PowerShell-interactive
-Az login
+ ```azurecli-interactive
+az login
 
-Az account set -s “THE SUBSCRIPTION YOU WANT TO USE”
+az account set -s “THE SUBSCRIPTION YOU WANT TO USE”
 
 $namespaceid=(az resource show --namespace Microsoft.ServiceBus --resource-type namespaces --name “<yourNamespace>“--resource-group “<Your Resource Group Name>” --query id --output tsv)
 
@@ -165,7 +165,7 @@ Select-AzureRmSubscription -SubscriptionName "<YOUR SUBSCRIPTION NAME>"
 Install-Module AzureRM.ServiceBus
 
 $NSID = (Get-AzureRmServiceBusNamespace -ResourceGroupName "<YOUR RESOURCE GROUP NAME>" -Na
-mespaceName "<YOUR NAMESPACE NAME>").Id 
+mespaceName "<YOUR NAMESPACE NAME>").Id
 
 New-AzureRmEVentGridSubscription -EventSubscriptionName “<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>” -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith “<YOUR SERVICE BUS SUBSCRIPTION NAME>”
 ```

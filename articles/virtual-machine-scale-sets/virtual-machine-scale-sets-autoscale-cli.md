@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI を使用した仮想マシン スケール セットの自動スケール | Microsoft Docs"
-description: "Azure CLI 2.0 を使用した仮想マシン スケール セットの自動スケール ルールを作成する方法"
+title: Azure CLI を使用した仮想マシン スケール セットの自動スケール | Microsoft Docs
+description: Azure CLI 2.0 を使用した仮想マシン スケール セットの自動スケール ルールを作成する方法
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 83e93d9c-cac0-41d3-8316-6016f5ed0ce4
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8552f6b2723fef2c61d49a34d2d60c2a6c209a32
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシン スケール セットを自動的にスケールする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケール機能により、顧客のニーズに対応したり、アプリのライフ サイクルを通じて、アプリケーション パフォーマンスの変化に対応することができます。

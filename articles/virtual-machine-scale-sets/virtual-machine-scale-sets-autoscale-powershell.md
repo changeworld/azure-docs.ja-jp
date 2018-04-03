@@ -1,11 +1,11 @@
 ---
-title: "Azure PowerShell を使用した仮想マシン スケール セットの自動スケール | Microsoft Docs"
-description: "Azure PowerShell を使用した仮想マシン スケール セットの自動スケール ルールを作成する方法"
+title: Azure PowerShell を使用した仮想マシン スケール セットの自動スケール | Microsoft Docs
+description: Azure PowerShell を使用した仮想マシン スケール セットの自動スケール ルールを作成する方法
 services: virtual-machine-scale-sets
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 88886cad-a2f0-46bc-8b58-32ac2189fc93
 ms.service: virtual-machine-scale-sets
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/19/2017
 ms.author: iainfou
 ms.openlocfilehash: 8928e56f353858234db314714d411a9c2990eb4e
-ms.sourcegitcommit: 2c2dfe04a0af718cf058445467fa407ead5f45a4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Azure PowerShell を使用して仮想マシン スケール セットを自動的にスケールする
 スケール セットを作成するときに、実行する VM インスタンスの数を定義します。 アプリケーションの需要の変化に応じて、VM インスタンスの数を自動的に増減することができます。 自動スケール機能により、顧客のニーズに対応したり、アプリのライフ サイクルを通じて、アプリケーション パフォーマンスの変化に対応することができます。

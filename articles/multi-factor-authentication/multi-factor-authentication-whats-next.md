@@ -1,8 +1,8 @@
 ---
-title: "Azure Multi-Factor Authentication の構成 | Microsoft Docs"
-description: "この記事では、通報、不正アクセスのアラート、ワンタイム バイパス、カスタム音声メッセージ、キャッシュ、信頼できる IP、アプリ パスワードに関する Azure Multi-Factor Authentication の設定を構成する方法について説明します。"
+title: Azure Multi-Factor Authentication の構成 | Microsoft Docs
+description: この記事では、通報、不正アクセスのアラート、ワンタイム バイパス、カスタム音声メッセージ、キャッシュ、信頼できる IP、アプリ パスワードに関する Azure Multi-Factor Authentication の設定を構成する方法について説明します。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.assetid: 75af734e-4b12-40de-aba4-b68d91064ae8
@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 01/03/2018
 ms.author: joflore
 ms.reviewer: richagi
-ms.openlocfilehash: 4421b995e69e115fbb6c7379af79aaef537aed0d
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: e2b6651f0d341567f1d02d0ca16b8f445e3d26f4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 
-この記事は、現在稼働中の Azure Multi-factor Authentication を管理するのに役立ちます。 ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。 すべてのバージョンの [Azure Multi-factor Authentication](/multi-factor-authentication-get-started.md#what-features-do-i-need) ですべての機能を使用できるわけではありません。
+この記事は、現在稼働中の Azure Multi-factor Authentication を管理するのに役立ちます。 ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。 すべてのバージョンの [Azure Multi-factor Authentication](multi-factor-authentication-get-started.md#what-features-do-i-need) ですべての機能を使用できるわけではありません。
 
-| 機能 | [説明] | 
+| Feature | [説明] | 
 |:--- |:--- |
 | [ユーザーのブロックおよびブロック解除](#block-and-unblock-users) |ユーザーのブロック/ブロック解除機能は、ユーザーが認証要求を受信できないようにする場合に使用します。 |
 | [不正アクセスのアラート](#fraud-alert) |ユーザーが各自のリソースに対する不正アクセスの試みを通報できるように、不正アクセスのアラート機能を構成します。 |
@@ -53,7 +53,7 @@ ms.lasthandoff: 01/04/2018
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 2. **[Azure Active Directory]** > **[MFA Server]** > **[ユーザーのブロック/ブロック解除]** に移動します。
 3. ブロック解除するユーザーの横にある、**[アクション]** 列の **[ブロック解除]** を選択します。
-4. **[Reason for unblocking](ブロック解除の理由)** フィールドにコメントを入力します。
+4. **[Reason for unblocking]\(ブロック解除の理由)** フィールドにコメントを入力します。
 5. **[ブロック解除]** を選択して、ユーザーのブロック解除を終了します。
 
 ## <a name="fraud-alert"></a>不正アクセスのアラート

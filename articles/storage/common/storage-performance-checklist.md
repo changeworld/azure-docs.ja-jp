@@ -1,10 +1,10 @@
 ---
-title: "Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト | Microsoft Docs"
-description: "高パフォーマンス アプリケーションの開発において Azure Storage で使用するための実証済みプラクティスのチェックリストです。"
+title: Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト | Microsoft Docs
+description: 高パフォーマンス アプリケーションの開発において Azure Storage で使用するための実証済みプラクティスのチェックリストです。
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: roygara
+manager: jeconnoc
 editor: tysonn
 ms.assetid: 959d831b-a4fd-4634-a646-0d2c0c462ef8
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: tamram
-ms.openlocfilehash: 6f5a136d1be7a4bb4093baad820271770305b718
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: rogarana
+ms.openlocfilehash: 945289a172270eea56625287baf437fd4b70c7f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="microsoft-azure-storage-performance-and-scalability-checklist"></a>Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト
 ## <a name="overview"></a>概要
@@ -43,12 +43,12 @@ Azure Storage を使用するアプリケーション開発者は、この記事
 | &nbsp; | すべてのサービス |ネットワーク |[クライアント アプリケーションはストレージ アカウントの "近く" に配置されていますか?](#subheading4) |
 | &nbsp; | すべてのサービス |コンテンツ配信 |[コンテンツ配信に CDN を使用していますか?](#subheading5) |
 | &nbsp; | すべてのサービス |クライアントへの直接アクセス |[プロキシではなく、SAS と CORS を使用して、ストレージへの直接アクセスを許可していますか?](#subheading6) |
-| &nbsp; | すべてのサービス |Caching (キャッシュ) |[繰り返し使用し、ほとんど変更されないデータをアプリケーションでキャッシュしていますか?](#subheading7) |
-| &nbsp; | すべてのサービス |Caching (キャッシュ) |[アプリケーションでバッチ更新 (クライアント側でキャッシュし、より大きなセットにアップロードする方法) を実行していますか?](#subheading8) |
+| &nbsp; | すべてのサービス |キャッシュ |[繰り返し使用し、ほとんど変更されないデータをアプリケーションでキャッシュしていますか?](#subheading7) |
+| &nbsp; | すべてのサービス |キャッシュ |[アプリケーションでバッチ更新 (クライアント側でキャッシュし、より大きなセットにアップロードする方法) を実行していますか?](#subheading8) |
 | &nbsp; | すべてのサービス |.NET 構成 |[十分な数の同時接続を使用するようにクライアントを構成していますか?](#subheading9) |
 | &nbsp; | すべてのサービス |.NET 構成 |[十分な数のスレッドを使用するように .NET を構成していますか?](#subheading10) |
 | &nbsp; | すべてのサービス |.NET 構成 |[ガベージ コレクション機能が向上した .NET 4.5 以降を使用していますか?](#subheading11) |
-| &nbsp; | すべてのサービス |Parallelism |[クライアントの機能やスケーラビリティ ターゲットに過剰な負荷がかからないように、並列処理を適切に制限していますか?](#subheading12) |
+| &nbsp; | すべてのサービス |並列処理 |[クライアントの機能やスケーラビリティ ターゲットに過剰な負荷がかからないように、並列処理を適切に制限していますか?](#subheading12) |
 | &nbsp; | すべてのサービス |ツール |[Microsoft が提供する最新バージョンのクライアント ライブラリとツールを使用していますか?](#subheading13) |
 | &nbsp; | すべてのサービス |再試行 |[エラーとタイムアウトの調整に、指数関数的バックオフによる再試行ポリシーを使用していますか?](#subheading14) |
 | &nbsp; | すべてのサービス |再試行 |[再試行できないエラーに対するアプリケーションの再試行を回避していますか?](#subheading15) |
@@ -156,7 +156,7 @@ SAS の詳細については、「 [共有アクセス署名、パート 1:SAS �
 
 CORS の詳細については、「 [Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート](http://msdn.microsoft.com/library/azure/dn535601.aspx)」を参照してください。  
 
-### <a name="caching"></a>Caching (キャッシュ)
+### <a name="caching"></a>キャッシュ
 #### <a name="subheading7"></a>データの取得
 一般に、1 つのサービスから 1 回でデータを取得する方が、2 回に分けて取得するよりも適切です。 Web ロールで実行している MVC Web アプリケーションが、ユーザー向けコンテンツとして、ストレージ サービスから 50 MB の BLOB を取得した例を考えてみます。 アプリケーションは、この後もユーザーから要求があるたびに同じ BLOB を取得するか、BLOB をローカル ディスクにキャッシュして、以降のユーザー要求に対し、繰り返し再使用することができます。 さらにユーザーがデータを要求すると、アプリケーションは更新時刻を記した条件付きヘッダーで GET を発行します。これによって、更新がない場合に BLOB 全体を取得しないように制御します。 これと同じパターンをテーブル エンティティの操作に適用できます。  
 

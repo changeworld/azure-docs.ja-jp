@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal での Service Fabric クラスターの作成 | Microsoft Docs"
-description: "この記事では、Azure ポータルと Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。"
+title: Azure Portal での Service Fabric クラスターの作成 | Microsoft Docs
+description: この記事では、Azure ポータルと Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
 author: chackdan
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/09/2018
 ms.author: chackdan
-ms.openlocfilehash: 4a42e36307f440a29740d947314f91dffac51a42
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 864952554b04d8d6bc14aad92d168298e554710e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -131,7 +131,7 @@ Azure ポータルを使用してクラスターを作成した場合、アプ�
 
 セキュア テスト クラスターを簡単に設定できるようにするために、**[Basic]** オプションが用意されています。 既に証明書があり、キー コンテナーにアップロードしている場合 (また、デプロイでキー コンテナーが使用可能になっている場合) は、**[カスタム]** オプションを使用します。
 
-#####<a name="basic-option"></a>[Basic] オプション
+##### <a name="basic-option"></a>[Basic] オプション
 画面の指示に従って、既存のキー コンテナーを追加または再利用し、証明書を追加します。 証明書の追加は、同期処理です。そのため、証明書が作成されるのを待機する必要があります。
 
 
@@ -151,7 +151,7 @@ Azure ポータルを使用してクラスターを作成した場合、アプ�
 
 ![CreateKeyVault4]
 
-#####<a name="custom-option"></a>カスタム オプション
+##### <a name="custom-option"></a>カスタム オプション
 **[Basic]** オプションの手順を既に実行している場合は、このセクションをスキップします。
 
 ![SecurityCustomOption]

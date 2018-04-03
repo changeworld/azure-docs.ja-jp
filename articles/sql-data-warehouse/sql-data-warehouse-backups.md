@@ -1,11 +1,11 @@
 ---
-title: "Azure SQL Data Warehouse のバックアップ - スナップショット、地理冗長 | Microsoft Docs"
-description: "Azure SQL Data Warehouse を復元ポイントまたは別の地理的な領域に復元できる、SQL Data Warehouse の組み込みデータベースのバックアップについて説明します。"
+title: Azure SQL Data Warehouse のバックアップ - スナップショット、地理冗長 | Microsoft Docs
+description: Azure SQL Data Warehouse を復元ポイントまたは別の地理的な領域に復元できる、SQL Data Warehouse の組み込みデータベースのバックアップについて説明します。
 services: sql-data-warehouse
-documentationcenter: 
+documentationcenter: ''
 author: barbkess
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: b5aff094-05b2-4578-acf3-ec456656febd
 ms.service: sql-data-warehouse
 ms.devlang: NA
@@ -16,10 +16,10 @@ ms.custom: backup-restore
 ms.date: 10/23/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 159a1d34caba829750da33dbc4ad403fb21cd147
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="backup-and-restore-in-sql-data-warehouse"></a>SQL Data Warehouse でのバックアップおよび復元
 この記事では、SQL Data Warehouse のバックアップの詳細について説明します。 データ ウェアハウスのバックアップを使用して、プライマリ リージョンにデータベース スナップショットを復元したり、geo ペア リージョンに geo バックアップを復元したりします。 

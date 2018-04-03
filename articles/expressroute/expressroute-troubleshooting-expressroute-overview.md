@@ -1,12 +1,12 @@
 ---
-title: "接続の検証: Azure ExpressRoute トラブルシューティング ガイド | Microsoft Docs"
-description: "このページでは、ExpressRoute 回線のエンド ツー エンド接続のトラブルシューティングと検証の手順について説明します。"
+title: '接続の検証: Azure ExpressRoute トラブルシューティング ガイド | Microsoft Docs'
+description: このページでは、ExpressRoute 回線のエンド ツー エンド接続のトラブルシューティングと検証の手順について説明します。
 documentationcenter: na
 services: expressroute
 author: rambk
 manager: tracsman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: cherylmc
-ms.openlocfilehash: 74b6589a7e06570d978dfe40c5f5bf140e092cc6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5d01f2e402e4b793274761703ec3ca1ea3ff8164
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
@@ -68,7 +68,7 @@ ExpressRoute 回線を検証するために、次の手順を説明します (�
 
 将来的には、さらに多くの検証やチェックが追加される予定です。毎月確認してください。
 
-##<a name="validate-circuit-provisioning-and-state"></a>回線のプロビジョニングと状態を検証する
+## <a name="validate-circuit-provisioning-and-state"></a>回線のプロビジョニングと状態を検証する
 接続モデルに関係なく、ExpressRoute 回線を作成し、それに従い、回線のプロビジョニング用にサービス キーを生成する必要があります。 ExpressRoute 回線をプロビジョニングすると、PE-MSEE (4) と MSEE (5) の間に冗長なレイヤー 2 接続が確立します。 ExpressRoute 回線の作成、変更、プロビジョニング、検証を行う方法の詳細については、「[ExpressRoute 回線の作成と変更][CreateCircuit]」を参照してください。
 
 >[!TIP]
@@ -76,7 +76,7 @@ ExpressRoute 回線を検証するために、次の手順を説明します (�
 >
 >
 
-###<a name="verification-via-the-azure-portal"></a>Azure Portal を使用した検証
+### <a name="verification-via-the-azure-portal"></a>Azure Portal を使用した検証
 Azure Portal で、ExpressRoute 回線の状態を確認するには、左側のバーにあるメニューで ![2][2] を選択し、ExpressRoute 回線を選択します。 [すべてのリソース] の下に表示されている ExpressRoute 回線を選択すると、[ExpressRoute circuit (ExpressRoute 回線)] ブレードが開きます。 このブレードの ![3][3] セクションで、次のスクリーン ショットに示されているように、ExpressRoute の要点が表示されます。
 
 ![4][4]    
@@ -90,7 +90,7 @@ ExpressRoute 回線を運用可能にするには、*[回線の状態]* が *[�
 >
 >
 
-###<a name="verification-via-powershell"></a>PowerShell を使用した検証
+### <a name="verification-via-powershell"></a>PowerShell を使用した検証
 リソース グループ内のすべての ExpressRoute 回線を一覧表示するには、次のコマンドを使用します。
 
     Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
@@ -139,7 +139,7 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
 >
 >
 
-###<a name="verification-via-powershell-classic"></a>PowerShell (クラシック) を使用した検証
+### <a name="verification-via-powershell-classic"></a>PowerShell (クラシック) を使用した検証
 サブスクリプション内のすべての ExpressRoute 回線を一覧表示するには、次のコマンドを使用します。
 
     Get-AzureDedicatedCircuit
@@ -167,10 +167,10 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
 >
 >
 
-##<a name="validate-peering-configuration"></a>ピアリング構成を検証する
+## <a name="validate-peering-configuration"></a>ピアリング構成を検証する
 サービス プロバイダーが ExpressRoute 回線のプロビジョニングを完了すると、MSEE-PR (4) と MSEE (5) の間の ExpressRoute 回線でルーティング構成を作成できます。 各 ExpressRoute 回線では、1 つ、2 つ、または 3 つのルーティング コンテキストを有効にしておくことができます。これらのルーティング コンテキストとは、Azure プライベート ピアリング (Azure 内のプライベート仮想ネットワークへのトラフィック)、Azure パブリック ピアリング (Azure 内のパブリック IP アドレスへのトラフィック)、Microsoft ピアリング (Office 365 と Dynamics 365 へのピアリング) です。 ルーティング構成の作成と変更方法の詳細については、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
 
-###<a name="verification-via-the-azure-portal"></a>Azure Portal を使用した検証
+### <a name="verification-via-the-azure-portal"></a>Azure Portal を使用した検証
 
 >[!NOTE]
 >レイヤー 3 がサービス プロバイダーから提供され、ポータルのピアリングが空の場合、ポータルの更新ボタンを使用して回線の構成を更新します。 この操作で、回線に適切なルーティング構成が適用されます。 
@@ -188,7 +188,7 @@ Azure Portal で、ExpressRoute 回線の状態を確認するには、左側の
 >
 >
 
-###<a name="verification-via-powershell"></a>PowerShell を使用した検証
+### <a name="verification-via-powershell"></a>PowerShell を使用した検証
 Azure プライベート ピアリング構成の詳細を取得するには、次のコマンドを使用します。
 
     $ckt = Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG" -Name "Test-ER-Ckt"
@@ -364,7 +364,7 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 
     Route Table Info:
 
-##<a name="check-the-traffic-statistics"></a>トラフィックの統計情報を確認する
+## <a name="check-the-traffic-statistics"></a>トラフィックの統計情報を確認する
 ピアリング コンテキストのプライマリ パスとセカンダリ パスを組み合わせたトラフィックの統計情報 (入出力バイト数) を取得するには、次のコマンドを使用します。
 
     Get-AzureDedicatedCircuitStats -ServiceKey 97f85950-01dd-4d30-a73c-bf683b3a6e5c -AccessType Private

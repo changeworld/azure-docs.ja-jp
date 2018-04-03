@@ -77,8 +77,8 @@
 ## [グループとメンバーの管理](active-directory-manage-groups.md)
 ### グループの管理
 #### [Azure Portal](active-directory-groups-create-azure-portal.md)
-#### [Azure PowerShell の Azure Resource Manager モデル](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
-#### [Azure PowerShell のクラシック デプロイ モデル](active-directory-accessmanagement-groups-settings-cmdlets.md)
+#### [Azure AD PowerShell for Graph (v2)](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
+#### [Azure AD PowerShell MSOnline (v1)](active-directory-accessmanagement-groups-settings-cmdlets.md)
 ### [グループ メンバーを管理する](active-directory-groups-members-azure-portal.md)
 ### [グループ所有者を管理する](active-directory-accessmanagement-managing-group-owners.md)
 ### [グループ メンバーシップを管理する](active-directory-groups-membership-azure-portal.md)
@@ -310,7 +310,7 @@
 #### [条件](active-directory-conditional-access-conditions.md)
 #### [場所の条件](active-directory-conditional-access-locations.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [概要](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
@@ -332,7 +332,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [作業の開始](active-directory-certificate-based-authentication-get-started.md)
+#### [概要](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

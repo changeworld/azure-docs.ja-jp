@@ -1,22 +1,22 @@
 ---
-title: "Azure サービスの通知でアクティビティ ログ アラートを受け取る | Microsoft Docs"
-description: "Azure サービスが発生したときに、SMS、電子メール、または Webhook で通知を受け取ります。"
+title: Azure サービスの通知でアクティビティ ログ アラートを受け取る | Microsoft Docs
+description: Azure サービスが発生したときに、SMS、電子メール、または Webhook で通知を受け取ります。
 author: johnkemnetz
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/31/2017
+ms.date: 03/27/2018
 ms.author: johnkem
-ms.openlocfilehash: 6e011ea3d9d8f8453068d43e390cfba46dfb3277
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: b4c4fdeb825bbcab54f074c5224140282a24d196
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-activity-log-alerts-on-service-notifications"></a>サービス通知のアクティビティ ログ アラートを作成する
 ## <a name="overview"></a>概要
@@ -65,7 +65,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 
 9. 受信者についての次の情報を入力して、受信者の一覧を定義します。
 
-    a. **名前**: 受信者の名前、エイリアス、または識別子を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **名前**: 受信者の名前、エイリアス、または識別子を入力します。
 
     b. **アクションの種類**: SMS、メール、webhook、Azure アプリなどを選びます。
 
@@ -100,7 +100,7 @@ Azure Resource Manager テンプレートを使用したサービス正常性通
 * 削除する。
 * 無効または有効にしてそのアラートの通知受信を一時的に停止または再開する。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [既存の問題管理システム用の webhook 通知を構成する](../service-health/service-health-alert-webhook-guide.md)方法について学習します。
 - [サービス正常性の通知](monitoring-service-notifications.md)について学習します。
 - [通知のレート制限](monitoring-alerts-rate-limiting.md)について学習します。

@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: カスタム属性 | Microsoft Docs"
-description: "Azure Active Directory B2C でカスタム属性を使用してコンシューマーに関する情報を収集する方法"
+title: 'Azure Active Directory B2C: カスタム属性 | Microsoft Docs'
+description: Azure Active Directory B2C でカスタム属性を使用してコンシューマーに関する情報を収集する方法
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: 055ffb0a-197b-4716-8dad-1fd8a01e174f
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 3e2c8b3ab223cf269129d7723c37d98c24f0653c
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.author: davidmu
+ms.openlocfilehash: 6f285c10b7d8ff92c8568c42b6a78dc4ea9bcc74
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-use-custom-attributes-to-collect-information-about-your-consumers"></a>Azure Active Directory B2C: カスタム属性を使用してコンシューマーに関する情報を収集する
 Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの情報セット (属性) が用意されています (名、姓、市区町村、郵便番号など)。 ただし、どのようなコンシューマー向けアプリケーションにも、コンシューマーから収集する属性について固有の要件があります。 Azure AD B2C では、各コンシューマー アカウントで保持される属性セットを拡張できます。 以下で示すように、 [Azure Portal](https://portal.azure.com/) でカスタム属性を作成し、サインアップ ポリシーで使用できます。 また、 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md)を使用してこれらの属性を読み書きすることもできます。
@@ -45,8 +42,8 @@ Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの
 1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します](active-directory-b2c-app-registration.md#navigate-to-b2c-settings)。
 2. **[サインアップ ポリシー]**をクリックします。
 3. クリックしてサインアップ ポリシーを開きます (例: "B2C_1_SiUp")。 ブレードの上部にある **[編集]** をクリックします。
-4. **[サインアップ属性]** をクリックして、カスタム属性 (例: "ShoeSize") を選択します。 **[OK]**をクリックします。
-5. **[アプリケーションの要求]** をクリックして、カスタム属性を選択します。 **[OK]**をクリックします。
+4. **[サインアップ属性]** をクリックして、カスタム属性 (例: "ShoeSize") を選択します。 Click **OK**.
+5. **[アプリケーションの要求]** をクリックして、カスタム属性を選択します。 Click **OK**.
 6. ブレードの上部にある **[保存]** をクリックします。
 
 ポリシーで [今すぐ実行] 機能を使用して、コンシューマー エクスペリエンスを確認できます。 コンシューマーのサインアップ時に収集される属性の一覧、およびアプリケーションに返送されるトークンに、"ShoeSize" が表示されるようになります。

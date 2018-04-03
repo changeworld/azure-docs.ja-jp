@@ -1,23 +1,23 @@
 ---
-title: "データ サイエンス プロジェクトの実行 - Azure Machine Learning | Microsoft Docs"
-description: "データ サイエンティストがデータ サイエンス プロジェクトの進行状況を追跡できる方法です。"
-documentationcenter: 
+title: データ サイエンス プロジェクトの実行 - Azure Machine Learning | Microsoft Docs
+description: データ サイエンティストがデータ サイエンス プロジェクトの進行状況を追跡できる方法です。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: c8e1882570a8cfcb4a75f0904a2138d007e0bc5b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: fe0c1b4917439221643bf481fdd21828f857e1c4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="track-progress-of-data-science-projects"></a>データ サイエンス プロジェクトの進行状況の追跡
 
@@ -49,6 +49,6 @@ Visual Studio Team Services でダッシュ ボードとウィジェットを作
 
 これらのグラフの作成方法については、[ダッシュ ボード](https://docs.microsoft.com/vsts/report/dashboards/)のクイックスタートおよびチュートリアルを参照してください。
  
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 また、**特定のシナリオ**のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 

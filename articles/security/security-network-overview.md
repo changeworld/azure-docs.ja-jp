@@ -1,5 +1,5 @@
 ---
-title: "ネットワーク セキュリティの概念および Azure における要件 | Microsoft Docs"
+title: ネットワーク セキュリティの概念および Azure における要件 | Microsoft Docs
 description: " この記事により、Microsoft Azure がネットワーク セキュリティ分野で提供している事柄を簡単に理解できるようになります。 ネットワーク セキュリティの中核をなす概念と要件の基本的な説明と、各分野で Azure が提供している事柄に関する情報を提供します。 "
 services: security
 documentationcenter: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: e477ce9a5f9f35d88a6faeb68ee4e0403f64c030
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e32cd1f4267b9ae0825fbb34ed00e25dd1b63b5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-network-security-overview"></a>Azure のネットワーク セキュリティの概要
 Microsoft Azure には、アプリケーションとサービスの接続要件をサポートする堅牢なネットワーク インフラストラクチャが組み込まれています。 ネットワーク接続は、Azure に配置されているリソース間、オンプレミスのリソースと Azure でホストされているリソース間、インターネットと Azure 間で可能です。
@@ -252,11 +252,11 @@ Azure では、この重要な分野で、早期検出、監視、ネットワ�
 ### <a name="azure-network-watcher"></a>Azure Network Watcher
 Azure Network Watcher には、トラブルシューティングに役立つ多数の機能が含まれるだけでなく、セキュリティの問題の特定を支援するまったく新しいツール セットも提供します。
 
-[セキュリティ グループ ビュー](/network-watcher/network-watcher-security-group-view-overview.md)は、仮想マシンの監査とセキュリティのコンプライアンス対応をサポートし、プログラムによる監査を実行して、組織で定義されている基準ポリシーと VM ごとの有効な規則を比較できます。 構成のずれを特定するときにこの機能が役立ちます。
+[セキュリティ グループ ビュー](../network-watcher/network-watcher-security-group-view-overview.md)は、仮想マシンの監査とセキュリティのコンプライアンス対応をサポートし、プログラムによる監査を実行して、組織で定義されている基準ポリシーと VM ごとの有効な規則を比較できます。 構成のずれを特定するときにこの機能が役立ちます。
 
-[パケット キャプチャ](/network-watcher/network-watcher-packet-capture-overview.md)を使用すると、仮想マシンとの間のネットワーク トラフィックをキャプチャすることができます。 パケット キャプチャは、ネットワーク統計情報を収集して、アプリケーションに関する問題のトラブルシューティングを支援するだけでなく、ネットワーク不正侵入の調査でも重要な機能を発揮します。 この機能を Azure Functions と一緒に使用することで、Azure の特定のアラートに反応してネットワーク キャプチャを開始することができます。
+[パケット キャプチャ](../network-watcher/network-watcher-packet-capture-overview.md)を使用すると、仮想マシンとの間のネットワーク トラフィックをキャプチャすることができます。 パケット キャプチャは、ネットワーク統計情報を収集して、アプリケーションに関する問題のトラブルシューティングを支援するだけでなく、ネットワーク不正侵入の調査でも重要な機能を発揮します。 この機能を Azure Functions と一緒に使用することで、Azure の特定のアラートに反応してネットワーク キャプチャを開始することができます。
 
-Azure Network Watcher と、ラボで機能の一部のテストを開始する方法の詳細については、[Azure Network Watcher の監視の概要](/network-watcher/network-watcher-monitoring-overview.md)に関するページを参照してください。
+Azure Network Watcher と、ラボで機能の一部のテストを開始する方法の詳細については、[Azure Network Watcher の監視の概要](../network-watcher/network-watcher-monitoring-overview.md)に関するページを参照してください。
 
 >[!NOTE]
 Azure Network Watcher は現在もパブリック プレビュー中であるため、一般公開リリースのサービスと同じレベルの可用性と信頼性がない場合があります。 特定の機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 このサービスの可用性とステータスに関する最新の通知については、[Azure の更新情報](https://azure.microsoft.com/updates/?product=network-watcher)に関するページをご覧ください。

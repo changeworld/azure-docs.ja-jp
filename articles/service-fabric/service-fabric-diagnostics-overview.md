@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric の監視と診断の概要 | Microsoft Docs"
-description: "Azure Service Fabric のクラスター、アプリケーション、およびサービスの監視と診断について説明します。"
+title: Azure Service Fabric の監視と診断の概要 | Microsoft Docs
+description: Azure Service Fabric のクラスター、アプリケーション、およびサービスの監視と診断について説明します。
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/10/2018
 ms.author: dekapur
-ms.openlocfilehash: 1da2fab92c6fd51c5fc18589da5f8bbec2929503
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: f784576547f0d85a825ad9dd107c6c84cd261092
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitoring-and-diagnostics-for-azure-service-fabric"></a>Azure Service Fabric での監視と診断
 
@@ -86,7 +86,7 @@ Service Fabric プラットフォームには正常性モデルが組み込ま�
 
 ![SFX 正常性ダッシュボード](media/service-fabric-diagnostics-overview/sfx-healthstatus.png)
 
-SFX で最新の正常性レポートを参照するのに加え、各レポートをイベントとして入手できます。 正常性イベントは稼動チャネルを介して収集可能で ([Azure 診断によるイベント集計](service-fabric-diagnostics-event-aggregation-wad.md#collect-health-and-load-events)に関する記事を参照)、後でアラートやクエリで使用できるように OMS Log Analytics に保存されます。 これは、アプリケーションの可用性に影響を与えそうな問題を検出するのに役立ちます。そのため、適切な障害シナリオにアラートを設定する (OMS を使用したカスタム アラート) ことをお勧めします。
+SFX で最新の正常性レポートを参照するのに加え、各レポートをイベントとして入手できます。 正常性イベントは稼動チャネルを介して収集可能で ([Azure 診断によるイベント集計](service-fabric-diagnostics-event-aggregation-wad.md#log-collection-configurations)に関する記事を参照)、後でアラートやクエリで使用できるように OMS Log Analytics に保存されます。 これは、アプリケーションの可用性に影響を与えそうな問題を検出するのに役立ちます。そのため、適切な障害シナリオにアラートを設定する (OMS を使用したカスタム アラート) ことをお勧めします。
 
 ## <a name="monitoring-workflow"></a>ワークフローの監視 
 
