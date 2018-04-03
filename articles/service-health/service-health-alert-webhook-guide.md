@@ -1,24 +1,24 @@
 ---
-title: "webhook を使用して既存の問題管理システム用に正常性通知を構成する | Microsoft Docs"
-description: "既存の問題管理システムに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。"
+title: webhook を使用して既存の問題管理システム用に正常性通知を構成する | Microsoft Docs
+description: 既存の問題管理システムに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 author: shawntabrizi
 manager: scotthit
-editor: 
+editor: ''
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/14/2017
+ms.date: 3/27/2018
 ms.author: shtabriz
-ms.openlocfilehash: b6a5f61f61675b825dcfe9c706c80944f5890538
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 8535caf482b10912e6f7bc6df445756094d7603f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-health-notifications-for-existing-problem-management-systems-using-a-webhook"></a>webhook を使用して既存の問題管理システム用に正常性通知を構成する
 
@@ -36,7 +36,7 @@ ms.lasthandoff: 11/16/2017
 ## <a name="configuring-a-custom-notification-using-the-service-health-webhook-payload"></a>サービス正常性の webhook ペイロードを使用してカスタム通知を構成する
 独自のカスタム webhook 統合をセットアップする場合は、サービス正常性の通知時に送信される JSON ペイロードを解析する必要があります。
 
-`Service Health` webhook ペイロードの具体例については、[こちらの例](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)をご覧ください。
+`ServiceHealth` webhook ペイロードの具体例については、[こちらの例](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)をご覧ください。
 
 サービス正常性アラートを検出するには、`context.eventSource == "ServiceHealth"` を探します。 そこにあるプロパティのうち、取り込みに最も関連するプロパティは次のとおりです。
  * `data.context.activityLog.status`
@@ -48,13 +48,13 @@ ms.lasthandoff: 11/16/2017
  * `data.context.activityLog.properties.impactedServices`
  * `data.context.activityLog.properties.trackingId`
 
-## <a name="creating-a-direct-link-to-azure-service-health-for-an-incident"></a>インシデントに関する Azure サービス正常性への直接リンクを作成する
-個人用の Azure サービス正常性インシデントへの直接リンクをデスクトップまたはモバイルに作成するには、特別な URL を生成します。 `trackingId` と、`subscriptionId` の最初 3 桁と最後の 3 桁を使用して、次のような形式にします。
+## <a name="creating-a-direct-link-to-the-service-health-dashboard-for-an-incident"></a>インシデントに関する Service Health ダッシュボードへの直接リンクを作成する
+Service Health ダッシュボードへの直接リンクをデスクトップまたはモバイルに作成するには、特別な URL を生成します。 `trackingId` と、`subscriptionId` の最初 3 桁と最後の 3 桁を使用して、次のような形式にします。
 ```
 https://app.azure.com/h/<trackingId>/<first and last three digits of subscriptionId>
 ```
 
-たとえば、`subscriptionId` が `bba14129-e895-429b-8809-278e836ecdb3` で、`trackingId` が `0DET-URB` である場合、個人用の Azure サービス正常性 URL は次のようになります。
+たとえば、`subscriptionId` が `bba14129-e895-429b-8809-278e836ecdb3` で、`trackingId` が `0DET-URB` である場合、Service Health URL は次のようになります。
 
 ```
 https://app.azure.com/h/0DET-URB/bbadb3
@@ -101,7 +101,7 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例は、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」で見つけることができます。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」を参照してください。
 
 2. 次のような HTTP POST 要求を作成します。
 
@@ -110,13 +110,13 @@ https://app.azure.com/h/0DET-URB/bbadb3
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. `2XX - Successful` 応答を受け取るはずです。
 
 4. [PagerDuty](https://www.pagerduty.com/) に移動して、統合が正常に設定されたことを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [アクティビティ ログ アラート webhook スキーマ](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)について学習します。
 - [アクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)について学習します。

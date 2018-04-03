@@ -1,31 +1,28 @@
 ---
-title: "Web ページでの Azure Traffic Manager への Real User Measurements | Microsoft Docs"
-description: "Real User Measurements を Traffic Manager に送信するように Web ページを設定する"
+title: Web ページでの Azure Traffic Manager への Real User Measurements | Microsoft Docs
+description: Real User Measurements を Traffic Manager に送信するように Web ページを設定する
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
 manager: jeconnoc
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: c8b345cd973b8cd939ad111132f1afdadae9f2b7
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.custom: ''
+ms.openlocfilehash: 71661d8640dbe14082292cb9637964adac9fa803
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-send-real-user-measurements-to-azure-traffic-manager-using-web-pages"></a>Web ページを使用して Azure Traffic Manager に Real User Measurements を送信する方法
-
->[!NOTE]
->Traffic Manager の Real User Measurements 機能はパブリック プレビューであり、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 この機能の可用性と状態に関する最新の通知については、[Azure Traffic Manager の更新情報](https://azure.microsoft.com/updates/?product=traffic-manager)に関するページをご覧ください。
 
 Real User Measurements (RUM) キーを取得し、生成されたコードを Web ページに埋め込むことで、Real User Measurements を Traffic Manager に送信するように Web ページを構成することができます。
 

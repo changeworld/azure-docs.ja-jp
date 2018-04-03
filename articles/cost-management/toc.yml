@@ -39,6 +39,8 @@
       href: connect-google-account.md
     - name: AWS アカウントの接続
       href: connect-aws-account.md
+    - name: ストレージ アカウントの構成
+      href: storage-accounts.md
     - name: Cost Management レポートの使用
       href: use-reports.md
 - name: リソース

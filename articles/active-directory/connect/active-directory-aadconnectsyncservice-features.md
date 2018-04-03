@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect 同期サービスの機能と構成 | Microsoft Docs"
-description: "Azure AD Connect 同期サービスのサービス側の機能について説明します。"
+title: Azure AD Connect 同期サービスの機能と構成 | Microsoft Docs
+description: Azure AD Connect 同期サービスのサービス側の機能について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 213aab20-0a61-434a-9545-c4637628da81
 ms.service: active-directory
 ms.workload: identity
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: b716e553f7c4c11f6d566b43d771217fdf4b3a93
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 534e4e6d8b6ea2bfc059383e3e55c0352678ee04
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
 Azure AD Connect の同期機能には 2 つのコンポーネントがあります。
@@ -56,7 +56,7 @@ Azure AD ディレクトリ内の構成を確認するには、 `Get-MsolDirSync
 | DeviceWriteback |[Azure AD Connect: デバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md) |
 | DirectoryExtensions |[Azure AD Connect 同期: ディレクトリ拡張機能](active-directory-aadconnectsync-feature-directory-extensions.md) |
 | [DuplicateProxyAddressResiliency<br/>DuplicateUPNResiliency](#duplicate-attribute-resiliency) |エクスポート時に、別のオブジェクトとの重複がある場合、オブジェクト全体が失敗するのではなく、属性を検疫できます。 |
-| PasswordSync |[Azure AD Connect Sync によるパスワード同期の導入](active-directory-aadconnectsync-implement-password-synchronization.md) |
+| PasswordSync |[Azure AD Connect Sync によるパスワード同期の導入](active-directory-aadconnectsync-implement-password-hash-synchronization.md) |
 | UnifiedGroupWriteback |[プレビュー: グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback) |
 | UserWriteback |現在、サポートされていません。 |
 

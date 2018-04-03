@@ -45,7 +45,7 @@
 ### [SAML ベースの SSO をデバッグする](active-directory-saml-debugging.md)
 ### [シングル サインオンの SAML プロトコル](active-directory-single-sign-on-protocol-reference.md)
 ### [シングル サインアウトの SAML プロトコル](active-directory-single-sign-out-protocol-reference.md)
-### [テナントの作成](active-directory-howto-tenant.md)
+## [テナントの作成](active-directory-howto-tenant.md)
 ## [ブランド化ガイドライン](active-directory-branding-guidelines.md)
 ## モバイルとデスクトップの SSO
 ### [Android での SSO の有効化](active-directory-sso-android.md)

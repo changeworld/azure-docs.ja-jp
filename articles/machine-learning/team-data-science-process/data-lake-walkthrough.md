@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake を使用したスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル | Microsoft Docs"
-description: "Azure Data Lake を使用してデータセットに対してデータ探索と二項分類タスクを行う方法について説明します。"
+title: 'Azure Data Lake を使用したスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル | Microsoft Docs'
+description: Azure Data Lake を使用してデータセットに対してデータ探索と二項分類タスクを行う方法について説明します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev; weig
-ms.openlocfilehash: b18b454d1fcdfb2b6e8ea77508f779aeabdc87a0
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 6d0f889e1cc76eced172d66755a0a9275e6b7bdf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scalable-data-science-with-azure-data-lake-an-end-to-end-walkthrough"></a>Azure Data Lake を使用したスケーラブルなデータ サイエンス: エンドツーエンド チュートリアル
 このチュートリアルでは、NYC タクシー乗車と料金のデータセットを例にして、Azure Data Lake を使用してデータ探索タスクと二項分類タスクを実行し、料金ごとにチップが支払われるかどうかを予測します。 また、データの取得から、モデルのトレーニング、モデルを公開する Web サービスのデプロイまで、 [Team Data Science Process](http://aka.ms/datascienceprocess)のエンド ツー エンドの手順について説明します。
@@ -678,7 +678,7 @@ Web サービス ダッシュボードがすぐに表示されます。
 
  ![27](./media/data-lake-walkthrough/27-AML-web-api.PNG)
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 このチュートリアルを終了すると、Azure Data Lake でスケーラブルなエンド ツー エンド ソリューションを構築するデータ サイエンス環境を作成することができます。 この環境を使用して、大規模なパブリック データセットが分析されました。モデル トレーニングによるデータの取得から、Web サービスとしてのモデルのデプロイまで、データ サイエンス プロセスの正規の手順を使用して行われました。 データの処理、調査、およびサンプリングには、U-SQL が使用されました。 予測モデルの構築とデプロイには、Azure Machine Learning Studio と共に、Python と Hive が使用されました。
 
 ## <a name="whats-next"></a>次の手順

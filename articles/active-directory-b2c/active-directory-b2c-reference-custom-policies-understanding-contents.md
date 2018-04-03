@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: スターター パックのカスタム ポリシーについて | Microsoft Docs"
-description: "Azure Active Directory B2C のカスタム ポリシーに関するトピック"
+title: 'Azure Active Directory B2C: スターター パックのカスタム ポリシーについて | Microsoft Docs'
+description: Azure Active Directory B2C のカスタム ポリシーに関するトピック
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/25/2017
-ms.author: joroja
-ms.openlocfilehash: fccb6cfddc8629de7db0310340f07bffd1ff8a65
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 624a40b1e40db6ceac9c567926b3932449e7bf7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="understanding-the-custom-policies-of-the-azure-ad-b2c-custom-policy-starter-pack"></a>Azure AD B2C カスタム ポリシー スターター パックのカスタム ポリシーについて
 
@@ -50,7 +47,7 @@ ms.lasthandoff: 12/11/2017
 
 次の要求は、ユーザー体験を正常に機能させるために必要です。
 
-| 要求の種類 | Description |
+| 要求の種類 | [説明] |
 |-------------|-------------|
 | *UserId* | ユーザー名 |
 | *signInName* | サインイン名 |
@@ -81,7 +78,7 @@ ms.lasthandoff: 12/11/2017
 
 次の要求は、(一部のクエリ文字列パラメーターを含め) 特別なパラメーターをその他の要求プロバイダーに渡すのに必要です。
 
-| 要求の種類 | Description |
+| 要求の種類 | [説明] |
 |-------------|-------------|
 | *nux* | ローカル アカウント認証のために login.microsoftonline.com に渡される特別なパラメーター |
 | *nca* | ローカル アカウント認証のために login.microsoftonline.com に渡される特別なパラメーター |
@@ -98,7 +95,7 @@ ms.lasthandoff: 12/11/2017
 
 次の要求は、ユーザーから収集してディレクトリに格納し、トークンで送信できる追加の要求です。 前に説明したとおり、追加の要求はこの一覧に追加できます。
 
-| 要求の種類 | Description |
+| 要求の種類 | [説明] |
 |-------------|-------------|
 | *givenName* | ユーザーの名 (または名前) |
 | *surname* | ユーザーの姓 (または名字) |
@@ -108,7 +105,7 @@ ms.lasthandoff: 12/11/2017
 
 使用できる要求の変換を次に一覧で示します。
 
-| 要求の変換 | Description |
+| 要求の変換 | [説明] |
 |----------------------|-------------|
 | *CreateOtherMailsFromEmail* | |
 | *CreateRandomUPNUserName* | |
@@ -121,7 +118,7 @@ ms.lasthandoff: 12/11/2017
 
 このセクションでは、*B2C_1A_base* ポリシーで既に宣言されているコンテンツの定義について説明します。 これらのコンテンツの定義は、必要に応じて独自のポリシーと *B2C_1A_base_extensions* ポリシーで参照、上書き、または拡張することができます。
 
-| 要求プロバイダー | Description |
+| 要求プロバイダー | [説明] |
 |-----------------|-------------|
 | *Facebook* | |
 | "*ローカル アカウント サインイン*" | |
@@ -140,19 +137,19 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="technical-profiles-for-facebook"></a>Facebook の技術プロファイル
 
-| 技術プロファイル | Description |
+| 技術プロファイル | [説明] |
 |-------------------|-------------|
 | *Facebook-OAUTH* | |
 
 ### <a name="technical-profiles-for-local-account-signin"></a>ローカル アカウント サインインの技術プロファイル
 
-| 技術プロファイル | Description |
+| 技術プロファイル | [説明] |
 |-------------------|-------------|
 | *Login-NonInteractive* | |
 
 ### <a name="technical-profiles-for-phone-factor"></a>PhoneFactor の技術プロファイル
 
-| 技術プロファイル | Description |
+| 技術プロファイル | [説明] |
 |-------------------|-------------|
 | *PhoneFactor-Input* | |
 | *PhoneFactor-InputOrVerify* | |
@@ -160,7 +157,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="technical-profiles-for-azure-active-directory"></a>Azure Active Directory の技術プロファイル
 
-| 技術プロファイル | Description |
+| 技術プロファイル | [説明] |
 |-------------------|-------------|
 | *AAD-Common* | その他の AAD-xxx 技術プロファイルに含まれる技術プロファイル |
 | *AAD-UserWriteUsingAlternativeSecurityId* | ソーシャル ログインの技術プロファイル |
@@ -175,20 +172,20 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="technical-profiles-for-self-asserted"></a>セルフ アサートの技術プロファイル
 
-| 技術プロファイル | Description |
+| 技術プロファイル | [説明] |
 |-------------------|-------------|
 | *SelfAsserted-Social* | |
 | *SelfAsserted-ProfileUpdate* | |
 
 ### <a name="technical-profiles-for-local-account"></a>ローカル アカウントの技術プロファイル
 
-| 技術プロファイル | Description |
+| 技術プロファイル | [説明] |
 |-------------------|-------------|
 | *LocalAccountSignUpWithLogonEmail* | |
 
 ### <a name="technical-profiles-for-session-management"></a>セッション管理の技術プロファイル
 
-| 技術プロファイル | Description |
+| 技術プロファイル | [説明] |
 |-------------------|-------------|
 | *SM-Noop* | |
 | *SM-AAD* | |
@@ -202,7 +199,7 @@ ms.lasthandoff: 12/11/2017
 
 ### <a name="technical-profiles-for-token-issuer"></a>トークン発行者の技術プロファイル
 
-| 技術プロファイル | Description |
+| 技術プロファイル | [説明] |
 |-------------------|-------------|
 | *JwtIssuer* | |
 
@@ -210,7 +207,7 @@ ms.lasthandoff: 12/11/2017
 
 このセクションでは、*B2C_1A_base* ポリシーで既に宣言されているユーザー体験について説明します。 これらのユーザー体験は、必要に応じて独自のポリシーと *B2C_1A_base_extensions* ポリシーでさらに参照、上書き、または拡張することができます。
 
-| ユーザー体験 | Description |
+| ユーザー体験 | [説明] |
 |--------------|-------------|
 | *SignUp* | |
 | *SignIn* | |

@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーのサインアップを変更し、セルフ アサート プロバイダーを構成する"
-description: "サインアップに要求を追加し、ユーザー入力を構成するチュートリアル"
+title: 'Azure Active Directory B2C: カスタム ポリシーのサインアップを変更し、セルフ アサート プロバイダーを構成する'
+description: サインアップに要求を追加し、ユーザー入力を構成するチュートリアル
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: tbd
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/29/2017
-ms.author: joroja
-ms.openlocfilehash: e9eb9fa941569c508c4dddc6b85786537a5a0fac
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: b9ea48f0700509194602dd15ff42c7c689685a53
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-modify-sign-up-to-add-new-claims-and-configure-user-input"></a>Azure Active Directory B2C: 新しい要求を追加するようにサインアップを変更し、ユーザー入力を構成する
 
@@ -278,7 +275,7 @@ ms.lasthandoff: 12/11/2017
 <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="Verified.Email" Required="true" />
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 以下に示す TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 これらは、ロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
 ```xml

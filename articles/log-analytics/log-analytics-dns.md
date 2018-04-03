@@ -1,24 +1,24 @@
 ---
-title: "Azure Log Analytics の DNS 分析ソリューション | Microsoft Docs"
-description: "Log Analytics の DNS 分析ソリューションをセットアップおよび使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する洞察を収集します。"
+title: Azure Log Analytics の DNS 分析ソリューション | Microsoft Docs
+description: Log Analytics の DNS 分析ソリューションをセットアップおよび使用して、DNS インフラストラクチャのセキュリティ、パフォーマンス、操作に関する洞察を収集します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: MGoedtel
 manager: carmonm
-editor: 
+editor: ''
 ms.assetid: f44a40c4-820a-406e-8c40-70bd8dc67ae7
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 03/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 8ead058108f39eca8682eccc296760d4b756d336
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 6a59cf8b9444fe7cb197501c51d10dae81acb027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
@@ -145,7 +145,6 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
 **[DDI 分析のサンプル クエリ]**。 生の分析データを直接取得する最も一般的な検索クエリの一覧が含まれています。
 
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![サンプル クエリ](./media/log-analytics-dns/queries.png)
 
@@ -166,7 +165,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
 [ログ検索] ページで、クエリを作成できます。 ファセット コントロールを使用して検索結果をフィルター処理できます。 検索結果に対して変換やフィルター処理、レポート作成などを実行する高度なクエリを作成することもできます。 まず、以下のクエリを使用します。
 
-1. **検索クエリ ボックス**に「`Type=DnsEvents`」と入力して、ソリューションによって管理されている DNS サーバーで生成されたすべての DNS イベントを表示します。 結果には、ルックアップ クエリ、動的登録、構成変更に関連するすべてのイベントのログ データが表示されます。
+1. **検索クエリ ボックス**に「`DnsEvents`」と入力して、ソリューションによって管理されている DNS サーバーで生成されたすべての DNS イベントを表示します。 結果には、ルックアップ クエリ、動的登録、構成変更に関連するすべてのイベントのログ データが表示されます。
 
     ![DnsEvents ログ検索](./media/log-analytics-dns/log-search-dnsevents.png)  
 
@@ -176,7 +175,7 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 
     c. 構成変更のログ データを表示するには、左側のファセット コントロールから **[ConfigurationChange]** を選択して **[サブタイプ]** をフィルター処理します。 選択した期間の構成変更イベントが一覧になったテーブルが表示されます。
 
-2. **検索クエリ ボックス**に「`Type=DnsInventory`」と入力して、ソリューションによって管理されている DNS サーバーのすべての DNS インベントリ関連データを表示します。 結果には、DNS サーバー、DNS ゾーン、リソース レコードのログ データが表示されます。
+2. **検索クエリ ボックス**に「`DnsInventory`」と入力して、ソリューションによって管理されている DNS サーバーのすべての DNS インベントリ関連データを表示します。 結果には、DNS サーバー、DNS ゾーン、リソース レコードのログ データが表示されます。
 
     ![DnsInventory ログ検索](./media/log-analytics-dns/log-search-dnsinventory.png)
 

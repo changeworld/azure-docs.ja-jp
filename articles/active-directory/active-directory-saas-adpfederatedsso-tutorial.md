@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と ADP の統合 | Microsoft Docs"
-description: "Azure Active Directory と ADP の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と ADP の統合 | Microsoft Docs'
+description: Azure Active Directory と ADP の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2018
+ms.date: 03/22/2018
 ms.author: jeedes
-ms.openlocfilehash: 1e0a35fd76f9eb6335685f05b8936b0b5105f6b2
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 038b2337ea49b769c6b19e9d50a5f0f2edd13d56
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adp"></a>チュートリアル: Azure Active Directory と ADP の統合
 
@@ -122,7 +122,7 @@ ADP で Azure AD のシングル サインオンを構成してテストする�
 
     ![[ADP Domain and URLs]\(ADP のドメインと URL\) のシングル サインオン情報](./media/active-directory-saas-adpfederatedsso-tutorial/tutorial_adp_url.png)
 
-    **[識別子]** ボックスに次の URL を入力します。`https://fed.adp.com/` 
+    **[識別子]** ボックスに次の URL を入力します。`https://fed.adp.com` 
     
 5. ADP アプリケーションは、特定の形式の SAML アサーションを使用するため、カスタム属性のマッピングを SAML トークンの属性の構成に追加する必要があります。 次のスクリーンショットはその例です。 クレームの名前は常に **"PersonImmutableID"** であり、その値は **employeeid** にマップされています。 
 
@@ -238,10 +238,6 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
  
 11. テストの性行を確認したら、個々のユーザーまたはユーザー グループにフェデレーション ADP サービスを割り当てます。これについてはこのチュートリアルで後ほど説明しますので、従業員にロールアウトしてください。 
 
-> [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
-> 
-
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
 このセクションの目的は、Azure Portal で Britta Simon というテスト ユーザーを作成することです。
@@ -319,6 +315,8 @@ ADP 担当者から送信される確認の電子メールを受信したら、A
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
+
 
 <!--Image references-->
 

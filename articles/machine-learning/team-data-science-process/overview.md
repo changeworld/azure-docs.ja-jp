@@ -1,8 +1,8 @@
 ---
-title: "Team Data Science Process とは | Microsoft Docs"
-description: "予測分析ソリューションとインテリジェント アプリケーションを実現するデータ サイエンス手法について説明します。"
+title: Team Data Science Process とは | Microsoft Docs
+description: 予測分析ソリューションとインテリジェント アプリケーションを実現するデータ サイエンス手法について説明します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
-ms.author: bradsev;
-ms.openlocfilehash: 75e170f29f9a6abeeb3393e43e6a4c355749044d
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.author: bradsev
+ms.openlocfilehash: f7c081dcd74164f4b1f054f5a65f2ff6aaabebd7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
@@ -104,6 +104,6 @@ TDSP には、共有の分析およびストレージ インフラストラク�
 プロセスの導入は、ほとんどの組織にとって困難を伴う作業です。 データ サイエンスのプロセスとライフサイクルを導入することを目的としたツールによって、受け入れの障壁を下げると共に、その一貫性を高めることができます。 TDSP には、チーム内に TDSP を速やかに導入するうえでまず必要となる一連のツールとスクリプトが用意されています。 また、データ探索やベースライン モデリングなど、データ サイエンス ライフサイクルにおいて一般的ないくつかのタスクも自動化することができます。 そこに用意されている明確に定義された構造を利用して、それぞれの人員が、そのチームの共有コード リポジトリに対し、共有のツールやユーティリティを寄与することができます。 それらのリソースはさらに、チーム内または組織内の他のプロジェクトで活用することができます。 TDSP は、ツールやユーティリティをコミュニティ全体に寄与することも視野に入れています。 TDSP のユーティリティは [GitHub](https://github.com/Azure/Azure-TDSP-Utilities) から複製することができます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 「[Team Data Science Process: Roles and tasks (Team Data Science Process: 役割とタスク)](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md)」に、このプロセスを標準化するデータ サイエンス チームの主な人員の役割とそれに関連したタスクが概説されています。 

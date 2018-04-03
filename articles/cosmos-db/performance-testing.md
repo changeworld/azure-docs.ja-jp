@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB のスケールとパフォーマンスのテスト | Microsoft Docs"
-description: "Azure Cosmos DB のスケールとパフォーマンスをテストする方法について説明します"
-keywords: "パフォーマンス テスト"
+title: Azure Cosmos DB のスケールとパフォーマンスのテスト | Microsoft Docs
+description: Azure Cosmos DB のスケールとパフォーマンスをテストする方法について説明します
+keywords: パフォーマンス テスト
 services: cosmos-db
 author: arramac
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: f4c96ebd-f53c-427d-a500-3f28fe7b11d0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/29/2017
 ms.author: arramac
-ms.openlocfilehash: f72a75f2750d4838566815bece5c2221359ece29
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 36665c0c26dad4e3b667b341b63c5859ece7605b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 パフォーマンスとスケールのテストは、アプリケーション開発における重要なステップです。 データベース層は、多くのアプリケーションの全体的なパフォーマンスとスケーラビリティに大きく影響します。 そのため、パフォーマンス テストの重要な構成要素となっています。 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、スケーリングの柔軟性とパフォーマンスの確実性を目指した専用設計になっています。 その機能は、ハイパフォーマンスのデータベース層が求められるアプリケーションにとてもよく合います。 
 
@@ -102,7 +100,7 @@ Azure Cosmos DB のパフォーマンスを向上させるためのクライア�
 
 アプリの稼働後は、さまざまな[インデックス作成ポリシー](indexing-policies.md)と[整合性レベル](consistency-levels.md)を試しながら、スループットと待ち時間への影響を把握することができます。 ソース コードに目を通して、同様の構成を独自のテスト スイートや実稼働アプリケーションに実装することもできます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 この記事では、.NET コンソール アプリを使用して Azure Cosmos DB でパフォーマンスとスケーリングのテストを実行する方法を説明しました。 詳細については、次の記事を参照してください。
 
 * [Azure Cosmos DB パフォーマンス テスト サンプル](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/documentdb-benchmark)

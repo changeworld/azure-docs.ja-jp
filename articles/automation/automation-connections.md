@@ -8,13 +8,11 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: article
 manager: carmonm
-ms.devlang: na
-ms.tgt_pltfrm: na
-ms.openlocfilehash: 547ec5a7de7a58e591a2ea44b8e54804ca41974c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d319768f88a03f4736c3b69276cfb4bf82fd9100
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connection-assets-in-azure-automation"></a>Azure Automation での接続資産
 
@@ -29,7 +27,7 @@ Automation の接続資産には、Runbook または DSC 構成から外部サ�
 
 Windows PowerShell で Automation 接続を作成および管理するには、次の表のコマンドレットを使用します。 これらのコマンドレットは、Automation Runbook と DSC 構成に使用できる [Azure PowerShell モジュール](/powershell/azure/overview) に付属しています。
 
-|コマンドレット|説明|
+|コマンドレット|[説明]|
 |:---|:---|
 |[Get-AzureRmAutomationConnection](/powershell/module/azurerm.automation/get-azurermautomationconnection)|接続を取得します。 接続のフィールドの値のハッシュ テーブルが含まれます。|
 |[New-AzureRmAutomationConnection](/powershell/module/azurerm.automation/new-azurermautomationconnection)|新しい接続を作成します。|
@@ -40,7 +38,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 
 次の表のアクティビティは、Runbook または DSC 構成で接続にアクセスするために使用されます。
 
-|アクティビティ|説明|
+|アクティビティ|[説明]|
 |---|---|
 |[Get-AutomationConnection](/powershell/module/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|使用する接続を取得します。 接続のプロパティのハッシュ テーブルを返します。|
 
@@ -51,7 +49,7 @@ Windows PowerShell で Automation 接続を作成および管理するには、�
 ## <a name="python2-functions"></a>Python2 関数 
 次の表の関数を使用して、Python2 Runbook の接続にアクセスします。 
 
-| 関数 | 説明 | 
+| 関数 | [説明] | 
 |:---|:---| 
 | automationassets.get_automation_connection | 接続を取得します。 接続のプロパティでディクショナリを返します。 | 
 

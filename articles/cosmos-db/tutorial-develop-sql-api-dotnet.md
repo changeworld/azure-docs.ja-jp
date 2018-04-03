@@ -1,30 +1,28 @@
 ---
-title: "Azure Cosmos DB: .NET での SQL API を使用した開発 | Microsoft Docs"
-description: ".NET を使用した Azure Cosmos DB の SQL API による開発方法について"
+title: 'Azure Cosmos DB: .NET での SQL API を使用した開発 | Microsoft Docs'
+description: .NET を使用した Azure Cosmos DB の SQL API による開発方法について
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: ''
 ms.date: 05/10/2017
 ms.author: rafats
 ms.custom: mvc
-ms.openlocfilehash: e37a0993567b6cec7ed6a91e6dad1f2e2c097198
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 7fca9f184097ed50ace665cde0c5ef8fb180feda
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmosdb-develop-with-the-sql-api-in-net"></a>Azure Cosmos DB: .NET での SQL API を使用した開発
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 

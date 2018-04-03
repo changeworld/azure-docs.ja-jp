@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: tutorial, mvc
 ms.topic: tutorial
-ms.date: 02/28/2018
-ms.openlocfilehash: 9f4d886bbbf2b9111d736e291e420b822de9766a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 03/20/2018
+ms.openlocfilehash: 181e31530960f031dd2785b852c0ae15c21af782
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-design-an-azure-database-for-postgresql-using-the-azure-portal"></a>チュートリアル: Azure Portal を使用して Azure Database for PostgreSQL を設計する
 

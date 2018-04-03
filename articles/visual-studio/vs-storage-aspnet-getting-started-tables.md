@@ -1,11 +1,11 @@
 ---
-title: "Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Docs"
-description: "Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Table Storage の使用を開始する方法について説明します。"
+title: Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET) | Microsoft Docs
+description: Visual Studio 接続済みサービスを使用してストレージ アカウントに接続した後、Visual Studio の ASP.NET プロジェクトで Azure Table Storage の使用を開始する方法について説明します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kraigb
 manager: ghogen
-editor: 
+editor: ''
 ms.assetid: af81a326-18f4-4449-bc0d-e96fba27c1f8
 ms.service: storage
 ms.workload: web
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: kraigb
-ms.openlocfilehash: 32a57e77bf6fe3cff88b9d6772ede9e6669ec75f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646ff3a12d1b28f99376ea67af25f1b6858d675a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-table-storage-and-visual-studio-connected-services-aspnet"></a>Azure Table Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -29,7 +29,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
 
 このチュートリアルでは、Azure Table Storage エンティティを使用していくつかの一般的なシナリオの ASP.NET コードを記述する方法を示します。 紹介するシナリオは、テーブルの作成、テーブル エンティティの追加、クエリの実行、削除などです。 
 
-##<a name="prerequisites"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)
@@ -708,7 +708,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
   
     ![単一エンティティの取得](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure でデータを格納するための追加のオプションについては、他の機能ガイドも参照してください。
 
   * [Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](../storage/vs-storage-aspnet-getting-started-blobs.md)

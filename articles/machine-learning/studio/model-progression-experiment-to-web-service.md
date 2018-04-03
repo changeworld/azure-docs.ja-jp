@@ -1,10 +1,11 @@
 ---
-title: "Azure Machine Learning モデルが Web サービスになるまでの過程 | Microsoft Docs"
-description: "Azure Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程の概要を説明します。"
+title: Azure Machine Learning モデルが Web サービスになるまでの過程 | Microsoft Docs
+description: Azure Machine Learning モデルが開発中の実験から運用可能な Web サービスになるまでにたどる過程の概要を説明します。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 25e0c025-f8b0-44ab-beaf-d0f2d485eb91
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: 383f0a466f92a230e49c3d1e96d306a0b7d67da2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f36c8cf68c707e4472fd1779044a64e7f9f4c004
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-a-machine-learning-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Machine Learning モデルが実験から運用可能な Web サービスになるまでの過程
 Azure Machine Learning Studio によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
@@ -107,7 +107,7 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 別の機械学習アルゴリズムを選択する、別のトレーニング方法を試行するなど、元の予測実験を変更するには、前に説明したモデルの再トレーニングの 2 つ目の手順を実行する必要があります。トレーニング実験を開き、**[名前を付けて保存]** をクリックしてコピーを作成したうえで、新たにモデルを開発し、予測実験を作成して Web サービスをデプロイします。 これにより、元の予測実験と関係のない新しい Web サービスが作成されます。どちらか一方を実行するか、両方を実行し続けるかを決定できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 開発および実験のプロセスの詳細については、次の記事をご覧ください。
 
 * 実験の変換 - [Azure Machine Learning Studio でのデプロイのためにモデルを準備する方法](convert-training-experiment-to-scoring-experiment.md)

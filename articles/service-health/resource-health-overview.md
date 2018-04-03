@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Health の概要 | Microsoft Docs"
-description: "Azure Resource Health の概要"
+title: Azure Resource Health の概要 | Microsoft Docs
+description: Azure Resource Health の概要
 services: Resource health
-documentationcenter: 
+documentationcenter: ''
 author: shawntabrizi
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 07/01/2017
+ms.date: 03/27/2018
 ms.author: shawn.tabrizi
-ms.openlocfilehash: 50a173a3d3a10ed59492b4a1d64173913f331639
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 99e996f182aac774f2e2565d87fd0debaba1b2d1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-resource-health-overview"></a>Azure Resource Health の概要
  
@@ -77,7 +77,7 @@ Resource Health は、イベントと復旧プロセスについてさらに詳�
 ![正しくない状態に関する情報を送信するためのボックス](./media/resource-health-overview/incorrect-status.png)
 
 ## <a name="historical-information"></a>履歴情報
-Resource Health の **[履歴の表示]** を選択することで、過去 14 日間の正常性履歴にアクセスできます。 
+Resource Health の **[正常性の履歴]** セクションで、過去 14 日間の正常性履歴にアクセスできます。 
 
 ![過去 2 週間の Resource Health イベントの一覧](./media/resource-health-overview/history-blade.png)
 

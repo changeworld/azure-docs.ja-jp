@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics の Azure Key Vault ソリューション | Microsoft Docs"
-description: "Log Analytics の Azure Key Vault ソリューションを使用して、Azure Key Vault のログを調査することができます。"
+title: Log Analytics の Azure Key Vault ソリューション | Microsoft Docs
+description: Log Analytics の Azure Key Vault ソリューションを使用して、Azure Key Vault のログを調査することができます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 5e25e6d6-dd20-4528-9820-6e2958a40dae
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.openlocfilehash: 651586e0846ffb22a23e64b73c2cc614980d9b92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c4b16ec11d1990de687014c5385314f0e0c602a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-key-vault-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Key Vault Analytics ソリューション
 
@@ -101,9 +101,9 @@ Azure Blob Storage にログを記述する必要はありません。データ�
 ## <a name="log-analytics-records"></a>Log Analytics のレコード
 Azure Key Vault ソリューションによって分析されるのは、Azure 診断の [AuditEvent ログ](../key-vault/key-vault-logging.md)から収集された **KeyVaults** タイプのレコードです。  これらのレコードは、次の表に示したプロパティを持ちます。  
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 型 |*AzureDiagnostics* |
+| type |*AzureDiagnostics* |
 | SourceSystem |*Azure* |
 | CallerIpAddress |要求を行ったクライアントの IP アドレス |
 | カテゴリ | *AuditEvent* |
@@ -137,7 +137,7 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 2. 「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」に説明されている手順に従って Azure Key Vault ソリューションを有効にします。
 3. 新しいデータ型を使用するように、保存されたクエリ、ダッシュボード、またはアラートを更新します。
   + KeyVaults から AzureDiagnostics に型を変更します。 ResourceType を使用して、Key Vault のログをフィルター処理できます。
-  - `Type=KeyVaults` の代わりに `Type=AzureDiagnostics ResourceType=VAULTS` を使用してください。
+  - `KeyVaults` の代わりに `AzureDiagnostics | where ResourceType'=="VAULTS"` を使用してください。
   + フィールド: (フィールド名は大文字小文字が区別されます)
   - 名前に \_s、\_d、または \_g のサフィックスがあるフィールドについては、最初の文字を小文字に変更します。
   - 名前に \_o のサフィックスがあるフィールドについては、入れ子になったフィールド名に基づき、データは個別のフィールドに分割されます。 例: 呼び出し元の UPN を `identity_claim_http_schemas_xmlsoap_org_ws_2005_05_identity_claims_upn_s` のフィールドに格納する
@@ -150,5 +150,5 @@ Azure Key Vault ソリューションによって分析されるのは、Azure �
 ## <a name="troubleshooting"></a>トラブルシューティング
 [!INCLUDE [log-analytics-troubleshoot-azure-diagnostics](../../includes/log-analytics-troubleshoot-azure-diagnostics.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、詳細な Azure Key Vault データを確認してください。

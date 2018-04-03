@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用した Sybase からのデータ コピー | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、Sybase からサポートされているシンク データ ストアへデータをコピーする方法について説明します。"
+title: Azure Data Factory を使用した Sybase からのデータ コピー | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Sybase からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: f0fe8f65ff2d6a3029e44b51c004404e336e0129
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 0267296348821ee94dfa90b0b58c517ff7d79697
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Azure Data Factory を使用して Sybase からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -62,7 +62,7 @@ Sybase のリンクされたサービスでは、次のプロパティがサポ�
 | [データベース] | Sybase データベースの名前です。 |[はい] |
 | authenticationType | Sybase データベースへの接続に使用される認証の種類です。<br/>使用できる値は **Basic** および **Windows** です。 |[はい] |
 | username | Sybase データベースに接続するユーザー名を指定します。 |[はい] |
-| password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
+| password | ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 |[はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |[はい] |
 
 **例:**

@@ -1,11 +1,12 @@
 ---
-title: "データ サイエンスの 5 つの質問 - 初心者向けデータ サイエンス - Azure Machine Learning | Microsoft Docs"
-description: "初心者向けデータ サイエンス解説では、「データ サイエンスが回答する 5 つの質問」から始まる 5 つのショート ビデオで基本的な概念を説明します。 Azure Machine Learning。"
-keywords: "データ サイエンスの実行,データ サイエンスの初心者,初心者向けデータ サイエンス,データ サイエンスの基礎,データ サイエンスの質問,データ サイエンスのビデオ,データ サイエンスの概要"
+title: データ サイエンスの 5 つの質問 - 初心者向けデータ サイエンス - Azure Machine Learning | Microsoft Docs
+description: 初心者向けデータ サイエンス解説では、「データ サイエンスが回答する 5 つの質問」から始まる 5 つのショート ビデオで基本的な概念を説明します。 Azure Machine Learning。
+keywords: データ サイエンスの実行,データ サイエンスの初心者,初心者向けデータ サイエンス,データ サイエンスの基礎,データ サイエンスの質問,データ サイエンスのビデオ,データ サイエンスの概要
 services: machine-learning
 documentationcenter: na
-author: cjgronlund
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cjgronlund
 ms.assetid: a01f93ee-01eb-4afe-abbd-cfa035c119b0
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2018
-ms.author: cgronlun
-ms.openlocfilehash: 0482a680999e58b8be45334c9ae620b6b37ac273
-ms.sourcegitcommit: 4bd369fc472dced985239aef736fece42fecfb3b
+ms.openlocfilehash: 494c8293a1dbfccbfe2df1e2f48f770edb6452dc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>初心者向けデータ サイエンス ビデオ 1: データ サイエンスが回答する 5 つの質問
 トップ データ サイエンティストによる "*初心者向けデータ サイエンス*" の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。 基本的な内容を扱っているビデオですが、データ サイエンスの実行に関心を持っている場合や、データ サイエンティストと共に作業する場合に便利です。

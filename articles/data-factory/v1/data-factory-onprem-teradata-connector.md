@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory を使用した Teradata からのデータ移動 | Microsoft Docs"
-description: "Teradata データベースからデータを移動できる Data Factory サービスの Teradata コネクタについて学習する"
+title: Azure Data Factory を使用した Teradata からのデータ移動 | Microsoft Docs
+description: Teradata データベースからデータを移動できる Data Factory サービスの Teradata コネクタについて学習する
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 98eb76d8-5f3d-4667-b76e-e59ed3eea3ae
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 2f4ae056dfa1bf6b2faabcb100ac82b38da9e361
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: a9d8d0daae3fd35cd8a2527a3a29da235424830e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Azure Data Factory を使用して Teradata からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

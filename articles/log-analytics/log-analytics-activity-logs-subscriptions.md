@@ -1,11 +1,11 @@
 ---
-title: "サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する | Microsoft Docs"
-description: "Event Hubs と Logic Apps を使用して、Azure のアクティビティ ログからデータを収集し、別のテナントにある Azure Log Analytics ワークスペースへ送信します。"
+title: サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する | Microsoft Docs
+description: Event Hubs と Logic Apps を使用して、Azure のアクティビティ ログからデータを収集し、別のテナントにある Azure Log Analytics ワークスペースへ送信します。
 services: log-analytics, logic-apps, event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: carmonm
-editor: 
+editor: ''
 ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 01/08/2018
 ms.author: richrund; bwren
-ms.openlocfilehash: 89c62563b9772fa07d63a24b4aa20857b0143f85
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 23e4b7c74e6dfb88ec6ec50d5b8ae6d8288223f3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="collect-azure-activity-logs-into-log-analytics-across-subscriptions"></a>サブスクリプションの Azure アクティビティ ログを Log Analytics に収集する
 
@@ -113,7 +113,7 @@ Log Analytics ワークスペースが同一の Azure サブスクリプショ�
 - Log Analytics ワークスペース ID
 - Log Analytics 共有キー
 
-イベント ハブ名と接続文字列を取得するには、「[Event Hubs 名前空間を確認して、接続文字列を検索する](../connectors/connectors-create-api-azure-event-hubs.md#check-event-hubs-namespace-permissions-and-find-the-connection-string)」の手順に従います。
+イベント ハブ名と接続文字列を取得するには、「[Event Hubs 名前空間を確認して、接続文字列を検索する](../connectors/connectors-create-api-azure-event-hubs.md#connect-to-azure-event-hubs)」の手順に従います。
 
 
 ### <a name="create-a-new-blank-logic-app"></a>新しい空のロジック アプリの作成

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 14018db3cbe34c9eca9048ceaf376ff3a06a4353
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 6a106ba59f09ffc20f8461c5267ae06695df4cd0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオン
 
@@ -28,7 +28,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 >[!VIDEO https://www.youtube.com/embed/PyeAC85Gm7w]
 
-シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のどちらとも組み合わせることができます。
+シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のどちらとも組み合わせることができます。
 
 ![シームレス シングル サインオン](./media/active-directory-aadconnect-sso/sso1.png)
 
@@ -42,7 +42,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
   - ユーザーはパスワードを繰り返し入力する必要はありません。
 - *デプロイと管理が容易*
   - オンプレミスでは、この機能の動作のために追加のコンポーネントは不要です。
-  - [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)の、どちらのクラウド認証方法でも機能します。
+  - [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)の、どちらのクラウド認証方法でも機能します。
   - グループ ポリシーを使用して、一部のユーザーまたはすべてのユーザーに展開できます。
   - AD FS インフラストラクチャを使用することなく、Windows 10 以外のデバイスを Azure AD に登録できます。 この機能では、バージョン 2.1 以降の [workplace-join クライアント](https://www.microsoft.com/download/details.aspx?id=53554)を使用する必要があります。
 
@@ -50,7 +50,8 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 - サインインのユーザー名には、オンプレミスの既定のユーザー名 (`userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID`) を指定できます。 シームレス SSO は Kerberos チケットの `securityIdentifier` 要求を使用して Azure AD で対応するユーザー オブジェクトを検索するので、どちらを使用しても問題ありません。
 - シームレス SSO は便宜的な機能です。 これが何らかの理由で失敗した場合、ユーザーのサインイン エクスペリエンスは通常の動作に戻ります。つまり、ユーザーはサインイン ページでパスワードを入力する必要があります。
-- アプリケーションが Azure AD サインイン要求で `domain_hint` (OpenID Connect) パラメーターや `whr` (SAML) パラメーター (テナントを識別する)、または `login_hint` パラメーター (ユーザーを識別する) を転送する場合、ユーザーはユーザー名やパスワードを入力することなく自動的にサインインします。
+- アプリケーション (たとえば、https://myapps.microsoft.com/contoso.com) が Azure AD サインイン要求で `domain_hint` (OpenID Connect) パラメーターや `whr` (SAML) パラメーター (テナントを識別する)、または `login_hint` パラメーター (ユーザーを識別する) を転送する場合、ユーザーはユーザー名やパスワードを入力することなく自動的にサインインします。
+- アプリケーション (たとえば、https://contoso.sharepoint.com) がサインイン要求を、Azure AD の共通エンドポイント (つまり、https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナント エンドポイント (つまり、https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。
 - サインアウトがサポートされています。 そのため、ユーザーは、シームレス SSO を使用して自動的にサインインするのではなく、サインインに別の Azure AD アカウントを使用することを選択できます。
 - Office 365 クライアント (16.0.8730.xxxx 以降) では、非対話型フローの使用がサポートされています。
 - この機能は、Azure AD Connect を使用して有効にできます。

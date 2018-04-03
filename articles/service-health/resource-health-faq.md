@@ -1,24 +1,24 @@
 ---
-title: "Azure Resource Health の FAQ | Microsoft Docs"
-description: "Azure Resource Health の概要"
+title: Azure Resource Health の FAQ | Microsoft Docs
+description: Azure Resource Health の概要
 services: Resource health
 documentationcenter: dev-center-name
 author: BernardoAMunoz
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 85cc88a4-80fd-4b9b-a30a-34ff3782855f
 ms.service: service-health
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 07/05/2017
+ms.date: 03/27/2018
 ms.author: BernardoAMunoz
-ms.openlocfilehash: 692d03ad80989a969a73b15bb9042a01c286d1ec
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 2a0758f5db381f721120cbc1c018a491c018aa8d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-resource-health-faq"></a>Azure Resource Health の FAQ
 Azure Resource Health についてよく寄せられる質問の回答を説明します。
@@ -81,18 +81,17 @@ Resource Health は、次のリージョンを除くすべての Azure geo で�
 - ドイツ中部
 - ドイツ北東部
 
-## <a name="how-is-resource-health-different-from-the-service-health-dashboard-or-the-azure-portal-service-notifications"></a>Resource Health とサービス正常性ダッシュボードや Azure Portal のサービスの通知の違いは何ですか。
-Resource Health の方が、Azure サービス正常性ダッシュボードと比べて具体的な細かい情報が得られます。
+## <a name="how-is-resource-health-different-from-azure-status-or-the-service-health-dashboard"></a>Resource Health は Azure の状態や Service Health ダッシュボードと何が違うのでしょうか。
+Resource Health の方が、Azure の状態や Service Health ダッシュボードと比べて具体的な細かい情報が得られます。
 
-[Azure の状態](https://status.azure.com)とポータルのサービスの通知では広範な顧客 (Azure リージョンなど) に影響するサービスの問題に関する情報を通知しますが、Resource Health では、特定のリソースのみに関連するより詳細なイベントを公開します。 たとえば、ホストが予期せず再起動するとき、Resource Health はそのホスト上で仮想マシンが実行されている顧客のみに警告します。
+[Azure の状態](https://status.azure.com)と Service Health ダッシュボードでは広範な顧客 (Azure リージョンなど) に影響するサービスの問題に関する情報を通知しますが、Resource Health では特定のリソースのみに関連するより詳細なイベントを公開します。 たとえば、ホストが予期せず再起動するとき、Resource Health はそのホスト上で仮想マシンが実行されている顧客のみに警告します。
 
-リソースに影響を与えるイベントを完全に可視化することが重要であるため、Resource Health には、サービスの通知およびサービス正常性ダッシュボードで発行されたイベントも表示されます。
+リソースに影響を与えるイベントを完全に可視化することが重要であるため、Resource Health には、Service Health ダッシュボードで発行されたイベントも表示されます。
 
 ## <a name="do-i-need-to-activate-resource-health-for-each-resource"></a>リソースごとに Resource Health をアクティブにする必要がありますか。
 いいえ。正常性情報は、Resource Health からすべてのリソースの種類に対して利用できます。 
 
 ## <a name="do-we-need-to-enable-resource-health-for-my-organization"></a>自分の組織で Resource Health を有効にする必要がありますか。
-
 いいえ。  Azure Resource Health には Azure Portal 内でアクセスできます。セットアップ要件はありません。
 
 ## <a name="is-resource-health-available-free-of-charge"></a>Resource Health は無料で使用できますか。

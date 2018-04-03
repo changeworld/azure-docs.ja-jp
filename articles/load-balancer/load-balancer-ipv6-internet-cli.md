@@ -1,12 +1,12 @@
 ---
-title: "IPv6 でのパブリック ロード バランサーの作成 - Azure CLI | Microsoft Docs"
-description: "Azure Resource Manager で Azure CLI を使用して、IPv6 でパブリック ロード バランサーを作成する方法について説明します。"
+title: IPv6 でのパブリック ロード バランサーの作成 - Azure CLI | Microsoft Docs
+description: Azure Resource Manager で Azure CLI を使用して、IPv6 でパブリック ロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
 tags: azure-resource-manager
-keywords: "ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot"
+keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.assetid: a1957c9c-9c1d-423e-9d5c-d71449bc1f37
 ms.service: load-balancer
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 3abd47460999f7b059469a58a59a3e297e88effb
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 62f22ccadfabd2f3d6906beb3c241703d4e6383f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-in-azure-resource-manager-by-using-azure-cli"></a>Azure Resource Manager で Azure CLI を使用して、IPv6 でパブリック ロード バランサーを作成する
 
@@ -28,7 +28,6 @@ ms.lasthandoff: 12/08/2017
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、ロード バランサーは、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
@@ -341,7 +340,7 @@ VM を作成するには、ストレージ アカウントが必要です。 負
     $vm2 = azure vm create --resource-group $rgname --location $location --availset-name $availabilitySetName --name $vm2Name --nic-id $nic2Id --os-disk-vhd $osDisk2Uri --os-type "Windows" --admin-username $vmUserName --admin-password $mySecurePassword --vm-size "Standard_A1" --image-urn $imageurn --storage-account-name $storageAccountName --disable-bginfo-extension
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)  
 [ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)  

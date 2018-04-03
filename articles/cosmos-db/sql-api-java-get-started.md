@@ -1,7 +1,7 @@
 ---
-title: "Node.js チュートリアル: Azure Cosmos DB Java SDK 用 SQL API | Microsoft Docs"
-description: "Azure Cosmos DB 用 SQL API を使用してオンライン データベースと Java コンソール アプリケーションを作成する NoSQL チュートリアル。 Azure SQL は、JSON 用の NoSQL データベースです。"
-keywords: "NoSQL チュートリアル, オンライン データベース, Java コンソール アプリケーション"
+title: 'Node.js チュートリアル: Azure Cosmos DB Java SDK 用 SQL API | Microsoft Docs'
+description: Azure Cosmos DB 用 SQL API を使用してオンライン データベースと Java コンソール アプリケーションを作成する NoSQL チュートリアル。 Azure SQL は、JSON 用の NoSQL データベースです。
+keywords: NoSQL チュートリアル, オンライン データベース, Java コンソール アプリケーション
 services: cosmos-db
 documentationcenter: Java
 author: arramac
@@ -15,24 +15,22 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
-ms.openlocfilehash: 9714234411e96074daae17b4711a52991768bd7b
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 5052c3cdeabd5001c6d0144dc77401a9495ba887
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>NoSQL チュートリアル: SQL API Java コンソール アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
 > * [MongoDB 用 Node.js](mongodb-samples.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.JS](sql-api-nodejs-get-started.md)
 > * [Java](sql-api-java-get-started.md)
 > * [C++](sql-api-cpp-get-started.md)
 >  
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB Java SDK 用 SQL API の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、Azure Cosmos DB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
 

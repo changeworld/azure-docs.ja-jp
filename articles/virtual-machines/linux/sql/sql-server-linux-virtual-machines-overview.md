@@ -1,8 +1,8 @@
 ---
-title: "Azure Linux 仮想マシンにおける SQL Server の概要 | Microsoft Docs"
-description: "Azure の Linux 仮想マシンで各 SQL Server エディションを実行する方法について説明します。 すべての Linux SQL Server VM イメージと関連コンテンツへのダイレクト リンクが記載されています。"
+title: Azure Linux 仮想マシンにおける SQL Server の概要 | Microsoft Docs
+description: Azure の Linux 仮想マシンで各 SQL Server エディションを実行する方法について説明します。 すべての Linux SQL Server VM イメージと関連コンテンツへのダイレクト リンクが記載されています。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: rothja
 manager: jhubbard
 tags: azure-service-management
@@ -10,13 +10,13 @@ ms.service: virtual-machines-sql
 ms.devlang: na
 ms.topic: get-started-article
 ms.workload: iaas-sql-server
-ms.date: 10/02/2017
+ms.date: 03/22/2018
 ms.author: jroth
-ms.openlocfilehash: f044fcba92eb7aa7f4ac44608571fab3db0e03f5
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: e752ad844a6efe572564e7081ebac87193e9c2a7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Azure 仮想マシン (Linux) における SQL Server の概要
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 12/18/2017
 > * [Windows](../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
 > * [Linux](sql-server-linux-virtual-machines-overview.md)
 
-このトピックでは、Azure 仮想マシン (VM) で SQL Server を実行するための選択肢を、[ポータル イメージへのリンク](#option-1-create-a-sql-vm-with-per-minute-licensing)と併せて紹介します。
+このトピックでは、Azure 仮想マシン (VM) で SQL Server を実行するための選択肢を、[ポータル イメージへのリンク](#create)と併せて紹介します。
 
 > [!NOTE]
 > 既に SQL Server を使い慣れており、SQL Server Linux VM をデプロイする方法を確認するだけの場合は、[Azure での Linux SQL Server VM のプロビジョニング](provision-sql-server-linux-virtual-machine.md)に関するページを参照してください。 SQL Server がインストールされた Windows VM を作成したい場合は、[Azure での Windows SQL Server VM のプロビジョニング](../../windows/sql/virtual-machines-windows-portal-sql-server-provision.md)に関するページを参照してください。
@@ -61,10 +61,10 @@ Linux に SQL Server を構成するときには、データベース エンジ�
 
 | ディストリビューション | [データベース エンジン](https://docs.microsoft.com/sql/linux/sql-server-linux-setup) | [ツール](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-tools) | [SQL Server エージェント](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-sql-agent) | [フルテキスト検索](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-full-text-search) | [SSIS](https://docs.microsoft.com/sql/linux/sql-server-linux-setup-ssis) | [HA アドオン](https://docs.microsoft.com/sql/linux/sql-server-linux-business-continuity-dr) |
 |---|---|---|---|---|---|---|
-| RHEL | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![×](./media/sql-server-linux-virtual-machines-overview/no.png) |
-| SLES | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![×](./media/sql-server-linux-virtual-machines-overview/no.png) | ![×](./media/sql-server-linux-virtual-machines-overview/no.png) |
-| Ubuntu | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![○](./media/sql-server-linux-virtual-machines-overview/yes.png) |
+| RHEL | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![×](./media/sql-server-linux-virtual-machines-overview/no.png) |
+| SLES | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![×](./media/sql-server-linux-virtual-machines-overview/no.png) | ![×](./media/sql-server-linux-virtual-machines-overview/no.png) |
+| Ubuntu | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) | ![はい](./media/sql-server-linux-virtual-machines-overview/yes.png) |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Linux で SQL Server を構成および使用する方法の詳細については、[Linux における SQL Server の概要](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)に関するページを参照してください。

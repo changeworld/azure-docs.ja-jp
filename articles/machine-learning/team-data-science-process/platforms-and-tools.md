@@ -1,23 +1,23 @@
 ---
-title: "データ サイエンス チーム プロジェクトのためのプラットフォームとツール - Azure | Microsoft Docs"
-description: "Team Data Science Process を標準とする企業が利用できるデータおよび分析リソースを列記し、各リソースについて説明します。"
-documentationcenter: 
+title: データ サイエンス チーム プロジェクトのためのプラットフォームとツール - Azure | Microsoft Docs
+description: Team Data Science Process を標準とする企業が利用できるデータおよび分析リソースを列記し、各リソースについて説明します。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: 3ec2eaaf4e8d54e7b1ea3d272c47eac96451f317
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 404e3dd106edf82f4f22e4c6a17987bd0bc51f65
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="platforms-and-tools-for-data-science-team-projects"></a>データ サイエンス チーム プロジェクトのためのプラットフォームとツール
 
@@ -146,7 +146,7 @@ Linux (CentOS) マシンを使用して Git コマンドを実行する場合は
 - 先ほどコピーした SSH キーをテキスト ボックスに貼り付け、保存します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 また、 **特定のシナリオ** のプロセスに伴うすべての段階をリハーサル的に最初から最後まで実証することも可能です。 これらは、[サンプル チュートリアル](walkthroughs.md)のトピックで簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 
 

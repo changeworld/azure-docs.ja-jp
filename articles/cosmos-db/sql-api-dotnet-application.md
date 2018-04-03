@@ -1,7 +1,7 @@
 ---
-title: "Azure Cosmos DB の ASP.NET MVC チュートリアル: Web アプリケーションの開発 | Microsoft Docs"
-description: "Azure Cosmos DB を使用して MVC Web アプリケーションを作成するための ASP.NET MVC チュートリアル。 JSON を格納し、Azure Websites でホストされている ToDo アプリからデータにアクセスします - ASP.NET MVC チュートリアル ステップ バイ ステップ"
-keywords: "ASP.NET MVC チュートリアル, Web アプリケーションの開発, MVC Web アプリケーション, ASP.NET MVC チュートリアル ステップ バイ ステップ"
+title: 'Azure Cosmos DB の ASP.NET MVC チュートリアル: Web アプリケーションの開発 | Microsoft Docs'
+description: Azure Cosmos DB を使用して MVC Web アプリケーションを作成するための ASP.NET MVC チュートリアル。 JSON を格納し、Azure Websites でホストされている ToDo アプリからデータにアクセスします - ASP.NET MVC チュートリアル ステップ バイ ステップ
+keywords: ASP.NET MVC チュートリアル, Web アプリケーションの開発, MVC Web アプリケーション, ASP.NET MVC チュートリアル ステップ バイ ステップ
 services: cosmos-db
 documentationcenter: .net
 author: mimig1
@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
 ms.custom: devcenter
-ms.openlocfilehash: a403af0f31823f89cdc79d6769dff61aeaefc4ad
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: e4f9360bfde5f3212f0bbf184c52f59b2dd43d0b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC チュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発
 > [!div class="op_single_selector"]
@@ -30,8 +30,6 @@ ms.lasthandoff: 12/18/2017
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 この記事では、Azure Cosmos DB を効果的に活用して、JSON ドキュメントの保存とクエリを行う方法を強調するために、ToDo アプリを Azure Cosmos DB を使って構築するエンド ツー エンドの手順を説明します。 対象となるタスクは、JSON ドキュメントとして Azure Cosmos DB に保存するものとします。
 

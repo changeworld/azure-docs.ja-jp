@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory (ベータ) を使用して Marketo からデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、Marketo のデータをサポートされているシンク データ ストアにコピーする方法について説明します。"
+title: Azure Data Factory (ベータ) を使用して Marketo からデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Marketo のデータをサポートされているシンク データ ストアにコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 58ae292514a1f5c98218d7a879beb9c15cb25f60
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 151e84ffdcdc7c528c1708322c172901aed9a44e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-beta"></a>Azure Data Factory (ベータ) を使用して Marketo からデータをコピーする
 
@@ -50,7 +50,7 @@ Marketo のリンクされたサービスでは、次のプロパティがサポ
 | 型 | type プロパティを **Marketo** に設定する必要があります | [はい] |
 | endpoint | Marketo サーバーのエンドポイント。 (つまり、123-ABC-321.mktorest.com)  | [はい] |
 | clientId | Marketo サービスのクライアント ID。  | [はい] |
-| clientSecret | Marketo サービスのクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| clientSecret | Marketo サービスのクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |
 | usePeerVerification | SSL 経由で接続するときに、サーバーの ID を検証するかどうかを指定します。 既定値は true です。  | いいえ  |

@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項 | Microsoft Docs"
-description: "Azure Data Factory におけるデータ移動の保護について説明します。"
+title: Azure Data Factory におけるデータ移動のセキュリティに関する考慮事項 | Microsoft Docs
+description: Azure Data Factory におけるデータ移動の保護について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: nabhishek
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: f483109170ed1dda7506f7ef5f02fb8b42ea331e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: c2b6c494a9c4d0dac37315520b8d7b962f3490b7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 
@@ -48,7 +47,7 @@ Azure コンプライアンスと、Azure が独自のインフラストラク�
 - **ハイブリッド シナリオ** - このシナリオでは、ソースと移動先のどちらかがファイアウォールの内側またはオンプレミスの企業ネットワーク内にあるか、データ ストアがプライベート ネットワーク/仮想ネットワーク内 (ほとんどの場合はソース) にあり、パブリックにアクセスできません。 仮想マシンでホストされているデータベース サーバーもこのシナリオに該当します。
 
 ## <a name="cloud-scenarios"></a>クラウド シナリオ
-###<a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
+### <a name="securing-data-store-credentials"></a>データ ストアの資格情報の保護
 Azure Data Factory では、データ ストアの資格情報を保護するために、**Microsoft が管理する証明書**を使用して**暗号化**します。 証明書は、**2 年**ごとに交換されます (証明書の更新と資格情報の移行が行われます)。 暗号化された資格情報は、**Azure Data Factory 管理サービスによって管理される Azure Storage** に安全に格納されます。 Azure Storage のセキュリティの詳細については、「[Azure Storage のセキュリティの概要](../../security/security-storage-overview.md)」を参照してください。
 
 ### <a name="data-encryption-in-transit"></a>転送中のデータの暗号化
@@ -63,7 +62,7 @@ Azure Data Factory では、データ ストアの資格情報を保護するた
 #### <a name="azure-sql-data-warehouse"></a>Azure SQL Data Warehouse
 Azure SQL Data Warehouse の Transparent Data Encryption (TDE) を使用すると、保存データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。 この動作はクライアントに対して透過的です。 詳細については、「[SQL Data Warehouse でのデータベース保護](../../sql-data-warehouse/sql-data-warehouse-overview-manage-security.md)」をご覧ください。
 
-#### <a name="azure-sql-database"></a>の接続文字列
+#### <a name="azure-sql-database"></a>Azure SQL Database
 Azure SQL Database では、Transparent Data Encryption (TDE) もサポートしています。TDE を使用すると、データの暗号化と暗号化解除をリアルタイムで実行することによって、悪意のあるアクティビティの脅威から保護できます。アプリケーションを変更する必要はありません。 この動作はクライアントに対して透過的です。 詳細については、「[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)」をご覧ください。 
 
 #### <a name="azure-data-lake-store"></a>Azure Data Lake Store

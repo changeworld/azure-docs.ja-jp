@@ -1,24 +1,21 @@
 ---
-title: "ユーザー インターフェイス (UI) のカスタマイズ - Azure AD B2C | Microsoft Docs"
-description: "Azure Active Directory B2C のユーザー インターフェイス (UI) カスタマイズ機能についてのトピック"
+title: ユーザー インターフェイス (UI) のカスタマイズ - Azure AD B2C | Microsoft Docs
+description: Azure Active Directory B2C のユーザー インターフェイス (UI) カスタマイズ機能についてのトピック
 services: active-directory-b2c
-documentationcenter: 
-author: saeedakhter-msft
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 99f5a391-5328-471d-a15c-a2fafafe233d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
-ms.author: saeedakhter-msft
-ms.openlocfilehash: a9136ebd15a995361a325804ca81ece0db30b3e6
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.author: davidmu
+ms.openlocfilehash: ea33fa95aa7b73668aeee313a9d71a7f78e89a77
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Azure AD B2C ユーザー インターフェイス (UI) のカスタマイズ
 

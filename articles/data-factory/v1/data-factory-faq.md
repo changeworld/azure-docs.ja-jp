@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory - よく寄せられる質問"
-description: "Azure データ ファクトリについてよく寄せられる質問です。"
+title: Azure Data Factory - よく寄せられる質問
+description: Azure データ ファクトリについてよく寄せられる質問です。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 532dec5a-7261-4770-8f54-bfe527918058
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 2806a65c55f019da5842f29c6ef99dec63ae1bd0
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 387b5e944b0fd198e37a35d7bf1c54f7795c9f21
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---frequently-asked-questions"></a>Azure Data Factory - よく寄せられる質問
 > [!NOTE]
@@ -58,7 +57,6 @@ Data Factory は、**米国西部**と**北ヨーロッパ**で使用できま�
 * **Azure Resource Manager テンプレート** : 詳細については、「 [チュートリアル: Azure Resource Manager テンプレートを使用した初めての Azure Data Factory の作成](data-factory-build-your-first-pipeline-using-arm.md) 」を参照してください。
 
 ### <a name="can-i-rename-a-data-factory"></a>Data Factory の名前を変更できますか。
-
 いいえ。 他の Azure のリソースと同様に、Azure Data Factory の名前は変更できません。
 
 ### <a name="can-i-move-a-data-factory-from-one-azure-subscription-to-another"></a>Azure サブスクリプション間でデータ ファクトリを移動できますか。

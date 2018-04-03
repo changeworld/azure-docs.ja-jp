@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal での Azure Search のサービス管理"
-description: "Azure Portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。"
+title: Azure Portal での Azure Search のサービス管理
+description: Azure Portal を使用して、Microsoft Azure のホスト型クラウド検索サービスである Azure Search を管理します。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: c87d1fdd-b3b8-4702-a753-6d7e29dbe0a2
 ms.service: search
@@ -15,11 +15,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 11/09/2017
 ms.author: heidist
-ms.openlocfilehash: 916a08aacca428530bc4f728d5de422e04bed8bc
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d19683291e001c3c3f2a7bfc5c203b5121a8a418
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
 > [!div class="op_single_selector"]
@@ -44,26 +44,12 @@ Azure Search は、高度な検索エクスペリエンスをカスタムアプ�
 ## <a name="administrator-rights"></a>管理者権限
 サービス自体のプロビジョニングまたは使用停止は、Azure サブスクリプションの管理者または共同管理者が実行できます。
 
-サービス内では、サービスの URL と管理 API キーにアクセスできるすべてのユーザーがサービスへの読み取り/書き込みアクセス権を持ちます。 読み取り/書き込みアクセス権は、[RBAC で定義されたロール](#rbac)によって実装されるサーバー オブジェクト (API キー、インデックス、インデクサー、データ ソース、スケジュール、ロール割り当てなど) の追加、削除、変更の権限を提供します。
+サービス内では、サービスの URL と管理 API キーにアクセスできるすべてのユーザーがサービスへの読み取り/書き込みアクセス権を持ちます。 読み取り/書き込みアクセス権は、[RBAC で定義されたロール](search-security-rbac.md)によって実装されるサーバー オブジェクト (API キー、インデックス、インデクサー、データ ソース、スケジュール、ロール割り当てなど) の追加、削除、変更の権限を提供します。
 
-Azure Search に対するすべてのユーザー操作は、サービスへの読み取り/書き込みアクセス (管理者権限) か、またはサービスへの読み取り専用アクセス (クエリ権限) のいずれかのモードに分類されます。 詳細については、「 [API キーを管理する](#manage-keys)」をご覧ください。
+Azure Search に対するすべてのユーザー操作は、サービスへの読み取り/書き込みアクセス (管理者権限) か、またはサービスへの読み取り専用アクセス (クエリ権限) のいずれかのモードに分類されます。 詳細については、「 [API キーを管理する](search-security-api-keys.md)」をご覧ください。
 
 <a id="sys-info"></a>
 
-## <a name="set-rbac-roles-for-administrative-access"></a>管理アクセス用の RBAC ロールを設定する
-Azure では、ポータルまたはリソース マネージャー API で管理するすべてのサービスに対して、 [グローバルなロールベースの承認モデル](../active-directory/role-based-access-control-configure.md) を用意しています。 所有者、共同作成者、および閲覧者のロールによって、各ロールに割り当てられる Active Directory のユーザー、グループ、およびセキュリティ プリンシパルに対するサービス管理レベルが決まります。 
-
-Azure Search の場合、RBAC のアクセス許可によって次の管理タスクが決まります。
-
-| 役割 | タスク |
-| --- | --- |
-| 所有者 |API キー、インデックス、インデクサー、インデクサー データ ソース、インデクサー スケジュールなど、サービス上のサービスやオブジェクトを作成または削除します。<p>カウントとストレージ サイズなど、サービスの状態を表示します。<p>ロール メンバーシップを追加または削除します (所有者のみがロール メンバーシップを管理できます)。<p>サブスクリプション管理者とサービス所有者には、所有者ロールに自動メンバーシップがあります。 |
-| 共同作成者 |RBAC ロール管理を除き、アクセス レベルは所有者と同じです。 たとえば、共同作成者は `api-key`を再生成できますが、ロール メンバーシップは変更できません。 |
-| 閲覧者 |サービスの状態とクエリのキーを表示します。 このロールのメンバーは、サービス構成の変更ができず、管理キーの表示もできません。 |
-
-ロールは、サービス エンドポイントへのアクセス権を付与しません。 インデックスの管理、インデックスの作成、検索データのクエリなど、検索サービスの操作は、ロールではなく API キーによって制御されます。 詳細については、「 [What is Role-based access control](../active-directory/role-based-access-control-what-is.md)」(ロールベースのアクセス制御とは) の「Authorization for management versus data operations」(管理用の承認とデータ操作) をご覧ください。
-
-<a id="secure-keys"></a>
 ## <a name="logging-and-system-information"></a>ログとシステム情報
 Azure Search は、ポータルまたはプログラム インターフェイスを通じて個々のサービスのログ ファイルを公開しません。 Basic レベル以上では、サービス レベル アグリーメント (SLA) に従って、すべての Azure Search サービスが 99.9% の可用性を実現するようにマイクロソフトによって監視されます。 サービスの速度が低下した場合や、要求のスループットが SLA のしきい値を下回った場合は、サポート チームが利用可能なログ ファイルを確認して問題に対処します。
 
@@ -72,38 +58,6 @@ Azure Search は、ポータルまたはプログラム インターフェイス
 * ポータルのサービス ダッシュボードで、プロパティ、およびステータス メッセージを確認する。
 * [PowerShell](search-manage-powershell.md) または[管理 REST API](https://docs.microsoft.com/rest/api/searchmanagement/) を使用して[サービスのプロパティを取得](https://docs.microsoft.com/rest/api/searchmanagement/services)するか、インデックス リソース使用率のステータスを確認する。
 * 既に説明したように、 [検索トラフィックの分析](search-traffic-analytics.md)を使用する。
-
-<a id="manage-keys"></a>
-
-## <a name="manage-api-keys"></a>API キーを管理する
-Search サービスへのすべての HTTP 要求には、対象のサービス用に生成された API キーが必要です。 この API キーは、その Search サービス エンドポイントへのアクセスを認証するための唯一のメカニズムです。 
-
-API キーは、ランダムに生成された数字と文字から成る文字列です。 [RBAC アクセス許可](#rbac)を通じてこのキーを削除したり、読み取ったりすることはできますが、キーをユーザー定義のパスワードに置き換えることはできません。 
-
-検索サービスへのアクセスには 2 種類のキーが使用されます。
-
-* 管理 (サービスに対するすべての読み取り/書き込み操作に有効)
-* クエリ (インデックスに対するクエリなどの読み取り専用操作に有効)
-
-管理 API キーは、サービスのプロビジョニング時に作成されます。 2 つの管理キーがあり、区別するために "*プライマリ*" と "*セカンダリ*" と呼ばれますが、これらは実際には交換可能です。 各サービスが 2 つの管理キーを持つため、サービスにアクセスしたままで一方のキーをロールオーバーできます。 どちらの管理キーも再生成できますが、管理キーの合計数は追加できません。 Search サービスごとに最大 2 個の管理キーがあります。
-
-クエリ キーは、Search を直接呼び出すクライアント アプリケーション向けに設計されています。 クエリ キーは最大 50 個まで作成できます。 アプリケーション コードでは、サービスへの読み取り専用アクセスを許可するために検索の URL とクエリ API キーを指定します。 また、アプリケーション コードでは、アプリケーションで使用されるインデックスも指定します。 エンドポイント、読み取り専用アクセスのための API キー、およびターゲット インデックスの組み合わせにより、クライアント アプリケーションからの接続のスコープとアクセス レベルが定義されます。
-
-API キーを取得または再生成するには、サービス ダッシュボードを開きます。 **[キー]** をクリックし、キー管理ページを開きます。 キーの再生成または作成のコマンドがページ上部にあります。 既定では、管理キーのみが作成されます。 クエリ API キーは手動で作成する必要があります。
-
- ![][9]
-
-<a id="rbac"></a>
-
-## <a name="secure-api-keys"></a>API キーをセキュリティ保護する
-キーのセキュリティは、ポータルまたはリソース マネージャーのインターフェイス (PowerShell またはコマンドライン インターフェイス) でアクセスを制限することによって確保されます。 前述のように、サブスクリプションの管理者はすべての API キーを表示および再生成できます。 用心のために、ロールの割り当てを調べて、管理キーへのアクセス権を持つユーザーを確認してください。
-
-1. サービスのダッシュボードで、[アクセス] アイコンをクリックして [ユーザー] ブレードを開きます。
-   ![][7]
-2. [ユーザー] で、既存のロールの割り当てを確認します。 想定したとおりに、サブスクリプション管理者が所有者ロールによってサービスへのフル アクセス許可を付与されています。
-3. さらにドリルダウンするには、 **サブスクリプション管理者** をクリックしてロールの割り当てリストを展開し、Search サービスの共同管理者権限を持つユーザーを確認します。
-
-アクセス許可を表示するもう 1 つの方法は、[ユーザー] ブレードで **[ロール]** をクリックすることです。 これにより、使用可能なロールと、各ロールに割り当てられているユーザーまたはグループの数が表示されます。
 
 <a id="sub-5"></a>
 
@@ -176,7 +130,7 @@ Standard レベルでは、パーティションが 12 の倍数単位 (具体�
 
 <a id="next-steps"></a>
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 サービス管理の背後にある概念を把握できたら、[PowerShell](search-manage-powershell.md) を使ってタスクを自動化することを検討してください。
 
 また、[パフォーマンスと最適化の記事](search-performance-optimization.md)を確認することをお勧めします。
@@ -184,9 +138,6 @@ Standard レベルでは、パーティションが 12 の倍数単位 (具体�
 さらに、前のセクションで紹介したビデオを見ることもお勧めします。 ビデオでは、このセクションで触れたテクニックが詳しく説明されています。
 
 <!--Image references-->
-[7]: ./media/search-manage/rbac-icon.png
-[8]: ./media/search-manage/Azure-Search-Manage-1-URL.png
-[9]: ./media/search-manage/Azure-Search-Manage-2-Keys.png
 [10]: ./media/search-manage/Azure-Search-Manage-3-ScaleUp.png
 
 

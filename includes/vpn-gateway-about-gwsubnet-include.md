@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 3d76f955f8d8d3d2b269c09387717a6571adf8c3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 仮想ネットワーク ゲートウェイは、"ゲートウェイ サブネット" と呼ばれる特定のサブネットを使用します。 ゲートウェイ サブネットは、仮想ネットワークの構成時に指定した仮想ネットワーク IP アドレス範囲に含まれます。 そこには、仮想ネットワーク ゲートウェイのリソースやサービスによって使用される IP アドレスが含まれます。 ゲートウェイのリソースを Azure でデプロイするためには、サブネットに "GatewaySubnet" という名前を付ける必要があります。 異なるサブネットを指定してゲートウェイのリソースをデプロイすることはできません。 "GatewaySubnet" という名前のサブネットが存在しない場合、VPN ゲートウェイを作成するときにエラーが発生します。
 
 ゲートウェイ サブネットを作成するときに、サブネットに含まれる IP アドレスの数を指定します。 必要な IP アドレスの数は、作成する VPN ゲートウェイの構成によって異なります。 一部の構成では、他の構成よりも多くの IP アドレスを割り当てる必要があります。 作成するゲートウェイ サブネットには /27 または /28 を使用することをお勧めします。

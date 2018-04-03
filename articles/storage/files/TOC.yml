@@ -18,38 +18,56 @@
       href: storage-how-to-use-files-linux.md
     - name: Mac でのマウント
       href: storage-how-to-use-files-mac.md
-    - name: ポータルを使用した管理
+    - name: Azure Portal で管理する
       href: storage-how-to-use-files-portal.md
+    - name: PowerShell で管理する
+      href: storage-how-to-use-files-powershell.md
+    - name: Azure CLI で管理する
+      href: storage-how-to-use-files-cli.md
+    - name: ストレージ エクスプローラーで管理する
+      href: storage-how-to-use-files-storage-explorer.md
 - name: 方法
   items:
-    - name: 計画と設計
+    - name: プラン
       items:
-        - name: ストレージ アカウントのオプション
-          href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: Azure Files のデプロイの計画
           href: storage-files-planning.md
-        - name: Azure Files のデプロイ方法
-          href: storage-files-deployment-guide.md
         - name: Azure File Sync のデプロイの計画
           href: storage-sync-files-planning.md
-        - name: Azure File Sync のデプロイ方法
-          href: storage-sync-files-deployment-guide.md
+        - name: ストレージ アカウントについて
+          href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: ファイル共有スナップショットについて
           href: storage-snapshots-files.md
-        - name: ファイル共有スナップショットを使用する方法
-          href: storage-how-to-use-files-snapshots.md
-        - name: レプリケーション
+        - name: ストレージ冗長オプション
           href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: スケーラビリティとパフォーマンスのターゲット
           href: storage-files-scale-targets.md
-        - name: パフォーマンスとスケーラビリティのチェックリスト
-          href: ../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 同時実行
-          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: ディザスター リカバリーの ガイダンス
           href: ../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Azure File Sync のリリース ノート
+          href: storage-files-release-notes.md
+    - name: デプロイ
+      items:
+        - name: Azure Files のデプロイ方法
+          href: storage-files-deployment-guide.md
+        - name: Azure File Sync のデプロイ方法
+          href: storage-sync-files-deployment-guide.md
+        - name: Azure File Sync のプロキシとファイアウォールの設定
+          href: storage-sync-files-firewall-and-proxy.md
+    - name: '[管理]'
+      items:
+        - name: Azure File Sync でのサーバーの登録
+          href: storage-sync-files-server-registration.md
+        - name: Azure File Sync の Server エンドポイントの追加
+          href: storage-sync-files-server-endpoint.md
+        - name: 中国、政府機関、ドイツのクラウド用の PowerShell
+          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: Azure Automation
+          href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: 開発
       items:
+        - name: 同時実行を管理する
+          href: ../common/storage-concurrency.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: .NET
           href: storage-dotnet-how-to-use-files.md
         - name: Java
@@ -66,26 +84,6 @@
               href: ../common/storage-samples-java.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: 接続文字列の構成
           href: ../common/storage-configure-connection-string.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-    - name: '[管理]'
-      items:
-        - name: Azure Files の PowerShell
-          href: storage-how-to-use-files-powershell.md
-        - name: Azure Storage 用の PowerShell
-          href: ../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: 中国、政府機関、ドイツのクラウド用の PowerShell
-          href: ../common/storage-powershell-independent-clouds.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure CLI 2.0
-          href: ../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure CLI 1.0
-          href: ../common/storage-azure-cli-nodejs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure File Sync でのサーバーの登録
-          href: storage-sync-files-server-registration.md
-        - name: Azure File Sync の Server エンドポイントの追加
-          href: storage-sync-files-server-endpoint.md
-        - name: Azure File Storage でのストレージ エクスプローラーの使用
-          href: ../../vs-azure-tools-storage-explorer-files.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
-        - name: Azure Automation
-          href: ../common/storage-manage-with-automation.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
     - name: セキュリティ保護
       items:
         - name: セキュリティ ガイド
@@ -232,5 +230,3 @@
           href: 'https://github.com/Azure/azure-storage-ruby'
         - name: iOS
           href: 'https://github.com/Azure/azure-storage-ios'
-    - name: Azure File Sync のリリース ノート
-      href: storage-files-release-notes.md

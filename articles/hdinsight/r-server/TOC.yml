@@ -21,6 +21,10 @@
   items:
     - name: R Server の使用
       items:
+        - name: R Server クラスターの管理
+          href: r-server-hdinsight-manage.md
+        - name: R Server クラスターの運用化
+          href: r-server-operationalize.md
         - name: ストレージ オプション
           href: r-server-storage.md
         - name: 計算コンテキスト

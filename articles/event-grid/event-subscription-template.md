@@ -1,6 +1,6 @@
 ---
-title: "テンプレートを使用した Azure Event Grid サブスクリプション"
-description: "Resource Manager テンプレートを使用して Event Grid サブスクリプションを作成します。"
+title: テンプレートを使用した Azure Event Grid サブスクリプション
+description: Resource Manager テンプレートを使用して Event Grid サブスクリプションを作成します。
 services: event-grid
 author: tfitzmac
 manager: timlt
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 01/30/2018
 ms.author: tomfitz
 ms.openlocfilehash: ee0b2c228ae4ea53c0ee9794529aa190334ceed9
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-resource-manager-template-for-event-grid-subscription"></a>Event Grid サブスクリプションに Resource Manager テンプレートを使用する
 

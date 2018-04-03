@@ -1,6 +1,6 @@
 ---
 layout: HubPage
-hide_bc: ''
+hide_bc: true
 title: Microsoft Azure のドキュメント
 description: Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。
 ms.topic: hub-page

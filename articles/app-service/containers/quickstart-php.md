@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: a39e4ec68af70b7d189ac450f880a12b5397e4c4
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1cbd29b480c80c93f750b97d47ccb3c09c984942
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-php-web-app-in-app-service-on-linux"></a>App Service on Linux での PHP Web アプリの作成
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/16/2018
 
 [App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタート チュートリアルでは、Azure App Service on Linux に PHP アプリをデプロイする方法を説明します。 Cloud Shell で [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して、組み込みイメージを使用する Web アプリを作成し、Git を使用してその Web アプリに PHP のコードをデプロイします。
 
-![Azure で実行中のサンプル アプリ]](media/quickstart-php/hello-world-in-browser.png)
+![Azure で実行されるサンプル アプリ](media/quickstart-php/hello-world-in-browser.png)
 
 この記事の手順は、Mac、Windows、または Linux コンピューターを使って実行できます。
 

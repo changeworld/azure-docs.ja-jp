@@ -1,10 +1,10 @@
 ---
-title: "Linux および Windows 用の Azure データ サイエンス仮想マシンの概要 | Microsoft Docs"
-description: "Windows および Linux 用のデータ サイエンス仮想マシンの主要な分析シナリオとコンポーネント。"
-keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
+title: Linux および Windows 用の Azure データ サイエンス仮想マシンの概要 | Microsoft Docs
+description: Windows および Linux 用のデータ サイエンス仮想マシンの主要な分析シナリオとコンポーネント。
+keywords: データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス
 services: machine-learning
-documentationcenter: 
-author: bradsev
+documentationcenter: ''
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: d4f91270-dbd2-4290-ab2b-b7bfad0b2703
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
-ms.author: gokuma;bradsev
-ms.openlocfilehash: b50e98fa7bfff75efe8c9b926838ea847f640651
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.author: gokuma
+ms.openlocfilehash: f62f6c4b2679457e8aaddb81e8a37622ca878ffc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 

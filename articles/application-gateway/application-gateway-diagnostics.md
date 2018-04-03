@@ -1,6 +1,6 @@
 ---
-title: "Application Gateway のアクセス ログ、パフォーマンス ログ、バックエンドの正常性、およびメトリックの監視 | Microsoft Docs"
-description: "Application Gateway のアクセス ログとパフォーマンス ログを有効にし、管理する方法について説明します。"
+title: Application Gateway のアクセス ログ、パフォーマンス ログ、バックエンドの正常性、およびメトリックの監視 | Microsoft Docs
+description: Application Gateway のアクセス ログとパフォーマンス ログを有効にし、管理する方法について説明します。
 services: application-gateway
 documentationcenter: na
 author: amitsriva
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2017
+ms.date: 3/23/2018
 ms.author: amitsriva
-ms.openlocfilehash: 12c252340b82aba5ee69b12db83353750782e7c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
 
@@ -27,7 +27,7 @@ Azure Application Gateway を使用すると、次の方法でリソースを監
 
 * [バックエンドの正常性](#back-end-health): Application Gateway は、Azure Portal と PowerShell を介して、バックエンド プール内のサーバーの正常性を監視する機能を提供します。 バックエンド プールの正常性は、パフォーマンスの診断ログでも確認できます。
 
-* [ログ](#diagnostic-logs): リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
+* [ログ](#diagnostic-logging): リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
 
 * [メトリック](#metrics): Application Gateway が持つメトリックは現在 1 つです。 このメトリックは、Application Gateway の 1 秒あたりのスループットをバイト単位で測定したものです。
 
@@ -152,9 +152,9 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 
    ![構成プロセスの開始][2]
 
-4. 既存の Operations Management Suite (OMS) ワークスペースを選択するか、新しい OMS ワークスペースを作成します。 この例では、既存のものを使用します。
+4. 既存の Log Analytics ワークスペースを選択するか、新規作成します。 この例では、既存のものを使用します。
 
-   ![OMS ワークスペースのオプション][3]
+   ![Log Analytics ワークスペースのオプション][3]
 
 5. 設定を確認し、**[保存]** をクリックします。
 
@@ -169,14 +169,14 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 アクセス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次の例に示すように、Application Gateway の各アクセスは JSON 形式でログに記録されます。
 
 
-|値  |Description  |
+|値  |[説明]  |
 |---------|---------|
 |instanceId     | 要求を処理した Application Gateway のインスタンス。        |
 |clientIP     | 要求の送信元 IP。        |
 |clientPort     | 要求の送信元ポート。       |
 |httpMethod     | 要求で使用される HTTP メソッド。       |
 |requestUri     | 受信した要求の URI。        |
-|RequestQuery     | **Server-Routed**: 要求が送信されたバックエンド プールのインスタンス。 </br> **X-AzureApplicationGateway-LOG-ID**: 要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 </br>**SERVER-STATUS**: Application Gateway がバックエンドから受信した HTTP 応答コード。       |
+|RequestQuery     | **Server-Routed**: 要求が送信されたバックエンド プールのインスタンス。</br>**X-AzureApplicationGateway-LOG-ID**: 要求に使用する関連付け ID。 この ID を使用すると、バックエンド サーバー上のトラフィックの問題をトラブルシューティングできます。 </br>**SERVER-STATUS**: Application Gateway がバックエンドから受信した HTTP 応答コード。       |
 |UserAgent     | HTTP 要求ヘッダーからのユーザー エージェント。        |
 |httpStatus     | Application Gateway からクライアントに返される HTTP 状態コード。       |
 |httpVersion     | 要求の HTTP バージョン。        |
@@ -213,7 +213,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 パフォーマンス ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 パフォーマンス ログ データは、1 分間隔で生成されます。 次のデータがログに記録されます。
 
 
-|値  |Description  |
+|値  |[説明]  |
 |---------|---------|
 |instanceId     |  パフォーマンス データを生成中の Application Gateway のインスタンス。 複数インスタンスの Application Gateway の場合、インスタンスごとに 1 行が使用されます。        |
 |healthyHostCount     | バックエンド プール内の正常なホストの数。        |
@@ -250,7 +250,7 @@ Azure の各種ログを使用して、アプリケーション ゲートウェ�
 ファイアウォール ログは、前の手順で示したように、Application Gateway のインスタンスごとにログを有効にした場合にのみ生成されます。 このログを使用するには、Application Gateway で Web アプリケーション ファイアウォールを構成する必要もあります。 データは、ログ記録を有効にしたときに指定したストレージ アカウントに格納されます。 次のデータがログに記録されます。
 
 
-|値  |Description  |
+|値  |[説明]  |
 |---------|---------|
 |instanceId     | ファイアウォール データを生成中の Application Gateway のインスタンス。 複数インスタンスの Application Gateway の場合、インスタンスごとに 1 行が使用されます。         |
 |clientIp     |   要求の送信元 IP。      |
@@ -316,9 +316,21 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 
 ## <a name="metrics"></a>メトリック
 
-メトリックは特定の Azure リソース用の機能で、ポータルでパフォーマンス カウンターを表示できます。 現時点では、Application Gateway で使用できるメトリックは 1 つです。 そのメトリックとはスループットのことで、ポータルで確認することができます。 Application Gateway に移動して **[メトリック]**をクリックします。 値を表示するには、**[Available metrics (使用可能なメトリック)]** セクションでスループットを選択します。 次の図は、さまざまな時間範囲のデータの表示に使用できるフィルターの例を示しています。
+メトリックは特定の Azure リソース用の機能で、ポータルでパフォーマンス カウンターを表示できます。 Application Gateway に関しては、次のメトリックを利用できます。
 
-![メトリック ビューでのフィルターの使用][5]
+- 現在の接続数
+- 失敗した要求
+- 正常なホストの数
+- 応答の状態
+- Throughput
+- 要求の合計数
+- 異常なホストの数
+
+Application Gateway に移動して **[監視]** の **[メトリック]** をクリックします。 利用できる値を表示するには、**[メトリック]** ドロップダウン リストを選択します。
+
+次の画像では、最後の 30 分間に表示された 3 つのメトリックの例を確認できます。
+
+[![](media/application-gateway-diagnostics/figure5.png "メトリック ビュー")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
 現在のメトリックの一覧を確認するには、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」を参照してください。
 
@@ -354,7 +366,7 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 
 webhook の詳細および webhook とアラートを使用する方法については、「[Azure メトリック アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) を使用したカウンターとイベント ログの視覚化
 * [Power BI を使用した Azure アクティビティ ログの視覚化](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx)に関するブログ

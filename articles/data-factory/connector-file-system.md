@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用してファイル システムをコピー元またはコピー先としてデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory を使用して、ファイル システムからサポートされるシンク データ ストアにデータをコピーしたり、サポートされるソース データ ストアからファイル システムにデータをコピーしたりする方法を説明します。"
+title: Azure Data Factory を使用してファイル システムをコピー元またはコピー先としてデータをコピーする | Microsoft Docs
+description: Azure Data Factory を使用して、ファイル システムからサポートされるシンク データ ストアにデータをコピーしたり、サポートされるソース データ ストアからファイル システムにデータをコピーしたりする方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: ff8fb061a5a5108e574860fa26d0d983ef5ffe99
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e765c5b0240eb1b0311210dc466d1bc0a43ae58f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-a-file-system-by-using-azure-data-factory"></a>Azure Data Factory を使用してファイル システムをコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -65,7 +65,7 @@ ms.lasthandoff: 03/13/2018
 
 | シナリオ | リンクされたサービス定義の "host" | データセット定義の "folderPath" |
 |:--- |:--- |:--- |
-| 統合ランタイム コンピューター上のローカル フォルダー: <br/><br/>例: D:\\\* または D:\folder\subfolder\\* |D:\\\\ |.\\\\ またはフォルダー\\\\サブフォルダー |
+| 統合ランタイム コンピューター上のローカル フォルダー: <br/><br/>例: D:\\\* または D:\folder\subfolder\\\* |D:\\\\ |.\\\\ またはフォルダー\\\\サブフォルダー |
 | リモート共有フォルダー:  <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
 
 **例:**

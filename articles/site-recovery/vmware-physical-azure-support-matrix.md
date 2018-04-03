@@ -6,13 +6,13 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/20/2018
 ms.author: raynew
-ms.openlocfilehash: c4fb466443e2f29fb79c3707ce142895f140f9a7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6f2f28b36fdb3751a469d66f242f9fa2119f9ae8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="support-matrix-for-vmware-and-physical-server-replication-to-azure"></a>VMware および物理サーバーの Azure へのレプリケーションのサポート マトリックス
 
@@ -175,7 +175,7 @@ Azure にレプリケートするオンプレミス VM は、この表にまと�
 オペレーティング システムのディスク サイズ | 最大 2,048 GB。 | サポートされていない場合、確認は失敗します。 
 オペレーティング システムのディスク数 | 1 | サポートされていない場合、確認は失敗します。  
 データ ディスク数 | 64 以下。 | サポートされていない場合、確認は失敗します。  
-データ ディスク VHD のサイズ | 最大 4,095 GB | サポートされていない場合、確認は失敗します。 
+データ ディスク サイズ | 最大 4,095 GB | サポートされていない場合、確認は失敗します。 
 ネットワーク アダプター | 複数のアダプターがサポートされます。 | 
 共有 VHD | サポートされていません。 | サポートされていない場合、確認は失敗します。 
 FC ディスク | サポートされていません。 | サポートされていない場合、確認は失敗します。 

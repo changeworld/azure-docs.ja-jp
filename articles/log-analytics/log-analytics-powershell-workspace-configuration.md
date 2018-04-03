@@ -1,11 +1,11 @@
 ---
-title: "PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Docs"
-description: "Log Analytics は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。"
+title: PowerShell を使用した Log Analytics ワークスペースの作成と構成 | Microsoft Docs
+description: Log Analytics は、オンプレミスまたはクラウド インフラストラクチャのサーバーのデータを使用します。 Azure 診断によって生成された場合は、Azure Storage からマシンのデータを収集できます。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: richrundmsft
 manager: jochan
-editor: 
+editor: ''
 ms.assetid: 3b9b7ade-3374-4596-afb1-51b695f481c2
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: powershell
 ms.topic: article
 ms.date: 11/21/2016
 ms.author: richrund
-ms.openlocfilehash: 6807ab67e3593da82c147669b29bfdae3b6c967c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a3f91323a017533d2d012f1e81760396c17a643
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-log-analytics-using-powershell"></a>PowerShell を使用した Log Analytics の管理
 Log Analytics のさまざまな機能は、コマンド ラインまたはスクリプトから [Log Analytics の PowerShell コマンドレット](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) を使用して実行できます。  PowerShell で実行できる作業の例を次に挙げます。
@@ -145,7 +145,7 @@ foreach ($solution in $Solutions) {
     Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName -IntelligencePackName $solution -Enabled $true
 }
 
-#List enabled solutions
+# List enabled solutions
 (Get-AzureRmOperationalInsightsIntelligencePacks -ResourceGroupName $ResourceGroup -WorkspaceName $WorkspaceName).Where({($_.enabled -eq $true)})
 
 # Import Saved Searches
@@ -191,24 +191,24 @@ New-AzureRmOperationalInsightsCustomLogDataSource -ResourceGroupName $ResourceGr
 
 | リソースの種類 | ログ | メトリック |
 | --- | --- | --- |
-| Application Gateway    | あり | はい |
-| Automation アカウント     | はい | |
-| Batch アカウント          | はい | はい |
-| Data Lake Analytics     | はい | | 
-| Data Lake Store         | はい | |
-| Elastic SQL Pool        |     | あり |
-| Event Hub 名前空間     |     | はい |
-| IoT Hub                |     | あり |
-| Key Vault               | はい | |
-| ロード バランサー          | はい | |
-| Logic Apps              | はい | あり |
-| ネットワーク セキュリティ グループ | はい | |
-| Redis Cache             |     | あり |
-| Search サービス         | あり | はい |
-| Service Bus 名前空間   |     | あり |
-| SQL (v12)               |     | あり |
-| Web サイト               |     | はい |
-| Web サーバー ファーム        |     | はい |
+| Application Gateway    | [はい] | [はい] |
+| Automation アカウント     | [はい] | |
+| Batch アカウント          | [はい] | [はい] |
+| Data Lake Analytics     | [はい] | | 
+| Data Lake Store         | [はい] | |
+| Elastic SQL Pool        |     | [はい] |
+| Event Hub 名前空間     |     | [はい] |
+| IoT Hub                |     | [はい] |
+| Key Vault               | [はい] | |
+| ロード バランサー          | [はい] | |
+| Logic Apps              | [はい] | [はい] |
+| ネットワーク セキュリティ グループ | [はい] | |
+| Redis Cache             |     | [はい] |
+| Search サービス         | [はい] | [はい] |
+| Service Bus 名前空間   |     | [はい] |
+| SQL (v12)               |     | [はい] |
+| Web サイト               |     | [はい] |
+| Web サーバー ファーム        |     | [はい] |
 
 使用可能なメトリックの詳細については、「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」を参照してください。
 
@@ -263,6 +263,6 @@ Remove-AzureRmOperationalInsightsStorageInsight -ResourceGroupName $workspace.Re
 前述のスクリプトを使用して、異なるサブスクリプションに含まれるストレージ アカウントからログを収集することもできます。 ストレージ アカウントのリソース ID と対応するアクセス キーを指定しているため、このスクリプトは複数のサブスクリプションにまたがって動作します。 アクセス キーを変更した場合は、ストレージ情報を更新して新しいキーを反映する必要があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Log Analytics の PowerShell コマンドレットを参照](https://msdn.microsoft.com/library/mt188224\(v=azure.300\).aspx) し、Log Analytics を構成するための PowerShell の使い方について詳しく調べる。
 

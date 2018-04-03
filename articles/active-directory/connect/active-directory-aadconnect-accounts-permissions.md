@@ -1,11 +1,11 @@
 ---
-title: "Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs"
-description: "このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。"
+title: 'Azure AD Connect: アカウントとアクセス許可 | Microsoft Docs'
+description: このトピックでは、使用および作成されるアカウントと、必要なアクセス許可について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.reviewer: cychua
 ms.assetid: b93e595b-354a-479d-85ec-a95553dd9cc2
 ms.service: active-directory
@@ -13,13 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/03/2017
+ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: c10a069f5359dc148b103688355c859bd653b5d7
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: ae8e9f46923928853c0c63e8c50f4e95b915e277
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。

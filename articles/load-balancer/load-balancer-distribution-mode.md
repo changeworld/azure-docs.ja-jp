@@ -1,6 +1,6 @@
 ---
-title: "Azure Load Balancer 分散モードの構成 |Microsoft Docs"
-description: "ソース IP アフィニティをサポートするように Azure Load Balancer の分散モードを構成する方法。"
+title: Azure Load Balancer 分散モードの構成 |Microsoft Docs
+description: ソース IP アフィニティをサポートするように Azure Load Balancer の分散モードを構成する方法。
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,19 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: d04a469c04553b7d6a14df7054ad5ef795baa500
-ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.openlocfilehash: ae793bad9cef86158418eb87e0c38ee0370a6bd2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/25/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
-
 ## <a name="hash-based-distribution-mode"></a>ハッシュベースの分散モード
 
-Azure Load Balancer の既定の分散モードは、5 タプルのハッシュです。 そのタプルは、ソース IP、ソース ポート、接続先 IP、接続先ポート、プロトコルの種類で構成されます。 ハッシュは使用可能なサーバーにトラフィックをマップするために使用され、アルゴリズムはトランスポート セッション内でのみ持続性を提供します。 同じセッション内のパケットは、負荷分散されたエンドポイントの背後にある同じデータセンター IP (DIP) インスタンスに送信されます。 クライアントが同じソース IP から新しいセッションを開始すると、ソース ポートが変更され、トラフィックは別の DIP エンドポイントに送信されます。
+Azure Load Balancer の既定の分散モードは、5 タプルのハッシュです。 そのタプルは、ソース IP、接続元ポート、接続先 IP、接続先ポート、プロトコルの種類で構成されます。 ハッシュは使用可能なサーバーにトラフィックをマップするために使用され、アルゴリズムはトランスポート セッション内でのみ持続性を提供します。 同じセッション内のパケットは、負荷分散されたエンドポイントの背後にある同じデータセンター IP (DIP) インスタンスに送信されます。 クライアントが同じソース IP から新しいセッションを開始すると、接続元ポートが変更され、そのトラフィックは別の DIP エンドポイントに送信されます。
 
 ![5 タプルのハッシュベースの分散モード](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
@@ -33,11 +31,11 @@ Azure Load Balancer の既定の分散モードは、5 タプルのハッシュ�
 
 Load Balancer は、ソース IP アフィニティ分散モードを使用して構成することもできます。 この分散モードは、セッション アフィニティまたはクライアント IP アフィニティとも呼ばれます。 このモードは 2 タプル (ソース IP と接続先 IP) または 3 タプル (ソース IP、接続先 IP、プロトコルの種類) のハッシュを使用して、使用可能なサーバーにトラフィックをマップします。 ソース IP アフィニティを使用すると、同じクライアント コンピューターから開始された接続は同じ DIP エンドポイントに向かいます。
 
-次の図は 2 タプルの構成を示しています。 2 タプルの場合に、どのように接続がロード バランサーを通過して仮想マシン 1 (VM1) に向かうかにご注意ください。 その後、VM1 は VM2 と VM3 でバックアップされます。
+次の図は 2 タプルの構成を示しています。 2 タプルの場合に、どのように接続がロード バランサーを通過して仮想マシン 1 (VM1) に向かうかに注目してください。 その後、VM1 は VM2 と VM3 でバックアップされます。
 
 ![2 タプルのセッション アフィニティ分散モード](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-ソース IP アフィニティ モードは、Azure Load Balancer とリモート デスクトップ ゲートウェイ(RD ゲートウェイ) 間の非互換性の問題を解決します。 このモードを使用すれば、1 つのクラウド サービス内に RD ゲートウェイ ファームを構築できます。
+ソース IP アフィニティ モードは、Azure Load Balancer とリモート デスクトップ ゲートウェイ(RD ゲートウェイ) 間の非互換性を解決します。 このモードを使用すれば、1 つのクラウド サービス内に RD ゲートウェイ ファームを構築できます。
 
 もう 1 つの使用シナリオは、メディア アップロードです。 データのアップロードを UDP 経由で行い、コントロール プレーンは TCP 経由で実現します。
 
@@ -146,7 +144,7 @@ Azure クラシック デプロイメント モデルを使用して、既存の
 
 前述のとおり、`LoadBalancerDistribution` 要素を sourceIP (2 タプルのアフィニティ)、sourceIPProtocol (3 タプルのアフィニティ)、none (アフィニティなし、5 タプルのアフィニティ) に設定します。
 
-#### <a name="response"></a>応答
+#### <a name="response"></a>Response
 
     HTTP/1.1 202 Accepted
     Cache-Control: no-cache
@@ -156,7 +154,7 @@ Azure クラシック デプロイメント モデルを使用して、既存の
     x-ms-request-id: 9c7bda3e67c621a6b57096323069f7af
     Date: Thu, 16 Oct 2014 22:49:21 GMT
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure 内部ロード バランサーの概要](load-balancer-internal-overview.md)
 * [インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)

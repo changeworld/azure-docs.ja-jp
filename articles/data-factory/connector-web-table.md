@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用した Web テーブルからのデータ コピー | Microsoft Docs"
-description: "Azure Data Factory の Web Table コネクタについて説明します。このコネクタを使用すると、Web テーブルから、Data Factory でシンクとしてサポートされているデータ ストアにデータをコピーすることができます。"
+title: Azure Data Factory を使用した Web テーブルからのデータ コピー | Microsoft Docs
+description: Azure Data Factory の Web Table コネクタについて説明します。このコネクタを使用すると、Web テーブルから、Data Factory でシンクとしてサポートされているデータ ストアにデータをコピーすることができます。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
-ms.openlocfilehash: c5d2fdb3ed3c00114437b0be9759bf8bea2521b7
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: f4755d6cce0787a411fee7d32c887ae71c134c94
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Azure Data Factory を使用して Web テーブルからデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -84,8 +84,7 @@ Web テーブルからデータをコピーするには、データセットの 
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | データセットの type プロパティを **WebTable** に設定する必要があります。 | [はい] |
-| パス |テーブルを含むリソースの相対 URL。 |
-いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
+| パス |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
 | Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |[はい] |
 
 **例:**
@@ -153,7 +152,7 @@ Web テーブルからデータをコピーするには、コピー アクティ
 
     ![Web ダイアログから](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
-    この例で使用される URL: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+    この例で使用される URL は https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies です。
 4. **[Web コンテンツへのアクセス]** ダイアログ ボックスが表示された場合、適切な **URL** と**認証**を選択し、**[接続]** をクリックします。
 
    ![[Access Web コンテンツ] ダイアログ ボックス](./media/copy-data-from-web-table/AccessWebContentDialog.png)

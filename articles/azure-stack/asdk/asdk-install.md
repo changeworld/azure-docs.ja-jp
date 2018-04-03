@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: e1f4cfb74d83cb23631e5a16a6e6f2dba98027ef
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7b8fe61731a9412c61152bc58e55deebb611d011
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-the-azure-stack-development-kit-asdk"></a>Azure Stack Development Kit (ASDK) のインストール
 [ASDK ホスト コンピューターの準備](asdk-prepare-host.md)ができたら、この記事の次の手順に従って ASDK を CloudBuilder.vhdx イメージにデプロイできます。
@@ -55,8 +55,10 @@ ms.lasthandoff: 03/17/2018
     - **[DHCP]** (既定): 仮想マシンが DHCP サーバーから IP ネットワークの構成を取得します。
     - **[静的]**: DHCP が Azure Stack に、インターネットにアクセスするための有効な IP アドレスを割り当てることができない場合にのみこのオプションは使用されます。 **静的 IP アドレスは、CIDR 形式のサブネット マスク長を使って指定する必要があります (例: 10.0.0.5/24)**。
     - 有効な**タイム サーバー IP** アドレスを入力します。 この必須フィールドでは、開発キットによって使われるタイム サーバーを設定します。 このパラメーターは、有効なタイム サーバーの IP アドレスとして指定する必要があります。 サーバー名はサポートされていません。
+
       > [!TIP]
       > タイム サーバーの IP アドレスを検索するには、[pool.ntp.org](http:\\pool.ntp.org) にアクセスするか、time.windows.com に ping を実行します。 
+
     - **任意で**、次の値を設定します。
         - **[VLAN ID]**: VLAN ID を設定します。 このオプションは、ホストと AzS-BGPNAT01 が物理ネットワーク (およびインターネット) にアクセスするために VLAN ID を構成する必要がある場合にのみ使用します。 
         - **[DNS Forwarder]\(DNS フォワーダ\)**: DNS サーバーは Azure Stack のデプロイの一部として作成されます。 ソリューション内のコンピューターにスタンプ外の名前解決を許可するには、既存のインフラストラクチャの DNS サーバーを提供します。 スタンプ内の DNS サーバーが、このサーバーに不明な名前解決の要求を送信します。
@@ -88,10 +90,10 @@ ms.lasthandoff: 03/17/2018
 
 なんらかの理由でデプロイが失敗した場合は、最初から[デプロイし直す](asdk-redeploy.md)か、同じ管理者特権の PowerShell ウィンドウで次の PowerShell コマンドを使って、前回の成功した手順からデプロイを再開することができます。
 
-    ```powershell
-    cd C:\CloudDeployment\Setup
-    .\InstallAzureStackPOC.ps1 -Rerun
-    ```
+  ```powershell
+  cd C:\CloudDeployment\Setup
+  .\InstallAzureStackPOC.ps1 -Rerun
+  ```
 
 ## <a name="next-steps"></a>次の手順
 [デプロイ後の構成](asdk-post-deploy.md)

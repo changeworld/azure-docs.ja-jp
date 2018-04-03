@@ -1,8 +1,8 @@
 ---
-title: "Spark で構築した機械学習モデルの操作 | Microsoft Docs"
-description: "Python を使用して、Azure Blob Storage (WASB) に保存されている学習モデルを読み込み、スコア付けする方法を説明します。"
+title: Spark で構築した機械学習モデルの操作 | Microsoft Docs
+description: Python を使用して、Azure Blob Storage (WASB) に保存されている学習モデルを読み込み、スコア付けする方法を説明します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 9ff633b4543fbc537ffdb721756706e8de5e8e88
-ms.sourcegitcommit: f8437edf5de144b40aed00af5c52a20e35d10ba1
+ms.author: bradsev
+ms.openlocfilehash: 3a586d40a9d195fe5ec3fa456d450cb3d86f2e9d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -44,7 +44,7 @@ Spark 1.6 向け Jupyter Notebook を変更して HDInsight Spark 2.0 クラス�
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
-Spark は Azure Storage BLOB (WASB) の読み取りと書き込みを実行できます。 そのため、そこに保存されている既存データはすべて Spark を使って処理でき、結果も再び WASB に保存できます。
+Spark は Azure Storage BLOB (WASB) の読み取りと書き込みを実行できます。 そのため、WASB に保存されている既存のデータは Spark を使用して処理することができ、結果も WASB に保存できます。
 
 WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、*"wasb///"* で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
 
@@ -448,7 +448,7 @@ Jupyter Notebook のカーネルと、それによって提供される定義済
 
 **spark.mllib** は、連続的な特徴とカテゴリの特徴の両方を使った、二項分類と回帰のための GBT をサポートします。 
 
-[勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT ではデシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT によって、カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類の設定にも使用できます。
+[勾配ブースティング ツリー](http://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBT) は、複数のデシジョン ツリーをまとめたものです。 GBT は、デシジョン ツリーを繰り返しトレーニングすることで損失関数を最小限に抑えます。 GBT によって、カテゴリの特徴を処理できますが、特徴のスケーリングは不要であり、非線形性や特徴の相互作用をキャプチャすることができます。 また、多クラス分類の設定にも使用できます。
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 

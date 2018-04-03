@@ -1,23 +1,23 @@
 ---
-title: "Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理 | Microsoft Docs"
-description: "China Cloud、Government Cloud、および German Cloud でのAzure PowerShell を使用したストレージの管理"
+title: Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理 | Microsoft Docs
+description: China Cloud、Government Cloud、および German Cloud でのAzure PowerShell を使用したストレージの管理
 services: storage
 documentationcenter: na
-author: robinsh
-manager: timlt
-ms.assetid: 
+author: roygara
+manager: jeconnoc
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2017
-ms.author: robinsh
-ms.openlocfilehash: 08e1af929d7ddc30c7dc149f6305ca1ca0bc22ae
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.author: rogarana
+ms.openlocfilehash: 31b36e6fb6a1ebf09c559b2777ffa5f554c3cfa0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Azure から独立しているクラウドでの Azure PowerShell によるストレージの管理
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 10/27/2017
 
 例を実行するには、Azure PowerShell モジュール バージョン 4.4.0 以降が必要です。 PowerShell ウィンドウで、`Get-Module -ListAvailable AzureRM` を実行して、バージョンを確認します。 何も表示されない、またはアップグレードが必要な場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログインする
 
 [Get-AzureEnvironment](/powershell/module/azure/Get-AzureRmEnvironment) コマンドレットを実行し、使用できる Azure 環境を確認します。
    
@@ -61,7 +61,7 @@ Get-AzureRmLocation | select Location, DisplayName
 
 次の表は、German Cloud に対して返される場所を示しています。
 
-|Location | DisplayName |
+|場所 | DisplayName |
 |----|----|
 | germanycentral | ドイツ中部|
 | germanynortheast | ドイツ北東部 | 
@@ -165,7 +165,7 @@ table endpoint = http://myexistingstorageaccount.table.core.usgovcloudapi.net/
 Remove-AzureRmResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [PowerShell セッション間でのユーザー ログインの保持](/powershell/azure/context-persistence)
 * [Azure Government ストレージ](../../azure-government/documentation-government-services-storage.md)

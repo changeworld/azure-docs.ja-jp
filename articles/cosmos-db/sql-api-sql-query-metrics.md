@@ -1,9 +1,9 @@
 ---
-title: "Azure Cosmos DB SQL API の SQL クエリ メトリック | Microsoft Docs"
-description: "Azure Cosmos DB 要求の SQL クエリをインストルメント化し、SQL クエリのパフォーマンスをデバッグする方法について説明します。"
-keywords: "sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ、集計関数"
+title: Azure Cosmos DB SQL API の SQL クエリ メトリック | Microsoft Docs
+description: Azure Cosmos DB 要求の SQL クエリをインストルメント化し、SQL クエリのパフォーマンスをデバッグする方法について説明します。
+keywords: sql 構文、sql クエリ、json クエリ言語、データベースの概念と sql クエリ、集計関数
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: arramac
 manager: jhubbard
 editor: monicar
@@ -15,15 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a2a42fd65ba4344f703ca423dc451802f3f0ac76
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB は、スキーマやセカンダリ インデックスを使用せず[データを照会するための SQL API](sql-api-sql-query.md) を提供します。 この記事は、開発者を対象とした次の情報を提供します。
 

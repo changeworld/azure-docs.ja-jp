@@ -1,6 +1,6 @@
 ---
-title: "SQL Server 可用性グループ - Azure Virtual Machines - チュートリアル | Microsoft Docs"
-description: "このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。"
+title: SQL Server 可用性グループ - Azure Virtual Machines - チュートリアル | Microsoft Docs
+description: このチュートリアルでは、Azure Virtual Machines に SQL Server Always On 可用性グループを作成する方法を説明します。
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: 70e483f8b64648200bd6f0898a2877c2bf95e590
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 02/21/2018
    ![クラスターの作成](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/40-createcluster.png)
 4. クラスターの作成ウィザードの各ページで、次の表の設定を使って、単一ノード クラスターを作成します。
 
-   | ページ | 設定 |
+   | ページ | [設定] |
    | --- | --- |
    | 開始する前に |既定値を使用 |
    | サーバーの選択 |1 番目の SQL Server の名前を **[サーバー名を入力してください]** に入力し、**[追加]** をクリックします。 |
@@ -356,7 +356,7 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
    | **Virtual Network** |Azure 仮想ネットワークの名前を使います。 |
    | **サブネット** |仮想マシンが存在するサブネットの名前を使います。  |
    | **IP アドレスの割り当て** |静的 |
-   | **IP アドレス** |サブネットで利用できるアドレスを使います。 |
+   | **IP アドレス** |サブネットで利用できるアドレスを使います。 これはクラスター IP アドレスと異なることに注意してください |
    | **サブスクリプション** |仮想マシンと同じサブスクリプションを使います。 |
    | **場所** |仮想マシンと同じ場所を使います。 |
 

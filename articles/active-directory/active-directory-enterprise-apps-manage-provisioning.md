@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory でのエンタープライズ アプリのユーザー プロビジョニング管理 | Microsoft Docs"
-description: "Azure Active Directory を使用してエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する方法について説明します"
+title: Azure Active Directory でのエンタープライズ アプリのユーザー プロビジョニング管理 | Microsoft Docs
+description: Azure Active Directory を使用してエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する方法について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: asmalser
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 34ac4028-a5aa-40d9-a93b-0db4e0abd793
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: asmalser
 ms.reviewer: asmalser
-ms.openlocfilehash: 846ec63d47ebc787fa1edbf1968f1a843e96ac9d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: bded73b4a335dc85a84691f5edabac5055f43cca
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="managing-user-account-provisioning-for-enterprise-apps-in-the-azure-portal"></a>Azure Portal でエンタープライズ アプリのユーザー アカウント プロビジョニングを管理する
 この記事では、[Azure Portal](https://portal.azure.com) を使用して、自動ユーザー アカウント プロビジョニングとプロビジョニング解除をサポートしているアプリケーション (特に [Azure Active Directory アプリケーション ギャラリー](active-directory-appssoaccess-whatis.md#get-started-with-the-azure-ad-application-gallery)の "おすすめ" カテゴリから追加されたアプリケーション) の自動ユーザー アカウント プロビジョニングとプロビジョニング解除を管理する方法について説明します。 自動ユーザー アカウント プロビジョニングの詳細とそのしくみについては、「 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)」を参照してください。
@@ -62,7 +62,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 * Azure AD ユーザー オブジェクトからアプリのユーザー オブジェクトにフローする属性を編集する。 属性マッピングの詳細については、「 [属性マッピングの種類について](active-directory-saas-customizing-attribute-mappings.md#understanding-attribute-mapping-types)」を参照してください。
 * Azure AD がターゲット アプリケーションに対して実行するプロビジョニング操作をフィルター処理する。 Azure AD でオブジェクトを完全に同期するのではなく、実行される操作を制限することができます。 たとえば、**[更新]** のみを選択すると、Azure AD はアプリケーションの既存のユーザー アカウントの更新のみを行い、新しいユーザー アカウントは作成しません。 **[作成]** のみを選択すると、Azure は新しいユーザー アカウントの作成のみを行い、既存のユーザー アカウントは更新しません。 この機能により、アカウントの作成ワークフローと更新ワークフローで異なるマッピングを作成できます。
 
-### <a name="settings"></a>設定
+### <a name="settings"></a>[設定]
 このセクションでは、選択したアプリケーションに対して Azure AD プロビジョニング サービスを開始および停止できるだけでなく、必要に応じてプロビジョニング キャッシュのクリアやサービスの再起動を行うこともできます。
 
 アプリケーションに対して初めてプロビジョニングを有効にする場合は、**[プロビジョニング状態]** を **[オン]** に変更して、サービスを有効にします。 そうすると、Azure AD プロビジョニング サービスが初期同期を実行します。初期同期では、**[ユーザーとグループ]** セクションで割り当てられたユーザーが読み取られ、そのユーザーのターゲット アプリケーションが照会され、Azure AD の **[マッピング]** セクションで定義されているプロビジョニング操作が実行されます。 このプロセス中に、プロビジョニング サービスは管理対象のユーザー アカウントに関するキャッシュ データを格納します。そのため、割り当てのスコープに存在しない、ターゲット アプリケーション内の管理対象外のアカウントはプロビジョニング解除操作の影響を受けません。 初期同期の後、プロビジョニング サービスは 10 分間隔で自動的にユーザーとグループ オブジェクトを同期します。
@@ -76,7 +76,7 @@ Azure AD ユーザー オブジェクトと各 SaaS アプリのユーザー オ
 
 **プロビジョニング アクティビティ レポート** (Azure AD とターゲット アプリケーションの間で作成、更新、削除されたすべてのユーザーとグループのログが表示されます) および**プロビジョニング エラー レポート** (読み取り、作成、更新、削除に失敗したユーザーとグループ オブジェクトの詳細なエラー メッセージが表示されます) へのリンクがあります。 
 
-##<a name="feedback"></a>フィードバック
+## <a name="feedback"></a>フィードバック
 
 Azure AD エクスペリエンスを気に入っていただけることを期待しております。 ぜひフィードバックをお寄せください。 フィードバックや機能の向上についてのアイデアを、[フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/162510-admin-portal)の **[管理ポータル]** セクションにご投稿ください。  マイクロソフトでは、優れた新しい機能を日々開発しています。ユーザーのアドバイスは、次に何を具体化し、どのように定義するかを考えるうえで非常に有用です。
 

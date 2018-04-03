@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2018
 ms.author: memccror
-ms.openlocfilehash: 9e4970ecc538caab537281931b89bfd57d994cfa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f25e4d1e3906a610e7c60e348f872a78d7db8fd3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="low-priority-vms-on-scale-sets-preview"></a>スケール セットでの低優先度の VM (プレビュー)
 
@@ -48,7 +48,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="use-the-azure-cli-20"></a>Azure CLI 2.0 を使用する
 
-低優先度の VM でスケール セットを作成するプロセスは、[使用の開始に関する記事](virtual-machine-scale-sets-create-cli.md)で詳しく説明されているものと同じです。 次の例に示すように、"--Priority" パラメーターを CLI の呼び出しに追加し、値を *Low* に設定します。
+低優先度の VM でスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-cli.md)で詳しく説明されているものと同じです。 次の例に示すように、"--Priority" パラメーターを CLI の呼び出しに追加し、値を *Low* に設定します。
 
 ```azurecli
 az vmss create \
@@ -63,7 +63,7 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>Azure PowerShell の使用
 
-低優先度の VM でスケール セットを作成するプロセスは、[使用の開始に関する記事](virtual-machine-scale-sets-create-powershell.md)で詳しく説明されているものと同じです。
+低優先度の VM でスケール セットを作成するプロセスは、[使用の開始に関する記事](quick-create-powershell.md)で詳しく説明されているものと同じです。
 次の例に示すように、"-Priority" パラメーターを [New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) に追加し、値を *Low* に設定します。
 
 ```powershell
@@ -77,7 +77,7 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用する
 
-低優先度の VM を使うスケール セットを作成するプロセスは、[Linux](virtual-machine-scale-sets-create-template-linux.md) または [Windows](virtual-machine-scale-sets-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 テンプレートの *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* のリソースの種類に "priority" プロパティを追加し、値として *Low* を指定します。 *2017-10-30-preview* 以降の API バージョンを必ず使ってください。 
+低優先度の VM を使うスケール セットを作成するプロセスは、[Linux](quick-create-template-linux.md) または [Windows](quick-create-template-windows.md) での使用の開始に関する記事で詳しく説明されているものと同じです。 テンプレートの *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* のリソースの種類に "priority" プロパティを追加し、値として *Low* を指定します。 *2017-10-30-preview* 以降の API バージョンを必ず使ってください。 
 
 排除ポリシーを削除に設定するには、"evictionPolicy" パラメーターを追加して、値を *delete* に設定します。
 

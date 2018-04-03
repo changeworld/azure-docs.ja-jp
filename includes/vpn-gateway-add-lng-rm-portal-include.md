@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 932aab3f16a571d4c83c77c1cc2274ae60ea3d35
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 1. ポータルの **[すべてのリソース]** で、**[+追加]** をクリックします。
 2. **[すべて]** ページの検索ボックスに、「**ローカル ネットワーク ゲートウェイ**」と入力し、クリックすると、リソースが一覧表示されます。 **[ローカル ネットワーク ゲートウェイ]** をクリックしてページを開き、**[作成]** をクリックして **[ローカル ネットワーク ゲートウェイの作成]** ページを開きます。
 

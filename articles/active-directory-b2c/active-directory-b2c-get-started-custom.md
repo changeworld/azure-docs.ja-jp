@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーの概要 | Microsoft Docs"
-description: "Azure Active Directory B2C のカスタム ポリシーの使用を開始する方法"
+title: 'Azure Active Directory B2C: カスタム ポリシーの概要 | Microsoft Docs'
+description: Azure Active Directory B2C のカスタム ポリシーの使用を開始する方法
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: joroja;parahk;gsacavdm
-ms.openlocfilehash: 86b86c7c670b34b4f3303adbcb55aff8d5edb53a
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.author: davidmu
+ms.openlocfilehash: 502f88bd08c05f71988763fedeba4d596aa409b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーの概要
 

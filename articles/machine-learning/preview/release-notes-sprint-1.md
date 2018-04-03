@@ -1,6 +1,6 @@
 ---
-title: "スプリント 1 用の Azure ML Workbench リリース ノート 2017 年 11 月"
-description: "このドキュメントでは、Azure ML のスプリント 1 リリースの更新について詳細に説明します。"
+title: スプリント 1 用の Azure ML Workbench リリース ノート 2017 年 11 月
+description: このドキュメントでは、Azure ML のスプリント 1 リリースの更新について詳細に説明します。
 services: machine-learning
 author: hning86
 ms.author: haining
@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: article
 ms.date: 11/06/2017
 ms.openlocfilehash: a4945c77be5763ffeda328184149f712572937c0
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/27/2018
 ---
 # <a name="sprint-1---november-2017"></a>スプリント 1 - 2017 年 11 月 
 
@@ -54,7 +54,7 @@ Azure Machine Learning Workbench の 2 番目の更新へようこそ。 当社�
 - Workbench は、ユーザーが実行を開始したとき、保存されていない_すべての_ファイルを保存します。
 - Workbench はローカル コンピューター上の最後に使用されたワークスペースを記憶しているため、それが自動的に開きます。
 - Workbench の 1 つのインスタンスだけが実行を許可されるようになりました。 以前は、複数のインスタンスを起動できたため、同じプロジェクトで動作しているときに問題が発生しました。
-- [ファイル] メニューの [Open Project...] (プロジェクトを開く...) は [Add Existing Folder as Project...](既存のフォルダーをプロジェクトとして追加する...) に名前が変更されました。 
+- [ファイルメニューの プロジェクトを開く...] は [既存のフォルダーをプロジェクトとして追加する...] に名前が変更されました。 
 - タブの切り替えがきわめて迅速になりました。
 - [Configuring IDE] (IDE の構成) ダイアログ ボックスにヘルプ リンクが追加されました。
 - フィードバック フォームが最後に入力された電子メール アドレスを記憶するようになりました。

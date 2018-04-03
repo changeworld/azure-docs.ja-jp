@@ -1,6 +1,6 @@
 ---
-title: "ElasticSearch を Azure の開発仮想マシンにデプロイする"
-description: "チュートリアル - Elastic Stack を Azure の開発 Linux VM にインストールする"
+title: ElasticSearch を Azure の開発仮想マシンにデプロイする
+description: チュートリアル - Elastic Stack を Azure の開発 Linux VM にインストールする
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: rloutlaw
@@ -13,11 +13,11 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: 7941e557dfbb71df7c2d55608c4a14c026535db8
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: eeb1b8b9105e055339cb31fa4b9d4b411cb06c54
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Elastic Stack を Azure VM にインストールする
 
@@ -128,7 +128,7 @@ sudo systemctl start elasticsearch.service
 このコマンドによる出力はありません。そこで、この `curl` コマンドを使用して、Elasticsearch が VM で実行されていることを確認します。
 
 ```bash
-curl -XGET 'localhost:9200/'
+sudo curl -XGET 'localhost:9200/'
 ```
 
 Elasticsearch が実行されている場合は、次のような出力が表示されます。

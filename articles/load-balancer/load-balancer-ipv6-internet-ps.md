@@ -1,12 +1,12 @@
 ---
-title: "IPv6 で Azure のインターネットに接続するロード バランサーの作成 - PowerShell | Microsoft Docs"
-description: "Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーを作成する方法について説明します。"
+title: IPv6 で Azure のインターネットに接続するロード バランサーの作成 - PowerShell | Microsoft Docs
+description: Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーを作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: KumudD
 manager: timlt
 tags: azure-resource-manager
-keywords: "ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot"
+keywords: ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot
 ms.assetid: d4c649e3-84ad-4343-8b6a-0e89f0b9e518
 ms.service: load-balancer
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: a84fd69c568e26bbd1ff06b699b804c70e0e9c09
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: da14cc8723df0a6c7c8b15c8af8d519fa2c62283
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Resource Manager で PowerShell を使用して、IPv6 でインターネットに接続するロード バランサーの作成を開始する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 12/21/2017
 > * [テンプレート](load-balancer-ipv6-internet-template.md)
 
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
 
 Azure Load Balancer は、第 4 層 (TCP、UDP) のロード バランサーです。 ロード バランサーは、ロード バランサー セット内のクラウド サービスまたは仮想マシンの正常なサービス インスタンスに着信トラフィックを分散することによって高可用性を提供します。 さらに、Azure Load Balancer は、これらのサービスを複数のポート、複数の IP アドレス、またはその両方に提供できます。
 
@@ -230,7 +230,7 @@ VM の作成に関する詳細については、「 [リソース マネージ�
     New-AzureRmVM -ResourceGroupName NRP-RG -Location 'West US' -VM $vm2
     ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-ps.md)
 

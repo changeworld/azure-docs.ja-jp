@@ -351,6 +351,8 @@
           href: extensions-diagnostics-template.md
         - name: Network Watcher Agent
           href: extensions-nwa.md
+        - name: 拡張機能のインストールの制限
+          href: extensions-rmpolicy-howto-ps.md
     - name: VM の移行
       items:
         - name: AWS とオンプレミスの VM を移行する
@@ -396,6 +398,8 @@
           href: reset-network-interface.md
         - name: ブート診断
           href: boot-diagnostics.md
+        - name: シリアル コンソール
+          href: serial-console.md
         - name: VM の作成
           href: troubleshoot-deployment-new-vm.md
         - name: デプロイの問題

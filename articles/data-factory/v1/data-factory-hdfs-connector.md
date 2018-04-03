@@ -1,11 +1,10 @@
 ---
-title: "オンプレミスの HDFS からデータを移動する | Microsoft Docs"
-description: "Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する方法を説明します。"
+title: オンプレミスの HDFS からデータを移動する | Microsoft Docs
+description: Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 3215b82d-291a-46db-8478-eac1a3219614
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 87acbe81d20e0f2b209565eace16de1b979b1d96
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 62a1052c0b2674e3292d5f89c0b8863439dd3928
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

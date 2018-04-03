@@ -1,24 +1,22 @@
 ---
-title: "Azure AD B2C: Node.js を使用して Web API をセキュリティで保護する | Microsoft Docs"
-description: "B2C テナントからのトークンを受け付ける Node.JS Web API を作成する方法"
+title: 'Azure AD B2C: Node.js を使用して Web API をセキュリティで保護する | Microsoft Docs'
+description: B2C テナントからのトークンを受け付ける Node.JS Web API を作成する方法
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: fc2b9af8-fbda-44e0-962a-8b963449106a
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: hero-article
+ms.topic: article
 ms.date: 01/07/2017
-ms.author: xerners
-ms.openlocfilehash: 3a0249f2f7dfd76d89cbf497376f53fe06c250c3
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: davidmu
+ms.openlocfilehash: 3ce0e43beec41599c842cd273cb7230660bdf8d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-secure-a-web-api-by-using-nodejs"></a>Azure AD B2C: Node.js を使用して Web API をセキュリティで保護する
 <!-- TODO [AZURE.INCLUDE [active-directory-b2c-devquickstarts-web-switcher](../../includes/active-directory-b2c-devquickstarts-web-switcher.md)]-->
@@ -754,7 +752,7 @@ Transfer-Encoding: chunked
 ## <a name="you-now-have-a-rest-api-service-that-uses-oauth2"></a>OAuth2 を使用する REST API サービスの確立
 Restify と OAuth を使用して REST API を実装しました。 既に十分なコードがあるため、サービスの開発を続けて、この例を基にして構築することができます。 OAuth2 互換のクライアントを使用することなく、このサーバーを使用して最大限のことを実現できました。 次のステップでは、「 [B2C で iOS を使用して Web API に接続する](active-directory-b2c-devquickstarts-ios.md) 」などの追加のチュートリアルを使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これ以降は、次のような、さらに高度なトピックに進むことができます。
 
 [B2C で iOS を使用して Web API に接続する](active-directory-b2c-devquickstarts-ios.md)

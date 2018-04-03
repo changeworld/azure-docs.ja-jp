@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
-ms.openlocfilehash: f92af44df9863bbf48abb4afcf9b1505c843fadc
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 5b400b373577fc38fe108a74eb8bad936a82be0c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Application Gateway に関してよく寄せられる質問
 
@@ -96,7 +96,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.Application Gateway サブネット内に何か他にデプロイできるものはありますか?**
 
-いいえ。ただし、サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできます。
+いいえ。サブネット内に他のアプリケーション ゲートウェイをデプロイすることはできません。
 
 **Q.ネットワーク セキュリティ グループは Application Gateway サブネットでサポートされますか?**
 
@@ -136,10 +136,6 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 ルールは、構成されている順序で処理されます。 マルチサイト ルールが評価される前にポートに基づいて基本ルールがトラフィックと一致することでトラフィックが不適切なバックエンドにルーティングされる可能性を下げるため、基本ルールの前にマルチサイト ルールを構成することをお勧めします。
 
-**Q.ルールはどのように処理されますか?**
-
-ルールは、作成される順序で処理されます。 基本ルールの前にマルチサイト ルールを構成することをお勧めします。 マルチサイト リスナーを先に構成することで、トラフィックが不適切なバックエンドにルーティングされる可能性が低くなります。 このルーティング問題は、マルチサイト ルールが評価される前に、基本ルールがポートに基づくトラフィックと一致するときに発生する可能性があります。
-
 **Q.カスタム プローブの [ホスト] フィールドは何を表しますか?**
 
 [ホスト] フィールドは、プローブの送信先の名前を指定します。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なり、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> という形式になります。
@@ -158,7 +154,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 * インターネットのすべての宛先への送信トラフィックを許可します。
 
-## <a name="performance"></a>パフォーマンス
+## <a name="performance"></a>[パフォーマンス]
 
 **Q.Application Gateway は高可用性とスケーラビリティをどのようにサポートしますか?**
 
@@ -324,6 +320,6 @@ Application Gateway では監査ログを使用できます。 ポータルで�
 
 最も一般的な理由は、バックエンドへのアクセスが NSG またはカスタム DNS によってブロックされていることです。 詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Application Gateway について詳しくは、「[Application Gateway の概要](application-gateway-introduction.md)」をご覧ください。

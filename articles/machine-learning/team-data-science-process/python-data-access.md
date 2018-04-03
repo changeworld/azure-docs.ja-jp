@@ -1,6 +1,6 @@
 ---
-title: "Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする | Microsoft Docs"
-description: "Python クライアント ライブラリをインストールして使用し、ローカル Python 環境から Azure Machine Learning データを安全に管理します。"
+title: Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする | Microsoft Docs
+description: Python クライアント ライブラリをインストールして使用し、ローカル Python 環境から Azure Machine Learning データを安全に管理します。
 services: machine-learning
 documentationcenter: python
 author: bradsev
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: huvalo;bradsev
-ms.openlocfilehash: 3cffb90baadef570bbb7e4e2d96741cc0420b0a2
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 5f0823e07f0e583e32829b664a1d3d463092169e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Azure Machine Learning Python クライアント ライブラリを使って Python のデータ セットにアクセスする
 Microsoft Azure Machine Learning Python クライアント ライブラリのプレビューは、ローカルの Python 環境から Azure Machine Learning データセットへの安全なアクセスを確立し、ワークスペースにおけるデータセットを作成して管理できるようにします。
@@ -91,7 +91,7 @@ Python クライアント ライブラリで使用するために Studio で提�
 2. アクセスするデータ セットを選択します。 **[マイ データ セット]** リストか **[サンプル]** リストからどのデータ セットでも選択できます。
 3. 下のツールバーから、 **[データ アクセス コードの生成]**をクリックします。 データが Python クライアント ライブラリと互換性のない形式の場合、このボタンは無効になります。
    
-    ![[データセット]][datasets]
+    ![データセット][datasets]
 4. 表示されるウィンドウからコード スニペットを選択し、クリップボードにコピーします。
    
     ![アクセス コード][dataset-access-code]

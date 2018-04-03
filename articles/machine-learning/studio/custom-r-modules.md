@@ -1,10 +1,11 @@
 ---
-title: "Azure Machine Learning でカスタム R モジュールを作成する | Microsoft Docs"
-description: "Azure Machine Learning における作成者カスタム R モジュールのクイック スタート。"
+title: Azure Machine Learning でカスタム R モジュールを作成する | Microsoft Docs
+description: Azure Machine Learning における作成者カスタム R モジュールのクイック スタート。
 services: machine-learning
-documentationcenter: 
-author: bradsev
-manager: cgronlun
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 6cbc628a-7e60-42ce-9f90-20aaea7ba630
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 11/29/2017
-ms.author: bradsev;ankarlof;garye
-ms.openlocfilehash: 16442a30f130e7cc9b60d2d9ae9c86d7282471ff
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 945c238411dac8f2e64666935308ef3c1cb2f0ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="author-custom-r-modules-in-azure-machine-learning"></a>Azure Machine Learning でカスタム R モジュールを作成する
 このトピックでは、Azure Machine Learning でカスタム R モジュールを作成し、デプロイする方法について説明します。 カスタム R モジュールの概要と、このモジュールの定義に使用するファイルについて説明します。 また、モジュールを定義するファイルを作成する方法と、Machine Learning ワークスペースにデプロイするためにモジュールを登録する方法も示します。 カスタム モジュールの定義で使用する要素および属性についてさらに詳しく説明します。 補助機能と補助ファイルおよび複数の出力を使用する方法についても説明します。 
@@ -290,7 +290,7 @@ XML 定義ファイル内の **Language** 要素は、カスタム モジュー�
     * カテゴリ
     * String
     * ラベル
-    * 機能
+    * Feature
     * Score
     * すべて
   * **default** - 列の選択の有効な既定の選択内容は次のとおりです。 

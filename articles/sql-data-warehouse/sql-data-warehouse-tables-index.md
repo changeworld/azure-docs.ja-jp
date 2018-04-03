@@ -14,11 +14,11 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 03/15/2018
 ms.author: barbkess
-ms.openlocfilehash: f0e19be5ec7453a76ff4f22ead6d3885e50beca8
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 96d4bb91fabe6b962d1fe4d5b2dc26f6342012b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="indexing-tables-in-sql-data-warehouse"></a>SQL Data Warehouse でのテーブルのインデックス作成
 > [!div class="op_single_selector"]
@@ -90,7 +90,7 @@ WITH ( CLUSTERED INDEX (id) );
 テーブルに非クラスター化インデックスを追加するには、次の構文を使用します。
 
 ```SQL
-CREATE INDEX zipCodeIndex ON t1 (zipCode);
+CREATE INDEX zipCodeIndex ON myTable (zipCode);
 ```
 
 ## <a name="optimizing-clustered-columnstore-indexes"></a>クラスター化列ストア インデックスの最適化

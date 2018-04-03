@@ -1,23 +1,20 @@
 ---
-title: "アプリケーションの登録 - Azure Active Directory B2C"
-description: "Azure Active Directory B2C にアプリケーションを登録する方法"
+title: アプリケーションの登録 - Azure Active Directory B2C
+description: Azure Active Directory B2C にアプリケーションを登録する方法
 services: active-directory-b2c
-author: PatAltimore
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.custom: seo
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
-ms.author: parakhj
-ms.openlocfilehash: b1d145466382c8fc2ea6c5e4e295940b0f000b97
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.author: davidmu
+ms.openlocfilehash: 0d3c351ebe70a963db0453538108ae9b2fefef86
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: アプリケーションを登録する
 
@@ -132,7 +129,7 @@ B2C アプリケーションは次の手段で編集しないでください。
 
 アプリケーションを削除するには、[アプリケーション登録ポータル](https://apps.dev.microsoft.com/)に移動し、そこでアプリケーションを削除します。 アプリケーションを表示するためには、そのアプリケーションの所有者である必要があります (テナントの管理者であるだけでは不十分です)。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 アプリケーションを Azure AD B2C に登録したので、いずれかの[クイック スタート チュートリアル](active-directory-b2c-overview.md#get-started)を実行して使い始めることができます。
 

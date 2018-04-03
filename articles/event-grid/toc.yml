@@ -27,6 +27,10 @@
       href: resize-images-on-storage-blob-upload-event.md
     - name: Automation Runbook のトリガー
       href: ensure-tags-exists-on-new-virtual-machines.md
+- name: サンプル
+  items:
+    - name: Resource Manager テンプレート
+      href: template-samples.md
 - name: 概念
   items:
     - name: Event Grid の概念
@@ -47,8 +51,6 @@
       href: publish-iot-hub-events-to-logic-apps.md
     - name: Functions と Logic Apps での Service Bus イベントのリッスン
       href: ../service-bus-messaging/service-bus-to-event-grid-integration-example.md?toc=%2fazure%2fevent-grid%2ftoc.json
-    - name: イベント サブスクリプション用のテンプレート
-      href: event-subscription-template.md
     - name: イベント配信の監視
       href: monitor-event-delivery.md
 - name: リファレンス

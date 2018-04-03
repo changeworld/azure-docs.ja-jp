@@ -1,25 +1,25 @@
 ---
-title: "Azure IT オペレーター向けファースト ステップ ガイド | Microsoft Docs"
-description: "Azure IT オペレーター向けファースト ステップ ガイド"
-services: 
-documentationcenter: 
+title: Azure IT オペレーター向けファースト ステップ ガイド | Microsoft Docs
+description: Azure IT オペレーター向けファースト ステップ ガイド
+services: ''
+documentationcenter: ''
 author: neilpeterson
 manager: timlt
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
-ms.devlang: 
-ms.topic: 
-ms.tgt_pltfrm: 
+ms.devlang: ''
+ms.topic: ''
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.openlocfilehash: 8d7cbe27e5acfe741aeb5ed85756bf3c7ce2160b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0be60fff3d49ff39691f19cb1013e023f9f984e6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-cloud-computing-and-microsoft-azure"></a>クラウド コンピューティングと Microsoft Azure の概要
 
@@ -98,7 +98,7 @@ Azure は、そのクラウド コンピューティング プラットフォー
 
 -   Azure Storage (Azure BLOB、Queue、Table、File サービスから構成)
 
--   の接続文字列
+-   Azure SQL Database
 
 -   Azure Cosmos DB
 
@@ -485,7 +485,7 @@ ExpressRoute またはサイト間 VPN 接続を使用し、オンプレミス �
 
 Azure 仮想ネットワークはオンプレミス ネットワークに接続されるため、クロスプレミス仮想ネットワークは、組織によって使用されるアドレス空間の一意の部分を使用する必要があります。 企業内の異なる場所に特定の IP サブネットが割り当てられるのと同様に、ネットワークを拡張すると、Azure を別の場所として扱うことができます。
 
-###<a name="deploying-a-virtual-network"></a>仮想ネットワークを作成する
+### <a name="deploying-a-virtual-network"></a>仮想ネットワークを作成する
 
 仮想ネットワークのデプロイにはいくつかの選択肢があります。
 

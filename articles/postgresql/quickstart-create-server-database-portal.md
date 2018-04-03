@@ -1,6 +1,6 @@
 ---
-title: "クイック スタート - Azure Portal を使用した Azure Database for PostgreSQL サーバーの作成"
-description: "Azure Portal ユーザー インターフェイスを使用して Azure Database for PostgreSQL サーバーを作成して管理するためのクイック スタート ガイド。"
+title: クイック スタート - Azure Portal を使用した Azure Database for PostgreSQL サーバーの作成
+description: Azure Portal ユーザー インターフェイスを使用して Azure Database for PostgreSQL サーバーを作成して管理するためのクイック スタート ガイド。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 02/28/2018
-ms.openlocfilehash: 83bdc6eba35f0deaaf541f2042854764ae513fb9
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: c1acb568598184974b65d666075032e74aa49eb3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>クイック スタート: Azure Portal での Azure Database for PostgreSQL サーバーの作成
 
@@ -178,7 +178,7 @@ pgAdmin は PostgreSQL で使用されるオープンソース ツールです�
 
 1. クライアント コンピューターで pgAdmin アプリケーションを開きます。
 
-2. ツール バーからに **[オブジェクト]** に移動し、**[作成]** をポイントして、**[サーバー]** を選択します。
+2. ツール バーから **[オブジェクト]** に移動し、**[作成]** をポイントして、**[サーバー]** を選択します。
 
 3. **[作成 - サーバー]** ダイアログ ボックスの **[全般]** タブに、サーバーの一意のフレンドリ名 (**mydemoserver** など) を入力します。
 

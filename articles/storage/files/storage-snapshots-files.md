@@ -1,6 +1,6 @@
 ---
-title: "Azure Files の共有スナップショット (プレビュー) の概要 | Microsoft Docs"
-description: "共有スナップショットは、共有をバックアップする手段として、ある時点で作成された読み取り専用バージョンの Azure Files 共有です。"
+title: Azure Files の共有スナップショット (プレビュー) の概要 | Microsoft Docs
+description: 共有スナップショットは、Azure Files 共有の読み取り専用バージョンであり、共有をバックアップする手段として特定の時点で取得されます。
 services: storage
 documentationcenter: .net
 author: RenaShahMSFT
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
-ms.openlocfilehash: c309804f33fc0e5b2091e18dfe5fe3c9849a2709
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 671e3737a620d85c732a091d5a62f35f35c1d515
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="overview-of-share-snapshots-for-azure-files-preview"></a>Azure Files の共有スナップショット (プレビュー) の概要
-Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショット (プレビュー) は、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
+# <a name="overview-of-share-snapshots-for-azure-files"></a>Azure Files の共有スナップショットの概要 
+Azure Files には、ファイル共有の共有スナップショットを作成する機能があります。 共有スナップショットは、その時点の共有状態をキャプチャします。 この記事では、共有スナップショットで提供される機能と、それらをカスタムのユース ケースに活用する方法を説明します。
 
 
 ## <a name="when-to-use-share-snapshots"></a>共有スナップショットを使用する目的
@@ -48,7 +48,7 @@ REST API と SMB の両方を使用して、共有のスナップショットを
 
 共有スナップショット機能は、ファイル共有レベルで提供されます。 取得は、個々のファイルを復元できるように個々のファイル レベルで提供されます。 SMB、REST API、ポータル、クライアント ライブラリ、または PowerShell/CLI ツールを使用して完全なファイル共有を復元できます。
 
-ファイル共有の共有スナップショットは、そのベース ファイル共有と同じです。 唯一の違いは、共有スナップショットの作成時刻を示すために **DateTime** 値が共有 URI に追加されることです。 たとえば、ファイル共有の URI が http://storagesample.core.file.windows.net/myshare の場合、共有スナップショット URI は次のようになります。
+ファイル共有の共有スナップショットは、そのベース ファイル共有と同じです。 唯一の違いは、共有スナップショットの作成時刻を示すために **DateTime** 値が共有 URI に追加されることです。 たとえば、ファイル共有の URI が http://storagesample.core.file.windows.net/myshare の場合、共有スナップショットの URI は次のようになります。
 ```
 http://storagesample.core.file.windows.net/myshare?snapshot=2011-03-09T01:42:34.9360000Z
 ```
@@ -98,5 +98,5 @@ Azure でインフラストラクチャを実行するときには、可能な�
 
 ## <a name="next-steps"></a>次の手順
 * [共有スナップショットの操作](storage-how-to-use-files-snapshots.md)
-* [共有スナップショットに関してよく寄せられる質問](storage-files-faq.md)
+* [共有スナップショットに関してよく寄せられる質問](storage-files-faq.md#share-snapshots)
 

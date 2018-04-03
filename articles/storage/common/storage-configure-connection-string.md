@@ -1,10 +1,10 @@
 ---
-title: "Azure Storage の接続文字列を構成する |Microsoft Docs"
-description: "Azure Storage アカウントの接続文字列を構成します。 接続文字列には、アプリケーションがストレージ アカウントに対し、そのアクセスが信頼できるものであることを実行時に証明するうえで必要な情報が格納されます。"
+title: Azure Storage の接続文字列を構成する |Microsoft Docs
+description: Azure Storage アカウントの接続文字列を構成します。 接続文字列には、アプリケーションがストレージ アカウントに対し、そのアクセスが信頼できるものであることを実行時に証明するうえで必要な情報が格納されます。
 services: storage
-documentationcenter: 
-author: tamram
-manager: timlt
+documentationcenter: ''
+author: craigshoemaker
+manager: jeconnoc
 editor: tysonn
 ms.assetid: ecb0acb5-90a9-4eb2-93e6-e9860eda5e53
 ms.service: storage
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: tamram
-ms.openlocfilehash: 192799cb44dc9a56c65a6414c1267c506252fe29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cshoe
+ms.openlocfilehash: dee0fd68ccaf80ff6e44ee10fa24bb19e220d0d5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
@@ -132,7 +132,7 @@ EndpointSuffix=core.chinacloudapi.cn;
 ## <a name="parsing-a-connection-string"></a>接続文字列の解析
 [!INCLUDE [storage-cloud-configuration-manager-include](../../../includes/storage-cloud-configuration-manager-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
 * [Azure ストレージ エクスプローラー](storage-explorers.md)
 * [Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)

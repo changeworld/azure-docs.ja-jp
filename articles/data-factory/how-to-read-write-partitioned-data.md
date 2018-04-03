@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法 | Microsoft Docs"
-description: "Azure Data Factory バージョン 2 に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法について説明します。"
+title: Azure Data Factory に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法 | Microsoft Docs
+description: Azure Data Factory バージョン 2 に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: 
+manager: craigg
+editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2018
 ms.author: shlo
-ms.openlocfilehash: 3d65158a66ec16bd13ad4ad56af90c6fd28bfe7e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: e3b6ccd1e7066ed86b3d6d2d85228688b06931c4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-read-or-write-partitioned-data-in-azure-data-factory-version-2"></a>Azure Data Factory バージョン 2 に対してパーティション分割されたデーの読み取りまたは書き込みを行う方法
 Azure Data Factory のバージョン 1 では、パーティション分割されたデータの読み取りと書き込みを SliceStart/SliceEnd/WindowStart/WindowEnd システム変数を使用してサポートしていました。 バージョン 2 では、パイプライン パラメーターと、そのパラメーターの値としてのトリガーの開始時刻/スケジュールされた時刻を使用してこの動作を実現できます。 

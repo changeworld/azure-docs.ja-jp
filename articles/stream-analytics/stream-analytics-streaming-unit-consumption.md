@@ -1,13 +1,13 @@
 ---
-title: "Azure Stream Analytics: ストリーミング ユニットの理解と調整 | Microsoft Docs"
-description: "Azure Stream Analytics のパフォーマンスに影響を与える要因を理解します。"
-keywords: "ストリーミング ユニット, クエリ パフォーマンス"
+title: 'Azure Stream Analytics: ストリーミング ユニットの理解と調整 | Microsoft Docs'
+description: Azure Stream Analytics のパフォーマンスに影響を与える要因を理解します。
+keywords: ストリーミング ユニット, クエリ パフォーマンス
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: JSeb225
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeanb
-ms.openlocfilehash: e8812f10662ee7b571e8e353074c2537d1a3181b
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 5c60b1808959c73759a78141566c5c49f0350e2f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understand-and-adjust-streaming-units"></a>ストリーミング ユニットの理解と調整
 
@@ -88,18 +88,18 @@ Azure Stream Analytics ジョブの固有の機能の 1 つに、ウィンドウ
 
 結合内の不一致のイベントの数は、クエリのメモリ使用率に影響します。 次のクエリは、クリックに結びつく広告のインプレッションを検索します。
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks 
-    INNER JOIN, impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
+    INNER JOIN impressions ON impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10.
 
 この例では、多数の広告が表示されても、ほとんどのユーザーがクリックしていない可能性があり、時間枠内にすべてのイベントを保持する必要があります。 消費されるメモリは、時間枠のサイズおよびイベント レートに比例します。 
 
 これを修復するには、結合キー (この場合は id) でパーティション分割されたイベントをイベント ハブに送信し、次に示すように **PARTITION BY** を使用して各入力パーティションをシステムが個別に処理できるようにすることでクエリをスケールアウトします。
 
-    SELECT id
+    SELECT clicks.id
     FROM clicks PARTITION BY PartitionId
     INNER JOIN impressions PARTITION BY PartitionId 
-    ON impression.PartitionId = clocks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
+    ON impression.PartitionId = clicks.PartitionId AND impressions.id = clicks.id AND DATEDIFF(hour, impressions, clicks) between 0 AND 10 
 </code>
 
 クエリは、パーティション分割されると、複数のノードに広がります。 その結果、各ノードで受信されるイベントの数が減少するため、結合ウィンドウに保持される状態のサイズが減少します。 
@@ -124,7 +124,7 @@ UDF 関数を追加すると、Azure Stream Analytics は、JavaScript ランタ
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics での並列化可能クエリの作成](stream-analytics-parallelization.md)
 * [スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 

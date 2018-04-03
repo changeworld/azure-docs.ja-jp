@@ -1,11 +1,11 @@
 ---
-title: "Azure で初めての Java Web アプリを作成する"
-description: "基本の Java アプリをデプロイして、App Service で Web アプリを実行する方法を確認します。"
+title: Azure で初めての Java Web アプリを作成する
+description: 基本の Java アプリをデプロイして、App Service で Web アプリを実行する方法を確認します。
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: rmcmurray
 manager: routlaw
-editor: 
+editor: ''
 ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 11/08/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
-ms.openlocfilehash: de72b97051daef675ceae7c7af08fb04e21cf849
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e63f8706e28a5d34cc9774cbaecde31415a4b48e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
@@ -76,7 +76,7 @@ Index.jsp ファイルで、`<body></body>` を次のマークアップに置き
 
 ## <a name="publish-the-web-app-to-azure"></a>Web アプリを Azure に発行する
 
-プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > **[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、**Azure** > 、**Azure Web アプリとして発行\** の順にクリックします。
 
 ![[Publish as Azure Web App\(Azure Web アプリとして発行\)] コンテキスト メニュー](./media/app-service-web-get-started-java/publish-as-azure-web-app-context-menu.png)
 
@@ -165,7 +165,7 @@ Azure Toolkit によって Web アプリが作成され、進行状況を示す�
 
 変更を保存します。
 
-プロジェクト エクスプローラーで、プロジェクトを右クリックし、**Azure** > 、**Azure Web アプリとして発行\** の順にクリックします。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]**、**[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
 
 **[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。ボックスには、以前に作成したアプリ サービスが表示されています。 
 

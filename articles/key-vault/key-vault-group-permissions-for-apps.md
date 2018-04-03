@@ -1,8 +1,8 @@
 ---
-title: "さまざまなアプリケーションに Azure のキー コンテナーへのアクセス許可を付与する | Microsoft Docs"
-description: "さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する方法を説明します。"
+title: さまざまなアプリケーションに Azure のキー コンテナーへのアクセス許可を付与する | Microsoft Docs
+description: さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する方法を説明します。
 services: key-vault
-documentationcenter: 
+documentationcenter: ''
 author: amitbapat
 manager: mbaldwin
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2016
 ms.author: ambapat
-ms.openlocfilehash: 14da9256def60d678ef5cae795fef1c373914b5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ddeaf184138bd48d324799ddb45248b0a0ee8eeb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="grant-permission-to-many-applications-to-access-a-key-vault"></a>さまざまなアプリケーションにキー コンテナーへのアクセス許可を付与する
 
@@ -47,13 +47,13 @@ Add-AzureADGroupMember –ObjectId $aadGroup.ObjectId -RefObjectId $spn.ObjectId
 # You can add several members to this group, in this fashion. 
  
 # Set the Key Vault ACLs 
-Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId -PermissionToKeys all –PermissionToSecrets all –PermissionToCertificates all 
+Set-AzureRmKeyVaultAccessPolicy –VaultName ContosoVault –ObjectId $aadGroup.ObjectId -PermissionsToKeys all –PermissionsToSecrets all –PermissionsToCertificates all 
  
 # Of course you can adjust the permissions as required 
 ```
 
 アプリケーションのグループに異なるアクセス許可セットを付与する必要がある場合は、そのようなアプリケーション用に別の Azure Active Directory セキュリティ グループを作成します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [キー コンテナーをセキュリティ保護する](key-vault-secure-your-key-vault.md)方法について確認します。

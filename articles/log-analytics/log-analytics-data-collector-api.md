@@ -1,11 +1,11 @@
 ---
-title: "Log Analytics HTTP データ コレクター API | Microsoft Docs"
-description: "Log Analytics HTTP データ コレクター API を使用すると、REST API を呼び出すことのできるクライアントから POST JSON データを Log Analytics リポジトリに追加できます。 この記事では、この API の使用方法について説明し、さまざまなプログラミング言語を使用してデータを発行する方法の例を紹介します。"
+title: Log Analytics HTTP データ コレクター API | Microsoft Docs
+description: Log Analytics HTTP データ コレクター API を使用すると、REST API を呼び出すことのできるクライアントから POST JSON データを Log Analytics リポジトリに追加できます。 この記事では、この API の使用方法について説明し、さまざまなプログラミング言語を使用してデータを発行する方法の例を紹介します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
-editor: 
+editor: ''
 ms.assetid: a831fd90-3f55-423b-8b20-ccbaaac2ca75
 ms.service: log-analytics
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: bwren
-ms.openlocfilehash: 5c6f2b35b48988af533612cb48da8fe79a838cf6
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 167c36d2fa9bc182b6e37c0f47f838fde1ba01df
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
@@ -40,7 +40,7 @@ Log Analytics リポジトリ内のすべてのデータは、特定の種類の
 HTTP データ コレクター API を使用するには、JavaScript Object Notation (JSON) で送信するデータを含む POST 要求を作成します。  次の 3 つの表に、各要求で必要な属性の一覧を示します。 この記事の後半で、各属性についてより詳しく説明します。
 
 ### <a name="request-uri"></a>要求 URI
-| Attribute | プロパティ |
+| 属性 | プロパティ |
 |:--- |:--- |
 | 方法 |POST |
 | URI |https://\<CustomerId\>.ods.opinsights.azure.com/api/logs?api-version=2016-04-01 |
@@ -328,7 +328,7 @@ namespace OIAPIExample
         {
             // Create a hash for the API signature
             var datestring = DateTime.UtcNow.ToString("r");
-            var jsonBytes = Encoding.UTF8.GetBytes(message);
+            var jsonBytes = Encoding.UTF8.GetBytes(json);
             string stringToHash = "POST\n" + jsonBytes.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;

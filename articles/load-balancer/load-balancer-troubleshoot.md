@@ -1,12 +1,12 @@
 ---
-title: "Azure Load Balancer のトラブルシューティング | Microsoft Docs"
-description: "Azure Load Balancer に関する既知の問題のトラブルシューティング"
+title: Azure Load Balancer のトラブルシューティング | Microsoft Docs
+description: Azure Load Balancer に関する既知の問題のトラブルシューティング
 services: load-balancer
 documentationcenter: na
 author: RamanDhillon
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: bc059221656a695bb43af0dca06df941ca77c73d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 560e2ed7cafd1018f4b64ac6d0e45134560082b6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
 
@@ -54,7 +54,7 @@ VM の状態が正常であるにもかかわらず、プローブに応答し�
 3. ポートの状態が "**リッスン中**" になっていない場合は、適切なポートを構成します。 
 4. または、"**リッスン中**" として表示されている別のポートを選択し、ロード バランサ―の構成を適宜更新します。              
 
-###<a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>原因 3: ファイアウォール、またはネットワーク セキュリティ グループが Load Balancer バックエンド プール VM 上のポートをブロックしている  
+### <a name="cause-3-firewall-or-a-network-security-group-is-blocking-the-port-on-the-load-balancer-backend-pool-vms"></a>原因 3: ファイアウォール、またはネットワーク セキュリティ グループが Load Balancer バックエンド プール VM 上のポートをブロックしている  
 VM 上のファイアウォールがプローブ ポートをブロックしているか、サブネットまたは VM 上に構成された 1 つ以上のネットワーク セキュリティ グループが、ポートへのプローブのアクセスを許可していない場合、VM は正常性プローブに応答できません。          
 
 **検証と解決策**
@@ -131,7 +131,7 @@ ILB VIP が VNet 内で構成されている場合、参加しているバック
 - VNet 内にあるバックエンド VM から TCPing でプローブ ポートの応答をテストし (psping 10.0.0.4:3389 など)、結果を記録します。
 - この ping テストで応答がなかった場合は、PsPing を実行しながら、バックエンド VM と VNet テスト VM で同時 Netsh トレースを実行し、その後、Netsh トレースを停止します。 
   
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 前の手順で問題を解決できない場合は、 [サポート チケット](https://azure.microsoft.com/support/options/)を開きます。
 

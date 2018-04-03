@@ -1,11 +1,10 @@
 ---
-title: "SQL Server ストアド プロシージャ アクティビティ"
-description: "SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure SQL Data Warehouse でストアド プロシージャを呼び出す方法について説明します。"
+title: SQL Server ストアド プロシージャ アクティビティ
+description: SQL Server ストアド プロシージャ アクティビティを使用して、Data Factory パイプラインから Azure SQL Database または Azure SQL Data Warehouse でストアド プロシージャを呼び出す方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: douglaslMS
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: 1c46ed69-4049-44ec-9b46-e90e964a4a8e
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: f6da8c18c1ac8fbcea217f41c34d50a86b001b11
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 60df540d847a1e7422e87bc375220819dac4b25c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="sql-server-stored-procedure-activity"></a>SQL Server ストアド プロシージャ アクティビティ
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -42,7 +41,7 @@ Data Factory [パイプライン](data-factory-create-pipelines.md)のデータ�
 
 ストアド プロシージャ アクティビティを使用して、社内または Azure 仮想マシン (VM) 上の次のいずれかのデータ ストアでストアド プロシージャを呼び出すことができます。 
 
-- の接続文字列
+- Azure SQL Database
 - Azure SQL Data Warehouse
 - SQL Server データベース  SQL Server を使用している場合、データベースをホストするコンピューターと同じコンピューターまたはデータベースにアクセスできる別のコンピューター上にデータ管理ゲートウェイをインストールします。 データ管理ゲートウェイは、安全かつ管理された方法でオンプレミスまたは Azure VM 上のデータ ソースをクラウド サービスに接続するコンポーネントです。 詳細については、[データ管理ゲートウェイ](data-factory-data-management-gateway.md)に関する記事をご覧ください。
 

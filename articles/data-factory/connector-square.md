@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory (Beta) を使用して Square からデータをコピーする | Microsoft Docs"
-description: "Azure Data Factory パイプラインでコピー アクティビティを使用して、Square からサポートされているシンク データ ストアへデータをコピーする方法について説明します。"
+title: Azure Data Factory (Beta) を使用して Square からデータをコピーする | Microsoft Docs
+description: Azure Data Factory パイプラインでコピー アクティビティを使用して、Square からサポートされているシンク データ ストアへデータをコピーする方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 65eab09a1fcf7e1c2411ee4b96d21ba22e3519b2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 3181ee143ac655606b5e9c98d743e30aef28b8cc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-square-using-azure-data-factory-beta"></a>Azure Data Factory (Beta) を使用して Square からデータをコピーする
 
@@ -50,7 +50,7 @@ Square のリンクされたサービスでは、次のプロパティがサポ�
 | 型 | type プロパティは **Square** に設定する必要があります。 | [はい] |
 | host | Square インスタンスの URL。 (例: mystore.mysquare.com)  | [はい] |
 | clientId | Square アプリケーションに関連付けられているクライアント ID。  | [はい] |
-| clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| clientSecret | Square アプリケーションに関連付けられているクライアント シークレット。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | redirectUri | Square アプリケーションのダッシュボードで割り当てられるリダイレクト URL。 (例: http://localhost:2500)  | [はい] |
 | useEncryptedEndpoints | データ ソースのエンドポイントが HTTPS を使用して暗号化されるかどうかを指定します。 既定値は true です。  | いいえ  |
 | useHostVerification | SSL 経由で接続するときに、サーバーの証明書内のホスト名がサーバーのホスト名と一致する必要があるかどうかを指定します。 既定値は true です。  | いいえ  |

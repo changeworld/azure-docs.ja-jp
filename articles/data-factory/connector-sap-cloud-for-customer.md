@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使用して SAP Cloud for Customer との間でデータをコピーする | Microsoft Docs"
-description: "Data Factory を使用して、SAP Cloud for Customer からサポートされるシンク データ ストアにコピーしたり、サポートされるソース データ ストアから SAP Cloud for Customer にデータをコピーしたりする方法を説明します。"
+title: Azure Data Factory を使用して SAP Cloud for Customer との間でデータをコピーする | Microsoft Docs
+description: Data Factory を使用して、SAP Cloud for Customer からサポートされるシンク データ ストアにコピーしたり、サポートされるソース データ ストアから SAP Cloud for Customer にデータをコピーしたりする方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/07/2018
 ms.author: jingwang
-ms.openlocfilehash: 4d7df73bec7306b135f5a559c2bc66ac88d88809
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 571c77a0de4bb30f5476f1bc79a7d4bd8d1cd322
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Azure Data Factory を使用して SAP Cloud for Customer (C4C) からデータをコピーする
 
@@ -47,7 +47,7 @@ SAP Cloud for Customer のリンクされたサービスでは、次のプロパ
 | 型 | type プロパティは **SapCloudForCustomer** に設定する必要があります。 | [はい] |
 | url | SAP C4C OData サービスの URL。 | [はい] |
 | username | SAP C4C に接続するためのユーザー名を指定します。 | [はい] |
-| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に格納するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
+| password | username に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString としてマークして Data Factory に安全に保管するか、[Azure Key Vault に格納されているシークレットを参照](store-credentials-in-key-vault.md)します。 | [はい] |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 | ソースの場合はいいえ、シンクの場合ははい |
 
 >[!IMPORTANT]
@@ -159,10 +159,8 @@ SAP Cloud for Customer にデータをコピーするには、コピー アク�
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 | type プロパティは **SapCloudForCustomerSink** に設定する必要があります。  | [はい] |
-| writeBehavior | 操作の書き込み動作。 “Insert” または “Update” を指定できます。 | 
-いいえ。 既定値: "Insert"。 |
-| writeBatchSize | 書き込み操作のバッチ サイズ。 最適なパフォーマンスを得るバッチ サイズは、テーブルまたはサーバーによって異なることがあります。 | 
-いいえ。 既定値: 10。 |
+| writeBehavior | 操作の書き込み動作。 “Insert” または “Update” を指定できます。 | いいえ。 既定値: "Insert"。 |
+| writeBatchSize | 書き込み操作のバッチ サイズ。 最適なパフォーマンスを得るバッチ サイズは、テーブルまたはサーバーによって異なることがあります。 | いいえ。 既定値: 10。 |
 
 **例:**
 

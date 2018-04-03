@@ -1,11 +1,11 @@
 ---
-title: "Azure Data Factory を使ってテーブルを増分コピーする | Microsoft Docs"
-description: "このチュートリアルでは、Azure SQL データベースから Azure BLOB ストレージにデータを増分コピーする Azure Data Factory パイプラインを作成します。"
+title: Azure Data Factory を使ってテーブルを増分コピーする | Microsoft Docs
+description: このチュートリアルでは、Azure SQL データベースから Azure BLOB ストレージにデータを増分コピーする Azure Data Factory パイプラインを作成します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/11/2018
 ms.author: shlo
-ms.openlocfilehash: edde9d8c6fe070e5323cf63d222c7cd6a8983e8a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 17ea97e34deb375123de12508c2c0845cd25c27a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage"></a>Azure SQL データベースから Azure BLOB ストレージにデータを増分読み込みする
 このチュートリアルでは、Azure SQL データベース内のテーブルから Azure BLOB ストレージに差分データを読み込むパイプラインを使用して Azure Data Factory を作成します。 
@@ -302,7 +302,7 @@ END
 24. パイプライン デザイナーで **[Storage Procedure Activity]\(ストレージ プロシージャ アクティビティ\)** を選択し、その名前を **StoredProceduretoWriteWatermarkActivity** に変更します。 
 
     ![ストアド プロシージャ アクティビティ - 名前](./media/tutorial-incremental-copy-portal/stored-procedure-activity-name.png)
-25. **[SQL Account]\(SQL アカウント\)** タブに切り替えて、**[リンクされたサービス]** で *[AzureSqlDatabaseLinkedService]*\* を選択します。 
+25. **[SQL Account]\(SQL アカウント\)** タブに切り替えて、**[リンクされたサービス]** で *[AzureSqlDatabaseLinkedService]* を選択します。 
 
     ![ストアド プロシージャ アクティビティ - SQL アカウント](./media/tutorial-incremental-copy-portal/sp-activity-sql-account-settings.png)
 26. **[ストアド プロシージャ]** タブに切り替えて、次の手順を実行します。 

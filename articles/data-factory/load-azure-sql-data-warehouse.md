@@ -1,21 +1,21 @@
 ---
-title: "Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み | Microsoft Docs"
-description: "Azure Data Factory を使用して Azure SQL Data Warehouse にデータをコピーします"
+title: Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み | Microsoft Docs
+description: Azure Data Factory を使用して Azure SQL Data Warehouse にデータをコピーします
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: eec6eeb3419c5f5f4c8d22398051f7cf057ac980
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 49ba61ba8cf68a39eef21b1939a3e8a6c92f8827
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Data Warehouse へのデータの読み込み
 
@@ -26,7 +26,7 @@ Azure SQL Data Warehouse は、Azure Data Factory を使用する場合にさら
 Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む際に次の利点があります。
 
 * **簡単にセットアップ**: 直感的なウィザードが示す 5 つの手順に従うだけです。スクリプトは必要ありません。
-* **豊富なデータ ストアのサポート**: オンプレミスとクラウドベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。 詳しい一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
+* **豊富なデータ ストアのサポート**: オンプレミスとクラウド ベースのデータ ストアの豊富なセットに対するサポートが組み込まれています。 詳しい一覧については、[サポートされるデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)の表をご覧ください。
 * **セキュリティとコンプライアンスへの準拠**: データは HTTPS または ExpressRoute 経由で転送されます。 グローバル サービスの存在により、データが地理的な境界を越えることはありません。
 * **PolyBase の使用による比類のないパフォーマンス**: PolyBase は、Azure SQL Data Warehouse にデータを移動するための最も効率的な方法です。 ステージング BLOB の機能を使用して、Azure Blob Storage と Data Lake Store を含むすべての種類のデータ ストアからデータを高速で読み込むことができます。 (PolyBase では Azure Blob Storage と Azure Data Lake Store が既定でサポートされます。)詳しくは、[コピー アクティビティのパフォーマンス](copy-activity-performance.md)に関する記事をご覧ください。
 
@@ -35,7 +35,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 > [!NOTE]
 > 詳しくは、「[Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする](connector-azure-sql-data-warehouse.md)」をご覧ください。
 >
-> この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Azure Data Factory バージョン 1 のコピー アクティビティ](v1/data-factory-data-movement-activities.md)に関する記事をご覧ください。
+> この記事は、現在プレビュー段階にある Azure Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Azure Data Factory バージョン 1 でのコピー アクティビティ](v1/data-factory-data-movement-activities.md)に関する記事をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -46,7 +46,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
-1. 左側のメニューで、**[新規]** > **[データ + 分析]** > **[Data Factory]** を選択します。 
+1. 左側のメニューで、**[新規]** > **[データ + 分析]** > **[データ ファクトリ]** を選択します。 
    
    ![新しいデータ ファクトリの作成](./media/load-azure-sql-data-warehouse/new-azure-data-factory-menu.png)
 2. **[新しいデータ ファクトリ]** ページで、次の画像に示されているフィールドの値を指定します。
@@ -60,7 +60,7 @@ Azure Data Factory には、Azure SQL Data Warehouse にデータを読み込む
     * **場所**: データ ファクトリの場所を選択します。 サポートされている場所のみがドロップダウン リストに表示されます。 データ ファクトリによって使用されるデータ ストアは、他の場所やリージョンにあってもかまいません。 このようなデータ ストアには、Azure Data Lake Store、Azure Storage、Azure SQL Database などがあります。
 
 3. **[作成]**を選択します。
-4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[Data Factory]** ホーム ページが表示されます。
+4. 作成が完了したら、データ ファクトリに移動します。 次の画像のように **[データ ファクトリ]** ホーム ページが表示されます。
    
    ![データ ファクトリのホーム ページ](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 

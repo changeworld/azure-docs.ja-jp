@@ -1,10 +1,11 @@
 ---
-title: "Azure AI ギャラリー コレクション | Microsoft Docs"
-description: "Azure AI ギャラリーでコレクションを発見および共有します。"
+title: Azure AI ギャラリー コレクション | Microsoft Docs
+description: Azure AI ギャラリーでコレクションを発見および共有します。
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: c834a0dc-492f-4fa4-8a48-c86bba7b2b97
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
-ms.author: garye
-ms.openlocfilehash: b7850b55baa690df22d8ebe14e9fa17fd91e0bad
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: ee34520973a482a5a7741efe1306c8a656315277
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="discover-and-share-collections-in-azure-ai-gallery"></a>Azure AI ギャラリーでコレクションを発見および共有する
 [!INCLUDE [machine-learning-gallery-item-selector](../../../includes/machine-learning-gallery-item-selector.md)]

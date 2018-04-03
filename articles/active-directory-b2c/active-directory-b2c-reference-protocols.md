@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: 認証プロトコル | Microsoft Docs"
-description: "Azure Active Directory B2C によってサポートされるプロトコルを直接使用してアプリを作成する方法"
+title: 'Azure Active Directory B2C: 認証プロトコル | Microsoft Docs'
+description: Azure Active Directory B2C によってサポートされるプロトコルを直接使用してアプリを作成する方法
 services: active-directory-b2c
-documentationcenter: 
-author: dstrockis
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 5e407d0a-73a2-4d74-ac81-3aa6c31ddcee
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
-ms.author: dastrock
-ms.openlocfilehash: eb5d0da5b723c5fef81f7d74936ae30d4366385c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 9159a1ff55ada7f2c3bdcc60a15eae5ddc7e08b2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-ad-b2c-authentication-protocols"></a>Azure AD B2C: 認証プロトコル
 Azure Active Directory B2C (Azure AD B2C) では、業界標準のプロトコルである OpenID Connect と OAuth 2.0 をサポートすることによって Identity-as-a-Service (サービスとしての ID) 機能がアプリに提供されます。 このサービスは標準に準拠していますが、これらのプロトコルには、実装によって微妙な違いが存在する場合があります。 

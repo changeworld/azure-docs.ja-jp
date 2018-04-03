@@ -1,11 +1,10 @@
 ---
-title: "データ統合サービスである Data Factory の概要 | Microsoft Docs"
-description: "データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。"
+title: データ統合サービスである Data Factory の概要 | Microsoft Docs
+description: データの移動と変換を調整、自動化するクラウド データ統合サービスである Azure Data Factory について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.assetid: cec68cb5-ca0d-473b-8ae8-35de949a009e
 ms.service: data-factory
 ms.workload: data-services
@@ -15,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: bcd0535c689bfda02b3c100b4ae3ab8bacb932e3
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 6747dc6ef482fecba7e9fb4fae5748de377051eb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

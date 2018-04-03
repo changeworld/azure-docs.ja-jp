@@ -1,11 +1,11 @@
 ---
-title: "Data Factory を使用して SQL Database をコピー先またはコピー元としてデータをコピーする | Microsoft Docs"
-description: "Data Factory を使用して、サポートされるソース データ ストアから Azure SQL Database にデータをコピーしたり、SQL Database からサポートされるシンク ストアにコピーしたりする方法を説明します。"
+title: Data Factory を使用して SQL Database をコピー先またはコピー元としてデータをコピーする | Microsoft Docs
+description: Data Factory を使用して、サポートされるソース データ ストアから Azure SQL Database にデータをコピーしたり、SQL Database からサポートされるシンク ストアにコピーしたりする方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: jingwang
-ms.openlocfilehash: a4d2ccb4b4ba27983537f26e66b5c279f427d466
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 12f673a8d3ca9c0bb03b9cd2d8c33ae866039289
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用した Azure SQL Database との間でのデータのコピー
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -40,7 +40,7 @@ ms.lasthandoff: 02/27/2018
 - シンクとして、宛先テーブルにデータを追記する、またはコピー中にカスタム ロジックを使用してストアド プロシージャを起動する。
 
 > [!IMPORTANT]
-> Azure Integration Runtime を使ってデータをコピーする場合は、[Azure サービスがサーバーにアクセスするのを許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Server ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)を構成します。 セルフホステッド Integration Runtime を使ってデータをコピーする場合は、Azure SQL Database への接続に使われるコンピューターの IP アドレスを含む適切な IP 範囲を許可するように、Azure SQL Server ファイアウォールを構成します。
+> Azure Integration Runtime を使ってデータをコピーする場合は、[Azure サービスがサーバーにアクセスするのを許可する](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)ように [Azure SQL Server ファイアウォール](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure)を構成します。 セルフホステッド Integration Runtime を使用してデータをコピーする場合は、Azure SQL Database への接続に使われるコンピューターの IP アドレスを含む適切な IP 範囲を許可するように、Azure SQL Server ファイアウォールを構成します。
 
 ## <a name="getting-started"></a>使用の開始
 

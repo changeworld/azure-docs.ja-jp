@@ -1,10 +1,11 @@
 ---
-title: "Machine Learning で Web サービス エンドポイントを作成する | Microsoft Docs"
-description: "Azure Machine Learning で Web サービス エンドポイントを作成する"
+title: Machine Learning で Web サービス エンドポイントを作成する | Microsoft Docs
+description: Azure Machine Learning で Web サービス エンドポイントを作成する
 services: machine-learning
-documentationcenter: 
-author: hiteshmadan
-manager: padou
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: 4657fc1b-5228-4950-a29e-bc709259f728
 ms.service: machine-learning
@@ -13,12 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 10/04/2016
-ms.author: himad
-ms.openlocfilehash: 6de83042779a1a4edae57499f108dcddc9d68309
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: fac284e9f0c852306d99733a879fc13c85f07768
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="creating-endpoints"></a>エンドポイントを作成する
 > [!NOTE]
@@ -54,6 +54,6 @@ ms.lasthandoff: 12/01/2017
 3. **[新規]**をクリックします。
 4. 新しいエンドポイントの名前と説明を入力します。 エンドポイントの名前は、長さが 24 文字以内で、小文字のアルファベットまたは数字で構成されている必要があります。 ログ レベルとサンプル データが有効になっているかどうかを選択します。 ログ記録の詳細については、「[Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Azure Machine Learning Web サービスを使用する方法](consume-web-services.md)。
 

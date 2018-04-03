@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: a929149f115d716bf7f9d850abe5ba97bd5a8189
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/23/2018
+---
 ### <a name="gwipnoconnection"></a>ローカル ネットワーク ゲートウェイの IP アドレスを変更するには (ゲートウェイ接続がない場合)
 
 ゲートウェイに接続していないローカル ネットワーク ゲートウェイに変更を加える場合には、以下の例を使用してください。 この値を変更するときには、同時にアドレス プレフィックスを変更することもできます。
@@ -23,7 +39,7 @@
 1. **[IP アドレス]** ボックスの IP アドレスを変更します。
 2. **[保存]** をクリックして設定を保存します。
 
-#### <a name="3-recreate-the-connection"></a>3.接続を再作成します。
+#### <a name="3-recreate-the-connection"></a>手順 3.接続を再作成します。
 
 1. VNet の仮想ネットワーク ゲートウェイに移動します  (ローカル ネットワーク ゲートウェイではありません)。
 2. 仮想ネットワーク ゲートウェイの **[設定]** セクションで、**[接続]** をクリックします。

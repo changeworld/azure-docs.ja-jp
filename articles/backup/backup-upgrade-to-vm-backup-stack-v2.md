@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 03/08/2018
-ms.author: trinadhk
-ms.openlocfilehash: b7e9f45c61d2af1940be50a368b87cd35c85b1dd
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.author: trinadhk, sogup
+ms.openlocfilehash: 6d214072bccb8b2b42828ee003dcf349985b4f43
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrade-to-vm-backup-stack-v2"></a>VM バックアップ スタック V2 へのアップグレード
 仮想マシン (VM) バックアップ スタック V2 にアップグレードすると、次の機能強化が提供されます。
@@ -49,7 +49,6 @@ ms.lasthandoff: 03/16/2018
 * これは、VM バックアップ スタックの一方向のアップグレードです。 そのため、将来のバックアップはすべて、このフローになります。 **これはサブスクリプション レベルで有効にされるので、すべての VM がこのフローになります**。 新しい機能の追加はすべて、同じスタックに基づきます。 ポリシー レベルでこれを制御する機能は、将来のリリースで予定されています。 
 * Premium ディスクを使う VM では、最初のバックアップの間に、最初のバックアップが完了するまで、VM のサイズと等しい記憶域スペースがストレージ アカウントで利用できることを確認します。 
 * 復旧ポイントの作成と復元を高速化するため、スナップショットはローカルに格納されるので、7 日の期間中、スナップショットに対応するストレージ コストが発生します。
-管理ディスクの場合は、restorePointCollections は無料であるため、"*価格は増加しません*"。 
 * Premium VM のスナップショット復旧ポイントから復元を行う場合、復元の一部として VM が作成されている間、一時的な保存場所が使われます。 
 
 ## <a name="how-to-upgrade"></a>アップグレードする方法

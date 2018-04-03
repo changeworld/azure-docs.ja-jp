@@ -1,11 +1,10 @@
 ---
-title: "Azure Data Factory のコピー アクティビティへのフォールト トレランスの追加 - 互換性のない行のスキップ | Microsoft Docs"
-description: "互換性のない行をスキップすることで、Azure Data Factory のコピー アクティビティにフォールト トレランスを追加する方法について説明します。"
+title: Azure Data Factory のコピー アクティビティへのフォールト トレランスの追加 - 互換性のない行のスキップ | Microsoft Docs
+description: 互換性のない行をスキップすることで、Azure Data Factory のコピー アクティビティにフォールト トレランスを追加する方法について説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: monicar
+manager: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,11 +13,11 @@ ms.topic: article
 ms.date: 01/05/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6e7923e2e0a23f22f7dff8c316050a1757310456
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 29c78eb850b418772126dea50b40e924b6e71423
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="add-fault-tolerance-in-copy-activity-by-skipping-incompatible-rows"></a>互換性のない行をスキップすることによるコピー アクティビティへのフォールト トレランスの追加
 > [!NOTE]

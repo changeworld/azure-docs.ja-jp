@@ -1,22 +1,21 @@
 ---
-title: "Azure Active Directory B2C: 使用状況レポート API のサンプルと定義 | Microsoft Docs"
-description: "Azure AD B2C テナントのユーザー、認証、および多要素認証に関するレポートの取得についてのガイドとサンプル"
+title: 'Azure Active Directory B2C: 使用状況レポート API のサンプルと定義 | Microsoft Docs'
+description: Azure AD B2C テナントのユーザー、認証、および多要素認証に関するレポートの取得についてのガイドとサンプル
 services: active-directory-b2c
 documentationcenter: dev-center-name
-author: rojasja
+author: davidmu1
 manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 08/04/2017
-ms.author: joroja
-ms.openlocfilehash: 6014301a026d60775634138cbdfe56bfa625508f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 3470f45683ea508dfe338c313a5307eb6c1164d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="accessing-usage-reports-in-azure-ad-b2c-via-the-reporting-api"></a>Reporting API による Azure AD B2C の使用状況レポートへのアクセス
 
@@ -118,7 +117,7 @@ if ($oauth.access_token -ne $null) {
   * アプリケーション ID は存在しますが、そのレポート期間内にデータが見つかりません。 日付や時刻のパラメーターを確認してください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ### <a name="monthly-bill-estimates-for-azure-ad"></a>Azure AD の月ごとの請求額の見積もり
 [Azure AD B2C の最新の価格](https://azure.microsoft.com/pricing/details/active-directory-b2c/)と組み合わせることで、毎日、毎週、および毎月の Azure の消費量を見積もることができます。  全体のコストに影響する可能性があるテナント動作の変更を計画する場合は、特に見積もりが役立ちます。 実際のコストは、[リンクされている Azure サブスクリプション](active-directory-b2c-how-to-enable-billing.md)で確認できます。
 

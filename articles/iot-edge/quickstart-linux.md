@@ -1,19 +1,19 @@
 ---
-title: "Azure IoT Edge + Linux クイック スタート | Microsoft Docs"
-description: "シミュレートされたエッジ デバイスで分析を実行して Azure IoT Edge を試します"
+title: Azure IoT Edge + Linux クイック スタート | Microsoft Docs
+description: シミュレートされたエッジ デバイスで分析を実行して Azure IoT Edge を試します
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 827fe91c14a44cbaf8a9bb5921e5c9962d984414
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 750f09c91a086b22df5e7557e4b6fc6a763499e2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-linux-or-mac-device---preview"></a>クイック スタート: 初めての IoT Edge モジュールを Linux または Mac デバイスにデプロイする - プレビュー
 
@@ -76,7 +76,7 @@ sudo pip install -U azure-iot-edge-runtime-ctl
 
 前のセクションで保存した IoT Edge デバイス接続文字列を使用してランタイムを構成します。
 ```bash
-sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 ランタイムを開始します。

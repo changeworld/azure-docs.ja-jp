@@ -1,23 +1,23 @@
 ---
-title: "Team Data Science Process の役割とタスク - Azure | Microsoft Docs"
-description: "データ サイエンス チーム プロジェクトの主要コンポーネント、担当者の役割、および関連するタスクの概要。"
-documentationcenter: 
+title: Team Data Science Process の役割とタスク - Azure | Microsoft Docs
+description: データ サイエンス チーム プロジェクトの主要コンポーネント、担当者の役割、および関連するタスクの概要。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: bradsev;
-ms.openlocfilehash: b502a586cdb7351d5b22c6b0db966723b8ebb7b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: bradsev
+ms.openlocfilehash: b92bb8e633aa859324f2ff46f5d76a5934007ccf
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process の役割とタスク
 
@@ -130,7 +130,7 @@ Team Data Science Process は、Microsoft が開発したフレームワーク�
 
 プロジェクト実行ワークフローの詳細な手順については、「[Execution of data science projects](project-execution.md)」(データ サイエンス プロジェクトの実行) を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process で定義されている役割とタスクの詳細な説明へのリンクを次に示します。
 
