@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 5f42bee31e3bc1a23c9b0c6de9d6748e23c94713
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Azure ファイル同期 (プレビュー) のデプロイの計画
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -160,9 +160,14 @@ Azure File Sync のプレビューは、次のリージョンでのみ利用で�
 |--------|---------------------|
 | オーストラリア東部 | ニュー サウス ウェールズ州 |
 | カナダ中部 | トロント |
+| 米国中央部 | アイオワ州 |
+| 東アジア | 香港特別行政区 |
 | 米国東部 | バージニア州 |
+| 米国東部 2 | バージニア州 |
+| 北ヨーロッパ | アイルランド |
 | 東南アジア | シンガポール |
 | 英国南部 | ロンドン |
+| 米国中西部 |
 | 西ヨーロッパ | オランダ |
 | 米国西部 | カリフォルニア |
 
@@ -172,6 +177,7 @@ Azure File Sync のプレビューは、次のリージョンでのみ利用で�
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>次の手順
+* [ファイアウォールとプロキシの設定の考慮事項](storage-sync-files-firewall-and-proxy.md)
 * [Azure Files のデプロイの計画](storage-files-planning.md)
 * [Azure Files をデプロイする](storage-files-deployment-guide.md)
 * [Azure File Sync をデプロイする](storage-sync-files-deployment-guide.md)

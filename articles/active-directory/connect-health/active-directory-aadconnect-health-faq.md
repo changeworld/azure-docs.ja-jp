@@ -1,8 +1,8 @@
 ---
-title: "Azure Active Directory Connect Health の FAQ | Microsoft Docs"
-description: "この FAQ は、Azure AD Connect Health について寄せられる質問とその回答です。 サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。"
+title: Azure Active Directory Connect Health の FAQ | Microsoft Docs
+description: この FAQ は、Azure AD Connect Health について寄せられる質問とその回答です。 サービスの課金モデル、機能、制限、サポートなど、その使用に関して多く寄せられる質問を取り上げています。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
 editor: curtand
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 312980ded8fad84f2ea4a41078597dd3a6cb8ca7
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -85,7 +85,6 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 
 **Q: Azure AD Connect Health エージェントのインストール時にサーバーを再起動する必要はありますか。**
 
-
 いいえ。 エージェントをインストールする場合、サーバーを再起動する必要はありません。 ただし、前提条件の一部のインストール手順では、サーバーの再起動が必要です。
 
 たとえば、Windows Server 2008 R2 では、.NET Framework 4.5 をインストールする際にサーバーの再起動が必要です。
@@ -102,7 +101,6 @@ Microsoft Azure AD Connect Health エージェント、AD FS、Web アプリケ�
 3. HTTP と HTTPS/Secure でプロキシ ポートが異なる場合は、**[詳細設定]** を選択します。
 
 **Q: Azure AD Connect Health では、HTTP プロキシに接続するときの基本認証がサポートされていますか。**
-
 
 いいえ。 基本認証に対して任意のユーザー名とパスワードを指定するメカニズムは、現在サポートされていません。
 
@@ -177,6 +175,9 @@ CheckForMS17-010
 
 ```
 
+**Q: PowerShell のコマンドレット <i>Get-MsolDirSyncProvisioningError</i> の場合、結果に表示される同期エラーが少ないのはなぜですか。**
+
+<i>Get MsolDirSyncProvisioningError</i> では DirSync プロビジョニング エラーのみが返されます。 また、Connect Health ポータルには、エクスポート エラーなどの他の種類の同期エラーも表示されます。 これは、Azure AD Connect の差分結果と一致します。 詳細については、[Azure AD Connect 同期エラー](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)に関するページを参照してください。
 
 
 ## <a name="related-links"></a>関連リンク

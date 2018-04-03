@@ -1,24 +1,24 @@
 ---
-title: "Azure Stack での特権エンドポイントの使用 | Microsoft Docs"
-description: "Azure Stack での特権エンドポイント (PEP) の使用方法を説明します (Azure Stack オペレーター向け)。"
+title: Azure Stack での特権エンドポイントの使用 | Microsoft Docs
+description: Azure Stack での特権エンドポイント (PEP) の使用方法を説明します (Azure Stack オペレーター向け)。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: e94775d5-d473-4c03-9f4e-ae2eada67c6c
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/23/2018
+ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: 29ac4517ec691f94f24ced81ca227cd4d1e7214e
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack での特権エンドポイントの使用
 
@@ -74,7 +74,7 @@ PEP への接続は、ハードウェア ライフサイクル ホストから�
       ```` 
    入力を求められたら、次の資格情報を使用します。
 
-      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\cloudadmin** の形式で CloudAdmin アカウントを指定します。 (ASDK の場合、ユーザー名は **azurestack\cloudadmin** です。)
+      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\accountname** の形式で CloudAdmin アカウントを指定します  (ASDK の場合、ユーザー名は **azurestack\accountname** です)。 
       - **パスワード**: インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
     
 3.  接続後、環境に応じて **[*IP アドレスまたは ERCS VM 名*]: PS>** または **[azs-ercs01]: PS>** プロンプトが変わります。 ここから `Get-Command` を実行して、利用可能なコマンドレットの一覧を表示します。
@@ -143,7 +143,7 @@ PEP への接続は、ハードウェア ライフサイクル ホストから�
       ```` 
    入力を求められたら、次の資格情報を使用します。
 
-      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\cloudadmin** の形式で CloudAdmin アカウントを指定します。 (ASDK の場合、ユーザー名は **azurestack\cloudadmin** です。)
+      - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\accountname** の形式で CloudAdmin アカウントを指定します  (ASDK の場合、ユーザー名は **azurestack\accountname** です)。 
       - **パスワード**: インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
 
 3. ローカル コンピューターに PEP セッションをインポートします

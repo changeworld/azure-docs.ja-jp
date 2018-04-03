@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/22/2018
 ms.author: billmath
-ms.openlocfilehash: 8a91960f150e9298515cd52fe192ec1abdd89f9c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c34293796860e0ab72eecedab9cd8b023237050d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
@@ -38,16 +38,23 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="what-applications-take-advantage-of-domainhint-or-loginhint-parameter-capability-of-seamless-sso"></a>どのアプリケーションがシームレス SSO の `domain_hint` または `login_hint` 機能を利用していますか。
 
-Azure AD にこれらのパラメーターを送信し、その結果、シームレス SSO を使用するサイレント サインオン エクスペリエンスをユーザーに提供するアプリケーションの一部を以下に示します。
+Azure AD にこれらのパラメーターを送信し、その結果、シームレス SSO を使用するサイレント サインオン エクスペリエンスをユーザーに提供する (つまり、ユーザーが自分のユーザー名を入力する必要がない) アプリケーションの一部を以下にリストします。
 
 | アプリケーション名 | 使用するアプリケーションの URL |
 | -- | -- |
 | アクセス パネル | myapps.microsoft.com/contoso.com |
 | Web 上の Outlook | outlook.office365.com/contoso.com |
 
-テナントの適切なアプリケーションの URL を取得するには、上記の表の "contoso.com" をご使用のドメイン名で置き換えます。
+また、アプリケーションがサインイン要求を、Azure AD の共通エンドポイント (つまり、https://login.microsoftonline.com/common/<...>) ではなく、Azure AD のテナント エンドポイント (つまり、https://login.microsoftonline.com/contoso.com/<..> または https://login.microsoftonline.com/<tenant_ID>/<..>) に送信する場合、ユーザーにはサイレント サインオン エクスペリエンスも提供されます。 これらの種類のサインイン要求を行うアプリケーションの一部を以下にリストします。
 
-他のアプリケーションにご興味がある場合は、コメント セクションからお知らせください。
+| アプリケーション名 | 使用するアプリケーションの URL |
+| -- | -- |
+| SharePoint Online | contoso.sharepoint.com |
+| Azure ポータル | portal.azure.com/contoso.com |
+
+テナントの適切なアプリケーションの URL を取得するには、上記の表の "contoso.com" をご利用のドメイン名で置き換えます。
+
+他のアプリケーションでサイレント サインオン エクスペリエンスを使用する場合は、フィードバック セクションからお知らせください。
 
 ## <a name="does-seamless-sso-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>シームレス SSO で、ユーザー名として `userPrincipalName` の代わりに `Alternate ID` をサポートしていますか。
 
