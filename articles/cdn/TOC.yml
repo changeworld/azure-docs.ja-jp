@@ -1,0 +1,158 @@
+- name: CDN のドキュメント
+  href: index.md
+- name: 概要
+  href: cdn-overview.md
+  items:
+    - name: Azure CDN とは
+      href: ../best-practices-cdn.md?toc=%2fazure%2fcdn%2ftoc.json
+- name: 作業の開始
+  items:
+    - name: Azure CDN を有効にする
+      href: cdn-create-new-endpoint.md
+- name: 方法
+  items:
+    - name: 統合
+      items:
+        - name: Web Apps
+          href: ../app-service/app-service-web-tutorial-content-delivery-network.md?toc=%2fazure%2fcdn%2ftoc.json
+        - name: Cloud Services
+          href: cdn-cloud-service-with-cdn.md
+        - name: Storage
+          items:
+            - name: ストレージ アカウントの統合
+              href: cdn-create-a-storage-account-with-cdn.md
+            - name: SAS ストレージのサポート
+              href: cdn-sas-storage-support.md
+        - name: クロス オリジン リソース共有
+          href: cdn-cors.md
+        - name: カスタム ドメインを CDN エンドポイントに追加する
+          href: cdn-map-content-to-custom-domain.md
+        - name: カスタム ドメインで HTTPS を構成する
+          href: cdn-custom-ssl.md
+    - name: コンテンツの最適化
+      items:
+        - name: 最適化の概要
+          href: cdn-optimization-overview.md
+          items:
+            - name: 大きなファイルの最適化
+              href: cdn-large-file-optimization.md
+            - name: メディア ストリーミングの最適化
+              href: cdn-media-streaming-optimization.md
+            - name: 動的サイト アクセラレーション
+              href: cdn-dynamic-site-acceleration.md
+    - name: '[管理]'
+      items:
+        - name: Azure PowerShell を使用して管理する
+          href: cdn-manage-powershell.md
+        - name: 国ごとにアクセスを制限する
+          href: cdn-restrict-access-by-country.md
+        - name: ファイル圧縮によるパフォーマンスの向上
+          href: cdn-improve-performance.md
+        - name: キャッシュ動作の制御
+          items:
+            - name: キャッシュのしくみ
+              href: cdn-how-caching-works.md
+            - name: キャッシュ規則によるキャッシュ動作の制御
+              href: cdn-caching-rules.md
+            - name: クエリ文字列によるコンテンツのキャッシュ
+              items:
+                - name: Standard レベル
+                  href: cdn-query-string.md
+                - name: Premium レベル
+                  href: cdn-query-string-premium.md
+            - name: キャッシュしたアセットを消去する
+              href: cdn-purge-endpoint.md
+            - name: キャッシュしたアセットを事前に読み込む
+              href: cdn-preload-endpoint.md
+        - name: Time to Live を構成する
+          items:
+            - name: Azure Web コンテンツ
+              href: cdn-manage-expiration-of-cloud-service-content.md
+            - name: Azure BLOB ストレージ
+              href: cdn-manage-expiration-of-blob-content.md
+        - name: 認証トークン
+          href: cdn-token-auth.md
+        - name: リソースの監視
+          href: cdn-resource-health.md
+        - name: 規則に従って動作を上書きする
+          href: cdn-rules-engine.md
+        - name: リアルタイムでアラートを受け取る
+          href: cdn-real-time-alerts.md
+        - name: HTTP/2 のサポート
+          href: cdn-http2.md
+    - name: 分析
+      items:
+        - name: Azure CDN の使用パターンを分析する
+          href: cdn-log-analysis.md
+          items:
+            - name: Azure 診断ログ
+              href: cdn-azure-diagnostic-logs.md
+            - name: Azure CDN from Verizon の分析ツール
+              items:
+                - name: Verizon からのコア レポート
+                  href: cdn-analyze-usage-patterns.md
+                - name: Verizon からのカスタム レポート
+                  href: cdn-verizon-custom-reports.md
+            - name: Azure CDN Premium from Verizon の分析ツール
+              items:
+                - name: 詳細な HTTP レポートを生成する
+                  href: cdn-advanced-http-reports.md
+                - name: リアルタイム統計情報を表示する
+                  href: cdn-real-time-stats.md
+                - name: エッジ ノードのパフォーマンスを分析する
+                  href: cdn-edge-performance.md
+    - name: 開発
+      items:
+        - name: .NET
+          href: cdn-app-dev-net.md
+        - name: Node.js
+          href: cdn-app-dev-node.md
+    - name: トラブルシューティング
+      items:
+        - name: 404 状態
+          href: cdn-troubleshoot-endpoint.md
+        - name: ファイル圧縮
+          href: cdn-troubleshoot-compression.md
+- name: リファレンス
+  items:
+    - name: ルール エンジンのリファレンス
+      href: cdn-rules-engine-reference.md
+      items:
+        - name: ルール エンジンの条件式
+          href: cdn-rules-engine-reference-conditional-expressions.md
+        - name: ルール エンジンの一致条件
+          href: cdn-rules-engine-reference-match-conditions.md
+        - name: ルール エンジンの機能
+          href: cdn-rules-engine-reference-features.md
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cdn'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.cdn
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.cdn
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.cdn
+    - name: REST ()
+      href: /rest/api/cdn/
+- name: リソース
+  items:
+    - name: Azure CDN の POP の場所
+      items:
+        - name: リージョン別の POP の場所
+          href: cdn-pop-locations.md
+        - name: 略称別の POP の場所
+          href: cdn-pop-abbreviations.md
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: MSDN フォーラム
+      href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurecdn'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cdn/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: サービスの更新情報
+      href: 'https://azure.microsoft.com/updates/?product=cdn'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-cdn'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=cdn'

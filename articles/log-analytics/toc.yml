@@ -37,8 +37,6 @@
           href: log-analytics-log-search-faq.md
     - name: Log Analytics についてよく寄せられる質問
       href: log-analytics-faq.md
-    - name: データの使用
-      href: log-analytics-usage.md
     - name: データのセキュリティ
       href: log-analytics-data-security.md
     - name: アクセスを管理する
@@ -156,7 +154,11 @@
         - name: エージェント管理
           href: log-analytics-agent-manage.md
         - name: ワークスペースのコストを管理する
-          href: log-analytics-manage-cost-storage.md
+          items:
+            - name: データのボリュームとリテンション期間
+              href: log-analytics-manage-cost-storage.md
+            - name: 使用状況の監視
+              href: log-analytics-usage.md
         - name: ワークスペースを削除する
           href: log-analytics-manage-del-workspace.md
     - name: トラブルシューティング

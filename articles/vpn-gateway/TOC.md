@@ -8,6 +8,7 @@
 # 作業の開始
 ## [ルートベースの VPN ゲートウェイの作成 - Azure Portal](create-routebased-vpn-gateway-portal.md)
 ## [ルートベースの VPN ゲートウェイの作成 - PowerShell](create-routebased-vpn-gateway-powershell.md)
+## [ルートベースの VPN ゲートウェイの作成 - CLI](create-routebased-vpn-gateway-cli.md)
 
 # 概念
 ## [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)
