@@ -1,6 +1,6 @@
 ---
-title: "仮想マシン スケール セットのあるアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs"
-description: "仮想マシン スケール セットのあるアプリケーション ゲートウェイを Azure PowerShell で作成する方法について説明します。"
+title: 仮想マシン スケール セットのあるアプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs
+description: 仮想マシン スケール セットのあるアプリケーション ゲートウェイを Azure PowerShell で作成する方法について説明します。
 services: application-gateway
 author: davidmu1
 manager: timlt

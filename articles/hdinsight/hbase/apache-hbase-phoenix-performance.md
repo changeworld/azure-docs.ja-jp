@@ -1,13 +1,13 @@
 ---
-title: "Azure HDInsight における Phoenix のパフォーマンス | Microsoft Docs"
-description: "Phoenix のパフォーマンスを最適化するためのベスト プラクティス。"
+title: Azure HDInsight における Phoenix のパフォーマンス | Microsoft Docs
+description: Phoenix のパフォーマンスを最適化するためのベスト プラクティス。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data

@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory のマイ アプリ ポータルのアクセスと使用に関するヘルプ | Microsoft Docs"
-description: "アクセス パネルへのサインイン、およびアクセス パネルでの一般的なタスクの実行に関するヘルプです。"
+title: Azure Active Directory のマイ アプリ ポータルのアクセスと使用に関するヘルプ | Microsoft Docs
+description: アクセス パネルへのサインイン、およびアクセス パネルでの一般的なタスクの実行に関するヘルプです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: c67cd675-b567-41e1-8bc2-e06fe0b38d3b
 ms.service: active-directory
 ms.workload: identity

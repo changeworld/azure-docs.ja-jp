@@ -1,13 +1,13 @@
 ---
-title: "Operations Management Suite (OMS) による HBase の監視 - Azure HDInsight | Microsoft Docs"
-description: "OMS と Azure Log Analytics を使用して Azure HDInsight HBase クラスターを監視します。"
+title: Operations Management Suite (OMS) による HBase の監視 - Azure HDInsight | Microsoft Docs
+description: OMS と Azure Log Analytics を使用して Azure HDInsight HBase クラスターを監視します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data

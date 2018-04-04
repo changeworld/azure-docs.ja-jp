@@ -1,12 +1,12 @@
 ---
-title: "Azure 診断拡張機能 1.3 以降の構成スキーマ | Microsoft Docs"
-description: "スキーマがバージョン 1.3 以降の Azure 診断は、Microsoft Azure SDK 2.4 以降に付属しています。"
+title: Azure 診断拡張機能 1.3 以降の構成スキーマ | Microsoft Docs
+description: スキーマがバージョン 1.3 以降の Azure 診断は、Microsoft Azure SDK 2.4 以降に付属しています。
 services: monitoring-and-diagnostics
 documentationcenter: .net
 author: rboucher
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na

@@ -1,8 +1,8 @@
 ---
-title: "Azure での Ansible の使用"
-description: "Ansible を使用してクラウド プロビジョニング、構成管理、およびアプリケーションのデプロイを自動化する方法の概要。"
+title: Azure での Ansible の使用
+description: Ansible を使用してクラウド プロビジョニング、構成管理、およびアプリケーションのデプロイを自動化する方法の概要。
 ms.service: ansible
-keywords: "Ansible, Azure, DevOps, 概要, クラウド プロビジョニング, 構成管理, アプリケーションのデプロイ, Ansible モジュール, Ansible プレイブック"
+keywords: Ansible, Azure, DevOps, 概要, クラウド プロビジョニング, 構成管理, アプリケーションのデプロイ, Ansible モジュール, Ansible プレイブック
 author: tomarcher
 manager: routlaw
 ms.author: tarcher

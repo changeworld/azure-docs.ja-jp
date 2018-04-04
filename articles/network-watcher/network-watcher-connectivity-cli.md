@@ -1,11 +1,11 @@
-﻿---
-title: "Azure Network Watcher との接続のトラブルシューティング - Azure CLI 2.0 | Microsoft Docs"
-description: "Azure CLI 2.0 を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。"
+---
+title: Azure Network Watcher との接続のトラブルシューティング - Azure CLI 2.0 | Microsoft Docs
+description: Azure CLI 2.0 を使用して Azure Network Watcher の接続のトラブルシューティング機能を使用する方法を説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article

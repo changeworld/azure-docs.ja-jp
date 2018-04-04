@@ -1,12 +1,12 @@
 ---
-title: "VM のネットワーク スループットのテスト | Microsoft Docs"
-description: "Azure 仮想マシンのネットワーク スループットをテストする方法について説明します。"
+title: VM のネットワーク スループットのテスト | Microsoft Docs
+description: Azure 仮想マシンのネットワーク スループットをテストする方法について説明します。
 services: virtual-network
 documentationcenter: na
 author: steveesp
 manager: Gerald DeGrace
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article

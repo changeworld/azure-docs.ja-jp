@@ -1,10 +1,10 @@
 ---
-title: "アプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs"
-description: "Azure PowerShell を使用してアプリケーション ゲートウェイを作成する方法について説明します。"
+title: アプリケーション ゲートウェイを作成する - Azure PowerShell | Microsoft Docs
+description: Azure PowerShell を使用してアプリケーション ゲートウェイを作成する方法について説明します。
 services: application-gateway
 author: davidmu1
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.devlang: azurepowershell

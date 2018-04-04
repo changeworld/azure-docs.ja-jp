@@ -1,11 +1,11 @@
 ---
-title: "Azure Resource Manager と PowerShell を使用して VPN ゲートウェイ向けにアクティブ/アクティブ S2S VPN 接続を構成する | Microsoft Docs"
-description: "この記事では、Azure Resource Manager と PowerShell を使用して Azure VPN ゲートウェイでアクティブ/アクティブ接続を構成する方法を説明します。"
+title: Azure Resource Manager と PowerShell を使用して VPN ゲートウェイ向けにアクティブ/アクティブ S2S VPN 接続を構成する | Microsoft Docs
+description: この記事では、Azure Resource Manager と PowerShell を使用して Azure VPN ゲートウェイでアクティブ/アクティブ接続を構成する方法を説明します。
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 238cd9b3-f1ce-4341-b18e-7390935604fa
 ms.service: vpn-gateway
