@@ -1,8 +1,8 @@
 ---
-title: "携帯電話向けの Microsoft Authenticator アプリ | Microsoft Docs"
-description: "Azure Authenticatior の最新バージョンにアップグレードする方法について説明します。"
+title: 携帯電話向けの Microsoft Authenticator アプリ | Microsoft Docs
+description: Azure Authenticatior の最新バージョンにアップグレードする方法について説明します。
 services: multi-factor-authentication
-documentationcenter: 
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.assetid: 3065a1ee-f253-41f0-a68d-2bd84af5ffba

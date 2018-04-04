@@ -1,13 +1,13 @@
 ---
-title: "HBase と Phoenix のバックアップとレプリケーションの設定 - Azure HDInsight | Microsoft Docs"
-description: "HBase と Phoenix のバックアップとレプリケーションを設定します。"
+title: HBase と Phoenix のバックアップとレプリケーションの設定 - Azure HDInsight | Microsoft Docs
+description: HBase と Phoenix のバックアップとレプリケーションを設定します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 tags: azure-portal
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.workload: big-data

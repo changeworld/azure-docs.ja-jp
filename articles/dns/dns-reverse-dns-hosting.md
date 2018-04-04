@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS での逆引き DNS 参照ゾーンのホスト | Microsoft Docs"
-description: "Azure DNS を使って IP アドレス範囲の逆引き DNS 参照ゾーンをホストする方法について説明します"
+title: Azure DNS での逆引き DNS 参照ゾーンのホスト | Microsoft Docs
+description: Azure DNS を使って IP アドレス範囲の逆引き DNS 参照ゾーンをホストする方法について説明します
 services: dns
 documentationcenter: na
 author: jtuliani

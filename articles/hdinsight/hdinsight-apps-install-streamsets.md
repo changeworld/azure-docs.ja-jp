@@ -1,13 +1,13 @@
 ---
-title: "発行済みアプリケーションのインストール - StreamSets Data Collector - Azure HDInsight | Microsoft Docs"
-description: "StreamSets Data Collector サードパーティ Hadoop アプリケーションをインストールして使用します。"
+title: 発行済みアプリケーションのインストール - StreamSets Data Collector - Azure HDInsight | Microsoft Docs
+description: StreamSets Data Collector サードパーティ Hadoop アプリケーションをインストールして使用します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: ashishthaps
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
-ms.assetid: 
+ms.assetid: ''
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.devlang: na

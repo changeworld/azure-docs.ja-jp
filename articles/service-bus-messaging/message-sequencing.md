@@ -1,11 +1,11 @@
 ---
-title: "Azure Service Bus のメッセージのシーケンス処理とタイムスタンプ | Microsoft Docs"
-description: "タイムスタンプを使用して、Service Bus メッセージのシーケンスと順序を保持します。"
+title: Azure Service Bus のメッセージのシーケンス処理とタイムスタンプ | Microsoft Docs
+description: タイムスタンプを使用して、Service Bus メッセージのシーケンスと順序を保持します。
 services: service-bus-messaging
-documentationcenter: 
+documentationcenter: ''
 author: clemensv
 manager: timlt
-editor: 
+editor: ''
 ms.service: service-bus-messaging
 ms.workload: na
 ms.tgt_pltfrm: na
