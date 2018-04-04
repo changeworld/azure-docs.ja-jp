@@ -1,11 +1,11 @@
 ---
-title: "新機能 Azure Active Directory のリリース ノート | Microsoft Docs"
-description: "最新のリリース ノート、既知の問題、バグの修正、非推奨になった機能、予定されている変更点など、Azure Active Directory (Azure AD) の新着情報について説明します。"
+title: 新機能 Azure Active Directory のリリース ノート | Microsoft Docs
+description: 最新のリリース ノート、既知の問題、バグの修正、非推奨になった機能、予定されている変更点など、Azure Active Directory (Azure AD) の新着情報について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 featureFlags:
 - clicktale
 ms.assetid: 06a149f7-4aa1-4fb9-a8ec-ac2633b031fb
@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/26/2018
+ms.date: 03/26/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: a30b5d08377594b8ad7e10b63a23e2a9d168af9c
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: d356535bf1a7daf45108bc790a19578108a50bb7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -39,6 +39,218 @@ Azure AD は随時改善されています。 常に最新の開発情報を把�
 -   変更の計画
 
 このページは毎月更新されるため、定期的にアクセスしてご確認ください。
+
+## <a name="march-2018"></a>2018 年 3 月
+ 
+
+### <a name="certificate-expire-notification"></a>証明書の期限切れ通知
+
+**タイプ:** 固定  
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** SSO
+ 
+ギャラリーのアプリケーションまたはギャラリー以外のアプリケーションの証明書の有効期限が近づくと、Azure AD は通知を送信します。 
+
+SAML ベースのシングル サインオン対応に構成されたエンタープライズ アプリケーションを使う一部のユーザーは、通知を受け取りませんでした。 この問題が解決されました。 Azure AD は、証明書が期限切れになる 7 日前、30 日前、60 日前に通知を送信します。 このイベントは監査ログで確認できます。 
+
+詳細については、次を参照してください。
+
+- [Azure Active Directory でのフェデレーション シングル サインオンの証明書の管理](https://docs.microsoft.com/azure/active-directory/active-directory-sso-certs)
+- [Azure Active Directory ポータルの監査アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-activity-audit-logs)
+
+ 
+---
+ 
+
+### <a name="twitter-and-github-identity-providers-in-azure-ad-b2c"></a>Azure AD B2C での Twitter および GitHub の ID プロバイダー
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** B2C - コンシューマー ID 管理  
+**製品の機能:** B2B/B2C
+ 
+Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を追加できるようになりました。 Twitter はパブリック プレビューから GA に移行します。 GitHub はパブリック プレビューでリリースされます。
+
+
+詳しくは、「[Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。
+ 
+---
+ 
+
+### <a name="app-proxy-cmdlets-in-powershell-ga-module"></a>PowerShell GA モジュールでのアプリ プロキシ コマンドレット
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** アプリケーション プロキシ  
+**製品の機能:** Access Control
+ 
+アプリケーション プロキシ コマンドレットのサポートが、PowerShell GA モジュールに組み込まれました。 この機能を使うには、PowerShell モジュールを最新の状態にしておく必要があることに注意してください。1 年以上古いモジュールでは、一部のコマンドレットが動作しない可能性があります。 
+
+
+詳しくは、「[AzureAD](https://docs.microsoft.com/powershell/module/Azuread/?view=azureadps-2.0)」をご覧ください。
+ 
+---
+ 
+### <a name="office-365-native-clients-are-supported-by-seamless-sso-using-a-non-interactive-protocol"></a>Office 365 のネイティブ クライアントが、非対話型のプロトコルを使ってシームレス SSO によりサポートされる
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+Office 365 ネイティブ クライアント (バージョン 16.0.8730.xxxx 以降) を使うユーザーは、シームレス SSO によるサイレント サインオン エクスペリエンスを利用できます。 このサポートは、Azure AD への非対話型プロトコル (WS-Trust) の追加によって提供されます。
+
+詳しくは、「[ネイティブ クライアントでのシームレス SSO によるサインインのしくみ](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-how-it-works#how-does-sign-in-on-a-native-client-with-seamless-sso-work)」をご覧ください。
+
+ 
+---
+ 
+
+### <a name="users-get-a-silent-sign-on-experience-with-seamless-sso-if-an-application-sends-sign-in-requests-to-azure-ads-tenanted-endpoints"></a>アプリケーションがサインイン要求を Azure AD のテナント エンドポイントに送信する場合、シームレス SSO によるサイレント サインオン エクスペリエンスがユーザーに提供される
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+アプリケーション (`https://contoso.sharepoint.com` など) がサインイン要求を、Azure AD の共通エンドポイント (`https://login.microsoftonline.com/common/<...>`) ではなく、Azure AD のテナント エンドポイント (つまり、`https://login.microsoftonline.com/contoso.com/<..>` または `https://login.microsoftonline.com/<tenant_ID>/<..>`) に送信する場合、シームレス SSO でサイレント サインオン エクスペリエンスがユーザーに提供されます。
+
+詳しくは、「[Azure Active Directory シームレス シングル サインオン](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)」をご覧ください。 
+
+---
+ 
+
+### <a name="need-to-add-only-one-azure-ad-url-instead-of-two-urls-previously-to-users-intranet-zone-settings-to-roll-out-seamless-sso"></a>シームレス SSO をロールアウトするには、以前のように 2 つの URL ではなく、1 つの Azure AD URL だけをユーザーのイントラネット ゾーンの設定に追加する必要がある
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+シームレス SSO をユーザーにロールアウトするには、Active Directory のグループ ポリシーを使って、ユーザーのイントラネット ゾーンの設定にただ 1 つの Azure AD URL `https://autologon.microsoftazuread-sso.com` を追加する必要があります。 以前は、2 つの URL を追加する必要がありました。
+
+詳しくは、「[Azure Active Directory シームレス シングル サインオン](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)」をご覧ください。 
+ 
+---
+ 
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery"></a>Azure AD アプリ ギャラリーで入手できる新しいフェデレーション アプリ
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Enterprise アプリ  
+**製品の機能:** サード パーティ統合
+ 
+2018 年 3 月に、フェデレーションをサポートする次の 15 個の新しいアプリをアプリ ギャラリーに追加しました。
+
+[Boxcryptor](https://docs.microsoft.com/azure/active-directory/active-directory-saas-boxcryptor-tutorial)、[CylancePROTECT](https://docs.microsoft.com/azure/active-directory/active-directory-saas-cylanceprotect-tutorial)、Wrike、[SignalFx](https://docs.microsoft.com/azure/active-directory/active-directory-saas-signalfx-tutorial)、Assistant by FirstAgenda、[YardiOne](https://docs.microsoft.com/azure/active-directory/active-directory-saas-yardione-tutorial)、Vtiger CRM、inwink、[Amplitude](https://docs.microsoft.com/azure/active-directory/active-directory-saas-amplitude-tutorial)、[Spacio](https://docs.microsoft.com/azure/active-directory/active-directory-saas-spacio-tutorial)、[ContractWorks](https://docs.microsoft.com/azure/active-directory/active-directory-saas-contractworks-tutorial)、[Bersin](https://docs.microsoft.com/azure/active-directory/active-directory-saas-bersin-tutorial)、[Mercell](https://docs.microsoft.com/azure/active-directory/active-directory-saas-mercell-tutorial)、[Trisotech Digital Enterprise Server](https://docs.microsoft.com/azure/active-directory/active-directory-saas-trisotechdigitalenterpriseserver-tutorial)、[Qumu Cloud](https://docs.microsoft.com/azure/active-directory/active-directory-saas-qumucloud-tutorial)。
+ 
+すべてのアプリケーションのドキュメントについては、[https://aka.ms/appstutorial](https://aka.ms/appstutorial) をご覧ください
+
+
+ 
+---
+ 
+
+### <a name="pim-for-azure-resources-is-generally-available"></a>Azure リソース向け PIM の一般公開
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** Privileged Identity Management  
+**製品の機能:** Privileged Identity Management
+ 
+ディレクトリ ロールに Azure AD Privileged Identity Management を使っている場合は、サブスクリプション、リソース グループ、仮想マシン、および Azure Resource Manager によってサポートされるその他のリソースなどの Azure リソース ロールに、PIM の期限付きアクセスと割り当ての機能を使うことができるようになりました。 Just-In-Time でロールをアクティブ化するときに多要素認証を適用し、承認済みの変更期間と連携してアクティブ化をスケジュールします。 さらに、このリリースでは、更新された UI、承認ワークフロー、まもなく期限切れになるロールの延長と期限が切れたロールの更新など、パブリック プレビュー期間中には使用できなかった機能強化が追加されています。
+
+詳しくは、「[Azure リソース向けの PIM (プレビュー)](https://docs.microsoft.com/azure/active-directory/privileged-identity-management/azure-pim-resource-rbac)」をご覧ください
+ 
+---
+ 
+
+### <a name="adding-optional-claims-to-your-apps-tokens-public-preview"></a>アプリ トークンへのオプション要求の追加 (パブリック プレビュー)
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+Azure AD アプリでは、JWT トークンまたは SAML トークンでカスタム要求またはオプション要求を要求できるようになりました。  これらは、サイズまたは適用性の制約のために、既定ではトークンに含まれないユーザーまたはテナントに関する要求です。  この機能は現在、v1.0 および v2.0 エンドポイントの Azure AD アプリに対するパブリック プレビューです。  追加できる要求および要求を行うためのアプリケーション マニフェストの編集方法については、ドキュメントをご覧ください。  
+
+詳しくは、「[Optional claims in Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims)」(Azure AD でのオプションの要求) をご覧ください。
+ 
+---
+ 
+
+### <a name="azure-ad-supports-pkce-for-more-secure-oauth-flows"></a>より安全な OAuth フローのための Azure AD による PKCE のサポート
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+Azure AD のドキュメントが更新されて、PKCE のサポートが記述されるようになりました。この機能は、OAuth 2.0 承認コード付与フローでのより安全な通信に対応します。  S256 とプレーンテキストの両方の code_challenge が、v1.0 と v2.0 のエンドポイントでサポートされます。 
+
+詳しくは、「[承認コードを要求する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code#request-an-authorization-code)」をご覧ください。 
+
+ 
+---
+ 
+
+### <a name="support-for-provisioning-all-user-attribute-values-available-in-the-workday-getworkers-api"></a>Workday Get_Workers API で使用可能なすべてのユーザー属性値のプロビジョニングのサポート
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** アプリ プロビジョニング  
+**製品の機能:** サード パーティ統合
+ 
+Workday から Active Directory と Azure AD への受信プロビジョニングのパブリック プレビューで、Workday Get_Workers API で使用可能なすべての属性値の抽出とプロビジョニングがサポートされるようになりました。 これにより、Workday 受信プロビジョニング コネクタの初期バージョンに付属するもの以外に、何百もの標準とカスタム属性のサポートが追加されます。
+
+詳しくは、「[Workday のユーザー属性リストをカスタマイズする](https://docs.microsoft.com/azure/active-directory/active-directory-saas-workday-inbound-tutorial#customizing-the-list-of-workday-user-attributes)」をご覧ください
+
+---
+
+
+
+### <a name="changing-group-membership-from-dynamic-to-static-and-vice-versa"></a>動的から静的または静的から動的への、グループ メンバーシップの変更
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** グループ管理  
+**製品の機能:** コラボレーション
+ 
+グループのメンバーシップの管理方法を変更することができます。 これは、システムで同じグループの名前と ID を保持する場合に便利です。グループへの既存の参照は有効のままであるため、新しいグループを作成する場合にそれらの参照を更新する必要がありません。
+Azure AD 管理センターが更新されて、この機能のサポートが追加されました。 現在では、ユーザーは、動的なメンバーシップから割り当て済みのメンバーシップに、またはその逆に、既存のグループを変換できます。 既存の PowerShell コマンドレットも引き続き使用できます。
+
+詳しくは、「[動的メンバーシップを静的に変更する、またはその逆の変更を行う](https://docs.microsoft.com/azure/active-directory/active-directory-groups-dynamic-membership-azure-portal#changing-dynamic-membership-to-static-and-vice-versa)」をご覧ください
+
+ 
+
+ 
+---
+ 
+
+### <a name="improved-sign-out-behavior-with-seamless-sso"></a>シームレス SSO でのサインアウト動作の向上
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** 認証 (ログイン)  
+**製品の機能:** ユーザー認証
+ 
+以前は、ユーザーは、Azure AD によってセキュリティ保護されたアプリケーションから明示的にサインアウトした場合であっても、ドメイン参加デバイスから企業ネットワーク内の Azure AD アプリケーションに再びアクセスしようとすると、シームレス SSO を使うサインインに自動的に戻りました。 この変更により、サインアウトがサポートされるようになります。  これにより、ユーザーは、シームレス SSO を使って自動的にサインインするのではなく、再度のサインインに使うものとして同じ Azure AD アカウントまたは異なる Azure AD アカウントを選ぶことができます。
+
+詳しくは、「[Azure Active Directory シームレス シングル サインオン](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso)」をご覧ください
+
+ 
+---
+ 
+
+### <a name="application-proxy-connector-version-154020-released"></a>アプリケーション プロキシ コネクタと バージョン 1.5.402.0 のリリース
+
+**タイプ:** 変更された機能  
+**サービス カテゴリ:** アプリケーション プロキシ  
+**製品の機能:** ID のセキュリティと保護
+ 
+このバージョンのコネクタは、11 月中に徐々にロールアウトされます。 この新しいバージョンのコネクタには、次の変更が含まれています。
+
+- コネクタは、サブドメイン レベルではなくドメイン レベルで Cookie を設定するようになります。 これにより、いっそう滑らかな SSO エクスペリエンスが提供され、冗長な認証プロンプトが表示されなくなります。
+- チャンク エンコード要求のサポート
+- 強化されたコネクタ正常性の監視 
+- 複数のバグ修正と安定性の向上
+
+詳しくは、「[Azure AD アプリケーション プロキシ コネクタを理解する](https://docs.microsoft.com/azure/active-directory/application-proxy-understand-connectors)」をご覧ください。
+
+ 
+---
+ 
+
+ 
 
 
 
