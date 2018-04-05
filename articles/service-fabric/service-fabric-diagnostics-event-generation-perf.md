@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="performance-metrics"></a>パフォーマンス メトリック
 
@@ -80,7 +80,7 @@ Reliable Services を使っている場合は、同じように `Service Fabric 
 Reliable Collections を使っている場合は、`Service Fabric Transactional Replicator` の `Avg. Transaction ms/Commit` を追加して、トランザクションあたりの平均コミット待ち時間メトリックを収集することをお勧めします。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Service Fabric における[プラットフォーム レベルでのイベント生成](service-fabric-diagnostics-event-generation-infra.md)についてさらに学習します
 * [Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)を使ってパフォーマンス メトリックを収集してください

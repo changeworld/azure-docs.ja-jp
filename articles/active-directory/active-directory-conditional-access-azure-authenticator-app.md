@@ -16,10 +16,10 @@ ms.date: 05/16/2017
 ms.author: femila
 ROBOTS: NOINDEX, NOFOLLOW
 ms.openlocfilehash: 349649e015aae7198d2c40efc3c1865cad087e8a
-ms.sourcegitcommit: 3f33787645e890ff3b73c4b3a28d90d5f814e46c
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-authenticator-for-android"></a>Android 用の Azure Authenticator
 IT 管理者から、勤務先のリソースにアクセスする際に Microsoft Azure Authenticator を使用してサインインすることが推奨される場合があります。 このアプリケーションには、次の 2 つのサインイン オプションが用意されています。

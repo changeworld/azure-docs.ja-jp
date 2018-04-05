@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 7070397f6e69b21add75bad8220f0b8ebe36d266
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="using-azure-cdn-with-cors"></a>CORS を利用した Azure CDN の使用
 ## <a name="what-is-cors"></a>CORS とは
@@ -35,7 +35,7 @@ CORS 要求には、"*簡単な要求*" と "*複雑な要求*" の 2 種類が�
 
 2. サーバーからは次のいずれかの応答が返される場合があります。
 
-   * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 次に例を示します。
+   * 許可されるオリジン サイトを示す、応答の **Access-Control-Allow-Origin** ヘッダー。 例: 
 
      `Access-Control-Allow-Origin: https://www.contoso.com`
 

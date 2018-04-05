@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: 29d53e18539f2c24dd64090b2ac6f9dd4c783961
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="transactions-in-sql-data-warehouse"></a>SQL Data Warehouse のトランザクション
 予想される通り、SQL Data Warehouse では、トランザクションは、データ ウェアハウスのワークロードの一部としてサポートされます。 ただし、SQL Data Warehouse のパフォーマンスを大規模に維持できるように、SQL Server と比べて一部の機能が制限されています。 この記事では、相違点について説明し、その他の制限事項を示します。 
@@ -175,7 +175,7 @@ SQL Data Warehouse には、トランザクションに関連する他の制限�
 * トランザクションにマークを付けることはできません。
 * ユーザー定義トランザクション内では `CREATE TABLE` のような DDL はサポートされません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 トランザクションの最適化の詳細については、[トランザクションのベスト プラクティス][Transactions best practices]に関するページを参照してください。  SQL Data Warehouse のその他のベスト プラクティスについては、[SQL Data Warehouse のベスト プラクティス][SQL Data Warehouse best practices]に関するページを参照してください。
 
 <!--Image references-->
