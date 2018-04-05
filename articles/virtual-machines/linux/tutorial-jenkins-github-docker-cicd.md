@@ -1,26 +1,26 @@
 ---
-title: "Jenkins を使用して Azure に開発パイプラインを作成する | Microsoft Docs"
-description: "コード コミットのたびに GitHub から新しい Docker コンテナーを取り込み､構築してアプリケーションを実行する Jenkins 仮想マシンの作成方法について説明します。"
+title: Jenkins を使用して Azure に開発パイプラインを作成する | Microsoft Docs
+description: コード コミットのたびに GitHub から新しい Docker コンテナーを取り込み､構築してアプリケーションを実行する Jenkins 仮想マシンの作成方法について説明します。
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-linux
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 12/15/2017
+ms.date: 03/27/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 8a595ead7da8dfa5544903bd698bfdff40555eb9
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 9250e40c491257b554333f4606cbf0b476d8db21
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-create-a-development-infrastructure-on-a-linux-vm-in-azure-with-jenkins-github-and-docker"></a>Jenkins、GitHub、Docker を使って Azure 内の Linux VM に開発インフラストラクチャを作成する方法
 アプリケーション開発のビルドおよびテスト フェーズを自動化する場合は、継続的インテグレーション/デプロイ (CI/CD) パイプラインを使用できます。 このチュートリアルでは、Azure VM で CI/CD パイプラインを作成します｡この作成は､以下のような手順で構成されます｡
@@ -39,7 +39,7 @@ ms.lasthandoff: 02/09/2018
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.22 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="create-jenkins-instance"></a>Jenkins インスタンスを作成する
-[Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 このチュートリアルでは、cloud-init ファイルを使用して、Jenkins と Docker を VM にインストールします。 Jenkins は、広く普及しているオープンソースのオートメーション サーバーで、Azure とシームレスに統合することで、継続的インテグレーション (CI) と継続的配信 (CD) が可能になります。 Jenkins の使用方法に関する詳しいチュートリアルについては、[Azure ハブでの Jenkins](https://docs.microsoft.com/azure/jenkins/) に関する記事をご覧ください。
+[Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 このチュートリアルでは、cloud-init ファイルを使用して、Jenkins と Docker を VM にインストールします。 Jenkins は、広く普及しているオープンソースのオートメーション サーバーで、Azure とシームレスに統合することで、継続的インテグレーション (CI) と継続的デリバリー (CD) が可能になります。 Jenkins の使用方法に関する詳しいチュートリアルについては、[Azure ハブでの Jenkins](https://docs.microsoft.com/azure/jenkins/) に関する記事をご覧ください。
 
 現在のシェルで、*cloud-init-jenkins.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 `sensible-editor cloud-init-jenkins.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
@@ -64,7 +64,6 @@ runcmd:
   - curl -sSL https://get.docker.com/ | sh
   - usermod -aG docker azureuser
   - usermod -aG docker jenkins
-  - touch /var/lib/jenkins/jenkins.install.InstallUtil.lastExecVersion
   - service jenkins restart
 ```
 
@@ -118,10 +117,13 @@ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 
 Web ブラウザーを開いて､`http://<publicIps>:8080` に移動します｡ 次のようにして Jenkins の初期設定を行います｡
 
-- ユーザー名 **admin** を入力し、前の手順で VM から入手した *initialAdminPassword* を入力します。
-- **[Jenkins の管理]**、**[プラグインの管理]** の順に選択します。
-- **[使用可能]** を選択し、上部のテキスト ボックスで *GitHub* を検索します。 "*GitHub プラグイン*" のボックスをオンにし、**[Download now and install after restart]\(ダウンロードして再起動後にインストール\)** を選択します。
-- **[Restart Jenkins when installation is complete and no jobs are running]\(インストールが完了してジョブが実行されていないときに Jenkins を再起動\)** のチェック ボックスをオンにし、プラグインのインストール プロセスが完了するまで待ちます。
+- **[Select plugins to install]** を選択します。
+- 上部のテキスト ボックスで *GitHub* を検索します。 *GitHub* のチェック ボックスをオンにし、**[Install]\(インストール\)** を選択します
+- 最初の管理者ユーザーを作成します。 **admin** などのユーザー名を入力し、独自の安全なパスワードを入力します。 最後に、フル ネームとメール アドレスを入力します。
+- **[Save and Finish]\(保存して終了する\)** を選択します
+- Jenkins が準備ができたら、**[Start using Jenkins]\(Jenkins の使用を開始する\)** を選択します
+  - Jenkins の使用を開始したときに Web ブラウザーに空白のページが表示された場合は、Jenkins サービスを再起動します。 SSH セッションから「`sudo service jenkins restart`」と入力し、Web ブラウザーを最新の情報に更新します。
+- 作成したユーザー名とパスワードを使用して Jenkins にログインします。
 
 
 ## <a name="create-github-webhook"></a>GitHub webhook を作成する
@@ -139,13 +141,13 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 
 
 ## <a name="create-jenkins-job"></a>Jenkins ジョブを作成する
-コード コミットなどの GitHub 内のイベントに Jenkins が応答するようにするには､Jenkins ジョブを作成します｡ 
+コード コミットなどの GitHub 内のイベントに Jenkins が応答するようにするには､Jenkins ジョブを作成します｡ 自分の GitHub フォークの URL を使用します。
 
 Jenkins Web サイトのホームページから **[Create new jobs]** を選択します。
 
 - ジョブ名として *HelloWorld* を入力します｡ **Freestyle プロジェクト**を選択し､**[OK]** をクリックします｡
-- **[General]** セクションから **GitHub** プロジェクトを選択し､フォークしたレポジトリの URL (例: *https://github.com/iainfoulds/nodejs-docs-hello-world*) を入力します｡
-- **[Source code management]** セクションから**Git** を選択し､フォークしたレポジトリ *.git* の URL を入力します(例: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*)｡
+- **[General]\(一般\)** セクションから **[GitHub project]\(GitHub プロジェクト\)** を選択し、フォークしたリポジトリの URL (例: *https://github.com/iainfoulds/nodejs-docs-hello-world*) を入力します
+- **[Source code management]\(ソース コードの管理\)** セクションで **[Git]** を選択し、フォークしたリポジトリの *.git* の URL を入力します (例: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*)
 - **[Build Triggers]** セクションから **GitHub hook trigger for GITscm polling** を選択します｡
 - **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **[Execute shell]** を選択し、コマンド ウィンドウに `echo "Testing"` を入力します。
 - ジョブ ウィンドウの下部にある **[保存]** を選択します。

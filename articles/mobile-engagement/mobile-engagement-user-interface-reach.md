@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement ユーザー インターフェイス - Reach (リーチ)"
-description: "Azure Mobile Engagement でプッシュ通知を利用してアプリケーションのユーザーに通知する方法について説明します。"
+title: Azure Mobile Engagement ユーザー インターフェイス - Reach (リーチ)
+description: Azure Mobile Engagement でプッシュ通知を利用してアプリケーションのユーザーに通知する方法について説明します。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: d96e2590-08dd-4481-a352-2c18f26a1643
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ce30456e41ff1a2f4824bcb64246ee115fdd1ef7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d999b83df7d9d467f08ce8ec72468c738e8acfa5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-reach-out-to-the-users-of-your-application-with-push-notifications"></a>プッシュ通知を利用してアプリケーションのユーザーに通知する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 この記事では、**Mobile Engagement** ポータルの **[リーチ]** タブについて説明します。 **Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。 ポータルを使い始めるには、最初に **Azure Mobile Engagement** アカウントを作成する必要があることに注意してください。 詳細については、「 [Azure Mobile Engagement アカウントの作成](mobile-engagement-create.md)」を参照してください。
 
 UI の Reach (リーチ) セクションは、プッシュ キャンペーン管理ツールで、プッシュ通知キャンペーンや機能を作成、編集、アクティブ化、完了、モニターしたり、統計を取得したりできます。また、Reach API (と低レベルのプッシュ API の一部の要素) 経由でアクセスすることも可能です。 API と UI のいずれを使用する場合でも、リーチ キャンペーンを使用する前に、Azure Mobile Engagement と Reach の両方を、SDK を使用する各プラットフォーム用のアプリケーションに統合する必要があります。

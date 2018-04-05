@@ -1,6 +1,6 @@
 ---
-title: "ネットワーク セキュリティ グループの作成 - Azure PowerShell | Microsoft Docs"
-description: "PowerShell を使用してネットワーク セキュリティ グループを作成してデプロイする方法を説明します。"
+title: ネットワーク セキュリティ グループの作成 - Azure PowerShell | Microsoft Docs
+description: PowerShell を使用してネットワーク セキュリティ グループを作成してデプロイする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -17,10 +17,10 @@ ms.date: 02/23/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 26fe67b43d63c6685d8ae7644dd7df6931a4d2a5
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/31/2018
 ---
 # <a name="create-network-security-groups-using-powershell"></a>PowerShell を使用したネットワーク セキュリティ グループの作成
 

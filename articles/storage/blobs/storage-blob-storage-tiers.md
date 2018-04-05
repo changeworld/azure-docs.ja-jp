@@ -1,11 +1,11 @@
 ---
-title: "BLOB の Azure ホット、クール、およびアーカイブ ストレージ | Microsoft Docs"
-description: "Azure Storage アカウントのホット ストレージ、クール ストレージ、アーカイブ ストレージ。"
+title: BLOB の Azure ホット、クール、およびアーカイブ ストレージ | Microsoft Docs
+description: Azure Storage アカウントのホット ストレージ、クール ストレージ、アーカイブ ストレージ。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: kuhussai
 manager: jwillis
-editor: 
+editor: ''
 ms.assetid: eb33ed4f-1b17-4fd6-82e2-8d5372800eef
 ms.service: storage
 ms.workload: storage
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/11/2017
 ms.author: kuhussai
-ms.openlocfilehash: 2adb301f1d047c7762a35880da6e6094a5afbd75
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: c62f3a92e6199f6467556054c9f58c20b6ceba2c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Azure Blob Storage: ホット、クール、アーカイブ ストレージ層
 
@@ -150,7 +150,6 @@ GPv1 アカウントと GPv2 アカウントとでは料金体系が異なりま
 はい。ストレージ アカウントの**アクセス層**属性を設定して、既定のストレージ層を変更することができます。 ストレージ層の変更は、アカウントに格納されている、層が明示的に設定されていないすべてのオブジェクトに適用されます。 ストレージ層をホットからクールに切り替えた場合、GPv2 アカウントについてのみ、階層が設定されていないすべての BLOB に関して、書き込み操作 (10,000 件単位) の料金が発生します。クールからホットへの切り替えでは、Blob Storage アカウントと GPv2 アカウントのすべての BLOB に関して、読み取り操作 (10,000 件単位) とデータ取得 (GB 単位) の両方の料金が発生します。
 
 **既定のアカウント アクセス層をアーカイブに設定することはできますか。**
-
 
 いいえ。 既定のアカウント アクセス層として設定できるのは、ホット ストレージ層とクール ストレージ層だけです。 アーカイブは、オブジェクト レベルでのみ設定することができます。
 

@@ -9,11 +9,11 @@ ms.date: 03/13/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: f56f00aabbef2cfa86264d3e962af9a9c0bafa98
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1ff1240073e25bf406e7da6b79135264376a5b3f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-policy-assignment-to-identify-non-compliant-resources-in-your-azure-environment-with-the-azure-cli"></a>Azure CLI を使用してポリシーの割り当てを作成し、Azure 環境内の準拠していないリソースを特定する
 
@@ -46,7 +46,7 @@ az policy assignment create --name 'Audit Virtual Machines without Managed Disks
 - **Name** - ポリシーの割り当てに使用する表示名。 このケースでは、"*Audit Virtual Machines without Managed Disks Assignment*" を使用します。
 - **Policy** - 割り当ての作成に使用するポリシー定義 ID。 ここでは、"*Audit Virtual Machines without Managed Disks*" というポリシー定義です ポリシー定義 ID を取得するには、次のコマンドを実行します。`az policy definition show --name 'Audit Virtual Machines without Managed Disks Assignment'`
 - **Scope** - スコープによって、ポリシーの割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。 &lt;scope&gt; は、実際のリソース グループの名前に置き換えてください。
-- **Sku** - このコマンドでは、Standard レベルのポリシーの割り当てが作成されます。 Standard レベルでは、大規模な管理、コンプライアンス評価、修復が利用できます。 現在、Standard レベルは無料です。 将来は Standard レベルが有料となります。 料金の変更に関する告知と詳細は、「[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy)」でお知らせいたします。
+- **Sku** - このコマンドでは、Standard レベルのポリシーの割り当てが作成されます。 Standard レベルでは、大規模な管理、コンプライアンス評価、修復が利用できます。 価格レベルの詳細については、「[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy)」を参照してください。
 
 
 ## <a name="identify-non-compliant-resources"></a>準拠していないリソースを特定する

@@ -1,18 +1,18 @@
 ---
-title: "Azure Site Recovery を使用して Azure リージョン間で Azure VM を移行する | Microsoft Docs"
-description: "Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移行します。"
+title: Azure Site Recovery を使用して Azure リージョン間で Azure VM を移行する | Microsoft Docs
+description: Azure Site Recovery を使用して、異なる Azure リージョン間で Azure IaaS VM を移行します。
 services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: tutorial
-ms.date: 02/27/2018
+ms.date: 03/24/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: abae7cbd21a2c7f49dc1fe85711b80dc43a10517
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 8de067ece55e13d32af6822e114cb9dab000bdff
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="migrate-azure-vms-to-another-region"></a>Azure VM を別のリージョンに移行する
 
@@ -35,7 +35,15 @@ ms.lasthandoff: 02/28/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを完了するには、移行元の Azure リージョンに Azure VM が必要です。 この他に、開始する前にいくつもの設定を確認する必要があります。
+- 移行元の Azure リージョンに Azure VM が存在する。
+- [シナリオのアーキテクチャとコンポーネント](azure-to-azure-architecture.md)を理解している。
+- [サポートの制限と要件](azure-to-azure-support-matrix.md)を確認する。
+
+
+
+## <a name="before-you-start"></a>開始する前に
+
+レプリケーションをセットアップする前に、以下の各手順を実行しておいてください。
 
 
 ### <a name="verify-target-resources"></a>ターゲット リソースの確認
@@ -114,9 +122,7 @@ Site Recovery は、サブスクリプションとリソース グループに�
 
     ![レプリケーションの有効化](media/tutorial-migrate-azure-to-azure/settings.png)
 
->[!NOTE]
-  >
-  > 現在、管理ディスクを含む Azure VM のレプリケーションはサポートされていません。 
+ 
 
 ## <a name="run-a-failover"></a>フェールオーバーの実行
 

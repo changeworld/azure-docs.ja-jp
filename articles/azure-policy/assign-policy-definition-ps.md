@@ -9,11 +9,11 @@ ms.date: 3/14/2018
 ms.topic: quickstart
 ms.service: azure-policy
 ms.custom: mvc
-ms.openlocfilehash: 9f7d32d3d1208b6fe6075f7dacdd6d350aee03e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 45c5ccd0f891a5592eee7400de108c5097f75286
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-using-the-azure-rm-powershell-module"></a>クイック スタート: Azure RM PowerShell モジュールを使用してポリシーの割り当てを作成し、準拠していないリソースを特定する
 
@@ -48,7 +48,7 @@ New-AzureRMPolicyAssignment -Name Audit Virtual Machines without Managed Disks A
 - **Name** - ポリシーの割り当てに使用する表示名。 このケースでは、"*Audit Virtual Machines without Managed Disks Assignment*" を使用します。
 - **Definition** - 割り当ての作成に使用するポリシー定義。 ここでは、"*Audit Virtual Machines without Managed Disks*" というポリシー定義です
 - **Scope** - スコープによって、ポリシーの割り当てを強制するリソースまたはリソースのグループが決まります。 サブスクリプションからリソース グループまで、適用対象は多岐にわたります。 &lt;scope&gt; は、実際のリソース グループの名前に置き換えてください。
-- **Sku** - このコマンドでは、Standard レベルのポリシーの割り当てが作成されます。 Standard レベルでは、大規模な管理、コンプライアンス評価、修復が利用できます。 現在、Standard レベルは無料です。 将来は Standard レベルが有料となります。 料金の変更に関する告知と詳細は、「[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy)」でお知らせいたします。
+- **Sku** - このコマンドでは、Standard レベルのポリシーの割り当てが作成されます。 Standard レベルでは、大規模な管理、コンプライアンス評価、修復が利用できます。 価格レベルの詳細については、「[Azure Policy の価格](https://azure.microsoft.com/pricing/details/azure-policy)」を参照してください。
 
 
 以上の手順で、準拠していないリソースを特定し、環境のコンプライアンスの状態を理解できるようになりました。

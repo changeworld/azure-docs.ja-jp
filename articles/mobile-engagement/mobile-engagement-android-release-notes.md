@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK の統合"
-description: "Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
+title: Azure Mobile Engagement Android SDK の統合
+description: Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 585341f9-3f39-459a-af42-864e400a0128
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: piyushjo
-ms.openlocfilehash: c179c39a43da0aa35e945acceacbf27fe8e328f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a01bd74649fa28e0d86cea4ed03da80326c06234
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="release-notes"></a>リリース ノート
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 
 ## <a name="431-07172017"></a>4.3.1 (07/17/2017)
 * `EngagementAgentUtils.isInDedicatedEngagementProcess` を呼び出すときに稀に発生するクラッシュを修正します。これは、`EngagementApplication` クラスでも使用されます。

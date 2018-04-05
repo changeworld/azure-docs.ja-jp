@@ -1,25 +1,24 @@
 ---
-title: "Azure Stream Analytics のトラブルシューティング ガイド | Microsoft Docs"
-description: "Stream Analytics ジョブのトラブルシューティング方法"
-keywords: "トラブルシューティング ガイド"
-documentationcenter: 
+title: Azure Stream Analytics のトラブルシューティング ガイド | Microsoft Docs
+description: Stream Analytics ジョブのトラブルシューティング方法
+keywords: トラブルシューティング ガイド
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: dcff312e4a282b15e76ea32aadb1981a496a2446
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 87e8b99cb2774966ce22c76e1afed6a754749e9d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-azure-stream-analytics"></a>Azure Stream Analytics のトラブルシューティング ガイド
 

@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes on Azure のチュートリアル - アプリケーションの更新"
-description: "AKS チュートリアル - アプリケーションの更新"
+title: Kubernetes on Azure のチュートリアル - アプリケーションの更新
+description: AKS チュートリアル - アプリケーションの更新
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 82a6b6580fbe69b11fdb8a47e2ca09c19b341bbc
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 97a7e0b8e33042739ccea9a086642d9019c15e5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="update-an-application-in-azure-container-service-aks"></a>Azure Container Service (AKS) でのアプリケーションの更新
+# <a name="tutorial-update-an-application-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) でのアプリケーションの更新
 
 Kubernetes でアプリケーションをデプロイした後で、新しいコンテナー イメージまたはイメージ バージョンを指定することによってアプリケーションを更新できます。 アプリケーションを更新するときは、デプロイの一部だけが同時に更新されるように、更新がステージングされます。 この段階的な更新プログラムを使用すると、アプリケーションの更新中も引き続きアプリケーションを実行することができます。 デプロイ エラーが発生した場合のロールバック メカニズムも提供されています。 
 
@@ -27,7 +27,7 @@ Kubernetes でアプリケーションをデプロイした後で、新しいコ
 > * Azure Container Registry へのコンテナー イメージのプッシュ
 > * 更新したコンテナー イメージのデプロイ
 
-この後のチュートリアルでは、Kubernetes クラスターを監視するように Operations Management Suite を構成します。
+この後のチュートリアルでは、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -89,7 +89,7 @@ az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginSe
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:v2
 ```
 
-[docker push][docker-push] を使用してレジストリにイメージをアップロードします。 `<acrLoginServer>` を Azure Container Registry のログイン サーバー名に置き換えます。
+[docker push][docker-push] を使用してレジストリにイメージをアップロードします。 `<acrLoginServer>` を Azure Container Registry のログイン サーバー名に置き換えます。 ACR レジストリにプッシュする際に問題が発生する場合は、[az acr login][az-acr-login] コマンドを実行していることを確認してください。
 
 ```console
 docker push <acrLoginServer>/azure-vote-front:v2
@@ -164,7 +164,7 @@ kubectl get service azure-vote-front
 > * Azure Container Registry へのコンテナー イメージのプッシュ
 > * 更新したアプリケーションのデプロイ
 
-次のチュートリアルに進み、Operations Management Suite で Kubernetes を監視する方法について学習してください。
+次のチュートリアルに進み、Log Analytics で Kubernetes を監視する方法について学習してください。
 
 > [!div class="nextstepaction"]
 > [Log Analytics で Kubernetes を監視する][aks-tutorial-monitor]
@@ -179,3 +179,4 @@ kubectl get service azure-vote-front
 <!-- LINKS - internal -->
 [aks-tutorial-prepare-app]: ./tutorial-kubernetes-prepare-app.md
 [aks-tutorial-monitor]: ./tutorial-kubernetes-monitor.md
+[az-acr-login]: https://docs.microsoft.com/cli/azure/acr#az_acr_login

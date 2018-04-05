@@ -1,29 +1,27 @@
 ---
-title: "Azure Cosmos DB ドキュメント データベースを Java で作成する | Microsoft Docs | Microsoft Docs'"
-description: "Azure Cosmos DB SQL API への接続とクエリに使用できる Java コード サンプルについて説明します"
+title: Azure Cosmos DB ドキュメント データベースを Java で作成する | Microsoft Docs | Microsoft Docs'
+description: Azure Cosmos DB SQL API への接続とクエリに使用できる Java コード サンプルについて説明します
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: 89ea62bb-c620-46d5-baa0-eefd9888557c
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 12/15/2017
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: 85f8310235e0f5b038f2b55c94fe044d1a9d9719
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 669a11368ed6ccec041701e691323a2bb2cac56a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: ドキュメント データベースを Java と Azure Portal で作成する
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)] 
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、管理対象のドキュメントやテーブル、グラフのデータベースを迅速に作成しクエリできます。
 
@@ -46,7 +44,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
-ドキュメント データベースを作成するには、Azure Cosmos DB を含んだ SQL データベース アカウントを事前に作成しておく必要があります。
+ドキュメント データベースを作成するには、Azure Cosmos DB を含んだ SQL API アカウントを事前に作成しておく必要があります。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -63,7 +61,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-sql-api-java/azure-cosmosdb-data-explorer-new-document.png)
   
-2. ここで、次の構造のドキュメントをコレクションに追加し、**[保存]** をクリックします。
+2. ここで、次の構造のドキュメントをコレクションに追加し、**[保存]** をクリックします。 コード ボックスの **[コピー]** ボタンを使用して、クリップボードに json をコピーしてください。
 
      ```json
      {
@@ -87,7 +85,7 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
     ![データ エクスプローラーの既定のクエリは `SELECT * FROM c`](./media/create-sql-api-java/azure-cosmosdb-data-explorer-query.png)
 
-2. **[フィルターの編集]** ボタンをクリックし、クエリの述語のボックスに `ORDER BY c._ts DESC` を追加してから、**[フィルターの適用]** をクリックすることでクエリを変更します。
+2. 引き続き **[ドキュメント]** タブで **[フィルターの編集]** ボタンをクリックし、クエリの述語のボックスに `ORDER BY c._ts DESC` を追加してから、**[フィルターの適用]** をクリックすることでクエリを変更します。
 
     ![ORDER BY c._ts DESC を追加し [フィルタの適用] をクリックすることで既定のクエリを変更](./media/create-sql-api-java/azure-cosmosdb-data-explorer-edit-query.png)
 
@@ -119,9 +117,11 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 これらのスニペットはすべて C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted フォルダーにインストールされている `Program.java` ファイルのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
 
-* `DocumentClient` の初期化。 [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) は Azure Cosmos DB データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
+以降のスニペットはすべて、C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted\Program.java ファイルから取得されます。
+
+* `DocumentClient` の初期化。 [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) は Azure Cosmos DB データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。 このコードの `FILLME` 部分は、このクイック スタートの中で後から更新します。
 
     ```java
     this.client = new DocumentClient("https://FILLME.documents.azure.com",
@@ -231,13 +231,15 @@ Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモ
 
     ターミナル ウィンドウに、FamilyDB データベースが作成されたという通知が表示されます。 
     
-4. キーを押してコレクションを作成します。 
+4. 任意のキーを押してデータベースを作成し、さらにもう一度キーを押してコレクションを作成します。 
 
-5. データ エクスプローラーに戻ると、FamilyDB データベースが追加されていることがわかります。
-    
-6. コンソール ウィンドウでキーを押し続けると、コードによりドキュメントが作成され、クエリが実行されます。
-    
-    プログラムの終了時に、このアプリのすべてのリソースはアカウントから削除されるので、料金は発生しません。 
+    プログラムの最後にリソースはすべて削除されます。ブラウザーでデータ エクスプローラーに戻り、FamilyDB データベースと FamilyCollection コレクションが格納されていることを確認してください。
+
+5. コンソール ウィンドウに切り替え、任意のキーを押して 1 つ目のドキュメントを作成し、もう一度キーを押して 2 つ目のドキュメントを作成します。 その後再びデータ エクスプローラーに切り替えてそれらを確認します。 
+
+6. キーを押してクエリを実行し、コンソール ウィンドウで出力を確認します。 
+
+7. 次に押すキーでリソースが削除されます。 リソースを残しておきたい場合は、コンソール ウィンドウで Ctrl キーを押しながら C キーを押してプログラムを終了します。 それ以外の場合は、料金が発生しないよう、任意のキーを押して、ご利用のアカウントからリソースを削除してください。 
 
     ![コンソール出力](./media/create-sql-api-java/console-output.png)
 

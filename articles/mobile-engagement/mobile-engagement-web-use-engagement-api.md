@@ -1,11 +1,11 @@
 ---
 title: Azure Mobile Engagement Web SDK API | Microsoft Docs
-description: "Web SDK for Azure Mobile Engagement の最新の更新プログラムと手順"
+description: Web SDK for Azure Mobile Engagement の最新の更新プログラムと手順
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8a87d5ac-d8b7-4a0d-bdee-414dbcc561b2
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: 54c22ce6a03e382b1bbde102bccc97deec249b30
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d2ae75b384b60d0383c1682a00a4fc0d19d0f43
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-the-azure-mobile-engagement-api-in-a-web-application"></a>Web アプリケーションでの Azure Mobile Engagement API の使用
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このドキュメントは、[Web アプリケーションに Mobile Engagement を統合する](mobile-engagement-web-integrate-engagement.md)方法を示すドキュメントを補足するものであり、 Azure Mobile Engagement API を使用してアプリケーションの統計情報を報告する方法について詳しく説明します。
 
 Mobile Engagement API は、 `engagement.agent` オブジェクトによって提供されます。 Azure Mobile Engagement Web SDK の既定のエイリアスは `engagement`です。 このエイリアスは SDK 構成から再定義できます。

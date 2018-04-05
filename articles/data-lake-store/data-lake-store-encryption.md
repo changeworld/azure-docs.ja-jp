@@ -1,24 +1,24 @@
 ---
-title: "Azure Data Lake Store での暗号化 | Microsoft Docs"
-description: "Azure Data Lake Store では、暗号化によってデータを保護し、企業のセキュリティ ポリシーを実装できるほか、規制上のコンプライアンス要件を満たすことができます。 この記事では、設計の概要を示すと共に、実装の技術的な側面について取り上げます。"
+title: Azure Data Lake Store での暗号化 | Microsoft Docs
+description: Azure Data Lake Store では、暗号化によってデータを保護し、企業のセキュリティ ポリシーを実装できるほか、規制上のコンプライアンス要件を満たすことができます。 この記事では、設計の概要を示すと共に、実装の技術的な側面について取り上げます。
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: esung22
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/31/2018
+ms.date: 03/26/2018
 ms.author: yagupta
-ms.openlocfilehash: 4df0ce3d705361f20fa003929fed6a019f8b2f5e
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 53d5f413f58cea7bc8eab081d46eff2ab83e7ecb
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="encryption-of-data-in-azure-data-lake-store"></a>Azure Data Lake Store でのデータの暗号化
 
@@ -62,9 +62,7 @@ Data Lake Store では、マスター暗号化キー (MEK) を管理するモー
 |データをどのように格納するか|格納する前に常に暗号化|格納する前に常に暗号化|
 |マスター暗号化キーをどこに格納するか|Key Vault|Key Vault|
 |Key Vault の外部に平文で格納される暗号化キーがあるか |いいえ |いいえ |
-|Key Vault から MEK を取得できるか|
-いいえ。 いったん Key Vault に格納された MEK は、暗号化と解読にしか使用できません。|
-いいえ。 いったん Key Vault に格納された MEK は、暗号化と解読にしか使用できません。|
+|Key Vault から MEK を取得できるか|いいえ。 いったん Key Vault に格納された MEK は、暗号化と解読にしか使用できません。|いいえ。 いったん Key Vault に格納された MEK は、暗号化と解読にしか使用できません。|
 |Key Vault インスタンスと MEK の所有者はだれか|Data Lake Store サービス|ユーザーが Key Vault インスタンスを所有し、その Key Vault インスタンスはユーザー自身の Azure サブスクリプションに属します。 Key Vault 内の MEK は、ソフトウェアまたはハードウェアで管理できます。|
 |Data Lake Store サービスの MEK へのアクセスを取り消すことができるか|いいえ |はい。 Key Vault のアクセス制御リストを管理できるほか、Data Lake Store サービスのサービス ID に対するアクセス制御エントリを削除できます。|
 |MEK を完全に削除できるか|いいえ |はい。 Key Vault から MEK を削除すると、Data Lake Store サービスを含めだれも Data Lake Store アカウント内のデータを解読できなくなります。 <br><br> Key Vault から削除する前に MEK を明示的にバックアップしておけば、その MEK を復元してデータを回復することができます。 一方、MEK をバックアップせずに Key Vault から削除した場合、その後 Data Lake Store アカウント内のデータを解読することはできません。|
@@ -108,7 +106,7 @@ MEK とそれが格納される Key Vault インスタンスの管理者が 2 �
 4.  暗号化されたデータ ブロックを永続的なストレージに格納します。
 
 > [!NOTE] 
-> パフォーマンス上の理由から、平文の DEK は短い期間メモリにキャッシュされ、その後すぐに消去されます。 このデータ暗号化キーは常に、MEK によって暗号化された状態で永続メディアに格納されます。
+> DEK は、永続メディア上であれメモリへのキャッシュ時であれ常に、MEK によって暗号化された状態で格納されます。
 
 ## <a name="key-rotation"></a>キーの交換
 

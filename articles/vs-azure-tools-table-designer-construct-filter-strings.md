@@ -1,11 +1,11 @@
 ---
-title: "テーブル デザイナーのフィルター文字列の作成 | Microsoft Docs"
-description: "テーブル デザイナー用のフィルター文字列の作成"
+title: テーブル デザイナーのフィルター文字列の作成 | Microsoft Docs
+description: テーブル デザイナー用のフィルター文字列の作成
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: a1a10ea1-687a-4ee1-a952-6b24c2fe1a22
 ms.service: storage
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
-ms.author: kraigb
-ms.openlocfilehash: 069224d84462b4955912ce1462a65298a5acc04a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 722052e351062efba85eb143b2ea7bd0136002a0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="constructing-filter-strings-for-the-table-designer"></a>テーブル デザイナー用のフィルター文字列の作成
 ## <a name="overview"></a>概要
@@ -29,7 +29,7 @@ WCF Data Services は、 [Open Data Protocol](http://go.microsoft.com/fwlink/p/?
 ## <a name="comparison-operators"></a>比較演算子
 次の論理演算子は、全種類のプロパティでサポートされます。
 
-| 論理演算子 | Description | フィルター文字列の例 |
+| 論理演算子 | [説明] | フィルター文字列の例 |
 | --- | --- | --- |
 | eq |等しい |City eq 'Redmond' |
 | gt |より大きい |Price gt 20 |
@@ -37,8 +37,8 @@ WCF Data Services は、 [Open Data Protocol](http://go.microsoft.com/fwlink/p/?
 | lt |より小さい |Price lt 20 |
 | le |以下 |Price le 100 |
 | ne |等しくない |City ne 'London' |
-| と |と |Price le 200 and Price gt 3.5 |
-| または |または |Price le 3.5 or Price gt 200 |
+| and |と |Price le 200 and Price gt 3.5 |
+| or |または |Price le 3.5 or Price gt 200 |
 | not |not |not isAvailable |
 
 フィルター文字列を作成するときに重要となる規則は次のとおりです。

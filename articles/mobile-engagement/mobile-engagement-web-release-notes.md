@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Web SDK のリリース ノート | Microsoft Docs"
-description: "Web SDK for Azure Mobile Engagement の最新の情報と手順"
+title: Azure Mobile Engagement Web SDK のリリース ノート | Microsoft Docs
+description: Web SDK for Azure Mobile Engagement の最新の情報と手順
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: cb4cda8b-df15-473a-81ee-f7c722f6397b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-ms.openlocfilehash: dc90620d284bdcae888b990f55191be18b29d6f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d8c3aef94024090cb7ca629ead2439d772317ea
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk-release-notes"></a>Azure Mobile Engagement Web SDK のリリース ノート
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 ## <a name="202-10182016"></a>2.0.2 (10/18/2016)
 * プライベート ブラウズの際に発生するクラッシュを修正しました (Safari)。
 * Cookies が無効になっているブラウザーで発生するクラッシュを修正しました。

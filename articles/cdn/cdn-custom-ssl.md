@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/07/2017
+ms.date: 03/22/2018
 ms.author: casoper
-ms.openlocfilehash: 82de79cde208cdce1ed7cbd600f1e804ff1d45ff
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.openlocfilehash: fea7121fc67944b20b8f39007edb0c0aad86aeaa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-https-on-an-azure-content-delivery-network-custom-domain"></a>Azure Content Delivery Network のカスタム ドメインで HTTPS を構成する
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 11/14/2017
 
 Microsoft は、Azure Content Delivery Network (CDN) 上のカスタム ドメインについて HTTPS プロトコルをサポートします。 HTTPS カスタム ドメインがサポートされていると、転送中のデータのセキュリティを向上させるために、セキュリティで保護されたコンテンツを、独自のドメイン名を使って SSL 経由で配信することができます。 カスタム ドメインの HTTPS を有効にするワークフローは、ワンクリックでの有効化と完全な証明書の管理によって簡略化され、すべて追加コストなしで使うことができます。
 
-転送中の Web アプリケーションの機密データのプライバシーおよびデータの整合性を確保することは不可欠です。 HTTPS プロトコルを使うことで、インターネット経由で送信される機密データを確実に暗号化できます。 HTTPS は信頼と認証を提供し、Web アプリケーションを攻撃から保護します。 既定では、Azure CDN は、CDN エンドポイントで HTTPS をサポートしています。 たとえば、Azure CDN (例: `https://contoso.azureedge.net`) から CDN エンドポイントを作成すると、既定で HTTPS が有効になります。 さらに、カスタム ドメインの HTTPS サポートを使って、カスタム ドメイン (例: `https://www.contoso.com`) でもセキュリティで保護された配信が可能です。 
+転送中の Web アプリケーションの機密データのプライバシーおよびデータの整合性を確保することは不可欠です。 HTTPS プロトコルを使うことで、インターネット経由で送信される機密データを確実に暗号化できます。 HTTPS は信頼と認証を提供し、Web アプリケーションを攻撃から保護します。 既定では、Azure CDN は、CDN エンドポイントで HTTPS をサポートしています。 たとえば、Azure CDN (例: https:\//contoso.azureedge.net) から CDN エンドポイントを作成すると、HTTPS が自動的に有効になります。 さらに、カスタム ドメインの HTTPS サポートを使って、カスタム ドメイン (例: \//www.contoso.com) でもセキュリティで保護された配信が可能です。 
 
 HTTPS の機能の主な特性は次のとおりです。
 
@@ -60,13 +60,28 @@ HTTPS の機能の主な特性は次のとおりです。
 
 ### <a name="step-2-validate-domain"></a>ステップ 2: ドメインを検証する
 
->[!IMPORTANT] 
->HTTPS をカスタム ドメイン上でアクティブにする前に、ドメインの検証を完了する必要があります。 ドメインの承認には 6 営業日が必要です。 6 営業日以内に承認されない要求は、自動的に取り消されます。 
-
-カスタム ドメインの HTTPS を有効にした後、DigiCert 証明機関 (CA) は、ドメインの [WHOIS](http://whois.domaintools.com/) 登録者情報に従って、ドメインの登録者に連絡し、ドメインの所有権を検証します。 連絡は、WHOIS に登録されているメール アドレス (既定) または電話番号で行われます。 
-
 >[!NOTE]
 >Certificate Authority Authorization (CAA) レコードに DNS プロバイダーが登録されている場合、そこには有効な CA として DigiCert が含まれている必要があります。 ドメイン所有者は CAA レコードで、その DNS プロバイダーとともに、ドメインの証明書を発行する権限のある CA を指定できます。 CA は、ドメインの証明書の依頼を受け取っても、そのドメインに CAA レコードがあり、そこに認証された発行者としてその CA がリストされていない場合は、そのドメインまたはサブドメインへの証明書の発行が禁じられます。 CAA レコードの管理については、「[Manage CAA records](https://support.dnsimple.com/articles/manage-caa-record/)」(CAA レコードを管理する) をご覧ください。 CAA レコード ツールについては、「[CAA Record Helper](https://sslmate.com/caa/)」(CAA レコード ヘルパー) をご覧ください。
+
+#### <a name="custom-domain-is-mapped-to-cdn-endpoint"></a>カスタム ドメインが CDN エンドポイントにマッピングされている
+
+カスタム ドメインをエンドポイントに追加するときに、CDN エンドポイントのホスト名にマッピングする、ドメイン レジストラーの DNS テーブルに CNAME レコードを作成しました。 この CNAME レコードがまだ存在し、そこに cdnverify サブドメインが含まれていない場合は、DigiCert 証明機関 (CA) は、この CNAME レコードを使用してカスタム ドメインの所有権を検証します。 
+
+CNAME レコードは、次の形式にする必要があります。ここで *Name* がカスタム ドメイン名で、*Value* が CDN エンドポイントのホスト名です。
+
+| Name            | type  | 値                 |
+|-----------------|-------|-----------------------|
+| www.contoso.com | CNAME | contoso.azureedge.net |
+
+CNAME レコードの詳細については、[CNAME DNS レコードの作成](https://docs.microsoft.com/en-us/azure/cdn/cdn-map-content-to-custom-domain#step-2-create-the-cname-dns-records)に関するセクションを参照してください。
+
+CNAME レコードが正しい形式である場合、DigiCert はカスタム ドメイン名を自動的に検証して、サブジェクトの別名 (SAN) 証明書に追加します。 DigiCert から検証電子メールが送信されないため、要求を承認する必要はありません。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。 「[ステップ 3: 伝達を待機する](#step-3-wait-for-propagation)」に進みます。 
+
+#### <a name="cname-record-is-not-mapped-to-cdn-endpoint"></a>CNAME レコードが CDN エンドポイントにマッピングされていない
+
+エンドポイントの CNAME レコード エントリがもう存在しない場合や、CNAME レコード エントリに cdnverify サブドメインが含まれている場合は、この手順の残りの部分に従ってください。
+
+カスタム ドメインの HTTPS を有効にした後、DigiCert 証明機関 (CA) は、ドメインの [WHOIS](http://whois.domaintools.com/) 登録者情報に従って、ドメインの登録者に連絡し、ドメインの所有権を検証します。 連絡は、WHOIS に登録されているメール アドレス (既定) または電話番号で行われます。 HTTPS をカスタム ドメイン上でアクティブにする前に、ドメインの検証を完了する必要があります。 ドメインの承認には 6 営業日が必要です。 6 営業日以内に承認されない要求は、自動的に取り消されます。 
 
 ![WHOIS レコード](./media/cdn-custom-ssl/whois-record.png)
 
@@ -88,11 +103,11 @@ postmaster@&lt;your-domain-name.com&gt;
 
 フォームの指示に従います。2 つの検証オプションがあります。
 
-- `contoso.com` などの同じルート ドメインに対して同じアカウントを使って、今後行われるすべての依頼を承認することができます。 同じルート ドメインのカスタム ドメインを追加する予定の場合は、このアプローチを使用することをお勧めします。
+- contoso.com などの同じルート ドメインに対して同じアカウントを使って、今後行われるすべての依頼を承認することができます。同じルート ドメインのカスタム ドメインを追加する予定の場合は、このアプローチを使用することをお勧めします。
 
 - この要求で使われる特定のホスト名のみを承認できます。 その後の要求では追加の承認が必要になります。
 
-DigiCert は、承認後、サブジェクト代替名 (SAN) 証明書にカスタム ドメイン名を追加します。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。
+DigiCert は、承認後、SAN 証明書にカスタム ドメイン名を追加します。 この証明書は 1 年間有効で、有効期限が切れる前に自動更新されます。
 
 ### <a name="step-3-wait-for-propagation"></a>ステップ 3: 伝達を待機する
 
@@ -102,14 +117,14 @@ DigiCert は、承認後、サブジェクト代替名 (SAN) 証明書にカス�
 
 ### <a name="operation-progress"></a>操作の進行
 
-次の表は、HTTPS を有効にするときの操作の進行を示したものです。 HTTPS を有効にした後、[カスタム ドメイン] ダイアログには 4 つの操作ステップが表示されます。 各ステップがアクティブになると、進行状況に合わせてステップの下に詳細が追加表示されます。 ステップが正常に完了すると、横に緑色のチェック マークが表示されます。 
+次の表は、HTTPS を有効にするときの操作の進行を示したものです。 HTTPS を有効にした後、[カスタム ドメイン] ダイアログには 4 つの操作ステップが表示されます。 各ステップがアクティブになると、進行状況に合わせてステップの下にサブステップの詳細が追加表示されます。 これらのサブステップのすべてが発生するわけではありません。 ステップが正常に完了すると、横に緑色のチェック マークが表示されます。 
 
-| 操作ステップ | 操作ステップの詳細 | 
+| 操作ステップ | 操作サブステップの詳細 | 
 | --- | --- |
 | 1 要求の送信 | 要求を送信しています |
 | | HTTPS 要求を送信しています。 |
 | | HTTPS 要求を正常に送信しました。 |
-| 2 ドメインの検証 | ドメインの所有権の検証を求めるメールを送信しました。 確認を待っています。 |
+| 2 ドメインの検証 | ドメインの所有権の検証を求めるメールを送信しました。 確認を待っています。 ** |
 | | ドメインの所有権が正常に検証されました。 |
 | | ドメインの所有権の検証要求が期限切れになりました (お客様から 6 日以内に返答がなかったようです)。 ドメインで HTTPS が有効になることはありません。 * |
 | | ドメインの所有権の検証要求が、お客様により拒否されました。 ドメインで HTTPS が有効になることはありません。 * |
@@ -119,6 +134,8 @@ DigiCert は、承認後、サブジェクト代替名 (SAN) 証明書にカス�
 | 4 完了 | ドメインで HTTPS を有効にしました。 |
 
 \* このメッセージは、エラーが発生しない限り表示されません。 
+
+\** CDN エンドポイントのホスト名を直接指す、カスタム ドメインの CNAME エントリがある場合、このメッセージは表示されません。
 
 要求送信前にエラーが発生した場合は、次のエラー メッセージが表示されます。
 
@@ -172,7 +189,7 @@ We encountered an unexpected error while processing your HTTPS request. Please t
 
 3. *DigiCert からドメインの検証電子メールが送られて来ない場合はどうすればよいでしょうか。*
 
-    24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。
+    24 時間以内にメールが届かない場合は、Microsoft のサポートに問い合わせてください。 エンドポイントのホスト名を直接指す、カスタム ドメインの CNAME エントリがある場合 (かつ、cdnverify サブドメイン名を使用していない場合)、ドメインの検証電子メールは送られてきません。 検証は自動的に行われます。
 
 4. *SAN 証明書を使用すると専用証明書の場合よりも安全性が低くなるでしょうか。*
     
@@ -183,10 +200,11 @@ We encountered an unexpected error while processing your HTTPS request. Please t
     現在、Verizon からのみ Azure CDN でこの機能を使用できます。 Microsoft では、数か月以内に Akamai から Azure CDN でこの機能をサポートできるように取り組んでいます。
 
 6. *DNS プロバイダーに Certificate Authority Authorization レコードが必要ですか。*
-   いいえ、Certificate Authority Authorization レコードは、現在必要ではありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
+
+    いいえ、Certificate Authority Authorization レコードは、現在必要ではありません。 ただし、所持している場合は、そこには有効な CA として DigiCert が含められている必要があります。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure CDN エンドポイントでカスタム ドメイン](./cdn-map-content-to-custom-domain.md)を設定する方法を確認してください。
 

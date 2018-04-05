@@ -1,11 +1,11 @@
 ---
-title: "Java と Maven を使用して Azure で初めての関数を作成する | Microsoft Docs"
-description: "Java と Maven を使用して、HTTP によってトリガーされる簡単な関数作成し、Azure に発行します。"
+title: Java と Maven を使用して Azure で初めての関数を作成する | Microsoft Docs
+description: Java と Maven を使用して、HTTP によってトリガーされる簡単な関数作成し、Azure に発行します。
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ"
+keywords: Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ
 ms.service: functions
 ms.devlang: java
 ms.topic: quickstart
@@ -14,11 +14,11 @@ ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: c0984075cd8e372cce09ea100378dcd4e8cddabe
-ms.sourcegitcommit: 3cdc82a5561abe564c318bd12986df63fc980a5a
+ms.openlocfilehash: 81d9d8790a750f34133f3f00dafc15c56185d7b1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Java と Maven を使用して初めての関数を作成する (プレビュー)
 
@@ -34,18 +34,25 @@ ms.lasthandoff: 01/05/2018
 ## <a name="prerequisites"></a>前提条件
 Java で関数アプリを開発するには、以下のものがインストールされている必要があります。
 
--  [.NET Core](https://www.microsoft.com/net/core) の最新バージョン。
 -  [Java Developer Kit](https://www.azul.com/downloads/zulu/) バージョン 8。
--  [Azure CLI](https://docs.microsoft.com/cli/azure)
 -  [Apache Maven](https://maven.apache.org) バージョン 3.0 以降。
--  [Node.js](https://nodejs.org/download/) バージョン 8.6 以降。
+-  [Azure CLI](https://docs.microsoft.com/cli/azure)
 
 > [!IMPORTANT] 
 > このクイックスタートを行うには、JAVA_HOME 環境変数を JDK のインストール場所に設定する必要があります。
 
 ## <a name="install-the-azure-functions-core-tools"></a>Azure Functions Core Tools のインストール
 
-[Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) では、Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。 [Node.js](https://nodejs.org/) に含まれる [npm](https://www.npmjs.com/) でツールをインストールします。
+[Azure Functions Core Tools 2.0](https://www.npmjs.com/package/azure-functions-core-tools) では、Azure Functions を記述、実行、デバッグするためのローカル開発環境が提供されます。 
+
+インストール方法については、「[Installing (インストール)](https://github.com/azure/azure-functions-core-tools#installing)」セクションにアクセスして、お使いのオペレーティング システム (Windows、Linux、Mac) に合った具体的な手順を参照してください。
+
+次の要件のインストール後、[Node.js](https://nodejs.org/) に付属する [npm](https://www.npmjs.com/) を使って手動でインストールすることもできます。
+
+-  [.NET Core](https://www.microsoft.com/net/core) の最新バージョン。
+-  [Node.js](https://nodejs.org/download/) バージョン 8.6 以降。
+
+npm ベースのインストールを続行するには、次のコマンドを実行します。
 
 ```
 npm install -g azure-functions-core-tools@core
@@ -185,6 +192,4 @@ Hello AzureFunctions!
 - 「[Azure Functions Java developer guide](functions-reference-java.md)」(Azure Functions Java 開発者ガイド) で、Java 関数の開発の詳細について確認します。
 - `azure-functions:add` Maven ターゲットを使って、異なるトリガーの新しい関数をプロジェクトに追加します。
 - Visual Studio Code でローカルに関数をデバッグします。 [Java 拡張パック](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack)をインストールし、Visual Studio Code で Functions プロジェクトを開いて、ポート 5005 に[デバッガーをアタッチ](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations)します。 その後、エディターでブレークポイントを設定し、ローカルに実行しながら関数をトリガーします。![Visual Studio Code で関数をデバッグする](media/functions-create-java-maven/vscode-debug.png)
-
-
-
+- Visual Studio Code でリモートから関数をデバッグします。 その手順については、[サーバーレス Java アプリケーション](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)に関するドキュメントを参照してください。

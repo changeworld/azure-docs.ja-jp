@@ -1,12 +1,12 @@
 ---
-title: "Azure CLI (az.py) を使用して IoT ハブを作成する | Microsoft Docs"
-description: "クロスプラットフォームの Azure CLI 2.0 (az.py) を使用して Azure IoT ハブを作成する方法。"
+title: Azure CLI (az.py) を使用して IoT ハブを作成する | Microsoft Docs
+description: クロスプラットフォームの Azure CLI 2.0 (az.py) を使用して Azure IoT ハブを作成する方法。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: azurecli
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 161089159999a4a63a39b059e69a08b7a9297445
-ms.sourcegitcommit: 933af6219266cc685d0c9009f533ca1be03aa5e9
+ms.openlocfilehash: c89ecc31754d355d6469d54dcd45e1cc2ef106f0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-an-iot-hub-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して IoT ハブを作成する
 
@@ -35,7 +35,7 @@ Azure CLI 2.0 (az.py) を使用して、Azure IoT Hub をプログラムで作�
 
 このチュートリアルを完了するには、以下が必要です。
 
-* アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 * [Azure CLI 2.0][lnk-CLI-install]。
 
 ## <a name="sign-in-and-set-your-azure-account"></a>サインインして Azure アカウントを設定する
@@ -89,7 +89,6 @@ Azure CLI を使用してリソース グループを作成してから、IoT �
 > [!NOTE]
 > 上のコマンドは、課金の対象となる S1 価格レベルに IoT ハブを作成します。 詳細については、「[Azure IoT Hub の価格][lnk-iot-pricing]」を参照してください。
 >
->
 
 ## <a name="remove-an-iot-hub"></a>IoT Hub の削除
 
@@ -107,7 +106,7 @@ az iot hub delete --name {your iot hub name} --resource-group {your resource gro
 az group delete --name {your resource group name}
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 IoT Hub の開発に関する詳細については、以下の記事をご覧ください。
 
 * [IoT Hub 開発者ガイド][lnk-devguide]

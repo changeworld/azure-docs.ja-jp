@@ -1,11 +1,11 @@
 ---
-title: "ゲーム アプリでの Azure Mobile Engagement の実装"
-description: "Azure Mobile Engagement を実装するためのゲーム アプリのシナリオ"
+title: ゲーム アプリでの Azure Mobile Engagement の実装
+description: Azure Mobile Engagement を実装するためのゲーム アプリのシナリオ
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2cafc044-4902-4058-8037-49399bf6bf7f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,14 +14,18 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96e827b57e804cc91798859bc906e49046decede
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>ゲーム アプリで Mobile Engagement を実装する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 ゲームのスタートアップが、新しい釣りベースのロールプレイング/戦略ゲーム アプリを立ち上げました。 このゲームは発売から 6 か月が経過しています。 ゲームは大成功し、数百万ものダウンロードがあり、他のスタートアップのゲーム アプリと比べ、リテンション期間が非常に長くなっています。 四半期ごとのレビュー会議で、関係者はユーザー 1 人あたりの平均収益 (ARPU) を向上させる必要があることに同意しました。 特別プランとしてゲーム内のプレミアム パッケージが提供されています。 このゲーム パックにより、ユーザーはゲームで使用する釣り糸やルアーなどの道具の外観や性能をアップグレードできるようになります。 しかし、パッケージの売上は非常に低いです。 そこで、分析ツールを使用してカスタマー エクスペリエンスを分析し、セグメント化を細分化して売上を向上させるエンゲージメント プログラムを開発することにしました。
 
 「 [Azure Mobile Engagement - 概要とベスト プラクティス](mobile-engagement-getting-started-best-practices.md) 」に基づき、エンゲージメント戦略を構築します。

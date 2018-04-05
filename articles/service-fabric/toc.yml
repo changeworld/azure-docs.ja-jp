@@ -317,10 +317,6 @@
               href: service-fabric-deploy-multiple-apps.md
         - name: コンテナー サービスの構築
           items:
-            - name: コンテナーでの証明書の使用
-              href: service-fabric-securing-containers.md
-            - name: Windows コンテナーの gMSA を設定する
-              href: service-fabric-setup-gmsa-for-windows-containers.md
             - name: Docker Compose (プレビュー)
               href: service-fabric-docker-compose.md
             - name: コンテナーとサービスのリソース ガバナンス
@@ -383,22 +379,30 @@
               href: service-fabric-reliable-actors-fabrictransportsettings.md
             - name: ReliableDictionaryActorStateProvider の構成
               href: service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md
-        - name: Maven への対応を目的とした従来の Java アプリケーションの移行
-          href: service-fabric-migrate-old-javaapp-to-use-maven.md
-        - name: セキュリティで保護された通信用のリバース プロキシの構成
-          href: service-fabric-reverseproxy-configure-secure-communication.md
         - name: ASP.NET Core サービスの構築
           href: service-fabric-add-a-web-frontend.md
         - name: セキュリティを構成する
           items:
             - name: アプリケーション シークレットの管理
               href: service-fabric-application-secret-management.md
+            - name: セキュリティで保護された通信用のリバース プロキシの構成
+              href: service-fabric-reverseproxy-configure-secure-communication.md
             - name: ローカル ユーザー アカウントまたはローカル システム アカウントでのサービス スタートアップ スクリプトの実行
               href: service-fabric-run-script-at-service-startup.md
             - name: ローカル ユーザー アカウントまたはローカル システム アカウントでのサービスの実行
               href: service-fabric-application-runas-security.md
             - name: エンドポイントのセキュリティ アクセス ポリシーの割り当て
               href: service-fabric-assign-policy-to-endpoint.md
+            - name: AD ユーザーまたは AD グループでのサービスの実行
+              href: service-fabric-run-service-as-ad-user-or-group.md
+            - name: グループ管理サービス アカウントでのサービスの実行
+              href: service-fabric-run-service-as-gmsa.md
+            - name: コンテナーでの証明書の使用
+              href: service-fabric-securing-containers.md
+            - name: Windows コンテナーの gMSA を設定する
+              href: service-fabric-setup-gmsa-for-windows-containers.md
+        - name: Maven への対応を目的とした従来の Java アプリケーションの移行
+          href: service-fabric-migrate-old-javaapp-to-use-maven.md
     - name: Windows/VS 開発環境での作業
       items:
         - name: Visual Studio でのアプリケーションの管理
@@ -501,8 +505,6 @@
               href: service-fabric-cluster-upgrade.md
             - name: アクセス制御の設定
               href: service-fabric-cluster-security-roles.md
-            - name: 構成
-              href: service-fabric-cluster-fabric-settings.md
             - name: ロード バランサーでポートを開く
               href: create-load-balancer-rule.md
             - name: クラスター証明書の管理
@@ -525,14 +527,8 @@
                   href: service-fabric-cluster-standalone-package-contents.md
             - name: スケール
               href: service-fabric-cluster-windows-server-add-remove-nodes.md
-            - name: セキュリティを構成する
-              items:
-                - name: アクセス制御の設定
-                  href: service-fabric-cluster-security-roles.md
-                - name: AD ユーザーまたは AD グループでのサービスの実行
-                  href: service-fabric-run-service-as-ad-user-or-group.md
-                - name: グループ管理サービス アカウントでのサービスの実行
-                  href: service-fabric-run-service-as-gmsa.md
+            - name: アクセス制御の設定
+              href: service-fabric-cluster-security-roles.md
             - name: 構成
               href: service-fabric-cluster-manifest.md
             - name: アップグレード
@@ -614,6 +610,8 @@
       href: /dotnet/api/overview/azure/service-fabric?view=azure-dotnet
     - name: REST ()
       href: /rest/api/servicefabric
+    - name: クラスターの設定と Fabric アップグレード ポリシーの構成
+      href: service-fabric-cluster-fabric-settings.md
     - name: サービス モデルの XML スキーマ
       href: service-fabric-service-model-schema.md
     - name: 環境変数

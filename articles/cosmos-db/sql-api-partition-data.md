@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a48c1bb246e3e8659aada614d39fdc608e5bc8d8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: fe78289938e752731ff2e830fb62ad210e12111e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-sql-api"></a>SQL API を使用した Azure Cosmos DB でのパーティション分割
 
@@ -78,7 +78,7 @@ SQL API で、パーティション キー定義を JSON パスの形式で指�
 パーティション キーの選択が、アプリケーションのパフォーマンスにどのように影響するかを見てみましょう。
 
 ## <a name="working-with-the-azure-cosmos-db-sdks"></a>Azure Cosmos DB SDK の操作
-Azure Cosmos DB に、[REST API バージョン 2015-12-16](/rest/api/documentdb/)による自動パーティション分割のサポートが追加されました。 パーティション分割コンテナーを作成するには、サポートされたいずれかの SDK プラットフォーム(.NET、Node.js、Java、Python、MongoDB) で SDK バージョン 1.6.0 以降をダウンロードする必要があります。 
+Azure Cosmos DB に、[REST API バージョン 2015-12-16](/rest/api/cosmos-db/)による自動パーティション分割のサポートが追加されました。 パーティション分割コンテナーを作成するには、サポートされたいずれかの SDK プラットフォーム(.NET、Node.js、Java、Python、MongoDB) で SDK バージョン 1.6.0 以降をダウンロードする必要があります。 
 
 ### <a name="creating-containers"></a>コンテナーの作成
 次のサンプルでは、スループット 1 秒あたり 20,000 要求ユニットのデバイスのテレメトリ データを格納するコンテナーを作成する .NET スニペットを示しています。 SDK により OfferThroughput 値が設定されます (これにより REST API に `x-ms-offer-throughput` 要求ヘッダーが設定されます)。 ここでは、パーティション キーとして `/deviceId` を設定します。 パーティション キーの選択は、残りのコンテナー メタデータ (名前、インデックス作成ポリシーなど) と共に保存されます。
@@ -225,6 +225,6 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 この記事では、SQL API で Azure Cosmos DB コンテナーのパーティション分割を使用する方法の概要について説明しました。 [パーティション分割と水平スケーリング](../cosmos-db/partition-data.md)に関する記事で、Azure Cosmos DB API を使用したパーティション分割の概念とベスト プラクティスの概要についても確認してください。 
 
 * Azure Cosmos DB のスケールとパフォーマンスのテストを行う。 サンプルについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
-* [SDK](sql-api-sdk-dotnet.md) または [REST API](/rest/api/documentdb/) を使ってコーディングを開始します。
+* [SDK](sql-api-sdk-dotnet.md) または [REST API](/rest/api/cosmos-db/) を使ってコーディングを開始します。
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します
 

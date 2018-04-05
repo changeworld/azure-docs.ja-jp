@@ -1,3 +1,4 @@
+
 # [Azure Billing のドキュメント](index.md)
 
 # 作業開始
@@ -41,6 +42,7 @@
 ### [プロファイルを編集する](billing-how-to-change-azure-account-profile.md)
 ### [支払情報を更新する](billing-how-to-change-credit-card.md)
 ### [請求書によるサブスクリプションの支払い](billing-how-to-pay-by-invoice.md)
+### [パートナー ID をリンクする](billing-partner-admin-link-started.md)
 ## [予約 VM インスタンスを管理する](billing-manage-reserved-vm-instance.md)
 ## トラブルシューティング
 ### [サインアップの問題](https://support.microsoft.com/en-us/help/4042959)

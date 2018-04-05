@@ -1,11 +1,11 @@
 ---
-title: "現行バージョンの Azure Tools にプロジェクトをアップグレードする方法 | Microsoft Docs"
-description: "Visual Studio の Azure プロジェクトを現行バージョンの Azure Tools にアップグレードする方法について説明します。"
+title: 現行バージョンの Azure Tools にプロジェクトをアップグレードする方法 | Microsoft Docs
+description: Visual Studio の Azure プロジェクトを現行バージョンの Azure Tools にアップグレードする方法について説明します。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 1d64070a-078d-468a-87f4-e6715de6475f
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/18/2016
-ms.author: kraigb
-ms.openlocfilehash: 9a35de7ca0e7161468181b21709e1bd9915d566f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: baa85d8f525701e8e9c23324e9d2619a2c50360b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-upgrade-projects-to-the-current-version-of-the-azure-tools-for-visual-studio"></a>現行バージョンの Azure Tools for Visual Studio にプロジェクトをアップグレードする方法
 ## <a name="overview"></a>概要

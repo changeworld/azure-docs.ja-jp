@@ -1,11 +1,11 @@
 ---
-title: "Azure CDN ルール エンジンの機能 | Microsoft Docs"
-description: "Azure CDN ルール エンジンの一致条件と機能に関するリファレンス ドキュメント。"
+title: Azure CDN ルール エンジンの機能 | Microsoft Docs
+description: Azure CDN ルール エンジンの一致条件と機能に関するリファレンス ドキュメント。
 services: cdn
-documentationcenter: 
+documentationcenter: ''
 author: Lichard
 manager: akucer
-editor: 
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: rli
-ms.openlocfilehash: 949b957716af2d7dfd704b4fca48afb78d0fed1e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 9f1a9343a657e076e94f6aa59fd03128ef488ac9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cdn-rules-engine-features"></a>Azure CDN ルール エンジンの機能
 このトピックでは、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる機能の詳しい説明を一覧表示します。
@@ -46,28 +46,28 @@ Name | 目的
 Name | 目的
 -----|--------
 [Bandwidth Parameters (帯域幅パラメーター)](#bandwidth-parameters) | 帯域幅調整パラメーター (たとえば ec_rate や ec_prebuf) を有効にするかどうかを決定します。
-[Bandwidth Throttling (帯域幅調整)](#bandwidth-throttling) | エッジ サーバーからの応答の帯域幅を調整します。
+[Bandwidth Throttling (帯域幅調整)](#bandwidth-throttling) | ポイント オブ プレゼンス (POP) からの応答の帯域幅を調整します。
 [Bypass Cache (キャッシュ バイパス)](#bypass-cache) | 要求がキャッシュをバイパスするかどうかを決定します。
-[Cache Control Header Treatment (Cache-Control ヘッダーの処理)](#cache-control-header-treatment) | External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、エッジ サーバーで `Cache-Control` ヘッダーの生成を制御します。
+[Cache Control Header Treatment (Cache-Control ヘッダーの処理)](#cache-control-header-treatment) | External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、POP で `Cache-Control` ヘッダーの生成を制御します。
 [Cache-Key Query String (キャッシュキー クエリ文字列)](#cache-key-query-string) | 要求に関連付けられているクエリ文字列パラメーターをキャッシュキーに含めるかどうかを決定します。
 [Cache-Key Rewrite (キャッシュキー書き換え)](#cache-key-rewrite) | 要求に関連付けられているキャッシュ キーを書き換えます。
-[Complete Cache Fill (完全キャッシュ入力)](#complete-cache-fill) | 要求の結果、エッジ サーバーで一部のキャッシュが不足したときの動作を決定します。
+[Complete Cache Fill (完全キャッシュ入力)](#complete-cache-fill) | 要求の結果、POP で一部のキャッシュが不足したときの動作を決定します。
 [Compress File Types (圧縮ファイルの種類)](#compress-file-types) | サーバーで圧縮されるファイルのファイル形式を定義します。
-[Default Internal Max-Age (既定の内部最長有効期間)](#default-internal-max-age) | エッジ サーバーと配信元サーバーの間のキャッシュ再有効化の既定の最長有効期間を決定します。
-[Expires Header Treatment (Expires ヘッダーの処理)](#expires-header-treatment) | External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、エッジ サーバーで `Expires` ヘッダーの生成を制御します。
-[External Max-Age (外部最長有効期間)](#external-max-age) | ブラウザーとエッジ サーバーの間のキャッシュ再有効化の最長有効期間を決定します。
-[Force Internal Max-Age (内部最長有効期間の強制)](#force-internal-max-age) | エッジ サーバーと配信元サーバーの間のキャッシュ再有効化の最長有効期間を決定します。
+[Default Internal Max-Age (既定の内部最長有効期間)](#default-internal-max-age) | POP と配信元サーバーの間のキャッシュ再有効化の既定の最長有効期間を決定します。
+[Expires Header Treatment (Expires ヘッダーの処理)](#expires-header-treatment) | External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、POP で `Expires` ヘッダーの生成を制御します。
+[External Max-Age (外部最長有効期間)](#external-max-age) | ブラウザーと POP の間のキャッシュ再有効化の最長有効期間を決定します。
+[Force Internal Max-Age (内部最長有効期間の強制)](#force-internal-max-age) | POP と配信元サーバーの間のキャッシュ再有効化の最長有効期間を決定します。
 [H.264 Support (HTTP Progressive Download) (H.264 サポート (HTTP プログレッシブ ダウンロード))](#h264-support-http-progressive-download) | コンテンツのストリーム配信に使用される H.264 ファイル形式の種類を決定します。
 [Honor no-cache request (キャッシュなし要求の許可)](#honor-no-cache-request) | HTTP クライアントのキャッシュなし要求を配信元サーバーに転送するかどうかを決定します。
 [Ignore Origin no-cache (配信元のキャッシュなしを無視する)](#ignore-origin-no-cache) | 配信元サーバーから提供された特定のディレクティブを CDN が無視するかどうかを決定します。
 [Ignore Unsatisfiable Ranges (満たされない範囲を無視する)](#ignore-unsatisfiable-ranges) | 要求で「416 Requested Range Not Satisfiable」状態コードが生成されるとき、クライアントに返される応答を決定します。
-[Internal Max-Stale (内部 Max-Stale)](#internal-max-stale) | エッジ サーバーが配信元サーバーでキャッシュされたアセットを再有効化できないとき、通常の有効期間を過ぎてから、キャッシュされたアセットをエッジ サーバーから提供できる期間を制御します。
+[Internal Max-Stale (内部 Max-Stale)](#internal-max-stale) | POP が配信元サーバーでキャッシュされたアセットを再有効化できないとき、通常の有効期間を過ぎてから、キャッシュされたアセットを POP から提供できる期間を制御します。
 [Partial Cache Sharing (部分キャッシュ共有)](#partial-cache-sharing) | 部分的にキャッシュされたコンテンツを要求で生成できるかどうかを決定します。
 [Prevalidate Cached Content (キャッシュされたコンテンツの事前有効化)](#prevalidate-cached-content) | TTL が期限切れになる前に、キャッシュされたコンテンツが早期再検証の対象となるかどうかを決定します。
-[Refresh Zero Byte Cache Files (ゼロバイト キャッシュ ファイルの更新)](#refresh-zero-byte-cache-files) | 0 バイトのキャッシュ資産に対する HTTP クライアントの要求をエッジ サーバーが処理する方法を決定します。
+[Refresh Zero Byte Cache Files (ゼロバイト キャッシュ ファイルの更新)](#refresh-zero-byte-cache-files) | 0 バイトのキャッシュ資産に対する HTTP クライアントの要求を POP が処理する方法を決定します。
 [Set Cacheable Status Codes (キャッシュ可能状態コードの設定)](#set-cacheable-status-codes) | 結果としてコンテンツがキャッシュされるステータス コードのセットを定義します。
 [Stale Content Delivery on Error (エラー時の古いコンテンツ配信)](#stale-content-delivery-on-error) | キャッシュの再検証中にエラーが発生したとき、または顧客の配信元サーバーから要求されたコンテンツを取得するときに、期限切れのキャッシュされたコンテンツを配信するかどうかを決定します。
-[Stale While Revalidate (古いキャッシュを返し、同時に再有効化)](#stale-while-revalidate) | 古いクライアントを要求元に提供することをエッジ サーバーに許可し、同時に再有効化することにより、パフォーマンスを改善します。
+[Stale While Revalidate (古いキャッシュを返し、同時に再有効化)](#stale-while-revalidate) | 古いクライアントを要求元に提供することを POP に許可し、同時に再有効化することにより、パフォーマンスを改善します。
 
 ## <a name="comment-feature"></a>コメント機能
 
@@ -110,7 +110,7 @@ Name | Purpose
 Edge Optimizer | Determines whether Edge Optimizer can be applied to a request.
 Edge Optimizer – Instantiate Configuration | Instantiates or activates the Edge Optimizer configuration associated with a site.
 
-###Edge Optimizer
+### Edge Optimizer
 **Purpose:** Determines whether Edge Optimizer can be applied to a request.
 
 If this feature has been enabled, then the following criteria must also be met before the request will be processed by Edge Optimizer:
@@ -128,7 +128,7 @@ Disabled|Restores the default behavior. The default behavior is to deliver conte
 **Default Behavior:** Disabled
  
 
-###Edge Optimizer - Instantiate Configuration
+### Edge Optimizer - Instantiate Configuration
 **Purpose:** Instantiates or activates the Edge Optimizer configuration associated with a site.
 
 This feature requires the ADN platform and the Edge Optimizer feature.
@@ -151,7 +151,7 @@ If the desired site does not appear in the list, then you should edit its config
 Name | 目的
 -----|--------
 [Maximum Keep-Alive Requests (最大キープアライブ要求)](#maximum-keep-alive-requests) | キープアライブ接続の最大要求数を定義します。この数に達すると終了となります。
-[Proxy Special Headers (プロキシの特殊ヘッダー)](#proxy-special-headers) | エッジ サーバーから配信元サーバーに転送される、CDN 固有の要求ヘッダーのセットを定義します。
+[Proxy Special Headers (プロキシの特殊ヘッダー)](#proxy-special-headers) | POP から配信元サーバーに転送される、CDN 固有の要求ヘッダーのセットを定義します。
 
 
 ## <a name="specialty-features"></a>特殊な機能
@@ -201,8 +201,8 @@ Name | 目的
 
 値|結果
 --|--
-有効|エッジ サーバーで帯域幅調整要求が受け入れられます。
-無効|エッジ サーバーで帯域幅調整要求が無視されます。 要求されたコンテンツは通常どおりに (つまり、帯域幅調整なしで) 提供されます。
+有効|POP で帯域幅調整要求が受け入れられます。
+無効|POP で帯域幅調整要求が無視されます。 要求されたコンテンツは通常どおりに (つまり、帯域幅調整なしで) 提供されます。
 
 **既定の動作:** Enabled。
  
@@ -212,14 +212,14 @@ Name | 目的
 
 ---
 ### <a name="bandwidth-throttling"></a>Bandwidth Throttling (帯域幅調整)
-**目的:** エッジ サーバーからの応答の帯域幅を調整します。
+**目的:** POP からの応答の帯域幅を調整します。
 
 帯域幅調整を正しく設定するには、次のオプションの両方を定義する必要があります。
 
 オプション|[説明]
 --|--
 Kbytes per second (kb/秒)|このオプションは、応答を提供するために使用できる最大帯域幅 (Kb/秒) に設定します。
-Prebuf seconds (Prebuf 秒)|このオプションを、帯域幅が調整されるまでにエッジ サーバーが待機する秒数に設定します。 帯域幅を制限しないこの期間の目的は、メディア プレーヤーで帯域幅調整によって途切れ途切れの再生やバッファリングの問題が発生するのを防ぐことです。
+Prebuf seconds (Prebuf 秒)|このオプションを、帯域幅が調整されるまでに POP が待機する秒数に設定します。 帯域幅を制限しないこの期間の目的は、メディア プレーヤーで帯域幅調整によって途切れ途切れの再生やバッファリングの問題が発生するのを防ぐことです。
 
 **既定の動作:** Disabled。
 
@@ -233,8 +233,8 @@ Prebuf seconds (Prebuf 秒)|このオプションを、帯域幅が調整され�
 
 値|結果
 --|--
-有効|コンテンツが以前にエッジ サーバーでキャッシュされた場合でも、すべての要求が配信元サーバーにフォールスルーされます。
-無効|応答ヘッダーで定義されているキャッシュ ポリシーに従い、エッジ サーバーで資産がキャッシュされます。
+有効|コンテンツが以前に POP でキャッシュされた場合でも、すべての要求が配信元サーバーにフォールスルーされます。
+無効|応答ヘッダーで定義されているキャッシュ ポリシーに従い、POP で資産がキャッシュされます。
 
 **既定の動作:**
 
@@ -289,7 +289,7 @@ Prebuf seconds (Prebuf 秒)|このオプションを、帯域幅が調整され�
 
 ---
 ### <a name="cache-control-header-treatment"></a>Cache-Control Header Treatment (キャッシュ制御ヘッダーの処理)
-**目的:** External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、エッジ サーバーで `Cache-Control` ヘッダーの生成を制御します。
+**目的:** External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、POP で `Cache-Control` ヘッダーの生成を制御します。
 
 この種類の構成を実現する最も簡単な方法は、同じステートメントに External Max-Age (外部最長有効期間) と Cache-Control Header Treatment (Cache-Control ヘッダーの処理) 機能を配置することです。
 
@@ -415,9 +415,9 @@ New Path (新しいパス)|新しいキャッシュキーの相対パスを定�
 
 ---
 ### <a name="complete-cache-fill"></a>Complete Cache Fill (完全キャッシュ入力)
-**目的:** 要求の結果、エッジ サーバーで一部のキャッシュが不足したときの動作を決定します。
+**目的:** 要求の結果、POP で一部のキャッシュが不足したときの動作を決定します。
 
-一部のキャッシュの不足は、資産に関するキャッシュがエッジ サーバーに完全にはダウンロードされなかった状態を示します。 資産が部分的にのみエッジ サーバーでキャッシュされている場合、その資産に関する次の要求は配信元サーバーにもう一度転送されます。
+一部のキャッシュの不足は、資産に関するキャッシュが POP に完全にはダウンロードされなかった状態を示します。 資産が部分的にのみ POP でキャッシュされている場合、その資産に関する次の要求は配信元サーバーにもう一度転送されます。
 <!---
 This feature is not available for the ADN platform. The typical traffic on this platform consists of relatively small assets. The size of the assets served through these platforms helps mitigate the effects of partial cache misses, since the next request will typically result in the asset being cached on that POP.
 
@@ -430,8 +430,8 @@ This feature is not available for the ADN platform. The typical traffic on this 
 
 値|結果
 --|--
-有効|既定の動作を復元します。 既定の動作では、エッジ サーバーで配信元サーバーからの資産のバックグラウンド取得が開始されます。 その後、資産はエッジ サーバーのローカル キャッシュに入れられます。
-無効|エッジ サーバーで資産のバックグラウンド取得が実行されないようにします。 これにより、そのリージョンからその資産が次に要求されたときに、エッジ サーバーは顧客の配信元サーバーにその資産を要求します。
+有効|既定の動作を復元します。 既定の動作では、POP で配信元サーバーからの資産のバックグラウンド取得が開始されます。 その後、資産は POP のローカル キャッシュに入れられます。
+無効|POP で資産のバックグラウンド取得が実行されないようにします。 これにより、そのリージョンからその資産が次に要求されたときに、POP は顧客の配信元サーバーにその資産を要求します。
 
 **既定の動作:** Enabled。
 
@@ -523,14 +523,14 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="default-internal-max-age"></a>Default Internal Max-Age (既定の内部最長有効期間)
-**目的:** エッジ サーバーと配信元サーバーの間のキャッシュ再有効化の既定の最長有効期間を決定します。 つまり、キャッシュされた資産が配信元サーバーに格納されている資産と一致するかどうかをエッジ サーバーが確認するまでの時間です。
+**目的:** POP と配信元サーバーの間のキャッシュ再有効化の既定の最長有効期間を決定します。 つまり、キャッシュされた資産が配信元サーバーに格納されている資産と一致するかどうかを POP が確認するまでの時間です。
 
 重要な情報: 
 
 - このアクションは、`Cache-Control` ヘッダーまたは `Expires` ヘッダーで最長有効期間を割り当てていない配信元サーバーからの応答に対してのみ実行されます。
 - このアクションは、キャッシュ可能と判断された資産については実行されません。
-- このアクションは、ブラウザーとエッジ サーバーの間のキャッシュ再有効化には影響しません。 これらの種類の再有効化は、ブラウザーに送信された `Cache-Control` ヘッダーまたは `Expires` ヘッダーによって決定され、External Max-Age (外部最長有効期間) 機能によってカスタマイズできます。
-- このアクションの結果は、エッジ サーバーから返される応答ヘッダーとコンテンツに対して目に見える影響はありませんが、エッジ サーバーから配信元サーバーに送信される再有効化トラフィックの量に影響する可能性があります。
+- このアクションは、ブラウザーと POP の間のキャッシュ再有効化には影響しません。 これらの種類の再有効化は、ブラウザーに送信された `Cache-Control` ヘッダーまたは `Expires` ヘッダーによって決定され、External Max-Age (外部最長有効期間) 機能によってカスタマイズできます。
+- このアクションの結果は、POP から返される応答ヘッダーとコンテンツに対して目に見える影響はありませんが、POP から配信元サーバーに送信される再有効化トラフィックの量に影響する可能性があります。
 - この機能は、次のように構成します。
     - 既定の内部最長有効期間を適用できる状態コードを選択します。
     - 整数値を指定してから、目的の時間単位 (秒、分、時間など) を選択します。 この値により、既定の内部最長有効期間が定義されます。
@@ -571,7 +571,7 @@ X-EC-Debug: x-ec-cache,x-ec-check-cacheable,x-ec-cache-key,x-ec-cache-state
 
 ---
 ### <a name="expires-header-treatment"></a>Expires Header Treatment (Expires ヘッダーの処理)
-**目的:** External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、エッジ サーバーで `Expires` ヘッダーの生成を制御します。
+**目的:** External Max-Age (外部最長有効期間) 機能がアクティブになっているとき、POP で `Expires` ヘッダーの生成を制御します。
 
 この種類の構成を実現する最も簡単な方法は、同じステートメントに External Max-Age (外部最長有効期間) と Expires Header Treatment (Expires ヘッダーの処理) 機能を配置することです。
 
@@ -590,15 +590,15 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 
 ---
 ### <a name="external-max-age"></a>External Max-Age (外部最長有効期間)
-**目的:** ブラウザーとエッジ サーバーの間のキャッシュ再有効化の最長有効期間を決定します。 つまり、ブラウザーがエッジ サーバーに対して資産の新しいバージョンを確認するまでの時間です。
+**目的:** ブラウザーと POP の間のキャッシュ再有効化の最長有効期間を決定します。 つまり、ブラウザーが POP に対して資産の新しいバージョンを確認するまでの時間です。
 
-この機能を有効にすると、エッジ サーバーから `Cache-Control: max-age` ヘッダーおよび `Expires` ヘッダーが生成され、HTTP クライアントに送信されます。 既定では、これらのヘッダーにより、配信元サーバーで作成されたヘッダーが上書きされます。 ただし、この動作は Cache-Control Header Treatment (Cache-Control ヘッダーの処理) および Expires Header Treatment (Expires ヘッダーの処理) 機能を使用して変更することができます。
+この機能を有効にすると、POP から `Cache-Control: max-age` ヘッダーおよび `Expires` ヘッダーが生成され、HTTP クライアントに送信されます。 既定では、これらのヘッダーにより、配信元サーバーで作成されたヘッダーが上書きされます。 ただし、この動作は Cache-Control Header Treatment (Cache-Control ヘッダーの処理) および Expires Header Treatment (Expires ヘッダーの処理) 機能を使用して変更することができます。
 
 重要な情報: 
 
-- このアクションは、エッジ サーバーと配信元サーバーの間のキャッシュ再有効化には影響しません。 これらの種類の再有効化は、配信元サーバーから受信された `Cache-Control` ヘッダーと `Expires` ヘッダーによって決定され、Default Internal Max-Age (既定の内部最長有効期間) および Force Internal Max-Age (内部最長有効期間の強制) 機能によってカスタマイズできます。
+- このアクションは、POP と配信元サーバーの間のキャッシュ再有効化には影響しません。 これらの種類の再有効化は、配信元サーバーから受信された `Cache-Control` ヘッダーと `Expires` ヘッダーによって決定され、Default Internal Max-Age (既定の内部最長有効期間) および Force Internal Max-Age (内部最長有効期間の強制) 機能によってカスタマイズできます。
 - この機能を構成するには、整数値を指定して目的の時間単位 (秒、分、時間など) を選択します。
-- この機能を負の値に設定すると、エッジ サーバーからブラウザーへの各応答と共に、`Cache-Control: no-cache` と過去に設定された `Expires` 時間が送信されます。 応答は HTTP クライアントでキャッシュされませんが、この設定は配信元サーバーからの応答をキャッシュするエッジ サーバーの機能には影響しません。
+- この機能を負の値に設定すると、POP からブラウザーへの各応答と共に、`Cache-Control: no-cache` と過去に設定された `Expires` 時間が送信されます。 応答は HTTP クライアントでキャッシュされませんが、この設定は配信元サーバーからの応答をキャッシュする POP の機能には影響しません。
 - 時間単位を "Off" に設定すると、この機能は無効になります。 配信元サーバーの応答と共にキャッシュされる `Cache-Control` ヘッダーと `Expires` ヘッダーは、ブラウザーにパススルーされます。
 
 **既定の動作:** Off
@@ -628,13 +628,13 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 
 ---
 ### <a name="force-internal-max-age"></a>Force Internal Max-Age (内部最長有効期間の強制)
-**目的:** エッジ サーバーと配信元サーバーの間のキャッシュ再有効化の最長有効期間を決定します。 つまり、キャッシュされた資産が配信元サーバーに格納されている資産と一致するかどうかをエッジ サーバーが確認できるまでの時間です。
+**目的:** POP と配信元サーバーの間のキャッシュ再有効化の最長有効期間を決定します。 つまり、キャッシュされた資産が配信元サーバーに格納されている資産と一致するかどうかを POP が確認できるようになるまでの時間です。
 
 重要な情報: 
 
 - この機能では、配信元サーバーから生成された `Cache-Control` ヘッダーまたは `Expires` ヘッダーで定義された最長有効期間が上書きされます。
-- この機能は、ブラウザーとエッジ サーバーの間のキャッシュ再有効化には影響しません。 これらの種類の再有効化は、ブラウザーに送信された `Cache-Control` ヘッダーまたは `Expires` ヘッダーによって決定されます。
-- この機能では、エッジ サーバーから要求元に配信される応答に対して目に見える影響はありません。 ただし、エッジ サーバーから配信元サーバーに送信される再有効化トラフィックの量に影響する可能性があります。
+- この機能は、ブラウザーと POP の間のキャッシュ再有効化には影響しません。 これらの種類の再有効化は、ブラウザーに送信された `Cache-Control` ヘッダーまたは `Expires` ヘッダーによって決定されます。
+- この機能では、POP から要求元に配信される応答に対して目に見える影響はありません。 ただし、POP から配信元サーバーに送信される再有効化トラフィックの量に影響する可能性があります。
 - この機能は、次のように構成します。
     - 内部最長有効期間が適用される状態コードを選択します。
     - 整数値を指定してから、目的の時間単位 (秒、分、時間など) を選択します。 この値により、要求の最長有効期間が定義されます。
@@ -678,10 +678,10 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 
 値|結果
 --|--
-有効|HTTP クライアントのキャッシュなし要求を配信元サーバーに転送することが可能となり、配信元サーバーは応答ヘッダーと本文をエッジ サーバー経由で HTTP クライアントに戻します。
+有効|HTTP クライアントのキャッシュなし要求を配信元サーバーに転送することが可能となり、配信元サーバーは応答ヘッダーと本文を POP 経由で HTTP クライアントに戻します。
 無効|既定の動作を復元します。 既定の動作では、キャッシュなし要求が配信元サーバーに転送されることが防止されます。
 
-すべての実稼働トラフィックについて、この機能を既定の無効状態のままにしておくことをお勧めします。 そうしないと、配信元サーバーは Web ページの更新時に大量のキャッシュなし要求を誤ってトリガーする可能性があるエンドユーザーや、すべてのビデオ要求で no-cache ヘッダーを送信するように設計された多くの一般的なメディア プレーヤーからシールドされません。 ただし、この機能は、配信元サーバーから最新のコンテンツをオンデマンドでプルできるようにするために、特定の非運用のステージングまたはテスト用のディレクトリに適用するのに役立つ可能性があります。
+すべての実稼働トラフィックについて、この機能を既定の無効状態のままにしておくことをお勧めします。 そうしないと、配信元サーバーは Web ページの更新時に大量のキャッシュなし要求を誤ってトリガーする可能性があるエンド ユーザーや、すべてのビデオ要求で no-cache ヘッダーを送信するように設計された多くの一般的なメディア プレーヤーからシールドされません。 ただし、この機能は、配信元サーバーから最新のコンテンツをオンデマンドでプルできるようにするために、特定の非運用のステージングまたはテスト用のディレクトリに適用するのに役立つ可能性があります。
 
 この機能によって配信元サーバーに転送が許可されている要求についてレポートされるキャッシュの状態は TCP_Client_Refresh_Miss です。 コア レポート モジュールで使用できるキャッシュの状態レポートでは、キャッシュの状態ごとに統計情報が提供されます。 これにより、この機能が原因で配信元サーバーに転送されている要求の数と割合を追跡できます。
 
@@ -724,11 +724,11 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 ### <a name="ignore-unsatisfiable-ranges"></a>Ignore Unsatisfiable Ranges (満たされない範囲を無視する) 
 **目的:** 要求で「416 Requested Range Not Satisfiable」状態コードが生成されるとき、クライアントに返される応答を決定します。
 
-既定では、この状態コードは、エッジ サーバーで指定されたバイト範囲要求を満たすことができず、If-Range 要求ヘッダー フィールドが指定されていないときに返されます。
+既定では、この状態コードは、POP で指定されたバイト範囲要求を満たすことができず、If-Range 要求ヘッダー フィールドが指定されていないときに返されます。
 
 値|結果
 -|-
-有効|エッジ サーバーが無効なバイト範囲の要求に対して「416 Requested Range Not Satisfiable」状態コードで応答しないようにします。 代わりに、サーバーは要求された資産を配信し、クライアントに「200 OK」を返します。
+有効|POP が無効なバイト範囲の要求に対して「416 Requested Range Not Satisfiable」状態コードで応答しないようにします。 代わりに、サーバーは要求された資産を配信し、クライアントに「200 OK」を返します。
 無効|既定の動作を復元します。 既定の動作では、「416 Requested Range Not Satisfiable」状態コードを許可します。
 
 **既定の動作:** Disabled。
@@ -739,15 +739,15 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 
 ---
 ### <a name="internal-max-stale"></a>Internal Max-Stale (内部 Max-Stale)
-**目的:** エッジ サーバーが配信元サーバーでキャッシュされた資産を再有効化できないとき、通常の有効期間を過ぎてから、キャッシュされた資産をエッジ サーバーから提供できる期間を制御します。
+**目的:** POP が配信元サーバーでキャッシュされたアセットを再有効化できないとき、通常の有効期間を過ぎてから、キャッシュされたアセットを POP から提供できる期間を制御します。
 
-通常は、資産の最長有効期間が経過すると、エッジ サーバーは再有効化要求を配信元サーバーに送信します。 配信元サーバーは、「304 Not Modified」で応答して、キャッシュされた資産に関する最新のリースをエッジ サーバーを提供するか、「200 OK」で応答して、キャッシュされた資産の更新されたバージョンをエッジ サーバーに提供します。
+通常は、資産の最長有効期間が経過すると、POP は再有効化要求を配信元サーバーに送信します。 配信元サーバーは、「304 Not Modified」で応答して、キャッシュされた資産に関する最新のリースを POP を提供するか、「200 OK」で応答して、キャッシュされた資産の更新されたバージョンを POP に提供します。
 
-エッジ サーバーがこのような再有効化の試行時に配信元サーバーとの接続を確立できない場合は、この Internal Max-Stale (内部 Max-Stale) 機能により、エッジ サーバーが古くなった資産を提供し続けるかどうか、およびその期間が制御されます。
+POP がこのような再有効化の試行時に配信元サーバーとの接続を確立できない場合は、この Internal Max-Stale (内部 Max-Stale) 機能により、POP が古くなった資産を提供し続けるかどうか、およびその期間が制御されます。
 
 この期間は、失敗した再有効化の発生したときではなく、資産の最長有効期間が経過したときに開始されることに注意してください。 したがって、再有効化が成功しないうちに資産を提供できる最長期間は、最長有効期間と max-stale の組み合わせによって指定された時間です。 たとえば、30 分の最長有効期間と 15 分の max-stale を指定して資産が 9:00 にキャッシュされた場合、再有効化が 9:44 に失敗すると、エンドユーザーはキャッシュされた古い資産を受信しますが、最有効化が 9:46 に失敗すると、エンドユーザーは「504 Gateway Timeout」を受信します。
 
-この機能用に構成されたすべての値は、配信元サーバーから受け取った `Cache-Control: must-revalidate` ヘッダーまたは `Cache-Control: proxy-revalidate` ヘッダーによって置き換えられます。 資産が最初にキャッシュされた配信元サーバーからこれらのヘッダーのいずれかが受信された場合、エッジ サーバーはキャッシュされた古い資産を提供しません。 その場合、資産の最長有効期間が経過したときに配信元との間で再有効化を実行できないと、エッジ サーバーは「504 Gateway Timeout」エラーを返します。
+この機能用に構成されたすべての値は、配信元サーバーから受け取った `Cache-Control: must-revalidate` ヘッダーまたは `Cache-Control: proxy-revalidate` ヘッダーによって置き換えられます。 資産が最初にキャッシュされた配信元サーバーからこれらのヘッダーのいずれかが受信された場合、POP はキャッシュされた古い資産を提供しません。 その場合、資産の最長有効期間が経過したときに POP と配信元の間で再有効化を実行できないと、POP は「504 Gateway Timeout」エラーを返します。
 
 重要な情報: 
 
@@ -828,7 +828,7 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
     - CACHE-CONTROL
     - cachE-Control
 - ヘッダー名を指定する際は、英数字、ハイフン、またはアンダー スコアのみを使用してください。
-- ヘッダーを削除すると、そのヘッダーがエッジ サーバーによって配信元サーバーに転送されなくなります。
+- ヘッダーを削除すると、そのヘッダーが POP によって配信元サーバーに転送されなくなります。
 - 次のヘッダーは予約済みであり、この機能で変更することはできません。
     - forwarded
     - host
@@ -848,7 +848,7 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 - 応答ヘッダーに割り当てられた値を追加または上書きします。 指定された応答ヘッダーが存在しない場合、この機能はその要求ヘッダーを応答に追加します。
 - 応答から応答ヘッダーを削除します。
 
-既定では、応答ヘッダー値は配信元サーバーとエッジ サーバーによって定義されます。
+既定では、応答ヘッダー値は配信元サーバーと POP によって定義されます。
 
 応答ヘッダーには、次のアクションのいずれかを実行できます。
 
@@ -922,7 +922,7 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 
 ---
 ### <a name="proxy-special-headers"></a>Proxy Special Headers (プロキシーの特殊ヘッダー)
-**目的:** エッジ サーバーから配信元サーバーに転送される一連の CDN 固有要求ヘッダーを定義します。
+**目的:** POP から配信元サーバーに転送される一連の CDN 固有要求ヘッダーを定義します。
 
 重要な情報: 
 
@@ -937,15 +937,15 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 
 ---
 ### <a name="refresh-zero-byte-cache-files"></a>Refresh Zero-Byte Cache Files (ゼロバイト キャッシュ ファイルの更新)
-**目的:** 0 バイトのキャッシュ資産に対する HTTP クライアントの要求をエッジ サーバーが処理する方法を決定します。
+**目的:** 0 バイトのキャッシュ資産に対する HTTP クライアントの要求を POP が処理する方法を決定します。
 
 有効な値は次のとおりです。
 
 値|結果
 --|--
-有効|エッジ サーバーが資産を配信元サーバーから再取得します。
+有効|POP が資産を配信元サーバーから再取得します。
 無効|既定の動作を復元します。 既定の動作では、要求時に有効なキャッシュされた資産が提供されます。
-この機能は、正しいキャッシュおよびコンテンツ配信のために必要というわけではありませんが、回避策として役に立つ場合があります。 たとえば、配信元サーバー上の動的コンテンツ ジェネレーターにより、誤って 0 バイトの応答がエッジ サーバーに送信される可能性があります。 通常、これらの種類の応答は、エッジ サーバーによってキャッシュされます。 当該のコンテンツで 0 バイトの応答が有効でないことがわかっている場合は、 
+この機能は、正しいキャッシュおよびコンテンツ配信のために必要というわけではありませんが、回避策として役に立つ場合があります。 たとえば、配信元サーバー上の動的コンテンツ ジェネレーターにより、誤って 0 バイトの応答が POP に送信される可能性があります。 通常、これらの種類の応答は、POP によってキャッシュされます。 当該のコンテンツで 0 バイトの応答が有効でないことがわかっている場合は、 
 
 この機能を使用してそれらの種類の資産がクライアントに提供されることを防止できます。
 
@@ -1016,7 +1016,7 @@ Remove| `Expires` ヘッダーがヘッダー応答に含まれないように�
 
 ---
 ### <a name="stale-while-revalidate"></a>Stale While Revalidate (古いキャッシュを返し、同時に再検証)
-**目的:** 再有効化の実行中に古いコンテンツを要求元に提供することをエッジ サーバーに許可することにより、パフォーマンスを改善します。
+**目的:** 再有効化の実行中に古いコンテンツを要求元に提供することを POP に許可することにより、パフォーマンスを改善します。
 
 重要な情報: 
 
@@ -1109,7 +1109,7 @@ WWW-Authenticate ヘッダーは、401 応答コードでのみ適用されま�
 
 値|結果
 ---|----
-有効|エッジ サーバーで、トークン ベースの認証パラメーターの URL が比較されるときに、大文字小文字が区別されなくなります。
+有効|POP で、トークン ベースの認証パラメーターの URL が比較されるときに、大文字小文字が区別されなくなります。
 無効|既定の動作を復元します。 既定の動作では、トークン認証で URL が比較されるときに大文字小文字が区別されます。
 
 **既定の動作:** Disabled。
@@ -1165,14 +1165,14 @@ Source & Pattern (ソースとパターン)| これらの設定により、リ�
 - URL Redirect (URL リダイレクト) 機能では、リダイレクトされる要求 URL が定義されます。 このため、追加の一致条件は必要ありません。 一致条件を [Always (常に)] として定義しましたが、顧客の配信元 "marketing" にある "brochures" フォルダーを指定する要求だけがリダイレクトされます。 
 - 一致するすべての要求は、[Destination (送信先)] オプションで定義されているエッジ CNAME URL にリダイレクトされます。 
     - サンプル シナリオ 1: 
-        - サンプルの要求 (CDN URL): http://marketing.azureedge.net/brochures/widgets.pdf 
-        - 要求 URL (リダイレクト後): http://cdn.mydomain.com/resources/widgets.pdf  
+        - サンプル要求 (CDN URL): http://marketing.azureedge.net/brochures/widgets.pdf 
+        - 要求の URL (リダイレクト後): http://cdn.mydomain.com/resources/widgets.pdf  
     - サンプル シナリオ 2: 
-        - サンプルの要求 (エッジ CNAME URL): http://marketing.mydomain.com/brochures/widgets.pdf 
-        - 要求 URL (リダイレクト後): http://cdn.mydomain.com/resources/widgets.pdf サンプル シナリオ
+        - サンプル要求 (エッジ CNAME URL): http://marketing.mydomain.com/brochures/widgets.pdf 
+        - 要求の URL (リダイレクト後): http://cdn.mydomain.com/resources/widgets.pdf サンプル シナリオ
     - サンプル シナリオ 3: 
-        - サンプルの要求 (エッジ CNAME URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
-        - 要求 URL (リダイレクト後): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
+        - サンプル要求 (エッジ CNAME URL): http://brochures.mydomain.com/campaignA/final/productC.ppt 
+        - 要求の URL (リダイレクト後): http://cdn.mydomain.com/resources/campaignA/final/productC.ppt  
 - [Destination (送信先)] オプションでは要求スキーム (%{scheme}) 変数を利用しました。 これにより、リダイレクト後に要求の構成が変更されないことが保証されます。
 - 要求からキャプチャされた URL セグメントは、"$1" を使用して新しい URL に追加されます。
 
@@ -1192,13 +1192,13 @@ Source & Pattern (ソースとパターン)| これらの設定により、リ�
 -|-
  Source & Pattern (ソースとパターン) | これらの設定により、書き換えられる要求の種類を識別する要求 URI のパターンが定義されます。 URL が次の条件の両方を満たす要求だけが書き換えられます。 <br/>     - **ソース (またはコンテンツ アクセス ポイント):** を配信元サーバーを識別する相対パスを選択します。 これは、"/XXXX/" セクションとエンドポイント名です。 <br/> - **ソース (パターン):** 相対パスによって要求を識別するパターンを定義する必要があります。 この正規表現パターンでは、前に選択されていたコンテンツ アクセス ポイント (上記参照) の直後に始まるパスを定義する必要があります。 <br/> 前に定義した要求 URI 条件 (つまり、[Source & Pattern]\(ソースとパターン\)) がこの機能について定義されている一致条件と競合しないことを確認してください。 パターンを指定します。パターンとして空の値を指定すると、すべての文字列と一致します。 
  変換先  |上の要求の書き換えに使用する相対 URL を定義します。 <br/>    1.配信元サーバーを識別するコンテンツ アクセス ポイントを選択します。 <br/>    2.次のものを使用して相対パスを定義します。 <br/>        - 正規表現パターン <br/>        - HTTP 変数 <br/> <br/> $_n_ を使用して、ソース パターンでキャプチャされた値を変換先パターンに置き換えます (_n_ はキャプチャされた順序で値を識別します)。 たとえば、$1 は、ソース パターンでキャプチャされた最初の値を表し、$2 は 2 番目の値を表します。 
- この機能により、エッジ サーバーは従来のリダイレクトを実行せずに URL を書き換えることができます。 つまり、要求元は、書き換え後の URL を要求した場合と同じ応答コードを受信します。
+ この機能により、POP は従来のリダイレクトを実行せずに URL を書き換えることができます。 つまり、要求元は、書き換え後の URL を要求した場合と同じ応答コードを受信します。
 
 **ンプル シナリオ 1**
 
 この例では、ベース CDN URL http://marketing.azureedge.net/brochures/ に解決されるエッジ CNAME URL をリダイレクトする方法について説明します
 
-対象の要求は、ベース エッジ CNAME URL: http://MyOrigin.azureedge.net/resources/ にリダイレクトされます
+対象の要求は、ベース エッジ CNAME URL http://MyOrigin.azureedge.net/resources/ にリダイレクトされます
 
 この URL のリダイレクトは、次の構成によって達成できます。![](./media/cdn-rules-engine-reference/cdn-rules-engine-rewrite.png)
 

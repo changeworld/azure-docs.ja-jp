@@ -1,29 +1,28 @@
 ---
-title: "SQL データベースを Azure Stack ユーザーから使用可能にする | Microsoft Docs"
-description: "SQL Server リソース プロバイダーをインストールし、Azure Stack ユーザーが SQL データベースを作成できるようにするオファーを作成するためのチュートリアル。"
+title: SQL データベースを Azure Stack ユーザーから使用可能にする | Microsoft Docs
+description: SQL Server リソース プロバイダーをインストールし、Azure Stack ユーザーが SQL データベースを作成できるようにするオファーを作成するためのチュートリアル。
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 7/03/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2017
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: e9fd74fa44bb9482ee2285f4305085ee6ff2fb73
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: f8d2dd65d9d427872fe78508ed0bcc61e644fdb0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-sql-databases-available-to-your-azure-stack-users"></a>SQL データベースを Azure Stack ユーザーから使用可能にする
-
 Azure Stack クラウド管理者として、ユーザー (テナント) が自分のクラウド ネイティブなアプリ、Web サイト、およびワークロードで使用できる SQL データベースを作成できるようにするオファーを作成できます。 これらのカスタムの、オンデマンドで、クラウド ベースのデータベースをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。 これを設定するには、次のことを行います。
 
 > [!div class="checklist"]
@@ -56,8 +55,8 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 これで SQL Server リソース プロバイダーをデプロイし、オファーを作成したので、ユーザーとしてサインインし、オファーにサブスクライブして、データベースを作成できます。
 
 ### <a name="subscribe-to-the-offer"></a>オファーへのサブスクライブ
-1. テナントとして Azure Stack ポータル (https://portal.local.azurestack.external) にサインインします。
-2. **[Get a subscription] (サブスクリプションの取得)** をクリックし、**[Display Name] (表示名)** の下に「**TestSQLServerSubscription**」と入力します。
+1. Azure Stack ポータル (https://portal.local.azurestack.external) にテナントとしてサインインします。
+2. **[Get a subscription] \(サブスクリプションの取得)** をクリックし、**[Display Name] \(表示名)** の下に「**TestSQLServerSubscription**」と入力します。
 3. **[Select an offer] \(オファーの選択)** > **[TestSQLServerOffer]** > **[作成]** をクリックします。
 4. **[その他のサービス]** > **[サブスクリプション]** > **[TestSQLServerSubscription]** > **[Resource providers] \(リソース プロバイダー)** をクリックします。
 5. **[Microsoft.SQLAdapter]** プロバイダーの横にある **[Register] \(登録)** をクリックします。

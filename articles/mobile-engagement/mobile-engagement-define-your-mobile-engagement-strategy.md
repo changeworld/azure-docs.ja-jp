@@ -1,11 +1,11 @@
 ---
-title: "Mobile Engagement 戦略の定義 | Microsoft Docs"
-description: "分析およびプッシュ通知で Mobile Engagement の配布準備および最適化を行う方法について説明します。"
+title: Mobile Engagement 戦略の定義 | Microsoft Docs
+description: 分析およびプッシュ通知で Mobile Engagement の配布準備および最適化を行う方法について説明します。
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7533e318-81b9-4360-aace-b7be8225985b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: db68bd3ebf7efde1d23820445f07c83c8c27dc20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 494dd27acfd59eb79da13dae9bbbe0f80ee41370
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="define-your-mobile-engagement-strategy"></a>Mobile Engagement 戦略の定義
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 *アプリを作成する理由は、ユーザーに使用してもらうことです。*
 
 ユーザーが好む優れたアプリを作成しようと多大な努力をしていることと思います。 また、ユーザーを獲得するためにおそらくかなりのマーケティング予算を投資していることでしょう。 しかし、当初のユーザーの刺激がピークに達した後、アプリが徐々に使用されなくなることがあります。 "*Azure Mobile Engagement の意義はまさにそこにあります*"。ユーザーをとどまらせ、テストと学習を通じてアプリを段階的に改善できるのです。
@@ -115,7 +119,7 @@ Mobile Engagement 戦略を構築するには、最初にアプリの目標と�
 2. ログイン ステータスに基づいて対象ユーザーをセグメント化します。 データを収集して、ユーザーが接続しているかどうか、またはアカウントを作成したかどうかを確認します。 まだログインしていないエンド ユーザーにターゲットを絞り、エンド ユーザーの気持ちを変えるプッシュ通知を送信するのに役立ちます。
    ![][2]
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 * Mobile Engagement の基本概念の詳細については、 [Mobile Engagement の概念] に関するページを参照してください。
 * Azure で新しい Mobile Engagement アプリ コレクションを作成し、Mobile Engagement ポータルでアプリの管理を開始するには、「 [Azure Mobile Engagement アプリの作成](mobile-engagement-create.md) 」を参照してください。
 * ベスト プラクティスの詳細については、 [こちらのページ](mobile-engagement-getting-started-best-practices.md) を参照してください。

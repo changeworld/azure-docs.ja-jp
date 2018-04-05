@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: get-started-article
 ms.date: 01/17/2018
 ms.author: jirwin
-ms.openlocfilehash: 2c69519b865169b477950bc8fa659d5ad9081bbf
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 75d1580df5e36b2c88939fde9077c5a1948f6348
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-storage-account-options"></a>Azure Storage アカウントの種類
 
@@ -218,7 +218,7 @@ GPv2 ストレージ アカウントに保存されるデータの格納とア�
 詳細については、「[About Storage Analytics Metrics (Storage Analytics メトリックについて)](https://msdn.microsoft.com/library/azure/hh343258.aspx)」と「[Storage Analytics Metrics Table Schema (Storage Analytics メトリックのテーブル スキーマ)](https://msdn.microsoft.com/library/azure/hh343264.aspx)」を参照してください。
 
 > [!NOTE]
-> BLOB ストレージ アカウントは、そのアカウントのメトリック データの格納とアクセスのためだけに Table service エンドポイントを公開します。 ゾーン冗長ストレージ (ZRS) アカウントではメトリック データの収集がサポートされていますが、ZRS クラシック ストレージ アカウントではサポートされていません。 ZRS の詳細については、「[ゾーン冗長ストレージ](storage-redundancy.md#zone-redundant-storage)」を参照してください。 
+> BLOB ストレージ アカウントは、そのアカウントのメトリック データの格納とアクセスのためだけに Table service エンドポイントを公開します。 
 
 BLOB ストレージのストレージ使用量を監視するには、容量メトリックを有効にする必要があります。
 これを有効にすると、ストレージ アカウントの Blob service に関する容量データが毎日記録されます。これは、同じストレージ アカウント内の *$MetricsCapacityBlob* テーブルに書き込まれるテーブル エントリとして記録されます。

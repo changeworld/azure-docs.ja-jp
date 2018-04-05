@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Registry チュートリアル - Azure Container Registry からの Web アプリのデプロイ"
-description: "Linux ベースの Web アプリを、geo レプリケーション Azure Container Registry からコンテナー イメージを使用してデプロイします。 3 部構成のシリーズのパート 2。"
+title: Azure Container Registry チュートリアル - Azure Container Registry からの Web アプリのデプロイ
+description: Linux ベースの Web アプリを、geo レプリケーション Azure Container Registry からコンテナー イメージを使用してデプロイします。 3 部構成のシリーズのパート 2。
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 10/24/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: d775a17cb8069a7521788d850d7d52b92cc67526
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 51aa3c6fc56e974fc1729a1d2fe35c889adf35e2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="deploy-web-app-from-azure-container-registry"></a>Azure Container Registry からの Web アプリのデプロイ
+# <a name="tutorial-deploy-web-app-from-azure-container-registry"></a>チュートリアル: Azure Container Registry からの Web アプリのデプロイ
 
 これは 3 部構成のチュートリアル シリーズの第 2 部です。 [第 1 部](container-registry-tutorial-prepare-registry.md)では、プライベートの geo レプリケーション コンテナー レジストリを作成し、ソースからコンテナー イメージを構築してレジストリにプッシュしました。 この記事では、2 つの異なる Azure リージョンの 2 つの Web アプリ インスタンスにコンテナーをデプロイして、ネットワーク上の近い場所で操作できるという geo レプリケーション レジストリの 利点を活用します。
 
@@ -47,7 +47,7 @@ Azure Container Registry では、コンテナー化されたアプリケーシ�
 
 表示される **[Web App for Containers]** で、各設定に次の値を設定します。
 
-| 設定 | 値 |
+| Setting | 値 |
 |---|---|
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-westus` という形式を使用します。 |
 | **リソース グループ** | **[既存のものを使用]** > `myResourceGroup` |
@@ -76,7 +76,7 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 
 前のセクションで説明した手順を使用して、2 つめの Web アプリを*米国東部*リージョンにデプロイします。 **[Web App for Containers]** で、次の値を指定します。
 
-| 設定 | 値 |
+| Setting | 値 |
 |---|---|
 | **サイト名** | Web アプリのグローバルに一意の名前。 この例では、Web アプリのデプロイ元のレジストリとリージョンを簡単に識別できるように、`<acrName>-eastus` という形式を使用します。 |
 | **リソース グループ** | **[既存のものを使用]** > `myResourceGroup` |
@@ -101,7 +101,7 @@ geo レプリケーション コンテナー レジストリから Docker イメ
 
 ![ブラウザーに表示された、デプロイされた Web アプリケーション][deployed-app-eastus]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、geo レプリケーション Azure Container Registry から 2 つの Web App for Containers インスタンスをデプロイしました。 このチュートリアルの手順に従って、次の作業を行いました。
 

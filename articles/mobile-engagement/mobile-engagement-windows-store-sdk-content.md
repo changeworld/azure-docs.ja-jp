@@ -1,11 +1,11 @@
 ---
-title: "Windows ユニバーサル アプリ SDK コンテンツ"
-description: "Azure Mobile Engagement 向け Windows ユニバーサル アプリ SDK の内容詳細"
+title: Windows ユニバーサル アプリ SDK コンテンツ
+description: Azure Mobile Engagement 向け Windows ユニバーサル アプリ SDK の内容詳細
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 8fa1b701-1c2b-4aec-940c-06c974ef5405
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: b28d525ab16487b963772e23fdecd11f94dcabd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b520adcc6af24f7b092580ea82a787a120668bf
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="windows-universal-apps-sdk-content"></a>Windows ユニバーサル アプリ SDK コンテンツ
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このドキュメントでは、アプリケーションで SDK により展開されるコンテンツについて説明します。
 
 ## <a name="the-resources-folder"></a>`/Resources` フォルダー

@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Web SDK の概要 | Microsoft Docs"
-description: "Web SDK for Azure Mobile Engagement の最新の更新プログラムと手順"
+title: Azure Mobile Engagement Web SDK の概要 | Microsoft Docs
+description: Web SDK for Azure Mobile Engagement の最新の更新プログラムと手順
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 5bbc2fda-0f3f-43d0-a73d-0f2c0f8dc25b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: piyushjo
-ms.openlocfilehash: 770a83131a3e661771db50b22ce7de25b2d541cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad0a83e05c6a60953c2f8a0036f823e7ed497f45
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk"></a>Azure Mobile Engagement Web SDK
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 Web アプリに Azure Mobile Engagement を統合する方法について詳しく説明したページには、ここからアクセスできます。 独自の Web アプリで作業を開始する前に試してみる場合は、 [15 分間チュートリアル](mobile-engagement-web-app-get-started.md)をご覧ください。
 
 ## <a name="integration-procedures"></a>統合手順

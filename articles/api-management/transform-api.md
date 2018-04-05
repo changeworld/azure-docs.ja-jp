@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management で API を変換および保護する | Microsoft Docs"
-description: "クォータとスロットル (レート制限) ポリシーを使用して、API を保護する方法について説明します。"
+title: Azure API Management で API を変換および保護する | Microsoft Docs
+description: クォータとスロットル (レート制限) ポリシーを使用して、API を保護する方法について説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 772f3828d85c54e7b8bb44c857e555175b7444cc
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: fb56b8489b086b724df9f3c9179f2c3265cd05a7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transform-and-protect-your-api"></a>API を変換および保護する 
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 12/04/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-+ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイックスタートを完了します。
++ [Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関するクイック スタートを完了します。
 + また、[最初の API のインポートと発行](import-and-publish.md)に関するチュートリアルを完了します。
  
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
@@ -75,7 +75,7 @@ ms.lasthandoff: 12/04/2017
 7. **[コード エディター]** を選択します。
     
      ![ポリシーを編集する](./media/set-edit-policies/set-edit-policies01.png)
-9. **<outbound>** 要素内にカーソルを配置します。
+9. **&lt;outbound&gt;** 要素内にカーソルを配置します。
 10. 右側のウィンドウの **[変換ポリシー]** で、**[+ HTTP ヘッダーの設定]** を 2 回クリックします (2 つのポリシー スニペットを挿入するため)。
 
     ![ポリシー](./media/transform-api/transform-api.png)
@@ -111,9 +111,9 @@ ms.lasthandoff: 12/04/2017
 5. 画面の上部の **[デザイン]** タブを選択します。
 6. **[送信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックします。
 7. **[コード エディター]** を選択します。
-8. **<outbound>** 要素内にカーソルを配置します。
+8. **&lt;outbound&gt;** 要素内にカーソルを配置します。
 9. 右側のウィンドウの **[変換ポリシー]** で、**[+ Find and replace string in body]\(+ 本文内の文字列の検索および置換\)** をクリックします。
-10. **<find-and-replace** コード (**<outbound>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 For example:
+10. **<find-and-replace** コード (**<outbound>** 要素内) を変更して、APIM ゲートウェイと一致するように URL を置換します。 例: 
 
         <find-and-replace from="://conferenceapi.azurewebsites.net" to="://apiphany.azure-api.net/conference"/>
 
@@ -128,7 +128,7 @@ ms.lasthandoff: 12/04/2017
 5. 画面の上部の **[デザイン]** タブを選択します。
 6. **[受信処理]** ウィンドウで、(鉛筆の横にある) 三角形をクリックします。
 7. **[コード エディター]** を選択します。
-8. **<inbound>** 要素内にカーソルを配置します。
+8. **&lt;inbound&gt;** 要素内にカーソルを配置します。
 9. 右側のウィンドウの **[アクセス制限ポリシー]** で、**[+ Limit call rate per key]\(+ キーごとの呼び出しレートの制限\)** をクリックします。
 10. **<rate-limit-by-key** コード (**<inbound>** 要素内) を次のコードに変更します。
 
@@ -191,7 +191,7 @@ ms.lasthandoff: 12/04/2017
 2. **[API]** タブを選択します。
 3. API の一覧で **[Demo Conference API]\(デモ会議 API\)** をクリックします。
 4. **[GetSpeakers]** 操作をクリックします。
-5. **[テスト]** タブを選択します。
+5. **[テスト]** タブを選びます。
 6. 行の **[送信]** を 3 回クリックします。
 
     要求を 3 回送信すると、"**429 要求が多すぎます**" 応答が返されます。
@@ -205,7 +205,7 @@ ms.lasthandoff: 12/04/2017
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルで学習した内容は次のとおりです。
 

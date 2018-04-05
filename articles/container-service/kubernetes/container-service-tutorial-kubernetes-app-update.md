@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service チュートリアル - アプリケーションの更新"
-description: "Azure Container Service チュートリアル - アプリケーションの更新"
+title: Azure Container Service チュートリアル - アプリケーションの更新
+description: Azure Container Service チュートリアル - アプリケーションの更新
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 5f22bb3ac378bc9b1ff94db486d6ea6053c64514
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 87de0f23a00b035b12bac6cf655781961b1fb9e5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="update-an-application-in-kubernetes"></a>Kubernetes でアプリケーションを更新する
 
@@ -29,7 +29,7 @@ Kubernetes でアプリケーションをデプロイした後で、新しいコ
 > * Azure Container Registry へのコンテナー イメージのプッシュ
 > * 更新したコンテナー イメージのデプロイ
 
-この後のチュートリアルでは、Kubernetes クラスターを監視するように Operations Management Suite を構成します。
+この後のチュートリアルでは、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 
@@ -71,7 +71,7 @@ docker-compose up --build -d
 
 ## <a name="test-application-locally"></a>ローカルでアプリケーションをテストする
 
-ブラウザーで http://localhost:8080 に移動して、更新したアプリケーションを確認します。
+http://localhost:8080 に移動し、更新したアプリケーションを確認します。
 
 ![Azure 上の Kubernetes クラスターの図](media/container-service-kubernetes-tutorials/vote-app-updated.png)
 
@@ -166,7 +166,7 @@ kubectl get service azure-vote-front
 > * Azure Container Registry へのコンテナー イメージのプッシュ
 > * 更新したアプリケーションのデプロイ
 
-次のチュートリアルに進み、Operations Management Suite で Kubernetes を監視する方法について学習してください。
+次のチュートリアルに進み、Log Analytics で Kubernetes を監視する方法について学習してください。
 
 > [!div class="nextstepaction"]
-> [OMS で Kubernetes を監視する](./container-service-tutorial-kubernetes-monitor.md)
+> [Log Analytics で Kubernetes を監視する](./container-service-tutorial-kubernetes-monitor.md)

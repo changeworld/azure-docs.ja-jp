@@ -10,15 +10,15 @@ ms.devlang: ''
 ms.topic: tutorial
 ms.date: 12/23/2017
 ms.author: tamram
-ms.openlocfilehash: 57296d828156184aa36532cd649fbec0c81b5e27
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 0e7ab68075fbce729d3905375acce0dace22c483
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="simulate-a-failure-in-accessing-read-access-redundant-storage"></a>読み取りアクセス冗長ストレージにアクセスする際のエラーをシミュレートする
 
-このチュートリアルは、シリーズの第 2 部です。  このチュートリアルでは、[read-access geo-redundant](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントのプライマリ エンドポイントに対する要求の失敗を [Fiddler](#simulate-a-failure-with-fiddler) または [Static Routing](#simulate-a-failure-with-an-invalid-static-route) を使用してシミュレートし、セカンダリ エンドポイントから読み取りを行うようにアプリケーションを制御します。
+このチュートリアルは、シリーズの第 2 部です。  このチュートリアルでは、[read-access geo-redundant](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントのプライマリ エンドポイントに対する要求の失敗を [Fiddler](#simulate-a-failure-with-fiddler) または [Static Routing](#simulate-a-failure-with-an-invalid-static-route) を使用してシミュレートし、セカンダリ エンドポイントから読み取りを行うようにアプリケーションを制御します。
 
 ![シナリオ アプリ](media/storage-simulate-failure-ragrs-account-app/scenario.png)
 
@@ -117,7 +117,7 @@ Fiddler に移動し、**[Rules]\(ルール\)**、**[Customize Rules]\(ルール
 
 
 ## <a name="simulate-a-failure-with-an-invalid-static-route"></a>無効な静的ルートで失敗をシミュレートする 
-[read-access geo-redundant](../common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントのプライマリ エンドポイントに対するすべての要求について無効な静的ルートを作成することができます。 このチュートリアルでは、ストレージ アカウントに要求をルーティングするためのゲートウェイとしてローカル ホストを使用します。 ローカル ホストをゲートウェイとして使用すると、ストレージ アカウントのプライマリ エンドポイントに対するすべての要求がホスト内でループバックされ、その後エラーとなります。 失敗とプライマリ エンドポイントの回復を無効な静的ルートでシミュレートするには、次の手順に従います。 
+[read-access geo-redundant](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS) ストレージ アカウントのプライマリ エンドポイントに対するすべての要求について無効な静的ルートを作成することができます。 このチュートリアルでは、ストレージ アカウントに要求をルーティングするためのゲートウェイとしてローカル ホストを使用します。 ローカル ホストをゲートウェイとして使用すると、ストレージ アカウントのプライマリ エンドポイントに対するすべての要求がホスト内でループバックされ、その後エラーとなります。 失敗とプライマリ エンドポイントの回復を無効な静的ルートでシミュレートするには、次の手順に従います。 
 
 ### <a name="start-and-pause-the-application"></a>アプリケーションの開始と一時停止
 

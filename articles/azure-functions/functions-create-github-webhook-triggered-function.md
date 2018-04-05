@@ -1,12 +1,12 @@
 ---
-title: "GitHub webhook でトリガーされる Azure 関数の作成 | Microsoft Docs"
-description: "Azure Functions を使用して、GitHub webhook によって呼び出されるサーバーレスの関数を作成します。"
+title: GitHub webhook でトリガーされる Azure 関数の作成 | Microsoft Docs
+description: Azure Functions を使用して、GitHub webhook によって呼び出されるサーバーレスの関数を作成します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 36ef34b8-3729-4940-86d2-cb8e176fcc06
 ms.service: functions
 ms.devlang: multiple
@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 98632c3276e7d9cccf29d05b903c2fac62a7d68e
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: cd446c64b8e7627db1c76d652ea1ab6f496eee65
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub webhook でトリガーされる関数の作成
 
@@ -69,11 +69,15 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
 1. GitHub で、自分が所有するリポジトリに移動します。 フォークした任意のリポジトリを使用することもできます。 リポジトリをフォークする必要がある場合は、<https://github.com/Azure-Samples/functions-quickstart> を使用してください。
 
-1. **[Settings (設定)]**、**[Webhooks (webhook)]**、**[Add webhook (webhook の追加)]** の順にクリックします。
+2. **[Settings]\(設定\)** > **[Options]\(オプション\)** を選択し、**[Features]\(機能\)** の **[Issues]\(問題\)** が有効になっていることを確認します。
+
+   ![[Issues]\(問題\) を有効にする](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook.png)
+
+1. **[Settings]\(設定\)** で、**[Webhooks]\(webhook\)** > **[Add webhook]\(Webhook の追加\)** を選択します。
 
     ![GitHub webhook の追加](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-2.png)
 
-1. テーブルに指定されている設定を使用し、**[Add webhook (webhook の追加)]** をクリックします。
+1. 次のテーブルに指定されている設定を使用し、**[Add webhook]\(Webhook の追加\)** をクリックします。
 
     ![webhook URL とシークレットの設定](./media/functions-create-github-webhook-triggered-function/functions-create-new-github-webhook-3.png)
 

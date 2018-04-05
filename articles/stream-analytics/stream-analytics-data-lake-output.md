@@ -1,12 +1,11 @@
 ---
-title: "Stream Analytics の Data Lake Store 出力 | Microsoft Docs"
-description: "Stream Analytics ジョブで Azure Data Lake Store の認証と承認を構成する"
-keywords: 
+title: Stream Analytics の Data Lake Store 出力 | Microsoft Docs
+description: Stream Analytics ジョブで Azure Data Lake Store の認証と承認を構成する
+keywords: ''
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: ea5baafa-0054-4c70-973a-6a3a8c6eaffc
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: e2010e86e56c1ce7a98fae97a8f6f00c30b61035
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: jeanb
+ms.openlocfilehash: 802193b9f15cbc35bec32191ccc63df3329b96f9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics の Data Lake Store 出力
 Stream Analytics ジョブは、 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)など、いくつかの出力方法をサポートしています。 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。
@@ -68,7 +67,7 @@ Data Lake Store アカウントが認証されたら、Data Lake Store 出力の
 </tr>
 <tr>
 <td>エンコード</td>
-<td>CSV または JSON 形式の場合、エンコードを指定する必要があります。 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。</td>
+<td>CSV または JSON 形式の場合、エンコードを指定する必要があります。 現時点でサポートされているエンコード形式は UTF-8 だけです。</td>
 </tr>
 <tr>
 <td>区切り記号</td>

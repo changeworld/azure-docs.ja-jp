@@ -1,11 +1,11 @@
 ---
-title: "Unity Roll a Ball チュートリアル"
-description: "Mobile Engagement Unity のすべてのチュートリアルの前提条件である、従来の Unity Roll a Ball ゲームを作成する手順"
+title: Unity Roll a Ball チュートリアル
+description: Mobile Engagement Unity のすべてのチュートリアルの前提条件である、従来の Unity Roll a Ball ゲームを作成する手順
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 0afd0eca-f74a-43aa-bba8-436a0265c312
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 52d5962645b1408fdba61ec1bf4e4f682b80905b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a id="unity-roll-a-ball"></a>Unity Roll a Ball ゲームの作成
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このチュートリアルでは、若干変更された [Unity Roll a Ball のチュートリアル](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial)の主な手順について説明します。 このサンプル ゲームは、アプリ ユーザーによって操作される球形の "プレーヤー" オブジェクトで構成されます。ゲームの目的は、プレーヤー オブジェクトを収集可能なオブジェクトに衝突させることによって、このような収集可能なオブジェクトを "収集" することです。 このチュートリアルは、Unity エディター環境の基礎知識があることを前提としています。 問題が発生した場合は、完全なチュートリアルを参照してください。 
 
 ### <a name="setting-up-the-game"></a>ゲームを設定する

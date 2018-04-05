@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement アプリの作成 | Microsoft Docs"
-description: "Azure で新しい Mobile Engagement アプリ コレクションを作成し、Mobile Engagement ポータルでアプリの管理を開始する方法について説明します。"
+title: Azure Mobile Engagement アプリの作成 | Microsoft Docs
+description: Azure で新しい Mobile Engagement アプリ コレクションを作成し、Mobile Engagement ポータルでアプリの管理を開始する方法について説明します。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b8aa1798-28c6-424c-a5b5-8a264d5a0ff0
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,19 +14,23 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/10/2016
 ms.author: piyushjo
-ms.openlocfilehash: 47c1e122f6f38654cd63bb59e50e68803f76c83d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f47133a466f00de43ebfb2652eaf9058899f140
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-an-azure-mobile-engagement-app"></a>Azure Mobile Engagement アプリの作成
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 この記事では、**簡易作成**法を使用して新しい **Azure Mobile Engagement** アプリを作成する方法について説明します。 また、アプリの監視と管理を開始するために **Mobile Engagement** ポータルに移動する方法についても説明します。 
 
 アプリのデータを収集してプッシュ通知を送信できるようにするには、最小限のセットである "基本的な統合" を追加する必要があります。 統合に関する完全なドキュメントは、 [Mobile Engagement の統合](mobile-engagement-windows-store-integrate-engagement.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> Azure Mobile Engagement のチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「<a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>」を参照してください。
+> Azure Mobile Engagement のチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fwww.windowsazure.com%2Fen-us%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>を参照してください。
 > 
 > 
 

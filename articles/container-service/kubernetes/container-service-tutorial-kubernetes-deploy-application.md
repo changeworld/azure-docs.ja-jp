@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service チュートリアル - アプリケーションのデプロイ"
-description: "Azure Container Service チュートリアル - アプリケーションのデプロイ"
+title: Azure Container Service チュートリアル - アプリケーションのデプロイ
+description: Azure Container Service チュートリアル - アプリケーションのデプロイ
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 02ec97fecd4759e9f35ab313ffe2d18fa076170a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 7119976ada00e10ebeadf6fcff2daf125f439c17
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="run-applications-in-kubernetes"></a>Kubernetes でアプリケーションを実行する
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/27/2018
 > * Kubernetes でアプリケーションを実行する
 > * アプリケーションをテストする
 
-後のチュートリアルでは、このアプリケーションをスケールアウトおよび更新し、Kubernetes クラスターを監視するように Operations Management Suite を構成します。
+その後のチュートリアルでは、このアプリケーションをスケールアウトし、更新します。さらに、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 このチュートリアルは、Kubernetes の概念についての基礎知識があることを前提としています。Kubernetes の詳細については、[Kubernetes のドキュメント](https://kubernetes.io/docs/home/)を参照してください。
 

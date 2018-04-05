@@ -1,24 +1,24 @@
 ---
-title: "プライベート ドメインに Azure DNS を使用する |Microsoft ドキュメント"
-description: "Microsoft Azure のプライベート DNS ホスティング サービスの概要です。"
+title: プライベート ドメインに Azure DNS を使用する |Microsoft ドキュメント
+description: Microsoft Azure のプライベート DNS ホスティング サービスの概要です。
 services: dns
 documentationcenter: na
 author: KumudD
 manager: jennoc
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: dns
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/20/2017
+ms.date: 03/15/2018
 ms.author: kumud
-ms.openlocfilehash: 95cf8ab2bd34e698e12452e062687219bad49eb6
-ms.sourcegitcommit: 4ea06f52af0a8799561125497f2c2d28db7818e7
+ms.openlocfilehash: 7f1bd8cdcab7bdd61b3f006acf6090c53db8eda6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="using-azure-dns-for-private-domains"></a>プライベート ドメインに Azure DNS を使用する
 ドメイン ネーム システム (DNS) は、サービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。  Azure DNS では、インターネットに接続する DNS ドメインだけでなく、プライベート DNS ドメインもプレビュー機能としてサポートするようになりました。  
@@ -27,7 +27,7 @@ Azure DNS は、信頼性が高くセキュリティで保護された DNS サ�
 
 ![DNS の概要](./media/private-dns-overview/scenario.png)
 
-[!INCLUDE [private-dns-preview-notice](../../includes/private-dns-preview-notice.md)]
+[!INCLUDE [private-dns-public-preview-notice](../../includes/private-dns-public-preview-notice.md)]
 
 ## <a name="benefits"></a>メリット
 
@@ -43,15 +43,41 @@ Azure DNS は、信頼性が高くセキュリティで保護された DNS サ�
 
 * **水平分割 DNS サポート。** Azure DNS では、同じ名前でゾーンを作成し、それが仮想ネットワーク内からとパブリック インターネットからとで異なる回答に解決されるようにすることができます。  水平分割 DNS の一般的なシナリオでは、仮想ネットワーク内で使用する専用のバージョンのサービスを提供します。
 
+* **すべての Azure リージョンで使用可能。** Azure DNS Private Zones は Azure パブリック クラウドの全リージョンでご利用いただけます。 
+
+
+## <a name="capabilities"></a>機能 
+* 登録仮想ネットワークとしてプライベート ゾーンにリンクされている単一の仮想ネットワークからの仮想マシンの自動登録。 仮想マシンは、各自のプライベート IP アドレスを指す A レコードとしてプライベート ゾーンに登録 (追加) されます。 さらに、登録仮想ネットワーク内の仮想マシンが削除されると、Azure によって、リンクされたプライベート ゾーンからの対応する DNS レコードの削除も自動的に実行されます。 登録仮想ネットワークは、既定では、登録仮想ネットワーク内のすべての仮想マシンが機能するゾーンに対して、その DNS 解決における解決仮想ネットワークとしても機能することに注意してください。 
+* 解決仮想ネットワークとしてプライベート ゾーンにリンクされている仮想ネットワーク間でサポートされる DNS 解決の転送。 仮想ネットワーク間の DNS 解決では、仮想ネットワークが相互にピアリングするという明示的な依存関係はありません。 ただし、他のシナリオ (HTTP トラフィックなど) では、ピア仮想ネットワークを作成できます。
+* VNET スコープ内でサポートされる逆引き DNS 参照。 プライベート ゾーンに割り当てられた仮想ネットワーク内のプライベート IP の逆引き DNS 参照では、ホスト/レコード名だけでなく、サフィックスとしてゾーン名を含む FQDN が返されます。 
+
+
+## <a name="limitations"></a>制限事項
+* プライベート ゾーンにつき 1 つの登録仮想ネットワーク
+* プライベート ゾーンにつき最大で 10 の解決仮想ネットワーク
+* 1 つの仮想ネットワークは、登録仮想ネットワークとして 1 つのプライベート ゾーンにのみリンク可能
+* 1 つの仮想ネットワークは、解決仮想ネットワークとして最大で 10 のプライベート ゾーンにリンク可能
+* 登録仮想ネットワークが指定された場合、プライベート ゾーンに登録されているその仮想ネットワーク内の仮想マシンの DNS レコードは PowerShell/CLI/API から表示することも取得することもできないが、VM レコードは登録が行われ、問題なく解決される
+* 逆引き DNS は登録仮想ネットワーク内のプライベート IP 空間に対してのみ機能する
+* プライベート ゾーンに登録されていないプライベート IP (例: プライベート ゾーンに解決仮想ネットワークとしてリンクされている仮想ネットワーク内の仮想マシンのプライベート IP) の逆引き DNS では、DNS サフィックスとして "internal.cloudapp.net" を返しますが、このサフィックスは解決できません。   
+* 仮想ネットワークは、次の時点では空の  (VM レコードがない) 状態である必要があります。 プライベート ゾーンに登録または解決仮想ネットワークとして初めてリンクされるとき。 ただし、その他のプライベート ゾーンに登録または解決仮想ネットワークとしてさらにリンクする場合、仮想ネットワークは空でなくてもかまいません。 
+* 現時点では、条件付きの転送 (例: Azure とオンプレミス ネットワーク間の解決を有効にする) はサポートされていません。 他のメカニズムを介してこのシナリオを実現する方法については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
+
+Azure DNS のプライベート ゾーンに関する一般的な質問と回答について、[FAQ](./dns-faq.md#private-dns) で確認することをお勧めします。特定の種類の操作で期待できる DNS の登録と解決の動作に関する説明も含まれています。 
+
 
 ## <a name="pricing"></a>価格
 
-プライベート DNS ゾーンは、管理プレビュー期間中は無料です。 一般提供期間中、この機能は既存の Azure DNS オファリングに類似した、使用に基づく料金モデルを使います。 
+プライベート DNS ゾーンは、パブリック プレビュー期間中は無料です。 一般提供期間中、この機能は既存の Azure DNS オファリングに類似した、使用に基づく料金モデルを使います。 
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-Azure DNS で[プライベート DNS ゾーンを作成する](./private-dns-getstarted-powershell.md)方法を学びます。
+[PowerShell](./private-dns-getstarted-powershell.md) または [CLI](./private-dns-getstarted-cli.md) を使用して Azure DNS のプライベート ゾーンを作成する方法を確認します。
+
+[プライベート ゾーンのシナリオ](./private-dns-scenarios.md)に関するページで、Azure DNS のプライベート ゾーンで実現できるいくつかの一般的なシナリオを確認します。
+
+[FAQ](./dns-faq.md#private-dns) で、Azure DNS のプライベート ゾーンに関する一般的な質問と回答を確認します。特定の種類の操作で期待できる動作も説明されています。 
 
 「[DNS ゾーンとレコードの概要](dns-zones-records.md)」でDNS ゾーンとレコードについて学びます。
 

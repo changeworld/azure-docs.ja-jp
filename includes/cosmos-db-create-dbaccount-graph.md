@@ -20,8 +20,6 @@
 
     ![Azure Cosmos DB の [新しいアカウント] ブレード](./media/cosmos-db-create-dbaccount-graph/create-nosql-db-databases-json-tutorial-2.png)
 
-4. アカウントの作成には数分かかります。 アカウントの作成中に、ポータルの右側に **[Deploying Azure Cosmos DB]\(Azure Cosmos DB のデプロイ\)** タイルが表示されます。タイルを表示するのに、ダッシュボードを右にスクロールしなければならない場合もあります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
+4. アカウントの作成には数分かかります。 ポータルに "**Azure Cosmos DB アカウントが作成されました**" ページが表示されるまで待機します。
 
-    ![Azure Portal の [通知] ウィンドウ](./media/cosmos-db-create-dbaccount-graph/deploying-cosmos-db.png)
-
-    アカウントが作成されると、**[Azure Cosmos DB アカウントが作成されました]** ページが表示されます。 
+    ![Azure Portal の [通知] ウィンドウ](./media/cosmos-db-create-dbaccount-graph/azure-cosmos-db-graph-created.png)

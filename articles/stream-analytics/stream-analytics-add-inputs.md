@@ -1,12 +1,12 @@
 ---
-title: "Stream Analytics ジョブへのデータ入力の追加 | Microsoft Docs"
-description: "Event Hubs からのストリーミング データ入力または BLOG ストレージの参照データとしてデータ ソースを Stream Analytics ジョブに接続する方法について説明します。"
-keywords: "データ入力、ストリーミング データ"
-documentationcenter: 
+title: Stream Analytics ジョブへのデータ入力の追加 | Microsoft Docs
+description: Event Hubs からのストリーミング データ入力または BLOG ストレージの参照データとしてデータ ソースを Stream Analytics ジョブに接続する方法について説明します。
+keywords: データ入力、ストリーミング データ
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: 
+author: jseb225
+manager: ryanw
+editor: ''
 ms.assetid: 9e59bd24-2a80-4ecb-b6b2-309a07c70bcd
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 7a4eb8642a0496e126b79724b4048bae7cc15a68
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: jeanb
+ms.openlocfilehash: 441cc2d1c6d2cdc6ce4bbd14306ec8ae71c38c55
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Stream Analytics ジョブへのストリーミング データ入力または参照データの追加
 Event Hubs からのストリーミング データ入力または BLOB ストレージの参照データとしてデータ ソースを Stream Analytics ジョブに接続する方法について説明します。
@@ -75,7 +75,7 @@ Stream Analytics ジョブに入力を追加するには:
 ## <a name="get-help-with-streaming-data-inputs"></a>ストリーミング データ入力に関するヘルプ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

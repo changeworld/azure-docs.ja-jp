@@ -99,12 +99,19 @@
               href: azure-stack-powershell-download.md
             - name: PowerShell の構成 - ユーザー
               href: azure-stack-powershell-configure-user.md
-            - name: Azure Stack CLI のインストールと構成
-              href: azure-stack-connect-cli.md
             - name: Visual Studio のインストール
               href: azure-stack-install-visual-studio.md
-            - name: API バージョンのプロファイルの管理
+            - name: API バージョンのプロファイルの使用
               href: azure-stack-version-profiles.md
+              items:
+                - name: PowerShell
+                  href: azure-stack-version-profiles-powershell.md
+                - name: Azure CLI 2.0
+                  href: azure-stack-version-profiles-azurecli2.md
+                - name: GO
+                  href: azure-stack-version-profiles-go.md
+                - name: プロファイルでサポートされているリソース プロバイダー API
+                  href: azure-stack-profiles-azure-resource-manager-versions.md
         - name: ポリシー モジュールの使用
           href: azure-stack-policy-module.md
         - name: テンプレートの使用

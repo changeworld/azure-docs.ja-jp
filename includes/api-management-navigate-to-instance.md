@@ -2,8 +2,8 @@
 
 APIM インスタンスに移動するには、次の手順に従います。
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。 
-2. Select ![矢印](./media/api-management-navigate-to-instance/arrow.png)が必要です。
+1. [Azure Portal](https://portal.azure.com) にサインインします。 
+2. 画面左上の **[すべてのサービス]** を選択します。  
 3. 検索ボックスに、「api」と入力します。
 4. **[API Management サービス]** をクリックします。
 

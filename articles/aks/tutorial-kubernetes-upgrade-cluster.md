@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes on Azure のチュートリアル - クラスターの更新"
-description: "Kubernetes on Azure のチュートリアル - クラスターの更新"
+title: Kubernetes on Azure のチュートリアル - クラスターの更新
+description: Kubernetes on Azure のチュートリアル - クラスターの更新
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 16c8892743ac25c21b7004e10796c77c3ac9f900
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 9c63bf2204f1e18cda6bfc80d54b01240193833f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="upgrade-kubernetes-in-azure-container-service-aks"></a>Azure Container Service (AKS) での Kubernetes のアップグレード
+# <a name="tutorial-upgrade-kubernetes-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) での Kubernetes のアップグレード
 
 Azure Container Service (AKS) クラスターは、Azure CLI を使用してアップグレードできます。 アップグレード プロセス中、実行中のアプリケーションの中断を最小限に抑えるために、Kubernetes ノードは慎重に[切断およびドレインされます][kubernetes-drain]。
 

@@ -1,12 +1,11 @@
 ---
-title: "Stream Analytics のクエリのアラートを設定する | Microsoft Docs"
-description: "Stream Analytics のアラートについて理解する"
-keywords: "アラートを設定する"
+title: Stream Analytics のクエリのアラートを設定する | Microsoft Docs
+description: Stream Analytics のアラートについて理解する
+keywords: アラートを設定する
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/26/2017
-ms.author: samacha
-ms.openlocfilehash: cdbd7da36f3eb2795fc4548915ebbf18200ca44d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: b88d7e82ffcd2fab1845faf92f6d7a53b72cb54d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Azure Stream Analytics ジョブのアラートを設定する
 ## <a name="introduction-monitor-page"></a>概要: 監視ページ
@@ -52,7 +51,7 @@ Azure Portal でのアラートの構成の詳細については、「[アラー
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-get-started.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

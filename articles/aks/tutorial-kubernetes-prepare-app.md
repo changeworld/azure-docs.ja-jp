@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes on Azure のチュートリアル - アプリの準備"
-description: "AKS チュートリアル - アプリの準備"
+title: Kubernetes on Azure のチュートリアル - アプリの準備
+description: AKS チュートリアル - アプリの準備
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 0c4a1459a49fb60578f9f38ea65cd1400b538382
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 8a2c2e53ed04cf00cc02135c5e5f82ded18fc2bc
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="prepare-application-for-azure-container-service-aks"></a>Azure Container Service (AKS) 用のアプリケーションの準備
+# <a name="tutorial-prepare-application-for-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) 用のアプリケーションの準備
 
 この 8 部構成の最初のチュートリアルでは、複数コンテナー アプリケーションを Kubernetes で使用できるように準備します。 手順は次のとおりです。  
 

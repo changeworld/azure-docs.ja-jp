@@ -1,6 +1,6 @@
 ---
-title: "メトリック値が条件を満たしている場合は通知を受け取る | Microsoft Docs"
-description: "ユーザーがロジック アプリのメトリックを作成するのに役立つクイック スタート ガイド"
+title: メトリック値が条件を満たしている場合は通知を受け取る | Microsoft Docs
+description: ユーザーがロジック アプリのメトリックを作成するのに役立つクイック スタート ガイド
 author: anirudhcavale
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 02/08/2018
 ms.author: ancav
 ms.custom: mvc
-ms.openlocfilehash: 3c1a6271d0cb2157cb23f1dd4193eadba2c1679b
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 0bbb7d7036c18675a64171a8bbf5c7fa46d53336
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="receive-a-notification-when-a-metric-value-meets-a-condition"></a>メトリック値が条件を満たしている場合は通知を受け取る
 
@@ -34,20 +34,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. **ロジック アプリ**を検索して選択します。 **[作成]** ボタンをクリックします。
 
-3. 次の図に示すようにロジック アプリの情報を入力します。  既定の場所を使用します。 **[ダッシュボードにピン留めする]** オプションをオンにします。  完了したら **[作成]** をクリックします。 
+3. 名前に「myLogicApp」を、リソース グループに「myResourceGroup」を入力します。 サブスクリプションには、ご利用のものを使用してください。  既定の場所を使用します。 **[ダッシュボードにピン留めする]** オプションをオンにします。  完了したら **[作成]** をクリックします。 
 
-    ![ポータルでロジック アプリの基本情報を入力する](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
+    ![ポータルでロジック アプリの基本情報を入力する](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-portal.png)  
 
 
 4. ロジック アプリはダッシュボードにピン留めする必要があります。 クリックしてロジック アプリに移動します。
 
 5. [ロジック アプリ] パネルで、**[ロジック アプリ デザイナー]** を選択します。
 
-     ![ポータル パネルのロジック アプリ デザイナーで繰り返しトリガーが作成されている状態](./media/monitoring-quick-resource-metric-alert-portal/logic-app-designer.png)  
+     ![ポータル パネルのロジック アプリ デザイナーで繰り返しトリガーが作成されている状態](./media/monitor-quick-resource-metric-alert-portal/logic-app-designer.png)  
 
 6. 次の図のように値を設定します。
 
-    ![ポータル パネルでロジック アプリ トリガーを構成します](./media/monitoring-quick-resource-metric-alert-portal/create-logic-app-triggers.png)が必要です。 
+    ![ポータル パネルでロジック アプリ トリガーを構成します](./media/monitor-quick-resource-metric-alert-portal/create-logic-app-triggers.png)が必要です。 
 
 7. デザイナーで、**繰り返し**トリガーを選択します。
 
@@ -75,7 +75,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. これで、過去 1 時間にロジック アプリで開始された実行総数を示すグラフが表示されます。 何も表示されない場合は、上記の手順から少なくとも 5 分待ってください。 次に、ブラウザーを更新します。 
 
-    ![ロジック アプリ リソースのメトリック グラフを表示する](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
+    ![ロジック アプリ リソースのメトリック グラフを表示する](./media/monitor-quick-resource-metric-alert-portal/logic-app-metric-chart.png)
 
 ## <a name="create-a-metric-alert-for-your-logic-app"></a>ロジック アプリのメトリック アラートを作成する
 
@@ -87,7 +87,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 4. 最後に、**[追加する管理者の電子メール]** で電子メール アドレスを入力します。 このアラートを設定することで、5 分以内に失敗したロジック アプリの実行回数が 10 回を超えた場合に電子メールを確実に受け取れるようになります。
 
-    ![ポータル パネルでロジック アプリ アラートを構成する](./media/monitoring-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
+    ![ポータル パネルでロジック アプリ アラートを構成する](./media/monitor-quick-resource-metric-alert-portal/logic-app-metrics-alert-portal.png)
 
 ## <a name="receive-metric-alert-notifications-for-your-logic-app"></a>ロジック アプリのメトリック アラート通知を受け取る
 1. しばらくすると、アラートが 'アクティブ' になったことを通知する電子メールが 'Microsoft Azure アラート' から届きます。

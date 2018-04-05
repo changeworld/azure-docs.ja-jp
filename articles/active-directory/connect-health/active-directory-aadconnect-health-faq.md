@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: b4c977b54c87276bd4b168bc56e70f3b918e6634
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 983c2c8aeb4c9d37213061dd70d6d64bae3de9d7
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -178,6 +178,10 @@ CheckForMS17-010
 **Q: PowerShell のコマンドレット <i>Get-MsolDirSyncProvisioningError</i> の場合、結果に表示される同期エラーが少ないのはなぜですか。**
 
 <i>Get MsolDirSyncProvisioningError</i> では DirSync プロビジョニング エラーのみが返されます。 また、Connect Health ポータルには、エクスポート エラーなどの他の種類の同期エラーも表示されます。 これは、Azure AD Connect の差分結果と一致します。 詳細については、[Azure AD Connect 同期エラー](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-troubleshoot-sync-errors)に関するページを参照してください。
+
+**Q: ADFS 監査が生成されていないのはなぜですか。**
+
+<i>Get-AdfsProperties -AuditLevel</i> PowerShell コマンドレットを使用して、監査ログが無効な状態になっていないことを確認してください。 詳細については、[ADFS 監査ログ](https://docs.microsoft.com/windows-server/identity/ad-fs/technical-reference/auditing-enhancements-to-ad-fs-in-windows-server#auditing-levels-in-ad-fs-for-windows-server-2016)に関する記事を参照してください。
 
 
 ## <a name="related-links"></a>関連リンク

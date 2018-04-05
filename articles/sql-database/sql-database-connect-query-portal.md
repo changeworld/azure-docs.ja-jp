@@ -10,15 +10,15 @@ ms.custom: mvc,DBs & servers
 ms.topic: quickstart
 ms.date: 01/10/2018
 ms.author: ayolubek
-ms.openlocfilehash: e5c1a5a991284fcbeac53d2ce35be4e2634514fa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 97b14de64c4aa6bf134f2c293e4bb8b5725810d3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-portal-use-the-sql-query-editor-to-connect-and-query-data"></a>Azure Portal: SQL クエリ エディターを使用した接続とデータの照会
 
-SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタートでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、および削除する方法について説明します。
+SQL クエリ エディターは、Azure Portal から離れずに、Azure SQL Database または Azure SQL Data Warehouse に対して SQL クエリを効率的かつ簡単に実行できるブラウザー クエリ ツールです。 このクイック スタート チュートリアルでは、クエリ エディターを使用して SQL Database に接続し、Transact-SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、および削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -142,19 +142,25 @@ Active Directory 管理者を構成すると、1 つの ID で Azure Portal と 
 
 ## <a name="query-editor-considerations"></a>クエリ エディターに関する考慮事項
 
-プレビュー段階にある間、クエリ エディターを操作するときは次の点に注意してください。
+クエリ エディターを操作するときは次の点に注意してください。
 
 1. Azure SQL Server のファイアウォール設定で、[Azure サービスへのアクセスを許可する] が [オン] に設定されていることを確認します。 このオプションにより、SQL クエリ エディターは SQL データベースおよびデータ ウェアハウスにアクセスできるようになります。
 
-2. Azure Active Directory 管理者ログインは、2 要素認証が有効になっているアカウントでは機能しません。
+2. SQL サーバーが Virtual Network 内に存在する場合、クエリ エディターを使って、そのサーバーのデータベースを照会することはできません。
 
-3. 電子メール アカウント (outlook.com、hotmail.com、live.com、gmail.com、yahoo.com など) は、Active Directory 管理者としてまだサポートされていません。 Azure Active Directory でネイティブに作成されたユーザー、または Azure Active Directory にフェデレーションされたユーザーを必ず選択してください。
+3. F5 キーを押すと、クエリ エディター ページが更新され、作業中のクエリが失われます。 クエリを実行するには、ツール バーの [実行] ボタンを使用します。
 
-4. クエリ エディタでは、空間データ型のクエリはまだサポートされていません。 空間列を照会すると、"System.IO.FileNotFoundException" エラーが発生します。
+4. クエリ エディターは、master DB への接続をサポートしません。
 
-5. データベース テーブルおよびビューでは、IntelliSense はサポートされていません。 ただし、エディターでは、既に入力されている名前のオート コンプリートをサポートしています。
+5. クエリの実行には、5 分のタイムアウトがあります。
 
-6. F5 キーを押すと、クエリ エディター ページが更新され、作業中のクエリが失われます。 クエリを実行するには、ツール バーの [実行] ボタンを使用します。
+6. Azure Active Directory 管理者ログインは、2 要素認証が有効になっているアカウントでは機能しません。
+
+7. 電子メール アカウント (outlook.com、hotmail.com、live.com、gmail.com、yahoo.com など) は、Active Directory 管理者としてまだサポートされていません。 Azure Active Directory でネイティブに作成されたユーザー、または Azure Active Directory にフェデレーションされたユーザーを必ず選択してください。
+
+8. geography データ型に関してクエリ エディターでサポートされるのは円柱投影のみです。
+
+9. データベース テーブルおよびビューでは、IntelliSense はサポートされていません。 ただし、エディターでは、既に入力されている名前のオート コンプリートをサポートしています。
 
 
 ## <a name="next-steps"></a>次の手順

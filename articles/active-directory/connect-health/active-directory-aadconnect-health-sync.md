@@ -1,8 +1,8 @@
 ---
-title: "同期での Azure AD Connect Health の使用 | Microsoft Docs"
-description: "Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。"
+title: 同期での Azure AD Connect Health の使用 | Microsoft Docs
+description: Azure AD Connect 同期を監視する方法を説明する Azure AD Connect Health のページです。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: karavar
 manager: mtillman
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
@@ -14,11 +14,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 821d4bd7e6b526ad826caf005456edf8235291b8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: cff8be88e23d57545a9926df366289c6ba264886
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -78,16 +78,17 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
 ### <a name="categorization-of-errors"></a>エラー カテゴリの分類
 レポートでは、既存の同期エラーが次のカテゴリで分類されます。
 
-| カテゴリ | Description |
+| カテゴリ | [説明] |
 | --- | --- |
 | 重複する属性 |Azure AD において本来テナントごとに一意であるべき属性 (proxyAddresses、UserPrincipalName など) の値に重複があるオブジェクトを Azure AD Connect が作成または更新しようとしたときに発生するエラー。 |
 | 一致しないデータ |あいまいな一致の処理で、同期エラーを引き起こしたオブジェクトの突き合わせに失敗したときのエラー。 |
 | データ検証の失敗 |無効なデータに起因するエラー。たとえばサポート対象外の文字が重要な属性 (UserPrincipalName など) に使用されていたり、データの形式に誤りがあるために Azure AD への書き込み前の検証に失敗したりしたケースが対象となります。 |
+| フェデレーション ドメイン変更 | 異なるフェデレーション ドメインがアカウントで使用されたときに発生するエラー。 |
 | 大きい属性 |許可されているサイズや長さ、数を超える属性がある場合に発生するエラー。 |
 | その他 |上記のカテゴリに該当しないその他すべてのエラー。 このカテゴリは、フィードバックに基づいてさらに細かく分類されます。 |
 
 ![同期エラー レポートの概要](./media/active-directory-aadconnect-health-sync/errorreport01.png)
-![同期エラー レポートのカテゴリ](./media/active-directory-aadconnect-health-sync/errorreport02.png)
+![同期エラー レポートのカテゴリ](./media/active-directory-aadconnect-health-sync/SyncErrorByTypes.PNG)
 
 ### <a name="list-of-objects-with-error-per-category"></a>オブジェクトとエラー (カテゴリごと) の一覧表示
 それぞれのカテゴリを掘り下げていくと、そのカテゴリのエラーに該当する一連のオブジェクトが表示されます。
