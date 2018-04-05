@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ea26a2d4214c41faa5d63b7c72667955a43d6a2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 1f31af4fcc7ef70889ad8bc021bea0796721e5f5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
+# <a name="tutorial-deploy-an-azure-container-service-aks-cluster"></a>チュートリアル: Azure Container Service (AKS) クラスターのデプロイ
 
 Kubernetes には、コンテナー化されたアプリケーション用の分散プラットフォームが用意されています。 AKS を使うと、運用開始準備の整った Kubernetes クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このチュートリアル (8 部構成の第 3 部) では、Kubernetes クラスターが AKS にアップグレードされます。 手順は次のとおりです。
 
@@ -24,7 +24,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 > * Kubernetes CLI (kubectl) のインストール
 > * kubectl の構成
 
-この後のチュートリアルでは、Azure Vote アプリケーションをクラスターにデプロイしてから拡張および更新し、Operations Management Suite を Kubernetes クラスターを監視するように構成します。
+この後のチュートリアルでは、Azure Vote アプリケーションをクラスターにデプロイ、スケーリング、および更新します。さらに、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 

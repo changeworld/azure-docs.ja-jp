@@ -16,10 +16,10 @@ ms.date: 03/13/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
 ms.openlocfilehash: b922790d51c7028c37bb5863d43e99e19790488c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-physical-memory-capacity-for-azure-stack"></a>Azure Stack の物理メモリ容量を管理する
 

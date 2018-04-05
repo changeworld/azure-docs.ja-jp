@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub cloud-to-device オプション | Microsoft Docs"
-description: "開発者ガイド - ダイレクト メソッド、デバイス ツインの必要なプロパティ、または cloud-to-device 通信用の cloud-to-device メッセージを使用するタイミングに関するガイダンス。"
+title: Azure IoT Hub cloud-to-device オプション | Microsoft Docs
+description: 開発者ガイド - ダイレクト メソッド、デバイス ツインの必要なプロパティ、または cloud-to-device 通信用の cloud-to-device メッセージを使用するタイミングに関するガイダンス。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 1ac90923-1edf-4134-bbd4-77fee9b68d24
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: dc8256022aca37823245ecb9a9326240f1c449c2
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 144bd8e0a954e54cf17fb88105759d0e000454fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="cloud-to-device-communications-guidance"></a>cloud-to-device 通信に関するガイダンス
 IoT Hub では、デバイス アプリがバックエンド アプリに機能を公開するための 3 つのオプションがあります。
@@ -26,6 +26,8 @@ IoT Hub では、デバイス アプリがバックエンド アプリに機能�
 * [ダイレクト メソッド][lnk-methods]: 結果を即座に確認することが求められる通信用。 ダイレクト メソッドは、対話型のデバイス制御によく使用されます (ファンの電源を投入するなど)。
 * [デバイス ツインの必要なプロパティ][lnk-twins]: デバイスを特定の状態に置いておくために長時間実行されるコマンド用。 たとえば、テレメトリの送信間隔を 30 分に設定します。
 * [cloud-to-device メッセージ][lnk-c2d]: デバイス アプリに対する一方向の通知用。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 さまざまな cloud-to-device 通信オプションの詳細な比較を次に示します。
 

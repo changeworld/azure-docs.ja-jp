@@ -1,11 +1,11 @@
 ---
-title: "異なる Azure Stack Development Kit 環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する | Microsoft Docs"
-description: "2 つのシングル ノード Azure Stack Development Kit 環境の間にクラウド管理者がサイト間 VPN 接続を作成するための詳細な手順。"
+title: 異なる Azure Stack Development Kit 環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する | Microsoft Docs
+description: 2 つのシングル ノード Azure Stack Development Kit 環境の間にクラウド管理者がサイト間 VPN 接続を作成するための詳細な手順。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 3f1b4e02-dbab-46a3-8e11-a777722120ec
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: brenduns
 ms.reviewer: scottnap
-ms.openlocfilehash: 886d56169c5500c9175b7ddc43edfc29c5142fbb
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 8bb10be63ef31ebe6241c15a79dafe71923a4cf7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>異なる Azure Stack Development Kit 環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する
 ## <a name="overview"></a>概要
@@ -33,7 +33,7 @@ ms.lasthandoff: 02/21/2018
 ### <a name="before-you-begin"></a>開始する前に
 接続構成を行うには、作業開始前に次のものを用意する必要があります。
 
-* Azure Stack Development Kit ハードウェア要件を満たす 2 つのサーバー。この要件は「[Azure Stack deployment prerequisites](azure-stack-deploy.md)」(Azure Stack デプロイ前提条件) に定義されています。 [この記事](azure-stack-deploy.md)にあるその他の前提条件も満たしてください。
+* Azure Stack Development Kit のハードウェア要件を満たす 2 つのサーバーおよびその他の前提条件 (「[クイック スタート: Azure Stack Development Kit の評価](azure-stack-deploy-overview.md)」を参照)。 
 * [Azure Stack Development Kit](https://azure.microsoft.com/en-us/overview/azure-stack/try/) デプロイ パッケージ。
 
 ## <a name="deploy-the-azure-stack-development-kit-environments"></a>Azure Stack Development Kit 環境のデプロイ

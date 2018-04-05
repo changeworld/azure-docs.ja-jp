@@ -1,21 +1,21 @@
 ---
-title: "Azure Migrate について | Microsoft Docs"
-description: "Azure Migrate サービスの概要を示します。"
+title: Azure Migrate について | Microsoft Docs
+description: Azure Migrate サービスの概要を示します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
-ms.date: 02/26/2018
+ms.date: 03/27/2018
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 45eac1d1ecb173ba0a62ab13f47b7ee6e12f7af3
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 857dab5474cba24445daf7d139ae49d923038196
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-azure-migrate"></a>Azure Migrate について
 
-Azure Migrate サービスは、Azure への移行についてオンプレミスのワークロードを評価します。 このサービスで、オンプレミス マシンの Azure への移行の適合性と、パフォーマンスに基づくサイズを評価して、オンプレミスのマシンを Azure で実行するためのコストを見積もることができます。 リフトアンドシフトでの移行を検討している場合や移行の初期評価段階の場合、このサービスは適しています。 その評価後、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) や [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) などのサービスを使用して、Azure にマシンを移行することができます。
+Azure Migrate サービスは、Azure への移行についてオンプレミスのワークロードを評価します。 このサービスで、オンプレミス マシンの移行の適合性と、パフォーマンスに基づくサイズを評価して、オンプレミスのマシンを Azure で実行するためのコストを見積もることができます。 リフトアンドシフトでの移行を検討している場合や移行の初期評価段階の場合、このサービスは適しています。 その評価後、[Azure Site Recovery](https://docs.microsoft.com/azure/site-recovery/site-recovery-overview) や [Azure Database Migration Service](https://docs.microsoft.com/azure/dms/dms-overview) などのサービスを使用して、Azure にマシンを移行することができます。
 
 ## <a name="why-use-azure-migrate"></a>Azure Migrate を使用する理由
 
@@ -29,13 +29,11 @@ Azure Migrate によって次のことが可能になります。
 ## <a name="current-limitations"></a>現時点での制限事項
 
 - 現時点では Azure VM への移行に関して、オンプレミスの VMware 仮想マシン (VM) だけを評価することができます。 VMware VM は、vCenter Server (バージョン 5.5、6.0、または 6.5) で管理する必要があります。
-
-> [!NOTE]
-> Hyper-V のサポートもロードマップにあり、近日中の実現を目指しています。 それまでの間、Hyper-V のワークロードの移行を計画するときは、[Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) を使うことをお勧めします。 
-
+- Hyper-V についても今後サポートされる予定です。 それまでの間、Hyper-V のワークロードの移行を計画するときは、[Azure Site Recovery Deployment Planner](http://aka.ms/asr-dp-hyperv-doc) を使うことをお勧めします。 
 - 1 回の検出で最大 1000 個の VM を検出でき、1 つのプロジェクトで最大 1500 個の VM を検出できます。 さらに、一度に最大 400 個の VM を評価できます。 さらに多くの VM を検出または評価する必要がある場合は、検出または評価の回数を増やしてください。 [詳細情報](how-to-scale-assessment.md)
 - Azure Migrate プロジェクトを作成できるのは、米国中西部または米国東部リージョンに限られます。 ただし、これが他の Azure リージョンへの移行計画に影響することはありません。 移行プロジェクトの場所は単に、オンプレミス環境から検出されたメタデータを保存するためにのみ使用されます。
 - Azure Migrate の移行評価では、管理ディスクのみがサポートされます。
+
 
 ## <a name="what-do-i-need-to-pay-for"></a>支払い対象について
 

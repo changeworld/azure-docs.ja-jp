@@ -1,8 +1,8 @@
 ---
-title: "Azure IoT Edge で Azure 関数を展開する | Microsoft Docs"
-description: "Azure 関数をモジュールとしてエッジ デバイスに展開します"
+title: Azure IoT Edge で Azure 関数を展開する | Microsoft Docs
+description: Azure 関数をモジュールとしてエッジ デバイスに展開します
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: v-jamebr
@@ -10,11 +10,11 @@ ms.date: 11/15/2017
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 1dfe46d307a076ae02362c4bba292602001ed915
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: a43ae8f28fc32b61fb5db985ffae98f093293798
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-function-as-an-iot-edge-module---preview"></a>Azure 関数を IoT Edge モジュールとして展開する - プレビュー
 Azure Functions を使用して、ビジネス ロジックを実装するコードを IoT Edge デバイスに直接展開できます。 このチュートリアルでは、[Windows][lnk-tutorial1-win] または [Linux][lnk-tutorial1-lin] のシミュレートされたデバイスに Azure IoT Edge を展開するチュートリアルで作成した、シミュレートされた IoT Edge デバイスで、センサー データをフィルター処理する Azure 関数を作成および展開します。 このチュートリアルで学習する内容は次のとおりです。     
@@ -131,9 +131,9 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
 
 1. Docker イメージをビルドします。
     1. VS Code エクスプローラーで、**Docker** フォルダーを展開します。 次に、コンテナー プラットフォームのフォルダー、**linux-x64** または **windows-nano** を展開します。 
-    2. **[Dockerfile]** ファイルを右クリックし、**[Build IoT Edge module Docker image] (IoT Edge モジュール Docker イメージのビルド)** をクリックします。 
+    2. **[Dockerfile]** ファイルを右クリックし、**[Build IoT Edge module Docker image] \(IoT Edge モジュール Docker イメージのビルド)** をクリックします。 
     3. **FilterFunction** プロジェクト フォルダーに移動し、**[Select Folder as EXE_DIR]\(EXE_DIR としてフォルダーを選択\)** をクリックします。 
-    4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 (例: `<your container registry address>/filterfunction:latest`)。 コンテナー レジストリ アドレスは、レジストリからコピーしたログイン サーバーと同じです。 `<your container registry name>.azurecr.io` の形式にする必要があります。
+    4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 たとえば、「 `<your container registry address>/filterfunction:latest`」のように入力します。 コンテナー レジストリ アドレスは、レジストリからコピーしたログイン サーバーと同じです。 `<your container registry name>.azurecr.io` の形式にする必要があります。
  
 4. Docker にサインインします。 統合ターミナルで、次のコマンドを入力します。 
 
@@ -141,7 +141,7 @@ Azure Functions を使用して、ビジネス ロジックを実装するコー
    docker login -u <username> -p <password> <Login server>
    ```
         
-   このコマンドで使用するユーザー名、パスワード、ログイン サーバーを見つけるには、Azure Portal (https://portal.azure.com) に移動します。 **[すべてのリソース]** から、Azure Container Registry のタイルをクリックして、プロパティを開き、**[アクセス キー]** をクリックします。 **ユーザー名**、**パスワード**、**ログイン サーバー**の各フィールドの値をコピーします。 
+   このコマンドで使用するユーザー名、パスワード、ログイン サーバーを見つけるには、[Azure Portal] (https://portal.azure.com) に移動します。 **[すべてのリソース]** から、Azure Container Registry のタイルをクリックして、プロパティを開き、**[アクセス キー]** をクリックします。 **ユーザー名**、**パスワード**、**ログイン サーバー**の各フィールドの値をコピーします。 
 
 3. イメージを Docker リポジトリにプッシュします。 **[表示]** > **[コマンド パレット...]** を選択し、**[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** を検索します。
 4. ポップアップ テキスト ボックスに、手順 1.d. で使用したイメージ名を入力します。
@@ -164,8 +164,8 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
 ## <a name="run-the-solution"></a>ソリューションを実行する
 
 1. **Azure Portal** で、IoT ハブに移動します。
-2. **IoT Edge (プレビュー)** に移動し、IoT Edge デバイスを選択します。
-1. **[Set Modules] (モジュールの設定)** を選択します。 
+2. **[IoT Edge (preview)]\(IoT Edge \(プレビュー\)\)** に移動し、IoT Edge デバイスを選びます。
+1. **[Set Modules] \(モジュールの設定)** を選択します。 
 2. **tempSensor** モジュールをこのデバイスに既に展開している場合は、自動的に設定されます。 そうでない場合は、次の手順に従ってモジュールを追加します。
     1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
     2. **[名前]** フィールドに「`tempSensor`」と入力します。
@@ -174,10 +174,10 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
 1. **filterFunction** モジュールを追加します。
     1. もう一度 **[Add IoT Edge Module] (IoT Edge モジュールの追加)** を選択します。
     2. **[名前]** フィールドに「`filterFunction`」と入力します。
-    3. **[イメージ]** フィールドに、イメージ アドレスを入力します (`<docker registry address>/filterfunction:latest` など)。
+    3. **[イメージの URI]** フィールドに、イメージ アドレスを入力します (`<your container registry address>/filtermodule:0.0.1-amd64` など)。 完全なイメージ アドレスは、前のセクションから見つけることができます。
     74. **[Save]** をクリックします。
 2. **[次へ]** をクリックします。
-3. **[Specify Routes] (ルートの指定)** の手順で、下記の JSON をテキスト ボックスにコピーします。 1 つ目のルートは、"input1" エンドポイント経由で、温度センサーからフィルター モジュールにメッセージを転送します。 2 つ目のルートは、フィルター モジュールから IoT ハブにメッセージを転送します。 このルートでは、`$upstream` は特別な転送先で、Edge Hub に対して、メッセージを IoT ハブに送信するように指示します。 
+3. **[Specify Routes] \(ルートの指定)** の手順で、下記の JSON をテキスト ボックスにコピーします。 1 つ目のルートは、"input1" エンドポイント経由で、温度センサーからフィルター モジュールにメッセージを転送します。 2 つ目のルートは、フィルター モジュールから IoT ハブにメッセージを転送します。 このルートでは、`$upstream` は特別な転送先で、Edge Hub に対して、メッセージを IoT ハブに送信するように指示します。 
 
     ```json
     {
@@ -189,7 +189,7 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
     ```
 
 4. **[次へ]** をクリックします。
-5. **[Review Template] (テンプレートのレビュー)** の手順で、**[送信]** をクリックします。 
+5. **[Review Template] \(テンプレートのレビュー)** の手順で、**[送信]** をクリックします。 
 6. IoT Edge デバイスの詳細ページに戻り、**[更新]** をクリックします。 新しい **filterfunction** モジュールが、**tempSensor** モジュールおよび **IoT Edge ランタイム**と一緒に実行されています。 
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
@@ -204,7 +204,7 @@ IoT Edge デバイスから IoT ハブに送信されたデバイスからクラ
 1. IoT ハブに到着するデータを監視するには、**[表示]** > **[コマンド パレット...]** を選択し、**[IoT: Start monitoring D2C message]\(IoT: D2C メッセージの監視を開始\)** を検索します。 
 2. データの監視を停止するには、コマンド パレットで **[IoT: Stop monitoring D2C message]\(IoT: D2C メッセージの監視を停止\)** を使用します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このチュートリアルでは、IoT Edge デバイスで生成された生データをフィルター処理するコードを含む、Azure 関数を作成しました。 Azure IoT Edge を探索し続けるには、Azure IoT Edge デバイスをゲートウェイとして使用する方法を確認します。 
 

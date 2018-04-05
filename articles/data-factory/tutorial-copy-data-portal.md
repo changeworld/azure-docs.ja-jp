@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal を使用して Data Factory パイプラインを作成する | Microsoft Docs"
-description: "このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から SQL データベースにデータをコピーします。"
+title: Azure Portal を使用して Data Factory パイプラインを作成する | Microsoft Docs
+description: このチュートリアルでは、Azure Portal を使用してパイプラインを備えたデータ ファクトリを作成するための詳細な手順について説明します。 パイプラインでコピー アクティビティを使用して、Azure Blob Storage から SQL データベースにデータをコピーします。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/09/2018
 ms.author: jingwang
-ms.openlocfilehash: 116832175a4b7e4497c9005be7841cb56c1d235b
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 34c78a114c1d106c400a94941aa113153383e206
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Blob Storage から SQL データベースにデータをコピーする
 このチュートリアルでは、Azure Data Factory ユーザー インターフェイス (UI) を使用してデータ ファクトリを作成します。 このデータ ファクトリのパイプラインでは、Azure Blob Storage から SQL データベースにデータをコピーします。 このチュートリアルの構成パターンは、ファイルベースのデータ ストアからリレーショナル データ ストアへのコピーに適用されます。 ソースおよびシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関する表を参照してください。
@@ -303,7 +303,7 @@ Data Factory または独自の Visual Studio Team Services Git リポジトリ�
     ![通知の表示](./media/tutorial-copy-data-portal/show-notifications.png)
 
 ## <a name="configure-code-repository"></a>コード リポジトリを構成する
-データ ファクトリ アーティファクトに関連付けられたコードを、Visual Studio Team Services コード リポジトリに発行できます。 この手順では、コード リポジトリを作成します。 
+データ ファクトリ アーティファクトに関連付けられたコードを、Visual Studio Team Services コード リポジトリに発行できます。 この手順では、コード リポジトリを作成します。  VSTS 統合でのビジュアルの作成の詳細については、「[VSTS Git 統合での作成](author-visually.md#author-with-vsts-git-integration)」を参照してください。
 
 Visual Studio Team Services コード リポジトリの作業が不要であれば、この手順はスキップしてかまいません。 前の手順で行った Data Factory への発行作業に進むことができます。 
 

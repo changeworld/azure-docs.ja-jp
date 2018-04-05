@@ -43,11 +43,12 @@
 ## MXChip IoT DevKit の使用
 ### [Azure Cognitive Services での音声メッセージの翻訳](iot-hub-arduino-iot-devkit-az3166-translator.md)
 ### [Azure Functions を使用して Twitter メッセージを取得する](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
+### [Azure Functions で磁気センサーを監視してメール通知を送信する](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
 
 # ハウツー ガイド
 ## プラン
 ### [IoT Hub と Event Hubs の比較](iot-hub-compare-event-hubs.md)
-### [ソリューションをスケール調整する](iot-hub-scaling.md)
+### [適切なプランの選択](iot-hub-scaling.md)
 ### [高可用性と障害復旧](iot-hub-ha-dr.md)
 ### [その他のプロトコルのサポート](iot-hub-protocol-gateway.md)
 ### [メッセージ ルーティングとイベント ルーティングの比較](iot-hub-event-grid-routing-comparison.md)
@@ -82,7 +83,7 @@
 ### メッセージのルーティング
 #### [.NET](iot-hub-csharp-csharp-process-d2c.md)
 #### [Java](iot-hub-java-java-process-d2c.md)
-#### [Node.JS](iot-hub-node-node-process-d2c.md)
+#### [Node.js](iot-hub-node-node-process-d2c.md)
 #### [Python](iot-hub-python-python-process-d2c.md)
 ### C2D メッセージの送信
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
@@ -147,6 +148,7 @@
 ### [診断を使用した監視](iot-hub-monitor-resource-health.md)
 #### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
 #### [操作の監視](iot-hub-operations-monitoring.md)
+### [IoT Hub のアップグレード](iot-hub-upgrade.md)
 ### [使用状況のメトリック](iot-hub-metrics.md)
 ### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
 ### [IP フィルター処理を構成する](iot-hub-ip-filtering.md)

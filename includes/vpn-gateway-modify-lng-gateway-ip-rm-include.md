@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: include
-ms.date: 03/21/2018
+ms.date: 03/28/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e4d6c23bc7bf9b3228f851ab38ec587bc8552455
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 4ee182202cf1ecbbb0845541269f7241de26c170
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 ### <a name="gwipnoconnection"></a>ローカル ネットワーク ゲートウェイの "GatewayIpAddress" を変更するには (ゲートウェイに接続していない場合)
 
@@ -20,10 +20,10 @@ ms.lasthandoff: 03/23/2018
 
 この値を変更するときには、同時にアドレス プレフィックスを変更することもできます。 現在の設定を上書きするときは、必ずローカル ネットワーク ゲートウェイの既存の名前を使用してください。 別の名前を使用した場合には、既存のゲートウェイが上書きされずに、新しいローカル ネットワーク ゲートウェイが作成されます。
 
-```powershell
-New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
--Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
--GatewayIpAddress "5.4.3.2" -ResourceGroupName MyRGName
+```azurepowershell-interactive
+New-AzureRmLocalNetworkGateway -Name Site1 `
+-Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
+-GatewayIpAddress "5.4.3.2" -ResourceGroupName TestRG1
 ```
 
 ### <a name="gwipwithconnection"></a>ローカル ネットワーク ゲートウェイの "GatewayIpAddress" を変更するには (ゲートウェイに接続している場合)
@@ -33,31 +33,31 @@ New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
 
 1. 接続を削除します。 "Get-AzureRmVirtualNetworkGatewayConnection" コマンドレットを使用して、接続の名前を調べることができます。
 
-  ```powershell
-  Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `
-  -ResourceGroupName MyRGName
+  ```azurepowershell-interactive
+  Remove-AzureRmVirtualNetworkGatewayConnection -Name VNet1toSite1 `
+  -ResourceGroupName TestRG1
   ```
 2. "GatewayIpAddress" の値を変更します。 同時にアドレス プレフィックスを変更することもできます。 必ず、ローカル ネットワーク ゲートウェイの既存の名前を使用して、現在の設定を上書きしてください。 そうしないと、既存のゲートウェイが上書きされずに、新しいローカル ネットワーク ゲートウェイが作成されます。
 
-  ```powershell
-  New-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName `
-  -Location "West US" -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24') `
-  -GatewayIpAddress "104.40.81.124" -ResourceGroupName MyRGName
+  ```azurepowershell-interactive
+  New-AzureRmLocalNetworkGateway -Name Site1 `
+  -Location "East US" -AddressPrefix @('10.101.0.0/24','10.101.1.0/24') `
+  -GatewayIpAddress "104.40.81.124" -ResourceGroupName TestRG1
   ```
 3. 接続を作成します。 この例では、IPsec という接続の種類を構成します。 接続を作成し直すときは、実際の構成で指定した接続の種類を使用してください。 その他の種類の接続については、 [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt603611.aspx) のページを参照してください。  VirtualNetworkGateway の名前は、"Get-AzureRmVirtualNetworkGateway" コマンドレットを実行して取得できます。
    
     変数を設定します。
 
-  ```powershell
-  $local = Get-AzureRMLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
-  $vnetgw = Get-AzureRmVirtualNetworkGateway -Name RMGateway -ResourceGroupName MyRGName
+  ```azurepowershell-interactive
+  $local = Get-AzureRMLocalNetworkGateway -Name Site1 -ResourceGroupName TestRG1 `
+  $vnetgw = Get-AzureRmVirtualNetworkGateway -Name VNet1GW -ResourceGroupName TestRG1
   ```
    
     接続を作成します。
 
-  ```powershell 
-  New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName `
-  -Location "West US" `
+  ```azurepowershell-interactive 
+  New-AzureRmVirtualNetworkGatewayConnection -Name VNet1Site1 -ResourceGroupName TestRG1 `
+  -Location "East US" `
   -VirtualNetworkGateway1 $vnetgw `
   -LocalNetworkGateway2 $local `
   -ConnectionType IPsec -RoutingWeight 10 -SharedKey 'abc123'

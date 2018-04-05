@@ -1,12 +1,11 @@
 ---
-title: "データ接続: イベント ストリームからのデータ ストリーム入力 | Microsoft Docs"
+title: 'データ接続: イベント ストリームからのデータ ストリーム入力 | Microsoft Docs'
 description: "'入力' という Stream Analytics に対するデータ接続を設定する方法について説明します。 入力には、イベントからのデータ ストリームだけでなく、参照データも含まれます。"
-keywords: "データ ストリーム、データ接続、イベント ストリーム"
+keywords: データ ストリーム、データ接続、イベント ストリーム
 services: stream-analytics
-documentationcenter: 
+documentationcenter: ''
 author: SnehaGunda
 manager: kfile
-editor: cgronlun
 ms.assetid: 8155823c-9dd8-4a6b-8393-34452d299b68
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 12/11/2017
 ms.author: sngun
-ms.openlocfilehash: e8b55269e861dc010c911491d52973b674dd50ca
-ms.sourcegitcommit: aaba209b9cea87cb983e6f498e7a820616a77471
+ms.openlocfilehash: 0ddc3187e9fc0664838dd07f781f4d7e2e4a7fe0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/12/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
 Stream Analytics ジョブに対するデータ接続は、データ ソースからのイベントのデータ ストリームです。これはジョブの "*入力*" と呼ばれます。 Stream Analytics は、Azure データ ストリーム ソース ([Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) など) と高度に統合されています。 分析ジョブと同じ Azure サブスクリプションまたは異なるサブスクリプションの入力ソースを指定できます。
@@ -53,7 +52,7 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 ### <a name="configure-an-event-hub-as-a-data-stream-input"></a>データ ストリーム入力としてイベント ハブを構成する
 次の表に、入力としてイベント ハブを構成する場合に使用する、Azure Portal の **[新しい入力]** ブレードにある各プロパティの説明を示しています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | **入力のエイリアス** |この入力を参照するジョブのクエリで使用するわかりやすい名前。 |
 | **Service Bus 名前空間** |Azure Service Bus 名前空間。これは、一連のメッセージング エンティティのコンテナーです。 新しいイベント ハブを作成するときは、Service Bus 名前空間も作成します。 |
@@ -66,7 +65,7 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 
 データがイベント ハブから送信される場合、Stream Analytics クエリでは次のメタデータ フィールドにアクセスできます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | **EventProcessedUtcTime** |Stream Analytics によってイベントが処理された日時。 |
 | **EventEnqueuedUtcTime** |Event Hubs でイベントを受信した日時。 |
@@ -102,7 +101,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 ### <a name="configure-an-iot-hub-as-a-data-stream-input"></a>データ ストリーム入力として IoT Hub を構成する
 次の表に、入力として IoT Hub を構成する場合に使用する、Azure Portal の **[新しい入力]** ブレードにある各プロパティの説明を示しています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | **入力のエイリアス** |この入力を参照するジョブのクエリで使用するわかりやすい名前。|
 | **IoT Hub** |入力として使用する IoT Hub の名前。 |
@@ -116,7 +115,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 
 データが IoT Hub から送信される場合、Stream Analytics クエリでは次のメタデータ フィールドにアクセスできます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | **EventProcessedUtcTime** |イベントが処理された日時。 |
 | **EventEnqueuedUtcTime** |IoT Hub でイベントを受信した日時。 |
@@ -144,7 +143,7 @@ CSV 形式の入力についても、データ セットのフィールドを定
 
 次の表に、入力として Blob Storage を構成する場合に使用する、Azure Portal の **[新しい入力]** ブレードにある各プロパティの説明を示しています。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | **入力のエイリアス** | この入力を参照するジョブのクエリで使用するわかりやすい名前。 |
 | **ストレージ アカウント** | BLOB ファイルが配置されるストレージ アカウントの名前。 |
@@ -159,7 +158,7 @@ CSV 形式の入力についても、データ セットのフィールドを定
 
 データが Blob Storage のソースから送信される場合、Stream Analytics クエリでは次のメタデータ フィールドにアクセスできます。
 
-| プロパティ | Description |
+| プロパティ | [説明] |
 | --- | --- |
 | **BlobName** |イベントに起因する入力 BLOB の名前。 |
 | **EventProcessedUtcTime** |Stream Analytics によってイベントが処理された日時。 |
@@ -179,7 +178,7 @@ FROM Input
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ここでは、Azure での Stream Analytics ジョブのデータ接続オプションについて説明しました。 Stream Analytics の詳細については、以下を参照してください。
 
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)

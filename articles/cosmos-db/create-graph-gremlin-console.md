@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB チュートリアル: Apache TinkerPops Gremlin コンソールでの作成、クエリ、走査 | Microsoft Docs"
-description: "Azure Cosmos DB Graph API を使用して頂点、辺、およびクエリを作成するための Azure Cosmos DB クイック スタート。"
+title: 'Azure Cosmos DB チュートリアル: Apache TinkerPops Gremlin コンソールでの作成、クエリ、走査 | Microsoft Docs'
+description: Azure Cosmos DB Graph API を使用して頂点、辺、およびクエリを作成するための Azure Cosmos DB クイック スタート。
 services: cosmos-db
 author: luisbosquez
 manager: jhubbard
@@ -13,17 +13,17 @@ ms.devlang: terminal
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 2729ad97b49e7284022adae06c5b5f006647849c
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 3f0ec59ccee61fd0dbb7587a9d2ec3e17b1cf873
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Gremlin コンソールでのグラフの作成、クエリ、および走査
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このクイック スタートでは、Azure Portal を使用して Azure Cosmos DB アカウント、データベース、グラフ (コンテナー) を作成してから、[Apache TinkerPop](http://tinkerpop.apache.org) で [Gremlin コンソール](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console)を使用して Graph API データを操作する方法を説明します。 このチュートリアルでは、頂点プロパティを更新しながら頂点と辺を作成およびクエリし、頂点をクエリし、グラフを走査し、頂点を削除します。
+このクイック スタートでは、Azure Portal を使用して Azure Cosmos DB [Graph API](graph-introduction.md) アカウント、データベース、グラフ (コンテナー) を作成してから、[Apache TinkerPop](https://tinkerpop.apache.org/docs/current/reference/#gremlin-console) で [Gremlin コンソール](http://tinkerpop.apache.org)を使用して Graph API データを操作する方法を説明します。 このチュートリアルでは、頂点プロパティを更新しながら頂点と辺を作成およびクエリし、頂点をクエリし、グラフを走査し、頂点を削除します。
 
 ![Apache Gremlin コンソールからの Azure Cosmos DB](./media/create-graph-gremlin-console/gremlin-console.png)
 
@@ -49,7 +49,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 1. Gremlin コンソールを開始する前に、`apache-tinkerpop-gremlin-console-3.2.5/conf` ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
 2. *host*、*port*、*username*、*password*、*connectionPool*、および *serializer* の構成を入力します。
 
-    設定|推奨値|[説明]
+    Setting|推奨値|[説明]
     ---|---|---
     hosts|2017 年 12 月 20 日より前に作成したアカウントの場合、[***.gremlin.cosmosdb.azure.com] または [***.graphs.azure.com]|以下のスクリーンショットをご覧ください。 これは、Azure Portal の [概要] ページに表示される [Gremlin URI] の値から末尾の ":443/" を削除して角かっこで囲んだものです。<br><br>この値は、[キー] タブから取得することもできます。その場合は、[URI] の値から "https://" を削除し、documents を graphs pr gremlin.cosmosdb に変更して、末尾の ":443/" を削除してください。
     ポート|443|443 に設定します。

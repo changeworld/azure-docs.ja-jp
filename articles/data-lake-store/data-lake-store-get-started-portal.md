@@ -1,8 +1,8 @@
 ---
-title: "Azure Portal で Data Lake Store の使用を開始する | Microsoft Docs"
-description: "Azure Portal を使用して、Data Lake Store アカウントを作成し、Data Lake Store で基本的な操作を実行します"
+title: Azure Portal で Data Lake Store の使用を開始する | Microsoft Docs
+description: Azure Portal を使用して、Data Lake Store アカウントを作成し、Data Lake Store で基本的な操作を実行します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: c5b0f5250a08915e987a1eb5229f2c4648e660fd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 91ed55e5f12c10e67653bdadfca80bd072779711
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Azure Portal を使用して、Azure Data Lake Store アカウントを作成し
 ## <a name="create-an-azure-data-lake-store-account"></a>Azure Data Lake Store アカウントを作成する
 
 1. 新しい [Azure Portal](https://portal.azure.com) にサインオンします。
-2. **[リソースの作成]**、**[データ + ストレージ]**、**[Azure Data Lake Store]** の順にクリックします。 **[Azure Data Lake Store]** ブレードに表示された情報を確認し、ブレードの左下隅にある **[作成]** をクリックします。
+2. **[リソースの作成]、[ストレージ]、[Data Lake Store]** の順にクリックします。
 3. **[新しい Data Lake Store]** ブレードで、次のスクリーンショットに示されているように値を指定します。
    
     ![新しい Azure Data Lake Store アカウントの作成](./media/data-lake-store-get-started-portal/ADL.Create.New.Account.png "新しい Azure Data Lake アカウントの作成")
@@ -50,7 +50,7 @@ Azure Portal を使用して、Azure Data Lake Store アカウントを作成し
    * **暗号化設定**。 次の 3 つのオプションがあります。
      
      * **暗号化を有効にしない**。
-     * **Azure Data Lake で管理されるキーを使用する**。  Azure Data Lake Store に暗号化キーを管理させる場合。
+     * **Data Lake Store で管理されるキーを使用する**。  Azure Data Lake Store に暗号化キーを管理させる場合。
      * **独自のキー コンテナーのキーを使用する**。 既存の Azure Key Vault を選択するか、新しい Key Vault を作成することができます。 Key Vault のキーを使用するには、Azure Key Vault にアクセスするために、Azure Data Lake Store アカウントのアクセス許可を割り当てる必要があります。 手順については、「[Azure Key Vault にアクセス許可を割り当てる](#assign-permissions-to-azure-key-vault)」を参照してください。
        
         ![Data Lake Store の暗号化](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Store の暗号化")
@@ -61,7 +61,7 @@ Azure Portal を使用して、Azure Data Lake Store アカウントを作成し
 
 4. **Create** をクリックしてください。 アカウントをダッシュボードにピン留めすることを選択した場合、ダッシュボードに戻ると、Data Lake Store アカウントのプロビジョニングの進行状況を確認できます。 Data Lake Store アカウントのプロビジョニングが完了すると、アカウントのブレードが表示されます。
 
-### <a name="assign-permissions-to-azure-key-vault"></a>Azure Key Vault にアクセス許可を割り当てる
+## <a name="assign-permissions-to-azure-key-vault"></a>Azure Key Vault にアクセス許可を割り当てる
 Azure Key Vault のキーを使用して Data Lake Store アカウントの暗号化を構成した場合は、Data Lake Store アカウントと Azure Key Vault アカウントの間でアクセスを構成する必要があります。 そのためには、次の手順を実行します。
 
 1. Azure Key Vault のキーを使用している場合、Data Lake Store アカウントのブレードの上部に警告が表示されます。 警告をクリックして **[暗号化]** を開きます。
@@ -87,7 +87,7 @@ Azure Key Vault のキーを使用して Data Lake Store アカウントの暗�
 ## <a name="createfolder"></a>Azure Data Lake Store アカウントにフォルダーを作成する
 Data Lake Store アカウントにフォルダーを作成し、データの管理と保存を行うことができます。
 
-1. 作成した Data Lake Store アカウントを開きます。 左側のウィンドウで、**[参照]**、**[Data Lake Store]** の順にクリックし、[Data Lake Store] ブレードで、フォルダーを作成するアカウント名をクリックします。 スタート画面にアカウントをピン留めした場合は、そのアカウントのタイルをクリックします。
+1. 作成した Data Lake Store アカウントを開きます。 左側のウィンドウで **[すべてのリソース]** をクリックし、[すべてのリソース] ブレードで、フォルダーの作成先となるアカウント名をクリックします。 スタート画面にアカウントをピン留めした場合は、そのアカウントのタイルをクリックします。
 2. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]**をクリックします。
    
     ![Data Lake Store アカウントでのフォルダーの作成](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Data Lake Store アカウントでのフォルダーの作成")

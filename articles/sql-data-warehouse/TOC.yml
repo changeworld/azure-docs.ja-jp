@@ -141,13 +141,15 @@
       href: sql-data-warehouse-troubleshoot.md
 - name: ハウツー ガイド
   items:
-    - name: サービスの機能
+    - name: アップグレード
+      href: upgrade-to-latest-generation.md
+    - name: Restore
       items:
-        - name: データ ウェアハウスの復元 - ポータル
+        - name: ポータル
           href: sql-data-warehouse-restore-database-portal.md
-        - name: データ ウェアハウスの復元 - PowerShell
+        - name: PowerShell
           href: sql-data-warehouse-restore-database-powershell.md
-        - name: データ ウェアハウスの復元 - REST API
+        - name: REST API
           href: sql-data-warehouse-restore-database-rest-api.md
     - name: セキュリティ
       items:

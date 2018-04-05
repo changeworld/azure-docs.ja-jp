@@ -1,24 +1,24 @@
 ---
-title: "Azure AD での OAuth 2.0 承認コード フローについて"
-description: "この記事では、Azure Active Directory と OAuth 2.0 を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法について説明します。"
+title: Azure AD での OAuth 2.0 承認コード フローについて
+description: この記事では、Azure Active Directory と OAuth 2.0 を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法について説明します。
 services: active-directory
 documentationcenter: .net
-author: dstrockis
+author: hpsin
 manager: mtillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
-ms.author: dastrock
+ms.date: 03/19/2018
+ms.author: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 77df32710f17f8c5b749c39af9f6c64f0cc0b376
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 87a24ae9b620557e3106eb7f51b3f002cd76dd03
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="authorize-access-to-web-applications-using-oauth-20-and-azure-active-directory"></a>OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認
 Azure Active Directory (Azure AD) が OAuth 2.0 を使用することにより、ユーザーは Azure AD テナントの Web アプリケーションと Web API へのアクセスを承認することができます。 本ガイドでは、オープンソース ライブラリを利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
@@ -59,6 +59,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | prompt |省略可能 |ユーザーとの必要な対話の種類を指定します。<p> 有効な値は次のとおりです。 <p> *login*: 再認証を求めるメッセージがユーザーに表示されます。 <p> *consent*: ユーザーの同意は得られていますが、更新する必要があります。 同意を求めるメッセージがユーザーに表示されます。 <p> *admin_consent*: 組織内のすべてのユーザーを代表して同意するよう求めるメッセージが管理者に表示されます |
 | login_hint |省略可能 |ユーザー名が事前にわかっている場合、ユーザーに代わって事前に、サインイン ページのユーザー名/電子メール アドレス フィールドに入力ができます。  多くのアプリでは、`preferred_username` 要求を使用して以前のサインインからユーザー名を抽出しておき、再認証時にこのパラメーターを使用します。 |
 | domain_hint |省略可能 |ユーザーがサインインで使用することになるテナントまたはドメインについてのヒントを指定します。 テナントの登録ドメインが domain_hint の値となります。 テナントがオンプレミスのディレクトリと連動している場合、AAD から、指定されたテナントのフェデレーション サーバーにリダイレクトされます。 |
+| code_challenge_method | 省略可能    | `code_challenge` パラメーターの `code_verifier` をエンコードするために使用されるメソッド。 `plain` か `S256` のいずれかを指定できます。  除外されていると、`code_challenge` が含まれている場合、`code_challenge` はプレーンテキストであると見なされます。  Azure AAD v2.0 は、`plain` と `S256` の両方をサポートします。 詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 |
+| code_challenge        | 省略可能    | ネイティブ クライアントからの PKCE (Proof Key for Code Exchange) を使用して承認コード付与をセキュリティ保護するために使用されます。 `code_challenge_method` が含まれている場合は必須です。  詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。 |
 
 > [!NOTE]
 > ユーザーが組織に所属している場合は、組織の管理者がユーザーに代わって同意または却下するか、あるいはユーザーに同意を許可することができます。 そのユーザーは、管理者が許可した場合のみ承認を行うことができます。
@@ -138,6 +140,7 @@ grant_type=authorization_code
 | redirect_uri |必須 |`authorization_code` を取得するために使用したのと同じ `redirect_uri` 値。 |
 | client_secret |Web アプリの場合は必須 |アプリ登録ポータルで作成した、アプリケーションのシークレット。  ネイティブ アプリでは使用しないでください。デバイスに client_secret を確実に保存することができません。  Web アプリや Web API では `client_secret` をサーバー側で安全に保存する機能が備わっており、指定する必要があります。 |
 | resource |承認コード要求で指定された場合は必須、それ以外の場合は省略可 |Web API のアプリケーション ID/URI (セキュリティで保護されたリソース)。 |
+| code_verifier | 省略可能              | authorization_code を取得するために使用されたのと同じ code_verifier。  承認コード付与要求で PKCE が使用された場合は必須です。  詳細については、「[PKCE RFC](https://tools.ietf.org/html/rfc7636)」を参照してください。                                                                                                                                                                                                                                                                                             |
 
 アプリケーション ID URI を調べるには、Azure 管理ポータルで、**[Active Directory]** をクリックし、目的のディレクトリとアプリケーションを順にクリックして、**[構成]** をクリックします。
 
@@ -290,7 +293,7 @@ WWW-Authenticate: Bearer authorization_uri="https://login.microsoftonline.com/co
 #### <a name="error-parameters"></a>エラーのパラメーター
 | パラメーター | [説明] |
 | --- | --- |
-| authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が https://login.microsoftonline.com または Azure AD がサポートする別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
+| authorization_uri |承認サーバーの URI (物理エンドポイント)。 この値は、探索エンドポイントからサーバーの詳細を取得するための、ルックアップ キーとしても使用します。 <p><p> クライアントは、承認サーバーが信頼されていることを検証する必要があります。 リソースが Azure AD によって保護されている場合は、URL が https://login.microsoftonline.com または Azure AD によってサポートされる別のホスト名で始まることを確認するだけで十分です。 テナント固有のリソースは、テナント固有の承認 URI を常に返すはずです。 |
 | error |「 [OAuth 2.0 Authorization Framework (OAuth 2.0 承認フレームワーク)](http://tools.ietf.org/html/rfc6749)」のセクション 5.2 で定義されているエラー コード値。 |
 | error_description |エラーの詳しい説明。 このメッセージはエンドユーザー向けではありません。 |
 | resource_id |リソースの一意の識別子を返します。 クライアント アプリケーションは、リソースのトークンを要求するときに、この識別子を `resource` パラメーターの値として使用できます。 <p><p> クライアント アプリケーションがこの値を確認することは重要です。確認を行わない場合、悪意のあるサービスから**権限昇格**攻撃を受ける可能性があります。 <p><p> 攻撃を防止するための推奨方法として、`resource_id` と、アクセスしている Web API URL のベースが一致していることを確認します。 たとえば、https://service.contoso.com/data にアクセスしている場合、`resource_id` は htttps://service.contoso.com/ になります。 クライアント アプリケーションは、ID を検証する信頼性の高い代替方法がない限り、ベース URL ではじまらない `resource_id` を拒否する必要があります。 |

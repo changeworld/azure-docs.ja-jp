@@ -1,12 +1,11 @@
 ---
-title: "Stream Analytics ジョブのデータ出力を構成する方法 | Microsoft Docs"
-description: "Stream Analytics ジョブの出力の構成 | ラーニング パス セグメント。"
-keywords: "データ出力、データ移動"
-documentationcenter: 
+title: Stream Analytics ジョブのデータ出力を構成する方法 | Microsoft Docs
+description: Stream Analytics ジョブの出力の構成 | ラーニング パス セグメント。
+keywords: データ出力、データ移動
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: 3bbea3da-bfce-4af1-a15e-d4b23874034f
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/26/2017
-ms.author: samacha
-ms.openlocfilehash: 1ffa517469da1a8d79917b9747abc97ca3bef463
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 9e1a8640421c4232cf4abc09794ca584995906f9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-configure-data-outputs-for-stream-analytics-jobs"></a>Stream Analytics ジョブのデータ出力を構成する方法
 
@@ -52,7 +51,7 @@ Stream Analytics ジョブに出力を追加するには:
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

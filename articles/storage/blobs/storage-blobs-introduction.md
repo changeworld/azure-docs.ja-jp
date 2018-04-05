@@ -1,30 +1,31 @@
 ---
-title: "Azure Blob Storage の概要 | Microsoft Docs"
-description: "Azure Blob Storage の概要"
+title: Blob Storage の概要 - Azure のオブジェクト ストレージ | Microsoft Docs
+description: Azure Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納するよう設計されています。 アプリケーションは、PowerShell または Azure CLI、Azure Storage クライアント ライブラリ経由のコード、あるいは REST で Blob Storage のオブジェクトにアクセスできます。
 services: storage
 author: tamram
 manager: jeconnoc
 ms.service: storage
 ms.topic: overview
-ms.date: 09/28/2017
+ms.date: 03/27/2018
 ms.author: tamram
-ms.openlocfilehash: aabc10b1c1c501e4fa0eb31835c2818cfb8942c6
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0fff0032ec2452413bcd1df3175634b14a64208f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-blob-storage"></a>Blob Storage の概要
 
-Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化オブジェクト データを格納するためのサービスです。 BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。
+Azure Blob Storage は、データ オブジェクト用の Microsoft のクラウド ストレージ ソリューションです。 Blob Storage は、テキスト データやバイナリ データなどの大量の非構造化オブジェクト データを格納できます。 Blob Storage のデータには、世界中のどこからでも HTTP または HTTPS 経由でアクセスできます。 BLOB ストレージを使用すると、データを一般に公開することも、アプリケーション データを公開せずに格納することもできます。
 
 BLOB ストレージの一般的な用途には、次のようなものがあります。
 
 * 画像またはドキュメントをブラウザーに直接配信する
 * 分散アクセス用にファイルを格納する
 * ビデオおよびオーディオをストリーミング配信する
-* バックアップと復元、障害復旧、アーカイブのためのデータを格納する
+* バックアップと復元、ディザスター リカバリー、アーカイブのために格納する
 * 内部設置型サービスまたは Azure ホステッド サービスで分析する データを格納する
+* Azure Virtual Machines で使用する VHD を格納する
 
 ## <a name="blob-service-concepts"></a>Blob service の概念
 

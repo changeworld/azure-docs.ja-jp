@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築 | Microsoft Docs"
-description: "Azure Cosmos DB への接続とデータの照会に使用できる Golang コード サンプルについて説明します"
+title: 'Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築 | Microsoft Docs'
+description: Azure Cosmos DB への接続とデータの照会に使用できる Golang コード サンプルについて説明します
 services: cosmos-db
 author: Durgaprasad-Budhwani
 manager: jhubbard
@@ -10,17 +10,17 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 29a47646074819492e2c5179276a0c4de7f0d2d9
-ms.sourcegitcommit: 7136d06474dd20bb8ef6a821c8d7e31edf3a2820
+ms.openlocfilehash: 49bf6aed5a8daa482be9d22ecd97b6ab43cae5fe
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Golang と Azure Portal による MongoDB API コンソール アプリの構築
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。
 
-このクイック スタートでは、[Golang](https://golang.org/) で記述された既存の [MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、MongoDB のクライアント接続をサポートしています。
+このクイックスタートでは、[Golang](https://golang.org/) で記述された既存の MongoDB アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、[MongoDB API](mongodb-introduction.md) を使用して MongoDB のクライアント接続をサポートします。
 
 言い換えると、Golang アプリケーションは、MongoDB API を使用してデータベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
 
@@ -34,7 +34,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 - IDE - Jetbrains 提供の [Gogland](https://www.jetbrains.com/go/)、Microsoft 提供の [Visual Studio Code](https://code.visualstudio.com/)、または [Atom](https://atom.io/)。 このチュートリアルでは、Goglang を使用しています。
 
 <a id="create-account"></a>
-## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
+## <a name="create-a-database-account"></a>データベース アカウントの作成
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-mongodb.md)]
 
@@ -240,7 +240,7 @@ Azure Portal に戻り、データ エクスプローラーでドキュメント
 1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
 2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このクイック スタートでは、Azure Cosmos DB アカウントを作成し、MongoDB 用 API を使用して Golang アプリを実行する方法を学習しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
 

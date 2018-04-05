@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI 2.0 で Azure DNS の使用を開始する | Microsoft Docs"
-description: "Azure DNS で、DNS ゾーンとレコードを作成する方法について説明します。 Azure CLI 2.0 を使用して最初の DNS ゾーンとレコードを作成して管理するためのステップ バイ ステップ ガイドです。"
+title: Azure CLI 2.0 で Azure DNS の使用を開始する | Microsoft Docs
+description: Azure DNS で、DNS ゾーンとレコードを作成する方法について説明します。 Azure CLI 2.0 を使用して最初の DNS ゾーンとレコードを作成して管理するためのステップ バイ ステップ ガイドです。
 services: dns
 documentationcenter: na
 author: KumuD
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: fb0aa0a6-d096-4d6a-b2f6-eda1c64f6182
 ms.service: dns
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: kumud
-ms.openlocfilehash: 76782ac1e78cd0f7da4bc1aad8eff00d79865ed7
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: d24eaa4974f8bff09b337384e4fd139edb6ebd70
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Azure CLI 2.0 で Azure DNS の使用を開始する
 
@@ -33,6 +33,8 @@ ms.lasthandoff: 12/18/2017
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 最後に、DNS ゾーンをインターネットに公開するには、ドメインのネーム サーバーを構成する必要があります。 ここでは、その手順について説明します。
 
 以降の手順は、Azure CLI 2.0 がインストール済みで、既にサインインしていることを前提としています。 詳細については、[Azure CLI 2.0 を使用して DNS ゾーンを管理する方法](dns-operations-dnszones-cli.md)に関するページをご覧ください。
+
+Azure DNS で新たにプライベート DNS ゾーンがサポートされました (現在はパブリック プレビュー)。 プライベート DNS ゾーンの詳細については、「[Using Azure DNS for private domains (プライベート ドメインでの Azure DNS の使用)](private-dns-overview.md)」をご覧ください。 プライベート DNS ゾーンを作成する例については、[CLI で Azure DNS プライベート ゾーンを使用するための基礎](./private-dns-getstarted-cli.md)に関するページを参照してください。
 
 ## <a name="create-the-resource-group"></a>リソース グループの作成
 
@@ -52,7 +54,6 @@ DNS ゾーンは、`az network dns zone create` コマンドを使用して作�
 az network dns zone create -g MyResourceGroup -n contoso.com
 ```
 
-
 ## <a name="create-a-dns-record"></a>DNS レコードの作成
 
 DNS レコードを作成するには、`az network dns record-set [record type] add-record` コマンドを使用します。 A レコードなどの詳細については、「`azure network dns record-set A add-record -h`」を参照してください。
@@ -65,7 +66,6 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 
 その他のレコードの種類、複数のレコードを持つレコード セット、代替 TTL 値、既存のレコードの変更については、[Azure CLI 2.0 を使用した DNS レコードおよびレコード セットの管理](dns-operations-recordsets-cli.md)に関するページをご覧ください。
 
-
 ## <a name="view-records"></a>レコードの表示
 
 ゾーンで DNS レコードを表示するには、次を使用します。
@@ -73,7 +73,6 @@ az network dns record-set a add-record -g MyResourceGroup -z contoso.com -n www 
 ```azurecli
 az network dns record-set list -g MyResourceGroup -z contoso.com
 ```
-
 
 ## <a name="update-name-servers"></a>ネーム サーバーの更新
 
@@ -113,7 +112,7 @@ az network dns zone show -g MyResourceGroup -n contoso.com -o json
 az group delete --name MyResourceGroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)」を参照してください。
 

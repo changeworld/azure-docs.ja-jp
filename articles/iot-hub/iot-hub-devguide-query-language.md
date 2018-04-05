@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub クエリ言語について | Microsoft Docs"
-description: "開発者ガイド - デバイス ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。"
+title: Azure IoT Hub クエリ言語について | Microsoft Docs
+description: 開発者ガイド - デバイス ツインとジョブに関する情報を IoT Hub から取得するための、SQL のような IoT Hub クエリ言語の説明。
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 851a9ed3-b69e-422e-8a5d-1d79f91ddf15
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 624f706532645034f19af15d10352dbc6db0b6c1
-ms.sourcegitcommit: 83ea7c4e12fc47b83978a1e9391f8bb808b41f97
+ms.openlocfilehash: ef0d135a744cd37d888496073c7959ddc815ec91
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語
 
@@ -26,6 +26,8 @@ IoT Hub には SQL に似た強力な言語が備わっており、[デバイス
 
 * IoT Hub のクエリ言語の主な機能の説明
 * 言語の詳しい説明
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-twin-queries"></a>デバイス ツイン クエリ
 [デバイス ツイン][lnk-twins]には、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、デバイス ツインに関するすべての情報を含む 1 つの JSON ドキュメントとしてデバイス ツインにクエリを実行できます。

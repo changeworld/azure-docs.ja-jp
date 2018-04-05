@@ -1,11 +1,12 @@
 ---
-title: "Azure Machine Learning に関してよく寄せられる質問 (FAQ) | Microsoft Docs"
-description: "Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。"
-keywords: "機械の概要、予測モデリング、機械学習とは"
+title: Azure Machine Learning に関してよく寄せられる質問 (FAQ) | Microsoft Docs
+description: 'Azure Machine Learning の概要: 効率的な予測モデリングのためのクラウド サービスについて、その課金、機能、制限についての疑問点に答える FAQ です。'
+keywords: 機械の概要、予測モデリング、機械学習とは
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: paulettm
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: a4a32a06-dbed-4727-a857-c10da774ce66
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/02/2017
-ms.author: garye
-ms.openlocfilehash: b162d7534eff0d1f79808fc86bacf92dbfc2f84a
-ms.sourcegitcommit: 5a6e943718a8d2bc5babea3cd624c0557ab67bd5
+ms.openlocfilehash: ceec69ee822e118adfa3825620a31575109894ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning に関してよく寄せられる質問: 課金、機能、制限、サポート
 ここでは、Web サービスを使用して予測モデルの作成とソリューションの運用を可能にするクラウド サービスである Azure Machine Learning についてよく寄せられる質問とその回答をいくつか紹介します。 この FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -207,7 +207,7 @@ Machine Learning Studio では Jupyter Notebooks を使用できます。 詳細
 
 再トレーニング API を使用してください。 詳細については、「 [プログラムによる Machine Learning のモデルの再トレーニング](retrain-models-programmatically.md)」をご覧ください。 サンプル コードは、「 [Microsoft Azure Maching Learning Retraining Demo (Microsoft Azure Maching Learning 再トレーニング デモ)](https://azuremlretrain.codeplex.com/)」にもあります。
 
-### <a name="create"></a>作成
+### <a name="create"></a>[作成]
 **ローカルまたはインターネットに接続していないアプリケーションでモデルをデプロイすることはできますか?**
 
 いいえ。
@@ -244,7 +244,7 @@ RRS の場合は通常、Web サービスの応答に結果が表示されます
 
 エラー コードと説明の一覧は、「 [Machine Learning Module Error Codes (Machine Learning モジュールのエラー コード)](https://msdn.microsoft.com/library/azure/dn905910.aspx) 」を参照してください。
 
-## <a name="scalability"></a>拡張性
+## <a name="scalability"></a>スケーラビリティ
 **Web サービスのスケーラビリティはどれくらいですか。**
 
 現時点では、既定のエンドポイントは 1 つのエンドポイントにつき 20 件の同時 RRS 要求でプロビジョニングされます。 これは、[Web サービスのスケーリング](scaling-webservice.md)に関するページで説明されているように、エンドポイントあたりの同時要求を 200 件まで拡張でき、Web サービスごとのエンドポイント数は 10,000 個まで拡張できます。 BES の場合、各エンドポイントは一度に 40 件の要求を処理でき、40 件を超えた要求はキューに登録されます。 これらのキューに登録された要求は、キューから放出されると自動的に実行されます。
@@ -548,7 +548,7 @@ Machine Learning サービスはマルチテナント サービスです。 バ�
 ### <a name="guest-access"></a>ゲスト アクセス
 **Azure Machine Learning Studio に対するゲスト アクセスとは何ですか?**
 
-ゲスト アクセスとは、機能が制限された試用版です。 費用をかけず、認証もなしで、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続的で保存ができず、利用できる時間は 8 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合は、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 [https://studio.azureml.net](https://studio.azureml.net) の **Get started (開始)** をクリックして **Guest Access (ゲスト アクセス)** または Sign In with Microsoft account (Microsoft アカウントでサインイン) を選択し、無料の Machine Learning の機能をお試しください。
+ゲスト アクセスとは、機能が制限された試用版です。 費用をかけず、認証もなしで、Azure Machine Learning Studio で実験を作成して実行できます。 ゲスト セッションは非永続的で保存ができず、利用できる時間は 8 時間に制限されます。 他にも、R と Python がサポートされていない、ステージング API がない、データセットのサイズとストレージの容量が制限されている、などの制限事項があります。 一方 Microsoft アカウントでサインインしたユーザーの場合は、前述した Machine Learning Studio の Free レベルへのフル アクセスが提供され、永続ワークスペースやさらに包括的な機能を使用できます。 [https://studio.azureml.net](https://studio.azureml.net) の **[Get started]\(開始\)** をクリックして、**[Guess Access]\(ゲスト アクセス\)** を選択するか Microsoft アカウントでサインインし、無料の Machine Learning の機能をお試しください。
 
 <!-- Module References -->
 [image-reader]: https://msdn.microsoft.com/library/azure/893f8c57-1d36-456d-a47b-d29ae67f5d84/

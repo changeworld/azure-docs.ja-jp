@@ -1,31 +1,31 @@
 ---
-title: "Node.js を使用して MongoDB アプリをAzure Cosmos DB に接続する | Microsoft Docs"
-description: "既存の Node.js MongoDB アプリを Azure Cosmos DB に接続する方法について説明します"
+title: Node.js を使用して MongoDB アプリをAzure Cosmos DB に接続する | Microsoft Docs
+description: 既存の Node.js MongoDB アプリを Azure Cosmos DB に接続する方法について説明します
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: mimig1
 manager: jhubbard
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc, devcenter
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/19/2017
 ms.author: mimig
-ms.openlocfilehash: 1b63c56e055a6dd5220a6c5e8050d493390e9168
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 6357e1f71d96a1ec4894f9cf1130fc1e8808d3f4
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: 既存の Node.js MongoDB Web アプリを移行する 
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このクイック スタートでは、Node.js で記述された既存の [MongoDB](mongodb-introduction.md) アプリを使用して Azure Cosmos DB データベースに接続する方法を示します。これは MongoDB のクライアント接続をサポートしています。 言い換えると、Node.js アプリケーションは、MongoDB API を使用して MongoDB データベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
+このクイック スタートでは、Node.js で記述された既存の MongoDB アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、[MongoDB API](mongodb-introduction.md) を使用して MongoDB のクライアント接続をサポートします。 言い換えると、Node.js アプリケーションは、MongoDB API を使用して MongoDB データベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
 
 操作を完了すると、MEAN アプリケーション (MongoDB、Express、Angular、および Node.js) が [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) で実行されます。 
 

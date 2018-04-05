@@ -1,9 +1,9 @@
 ---
 title: 'チュートリアル: Azure Databricks を使用したストリーミング データに対する感情分析 | Microsoft Docs'
-description: Event Hubs と Cognitive Services API と共に Azure Databricks を使用して、リアルタイムのストリーミング データに対して感情分析を実行する方法について説明します。
+description: Event Hubs と Cognitive Services API と共に Azure Databricks を使用して、ストリーミング データに対し、ほぼリアルタイムで感情分析を実行する方法について説明します。
 services: azure-databricks
 documentationcenter: ''
-author: nitinme
+author: lenadroid
 manager: cgronlun
 editor: ''
 tags: ''
@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: Active
-ms.date: 03/15/2018
-ms.author: nitinme
-ms.openlocfilehash: 00456bdc4dc0e8562af9be6c827e8ab32bf03a31
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.date: 03/20/2018
+ms.author: alehall
+ms.openlocfilehash: 8858df394885ae7820a4bc72458f4f1d851965e6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>チュートリアル: Azure Databricks を使用したストリーミング データに対する感情分析
 
-このチュートリアルでは、Azure Databricks を使用して、リアルタイムのデータ ストリームに対して感情分析を実行する方法について説明します。 Azure Event Hubs を使用して、リアルタイムのデータ インジェスト システムを設定します。 Spark Event Hubs コネクタを使用して Event Hubs から Azure Databricks にメッセージを読み取ります。 そして、Microsoft Cognitive Services API を使用して、ストリーム配信されたデータに対して感情分析を実行します。 
+このチュートリアルでは、Azure Databricks を使用して、データ ストリームに対し、ほぼリアルタイムで感情分析を実行する方法について説明します。 Azure Event Hubs を使用して、データ インジェスト システムを設定します。 Spark Event Hubs コネクタを使用して Event Hubs から Azure Databricks にメッセージを読み取ります。 そして、Microsoft Cognitive Services API を使用して、ストリーム配信されたデータに対して感情分析を実行します。
 
 このチュートリアルの完了時には、内容に用語 "Azure" が含まれたツイートを Twitter からストリーム配信し、それらのツイートに対して感情分析を実行することになります。
 
@@ -32,12 +32,12 @@ ms.lasthandoff: 03/17/2018
 
 ![Event Hubs と Cognitive Services を使用した Azure Databricks](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-tutorial.png "Event Hubs と Cognitive Services を使用した Azure Databricks")
 
-このチュートリアルに含まれるタスクは次のとおりです。 
+このチュートリアルに含まれるタスクは次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Databricks ワークスペースを作成する
 > * Azure Databricks で Spark クラスターを作成する
-> * リアルタイム データにアクセスする Twitter アプリを作成する
+> * ストリーミング データにアクセスする Twitter アプリを作成する
 > * Azure Databricks でノートブックを作成する
 > * Event Hubs と Twitter API のライブラリをアタッチする
 > * Microsoft Cognitive Services アカウントを作成し、アクセス キーを取得する
@@ -52,7 +52,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 このチュートリアルを開始する前に、次の要件を満たしてください。
 - Azure Event Hubs 名前空間。
 - 名前空間内のイベント ハブ。
-- Event Hubs 名前空間にアクセスするための接続文字列。 接続文字列は次のような形式になります。`Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>”`
+- Event Hubs 名前空間にアクセスするための接続文字列。 接続文字列は次のような形式になります。`Endpoint=sb://<namespace>.servicebus.windows.net/;SharedAccessKeyName=<key name>;SharedAccessKey=<key value>`
 - Event Hubs の共有アクセス ポリシー名とポリシー キー。
 
 これらの要件は、[Azure Event Hubs 名前空間とイベント ハブの作成](../event-hubs/event-hubs-create.md)に関する記事の手順を完了することで満たせます。
@@ -63,20 +63,18 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
-このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。 
+このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。
 
-1. Azure Portal で、**[リソースの作成]** > **[データ + 分析]** > **[Azure Databricks (Preview)]\(Azure Databricks (プレビュー)\)** の順に選択します。
+1. Azure Portal で、**[リソースの作成]** > **[データ + 分析]** > **[Azure Databricks]** の順に選択します。
 
     ![Azure Portal の Databricks](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Azure Portal の Databricks")
-
-2. **[Azure Databricks (Preview)]\(Azure Databricks (プレビュー)\)** で **[作成]** を選択します。
 
 3. **[Azure Databricks サービス]** で値を指定して、Databricks ワークスペースを作成します。
 
     ![Azure Databricks ワークスペースを作成する](./media/databricks-sentiment-analysis-cognitive-services/create-databricks-workspace.png "Azure Databricks ワークスペースを作成する")
 
-    次の値を指定します。 
-     
+    次の値を指定します。
+
     |プロパティ  |[説明]  |
     |---------|---------|
     |**[ワークスペース名]**     | Databricks ワークスペースの名前を指定します        |
@@ -106,14 +104,14 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     以下を除くすべての値は、既定値のままにします。
 
     * クラスターの名前を入力します。
-    * この記事では、**4.0 (ベータ)** ランタイムを使用してクラスターを作成します。 
+    * この記事では、**4.0 (ベータ)** ランタイムを使用してクラスターを作成します。
     * **[Terminate after ____ minutes of inactivity]\(アクティビティが ____ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
 
     **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
 
 ## <a name="create-a-twitter-application"></a>Twitter アプリケーションを作成する
 
-ツイートのリアルタイム ストリームを受け取るには、Twitter でアプリケーションを作成する必要があります。 手順に従って Twitter アプリケーションを作成し、このチュートリアルの完了に必要な値を記録してください。
+ツイートのストリームを受け取るには、Twitter でアプリケーションを作成する必要があります。 手順に従って Twitter アプリケーションを作成し、このチュートリアルの完了に必要な値を記録してください。
 
 1. Web ブラウザーで [Twitter アプリケーション管理](http://twitter.com/app)に移動して、**[Create New App]\(新しいアプリの作成\)** を選択します。
 
@@ -139,7 +137,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
 2. [新しいライブラリ] ページの **[ソース]** で、**[Maven Coordinate]\(Maven 座標\)** を選択します。 **[座標]** には、追加したいパッケージの座標を入力します。 ここでは、このチュートリアルで使用するライブラリの Maven 座標です。
 
-    * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.0`
+    * Spark Event Hubs コネクタ - `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.1`
     * Twitter API - `org.twitter4j:twitter4j-core:4.0.6`
 
     ![Maven 座標を入力する](./media/databricks-sentiment-analysis-cognitive-services/databricks-eventhub-specify-maven-coordinate.png "Maven 座標を入力する")
@@ -158,12 +156,12 @@ Twitter アプリケーションについて取得した値を保存します。
 
 ## <a name="get-a-cognitive-services-access-key"></a>Cognitive Services のアクセス キーを取得する
 
-このチュートリアルでは、[Microsoft Cognitive Services Text Analytics API](../cognitive-services/text-analytics/overview.md) を使用して、ツイートのリアルタイム ストリームに対して感情分析を実行します。 API を使用する前に、Azure で Microsoft Cognitive Services アカウントを作成し、Text Analytics API を使用するためのアクセス キーを取得する必要があります。
+このチュートリアルでは、[Microsoft Cognitive Services Text Analytics API](../cognitive-services/text-analytics/overview.md) を使用して、ツイートのストリームに対し、ほぼリアルタイムで感情分析を実行します。 API を使用する前に、Azure で Microsoft Cognitive Services アカウントを作成し、Text Analytics API を使用するためのアクセス キーを取得する必要があります。
 
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
 
 2. **[+ リソースの作成]** を選択します。
- 
+
 3. Azure Marketplace で、**[AI + Cognitive Services]** > **[Text Analytics API]** の順に選択します。
 
     ![Cognitive Services アカウントを作成する](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Cognitive Services アカウントを作成する")
@@ -219,7 +217,7 @@ Twitter アプリケーションについて取得した値を保存します。
     import scala.collection.JavaConverters._
     import com.microsoft.azure.eventhubs._
     import java.util.concurrent._
-    
+
     val namespaceName = "<EVENT HUBS NAMESPACE>"
     val eventHubName = "<EVENT HUB NAME>"
     val sasKeyName = "<POLICY NAME>"
@@ -229,51 +227,51 @@ Twitter アプリケーションについて取得した値を保存します。
                 .setEventHubName(eventHubName)
                 .setSasKeyName(sasKeyName)
                 .setSasKey(sasKey)
-    
+
     val pool = Executors.newFixedThreadPool(1)
     val eventHubClient = EventHubClient.create(connStr.toString(), pool)
-    
+
     def sendEvent(message: String) = {
       val messageData = EventData.create(message.getBytes("UTF-8"))
-      eventHubClient.get().send(messageData) 
+      eventHubClient.get().send(messageData)
       System.out.println("Sent event: " + message + "\n")
     }
-    
+
     import twitter4j._
     import twitter4j.TwitterFactory
     import twitter4j.Twitter
     import twitter4j.conf.ConfigurationBuilder
-    
+
     // Twitter configuration!
     // Replace values below with yours
-    
+
     val twitterConsumerKey = "<CONSUMER KEY>"
     val twitterConsumerSecret = "<CONSUMER SECRET>"
     val twitterOauthAccessToken = "<ACCESS TOKEN>"
     val twitterOauthTokenSecret = "<TOKEN SECRET>"
-    
+
     val cb = new ConfigurationBuilder()
       cb.setDebugEnabled(true)
       .setOAuthConsumerKey(twitterConsumerKey)
       .setOAuthConsumerSecret(twitterConsumerSecret)
       .setOAuthAccessToken(twitterOauthAccessToken)
       .setOAuthAccessTokenSecret(twitterOauthTokenSecret)
-    
+
     val twitterFactory = new TwitterFactory(cb.build())
     val twitter = twitterFactory.getInstance()
-    
+
     // Getting tweets with keyword "Azure" and sending them to the Event Hub in realtime!
-    
+
     val query = new Query(" #Azure ")
     query.setCount(100)
     query.lang("en")
     var finished = false
     while (!finished) {
-      val result = twitter.search(query) 
+      val result = twitter.search(query)
       val statuses = result.getTweets()
       var lowestStatusId = Long.MaxValue
       for (status <- statuses.asScala) {
-        if(!status.isRetweet()){ 
+        if(!status.isRetweet()){
           sendEvent(status.getText())
         }
         lowestStatusId = Math.min(status.getId(), lowestStatusId)
@@ -281,24 +279,24 @@ Twitter アプリケーションについて取得した値を保存します。
       }
       query.setMaxId(lowestStatusId - 1)
     }
-    
+
     // Closing connection to the Event Hub
     eventHubClient.get().close()
 
-ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。 出力の各イベントは、Event Hubs に取り込まれたリアルタイム ツイートです。 
+ノートブックを実行するには、**Shift + Enter** キーを押します。 次のスニペットに示されているような出力が表示されます。 出力の各イベントは、Event Hubs に取り込まれたツイートです。
 
     Sent event: @Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence
 
     Sent event: Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
-    https://t.co/7vs7cKtvah 
+    https://t.co/7vs7cKtvah
     #cloudcomputing #Azure
-    
+
     Sent event: 4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie
-    
+
     Sent event: Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
-    
+
     Sent event: Top 10 Tricks to #Save Money with #Azure Virtual Machines https://t.co/F2wshBXdoz #Cloud
-    
+
     ...
     ...
 
@@ -308,26 +306,26 @@ Twitter アプリケーションについて取得した値を保存します。
 
     import org.apache.spark.eventhubs._
 
-    // Build connection string with the above information 
+    // Build connection string with the above information
     val connectionString = ConnectionStringBuilder("<EVENT HUBS CONNECTION STRING>")
       .setEventHubName("<EVENT HUB NAME>")
       .build
-    
-    val customEventhubParameters = 
+
+    val customEventhubParameters =
       EventHubsConf(connectionString)
       .setMaxEventsPerTrigger(5)
-    
+
     val incomingStream = spark.readStream.format("eventhubs").options(customEventhubParameters.toMap).load()
-    
+
     incomingStream.printSchema
-    
+
     // Sending the incoming stream into the console.
     // Data comes in batches!
     incomingStream.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 
 次の出力が得られます。
 
-  
+
     root
      |-- body: binary (nullable = true)
      |-- offset: long (nullable = true)
@@ -335,7 +333,7 @@ Twitter アプリケーションについて取得した値を保存します。
      |-- enqueuedTime: long (nullable = true)
      |-- publisher: string (nullable = true)
      |-- partitionKey: string (nullable = true)
-   
+
     -------------------------------------------
     Batch: 0
     -------------------------------------------
@@ -343,9 +341,9 @@ Twitter アプリケーションについて取得した値を保存します。
     |body  |offset|sequenceNumber|enqueuedTime   |publisher|partitionKey|
     +------+------+--------------+---------------+---------+------------+
     |[50 75 62 6C 69 63 20 70 72 65 76 69 65 77 20 6F 66 20 4A 61 76 61 20 6F 6E 20 41 70 70 20 53 65 72 76 69 63 65 2C 20 62 75 69 6C 74 2D 69 6E 20 73 75 70 70 6F 72 74 20 66 6F 72 20 54 6F 6D 63 61 74 20 61 6E 64 20 4F 70 65 6E 4A 44 4B 0A 68 74 74 70 73 3A 2F 2F 74 2E 63 6F 2F 37 76 73 37 63 4B 74 76 61 68 20 0A 23 63 6C 6F 75 64 63 6F 6D 70 75 74 69 6E 67 20 23 41 7A 75 72 65]                              |0     |0             |2018-03-09 05:49:08.86 |null     |null        |
-    |[4D 69 67 72 61 74 65 20 79 6F 75 72 20 64 61 74 61 62 61 73 65 73 20 74 6F 20 61 20 66 75 6C 6C 79 20 6D 61 6E 61 67 65 64 20 73 65 72 76 69 63 65 20 77 69 74 68 20 41 7A 75 72 65 20 53 51 4C 20 44 61 74 61 62 61 73 65 20 4D 61 6E 61 67 65 64 20 49 6E 73 74 61 6E 63 65 20 7C 20 23 41 7A 75 72 65 20 7C 20 23 43 6C 6F 75 64 20 68 74 74 70 73 3A 2F 2F 74 2E 63 6F 2F 73 4A 48 58 4E 34 74 72 44 6B]            |168   |1             |2018-03-09 05:49:24.752|null     |null        | 
+    |[4D 69 67 72 61 74 65 20 79 6F 75 72 20 64 61 74 61 62 61 73 65 73 20 74 6F 20 61 20 66 75 6C 6C 79 20 6D 61 6E 61 67 65 64 20 73 65 72 76 69 63 65 20 77 69 74 68 20 41 7A 75 72 65 20 53 51 4C 20 44 61 74 61 62 61 73 65 20 4D 61 6E 61 67 65 64 20 49 6E 73 74 61 6E 63 65 20 7C 20 23 41 7A 75 72 65 20 7C 20 23 43 6C 6F 75 64 20 68 74 74 70 73 3A 2F 2F 74 2E 63 6F 2F 73 4A 48 58 4E 34 74 72 44 6B]            |168   |1             |2018-03-09 05:49:24.752|null     |null        |
     +------+------+--------------+---------------+---------+------------+
-    
+
     -------------------------------------------
     Batch: 1
     -------------------------------------------
@@ -356,19 +354,19 @@ Twitter アプリケーションについて取得した値を保存します。
 
     import org.apache.spark.sql.types._
     import org.apache.spark.sql.functions._
-    
+
     // Event Hub message format is JSON and contains "body" field
     // Body is binary, so we cast it to string to see the actual content of the message
-    val messages = 
+    val messages =
       incomingStream
       .withColumn("Offset", $"offset".cast(LongType))
       .withColumn("Time (readable)", $"enqueuedTime".cast(TimestampType))
       .withColumn("Timestamp", $"enqueuedTime".cast(LongType))
       .withColumn("Body", $"body".cast(StringType))
       .select("Offset", "Time (readable)", "Timestamp", "Body")
-    
+
     messages.printSchema
-    
+
     messages.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 
 これで、次のようなスニペットが出力されます。
@@ -378,7 +376,7 @@ Twitter アプリケーションについて取得した値を保存します。
      |-- Time (readable): timestamp (nullable = true)
      |-- Timestamp: long (nullable = true)
      |-- Body: string (nullable = true)
-    
+
     -------------------------------------------
     Batch: 0
     -------------------------------------------
@@ -386,7 +384,7 @@ Twitter アプリケーションについて取得した値を保存します。
     |Offset|Time (readable)  |Timestamp |Body
     +------+-----------------+----------+-------+
     |0     |2018-03-09 05:49:08.86 |1520574548|Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
-    https://t.co/7vs7cKtvah 
+    https://t.co/7vs7cKtvah
     #cloudcomputing #Azure          |
     |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
     |0     |2018-03-09 05:49:02.936|1520574542|@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|
@@ -406,12 +404,12 @@ Twitter アプリケーションについて取得した値を保存します。
 
     import java.io._
     import java.net._
-    import java.util._    
+    import java.util._
 
-    class Document(var id: String, var text: String, var language: String = "", var sentiment: Double = 0.0) extends Serializable 
+    class Document(var id: String, var text: String, var language: String = "", var sentiment: Double = 0.0) extends Serializable
 
     class Documents(var documents: List[Document] = new ArrayList[Document]()) extends Serializable {
-    
+
         def add(id: String, text: String, language: String = "") {
             documents.add (new Document(id, text, language))
         }
@@ -436,9 +434,9 @@ Twitter アプリケーションについて取得した値を保存します。
     import com.google.gson.JsonObject
     import com.google.gson.JsonParser
     import scala.util.parsing.json._
-    
+
     object SentimentDetector extends Serializable {
-      
+
       // Cognitive Services API connection settings
       val accessKey = "<PROVIDE ACCESS KEY HERE>"
       val host = "<PROVIDE HOST HERE>"
@@ -446,7 +444,7 @@ Twitter アプリケーションについて取得した値を保存します。
       val sentimentPath = "/text/analytics/v2.0/sentiment"
       val languagesUrl = new URL(host+languagesPath)
       val sentimenUrl = new URL(host+sentimentPath)
-      
+
       def getConnection(path: URL): HttpsURLConnection = {
         val connection = path.openConnection().asInstanceOf[HttpsURLConnection]
         connection.setRequestMethod("POST")
@@ -455,14 +453,14 @@ Twitter アプリケーションについて取得した値を保存します。
         connection.setDoOutput(true)
         return connection
       }
-      
+
       def prettify (json_text: String): String = {
         val parser = new JsonParser()
         val json = parser.parse(json_text).getAsJsonObject()
         val gson = new GsonBuilder().setPrettyPrinting().create()
         return gson.toJson(json)
       }
-      
+
       // Handles the call to Cognitive Services API.
       // Expects Documents as parameters and the address of the API to call.
       // Returns an instance of Documents in response.
@@ -474,7 +472,7 @@ Twitter アプリケーションについて取得した値を保存します。
         wr.write(encoded_text, 0, encoded_text.length)
         wr.flush()
         wr.close()
-    
+
         val response = new StringBuilder()
         val in = new BufferedReader(new InputStreamReader(connection.getInputStream()))
         var line = in.readLine()
@@ -485,10 +483,10 @@ Twitter アプリケーションについて取得した値を保存します。
         in.close()
         return response.toString()
       }
-      
+
       // Calls the language API for specified documents.
       // Returns a documents with language field set.
-      def getLanguage (inputDocs: Documents): Documents = { 
+      def getLanguage (inputDocs: Documents): Documents = {
         try {
           val response = processUsingApi(inputDocs, languagesUrl)
           // In case we need to log the json response somewhere
@@ -511,7 +509,7 @@ Twitter アプリケーションについて取得した値を保存します。
               case e: Exception => return new Documents()
         }
       }
-      
+
       // Calls the sentiment API for specified documents. Needs a language field to be set for each of them.
       // Returns documents with sentiment field set, taking a value in the range from 0 to 1.
       def getSentiment (inputDocs: Documents): Documents = {
@@ -535,7 +533,7 @@ Twitter アプリケーションについて取得した値を保存します。
         }
       }
     }
-    
+
     // User Defined Function for processing content of messages to return their sentiment.
     val toSentiment = udf((textContent: String) => {
       val inputDocs = new Documents()
@@ -554,7 +552,7 @@ Twitter アプリケーションについて取得した値を保存します。
 
     // Prepare a dataframe with Content and Sentiment columns
     val streamingDataFrame = incomingStream.selectExpr("cast (body as string) AS Content").withColumn("Sentiment", toSentiment($"Content"))
-    
+
     // Display the streaming data with the sentiment
     streamingDataFrame.writeStream.outputMode("append").format("console").option("truncate", false).start().awaitTermination()
 
@@ -571,11 +569,11 @@ Twitter アプリケーションについて取得した値を保存します。
     |Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |0.8558163642883301|
     |@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|0.5               |
     |4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |0.5               |
-    +--------------------------------+------------------+ 
+    +--------------------------------+------------------+
 
-**1** に近い値が **Sentiment** 列に含まれていることは、Azure でのエクスペリエンスが優れていることを示唆します。 **0** に近い値は、Microsoft Azure での作業中にユーザーが問題に直面したことを示唆します。 
+**1** に近い値が **Sentiment** 列に含まれていることは、Azure でのエクスペリエンスが優れていることを示唆します。 **0** に近い値は、Microsoft Azure での作業中にユーザーが問題に直面したことを示唆します。
 
-これで完了です。 Azure Databricks を使用して、Azure Event Hubs にリアルタイム データをストリーム配信し、Event Hubs コネクタによってデータ ストリームを読み取り、ストリーミング データに対して感情分析を実行することができました。
+これで完了です。 Azure Databricks を使用して、Azure Event Hubs にデータをストリーム配信し、Event Hubs コネクタによってデータ ストリームを読み取り、ストリーミング データに対し、ほぼリアルタイムで感情分析を実行することができました。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
@@ -585,12 +583,12 @@ Twitter アプリケーションについて取得した値を保存します。
 
 クラスター作成時に **[Terminate after __ minutes of inactivity]\(アクティビティが __ 分ない場合は終了する\)** チェック ボックスをオンにしていた場合、手動で終了しなくともクラスターは自動で停止します。 このような場合、クラスターは、一定の時間だけ非アクティブな状態が続くと自動的に停止します。
 
-## <a name="next-steps"></a>次の手順 
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、Azure Databricks を使用して、データを Azure Event Hubs にストリーム配信し、Event Hubs からストリーミング データをリアルタイムで読み取る方法について説明しました。 以下の方法について学習しました。
 > [!div class="checklist"]
 > * Azure Databricks ワークスペースを作成する
 > * Azure Databricks で Spark クラスターを作成する
-> * リアルタイム データにアクセスする Twitter アプリを作成する
+> * ストリーミング データにアクセスする Twitter アプリを作成する
 > * Azure Databricks でノートブックを作成する
 > * Event Hubs と Twitter API のライブラリを追加およびアタッチする
 > * Microsoft Cognitive Services アカウントを作成し、アクセス キーを取得する

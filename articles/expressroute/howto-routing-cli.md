@@ -1,13 +1,13 @@
 ---
-title: "Azure ExpressRoute 回線のルーティングを構成する方法: CLI | Microsoft Docs"
-description: "この記事では、ExpressRoute 回線のプライベート、パブリック、および Microsoft ピアリングを作成し、プロビジョニングします。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。"
+title: 'Azure ExpressRoute 回線のルーティングを構成する方法: CLI | Microsoft Docs'
+description: この記事では、ExpressRoute 回線のプライベート、パブリック、および Microsoft ピアリングを作成し、プロビジョニングします。 この記事では、回線のピアリングの状態確認、更新、または削除の方法も示します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: b54f7768e64e1689e5b25b94905beea6bd5471df
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: f4ad959de1425e828ce11fb658f8b5304e9d8775
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-modify-routing-for-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線のルーティングの作成と変更
 
 この記事では、CLI を使用して、Resource Manager デプロイメント モデルで ExpressRoute 回線のルーティング構成を作成し、管理します。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-routing-arm.md)
 > * [Azure CLI](howto-routing-cli.md)
 > * [ビデオ - プライベート ピアリング](http://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-set-up-azure-private-peering-for-your-expressroute-circuit)
@@ -50,13 +50,11 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 このセクションでは、ExpressRoute 回線用の Microsoft ピアリング構成を作成、取得、更新、および削除します。
 
 > [!IMPORTANT]
-> 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線に接続されるまで、プレフィックスはアドバタイズされません。 詳しくは、「[Configure a route filter for Microsoft peering](how-to-routefilter-powershell.md)」(Microsoft ピアリング用にルート フィルターを構成する) をご覧ください。
+> 2017 年 8 月 1 日より前に構成された ExpressRoute 回線の Microsoft ピアリングでは、ルート フィルターが定義されていない場合でも、すべてのサービス プレフィックスが Microsoft ピアリングでアドバタイズされます。 2017 年 8 月 1 日以降に構成された ExpressRoute 回路の Microsoft ピアリングでは、ルート フィルターが回線にアタッチされるまで、プレフィックスはアドバタイズされません。 詳しくは、「[Configure a route filter for Microsoft peering](how-to-routefilter-powershell.md)」(Microsoft ピアリング用にルート フィルターを構成する) をご覧ください。
 > 
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft ピアリングを作成するには
-
-[!INCLUDE [Premium](../../includes/expressroute-mspeering-premium-include.md)]
 
 1. 最新バージョンの Azure CLI をインストールします。 最新バージョンの Azure コマンド ライン インターフェイス (CLI) を使用してください。* 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 
@@ -117,7 +115,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
   * アドバタイズされたプレフィックス: BGP セッションを介してアドバタイズする予定のすべてのプレフィックスのリストを指定する必要があります。 パブリック IP アドレス プレフィックスのみが受け入れられます。 一連のプレフィックスを送信する場合は、コンマ区切りのリストを送信できます。 これらのプレフィックスは、RIR/IRR に登録する必要があります。
   * **省略可能 -** 顧客 ASN: ピアリング AS 番号に登録されていないプレフィックスをアドバタイズする場合は、そのプレフィックスが登録されている AS 数を指定できます。
   * ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
-  * **省略可能 -** いずれかを使用する場合は、MD5 ハッシュ。
+  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 
    次の例を実行して、回線用に Microsoft ピアリングを構成します。
 
@@ -389,7 +387,7 @@ az network express-route peering delete -g ExpressRouteResourceGroup --circuit-n
   * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
   * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-  * **省略可能 -** いずれかを使用する場合は、MD5 ハッシュ。
+  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 
   次の例を実行して、回線用に Azure パブリック ピアリングを構成します。
 
@@ -457,7 +455,7 @@ az network express-route peering update --vlan-id 600 -g ExpressRouteResourceGro
 az network express-route peering delete -g ExpressRouteResourceGroup --circuit-name MyCircuit --name AzurePublicPeering
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次の手順では、 [ExpressRoute 回線に VNet をリンク](howto-linkvnet-cli.md)します。
 

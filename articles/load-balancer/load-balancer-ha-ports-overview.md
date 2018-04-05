@@ -1,11 +1,11 @@
 ---
-title: "Azure の高可用性ポートの概要 | Microsoft Docs"
-description: "内部ロード バランサーでの高可用性ポートの負荷分散について説明します。"
+title: Azure の高可用性ポートの概要 | Microsoft Docs
+description: 内部ロード バランサーでの高可用性ポートの負荷分散について説明します。
 services: load-balancer
 documentationcenter: na
-author: rdhillon
-manager: timlt
-editor: 
+author: KumudD
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 46b152c5-6a27-4bfc-bea3-05de9ce06a57
 ms.service: load-balancer
@@ -13,22 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/26/2017
+ms.date: 03/21/2017
 ms.author: kumud
-ms.openlocfilehash: 46e284d1636988390f3533d93bfd07399f45dc92
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 09c51441d393de5d801e7a4c259b711a527349d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="high-availability-ports-overview"></a>高可用性ポートの概要
 
-内部ロード バランサーを使うときは、Azure Load Balancer Standard がすべてのポートで TCP フローと UDP フローの負荷分散を同時に行うのに役立ちます。 
+内部ロード バランサーを使用するときは、Azure Standard Load Balancer によって、すべてのポートで TCP フローと UDP フローの負荷分散を同時に行うことができます。 
 
->[!NOTE]
-> Load Balancer Standard で利用できる高可用性 (HA) ポート機能は、現在プレビューの段階です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 Load Balancer Standard リソースで HA ポートを使うには、Load Balancer Standard プレビューにサインアップしてください。 Load Balancer Standard プレビューにサインアップする手順については、[こちら](https://aka.ms/lbpreview#preview-sign-up)をご覧ください。
-
-HA ポート規則は負荷分散規則の一種であり、内部 Load Balancer Standard で構成されます。 単一の規則を提供することで、内部 Load Balancer Standard のすべてのポートに到着するすべての TCP および UDP フローが負荷分散されるので、Load Balancer を簡単に使うことができるようになります。 負荷分散の決定は、フローごとに行われます。 この決定は、送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、プロトコルの、5 タプル接続に基づいて行われます。
+HA ポート規則は負荷分散規則の一種であり、内部 Standard Load Balancer 上に構成されます。 内部 Standard Load Balancer のすべてのポートに到着するすべての TCP フローと UDP フローを負荷分散する単一の規則を指定することで、ロード バランサーの使用を単純化できます。 負荷分散の決定は、フローごとに行われます。 これは、5 タプル接続 (送信元 IP アドレス、送信元ポート、送信先 IP アドレス、送信先ポート、およびプロトコル)に基づいて行われます。
 
 HA ポート機能は、仮想ネットワーク内のネットワーク仮想アプライアンス (NVA) の高可用性と拡張性のような、重要なシナリオで役に立ちます。 また、多数のポートを負荷分散する必要がある場合にも役立ちます。 
 
@@ -44,11 +41,11 @@ NVA インスタンスを Azure 内部 Load Balancer のバックエンド プ�
 
 NVA HA シナリオで HA ポートを使うと複数のメリットがあります。
 - インスタンスごとの正常性プローブによる、正常なインスタンスへの高速フェールオーバー
-- *n* 個のアクティブなインスタンスへのスケールアウトによるパフォーマンス向上
+- *n* 個のアクティブ インスタンスへのスケールアウトによるパフォーマンスの向上
 - *N* アクティブ シナリオとアクティブ/パッシブのシナリオ
 - アプライアンスを監視するために Apache Zookeeper ノードのような複雑なソリューションが不要
 
-次の図は、ハブとスポークによる仮想ネットワークのデプロイを示したものです。 トラフィックは、スポークによってハブの仮想ネットワークに強制的にトンネリングされ、NVA を通過した後、信頼される空間を離れます。 NVA は、HA ポート構成の内部 Load Balancer Standard の背後にあります。 すべてのトラフィックを、適切に処理して転送できます。
+次の図は、ハブとスポークによる仮想ネットワークのデプロイを示したものです。 トラフィックは、スポークによってハブの仮想ネットワークに強制的にトンネリングされ、NVA を通過した後、信頼される空間を離れます。 NVA は、HA ポート構成の内部 Standard Load Balancer の背後にあります。 すべてのトラフィックを、適切に処理して転送できます。
 
 ![HA モードで NVA がデプロイされているハブとスポークの仮想ネットワークの図](./media/load-balancer-ha-ports-overview/nvaha.png)
 
@@ -57,34 +54,56 @@ NVA HA シナリオで HA ポートを使うと複数のメリットがありま
 
 ### <a name="load-balancing-large-numbers-of-ports"></a>多数のポートの負荷分散
 
-多数のポートの負荷分散が必要なアプリケーションにも、HA ポートを使うことができます。 HA ポートで内部 [Load Balancer Standard](https://aka.ms/lbpreview) を使うことにより、これらのシナリオが簡単になります。 ポートごとに 1 つずつ、複数の負荷分散規則を使う代わりに、1 つの負荷分散規則で済みます。
+多数のポートの負荷分散が必要なアプリケーションにも、HA ポートを使うことができます。 HA ポートで内部 [Standard Load Balancer ](load-balancer-standard-overview.md) を使うことにより、これらのシナリオが簡単になります。 ポートごとに 1 つずつ、複数の負荷分散規則を使う代わりに、1 つの負荷分散規則で済みます。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-HA ポート機能は、[Load Balancer Standard と同じリージョン](https://aka.ms/lbpreview#region-availability)で利用できます。  
+HA ポート機能は、すべてのグローバル Azure リージョンで使用できます。
 
-## <a name="preview-sign-up"></a>プレビューのサインアップ
+## <a name="supported-configurations"></a>サポートされている構成
 
-Load Balancer Standard の HA ポート機能のプレビューに参加するには、Load Balancer [Standard プレビュー](https://aka.ms/lbpreview#preview-sign-up)にサブスクリプションを登録します。 Azure CLI 2.0 か PowerShell を使用して登録できます。
+### <a name="one-single-non-floating-ip-non-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の 1 つの非フローティング IP (非 Direct Server Return) HA ポートの構成
+
+これは、基本的な HA ポートの構成です。 次の構成では、単一のフロントエンド IP アドレスに HA ポートの負荷分散を構成できます。
+- Standard Load Balancer を構成するときに、ロード バランサー規則の構成で**[HA ポート]** チェックボックスをオンにします。 
+- **[フローティング IP]** が **[無効]** に設定されていることを確認します。
+
+この構成では、現在のロード バランサー リソース用のその他の負荷分散規則の構成と、特定のバックエンド インスタンス セット用のその他の内部ロード バランサー リソースの構成は許可されません。
+
+ただし、この HA ポート規則に加えて、バックエンド インスタンス用のパブリックな Standard Load Balancer を構成できます。
+
+## <a name="one-single-floating-ip-direct-server-return-ha-ports-configuration-on-the-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の 1 つのフローティング IP (Direct Server Return) HA ポートの構成
+
+同様に、**HA ポート**と単一のフロントエンドを使用するロード バランサーを構成し、**[フローティング IP]** を **[有効]** に設定できます。 
+
+この構成では、複数のフローティング IP の負荷分散規則またはパブリック ロード バランサー、あるいはその両方を追加できます。 ただし、この構成の上で、非フローティング IP と HA ポートを使用する負荷分散構成は使用できません。
+
+## <a name="multiple-ha-ports-configurations-on-the-internal-standard-load-balancer"></a>内部 Standard Load Balancer 上の複数の HA ポート構成
+
+同じバックエンド プールに対して 1 つ以上の HA ポート フロントエンドを構成する必要があるシナリオの場合は、以下によってこれを実現できます。 
+- 単一の内部 Standard Load Balancer リソース用の 1 つ以上のフロントエンドのプライベート IP アドレスを構成する。
+- 複数の負荷分散規則を構成する。各規則には、1 つの一意のフロントエンド IP アドレスが選択されます。
+- **[HA ポート]** オプションを選択し、すべての負荷分散ルールで **[フローティング IP]** を **[有効]** に設定します。
+
+## <a name="internal-load-balancer-with-ha-ports--public-load-balancer-on-the-same-backend-instances"></a>同じバックエンド インスタンス上で HA ポートとパブリック ロード バランサーを使用する内部ロード バランサー
+
+バックエンド リソース用の **1 つの**パブリック Standard Load Balancer リソースと、HA ポートを使用する単一の Standard Load Balancer を構成できます。
 
 >[!NOTE]
->登録には最大 1 時間かかります。
+>この機能は、現時点では、Azure Resource Manager テンプレートでのみ使用でき、Azure Portal では使用できません。
 
 ## <a name="limitations"></a>制限事項
 
-HA ポート機能でサポートされる構成または例外は次のとおりです。
+- HA ポートの構成は、内部ロード バランサーのみで使用可能であり、パブリック ロード バランサーでは使用できません。
 
-- 1 つのフロントエンド IP 構成では、HA ポートについての 1 つの Direct Server Return (DSR - Azure の Floating IP) 負荷分散規則、または HA ポートについての 1 つの非 DSR 負荷分散規則のどちらかを使うことができます。 両方を持つことはできません。
-- 1 つのネットワーク インターフェイス IP 構成では、HA ポートについての非 DSR 負荷分散規則を 1 つだけ使うことができます。 この ipconfig に対して他の規則を構成することはできません。
-- 個々のフロントエンド IP 構成のすべてが一意であれば、1 つのネットワーク インターフェイス IP 構成で、HA ポートについての 1 つまたは複数の DSR ロード バランサー規則を使うことができます。
-- すべての負荷分散規則が HA ポート (DSR のみ) の場合、同じバックエンド プールを示す複数の Load Balancer 規則を併用できます。 すべての規則が HA ポート以外 (DSR および DSR 以外) の場合も同様です。 ただし、HA ポート規則と非 HA ポート規則の組み合わせがある場合は、そのような 2 つの負荷分散規則を併用することはできません。
-- HA ポート機能は、IPv6 では使うことができません。
-- NVA シナリオのフロー対称は、単一の NIC でのみサポートされます。 [ネットワーク仮想アプライアンス](#nva)の説明と図をご覧ください。 
+- HA ポートの負荷分散規則と非 HA ポートの負荷分散規則の組み合わせはサポートされていません。
 
+- HA ポート機能は、IPv6 では使用できません。
+
+- NVA シナリオのフロー対称は、単一の NIC でのみサポートされます。 [ネットワーク仮想アプライアンス](#nva)の説明と図をご覧ください。 ただし、シナリオで Destination NAT が機能する場合は、それを使用して、内部ロード バランサーが戻りトラフィックを同じ NVA に送信することを確認できます。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
-- [内部 Load Balancer Standard で HA ポートを構成する](load-balancer-configure-ha-ports.md)
-- [Load Balancer Standard プレビューについて確認する](https://aka.ms/lbpreview)
-
+- [内部 Standard Load Balancer で HA ポートを構成する](load-balancer-configure-ha-ports.md)
+- [Standard Load Balancer の詳細を確認する](load-balancer-standard-overview.md)

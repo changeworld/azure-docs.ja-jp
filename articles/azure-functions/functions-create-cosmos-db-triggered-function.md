@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB によってトリガーされる関数の作成 | Microsoft Docs"
-description: "Azure Functions を使用して、データが Azure Cosmos DB のデータベースに追加されるときに呼び出されるサーバーレスの関数を作成します。"
+title: Azure Cosmos DB によってトリガーされる関数の作成 | Microsoft Docs
+description: Azure Functions を使用して、データが Azure Cosmos DB のデータベースに追加されるときに呼び出されるサーバーレスの関数を作成します。
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: functions; cosmos-db
 ms.devlang: multiple
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 12/07/2017
 ms.author: glenga
-ms.custom: 
-ms.openlocfilehash: 9ee3eddda53052c47f2cecff80f971f5eadac414
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: ''
+ms.openlocfilehash: 435c4bf1c2619e91bbdd089375914ce06fdac6c7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -74,7 +74,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
     | Setting      | 推奨値  | [説明]                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | データベースの名前 | Azure Cosmos DB データベースの一意の ID  |
-    | **API** | SQL (DocumentDB) | このトピックでは、ドキュメント データベース API を使用します。  |
+    | **API** | SQL | このトピックでは、SQL API を使用します。  |
     | **サブスクリプション** | Azure サブスクリプション | この新しい Cosmos DB アカウントが作成されるサブスクリプション。  |
     | **リソース グループ** | myResourceGroup |  関数アプリが含まれる既存のリソース グループを使用します。 |
     | **場所**  | 西ヨーロッパ | 関数アプリ、または格納されたドキュメントを使用するその他のアプリに近い場所を選択します。  |

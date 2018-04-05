@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB のテーブル API の概要 | Microsoft Docs"
-description: "人気のある OSS MongoDB API と Azure Cosmos DB を使用して、大量のキー値データを低遅延で格納および照会する方法を説明します。"
+title: Azure Cosmos DB のテーブル API の概要 | Microsoft Docs
+description: 人気のある OSS MongoDB API と Azure Cosmos DB を使用して、大量のキー値データを低遅延で格納および照会する方法を説明します。
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: monicar
-documentationcenter: 
-ms.assetid: 
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 11/20/2017
 ms.author: mimig
-ms.openlocfilehash: 7e116400f55375afe1e57abc6dadae0536cdfceb
-ms.sourcegitcommit: 5ac112c0950d406251551d5fd66806dc22a63b01
+ms.openlocfilehash: ee5ceb29a3782967b0b9682a4b1f3d69cffd0e03
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB Table API の概要
+# <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB の概要: Table API
 
 [Azure Cosmos DB](introduction.md) には、Azure Table Storage 向けに作成されたアプリケーションの中でも、以下に挙げたような特に高度な機能を必要とするアプリケーションのための Table API が用意されています。
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 01/23/2018
 
 Azure Table Storage 用に作成されたアプリケーションについては、Table API を使って Azure Cosmos DB に移行することで、コードに変更を加えることなく、高度な機能を活用できるようになります。 Table API には、.NET、Java、Python、および Node.js で利用可能なクライアント SDK があります。
 
-以下のビデオをぜひご覧ください。Azure Cosmos DB の Table API の導入方法を Aravind Ramachandran が説明しています。
+以下のビデオをぜひご覧ください。Azure Cosmos DB の Table API の導入方法を Aravind Krishna が説明しています。
 
 > [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Table-API-for-Azure-Cosmos-DB/player]
 > 
@@ -41,7 +41,7 @@ Azure Table Storage 用に作成されたアプリケーションについては
 ## <a name="table-offerings"></a>Table のサービス
 現在 Azure Table Storage を使用している場合、Azure Cosmos DB Table API に移行することにより次のメリットが得られます。
 
-| | Azure テーブル ストレージ | Azure Cosmos DB Table API |
+| | Azure Table Storage | Azure Cosmos DB Table API |
 | --- | --- | --- |
 | Latency | 高速だが、待ち時間の上限はなし。 | 読み取りと書き込みの待ち時間は数ミリ秒であり、世界中のどこでもあらゆるスケールで 99 パーセンタイルの 10 ミリ秒未満の読み取り待ち時間と 15 ミリ秒未満の書き込み待ち時間でサポート。 |
 | Throughput | 可変スループット モデル。 テーブルには、20,000 操作/秒のスケーラビリティの制限あり。 | SLA によって保証された、[テーブルごとの専用の予約済みスループット](request-units.md)を備えた高いスケーラビリティ。 アカウントにはスループットの上限がなく、テーブルあたり 10,000, 000 操作/秒以上に対応。 |

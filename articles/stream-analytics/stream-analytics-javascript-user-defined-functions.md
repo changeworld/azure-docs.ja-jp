@@ -1,24 +1,23 @@
 ---
-title: "Azure Stream Analytics の JavaScript ユーザー定義関数 | Microsoft Docs"
-description: "ユーザー定義関数を使用して高度なクエリ機構を実行します。"
-keywords: "JavaScript、ユーザー定義関数、UDF"
+title: Azure Stream Analytics の JavaScript ユーザー定義関数 | Microsoft Docs
+description: ユーザー定義関数を使用して高度なクエリ機構を実行します。
+keywords: JavaScript、ユーザー定義関数、UDF
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: e8c1c784a598416b478d1430258201053185fdee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: f2b14029ebea7f9cf1fa74a384ecbb72b08b7ad6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-functions"></a>Azure Stream Analytics の JavaScript ユーザー定義関数
 Azure Stream Analytics は、JavaScript で記述されたユーザー定義関数をサポートします。 JavaScript が提供する一連の豊富な **String**、**RegExp**、**Math**、**Array**、**Date** メソッドによって、Stream Analytics ジョブを伴う複雑なデータ変換の作成が容易になります。
@@ -55,7 +54,7 @@ Stream Analytics の JavaScript ユーザー定義関数では実行できない
     }
     ```
 
-6.  [ **保存**] を選択します。 作成した関数が関数一覧に表示されます。
+6.  **[保存]** を選択します。 作成した関数が関数一覧に表示されます。
 7.  新しい **hex2Int** 関数を選択し、関数の定義を確認します。 すべての関数で、関数のエイリアスにプレフィックス **UDF** が追加されています。 Stream Analytics クエリでは、関数を呼び出す際に*プレフィックスを含める*必要があります。 この場合は、**UDF.hex2Int** を呼び出します。
 
 ## <a name="call-a-javascript-user-defined-function-in-a-query"></a>クエリでの JavaScript ユーザー定義関数の呼び出し
@@ -87,7 +86,7 @@ Stream Analytics クエリ言語と JavaScript でサポートされる型の間
 Stream Analytics | JavaScript
 --- | ---
 bigint | Number (JavaScript では最大 2^53 の精度の整数しか表現できません)
-DateTime | Date (JavaScript ではミリ秒のみサポートされています)
+Datetime | Date (JavaScript ではミリ秒のみサポートされています)
 double | Number
 nvarchar(MAX) | String
 レコード | オブジェクト
@@ -101,7 +100,7 @@ JavaScript から Stream Analytics への変換を以下に示します。
 JavaScript | Stream Analytics
 --- | ---
 Number | Bigint (値が四捨五入され、long.MinValue と long.MaxValue の間の場合。それ以外の場合は double)
-日付 | DateTime
+日付 | Datetime
 String | nvarchar(MAX)
 オブジェクト | レコード
 array | array
@@ -141,7 +140,7 @@ FROM
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)

@@ -1,11 +1,11 @@
 ---
-title: "Web Apps 用 Azure Mobile Engagement の使用 | Microsoft Docs"
-description: "Web Apps の分析とプッシュ通知で Azure Mobile Engagement を使用する方法について説明します。"
+title: Web Apps 用 Azure Mobile Engagement の使用 | Microsoft Docs
+description: Web Apps の分析とプッシュ通知で Azure Mobile Engagement を使用する方法について説明します。
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 04afe53a-4caf-4c80-bd75-20cc630cd75c
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: hero-article
 ms.date: 06/01/2016
 ms.author: piyushjo
-ms.openlocfilehash: abcb04e4e0a3ae4fdba3a4ded20b3846ac3b21e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bb7a0e61b6d29c292642fd950aed7617de9b340d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-web-apps"></a>Web Apps 用 Azure Mobile Engagement の使用
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 このトピックでは、Azure Mobile Engagement を使用して Web アプリの使用状況を把握する方法について説明します。
@@ -36,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 この Web SDK はプレビュー段階です。現時点でのサポート対象は分析のみで、ブラウザーまたはアプリ内のプッシュ通知の送信にはまだ対応していません。 
 
 > [!NOTE]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-web-app-get-started)を参照してください。
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-web-app-get-started)を参照してください。
 > 
 > 
 
@@ -109,7 +113,7 @@ ms.lasthandoff: 10/11/2017
 3. エラー
    
         engagement.agent.sendError(name, extras);
-4. ジョブ
+4. [ジョブ]
    
         engagement.agent.startJob(name);
         engagement.agent.endJob(name);

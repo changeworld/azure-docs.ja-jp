@@ -1,11 +1,11 @@
 ---
-title: "Cordova/Phonegap 用 Azure Mobile Engagement の使用"
-description: "Cordova/Phonegap アプリで Azure Mobile Engagement の分析機能やプッシュ通知を使用する方法について説明します。"
+title: Cordova/Phonegap 用 Azure Mobile Engagement の使用
+description: Cordova/Phonegap アプリで Azure Mobile Engagement の分析機能やプッシュ通知を使用する方法について説明します。
 services: mobile-engagement
 documentationcenter: Mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 54fe9113-e239-4ed7-9fd1-a502d7ac7f47
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d7a761310782faab1dda023785f93cf90742e2ae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abe0ad6117cc2feb72ebe788d07b50e8f145174c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-cordovaphonegap"></a>Cordova/Phonegap 用 Azure Mobile Engagement の使用
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 このトピックでは、Azure Mobile Engagement を使用して、アプリの使用状況を把握する方法と、Cordova を使用して開発されたモバイル アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
@@ -28,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルでは、Mac を使用して空の Cordova アプリを作成してから、Mobile Engagement SDK と統合します。 このアプリは、基本的な分析データを収集し、iOS では Apple Push Notification System (APNS)、Android では Google Cloud Messaging (GCM) を使用してプッシュ通知を受信します。 このアプリを、テスト用に iOS デバイスまたは Android デバイスにデプロイします。 
 
 > [!NOTE]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started)をご覧ください。
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-cordova-get-started)をご覧ください。
 > 
 > 
 
@@ -136,13 +140,13 @@ Mobile Engagement がユーザーに代わりプッシュ通知を送信でき�
    
     **(iOS)**
    
-    a. .p12 を選択してアップロードし、パスワードを入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 .p12 を選択してアップロードし、パスワードを入力します。
    
     ![][3]
    
     **(Android)**
    
-    a. [GCM 設定] セクションの **[API キー]** の前にある編集アイコンをクリックし、表示されたポップアップの中に GCM サーバー キーを貼り付け、**[OK]** をクリックします。 
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 [GCM 設定] セクションの **[API キー]** の前にある編集アイコンをクリックし、表示されたポップアップの中に GCM サーバー キーを貼り付け、**[OK]** をクリックします。 
    
     ![][4]
 

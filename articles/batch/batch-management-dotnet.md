@@ -1,31 +1,31 @@
 ---
-title: ".NET 用クライアント ライブラリでの Batch アカウント リソースの管理 - Azure | Microsoft Docs"
-description: "Batch Management .NET ライブラリを使用して Azure Batch アカウント リソースを作成、削除、変更します。"
+title: .NET 用クライアント ライブラリでの Batch アカウント リソースの管理 - Azure | Microsoft Docs
+description: Batch Management .NET ライブラリを使用して Azure Batch アカウント リソースを作成、削除、変更します。
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 16279b23-60ff-4b16-b308-5de000e4c028
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/24/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: eafde9258222a2ab09ade2e366f9cc595a303dec
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 7f2d0b261a991dc02b670488c14392697ea984ec
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-batch-accounts-and-quotas-with-the-batch-management-client-library-for-net"></a>.NET 用の Batch 管理クライアント ライブラリを使用した Batch アカウントとクォータの管理
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](batch-account-create-portal.md)
+> * [Azure Portal](batch-account-create-portal.md)
 > * [Batch Management .NET](batch-management-dotnet.md)
 > 
 > 

@@ -1,3 +1,19 @@
+---
+title: Azure DNS 用の PowerShell のインクルード ファイル
+description: Azure DNS 用の PowerShell のインクルード ファイル
+services: dns
+author: subsarma
+ms.service: dns
+ms.topic: include file for PowerShell for Azure DNS
+ms.date: 03/21/2018
+ms.author: subsarma
+ms.custom: include file for PowerShell for Azure DNS
+ms.openlocfilehash: 1ddfd1ae8dffbc5d381773ea9679713e93a44a32
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/28/2018
+---
 ## <a name="set-up-azure-powershell-for-azure-dns"></a>Azure DNS 用に Azure PowerShell をセットアップする
 
 ### <a name="before-you-begin"></a>開始する前に
@@ -6,6 +22,30 @@
 
 * Azure サブスクリプション。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial/)にサインアップしてください。
 * Azure Resource Manager PowerShell コマンドレットの最新版をインストールする必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azureps-cmdlets-docs)」を参照してください。
+
+さらに、Private Zones (パブリック プレビュー) を使用するには、以下の PowerShell モジュールとバージョンを用意する必要があります。 
+* AzureRM.Dns - [バージョン 4.1.0](https://www.powershellgallery.com/packages/AzureRM.Dns/4.1.0) 以上
+* AzureRM.Network - [バージョン 5.4.0](https://www.powershellgallery.com/packages/AzureRM.Network/5.4.0) 以上
+
+```powershell 
+Find-Module -Name AzureRM.Dns 
+``` 
+ 
+```powershell 
+Find-Module -Name AzureRM.Network 
+``` 
+ 
+上記のコマンドの出力で、AzureRM.Dns のバージョンが 4.1.0 以上、AzureRM.Network のバージョンが 5.4.0 以上であることが示される必要があります。  
+
+システムに以前のバージョンがある場合、Azure PowerShell の最新バージョンをインストールできます。または、モジュール バージョンの横にある上記のリンクを使用して、PowerShell ギャラリーから上記のモジュールをダウンロードしてインストールできます。 次に、以下のコマンドを使用してこれらをインストールできます。 どちらのモジュールも必要で、完全な下位互換性があります。 
+
+```powershell
+Install-Module -Name AzureRM.Dns -Force
+```
+
+```powershell
+Install-Module -Name AzureRM.Network -Force
+```
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 

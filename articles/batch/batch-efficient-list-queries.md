@@ -1,25 +1,25 @@
 ---
-title: "効率的なリスト クエリの設計 - Azure Batch | Microsoft Docs"
-description: "Batch のリソース (プール、ジョブ、タスク、コンピューティング ノードなど) に関する情報を要求する際のクエリにフィルターを適用することでパフォーマンスを高めます。"
+title: 効率的なリスト クエリの設計 - Azure Batch | Microsoft Docs
+description: Batch のリソース (プール、ジョブ、タスク、コンピューティング ノードなど) に関する情報を要求する際のクエリにフィルターを適用することでパフォーマンスを高めます。
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 08/02/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a80b207f591bd888d4749287527013c5e554fb6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 330350d6ac6838ea5b09763fe1f73fab1934710c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>効率的に Batch リソースを一覧表示するクエリを作成する
 
@@ -181,7 +181,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 ## <a name="example-construct-a-filter-string"></a>例: filter 文字列の構築
 [ODATADetailLevel.FilterClause][odata_filter] の filter 文字列を構築する場合は、「filter 文字列のマッピング」に示したテーブルを参照して、実行するリスト操作に対応する REST API のドキュメント ページを見つけます。 そのページの最初の複数行の表に、フィルター可能なプロパティとサポートされている演算子が表示されます。 たとえば、終了コードがゼロ以外のタスクをすべて取得する場合は、「[ジョブに関連付けられているタスクを一覧表示する][rest_list_tasks]」のこの行で、適用可能なプロパティと許可される演算子を指定します。
 
-| プロパティ | 許可される操作 | 型 |
+| プロパティ | 許可される操作 | type |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -192,7 +192,7 @@ filter、select、および expand 文字列のプロパティ名は、REST API 
 ## <a name="example-construct-a-select-string"></a>例: select 文字列の構築
 [ODATADetailLevel.SelectClause][odata_select] を構築する場合は、「select 文字列のマッピング」に示したテーブルを参照し、一覧表示するエンティティのタイプに対応する REST API ページに移動します。 そのページの最初の複数行の表に、選択可能なプロパティとサポートされている演算子が表示されます。 たとえば、リストの各タスクの ID とコマンド ラインのみを取得する場合は、「[タスクに関する情報を取得する][rest_get_task]」の該当するテーブルでこれらの行を見つけます。
 
-| プロパティ | 型 | メモ |
+| プロパティ | type | メモ |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -243,7 +243,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 ### <a name="parallel-node-tasks"></a>並列ノード タスク
 「[同時実行ノード タスクで Azure Batch コンピューティング リソースの使用率を最大にする](batch-parallel-node-tasks.md) 」があります。 ワークロードの種類によっては、並列タスクの実行環境となるコンピューティング ノードの規模を大きくしてノード数を減らすことによってパフォーマンス上のメリットが得られる場合があります。 同記事の「 [サンプル シナリオ](batch-parallel-node-tasks.md#example-scenario) 」で、そのようなシナリオについて詳しく説明されています。
 

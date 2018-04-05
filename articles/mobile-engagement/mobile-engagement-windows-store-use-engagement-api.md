@@ -1,11 +1,11 @@
 ---
-title: "Windows ユニバーサルでエンゲージメント API を使用する方法"
-description: "Windows ユニバーサルでエンゲージメント API を使用する方法"
+title: Windows ユニバーサルでエンゲージメント API を使用する方法
+description: Windows ユニバーサルでエンゲージメント API を使用する方法
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: bb501fca-9cfe-4495-81df-b5efd6e0137b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 75fc134a5535e6113331470cf61df9c06eb8e2ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f8f211764646bc53319f435d74a16a026329039
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-universal"></a>Windows ユニバーサルでエンゲージメント API を使用する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このドキュメントは、「[Windows ユニバーサル アプリ Engagement SDK 統合](mobile-engagement-windows-store-integrate-engagement.md)」の付属ドキュメントであり、Engagement API を使用して、アプリケーションの統計情報を報告する方法について詳しく説明しています。
 
 アプリケーションのセッション、アクティビティ、クラッシュ、技術情報を報告するエンゲージメントのみが必要な場合、最も簡単な方法はすべての `Page` サブクラスが `EngagementPage` クラスから継承されるようにすることです。

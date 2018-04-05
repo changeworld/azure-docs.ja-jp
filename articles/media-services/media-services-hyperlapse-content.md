@@ -1,36 +1,34 @@
 ---
-title: "Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル | Microsoft Docs"
-description: "Azure Media Hyperlapse は、最初のユーザーまたはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成します。 このトピックでは、Media Indexer の使用方法について説明します。"
+title: Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル | Microsoft Docs
+description: Azure Media Hyperlapse は、最初のユーザーまたはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成します。 このトピックでは、Media Indexer の使用方法について説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: asolanki
 manager: johndeu
-editor: 
+editor: ''
 ms.assetid: 37d54db6-9cf3-4ae9-b3c6-0d29c744e965
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/02/2017
+ms.date: 03/28/2018
 ms.author: adsolank
-ms.openlocfilehash: b3163454213db0afb94e668e4c56924d7833d769
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 86a9d44a93d7717d2ed949db2b1d1e94963781d0
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="hyperlapse-media-files-with-azure-media-hyperlapse"></a>Azure Media Hyperlapse を使用する Hyperlapse メディア ファイル
 Azure Media Hyperlapse は、最初のユーザーまたはアクション カメラのコンテンツから滑らかな低速度撮影ビデオを作成するメディア プロセッサ (MP) です。  [Microsoft Research のデスクトップ版 Hyperlapse Pro および電話ベースの Hyperlapse Mobile](http://aka.ms/hyperlapse)とはクラウド ベースの兄弟である、Azure Media Services 向けの Microsoft Hyperlapse では大規模な Azure Media Services メディア処理プラットフォームを利用して、Hyperlapse の一括処理を水平方向にスケーリングし、並列化します。
 
 > [!IMPORTANT]
-> Microsoft Hyperlapse は、移動カメラを使用する最初のユーザー コンテンツで最適に機能するように設計されています。  静止カメラの映像は引き続き動作しますが、Azure Media Hyperlapse メディア プロセッサのパフォーマンスと品質は他の種類のコンテンツに対して保証できません。  Azure Media Services 向けの Microsoft Hyperlapse に関する詳細といくつかのビデオ例については、パブリック プレビューの [概要のブログ投稿](http://aka.ms/azurehyperlapseblog) を確認してください。
+> Microsoft Hyperlapse は、移動カメラを使用する最初のユーザー コンテンツで最適に機能するように設計されています。 静止カメラの映像は引き続き動作しますが、Azure Media Hyperlapse メディア プロセッサのパフォーマンスと品質は他の種類のコンテンツに対して保証できません。
 > 
 > 
 
 Azure Media Hyperlapse ジョブでは、低速度撮影のビデオ フレームとその速度 (たとえば、最初の 10,000 フレームは 2 倍速) を指定する構成ファイルと共に、MP4、MOV、または WMV ファイルを入力として使用します。  出力は、入力ビデオの安定した低速度撮影画像となります。
-
-Azure Media Hyperlapse の最新の更新プログラムについては、 [Media Services のブログ](https://azure.microsoft.com/blog/topics/media-services/)をご覧ください。
 
 ## <a name="hyperlapse-an-asset"></a>Hyperlapse における資産
 最初に、必要な入力ファイルを Azure Media Services にアップロードする必要があります。  コンテンツのアップロードと管理に関する概念の詳細については、 [コンテンツ管理の記事](media-services-portal-vod-get-started.md)をお読みください。

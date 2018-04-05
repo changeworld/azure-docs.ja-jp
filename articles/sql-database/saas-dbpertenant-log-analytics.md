@@ -1,6 +1,6 @@
 ---
 title: SQL Database のマルチテナント アプリで Log Analytics を使用する | Microsoft Docs
-description: マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する
+description: マルチテナント Azure SQL Database SaaS アプリで Log Analytics (Operations Management Suite) を設定して使用する
 keywords: SQL データベース チュートリアル
 services: sql-database
 author: stevestein
@@ -11,125 +11,129 @@ ms.topic: article
 ms.date: 11/13/2017
 ms.author: sstein
 ms.reviewer: billgib
-ms.openlocfilehash: b141ca521ae9c4d9bf6a4be620bc8e5432c52f83
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 38a849ca5f4a767a4b9d9b9b86549e89a8217a2a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="set-up-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する
+# <a name="set-up-and-use-log-analytics-operations-management-suite-with-a-multitenant-sql-database-saas-app"></a>マルチテナント SQL Database SaaS アプリで Log Analytics (Operations Management Suite) を設定して使用する
 
-このチュートリアルでは、エラスティック プールおよびデータベースを監視するために、*Log Analytics ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* を設定して使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)を基礎とします。 *Log Analytics* を使用して、Azure Portal で提供された監視とアラート設定を拡張する方法を示します。 Log Analytics では、何千単位のエラスティック プールと何十万単位のデータベースの監視をサポートしています。 Log Analytics は単一監視ソリューションを提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
+このチュートリアルでは、Azure Log Analytics ([Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite)) を設定し、エラスティック プールとデータベースの監視に使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)を基礎とします。 Log Analytics を使用して、Azure Portal で提供された監視とアラート設定を拡張する方法を示します。 Log Analytics では、何千単位のエラスティック プールと何十万単位のデータベースの監視をサポートしています。 Log Analytics は単一の監視ソリューションを提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Log Analytics (OMS) をインストールして構成する
-> * Log Analytics を使用してプールとデータベースを監視する
+> * Log Analytics (Operations Management Suite) をインストールして構成する。
+> * Log Analytics を使用してプールとデータベースを監視する。
 
 このチュートリアルを完了するには、次の前提条件を満たしておく必要があります。
 
-* Wingtip Tickets SaaS Database Per Tenant アプリをデプロイします。 5 分未満でデプロイするには、「[Deploy and explore the Wingtip Tickets SaaS Multi-tenant Database application (Wingtip Tickets SaaS Database Per Tenant アプリケーションのデプロイと探索)](saas-dbpertenant-get-started-deploy.md)」を参照してください
-* Azure PowerShell がインストールされている。 詳しくは、「[Azure PowerShell を使ってみる](https://docs.microsoft.com/powershell/azure/get-started-azureps)」をご覧ください。
+* Wingtip Tickets SaaS テナント単位データベース アプリをデプロイします。 5 分未満でデプロイするには、[Wingtip Tickets SaaS テナント単位データベース アプリケーションのデプロイと探索](saas-dbpertenant-get-started-deploy.md)に関するページを参照してください。
+* Azure PowerShell がインストールされている。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/powershell/azure/get-started-azureps)に関するページを参照してください。
 
-SaaS のシナリオとパターン、および監視ソリューションの要件に対する影響については、[パフォーマンスの監視と管理を行うためのチュートリアル](saas-dbpertenant-performance-monitoring.md)を参照してください。
+SaaS のシナリオとパターン、および監視ソリューションの要件に対する影響については、[パフォーマンスの監視と管理のチュートリアル](saas-dbpertenant-performance-monitoring.md)に関するページを参照してください。
 
-## <a name="monitoring-and-managing-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite-oms"></a>Log Analytics または Operations Management Suite (OMS) によるデータベースとエラスティック プール パフォーマンスの監視および管理
+## <a name="monitor-and-manage-database-and-elastic-pool-performance-with-log-analytics-or-operations-management-suite"></a>Log Analytics または Operations Management Suite (OMS) を使用してデータベースとエラスティック プールのパフォーマンスを監視および管理する
 
-SQL Database については、Azure Portal でデータベースとプールに対する監視とアラートを利用できます。 この組み込みの監視とアラートは便利ですが、リソース固有であり、多数のインストールの監視や、リソースとサブスクリプション間の統一されたビューの提供には適していません。
+Azure SQL Database については、Azure Portal でデータベースとプールを監視してアラートを設定できます。 この組み込みの監視機能とアラート設定機能は便利ですが、リソースに固有でもあります。 つまり、大規模なインストールを監視することや、複数のリソースやサブスクリプションを統合されたビューで確認することには向いていません。
 
-大規模なシナリオでは、監視とアラートに Log Analytics を使用できます。 Log Analytics は、潜在的に多くのサービスからワークスペースに集められた診断ログやテレメトリに対する分析を可能にする、別個の Azure サービスです。 Log Analytics には、オペレーション データを分析できるクエリ言語とデータ視覚化ツールが組み込まれています。 SQL Analytics ソリューションには、エラスティック プールとデータベースの監視とアラートを行うためのさまざまな定義済みのビューとクエリが用意されています。 OMS には、カスタム ビュー デザイナーも用意されています。
+大規模なシナリオでは、監視とアラート設定に Log Analytics を使用できます。 Log Analytics は、潜在的に多くのサービスからワークスペースに集められた診断ログやテレメトリに対する分析を可能にする、別個の Azure サービスです。 Log Analytics には、オペレーション データを分析できるクエリ言語とデータ視覚化ツールが組み込まれています。 SQL Analytics ソリューションには、エラスティック プールとデータベースを監視およびアラートを設定するためのさまざまな定義済みのビューとクエリが用意されています。 Operations Management Suite には、カスタム ビュー デザイナーも用意されています。
 
-Log Analytics のワークスペースと分析ソリューションは、Azure ポータルと OMS の両方で開くことができます。 Azure ポータルは新しいアクセス ポイントですが、一部の領域では OMS ポータルの背後に配置される場合があります。
+Log Analytics のワークスペースと分析ソリューションは、Azure Portal と Operations Management Suite の両方で開きます。 Azure Portal は新しいアクセス ポイントですが、一部の領域では Operations Management Suite ポータルの背後に配置される場合があります。
 
 ### <a name="create-performance-diagnostic-data-by-simulating-a-workload-on-your-tenants"></a>テナントでワークロードをシミュレートしてパフォーマンスの診断データを作成する 
 
-1. **PowerShell ISE** で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\**Demo-PerformanceMonitoringAndManagement.ps1*** を開きます。 このスクリプトは、このチュートリアル中にいくつかのロード生成シナリオで実行するため、開いたままにしておいてください。
-1. まだ実行していない場合は、より興味深い監視コンテキストを提供するために、テナントのバッチをプロビジョニングします。 これには、数分かかります。
-   1. **$DemoScenario = 1** _(テナントのバッチのプロビジョニング)_ を設定します。
-   1. スクリプトを実行し、追加の 17 テナントをデプロイして、**f5** キーを押します。  
+1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Demo-PerformanceMonitoringAndManagement.ps1* を開きます。 このスクリプトは、このチュートリアル中にいくつかのロード生成シナリオで実行することがあるため、開いたままにしておいてください。
+2. まだ行っていない場合は、テナントのバッチをプロビジョニングすることで、監視コンテキストの関連性が高まります。 このプロセスには数分かかります。
 
-1. ロード ジェネレーターを開始して、すべてのテナントで疑似ロードを実行します。  
-    1. **$DemoScenario = 2** _(標準強度負荷の生成 (およそ 30 DTU))_ を設定します。
-    1. **F5** キーを押して、スクリプトを実行します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **$DemoScenario = 1** _(テナントのバッチのプロビジョニング)_ を設定します。
 
-## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS Database Per Tenant アプリケーション スクリプトを入手する
+   b. F5 キーを押してスクリプトを実行し、追加の 17 テナントをデプロイします。
+
+3. ロード ジェネレーターを開始して、すべてのテナントで疑似ロードを実行します。
+
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **$DemoScenario = 2** _(標準強度負荷の生成 (およそ 30 DTU))_ を設定します。
+
+    b. F5 キーを押してスクリプトを実行します。
+
+## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Wingtip Tickets SaaS テナント単位データベース アプリケーションのスクリプトを入手する
 
 Wingtip Tickets SaaS マルチテナント データベースのスクリプトとアプリケーション ソース コードは、[WingtipTicketsSaaS-DbPerTenant](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant) GitHub リポジトリで入手できます。 Wingtip Tickets PowerShell スクリプトをダウンロードし、ブロックを解除する手順については、[一般的なガイダンス](saas-tenancy-wingtip-app-guidance-tips.md)に関する記事をご覧ください。
 
-## <a name="installing-and-configuring-log-analytics-and-the-azure-sql-analytics-solution"></a>Log Analytics と Azure SQL Analytics ソリューションをインストールして構成する
+## <a name="install-and-configure-log-analytics-and-the-azure-sql-analytics-solution"></a>Log Analytics と Azure SQL Analytics ソリューションをインストールして構成する
 
-Log Analytics は構成する必要がある独立したサービスです。 Log Analytics は、ログ データ、テレメトリ、およびメトリックをログ分析ワークスペース内に収集します。 Azure の他のリソースと同じように、Log Analytics ワークスペースはリソースであるため、作成する必要があります。 ワークスペースは監視対象のアプリケーションと同じリソース グループ内に作成する必要はありませんが、多くの場合は、そうすることが最も道理にかなっています。 Wingtip Tickets アプリの場合、単一のリソース グル―プを使用することで、アプリケーションによってワークスペースが削除されることが保証されます。
+Log Analytics は別個のサービスとして構成する必要があります。 Log Analytics は、ログ データ、テレメトリ、およびメトリックを Log Analytics ワークスペース内に収集します。 Azure の他のリソースと同じように、Log Analytics ワークスペースを作成する必要があります。 ワークスペースは監視対象のアプリケーションと同じリソース グループ内に作成する必要はありません。 多くの場合は、そうすることが最も理にかなっています。 Wingtip Tickets アプリの場合、単一のリソース グループを使用することで、アプリケーションによってワークスペースが確実に削除されます。
 
-1. **PowerShell ISE** で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\**Demo-LogAnalytics.ps1*** を開きます。
-1. **F5** キーを押して、スクリプトを実行します。
+1. PowerShell ISE で、*..\\WingtipTicketsSaaS-MultiTenantDb-master\\Learning Modules\\Performance Monitoring and Management\\Log Analytics\\**Demo-LogAnalytics.ps1*** を開きます。
+2. F5 キーを押してスクリプトを実行します。
 
-この時点で、Azure ポータル (または、OMS ポータル) で Log Analytics を開くことができます。 Log Analytics ワークスペース内にテレメトリが収集されて視覚化されるまで、数分かかります。 システムが診断データを収集する時間を長くすればするほど、エクスペリエンスは興味深いものになります。 このタイミングで、ロード ジェネレーターが実行中であることを確認してから少し休憩することをお勧めします。
+これで Azure Portal または Operations Management Suite ポータルで Log Analytics を開くことができます。 Log Analytics ワークスペース内にテレメトリが収集されて視覚化されるまで、数分かかります。 システムが診断データを収集する時間を長くすればするほど、エクスペリエンスの関連性が高くなります。 
 
 ## <a name="use-log-analytics-and-the-sql-analytics-solution-to-monitor-pools-and-databases"></a>Log Analytics と SQL Analytics ソリューションを使用してプールとデータベースを監視する
 
 
-この演習では、Log Analytics と OMS ポータルを開き、データベースとプールで収集されるテレメトリを調べます。
+この演習では、Log Analytics と Operations Management Suite ポータルを開き、データベースとプールで収集されるテレメトリを調べます。
 
-1. [Azure Portal](https://portal.azure.com) に移動し、**[その他のサービス]** をクリックして Log Analytics を検索することで、Log Analytics を開きます。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。 **[すべてのサービス]** を選択して Log Analytics を選択します。 Log Analytics を検索します。
 
    ![Log Analytics を開く](media/saas-dbpertenant-log-analytics/log-analytics-open.png)
 
-1. _wtploganalytics-&lt;user&gt;_ という名前のワークスペースを選択します。
+2. _wtploganalytics-&lt;user&gt;_ という名前のワークスペースを選択します。
 
-1. **[概要]** を選択して、Azure ポータルで Log Analytics ソリューションを選択します。
+3. **[概要]** を選択して、Azure ポータルで Log Analytics ソリューションを選択します。
 
-   ![overview-link](media/saas-dbpertenant-log-analytics/click-overview.png)
+   ![概要](media/saas-dbpertenant-log-analytics/click-overview.png)
 
     > [!IMPORTANT]
-    > ソリューションがアクティブになるまで数分かかる場合があります。 しばらくお待ちください。
+    > ソリューションがアクティブになるまで数分かかる場合があります。 
 
-1. [Azure SQL Analytics] タイルをクリックして開きます。
+4. **[Azure SQL Analytics]** タイルを選択して開きます。
 
-    ![概要](media/saas-dbpertenant-log-analytics/overview.png)
+    ![概要タイル](media/saas-dbpertenant-log-analytics/overview.png)
 
-    ![分析](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
+5. ソリューションのビューは横方向にスクロールし、固有の内部スクロール バーが下部に表示されます。 必要に応じてページを更新します。
 
-1. ソリューションのビューは横方向にスクロールし、固有の内部スクロール バーが下部に表示されます (必要に応じてブレードを更新してください)。
+6. タイルまたは個別のデータベースをクリックしてドリルダウン エクスプローラーを開き、概要ページを確認します。
 
-1. タイルまたは個別のデータベースをクリックしてドリルダウン エクスプローラーを開き、概要ページを確認します。
+    ![Log Analytics のダッシュボード](media/saas-dbpertenant-log-analytics/log-analytics-overview.png)
 
-1. フィルター設定を切り替えて、時間の範囲を変更します。このチュートリアルでは、 _[過去 1 時間]_ を選択します。
+7. フィルター設定を切り替えて、時間の範囲を変更します。 このチュートリアルでは、 **[過去 1 時間]** を選択します。
 
     ![時間フィルター](media/saas-dbpertenant-log-analytics/log-analytics-time-filter.png)
 
-1. クエリの使用状況と該当のデータベースのメトリックを調査する 1 つのデータベースを選択します。
+8. クエリの使用状況と該当のデータベースのメトリックを調査する単一のデータベースを選択します。
 
     ![データベースの分析](media/saas-dbpertenant-log-analytics/log-analytics-database.png)
 
-1. 使用状況のメトリックを表示するには、分析ページを右にスクロールします。
+9. 使用状況のメトリックを表示するには、分析ページを右にスクロールします。
  
      ![データベースのメトリック](media/saas-dbpertenant-log-analytics/log-analytics-database-metrics.png)
 
-1. 分析ページを左にスクロールして、[リソース情報] 一覧のサーバー タイルをクリックします。 これにより、サーバー上のプールとデータベースを表示するページが開かれます。 
+10. 分析ページを左にスクロールして、**[リソース情報]** 一覧のサーバー タイルを選択します。  
 
-     ![リソース情報](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
+    ![[リソース情報] 一覧](media/saas-dbpertenant-log-analytics/log-analytics-resource-info.png)
 
- 
-     ![プールとデータベースを備えたサーバー](media/saas-dbpertenant-log-analytics/log-analytics-server.png)
+    サーバー上のプールとデータベースを表示するページが開かれます。
 
-1. サーバー上のプールとデータベースを表示する開かれたサーバー ページで、プールをクリックします。  開かれたプール ページで、右にスクロールしてプールのメトリックを表示します。  
+    ![プールとデータベースを備えたサーバー](media/saas-dbpertenant-log-analytics/log-analytics-server.png)
 
-     ![プールのメトリック](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
+11. プールを選択します。 開かれたプール ページで、右にスクロールしてプールのメトリックを表示します。 
+
+    ![プールのメトリック](media/saas-dbpertenant-log-analytics/log-analytics-pool-metrics.png)
 
 
+12. Log Analytics ワークスペースに戻り、**[OMS ポータル]** を選択して、このポータルでワークスペースを開きます。
 
-1. Log Analytics ワークスペースに戻り、**[OMS ポータル]** を選択して、このポータルでワークスペースを開きます。
+    ![Operations Management Suite ポータル タイル](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
 
-    ![OMS](media/saas-dbpertenant-log-analytics/log-analytics-workspace-oms-portal.png)
+Operations Management Suite ポータルでは、ワークスペース内のログとメトリック データをさらに詳しく調査できます。 
 
-OMS ポータルでは、ワークスペース内のログとメトリック データをさらに詳細に調査できます。  
+Log Analytics と Operations Management Suite での監視およびアラート設定は、Azure Portal の各リソースで定義されているアラートとは異なり、ワークスペース内のデータに対するクエリに基づいています。 アラートがクエリに基づくようにすることで、すべてのデータベースを対象とする単一のアラートを定義でき、データベース別に 1 つずつアラートを定義する必要はありません。 クエリは、ワークスペースで利用可能なデータによってのみ制限されます。
 
-Log Analytics と OMS での監視とアラートは、Azure ポータルの各リソースで定義されているアラートとは異なり、ワークスペース内のデータに対するクエリに基づいています。 アラートがクエリに基づくようにすることで、すべてのデータベースを対象とする単一のアラートを定義でき、データベース別に 1 つずつアラートを定義する必要はありません。 クエリは、ワークスペースで利用可能なデータによってのみ制限されます。
+Operations Management Suite を使用してクエリを実行し、アラートを設定する方法の詳細については、「[Log Analytics のアラート ルールの操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)」をご覧ください。
 
-OMS を使用してクエリを実行し、アラートを設定する方法の詳細については、「[Log Analytics のアラート ルールの操作](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts-creating)」をご覧ください。
-
-Log Analytics for SQL Database は、ワークスペース内のデータ量に基づいて課金されます。 このチュートリアルでは、Free ワークスペースを作成しました。このワークスペースの制限は、1 日あたり 500 MB です。 この制限に達すると、データはワークスペースに追加されなくなります。
+Log Analytics for SQL Database では、ワークスペース内のデータ量に基づいて課金されます。 このチュートリアルでは、無料のワークスペースを作成しました。このワークスペースの制限は、1 日あたり 500 MB です。 この制限に達すると、データはワークスペースに追加されなくなります。
 
 
 ## <a name="next-steps"></a>次の手順
@@ -137,13 +141,13 @@ Log Analytics for SQL Database は、ワークスペース内のデータ量に�
 このチュートリアルで学習した内容は次のとおりです。
 
 > [!div class="checklist"]
-> * Log Analytics (OMS) をインストールして構成する
-> * Log Analytics を使用してプールとデータベースを監視する
+> * Log Analytics (Operations Management Suite) をインストールして構成する。
+> * Log Analytics を使用してプールとデータベースを監視する。
 
-[テナント分析のチュートリアル](saas-dbpertenant-log-analytics.md)
+[テナント分析のチュートリアル](saas-dbpertenant-log-analytics.md)を試す。
 
 ## <a name="additional-resources"></a>その他のリソース
 
-* [Wingtip Tickets SaaS Database Per Tenant アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
+* [Wingtip Tickets SaaS テナント単位データベース アプリケーションの初期のデプロイに基づく作業のための追加のチュートリアル](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials)
 * [Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)
-* [OMS](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)
+* [Operations Management Suite](https://blogs.technet.microsoft.com/msoms/2017/02/21/azure-sql-analytics-solution-public-preview/)

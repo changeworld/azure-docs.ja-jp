@@ -1,24 +1,24 @@
 ---
-title: "Windows Azure 診断を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs"
-description: "Azure Service Fabric クラスターの監視と診断に WAD を使用したイベントの集計と収集について説明します。"
+title: Windows Azure 診断を使用した Azure Service Fabric のイベントの集計 | Microsoft Docs
+description: Azure Service Fabric クラスターの監視と診断に WAD を使用したイベントの集計と収集について説明します。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 11/02/2017
-ms.author: dekapur
-ms.openlocfilehash: 8e6c82aa60544d672bb249d589b63d55b48309fe
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.date: 03/19/2018
+ms.author: dekapur;srrengar
+ms.openlocfilehash: ede128d23ca73dc46f2d4dc4b1dd4b1f83a2bc3f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Windows Azure 診断を使用したイベントの集計と収集
 > [!div class="op_single_selector"]
@@ -35,7 +35,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 このドキュメントの一部の操作は、次のツールを使用して実行されます。
 
 * [Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics.md) (Azure Cloud Services と関連性はありますが、お勧めの情報と例が掲載されています)
-* [Azure リソース マネージャー](../azure-resource-manager/resource-group-overview.md)
+* [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure Resource Manager クライアント](https://github.com/projectkudu/ARMClient)
 * [Azure Resource Manager テンプレート](../virtual-machines/windows/extensions-diagnostics-template.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
@@ -170,67 +170,87 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 前述のように template.json ファイルを変更したら、Resource Manager テンプレートを再発行します。 テンプレートのエクスポート後、deploy.ps1 ファイルを実行すると、テンプレートが再発行されます。 デプロイ後、**ProvisioningState** が **Succeeded** になっていることを確認します。
 
-## <a name="collect-health-and-load-events"></a>正常性と負荷のイベントを収集する
+> [!TIP]
+> 使用しているクラスターにコンテナーをデプロイする場合は、WAD を有効にして、ご自身の **WadCfg > DiagnosticMonitorConfiguration** セクションに次のコードを追加し、Docker の統計情報を取得します。
+>
+>```json
+>"DockerSources": {
+>    "Stats": {
+>        "enabled": true,
+>        "sampleRate": "PT1M"
+>    }
+>},
+>```
 
-Service Fabric リリース 5.4 以降、正常性と負荷のメトリック イベントを収集できるようになりました。 これらのイベントは、[ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) や [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx) などの正常性または負荷レポート API を使うことでシステムやユーザーのコードによって生成されるイベントを反映します。 これにより、一定期間のシステムの正常性を集計および表示したり、正常性または負荷のイベントに基づいてアラートを生成したりできます。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000008" を追加します。
+## <a name="log-collection-configurations"></a>ログ収集の構成
+追加チャネルのログも収集できます。Azure で実行されているクラスターを対象とした、テンプレートで作成できる最も一般的な構成をいくつか次に示します。
 
-クラスターのイベントを収集するには、Resource Manager テンプレートの WadCfg 内の `scheduledTransferKeywordFilter` を `4611686018427387912` に変更します。
+* 稼働チャネル - 基本: 既定で有効。Service Fabric とクラスターで実行される高度な操作。ノードの起動、新しいアプリケーションのデプロイ、アップグレードのロールバックなどのイベントが含まれます。イベントの一覧については、[稼働チャネル イベント](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-diagnostics-event-generation-operational)に関するページをご覧ください。
+  
+```json
+      scheduledTransferKeywordFilter: "4611686018427387904"
+  ```
+* 稼働チャネル - 詳細: 正常性レポートと負荷分散の決定、および基本稼働チャネルのすべてが含まれます。 これらのイベントは、[ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx)、[ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx) などの正常性または負荷レポート API を使うことで、システムまたはユーザーのコードのいずれかによって生成されます。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000008" を追加します。
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387912",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387912"
+  ```
 
-## <a name="collect-reverse-proxy-events"></a>リバース プロキシ イベントの収集
-
-Service Fabric のリリース 5.7 以降では、データおよびメッセージング チャネルを介して[リバース プロキシ](service-fabric-reverseproxy.md) イベントを収集できるようになりました。 
-
-リバース プロキシは、メインのデータおよびメッセージング チャネルを介してエラー イベントのみをプッシュします。これは、要求処理エラーと重大な問題を反映しています。 詳細チャネルには、リバース プロキシで処理されるすべての要求に関する詳細イベントが含まれます。 
-
-Visual Studio の診断イベント ビューアーでエラー イベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000010" を追加します。 すべての要求テレメトリの場合は、ETW プロバイダーのリストの Microsoft-ServiceFabric エントリを "Microsoft-ServiceFabric:4:0x4000000000000020" に変更します。
-
-Azure で実行されているクラスターの場合は、以下の手順を実行します。
-
-メインのデータおよびメッセージング チャネルのトレースを選択するには、Resource Manager テンプレートの WadCfg 内の `scheduledTransferKeywordFilter` の値を `4611686018427387920` に変更します。
+* データおよびメッセージング チャネル - 基本: 詳細な稼働チャネル ログに加えて、メッセージング (現時点では ReverseProxy のみ) とデータ パスで生成された重要なログおよびイベント。 これらのイベントには、処理された ReverseProxy および要求で発生した要求の処理エラーや他の重要な問題があります。 **包括的なログ記録のための推奨構成です**。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000010" を追加します。
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387920",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387928"
+  ```
 
-すべての要求処理イベントを収集するには、Resource Manager テンプレートの WadCfg 内の `scheduledTransferKeywordFilter` の値を `4611686018427387936` に変更して、データおよびメッセージング詳細チャネルを有効にします。
+* データおよびメッセージング チャネル - 詳細: クラスター内のデータおよびメッセージングからの重大でないすべてのログを含む詳細チャネル、および詳細稼働チャネル。 すべてのリバース プロキシ イベントの詳細なトラブルシューティングについては、[リバース プロキシの診断ガイド](service-fabric-reverse-proxy-diagnostics.md)を参照してください。  Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000020" を追加します。
 
 ```json
-  "EtwManifestProviderConfiguration": [
-    {
-      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
-      "scheduledTransferLogLevelFilter": "Information",
-      "scheduledTransferKeywordFilter": "4611686018427387936",
-      "scheduledTransferPeriod": "PT5M",
-      "DefaultEvents": {
-        "eventDestination": "ServiceFabricSystemEventTable"
-      }
-    }
-```
+      scheduledTransferKeywordFilter: "4611686018427387944"
+  ```
 
-この詳細チャネルからのイベント収集を有効にすると、大量のトレースが短時間に生成され、ストレージ容量を消費する可能性があります。 どうしても必要な場合にのみ、有効にしてください。
-リバース プロキシ イベントのトラブルシューティングの詳細については、[リバース プロキシの診断ガイド](service-fabric-reverse-proxy-diagnostics.md)を参照してください。
+>[!NOTE]
+>このチャネルには大量のイベントが含まれているため、この詳細チャネルからのイベント収集を有効にすると、大量のトレースが短時間で生成され、ストレージ容量を消費する可能性があります。 これを有効にするのは、どうしても必要な場合だけにしてください。
+
+
+包括的なログ記録のための推奨構成である**基本的なデータおよびメッセージング チャネル**を有効にするために、使用しているテンプレートの `WadCfg` の `EtwManifestProviderConfiguration` は次のようになります。
+
+```json
+  "WadCfg": {
+        "DiagnosticMonitorConfiguration": {
+          "overallQuotaInMB": "50000",
+          "EtwProviders": {
+            "EtwEventSourceProviderConfiguration": [
+              {
+                "provider": "Microsoft-ServiceFabric-Actors",
+                "scheduledTransferKeywordFilter": "1",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricReliableActorEventTable"
+                }
+              },
+              {
+                "provider": "Microsoft-ServiceFabric-Services",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricReliableServiceEventTable"
+                }
+              }
+            ],
+            "EtwManifestProviderConfiguration": [
+              {
+                "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+                "scheduledTransferLogLevelFilter": "Information",
+                "scheduledTransferKeywordFilter": "4611686018427387928",
+                "scheduledTransferPeriod": "PT5M",
+                "DefaultEvents": {
+                  "eventDestination": "ServiceFabricSystemEventTable"
+                }
+              }
+            ]
+          }
+        }
+      },
+```
 
 ## <a name="collect-from-new-eventsource-channels"></a>新しい EventSource チャネルから収集する
 
@@ -263,7 +283,7 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
 
 Application Insights (AI) への監視および診断データの送信は、WAD の構成の一部として実行できます。 イベントの分析と視覚化に AI を使用する場合は、「[Event Analysis and Visualization with Application Insights (Application Insights を使用したイベントの分析と視覚化)](service-fabric-diagnostics-event-analysis-appinsights.md)」を参照して、"WadCfg" の一部として AI のシンクを設定してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure 診断を正しく構成すると、ETW ログと EventSource ログのデータがストレージ テーブルに表示されます。 OMS、Kibana、または Resource Manager テンプレートで直接構成されていないその他のデータ分析および視覚化プラットフォームを使用する場合は、これらのストレージ テーブルからデータを読み取るように、選択したプラットフォームを設定する必要があります。 OMS でこれを行うのは比較的簡単です。方法については、[OMS を使用したイベントとログの分析](service-fabric-diagnostics-event-analysis-oms.md)に関する記事をご覧ください。 Application Insights は、診断拡張機能の構成の一部として構成できるので、少し特殊と言えます。AI を使用する場合は、[こちらの記事](service-fabric-diagnostics-event-analysis-appinsights.md)をご覧ください。
 

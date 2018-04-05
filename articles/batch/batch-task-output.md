@@ -1,24 +1,24 @@
 ---
-title: "完了したジョブやタスクから結果やログをデータ ストアに保持する - Azure Batch | Microsoft Docs"
-description: "Batch タスクやジョブから出力データを保持するさまざまなオプションについて説明します。 データは、Azure Storage、または別のデータ ストアに保持することができます。"
+title: 完了したジョブやタスクから結果やログをデータ ストアに保持する - Azure Batch | Microsoft Docs
+description: Batch タスクやジョブから出力データを保持するさまざまなオプションについて説明します。 データは、Azure Storage、または別のデータ ストアに保持することができます。
 services: batch
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3ca93e823f02b1483ed290cf89de191937d1e2c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb8b1ca3514e27221e95cb2def823c8f89d151e5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-job-and-task-output"></a>ジョブとタスク出力を保持する
 
@@ -117,7 +117,7 @@ GitHub にある [PersistOutputs][github_persistoutputs] サンプル プロジ�
 - チェックポイント処理または初期結果の早期アップロードを実行する必要がある。
 - エラー処理を詳細に制御する必要がある。 たとえば、特定のタスク終了コードに基づいて特定のアップロード アクションを実行するなど、タスクと依存関係のあるアクションが必要な場合は、独自のソリューションを実装することができます。 タスクと依存関係のあるアクションの詳細については、「[Create task dependencies to run tasks that depend on other tasks](batch-task-dependencies.md) (タスクの依存関係を作成して他のタスクに依存するタスクを実行する)」を参照してください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - Batch サービス API の新機能を使用してタスクのデータを保持する方法について、「[Batch サービス API を使用してタスクのデータを Azure Storage に保持する](batch-task-output-files.md)」を読む。
 - .NET 用の Batch ファイル規則ライブラリを使用してタスク出力を保持することについて、「[Persist job and task data to Azure Storage with the Batch File Conventions library for .NET to persist](batch-task-output-file-conventions.md) (保持のための .NET 用 Batch ファイル規則ライブラリを使用してジョブやタスクのデータを Azure Storage に保持する)」を読む。

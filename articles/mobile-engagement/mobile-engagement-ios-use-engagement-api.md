@@ -1,11 +1,11 @@
 ---
-title: "iOS でエンゲージメント API を使用する方法"
-description: "最新の iOS SDK - iOS でエンゲージメント API を使用する方法"
+title: iOS でエンゲージメント API を使用する方法
+description: 最新の iOS SDK - iOS でエンゲージメント API を使用する方法
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1fb4509e-3804-46c1-949f-1cf727f91f9f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a31424da98205e97bdf57010cccfd044360f03dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 189a3029449a3161da2a20f940b77a5bb63bd1ef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-ios"></a>iOS でエンゲージメント API を使用する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このドキュメントは、「iOS でエンゲージメントを統合する方法」を補足し、エンゲージメント API を使用してアプリケーションの統計情報を報告する方法について詳しく説明します。
 
 エンゲージメントでアプリケーションのセッション、アクティビティ、クラッシュ、技術情報を報告するだけの場合、最も簡単な方法は、すべてのカスタムの `UIViewController` オブジェクトを、対応する `EngagementViewController` クラスから継承することです。

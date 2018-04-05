@@ -1,12 +1,12 @@
 ---
-title: "Windows で Azure ファイル共有をマウントして共有にアクセスする | Microsoft Docs"
-description: "Windows で Azure ファイル共有をマウントして共有にアクセスします。"
+title: Windows で Azure ファイル共有をマウントして共有にアクセスする | Microsoft Docs
+description: Windows で Azure ファイル共有をマウントして共有にアクセスします。
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
 manager: aungoo
 editor: tysonn
-ms.assetid: 
+ms.assetid: ''
 ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 5134fab447f1d1842369aeda4ebc1948a5d78262
-ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
+ms.openlocfilehash: 5d6d81678d1b3c63b52b34e79979d06fdc981ad0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Windows で Azure ファイル共有をマウントして共有にアクセスする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Windows と Windows Server で、Azure ファイル共有をマウントできます。 この記事では、Windows 上で Azure ファイル共有をマウントするための 3 つの異なる方法を示します。エクスプローラー UI を使用する方法、PowerShell を使用する方法、コマンド プロンプトを使用する方法です。 
@@ -29,14 +29,14 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 | Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows Server 半期チャネル<sup>1</sup> | SMB 3.0 | あり | あり |
-| Windows 10<sup>2</sup>  | SMB 3.0 | あり | あり |
-| Windows Server 2016    | SMB 3.0     | あり                   | あり                  |
-| Windows 8.1            | SMB 3.0     | あり                   | あり                  |
-| Windows Server 2012 R2 | SMB 3.0     | あり                   | あり                  |
-| Windows Server 2012    | SMB 3.0     | あり                   | あり                  |
-| Windows 7              | SMB 2.1     | あり                   | いいえ                   |
-| Windows Server 2008 R2 | SMB 2.1     | あり                   | いいえ                   |
+| Windows Server 半期チャネル<sup>1</sup> | SMB 3.0 | [はい] | [はい] |
+| Windows 10<sup>2</sup>  | SMB 3.0 | [はい] | [はい] |
+| Windows Server 2016    | SMB 3.0     | [はい]                   | [はい]                  |
+| Windows 8.1            | SMB 3.0     | [はい]                   | [はい]                  |
+| Windows Server 2012 R2 | SMB 3.0     | [はい]                   | [はい]                  |
+| Windows Server 2012    | SMB 3.0     | [はい]                   | [はい]                  |
+| Windows 7              | SMB 2.1     | [はい]                   | いいえ                    |
+| Windows Server 2008 R2 | SMB 2.1     | [はい]                   | いいえ                    |
 
 <sup>1</sup>Windows Server バージョン 1709。  
 <sup>2</sup>Windows 10 バージョン 1507、1607、1703、および 1709。
@@ -50,6 +50,31 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 * **ストレージ アカウント キー**: Azure File 共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
 * **ポート 445 が開いていること**: Azure Files は SMB プロトコルを使用します。 SMB は、TCP ポート 445 経由で通信します。ファイアウォールがクライアント マシンの TCP ポート 445 をブロックしていないことを確認してください。
+
+## <a name="persisting-connections-across-reboots"></a>再起動後も維持されるように接続を永続化する
+### <a name="cmdkey"></a>CmdKey
+永続接続を確立する最も簡単な方法は、"CmdKey" コマンド ライン ユーティリティを使ってストレージ アカウントの資格情報を Windows に保存することです。 ストレージ アカウントの資格情報を VM に永続化するコマンド ラインの例を次に示します。
+```
+C:\>cmdkey /add:<yourstorageaccountname>.file.core.windows.net /user:<domainname>\<yourstorageaccountname> /pass:<YourStorageAccountKeyWhichEndsIn==>
+```
+> [!Note]
+> ここでの <domainname> は "AZURE" です。
+
+格納されている資格情報を CmdKey で一覧表示することもできます。
+
+```
+C:\>cmdkey /list
+```
+出力結果は次のようになります。
+
+```
+Currently stored credentials:
+
+Target: Domain:target=<yourstorageaccountname>.file.core.windows.net
+Type: Domain Password
+User: AZURE\<yourstorageaccountname>
+```
+いったん資格情報が永続化された後は、共有への接続時にそれらを指定する必要はありません。 資格情報を一切指定せずに接続することができます。
 
 ## <a name="mount-the-azure-file-share-with-file-explorer"></a>エクスプローラーを使用した Azure ファイル共有のマウント
 > [!Note]  
@@ -120,7 +145,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 >   cmdkey /add:<storage-account-name>.file.core.windows.net /user:AZURE\<storage-account-name> /pass:<storage-account-key>
 >   ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure Files の詳細については、次のリンクをご覧ください。
 
 * [FAQ](../storage-files-faq.md)

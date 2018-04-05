@@ -1,26 +1,26 @@
 ---
-title: "Azure PowerShell モジュールを使用して Windows VM を作成および管理する | Microsoft Docs"
-description: "チュートリアル - Azure PowerShell モジュールを使用して Windows VM を作成および管理する"
+title: Azure PowerShell モジュールを使用して Windows VM を作成および管理する | Microsoft Docs
+description: チュートリアル - Azure PowerShell モジュールを使用して Windows VM を作成および管理する
 services: virtual-machines-windows
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-machines-windows
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 02/09/2018
+ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 4cf406dfbab40631c99da70085e99ba90f563411
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: 9bc5154486bf09072bdf3da6bbeb05407a140354
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-manage-windows-vms-with-the-azure-powershell-module"></a>Azure PowerShell モジュールを使用して Windows VM を作成および管理する
 
@@ -90,9 +90,11 @@ Get-AzureRmPublicIpAddress -ResourceGroupName "myResourceGroupVM"  | Select IpAd
 mstsc /v:<publicIpAddress>
 ```
 
+**[Windows セキュリティ]** ウィンドウで、**[その他]**、**[別のアカウントを使用する]** の順に選択します。 仮想マシン用に作成したユーザー名とパスワードを入力し、**[OK]**をクリックします。
+
 ## <a name="understand-vm-images"></a>VM イメージについて
 
-Azure Marketplace には、新しい仮想マシンの作成に使用できる多数の仮想マシンのイメージが用意されています。 前の手順では、Windows Server 2016 Datacenter のイメージを使用して仮想マシンを作成しました。 この手順では、PowerShell モジュールを使用して、新しい VM のベースとしても使用できるその他の Windows イメージを Marketplace で検索します。 この処理は、発行元、プラン、およびイメージの名前 (SKU) の検索で構成されます。 
+Azure Marketplace には、新しい仮想マシンの作成に使用できる多数の仮想マシンのイメージが用意されています。 前の手順では、Windows Server 2016 Datacenter のイメージを使用して仮想マシンを作成しました。 この手順では、PowerShell モジュールを使用して、新しい VM のベースとしても使用できるその他の Windows イメージを Marketplace で検索します。 このプロセスは、イメージを[識別](cli-ps-findimage.md#terminology)するための発行元、プラン、SKU、およびオプションのバージョン番号の検索で構成されます。 
 
 [Get-AzureRmVMImagePublisher](/powershell/module/azurerm.compute/get-azurermvmimagepublisher) コマンドを使用して、イメージ発行元の一覧を取得します。
 
@@ -139,7 +141,7 @@ Skus                                      Offer         PublisherName          L
 2016-Nano-Server                          WindowsServer MicrosoftWindowsServer EastUS
 ```
 
-この情報は、特定のイメージを使用して VM をデプロイするために使用できます。 この例では、Windows Server 2016 with Containers イメージを使用して仮想マシンをデプロイします。
+この情報は、特定のイメージを使用して VM をデプロイするために使用できます。 この例では、Windows Server 2016 with Containers イメージの最新バージョンを使用して仮想マシンをデプロイします。
 
 ```azurepowershell-interactive
 New-AzureRmVm `

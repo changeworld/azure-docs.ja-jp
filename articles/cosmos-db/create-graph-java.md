@@ -13,13 +13,13 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 01/08/2018
+ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: e336546526c8ae5ee04dd9737f828685f8c4c009
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: a5c3a0cdef488e4c4788a22976d78db72bdd55fc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを Java と Azure Portal で作成する
 
@@ -62,7 +62,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     ---|---|---
     データベース ID|sample-database|新しいデータベースの名前として「*sample-database*」と入力します。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
     グラフ ID|sample-graph|新しいコレクションの名前として「*sample-graph*」と入力します。 グラフ名の文字要件はデータベース ID と同じです。
-    ストレージの容量|固定 (10 GB)|値を**固定 (10 GB)** に変更します。 この値は、データベースの記憶域容量です。
+    ストレージの容量|固定 (10 GB)|既定値の**固定 (10 GB)** のままにします。 この値は、データベースの記憶域容量です。
     Throughput|400 RU|スループットを 400 要求ユニット (RU/秒) に変更します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。
 
 3. フォームに入力したら、**[OK]** をクリックします。
@@ -91,9 +91,11 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
 ## <a name="review-the-code"></a>コードの確認
 
-この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 こららのスニペットはすべて、C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted フォルダーの `Program.java` ファイルから取得されます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-information)」に進んでください。
 
-* Gremlin `Client` は、`src/remote.yaml` 内の構成から初期化されます。
+以降のスニペットはすべて、C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted\Program.java ファイルから取得されます。
+
+* Gremlin `Client` は、C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\remote.yaml ファイルの構成から初期化されます。
 
     ```java
     cluster = Cluster.build(new File("src/remote.yaml")).create();
@@ -123,7 +125,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     URI の値の最初の部分をコピーします。
 
     ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-java/keys.png)
-2. src/remote.yaml ファイルを開き、`hosts: [$name$.graphs.azure.com]` の `$name$` に値を貼り付けます。
+2. src/remote.yaml ファイルを開き、`hosts: [$name$.graphs.azure.com]` の `$name$` に一意の ID 値を貼り付けます。
 
     remote.yaml の 1 行目は次のようになります。 
 
@@ -148,6 +150,8 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     to 
 
     `username: /dbs/sample-database/colls/sample-graph`
+
+    サンプルのデータベースまたはグラフに一意の名前を使用した場合は、適宜値を更新してください。
 
 6. remote.yaml ファイルを保存します。
 
@@ -194,7 +198,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
-4. 「*person*」というラベルを入力します。
+4. ラベル ボックスに「*person*」と入力します。
 
 5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
 
@@ -227,7 +231,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 
     追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** をクリックし、もう一度すべての結果を表示します。
 
-12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンをクリックします。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
+12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある ![[Change the target of a vertex in a graph]\(グラフ内の頂点のターゲットを変更します\)](./media/create-graph-java/edit-pencil-button.png) をクリックします。 ウィンドウの幅を広げないとボタンが見えない場合があります。
 
    ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 

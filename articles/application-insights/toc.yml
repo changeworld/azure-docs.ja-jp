@@ -238,6 +238,9 @@
       items:
         - name: 価格とデータ ボリュームの管理
           href: app-insights-pricing.md
+          items:
+            - name: Enterprise プランの詳細
+              href: app-insights-pricing-enterprise-details.md
         - name: SCOM での Application Insights を使用したアプリケーション パフォーマンス監視
           href: app-insights-scom.md
     - name: エクスポート

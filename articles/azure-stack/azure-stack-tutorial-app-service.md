@@ -1,29 +1,28 @@
 ---
-title: "Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする | Microsoft Docs"
-description: "App Service リソース プロバイダーをインストールし、Azure Stack ユーザーが Web アプリおよび API アプリを作成できるようにするプランを作成するためのチュートリアル。"
+title: Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする | Microsoft Docs
+description: App Service リソース プロバイダーをインストールし、Azure Stack ユーザーが Web アプリおよび API アプリを作成できるようにするプランを作成するためのチュートリアル。
 services: azure-stack
-documentationcenter: 
-author: brenduns
+documentationcenter: ''
+author: jeffgilb
 manager: femila
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 7/03/2017
-ms.author: brenduns
-ms.reviewer: 
+ms.date: 03/22/2018
+ms.author: jeffgilb
+ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 5978706f2cab69c83a49bfd0e15ae904a38c7bab
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: e2f15ca3a46af51ab6228e772298c51ad33fd49c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="make-web-and-api-apps-available-to-your-azure-stack-users"></a>Web アプリおよび API アプリを Azure Stack ユーザーが使用できるようにする
-
 Azure Stack クラウド管理者は、ユーザー (テナント) が Azure Functions、Web アプリケーション、API アプリケーションを作成できるようにするプランを作成できます。 これらのオンデマンドで、クラウド ベースのアプリへのアクセスをユーザーに提供することによって、ユーザーの時間とリソースを節約できます。 これを設定するには、次のことを行います。
 
 > [!div class="checklist"]
@@ -58,7 +57,7 @@ Azure Stack クラウド管理者は、ユーザー (テナント) が Azure Fun
 これで App Service リソース プロバイダーをデプロイし、オファーを作成したので、ユーザーとしてサインインし、オファーにサブスクライブして、アプリを作成できます。 この例では、DNN プラットフォーム コンテンツ管理システムを作成します。 最初に SQL データベース、次に DNN Web アプリを作成する必要があります。
 
 ### <a name="subscribe-to-the-offer"></a>オファーへのサブスクライブ
-1. テナントとして Azure Stack ポータル (https://portal.local.azurestack.external) にサインインします。
+1. Azure Stack ポータル (https://portal.local.azurestack.external) にテナントとしてサインインします。
 2. **[Get a subscription] \(サブスクリプションの取得)** をクリックし、**[Display Name] \(表示名)** > **[Select an offer] \(オファーの選択)** > **[TestAppServiceOffer]** > **[作成]** の下に「**TestAppServiceSubscription**」と入力します。
 
 ### <a name="create-a-sql-database"></a>SQL Database の作成

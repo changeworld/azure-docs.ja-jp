@@ -1,11 +1,11 @@
 ---
-title: "Azure モバイル エンゲージメント ユーザー インターフェイス - Settings (設定)"
-description: "Azure モバイル エンゲージメントを使用してアプリケーションのグローバル設定を管理する方法について説明します。"
+title: Azure モバイル エンゲージメント ユーザー インターフェイス - Settings (設定)
+description: Azure モバイル エンゲージメントを使用してアプリケーションのグローバル設定を管理する方法について説明します。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 858f4cb4-14de-4bb5-826f-28cadbfc928b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: af5c81df2b9f288161b38625d3ac2adde8fb195d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31df9f151febcb7e5f0f2cd4a83053b3aac416a3
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-global-settings-of-your-application"></a>アプリケーションのグローバル設定を管理する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 アプリケーションで利用可能な **[設定]** メニューのオプションは、アプリケーションのプラットフォームやアプリケーションで付与されているユーザーの権限によって異なります。 設定には、詳細、プロジェクト、ネイティブのプッシュ、プッシュの速度、タグ (アプリ情報)、コマーシャル プレッシャーの項目があります。 [設定] セクションの [タグ (アプリ情報)] メニュー オプションはアプリケーション (SDK 使用) またはバックエンド (デバイス API 使用) で管理できます。 
 
 > [!NOTE]

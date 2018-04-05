@@ -1,12 +1,11 @@
 ---
-title: "Stream Analytics の概要 | Microsoft Docs"
-description: "モノのインターネット (IoT) からのストリーミング データをリアルタイムで分析するのに役立つ管理されたサービスである Stream Analytics について説明します。"
-keywords: "サービスとしての分析、管理されたサービス、ストリーム プロセス、Stream Analytics、Stream Analytics とは"
+title: Stream Analytics の概要 | Microsoft Docs
+description: モノのインターネット (IoT) からのストリーミング データをリアルタイムで分析するのに役立つ管理されたサービスである Stream Analytics について説明します。
+keywords: サービスとしての分析、管理されたサービス、ストリーム プロセス、Stream Analytics、Stream Analytics とは
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 613c9b01-d103-46e0-b0ca-0839fee94ca8
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 10/17/2017
-ms.author: samacha
-ms.openlocfilehash: 5747f2f1d3eed3905e0ae3123dab74287beccf66
-ms.sourcegitcommit: c87e036fe898318487ea8df31b13b328985ce0e1
+ms.author: jeanb
+ms.openlocfilehash: 70a4b0b358b79ec892483a9fa5573e4bf2d57534
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="what-is-stream-analytics"></a>Stream Analytics とは
 
@@ -83,7 +82,7 @@ Stream Analytics では、1 秒あたり最大 1 GB の入力データを処理�
 
 Stream Analytics は、管理されたサービスであるため、データ損失の防止とビジネス継続性を支援します。 障害が発生した場合は、組み込みの回復機能が作動します。 また、内部に状態を保持できる特性を通じて、繰り返し可能な処理結果を提供できます。これを利用して、イベントをアーカイブしておき、後で処理に再適用して常に同じ結果を取得することができます。 ユーザーは、根本原因の分析や what if 分析などを実行するときに、これを使用して時間をさかのぼり、計算処理を調査できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [IoT デバイスのデータを使って実際に入力とクエリを試す](stream-analytics-get-started-with-azure-stream-analytics-to-process-data-from-iot-devices.md)。
 * 電話のメタデータを分析して不正行為を見つける[エンドツーエンドの Stream Analytics ソリューション](stream-analytics-real-time-fraud-detection.md)を構築する。

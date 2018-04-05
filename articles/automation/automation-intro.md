@@ -1,24 +1,19 @@
 ---
-title: "Azure Automation の概要 | Microsoft Docs"
-description: "Azure Automation を使用して、インフラストラクチャとアプリケーションのライフサイクルを自動化する方法を説明します。"
+title: Azure Automation の概要
+description: Azure Automation を使用して、インフラストラクチャとアプリケーションのライフサイクルを自動化する方法を説明します。
 services: automation
-author: eamonoreilly
-documentationcenter: 
-keywords: "azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル"
-ms.assetid: 0cf1f3e8-dd30-4f33-b52a-e148e97802a9
 ms.service: automation
-ms.devlang: na
-ms.topic: overview
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
-ms.date: 12/13/2017
+author: eamonoreilly
 ms.author: eamono
+keywords: azure automation, DSC, powershell, 望ましい状態の構成, 更新管理, 変更追跡, インベントリ, Runbook, Python, グラフィカル
+ms.date: 03/15/2018
 ms.custom: mvc
-ms.openlocfilehash: 896bcd9630a6a7c942bd3f1a986832442a474cce
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.topic: overview
+ms.openlocfilehash: c44968dbceee2fdd29818a65e14f5b64ffcccade
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="an-introduction-to-azure-automation"></a>Azure Automation の概要
 
@@ -31,7 +26,7 @@ Azure Automation は、Azure 環境と非 Azure 環境を一貫性をもって�
 
 ### <a name="process-automation"></a>プロセスの自動化
 
-Azure Automation は、頻繁に発生し、時間がかかり、エラーが発生しやすいクラウド管理タスクを自動化できるようにします。 この自動化を利用して、ビジネスの価値を高める作業に集中できます。 また、エラーを減らして効率性を向上できるため、運用コストの削減にも役立ちます。 エンドツーエンド プロセスを展開、構成、および管理するために必要な Azure サービスとその他のパブリック システムを統合できます。 このサービスでは、[Runbook の作成](automation-runbook-types.md)をグラフィカルに行うか、PowerShell または Python を使用して実行できます。 ハイブリッド Runbook ワーカーを使用して、オンプレミス環境間で調整することで管理を一元化できます。 [Webhook](automation-webhooks.md) は、要求を実行する方法を提供し、ITSM、DevOps、および監視システムからオートメーションをトリガーすることによって継続的配信と連続動作を保証します。
+Azure Automation は、頻繁に発生し、時間がかかり、エラーが発生しやすいクラウド管理タスクを自動化できるようにします。 この自動化を利用して、ビジネスの価値を高める作業に集中できます。 また、エラーを減らして効率性を向上できるため、運用コストの削減にも役立ちます。 エンドツーエンド プロセスを展開、構成、および管理するために必要な Azure サービスとその他のパブリック システムを統合できます。 このサービスでは、[Runbook の作成](automation-runbook-types.md)をグラフィカルに行うか、PowerShell または Python を使用して実行できます。 ハイブリッド Runbook ワーカーを使用して、オンプレミス環境間で調整することで管理を一元化できます。 [Webhook](automation-webhooks.md) は、要求を実行する方法を提供し、ITSM、DevOps、および監視システムからオートメーションをトリガーすることによって継続的デリバリーと連続動作を保証します。
 
 ### <a name="configuration-management"></a>構成管理
 

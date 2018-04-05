@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement トラブルシューティング ガイド"
-description: "Azure Mobile Engagement 関連のトラブルシューティング ガイド"
+title: Azure Mobile Engagement トラブルシューティング ガイド
+description: Azure Mobile Engagement 関連のトラブルシューティング ガイド
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 31134a29-a513-4e5e-b626-f6cf6fe04769
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 93b5e3f4892f974bf9df28955956136528470e03
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1242b2b796821856561a82d4a585b26693aadadd
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---troubleshooting-guide"></a>Azure Mobile Engagement - トラブルシューティング ガイド
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 ## <a name="introduction"></a>はじめに
 以下のトラブルシューティング ガイドは、よく発生するいくつかの問題について根本原因を理解するのに役立ちます。また、このガイドを参照することで、トラブルシューティングを自分で行うことができます。 
 
@@ -57,7 +61,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="segment-issues"></a>「セグメント」に関する問題
 ### <a name="i-created-a-segment-and-it-is-showing-up-as-greyed-out-or-not-showing-any-data"></a>セグメントを作成しましたが、セグメントがグレー表示となっています。または、セグメントにデータが表示されません。
-現時点でセグメントの作成はリアルタイムで行われません。 セグメントの計算は、分析データの集計と同時に行われるので、最大で 24 時間かかる可能性があります。 後で確認する必要がありますが、一方で、セグメントを形成する際に使用するデータがモバイル アプリによって実際に送信されていることも確認してください。 例: ’foo’ というイベントがモバイル デバイスによって送信されていない場合、EventName = foo を条件として作成されるセグメント用のセグメント データは存在しないことになります。 また、SDK 統合をチェックして、モバイル アプリによってデータが正しく送信されていることを確認する必要があります。 
+現時点でセグメントの作成はリアルタイムで行われません。 セグメントの計算は、分析データの集計と同時に行われるので、最大で 24 時間かかる可能性があります。 後で確認する必要がありますが、一方で、セグメントを形成する際に使用するデータがモバイル アプリによって実際に送信されていることも確認してください。 例:  ’foo’ というイベントがモバイル デバイスによって送信されていない場合、EventName = foo を条件として作成されるセグメント用のセグメント データは存在しないことになります。 また、SDK 統合をチェックして、モバイル アプリによってデータが正しく送信されていることを確認する必要があります。 
 
 ## <a name="reach-or-push-notifications-issues"></a>「リーチ」またはプッシュ通知に関する問題
 ### <a name="my-push-messages-are-not-being-delivered"></a>プッシュ メッセージが配信されません。

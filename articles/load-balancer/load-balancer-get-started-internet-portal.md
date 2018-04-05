@@ -1,11 +1,11 @@
 ---
-title: "インターネットに接続するロード バランサーの作成 - Azure Portal | Microsoft Docs"
-description: "Azure ポータルを使用して、Resource Manager でインターネットに接続するロード バランサーを作成する方法について説明します"
+title: パブリック Basic Load Balancer を作成する - Azure Portal | Microsoft Docs
+description: Azure Portal を使用してパブリック Basic Load Balancer を作成する方法について説明します。
 services: load-balancer
 documentationcenter: na
-author: anavinahar
-manager: narayan
-editor: 
+author: KumudD
+manager: jeconnoc
+editor: ''
 tags: azure-resource-manager
 ms.assetid: aa9d26ca-3d8a-4a99-83b7-c410dd20b9d0
 ms.service: load-balancer
@@ -13,102 +13,181 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 03/22/2018
 ms.author: kumud
-ms.openlocfilehash: 35632cc93c9a0650b45220ba84b4983679de3d9c
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 1b7901542a699e74f65527bf734133f73acb0bea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="creating-an-internet-facing-load-balancer-using-the-azure-portal"></a>Azure ポータルを使用したインターネットに接続するロード バランサーの作成
+# <a name="create-a-public-basic-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Azure Portal を使用して VM の負荷を分散するパブリック Basic Load Balancer を作成する
 
-> [!div class="op_single_selector"]
-> * [ポータル](../load-balancer/load-balancer-get-started-internet-portal.md)
-> * [PowerShell](../load-balancer/load-balancer-get-started-internet-arm-ps.md)
-> * [Azure CLI](../load-balancer/load-balancer-get-started-internet-arm-cli.md)
-> * [テンプレート](../load-balancer/load-balancer-get-started-internet-arm-template.md)
+負荷分散では、着信要求を複数の仮想マシンに分散させることで、より高いレベルの可用性とスケールを実現します。 Azure Portal を使用して、仮想マシンの負荷分散を行うロード バランサーを作成できます。 このクイック スタートでは、ネットワーク リソース、バックエンド サーバー、およびパブリック Basic Load Balancer を作成する方法について説明します。
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-[!INCLUDE [load-balancer-get-started-internet-intro-include.md](../../includes/load-balancer-get-started-internet-intro-include.md)]
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 
-この記事では、リソース マネージャーのデプロイ モデルについて説明します。
+Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にサインインします。
 
-[!INCLUDE [load-balancer-get-started-internet-scenario-include.md](../../includes/load-balancer-get-started-internet-scenario-include.md)]
+## <a name="create-a-basic-load-balancer"></a>Basic Load Balancer を作成する
 
-ここでは、ロード バランサーを作成するために実行する必要のある一連の作業を個別に取り上げ、目的を達成するために実行する事柄を詳しく説明します。
+このセクションでは、ポータルを使用してパブリック Basic Load Balancer を作成します。 ポータルを使用してロード バランサーのリソースを作成する場合、パブリック IP を作成する際に、パブリック IP アドレスは *LoadBalancerFrontend* という名前のロード バランサーのフロントエンドとして自動的に構成されます。
 
-## <a name="what-is-required-to-create-an-internet-facing-load-balancer"></a>インターネットに接続するロード バランサーを作成するために必要な項目
+1. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[ロード バランサー]** の順にクリックします。
+2. **[Create a load balancer]\(ロード バランサーの作成\)** ページで、ロード バランサーの以下の値を入力します。
+    - *myLoadBalancer* - ロード バランサーの名前。
+    - **パブリック** - ロード バランサーのフロントの種類。 
+     - *myPublicIP* - SKU を **Basic** として作成する必要があるパブリック IP。**[割り当て]** は **[動的]** に設定します。
+    - *myResourceGroupLB* - 作成する新しいリソース グループの名前。
+3. **[作成]** をクリックして、ロード バランサーを作成します。
+   
+    ![ロード バランサーの作成](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
 
-ロード バランサーをデプロイするには、次のオブジェクトを作成して構成する必要があります。
 
-* フロントエンド IP 構成 - 受信ネットワーク トラフィックのパブリック IP アドレスが含まれます。
-* バックエンド アドレス プール - ロード バランサーからネットワーク トラフィックを受信する、仮想マシンのネットワーク インターフェイス (NIC) が含まれます。
-* 負荷分散規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内のポートにマッピングする規則が含まれます。
-* 受信 NAT 規則 - ロード バランサーのパブリック ポートをバックエンド アドレス プール内の特定の仮想マシンのポートにマッピングする規則が含まれます。
-* プローブ - バックエンド アドレス プール内の仮想マシン インスタンスの可用性を確認するために使用する正常性プローブが含まれます。
+## <a name="create-backend-servers"></a>バックエンド サーバーの作成
 
-Azure Resource Manager でのロード バランサー コンポーネントの詳細については、「 [Azure Resource Manager による Load Balancer のサポート](load-balancer-arm.md)」をご覧ください。
+このセクションでは、仮想ネットワークを作成し、Basic Load Balancer のバックエンド プール用に 2 台の仮想マシンを作成して、ロード バランサーをテストするために仮想マシンに IIS をインストールします。
 
-## <a name="set-up-a-load-balancer-in-azure-portal"></a>Azure ポータルでロード バランサーを設定する
+### <a name="create-a-virtual-network"></a>仮想ネットワークの作成
+1. 画面の左上で **[新規]** > **[ネットワーク]** > **[仮想ネットワーク]** の順にクリックし、仮想ネットワークの以下の値を入力します。
+    - *myVnet* - 仮想ネットワークの名前。
+    - *myResourceGroupLB* - 既存のリソース グループの名前。
+    - *myBackendSubnet* - サブネット名。
+2. **[作成]** をクリックして、仮想ネットワークを作成します。
 
-> [!IMPORTANT]
-> この例では、 **myVNet**という名前の仮想ネットワークが存在すことを前提としています。 そのためには、 [仮想ネットワークの作成](../virtual-network/manage-virtual-network.md#create-a-virtual-network) に関するページを参照してください。 また、**myVNet** 内に **LB-Subnet-BE** という名前のサブネットがあり、**web1** と **web2** という名前の 2 つの VM が **myVNet** の **myAvailSet** という名前の同じ可用性セット内に存在することも前提としています。 VM を作成するには、 [このリンク](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) を参照してください。
+    ![仮想ネットワークの作成](./media/load-balancer-get-started-internet-portal/2-load-balancer-virtual-network.png)
 
-1. ブラウザーから Azure ポータル ( [http://portal.azure.com](http://portal.azure.com) ) に移動し、Azure アカウントでログインします。
-2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。
-3. **[ロード バランサーの作成]** ブレードで、ロード バランサーの名前を入力します。 ここでは、 **myLoadBalancer**という名前を付けます。
-4. **[種類]** から **[パブリック]** を選択します。
-5. **[パブリック IP アドレス]** で、**myPublicIP** という名前の新しいパブリック IP を作成します。
-6. [リソース グループ] から **[myRG]** を選択します。 次に、適切な **[場所]** を選択し、**[OK]** をクリックします。 ロード バランサーのデプロイが開始されます。デプロイが正常に完了するまでに数分かかります。
+### <a name="create-virtual-machines"></a>仮想マシンを作成する
 
-    ![ロード バランサーのリソース グループの更新](./media/load-balancer-get-started-internet-portal/1-load-balancer.png)
+1. 画面の左上で **[新規]** > **[コンピューティング]** > **[Windows Server 2016 Datacenter]** の順にクリックし、仮想マシンの以下の値を入力します。
+    - *myVM1* - 仮想マシンの名前です。        
+    - *azureuser* - 管理者のユーザー名です。 -    
+    - *myResourceGroupLB* - **リソース グループ**。**[既存のものを使用]** を選択し、*[myResourceGroupLB]* を選択します。
+2. Click **OK**.
+3. 仮想マシンのサイズとして **[DS1_V2]** を選択し、**[選択]** をクリックします。
+4. VM の設定に以下の値を入力します。
+    - *myAvailabilitySet* - 作成する新しい可用性セットの名前。
+    -  *myVNet* - 仮想ネットワークとしてこれが選択されていることを確認します。
+    - *myBackendSubnet* - サブネットとしてこれが選択されていることを確認します。
+    - *myVM1-ip* - パブリック IP アドレス。
+    - *myNetworkSecurityGroup* - 作成する必要がある新しいネットワーク セキュリティ グループ (ファイアウォール) の名前。
+5. **[無効]** をクリックして、ブート診断を無効にします。
+6. **[OK]** をクリックし、概要ページの設定を確認して、**[作成]** をクリックします。
+7. 手順 1. から 6. を使用して、*VM2* という名前の 2 つ目の VM を作成します。可用性セットとして *myAvailabilityset*、仮想ネットワークとして *myVnet*、サブネットとして *myBackendSubnet*、ネットワーク セキュリティ グループとして *myNetworkSecurityGroup* を指定します。 
 
-## <a name="create-a-back-end-address-pool"></a>バックエンド アドレス プールを作成する
+### <a name="create-nsg-rules"></a>NSG ルールを作成する
 
-1. ロード バランサーが正常にデプロイされたら、リソースからそのロード バランサーを選択します。 [設定] で、[バックエンド プール] を選択します。 バックエンド プールの名前を入力します。 表示されたブレードの上部にある **[追加]** ボタンをクリックします。
-2. **[バックエンド プールの追加]** ブレードで **[仮想マシンの追加]** をクリックします。  **[可用性セット]** で **[可用性セットの選択]** を選択し、**[myAvailSet]** を選択します。 次に、このブレードの [仮想マシン] セクションで **[仮想マシンの選択]** を選択し、**[web1]** と **[web2]** (負荷分散用に作成した 2 つのVM) をクリックします。 次の図に示すように、両方の左側に青色のチェック マークが付いていることを確認します。 このブレードで **[選択]** をクリックしてから **[仮想マシンの選択]** ブレードで [OK] をクリックし、**[バックエンド プールの追加]** ブレードで **[OK]** をクリックします。
+このセクションでは、HTTP と RDP を使用する受信接続を許可するための NSG ルールを作成します。
+
+1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myResourceGroupLB]** リソース グループにある **[myNetworkSecurityGroup]** をクリックします。
+2. **[設定]** で **[受信セキュリティ規則]** をクリックし、**[追加]** をクリックします。
+3. *myHTTPRule* という名前の受信セキュリティ規則のために以下の値を入力し、ポート 80 を使用する受信 HTTP 接続を許可します。
+    - "*サービス タグ*" - **ソース**。
+    - "*インターネット*" - **ソース サービス タグ**
+    - *80* - **宛先ポート範囲**
+    - *TCP* - **プロトコル**
+    - "*許可*" - **アクション**
+    - *100* - **優先度**
+    - *myHTTPRule* - 名前
+    - "*HTTP を許可する*" - 説明
+4. Click **OK**.
+ 
+ ![仮想ネットワークの作成](./media/load-balancer-get-started-internet-portal/8-load-balancer-nsg-rules.png)
+5. 手順 2. から 4. を繰り返して、*myRDPRule* という名前で規則をもう 1 つ作成し、ポート 3389 を使用する受信 RDP 接続を許可します。設定には以下の値を使用します。
+    - "*サービス タグ*" - **ソース**。
+    - "*インターネット*" - **ソース サービス タグ**
+    - *3389* - **宛先ポート範囲**
+    - *TCP* - **プロトコル**
+    - "*許可*" - **アクション**
+    - *200* - **優先度**
+    - *myRDPRule* - 名前
+    - "*RDP を許可する*" - 説明
+
+   
+
+### <a name="install-iis"></a>IIS のインストール
+
+1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で *[myResourceGroupLB]* リソース グループにある **[myVM1]** をクリックします。
+2. **[概要]** ページで **[接続]** をクリックして、RDP で VM に接続します。
+3. ユーザー名を *azureuser*、パスワードを *Azure123456!* にして VM にログインします。
+4. サーバーのデスクトップで、**[Windows 管理ツール]**>**[サーバー マネージャー]** の順に移動します。
+5. サーバー マネージャーで、[管理]、**[役割と機能の追加]** の順にクリックします。
+ ![サーバー マネージャーの役割の追加](./media/load-balancer-get-started-internet-portal/servermanager.png)
+6. **役割と機能の追加ウィザード**で、次の値を指定します。
+    - **[インストールの種類の選択]** ページで、**[役割ベースまたは機能ベースのインストール]** をクリックします。
+    - **[対象サーバーの選択]** ページで **[myVM1]** をクリックします。
+    - **[サーバーの役割を選択してください]** ページで、**[Web Server (IIS)]** をクリックします。
+    - 指示に従って、ウィザードの残りの部分を完了します 
+7. 仮想マシン *myVM2* に対して、手順 1. から 6. を繰り返します。
+
+## <a name="create-basic-load-balancer-resources"></a>Basic Load Balancer のリソースを作成する
+
+このセクションでは、バックエンド アドレス プールと正常性プローブのロード バランサー設定を構成し、ロード バランサーと NAT 規則を指定します。
+
+
+### <a name="create-a-backend-address-pool"></a>バックエンド アドレス プールの作成
+
+トラフィックを VM に分散するには、バックエンド アドレス プールに、ロード バランサーに接続される仮想 NIC の IP アドレスを含めます。 バックエンド アドレス プール *myBackendPool* を作成し、*VM1* および *VM2* を含めます。
+
+1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myLoadBalancer]** をクリックします。
+2. **[設定]** で **[バックエンド プール]** をクリックし、**[追加]** をクリックします。
+3. **[バックエンド プールの追加]** ページで、以下の操作を行います。
+    - バックエンド プールの名前として、「myBackEndPool」と入力します。
+    - **[関連付け先]** のドロップダウン メニューで **[可用性セット]** をクリックします。
+    - **[可用性セット]** で **[myAvailabilitySet]** をクリックします。
+    - **[ターゲット ネットワーク IP 構成の追加]** をクリックして、作成した各仮想マシン (*myVM1* & *myVM2*) をバックエンド プールに追加します。
+    - Click **OK**.
 
     ![バックエンド アドレス プールへの追加 ](./media/load-balancer-get-started-internet-portal/3-load-balancer-backend-02.png)
 
-3. 通知のドロップダウン リストが、VM **web1** と **web2** 両方のネットワーク インターフェイスの更新に加えて、ロード バランサーのバックエンド プールの保存に関する更新内容が反映されていることを確認します。
+3. ロード バランサーのバックエンド プールの設定に、**VM1** と **VM2** の両方の VM が表示されていることを確認します。
 
-## <a name="create-a-probe-lb-rule-and-nat-rules"></a>プローブ、LB 規則、NAT 規則を作成する
+### <a name="create-a-health-probe"></a>正常性プローブの作成
 
-1. 正常性プローブを作成します。
+Basic Load Balancer でアプリの状態を監視するには、正常性プローブを使用します。 正常性プローブは、ロード バランサーのローテーションに含める VM を、正常性チェックへの応答に基づいて動的に追加したり削除したりする働きをします。 正常性プローブ *myHealthProbe* を作成し、VM の正常性を監視します。
 
-    ロード バランサーの [設定] で [プローブ] を選択します。 次に、ブレード上部の **[追加]** をクリックします。
+1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myLoadBalancer]** をクリックします。
+2. **[設定]** で **[正常性プローブ]** をクリックし、**[追加]** をクリックします。
+3. 正常性プローブの作成では、以下の値を使用します。
+    - *myHealthProbe* - 正常性プローブの名前。
+    - **HTTP** - プロトコルの種類。
+    - *80* - ポート番号。
+    - *15* - プローブの試行の**間隔**を示す秒数。
+    - *2* - **異常しきい値**またはプローブの連続する失敗の回数。この回数を超えると、VM は異常と見なされます。
+4. Click **OK**.
 
-    プローブは、HTTP と TCP の 2 とおりの方法で構成できます。 この例では HTTP を紹介しますが、TCP も同様の方法で構成できます。
-    必要な情報を更新します。 既に説明したように、**myLoadBalancer** は、ポート 80 のトラフィックを負荷分散します。 選択したパスは HealthProbe.aspx、[間隔] は 15 秒、[異常しきい値] は 2 です。 完了したら、 **[OK]** をクリックしてプローブを作成します。
+   ![プローブの追加](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
 
-    これらの個々の構成と、要件に応じてこれらを変更する方法を確認するには、[i] アイコン上にポインターを置いてください。
+### <a name="create-a-load-balancer-rule"></a>ロード バランサー規則を作成する
 
-    ![プローブの追加](./media/load-balancer-get-started-internet-portal/4-load-balancer-probes.png)
+ロード バランサー規則の目的は、一連の VM に対するトラフィックの分散方法を定義することです。 着信トラフィック用のフロントエンド IP 構成と、トラフィックを受信するためのバックエンド IP プールを、必要な発信元ポートと宛先ポートと共に定義します。 ロード バランサー規則 *myLoadBalancerRuleWeb* を作成して、フロントエンド *LoadBalancerFrontEnd* のポート 80 をリッスンし、同じポート 80 を使用して、負荷分散されたネットワーク トラフィックをバックエンド アドレス プール *myBackEndPool* に送信します。 
 
-2. ロード バランサー規則を作成します。
-
-    ロード バランサーの [設定] セクションで [負荷分散規則] をクリックします。 新しいブレードで **[追加]**をクリックします。 規則に名前を付けます。 ここでは、「HTTP」です。 フロントエンド ポートとバックエンド ポートを選択します。 ここでは、両方に「80」を選択します。 [バックエンド プール] に **[LB-backend]** を選択し、[プローブ] に、前に作成した **[HealthProbe]** を選択します。 その他の構成は、要件に合わせて設定できます。 [OK] をクリックして負荷分散規則を保存します。
-
+1. 左側のメニューで **[すべてのリソース]** をクリックし、リソースの一覧で **[myLoadBalancer]** をクリックします。
+2. **[設定]** で **[負荷分散規則]** をクリックし、**[追加]** をクリックします。
+3. 負荷分散規則の構成には、以下の値を使用します。
+    - *myHTTPRule* - 負荷分散規則の名前。
+    - **TCP** - プロトコルの種類。
+    - *80* - ポート番号。
+    - *80* - バックエンド ポート。
+    - *myBackendPool* - バックエンド プールの名前。
+    - *myHealthProbe* - 正常性プローブの名前。
+4. Click **OK**.
+    
     ![負荷分散規則の追加](./media/load-balancer-get-started-internet-portal/5-load-balancing-rules.png)
 
-3. 受信 NAT 規則を作成する
+## <a name="test-the-load-balancer"></a>ロード バランサーをテストする
+1. **[概要]** 画面で、ロード バランサーのパブリック IP アドレスを見つけます。 **[すべてのリソース]** をクリックし、**[myPublicIP]** をクリックします。
 
-    ロード バランサーの [設定] セクションで [受信 NAT 規則] をクリックします。 新しいブレードで **[追加]**をクリックします。 受信 NAT 規則に名前を付けます。 ここでは、「 **inboundNATrule1**」という名前を付けます。 宛先には、前に作成したパブリック IP を指定する必要があります。 [サービス] で [カスタム] を選択し、使用するプロトコルを選択します。 ここでは [TCP] を選択します。 [ポート] に「3441」を入力し、ここでは [ターゲット ポート] に「3389」を入力します。 [OK] をクリックしてこの規則を保存します。
+2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 IIS Web サーバーの既定のページがブラウザーに表示されます。
 
-    最初の規則を作成したら、2 番目の受信 NAT 規則を作成するためにこの手順を繰り返します。2 番目の規則には、「inboundNATrule2」という名前を付けて、[ポート] に「3442」、[ターゲット ポート] に「3389」を指定します。
+  ![IIS Web サーバー](./media/load-balancer-get-started-internet-portal/9-load-balancer-test.png)
 
-    ![受信 NAT 規則の追加](./media/load-balancer-get-started-internet-portal/6-load-balancer-inbound-nat-rules.png)
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-## <a name="remove-a-load-balancer"></a>Load Balancer の削除
-
-ロード バランサーを削除するには、削除するロード バランサーを選択します。 *[ロード バランサー]* ブレードをクリックし、ブレードの上部にある **[削除]** をクリックします。 メッセージが表示されたら **[はい]** を選択します。
+リソース グループ、ロード バランサー、および関連するすべてのリソースは、不要になったら削除します。 これを行うには、ロード バランサーを含むリソース グループを選択し、**[削除]** をクリックします。
 
 ## <a name="next-steps"></a>次の手順
 
-[内部ロード バランサーの構成の開始](load-balancer-get-started-ilb-arm-cli.md)
-
-[ロード バランサー分散モードの構成](load-balancer-distribution-mode.md)
-
-[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
+このクイック スタートでは、リソース グループ、ネットワーク リソース、およびバックエンド サーバーを作成しました。 その後、それらのリソースを使用して、ロード バランサーを作成しました。 ロード バランサーとその関連リソースの詳細を確認するには、チュートリアル記事に進みます。

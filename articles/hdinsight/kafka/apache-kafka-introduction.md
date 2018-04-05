@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/27/2018
 ms.author: larryfr
-ms.openlocfilehash: 35dc83dea7dc1310852437cd7eede32cfa890e8f
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4a4f2c6734de211cd20ee4b9f6815bdefefb25bc
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introducing-apache-kafka-on-hdinsight"></a>HDInsight での Apache Kafka の概要
 
@@ -31,7 +31,7 @@ HDInsight における Kafka の機能は次のとおりです。
 
 * __Kafka のアップタイムに関して 99.9% のサービス レベル アグリーメント (SLA)__: 詳細については、[HDInsight の SLA 情報](https://azure.microsoft.com/support/legal/sla/hdinsight/v1_0/)に関するドキュメントを参照してください。
 
-* __フォールト トレランスとラック アウェアネス__: Kafka は、いくつかの環境での稼働に適したラックの 1 次元ビューで設計されました。 しかし、Azure のような環境では、ラックは更新ドメイン (UD) と障害ドメイン (FD) の 2 次元に分割されます。 Microsoft は、複数の UD と FD 間で Kafka のパーティションとレプリカを再調整するツールを提供しています。 
+* __フォールト トレランス__: Kafka は、複数の環境での稼働に適したラックの 1 次元ビューで設計されました。 しかし、Azure のような環境では、ラックは更新ドメイン (UD) と障害ドメイン (FD) の 2 次元に分割されます。 Microsoft は、複数の UD と FD の間で Kafka のパーティションとレプリカを再調整できるツールを提供しています。 
 
     詳細については、[HDInsight 上の Kafka による高可用性](apache-kafka-high-availability.md)に関するページを参照してください。
 

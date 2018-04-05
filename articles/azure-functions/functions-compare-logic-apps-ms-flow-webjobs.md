@@ -1,45 +1,42 @@
 ---
-title: "Flow、Logic Apps、Functions、WebJobs の比較 | Microsoft Docs"
-description: "Microsoft のクラウド統合サービスを比較対照し、使用するサービスの判断に役立てます。"
+title: Flow、Logic Apps、Functions、WebJobs の比較 | Microsoft Docs
+description: Microsoft のクラウド統合サービスを比較対照し、使用するサービスの判断に役立てます。
 services: functions,app-service\logic
 documentationcenter: na
-author: ggailey777
+author: tdykstra
 manager: wpickett
-tags: 
-keywords: "Microsoft Flow, Flow, Logic Apps, Azure Functions, Functions, Azure WebJobs, WebJobs, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
-ms.assetid: e9ccf7ad-efc4-41af-b9d3-584957b1515d
+tags: ''
+keywords: Microsoft Flow, Flow, Logic Apps, Azure Functions, Functions, Azure WebJobs, WebJobs, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ
 ms.service: functions
 ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 11/03/2017
-ms.author: glenga
+ms.date: 03/20/2018
+ms.author: tdykstra
 ms.custom: mvc
-ms.openlocfilehash: 7ffe44828735a5687008ebc5a7d8d9f017f49daa
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 577031c58e95781dc97721acc71fb22114b1c606
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
-この記事では、Microsoft Cloud で提供されている以下のサービスを比較対照しながら説明します。いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。
+
+この記事では、Microsoft Cloud で提供されている以下のサービスを比較対照しながら説明します。
 
 * [Microsoft Flow](https://flow.microsoft.com/)
 * [Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)
 * [Azure Functions](https://azure.microsoft.com/services/functions/)
 * [Azure App Service WebJobs](../app-service/web-sites-create-web-jobs.md)
 
-ここに挙げたサービスはいずれも、異なるシステムを "つなげる" 際に有用です。 どのサービスでも入力、アクション、条件、出力を定義できます。 また、それぞれのサービスはスケジュールまたはトリガーを使って実行できます。 ただし、各サービスにはそれぞれ違った利点が存在します。 このため、サービスの比較にあたっては、"どのサービスが最も良いか" ではなく、"このソリューションにはどのサービスが最もよく合うか" が問題となります。 十分な機能を備え、かつスケーラブルな統合ソリューションをすばやく構築するには、多くの場合、サービスを複数組み合わせることが最も効果的です。
-
-<a name="flow"></a>
+いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。 どのサービスでも入力、アクション、条件、出力を定義できます。 また、それぞれのサービスはスケジュールまたはトリガーを使って実行できます。 ただし、各サービスにはそれぞれ違った利点が存在します。この記事では、これらの違いについて説明します。
 
 ## <a name="flow-vs-logic-apps"></a>Flow とLogic Apps
-Microsoft Flow と Azure Logic Apps はどちらも、"*構成第一*" の統合サービスであるため、ここで一緒に説明します。 これらのサービスを使用すると、プロセスやワークフローの構築から、各種の SaaS やエンタープライズ アプリケーションとの統合までを容易に行うことができます。 
 
-* Flow は Logic Apps の上に構築されている
-* 同じワークフロー デザイナーがある
-* [コネクタ](../connectors/apis-list.md) は、もう一方でも動作する
+Microsoft Flow と Azure Logic Apps はどちらも、"*構成第一*" の統合サービスです。 どちらも、各種の SaaS アプリケーションやエンタープライズ アプリケーションと統合されたワークフローを作成するものです。 
+
+Flow は Logic Apps の上に構築されています。 どちらも同じワークフロー デザイナーおよび同じ[コネクタ](../connectors/apis-list.md)を共有します。 
 
 Flow を使えば、オフィスの従業員がだれでも、開発者や IT 部門の力を借りることなくシンプルな統合 (SharePoint ドキュメント ライブラリでの承認プロセスなど) を実現できます。 これに対して、Logic Apps では、エンタープライズレベルの DevOps とセキュリティを必要とする高度な統合 (B2B プロセスなど) が可能になります。 ビジネスで使用するワークフローは、時間の経過と共に複雑さを増してくるものです。 このため、最初はフローを使用し、後から必要に応じてロジック アプリに変換することもできます。
 
@@ -47,7 +44,7 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 
 |  | Flow | Logic Apps |
 | --- | --- | --- |
-| 対象ユーザー |オフィスの従業員、ビジネス ユーザー、SharePoint 管理者 |インテグレーター、開発者、IT プロフェッショナル |
+| ユーザー |オフィスの従業員、ビジネス ユーザー、SharePoint 管理者 |インテグレーター、開発者、IT プロフェッショナル |
 | シナリオ |セルフ サービス |高度な統合 |
 | デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | アプリケーション ライフサイクル管理 (ALM) |非運用環境で設計とテストを行い、準備ができたら運用環境に昇格します。 |DevOps: [Azure Resource Management](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) におけるソース管理、テスト、サポート、自動化、管理 |
@@ -56,68 +53,62 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 
 <a name="function"></a>
 
-## <a name="functions-vs-webjobs"></a>Functions とWebJobs
-Azure Functions と Azure App Service WebJobs はどちらも開発者向けに設計された " *コード第一* " の統合サービスであるため、ここで一緒に説明します。 この 2 つのサービスでは、[新しいストレージ BLOB](functions-bindings-storage.md) や [webhook 要求](functions-bindings-http-webhook.md)など、さまざまなイベントに対する応答としてスクリプトまたはコードを実行できます。 この 2 つは、以下の点がよく似ています。 
+## <a name="functions-vs-webjobs"></a>Functions とWeb ジョブ
 
-* どちらも [Azure App Service](../app-service/app-service-web-overview.md) の上に構築されたものであり、[ソース管理](../app-service/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[監視](../app-service/web-sites-monitor.md)などの機能を利用可能
-* どちらも開発者向けのサービスである
-* どちらも標準的なスクリプト言語とプログラミング言語をサポートしている
-* どちらも NuGet および NPM をサポートしている
+Azure Functions と同様、Azure App Service WebJobs と WebJobs SDK は開発者向けに設計された "*コード第一*" の統合サービスです。 どちらも [Azure App Service](../app-service/app-service-web-overview.md) の上に構築されたものであり、[ソース管理の統合](../app-service/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[Application Insights との統合による監視](functions-monitoring.md)などの機能をサポートします。
 
-Functions は WebJobs の最も良い点を引き継ぎ、さらに改善しているという点で、WebJobs を自然な形で進化させたものとなっています。 WebJobs からの改善点は、以下のとおりです。 
+### <a name="webjobs-vs-the-webjobs-sdk"></a>WebJobs と WebJobs SDK
 
-* [サーバーレス](https://azure.microsoft.com/overview/serverless-computing/) アプリ モデル。
-* 開発、テスト、コードの実行をブラウザー上で直接行えるよう合理化
-* [GitHub webhook](https://developer.github.com/webhooks/creating/)など、さらに多くの Azure サービスとサードパーティ サービスを統合済み
-* 従量課金制を採用し、 [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)の購入が不要
-* 自動の [動的スケーリング](functions-scale.md)
-* App Service を既にお使いのお客様については、App Service プランでの実行も可能 (このため、利用の少ないリソースを有効活用できます)
-* Logic Apps との統合
+App Service の *WebJobs* 機能を使用すると、スクリプトやコードを App Service Web Apps のコンテキストで実行することができます。 *WebJobs SDK* は、WebJobs 向けに設計されたフレームワークです。Azure サービス内のイベントをきっかけにして実行するコードの作成が、このフレームワークによって単純化されます。 たとえば、Azure Storage に画像の BLOB が作成されたことをきっかけにして、サムネイル画像を作成することもできます。 WebJobs SDK は、.NET コンソール アプリケーションとして実行され、この .NET コンソール アプリケーションを WebJobs にデプロイすることができます。 
 
-以下の表では、Functions と WebJobs の違いをまとめています。
+WebJobs と WebJobs SDK は組み合わせて使ったときに最も効果的に機能しますが、WebJobs SDK なしで WebJobs を使うことも、その逆も可能です。 WebJobs は、App Service のサンドボックス内で動作するあらゆるプログラムまたはスクリプトを実行できます。 WebJobs SDK コンソール アプリケーションは、オンプレミス サーバーなど、コンソール アプリケーションの実行にさえ対応していれば、どこででも実行できます。
 
-|  | Functions | WebJobs |
+### <a name="comparison-table"></a>比較表
+
+Azure Functions は、WebJobs SDK の上に構築されているため、同じイベント トリガーや他の Azure サービスとの接続を数多く共有します。 以下、Azure Functions を使用するか WebJobs と WebJobs SDK を使用するかの選択において考慮すべき事柄をいくつかの示します。
+
+|  | Functions | WebJobs と WebJobs SDK |
 | --- | --- | --- |
-| スケーリング |構成不要のスケーリング |App Service プランによるスケーリング |
-| 価格 |従量課金または App Service プランの一部 |App Service プランの一部 |
-| 実行の種類 |トリガー、(タイマー トリガーによる) スケジュール |トリガー、継続的、スケジュール |
-| トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-cosmosdb.md)、[Azure Event Hubs](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Event Hubs](functions-bindings-event-hubs.md)、[Azure Storage キューおよび BLOB](functions-bindings-storage-blob.md)、[Azure Service Bus キューおよびトピック](functions-bindings-service-bus.md) |[Azure Storage キューおよび BLOB](functions-bindings-storage-blob.md)、[Azure Service Bus キューおよびトピック](functions-bindings-service-bus.md) |
-| ブラウザーでの開発 |サポートされています |サポートされていません |
-| C# |サポートされています |サポートされています |
-| F# |サポートされています |サポートされていません |
-| JavaScript |サポートされています |サポートされています |
-| Java |プレビュー | サポートされていません |
-| Bash |試験段階 |サポートされています |
-| Windows スクリプト (.cmd、.bat) |試験段階 |サポートされています |
-| PowerShell |試験段階 |サポートされています |
-| PHP |試験段階 |サポートされています |
-| Python |試験段階 |サポートされています |
-| TypeScript |試験段階 |サポートされていません |
+|[サーバーレスのアプリ モデル](https://azure.microsoft.com/overview/serverless-computing/)と[自動スケール](functions-scale.md#how-the-consumption-plan-works)|✔||
+|[ブラウザーでの開発とテスト](functions-create-first-azure-function.md) |✔||
+|[従量課金制の価格](functions-scale.md#consumption-plan)|✔||
+|[Logic Apps との統合](functions-twitter-email.md)|✔||
+| トリガー イベント |[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[HTTP/WebHook (GitHub、Slack)](functions-bindings-http-webhook.md)<br>[Azure Event Grid](functions-bindings-event-grid.md)|[Timer](functions-bindings-timer.md)<br>[Azure Storage キューと BLOB](functions-bindings-storage-blob.md)<br>[Azure Service Bus のキューとトピック](functions-bindings-service-bus.md)<br>[Azure Cosmos DB](functions-bindings-cosmosdb.md)<br>[Azure Event Hubs](functions-bindings-event-hubs.md)<br>[ファイル システム](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Files/FileTriggerAttribute.cs)|
+| サポートされている言語  |C#<br>F#<br>JavaScript<br>Java (プレビュー) |C#<sup>1</sup>|
+|パッケージ マネージャー|NPM と NuGet|NuGet<sup>2</sup>|
 
-最終的には、現時点で App Service を使って何をしているかに応じて、Functions と WebJobs のどちらを使用するかが変わります。 ある App Service アプリのコード スニペットを実行する必要があり、そのコード スニペットをアプリと同じ DevOps 環境で管理したい場合には、WebJobs を使用します。 次のシナリオでは、Functions を使用します。
+<sup>1</sup> (WebJobs SDK なしの) WebJobs では、C#、JavaScript、Bash、.cmd、.bat、PowerShell、PHP、TypeScript、Python などがサポートされます。 サポートされる言語はこれらに限定されません。WebJobs は、App Service のサンドボックス内で動作するあらゆるプログラムまたはスクリプトを実行できます。
 
-* 他の Azure サービスまたはサード パーティ製アプリ用のコード スニペットを実行する必要がある場合。
-* App Service アプリから統合コードを個別に管理する必要がある場合。
-* ロジック アプリからコード スニペットを呼び出す必要がある場合。 
+<sup>2</sup> (WebJobs SDK なしの) WebJobs は NPM と NuGet をサポートします。
+
+### <a name="summary"></a>まとめ
+
+両者を比較すると、Azure Functions の方が、開発者の生産性が高く、プログラミング言語や開発環境、Azure サービス統合、価格設定における選択肢も広いことがわかります。 ほとんどの場合、それが最適な選択肢になるでしょう。
+
+WebJobs が最適な選択肢となるシナリオは 2 つです。それらを次に示します。
+
+* イベントをリッスンするコード (`JobHost` オブジェクト) をより細かく制御する必要がある。 Functions では、[host.json](functions-host-json.md) ファイルで `JobHost` の動作をカスタマイズする方法に限りがあります。 JSON ファイル内の文字列で指定できる範囲を超えた作業も、ときには必要になります。 たとえば、Azure Storage のカスタム再試行ポリシーを構成できるのは、WebJobs SDK だけです。
+* ある App Service アプリのコード スニペットを実行する必要があり、そのコード スニペットをアプリと同じ DevOps 環境で管理したい。
+
+その他のシナリオで、Azure またはサードパーティのサービスと連携するコード スニペットを実行する場合は、WebJobs と WebJobs SDK の組み合わせよりも、Azure Functions を選ぶようにしてください。
 
 <a name="together"></a>
 
-## <a name="flow-logic-apps-and-functions-together"></a>Flow、Logic Apps、および Functions
-前に述べたとおり、どのサービスが最適であるかは、状況によって異なります。 
+## <a name="flow-logic-apps-functions-and-webjobs-together"></a>Flow、Logic Apps、Functions、WebJobs の連携
 
-* 単純なビジネスの最適化では、Flow を使用します。
-* 統合のシナリオが高度で Flow では対応できない場合、または DevOps 機能が必要な場合には、Logic Apps を使用します。
-* 統合シナリオのどこかのステップで大幅なカスタム変換または特殊なコードの使用が必要になる場合には、関数を作成し、ロジック アプリ内でアクションとして関数をトリガーします。
+どれか 1 つのサービスを選ぶ必要はありません。これらのサービスは互いに連携して動作し、そして外部のサービスとも連携します。
 
-フローでは、ロジック アプリを呼び出すことができます。 また、ロジック アプリで関数を呼び出したり、関数でロジック アプリを呼び出したりすることもできます。 Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。 このため、これら 3 つのテクノロジに対する投資が無駄になることはありません。
+フローからロジック アプリを呼び出すことができます。 ロジック アプリから関数を呼び出したり、関数からロジック アプリを呼び出したりすることが可能です。 その例については、「[Azure Logic Apps と統合される関数を作成する](functions-twitter-email.md)」を参照してください。
+
+Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。
 
 ## <a name="next-steps"></a>次の手順
-最初のフロー、ロジック アプリ、Function App、または Web ジョブを作成して、それぞれのサービスを使ってみましょう。 以下のリンクのなかから、お好きなものをクリックしてください。
+
+初めてのフロー、ロジック アプリ、関数アプリを実際に作ってみましょう。 以下のリンクのなかから、お好きなものをクリックしてください。
 
 * [Get started with Microsoft Flow (Microsoft Flow の概要)](https://flow.microsoft.com/en-us/documentation/getting-started/)
 * [ロジック アプリの作成](../logic-apps/quickstart-create-first-logic-app-workflow.md)
 * [初めての Azure 関数の作成](functions-create-first-azure-function.md)
-* [Visual Studio を使用した Web ジョブの展開](../app-service/websites-dotnet-deploy-webjobs.md)
 
 ここで紹介した統合サービスの詳しい情報については、以下のリンクを参照してください。
 
@@ -125,4 +116,3 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 * [Charles Lamanna によるプレゼンテーション「Integrations Made Simple (統合をもっとシンプルに)」](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [Logic Apps のライブ Web キャスト](http://aka.ms/logicappslive)
 * [Microsoft Flow のよくある質問](https://flow.microsoft.com/documentation/frequently-asked-questions/)
-

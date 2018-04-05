@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes on Azure のチュートリアル - アプリケーションのデプロイ"
-description: "AKS チュートリアル - アプリケーションのデプロイ"
+title: Kubernetes on Azure のチュートリアル - アプリケーションのデプロイ
+description: AKS チュートリアル - アプリケーションのデプロイ
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 095bfe328f3e3ed220de71b3410e34b9be86cff1
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 9fad9627be453fb00508d1f6ec9594bd2bde6fad
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="run-applications-in-azure-container-service-aks"></a>Azure Container Service (AKS) でのアプリケーションの実行
+# <a name="tutorial-run-applications-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) でのアプリケーションの実行
 
 このチュートリアルでは、サンプル アプリケーションを Kubernetes クラスターにデプロイします。 手順は次のとおりです。
 
@@ -24,7 +24,7 @@ ms.lasthandoff: 03/12/2018
 > * Kubernetes でアプリケーションを実行する
 > * アプリケーションをテストする
 
-後のチュートリアルでは、このアプリケーションをスケールアウトおよび更新し、Kubernetes クラスターを監視するように Operations Management Suite を構成します。
+その後のチュートリアルでは、このアプリケーションをスケールアウトし、更新します。さらに、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 このチュートリアルは、Kubernetes の概念についての基礎知識があることを前提としています。Kubernetes の詳細については、[Kubernetes のドキュメント][kubernetes-documentation]をご覧ください。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2018
 ms.author: richrund
-ms.openlocfilehash: 17dadd784d59a2cc0cab6ffbae144010f896b296
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 12172e81ed6b4d79ee200ee1ca79803ad58d6d19
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics の Azure Networking 監視ソリューション
 
@@ -28,18 +28,19 @@ Log Analytics には、ネットワークを監視することを目的とした
 * Azure Application Gateway 分析によるレビュー
  * Azure Application Gateway のログ
  * Azure Application Gateway のメトリック
-* Azure ネットワーク セキュリティ グループ分析によるレビュー
- * Azure ネットワーク セキュリティ グループのログ
+* クラウド ネットワークのネットワーク アクティビティを監視および監査するためのソリューション
+* [Traffic Analytics](https://docs.microsoft.com/azure/networking/network-monitoring-overview#traffic-analytics) 
+* Azure ネットワーク セキュリティ グループ分析
 
 ## <a name="network-performance-monitor-npm"></a>ネットワーク パフォーマンス モニター (NPM)
 
-[ネットワーク パフォーマンス モニター](log-analytics-network-performance-monitor.md)管理ソリューションは、ネットワークの正常性、可用性、到達の可能性を監視するネットワーク監視ソリューションです。  次の 2 点間の接続を監視する目的で使用します。
+[ネットワーク パフォーマンス モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview)管理ソリューションは、ネットワークの正常性、可用性、到達の可能性を監視するネットワーク監視ソリューションです。  次の 2 点間の接続を監視する目的で使用します。
 
 * パブリック クラウドとオンプレミス
 * データ センターとユーザー拠点 (支社)
 * 多層アプリケーションの各種階層をホストするサブネット間。
 
-詳細については、[ネットワーク パフォーマンス モニター](log-analytics-network-performance-monitor.md)に関するページを参照してください。
+詳細については、[ネットワーク パフォーマンス モニター](https://docs.microsoft.com/azure/networking/network-monitoring-overview)に関するページを参照してください。
 
 ## <a name="azure-application-gateway-and-network-security-group-analytics"></a>Azure Application Gateway とネットワーク セキュリティ グループの分析
 ソリューションを使用するには次の手順に従います。

@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: ''
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 01/22/2018
+ms.date: 03/28/2018
 ms.author: jingwang
-ms.openlocfilehash: 7e3fd12b2157d28c5d61bfa8d5fb69a00557a1f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: c5b7af290a5e5c45d3f64ccb50586db0811dd592
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>.NET SDK を使用してデータ ファクトリとパイプラインを作成する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -102,12 +102,12 @@ Data Factory インスタンスを作成するには、Azure へのログイン�
 [Azure .NET SDK](http://azure.microsoft.com/downloads/) をマシンにダウンロードしてインストールします。
 
 ### <a name="create-an-application-in-azure-active-directory"></a>Azure Active Directory にアプリケーションを作成する
-[こちらの記事](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)の手順に従って、以下のタスクを行ってください。 
+[こちらの記事](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)のセクションの手順に従って、以下のタスクを行ってください。 
 
 1. **Azure Active Directory アプリケーションを作成します**。 このチュートリアルで作成している .NET アプリケーションを表すアプリケーションを Azure Active Directory に作成します。 サインオン URL については、この記事に示されているようにダミーの URL (`https://contoso.org/exampleapp`) を指定できます。
-2. 記事の「**アプリケーション ID と認証キーを取得する**」セクションの手順を使用して、**アプリケーション ID** と**認証キー****を取得します。 これらの値は、このチュートリアルの後半で使用するため、書き留めておきます。 
-3. 記事の「**テナント ID を取得する**」セクションの手順を使用して、**テナント ID** を取得します。 この値を書き留めておきます。 
-4. アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。 記事の「**アプリケーションをロールに割り当てる**」セクションの手順に従います。 
+2. **アプリケーション ID** と **認証キー**を取得し、それらの値をメモしておいてください。このチュートリアルで後ほど使用します。 
+3. **テナント ID** を取得し、その値をメモしておいてください。このチュートリアルで後ほど使用します。
+4. アプリケーションがサブスクリプションにデータ ファクトリを作成できるように、サブスクリプション レベルでアプリケーションを**共同作成者**ロールに割り当てます。
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 

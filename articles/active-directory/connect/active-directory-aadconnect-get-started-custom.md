@@ -1,9 +1,9 @@
 ---
-title: "Azure AD Connect: カスタム インストール | Microsoft Docs"
-description: "このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。 この手順を使用すると、Azure AD Connect から Active Directory をインストールできます。"
+title: 'Azure AD Connect: カスタム インストール | Microsoft Docs'
+description: このドキュメントでは、Azure AD Connect のカスタム インストール オプションについて説明します。 この手順を使用すると、Azure AD Connect から Active Directory をインストールできます。
 services: active-directory
-keywords: "Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント"
-documentationcenter: 
+keywords: Azure AD Connect とは, Active Directory のインストール, Azure AD に必要なコンポーネント
+documentationcenter: ''
 author: billmath
 manager: mtillman
 ms.assetid: 6d42fb79-d9cf-48da-8445-f482c4c536af
@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/15/2018
+ms.date: 03/27/2018
 ms.author: billmath
-ms.openlocfilehash: ee16fe9e15e52fea482e0db34857780449c2ccb4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 680e70ce572e182aa35c736f61036415d8714ea0
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](active-directory-aadconnect-get-started-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -49,7 +49,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 | シングル サインオン オプション | [説明] |
 | --- | --- |
-| パスワード ハッシュの同期 |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。 ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。 詳細については、[パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-synchronization.md)に関するページを参照してください。 |
+| パスワード ハッシュの同期 |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。 ユーザーのパスワードはパスワード ハッシュとして Azure AD に同期され、クラウドで認証が行われます。 詳細については、[パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)に関するページを参照してください。 |
 |パススルー認証|ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザー パスワードはオンプレミスの Active Directory ドメイン コントローラーにパススルーされて検証されます。
 | AD FS とのフェデレーション |ユーザーは、オンプレミス ネットワークで使用しているものと同じパスワードで、Office 365 などの Microsoft クラウド サービスにサインインできます。  ユーザーはサインインのためにオンプレミスの AD FS インスタンスにリダイレクトされ、認証はオンプレミスで行われます。 |
 | 構成しない |ユーザー サインイン機能はインストールおよび構成されません。 サード パーティのフェデレーション サーバーまたは別の既存のソリューションが既に設置されている場合は、このオプションを選択します。 |
@@ -165,7 +165,7 @@ sourceAnchor 属性は、ユーザー オブジェクトの有効期間中に変
 | Exchange ハイブリッドのデプロイ |Exchange ハイブリッド展開機能を利用すると、オンプレミスと Office 365 で Exchange メールボックスが共存できるようになります。 Azure AD Connect により、Azure AD の特定の[属性](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)セットがオンプレミスのディレクトリに同期されます。 |
 | Exchange メールのパブリック フォルダー | Exchange メールのパブリック フォルダー機能を使用すると、メール対応のパブリック フォルダー オブジェクトをオンプレミスの Active Directory から Azure AD に同期することができます。 |
 | Azure AD アプリと属性フィルター |Azure AD アプリと属性フィルターを有効にすると、同期される属性セットをカスタマイズできます。 このオプションにより、2 つの構成ページがウィザードに追加されます。 詳細については、「 [Azure AD アプリと属性フィルター](#azure-ad-app-and-attribute-filtering)」を参照してください。 |
-| パスワードの同期 |サインイン ソリューションとしてフェデレーションを選択した場合は、このオプションを有効にすることができます。 バックアップ オプションとして、パスワード同期を使用できます。 詳細については、[パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)に関するページを参照してください。 </br></br>パススルー認証を選択した場合、レガシ クライアントをサポートするために、このオプションをバックアップ オプションとして有効にすることもできます。 詳細については、[パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)に関するページを参照してください。|
+| パスワード ハッシュの同期 |サインイン ソリューションとしてフェデレーションを選択した場合は、このオプションを有効にすることができます。 バックアップ オプションとして、パスワード ハッシュ同期を使用できます。 詳細については、[パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)に関するページを参照してください。 </br></br>パススルー認証を選択した場合、レガシ クライアントをサポートするために、このオプションをバックアップ オプションとして有効にすることもできます。 詳細については、[パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)に関するページを参照してください。|
 | パスワードの書き戻し |パスワード ライトバックを有効にすると、Azure AD で行われたパスワードの変更が、オンプレミスのディレクトリに書き戻されます。 詳細については、「[パスワード管理の概要](../active-directory-passwords-getting-started.md)」を参照してください。 |
 | グループの書き戻し |**Office 365 グループ** 機能を使用すると、そのグループをオンプレミスの Active Directory 内に表示することができます。 このオプションが使用できるのは、オンプレミスの Active Directory 内に Exchange が置かれている場合に限られます。 詳細については、「[グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback)」を参照してください。 |
 | デバイスの書き戻し |条件付きアクセスのシナリオの場合は、Azure AD 内のデバイス オブジェクトをオンプレミスの Active Directory に書き戻すことができます。 詳細については、[Azure AD Connect でのデバイスの書き戻しの有効化](active-directory-aadconnect-feature-device-writeback.md)に関するページを参照してください。 |
@@ -338,8 +338,8 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 
 さらに、次の検証手順を実行します。
 
-* イントラネット上のドメイン参加済みコンピューターのブラウザーからサインインできることを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
-* エクストラネット上のデバイスからサインインできることを検証する。 自宅にあるコンピューターまたはモバイル デバイスで https://myapps.microsoft.com に接続し、資格情報を入力します。
+* イントラネット上のドメイン参加済みマシンのブラウザーからサインインできることを検証する: https://myapps.microsoft.com に接続し、ログインしたアカウントでサインインを検証します。 組み込みの AD DS 管理者アカウントは同期されないため、検証には使用できません。
+* エクストラネット上のデバイスからサインインできることを検証する。 自宅にあるマシンまたはモバイル デバイスで https://myapps.microsoft.com に接続し、資格情報を入力します。
 * リッチ クライアントのサインインを検証する。 https://testconnectivity.microsoft.com に接続し、**[Office 365]** タブ、**[Office 365 シングル サインオン テスト]** の順に選択します。
 
 ## <a name="next-steps"></a>次の手順

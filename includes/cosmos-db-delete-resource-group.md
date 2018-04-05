@@ -1,10 +1,14 @@
 このアプリの使用を続けない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを削除して、課金が発生しないようにします。
 
-1. Azure Portal で、左端にある **[リソース グループ]** を選択します。  
+1. Azure Portal の左端で **[リソース グループ]** を選択し、作成したリソース グループを選択します。  
 
-   ![Azure ポータルのメトリック](./media/cosmos-db-delete-resource-group/delete-resources.png)
+    左側のメニューが折りたたまれている場合は、 ![展開ボタン](./media/cosmos-db-delete-resource-group/expand.png) をクリックして展開します。
 
-2. リソース グループの一覧で作成したリソース グループを選択してから、**[リソース グループの削除]** をクリックします。
+   ![Azure ポータルのメトリック](./media/cosmos-db-delete-resource-group/delete-resources-select.png)
 
-3. 削除するリソース グループの名前を入力し、**[削除]** をクリックします。
+2. 新しいウィンドウでリソース グループを選択し、**[リソース グループの削除]** をクリックします。
+
+   ![Azure ポータルのメトリック](./media/cosmos-db-delete-resource-group/delete-resources.png)   
+
+3. 新しいウィンドウで、削除するリソース グループの名前を入力し、**[削除]** をクリックします。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/17/2017
 ms.author: saysa
-ms.openlocfilehash: bf0a03ace2f6b6e6b1c845785a452d0b75f35de8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 81265dd61faee38d578a380ca392e7851662329c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -44,13 +44,7 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
 ## <a name="create-a-local-container-and-set-up-service-fabric"></a>ローカル コンテナーを作成し、Service Fabric をセットアップする
 ローカル Docker コンテナーをセットアップし、そこで Service Fabric クラスターを実行するには、次の手順を実行します。
 
-1. Docker ハブ リポジトリから Service Fabric onebox コンテナー イメージをプルします。 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) のページをご覧ください。
-
-    ```bash
-    docker pull microsoft/service-fabric-onebox
-    ```
-
-2. 以下の設定を使用してホスト上の Docker デーモン構成を更新し、Docker デーモンを再起動します。 
+1. 以下の設定を使用してホスト上の Docker デーモン構成を更新し、Docker デーモンを再起動します。 
 
     ```json
     {
@@ -66,12 +60,47 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >
     >Docker でデーモン構成設定を直接変更することをお勧めします。 **Docker アイコン**を選択し、**[Preferences]\(環境設定\)** > **[Daemon]\(デーモン\)** > **[Advanced]\(詳細設定\)** の順に選択します。
     >
+    >大規模なアプリケーションをテストする際は、Docker に割り当てられたリソースを増やすことをお勧めします。 **Docker アイコン**を選択し、**[詳細]** を選択して、コア数やメモリを調整してください。
 
-3. Service Fabric onebox コンテナー インスタンスを起動し、最初の手順でプルしたイメージを使用します。
+2. 新しいディレクトリに、Service Fabric イメージを構築する `.Dockerfile` というファイルを作成します。
 
-    ```bash
-    docker run -itd -p 19080:19080 --name sfonebox microsoft/service-fabric-onebox
+    ```dockerfile
+    FROM microsoft/service-fabric-onebox
+    WORKDIR /home/ClusterDeployer
+    RUN ./setup.sh
+    #Generate the local
+    RUN locale-gen en_US.UTF-8
+    #Set environment variables
+    ENV LANG=en_US.UTF-8
+    ENV LANGUAGE=en_US:en
+    ENV LC_ALL=en_US.UTF-8
+    EXPOSE 19080 19000 80 443
+    #Start SSH before running the cluster
+    CMD /etc/init.d/ssh start && ./run.sh
     ```
+
+    >[!NOTE]
+    >実際のコンテナーには、このファイルを応用して他のプログラムや依存関係を追加することができます。
+    >たとえば、「`RUN apt-get install nodejs -y`」を追加すれば、ゲスト実行可能ファイルとして `nodejs` アプリケーションに対応することができます。
+    
+    >[!TIP]
+    > 既定では、最新バージョンの Service Fabric を含んだイメージがプルされます。 特定のリビジョンについては、[Docker Hub](https://hub.docker.com/r/microsoft/service-fabric-onebox/) のページをご覧ください。
+
+3. 再利用可能なイメージを `.Dockerfile` から構築するには、ターミナルを開き、`cd` で `.Dockerfile` の格納場所に移動して次のコマンドを実行します。
+
+    ```bash 
+    docker build -t mysfcluster .
+    ```
+    
+    >[!NOTE]
+    >この操作にはしばらく時間がかかりますが、実行するのは 1 回でかまいません。
+
+4. これで、Service Fabric のローカル コピーを、必要なときにいつでも、次のコマンドを実行することですぐに起動することができます。
+
+    ```bash 
+    docker run --name sftestcluster -d -p 19080:19080 -p 19000:19000 -p 25100-25200:25100-25200 mysfcluster
+    ```
+
     >[!TIP]
     >操作の際にわかりやすくするために、コンテナー インスタンスの名前を指定します。 
     >
@@ -80,20 +109,20 @@ Azure Service Fabric は、Mac OS X ではネイティブに実行されませ�
     >`docker run -itd -p 19080:19080 -p 8080:8080 --name sfonebox microsoft/service-fabric-onebox`
     >
 
-4. 対話型 SSH モードで Docker コンテナーにログオンします。
+5. 少しするとクラスターが起動され、次のコマンドを使ってログを確認したり、ダッシュボードに切り替えてクラスターの正常性を確認したりすることができます ([http://localhost:19080](http://localhost:19080))。
 
-    ```bash
-    docker exec -it sfonebox bash
+    ```bash 
+    docker logs sftestcluster
     ```
 
-5. セットアップ スクリプトを実行して、必要な依存関係をフェッチし、コンテナーでクラスターを起動します。
 
-    ```bash
-    ./setup.sh     # Fetches and installs the dependencies required for Service Fabric to run
-    ./run.sh       # Starts the local cluster
+
+6. 完了したら、コンテナーを停止してクリーンアップすることができます。次のコマンドを使います。
+
+    ```bash 
+    docker rm -f sftestcluster
     ```
 
-6. 手順 5. が完了したら、Mac から `http://localhost:19080` を参照します。 Service Fabric Explorer が表示されます。
 
 ## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac に Service Fabric CLI (sfctl) をセットアップする
 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/21/2018
 ms.author: Kumud
-ms.openlocfilehash: 1d39cdc13e69740dc99e67f935b60db218536044
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 7d60925381abe617f6e2fac51176b8e30517c3ba
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="metrics-and-health-diagnostics-for-standard-load-balancer"></a>Standard Load Balancer のメトリックと正常性の診断
 
@@ -88,7 +88,7 @@ VIP 可用性は次の理由で失敗します。
 - 展開のバックエンド プールに正常な VM が残っていない。 
 - VIP 可用性が失われる原因となるインフラストラクチャ障害が発生した。
 
-[診断目的のために VIP 可用性メトリックと共に正常性プローブの状態](https://aka.ms/lbdiagnostics#vipavailabilityandhealthprobes)を使うことができます。
+[診断目的のために VIP 可用性メトリックと共に正常性プローブの状態](#vipavailabilityandhealthprobes)を使うことができます。
 
 ほとんどのシナリオでは集計として**平均**を使います。
 

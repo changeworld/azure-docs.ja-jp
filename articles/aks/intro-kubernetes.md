@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes 向け Azure Container Service の概要"
-description: "Kubernetes 向けの Azure Container Service では、Azure でコンテナー ベースのアプリケーションを簡単にデプロイして管理できます。"
+title: Kubernetes 向け Azure Container Service の概要
+description: Kubernetes 向けの Azure Container Service では、Azure でコンテナー ベースのアプリケーションを簡単にデプロイして管理できます。
 services: container-service
 author: gabrtv
 manager: timlt
@@ -9,17 +9,21 @@ ms.topic: overview
 ms.date: 11/13/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: 2980d4733dcf138c3a9aa1713cff994bbf5a296c
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 5bfa445eb11ed8be608278d0b95249372f9976ab
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="introduction-to-azure-container-service-aks"></a>Azure Container Service (AKS) の概要
+# <a name="introduction-to-azure-container-service-aks-preview"></a>Azure Container Service (AKS) プレビューの概要
 
 Azure Container Service (AKS) を使用すると、コンテナー化されたアプリケーションを実行するように事前構成されている仮想マシンのクラスターを簡単に作成、構成および管理できます。 これにより、既存のスキルを使用して、または増え続けている大規模な専門家コミュニティの知恵に頼って、Microsoft Azure にコンテナーベースのアプリケーションをデプロイおよび管理できます。
 
 AKS を使用することで、Kubernetes と Docker イメージ形式を介してアプリケーションの移植性を維持しながら、エンタープライズ レベルの Azure の機能を活用することができます。
+
+> [!IMPORTANT]
+> Azure Container Service (AKS) は現在、**プレビュー**の段階です。 プレビュー版は、[追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に同意することを条件に使用できます。 この機能の一部の側面は、一般公開 (GA) 前に変更される可能性があります。
+>
 
 ## <a name="managed-kubernetes-in-azure"></a>Azure でのManaged Kubernetes
 
@@ -37,7 +41,7 @@ AKS クラスター内のノードの管理は Azure が処理するので、管
 AKS は、今日お客様に人気のあるオープンソースのツールとテクノロジを使用することで、コンテナー ホスト環境を提供することを目的としています。 この目的のために、標準の Kubernetes API エンドポイントを公開します。 これらの標準のエンドポイントを使用することにより、Kubernetes クラスターと通信できる任意のソフトウェアを活用できます。 たとえば、[kubectl][kubectl-overview]、[helm][helm]、[draft][draft] を選択できます。
 
 ## <a name="creating-a-kubernetes-cluster-using-azure-container-service-aks"></a>Azure Container Service (AKS) を使用した Kubernetes クラスターの作成
-AKS の使用を開始するには、[Azure CLI][aks-quickstart] を使用するか、ポータル (Marketplace で **Azure Container Service** を検索) 経由で、AKS クラスターをデプロイします。 Azure Resource Manager テンプレートを細かく制御する必要がある上級ユーザーの場合は、オープン ソースの [acs-engine][acs-engine] プロジェクトを使用して、独自のカスタム Kubernetes クラスターを構築し、これを `az` CLI 経由でデプロイできます。
+AKS の使用を開始するには、[Azure CLI][aks-quickstart] を使用するか、ポータル (Marketplace で **Azure Container Service** を検索) 経由で、AKS クラスターをデプロイします。 Azure Resource Manager テンプレートを細かく制御する必要がある詳しい知識のあるユーザーの場合は、オープン ソースの [acs-engine][acs-engine] プロジェクトを使用して、独自のカスタム Kubernetes クラスターを構築し、これを `az` CLI 経由でデプロイできます。
 
 ### <a name="using-kubernetes"></a>Kubernetes の使用
 この Kubernetes により、コンテナー化されたアプリケーションのデプロイ、スケーリング、および管理が自動化されます。 Kubernetes には、次に示す豊富な機能セットが用意されています。

@@ -1,11 +1,11 @@
 ---
-title: "Azure マイクロサービスの Windows 開発環境のセットアップ | Microsoft Docs"
-description: "ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、Windows でアプリケーションを構築する準備が整います。"
+title: Azure マイクロサービスの Windows 開発環境のセットアップ | Microsoft Docs
+description: ランタイム、SDK、およびツールをインストールし、ローカル開発クラスターを作成します。 このセットアップを完了すると、Windows でアプリケーションを構築する準備が整います。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: b94e2d2e-435c-474a-ae34-4adecd0e6f8f
 ms.service: service-fabric
 ms.devlang: dotNet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 02/20/2018
 ms.author: ryanwi, mikhegn
-ms.openlocfilehash: 730753efb6efaad659e1a713b0b68329032b3983
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8e0898cf8046443728f92a8e05f17e51221fe60a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Windows で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/09/2018
 > 
 > 
 
- Windows 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、ランタイム、SDK、およびツールをインストールしてください。 また、SDK に含まれる Windows PowerShell スクリプトの実行を有効にする必要があります。
+Windows 開発コンピューターで [Azure Service Fabric アプリケーション][1]をビルドして実行するには、Service Fabric ランタイム、SDK、およびツールをインストールしてください。 また、SDK に含まれる [Windows PowerShell スクリプトの実行を有効にする](#enable-powershell-script-execution)必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 ### <a name="supported-operating-system-versions"></a>サポートされるオペレーティング システムのバージョン
@@ -49,12 +49,12 @@ ms.lasthandoff: 03/09/2018
 ## <a name="install-the-sdk-and-tools"></a>SDK とツールのインストール
 ### <a name="to-use-visual-studio-2017"></a>Visual Studio 2017 を使用するには
 Service Fabric ツールは、Visual Studio 2017 の Azure 開発ワークロードに含まれています。 このワークロードを Visual Studio のインストールの一環として有効にします。
-さらに、Web Platform Installer を使用して Microsoft Azure Service Fabric SDK をインストールする必要があります。
+さらに、Web Platform Installer を使用して Microsoft Azure Service Fabric SDK とランタイムをインストールする必要があります。
 
 * [Microsoft Azure Service Fabric SDK のインストール][core-sdk]
 
 ### <a name="to-use-visual-studio-2015-requires-visual-studio-2015-update-2-or-later"></a>Visual Studio 2015 を使用するには (Visual Studio 2015 Update 2 以降が必要)
-Visual Studio 2015 では、Service Fabric ツールは、Web Platform Installer を使用して SDK と共にインストールされます。
+Visual Studio 2015 では、Service Fabric ツールは、Web Platform Installer を使用して SDK やランタイムと共にインストールされます。
 
 * [Microsoft Azure Service Fabric SDK とツールのインストール][full-bundle-vs2015]
 

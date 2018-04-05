@@ -11,18 +11,20 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.date: 03/09/2018
+ms.date: 03/23/2018
 ms.author: nitinme
 ms.custom: mvc
-ms.openlocfilehash: 9eff06934eefa44db94de3d01be470ca69a2d88c
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 19dcdeefe4a65f5c0fab06766a0fa40838df8b08
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-run-a-spark-job-on-azure-databricks-using-the-azure-portal"></a>クイックスタート: Azure Portal を使用して Azure Databricks で Spark ジョブを実行する
 
 このクイックスタートでは、Azure Databricks ワークスペースと、そのワークスペース内の Apache Spark クラスターを作成する方法を示します。 最後に、Databricks クラスターで Spark ジョブを実行する方法を説明します。 Azure Databricks の詳細については、「[Azure Databricks とは](what-is-azure-databricks.md)」を参照してください。
+
+このクイック スタートでは、Spark ジョブの一環として、ラジオ チャンネルのサブスクリプション データを分析し、人口統計学的属性に基づく無料/有料使用についての分析情報を取得します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
 
@@ -30,15 +32,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure Portal](https://portal.azure.com) にログインします。
 
-## <a name="create-a-databricks-workspace"></a>Databricks ワークスペースを作成する
+## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks ワークスペースを作成する
 
 このセクションでは、Azure Portal を使って Azure Databricks ワークスペースを作成します。 
 
-1. Azure Portal で、**[リソースの作成]**、**[データ + 分析]**、**[Azure Databricks (Preview)]\(Azure Databricks (プレビュー)\)** の順にクリックします。 
+1. Azure Portal で、**[リソースの作成]** > **[データ + 分析]** > **[Azure Databricks]** の順に選択します。 
 
     ![Azure Portal の Databricks](./media/quickstart-create-databricks-workspace-portal/azure-databricks-on-portal.png "Azure Portal の Databricks")
-
-2. **[Azure Databricks (Preview)]\(Azure Databricks (プレビュー)\)** で **[作成]** をクリックします。
 
 3. **[Azure Databricks サービス]** で値を指定して、Databricks ワークスペースを作成します。
 
@@ -56,7 +56,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。
 
-4. アカウントの作成には数分かかります。 アカウント作成時に、ポータルの右側に **[Azure Databricks のデプロイを送信しています]** タイルが表示されます。 このタイルを表示するために、ダッシュボードを右へスクロールしなければならない場合があります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
+4. ワークスペースの作成には数分かかります。 ワークスペース作成時に、ポータルの右側に **[Submitting deployment for Azure Databricks]\(Azure Databricks のデプロイを送信しています\)** タイルが表示されます。 このタイルを表示するために、ダッシュボードを右へスクロールしなければならない場合があります。 スクリーンの上部に進行状況バーも表示されます。 いずれかの領域で進行状況を確認できます。
 
     ![Databricks のデプロイのタイル](./media/quickstart-create-databricks-workspace-portal/databricks-deployment-tile.png "Databricks のデプロイのタイル")
 
@@ -72,11 +72,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ![Azure で Databricks Spark クラスターを作成する](./media/quickstart-create-databricks-workspace-portal/create-databricks-spark-cluster.png "Azure で Databricks Spark クラスターを作成する")
 
+    以下を除くすべての値は、既定値のままにします。
+
     * クラスターの名前を入力します。
     * この記事では、**4.0** ランタイムを使用してクラスターを作成します。 
     * **[Terminate after ____ minutes of inactivity]\(アクティビティが ____ 分ない場合は終了する\)** チェック ボックスをオンにします。 クラスターが使われていない場合にクラスターを終了するまでの時間 (分単位) を指定します。
-    * 他の値はすべて既定値のままにします。 
-    * **[Create cluster]\(クラスターの作成\)** をクリックします。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。
+    
+    **[クラスターの作成]** を選択します。 クラスターが実行されたら、ノートブックをクラスターにアタッチして、Spark ジョブを実行できます。 
 
 クラスターの作成について詳しくは、[Azure Databricks での Spark クラスターの作成に関するページ](https://docs.azuredatabricks.net/user-guide/clusters/create.html)をご覧ください。
 
@@ -84,9 +86,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このセクションで始める前に、次の前提条件を満たす必要があります。
 
-* [Azure Storage アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)を作成します。 
+* [Azure Blob Storage アカウントを作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)します。 
 * [GitHub から](https://github.com/Azure/usql/blob/master/Examples/Samples/Data/json/radiowebsite/small_radio_json.json)サンプルの JSON ファイルをダウンロードします。 
-* サンプルの JSON ファイルを、作成した Azure ストレージ アカウントにアップロードします。 [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使って、ファイルをアップロードできます。
+* サンプルの JSON ファイルを、作成した Azure Blob Storage アカウントにアップロードします。 [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) を使って、ファイルをアップロードできます。
 
 次のタスクで、Databricks にノートブックを作成し、Azure BLOB ストレージ アカウントからデータを読み取るようにノートブックを構成して、データに対して Spark SQL ジョブを実行します。
 
@@ -129,7 +131,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
     ```sql
     %sql 
-    DROP TABLE IF EXISTS radio_sample_data
+    DROP TABLE IF EXISTS radio_sample_data;
     CREATE TABLE radio_sample_data
     USING json
     OPTIONS (
@@ -183,7 +185,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="next-steps"></a>次の手順
 
-この記事では、Azure Databricks に Spark クラスターを作成し、Azure Storage のデータを使って Spark ジョブを実行しました。 [Spark のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)を見て、他のデータ ソースから Azure Databricks にデータをインポートする方法を学習することもできます。 次の記事に進み、Event Hubs を使用して Azure Databricks にデータをストリーム配信する方法について学習してください。
+この記事では、Azure Databricks に Spark クラスターを作成し、Azure Storage のデータを使って Spark ジョブを実行しました。 [Spark のデータ ソース](https://docs.azuredatabricks.net/spark/latest/data-sources/index.html)を見て、他のデータ ソースから Azure Databricks にデータをインポートする方法を学習することもできます。 次の記事に進んで、Azure Databricks を使った ETL (データの抽出、変換、読み込み) 操作の実行方法について学びましょう。
 
 > [!div class="nextstepaction"]
->[Event Hubs を使用してデータを Azure Databricks にストリーム配信する](databricks-stream-from-eventhubs.md)
+>[Azure Databricks を使ったデータの抽出、変換、読み込み](databricks-extract-load-sql-data-warehouse.md)

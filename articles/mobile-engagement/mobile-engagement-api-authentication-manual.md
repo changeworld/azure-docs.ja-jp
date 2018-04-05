@@ -1,11 +1,11 @@
 ---
-title: "Mobile Engagement REST API を使用した認証: 手動の設定"
-description: "Mobile Engagement REST API の認証を手動で設定する方法について説明します"
+title: 'Mobile Engagement REST API を使用した認証: 手動の設定'
+description: Mobile Engagement REST API の認証を手動で設定する方法について説明します
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 2e79f9c9-41e4-45ac-b427-3b8338675163
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0b4a999c6778040e71f862d3a010b6635e84b26e
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 0d71908b34ddf8313aa45014420c9e63a00078c9
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/30/2018
 ---
-# <a name="authenticate-with-mobile-engagement-rest-apis-manual-setup"></a>Mobile Engagement REST API を使用した認証: 手動の設定
+# <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>Mobile Engagement REST API を使用した認証 - 手動の設定
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このドキュメントは、「[Mobile Engagement REST API での認証](mobile-engagement-api-authentication.md)」の付録です。 コンテキストを理解するために、まずこの記事をお読みください。 Azure Portal を使用して、Mobile Engagement REST API のワンタイム認証を設定する別の方法についても説明しています。
 
 > [!NOTE]

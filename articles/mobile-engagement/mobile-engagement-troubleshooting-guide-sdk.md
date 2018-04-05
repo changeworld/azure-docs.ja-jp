@@ -1,11 +1,11 @@
 ---
-title: "Azure モバイル エンゲージメント関連のトラブルシューティング ガイド - SDK"
-description: "Azure のモバイル サービスで SDK の統合に関する問題のトラブルシューティング"
+title: Azure モバイル エンゲージメント関連のトラブルシューティング ガイド - SDK
+description: Azure のモバイル サービスで SDK の統合に関する問題のトラブルシューティング
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: de265cf1-2f88-43ef-8616-156ada5be7b6
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 4d9d6165deb4bd0c65f1841aa7c457363a1f2865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f617b3c3b221a38b63be6f61f7553b390cf2f7c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-sdk-integration-issues"></a>SDK の統合の問題のトラブルシューティング ガイド
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 次に説明するのは、Azure モバイル エンゲージメントをアプリケーションに統合する方法に関して発生する可能性のある問題です。
 
 ## <a name="sdk-issues-discovered-by-a-failure-in-another-area-of-your-application"></a>アプリケーションの別領域の障害で検出された SDK に関する問題
