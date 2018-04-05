@@ -1,13 +1,13 @@
 ---
-title: "関数の OpenAPI 定義の作成 | Microsoft Docs"
-description: "他のアプリやサービスが Azure で関数を呼び出せるようにする OpenAPI 定義を作成します。"
+title: 関数の OpenAPI 定義の作成 | Microsoft Docs
+description: 他のアプリやサービスが Azure で関数を呼び出せるようにする OpenAPI 定義を作成します。
 services: functions
-keywords: "OpenAPI, Swagger, クラウド アプリ, クラウド サービス,"
-documentationcenter: 
+keywords: OpenAPI, Swagger, クラウド アプリ, クラウド サービス,
+documentationcenter: ''
 author: mgblythe
 manager: cfowler
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: functions
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 12/15/2017
 ms.author: mblythe; glenga
-ms.custom: mvc
-ms.openlocfilehash: 29e78bbb8e3d4d4feb3f7d32cf0a5ef1b02a6268
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.custom: mvc, cc996988-fb4f-47
+ms.openlocfilehash: 8caea30196a7ecdd4226b18963cd8b2040dc7e35
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-an-openapi-definition-for-a-function"></a>関数の OpenAPI 定義の作成
 REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swagger.io/) ファイル) を使用して記述されます。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。
@@ -40,8 +40,6 @@ REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swag
 関数の実行をホストするための Function App が存在する必要があります。 Function App を使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 
 ## <a name="create-the-function"></a>関数を作成する

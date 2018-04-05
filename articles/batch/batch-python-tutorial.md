@@ -1,11 +1,11 @@
 ---
-title: "チュートリアル - Python 向け Azure Batch SDK を使用する | Microsoft Docs"
-description: "Azure Batch の基本的な概念について説明し、Python でシンプルなソリューションを作成します。"
+title: チュートリアル - Python 向け Azure Batch SDK を使用する | Microsoft Docs
+description: Azure Batch の基本的な概念について説明し、Python でシンプルなソリューションを作成します。
 services: batch
 documentationcenter: python
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 42cae157-d43d-47f8-88f5-486ccfd334f4
 ms.service: batch
 ms.devlang: python
@@ -13,20 +13,20 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bd5a977c10d3955639beb893cd7a37581b14f7c0
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: b620ff7d49b3e2712393de6124e31ff417220db2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-the-batch-sdk-for-python"></a>Python 向け Batch SDK の概要
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
 > * [Python](batch-python-tutorial.md)
-> * [Node.JS](batch-nodejs-get-started.md)
+> * [Node.js](batch-nodejs-get-started.md)
 >
 >
 
@@ -87,7 +87,7 @@ Batch パッケージと Storage パッケージをインストールするに�
 `pip install azure-storage`
 
 > [!TIP]
-> 特権のないアカウントを使用する場合、コマンドの前に「`sudo`」を入力する必要があります。 たとえば、「 `sudo pip install -r requirements.txt`」のように入力します。 Python パッケージのインストールの詳細については、python.org の「[Installing Packages (パッケージのインストール)][pypi_install]」を参照してください。
+> 特権のないアカウントを使用する場合、コマンドの前に「`sudo`」を入力する必要があります。 たとえば、「`sudo pip install -r requirements.txt`」のように入力します。 Python パッケージのインストールの詳細については、python.org の「[Installing Packages (パッケージのインストール)][pypi_install]」を参照してください。
 >
 >
 
@@ -644,7 +644,7 @@ Delete pool? [Y/n]
 Press ENTER to exit...
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 コンピューティングに関するさまざまなシナリオを試すために、*python_tutorial_client.py* と *python_tutorial_task.py* は自由に変更を加えてください。 たとえば、*python_tutorial_task.py* に実行遅延を追加して、実行時間が長いタスクをシミュレートし、ポータルで監視することができます。 タスクを追加したり、コンピューティング ノード数を調整したりすることもできます。 実行時間を短縮するためには、既存のプールの使用をチェックしたり許可したりするためのロジックを追加します。
 
 Batch ソリューションの基本的なワークフローを理解したところで、次は Batch サービスのその他の機能を掘り下げてみましょう。

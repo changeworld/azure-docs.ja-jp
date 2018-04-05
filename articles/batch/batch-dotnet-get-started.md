@@ -1,11 +1,11 @@
 ---
-title: "チュートリアル - .NET 向け Azure Batch クライアント ライブラリを使用する | Microsoft Docs"
-description: "Azure Batch の基本的な概念について説明し、.NET でシンプルなソリューションを作成します。"
+title: チュートリアル - .NET 向け Azure Batch クライアント ライブラリを使用する | Microsoft Docs
+description: Azure Batch の基本的な概念について説明し、.NET でシンプルなソリューションを作成します。
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 76cb9807-cbc1-405a-8136-d1e53e66e82b
 ms.service: batch
 ms.devlang: dotnet
@@ -13,20 +13,20 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
 ms.date: 06/28/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 83f751c6b5e44705509804e6872bb16d7c2e1d18
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: 9968d18f9e27d7a138831394658b40a483b66709
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>.NET 向け Batch クライアント ライブラリを使用してソリューション作成を開始する
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
 > * [Python](batch-python-tutorial.md)
-> * [Node.JS](batch-nodejs-get-started.md)
+> * [Node.js](batch-nodejs-get-started.md)
 >
 >
 
@@ -736,7 +736,7 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 *DotNetTutorial* と *TaskApplication* を自由に変更して、さまざまなコンピューティング シナリオを試してみてください。 たとえば、[Thread.Sleep][net_thread_sleep] を使用するなどして *TaskApplication* に実行遅延を追加して、実行時間が長いタスクをシミュレートし、ポータルで監視することができます。 タスクを追加したり、コンピューティング ノード数を調整したりすることもできます。 また、既存のプールの使用を確認および許可し、実行時間を短縮するロジックを追加できます ("*ヒント*": [azure-batch-samples][github_samples] の [Microsoft.Azure.Batch.Samples.Common][github_samples_common] プロジェクトの `ArticleHelpers.cs` を確認してください)。
 
 Batch ソリューションの基本的なワークフローを理解したところで、次は Batch サービスのその他の機能を掘り下げてみましょう。

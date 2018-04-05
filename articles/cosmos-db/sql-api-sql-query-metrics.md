@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/02/2017
 ms.author: arramac
-ms.openlocfilehash: a92d2ed1686765a54812ff82066bc30c1d48848d
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c0ba9934afef6cb4d546e315c271cc19b6d3fa02
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
 
@@ -138,7 +138,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 | `x-ms-documentdb-query-metrics` | 実行するクエリ統計です。 これは、クエリ実行のさまざまな段階でかかった時間の統計を含む、記号で区切られた文字列です。 `x-ms-documentdb-populatequerymetrics` が `True` に設定されている場合に返されます。 | 
 | `x-ms-request-charge` | クエリによって使用される[要求ユニット](request-units.md)数。 | 
 
-REST API の要求ヘッダーとオプションの詳細については、「[REST API を使用しているリソースを照会する](https://docs.microsoft.com/rest/api/documentdb/querying-documentdb-resources-using-the-rest-api)」を参照してください。
+REST API の要求ヘッダーとオプションの詳細については、「[REST API を使用しているリソースを照会する](https://docs.microsoft.com/rest/api/cosmos-db/querying-cosmosdb-resources-using-the-rest-api)」を参照してください。
 
 ## <a name="best-practices-for-query-performance"></a>クエリ パフォーマンスに関するベスト プラクティス
 Azure Cosmos DB クエリのパフォーマンスに影響を与える最も一般的な要因を次に示します。 この後、この記事の中でそれぞれのトピックについて詳しく説明します。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
 ms.openlocfilehash: c775780a39c4d423c62bf88f55d35675c70442c7
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-use-role-based-access-control-in-azure-api-management"></a>Azure API Management でロールベースのアクセス制御を使用する方法
 Azure API Management では、Azure の ロールベースのアクセス制御 (RBAC) を使用して、API Management のサービスとエンティティ (API やポリシーなど) に関するきめ細かいアクセス管理を可能にしています。 この記事では、API Management における組み込みロールとカスタム ロールについて説明します。 Azure ポータルでのアクセス管理の詳細については、「[Azure ポータルでのアクセス管理の概要](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)」を参照してください。
@@ -28,9 +28,9 @@ API Management には、現在、組み込みロールが 3 つ提供されて�
 
 次の表に、組み込みのロールについての簡単な説明を示します。 これらのロールは Azure ポータルや、Azure [PowerShell](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-powershell)、[Azure CLI](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-azure-cli)、[REST API](https://docs.microsoft.com/azure/active-directory/role-based-access-control-manage-access-rest) などのツールを使用して割り当てることができます。 組み込みロールを割り当てる方法の詳細については、[ロール割り当てを使用した Azure サブスクリプション リソースへのアクセス管理](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)に関するページを参照してください。
 
-| 役割          | 読み取りアクセス<sup>[1]</sup> | 書き込みアクセス<sup>[2]</sup> | サービスの作成、削除、スケーリング、VPN、カスタム ドメインの構成 | 以前のパブリッシャー ポータルへのアクセス | 説明
+| 役割          | 読み取りアクセス<sup>[1]</sup> | 書き込みアクセス<sup>[2]</sup> | サービスの作成、削除、スケーリング、VPN、カスタム ドメインの構成 | 以前のパブリッシャー ポータルへのアクセス | [説明]
 | ------------- | ---- | ---- | ---- | ---- | ---- | ---- |
-| Azure API Management サービスの共同作業者 | ✓ | ✓  | ✓  | ✓ | スーパー ユーザー。 API Management のサービスとエンティティ (API やポリシーなど) への完全な CRUD アクセス権がある。 以前のパブリッシャー ポータルにアクセスできる。 |
+| Azure API Management サービスの共同作業者 | ✓ | ✓ | ✓ | ✓ | スーパー ユーザー。 API Management のサービスとエンティティ (API やポリシーなど) への完全な CRUD アクセス権がある。 以前のパブリッシャー ポータルにアクセスできる。 |
 | Azure API Management サービスのリーダー | ✓ | | || API Management のサービスとエンティティへの読み取り専用アクセスがある。 |
 | Azure API Management サービスのオペレーター | ✓ | | ✓ | | API Management サービスは管理できるが、エンティティの管理はできない。|
 | Azure API Management サービスのエディター<sup>*</sup> | ✓ | ✓ | |  | API Management エンティティは管理できるが、サービスは管理できない。|
@@ -68,7 +68,7 @@ New-AzureRmRoleAssignment -ObjectId <object ID of the user account> -RoleDefinit
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure でのロールベースのアクセス制御の詳細については、次の記事を参照してください。
   * [Azure Portal でのアクセス管理の概要](https://azure.microsoft.com/documentation/articles/role-based-access-control-what-is/)

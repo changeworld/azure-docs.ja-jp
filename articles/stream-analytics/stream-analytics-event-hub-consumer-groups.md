@@ -1,25 +1,24 @@
 ---
-title: "イベント ハブ レシーバーを使用した Azure Stream Analytics のデバッグ | Microsoft Docs"
-description: "Stream Analytics ジョブで Event Hubs のコンシューマー グループの使用を検討するためのクエリのベスト プラクティス。"
-keywords: "イベント ハブの制約, コンシューマー グループ"
+title: イベント ハブ レシーバーを使用した Azure Stream Analytics のデバッグ | Microsoft Docs
+description: Stream Analytics ジョブで Event Hubs のコンシューマー グループの使用を検討するためのクエリのベスト プラクティス。
+keywords: イベント ハブの制約, コンシューマー グループ
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+documentationcenter: ''
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: samacha
-ms.openlocfilehash: ede3137de92e251f4ad020bc1ce3f041918242b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 48fa5d0274549aa35e67526a758eef1f34198a6a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="debug-azure-stream-analytics-with-event-hub-receivers"></a>イベント ハブ レシーバーを使用した Azure Stream Analytics のデバッグ
 
@@ -60,9 +59,9 @@ FROM inputEventHub
 次のクエリを使用します。
 
 ```
-WITH input (
+WITH data AS (
    SELECT * FROM inputEventHub
-) as data
+)
 
 SELECT foo
 INTO output1
@@ -82,7 +81,7 @@ FROM data
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)

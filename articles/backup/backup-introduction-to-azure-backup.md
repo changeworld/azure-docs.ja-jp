@@ -16,11 +16,11 @@ ms.topic: overview
 ms.date: 3/1/2018
 ms.author: markgal;trinadhk;anuragm
 ms.custom: mvc
-ms.openlocfilehash: 600c4a29d7d7daabbbf6d1825671d109ea499c4b
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 00ed2a64c672e1d2ae9a0037905a544b6c4424b7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -34,7 +34,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 
 **無制限のスケーリング** - Azure Backup では、Azure クラウドの基盤となる機能と無制限のスケールを使用して、高可用性を実現します。その際、保守と監視のオーベーヘッドは発生しません。 アラートを設定して、イベントに関する情報を提供することはできますが、クラウドではデータの高可用性について心配する必要はありません。
 
-**複数のストレージ オプション** - 高可用性によってストレージ レプリケーションが実現します。 Azure Backup には、[ローカル冗長ストレージ](../storage/common/storage-redundancy.md#locally-redundant-storage)と [geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)の 2 種類のレプリケーションが用意されています。 必要に応じて、いずれかのバックアップ ストレージ オプションを選択します。
+**複数のストレージ オプション** - 高可用性によってストレージ レプリケーションが実現します。 Azure Backup には、[ローカル冗長ストレージ](../storage/common/storage-redundancy-lrs.md)と [geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md)の 2 種類のレプリケーションが用意されています。 必要に応じて、いずれかのバックアップ ストレージ オプションを選択します。
 
 * ローカル冗長ストレージ (LRS) では、データセンターのストレージ スケール ユニットにデータが 3 回レプリケートされます (データのコピーが 3 つ作成されます)。 データのすべてのコピーは、同じリージョン内に存在します。 LRS は、ローカル ハードウェアの障害からデータを保護するための低コストのオプションです。
 
@@ -121,11 +121,11 @@ Azure Backup では、完全な管理ディスク VM を復元するか、管理
 ### <a name="storage"></a>Storage
 | Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| Recovery Services コンテナー |![[はい]][green] |![[はい]][green] |![[はい]][green] |![[はい]][green] |
+| Recovery Services コンテナー |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
 | ディスク ストレージ | |![[はい]][green] |![[はい]][green] | |
 | テープ ストレージ | |![[はい]][green] | | |
-| 圧縮 <br/>(Recovery Services コンテナー内) |![[はい]][green] |![[はい]][green] |![[はい]][green] | |
-| 増分バックアップ |![[はい]][green] |![[はい]][green] |![[はい]][green] |![[はい]][green] |
+| 圧縮 <br/>(Recovery Services コンテナー内) |![[はい]][green] |![はい][green] |![[はい]][green] | |
+| 増分バックアップ |![[はい]][green] |![はい][green] |![はい][green] |![[はい]][green] |
 | ディスクの重複除去 | |![部分的][yellow] |![部分的][yellow] | | |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
@@ -162,8 +162,8 @@ System Center DPM または Azure Backup Server を [Hyper-V 仮想マシン](ht
 ### <a name="security"></a>セキュリティ
 | Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
-| ネットワークのセキュリティ<br/> (対 Azure) |![[はい]][green] |![[はい]][green] |![[はい]][green] |![部分的][yellow] |
-| データのセキュリティ<br/> (Azure 内) |![[はい]][green] |![[はい]][green] |![[はい]][green] |![部分的][yellow] |
+| ネットワークのセキュリティ<br/> (対 Azure) |![[はい]][green] |![はい][green] |![[はい]][green] |![部分的][yellow] |
+| データのセキュリティ<br/> (Azure 内) |![[はい]][green] |![はい][green] |![[はい]][green] |![部分的][yellow] |
 
 ![table key](./media/backup-introduction-to-azure-backup/table-key.png)
 
@@ -182,7 +182,7 @@ Azure VM のバックアップの場合は、仮想マシン " *内* " で暗号
 | Feature | Azure Backup エージェント | System Center DPM | Azure Backup Server | Azure IaaS VM のバックアップ |
 | --- | --- | --- | --- | --- |
 | ネットワーク圧縮 <br/>(対**バックアップ サーバー**) | |![[はい]][green] |![[はい]][green] | |
-| ネットワーク圧縮 <br/>(対 **Recovery Services コンテナー**) |![[はい]][green] |![[はい]][green] |![[はい]][green] | |
+| ネットワーク圧縮 <br/>(対 **Recovery Services コンテナー**) |![[はい]][green] |![はい][green] |![[はい]][green] | |
 | ネットワーク プロトコル <br/>(対**バックアップ サーバー**) | |TCP |TCP | |
 | ネットワーク プロトコル <br/>(対 **Recovery Services コンテナー**) |HTTPS |HTTPS |HTTPS |HTTPS |
 
@@ -219,7 +219,7 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 
 
 ## <a name="what-is-a-recovery-services-vault"></a>Recovery Services コンテナーとは
-Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 各 Azure サブスクリプション内に、Azure リージョンあたり最大 25 個の Recovery Services コンテナーを作成できます。 データの格納先を検討する場合、すべてのリージョンが同じではありません。 リージョンの組み合わせと追加のストレージに関する考慮事項については、「[geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)」を参照してください。
+Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 各 Azure サブスクリプション内に、Azure リージョンあたり最大 25 個の Recovery Services コンテナーを作成できます。 データの格納先を検討する場合、すべてのリージョンが同じではありません。 リージョンの組み合わせと追加のストレージに関する考慮事項については、「[geo 冗長ストレージ](../storage/common/storage-redundancy-grs.md)」を参照してください。
 
 Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 Backup コンテナーを作成することはできなくなり、既存のすべての Backup コンテナーが Recovery Services コンテナーにアップグレードされました。 Azure Portal を使用して、Recovery Services コンテナーにアップグレードされたコンテナーを管理することができます。
 

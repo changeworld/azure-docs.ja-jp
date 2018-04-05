@@ -1,11 +1,11 @@
 ---
-title: "Visual Studio で Azure クラウド サービス プロジェクトを構成する | Microsoft Docs"
-description: "Visual Studio で、そのプロジェクトの要件に応じて、Azure クラウド サービス プロジェクトを構成する方法について説明します。"
+title: Visual Studio で Azure クラウド サービス プロジェクトを構成する | Microsoft Docs
+description: Visual Studio で、そのプロジェクトの要件に応じて、Azure クラウド サービス プロジェクトを構成する方法について説明します。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 609d6965-05cc-47b1-82dc-c76a92d4f295
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/06/2017
-ms.author: kraigb
-ms.openlocfilehash: 799715093bd1a8c8e77e6cdb7168670dc263dfa5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 1afab86e920c66459e08190f922d9439c2310aef
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configure-an-azure-cloud-service-project-with-visual-studio"></a>Visual Studio で Azure クラウド サービス プロジェクトを構成する
 Azure クラウド サービス プロジェクトは、そのプロジェクトの要件に応じて構成できます。 次のカテゴリに関して、プロジェクトのプロパティを設定できます。
@@ -48,6 +48,6 @@ Azure クラウド サービス プロジェクトは、そのプロジェクト
 
 1. Visual Studio ツール バーの **[保存]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [複数のサービス構成を使用した Azure プロジェクトの構成](vs-azure-tools-multiple-services-project-configurations.md)
 

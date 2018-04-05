@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 02d7c3f587a4cbfb11fc3b6863f75ca30b4d6c51
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f34fabc95d5b56edc6e37c323bebf60bd98c8b90
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>パブリック ピアリングを Microsoft ピアリングに移行する
 
@@ -27,8 +27,6 @@ ExpressRoute は、Azure Storage や Azure SQL Database などの Azure PaaS サ
 
 この記事は、パブリック ピアリング構成をダウンタイムなしで Microsoft ピアリングに移行するために役立ちます。 ルーティング ドメインとピアリングの詳細については、「[ExpressRoute 回線とルーティング ドメイン](expressroute-circuit-peerings.md)」を参照してください。
 
-> [!IMPORTANT]
-> Microsoft ピアリングを使用するには、ExpressRoute の Premium アドオンが必要です。 Premium アドオンの詳細については、「[ExpressRoute の FAQ](expressroute-faqs.md#expressroute-premium)」を参照してください。
 
 ## <a name="before"></a>開始する前に
 

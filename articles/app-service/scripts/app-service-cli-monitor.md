@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI のサンプル スクリプト - Web サーバー ログによる Web アプリの監視 | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - Web サーバー ログによる Web アプリの監視"
+title: Azure CLI のサンプル スクリプト - Web サーバー ログによる Web アプリの監視 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - Web サーバー ログによる Web アプリの監視
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: 0887656f-611c-4627-8247-b5cded7cef60
 ms.service: app-service
@@ -16,11 +16,11 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 4abd595a62474b3e83b5e8581782a61a66492b3d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: dc9bc90eb5be6fd700f5a7ca4cbac28170633722
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitor-a-web-app-with-web-server-logs"></a>Web サーバー ログによる Web アプリの監視
 
@@ -44,11 +44,11 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | コマンド | メモ |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Azure Web アプリを作成します。 |
-| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_config) | Azure の Web アプリを保存するログを構成します。 |
-| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az_webapp_log_download) | Azure Web アプリのログをローカル コンピューターにダウンロードします。 |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Azure Web アプリを作成します。 |
+| [`az webapp log config`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-config) | Azure の Web アプリを保存するログを構成します。 |
+| [`az webapp log download`](/cli/azure/webapp/log?view=azure-cli-latest#az-webapp-log-download) | Azure Web アプリのログをローカル コンピューターにダウンロードします。 |
 
 ## <a name="next-steps"></a>次の手順
 

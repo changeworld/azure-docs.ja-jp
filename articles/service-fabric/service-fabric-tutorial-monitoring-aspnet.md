@@ -15,11 +15,11 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 0f51b52d9f4d5c8979ba636311e63089c11cd114
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 030c6fbfb5eb76a745a1089acab54e74ce7a01e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>チュートリアル: Service Fabric の ASP.NET Core アプリケーションを監視および診断する
 このチュートリアルは、シリーズの第 4 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を設定する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションからテレメトリを収集します。 
@@ -83,7 +83,7 @@ Application Insights は、Azure のアプリケーション パフォーマン�
 
 ## <a name="add-the-microsoftapplicationinsightsservicefabricnative-nuget-to-the-services"></a>Microsoft.ApplicationInsights.ServiceFabric.Native NuGet をサービスに追加する
 
-Application Insights では、シナリオによって使い分けられる Service Fabric 固有の 2 つの NuGets があります。 1 つは Service Fabric のネイティブ サービスで使用し、もう 1 つはコンテナーおよびゲストの実行可能ファイルで使用します。 今回は、Microsoft.ApplicationInsights.ServiceFabric.Native NuGet を使用し、そこから得られるサービス コンテキストの知識を活用します。 Application Insights SDK と Service Fabric 固有の NuGets の詳細については、「[Microsoft Application Insights for Service Fabric (Service Fabric での Microsoft Application Insights)](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/develop/README.md)」をご覧ください。 
+Application Insights では、シナリオによって使い分けられる Service Fabric 固有の 2 つの NuGets があります。 1 つは Service Fabric のネイティブ サービスで使用し、もう 1 つはコンテナーおよびゲストの実行可能ファイルで使用します。 今回は、Microsoft.ApplicationInsights.ServiceFabric.Native NuGet を使用し、そこから得られるサービス コンテキストの知識を活用します。 Application Insights SDK と Service Fabric 固有の NuGets の詳細については、「[Microsoft Application Insights for Service Fabric (Service Fabric での Microsoft Application Insights)](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md)」をご覧ください。 
 
 次に、NuGet を設定する手順を示します。
 1. ソリューション エクスプローラーの上部にある **'Voting' ソリューション**を右クリックし、**[ソリューションの NuGet パッケージの管理...]** をクリックします。

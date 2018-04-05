@@ -15,10 +15,10 @@ ms.workload: powerbi
 ms.date: 09/28/2017
 ms.author: asaxton
 ms.openlocfilehash: 069f31c8213bd0d8586f7ca50e543acfdad8a2b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-migrate-power-bi-workspace-collection-content-to-power-bi-embedded"></a>Power BI Embedded に Power BI ワークスペース コレクションのコンテンツを移行する方法
 
@@ -189,7 +189,7 @@ Power BI ワークスペース コレクション内でクリーン アップを
 - Power BI ワークスペース コレクションの Azure サービス内で、配置されたソリューションからすべてのワークスペースを削除します。
 - Azure 内に存在するすべてのワークスペース コレクションを削除します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 おめでとうございます。 これで、アプリケーションは Power BI Embedded に移行されました。 Power BI ダッシュ ボード、レポート、データセットを埋め込む方法については、「[Power BI ダッシュ ボード、レポートおよびタイルを埋め込む方法](https://powerbi.microsoft.com/documentation/powerbi-developer-embedding-content/)」を参照してください。
 

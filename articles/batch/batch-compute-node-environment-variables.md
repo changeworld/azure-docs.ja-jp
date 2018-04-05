@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch コンピューティング ノードの環境変数 | Microsoft Docs"
-description: "Azure 一括分析のコンピューティング ノードの環境変数に関するリファレンスです。"
+title: Azure Batch コンピューティング ノードの環境変数 | Microsoft Docs
+description: Azure 一括分析のコンピューティング ノードの環境変数に関するリファレンスです。
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 05/05/2017
-ms.author: tamram
-ms.openlocfilehash: 29f642754430957e77ef68946f721f8e15dba065
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: ca8d6a6484cd1f145e7d807681bf2d012f2399e0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-batch-compute-node-environment-variables"></a>Azure Batch コンピューティング ノードの環境変数
 [Azure Batch サービス](https://azure.microsoft.com/services/batch/)は、コンピューティング ノードで以下の環境変数を設定します。 これらの環境変数は、タスク コマンドラインと、コマンド ラインにより実行されるプログラムとスクリプトで参照できます。
@@ -37,7 +37,7 @@ Batch での環境変数の使用に関する詳細については、[「タス�
 
 ## <a name="environment-variables"></a>環境変数
 
-| 変数名                     | Description                                                              | 可用性 | 例 |
+| 変数名                     | [説明]                                                              | 可用性 | 例 |
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | タスクが属する Batch アカウントの名前。                  | すべてのタスク。   | mybatchaccount |
 | AZ_BATCH_CERTIFICATES_DIR       | [ タスク作業ディレクトリ内のディレクトリ][files_dirs]、この中に Linux コンピューティング ノードの証明書が格納される。 この環境変数は Windows コンピューティング ノードに適用されないので注意してください。                                                  | すべてのタスク。   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |

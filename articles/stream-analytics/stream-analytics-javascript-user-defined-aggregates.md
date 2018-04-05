@@ -1,12 +1,11 @@
 ---
-title: "Azure Stream Analytics の JavaScript ユーザー定義集計 | Microsoft Docs"
-description: "JavaScript のユーザー定義集計を使用して高度なクエリ機構を実行する"
-keywords: "JavaScript, ユーザー定義集計, UDA"
+title: Azure Stream Analytics の JavaScript ユーザー定義集計 | Microsoft Docs
+description: JavaScript のユーザー定義集計を使用して高度なクエリ機構を実行する
+keywords: JavaScript, ユーザー定義集計, UDA
 services: stream-analytics
 author: minhe-msft
 manager: santoshb
-editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
@@ -14,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 10/28/2017
 ms.author: minhe
-ms.openlocfilehash: b3863a34ed146e54c6d60e035957b942a1976ff9
-ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
+ms.openlocfilehash: 9f9a2e33f97fc90265933ee9941f2d02a92cbc4c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/31/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-stream-analytics-javascript-user-defined-aggregates-preview"></a>Azure Stream Analytics の JavaScript ユーザー定義集計 (プレビュー)
 
@@ -84,7 +83,7 @@ function main() {
 
 ### <a name="function-alias"></a>関数のエイリアス
 
-関数のエイリアスは、UDA 識別子です。 Stream Analytics クエリ内で呼び出されると、UDA エイリアスは常にプレフィックス "uda" が付いて 使用されます。
+関数のエイリアスは、UDA 識別子です。 Stream Analytics クエリ内で呼び出されると、UDA エイリアスは常にプレフィックス "uda" が付いて 始まります。
 
 ### <a name="function-type"></a>関数の型
 
@@ -179,7 +178,7 @@ JavaScript UDA のデータ型については、[JavaScript UDF の統合](strea
 
 ## <a name="calling-javascript-uda-in-asa-query"></a>ASA クエリで JavaScript UDA を呼び出す
 
-Azure Portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 For example:
+Azure Portal でジョブを開き、クエリを編集して必須プレフィックス "uda." を持つ TWA() 関数を呼び出します。 例: 
 
 ````SQL
 WITH value AS
@@ -233,7 +232,7 @@ GROUP BY TumblingWindow(minute, 5)
 
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)をご覧ください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)

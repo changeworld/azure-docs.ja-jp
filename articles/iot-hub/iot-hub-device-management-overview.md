@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub を使用したデバイス管理 | Microsoft Docs"
-description: "Azure IoT Hub でのデバイス管理の概要: エンタープライズ デバイスのライフサイクルとデバイス管理パターン (再起動、出荷時の設定にリセット、ファームウェア更新、構成、デバイス ツイン、クエリ、ジョブなど)。"
+title: Azure IoT Hub を使用したデバイス管理 | Microsoft Docs
+description: 'Azure IoT Hub でのデバイス管理の概要: エンタープライズ デバイスのライフサイクルとデバイス管理パターン (再起動、出荷時の設定にリセット、ファームウェア更新、構成、デバイス ツイン、クエリ、ジョブなど)。'
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: bzurcher
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: a367e715-55f6-4593-bd68-7863cbf0eb81
 ms.service: iot-hub
 ms.devlang: na
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: briz
-ms.openlocfilehash: 458b316ba76ff7cace56eb21eaf105233e508741
-ms.sourcegitcommit: c4cc4d76932b059f8c2657081577412e8f405478
+ms.openlocfilehash: 4fe4328314e23bbd1ace13e935f82336e1e602a9
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="overview-of-device-management-with-iot-hub"></a>IoT Hub を使用したデバイス管理の概要
-## <a name="introduction"></a>はじめに
+
 Azure IoT Hub には、デバイスやバックエンドの開発者が堅牢なデバイス管理ソリューションを構築するために使用できる機能や拡張モデルが用意されています。 デバイスは、リソースの制約の大きいセンサーをはじめ、専用マイクロコントローラー、デバイス グループの通信をルーティングする強力なゲートウェイなど、多岐にわたります。  また、用途や IoT オペレーターの要件は業界によってかなり異なります。  このような違いがありながら、IoT Hub によるデバイス管理で提供される機能、パターン、およびコード ライブラリは、多様なデバイスとエンド ユーザーに対応することができます。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 優れたエンタープライズ IoT ソリューションを構築するために不可欠な要素は、オペレーターがそのデバイス コレクションを継続的に管理するための手法について、戦略を定めることです。 IoT のオペレーターには、シンプルで信頼性が高く、かつ、より戦略的な観点からその仕事に取り組むことのできるツールとアプリケーションが必要です。 この記事では、次の内容について説明します。
 

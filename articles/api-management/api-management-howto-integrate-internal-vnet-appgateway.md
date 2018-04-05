@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: sasolank
 ms.openlocfilehash: f9bc3ffda9f943a37fd5aadf440abf7d33a6d1de
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="integrate-api-management-in-an-internal-vnet-with-application-gateway"></a>内部 VNET 内の API Management と Application Gateway の統合 
 
@@ -81,7 +81,7 @@ Azure PowerShell の最新バージョンを使用していることを確認し
 
 ### <a name="step-1"></a>手順 1
 
-Azure へのログイン
+Azure にログインする
 
 ```powershell
 Login-AzureRmAccount
@@ -350,7 +350,7 @@ Get-AzureRmPublicIpAddress -ResourceGroupName "apim-appGw-RG" -Name "publicIP01"
 ##<a name="summary"> </a> まとめ
 VNET で構成された Azure API Management は、ホスト先がオンプレミスかクラウドかにかかわらず、すべての構成済みの API に単一のゲートウェイ インターフェイスを提供します。 Application Gateway を API Management と統合すると、インターネット上で特定の API に選択的にアクセスできる柔軟性が提供されるほか、API Management インスタンスのフロントエンドとして Web アプリケーション ファイアウォールを利用できるようになります。
 
-##<a name="next-steps"> </a> 次のステップ
+##<a name="next-steps"></a>次の手順
 * Azure Application Gateway の詳細を確認する
   * [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
   * [Application Gateway の Web アプリケーション ファイアウォール](../application-gateway/application-gateway-webapplicationfirewall-overview.md)

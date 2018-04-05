@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement を他の同様の Azure サービスと比較する"
-description: "Azure Mobile Engagement をその他の同様の Azure サービス (HockeyApp、AppInsights、Notification Hubs) と比較する"
+title: Azure Mobile Engagement を他の同様の Azure サービスと比較する
+description: Azure Mobile Engagement をその他の同様の Azure サービス (HockeyApp、AppInsights、Notification Hubs) と比較する
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f114775-3a9a-4dd4-8d59-b10d1da9a68b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7df2eb9ecebe3313dad9c15171552a084787f6b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 57be3b235c5f439741155a70df7ddbe8a80906f2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="comparing-azure-mobile-engagement-with-other-similar-azure-services"></a>Azure Mobile Engagement を他の同様の Azure サービスと比較する
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 Microsoft Azure によって提供されるサービスの一覧は拡大を続けています。このような状況で、Azure Mobile Engagement が、見たり聞いたりしたことのある他のサービスとどのように異なるのか疑問に思うことがあるのではないでしょうか。 この記事では、そのような混乱を解消すると共に、Azure Mobile Engagement を目的に応じて正しく選択できるようにご案内します。 
 
 Azure Mobile Engagement は、特に**デジタル マーケティング担当者/CMO** 向けに開発されたサービスですが、モバイル アプリの使用率、継続率、および収益化の向上を必要としている**モバイル アプリの所有者または発行者**にも有用なサービスであると考えられます。 

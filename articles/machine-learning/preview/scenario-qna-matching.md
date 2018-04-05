@@ -16,10 +16,10 @@ ms.date: 09/15/2017
 ms.author: mez
 manager: tihazen
 ms.openlocfilehash: 33f807a4a0bbc4afd1f2fbe017f8913eccacc34b
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使った Q & A 照合
 自由形式の質問に答えることは難しく、該当領域の専門家 (SME) による対応が必要になることがよくあります。 多くの場合、企業は社内の SME の負荷を減らすために、ユーザーをサポートする手段としてよく寄せられる質問 (FAQ) のリストを作成しています。 この例では、効果の高いさまざまな機械学習手法を使って、自由形式の質問を既存の FAQ の質問と回答のペアと照合する方法を示します。 この例では Azure Machine Learning Workbench を使って、こうしたソリューションを構築するための簡単な開発プロセスを示します。 

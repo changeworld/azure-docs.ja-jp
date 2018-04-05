@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/07/2018
 ms.author: liydu
-ms.openlocfilehash: d9d03d35aa5d78d83e0f195c804cfe09fece3c07
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a84393c5c53b8f8e4a8b688a462f433b2d611b0e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="shake-shake-for-a-tweet----retrieve-a-twitter-message-with-azure-functions"></a>シェイク、シェイクしてツイート -- Azure Functions を使用して Twitter メッセージを取得する
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/09/2018
 
 有効な Azure サブスクリプション ない場合は、次のいずれかの方法を使用して登録できます。
 
-* [30 日間の無料試用版 Microsoft Azure アカウント](https://azureinfo.microsoft.com/us-freetrial.html)をアクティブにする
+* [30 日間の無料試用版 Microsoft Azure アカウント](https://azure.microsoft.com/en-us/free/)をアクティブにする
 * MSDN または Visual Studio サブスクライバーの場合、[Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を要求する
 
 ## <a name="open-the-project-folder"></a>プロジェクト フォルダーを開く

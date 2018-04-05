@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 05/02/2017
 ms.author: alleonar
 ms.openlocfilehash: a7735f8c1c4332bf2472bc83c0c37baf49019004
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-key-vault-net-20---release-notes-and-migration-guide"></a>Azure Key Vault .NET 2.0 - リリース ノートおよび移行ガイド
 次の情報は、C# および .NET 対応の Azure Key Vault ライブラリ 2.0 バージョンに移行するのに役立ちます。  以前のバージョン用に記述されたアプリは、最新バージョンをサポートするように更新する必要があります。  これらの変更では、**Key Vault 証明書**など、改善後の新機能を完全にサポートする必要があります。

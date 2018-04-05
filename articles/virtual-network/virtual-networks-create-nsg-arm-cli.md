@@ -1,11 +1,11 @@
 ---
-title: "ネットワーク セキュリティ グループの作成 - Azure CLI | Microsoft Docs"
-description: "Azure CLI を使用してネットワーク セキュリティ グループを作成してデプロイする方法を説明します。"
+title: ネットワーク セキュリティ グループの作成 - Azure CLI | Microsoft Docs
+description: Azure CLI を使用してネットワーク セキュリティ グループを作成してデプロイする方法を説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9ea82c09-f4a6-4268-88bc-fc439db40c48
 ms.service: virtual-network
@@ -17,10 +17,10 @@ ms.date: 02/17/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4827fabf1d8cde366dda8b3a782a2fefe01db8d5
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/31/2018
 ---
 # <a name="create-network-security-groups-using-the-azure-cli"></a>Azure CLI を使用したネットワーク セキュリティ グループの作成
 

@@ -1,12 +1,12 @@
 ---
-title: "Windows ファイルとフォルダ―を Azure にバックアップする (Resource Manager) | Microsoft Docs"
-description: "Resource Manager デプロイで Windows のファイルとフォルダーを Azure にバックアップする方法について説明します。"
+title: Windows ファイルとフォルダ―を Azure にバックアップする (Resource Manager) | Microsoft Docs
+description: Resource Manager デプロイで Windows のファイルとフォルダーを Azure にバックアップする方法について説明します。
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: markgalioto
 manager: carmonm
-editor: 
-keywords: "バックアップ方法; バックアップ方法; ファイルとフォルダーのバックアップ"
+editor: ''
+keywords: バックアップ方法; バックアップ方法; ファイルとフォルダーのバックアップ
 ms.assetid: 5b15ebf1-2214-4722-b937-96e2be8872bb
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 8/15/2017
 ms.author: markgal;
-ms.openlocfilehash: bb631eff77932b6bdcf858256c47c9d7381a58c1
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 55f83bda1a9de9274194ec220fa9a4a5c8b7f0fb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="first-look-back-up-files-and-folders-in-resource-manager-deployment"></a>最初に: Resource Manager デプロイメントでのファイルとフォルダーのバックアップ
 この記事では、Resource Manager デプロイメントを使用して、Windows Server (または Windows コンピューター) のファイルとフォルダーを Azure にバックアップする方法について説明します。 基本事項に関するチュートリアルです。 この記事は、Azure Backup を始めて使用する場合に適しています。
@@ -87,7 +87,7 @@ Recovery Services コンテナーを作成する際は、必要に応じてス�
 
     ![ストレージ構成の選択](./media/backup-try-azure-backup-in-10-mins/choose-storage-configuration.png)
 
-    既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、**[ローカル冗長]** を選択します。これにより、Azure Storage のコストを削減できます。 [geo 冗長](../storage/common/storage-redundancy.md#geo-redundant-storage)ストレージと[ローカル冗長](../storage/common/storage-redundancy.md#locally-redundant-storage)ストレージのオプションの詳細については、こちらの[ストレージ冗長性の概要](../storage/common/storage-redundancy.md)を参照してください。
+    既定では、コンテナーには geo 冗長ストレージがあります。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用する場合は、引き続き **[geo 冗長]** を使用します。 プライマリ バックアップ ストレージ エンドポイントとして Azure を使用しない場合、**[ローカル冗長]** を選択します。これにより、Azure Storage のコストを削減できます。 [geo 冗長](../storage/common/storage-redundancy-grs.md)ストレージと[ローカル冗長](../storage/common/storage-redundancy-lrs.md)ストレージのオプションの詳細については、こちらの[ストレージ冗長性の概要](../storage/common/storage-redundancy.md)を参照してください。
 
 これでコンテナーが作成されたので、ファイルとフォルダーのバックアップのために構成します。
 

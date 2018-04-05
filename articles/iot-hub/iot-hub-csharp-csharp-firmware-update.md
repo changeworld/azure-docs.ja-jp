@@ -1,12 +1,12 @@
 ---
-title: "Azure IoT Hub を使用したデバイス ファームウェアの更新 (.NET/.NET) | Microsoft Docs"
-description: "Azure IoT Hub でデバイス管理を使用してデバイス ファームウェアの更新を開始する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ファームウェアの更新をトリガーするサービス アプリを実装します。"
+title: Azure IoT Hub を使用したデバイス ファームウェアの更新 (.NET/.NET) | Microsoft Docs
+description: Azure IoT Hub でデバイス管理を使用してデバイス ファームウェアの更新を開始する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ファームウェアの更新をトリガーするサービス アプリを実装します。
 services: iot-hub
 documentationcenter: .net
 author: JimacoMS2
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/19/2017
 ms.author: v-jamebr
-ms.openlocfilehash: bd0a227861d75dc66af8fb4865a17a3b6d0f70ba
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: 984fd7516b5c05973c45891f4eda31c41a5a2be5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-netnet"></a>デバイス管理を使用してデバイス ファームウェアの更新を開始する (.NET/.NET)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 ## <a name="introduction"></a>はじめに
 「[デバイス管理の開始][lnk-dm-getstarted]」チュートリアルでは、[デバイス ツイン][lnk-devtwin]および[ダイレクト メソッド][lnk-c2dmethod] プリミティブを使用してリモートでデバイスを再起動する方法を説明しました。 このチュートリアルでは、同じ IoT Hub プリミティブを使用して、エンド ツー エンドでシミュレートされたファームウェア更新を実行する方法を示します。  このパターンは、[Raspberry Pi デバイスの実装サンプル][lnk-rpi-implementation]のファームウェア更新の実装で使用されます。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -40,7 +42,7 @@ ms.lasthandoff: 10/20/2017
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 「[デバイス管理の開始](iot-hub-csharp-csharp-device-management-get-started.md)」の記事を参照して、IoT Hub を作成し、IoT Hub 接続文字列を取得します。
 
@@ -386,7 +388,7 @@ ms.lasthandoff: 10/20/2017
     ![サービスとデバイス アプリの実行][img-combinedrun]
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、ダイレクト メソッドを使用してデバイス上でリモートのファームウェア更新を開始し、報告されるプロパティを使用してファームウェア更新の進捗状況を確認しました。
 
 IoT ソリューションの拡張と複数のデバイスでのメソッドの呼び出しをスケジュールする方法については、「[ジョブのスケジュールとブロードキャスト][lnk-tutorial-jobs]」チュートリアルを参照してください。

@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch タスクの開始イベント | Microsoft Docs"
-description: "Batch タスクの開始イベントのリファレンスです。"
+title: Azure Batch タスクの開始イベント | Microsoft Docs
+description: Batch タスクの開始イベントのリファレンスです。
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: c47ab36c99dddd46a14c15018a2a46bf7f873ffa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: 0ad0f87df9db39088769579d538b919b42634c4b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="task-start-event"></a>タスク開始イベント
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |jobId|String|タスクを含むジョブの ID です。|
 |id|String|タスクの ID です。|
@@ -60,25 +60,25 @@ ms.lasthandoff: 10/11/2017
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |poolId|String|タスクが実行されたプールの ID。|
-|nodeId|文字列|タスクが実行されたノードの ID。|
+|nodeId|String|タスクが実行されたノードの ID。|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |numberOfInstances|int|タスクに必要なコンピューティング ノードの数。|
 
 ###  <a name="constraints"></a> constraints
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|タスクを再試行できる最大回数。 Batch サービスは、終了コードが 0 以外の場合にタスクを再試行します。<br /><br /> この値によって再試行の回数が限定されますのでご注意ください。 Batch サービスはタスクを 1 回試行してから、上限に達するまで再試行できます。 たとえば、最大再試行回数が 3 の場合、Batch はタスクを最大 4 回試行します (初回試行 1 回と再試行 3 回)。<br /><br /> 最大再試行回数が 0 の場合、Batch サービスはタスクを再試行しません。<br /><br /> 最大再試行回数が -1 の場合、Batch サービスはタスクを無制限に再試行します。<br /><br /> 既定値は 0 (再試行なし) です。|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |retryCount|Int32|Batch サービスによりタスクが再試行された回数。 タスクは、0 以外のコードで終了すると、指定された MaxTaskRetryCount まで再試行されます。|

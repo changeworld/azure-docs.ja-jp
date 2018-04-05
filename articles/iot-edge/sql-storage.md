@@ -5,15 +5,16 @@ services: iot-edge
 keywords: ''
 author: kgremban
 manager: timlt
-ms.author: kgremban, ebertrams
+ms.author: kgremban
+ms.reviewer: ebertrams
 ms.date: 02/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 792e754b84f1dc03a32780ed94d274c833be68f5
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c755d171b34d59d2746a965ab3511a0df00c98db
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="store-data-at-the-edge-with-sql-server-databases"></a>SQL Server データベースを使用したエッジでのデータの格納
 

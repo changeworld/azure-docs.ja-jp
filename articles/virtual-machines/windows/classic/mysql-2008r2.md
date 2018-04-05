@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
 ms.openlocfilehash: e4135f96027cc25e1e0a149857ace1672570fc4b
-ms.sourcegitcommit: adf6a4c89364394931c1d29e4057a50799c90fc0
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/09/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Windows Server 2016 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする
 [MySQL](https://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。 このチュートリアルでは、**Windows Server 2016** を実行している仮想マシン上の MySQL Server として **MySQL 5.7.18 の Community バージョン**をインストールして実行する方法について説明します。 他のバージョンの MySQL または Windows Server を使用しているユーザーは、同一の結果にならない場合があります。
@@ -27,7 +27,7 @@ ms.lasthandoff: 11/09/2017
 Linux 上で MySQL をインストールする方法について詳しくは、「[MySQL を Azure でインストールする方法](../../linux/mysql-install.md)」をご覧ください。
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 > [!INCLUDE [virtual-machines-common-classic-createportal](../../../../includes/virtual-machines-classic-portal.md)]
 
 ## <a name="create-a-virtual-machine-running-windows-server-2016"></a>Windows Server 2016 を実行する仮想マシンの作成
@@ -53,7 +53,7 @@ MySQL Server の Community バージョンをインストール、構成、と�
 2. 右上隅の **[ツール]** (歯車のアイコン) を選択して、**[インターネット オプション]** をクリックします。 **[セキュリティ]** タブ、**[信頼済みサイト]** アイコン、**[サイト]** の順にクリックします。 信頼済みサイトの一覧に http://*.mysql.com を追加します。 **[閉じる]** をクリックし、**[OK]** をクリックします。
 3. Internet Explorer のアドレス バーに「https://dev.mysql.com/downloads/mysql/」と入力します。
 4. MySQL サイトで MySQL Installer for Windows の最新バージョンを見つけ、インストールします。 MySQL Installer を選ぶ際、すべてのファイル セットが揃っているバージョンをダウンロードし (ファイル サイズが 352.8 MB の mysql-installer-community-5.7.18.0.msi など)、このインストーラーを保存します。
-5. インストーラーでダウンロードが完了したら、**[ 実行 ]**をクリックしてセットアップを起動します。
+5. インストーラーでダウンロードが完了したら、**[実行]**をクリックしてセットアップを起動します。
 6. **[License Agreement]** ページで、ライセンス契約の内容に同意し、**[Next]** をクリックします。
 7. **[Choosing a Setup Type]** ページで目的のセットアップの種類をクリックしてから、**[Next]** をクリックします。 次の手順は、セットアップの種類として **[Server only]** を選択したことを前提にしています。
 8. **[要件の確認]** ページが表示されたら、**[実行]** をクリックして、インストーラーが不足コンポーネントをインストールできるようにします。 C++ 再頒布可能パッケージ ランタイムなど、表示される指示に従います。
@@ -120,5 +120,5 @@ MySQL Server サービスを実行する Azure VM へのリモート接続をテ
 
      mysql -u dbadmin3 -p -h testmysql.cloudapp.net
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 MySQL の実行の詳細については、 [MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。

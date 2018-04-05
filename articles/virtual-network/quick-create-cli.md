@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/09/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 46fec48720c817072ce838dd2e4c07725be5a7fe
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: d07f06a1a70c859544c3b1ceb6146dc11e4d10aa
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-virtual-network-using-the-azure-cli"></a>Azure CLI を使用した仮想ネットワークの作成
 
@@ -129,4 +129,4 @@ az group delete --name myResourceGroup --yes
 既定で、Azure では仮想マシン間の無制限のプライベート通信が許可されますが、インターネットから Linux VM へはインバウンド SSH セッションのみが許可されます。 VM に対するさまざまな種類のネットワーク通信を許可または制限する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [ネットワーク トラフィックをフィルター処理する](virtual-networks-create-nsg-arm-cli.md)
+> [ネットワーク トラフィックをフィルター処理する](tutorial-filter-network-traffic-cli.md)

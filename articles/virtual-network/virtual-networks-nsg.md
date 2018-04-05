@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.openlocfilehash: bd15b7786552d21c8791eeb307aa8c87066b2bcd
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: c38223674061aa8c257e47b6208f890b7aef378d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング
 
 ネットワーク セキュリティ グループ (NSG) には、Azure Virtual Network (VNet) に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 NSG をサブネットに関連付けた場合、そのサブネットに接続されているすべてのリソースにその NSG のルールが適用されます。 加えて VM や NIC にも NSG を関連付けることで、トラフィックをさらに制限することができます。
  
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシック](../resource-manager-deployment-model.md) の 2 種類のデプロイメント モデルがあります。 この記事では、両方のモデルについて取り上げていますが、最新のデプロイではリソース マネージャー モデルの使用をお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。 この記事では、両方のモデルについて取り上げていますが、最新のデプロイではリソース マネージャー モデルの使用をお勧めします。
 
 ## <a name="nsg-resource"></a>NSG リソース
 NSG には、次のプロパティが含まれています。
@@ -123,10 +123,10 @@ Resource Manager デプロイメント モデルまたはクラシック デプ�
 
 | デプロイ ツール | クラシック | リソース マネージャー |
 | --- | --- | --- |
-| Azure ポータル   | いいえ  | [はい](virtual-networks-create-nsg-arm-pportal.md) |
-| PowerShell     | [はい](virtual-networks-create-nsg-classic-ps.md) | [はい](virtual-networks-create-nsg-arm-ps.md) |
-| Azure CLI **V1**   | [はい](virtual-networks-create-nsg-classic-cli.md) | [はい](virtual-networks-create-nsg-arm-cli.md) |
-| Azure CLI **V2**   | いいえ  | [はい](virtual-networks-create-nsg-arm-cli.md) |
+| Azure ポータル   | [はい] | [はい](virtual-networks-create-nsg-arm-pportal.md) |
+| PowerShell     | [はい](virtual-networks-create-nsg-classic-ps.md) | [はい](tutorial-filter-network-traffic.md) |
+| Azure CLI **V1**   | [はい](virtual-networks-create-nsg-classic-cli.md) | [はい](tutorial-filter-network-traffic-cli.md) |
+| Azure CLI **V2**   | いいえ  | [はい](tutorial-filter-network-traffic-cli.md) |
 | Azure Resource Manager テンプレート   | いいえ   | [はい](virtual-networks-create-nsg-arm-template.md) |
 
 ## <a name="planning"></a>計画
