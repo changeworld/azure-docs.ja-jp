@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/01/2018
 ms.author: sethm
 ms.openlocfilehash: 1ad63912dc0b0f23d88387f1c1f62e9c064bfb05
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="service-bus-quotas"></a>Service Bus のクォータ
 ここでは、Azure Service Bus のメッセージングの基本的なクォータとスロットルのしきい値について説明します。

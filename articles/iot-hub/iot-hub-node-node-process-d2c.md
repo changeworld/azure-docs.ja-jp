@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub (ノード) を使用したメッセージのルーティング | Microsoft Docs"
-description: "他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。"
+title: Azure IoT Hub (ノード) を使用したメッセージのルーティング | Microsoft Docs
+description: 他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、Azure IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。
 services: iot-hub
 documentationcenter: node
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: bd9af5f9-a740-4780-a2a6-8c0e2752cf48
 ms.service: iot-hub
 ms.devlang: node
