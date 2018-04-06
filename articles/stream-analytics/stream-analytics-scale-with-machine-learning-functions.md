@@ -1,12 +1,11 @@
 ---
-title: "Azure Stream Analytics と AzureML 関数を使用したジョブのスケーリング | Microsoft Docs"
-description: "Azure Machine Learning 関数を使用する場合に、Stream Analytics ジョブを適切にスケールする方法 (パーティション分割、SU の数など) について説明しています。"
-keywords: 
-documentationcenter: 
+title: Azure Stream Analytics と AzureML 関数を使用したジョブのスケーリング | Microsoft Docs
+description: Azure Machine Learning 関数を使用する場合に、Stream Analytics ジョブを適切にスケールする方法 (パーティション分割、SU の数など) について説明しています。
+keywords: ''
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
+author: jseb225
+manager: ryanw
 ms.assetid: 47ce7c5e-1de1-41ca-9a26-b5ecce814743
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
-ms.openlocfilehash: 1e1c3724462a4d2a67eab3ef42867d2aeb5d3fa1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: dd6effab3ba0b411131414bd757ffe8cc54e49d2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-functions"></a>Azure Machine Learning 関数を使用した Stream Analytics ジョブのスケーリング
 多くの場合、Stream Analytics ジョブを設定し、そのジョブにサンプル データを供給することは簡単です。 同じジョブを大量のデータに対して実行する必要がある場合は、どうしたらよいのでしょうか。 それには、Stream Analytics ジョブをスケールできるように構成する方法を把握する必要があります。 このドキュメントでは、Machine Learning 関数を使用した Stream Analytics ジョブのスケーリングの特別な側面について説明します。 通常の Stream Analytics ジョブをスケーリングする方法の詳細については、「 [ストリーム データ処理スループット向上のための Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)」を参照してください。
@@ -85,7 +84,7 @@ Stream Analytics ジョブの Machine Learning 関数を構成するときに検
 | **12 SU** |5,000 |10,000 |40,000 |60,000 |100,000 |
 | **18 SU** |7,500 |15,000 |60,000 |90,000 |150,000 |
 | **24 SU** |10,000 |20,000 |80,000 |120,000 |200,000 |
-| **…** |… |… |… |… |… |
+| **…** |… |... |... |... |... |
 | **60 SU** |25,000 |50,000 |200,000 |300,000 |500,000 |
 
 ここまでの説明で、Stream Analytics の Machine Learning 関数のしくみを十分に理解できたと思います。 また、Stream Analytics ジョブがデータ ソースからデータを "プル" し、各 "プル" が Stream Analytics ジョブで処理されるイベントのバッチを返すことも理解されていることでしょう。 このプル モデルは Machine Learning Web サービス要求にどのような影響を与えるのでしょうか。
@@ -114,7 +113,7 @@ Stream Analytics ジョブの [監視] 領域には、3 つの関数関連のメ
 
 完全にパーティション分割された Stream Analytics クエリを例として使用しました。 もっと複雑なクエリが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を活用してください。Stream Analytics チームから追加のサポートを受けることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Stream Analytics の詳細については、以下を参照してください。
 
 * [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)

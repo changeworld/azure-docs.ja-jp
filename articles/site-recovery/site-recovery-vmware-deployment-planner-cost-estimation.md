@@ -1,12 +1,12 @@
 ---
-title: "VMware から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs"
-description: "Azure Site Recovery Deployment Planner のユーザー ガイドです。"
+title: VMware から Azure 用の Azure Site Recovery Deployment Planner | Microsoft Docs
+description: Azure Site Recovery Deployment Planner のユーザー ガイドです。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: nsoneji
 manager: garavd
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/09/2018
 ms.author: nisoneji
-ms.openlocfilehash: 63963804b81aa57e914e18fa474963a3830d04d5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 337217e66fe4d3780af197911a0e72c6f936e411
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="cost-estimation-report-of-azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner のコスト見積もりレポート  
 
@@ -110,7 +110,7 @@ VM を手動で追加するには、次の手順に従います。
 * [Each DR drill duration (Days)]\(各 DR ドリル期間 (日数)\) 
 * [OS Type]\(OS の種類\)
 * データの冗長性 
-* Azure Hybrid Use Benefit
+* Azure ハイブリッド特典
 
 3.  [Number of DR-Drills in a year]\(年間 DR ドリル数\)、[Each DR-Drill duration (Days)]\(各 DR ドリル期間 (日数)\)、[Data redundancy]\(データの冗長性\)、[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\) に関しては、[Apply to all]\(すべてに適用\) ボタンをクリックすると、テーブル内のすべての VM に同じ値を適用することができます。
 
@@ -136,7 +136,7 @@ VM を手動で追加するには、次の手順に従います。
 
 **[Data redundancy]\(データの冗長性\)**: ローカル冗長ストレージ (LRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) のいずれかを指定できます。 既定値は LRS です。 特定の VM のストレージ アカウントに基づいて種類を変更できるほか、一番上の行で種類を変更し、[Apply to all]\(すべてに適用\) ボタンをクリックすることで、変更後の種類をすべての VM に適用することができます。  レプリケーションに使用されるストレージのコストは、選択したデータ冗長性の料金に基づいて計算されます。 
 
-**[Azure Hybrid Use Benefit]\(Azure ハイブリッド使用特典\)**: Windows VM には Azure ハイブリッド使用特典を適用できます (該当する場合)。  既定値は Yes です。 特定の VM の設定を変更できるほか、[Apply to all]\(すべてに適用\) ボタンをクリックすることですべての VM の設定を更新することができます。
+**[Azure ハイブリッド特典]**: Windows VM には Azure ハイブリッド特典を適用できます (該当する場合)。  既定値は Yes です。 特定の VM の設定を変更できるほか、[Apply to all]\(すべてに適用\) ボタンをクリックすることですべての VM の設定を更新することができます。
 
 **[Total Azure consumption]\(Azure 消費合計\)**: 対象 DR のコンピューティング、ストレージ、Azure Site Recovery のライセンス コストが含まれます。 選択内容に応じて、月単位または年単位でコストが表示されます。
 

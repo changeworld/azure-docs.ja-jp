@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) の概要 | Microsoft Docs"
-description: "このページでは、Application Gateway の Web アプリケーション ファイアウォール (WAF) の概要を説明します"
+title: Azure Application Gateway の Web アプリケーション ファイアウォール (WAF) の概要 | Microsoft Docs
+description: このページでは、Application Gateway の Web アプリケーション ファイアウォール (WAF) の概要を説明します
 documentationcenter: na
 services: application-gateway
 author: amsriva
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/03/2017
 ms.author: amsriva
-ms.openlocfilehash: 50863b60f2843f033bdb07f4564d937cd6f0b7be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3945436a369f624ccb1d862b9623b8cfb1ed376
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="web-application-firewall-waf"></a>Web アプリケーション ファイアウォール (WAF)
 
@@ -44,13 +44,13 @@ Application Gateway と Web アプリケーション ファイアウォールが
 
 * リアルタイムの WAF ログを使用して、Web アプリケーションに対する攻撃を監視できます。 このログは [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) と統合されているため、WAF のアラートおよびログを追跡し、傾向を簡単に監視できます。
 
-* WAF は近いうちに Azure Security Center と統合されます。 Azure Security Center では、すべての Azure リソースのセキュリティの状態を一元的に把握できます。
+* WAF は Azure Security Center と統合されています。 Azure Security Center では、すべての Azure リソースのセキュリティの状態を一元的に把握できます。
 
 ### <a name="customization"></a>カスタマイズ
 
 * アプリケーションの要件に合わせて、誤検出が削減されるように WAF の規則と規則グループをカスタマイズする機能。
 
-## <a name="features"></a>Features (機能)
+## <a name="features"></a>機能
 
 Web アプリケーション ファイアウォールは、既定で CRS 3.0 を使用するように構成されています。2.2.9 を使用することもできます。 CRS 3.0 では、2.2.9 よりも誤検出が減少します。 [ニーズに合わせて規則をカスタマイズ](application-gateway-customize-waf-rules-portal.md)できます。 Web アプリケーション ファイアウォールで保護される一般的な Web の脆弱性の一部を以下に示します。
 
@@ -72,7 +72,7 @@ Application Gateway では、CRS 3.0 と CRS 2.2.9 の 2 つのルール セッ�
 
 提供される 3.0 コア ルール セットには、次の表に示すように 13 個の規則グループがあります。 これらの各規則グループには、無効にできる複数の規則が含まれています。
 
-|RuleGroup|説明|
+|RuleGroup|[説明]|
 |---|---|
 |**[REQUEST-910-IP-REPUTATION](application-gateway-crs-rulegroups-rules.md#crs910)**|既知のスパムや悪意のあるアクティビティから保護するための規則が含まれています。|
 |**[REQUEST-911-METHOD-ENFORCEMENT](application-gateway-crs-rulegroups-rules.md#crs911)**|メソッド (PUT、PATCH< ..) をロックダウンする規則が含まれています。|
@@ -92,7 +92,7 @@ Application Gateway では、CRS 3.0 と CRS 2.2.9 の 2 つのルール セッ�
 
 提供される 2.2.9 コア ルール セットには、次の表に示すように 10 個の規則グループがあります。 これらの各規則グループには、無効にできる複数の規則が含まれています。
 
-|RuleGroup|説明|
+|RuleGroup|[説明]|
 |---|---|
 |**[crs_20_protocol_violations](application-gateway-crs-rulegroups-rules.md#crs20)**|プロトコル違反 (無効な文字、要求本文がある GET など) から保護するための規則が含まれています。|
 |**[crs_21_protocol_anomalies](application-gateway-crs-rulegroups-rules.md#crs21)**|不適切なヘッダー情報から保護するためのルールが含まれています。|
@@ -114,7 +114,7 @@ Application Gateway の WAF は、次の 2 つのモードで実行するよう�
 
 ### <a name="application-gateway-waf-reports"></a>WAF の監視
 
-Application Gateway の正常性を監視することは重要です。 Web アプリケーション ファイアウォールおよび保護対象のアプリケーションの正常性の監視は、ログ記録および Azure Monitor、Azure Security Center (近日対応予定)、および Log Analytics との統合によって実現されます。
+Application Gateway の正常性を監視することは重要です。 Web アプリケーション ファイアウォールおよび保護対象のアプリケーションの正常性の監視は、ログ記録および Azure Monitor、Azure Security Center、および Log Analytics との統合によって実現されます。
 
 ![診断](./media/application-gateway-web-application-firewall-overview/diagnostics.png)
 
@@ -124,7 +124,7 @@ Application Gateway の正常性を監視することは重要です。 Web ア�
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-[Azure Security Center](../security-center/security-center-intro.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 これで、アプリケーション ゲートウェイは、[Azure Security Center に統合](application-gateway-integration-security-center.md)されました。 Azure Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、アプリケーション ゲートウェイの WAF が推奨されます。 アプリケーション ゲートウェイの WAF は、Azure Security Center から直接作成できます。  これらの WAF インスタンスは Azure Security Center に統合され、アラートおよび正常性情報をレポートとして Azure Security Center に送信します。
+[Azure Security Center](../security-center/security-center-intro.md) は、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応できるようにします。 Application Gateway は、[Azure Security Center に統合](application-gateway-integration-security-center.md)されています。 Azure Security Center では、環境をスキャンして、保護されていない Web アプリケーションを検出します。 これらの脆弱なリソースを保護するために、アプリケーション ゲートウェイの WAF が推奨されます。 アプリケーション ゲートウェイの WAF は、Azure Security Center から直接作成できます。  これらの WAF インスタンスは Azure Security Center に統合され、アラートおよび正常性情報をレポートとして Azure Security Center に送信します。
 
 ![図 1](./media/application-gateway-web-application-firewall-overview/figure1.png)
 
@@ -168,7 +168,7 @@ Web アプリケーション ファイアウォールは、新しい WAF SKU で
 
 WAF の課金は、2017 年 5 月 5 日に開始されます。それまで、WAF SKU のゲートウェイは標準料金で課金されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 WAF の機能の詳細について学習した後は、[Application Gateway で Web アプリケーション ファイアウォールを構成する方法](application-gateway-web-application-firewall-portal.md)に関するページを参照してください。
 

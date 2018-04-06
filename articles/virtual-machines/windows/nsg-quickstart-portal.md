@@ -1,11 +1,11 @@
 ---
-title: "Azure Portal を使用した VM へのポートの開放 | Microsoft Docs"
-description: "Azure Portal で Resource Manager デプロイメント モデルを使用して、Windows VM へのポートを開き、エンドポイントを作成する方法について説明します。"
+title: Azure Portal を使用した VM へのポートの開放 | Microsoft Docs
+description: Azure Portal で Resource Manager デプロイメント モデルを使用して、Windows VM へのポートを開き、エンドポイントを作成する方法について説明します。
 services: virtual-machines-windows
-documentationcenter: 
+documentationcenter: ''
 author: iainfoulds
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: f7cf0319-5ee7-435e-8f94-c484bf5ee6f1
 ms.service: virtual-machines-windows
 ms.devlang: na
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: iainfou
-ms.openlocfilehash: 08f0af6ecdb45b263d39c3d2d6442f4ed555e3c3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 8d564d59a2e20d1ccc35ba7801154a6dbcb9070d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-open-ports-to-a-virtual-machine-with-the-azure-portal"></a>Azure Portal を使用して仮想マシンへのポートを開く方法
 [!INCLUDE [virtual-machines-common-nsg-quickstart](../../../includes/virtual-machines-common-nsg-quickstart.md)]
@@ -58,7 +58,7 @@ ms.lasthandoff: 03/13/2018
 これで、ネットワーク セキュリティ グループの作成、ポート 80 のトラフィックを許可する受信規則の作成、ネットワーク セキュリティ グループとサブネットの関連付けが完了しました。 そのサブネットに接続するすべての VM に、ポート 80 で到達できます。
 
 ## <a name="more-information-on-network-security-groups"></a>ネットワーク セキュリティ グループの詳細
-このページのクイック コマンドでは、VM にフローするトラフィックの開始と実行を行うことができます。 ネットワーク セキュリティ グループには優れた機能が多数用意されており、リソースへのアクセスをきめ細かく制御できます。 詳細については、 [ネットワーク セキュリティ グループと ACL 規則の作成](../../virtual-network/virtual-networks-create-nsg-arm-ps.md)に関するページをご覧ください。
+このページのクイック コマンドでは、VM にフローするトラフィックの開始と実行を行うことができます。 ネットワーク セキュリティ グループには優れた機能が多数用意されており、リソースへのアクセスをきめ細かく制御できます。 詳細については、 [ネットワーク セキュリティ グループと ACL 規則の作成](../../virtual-network/tutorial-filter-network-traffic.md)に関するページをご覧ください。
 
 高可用性 Web アプリケーション用に、Azure Load Balancer の背後に VM を配置する必要があります。 ロード バランサーは、トラフィックをフィルターできるネットワーク セキュリティ グループとともに、VM のトラフィックを分散します。 詳細については、[Azure の Linux 仮想マシンを負荷分散して高可用性アプリケーションを作成する方法](tutorial-load-balancer.md)に関するページをご覧ください。
 

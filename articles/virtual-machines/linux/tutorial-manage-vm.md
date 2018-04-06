@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 03/23/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: e7dab67b46a2853e9585c88c8e4d4263f844c3b2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 487ffffca445fb3f98dcaa6550b0b1b74290b803
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
 
@@ -91,7 +91,7 @@ exit
 
 ## <a name="understand-vm-images"></a>VM イメージについて
 
-Azure Marketplace には、VM の作成に使用できる多くのイメージが用意されています。 前の手順では、Ubuntu のイメージを使用して仮想マシンを作成しました。 この手順では、Azure CLI を使用して Marketplace で CentOS のイメージを検索し、このイメージを使用して 2 台目の仮想マシンをデプロイします。  
+Azure Marketplace には、VM の作成に使用できる多くのイメージが用意されています。 前の手順では、Ubuntu のイメージを使用して仮想マシンを作成しました。 この手順では、Azure CLI を使用して Marketplace で CentOS のイメージを検索し、このイメージを使用して 2 台目の仮想マシンをデプロイします。 
 
 [az vm image list](/cli/azure/vm/image#az_vm_image_list) コマンドを使用して、よく使用されるイメージのリストを表示します。
 
@@ -136,7 +136,7 @@ CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20160309     
 CentOS            OpenLogic         6.5   OpenLogic:CentOS:6.5:6.5.20170207       6.5.20170207
 ```
 
-特定のイメージを使用して VM をデプロイするために、*Urn* 列の値を書き留めておきます。 イメージを指定するときにイメージのバージョン数を "latest" で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。 この例では、`--image` 引数を使用して、CentOS 6.5 イメージの最新バージョンを指定します。  
+特定のイメージを使用して VM をデプロイするために、*[Urn]* 列の値をメモに記録します。この値は、イメージを[識別](cli-ps-findimage.md#terminology)するための、発行元、プラン、SKU、およびオプションのバージョン番号で構成されます。 イメージを指定するときにイメージのバージョン数を "latest" で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。 この例では、`--image` 引数を使用して、CentOS 6.5 イメージの最新バージョンを指定します。  
 
 ```azurecli-interactive 
 az vm create --resource-group myResourceGroupVM --name myVM2 --image OpenLogic:CentOS:6.5:latest --generate-ssh-keys
@@ -259,7 +259,7 @@ Azure VM は、さまざまな電源状態のいずれかになります。 こ�
 
 ### <a name="find-power-state"></a>電源の状態を確認する
 
-特定の VM の状態を取得するには、[az vm get instance-view](/cli/azure/vm#az_vm_get_instance_view) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
+特定の VM の状態を取得するには、[az vm get-instance-view](/cli/azure/vm#az_vm_get_instance_view) コマンドを使用します。 必ず仮想マシンとリソース グループの有効な名前を指定してください。 
 
 ```azurecli-interactive 
 az vm get-instance-view \

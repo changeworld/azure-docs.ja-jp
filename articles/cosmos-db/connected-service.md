@@ -1,26 +1,26 @@
 ---
-title: "Azure Cosmos DB のための Visual Studio 接続済みサービス"
-description: "Visual Studio 接続済みサービスを通して、開発者は、簡単に Azure Cosmos DB アカウントに接続し、リソースを管理できます"
+title: Azure Cosmos DB のための Visual Studio 接続済みサービス
+description: Visual Studio 接続済みサービスを通して、開発者は、簡単に Azure Cosmos DB アカウントに接続し、リソースを管理できます
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: jejiang
 manager: DJ
 +tags: cosmos-db
 editor: Jenny Jiang
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.custom: Azure Cosmos DB
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jejiang
-ms.openlocfilehash: f63c20831a2700f1024507bef614a5a7cc87d00e
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 93be368d34f02e64d11abe9a04b11272ce18124d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cosmos-db-visual-studio-connected-service-preview"></a>Azure Cosmos DB: Visual Studio 接続済みサービス (プレビュー段階)
 
@@ -32,15 +32,17 @@ Visual Studio 接続済みサービスを使用すると、開発者は、簡単
 
 以下のものがそろっていることを確認してください。
 
-* アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
 * Azure Cosmos DB アカウント。 まだ実行していない場合は、[Cosmos DB の Azure アカウントを作成する](create-sql-api-dotnet.md)手順を実行して、Azure ポータルで作成するか、または [Connected Service ツール Azure Cosmos DB アカウントを作成する](#Create-an-Azure-Cosmo-DB-account-in-Connected-Service-tool) を参照してください。 
 * 開発にローカル環境を使用する場合は、[Azure Cosmos DB エミュレーター](local-emulator.md) を使用できます。 この環境では、Azure Cosmos DB サービスをエミュレートします。
 * [Visual Studio](http://www.visualstudio.com/)。
-* 最新の Azure Cosmos DB 接続済みサービスのビットです。 次のスクリーン ショットは、Visual Studio Marketplace から Azure Cosmos DB 接続済みサービスをダウンロードする方法を示しています。 コンピューターで **Visual Studio** を開きます。 **[ツール]** メニューの **[拡張機能と更新]** を選択し、**[オンライン]**、 / **[Visual Studio Marketplace]** を選択します。 「**cosmosdb**」と入力してビットを検索します。
+* 最新の Azure Cosmos DB 接続済みサービスのビットです。 次のスクリーン ショットは、Visual Studio Marketplace から Azure Cosmos DB 接続済みサービスをダウンロードする方法を示しています。 コンピューターで **Visual Studio** を開きます。 **[ツール]** メニューの **[拡張機能と更新]** を選択し、**[オンライン]** / **[Visual Studio Marketplace]** を選択します。 「**cosmosdb**」と入力してビットを検索します。
 
     Azure Cosmos DB 接続済みサービスは、[Visual Studio Marketplace](https://go.microsoft.com/fwlink/?linkid=858709) からもインストールできます。
 
     ![Connected Service download bits.png のスクリーン ショット](./media/connected-service/connected-service-downloadbits.png) 
+
+Azure Cosmos DB 接続済みサービス拡張機能をダウンロードしたら、Visual Studio を閉じて拡張機能をインストールします。
 
 ## <a id="SetupVS"></a>Visual Studio ソリューションをセットアップする
 1. コンピューターで **Visual Studio** を開きます。
@@ -108,7 +110,7 @@ Visual Studio 接続済みサービスを使用すると、開発者は、簡単
 
 Visual Studio の接続済みサービスの使用方法を説明した次の動画をご覧ください: [Visual Studio で Azure Cosmos DB 接続済みサービスを使用する ](https://go.microsoft.com/fwlink/?linkid=858711)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このドキュメントでは、次の項目について学びました。
 
 > [!div class="checklist"]

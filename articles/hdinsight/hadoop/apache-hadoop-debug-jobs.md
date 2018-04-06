@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 11/14/2017
 ms.author: ashish
 ms.openlocfilehash: a5db3848eda2dbb6f117562e059b909575966993
-ms.sourcegitcommit: e19742f674fcce0fd1b732e70679e444c7dfa729
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="analyze-hadoop-logs"></a>Hadoop ログの分析
 

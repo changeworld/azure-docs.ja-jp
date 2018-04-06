@@ -1,5 +1,5 @@
 ---
-title: App Service on Azure Stack Update 1 | Microsoft Docs
+title: App Service on Azure Stack Update 1 のリリース ノート | Microsoft Docs
 description: App Service on Azure Stack Update 1 の内容、既知の問題、更新プログラムをダウンロードする場所について説明します。
 services: azure-stack
 documentationcenter: ''
@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/20/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 0c33c8fdefbb27ba8414e58bed1b42ee7aaba88a
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 538d31f5b50ee22c06ba22c78e1aa92281a3b212
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="app-service-on-azure-stack-update-one-release-notes"></a>App Service on Azure Stack Update 1 のリリース ノート
+# <a name="app-service-on-azure-stack-update-1-release-notes"></a>App Service on Azure Stack Update 1 のリリース ノート
 
 *適用先: Azure Stack 統合システムと Azure Stack Development Kit*
 
@@ -39,7 +39,7 @@ App Service on Azure Stack Update 1 のビルド番号は **69.0.13698.9** で�
 ### <a name="prerequisites"></a>前提条件
 
 > [!IMPORTANT]
-> Azure App Service で Kudu の SSO を処理する方法が改善されたため、Azure App Service on Azure Stack では、[3 サブジェクトのワイルドカード証明書](azure-stack-app-service-before-you-get-started.md#get-certificates)が必要になります。  新しいサブジェクトは、** *.sso.appservice.<region>.<domainname>.<extension>** です。
+> Azure App Service で Kudu の SSO の処理方法が改善されたため、Azure App Service の Azure Stack への新しいデプロイには、[3 つのサブジェクトのワイルドカード証明書](azure-stack-app-service-before-you-get-started.md#get-certificates)が必要になります。  新しいサブジェクトは、** *.sso.appservice.<region>.<domainname>.<extension>** です。
 >
 >
 
@@ -51,7 +51,7 @@ Azure App Service on Azure Stack Update 1 には、次の機能強化と修正�
 
 - **Azure App Service の高可用性** - Azure Stack 1802 更新プログラムにより、ワークロードを複数の障害ドメインにデプロイできるようになりました。  そのため、App Service インフラストラクチャは、複数の障害ドメインへのデプロイによってフォールト トレランスを実現できます。  既定では、Azure App Service のすべての新しいデプロイにこの機能が含まれます。ただし、Azure Stack 1802 更新プログラムを適用する前に完了したデプロイについては、[App Service の障害ドメインに関するドキュメント](azure-stack-app-service-fault-domain-update.md)をご覧ください。
 
-- **既存の仮想ネットワークへのデプロイ** - App Service on Azure Stack を既存の仮想ネットワーク内にデプロイできるようになりました。  既存の仮想ネットワークにデプロイすると、Azure App Service に必要な SQL Server とファイル サーバーにプライベート ポート経由で接続できます。  デプロイ時に既存の仮想ネットワークへのデプロイを選択できますが、デプロイ前に、[App Service が使用するサブネットを作成](azure-stack-app-service-before-you-get-started.md#virtual-network)する必要があります。
+- **既存の仮想ネットワークへのデプロイ** - App Service on Azure Stack を既存の仮想ネットワーク内にデプロイできるようになりました。  既存の仮想ネットワークにデプロイすると、Azure App Service に必要な SQL Server とファイル サーバーにプライベート ポート経由で接続できます。  デプロイ時に既存の仮想ネットワークへのデプロイを選択できますが、デプロイ前に、[App Service が使用するサブネットを作成する必要があります](azure-stack-app-service-before-you-get-started.md#virtual-network)。
 
 - **App Service のテナント ポータル、管理ポータル、Functions ポータル、Kudu ツール**の更新。  Azure Stack Portal SDK バージョンと一致しています。
 
@@ -103,7 +103,13 @@ Azure App Service on Azure Stack Update 1 には、次の機能強化と修正�
 
 ### <a name="known-issues-with-the-deployment-process"></a>デプロイ プロセスに関する既知の問題
 
-- Azure App Service on Azure Stack Update 1 のデプロイに関する既知の問題はありません。
+- 証明書の検証エラー
+
+インストーラーの検証が過度に制限されているため、統合システムにデプロイするときに App Service インストーラーに証明書を指定しようとして問題が発生することがあります。  App Service インストーラーは再リリースされました。ユーザーは[更新されたインストーラーをダウンロードする](https://aka.ms/appsvconmasinstaller)必要があります。  更新されたインストーラーでも証明書の検証の問題が発生する場合は、サポートにお問い合わせください。
+
+- 統合システムから Azure Stack ルート証明書を取得するときの問題。
+
+ルート証明書がインストールされていないマシンでスクリプトを実行すると、Get-AzureStackRootCert.ps1 のエラーにより Azure Stack ルート証明書の取得に失敗する問題がありました。  このスクリプトも再リリースされ、この問題は解決しました。[更新されたヘルパー スクリプト](https://aka.ms/appsvconmashelpers)をダウンロードするようにユーザーに依頼してください。  更新されたスクリプトを使用してもルート証明書の取得時に問題が発生する場合は、サポートにお問い合わせください。
 
 ### <a name="known-issues-with-the-update-process"></a>更新プロセスに関する既知の問題
 
@@ -111,13 +117,91 @@ Azure App Service on Azure Stack Update 1 には、次の機能強化と修正�
 
 ### <a name="known-issues-post-installation"></a>既知の問題 (インストール後)
 
-- Azure App Service on Azure Stack Update 1 のインストールに関する既知の問題はありません。
+- スロットスワップが機能しない
+
+このリリースでは、サイトのスロット スワップが破損しています。  機能を復元するには、次の手順を実行します。
+
+1. App Services コントローラー インスタンスへのリモート デスクトップ接続を**許可**するように ControllersNSG Network Security Group を変更します。  AppService.local を、App Service をデプロイしたリソース グループの名前に置き換えます。
+
+    ```powershell
+      Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+
+      $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
+
+      $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
+
+      Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
+        -Name $RuleConfig_Inbound_Rdp_3389.Name `
+        -Description "Inbound_Rdp_3389" `
+        -Access Allow `
+        -Protocol $RuleConfig_Inbound_Rdp_3389.Protocol `
+        -Direction $RuleConfig_Inbound_Rdp_3389.Direction `
+        -Priority $RuleConfig_Inbound_Rdp_3389.Priority `
+        -SourceAddressPrefix $RuleConfig_Inbound_Rdp_3389.SourceAddressPrefix `
+        -SourcePortRange $RuleConfig_Inbound_Rdp_3389.SourcePortRange `
+        -DestinationAddressPrefix $RuleConfig_Inbound_Rdp_3389.DestinationAddressPrefix `
+        -DestinationPortRange $RuleConfig_Inbound_Rdp_3389.DestinationPortRange
+
+      # Commit the changes back to NSG
+      Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
+      ```
+
+2. Azure Stack Administrator ポータルの [Virtual Machines] で **CN0-VM** を参照し、**[接続] をクリックして**コントローラー インスタンスとのリモート デスクトップ セッションを開きます。  App Service のデプロイ時に指定した資格情報を使用します。
+3. **管理者権限で PowerShell** を起動し、次のスクリプトを実行します
+
+    ```powershell
+        Import-Module appservice
+
+        $sm = new-object Microsoft.Web.Hosting.SiteManager
+
+        if($sm.HostingConfiguration.SlotsPollWorkerForChangeNotificationStatus=$true)
+        {
+          $sm.HostingConfiguration.SlotsPollWorkerForChangeNotificationStatus=$false
+        #  'Slot swap mode reverted'
+        }
+        
+        # Confirm new setting is false
+        $sm.HostingConfiguration.SlotsPollWorkerForChangeNotificationStatus
+        
+        # Commit Changes
+        $sm.CommitChanges()
+
+        Get-AppServiceServer -ServerType ManagementServer | ForEach-Object Repair-AppServiceServer
+        
+    ```
+
+4. リモート デスクトップ セッションを終了します。
+5. App Services コントローラー インスタンスへのリモート デスクトップ接続を**拒否**するように ControllersNSG Network Security Group を戻します。  AppService.local を、App Service をデプロイしたリソース グループの名前に置き換えます。
+
+    ```powershell
+
+        Login-AzureRMAccount -EnvironmentName AzureStackAdmin
+
+        $nsg = Get-AzureRmNetworkSecurityGroup -Name "ControllersNsg" -ResourceGroupName "AppService.local"
+
+        $RuleConfig_Inbound_Rdp_3389 =  $nsg | Get-AzureRmNetworkSecurityRuleConfig -Name "Inbound_Rdp_3389"
+
+        Set-AzureRmNetworkSecurityRuleConfig -NetworkSecurityGroup $nsg `
+          -Name $RuleConfig_Inbound_Rdp_3389.Name `
+          -Description "Inbound_Rdp_3389" `
+          -Access Deny `
+          -Protocol $RuleConfig_Inbound_Rdp_3389.Protocol `
+          -Direction $RuleConfig_Inbound_Rdp_3389.Direction `
+          -Priority $RuleConfig_Inbound_Rdp_3389.Priority `
+          -SourceAddressPrefix $RuleConfig_Inbound_Rdp_3389.SourceAddressPrefix `
+          -SourcePortRange $RuleConfig_Inbound_Rdp_3389.SourcePortRange `
+          -DestinationAddressPrefix $RuleConfig_Inbound_Rdp_3389.DestinationAddressPrefix `
+          -DestinationPortRange $RuleConfig_Inbound_Rdp_3389.DestinationPortRange
+
+        # Commit the changes back to NSG
+        Set-AzureRmNetworkSecurityGroup -NetworkSecurityGroup $nsg
+    ```
 
 ### <a name="known-issues-for-cloud-admins-operating-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack を運用するクラウド管理者に関する既知の問題
 
 [Azure Stack 1802 リリース ノート](azure-stack-update-1802.md)内のドキュメントをご覧ください。
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次の手順
 
 - Azure App Service の概要については、「[Azure Stack 上の App Service の概要](azure-stack-app-service-overview.md)」をご覧ください。
 - App Service on Azure Stack のデプロイの準備をする方法の詳細については、「[App Service on Azure Stack を開始する前に](azure-stack-app-service-before-you-get-started.md)」をご覧ください。

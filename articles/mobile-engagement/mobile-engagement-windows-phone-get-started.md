@@ -1,11 +1,11 @@
 ---
-title: "Windows Phone Silverlight アプリの Azure Mobile Engagement の概要"
-description: "Windows Phone Silverlight アプリで Azure Mobile Engagement の分析機能やプッシュ通知を使用する方法について説明します。"
+title: Windows Phone Silverlight アプリの Azure Mobile Engagement の概要
+description: Windows Phone Silverlight アプリで Azure Mobile Engagement の分析機能やプッシュ通知を使用する方法について説明します。
 services: mobile-engagement
 documentationcenter: windows
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aa34692f-87f7-47c6-a20c-a1972750bc25
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,17 +14,21 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: d2334a59d83c90bdd02c4fa29261d36aad292892
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fb1426e66df6cd8085342743b7d045c297743e5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-phone-silverlight-apps"></a>Windows Phone Silverlight アプリの Azure Mobile Engagement の概要
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握し、Windows Phone Silverlight アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
-このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。 チュートリアル内で空白の Windows Phone Silverlight アプリを作成し、このアプリで基本的なデータを収集して、Microsoft Push Notification Service (MPNS) を使用してプッシュ通知を受信します。
+このチュートリアルでは、Mobile Engagement を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。 チュートリアル内で空白の Windows Phone Silverlight アプリを作成し、このアプリで基本的なデータを収集して、Microsoft Push Notification Service (MPNS) を使用してプッシュ通知を受信します。
 
 > [!NOTE]
 > Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)」を参照してください。
@@ -43,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 * [MicrosoftAzure.MobileEngagement] Nuget パッケージ
 
 > [!NOTE]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-windows-phone-get-started)」をご覧ください。
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-windows-phone-get-started)を参照してください。
 > 
 > 
 
@@ -79,7 +83,7 @@ ms.lasthandoff: 10/11/2017
     ![][3]
 4. `App.xaml.cs` ファイルで次の操作を行います。
    
-    a. `using` ステートメントを追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `using` ステートメントを追加します。
    
             using Microsoft.Azure.Engagement;
    
@@ -108,7 +112,7 @@ ms.lasthandoff: 10/11/2017
         class MainPage : EngagementPage 
 3. `MainPage.xml` ファイルで、次の操作を行います。
    
-    a. 次の内容を名前空間宣言に追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 次の内容を名前空間宣言に追加します。
    
             xmlns:engagement="clr-namespace:Microsoft.Azure.Engagement;assembly=Microsoft.Azure.Engagement.EngagementAgent.WP"
    

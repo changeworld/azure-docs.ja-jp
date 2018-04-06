@@ -1,26 +1,26 @@
 ---
-title: "Azure Stack とは | Microsoft Docs"
-description: "Azure Stack を使用すると、お使いのデータセンターで Azure を実行できます。"
+title: Azure Stack とは | Microsoft Docs
+description: Azure Stack を使用すると、お使いのデータセンターで Azure を実行できます。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: jeffgilb
 manager: femila
-editor: 
+editor: ''
 ms.assetid: d9e6aee1-4cba-4df5-b5a3-6f38da9627a3
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 02/21/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
 ms.custom: mvc
-ms.openlocfilehash: 68d1e1752f934e61bbb60c0c934a80b564896a36
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 863c1ec562cd71af0df69ccc0547e16d02c7ee82
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-stack"></a>Azure Stack とは
 
@@ -30,10 +30,10 @@ Microsoft Azure Stack はハイブリッド クラウド プラットフォー�
 Azure Stack 統合システムは Microsoft と[ハードウェア パートナー](https://azure.microsoft.com/overview/azure-stack/integrated-systems/)のパートナーシップによって提供され、クラウドと歩調を合わせた革新と、管理のしやすさをバランスよく両立させたソリューションを実現します。  Azure Stack はハードウェアとソフトウェアの統合システムとして提供されるため、クラウドからの革新を採用しつつ適度な柔軟性と制御性が得られます。  Azure Stack 統合システムには 4 ノードから 12 ノードまでのサイズがあり、ハードウェア パートナーと Microsoft によって共同でサポートされます。  Azure Stack 統合システムの使用により、運用ワークロード向けの新しいシナリオが可能になります。    
 
 ## <a name="azure-stack-development-kit"></a>Azure Stack Development Kit
-Microsoft Azure Stack Development Kit は、Azure Stack の評価と学習に使用できる Azure Stack の単一ノード デプロイです。  Azure Stack Development Kit は開発環境としても使用でき、Azure と一貫性のある API やツールを使用して開発を行うことができます。  Azure Stack Development Kit は、運用環境での使用を想定していません。
+Microsoft [Azure Stack Development Kit (ASDK)](.\asdk\asdk-what-is.md) は、Azure Stack の評価と学習に使用できる Azure Stack の単一ノード デプロイです。  ASDK は開発環境としても使用でき、Azure と一貫性のある API やツールを使用して開発を行うことができます。 ASDK の運用環境での使用は想定されていません。
 
-Azure Stack Development Kit には次の制限事項があります。
-* Azure Stack Development Kit は、単一の Azure Active Directory または Active Directory フェデレーション サービス (AD FS) ID プロバイダーに関連付けられます。 このディレクトリに複数のユーザーを作成し、各ユーザーにサブスクリプションを割り当てることができます。
+ASDK には次の制限事項があります。
+* ASDK は、単一の Azure Active Directory (Azure AD) または Active Directory フェデレーション サービス (AD FS) ID プロバイダーに関連付けられます。 このディレクトリに複数のユーザーを作成し、各ユーザーにサブスクリプションを割り当てることができます。
 * すべてのコンポーネントが単一のマシンにデプロイされるため、テナント用のリソースとして使用できる物理リソースは限られます。 この構成は、拡張性やパフォーマンスの評価のためのものではありません。
 * 単一ホスト/NIC 要件のため、ネットワークのシナリオは制限されています。  
 

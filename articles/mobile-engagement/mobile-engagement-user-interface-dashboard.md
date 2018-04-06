@@ -1,11 +1,11 @@
 ---
-title: "Azure モバイル エンゲージメント ユーザー インターフェイス - ダッシュ ボード"
-description: "Azure モバイル エンゲージメントを使用し、アプリケーションに関するデータのグラフを表示し、操作する方法を説明します。"
+title: Azure モバイル エンゲージメント ユーザー インターフェイス - ダッシュ ボード
+description: Azure モバイル エンゲージメントを使用し、アプリケーションに関するデータのグラフを表示し、操作する方法を説明します。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 72d5965e-8e79-48a3-9e63-0b66b7457d3c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: eaf5a2f9fdfcec33e8b4e2ddf77505980cd37c5e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d941b9858b964e11308061bae9e6dbc5e2fda767
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-view-and-manage-charts-of-data-about-your-application"></a>アプリケーションに関するデータのグラフを表示し、操作する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 UI の [ダッシュボード] セクションは、[分析] セクションで検索する代わりに必要な正確な情報を提供するため、顧客はカスタマイズされたグラフを作成して時間を最大限に生かすことができます。 ダッシュボードは、さまざまなバージョンのアプリケーションに対して、一定期間 (時間 / 日 / 週 / 月 / カスタマイズ) のアプリケーションの傾向とアクティブ ユーザー数を示します。 表示される傾向は過去 7 日間に基づいています。
 
 ### <a name="see-also"></a>関連項目

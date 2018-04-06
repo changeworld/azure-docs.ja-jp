@@ -1,11 +1,11 @@
 ---
-title: "Unity iOS デプロイでの Azure Mobile Engagement の使用"
-description: "iOS デバイスにデプロイする Unity アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法について説明します。"
+title: Unity iOS デプロイでの Azure Mobile Engagement の使用
+description: iOS デバイスにデプロイする Unity アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法について説明します。
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7ddfbac3-8d13-4ebe-b061-c865f357297f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c8f50404771965ec636065346ac04e059d264c3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8270a56daf8e69eede5b3d14b4ff88e0911da11a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-unity-ios-deployment"></a>Unity iOS デプロイでの Azure Mobile Engagement の使用
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握する方法と、iOS デバイスへのデプロイ時に Unity アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
@@ -33,7 +37,7 @@ ms.lasthandoff: 10/11/2017
 * XCode エディター
 
 > [!NOTE]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-ios-get-started)」をご覧ください。
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用アカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-ios-get-started)を参照してください。
 > 
 > 
 

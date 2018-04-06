@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK の詳細なレポート オプション"
-description: "Azure Mobile Engagement Android SDK の分析をキャプチャするための詳細なレポート作成を実行する方法について説明します"
+title: Azure Mobile Engagement Android SDK の詳細なレポート オプション
+description: Azure Mobile Engagement Android SDK の分析をキャプチャするための詳細なレポート作成を実行する方法について説明します
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 7da7abd5-19d6-4892-94d8-818e5424b2cd
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/10/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 2a1445afa2c2fca1a31ad9c012b9c8a917ebf65c
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 419b65250d2b65e184e6e36349b17b5ac9e7a6ba
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="advanced-reporting-with-engagement-on-android"></a>Android での Engagement による詳細なレポート
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 > [!div class="op_single_selector"]
 > * [ユニバーサル Windows](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)

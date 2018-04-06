@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: microsoft-docs
 ms.assetid: 58a0ca9d-86d2-469a-9714-3b8320c33cf5
 ms.openlocfilehash: 20ebd324cbf379980b43d255d468673de2b6d950
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-role-based-access-control-rbac-to-control-access-rights-to-create-and-manage-support-requests"></a>Azure のロールベースのアクセス制御 (RBAC) を使用してサポート要求を作成および管理するアクセス権を制御する
 
@@ -86,7 +86,7 @@ Azure Portal ([portal.azure.com](https://portal.azure.com)) でサポート要�
 
     Joe がポータルにログインすると、Joe が追加されたサブスクリプションが表示されます。
 
-7. Joe は、ヘルプとサポート ブレードの 新しいサポート要求をクリックし、"Visual Studio Ultimate with MSDN" のサポート要求を作成できます。
+7. Joe は、[ヘルプとサポート] ブレードの [新しいサポート要求] をクリックし、"Visual Studio Ultimate with MSDN" のサポート要求を作成できます。
 
     ![新しいサポート要求](./media/create-manage-support-requests-using-access-control/new-support-request.png)
 

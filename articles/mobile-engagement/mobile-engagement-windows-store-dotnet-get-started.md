@@ -1,11 +1,11 @@
 ---
-title: "Windows ユニバーサル アプリの Azure Mobile Engagement の概要"
-description: "Windows ユニバーサル アプリで Azure Mobile Engagement の分析機能やプッシュ通知を使用する方法について説明します。"
+title: Windows ユニバーサル アプリの Azure Mobile Engagement の概要
+description: Windows ユニバーサル アプリで Azure Mobile Engagement の分析機能やプッシュ通知を使用する方法について説明します。
 services: mobile-engagement
 documentationcenter: windows
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 48103867-7f64-4646-b019-42bd797d38e2
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,17 +14,21 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: 40db7e4dd151ec391c754dc6d4145aeeb8058eca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4f1de1092458bfc12236802d829a2043dcc74540
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="get-started-with-azure-mobile-engagement-for-windows-universal-apps"></a>Windows ユニバーサル アプリの Azure Mobile Engagement の概要
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
 このトピックでは、アプリの使用状況を理解して、プッシュ通知を Windows ユニバーサル アプリケーションのセグメント化されたユーザーに送信するために、Azure モバイル エンゲージメントの使用方法を説明します。
-このチュートリアルでは、モバイル エンゲージメントを使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。 基本的なアプリ使用状況データを収集し、Windows 通知サービス (WNS) を使用してプッシュ通知を受信する空の Windows ユニバーサル アプリを作成します。
+このチュートリアルでは、Mobile Engagement を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。 基本的なアプリ使用状況データを収集し、Windows 通知サービス (WNS) を使用してプッシュ通知を受信する空の Windows ユニバーサル アプリを作成します。
 
 > [!NOTE]
 > Azure Mobile Engagement サービスは 2018 年 3 月に停止予定であり、現在は既存のお客様のみご利用いただけます。 詳細については、「[Mobile Engagement](https://azure.microsoft.com/en-us/services/mobile-engagement/)」を参照してください。
@@ -69,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 
 1. `App.xaml.cs` ファイルで次の操作を行います。
 
-    a. `using` ステートメントを追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 `using` ステートメントを追加します。
 
             using Microsoft.Azure.Engagement;
 
@@ -111,7 +115,7 @@ ms.lasthandoff: 10/11/2017
         class MainPage : EngagementPageOverlay
 3. `MainPage.xaml` ファイルで次の操作を行います。
 
-    a. 次の内容を名前空間宣言に追加します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 次の内容を名前空間宣言に追加します。
 
         xmlns:engagement="using:Microsoft.Azure.Engagement.Overlay"
 

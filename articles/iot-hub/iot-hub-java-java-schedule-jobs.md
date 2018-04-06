@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub を使用してジョブのスケジュールを設定する (Java) | Microsoft Docs"
-description: "複数のデバイスでダイレクト メソッドを呼び出して、必要なプロパティを設定するように Azure IoT Hub ジョブのスケジュールを設定する方法。 Azure IoT device SDK for Java を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for Java を使用して、ジョブを実行するサービス アプリを実装します。"
+title: Azure IoT Hub を使用してジョブのスケジュールを設定する (Java) | Microsoft Docs
+description: 複数のデバイスでダイレクト メソッドを呼び出して、必要なプロパティを設定するように Azure IoT Hub ジョブのスケジュールを設定する方法。 Azure IoT device SDK for Java を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for Java を使用して、ジョブを実行するサービス アプリを実装します。
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.service: iot-hub
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
-ms.openlocfilehash: 54f446f8735bc46b87fe19aaf7845c5fbfce2744
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: af853a378a36c97edd74ea99fc5dcce92a073fea
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>ジョブのスケジュールとブロードキャスト (Java)
 
@@ -35,6 +35,8 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 * デバイス ツインとプロパティ: [デバイス ツインの概要](iot-hub-java-java-twin-getstarted.md)
 * ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド](iot-hub-devguide-direct-methods.md)と[ダイレクト メソッドの使用に関するチュートリアル](iot-hub-java-java-direct-methods.md)
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 このチュートリアルでは、次の操作方法について説明します。
 

@@ -1,6 +1,6 @@
 ---
-title: "Application Insights の .NET トレース ログを調べる"
-description: "Trace、NLog、または Log4Net で生成されたログを検索します。"
+title: Application Insights の .NET トレース ログを調べる
+description: Trace、NLog、または Log4Net で生成されたログを検索します。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: mbullwin
-ms.openlocfilehash: 6da0bf009fa71885d7d8e3bd5376c5a7c9d4a344
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 574b11f9ba38bda775610f2f9e90fbb2d2b05868
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="explore-net-trace-logs-in-application-insights"></a>Application Insights の .NET トレース ログを調べる
 ASP.NET アプリケーションで診断トレースに NLog、log4Net、または System.Diagnostics.Trace を使用している場合、ログを [Azure Application Insights][start] に送信し、そこで調査したり、検索したりできます。 ログはアプリケーションから送信される他の利用統計情報と結合されます。それにより、互いのユーザー要求にサービスを提供することに関連付けられているトレースを特定し、それらを他のイベントや例外レポートに相互に関連付けることができます。
@@ -58,7 +58,7 @@ System.Diagnostics.Trace を使用している場合は、web.config にエン�
 Application Insights インストーラーでサポートされていない種類のプロジェクト (Windows デスクトップ プロジェクトなど) の場合は、手動でインストールします。
 
 1. log4Net または NLog を使用する場合は、プロジェクト内にインストールします。
-2. ソリューション エクスプローラーでプロジェクトを右クリックし、[ **NuGet パッケージの管理**] を選択します。
+2. ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
 3. Search for "Application Insights"
 4. 次のいずれかの適切なパッケージを選択します。
 
@@ -99,7 +99,7 @@ Application Insights にトレースとして送信する [System.Diagnostics.Tr
 Application Insights にトレースとして送信する [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) イベントを構成できます。 まず、[`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。
 
 ```xml
-    <Add Type="Microsoft.ApplicationInsights.DiagnsoticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
+    <Add Type="Microsoft.ApplicationInsights.DiagnosticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
       <Sources>
         <Add Name="MyDiagnosticSourceName" />
       </Sources>
@@ -131,14 +131,14 @@ Application Insights にトレースとして送信される ETW イベントを
 ## <a name="using-the-trace-api-directly"></a>トレース API を直接利用する
 Application Insights トレース API を直接呼び出すことができます。 ログ記録のアダプターはこの API を使用します。
 
-次に例を示します。
+例: 
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow response - database01");
 
 TrackTrace の利点は、比較的長いデータをメッセージの中に配置できることです。 たとえば、その中に POST データをエンコードできます。
 
-加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタで抽出したり検索したりすることができます。 For example:
+加えて、メッセージに重大度レベルを追加することができます。 また他のテレメトリと同様、プロパティ値を追加することで、さまざまなトレースの組み合わせをフィルタで抽出したり検索したりすることができます。 例: 
 
     var telemetry = new Microsoft.ApplicationInsights.TelemetryClient();
     telemetry.TrackTrace("Slow database response",
@@ -154,7 +154,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 
 ![Application Insights で、[検索] を選択する](./media/app-insights-asp-net-trace-logs/020-diagnostic-search.png)
 
-![[検索]](./media/app-insights-asp-net-trace-logs/10-diagnostics.png)
+![Search](./media/app-insights-asp-net-trace-logs/10-diagnostics.png)
 
 たとえば、次の操作ができます。
 
@@ -168,7 +168,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 >
 >
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ASP.NET ][exceptions]のエラーと例外を診断する
 
 [検索][diagnostic]の詳細についてはこちらを参照してください。
@@ -189,7 +189,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 ### <a name="emptykey"></a>エラー「インストルメンテーション キーは空にできません」が発生しました
 Application Insights をインストールしないでログ アダプターの Nuget パッケージをインストールした可能性があります。
 
-ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、[ **Application Insights の更新**] を選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。 これで問題は修正されます。
+ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、**[Application Insights の更新]** を選択します。 Azure へのサインインを促すダイアログが表示されます。または、Application Insights のリソースを作成するか、既存のリソースを再利用します。 これで問題は修正されます。
 
 ### <a name="i-can-see-traces-in-diagnostic-search-but-not-the-other-events"></a>診断検索にトレースが表示されますが、他のイベントがありません
 すべてのイベントと要求がパイプラインを通過するまで時間がかかることがあります。

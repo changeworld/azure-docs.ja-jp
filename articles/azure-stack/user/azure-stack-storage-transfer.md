@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 02/21/2018
+ms.date: 03/30/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 9318b7af3c3dd545207f1896c9008207f562b735
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: e26a38b8fd7d008a46eba2c41075c5af09a6616a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tools-for-azure-stack-storage"></a>Azure Stack Storage のツール
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、およびアカウント管理機能のストレージ サービスのセットを提供します。 Azure Stack Storage のデータを管理または移動する場合は、Azure Storage のツールのセットを使用ですることができます。 この記事では、使用可能なツールについて簡単に説明します。
 
@@ -181,7 +181,7 @@ Azure CLI は、Azure リソースを管理するための、Azure のコマン�
 
 Azure CLI は、コマンド ラインから Azure リソースを管理したり、Azure Resource Manager を操作対象とする自動化スクリプトを作成したりするために最適化されています。 豊富なデータ アクセスを含む、Azure Stack Portal にあるものと同じ機能の多くを使用できます。
 
-Azure Stack には、Azure CLI バージョン 2.0 が必要です。 Azure Stack と Azure CLI のインストールと構成の詳細については、「[Install and configure Azure Stack CLI](azure-stack-connect-cli.md)」(Azure Stack CLI のインストールと構成) を参照してください。 Azure CLI 2.0 を使用して Azure Stack Storage アカウント内のリソースを操作するいくつかのタスクを実行する方法の詳細については、「[Azure ストレージでの Azure CLI2.0 の使用](../../storage/storage-azure-cli.md)」を参照してください。
+Azure Stack には、Azure CLI バージョン 2.0 が必要です。 Azure Stack と Azure CLI のインストールと構成の詳細については、「[Install and configure Azure Stack CLI](azure-stack-version-profiles-azurecli2.md)」(Azure Stack CLI のインストールと構成) を参照してください。 Azure CLI 2.0 を使用して Azure Stack Storage アカウント内のリソースを操作するいくつかのタスクを実行する方法の詳細については、「[Azure ストレージでの Azure CLI2.0 の使用](../../storage/storage-azure-cli.md)」を参照してください。
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure Stack 用の Azure CLI サンプル スクリプト 
 CLI のインストールと構成が完了したら、次の手順を試し、Azure Stack Storage リソースと対話する小さなシェル サンプル スクリプトを操作することができます。 スクリプトは、最初にストレージ アカウントに新しいコンテナーを作成し、既存のファイル (および BLOB) をそのコンテナーにアップロードし、コンテナー内のすべての BLOB を一覧表示し、最後に、指定したローカル コンピューター上の宛先にファイルをダウンロードします。 このスクリプトを実行する前に、ターゲット Azure Stack に正常に接続してログインしていることを確認してください。 

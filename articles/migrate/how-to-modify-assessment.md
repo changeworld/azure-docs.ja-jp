@@ -1,16 +1,16 @@
 ---
-title: "Azure Migrate の評価の設定をカスタマイズする | Microsoft Docs"
-description: "Azure Migration Planner を使用して VMware VM を Azure に移行するための、評価の設定と実行方法について説明します。"
+title: Azure Migrate の評価の設定をカスタマイズする | Microsoft Docs
+description: Azure Migration Planner を使用して VMware VM を Azure に移行するための、評価の設定と実行方法について説明します。
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 02/26/2018
 ms.author: raynew
-ms.openlocfilehash: efb4ad59d25a0c1209e4f0f6cd406c2f0d48159c
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 459a29012ec879d4d4989e51b5688b9042adc1a1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="customize-an-assessment"></a>評価のカスタマイズ
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/27/2018
     **設定** | **詳細** | **既定値**
     --- | --- | ---
     **ターゲットの場所** | Azure 上の移行先となる場所。<br/><br/> Azure Migrate は現在、30 のリージョンをサポートしています (オーストラリア東部、オーストラリア南東部、ブラジル南部、カナダ中部、カナダ東部、インド中部、米国中部、中国東部、中国北部、東アジア、米国東部、ドイツ中部、ドイツ北東部、米国東部 2、東日本、西日本、韓国中部、韓国南部、米国中北部、北ヨーロッパ、米国中南部、東南アジア、インド南部、英国南部、英国西部、米国中西部、西ヨーロッパ、インド西部、米国西部、米国西部 2)。 |  既定の場所は、米国西部 2 です。
-    **ストレージ冗長** | 移行後に Azure VM で使用されるストレージ冗長の種類。 | [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy.md#locally-redundant-storage) が既定値です。 Azure Migrate では管理ディスク ベースの評価だけがサポートされ、管理ディスクでは LRS だけがサポートされています。そのため、現在、プロパティには LRS オプションだけがあります。 
+    **ストレージ冗長** | 移行後に Azure VM で使用されるストレージ冗長の種類。 | [ローカル冗長ストレージ (LRS)](../storage/common/storage-redundancy-lrs.md) が既定値です。 Azure Migrate では管理ディスク ベースの評価だけがサポートされ、管理ディスクでは LRS だけがサポートされています。そのため、現在、プロパティには LRS オプションだけがあります。 
     **サイズ変更の設定基準** | Azure 用に VM を適切なサイズにするために Azure Migrate によって使用される基準。 "*パフォーマンスに基づく*" サイズ変更、またはパフォーマンスの履歴を考慮しない "*オンプレミスとしての*" VM のサイズ変更を実行できます。 | パフォーマンスに基づくサイズ変更が既定のオプションです。
     **パフォーマンス履歴** | VM のパフォーマンスを評価するために考慮する期間。 このプロパティは、サイズ変更の基準が "*パフォーマンスに基づくサイズ変更*" の場合にのみ適用されます。 | 既定値は 1 日です。
     **百分位数の使用率** | 適切なサイズ設定のために考慮するパフォーマンス サンプル セットのパーセンタイル値。 このプロパティは、サイズ変更の基準が "*パフォーマンスに基づくサイズ変更*" の場合にのみ適用されます。  | 既定は 95 パーセンタイルです。

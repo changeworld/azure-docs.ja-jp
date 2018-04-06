@@ -9,11 +9,11 @@ ms.author: kgremban
 ms.date: 03/14/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 605f0cfe34e4fda14030bb38686095882846c7c0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 95ca66f34548f86e25c1e7af331fa88797847906
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="develop-and-deploy-a-c-iot-edge-module-to-your-simulated-device---preview"></a>C# IoT Edge モジュールを開発して、シミュレートしたデバイスにデプロイする - プレビュー
 
@@ -53,25 +53,25 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
 ## <a name="create-an-iot-edge-module-project"></a>IoT Edge モジュール プロジェクトを作成する
 以下の手順では、Visual Studio Code と Azure IoT Edge 拡張機能を使用して、.NET core 2.0 に基づく IoT Edge モジュールを作成する方法を示します。
 1. Visual Studio Code で、**[表示]** > **[統合ターミナル]** を選択し、VS Code 統合ターミナルを開きます。
-3. 統合ターミナルで、次のコマンドを入力して、dotnet で **AzureIoTEdgeModule** テンプレートをインストール (または更新) します。
+2. 統合ターミナルで、次のコマンドを入力して、dotnet で **AzureIoTEdgeModule** テンプレートをインストール (または更新) します。
 
     ```cmd/sh
     dotnet new -i Microsoft.Azure.IoT.Edge.Module
     ```
 
-2. 新しいモジュールのプロジェクトを作成します。 次のコマンドにより、現在の作業フォルダーにプロジェクト フォルダー **FilterModule** が作成されます。
+3. 新しいモジュールのプロジェクトを作成します。 次のコマンドにより、プロジェクト フォルダー **FilterModule** とご自身のコンテナー リポジトリが作成されます。 Azure コンテナー レジストリを使用している場合、2 番目のパラメーターの形式は `<your container registry name>.azurecr.io` にする必要があります。 現在の作業フォルダーで次のコマンドを入力します。
 
     ```cmd/sh
-    dotnet new aziotedgemodule -n FilterModule
+    dotnet new aziotedgemodule -n FilterModule -r <your container registry address>/filtermodule
     ```
  
-3. **[ファイル]** > **[フォルダーを開く]** を選択します。
-4. **FilterModule** フォルダーに移動し、**[フォルダーの選択]** をクリックして、VS Code でプロジェクトを開きます。
-5. VS Code エクスプローラーで **[Program.cs]** をクリックして開きます。
+4. **[ファイル]** > **[フォルダーを開く]** を選択します。
+5. **FilterModule** フォルダーに移動し、**[フォルダーの選択]** をクリックして、VS Code でプロジェクトを開きます。
+6. VS Code エクスプローラーで **[Program.cs]** をクリックして開きます。
 
    ![Program.cs を開く][1]
 
-6. **[FilterModule]** 名前空間の上部で、あとで使用する型として 3 つの `using` ステートメントを追加します。
+7. **[FilterModule]** 名前空間の上部で、あとで使用する型として 3 つの `using` ステートメントを追加します。
 
     ```csharp
     using System.Collections.Generic;     // for KeyValuePair<>
@@ -79,13 +79,13 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
     using Newtonsoft.Json;                // for JsonConvert
     ```
 
-6. `temperatureThreshold` 変数を **Program** クラスに追加します。 この変数により、データが IoT Hub に送信される基準値が設定されます。データは、測定温度がこの値を超えると送信されます。 
+8. `temperatureThreshold` 変数を **Program** クラスに追加します。 この変数により、データが IoT Hub に送信される基準値が設定されます。データは、測定温度がこの値を超えると送信されます。 
 
     ```csharp
     static int temperatureThreshold { get; set; } = 25;
     ```
 
-7. `MessageBody`、`Machine`、および `Ambient` クラスを **Program** クラスに追加します。 これらのクラスは、受信メッセージの本文に対して予期されるスキーマを定義します。
+9. `MessageBody`、`Machine`、および `Ambient` クラスを **Program** クラスに追加します。 これらのクラスは、受信メッセージの本文に対して予期されるスキーマを定義します。
 
     ```csharp
     class MessageBody
@@ -106,7 +106,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
     }
     ```
 
-8. **Init** メソッドでは、コードによって **DeviceClient** オブジェクトが作成され、構成されます。 このオブジェクトにより、モジュールはローカルの Azure IoT Edge ランタイムに接続し、メッセージを送受信することができます。 **Init** メソッドで使用される接続文字列は、IoT Edge ランタイムによってモジュールに提供されます。 **DeviceClient** の作成後、コードによって、Module Twin の目的のプロパティから TemperatureThreshold が読み取られ、IoT Edge ハブから **input1** エンドポイントを介してメッセージを受信するためのコールバックが登録されます。 `SetInputMessageHandlerAsync` メソッドを新しいメソッドで置き換え、対象プロパティの更新のために `SetDesiredPropertyUpdateCallbackAsync` メソッドを追加します。 この変更を行うには、**Init** メソッドの最後の行を次のコードに置き換えます。
+10. **Init** メソッドでは、コードによって **DeviceClient** オブジェクトが作成され、構成されます。 このオブジェクトにより、モジュールはローカルの Azure IoT Edge ランタイムに接続し、メッセージを送受信することができます。 **Init** メソッドで使用される接続文字列は、IoT Edge ランタイムによってモジュールに提供されます。 **DeviceClient** の作成後、コードによって、Module Twin の目的のプロパティから TemperatureThreshold が読み取られ、IoT Edge ハブから **input1** エンドポイントを介してメッセージを受信するためのコールバックが登録されます。 `SetInputMessageHandlerAsync` メソッドを新しいメソッドで置き換え、対象プロパティの更新のために `SetDesiredPropertyUpdateCallbackAsync` メソッドを追加します。 この変更を行うには、**Init** メソッドの最後の行を次のコードに置き換えます。
 
     ```csharp
     // Register callback to be called when a message is received by the module
@@ -127,7 +127,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
     await ioTHubModuleClient.SetInputMessageHandlerAsync("input1", FilterMessages, ioTHubModuleClient);
     ```
 
-9. `onDesiredPropertiesUpdate` メソッドを **Program** クラスに追加します。 このメソッドは、モジュール ツインから対象プロパティの更新を受け取り、それに合わせて **temperatureThreshold** 変数を更新します。 すべてのモジュールに独自のモジュール ツインがあり、これにより、モジュール内で実行されているコードをクラウドから直接構成できます。
+11. `onDesiredPropertiesUpdate` メソッドを **Program** クラスに追加します。 このメソッドは、モジュール ツインから対象プロパティの更新を受け取り、それに合わせて **temperatureThreshold** 変数を更新します。 すべてのモジュールに独自のモジュール ツインがあり、これにより、モジュール内で実行されているコードをクラウドから直接構成できます。
 
     ```csharp
     static Task onDesiredPropertiesUpdate(TwinCollection desiredProperties, object userContext)
@@ -158,7 +158,7 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
     }
     ```
 
-10. `PipeMessage` メソッドを `FilterMessages` メソッドで置き換えます。 このメソッドは、モジュールが IoT Edge ハブからメッセージを受け取るたびに呼び出されます。 これにより、モジュール ツインで設定されているしきい値を下回る温度を報告するメッセージは除外されます。 また、**MessageType** プロパティを、値が **Alert** に設定されたメッセージに追加します。 
+12. `PipeMessage` メソッドを `FilterMessages` メソッドで置き換えます。 このメソッドは、モジュールが IoT Edge ハブからメッセージを受け取るたびに呼び出されます。 これにより、モジュール ツインで設定されているしきい値を下回る温度を報告するメッセージは除外されます。 また、**MessageType** プロパティを、値が **Alert** に設定されたメッセージに追加します。 
 
     ```csharp
     static async Task<MessageResponse> FilterMessages(Message message, object userContext)
@@ -214,27 +214,20 @@ IoT Edge モジュールを使用して、ビジネス ロジックを実装す�
     }
     ```
 
-11. プロジェクトをビルドするには、エクスプローラーで **FilterModule.csproj** ファイルを右クリックし、**[Build IoT Edge module]\(IoT Edge モジュールのビルド\)** をクリックします。 このプロセスにより、モジュールがコンパイルされ、バイナリとその依存関係が、Docker イメージの作成に使用するフォルダーにエクスポートされます。
-
-   ![IoT Edge モジュールをビルドする][2]
+13. このファイルを保存します。
 
 ## <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Docker イメージを作成してレジストリに発行する
 
-1. VS Code エクスプローラーで、**Docker** フォルダーを展開します。 次に、コンテナー プラットフォームのフォルダー、**linux-x64** または **windows-nano** を展開します。
-
-   ![Docker コンテナー プラットフォームを選択する][3]
-
-2. **[Dockerfile]** ファイルを右クリックし、**[Build IoT Edge module Docker image] \(IoT Edge モジュール Docker イメージのビルド)** をクリックします。 
-3. **[フォルダーの選択]** ウィンドウで、`./bin/Debug/netcoreapp2.0/publish` を参照するか入力します。 **[Select Folder as EXE_DIR] \(EXE_DIR としてフォルダーを選択)** をクリックします。
-4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 たとえば、「 `<your container registry address>/filtermodule:latest`」のように入力します。 コンテナー レジストリ アドレスは、レジストリからコピーしたログイン サーバーと同じです。 `<your container registry name>.azurecr.io` の形式にする必要があります。
-5. Azure コンテナー レジストリを作成したときにコピーしたユーザー名、パスワード、およびログイン サーバーを使用して Docker にサインインします。 VS Code 統合ターミナルに次のコマンドを入力します。 
+1. VS Code 統合ターミナルで次のコマンドを入力して、Docker にサインインします。 
      
    ```csh/sh
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-6. コンテナー レジストリにイメージをプッシュします。 **[表示]** > **[コマンド パレット]** を選択し、**[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** メニュー コマンドを検索します。 VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 手順 4. で使用したのと同じイメージ名を使用してください。
-7. Azure Portal でイメージを表示するには、Azure コンテナー レジストリに移動して **[リポジトリ]** を選択します。 **filtermodule** が一覧表示されます。
+2. VS Code エクスプローラーで、**module.json** ファイルを右クリックし、**[Build and Push IoT Edge module Docker image]\(IoT Edge モジュール Docker イメージをビルドしてプッシュ\)** をクリックします。 VS Code ウィンドウの上部にあるポップアップ ドロップダウン ボックスで、コンテナー プラットフォームを選択します。Linux コンテナーの場合は **[Amd64]**、Windows コンテナーの場合は **[windows-amd64]** を選択します。 VS Code によってコードがビルドされ、`FilterModule.dll` がコンテナーに格納されて、指定したコンテナー レジストリにプッシュされます。
+
+
+3. VS Code 統合ターミナルで、タグを含む完全なコンテナー イメージ アドレスを取得できます。 ビルドおよびプッシュ定義の詳細については、`module.json` ファイルを参照してください。
 
 ## <a name="add-registry-credentials-to-edge-runtime"></a>Edge ランタイムにレジストリの資格情報を追加する
 Edge デバイスを実行しているコンピューターの Edge ランタイムに、レジストリの資格情報を追加します。 この資格情報により、コンテナーをプルするためのアクセス権がランタイムに付与されます。 
@@ -256,15 +249,15 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
 1. [Azure Portal](https://portal.azure.com) で、IoT ハブに移動します。
 2. **[IoT Edge (preview)]\(IoT Edge \(プレビュー\)\)** に移動し、IoT Edge デバイスを選びます。
 3. **[Set Modules] \(モジュールの設定)** を選択します。 
-2. **tempSensor** モジュールが自動的に設定されていることを確認します。 設定されていない場合は、次の手順を使用して追加します。
+4. **tempSensor** モジュールが自動的に設定されていることを確認します。 設定されていない場合は、次の手順を使用して追加します。
     1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
     2. **[名前]** フィールドに「`tempSensor`」と入力します。
     3. **[イメージの URI]** フィールドに「`microsoft/azureiotedge-simulated-temperature-sensor:1.0-preview`」と入力します。
     4. 他の設定はそのままにして、**[保存]** をクリックします。
-9. 前のセクションで作成した **filterModule** モジュールを追加します。 
+5. 前のセクションで作成した **filterModule** モジュールを追加します。 
     1. **[Add IoT Edge Module]\(IoT Edge モジュールの追加\)** を選びます。
     2. **[名前]** フィールドに「`filterModule`」と入力します。
-    3. **[イメージの URI]** フィールドに、イメージ アドレスを入力します (`<your container registry address>/filtermodule:latest` など)。
+    3. **[イメージの URI]** フィールドに、イメージ アドレスを入力します (`<your container registry address>/filtermodule:0.0.1-amd64` など)。 完全なイメージ アドレスは、前のセクションから見つけることができます。
     4. **[有効]** ボックスをオンにして、モジュール ツインを編集できるようにします。 
     5. モジュール ツインのテキスト ボックスの JSON を、次の JSON に置き換えます。 
 
@@ -277,8 +270,8 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
         ```
  
     6. **[Save]** をクリックします。
-12. **[次へ]** をクリックします。
-13. **[Specify Routes] \(ルートの指定)** の手順で、下記の JSON をテキスト ボックスにコピーします。 モジュールによって、すべてのメッセージが Edge ランタイムに発行されます。 メッセージが流れる場所は、ランタイム内の宣言型ルールによって定義されます。 このチュートリアルでは、2 つのルートが必要です。 1 つ目のルートは、**FilterMessages** ハンドラーで構成された "input1" エンドポイント経由で、温度センサーからフィルター モジュールにメッセージを転送します。 2 つ目のルートは、フィルター モジュールから IoT ハブにメッセージを転送します。 このルートでは、`upstream` は特別な転送先で、Edge Hub に対して、メッセージを IoT ハブに送信するように指示します。 
+6. **[次へ]** をクリックします。
+7. **[Specify Routes] \(ルートの指定)** の手順で、下記の JSON をテキスト ボックスにコピーします。 モジュールによって、すべてのメッセージが Edge ランタイムに発行されます。 メッセージが流れる場所は、ランタイム内の宣言型ルールによって定義されます。 このチュートリアルでは、2 つのルートが必要です。 1 つ目のルートは、**FilterMessages** ハンドラーで構成された "input1" エンドポイント経由で、温度センサーからフィルター モジュールにメッセージを転送します。 2 つ目のルートは、フィルター モジュールから IoT ハブにメッセージを転送します。 このルートでは、`upstream` は特別な転送先で、Edge Hub に対して、メッセージを IoT ハブに送信するように指示します。 
 
     ```json
     {
@@ -289,21 +282,21 @@ Edge デバイスを実行しているコンピューターの Edge ランタイ
     }
     ```
 
-4. **[次へ]** をクリックします。
-5. **[Review Template] \(テンプレートのレビュー)** の手順で、**[送信]** をクリックします。 
-6. IoT Edge デバイスの詳細ページに戻り、**[更新]** をクリックします。 新しい **filtermodule** が、**tempSensor** モジュールおよび **IoT Edge ランタイム**と一緒に実行されていることが表示されます。 
+8. **[次へ]** をクリックします。
+9. **[Review Template] \(テンプレートのレビュー)** の手順で、**[送信]** をクリックします。 
+10. IoT Edge デバイスの詳細ページに戻り、**[更新]** をクリックします。 新しい **filtermodule** が、**tempSensor** モジュールおよび **IoT Edge ランタイム**と一緒に実行されていることが表示されます。 
 
 ## <a name="view-generated-data"></a>生成されたデータを表示する
 
 IoT Edge デバイスから IoT ハブに送信されたデバイスからクラウドへのメッセージを監視するには:
 1. Azure IoT ツールキット拡張機能を IoT ハブの接続文字列で構成します。 
     1. **[表示]** > **[エクスプローラー]** の順に選択して、VS Code エクスプローラーを開きます。 
-    3. エクスプローラーで、**[IOT HUB DEVICES]\(IoT ハブ デバイス\)**、**[...]** の順にクリックします。**[Set IoT Hub Connection String]\(IoT ハブ接続文字列の設定\)** をクリックし、ポップアップ ウィンドウに、IoT Edge デバイスの接続先 IoT ハブの接続文字列を入力します。 
+    2. エクスプローラーで、**[IOT HUB DEVICES]\(IoT ハブ デバイス\)**、**[...]** の順にクリックします。**[Set IoT Hub Connection String]\(IoT ハブ接続文字列の設定\)** をクリックし、ポップアップ ウィンドウに、IoT Edge デバイスの接続先 IoT ハブの接続文字列を入力します。 
 
         接続文字列を見つけるには、Azure Portal で IoT ハブのタイルをクリックし、**[共有アクセス ポリシー]** をクリックします。 **[共有アクセス ポリシー]** で、**[iothubowner]** ポリシーをクリックし、**[iothubowner]** ウィンドウで IoT ハブ接続文字列をコピーします。   
 
-1. IoT ハブに届くデータを監視するには、**[表示]** > **[コマンド パレット]** の順に選択し、**[IoT: Start monitoring D2C message]\(IoT: D2C メッセージの監視を開始\)** メニュー コマンドを検索します。 
-2. データの監視を停止するには、**[IoT: Stop monitoring D2C message] \(IoT: D2C メッセージの監視を停止)** メニュー コマンドを使用します。 
+2. IoT ハブに届くデータを監視するには、**[表示]** > **[コマンド パレット]** の順に選択し、**[IoT: Start monitoring D2C message]\(IoT: D2C メッセージの監視を開始\)** メニュー コマンドを検索します。 
+3. データの監視を停止するには、**[IoT: Stop monitoring D2C message] \(IoT: D2C メッセージの監視を停止)** メニュー コマンドを使用します。 
 
 ## <a name="next-steps"></a>次の手順
 

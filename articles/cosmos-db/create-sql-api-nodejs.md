@@ -15,17 +15,17 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 11/29/2017
 ms.author: mimig
-ms.openlocfilehash: 9aa603c438b267064c2238192669126847f953ef
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: cbc6b084620e716496716cef51461f714c9988b2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-sql-api-app-with-nodejs-and-the-azure-portal"></a>Azure Cosmos DB: Node.js と Azure Portal による SQL API アプリの構築
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 さらに、[SQL Node.js API](sql-api-sdk-node.md) に基づいたコンソール アプリを構築して実行します。
+このクイック スタートでは、Azure Portal を使用して、Azure Cosmos DB [SQL API](sql-api-introduction.md) アカウント、ドキュメント データベース、コレクションを作成する方法を説明します。 さらに、[SQL Node.js API](sql-api-sdk-node.md) に基づいたコンソール アプリを構築して実行します。
 
 ## <a name="prerequisites"></a>前提条件
 

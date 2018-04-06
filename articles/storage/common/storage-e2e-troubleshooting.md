@@ -1,6 +1,6 @@
 ---
-title: "診断と Message Analyzer を使用した Azure Storage のトラブルシューティング | Microsoft Docs"
-description: "Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を使用したエンド ツー エンド トラブルシューティングについて説明するチュートリアル"
+title: 診断と Message Analyzer を使用した Azure Storage のトラブルシューティング | Microsoft Docs
+description: Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を使用したエンド ツー エンド トラブルシューティングについて説明するチュートリアル
 services: storage
 documentationcenter: dotnet
 author: tamram
@@ -13,11 +13,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: tamram
-ms.openlocfilehash: ee0e4671c31e97816576735b7bd2ee2f1629323e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: 324370ae18627a1985e6a40aec11ee2fa871e93b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Azure Storage のメトリックおよびログ、AzCopy、Message Analyzer を使用したエンド ツー エンド トラブルシューティング
 [!INCLUDE [storage-selector-portal-e2e-troubleshooting](../../../includes/storage-selector-portal-e2e-troubleshooting.md)]
@@ -35,9 +35,6 @@ Microsoft Azure Storage を使用してクライアント アプリケーショ�
   
   * **ストレージ メトリック** は、ストレージ アカウントのトランザクション メトリックと容量メトリックを追跡するためのものです。 メトリックを使用すると、アプリケーションがどのように機能しているかを、さまざまな基準に従って判断できます。 Storage Analytics が追跡するメトリックの種類の詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](/rest/api/storageservices/Storage-Analytics-Metrics-Table-Schema) 」を参照してください。
   * **ストレージ ログ** は、Azure Storage サービスへの各要求をサーバー側のログに記録します。 このログは、実行された操作、操作のステータス、遅延情報などを含む各要求の詳細データを追跡します。 Storage Analytics がログに書き込む要求および応答データの詳細については、「 [Storage Analytics のログの形式](/rest/api/storageservices/Storage-Analytics-Log-Format) 」を参照してください。
-
-> [!NOTE]
-> レプリケーションの種類がゾーン冗長ストレージ (ZRS) のストレージ アカウントでは、メトリックとログがサポートされます。 ZRS クラシック アカウントでは、メトリックとログはサポートされません。 ZRS の詳細については、「[ゾーン冗長ストレージ](storage-redundancy.md#zone-redundant-storage)」をご覧ください。 
 
 * **Azure Portal** [Azure Portal](https://portal.azure.com) では、ストレージ アカウントのメトリックとログを構成することができます。 アプリケーションの経時的な動作を表すチャートやグラフを表示できるほか、指定したメトリックに関してアプリケーションが予期しない動作をした場合に通知するよう、アラートを構成することもできます。
   

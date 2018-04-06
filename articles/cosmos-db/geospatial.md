@@ -16,10 +16,10 @@ ms.date: 10/20/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 3e778f4a9b7ec4935d53eb335462f3c414ff99cd
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
 この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。

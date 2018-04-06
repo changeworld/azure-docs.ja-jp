@@ -1,6 +1,6 @@
 ---
 title: Kubernertes on Azure チュートリアル - Kubernetes の監視
-description: AKS チュートリアル - Microsoft Operations Management Suite (OMS) を使用した Kubernetes の監視
+description: AKS チュートリアル - Azure Log Analytics で Kubernetes を監視する
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 227601858dbe07e6cb774a2d24878ddca05aaf56
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 86ae0c5ab302c49fa58df887d9dffef6cec31708
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="monitor-azure-container-service-aks"></a>Azure Container Service (AKS) の監視
+# <a name="tutorial-monitor-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) の監視
 
 Kubernetes クラスターとコンテナーの監視は重要なことであり、複数のアプリケーションを含む大規模な運用クラスターを実行するときは特に重要です。
 
@@ -40,11 +40,11 @@ Azure Portal で **[リソースの作成]** を選択し、`Container Monitorin
 
 ![ソリューションの追加](./media/container-service-tutorial-kubernetes-monitor/add-solution.png)
 
-新しい OMS ワークスペースを作成するか、既存の OMS ワークスペースを選択します。 OMS ワークスペース フォームでは、このプロセスについて説明しています。
+新しい Log Analytics ワークスペースを作成するか、既存の Log Analytics ワークスペースを選択します。 Log Analytics ワークスペース フォームでは、このプロセスについて説明しています。
 
 ワークスペースを作成するときに、簡単に取得できるように **[ダッシュボードにピン留めする]** を選択します。
 
-![OMS ワークスペース](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
+![Log Analytics ワークスペース](./media/container-service-tutorial-kubernetes-monitor/oms-workspace.png)
 
 操作が完了したら、**[OK]** をクリックします。 検証が完了したら、**[作成]** を選択して、コンテナー監視ソリューションを作成します。
 
@@ -58,7 +58,7 @@ Kubernetes ノードにソリューション エージェントを構成する�
 
 ## <a name="create-kubernetes-secret"></a>Kubernetes シークレットを作成する
 
-[kubectl create secret][kubectl-create-secret] コマンドを使用して、OMS ワークスペース設定を `omsagent-secret` という名前の Kubernetes シークレットに格納します。 `WORKSPACE_ID` を OMS ワークスペース ID で更新し、`WORKSPACE_KEY` をワークスペース キーで更新します。
+[kubectl create secret][kubectl-create-secret] コマンドを使用して、Log Analytics ワークスペース設定を `omsagent-secret` という名前の Kubernetes シークレットに格納します。 `WORKSPACE_ID` を Log Analytics ワークスペース ID で更新し、`WORKSPACE_KEY` をワークスペース キーで更新します。
 
 ```console
 kubectl create secret generic omsagent-secret --from-literal=WSID=WORKSPACE_ID --from-literal=KEY=WORKSPACE_KEY
@@ -154,7 +154,7 @@ NAME       DESIRED   CURRENT   READY     UP-TO-DATE   AVAILABLE   NODE-SELECTOR 
 omsagent   3         3         3         3            3           beta.kubernetes.io/os=linux   8m
 ```
 
-エージェントが実行した後、OMS がデータを取り込んで処理するまでには数分かかります。
+エージェントが実行状態になった後、Log Analytics がデータを取り込んで処理するまでには数分かかります。
 
 ## <a name="access-monitoring-data"></a>監視データにアクセスする
 
@@ -166,7 +166,7 @@ Azure ポータルで、ポータル ダッシュボードにピン留めされ�
 
 ## <a name="next-steps"></a>次の手順
 
-このチュートリアルでは、OMS で クラスターを監視しました。 次のタスクを行いました。
+このチュートリアルでは、Log Analytics を使用して Kubernetes クラスターを監視しました。 次のタスクを行いました。
 
 > [!div class="checklist"]
 > * コンテナー監視ソリューションの構成

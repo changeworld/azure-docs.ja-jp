@@ -15,11 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/23/2017
 ms.author: glenga
-ms.openlocfilehash: eff36b6628c86038b3d08bf3cfd32a6322508baa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.custom: cc996988-fb4f-47
+ms.openlocfilehash: bdbbb80ff1b367a0da37094e787d03d23a7d4d59
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Queue Storage のバインド
 

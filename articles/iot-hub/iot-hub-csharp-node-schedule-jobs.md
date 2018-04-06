@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub を使用してジョブのスケジュールを設定する (.NET/Node) | Microsoft Docs"
-description: "複数のデバイスでダイレクト メソッドを呼び出すように Azure IoT Hub ジョブのスケジュールを設定する方法。 Azure IoT device SDK for Node.js を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ジョブを実行するサービス アプリを実装します。"
+title: Azure IoT Hub を使用してジョブのスケジュールを設定する (.NET/Node) | Microsoft Docs
+description: 複数のデバイスでダイレクト メソッドを呼び出すように Azure IoT Hub ジョブのスケジュールを設定する方法。 Azure IoT device SDK for Node.js を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ジョブを実行するサービス アプリを実装します。
 services: iot-hub
 documentationcenter: .net
 author: juanjperez
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 2233356e-b005-4765-ae41-3a4872bda943
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: juanpere
-ms.openlocfilehash: 3efe4612c6d628e070ba6e99808f79f61ead426e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 360daf918051ce901a81f96d1873dc90af238e19
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-and-broadcast-jobs-netnodejs"></a>ジョブのスケジュールとブロードキャスト (.NET/Node.js)
 
@@ -36,6 +36,8 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 * デバイス ツインとプロパティ: [デバイス ツインの概要][lnk-get-started-twin]に関する記事と[デバイス ツインのプロパティの使用方法に関するチュートリアル][lnk-twin-props]
 * ダイレクト メソッド: [ダイレクト メソッドに関する IoT Hub 開発者ガイド][lnk-dev-methods]と[ダイレクト メソッドの使用に関するチュートリアル][lnk-c2d-methods]
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 このチュートリアルでは、次の操作方法について説明します。
 

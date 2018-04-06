@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement の概要とベスト プラクティス"
-description: "Azure Mobile Engagement を初めて利用する方のための概要とベスト プラクティス"
+title: Azure Mobile Engagement の概要とベスト プラクティス
+description: Azure Mobile Engagement を初めて利用する方のための概要とベスト プラクティス
 services: mobile-engagement
 documentationcenter: mobile
 author: wesmc7777
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: dfce1183-6398-466e-aa7e-ed702fb52818
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: wesmc;ricksal
-ms.openlocfilehash: 0cb54f6c4b84597fbc21fa691f88f6f7a37beedd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf9dc5febeae27473d2adb8a024536b945bb9d13
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement---getting-started-guide-with-best-practices"></a>Azure Mobile Engagement - 概要とベスト プラクティス
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 ## <a name="overview"></a>概要
 **モバイル画面のスペースを巡る競争は激しさを増しています。** 2013 年に行われた調査によれば、平均的なモバイル デバイスには 27 個のアプリケーションがインストールされています。 ユーザーが日頃アプリに費やす月間の利用時間は 30 時間となっています。 その時間の大半約 20 時間は、ソーシャル ネットワークやゲームに費やされていました。 2014 年には、Android マーケットでユーザーに提供されているアプリケーション数は約 150 万個を突破しました。 Apple ストアで提供されているアプリの数も 120 万個に及びます。 今もなおモバイル アプリは増え続け、この急成長する市場で開発者は競争を繰り広げています。 
 
@@ -239,7 +243,7 @@ Azure Mobile Engagement は、デバイスごとに一意の ID を生成する�
 ###### <a name="events"></a>イベント
 アプリに対するユーザーの対話操作はイベントとして報告されます。 イベントの例として、コンテンツの共有、ビデオの起動など単発的に行われるアクションがあります。 イベントにタグ付けすることで、アプリの使われ方を示すデータを収集することができます。 
 
-###### <a name="jobs"></a>ジョブ
+###### <a name="jobs"></a>[ジョブ]
 継続性のある操作はジョブとして報告されます。 いくつかの例を次に示します。
 
 * API 呼び出しの実行
@@ -248,7 +252,7 @@ Azure Mobile Engagement は、デバイスごとに一意の ID を生成する�
 * 購入プロセスの期間
 * ビデオの視聴
 
-###### <a name="errors"></a>エラー
+###### <a name="errors"></a>Errors
 アプリによって検出された問題はエラーとして報告されます。 たとえば、ユーザーの操作の誤りや API 呼び出しの失敗がエラーに該当します。
 
 ###### <a name="application-information"></a>アプリケーション情報
@@ -314,7 +318,7 @@ Azure Mobile Engagement のセットアップはきわめて単純です。 ユ�
 * geo ロケーション: ブランドにとって非常に大きな機会となる機能です。 この機能によって、適切な時間に適切な場所で広告を配信することができます。 エンド ユーザーの行動データを十分に収集したことを確認したうえで、geo ロケーションの使用を開始するようお勧めします。
 * データ プッシュ: データ プッシュは、決して目立った活動ではありませんが、 エンド ユーザーの行動に基づいてアプリケーションをカスタマイズすることができます。 たとえば、ハイテク製品を高頻度で閲覧するユーザー セグメントがある場合、アプリ所有者は、ユーザーのホーム ページをハイテク コンテンツでパーソナライズするデータ プッシュを送ることができます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure Mobile Engagement アカウントを作成します](mobile-engagement-create.md)。
 * Mobile Engagement 戦略を定義する方法について詳しくは、 [Mobile Engagement 戦略の定義](mobile-engagement-define-your-mobile-engagement-strategy.md) に関するページを参照してください。
 

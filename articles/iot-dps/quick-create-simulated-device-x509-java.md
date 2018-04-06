@@ -1,22 +1,22 @@
 ---
-title: "シミュレートされた X.509 デバイスを Java を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs"
-description: "Azure クイックスタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする"
+title: シミュレートされた X.509 デバイスを Java を使用して Azure IoT Hub にプロビジョニングする | Microsoft Docs
+description: Azure クイックスタート - IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 services: iot-dps
-keywords: 
+keywords: ''
 author: msebolt
 ms.author: v-masebo
 ms.date: 12/21/2017
 ms.topic: quickstart
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: java
 ms.custom: mvc
-ms.openlocfilehash: 7e4ad361df8a37d4a82c1bc50c6fb134a1ad5159
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: f9eb572897854cfb2927b0282d25d5c272abd0e8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-provision-a-simulated-x509-device-using-java-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の Java デバイス SDK を使用して、シミュレートされた X.509 デバイスを作成してプロビジョニングする
 [!INCLUDE [iot-dps-selector-quick-create-simulated-device-x509](../../includes/iot-dps-selector-quick-create-simulated-device-x509.md)]
@@ -25,6 +25,7 @@ ms.lasthandoff: 03/02/2018
 
 事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順を済ませておいてください。
 
+[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 
 ## <a name="prepare-the-environment"></a>環境の準備 
 
@@ -39,7 +40,12 @@ ms.lasthandoff: 03/02/2018
     ```cmd/sh
     git clone https://github.com/Azure/azure-iot-sdk-java.git --recursive
     ```
-
+1. ルート azure-iot-sdk-java ディレクトリに移動し、プロジェクトをビルドして、必要なパッケージすべてをダウンロードします。
+   
+   ```cmd/sh
+   cd azure-iot-sdk-java
+   mvn install -DskipTests=true
+   ```
 1. 証明書ジェネレーター プロジェクトに移動し、プロジェクトをビルドします。 
 
     ```cmd/sh

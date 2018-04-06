@@ -13,15 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: d265d35c7d5a394afa0e59f40ff1a5741e0ec35c
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 670cf45a48ca4b72576cedddd4678c0d569401cd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>cloud-to-device メッセージを IoT Hub から送信する
 
 ソリューション バックエンドから、デバイス アプリに一方向の通知を送信するには、IoT hub からデバイスに cloud-to-device メッセージを送信します。 IoT Hub でサポートされるその他の cloud-to-device オプションの詳細については、「[cloud-to-device 通信に関するガイダンス][lnk-c2d-guidance]」をご覧ください。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 C2D メッセージはサービス向けエンドポイント (**/messages/devicebound**) を介して送信できます。 デバイスは、次にそのメッセージをデバイス固有のエンドポイント (**/devices/{deviceId}/messages/devicebound**) を介して受信します。
 

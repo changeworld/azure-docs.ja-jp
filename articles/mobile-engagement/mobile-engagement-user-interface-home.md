@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement ユーザー インターフェイス - ホーム"
-description: "Azure Mobile Engagement を利用し、既存のアプリケーションとプロジェクトを管理する方法について説明します。"
+title: Azure Mobile Engagement ユーザー インターフェイス - ホーム
+description: Azure Mobile Engagement を利用し、既存のアプリケーションとプロジェクトを管理する方法について説明します。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: aff578d2-40f6-43e4-b0ea-7d2674cb28a1
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 0f15cb975f57f6f5cab12d5118ff50a6fab14388
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0379e51a30927af88367fc687d8f8ce66eb827f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-your-existing-application-and-projects"></a>既存のアプリケーションとプロジェクトを管理する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 この記事では、**Mobile Engagement** ポータルの**ホーム** ページについて説明します。 **Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。 ポータルを使い始めるには、最初に **Azure Mobile Engagement** アカウントを作成する必要があることに注意してください。 
 
 ホーム ページに移動するには、ページの左上にある **[ホーム]** をクリックします。 ここには、選択されたコレクションの一部であるすべてのアプリケーションの一覧が含まれます。 このページには、アプリケーションの簡単な概要だけが表示されます。
@@ -42,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 * **セッション**: セッションは、ユーザーが使用を開始してから終了するまでにユーザーによって実行されるアプリケーションの 1 回の使用です。
 * **セッションの傾向**: 過去 2 週間のセッションの増加率。
 
-アプリケーションをクリックすると、UI を使用してアプリの監視と管理を開始できます。 次に例を示します。    
+アプリケーションをクリックすると、UI を使用してアプリの監視と管理を開始できます。 例:     
 
 * [アプリケーションに関するデータをリアルタイムに監視する](mobile-engagement-user-interface-monitor.md)
 * [アプリケーションに関する履歴データを分析する](mobile-engagement-user-interface-analytics.md)

@@ -1,24 +1,24 @@
 ---
-title: "Azure ExpressRoute 導入の前提条件 | Microsoft Docs"
-description: "このページでは、Azure ExpressRoute 回線を注文する前に満たす必要がある要件を一覧します。"
+title: Azure ExpressRoute 導入の前提条件 | Microsoft Docs
+description: このページでは、Azure ExpressRoute 回線を注文する前に満たす必要がある要件を一覧します。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: f872d25e-acfd-405d-9d1b-dcb9f323a2ff
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/30/2017
+ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 8629235511e0dda149ceef6a9c834c3042f64f90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 332bfba0664391b6126669c4c89e38d1af4cf4fa
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="expressroute-prerequisites--checklist"></a>ExpressRoute の前提条件とチェック リスト
 ExpressRoute を使用して Microsoft クラウド サービスに接続する場合は、次のセクションにある前提条件を満たしていることを確認する必要があります。
@@ -46,6 +46,7 @@ ExpressRoute で Office 365 を有効にする予定がある場合は、以下�
 
 * [Office 365 向け ExpressRoute の概要](https://support.office.com/en-us/article/Azure-ExpressRoute-for-Office-365-6d2534a2-c19c-4a99-be5e-33a0cee5d3bd)
 * [Office 365 向け ExpressRoute を使用したルーティング](https://support.office.com/en-us/article/Routing-with-ExpressRoute-for-Office-365-e1da26c6-2d39-4379-af6f-4da213218408)
+* [ExpressRoute による高可用性とフェールオーバー](https://aka.ms/erhighavailability)
 * [Office 365 URL および IP アドレス範囲](https://support.office.com/en-us/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)
 * [Office 365 のネットワーク計画とパフォーマンスのチューニング](https://support.office.com/en-us/article/Network-planning-and-performance-tuning-for-Office-365-e5f1228c-da3c-4654-bf16-d163daee8848)
 * [ネットワーク帯域幅の計算ツールと各種ツール](https://support.office.com/en-us/article/Network-and-migration-planning-for-Office-365-f5ee6c33-bcd7-4b0b-b0f8-dc1d9fb8d132)
@@ -58,7 +59,7 @@ ExpressRoute で Dynamics 365 を有効にする予定がある場合は、以�
 * [Dynamics 365 と ExpressRoute のホワイト ペーパー](http://download.microsoft.com/download/B/2/8/B2896B38-9832-417B-9836-9EF240C0A212/Microsoft%20Dynamics%20365%20and%20ExpressRoute.pdf)
 * [Dynamics 365 URL](https://support.microsoft.com/kb/2655102) および [IP アドレス範囲](https://support.microsoft.com/kb/2728473)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。
 * ExpressRoute 接続プロバイダーを探します。 「 [ExpressRoute パートナーとピアリングの場所](expressroute-locations.md)」を参照してください。
 * [ルーティング](expressroute-routing.md)、[NAT](expressroute-nat.md)、[QoS](expressroute-qos.md) の要件を参照してください。

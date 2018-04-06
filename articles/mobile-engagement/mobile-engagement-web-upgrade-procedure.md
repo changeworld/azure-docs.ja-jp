@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Web SDK のアップグレード手順 | Microsoft Docs"
-description: "Web SDK for Azure Mobile Engagement の最新の更新プログラムと手順"
+title: Azure Mobile Engagement Web SDK のアップグレード手順 | Microsoft Docs
+description: Web SDK for Azure Mobile Engagement の最新の更新プログラムと手順
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a20529b4-ec8d-4503-8ae9-09b5f0846d5b
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/07/2016
 ms.author: piyushjo
-ms.openlocfilehash: afa8037dcb7a53042fa606e2c4014b442d4be326
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42f78b5e6bfa028f3a798f6cb6c0dee3f17b3ebe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-mobile-engagement-web-sdk-upgrade-procedures"></a>Azure Mobile Engagement Web SDK のアップグレード手順
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 以前のバージョンの Azure Mobile Engagement Web SDK を既に Web アプリケーションに統合している場合は、SDK をアップグレードするときに、次の点を考慮する必要があります。
 
 Mobile Engagement Web SDK の一部のバージョンが不足している場合、アップグレード プロセス中に手順をいくつか完了しなければならないことがあります。 たとえば、1.4.0 から 1.6.0 に移行する場合は、1.4.0 から 1.5.0 にアップグレードしたうえで、 1.5.0 から 1.6.0 にアップグレードする手順に従います。

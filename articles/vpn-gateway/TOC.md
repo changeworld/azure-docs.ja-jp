@@ -6,9 +6,10 @@
 ## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json)
 
 # 作業の開始
-## [ルートベースの VPN ゲートウェイの作成 - Azure Portal](create-routebased-vpn-gateway-portal.md)
-## [ルートベースの VPN ゲートウェイの作成 - PowerShell](create-routebased-vpn-gateway-powershell.md)
-## [ルートベースの VPN ゲートウェイの作成 - CLI](create-routebased-vpn-gateway-cli.md)
+## ルートベースの VPN ゲートウェイの作成
+### [Azure Portal](create-routebased-vpn-gateway-portal.md)
+### [Azure PowerShell](create-routebased-vpn-gateway-powershell.md)
+### [Azure CLI](create-routebased-vpn-gateway-cli.md)
 
 # 概念
 ## [VPN Gateway の計画と設計](vpn-gateway-plan-design.md)
@@ -87,13 +88,16 @@
 ### [サンプル: Cisco ASA デバイス (IKEv2/BGP なし)](vpn-gateway-3rdparty-device-config-cisco-asa.md)
 ## [クラシックから Resource Manager への移行](vpn-gateway-classic-resource-manager-migration.md)
 ## [トラブルシューティング](vpn-gateway-troubleshoot.md)
-### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
 ### [コミュニティで推奨される VPN またはファイアウォール デバイスの設定](vpn-gateway-third-party-settings.md)
-### [ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
-#### [ポイント対サイト接続の問題 - Mac OS X VPN クライアント](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
-### [サイト対サイト接続の問題](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
-#### [サイト対サイト接続が断続的に切断される](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [VNet または VPN 接続の構成および検証](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
+### [VNet への VPN スループットの確認](vpn-gateway-validate-throughput-to-vnet.md)
+### ポイント対サイト接続の問題
+#### [ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
+#### [ポイント対サイト接続の問題 - Mac OS X VPN クライアント](vpn-gateway-troubleshoot-point-to-site-osx-ikev2.md)
+### サイト対サイト接続の問題
+#### [サイト対サイト接続の問題](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md)
+#### [サイト対サイト接続が断続的に切断される](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
+
 
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

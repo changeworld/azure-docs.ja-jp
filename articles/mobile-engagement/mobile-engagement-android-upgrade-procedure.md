@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Android SDK の統合"
-description: "Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について"
+title: Azure Mobile Engagement Android SDK の統合
+description: Android SDK for Azure Mobile Engagement の最新の更新情報と更新手順について
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 11618586-c709-49ca-bcd8-745323ff1af6
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 1f047f93fa8bc852b28c86e91d0c007a94fb4299
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 77047cb1dc39fa3c05f58550ceea74e78396157f
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="upgrade-procedures"></a>アップグレードの手順
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 既に古いバージョンの SDK をアプリケーションに統合している場合は、SDK をアップグレードする際に次の点を考慮する必要があります。
 
 SDK の一部のバージョンが不足している場合、いくつかの手順に従う必要があることがあります。 たとえば、1.4.0 から 1.6.0 に移行する場合、まず「1.4.0から 1.5.0」への手順を実行してから「1.5.0 から 1.6.0」への手順を実行する必要があります。
@@ -391,7 +395,7 @@ Reach のアクティビティがカスタマイズされている場合は、�
 
             protected void onDeviceMessageReceived(android.content.Context context, java.lang.String deviceId, java.lang.String payload)
 
-と
+and
 
             protected void onXMPPMessageReceived(android.content.Context context, android.os.Bundle message)
 
@@ -399,7 +403,7 @@ Reach のアクティビティがカスタマイズされている場合は、�
 
             sendMessageToDevice(java.lang.String deviceId, java.lang.String payload, java.lang.String packageName)
 
-と
+and
 
             sendXMPPMessage(android.os.Bundle msg)
 

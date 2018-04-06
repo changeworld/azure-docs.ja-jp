@@ -1,78 +1,80 @@
 ---
-title: "Azure Search 用の Azure Cosmos DB SQL API データ ソースのインデックス作成 | Microsoft Docs"
-description: "この記事では、Azure Cosmos DB (SQL API) をデータ ソースとする Azure Search インデクサーの作成方法について説明します。"
+title: Azure Search 用の Azure Cosmos DB データ ソースのインデックス作成 | Microsoft Docs
+description: この記事では、Azure Cosmos DB をデータ ソースとする Azure Search インデクサーの作成方法について説明します。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: search
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: search
-ms.date: 01/08/2018
+ms.date: 03/23/2018
 ms.author: eugenesh
 robot: noindex
-ms.openlocfilehash: e449f13adcd1a3651e1cac852b23f21d0227038a
-ms.sourcegitcommit: 176c575aea7602682afd6214880aad0be6167c52
+ms.openlocfilehash: 165402f5147224cd355f0ae14642069a3de58f19
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
-
-[Azure Cosmos DB](../cosmos-db/introduction.md) は、Microsoft のグローバル分散型マルチモデル データベースです。 [SQL API](../cosmos-db/sql-api-introduction.md) を使用すると、Azure Cosmos DB で豊富で使い慣れた SQL クエリ機能を利用できるようになるほか、スキーマレスの JSON データに対する待ち時間が一貫して低くなります。 Azure Search は、SQL API とシームレスに統合できます。 Azure Cosmos DB SQL API 用に設計された [Azure Search インデクサー](search-indexer-overview.md)を使用して、JSON ドキュメントを Azure Search インデックスに直接プルできます。 
 
 この記事では、次のことについて説明します:
 
 > [!div class="checklist"]
-> * Azure Cosmos DB SQL API データベースをデータ ソースとして使用するように Azure Search を構成します。 必要に応じて、サブセットを選択するクエリを指定します。
+> * Azure Cosmos DB コレクションをデータ ソースとして使用する [Azure Search インデクサー](search-indexer-overview.md)を構成します。
 > * JSON と互換性のあるデータ型を持つ検索インデックスを作成します。
 > * インデクサーでオンデマンドおよび定期的なインデックス作成を構成します。
 > * 基になるデータの変更に基づいてインデックスを増分更新します。
 
 > [!NOTE]
-> Azure Cosmos DB SQL API とは、次世代の DocumentDB です。 製品名が変更されていますが、下位互換性のために Azure Search インデクサーの `documentdb` 公文は Azure Search API とポータル ページの両方に依然として存在します。 インデクサーを構成するときには、この記事の説明に従って必ず `documentdb` 構文を指定します。
+> Azure Cosmos DB とは、次世代の DocumentDB です。 製品名が変更されていますが、下位互換性のために Azure Search インデクサーの `documentdb` 公文は Azure Search API とポータル ページの両方に依然として存在します。 インデクサーを構成するときには、この記事の説明に従って必ず `documentdb` 構文を指定します。
+
+次のビデオでは、Azure Cosmos DB のプログラム マネージャーである Andrew Liu が、Azure Search インデックスを Azure Cosmos DB コンテナーに追加する方法を紹介しています。
+
+>[!VIDEO https://www.youtube.com/embed/OyoYu1Wzk4w]
 
 <a name="supportedAPIs"></a>
-
 ## <a name="supported-api-types"></a>サポートされる API の種類
 
-Azure Cosmos DB ではさまざまなデータ モデルと API がサポートされていますが、インデクサー サポートは SQL API のみに拡張されます。 
+Azure Cosmos DB ではさまざまなデータ モデルと API がサポートされていますが、Azure Search インデクサーの運用サポートは SQL API のみに拡張されます。 現在、MongoDB API のサポートはパブリック プレビュー段階にあります。  
 
-他の API のサポートは近日公開予定です。 最初にサポートすべきものの優先順位を付けるために、ユーザーの声 Web サイトに投稿してください。
+他の API のサポートは近日公開予定です。 どれを最初にサポートするかは、ユーザーの声 Web サイトでの投票によって決まります。是非ご協力ください。
 
 * [Table API データ ソースのサポート](https://feedback.azure.com/forums/263029-azure-search/suggestions/32759746-azure-search-should-be-able-to-index-cosmos-db-tab)
 * [Graph API データ ソースのサポート](https://feedback.azure.com/forums/263029-azure-search/suggestions/13285011-add-graph-databases-to-your-data-sources-eg-neo4)
-* [MongoDB API データ ソースのサポート](https://feedback.azure.com/forums/263029-azure-search/suggestions/18861421-documentdb-indexer-should-be-able-to-index-mongodb)
 * [Apache Cassandra API データ ソースのサポート](https://feedback.azure.com/forums/263029-azure-search/suggestions/32857525-indexer-crawler-for-apache-cassandra-api-in-azu)
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure Cosmos DB のインデクサーをセットアップするには、[Azure Search サービス](search-create-service-portal.md)が必要で、インデックス、データ ソース、そして最後にインデクサーを作成する必要があります。 これらのオブジェクトは、[ポータル](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search)、または .NET 以外のすべての言語用の [REST API](/rest/api/searchservice/) を使用して作成します。 
-
-ポータルを選択した場合は、[データのインポート ウィザード](search-import-data-portal.md)に従って、インデックスを含むこれらすべてのリソースを作成します。
-
-> [!TIP]
-> **データのインポート** ウィザードを Azure Cosmos DB ダッシュボードから起動して、そのデータ ソースのインデックス作成を簡略化できます。 左側のナビゲーションで、**[コレクション]** > **[Add Azure Search (Azure Search の追加)]** に移動します。
+Cosmos DB アカウントのほかに、[Azure Search サービス](search-create-service-portal.md)が必要です。 
 
 <a name="Concepts"></a>
-
 ## <a name="azure-search-indexer-concepts"></a>Azure Search インデクサーの概念
-Azure Search では、データ ソース (Azure Cosmos DB SQL API を含む) とそのデータ ソースに対して動作するインデクサーの作成および管理をサポートしています。
 
 **データ ソース**は、インデックスを作成するデータ、資格情報、およびデータの変更を識別するためのポリシー (コレクション内の変更または削除されたドキュメントなど) を指定します。 データ ソースは、複数のインデクサーから使用できるように、独立したリソースとして定義します。
 
 **インデクサー** は、データ ソースからターゲットの検索インデックスにデータが流れるしくみを説明します。 インデクサーは次の目的で使用します。
 
 * 1 回限りのデータのコピーを実行して、インデックスを作成する。
-* スケジュールに従ってデータ ソースの変更とインデックスを同期する。 スケジュールは、インデクサーの定義の一部です。
+* スケジュールに従ってデータ ソースの変更とインデックスを同期する。
 * 必要に応じてインデックスのオンデマンド更新を呼び出す。
 
-<a name="CreateDataSource"></a>
+Azure Cosmos DB のインデクサーをセットアップするには、インデックス、データソースを作成したうえで、最後にインデクサーを作成する必要があります。 これらのオブジェクトは、[ポータル](search-import-data-portal.md)、[.NET SDK](/dotnet/api/microsoft.azure.search)、または [REST API](/rest/api/searchservice/) を使用して作成できます。 
 
+この記事では、REST API を使用する方法について説明します。 ポータルを選択した場合は、[データのインポート ウィザード](search-import-data-portal.md)に従って、インデックスを含むこれらすべてのリソースを作成します。
+
+> [!TIP]
+> **データのインポート** ウィザードを Azure Cosmos DB ダッシュボードから起動して、そのデータ ソースのインデックス作成を簡略化できます。 左側のナビゲーションで、**[コレクション]** > **[Add Azure Search (Azure Search の追加)]** に移動します。
+
+> [!NOTE] 
+> 現時点では、Azure Portal または .NET SDK を使用して、**MongoDB** データ ソースを作成または編集することはできません。 ただし、ポータルでは MongoDB のインデクサーの実行履歴を監視**できます**。  
+
+<a name="CreateDataSource"></a>
 ## <a name="step-1-create-a-data-source"></a>手順 1: データ ソースを作成する
 データ ソースを作成するには、POST 要求を発行します。
 
@@ -84,9 +86,9 @@ Azure Search では、データ ソース (Azure Cosmos DB SQL API を含む) �
         "name": "mydocdbdatasource",
         "type": "documentdb",
         "credentials": {
-            "connectionString": "AccountEndpoint=https://myDocDbEndpoint.documents.azure.com;AccountKey=myDocDbAuthKey;Database=myDocDbDatabaseId"
+            "connectionString": "AccountEndpoint=https://myCosmosDbEndpoint.documents.azure.com;AccountKey=myCosmosDbAuthKey;Database=myCosmosDbDatabaseId"
         },
-        "container": { "name": "myDocDbCollectionId", "query": null },
+        "container": { "name": "myCollection", "query": null },
         "dataChangeDetectionPolicy": {
             "@odata.type": "#Microsoft.Azure.Search.HighWaterMarkChangeDetectionPolicy",
             "highWaterMarkColumnName": "_ts"
@@ -99,16 +101,19 @@ Azure Search では、データ ソース (Azure Cosmos DB SQL API を含む) �
 * **type**: は `documentdb` である必要があります。
 * **credentials**:
   
-  * **connectionString**: 必須。 次の形式で Azure Cosmos DB データベースへの接続情報を指定します。`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`
+  * **connectionString**: 必須。 次の形式で接続情報をご自身の Azure Cosmos DB データベースに指定します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`。MongoDB コレクションについては、次のように **ApiKind MongoDB** を接続文字列に追加します: `AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDB` 
 * **container**:
   
   * **name**: 必須。 インデックスを作成するデータベース コレクションの ID を指定します。
-  * **query**: 省略可能。 任意の JSON ドキュメントを、Azure Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。
+  * **query**: 省略可能。 任意の JSON ドキュメントを、Azure Search がインデックスを作成できるフラット スキーマにフラット化するクエリを指定できます。 MongoDB コレクションの場合、クエリはサポートされません。 
 * **dataChangeDetectionPolicy**: 推奨。 「[変更されたドキュメントのインデックス作成](#DataChangeDetectionPolicy)」セクションを参照してください。
 * **dataDeletionDetectionPolicy**: 省略可能。 「[削除されたドキュメントのインデックス作成](#DataDeletionDetectionPolicy)」セクションを参照してください。
 
 ### <a name="using-queries-to-shape-indexed-data"></a>インデックス作成するデータの処理にクエリを活用する
 SQL クエリを指定すると、ネストされたプロパティや配列のフラット化、JSON プロパティのプロジェクション、インデックスを作成するデータのフィルター処理を行うことができます。 
+
+> [!WARNING]
+> **MongoDB** コレクションではカスタム クエリはサポートされていません。`container.query` パラメーターは null に設定するか、省略する必要があります。 カスタム クエリを使用する必要がある場合は、[ユーザーの声](https://feedback.azure.com/forums/263029-azure-search) Web サイトでお知らせください。
 
 ドキュメントのサンプル:
 
@@ -170,9 +175,9 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 ターゲット インデックスのスキーマがソース JSON ドキュメントのスキーマまたはカスタムのクエリ プロジェクションの出力と互換性があることを確認します。
 
 > [!NOTE]
-> パーティション分割されたコレクションでは、Azure Cosmos DB の `_rid` プロパティが既定のドキュメント キーになります。これは、Azure Search では `rid` という名前に変更されます。 また、Azure Cosmos DB の `_rid` 値には、Azure Search キーでは無効な文字が含まれています。 そのため、`_rid` 値は Base64 でエンコードされます。
+> パーティション分割されたコレクションの場合、既定のドキュメント キーは Azure Cosmos DB の `_rid` プロパティですが、フィールド名の先頭にはアンダースコア文字を使用できないため、この名前は Azure Search によって `rid` に自動的に変更されます。 また、Azure Cosmos DB の `_rid` 値には、Azure Search キーでは無効な文字が含まれています。 そのため、`_rid` 値は Base64 でエンコードされます。
 > 
-> 
+> MongoDB コレクションの場合、`_id` プロパティ名は、Azure Search によって `doc_id` に自動的に変更されます。  
 
 ### <a name="mapping-between-json-data-types-and-azure-search-data-types"></a>JSON データ型と Azure Search データ型間のマッピング
 | JSON データ型 | 互換性のあるターゲット インデックス フィールドの型 |
@@ -184,7 +189,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
 | プリミティブ型の配列。例: ["a"、"b"、"c"] |Collection(Edm.String) |
 | 日付などの文字列 |Edm.DateTimeOffset、Edm.String |
 | GeoJSON オブジェクト。例: { "type": "Point", "coordinates": [ long, lat ] } |Edm.GeographyPoint |
-| その他の JSON オブジェクト |N/A |
+| その他の JSON オブジェクト |該当なし |
 
 <a name="CreateIndexer"></a>
 
@@ -320,7 +325,7 @@ SQL クエリを指定すると、ネストされたプロパティや配列の�
     }
 
 ## <a name="NextSteps"></a>次のステップ
-お疲れさまでした。 インデクサーを使用して SQL データ モデルからドキュメントをクロールおよびアップロードし、Azure Cosmos DB を Azure Search と統合する方法を学習しました。
+お疲れさまでした。 インデクサーを使用して、Azure Cosmos DB を Azure Search と統合する方法についての説明は以上で終了です。
 
 * Azure Cosmos DB の詳細については、[Azure Cosmos DB サービスのページ](https://azure.microsoft.com/services/cosmos-db/)を参照してください。
 * Azure Search について詳しくは、[Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。

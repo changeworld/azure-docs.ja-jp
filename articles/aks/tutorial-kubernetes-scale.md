@@ -1,6 +1,6 @@
 ---
-title: "Kubernetes on Azure のチュートリアル - アプリケーションのスケーリング"
-description: "AKS チュートリアル - アプリケーションのスケーリング"
+title: Kubernetes on Azure のチュートリアル - アプリケーションのスケーリング
+description: AKS チュートリアル - アプリケーションのスケーリング
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 02/22/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 556f4bfb204504de55c41da9615e61d5a88c75b2
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 5e35be84df53386398deaca19d60d4a93f53e541
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="scale-application-in-azure-container-service-aks"></a>Azure Container Service (AKS) でのアプリケーションのスケーリング
+# <a name="tutorial-scale-application-in-azure-container-service-aks"></a>チュートリアル: Azure Container Service (AKS) でのアプリケーションのスケーリング
 
 ここまでチュートリアルに従って進めてきた場合は、AKS で Kubernetes クラスターが動作していて、Azure Vote アプリをデプロイしてあります。
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 02/24/2018
 > * Kubernetes ポッドの手動スケーリング
 > * アプリのフロントエンドを実行する自動スケール ポッドの構成
 
-その後のチュートリアルでは、Azure Vote アプリケーションが更新され、Operations Management Suite を Kubernetes クラスターを監視するように構成します。
+その後のチュートリアルでは、Azure Vote アプリケーションを更新し、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 

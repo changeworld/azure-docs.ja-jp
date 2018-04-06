@@ -1,25 +1,25 @@
 ---
-title: "Azure Linux 仮想マシンでの接続された VHD のトラブルシューティング | Microsoft Docs"
-description: "Linux VM が予期せず再起動する、接続された VHD を含むストレージ アカウントの削除でエラーが発生する、などの問題のトラブルシューティングを行う方法。"
-keywords: "ssh 接続が拒否される, ssh エラー, azure ssh, SSH 接続に失敗する"
+title: Azure Linux 仮想マシンでの接続された VHD のトラブルシューティング | Microsoft Docs
+description: Linux VM が予期せず再起動する、接続された VHD を含むストレージ アカウントの削除でエラーが発生する、などの問題のトラブルシューティングを行う方法。
+keywords: ssh 接続が拒否される, ssh エラー, azure ssh, SSH 接続に失敗する
 services: virtual-machines-linux
-author: iainfoulds
+author: roygara
 manager: jeconnoc
 tags: top-support-issue,azure-service-management,azure-resource-manager
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: iainfou
-ms.openlocfilehash: 10f5e2f4a48d335c6b7d05b5eb5b577765675c0e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: rogarana
+ms.openlocfilehash: 3e1bac226a75ace3efdbc9886d152da055075920
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshoot-attached-vhds-on-azure-linux-virtual-machines"></a>Azure Linux 仮想マシンでの接続された VHD のトラブルシューティング
 
-Azure Virtual Machines は、OS ディスクおよび接続されたデータ ディスクに仮想ハード ディスク (VHD) を使用します。 VHD は、1 つ以上の Azure Storage アカウントにページ BLOB として格納されます。 この記事では、VHD で発生する可能性のある一般的な問題のトラブルシューティングを行う方法について説明します。 
+Azure Virtual Machines は、OS ディスクおよび接続されたデータ ディスクに仮想ハード ディスク (VHD) を使用します。 VHD は、1 つ以上の Azure ストレージ アカウントにページ BLOB として格納されます。 この記事では、VHD で発生する可能性のある一般的な問題のトラブルシューティングを行う方法について説明します。 
 
   * [接続された VHD による VM の予期しない再起動]
   * [Resource Manager デプロイメントでのストレージ削除エラー]
@@ -34,7 +34,7 @@ Azure 仮想マシン (VM) に、同じストレージ アカウントにある 
 
 ## <a name="storage-delete-errors-in-rm"></a>Resource Manager デプロイメントでのストレージ削除エラー
 
-このセクションでは、Azure Resource Manager デプロイメントで Azure Storage アカウント、コンテナー、または BLOB を削除しようとしたときに、次のいずれかのエラーが発生した場合のトラブルシューティングのガイダンスを提供します。
+このセクションでは、Azure Resource Manager デプロイメントで Azure ストレージ アカウント、コンテナー、または BLOB を削除しようとしたときに、次のいずれかのエラーが発生した場合のトラブルシューティングのガイダンスを提供します。
 
 >**ストレージ アカウント 'StorageAccountName' を削除できませんでした。エラー: ストレージ アカウントのアーティファクトが使用中であるため、このストレージ アカウントを削除できません。**
 

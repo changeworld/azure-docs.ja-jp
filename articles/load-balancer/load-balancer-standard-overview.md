@@ -1,6 +1,6 @@
 ---
-title: Azure Load Balancer Standard の概要 | Microsoft Docs
-description: Azure Load Balancer Standard の機能の概要
+title: Azure Standard Load Balancer の概要 | Microsoft Docs
+description: Azure Standard Load Balancer の機能の概要
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -12,61 +12,87 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/15/2018
+ms.date: 03/21/2018
 ms.author: kumud
-ms.openlocfilehash: 2d7fcb3ee066fa768615fbf643a0c2e1c1d28498
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="azure-load-balancer-standard-overview-preview"></a>Azure Load Balancer Standard の概要 (プレビュー)
+# <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
-Azure Load Balancer Standard SKU とパブリック IP Standard SKU を組み合わせて使用すると、拡張性と信頼性に優れたアーキテクチャを構築できます。 Load Balancer Standard を使用するアプリケーションでは、新しい機能を利用できます。 すべての TCP および UDP アプリケーションの数百万のフローに対応する、低転送待機時間、高スループット、およびスケールを利用できます。
+Azure Load Balancer を使うと、アプリケーションを拡張し、サービスを高可用性にすることができます。 Load Balancer は、受信と送信のどちらのシナリオにも使うことができ、低遅延と高スループットを実現できるだけでなく、あらゆる TCP アプリケーションと UDP アプリケーションの数百万ものフローにスケールアップできます。 
+
+この記事では、Standard Load Balancer について説明します。  Azure Load Balancer の一般的な概要については、「[Azure Load Balancer の概要](load-balancer-overview.md)」もご覧ください。
+
+## <a name="what-is-standard-load-balancer"></a>Standard Load Balancer とは
+
+Standard Load Balancer は、すべての TCP アプリケーションと UDP アプリケーションのための新しい Load Balancer 製品であり、Basic Load Balancer よりいっそう広範囲で詳細な機能セットが提供されます。  多くの類似点もありますが、この記事で説明する相違点をよく理解しておくことが重要です。
+
+Standard Load Balancer は、パブリック ロード バランサーまたは内部ロード バランサーとして使うことができます。 また、1 つの仮想マシンを、1 つのパブリック ロード バランサー リソースと 1 つの内部ロード バランサー リソースに接続できます。
+
+ロード バランサー リソースの機能は常に、フロントエンド、ルール、正常性プローブ、およびバックエンド プール定義として表されます。  リソースは、複数のルールを含むことができます。 仮想マシンの NIC リソースからバックエンド プールを指定することにより、仮想マシンをバックエンド プールに配置できます。  仮想マシン スケール セットの場合、このパラメーターはネットワーク プロファイルによって渡されて展開されます。
+
+1 つの重要な側面は、リソースの仮想ネットワークのスコープです。  Basic Load Balancer が可用性セットのスコープ内に存在するのに対し、Standard Load Balancer は仮想ネットワークのスコープに完全に統合され、仮想ネットワークのすべての概念が適用されます。
+
+ロード バランサー リソースはオブジェクトであり、その中では、ユーザーが作成したいシナリオを実現するために Azure がそのマルチ テナント インフラストラクチャをプログラミングする方法を表すことができます。  ロード バランサー リソースと実際のインフラストラクチャの間に直接的な関係はありません。ロード バランサーを作成してもインスタンスは作成されず、容量は常に使用可能であり、考慮しなければならない起動時またはスケーリング時の遅延はありません。 
 
 >[!NOTE]
-> Load Balancer Standard SKU は現在プレビュー段階です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 運用サービスには、一般公開されている [Load Balancer Basic SKU](load-balancer-overview.md) を使用してください。 このプレビューで[可用性ゾーン (プレビュー)](https://aka.ms/availabilityzones) を使用するには、Load Balancer [標準プレビュー](#preview-sign-up)へのサインアップに加え、[別のサインアップ](https://aka.ms/availabilityzones)が必要になります。
+> Azure では、ユーザーのシナリオのために完全に管理された負荷分散ソリューションのスイートが提供されます。  TLS 終端 ("SSL オフロード") または HTTP/HTTPS 要求によるアプリケーション レイヤーの処理が必要な場合は、「[Application Gateway](../application-gateway/application-gateway-introduction.md)」をご覧ください。  グローバル DNS の負荷分散が必要な場合は、「[Traffic Manager](../traffic-manager/traffic-manager-overview.md)」をご覧ください。  実際のエンド ツー エンドのシナリオでは、必要に応じてこれらのソリューションを組み合わせると役に立つことがあります。
 
-## <a name="why-use-load-balancer-standard"></a>Load Balancer Standard を使用する理由
+## <a name="why-use-standard-load-balancer"></a>Standard Load Balancer を使用する理由
 
-Load Balancer Standard は、さまざまな仮想データ センターで使用できます。 小規模のデプロイから大規模で複雑なマルチゾーン アーキテクチャまで、Load Balancer Standard を使用すると、次の機能を利用できます。
+Standard Load Balancer は、小規模の展開から、大規模で複雑なマルチゾーン アーキテクチャまで、あらゆる仮想データ センターに使うことができます。
 
-- Load Balancer Standard では、[エンタープライズ スケール](#enterprisescale)を実現できます。 この機能は、仮想ネットワーク内の仮想マシン (VM) インスタンス (最大 1000 個の VM インスタンス) でご利用いただけます。
+Standard Load Balancer と Basic Load Balancer の違いの概要については、次の表をご覧ください。
 
-- [新しい診断インサイト](#diagnosticinsights)を使用すると、仮想データ センターのこの重要なコンポーネントについて理解し、コンポーネントの管理やトラブルシューティングを行うことができます。 Azure Monitor (プレビュー) を使用して、連続するデータ パスの正常性を計測するために、新しい多次元メトリックを表示、フィルター、およびグループ化することができます。 フロント エンドから VM、エンドポイントの正常性プローブまで、および TCP 接続の試行用に発信接続までデータを監視します。
+>[!NOTE]
+> 新しい設計では、Standard Load Balancer の使用を検討する必要があります。 
 
-- Load Balancer Standard SKU またはパブリック IP の Standard SKU に関連付けられている VM インスタンスで[ネットワーク セキュリティ グループ](#nsg)が必須になりました。 ネットワーク セキュリティ グループ (NSG) により、シナリオのセキュリティが強化されます。
+| | Standard SKU | Basic SKU |
+| --- | --- | --- |
+| バックエンド プールのサイズ | 最大 1000 インスタンス | 最大 100 インスタンス |
+| バックエンド プール エンドポイント | 仮想マシン、可用性セット、仮想マシン スケール セットの組み合わせを含む、単一の仮想ネットワーク内の任意の仮想マシン | 単一の可用性セットまたは仮想マシン スケール セット内の仮想マシン |
+| 可用性ゾーン | 受信と送信に対するゾーン冗長とゾーン フロントエンド、送信フロー マッピングによりゾーン障害に耐久、ゾーン間の負荷分散 | / |
+| 診断 | Azure Monitor、バイト カウンターとパケット カウンターを含む多次元メトリック、正常性プローブの状態、接続試行 (TCP SYN)、送信接続の正常性 (SNAT 成功および失敗のフロー)、アクティブなデータ プレーン測定 | パブリック ロード バランサーに対する Azure Log Analytics のみ、SNAT 枯渇アラート、バックエンド プール正常性カウント |
+| HA ポート | 内部ロード バランサー | / |
+| 既定でのセキュリティ保護 | パブリック IP とロード バランサー エンドポイントに対して既定でクローズ、トラフィックが流れるためにはネットワーク セキュリティ グループを使ってホワイト リストへの明示的な登録が必要 | 既定でオープン、ネットワーク セキュリティ グループは任意 |
+| 送信接続 | ルールによるオプトアウトを使用する複数のフロントエンド。仮想マシンが送信接続を使用できるためには、送信シナリオを明示的に作成する "_必要があります_"。  [VNet サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)には送信接続なしで到達でき、処理されたデータにはカウントされません。  VNet サービス エンドポイントとして使用できない Azure PaaS サービスなどのすべてのパブリック IP アドレスは、送信接続を介して到達する必要があり、処理されたデータにカウントされます。 内部ロード バランサーだけが仮想マシンに対応しているときは、既定の SNAT による送信接続は利用できません。 送信 SNAT プログラミングは、受信負荷分散ルールのプロトコルに基づくトランスポート プロトコル固有です。 | 単一のフロントエンド。複数のフロントエンドが存在する場合は、ランダムに選ばれます。  内部ロード バランサーだけが仮想マシンに対応している場合は、既定の SNAT が使われます。 |
+| 複数のフロントエンド | 受信および送信 | 受信のみ |
+| 管理操作 | ほとんどの操作は 30 秒未満 | 一般に 60 ～ 90 秒以上 |
+| SLA | 2 つの正常な仮想マシンが存在するデータ パスで 99.99% | VM SLA で暗黙 | 
+| 価格 | ルールの数、リソースに関連付けられた受信または送信で処理されたデータに基づいて課金  | 課金なし |
 
-- ネットワーク仮想アプライアンス (NVA) や他のアプリケーション シナリオで、[高可用性 (HA) ポートは高信頼性とスケールを提供](#highreliability)します。 HA ポートは、Azure Internal Load Balancer (ILB) フロントエンドのすべてのポートを VM インスタンスのプールに負荷分散します。
-
-- 優れた回復性とスケールを実現する新しい Source Network Address Translation (SNAT) ポート割り当てモデルが[送信接続](#outboundconnections)で使用されるようになりました。
-
-- [可用性ゾーンを使用する Load Balancer Standard](#availabilityzones) を使用して、ゾーン冗長アーキテクチャとゾーン ベース アーキテクチャを構築できます。 これらのアーキテクチャは、どちらにもクロスゾーン負荷分散を含めることができます。 DNS レコードに依存せずに、ゾーン冗長を実現できます。 既定では、単一 IP アドレスがゾーン冗長です。  単一 IP アドレスは、すべての可用性ゾーンにまたがるリージョン内の仮想ネットワークにあるすべての仮想マシンに到達できます。
+[ロード バランサーのサービス制限](https://aka.ms/lblimits)、[価格](https://aka.ms/lbpricing)、[SLA](https://aka.ms/lbsla) に関するページをご覧ください。
 
 
-Load Balancer Standard をパブリック構成または内部構成で使用して、次の基本的なシナリオをサポートできます。
+### <a name="backend"></a>バックエンド プール
 
-- 受信トラフィックを正常なバックエンド インスタンスに負荷分散する。
-- 受信トラフィックを 1 つのバックエンド インスタンスにポート転送する。
-- 送信トラフィックを、仮想ネットワーク内のプライベート IP アドレスからパブリック IP アドレスに変換する。
+Standard Load Balancer バックエンド プールは、仮想ネットワーク内の任意の仮想マシン リソースまで広がります。  最大 1,000 個のバックエンド インスタンスを含むことができます。  バックエンド インスタンスは IP 構成であり、NIC リソースのプロパティです。
 
-### <a name = "enterprisescale"></a>エンタープライズ スケール
+バックエンド プールは、スタンドアロン仮想マシン、可用性セット、または仮想マシン スケール セットを含むことができます。  バックエンド プール内のリソースを混合することができ、これらのリソースの組み合わせを最大で 150 個まで含むことができます。
 
- Load Balancer Standard を使用して、高パフォーマンスの仮想データ センターを設計し、任意の TCP または UDP アプリケーションをサポートします。 スタンドアロン VM インスタンス、または仮想マシン スケール セットの最大 1,000 インスタンスをバックエンド プールで使用します。 低転送待機時間、高スループット パフォーマンス、完全に管理された Azure サービスの数百万のフローに対応するスケールを引き続き利用できます。
- 
-Load Balancer Standard は、リージョンの仮想ネットワーク内の任意の VM インスタンスにトラフィックを転送できます。 バックエンド プールのサイズは、次の VM シナリオの組み合わせで最大 1000 インスタンスまで可能です。
+バックエンド プールの設計方法を検討するときは、個々のバックエンド プール リソースを最小限の数に設計して、管理操作の期間をさらに最適化できます。  データ プレーンのパフォーマンスやスケールに違いはありません。
 
-- 可用性セットに含まれていないスタンドアロン VM
-- 可用性セットに含まれているスタンドアロン VM
-- 仮想マシン スケール セット (最大 1,000 インスタンス)
-- 複数の仮想マシン スケール セット
-- VM と仮想マシン スケール セットの混合
+## <a name="az"></a>可用性ゾーン
 
-可用性セットの要件はなくなりました。 提供されるその他の利点を考慮して、可用性セットの使用を選択することができます。
+>[!NOTE]
+> Standard Load Balancer で[可用性ゾーン (プレビュー)](https://aka.ms/availabilityzones) を使うには、[可用性ゾーンへのサインアップ](https://aka.ms/availabilityzones)が必要です。
 
-### <a name = "diagnosticinsights"></a>診断インサイト
+Standard Load Balancer は、可用性ゾーンを利用できるリージョンでの追加機能をサポートします。  これらの機能は、Standard Load Balancer のすべての機能に追加されます。  可用性ゾーンの構成は、パブリックと内部の Standard Load Balancer で利用できます。
 
-Load Balancer Standard には、パブリックおよび内部ロード バランサー構成の新しい多次元診断機能が用意されています。 Azure Monitor (プレビュー) によって次の新しいメトリックが提供されます。これらのメトリックでは、ダウンストリーム コンシューマーと統合するための機能など、関連するすべての機能を利用します。
+可用性ゾーンを備えたリージョンにデプロイされると、非ゾーンのフロントエンドは既定でゾーン冗長になります。   ゾーン冗長フロントエンドは、ゾーンの障害の影響を受けず、すべてのゾーンで同時に専用のインフラストラクチャによって提供されます。 
+
+さらに、特定のゾーンにフロントエンドを保証することができます。 ゾーンのフロントエンドはそれぞれのゾーンと運命を供にし、1 つのゾーンの専用インフラストラクチャによってのみ提供されます。
+
+バックエンド プールではゾーン間負荷分散を使用でき、VNET 内のすべての仮想マシン リソースがバックエンド プールの一部になることができます。
+
+[可用性ゾーン関連の機能の詳細な説明](load-balancer-standard-availability-zones.md)に関するページをご覧ください。
+
+### <a name="diagnostics"></a> 診断
+
+Standard Load Balancer は Azure Monitor を通じて多次元メトリックを提供します。  これらのメトリックは、フィルター処理およびグループ化することができ、サービスのパフォーマンスと正常性に関する現在と過去の分析情報を提供します。  リソースの正常性もサポートされます。  サポートされている診断の概要を次に示します。
 
 | メトリック | [説明] |
 | --- | --- |
@@ -77,222 +103,74 @@ Load Balancer Standard には、パブリックおよび内部ロード バラ�
 | バイト カウンター | Load Balancer Standard は、フロントエンドごとに処理されたデータを報告します。|
 | パケット カウンター | Load Balancer Standard は、フロントエンドごとに処理されたパケットを報告します。|
 
-### <a name = "highreliability"></a>高信頼性
+[Standard Load Balancer の診断の詳細な説明](load-balancer-standard-diagnostics.md)に関するページをご覧ください。
 
-アプリケーションをスケールし、高信頼性を維持するために、負荷分散規則を構成します。 個々のポートの規則を構成できます。また、HA ポートを使用して、TCP または UDP ポート番号に関係なく、すべてのトラフィックを分散させることもできます。  
+### <a name="haports"></a>HA ポート
 
-新しい HA ポート機能を使用すると、内部の NVA の高可用性とスケールなどの各種シナリオにも対応できるようになります。 また、個々のポートを指定するのは実用的ではなかったり、望ましくなかったりするその他のシナリオにも対応できるようになります。 HA ポートは、必要な数だけインスタンスを使用できるようにすることで、冗長性とスケールを提供します。 構成が、アクティブ/パッシブ シナリオに制限されることはなくなりました。 正常性プローブ構成により、正常なインスタンスにのみトラフィックを転送することでサービスが保護されます。
+Standard Load Balancer は新しい種類のルールをサポートします。  
 
-NVA のベンダーは、ベンダーが完全にサポートする回復性の高いシナリオを顧客に提供できます。 顧客の単一障害点を排除し、スケールに合わせて複数のアクティブ インスタンスを使用することができます。 アプライアンスで許可されていれば、複数のインタンスにスケールできます。 これらのシナリオの詳細なガイダンスについては、NVA のベンダーにお問い合わせください。
+アプリケーションがスケーラブルで高信頼性になるように、負荷分散ルールを構成できます。 HA ポートの負荷分散ルールを使うと、Standard Load Balancer は、内部 Standard Load Balancer のフロントエンド IP アドレスのすべてのエフェメラル ポートで、フローごとの負荷分散を提供します。  また、個々のポートを指定するのは実用的ではなかったり、望ましくなかったりするその他のシナリオにも対応できるようになります。
 
-### <a name = "availabilityzones"></a>可用性ゾーン
+HA ポートの負荷分散ルールでは、ネットワーク仮想アプライアンスおよび大きな範囲の受信ポートを必要とするすべてのアプリケーションに対し、アクティブ/パッシブまたはアクティブ/アクティブの n+1 シナリオを作成することができます。  正常性プローブを使って、新しいフローを受信する必要があるバックエンドを決定できます。  ネットワーク セキュリティ グループを使って、ポート範囲のシナリオをエミュレートできます。
 
-[!INCLUDE [availability-zones-preview-statement](../../includes/availability-zones-preview-statement.md)]
+>[!IMPORTANT]
+> ネットワーク仮想アプライアンスを使う予定の場合は、製品が HA ポートでテストされているかどうかをベンダーに確認し、実装に関する具体的なガイダンスに従います。 
 
-サポートされているリージョンで可用性ゾーンを使用して、アプリケーションの回復性を高めます。 可用性ゾーンは特定のリージョンで現在プレビュー段階であり、追加のオプトインが必要となります。
+[HA ポートの詳細な説明](load-balancer-ha-ports-overview.md)に関するページをご覧ください。
 
-### <a name="automatic-zone-redundancy"></a>自動ゾーン冗長性
+### <a name="securebydefault"></a>既定でのセキュリティ保護
 
-Load Balancer でアプリケーションごとにゾーン冗長またはゾーン フロントエンドを提供するかどうかを選択できます。 Load Balancer Standard では、ゾーン冗長性を簡単に作成できます。 単一のフロントエンド IP アドレスが自動的にゾーン冗長になります。 ゾーン冗長フロントエンドは、リージョン内のすべての可用性ゾーンによって同時に提供されます。 受信接続と送信接続のゾーン冗長データ パスが作成されます。 Azure のゾーン冗長性には、複数の IP アドレスや DNS レコードは不要です。 
-
-ゾーン冗長性は、パブリックまたは内部フロントエンドで提供されます。 パブリック IP アドレスと内部ロード バランサー フロントエンドのプライベート IP をゾーン冗長にすることができます。
-
-内部ロード バランサーに対してゾーン冗長のパブリック IP アドレスを作成するには、次のスクリプトを使用します。 構成で既存の Resource Manager テンプレートを使用している場合は、これらのテンプレートに **sku** セクションを追加してください。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-内部ロード バランサーに対してゾーン冗長のフロントエンド IP を作成するには、次のスクリプトを使用します。 構成で既存の Resource Manager テンプレートを使用している場合は、これらのテンプレートに **sku** セクションを追加してください。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zone_redundant_frontend",
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-パブリック IP フロントエンドがゾーン冗長の場合、VM インスタンスからの送信接続が自動的にゾーン冗長になります。 フロントエンドは、ゾーンの障害から保護されます。 ゾーンの障害が発生しても、SNAT ポートの割り当ては保持されます。
-
-#### <a name="cross-zone-load-balancing"></a>クロスゾーン負荷分散
-
-クロスゾーン負荷分散は、リージョン内のバックエンド プールで利用できるため、VM インスタンスの柔軟性を最大限に高めることができます。 フロントエンドは、VM インスタンスの可用性ゾーンに関係なく、仮想ネットワーク内の任意の VM へのフローを提供します。
-
-さらに、フロントエンド インスタンスとバックエンド インスタンスに特定のゾーンを指定して、特定のゾーンに合わせてデータ パスとリソースを調整することもできます。
-
-仮想ネットワークとサブネットには、ゾーンの制約がありません。 必要な VM インスタンスを含むバックエンド プールを定義するだけで構成が完了します。
-
-#### <a name="zonal-deployments"></a>ゾーン展開
-
-必要に応じて、ゾーン フロントエンドを定義して、ロード バランサー フロントエンドを特定のゾーンに配置することもできます。 ゾーン フロントエンドは、指定された 1 つの可用性ゾーンでのみ提供されます。 ゾーンの VM インスタンスと組み合わせると、リソースを特定のゾーンに配置できます。
-
-特定のゾーンに作成されたパブリック IP アドレスは、常にそのゾーンにのみ存在します。 パブリック IP アドレスのゾーンを変更することはできません。 複数のゾーンのリソースにアタッチできるパブリック IP アドレスの場合は、代わりにゾーン冗長のパブリック IP を作成します。
-
-可用性ゾーン 1 にパブリック IP アドレスを作成するには、次のスクリプトを使用します。 構成で既存の Resource Manager テンプレートを使用している場合は、これらのテンプレートに **sku** セクションを追加してください。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "zones": [ "1" ],
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-内部ロード バランサー フロントエンドを可用性ゾーン 1 に作成するには、次のスクリプトを使用します。
-
-構成で既存の Resource Manager テンプレートを使用している場合は、これらのテンプレートに **sku** セクションを追加してください。 また、**zones** プロパティをフロントエンド IP 構成の子リソースに定義します。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-            "properties": {
-                "frontendIPConfigurations": [
-                    {
-                        "name": "zonal_frontend_in_az1",
-                        "zones": [ "1" ],
-                        "properties": {
-                            "subnet": {
-                                "Id": "[variables('subnetRef')]"
-                            },
-                            "privateIPAddress": "10.0.0.6",
-                            "privateIPAllocationMethod": "Static"
-                        }
-                    },
-                ],
-```
-
-仮想ネットワーク内の VM インスタンスをバックエンド プールに配置することで、バックエンド プールにクロスゾーン負荷分散を追加します。
-
-可用性ゾーンがサポートされている場合、Load Balancer Standard リソースは常にリージョン ベースであり、ゾーン冗長です。 ゾーンが割り当てられていないパブリック IP アドレスまたは内部ロード バランサー フロントエンドは、どのリージョンにでもデプロイできます。 可用性ゾーンのサポートは、デプロイ機能には影響しません。 後日、リージョンで可用性ゾーンが使用できるようになった場合、既にデプロイされているパブリック IP または内部ロード バランサー フロントエンドは自動的にゾーン冗長になります。 ゾーン冗長データ パスは、パケット損失が 0% であることを意味するわけではありません。
-
-### <a name = "nsg"></a>ネットワーク セキュリティ グループ
-
-仮想ネットワークへの Load Balancer Standard とパブリック IP Standard の完全なオンボードには、ネットワーク セキュリティ グループ (NSG) が必要です。 NSG により、トラフィック フローのホワイトリスト登録が可能になります。 NSG により、デプロイへのトラフィックを完全に制御することができます。 他のトラフィック フローが完了するまで待機する必要がなくなりました。
-
-NSG をサブネットまたはバックエンド プールの VM インスタンスのネットワーク インターフェイス (NIC) に関連付けます。 この構成は、Load Balancer Standard と、インスタンス レベルのパブリック IP として使用されているパブリック IP Standard で使用します。 トラフィックが流れるようにするには、NSG で許可するトラフィックを明示的にホワイトリストに登録する必要があります。
+Standard Load Balancer は仮想ネットワークに完全にオンボードされます。  仮想ネットワークは、プライベートのクローズ ネットワークです。  Standard Load Balancer と Standard パブリック IP アドレスは、この仮想ネットワークに仮想ネットワークの外部からアクセスできるように設計されているので、これらのリソースは、ユーザーがオープンしない限り、既定ではクローズになります。 つまり、トラフィックを明示的に許可し、許可されたトラフィックをホワイトリストに登録するには、ネットワーク セキュリティ グループ (NSG) が使われるようになっています。  仮想データ センター全体を作成し、それを何がいつ使用できるようにする必要があるかを、NSG によって決定できます。  お使いの仮想マシン リソースのサブネットまたは NIC に NSG がない場合は、トラフィックがこのリソースに到達することを許可できません。
 
 NSG と、ネットワーク セキュリティ グループをシナリオに適用する方法の詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関する記事をご覧ください。
 
-### <a name ="outboundconnections"></a>送信接続
+### <a name="outbound"></a> 送信接続
 
-ロード バランサーがポート マスカレード SNAT を使用する場合、Load Balancer Standard は VNet 内の VM に送信接続を提供します。 ポート マスカレード SNAT アルゴリズムにより、堅牢性とスケールが強化されます。
+Load Balancer は、受信と送信のシナリオをサポートしています。  Standard Load Balancer は、送信接続に関して Basic Load Balancer と大きく異なります。
 
-パブリック ロード バランサー リソースが VM インスタンスに関連付けられている場合、各送信接続のソースは書き換えられます。 ソースは、仮想ネットワークのプライベート IP アドレス空間からロード バランサー フロントエンドのパブリック IP アドレスに書き換えられます。
+仮想ネットワーク上の内部プライベート IP アドレスを Load Balancer フロントエンドのパブリック IP アドレスにマッピングするには、送信元ネットワーク アドレス変換 (SNAT) が使われます。
 
-ゾーン冗長フロントエンドと共に使用すると、送信接続もゾーン冗長になり、ゾーンの障害が発生しても、SNAT ポートの割り当ては保持されます。
+Standard Load Balancer では、[より堅牢かつスケーラブルで予測可能な SNAT アルゴリズム](load-balancer-outbound-connections.md#snat)用に新しいアルゴリズムが導入されており、新しい機能を使用でき、あいまいさがなくなり、副作用ではなく明示的な構成を適用できます。 これらの変更は、新しい機能が出現するために必要なことです。 
 
-Load Balancer Standard の新しいアルゴリズムでは、各 VM の NIC に SNAT ポートを事前に割り当てます。 NIC がプールに追加されると、プール サイズに基づいて SNAT ポートが事前に割り当てられます。 次の表は、6 レベルのバックエンド プール サイズに対するポートの事前割り当てを示しています。
+以下は、Standard Load Balancer を使うときの重要な原則です。
 
-| プール サイズ (VM インスタンス) | 事前に割り当てられている SNAT ポート数 |
-| --- | --- |
-| 1 - 50 | 1024 |
-| 51 - 100 | 512 |
-| 101 - 200 | 256 |
-| 201 - 400 | 128 |
-| 401 - 800 | 64 |
-| 801 - 1,000 | 32 |
+- ルールの完成によって、Load Balancer リソースが得られます。  Azure のすべてのプログラミングは、その構成から派生します。
+- 複数のフロントエンドが使用可能な場合、すべてのフロントエンドが使われて、各フロントエンドは使用可能な SNAT ポートの数を乗算します。
+- 送信接続に特定のフロントエンドが使われたくない場合は、フロントエンドを選んで制御できます。
+- 送信シナリオは明示的であり、発信接続は指定されるまで存在しません。
+- 負荷分散ルールでは、SNAT のプログラミング方法が推測されます。 負荷分散ルールはプロトコルに固有です。 SNAT はプロトコルに固有であり、構成は副作用を作成するのではなくプロトコルを反映する必要があります。
 
-SNAT ポートは発信接続数に直接変換されるわけではありません。 複数の一意の送信先に SNAT ポートを再利用できます。 詳細については、[送信接続](load-balancer-outbound-connections.md)に関する記事をご覧ください。
+#### <a name="multiple-frontends"></a>複数のフロントエンド
+送信接続の需要が多くなると予想されるため、または既に多くなっているために、SNAT ポートを増やす必要がある場合は、同じ仮想マシン リソースに対してフロントエンド、ルール、およびバックエンド プールを追加構成することにより、増分 SNAT ポート インベントリを追加することもできます。
 
-バックエンド プールのサイズが増加し、1 つ大きいレベルに移行すると、割り当て済みポートの半分が解放されます。 解放されたポートに関連付けられている接続はタイムアウトになるので、再確立する必要があります。 新しい接続試行はすぐに成功します。 バックエンド プールのサイズが減少し、1 つ小さいレベルに移行すると、使用できる SNAT ポートが増えます。 この場合、既存の接続には影響しません。
+#### <a name="control-which-frontend-is-used-for-outbound"></a>送信に使用されるフロントエンドを制御する
+送信接続を、特定のフロントエンド IP アドレスからの発信のみに制限したい場合は、必要に応じて、送信マッピングを表すルールで送信 SNAT を無効にすることができます。
 
-Load Balancer Standard には、規則ごとに使用できる追加構成オプションもあります。 このオプションでは、複数のフロントエンドが使用可能な場合に、ポート マスカレード SNAT に使用するフロントエンドを制御できます。
+#### <a name="control-outbound-connectivity"></a>送信接続を制御する
+Standard Load Balancer は、仮想ネットワークのコンテキスト内に存在します。  仮想ネットワークは、分離されたプライベート ネットワークです。  パブリック IP アドレスとの関連付けが存在しない場合、パブリック接続は許可されません。  [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)は、仮想ネットワークの内側にあり、仮想ネットワークに対してローカルであるため、VNET サービス エンドポイントには到達できます。  仮想ネットワークの外部にある宛先への送信接続を確立したい場合は、次の 2 つのオプションがあります。
+- Standard SKU のパブリック IP アドレスを、インスタンスレベル パブリック IP アドレスとして、仮想マシン リソースに割り当てます
+- または、仮想マシン リソースを、パブリック Standard Load Balancer のバックエンド プールに配置します。
 
-Load Balancer Standard だけが VM インスタンスを提供している場合、SNAT 送信接続は使用できません。 VM インスタンスをパブリック ロード バランサーにも割り当てることで、この機能を明示的に復元できます。 さらに、パブリック IP をインスタンス レベルのパブリック IP として各 VM インスタンスに直接割り当てることもできます。 この構成オプションは、オペレーティング システムとアプリケーションの一部のシナリオで必要になる場合があります。 
+どちらの方法でも、仮想ネットワークから、仮想ネットワークの外部に、送信接続できます。 
 
-### <a name="port-forwarding"></a>ポート フォワーディング
+仮想マシン リソースが配置されているバックエンド プールに関連付けられている内部 Standard Load Balancer "_のみ_" がある場合、仮想マシンは仮想ネットワーク リソースと [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)に対してだけ到達できます。  前の段落で説明されている手順に従って、送信接続を作成できます。
 
-Basic と Standard の Load Balancer では、フロントエンド ポートを個々のバックエンド インスタンスにマップする受信 NAT 規則を構成できます。 これらの規則を構成することにより、リモート デスクトップ プロトコル エンドポイントおよび SSH エンドポイントを公開したり、他のさまざまなアプリケーション シナリオを実行したりできます。
+Standard SKU に関連付けられていない仮想マシン リソースの送信接続は前に説明したままです。
 
-Load Balancer Standard では、受信 NAT 規則を通じてポート フォワーディング機能を引き続き提供します。 ゾーン冗長フロントエンドと共に使用すると、受信 NAT 規則はゾーン冗長になり、ゾーンの障害が発生しても保持されます。
+[送信接続の詳細な説明](load-balancer-outbound-connections.md)に関するページをご覧ください。
 
-### <a name="multiple-front-ends"></a>複数のフロントエンド
+### <a name="multife"></a>複数のフロントエンド
+Load Balancer は、複数のフロントエンドで複数のルールをサポートします。  Standard Load Balancer は、これを送信シナリオまで広げます。  送信シナリオは基本的に、受信負荷分散ルールの逆です。  受信負荷分散ルールも、送信接続に対する関連付けを作成します。 Standard Load Balancer は、負荷分散ルールを介して、仮想マシン リソースに関連付けられているすべてのフロントエンドを使います。  さらに、負荷分散ルールのパラメーターにより、送信接続のために負荷分散ルールを抑制することができ、特定のフロントエンドを選ぶことが (何も選ばないことも) できます。
 
-アプリケーションが複数の個別の IP アドレスを公開する必要がある場合は (TLS Web サイトや SQL AlwaysOn 可用性グループのエンドポイントなど) 、設計の柔軟性を確保するために複数のフロントエンドを構成します。 
+これに対し、Basic Load Balancer は単一のフロントエンドをランダムに選び、選ばれるものを制御する機能はありません。
 
-Load Balancer Standard では、一意の IP アドレスで特定のアプリケーション エンドポイントを公開する必要がある場合に、複数のフロントエンドを引き続き提供します。
+[送信接続の詳細な説明](load-balancer-outbound-connections.md)に関するページをご覧ください。
 
-複数のフロントエンドを構成する方法の詳細については、「[複数の IP 構成](load-balancer-multivip-overview.md)」を参照してください。
+### <a name="operations"></a> 管理操作
 
-## <a name = "sku"></a>SKU について
+Standard Load Balancer リソースは、まったく新しいインフラストラクチャ プラットフォーム上に存在します。  これにより、Standard SKU の管理操作は大幅に高速化され、通常、操作が完了するまでの時間は Standard SKU リソースごとに 30 秒未満です。  バックエンド プールのサイズが大きくなると、バックエンド プールの変更に必要な時間も長くなることに注意してください。
 
-SKU は、Azure Resource Manager デプロイメント モデルでのみ利用できます。 このプレビューでは、Load Balancer リソースとパブリック IP リソースの 2 つの SKU (Basic と Standard) が導入されています。 これらの SKU は、機能、パフォーマンス特性、制限事項、一部の組み込み動作が異なります。 仮想マシンはどちらの SKU でもご利用いただけます。 Load Balancer リソースとパブリック IP リソースのどちらについても、SKU は引き続き省略可能な属性です。 SKU がシナリオ定義で省略されている場合、既定の構成は Basic SKU になります。
-
->[!IMPORTANT]
->リソースの SKU は変更不可です。 既存のリソースの SKU を変更することはできません。  
-
-### <a name="load-balancer"></a>Load Balancer
-
-[既存の Load Balancer リソース](load-balancer-overview.md)は Basic SKU になりますが、一般公開されている状態に変わりはありません。
-
-Load Balancer Standard SKU は新機能であり、現在プレビュー段階です。 Microsoft.Network/loadBalancers の 2017-08-01 API バージョンで、リソース定義に **sku** プロパティが導入されています。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/loadBalancers",
-            "name": "load_balancer_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-Load Balancer Standard は、可用性ゾーンを提供するリージョンで自動的にゾーン回復性を持ちます。 Load Balancer Standard がゾーンとして宣言されている場合は、自動的にゾーン回復性を持ちません。
-
-### <a name="public-ip"></a>パブリック IP
-
-[既存のパブリック IP リソース](../virtual-network/virtual-network-ip-addresses-overview-arm.md)は Basic SKU になり、Basic の機能、パフォーマンス特性、制限事項が適用されて引き続き一般公開されます。
-
-パブリック IP Standard SKU は新機能であり、現在プレビュー段階です。 Microsoft.Network/publicIPAddresses の 2017-08-01 API バージョンで、リソース定義に **sku** プロパティが導入されています。
-
-```json
-            "apiVersion": "2017-08-01",
-            "type": "Microsoft.Network/publicIPAddresses",
-            "name": "public_ip_standard",
-            "location": "region",
-            "sku":
-            {
-                "name": "Standard"
-            },
-```
-
-複数の割り当て方法を提供するパブリック IP Basic とは異なり、パブリック IP Standard は常に静的割り当てを使用します。
-
-パブリック IP Standard は、可用性ゾーンを提供するリージョンで自動的にゾーン回復性を持ちます。 パブリック IP がゾーンとして宣言されている場合は、自動的にゾーン回復性を持ちません。 ゾーンのパブリック IP は、別のゾーンに変更できません。
+Standard Load Balancer のリソースは変更することができ、ある仮想マシンから別の仮想マシンに Standard パブリック IP アドレスを非常に速く移動することができます。
 
 ## <a name="migration-between-skus"></a>SKU 間での移行
 
@@ -322,158 +200,41 @@ SKU は変更不可です。 一方の SKU からもう一方の SKU に移行�
 >
 >Standard SKU の HA ポート診断機能は、Standard SKU でのみ提供されます。 Standard SKU から Basic SKU に移行し、この機能を保持することはできません。
 >
->Load Balancer リソースとパブリック IP リソースには一致する SKU を使用する必要があります。 Basic SKU リソースと Standard SKU リソースを組み合わせることはできません。 VM、可用性セットの VM、または仮想マシン スケール セットを両方の SKU に同時に接続したりすることはできません。
+>Basic SKU と Standard SKU には、この記事で説明したような相違点があります。  よく理解し、それに合わせて準備してください。
 >
+>Load Balancer リソースとパブリック IP リソースには一致する SKU を使用する必要があります。 Basic SKU リソースと Standard SKU リソースを組み合わせることはできません。 スタンドアロン仮想マシン、可用性セット リソース内の仮想マシン、または仮想マシン スケール セット リソースを、両方の SKU に同時にアタッチすることはできません。
 
 ## <a name="region-availability"></a>利用可能なリージョン
 
-現在、Load Balancer Standard は、米国西部以外のすべてのパブリック クラウド リージョンで利用できます。
+現在、Load Balancer Standard はすべてのパブリック クラウド リージョンで利用できます。
 
->[!IMPORTANT]
-> 初期起動リージョン (米国東部 2、米国中部、北ヨーロッパ、米国中西部、西ヨーロッパ、東南アジア) の外部のリージョンに短期間アクセスするには、追加のサブスクリプション機能 (AllowLBPreviewWave2 と AllowLBPreviewWave3) の登録が必要です。  [こちらに記した手順に従ってください](#additionalpreviewregions)。 以前に AllowLBPreview にサインアップしたことがある場合でも、これらの手順をすべて実行してください。
-> この要件は今後数週間で削除される予定です。
+## <a name="sla"></a>SLA
 
-## <a name="sku-service-limits-and-abilities"></a>SKU のサービスの制限と機能
+Standard Load Balancer は、99.99% の SLA で利用できます。  詳しくは、[Standard Load Balancer の SLA](https://aka.ms/lbsla) に関するページをご覧ください。
 
-[Azure サービスのネットワークの制限](https://docs.microsoft.com/azure/azure-subscription-service-limits#networking-limits)は、各サブスクリプションのリージョンごとに適用されます。 
-
-次の表では、Load Balancer の Basic SKU と Standard SKU の制限と機能を比較しています。
-
-| Load Balancer | Basic | 標準 |
-| --- | --- | --- |
-| バックエンド プールのサイズ | 最大 100 | 最大 1,000 |
-| バックエンド プールの境界 | 可用性セット | 仮想ネットワーク、リージョン |
-| バックエンド プールの設計 | 可用性セットの VM、可用性セットの仮想マシン スケール セット | 仮想ネットワーク内の任意の VM インスタンス |
-| HA ポート | サポートされていません | 使用可能 |
-| 診断 | 制限付き、パブリックのみ | 使用可能 |
-| VIP 可用性  | サポートされていません | 使用可能 |
-| 高速 IP モビリティ | サポートされていません | 使用可能 |
-|可用性ゾーンのシナリオ | ゾーン ベースのみ | ゾーン ベース、ゾーン冗長、クロスゾーン負荷分散 |
-| 送信 SNAT アルゴリズム | オンデマンド | 事前割り当て |
-| 送信 SNAT フロントエンドの選択 | 構成不可、複数の候補 | 候補を減らすオプション構成 |
-| ネットワーク セキュリティ グループ | NIC/サブネットでは省略可能 | 必須 |
-
-次の表では、パブリック IP の Basic SKU と Standard SKU の制限と機能を比較しています。
-
-| パブリック IP | Basic | 標準 |
-| --- | --- | --- |
-| 可用性ゾーンのシナリオ | ゾーン ベースのみ | ゾーン冗長 (既定)、ゾーン ベース (オプション) | 
-| 高速 IP モビリティ | サポートされていません | 使用可能 |
-| VIP 可用性 | サポートされていません | 使用可能 |
-| Counters | サポートされていません | 使用可能 |
-| ネットワーク セキュリティ グループ | NIC では省略可能 | 必須 |
-
-
-## <a name="preview-sign-up"></a>プレビューのサインアップ
-
-Load Balancer Standard SKU とそのコンパニオンのパブリック IP Standard SKU のプレビューに参加するには、サブスクリプションを登録します。  サブスクリプションを登録すると、PowerShell または Azure CLI 2.0 からのアクセス権を取得できます。 登録するには、次の手順に従います。
-
->[!NOTE]
->Load Balancer Standard の機能の登録には、グローバルに有効になるまで 1 時間ほどかかる場合があります。 Load Balancer Standard を[可用性ゾーン](https://aka.ms/availabilityzones)で使用する場合は、AZ プレビュー用に[別のサインアップ](https://aka.ms/availabilityzones)が必要です。
-
-<a name="additionalpreviewregions"></a>
->[!IMPORTANT]
-> 初期起動リージョン (米国東部 2、米国中部、北ヨーロッパ、米国中西部、西ヨーロッパ、東南アジア) の外部のリージョンに短期間アクセスするには、追加のサブスクリプション機能 (AllowLBPreviewWave2 と AllowLBPreviewWave3) の登録が必要です。  以下の手順は、追加のサブスクリプション機能を有効にするために変更されています。 以前に AllowLBPreview にサインアップしたことがある場合でも、これらの手順をすべて実行してください。 この要件は今後数週間で削除される予定です。
-
-
-### <a name="sign-up-by-using-azure-cli-20"></a>Azure CLI 2.0 を使用したサインアップ
-
-1. 機能を次のようにプロバイダーに登録します。
-
-    ```cli
-    az feature register --name AllowLBPreview --namespace Microsoft.Network
-    az feature register --name AllowLBPreviewWave2 --namespace Microsoft.Network
-    az feature register --name AllowLBPreviewWave3 --namespace Microsoft.Network
-    ```
-    
-2. この操作は、完了するまで最大 10 分かかることがあります。 操作の状態は、次のコマンドで確認できます。
-
-    ```cli
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreview']" --output json
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave2']" --output json
-    az feature list --query "[?name=='Microsoft.Network/AllowLBPreviewWave3']" --output json
-    ```
-    
-    上記の各サブスクリプション機能について、機能の登録状態が "Registered" になったら、次の手順に進んでください。 例:
-   
-    ```json
-    {
-       "id": "/subscriptions/foo/providers/Microsoft.Features/providers/Microsoft.Network/features/AllowLBPreview",
-       "name": "Microsoft.Network/AllowLBPreview",
-       "properties": {
-          "state": "Registered"
-       },
-       "type": "Microsoft.Features/providers/features"
-    }
-    ```
-    
-4. サブスクリプションをリソース プロバイダーに再登録して、プレビューのサインアップを完了してください。
-
-    ```cli
-    az provider register --namespace Microsoft.Network
-    ```
-    
-
-### <a name="sign-up-by-using-powershell"></a>PowerShell を使用したサインアップ
-
-1. 機能を次のようにプロバイダーに登録します。
-
-    ```powershell
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
-    Register-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
-    ```
-    
-2. この操作は、完了するまで最大 10 分かかることがあります。 操作の状態は、次のコマンドで確認できます。
-
-    ```powershell
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreview -ProviderNamespace Microsoft.Network
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave2 -ProviderNamespace Microsoft.Network
-    Get-AzureRmProviderFeature -FeatureName AllowLBPreviewWave3 -ProviderNamespace Microsoft.Network
-    ```
-
-  上記の各サブスクリプション機能について、機能の登録状態が "Registered" になったら、次の手順に進んでください。 例:
-
-    ```
-    FeatureName      ProviderName        RegistrationState
-    -----------      ------------        -----------------
-    AllowLBPreview   Microsoft.Network   Registered
-    ```
-    
-3. サブスクリプションをリソース プロバイダーに再登録して、プレビューのサインアップを完了してください。
-
-    ```powershell
-    Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
-    ```
- 
 ## <a name="pricing"></a>価格
 
-Load Balancer Standard SKU は、構成済みの規則と処理されたデータに基づいて課金されます。 プレビュー期間中は、料金は発生しません。 詳細については、[Load Balancer](https://aka.ms/lbpreviewpricing) と[パブリック IP](https://aka.ms/lbpreviewpippricing) の価格のページをご覧ください。
-
-Load Balancer Basic SKU は、引き続き無料でご利用いただけます。
+Standard Load Balancer は、構成された負荷分散ルールの数と、処理されたすべての受信および送信データの数に基づいて課金される製品です。 Standard Load Balancer の価格の情報については、[Load Balancer の価格](https://aka.ms/lbpricing)に関するページをご覧ください。
 
 ## <a name="limitations"></a>制限事項
 
-プレビュー時点で次の制限事項が適用されます。これらの制限事項は変更されることがあります。
-
 - 現時点では、Load Balancer のバックエンド インスタンスをピアリングされた仮想ネットワークに配置することはできません。 バックエンド インスタンスはすべて同じリージョンに存在する必要があります。
 - SKU は変更不可です。 既存のリソースの SKU を変更することはできません。
-- スタンドアロン VM、可用性セットのすべての VM インスタンス、または仮想マシン スケール セットを両方の SKU で使用することができます。 VM の組み合わせを両方の SKU で同時に使用することはできません。 SKU の組み合わせが含まれる構成は許可されていません。
-- VM インスタンス (または可用性セットの VM インスタンス) で内部 Load Balancer Standard を使用すると、[既定の SNAT 送信接続](load-balancer-outbound-connections.md)が無効になります。 この機能をスタンドアロン VM、可用性セットのすべての VM インスタンス、または仮想マシン スケール セットに復元することができます。 発信接続を行う機能を復元することもできます。 これらの機能を復元するには、パブリック Load Balancer Standard またはインスタンス レベルのパブリック IP としてのパブリック IP Standard を同じ VM インスタンスに同時に割り当てます。 割り当てが完了すると、パブリック IP アドレスに対するポート マスカレード SNAT が再び提供されます。
-- フル スケースのバックエンド プールを実現するために、VM インスタンスを可用性セットにグループ化することが必要な場合があります。 最大 150 個の可用性セットとスタンドアロン VM を 1 つのバックエンド プールに配置できます。
-- IPv6 はサポートされていません。
-- 可用性ゾーンのコンテキストでは、フロントエンドをゾーン ベースからゾーン冗長に変更したり、ゾーン冗長からゾーン ベースに変更したりすることはできません。 フロント エンドは、ゾーン冗長として作成した後は常にゾーン冗長のままです。 フロント エンドは、ゾーン ベースとして作成した後は常にゾーン ベースのままです。
-- 可用性ゾーンのコンテキストでは、ゾーンのパブリック IP アドレスをゾーン間で移動することはできません。
+- スタンドアロン仮想マシン リソース、可用性セット リソース、または仮想マシン スケール セット リソースは、1 つの SKU でのみ参照でき、両方では参照できません。
 - [Azure Monitor アラート](../monitoring-and-diagnostics/monitoring-overview-alerts.md)は、現時点ではサポートされていません。
-- ポータルでは、拡張されたプレビュー リージョンがまだサポートされていません。  回避策として、テンプレート、Azure CLI 2.0、PowerShell などのクライアント ツールを使用してください。
 - [サブスクリプションの移動操作](../azure-resource-manager/resource-group-move-resources.md)は、Standard SKU LB および PIP リソースではサポートされていません。
-- 米国西部では使用できません。
-
 
 ## <a name="next-steps"></a>次の手順
 
-- [Load Balancer Basic](load-balancer-overview.md) の詳細を確認する。
+- [Standard Load Balancer と可用性ゾーン](load-balancer-standard-availability-zones.md)の使用について学習する。
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を学習する。
+- [Standard Load Balancer の診断](load-balancer-standard-diagnostics.md)について学習する。
+- [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) での診断で[サポートされる多次元メトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)について学習する。
+- [送信接続に対する Load Balancer](load-balancer-outbound-connections.md) の使用について学習する。
+- [HA ポート負荷分散ルールでの Standard Load Balancer](load-balancer-ha-ports-overview.md) について学習する。
+- [複数のフロントエンドでの Load Balancer](load-balancer-multivip-overview.md) について学習する。
+- [仮想ネットワーク](../virtual-network/virtual-networks-overview.md)について学習する。
 - [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)の詳細を確認する。
+- [VNET サービス エンドポイント](../virtual-network/virtual-network-service-endpoints-overview.md)について学習する。
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)について参照してください。
-- [Azure Monitor](../monitoring-and-diagnostics/monitoring-overview.md) で[公開されたメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftnetworkloadbalancers)を確認する。
+- [Load Balancer](load-balancer-overview.md) について詳しく学習する。

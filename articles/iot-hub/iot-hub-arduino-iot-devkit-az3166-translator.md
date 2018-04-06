@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/28/2018
 ms.author: liydu
-ms.openlocfilehash: 5f74e43d20b5954ae4808f82a34372d1e2190481
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: d17f117d71eb0616201df18aea6dc48749ae24a8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iot-devkit-az3166-with-azure-function-and-cognitive-services-to-make-a-language-translator"></a>IoT DevKit AZ3166 と Azure Function および Cognitive Services を使用してトランスレーターを作成する
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 03/08/2018
 
 有効な Azure サブスクリプション 持っていない場合は、次の 2 つの方法のいずれかを使用して登録できます。
 
-* [30 日間の無料試用版 Microsoft Azure アカウント](https://azureinfo.microsoft.com/us-freetrial.html)をアクティブにする
+* [30 日間の無料試用版 Microsoft Azure アカウント](https://azure.microsoft.com/en-us/free/)をアクティブにする
 * MSDN または Visual Studio サブスクライバーの場合、[Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)を要求する
 
 ## <a name="step-1-open-the-project-folder"></a>手順 1. プロジェクト フォルダーを開く

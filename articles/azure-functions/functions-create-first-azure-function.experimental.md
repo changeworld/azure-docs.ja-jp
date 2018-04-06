@@ -17,10 +17,10 @@ ms.date: 02/05/2018
 ms.author: glenga
 ms.custom: mvc, devcenter
 ms.openlocfilehash: 31437360396e220de24789fdff9d2602af385053
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
 

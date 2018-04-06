@@ -1,85 +1,118 @@
 ---
-title: "Azure Portal を使用した Azure Event Grid のカスタム イベント | Microsoft Docs"
-description: "Azure Event Grid と PowerShell を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。"
+title: Azure Portal を使用した Azure Event Grid のカスタム イベント | Microsoft Docs
+description: Azure Event Grid と PowerShell を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。
 services: event-grid
-keywords: 
+keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 01/30/2018
+ms.date: 03/23/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: f37d496d43bb24c51d6e1c11b77d9ceba48b7b23
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: f1185c0b2d5d320cd712642f422408348bee7a37
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-and-route-custom-events-with-the-azure-portal-and-event-grid"></a>Azure Portal と Event Grid を使ったカスタム イベントの作成とルーティング
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure Portal を使用して、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常、webhook や Azure Functions など、イベントに応答するエンドポイントが、イベントの送信先になります。 ただし、この記事では、単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サード パーティ製ツール ([RequestBin](https://requestb.in/) または [Hookbin](https://hookbin.com/)) を使用して作成します。
-
->[!NOTE]
->**RequestBin** と **Hookbin** は、高いスループットでの使用を目的としていません。 ここでは、デモンストレーションのためにこれらのツールを使用します。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
-
-最後に、イベント データがエンドポイントに送信されたことを確認します。
-
-![イベント データ](./media/custom-event-quickstart-portal/request-result.png)
+Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure Portal を使用して、カスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 イベントは、イベント データを記録する Azure Functions に対して送信します。 最後に、イベント データがエンドポイントに送信され、記録されたことを確認します。
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-a-resource-group"></a>リソース グループの作成
-
-Event Grid のトピックは Azure リソースであり、Azure リソース グループに配置する必要があります。 リソース グループは、Azure リソースをまとめてデプロイして管理するための論理上のコレクションです。
-
-1. 左側のナビゲーションで、**[リソース グループ]** を選択します。 その後、**[追加]** を選択します。
-
-   ![Create resource group](./media/custom-event-quickstart-portal/create-resource-group.png)
-
-1. リソース グループ名を *gridResourceGroup* に、その場所を *westus2* に設定します。 **[作成]**を選択します。
-
-   ![リソース グループの値の指定](./media/custom-event-quickstart-portal/provide-resource-group-values.png)
-
 ## <a name="create-a-custom-topic"></a>カスタム トピックの作成
 
-トピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 
+Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 
 
-1. リソース グループ内にトピックを作成するには、**[すべてのサービス]** を選択し、「*event grid*」を検索します。 利用可能なオプションから **[Event Grid トピック]** を選択します。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 
-   ![Event Grid トピックの作成](./media/custom-event-quickstart-portal/create-event-grid-topic.png)
+1. カスタム トピックを作成するには、**[リソースの作成]** を選択します。 
 
-1. **[追加]**を選択します。
+   ![リソースの作成](./media/custom-event-quickstart-portal/create-resource.png)
 
-   ![Event Grid トピックの追加](./media/custom-event-quickstart-portal/add-topic.png)
+1. "*Event Grid トピック*" を検索して、使用可能なオプションから選択します。
 
-1. トピックの名前を指定します。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 [サポートされているリージョン](overview.md)を 1 つ選択します。 先ほど作成したリソース グループを選択します。 **[作成]**を選択します。
+   ![Event Grid トピックの検索](./media/custom-event-quickstart-portal/search-event-grid.png)
 
-   ![Event Grid トピックの値の指定](./media/custom-event-quickstart-portal/provide-topic-values.png)
+1. **[作成]**を選択します。
 
-1. このトピックが作成されたら、**[更新]** を選択してトピックを表示します。
+   ![手順の開始](./media/custom-event-quickstart-portal/select-create.png)
 
-   ![Event Grid トピックの表示](./media/custom-event-quickstart-portal/see-topic.png)
+1. カスタム トピックの一意の名前を指定します。 トピック名は、DNS エントリによって表されるため、一意である必要があります。 画像に示されている名前は使用しないでください。 独自の名前を作成してください。 [サポートされているリージョン](overview.md)を 1 つ選択します。 リソース グループの名前を指定します。 **[作成]**を選択します。
 
-## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
+   ![Event Grid トピックの値の指定](./media/custom-event-quickstart-portal/create-custom-topic.png)
 
-トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin と Hookbin は、エンドポイントの作成と、エンドポイントに送信された要求の表示を可能にする、サード パーティ製のツールです。 [RequestBin](https://requestb.in/), に移動して **[Create a RequestBin]\(RequestBin の作成\)** をクリックするか、または[Hookbin](https://hookbin.com/) に移動して **[新しいエンドポイントの作成]** をクリックします。  Bin URL をコピーしてください。トピックをサブスクライブするときにこの URL が必要になります。
+1. カスタム トピックが作成されると、成功の通知が表示されます。
+
+   ![成功の通知を確認](./media/custom-event-quickstart-portal/success-notification.png)
+
+   デプロイに成功しなかった場合は、エラーの原因を特定します。 **[デプロイできませんでした]** を選択します。
+
+   ![[デプロイできませんでした] を選択](./media/custom-event-quickstart-portal/select-failed.png)
+
+   エラー メッセージを選択します。
+
+   ![[デプロイできませんでした] を選択](./media/custom-event-quickstart-portal/failed-details.png)
+
+   次の画像は、カスタム トピックの名前が既に使用されているために失敗したデプロイを示しています。 このエラーが表示された場合は、別の名前でデプロイを再試行してください。
+
+   ![名前の競合](./media/custom-event-quickstart-portal/name-conflict.png)
+
+## <a name="create-an-azure-function"></a>Azure 関数の作成
+
+トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 この記事では、Azure Functions を使用してエンドポイントの関数アプリを作成します。
+
+1. 関数を作成するには、**[リソースの作成]** を選択します。
+
+   ![リソースの作成](./media/custom-event-quickstart-portal/create-resource-small.png)
+
+1. **[Compute]** と **[Function App]** を選択します。
+
+   ![関数の作成](./media/custom-event-quickstart-portal/create-function.png)
+
+1. Azure Functions の一意の名前を指定します。 画像に示されている名前は使用しないでください。 この記事で作成したリソース グループを選択します ホスティング プランには、**[従量課金プラン]** を使用します。 提示された新しいストレージ アカウントを使用してください。 連の値を指定したら、**[作成]** をクリックします
+
+   ![関数の値の指定](./media/custom-event-quickstart-portal/provide-function-values.png)
+
+1. デプロイが完了したら、**[リソースに移動]** を選択します。
+
+   ![リソースに移動](./media/custom-event-quickstart-portal/go-to-resource.png)
+
+1. **[関数]** の横の **+** を選択します。
+
+   ![関数の追加](./media/custom-event-quickstart-portal/add-function.png)
+
+1. 表示されたオプションから、**[カスタム関数]** を選択します。
+
+   ![カスタム関数](./media/custom-event-quickstart-portal/select-custom-function.png)
+
+1. **[イベント グリッド トリガー]** が表示されるまで下へスクロールします。 **[C#]** を選択します。
+
+   ![イベント グリッド トリガーを選択](./media/custom-event-quickstart-portal/select-event-grid-trigger.png)
+
+1. 既定値のままにして **[作成]** を選択します。
+
+   ![新しい関数](./media/custom-event-quickstart-portal/new-function.png)
+
+関数でイベントを受信する準備が整いました。
 
 ## <a name="subscribe-to-a-topic"></a>トピックのサブスクライブ
 
-どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。 
+どのイベントを追跡し、どこにイベントを送信するかは、トピックを購読することによって Event Grid に伝えます。
 
-1. Event Grid サブスクリプションを作成するには、もう一度 **[すべてのサービス]** を選択し、「*event grid*」を検索します。 利用可能なオプションから **[Event Grid サブスクリプション]** を選択します。
+1. 対象の Azure 関数で、**[Event Grid サブスクリプションの追加]** を選択します。
 
-   ![Event Grid サブスクリプションの作成](./media/custom-event-quickstart-portal/create-subscription.png)
+   ![Event Grid サブスクリプションの追加](./media/custom-event-quickstart-portal/add-event-grid-subscription.png)
 
-1. **[+ イベント サブスクリプション]** を選択します。
+1. サブスクリプションの値を指定します。 トピックの種類には、**[Event Grid トピック]** を選択します。 サブスクリプションとリソース グループには、カスタム トピックを作成したサブスクリプションとリソース グループを選択してください。 たとえば、カスタム トピックの名前を選択します。 サブスクライバー エンドポイントには、関数の URL が事前設定されています。
 
-   ![Event Grid サブスクリプションの追加](./media/custom-event-quickstart-portal/add-subscription.png)
+   ![サブスクリプション値の指定](./media/custom-event-quickstart-portal/provide-subscription-values.png)
 
-1. イベント サブスクリプションに一意の名前を指定します。 トピックの種類については、**[Event Grid トピック]** を選択します。 インスタンスについては、作成したカスタム トピックを選択します。 イベント通知のエンドポイントとして、RequestBin または Hookbin の URL を指定します。 値の指定が完了したら、**[作成]** を選択します。
+1. イベント データが送信されたときに確認できるよう、イベントをトリガーする前に関数のログを開いておきます。 該当する Azure関数の一番下にある **[ログ]** を選択します。
 
-   ![Event Grid サブスクリプションの値の指定](./media/custom-event-quickstart-portal/provide-subscription-values.png)
+   ![ログの選択](./media/custom-event-quickstart-portal/select-logs.png)
 
-では、イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 この記事では、単純化するために、Cloud Shell を使用してサンプルのイベント データをトピックに送信します。 通常はイベント データをアプリケーションまたは Azure サービスから送信することになります。
+では、イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 この記事では、単純化するために、Cloud Shell を使用してサンプルのイベント データをカスタム トピックに送信します。 通常はイベント データをアプリケーションまたは Azure サービスから送信することになります。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -88,8 +121,8 @@ Event Grid のトピックは Azure リソースであり、Azure リソース �
 まず、トピックの URL とキーを取得します。 `<topic_name>` には、実際のトピック名を使用します。
 
 ```azurecli-interactive
-endpoint=$(az eventgrid topic show --name <topic_name> -g gridResourceGroup --query "endpoint" --output tsv)
-key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --query "key1" --output tsv)
+endpoint=$(az eventgrid topic show --name <topic_name> -g myResourceGroup --query "endpoint" --output tsv)
+key=$(az eventgrid topic key list --name <topic_name> -g myResourceGroup --query "key1" --output tsv)
 ```
 
 次の例では、サンプルのイベント データを取得します。
@@ -98,41 +131,27 @@ key=$(az eventgrid topic key list --name <topic_name> -g gridResourceGroup --que
 body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/customevent.json)'")
 ```
 
-`echo "$body"` を実行すると、イベント全体を確認できます。 JSON の `data` 要素がイベントのペイロードです。 このフィールドには、適切な形式の JSON であればどのようなものでも格納することができます。 また、高度なルーティングやフィルタリングを行う場合には、subject フィールドを使用することもできます。
+イベント全体を確認するには、`echo "$body"` を使用します。 JSON の `data` 要素がイベントのペイロードです。 このフィールドには、適切な形式の JSON であればどのようなものでも格納することができます。 また、高度なルーティングやフィルタリングを行う場合には、subject フィールドを使用することもできます。
 
-CURL は、HTTP 要求を行うユーティリティです。 この記事では、CURL を使用して、イベントをトピックに送信します。 
+CURL は、HTTP 要求を送信するユーティリティです。 この記事では、CURL を使用して、イベントをカスタム トピックに送信します。 
 
 ```azurecli-interactive
 curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
 ```
 
-以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 先ほど作成したエンドポイント URL に移動します。 または、開いているブラウザーで [更新] をクリックします。 先ほど送信したイベントが表示されます。
+以上でイベントがトリガーされ、そのメッセージが、Event Grid によってサブスクライブ時に構成したエンドポイントに送信されました。 ログを見てイベント データを確認してください。
 
-```json
-[{
-  "id": "1807",
-  "eventType": "recordInserted",
-  "subject": "myapp/vehicles/motorcycles",
-  "eventTime": "2017-08-10T21:03:07+00:00",
-  "data": {
-    "make": "Ducati",
-    "model": "Monster"
-  },
-  "dataVersion": "1.0",
-  "metadataVersion": "1",
-  "topic": "/subscriptions/{subscription-id}/resourceGroups/{resource-group}/providers/Microsoft.EventGrid/topics/{topic}"
-}]
-```
+![ログを表示する。](./media/custom-event-quickstart-portal/view-log-entry.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 続行する予定がない場合は、この記事で作成したリソースを削除してください。
+引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、この記事で作成したリソースを削除してください。
 
 リソース グループを選択し、**[リソース グループの削除]** を選択します。
 
 ## <a name="next-steps"></a>次の手順
 
-トピックを作成し、イベントをサブスクライブする方法がわかったら、Event Grid でできることについて、さらに情報を収集しましょう。
+カスタム トピックを作成し、イベントをサブスクライブする方法がわかったら、Event Grid でできることについて、さらに情報を収集しましょう。
 
 - [Event Grid について](overview.md)
 - [Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)

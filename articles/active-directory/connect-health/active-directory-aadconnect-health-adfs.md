@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4e82b1364593ff70ed87efcaa24c135277002904
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: ad8ed320a8dd91ea83dbaf71e2e9514b4df4cdb5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-ad-fs-using-azure-ad-connect-health"></a>Azure AD Connect Health を使用した AD FS の 監視
 次のドキュメントは、Azure AD Connect Health を使用した AD FS インフラストラクチャの監視に固有のドキュメントです。 Azure AD Connect Health での Azure AD Connect (同期) の監視については、「 [Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)」を参照してください。また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -126,9 +126,9 @@ AD FS のお客様は、エンド ユーザーが Office 365 などの SaaS ア�
 - オフライン分析用にダウンロード可能なレポートと、他のシステムとの自動での統合
 
 > [!NOTE]
-> このレポートを使用するには、AD FS 監査が有効になっている必要があります。 詳細については、「 [AD FS の監査の有効化](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs)」を参照してください。
->
->
+> このレポートを使用するには、AD FS 監査が有効になっている必要があります。 詳細については、「 [AD FS の監査の有効化](active-directory-aadconnect-health-agent-install.md#enable-auditing-for-ad-fs)」を参照してください。 <br />
+> プレビューにアクセスするには、全体管理者または[セキュリティ閲覧者](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles#security-reader)のアクセス許可が必要です。  
+> 
 
 ### <a name="what-is-in-the-report"></a>レポートの内容
 危険な IP のレポートの各項目は、指定されたしきい値を超える、失敗した AD FS サインイン アクティビティに関する集計情報を示します。 次の情報が提供されます。![Azure AD Connect Health ポータル](./media/active-directory-aadconnect-health-adfs/report4a.png)

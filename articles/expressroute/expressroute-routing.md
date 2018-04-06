@@ -1,24 +1,24 @@
 ---
-title: "Azure ExpressRoute のルーティングの要件 | Microsoft Docs"
-description: "このページでは、ExpressRoute 回線のルーティングを構成および管理するための詳細な要件について説明します。"
+title: Azure ExpressRoute のルーティングの要件 | Microsoft Docs
+description: このページでは、ExpressRoute 回線のルーティングを構成および管理するための詳細な要件について説明します。
 documentationcenter: na
 services: expressroute
 author: ganesr
 manager: ganesr
-editor: 
+editor: ''
 ms.assetid: 5b382e79-fa3f-495a-a764-c5ff86af66a2
 ms.service: expressroute
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/03/2017
+ms.date: 03/28/2018
 ms.author: ganesr
-ms.openlocfilehash: 87cf32c23c2b3f50057016a23212c95b706f2910
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.openlocfilehash: 829646be6404f86d9f370b3a402cfc0c0c980699
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -107,7 +107,7 @@ Microsoft ピアリング パスにより、Azure パブリック ピアリン�
 
 上記のレジストリでプレフィックスと AS 番号が自分に割り当てられていない場合は、プレフィックスと ASN を手動で検証するためにサポート ケースを開く必要があります。 サポートを受けるには、リソースの使用が許可されていることを証明するドキュメント (たとえば、承認状) が必要になります。
 
-Microsoft ピアリングではプライベート AS 番号を使用できますが、手動による検証も必要になります。
+Microsoft ピアリングではプライベート AS 番号を使用できますが、手動による検証も必要になります。 さらに、受信したプレフィックスの AS PATH からプライベート AS 番号が削除されます。 その結果、[Microsoft ピアリングのルーティングを制御するために](expressroute-optimize-routing.md)、AS PATH にプライベート AS 番号を付加できません。 
 
 > [!IMPORTANT]
 > ExpressRoute 経由で Microsoft にアドバタイズされるパブリック IP アドレスは、インターネットにアドバタイズしないでください。 他の Microsoft サービスへの接続が切断される場合があります。 ただし、Microsoft 内の O365 エンドポイントと通信するネットワーク内のサーバーが使用するパブリック IP アドレスは、ExpressRoute 経由でアドバタイズされることがあります。 
@@ -118,7 +118,7 @@ Microsoft ピアリングではプライベート AS 番号を使用できます
 ルーティングの交換は eBGP プロトコル上で実行されます。 MSEE とルーターとの間に EBGP セッションが確立されます。 BGP セッションの認証は必須ではありません。 必要な場合は、MD5 ハッシュを構成することができます。 BGP セッションの構成については、[ルーティングの構成](expressroute-howto-routing-classic.md)に関する記事および[回線のプロビジョニング ワークフローと回線の状態](expressroute-workflows.md)に関する記事をご覧ください。
 
 ## <a name="autonomous-system-numbers"></a>自律システム番号
-Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。 ASN 65515 ～ 65520 は、内部使用のために予約されています。 16 ビットと 32 ビットの両方の AS 番号がサポートされています。 公的に登録された ASN は、Microsoft ピアリングのためにのみ必要です。 プライベート ピアリングとパブリック ピアリングの両方でプライベート ASN を使用できます。
+Microsoft は、Azure パブリック、Azure プライベート、および Microsoft ピアリングのために AS 12076 を使用します。 ASN 65515 ～ 65520 は、内部使用のために予約されています。 16 ビットと 32 ビットの両方の AS 番号がサポートされています。
 
 データ転送の対称性に関する要件はありません。 転送パスとリターン パスは、異なるルーター ペアを通過することができます。 同じルートについては、自分に属している複数の回線ペアのどちらかの側からアドバタイズする必要があります。 ルートのメトリックは同一である必要はありません。
 

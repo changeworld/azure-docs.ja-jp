@@ -1,11 +1,11 @@
 ---
-title: "ユニバーサル Windows プラットフォーム アプリでの Azure Notification Hubs の使用 | Microsoft Docs"
-description: "このチュートリアルでは、Azure Notification Hubs を使用して Windows ユニバーサル プラットフォーム アプリケーションにプッシュ通知を送信する方法について学習します。"
+title: ユニバーサル Windows プラットフォーム アプリでの Azure Notification Hubs の使用 | Microsoft Docs
+description: このチュートリアルでは、Azure Notification Hubs を使用して Windows ユニバーサル プラットフォーム アプリケーションにプッシュ通知を送信する方法について学習します。
 services: notification-hubs
 documentationcenter: windows
 author: jwhitedev
 manager: kpiteira
-editor: 
+editor: ''
 ms.assetid: cf307cf3-8c58-4628-9c63-8751e6a0ef43
 ms.service: notification-hubs
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 12/22/2017
 ms.author: jawh
-ms.openlocfilehash: c09621d1152aafbe15039130f6ca24082dc5bd21
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 8464a7e48a02be39fb624322fac6c26f4c6c6806
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-notification-hubs-for-universal-windows-platform-apps"></a>ユニバーサル Windows プラットフォーム アプリでの Notification Hubs の使用
 
@@ -94,11 +94,11 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 1. Visual Studio でソリューションを右クリックし、**[NuGet パッケージの管理]** を選択します。  
     **[NuGet パッケージの管理]** ウィンドウが開きます。
 
-2. 検索ボックスに「**WindowsAzure.Messaging.Managed**」と入力し、**[インストール]** を選択して、使用条件に同意します。
+2. 検索ボックスに「**Microsoft.Azure.NotificationHubs**」と入力し、**[インストール]** を選択して、使用条件に同意します。
    
     ![[NuGet パッケージの管理] ウィンドウ][20]
    
-    [WindowsAzure.Messaging.Managed NuGet パッケージ](http://nuget.org/packages/WindowsAzure.Messaging)を使用して、Windows の Azure メッセージング ライブラリに参照がダウンロードされ、インストールと追加が行われます。
+    この操作によって、[Microsoft.Azure.NotificationHubs NuGet パッケージ](https://www.nuget.org/packages/Microsoft.Azure.NotificationHubs)を使用して Windows 用 Azure Notification Hubs ライブラリがダウンロード、インストールされ、ライブラリへの参照が追加されます。
 
 3. App.xaml.cs プロジェクト ファイルを開き、次の `using` ステートメントを追加します。 
    

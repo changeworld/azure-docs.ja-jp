@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/28/2017
 ms.author: kirillg
 ms.openlocfilehash: e5820cb17cfbaa15f10f24881f02a37aec617267
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-manage-an-azure-cosmos-db-account"></a>Azure Cosmos DB アカウントの管理方法
 グローバルな整合性の設定、キーの操作、Azure Cosmos DB アカウントの削除を Azure Portal で行う方法について説明します。
@@ -84,7 +84,7 @@ Azure Cosmos DB アカウントを使用するアプリケーションまたは�
 2. リソース メニューで **[キー]** (または MongoDB API アカウントの場合は **[接続文字列]**) をクリックします。
 3. **[プライマリ接続文字列]** ボックスまたは **[セカンダリ接続文字列]** ボックスの横にある **[コピー]** ボタンをクリックします。 
 
-[Azure Cosmos DB データベース移行ツール](import-data.md)で接続文字列を使用する場合は、接続文字列の末尾にデータベース名を追加します。 `AccountEndpoint=< >;AccountKey=< >;Database=< >`」を参照してください。
+[Azure Cosmos DB データベース移行ツール](import-data.md)で接続文字列を使用する場合は、接続文字列の末尾にデータベース名を追加します。 `AccountEndpoint=< >;AccountKey=< >;Database=< >`
 
 ## <a id="delete"></a> Azure Cosmos DB アカウントの削除
 使用しなくなった Azure Cosmos DB アカウントを Azure Portal から削除するには、アカウント名を右クリックし、**[アカウントの削除]** をクリックします。

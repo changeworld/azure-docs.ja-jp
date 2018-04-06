@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI を使用して Azure Stack に Windows 仮想マシンを作成する | Microsoft Docs"
-description: "Azure CLI を使用して Azure Stack に Windows VM を作成する方法を説明します"
+title: Azure CLI を使用して Azure Stack に Windows 仮想マシンを作成する | Microsoft Docs
+description: Azure CLI を使用して Azure Stack に Windows VM を作成する方法を説明します
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: E26B246E-811D-44C9-9BA6-2B3CE5B62E83
 ms.service: azure-stack
 ms.workload: na
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: mabrigg
 ms.custom: mvc
-ms.openlocfilehash: ea972db9ce3488d9a46a7d059714c8bbe820d47d
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 2a4eb909c39051ce9fa2efd7e7997644d9b8b1b1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-a-windows-virtual-machine-on-azure-stack-using-azure-cli"></a>Azure CLI を使用して Azure Stack に Windows 仮想マシンを作成する
 
@@ -29,7 +29,7 @@ Azure CLI は、コマンドラインで Azure Stack リソースを作成およ
 
 * Azure Stack オペレーターが Azure Stack Marketplace に "Windows Server 2016" のイメージを追加していることを確認します。  
 
-* リソースを作成して管理するため、Azure Stack には Azure CLI の特定のバージョンが必要です。 Azure Stack 用に Azure CLI を構成していない場合は、[Azure CLI のインストールと構成](azure-stack-connect-cli.md)の手順に従います。
+* リソースを作成して管理するため、Azure Stack には Azure CLI の特定のバージョンが必要です。 Azure Stack 用に Azure CLI を構成していない場合は、[Azure CLI のインストールと構成](azure-stack-version-profiles-azurecli2.md)の手順に従います。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 

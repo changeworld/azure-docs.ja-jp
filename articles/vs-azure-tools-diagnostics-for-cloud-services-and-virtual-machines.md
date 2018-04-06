@@ -1,11 +1,11 @@
 ---
-title: "Azure クラウド サービスと仮想マシンに対する診断を設定する | Microsoft Docs"
-description: "Visual Studio で Azure クラウド サービスと仮想マシン (VM) をデバッグするための診断を設定する方法について説明します。"
+title: Azure クラウド サービスと仮想マシンに対する診断を設定する | Microsoft Docs
+description: Visual Studio で Azure クラウド サービスと仮想マシン (VM) をデバッグするための診断を設定する方法について説明します。
 services: visual-studio-online
 documentationcenter: na
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: e70cd7b4-6298-43aa-adea-6fd618414c26
 ms.service: multiple
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: f00771d89749e7507d7f303f366fe63f537900ff
-ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
+ms.openlocfilehash: 34c667b0a594682e4d099e7bff64bfdb336b850b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="set-up-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Azure クラウド サービスと仮想マシンに対する診断を設定する
 Azure クラウド サービスまたは Azure 仮想マシンのトラブルシューティングを行うときは、Visual Studio を使用して Azure 診断を簡単に構成できます。 診断は、クラウド サービスを実行する仮想マシンと仮想マシン インスタンスのシステム データとログ データを取り込みます。 診断データは、選択したストレージ アカウントに転送されます。 Azure での診断ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](app-service/web-sites-enable-diagnostic-log.md)」を参照してください。
@@ -216,7 +216,7 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
     Cloud Explorer またはサーバー エクスプローラーで、対象のデプロイに関連付けられたストレージ アカウントを開きます。
 3. テーブル ビューアーで診断テーブルを開き、収集したデータを確認します。 IIS ログおよびカスタム ログについては、BLOB コンテナーを開くことができます。 次の表に、異なるログ ファイルのデータを含むテーブルまたは BLOB コンテナーの一覧を示します。 テーブルの項目には、ログ ファイルのデータだけでなく、**EventTickCount**、**DeploymentId**、**Role**、および **RoleInstance** が含まれており、どの仮想マシンとロールがデータがいつ生成したかを特定できます。 
    
-   | 診断データ | 説明 | 場所 |
+   | 診断データ | [説明] | 場所 |
    | --- | --- | --- |
    | アプリケーション ログ |コードが **System.Diagnostics.Trace** クラスのメソッドを呼び出すことで生成するログ。 |WADLogsTable |
    | イベント ログ |仮想マシンの Windows イベント ログから生成されるデータ。 Windows がこれらのログに情報を格納しますが、アプリケーションやサービスも、このログを使用してエラーまたはログ情報を報告します。 |WADWindowsEventLogsTable |
@@ -301,6 +301,6 @@ Azure SDK 2.5 を使用している場合、カスタム データ ソースを�
 
 **[プロパティ]** ウィンドウで、**[出力ディレクトリにコピー]** プロパティを **[常にコピーする]** に設定します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Azure の診断ログの詳細については、[Azure Cloud Services および Virtual Machines での診断の有効化](cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](app-service/web-sites-enable-diagnostic-log.md)」を参照してください。
 

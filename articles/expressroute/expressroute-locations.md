@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/20/2018
 ms.author: pareshmu
-ms.openlocfilehash: 001dca30121d51cfdee5b26a431c7a3702024e5e
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bad06add368c42970d235b335d14185eb8abf3a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -77,7 +77,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |サポートされています |サポートされています |モントリオール、トロント、ケベック シティ |
 | **[British Telecom](http://www.globalservices.bt.com/uk/en/news/bt_to_provide_connectivity_to_microsoft_azure)** |サポートされています |サポートされています |アムステルダム、香港、ロンドン、シリコン バレー、シンガポール、シドニー、東京、ワシントン DC |
 | **[C3ntro](https://c3ntro.com/)** |近日対応予定 |近日対応予定 |マイアミ |
-| **[CenturyLink](http://www.centurylink.com/business/enterprise/services/data-network/mpls-vpn.html)** |近日対応予定 |近日対応予定 |シリコン バレー |
+| **[CenturyLink Cloud Connect](http://www.centurylink.com/cloudconnect)** |サポートされています |サポートされています |ニューヨーク、サンアントニオ、東京、トロント |
 | **China Telecom Global** |サポートされています |サポートされていません |香港特別行政区 |
 | **[Cologix](http://www.cologix.com/solutions/cloud-connect/public-clouds/microsoft-cloud/)** |サポートされています |サポートされています |ダラス、モントリオール、トロント |
 | **[Colt](http://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |サポートされています |サポートされています |アムステルダム、ダブリン、ロンドン、パリ、東京 |
@@ -98,7 +98,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **Jisc** |サポートされています |サポートされています |ロンドン |
 | **KINX** |サポートされています |サポートされています |ソウル |
 | **[KPN](http://www.kpn.com/cloudconnect)** | サポートされています | サポートされています | アムステルダム | 
-| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ラスベガス、ロンドン、ニューポート、ニューヨーク、サンアントニオ、サンパウロ、シアトル、シリコン バレー、シンガポール、東京、ワシントン DC |
+| **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、ラスベガス、ロンドン、ニューポート、サンパウロ、シアトル、シリコン バレー、シンガポール、ワシントン DC |
 | **LG CNS** |サポートされています |サポートされています |釜山、ソウル |
 | **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |サポートされています |サポートされています |アムステルダム、シカゴ、ダラス、デンバー、ダブリン、香港、ラスベガス、ロンドン、ロサンゼルス、メルボルン、マイアミ、ニューヨーク、ケベック シティ、サンアントニオ、シアトル、シリコン バレー、シンガポール、シンガポール 2、シドニー、トロント、ワシントン DC |
 | **MTN** |サポートされています |サポートされています |ロンドン |

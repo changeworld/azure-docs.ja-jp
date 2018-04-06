@@ -1,8 +1,8 @@
 ---
-title: "JavaScript Web アプリのための Azure Application Insights | Microsoft Docs"
-description: "ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。"
+title: JavaScript Web アプリのための Azure Application Insights | Microsoft Docs
+description: ページ ビューとセッション数、Web クライアントのデータを取得し、使用パターンを追跡します。 JavaScript Web ページの例外とパフォーマンスの問題を検出します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: 3b710d09-6ab4-4004-b26a-4fa840039500
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7cc061b921109f173837352199ff64f055ae2483
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: a2cb3d504abcd3f9c50df2427884d478ad2240c4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-web-pages"></a>Web ページ向けの Application Insights
 Web ページまたはアプリのパフォーマンスと使用状況について調べます。 [Application Insights](app-insights-overview.md) をページ スクリプトに追加すると、ページの読み込みと AJAX 呼び出しのタイミング、ブラウザーの例外や AJAX エラーの数と詳細、ユーザー数とセッション数を取得できます。 いずれの情報も、ページ、クライアントの OS とブラウザー バージョン、geo ロケーションなどのディメンションごとにセグメント化することができます。 エラーの数やページ読み込みの遅延に基づくアラートを設定することもできます。 また、JavaScript コードにトレースの呼び出しを挿入することで、Web ページ アプリケーションのさまざまな機能がどのように使用されているかを追跡できます。
@@ -26,7 +26,7 @@ Web ページまたはアプリのパフォーマンスと使用状況につい�
 
 ![portal.azure.com でアプリのリソースを開き、[ブラウザー] をクリックする](./media/app-insights-javascript/03.png)
 
-使用を開始するには、 [Microsoft Azure](https://azure.com)のサブスクリプションが必要です。 所属する部署がサブスクリプションを所有している場合、あなたの Microsoft アカウントをサブスクリプションに追加するようその所有者に依頼してください。 開発と小規模な用途であれば、費用は一切かかりません。
+使用を開始するには、 [Microsoft Azure](https://azure.com)のサブスクリプションが必要です。 所属する部署がサブスクリプションを所有している場合、あなたの Microsoft アカウントをサブスクリプションに追加するようその所有者に依頼してください。
 
 ## <a name="set-up-application-insights-for-your-web-page"></a>Web ページに Application Insights を設定する
 次のように、Web ページにローダー コード スニペットを追加します。
@@ -51,7 +51,29 @@ Application Insights リソースは、ページのパフォーマンスと使�
 
 ![アプリの概要ブレードで、クイック スタートを選択し、マイ Web ページを監視するためのコードを取得します。 スクリプトをコピーします。](./media/app-insights-javascript/02-monitor-web-page.png)
 
-追跡するすべてのページの `</head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 次に例を示します。
+> [!NOTE]
+> "*作業の開始*" エクスペリエンスは、Application Insights リソースの作成時に選んだアプリケーションの種類によって異なります。 実際のアプリに関して、先ほどのスクリーンショットで紹介したようなスクリプトが存在しない場合は、次のスクリプトを使用してください。
+
+```HTML
+<!-- 
+To collect end-user usage analytics about your application, 
+insert the following script into each page you want to track.
+Place this code immediately before the closing </head> tag,
+and before any other scripts. Your first data will appear 
+automatically in just a few seconds.
+-->
+<script type="text/javascript">
+var appInsights=window.appInsights||function(a){
+  function b(a){c[a]=function(){var b=arguments;c.queue.push(function(){c[a].apply(c,b)})}}var c={config:a},d=document,e=window;setTimeout(function(){var b=d.createElement("script");b.src=a.url||"https://az416426.vo.msecnd.net/scripts/a/ai.0.js",d.getElementsByTagName("script")[0].parentNode.appendChild(b)});try{c.cookie=d.cookie}catch(a){}c.queue=[];for(var f=["Event","Exception","Metric","PageView","Trace","Dependency"];f.length;)b("track"+f.pop());if(b("setAuthenticatedUserContext"),b("clearAuthenticatedUserContext"),b("startTrackEvent"),b("stopTrackEvent"),b("startTrackPage"),b("stopTrackPage"),b("flush"),!a.disableExceptionTracking){f="onerror",b("_"+f);var g=e[f];e[f]=function(a,b,d,e,h){var i=g&&g(a,b,d,e,h);return!0!==i&&c["_"+f](a,b,d,e,h),i}}return c
+  }({
+      instrumentationKey:"<your instrumentation key>"
+  });
+  
+window.appInsights=appInsights,appInsights.queue&&0===appInsights.queue.length&&appInsights.trackPageView();
+</script>
+```
+
+追跡するすべてのページの `</head>` タグの直前にスクリプトを挿入します。Web サイトにマスター ページがある場合は、そこにスクリプトを配置できます。 例: 
 
 * ASP.NET MVC プロジェクトで、 `View\Shared\_Layout.cshtml`
 * SharePoint サイトのコントロール パネルで、[ [サイト設定 / マスター ページ](app-insights-sharepoint.md)] を開きます。

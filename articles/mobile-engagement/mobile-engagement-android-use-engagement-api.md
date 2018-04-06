@@ -1,11 +1,11 @@
 ---
-title: "Engagement API を Android で使用する方法"
-description: "最新の Android SDK - Engagement API を Android で使用する方法"
+title: Engagement API を Android で使用する方法
+description: 最新の Android SDK - Engagement API を Android で使用する方法
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 09b62659-82ae-4a55-8784-fca0b6b22eaf
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: d353cd2fe47c54a0282cc5bb1b22b4a56e0cd82c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79d0652be227dd6703a35d31409cf8e0d9c59519
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-android"></a>Engagement API を Android で使用する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このドキュメントは、 [Android Mobile Engagement SDK の詳細なレポート オプション](mobile-engagement-android-advanced-reporting.md)に関する記事の追加ドキュメントです。 エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
 
 Engagement を使用してアプリケーションのセッション、アクティビティ、クラッシュ、および技術情報に関するレポートのみを作成する場合、すべての `Activity` サブクラスを対応する `EngagementActivity` クラスから継承するように設定する方法が簡単です。

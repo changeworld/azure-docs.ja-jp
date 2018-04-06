@@ -38,8 +38,16 @@
           href: ../common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: ファイル共有スナップショットについて
           href: storage-snapshots-files.md
-        - name: ストレージ冗長オプション
-          href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+        - name: データの冗長性
+          items:
+            - name: 冗長性の概要
+              href: ../common/storage-redundancy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: ローカル冗長ストレージ
+              href: ../common/storage-redundancy-lrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: ゾーン冗長ストレージ
+              href: ../common/storage-redundancy-zrs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
+            - name: geo 冗長ストレージ
+              href: ../common/storage-redundancy-grs.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json
         - name: スケーラビリティとパフォーマンスのターゲット
           href: storage-files-scale-targets.md
         - name: ディザスター リカバリーの ガイダンス

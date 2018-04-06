@@ -1,11 +1,11 @@
 ---
-title: "Visual Studio を使用したストレージ エミュレーターの構成と使用 | Microsoft Docs"
-description: "Visual Studio を使用したストレージ エミュレーターの構成と使用"
+title: Visual Studio を使用したストレージ エミュレーターの構成と使用 | Microsoft Docs
+description: Visual Studio を使用したストレージ エミュレーターの構成と使用
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: c8e7996f-6027-4762-806e-614b93131867
 ms.service: storage
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/17/2017
-ms.author: kraigb
-ms.openlocfilehash: f4cd8ccc3b186cf2b4178b7d8a98d8928c705cbc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: ecf9df0d94f34df69750a8baa7f5502764cf9b06
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="configuring-and-using-the-storage-emulator-with-visual-studio"></a>Visual Studio を使用したストレージ エミュレーターの構成と使用
 [!INCLUDE [storage-try-azure-tools](../includes/storage-try-azure-tools.md)]

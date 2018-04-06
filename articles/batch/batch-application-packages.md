@@ -1,25 +1,25 @@
 ---
-title: "コンピューティング ノードへのアプリケーション パッケージのインストール - Azure Batch | Microsoft Docs"
-description: "Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。"
+title: コンピューティング ノードへのアプリケーション パッケージのインストール - Azure Batch | Microsoft Docs
+description: Azure Batch のアプリケーション パッケージ機能を使用すると、Batch コンピューティング ノードにインストールされる複数のアプリケーションとバージョンを簡単に管理できます。
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 3b6044b7-5f65-4a27-9d43-71e1863d16cf
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 07/20/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 86b5f10cbd79227ccc6acb2004e449f426a6cbd8
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 440f7eba99e5fa02a597ae62d5d14329f5e50af7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -29,7 +29,7 @@ Azure Batch のアプリケーション パッケージ機能を使用すると�
 
 > [!NOTE]
 > 
-> アプリケーション パッケージは、2017 年 7 月 5 日より後に作成されたすべての Batch プールでサポートされます。 これらは、プールがクラウド サービス構成を使って作成された場合にのみ、2016 年 3 月 10 日から 2017 年 7 月 5 日までの間に作成された Batch プールでサポートされます。 2016 年 3 月 10日より前に作成された Batch プールは、アプリケーション パッケージをサポートしていません。
+> アプリケーション パッケージは、2017 年 7 月 5 日より後に作成されたすべての Batch プールでサポートされます。 これらは、プールがクラウド サービス構成を使って作成された場合にのみ、2016 年 3 月 10 日から 2017 年 7 月 5 日までの間に作成された Batch プールでサポートされます。 2016 年 3 月 10 日より前に作成された Batch プールは、アプリケーション パッケージをサポートしていません。
 >
 > アプリケーション パッケージの作成と管理を行う API は [Batch Management .NET][[api_net_mgmt]] ライブラリの一部です。 コンピューティング ノードでアプリケーション パッケージをインストールするための API は [Batch .NET][api_net] ライブラリの一部です。  
 >
@@ -43,7 +43,7 @@ Azure Batch のアプリケーション パッケージ機能を使用すると�
 この機能は、[Batch REST API][api_rest] バージョン 2015-12-01.2.2、対応する [Batch .NET][api_net] ライブラリ バージョン 3.1.0 で導入されました。 Batch の運用には、常に最新の API バージョンを使用することをお勧めします。
 
 > [!NOTE]
-> アプリケーション パッケージは、2017 年 7 月 5 日より後に作成されたすべての Batch プールでサポートされます。 これらは、プールがクラウド サービス構成を使って作成された場合にのみ、2016 年 3 月 10 日から 2017 年 7 月 5 日までの間に作成された Batch プールでサポートされます。 2016 年 3 月 10日より前に作成された Batch プールは、アプリケーション パッケージをサポートしていません。
+> アプリケーション パッケージは、2017 年 7 月 5 日より後に作成されたすべての Batch プールでサポートされます。 これらは、プールがクラウド サービス構成を使って作成された場合にのみ、2016 年 3 月 10 日から 2017 年 7 月 5 日までの間に作成された Batch プールでサポートされます。 2016 年 3 月 10 日より前に作成された Batch プールは、アプリケーション パッケージをサポートしていません。
 >
 >
 
@@ -52,7 +52,7 @@ Azure Batch では、" *アプリケーション* " という用語は、プー�
 
 ![High-level diagram of applications and application packages][1]
 
-### <a name="applications"></a>アプリケーション
+### <a name="applications"></a>[アプリケーション]
 Batch 内のアプリケーションは、1 つ以上のアプリケーション パッケージを含んでおり、アプリケーションの構成オプションを指定します。 たとえば、アプリケーションは、コンピューティング ノードにインストールする既定のアプリケーション パッケージのバージョンや、そのパッケージを更新または削除できるかどうかを指定します。
 
 ### <a name="application-packages"></a>アプリケーション パッケージ
@@ -262,7 +262,7 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux ノードでは、形式が若干異なります。 ピリオド (.)、ハイフン (-)、番号記号 (#) は、環境変数ではアンダースコアにフラット化されます。 また、アプリケーション ID の大文字と小文字は保持されることに注意してください。 For example:
+Linux ノードでは、形式が若干異なります。 ピリオド (.)、ハイフン (-)、番号記号 (#) は、環境変数ではアンダースコアにフラット化されます。 また、アプリケーション ID の大文字と小文字は保持されることに注意してください。 例: 
 
 ```
 Linux:
@@ -346,7 +346,7 @@ foreach (ApplicationSummary app in applications)
 ## <a name="wrap-up"></a>まとめ
 アプリケーション パッケージを使用すると、顧客がジョブ用のアプリケーションを選択するのを支援したり、Batch を有効にしたサービスでジョブを処理する場合の正確なバージョン指定を行ったりすることができます。 さらに、顧客がサービスに自前のアプリケーションをアップロードし、トラッキングするための環境も用意できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Batch REST API][api_rest] も、アプリケーション パッケージの運用をサポートしています。 たとえば、REST API を使用したインストール パッケージの指定方法については、「[Add a pool to an account (アカウントへのプールの追加)][rest_add_pool]」の [applicationPackageReferences][rest_add_pool_with_packages] 要素をご覧ください。 Batch REST API を使用したアプリケーション情報の取得方法の詳細については、「[Applications (アプリケーション)][rest_applications]」をご覧ください。
 * [Batch Management .NET でプログラムを使用して Azure Batch アカウントとクォータを管理する](batch-management-dotnet.md)方法を学習してください。 [Batch Management .NET][api_net_mgmt] ライブラリで、Batch アプリケーションまたはサービス用のアカウント作成機能と削除機能を有効にすることができます。
 

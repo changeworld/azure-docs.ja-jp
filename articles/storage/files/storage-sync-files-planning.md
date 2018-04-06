@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/04/2017
 ms.author: wgries
-ms.openlocfilehash: 401542bf61aa27138d26cce522e24078503b77e0
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 3f3ed53e3c6606ca540cc2e760f2f6280ccf5cc2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Azure ファイル同期 (プレビュー) のデプロイの計画
 Azure File Sync (プレビュー) を使用して、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を維持したまま、Azure Files で組織のファイル共有を一元化します。 Azure File Sync により、ご利用の Windows Server が Azure ファイル共有の高速キャッシュに変わります。 SMB、NFS、FTPS など、Windows Server 上で利用できるあらゆるプロトコルを使用して、データにローカルにアクセスできます。 キャッシュは、世界中にいくつでも必要に応じて設置することができます。
@@ -96,6 +96,19 @@ Windows Server の今後のバージョンは、それらがリリースされ�
 
 > [!Note]  
 > NTFS ボリュームのみがサポートされます。 ReFS、FAT、FAT32 などのファイル システムはサポートされていません。
+
+### <a name="files-skipped"></a>スキップされるファイル
+| ファイル/フォルダー | 注 |
+|-|-|
+| Desktop.ini | システムに固有のファイル |
+| ethumbs.db$ | サムネイル用の一時ファイル |
+| ~$\*.\* | Office の一時ファイル |
+| \*.tmp | 一時ファイル |
+| \*.laccdb | Access データベースのロック ファイル|
+| 635D02A9D91C401B97884B82B3BCDAEA.* ||
+| \\System Volume Information | ボリュームに固有のフォルダー |
+| $RECYCLE.BIN| フォルダー |
+| \\SyncShareState | 同期用のフォルダー |
 
 ### <a name="failover-clustering"></a>フェールオーバー クラスタリング
 Windows Server フェールオーバー クラスタリングは、Azure ファイル同期の "汎用ファイル サーバー" デプロイ オプションでサポートされています。 フェールオーバー クラスタリングは、"アプリケーション データ用のスケールアウト ファイル サーバー" (SOFS) またはクラスター共有ボリューム (CSV) ではサポートされていません。

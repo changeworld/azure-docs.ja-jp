@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement のトラブルシューティング ガイド - サービス要求の情報"
-description: "Azure Mobile Engagement 関連の問題をトラブルシューティングするためにサポート チームが必要とするサービス要求情報"
+title: Azure Mobile Engagement のトラブルシューティング ガイド - サービス要求の情報
+description: Azure Mobile Engagement 関連の問題をトラブルシューティングするためにサポート チームが必要とするサービス要求情報
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 28d49915-d0c2-4fac-b07a-b3e9b6b8528a
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: a4497046df74003a733d80f190e82b5e798d398e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d08ccbe6639809f16c41b3399cbe374d34c9a5bb
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="service-request-sr-information"></a>サービス要求 (SR) の情報
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 Mobile Engagement  サービス要求を開いたら、次の情報を入力してください。
 
 ## <a name="ids-applicable-identifiers-related-to-your-issue"></a>ID: 問題に関連する適切な ID

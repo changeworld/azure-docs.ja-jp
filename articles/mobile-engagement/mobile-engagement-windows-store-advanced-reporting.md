@@ -1,11 +1,11 @@
 ---
-title: "MobileApps Engagement を使用した Windows ユニバーサルの詳細なレポート"
-description: "Windows ユニバーサル アプリと Azure Mobile Engagement を統合する方法"
+title: MobileApps Engagement を使用した Windows ユニバーサルの詳細なレポート
+description: Windows ユニバーサル アプリと Azure Mobile Engagement を統合する方法
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ea5030bf-73ac-49b7-bc3e-c25fc10e945a
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/12/2016
 ms.author: piyushjo;ricksal
-ms.openlocfilehash: feac309db1ffce0945012e293bfc1df417aed876
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 88d28bbc32179698147ab7516cc414fd23ed4bd6
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="advanced-reporting-with-the-windows-universal-apps-engagement-sdk"></a>Windows ユニバーサル アプリ Engagement SDK を使用した詳細なレポート
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 > [!div class="op_single_selector"]
 > * [ユニバーサル Windows](mobile-engagement-windows-store-advanced-reporting.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)

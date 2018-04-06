@@ -1,31 +1,31 @@
 ---
-title: "Graph API を使用して Azure Cosmos DB .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する | Microsoft Docs"
-description: "Azure Cosmos DB への接続とデータの照会に使用できる .NET Framework/Core コード サンプルについて説明します"
+title: Graph API を使用して Azure Cosmos DB .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する | Microsoft Docs
+description: Azure Cosmos DB への接続とデータの照会に使用できる .NET Framework/Core コード サンプルについて説明します
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: luisbosquez
 manager: jhubbard
-editor: 
+editor: ''
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
 ms.service: cosmos-db
 ms.custom: quick start connect, mvc
-ms.workload: 
+ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 38869444d43a3fb5c37a222ef58d30fc607106aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 21d8b39032c290d45a3ff772a769b427bded50b1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Graph API を使用して .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する
 
 Azure Cosmos DB は、Microsoft のグローバルに配布されるマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバル配布と水平方向のスケール機能を活用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成および照会できます。 
 
-このクイック スタートでは、Azure Portal を使用した Azure Cosmos DB アカウント、データベース、およびグラフ (コンテナー) の作成方法を説明します。 その後、オープンソース ドライバーの [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) を使用して、コンソール アプリを構築し実行します。  
+このクイック スタートでは、Azure Portal を使用した Azure Cosmos DB [Graph API](graph-introduction.md) アカウント、データベース、およびグラフ (コンテナー) の作成方法を説明します。 その後、オープンソース ドライバーの [Gremlin.Net](http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) を使用して、コンソール アプリを構築し実行します。  
 
 ## <a name="prerequisites"></a>前提条件
 

@@ -1,25 +1,24 @@
 ---
-title: "Azure Stream Analytics での [リソース正常性] ブレードの使用 | Microsoft Docs"
-description: "Stream Analytics ジョブのトラブルシューティングを行う際に問題を特定する方法。"
-keywords: "トラブルシューティングのフローチャート, リソース ブレード"
-documentationcenter: 
+title: Azure Stream Analytics での [リソース正常性] ブレードの使用 | Microsoft Docs
+description: Stream Analytics ジョブのトラブルシューティングを行う際に問題を特定する方法。
+keywords: トラブルシューティングのフローチャート, リソース ブレード
+documentationcenter: ''
 services: stream-analytics
-author: samacha
-manager: jhubbard
-editor: cgronlun
-ms.assetid: 
+author: jseb225
+manager: ryanw
+ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: samacha
-ms.openlocfilehash: 554dec5fbbe5c98585f8be58f5d4e8203d788a00
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: 598f858c22494bc511ef0e2f04f3c3a6baad1ae8
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-resource-health-blade"></a>Stream Analytics の [リソース正常性] ブレード
 
@@ -40,7 +39,7 @@ Stream Analytics ジョブのリソース正常性を確認するには、**[リ
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Stream Analytics の概要](stream-analytics-introduction.md)
 * [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)

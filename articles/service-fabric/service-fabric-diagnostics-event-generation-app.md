@@ -14,17 +14,19 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/20/2018
 ms.author: dekapur
-ms.openlocfilehash: 258aac722aa1c94ecf2cbf0524a3e4b53b8a788c
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f3e7b9c7432538c0f78662213544d4d691652f13
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="application-and-service-level-logging"></a>アプリケーションとサービス レベルのログ記録
 
 コードのインストルメント化は、サービスの監視の他のほとんどの側面の基礎となります。 インストルメンテーションは、問題点を把握し、修正する必要があるものを診断する唯一の方法です。 運用環境のサービスへのデバッガーの接続は技術的には可能ですが、一般的な方法ではありません。 そのため、詳細なインストルメンテーション データを入手することが重要です。
 
 コードを自動的にインストルメント化する製品もあります。 これらのソリューションが役立つこともありますが、ほとんどの場合、手動でのインストルメント化が必要となります。 最終的には、アプリケーションのフォレンジックなデバッグを実行できるだけの十分な情報が必要です。 このドキュメントでは、コードをインストルメント化するためのさまざまな方法と使用する方法の選択について説明します。
+
+これらの提案の使用方法の例については、「[Service Fabric アプリケーションにログ記録を追加する](service-fabric-how-to-diagnostics-log.md)」をご覧ください。
 
 ## <a name="eventsource"></a>EventSource
 

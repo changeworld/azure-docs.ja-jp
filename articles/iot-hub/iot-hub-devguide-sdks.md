@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/12/2018
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c77812db85c3b6730fce9af3f634821b44508687
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: aec2126369f45a89050dbd8b2d3cae7e00ccb8ed
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-use-azure-iot-sdks"></a>Azure IoT SDK の理解と使用
 
@@ -32,6 +32,8 @@ IoT ハブを操作するための、以下の 3 つのカテゴリーのソフ�
 * **Azure IoT Edge** では、サポートされるプロトコルのいずれも使用しないデバイス向けにゲートウェイを構築できます。 ゲートウェイは、エッジのメッセージを処理することもできます。
 
 SDK は、複数のプログラミング言語をサポートするように提供されています。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="azure-iot-device-sdks"></a>Azure IoT device SDK
 

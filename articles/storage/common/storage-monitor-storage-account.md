@@ -1,8 +1,8 @@
 ---
-title: "Azure ストレージ アカウントの監視方法 | Microsoft Docs"
-description: "Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。"
+title: Azure ストレージ アカウントの監視方法 | Microsoft Docs
+description: Azure ポータルを使用して Azure でストレージ アカウントを監視する方法について説明します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: tamram
-ms.openlocfilehash: 20cb425b64bfba06d64b3c6c41f9ef496395ad8e
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ffc7d46bbfa4db47a47e416c395efdfc451cadc1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Azure ポータルでのストレージ アカウントの監視
 
@@ -28,8 +28,6 @@ ms.lasthandoff: 01/24/2018
 > Azure Portal で監視データを調査するとコストがかかります。 詳細については、 [ストレージの分析と課金に関するページ](/rest/api/storageservices/Storage-Analytics-and-Billing)を参照してください。
 >
 > 現在、Azure Files は、Storage Analytics のメトリックをサポートしますが、ログ記録はまだサポートされていません。
->
-> レプリケーションの種類がゾーン冗長ストレージ (ZRS) のストレージ アカウントでは、メトリックとログがサポートされます。 ZRS クラシックに名前が変更された以前の ZRS アカウントでは、メトリックとログがサポートされません。 ZRS の詳細については、「[ゾーン冗長ストレージ](storage-redundancy.md#zone-redundant-storage)」をご覧ください。 
 > 
 > Storage Analytics や他のツールを使用した Azure Storage 関連の問題の特定、診断、トラブルシューティングに関する詳しいガイドについては、「 [Microsoft Azure ストレージの監視、診断、およびトラブルシューティング](../storage-monitoring-diagnosing-troubleshooting.md)」をご覧ください。
 >

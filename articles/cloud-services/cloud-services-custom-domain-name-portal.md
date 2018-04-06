@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
 ms.openlocfilehash: 139ec6578dc9e76039c5fb13e7a7741aa8ba4e0d
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 クラウド サービスを作成するときに、Azure は **cloudapp.net**のサブドメインにそのアプリを割り当てます。 たとえば、クラウド サービスの名前が "contoso" の場合、ユーザーは http://contoso.cloudapp.net のような URL でアプリケーションにアクセスできます。 また Azure によって仮想 IP アドレスも割り当てられます。
@@ -132,7 +132,7 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Cloud Services の管理方法](cloud-services-how-to-manage-portal.md)
 * [CDN コンテンツをカスタム ドメインにマッピングする方法](../cdn/cdn-map-content-to-custom-domain.md)
 * [クラウド サービスの一般的な構成](cloud-services-how-to-configure-portal.md)

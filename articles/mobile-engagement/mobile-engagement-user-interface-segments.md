@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement のユーザーインターフェイス - Segments (セグメント)"
-description: "Azure Mobile Engagement を利用してユーザーのセグメントを作成して管理し、使用パターンを特定する方法について説明します。"
+title: Azure Mobile Engagement のユーザーインターフェイス - Segments (セグメント)
+description: Azure Mobile Engagement を利用してユーザーのセグメントを作成して管理し、使用パターンを特定する方法について説明します。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6a4f2205-4a3c-406e-a04f-5e6f2a36653f
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 087f4a1fef420abe9669f8dfe2b84c7a847ce263
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53c5b1b672a0d7212a3d298c3e411a9cc6ac0807
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-create-and-manage-segments-of-users-to-identify-usage-patterns"></a>ユーザーのセグメントを作成して管理し、使用パターンを特定する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 この記事では、**Mobile Engagement** ポータルの **[セグメント]** タブについて説明します。 **Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。
 
 UI の [Segment (セグメント)] セクションでは、異なる動作に基づいてユーザーを区分し、アプリケーションから取得したり Segments API 経由でアクセスできる分析作業を行うことができます。 セグメントの計算はまず作成から 24 時間後に行われ、その後最新の分析情報に基づいて 24 時間毎に再計算されます。 セグメントが計算されると、毎日 [Day to day history (毎日の履歴)] チャートが表示されるようになります。

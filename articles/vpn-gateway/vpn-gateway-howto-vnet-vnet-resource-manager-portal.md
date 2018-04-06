@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想ネットワークを別の VNet に接続する: ポータル | Microsoft Docs"
-description: "Resource Manager と Azure Portal を使用して VNet 間の VPN ゲートウェイ接続を作成します。"
+title: 'Azure 仮想ネットワークを別の VNet に接続する: ポータル | Microsoft Docs'
+description: Resource Manager と Azure Portal を使用して VNet 間の VPN ゲートウェイ接続を作成します。
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
 manager: jpconnock
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: a7015cfc-764b-46a1-bfac-043d30a275df
 ms.service: vpn-gateway
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/14/2018
+ms.date: 03/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: a24bd41adbe26b1905f7817f5e5888e492d234f4
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: a95fdf078baa35eb9ca8ade462223b204be77d8e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-the-azure-portal"></a>Azure Portal を使用した VNet 間 VPN Gateway 接続を構成する
 
@@ -127,7 +127,7 @@ VNet が作成されたら、アドレス空間をさらに追加してサブネ
 [!INCLUDE [vpn-gateway-additional-address-space](../../includes/vpn-gateway-additional-address-space-include.md)]
 
 ## <a name="gatewaysubnet"></a>3.ゲートウェイ サブネットの作成
-仮想ネットワークをゲートウェイに接続する前に、まず、接続先の仮想ネットワークのゲートウェイ サブネットを作成する必要があります。 将来的な構成要件も見越して十分な IP アドレスを確保するために、可能であれば、/28 または /27 の CIDR ブロックを使用してゲートウェイ サブネットを作成することをお勧めします。
+仮想ネットワーク用の仮想ネットワーク ゲートウェイを作成する前に、まずゲートウェイ サブネットを作成する必要があります。 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイによって使用される IP アドレスが含まれます。 将来的な構成要件も見越して十分な IP アドレスを確保するために、可能であれば、/28 または /27 の CIDR ブロックを使用してゲートウェイ サブネットを作成することをお勧めします。
 
 練習としてこの構成を作成する場合は、ゲートウェイ サブネットの作成時に、上記の[設定例](#values)を参照してください。
 

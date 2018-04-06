@@ -1,6 +1,6 @@
 ---
 title: Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks Notebook を実行する
-description: Azure Data Factory で Databricks Notebook アクティビティを使用して、Databricks ジョブ クラスターに対して Databricks Notebook を実行する方法について説明します。
+description: Azure Data Factory で Databricks Notebook アクティビティを使用して、Databricks ジョブ クラスターに対して Databricks ノートブックを実行する方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: nabhishek
@@ -13,15 +13,15 @@ ms.topic: get-started-article
 ms.date: 3/12/2018
 ms.author: abnarain
 ms.reviewer: douglasl
-ms.openlocfilehash: d1dcec26529c747a209dd10fcefbbadaa40365a3
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 7a90906f0bb41b0ced368e9010e0c8a4981f038c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks Notebook を実行する
+# <a name="run-a-databricks-notebook-with-the-databricks-notebook-activity-in-azure-data-factory"></a>Azure Data Factory で Databricks Notebook アクティビティを使用して Databricks ノートブックを実行する
 
-このチュートリアルでは、Azure Portal を使用して、Databricks ジョブ クラスターに対して Databricks Notebook を実行する Azure Data Factory パイプラインを作成します。 また、Databricks Notebook の実行中に、Azure Data Factory パラメーターを渡します。
+このチュートリアルでは、Azure Portal を使用して、Databricks ジョブ クラスターに対して Databricks ノートブックを実行する Azure Data Factory パイプラインを作成します。 また、Databricks ノートブックの実行中に、Azure Data Factory パラメーターを渡します。
 
 このチュートリアルでは、以下の手順を実行します。
 
@@ -37,7 +37,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-  - **Azure Databricks ワークスペース**。 [Databricks ワークスペースを作成する](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)か、既存のワークスペースを使用します。 Azure Databricks ワークスペースに、Python Notebook を作成します。 その後、Azure Data Factory を使用して Notebook を実行し、パラメーターを渡します。
+  - **Azure Databricks ワークスペース**。 [Databricks ワークスペースを作成する](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal)か、既存のワークスペースを使用します。 Azure Databricks ワークスペースに、Python ノートブックを作成します。 その後、Azure Data Factory を使用してノートブックを実行し、パラメーターを渡します。
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
@@ -149,13 +149,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
           ![新しいフォルダーを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image13.png)
 
-       3. [新しい Notebook を作成](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook)します (Python)。**adftutorial** フォルダーの下の **mynotebook** という名前にして、**[作成]** をクリックします。
+       3. [新しいノートブックを作成](https://docs.databricks.com/user-guide/notebooks/index.html#creating-a-notebook)します (Python)。**adftutorial** フォルダー の下の **mynotebook** という名前にして、**[作成]** をクリックします。
 
-          ![新しい Notebook を作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
+          ![新しいノートブックを作成する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image14.png)
 
-          ![新しい Notebook のプロパティを設定する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png)
+          ![新しいノートブックのプロパティを設定する](media/transform-data-using-databricks-notebook/databricks-notebook-activity-image15.png)
 
-       4. 新しく作成された Notebook "mynotebook" に次のコードを追加します。
+       4. 新しく作成されたノートブック "mynotebook" に次のコードを追加します。
 
            ```
            # Creating widgets for leveraging parameters, and printing the parameters

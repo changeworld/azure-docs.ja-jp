@@ -1,23 +1,23 @@
 ---
-title: "Azure Files を Azure にバックアップする"
-description: "この記事では、Azure ファイル共有をバックアップおよび復元する方法について詳しく説明し、管理タスクについても説明します。"
+title: Azure Files を Azure にバックアップする
+description: この記事では、Azure ファイル共有をバックアップおよび復元する方法について詳しく説明し、管理タスクについても説明します。
 services: backup
-keywords: "SEO チャンプを確認せずに、キーワードを追加または編集しないでください。"
+keywords: SEO チャンプを確認せずに、キーワードを追加または編集しないでください。
 author: markgalioto
 ms.author: markgal
-ms.date: 2/21/2018
+ms.date: 3/23/2018
 ms.topic: tutorial
 ms.service: backup
 manager: carmonm
-ms.openlocfilehash: b9bf1582aa1c1b8878b8426f60a18282598eb2b9
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: ba457daca030d3219fe32177b0b5f8b5565ff544
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="back-up-azure-file-shares"></a>Azure ファイル共有のバックアップ
+# <a name="back-up-azure-file-shares-preview"></a>Azure ファイル共有 (プレビュー) のバックアップ
 
-この記事では、[Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップ方法について詳しく説明します。
+この記事では、[Azure ファイル共有](../storage/files/storage-files-introduction.md)のバックアップと復元を Azure Portal を使って Azure から行う方法について説明します。
 
 このガイドでは、以下の方法について説明します。
 > [!div class="checklist"]
@@ -30,6 +30,16 @@ ms.lasthandoff: 02/22/2018
 
 ## <a name="prerequisites"></a>前提条件
 Azure ファイル共有をバックアップするには、[サポートされているストレージ アカウントの種類](troubleshoot-azure-files.md#preview-boundaries)のいずれかに存在することを確認しておいてください。 この確認が完了したら、ファイル共有を保護することができます。
+
+## <a name="limitations-for-azure-file-share-backup-during-preview"></a>プレビュー期間における Azure ファイル共有のバックアップの制限
+Azure Files のバックアップはプレビュー段階にあります。 プレビュー期間は、次の制限に注意してください。
+- [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage) (ZRS) または [読み取りアクセス geo 冗長ストレージ](../storage/common/storage-redundancy.md#read-access-geo-redundant-storage) (RA-GRS) レプリケーションを使用してストレージ アカウントのファイル共有を保護することはできません。
+- 仮想ネットワークが有効になっているストレージ アカウントのファイル共有を保護することはできません。
+- Azure Files の保護を目的とした PowerShell と CLI は提供されていません。
+- スケジュール バックアップの数は、1 日につき 1 個が上限となります。
+- オンデマンド バックアップの数は、1 日につき 4 個が上限となります。
+- ストレージ アカウントに対する[リソース ロック](https://docs.microsoft.com/cli/azure/resource/lock?view=azure-cli-latest)を使用して、Recovery Services コンテナー内のバックアップを誤って削除しないようにします。
+- Azure Backup によって作成されたスナップショットを削除しないでください。 スナップショットを削除すると、復旧ポイントが失われたり、復元が失敗したりする場合があります。 
 
 ## <a name="configuring-azure-file-shares-backup"></a>Azure ファイル共有のバックアップを構成する
 

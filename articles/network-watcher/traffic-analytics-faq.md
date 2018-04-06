@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Analytics についてよく寄せられる質問 | Microsoft Docs
-description: Azure Traffic Analytics についてよく寄せられる質問の回答を確認します。
+title: Azure トラフィック分析についてよく寄せられる質問 | Microsoft Docs
+description: トラフィック分析についてよく寄せられる質問の回答を確認します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: fd97e0ca7615691c537dcb1dc18643627046742d
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 01d5150bff8642a1a3fe9b7ac063923916f191c0
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics についてよく寄せられる質問
+# <a name="traffic-analytics-frequently-asked-questions"></a>トラフィック分析についてよく寄せられる質問
 
-1.  Traffic Analytics を使用する前提条件は何ですか?
+1.  トラフィック分析を使用する前提条件は何ですか?
 
     Traffic Analytics の前提条件は次のとおりです。
 
@@ -29,10 +29,22 @@ ms.lasthandoff: 03/09/2018
     - 監視対象の NSG に対して有効になっている NSG フロー ログ
     - 未処理フロー ログを格納するための Azure Storage アカウント
     - 読み取りと書き込みのアクセスがある Log Analytics (OMS) ワークスペース
+    - 自分のアカウントには、Microsoft.Network プロバイダーで次の操作を割り当てる必要があります。
 
-2.  Traffic Analytics が使用可能な Azure リージョンはどこですか?
+        - Microsoft.Network/applicationGateways/read
+        - Microsoft.Network/connections/read
+        - Microsoft.Network/loadBalancers/read 
+        - Microsoft.Network/localNetworkGateways/read 
+        - Microsoft.Network/networkInterfaces/read 
+        - Microsoft.Network/networkSecurityGroups/read 
+        - Microsoft.Network/publicIPAddresses/read
+        - Microsoft.Network/routeTables/read
+        - Microsoft.Network/virtualNetworkGateways/read 
+        - Microsoft.Network/virtualNetworks/read
 
-    プレビュー リリースでは、米国中西部、米国東部、米国東部 2、米国中北部、米国中南部、米国中部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国西部、英国南部、オーストラリア東部、オーストラリア南東部のいずれかの**サポート リージョン**の NSG に Traffic Analytics を使用できます。 Log Analytics ワークスペースは、米国中西部、米国東部、西ヨーロッパ、オーストラリア南東部、または英国南部リージョンに存在する必要があります。
+2.  トラフィック分析が使用可能な Azure リージョンはどこですか?
+
+    プレビュー リリースでは、米国中西部、米国東部、米国東部 2、米国中北部、米国中南部、米国中部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国西部、英国南部、オーストラリア東部、オーストラリア南東部のいずれかの**サポート リージョン**の NSG にトラフィック分析を使用できます。 Log Analytics ワークスペースは、米国中西部、米国東部、西ヨーロッパ、オーストラリア南東部、または英国南部リージョンに存在する必要があります。
 
 3.  フロー ログを有効化する NSG が、自分の OMS ワークスペースとは別のリージョンに存在できますか?
 
@@ -54,7 +66,7 @@ ms.lasthandoff: 03/09/2018
 
     いいえ。 未処理ログは、フロー ログに対して NSG が有効になっているすべてのストレージ アカウントに格納できます。ただし、ストレージ アカウントと未処理ログの両方を、同じサブスクリプションとリージョンに置く必要があります。
 
-8.  Traffic Analytics の NSG を構成中に [見つかりません] エラーを受け取った場合、どのように解決すればよいでしょうか?
+8.  トラフィック分析の NSG を構成中に [見つかりません] エラーを受け取った場合、どのように解決すればよいでしょうか?
 
     質問 2 に記載したサポート リージョンを選択してください。 サポートされていないリージョンを選択すると、[見つかりません] エラーが表示されます。
 
@@ -83,7 +95,7 @@ ms.lasthandoff: 03/09/2018
 12.  1) Analyzing your NSG flow logs for the first time. This process may take 20-30 minutes to complete. Check back after some time. 2) If the above step doesn’t work and your workspace is under the free SKU, then check your workspace usage here to validate over quota, else refer to FAQs for further information\(1) NSG フロー ログを初めて分析しています。このプロセスが完了するまで 20 -30 分かかることがあります。しばらくしてから確認してください。2) 上記のステップが機能せず、ワークスペースが無料 SKU にある場合は、ここでワークスペースの使用状況をチェックして超過クォータを検証します。該当しない場合は、詳細について FAQ を参照してください\) というメッセージを受け取った場合、どのように解決すればよいですか?
 
         このエラーは次の理由で生成される可能性があります。
-        - Traffic Analytics が最近有効化され、意味のある分析情報を導出できる十分なデータを集計していたために、レポートを生成できませんでした。 この場合は、30 分後に再試行してください。
+        - トラフィック分析が最近有効化され、意味のある分析情報を導出できる十分なデータを集計していたために、レポートを生成できませんでした。 この場合は、30 分後に再試行してください。
         - OMS ワークスペースが無料 SKU にあり、クォータ制限に違反しました。 この場合は、容量が大きな SKU でワークスペースを使用する必要があります。
     
         解決しない場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
@@ -92,9 +104,9 @@ ms.lasthandoff: 03/09/2018
 
         ダッシュボードにはリソース情報が表示されていますが、フロー関連の統計がありません。 リソース間の通信フローがないためにデータが示されない可能性があります。 60 分間待ってから、状態を再確認します。 リソース間の通信フローが存在することが確実な場合は、[User Voice フォーラム](https://feedback.azure.com/forums/217313-networking?category_id=195844)に問題を投稿してください。
 
-14.  Traffic Analytics はどのように課金されますか?
+14.  トラフィック分析はどのように課金されますか?
 
-        Traffic Analytics がパブリック プレビューの間、料金は請求されません。 OMS ワークスペースでの NSG フロー ログの生成とデータ保持が、発表されている料金の請求対象になります。
+        トラフィック分析は、削減されたログを拡張することと、拡張ログを Log Analytics ワークスペースに格納することについて測定されます。 プレビュー中、トラフィック分析は削減されたログの拡張については課金されませんが、ワークスペースでのデータの保持は、通常料金での課金の対象となります。 この回答は、トラフィック分析の価格が発表されたときに更新されます。
 
 15.  geo マップ ビューでキーボードを使用してどのようにナビゲートできますか?
 

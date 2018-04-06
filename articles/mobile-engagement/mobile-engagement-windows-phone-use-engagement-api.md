@@ -1,11 +1,11 @@
 ---
-title: "Windows Phone Silverlight で Engagement API を使用する方法"
-description: "Windows Phone Silverlight で Engagement API を使用する方法"
+title: Windows Phone Silverlight で Engagement API を使用する方法
+description: Windows Phone Silverlight で Engagement API を使用する方法
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: ae2ba2e8-f75b-4dee-a164-a7dd65d35a23
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ec8b6c13ea052c8063dfde4321cdd286ab6cb817
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03673924ee7734fcf6f1f4f7c744616844fdc87a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-the-engagement-api-on-windows-phone-silverlight"></a>Windows Phone Silverlight で Engagement API を使用する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このドキュメントは、「 [Windows Phone Silverlight アプリにモバイル サービスを統合する方法](mobile-engagement-windows-phone-integrate-engagement.md)」の追加ドキュメントです。 エンゲージメント API を使用してアプリケーションの統計情報を報告する方法についての詳細を提供しています。
 
 エンゲージメントでアプリケーションのセッション、アクティビティ、クラッシュ、技術情報についてのみ報告する場合は、すべての `PhoneApplicationPage` サブクラスを `EngagementPage` クラスから継承するのが最も簡単な方法です。

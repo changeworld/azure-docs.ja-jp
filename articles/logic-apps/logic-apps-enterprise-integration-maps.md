@@ -1,6 +1,6 @@
 ---
-title: "XSLT マップを使用した XML 変換 - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps と Enterprise Integration Pack を使用して XML データを変換する XSLT マップを追加する"
+title: XSLT マップを使用した XML 変換 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps と Enterprise Integration Pack を使用して XML データを変換する XSLT マップを追加する
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: 4445a84a6c6425110e7d705019a28b5cc5447046
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4b4d626028eed09e9ce6a45fa8fa69859c082da7
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="add-maps-for-xml-data-transform"></a>XML データ変換のためのマップを追加する
 
@@ -28,9 +28,13 @@ ms.lasthandoff: 10/11/2017
 
 たとえば、B2B の注文または請求書を顧客から定期的に受け取るとします。顧客が使う日付の形式は YYYMMDD です。 しかし自分の組織では、MMDDYYY の形式で日付を保存しています。 マップを使用することで、注文または請求書の詳細を顧客活動データベースに保存する前に、日付の形式を YYYMMDD から MMDDYYY に*変換*できます。
 
+
 ## <a name="how-do-i-create-a-map"></a>マップを作成する方法
 
 Visual Studio 2015 の [Enterprise Integration Pack](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報") を使用して、Biztalk の統合プロジェクトを作成します。 次に統合マップ ファイルを作成し、2 つの XML スキーマ ファイルの間でアイテムを視覚的にマップします。 このプロジェクトをビルドすると、XSLT ドキュメントが生成されます。
+
+マップに外部アセンブリへの参照が含まれている場合は、その両方を統合アカウントにアップロードする必要があります。 これらは、最初にアセンブリ、次にそのアセンブリを参照するマップという特定の順序でアップロードする必要があります。
+
 
 ## <a name="how-do-i-add-a-map"></a>マップを追加する方法
 
@@ -50,7 +54,7 @@ Visual Studio 2015 の [Enterprise Integration Pack](logic-apps-enterprise-integ
 
     ![](./media/logic-apps-enterprise-integration-maps/map-1.png)
 
-5. [マップ] ブレードが開いたら、**[追加]** を選択します。
+5. [マップ] ページが開いたら、**[追加]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-maps/map-2.png)  
 
@@ -62,6 +66,19 @@ Visual Studio 2015 の [Enterprise Integration Pack](logic-apps-enterprise-integ
 
     ![](./media/logic-apps-enterprise-integration-maps/map-4.png)
 
+
+## <a name="how-do-i-add-an-assembly"></a>アセンブリを追加するにはどうすればよいですか。
+アセンブリをアップロードする統合アカウントを開きます。
+
+1. **[Assemblies] (アセンブリ)** タイルを選択します。
+
+    ![integrationaccount-assembly-tile](./media/logic-apps-enterprise-integration-maps/assemblytile.png)
+
+2. [Assemblies] (アセンブリ) ページが開いたら、**[追加]** を選択します。 アセンブリの **[名前]** を入力します。 アセンブリ ファイルをアップロードするには、**[アセンブリ]** テキスト ボックスの右側にあるフォルダー アイコンを選択します。 アップロード プロセスが完了したら、**[OK]** を選択します。
+
+    ![add-assembly](./media/logic-apps-enterprise-integration-maps/assemblyfile.png)
+
+
 ## <a name="how-do-i-edit-a-map"></a>マップを編集する方法
 
 必要な変更を施した新しいマップ ファイルをアップロードする必要があります。 最初に編集するマップをダウンロードします。
@@ -70,9 +87,9 @@ Visual Studio 2015 の [Enterprise Integration Pack](logic-apps-enterprise-integ
 
 1. **[マップ]** タイルを選択します。
 
-2. [マップ] ブレードが開いたら、編集するマップを選択します。
+2. [マップ] ページが開いたら、編集するマップを選択します。
 
-3. **[マップ]** ブレードで **[更新]** を選択します。
+3. **[マップ]** ページで、**[更新]** を選択します。
 
     ![](./media/logic-apps-enterprise-integration-maps/edit-1.png)
 
@@ -84,7 +101,7 @@ Visual Studio 2015 の [Enterprise Integration Pack](logic-apps-enterprise-integ
 
 1. **[マップ]** タイルを選択します。
 
-2. [マップ] ブレードが開いたら、削除するマップを選択します。
+2. [マップ] ページが開いたら、削除するマップを選択します。
 
 3. **[削除]** を選択します。
 
@@ -94,7 +111,7 @@ Visual Studio 2015 の [Enterprise Integration Pack](logic-apps-enterprise-integ
 
     ![](./media/logic-apps-enterprise-integration-maps/delete-confirmation-1.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Enterprise Integration Pack についての詳細情報](logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  
 * [契約についての詳細情報](../logic-apps/logic-apps-enterprise-integration-agreements.md "Enterprise Integration の契約についての詳細情報")  
 * [変換の詳細](logic-apps-enterprise-integration-transform.md "エンタープライズ統合変換についての詳細")  

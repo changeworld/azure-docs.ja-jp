@@ -12,22 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 03/15/2018
 ms.author: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 68de6295b84385f54eaadd6d24e8309a32fae9ce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7c58b4ebd840aca555b52a03cf44ace311b64e3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="certificate-credentials-for-application-authentication"></a>アプリケーションを認証するための証明書資格情報
 
-Azure Active Directory では、OAuth 2.0 クライアント資格情報の付与フロー ([v1](active-directory-protocols-oauth-service-to-service.md) [v2](active-directory-v2-protocols-oauth-client-creds.md)) や On-Behalf-Of フロー ([v1](active-directory-protocols-oauth-on-behalf-of.md) [v2](active-directory-v2-protocols-oauth-on-behalf-of.md)) などで、アプリケーションが認証用の独自の資格情報を使用することを許可しています。
+Azure Active Directory では、アプリケーションは認証に独自の資格情報を使用できます。 たとえば、OAuth 2.0 クライアント資格情報付与フロー ([v1](active-directory-protocols-oauth-service-to-service.md)、[v2](active-directory-v2-protocols-oauth-client-creds.md)) や On-Behalf-Of フロー ([v1](active-directory-protocols-oauth-on-behalf-of.md)、[v2](active-directory-v2-protocols-oauth-on-behalf-of.md)) で。
 使用できる資格情報の 1 つの形式は、アプリケーションが所有している証明書で署名された JSON Web トークン(JWT) アサーションです。
 
 ## <a name="format-of-the-assertion"></a>アサーションの形式
-アサーションを計算するために、多数の [JSON Web トークン](https://jwt.io/) ライブラリの中から好きな言語を選択して使用できます。 トークンで伝達する情報は次のとおりです。
+アサーションを計算するために、多数の [JSON Web トークン](https://jwt.ms/) ライブラリの中から好きな言語を選択して使用できます。 トークンで伝達する情報は次のとおりです。
 
 #### <a name="header"></a>ヘッダー
 
@@ -43,10 +43,10 @@ Azure Active Directory では、OAuth 2.0 クライアント資格情報の付�
 | --- | --- |
 | `aud` | 対象ユーザー: **https://login.microsoftonline.com/*tenant_Id*/oauth2/token** である必要があります。 |
 | `exp` | 有効期限: トークンの有効期限が切れる日付。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。|
-| `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) です |
+| `iss` | 発行者: client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
 | `jti` | GUID: JWT ID |
 | `nbf` | 期間の開始時刻: トークンの使用開始日。 日時は UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) から、トークンが発行された日時までの秒数で表されます。 |
-| `sub` | 件名: `iss` については、client_id (クライアント サービスのアプリケーション ID) です |
+| `sub` | 件名: `iss` の場合は、client_id (クライアント サービスのアプリケーション ID) である必要があります。 |
 
 #### <a name="signature"></a>署名
 
@@ -85,7 +85,14 @@ Gh95kHCOEGq5E_ArMBbDXhwKR577scxYaoJ1P{a lot of characters here}KKJDEg"
 
 ### <a name="register-your-certificate-with-azure-ad"></a>Azure AD に証明書を登録する
 
-Azure AD で証明書資格情報をクライアント アプリケーションに関連付けるには、アプリケーション マニフェストを編集する必要があります。
+次のいずれかの方法を使用して、Azure Portal から証明書資格情報を Azure AD 内のクライアント アプリケーションに関連付けることができます。
+
+**証明書ファイルのアップロード**
+
+クライアント アプリケーションの Azure アプリ登録で、**[設定]**、**[キー]**、**[Upload Public Key] (公開キーのアップロード)** の順にクリックします。 アップロードする証明書ファイルを選択し、**[保存]** をクリックします。 保存すると、証明書がアップロードされ、拇印、開始日、有効期限の各値が表示されます。 
+
+**アプリケーション マニフェストの更新**
+
 証明書を入手したら、次を計算する必要があります。
 
 - `$base64Thumbprint`。証明書ハッシュの base64 エンコード

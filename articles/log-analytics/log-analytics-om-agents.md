@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/10/2017
 ms.author: magoedte
 ms.openlocfilehash: 6db47c7baa0a345a32d26d56e843acd0204ae50b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="connect-operations-manager-to-log-analytics"></a>Operations Manager を Log Analytics に接続する
 Operations Manager と OMS ワークスペースを統合することにより、System Center Operations Manager における既存の投資を維持しながら、Log Analytics で拡張機能を使用することができます。  この統合により、Operations Manager を使用して以下に示す処理を引き続き行いながら、OMS によってもたらされる利点を活用することができます。
@@ -50,15 +50,15 @@ IT セキュリティ ポリシーで、ネットワーク上のコンピュー�
 |リソース | ポート番号| バイパス HTTP 検査|  
 |---------|------|-----------------------|  
 |**エージェント**|||  
-|\*.ods.opinsights.azure.com| 443 |はい|  
-|\*.oms.opinsights.azure.com| 443|はい|  
-|\*.blob.core.windows.net| 443|はい|  
-|\*.azure-automation.net| 443|あり|  
+|\*.ods.opinsights.azure.com| 443 |[はい]|  
+|\*.oms.opinsights.azure.com| 443|[はい]|  
+|\*.blob.core.windows.net| 443|[はい]|  
+|\*.azure-automation.net| 443|[はい]|  
 |**管理サーバー**|||  
 |\*.service.opinsights.azure.com| 443||  
-|\*.blob.core.windows.net| 443| はい|  
-|\*.ods.opinsights.azure.com| 443| あり|  
-|*.azure-automation.net | 443| あり|  
+|\*.blob.core.windows.net| 443| [はい]|  
+|\*.ods.opinsights.azure.com| 443| [はい]|  
+|*.azure-automation.net | 443| [はい]|  
 |**Operations Manager コンソール から OMS**|||  
 |service.systemcenteradvisor.com| 443||  
 |\*.service.opinsights.azure.com| 443||  
@@ -295,7 +295,7 @@ Microsoft.SystemCenter.Advisor.DataConnector と Advisor Connector の 2 つの�
 
 今後、管理グループを OMS ワークスペースに再接続する場合は、管理グループに適用されている最新の更新プログラムのロールアップから `Microsoft.SystemCenter.Advisor.Resources.\<Language>\.mpb` 管理パック ファイルを再度インポートする必要があります。  このファイルは、`%ProgramFiles%\Microsoft System Center 2012` または `System Center 2012 R2\Operations Manager\Server\Management Packs for Update Rollups` フォルダーに格納されています。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 機能を追加し、データを収集するには、[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)方法に関するページを参照してください。
 
 

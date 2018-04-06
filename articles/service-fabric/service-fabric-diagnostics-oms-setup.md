@@ -3,7 +3,7 @@ title: Azure Service Fabric - OMS Log Analytics での監視の設定 | Microsof
 description: Azure Service Fabric クラスターを監視するために Operations Management Suite を使用したイベントの視覚化と分析を設定する方法について説明します。
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
+author: srrengar
 manager: timlt
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 1/17/2017
-ms.author: dekapur
-ms.openlocfilehash: 98ac32b011744ce388762322edd538b467f93494
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.date: 3/30/2018
+ms.author: dekapur; srrengar
+ms.openlocfilehash: 2589efa1808a394f2e32b842efa2ee70809da232
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="set-up-operations-management-suite-log-analytics-for-a-cluster"></a>クラスターの Operations Management Suite Log Analytics を設定する
 
@@ -75,7 +75,7 @@ Windows を使っている場合は、次の手順に進み、クラスター �
 
 Resource Manager テンプレートを使用してクラスターをデプロイすると、テンプレートは新しい OMS ワークスペースを作成し、Service Fabric ソリューションをそのワークスペースに追加し、適切なストレージ テーブルからデータを読み取るように構成します。
 
-[このサンプル テンプレート](https://azure.microsoft.com/resources/templates/service-fabric-oms/)を使用し、要件に合うように変更できます。 OMS ワークスペースを設定するためのさまざまなオプションを使用できるテンプレートについては、[Service Fabric と OMS のテンプレート](https://azure.microsoft.com/resources/templates/?term=service+fabric+OMS)をご覧ください。
+[このサンプル テンプレート](https://github.com/krnese/azure-quickstart-templates/tree/master/service-fabric-oms)を使用し、要件に合うように変更できます。
 
 次のように変更します。
 1. `omsWorkspaceName` と `omsRegion` をパラメーターに追加します。具体的には、*template.json* ファイルで定義されたパラメーターに、次のスニペットを追加します。 既定の値は、環境に応じて自由に変更してください。 また、新しい 2 つのパラメーターを *parameters.json* ファイルに追加して、その値をリソースのデプロイ向けに定義する必要もあります。

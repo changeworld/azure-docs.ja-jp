@@ -12,10 +12,10 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.openlocfilehash: 1545fb9a89794a74efbb855c4480040973c3308e
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="manage-emergency-access-administrative-accounts-in-azure-ad"></a>Azure AD で緊急アクセス用管理者アカウントを管理する 
 

@@ -4,7 +4,7 @@ description: 大規模な並列ワークロードと HPC ワークロードに�
 services: batch
 documentationcenter: ''
 author: mscurrell
-manager: jkabat
+manager: jeconnoc
 editor: ''
 ms.assetid: ''
 ms.service: batch
@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: d6a0355874e9fc98e551a2a05c776109c916d90a
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: b784e64962569f22cba3bc52b6a4e9443a4587d5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-is-azure-batch"></a>Azure Batch とは
 

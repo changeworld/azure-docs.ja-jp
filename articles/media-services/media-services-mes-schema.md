@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
 ms.openlocfilehash: e936f5c47abe5bb5531f9af3be48662ea2f48c97
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard スキーマ
 この記事では、[Media Encoder Standard プリセット](media-services-mes-presets-overview.md)のベースとなっている XML スキーマの要素と型をいくつか取り上げます。 ここでは要素とその有効な値について説明します。  
@@ -27,13 +27,13 @@ ms.lasthandoff: 01/08/2018
 エンコード プリセットを定義します。  
 
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Encoding** |[Encoding](media-services-mes-schema.md#Encoding) |ルート要素。入力ソースがエンコードされることを示します。 |
 | **Outputs** |[Outputs](media-services-mes-schema.md#Output) |目的の出力ファイルのコレクション。 |
 
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **バージョン**<br/><br/> 必須 |**xs: decimal** |プリセット バージョン。 xs:fractionDigits value="1" と xs:minInclusive value="1" という制限が適用されます。たとえば、**version="1.0"** という制限です。 |
 
@@ -41,7 +41,7 @@ ms.lasthandoff: 01/08/2018
 次の要素のシーケンスが含まれます。  
 
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **H264Video** |[H264Video](media-services-mes-schema.md#H264Video) |ビデオの H.264 エンコードの設定。 |
 | **AACAudio** |[AACAudio](media-services-mes-schema.md#AACAudio) |オーディオの AAC エンコードの設定。 |
@@ -51,7 +51,7 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="H264Video"></a> H264Video
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **TwoPass**<br/><br/> minOccurs="0" |**xs:boolean** |現在サポートされているのは 1 パス エンコードだけです。 |
 | **KeyFrameInterval**<br/><br/> minOccurs="0"<br/><br/> **default="00:00:02"** |**xs:time** |IDR フレーム間の固定の間隔を秒単位で決定します。 これは GOP 期間とも呼ばれます。 エンコーダーがこの値を逸脱できるかどうかの制御については、**SceneChangeDetection** をご覧ください。 |
@@ -61,7 +61,7 @@ ms.lasthandoff: 01/08/2018
 | **H264Layers**<br/><br/> minOccurs="0" |[H264Layers](media-services-mes-schema.md#H264Layers) |出力ビデオ レイヤーのコレクション。 |
 
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Condition** |**xs:string** | 入力に映像が含まれていない場合、モノクロのビデオ トラックを挿入するようエンコーダーに強制できます。これを実行するには、Condition="InsertBlackIfNoVideoBottomLayerOnly" (最も低いビットレートでのみビデオを挿入) または Condition="InsertBlackIfNoVideo" (すべてのビットレートでビデオを挿入) を使用します。 詳細については、[こちらの記事](media-services-advanced-encoding-with-mes.md#no_video)を参照してください。|
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 01/08/2018
 既定では、音声のみで映像の入っていない入力をエンコーダーに送信すると、音声データのみが含まれたファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 その場合、H264Video の **InsertBlackIfNoVideo** 属性設定を使用することで、ビデオ トラックを出力に追加するようエンコーダーに強制できます。 詳細については、[こちらの記事](media-services-advanced-encoding-with-mes.md#no_video)を参照してください。
               
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **H264Layer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[H264Layer](media-services-mes-schema.md#H264Layer) |H264 レイヤーのコレクション。 |
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 01/08/2018
 > 
 
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **プロファイル**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: string** |**Auto**、**Baseline**、**Main**、**High** のいずれかの **xs:string** 値を指定できます。 |
 | **Level**<br/><br/> minOccurs="0"<br/><br/> default=”Auto” |**xs: string** | |
@@ -103,17 +103,17 @@ ms.lasthandoff: 01/08/2018
  AAC の詳細については、[AAC](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) に関するページをご覧ください。  
 
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **プロファイル**<br/><br/> minOccurs="0 "<br/><br/> default="AACLC" |**xs: string** |**AACLC**、**HEAACV1**、**HEAACV2** のいずれかの値を指定できます。 |
 
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Condition** |**xs: string** |入力に音声が入っていないとき、無音オーディオ トラックが含まれる資産を生成するようにエンコーダーに強制するには、"InsertSilenceIfNoAudio" 値を指定します。<br/><br/> 既定では、映像のみで音声の入っていない入力をエンコーダーに送信すると、映像データのみが含まれたファイルが出力資産に含まれます。 プレーヤーによっては、このような出力ストリームを処理できないことがあります。 そのような場合、この設定を利用すれば、無音のオーディオ トラックを出力に追加するようにエンコーダーに強制できます。 |
 
 ### <a name="groups"></a>グループ
-| 参照 | [説明] |
+| リファレンス | [説明] |
 | --- | --- |
 | [AudioGroup](media-services-mes-schema.md#AudioGroup)<br/><br/> minOccurs="0" |各プロファイルに設定できる適切なチャネル数、サンプリング レート、およびビットレートについては、「[AudioGroup](media-services-mes-schema.md#AudioGroup)」の説明を参照してください。 |
 
@@ -121,7 +121,7 @@ ms.lasthandoff: 01/08/2018
 各プロファイルの有効な値の詳細については、以下の「オーディオ コーデックの詳細」の表を参照してください。  
 
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Channels**<br/><br/> minOccurs="0" |**xs: int** |エンコードされたオーディオ チャネルの数。 有効なオプションは 1、2、5、6、8 です。<br/><br/> 既定値: 2。 |
 | **SamplingRate**<br/><br/> minOccurs="0" |**xs: int** |オーディオ サンプリング レート。Hz で指定します。 |
@@ -137,14 +137,14 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="Clip"></a> クリップ
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **StartTime** |**xs:duration** |プレゼンテーションの開始時刻を指定します。 StartTime の値は、入力ビデオの絶対タイムスタンプと一致している必要があります。 たとえば、入力ビデオの最初のフレームのタイムスタンプが 12:00:10.000 の場合、StartTime は 12:00:10.000 以降でなければなりません。 |
 | **Duration** |**xs:duration** |プレゼンテーションの期間 (ビデオのオーバーレイの外観など) を指定します。 |
 
 ## <a name="Output"></a> 出力
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **FileName** |**xs:string** |出力ファイルの名前。<br/><br/> 次の表で説明するマクロを使用すると、出力ファイルの名前を作成できます。 例: <br/><br/> **"Outputs": [      {       "FileName": "{Basename}*{Resolution}*{Bitrate}.mp4",       "Format": {         "Type": "MP4Format"       }     }   ]** |
 
@@ -162,7 +162,7 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="Video"></a> ビデオ (複合型はコーデックから継承)
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Start** |**xs:string** | |
 | **Step** |**xs:string** | |
@@ -186,7 +186,7 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="FormatGroup"></a> FormatGroup (グループ)
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **BmpFormat** |**BmpFormat** | |
 | **PngFormat** |**PngFormat** | |
@@ -194,74 +194,74 @@ ms.lasthandoff: 01/08/2018
 
 ## <a name="BmpLayer"></a> BmpLayer
 ### <a name="element"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="PngLayer"></a> PngLayer
 ### <a name="element"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="JpgLayer"></a> JpgLayer
 ### <a name="element"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Width**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Height**<br/><br/> minOccurs="0" |**xs:int** | |
 | **Quality**<br/><br/> minOccurs="0" |**xs:int** |有効な値: 1(worst)-100(best) |
 
 ### <a name="attributes"></a>属性
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **Condition** |**xs:string** | |
 
 ## <a name="PngLayers"></a> PngLayers
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **PngLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[PngLayer](media-services-mes-schema.md#PngLayer) | |
 
 ## <a name="BmpLayers"></a> BmpLayers
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **BmpLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[BmpLayer](media-services-mes-schema.md#BmpLayer) | |
 
 ## <a name="JpgLayers"></a> JpgLayers
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **JpgLayer**<br/><br/> minOccurs="0" maxOccurs="unbounded" |[JpgLayer](media-services-mes-schema.md#JpgLayer) | |
 
 ## <a name="BmpImage"></a> BmpImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png レイヤー |
 
 ## <a name="JpgImage"></a> JpgImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png レイヤー |
 
 ## <a name="PngImage"></a> PngImage (複合型はビデオから継承)
 ### <a name="elements"></a>要素
-| 名前 | type | [説明] |
+| Name | type | [説明] |
 | --- | --- | --- |
 | **PngLayers**<br/><br/> minOccurs="0" |[PngLayers](media-services-mes-schema.md#PngLayers) |Png レイヤー |
 

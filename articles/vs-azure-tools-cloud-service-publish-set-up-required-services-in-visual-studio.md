@@ -1,11 +1,11 @@
 ---
-title: "Visual Studio からのクラウド サービスの発行またはデプロイの準備 | Microsoft Docs"
-description: "クラウド サービスとストレージ アカウント サービスを設定し、Azure アプリケーションを構成する手順を説明します。"
+title: Visual Studio からのクラウド サービスの発行またはデプロイの準備 | Microsoft Docs
+description: クラウド サービスとストレージ アカウント サービスを設定し、Azure アプリケーションを構成する手順を説明します。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 92ee2f9e-ec49-4c7a-900d-620abe5e9d8a
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/10/2017
-ms.author: kraigb
-ms.openlocfilehash: 5b2043ada193e5a08957656e153b58a61e7eba9e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 8a7d6f114bfa10170cdfe7126e01a35b02affd20
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="prepare-to-publish-or-deploy-a-cloud-service-from-visual-studio"></a>Visual Studio からのクラウド サービスの発行またはデプロイの準備
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 11/28/2017
 
 ### <a name="create-a-cloud-service-through-the-azure-portal"></a>Azure Portal を使用してクラウド サービスを作成する
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. ページ左側の **[Cloud Services (クラシック)]** を選択します。
 1. **[+ 追加]** を選択し、必要な情報 (DNS 名、サブスクリプション、リソース グループ、および場所) を入力します。 後で Visual Studio で行うため、この時点でパッケージをアップロードする必要はありません。
 1. **[作成]** を選択してプロセスを完了します。
@@ -59,7 +59,7 @@ ms.lasthandoff: 11/28/2017
 
 ### <a name="create-a-storage-account-through-the-azure-portal"></a>Azure Portal を使用してストレージ アカウントを作成する
 
-1. [Azure ポータル](https://portal.azure.com/)にサインインします。
+1. [Azure Portal](https://portal.azure.com/) にサインインします。
 1. 左上の **[+ 新規]** を選択します。
 1. "Azure Marketplace" の下の **[ストレージ]** を選択し、右側の **[ストレージ アカウント - Blob、File、Table、Queue]** を選択します。
 1. 必要な情報 (名前、デプロイ モデルなど) を入力します。
@@ -81,6 +81,6 @@ Azure Portal には、各 Azure Storage サービスのリソースにアクセ�
 
 セカンダリ アクセス キーは、プライマリ アクセス キーと同じようにストレージ アカウントにアクセスでき、プライマリ アクセス キーが侵害された場合の予備として生成されます。 また、定期的にアクセスのキーを再生成することをお勧めします。 プライマリ キーの再生成時にセカンダリ キーを使用するように接続文字列の設定を変更した後で、セカンダリ キーの再生成時に再生成したプライマリ キーを使用するように接続文字列の設定を変更できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Visural Studio からの Azure へのアプリ発行の詳細については、「 [Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」を参照してください。

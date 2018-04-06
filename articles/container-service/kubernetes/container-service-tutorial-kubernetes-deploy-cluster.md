@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service チュートリアル - クラスターのデプロイ"
-description: "Azure Container Service チュートリアル - クラスターのデプロイ"
+title: Azure Container Service チュートリアル - クラスターのデプロイ
+description: Azure Container Service チュートリアル - クラスターのデプロイ
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 6ef789bc017e670566d25dd9d167698515e88349
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: cb7bdbaf095cefa72d1de302d90afeebbdb9d027
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-a-kubernetes-cluster-in-azure-container-service"></a>Azure Container Service で Kubernetes クラスターをデプロイする
 
@@ -26,7 +26,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 > * Kubernetes CLI (kubectl) のインストール
 > * kubectl の構成
 
-この後のチュートリアルでは、Azure Vote アプリケーションをクラスターにデプロイしてから拡張および更新し、Operations Management Suite を Kubernetes クラスターを監視するように構成します。
+この後のチュートリアルでは、Azure Vote アプリケーションをクラスターにデプロイ、スケーリング、および更新します。さらに、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 

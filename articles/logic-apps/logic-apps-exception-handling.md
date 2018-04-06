@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: logic-apps
 ms.date: 01/31/2018
 ms.author: deli; LADocs
-ms.openlocfilehash: 2ae4f0ae9782ada23089d364e8a1700144ef5ff7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 70dd4e98dbffd9dac27752f0b4c2f5ce4ca70bdc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="handle-errors-and-exceptions-in-logic-apps"></a>Logic Apps におけるエラーと例外の処理
 
@@ -55,9 +55,9 @@ ms.lasthandoff: 03/16/2018
         "retryPolicy" : {
             "type": "exponential",
             "count": 4,
-            "interval": "PT7.5S",
+            "interval": "PT7S",
             "minimumInterval": "PT5S",
-            "maximumInterval": "PT45S"
+            "maximumInterval": "PT1H"
         }
     },
     "runAfter": {}

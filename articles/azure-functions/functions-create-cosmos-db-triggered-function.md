@@ -1,26 +1,26 @@
 ---
-title: "Azure Cosmos DB によってトリガーされる関数の作成 | Microsoft Docs"
-description: "Azure Functions を使用して、データが Azure Cosmos DB のデータベースに追加されるときに呼び出されるサーバーレスの関数を作成します。"
+title: Azure Cosmos DB によってトリガーされる関数の作成 | Microsoft Docs
+description: Azure Functions を使用して、データが Azure Cosmos DB のデータベースに追加されるときに呼び出されるサーバーレスの関数を作成します。
 services: azure-functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.service: functions; cosmos-db
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/07/2017
+ms.date: 03/27/2018
 ms.author: glenga
-ms.custom: 
-ms.openlocfilehash: 9ee3eddda53052c47f2cecff80f971f5eadac414
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.custom: cc996988-fb4f-47
+ms.openlocfilehash: 60836bd88335dc5c58423bad94b6a95e9782c474
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -33,8 +33,6 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
 このチュートリアルを完了するには、以下が必要です。
 
 + Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 ## <a name="create-an-azure-function-app"></a>Azure Function App の作成
 
@@ -74,7 +72,7 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
     | Setting      | 推奨値  | [説明]                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **ID** | データベースの名前 | Azure Cosmos DB データベースの一意の ID  |
-    | **API** | SQL (DocumentDB) | このトピックでは、ドキュメント データベース API を使用します。  |
+    | **API** | SQL | このトピックでは、SQL API を使用します。  |
     | **サブスクリプション** | Azure サブスクリプション | この新しい Cosmos DB アカウントが作成されるサブスクリプション。  |
     | **リソース グループ** | myResourceGroup |  関数アプリが含まれる既存のリソース グループを使用します。 |
     | **場所**  | 西ヨーロッパ | 関数アプリ、または格納されたドキュメントを使用するその他のアプリに近い場所を選択します。  |

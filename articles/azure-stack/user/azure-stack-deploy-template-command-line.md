@@ -1,34 +1,34 @@
 ---
-title: "Azure Stack でコマンド ラインを使ってテンプレートをデプロイする | Microsoft Docs"
-description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack にテンプレートをデプロイする方法について説明します"
+title: Azure Stack でコマンド ラインを使ってテンプレートをデプロイする | Microsoft Docs
+description: クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack にテンプレートをデプロイする方法について説明します
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 9584177f-4af3-4834-864d-930b09ae0995
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 03/30/2018
 ms.author: brenduns
-ms.reviewer: 
-ms.openlocfilehash: 88e10d98a709ff967e19bfe5bfb35bbce9d2df9f
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.reviewer: ''
+ms.openlocfilehash: 761e09889a230642c42697b6bc4f96dc32fe03a0
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>コマンド ラインを使った Azure Stack でのテンプレートのデプロイ
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 コマンド ラインを使用して、Azure Resource Manager テンプレートを Azure Stack Development Kit にデプロイします。 Azure Resource Manager テンプレートは、お使いのアプリケーションのすべてのリソースを、単一の連携した操作でデプロイしてプロビジョニングします。
 
 ## <a name="before-you-begin"></a>開始する前に
- - Azure CLI で Azure Stack を[インストールして接続](azure-stack-connect-cli.md)します。
+ - Azure CLI で Azure Stack を[インストールして接続](azure-stack-version-profiles-azurecli2.md)します。
  - [ストレージ アカウントの作成例のテンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account)からファイル *azuredeploy.json* と *azuredeploy.parameters.json* をダウンロードします。
  
 ## <a name="deploy-template"></a>テンプレートのデプロイ

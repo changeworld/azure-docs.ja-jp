@@ -1,12 +1,12 @@
 ---
-title: "Azure Traffic Manager の地理的ルーティングの種類で使用される国/リージョン階層 | Microsoft Docs"
-description: "この記事では、Azure Traffic Manager の地理的ルーティングの種類で使用される国/リージョンの階層を一覧表示します。"
+title: Azure Traffic Manager の地理的ルーティングの種類で使用される国/リージョン階層 | Microsoft Docs
+description: この記事では、Azure Traffic Manager の地理的ルーティングの種類で使用される国/リージョンの階層を一覧表示します。
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: kumudd
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article

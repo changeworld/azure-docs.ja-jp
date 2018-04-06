@@ -1,24 +1,24 @@
 ---
-title: "StorSimple 8000 シリーズのセキュリティ | Microsoft Docs"
-description: "StorSimple のサービス、デバイス、オンプレミスまたはクラウド上のデータを保護するセキュリティ機能とプライバシー機能について説明します。"
+title: StorSimple 8000 シリーズのセキュリティ | Microsoft Docs
+description: StorSimple のサービス、デバイス、オンプレミスまたはクラウド上のデータを保護するセキュリティ機能とプライバシー機能について説明します。
 services: storsimple
 documentationcenter: NA
 author: alkohli
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: storsimple
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 01/23/2018
+ms.date: 03/27/2018
 ms.author: alkohli
-ms.openlocfilehash: c14927f82ca01320206ccec83216777b7d1b8708
-ms.sourcegitcommit: 79683e67911c3ab14bcae668f7551e57f3095425
+ms.openlocfilehash: ee0534ab8bc3400854ddf550df9ca2f395f8d80d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/25/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="storsimple-security-and-data-protection"></a>StorSimple のセキュリティとデータの保護
 
@@ -267,6 +267,20 @@ StorSimple ソリューションに保存されるデータとソリューショ
 **Q:** 政府機関がマイクロソフトに対して私のデータを要求した場合はどうなりますか。
 
 **A:** サービス上のすべてのデータは暗号化されており、秘密キーはデバイスに保管されているため、政府機関はお客様に対してデータを要求する必要があります。
+
+## <a name="gdpr-compliance"></a>GDPR コンプライアンス
+
+[一般データ保護規則 (GDPR)](http://ec.europa.eu/justice/data-protection/reform/index_en.htm)は、欧州連合 (EU) のデータ保護およびプライバシー保護法です。 GDPR には、個人情報を収集、格納、および使用する方法に関する多くの要件が含まれています。 GDPR の規則は、EU で運営され、EU の居住者に関係するデータを収集して分析する企業、政府機関、およびその他の組織に課されます。 
+
+物理と仮想の両方のシリーズの StorSimple デバイス マネージャーは GDPR に準拠しています。 個人情報が収集され、サービスで表示される 2 つのキー インスタンスが存在します。
+
+- ユーザーのメール アドレスが構成されているアラート ユーザー設定。 この情報は、管理者が表示およびクリアできます。 これは、StorSimple 8000 シリーズ デバイスと StorSimple Virtual Array の両方に適用されます。
+ * StorSimple 8000 シリーズの設定を表示およびクリアするには、[StorSimple アラートの表示および管理](storsimple-8000-manage-alerts.md#configure-alert-settings)に関するページにある手順に従います。
+ * StorSimple Virtual Array の設定を表示およびクリアするには、[StorSimple アラートの表示および管理](storsimple-virtual-array-manage-alerts.md#configure-alert-settings)に関するページにある手順に従います。
+- 共有に存在するデータにアクセスできるユーザー。 共有データにアクセスできるユーザーの一覧が表示され、確認できるようになります。 共有が削除されると、この一覧も削除されます。 これは、StorSimple Virtual Array にのみ適用されます。
+ * 共有にアクセスできるユーザーの一覧を表示するか、または共有を削除するには、[StorSimple Virtual Array での共有の管理](storsimple-virtual-array-manage-shares.md)に関するページにある手順に従います。
+
+詳細については、[セキュリティ センター](https://www.microsoft.com/trustcenter)にある Microsoft のプライバシー ポリシーを確認してください。
 
 ## <a name="next-steps"></a>次の手順
 

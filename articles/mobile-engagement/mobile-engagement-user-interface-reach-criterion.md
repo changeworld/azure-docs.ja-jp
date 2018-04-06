@@ -1,11 +1,11 @@
 ---
-title: "Azure モバイル エンゲージメント ユーザー インターフェイス - Reach の条件"
-description: "Azure モバイル エンゲージメントを使用して、ユーザーの選択したサブセットにプッシュ キャンペーンを送信する方法について説明します"
+title: Azure モバイル エンゲージメント ユーザー インターフェイス - Reach の条件
+description: Azure モバイル エンゲージメントを使用して、ユーザーの選択したサブセットにプッシュ キャンペーンを送信する方法について説明します
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: a4ed03a0-55b1-4dd8-b0bd-c475005afb66
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 803b44721d0ab1ac7b5a8074e18857fc57adb724
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2adf473c6acea0f128eb14e2616748ff29d5d762
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-use-targeting-criteria-to-send-push-campaigns-to-a-select-subset-of-your-users"></a>対象条件を使用して、ユーザーの選択したサブセットにプッシュ キャンペーンを送信する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 [New Criteria (新しい条件)] ボタンを使用して特定の条件を指定することで対象ユーザーを絞り込む方法は、Azure モバイル エンゲージメントの最も重要な概念の 1 つであり、すべてのユーザーにプッシュ通知を送る代わりに、ユーザーに関連するプッシュ通知を送ることで反応を得やすくなります。 標準的な条件に基づいて対象ユーザーを限定し、プッシュをシミュレートすることで、通知を受信するユーザー数を確認できます。
 
 **関連項目:**

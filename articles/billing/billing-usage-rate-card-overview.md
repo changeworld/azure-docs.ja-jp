@@ -1,11 +1,11 @@
 ---
 title: Azure Billing API | Microsoft Docs
-description: "Azure Billing Usage API と RateCard API について説明します。これらの API を使用すると、Azure のリソース消費と傾向を把握できます。"
-services: 
-documentationcenter: 
-author: BryanLa
+description: Azure Billing Usage API と RateCard API について説明します。これらの API を使用すると、Azure のリソース消費と傾向を把握できます。
+services: ''
+documentationcenter: ''
+author: tonguyen
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: 3e817b43-0696-400c-a02e-47b7817f9b77
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/9/2017
 ms.author: mobandyo;bryanla
-ms.openlocfilehash: 26217d6f4e14166a89fbb561cb12d0af78ae6f4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0e546095ca1079ccc59c51b9b5230be04415eb5
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する
 Azure Billing API を使用すると、使用状況やリソースに関するデータを、お使いのデータ分析ツールで取得できます。 Azure Resource Usage API と Azure Resource RateCard API は、コストを正確に予測して管理するうえで役立ちます。 これらの API は、Azure Resource Manager が公開している API ファミリに含まれ、リソース プロバイダーとして実装されています。  
@@ -63,7 +63,7 @@ Usage API と RateCard API を組み合わせて実現できるシナリオ例�
 ## <a name="partner-solutions"></a>パートナー ソリューション
 「[Cloud Cruiser と Microsoft Azure Billing API の統合](billing-usage-rate-card-partner-solution-cloudcruiser.md)」では、[Cloud Cruiser の Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) を Windows Azure Pack (WAP) ポータルから直接利用する方法について説明しています。 この方法では、Microsoft Azure のプライベート クラウドまたはホスト型パブリック クラウドの運用面と料金面の両方を 1 つのユーザー インターフェイスでシームレスに管理できます。   
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * GitHub でコード サンプルを確認します。
   * [Invoice API のコード サンプル](https://go.microsoft.com/fwlink/?linkid=845124)
 

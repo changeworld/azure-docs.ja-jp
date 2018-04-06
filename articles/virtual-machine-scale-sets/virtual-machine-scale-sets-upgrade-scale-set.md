@@ -1,6 +1,6 @@
 ---
 title: Azure 仮想マシン スケール セットを変更する | Microsoft Docs
-description: Azure 仮想マシン スケール セットを変更する
+description: REST API、Azure PowerShell、Azure CLI 2.0 を使って、Azure 仮想マシン スケール セットに変更を加え、更新する方法について説明します。
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: gatneil
@@ -15,45 +15,44 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: negat
-ms.openlocfilehash: fcca912a8120a51d2f0a454ef0a6341cd5882015
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 91eccd2b4587d7cb926ca506ae2f2e5b91ea1f3e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="modify-a-virtual-machine-scale-set"></a>仮想マシン スケール セットを変更する
-この記事では、既存の仮想マシン スケール セットを変更する方法について説明します。 タスクには、スケール セットの構成を変更する方法、スケール セットで実行されているアプリケーションの構成を変更する方法、可用性を管理する方法などが含まれます。
+アプリケーションのライフサイクルを通して、仮想マシン スケール セットを変更したり更新したりすることが必要になる場合があります。 スケール セットの構成を更新したりアプリケーションの構成を変更したりする際の方法が、こうした更新の対象になることもあります。 この記事では、REST API、Azure PowerShell、Azure CLI 2.0 を使って、既存のスケール セットに変更を加える方法を説明します。
 
 ## <a name="fundamental-concepts"></a>基本的な概念
 
-### <a name="scale-set-model"></a>スケール セット モデル
+### <a name="the-scale-set-model"></a>スケール セット モデル
+スケール セットには、スケール セット全体の "*望ましい*" 状態をキャプチャする "スケール セット モデル" があります。 スケール セット モデルは、次の方法で照会することができます。 
 
-スケール セットには、スケール セット全体の "*望ましい*" 状態をキャプチャするモデルがあります。 スケール セットのモデルのクエリを実行するには、以下を使用できます。
+- REST API ([compute/virtualmachinescalesets/get](/rest/api/compute/virtualmachinescalesets/get))
 
-* REST API: 
+    ```rest
+    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
+    ```
 
-  `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version={apiVersion}` 
-   
-  詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/get)をご覧ください。
+- Azure PowerShell ([Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss))
 
-* PowerShell:
+    ```powershell
+    Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
+    ```
 
-  `Get-AzureRmVmss -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName}`
-   
-  詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss)をご覧ください。
+- Azure CLI 2.0 ([az vmss show](/cli/azure/vmss#az_vmss_show))
 
-* Azure CLI: 
+    ```azurecli
+    az vmss show --resource-group myResourceGroup --name myScaleSet
+    ```
 
-  `az vmss show -g {resourceGroupName} -n {vmSaleSetName}` 
-   
-  詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_show)をご覧ください。
+- その他、[resources.azure.com](https://resources.azure.com) や言語固有の [Azure SDK](https://azure.microsoft.com/downloads/) を使う方法もあります。
 
-[Azure Resource Explorer (プレビュー)](https://resources.azure.com) または [Azure SDK](https://azure.microsoft.com/downloads/) を使用して、スケール セットのモデルを照会することもできます。
+出力の正確な表示は、コマンドに指定したオプションによって異なります。 次の例は、Azure CLI 2.0 から得たサンプル出力の抜粋です。
 
-出力の正確な表示は、コマンドに指定したオプションによって異なります。 Azure CLI のサンプル出力を次に示します。
-
-```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+```azurecli
+az vmss show --resource-group myResourceGroup --name myScaleSet
 {
   "location": "westus",
   "overprovision": true,
@@ -65,44 +64,39 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
     "name": "Standard_D2_v2",
     "tier": "Standard"
   },
-  .
-  .
-  .
 }
 ```
 
-ご覧のように、これらのプロパティはスケール セット全体に適用されます。
+これらのプロパティはスケール セット全体に適用されます。
 
 
+### <a name="the-scale-set-instance-view"></a>スケール セットのインスタンス ビュー
+スケール セットには、スケール セット全体の現在の "*ランタイム*" 状態をキャプチャする "スケール セットのインスタンス ビュー" もあります。 スケール セットのインスタンス ビューのクエリを実行するには、以下を使用できます。
 
-### <a name="scale-set-instance-view"></a>スケール セットのインスタンス ビュー
+- REST API ([compute/virtualmachinescalesets/getinstanceview](/rest/api/compute/virtualmachinescalesets/getinstanceview))
 
-スケール セットには、スケール セット全体の現在の "*ランタイム*" 状態をキャプチャするインスタンス ビューもあります。 スケール セットのインスタンス ビューのクエリを実行するには、以下を使用できます。
+    ```rest
+    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/instanceView?api-version={apiVersion}
+    ```
 
-* REST API: 
+- Azure PowerShell ([Get-AzureRmVmss](/powershell/module/azurerm.compute/get-azurermvmss))
 
-  `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/instanceView?api-version={apiVersion}` 
-   
-  詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/getinstanceview)をご覧ください。
+    ```powershell
+    Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceView
+    ```
 
-* PowerShell: 
+- Azure CLI 2.0 ([az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view))
 
-  `Get-AzureRmVmss -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceView` 
-  
-  詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss)をご覧ください。
+    ```azurecli
+    az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
+    ```
 
-* Azure CLI: 
+- その他、[resources.azure.com](https://resources.azure.com) や言語固有の [Azure SDK](https://azure.microsoft.com/downloads/) を使う方法もあります
 
-  `az vmss get-instance-view -g {resourceGroupName} -n {vmSaleSetName}` 
-   
-  詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_get_instance_view)をご覧ください。
+出力の正確な表示は、コマンドに指定したオプションによって異なります。 次の例は、Azure CLI 2.0 から得たサンプル出力の抜粋です。
 
-[Azure Resource Explorer (プレビュー)](https://resources.azure.com) または [Azure SDK](https://azure.microsoft.com/downloads/) を使用して、スケール セットのインスタンス ビューを照会することもできます。
-
-出力の正確な表示は、コマンドに指定したオプションによって異なります。 Azure CLI のサンプル出力を次に示します。
-
-```
-$ az vmss get-instance-view -g {resourceGroupName} -n {virtualMachineScaleSetName}
+```azurecli
+$ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet
 {
   "statuses": [
     {
@@ -124,44 +118,39 @@ $ az vmss get-instance-view -g {resourceGroupName} -n {virtualMachineScaleSetNam
       }
     ]
   }
-  .
-  .
-  .
 }
 ```
 
-ご覧のように、これらのプロパティは、スケール セットの VM の現在のランタイム状態の概要を示しています。 概要には、スケール セットに適用された拡張機能の状態が含まれています (簡潔にするために省略されています)。
+これらのプロパティは、スケールセット内の VM の現在のランタイム状態の概要を示します (スケール セットに適用された拡張機能の状態など)。
 
 
-
-### <a name="scale-set-vm-model-view"></a>スケール セットの VM のモデル ビュー
-
+### <a name="the-scale-set-vm-model-view"></a>スケール セットの VM モデル ビュー
 スケール セットにモデル ビューがあるのと同様に、スケール セット内の各 VM には独自のモデル ビューがあります。 スケール セットのモデル ビューのクエリを実行するには、以下を使用できます。
 
-* REST API: 
+- REST API ([compute/virtualmachinescalesetvms/get](/rest/api/compute/virtualmachinescalesetvms/get))
 
-  `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}?api-version={apiVersion}` 
-  
-  詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/get)をご覧ください。
+    ```rest
+    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId?api-version={apiVersion}
+    ```
 
-* PowerShell: 
+- Azure PowerShell ([Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm))
 
-  `Get-AzureRmVmssVm -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId}` 
-  
-  詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmssvm)をご覧ください。
+    ```powershell
+    Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
+    ```
 
-* Azure CLI: 
+- Azure CLI 2.0 ([az vmss show](/cli/azure/vmss#az_vmss_show))
 
-  `az vmss show -g {resourceGroupName} -n {vmSaleSetName} --instance-id {instanceId}` 
-  
-  詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_show)をご覧ください。
+    ```azurecli
+    az vmss show --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
+    ```
 
-[Azure Resource Explorer (プレビュー)](https://resources.azure.com) または [Azure SDK](https://azure.microsoft.com/downloads/) を使用して、スケール セットの VM のモデルを照会することもできます。
+- その他、[resources.azure.com](https://resources.azure.com) や [Azure SDK](https://azure.microsoft.com/downloads/) を使う方法もあります。
 
-出力の正確な表示は、コマンドに指定したオプションによって異なります。 Azure CLI のサンプル出力を次に示します。
+出力の正確な表示は、コマンドに指定したオプションによって異なります。 次の例は、Azure CLI 2.0 から得たサンプル出力の抜粋です。
 
-```
-$ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
+```azurecli
+$ az vmss show --resource-group myResourceGroup --name myScaleSet
 {
   "location": "westus",
   "name": "{name}",
@@ -169,44 +158,39 @@ $ az vmss show -g {resourceGroupName} -n {vmScaleSetName}
     "name": "Standard_D2_v2",
     "tier": "Standard"
   },
-  .
-  .
-  .
 }
 ```
 
-ご覧のように、これらのプロパティは、スケール セット全体の構成ではなく VM 自体の構成を示します。 たとえば、スケール セット モデルにはプロパティとして `overprovision` がありますが、スケール セットの VM のモデルにはありません。 この違いがあるのは、オーバープロビジョニングが、スケール セットの個々の VM ではなくスケール セット全体のプロパティであるためです  (オーバープロビジョニングの詳細については、「[スケール セットの設計上の考慮事項](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-design-overview#overprovisioning)」をご覧ください)。
+これらのプロパティは、スケール セット全体の構成ではなく VM 自体の構成を示します。 たとえば、スケール セット モデルにはプロパティとして `overprovision` がありますが、スケール セット内の VM のモデルにはありません。 この違いは、オーバープロビジョニングがスケール セット内の個々の VM ではなくスケール セット全体のプロパティであることが原因です (オーバープロビジョニングについて詳しくは、「[スケール セットの設計上の考慮事項](virtual-machine-scale-sets-design-overview.md#overprovisioning)」をご覧ください)。
 
 
-
-### <a name="scale-set-vm-instance-view"></a>スケール セットの VM のインスタンス ビュー
-
+### <a name="the-scale-set-vm-instance-view"></a>スケール セットの VM インスタンス ビュー
 スケール セットにインスタンス ビューがあるのと同様に、スケール セット内の各 VM には独自のインスタンス ビューがあります。 スケール セットのインスタンス ビューのクエリを実行するには、以下を使用できます。
 
-* REST API: 
+- REST API ([compute/virtualmachinescalesetvms/getinstanceview](/rest/api/compute/virtualmachinescalesetvms/getinstanceview))
 
-  `GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/instanceView?api-version={apiVersion}` 
- 
-  詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/getinstanceview)をご覧ください。
+    ```rest
+    GET https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/virtualmachines/instanceId/instanceView?api-version={apiVersion}
+    ```
 
-* PowerShell: 
+- Azure PowerShell ([Get-AzureRmVmssVm](/powershell/module/azurerm.compute/get-azurermvmssvm))
 
-  `Get-AzureRmVmssVm -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -InstanceView` 
-  
-  詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmssvm)をご覧ください。
+    ```powershell
+    Get-AzureRmVmssVm -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -InstanceView
+    ```
 
-* Azure CLI: 
+- Azure CLI 2.0 ([az vmss get-instance-view](/cli/azure/vmss#az_vmss_get_instance_view))
 
-  `az vmss get-instance-view -g {resourceGroupName} -n {vmSaleSetName} --instance-id {instanceId}` 
-  
-  詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_get_instance_view)をご覧ください。
+    ```azurecli
+    az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
+    ```
 
-[Azure Resource Explorer (プレビュー)](https://resources.azure.com) または [Azure SDK](https://azure.microsoft.com/downloads/) を使用して、スケール セットの VM のインスタンス ビューを照会することもできます。
+- その他、[resources.azure.com](https://resources.azure.com) や [Azure SDK](https://azure.microsoft.com/downloads/) を使う方法もあります
 
-出力の正確な表示は、コマンドに指定したオプションによって異なります。 Azure CLI のサンプル出力を次に示します。
+出力の正確な表示は、コマンドに指定したオプションによって異なります。 次の例は、Azure CLI 2.0 から得たサンプル出力の抜粋です。
 
-```
-$ az vmss get-instance-view -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}
+```azurecli
+$ az vmss get-instance-view --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
 {
   "additionalProperties": {
     "osName": "ubuntu",
@@ -251,202 +235,203 @@ $ az vmss get-instance-view -g {resourceGroupName} -n {vmScaleSetName} --instanc
     ],
     "vmAgentVersion": "{version}"
   },
-  .
-  .
-  .
 }
 ```
 
-ご覧のように、これらのプロパティは、VM 自体の現在のランタイム状態を示しています。 状態には、スケール セットに適用された拡張機能が含まれます (簡潔にするために省略されています)。
+これらのプロパティは、VM 自体の現在のランタイム状態を示します。これには、スケール セットに適用された拡張機能が含まれます。
 
 
-
-
-## <a name="techniques-for-updating-global-scale-set-properties"></a>グローバル スケール セットのプロパティを更新する方法
-
+## <a name="how-to-update-global-scale-set-properties"></a>グローバル スケール セットのプロパティの更新方法
 グローバル スケール セットのプロパティを更新するには、スケール セット モデルのプロパティを更新する必要があります。 この更新は以下を使用して実行できます。
 
-* REST API: 
+- REST API ([compute/virtualmachinescalesets/createorupdate](/rest/api/compute/virtualmachinescalesets/createorupdate))
 
-  `PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}?api-version={apiVersion}` 
-  
-  詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください。
+    ```rest
+    PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet?api-version={apiVersion}
+    ```
 
-  REST API からプロパティを使用して Azure Resource Manager テンプレートをデプロイすることで、グローバル スケール セットのプロパティを更新することもできます。
+- REST API からプロパティを使用して Resource Manager テンプレートをデプロイすることで、グローバル スケール セットのプロパティを更新することもできます。
 
-* PowerShell: 
+- Azure PowerShell ([Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss))
 
-  `Update-AzureRmVmss -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -VirtualMachineScaleSet {scaleSetConfigPowershellObject}` 
-  
-  詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss)をご覧ください。
+    ```powershell
+    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -VirtualMachineScaleSet {scaleSetConfigPowershellObject}
+    ```
 
-* Azure CLI:
+- Azure CLI 2.0 ([az vmss update](/cli/azure/vmss#az_vmss_update))
+    - プロパティを変更する:
 
-  * プロパティを変更する: `az vmss update --set {propertyPath}={value}` 
-  
-  * スケール セットのリスト プロパティにオブジェクトを追加する: `az vmss update --add {propertyPath} {JSONObjectToAdd}` 
-  
-  * スケール セットのリスト プロパティからオブジェクトを削除する: `az vmss update --remove {propertyPath} {indexToRemove}` 
-  
-  詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_update)をご覧ください。 
-  
-  `az vmss create` コマンドを使用してスケール セットを既にデプロイしている場合は、`az vmss create` コマンドをもう一度実行してスケール セットを更新できます。 これを行うには、変更するプロパティを除き、`az vmss create` コマンドのすべてのプロパティが以前と同じであることを確認します。
+        ```azurecli
+        az vmss update --set {propertyPath}={value}
+        ```
+
+    - スケール セットのリスト プロパティにオブジェクトを追加する: 
+
+        ```azurecli
+        az vmss update --add {propertyPath} {JSONObjectToAdd}
+        ```
+
+    - スケール セットのリスト プロパティからオブジェクトを削除する: 
+
+        ```azurecli
+        az vmss update --remove {propertyPath} {indexToRemove}
+        ```
+
+    - `az vmss create` コマンドを使用してスケール セットを既にデプロイした場合は、`az vmss create` コマンドをもう一度実行してスケール セットを更新できます。 変更するプロパティを除き、`az vmss create` コマンドのすべてのプロパティが以前と同じであることを確認してください。
+
+- その他、[resources.azure.com](https://resources.azure.com) や [Azure SDK](https://azure.microsoft.com/downloads/) を使う方法もあります。
+
+スケール セット モデルを更新すると、スケール セットに作成された新しい VM に新しい構成が適用されます。 ただし、スケール セット内の既存の VM のモデルは、最新の全体的なスケール セット モデルで最新の状態にされている必要があります。 各 VM のモデルでは、`latestModelApplied` というブール型のプロパティがあります。このプロパティは、VM が最新の全体的なスケール セット モデルで最新の状態にされているかどうかを示します (`true` は VM が最新のモデルで最新の状態になっていることを意味します)。
 
 
+## <a name="how-to-bring-vms-up-to-date-with-the-latest-scale-set-model"></a>最新のスケール セット モデルで VM を最新の状態にする方法
+スケール セットには、VM を最新のスケール セット モデルで最新の状態にする方法を決定する "アップグレード ポリシー" があります。 アップグレード ポリシーの 3 つのモードは次のとおりです。
 
-[Azure Resource Explorer (プレビュー)](https://resources.azure.com) または [Azure SDK](https://azure.microsoft.com/downloads/) を使用して、スケール セット モデルを更新することもできます。
+- **自動** - このモードでは、スケール セットは VM の停止順序を保証しません。 スケール セットは、すべての VM を同時に停止できます。 
+- **ローリング** - このモードでは、スケール セットは更新をバッチでロールアウトします。必要に応じて、バッチ間の一時停止時間を設定します。
+- **手動** - このモードでは、スケール セット モデルの更新時に、既存の VM は更新されません。
+ 
+既存の VM を更新するには、各既存の VM の "手動アップグレード" を行う必要があります。 この手動アップグレードは以下を使用して行うことができます。
 
-スケール セット モデルを更新すると、スケール セットに作成された新しい VM に新しい構成が適用されます。 ただし、スケール セットの既存の VM のモデルも、最新の全体的なスケール セット モデルで最新の状態になっている必要があります。 各 VM のモデルでは、`latestModelApplied` というブール型のプロパティによって、最新の全体的なスケール セット モデルで VM が最新の状態かどうかが示されます  (値が `true` の場合、最新のモデルで VM が最新の状態であることを意味します)。
+- REST API ([compute/virtualmachinescalesets/updateinstances](/rest/api/compute/virtualmachinescalesets/updateinstances))
 
+    ```rest
+    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/manualupgrade?api-version={apiVersion}
+    ```
 
-
-
-## <a name="techniques-for-bringing-vms-up-to-date-with-the-latest-scale-set-model"></a>最新のスケール セット モデルで VM を最新の状態にする方法
-
-スケール セットには、最新のスケール セット モデルで VM を最新の状態にする方法を決定する "*アップグレード ポリシー*" があります。 アップグレード ポリシーの 3 つのモードは次のとおりです。
-
-- **自動**: このモードでは、スケール セットで VM の停止順序は保証されません。 スケール セットは、すべての VM を同時に停止させる可能性があります。 
-- **ローリング**: このモードでは、スケール セットは更新をバッチでロールアウトします。必要に応じて、バッチ間の一時停止時間を設定します。
-- **手動**: このモードでは、スケール セット モデルの更新時に、既存の VM は更新されません。 既存の VM を更新するには、各 VM を 手動でアップグレードする必要があります。 この手動アップグレードは以下を使用して行うことができます。
-
-  - REST API: 
-  
-    `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/manualupgrade?api-version={apiVersion}` 
+- Azure PowerShell ([Update-AzureRmVmssInstance](/powershell/module/azurerm.compute/update-azurermvmssinstance))
     
-    詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/updateinstances)をご覧ください。
+    ```powershell
+    Update-AzureRmVmssInstance -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId
+    ```
 
-  - PowerShell: 
-  
-    `Update-AzureRmVmssInstance -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId}` 
-    
-    詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmssinstance)をご覧ください。
+- Azure CLI 2.0 ([az vmss update-instances](/cli/azure/vmss#az_vmss_update_instances))
 
-  - Azure CLI: 
-  
-    `az vmss update-instances -g {resourceGroupName} -n {vmScaleSetName} --instance-ids {instanceIds}` 
-    
-    詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_update_instances)をご覧ください。
+    ```azurecli
+    az vmss update-instances --resource-group myResourceGroup --name myScaleSet --instance-ids {instanceIds}
+    ```
 
-  [Azure SDK](https://azure.microsoft.com/downloads/) を使用して、スケール セットの VM を手動でアップグレードすることもできます。
+- その他、言語固有の [Azure SDK](https://azure.microsoft.com/downloads/) を使う方法もあります。
 
 >[!NOTE]
-> Azure Service Fabric クラスターでは自動モードのみを使用できますが、更新は異なる方法で処理されます。 Service Fabric の更新の詳細については、[Service Fabric のドキュメント](https://docs.microsoft.com/azure/service-fabric/service-fabric-application-upgrade)をご覧ください。
+> Service Fabric クラスターは "*自動*" モードのみを使用できますが、更新は別途処理されます。 詳しくは、「[Service Fabric アプリケーションのアップグレード](../service-fabric/service-fabric-application-upgrade.md)」をご覧ください。
 
-グローバル スケール セットのプロパティの変更の中で、スケール セットの OS プロファイルの変更は、アップグレード ポリシーには従いません  (管理者ユーザー名とパスワードなど)。これらのプロパティは、API バージョン 2017-12-01 以降でのみ変更できます。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM を再イメージ化する必要があります。 VM の再イメージ化は、以下を使用して行います。
+グローバル スケール セットのプロパティに対する変更には、アップグレード ポリシーに従わない種類が 1 つあります。 スケール セット OS プロファイル (管理者のユーザー名とパスワードなど) に対する変更は、API バージョン *2017-12-01* 以降でのみ実行できます。 これらの変更は、スケール セット モデルの変更後に作成された VM にのみ適用されます。 既存の VM を最新の状態にするには、各既存の VM の "再イメージ化" を行う必要があります。 この再イメージ化は、以下を使用して行うことができます。
 
-* REST API: 
+- REST API ([compute/virtualmachinescalesets/reimage](/rest/api/compute/virtualmachinescalesets/reimage))
 
-  `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` 
-  
-  詳細については、[REST API のドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)をご覧ください。
+    ```rest
+    POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/reimage?api-version={apiVersion}
+    ```
 
-* PowerShell: 
+- Azure PowerShell ([Set-AzureRmVmssVm](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm))
 
-  `Set-AzureRmVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` 
-  
-  詳細については、[PowerShell のドキュメント](https://docs.microsoft.com/powershell/module/azurerm.compute/set-azurermvmssvm)をご覧ください。
+    ```powershell
+    Set-AzureRmVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId instanceId -Reimage
+    ```
 
-* Azure CLI: 
+- Azure CLI 2.0 ([az vmss reimage](https://docs.microsoft.com/cli/azure/vmss#az_vmss_reimage))
 
-  `az vmss reimage -g {resourceGroupName} -n {vmScaleSetName} --instance-id {instanceId}` 
-  
-  詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/vmss?view=azure-cli-latest#az_vmss_reimage)をご覧ください。
+    ```azurecli
+    az vmss reimage --resource-group myResourceGroup --name myScaleSet --instance-id instanceId
+    ```
 
-[Azure SDK](https://azure.microsoft.com/downloads/) を使用して、スケール セット内の VM の再イメージ化を行うこともできます。
-
-
+- その他、言語固有の [Azure SDK](https://azure.microsoft.com/downloads/) を使う方法もあります。
 
 
 ## <a name="properties-with-restrictions-on-modification"></a>変更に制限のあるプロパティ
 
 ### <a name="create-time-properties"></a>作成時のプロパティ
+一部のプロパティは、スケール セットの作成時にのみ設定できます。 これには次のようなプロパティがあります。
 
-一部のプロパティは、スケール セットの初期作成時にのみ設定できます。 これには次のようなプロパティがあります。
-
-- ゾーン
+- 可用性ゾーン
 - イメージ参照発行元
 - イメージ参照プラン
 
-### <a name="properties-that-can-be-changed-based-on-the-current-value-only"></a>現在の値のみに基づいて変更できるプロパティ
+### <a name="properties-that-can-only-be-changed-based-on-the-current-value"></a>現在の値に基づいてのみ変更できるプロパティ
+一部のプロパティは、現在の値に基づく例外付きで変更できます。 これには次のようなプロパティがあります。
 
-一部のプロパティは、現在の値に基づいて変更できます (ただし、例外があります)。 これには次のようなプロパティがあります。
-
-- `singlePlacementGroup`: `singlePlacementGroup` が true の場合は false に変更できます。 ただし、`singlePlacementGroup` が false の場合には、true に変更することは*できません*。
-- `subnet`: 元のサブネットと新しいサブネットが同じ仮想ネットワーク内にあれば、スケール セットのサブネットを変更できます。
+- **singlePlacementGroup** - singlePlacementGroup が true の場合は、false に変更できます。 ただし、singlePlacementGroup が false の場合は、true に変更**できません**。
+- **サブネット** - 元のサブネットと新しいサブネットが同じ仮想ネットワークにある限り、スケール セットのサブネットは変更できます。
 
 ### <a name="properties-that-require-deallocation-to-change"></a>変更するために割り当て解除が必要なプロパティ
+一部のプロパティは、スケール セット内の VM の割り当てが解除されている場合に、特定の値にのみ変更できます。 これには次のようなプロパティがあります。
 
-一部のプロパティは、スケール セットの VM の割り当てが解除されている場合にのみ、特定の値に変更できます。 これには次のようなプロパティがあります。
-
-- `sku name`: スケール セットが現在存在するハードウェアで新しい VM SKU がサポートされていない場合は、`sku name` を変更する前に、スケール セットの VM の割り当てを解除する必要があります。 VM のサイズ変更について詳しくは、[この Azure ブログの投稿](https://azure.microsoft.com/blog/resize-virtual-machines/)をご覧ください。
+- **SKU 名** - スケール セットが現在存在するハードウェアで新しい VM SKU がサポートされていない場合は、SKU 名を変更する前にスケール セット内の VM の割り当てを解除する必要があります。 詳細については、[Azure VM のサイズを変更する方法](../virtual-machines/windows/resize-vm.md)に関するページを参照してください。
 
 
 ## <a name="vm-specific-updates"></a>VM 固有の更新
+特定の変更は、グローバル スケール セットのプロパティではなく特定の VM に適用できます。 現在サポートされている唯一の VM 固有の更新は、スケール セット内の VM との間でのデータ ディスクのアタッチ/デタッチです。 この機能はプレビュー段階にあります。 詳しくは、[プレビュー ドキュメント](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)をご覧ください。
 
-特定の変更は、グローバル スケール セットのプロパティではなく、特定の VM に適用できます。 現在サポートされている唯一の VM 固有の更新は、スケール セット内の VM との間でのデータ ディスクのアタッチ/デタッチです。 この機能はプレビュー段階にあります。 詳しくは、[プレビュー ドキュメント](https://github.com/Azure/vm-scale-sets/tree/master/preview/disk)をご覧ください。
 
 ## <a name="scenarios"></a>シナリオ
 
 ### <a name="application-updates"></a>アプリケーションの更新
-
-拡張機能を使用してアプリケーションがスケール セットにデプロイされている場合、拡張機能の構成を更新すると、アップグレード ポリシーに従ってアプリケーションが更新されます。 たとえば、カスタム スクリプト拡張機能で実行するスクリプトの新しいバージョンがある場合は、その新しいスクリプトを参照するように `fileUris` プロパティを更新できます。 
-
-拡張機能の構成が変更されていなくても、強制的に更新することが必要な場合もあります  (スクリプトの URI を変更せずにスクリプトを更新した場合など)。このような場合は、`forceUpdateTag` を変更して更新を適用できます。 Azure プラットフォームはこのプロパティを解釈しないため、その値の変更は、拡張機能の動作に影響しません。 変更すると、拡張機能が強制的に再実行されるだけです。 
-
-`forceUpdateTag` の詳細については、[拡張機能の REST API ドキュメント](https://docs.microsoft.com/rest/api/compute/virtualmachineextensions/createorupdate)をご覧ください。
+拡張機能を通じてアプリケーションがスケール セットにデプロイされている場合、拡張機能の構成を更新すると、アップグレード ポリシーに従ってアプリケーションが更新されます。 たとえば、カスタム スクリプト拡張機能で実行するスクリプトの新しいバージョンがある場合は、新しいスクリプトを指すように *fileUris* プロパティを更新できます。 場合によっては、拡張機能の構成が変更されていない場合でも、強制的に更新したいことがあります (たとえば、スクリプトの URI を変更せずにスクリプトを更新した場合など)。 このような場合は、強制的に更新するように *forceUpdateTag* を変更することができます。 Azure プラットフォームはこのプロパティを解釈しません。 その値を変更しても、拡張機能の動作は変わりません。 変更しても、拡張機能が強制的に再実行されるだけです。 *forceUpdateTag* について詳しくは、[拡張機能の REST API ドキュメント](/rest/api/compute/virtualmachineextensions/createorupdate)をご覧ください。
 
 カスタム イメージを使用してアプリケーションをデプロイするのも一般的です。 このシナリオについては、次のセクションで説明します。
 
 ### <a name="os-updates"></a>OS の更新
-
-プラットフォーム イメージを使用している場合は、`imageReference` を変更することでイメージを更新できます。 詳細については、[REST API のドキュメント](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください。
+Azure プラットフォーム イメージを使用している場合は、*imageReference* を変更してイメージを更新することができます (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 
 >[!NOTE]
-> プラットフォーム イメージでは、イメージ参照バージョンに "latest" を指定するのが一般的です。 これは、スケール セットを作成、スケール アウト、再イメージ化するときに、VM が使用可能な最新バージョンで作成されることを意味します。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味*しません*。 これは別の機能であり、現在プレビュー段階にあります。 詳細については、[OS の自動アップグレード](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-automatic-upgrade)に関する記事をご覧ください。
+> プラットフォーム イメージでは、イメージ参照バージョンに "最新" を指定することが一般的です。 作成、スケール アウト、再イメージ化を行うと、VM が使用可能な最新バージョンで作成されます。 ただし、新しいイメージ バージョンがリリースされたときに OS イメージが自動的に更新されることは意味**しません**。 OS の自動アップグレードを実現する単独の機能が、現在プレビュー段階となっています。 詳しくは、[OS アップグレードのドキュメント](virtual-machine-scale-sets-automatic-upgrade.md)をご覧ください。
 
-カスタム イメージを使用している場合は、`imageReference` ID を更新することでイメージを更新できます。 詳細については、[REST API のドキュメント](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください。
+カスタム イメージを使用している場合は、*imageReference* ID を更新してイメージを更新することができます (詳しくは、[REST API のドキュメント](https://docs.microsoft.com/en-us/rest/api/compute/virtualmachinescalesets/createorupdate)をご覧ください)。
 
 ## <a name="examples"></a>例
 
 ### <a name="update-the-os-image-for-your-scale-set"></a>スケール セットの OS イメージの更新
+古いバージョンの Ubuntu LTS 16.04 を実行するスケール セットがあるとします。 新しいバージョンの Ubuntu LTS 16.04 (バージョン *16.04.201801090* など) に更新する必要があります。 イメージ参照バージョン プロパティは一覧に含まれないため、次のいずれかのコマンドでこれらのプロパティを直接変更できます。
 
-たとえば、古いバージョンの Ubuntu LTS 16.04 を実行しているスケール セットがあるとします。 新しいバージョンの Ubuntu LTS 16.04 (例： バージョン 16.04.201801090) に更新する必要があります。 イメージ参照バージョン プロパティはリストに含まれないため、次のコマンドを使用してこれらのプロパティを直接変更できます。
+- Azure PowerShell ([Update-AzureRmVmss](/powershell/module/azurerm.compute/update-azurermvmss))
 
-* PowerShell: 
+    ```powershell
+    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -ImageReferenceVersion 16.04.201801090
+    ```
 
-  `Update-AzureRmVmss -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -ImageReferenceVersion 16.04.201801090`
+- Azure CLI 2.0 ([az vmss update](/cli/azure/vmss#az_vmss_update_instances))
 
-* Azure CLI: 
-
-  `az vmss update -g {resourceGroupName} -n {vmScaleSetName} --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090`
+    ```azurecli
+    az vmss update --resource-group myResourceGroup --name myScaleSet --set virtualMachineProfile.storageProfile.imageReference.version=16.04.201801090
+    ```
 
 
 ### <a name="update-the-load-balancer-for-your-scale-set"></a>スケール セットのロード バランサーの更新
+Azure Load Balancer を使用するスケール セットがあり、Azure Load Balancer を Azure Application Gateway で置換するとします。 スケール セットのロード バランサーと Application Gateway のプロパティは一覧に含まれるため、プロパティを直接変更する代わりに一覧の要素を削除または追加するコマンドを使用できます。
 
-Azure Load Balancer を使用するスケール セットがあり、このロード バランサーを Azure Application Gateway に置き換えるとします。 スケール セットのロード バランサーとアプリケーション ゲートウェイのプロパティはリストに含まれています。 そのため、プロパティを直接変更するのではなく、リストの要素を削除および追加するコマンドを使用できます。
+- Azure Powershell:
 
-PowerShell:
-```
-# Get the current model of the scale set and store it in a local PowerShell object named $vmss
-> $vmss=Get-AzureRmVmss -ResourceGroupName {resourceGroupName} -Name {vmScaleSetName}
+    ```powershell
+    # Get the current model of the scale set and store it in a local powershell object named $vmss
+    $vmss=Get-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
+    
+    # Create a local powershell object for the new desired IP configuration, which includes the referencerence to the application gateway
+    $ipconf = New-AzureRmVmssIPConfig "myNic" -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
+    
+    # Replace the existing IP configuration in the local powershell object (which contains the references to the current Azure Load Balancer) with the new IP configuration
+    $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0] = $ipconf
+    
+    # Update the model of the scale set with the new configuration in the local powershell object
+    Update-AzureRmVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -virtualMachineScaleSet $vmss
+    ```
 
-# Create a local PowerShell object for the new desired IP configuration, which includes the reference to the application gateway
-> $ipconf = New-AzureRmVmssIPConfig myNic -ApplicationGatewayBackendAddressPoolsId /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendAddressPoolName} -SubnetId $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Subnet.Id –Name $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0].Name
+- Azure CLI 2.0:
 
-# Replace the existing IP configuration in the local PowerShell object (which contains the references to the current Azure load balancer) with the new IP configuration
-> $vmss.VirtualMachineProfile.NetworkProfile.NetworkInterfaceConfigurations[0].IpConfigurations[0] = $ipconf
-
-# Update the model of the scale set with the new configuration in the local PowerShell object
-> Update-AzureRmVmss -ResourceGroupName {resourceGroupName} -Name {vmScaleSetName} -virtualMachineScaleSet $vmss
-
-```
-
-Azure CLI:
-```
-az vmss update -g {resourceGroupName} -n {vmScaleSetName} --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerBackendAddressPools 0 # Remove the load balancer back-end pool from the scale set model
-az vmss update -g {resourceGroupName} -n {vmScaleSetName} --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools 0 # Remove the load balancer back-end pool from the scale set model; only necessary if you have NAT pools configured on the scale set
-az vmss update -g {resourceGroupName} -n {vmScaleSetName} --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].ApplicationGatewayBackendAddressPools '{"id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendPoolName}"}' # Add the application gateway back-end pool to the scale set model
-```
+    ```azurecli
+    # Remove the load balancer backend pool from the scale set model
+    az vmss update --resource-group myResourceGroup --name myScaleSet --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerBackendAddressPools 0
+    
+    # Remove the load balancer backend pool from the scale set model; only necessary if you have NAT pools configured on the scale set
+    az vmss update --resource-group myResourceGroup --name myScaleSet --remove virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].loadBalancerInboundNatPools 0
+    
+    # Add the application gateway backend pool to the scale set model
+    az vmss update --resource-group myResourceGroup --name myScaleSet --add virtualMachineProfile.networkProfile.networkInterfaceConfigurations[0].ipConfigurations[0].ApplicationGatewayBackendAddressPools '{"id": "/subscriptions/{subscriptionId}/resourceGroups/myResourceGroup/providers/Microsoft.Network/applicationGateways/{applicationGatewayName}/backendAddressPools/{applicationGatewayBackendPoolName}"}'
+    ```
 
 >[!NOTE]
-> これらのコマンドでは、スケール セットの IP 構成とロード バランサーが 1 つだけであると想定されます。 複数ある場合は、0 以外のリスト インデックスを使用する必要があります。
+> これらのコマンドでは、スケール セットの IP 構成とロード バランサーが 1 つだけであると想定されます。 複数ある場合は、*0* 以外のリスト インデックスを使用する必要があります。
+
+
+## <a name="next-steps"></a>次の手順
+スケール セットに関する一般的な管理タスクは、[Azure CLI 2.0](virtual-machine-scale-sets-manage-cli.md) または [Azure PowerShell](virtual-machine-scale-sets-manage-powershell.md) を使用して実行することもできます。

@@ -1,25 +1,25 @@
 ---
-title: ".NET 用のファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスク出力の保持 - Azure Batch | Microsoft Docs"
-description: ".NET 用の Azure Batch ファイル規則ライブラリを使用して、Azure Storage にバッチ タスクとジョブの出力を保持し、Azure Portal で永続化された出力を表示する方法を説明します。"
+title: .NET 用のファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスク出力の保持 - Azure Batch | Microsoft Docs
+description: .NET 用の Azure Batch ファイル規則ライブラリを使用して、Azure Storage にバッチ タスクとジョブの出力を保持し、Azure Portal で永続化された出力を表示する方法を説明します。
 services: batch
 documentationcenter: .net
-author: tamram
-manager: timlt
-editor: 
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: 16e12d0e-958c-46c2-a6b8-7843835d830e
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 06/16/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a9de327c20463469bc91d9720aa17333a36f919e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbfb40b3740f9ea43df327a01ba6f4cf52d80457
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持 
 
@@ -222,7 +222,7 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 5. **PersistOutputs** プロジェクトを**開始** (実行) します。
 6. サンプルの実行に使用する保持テクノロジを選択するよう求められた場合は、「**1**」を入力し、ファイル規則ライブラリをタスク出力の保持に使用してサンプルを実行します。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ### <a name="get-the-batch-file-conventions-library-for-net"></a>.NET 用 Batch ファイル規則ライブラリの入手
 

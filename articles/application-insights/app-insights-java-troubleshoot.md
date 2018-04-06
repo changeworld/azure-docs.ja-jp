@@ -1,6 +1,6 @@
 ---
-title: "Java Web プロジェクトでの Application Insights のトラブルシューティング"
-description: "トラブルシューティング ガイド - Application Insights でライブ Java アプリケーションを監視します。"
+title: Java Web プロジェクトでの Application Insights のトラブルシューティング
+description: トラブルシューティング ガイド - Application Insights でライブ Java アプリケーションを監視します。
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -13,38 +13,51 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
 ms.author: mbullwin
-ms.openlocfilehash: 6b1cfa2b52e8e9e2b6a8ab87be6d4269cbe3f1cf
-ms.sourcegitcommit: 295ec94e3332d3e0a8704c1b848913672f7467c8
+ms.openlocfilehash: 894b2234074dcfb262de9033a7728cad3bef2248
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/06/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Java 用 Application Insights のトラブルシューティングおよび Q&A
 [Java 用 Azure Application Insights][java] について疑問または問題はありませんか。 ここでは、いくつかのヒントを紹介します。
 
 ## <a name="build-errors"></a>ビルド エラー
-**Eclipse で、Maven または Gradle を使用して Application Insights SDK を追加すると、ビルドまたはチェックサムの検証エラーが発生します。**
+**Eclipse または Intellij Idea で、Maven または Gradle を使用して Application Insights SDK を追加すると、ビルドまたはチェックサムの検証エラーが発生します。**
 
-* 依存 <version> 要素にワイルドカード文字を含むパターン (例: (Maven) `<version>[1.0,)</version>`、または (Gradle) `version:'1.0.+'`) を使用している場合、代わりに特定のバージョン (`1.0.2` など) を指定してみてください。 最新のバージョンの [リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes) を参照してください。
+* 依存 <version> 要素にワイルドカード文字を含むパターン (例: (Maven) `<version>[2.0,)</version>`、または (Gradle) `version:'2.0.+'`) を使用している場合、代わりに特定のバージョン (`2.0.1` など) を指定してみてください。 最新のバージョンの [リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java/releases) を参照してください。
 
 ## <a name="no-data"></a>データが表示されない
 **Application Insights が正常に追加された後でアプリケーションを実行したところ、ポータルにデータが表示されません。**
 
 * 少し待ってから、[最新の情報に更新] をクリックします。 グラフは周期的に自動で更新されますが、手動で更新することもできます。 更新間隔は、グラフの時間範囲によって異なります。
-* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、インストルメンテーション キーが定義されていることをご確認ください。
+* インストルメンテーション キーが、(プロジェクトのリソース フォルダーにある) ApplicationInsights.xml ファイル内で定義されているか、環境変数として構成されていることをご確認ください。
 * この xml ファイルに `<DisableTelemetry>true</DisableTelemetry>` ノードが存在しないことをご確認ください。
 * ファイアウォールで、dc.services.visualstudio.com への送信トラフィック用に TCP ポート 80 と 443 を開くことが必要な場合があります。最新のバージョンの [ファイアウォール例外の一覧に関する記事](app-insights-ip-addresses.md)
 * Microsoft Azure のスタート ボードで、サービス状態マップをご確認ください。 アラート表示がある場合は、"OK" が表示されるまで待ってから、Application Insights アプリケーション ブレードをいったん閉じて開き直します。
-* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへのログを有効にし、[Error] から始まるエントリを調べます。
+* プロジェクトのリソース フォルダーにある ApplicationInsights.xml ファイル内で、ルート ノードの下に `<SDKLogger />` 要素を追加して IDE コンソール ウィンドウへのログを有効にし、AI: INFO/WARN/ERROR から始まるエントリに疑わしいログがないかを調べます。
 * 正しい ApplicationInsights.xml ファイルが Java SDK によって正常に読み込まれたことを確認します。そのためには、コンソールの出力メッセージに「構成ファイルが正常に検出されました」というメッセージがあるかどうかを確認します。
-* 構成ファイルが見つからない場合、出力メッセージを確認して構成ファイルの検索範囲を確かめ、ApplicationInsights.xml がこれらの検索場所のいずれかに存在していることを確認します。 通例、構成ファイルは Application Insights SDK の JAR ファイルの近くに見つかります。 たとえば、Tomcat の場合は WEB-INF/lib フォルダーがこれに相当します。
+* 構成ファイルが見つからない場合、出力メッセージを確認して構成ファイルの検索範囲を確かめ、ApplicationInsights.xml がこれらの検索場所のいずれかに存在していることを確認します。 通例、構成ファイルは Application Insights SDK の JAR ファイルの近くに見つかります。 たとえば、Tomcat の場合は WEB-INF/classes フォルダーがこれに相当します。 開発時に、Web プロジェクトのリソース フォルダーに ApplicationInsights.xml を配置できます。
+* SDK の既知の問題については、[GitHub の問題に関するページ](https://github.com/Microsoft/ApplicationInsights-Java/issues)を参照してください。
+* バージョンの競合の問題を回避するには、同じバージョンの Application Insights のコア、Web、エージェント、およびログ アペンダーを使用していることを確認してください。
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>データが表示されていたのに停止しました。
 * [状態ブログ](http://blogs.msdn.com/b/applicationinsights-status/)をご確認ください。
 * データ ポイントの月間クォータに達していませんか? Open Settings/Quota and Pricing to find out.上限に達している場合は、プランをアップグレードするか、追加容量分を購入することができます。 「 [料金プラン](https://azure.microsoft.com/pricing/details/application-insights/)」をご覧ください。
+* 最近 SDK をアップグレードしましたか? プロジェクト ディレクトリ内に重複していない SDK jar ファイルのみがあることを確認してください。 2 種類のバージョンの SDK が存在することはできません。
+* 正しい AI リソースを見ていますか? アプリケーションの iKey を、テレメトリが必要なリソースに一致させてください。 これらが同じである必要があります。
 
 #### <a name="i-dont-see-all-the-data-im-expecting"></a>予期しているデータがすべて表示されません
 * [Quotas and Pricing (クォータと価格)] ブレードを開き、[サンプリング](app-insights-sampling.md)が実行中かどうかを確認します  (転送率が 100% の場合、サンプリングは実行されていません)。Application Insights サービスは、アプリから到着したテレメトリの一部だけを受け入れるように設定できます。 これにより、テレメトリの月間クォータの上限を超えないようにすることができます。 
+* SDK サンプリングを有効にしていますか? 有効にしている場合、該当するすべての型について、指定したレートでデータがサンプリングされます。
+* 古いバージョンの Java SDK を実行していませんか? バージョン 2.0.1 以降に、ローカル ドライブでのデータ永続化だけでなく、ネットワークやバックエンドの断続的障害に対処できるように、フォールト トレランスのメカニズムを導入しました。
+* テレメトリが過度になるという理由から、調整を行っていますか? 情報のログ記録を有効にしている場合は、"アプリが調整されました" というログ メッセージが表示されます。 現在の制限は、32,000 テレメトリ項目/秒です。
+
+### <a name="java-agent-cannot-capture-dependency-data"></a>Java エージェントが依存関係データを取得できない
+* [Java エージェントの構成](app-insights-java-agent.md)に関するページに従って、Java エージェントを構成しましたか?
+* Java エージェント jar ファイルと AI Agent.xml ファイルの両方が同じフォルダーに配置されていることを確認してください。
+* 自動収集しようとしている依存関係が、自動収集でサポートされていることを確認します。 現在、MySQL、MsSQL、Oracle DB、Redis Cache の依存関係の収集のみがサポートされています。
+* JDK 1.7 または 1.8 を使用していませんか? 現在 JDK 9 の依存関係の収集はサポートされていません。
 
 ## <a name="no-usage-data"></a>使用状況データがない
 **要求と応答時間についてのデータは表示されますが、ページ ビュー、ブラウザー、またはユーザーについてのデータが表示されません。**
@@ -83,6 +96,7 @@ XML メソッドを使用するうえで、値を変更した場合はアプリ�
 
 * [新しいリソースのインストルメンテーション キーを取得します。][java]
 * Eclipse の Azure Toolkit を使用してプロジェクトに Application Insights を追加した場合、Web プロジェクトを右クリックし、**[Azure]**、**[Configure Application Insights]** の順に選択して、キーを変更します。
+* インストルメンテーション キーを環境変数として構成していた場合は、新しい iKey で環境変数の値を更新してください。
 * それ以外の場合は、プロジェクトのリソース フォルダーにある ApplicationInsights.xml 内のキーを更新します。
 
 ## <a name="debug-data-from-the-sdk"></a>SDK からのデータをデバッグする
@@ -132,7 +146,7 @@ Application Insights では `org.apache.http` が使用されます。 これは
 >アプリですべての名前空間についてデバッグ レベルのログ記録を有効にすると、名前が `com.microsoft.applicationinsights.core.dependencies.http` に変更された `org.apache.http` を含むすべての実行中のモジュールによってこれが適用されます。 ログ呼び出しは Apache のライブラリによって行われるため、Application Insights では、これらの呼び出しにフィルタリングを適用できません。 デバッグ レベルのログ記録では多量のログ データが生成されるため、実稼働インスタンスにはお勧めしません。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 **Java サーバー アプリ用に Application Insights を設定しました。他には何ができるか教えてください。**
 
 * [Web ページの可用性の監視][availability]
@@ -142,7 +156,8 @@ Application Insights では `org.apache.http` が使用されます。 これは
 * [診断ログのキャプチャ][javalogs]
 
 ## <a name="get-help"></a>問い合わせ
-* [スタック オーバーフロー](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
+* [GitHub に関する問題を報告する](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

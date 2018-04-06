@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
 ms.openlocfilehash: dc6279a1bac230146f4f0cebf2fbdbb6333cb7a1
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Team Data Science Process (TDSP) プロジェクトによる収入分類
 

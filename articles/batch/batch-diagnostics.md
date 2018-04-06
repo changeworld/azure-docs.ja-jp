@@ -1,11 +1,11 @@
 ---
-title: "Batch イベントの診断ログの有効化 - Azure | Microsoft Docs"
-description: "プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。"
+title: Batch イベントの診断ログの有効化 - Azure | Microsoft Docs
+description: プールやタスクなど Azure Batch アカウント リソースの診断ログ イベントを記録して分析します。
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: e14e611d-12cd-4671-91dc-bc506dc853e5
 ms.service: batch
 ms.devlang: na
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b7bc6fd9921ab0f2374ace33ea5c1ab93a78f860
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c41c8c9f8fd9302c610ce356b0485e33ea3c967d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Batch ソリューションの診断の評価と監視のログ イベント
 
@@ -89,7 +89,7 @@ Azure Batch サービス ログには、プールやタスクなどの Batch リ
 | [タスク完了][task_complete] |
 | [タスク失敗][task_fail] |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 診断ログ イベントを Azure Storage アカウントに格納する他に、Batch サービス ログ イベントを [Azure Event Hub](../event-hubs/event-hubs-what-is-event-hubs.md) にストリーミングし、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) に送信することもできます。
 
 * [Azure 診断ログを Event Hubs にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)

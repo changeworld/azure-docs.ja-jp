@@ -1,12 +1,11 @@
 ---
-title: "Azure Stream Analytics の Power BI ダッシュボード | Microsoft Docs"
-description: "リアルタイム ストリーミング Power BI ダッシュボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。"
-keywords: "分析ダッシュボード、リアルタイム ダッシュボード"
+title: Azure Stream Analytics の Power BI ダッシュボード | Microsoft Docs
+description: リアルタイム ストリーミング Power BI ダッシュボードを使用して、ビジネス インテリジェンスを収集して Stream Analytics ジョブからの大量のデータを分析します。
+keywords: 分析ダッシュボード、リアルタイム ダッシュボード
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jhubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: fe8db732-4397-4e58-9313-fec9537aa2ad
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/27/2017
-ms.author: samacha
-ms.openlocfilehash: b446e2296f2747012849936b994c4a4a2044869e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: jeanb
+ms.openlocfilehash: e1f1d960c312362e0e0cd6d2f83599c28c8c3f05
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード
 Azure Stream Analytics では、主要なビジネス インテリジェンス ツールの 1 つである [Microsoft Power BI](https://powerbi.com/) を利用することができます。 この記事では、Azure Stream Analytics ジョブの出力として Power BI を使ってビジネス インテリジェンス ツールを作成する方法について説明します。 リアルタイム ダッシュボードを作って使う方法についても説明します。
@@ -45,7 +44,7 @@ Azure Stream Analytics では、主要なビジネス インテリジェンス �
 
 2. ジョブ ダッシュボードの中央にある **[出力]** ボックスを選び、**[+ 追加]** を選びます。
 
-3. **[出力エイリアス]** に「`CallStream-PowerBI`」と入力します。 別の名前を使ってもかまいません。 その場合、名前を書き留めておきます。後でこの名前が必要になります。 
+3. **[出力エイリアス]** に「`CallStream-PowerBI`」と入力します。 別の名前を使用してもかまいません。 その場合、名前を書き留めておきます。後でこの名前が必要になります。 
 
 4. **[シンク]** で **[Power BI]** を選びます。
 
@@ -113,7 +112,7 @@ Power BI データセットの詳細については、[Power BI REST API](https:
         WHERE CS1.SwitchNum != CS2.SwitchNum
         GROUP BY TumblingWindow(Duration(second, 1))
 
-4. [ **Save**] をクリックします。
+4. **[Save]** をクリックします。
 
 
 ## <a name="test-the-query"></a>クエリをテストする
@@ -217,7 +216,7 @@ Streaming Analytics ジョブが、受信ストリームでの不正な呼び出
 
 ![式 1](./media/stream-analytics-power-bi-dashboard/equation1.png)  
 
-For example:
+例: 
 
 * 1 秒間隔でデータを送信するデバイスが 1,000 台。
 * 1 時間あたり 1,000,000 行をサポートする Power BI Pro SKU を使用。

@@ -6,7 +6,6 @@ documentationcenter: ''
 services: stream-analytics
 author: su-jie
 manager: ''
-editor: ''
 ms.assetid: ''
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/13/2018
 ms.author: sujie
-ms.openlocfilehash: 9362b201fbabc9f8f43647dfd8ac62986b5b6790
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: c6e1d0693035ef343e20cee4b09f0669e089afee
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="develop-stream-analytics-edge-jobs-by-using-visual-studio-tools"></a>Visual Studio ツールを使用して Stream Analytics Edge ジョブを作成する
 
@@ -106,7 +105,7 @@ FROM EdgeInput
 
 ## <a name="submit-the-job-to-azure"></a>ジョブを Azure に送信する
 
-1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー**を開きます。**[Azure]** を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
+1. Azure にジョブを送信する前に、Azure サブスクリプションに接続する必要があります。 **サーバー エクスプローラー**を開きます。**[Azure]** >  を右クリックし、**[Microsoft Azure サブスクリプションへの接続]** を選択し、Azure サブスクリプションにサインインします。  
 
 2. Azure にジョブを送信するには、クエリ エディターに移動し、**[Azure に送信]** を選択します。  
 
@@ -118,7 +117,7 @@ FROM EdgeInput
 
 ## <a name="manage-the-job"></a>ジョブを管理する 
 
-サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー**で、**[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
+サーバー エクスプローラーで、ジョブの状態とジョブ ダイアグラムを表示できます。 **サーバー エクスプローラー** > で、**[Stream Analytics]** を展開し、Edge ジョブを配置したサブスクリプションとリソース グループを展開します。MyASAEdgejob の状態が **[作成済み]** であることを確認できます。 ジョブ ノードを展開し、ノードをダブルクリックしてジョブ ビューを開きます。
 
 ![サーバー エクスプローラーのオプション](./media/stream-analytics-tools-for-visual-studio-edge-jobs/server-explorer-options.png)
  

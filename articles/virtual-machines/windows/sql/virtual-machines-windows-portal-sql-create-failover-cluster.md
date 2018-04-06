@@ -1,6 +1,6 @@
 ---
 title: SQL Server FCI - Azure Virtual Machines | Microsoft Docs
-description: "この記事では、Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを作成する方法について説明します。"
+description: この記事では、Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを作成する方法について説明します。
 services: virtual-machines
 documentationCenter: na
 authors: MikeRayMSFT
@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/26/2017
+ms.date: 13/22/2018
 ms.author: mikeray
-ms.openlocfilehash: 8c957b1f2b4466ba68d81885fb014ad4026a47d2
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: faa849fc53aa15a47e850a20531c4fa30544f750
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Azure Virtual Machines で SQL Server フェールオーバー クラスター インスタンスを構成します。
 
@@ -46,6 +46,18 @@ ms.lasthandoff: 02/21/2018
 S2D の詳細については、[Windows Server 2016 Datacenter Edition 記憶域スペース ダイレクト \(S2D\)](http://technet.microsoft.com/windows-server-docs/storage/storage-spaces/storage-spaces-direct-overview) に関する記事を参照してください。
 
 S2D では、コンバージド型とハイパー コンバージド型の 2 種類のアーキテクチャがサポートされています。 このドキュメントでのアーキテクチャは、ハイパー コンバージド型です。 ハイパー コンバージド インフラストラクチャでは、クラスター化されたアプリケーションをホストしている同じサーバーにストレージが配置されます。 このアーキテクチャでは、ストレージは各 SQL Server FCI ノード上にあります。
+
+## <a name="licensing-and-pricing"></a>ライセンスと価格
+
+Azure Virtual Machines では、従量課金制 (PAYG) またはライセンス持ち込み (BYOL) VM イメージを使用して SQL Server をライセンスできます。 選択するイメージの種類が課金方法に影響を与えます。
+
+PAYG ライセンスでは、Azure Virtual Machines 上の SQL Server のフェールオーバー クラスター インスタンス (FCI) により、FCI のすべてのノード (パッシブ ノードを含む) に対する課金が発生します。 詳細については、「[SQL Server Enterprise Virtual Machines の料金](http://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/)」を参照してください。 
+
+ソフトウェア アシュアランスの Enterprise Agreement を締結している顧客には、アクティブ ノードごとに 1 つの無料のパッシブ FCI ノードを使用する権利があります。 Azure でこの利点を利用するには、BYOL VM イメージを使用した後、FCI のアクティブ ノードとパッシブ ノードの両方で同じライセンスを使用します。 詳細については、[Enterprise Agreement](http://www.microsoft.com/en-us/Licensing/licensing-programs/enterprise.aspx) に関するページを参照してください。
+
+SQL Server on Azure Virtual Machines の PAYG ライセンスと BYOL ライセンスを比較するには、[SQL VM の概要](virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms)に関するページを参照してください。
+
+SQL Server のライセンスに関する完全な情報については、[価格](http://www.microsoft.com/sql-server/sql-server-2017-pricing)に関するページを参照してください。
 
 ### <a name="example-azure-template"></a>Azure テンプレートの例
 
@@ -123,7 +135,7 @@ S2D では、コンバージド型とハイパー コンバージド型の 2 種
 
    SQL Server ライセンスのご希望の課金方法に従って、適切なイメージを選択します。
 
-   - **従量課金のライセンス**: これらのイメージの 1 分あたりのコストに SQL Server のライセンスが含まれます。
+   - **使用した分を支払うライセンス**: これらのイメージの 1 秒あたりのコストには、SQL Server ライセンスが含まれます。
       - **SQL Server 2016 Enterprise on Windows Server Datacenter 2016**
       - **SQL Server 2016 Standard on Windows Server Datacenter 2016**
       - **SQL Server 2016 Developer on Windows Server Datacenter 2016**
@@ -266,7 +278,7 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 
 1. アクセス キーと、コンテナーの URL を保存します。
 
-1. フェールオーバー クラスターのクラスター クォーラム監視を構成します。 UI で [ユーザー インターフェイスでのクォーラム監視の構成](http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)に関するページを参照してください。
+1. フェールオーバー クラスターのクラスター クォーラム監視を構成します。 [ユーザー インターフェイスでクォーラム監視を構成する] を参照してください。(UI の http://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness)。
 
 ### <a name="add-storage"></a>ストレージを追加する
 

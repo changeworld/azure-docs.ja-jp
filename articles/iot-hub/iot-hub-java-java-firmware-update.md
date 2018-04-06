@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub を使用したデバイス ファームウェアの更新 (Java/Java) | Microsoft Docs"
-description: "Azure IoT Hub でデバイス管理を使用してデバイス ファームウェアの更新を開始する方法。 Azure IoT device SDK for Java を使用して、シミュレート対象デバイス アプリを実装し、ファームウェア更新をトリガーするサービス アプリを実装します。"
+title: Azure IoT Hub を使用したデバイス ファームウェアの更新 (Java/Java) | Microsoft Docs
+description: Azure IoT Hub でデバイス管理を使用してデバイス ファームウェアの更新を開始する方法。 Azure IoT device SDK for Java を使用して、シミュレート対象デバイス アプリを実装し、ファームウェア更新をトリガーするサービス アプリを実装します。
 services: iot-hub
 documentationcenter: java
 author: msebolt
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 70b84258-bc9f-43b1-b7cf-de1bb715f2cf
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,16 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: v-masebo
-ms.openlocfilehash: 024c2e9bf580f97b412a85913ca29d757872556a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 19d9cc6722d65d8bcd76d73fda0f24a598479647
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-device-management-to-initiate-a-device-firmware-update-javajava"></a>デバイス管理を使用してデバイス ファームウェアの更新を開始する (Java/Java)
 [!INCLUDE [iot-hub-selector-firmware-update](../../includes/iot-hub-selector-firmware-update.md)]
 
 [デバイス管理の開始][lnk-dm-getstarted]に関するチュートリアルでは、[デバイス ツイン][lnk-devtwin]と[ダイレクト メソッド][lnk-c2dmethod] プリミティブを使用してリモートでデバイスを再起動する方法を説明しました。 このチュートリアルでは、同じ IoT Hub プリミティブを使用して、エンド ツー エンドでシミュレートされたファームウェア更新を実行する方法を示します。  このパターンは、[Raspberry Pi デバイスの実装サンプル][lnk-rpi-implementation]のファームウェア更新の実装で使用されます。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 このチュートリアルでは、次の操作方法について説明します。
 
@@ -40,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 
 * 最新の [Java SE Development Kit 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) 
 * [Maven 3](https://maven.apache.org/install.html) 
-* アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
@@ -475,7 +477,7 @@ ms.lasthandoff: 10/11/2017
 
     ![ファームウェアが正常に更新されました][img-fwupdate]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 このチュートリアルでは、ダイレクト メソッドを使用してデバイス上でリモートのファームウェア更新を開始し、報告されるプロパティを使用してファームウェア更新の進捗状況を確認しました。
 
 IoT ソリューションの拡張と複数のデバイスでのメソッドの呼び出しをスケジュールする方法については、「[ジョブのスケジュールとブロードキャスト][lnk-tutorial-jobs]」チュートリアルを参照してください。

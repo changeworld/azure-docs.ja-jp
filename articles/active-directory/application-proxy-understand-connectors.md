@@ -16,10 +16,10 @@ ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.openlocfilehash: fe8d5c40249431be60dc8844adf7efa1b8e87c5f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Azure AD アプリケーション プロキシ コネクタを理解する
 
@@ -159,7 +159,7 @@ Windows パフォーマンス カウンターなど、同じ管理ツールの�
 
  ![AzureAD サービスのローカル](./media/application-proxy-understand-connectors/aad-connector-services.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 
 * [コネクタ グループを使用して別のネットワークや場所にアプリケーションを発行する](active-directory-application-proxy-connectors-azure-portal.md)

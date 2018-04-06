@@ -1,24 +1,24 @@
 ---
-title: "コネクタ バージョンのリリース履歴 | Microsoft Docs"
-description: "このトピックでは、Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタの全リリース一覧を提供します"
+title: コネクタ バージョンのリリース履歴 | Microsoft Docs
+description: このトピックでは、Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタの全リリース一覧を提供します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 6a0c66ab-55df-4669-a0c7-1fe1a091a7f9
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2017
-ms.author: billmath
-ms.openlocfilehash: 5b43284a86a7e5d4cdbf50a29d73f970c9ad9d58
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.date: 03/22/2018
+ms.author: davidste
+ms.openlocfilehash: 5b13338646abda7eefec44c42dc0159e9338adfa
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connector-version-release-history"></a>コネクタ バージョンのリリース履歴
 Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネクタは頻繁に更新されます。
@@ -34,9 +34,26 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 * [最新コネクタのダウンロード](http://go.microsoft.com/fwlink/?LinkId=717495)
 * [Generic LDAP コネクタ](active-directory-aadconnectsync-connector-genericldap.md) リファレンス ドキュメント
 * [Generic SQL コネクタ](active-directory-aadconnectsync-connector-genericsql.md) リファレンス ドキュメント
-* [Web サービス コネクタ](http://go.microsoft.com/fwlink/?LinkID=226245) リファレンス ドキュメント
+* [Web サービス コネクタ](https://docs.microsoft.com/en-us/microsoft-identity-manager/reference/microsoft-identity-manager-2016-ma-ws) リファレンス ドキュメント
 * [PowerShell コネクタ](active-directory-aadconnectsync-connector-powershell.md) リファレンス ドキュメント
 * [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md) リファレンス ドキュメント
+
+
+## <a name="118300"></a>1.1.830.0
+
+### <a name="fixed-issues"></a>修正された問題:
+* ConnectorsLog System.Diagnostics.EventLogInternal.InternalWriteEvent(メッセージ: システムに接続されたデバイスが機能していません) が解決されました。
+* コネクタのこのリリースでは、miiserver.exe.config 内の 3.3.0.0-4.1.3.0 から 4.1.4.0 へのバインディング リダイレクトを更新する必要があります。
+* 一般的な Web サービス:
+    * 構成ツールで有効な JSON 応答を保存できなかった問題が解決されました。
+* Generic SQL:
+    * エクスポートでは常に、削除の操作に対して更新クエリのみが生成されます。 削除クエリを生成するために追加されました。
+    * 差分インポートの操作のためのオブジェクトを取得する SQL クエリ ([Delta Strategy] (差分方式) が [変更の追跡] である場合) が修正されました。 この実装での既知の制限: [変更の追跡] モードの差分インポートでは、複数値属性の変更が追跡されません。
+    * 複数値属性の最後の値を削除することが必要な場合のために、削除クエリを生成する可能性が追加されました。この行には、削除することが必要な値以外のデータは含まれません。
+    * SP によって OUTPUT パラメーターが実装された場合の System.ArgumentException の処理 
+    * varbinary(max) 型のフィールドへのエクスポートの操作を作成するためのクエリが正しくない
+    * parameterList 変数が (ExportAttributes 関数と GetQueryForMultiValue 関数で) 2 回初期化された問題
+
 
 ## <a name="116490-aadconnect-116490"></a>1.1.649.0 (AADConnect 1.1.649.0)
 
@@ -80,6 +97,8 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
   * Wsconfig ツールでは、JSON 配列が、REST サービス メソッドの "サンプル要求" から正しく変換されませんでした。 このため、REST 要求のこの JSON 配列で、シリアル化の問題が発生しました。
   * Web サービス コネクタの構成ツールでは、JSON 属性名で空白記号を使用できません。 
     * 代入パターンを、WSConfigTool.exe.config ファイルに手動で追加できます (例: ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```)。
+> [!NOTE]
+> エクスポートには JSONSpaceNamePattern キーが必要です。次のエラーが表示されます: メッセージ: 空の名前は無効です。 
 
 * Lotus Notes:
   * **[Allow custom certifiers for Organization/Organizational Units]\(組織/組織単位のカスタム証明者を許可する\)** オプションが無効の場合、エクスポート (更新) 中のコネクタは失敗します。エクスポート フロー後は、すべての属性が Domino にエクスポートされていますが、KeyNotFoundException は、エクスポート時に同期に返されます。 

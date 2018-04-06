@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
 ms.openlocfilehash: 2333a56cd9369cb66c4944304472462d2f2f7511
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>チュートリアル: Azure Active Directory と Hightail の統合
 
@@ -63,11 +63,11 @@ Azure AD への Hightail の統合を構成するには、ギャラリーから�
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[アプリケーション]][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[アプリケーション]][3]
 
 4. 検索ボックスに、「 **Hightail**」と入力します。
 
@@ -86,11 +86,11 @@ Hightail で、Azure AD の **[ユーザー名]** の値を **[Username]** の�
 
 Hightail で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
-1. **[Azure AD シングル サインオンの構成](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
+1. **[Configuring Azure AD Single Sign-On](#configuring-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#creating-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
 3. **[Hightail テスト ユーザーの作成](#creating-a-hightail-test-user)** - Hightail で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
 4. **[Azure AD テスト ユーザーの割り当て](#assigning-the-azure-ad-test-user)** - Britta Simon が Azure AD のシングル サインオンを使用できるようにします。
-5. **[Testing Single Sign-On](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
+5. **[シングル サインオンのテスト](#testing-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -100,15 +100,15 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
 1. Azure Portal の **Hightail** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![[Configure Single Sign-On]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_samlbase.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_samlbase.png)
 
 3. **[Hightail のドメインと URL]** セクションで、次の手順に従います。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url.png)
 
      **[応答 URL]** ボックスに、URL を「`https://www.hightail.com/samlLogin?phi_action=app/samlLogin&subAction=handleSamlResponse`」と入力します。
 
@@ -117,19 +117,19 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
  
 4. **SP 開始モード**でアプリケーションを構成する場合は、**[Hightail のドメインと URL]** セクションで次の手順を実行します。
     
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url1.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_url1.png)
 
-    a. **[詳細な URL 設定の表示]** をクリックします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[詳細な URL 設定の表示]** をクリックします。
 
     b. **[サインオン URL]** ボックスに、URL として「`https://www.hightail.com/loginSSO`」と入力します。
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_certificate.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_certificate.png) 
 
 5. Hightail アプリケーションは、特定の形式で構成された SAML アサーションを受け入れます。 このアプリケーションには、次の要求を構成してください。 この属性の値は、アプリケーションの **[属性]** タブから管理できます。 次のスクリーンショットはその例です。 
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_attribute.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_attribute.png) 
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、図に示すように SAML トークン属性を構成し、次の手順を実行します。
     
@@ -140,11 +140,11 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
     | 電子メール | User.mail |    
     | UserIdentity | User.mail |
     
-    a. **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[属性の追加]** をクリックして **[属性の追加]** ダイアログを開きます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_04.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_04.png)
 
-    ![Configure Single Sign-On](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_05.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_officespace_05.png)
 
     b. **[名前]** ボックスに、その行に対して表示される属性名を入力します。
 
@@ -156,11 +156,11 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
 7. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_general_400.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_general_400.png)
 
 8. **[Hightail 構成]** セクションで、**[Hightail の構成]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_configure.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_configure.png) 
 
     >[!NOTE] 
     >Hightail アプリでシングル サインオンを構成する前に、電子メール ドメインを Hightail チームのホワイト リストに登録し、そのドメインを使用するすべてのユーザーがシングル サインオン機能を利用できるようにします。
@@ -168,32 +168,32 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
 9. アプリケーションに合わせて SSO を構成するには、管理者として Hightail テナントにサインオンする必要があります。
    
-    a. 上部にあるメニューの **[アカウント]** タブをクリックし、**[Configure SAML]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 上部にあるメニューの **[アカウント]** タブをクリックし、**[Configure SAML]** を選択します。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_001.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_001.png) 
 
     b. **[Enable SAML Authentication]** チェックボックスをオンにします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_002.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_002.png) 
 
     c. Azure Portal からダウンロードした base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーして **[SAML Token Signing Certificate]\(SAML トークン署名証明書\)** ボックスに貼り付けます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_003.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_003.png) 
 
     d. **[SAML Authority (Identity Provider)]\(SAML 機関 (ID プロバイダー)\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_004.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_004.png)
 
     e. **IDP 開始モード**でアプリケーションを構成する場合は、**[Identity Provider (IdP) initiated log in]** を選択します。 **SP 開始モード**の場合は、**[Service Provider (SP) initiated log in]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_006.png)
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_006.png)
 
     f. インスタンスの SAML コンシューマー URL をコピーし、Azure Portal の **[Hightail ドメインと URL]** セクションの **[応答 URL]** ボックスに貼り付けます。
     
     g. **[Save]** をクリックします。
 
 > [!TIP]
-> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
+> アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。
 > 
 
 ### <a name="creating-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
@@ -219,7 +219,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
  
     ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-hightail-tutorial/create_aaduser_04.png) 
 
-    a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
     b. **[ユーザー名]** ボックスに BrittaSimon の**電子メール アドレス**を入力します。
 
@@ -250,7 +250,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
 2. アプリケーションの一覧で **[Hightail]**を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_app.png) 
+    ![[Configure Single Sign-On]](./media/active-directory-saas-hightail-tutorial/tutorial_hightail_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 

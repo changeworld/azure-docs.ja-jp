@@ -1,8 +1,8 @@
 ---
-title: "Data Lake Store のアクセス制御の概要 | Microsoft Docs"
-description: "Azure Data Lake Store のアクセス制御のしくみを理解します"
+title: Data Lake Store のアクセス制御の概要 | Microsoft Docs
+description: Azure Data Lake Store のアクセス制御のしくみを理解します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 01/09/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: ec0d1fa9c422dbe4958c5d5f0b7a6e093aeb32da
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
+ms.openlocfilehash: a2e29fd6f2dbd4bd573b780a14bd09c0cd03395f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="access-control-in-azure-data-lake-store"></a>Azure Data Lake Store のアクセス制御
 
@@ -124,15 +124,15 @@ Data Lake Store アカウントに対する特定の操作の実行に必要な�
 
 ## <a name="viewing-permissions-in-the-azure-portal"></a>Azure Portal でのアクセス許可の表示
 
-Data Lake Store アカウントの **[データ エクスプローラー]** ブレードで、**[アクセス]** をクリックして、ファイルまたはフォルダーの ACL を表示します。 **[アクセス]** をクリックして、**mydatastore** アカウントにある **catalog** フォルダーの ACL を表示します。
+Data Lake Store アカウントの **[データ エクスプローラー]** ブレードで、**[アクセス]** をクリックすると、データ エクスプローラーで表示されているファイルまたはフォルダーの ACL が表示されます。 **[アクセス]** をクリックして、**mydatastore** アカウントにある **catalog** フォルダーの ACL を表示します。
 
 ![Data Lake Store ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
 
-このブレードの最上部のセクションには、持っているアクセス許可の概要が示されます  (スクリーンショットでは、ユーザーは Bob です)。その下に、アクセス許可が表示されます。 その後、**[アクセス]** ブレードで **[簡易ビュー]** をクリックして、より単純なビューを表示します。
+このブレードの一番上のセクションには、所有者のアクセス許可が表示されます  (スクリーンショットでは、Bob が所有ユーザーです)。その下に、割り当てられているアクセス ACL が表示されます。 
 
 ![Data Lake Store ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
 
-**[詳細ビュー]** をクリックして、より詳しいビューを表示します。このビューには、既定の ACL、マスク、スーパー ユーザーの概念が表示されます。
+**[詳細ビュー]** をクリックして、より詳しいビューを表示します。このビューには、既定の ACL、マスク、スーパー ユーザーの説明が表示されます。  このブレードには、現在のフォルダーのアクセス許可に基づき、子のファイルとフォルダーにアクセス ACL と 既定の ACL を再帰的に設定する手段も用意されています。
 
 ![Data Lake Store ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
@@ -164,7 +164,7 @@ Data Lake Store アカウントの **所有者** ロールのすべてのユー�
 * 所有しているファイルの所有グループを変更します。ただし、所有ユーザーが変更後のグループのメンバーでもある必要があります。
 
 > [!NOTE]
-> 所有ユーザーは、他の所有ファイルの所有ユーザーを変更することは "*できません*"。 ファイルまたはフォルダーの所有ユーザーを変更できるのは、スーパー ユーザーだけです。
+> 所有ユーザーが、ファイルやフォルダーの所有ユーザーを変更することは "*できません*"。 ファイルまたはフォルダーの所有ユーザーを変更できるのは、スーパー ユーザーだけです。
 >
 >
 
@@ -177,9 +177,14 @@ POSIX ACL では、すべてのユーザーが "プライマリ グループ" �
 * **ケース 1**: ルート フォルダー "/"。 このフォルダーは、Data Lake Store アカウントの作成時に作成されます。 この場合、所有グループは、アカウントを作成したユーザーに設定されます。
 * **ケース 2** (その他すべての場合): 新しい項目が作成されると、所有グループが親フォルダーからコピーされます。
 
+その他の点では、所有グループの動作は、他のユーザー/グループに割り当てられているアクセス許可と同様です。
+
 所有グループを変更できるユーザーは次のとおりです。
 * すべてのスーパー ユーザー
 * 所有ユーザー (所有ユーザーが変更後のグループのメンバーでもある場合)
+
+> [!NOTE]
+> 所有グループが、ファイルやフォルダーの ACL を変更することは "*できません*"。
 
 ## <a name="access-check-algorithm"></a>アクセス確認アルゴリズム
 
@@ -209,7 +214,7 @@ POSIX ACL では、すべてのユーザーが "プライマリ グループ" �
 ![Data Lake Store ACLs](./media/data-lake-store-access-control/data-lake-store-show-acls-mask-view.png)
 
 > [!NOTE]
-> 新しい Data Lake Store アカウントでは、ルート フォルダー ("/") のアクセス ACL と既定の ACL のマスクは既定で RWX に設定されています。
+> 新しい Data Lake Store アカウントでは、ルート フォルダー ("/") のアクセス ACL のマスクが既定で RWX に設定されています。
 >
 >
 
@@ -245,7 +250,7 @@ POSIX に準拠しているシステムの一般概念では、umask は、新�
 
 HDFS システムでは、umask は一般的にサイト全体の構成オプションであり、管理者によって制御されます。 Data Lake Store は、変更することができない、 **アカウント全体の umask** を使用します。 次の表に、Data Lake Store の umask を示します。
 
-| ユーザー グループ  | 設定 | 新しい子項目のアクセス ACL への効果 |
+| ユーザー グループ  | Setting | 新しい子項目のアクセス ACL への効果 |
 |------------ |---------|---------------------------------------|
 | 所有ユーザー | ---     | 効果なし                             |
 | 所有グループ| ---     | 効果なし                             |
@@ -273,7 +278,6 @@ HDFS システムでは、umask は一般的にサイト全体の構成オプシ
 Data Lake Store の ACL に関してよくある質問のいくつかを次に示します。
 
 ### <a name="do-i-have-to-enable-support-for-acls"></a>ACL のサポートを有効にする必要はありますか
-
 
 いいえ。 ACL によるアクセス制御は、Data Lake Store アカウントでは常に有効になっています。
 
@@ -309,8 +313,7 @@ GUID が表示されるのは、そのユーザーがもう Azure AD に存在�
 
 ### <a name="does-data-lake-store-support-inheritance-of-acls"></a>Data Lake Store は ACL の継承をサポートしていますか
 
-
-いいえ。
+いいえ。ただし、親フォルダーに新たに作成される子ファイルや子フォルダーについては、既定の ACL を使用して ACL を設定できます。  
 
 ### <a name="what-is-the-difference-between-mask-and-umask"></a>mask と umask の違いは何ですか
 
@@ -319,7 +322,7 @@ GUID が表示されるのは、そのユーザーがもう Azure AD に存在�
 | **mask** プロパティは、すべてのファイルおよびフォルダーで使用できます。 | **umask** は、Data Lake Store アカウントのプロパティです。 そのため、Data Lake Store には umask が 1 つしかありません。    |
 | ファイルまたはフォルダーの mask プロパティを変更できるのは、ファイルの所有ユーザーまたは所有グループ、あるいはスーパー ユーザーです。 | umask プロパティは、スーパー ユーザーも含めて、どのユーザーも変更できません。 変更不可の定数値です。|
 | mask プロパティは、実行時にアクセス確認アルゴリズムで使用され、ファイルまたはフォルダーに対する操作を実行する権限がユーザーにあるかどうかを判断します。 mask の役割は、アクセス確認時の "有効なアクセス許可" を作成することです。 | umask は、アクセス確認中はまったく使用されません。 umask は、フォルダーの新しい子項目のアクセス ACL を判断するために使用されます。 |
-| マスクは、アクセス確認時に名前付きユーザー、名前付きグループ、所有ユーザーに適用される 3 ビット RWX 値です。| umask は、新しい子の所有ユーザー、所有グループ、および**その他**に適用される 9 ビット値です。|
+| マスクは、アクセス確認時に名前付きユーザー、所有グループ、名前付きグループに適用される 3 ビット RWX 値です。| umask は、新しい子の所有ユーザー、所有グループ、および**その他**に適用される 9 ビット値です。|
 
 ### <a name="where-can-i-learn-more-about-posix-access-control-model"></a>POSIX アクセス制御モデルの詳細はどこで確認できますか
 

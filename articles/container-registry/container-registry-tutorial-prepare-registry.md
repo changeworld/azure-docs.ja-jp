@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Registry チュートリアル - geo レプリケーション Azure Container Registry の準備"
-description: "Azure Container Registry を作成し、geo レプリケーションを構成して、Docker イメージを準備し、それをレジストリにデプロイします。 3 部構成のシリーズのパート 1。"
+title: Azure Container Registry チュートリアル - geo レプリケーション Azure Container Registry の準備
+description: Azure Container Registry を作成し、geo レプリケーションを構成して、Docker イメージを準備し、それをレジストリにデプロイします。 3 部構成のシリーズのパート 1。
 services: container-registry
 author: mmacy
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.date: 10/26/2017
 ms.author: marsma
 ms.custom: mvc
-ms.openlocfilehash: b73222d9b31ff840273bdb91a15f7eaf37ad2508
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3463acc3db3dae9633635aaf7410d876aacf9b38
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="prepare-a-geo-replicated-azure-container-registry"></a>geo レプリケーション Azure Container Registry の準備
+# <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>チュートリアル: geo レプリケーション Azure Container Registry の準備
 
 Azure Container Registry は、デプロイの近くにネットワークを確保できる Azure にデプロイされたプライベート Docker レジストリです。 この一連の 3 つのチュートリアルの記事では、geo レプリケーションを使用して、Linux コンテナーで実行する ASP.NET Core Web アプリケーションを、2 つの [Web Apps for Containers](../app-service/containers/index.yml) インスタンスにデプロイする方法について説明します。 Azure が最も近い geo レプリケーション レポジトリからの各 Web アプリ インスタンスにイメージをデプロイする方法を確認します。
 

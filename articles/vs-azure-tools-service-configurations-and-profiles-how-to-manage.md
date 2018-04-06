@@ -1,11 +1,11 @@
 ---
-title: "サービス構成とプロファイルを管理する方法 | Microsoft Docs"
-description: "サービス構成とプロファイルの構成ファイルを使用する方法について説明します。構成ファイルには、デプロイ環境の設定とクラウド サービスの発行設定が保存されます。"
+title: サービス構成とプロファイルを管理する方法 | Microsoft Docs
+description: サービス構成とプロファイルの構成ファイルを使用する方法について説明します。構成ファイルには、デプロイ環境の設定とクラウド サービスの発行設定が保存されます。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 7da8c551-fb06-4057-b5c7-c77f4b39d803
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/11/2017
-ms.author: kraigb
-ms.openlocfilehash: af1205f8c3e477d123d4835c80a68b3afd6ee5ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 411daa8892bee1858c6930dfd8b2b811f164ec5d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>サービス構成とプロファイルを管理する方法
 ## <a name="overview"></a>概要
@@ -99,6 +99,6 @@ ms.lasthandoff: 10/11/2017
 4. 設定の変更が完了したら、**[次へ]** を選択して **[設定]** ページに戻ります。
 5. (省略可能) **[発行]** を選択し、新しい設定を使用してクラウド サービスを発行します。 この時点でクラウド サービスを発行せずに発行ウィザードを閉じると、変更をプロファイルに保存するかどうかをたずねるメッセージが表示されます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 Visual Studio で Azure プロジェクトの他の部分を構成する方法については、 [Azure プロジェクトの構成](http://go.microsoft.com/fwlink/p/?LinkID=623075)
 

@@ -1,11 +1,11 @@
 ---
-title: "クラウド サービスのパフォーマンスのテスト | Microsoft Docs"
-description: "Visual Studio プロファイラーを使用した、クラウド サービスのパフォーマンスのテスト"
+title: クラウド サービスのパフォーマンスのテスト | Microsoft Docs
+description: Visual Studio プロファイラーを使用した、クラウド サービスのパフォーマンスのテスト
 services: visual-studio-online
 documentationcenter: n/a
 author: mikejo
-manager: ghogen
-editor: 
+manager: douge
+editor: ''
 ms.assetid: 7a5501aa-f92c-457c-af9b-92ea50914e24
 ms.service: visual-studio-online
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: mikejo
-ms.openlocfilehash: 483b8b1c7c75c407cb55a1b3b027ae043c506ebb
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.openlocfilehash: 74ffd70bdb204cee75b86a1e922ac67873a88758
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="testing-the-performance-of-a-cloud-service"></a>クラウド サービスのパフォーマンスのテスト
 ## <a name="overview"></a>概要
@@ -109,7 +109,7 @@ Visual Studio でのパフォーマンスのプロファイルの詳細につい
     レポートの .vsp ファイルが Azure からダウンロードされ、ダウンロードの状態が Azure のアクティビティ ログに表示されます。 ダウンロードが完了すると、<Role name>*<Instance Number>*<identifier>.vsp という名前のプロファイル レポートが Visual Studio のエディターのタブに表示されます。 レポートの概要データが表示されます。
 4. [現在のビュー] の一覧にレポートの異なるビューを表示するには、表示するビューの種類を選択します。 詳細については、「 [プロファイル ツールのレポート ビュー](https://msdn.microsoft.com/library/azure/bb385755.aspx)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [クラウド サービスのデバッグ](https://msdn.microsoft.com/library/azure/ee405479.aspx)
 
 [Visual Studio から Azure クラウド サービスへの発行](https://msdn.microsoft.com/library/azure/ee460772.aspx)

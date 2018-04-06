@@ -20,13 +20,19 @@
 
 # 方法
 
+## [ゾーン冗長パブリック Standard Load Balancer の作成](load-balancer-get-started-internet-az-portal.md)
+### [ゾーン冗長パブリック Standard Load Balancer の作成 (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
+### [ゾーン冗長パブリック Standard Load Balancer の作成 (CLI)](load-balancer-get-started-internet-az-cli.md)
+## [ゾーンのパブリック Standard Load Balancer の作成](load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+### [ゾーンのパブリック Standard Load Balancer の作成 (PowerShell)](load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+### [ゾーン冗長パブリック Standard Load Balancer の作成 (CLI)](load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+## [可用性ゾーン間での VM の負荷分散](load-balancer-standard-public-availability-zones-portal.md)
+###  [可用性ゾーン間での VM の負荷分散 (CLI)](load-balancer-standard-public-zone-redundant-cli.md)
+##  [ゾーン内での VM の負荷分散 (CLI)](load-balancer-standard-public-zonal-cli.md)   
+## [Basic Load Balancer を作成する (テンプレート)](load-balancer-get-started-internet-arm-template.md)
 ## [IPv6 を使用してパブリック ロード バランサーを作成する](load-balancer-ipv6-internet-ps.md)
 ### [IPv6 を使用してパブリック ロード バランサーを作成する (CLI)](load-balancer-ipv6-internet-cli.md)
 ### [IPv6 を使用してパブリック ロード バランサーを作成する (テンプレート)](load-balancer-ipv6-internet-template.md)
-## [ゾーン冗長パブリック ロード バランサー (Standard) を作成する](load-balancer-get-started-internet-az-portal.md)
-### [ゾーン冗長パブリック ロード バランサー (Standard) を作成する (PowerShell)](load-balancer-get-started-internet-az-powershell.md)
-### [ゾーン冗長パブリック ロード バランサー (Standard) を作成する (CLI)](load-balancer-get-started-internet-az-cli.md)
-## [Basic Load Balancer を作成する (テンプレート)](load-balancer-get-started-internet-arm-template.md)
 ## [内部ロード バランサーを構成する](load-balancer-get-started-ilb-arm-portal.md)
 ### [内部ロード バランサーを構成する (PowerShell)](load-balancer-get-started-ilb-arm-ps.md)
 ### [内部ロード バランサーを構成する (CLI)](load-balancer-get-started-ilb-arm-cli.md)

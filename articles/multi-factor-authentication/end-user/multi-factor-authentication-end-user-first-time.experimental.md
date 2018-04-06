@@ -1,9 +1,9 @@
 ---
-title: "2 段階認証を会社または学校のアカウントに設定する | Microsoft Docs"
-description: "会社が Azure Multi-factor Authentication を構成している場合は、2 段階認証のサインアップを求められます。 設定方法について説明します。 "
+title: 2 段階認証を会社または学校のアカウントに設定する | Microsoft Docs
+description: '会社が Azure Multi-factor Authentication を構成している場合は、2 段階認証のサインアップを求められます。 設定方法について説明します。 '
 services: multi-factor-authentication
-keywords: "azure ディレクトリの使用方法, クラウドの active directory, active directory のチュートリアル"
-documentationcenter: 
+keywords: azure ディレクトリの使用方法, クラウドの active directory, active directory のチュートリアル
+documentationcenter: ''
 author: barlanmsft
 manager: mtillman
 ms.reviewer: richagi

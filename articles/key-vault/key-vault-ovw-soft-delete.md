@@ -1,16 +1,16 @@
 ---
-ms.assetid: 
-title: "Azure Key Vault の論理的な削除 | Microsoft Docs"
+ms.assetid: ''
+title: Azure Key Vault の論理的な削除 | Microsoft Docs
 ms.service: key-vault
 author: lleonard-msft
 ms.author: alleonar
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 01357e4fdb9b6f27e9baf5f5c8e4c7d6b582ad35
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 6a3573cf31418309a31126b2a0c6a43ea2e0c745
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -67,6 +67,13 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 プロキシ リソースで POST 操作によってキー コンテナーを完全削除、つまり消去することが可能ですが、それには特別な権限が必要です。 一般的に、サブスクリプションの所有者だけが、キー コンテナーを消去できます。 POST 操作では、コンテナーが直ちに削除されます。この削除は元に戻すことができません。 
 
 ただし、Azure サブスクリプションが "*削除不可*" とマークされている場合は例外です。 この場合は、サービスのみが実際の削除を実行できます。これは、スケジュールされたプロセスとして行われます。 
+
+### <a name="billing-implications"></a>課金への影響
+
+一般に、オブジェクト (キー コンテナー、キー、またはシークレット) が削除済み状態にある場合は、'purge' と 'recover' の 2 つの操作のみが可能です。 その他の操作はすべて失敗します。 したがって、オブジェクトが存在するにもかかわらず操作を実行できないため、使用状況は発生せず、課金も発生しません。 ただし、次の例外があります。
+
+- 'purge' および 'recover' アクションは通常のキー コンテナー操作と見なされ、課金されます。
+- オブジェクトが HSM キーである場合は、過去 30 日間にキー バージョンが使用されていると、'HSM で保護されたキー' の 1 か月あたり、キー バージョンあたりの課金が適用されます。 その後は、オブジェクトが削除済み状態になり、それに対して操作を実行できないため、課金は適用されません。
 
 ## <a name="next-steps"></a>次の手順
 

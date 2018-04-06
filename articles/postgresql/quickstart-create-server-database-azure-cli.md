@@ -1,6 +1,6 @@
 ---
-title: "クイック スタート - Azure CLI を使用した Azure Database for PostgreSQL の作成"
-description: "Azure CLI (コマンド ライン インターフェイス) を使用して Azure Database for PostgreSQL サーバーを作成して管理するクイックスタート ガイド。"
+title: クイック スタート - Azure CLI を使用した Azure Database for PostgreSQL の作成
+description: Azure CLI (コマンド ライン インターフェイス) を使用して Azure Database for PostgreSQL サーバーを作成して管理するクイックスタート ガイド。
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -9,13 +9,13 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.devlang: azure-cli
 ms.topic: quickstart
-ms.date: 02/28/2018
+ms.date: 03/20/2018
 ms.custom: mvc
-ms.openlocfilehash: feb99ae5bae16125d65a6c6e5776e6f3f286f0e3
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 14007bff572f5ecf71b4595dcab8f24d9cf2d17e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-using-the-azure-cli"></a>クイック スタート: Azure CLI を使用した Azure Database for PostgreSQL の作成
 Azure Database for PostgreSQL は、高可用性 PostgreSQL データベースをクラウドで実行、管理、および拡張することができる、管理されたサービスです。 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイック スタートでは、Azure CLI を使用して、Azure Database for PostgreSQL サーバーを [Azure リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)に作成する方法を説明します。
@@ -58,11 +58,11 @@ az extension list
 {
     "extensionType": "whl",
     "name": "rdbms",
-    "version": "0.0.3"
+    "version": "0.0.4"
 }
 ```
 
-バージョン 0.0.3 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
+バージョン 0.0.4 が返されなかった場合には、次のコマンドを実行して拡張機能を更新します。 
 ```azurecli-interactive
 az extension update --name rdbms
 ```
@@ -92,7 +92,7 @@ az postgres server firewall-rule create --resource-group myresourcegroup --serve
 ```
 
 > [!NOTE]
-> Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 Azure SQL Database サーバーに接続するには、会社の IT 部門にポート 5432 を開放してもらう必要があります。
+> Azure PostgreSQL サーバーはポート 5432 を介して通信します。 企業ネットワーク内から接続しようとしても、ポート 5432 での送信トラフィックがネットワークのファイアウォールで禁止されている場合があります。 Azure PostgreSQL サーバーに接続するには、会社の IT 部門にポート 5432 を開放してもらう必要があります。
 
 ## <a name="get-the-connection-information"></a>接続情報の取得
 

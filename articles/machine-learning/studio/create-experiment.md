@@ -1,11 +1,12 @@
 ---
-title: "Machine Learning Studio での簡単な実験 | Microsoft Docs"
-description: "この機械学習のチュートリアルでは、簡単なデータ サイエンスの実験手順を説明しています。 回帰アルゴリズムを使用して自動車の価格を予測します。"
-keywords: "実験, 線形回帰, 機械学習アルゴリズム, 機械学習チュートリアル, 予測モデリング手法, データ サイエンス実験"
+title: Machine Learning Studio での簡単な実験 | Microsoft Docs
+description: この機械学習のチュートリアルでは、簡単なデータ サイエンスの実験手順を説明しています。 回帰アルゴリズムを使用して自動車の価格を予測します。
+keywords: 実験, 線形回帰, 機械学習アルゴリズム, 機械学習チュートリアル, 予測モデリング手法, データ サイエンス実験
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
 ms.date: 03/20/2017
-ms.author: garye
-ms.openlocfilehash: 3cc4278ca7d4603f4bfb916885d44e6a85864b25
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 57461cf94898012619b865c455955f511e978995
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="machine-learning-tutorial-create-your-first-data-science-experiment-in-azure-machine-learning-studio"></a>Machine Learning のチュートリアル: Azure Machine Learning Studio で初めてのデータ サイエンス実験を作成する
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Container Service チュートリアル - アプリケーションのスケーリング"
-description: "Azure Container Service チュートリアル - アプリケーションのスケーリング"
+title: Azure Container Service チュートリアル - アプリケーションのスケーリング
+description: Azure Container Service チュートリアル - アプリケーションのスケーリング
 services: container-service
 author: dlepow
 manager: timlt
@@ -9,11 +9,11 @@ ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 36c5586f79cf127ec069fd3c6ef95dd073fdbdb6
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: ea64f9c52dc89dc8eb75a39afbb087a5127505f1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="scale-kubernetes-pods-and-kubernetes-infrastructure"></a>Kubernetes ポッドと Kubernetes インフラストラクチャをスケーリングする
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 02/01/2018
 > * アプリのフロントエンドを実行する自動スケール ポッドの構成
 > * Kubernetes の Azure エージェント ノードのスケーリング
 
-その後のチュートリアルでは、Azure Vote アプリケーションが更新され、Operations Management Suite を Kubernetes クラスターを監視するように構成します。
+その後のチュートリアルでは、Azure Vote アプリケーションを更新し、Kubernetes クラスターを監視するように Log Analytics を構成します。
 
 ## <a name="before-you-begin"></a>開始する前に
 

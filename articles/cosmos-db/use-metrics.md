@@ -1,13 +1,13 @@
 ---
-title: "Azure Cosmos DB のメトリックを使用した監視とデバッグ | Microsoft Docs"
-description: "Azure Cosmos DB のメトリックを使用して、一般的な問題をデバッグし、データベースを監視します。"
+title: Azure Cosmos DB のメトリックを使用した監視とデバッグ | Microsoft Docs
+description: Azure Cosmos DB のメトリックを使用して、一般的な問題をデバッグし、データベースを監視します。
 keywords: metrics
 services: cosmos-db
 author: gnot
 manager: jhubbard
-editor: 
-documentationcenter: 
-ms.assetid: 
+editor: ''
+documentationcenter: ''
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: govindk
-ms.openlocfilehash: 3b3de91c3850071d7c3fbff1faccde6c17a606e3
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.openlocfilehash: 37ef1bc01bd3679e664e71e6a6e3bede84615305
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
@@ -34,7 +34,7 @@ Azure Cosmos DB には、スループット、ストレージ、整合性、可�
 
 ## <a name="understanding-how-many-requests-are-succeeding-or-causing-errors"></a>成功した要求数とエラーになった要求数の把握
 
-まず [Azure Portal](https://portal.azure.com) を開き、**[メトリック]** ブレードに移動します。 このブレードで **[1 分あたりに容量を超過した要求の数]** グラフを見つけます。 このグラフには、状態コードで区分された毎分の合計要求が表示されます。 HTTP 状態コードの詳細については、「[HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/documentdb/http-status-codes-for-documentdb)」(Azure Cosmos DB の HTTP 状態コード) を参照してください。
+まず [Azure Portal](https://portal.azure.com) を開き、**[メトリック]** ブレードに移動します。 このブレードで **[1 分あたりに容量を超過した要求の数]** グラフを見つけます。 このグラフには、状態コードで区分された毎分の合計要求が表示されます。 HTTP 状態コードの詳細については、「[HTTP Status Codes for Azure Cosmos DB](https://docs.microsoft.com/rest/api/cosmos-db/http-status-codes-for-cosmosdb)」(Azure Cosmos DB の HTTP 状態コード) を参照してください。
 
 最も一般的なエラー状態コードは 429 (スロットル) です。これは、Azure Cosmos DB に対する要求が、プロビジョニングされているスループットを超えていることを示します。 この問題の最も一般的な解決策は、そのコレクションの [RU をスケール アップ](./set-throughput.md)することです。
 
@@ -93,7 +93,7 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 *QueryMetrics* は、クエリの各コンポーネントが実行にかかった時間について詳細情報を提供します。 クエリの実行時間が長い場合、最も一般的な根本原因は、スキャンです (クエリがインデックスを利用できなかったため)。この問題は、フィルター条件を改善することで解決できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ここでは、Azure Portal に用意されているメトリックを使用して問題を監視およびデバッグする方法について学びました。データベースのパフォーマンス改善について理解を深めるには、以下の記事を参照してください。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management での最初の API のインポートと発行 | Microsoft Docs"
-description: "API Management で最初の API をインポートおよび発行する方法を説明します。"
+title: Azure API Management での最初の API のインポートと発行 | Microsoft Docs
+description: API Management で最初の API をインポートおよび発行する方法を説明します。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,15 +14,15 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/15/2017
 ms.author: apimpm
-ms.openlocfilehash: ffe5ee95c66eee7dccd25a1afd2fe639cbc273f5
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.openlocfilehash: 26a5ab93c82b523063632c4899daadbde70dd7d8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="import-and-publish-your-first-api"></a>最初の API のインポートと発行 
 
-このチュートリアルでは、http://conferenceapi.azurewebsites.net?format=json に存在する "OpenAPI の仕様" バックエンド API をインポートする方法を示します。 このバックエンド API は Microsoft によって提供され、Azure でホストされています。 
+このチュートリアルでは、http://conferenceapi.azurewebsites.net?format=json に存在する "OpenAPI の仕様" のバックエンド API をインポートする方法を示します。 このバックエンド API は Microsoft によって提供され、Azure でホストされています。 
 
 バックエンド API が API Management (APIM) にインポートされると、APIM API はバックエンド API のファサードになります。 バックエンド API のインポート時に、ソース API と APIM API は同一です。 APIM を使用すると、バックエンド API に触れることなく必要に応じてファサードをカスタマイズできます。 詳しくは、「[API を変換および保護する](transform-api.md)」をご覧ください。 
 
@@ -50,23 +50,28 @@ ms.lasthandoff: 01/19/2018
 
     ![API の作成](./media/api-management-get-started/create-api.png)
 
-    API の値は、作成時に、または後で **[設定]** タブに移動して設定できます。  
+    API の値は、作成時に、または後で **[設定]** タブに移動して設定できます。フィールドの横にある赤色の星印は、必須フィールドを示します。
 
-    |設定|値|[説明]|
+    |Setting|値|[説明]|
     |---|---|---|
     |**OpenAPI の仕様**|http://conferenceapi.azurewebsites.net?format=json|API を実装しているサービスを参照します。 要求は、API Management によってこのアドレスに転送されます。|
     |**[表示名]**|*Demo Conference API\(デモ会議 API\)*|サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。 <br/>この名前は開発者ポータルに表示されます。|
     |**名前**|*demo-conference-api*|API の一意の名前を指定します。 <br/>サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。|
     |**説明**|API の任意の説明を指定します。|サービス URL の入力後に Tab キーを押すと、json の内容に基づいてこのフィールドに値が入力されます。|
-    |**API URL サフィックス**|*conference*|サフィックスは、API Management サービスのベース URL に付加されます。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。|
     |**[URL スキーム]**|*HTTPS*|API へのアクセスに使用できるプロトコルを決定します。 |
-    |**成果物**|*無制限*| API を成果物に関連付けることで API を公開します。 必要に応じてこの新しい API を成果物に追加するには、成果物名を入力します。 この手順を複数回繰り返して、API を複数の成果物に追加できます。<br/>製品には、1 つまたは複数の API が関連付けられています。 複数の API を含めて、開発者ポータルを通じてそれらを開発者に提供できます。 開発者は、まず成果物をサブスクライブして API へのアクセス権を取得する必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 APIM インスタンスを作成した場合は、既に管理者になっているため、既定ですべての製品をサブスクライブしています。<br/> 各 API Management インスタンスは、**スターター**および**無制限**という 2 つのサンプル成果物を既定で備えています。 |
+    |**API URL サフィックス**|*conference*|サフィックスは、API Management サービスのベース URL に付加されます。 API Management では API がサフィックスによって識別されるため、サフィックスは、特定の発行者のすべての API で一意である必要があります。|
+    |**成果物**|*無制限*|製品には、1 つまたは複数の API が関連付けられています。 1 つの Product に多数の API を追加し、開発者ポータルを通じて開発者に提供できます。 <br/>API の発行は、API に成果物 (この例では "*無制限*") を関連付けることで行います。 この新しい API を成果物に追加するには、成果物名を入力します (後から **[設定]** ページで行うこともできます)。 この手順を複数回繰り返して、API を複数の成果物に追加できます。<br/>API へのアクセス権を取得するためには、まず開発者が成果物をサブスクライブ必要があります。 サブスクライブすると、その成果物の API に適したサブスクリプション キーを受け取ります。 <br/> APIM インスタンスを作成した場合は、既に管理者になっているため、すべての製品をサブスクライブしています。<br/> 各 API Management インスタンスは、**スターター**および**無制限**という 2 つのサンプル成果物を既定で備えています。 |
+    |この API をバージョン管理しますか?||バージョン管理について詳しくは、「[API の複数のバージョンを発行する](api-management-get-started-publish-versions.md)」をご覧ください。|
+    
+    >[!NOTE]
+    > API を発行するには、API を成果物に関連付ける必要があります。 この作業は **[設定] ページ**から行うことができます。
+    
 3. **[作成]**を選択します。
 
 ## <a name="test-the-new-apim-api-in-the-azure-portal"></a>Azure Portal での新しい APIM API のテスト
 
 Azure Portal には、API の操作を表示およびテストするための便利な環境が用意されており、操作を直接呼び出すことができます。  
-1. 前の手順で作成した API を選びます。
+1. 前の手順 (**[API]** タブ) で作成した API を選びます。
 2. **[テスト]** タブをクリックします。![API をテストする](./media/api-management-get-started/test-api.png)
 3. **[GetSpeakers]** をクリックします。
     ページにはクエリ パラメーターのフィールドが表示されますが、この例では何もありません。 ページには、ヘッダーのフィールドも表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 キーが自動的に入力されます。
@@ -78,21 +83,14 @@ Azure Portal には、API の操作を表示およびテストするための便
 
 操作を**開発者ポータル**から呼び出して API をテストすることもできます。 
 
-1. "バックエンド API のインポートと公開" の手順で作成した API を選びます。
-2. **[開発者ポータル]** をクリックします。
-
-    ![開発者ポータルでのテスト](./media/api-management-get-started/developer-portal.png)
-
-    "開発者ポータル" サイトが開きます。
-3. **[API]** を選択します。
-4. **[Demo Conference API]\(デモ会議 API)\** を選択します。
-5. **[GetSpeakers]** をクリックします。
+1. **[Demo Conference API]\(デモ会議 API)\** を選択します。
+2. **[GetSpeakers]** をクリックします。
     
     ページにはクエリ パラメーターのフィールドが表示されますが、この例では何もありません。 ページには、ヘッダーのフィールドも表示されます。 この API に関連付けられている成果物のサブスクリプション キーの場合、ヘッダーの 1 つは "Ocp-Apim-Subscription-Key" です。 APIM インスタンスを作成した場合は、既に管理者になっているので、キーが自動的に入力されます。
-6. **[テスト]** をクリックします。
-7. **[送信]** をクリックします。
+3. **[テスト]** をクリックします。
+4. **[送信]** をクリックします。
     
-    操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
+    操作が呼び出された後、開発者ポータルに応答が表示されます。  
 
 ## <a name="next-steps"> </a>次のステップ
 

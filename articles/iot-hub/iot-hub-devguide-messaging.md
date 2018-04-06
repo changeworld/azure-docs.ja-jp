@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub メッセージについて | Microsoft Docs"
-description: "開発者ガイド - IoT Hub でのデバイスからクラウドおよびクラウドからデバイスへのメッセージ。 メッセージ形式とサポートされる通信プロトコルに関する情報が含まれています。"
+title: Azure IoT Hub メッセージについて | Microsoft Docs
+description: 開発者ガイド - IoT Hub でのデバイスからクラウドおよびクラウドからデバイスへのメッセージ。 メッセージ形式とサポートされる通信プロトコルに関する情報が含まれています。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7fd89bebf9d7497ad5b13c438b362256d3408219
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 4e3eb4682f2c7d8e22191b763457c4cca356b59d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="device-to-cloud-and-cloud-to-device-messaging-with-iot-hub"></a>IoT Hub における device-to-cloud と cloud-to-device のメッセージング
 
@@ -26,6 +26,8 @@ IoT Hub メッセージングを使用して、次のようにご利用のデバ
 
 * [device-to-cloud][lnk-d2c] メッセージをデバイスからソリューション バックエンドに送信する。
 * [cloud-to-device][lnk-c2d] メッセージをソリューション バックエンドからデバイスに送信する。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 IoT Hub のメッセージング機能の中心となる特性は、メッセージの信頼性と持続性です。 これらのプロパティにより、デバイス側では断続的な接続に対する復元性を、クラウド側ではイベント処理の負荷の急増に対する復元性を実現できます。 IoT Hub では、D2C および C2D メッセージングの両方について、 *少なくとも 1 回* の配信保証が実装されます。
 

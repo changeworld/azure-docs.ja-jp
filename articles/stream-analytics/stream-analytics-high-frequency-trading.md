@@ -1,12 +1,11 @@
 ---
-title: "Stream Analytics による高頻度取引のシミュレーション | Microsoft Docs"
-description: "線形回帰モデルのトレーニングとスコア付けを同じ Stream Analytics ジョブで実行する方法"
-keywords: "機械学習, 高度な分析, 線形回帰, シミュレーション, UDA, ユーザー定義関数"
-documentationcenter: 
+title: Stream Analytics による高頻度取引のシミュレーション | Microsoft Docs
+description: 線形回帰モデルのトレーニングとスコア付けを同じ Stream Analytics ジョブで実行する方法
+keywords: 機械学習, 高度な分析, 線形回帰, シミュレーション, UDA, ユーザー定義関数
+documentationcenter: ''
 services: stream-analytics
 author: zhongc
-manager: jhubbard
-editor: cgronlun
+manager: ryanw
 ms.assetid: 997ccfc1-abaf-4c12-bef2-632481140f05
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 11/05/2017
 ms.author: zhongc
-ms.openlocfilehash: f25a27a86b366b2302657c44108cd823b0384831
-ms.sourcegitcommit: 29bac59f1d62f38740b60274cb4912816ee775ea
+ms.openlocfilehash: 349dc5c5277260b664d7214979ef15d1689b2716
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="high-frequency-trading-simulation-with-stream-analytics"></a>Stream Analytics による高頻度取引のシミュレーション
 Azure Stream Analytics では、SQL 言語に JavaScript のユーザー定義関数 (UDF) とユーザー定義集計 (UDA) を組み合わせることで高度な分析を行うことができます。 高度な分析には、オンライン機械学習のトレーニングやスコアリングのほか、ステートフル プロセス シミュレーションが含まれます。 この記事では、高頻度取引を例に、Azure Stream Analytics ジョブで線形回帰を実行し、継続的にトレーニングとスコア付けを行う方法について説明します。
@@ -446,11 +445,11 @@ Azure Stream Analytics には組み込みの線形回帰関数が存在しない
 ![PNL](./media/stream-analytics-high-frequency-trading/pnl.png)
 
 
-## <a name="summary"></a>概要
+## <a name="summary"></a>まとめ
 実際の高頻度取引モデルを Azure Stream Analytics で実装するためには、やや複雑なクエリを使用することになります。 組み込みの線形回帰関数が存在しないため、入力変数を 5 つから 2 つに減らしてモデルを単純化する必要があります。 しかし、その気になれば、より次元の高い、洗練されたアルゴリズムを JavaScript UDA として実装することもできます。 
 
 注目すべき点は、JavaScript UDA を除く大半のクエリのテストとデバッグが、[Visual Studio の Azure Stream Analytics ツール](stream-analytics-tools-for-visual-studio.md)を使って Visual Studio 内から実行できることです。 筆者が最初のクエリを作成した後、Visual Studio でクエリのテストとデバッグに要した時間は 30 分足らずでした。 
 
 UDA については現在、Visual Studio でデバッグを行うことはできません。 JavaScript コードをステップ実行する機能も含め、その実現に向けて取り組んでいるところです。 また、UDA の中ではフィールド名が小文字になることに注意してください。 クエリのテスト段階では、この動作が明らかになっていませんでした。 ただし、Azure Stream Analytics 互換性レベル 1.1 では、フィールド名の大文字と小文字が維持され、より自然な動作になっています。
 
-Azure Stream Analytics のすべてのユーザーは、Microsoft のサービスを使用して、高度な分析を絶え間なく、ほぼリアルタイムで実行することができます。この記事が創造的な思考のきっかけとなることを期待しています。 高度な分析のシナリオで、より簡単にクエリを実装する方法に関して、何かご意見があれば、ぜひお寄せください。
+Azure Stream Analytics のすべてのユーザーは、Microsoft のサービスを使用して、高度な分析を絶え間なく、ほぼリアルタイムで実行することができます。この記事がそんなユーザーへのインスピレーションとなれば幸いです。 高度な分析のシナリオで、より簡単にクエリを実装する方法に関して、何かご意見があれば、ぜひお寄せください。

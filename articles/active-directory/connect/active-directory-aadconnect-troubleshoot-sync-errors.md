@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
 ms.openlocfilehash: aaa374d5a11ef5b5860f83a87386ff981319189f
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。

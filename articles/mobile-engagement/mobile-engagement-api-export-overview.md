@@ -1,11 +1,11 @@
 ---
-title: "Mobile Engagement Export API の概要"
-description: "お使いのユーザー デバイスによって生成された生データをエクスポートして、自社のツールで活用する方法の基本について説明します。"
+title: Mobile Engagement Export API の概要
+description: お使いのユーザー デバイスによって生成された生データをエクスポートして、自社のツールで活用する方法の基本について説明します。
 services: mobile-engagement
 documentationcenter: mobile
 author: kpiteira
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 9380d47b-d7fa-4d4c-888f-97e6482196bb
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 04/26/2016
 ms.author: kapiteir
-ms.openlocfilehash: 346e0e480ff84ee849f135a7605d27df9e32f966
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c1dc8a34abf84be3d7f59d41c36d90c2a67e5d32
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="mobile-engagement-export-api-overview"></a>Mobile Engagement Export API の概要
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 ## <a name="introduction"></a>はじめに
 このドキュメントでは、お使いのユーザー デバイスによって生成された生データをエクスポートして、自社のツールで活用する方法の基本について説明します。
 
@@ -45,14 +49,14 @@ Mobile Engagement では数多くの型のデータを収集できるため、�
 
 考えられるすべてのエクスポートを以下の表に示します。
 
-| エクスポートの種類 | データ型 | 説明 |
+| エクスポートの種類 | データ型 | [説明] |
 | --- | --- | --- |
 | スナップショット |プッシュ |deviceid/userid 別のプッシュ キャンペーンのフィードバックのエクスポートを生成します。 |
 | スナップショット |タグ |各デバイスに関連付けられているタグ (アプリ情報) のエクスポートを生成します。 |
 | スナップショット |デバイス |テクニカル (モデル、ロケール、タイムゾーンなど)、タグ、最初の発生時間など、デバイスに関するほとんどのデータのエクスポートを生成します。 |
 | スナップショット |トークン |すべての有効なトークンのエクスポートを生成します。 |
 | 履歴 |アクティビティ |指定の期間における各デバイスのすべてのアクティビティのエクスポートを生成します。 |
-| 履歴 |イベント |指定の期間における各デバイスのすべてのアクティビティのエクスポートを生成します。 |
+| 履歴 |Event |指定の期間における各デバイスのすべてのアクティビティのエクスポートを生成します。 |
 | 履歴 |Job |指定の期間における各デバイスのすべてのジョブのエクスポートを生成します。 |
 | 履歴 |エラー |指定の期間における各デバイスのすべてのエラーのエクスポートを生成します。 |
 

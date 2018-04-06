@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/30/2014
 ms.author: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork
 ms.openlocfilehash: 85a0e302626ca14ac039ee6f662f372ddbeb62c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="how-to-send-email-using-sendgrid-from-java"></a>Java から SendGrid を使用して電子メールを送信する方法
 このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 コード サンプルは Java で記述されています。 紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および**プロパティの更新**です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ](#next-steps) 」を参照してください。
@@ -158,7 +158,7 @@ SendGrid では、 *フィルター*を使用することでその他の電子�
           {\"enable\":1}}}}");
 
 ## <a name="how-to-update-email-properties"></a>方法: 電子メールのプロパティを更新する
-メールの一部のプロパティは、**set*Property*** を使って上書きすることや、**add*Property*** を使って追加することができます。
+使用して一部の電子メール プロパティを上書きできる**設定 * プロパティ*** またはを使用して追加された **追加*プロパティ * * *。
 
 たとえば、 **ReplyTo** アドレスを指定するには、次のコードを使用します。
 
@@ -176,7 +176,7 @@ SendGrid では、 *フィルター*を使用することでその他の電子�
 ## <a name="how-to-use-additional-sendgrid-services"></a>方法: その他の SendGrid サービスを使用する
 SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、[SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
 * Azure の展開での SendGrid の使用方法を示すサンプル: [Azure デプロイで Java から SendGrid を使用して電子メールを送信する方法](store-sendgrid-java-how-to-send-email-example.md)

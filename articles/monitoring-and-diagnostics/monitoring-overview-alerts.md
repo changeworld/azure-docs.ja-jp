@@ -1,9 +1,9 @@
 ---
-title: "Microsoft Azure と Azure Monitor のアラートの概要 | Microsoft Docs"
-description: "アラートを使用すると、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知を受けることができます。"
+title: Microsoft Azure と Azure Monitor のアラートの概要 | Microsoft Docs
+description: アラートを使用すると、Azure リソースのメトリック、イベント、またはログを監視し、指定した条件が満たされたときに通知を受けることができます。
 author: rboucher
 manager: carmonm
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: a6dea224-57bf-43d8-a292-06523037d70b
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c1f0182f27cfb8441a09abd2031b365a4ab4315a
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: c64ca224705b7da57846e53bdc28d6d03eb28b06
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要
 この記事では、Microsoft Azure のさまざまなソースのアラート、アラートの目的、アラートの利点、アラートとの基本的な使用方法について説明します。 特に Azure Monitor について説明しますが、アラートを使用する他のサービスの参照先も紹介します。 アラートは Azure の監視方法の 1 つです。データに対する条件を構成し、その条件が最新の監視データと一致したときに通知を受信できます。
@@ -33,9 +33,6 @@ Azure では、アラートとその機能を説明するときに次の用語�
 * **通知** - アラートがアクティブになったことに基づいて実行されるアクション。
 * **アクション** - 通知の受信側に送信される特定の呼び出し (たとえば、アドレスへの電子メール送信や webhook URL への投稿など)。 通常、通知によって複数のアクションがトリガーされる可能性があります。
 
-    > [!NOTE]
-    > Azure アラートの展開の一部として、プレビューで新たに統合されたエクスペリエンスを利用できます。 新しいアラート (プレビュー) エクスペリエンスでは、別の分類法が使用されています。 [アラート (プレビュー)](monitoring-overview-unified-alerts.md) の詳細については、こちらをご覧ください。 
-    >
 
 ## <a name="alerts-in-different-azure-services"></a>さまざまな Azure サービスのアラート
 アラートは複数の Azure 監視サービス全体で使用できます。 Azure 監視サービスの使用方法と使用する場合については、[こちらの記事を参照してください](./monitoring-overview.md)。 Azure 全体で使用できるアラートの種類の内訳を次に示します。
@@ -44,22 +41,18 @@ Azure では、アラートとその機能を説明するときに次の用語�
 | サービス | アラートの種類 | サポートされているサービス | [説明] |
 |---|---|---|---|
 | Azure Monitor | [メトリック アラート](./insights-alerts-portal.md) | [Azure Monitor からサポートされるメトリック](./monitoring-supported-metrics.md) | プラットフォームレベルのメトリックが特定の条件 (たとえば、VM の CPU % が過去 5 分間で 90 を超えた、など) と一致する場合に通知を受け取ります。 |
-|Azure Monitor | [ほぼリアルタイムのメトリック アラート (プレビュー)](./monitoring-near-real-time-metric-alerts.md)| [Azure Monitor からサポートされるリソース](./monitoring-near-real-time-metric-alerts.md#what-resources-can-i-create-near-real-time-metric-alerts-for) | 1 つまたは複数のプラットフォーム レベルのメトリックが指定された条件 (例: 過去 5 分間の VM の CPU % が 90 を超え、Network In が 500 MB を超えている) を満たしている場合に、メトリック アラートよりも早く通知を受け取ります。 |
+|Azure Monitor | [ほぼリアルタイムのメトリック アラート](./monitoring-near-real-time-metric-alerts.md)| [Azure Monitor からサポートされるリソース](./monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported) | 1 つまたは複数のプラットフォーム レベルのメトリックが指定された条件 (例: 過去 5 分間の VM の CPU % が 90 を超え、Network In が 500 MB を超えている) を満たしている場合に、メトリック アラートよりも早く通知を受け取ります。 |
 | Azure Monitor | [アクティビティ ログ アラート](./monitoring-activity-log-alerts.md) | Azure Resource Manager で使用できるすべてのリソースの種類 | [Azure アクティビティ ログ](./monitoring-overview-activity-logs.md)の新しいイベントが特定の条件 (たとえば、myProductionResourceGroup で "VM の削除" 操作が発生した場合や、状態が "アクティブ" の新しいサービス正常性イベントが表示された場合など) と一致する場合に通知を受け取ります。 |
 | アプリケーション インサイト | [メトリック アラート](../application-insights/app-insights-alerts.md) | Application Insights にデータを送信するようにインストルメント化されたすべてのアプリケーション | アプリケーションレベルのメトリックが特定の条件 (たとえば、サーバーの応答時間が 2 秒を超える、など) と一致した場合に通知を受け取ります。 |
 | アプリケーション インサイト | [Web テスト アラート](../application-insights/app-insights-monitor-web-app-availability.md) | Application Insights にデータを送信するようにインストルメント化されたすべての Web サイト | Web サイトの可用性または応答性が期待を下回る場合に通知を受け取ります。 |
 | Log Analytics | [Log Analytics アラート](../log-analytics/log-analytics-alerts.md) | データを Log Analytics に送信するように構成されたすべてのサービス | メトリックやイベント データに対する Log Analytics 検索クエリが特定の条件と一致する場合に通知を受け取ります。 |
 
 ## <a name="alerts-on-azure-monitor-data"></a>Azure Monitor データのアラート
-Azure Monitor から使用できるデータには、メトリック アラート、ほぼリアルタイムのメトリック アラート (プレビュー)、およびアクティビティ ログ アラートという 3 種類のアラートがあります。
+Azure Monitor から使用可能なデータのアラートには、メトリック アラート、ほぼリアルタイムのメトリック アラート、アクティビティ ログ アラートの 3 種類があります。
 
-* **メトリック アラート** - このアラートは、指定したメトリックの値が、割り当てたしきい値を超えたときにトリガーされます。 このアラートで通知が生成されるのは、アラートが "アクティブ化済み" になったとき (しきい値を超え、アラートの条件を満たしたとき) と、"解決済み" になったとき (しきい値を再び超え、条件を満たさなくなったとき) です。 Azure Monitor がサポートするメトリックは増え続けています。使用できるメトリックの一覧については、[Azure Monitor でサポートされているメトリックの一覧](monitoring-supported-metrics.md)を参照してください。
-* **ほぼリアルタイムのメトリック アラート (プレビュー)**: このアラートは、メトリック アラートに似ていますが、いくつかの点が異なります。 まず、名前が示すように、このアラートは、ほぼリアルタイム (1 分) でトリガーできます。 複数 (現時点では 2 つ) のメトリックの監視もサポートします。  このアラートで通知が生成されるのは、アラートが "アクティブ化" されたとき (各メトリックが同時にしきい値を上回り、かつアラートの条件が満たされたとき) と、アラートが "解決された" とき (少なくとも 1 つのメトリックがしきい値を下回り、条件を満たさなくなったとき) です。
+* **メトリック アラート** - このアラートは、指定したメトリックの値が、割り当てたしきい値を超えたときにトリガーされます。 このアラートで通知が生成されるのは、アラートが "アクティブ化済み" になったとき (しきい値を超え、アラートの条件を満たしたとき) と、"解決済み" になったとき (しきい値を再び超え、条件を満たさなくなったとき) です。 これらは古いメトリック アラートです。 新しいメトリック アラートについては、以下を参照してください。
 
-    > [!NOTE]
-    > ほぼリアルタイムのメトリック アラートは、現在パブリック プレビュー段階です。 機能やユーザー エクスペリエンスは変更されることがあります。
-    >
-    >
+* **ほぼリアルタイムのメトリック アラート** - これは、以前のメトリック アラートに比べて機能が強化された、より新しい世代のメトリック アラートです。 これらのアラートは、1 分の頻度で実行できます。また、複数の (現在は 2 つの) メトリックの監視もサポートされます。  このアラートで通知が生成されるのは、アラートが "アクティブ化" されたとき (各メトリックが同時にしきい値を上回り、かつアラートの条件が満たされたとき) と、アラートが "解決された" とき (少なくとも 1 つのメトリックがしきい値を下回り、条件を満たさなくなったとき) です。
 
 * **アクティビティ ログ アラート** - 割り当てたフィルター条件と一致するアクティビティ ログ イベントが生成されたときにトリガーされるストリーミング ログ アラート。 すべての新規イベントには、アラート エンジンによってフィルター条件が適用されるだけなので、これらのアラートの状態は "アクティブ化済み" のみです。 これらのアラートを使用して、新しいサービス正常性インシデントが発生したとき、またはユーザーまたはアプリケーションがサブスクリプションで操作 (仮想マシンの削除など) を実行したときに通知を受け取ることができます。
 
@@ -76,9 +69,9 @@ Azure Monitor で使用できる診断ログ データの場合、データを L
     - Azure Logic App
     - サードパーティのサービス
 
-ほぼリアルタイムのメトリック アラート (プレビュー) とアクティビティ ログ アラートでは、アクション グループを使用します。
+ほぼリアルタイムのメトリック アラートとアクティビティ ログ アラートは、アクション グループを使用します。
 
-メトリック アラートでは、まだアクション グループを使用していません。 個々のメトリック アラートでは、以下のように通知を構成することができます。
+[アラート (クラシック)] で使用可能な古いメトリック アラートは、アクション グループを使用しません。 個々のメトリック アラートでは、以下のように通知を構成することができます。
 * メール通知をサービス管理者、共同管理者、または指定した追加のメール アドレスに送信する。
 * webhook を呼び出す。これにより、追加のオートメーション アクションを実行できます。
 
@@ -86,15 +79,15 @@ Azure Monitor で使用できる診断ログ データの場合、データを L
 アラート ルールとその構成方法については、以下をご覧ください。
 
 * [メトリック](monitoring-overview-metrics.md)の詳細
-* [Azure Portal からのメトリック アラートク](insights-alerts-portal.md)の構成
-* [メトリック アラート PowerShell](insights-alerts-powershell.md) の構成
-* [メトリック アラート コマンドライン インターフェイス (CLI)](insights-alerts-command-line-interface.md) の構成
-* [メトリック アラート Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx) の構成
+* [Azure Portal からの従来のメトリック アラート](insights-alerts-portal.md)を構成する
+* [従来のメトリック アラートの PowerShell](insights-alerts-powershell.md) を構成する
+* [従来のメトリック アラートのコマンド ライン インターフェイス (CLI)](insights-alerts-command-line-interface.md) を構成する
+* [従来のメトリック アラートの Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931945.aspx) を構成する
 * [アクティビティ ログ](monitoring-overview-activity-logs.md) の詳細
 * [Azure Portal からのアクティビティ ログ アラート](monitoring-activity-log-alerts.md)の構成
 * [Resource Manager からのアクティビティ ログ アラート](monitoring-create-activity-log-alerts-with-resource-manager-template.md)の構成
 * [アクティビティ ログ アラート webhook スキーマ](monitoring-activity-log-alerts-webhook.md) の確認
-* [ほぼリアルタイムのメトリック アラート](monitoring-near-real-time-metric-alerts.md)
+* [新しいメトリック アラート](monitoring-near-real-time-metric-alerts.md)の詳細について学習します。
 * [サービス通知](monitoring-service-notifications.md) の詳細
 * [アクション グループ](monitoring-action-groups.md)の詳細については、こちらをご覧ください。
-* [アラート (プレビュー) からのアラート](monitor-alerts-unified-usage.md) の構成
+* [アラート](monitor-alerts-unified-usage.md)を構成する

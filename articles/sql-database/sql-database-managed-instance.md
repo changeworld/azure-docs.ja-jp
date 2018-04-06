@@ -8,17 +8,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: bonova
-ms.openlocfilehash: bc9c16462f28d129efa8c47183c6325e69bb64f3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 2d07d58114a4d89f40a4ea9e388c58f58494766c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="what-is-a-managed-instance-preview"></a>マネージ インスタンス (プレビュー) とは?
 
-Azure SQL Database マネージ インスタンス (プレビュー) は、Azure SQL Database の新しい機能です。SQL Server オンプレミスとの 100% 近い互換性を備えています。またセキュリティに関する一般的な懸念事項に対処するネイティブの[仮想ネットワーク](../virtual-network/virtual-networks-overview.md) (VNet) 実装を提供し、オンプレミスの SQL Server の顧客に有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 マネージ インスタンスにより、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベース変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、マネージ インスタンスでは、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、バックアップ、高可用性) を維持します。
+Azure SQL Database マネージ インスタンス (プレビュー) は、Azure SQL Database の新しい機能です。SQL Server オンプレミス (Enterprise Edition) との 100% 近い互換性を備えています。またセキュリティに関する一般的な懸念事項に対処するネイティブの[仮想ネットワーク](../virtual-network/virtual-networks-overview.md) (VNet) 実装を提供し、オンプレミスの SQL Server の顧客に有利な[ビジネス モデル](https://azure.microsoft.com/pricing/details/sql-database/)を提供します。 マネージ インスタンスにより、既存の SQL Server の顧客は最小限のアプリケーションおよびデータベース変更のみで、オンプレミスのアプリケーションをクラウドに移行 (リフト アンド シフト) することができます。 これと同時に、マネージ インスタンスでは、管理のオーバーヘッドと TCO を大幅に削減するすべての PaaS 機能 (自動的な修正プログラムの適用およびバージョン更新、バックアップ、高可用性) を維持します。
 
 > [!IMPORTANT]
 > 現在マネージ インスタンスが提供されているリージョンの一覧については、「[Migrate your databases to a fully managed service with Azure SQL Database Managed Instance](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/)」(Azure SQL Database マネージ インスタンスを使用してデータベースを完全管理型サービスに移行する) を参照してください。
@@ -34,16 +34,16 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 
 マネージ インスタンスでは一般提供までに段階的リリース計画に基づいて、最新のオンプレミスの SQL Server バージョンとの 100% 近いセキュリティ、外部からのアクセス互換性を実現することを目的としています。 
 
-次の表では、SQL IaaS、Azure SQL Database、およびマネージ インスタンスの間での主な相違点、ならびに想定される使用シナリオについて概説します。
+次の表では、SQL IaaS、Azure SQL Database、および SQL Database マネージ インスタンスの間での主な相違点、ならびに想定される使用シナリオについて概説します。
 
 | | 使用シナリオ | 
 | --- | --- | 
-|マネージ インスタンス |顧客が多数のオンプレミスまたは IaaS のアプリ、自社ビルドのアプリ、または ISV 提供のアプリをできるだけ少ない移行作業でる移行することを模索している場合、マネージ インスタンスをご提案します。 Azure で完全に自動化された[データ移行サービス (DMS)](/sql/dma/dma-overview) を使用することにより、顧客はオンプレミスの SQL Server をマネージ インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNET のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、SQL Database マネージ インスタンスでは [SQL Server 用の Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Database マネージ インスタンスはクラウド内の最適な移行先です。 |
-|Azure SQL Database |**エラスティック プール**: 新しい SaaS マルチ テナント アプリケーションを開発する顧客、または既存のオンプレミスのアプリを SaaS マルチテナント アプリに意図的に変換する顧客に対しては、エラスティック プールをご提案します。 このモデルには次の利点があります。 <br><ul><li>ライセンスの販売からサービス サブスクリプションの販売へのビジネス モデルの変換 (ISV の場合)</li></ul><ul><li>簡単かつ堅牢なテナントの分離</li></ul><ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul><ul><li>ハード シーリングに達することなくスケールアウトする可能性</li></ul>**単一のデータベース**: ワークロードが安定していて予測可能な、SaaS マルチ テナント以外の新しいアプリを開発する顧客に対しては、単一のデータベースをご提案します。 このモデルには次の利点があります。<ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul>  <ul><li>データベースごとに予測可能なパフォーマンス</li></ul>|
-|SQL IaaS |オペレーティング システムまたはデータベース サーバーをカスタマイズする必要があると共に、SQL Server とサード パーティ アプリの並列実行 (同じ VM 上で) に関して特定の要件を持つ顧客については、最適なソリューションとして SQL VM / IaaS をご提案します。|
+|SQL Database マネージ インスタンス |顧客が多数のオンプレミスまたは IaaS のアプリ、自社ビルドのアプリ、または ISV 提供のアプリをできるだけ少ない移行作業でる移行することを模索している場合、マネージ インスタンスをご提案します。 Azure で完全に自動化された[データ移行サービス (DMS)](/sql/dma/dma-overview) を使用することにより、顧客はオンプレミスの SQL Server をマネージ インスタンスに移行 (リフト アンド シフト) することができます。この場合、VNET のネイティブ サポートにより、SQL Server オンプレミスとの互換性の維持、顧客のインスタンスの完全な分離が実現されます。  ソフトウェア アシュアランスに基づき、SQL Database マネージ インスタンスでは [SQL Server 用の Azure ハイブリッド使用特典](../virtual-machines/windows/hybrid-use-benefit-licensing.md)を利用して、顧客の既存のライセンスを割引料金のライセンスに交換することができます。  高度なセキュリティと豊富なプログラミング サーフェスを必要とする SQL Server インスタンスにとって、SQL Database マネージ インスタンスはクラウド内の最適な移行先です。 |
+|Azure SQL Database (単一またはプール) |**エラスティック プール**: 新しい SaaS マルチ テナント アプリケーションを開発する顧客、または既存のオンプレミスのアプリを SaaS マルチテナント アプリに意図的に変換する顧客に対しては、エラスティック プールをご提案します。 このモデルには次の利点があります。 <br><ul><li>ライセンスの販売からサービス サブスクリプションの販売へのビジネス モデルの変換 (ISV の場合)</li></ul><ul><li>簡単かつ堅牢なテナントの分離</li></ul><ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul><ul><li>ハード シーリングに達することなくスケールアウトする可能性</li></ul>**単一のデータベース**: ワークロードが安定していて予測可能な、SaaS マルチ テナント以外の新しいアプリを開発する顧客に対しては、単一のデータベースをご提案します。 このモデルには次の利点があります。<ul><li>簡略化されたデータベース中心のプログラミング モデル</li></ul>  <ul><li>データベースごとに予測可能なパフォーマンス</li></ul>|
+|SQL IaaS 仮想マシン|オペレーティング システムまたはデータベース サーバーをカスタマイズする必要があると共に、SQL Server とサード パーティ アプリの並列実行 (同じ VM 上で) に関して特定の要件を持つ顧客については、最適なソリューションとして SQL VM / IaaS をご提案します。|
 |||
 
-![配置](./media/sql-database-managed-instance/positioning.png)
+<!---![positioning](./media/sql-database-managed-instance/positioning.png)--->
 
 ## <a name="how-to-programmatically-identify-a-managed-instance"></a>マネージ インスタンスをプログラムで識別する方法
 
@@ -57,6 +57,9 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 |`@@SERVERNAME`、`SERVERPROPERTY ('ServerName')`|次の形式による完全なインスタンス DNS 名:<instanceName>.<dnsPrefix>.database.windows.net。ここで、<instanceName> は顧客が指定する名前です。<dnsPrefix> は名前の中で自動生成される部分であり、グローバルな DNS 名の一意性を保証します (例: “wcus17662feb9ce98”)|例: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="key-features-and-capabilities-of-a-managed-instance"></a>マネージ インスタンスの主な特徴と機能 
+
+> [!IMPORTANT]
+> マネージ インスタンスは、オンライン操作、計画の自動修正、その他のエンタープライズ パフォーマンス拡張機能など、最新バージョンの SQL Server の機能すべてを実行します。 
 
 | **PaaS の特典** | **ビジネス継続性** |
 | --- | --- |
@@ -84,22 +87,23 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 
 次に汎用のサービス階層の主な機能を概説します。
 
-|機能 | 説明|
+|Feature | [説明]|
 |---|---|
 | vCores* の数 | 8、16、24|
 | SQL Server のバージョン/ビルド | SQL Server (最新版) |
 | 最小ストレージ サイズ | 32 GB |
 | 最大ストレージ サイズ | 8 TB |
+| データベースあたりの最大ストレージ容量 | 4 TB |
 | 期待されるストレージ IOPS | データ ファイルあたり 500 から 7500 IOPS (データ ファイルによって異なる)。 [Premium Storage](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) に関するセクションを参照してください。 |
 | データベースごとのデータ ファイル数 (ROWS) | 複数 | 
 | データベースごとのログ ファイル数 (LOG) | 1 | 
-| 管理される自動バックアップ | 可能 |
+| 管理される自動バックアップ | [はい] |
 | HA | リモート ストレージおよび [Azure Service Fabric](../service-fabric/service-fabric-overview.md) に基づく |
-| インスタンスおよびデータベースに対する組み込みの監視とメトリック | 可能 |
-| 自動的に行われるソフトウェア修正プログラムの適用 | 可能 |
-| VNet - Azure Resource Manager デプロイ | 可能 |
-| VNet - クラシック デプロイ モデル | 不可能 |
-| ポータルのサポート | 可能|
+| インスタンスおよびデータベースに対する組み込みの監視とメトリック | [はい] |
+| 自動的に行われるソフトウェア修正プログラムの適用 | [はい] |
+| VNet - Azure Resource Manager デプロイ | [はい] |
+| VNet - クラシック デプロイ モデル | いいえ  |
+| ポータルのサポート | [はい]|
 |||
 
 \* 仮想コアは、ハードウェアの世代の選択が可能な論理 CPU を表します。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz プロセッサをベースにしています。Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz プロセッサをベースにしています。  
@@ -120,7 +124,7 @@ Azure SQL Database マネージ インスタンス (プレビュー) は、Azure
 
 ### <a name="auditing-for-compliance-and-security"></a>コンプライアンスとセキュリティの監査 
 
-マネージ インスタンスの[監査](sql-database-auditing.md)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 
+[マネージ インスタンスの監査](sql-database-managed-instance-auditing.md)では、データベース イベントを追跡し、Azure Storage アカウントの監査ログにイベントを書き込みます。 監査により、規定遵守の維持、データベース活動の理解、およびビジネス上の懸念やセキュリティ違犯の疑いを示す差異や異常に対する洞察が容易になります。 
 
 ### <a name="data-encryption-in-motion"></a>移動中のデータの暗号化 
 
@@ -138,7 +142,7 @@ SQL Database [動的データ マスク](/sql/relational-databases/security/dyna
 
 ### <a name="threat-detection"></a>脅威の検出 
 
-Azure SQL Database の[脅威の検出](sql-database-threat-detection.md)では、サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、監査を補完します。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作を検出します。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 脅威の検出のアラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。  
+[マネージ インスタンスの脅威の検出](sql-database-managed-instance-threat-detection.md)では、サービスに組み込まれたセキュリティ インテリジェンスの追加レイヤーを提供することにより、[マネージ インスタンスの監査](sql-database-managed-instance-auditing.md)を補完します。このレイヤーでは、データベースにアクセスしたりデータベースを悪用したりしようとする、異常で有害な可能性がある動作を検出します。 不審なアクティビティ、潜在的な脆弱性、SQL インジェクション攻撃や、異常なデータベース アクセス パターンについて、アラートが送信されます。 脅威の検出のアラートは、[Azure Security Center](https://azure.microsoft.com/services/security-center/) で見ることができます。不審なアクティビティの詳細と、脅威の調査や危険性の軽減のために推奨される対処方法が表示されます。  
 
 ### <a name="azure-active-directory-integration-and-multi-factor-authentication"></a>Azure Active Directory との統合と多要素認証 
 

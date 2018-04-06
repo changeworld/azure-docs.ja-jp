@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement ユーザー インターフェイス - 分析"
-description: "Azure モバイル エンゲージメントを使用してアプリケーションに関する履歴データを分析する方法を説明します。"
+title: Azure Mobile Engagement ユーザー インターフェイス - 分析
+description: Azure モバイル エンゲージメントを使用してアプリケーションに関する履歴データを分析する方法を説明します。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 6b2533ac-b8ec-4e35-872c-d563895bdc0c
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ad05676919d6c254d60fd010c3f589f663c4745d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fceae1ffff40fc525170121181e21726fe2bd3f7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-analyze-historical-data-about-your-application"></a>アプリケーションに関する履歴データを分析する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 この記事では、**Mobile Engagement** ポータルの **[分析]** タブについて説明します。 **Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。 ポータルを使い始めるには、最初に **Azure Mobile Engagement** アカウントを作成する必要があることに注意してください。
 
 UI の [分析] セクションでは、24 時間ごとに更新される履歴データに基づいて、アプリケーションに関する統計情報を提供します。 この情報は、折れ線 / 棒 / 円グラフ、グリッド、マップからなる別のダッシュボードに表示されます。 このデータを .csv ファイルとしてダウンロードすることもできます。 これと同じ情報の多くは、UI の [モニタ] セクションからリアルタイムで入手できます。また、分析 API からアクセスすることもできます。

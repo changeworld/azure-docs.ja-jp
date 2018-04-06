@@ -1,6 +1,6 @@
 ---
-title: "クイック スタート - Azure Kubernetes クラスター ポータルのクイックスタート"
-description: "Azure Portal を使用して AKS で Linux コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。"
+title: クイック スタート - Azure Kubernetes クラスター ポータルのクイックスタート
+description: Azure Portal を使用して AKS で Linux コンテナー用 Kubernetes クラスターを作成する方法を簡単に説明します。
 services: container-service
 author: neilpeterson
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 02/24/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 35886217328d35229a59b9713f5bb4bf0244569a
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 4aad45559d167e6c046822200c9bbb98113d463b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
+# <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>クイック スタート: Azure Container Service (AKS) クラスターのデプロイ
 
 このクイックスタートでは、Azure Portal を使用して AKS クラスターをデプロイします。 次に、このクラスターで、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションが実行されます。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage の停止が発生した場合の対処方法 | Microsoft Docs"
-description: "Azure Storage の停止が発生した場合の対処方法"
+title: Azure Storage の停止が発生した場合の対処方法 | Microsoft Docs
+description: Azure Storage の停止が発生した場合の対処方法
 services: storage
 documentationcenter: .net
 author: tamram
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
-ms.openlocfilehash: 66406ed327f496dce7e77bb9ff650e0eec44bbdd
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3c313025917bba06675d3b2d844a6740fab89fbc
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Azure Storage の停止が発生した場合の対処方法
 Microsoft では、サービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス停止が 1 つまたは複数のリージョンで発生することがあります。 こうした状況はほとんど発生しませんが、発生した場合は、次のガイダンスに従って対応してください。
@@ -42,10 +42,10 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 この場合、ユーザーによる操作は必要ありません。 Azure サービスを利用できるようにするために鋭意取り組んでいます。 サービスの状態は [Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)で監視できます。
 
 ### <a name="option-2-copy-data-from-secondary"></a>オプション 2: セカンダリ リージョンからデータをコピーする
-ストレージ アカウントに対して [読み取りアクセス geo 冗長ストレージ (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (推奨) を選択した場合は、セカンダリ リージョンからデータに読み取りアクセスできます。 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md)、[Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) などのツールを使用して、セカンダリ リージョンから、影響を受けていないリージョンの別のストレージ アカウントにデータをコピーし、読み取りと書き込みの両方の可用性について、アプリケーションがそのストレージ アカウントを指すように指定します。
+ストレージ アカウントに対して [読み取りアクセス geo 冗長ストレージ (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (推奨) を選択した場合は、セカンダリ リージョンからデータに読み取りアクセスできます。 [AzCopy](storage-use-azcopy.md)、[Azure PowerShell](storage-powershell-guide-full.md)、[Azure Data Movement Library](https://azure.microsoft.com/blog/introducing-azure-storage-data-movement-library-preview-2/) などのツールを使用して、セカンダリ リージョンから、影響を受けていないリージョンの別のストレージ アカウントにデータをコピーし、読み取りと書き込みの両方の可用性について、アプリケーションがそのストレージ アカウントを指すように指定します。
 
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Storage のフェールオーバーが発生した場合
-[Geo 冗長ストレージ (GRS)](storage-redundancy.md#geo-redundant-storage) または[読み取りアクセス geo 冗長ストレージ (RA-GRS)](storage-redundancy.md#read-access-geo-redundant-storage) (推奨) を選択した場合、Azure Storage では 2 つのリージョン (プライマリおよびセカンダリ) でデータの持続性が維持されます。 この両方のリージョンでは、データのレプリカが常に複数保持されています。
+[Geo 冗長ストレージ (GRS)](storage-redundancy-grs.md) または[読み取りアクセス geo 冗長ストレージ (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (推奨) を選択した場合、Azure Storage では 2 つのリージョン (プライマリおよびセカンダリ) でデータの持続性が維持されます。 この両方のリージョンでは、データのレプリカが常に複数保持されています。
 
 地域的な災害がプライマリ リージョンに影響する場合、Microsoft では、まず、そのリージョン内のサービスを復元しようとします。 災害の性質とその影響によっては、まれではありますが、プライマリ リージョンを復元できないことがあります。 その場合は geo フェールオーバーを実行します。 リージョン間のデータ レプリケーションは非同期プロセスのため、遅延が発生することがあり、セカンダリ リージョンにレプリケートされていない変更は失われる可能性があります。 レプリケーション ステータスの詳細情報は、 [ストレージ アカウントの "最終同期時刻"](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) で確認することができます。
 

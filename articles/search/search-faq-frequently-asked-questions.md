@@ -10,10 +10,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: heidist
 ms.openlocfilehash: f61fe2930bc70e800e5d79773e0de6827621e845
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search - よく寄せられる質問 (FAQ)
 

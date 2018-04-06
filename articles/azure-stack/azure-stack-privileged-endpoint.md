@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: mabrigg
-ms.openlocfilehash: fb4dea9832e781b2ec9f4cfa573b5a4f630188db
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: f786d99718b82dba052909e566f1b0571701127e
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="using-the-privileged-endpoint-in-azure-stack"></a>Azure Stack での特権エンドポイントの使用
 
@@ -76,6 +76,8 @@ PEP への接続は、ハードウェア ライフサイクル ホストから�
 
       - **ユーザー名**: **&lt;*Azure Stack ドメイン*&gt;\accountname** の形式で CloudAdmin アカウントを指定します  (ASDK の場合、ユーザー名は **azurestack\accountname** です)。 
       - **パスワード**: インストール中に AzureStackAdmin ドメイン管理者アカウントのパスワードとして指定したものと同じパスワードを入力します。
+    > [!NOTE]
+    > ERCS エンドポイントに接続できない場合は、まだ接続を試みていない ERCS VM の IP アドレスを使用して、手順 1 と手順 2 を再試行してください。
     
 3.  接続後、環境に応じて **[*IP アドレスまたは ERCS VM 名*]: PS>** または **[azs-ercs01]: PS>** プロンプトが変わります。 ここから `Get-Command` を実行して、利用可能なコマンドレットの一覧を表示します。
 

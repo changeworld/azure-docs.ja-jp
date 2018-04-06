@@ -7,14 +7,14 @@ ms.reviewer: carlrab, bonova
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: bd8733590819faa3c4286c1940f0b9258842c930
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: b633c3c4a4f476cb8e89afde8adeb94558643d4b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Azure SQL Database マネージ インスタンスと SQL Server の T-SQL の相違点 
 
@@ -393,7 +393,11 @@ SQL Server エージェントについては、「[SQL Server エージェント
 
 ### <a name="exceeding-storage-space-with-small-database-files"></a>小さなデータベース ファイルによる記憶域の超過
 
-各マネージ インスタンスには、最大 35 TB の予約済みの記憶域があります。各データベース ファイルは、最初は 128 GB のストレージ アロケーション ユニットに配置されます。 多数の小さなファイルがあるデータベースが、128 GB ユニットに配置され、合計が 35 TB の上限を超える場合があります。 この場合、すべてのデータベースの合計サイズがインスタンスのサイズの上限に達していなくても、新しいデータベースを作成したり、復元したりすることはできません。 その場合に返されるエラーは、明確ではないことがあります。
+それぞれのマネージ インスタンスが、Azure Premium ディスク領域用に予約された最大 35 TB の記憶域を持ち、各データベース ファイルは別個の物理ディスク上に配置されます。 ディスク サイズとして、128 GB、256 GB、512 GB、1 TB、4 TB のいずれかを指定できます。 ディスク上の未使用領域については請求されませんが、Azure Premium ディスクのサイズ合計が 35 TB を超えることはできません。 場合によっては、内部の断片化のために、合計で 8 TB を必要としないマネージ インスタンスが、記憶域のサイズに関する 35 TB の Azure での制限を超える場合があります。 
+
+たとえば、4 TB のディスクを使用するマネージ インスタンスに、サイズが 1.2 TB のファイルが 1 つあり、サイズが 128 GB の 248 個のディスクに、それぞれが 1 GB の 248 個のファイルが配置される可能性があります。 この例では、ディスク記憶域の合計サイズは、1 x 4 TB + 248 x 128 GB = 35 TB となります。 ただし、データベースのために予約される合計インスタンス サイズは、1 x 1.2 TB + 248 x 1 GB = 1.4 TB となります。 これは、特定の状況下では、非常に特殊なファイルの配分のために、マネージ インスタンスが、想定していなかった Azure Premium ディスクの記憶域の上限に到達する可能性があることを示しています。 
+
+既存のデータベースではエラーが発生せず、新しいファイルが追加されなければ問題なくデータベースの拡大が可能です。しかし、すべてのデータベースの合計サイズがインスタンスのサイズ制限に到達しない場合でも、新しいディスク ドライブ用に十分な領域がないため、新しいデータベースの作成や復元を行うことができません。 その場合に返されるエラーは明確ではありません。
 
 ### <a name="incorrect-configuration-of-sas-key-during-database-restore"></a>データベースの復元時の SAS キーの構成が正しくない
 

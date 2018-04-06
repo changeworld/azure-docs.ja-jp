@@ -1,29 +1,27 @@
 ---
-title: "PowerShell を使用した Azure Event Grid のカスタム イベント | Microsoft Docs"
-description: "Azure Event Grid と PowerShell を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。"
+title: PowerShell を使用した Azure Event Grid のカスタム イベント | Microsoft Docs
+description: Azure Event Grid と PowerShell を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。
 services: event-grid
-keywords: 
+keywords: ''
 author: tfitzmac
 ms.author: tomfitz
-ms.date: 01/30/2018
+ms.date: 03/20/2018
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: 24366df54fa4fc32ebbff7c1303183707dea17c6
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 183bafad9b38ccb0e7eaae222c5569e45b15ac21
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-route-custom-events-with-azure-powershell-and-event-grid"></a>Azure PowerShell と Event Grid を使用したカスタム イベントの作成とルーティング
 
-Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure PowerShell を使用してカスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常、webhook や Azure Functions など、イベントに応答するエンドポイントが、イベントの送信先になります。 ただし、この記事では、単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サード パーティ製ツール ([RequestBin](https://requestb.in/) または [Hookbin](https://hookbin.com/)) を使用して作成します。
+Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure PowerShell を使用してカスタム トピックを作成してそのトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常、webhook や Azure Functions など、イベントに応答するエンドポイントが、イベントの送信先になります。 ただし、この記事では、単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、サード パーティ製ツール ([Hookbin](https://hookbin.com/)) を使用して作成します。
 
 >[!NOTE]
->**RequestBin** と **Hookbin** は、高いスループットでの使用を目的としていません。 ここでは、デモンストレーションのためにこれらのツールを使用します。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
+>**Hookbin** は、高いスループットでの使用を目的としていません。 ここでは、デモンストレーションのためにこのツールを使用します。 一度に複数のイベントをプッシュすると、一部のイベントがツールから見えない場合があります。
 
 最後に、イベント データがエンドポイントに送信されたことを確認します。
-
-![イベント データ](./media/custom-event-quickstart-powershell/request-result.png)
 
 [!INCLUDE [quickstarts-free-trial-note.md](../../includes/quickstarts-free-trial-note.md)]
 
@@ -43,7 +41,7 @@ New-AzureRmResourceGroup -Name gridResourceGroup -Location westus2
 
 ## <a name="create-a-custom-topic"></a>カスタム トピックの作成
 
-トピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 次の例では、リソース グループにトピックを作成します。 `<topic_name>` は、トピックの一意の名前に置き換えてください。 トピック名は、DNS エントリによって表されるため、一意である必要があります。
+Event Grid のトピックは、イベントの送信先となるユーザー定義のエンドポイントになります。 次の例では、リソース グループにカスタム トピックを作成します。 `<topic_name>` は、トピックの一意の名前に置き換えてください。 トピック名は、DNS エントリによって表されるため、一意である必要があります。
 
 ```powershell
 New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2 -Name <topic_name>
@@ -51,11 +49,11 @@ New-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Location westus2
 
 ## <a name="create-a-message-endpoint"></a>メッセージ エンドポイントの作成
 
-トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 RequestBin と Hookbin は、エンドポイントの作成と、エンドポイントに送信された要求の表示を可能にする、サード パーティ製のツールです。 [RequestBin](https://requestb.in/), に移動して **[Create a RequestBin]\(RequestBin の作成\)** をクリックするか、または[Hookbin](https://hookbin.com/) に移動して **[新しいエンドポイントの作成]** をクリックします。  Bin URL をコピーしてください。トピックをサブスクライブするときにこの URL が必要になります。
+カスタム トピックをサブスクライブする前に、イベント メッセージ用のエンドポイントを作成しましょう。 ここではイベントに応答するコードを作成する代わりに、皆さんが確認できるように、メッセージを収集するエンドポイントを作成します。 Hookbin は、エンドポイントを作成し、そこに送信された要求を表示できるサードパーティ ツールです。 [Hookbin](https://hookbin.com/) に移動し、**[新しいエンドポイントの作成]** をクリックします。  Bin URL をコピーしてください。トピックをサブスクライブするときにこの URL が必要になります。
 
 ## <a name="subscribe-to-a-topic"></a>トピックのサブスクライブ
 
-どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したトピックをサブスクライブし、RequestBin または Hookbin からの URL をイベント通知のエンドポイントとして渡しています。 `<event_subscription_name>` は、実際のサブスクリプションの一意の名前に、`<endpoint_URL>` は、前のセクションで得た値に置き換えてください。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 `<topic_name>` には、先ほど作成した値を使用します。
+どのイベントを追跡するかは、トピックをサブスクライブすることによって Event Grid に伝えます。次の例では、作成したカスタム トピックをサブスクライブし、Hookbin からの URL をイベント通知のエンドポイントとして渡しています。 `<event_subscription_name>` は、実際のサブスクリプションの一意の名前に、`<endpoint_URL>` は、前のセクションで得た値に置き換えてください。 サブスクライブ時にエンドポイントを指定することによって、そのエンドポイントに対するイベントのルーティングが Event Grid によって行われます。 `<topic_name>` には、先ほど作成した値を使用します。
 
 ```powershell
 New-AzureRmEventGridSubscription -EventSubscriptionName <event_subscription_name> -Endpoint <endpoint_URL> -ResourceGroupName gridResourceGroup -TopicName <topic_name>
@@ -63,14 +61,14 @@ New-AzureRmEventGridSubscription -EventSubscriptionName <event_subscription_name
 
 ## <a name="send-an-event-to-your-topic"></a>トピックへのイベントの送信
 
-では、イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 まず、トピックの URL とキーを取得します。 `<topic_name>` には、先ほどと同じトピック名を使用してください。
+イベントをトリガーして、Event Grid がメッセージをエンドポイントに配信するようすを見てみましょう。 まず、トピックの URL とキーを取得します。 `<topic_name>` には、先ほどと同じトピック名を使用してください。
 
 ```powershell
 $endpoint = (Get-AzureRmEventGridTopic -ResourceGroupName gridResourceGroup -Name <topic-name>).Endpoint
 $keys = Get-AzureRmEventGridTopicKey -ResourceGroupName gridResourceGroup -Name <topic-name>
 ```
 
-この記事では、単純化するために、トピックに送信するサンプル イベント データを設定します。 通常はイベント データをアプリケーションまたは Azure サービスから送信することになります。 次の例では、Hashtable を使用してイベントのデータ `htbody` を構築し、それを整形式の JSON ペイロード オブジェクト `$body` に変換しています。
+この記事では、単純化するために、カスタム トピックに送信するサンプル イベント データを設定します。 通常はイベント データをアプリケーションまたは Azure サービスから送信することになります。 次の例では、Hashtable を使用してイベントのデータ `htbody` を構築し、それを整形式の JSON ペイロード オブジェクト `$body` に変換しています。
 
 ```powershell
 $eventID = Get-Random 99999
@@ -124,7 +122,7 @@ Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-ke
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 引き続き使用する予定がない場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
+引き続きこのイベントを使用する場合は、この記事で作成したリソースをクリーンアップしないでください。 それ以外の場合は、次のコマンドを使用して、この記事で作成したリソースを削除します。
 
 ```powershell
 Remove-AzureRmResourceGroup -Name gridResourceGroup

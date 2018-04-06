@@ -1,25 +1,25 @@
-﻿---
-title: "Microsoft Azure Windows VM 用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージについて | Microsoft Docs"
-description: "Azure での Windows 仮想マシン用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージの基本について説明します。"
+---
+title: Microsoft Azure Windows VM 用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージについて | Microsoft Docs
+description: Azure での Windows 仮想マシン用の非管理対象ディスク ストレージ (ページ BLOB) と管理ディスク ストレージの基本について説明します。
 services: virtual-machines
-author: iainfoulds
+author: roygara
 manager: jeconnoc
 ms.service: virtual-machines
 ms.workload: storage
 ms.tgt_pltfrm: windows
 ms.topic: article
 ms.date: 11/15/2017
-ms.author: iainfou
-ms.openlocfilehash: bf5c5cc0637b9a515bf567ff8933170d7fc1a8ba
-ms.sourcegitcommit: 6fb44d6fbce161b26328f863479ef09c5303090f
+ms.author: rogarana
+ms.openlocfilehash: 3d82416b7382b8e09706fd7fb8af9e1d3fe79f01
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Azure Windows VM 用のディスク ストレージについて
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
 
-この記事では、ディスクのさまざまな使用方法について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](../linux/about-disks-and-vhds.md) にも利用できます。
+この記事では、ディスクのさまざまな仕様法王について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](../linux/about-disks-and-vhds.md) にも利用できます。
 
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 

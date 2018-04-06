@@ -1,11 +1,11 @@
 ---
-title: "Azure Network Watcher のリソース トラブルシューティングの概要 | Microsoft Docs"
-description: "このページでは、Network Watcher のリソース トラブルシューティング機能の概要を説明します。"
+title: Azure Network Watcher のリソース トラブルシューティングの概要 | Microsoft Docs
+description: このページでは、Network Watcher のリソース トラブルシューティング機能の概要を説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
-manager: timlt
-editor: 
+manager: jeconnoc
+editor: ''
 ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
 ms.service: network-watcher
 ms.devlang: na
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: a37c92e1aa58184ed29185742ec727c120fe593f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 646caa5e4aacd58377c0a2b5985a69277d00cec3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
-仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 こうしたゲートウェイおよび接続について監視することは、通信が妨げられないようにする上で重要です。 Network Watcher には、仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能が備わっています。 この機能は、ポータル、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は実行時間の長いトランザクションであり、結果は診断が完了してから返されます。
+仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 ゲートウェイやその接続の監視は、通信が切断されていないことを確認するために重要です。 Network Watcher には、ゲートウェイや接続をトラブルシューティングする機能が用意されています。 この機能は、ポータル、PowerShell、Azure CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher はゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は、実行時間の長いトランザクションです。 診断が完了すると、結果が返されます。
 
 ![ポータル][2]
 
@@ -50,44 +50,44 @@ ms.lasthandoff: 10/11/2017
 
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
-| NoFault | エラーが検出されなかった場合。 |はい|
-| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ|
-| PlannedMaintenance |  ゲートウェイ インスタンスはメンテナンス中です。  |いいえ|
-| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。 | いいえ |
-| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ |
-| PlatformInActive | プラットフォームに問題があります。 | なし|
-| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ|
-| NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 これはただの警告です。| なし|
-| ConnectionsNotConnected | どの接続も接続されていません。 これはただの警告です。| はい|
-| GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | はい |
+| NoFault | エラーが検出されなかった場合 |[はい]|
+| GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ |
+| PlannedMaintenance |  ゲートウェイ インスタンスがメンテナンス中です。  |いいえ |
+| UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。 | いいえ  |
+| VipUnResponsive | このエラーは、正常性プローブの失敗のためにゲートウェイのプライマリ インスタンスに到達できない場合に発生します。 | いいえ  |
+| PlatformInActive | プラットフォームに問題があります。 | いいえ |
+| ServiceNotRunning | 基になるサービスが実行されていません。 | いいえ |
+| NoConnectionsFoundForGateway | ゲートウェイ上に接続が存在しません。 このエラーは、単なる警告です。| いいえ |
+| ConnectionsNotConnected | どの接続も接続されていません。 このエラーは、単なる警告です。| [はい]|
+| GatewayCPUUsageExceeded | 現在のゲートウェイの CPU 使用率が 95% を超えています。 | [はい] |
 
 ### <a name="connection"></a>接続
 
 | エラーの種類 | 理由 | ログ|
 |---|---|---|
-| NoFault | エラーが検出されなかった場合。 |はい|
-| GatewayNotFound | ゲートウェイが見つからなかったか、プロビジョニングされていません。 |いいえ|
-| PlannedMaintenance | ゲートウェイ インスタンスはメンテナンス中です。  |いいえ|
-| UserDrivenUpdate | ユーザーの更新が進行中である場合。 サイズ変更操作が行われていると考えられます。  | いいえ |
-| VipUnResponsive | ゲートウェイのプライマリ インスタンスに到達できません。 これは、正常性プローブでエラーが発生した場合に起こります。 | いいえ |
-| ConnectionEntityNotFound | 接続の構成がありません。 | なし |
-| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |なし|
-| ConnectionNotConfiguredOnGateway | 基になるサービスで接続が構成されていません。 | はい |
-| ConnectionMarkedStandy | 基になるサービスがスタンバイとマークされています。| はい|
-| 認証 | 事前共有キーが一致しません。 | はい|
-| PeerReachability | ピア ゲートウェイに到達できません。 | はい|
-| IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | はい|
-| WfpParse Error | WFP ログの解析中にエラーが発生しました。 |あり|
+| NoFault | エラーが検出されなかった場合 |[はい]|
+| GatewayNotFound | ゲートウェイが見つからないか、またはゲートウェイがプロビジョニングされていません。 |いいえ |
+| PlannedMaintenance | ゲートウェイ インスタンスがメンテナンス中です。  |いいえ |
+| UserDrivenUpdate | このエラーは、ユーザーの更新が進行中である場合に発生します。 この更新は、サイズ変更操作である可能性があります。  | いいえ  |
+| VipUnResponsive | このエラーは、正常性プローブの失敗のためにゲートウェイのプライマリ インスタンスに到達できない場合に発生します。 | いいえ  |
+| ConnectionEntityNotFound | 接続の構成がありません。 | いいえ  |
+| ConnectionIsMarkedDisconnected | 接続が "切断" とマークされています。 |いいえ |
+| ConnectionNotConfiguredOnGateway | 基になるサービスの接続が構成されていません。 | [はい] |
+| ConnectionMarkedStandy | 基になるサービスがスタンバイとマークされています。| [はい]|
+| 認証 | 事前共有キーが一致しません。 | [はい]|
+| PeerReachability | ピア ゲートウェイに到達できません。 | [はい]|
+| IkePolicyMismatch | ピア ゲートウェイに、Azure のサポート対象外の IKE ポリシーが設定されています。 | [はい]|
+| WfpParse Error | WFP ログの解析中にエラーが発生しました。 |[はい]|
 
 ## <a name="supported-gateway-types"></a>サポートされるゲートウェイの種類
 
-次に示したのは、Network Watcher のトラブルシューティングでサポートされるゲートウェイと接続の一覧です。
+次の表は、Network Watcher のトラブルシューティングでサポートされるゲートウェイと接続の一覧を示しています。
+
 |  |  |
 |---------|---------|
 |**ゲートウェイの種類**   |         |
 |VPN      | サポートされています        |
 |ExpressRoute | サポートされていません |
-|Hypernet | サポートされていません|
 |**VPN の種類** | |
 |ルート ベース | サポートされています|
 |ポリシー ベース | サポートされていません|
@@ -95,7 +95,6 @@ ms.lasthandoff: 10/11/2017
 |IPSec| サポートされています|
 |VNet2Vnet| サポートされています|
 |ExpressRoute| サポートされていません|
-|Hypernet| サポートされていません|
 |VPNClient| サポートされていません|
 
 ## <a name="log-files"></a>ログ ファイル
@@ -151,7 +150,7 @@ Error: On-prem device sent invalid payload.
 
 **Scrubbed-wfpdiag.txt** ログ ファイルには、wfp のログが記載されます。 このログには、パケット ドロップと IKE/AuthIP のエラーが記録されます。
 
-次の例に、Scrubbed-wfpdiag.txt ファイルの内容を示します。 この例では、下から 3 番目の行で示されているように、接続の共有キーが適切ではありませんでした。 問題に応じてログが非常に長くなることがあるため、次の例ではログ全体の一部のみを示しています。
+次の例に、Scrubbed-wfpdiag.txt ファイルの内容を示します。 この例では、下から 3 行目でわかるように、接続の共有キーが正しくありませんでした。 問題に応じてログが非常に長くなることがあるため、次の例ではログ全体の一部のみを示しています。
 
 ```
 ...
@@ -210,7 +209,7 @@ Elapsed Time            330 sec
 |        12    ikeext               ike_sa_management_c3307  7857a320-42ee-6e90-d5d9-3f414e3ea2d3|
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ポータルを使用して VPN ゲートウェイと接続を診断する方法については、[Azure Portal を使用したゲートウェイのトラブルシューティング](network-watcher-troubleshoot-manage-portal.md)に関するページを参照してください。
 <!--Image references-->

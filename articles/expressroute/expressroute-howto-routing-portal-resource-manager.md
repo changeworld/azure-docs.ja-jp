@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/12/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1ad6c62c3c5828143cb78f464fc1181bdf3b19f7
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f0f0a31abc4e2d3114d71729c6c447c569295290
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute 回線のピアリングの作成と変更を行う
 
@@ -61,8 +61,6 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 > 
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft ピアリングを作成するには
-
-[!INCLUDE [Premium](../../includes/expressroute-mspeering-premium-include.md)]
 
 1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Microsoft ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 

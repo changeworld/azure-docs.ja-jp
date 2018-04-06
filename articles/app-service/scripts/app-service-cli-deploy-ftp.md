@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI のサンプル スクリプト - Web アプリの作成および FTP を使用したファイルのデプロイ | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - Web アプリの作成および FTP を使用したファイルのデプロイ"
+title: Azure CLI のサンプル スクリプト - Web アプリの作成および FTP を使用したファイルのデプロイ | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - Web アプリの作成および FTP を使用したファイルのデプロイ
 services: app-service\web
-documentationcenter: 
+documentationcenter: ''
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 tags: azure-service-management
 ms.service: app-service-web
 ms.workload: web
@@ -15,11 +15,11 @@ ms.topic: sample
 ms.date: 12/12/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: d8b4cc9c80f1e9e3743e615c205972d027eb726f
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 8be2bc575649febe7870129b5b4c9996d7de0728
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-web-app-and-deploy-files-with-ftp"></a>Web アプリを作成し、FTP を使用してファイルをデプロイする
 
@@ -43,10 +43,10 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | コマンド | メモ |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Azure Web アプリを作成します。 |
-| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az_webapp_deployment_list_publishing_profiles) | 使用可能な Web アプリ デプロイ プロファイルの詳細を取得します。 |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Azure Web アプリを作成します。 |
+| [`az webapp deployment list-publishing-profiles`](/cli/azure/webapp/deployment?view=azure-cli-latest#az-webapp-deployment-list-publishing-profiles) | 使用可能な Web アプリ デプロイ プロファイルの詳細を取得します。 |
 
 ## <a name="next-steps"></a>次の手順
 

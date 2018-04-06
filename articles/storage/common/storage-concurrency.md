@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: jasontang501
 ms.openlocfilehash: 937cca66a0af0674b868e6a87681adbea330e91c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Microsoft Azure Storage での同時実行制御の管理
 ## <a name="overview"></a>概要
@@ -90,15 +90,15 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 | 操作 | コンテナーの ETag 値を返す | 条件ヘッダーを受け取る |
 |:--- |:--- |:--- |
-| コンテナーの作成 |はい |なし |
-| コンテナーのプロパティの取得 |はい |なし |
-| Get Container Metadata |はい |なし |
-| コンテナーのメタデータの設定 |はい |はい |
-| コンテナー ACL の取得 |はい |なし |
-| Set Container ACL |はい |あり (*) |
-| Delete Container |なし |はい |
-| Lease Container |はい |はい |
-| BLOBs の一覧 |なし |なし |
+| コンテナーの作成 |[はい] |いいえ  |
+| コンテナーのプロパティの取得 |[はい] |いいえ  |
+| Get Container Metadata |[はい] |いいえ  |
+| コンテナーのメタデータの設定 |[はい] |[はい] |
+| コンテナー ACL の取得 |[はい] |いいえ  |
+| Set Container ACL |[はい] |あり (*) |
+| Delete Container |いいえ  |[はい] |
+| Lease Container |[はい] |[はい] |
+| BLOBs の一覧 |いいえ  |いいえ  |
 
 (*) SetContainerACL で定義されたアクセス許可はキャッシュされます。このアクセス許可の更新の伝達には 30 秒間かかり、その間は更新の整合性は保証されません。  
 
@@ -106,22 +106,22 @@ Storage サービスでは、**If-Modified-Since**、**If-Unmodified-Since**、*
 
 | 操作 | ETag 値を返す | 条件ヘッダーを受け取る |
 |:--- |:--- |:--- |
-| Put Blob |はい |はい |
-| Get Blob |はい |はい |
-| BLOB のプロパティの取得 |はい |はい |
-| Set Blob Properties |はい |はい |
-| Get Blob Metadata |はい |はい |
-| Set Blob Metadata |はい |はい |
-| Lease Blob (*) |はい |はい |
-| Snapshot Blob |はい |はい |
-| BLOB のコピー |はい |Yes (コピー元とコピー先 BLOB に対して) |
-| Abort Copy Blob |なし |なし |
-| Delete Blob |なし |はい |
-| Put Block |なし |なし |
-| Put Block List |はい |はい |
-| Get Block List |はい |なし |
-| Put Page |はい |はい |
-| Get Page Ranges |はい |はい |
+| Put Blob |[はい] |[はい] |
+| Get Blob |[はい] |[はい] |
+| BLOB のプロパティの取得 |[はい] |[はい] |
+| Set Blob Properties |[はい] |[はい] |
+| BLOB のメタデータの取得 |[はい] |[はい] |
+| Set Blob Metadata |[はい] |[はい] |
+| Lease Blob (*) |[はい] |[はい] |
+| Snapshot Blob |[はい] |[はい] |
+| BLOB のコピー |[はい] |Yes (コピー元とコピー先 BLOB に対して) |
+| Abort Copy Blob |いいえ  |いいえ  |
+| Delete Blob |いいえ  |[はい] |
+| Put Block |いいえ  |いいえ  |
+| Put Block List |[はい] |[はい] |
+| Get Block List |[はい] |いいえ  |
+| Put Page |[はい] |[はい] |
+| Get Page Ranges |[はい] |[はい] |
 
 (*) Lease BLOB では、BLOB の ETag は変更されません。  
 
@@ -174,7 +174,7 @@ catch (StorageException ex)
 * Put Block List
 * Get Block List
 * Put Page
-* Get Page Ranges
+* ページ範囲の取得
 * Snapshot Blob - リースが存在する場合にオプションでリース ID を使用
 * Copy Blob - コピー先の BLOB でリースが存在する場合はリース ID が必要
 * Abort Copy Blob - コピー先の BLOB で無制限のリースが存在する場合はリース ID が必要
@@ -188,7 +188,7 @@ catch (StorageException ex)
 * Delete Container
 * コンテナーのプロパティの取得
 * Get Container Metadata
-* コンテナーのメタデータの設定
+* Set Container Metadata
 * コンテナー ACL の取得
 * Set Container ACL
 * Lease Container  
@@ -241,13 +241,13 @@ customer.ETag = "*";
 
 | 操作 | ETag 値を返す | If-Match 要求ヘッダーが必須 |
 |:--- |:--- |:--- |
-| エンティティのクエリ |はい |なし |
-| エンティティの挿入 |はい |なし |
-| エンティティの更新 |はい |はい |
-| エンティティの統合 |はい |はい |
-| エンティティの削除 |なし |はい |
-| エンティティの挿入または置換 |はい |なし |
-| エンティティの挿入または統合 |はい |いいえ |
+| エンティティのクエリ |[はい] |いいえ  |
+| エンティティの挿入 |[はい] |いいえ  |
+| エンティティの更新 |[はい] |[はい] |
+| エンティティの統合 |[はい] |[はい] |
+| エンティティの削除 |いいえ  |[はい] |
+| エンティティの挿入または置換 |[はい] |いいえ  |
+| エンティティの挿入または統合 |[はい] |いいえ  |
 
 **Insert or Replace Entity** と **Insert or Merge Entity** の各操作では、ETag の値は Table サービスに送信されないため、同時実行制御の確認は*行われません*。  
 

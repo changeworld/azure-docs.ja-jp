@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement Web SDK の統合 | Microsoft Docs"
-description: "Azure Mobile Engagement Web SDK の最新の更新プログラムと手順"
+title: Azure Mobile Engagement Web SDK の統合 | Microsoft Docs
+description: Azure Mobile Engagement Web SDK の最新の更新プログラムと手順
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b5daa2a2-942b-489d-aa1d-568c3b25e56f
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: js
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: piyushjo
-ms.openlocfilehash: 7d8eaa180e277741a583522ee62d68f5247b92bb
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: bccfbdfe9d99900f58d5dbfa44183146c79b9c88
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="integrate-azure-mobile-engagement-in-a-web-application"></a>Web アプリケーションへの Azure Mobile Engagement の統合
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 > [!div class="op_single_selector"]
 > * [Windows ユニバーサル](mobile-engagement-windows-store-integrate-engagement.md)
 > * [Windows Phone Silverlight](mobile-engagement-windows-phone-integrate-engagement.md)
@@ -107,7 +111,7 @@ Mobile Engagement セッションは一連のアクティビティに分割さ�
 
 クラシック Web サイトでは、サイトのページごとに異なるアクティビティを宣言することをお勧めします。 ページ移動のない Web サイトまたは Web アプリケーションについては、ページ内など、さらに小さな範囲でのアクティビティの追跡が必要になる場合があります。
 
-いずれにしても、ユーザー アクティビティを開始したり現在のユーザー アクティビティを変更したりするには、 `engagement.agent.startActivity` 関数を呼び出します。 次に例を示します。
+いずれにしても、ユーザー アクティビティを開始したり現在のユーザー アクティビティを変更したりするには、 `engagement.agent.startActivity` 関数を呼び出します。 例: 
 
     <body onload="yourOnload()">
 

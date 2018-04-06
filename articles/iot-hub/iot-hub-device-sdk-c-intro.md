@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: cc559a19f6d7c31b3bc00a74851f4d42719832de
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6a85ae65a0f20892b3a20656abac05e90538a1bd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
 **Azure IoT device SDK** は、**Azure IoT Hub** サービスとのメッセージの送受信プロセスを簡略化するために設計された一連のライブラリです。 SDK にはさまざまなバリエーションがあり、それぞれが特定のプラットフォームを対象としていますが、この記事では、 **C 用 Azure IoT device SDK**について説明します。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 C 用 Azure IoT デバイス SDK は、移植性を最大限まで高めるために ANSI C (C99) で記述されています。 この機能により、複数のプラットフォームとデバイス、特にディスクとメモリの量を最小限に抑えることが優先される環境でライブラリを操作しやすくなります。
 

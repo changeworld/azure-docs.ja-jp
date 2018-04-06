@@ -1,64 +1,39 @@
 ---
-title: "Azure AD テナントを取得する方法 | Microsoft Docs"
-description: "アプリケーションを登録および構築するために Azure Active Directory テナントを取得する方法を説明します。"
+title: Azure AD テナントを取得する方法 | Microsoft Docs
+description: アプリケーションを登録および構築するために Azure Active Directory テナントを取得する方法を説明します。
 services: active-directory
-documentationcenter: 
-author: bryanla
+documentationcenter: ''
+author: mtillman
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 1f4b24eb-ab4d-4baa-a717-2a0e5b8d27cd
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/19/2017
-ms.author: bryanla
+ms.date: 03/23/2018
+ms.author: mtillman
 ms.custom: aaddev
-ms.openlocfilehash: 85783d58b2b02a9d0c6230429bebf2806514dee5
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: ab7db49fa07f260de6ebbe4b2cee943b64cab7fe
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="how-to-get-an-azure-active-directory-tenant"></a>Azure Active Directory テナントを取得する方法
-Azure Active directory (Azure AD) では、 [テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant) は組織を代表するものです。  テナントは、Azure AD サービスの専用インスタンスであり、組織が Azure、Microsoft Intune、Office 365 などの Microsoft クラウド サービスにサインアップしたときに提供されて所有します。  各 Azure AD テナントは、他の Azure AD テナントと区別され分離されています。  
+Azure Active directory (Azure AD) では、 [テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#Anchor_0) は組織を代表するものです。  これは、Azure AD サービスの専用インスタンスであり、組織が Azure、Microsoft Intune、Office 365 といった Microsoft クラウド サービスにサインアップするなど、Microsoft との関係が生じたときに提供されて所有するものです。  各 Azure AD テナントは、他の Azure AD テナントと区別され分離されています。  
 
 テナントは、企業内のユーザーおよびパスワード、ユーザー プロファイル データ、アクセス許可などのユーザーに関する情報を保持しています。  また、グループ、アプリケーション、および組織とそのセキュリティに関するその他の情報も含まれます。
 
-Azure AD ユーザーがアプリケーションにサインインできるようにするには、自分のテナントにアプリケーションを登録する必要があります。  Azure AD テナントへのアプリケーションの発行は **完全に無料**です。  実際、ほとんどの開発者は、実験、開発、ステージング、テストのために複数のテナントとアプリケーションを作成します。  アプリケーションにサインアップして使用する組織は、高度なディレクトリ機能を利用したければライセンスの購入を選択できます。
+Azure AD ユーザーがアプリケーションにサインインできるようにするには、自分のテナントにアプリケーションを登録する必要があります。  Azure AD テナントの作成とそのテナントでのアプリケーションの発行は、**完全に無料**です (ただし、料金を支払ってテナントでプレミアム機能を使用することもできます)。  実際、多くの開発者は、実験、開発、ステージング、テストのために複数のテナントとアプリケーションを作成します。
 
-それでは、Azure AD テナントを取得するにはどうすればよいでしょうか。  ユーザーが次のどれに該当するかによって、プロセスは少しずつ異なる場合があります。
+## <a name="use-an-existing-azure-ad-tenant"></a>既存の Azure AD テナントの使用
 
-* [既存の Office 365 サブスクリプションを所有している](#use-an-existing-office-365-subscription)
-* [Microsoft アカウントに関連付けられた既存の Azure サブスクリプションを所有している](#use-an-msa-azure-subscription)
-* [組織のアカウントに関連付けられた既存の Azure サブスクリプションを所有している](#use-an-organizational-azure-subscription)
-* [上記のいずれも所有していず、最初から開始する](#start-from-scratch)
+多くの開発者は、Azure AD テナントに関連付けられたサービスまたはサブスクリプションを通じてテナントを既に持っています (例: Office 365 や Azure サブスクリプション)。  既にテナントがあるかどうかをチェックするには、アプリケーションの管理に使用するアカウントで [Azure Portal](https://portal.azure.com) にサインインしてから、アカウント情報が表示される右上隅をチェックします。  テナントがある場合、自動的にそのテナントへのログインが行われます。テナント名はアカウント名のすぐ下に表示されます。  アカウントが複数のテナントに関連付けられている場合、アカウント名をクリックしてメニューを開き、そこでテナントを切り替えることができます。
 
-## <a name="use-an-existing-office-365-subscription"></a>既存の Office 365 サブスクリプションを使用する
-既に Office 365 サブスクリプションがある場合は、Azure AD テナントも持っています。 O365 アカウントで [Azure Portal](https://portal.azure.com) にサインインし、Azure AD の使用を開始できます。
+アカウントに関連付けられた既存のテナントがない場合、アカウント名の下に GUID が表示されます。また、[新しいテナントを作成する](#create-a-new-azure-ad-tenant)まで、アプリの登録などのアクションを実行できません。
 
-## <a name="use-an-msa-azure-subscription"></a>MSA Azure サブスクリプションを使用する
-以前に個人の Microsoft アカウントで Azure サブスクリプションにサインアップしている場合は、既にテナントを持っています。  [Azure ポータル](https://portal.azure.com)にログインすると、自動的に既定のテナントへのログインが行われます。 このテナントは自由に使用できますが、組織の管理者アカウントを作成する必要がある場合があります。
+## <a name="create-a-new-azure-ad-tenant"></a>新しい Azure AD テナントの作成
 
-これを行うには、次の手順に従います。  または、新しいテナントを作成し、同様のプロセスでそのテナントに管理者を作成することもできます。
-
-1. 個人アカウントで [Azure ポータル](https://portal.azure.com)にログインします。
-2. ポータルの [Azure Active Directory] セクションに移動します (左側のナビゲーション バーの **[すべてのサービス]** の下)
-3. 自動的に "既定のディレクトリ" にサインインされるはずですが、そうならない場合は、右上隅のアカウント名をクリックしてディレクトリを切り替えることができます。
-4. **[クイック タスク]** セクションで **[ユーザーの追加]** を選択します。
-5. [ユーザーの追加] フォームで、次の詳細を指定します。
-
-   * 名前: (適切な値を選択)
-   * ユーザー名: (この管理者のユーザー名を選択)
-   * プロファイル: (名、姓、役職、および部署の適切な値を入力)
-   * ロール: グローバル管理者
-6. [ユーザーの追加] フォームの入力を完了し、新しい管理ユーザーの一時パスワードを受け取ったら、パスワードを変更するためにこの新しいユーザーでログインする必要があるので、このパスワードを忘れずに記録しておきます。 連絡用電子メールを使用して、ユーザーにパスワードを直接送信することもできます。
-7. **[作成]** をクリックして、新しいユーザーを作成します。
-8. 一時的なパスワードを変更するには、この新しいユーザー アカウントで [https://login.microsoftonline.com](https://login.microsoftonline.com) にログインし、要求された場合にはパスワードを変更します。
-
-## <a name="use-an-organizational-azure-subscription"></a>組織の Azure サブスクリプションを使用する
-以前に組織のアカウントで Azure サブスクリプションにサインアップしている場合は、既にテナントを持っています。  [Azure Portal](https://portal.azure.com) で [すべてのサービス]、[Azure Active Directory] に移動すると、テナントが見つかるはずです。  必要に応じて、このテナントを自由に使用できます。
-
-## <a name="start-from-scratch"></a>最初から行う
-上記のいずれにも当てはまらなくても、心配しないでください。 単純に [Azure ポータル](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)にアクセスして新しい Azure AD ディレクトリを作成してください。 プロセスが完了すると、サインアップ時に選択したドメイン名を持つ専用の Azure AD テナントが取得されます。  [Azure ポータル](https://portal.azure.com)の左側にあるナビゲーションで **[Azure Active Directory]** に移動すると、テナントを見つけることができます。
+Azure AD テナントがない場合、または新しいテナントを作成したい場合、[Azure Portal](https://portal.azure.com) の[ディレクトリ作成エクスペリエンス](https://portal.azure.com/#create/Microsoft.AzureActiveDirectory)を使用して作成できます。  このプロセスには約 1 分かかります。また、最後に新しく作成したテナントに移動するよう求められます。

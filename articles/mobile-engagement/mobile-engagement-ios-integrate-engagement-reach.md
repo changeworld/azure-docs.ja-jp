@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement iOS SDK Reach の統合 | Microsoft Docs"
-description: "Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順"
+title: Azure Mobile Engagement iOS SDK Reach の統合 | Microsoft Docs
+description: Azure Mobile Engagement 用 iOS SDK の最新の更新プログラムと手順
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 1f5f5857-867c-40c5-9d76-675a343a0296
 ms.service: mobile-engagement
 ms.workload: mobile
@@ -14,13 +14,17 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 12/13/2016
 ms.author: piyushjo
-ms.openlocfilehash: ba74e0c442ac10f096d465f989e03d2ceae8cd88
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d531f5850e8f7f352774f5894285402bd4cc53e
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-integrate-engagement-reach-on-ios"></a>iOS でエンゲージメント リーチを統合する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 このガイドに従う前に、「 [Engagement を iOS に統合する方法](mobile-engagement-ios-integrate-engagement.md) 」に記載されている統合手順に従う必要があります。
 
 このドキュメントでは XCode 8 が必要です。 XCode 7 に依存している場合は、 [iOS Engagement SDK v3.2.4](https://aka.ms/r6oouh)を使用できます。 この以前のバージョンには、iOS 10 デバイスで実行したときに、システム通知が処理されないという既知のバグがあります。 これを修正するには、次のようにアプリケーション デリゲートで非推奨 API の `application:didReceiveRemoteNotification:` を実装する必要があります。
@@ -335,7 +339,7 @@ ms.lasthandoff: 10/11/2017
 
 1. インターフェイス ビルダーを使用して、通知ビューを追加します。
 
-   * *インターフェイス ビルダー*
+   *  *インターフェイス ビルダー*
    * 通知を表示する場所に 320 x 60 (または、iPad の場合は 768 x 60) の `UIView` を配置します。
    * このビューのタグ値を **36822491**
 2. プログラムを使用して通知ビューを追加します。 ビューが初期化されたら、次のコードを追加します。

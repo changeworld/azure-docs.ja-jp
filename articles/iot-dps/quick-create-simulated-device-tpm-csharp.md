@@ -12,11 +12,11 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 7dd8d90ca3201fce0680b88b5530712126997efe
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 8c292f998a719f8bc6d64655c1f2cdd75054653b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-provision-a-simulated-tpm-device-using-c-device-sdk-for-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service 対応の C# デバイス SDK を使用して、シミュレートされた TPM デバイスを作成してプロビジョニングする
 
@@ -25,6 +25,8 @@ ms.lasthandoff: 03/16/2018
 以下の手順では、Windows OS を実行する開発マシンで Azure IoT Hub C# SDK でシミュレートされた TPM デバイス サンプルをビルドし、シミュレートされたデバイスを Device Provisioning Service と IoT ハブに接続する方法について説明します。 このサンプル コードでは、デバイスの[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) として Windows TPM シミュレーターを使用しています。 
 
 事前に、[Azure Portal での IoT Hub Device Provisioning Service の設定](./quick-setup-auto-provision.md)に関するページの手順を済ませておいてください。
+
+[!INCLUDE [IoT DPS basic](../../includes/iot-dps-basic.md)]
 
 <a id="setupdevbox"></a>
 ## <a name="prepare-the-development-environment"></a>開発環境の準備 

@@ -1,12 +1,11 @@
 ---
-title: "Stream Analytics の一般的使用状況パターンのクエリ例 | Microsoft Docs"
-description: "一般的な Azure Stream Analytics クエリのパターン"
-keywords: "クエリ例"
+title: Stream Analytics の一般的使用状況パターンのクエリ例 | Microsoft Docs
+description: 一般的な Azure Stream Analytics クエリのパターン
+keywords: クエリ例
 services: stream-analytics
-documentationcenter: 
-author: samacha
-manager: jenniehubbard
-editor: cgronlun
+documentationcenter: ''
+author: jseb225
+manager: ryanw
 ms.assetid: 6b9a7d00-fbcc-42f6-9cbb-8bbf0bbd3d0e
 ms.service: stream-analytics
 ms.devlang: na
@@ -14,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/08/2017
-ms.author: samacha
-ms.openlocfilehash: cb0a948416983f33a4ca8d9211a3a114ba011685
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: jeanb
+ms.openlocfilehash: 9632a77afff6ba47d6ce80457e02f1f6194362a1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="query-examples-for-common-stream-analytics-usage-patterns"></a>一般的 Stream Analytics 使用状況パターンのクエリ例
 ## <a name="introduction"></a>はじめに

@@ -2,24 +2,19 @@
 title: Azure SQL Data Warehouse のチート シート | Microsoft Docs
 description: Azure SQL Data Warehouse ソリューションをすばやく構築するためのリンクとベスト プラクティスが見つかります。
 services: sql-data-warehouse
-documentationcenter: NA
 author: acomet
 manager: jhubbard
-editor: ''
-ms.assetid: 51f1e444-9ef7-4e30-9a88-598946c45196
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: manage
-ms.date: 02/20/2018
+ms.topic: overview
+ms.component: design
+ms.date: 03/28/2018
 ms.author: acomet
-ms.openlocfilehash: c67d56ff63f70baa052be17c119d943c558d398f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.reviewer: mausher,igorstan,jrj
+ms.openlocfilehash: 1e09dc2f3c7e7aa4ae98ef98a8957454a1beee6b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="cheat-sheet-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のチート シート
 このチート シートは、Azure SQL Data Warehouse ソリューションを構築する場合に役立つヒントとベスト プラクティスを提供します。 開始する前に、SQL Data Warehouse とは何か、および SQL Data Warehouse でないものは何かを説明する「[Azure SQL Data Warehouse Workload Patterns and Anti-Patterns](https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns)」(Azure SQL Data Warehouse ワークロード パターンとアンチ パターン) を読んで、各手順の詳細を参照してください。
@@ -152,6 +147,8 @@ SQL Database と Azure Analysis Services はハブとスポークのアーキテ
 [パーティション]:sql-data-warehouse-tables-partition.md
 [統計]:sql-data-warehouse-tables-statistics.md
 [リソース クラスと同時実行]:resource-classes-for-workload-management.md
+[レプリケート テーブル]:design-guidance-for-replicated-tables.md
+[分散テーブル]:sql-data-warehouse-tables-distribute.md
 
 <!--MSDN references-->
 
@@ -160,8 +157,7 @@ SQL Database と Azure Analysis Services はハブとスポークのアーキテ
 [typical architectures that take advantage of SQL Data Warehouse]: https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/common-isv-application-patterns-using-azure-sql-data-warehouse/
 [is and is not]:https://blogs.msdn.microsoft.com/sqlcat/2017/09/05/azure-sql-data-warehouse-workload-patterns-and-anti-patterns/
 [データ移行]:https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
-[レプリケート テーブル]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/design-guidance-for-replicated-tables
-[分散テーブル]:https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-tables-distribute
-[Azure Data Lake Store]: https://docs.microsoft.com/en-us/azure/data-factory/connector-azure-data-lake-store
-[sys.dm_pdw_nodes_db_partition_stats]: https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
-[sys.dm_pdw_request_steps]:https://docs.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql
+
+[Azure Data Lake Store]: ../data-factory/connector-azure-data-lake-store.md
+[sys.dm_pdw_nodes_db_partition_stats]: /sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql
+[sys.dm_pdw_request_steps]:/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql

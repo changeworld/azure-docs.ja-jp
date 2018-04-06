@@ -1,8 +1,8 @@
 ---
-title: "OMS Log Analytics のアラート REST API の使用"
-description: "Log Analytics のアラート REST API は、Operations Management Suite (OMS) の一部である Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。"
+title: OMS Log Analytics のアラート REST API の使用
+description: Log Analytics のアラート REST API は、Operations Management Suite (OMS) の一部である Log Analytics でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: jwhit
 editor: tysonn
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5ce72ffef4394bf3bbe39fa420c4fcaa965ae35c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ed0ac6e2041ef503470f7317a5736deecd1d2b8f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>REST API を使用して Log Analytics でアラートのルールを作成および管理する
 Log Analytics のアラート REST API は、Operations Management Suite (OMS) でアラートを作成し、管理するために使用できます。  この記事では、API の詳細と、さまざまな操作を実行するいくつかの例について説明します。
 
-Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンド ライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインから API にアクセスする例を示します。 Log Analytics 検索 API には、ARMClient や PowerShell を使用する以外にもさまざまな方法でアクセスできます。 これらのツールを使用すると、RESTful な Azure Resource Manager API を使用して OMS のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
+Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager REST API を使用してアクセスできます。 このドキュメントでは、Azure Resource Manager API の呼び出しを簡略化するオープン ソースのコマンドライン ツールである [ARMClient](https://github.com/projectkudu/ARMClient) を使用して PowerShell コマンド ラインから API にアクセスする例を示します。 Log Analytics 検索 API には、ARMClient や PowerShell を使用する以外にもさまざまな方法でアクセスできます。 これらのツールを使用すると、RESTful な Azure Resource Manager API を使用して OMS のワークスペースにアクセスし、その中で検索コマンドを実行できます。 API の検索結果は JSON 形式で出力されるため、検索結果をプログラムによりさまざまな方法で使用できます。
 
 ## <a name="prerequisites"></a>前提条件
 現時点では、アラートは Log Analytics の保存した検索条件でのみ作成できます。  詳細については、「 [Log Search REST API (ログ検索 REST API)](log-analytics-log-search-api.md) 」を参照してください。
@@ -33,13 +33,13 @@ Log Analytics の検索 REST API は RESTful であり、Azure Resource Manager 
 保存した検索条件には、1 つ以上のスケジュールを設定できます。 スケジュールは、検索を実行する頻度と、条件を識別する時間間隔を定義します。
 スケジュールには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | 間隔 |検索を実行する頻度。 分単位で指定します。 |
 | QueryTimeSpan |条件を評価する時間間隔。 [Interval] の値以上にする必要があります。 分単位で指定します。 |
 | バージョン |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
-たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、条件が 30 分間にわたって真に評価されるとアラートがトリガーされます。
+たとえば、[Interval] を 15 分、[QueryTimeSpan] を 30 分に設定したイベント クエリを考えます。 この場合、クエリは 15 分ごとに実行され、条件が 30 分間にわたって true に評価されるとアラートがトリガーされます。
 
 ### <a name="retrieving-schedules"></a>スケジュールの取得
 Get メソッドを使用して、保存した検索条件のすべてのスケジュールを取得します。
@@ -92,13 +92,17 @@ Get メソッドを使用して、保存した検索条件のすべてのスケ�
 
 すべてのアクションには、次の表に示したプロパティがあります。  後で説明するように、アラートの種類によって異なる追加のプロパティもあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
-| 型 |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
-| 名前 |アラートの表示名。 |
+| type |アクションの種類。  現在使用可能な値は、[Alert] と [Webhook] です。 |
+| Name |アラートの表示名。 |
 | バージョン |使用している API バージョン。  現時点では、常に 1 に設定する必要があります。 |
 
 ### <a name="retrieving-actions"></a>アクションの取得
+
+> [!NOTE]
+> 2018 年 4 月 23 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 4 月 23 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+
 Get メソッドを使用して、スケジュールのすべてのアクションを取得します。
 
     armclient get /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search  ID}/schedules/{Schedule ID}/actions?api-version=2015-03-20
@@ -118,6 +122,10 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 新しいアクションを作成するための要求の形式は、アクションの種類によって異なるため、以下のセクションに例を示しています。
 
 ### <a name="deleting-actions"></a>アクションの削除
+
+> [!NOTE]
+> 2018 年 4 月 23 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 4 月 23 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、アクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+
 アクション ID と共に Delete メソッドを使用すると、アクションを削除できます。
 
     armclient delete /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Subscription ID}/schedules/{Schedule ID}/Actions/{Action ID}?api-version=2015-03-20
@@ -125,18 +133,25 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 ### <a name="alert-actions"></a>アラート アクション
 スケジュールには、アラート アクションを 1 つだけ指定する必要があります。  アラート アクションには、次の表に示したセクションが 1 つ以上含まれています。  それぞれについて、以下で詳しく説明します。
 
-| セクション | 説明 |
-|:--- |:--- |
-| しきい値 |アクションがいつ実行されるかの条件。 |
-| EmailNotification |複数の受信者にメールを送信します。 |
-| 修復 |識別された問題を解決するための Runbook を Azure Automation で開始します。 |
+| セクション | [説明] | 使用法 |
+|:--- |:--- |:--- |
+| しきい値 |アクションがいつ実行されるかの条件。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| 重大度 |アラートがトリガーされるときに分類に使用されるラベル。| Azure に拡張される前と後の両方の、すべてのアラートで必要です。 |
+| アクション グループ |Azure ActionGroup の ID。電子メール、SMS、音声通話、Webhook、Automation Runbook、ITSM Connector など、必要なアクションが指定されています。| アラートが Azure に拡張されると必要|
+| アクションのカスタマイズ|ActionGroup の選択したアクションの標準出力を変更します| すべてのアラートで省略可能で、アラートが Azure に拡張された後に使用できます。 |
+| EmailNotification |複数の受信者にメールを送信します。 | アラートが Azure に拡張された後は不要|
+| 修復 |識別された問題を解決するための Runbook を Azure Automation で開始します。 |アラートが Azure に拡張された後は不要|
+| Webhook アクション | アラートから JSON として必要なサービスにデータをプッシュします |アラートが Azure に拡張された後は不要|
+
+> [!NOTE]
+> 2018 年 4 月 23 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 4 月 23 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。
 
 #### <a name="thresholds"></a>しきい値
 アラート アクションには、しきい値を 1 つだけ指定する必要があります。  保存した検索条件の結果が、その検索に関連付けられているアクションのしきい値に一致すると、そのアクションの他のすべてのプロセスが実行されます。  また、アクションにしきい値だけを含めて、しきい値を含まない他の種類のアクションと共に使用することもできます。
 
 しきい値には、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | 演算子 |しきい値の比較演算子。 <br> gt = より大きい <br> lt = より小さい |
 | 値 |しきい値の値。 |
@@ -166,13 +181,154 @@ Get メソッドと共にアクション ID を使用して、スケジュール
     $thresholdJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdJson
 
+#### <a name="severity"></a>重大度
+Log Analytics を使用するとアラートをカテゴリに分類し、簡単に管理およびトリアージできます。 定義されているアラートの重大度は、情報、警告、重大です。 これらは次のように Azure Alerts の正規化された重大度スケールにマッピングされています。
+
+|Log Analytics の重大度レベル  |Azure Alerts の重大度レベル  |
+|---------|---------|
+|重大 |重大度 0|
+|警告 |重大度 1|
+|情報 | 重大度 2|
+
+しきい値と重大度のみを含むアクションに対する応答の例を次に示します。 
+
+    "etag": "W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"",
+    "properties": {
+        "Type": "Alert",
+        "Name": "My threshold action",
+        "Threshold": {
+            "Operator": "gt",
+            "Value": 10
+        },
+        "Severity": "critical",
+        "Version": 1    }
+
+スケジュールの新しいアクションを重大度で作成するには、Put メソッドに一意のアクション ID を渡します。  
+
+    $thresholdWithSevJson = "{'properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+
+スケジュールの重大度アクションを編集するには、既存のアクション ID を Put メソッドに渡します。  要求の本体には、アクションの etag が含まれている必要があります。
+
+    $thresholdWithSevJson = "{'etag': 'W/\"datetime'2016-02-25T20%3A54%3A20.1302566Z'\"','properties': { 'Name': 'My Threshold', 'Version':'1','Severity': 'critical', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mythreshold?api-version=2015-03-20 $thresholdWithSevJson
+
+#### <a name="action-groups"></a>アクション グループ
+Azure のすべてのアラートは、アクションを管理する既定のメカニズムとして、アクション グループを使用します。 アクション グループを使用すると、一度に複数のアクションを指定し、そのアクション グループを Azure 全体にわたって複数のアラートに関連付けることができます。 繰り返し宣言することなく、同じアクションを繰り返し実行できます。 アクション グループは、電子メール、SMS、音声通話、ITSM Connection、Automation Runbook、Webhook URI など、複数のアクションに対応しています。 
+
+アラートを Azure に拡張しているユーザーの場合、スケジュールにアクション グループの詳細がしきい値とともに渡され、アラートを作成できるようになっています。 アラートを作成する前に、電子メールの詳細、Webhook の URL、Runbook Automation の詳細、およびその他のアクションをアクション グループ内に定義する必要があります。Portal の [Azure Monitor からアクション グループ](../monitoring-and-diagnostics/monitoring-action-groups.md)を作成するか、[アクション グループ API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用できます。
+
+アラートにアクション グループの関連付けを追加するには、アラートの定義にそのアクション グループの一意の Azure Resource Manager ID を指定します。 以下にサンプル図を示します。
+
+     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+      "properties": {
+        "Type": "Alert",
+        "Name": "test-alert",
+        "Description": "I need to put a descriptio here",
+        "Threshold": {
+          "Operator": "gt",
+          "Value": 12
+        },
+        "AzNsNotification": {
+          "GroupIds": [
+            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+          ]
+        },
+        "Severity": "critical",
+        "Version": 1
+      },
+
+Put メソッドを一意のアクション ID とともに使用して、スケジュールの既存のアクション グループを関連付けます。  次に使用状況のサンプル図を示します。
+
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+Put メソッドを既存のアクション ID とともに使用して、スケジュールに関連付けられているアクション グループを編集します。  要求の本体には、アクションの etag が含まれている必要があります。
+
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']} }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+#### <a name="customize-actions"></a>アクションのカスタマイズ
+既定のアクションで、通知の標準のテンプレートとフォーマットに従います。 ただし、アクション グループによって制御されている場合でも、ユーザーは一部のアクションをカスタマイズできます。 現時点では、電子メールの件名と Webhook のペイロードをカスタマイズできます。
+
+##### <a name="customize-e-mail-subject-for-action-group"></a>アクション グループの電子メールの件名をカスタマイズする
+既定では、アラートの電子メールの件名は、<WorkspaceName> に関するアラートの通知 <AlertName> のように表示されます。 ただしこれはカスタマイズできるため、言葉やタグを指定できます。これにより、受信トレイにフィルター規則を簡単に適用できます。 電子メールの件名の詳細のカスタマイズは、以下のサンプルに示すように、ActionGroup の詳細とともに送信する必要があります。
+
+     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+      "properties": {
+        "Type": "Alert",
+        "Name": "test-alert",
+        "Description": "I need to put a descriptio here",
+        "Threshold": {
+          "Operator": "gt",
+          "Value": 12
+        },
+        "AzNsNotification": {
+          "GroupIds": [
+            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+          ]
+          "CustomEmailSubject": "Azure Alert fired"
+        },
+        "Severity": "critical",
+        "Version": 1
+      },
+
+Put メソッドを一意のアクション ID とともに使用して、スケジュールの既存のアクション グループをカスタマイズとともに関連付けます。  次に使用状況のサンプル図を示します。
+
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired'} }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+Put メソッドを既存のアクション ID とともに使用して、スケジュールに関連付けられているアクション グループを編集します。  要求の本体には、アクションの etag が含まれている必要があります。
+
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired' }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+##### <a name="customize-webhook-payload-for-action-group"></a>アクション グループの Webhook のペイロードをカスタマイズする
+既定では、ログ分析のためにアクション グループを介して送信される Webhook の構造は固定されています。 ただし、サポートされている特定の変数を使用して、Webhook のエンドポイントの条件を満たすように、JSON のペイロードをカスタマイズできます。 詳細については、「[ログ アラート ルールの webhook アクション](../monitoring-and-diagnostics/monitor-alerts-unified-log-webhook.md)」を参照してください 
+
+Webhook の詳細のカスタマイズは、ActionGroup の詳細とともに送信する必要があり、以下のサンプルに示すように、そのアクション グループ内に指定されたすべての Webhook URI に適用されます。
+
+     "etag": "W/\"datetime'2017-12-13T10%3A52%3A21.1697364Z'\"",
+      "properties": {
+        "Type": "Alert",
+        "Name": "test-alert",
+        "Description": "I need to put a descriptio here",
+        "Threshold": {
+          "Operator": "gt",
+          "Value": 12
+        },
+        "AzNsNotification": {
+          "GroupIds": [
+            "/subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup"
+          ]
+          "CustomWebhookPayload": "{\"field1\":\"value1\",\"field2\":\"value2\"}",
+          "CustomEmailSubject": "Azure Alert fired"
+        },
+        "Severity": "critical",
+        "Version": 1
+      },
+
+Put メソッドを一意のアクション ID とともに使用して、スケジュールの既存のアクション グループをカスタマイズとともに関連付けます。  次に使用状況のサンプル図を示します。
+
+    $AzNsJson = "{'properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup'], 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}'} }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
+Put メソッドを既存のアクション ID とともに使用して、スケジュールに関連付けられているアクション グループを編集します。  要求の本体には、アクションの etag が含まれている必要があります。
+
+    $AzNsJson = "{'etag': 'datetime'2017-12-13T10%3A52%3A21.1697364Z'\"', properties': { 'Name': 'test-alert', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 12 },'Severity': 'critical', 'AzNsNotification': {'GroupIds': ['subscriptions/1234a45-123d-4321-12aa-123b12a5678/resourcegroups/my-resource-group/providers/microsoft.insights/actiongroups/test-actiongroup']}, 'CustomEmailSubject': 'Azure Alert fired','CustomWebhookPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}' }"
+    armclient put /subscriptions/{Subscription ID}/resourceGroups/{Resource Group Name}/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/myAzNsaction?api-version=2015-03-20 $AzNsJson
+
 #### <a name="email-notification"></a>電子メール通知
 電子メール通知は、1 人以上の受信者にメールを送信します。  電子メール通知には、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+> [!NOTE]
+> 2018 年 4 月 23 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 4 月 23 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、電子メール通知などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+   
+
+| プロパティ | [説明] |
 |:--- |:--- |
 | Recipients |メール アドレスの一覧。 |
-| [件名] |メールの件名。 |
+| 件名 |メールの件名。 |
 | 添付ファイル |添付ファイルは現在サポートされていないため、値は常に "None" になります。 |
 
 しきい値を含む電子メール通知に対する応答の例を次に示します。  
@@ -209,9 +365,12 @@ Get メソッドと共にアクション ID を使用して、スケジュール
 #### <a name="remediation-actions"></a>修復アクション
 修復では、アラートで識別された問題を修正するための Runbook が Azure Automation で開始されます。  修復アクションで使用される Runbook の Webhook を作成し、WebhookUri プロパティに URI を指定する必要があります。  OMS コンソールを使用してこのアクションを作成すると、Runbook に対して新しい Webhook が自動的に作成されます。
 
+> [!NOTE]
+> 2018 年 4 月 23 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 4 月 23 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Runbook を使用した修復などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
+
 修復には、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 |:--- |:--- |
 | RunbookName |Runbook の名前。 これは、OMS ワークスペースの Automation ソリューションで構成されたオートメーション アカウントの発行済み Runbook と一致する必要があります。 |
 | WebhookUri |Webhook の URI。 |
@@ -262,17 +421,14 @@ Get メソッドと共にアクション ID を使用して、スケジュール
     $emailJson = "{'properties': { 'Name': 'MyEmailAction', 'Version':'1', 'Severity':'Warning', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 }, 'EmailNotification': {'Recipients': ['recipient1@contoso.com', 'recipient2@contoso.com'], 'Subject':'This is the subject', 'Attachment':'None'} }"
     armclient put /subscriptions/$subscriptionId/resourceGroups/$resourceGroup/providers/Microsoft.OperationalInsights/workspaces/$workspaceName/savedSearches/$searchId/schedules/$scheduleId/actions/$actionId/?api-version=2015-03-20 $emailJson
 
-### <a name="webhook-actions"></a>Webhook アクション
+#### <a name="webhook-actions"></a>Webhook アクション
 Webhook アクションは、URL を呼び出し、送信されるペイロードをオプションで指定することにより、プロセスを開始します。  これは修復アクションに似ていますが、Azure Automation の Runbook 以外のプロセスを呼び出す可能性のある Webhook に対して使用することを意図しています。  また、リモート プロセスに配信されるペイロードを指定する追加のオプションも用意されています。
 
-Webhook アクションにはしきい値はありませんが、その代わりに、しきい値のあるアラート アクションを含むスケジュールに追加する必要があります。  複数の Webhook アクションを追加でき、しきい値に達したときにそれらがすべて実行されます。
+> [!NOTE]
+> 2018 年 4 月 23 日より、ワークスペース内のすべてのアラートが Azure に自動的に拡張されます。 ユーザーは 2018 年 4 月 23 日より前に、アラートの Azure への拡張を自主的に開始できます。 詳細については、[OMS から Azure へのアラートの拡張](../monitoring-and-diagnostics/monitoring-alerts-extend.md)に関するページを参照してください。 Azure にアラートを拡張すると、Webhook などのアクションを Azure のアクション グループで管理できるようになります。 ワークスペースとそのアラートを Azure に拡張すると、[アクション グループの API](https://docs.microsoft.com/en-us/rest/api/monitor/actiongroups) を使用してアクションを取得または追加できます。
 
-Webhook アクションには、次の表に示したプロパティがあります。
 
-| プロパティ | 説明 |
-|:--- |:--- |
-| WebhookUri |メールの件名。 |
-| CustomPayload |Webhook に送信するカスタム ペイロード。  形式は、Webhook で想定される内容によって異なります。 |
+Webhook アクションにはしきい値はありませんが、その代わりに、しきい値のあるアラート アクションを含むスケジュールに追加する必要があります。  
 
 Webhook アクションとしきい値を含む関連アラート アクションに対する応答の例を次に示します。
 
@@ -306,7 +462,7 @@ Webhook アクションとしきい値を含む関連アラート アクショ�
         ]
     }
 
-#### <a name="create-or-edit-a-webhook-action"></a>Webhook アクションの作成または編集
+##### <a name="create-or-edit-a-webhook-action"></a>Webhook アクションの作成または編集
 スケジュールの新しい Webhook アクションを作成するには、Put メソッドに一意のアクション ID を渡します。  次の例では、Webhook アクションとしきい値を含むアラート アクションとを作成して、保存した検索条件の結果がしきい値を超えたときに Webhook がトリガーされるようにします。
 
     $thresholdAction = "{'properties': { 'Name': 'My Threshold', 'Version':'1', 'Type':'Alert', 'Threshold': { 'Operator': 'gt', 'Value': 10 } }"
@@ -320,6 +476,8 @@ Webhook アクションとしきい値を含む関連アラート アクショ�
     $webhookAction = "{'etag': 'W/\"datetime'2016-02-26T20%3A25%3A00.6862124Z'\"','properties': {'Type': 'Webhook', 'Name': 'My Webhook", 'WebhookUri': 'https://oaaswebhookdf.cloudapp.net/webhooks?token=VrkYTKlhk%2fc%2bKBP', 'CustomPayload': '{\"field1\":\"value1\",\"field2\":\"value2\"}', 'Version': 1 }"
     armclient put /subscriptions/{Subscription ID}/resourceGroups/OI-Default-East-US/providers/Microsoft.OperationalInsights/workspaces/{Workspace Name}/savedSearches/{Search ID}/schedules/{Schedule ID}/actions/mywebhookaction?api-version=2015-03-20 $webhookAction
 
-## <a name="next-steps"></a>次のステップ
+
+## <a name="next-steps"></a>次の手順
 * Log Analytics で [ログ検索を実行するための REST API](log-analytics-log-search-api.md) を使用します。
+* [Azure Alerts のログ アラート](../monitoring-and-diagnostics/monitor-alerts-unified-log.md)について確認します。
 

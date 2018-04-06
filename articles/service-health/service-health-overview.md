@@ -1,12 +1,12 @@
 ---
-title: "Azure Resource Health の概要 | Microsoft Docs"
-description: "お使いの Azure アプリが現在および将来の Azure サービスの問題やメンテナンスの影響をどのように受けるかに関するカスタマイズした情報。"
+title: Service Health の概要 | Microsoft Docs
+description: お使いの Azure アプリが現在および将来の Azure サービスの問題やメンテナンスの影響をどのように受けるかに関するカスタマイズした情報。
 services: Resource health
-documentationcenter: 
+documentationcenter: ''
 author: rboucher
-manager: 
-editor: 
-ms.assetid: 
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: service-health
 ms.devlang: na
 ms.topic: article
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: Supportability
 ms.date: 07/07/2017
 ms.author: robb
-ms.openlocfilehash: 5f2b68e800f484a64e79f965fc855aebe090186a
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: af6871264029c3037ed4b7f1f0581433735563a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="azure-service-health"></a>Azure Service Health
-Azure Service Health は、Azure サービスの問題がお使いのサービスにいつ影響を及ぼすかに関するカスタマイズした情報をタイムリーに提供します。  また、今後の定期的なメンテナンスに備えるのに役立ちます。
+# <a name="service-health"></a>サービス正常性
+Service Health は、ユーザーが使用しているリージョン内の Azure サービスの正常性を追跡するカスタマイズ可能なダッシュボードを提供します。 このダッシュボードでは、進行中のサービスの問題、次に予定されている定期的なメンテナンス、関連する正常性の勧告などのアクティブなイベントを追跡できます。 イベントが非アクティブになると、それらは正常性の履歴に最大 90 日間保存されます。 最後に、Service Health のダッシュボードを使用して、サービスの問題が影響を与えているときにユーザーに事前に通知するサービス正常性アラートを作成および管理できます。
 
 ## <a name="service-health-events"></a>Service Health のイベント
 Service Health はお使いのリソースに及ぼす可能性のある次の 3 つの種類の正常性に関するイベントを追跡します。
@@ -29,26 +29,23 @@ Service Health はお使いのリソースに及ぼす可能性のある次の 3
 2. **定期的なメンテナンス** - お使いのサービスの可用性に将来影響を及ぼす可能性のある今後のメンテナンス。  
 3. **正常性に関する勧告** - ユーザーが注目する必要のある Azure サービスの変化。 Azure の機能が使用不可になるタイミングや、使用量のクォータを超えた場合に関する例も含まれます。
 
-    ![Service Health のイベント](./media/service-health-overview/azure-service-health-overview-7.png)
-
 ## <a name="get-started-with-service-health"></a>Service Health の使用
-Service Health ダッシュボードを起動するには、ポータルのダッシュボードにある [Service Health] タイルを選択します。 
+Service Health ダッシュボードを起動するには、ポータルのダッシュボードにある [Service Health] タイルを選択します。 過去にタイルを削除した、またはダッシュボードをカスタマイズしている場合は、[その他のサービス] \(ダッシュボードの右下) で Service Health サービスを検索してください。
 
 ![Service Health の使用](./media/service-health-overview/azure-service-health-overview-1.png)
 
-過去にタイルを削除した、またはダッシュボードをカスタマイズしている場合は、**[すべてのサービス]** (ダッシュボードの左上) で Service Health サービスを検索してください。
-
-![Service Health の使用](./media/service-health-overview/azure-service-health-overview-1a.png)
-
 ## <a name="see-current-issues-which-impact-your-services"></a>お使いのサービスに現在影響を及ぼしている問題を確認する
 **[サービスに関する問題]** には、お使いのリソースに影響を及ぼしている継続中の Azure サービスの問題が表示されます。 問題がいつから発生しているか、およびどのサービスやリージョンが影響を受けているかを確認できます。 また、問題を解決するための Azure の対策に関する最新の更新情報を確認できます。 
+
 ![サービスの問題を管理する](./media/service-health-overview/azure-service-health-overview-2.png)
 
-問題の影響を受けている可能性のある具体的なリソースの一覧を確認するには、**[可能性のある影響]** タブを選択します。 これらのリソースの一覧の CSV をダウンロードしてチームと共有できます。
+問題の影響を受けている可能性のある具体的なリソースの一覧を確認するには、**[可能性のある影響]** タブを選択します。 これらのリソースの CSV 一覧をダウンロードしてチームと共有できます。
+
 ![サービスの問題を管理する - 影響](./media/service-health-overview/azure-service-health-overview-4.png)
 
 ## <a name="get-links-and-downloadable-explanations"></a>リンクやダウンロード可能な説明を取得する 
 問題のリンクを取得して、問題管理システムで使用できます。 PDF や CSV ファイル (ある場合) をダウンロードして、Azure Portal にアクセスできないユーザーと共有できます。   
+
 ![サービスの問題を管理する - 問題管理](./media/service-health-overview/azure-service-health-overview-3.png)
 
 ## <a name="get-support-from-microsoft"></a>マイクロソフトのサポートを受ける
@@ -56,10 +53,13 @@ Service Health ダッシュボードを起動するには、ポータルのダ�
 
 ## <a name="pin-a-personalized-health-map-to-your-dashboard"></a>カスタマイズした正常性マップをダッシュボードにピン留めする
 Service Health をフィルター処理して、ビジネス クリティカルなサブスクリプション、リージョン、およびリソースの種類を表示します。 フィルターを保存して、カスタマイズした正常性世界地図をポータルのダッシュボードにピン留めします。 
-![カスタマイズした正常性マップをフィルター処理する](./media/service-health-overview/azure-service-health-overview-6a.png)
-![カスタマイズした正常性マップをピン留めする](./media/service-health-overview/azure-service-health-overview-6b.png)
 
-## <a name="configure-service-health-alerts"></a>Service Health のアラートを構成する
-Azure Service Health は Azure Monitor に対応しているため、ビジネス上重要なリソースが影響を受けると、メールやテキスト メッセージ、webhook の通知を使用してユーザーに警告します。 適切な Service Health イベントに対してアクティビティ ログのアラートをセットアップします。 組織内の適切なユーザーにそのアラートをルーティングするには、アクション グループを使用します。 詳しくは、[Service Health のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関する記事をご覧ください。
+![個人用に設定された正常性マップをフィルター処理する](./media/service-health-overview/azure-service-health-overview-6a.png)
 
- 
+![個人用に設定された正常性マップをピン留めする](./media/service-health-overview/azure-service-health-overview-6b.png)
+
+## <a name="configure-service-health-alerts"></a>サービス正常性アラートを構成する
+Service Health は Azure Monitor と統合されており、ビジネスに不可欠なリソースが影響を受けていると電子メール、テキスト メッセージ、および webhook 通知を使用してユーザーに警告します。 適切なサービス正常性イベントのアクティビティ ログ アラートを設定します。 組織内の適切なユーザーにそのアラートをルーティングするには、アクション グループを使用します。 詳しくは、[Service Health のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関する記事をご覧ください。
+
+# <a name="next-steps"></a>次の手順
+アラートをセットアップして、正常性に関する問題について通知を受け取ります。 詳細については、[サービス正常性のアラートの構成](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)に関する記事を参照してください。 

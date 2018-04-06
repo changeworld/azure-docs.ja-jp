@@ -9,10 +9,10 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.service: storage
 ms.openlocfilehash: ea2ec712c8d8b5f85f020535ab0544986f0da53a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="reacting-to-blob-storage-events"></a>Blob Storage イベントへの対応
 
@@ -20,7 +20,7 @@ Azure Storage イベントをアプリケーションで使うと、最新のサ
 
 Blob Storage イベントの一般的なシナリオとしては、画像やビデオの処理、検索インデックスの作成、ファイル指向のワークフローなどがあります。  非同期のファイル アップロードは、イベントに最適です。  変更の頻度が低くても、即時の応答性が必要なシナリオでは、イベント ベースのアーキテクチャは特に効果的です。
 
-Storage イベントの可用性は Event Grid の[可用性](../../event-grid/overview.md)に関連付けられており、Event Grid で利用可能にすると、Storage イベントは他のリージョンで利用可能になります。 簡単な例については、「[Route Blob storage events to a custom web endpoint with Azure CLI](storage-blob-event-quickstart.md)」(Azure CLI で Blob Storage イベントをカスタム Web エンドポイントにルーティングする) または「[Route Blob storage events to a custom web endpoint with PowerShell](storage-blob-event-quickstart-powershell.md)」(PowerShell で Blob Storage イベントをカスタム Web エンドポイントにルーティングする) をご覧ください。 
+Storage イベントの可用性は、Event Grid の[可用性](../../event-grid/overview.md)と関連付けられており、Event Grid の場合と同様に、他のリージョンで使用可能になります。 簡単な例については、「[Route Blob storage events to a custom web endpoint with Azure CLI](storage-blob-event-quickstart.md)」(Azure CLI で Blob Storage イベントをカスタム Web エンドポイントにルーティングする) または「[Route Blob storage events to a custom web endpoint with PowerShell](storage-blob-event-quickstart-powershell.md)」(PowerShell で Blob Storage イベントをカスタム Web エンドポイントにルーティングする) をご覧ください。 
 
 ![Event Grid モデル](./media/storage-blob-event-overview/event-grid-functional-model.png)
 

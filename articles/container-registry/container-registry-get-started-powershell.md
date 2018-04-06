@@ -9,13 +9,13 @@ ms.topic: quickstart
 ms.date: 03/03/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 2bae45955cf3c2b157acce2544b1f35fbddd0170
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9603ac779c7dbc640a7c24856c32f04edbac849d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="create-an-azure-container-registry-using-powershell"></a>PowerShell を使用して Azure Container Registry を作成する
+# <a name="quickstart-create-an-azure-container-registry-using-powershell"></a>クイック スタート: PowerShell を使用して Azure Container Registry を作成する
 
 Azure Container Registry は、プライベート Docker コンテナー イメージを保管するための管理された Docker コンテナー レジストリ サービスです。 このガイドでは、PowerShell を使って Azure Container Registry インスタンスを作成し、そのレジストリにコンテナー イメージをプッシュして、最後に Azure Container Instances (ACI) に対してレジストリからコンテナーをデプロイする方法について詳しく説明します。
 
@@ -73,7 +73,7 @@ Azure Container Registry にイメージをプッシュするには、まずイ�
 docker pull microsoft/aci-helloworld
 ```
 
-イメージは、ACR ログイン サーバー名でタグ付けする必要があります。 そのためには、[docker tag][docker-tag] コマンドを使用します。 
+イメージは、ACR ログイン サーバー名でタグ付けする必要があります。 そのためには、[docker tag][docker-tag] コマンドを使用します。
 
 ```powershell
 $image = $registry.LoginServer + "/aci-helloworld:v1"

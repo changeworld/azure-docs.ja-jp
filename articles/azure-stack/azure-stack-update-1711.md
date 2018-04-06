@@ -1,24 +1,25 @@
 ---
-title: "Azure Stack 1711 更新プログラム | Microsoft Docs"
-description: "Azure Stack 統合システムの 1711 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。"
+title: Azure Stack 1711 更新プログラム | Microsoft Docs
+description: Azure Stack 統合システムの 1711 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 2b66fe05-3655-4f1a-9b30-81bd64ba0013
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/31/2018
+ms.date: 03/22/2018
 ms.author: brenduns
-ms.openlocfilehash: 3b3f6d66d8d5a095ff839195ccf718a9fa085527
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.reviewer: justini
+ms.openlocfilehash: fd57699a329fbccdbefc73dae7d473070cd831ea
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-1711-update"></a>Azure Stack 1711 更新プログラム
 
@@ -37,7 +38,13 @@ Azure Stack 1711 更新プログラムのビルド番号は **171201.3** です�
 
 ### <a name="prerequisites"></a>前提条件
 
-この更新プログラムを適用する前に、Azure Stack [1710 更新プログラム](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1710)をインストールする必要があります。
+- この更新プログラムを適用する前に、Azure Stack [1710 更新プログラム](https://docs.microsoft.com/azure/azure-stack/azure-stack-update-1710)をインストールする必要があります。
+
+- 更新プログラム 1711 をインストールする前に、アカウント名 **CloudAdmin** の使用状況を確認します。 バージョン 1711 以降、*CloudAdmin* は予約済みアカウント名となっているため、手動でこのアカウント名を指定してはいけません。 バージョン 1711 に更新すると、更新プログラムにより、展開アカウントの既存のインスタンス (通常の名前は AzureStackAdmin) が削除されます。 展開アカウントの名前を *CloudAdmin* にした場合、1711 に更新すると削除されます。 
+
+  *CloudAdmin* は、[*特権エンドポイント*](azure-stack-privileged-endpoint.md) (PEP) に接続するためのビルトイン アカウントです。 CloudAdmin グループのメンバーである別のユーザー アカウントが既にある場合を除き、このアカウントが削除されると、PEP のロックアウトになる可能性があります。 
+
+  CloudAdmin を展開アカウントの名前として使用していた場合は、1711 への更新を開始する前に、使用している PEP に新しい CloudAdmin ユーザーを追加し、Azure Stack からロックアウトされないようにします。 新しい CloudAdmin ユーザーを追加するには、PEP に対して **New-CloudAdminUser** コマンドレットを実行します。
 
 ### <a name="new-features-and-fixes"></a>新機能と修正
 
@@ -76,11 +83,11 @@ Azure Stack 1711 更新プログラムのビルド番号は **171201.3** です�
     1. **原因:** この問題は、以前に特権エンドポイント (PEP) を使用して再開されたポータルから更新を再開するときに発生します。
     2. **解決方法:** マイクロソフト カスタマー サービスおよびサポート (CSS) に問い合わせてサポートを依頼してください。
 <br><br>
-3. **現象:**更新プロセスで Azure Stack オペレーターに次のエラーが表示される場合があります。*"Type 'CheckHealth' of Role 'VirtualMachines' raised an exception:\n\nVirtual Machine health check for <machineName>-ACS01 produced the following errors.\nThere was an error getting VM information from hosts.Exception details:\nGet-VM : The operation on computer 'Node03' failed: The WS-Management service cannot process the request.The WMI \nservice or the WMI provider returned an unknown error: HRESULT 0x8004106c".*
+3. **現象:** 更新プロセス中に Azure Stack オペレーターに次のエラーが表示される場合があります。*"Type 'CheckHealth' of Role 'VirtualMachines' raised an exception:\n\nVirtual Machine health check for <machineName>-ACS01 produced the following errors.\nThere was an error getting VM information from hosts.Exception details:\nGet-VM : The operation on computer 'Node03' failed: The WS-Management service cannot process the request.The WMI \nservice or the WMI provider returned an unknown error: HRESULT 0x8004106c".*
     1. **原因:** この問題は、Windows Server の問題によって引き起こされています。これは今後の Window Server 更新プログラムで修正される予定です。
     2. **解決方法:** マイクロソフト カスタマー サービスおよびサポート (CSS) に問い合わせてサポートを依頼してください。
 <br><br>
-4. **現象:**更新プロセスで Azure Stack オペレーターに次のエラーが表示される場合があります。*"Type 'DefenderUpdate' of Role 'URP' raised an exception: Failed getting version from \\SU1FileServer\SU1_Public\DefenderUpdates\x64\{file name}.exe after 60 attempts at Copy-AzSDefenderFiles, C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Defender\Microsoft.AzureStack.Defender.psm1: line 262"*
+4. **現象:** 更新プロセスで Azure Stack オペレーターに次のエラーが表示される場合があります。*"Type 'DefenderUpdate' of Role 'URP' raised an exception: Failed getting version from \\SU1FileServer\SU1_Public\DefenderUpdates\x64\{file name}.exe after 60 attempts at Copy-AzSDefenderFiles, C:\Program Files\WindowsPowerShell\Modules\Microsoft.AzureStack.Defender\Microsoft.AzureStack.Defender.psm1: line 262"*
     1. **原因:** この問題は、Windows Defender 定義ファイルの更新をバックグラウンドでダウンロードしようとして失敗したか完了していないために発生します。
     2. **解決方法:** 最初に更新を試行してから最大 8 時間後に更新の再開を試行してください。
 
@@ -109,11 +116,11 @@ Azure Stack 1711 更新プログラムのビルド番号は **171201.3** です�
 
 - インフラストラクチャのロール インスタンスを再起動すると、再起動が失敗したことを示すメッセージを受け取る場合があります。 ただし、再起動は実際には成功しています。
 
-#### <a name="marketplace"></a>Marketplace
+#### <a name="marketplace"></a>マーケットプレース
 - **[Add from Azure]\(Azure から追加\)** を使用してアイテムを Azure Stack マーケットプレースに追加しようとすると、すべてのアイテムがダウンロード対象として表示されない場合があります。
 - ユーザーはサブスクリプションなしですべてのマーケットプレースを参照し、プランやオファーなどの管理アイテムを表示できます。 ユーザーはこれらのアイテムを使用できません。
 
-#### <a name="compute"></a>計算
+#### <a name="compute"></a>コンピューティング
 - ユーザーは geo 冗長ストレージを持つ仮想マシンを作成するオプションを利用できます。 この構成の場合、仮想マシンの作成が失敗します。
 - 仮想マシン可用性セットは、1 つの障害ドメインと 1 つの更新ドメインでのみ構成可能です。
 - 仮想マシン スケール セットを作成するマーケットプレースのエクスペリエンスはありません。 スケール セットはテンプレートを使用して作成できます。

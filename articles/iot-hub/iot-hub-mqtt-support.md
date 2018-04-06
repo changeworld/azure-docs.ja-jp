@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 03/05/2018
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d119cc4c4053a737e48739c17ae586abd51f3efa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 23f98d4e9f711496480d5e02b4d5b23cd8abab0c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -27,6 +27,8 @@ IoT Hub により、デバイスは、以下を使用して IoT Hub デバイス
 
 * ポート 8883 で [MQTT v3.1.1][lnk-mqtt-org]
 * ポート 443 で WebSocket を介して MQTT v3.1.1
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 IoT Hub でのすべてのデバイス通信は、TLS/SSL を使用してセキュリティで保護する必要があります。 そのため、IoT Hub では、ポート 1883 経由のセキュリティで保護されていない接続はサポートしません。
 

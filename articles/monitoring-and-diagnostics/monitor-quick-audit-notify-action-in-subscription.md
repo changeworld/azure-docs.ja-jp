@@ -1,6 +1,6 @@
 ---
-title: "Azure サブスクリプションの重要なアクションを監査して通知を受信する | Microsoft Docs"
-description: "アクティビティ ログのリソース管理履歴、サービスの状態、およびその他のサブスクリプション アクティビティを理解し、アクティビティ ログ アラートを使用して、特定のサブスクリプションで高度な特権が必要な操作が実行されたときに電子メール通知を受信するようにします。"
+title: Azure サブスクリプションの重要なアクションを監査して通知を受信する | Microsoft Docs
+description: アクティビティ ログのリソース管理履歴、サービスの状態、およびその他のサブスクリプション アクティビティを理解し、アクティビティ ログ アラートを使用して、特定のサブスクリプションで高度な特権が必要な操作が実行されたときに電子メール通知を受信するようにします。
 author: johnkemnetz
 manager: orenr
 services: monitoring-and-diagnostics
@@ -10,11 +10,11 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.openlocfilehash: b0a79f46788dc7efb588110dc50805c45c373a49
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: dd04cd9c8074d49df168b32840d12901da83c834
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="audit-and-receive-notifications-about-important-actions-in-your-azure-subscription"></a>Azure サブスクリプションの重要なアクションを監査して通知を受信する
 
@@ -74,7 +74,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 5. **[通知手段]** で、**[新規]** アクション グループを選択し、アクション グループの **[名前]** と **[短い名前]** を指定します。 アクション グループは、アラートがアクティブ化された場合 (新しいイベントが条件と一致した場合) に実行されるアクション セットを定義します。
 
-6. **[アクション]** に 1 つ以上のアクションを追加します。アクションの **[名前]**、**[アクションの種類]** (電子メールや SMS など)、および特定のアクションの種類の **[詳細]** (Webhook URL、電子メール アドレス、SMS 番号など) を指定します。
+6. **[アクション]** に 1 つ以上のアクションを追加します。アクションの **[名前]**、**[アクションの種類]** (電子メールや SMS、Webhook など)、および特定のアクションの種類の **[詳細]** (Webhook URL、電子メール アドレス、SMS 番号など) を指定します。
 
     ![ポータルでネットワーク セキュリティ グループを作成する](./media/monitor-quick-audit-notify-action-in-subscription/activity-log-alert-actions.png)
 
@@ -83,7 +83,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 ## <a name="test-the-activity-log-alert"></a>アクティビティ ログ アラートをテストする
 
 > [!NOTE]
-> アクティビティ ログ アラートが完全に有効になるまで、約 10 分かかります。 アクティビティ ログ アラートが完全に有効になる前に発生した新しいイベントでは、通知は生成されません。
+> アクティビティ ログ アラートが完全に有効になるまで、約 5 分かかります。 アクティビティ ログ アラートが完全に有効になる前に発生した新しいイベントでは、通知は生成されません。
 >
 >
 

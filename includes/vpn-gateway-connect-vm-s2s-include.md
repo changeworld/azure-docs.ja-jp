@@ -8,11 +8,11 @@ ms.topic: include
 ms.date: 03/21/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: c04fbd5cc7e27be6bba6dae31f71146ce9a304f9
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 5acdd54bcf7e253bc21dc3f99207fc1b2bd1ff59
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 リモート デスクトップ接続を作成すると、VNet にデプロイされている VM に接続できます。 VM に接続できるかどうかを初めて確認する際に最も良い方法は、その VM のコンピューター名ではなく、プライベート IP アドレスを使って接続してみることです。 この方法であれば、名前の解決が適切に構成されているかではなく、VM に接続できるかどうかをテストすることができます。
 
@@ -22,7 +22,7 @@ ms.lasthandoff: 03/23/2018
 
   - PowerShell を使用する場合: 以下の例に示したコマンドを使用すると、リソース グループに含まれる VM とプライベート IP アドレスの一覧が表示されます。 このコマンドは、使用前に変更を加える必要はありません。
 
-    ```powershell
+    ```azurepowershell-interactive
     $VMs = Get-AzureRmVM
     $Nics = Get-AzureRmNetworkInterface | Where VirtualMachine -ne $null
 

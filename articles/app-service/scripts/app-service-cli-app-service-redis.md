@@ -1,11 +1,11 @@
 ---
-title: "Azure CLI のサンプル スクリプト - Redis Cache への Web アプリの接続 | Microsoft Docs"
-description: "Azure CLI のサンプル スクリプト - Redis Cache への Web アプリの接続"
+title: Azure CLI のサンプル スクリプト - Redis Cache への Web アプリの接続 | Microsoft Docs
+description: Azure CLI のサンプル スクリプト - Redis Cache への Web アプリの接続
 services: appservice
 documentationcenter: appservice
 author: syntaxc4
 manager: erikre
-editor: 
+editor: ''
 tags: azure-service-management
 ms.assetid: bc8345b2-8487-40c6-a91f-77414e8688e6
 ms.service: app-service
@@ -16,11 +16,11 @@ ms.workload: web
 ms.date: 12/11/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 09dd82c34308955cbbf3bf5a5d8745ee16d7818b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0aa1fd19af8819de54ab468c48516f402c1e2a9d
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="connect-a-web-app-to-a-redis-cache"></a>Web アプリを Redis Cache に接続する
 
@@ -44,12 +44,12 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | コマンド | メモ |
 |---|---|
-| [`az group create`](/cli/azure/group?view=azure-cli-latest#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az_appservice_plan_create) | App Service プランを作成します。 |
-| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az_webapp_create) | Azure Web アプリを作成します。 |
-| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az_redis_create) | 新しい Redis Cache インスタンスを作成します。 |
-| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az_redis_list_keys) | Redis Cache インスタンスのアクセス キーを一覧表示します。 |
-| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az_webapp_config_appsettings_set) | Azure Web アプリのアプリケーション設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
+| [`az group create`](/cli/azure/group?view=azure-cli-latest#az-group-create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [`az appservice plan create`](/cli/azure/appservice/plan?view=azure-cli-latest#az-appservice-plan-create) | App Service プランを作成します。 |
+| [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) | Azure Web アプリを作成します。 |
+| [`az redis create`](/cli/azure/redis?view=azure-cli-latest#az-redis-create) | 新しい Redis Cache インスタンスを作成します。 |
+| [`az redis list-keys`](/cli/azure/redis?view=azure-cli-latest#az-redis-list-keys) | Redis Cache インスタンスのアクセス キーを一覧表示します。 |
+| [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) | Azure Web アプリのアプリケーション設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
 
 ## <a name="next-steps"></a>次の手順
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub device-to-cloud オプション | Microsoft Docs"
-description: "開発者ガイド - device-to-cloud メッセージ、報告されるプロパティ、または cloud-to-device 通信のファイルのアップロードを使用するタイミングに関するガイダンスです。"
+title: Azure IoT Hub device-to-cloud オプション | Microsoft Docs
+description: 開発者ガイド - device-to-cloud メッセージ、報告されるプロパティ、または cloud-to-device 通信のファイルのアップロードを使用するタイミングに関するガイダンスです。
 services: iot-hub
 documentationcenter: .net
 author: fsautomata
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 979136db-c92d-4288-870c-f305e8777bdd
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: a9a062ebb8d6e3b37d917064209eda618d0dd308
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: a870852d937732bb38f08420a07bfe696860e08b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="device-to-cloud-communications-guidance"></a>device-to-cloud 通信に関するガイダンス
 デバイス アプリからソリューション バック エンドに情報を送信する場合、IoT Hub では、次の 3 つのオプションを公開します。
@@ -26,6 +26,8 @@ ms.lasthandoff: 02/01/2018
 * [device-to-cloud メッセージ][lnk-d2c]: 時系列のテレメトリとアラート用。
 * [デバイス ツインの報告されるプロパティ][lnk-twins]: 使用できる機能、状態、実行時間の長いワークフローの状態など、デバイスの状態情報のレポート用。 たとえば、構成とソフトウェアの更新など。
 * [ファイルのアップロード][lnk-fileupload]: 断続的に接続されるデバイスによってアップロードされたり、帯域幅を節約するために圧縮されているメディア ファイルと大容量のテレメトリ バッチ用。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 さまざまな device-to-cloud 通信オプションの詳細な比較を次に示します。
 

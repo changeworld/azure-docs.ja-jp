@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: gokuma
-ms.openlocfilehash: f62f6c4b2679457e8aaddb81e8a37622ca878ffc
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8ee4af162ddaa64d4dbe83bebbb93e22409f041d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 03/28/2018
 
 
 ## <a name="what-can-i-do-with-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでできること
-データ サイエンス仮想マシンの目的は、円滑なデータ サイエンス環境ですべてのスキル レベルとロールのプロフェッショナルにデータを提供することです。 この VM を使うと、同等の環境を独自に展開する場合と比較してかなりの時間を削減できます。 代わりに、新しく作成された VM インスタンスでデータ サイエンス プロジェクトをすぐに開始できます。 
+データ サイエンス仮想マシン (DSVM) の目標は、すべてのスキル レベルおよびすべてのロールを持つデータ専門家に、摩擦のない、事前に構成され、かつ完全に統合されたデータ サイエンス環境を提供することです。 同等のワークスペースを独自にロールアウトする代わりに DSVM をプロビジョニングすることによって、インストール、構成、およびパッケージ管理プロセスにかかる数日、場合によっては_数週間_の期間を節約できます。 DSVM が割り当てられたら、直ちにデータ サイエンス プロジェクトに関する作業を開始できます。
 
 データ サイエンス VM は、広範な使用シナリオで使えるように設計および構成されています。 プロジェクトのニーズの変化に応じて、環境を拡大または縮小できます。 好みの言語を使ってデータ サイエンス タスクをプログラミングできます。 他のツールをインストールし、正確なニーズに合わせてシステムをカスタマイズできます。
 

@@ -1,11 +1,11 @@
 ---
-title: "Azure モバイル エンゲージメント関連のトラブルシューティング ガイド- APIs"
-description: "Azure Mobile Engagement 関連のトラブルシューティング ガイド - API"
+title: Azure モバイル エンゲージメント関連のトラブルシューティング ガイド- APIs
+description: Azure Mobile Engagement 関連のトラブルシューティング ガイド - API
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3efc8a52-2b74-4917-b887-815ae8277474
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
-ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cda11c8d2f1d147a807083c5479d2b2cda65462c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-api-issues"></a>API の問題のトラブルシューティング ガイド
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 次に説明するのは、管理者が、API を使用して Azure モバイル エンゲージメントを操作する方法に関して発生する可能性のある問題です。
 
 ## <a name="syntax-issues"></a>構文の問題

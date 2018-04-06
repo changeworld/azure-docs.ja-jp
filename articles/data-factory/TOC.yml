@@ -116,8 +116,12 @@
       href: concepts-integration-runtime.md
 - name: ハウツー ガイド
   items:
-    - name: データ ファクトリの視覚的な作成
-      href: author-visually.md
+    - name: Author
+      items:
+        - name: データ ファクトリの視覚的な作成
+          href: author-visually.md
+        - name: 継続的インテグレーションとデプロイ
+          href: continuous-integration-deployment.md
     - name: データをコピーする
       items:
         - name: コピー アクティビティを使用したデータのコピー

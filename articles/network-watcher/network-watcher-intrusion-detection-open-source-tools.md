@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
 ms.openlocfilehash: aff1b5f9e8860d3b8dc09b37684bb8a4ac2bf134
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Network Watcher とオープン ソース ツールを使用したネットワーク不正侵入検出の実行
 
@@ -279,11 +279,11 @@ Logstash のインストール方法の詳細については、[公式ドキュ�
 
 Network Watcher で取得したパケット キャプチャと、Suricata などのオープン ソース IDS ツールを組み合わせることで、広範な脅威を対象としたネットワーク不正侵入検出を実行できます。 これらのダッシュボードでは、ネットワーク内の傾向と異常を迅速に特定できます。また、データを詳しく調査して、悪意のあるユーザー エージェントや脆弱なポートなど、アラートの根本原因を突き止めることができます。 抽出したこのデータを活用すると、害のある侵入の試行からネットワークを保護する方法について、情報に基づいた意思決定を行えるほか、ネットワークへの今後の侵入を防ぐルールを作成できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 アラート ベースでパケット キャプチャをトリガーする方法については、「[パケット キャプチャを使用して Azure Functions によるプロアクティブなネットワーク監視を実行する](network-watcher-alert-triggered-packet-capture.md)」を参照してください。
 
-Power BI で NSG フロー ログを視覚化する方法については、[Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関するページを参照してください。
+[Power BI による NSG フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関するページから、Power BI で NSG フロー ログを視覚化する方法について確認する
 
 
 

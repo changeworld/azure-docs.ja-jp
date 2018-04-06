@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 02/20/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 455c74ca808f71258a12166c2e36bdd73d9a3e20
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: a5712e556d7b3bdcce38b8b8d39a08414ce0fd2f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Azure Stack 公開キー インフラストラクチャ証明書の要件
 Azure Stack には、少数の Azure Stack サービスやテナント VM に割り当てられた外部からアクセス可能なパブリック IP アドレスを使用するパブリック インフラストラクチャ ネットワークが存在します。 Azure Stack のデプロイ中に、これらの Azure Stack パブリック インフラストラクチャ エンドポイントの適切な DNS 名を持つ PKI 証明書が必要です。 この記事では、次の項目に関する情報を提供します。
@@ -34,6 +34,9 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 ## <a name="certificate-requirements"></a>証明書の要件
 次の一覧では、Azure Stack をデプロイするために必要な証明書の要件について説明します。 
 - 証明書は、内部の証明機関または公的証明機関のどちらかから発行されている必要があります。 公的証明機関が使用されている場合は、Microsoft の信頼されたルート機関プログラムの一部として基本オペレーティング システム イメージに含まれている必要があります。 詳細な一覧については、https://gallery.technet.microsoft.com/Trusted-Root-Certificate-123665ca をご覧ください。 
+- Azure Stack インフラストラクチャが、証明書の署名に使用する証明機関にネットワーク アクセスできる必要があります。
+- 証明書を交換する場合、証明書は、デプロイ時に指定された証明書の署名に使用したのと同じ内部の証明機関、または上記の公的パブリック証明機関のいずれかから発行されたものである必要があります。
+- 自己署名証明書は使用できません。
 - この証明書は、サブジェクトの別名 (SAN) フィールドにすべての名前空間を含む 1 つのワイルドカード証明書にすることができます。 あるいは、必要な場所に acs や Key Vault などのエンドポイント用のワイルド カードを使用した個々の証明書を使用できます。 
 - 証明書署名アルゴリズムを SHA1 にすることはできません。より強力にする必要があります。 
 - Azure Stack のインストールには公開キーと秘密キーの両方が必要なため、証明書の形式は PFX である必要があります。 
@@ -42,6 +45,9 @@ Azure Stack には、少数の Azure Stack サービスやテナント VM に割
 - 証明書の "Issued to:" フィールドは "Issued by:" フィールドと同じにしないでください。
 - デプロイの時点で、すべての証明書 pfx ファイルのパスワードが同じである必要があります。
 - デプロイの失敗を回避するために、すべての証明書のサブジェクト名とサブジェクトの別名がこの記事で説明されている仕様に一致していることを確認してください。
+
+> [!NOTE]
+> 自己署名証明書は使用できません。
 
 > [!NOTE]
 > 証明書の信頼チェーン内での中間証明機関の存在がサポートされています。 

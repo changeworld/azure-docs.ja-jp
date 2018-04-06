@@ -1,8 +1,8 @@
 ---
-title: "Azure で Ansible を使用するためのツール"
-description: "Azure で Ansible を使用するための個々のツールをインストールして使用します。"
+title: Azure で Ansible を使用するためのツール
+description: Azure で Ansible を使用するための個々のツールをインストールして使用します。
 ms.service: ansible
-keywords: "ansible, azure, DevOps, ツール, vs code, visual studio code, 拡張機能"
+keywords: ansible, azure, DevOps, ツール, vs code, visual studio code, 拡張機能
 author: tomarcher
 manager: routlaw
 ms.author: tarcher

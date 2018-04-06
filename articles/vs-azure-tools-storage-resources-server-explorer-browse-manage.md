@@ -1,11 +1,11 @@
 ---
-title: "サーバー エクスプローラーを使用したストレージ リソースの参照と管理 | Microsoft Docs"
-description: "サーバー エクスプローラーを使用したストレージ リソースの参照と管理"
+title: サーバー エクスプローラーを使用したストレージ リソースの参照と管理 | Microsoft Docs
+description: サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 658dc064-4a4e-414b-ae5a-a977a34c930d
 ms.service: storage
 ms.devlang: multiple
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 8/24/2017
-ms.author: kraigb
-ms.openlocfilehash: ee91ca168acf2fa0d248e18cce64ac546740a2bd
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: ghogen
+ms.openlocfilehash: 59e26082845b5934a5918ccfb3dc8b971bba7d54
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="browse-and-manage-storage-resources-by-using-server-explorer"></a>サーバー エクスプローラーを使用したストレージ リソースの参照と管理
 
@@ -295,6 +295,6 @@ Azure Table Storage は、大量の構造化データを格納します。 こ�
 
 サーバー エクスプローラーからストレージ アカウントを削除しても、ストレージ アカウントやアカウントに含まれているデータには影響しません。 サーバー エクスプローラーからの参照が削除されるだけです。 ストレージ アカウントを完全に削除するには、[Azure Portal](https://portal.azure.com/) を使用します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Azure Storage サービスの使用方法の詳細については、[Azure Storage サービスへのアクセス](https://msdn.microsoft.com/library/azure/ee405490.aspx)に関するページをご覧ください。

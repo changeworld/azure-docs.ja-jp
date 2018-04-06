@@ -1,26 +1,26 @@
 ---
-title: "Azure でスケジュールに基づいて実行される関数を作成する | Microsoft Docs"
-description: "Azure で定義したスケジュールに基づいて実行する関数を作成する方法について説明します。"
+title: Azure でスケジュールに基づいて実行される関数を作成する | Microsoft Docs
+description: Azure で定義したスケジュールに基づいて実行する関数を作成する方法について説明します。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: ba50ee47-58e0-4972-b67b-828f2dc48701
 ms.service: functions
 ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 01/03/2018
+ms.date: 03/28/2018
 ms.author: glenga
-ms.custom: mvc
-ms.openlocfilehash: 33f6cd9e10782bb8ff1b0ddf6d047aebc83f8008
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.custom: mvc, cc996988-fb4f-47
+ms.openlocfilehash: 9c961c06a01bba0b645088a19cd55e72a54396c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/04/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Azure でタイマーによってトリガーされる関数を作成する
 
@@ -33,8 +33,6 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 このチュートリアルを完了するには、以下が必要です。
 
 + Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)]
 
 ## <a name="create-an-azure-function-app"></a>Azure Function App の作成
 
@@ -60,7 +58,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
 
     ![タイマーによってトリガーされる関数を Azure Portal で作成する。](./media/functions-create-scheduled-function/functions-create-timer-trigger-2.png)
 
-    | 設定 | 推奨値 | Description |
+    | Setting | 推奨値 | Description |
     |---|---|---|
     | **名前** | 既定値 | タイマーによってトリガーされる関数の名前を定義します。 |
     | **[スケジュール](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)。 |

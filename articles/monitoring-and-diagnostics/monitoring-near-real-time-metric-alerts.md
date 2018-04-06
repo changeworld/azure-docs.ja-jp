@@ -15,58 +15,67 @@ ms.topic: article
 ms.date: 02/26/2018
 ms.author: snmuvva, vinagara
 ms.custom: ''
-ms.openlocfilehash: 88995b1f3350fe485e28efccc93779ae0a42eb97
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 15b9b0b69f3805b3e3af1d3973fd3a77bea62ab9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="near-real-time-metric-alerts-preview"></a>ほぼリアルタイムのメトリック アラート (プレビュー)
-Azure Monitor では、ほぼリアルタイムのメトリック アラート (プレビュー) と呼ばれる新しいアラートの種類をサポートしています。 現在、この機能はパブリック プレビュー段階にあります。
+# <a name="use-the-newer-metric-alerts-for-azure-services-in-azure-portal"></a>Azure Portal で Azure サービスの新しいメトリック アラートを使用する
+Azure Monitor は、ほぼリアルタイムのメトリック アラートと呼ばれる新しいアラートの種類をサポートしています。 
 
-ほぼリアルタイムのメトリック アラートは、いくつかの点で通常のメトリック アラートとは異なります。
+ほぼリアルタイムのメトリック アラートは、いくつかの点で[従来のメトリック アラート](insights-alerts-portal.md)とは異なります。
 
-- **待ち時間の短縮**: ほぼリアルタイムのメトリック アラートでは、メトリック値の変化を 1 分という細かい間隔で監視できます。
+- **待機時間の短縮**: ほぼリアルタイムのメトリック アラートは 1 分ごとに実行できます。 古いメトリック アラートは常に、5 分の頻度で実行されます。
+- **多次元メトリックのサポート**: 各次元のメトリックに関するアラートを生成して、メトリックの関心のあるセグメントを監視できます。
 - **メトリックの条件に対する詳細な制御**: ほぼリアルタイムのメトリック アラートでは、より詳細なアラート ルールを定義できます。 このアラートでは、メトリックの最大値、最小値、平均値、および合計値の監視がサポートされています。
-- **ログからのメトリック**: [Log Analytics](../log-analytics/log-analytics-overview.md) に入ってくる一般的なログ データから、メトリックを Azure Monitor に抽出し、ほぼリアルタイムで警告できます
 - **複数のメトリックの監視の組み合わせ**: ほぼリアルタイムのメトリック アラートでは、複数のメトリック (現時点では最大で 2 つ) を 1 つのルールで監視できます。 両方のメトリックが、指定された期間にわたってしきい値を超えた場合、アラートがトリガーされます。
 - **モジュール式の通知システム**: ほぼリアルタイムのメトリック アラートでは、[アクション グループ](monitoring-action-groups.md)を使用します。 アクション グループを使用すると、モジュール形式のアクションを作成することができます。 アクション グループは、複数のアラート ルールで再利用できます。
+- **ログからのメトリック**: [Log Analytics](../log-analytics/log-analytics-overview.md) に入力される一般的なログ データから、メトリックを Azure Monitor に抽出し、ほぼリアルタイムで警告できます。
 
-> [!NOTE]
-> ほぼリアルタイムのメトリック アラートは、現在、パブリック プレビュー段階です。 ログからのメトリック機能は*限定*パブリック プレビュー段階です。 機能やユーザー エクスペリエンスは変更されることがあります。
->
 
 ## <a name="metrics-and-dimensions-supported"></a>サポートされるメトリックとディメンション
 ほぼリアルタイムのメトリック アラートでは、ディメンションを使用するメトリックのアラートがサポートされています。 ディメンションを使用すると、メトリックを適切なレベルにフィルター処理できます。 サポートされるすべてのメトリックと適用可能なディメンションは、[Azure Monitor - メトリックス エクスプローラー (プレビュー)](monitoring-metric-charts.md) から探索および視覚化できます。
 
 ほぼリアルタイムのメトリック アラートでサポートされている Azure Monitor ベースのメトリック ソースの完全な一覧を次に示します。
 
-|メトリック名/詳細  |サポートされるディメンション  |
-|---------|---------|
-|Microsoft.ApiManagement/service     | [はい]        |
-|Microsoft.Automation/automationAccounts     |     該当なし    |
-|Microsoft.Automation/automationAccounts     |   該当なし      |
-|Microsoft.Cache/Redis     |    該当なし     |
-|Microsoft.Compute/virtualMachines     |    該当なし     |
-|Microsoft.Compute/virtualMachineScaleSets     |   該当なし      |
-|Microsoft.DataFactory/factories     |   該当なし      |
-|Microsoft.DBforMySQL/servers     |   該当なし      |
-|Microsoft.DBforPostgreSQL/servers     |    該当なし     |
-|Microsoft.EventHub/namespaces     |   該当なし      |
-|Microsoft.Logic/workflows     |     該当なし    |
-|Microsoft.Network/applicationGateways     |    該当なし     |
-|Microsoft.Network/publicipaddresses     |  該当なし       |
-|Microsoft.Search/searchServices     |   該当なし      |
-|Microsoft.ServiceBus/namespaces     |  該当なし       |
-|Microsoft.Storage/storageAccounts     |    [はい]     |
-|Microsoft.Storage/storageAccounts/services     |     [はい]    |
-|Microsoft.StreamAnalytics/streamingjobs     |  該当なし       |
-|Microsoft.CognitiveServices/accounts     |    該当なし     |
+|リソースの種類  |サポートされるディメンション  | 使用可能なメトリック|
+|---------|---------|----------------|
+|Microsoft.ApiManagement/service     | [はい]        | [API Management](monitoring-supported-metrics.md#microsoftapimanagementservice)|
+|Microsoft.Automation/automationAccounts     |     [はい]   | [Automation アカウント](monitoring-supported-metrics.md#microsoftautomationautomationaccounts)|
+|Microsoft.Batch/batchAccounts | 該当なし| [Batch アカウント](monitoring-supported-metrics.md#microsoftbatchbatchaccounts)|
+|Microsoft.Cache/Redis     |    該当なし     |[Redis Cache](monitoring-supported-metrics.md#microsoftcacheredis)|
+|Microsoft.Compute/virtualMachines     |    該当なし     | [Virtual Machines](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)|
+|Microsoft.Compute/virtualMachineScaleSets     |   該当なし      |[仮想マシン スケール セット](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)|
+|Microsoft.DataFactory/factories     |   [はい]     |[データ ファクトリ V2](monitoring-supported-metrics.md#microsoftdatafactoryfactories)|
+|Microsoft.DBforMySQL/servers     |   該当なし      |[DB for MySQL](monitoring-supported-metrics.md#microsoftdbformysqlservers)|
+|Microsoft.DBforPostgreSQL/servers     |    該当なし     | [DB for PostgreSQL](monitoring-supported-metrics.md#microsoftdbforpostgresqlservers)|
+|Microsoft.EventHub/namespaces     |  [はい]      |[Event Hubs](monitoring-supported-metrics.md#microsofteventhubnamespaces)|
+|Microsoft.Logic/workflows     |     該当なし    |[Logic Apps](monitoring-supported-metrics.md#microsoftlogicworkflows) |
+|Microsoft.Network/applicationGateways     |    該当なし     | [アプリケーション ゲートウェイ](monitoring-supported-metrics.md#microsoftnetworkapplicationgateways) |
+|Microsoft.Network/publicipaddresses     |  該当なし       |[パブリック IP アドレス](monitoring-supported-metrics.md#microsoftnetworkpublicipaddresses)|
+|Microsoft.Search/searchServices     |   該当なし      |[検索サービス](monitoring-supported-metrics.md#microsoftsearchsearchservices)|
+|Microsoft.ServiceBus/namespaces     |  [はい]       |[Service Bus](monitoring-supported-metrics.md#microsoftservicebusnamespaces)|
+|Microsoft.Storage/storageAccounts     |    [はい]     | [ストレージ アカウント](monitoring-supported-metrics.md#microsoftstoragestorageaccounts)|
+|Microsoft.Storage/storageAccounts/services     |     [はい]    | [Blob service](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices)、[ファイル サービス](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices)、[Queue サービス](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices)、および [Table service](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
+|Microsoft.StreamAnalytics/streamingjobs     |  該当なし       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
+|Microsoft.CognitiveServices/accounts     |    該当なし     | [Cognitive Services](monitoring-supported-metrics.md#microsoftcognitiveservicesaccounts)|
+|Microsoft.OperationalInsights/workspaces (プレビュー) | [はい]|[Log Analytics ワークスペース](#support-for-oms-logs-as-metrics-for-alerting)|
 
 
-現在、ログからのメトリックでは、次の一般的な OMS ログがサポートされています。
+## <a name="create-a-newer-metric-alert"></a>新しいメトリック アラートを作成する
+現在、新しいメトリック アラートは Azure Portal または REST API でのみ作成できます。 PowerShell および Azure コマンド ライン インターフェイス (Azure CLI) を使用したほぼリアルタイムのメトリック アラートの構成のサポートは近日対応予定です。
+
+Azure Portal で新しいメトリック アラートを作成する方法を学習するには、「[ Azure Portal でアラート ルールを作成する](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal)」を参照してください。
+
+## <a name="manage-newer-metric-alerts"></a>新しいメトリック アラートを管理する
+ほぼリアルタイムのメトリック アラートの作成後、[Azure Portal でのアラートの管理](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal)に関するページで説明されている手順を使用して、アラートを管理することができます。
+
+## <a name="support-for-oms-logs-as-metrics-for-alerting"></a>アラートのためのメトリックとしての OMS ログのサポート
+
+ほぼリアルタイムのメトリック アラートは、ログのプレビューからのメトリックの一部としてメトリックとして抽出された一般的な OMS ログに対しても使用できます。  
 - Windows および Linux マシンの[パフォーマンス カウンター](../log-analytics/log-analytics-data-sources-performance-counters.md)
-- マシンのハートビート レコード
+- [Agent Health のためのハートビート レコード](../operations-management-suite/oms-solution-agenthealth.md)
 - [更新管理](../operations-management-suite/oms-solution-update-management.md)レコード
 
 ほぼリアルタイムのメトリック アラートでサポートされている OMS ログ ベースのメトリック ソースの完全な一覧を次に示します。
@@ -143,17 +152,8 @@ Azure Monitor では、ほぼリアルタイムのメトリック アラート (
 |    プライマリの |     はい - Computer、Product、Classification、UpdateState、Optional、Approved    |   更新管理 |
 
 > [!NOTE]
-> 特定のメトリックやディメンションは、選択した期間内にそのデータが存在する場合にのみ表示されます
+> 特定のメトリックやディメンションは、選択された期間内にそのためのデータが存在する場合にのみ表示されます。 これらのメトリックは、このプレビューに登録した、米国東部、米国西中部、および西ヨーロッパにワークスペースを持つ顧客が使用できます。 このプレビューに登録する場合は、[アンケート](https://aka.ms/MetricLogPreview)を使用してサインアップします。
 
-## <a name="create-a-near-real-time-metric-alert"></a>ほぼリアルタイムのメトリック アラートを作成する
-現時点で、ほぼリアルタイムのメトリック アラートは、Azure Portal でのみ作成できます。 PowerShell、Azure コマンド ライン インターフェイス (Azure CLI)、および Azure Monitor REST API を使用したほぼリアルタイムのメトリック アラートの構成は、近日対応予定です。
-
-ほぼリアルタイムのメトリック アラートの作成エクスペリエンスは、新しい **[アラート (プレビュー)]** ページに移動されました。 現在のアラート ページに **[Add Near Real-Time Metric alert]\(ほぼリアルタイムのメトリック アラートの追加\)** が表示されていても、**[アラート (プレビュー)]** ページにリダイレクトされます。
-
-ほぼリアルタイムのメトリック アラートの作成方法については、「[Azure Portal でアラート ルールを作成する](monitor-alerts-unified-usage.md#create-an-alert-rule-with-the-azure-portal)」を参照してください。
-
-## <a name="manage-near-real-time-metric-alerts"></a>ほぼリアルタイムのメトリック アラートを管理する
-ほぼリアルタイムのメトリック アラートの作成後、[Azure Portal でのアラートの管理](monitor-alerts-unified-usage.md#managing-your-alerts-in-azure-portal)に関するページで説明されている手順を使用して、アラートを管理することができます。
 
 ## <a name="payload-schema"></a>ペイロード スキーマ
 
@@ -209,6 +209,6 @@ Azure Monitor では、ほぼリアルタイムのメトリック アラート (
 
 ## <a name="next-steps"></a>次の手順
 
-* 新しい[アラート (プレビュー) エクスペリエンス](monitoring-overview-unified-alerts.md)の詳細を確認します。
-* [Azure Alerts (プレビュー) のログ アラート](monitor-alerts-unified-log.md)について確認します。
+* 新しい[アラート エクスペリエンス](monitoring-overview-unified-alerts.md)の詳細について学習します。
+* [Azure でのログ アラート](monitor-alerts-unified-log.md)について学習します。
 * [Azure のアラート](monitoring-overview-alerts.md)について確認します。

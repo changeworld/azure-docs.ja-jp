@@ -1,3 +1,19 @@
+---
+title: インクルード ファイル
+description: インクルード ファイル
+services: vpn-gateway
+author: cherylmc
+ms.service: vpn-gateway
+ms.topic: include
+ms.date: 03/21/2018
+ms.author: cherylmc
+ms.custom: include file
+ms.openlocfilehash: 072c16a0e50a4922d44dd354b632f39b33d23cdd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 03/28/2018
+---
 ### <a name="supportedclientos"></a>ポイント対サイト接続で使用できるクライアント オペレーティング システムを教えてください。
 
 次のクライアント オペレーティング システムがサポートされています。
@@ -10,8 +26,8 @@
 * Windows Server 2012 R2 (64 ビットのみ)
 * Windows Server 2016 (64 ビットのみ)
 * Windows 10
-* Mac 用 OSX バージョン 10.11 (El Capitan)
-* Mac 用 macOS バージョン 10.12 (Sierra)
+* Mac OS X バージョン 10.11 (El Capitan)
+* Mac OS X バージョン 10.12 (Sierra)
 
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>ポイント対サイト構成で保持できる VPN クライアント エンドポイントの最大数を教えてください。
 
@@ -39,7 +55,6 @@ Azure では、ポイント対サイト VPN のオプションを 2 種類サポ
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 
-
 いいえ。 ポイント対サイト接続のクライアントは、仮想ネットワーク ゲートウェイが存在する VNet にあるリソースに接続できるにとどまります。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>サイト間接続またはポイント対サイト接続ではどの程度のスループットが得られますか。
@@ -47,7 +62,6 @@ Azure では、ポイント対サイト VPN のオプションを 2 種類サポ
 VPN トンネルのスループットを正確に一定レベルに維持することは困難です。 IPsec と SSTP は、VPN プロトコルの中でも暗号化処理の負荷が高いものです。 また、スループットはオンプレミスとインターネットの間の待機時間や帯域幅によっても制限されます。 IKEv2 ポイント対サイト VPN 接続のみを使用する VPN ゲートウェイでは、期待できるスループットの総量がゲートウェイの SKU に応じて変わります。 スループットの詳細については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP や IKEv2 をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
-
 
 いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
 

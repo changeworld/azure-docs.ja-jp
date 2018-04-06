@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement 関連のトラブルシューティング ガイド - プッシュ/リーチ"
-description: "Azure Mobile Engagement でのユーザーとの対話と通知の問題のトラブルシューティング"
+title: Azure Mobile Engagement 関連のトラブルシューティング ガイド - プッシュ/リーチ
+description: Azure Mobile Engagement でのユーザーとの対話と通知の問題のトラブルシューティング
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 3f1886b7-1fdd-47f4-b6b0-d79f158d5ef3
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: ef6f34404b97a6972fc136262920a1bdbc4117b0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bc94353e60288ba1acfb1855b3a7b416a03e73bc
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="troubleshooting-guide-for-push-and-reach-issues"></a>プッシュとリーチに関する問題のトラブルシューティング ガイド
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 次に説明するのは、Azure Mobile Engagement が、ユーザーに情報を送信する方法に関して発生する可能性のある問題です。
 
 ## <a name="push-failures"></a>プッシュ エラー

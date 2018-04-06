@@ -1,11 +1,11 @@
 ---
-title: "実装メディア アプリでの Azure Mobile Engagement "
-description: "Azure Mobile Engagement を実装するためのメディア アプリのシナリオ"
+title: '実装メディア アプリでの Azure Mobile Engagement '
+description: Azure Mobile Engagement を実装するためのメディア アプリのシナリオ
 services: mobile-engagement
 documentationcenter: mobile
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: 48201cc8-4e04-485c-a8dc-d6406d23f3ed
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: c1591c3e436981e621830916cf0cdc4b7f395d7b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8e5d4585b47a4ca26b81b7168aa499f25722415a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="implement-mobile-engagement-with-media-app"></a>メディア アプリで Mobile Engagement を実装する
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 ## <a name="overview"></a>概要
 John は、大きなメディア会社のモバイル プロジェクト マネージャーです。 最近、ダウンロード数が非常に高い、新しいアプリを公開しました。 ダウンロードの目標は達成しましたが、ユーザーあたりの投資利益率 (ROI) は、まだ要件を満たしていません。 
 

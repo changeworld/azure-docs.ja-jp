@@ -25,9 +25,15 @@
 ### Load Balancer
 #### [Load Balancer とは](../load-balancer/load-balancer-standard-overview.md)
 #### [Load Balancer Standard と可用性ゾーン](../load-balancer/load-balancer-standard-availability-zones.md)
-#### [Azure Portal を使用してゾーン冗長パブリック Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-portal.md)
-#### [PowerShell を使用してゾーン冗長 Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
-#### [CLI を使用してゾーン冗長パブリック Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+
+#### [ゾーン冗長パブリック Standard Load Balancer の作成](../load-balancer/load-balancer-get-started-internet-az-portal.md)
+##### [ゾーン冗長パブリック Standard Load Balancer の作成 (PowerShell)](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
+##### [ゾーン冗長パブリック Standard Load Balancer の作成 (CLI)](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+#### [ゾーンのパブリック Standard Load Balancer の作成](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-portal.md)
+##### [ゾーンのパブリック Standard Load Balancer の作成 (PowerShell)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-powershell.md)
+##### [ゾーン冗長パブリック Standard Load Balancer の作成 (CLI)](../load-balancer/load-balancer-get-started-internet-availability-zones-zonal-cli.md)
+#### [可用性ゾーン間での VM の負荷分散](../load-balancer/load-balancer-standard-public-availability-zones-portal.md)
+##### [Azure を使用した可用性ゾーン間での VM の負荷分散 (CLI)](../load-balancer/load-balancer-standard-public-zone-redundant-cli.md)
 
 ### [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
 
@@ -35,7 +41,7 @@
 #### [SQL Database での可用性ゾーン](../sql-database/sql-database-high-availability.md#availability-zones)
 
 ### Storage
-#### [ゾーン冗長ストレージ](../storage/common/storage-redundancy.md#zone-redundant-storage)
+#### [ゾーン冗長ストレージ](../storage/common/storage-redundancy-zrs.md)
 
 # ディザスター リカバリー
 ## [Azure Site Recovery の使用](https://docs.microsoft.com/azure/site-recovery/)

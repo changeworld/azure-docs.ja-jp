@@ -1,22 +1,22 @@
 ---
-title: "Service Bus メッセージングのドキュメント"
-description: "オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。"
-services: service-bus
-author: czeumault
-manager: carolz
+title: Service Bus メッセージングのドキュメント
+description: オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。
+services: service-bus-messaging
+author: sethmanheim
+manager: timlt
 layout: LandingPage
-ms.assetid: 
-ms.service: service-bus
+ms.assetid: ''
+ms.service: service-bus-messaging
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 03/14/2017
-ms.author: carolz
-ms.openlocfilehash: 733d2fd848e100525cb7f50f9831f52d5d473863
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 04/02/2018
+ms.author: sethm
+ms.openlocfilehash: cafe8d0687260362347600f05ef090c7cb95ea82
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/05/2018
 ---
 # <a name="service-bus-messaging-documentation"></a>Service Bus メッセージングのドキュメント
 このメッセージング サービスは、ブローカーまたはサードパーティの通信メカニズムとして信頼できる情報配信を提供します。
@@ -126,7 +126,7 @@ ms.lasthandoff: 10/11/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>その他</h3>
-                        <p><a href="service-bus-messaging-exceptions.md">例外</a></p>
+                        <p><a href="service-bus-messaging-exceptions.md">Exceptions</a></p>
                         <p><a href="service-bus-quotas.md">クォータ</a></p>
                         <p><a href="service-bus-messaging-sql-filter.md">SQLFilter 構文</a></p>
                         <p><a href="service-bus-messaging-sql-rule-action.md">SQLRuleAction 構文</a></p>

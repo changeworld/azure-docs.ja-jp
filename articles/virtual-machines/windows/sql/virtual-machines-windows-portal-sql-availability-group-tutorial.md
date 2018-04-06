@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/09/2017
 ms.author: mikeray
-ms.openlocfilehash: fe79c6e6344bef8f25ae2e343e3301959c4e0ae5
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 915f36678b8515c5f4a6bd367843255865f4b34d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-always-on-availability-group-in-azure-vm-manually"></a>Azure VM での AlwaysOn 可用性グループの手動構成
 
@@ -374,22 +374,14 @@ Azure Virtual Machines では、SQL Server 可用性グループにはロード 
 
    ![リソース グループでのロード バランサーの検索](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/86-findloadbalancer.png)
 
-1. ロード バランサーをクリックし、**[バックエンド プール]** をクリックして、**[+ 追加]** をクリックします。 次のようにバックエンド プールを設定します。
+1. ロード バランサーをクリックし、**[バックエンド プール]** をクリックして、**[+ 追加]** をクリックします。 
 
-   | Setting | [説明] | 例
-   | --- | --- |---
-   | **名前** | テキストの名前を入力します | SQLLBBE
-   | **関連付け先** | 一覧から選択します | 可用性セット
-   | **可用性セット** | SQL Server の仮想マシンが含まれる可用性セットの名前を使います | sqlAvailabilitySet |
-   | **仮想マシン** |Azure SQL Server VM の 2 つの名前です | sqlserver-0、sqlserver-1
+1. VM を含む可用性セットにバックエンド プールを関連付けます。
 
-1. バックエンド プールの名前を入力します。
+1. **[ターゲット ネットワーク IP 構成]** の下で、**[仮想マシン]** を確認し、可用性グループ レプリカをホストする仮想マシンを両方とも選択します。 ファイル共有監視サーバーは含めないでください。
 
-1. **[+ 仮想マシンの追加]** をクリックします。
-
-1. 可用性セットでは、SQL Server が含まれる可用性セットを選びます。
-
-1. 仮想マシンでは、両方の SQL Server を含めます。 ファイル共有監視サーバーは含めないでください。
+   >[!NOTE]
+   >仮想マシンを両方とも指定しないと、プライマリ レプリカにしか接続できません。
 
 1. **[OK]** をクリックして、バックエンド プールを作成します。
 
