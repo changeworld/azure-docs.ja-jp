@@ -1,19 +1,19 @@
 ---
-title: "Azure Policy 定義の構造 | Microsoft Docs"
-description: "Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングと実行されるアクションを示すことで、組織でのリソースの規則を確立する方法について説明します。"
+title: Azure Policy 定義の構造 | Microsoft Docs
+description: Azure Policy でリソース ポリシー定義を使用して、ポリシーが適用されるタイミングと実行されるアクションを示すことで、組織でのリソースの規則を確立する方法について説明します。
 services: azure-policy
-keywords: 
+keywords: ''
 author: bandersmsft
 ms.author: banders
 ms.date: 01/17/2018
 ms.topic: article
 ms.service: azure-policy
-ms.custom: 
-ms.openlocfilehash: ffff4a663b64342142f42a662905a290044e2dfb
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.custom: ''
+ms.openlocfilehash: 50965010d821d4edf94e2f5727546cb56f61f5db
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-policy-definition-structure"></a>Azure Policy の定義の構造
 
@@ -70,7 +70,9 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 * `all`: リソース グループとすべてのリソースの種類を評価します 
 * `indexed`: タグと場所をサポートするリソースの種類のみを評価します
 
-**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを指定して `all` に設定する必要があります。 
+ほとんどの場合、**mode** は `all` に設定することをお勧めします。 ポータルを使用して作成されるポリシーの定義はすべて、`all` モードを使用します。 PowerShell または Azure CLI を使用する場合、**mode** パラメーターを手動で指定する必要があります。
+
+タグまたは場所を適用するポリシーを作成するときには、`indexed` を使用する必要があります。 これは必須ではありませんが、タグや場所をサポートしていないリソースが、コンプライアンス結果に非準拠として表れないようになります。 これの例外の 1 つは、**リソース グループ**です。 リソース グループに場所またはタグを適用しようとしているポリシーでは、**mode** を `all` に設定し、明確に `Microsoft.Resources/subscriptions/resourceGroup` 型をターゲットにする必要があります。 例については、[リソース グループのタグを適用する](scripts/enforce-tag-rg.md)ことに関する記事を参照してください。
 
 ## <a name="parameters"></a>parameters
 
@@ -126,7 +128,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
     <condition> | <logical operator>
   },
   "then": {
-    "effect": "deny | audit | append"
+    "effect": "deny | audit | append | auditIfNotExists | deployIfNotExists"
   }
 }
 ```
@@ -165,16 +167,22 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 条件は、**フィールド**が特定の基準を満たすかどうかを評価します。 サポートされている条件は次のとおりです。
 
 * `"equals": "value"`
+* `"notEquals": "value"`
 * `"like": "value"`
+* `"notLike": "value"`
 * `"match": "value"`
+* `"notMatch": "value"`
 * `"contains": "value"`
+* `"notContains": "value"`
 * `"in": ["value1","value2"]`
+* `"notIn": ["value1","value2"]`
 * `"containsKey": "keyName"`
+* `"notContainsKey": "keyName"`
 * `"exists": "bool"`
 
-**like** 条件を使用する場合は、値にワイルドカード (*) を指定することができます。
+**like** 条件や **notLike** 条件を使用する場合は、値の中でワイルドカード (*) を指定できます。
 
-**match** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?` のほか、具体的な文字を指定することができます。 [承認されている VM イメージ](scripts/allowed-custom-images.md)に関する記事で、例を確認してください。
+**match** 条件や **notMatch** 条件を使うときは、任意の数字を表す `#` や任意の文字を表す `?` のほか、具体的な文字を指定することができます。 [承認されている VM イメージ](scripts/allowed-custom-images.md)に関する記事で、例を確認してください。
 
 ### <a name="fields"></a>フィールド
 条件は、フィールドを使用して構成されます。 フィールドは、リソースの状態の記述に使用されるリソース要求ペイロード内のプロパティを表します。  
@@ -182,12 +190,28 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 次のフィールドがサポートされています。
 
 * `name`
+* `fullName`
+  * 親を含むリソースの完全な名前 (例:"myServer/myDatabase") を返します
 * `kind`
 * `type`
 * `location`
 * `tags`
-* `tags.*`
+* `tags.tagName`
+* `tags[tagName]`
+  * このかっこ構文は、ピリオドを含むタグ名をサポートしています
 * プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
+
+### <a name="alternative-accessors"></a>代替アクセサー
+**Field** は、ポリシー規則で使用されるプライマリ アクセサーです。 これは、評価対象となっているリソースを直接検査します。 ただし、ポリシーは他のアクセサー **source** をサポートしています。
+
+```json
+"source": "action",
+"equals": "Microsoft.Compute/virtualMachines/write"
+```
+
+**source** がサポートしている値は **action** の 1 つだけです。 action は、評価対象となっている要求の承認アクションを返します。 承認アクションは、[アクティビティ ログ](../monitoring-and-diagnostics/monitoring-activity-log-schema.md)の承認セクションで公開されています。
+
+ポリシーがバック グラウンドで既存のリソースを評価するときには、そのリソースの種類に対する **action** を `/write` 承認アクションに設定します。
 
 ### <a name="effect"></a>効果
 ポリシーでは、次の種類の効果がサポートされています。
@@ -212,7 +236,7 @@ Azure Policy で使用されるリソース ポリシー定義を利用して、
 
 値には文字列または JSON 形式オブジェクトを指定できます。
 
-**AuditIfNotExists** および **DeployIfNotExists** を使用すると、子リソースの存在を評価したうえで、そのリソースが存在しない場合に、ルールと該当する効果を適用することができます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。
+**AuditIfNotExists** および **DeployIfNotExists** を使用すると、関連するリソースの存在を評価したうえで、そのリソースが存在しない場合に、ルールと該当する効果を適用することができます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。
 仮想マシン拡張機能がデプロイされていない場合の監査の例については、[拡張機能が存在しない場合の監査](scripts/audit-ext-not-exist.md)に関するページを参照してください。
 
 

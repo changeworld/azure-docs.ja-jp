@@ -1,11 +1,11 @@
 ---
-title: "Azure Monitor を使用して、データ ファクトリを監視する |Microsoft Docs"
-description: "Azure Data Factory からの情報を使用して診断ログを有効にし、Azure Monitor を使用して Data Factory パイプラインを監視する方法を説明します。"
+title: Azure Monitor を使用して、データ ファクトリを監視する |Microsoft Docs
+description: Azure Data Factory からの情報を使用して診断ログを有効にし、Azure Monitor を使用して Data Factory パイプラインを監視する方法を説明します。
 services: data-factory
-documentationcenter: 
+documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2018
 ms.author: shlo
-ms.openlocfilehash: cae3c797171c3904f100ae3cdec47a31b06d3b31
-ms.sourcegitcommit: 9cc3d9b9c36e4c973dd9c9028361af1ec5d29910
+ms.openlocfilehash: 8ab2e7cdc8472be9c0800eea5bef9322b0ed87f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="monitor-data-factories-using-azure-monitor"></a>Azure Monitor を使用して、データ ファクトリを監視する  
 クラウド アプリケーションは、動的なパーツを多数使った複雑な構成になっています。 監視では、アプリケーションを正常な状態で稼働させ続けるためのデータを取得できます。 また、潜在的な問題を防止したり、発生した問題をトラブルシューティングするのにも役立ちます。 さらに、監視データを使用して、アプリケーションに関する深い洞察を得ることもできます。 この知識は、アプリケーションのパフォーマンスや保守容易性を向上させたり、手作業での介入が必要な操作を自動化したりするうえで役立ちます。
@@ -230,7 +230,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
     "identity": null
 }
 ```
-詳細については、ここ](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
+詳細情報はこちら](https://msdn.microsoft.com/en-us/library/azure/dn931932.aspx)
 
 ## <a name="schema-of-logs--events"></a>ログとイベントのスキーマ
 
@@ -381,7 +381,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 |start| String | Timespan でのトリガーの開始、UTC 形式 | `2017-06-26T20:55:29.5007959Z`|
 |status| String | トリガーが正常に起動したかどうかを示す最終的な状態 (成功または失敗) | `Succeeded`|
 
-### <a name="metrics"></a>メトリック
+## <a name="metrics"></a>メトリック
 
 Azure Monitor では、テレメトリを使用して、Azure のワークロードのパフォーマンスと正常性を視覚的に確認できます。 Azure テレメトリ データの種類の中でも最も重要なのは、Azure リソースのほとんどから出力されるメトリックであり、これはパフォーマンス カウンターとも呼ばれます。 Azure Monitor では、このメトリックを複数の方法で構成して使用し、監視やトラブルシューティングを行うことができます。
 
@@ -396,7 +396,52 @@ ADFV2 は、次のメトリックを出力します
 | TriggerSucceededRuns | 成功したトリガー実行の回数メトリック  | Count    | 合計                | 分の枠内で成功したトリガー実行の合計回数   |
 | TriggerFailedRuns    | 失敗したトリガー実行の回数メトリック     | Count    | 合計                | 分の枠内で失敗したトリガー実行の合計回数      |
 
-メトリックにアクセスするには、記事 - https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics の説明に従ってください 
+メトリックにアクセスするには、記事 https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics の手順に従います。 
+
+## <a name="alerts"></a>アラート
+
+Data Factory で、サポートされるメトリックに対してアラートを生成できます。 Data Factory の **[監視]** ページで **[アラート]** ボタンをクリックします。
+
+![[アラート] オプション](media/monitor-using-azure-monitor/alerts_image1.png)
+
+これにより、**[アラート]** ページが開きます。
+
+![Alerts page](media/monitor-using-azure-monitor/alerts_image2.png)
+
+Azure Portal にログインし、**[監視] -&gt; [アラート]** をクリックして、直接 **[アラート]** ページを開くこともできます。
+
+![ポータル メニューのアラート](media/monitor-using-azure-monitor/alerts_image3.png)
+
+### <a name="create-alerts"></a>アラートを作成する
+
+1.  **[+ New Alert rule] (+ 新しいアラート ルール)** をクリックして、新しいアラートを作成します。
+
+    ![新しいアラート ルール](media/monitor-using-azure-monitor/alerts_image4.png)
+
+2.  **[Alert condition] (アラートの条件)** を定義します。
+
+    > [!NOTE]
+    > **[Filter by resource type] (リソースの種類でのフィルター処理)** では **[すべて]** を選択するようにしてください。
+
+    ![[Alert condition] (アラートの条件)、画面 1/3](media/monitor-using-azure-monitor/alerts_image5.png)
+
+    ![[Alert condition] (アラートの条件)、画面 2/3](media/monitor-using-azure-monitor/alerts_image6.png)
+
+    ![[Alert condition] (アラートの条件)、画面 3/3](media/monitor-using-azure-monitor/alerts_image7.png)
+
+3.  **[アラートの詳細]** を定義します。
+
+    ![[アラートの詳細]](media/monitor-using-azure-monitor/alerts_image8.png)
+
+4.  **[Action group] (アクション グループ)** を定義します。
+
+    ![[Action group] (アクション グループ)、画面 1/4](media/monitor-using-azure-monitor/alerts_image9.png)
+
+    ![[Action group] (アクション グループ)、画面 2/4](media/monitor-using-azure-monitor/alerts_image10.png)
+
+    ![[Action group] (アクション グループ)、画面 3/4](media/monitor-using-azure-monitor/alerts_image11.png)
+
+    ![[Action group] (アクション グループ)、画面 4/4](media/monitor-using-azure-monitor/alerts_image12.png)
 
 ## <a name="next-steps"></a>次の手順
 実行によるパイプラインの監視と管理の詳細については、[パイプラインをプログラムで監視および管理する](monitor-programmatically.md)に関する記事を参照してください。 

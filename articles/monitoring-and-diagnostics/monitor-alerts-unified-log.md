@@ -1,6 +1,6 @@
 ---
-title: Azure Monitor でのログ アラート - Alerts (プレビュー) | Microsoft Docs
-description: Azure Alerts (プレビュー) に関して指定した複合クエリ条件が満たされたときに、電子メール、通知、Web サイト URL (webhook)の呼び出し、またはオートメーションをトリガーします。
+title: Azure Monitor でのログ アラート - Alerts | Microsoft Docs
+description: Azure Alerts に関して指定した複合クエリ条件が満たされたときに、電子メール、通知、Web サイト URL (webhook)の呼び出し、またはオートメーションをトリガーします。
 author: msvijayn
 manager: kmadnani1
 editor: ''
@@ -12,35 +12,35 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/02/2018
+ms.date: 03/17/2018
 ms.author: vinagara
-ms.openlocfilehash: 0cee8bf77e0facc12159b823152b8859ce5cedd8
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 5928bbcec08d6ba4ac0b0d03b66fa4bfc8f5e3d7
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="log-alerts-in-azure-monitor---alerts-preview"></a>Azure Monitor でのログ アラート - Alerts (プレビュー)
-この記事では、Analytics クエリのアラート ルールが Azure Alerts (プレビュー) でどのように機能するかについて詳しく紹介し、また各種ログ アラートの相違点について説明します。 ログを使用するメトリック アラートの詳細については、「[Near Real Time Metric Alerts](monitoring-near-real-time-metric-alerts.md)」(ほぼリアルタイムのメトリック アラート) を参照してください。
+# <a name="log-alerts-in-azure-monitor---alerts"></a>Azure Monitor でのログ アラート - Alerts 
+この記事では、Analytics クエリのアラート ルールが Azure Alerts でどのように機能するかについて詳しく紹介し、また各種ログ アラートの相違点について説明します。 ログを使用するメトリック アラートの詳細については、「[Near Real Time Metric Alerts](monitoring-near-real-time-metric-alerts.md)」(ほぼリアルタイムのメトリック アラート) を参照してください。
 
-現在、Azure アラート (プレビュー) は、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) および [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) からのクエリに関するログ アラートをサポートしています。
+現在、Azure アラートは、[Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) および [Application Insights](../application-insights/app-insights-cloudservices.md#view-azure-diagnostic-events) からのクエリに関するログ アラートをサポートしています。
 
 > [!WARNING]
 
-> 現在、Azure Alerts (プレビュー) のログ アラートは、ワークスペースまたはアプリをまたがるクエリをサポートしていません。
+> 現在、Azure Alerts のログ アラートは、ワークスペースまたはアプリをまたがるクエリをサポートしていません。 また、Application Insights のログ アラートはパブリック プレビュー段階であり、機能とユーザー エクスペリエンスは変更されることがあります。
 
-また、ユーザーは Azure の任意の Analytics プラットフォームでクエリを完成させてから、*そのクエリを保存することによって、Alerts (プレビュー) で使用するためにインポート*できます。 次の手順に従います。
+ユーザーはまた、Azure の任意の Analytics プラットフォームでクエリを完成させてから、*そのクエリを保存することによって、Alerts で使用するためにインポート*できます。 次の手順に従います。
 - Application Insights の場合: Analytics ポータルに移動し、クエリとその結果を検証します。 次に、一意の名前で *[Shared Queries] (共有クエリ)* に保存します。
 - Log Analytics の場合: ログ検索に移動し、クエリとその結果を検証します。 次に、一意の名前で任意のカテゴリに保存します。
 
-その後、[Alerts (プレビュー) でログ アラートを作成](monitor-alerts-unified-usage.md)すると、下の例に示すように、保存されたクエリがシグナルの種類 **[Log (Saved Query)] (ログ (保存されたクエリ))** として一覧表示されます: ![Alerts にインポートされた保存されたクエリ](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
+その後、[Alerts でログ アラートを作成](monitor-alerts-unified-usage.md)すると、下の例に示すように、保存されたクエリがシグナルの種類 **[Log (Saved Query)] (ログ (保存されたクエリ))** として一覧表示されます: ![Alerts にインポートされた保存されたクエリ](./media/monitor-alerts-unified/AlertsPreviewResourceSelectionLog-new.png)
 
 > [!NOTE]
 > Alerts へのインポートでの **[Log (Saved Query)] (ログ (保存されたクエリ))** の結果の使用。 そのため、Analytics でその後に実行されたどの変更も保存されたアラート ルールには反映されず、その逆も同様です。
 
 ## <a name="log-alert-rules"></a>ログ アラート ルール
 
-Azure Alerts (プレビュー) で作成されたアラートは自動的に、一定間隔でログ クエリを実行します。  ログ クエリの結果が特定の条件に一致すると、アラート レコードが作成されます。 このルールは次に、[アクション グループ](monitoring-action-groups.md)を使用して、ユーザーにアラートを事前に通知したり、[JSON ベースの Webhook](monitor-alerts-unified-log-webhook.md) を使用して外部のアプリケーションにデータを送信するなどの別のプロセスを起動したりする 1 つ以上のアクションを自動的に実行できます。 この分析では、アラート ルールの種類に応じてさまざまなロジックが使用されます。
+Azure Alerts で作成されたアラートは自動的に、一定間隔でログ クエリを実行します。  ログ クエリの結果が特定の条件に一致すると、アラート レコードが作成されます。 このルールは次に、[アクション グループ](monitoring-action-groups.md)を使用して、ユーザーにアラートを事前に通知したり、[JSON ベースの Webhook](monitor-alerts-unified-log-webhook.md) を使用して外部のアプリケーションにデータを送信するなどの別のプロセスを起動したりする 1 つ以上のアクションを自動的に実行できます。 この分析では、アラート ルールの種類に応じてさまざまなロジックが使用されます。
 
 警告ルールは次の内容で定義されます。
 
@@ -118,7 +118,7 @@ Web ベースのアプリがコード 500 (つまり) 内部サーバー エラ�
 
 ## <a name="next-steps"></a>次の手順
 * [ログ アラートの Webhook アクション](monitor-alerts-unified-log-webhook.md)を理解します。
-* [Azure Alerts (プレビュー) の概要を確認](monitoring-overview-unified-alerts.md)します。
-* [Azure Alerts (プレビュー) の使用方法](monitor-alerts-unified-usage.md)について学習します。
+* [Azure Alerts の概要を確認](monitoring-overview-unified-alerts.md)します。
+* [Azure Alerts の使用方法](monitor-alerts-unified-usage.md)について学習します。
 * [Application Insights](../application-insights/app-insights-analytics.md) についてさらに学習します。
 * [Log Analytics](../log-analytics/log-analytics-overview.md) についてさらに学習します。    

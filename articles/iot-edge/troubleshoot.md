@@ -6,15 +6,15 @@ keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 12/15/2017
-ms.topic: tutorial
+ms.date: 03/23/2018
+ms.topic: article
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 4d6dd0d46d909acfbfc04a23be74a571953ce660
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: b03ece52c4ff77c9e0abbc794325cd7e9a20c915
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Azure IoT Edge での一般的な問題と解決
 
@@ -104,7 +104,8 @@ Edge エージェントに、モジュールのイメージにアクセスする
 `iotedgectl login` コマンドをもう一度実行してみます。
 
 ## <a name="iotedgectl-cant-find-docker"></a>iotedgectl で Docker が検出されない
-iotedgectl が setup コマンドまたは start コマンドに失敗し、次のメッセージがログに出力されます。
+
+コマンド `iotedgectl setup` または `iotedgectl start` が失敗して、ログに次のメッセージが出力されます。
 ```output
 File "/usr/local/lib/python2.7/dist-packages/edgectl/host/dockerclient.py", line 98, in get_os_type
   info = self._client.info()
@@ -119,6 +120,33 @@ File "/usr/local/lib/python2.7/dist-packages/docker/api/daemon.py", line 88, in 
 
 ### <a name="resolution"></a>解決策
 Docker をインストールし、実行されていることを確認してから再試行してください。
+
+## <a name="iotedgectl-setup-fails-with-an-invalid-hostname"></a>無効な hostname のために iotedgectl セットアップが失敗する
+
+コマンド `iotedgectl setup` が失敗して、次のメッセージが出力されます。 
+
+```output
+Error parsing user input data: invalid hostname. Hostname cannot be empty or greater than 64 characters
+```
+
+### <a name="root-cause"></a>根本原因
+IoT Edge ランタイムは、64 文字未満のホスト名のみをサポートできます。 これは通常、物理マシンの場合は問題になりませんが、仮想マシン上にランタイムを設定するときに発生する場合があります。 特に、Azure でホストされる Windows 仮想マシンのために自動生成されるホスト名は長くなる傾向があります。 
+
+### <a name="resolution"></a>解決策
+このエラーが発生したときは、仮想マシンの DNS 名を構成し、setup コマンドでその DNS 名をホスト名として設定することで、エラーを解決できます。
+
+1. Azure Portal で、目的の仮想マシンの概要ページに移動します。 
+2. DNS 名の下の **[構成]** を選択します。 仮想マシンに既に構成済みの DNS 名がある場合は、新しいものを構成する必要はありません。 
+
+   ![DNS 名を構成する](./media/troubleshoot/configure-dns.png)
+
+3. **[DNS 名ラベル]** に値を指定し、**[保存]** を選択します。
+4. 新しい DNS 名をコピーします。名前は **\<DNSnamelabel\>.\<vmlocation\>.cloudapp.azure.com** の形式である必要があります。
+5. 仮想マシン内で、次のコマンドを使用して、実際の DNS 名によって IoT Edge ランタイムを設定します。
+
+   ```input
+   iotedgectl setup --connection-string "<connection string>" --nopass --edge-hostname "<DNS name>"
+   ```
 
 ## <a name="next-steps"></a>次の手順
 IoT Edge プラットフォームのバグを発見したと思われる場合は、 改善を続けられるように[問題を報告](https://github.com/Azure/iot-edge/issues)してください。 

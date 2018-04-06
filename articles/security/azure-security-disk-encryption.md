@@ -1,6 +1,6 @@
 ---
-title: "Windows および Linux IaaS VM の Azure Disk Encryption | Microsoft Docs"
-description: "この記事では、Windows および Linux IaaS VM の Microsoft Azure Disk Encryption の概要を示します。"
+title: Windows および Linux IaaS VM の Azure Disk Encryption | Microsoft Docs
+description: この記事では、Windows および Linux IaaS VM の Microsoft Azure Disk Encryption の概要を示します。
 services: security
 documentationcenter: na
 author: DevTiw
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/01/2017
+ms.date: 03/13/2018
 ms.author: devtiw;ejarvi;mayank88mahajan;vermashi;sudhakarareddyevuri;aravindthoram
-ms.openlocfilehash: cc609d7c7b28fc4aef6eb1e25ee46fd77edd4102
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: 73212a231d11136854115922df423a7cb5b08f05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows および Linux IaaS VM の Azure ディスク暗号化
 Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。 そのため、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 このドキュメントでは、"Windows および Linux IaaS VM の Azure Disk Encryption" という新しいテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。 ここでは、サポートされているシナリオやユーザー エクスペリエンスを含む、Azure Disk Encryption 機能の使用方法に関する詳細なガイダンスを提供します。
@@ -161,8 +161,8 @@ OS ドライブが暗号化されている場合、Linux のデータ ディス�
 
 * Azure Disk Encryption では、ポート番号を Key Vault シークレットおよび KEK URL の一部として指定することはサポートされません。 サポートされない Key Vault URL とサポートされる Key Vault URL の例については、以下をご覧ください。
 
-  * 受け入れられない Key Vault URL: *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
-  * 受け入れられる Key Vault URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * 許容できないキー コンテナー URL *https://contosovault.vault.azure.net:443/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
+  * 許容されるキー コンテナー URL: *https://contosovault.vault.azure.net/secrets/contososecret/xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx*
 
 * Azure Disk Encryption 機能を有効にするには、IaaS VM が次のネットワーク エンドポイントの構成要件を満たす必要があります。
   * Key Vault に接続するためのトークンを取得するには、IaaS VM が Azure Active Directory エンドポイント \[login.microsoftonline.com\] に接続できる必要があります。
@@ -172,7 +172,7 @@ OS ドライブが暗号化されている場合、Linux のデータ ディス�
   > [!NOTE]
   > セキュリティ ポリシーで Azure VM からインターネットへのアクセスが制限されている場合は、上記の URI を解決し、IP への送信接続を許可するための特定のルールを構成することができます。
   >
-  >ファイアウォールの内側にある Azure Key Vault を構成してアクセスするには (https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)
+  >ファイアウォールの背後に Azure Key Vault を構成してアクセスするには (https://docs.microsoft.com/azure/key-vault/key-vault-access-behind-firewall)
 
 * Azure PowerShell SDK の最新バージョンを使用して、Azure Disk Encryption を構成します。 [Azure PowerShell リリース](https://github.com/Azure/azure-powershell/releases)の最新バージョンをダウンロードしてください。
 
@@ -193,7 +193,7 @@ OS ドライブが暗号化されている場合、Linux のデータ ディス�
 * Azure CLI を使用してディスク暗号化の前提条件を構成する場合は、[こちらの Bash スクリプト](https://github.com/ejarvi/ade-cli-getting-started)をご覧ください。
 * Azure Disk Encryption で暗号化が有効になっている場合、暗号化された VM を Azure バックアップ サービスでバックアップおよび復元するには、Azure Disk Encryption のキー構成を使用して VM を暗号化する必要があります。 Backup サービスでは、KEK なしまたは KEK ありの構成を使用して暗号化された VM がサポートされます。 「[暗号化された仮想マシンを Azure Backup 暗号化でバックアップおよび復元する方法](https://docs.microsoft.com/azure/backup/backup-azure-vms-encryption)」をご覧ください。
 
-* Linux OS ボリュームを暗号化する場合、現在、プロセスの終了時には VM の再起動が必要な点に注意してください。 この処理は、ポータル、PowerShell、または CLI で実行できます。   暗号化の進行状況を追跡するには、Get-AzureRmVMDiskEncryptionStatus から返されたステータス メッセージが定期的にポーリングされます (https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus)。  暗号化が完了すると、このコマンドで返されるステータス メッセージで示されます。  たとえば、"ProgressMessage: OS disk successfully encrypted, please reboot the VM" (ProgressMessage: OS ディスクの暗号化が完了しました。VM を再起動してください) と表示されます。このときに、VM を再起動して使用することができます。  
+* Linux OS ボリュームを暗号化する場合、現在、プロセスの終了時には VM の再起動が必要な点に注意してください。 この処理は、ポータル、PowerShell、または CLI で実行できます。   暗号化の進行状況を追跡するには、Get-AzureRmVMDiskEncryptionStatus https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus によって返される状態メッセージを定期的にポーリングします。  暗号化が完了すると、このコマンドによって返される状態メッセージはこれを示します。 たとえば、"ProgressMessage: OS disk successfully encrypted, please reboot the VM" (ProgressMessage: OS ディスクの暗号化が完了しました。VM を再起動してください) と表示されます。このときに、VM を再起動して使用することができます。  
 
 * Linux 用 Azure Disk Encryption の場合、暗号化前に、Linux にマウントされているファイル システムがあるデータ ディスクを用意する必要があります。
 
@@ -224,25 +224,25 @@ Azure で実行中の VM に対して暗号化を有効にする必要がある�
 ##### <a name="setting-up-the-azure-ad-client-id-and-secret-from-the-azure-portal"></a>Azure Portal から Azure AD のクライアント ID とシークレットをセットアップする
 Azure AD のクライアント ID とシークレットは、Azure Portal を使用してセットアップすることもできます。 このタスクを実行するには、次の操作を行います。
 
-1. **[Active Directory]** タブをクリックします。
+1. **[すべてのサービス] > [Azure Active Directory]** を選択します。
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig3.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-service.png)
 
-2. **[アプリケーションの追加]** をクリックし、アプリケーション名を入力します。
+2. **[アプリの登録] > [新しいアプリケーションの登録]** を選択します。
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig4.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-app-registration.png)
 
-3. 矢印ボタンをクリックし、アプリケーションのプロパティを構成します。
+3. 要求された情報を指定し、アプリケーションを作成します。
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig5.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-create-app.png)
 
-4. 左下隅にあるチェック マークをクリックして終了します。 アプリケーション構成ページが表示され、Azure AD のクライアント ID がページの下部に表示されます。
+4. 新しく作成されたアプリケーションを選択すると、そのプロパティ (アプリケーション ID を含む) が表示されます。  アプリケーションのキーを作成するには、**[設定] > [キー]** を選択し、そのキーの説明と有効期限を追加して **[保存]** をクリックします。
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig6.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-create-pw.png)
 
-5. **[保存]** をクリックして、Azure AD のクライアント シークレットを保存します。 キーのテキスト ボックスに Azure AD のクライアント シークレットが表示されます。 この情報は適切に保護してください。
+5. 生成されたシークレット値をコピーし、それを適切に保護します。
 
- ![Azure Disk Encryption](./media/azure-security-disk-encryption/disk-encryption-fig7.png)
+ ![Azure Disk Encryption](./media/azure-security-disk-encryption/aad-save-pw.png)
 
 
 ##### <a name="use-an-existing-application"></a>既存のアプリケーションを使用する
@@ -698,15 +698,15 @@ Linux VM では、AzureDiskEncryptionForLinux 拡張機能が使用されます�
 
 ### <a name="enable-encryption-on-pre-encrypted-iaas-vm-with-azure-managed-disk"></a>Azure Managed Disk を使用して事前に暗号化された IaaS VM での暗号化を有効にする
 Azure Managed Disk ARM テンプレートを使用して、次の場所にある ARM テンプレートを使用する事前に暗号化された VHD から暗号化 VM を作成します   
-[新しい暗号化された管理ディスクを事前に暗号化された VHD/ストレージ BLOB から作成する] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
+[事前に暗号化された VHD/ストレージ BLOB から、新しい暗号化された管理ディスクを作成する] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-create-encrypted-managed-disk)
 
 ### <a name="enable-encryption-on-a-new-linux-iaas-vm-with-azure-managed-disk"></a>Azure Managed Disk を使用して新しい Linux IaaS VM での暗号化を有効にする
 Azure Managed Disk ARM テンプレートを使用して、次の場所にある ARM テンプレートを使用する新しい暗号化された Linux IaaS VM を作成します   
-[フルディスク暗号化を使用した RHEL 7.2 のデプロイ] (https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
+[完全なディスク暗号化を使用した RHEL 7.2 のデプロイ] (https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-full-disk-encrypted-rhel)
 
 ### <a name="enable-encryption-on-a-new-windows-iaas-vm-with-azure-managed-disk"></a>Azure を使用して新しい Windows IaaS VM での暗号化を有効にする
  Azure Managed Disk ARM テンプレートを使用して、次の場所にある ARM テンプレートを使用する新しい暗号化された Linux IaaS VM を作成します   
- [ギャラリー イメージから新しい暗号化された Windows IaaS Managed Disk VM を作成する] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
+ [ギャラリー イメージから、新しい暗号化された Windows IaaS 管理ディスク VM を作成する] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
 
   > [!NOTE]
   >Azure Disk Encryption を有効にする前に、Azure Disk Encryption 以外を使用して、管理ディスク ベースの VM インスタンスのスナップショットまたはバックアップ (またはその両方) を作成する必要があります。  管理ディスクのスナップショットは、ポータルから作成できます。また、Azure Backup を使用できます。  バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。  バックアップを作成すると、Set-AzureRmVMDiskEncryptionExtension コマンドレットを使用し、-skipVmBackup パラメーターを指定して管理ディスクを暗号化できます。  バックアップが作成されておらず、このパラメーターを指定していない場合、管理ディスク ベースの VM に対してこのコマンドを実行するとエラーが発生します。    

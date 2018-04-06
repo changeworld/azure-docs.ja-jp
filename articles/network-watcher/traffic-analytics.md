@@ -1,6 +1,6 @@
 ---
-title: Azure Traffic Analytics | Microsoft Docs
-description: Traffic Analytics を使用して、Azure ネットワーク セキュリティ グループ フロー ログを分析する方法について説明します。
+title: Azure トラフィック分析 | Microsoft Docs
+description: トラフィック分析を使用して、Azure ネットワーク セキュリティ グループ フロー ログを分析する方法について説明します。
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,56 +13,56 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: jdial
-ms.openlocfilehash: 9fc44fdd6ce01452ffc2506c599e3d05aa0803e1
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: ffb13d1190535dacbe3a0781a1d3b425a970d26e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="traffic-analytics"></a>Traffic Analytics
+# <a name="traffic-analytics"></a>トラフィック分析
 
-Traffic Analytics は、クラウド ネットワークでのユーザーとアプリケーションのアクティビティを可視化するクラウドベースのソリューションです。 Traffic Analytics では、Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する洞察を示します。 Traffic Analytics を使用すると、次のことが可能になります。
+トラフィック分析は、クラウド ネットワークでのユーザーとアプリケーションのアクティビティを可視化するクラウドベースのソリューションです。 トラフィック分析では、Network Watcher のネットワーク セキュリティ グループ (NSG) フロー ログを分析して、Azure クラウドでのトラフィック フローに関する洞察を示します。 トラフィック分析を使用すると、次のことが可能になります。
 
 - Azure サブスクリプション全体のネットワーク アクティビティを視覚化し、ホットスポットを特定する。
 - 開いているポート、インターネット にアクセスしようとしているアプリケーション、承認されていないネットワークに接続している仮想マシン (VM) などの情報を使用して、ネットワークに対するセキュリティの脅威を特定し、ネットワークをセキュリティで保護する。
 - Azure リージョン間やインターネット上でのトラフィック フロー パターンを把握して、ネットワークのデプロイをパフォーマンスと容量に最適化する。
 - ネットワークでの接続の失敗の原因となるネットワークの構成の誤りを特定する。
 
-## <a name="why-traffic-analytics"></a>Traffic Analytics が必要な理由
+## <a name="why-traffic-analytics"></a>トラフィック分析が必要な理由
 
 妥協のないセキュリティ、コンプライアンス、パフォーマンスを実現するには、独自のネットワークを監視、管理し、把握することが不可欠です。 独自の環境を保護および最適化するうえで最も重要なのは、環境を理解することです。 多くの場合、ネットワークの現在の状態、接続しているユーザーとその接続先、インターネットに対して開いているポート、想定されたネットワークの動作、不規則なネットワークの動作、トラフィックの急激な増加を把握する必要があります。
 
 クラウド ネットワークは、ネットワーク インターフェイスを出入りする IP ネットワーク トラフィックを収集できる、Netflow や同等のプロトコル対応のルーターとスイッチを備えたオンプレミスの企業ネットワークとは異なります。 トラフィック フロー データを分析することで、ネットワークのトラフィック フローとトラフィック量の分析を構築できます。
 
-Azure 仮想ネットワークには、個々のネットワーク インターフェイス、VM、またはサブネットに関連付けられたネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックに関する情報を提供する NSG フロー ログがあります。 Traffic Analytics では、生の NSG フロー ログを分析し、セキュリティ、トポロジ、地域に関するインテリジェンスを挿入することによって、環境内のトラフィック フローに関する洞察を示すことができます。 Traffic Analytics は、通信量の多いホスト、通信量の多いアプリケーション プロトコル、会話が多いホスト ペア、許可/ブロックされたトラフィック、受信/送信トラフィック、開いているインターネット ポート、ブロックの多いルール、Azure データ センター、仮想ネットワーク、サブネット、または承認されていないネットワークごとのトラフィック分布などの情報を提供します。
+Azure 仮想ネットワークには、個々のネットワーク インターフェイス、VM、またはサブネットに関連付けられたネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックに関する情報を提供する NSG フロー ログがあります。 トラフィック分析では、生の NSG フロー ログを分析し、セキュリティ、トポロジ、地域に関するインテリジェンスを挿入することによって、環境内のトラフィック フローに関する洞察を示すことができます。 Traffic Analytics は、通信量の多いホスト、通信量の多いアプリケーション プロトコル、会話が多いホスト ペア、許可/ブロックされたトラフィック、受信/送信トラフィック、開いているインターネット ポート、ブロックの多いルール、Azure データ センター、仮想ネットワーク、サブネット、または承認されていないネットワークごとのトラフィック分布などの情報を提供します。
 
 ## <a name="key-components"></a>主なコンポーネント 
 
 - **ネットワーク セキュリティ グループ (NSG)**: Azure Virtual Network に接続されたリソースへのネットワーク トラフィックを許可または拒否する一連のセキュリティ規則が含まれています。 NSG はサブネットに関連付けることができるほか、クラシック モデルについては個々の VM に、Resource Manager モデルについては VM にアタッチされた個々のネットワーク インターフェイス (NIC) に関連付けることができます。 詳細については、[ネットワーク セキュリティ グループの概要](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
 - **ネットワーク セキュリティ グループ (NSG) フロー ログ**: ネットワーク セキュリティ グループを使用して、イングレス/エグレス IP トラフィックの情報を確認できます。 NSG フロー ログは JSON 形式で記述され、規則ごとの送信フローと受信フロー、フローが適用される NIC、フローに関する 5 組の情報 (送信元/宛先 IP アドレス、送信元/宛先ポート、プロトコル)、トラフィックが許可されているか拒否されているかが示されます。 NSG フロー ログの詳細については、[NSG フロー ログ](network-watcher-nsg-flow-logging-overview.md)に関する記事をご覧ください。
-- **Log Analytics**: 監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor や Traffic Analytics などの監視アプリケーションは、Log Analytics を基盤として構築されています。 詳細については、[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) に関する記事をご覧ください。
-- **Log Analytics ワークスペース**: Azure アカウントに関するデータが格納される、Log Analytics のインスタンス。 Log Analytics ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
+- **Log Analytics**: 監視データを収集し、そのデータを中央リポジトリに格納する Azure サービス。 このデータには、Azure API によって提供されるイベント、パフォーマンス データ、またはカスタム データを含めることができます。 一度収集されたデータは、アラート、分析、エクスポートに使用できます。 Network Performance Monitor やトラフィック分析などの監視アプリケーションは、Log Analytics を基盤として構築されています。 詳細については、[Log Analytics](../log-analytics/log-analytics-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) に関する記事をご覧ください。
+- **ログ分析ワークスペース**: Azure アカウントに関するデータが格納される、ログ分析のインスタンス。 ログ分析ワークスペースの詳細については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-create-workspace.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)に関する記事をご覧ください。
 - **Network Watcher**: ネットワーク シナリオ レベルで Azure の状態を監視および診断できるリージョン サービス。 Network Watcher で NSG フロー ログを有効または無効にすることができます。 詳細については、「[Network Watcher](network-watcher-monitoring-overview.md#network-watcher)」をご覧ください。
 
-## <a name="how-traffic-analytics-works"></a>Traffic Analytics のしくみ 
+## <a name="how-traffic-analytics-works"></a>トラフィック分析のしくみ 
 
-Traffic Analytics では、生の NSG フロー ログを調べ、同じ送信元 IP アドレス、宛先 IP アドレス、宛先ポート、およびプロトコルでよく発生するフローを集約することによって削減されたログを取り込みます。 たとえば、ホスト 1 (IP アドレス: 10.10.10.10) とホスト 2 (IP アドレス: 10.10.20.10) が、ポート (例: 80) とプロトコル (例: http) を使用して 1 時間に 100 回通信したとします。 削減されたログには、100 個のエントリが含まれるのではなく、ホスト 1 とホスト 2 が、ポート *80* と *HTTP* プロトコルを使用して 1 時間に 100 回通信したことを示す 1 つのエントリが含まれます。 削減されたログは、地域、セキュリティ、トポロジの情報が追加された後に、Log Analytics ワークスペースに格納されます。 次の図は、このデータ フローを示しています。
+トラフィック分析では、生の NSG フロー ログを調べ、同じ送信元 IP アドレス、宛先 IP アドレス、宛先ポート、およびプロトコルでよく発生するフローを集約することによって削減されたログを取り込みます。 たとえば、ホスト 1 (IP アドレス: 10.10.10.10) とホスト 2 (IP アドレス: 10.10.20.10) が、ポート (例: 80) とプロトコル (例: http) を使用して 1 時間に 100 回通信したとします。 削減されたログには、100 個のエントリが含まれるのではなく、ホスト 1 とホスト 2 が、ポート *80* と *HTTP* プロトコルを使用して 1 時間に 100 回通信したことを示す 1 つのエントリが含まれます。 削減されたログは、地域、セキュリティ、トポロジの情報が追加された後に、ログ分析ワークスペースに格納されます。 次の図は、このデータ フローを示しています。
 
 ![NSG フロー ログの処理のデータ フロー](media/traffic-analytics/data-flow-for-nsg-flow-log-processing.png)
 
 ## <a name="supported-regions"></a>サポートされているリージョン
 
-Traffic Analytics はプレビューとして提供されています。 プレビュー リリース段階にある機能は、一般公開リリースの機能と同レベルの可用性と信頼性を備えているわけではありません。  プレビュー リリースでは、米国中西部、米国東部、米国東部 2、米国中北部、米国中南部、米国中部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国西部、英国南部、オーストラリア東部、オーストラリア南東部のいずれかのリージョンの NSG で Traffic Analytics をご利用いただけます。 Log Analytics ワークスペースは、米国中西部、米国東部、西ヨーロッパ、オーストラリア南東部、または英国南部リージョンに存在する必要があります。
+トラフィック分析はプレビューとして提供されています。 プレビュー リリース段階にある機能は、一般公開リリースの機能と同レベルの可用性と信頼性を備えているわけではありません。  プレビュー リリースでは、米国中西部、米国東部、米国東部 2、米国中北部、米国中南部、米国中部、米国西部、米国西部 2、西ヨーロッパ、北ヨーロッパ、英国西部、英国南部、オーストラリア東部、オーストラリア南東部のいずれかのリージョンの NSG でトラフィック分析をご利用いただけます。 ログ分析ワークスペースは、米国中西部、米国東部、西ヨーロッパ、オーストラリア南東部、または英国南部リージョンに存在する必要があります。
 
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="enable-network-watcher"></a>Network Watcher を有効にする 
 
-トラフィックを分析するには、トラフィックの分析対象となる NSG がある各リージョンで、既存の Network Watcher を使用するか、[Azure Network Watcher を有効にする](network-watcher-create.md)必要があります。 Traffic Analytics は、[サポートされているリージョン](#supported-regions)のいずれかでホストされている NSG に対して有効にすることができます。
+トラフィックを分析するには、トラフィックの分析対象となる NSG がある各リージョンで、既存の Network Watcher を使用するか、[Network Watcher を有効にする](network-watcher-create.md)必要があります。 トラフィック分析は、[サポートされているリージョン](#supported-regions)のいずれかでホストされている NSG に対して有効にすることができます。
 
 ### <a name="re-register-the-network-resource-provider"></a>ネットワーク リソース プロバイダーを再登録する 
 
-プレビュー期間中に Traffic Analytics を使用するには、ネットワーク リソース プロバイダーを再登録しておく必要があります。 次のコード ボックスの **[Try It]** をクリックして、Azure Cloud Shell を開きます。 Cloud Shell により、Azure サブスクリプションに自動的にログインします。 Cloud Shell が開いたら、次のコマンドを入力して、ネットワーク リソース プロバイダーを再登録します。
+プレビュー期間中にトラフィック分析を使用するには、ネットワーク リソース プロバイダーを再登録しておく必要があります。 次のコード ボックスの **[Try It]** をクリックして、Azure Cloud Shell を開きます。 Cloud Shell により、Azure サブスクリプションに自動的にログインします。 Cloud Shell が開いたら、次のコマンドを入力して、ネットワーク リソース プロバイダーを再登録します。
 
 ```azurepowershell-interactive
 Register-AzureRmResourceProvider -ProviderNamespace "Microsoft.Network"
@@ -76,7 +76,7 @@ Azure Portal の左側にある **[監視]** を選択し、**[Network Watcher]*
 
 ![NSG フロー ログを有効にする必要がある NSG の選択](media/traffic-analytics/selection-of-nsgs-that-require- enablement-of-nsg-flow-logging.png)
 
-[サポートされているリージョン](#supported-regions)以外のリージョンでホストされている NSG に対して Traffic Analytics を有効にしようとすると、"見つかりません" というエラーが表示されます。 
+[サポートされているリージョン](#supported-regions)以外のリージョンでホストされている NSG に対してトラフィック分析を有効にしようとすると、"見つかりません" というエラーが表示されます。 
 
 ## <a name="enable-flow-log-settings"></a>フロー ログ設定の有効化
 
@@ -107,16 +107,16 @@ New-AzureRmStorageAccount `
 4. *[Traffic Analytics Status]\(Traffic Analytics の状態\)* で、**[オン]** を選択します。
 5. 既存の Log Analytics (OMS) ワークスペースを選択するか、**[新しいワークスペースの作成]** を選択して新規作成します。 Log Analytics ワークスペースは、分析の生成に使用される集計済みのインデックス付きデータを格納するために、Traffic Analytics で使用されます。 既存のワークスペースを選択する場合は、[サポートされているリージョン](#traffic-analytics-supported-regions)のいずれかに存在し、新しいクエリ言語にアップグレードされている必要があります。 既存のワークスペースをアップグレードするのが望ましくない場合や、サポートされているリージョンにワークスペースがない場合は、新しいワークスペースを作成します。 クエリ言語の詳細については、「[新しいログ検索への Azure Log Analytics のアップグレード](../log-analytics/log-analytics-log-search-upgrade.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)」をご覧ください。
 
-    Traffic Analytics ソリューションをホストする Log Analytics (OMS) ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースに Traffic Analytics があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
+    トラフィック分析ソリューションをホストするログ分析ワークスペースと NSG は、同じリージョンに存在する必要はありません。 たとえば、西ヨーロッパ リージョンのワークスペースにトラフィック分析があり、米国東部と米国西部に NSG があっても構いません。 同じワークスペースに複数の NSG を構成できます。
 6. **[保存]** を選択します。
 
     ![ストレージ アカウント、Log Analytics ワークスペース、Traffic Analytics の有効化の選択](media/traffic-analytics/selection-of-storage-account-log-analytics-workspace-and-traffic-analytics-enablement.png)
 
-Traffic Analytics を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。
+トラフィック分析を有効にするその他の NSG に対して前の手順を繰り返します。 フロー ログのデータはワークスペースに送信されるので、ワークスペースが存在するリージョンでのデータの保存が、お住まいの国の法律や規制で許可されていることを確認してください。
 
-## <a name="view-traffic-analytics"></a>Traffic Analytics の表示
+## <a name="view-traffic-analytics"></a>トラフィック分析の表示
 
-ポータルの左側にある **[すべてのサービス]** を選択し、**[フィルター]** ボックスに「*監視*」と入力します。 検索結果に **[監視]** が表示されたら、それを選択します。 Traffic Analytics とその機能の探索を開始するには、**[Network Watcher]**、**[トラフィック分析 (プレビュー)]** の順に選択します。
+ポータルの左側にある **[すべてのサービス]** を選択し、**[フィルター]** ボックスに「*監視*」と入力します。 検索結果に **[監視]** が表示されたら、それを選択します。 トラフィック分析とその機能の探索を開始するには、**[Network Watcher]**、**[トラフィック分析 (プレビュー)]** の順に選択します。
 
 ![Traffic Analytics ダッシュボードへのアクセス](media/traffic-analytics/accessing-the-traffic-analytics-dashboard.png)
 
@@ -276,4 +276,4 @@ Traffic Analytics が完全に構成された後に得られる洞察の一部�
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-よく寄せられる質問とその回答については、[Traffic Analytics に関する FAQ](traffic-analytics-faq.md) のページをご覧ください。
+よく寄せられる質問とその回答については、[トラフィック分析に関する FAQ](traffic-analytics-faq.md) のページをご覧ください。

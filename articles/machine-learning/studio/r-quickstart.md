@@ -1,11 +1,12 @@
 ---
-title: "Machine Learning 向け R 言語のクイック スタート チュートリアル | Microsoft Docs"
-description: "この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。"
-keywords: "クイック スタート、r 言語、r プログラミング言語、r プログラミングのチュートリアル"
+title: Machine Learning 向け R 言語のクイック スタート チュートリアル | Microsoft Docs
+description: この R プログラミング チュートリアルは、Azure Machine Learning Studio と R 言語を使った予測ソリューションの作成に必要な基本的な事柄を短期間で習得できるように作成されています。
+keywords: クイック スタート、r 言語、r プログラミング言語、r プログラミングのチュートリアル
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: 99a3a0fd-b359-481a-b236-66868deccd96
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
-ms.author: garye
-ms.openlocfilehash: 40cc3728d1361b9304896bf0cc4ceed439291d45
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 231d505e91fc036b30344e2fd9971db8ba2fdf05
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-tutorial-for-the-r-programming-language-for-azure-machine-learning"></a>Azure Machine Learning 向け R プログラミング言語クイック スタート チュートリアル
 
@@ -39,7 +39,7 @@ Microsoft Azure Machine Learning には、多くの強力なマシン ラーニ�
 
 このクイック スタート ガイドでは、カリフォルニアでの酪農生産と価格データを扱います。 このデータには、いくつかの酪農製品の生産、乳脂の価格、ベンチマーク商品に関する月単位の情報が含まれます。
 
-この記事で使用されているデータと R スクリプトは、[こちらからダウンロード][download]できます。 このデータは、ウィスコンシン大学 (http://future.aae.wisc.edu/tab/production.html) から入手した情報を元に作成したものです。
+この記事で使用されているデータと R スクリプトは、[こちらからダウンロード][download]できます。 このデータは、最初はウィスコンシン大学 (http://future.aae.wisc.edu/tab/production.html) から入手可能な情報から合成されました。
 
 ### <a name="organization"></a>Organization
 Azure Machine Learning 環境で R コードを作成、テストし、分析とデータ操作を実行する方法を学習する際は、いくつかの手順に従って進行します。  
@@ -123,11 +123,11 @@ Azure Machine Learning には、350 を超える R 言語パッケージがプ�
 ### <a name="introduction-to-rstudio"></a>RStudio の概要
 RStudio は、広く使用されている R 向けの IDE です。このクイック スタート ガイドで使用される R コードの一部は、RStudio を使用して編集、テスト、デバッグします。 R コードをテストして準備ができたら、単純に RStudio エディターで切り取って、Machine Learning Studio の [R スクリプトの実行][execute-r-script]モジュールに貼り付けます。  
 
-デスクトップ コンピューターに R プログラミング言語がインストールされていない場合は、すぐにインストールすることをお勧めします。 オープン ソース R 言語の無償ダウンロードが、包括的な R アーカイブ ネットワーク (CRAN) ( [http://www.r-project.org/](http://www.r-project.org/)) で利用できます。 Windows、Mac OS、Linux/UNIX で利用できるダウンロードが用意されています。 お近くのミラー サイトを選択し、ダウンロードの指示に従ってください。 さらに、CRAN には、便利な分析とデータ操作のパッケージが豊富に用意されています。
+デスクトップ コンピューターに R プログラミング言語がインストールされていない場合は、すぐにインストールすることをお勧めします。 オープンソースの R 言語の無料ダウンロードが、包括的な R アーカイブ ネットワーク (CRAN) ([http://www.r-project.org/](http://www.r-project.org/)) で入手できます。 Windows、Mac OS、Linux/UNIX で利用できるダウンロードが用意されています。 お近くのミラー サイトを選択し、ダウンロードの指示に従ってください。 さらに、CRAN には、便利な分析とデータ操作のパッケージが豊富に用意されています。
 
-RStudio を初めて使用する場合は、デスクトップ バージョンをダウンロードしてインストールします。 Windows、Mac OS、Linux/UNIX 向けの RStudio が、http://www.rstudio.com/products/RStudio/ でダウンロードできます。 指示に従って、RStudio をデスクトップ コンピューターにインストールします。  
+RStudio を初めて使用する場合は、デスクトップ バージョンをダウンロードしてインストールします。 Windows、Mac OS、および Linux/UNIX 向けの RStudio ダウンロードが http://www.rstudio.com/products/RStudio/ にあります。 指示に従って、RStudio をデスクトップ コンピューターにインストールします。  
 
-RStudio のチュートリアルの手順は、https://support.rstudio.com/hc/sections/200107586-Using-RStudio で入手できます。
+RStudio のチュートリアル入門書が https://support.rstudio.com/hc/sections/200107586-Using-RStudio で入手できます。
 
 RStudio の使用に関する追加情報が、[付録 A][appendixa] に記載されています。  
 
@@ -1213,42 +1213,42 @@ RStudio はドキュメントが非常に整っているため、この付録で
 
 1. プロジェクトの作成
    
-   RStudio を使用して、R コードをプロジェクトに編成して管理できます。 プロジェクトの使用に関するドキュメントは、https://support.rstudio.com/hc/articles/200526207-Using-Projects にあります。
+   RStudio を使用して、R コードをプロジェクトに編成して管理できます。 プロジェクトを使用するドキュメントが https://support.rstudio.com/hc/articles/200526207-Using-Projects にあります。
    
    これらの手順に従って、このドキュメントの R コードの例に関するプロジェクトを作成することをお勧めします。  
 2. R コードの編集と実行
    
-   RStudio は、R コードを編集し実行するための統合環境を提供します。 これに関するドキュメントは、https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code にあります。
+   RStudio は、R コードを編集し実行するための統合環境を提供します。 ドキュメントが https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code にあります。
 3. デバッグ
    
-   RStudio には、強力なデバッグ機能が搭載されています。 これらの機能に関するドキュメントは、https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio にあります。
+   RStudio には、強力なデバッグ機能が搭載されています。 これらの機能のドキュメントが https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio にあります。
    
-   ブレークポイント トラブルシューティング機能のドキュメントは、https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting にあります。
+   ブレークポイントのトラブルシューティング機能のドキュメントが https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting にあります。
 
 ## <a id="appendixb"></a>付録 B: 参考資料
 この R プログラミングのチュートリアルでは、Azure Machine Learning Studio で、R 言語を使用するために必要な基本事項について説明します。 R に精通していない場合、CRAN に 2 つの入門書が用意されています。
 
-* Emmanuel Paradis による『R for Beginners』 (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf) が初心者に適しています。  
-* W. N. Venables  他による 『An Introduction to R』 (http://cran.r-project.org/doc/manuals/R-intro.html) は、もう少し詳しく説明しています。
+* Emmanuel Paradis による『R for Beginners』は入門書として適しています (http://cran.r-project.org/doc/contrib/Paradis-rdebuts_en.pdf)。  
+* W. N. Venables  他による ではもう少し詳しく説明されています (http://cran.r-project.org/doc/manuals/R-intro.html)。
 
 R の使用を開始するのに役立つ書籍は、多数存在します。 役に立つものをいくつか紹介します。
 
 * Norman Matloff による『The Art of R Programming; A Tour of Statistical Software Design』は、R のプログラミングに関する優れた入門書です。  
 * Paul Teetor による『R Cookbook』は、R の使用に関する問題と解決のアプローチが記載されています。  
-* Robert Kabacoff による『R in Action』はもう 1 つの有用な入門書です。 手引書 Quick R Web サイト (http://www.statmethods.net/) も有用な資料です。
-* Patrick Burns による『R Inferno』は、驚くほどユーモアにあふれた本であり、R のプログラミングで直面するさまざまな厄介で困難なトピックに対処しています。この本は、http://www.burns-stat.com/documents/books/the-r-inferno/ で無料で入手できます。
+* Robert Kabacoff による『R in Action』はもう 1 つの有用な入門書です。 手引書 Quick R Web サイトは有効なリソースです (http://www.statmethods.net/)。
+* Patrick Burns による『R Inferno』は、R でのプログラミングで発生する可能性のあるいくつかの厄介で困難なトピックに対処している、驚くほどユーモアにあふれた本です。この本は、http://www.burns-stat.com/documents/books/the-r-inferno/ で無料で入手できます。
 * R の高度なトピックを深く理解する場合は、Hadley Wickham による『Advanced R』をお読みください。 この本のオンライン版は、http://adv-r.had.co.nz/ で無料で入手できます。
 
-R 時系列パッケージのカタログは、時系列分析用の CRAN タスク ビューにあります (http://cran.r-project.org/web/views/TimeSeries.html)。 特定の時系列オブジェクト パッケージの情報については、そのパッケージのドキュメントを参照する必要があります。
+R 時系列パッケージのカタログが、時系列分析用の CRAN タスク ビューにあります (http://cran.r-project.org/web/views/TimeSeries.html)。 特定の時系列オブジェクト パッケージの情報については、そのパッケージのドキュメントを参照する必要があります。
 
 Paul Cowpertwait と Andrew Metcalfe による書籍『Introductory Time Series with R』は、時系列分析で R を使用する際の入門書です。 さらに多くの理論的テキストが、R の例を提供しています。
 
 役に立つインターネット リソース:
 
-* DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。 最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。 R の対話型 チュートリアル (無料) は https://www.datacamp.com/courses/introduction-to-r で利用できます。
-* Programiz による R の概要についてのガイド (https://www.programiz.com/r-programming)
-* Clarkson 大学の Kelly Black 助教授による R クイック チュートリアル (http://www.cyclismo.org/tutorial/R/)
-* 60 件を超える R の資料 (http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html)
+* DataCamp: DataCamp ではブラウザーで学べる R についてのビデオ レッスンとコーディングの練習を提供しています。 最新の R のテクニックとパッケージに関する対話型チュートリアルがあります。 無料の対話型 R チュートリアルの入手 (https://www.datacamp.com/courses/introduction-to-r)
+* Programiz からの『Getting started with R』に関するガイド (https://www.programiz.com/r-programming)
+* クラークソン大学の Kelly Black による R クイック チュートリアル (http://www.cyclismo.org/tutorial/R/)
+* http://www.computerworld.com/article/2497464/business-intelligence-60-r-resources-to-improve-your-data-skills.html に一覧表示されている 60 を超える R リソース
 
 <!--Image references-->
 [1]: ./media/r-quickstart/fig1.png
