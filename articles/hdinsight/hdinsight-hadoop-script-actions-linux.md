@@ -1,8 +1,8 @@
 ---
-title: "Linux ベースの HDInsight でのスクリプト アクション開発 - Azure | Microsoft Docs"
-description: "Bash スクリプトを使用して Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。 HDInsight のスクリプト アクション機能では、クラスターの作成中または作成後にスクリプトを実行できます。 スクリプトを使用して、クラスター構成設定を変更したり、追加のソフトウェアをインストールしたりできます。"
+title: Linux ベースの HDInsight でのスクリプト アクション開発 - Azure | Microsoft Docs
+description: Bash スクリプトを使用して Linux ベースの HDInsight クラスターをカスタマイズする方法について説明します。 HDInsight のスクリプト アクション機能では、クラスターの作成中または作成後にスクリプトを実行できます。 スクリプトを使用して、クラスター構成設定を変更したり、追加のソフトウェアをインストールしたりできます。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/17/2018
 ms.author: larryfr
-ms.openlocfilehash: ddf5db3e61633c45e388e161e165637521803094
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 5074345533f0fdb0c72bf319646ad614632d1940
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="script-action-development-with-hdinsight"></a>HDInsight でのスクリプト アクション開発
 
@@ -103,7 +103,7 @@ elif [[ $OS_VERSION == 16* ]]; then
 fi
 ```
 
-これらのスニペットを含む完全なスクリプトは、https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh にあります。
+これらのスニペットが含まれる完全スクリプトは https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh にあります。
 
 HDInsight で使用される Ubuntu のバージョンについては、「[HDInsight コンポーネントのバージョン](hdinsight-component-versioning.md)」のドキュメントをご覧ください。
 
@@ -168,7 +168,7 @@ echo "Getting ready to install Foo"
 >&2 echo "An error occurred installing Foo"
 ```
 
-これは、代わりに、STDOUT に書き込まれた情報を　STDERR (2) にリダイレクトします。 IO リダイレクトの詳細については、 [http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)を参照してください。
+これは、代わりに、STDOUT に書き込まれた情報を　STDERR (2) にリダイレクトします。 IO リダイレクトの詳細については、「[http://www.tldp.org/LDP/abs/html/io-redirection.html](http://www.tldp.org/LDP/abs/html/io-redirection.html)」を参照してください。
 
 スクリプト アクションによってログに記録される情報の表示の詳細については、 [スクリプト アクションを使用した HDInsight クラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md#troubleshooting)
 
@@ -221,7 +221,7 @@ retry wget -O ./tmpfile.sh https://hdiconfigactions.blob.core.windows.net/linuxh
 
 ## <a name="helpermethods"></a>カスタム スクリプトのためのヘルパー メソッド
 
-スクリプト アクションのヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらのメソッドは、[https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) スクリプトに含まれています。 次を使用してダウンロードし、これらをスクリプトの一部として使用します。
+スクリプト アクションのヘルパー メソッドは、カスタム スクリプトの記述で利用できるユーティリティです。 これらのメソッドは [https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh](https://hdiconfigactions.blob.core.windows.net/linuxconfigactionmodulev01/HDInsightUtilities-v01.sh) スクリプトに含まれています。 次を使用してダウンロードし、これらをスクリプトの一部として使用します。
 
 ```bash
 # Import the helper method module.

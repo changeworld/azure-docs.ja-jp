@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/08/2018
+ms.date: 03/20/2018
 ms.author: brenduns
 ms.reviewer: justini
-ms.openlocfilehash: 247f13717971d3660b3ec0ee94821bd593c5fed0
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 71862463a62f11a4f2cea7dfcc60961331ded377
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-1802-update"></a>Azure Stack 1802 更新プログラム
 
@@ -103,7 +103,7 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 #### <a name="portal"></a>ポータル
 - 管理者ポータルの[ドロップダウン リストから新しいサポート要求を開く](azure-stack-manage-portals.md#quick-access-to-help-and-support)機能は使用できません。 代わりに、次のリンクを使用します。     
-    - Azure Stack 統合システムの場合は https://aka.ms/newsupportrequest を使用します。
+    - Azure Stack 統合システムの場合は、https://aka.ms/newsupportrequest を使用します。
 
 - <!-- 2050709 --> In the admin portal, it is not possible to edit storage metrics for Blob service, Table service, or Queue service. When you go to Storage, and then select the blob, table, or queue service tile, a new blade opens that displays a metrics chart for that service. If you then select Edit from the top of the metrics chart tile, the Edit Chart blade opens but does not display options to edit metrics.
 
@@ -124,6 +124,13 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
     このアラートは無視してかまいません。 
 
+- <!-- 2253274 --> In the admin and user portals, the Settings blade for vNet Subnets fails to load. As a workaround, use PowerShell and the [Get-AzureRmVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermvirtualnetworksubnetconfig?view=azurermps-5.5.0) cmdlet to view and  manage this information.
+
+- 管理ポータルとユーザー ポータルの両方で、古い API バージョン (2015-06-15 など) で作成されたストレージ アカウントの [概要] ブレードを選択した場合、[概要] ブレードの読み込みに失敗します。 これには、パッチと更新プログラムの実行時に使用される **updateadminaccount** などのシステム ストレージ アカウントが含まれます。 
+
+  この問題を回避するには、PowerShell を使用して **Start-ResourceSynchronization.ps1** スクリプトを実行し、ストレージ アカウントの詳細へのアクセスを復元します。 [このスクリプトは GitHub から入手可能]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts)であり、特権エンドポイントでサービス管理者の資格情報で実行する必要があります。 
+
+
 #### <a name="health-and-monitoring"></a>正常性と監視
 1802 に更新した後の既知の問題はありません。
 
@@ -143,7 +150,7 @@ Azure Stack 1802 更新プログラムのビルド番号は **20180302.1** で�
 
 - VM イメージの作成に失敗した場合に、エラーが発生したが削除できない項目が、VM イメージのコンピューティング ブレードに追加される可能性があります。
 
-  この問題を回避するには、Hyper-V (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB) で作成できるダミーの VHD で新しい VM イメージを作成します。 このプロセスによって、エラーが発生した項目の削除を妨げている問題が修正されます。 その後、ダミーのイメージを作成して 15 分経つと、正常に削除できます。
+  この問題を回避するには、Hyper-V (New-VHD -Path C:\dummy.vhd -Fixed -SizeBytes 1 GB) で作成できるダミーの VHD で新しい VM イメージを作成します。 このプロセスによって、エラーが発生した項目の削除を妨げている問題が修正されます。 その後、ダミーのイメージを作成して 15 分たつと、正常に削除できます。
 
   次に、前に失敗した VM イメージの再ダウンロードを試すことができます。
 

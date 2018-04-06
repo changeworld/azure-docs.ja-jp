@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2018
 ms.author: chackdan
-ms.openlocfilehash: ad5f396cd71eb0136fe683bbccb9360291be2d59
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: b39c22fb45b0e20a3aa7a6dcf59619a87df32ca1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
@@ -87,7 +87,7 @@ ms.lasthandoff: 03/08/2018
 **Silver または Gold 耐久性レベル使用の短所**
  
 1. 仮想マシン スケール セットやその他の関連する Azure リソースへのデプロイが遅れたり、タイムアウトしたりする可能性があり、クラスターまたはインフラストラクチャ レベルの問題によって完全にブロックされる可能性があります。 
-2. Azure インフラストラクチャの操作中に自動化されたノードの非アクティブ化により[レプリカ ライフサイクル イベント](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle ) (プライマリ スワップなど) の数が増えます。
+2. Azure インフラストラクチャの操作中に自動化されたノードの非アクティブ化により[レプリカ ライフサイクル イベント](service-fabric-reliable-services-lifecycle.md) (プライマリ スワップなど) の数が増えます。
 3. Azure プラットフォーム ソフトウェアまたはハードウェア メンテナンス アクティビティが発生している期間中は、ノードの稼働を停止します。 これらのアクティビティの最中は、ノードのステータスが [無効化中] や [無効] と表示されます。 これにより、一時的にクラスターの容量が削減されますが、クラスターまたはアプリケーションの可用性に影響はありません。
 
 ### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>どのような場合に Silver または Gold 耐久性レベルを使用するか
@@ -101,10 +101,10 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Silver または Gold 耐久性レベルに設定したノード タイプの操作上の推奨事項
 
-1. クラスターとアプリケーションを常に正常な状態に維持し、アプリケーションが適切なタイミングですべての[サービス レプリカのライフサイクル イベント](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ビルドのレプリカが停止するなど) に応答することを確認します。
+1. クラスターとアプリケーションを常に正常な状態に維持し、アプリケーションが適切なタイミングですべての[サービス レプリカのライフサイクル イベント](service-fabric-reliable-services-lifecycle.md) (ビルドのレプリカが停止するなど) に応答することを確認します。
 2. VM の SKU を変更する場合はより安全な方法を採用します (スケールアップ/ダウン)。仮想マシン スケール セットの VM SKU の変更は本質的に安全でない操作であるため、可能な限り避けるようにしてください。 一般的な問題を避けるために実行できる手順は次のとおりです。
     - **非プライマリ nodetypes の場合:** 新しい仮想マシン スケール セットを作成し、サービス配置制約を新しい仮想マシン スケール セット/ノード タイプを含めるように変更したら、古い仮想マシン スケール セット インスタンスの数を、一度に 1 ノードずつ 0 に減らします (このようにするのは、ノードの削除がクラスターの信頼性に影響しないようにするためです)。
-    - **プライマリ nodetype の場合**: プライマリ ノード タイプの VM SKU は変更しないことをお勧めします。 プライマリ ノード タイプの SKU の変更はサポートされません。 新しい SKU の理由が容量である場合は、インスタンスを追加することをお勧めします。 追加できない場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元します](service-fabric-reliable-services-backup-restore.md) (妥当な場合)。 システム サービスの状態を復元する必要はありません。それらは新しいクラスターにアプリケーションをデプロイしたときに再作成されます。 クラスターでステートレス アプリケーションだけを実行していた場合、実行するのはアプリケーションの新しいクラスターへのデプロイのみであり、復元するものはありません。 サポートされていない方法で VM SKU を変更する場合は、新しい SKU を反映するように仮想マシン スケール セットのモデル定義を変更します。 クラスターに nodetype が 1 つしかない場合は、すべてのステートフルなアプリケーションが、適切なタイミングですべての[サービス レプリカのライフ サイクル イベント](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ビルドでのレプリカの停止など) に応答すること、サービス レプリカのリビルド時間が 5 分未満であることを確認します (Silver 耐久性レベルの場合)。 
+    - **プライマリ nodetype の場合**: プライマリ ノード タイプの VM SKU は変更しないことをお勧めします。 プライマリ ノード タイプの SKU の変更はサポートされません。 新しい SKU の理由が容量である場合は、インスタンスを追加することをお勧めします。 追加できない場合は、新しいクラスターを作成し、古いクラスターから[アプリケーション状態を復元します](service-fabric-reliable-services-backup-restore.md) (妥当な場合)。 システム サービスの状態を復元する必要はありません。それらは新しいクラスターにアプリケーションをデプロイしたときに再作成されます。 クラスターでステートレス アプリケーションだけを実行していた場合、実行するのはアプリケーションの新しいクラスターへのデプロイのみであり、復元するものはありません。 サポートされていない方法で VM SKU を変更する場合は、新しい SKU を反映するように仮想マシン スケール セットのモデル定義を変更します。 クラスターに nodetype が 1 つしかない場合は、すべてのステートフルなアプリケーションが、適切なタイミングですべての[サービス レプリカのライフ サイクル イベント](service-fabric-reliable-services-lifecycle.md) (ビルドでのレプリカの停止など) に応答すること、サービス レプリカのリビルド時間が 5 分未満であることを確認します (Silver 耐久性レベルの場合)。 
 
 
 > [!WARNING]

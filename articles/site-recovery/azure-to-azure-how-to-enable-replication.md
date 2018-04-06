@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery で Azure VM のレプリケーションを構成する | Microsoft Docs"
-description: "この記事では、Site Recovery を使用して、1 つの Azure リージョンから別のリージョンへの Azure VM のレプリケーションを構成する方法について説明します。"
+title: Azure Site Recovery で Azure VM のレプリケーションを構成する | Microsoft Docs
+description: この記事では、Site Recovery を使用して、1 つの Azure リージョンから別のリージョンへの Azure VM のレプリケーションを構成する方法について説明します。
 services: site-recovery
 author: asgang
 manager: rochakm
@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/09/2018
 ms.author: asgang
-ms.openlocfilehash: 39d81ed6408e5f2c434a4fbaa681efc4c0b19a63
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: e5947242295a9c57b1c73e202c061d222cd0842f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="replicate-azure-virtual-machines-to-another-azure-region"></a>Azure 仮想マシンを別の Azure リージョンにレプリケートする
 
@@ -50,7 +50,8 @@ ms.lasthandoff: 03/12/2018
     - **ターゲットの場所**: ソース仮想マシンのデータがレプリケートされる場所。 選択したマシンの場所に応じて、適切なターゲット リージョンの一覧が表示されます。 ターゲットの場所は、Recovery Services コンテナーと同じ場所にすることをお勧めします。
     - **ターゲット リソース グループ**: レプリケートされたすべての仮想マシンが属するリソース グループ。 既定では、Azure Site Recovery によって、名前に "asr" サフィックスが付いた新しいリソース グループがターゲット リージョンに作成されます。 Azure Site Recovery によって作成されるリソース グループが既に存在する場合は、そのグループが再利用されます。 以下のセクションで示すように、それをカスタマイズすることもできます。
     - **ターゲット仮想ネットワーク**: 既定では、名前に "asr" サフィックスが付いた新しい仮想ネットワークが、Site Recovery によってターゲット リージョンに作成されます。 これはソース ネットワークにマップされ、今後の保護で使用されます。 ネットワーク マッピングの詳細については、[こちら](site-recovery-network-mapping-azure-to-azure.md)を参照してください。
-    - **ターゲット ストレージ アカウント**: 既定では、Site Recovery によって、ソース VM ストレージと同じ構成で新しいターゲット ストレージ アカウントが作成されます。 ストレージ アカウントが既に存在する場合は、再利用されます。
+    - **ターゲット ストレージ アカウント (ソース VM で管理ディスクが使用されていない場合)**: 既定では、Site Recovery によって、ソース VM ストレージと同じ構成で新しいターゲット ストレージ アカウントが作成されます。 ストレージ アカウントが既に存在する場合は、再利用されます。
+    - **レプリカ管理ディスク (ソース VM で管理ディスクが使用されている場合)**: Site Recovery によってターゲット リージョンに新しいレプリカ管理ディスクが作成され、ソース VM の管理ディスクと同じストレージ タイプ (標準またはプレミアム) でソース VM の管理ディスクがミラーリングされます。
     - **キャッシュ ストレージ アカウント**: Site Recovery では、キャッシュ ストレージと呼ばれる追加のストレージ アカウントがソース リージョンに必要です。 ソース VM で行われてた変更はすべて追跡され、キャッシュ ストレージ アカウントに送信されてから、ターゲットの場所にレプリケートされます。
     - **可用性セット**: 既定では、名前に "asr" サフィックスが付いた新しい可用性セットが、Azure Site Recovery によってターゲット リージョンに作成されます。 Azure Site Recovery によって作成された可用性セットが既に存在する場合は、それが再利用されます。
     - **レプリケーション ポリシー**: 復旧ポイントのリテンション履歴と、アプリ整合性スナップショットの頻度の設定を定義します。 既定では、Azure Site Recovery によって、既定の設定 (復旧ポイントのリテンション期間が "24 時間"、アプリ整合性スナップショットの頻度が "60 分") で新しいレプリケーション ポリシーが作成されます。

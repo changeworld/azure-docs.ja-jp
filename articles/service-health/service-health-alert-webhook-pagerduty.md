@@ -1,12 +1,12 @@
 ---
-title: "PagerDuty で Azure サービス正常性アラートを構成する | Microsoft Docs"
-description: "PagerDuty インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。"
+title: PagerDuty で Azure サービス正常性アラートを構成する | Microsoft Docs
+description: PagerDuty インスタンスに送られたサービス正常性イベントについて、個人用に設定された通知を取得します。
 author: shawntabrizi
 manager: scotthit
-editor: 
+editor: ''
 services: service-health
 documentationcenter: service-health
-ms.assetid: 
+ms.assetid: ''
 ms.service: service-health
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/14/2017
 ms.author: shtabriz
-ms.openlocfilehash: 9edcb727b9f0af348cacd5533523c4f2e8214703
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.openlocfilehash: 6e9fcf20d368e270f9af4551c539acd873335498
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-service-health-alerts-with-pagerduty"></a>PagerDuty でサービス正常性アラートを構成する
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 11/16/2017
 
 4.  **[Integration Settings]** で、次のように選択します。
 
-    a. **[Integration Type]**: Microsoft Azure
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **[Integration Type]**: Microsoft Azure
 
     b. **[Integration Name]**:\<名前\>
 
@@ -51,13 +51,13 @@ ms.lasthandoff: 11/16/2017
 ### <a name="for-a-new-action-group"></a>新しいアクション グループの場合:
 1. 「[Azure Portal を使用して新しいアクション グループのサービス正常性通知に関するアラートを作成する](../monitoring-and-diagnostics/monitoring-activity-log-alerts-on-service-notifications.md)」の手順 1 から 8 を実行します。
 
-2. **[アクション]** 一覧内で次のアクションを定義します。
+2. **[アクション]** の一覧で以下を定義します。
 
-    a. **アクションの種類:** *Webhook*
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **アクションの種類:** *webhook*
 
     b. **詳細:** 先ほど保存した PagerDuty の **Integration URL**。
 
-    c. **名前:** webhook の名前、別名、識別子。
+    c. **名前:** webhook の名前、別名、または識別子。
 
 3. 完了したら **[保存]** を選択して、アラートを作成します。
 
@@ -68,18 +68,18 @@ ms.lasthandoff: 11/16/2017
 
 3. 編集するアクション グループを見つけて選択します。
 
-4. **[アクション]** 一覧に追加します。
+4. **[アクション]** の一覧に以下を追加します。
 
-    a. **アクションの種類:** *Webhook*
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが RightScale アプリケーションへのサインオンに使用する URL を入力します。 **アクションの種類:** *webhook*
 
     b. **詳細:** 先ほど保存した PagerDuty の **Integration URL**。
 
-    c. **名前:** webhook の名前、別名、識別子。
+    c. **名前:** webhook の名前、別名、または識別子。
 
 5. 完了したら **[保存]** を選択して、アクション グループを更新します。
 
 ## <a name="testing-your-webhook-integration-via-an-http-post-request"></a>HTTP POST 要求によって webhook 統合をテストする
-1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例は、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」で見つけることができます。
+1. 送信するサービス正常性のペイロードを作成します。 サービス正常性 webhook ペイロードの例については、「[Azure アクティビティ ログ アラートのための webhook](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)」を参照してください。
 
 2. 次のような HTTP POST 要求を作成します。
 
@@ -88,13 +88,13 @@ ms.lasthandoff: 11/16/2017
 
     HEADERS     Content-Type: application/json
 
-    BODY        <Service Health payload>
+    BODY        <service health payload>
     ```
 3. `202 Accepted` と共に "イベント ID" を含むメッセージを受け取るはずです。
 
 4. [PagerDuty](https://www.pagerduty.com/) に移動して、統合が正常に設定されたことを確認します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [既存の問題管理システム用の webhook 通知を構成する](service-health-alert-webhook-guide.md)方法について学習します。
 - [アクティビティ ログ アラート webhook スキーマ](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)を確認します。 
 - [サービス正常性の通知](../monitoring-and-diagnostics/monitoring-service-notifications.md)について学習します。

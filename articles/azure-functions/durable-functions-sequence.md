@@ -1,24 +1,24 @@
 ---
-title: "Durable Functions での関数チェーン - Azure"
-description: "一連の関数を実行する Durable Functions のサンプルを実行する方法を説明します。"
+title: Durable Functions での関数チェーン - Azure
+description: 一連の関数を実行する Durable Functions のサンプルを実行する方法を説明します。
 services: functions
 author: cgillum
 manager: cfowler
-editor: 
-tags: 
-keywords: 
+editor: ''
+tags: ''
+keywords: ''
 ms.service: functions
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/29/2017
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 9ba1cdc5c72e04802d29794fa6cb40a29cc1d353
-ms.sourcegitcommit: a48e503fce6d51c7915dd23b4de14a91dd0337d8
+ms.openlocfilehash: 0020f19e00f3365c4a0d80ebb67aeeedd7fe76df
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/05/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 12/05/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-* [Durable Functions のインストール](durable-functions-install.md)に関するページの指示に従って、サンプルを設定します。
+* [Durable Functions をインストールします](durable-functions-install.md)。
 
 ## <a name="the-functions"></a>関数
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 12/05/2017
 * `E1_HelloSequence`: 1 つのシーケンスで `E1_SayHello` を複数回呼び出す orchestrator 機能。 `E1_SayHello` 呼び出しからの出力を格納し、結果を記録します。
 * `E1_SayHello`: 文字列の先頭に「Hello」を付加するアクティビティ関数。
 
-以下のセクションでは、Azure Portal の開発に使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、記事の最後に記載されています。
+以下のセクションでは、C# スクリプトで使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
  
 ## <a name="functionjson-file"></a>function.json ファイル
 
@@ -71,7 +71,7 @@ Visual Studio Code または Azure Portal を開発に使用する場合は、�
 
 この関数は [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) 型のパラメーターを持ち、オーケストレーター関数の [`CallActivityAsync<T>`](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_) への呼び出しによって渡された入力を取得するのに使用されます。
 
-## <a name="run-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルを実行する
 
 `E1_HelloSequence` オーケストレーションを実行するには、次の HTTP POST 要求を送信します。
 
@@ -121,7 +121,7 @@ Visual Studio プロジェクトの単一の C# ファイルとしてのオー�
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HelloSequence.cs)]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 このサンプルでは、単純な関数チェーンのオーケストレーションについて説明しました。 次のサンプルでは、ファンアウト/ファンイン パターンの実装方法について説明します。 
 

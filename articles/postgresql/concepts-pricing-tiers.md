@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for PostgreSQL の価格レベル"
-description: "この記事では、Azure Database for PostgreSQL の価格レベルについて説明します。"
+title: Azure Database for PostgreSQL の価格レベル
+description: この記事では、Azure Database for PostgreSQL の価格レベルについて説明します。
 services: postgresql
 author: jan-eng
 ms.author: janeng
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: ee75af9b1d7b77799fe02d87da257ff73bc567e6
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 21f8eb795aa1675e2bbd5284f88b39c76ad59228
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Azure Database for PostgreSQL の価格レベル
 
@@ -22,7 +22,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 |    | **Basic** | **汎用** | **メモリ最適化** |
 |:---|:----------|:--------------------|:---------------------|
 | コンピューティング世代 | Gen 4、Gen 5 | Gen 4、Gen 5 | Gen 5 |
-| 仮想コア | 1、2 | 2、4、8、16、32 |2、4、8、16、32 |
+| 仮想コア | 1、2 | 2、4、8、16、32 |2、4、8、16 |
 | 仮想コアあたりのメモリ | 1x | 2x Basic | 2x 汎用 |
 | ストレージ サイズ | 5 GB ～ 1 TB | 5 GB ～ 1 TB | 5 GB ～ 1 TB |
 | ストレージの種類 | Azure Standard Storage | Azure Premium Storage | Azure Premium Storage |
@@ -40,7 +40,32 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 
 ## <a name="compute-generations-vcores-and-memory"></a>コンピューティング世代、仮想コア、およびメモリ
 
-コンピューティング リソースは仮想コアとして提供されます。仮想コアは、基礎となるハードウェアの論理 CPU を表します。 現時点では、Gen 4 と Gen 5 の 2 つのコンピューティング世代から選択することができます。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz のプロセッサを基盤とします。 Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz のプロセッサを基盤とします。
+コンピューティング リソースは仮想コアとして提供されます。仮想コアは、基礎となるハードウェアの論理 CPU を表します。 現時点では、Gen 4 と Gen 5 の 2 つのコンピューティング世代から選択することができます。 Gen 4 論理 CPU は、Intel E5-2673 v3 (Haswell) 2.4 GHz のプロセッサを基盤とします。 Gen 5 論理 CPU は、Intel E5-2673 v4 (Broadwell) 2.3 GHz のプロセッサを基盤とします。 Gen 4 と Gen 5 は、次のリージョンで使用できます ("○" は使用可能であることを表します)。 
+
+| **Azure リージョン** | **第 4 世代** | **第 5 世代** |
+|:---|:----------:|:--------------------:|
+| 米国中央部 |  | ○ |
+| 米国東部 | ○ | ○ |
+| 米国東部 2 | ○ |  |
+| 米国中北部 | ○ |  |
+| 米国中南部 | ○ |  |
+| 米国西部 | ○ | ○ |
+| 米国西部 2 |  | ○ |
+| カナダ中部 | ○ | ○ |
+| カナダ東部 | ○ | ○ |
+| ブラジル南部 | ○ |  |
+| 北ヨーロッパ | ○ | ○ |
+| 西ヨーロッパ | ○ | ○ |
+| 英国西部 |  | ○ |
+| 英国南部 |  | ○ |
+| 東アジア | ○ |  |
+| 東南アジア | ○ |  |
+| オーストラリア東部 |  | ○ |
+| インド中部 | ○ |  |
+| インド西部 | ○ |  |
+| 東日本 | ○ |  |
+| 西日本 | ○ |  |
+| 韓国南部 |  | ○ |
 
 価格レベルに応じて、特定のメモリ量で各仮想コアがプロビジョニングされます。 使用しているサーバーの仮想コア数を増やしたり減らしたりすると、それに合わせてメモリが増減します。 汎用レベルで提供される仮想コアあたりのメモリ量は、Basic レベルの 2 倍です。 メモリ最適化レベルで提供されるメモリ量は、汎用レベルの 2 倍です。
 
@@ -59,7 +84,7 @@ Azure Database for PostgreSQL サーバーは、Basic、汎用、およびメモ
 
 ご自身の I/O 使用量を監視するには、Azure Portal または Azure CLI コマンドを使用します。 監視すべき関連メトリックは、[容量の上限、ストレージの割合、ストレージの使用量、および IO の割合](concepts-monitoring.md)です。
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>バックアップ
 
 サービスによって、サーバーのバックアップが自動的に取得されます。 バックアップの最小リテンション期間は 7 日です。 最大 35 日のリテンション期間を設定できます。 リテンション期間は、サーバーの有効期間中、任意の時点で調整できます。 ローカル冗長バックアップまたは geo 冗長バックアップのいずれかを選択することができます。 geo 冗長バックアップは、ご利用のサーバーが作成されたリージョンの [geo ペア リージョン](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)内にも保存されます。 これにより、障害発生時に保護が提供されます。 また、geo 冗長バックアップで使用できるサービスが提供されている他の Azure リージョンに、サーバーを復元できるようになります。 一度サーバーを作成したら、2 つのバックアップ ストレージ オプションを切り替えることはできません。
 

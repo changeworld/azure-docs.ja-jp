@@ -15,11 +15,11 @@ ms.topic: 02get-started-article
 ms.date: 02/27/2018
 ms.author: mabrigg
 ms.reviewer: hector.linares
-ms.openlocfilehash: e7c437e3310fbf5c921920a3f08ecb8fe1f0d931
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 0e74c6af36130d206456634548f452a1f1a2d4af
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="protect-virtual-machines-deployed-on-azure-stack"></a>Azure Stack にデプロイされた仮想マシンの保護
 
@@ -68,8 +68,8 @@ VM ベースのアプリケーションの最も一般的な保護スキーム�
  
 アプリケーションを回復するには、1 つ以上の VM を同じクラウドまたは新しいクラウドに復元する必要があります。 データ センターのクラウドをターゲットにすることも、パブリック クラウドをターゲットにすることもできます。 データのプライバシーと主権の要件に基づいて、どのクラウドをターゲットにするかを完全に制御できます。 
  
- - RTO: 秒単位で測定されたダウンタイム 
- - RPO: 最小限のデータ損失
+ - RTO: 時間単位で測定されたダウンタイム 
+ - RPO: 変動するデータ損失 (バックアップの頻度に依存)
  - デプロイ トポロジ: アクティブ/パッシブ 
 
 #### <a name="planning-your-backup-strategy"></a>バックアップ戦略の計画
@@ -95,8 +95,8 @@ VM ベースのアプリケーションの最も一般的な保護スキーム�
 
 ![レプリケーション/手動フェールオーバー](media\azure-stack-manage-vm-backup\vm_backupdataflow_02.png)
 
- - RTO: 分単位のダウンタイム 
- - RPO: 変動するデータ損失
+ - RTO: 分単位で測定されたダウンタイム 
+ - RPO: 変動するデータ損失 (レプリケーションの頻度に依存)
  - デプロイ トポロジ: アクティブ/パッシブ スタンバイ
  
 ### <a name="high-availabilityautomatic-failover"></a>高可用性/自動フェールオーバー

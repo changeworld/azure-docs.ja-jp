@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/06/2017
 ms.author: magoedte
-ms.openlocfilehash: 0ad267b9694c2f9cdb574b6b6008d4f6fa027fce
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 6d2c85225ab74c912183a0bb8d7f100d1354e6c5
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
 
@@ -100,7 +100,10 @@ ms.lasthandoff: 03/16/2018
     - Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Log Analytics に送信します。 Windows 環境をご利用の場合は、「[Windows コンテナー ホストをインストールして構成する](#install-and-configure-windows-container-hosts)」を確認します。
   - Docker の複数ホストのオーケストレーションの場合
     - Red Hat OpenShift 環境がある場合は、[Red Hat OpenShift の OMS エージェントの構成](#configure-an-oms-agent-for-red-hat-openshift)に関する記事をご覧ください。
-    - Azure Container Service を使用する Kubernetes クラスターをご利用の場合は、「[Kubernetes 用の OMS エージェントを構成する](#configure-an-oms-agent-for-kubernetes)」を確認します。
+    - Kubernetes クラスターで Azure Container Service を使用している場合:
+       - 「[Kubernetes 用の OMS Linux エージェントを構成する](#configure-an-oms-linux-agent-for-kubernetes)」をご確認ください。
+       - 「[Kubernetes 用の OMS Windows エージェントを構成する](#configure-an-oms-windows-agent-for-kubernetes)」をご確認ください。
+       - 「[Helm を使用して Linux Kubernetes に OMS エージェントをデプロイする](#use-helm-to-deploy-oms-agent-on-linux-kubernetes)」をご確認ください。
     - Azure Container Service DC/OS クラスターがある場合、詳細については、「[Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視](../container-service/dcos-swarm/container-service-monitoring-oms.md)」をご覧ください。
     - Docker Swarm モード環境がある場合、詳細については、「[Docker Swarm 用の OMS エージェントを構成する](#configure-an-oms-agent-for-docker-swarm)」をご覧ください。
     - Service Fabric クラスターがある場合、詳細については、「[OMS Log Analytics でコンテナーを監視](../service-fabric/service-fabric-diagnostics-oms-containers.md)」を参照してください。
@@ -387,7 +390,7 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-#### <a name="configure-an-oms-agent-for-windows-kubernetes"></a>Windows Kubernetes 用の OMS エージェントを構成する
+#### <a name="configure-an-oms-windows-agent-for-kubernetes"></a>Kubernetes 用の OMS Windows エージェントを構成する
 Windows Kubernetes では、スクリプトを使用して、ワークスペース ID と主キーのシークレット yaml ファイルを生成して OMS エージェントをインストールします。 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) ページに、シークレット情報を利用して使用できるファイルがあります。  マスター ノードとエージェント ノードに個別に OMS エージェントをインストールする必要があります。  
 
 1. マスター ノードでシークレット情報を使用して OMS エージェント DaemonSet を使用するには、サインインして、まずシークレットを作成します。
@@ -544,15 +547,15 @@ Windows エージェントを使用している場合、このソリューショ
 
 | データ型 | ログ検索のデータ型 | フィールド |
 | --- | --- | --- |
-| ホストとコンテナーのパフォーマンス | `Type=Perf` | Computer、ObjectName、CounterName (%Processor Time、Disk Reads MB、Disk Writes MB、Memory Usage MB、Network Receive Bytes、Network Send Bytes、Processor Usage sec、Network)、CounterValue、TimeGenerated、CounterPath、SourceSystem |
-| コンテナー インベントリ | `Type=ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContainerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
-| コンテナー イメージ インベントリ | `Type=ContainerImageInventory` | TimeGenerated、Computer、Image、ImageTag、ImageSize、VirtualSize、Running、Paused、Stopped、Failed、SourceSystem、ImageID、TotalContainer |
-| コンテナー ログ | `Type=ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
-| コンテナー サービス ログ | `Type=ContainerServiceLog`  | TimeGenerated、Computer、TimeOfCommand、Image、Command、SourceSystem、ContainerID |
-| コンテナー ノード インベントリ | `Type=ContainerNodeInventory_CL`| TimeGenerated、Computer、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
-| Kubernetes インベントリ | `Type=KubePodInventory_CL` | TimeGenerated、Computer、PodLabel_deployment_s、PodLabel_deploymentconfig_s、PodLabel_docker_registry_s、Name_s、Namespace_s、PodStatus_s、PodIp_s、PodUid_g、PodCreationTimeStamp_t、SourceSystem |
-| コンテナー プロセス | `Type=ContainerProcess_CL` | TimeGenerated、Computer、Pod_s、Namespace_s、ClassName_s、InstanceID_s、Uid_s、PID_s、PPID_s、C_s、STIME_s、Tty_s、TIME_s、Cmd_s、Id_s、Name_s、SourceSystem |
-| Kubernetes イベント | `Type=KubeEvents_CL` | TimeGenerated、Computer、Name_s、ObjectKind_s、Namespace_s、Reason_s、Type_s、SourceComponent_s、SourceSystem、Message |
+| ホストとコンテナーのパフォーマンス | `Perf` | Computer、ObjectName、CounterName (%Processor Time、Disk Reads MB、Disk Writes MB、Memory Usage MB、Network Receive Bytes、Network Send Bytes、Processor Usage sec、Network)、CounterValue、TimeGenerated、CounterPath、SourceSystem |
+| コンテナー インベントリ | `ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContainerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
+| コンテナー イメージ インベントリ | `ContainerImageInventory` | TimeGenerated、Computer、Image、ImageTag、ImageSize、VirtualSize、Running、Paused、Stopped、Failed、SourceSystem、ImageID、TotalContainer |
+| コンテナー ログ | `ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
+| コンテナー サービス ログ | `ContainerServiceLog`  | TimeGenerated、Computer、TimeOfCommand、Image、Command、SourceSystem、ContainerID |
+| コンテナー ノード インベントリ | `ContainerNodeInventory_CL`| TimeGenerated、Computer、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
+| Kubernetes インベントリ | `KubePodInventory_CL` | TimeGenerated、Computer、PodLabel_deployment_s、PodLabel_deploymentconfig_s、PodLabel_docker_registry_s、Name_s、Namespace_s、PodStatus_s、PodIp_s、PodUid_g、PodCreationTimeStamp_t、SourceSystem |
+| コンテナー プロセス | `ContainerProcess_CL` | TimeGenerated、Computer、Pod_s、Namespace_s、ClassName_s、InstanceID_s、Uid_s、PID_s、PPID_s、C_s、STIME_s、Tty_s、TIME_s、Cmd_s、Id_s、Name_s、SourceSystem |
+| Kubernetes イベント | `KubeEvents_CL` | TimeGenerated、Computer、Name_s、ObjectKind_s、Namespace_s、Reason_s、Type_s、SourceComponent_s、SourceSystem、Message |
 
 *PodLabel* データ型に付加されるラベルは、独自のカスタム ラベルです。 表に示されている、付加された PodLabel ラベルは一例です。 そのため、`PodLabel_deployment_s`、`PodLabel_deploymentconfig_s`、`PodLabel_docker_registry_s` はご利用の環境のデータ セットによって異なり、一般的には `PodLabel_yourlabel_s` に似ています。
 
@@ -607,7 +610,7 @@ OMS ポータルでソリューションを有効にすると、コンテナー 
    ![コンテナーの状態](./media/log-analytics-containers/containers-log-search.png)
 3. 次に、失敗したコンテナーの集計値をクリックして、追加情報を表示します。 **[表示数を増やす]** を展開してイメージ ID を表示します。  
    ![失敗したコンテナー](./media/log-analytics-containers/containers-state-failed.png)  
-4. 次に、検索クエリに以下を入力します。 `Type=ContainerInventory <ImageID>` により、停止したイメージと失敗したイメージのサイズと数など、イメージに関する詳細が表示されます。  
+4. 次に、検索クエリに以下を入力します。 `ContainerInventory <ImageID>` により、停止したイメージと失敗したイメージのサイズと数など、イメージに関する詳細が表示されます。  
    ![失敗したコンテナー](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>コンテナー データのログの検索
@@ -625,17 +628,17 @@ OMS ポータルでソリューションを有効にすると、コンテナー 
 
 
 ### <a name="to-search-logs-for-container-data"></a>コンテナー データのログを検索するには
-* 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`Type=ContainerInventory ubuntu Failed` を検索します。  
+* 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`ContainerInventory | where Image == "ubuntu" and ContainerState == "Failed"` を検索します。  
     ![Ubuntu コンテナーの検索](./media/log-analytics-containers/search-ubuntu.png)
 
-  **[名前]** の横にあるコンテナーの名前と、それらのログを検索します。 この例では `Type=ContainerLog cranky_stonebreaker` です。
+  **[名前]** の横にあるコンテナーの名前と、それらのログを検索します。 この例では `ContainerLog | where Name == "cranky_stonebreaker"` です。
 
 **パフォーマンス情報の表示**
 
 クエリの作成を始めたばかりの段階では、何が可能かを先に確認しておくと効率的です。 たとえば、すべてのパフォーマンス データを確認するには、次の検索クエリを入力して広範なクエリを試してみてください。
 
 ```
-Type=Perf
+Perf
 ```
 
 ![コンテナーのパフォーマンス](./media/log-analytics-containers/containers-perf01.png)
@@ -643,7 +646,7 @@ Type=Perf
 表示されているパフォーマンス データのスコープを特定のコンテナーに制限するには、その名前をクエリの右側に入力します。
 
 ```
-Type=Perf <containerName>
+Perf <containerName>
 ```
 
 そうすると、個々のコンテナーについて収集されたパフォーマンス メトリックの一覧が表示されます。
@@ -652,8 +655,6 @@ Type=Perf <containerName>
 
 ## <a name="example-log-search-queries"></a>検索クエリの例
 クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[サンプル クエリ]** エリアで試すと、より高度なクエリを作成しやすくなります。
-
-[!INCLUDE[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![コンテナーのクエリ](./media/log-analytics-containers/containers-queries.png)
 

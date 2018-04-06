@@ -1,25 +1,25 @@
 ---
-title: "Azure Cosmos DB における一意なキー | Microsoft Docs"
-description: "Azure Cosmos DB データベースで一意なキーを使用する方法について説明します。"
+title: Azure Cosmos DB における一意なキー | Microsoft Docs
+description: Azure Cosmos DB データベースで一意なキーを使用する方法について説明します。
 services: cosmos-db
-keywords: "一意キー制約, 一意キー制約の違反"
+keywords: 一意キー制約, 一意キー制約の違反
 author: rafats
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: b15d5041-22dd-491e-a8d5-a3d18fa6517d
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/27/2017
+ms.date: 03/21/2018
 ms.author: rafats
-ms.openlocfilehash: c530b34edf9bfa0651b7b114dcf7e8add0d906ed
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: 0c80ee13298c2c749c5f7eb7e55d1d77a8d6a34e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="unique-keys-in-azure-cosmos-db"></a>Azure Cosmos DB における一意なキー
 
@@ -58,7 +58,7 @@ ms.lasthandoff: 12/14/2017
 
 一意なキーには、それぞれ最大 16 個のパス値 (たとえば /firstName、/lastName、/address/zipCode など) を含めることができます。 
 
-一意キー ポリシーには、それぞれ最大 10 個の一意キー制約または一意なキーの組み合わせを含めることができます。 そうすると姓、名、メール アドレスを使用する先ほどの例では、制約が 1 つだけあり、含めうる 16 個のパスのうち 3 個が使用されています。 
+各一意のキーのポリシーには、最大で 10 個の一意キーの制約または組み合わせを含めることができ、すべての一意インデックス プロパティに対する結合パスは 60 文字を超えないようにする必要があります。 そうすると姓、名、メール アドレスを使用する先ほどの例では、制約が 1 つだけあり、含めうる 16 個のパスのうち 3 個が使用されています。 
 
 コンテナーに一意キー ポリシーがある場合、項目の作成、更新および削除に対して請求される要求ユニットは少し高めになります。 
 

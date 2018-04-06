@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーの使用に関する開発者向けのメモ | Microsoft Docs"
-description: "カスタム ポリシーで Azure AD B2C を構成および管理する開発者向けのメモ"
+title: 'Azure Active Directory B2C: カスタム ポリシーの使用に関する開発者向けのメモ | Microsoft Docs'
+description: カスタム ポリシーで Azure AD B2C を構成および管理する開発者向けのメモ
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 10/13/2017
-ms.author: joroja
-ms.openlocfilehash: 7f65ad324e1bf0887ea293254621466a2f1ddaff
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.author: davidmu
+ms.openlocfilehash: cf76f158d7e87a2f2f902551fdc751b295b6915b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="release-notes-for-azure-active-directory-b2c-custom-policy-public-preview"></a>Azure Active Directory B2C カスタム ポリシー パブリック プレビューのリリース ノート
 カスタム ポリシー機能セットは、すべての Azure Active Directory B2C (Azure AD B2C) のユーザーがパブリック プレビューで評価できるようになりました。 この機能セットは、最も複雑な ID ソリューションを構築する上級 ID 開発者を対象としています。  
@@ -60,7 +57,7 @@ ms.lasthandoff: 02/21/2018
 ## <a name="features-by-stage-and-known-issues"></a>段階別の機能と既知の問題
 カスタム ポリシー/Identity Experience Framework 機能は、継続的かつ高速に開発されています。  次の表は、機能/コンポーネントの可用性のインデックスです。
 
-質問については、Stack Overflow ([https://aka.ms/aadb2cso](https://aka.ms/aadb2cso)) に投稿してください
+質問については、Stack Overflow ([https://aka.ms/aadb2cso](https://aka.ms/aadb2cso)) に投稿してください。
 
 
 ### <a name="identity-providers-tokens-protocols"></a>ID プロバイダー、トークン、プロトコル

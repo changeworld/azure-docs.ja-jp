@@ -1,8 +1,8 @@
 ---
-title: "ドメイン参加済み HDInsight での Hive ポリシーの構成 - Azure | Microsoft Docs"
-description: "詳細...."
+title: ドメイン参加済み HDInsight での Hive ポリシーの構成 - Azure | Microsoft Docs
+description: 詳細....
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: saurinsh
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: 35a74ffb6a30fe2ae7db686be5b6774800ce37b1
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 919a0a45c4c8c94b19ed1d602ed20df0afabd09a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight"></a>ドメイン参加済み HDInsight での Hive ポリシーの構成
 Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
@@ -45,10 +45,10 @@ Hive 用 Apache Ranger ポリシーを構成する方法について説明しま
     現在、Ranger は Yarn および Hive でのみ機能します。
 
 ## <a name="create-domain-users"></a>ドメイン ユーザーの作成
-[ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure.md#optional-create-ad-users-and-groups)に関する記事で、hiveruser1 と hiveuser2 を作成しました。 このチュートリアルでは、この 2 つのユーザー アカウントを使用します。
+hiveruser1 と hiveuser2 を作成する方法については、「[ドメイン参加済み HDInsight クラスターの作成](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)」を参照してください。 このチュートリアルでは、この 2 つのユーザー アカウントを使用します。
 
 ## <a name="create-ranger-policies"></a>Ranger ポリシーの作成
-このセクションでは、hivesampletable にアクセスするための 2 つの Ranger ポリシーを作成します。 異なる列セットに対する select 権限を付与します。 [ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure.md#optional-create-ad-users-and-groups)に関する記事で、ユーザーを既に作成しています。  次のセクションでは、2 つのポリシーを Excel でテストします。
+このセクションでは、hivesampletable にアクセスするための 2 つの Ranger ポリシーを作成します。 異なる列セットに対する select 権限を付与します。 両方のユーザーは[ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster)で作成されました。 次のセクションでは、2 つのポリシーを Excel でテストします。
 
 **Ranger ポリシーを作成するには**
 
@@ -86,7 +86,7 @@ Hive 用 Apache Ranger ポリシーを構成する方法について説明しま
  | --- | --- |
  | データ ソース名 | データ ソースに名前を付けます。 |
  | Host | 「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
- | Port | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
+ | ポート | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
  | データベース | **既定値**を使用します。 |
  | Hive サーバーの種類 | **Hive Server 2** を選択します。 |
  | メカニズム | **Azure HDInsight サービス**を選択します。 |

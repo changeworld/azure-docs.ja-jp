@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/13/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: 61e0e7cf960d7eb2294bc294ec1eec9d80428a81
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 
 Azure Load Balancer の Standard SKU は、[可用性ゾーン](../availability-zones/az-overview.md)のシナリオをサポートしています。 Standard Load Balancer では複数の新しい概念を利用でき、リソースをゾーンに一致させて、複数のゾーンに分散させることにより、エンド ツー エンドのシナリオで可用性を最適化させることができます。  可用性ゾーンとは何か、現在可用性ゾーンをサポートしているリージョン、その他の関連する概念と製品については、[可用性ゾーン](../availability-zones/az-overview.md)に関する記事をご覧ください。 可用性ゾーンと Standard Load Balancer の組み合わせは、さまざまなシナリオを作成できる拡張性と柔軟性の高い機能セットです。  このドキュメントを読んで、これらの[概念](#concepts)と基本的なシナリオの[設計ガイダンス](#design)を理解してください。
 
 >[!NOTE]
-> Load Balancer Standard SKU は現在プレビュー段階です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 運用サービスには、一般公開されている [Load Balancer Basic SKU](load-balancer-overview.md) を使用してください。 このプレビューで[可用性ゾーン (プレビュー)](https://aka.ms/availabilityzones) を使用するには、Load Balancer [標準プレビュー](#preview-sign-up)へのサインアップに加え、[別のサインアップ](https://aka.ms/availabilityzones)が必要になります。
+>その他の関連トピックについては、[可用性ゾーン プレビュー](https://aka.ms/availabilityzones)をご確認ください。 
 
 ## <a name="concepts"></a> Load Balancer に適用される可用性ゾーンの概念
 
@@ -151,7 +151,7 @@ Load Balancer リソースは、ゾーン ベースとゾーン冗長の両方�
 
 クロスゾーンの負荷分散は、任意のゾーン内のバックエンド エンドポイントに到達する Load Balancer の機能であり、フロントエンドおよびそのゾーン性からは独立しています。
 
-展開を単一のゾーンに揃えて保証したい場合は、ゾーン ベースのフロントエンド リソースとゾーン ベースのバックエンド リソースを同じゾーンに揃えます。 ユーザーによる対処は不要です。
+単一のゾーン内で展開を揃え、保証する場合は、ゾーン ベースのフロントエンド リソースとゾーン ベースのバックエンド リソースを同じゾーンに揃えます。 ユーザーによる対処は不要です。
 
 ### <a name="backend"></a>バックエンド
 
@@ -210,7 +210,7 @@ Load Balancer を使うと、ゾーン冗長フロントエンドとして 1 つ
 
 ゾーン ベースは、1 つのゾーンに対する明示的な保証を提供し、そのゾーンの正常性に依存します。 ゾーン ベースの IP アドレスまたはゾーン ベースの Load Balancer フロントエンドの関連付けは、アタッチされているリソースが同じゾーン内のゾーン ベースの VM である場合は特に、望ましい、または妥当な属性である可能性があります。  そうでなければおそらく、アプリケーションはリソースが存在するゾーンを明確に知る必要があり、別のゾーンの可用性を明示的に判別する必要があります。  複数のゾーンに分散されているエンド ツー エンド サービスに対し、複数のゾーン ベースのフロントエンドを公開することもできます (つまり、複数のゾーン ベースの仮想マシン スケール セットに対して、ゾーンごとのゾーン ベースのフロントエンド)。  また、ゾーン ベースのフロントエンドがパブリック IP アドレスである場合は、これらの複数のゾーン ベースのフロントエンドを使って、[Traffic Manager](../traffic-manager/traffic-manager-overview.md) でサービスを公開することができます。  または、複数のゾーン ベースのフロントエンドを使うと、サード パーティ製の監視ソリューションによりゾーンごとの正常性とパフォーマンスの洞察を取得でき、ゾーン冗長なフロントエンドでサービス全体を公開することができます。 ゾーン ベースのリソースの提供は、同じゾーンに揃えられたゾーン ベースのフロントエンドでのみ行う必要があり、ゾーン ベースのリソースに対して潜在的に危険なクロスゾーン シナリオは回避する必要があります。  ゾーン ベースのリソースは、可用性ゾーンが存在するリージョンにのみ存在します。
 
-エンド ツー エンド サービスを理解することなく、選択肢の優劣を判断するための一般的なガイダンスはありません。
+サービス アーキテクチャを理解することなく、選択肢の優劣を判断するための一般的なガイダンスはありません。
 
 ## <a name="limitations"></a>制限事項
 

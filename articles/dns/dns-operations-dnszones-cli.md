@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS での DNS ゾーンの管理 - Azure CLI 2.0 | Microsoft Docs"
-description: "Azure CLI 2.0 を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します。"
+title: Azure DNS での DNS ゾーンの管理 - Azure CLI 2.0 | Microsoft Docs
+description: Azure CLI 2.0 を使用して DNS ゾーンを管理できます。 この記事では、Azure DNS で DNS ゾーンを更新、削除、および作成する方法について説明します。
 services: dns
 documentationcenter: na
 author: KumudD
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: kumud
-ms.openlocfilehash: 2042d9c2864a4f8da474e0df38882414bfe3417e
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: d384f8867ddfd28acaf78a47a7d32729e87c5580
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure DNS で DNS ゾーンを管理する方法
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 12/21/2017
 
 
 このガイドでは、Windows、Mac、および Linux で使用できるクロス プラットフォームの Azure CLI を使用して、DNS ゾーンを管理する方法について説明します。 DNS ゾーンは、[Azure PowerShell](dns-operations-dnszones.md) または Azure Portal を使用して管理することもできます。
+
+このガイドでは、特にパブリック DNS ゾーンについて説明します。 Azure CLI を使用する Azure DNS の Private Zones の管理については、「[Azure CLI 2.0 で Azure DNS Private Zones の使用を開始する](private-dns-getstarted-cli.md)」を参照してください。
 
 ## <a name="introduction"></a>はじめに
 
@@ -45,7 +47,7 @@ ms.lasthandoff: 12/21/2017
 
 ### <a name="sign-in-to-your-azure-account"></a>Azure アカウントへのサインイン
 
-コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「Azure CLI から Azure へのログイン」を参照してください
+コンソール ウィンドウを開き、資格情報を使用して認証を行います。 詳細については、「[Azure CLI から Azure へのログイン](https://docs.microsoft.com/en-us/cli/azure/authenticate-azure-cli?view=azure-cli-latest)」をご覧ください。
 
 ```
 az login
@@ -65,6 +67,12 @@ az account list
 az account set --subscription "subscription name"
 ```
 
+### <a name="optional-to-installuse-azure-dns-private-zones-feature-public-preview"></a>省略可能: Azure DNS Private Zones の機能 (パブリック プレビュー) のインストール/使用
+パブリック プレビュー段階の Azure DNS Private Zone の機能は、Azure CLI の拡張機能を介してリリースされます。 "dns" Azure CLI 拡張機能をインストールしてください。 
+```
+az extension add --name dns
+``` 
+
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
 Azure リソース マネージャーでは、すべてのリソース グループの場所を指定する必要があります。 指定した場所は、そのリソース グループ内のリソースの既定の場所として使用されます。 ただし、すべての DNS リソースはグローバルであり、リージョンの違いがないため、リソース グループの場所を選択しても、Azure DNS には影響しません。
@@ -77,7 +85,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>ヘルプの表示
 
-Azure DNS に関連するすべての CLI 2.0 コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  For example:
+Azure DNS に関連するすべての CLI 2.0 コマンドは `az network dns` で始まります。 `--help` オプション (短縮形 `-h`) を使用すると、各コマンドのヘルプを利用できます。  例: 
 
 ```azurecli
 az network dns --help
@@ -183,7 +191,7 @@ DNS ゾーンは、`az network dns zone delete` を使用して削除できま�
 az network dns zone delete --resource-group myresourcegroup --name contoso.com
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 DNS ゾーンでレコード セットとレコードを管理する方法については[こちら](dns-getstarted-create-recordset-cli.md)をご覧ください。
 

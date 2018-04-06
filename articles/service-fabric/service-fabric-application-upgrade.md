@@ -1,11 +1,11 @@
 ---
-title: "Service Fabric アプリケーションのアップグレード | Microsoft Docs"
-description: "この記事では、アップグレード モードの選択や正常性チェックの実行など、Service Fabric アプリケーションのアップグレードの概要を紹介します。"
+title: Service Fabric アプリケーションのアップグレード | Microsoft Docs
+description: この記事では、アップグレード モードの選択や正常性チェックの実行など、Service Fabric アプリケーションのアップグレードの概要を紹介します。
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 803c9c63-373a-4d6a-8ef2-ea97e16e88dd
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: 765931d8a888432e0cc77ff86d597b6e2a029a2a
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 60bbd75496b6e835a76edb4251aac6ea249187b3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
 Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-and-service-manifests.md) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。
@@ -57,6 +57,13 @@ Service Fabric アプリケーションは、サービスのコレクション�
 
 > [!TIP]
 > 上記のルール 2) および 3) (既定のサービスの更新と削除) を有効にするには、[EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) クラスター構成設定を *true* にする必要があります。 この機能は、Service Fabric バージョン 5.5 以降でサポートされています。
+
+## <a name="upgrading-multiple-applications-with-https-endpoints"></a>HTTPS エンドポイントを持つ複数のアプリケーションのアップグレード
+HTTP**S** の使用時は、同じアプリケーションの異なるインスタンスに対して**同じポート**を使用しないように注意する必要があります。 その理由は、Service Fabric は任意の 1 つのアプリケーション インスタンスの証明書をアップグレードできないためです。 たとえば、アプリケーション 1 とアプリケーション 2 で証明書 1 を証明書 2 にアップグレードする必要があるとします。 アップグレードが発生した場合、もう一方のアプリケーションが使用中であるのにもかかわらず、Service Fabric が http.sys により証明書 1 の登録をクリーンアップしてている可能性があります。 これを回避するために、Service Fabric は、証明書を持つポートに登録された他のアプリケーション インスタンスが既にあることを検出し (http.sys により)、その操作を失敗させます。
+
+そのため、Service Fabric では、異なるアプリケーション インスタンスで**同じポート**を使用して 2 つの異なるサービスをアップグレードすることはできません。 つまり、同じポート上の異なるサービスで同じ証明書を使用することはできません。 同じポートで証明書を共有する必要がある場合は、必ずサービスを配置の制約がある異なるコンピューターに配置するようにしてください。 または、各アプリケーション インスタンスの各サービスに対して、可能であれば、Service Fabric 動的ポートを使用することを検討してください。 
+
+https でアップグレードが失敗した場合、"Windows HTTP Server API が、ポートを共有するアプリケーションに対して複数の証明書をサポートしていない" ことを示す警告が表示されます。
 
 ## <a name="application-upgrade-flowchart"></a>アプリケーション アップグレードのフローチャート
 以下に示すフローチャートは、Service Fabric アプリケーションのアップグレード プロセスをわかりやすく示しています。 特に、このフローでは 1 つの更新ドメインのアップグレードが成功または失敗と見なされるときに、*HealthCheckStableDuration*、*HealthCheckRetryTimeout*、*UpgradeHealthCheckInterval* などのタイムアウトが制御にどのように役立つかを説明します。

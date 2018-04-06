@@ -16,15 +16,55 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 52be84b73e70a02c43ef71917dc272060d82b42d
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 4dd908908877a222c708c9b2ab6255ab9a4b414a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
 Azure における仮想マシン スケール セットについてよく寄せられる質問の回答を示します。
+
+## <a name="top-frequently-asked-questions-for-scale-sets"></a>Scale Sets に関してよく寄せられる質問
+**Q.** Scale Sets には何個の VM を設定できますか?
+
+**A.** スケール セットには、プラットフォーム イメージに基づいて 0 ～ 1,000 個の VM、またはカスタム イメージに基づいて 0 ～ 300 個の VM を含めることができます。 
+
+**Q.** Scale Sets 内でデータ ディスクはサポートされていますか?
+
+**A.** はい。 スケール セットでは、セット内のすべての VM に適用される、接続されたデータ ディスクの構成を定義できます。 詳細については、[Azure Scale Sets と接続されたデータ ディスク](virtual-machine-scale-sets-attached-disks.md)に関するページをご覧ください。 データを格納するための他のオプションを次に示します。
+
+* Azure ファイル (SMB 共有ドライブ)
+* OS ドライブ
+* 一時ドライブ (ローカル、Azure Storage に保存されない)
+* Azure データ サービス (Azure テーブル、Azure BLOB など)
+* 外部データ サービス (リモート データベースなど)
+
+**Q.** Scale Sets は、どの Azure リージョンでサポートされていますか?
+
+**A.** すべてのリージョンで Scale Sets がサポートされています。
+
+**Q.** カスタム イメージを使用して Scale Sets を作成するにはどうすればよいですか?
+
+**A.** カスタム イメージ VHD に基づいて管理ディスクを作成し、Scale Sets テンプレートで参照します。 [こちら](https://github.com/chagarw/MDPP/tree/master/101-vmss-custom-os)でサンプルをご覧ください。
+
+**Q.** Scale Sets 容量を 20 から 15 に減らすと、どの VM が削除されますか?
+
+**A.** 可用性を最大限に高めるために、仮想マシンは、すべての更新ドメインと障害ドメインのスケール セットから均等に削除されます。 ID が最大の VM が最初に削除されます。
+
+**Q.** その後、容量を 15 から 18 に増やすとどうなりますか。
+
+**A.** 容量を 18 に増やすと、3 つの新しい VM が作成されます。 VM が作成されるたびに、VM インスタンス ID は前の最大値に増分された値となります (例: 20、21、22)。 VM は障害ドメインと更新ドメインに分散されます。
+
+**Q.** Scale Sets で複数の拡張機能を使用する場合、実行順序を強制できますか?
+
+**A.** 直接的にではありませんが、カスタム スクリプト拡張機能の場合、スクリプトで他の拡張機能が完了するまで待機できます 。 拡張機能の実行順序についての詳しいガイダンスについては、[Azure の仮想マシン スケール セットで拡張機能が実行される順序](https://msftstack.wordpress.com/2016/05/12/extension-sequencing-in-azure-vm-scale-sets/)に関するブログ記事を参照してください。
+
+**Q.** Scale Sets は、Azure 可用性セットと連携できますか?
+
+**A.** はい。 スケール セットは、5 つの障害ドメインと 5 つの更新ドメインを備えた、暗黙的な可用性セットです。 100 個を超える VM を備えたスケール セットは、複数の可用性セットに相当する複数の "*配置グループ*" にまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
+
 
 ## <a name="autoscale"></a>Autoscale
 
@@ -216,11 +256,11 @@ SSH 公開キーは、Linux VM の作成時にプレーン テキストで提供
     }
 ```
  
-linuxConfiguration の要素名 | 必須 | 型 | 説明
+linuxConfiguration の要素名 | 必須 | type | [説明]
 --- | --- | --- | --- |  ---
 ssh | いいえ  | コレクション | Linux OS の SSH キーの構成を指定します。
-path | はい | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
-keyData | はい | String | Base64 でエンコードされた SSH 公開キーを指定します。
+パス | [はい] | String | SSH キーまたは証明書を配置する Linux ファイル パスを指定します。
+keyData | [はい] | String | Base64 でエンコードされた SSH 公開キーを指定します。
 
 実際の例については、[GitHub の 101-vm-sshkey クイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)を参照してください。
 
@@ -558,7 +598,7 @@ IP アドレスは指定したサブネットから選択されます。
 
 ### <a name="how-can-i-configure-a-scale-set-to-assign-a-public-ip-address-to-each-vm"></a>各 VM にパブリック IP アドレスを割り当てるには、スケール セットをどのように構成すればよいですか?
 
-各 VM にパブリック IP アドレスを割り当てる仮想マシンスケール セットを作成するには、Microsoft.Compute/virtualMAchineScaleSets リソースの API バージョンが 2017-03-30 であることを確認してから、スケール セットの ipConfigurations セクションに _publicipaddressconfiguration_ JSON パケットを追加します。 例:
+各 VM にパブリック IP アドレスを割り当てる仮想マシンスケール セットを作成するには、Microsoft.Compute/virtualMachineScaleSets リソースの API バージョンが 2017-03-30 であることを確認してから、スケール セットの ipConfigurations セクションに _publicipaddressconfiguration_ JSON パケットを追加します。 例:
 
 ```json
     "publicipaddressconfiguration": {

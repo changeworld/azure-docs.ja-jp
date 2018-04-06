@@ -10,25 +10,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 6146e1ce98144a05bef2ca29705f451aa3f5fb50
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 864e9ff5551637a93b957e5011a8857072c6eaaf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure Machine Learning に関してよく寄せられる質問
 
+Azure Machine Learning は機械学習モデルおよび AI モデルの作成、テスト、管理、デプロイを行うことができる、完全管理型の Azure サービスです。 Microsoft のサービスとダウンロード可能なアプリケーションでは、クラウドからオンプレミス、エッジまでを活用して強力で高速かつ柔軟なモデルのトレーニング、デプロイ、管理、監視を実現するコードファースト方式を採用しています。 これと異なり、Azure Machine Learning Studio には、ドラッグ アンド ドロップでモデルを作成できる視覚的なブラウザーベース環境が用意されており、コードを作成する必要はありません。 
+
 ## <a name="general-product-questions"></a>製品に関する一般的な質問
-
-**Azure Machine Learning とは**
-
-Azure Machine Learning は機械学習モデルおよび AI モデルの作成、テスト、管理、デプロイを行うことができる、完全管理型の Azure サービスです。 Microsoft の新サービスとダウンロード可能なアプリケーションでは、クラウドからオンプレミス、エッジまでを活用して強力で高速かつ柔軟なモデルのトレーニング、デプロイ、管理、監視を実現するコードファースト方式を採用しています。 これと異なり、Azure Machine Learning Studio には、ドラッグ アンド ドロップでモデルを作成できる視覚的なブラウザーベース環境が用意されており、コードを作成する必要はありません。 
-
-**この新サービスはどのリージョンで利用できますか?**
-
-Azure Machine Learning の実験およびモデル管理サービスがサポートされている Auzre リージョンについては、[リージョン別の Azure 製品](https://azure.microsoft.com/regions/services/)に関するページをご覧ください。
-
-本製品の発展に合わせてより多くのリージョンを追加する予定です。  [Azure Machine Learning のフィードバック](https://feedback.azure.com/forums/257792-machine-learning)に関するサイトで、デプロイ先リージョンの優先順位付けにご協力ください。 
 
 **他にどのような Azure サービスが必要になりますか?**
 

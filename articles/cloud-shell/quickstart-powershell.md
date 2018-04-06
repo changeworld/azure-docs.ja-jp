@@ -1,12 +1,12 @@
 ---
-title: "Azure Cloud Shell (プレビュー) の PowerShell のクイック スタート | Microsoft Docs"
-description: "Cloud Shell の PowerShell のクイックスタート"
+title: Azure Cloud Shell (プレビュー) の PowerShell のクイック スタート | Microsoft Docs
+description: Cloud Shell の PowerShell のクイックスタート
 services: Azure
-documentationcenter: 
+documentationcenter: ''
 author: maertendmsft
 manager: timlt
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/19/2018
 ms.author: damaerte
-ms.openlocfilehash: 71ae70c13b4de87593345fd957a773741294b49c
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: efee0842a2fca2afac28f179bba07c3b6682ee57
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="quickstart-for-powershell-in-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の PowerShell のクイックスタート
 
@@ -118,7 +118,7 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 
 ### <a name="navigate-storage-resources"></a>ストレージ リソース間を移動する
     
-`StorageAccounts` フォルダーに入ることで、ストレージ リソース間を簡単に移動することができます
+`StorageAccounts` ディレクトリに入ることで、ストレージ リソース間を簡単に移動することができます
     
 ``` PowerShell 
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -182,7 +182,7 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 #### <a name="invoke-powershell-script-across-remote-vms"></a>リモート VM 間で PowerShell スクリプトを呼び出す
 
  > [!WARNING]
- > [Azure VM のリモート管理のトラブルシューティング](troubleshooting.md#powershell-resolutions)に関するページを参照してください。
+ > [Azure VM のリモート管理のトラブルシューティング](troubleshooting.md#troubleshooting-remote-management-of-azure-vms)に関するページを参照してください。
 
   MyVM1 という VM があるとすると、`Invoke-AzureRmVMCommand` を使ってリモート マシンの PowerShell スクリプト ブロックを呼び出すことができます。
 
@@ -227,7 +227,7 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
 
 ### <a name="discover-webapps"></a>WebApps を検出する
 
-`WebApps` フォルダーに入ることで、Web アプリ リソース間を簡単に移動することができます
+`WebApps` ディレクトリに入ることで、Web アプリ リソース間を簡単に移動することができます
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -274,11 +274,11 @@ SSH を使ってサーバーまたは VM に対する認証を行うには、Clo
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>カスタム プロファイルを使って GiT と SSH の設定を保持する
 
-サインアウトするとセッションは保持されないので、`$env:USERPROFILE\.ssh` フォルダーを `CloudDrive` に保存するか、Cloud Shell の起動時にシンボリック リンクを作成します。
+サインアウトするとセッションは保持されないので、`$env:USERPROFILE\.ssh` ディレクトリを `CloudDrive` に保存するか、Cloud Shell の起動時にシンボリック リンクを作成します。
 CloudDrive へのシンボリック リンクを作成するには、profile.ps1 に次のコード スニペットを追加します。
 
 ``` PowerShell
-# Check if the .ssh folder exists
+# Check if the .ssh directory exists
 if( -not (Test-Path $home\CloudDrive\.ssh)){
     mkdir $home\CloudDrive\.ssh
 }
@@ -357,7 +357,7 @@ PS C:\users\ContainerAdministrator\CloudDrive> .\helloworld.ps1
 Hello World!
 ```
 
-Cloud Shell で PowerShell を次に使うとき、`helloworld.ps1` ファイルは、Azure Files 共有をマウントした `CloudDrive` フォルダーにあります。
+Cloud Shell で PowerShell を次に使用するときは、`helloworld.ps1` ファイルが Azure Files 共有をマウントした `CloudDrive` ディレクトリにあります。
 
 ## <a name="use-custom-profile"></a>カスタム プロファイルを使う
 

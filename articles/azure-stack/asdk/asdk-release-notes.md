@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/16/2018
+ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 176b850120958a5ca5fdaece4831e2ed27ac0a04
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 6b08c1793857fd6c6a6a04c0d450e76a36357597
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート
 以下のリリース ノートでは、Azure Stack Development Kit の機能強化、修正、既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](.\.\azure-stack-updates.md#determine-the-current-version)できます。
@@ -56,6 +56,11 @@ Azure Stack 統合システムの Azure Stack 1802 更新プログラム リリ�
     - *エラー - FaultType ResourceProviderTimeout 用のテンプレートが見つかりません。*
 
     このアラートは無視してかまいません。 
+
+- 管理ポータルとユーザー ポータルの両方で、古い API バージョン (2015-06-15 など) で作成されたストレージ アカウントの [概要] ブレードを選択した場合、[概要] ブレードの読み込みに失敗します。 
+
+  この問題を回避するには、PowerShell を使用して **Start-ResourceSynchronization.ps1** スクリプトを実行し、ストレージ アカウントの詳細へのアクセスを復元します。 [このスクリプトは GitHub から入手可能]( https://github.com/Azure/AzureStack-Tools/tree/master/Support/scripts)であり、ASDK を使用する場合は開発キットのホスト上でサービス管理者の資格情報を使用して実行する必要があります。  
+
 
 #### <a name="health-and-monitoring"></a>正常性と監視
 Azure Stack 管理ポータルに、**外部証明書の有効期限の保留中**という重大なアラートが表示される場合があります。  このアラートは無視してかまいませんが、Azure Stack Development Kit の操作に影響を与えます。 
@@ -273,9 +278,11 @@ Azure Active Directory フェデレーション サービス (AD FS) が配置�
     > 「**新機能と修正**」セクションに記載されている項目の一部は、Azure Stack 統合システムにのみ関連します。
 
 ### <a name="known-issues"></a>既知の問題
+
  
 #### <a name="deployment"></a>デプロイ
 - デプロイ時に、IP アドレスでタイム サーバーを指定する必要があります。
+- バージョン 1711 以降、**CloudAdmin** は予約済みアカウント名となっているため、開発キットをデプロイする際に、手動でこのアカウント名を指定しないでください。 
 
 #### <a name="infrastructure-management"></a>インフラストラクチャの管理
 - **[Infrastructure backup]\(インフラストラクチャのバックアップ\)** ブレードでインフラストラクチャのバックアップは有効にしないでください。

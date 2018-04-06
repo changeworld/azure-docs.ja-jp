@@ -10,12 +10,12 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: d74a273061912ea2bdcc39301ce9a727b07ade41
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.date: 03/29/2018
+ms.openlocfilehash: 8abf3bae3a2274ed5514a5c621675b4c9ec27ae2
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="migrate-sql-server-to-azure-sql-database-managed-instance"></a>SQL Server を Azure SQL Database マネージ インスタンスに移行する
 Azure Database Migration Service を使用して、オンプレミスの SQL Server インスタンスから Azure SQL Database にデータベースを移行することができます。 このチュートリアルでは、Azure Database Migration Service を使用して、SQL Server のオンプレミス インスタンスからの **Adventureworks2012** データベースを、Azure SQL Database に移行します。
@@ -30,17 +30,18 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、以下を実行する必要があります。
 
-- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 [Azure Database Migration Service を使用して Azure SQL DB マネージ インスタンスを移行するためのネットワーク トポロジを学習します](https://aka.ms/dmsnetworkformi)。
+- Azure Resource Manager デプロイ モデルを使用して、Azure Database Migration Service 用の VNET を作成します。これで、[ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) または [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) を使用したオンプレミスのソース サーバーとのサイト間接続を確立します。 [Azure Database Migration Service を使用して Azure SQL DB マネージ インスタンスを移行するためのネットワーク トポロジについて説明します](https://aka.ms/dmsnetworkformi)。
 - Azure Virtual Network (VNET) のネットワーク セキュリティ グループの規則によって、通信ポート 443、53、9354、445、12000 がブロックされていないことを確認します。 Azure VNET NSG トラフィックのフィルター処理の詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-networks-nsg)」を参照してください。
-- [ソース データベース エンジン アクセス用に Windows Firewall](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) を構成します。
-- Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。
+- [ソース データベース エンジンへのアクセスのために Windows ファイアウォール](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access)を構成します。
+- Azure Database Migration Service がソースの SQL Server にアクセスできるように Windows ファイアウォールを開きます。既定では TCP ポート 1433 が使用されます。
+- 動的ポートを使用して複数の名前付き SQL Server インスタンスを実行している場合は、SQL Browser サービスを有効にし、ファイアウォール経由の UDP ポート 1434 へのアクセスを許可することをお勧めします。これにより、Azure Database Migration Service はソース サーバー上の名前付きインスタンスに接続できるようになります。
 - ソース データベースの前でファイアウォール アプライアンスを使用する場合は、Azure Database Migration Service が移行のためにソース データベースにアクセスし、SMB ポート 445 経由でファイルにアクセスできるように、ファイアウォール規則を追加することが必要な場合があります。
 - Azure SQL Database マネージ インスタンスを作成します。手順の詳細については、「[Azure ポータルで Azure SQL Database マネージ インスタンスを作成する](https://aka.ms/sqldbmi)」を参照してください。
 - ソース SQL Server への接続と、ターゲットのマネージ インスタンスに使用するログインが sysadmin サーバー ロールのメンバーであることを確認してください。
 - Azure Database Migration Service がソース データベースのバックアップに使用できるネットワーク共有を作成します。
 - ソース SQL Server インスタンスを実行しているサービス アカウントに、作成したネットワーク共有に対する書き込み権限があることを確認します。
 - 上記で作成したネットワーク共有に対するフル コントロール権限を持つ Windows ユーザー (とパスワード) をメモしておきます。 Azure Database Migration Service は、ユーザーの資格情報を借用して、復元操作のために、Azure ストレージ コンテナーにバックアップ ファイルをアップロードします。
-- Blob コンテナーを作成して、「[ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)」記事の手順に従って SAS URI を取得します。SAS URI の作成時には、必ずポリシー ウィンドウに表示されるすべてのアクセス許可 (読み取り、書き込み、削除、一覧表示) を選択してください。 これにより、Azure Database Migration Service はストレージ アカウント コンテナにアクセスし、Azure SQL Database マネージ インスタンスにデータベースを移行するために使用されるバックアップ ファイルをアップロードできます。
+- Blob コンテナーを作成して、「[ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)」記事の手順に従って SAS URI を取得します。SAS URI の作成時には、必ずポリシー ウィンドウに表示されるすべてのアクセス許可 (読み取り、書き込み、削除、一覧表示) を選択してください。 これにより、Azure Database Migration Service はストレージ アカウント コンテナーにアクセスし、Azure SQL Database マネージ インスタンスにデータベースを移行するために使用されるバックアップ ファイルをアップロードできます
 
 ## <a name="register-the-microsoftdatamigration-resource-provider"></a>Microsoft.DataMigration リソース プロバイダーを登録する
 
@@ -127,7 +128,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
     |**サーバー バックアップの場所** | Azure Database Migration Service がソース データベース バックアップを移行できるローカル ネットワーク共有です。 ソースの SQL Server インスタンスを実行しているサービス アカウントには、このネットワーク共有に対する書き込み権限が必要です。 |
     |**ユーザー名** | Azure Database Migration Service が、復元操作の目的で Azure ストレージ コンテナーにバックアップ ファイルをアップロードするために借用できる、Windows ユーザー名です。 |
     |**パスワード** | 上記ユーザーのパスワード。 |
-    |**ストレージの SAS URI** | Azure Database Migration Service にストレージ アカウント コンテナへのアクセスを提供する SAS URI。これにより、サービスは、Azure SQL Database マネージ インスタンスにデータベースを移行するために使用されるバックアップ ファイルをアップロードできます。  [Blob コンテナーの SAS URI を取得する方法について説明します](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。|
+    |**ストレージの SAS URI** | サービスがバックアップ ファイルをアップロードするストレージ アカウント コンテナーへのアクセスを、Azure Database Migration Service に提供する SAS URI。これが、データベースを Azure SQL Database マネージ インスタンスに移行するために使用されます。 [Blob コンテナーの SAS URI を取得する方法について説明します](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container)。|
     
     ![移行設定の構成](media\tutorial-sql-server-to-managed-instance\dms-configure-migration-settings.png)
 
@@ -140,7 +141,7 @@ Azure Database Migration Service を使用して、オンプレミスの SQL Ser
 
 1.  移行アクティビティを選択して、アクティビティの状態を確認します。
 
-1.  移行が完了したら、ターゲットの Azure SQL Database のマネージ インスタンス上にターゲット データベースがあることを確認します。
+1.  移行が完了したら、ターゲットの Azure SQL Database マネージ インスタンス上にターゲット データベースがあることを確認します。
 
     ![移行を監視する](media\tutorial-sql-server-to-managed-instance\dms-monitor-migration.png)
 

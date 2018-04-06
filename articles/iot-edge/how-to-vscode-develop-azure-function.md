@@ -1,8 +1,8 @@
 ---
-title: "Visual Studio Code を使用して Azure IoT Edge で Azure Functions を開発およびデプロイする | Microsoft Docs"
-description: "コンテキストを切り替えずに、VS Code で Azure IoT Edge を使用して C# Azure Functions を開発およびデプロイします。"
+title: Visual Studio Code を使用して Azure IoT Edge で Azure Functions を開発およびデプロイする | Microsoft Docs
+description: コンテキストを切り替えずに、VS Code で Azure IoT Edge を使用して C# Azure Functions を開発およびデプロイします。
 services: iot-edge
-keywords: 
+keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
@@ -139,7 +139,7 @@ docker run -d -p 5000:5000 --name registry registry:2
 ### <a name="create-a-docker-image-and-publish-it-to-your-registry"></a>Docker イメージを作成してレジストリに発行する
 
 1. VS Code エクスプローラーで、**Docker** フォルダーを展開します。 次に、コンテナー プラットフォームのフォルダー、**linux-x64** または **windows-nano** を展開します。
-2. **[Dockerfile]** ファイルを右クリックし、**[Build IoT Edge module Docker image] (IoT Edge モジュール Docker イメージのビルド)** をクリックします。 
+2. **[Dockerfile]** ファイルを右クリックし、**[Build IoT Edge module Docker image] \(IoT Edge モジュール Docker イメージのビルド)** をクリックします。 
 
     ![Docker イメージのビルド](./media/how-to-vscode-develop-csharp-function/build-docker-image.png)
 

@@ -1,31 +1,28 @@
 ---
-title: "Azure Traffic Manager の Traffic View | Microsoft Docs"
-description: "Traffic Manager の Traffic View の概要"
+title: Azure Traffic Manager の Traffic View | Microsoft Docs
+description: Traffic Manager の Traffic View の概要
 services: traffic-manager
 documentationcenter: traffic-manager
 author: KumudD
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: 
+ms.tgt_pltfrm: ''
 ms.workload: infrastructure
-ms.date: 11/11/2017
+ms.date: 03/16/2018
 ms.author: kumud
-ms.custom: 
-ms.openlocfilehash: 6b4378cb293824702dd52dcdeb86619f957b83ea
-ms.sourcegitcommit: afc78e4fdef08e4ef75e3456fdfe3709d3c3680b
+ms.custom: ''
+ms.openlocfilehash: 7ce51017fdee92e5589c06b398c9650930d5436d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/16/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager の Traffic View
-
->[!NOTE]
->Traffic Manager の Traffic View 機能はパブリック プレビューであり、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 この機能の可用性と状態に関する最新の通知については、[Azure Traffic Manager の更新情報](https://azure.microsoft.com/updates/?product=traffic-manager)に関するページをご覧ください。
 
 Traffic Manager では、プロファイルの作成時に指定したルーティング方法に基づいてエンド ユーザーが正常なエンドポイントに送られるように DNS レベルのルーティングが提供されます。 トラフィック ビューは、(DNS リゾルバーの細分性レベルで) ユーザー ベースとそのトラフィック パターンのビューを Traffic Manager に提供します。 Traffic View を有効にすると、この情報が処理されて、すぐに実施可能な洞察が提供されます。 
 
@@ -43,7 +40,7 @@ Traffic View は、この機能が有効になっているプロファイルで�
 次の手順では、Traffic Manager は、さまざまなエンド ユーザー ネットワークについて管理されるネットワーク インテリジェンス待機時間テーブルを使用して、ユーザー ベース リージョンを Azure リージョン マッピングに関連付けることで、Azure リージョンへの接続時にそれらのリージョンのユーザーが経験する平均待機時間を把握します。 これらすべての計算は、提示される前にローカル DNS リゾルバー IP レベルごとに結合されます。 この情報は、さまざまな方法で利用することができます。
 
 >[!NOTE]
->トラフィック ビューに記載される待機時間は、エンド ユーザーと、エンド ユーザーが接続した Azure リージョンとの間の代表的な待機時間を表したものであり、DNS ルックアップの待機時間ではありません。
+>トラフィック ビューに記載される待機時間は、エンド ユーザーと、エンド ユーザーが接続した Azure リージョンとの間の代表的な待機時間を表したものであり、DNS ルックアップの待機時間ではありません。 トラフィック ビューでは、ローカル DNS リゾルバーと、クエリがルーティングされる Azure リージョン間の待機時間が可能な限り見積もられ、使用できるデータが十分でない場合、返される待機時間は null になります。 
 
 ## <a name="visual-overview"></a>視覚的な概要
 
@@ -61,19 +58,19 @@ Traffic Manager のページで **[トラフィック ビュー]** セクショ�
 
 ### <a name="endpoint-information"></a>エンドポイント情報
 
-エンドポイントが存在する Azure リージョンは、マップでは青い点として表示されます。 いずれかのエンドポイントをクリックすると、そのエンドポイントにトラフィックが送られてきたさまざまな転送元の位置が (使用される DNS リゾルバーに基づいて) 表示されます。 接続は、エンドポイントと DNS リゾルバーの位置との間の線として表示され、そのペアの代表的な待機時間に応じて色付けされます。 さらに、エンドポイントの名前、そのエンドポイントが実行されている Azure リージョン、Traffic Manager プロファイルによってそのエンドポイントに送られた要求の合計量を見ることができます。
+エンドポイントが存在する Azure リージョンは、マップでは青い点として表示されます。 エンドポイントが外部で、Azure リージョンがマップされていない場合、マップの先頭に表示されます。 いずれかのエンドポイントをクリックすると、そのエンドポイントにトラフィックが送られてきたさまざまな転送元の位置が (使用される DNS リゾルバーに基づいて) 表示されます。 接続は、エンドポイントと DNS リゾルバーの位置との間の線として表示され、そのペアの代表的な待機時間に応じて色付けされます。 さらに、エンドポイントの名前、そのエンドポイントが実行されている Azure リージョン、Traffic Manager プロファイルによってそのエンドポイントに送られた要求の合計量を見ることができます。
 
 
 ## <a name="tabular-listing-and-raw-data-download"></a>表形式の一覧と生データのダウンロード
 
-Azure Portal ポータルでは、トラフィック ビューのデータが表形式で表示されます。 DNS リゾルバー IP とエンドポイントの各ペアに関するエントリがあり、DNS リゾルバーの地理的な位置 (使用できる場合)、エンドポイントが配置されている Azure リージョンの名前、その DNS リゾルバーに関連付けられた要求の量、その DNS を使用しているエンドユーザーに関連付けられている代表的な待機時間 (使用できる場合) が示されます。 また、トラフィック ビューのデータを CSV ファイルとしてダウンロードすることもでき、任意の分析ワークフローの一部としてそのファイルを使用できます。
+Azure Portal ポータルでは、トラフィック ビューのデータが表形式で表示されます。 DNS リゾルバー IP とエンドポイントの各ペアに関するエントリがあり、DNS リゾルバーの IP アドレス、エンドポイントが配置されている Azure リージョンの名前と地理的な位置 (使用可能な場合)、そのエンドポイントへのその DNS リゾルバーに関連付けられた要求の量、その DNS を使用しているエンドユーザーに関連付けられている代表的な待機時間 (使用可能な場合) が示されます。 また、トラフィック ビューのデータを CSV ファイルとしてダウンロードすることもでき、任意の分析ワークフローの一部としてそのファイルを使用できます。
 
 ## <a name="billing"></a>課金
 
 Traffic View を使用する場合は、提示される洞察の作成に使用されたデータ ポイントの数に基づいて課金されます。 現在使用されている唯一のデータ ポイントの種類は、Traffic Manager プロファイルに対して受信したクエリです。 価格の詳細については、[Traffic Manager の価格ページ](https://azure.microsoft.com/pricing/details/traffic-manager/)をご覧ください。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Traffic Manager のしくみ](traffic-manager-overview.md)
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。

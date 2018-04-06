@@ -1,27 +1,41 @@
 ---
-title: "Azure ゲスト OS に適用される更新プログラムの一覧 | Microsoft Docs"
-description: "ゲスト OS リリースに適用される更新プログラムの一覧"
+title: Azure ゲスト OS に適用される更新プログラムの一覧 | Microsoft Docs
+description: ゲスト OS リリースに適用される更新プログラムの一覧
 services: cloud-services
 documentationcenter: na
 author: raiye
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 2/4/2018
+ms.date: 3/19/2018
 ms.author: raiye
-ms.openlocfilehash: 7e6b16465be1e032bd5e5fe94c95e6b2259a6704
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: c42986e4cdae1d5156863d92eb946220805f7b48
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="february-guest-os"></a>2 月のゲスト OS
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 18-02 | [4074590]、[4074588] |Windows 10 セキュリティ |5.16 |2018 年 2 月 13 日 |
+| Rel 18-02 | [4074587]、[4074589]、[4074597] |Windows セキュリティのみ |2.71、3.58、4.51 |2018 年 2 月 13 日 |
+| Rel 18-02 | [4074736] |Internet Explorer |2.71、3.58、4.51 |2018 年 2 月 13 日 |
+| Rel 18-02 | [4074595] |点滅 |3.58、4.51、5.16 |2018 年 2 月 13 日 |
+| 該当なし | [4056894] |1 月のセキュリティ以外のロールアップ |2.71 |2018 年 1 月 4 日 |
+| 該当なし | [4056896] |1 月のセキュリティ以外のロールアップ |3.58 |2018 年 1 月 4 日 |
+| 該当なし | [4056895] |1 月のセキュリティ以外のロールアップ |4.51 |2018 年 1 月 4 日 |
+| 該当なし | [4054176]、[4054172] |1 月の .NET ロールアップ |2.71 |2018 年 1 月 4 日 |
+| 該当なし | [4054175]、[4054171] |1 月の .NET ロールアップ |3.58 |2018 年 1 月 4 日 |
+| 該当なし | [4054177]、[4054170] |1 月の .NET ロールアップ |4.51 |2018 年 1 月 4 日 |
 
 ## <a name="january-guest-os"></a>1 月のゲスト OS
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -587,6 +601,25 @@ ms.lasthandoff: 02/09/2018
 | 該当なし |[2999802] |点線ではなく実線が Windows で印刷される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2896881] |Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 
+
+[4074590]: http://support.microsoft.com/kb/4074590
+[4074588]: http://support.microsoft.com/kb/4074588 
+[4074587]: http://support.microsoft.com/kb/4074587
+[4074589]: http://support.microsoft.com/kb/4074589
+[4074597]: http://support.microsoft.com/kb/4074597
+[4074736]: http://support.microsoft.com/kb/4074736
+[4074595]: http://support.microsoft.com/kb/4074595
+[4056894]: http://support.microsoft.com/kb/4056894
+[4056896]: http://support.microsoft.com/kb/4056896
+[4056895]: http://support.microsoft.com/kb/4048958
+[4054176]: http://support.microsoft.com/kb/4054176
+[4054172]: http://support.microsoft.com/kb/4054172
+[4054175]: http://support.microsoft.com/kb/4054175
+[4054171]: http://support.microsoft.com/kb/4054171
+[4054177]: http://support.microsoft.com/kb/4054177
+[4054170]: http://support.microsoft.com/kb/4054170
+
+
 [4056898]: http://support.microsoft.com/kb/4056898
 [4056897]: http://support.microsoft.com/kb/4056897
 [4056899]: http://support.microsoft.com/kb/4056899
@@ -596,6 +629,7 @@ ms.lasthandoff: 02/09/2018
 [4054520]: http://support.microsoft.com/kb/4054520
 [4054519]: http://support.microsoft.com/kb/4054519
 [4051956]: http://support.microsoft.com/kb/4051956
+
 
 [4053579]: http://support.microsoft.com/kb/4053579
 [4054517]: http://support.microsoft.com/kb/4054517 

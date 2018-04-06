@@ -1,11 +1,12 @@
 ---
-title: "Web アプリ テンプレートによる Azure Machine Learning Web サービスの使用 | Microsoft Docs"
-description: "Azure Marketplace の Web アプリ テンプレートを利用して、Azure Machine Learning で予測 Web サービスを使用します。"
-keywords: "Web サービス,運用,REST API,Machine Learning"
+title: Web アプリ テンプレートによる Azure Machine Learning Web サービスの使用 | Microsoft Docs
+description: Azure Marketplace の Web アプリ テンプレートを利用して、Azure Machine Learning で予測 Web サービスを使用します。
+keywords: Web サービス,運用,REST API,Machine Learning
 services: machine-learning
-documentationcenter: 
-author: garyericson
-manager: jhubbard
+documentationcenter: ''
+author: YasinMSFT
+ms.author: yahajiza
+manager: hjerez
 editor: cgronlun
 ms.assetid: e0d71683-61b9-4675-8df5-09ddc2f0d92d
 ms.service: machine-learning
@@ -14,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: raymondl
-ms.openlocfilehash: f7efa647fa6afc247509cd4a52066c0459f75ca3
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 81b89a1f8a053fd3b1d0d6a0a1bcc5c67d2ba728
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="consume-an-azure-machine-learning-web-service-by-using-a-web-app-template"></a>Web アプリ テンプレートによる Azure Machine Learning Web サービスの使用
 
@@ -77,13 +77,13 @@ Web サービスの API キーと要求 URI を取得する手順は次のとお
 2. **[新規]** を選び、**[Azure ML Request-Response Service Web App]\(Azure ML 要求応答サービス Web アプリ\)** を探して選んで、**[作成]** を選びます。 
 3. **[作成]** ウィンドウで次のようにします。
    
-   * Web アプリケーションに一意の名前を付けます。 Web アプリの URL は、この名前の後に **.azurewebsites.net** を付けたものです。 たとえば、**http://carprediction.azurewebsites.net** のようになります。
+   * Web アプリケーションに一意の名前を付けます。 Web アプリの URL は、この名前の後に **.azurewebsites.net** を付けたものです。 例: **http://carprediction.azurewebsites.net**
    * 実行している Web サービスの Azure サブスクリプションとサービスを選択します。
    * **[作成]**を選択します。
      
    ![Web アプリの作成][image5]
 
-4. Azure による Web アプリのデプロイが完了したら、Azure の Web アプリ設定ページで **[URL]** を選ぶか、Web ブラウザーで URL を入力します。 たとえば、「**http://carprediction.azurewebsites.net**」のように入力します。
+4. Azure による Web アプリのデプロイが完了したら、Azure の Web アプリ設定ページで **[URL]** を選ぶか、Web ブラウザーで URL を入力します。 たとえば、「**http://carprediction.azurewebsites.net**」と入力します。
 5. 初めて Web アプリを実行すると、**API ポスト URL** と **API キー**の指定を求められます。 前に保存した値 (それぞれ、要求 URI と API キー) を入力します。 **[Submit]\(送信\)** をクリックします。
      
    ![ポスト URI と API キーの入力][image6]

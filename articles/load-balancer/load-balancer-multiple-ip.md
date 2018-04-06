@@ -1,6 +1,6 @@
 ---
-title: "Azure における複数の IP 構成での負荷分散 | Microsoft Docs"
-description: "プライマリ IP 構成とセカンダリ IP 構成の間の負荷分散。"
+title: Azure における複数の IP 構成での負荷分散 | Microsoft Docs
+description: プライマリ IP 構成とセカンダリ IP 構成の間の負荷分散。
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: 02388162ac4d2d86255c0a65d8b94253047f3983
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: fcd9ff8b726b5dc3e0d447bc384dbcc7cc1a4e88
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
@@ -27,7 +27,6 @@ ms.lasthandoff: 02/21/2018
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 
-[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 この記事では、1 つのセカンダリ ネットワーク インターフェイス コントローラー (NIC) に複数の IP アドレスがある Azure Load Balancer の使用方法について説明します。 次の図にこのシナリオを示します。
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 02/21/2018
 
 仮想ネットワーク内の各 VM に、次のようにセカンダリ NIC の IP 構成を追加します。  
 
-1. Azure Portal (http://portal.azure.com) に移動します。Azure のアカウントを使用してサインインします。
+1. Azure Portal にアクセスします: http://portal.azure.comAzure のアカウントを使用してサインインします。
 
 2. 画面の左上にある **[リソース グループ]** を選択します。 次に、VM が配置されているリソース グループ (たとえば、**contosofabrikam**) を選択します。 すべてのリソースと VM の NIC の一覧が表示される **[リソース グループ]** ウィンドウが表示されます。
 
@@ -87,7 +86,7 @@ ms.lasthandoff: 02/21/2018
 
 次のように構成のロード バランサーを作成します。
 
-1. Azure Portal (http://portal.azure.com) に移動します。Azure のアカウントを使用してサインインします。
+1. Azure Portal にアクセスします: http://portal.azure.comAzure のアカウントを使用してサインインします。
 
 2. 画面の左上で、**[リソースの作成]** > **[ネットワーキング]** > **[Load Balancer]** の順に選択します。 次に、**[作成]** を選択します。
 

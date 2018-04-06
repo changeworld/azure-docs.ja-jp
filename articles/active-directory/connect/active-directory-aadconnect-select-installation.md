@@ -1,12 +1,12 @@
 ---
-title: "Azure AD Connect: インストールの種類の選択 | Microsoft Docs"
-description: "このトピックでは、Azure AD Connect で使用するインストールの種類を選択する方法について説明します"
+title: 'Azure AD Connect: インストールの種類の選択 | Microsoft Docs'
+description: このトピックでは、Azure AD Connect で使用するインストールの種類を選択する方法について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: billmath
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.openlocfilehash: 9b7bcd5856ec94367edd586c28c781ac9569a792
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: 76f1ce12ab149f57ec6e995d132de83105c5e0ca
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="select-which-installation-type-to-use-for-azure-ad-connect"></a>Azure AD Connect で使用するインストールの種類の選択
 Azure AD Connect には、簡易とカスタマイズの 2 種類のインストールが用意されています。 このトピックは、どちらのオプションでインストールするかを決める際に役立ちます。
@@ -34,7 +34,7 @@ Azure AD Connect には、簡易とカスタマイズの 2 種類のインスト
 
 次を実現できます。
 
-- シングル サインオンのためのオンプレミスから Azure AD への[パスワードの同期](active-directory-aadconnectsync-implement-password-synchronization.md)。
+- シングル サインオンのためのオンプレミスから Azure AD への[パスワード ハッシュの同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)。
 - [ユーザー、グループ、連絡先、および Windows 10 コンピューター](active-directory-aadconnectsync-understanding-default-configuration.md)を同期する構成。
 - すべてのドメインとすべての OU における対象オブジェクトすべての同期。
 - [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)の有効化。これにより常に最新バージョンを使用できます。

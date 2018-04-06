@@ -1,24 +1,24 @@
 ---
-title: "クイックスタート: Azure SQL Data Warehouse のコンピューティングのスケールアウト - T-SQL | Microsoft Docs"
-description: "DWU を調整してコンピューティング リソースをスケーリングする T-SQL コマンド。"
+title: 'クイックスタート: Azure SQL Data Warehouse のコンピューティングのスケールアウト - T-SQL | Microsoft Docs'
+description: DWU を調整してコンピューティング リソースをスケーリングする T-SQL コマンド。
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 01/31/2018
+ms.date: 03/16/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: f984f9b348f589e20cb8a4b68578ddef84d8292d
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 1591192c72f5bf201dbbef80acc5895c8324fca4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-using-t-sql"></a>クイックスタート: T-SQL を使用して Azure SQL Data Warehouse のコンピューティングをスケーリングする
 
@@ -101,18 +101,9 @@ MODIFY (SERVICE_OBJECTIVE = 'DW300')
 ;
 ```
 
-## <a name="check-database-state"></a>データベース状態の確認
+## <a name="check-data-warehouse-state"></a>データ ウェアハウスの状態の確認
 
-データベース状態を確認するには、**master** データベースに対して次のクエリを実行します。
-
-```sql
-SELECT name AS "Database Name", state_desc AS "Status" 
-FROM sys.databases db
-WHERE db.name = 'mySampleDataWarehouse'
-;
-```
-
-このコマンドを実行すると、状態を表す値としてオンライン、一時停止中、再開中、スケーリング、一時停止のいずれかが表示されます。
+データ ウェアハウスが一時停止すると、T-SQL で接続することはできません。 データ ウェアハウスの現在の状態を確認する場合は、PowerShell コマンドレットを使用できます。 例については、[データ ウェアハウスの状態の確認 - Powershell](quickstart-scale-compute-powershell.md#check-data-warehouse-state) に関するページを参照してください。 
 
 ## <a name="check-operation-status"></a>操作の状態の確認
 

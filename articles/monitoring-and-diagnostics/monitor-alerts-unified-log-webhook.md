@@ -1,12 +1,12 @@
 ---
-title: "Azure アラートでのログ アラートの webhook アクション (プレビュー) | Microsoft Docs"
-description: "この記事では、Log Analytics または Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。"
+title: Azure アラートでのログ アラートの webhook アクション | Microsoft Docs
+description: この記事では、Log Analytics または Application Insights を使用するログ アラート ルールでデータを HTTP webhook としてプッシュする方法と、さまざまなカスタマイズ例の詳細について説明します。
 author: msvijayn
 manager: kmadnani1
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/2/2018
 ms.author: vinagara
-ms.openlocfilehash: 5852eb099f6620656aa69e5085447c2a8b4e0c01
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 9d2bc934424ff7a31b65ad6c03624ff02ee2a6f3
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>ログ アラート ルールの webhook アクション
-[Azure でアラートを作成する (現時点ではプレビュー)](monitor-alerts-unified-usage.md) 際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
+[Azure でアラートを作成する](monitor-alerts-unified-usage.md)際に、1 つ以上のアクションを実行する[アクション グループの使用を構成する](monitoring-action-groups.md)ことができます。  この記事では、使用できるさまざまな webhook アクションと、カスタム JSON ベース webhook の構成に関する詳細を示します。
 
 
 ## <a name="webhook-actions"></a>Webhook アクション
@@ -33,7 +33,7 @@ webhook アクションには、次の表に示すプロパティが必要です
 | プロパティ | [説明] |
 |:--- |:--- |
 | Webhook URL |Webhook の URL。 |
-| Custom JSON payload (カスタム JSON ペイロード) |アラート作成中にこのオプションを選択するときに、webhook と共に送信するカスタム ペイロード。 詳細については、[Azure アラートを使用したアラートの管理 (プレビュー)](monitor-alerts-unified-usage.md) に関するページをご覧ください。 |
+| Custom JSON payload (カスタム JSON ペイロード) |アラート作成中にこのオプションを選択するときに、webhook と共に送信するカスタム ペイロード。 詳細については、[Azure アラートを使用したアラートの管理](monitor-alerts-unified-usage.md)に関するページを参照してください。 |
 
 > [!NOTE]
 > ログ アラートの *[webhook 用のカスタム Json ペイロードを含む]* オプションの横にある [webhook のテスト] ボタンをクリックすると、webhook URL をテストするためのダミーの呼び出しがトリガーされます。 この呼び出しには、ログ アラートに使用される実際のデータや JSON スキーマの表現は含まれません。 
@@ -157,6 +157,8 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
     }
     }
 
+> [!NOTE]
+> Application Insights のログ アラートは現在、パブリック プレビュー段階であり、機能とユーザー エクスペリエンスは変更されることがあります。
 
 #### <a name="log-alert-with-custom-json-payload"></a>カスタム JSON ペイロードを使用したログ アラート
 たとえば、アラート名と検索結果だけを含むカスタム ペイロードを作成するには、次のように入力します。 
@@ -194,7 +196,7 @@ Webhook には、URL と共に、外部のサービスに送信されるデー�
 
 
 ## <a name="next-steps"></a>次の手順
-- [Azure Alerts (プレビュー) のログ アラート](monitor-alerts-unified-log.md)の詳細をご覧ください
+- [Azure Alerts のログ アラート](monitor-alerts-unified-log.md)について確認します。
 - [Azure でのアクション グループ](monitoring-action-groups.md)の作成および管理
 - [Application Insights](../application-insights/app-insights-analytics.md) についてさらに学習します。
 - [Log Analytics](../log-analytics/log-analytics-overview.md) についてさらに学習します。 

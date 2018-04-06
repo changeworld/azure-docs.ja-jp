@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for MySQL の制限事項"
-description: "この記事では、Azure Database for MySQL の制限 (接続数やストレージ エンジンのオプションなど) について説明します。"
+title: Azure Database for MySQL の制限事項
+description: この記事では、Azure Database for MySQL の制限 (接続数やストレージ エンジンのオプションなど) について説明します。
 services: mysql
 author: kamathsun
 ms.author: sukamat
@@ -8,42 +8,41 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 85e57170c1cbd977d2de6e7e614916333c79e047
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 2fa69182b4238cfd19fcc9571e4327512e9528c1
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Azure Database for MySQL の制限事項
-Azure Database for MySQL サービスはパブリック プレビューの段階です。 以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
+以降のセクションでは、容量、ストレージ エンジンのサポート、権限のサポート、データ操作ステートメントのサポート、およびデータベース サービスの機能に関する制限事項について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
 
 ## <a name="service-tier-maximums"></a>サービス レベルの最大値
 Azure Database for MySQL では、サーバーを作成するときに複数のサービス レベルから選択します。 詳しくは、[Azure Database for MySQL の価格レベル](concepts-pricing-tiers.md)に関する記事をご覧ください。  
 
-プレビュー中の各サービス レベルの接続数、コンピューティング ユニット数、およびストレージ数の最大値は次のとおりです。 
+各サービス レベルの接続数、コンピューティング ユニット数、およびストレージ数の最大値は次のとおりです。 
 
-|**価格レベル**| **コンピューティング世代**|**仮想コア**| **最大接続数**|
+|**価格レベル**| **コンピューティング世代**|**仮想コア数**| **最大接続数**|
 |---|---|---|---|
 |Basic| Gen 4| 1| 50|
 |Basic| Gen 4| 2| 100|
 |Basic| Gen 5| 1| 50|
 |Basic| Gen 5| 2| 100|
-|汎用| Gen 4| 2| 200|
-|汎用| Gen 4| 4| 400|
-|汎用| Gen 4| 8| 800|
-|汎用| Gen 4| 16| 1600|
-|汎用| Gen 4| 32| 3200|
-|汎用| Gen 5| 2| 200|
-|汎用| Gen 5| 4| 400|
-|汎用| Gen 5| 8| 800|
-|汎用| Gen 5| 16| 1600|
-|汎用| Gen 5| 32| 3200|
+|汎用| Gen 4| 2| 300|
+|汎用| Gen 4| 4| 625|
+|汎用| Gen 4| 8| 1250|
+|汎用| Gen 4| 16| 2500|
+|汎用| Gen 4| 32| 5000|
+|汎用| Gen 5| 2| 300|
+|汎用| Gen 5| 4| 625|
+|汎用| Gen 5| 8| 1250|
+|汎用| Gen 5| 16| 2500|
+|汎用| Gen 5| 32| 5000|
 |メモリ最適化| Gen 5| 2| 600|
 |メモリ最適化| Gen 5| 4| 1250|
 |メモリ最適化| Gen 5| 8| 2500|
 |メモリ最適化| Gen 5| 16| 5000|
-|メモリ最適化| Gen 5| 32| 10000| 
 
 接続数が多すぎると、次のエラーが発生する可能性があります。
 > ERROR 1040 (08004): Too many connections
@@ -74,7 +73,7 @@ Azure Database for MySQL では、サーバーを作成するときに複数の�
 ### <a name="unsupported"></a>サポートされていません
 - SELECT ...INTO OUTFILE
 
-## <a name="preview-functional-limitations"></a>プレビュー中の機能制限
+## <a name="functional-limitations"></a>機能制限
 
 ### <a name="scale-operations"></a>スケール操作
 - 価格レベル間でのサーバーの動的スケーリングは現在サポートされていません。 つまり、Basic、汎用、メモリ最適化の各価格レベル間の切り替えはサポートされません。

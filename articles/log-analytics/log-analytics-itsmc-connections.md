@@ -1,10 +1,10 @@
 ---
-title: "Azure Log Analytics の IT Service Management Connector とのサポートされている接続 | Microsoft Docs"
-description: "この記事では、ITSM 製品/サービスを OMS Log Analytics の IT Service Management Connector (ITSMC) に接続して、ITSM 作業項目を一元的に監視して管理する方法に関する情報を提供します。"
-documentationcenter: 
+title: Azure Log Analytics の IT Service Management Connector とのサポートされている接続 | Microsoft Docs
+description: この記事では、ITSM 製品/サービスを OMS Log Analytics の IT Service Management Connector (ITSMC) に接続して、ITSM 作業項目を一元的に監視して管理する方法に関する情報を提供します。
+documentationcenter: ''
 author: JYOTHIRMAISURI
 manager: riyazp
-editor: 
+editor: ''
 ms.assetid: 8231b7ce-d67f-4237-afbf-465e2e397105
 ms.service: log-analytics
 ms.workload: na
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2018
 ms.author: v-jysur
-ms.openlocfilehash: e0cae844e8b7f3eab68ed02dbcd17f4d1cebfd25
-ms.sourcegitcommit: d1f35f71e6b1cbeee79b06bfc3a7d0914ac57275
+ms.openlocfilehash: 35d04fabc66ede309fe91969c5bec3131a282afb
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>ITSM 製品/サービスを IT Service Management Connector に追加する
 この記事では、ITSM 製品/サービスと Log Analytics の IT Service Management Connector (ITSMC) の間の接続を構成して、作業項目を一元的に管理する方法に関する情報を提供します。 ITSMC の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
@@ -271,13 +271,7 @@ ServiceNow 接続を作成するには、次の手順に従います。
 
 > [!NOTE]
 
-> Azure から ServiceNow 内に**アラート**と**イベント**を作成することをユーザーに許可するには:
-
-> - ServiceNow インスタンスにイベント管理モジュールがインストールされていることを確認します。
-
-> - 統合ユーザーに次のロールを追加します。
->      - evt_mgmt_integration
->      - evt_mgmt_operator  
+> ITSM Connector では、ServiceNow インスタンスに他のモジュールをインストールせずに、インシデントを ServiceNow に送信することができます。 ServiceNow インスタンスで EventManagement モジュールを使用しているときに、コネクタを使用して ServiceNow でイベントまたはアラートを作成する場合は、次のロールを統合ユーザーに追加します。- evt_mgmt_integration - evt_mgmt_operator  
 
 
 ## <a name="connect-provance-to-it-service-management-connector-in-azure"></a>Provance を Azure の IT Service Management Connector に接続する

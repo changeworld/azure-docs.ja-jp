@@ -1,33 +1,32 @@
 ---
-title: "アクティビティ ログ アラートの作成 | Microsoft Docs"
-description: "アクティビティ ログで特定のイベントが発生した場合に、SMS、webhook、および電子メールで通知を受け取ります。"
+title: クラシック アクティビティ ログ アラートの作成 | Microsoft Docs
+description: アクティビティ ログで特定のイベントが発生した場合に、SMS、webhook、および電子メールで通知を受け取ります。
 author: johnkemnetz
-manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
-ms.assetid: 
+ms.assetid: ''
 ms.service: monitoring-and-diagnostics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 03/18/2017
 ms.author: johnkem
-ms.openlocfilehash: c8a2ce3ca90895262e77c3895867d29c9d3530a2
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: e0d92fcd6d3cbd50a2bcb8166b27b11bc86aad83
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="create-activity-log-alerts"></a>アクティビティ ログ アラートの作成
+# <a name="create-activity-log-alerts-classic"></a>アクティビティ ログ アラート (クラシック) の作成
 
 ## <a name="overview"></a>概要
 アクティビティ ログ アラートは、アラートに指定した条件と一致する新しいアクティビティのログ イベントが発生したときにアクティブになるアラートです。 これらは Azure リソースであり、Azure Resource Manager テンプレートを使用して作成できます。 これらは、Azure Portal で作成、更新、削除することもできます。 この記事では、アクティビティ ログ アラートの背後の概念について説明します。 その後、Azure Portal を使用してアクティビティ ログのイベントにアラートを設定する方法について説明します。
 
 > [!NOTE]
 
->  [アラート (プレビュー)](monitoring-overview-unified-alerts.md) は現在、アクティビティ ログを作成および管理するための強化されたエクスペリエンスを提供しています。  [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
+>  この手順は新しい[アラート](monitoring-overview-unified-alerts.md) エクスペリエンスに置き換えられました。 この記事は、以前のエクスペリエンスの参照として提供されています。 [詳細情報](monitoring-activity-log-alerts-new-experience.md)。
 
 通常、アクティビティ ログ アラートを作成して、通知を受け取るのは次の場合です。
 
@@ -59,11 +58,11 @@ JSON オブジェクトの任意の最上位プロパティに基づいて、ア
 
 サービス正常性通知について詳しくは、[サービス正常性通知のアクティビティ ログ アラートの受け取り](monitoring-activity-log-alerts-on-service-notifications.md)に関する記事をご覧ください。
 
-## <a name="create-an-alert-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Azure Portal を使用した新しいアクション グループによるアクティビティ ログ イベントのアラートの作成
+## <a name="create-an-alert-classic-on-an-activity-log-event-with-a-new-action-group-by-using-the-azure-portal"></a>Azure Portal を使用した新しいアクション グループによるアクティビティ ログ イベントのアラート (クラシック) の作成
 1. [ポータル](https://portal.azure.com)で、**[モニター]** を選択します。
 
     ![[モニター] サービス](./media/monitoring-activity-log-alerts/home-monitor.png)
-2. **[アクティビティ ログ]** セクションで、**[アラート]** を選択します。
+2. **[アクティビティ ログ]** セクションで、**[アラート (クラシック)]** を選択します。
 
     ![[アラート] タブ](./media/monitoring-activity-log-alerts/alerts-blades.png)
 3. **[アクティビティ ログ アラートの追加]** を選択し、各フィールドに入力します。

@@ -1,8 +1,8 @@
 ---
-title: "Azure HDInsight 上の Spark を使用したデータ サイエンスの概要 | Microsoft Docs"
-description: "Spark MLlib ツールキットによって、かなりの Machine Learning モデリング機能がこの分散 HDInsight 環境にもたらされます。"
+title: Azure HDInsight 上の Spark を使用したデータ サイエンスの概要 | Microsoft Docs
+description: Spark MLlib ツールキットによって、かなりの Machine Learning モデリング機能がこの分散 HDInsight 環境にもたらされます。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: e1c4a507214b9686154fc8311121b56f42f5cd40
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: bradsev
+ms.openlocfilehash: a12e2f1af945c8186067b791c4e96a52eb23f52f
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -53,7 +53,7 @@ ms.lasthandoff: 12/08/2017
 > [!NOTE]
 > 分類アルゴリズムの使用をより理解しやすくするために、Spark 2.0 のノートブックに航空会社のデータセットが追加されました。 定刻出発のデータセットと気象のデータセットについては、次のリンクをご覧ください。
 
->- 航空会社の定刻出発データ: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
+>- 航空会社の時間どおりの出発データ: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
 >- 空港の気象データ: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 > 
@@ -149,7 +149,7 @@ Jupyter Notebook は Azure ポータルから起動できます。 ダッシュ�
 
 ![クラスター ダッシュボード](./media/spark-overview/spark-jupyter-on-portal.png)
 
-***https://CLUSTERNAME.azurehdinsight.net/jupyter*** を参照して、Jupyter Notebook にアクセスすることもできます。 この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。 ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
+***https://CLUSTERNAME.azurehdinsight.net/jupyter*** を参照し、Jupyter Notebooks にアクセスすることもできます。 この URL の CLUSTERNAME の部分は、実際のクラスターの名前に置き換えてください。 ノートブックにアクセスするには、管理者アカウントのパスワードが必要です。
 
 ![Jupyter Notebook を参照する](./media/spark-overview/spark-jupyter-notebook.png)
 

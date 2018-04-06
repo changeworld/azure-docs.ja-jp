@@ -1,18 +1,18 @@
 ---
 title: Azure Container Registry SKU
-description: "Azure Container Registry で使用可能なさまざまなサービス階層の比較"
+description: Azure Container Registry で使用可能なさまざまなサービス階層の比較
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 15179fa3e3567f92a5eae69ba9a684addc3138dd
-ms.sourcegitcommit: 68aec76e471d677fd9a6333dc60ed098d1072cfc
+ms.openlocfilehash: c9b8e072b5ccd89c27d9c46407e472d6bf1e1e84
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-container-registry-skus"></a>Azure Container Registry SKU
 
@@ -37,7 +37,7 @@ Basic、Standard、Premium の各 SKU はまとめて "*管理対象*" のレジ
 
 ### <a name="managed-basic-standard-premium"></a>管理対象 (Basic、Standard、Premium)
 
-管理対象レジストリの背後にあるのは、Azure によって管理された Azure Storage アカウントです。 つまりイメージの格納先となるストレージ アカウントは、ユーザーの Azure サブスクリプションには表示されません。 管理対象レジストリに該当するいずれかの SKU を使用することで、いくつかの利点が得られます。それらの利点については、[クラシック レジストリのアップグレード][container-registry-upgrade]に関するページで詳しく説明します。 この記事では、管理対象レジストリの SKU とその機能について詳しく取り上げます。
+管理対象レジストリは、Azure によって完全に管理されているイメージ ストレージから恩恵を受けられます。 つまりイメージの格納先となるストレージ アカウントは、ユーザーの Azure サブスクリプションには表示されません。 管理対象レジストリに該当するいずれかの SKU を使用することで、いくつかの利点が得られます。それらの利点については、「[Azure Container Registry へのコンテナー イメージの保存][container-registry-storage]」で詳しく説明します。 この記事では、管理対象レジストリの SKU とその機能について詳しく取り上げます。
 
 ### <a name="unmanaged-classic"></a>管理対象外 (クラシック)
 
@@ -103,4 +103,5 @@ GitHub の [ACR ロードマップ][acr-roadmap]を参照して、サービス�
 [az-acr-update]: /cli/azure/acr#az_acr_update
 [container-registry-geo-replication]: container-registry-geo-replication.md
 [container-registry-upgrade]: container-registry-upgrade.md
+[container-registry-storage]: container-registry-storage.md
 [container-registry-webhook]: container-registry-webhook.md

@@ -1,24 +1,24 @@
 ---
-title: "Azure Blob Storage のインデックスを Azure Search で作成する"
-description: "Azure Search で Azure Blob Storage のインデックスを作成し、ドキュメントからテキストを抽出する方法について説明します。"
+title: Azure Blob Storage のインデックスを Azure Search で作成する
+description: Azure Search で Azure Blob Storage のインデックスを作成し、ドキュメントからテキストを抽出する方法について説明します。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: chaosrealm
 manager: pablocas
-editor: 
+editor: ''
 ms.assetid: 2a5968f4-6768-4e16-84d0-8b995592f36a
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 12/28/2017
+ms.date: 03/22/2018
 ms.author: eugenesh
-ms.openlocfilehash: 286e2b8eddc87a5132fa13468b0cef1b499c3993
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: 67f6775fb68f4cd13c52ebe66727f2b4df23c692
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="indexing-documents-in-azure-blob-storage-with-azure-search"></a>Azure Blob Storage 内ドキュメントのインデックスを Azure Search で作成する
 この記事では、Azure Search を使用して、Azure Blob Storage に格納されているドキュメント (PDF や Microsoft Office ドキュメント、その他のよく使用されている形式など) のインデックスを作成する方法を説明します。 まず、BLOB インデクサーの設定と構成の基礎を説明します。 次に、発生する可能性のある動作とシナリオについて詳しく説明します。
@@ -31,7 +31,7 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 ## <a name="setting-up-blob-indexing"></a>BLOB インデックスの設定
 Azure Blob Storage インデクサーを設定するには、以下を使用します。
 
-* [Azure ポータル](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
@@ -271,6 +271,10 @@ BLOB のどの部分にインデックスを作成するかは、`dataToExtract`
 一部の BLOB では、Azure Search はコンテンツの種類を判別できないか、他の種類ではサポートされているコンテンツの種類のドキュメントを処理できない場合があります。 この障害モードを無視するには、`failOnUnprocessableDocument` 構成パラメーターを false に設定します。
 
       "parameters" : { "configuration" : { "failOnUnprocessableDocument" : false } }
+
+Azure Search では、インデックスを付ける BLOB のサイズが制限されます。 これらの制限は、「[Azure Search サービスの制限](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)」に記載されています。 サイズが大きい BLOB は、既定ではエラーとして扱われます。 ただし、`indexStorageMetadataOnlyForOversizedDocuments` 構成パラメーターを true に設定した場合、サイズが大きい BLOB のストレージ メタデータには引き続きインデックスを付けることができます。 
+
+    "parameters" : { "configuration" : { "indexStorageMetadataOnlyForOversizedDocuments" : true } }
 
 BLOB の解析中またはインデックスへのドキュメントの追加中、処理のどこかの時点でエラーが発生した場合に、インデックス付けを続行することもできます。 特定数のエラーを無視するには、構成パラメーター `maxFailedItems` と `maxFailedItemsPerBatch` を望ましい値に設定します。 例: 
 

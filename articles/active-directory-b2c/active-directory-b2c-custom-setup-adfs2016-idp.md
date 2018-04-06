@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する"
-description: "SAML プロトコルとカスタム ポリシーを使用した ADFS 2016 の設定方法に関する記事"
+title: 'Azure Active Directory B2C: カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する'
+description: SAML プロトコルとカスタム ポリシーを使用した ADFS 2016 の設定方法に関する記事
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: 22b360aec8878925ebe8d2c67c76d275a42ca7a8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: af102bbc3bc7608fe641db19f4af8c760907a564
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する
 
@@ -40,13 +37,13 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="to-create-a-claims-aware-relying-party-trust"></a>要求に対応する証明書利用者信頼を作成するには
 
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして ADFS を使用するには、ADFS 証明書利用者信頼を作成し、適切なパラメーターを提供する必要があります。
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして ADFS を使用するには、ADFS 証明書利用者信頼を作成した上で適切なパラメーターを提供する必要があります。
 
 AD FS 管理スナップインを使用して新しい証明書利用者信頼を追加するには、手動で設定を構成して、フェデレーション サーバーで次の手順を実行します。
 
-この手順を完了するためには、ローカル コンピューター上の**管理者**のメンバーシップ、またはそれと同等であることが最低限求められます。 適切なアカウントとグループ メンバーシップの使用に関する詳細については、[ローカルおよびドメインの既定のグループ](http://go.microsoft.com/fwlink/?LinkId=83477)に関する記事をご覧ください。
+この手順を完了するためには、ローカル コンピューター上の**管理者**のメンバーシップ、またはそれと同等であることが最低限求められます。 適切なアカウントとグループ メンバーシップの使用に関する詳細については、[ローカルおよびドメインの既定のグループ](http://go.microsoft.com/fwlink/?LinkId=83477)をご覧ください。
 
-1.  [サーバー マネージャー] で、**[ツール]** をクリックし、**[ADFS Management\(ADFS 管理\)]** を選びます。
+1.  [サーバー マネージャー] で、**[ツール]** をクリックし、**[ADFS Management]\(ADFS 管理\)** を選びます。
 
 2.  **[証明書利用者信頼の追加]** をクリックします。
     ![証明書利用者信頼の追加](media/active-directory-b2c-custom-setup-adfs2016-idp/aadb2c-ief-setup-adfs2016-idp-rp-1.png)
@@ -174,7 +171,7 @@ ADFS アカウントでのフェデレーションには、アプリケーショ
 ```
 ### <a name="link-the-button-to-an-action"></a>ボタンのアクションへのリンク
 
-ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションでは、Azure AD B2C が ADFS アカウントと通信してトークンを受信します。 ADFS アカウント クレーム プロバイダーの技術プロファイルをリンクすることで、ボタンをアクションにリンクします。
+ボタンが所定の位置に配置されたので、ボタンをアクションにリンクする必要があります。 この場合のアクションとは、Azure AD B2C が ADFS アカウントと通信して SAML トークンを受信することです。 ADFS アカウント クレーム プロバイダーの技術プロファイルをリンクすることで、ボタンをアクションにリンクします。
 
 1.  `<UserJourney>` ノード内で、`Order="2"` が含まれている `<OrchestrationStep>` を見つけます。
 2.  `<ClaimsExchanges>` ノード下に次の XML スニペットを追加します。

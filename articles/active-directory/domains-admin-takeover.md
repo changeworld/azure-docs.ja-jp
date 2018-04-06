@@ -1,11 +1,11 @@
 ---
-title: "Azure Active Directory にある非管理対象ディレクトリ (シャドウ テナント) を管理者が引き継ぐ | Microsoft Docs"
-description: "Azure Active Directory にある非管理対象ディレクトリ (シャドウ テナント) の DNS ドメイン名を引き継ぐ方法です。"
+title: Azure Active Directory にある非管理対象ディレクトリ (シャドウ テナント) を管理者が引き継ぐ | Microsoft Docs
+description: Azure Active Directory にある非管理対象ディレクトリ (シャドウ テナント) の DNS ドメイン名を引き継ぐ方法です。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: b9f01876-29d1-4ab8-8b74-04d43d532f4b
 ms.service: active-directory
 ms.devlang: na
@@ -16,11 +16,11 @@ ms.date: 11/14/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: f18e5883fca9291eb1447c1eebfe0883936fe84f
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 16f5c515231f486e3576b95a0d103d2fa34842ff
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Azure Active Directory の非管理対象ディレクトリを管理者として引き継ぐ
 この記事では、Azure Active Directory (Azure AD) の非管理対象ディレクトリにある DNS ドメイン名を引き継ぐ 2 つの方法について説明します。 セルフサービス ユーザーは、Azure AD を使用しているクラウド サービスにサインアップするときに、電子メールのドメインに基づいて管理されていない Azure AD ディレクトリに追加されます。 サービスに対するセルフサービス ("バイラル") サインアップについては、「[Azure のセルフサービス サインアップについて]()」をご覧ください。
@@ -143,7 +143,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
     Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
   ````
 
-4. このコマンドから返される値 (チャレンジ) をコピーします。 For example:
+4. このコマンドから返される値 (チャレンジ) をコピーします。 例: 
   ````
     MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
   ````
@@ -154,7 +154,7 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
     Confirm-MsolEmailVerifiedDomain -DomainName *your_domain_name*
   ````
   
-  For example:
+  例: 
   
   ````
     Confirm-MsolEmailVerifiedDomain -DomainName contoso.com
@@ -162,9 +162,9 @@ Azure サービスまたは Office 365 を使って既にテナントを管理�
 
 チャレンジがクリアされると、エラーなしでプロンプトに戻ります。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Azure AD にカスタム ドメイン名を追加する](add-custom-domain.md)
-* [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)
+* [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)
 * [Azure PowerShell](/powershell/azure/overview)
 * [Azure コマンドレット リファレンス](/powershell/azure/get-started-azureps)
 * [Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)

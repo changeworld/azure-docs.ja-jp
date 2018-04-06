@@ -1,9 +1,9 @@
 ---
-title: "Azure Cosmos DB のリソース モデルと概念 | Microsoft Docs"
-description: "Azure Cosmos DB 階層型のデータベース、コレクション、ユーザー定義関数 (UDF)、ドキュメント、リソース管理アクセス許可などについて説明します。"
-keywords: "階層型モデル, cosmosdb, azure, Microsoft azure"
+title: Azure Cosmos DB のリソース モデルと概念 | Microsoft Docs
+description: Azure Cosmos DB 階層型のデータベース、コレクション、ユーザー定義関数 (UDF)、ドキュメント、リソース管理アクセス許可などについて説明します。
+keywords: 階層型モデル, cosmosdb, azure, Microsoft azure
 services: cosmos-db
-documentationcenter: 
+documentationcenter: ''
 author: rafats
 manager: jhubbard
 ms.assetid: ef9d5c0c-0867-4317-bb1b-98e219799fd5
@@ -12,18 +12,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 03/26/2018
 ms.author: rafats
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a88f17a658987e1ff3ae0e0f38d6551c3acee1da
-ms.sourcegitcommit: 0e4491b7fdd9ca4408d5f2d41be42a09164db775
+ms.openlocfilehash: f64d79cd3929a279c7e279e74b0b21d163c0fa45
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 階層型リソース モデルと中心的概念
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 Azure Cosmos DB が管理するデータベースのエンティティを**リソース**と呼びます。 各リソースは、論理 URI によって一意に識別されます。 リソースを対話的に扱う際は、標準の HTTP 動詞、要求/応答ヘッダー、状態コードを使用します。 
 
@@ -34,6 +32,12 @@ Azure Cosmos DB が管理するデータベースのエンティティを**リ�
 * リソースを扱うにはどのようにするか。
 * コレクションを使用するにはどのようにするか。
 * ストアド プロシージャ、トリガー、およびユーザー定義関数 (UDF) を操作するにはどのようにするか。
+
+次の動画では、Azure Cosmos DB プログラム マネージャー、Andrew Liu が Azure Cosmos DB リソース モデルについて順を追って紹介します。 
+
+> [!VIDEO https://www.youtube.com/embed/luWFgTP0IL4]
+>
+>
 
 ## <a name="hierarchical-resource-model"></a>階層型リソース モデル
 次の図に示したように、Azure Cosmos DB の階層型**リソース モデル**は、データベース アカウントに従属する一連のリソースで構成され、個々のリソースは不変の論理 URI でアドレス指定できます。 このドキュメントでは、そうした一連のリソースを**フィード**と呼ぶことにします。 

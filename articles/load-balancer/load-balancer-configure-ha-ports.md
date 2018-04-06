@@ -1,32 +1,32 @@
 ---
-title: "Azure Load Balancer 用の高可用性ポートを構成する | Microsoft Docs"
-description: "すべてのポートで内部トラフィックを負荷分散するために高可用性ポートを使用する方法について説明します。"
+title: Azure Load Balancer 用の高可用性ポートを構成する | Microsoft Docs
+description: すべてのポートで内部トラフィックを負荷分散するために高可用性ポートを使用する方法について説明します。
 services: load-balancer
 documentationcenter: na
 author: rdhillon
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/02/2017
+ms.date: 03/21/20178
 ms.author: kumud
-ms.openlocfilehash: 36bc3d7a35f41384706cbc7101457d00848639b2
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 7f7f8e254e0ed0556446e7b08eaf46ec59977f62
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="configure-high-availability-ports-for-an-internal-load-balancer"></a>内部ロード バランサー用の高可用性ポートの構成
 
 この記事では、内部ロード バランサーへの高可用性ポートのデプロイ例について説明します。 ネットワーク仮想アプライアンス (NVA) に固有の構成の詳細については、対応するプロバイダーの Web サイトを参照してください。
 
 >[!NOTE]
-> 高可用性ポート機能は現在プレビュー段階です。 プレビュー期間中は、一般公開リリースの機能と同レベルの可用性と信頼性を備えていない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
+>Azure Load Balancer では、Basic と Standard の 2 種類がサポートされています。 この記事では、Standard Load Balancer について説明します。 Basic Load Balancer の詳細については、[Load Balancer の概要](load-balancer-overview.md)に関するページを参照してください。
 
 下図は、この記事で説明するデプロイ例の次の構成を示しています。
 
@@ -108,6 +108,6 @@ lbrule = New-AzureRmLoadBalancerRuleConfig -Name "HAPortsRule" -FrontendIpConfig
 azure network lb rule create --resource-group contoso-rg --lb-name contoso-ilb --name haportsrule --protocol all --frontend-port 0 --backend-port 0 --frontend-ip-name feilb --backend-address-pool-name beilb
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [高可用性ポート](load-balancer-ha-ports-overview.md)の詳細を確認します。

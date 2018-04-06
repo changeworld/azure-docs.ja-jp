@@ -1,12 +1,12 @@
 ---
-title: "Azure HDInsight を使用した Storm のトラブルシューティング | Microsoft Docs"
-description: "Azure HDInsight での Apache Storm の使用についてよく寄せられる質問とその回答を示します。"
-keywords: "Azure HDInsight, Storm, FAQ, トラブルシューティング ガイド, よくある質問"
+title: Azure HDInsight を使用した Storm のトラブルシューティング | Microsoft Docs
+description: Azure HDInsight での Apache Storm の使用についてよく寄せられる質問とその回答を示します。
+keywords: Azure HDInsight, Storm, FAQ, トラブルシューティング ガイド, よくある質問
 services: Azure HDInsight
 documentationcenter: na
 author: raviperi
-manager: 
-editor: 
+manager: ''
+editor: ''
 ms.assetid: 74E51183-3EF4-4C67-AA60-6E12FAC999B5
 ms.service: multiple
 ms.workload: na
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/2/2017
 ms.author: raviperi
-ms.openlocfilehash: c0295af2e71d891d07dad7012b7a27402c375178
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 6ee408b32650fe0f0e0b66294896756732a2ca5b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-storm-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Storm のトラブルシューティング
 
@@ -71,7 +71,7 @@ lib フォルダーには、エクスポート/インポート操作の実装を
     ```
 
 #### <a name="import-offset-metadata"></a>オフセット メタデータのインポート
-1. SSH を使用して、チェックポイント オフセットをエクスポートする必要があるクラスター上の Zookeeper クラスターに移動します。
+1. SSH を使用して、チェックポイント オフセットをインポートする必要があるクラスター上の Zookeeper クラスターに移動します。
 2. (HDP バージョン文字列の更新後) 次のコマンドを実行して、Zookeeper オフセット データを HDFS パス (/stormmetadata/zkdata) からターゲット クラスターの Zookeeper サーバーにインポートします。
 
     ```apache
@@ -79,7 +79,7 @@ lib フォルダーには、エクスポート/インポート操作の実装を
     ```
    
 #### <a name="delete-offset-metadata-so-that-topologies-can-start-processing-data-from-the-beginning-or-from-a-timestamp-that-the-user-chooses"></a>トポロジが、先頭またはユーザーが選択したタイムスタンプからデータの処理を開始できるように、オフセット メタデータを削除します。
-1. SSH を使用して、チェックポイント オフセットをエクスポートする必要があるクラスター上の Zookeeper クラスターに移動します。
+1. SSH を使用して、チェックポイント オフセットを削除する必要があるクラスター上の Zookeeper クラスターに移動します。
 2. (HDP バージョン文字列の更新後) 次のコマンドを実行して、現在のクラスターのすべての Zookeeper オフセット データを削除します。
 
     ```apache

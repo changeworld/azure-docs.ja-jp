@@ -1,21 +1,20 @@
 ---
-title: URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure Portal | Microsoft Docs
+title: URL パス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する - Azure Portal
 description: Azure Portal を使用して、アプリケーション ゲートウェイと仮想マシン スケール セットの URL パス ベースのルーティング規則を作成する方法について説明します。
 services: application-gateway
-author: davidmu1
-manager: timlt
-editor: tysonn
+author: vhorne
+manager: jpconnock
 tags: azure-resource-manager
 ms.service: application-gateway
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 01/26/2018
-ms.author: davidmu
-ms.openlocfilehash: 62063c42ab15a071a4500417a5d8adf6bfeac97f
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.date: 3/26/2018
+ms.author: victorh
+ms.openlocfilehash: 4ffaeedf125b6f74aeb88e22248040c6c3ef001c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Azure Portal を使用してパス ベースのルーティング規則のあるアプリケーション ゲートウェイを作成する
 
@@ -36,7 +35,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="log-in-to-azure"></a>Azure にログインする
 
-Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にログインします。
+Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインする
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
@@ -141,8 +140,8 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 
 1. **[ルール]**、**[パス ベース]** の順にクリックします。
 2. 名前として「*rule2*」を入力します。
-3. 最初のパスの名前として「*イメージ*」と入力します。 パスとして「*/images/*\*」を入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
-4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスとして「*/video/*\*」を入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
+3. 最初のパスの名前として「*イメージ*」と入力します。 パスとして「*/images/**」を入力します。 バックエンド プールとして **[imagesBackendPool]** を選択します。
+4. 2 番目のパスの名前として「*ビデオ*」と入力します。 パスとして「*/video/**」を入力します。 バックエンド プールとして **[videoBackendPool]** を選択します。
 
     ![パス ベース ルールの作成](./media/application-gateway-create-url-route-portal/application-gateway-route-rule.png)
 
@@ -154,11 +153,11 @@ Azure ポータル ([http://portal.azure.com](http://portal.azure.com)) にロ�
 
     ![アプリケーション ゲートウェイのパブリック IP アドレスの記録](./media/application-gateway-create-url-route-portal/application-gateway-record-ag-address.png)
 
-2. パブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 たとえば、http://http://40.121.222.19 です。
+2. そのパブリック IP アドレスをコピーし、ブラウザーのアドレス バーに貼り付けます。 http://http://40.121.222.19 など。
 
     ![アプリケーション ゲートウェイでのベース URL のテスト](./media/application-gateway-create-url-route-portal/application-gateway-iistest.png)
 
-3. URL を http://&lt;ip-address&gt;:8080/video/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
+3. URL を http://&lt;ip-address&gt;:8080/images/test.htm に変更します。&lt;ip-address&gt; は使用している IP アドレスに置き換えてください。次の例のように表示されます。
 
     ![アプリケーション ゲートウェイでのイメージ URL のテスト](./media/application-gateway-create-url-route-portal/application-gateway-iistest-images.png)
 

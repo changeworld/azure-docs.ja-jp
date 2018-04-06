@@ -1,24 +1,21 @@
 ---
-title: "Graph API の使用 - Azure AD B2C | Microsoft Docs"
-description: "アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。"
+title: Graph API の使用 - Azure AD B2C | Microsoft Docs
+description: アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。
 services: active-directory-b2c
 documentationcenter: .net
-author: parakhj
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: f9904516-d9f7-43b1-ae4f-e4d9eb1c67a0
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
-ms.author: parakhj
-ms.openlocfilehash: aee051946c90c686959066ac14798f807e7b91b0
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.author: davidmu
+ms.openlocfilehash: ff3aa44a4e2513f4d3e5ac2eed84715b8fe9b004
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Azure AD B2C: Azure AD Graph API を使用する
 
@@ -48,7 +45,7 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 3. 左側のナビゲーション ウィンドウで **[すべてのサービス]** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
 4. 画面の指示に従い、新しいアプリケーションを作成します。 
     1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
-    2. **任意のリダイレクト URI** (例: https://B2CGraphAPI) を入力します。ただし、この例には関係ありません。  
+    2. **任意のサインオン URL** を指定します (たとえば、https://B2CGraphAPI) はこの例には関連しません)。  
 5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
 6. [設定] メニューで、**[キー]** をクリックして、新しいキー (クライアント シークレットとも呼ばれます) を追加します。 後のセクションで必要になるため、このキーもコピーします。
 

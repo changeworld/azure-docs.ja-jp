@@ -1,23 +1,23 @@
 ---
-title: "データ サイエンス プロジェクトのアジャイル開発 - Azure Machine Learning | Microsoft Docs"
-description: "開発者が Team Data Science Process を使用して、プロジェクト チーム内でバージョン コントロールされた体系的、協調的な方法でデータ サイエンス プロジェクトをどのようにして実行できるかについて説明します。"
-documentationcenter: 
+title: データ サイエンス プロジェクトのアジャイル開発 - Azure Machine Learning | Microsoft Docs
+description: 開発者が Team Data Science Process を使用して、プロジェクト チーム内でバージョン コントロールされた体系的、協調的な方法でデータ サイエンス プロジェクトをどのようにして実行できるかについて説明します。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
-ms.author: bradsev;
-ms.openlocfilehash: 686f751b241d49d116948711c683f4b504d5d5f9
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.author: bradsev
+ms.openlocfilehash: dbaf2df0f5572c9b269000c741f1d736a7521d73
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="agile-development-of-data-science-projects"></a>データ サイエンス プロジェクトのアジャイル開発
 
@@ -65,7 +65,7 @@ TDSP スプリント計画フレームワークには、よく使用される 4 
 >
 >
 
-## 手順 2.<a name='SprintPlanning-2'></a>スプリント計画 
+## 2.<a name='SprintPlanning-2'></a>スプリント計画 
 
 スプリント計画は、プロジェクトの優先順位付けと、リソースの計画と割り当てに役立ちます。 多くのデータ サイエンティストは、それぞれ完了に数か月かかる複数のプロジェクトに従事しています。 多くの場合、プロジェクトはそれぞれ異なるペースで進行します。 VSTS サーバーでは、チーム プロジェクトの作業項目を簡単に作成、管理、追跡でき、プロジェクトが期待どおりに進むようにスプリント計画を実施できます。 
 
@@ -178,14 +178,14 @@ VSTS でのスプリント計画の詳しい手順については、[こちら�
     ![18](./media/agile-development/18-workitems.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 「[Collaborative coding with Git (Git による共同でのコーディング)](collaborative-coding-with-git.md)」では、共有コード開発フレームワークとして Git を使用してデータ サイエンス プロジェクトの共同コード開発を行う方法と、アジャイル プロセスを使って計画された作業にこれらのコーディング アクティビティをリンクする方法について説明しています。
 
 アジャイル プロセスに関する資料への追加リンクを次に示します。
 
-- アジャイル プロセス [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
-- アジャイル プロセスの作業項目の種類とワークフロー [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
+- アジャイル プロセス   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process)
+- アジャイル プロセスの作業項目の種類とワークフロー   [https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow](https://www.visualstudio.com/en-us/docs/work/guidance/agile-process-workflow)
 
 
 また、**特定のシナリオ**のプロセスにおけるすべての手順を説明するチュートリアルも用意されています。 これらは、[サンプル チュートリアル](walkthroughs.md)の記事で簡単な説明と共にリンク付きで紹介されています。 チュートリアルでは、クラウド、オンプレミスのツール、サービスをワークフローまたはパイプラインに組み込んでインテリジェント アプリケーションを作成する方法を説明しています。 

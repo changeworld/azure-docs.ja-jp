@@ -1,33 +1,38 @@
 ---
-title: "Azure CDN の POP の場所 | Microsoft Docs"
-description: "この記事では、Azure CDN のポイント オブジェクト プレゼンスの場所を一覧表示します。"
+title: リージョン別の Azure CDN の POP の場所 | Microsoft Docs
+description: この記事では、Azure CDN from Verizon と Azure CDN from Akamai に対する、リージョンで並べ替えられた Azure CDN の POP の場所を示します。
 services: cdn
-documentationcenter: 
-author: zhangmanling
-manager: erikre
-editor: 
+documentationcenter: ''
+author: dksimpson
+manager: akucer
+editor: ''
 ms.assetid: 669ef140-a6dd-4b62-9b9d-3f375a14215e
 ms.service: cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 03/20/2018
 ms.author: mazha
-ms.openlocfilehash: 3dd40bb6fc5754ca8f41360cc735a9136b3f89ea
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: a1c1408438ca2b74c63a77041849b9dc86f3b70b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="azure-cdn-pop-locations"></a>Azure CDN の POP の場所
-この記事では、**Azure CDN from Verizon** と **Azure CDN from Akamai** に対する現在のポイント オブ プレゼンス (POP) の場所を示します。
+# <a name="azure-cdn-pop-locations-by-region"></a>リージョン別の Azure CDN の POP の場所
+> [!div class="op_single_selector"]
+> * [リージョン別の POP の場所](cdn-pop-locations.md)
+> * [略称別の POP の場所](cdn-pop-abbreviations.md)
+> 
+
+
+この記事では、**Azure CDN from Verizon** と **Azure CDN from Akamai** に対する、リージョンで並べ替えられた現在のポイント オブ プレゼンス (POP) の場所を示します。
 
 > [!IMPORTANT]
 > **Azure CDN from Akamai** の POP の都市の場所は、個別に開示されていません。  
 > 
-> いずれのプロバイダーも、CDN インフラストラクチャを構築する方法が異なります。  POP の場所で使用する Azure CDN 製品を決めるのではなく、機能とエンドユーザーのパフォーマンスを考慮することをお勧めします。  両方のプロバイダーでパフォーマンスをテストし、ユーザーに適した Azure CDN 製品を選択してください。 
-> 
+> 両方のプロバイダーはそれぞれ異なる方法で CDN インフラストラクチャを構築するので、使用する Azure CDN 製品を決定するにあたっては POP の場所を使用しないことをお勧めします。 代わりに、それらの機能およびエンドユーザー パフォーマンスを検討してください。 両方のプロバイダーでパフォーマンスをテストし、ユーザーに適した Azure CDN 製品を選択してください。 
 > 
 
 | リージョン | Verizon | Akamai |
@@ -41,6 +46,7 @@ ms.lasthandoff: 02/09/2018
 | 中東 | マスカット (オマーン)<br />フジャイラ (アラブ首長国連邦) | カタール |
 | アジア | 香港特別行政区<br />バンガロール (インド)<br />チェンナイ (インド)<br />デリー (インド)<br />ムンバイ (インド)<br />ニュー デリー (インド)<br />バタム (インドネシア)<br />ジャカルタ (インドネシア)<br />大阪 (日本)<br />東京 (日本)<br />シンガポール<br />ソウル (韓国)<br />高雄 (台湾) | 香港特別行政区<br />インド<br />インドネシア<br />日本<br />マレーシア<br />フィリピン<br />シンガポール<br />台湾<br />タイ<br />ベトナム |
 | オーストラリアとニュージーランド | メルボルン (オーストラリア)<br />シドニー (オーストラリア)<br />オークランド (ニュージーランド) | オーストラリア<br />ニュージーランド |
+
 
 ## <a name="see-also"></a>関連項目
 * [最新 IP アドレスを取得してホワイトリストに登録するための Azure CDN Edge Nodes API](https://docs.microsoft.com/rest/api/cdn/edgenodes)

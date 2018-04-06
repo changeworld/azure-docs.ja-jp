@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights の FAQ | Microsoft Docs"
-description: "Application Insights についてよく寄せられる質問。"
+title: Azure Application Insights の FAQ | Microsoft Docs
+description: Application Insights についてよく寄せられる質問。
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: ed10b364a809c519fe9fe49e019df22598b8c04e
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 
@@ -121,7 +121,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 * [Azure 診断](app-insights-azure-diagnostics.md)
 * [Docker コンテナー](app-insights-docker.md)
 * [Analytics へのインポート テーブル](app-insights-analytics-import.md)
-* [OMS (Log Analytics)](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
+* [Log Analytics](https://azure.microsoft.com/blog/omssolutionforappinsightspublicpreview/)
 * [Logstash](app-insights-analytics-import.md)
 
 ## <a name="can-i-filter-out-or-modify-some-telemetry"></a>一部のテレメトリを除外または変更することはできますか?
@@ -250,7 +250,7 @@ Microsoft の SDK と [SDK API](app-insights-api-custom-events-metrics.md) を�
 
 ### <a name="firewall-door"></a>ファイアウォール ドア
 
-Web サーバーから Microsoft のエンドポイント https://dc.services.visualstudio.com:443 と https://rt.services.visualstudio.com:443 にテレメトリを送信できるようにします。 
+ご利用の Web サーバーから Microsoft のエンドポイント https://dc.services.visualstudio.com:443 および https://rt.services.visualstudio.com:443 への利用統計情報の送信を許可します。 
 
 ### <a name="proxy"></a>プロキシ
 
@@ -262,7 +262,7 @@ ApplicationInsights.config 内に次のコードを設定し、トラフィッ�
 </TelemetryChannel>
 ```
 
-ゲートウェイにより、トラフィックが https://dc.services.visualstudio.com:443/v2/track にルーティングされます
+ご利用のゲートウェイはトラフィックを https://dc.services.visualstudio.com:443/v2/track にルーティングする必要があります。
 
 ## <a name="can-i-run-availability-web-tests-on-an-intranet-server"></a>イントラネット サーバーで可用性 Web テストを実行できますか?
 

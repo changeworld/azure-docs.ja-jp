@@ -1,24 +1,24 @@
 ---
-title: "Premium Azure Redis Cache の Redis クラスタリングの構成方法 | Microsoft Docs"
-description: "Premium レベルの Azure Redis Cache インスタンス用に Redis を作成して管理する方法について説明します"
+title: Premium Azure Redis Cache の Redis クラスタリングの構成方法 | Microsoft Docs
+description: Premium レベルの Azure Redis Cache インスタンス用に Redis を作成して管理する方法について説明します
 services: redis-cache
-documentationcenter: 
+documentationcenter: ''
 author: wesmc7777
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 62208eec-52ae-4713-b077-62659fd844ab
 ms.service: cache
 ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 03/26/2018
 ms.author: wesmc
-ms.openlocfilehash: 16281cca4e4bc95e145317365d42382ab11fde93
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 4af6545058ab0031d7cd1b38618b6d80204f83b9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Redis クラスタリングの構成方法
 Azure Redis Cache には、クラスタリング、永続性、仮想ネットワークのサポートといった Premium レベルの機能など、キャッシュのサイズと機能を柔軟に選択できるさまざまなキャッシュ サービスがあります。 この記事では、Premium Azure Redis Cache インスタンスでクラスタリングを構成する方法について説明します。
@@ -33,7 +33,7 @@ Azure Redis Cache では、 [Redis での実装](http://redis.io/topics/cluster-
 * より多くのスループット: シャードの数を増やすと、スループットは比例して増加します。 
 * より多くのメモリ サイズ: シャードの数を増やすと比例的に増加します。  
 
-Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
+クラスタリングでは、クラスター化されたキャッシュで使用できる接続の数は増加しません。 Premium キャッシュのサイズ、スループット、帯域幅の詳細については、「[Redis Cache のサービス内容と適切なサイズの選択](cache-faq.md#what-redis-cache-offering-and-size-should-i-use)」を参照してください。
 
 Azure では、Redis クラスターは、各シャードがプライマリ/レプリカ ペアを持つプライマリ/レプリカ モデルとして提供され、レプリケーションは Azure Redis Cache Service によって管理されます。 
 
@@ -75,6 +75,8 @@ StackExchange.Redis クライアントを使用したクラスタリングの操
 ![Redis クラスター サイズ][redis-cache-redis-cluster-size]
 
 クラスター サイズを変更するには、スライダーを使用するか、**[シャード数]** ボックスに 1 ～ 10 の範囲の数値を入力し、**[OK]** をクリックして保存します。
+
+クラスター サイズを増やすと、スループットとキャッシュの最大サイズが増えます。 クラスター サイズを増やして、クライアントが利用できる最大接続数が増えることはありません。
 
 > [!NOTE]
 > クラスターのスケーリングでは、[MIGRATE](https://redis.io/commands/migrate) コマンドが実行されます。このコマンドはコストを要するコマンドであるため、影響を最小限にするために、この操作をオフ ピーク時に実行することを検討してください。 移行プロセス中には、サーバーの負荷が急増します。 クラスターのスケーリングは時間を要する処理であり、必要な時間は、キーの数とこれらのキーに関連付けられている値のサイズによって異なります。
@@ -132,7 +134,7 @@ Premium の最大キャッシュ サイズは、53 GB です。 最大 10 個の
 クラスタリングが有効になっていないキャッシュに接続するときに使うものと同じ[エンドポイント](cache-configure.md#properties)、[ポート](cache-configure.md#properties)、[キー](cache-configure.md#access-keys)を使って、キャッシュに接続できます。 Redis がバックエンドのクラスタリングを管理するので、クライアントから管理する必要はありません。
 
 ### <a name="can-i-directly-connect-to-the-individual-shards-of-my-cache"></a>キャッシュの個々のシャードに直接接続できますか
-これは公式にはサポートされていません。 つまり、各シャードは、キャッシュ インスタンスと総称される、プライマリ/レプリカ キャッシュ ペアで構成されています。 GitHub で Redis リポジトリの [不安定な](http://redis.io/download) ブランチにある redis-cli ユーティリティを使用して、これらのキャッシュ インスタンスに接続できます。 このバージョンは、 `-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。 詳細については、[http://redis.io](http://redis.io) の「[Redis cluster tutorial (Redis クラスター チュートリアル)](http://redis.io/topics/cluster-tutorial)」で「[Playing with the cluster (クラスターの使用)](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」を参照してください。
+これは公式にはサポートされていません。 つまり、各シャードは、キャッシュ インスタンスと総称される、プライマリ/レプリカ キャッシュ ペアで構成されています。 GitHub で Redis リポジトリの [不安定な](http://redis.io/download) ブランチにある redis-cli ユーティリティを使用して、これらのキャッシュ インスタンスに接続できます。 このバージョンは、 `-c` スイッチ付きで起動した場合、基本的なサポートを実装しています。 詳細については、[http://redis.io](http://redis.io) の「[Redis cluster tutorial](http://redis.io/topics/cluster-tutorial)」 (Redis クラスター チュートリアル) にある「[Playing with the cluster](http://redis.io/topics/cluster-tutorial#playing-with-the-cluster)」 (クラスターの使用) をご覧ください。
 
 SSL 以外の場合は、次のコマンドを使用します。
 

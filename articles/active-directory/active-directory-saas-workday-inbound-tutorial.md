@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 01/26/2018
 ms.author: asmalser
-ms.openlocfilehash: 976d7e7cb304a24f235e51952ce04826776e2789
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 5c2c39db7ab89b06915c014778977915cca15190
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>チュートリアル: Workday を構成し、自動ユーザー プロビジョニングに対応させる
 
@@ -397,9 +397,9 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 
 **コマンド #1**
 
-> cd C:\\Program Files\\Microsoft Azure Active Directory Synchronization Agent\\Modules\\AADSyncAgent
+> cd "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent" Agent\\Modules\\AADSyncAgent
 
-> import-module AADSyncAgent.psd1
+> Import-Module "C:\Program Files\Microsoft Azure AD Connect Provisioning Agent\Modules\AADSyncAgent\AADSyncAgent.psd1"
 
 **コマンド #2**
 
@@ -416,6 +416,9 @@ Active Directory フォレストへのユーザー プロビジョニングを�
 
 >[!IMPORTANT]
 >現在既知の問題があり、グローバル管理者がカスタム ドメイン (例: admin@contoso.com) を使用すると、その資格情報が動作しません。 この問題を回避するには、onmicrosoft.com ドメインでグローバル管理者アカウント (例: admin@contoso.onmicrosoft.com) を作成し、使用します
+
+>[!IMPORTANT]
+>現在既知の問題があります。グローバル管理者が多要素認証を有効にすると、その資格情報が動作しません。 回避策としては、グローバル管理者の多要素認証を無効にします。
 
 
 **コマンド #4**

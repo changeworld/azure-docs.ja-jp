@@ -1,9 +1,9 @@
 ---
-title: "Visual Studio を使用して Web ジョブを開発してデプロイする - Azure"
-description: "Visual Studio を使用して Azure WebJobs を Azure App Service にデプロイする方法について説明します。"
+title: Visual Studio を使用して Web ジョブを開発してデプロイする - Azure
+description: Visual Studio を使用して Azure WebJobs を Azure App Service にデプロイする方法について説明します。
 services: app-service
-documentationcenter: 
-author: ggailey777
+documentationcenter: ''
+author: tdykstra
 manager: erikre
 editor: jimbe
 ms.assetid: a3a9d320-1201-4ac8-9398-b4c9535ba755
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/12/2017
 ms.author: glenga;david.ebbo;suwatch;pbatum;naren.soni
-ms.openlocfilehash: 8793485f2f1967e8c14ef335f14f81c9b946f974
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.openlocfilehash: babe190c0865f5be4aeecb40ca48b52673c6920e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio---azure-app-service"></a>Visual Studio を使用して Web ジョブを開発してデプロイする - Azure App Service
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 11/22/2017
 Visual Studio では Web ジョブ対応のコンソール アプリケーション プロジェクトをデプロイする場合に、2 つのタスクを実行します。
 
 * ランタイム ファイルを Web アプリの適切なフォルダーにコピーします (継続的な Web ジョブの場合は *App_Data/jobs/continuous*、スケジュールされたオンデマンドの Web ジョブの場合は *App_Data/jobs/triggered*)。
-* 特定の時間に実行するようにスケジュールされる Web ジョブに [Azure Scheduler ジョブ](#scheduler)を設定します  (これは継続的な Web ジョブでは必要ありません)。
+* 特定の時間に実行するようにスケジュールされる Web ジョブに [Azure Scheduler ジョブ](https://docs.microsoft.com/azure/scheduler/)を設定します  (これは継続的な Web ジョブでは必要ありません)。
 
 Web ジョブ対応のプロジェクトでは、次の項目が追加されています。
 

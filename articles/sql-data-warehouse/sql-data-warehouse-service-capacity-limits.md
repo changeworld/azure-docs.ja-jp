@@ -3,7 +3,7 @@ title: SQL Data Warehouse の容量制限 | Microsoft Docs
 description: SQL Data Warehouse の接続、データベース、テーブル、およびクエリの最大値。
 services: sql-data-warehouse
 documentationcenter: NA
-author: kevinvngo
+author: barbkess
 manager: jhubbard
 editor: ''
 ms.assetid: e1eac122-baee-4200-a2ed-f38bfa0f67ce
@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: reference
-ms.date: 03/15/2018
+ms.date: 03/27/2018
 ms.author: kevin;barbkess
-ms.openlocfilehash: b1ff33f80a8dd0a0861a5c39731c9f59689db101
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: fa7d8a9880ff97f30dc583d792e39aa914ea5435
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="sql-data-warehouse-capacity-limits"></a>SQL Data Warehouse の容量制限
 以下の表に、Azure SQL Data Warehouse のさまざまなコンポーネントで使用できる最大値を示します。
@@ -39,13 +39,13 @@ ms.lasthandoff: 03/17/2018
 |:--- |:--- |:--- |
 | データベース |最大サイズ |240 TB (ディスク上の圧縮)<br/><br/>この領域は tempdb またはログ領域から独立しています。そのため、この領域はパーマネント テーブル専用です。  クラスター化列ストアの圧縮率は約 5 倍になります。  このため、すべてのテーブルをクラスター化列ストア (既定のテーブルの種類) にした場合、データベースを約 1 PB まで拡大できるようになります。 |
 | テーブル |最大サイズ |60 TB (ディスク上の圧縮) |
-| テーブル |データベースあたりのテーブル数 |20 億 |
+| テーブル |データベースあたりのテーブル数 |10,000 |
 | テーブル |テーブルあたりの列数 |1,024 列 |
 | テーブル |列あたりのバイト数 |列の[データ型][data type]によって決まります。  上限は、char データ型では 8000 GB、nvarchar データ型では 4000 GB、MAX データ型では 2 GB です。 |
 | テーブル |行あたりのバイト数 (定義されたサイズ) |8060 バイト<br/><br/>行あたりのバイト数は、ページ圧縮を有効にした SQL Server の場合と同様に計算されます。 SQL Data Warehouse では SQL Server と同様に行オーバーフロー ストレージがサポートされており、**可変長列**を行外にプッシュできます。 可変長行を行外にプッシュする場合、メイン レコードには 24 バイト ルートのみが格納されます。 詳しくは、「[8 KB を超える場合の行オーバーフロー データ][Row-Overflow Data Exceeding 8 KB]」をご覧ください。 |
 | テーブル |テーブルあたりのパーティション数 |15,000<br/><br/>高パフォーマンスを実現するには、ビジネス要件を満たしながら、必要なパーティション数を最小限に抑えることをお勧めします。 パーティションの数が増えるに従い、データ定義言語 (DDL) およびデータ操作言語 (DML) の操作のオーバーヘッドが拡大し、パフォーマンスの低下を引き起こします。 |
 | テーブル |パーティション境界値あたりの文字数 |4000 |
-| Index |テーブルあたりの非クラスター化インデックス数 |999<br/><br/>行ストア テーブルのみに適用されます。 |
+| Index |テーブルあたりの非クラスター化インデックス数 |50<br/><br/>行ストア テーブルのみに適用されます。 |
 | Index |テーブルあたりのクラスター化インデックス数 |1<br><br/>行ストア テーブルと列ストア テーブルの両方に適用されます。 |
 | Index |インデックス キーのサイズ |900 バイト<br/><br/>行ストア インデックスにのみに適用されます。<br/><br/>インデックスの作成時には varchar 列の既存のデータが 900 バイトを超えていない場合でも、最大サイズが 900 バイトを超える、varchar 列のインデックスが作成されることがあります。 ただし、その後の列に対する INSERT または UPDATE 操作は、合計サイズが 900 バイトを超えてしまう場合、失敗します。 |
 | Index |インデックスあたりのキー列数 |16<br/><br/>行ストア インデックスにのみに適用されます。 クラスター化列ストア インデックスには、すべての列が含まれます。 |
@@ -72,8 +72,9 @@ ms.lasthandoff: 03/17/2018
 | SELECT |入れ子になったサブクエリの数 |32<br/><br/>SELECT ステートメントで許容される入れ子になったサブクエリの数は 32 個までです。 常に 32 個が保証されるわけではありません。 たとえば、JOIN によって、クエリ プランにサブクエリが導入されることがあります。 サブクエリの数はまた、使用できるメモリによって制限される場合があります。 |
 | SELECT |JOIN あたりの列数 |1,024 列<br/><br/>JOIN で許容される列数は 1,024 個までです。 常に 1024 列が保証されるわけではありません。 JOIN プランで、列数が JOIN の結果を上回る一時テーブルが必要な場合、一時テーブルには 1024 の制限が適用されます。 |
 | SELECT |GROUP BY の列あたりのバイト数 |8060バイト<br/><br/>GROUP BY 句内の列に許容されるバイト数は、最大で 8,060 バイトです。 |
-| SELECT |ORDER BY 列あたりのバイト数 |8060バイト<br/><br/>ORDER BY 句内の列に許容されるバイト数は、最大で 8,060 バイトです。 |
-| ステートメントあたりの識別子と定数 |参照される識別子と定数の数 |65,535<br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる識別子と定数の数を制限しています。 上限は 65,535 個です。 この数を超えると、SQL Server エラー 8632 が発生します。 詳細については、[内部エラー: 式サービスの制限値に達しています][Internal error: An expression services limit has been reached]に関するページをご覧ください。 |
+| SELECT |ORDER BY 列あたりのバイト数 |8060 バイト<br/><br/>ORDER BY 句内の列に許容されるバイト数は、最大で 8,060 バイトです。 |
+| ステートメントあたりの識別子 |参照される識別子の数 |65,535<br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる識別子の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。 詳細については、[内部エラー: 式サービスの制限値に達しています][Internal error: An expression services limit has been reached]に関するページをご覧ください。 |
+| 文字列リテラル | ステートメントの文字列リテラルの数 | 20,000 <br/><br/>SQL Data Warehouse では、1 つのクエリ式に含めることができる文字列定数の数を制限しています。 この数を超えると、SQL Server エラー 8632 が発生します。 詳細については、[内部エラー: 式サービスの制限値に達しています][Internal error: An expression services limit has been reached]に関するページをご覧ください。 |
 
 ## <a name="metadata"></a>Metadata
 | システム ビュー | 最大行数 |

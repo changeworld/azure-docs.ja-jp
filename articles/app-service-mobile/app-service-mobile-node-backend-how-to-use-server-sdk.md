@@ -1,11 +1,11 @@
 ---
-title: "Mobile Apps 用 Node.js バックエンド サーバー SDK を操作する方法 | Microsoft Docs"
-description: "Azure App Service Mobile Apps 用の Node.js バックエンド サーバー SDK を操作する方法について説明します。"
+title: Mobile Apps 用 Node.js バックエンド サーバー SDK を操作する方法 | Microsoft Docs
+description: Azure App Service Mobile Apps 用の Node.js バックエンド サーバー SDK を操作する方法について説明します。
 services: app-service\mobile
-documentationcenter: 
+documentationcenter: ''
 author: elamalani
 manager: elamalani
-editor: 
+editor: ''
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: crdun
-ms.openlocfilehash: bd423d6fb62b2ace16832f665c8834b4aea7e26f
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 335186deccaa82b9a8d262d62dd8ce5d620446b6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="how-to-use-the-mobile-apps-nodejs-sdk"></a>Mobile Apps Node.js SDK の使用方法
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -119,7 +119,7 @@ Visual Studio 2015 には、IDE 内で Node.js アプリケーションを開発
         app.use(mobile);
 
    ファイルを保存します。
-10. アプリケーションをローカルで実行するか (API は http://localhost:3000 で動作します)、Azure に発行します。
+10. アプリケーションをローカルで実行するか (API は http://localhost:3000) で動作します)、Azure に発行します。
 
 ### <a name="create-node-backend-portal"></a>Azure Portal を使用して Node.js バックエンドを作成する
 Mobile Apps バックエンドは、[[アプリ設定]] ですぐに作成できます。 次の手順を実行するか、[モバイル アプリの作成](app-service-mobile-ios-get-started.md)のチュートリアルに従ってクライアントとサーバーをまとめて作成することもできます。 このチュートリアルにはこれらの手順の簡略化されたバージョンが含まれており、プロジェクトの概念の実証に最適です。
@@ -135,7 +135,7 @@ Mobile Apps バックエンドは、[[アプリ設定]] ですぐに作成でき
 次の手順では、Git リポジトリを使用して、クイック スタート プロジェクトのコードをダウンロードします。
 
 1. Git をまだインストールしていない場合はインストールします。 Git をインストールするために必要な手順は、オペレーティング システムによって異なります。 オペレーティング システム固有の配布とインストールのガイダンスについては、[Git のインストール](http://git-scm.com/book/en/Getting-Started-Installing-Git)に関するページを参照してください。
-2. 「[App Service アプリのリポジトリを有効にする](../app-service/app-service-deploy-local-git.md#Step3)」の手順に従って、バックエンド サイトの Git リポジトリを有効にします。 デプロイ用のユーザー名とパスワードをメモしておきます。
+2. バックエンド サイトの Git リポジトリを有効にする方法については、「[リポジトリを準備する](../app-service/app-service-deploy-local-git.md#prepare-your-repository)」を参照してください。 デプロイ用のユーザー名とパスワードをメモしておきます。
 3. Mobile Apps バックエンドのウィンドウで、**[Git クローン URL]** の設定をメモしておきます。
 4. Git クローン URL を使用して `git clone` コマンドを実行します。 次の例のように、必要に応じてパスワードを入力します。
 
@@ -156,7 +156,7 @@ Microsoft Azure では、Azure サービスに Mobile Apps Node.js バックエ�
 Azure App Service には、バックエンドを公開する前に確認する必要がある Node.js アプリケーションに関する具体的なアドバイスがあります。
 
 * 方法: [Node のバージョンを指定する]
-* 方法: [Node モジュールを使用する]
+* [Node モジュールを使用する]
 
 ### <a name="howto-enable-homepage"></a>アプリケーションのホーム ページを有効にする
 多くのアプリケーションは、Web アプリとモバイル アプリの組み合わせです。 ExpressJS フレームワークを使用すると、2 つのファセットを結合することができます。 ただし、モバイル インターフェイスのみを実装する場合もあります。 アプリ サービスを確実に稼動させるために、ホーム ページを用意すると便利です。 ホーム ページを指定するか、一時的なホーム ページを有効にします。 一時的なホーム ページを有効にするには、次のコードを使用して Mobile Apps をインスタンス化します。

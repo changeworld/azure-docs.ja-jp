@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: オーケストレーション手順としての REST API 要求の交換 | Microsoft Docs"
-description: "API と統合する Azure Active Directory B2C のカスタム ポリシーに関するトピック"
+title: 'Azure Active Directory B2C: オーケストレーション手順としての REST API 要求の交換 | Microsoft Docs'
+description: API と統合する Azure Active Directory B2C のカスタム ポリシーに関するトピック
 services: active-directory-b2c
-documentationcenter: 
-author: rojasja
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: rojasja
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 04/24/2017
-ms.author: joroja
-ms.openlocfilehash: 3e4f0bccf02c0332663a746d4ed8e5234c51f54e
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: bde1ef711fe19b7e26f2d93b58d653dc816b1a07
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-an-orchestration-step"></a>チュートリアル: REST API 要求交換をオーケストレーション手順として Azure AD B2C ユーザー体験に統合する
 
@@ -78,7 +75,7 @@ return request.CreateResponse<ResponseContent>(
     "application/json");
 ```
 
-Azure Function App を使用すると、特定の関数の識別子を含む関数の URL を簡単に取得できます。 このケースでの URL は https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw== です。 それは、テストの目的で使用できます。
+Azure Function App を使用すると、特定の関数の識別子を含む関数の URL を簡単に取得できます。 ここでは、URL は https://wingtipb2cfuncs.azurewebsites.net/api/LookUpLoyaltyWebHook?code=MQuG7BIE3eXBaCZ/YCfY1SHabm55HEphpNLmh1OP3hdfHkvI2QwPrw== となります。 それは、テストの目的で使用できます。
 
 ## <a name="step-2-configure-the-restful-api-claims-exchange-as-a-technical-profile-in-your-trustframeworextensionsxml-file"></a>手順 2: RESTful API 要求交換を技術プロファイルとして TrustFrameworkExtensions.xml ファイルに構成する
 
@@ -257,7 +254,7 @@ ProfileEdit.xml 証明書利用者 (RP) ファイルを編集し、`<TechnicalPr
 }
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [REST API を検証手順として使用する](active-directory-b2c-rest-api-validation-custom.md)
 

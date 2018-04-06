@@ -1,24 +1,24 @@
 ---
-title: "Visual Studio でアプリケーションを管理する | Microsoft Docs"
-description: "Visual Studio を利用し、Service Fabric のアプリケーションとサービスを作成、開発、パッケージ化、デプロイ、デバッグします。"
+title: Visual Studio で Azure Servic Fabric アプリケーションを管理する | Microsoft Docs
+description: Visual Studio を利用し、Azure Service Fabric のアプリケーションとサービスを作成、開発、パッケージ化、デプロイ、デバッグします。
 services: service-fabric
 documentationcenter: .net
 author: mikkelhegn
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: c317cb7e-7eae-466e-ba41-6aa2518be5cf
 ms.service: service-fabric
 ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/07/2017
-ms.author: mikkelhegn
-ms.openlocfilehash: 81814ef07cfab06855b3bfbf0eb6ef51b8dfce4f
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.date: 03/26/2018
+ms.author: mikhegn
+ms.openlocfilehash: 5c5c3dc20996fbbdee9f9ed61eb3b09e4b274d92
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-visual-studio-to-simplify-writing-and-managing-your-service-fabric-applications"></a>Visual Studio を利用すれば、Service Fabric アプリケーションの記述と管理が簡単になりまする
 Azure Service Fabric アプリケーションとサービスを Visual Studio で管理できます。 [開発環境のセットアップ](service-fabric-get-started.md)が済んだら、Visual Studio を使用して、Service Fabric アプリケーションの作成、サービスの追加、ローカル開発クラスターでのアプリケーションのパッケージ化、登録、およびデプロイができます。
@@ -32,7 +32,7 @@ Azure Service Fabric アプリケーションとサービスを Visual Studio �
 4. 実行している任意のアプリケーション インスタンスの削除
 5. アプリケーション インスタンスの作成
 
-Visual Studio で、**[F5]** キーを押すと、アプリケーションがデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。 
+Visual Studio で、**[F5]** キーを押すと、アプリケーションがデプロイされ、すべてのアプリケーション インスタンスにデバッガーがアタッチされます。 **[Ctrl + F5]** キーを押してデバッグなしでアプリケーションをデプロイするか、発行プロファイルを使用してローカルまたはリモート クラスターにアプリケーションを発行できます。
 
 ### <a name="application-debug-mode"></a>アプリケーション デバッグ モード
 Visual Studio には、**アプリケーション デバッグ モード**というプロパティが用意されており、Visual Studio でデバッグ時にアプリケーションのデプロイを処理する方法を制御できます。
@@ -45,7 +45,7 @@ Visual Studio には、**アプリケーション デバッグ モード**とい
 
 #### <a name="application-debug-modes"></a>アプリケーション デバッグ モード
 
-1. **アプリケーションの更新**: このモードでは、コードをすばやく変更およびデバッグでき、デバッグ中の静的な Web ファイルの編集がサポートされます。 このモードが機能するのは、ローカル開発クラスターが [1 ノード モード](/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode)の場合のみです。
+1. **アプリケーションの更新**: このモードでは、コードをすばやく変更およびデバッグでき、デバッグ中の静的な Web ファイルの編集がサポートされます。 このモードが機能するのは、ローカル開発クラスターが [1 ノード モード] の場合のみです。 これは既定のアプリケーション デバッグ モード (/service-fabric-get-started-with-a-local-cluster.md#one-node-and-five-node-cluster-mode) です。
 2. **アプリケーションの削除** : アプリケーションは、デバッグ セッションが終了したときに削除されます。
 3. **自動アップグレード**: デバッグ セッションが終了しても、アプリケーションは実行されたままになります。 次回のデバッグ セッションでは、デプロイはアップグレードとして扱われます。 アップグレード プロセスでは、前のデバッグ セッションで入力したすべてのデータが保持されます。
 4. **アプリケーションの保持**: デバッグ セッションが終了しても、アプリケーションはクラスターで実行されたままになります。 次回のデバッグ セッションの開始時に、アプリケーションは削除されます。
@@ -53,7 +53,7 @@ Visual Studio には、**アプリケーション デバッグ モード**とい
 **[自動アップグレード]** の場合、データは Service Fabric のアプリケーション アップグレード機能を適用して保持されます。 アプリケーションのアップグレードと実際の環境でアップグレードを実行する方法の詳細については、「 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」を参照してください。
 
 ## <a name="add-a-service-to-your-service-fabric-application"></a>Service Fabric アプリケーションにサービスを追加します。
-新しいサービスをアプリケーションに追加して、その機能を拡張することができます。  サービスがアプリケーション パッケージに含まれているかどうかを確認するには、 **[新規 Fabric サービス]** メニュー項目からサービスを追加します。
+新しいサービスをアプリケーションに追加して、その機能を拡張することができます。 サービスがアプリケーション パッケージに含まれているかどうかを確認するには、 **[新規 Fabric サービス]** メニュー項目からサービスを追加します。
 
 ![新しい Service Fabric サービスを追加する][newservice]
 
@@ -74,12 +74,12 @@ Visual Studio 内から Cloud Explorer を使用して、基本的なクラス�
 ![アプリケーションの削除][removeapplication]
 
 > [!TIP]
-> 高度なクラスター管理機能については、「 [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
+> 高度なクラスター管理機能については、「[Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)」を参照してください。
 >
 >
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Service Fabric のアプリケーション モデル](service-fabric-application-model.md)
 * [Service Fabric アプリケーションのデプロイ](service-fabric-deploy-remove-applications.md)
 * [複数の環境のアプリケーション パラメーターを管理する](service-fabric-manage-multiple-environment-app-configuration.md)

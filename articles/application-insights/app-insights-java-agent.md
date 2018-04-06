@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights での Java Web アプリのパフォーマンス監視 | Microsoft Docs"
-description: "Application Insights を使用した Java Web サイトのパフォーマンスおよび利用状況の監視拡張。"
+title: Azure Application Insights での Java Web アプリのパフォーマンス監視 | Microsoft Docs
+description: Application Insights を使用した Java Web サイトのパフォーマンスおよび利用状況の監視拡張。
 services: application-insights
 documentationcenter: java
 author: harelbr
@@ -13,28 +13,28 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: ecfcf7a3b3698435f98b74474d0ca7223ab2b46c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: b327e7f062cdf3e6b1b34a9540461dcb18caf21c
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="monitor-dependencies-exceptions-and-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、例外、および実行時間の監視
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Java Web アプリでの依存関係、キャッチされた例外、およびメソッド実行時間の監視
 
 
 [Java Web アプリを Application Insights][java] でインストルメント化した場合、Java エージェントを使用して、コードを変更することなく、詳細な分析を行うことができます。
 
 * **依存関係:** アプリケーションが他のコンポーネントに対して行った呼び出しについてのデータであり、次のものを含みます。
-  * **REST 呼び出し** : HttpClient、OkHttp、および RestTemplate (Spring) 経由で行われた呼び出しです。
-  * **Redis 呼び出し** : Jedis クライアント経由で行われた呼び出しです。 呼び出しにかかる時間が 10 秒を超えた場合、エージェントは呼び出し引数も取得します。
-  * **[JDBC 呼び出し](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**: MySQL、SQL Server、PostgreSQL、SQLite、Oracle DB、または Apache Derby DB。 "executeBatch" 呼び出しがサポートされます。 MySQL と PostgreSQL で呼び出しにかかる時間が 10 秒を超えた場合、エージェントはクエリ プランをレポートします。
-* **例外の検出:** コードで処理される例外に関するデータ。
-* **メソッドの実行時間:** 特定のメソッドの実行にかかる時間に関するデータ。
+  * HttpClient、OkHttp、および RestTemplate (Spring) 経由で行われた **REST 呼び出し**がキャプチャされます。
+  * Jedis クライアント経由で行われた **Redis** 呼び出しがキャプチャされます。
+  * **[JDBC 呼び出し](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)** - MySQL、SQL Server、Oracle DB の各コマンドが自動的にキャプチャされます。 MySQL で呼び出しにかかる時間が 10 秒を超えた場合、エージェントはクエリ プランをレポートします。
+* **例外の検出:** コードで処理される例外に関する情報。
+* **メソッドの実行時間:** 特定のメソッドの実行にかかる時間に関する情報。
 
 Java エージェントを使用するには、これをサーバーにインストールします。 Web アプリを [Application Insights Java SDK][java] を使用してインストルメント化する必要があります。 
 
 ## <a name="install-the-application-insights-agent-for-java"></a>Jave 用の Application Insights エージェントのインストール
-1. Java サーバーを実行しているコンピューターで [エージェントをダウンロード](https://aka.ms/aijavasdk)します。
+1. Java サーバーを実行しているコンピューターで [エージェントをダウンロード](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)します。 Application Insights の Java SDK コアおよび Web パッケージと同じバージョンの Java エージェントをダウンロードするようにしてください。
 2. アプリケーション サーバーのスタートアップ スクリプトを編集し、次の JVM を追加します。
    
     `javaagent:`*エージェント JAR ファイルへの完全パス*

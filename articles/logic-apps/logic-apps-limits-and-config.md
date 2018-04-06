@@ -1,11 +1,11 @@
 ---
-title: "制限と構成 - Azure Logic Apps | Microsoft Docs"
-description: "Azure Logic Apps のサービスの制限と構成値"
+title: 制限と構成 - Azure Logic Apps | Microsoft Docs
+description: Azure Logic Apps のサービスの制限と構成値
 services: logic-apps
-documentationcenter: 
+documentationcenter: ''
 author: jeffhollan
 manager: anneta
-editor: 
+editor: ''
 ms.assetid: 75b52eeb-23a7-47dd-a42f-1351c6dfebdc
 ms.service: logic-apps
 ms.workload: integration
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 54a35607e107a09188373cc5f71bb3068b4c6bab
-ms.sourcegitcommit: 0b02e180f02ca3acbfb2f91ca3e36989df0f2d9c
+ms.openlocfilehash: 740a31f4b5e0ffe9fe2ae04d3dac51cf25ab3055
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/05/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="logic-apps-limits-and-configuration"></a>Logic Apps の制限と構成
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 03/05/2018
 
 | Name | 制限 | メモ | 
 | ----- | ----- | ----- | 
-| 5 分間のアクション実行数 | 100,000 | 制限を 300,000 に増やすには、`High Througput` モードでロジック アプリを実行します。 高スループット モードを構成するには、ワークフロー リソースの `runtimeConfiguration` で、`operationOptions` プロパティを `OptimizedForHighThroughput` に設定します。 <p>**注**: 高スループット モードはプレビュー段階です。 また、必要に応じて複数のアプリにワークロードを分散することができます。 | 
+| 5 分間のアクション実行数 | 100,000 | 制限を 300,000 に増やすには、`High Throughput` モードでロジック アプリを実行します。 高スループット モードを構成するには、ワークフロー リソースの `runtimeConfiguration` で、`operationOptions` プロパティを `OptimizedForHighThroughput` に設定します。 <p>**注**: 高スループット モードはプレビュー段階です。 また、必要に応じて複数のアプリにワークロードを分散することができます。 | 
 | 同時発信呼び出しアクション数 | ～ 2,500 | 必要に応じて、同時要求数を削減するか期間を短縮します。 | 
 | ランタイム エンドポイント: 同時受信呼び出し数 |～ 1,000 | 必要に応じて、同時要求数を削減するか期間を短縮します。 | 
 | ランタイム エンドポイント: 5 分間の読み取り呼び出し数  | 60,000 | 必要に応じて複数のアプリにワークロードを分散することができます。 | 

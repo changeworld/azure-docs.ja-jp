@@ -1,28 +1,32 @@
 ---
-title: "Azure IoT Hub メッセージの形式について | Microsoft Docs"
-description: "開発者ガイド - IoT Hub メッセージの形式と予期される内容について説明します。"
+title: Azure IoT Hub メッセージの形式について | Microsoft Docs
+description: 開発者ガイド - IoT Hub メッセージの形式と予期される内容について説明します。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 3fc5f1a3-3711-4611-9897-d4db079b4250
 ms.service: iot-hub
 ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/29/2018
+ms.date: 03/20/2018
 ms.author: dobett
-ms.openlocfilehash: 3d5b500964ee37dbd347858edd35812e1d217499
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 5979c0d79a0abd9897fd3970ccea1d9ba07f9dfd
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
-プロトコル間でのシームレスな相互運用性をサポートするために、IoT Hub では、すべてのデバイス用プロトコルの共通のメッセージ形式が定義されています。 このメッセージ形式は、[device-to-cloud][lnk-d2c] メッセージと [cloud-to-device][lnk-c2d] メッセージの両方で使用されます。 [IoT Hub メッセージ][lnk-messaging]は、次のような構成です。
+プロトコル間でのシームレスな相互運用性をサポートするために、IoT Hub では、すべてのデバイス用プロトコルの共通のメッセージ形式が定義されています。 このメッセージ形式は、[device-to-cloud][lnk-d2c] メッセージと [cloud-to-device][lnk-c2d] メッセージの両方で使用されます。 
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
+
+[IoT Hub メッセージ][lnk-messaging]は、次のような構成です。
 
 * 一連の *システム プロパティ*。 IoT Hub が解釈または設定するプロパティです。 この設定は、事前に決定されています。
 * 一連の *アプリケーション プロパティ*。 メッセージ本文を逆シリアル化しなくてもアプリケーションが定義してアクセスできる、文字列プロパティのディクショナリです。 IoT Hub によってこれらのプロパティが変更されることはありません。
@@ -50,6 +54,7 @@ ms.lasthandoff: 02/01/2018
 | ConnectionDeviceId |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **deviceId** が含まれます。 |
 | ConnectionDeviceGenerationId |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **generationId** (「[デバイス ID のプロパティ][lnk-device-properties]」を参照) が含まれています。 |
 | ConnectionAuthMethod |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。 詳細については、[D2C のなりすまし対策][lnk-antispoofing]に関するセクションを参照してください。 |
+| CreationTimeUtc | デバイスでメッセージが作成された日時。 デバイスでこの値を明示的に設定する必要があります。 |
 
 ## <a name="message-size"></a>メッセージ サイズ
 

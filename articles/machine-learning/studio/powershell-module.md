@@ -1,11 +1,12 @@
 ---
-title: "Machine Learning 用 PowerShell モジュール | Microsoft Docs"
-description: "Azure Machine Learning 用 PowerShell モジュールは、パブリック プレビューとしてご利用いただけます。 ワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。"
-keywords: "実験, 線形回帰, 機械学習アルゴリズム, 機械学習チュートリアル, 予測モデリング手法, データ サイエンス実験"
+title: Machine Learning 用 PowerShell モジュール | Microsoft Docs
+description: Azure Machine Learning 用 PowerShell モジュールは、パブリック プレビューとしてご利用いただけます。 ワークスペース、実験、Web サービスなどの作成と管理を PowerShell で行うことができます。
+keywords: 実験, 線形回帰, 機械学習アルゴリズム, 機械学習チュートリアル, 予測モデリング手法, データ サイエンス実験
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: hning86
-manager: jhubbard
+ms.author: haining
+manager: mwinkle
 editor: cgronlun
 ms.assetid: a9001cc2-3aa0-47e1-b175-1f76408ba1d1
 ms.service: machine-learning
@@ -14,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: garye;haining
-ms.openlocfilehash: 47d005e584b6cb87d27a77f56ff619d342481aaa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9553e372f4d1cb5c60935fae5a7af61806ea6d4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="powershell-module-for-microsoft-azure-machine-learning"></a>Microsoft Azure Machine Learning 用 PowerShell モジュール
 Azure Machine Learning 用 PowerShell モジュールは、ワークスペースや実験、データセット、従来の Web サービスなどを Windows PowerShell で管理することができる強力なツールです。
 
-関連するドキュメントを閲覧したり、完全なソース コード付きでモジュールをダウンロードしたりするには、 [https://aka.ms/amlps](https://aka.ms/amlps)にアクセスしてください。 
+ドキュメントを閲覧したり、完全なソース コード付きでモジュールをダウンロードしたりするには、[https://aka.ms/amlps](https://aka.ms/amlps) にアクセスしてください。 
 
 > [!NOTE]
 > Azure Machine Learning の PowerShell モジュールは、現在プレビュー モードです。 モジュールは、このプレビュー期間中に引き続き改善され、拡張される予定です。 「[Cortana Intelligence and Machine Learning Blog (Cortana Intelligence と Machine Learning のブログ)](https://blogs.technet.microsoft.com/machinelearning/)」で最新情報をチェックしてください。
@@ -58,7 +58,7 @@ Machine Learning PowerShell を初めて使用する方は、GitHub から[リ�
 
 必要に応じて、git ツリーの複製、コードの変更、および Visual Studio を使用したローカルなコンパイルを実行できます。
 
-## <a name="next-steps"></a>次のステップ
-PowerShell モジュールの完全なドキュメントは[https://aka.ms/amlps](https://aka.ms/amlps) にあります。 
+## <a name="next-steps"></a>次の手順
+PowerShell モジュールの完全なドキュメントは [https://aka.ms/amlps](https://aka.ms/amlps) にあります。 
 
 現実世界のシナリオでモジュールを使用する広範な実例については、詳細なユース ケースである「[PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する](create-models-and-endpoints-with-powershell.md)」を参照してください。

@@ -1,18 +1,18 @@
 ---
-title: "Azure Site Recovery を使用した Azure から Azure へのディザスター リカバリーのネットワークについて | Microsoft Docs"
-description: "Azure Site Recovery を使用した Azure VM のレプリケーション用のネットワークの概要について示します。"
+title: Azure Site Recovery を使用した Azure から Azure へのディザスター リカバリーのネットワークについて | Microsoft Docs
+description: Azure Site Recovery を使用した Azure VM のレプリケーション用のネットワークの概要について示します。
 services: site-recovery
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 02/08/2018
+ms.date: 03/26/2018
 ms.author: sujayt
-ms.openlocfilehash: 5ce85761df4e0ad62c22a829f67464a3145fd827
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 48be55632d9c1bece3f1a6e4f9ac12a68f9cb7ab
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="about-networking-in-azure-to-azure-replication"></a>Azure から Azure へのレプリケーションのネットワークについて
 
@@ -154,9 +154,10 @@ IP アドレスの範囲は次のとおりです。
 ### <a name="expressroute-configuration"></a>ExpressRoute 構成
 ExpressRoute 構成については、次のベスト プラクティスに従ってください。
 
-- ソース リージョンとターゲット リージョンの両方で、ExpressRoute 回線を作成する必要があります。 その後、次の接続を作成します。
-  - ソース仮想ネットワークと ExpressRoute 回線の間。
-  - ターゲット仮想ネットワークと ExpressRoute 回線の間。
+- ソース リージョンとターゲット リージョンの両方で、ExpressRoute 回線を作成します。 その後、次の接続を作成します。
+    - ソース仮想ネットワークとオンプレミス ネットワークの間の接続。ソース リージョンの ExpressRoute 回線を経由。
+    - ターゲット仮想ネットワークとオンプレミス ネットワークの間の接続。ターゲット リージョンの ExpressRoute 回線を経由。
+
 
 - ExpressRoute Standard の一部として、同じ地理的リージョンに回線を作成できます。 さまざまな地理的リージョンに ExpressRoute 回線を作成するには、Azure ExpressRoute Premium が必要ですが、これには増分コストが発生します  (既に ExpressRoute Premium を使用している場合、追加コストはありません)。詳細については、[ExpressRoute の場所に関するドキュメント](../expressroute/expressroute-locations.md#azure-regions-to-expressroute-locations-within-a-geopolitical-region)と「[ExpressRoute の価格](https://azure.microsoft.com/pricing/details/expressroute/)」を参照してください。
 

@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する"
-description: "OpenID Connect (OIDC) プロトコルを使って Microsoft を ID プロバイダーとして使う例"
+title: 'Azure Active Directory B2C: カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する'
+description: OpenID Connect (OIDC) プロトコルを使って Microsoft を ID プロバイダーとして使う例
 services: active-directory-b2c
-documentationcenter: 
-author: yoelhor
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 08/04/2017
-ms.author: yoelh
-ms.openlocfilehash: cdc77d093358fa15bb1acbc9ba6b1867bae062f8
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: a49e9589322eeb90a713321b4fbe4c4820609f7a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-add-microsoft-account-msa-as-an-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って Microsoft アカウント (MSA) を ID プロバイダーとして追加する
 
@@ -38,7 +35,7 @@ ms.lasthandoff: 12/11/2017
 5.  Azure AD B2C テナントにポリシーをアップロードし、テストする
 
 ## <a name="create-a-microsoft-account-application"></a>Microsoft アカウント アプリケーションを作成する
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microsoft アカウントを使用するには、Microsoft アカウント アプリケーションを作成し、適切なパラメーターを提供する必要があります。 Microsoft アカウントが必要です。 アカウントがない場合は、[https://www.live.com/](https://www.live.com/) にアクセスします。
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして Microsoft アカウントを使用するには、Microsoft アカウント アプリケーションを作成し、適切なパラメーターを提供する必要があります。 Microsoft アカウントが必要です。 アカウントがない場合は、[https://www.live.com/](https://www.live.com/) にアクセスしてください。
 
 1.  [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) に移動し、Microsoft アカウントの資格情報でサインインします。
 2.  **[アプリの追加]**をクリックします。
@@ -84,7 +81,7 @@ Microsoft アカウントとのフェデレーションには、Microsoft アカ
 4.  **[オプション]** には **[Manual] \(手動)** を使用します。
 5.  **[名前]** には `MSASecret` を使用します。  
     プレフィックス `B2C_1A_` が自動的に追加される場合があります。
-6.  **[シークレット]** ボックスに、https://apps.dev.microsoft.com からの Microsoft アプリケーション シークレットを入力します
+6.  **[シークレット]** ボックスに、https://apps.dev.microsoft.com からの Microsoft アプリケーション シークレットを入力します。
 7.  **[キー使用法]** には **[署名]** を使用します。
 8.  **[作成]**
 9.  キー `B2C_1A_MSASecret` を作成したことを確認します。

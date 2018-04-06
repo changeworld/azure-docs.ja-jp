@@ -1,6 +1,6 @@
 ---
-title: "Azure Database for MySQL でのインポートとエクスポート"
-description: "この記事では、MySQL Workbench などのツールを使用して、Azure Database for MySQL でデータベースをインポートおよびエクスポートする一般的な方法について説明します。"
+title: Azure Database for MySQL でのインポートとエクスポート
+description: この記事では、MySQL Workbench などのツールを使用して、Azure Database for MySQL でデータベースをインポートおよびエクスポートする一般的な方法について説明します。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: f15811cd44e405ee33d9ba3d565c2982e71a80c0
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: 74b8c6afc5167225414f467f76f08c0e53bbade5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>インポートとエクスポートを使用した MySQL データベースの移行
 この記事では、MySQL Workbench を使用して、Azure Database for MySQL サーバーにデータをインポートおよびエクスポートする 2 つの一般的な方法について説明します。 
@@ -33,9 +33,9 @@ Azure Database for MySQL に移行するとき、インポート ファイルお
 ## <a name="create-a-database-on-the-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーでのデータベースの作成
 データを移行する Azure Database for MySQL サーバーに空のデータベースを作成します。 データベースは、MySQL Workbench、Toad、Navicat などのツールを使用して作成します。 データベースは、ダンプされたデータが含まれるデータベースと同じ名前にすることも、別の名前でデータベースを作成することもできます。
 
-接続するために、Azure Database for MySQL の **[プロパティ]** ウィンドウで接続情報を見つけます。
+接続するために、Azure Database for MySQL の **[概要]** で接続情報を見つけます。
 
-![Azure Portal で接続情報を見つける](./media/concepts-migrate-import-export/1_server-properties-name-login.png)
+![Azure Portal で接続情報を見つける](./media/concepts-migrate-import-export/1_server-overview-name-login.png)
 
 接続情報を MySQL Workbench に追加します。
 

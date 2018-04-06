@@ -1,11 +1,11 @@
 ---
-title: "Azure Media Services を使用してマルチビットレートのストリームを作成するライブ ストリーミング | Microsoft Docs"
-description: "このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信した後、Media Services を使用してアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。 次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH のいずれかを使用してクライアントの再生アプリケーションに送信できます。"
+title: Azure Media Services を使用してマルチビットレートのストリームを作成するライブ ストリーミング | Microsoft Docs
+description: このトピックでは、オンプレミスのエンコーダーからシングル ビットレートのライブ ストリームを受信した後、Media Services を使用してアダプティブ ビットレート ストリームへのライブ エンコードを実行するチャネルの設定方法について説明します。 次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、MPEG DASH のいずれかを使用してクライアントの再生アプリケーションに送信できます。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: anilmur
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
 ms.service: media-services
 ms.workload: media
@@ -14,13 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/09/2017
 ms.author: juliako;anilmur
-ms.openlocfilehash: f7cd457fe0660718c3939d39ec1825009c5e4d17
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: 9d89849bb982804515b21de8c251859591dbf6ce
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Azure Media Services を使用して Live Encoding の実行が有効なチャネルを操作する
+
+> [!NOTE]
+> 2018 年 5 月 12日以降は、ライブ チャネルで RTP/MPEG-2 トランスポート ストリーム取り込みプロトコルがサポートされなくなります。 RTP/MPEG-2 から RTMP またはフラグメント化 MP4 (Smooth Streaming) 取り込みプロトコルに移行してください。
+
 ## <a name="overview"></a>概要
 Azure Media Services (AMS) では、 **チャネル** はライブ ストリーミング コンテンツを処理するパイプラインを表します。 **チャネル** は、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
@@ -217,7 +221,7 @@ IP アドレスが指定されておらず、規則の定義もない場合は�
 チャネルがデータの取り込みを開始した後、ストリームをプレビューできます。
 
 > [!NOTE]
-> 現在、プレビュー ストリームを配信できるのは指定された入力タイプにかかわらず、Fragmented MP4 (スムーズ ストリーミング) 形式のみです。 スムーズ ストリーミングのテストには、 [http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) プレーヤーを使用できます。 また、Azure Portal でホストされているプレーヤーを使用してストリームを表示することもできます。
+> 現在、プレビュー ストリームを配信できるのは指定された入力タイプにかかわらず、Fragmented MP4 (スムーズ ストリーミング) 形式のみです。 スムーズ ストリームのテストには、[http://smf.cloudapp.net/healthmonitor](http://smf.cloudapp.net/healthmonitor) プレーヤーを使用できます。 また、Azure Portal でホストされているプレーヤーを使用してストリームを表示することもできます。
 > 
 > 
 

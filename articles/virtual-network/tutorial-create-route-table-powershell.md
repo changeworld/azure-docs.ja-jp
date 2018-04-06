@@ -1,5 +1,5 @@
 ---
-title: ネットワーク トラフィックをルーティングする - PowerShell | Microsoft Docs
+title: ネットワーク トラフィックをルーティングする - Azure PowerShell | Microsoft Docs
 description: PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする方法を説明します。
 services: virtual-network
 documentationcenter: virtual-network
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 49c7b6158beee9d47ecd224e6a0750310d2b68c0
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7be6aa58c6779150d3e79893e6e179d08611567
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>PowerShell を使用してルート テーブルでネットワーク トラフィックをルーティングする
 
@@ -76,7 +76,7 @@ Get-AzureRmRouteTable `
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>サブネットへのルート テーブルの関連付け
 
-ルート テーブルをサブネットに関連付ける前に、仮想ネットワークとサブネットを作成する必要があります。 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、アドレス プレフィックスが *10.0.0.0/16* の、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
+ルート テーブルをサブネットに関連付けるには、仮想ネットワークとサブネットを作成しておく必要があります。 [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) を使用して仮想ネットワークを作成します。 次の例では、アドレス プレフィックスが *10.0.0.0/16* の、*myVirtualNetwork* という名前の仮想ネットワークを作成します。
 
 ```azurepowershell-interactive
 $virtualNetwork = New-AzureRmVirtualNetwork `
@@ -242,7 +242,7 @@ VM の作成時に指定したユーザー名とパスワードを入力し (VM 
 後の手順では、ルーティングのテストに tracert.exe コマンドを使用します。 Tracert は Internet Control Message Protocol (ICMP) を使用していますが、Windows ファイアウォール経由では拒否されます。 PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule ???DisplayName ???Allow ICMPv4-In??? ???Protocol ICMPv4
 ```
 
 この記事では tracert を使用してルーティングをテストしていますが、運用環境のデプロイでは Windows ファイアウォールで ICMP を許可することは推奨されません。
@@ -272,7 +272,7 @@ mstsc /v:myVmPublic
 PowerShell から次のコマンドを入力して、Windows ファイアウォールで ICMP を有効にします。
 
 ```powershell
-New-NetFirewallRule –DisplayName “Allow ICMPv4-In” –Protocol ICMPv4
+New-NetFirewallRule ???DisplayName ???Allow ICMPv4-In??? ???Protocol ICMPv4
 ```
 
 *myVmPublic* VM から *myVmPrivate* VM へのネットワーク トラフィックのルーティングをテストするには、PowerShell から次のコマンドを入力します。
@@ -332,4 +332,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 仮想ネットワーク内では多数の Azure リソースをデプロイできますが、一部の Azure PaaS サービスのリソースは仮想ネットワークにデプロイできなません。 ただし、一部の Azure PaaS サービスのリソースへのアクセスを、仮想ネットワーク サブネットからのトラフィックのみに制限できます。 Azure PaaS リソースへのネットワーク アクセスを制限する方法を確認するには、次のチュートリアルに進みます。
 
 > [!div class="nextstepaction"]
-> [PaaS リソースへのネットワーク アクセスを制限する](virtual-network-service-endpoints-configure.md#azure-powershell)
+> [PaaS リソースへのネットワーク アクセスを制限する](tutorial-restrict-network-access-to-resources-powershell.md)

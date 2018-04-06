@@ -1,12 +1,12 @@
 ---
-title: "Azure Cosmos DB の概要: MongoDB 用 API | Microsoft Docs"
-description: "人気のある OSS MongoDB API と Azure Cosmos DB を使用して、大量の JSON ドキュメントを低待機時間で格納およびクエリする方法を説明します。"
-keywords: "MongoDB とは"
+title: 'Azure Cosmos DB の概要: MongoDB API | Microsoft Docs'
+description: 人気のある OSS MongoDB API と Azure Cosmos DB を使用して、大量の JSON ドキュメントを低待機時間で格納およびクエリする方法を説明します。
+keywords: MongoDB とは
 services: cosmos-db
 author: AndrewHoh
 manager: jhubbard
-editor: 
-documentationcenter: 
+editor: ''
+documentationcenter: ''
 ms.assetid: 4afaf40d-c560-42e0-83b4-a64d94671f0a
 ms.service: cosmos-db
 ms.workload: data-services
@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/12/2018
 ms.author: anhoh
-ms.openlocfilehash: ffca8f4518361e8c5447d7bb7ed6022eb0e96a4a
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: cdf1404d0070b74faeaca4dab7838167e2821323
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB の概要: MongoDB 用 API
+# <a name="introduction-to-azure-cosmos-db-mongodb-api"></a>Azure Cosmos DB の概要: MongoDB API
 
 [Azure Cosmos DB](../cosmos-db/introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 
 
 ![Azure Cosmos DB: MongoDB API](./media/mongodb-introduction/cosmosdb-mongodb.png) 
 
-[MongoDB](https://docs.mongodb.com/manual/introduction/) 向けに作成されたアプリのデータ ストアとして Azure Cosmos DB データベースを使用できます。 つまり、既存の[ドライバー](https://docs.mongodb.org/ecosystem/drivers/)を使用することで、MongoDB 用に記述されたアプリケーションが Azure Cosmos DB と通信し、MongoDB データベースではなく Azure Cosmos DB データベースを使用できるようになりました。 多くの場合、接続文字列を変更するだけで、MongoDB から Azure Cosmos DB に使用を切り替えることができます。 この機能を使用すると、既にある MongoDB のスキルとツールを無駄にすることなく、Azure Cosmos DB のグローバル配布と[包括的な業界トップレベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) によって、MongoDB データベース アプリケーションを簡単に作成し、Azure クラウドで実行することができます。
+[MongoDB](https://docs.mongodb.com/manual/introduction/) 向けに作成されたアプリのデータ ストアとして Azure Cosmos DB データベースを使用できます。 つまり、既存の[ドライバー](https://docs.mongodb.org/ecosystem/drivers/)を使用することで、MongoDB 用に記述されたアプリケーションが Azure Cosmos DB と通信し、MongoDB データベースではなく Azure Cosmos DB データベースを使用できるようになりました。 多くの場合、接続文字列を変更するだけで、MongoDB から Azure Cosmos DB に使用を切り替えることができます。 この機能を使用すると、既にある MongoDB のスキルとツールを無駄にすることなく、Azure Cosmos DB とその[包括的な業界トップレベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db) によって、グローバル配布の MongoDB データベース アプリケーションを簡単に作成し、Azure クラウドで実行することができます。
 
 **MongoDB の互換性**: Azure Cosmos DB は、MongoDB 3.4 (バージョン 5) Wire Protocol を実装しており、[MongoDB の集計パイプライン](mongodb-feature-support.md#aggregation-pipeline)をサポートしているため、既にある MongoDB のノウハウ、アプリケーション コード、ツールを活用できます。 MongoDB を使用してアプリケーションを開発し、グローバルに分散された完全管理型 Azure Cosmos DB サービスを使用して運用環境にデプロイできます。
 

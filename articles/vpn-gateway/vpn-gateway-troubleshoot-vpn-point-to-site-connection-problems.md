@@ -1,12 +1,12 @@
 ---
-title: "Azure ポイント対サイト接続の問題のトラブルシューティング | Microsoft Docs"
-description: "ポイント対サイト接続の問題のトラブルシューティング方法について説明します。"
+title: Azure ポイント対サイト接続の問題のトラブルシューティング | Microsoft Docs
+description: ポイント対サイト接続の問題のトラブルシューティング方法について説明します。
 services: vpn-gateway
 documentationcenter: na
 author: chadmath
 manager: cshepard
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.service: vpn-gateway
 ms.devlang: na
 ms.topic: troubleshooting
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/23/2018
 ms.author: genli
-ms.openlocfilehash: 3884eec0e65f856be87505d45c25cad7d3742bab
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 51076c225167accaf386190eeda4ec159cb5657d
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -289,7 +289,7 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 
 ### <a name="solution"></a>解決策
 
-問題を解決するには、Azure 仮想ネットワークで使用する Azure DNS サーバーがローカル リソースの DNS レコードを解決できることを確認します。 これを行うには、DNS フォワーダーまたは条件付きフォワーダーを使用できます。 詳細については、「[独自 DNS サーバー使用の名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)」を参照してください。
+問題を解決するには、Azure 仮想ネットワークで使用する Azure DNS サーバーがローカル リソースの DNS レコードを解決できることを確認します。 これを行うには、DNS フォワーダーまたは条件付きフォワーダーを使用できます。 詳細については、「[独自 DNS サーバー使用の名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server)」を参照してください。
 
 ## <a name="the-point-to-site-vpn-connection-is-established-but-you-still-cannot-connect-to-azure-resources"></a>ポイント対サイト VPN 接続は確立されるが Azure リソースに接続できません 
 
@@ -304,11 +304,11 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 ## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>エラー: "失効サーバーがオフラインであったため、失効関数が失効を確認できませんでした。(エラー 0x80092013)"
 
 ### <a name="causes"></a>原因
-このエラー メッセージは、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr. にアクセスできない場合に発生します。失効を確認するには、この 2 つのサイトにアクセスする必要があります。  この問題は、通常は、プロキシ サーバーが構成されているクライアントで発生します。 一部の環境では、要求がプロキシ サーバーを経由しない場合はエッジ ファイアウォールで拒否されます。
+このエラー メッセージは、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr にアクセスできない場合に発生します。失効を確認するには、この 2 つのサイトにアクセスする必要があります。  この問題は、通常は、プロキシ サーバーが構成されているクライアントで発生します。 一部の環境では、要求がプロキシ サーバーを経由しない場合はエッジ ファイアウォールで拒否されます。
 
 ### <a name="solution"></a>解決策
 
-プロキシ サーバーの設定を調べて、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr. にアクセスできることを確認します。
+プロキシ サーバーの設定を調べて、クライアントが http://crl3.digicert.com/ssca-sha2-g1.crl と http://crl4.digicert.com/ssca-sha2-g1.cr にアクセスできることを確認します。
 
 ## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN クライアント エラー: RAS/VPN サーバーに構成されたポリシーにより、接続できませんでした。 (エラー 812)
 

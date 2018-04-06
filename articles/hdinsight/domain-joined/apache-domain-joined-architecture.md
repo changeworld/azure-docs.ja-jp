@@ -1,8 +1,8 @@
 ---
-title: "ドメイン参加済み Azure HDInsight のアーキテクチャ | Microsoft Docs"
-description: "ドメイン参加済み HDInsight を計画する方法について説明します。"
+title: ドメイン参加済み Azure HDInsight のアーキテクチャ | Microsoft Docs
+description: ドメイン参加済み HDInsight を計画する方法について説明します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: bhanupr
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/14/2017
+ms.date: 03/20/2018
 ms.author: bprakash
-ms.openlocfilehash: 5285199d22528ed6b9fa3b7dbc85e382e7b28569
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: b4f79388e45e24dc906a3a03dc0c0e51df52160d
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="plan-azure-domain-joined-hadoop-clusters-in-hdinsight"></a>HDInsight で Azure のドメイン参加済み Hadoop クラスターを計画する
 
@@ -47,16 +47,14 @@ HDInsight を Active Directory と統合すると、HDInsight クラスター �
 
 ![ドメイン参加済み HDInsight クラスターの OU](./media/apache-domain-joined-architecture/hdinsight-domain-joined-ou.png)が必要です。
 
-### <a name="two-ways-of-bringing-your-own-active-directory-domain-controllers"></a>独自の Active Directory ドメイン コントローラーを導入する 2 通りの方法
-
-Active Directory ドメイン コントローラーを独自に導入してドメイン参加済み HDInsight クラスターを作成する方法は 2 通りあります。 
+### <a name="the-way-of-bringing-your-own-active-directory-domain-controllers"></a>独自の Active Directory ドメイン コントローラーを導入する方法
 
 - **Azure Active Directory Domain Services**: このサービスでは、Windows Server Active Directory と完全に互換性のある管理対象の Active Directory ドメインが提供されます。 Microsoft は、AD ドメインの管理、修正プログラムの適用、および監視を行います。 ドメイン コントローラーの管理について心配することなく、クラスターをデプロイすることができます。 ユーザー、グループおよびパスワードは、ユーザーが会社の資格情報を使ってクラスターにサインインできるように、Azure Active Directory から同期されます。 詳細については、「[Azure Active Directory Domain Services を使用してドメイン参加済み HDInsight クラスターを構成する](./apache-domain-joined-configure-using-azure-adds.md)」を参照してください。
 
-- **Azure IaaS VM の Active Directory:** Azure IaaS VM で独自の Windows Server Active Directory ドメインをデプロイして管理する方法です。 詳細については、[ドメイン参加済みサンドボックス環境の構成](./apache-domain-joined-configure.md)に関するページを参照してください。
+> [!NOTE]
+> Azure IaaS VM の Active Directory はサポートされなくなりました。
 
 ## <a name="next-steps"></a>次の手順
-* ドメイン参加済み HDInsight クラスターを構成するには、[ドメイン参加済み HDInsight クラスターの構成](apache-domain-joined-configure.md)に関する記事をご覧ください。
 * ドメイン参加済み HDInsight クラスターを管理するには、[ドメイン参加済み HDInsight クラスターの管理](apache-domain-joined-manage.md)に関する記事をご覧ください。
 * Hive ポリシーを構成して Hive クエリを実行するには、[ドメイン参加済み HDInsight クラスターでの Hive ポリシーの構成](apache-domain-joined-run-hive.md)に関する記事をご覧ください。
 * SSH を使用してドメイン参加済み HDInsight クラスターで Hive クエリを実行する方法については、[HDInsight で SSH キーを使用する](../hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。

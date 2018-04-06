@@ -1,8 +1,8 @@
 ---
-title: "Azure Log Analytics の警告について | Microsoft Docs"
-description: "Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、さまざまな種類のアラート ルールとその定義方法について説明します。"
+title: Azure Log Analytics の警告について | Microsoft Docs
+description: Log Analytics のアラートは、OMS リポジトリ内の重要な情報を識別し、問題について事前に通知したり、問題を修正するためのアクションを呼び出したりできます。  この記事では、さまざまな種類のアラート ルールとその定義方法について説明します。
 services: log-analytics
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/05/2018
 ms.author: bwren
-ms.openlocfilehash: 07e8312d5e113eeb9016dcc832b1cf66f8001c5f
-ms.sourcegitcommit: 719dd33d18cc25c719572cd67e4e6bce29b1d6e7
+ms.openlocfilehash: ece2e7eeb53aebbb18bce4bb34e03307b0aea74c
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Log Analytics のアラートについて
 
@@ -102,7 +102,7 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" CounterValue>90
 
-プロセッサが一定の時間内に平均 90% を超える割合で実行されたときにアラートを生成させるには、次のようにクエリで [measure コマンド](log-analytics-search-reference.md#commands)を使用し、アラート ルールのしきい値 **greater than 0** を含めます。
+プロセッサが一定の時間内に平均 90% を超える割合で実行されたときにアラートを生成させるには、次のようにクエリで `measure` コマンドを使用し、アラート ルールのしきい値 **greater than 0** を含めます。
 
     Type=Perf ObjectName=Processor CounterName="% Processor Time" | measure avg(CounterValue) by Computer | where AggregatedValue>90
 
@@ -119,7 +119,7 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 **メトリック測定**のアラート ルールでは、クエリの対象となったオブジェクトが分析され、特定の値が指定されたしきい値を上回っているオブジェクトについて、それぞれ別個にアラートが生成されます。  **結果の数**のアラート ルールとは、以下の点が明確に異なります。
 
 #### <a name="log-search"></a>ログ検索
-**結果の数**のアラート ルールではどのようなクエリでも使用できるのに対し、メトリック測定のアラート ルールの場合にはクエリに一定の要件が存在します。  具体的には、特定のフィールドに関する結果をグループ化するために [measure コマンド](log-analytics-search-reference.md#commands)が 1 つ必要になります。 このコマンドに必要な要素は以下のとおりです。
+**結果の数**のアラート ルールではどのようなクエリでも使用できるのに対し、メトリック測定のアラート ルールの場合にはクエリに一定の要件が存在します。  具体的には、特定のフィールドに関する結果をグループ化するために `measure` コマンドが 1 つ必要になります。 このコマンドに必要な要素は以下のとおりです。
 
 - **集計関数**。  実行する計算と、集計の対象になる可能性がある数値フィールドを決める要素です。  たとえば、**count()** であれば、クエリで指定したレコードの件数が返されます。**avg(CounterValue)** であれば、一定期間内の CounterValue フィールドの平均値が返されます。
 - **グループ フィールド**。  このフィールドのインスタンスごとに値を集計したレコードが作成されます。警告は、それぞれのインスタンスについて生成されます。  たとえば、コンピューターごとにアラートを生成する場合には、**by Computer** を使用します。   
@@ -135,7 +135,7 @@ Log Analytics の警告ルールはいずれも、2 種類のどちらかに該�
 **時間枠:** 30 分<br>
 **アラートの頻度:** 5 分<br>
 **集計値:** 90 よりも大きい<br>
-**アラートをトリガーする基準**: 違反総数が 5 件より多い<br>
+**アラートをトリガーする基準:** 違反総数が 5 より大<br>
 
 上のクエリは、5 分間隔で各コンピューターの平均値を計算するものです。  このクエリは過去 30 分間に収集されたデータを対象に、5 分ごとに実行されます。  コンピューターが 3 台の場合、サンプル データは以下のようになります。
 

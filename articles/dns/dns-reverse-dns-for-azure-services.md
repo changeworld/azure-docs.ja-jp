@@ -1,6 +1,6 @@
 ---
-title: "Azure サービスの逆引き DNS | Microsoft Docs"
-description: "Azure でホストされているサービスの逆引き DNS 参照を構成する方法について説明します"
+title: Azure サービスの逆引き DNS | Microsoft Docs
+description: Azure でホストされているサービスの逆引き DNS 参照を構成する方法について説明します
 services: dns
 documentationcenter: na
 author: KumudD
@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: kumud
-ms.openlocfilehash: 0c5d12e9d6b5ddbee2a930e4e537b8180b7a9c7b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: bba2d75ed760a6e4eef2caacb0bb5924680b1f4b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="configure-reverse-dns-for-services-hosted-in-azure"></a>Azure でホストされているサービスの逆引き DNS を構成する
 
@@ -245,9 +245,9 @@ FQDN は順方向で指定します。末尾にはドットを指定する必要
 
 ### <a name="can-i-send-emails-to-external-domains-from-my-azure-compute-services"></a>Azure コンピューティング サービスから外部ドメインに電子メールを送信できますか?
 
-いいえ。 [Azure コンピューティング サービスでは、外部ドメインへの電子メールの送信はサポートされていません](https://blogs.msdn.microsoft.com/mast/2016/04/04/sending-e-mail-from-azure-compute-resource-to-external-domains/)
+Azure のデプロイから電子メールを直接送信する技術的能力は、サブスクリプションの種類によって異なります。 Microsoft では、サブスクリプションの種類に関係なく、信頼できるメール リレー サービスを使用して発信メールを送信することをお勧めしています。 詳細については、「[Enhanced Azure Security for sending Emails – November 2017 Update](https://blogs.msdn.microsoft.com/mast/2017/11/15/enhanced-azure-security-for-sending-emails-november-2017-update/)」 (電子メールを送信するための Azure セキュリティの強化 - 2017 年 11 月更新) を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 逆引き DNS について詳しくは、[Wikipedia の逆引き DNS 参照](http://en.wikipedia.org/wiki/Reverse_DNS_lookup)をご覧ください。
 <br>

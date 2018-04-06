@@ -1,18 +1,18 @@
 ---
-title: "インクルード ファイル"
-description: "インクルード ファイル"
+title: インクルード ファイル
+description: インクルード ファイル
 services: backup
 author: markgalioto
 ms.service: backup
 ms.topic: include
 ms.date: 2/7/2018
-ms.author: trinadhk
+ms.author: trinadhk;sogup
 ms.custom: include file
-ms.openlocfilehash: 7ca5b34961b4d0e3d4fcecb8175e3e0901d7049d
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: b345283f87c446ff3b583b0c5dd8a4be222303ae
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 次の制限は、Azure Backup に適用されます。
 
@@ -23,8 +23,8 @@ ms.lasthandoff: 02/09/2018
 | 各 Azure サブスクリプションで作成できるバックアップ資格情報コンテナー数 |25 Recovery Services コンテナー (リージョンあたり) |
 | 1 日にバックアップをスケジュールできる回数 |Windows Server/Client で 1 日 3 回 <br/> SCDPM で 1 日 2 回 <br/> IaaS VM で 1 日 1 回 |
 | バックアップ用に Azure の仮想マシンに接続できるデータ ディスクの数 |16 |
-| バックアップ用に Azure の仮想マシンに接続される個々のデータ ディスクのサイズ| 1024 GB <sup>2</sup>|
+| バックアップ用に Azure の仮想マシンに接続される個々のデータ ディスクのサイズ| 4095 GB <sup>2</sup>|
 
 * <sup>1</sup> 54400 GB の制限は、IaaS VM のバックアップには適用されません。
-* <sup>2</sup> ディスクを最大 4 TB サポートする[プライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a?redir=0)を用意しています。 
+ 
 

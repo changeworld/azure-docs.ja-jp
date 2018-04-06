@@ -1,8 +1,8 @@
 ---
-title: "Azure IoT Edge on Linux のシミュレート | Microsoft Docs"
-description: "Linux のシミュレートされたデバイスに Azure IoT Edge ランタイムをインストールし、最初のモジュールをデプロイする"
+title: Azure IoT Edge on Linux のシミュレート | Microsoft Docs
+description: Linux のシミュレートされたデバイスに Azure IoT Edge ランタイムをインストールし、最初のモジュールをデプロイする
 services: iot-edge
-keywords: 
+keywords: ''
 author: kgremban
 manager: timlt
 ms.author: kgremban
@@ -10,11 +10,11 @@ ms.reviewer: elioda
 ms.date: 01/11/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 55770c92f5d5959e83066b425bc6ccf2b9dcc62e
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 65a3f6d71c0c0d92f703a5d48760dd348c726ba4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-iot-edge-on-a-simulated-device-in-linux-or-macos---preview"></a>Linux または MacOS のシミュレートされたデバイスへの Azure IoT Edge のデプロイ - プレビュー
 
@@ -37,6 +37,11 @@ Azure IoT Edge を使用すると、すべてのデータをクラウドにプ�
 
 * Python pip (IoT Edge ランタイムをインストールするため)
    * Linux: `sudo apt-get install python-pip`.
+     * _一部のディストリビューション (Raspbian など) では、場合によっては、特定の PIP パッケージをアップグレードしたり、追加の依存関係をインストールしたりする必要があります。_
+     ```
+     sudo pip install --upgrade setuptools pip
+     sudo apt-get install python2.7-dev libffi-dev libssl-dev
+     ```
    * MacOS: `sudo easy_install pip`.
 * Docker (IoT Edge モジュールを実行するため)
    * [Docker for Linux をインストール][lnk-docker-ubuntu]し、稼働していることを確認します。 
@@ -70,7 +75,7 @@ sudo pip install -U azure-iot-edge-runtime-ctl
 
 前のセクションで保存した IoT Edge デバイス接続文字列を使用してランタイムを構成します。
 ```cmd
-sudo iotedgectl setup --connection-string "{device connection string}" --auto-cert-gen-force-no-passwords
+sudo iotedgectl setup --connection-string "{device connection string}" --nopass
 ```
 
 ランタイムを開始します。

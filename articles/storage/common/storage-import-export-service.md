@@ -6,13 +6,13 @@ manager: syadav
 services: storage
 ms.service: storage
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/22/2018
 ms.author: muralikk
-ms.openlocfilehash: d096d6fd4664fecc9c759d683ed79e76cda9b6af
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: cc36fdde962ec44d679dc0e96f440b0437a84fa8
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
 この記事では、Azure Import/Export サービスを使用してディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage と Azure Files に安全に転送する詳細な手順を説明します。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 1 台の内蔵 SATA ディスク ドライブのデータを、Azure Blob Storage または Azure Files にインポートできます。 
@@ -151,7 +151,7 @@ Import/Export サービスで使用できるのは、2.5 インチ SSD か、2.5
 ### <a name="operating-system"></a>オペレーティング システム
 Azure にドライブを送付する前、WAImportExport ツールを使用してハード ドライブを準備するときに、次の 64 ビット オペレーティング システムのいずれかを使用できます。
 
-Windows 7 Enterprise、Windows 7 Ultimate、Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise、Windows 10<sup>1</sup>、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2。 このすべてのオペレーティング システムが BitLocker ドライブ暗号化をサポートしています。
+Windows 7 Enterprise、Windows 7 Ultimate、Windows 8 Pro、Windows 8 Enterprise、Windows 8.1 Pro、Windows 8.1 Enterprise、Windows 10、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2。 このすべてのオペレーティング システムが BitLocker ドライブ暗号化をサポートしています。
 
 ### <a name="locations"></a>場所
 Azure Import/Export サービスでは、すべてのパブリック Azure Storage アカウントとの間でのデータのコピーをサポートしています。 ハード ディスク ドライブは、一覧のいずれかの場所に送付できます。 ここに示されていないパブリック Azure の場所にストレージ アカウントが存在する場合、Azure Portal または Import/Export REST API を使用してジョブを作成するときに、別の送付先が示されます。

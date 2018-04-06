@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Store のディザスター リカバリーのガイダンス | Microsoft Docs"
-description: "Azure Data Lake Store のディザスター リカバリーのガイダンス"
+title: Azure Data Lake Store のディザスター リカバリーのガイダンス | Microsoft Docs
+description: Azure Data Lake Store のディザスター リカバリーのガイダンス
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 02/21/2018
 ms.author: nitinme
-ms.openlocfilehash: d76f756e7a6fe77886f0d4e00ab8b23273b4e09d
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 9a2705a2372ea4f2fbea1e27bf675679dfda28f8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Data Lake Store 内のデータに対するディザスター リカバリーのガイダンス
 
-Azure Data Lake Store アカウントのデータは、リージョン内で発生する一時的なハードウェア障害に対して、自動レプリカによる回復性を備えています。 これにより、持続性と高可用性を確保し、Azure Data Lake Store の SLA を達成しています。 この記事では、まれに発生するリージョン全体の障害や誤削除からデータをさらに保護する方法に関するガイダンスを示します。
+Azure Data Lake Store によって、ローカル冗長ストレージ (LRS) が与えられます。 そのため、Azure Data Lake Store アカウントのデータは、リージョン内で発生する一時的なハードウェア障害に対して、自動レプリカによる回復性を備えています。 これにより、持続性と高可用性を確保し、Azure Data Lake Store の SLA を達成しています。 この記事では、まれに発生するリージョン全体の障害や誤削除からデータをさらに保護する方法に関するガイダンスを示します。
 
 ## <a name="disaster-recovery-guidance"></a>ディザスター リカバリーの ガイダンス
-すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。 ディザスター リカバリー計画を作成する場合は、次の Azure ドキュメントをご覧ください。 独自の計画を作成する際に役立つリソースがあります。
+すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。 ディザスター リカバリー計画を作成するには、この記事の情報をお読みください。 独自の計画を作成する際に役立つリソースがあります。
 
 * [Azure アプリケーションの障害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)

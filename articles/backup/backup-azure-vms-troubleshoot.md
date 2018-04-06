@@ -1,11 +1,11 @@
 ---
-title: "Azure 仮想マシンのバックアップ エラーのトラブルシューティング | Microsoft Docs"
-description: "Azure 仮想マシンのバックアップと復元のトラブルシューティング"
+title: Azure 仮想マシンのバックアップ エラーのトラブルシューティング | Microsoft Docs
+description: Azure 仮想マシンのバックアップと復元のトラブルシューティング
 services: backup
-documentationcenter: 
+documentationcenter: ''
 author: trinadhk
 manager: shreeshd
-editor: 
+editor: ''
 ms.assetid: 73214212-57a4-4b57-a2e2-eaf9d7fde67f
 ms.service: backup
 ms.workload: storage-backup-recovery
@@ -13,38 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/21/2018
-ms.author: trinadhk;markgal;jpallavi;
-ms.openlocfilehash: d8840d2561e6102fe1679c36e981de6614b84d54
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.author: trinadhk;markgal;jpallavi;sogup
+ms.openlocfilehash: 89535fc22faccfb184d9b56a6138337877957829
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
 
-## <a name="backup"></a>Backup
-
-### <a name="error-the-specified-disk-configuration-is-not-supported"></a>エラー: 指定されたディスク構成がサポートされていません
-
-> [!NOTE]
-> 1 TB を超えるディスクが存在する VM のバックアップをサポートするためのプライベート プレビューがあります。 詳しくは、[大容量ディスク VM バックアップ サポートのプライベート プレビュー](https://gallery.technet.microsoft.com/Instant-recovery-point-and-25fe398a)に関するページをご覧ください。
->
->
-
-現在 Azure Backup は [1023 GB を超える](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)ディスク サイズをサポートしていません。 
-- 1 TB を超えるディスクがある場合は、1 TB より小さい[新規ディスクを接続](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)してください。 <br>
-- 次に、1 TB を超えるディスクから、新規作成した 1 TB より小さいサイズのディスクにデータをコピーします。 <br>
-- すべてのデータがコピーされたことを確認し、1 TB を超えるディスクを取り外します。
-- バックアップを開始します。
-
 | エラーの詳細 | 対処法 |
 | --- | --- |
-| VM が存在しないため、操作を実行できませんでした。 - バックアップ データを削除しないで、仮想マシンの保護を停止してください。 詳細については、 http://go.microsoft.com/fwlink/?LinkId=808124 を参照してください。 |これは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が検索され続ける場合に発生します。 このエラーを解決するには、次の手順に従います。 <ol><li> 同じ名前と同じリソース グループ名 [クラウド サービス名] を使用して仮想マシンを作成し直します。<br>(または)</li><li> バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 [詳細](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
+| VM が存在しないため、操作を実行できませんでした。 - バックアップ データを削除しないで、仮想マシンの保護を停止してください。 詳細については、http://go.microsoft.com/fwlink/?LinkId=808124 をご覧ください。 |これは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が検索され続ける場合に発生します。 このエラーを解決するには、次の手順に従います。 <ol><li> 同じ名前と同じリソース グループ名 [クラウド サービス名] を使用して仮想マシンを作成し直します。<br>(または)</li><li> バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 [詳細](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | 仮想マシンがネットワークに接続していないためにスナップショット操作が失敗した - VM がネットワークにアクセスできることを確認してください。 スナップショットを成功させるには、Azure データセンターの IP 範囲をホワイトリストに追加するか、プロキシ サーバーをネットワーク アクセス用にセットアップします。 詳細については、http://go.microsoft.com/fwlink/?LinkId=800034 を参照してください。 既にプロキシ サーバーを使用している場合は、プロキシ サーバー設定が正しく構成されていることを確認してください | このエラーは、仮想マシンで送信インターネット接続を拒否している場合にスローされます。 インターネット接続は、VM スナップショット拡張機能で仮想マシンの基になるディスクのスナップショットを取得するために必要です。 ネットワーク アクセスのブロックによるスナップショットのエラーを修正する方法については、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine)を参照してください。 |
-| VM エージェントが Azure Backup サービスと通信できません。 - VM がネットワークに接続でき、最新の VM エージェントが実行されていることを確認します。 詳細については、http://go.microsoft.com/fwlink/?LinkId=800034 を参照してください |VM エージェントに問題があるか、Azure インフラストラクチャへのネットワーク アクセスが何らかの原因でブロックされている場合に、このエラーがスローされます。 VM のスナップショットに関する問題のデバッグについては、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup)を参照してください。<br> VM エージェントで問題が発生していない場合は、VM を再起動してください。 VM の状態が正しくないため問題が発生する場合があります。その場合は、VM を再起動すると、この "正しくない状態" がリセットされます。 |
+| VM エージェントが Azure Backup サービスと通信できません。 - VM がネットワークに接続でき、最新の VM エージェントが実行されていることを確認します。 詳細については、http://go.microsoft.com/fwlink/?LinkId=800034 をご覧ください。 |VM エージェントに問題があるか、Azure インフラストラクチャへのネットワーク アクセスが何らかの原因でブロックされている場合に、このエラーがスローされます。 VM のスナップショットに関する問題のデバッグについては、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup)を参照してください。<br> VM エージェントで問題が発生していない場合は、VM を再起動してください。 VM の状態が正しくないため問題が発生する場合があります。その場合は、VM を再起動すると、この "正しくない状態" がリセットされます。 |
 | VM はプロビジョニングに失敗した状態です - VM を再起動して、バックアップのために VM が実行中またはシャットダウンの状態になっていることを確認してください | これは、いずれかの拡張機能が失敗して、VM の状態がプロビジョニングに失敗した状態になる場合に発生します。 拡張機能の一覧に移動し、失敗した拡張機能があるかどうかを確認して、それを削除し、仮想マシンを再起動してみます。 すべての拡張機能が実行状態になっている場合は、VM エージェント サービスが実行されているかどうかを確認してください。 されていない場合は、VM エージェント サービスを再起動します。 | 
-| 管理ディスクの VMSnapshot の拡張操作に失敗しました - バックアップ操作を再試行してください。 問題が解決しない場合は、'http://go.microsoft.com/fwlink/?LinkId=800034' の手順に従います。 それでもエラーになる場合は、Microsoft サポートに問い合わせてください | このエラーは、Azure Backup サービスがスナップショットのトリガーに失敗した場合に発生します。 VM のスナップショットに関する問題のデバッグについては、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed)を参照してください。 |
+| 管理ディスクの VMSnapshot の拡張操作に失敗しました - バックアップ操作を再試行してください。 問題が繰り返し発生する場合は、'http://go.microsoft.com/fwlink/?LinkId=800034' の手順に従ってください。 それでもエラーになる場合は、Microsoft サポートに問い合わせてください | このエラーは、Azure Backup サービスがスナップショットのトリガーに失敗した場合に発生します。 VM のスナップショットに関する問題のデバッグについては、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vmsnapshot-extension-operation-failed)を参照してください。 |
 | 仮想マシンのスナップショットをコピーできませんでした。ストレージ アカウントに十分な空き領域がありません - ストレージ アカウントに、仮想マシンに接続されているプレミアム ストレージ ディスクにあるデータと同じ量の空き領域があることを確認してください | プレミアム VM の場合、スナップショットがストレージ アカウントにコピーされます。 これは、スナップショット上で動作するバックアップ管理トラフィックが、プレミアム ディスクを使用するアプリケーションで利用できる IOPS の数を制限しないようにするためです。 Azure Backup サービスが、スナップショットをストレージ アカウントにコピーし、ストレージ アカウント内のこのコピーされた場所からコンテナーにデータを転送できるように、ストレージ アカウントの合計領域の 50% のみを割り当てることをお勧めします。 | 
 | VM エージェントが応答していないため、この操作を実行できません |VM エージェントに問題があるか、Azure インフラストラクチャへのネットワーク アクセスが何らかの原因でブロックされている場合に、このエラーがスローされます。 Windows VM の場合は、サービスで VM エージェントのサービスの状態を確認し、コントロール パネルのプログラムにエージェントが表示されているかどうかを調べます。 コントロール パネルからプログラムを削除し、[下記の手順](#vm-agent)に従ってエージェントを再インストールしてみてください。 エージェントを再インストールした後で、確認のためにアドホック バックアップをトリガーします。 |
 | Recovery Services 拡張機能の操作に失敗しました。 - 仮想マシンに最新の仮想マシン エージェントが存在し、エージェント サービスが実行されていることを確認してください。 バックアップ操作を再試行し、失敗した場合は、Microsoft サポートにお問い合わせください。 |このエラーは、VM エージェントが古い場合にスローされます。 次の「VM エージェントの更新」を参照して、VM エージェントを更新してください。 |

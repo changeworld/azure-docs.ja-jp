@@ -1,12 +1,12 @@
 ---
-title: "Azure Advisor の概要 | Microsoft Docs"
-description: "Azure Advisor を使用して、Azure のデプロイを最適化します。"
+title: Azure Advisor の概要 | Microsoft Docs
+description: Azure Advisor を使用して、Azure のデプロイを最適化します。
 services: advisor
 documentationcenter: NA
 author: KumudD
 manager: carmonm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: advisor
 ms.devlang: NA
 ms.topic: article
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/16/2016
 ms.author: kumud
-ms.openlocfilehash: a4096b11a828cf6676aa22b11c4dd4d75f3b0286
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 0aa97a7557706f0b704d4e31a84e9d356d1ad087
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="introduction-to-azure-advisor"></a>Azure Advisor の概要
 
@@ -43,9 +43,6 @@ Advisor ダッシュボードに、すべてのサブスクリプションの個
 
   ![Advisor の推奨事項の種類](./media/advisor-overview/advisor-dashboard.png)
 
-> [!NOTE]
-> サブスクリプションで Azure Advisor を使用するには、サブスクリプションの "*所有者*" が Advisor ダッシュボードを起動する必要があります。  この操作によって、サブスクリプションが Advisor に登録されます。  その時点から、サブスクリプションの "*所有者*"、"*共同作成者*"、または "*閲覧者*" がサブスクリプションの Advisor の推奨事項にアクセスできるようになります。 
-
 カテゴリをクリックして、そのカテゴリ内の推奨事項の一覧を表示し、推奨事項を選択して詳細を確認できます。  また、実行できるアクションを確認して、機会を活用したり、問題を解決したりできます。
 
 ![Advisor の推奨事項のカテゴリ](./media/advisor-overview/advisor-ha-category-example.png) 
@@ -62,12 +59,12 @@ Advisor は、[Azure Portal](https://aka.ms/azureadvisordashboard) を通して�
 仮想マシンのリソース インターフェイスを使用して、Advisor の推奨事項を表示することもできます。 仮想マシンを選択し、メニューで [Advisor の推奨事項] までスクロールします。 
 
 ### <a name="what-permissions-do-i-need-to-access-advisor"></a>Advisor にアクセスするために必要なアクセス許可は?
-
-サブスクリプションの Advisor の推奨事項を取得するには、まず、サブスクリプションを Advisor に登録する必要があります。 サブスクリプションの "*所有者*" が Advisor ダッシュボードを起動すると、サブスクリプションが登録されます。 これは 1 回限りの操作です。 サブスクリプションが登録されたら、サブスクリプションの "*所有者*"、"*共同作成者*"、または "*閲覧者*" として Advisor の推奨事項にアクセスできます。
+ 
+サブスクリプションの*所有者*、*共同作成者*、または*閲覧者*として Advisor の推奨事項にアクセスできます。
 
 ### <a name="what-resources-does-advisor-provide-recommendations-for"></a>Advisor が推奨事項を提供するリソースは?
 
-Advisor は、仮想マシン、可用性セット、アプリケーション ゲートウェイ、App Services、SQL Server、SQL Database、および Redis Cache に関する推奨事項を提供します。
+Advisor は、仮想マシン、可用性セット、アプリケーション ゲートウェイ、App Services、SQL Server、および Redis Cache に関する推奨事項を提供します。
 
 ### <a name="can-i-postpone-or-dismiss-a-recommendation"></a>推奨事項は延期したり無視したりできるか?
 
