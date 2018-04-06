@@ -1,12 +1,12 @@
 ---
-title: "iothub-explorer を使用した Azure IoT Hub クラウド デバイス メッセージングの管理 | Microsoft Docs"
-description: "iothub-explorer CLI ツールを使用して、Azure IoT Hub で D2C (デバイスからクラウド) メッセージを監視し、C2D (クラウドからデバイス) メッセージを送信する方法について説明します。"
+title: iothub-explorer を使用した Azure IoT Hub クラウド デバイス メッセージングの管理 | Microsoft Docs
+description: iothub-explorer CLI ツールを使用して、Azure IoT Hub で D2C (デバイスからクラウド) メッセージを監視し、C2D (クラウドからデバイス) メッセージを送信する方法について説明します。
 services: iot-hub
-documentationcenter: 
+documentationcenter: ''
 author: shizn
 manager: timlt
-tags: 
-keywords: "iothub-explorer, クラウド デバイス メッセージング, IoT Hub C2D, C2D メッセージング"
+tags: ''
+keywords: iothub-explorer, クラウド デバイス メッセージング, IoT Hub C2D, C2D メッセージング
 ms.assetid: 04521658-35d3-4503-ae48-51d6ad3c62cc
 ms.service: iot-hub
 ms.devlang: arduino
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: xshi
-ms.openlocfilehash: 30151b7bdc544bc36e959cc3528d37897198fc7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e74c08849ae2f98d3189c0cd3d340874ea085ff
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-iothub-explorer-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>iothub-explorer を使用してデバイスと IoT Hub 間でメッセージを送受信する
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
 [iothub-explorer](https://github.com/azure/iothub-explorer) には、IoT Hub 管理を容易にするためのコマンドがいくつか用意されています。 このチュートリアルでは、iothub-explorer を使用して、デバイスと IoT Hub 間でメッセージを送受信する方法を中心に説明します。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="what-you-will-learn"></a>学習内容
 
@@ -82,7 +84,7 @@ IoT Hub からデバイスにメッセージを送信するには、次の手順
 > [!Note]
 > デバイスは、メッセージの受信時に、IoT Hub に対して個別に確認コマンドを送信する必要はありません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 使用している IoT デバイスと Azure IoT Hub の間で D2C メッセージを監視し、C2D メッセージを送信する方法については学習しました。
 

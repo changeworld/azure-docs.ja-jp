@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 03/01/2017
 ms.author: yanacai
 ms.openlocfilehash: 55242bcf644ca0e7f30cfe7eada2130451c36e64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="scale-u-sql-local-run-and-test-with-azure-data-lake-u-sql-sdk"></a>Azure Data Lake U-SQL SDK を使用して U-SQL のローカル実行をスケーリングする
 
@@ -68,7 +68,7 @@ U-SQL スクリプトでは、相対パスとローカル絶対パスの両方�
 
 U-SQL スクリプトをローカルで実行すると、コンパイル時に、現在実行中のディレクトリの下に作業ディレクトリが作成されます。 この作業ディレクトリには、コンパイル出力だけでなく、ローカル実行に必要なランタイム ファイルがシャドウ コピーされます。 作業ディレクトリのルート フォルダーは "ScopeWorkDir" と呼ばれ、作業ディレクトリには次のファイルが含まれます。
 
-|ディレクトリ/ファイル|ディレクトリ/ファイル|ディレクトリ/ファイル|定義|説明|
+|ディレクトリ/ファイル|ディレクトリ/ファイル|ディレクトリ/ファイル|定義|[説明]|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |ランタイム バージョンのハッシュ文字列|ローカル実行に必要なランタイム ファイルのシャドウ コピー|
 | |Script_66AE4909AA0ED06C| |スクリプト名 + スクリプト パスのハッシュ文字列|コンパイル出力と実行ステップのログ記録|
@@ -142,7 +142,7 @@ U-SQL のローカル実行では、依存関係にある特定の CppSDK パス
 **run** の省略可能な引数を次に示します。
 
 
-|引数|既定値|Description|
+|引数|既定値|[説明]|
 |--------|-------------|-----------|
 |-分離コード|False|スクリプトには .cs 分離コードがあります|
 |-CppSDK| |CppSDK ディレクトリ|
@@ -174,7 +174,7 @@ U-SQL のローカル実行では、依存関係にある特定の CppSDK パス
 **compile**の省略可能な引数を次に示します。
 
 
-|引数|説明|
+|引数|[説明]|
 |--------|-----------|
 | -CodeBehind (既定値 "False")|スクリプトには .cs 分離コードがあります|
 | -CppSDK (既定値 "")|CppSDK ディレクトリ|
@@ -212,7 +212,7 @@ U-SQL スクリプトをコンパイルし、作業ディレクトリ、参照�
 
 **execute** の省略可能な引数を次に示します。
 
-|引数|説明|
+|引数|[説明]|
 |--------|-----------|
 |-DataRoot (既定値 "")|メタデータ実行のデータ ルート。 既定値は **LOCALRUN_DATAROOT** 環境変数です。|
 |-MessageOut (既定値 "")|ファイルにダンプされるコンソール上のメッセージ。|
@@ -337,39 +337,39 @@ LocalRunHelper.exe は、U-SQL のローカル コンパイルや実行などの
 
 public LocalRunHelper([System.IO.TextWriter messageOutput = null])
 
-|パラメーター|型|説明|
+|パラメーター|type|[説明]|
 |---------|----|-----------|
 |messageOutput|System.IO.TextWriter|出力メッセージ用。コンソールで使用するには null に設定します|
 
-**プロパティ**
+**Properties**
 
-|プロパティ|型|説明|
+|プロパティ|type|[説明]|
 |--------|----|-----------|
-|AlgebraPath|string|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
-|CodeBehindReferences|string|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
-|CppSdkDir|string|CppSDK ディレクトリ|
-|CurrentDir|string|現在のディレクトリ|
-|DataRoot|string|データ ルート パス|
-|DebuggerMailPath|string|デバッガーのメール スロットのパス|
+|AlgebraPath|文字列|代数ファイルへのパス (代数ファイルは、コンパイル結果の 1 つです)|
+|CodeBehindReferences|文字列|スクリプトに分離コード参照がある場合は、パスを ';' で区切って指定します|
+|CppSdkDir|文字列|CppSDK ディレクトリ|
+|CurrentDir|文字列|現在のディレクトリ|
+|DataRoot|文字列|データ ルート パス|
+|DebuggerMailPath|文字列|デバッガーのメール スロットのパス|
 |GenerateUdoRedirect|bool|アセンブリ読み込みリダイレクトのオーバーライド構成を生成するかどうかを示します|
 |HasCodeBehind|bool|スクリプトに分離コードがあるかどうか|
-|InputDir|string|入力データ用のディレクトリ|
-|MessagePath|string|メッセージ ダンプ ファイルのパス|
-|OutputDir|string|出力データ用のディレクトリ|
-|Parallelism|int|代数を実行する並列処理|
+|InputDir|文字列|入力データ用のディレクトリ|
+|MessagePath|文字列|メッセージ ダンプ ファイルのパス|
+|OutputDir|文字列|出力データ用のディレクトリ|
+|並列処理|int|代数を実行する並列処理|
 |ParentPid|int|サービスの監視が終了する親の PID。無視する場合は 0 または負数を設定します|
-|ResultPath|string|結果ダンプ ファイルのパス|
-|RuntimeDir|string|ランタイム ディレクトリ|
-|ScriptPath|string|スクリプトの検出場所|
+|ResultPath|文字列|結果ダンプ ファイルのパス|
+|RuntimeDir|文字列|ランタイム ディレクトリ|
+|ScriptPath|文字列|スクリプトの検出場所|
 |Shallow|bool|簡易コンパイルかどうか|
-|TempDir|string|一時ディレクトリ|
-|UseDataBase|string|分離コードの一時アセンブリ登録に使用するデータベース。既定では master|
-|WorkDir|string|任意の作業ディレクトリ|
+|TempDir|文字列|一時ディレクトリ|
+|UseDataBase|文字列|分離コードの一時アセンブリ登録に使用するデータベース。既定では master|
+|WorkDir|文字列|任意の作業ディレクトリ|
 
 
 **メソッド**
 
-|メソッド|説明|戻り値|パラメーター|
+|方法|[説明]|戻り値|パラメーター|
 |------|-----------|------|---------|
 |public bool DoCompile()|U-SQL スクリプトをコンパイルします|成功時に True| |
 |public bool DoExec()|コンパイル結果を実行します|成功時に True| |
@@ -388,7 +388,7 @@ E_CSC_SYSTEM_INTERNAL: 内部エラーです。 ファイルを読み込めな�
 - NugetPackage\build\runtime\ 内のすべての依存関係ファイルがプロジェクトの作業ディレクトリにコピーされていることを確認します。
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
 * 診断情報のログについては、「[Azure Data Lake Analytics の診断ログへのアクセス](data-lake-analytics-diagnostic-logs.md)」を参照してください。

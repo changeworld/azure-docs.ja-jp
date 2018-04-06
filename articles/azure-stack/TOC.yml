@@ -124,7 +124,7 @@
             - name: ストレージ容量の管理
               href: azure-stack-manage-storage-shares.md
             - name: Azure Stack の物理ストレージ容量を管理する
-              href: azure-stack-manage-storage-physical-capacity.md
+              href: azure-stack-manage-storage-physical-memory-capacity.md
         - name: ハードウェアの交換
           items:
             - name: ノード アクション

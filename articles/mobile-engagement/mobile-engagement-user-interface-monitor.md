@@ -1,11 +1,11 @@
 ---
-title: "Azure モバイル エンゲージメント ユーザー インターフェイス - 監視"
-description: "Azure モバイル エンゲージメントを使用してアプリケーションに関するデータをリアルタイムに監視する方法を説明します。"
+title: Azure モバイル エンゲージメント ユーザー インターフェイス - 監視
+description: Azure モバイル エンゲージメントを使用してアプリケーションに関するデータをリアルタイムに監視する方法を説明します。
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: b91ad89a-b89d-4377-abb0-cc2d16a2836d
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 5f8a02e35db93585e0fe46d77b3ad18b94c99597
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b370a5db1acee37ce234f5ec3f004be20719cfea
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-monitor-real-time-data-about-your-application"></a>アプリケーションに関するデータをリアルタイムに監視する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 この記事では、**Mobile Engagement** ポータルの**[モニター]** ページについて説明します。 **Mobile Engagement** ポータルはモバイル アプリの監視と管理に使用します。 ポータルを使い始めるには、最初に **Azure Mobile Engagement** アカウントを作成する必要があることに注意してください。 
 
 UI の [監視] セクションは、リアルタイムの分析情報を提供します。ここでは、しきい値がこれまで UI の [[分析]](mobile-engagement-user-interface-analytics.md) セクションで取得したのとほぼ同じ値に達したときに通知するように設定できます。 [概念](http://go.microsoft.com/fwlink/?LinkId=525555)の**用語解説**に関するセクションでは、次のような、分析と監視で使用される用語と省略形を定義しています。アクティブ ユーザー、新しいユーザー、リテンション ユーザー、セッション、ユーザー パス グラフ、ユーザー マップ、追跡 URL、傾向、アクティビティ、イベント、ジョブ、エラー、追加情報、クラッシュ、アプリ情報。
@@ -50,7 +54,7 @@ UI の [監視] セクションは、リアルタイムの分析情報を提供�
 ![Monitor3][16]
 
 ## <a name="monitor---alerts"></a>監視 - アラート
-メールやインスタント メッセージから自動的に送信されるようにアラートの条件を指定することもできます。 (Google の GTalk や Apple の iChat などの XMPP 対応サービスがサポートされています)。アラートは、秒、分、時間あたりのセッション、ジョブ、イベント、エラー、クラッシュの特定の数値が事前に定義した検出しきい値より大きい (>) か、小さい (<) かに基づいています。 アラートは、指定された種類のアクティビティをすべて監視することも、ジョブ、イベント、エラーの特定のアクティビティのみを監視することもできます。 
+メールやインスタント メッセージから自動的に送信されるようにアラートの条件を指定することもできます。 (Google の GTalk や Apple の iChat などの XMPP に準拠しているサービスがサポートされています)。アラートは、秒、分、時間あたりのセッション、ジョブ、イベント、エラー、クラッシュの特定の数値が事前に定義した検出しきい値より大きい (>) か、小さい (<) かに基づいています。 アラートは、指定された種類のアクティビティをすべて監視することも、ジョブ、イベント、エラーの特定のアクティビティのみを監視することもできます。 
 
 [最小検出間隔] を指定することもできます。これは、同じアラートの 2 つの通知を区別する最短時間 (分) で、アラートがトリガーされたときに、指定した間隔で通知を 2 つ以上受信しないようにします。
 

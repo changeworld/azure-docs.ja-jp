@@ -1,24 +1,24 @@
 ---
 title: Azure Traffic Manager - FAQ | Microsoft Docs
-description: "この記事では、Traffic Manager に関してよく寄せられる質問に対する回答を示します。"
+description: この記事では、Traffic Manager に関してよく寄せられる質問に対する回答を示します。
 services: traffic-manager
-documentationcenter: 
+documentationcenter: ''
 author: KumudD
 manager: jeconnoc
-editor: 
+editor: ''
 ms.assetid: 75d5ff9a-f4b9-4b05-af32-700e7bdfea5a
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2018
+ms.date: 03/18/2018
 ms.author: kumud
-ms.openlocfilehash: 09fd133ec72f7ebbbcb45f652855e7640656a0ca
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: d9db669ab905fb51390f6ca80736af4cde13d902
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -57,7 +57,6 @@ Traffic Manager は DNS レベルでアプリケーションと統合される�
 「[Traffic Manager のしくみ](../traffic-manager/traffic-manager-overview.md#how-traffic-manager-works)」の説明にあるとおり、Traffic Manager は DNS レベルで動作します。 DNS 参照が完了すると、クライアントはアプリケーション エンドポイントに Traffic Manager 経由ではなく直接接続します。 そのため、この接続では、任意のアプリケーション プロトコルを使用できます。 監視プロトコルとして TCP を選択すると、アプリケーション プロトコルを使用せずに、Traffic Manager のエンドポイント正常性監視を実行できます。 アプリケーション プロトコルを使用して正常性を検証する場合、エンドポイントは HTTP または HTTPS の GET 要求に応答できる必要があります。
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>"ネイキッド" ドメイン名で Traffic Manager を使用することはできますか。
-
 
 いいえ。 DNS 標準では、同じ名前を持つ他の DNS レコードと CNAME が共存することは許可されていません。 DNS ゾーンの頂点 (またはルート) には、SOA と権限のある NS レコードという、既存の 2 つの DNS レコードが常に含まれます。 これは、ゾーンの頂点で CNAME レコードを作成すると DNS 標準に違反してしまうことを意味します。
 
@@ -124,9 +123,6 @@ Traffic Manager は、クエリの送信元 IP (ほとんどの場合、ユー�
 
 ## <a name="real-user-measurements"></a>Real User Measurements
 
->[!NOTE]
->Traffic Manager の Real User Measurements 機能はパブリック プレビューであり、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 この機能の可用性と状態に関する最新の通知については、[Azure Traffic Manager の更新情報](https://azure.microsoft.com/updates/?product=traffic-manager)に関するページをご覧ください。
-
 ### <a name="what-are-the-benefits-of-using-real-user-measurements"></a>Real User Measurements のメリットは何ですか。
 パフォーマンスによるルーティング方法を使用する場合、Traffic Manager は、送信元 IP および EDNS クライアントのサブネットを確認し (渡された場合)、そのサブネットを、サービスによって保持されているネットワーク待機時間インテリジェンスと照合することで、エンドユーザーにとって最適な接続先 Azure リージョンを選択します。 Real User Measurements により、エンド ユーザー ベースのこの動作が強化されます。エンド ユーザーの動作がこの待機時間テーブルに反映され、このテーブルは、Azure に接続するエンド ユーザーの接続元ネットワークを確実に網羅するようになるためです。 これにより、エンドユーザーのルーティングの精度が向上します。
 
@@ -141,7 +137,8 @@ Real User Measurements から取得された追加情報は、パフォーマン
 
 ### <a name="how-do-i-turn-off-real-user-measurements-for-my-subscription"></a>サブスクリプションの Real User Measurements をオフにするには、どうすればよいですか。
 クライアント アプリケーションからの待機時間の測定値の収集と送信を停止すると、Real User Measurements 関連の課金を停止できます。 たとえば、測定 JavaScript が Web ページに埋め込まれている場合は、JavaScript を削除するか、ページがレンダリングされるときに、その呼び出しをオフにすることで、この機能の使用を停止できます。
-また、キーを削除して、Real User Measurements をオフにすることもできます。 これを行うと、そのキーを使って Traffic Manager に送信されたすべての測定値が破棄されます。
+
+キーを削除して、Real User Measurements をオフにすることもできます。 キーを削除すると、そのキーで Traffic Manager に送信されるすべての測定値が破棄されます。
 
 ### <a name="can-i-use-real-user-measurements-with-client-applications-other-than-web-pages"></a>Web ページ以外のクライアント アプリケーションで Real User Measurements を使用できますか。
 はい。Real User Measurements は、さまざまな種類のエンド ユーザー クライアントによって収集されたデータを取り込むように設計されています。 この FAQ は、新しい種類のクライアント アプリケーションがサポートされた時点で更新されます。
@@ -156,16 +153,16 @@ Real User Measurements から取得された追加情報は、パフォーマン
 いいえ。Real User Measurements スクリプトは、呼び出されるたびに、サービスで指定されているように 6 つの Azure リージョン セットを測定します。 このセットは呼び出しによって異なり、大量の呼び出しが発生すると、測定範囲はさまざまな Azure リージョンにまたがります。
 
 ### <a name="can-i-limit-the-number-of-measurements-made-to-a-specific-number"></a>測定数を特定の数値に制限できますか。
-測定 JavaScript は Web ページに埋め込まれており、使用の開始と停止のタイミングは完全にご自身で制御できます。 Traffic Manager サービスが、測定対象の Azure リージョン一覧に対する要求を受け取った場合に、リージョン セットが返されます。 また、プレビュー期間中は、Traffic Manager にレポートされた測定については課金されません
+測定 JavaScript は Web ページに埋め込まれており、使用の開始と停止のタイミングは完全にご自身で制御できます。 Traffic Manager サービスが、測定対象の Azure リージョン一覧に対する要求を受け取った場合に、リージョン セットが返されます。
 
 ### <a name="can-i-see-the-measurements-taken-by-my-client-application-as-part-of-real-user-measurements"></a>Real User Measurements の一環としてクライアント アプリケーションによって取得される測定を表示できますか。
-クライアント アプリケーションから測定ロジックが実行されるため、待機時間の測定値の表示など、動作を完全に制御できます。 Traffic Manager では、サブスクリプションにリンクされているキーで受信した測定値の集計ビューはレポートされません
+クライアント アプリケーションから測定ロジックが実行されるため、待機時間の測定値の表示など、動作を完全に制御できます。 Traffic Manager では、サブスクリプションにリンクされているキーで受信した測定値の集計ビューはレポートされません。
 
 ### <a name="can-i-modify-the-measurement-script-provided-by-traffic-manager"></a>Traffic Manager によって提供される測定スクリプトを変更できますか。
 Web ページに埋め込まれた内容を制御しているときは、待機時間が正しく測定およびレポートされるように、測定スクリプトは変更しないようにすることを強くお勧めします。
 
 ### <a name="will-it-be-possible-for-others-to-see-the-key-i-use-with-real-user-measurements"></a>Real User Measurements で使用しているキーを、他のユーザーが見ることはできますか。
-測定スクリプトを Web ページに埋め込むと、他のユーザーが、そのスクリプトと Real User Measurements (RUM) キーを表示できるようになります。 ただし、このキーは、サブスクリプション ID とは異なり、Traffic Manager が、この目的のためだけに生成するものです。 RUM キーが知られても、Azure アカウントの安全性に問題が発生することはありません
+測定スクリプトを Web ページに埋め込むと、他のユーザーが、そのスクリプトと Real User Measurements (RUM) キーを表示できるようになります。 ただし、このキーは、サブスクリプション ID とは異なり、Traffic Manager が、この目的のためだけに生成するものです。 RUM キーが知られても、Azure アカウントの安全性に問題が発生することはありません。
 
 ### <a name="can-others-abuse-my-rum-key"></a>自分の RUM キーを、他のユーザーが悪用することはできますか。
 他のユーザーが、あなたのキーを使用して、誤った情報を Azure に送信することはできますが、誤った測定値が 2 ～ 3 個あっても、その測定値は、Azure に送信された他のすべての測定値と共に考慮されるため、ルーティングが変更されることはありません。 キーを変更する必要がある場合は、古いキーが破棄された時点で、キーを再生成できます。
@@ -187,9 +184,6 @@ Web ページに埋め込まれた内容を制御しているときは、待機�
 
 ## <a name="traffic-view"></a>Traffic View
 
->[!NOTE]
->Traffic Manager の Traffic View 機能はパブリック プレビューであり、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 この機能の可用性と状態に関する最新の通知については、[Azure Traffic Manager の更新情報](https://azure.microsoft.com/updates/?product=traffic-manager)に関するページをご覧ください。
-
 ### <a name="what-does-traffic-view-do"></a>Traffic View は何をしますか。
 Traffic View は Traffic Manager の機能で、ユーザーとユーザー エクスペリエンスを詳しく理解するうえで役立ちます。 この Traffic View は、Traffic Manager で受信したクエリと、サービスによって保持されるネットワーク待機時間インテリジェンス テーブルを使用します。このテーブルには、次の情報が示されています。
 - Azure のエンドポイントに接続しているユーザーのリージョン。
@@ -197,7 +191,7 @@ Traffic View は Traffic Manager の機能で、ユーザーとユーザー エ�
 - ユーザーのルーティング先の Azure リージョン。
 - その Azure リージョンに対する待機時間。
 
-この情報は、ポータルで表形式ビューで使用することも、生データとしてダウンロードすることもできます。
+この情報は、生データとしてダウンロードして使用することに加えて、ポータルで地理的な地図のオーバーレイと表形式ビューで使用することもできます。
 
 ### <a name="how-can-i-benefit-from-using-traffic-view"></a>Traffic View を使用することには、どのようなメリットがありますか。
 
@@ -209,7 +203,7 @@ Azure Monitor を使用すると、使用しているプロファイルとその
 
 ### <a name="does-traffic-view-use-edns-client-subnet-information"></a>Traffic View は EDNS クライアント サブネット情報を使用しますか。
 
-Traffic View は、出力を作成するときに、EDNS クライアント サブネット情報を考慮しません。 ユーザーのローカル DNS リゾルバーの IP アドレスを使用して、それをグループ化します。
+Azure Traffic Manager によって処理される DNS クエリでは、ECS 情報を考慮に入れて、ルーティングの精度を高めています。 しかし、ユーザーがどこから接続しているかを示すデータ セットの作成時には、Traffic View は DNS リゾルバーの IP アドレスのみを使用しています。
 
 ### <a name="how-many-days-of-data-does-traffic-view-use"></a>Traffic View は何日分のデータを使用しますか。
 
@@ -220,15 +214,18 @@ Traffic View は、ユーザーが表示した日の前日から遡って 7 日�
 Traffic Manager プロファイルで Azure リージョン外でホストされる外部エンドポイントを使用する場合は、その待機時間特性に対するプロキシである Azure リージョンにマップされるよう指定できます (実際、これはパフォーマンスによるルーティング方法を使用する場合に必要)。 これに Azure リージョン マッピングが含まれていると、トラフィック ビュー出力の作成時に、Azure リージョンの待機時間メトリックが使用されます。 Azure リージョンが指定されていない場合、待機時間情報は、こうした外部エンドポイントのデータでは空になります。
 
 ### <a name="do-i-need-to-enable-traffic-view-for-each-profile-in-my-subscription"></a>サブスクリプションのプロファイルごとに Traffic View を有効にする必要がありますか。
-プレビュー期間中、Traffic View は、サブスクリプション レベルで有効化され、そのサブスクリプションのすべての Traffic Manager プロファイルでご利用いただけます。
 
-### <a name="how-can-i-turn-off-traffic-view"></a>Traffic View をオフにするには、どうすればよいですか。
-プレビュー期間中は、サブスクリプションの Traffic View を無効にするためのサポート チケットを作成する必要があります。
+プレビューの期間中、Traffic View はサブスクリプション レベルで有効にされました。 一般公開の前に加えた強化の一部として、Traffic View はプロファイル レベルで有効にできるようになっています。これにより、この機能をよりきめ細かに有効化できます。 既定では、プロファイルでの Traffic View は無効になります。
+
+>[!NOTE]
+>プレビュー期間中にサブスクリプション レベルで Traffic View を有効にした場合、そのサブスクリプションのプロファイルごとに Traffic View を再度有効にする必要があります。
+ 
+### <a name="how-can-i-turn-off-traffic-view"></a>Traffic View をオフにするには、どうすればよいですか。 
+ポータルまたは REST API を使用して、任意のプロファイルの Traffic View をオフにできます。 
 
 ### <a name="how-does-traffic-view-billing-work"></a>Traffic View はどのように課金されますか。
 
 Traffic View の価格は、出力の作成に使用されたデータ ポイントの数に基づきます。 現時点でサポートされている唯一のデータ型は、プロファイルが受け取るクエリです。 また、Traffic View が有効になっているときに実行された処理についてのみ、課金されます。 つまり、1 か月の間で Traffic View が有効になっている期間と、無効になっている期間がある場合、この機能を有効にしていた期間に処理されたデータ ポイントだけが課金対象としてカウントされます。
-プレビュー期間中は、Traffic View の使用に対して課金されることはありません。
 
 ## <a name="traffic-manager-endpoints"></a>Traffic Manager エンドポイント
 
@@ -356,7 +353,6 @@ Traffic Manager の課金には、エンドポイントの正常性チェック�
 詳細については、「[Traffic Manager の価格](https://azure.microsoft.com/pricing/details/traffic-manager/)」のページを参照してください。
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>入れ子になったプロファイルでは、パフォーマンスへの影響はありますか。
-
 
 いいえ。 入れ子になったプロファイルを使用しても、パフォーマンスに影響はありません。
 

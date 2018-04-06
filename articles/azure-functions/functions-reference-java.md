@@ -1,11 +1,11 @@
 ---
-title: "Azure Functions 用 Java 開発者向けリファレンス | Microsoft Docs"
-description: "Java を使用して関数を開発する方法について説明します。"
+title: Azure Functions 用 Java 開発者向けリファレンス | Microsoft Docs
+description: Java を使用して関数を開発する方法について説明します。
 services: functions
 documentationcenter: na
 author: rloutlaw
 manager: justhe
-keywords: "Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, java"
+keywords: Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ, java
 ms.service: functions
 ms.devlang: java
 ms.topic: article
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/07/2017
 ms.author: routlaw
-ms.openlocfilehash: 09a48d61cb27b4db0778295565d167a0688cc99f
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: 71576e65d20d7e8cb7f5ff1c5f19c82439bb6807
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 > [!div class="op_single_selector"]
@@ -35,15 +35,15 @@ ms.lasthandoff: 01/08/2018
 
 バインド | 注釈
 ---|---
-Cosmos DB | N/A
+Cosmos DB | 該当なし
 HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
-Mobile Apps | N/A
-Notification Hubs | N/A
+Mobile Apps | 該当なし
+Notification Hubs | 該当なし
 ストレージ BLOB | <ul><li>`BlobTrigger`</li><li>`BlobInput`</li><li>`BlobOutput`</li></ul>
 ストレージ キュー | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
 ストレージ テーブル | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
 Timer | <ul><li>`TimerTrigger`</li></ul>
-Twilio | N/A
+Twilio | 該当なし
 
 トリガーの入力と出力は、アプリケーション用の [function.json](/azure/azure-functions/functions-reference#function-code) に定義することもできます。
 
@@ -325,9 +325,33 @@ public class Function {
 }
 ```
 
+## <a name="environment-variables"></a>環境変数
+
+多くの場合は、セキュリティ上の理由で、ソース コードからシークレット情報を抽出することが求められます。 これにより、資格情報を他の開発者に誤って提供することなく、コードをソース コード リポジトリに発行できます。 これは、Azure Functions をローカルに実行する場合と、Azure に関数をデプロイする場合の両方で環境変数を使用することによって簡単に実現できます。
+
+Azure Functions をローカルに実行する場合に環境変数を容易に設定するには、これらの変数を local.settings.json ファイルに追加することを選択できます。 このファイルが関数プロジェクトのルート ディレクトリに存在しない場合は、これを自由に作成できます。 このファイルは次のようになります。
+
+```xml
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "AzureWebJobsDashboard": ""
+  }
+}
+```
+
+`values` マップ内の各キー/値のマッピングは、`System.getenv("<keyname>")` を呼び出すことによってアクセスできる環境変数として実行時に使用可能になります (たとえば、`System.getenv("AzureWebJobsStorage")`)。 キー/値のペアの追加は許容され、それが推奨される手法です。
+
+> [!NOTE]
+> この方法が実行される場合は、local.settings.json ファイルをリポジトリの無視ファイルに追加して、それがコミットされないようにするかどうかを考慮するようにしてください。
+
+これで、コードがこれらの環境変数に依存するようになったので、Azure Portal にログインして関数アプリ設定で同じキー/値のペアを設定することにより、コードがローカルにテストする場合と Azure にデプロイされた場合とで同等に機能するようにできます。
+
 ## <a name="next-steps"></a>次の手順
 詳細については、次のリソースを参照してください。
 
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
+* [Visual Studio Code を使用した Java Azure Functions のリモート デバッグ](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud)

@@ -1,28 +1,28 @@
 ---
-title: "チュートリアル - Node.js 向け Azure Batch クライアント ライブラリを使用する | Microsoft Docs"
-description: "Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。"
+title: チュートリアル - Node.js 向け Azure Batch クライアント ライブラリを使用する | Microsoft Docs
+description: Azure Batch の基本的な概念について説明し、Node.js でシンプルなソリューションを作成します。
 services: batch
 author: shwetams
-manager: timlt
-ms.assetid: 
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: nodejs
 ms.topic: hero-article
 ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: shwetams
-ms.openlocfilehash: 96a4203c11cc20e01eb164dfdd9178988074ff48
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: bef298ea8e5710b386822f071d0644c9ddad04a2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Node.js 向け Batch SDK の概要
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
 > * [Python](batch-python-tutorial.md)
-> * [Node.JS](batch-nodejs-get-started.md)
+> * [Node.js](batch-nodejs-get-started.md)
 >
 >
 

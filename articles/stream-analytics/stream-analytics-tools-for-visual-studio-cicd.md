@@ -1,12 +1,11 @@
 ---
-title: "Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定 | Microsoft Docs"
-description: "Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定のチュートリアル"
+title: Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定 | Microsoft Docs
+description: Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定のチュートリアル
 keywords: visual studio, NuGet, DevOps, CI/CD
-documentationcenter: 
+documentationcenter: ''
 services: stream-analytics
 author: su-jie
-manager: 
-editor: 
+manager: ''
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
 ms.service: stream-analytics
 ms.devlang: na
@@ -15,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 9/27/2017
 ms.author: sujie
-ms.openlocfilehash: 0fdc7bd1a98e147bf6c7f7c290f03a878c83a1a9
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 14bb15f19b517b55281959f0de970e3f5e0d360b
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="use-stream-analytics-visual-studio-tools-to-set-up-a-continuous-integration-and-deployment-process"></a>Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定
 このチュートリアルでは、Azure Stream Analytics Visual Studio Tools を使用して継続的インテグレーションおよびデプロイ プロセスを設定する方法を説明します。
@@ -65,7 +64,7 @@ parameters.json ファイルの既定のパラメーターは、Visual Studio �
 ## <a name="command-line-tool"></a>コマンドライン ツール
 
 ### <a name="build-the-project"></a>プロジェクトのビルド
-NuGet パッケージには、**SA.exe** というコマンドライン ツールがあります。 継続的インテグレーションと継続的配信のプロセスで使用できる任意のマシンでのプロジェクトのビルドとローカル テストをサポートします。 
+NuGet パッケージには、**SA.exe** というコマンドライン ツールがあります。 継続的インテグレーションと継続的デリバリーのプロセスで使用できる任意のマシンでのプロジェクトのビルドとローカル テストをサポートします。 
 
 デプロイ ファイルは、既定では現在のディレクトリに配置されます。 次の -OutputPath パラメーターを使用して出力パスを指定できます。
 

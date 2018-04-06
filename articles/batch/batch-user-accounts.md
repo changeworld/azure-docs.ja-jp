@@ -1,24 +1,24 @@
 ---
-title: "Azure Batch のユーザー アカウントでのタスク実行 | Microsoft Docs"
-description: "Azure Batch でタスクを実行するためのユーザー アカウントを構成する"
+title: Azure Batch のユーザー アカウントでのタスク実行 | Microsoft Docs
+description: Azure Batch でタスクを実行するためのユーザー アカウントを構成する
 services: batch
-author: tamram
-manager: timlt
-editor: 
-tags: 
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 05/22/2017
-ms.author: tamram
-ms.openlocfilehash: d408c0565c0ed81fc97cc2b3976a4fc233e31302
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: 1b9c0514e93fa89f8776d830ef242fc4963a6f7b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-tasks-under-user-accounts-in-batch"></a>Batch のユーザー アカウントでタスクを実行する
 
@@ -331,7 +331,7 @@ Batch サービス バージョン 2017-01-01.4.0 では、以前のバージョ
 | `run_elevated` の指定なし | 更新の必要なし                                                                                                                                  |
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ### <a name="batch-forum"></a>Batch フォーラム
 

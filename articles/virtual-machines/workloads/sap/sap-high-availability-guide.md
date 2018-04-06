@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d00db895ffcf9ba9a51e3df2dae5d33c0277dd6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -739,10 +739,10 @@ _**図 15:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷�
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1.  Azure Portal で、 **<*SID*>-lb-ascs ロード バランサー** > **負荷分散規則**の順に選択します。
+1.  Azure ポータルで、次のように選択します。  **< *SID*> lb - ascs ロード バランサー** > **ロード バランシング ルール**です。
 2.  SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
-  * 名前
+  * Name
   * Port
   * バックエンド ポート
 
@@ -1134,7 +1134,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 1.  Windows DNS マネージャーで、ASCS/SCS インスタンスの仮想ホスト名の DNS エントリを作成します。
 
   > [!IMPORTANT]
-  > ASCS/SCS インスタンスの仮想ホスト名に割り当てる IP アドレスは Azure Load Balancer (**<*SID*>-lb-ascs**) に割り当てた IP アドレスと同じでなければなりません。  
+  > ASCS/SCS インスタンスの仮想ホスト名に割り当てられる IP アドレスには、Azure ロード バランサーに割り当てられた IP アドレスと同じである必要があります (**<*SID*> lb - ascs**)。  
   >
   >
 
@@ -1212,7 +1212,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
 
   ポート番号は、SAP Azure Resource Manager テンプレートで定義されています。 PowerShell でポート番号を割り当てることができます。
 
-  **SAP <*SID*> IP** クラスター リソースの新しい ProbePort 値を設定するには、次の PowerShell スクリプトを実行します。 環境に合わせて PowerShell 変数を更新してください。 スクリプトを実行した後、変更を有効にするために SAP クラスター グループを再起動するよう求められます。
+  ProbePort に新しい値を設定する、 **SAP <*SID*> IP**クラスター リソースは、次の PowerShell スクリプトを実行します。 環境に合わせて PowerShell 変数を更新してください。 スクリプトを実行した後、変更を有効にするために SAP クラスター グループを再起動するよう求められます。
 
   ```PowerShell
   $SAPSID = "PR1"      # SAP <SID>
@@ -1270,7 +1270,7 @@ ASCS/SCS インスタンスの SAP プロファイルを変更するには
   }
   ```
 
-  **SAP <*SID*>** クラスターの役割をオンラインにした後、**ProbePort** が新しい値に設定されていることを確認します。
+  した後、 **SAP <*SID* >** クラスターの役割をオンラインであることを確認**ProbePort**が新しい値に設定します。
 
   ```PowerShell
   $SAPSID = "PR1"     # SAP <SID>

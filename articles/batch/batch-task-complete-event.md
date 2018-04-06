@@ -1,22 +1,22 @@
 ---
-title: "Azure Batch タスク完了イベント | Microsoft Docs"
-description: "Batch のタスク完了イベントのリファレンスです。"
+title: Azure Batch タスク完了イベント | Microsoft Docs
+description: Batch のタスク完了イベントのリファレンスです。
 services: batch
-author: tamram
-manager: timlt
-ms.assetid: 
+author: dlepow
+manager: jeconnoc
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: tamram
-ms.openlocfilehash: 015adf7dbc47c29a78df4e4889b2ee1ddcccdd8e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: danlep
+ms.openlocfilehash: 9f25d9cbdc70282afd71b1a4b9ac72250922d163
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="task-complete-event"></a>タスク完了イベント
 
@@ -51,7 +51,7 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |jobId|String|タスクを含むジョブの ID です。|
 |id|String|タスクの ID です。|
@@ -64,29 +64,29 @@ ms.lasthandoff: 10/11/2017
 
 ###  <a name="nodeInfo"></a> nodeInfo
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |poolId|String|タスクが実行されたプールの ID。|
-|nodeId|文字列|タスクが実行されたノードの ID。|
+|nodeId|String|タスクが実行されたノードの ID。|
 
 ###  <a name="multiInstanceSettings"></a> multiInstanceSettings
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |numberOfInstances|Int32|タスクに必要なコンピューター ノードの数。|
 
 ###  <a name="constraints"></a> constraints
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
 |maxTaskRetryCount|Int32|タスクを再試行できる最大回数。 Batch サービスは、終了コードが 0 以外の場合にタスクを再試行します。<br /><br /> この値によって再試行の回数が限定されますのでご注意ください。 Batch サービスはタスクを 1 回試行してから、上限に達するまで再試行できます。 たとえば、最大再試行回数が 3 の場合、Batch はタスクを最大 4 回試行します (初回試行 1 回と再試行 3 回)。<br /><br /> 最大再試行回数が 0 の場合、Batch サービスはタスクを再試行しません。<br /><br /> 最大再試行回数が -1 の場合、Batch サービスはタスクを無制限に再試行します。<br /><br /> 既定値は 0 (再試行なし) です。|
 
 ###  <a name="executionInfo"></a> executionInfo
 
-|要素名|型|メモ|
+|要素名|type|メモ|
 |------------------|----------|-----------|
-|startTime|DateTime|タスクの実行が開始した時刻です。 '実行中' は**実行している**状態に対応するため、タスクがリソース ファイルやアプリケーション パッケージを指定する場合、開始時刻はタスクがこれらのファイルやパッケージのダウンロードやデプロイを開始した時刻を反映します。  タスクが再起動または再実行された場合は、タスクが実行を開始したつい最近の時刻となります。|
-|endTime|DateTime|タスクが完了した時刻です。|
+|startTime|Datetime|タスクの実行が開始した時刻です。 '実行中' は**実行している**状態に対応するため、タスクがリソース ファイルやアプリケーション パッケージを指定する場合、開始時刻はタスクがこれらのファイルやパッケージのダウンロードやデプロイを開始した時刻を反映します。  タスクが再起動または再実行された場合は、タスクが実行を開始したつい最近の時刻となります。|
+|endTime|Datetime|タスクが完了した時刻です。|
 |exitCode|Int32|タスクの終了コード。|
 |retryCount|Int32|Batch サービスによりタスクが再試行された回数。 タスクは、0 以外の終了コードで終了すると、指定された MaxTaskRetryCount まで再試行されます。|
 |requeueCount|Int32|Batch サービスによりタスクがユーザー要求の結果として再度キューに入れられる回数です。<br /><br /> ユーザーが (プールをサイズ変更したり圧縮することで) プールからノードを削除するときやジョブを無効にしているとき、ユーザーはノードで実行中のタスクを再実行のキューに再度入れるよう指定できます。 この回数は、タスクがこうした理由により何回キューに入れられたかを追跡します。|

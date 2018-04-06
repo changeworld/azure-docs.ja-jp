@@ -16,14 +16,14 @@ ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
 ms.openlocfilehash: 0b9f12127276f5aa689c4a1d3a5bf9fe645a0fc7
-ms.sourcegitcommit: a5f16c1e2e0573204581c072cf7d237745ff98dc
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-powershell-to-create-an-azure-vm-with-a-native-mode-report-server"></a>ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
+> Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 このトピックでは、Azure 仮想マシンで SQL Server Reporting Services ネイティブ モードのレポート サーバーをデプロイおよび構成する手順について説明します。 このドキュメントの手順では、仮想マシンを手動で作成する手順と、VM で Reporting Services を構成する Windows PowerShell スクリプトを組み合わせて使用しています。 構成スクリプトでは、HTTP または HTTPS のファイアウォール ポートを開きます。
 
@@ -497,7 +497,7 @@ Windows PowerShell を使用してレポート サーバーを構成するには
 
 1. Azure Portal で VM を選択し、[接続] をクリックします。 VM の作成時に構成したユーザー名とパスワードを使用します。
    
-    ![connect to azure virtual machine](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
+    ![Azure 仮想マシンに接続](./media/virtual-machines-windows-classic-ps-sql-report/IC650112.gif)
 2. Windows Update を実行し、VM に更新プログラムをインストールします。 VM の再起動が必要な場合は、VM を再起動し、Azure Portal から VM に再接続します。
 3. VM の [スタート] メニューで「**Reporting Services**」と入力し、**Reporting Services 構成マネージャー**を開きます。
 4. **[サーバー名]** と **[レポート サーバー インスタンス]** は既定値のままにしておきます。 **[接続]**をクリックします。
@@ -563,7 +563,7 @@ HTTPS のプライベート ポートを 443 以外で構成した場合は、�
         https://ssrsnativecloud.cloudapp.net/ReportServer
 
 ## <a name="create-users-and-assign-roles"></a>ユーザーを作成してロールを割り当てる
-レポート サーバーを構成して確認したら、一般的な管理タスクとして、1 人以上のユーザーを作成し、ユーザーを Reporting Services ロールに割り当てます。 詳細については、次のトピックを参照してください。
+レポート サーバーを構成して確認したら、一般的な管理タスクとして、1 人以上のユーザーを作成し、ユーザーを Reporting Services ロールに割り当てます。 詳細については、「
 
 * [ローカル ユーザー アカウントを作成する](https://technet.microsoft.com/library/cc770642.aspx)
 * [レポート サーバーへのユーザー アクセスを許可する (レポート マネージャー)](https://msdn.microsoft.com/library/ms156034.aspx)
@@ -581,7 +581,7 @@ Microsoft Azure 仮想マシンでホストされているレポート サーバ
      詳細については、「 [レポート ビルダーのインストール、アンインストール、およびサポート](https://technet.microsoft.com/library/dd207038.aspx)」をご覧ください。
 * **SQL Server Data Tools: VM**: SQL Server 2012 で VM を作成した場合、SQL Server Data Tools が仮想マシンにインストールされます。このツールを使用して、仮想マシンで**レポート サーバー プロジェクト**とレポートを作成できます。 SQL Server Data Tools では、仮想マシン上のレポート サーバーにレポートを発行できます。
   
-    SQL Server 2014 で VM を作成した場合は、SQL Server Data Tools - BI for Visual Studio をインストールできます。 詳細については、次のトピックを参照してください。
+    SQL Server 2014 で VM を作成した場合は、SQL Server Data Tools - BI for Visual Studio をインストールできます。 詳細については、「
   
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2013](https://www.microsoft.com/download/details.aspx?id=42313)
   * [Microsoft SQL Server Data Tools - Business Intelligence for Visual Studio 2012](https://www.microsoft.com/download/details.aspx?id=36843)

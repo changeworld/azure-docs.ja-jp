@@ -1,8 +1,8 @@
 ---
-title: "Data Lake Store のセキュリティの概要 | Microsoft Docs"
-description: "Azure Data Lake Store がセキュリティが強化されたビッグ データ ストアであることを学習します"
+title: Data Lake Store のセキュリティの概要 | Microsoft Docs
+description: Azure Data Lake Store がセキュリティが強化されたビッグ データ ストアであることを学習します
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: e3df23e8803d8b34cc4178f8047d0fe2172d04be
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 65319df8db339b1c124be47f27a841bbd7141921
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="security-in-azure-data-lake-store"></a>Azure Data Lake Store のセキュリティ
 多くの企業が、ビッグ データの分析によってビジネスに関する洞察を獲得し、それを意思決定に活かしています。 ただ、一部の組織はユーザーが多様化し、その数も増加の一途を辿っているばかりか、各種の規制が存在する複雑な環境に直面しています。 このため、重要なビジネス データはこれまで以上に強固なセキュリティをもって保管すると同時に、個々のユーザーには適切な水準のアクセス権を付与することがきわめて重要になっています。 Azure Data Lake Store は、このようなセキュリティ要件を満たすことを目指して設計されています。 この記事では、以下に示す Data Lake Store のセキュリティ機能について説明します。
@@ -46,7 +46,7 @@ Azure Active Directory の認証によってユーザーが Azure Data Lake Stor
 * ストア内のデータにアクセスするための POSIX ACL
 
 ### <a name="rbac-for-account-management"></a>RBAC を使用したアカウント管理
-Data Lake Store には既定で基本のロールが 4 つ定義されています。 これらのロールでは、Azure ポータル、PowerShell コマンドレット、REST API を使用して Data Lake Store アカウントに実行できる操作が異なります。 所有者ロールと共同作成者ロールは、アカウントに対してさまざまな管理機能を実行できます。 データを操作するだけのユーザーには、閲覧者ロールを割り当てます。
+Data Lake Store には既定で基本のロールが 4 つ定義されています。 これらのロールでは、Azure ポータル、PowerShell コマンドレット、REST API を使用して Data Lake Store アカウントに実行できる操作が異なります。 所有者ロールと共同作成者ロールは、アカウントに対してさまざまな管理機能を実行できます。 アカウント管理データを表示するだけのユーザーには閲覧者ロールを割り当てることができます。
 
 ![RBAC のロール](./media/data-lake-store-security-overview/rbac-roles.png "RBAC のロール")
 
@@ -65,9 +65,9 @@ Data Lake Store には既定で基本のロールが 4 つ定義されていま�
 ### <a name="using-acls-for-operations-on-file-systems"></a>ACL を使用したファイル システムでの操作
 Data Lake Store は Hadoop 分散ファイル システム (HDFS) と同じく階層構造を備えたファイル システムであり、 [POSIX ACL](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsPermissionsGuide.html#ACLs_Access_Control_Lists)をサポートしています。 所有者ロール、所有者グループ、その他のユーザーおよびグループのリソースに対する読み取り (r)、書き込み (w) および実行 (x) のアクセス許可を制御します。 Data Lake Store では、ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Store のコンテキストにおける ACL のしくみの詳細については、[Data Lake Store のアクセス制御](data-lake-store-access-control.md)に関する記事をご覧ください。
 
-複数ユーザーを対象に ACL を定義するときは、 [セキュリティ グループ](../active-directory/active-directory-groups-create-azure-portal.md)を使うことをお勧めします。 ユーザーをセキュリティ グループに追加し、ファイルまたはフォルダーの ACL をそのセキュリティ グループに割り当てます。 カスタム アクセスで追加できるエントリは 9 個までという制約があるため、カスタム アクセスを使用する場合には、この機能が便利です。 Azure Active Directory のセキュリティ グループを使用して Data Lake Store に保存されているデータのセキュリティを強化する方法について詳しくは、「 [ユーザーまたはセキュリティ グループを ACL として Azure Data Lake Store ファイル システムに割り当てる](data-lake-store-secure-data.md#filepermissions)」をご覧ください。
+複数ユーザーを対象に ACL を定義するときは、 [セキュリティ グループ](../active-directory/active-directory-groups-create-azure-portal.md)を使うことをお勧めします。 ユーザーをセキュリティ グループに追加し、ファイルまたはフォルダーの ACL をそのセキュリティ グループに割り当てます。 割り当てられたアクセス許可のエントリ数は最大 28 に制限されているため、これは割り当てられたアクセス許可を提供する場合に役立ちます。 Azure Active Directory のセキュリティ グループを使用して Data Lake Store に保存されているデータのセキュリティを強化する方法について詳しくは、「 [ユーザーまたはセキュリティ グループを ACL として Azure Data Lake Store ファイル システムに割り当てる](data-lake-store-secure-data.md#filepermissions)」をご覧ください。
 
-![標準アクセスとカスタム アクセスを一覧表示する](./media/data-lake-store-security-overview/adl.acl.2.png "標準アクセスとカスタム アクセスを一覧表示する")
+![アクセス許可の一覧表示](./media/data-lake-store-security-overview/adl.acl.2.png "アクセス許可の一覧表示")
 
 ## <a name="network-isolation"></a>ネットワークの分離
 データ ストアに対するアクセスをネットワーク レベルで制御する場合にも、Data Lake Store が役立ちます。 ファイアウォールを設定し、信頼されたクライアントの IP アドレス範囲を定義できます。 IP アドレス範囲が定義されていると、IP アドレスがその範囲に該当するクライアントだけが Data Lake Store に接続できます。
@@ -83,30 +83,30 @@ Data Lake Store では、アカウントに格納されているデータを暗�
 
 キーの管理に関して、Data Lake Store には、Data Lake Store に格納されているすべてのデータを暗号化解除するのに必要なマスター暗号化キー (MEK) を管理するための 2 つのモードが用意されています。 Data Lake Store に MEK の管理を任せることも、Azure Key Vault アカウントを使用して MEK の所有権を保持することもできます。 キー管理のモードは、Data Lake Store アカウントの作成時に指定します。 暗号化関連の構成を提供する方法の詳細については、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」をご覧ください。
 
-## <a name="auditing-and-diagnostic-logs"></a>監査ログと診断ログ
-管理関連のアクティビティとデータ関連のアクティビティのどちらのログを探しているかに応じて、監査ログまたは診断ログを使用できます。
+## <a name="activity-and-diagnostic-logs"></a>アクティビティ ログと診断ログ
+アカウント管理関連のアクティビティまたはデータ関連のアクティビティのどちらのログを探しているかに応じて、アクティビティ ログまたは診断ログを使用できます。
 
-* 管理関連のアクティビティでは、Azure Resource Manager API を使用します。これらのアクティビティは、監査ログを使用して Azure ポータルに表示されます。
+* アカウント管理関連のアクティビティは Azure Resource Manager API を使用し、アクティビティ ログを使用して Azure Portal に表示されます。
 * データ関連のアクティビティでは、WebHDFS REST API を使用します。これらのアクティビティは、診断ログを使用して Azure ポータルに表示されます。
 
-### <a name="auditing-logs"></a>監査ログ
-組織によっては、規制に準拠する目的から、特定のインシデントを詳しく調査する必要が生じた場合に十分な監査証跡が必要になることがあります。 Data Lake Store には監視および監査機能が組み込まれており、すべてのアカウント管理アクティビティがログに記録されます。
+### <a name="activity-log"></a>アクティビティ ログ
+組織は、特定のインシデントを詳しく調査する必要がある場合、規制に準拠するためにアカウント管理アクティビティの十分な監査証跡が必要になることがあります。 Data Lake Store は組み込みの監視機能を備えており、すべてのアカウント管理アクティビティをログに記録します。
 
-アカウント管理の監査証跡では、ログが必要な列を選んで表示できます。 また、監査ログを Azure Storage にエクスポートすることもできます。
+アカウント管理の監査証跡では、ログが必要な列を選んで表示できます。 また、アクティビティ ログを Azure Storage にエクスポートすることもできます。
 
-![監査ログ](./media/data-lake-store-security-overview/audit-logs.png "監査ログ")
+![アクティビティ ログ](./media/data-lake-store-security-overview/activity-logs.png "アクティビティ ログ")
 
-### <a name="diagnostic-logs"></a>診断ログ
-Azure ポータル (の [診断設定]) でデータ アクセスの監査証跡を設定し、ログを保存する Azure BLOB ストレージ アカウントを作成できます。
+アクティビティ ログの操作の詳細については、「[リソースのアクションを監査するアクティビティ ログの表示](../azure-resource-manager/resource-group-audit.md)」を参照してください。
+
+### <a name="diagnostics-logs"></a>[診断ログ]
+Azure Portal でデータ アクセス監査および診断ログを有効にし、それらのログを Azure Blob Storage アカウント、イベント ハブ、または Log Analytics に送信できます。
 
 ![診断ログ](./media/data-lake-store-security-overview/diagnostic-logs.png "診断ログ")
 
-診断設定を構成した後は、 **[診断ログ]** タブでログを確認できます。
-
-Azure Data Lake Store の診断ログの利用について詳しくは、「 [Azure Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)」を参照してください。
+Azure Data Lake Store の診断ログの操作の詳細については、「[Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)」を参照してください。
 
 ## <a name="summary"></a>まとめ
-企業顧客は、セキュリティで保護された使いやすいデータ分析クラウド プラットフォームを求めています。 Azure Data Lake Store は、Azure Active Directory の統合による ID 管理と認証、ACL ベースの承認、ネットワークの分離、転送中のデータの暗号化と保存データの暗号化 (将来提供)、および監査によって、これらの要件に対処するように設計されています。
+企業顧客は、セキュリティで保護された使いやすいデータ分析クラウド プラットフォームを求めています。 Azure Data Lake Store は、Azure Active Directory 統合による ID 管理と認証、ACL ベースの承認、ネットワーク分離、転送中のデータや保存データの暗号化、および監査を通して、これらの要件への対処に役立つように設計されています。
 
 Data Lake Store に追加を希望する機能がある場合には、 [Data Lake Store UserVoice フォーラム](https://feedback.azure.com/forums/327234-data-lake)からフィードバックをお送りください。
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: amsriva
 ms.openlocfilehash: ea9ae8373ff67bf9557b06bbc8a4b0d82a03e2d0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="application-gateway-redirect-overview"></a>Application Gateway のリダイレクトの概要
 
@@ -32,6 +32,6 @@ HTTP を HTTPS に自動的にリダイレクトして、アプリケーショ�
 
 この変更により、お客様は、リダイレクト先のターゲット リスナーまたは外部サイトを指定する新しいリダイレクト構成オブジェクトを作成する必要があります。 構成要素は、リダイレクトされる URL に URI パスとクエリ文字列を追加できるオプションもサポートしています。 お客様は、リダイレクトが一時的か (HTTP 状態コード 302) または永続的なリダイレクトか (HTTP 状態コード 301) を選ぶこともできます。 作成したこのリダイレクト構成は、新しいルールによってソース リスナーに関連付けられます。 基本的なルールを使うと、リダイレクト構成はソース リスナーに関連付けられて、グローバル リダイレクトになります。 パスに基づくルールを使うと、リダイレクト構成は URL パス マップ上で定義され、したがってサイトの特定のパス領域にのみ適用されます。
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 
 [アプリケーション ゲートウェイに URL リダイレクトを構成する](application-gateway-configure-redirect-powershell.md)

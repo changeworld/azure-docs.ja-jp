@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid イベント スキーマ"
-description: "Azure Event Grid のイベントに対して用意されているプロパティについて説明します"
+title: Azure Event Grid イベント スキーマ
+description: Azure Event Grid のイベントに対して用意されているプロパティについて説明します
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/22/2018
 ms.author: babanisa
-ms.openlocfilehash: 9d1f0eed28a1c1c6776ddba89480adcedfc599a5
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: 7af0e1cc8ae36774ef1cebf1bada6477888860d0
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
@@ -97,7 +97,11 @@ Event Grid イベントおよび各 Azure パブリッシャーのデータ ペ�
 * [IoT Hub](event-schema-iot-hub.md)
 * [リソース グループ (管理操作)](event-schema-resource-groups.md)
 
-カスタム トピックの場合、イベントの発行元がデータ オブジェクトを決定します。 最上位レベルのデータには、リソースによって定義される標準的なイベントと同じフィールドを含める必要があります。 カスタム トピックに対してイベントを発行する場合は、ルーティングとフィルタ処理を支援するために、イベントの対象をモデル化することを検討してください。
+カスタム トピックの場合、イベントの発行元がデータ オブジェクトを決定します。 最上位レベルのデータには、リソースによって定義される標準的なイベントと同じフィールドを含める必要があります。
+
+イベントをカスタム トピックに発行する場合は、サブスクライバーがそのイベントに関心があるかどうかを簡単に判断できるようなイベントの件名を作成します。 サブスクライバーは、その件名を使用してイベントをフィルター処理したり、ルーティングしたりします。 そのイベントが発生したパスを示すことにより、サブスクライバーがそのパスのセグメントでフィルター処理できるように考慮してください。 このパスにより、サブスクライバーはイベントを狭く、または幅広くフィルター処理できます。 たとえば、`/A/B/C` のように件名に 3 つのセグメント パスを示した場合、サブスクライバーは最初のセグメント `/A` でフィルター処理して幅広い一連のイベントを取得できます。 これらのサブスクライバーは、`/A/B/C` や `/A/D/E` などの件名を持つイベントを取得します。 他のサブスクライバーは、`/A/B` でフィルター処理して、より狭い一連のイベントを取得できます。
+
+件名に、何が起こったかに関するより詳細な情報が必要になる場合があります。 たとえば、コンテナーにファイルが追加された場合、**ストレージ アカウント** パブリッシャーは件名 `/blobServices/default/containers/<container-name>/blobs/<file>` を指定します。 サブスクライバーはパス `/blobServices/default/containers/testcontainer` でフィルター処理することにより、ストレージ アカウント内の他のコンテナーではなく、そのコンテナーのすべてのイベントを取得できます。 サブスクライバーはまた、テキスト ファイルのみを操作するために、サフィックス `.txt` でフィルター処理またはルーティングすることもできます。
 
 ## <a name="next-steps"></a>次の手順
 

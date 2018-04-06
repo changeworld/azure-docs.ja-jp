@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 01/03/2018
-ms.openlocfilehash: 7b481fb3287b8ee2c22e5f25f8cf1935eed05428
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 5211fa29af1d8cba17049b69974189990d30f34a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="deploying-a-machine-learning-model-as-a-web-service"></a>Machine Learning モデルを Web サービスとしてデプロイする
 
@@ -22,10 +22,17 @@ Azure Machine Learning モデル管理は、コンテナー化された Docker �
 
 このドキュメントでは、Azure Machine Learning モデル管理のコマンド ライン インターフェイス (CLI) を使って Web サービスとしてモデルをデプロイする手順について説明します。
 
+## <a name="what-you-need-to-get-started"></a>はじめにやるべきこと
+
+このガイドを最大限に活用するには、モデルをデプロイできる Azure サブスクリプションまたはリソース グループに対する共同作成者アクセス権が必要です。
+Azure Machine Learning Workbench および [Azure DSVM](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) には CLI がプレインストールされています。  これは、スタンドアロン パッケージとしてもインストールできます。
+
+さらに、モデル管理アカウントとデプロイメント環境が既に設定されている必要があります。  モデル管理アカウントとローカルおよびクラスター デプロイ用の環境の設定の詳細については、[モデル管理の構成](deployment-setup-configuration.md)に関するページを参照してください。
+
 ## <a name="deploying-web-services"></a>Web サービスのデプロイ
 CLI を使うと、ローカル コンピューターまたはクラスター上で実行する Web サービスをデプロイできます。
 
-ローカル デプロイで始めることをお勧めします。 モデルとコードが動作することを検証してから、運用スケールで使うためにクラスターに Web サービスをデプロイします。 クラスター デプロイ用の環境のセットアップについて詳しくは、「[モデル管理のセットアップ](deployment-setup-configuration.md)」をご覧ください。 
+ローカル デプロイで始めることをお勧めします。 モデルとコードが動作することを検証してから、運用スケールで使うためにクラスターに Web サービスをデプロイします。
 
 デプロイの手順は次のとおりです。
 1. 保存したトレーニング済みの Machine Learning モデルを使う
@@ -49,7 +56,8 @@ saved_model = pickle.dumps(clf)
 ```
 
 ### <a name="2-create-a-schemajson-file"></a>2.schema.json ファイルを作成する
-この手順は省略可能です。 
+
+スキーマの生成は省略可能ですが、より適切な処理のために、要求と入力変数の形式を定義することを強くお勧めします。
 
 Web サービスの入力と出力を自動的に検証するには、スキーマを作成します。 また、CLI は、スキーマを使って Web サービスの Swagger ドキュメントを生成します。
 
@@ -77,6 +85,13 @@ generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.
 
 ```python
 inputs = {"input_df": SampleDefinition(DataTypes.PANDAS, yourinputdataframe)}
+generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
+```
+
+次の例では、汎用の JSON 形式を使用します。
+
+```python
+inputs = {"input_json": SampleDefinition(DataTypes.STANDARD, yourinputjson)}
 generate_schema(run_func=run, inputs=inputs, filepath='./outputs/service_schema.json')
 ```
 
@@ -147,10 +162,13 @@ az ml manifest create --manifest-name [your new manifest name] -f [path to score
 az ml image create -n [image name] --manifest-id [the manifest ID]
 ```
 
-または、マニフェストとイメージを 1 つのコマンドで作成できます。 
+>[!NOTE] 
+>また、1 つのコマンドを使用して、モデルの登録、マニフェストとモデルの作成を実行することもできます。 service create コマンドの詳細については、-h を使ってください。
+
+あるいは、次のように、モデルの登録、マニフェストの作成、およびイメージの作成を 1 つの手順として実行する (ただし、まだ Web サービスの作成やデプロイは行いません) 1 つのコマンドが存在します。
 
 ```
-az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime eg.g. spark-py which is the Docker container image base]
+az ml image create -n [image name] --model-file [model file or folder path] -f [code file, e.g. the score.py file] -r [the runtime e.g. spark-py which is the Docker container image base]
 ```
 
 >[!NOTE]
@@ -165,7 +183,14 @@ az ml service create realtime --image-id <image id> -n <service name>
 ```
 
 >[!NOTE] 
->1 つのコマンドで、前の 4 つの手順を実行することもできます。 service create コマンドの詳細については、-h を使ってください。
+>また、1 つのコマンドを使用して、前の 4 つの手順をすべて実行することもできます。 service create コマンドの詳細については、-h を使ってください。
+
+あるいは、次のように、モデルの登録、マニフェストの作成、イメージの作成や、Web サービスの作成およびデプロイを 1 つの手順として実行する 1 つのコマンドが存在します。
+
+```azurecli
+az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
+```
+
 
 ### <a name="8-test-the-service"></a>8.サービスをテストする
 サービスを呼び出す方法についての情報を取得するには、次のコマンドを使います。

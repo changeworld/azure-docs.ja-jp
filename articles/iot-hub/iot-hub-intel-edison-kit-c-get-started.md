@@ -17,10 +17,10 @@ ms.date: 4/17/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: edbdbe0230f742cd7228f04a4a83c9bd567527e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="connect-intel-edison-to-azure-iot-hub-c"></a>Intel Edison を Azure IoT Hub に接続する (C)
 
@@ -172,7 +172,7 @@ ms.lasthandoff: 10/11/2017
 
    ![温度センサーへの接続](media/iot-hub-intel-edison-kit-c-get-started/12_configuration_tool.png)
 
-ご利用ありがとうございます。 Edison を適切に構成できました。
+お疲れさまでした。 Edison を適切に構成できました。
 
 ## <a name="run-a-sample-application-on-intel-edison"></a>Intel Edison でサンプル アプリケーションを実行する
 
@@ -235,7 +235,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ![出力 - Intel Edison から IoT Hub に送信されるセンサー データ](media/iot-hub-intel-edison-kit-c-get-started/15_message_sent.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
 

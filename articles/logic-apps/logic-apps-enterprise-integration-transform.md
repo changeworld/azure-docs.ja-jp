@@ -1,6 +1,6 @@
 ---
-title: "変換による XML データの変更 - Azure Logic Apps | Microsoft Docs"
-description: "Enterprise Integration SDK を使用して、ロジック アプリで XML データの形式を変更する変換 (マップ) を作成する"
+title: 変換による XML データの変更 - Azure Logic Apps | Microsoft Docs
+description: Enterprise Integration SDK を使用して、ロジック アプリで XML データの形式を変更する変換 (マップ) を作成する
 services: logic-apps
 documentationcenter: .net,nodejs,java
 author: msftman
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; padmavc
-ms.openlocfilehash: f4ca7004432d28233888483424164456b008e992
-ms.sourcegitcommit: 9a8b9a24d67ba7b779fa34e67d7f2b45c941785e
+ms.openlocfilehash: fd59b6b3f51adb538e774bc5bb089880ca22e97e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enterprise-integration-with-xml-transforms"></a>XML 変換での Enterprise Integration
 ## <a name="overview"></a>概要
@@ -64,6 +64,7 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
 
 これで、HTTP エンドポイントに要求を送信して、変換をテストすることができます。  
 
+
 ## <a name="features-and-use-cases"></a>機能とユース ケース
 * マップで作成される変換は、あるドキュメントから別のドキュメントに名前と住所をコピーするなど、単純な内容になります。 または、設定不要なマップ操作を使用して、より複雑な変換を作成することができます。  
 * 文字列、日時の関数などの複合的なマップ操作や関数をすぐに使用できます。  
@@ -73,11 +74,49 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
 * 既存のマップをアップロードできます。  
 * XML 形式のサポートが含まれます。
 
-## <a name="adanced-features"></a>高度な機能
-次の機能は、コード ビューからのみアクセスできます。
+## <a name="advanced-features"></a>高度な機能
+
+### <a name="reference-assembly-or-custom-code-from-maps"></a>マップからのアセンブリまたはカスタム コードの参照 
+変換アクションは、外部アセンブリへの参照を含むマップまたは変換もサポートしています。 この機能により、XSLT マップからカスタム .NET コードへの直接の呼び出しが可能になります。 マップでアセンブリを使用するための前提条件を次に示します。
+
+* マップとそのマップから参照されるアセンブリは、[統合アカウントにアップロードする](./logic-apps-enterprise-integration-maps.md)必要があります。 
+
+  > [!NOTE]
+  > マップとアセンブリは、特定の順序でアップロードする必要があります。 アセンブリは、そのアセンブリを参照するマップをアップロードする前にアップロードする必要があります。
+
+* マップには、次の属性とアセンブリ コードへの呼び出しを含む CDATA セクションも必要です。
+
+    * **name** は、カスタム アセンブリの名前です。
+    * **namespace** は、カスタム コードが含まれているアセンブリ内の名前空間です。
+
+  この例は、"XslUtilitiesLib" という名前のアセンブリを参照し、そのアセンブリから `circumreference` メソッドを呼び出すマップを示しています。
+
+  ````xml
+  <?xml version="1.0" encoding="UTF-8"?>
+  <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:msxsl="urn:schemas-microsoft-com:xslt" xmlns:user="urn:my-scripts">
+  <msxsl:script language="C#" implements-prefix="user">
+    <msxsl:assembly name="XsltHelperLib"/>
+    <msxsl:using namespace="XsltHelpers"/>
+    <![CDATA[public double circumference(int radius){ XsltHelper helper = new XsltHelper(); return helper.circumference(radius); }]]>
+  </msxsl:script>
+  <xsl:template match="data">
+     <circles>
+        <xsl:for-each select="circle">
+            <circle>
+                <xsl:copy-of select="node()"/>
+                    <circumference>
+                        <xsl:value-of select="user:circumference(radius)"/>
+                    </circumference>
+            </circle>
+        </xsl:for-each>
+     </circles>
+    </xsl:template>
+    </xsl:stylesheet>
+  ````
+
 
 ### <a name="byte-order-mark"></a>バイト オーダー マーク
-既定では、変換からの応答はバイト オーダー マーク (BOM) から開始します。 この機能を無効にするには、`transformOptions` プロパティに `disableByteOrderMark` を指定します。
+既定では、変換からの応答はバイト オーダー マーク (BOM) から開始します。 この機能には、コード ビュー エディターでの作業中にのみアクセスできます。 この機能を無効にするには、`transformOptions` プロパティに `disableByteOrderMark` を指定します。
 
 ````json
 "Transform_XML": {
@@ -94,6 +133,10 @@ Visual Studio [Enterprise Integration SDK](https://aka.ms/vsmapsandschemas)を�
     "type": "Xslt"
 }
 ````
+
+
+
+
 
 ## <a name="learn-more"></a>詳細情報
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")  

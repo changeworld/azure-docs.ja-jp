@@ -1,13 +1,11 @@
 ---
-title: "Visual Studio から Azure 仮想マシンへ Web アプリを発行する | Microsoft Docs"
-description: "Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する"
+title: Visual Studio から Azure 仮想マシンへ Web アプリを発行する | Microsoft Docs
+description: Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
 services: virtual-machines-windows
-documentationcenter: 
-author:
-- kraigb
-- justcla
-manager: ghogen
-editor: 
+documentationcenter: ''
+author: ghogen
+manager: douge
+editor: ''
 tags: azure-service-management
 ms.assetid: 70267837-3629-41e0-bb58-2167ac4932b3
 ms.service: virtual-machines-windows
@@ -16,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 11/03/2017
-ms.author:
-- kraigb
-- justcla
-ms.openlocfilehash: 74ac1f27620e4871c3c6972baa949c64d850fe4c
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.author: ghogen
+ms.openlocfilehash: f236a00ef86f58d4d266a19d74485984d9ddb691
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-an-aspnet-web-app-to-an-azure-vm-from-visual-studio"></a>Visual Studio から Azure 仮想マシンへ ASP.NET Web アプリケーションを発行する
 
@@ -43,11 +39,11 @@ Azure VM へ ASP.NET プロジェクトを発行するには、Visual Studio を
 2. ソリューション エクスプローラーでプロジェクトを右クリックし、**[発行]** を選択します。
 3. ページの右側の矢印を使用して、**Microsoft Azure Virtual Machines** が表示されるまで発行オプションをスクロールします。  
 
-   ![発行 ページ - 右矢印]
+   ![[発行] ページ - 右矢印]
 
 4. **Microsoft Azure Virtual Machines** アイコンを選択し、**[発行]** を選択します。
 
-   ![発行 ページ - Microsoft Azure Virtual Machine Services アイコン]
+   ![[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]
 
 5. (仮想マシンに接続されている Azure サブスクリプション) の適切なアカウントを選択します。  
    - Visual Studio にサインインしている場合は、アカウントの一覧に、認証されたすべてのアカウントが表示されます。  
@@ -91,17 +87,17 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 - メッセージが表示されたら、ユーザー名とパスワードを入力します。  
 - 発行はすぐに開始されます。
 
-![発行 ページ - 発行 ボタン]
+![[発行] ページ - [発行] ボタン]
 
 ### <a name="modify-publish-profile-settings"></a>発行プロファイル設定の変更
 
 発行プロファイルを表示して設定を変更するには、**[設定]** を選択します。  
 
-![発行 ページ - 設定 ボタン]
+![[発行] ページ - [設定] ボタン]
 
 結果は次のようになります。  
 
-![発行設定 - 接続 ページ]
+![発行設定 - [接続] ページ]
 
 #### <a name="save-user-name-and-password"></a>ユーザー名とパスワードの保存
 - 発行するたびに認証情報を入力しなくてもすむように、**[ユーザー名]** と **[パスワード]** フィールドに入力して、**[パスワードを保存する]** をオンにできます。
@@ -115,22 +111,22 @@ Web アプリケーションに更新内容を発行するには、[発行] ペ�
 
 ![発行設定 - 設定 ページ]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 ### <a name="set-up-cicd-for-automated-deployment-to-azure-vm"></a>Azure VM への自動展開の CI/CD を設定する
 
-Visual Studio Team Service に継続的な配信のパイプラインを設定するには、「[Windows 仮想マシンへのデプロイ](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)」を参照してください。
+Visual Studio Team Service に継続的デリバリーのパイプラインを設定するには、「[Windows 仮想マシンへのデプロイ](https://docs.microsoft.com/vsts/build-release/apps/cd/deploy-webdeploy-iis-deploygroups)」を参照してください。
 
 [VM Overview - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSName.png
 [IP Address Config - DNS Name]: ../../../includes/media/publish-web-app-from-visual-studio/IPAddressConfigDNSName.png
 [VM Overview - DNS Configured]: ../../../includes/media/publish-web-app-from-visual-studio/VMOverviewDNSConfigured.png
-[発行 ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
-[発行 ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
+[[発行] ページ - 右矢印]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageRightArrow.png
+[[発行] ページ - Microsoft Azure Virtual Machine Services アイコン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageMicrosoftAzureVirtualMachineIcon.png
 [Azure アカウント セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectAccount.png
 [Azure VM セレクター]: ../../../includes/media/publish-web-app-from-visual-studio/ChooseVM-SelectVM.png
 [WebDeploy ログイン]: ../../../includes/media/publish-web-app-from-visual-studio/WebDeployLogin.png
 [証明書のエラー]: ../../../includes/media/publish-web-app-from-visual-studio/CertificateError.png
-[Output Window]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
+[出力ウィンドウ]: ../../../includes/media/publish-web-app-from-visual-studio/OutputWindow.png
 [発行 ページ - 発行 ボタン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPagePublishButton.png
 [発行 ページ - 設定 ボタン]: ../../../includes/media/publish-web-app-from-visual-studio/PublishPageSettingsButton.png
 [発行設定 - 接続 ページ]: ../../../includes/media/publish-web-app-from-visual-studio/PublishSettingsConnectionPage.png

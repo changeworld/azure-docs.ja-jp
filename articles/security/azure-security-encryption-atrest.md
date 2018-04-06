@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2017
 ms.author: yurid
 ms.openlocfilehash: b02afa77ce99f576fed76b398642ba3f3ce2ba98
-ms.sourcegitcommit: 62eaa376437687de4ef2e325ac3d7e195d158f9f
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/22/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 Microsoft Azure では、会社のセキュリティとコンプライアンスのニーズに合わせてデータを保護するためのツールが複数用意されています。 このドキュメントでは次に重点を置いています。
@@ -255,28 +255,28 @@ SQL Azure データのクライアント側の暗号化は、[Always Encrypted](
 |                                  |                |                     |                              |                              | **クライアント** |
 |                                  | **キー管理** | **サービス管理キー** | **ユーザーが Key Vault で管理** | **ユーザーが管理するオンプレミス** |        |
 | **ストレージとデータベース**            |                |                     |                              |                              |        |
-| ディスク (IaaS)                      |                | -                   | あり                          | はい*                         | -      |
-| SQL Server (IaaS)                |                | あり                 | あり                          | あり                          | あり    |
-| SQL Azure (PaaS)                 |                | あり                 | Preview                      | -                            | あり    |
-| Azure Storage (ブロック/ページ Blob) |                | あり                 | Preview                      | -                            | あり    |
-| Azure Storage (ファイル)            |                | あり                 | -                            | -                            | -      |
-| Azure Storage (テーブル、キュー)   |                | -                   | -                            | -                            | あり    |
-| Cosmos DB (ドキュメント DB)          |                | あり                 | -                            | -                            | -      |
-| StorSimple                       |                | あり                 | -                            | -                            | あり    |
-| バックアップ                           |                | -                   | -                            | -                            | あり    |
+| ディスク (IaaS)                      |                | -                   | [はい]                          | はい*                         | -      |
+| SQL Server (IaaS)                |                | [はい]                 | [はい]                          | [はい]                          | [はい]    |
+| SQL Azure (PaaS)                 |                | [はい]                 | プレビュー                      | -                            | [はい]    |
+| Azure Storage (ブロック/ページ Blob) |                | [はい]                 | プレビュー                      | -                            | [はい]    |
+| Azure Storage (ファイル)            |                | [はい]                 | -                            | -                            | -      |
+| Azure Storage (テーブル、キュー)   |                | -                   | -                            | -                            | [はい]    |
+| Cosmos DB (ドキュメント DB)          |                | [はい]                 | -                            | -                            | -      |
+| StorSimple                       |                | [はい]                 | -                            | -                            | [はい]    |
+| Backup                           |                | -                   | -                            | -                            | [はい]    |
 | **インテリジェンスおよび分析**       |                |                     |                              |                              |        |
-| Azure Data Factory               |                | あり                 | -                            | -                            | -      |
-| Azure Machine Learning           |                | -                   | Preview                      | -                            | -      |
-| Azure Stream Analytics           |                | あり                 | -                            | -                            | -      |
-| HDInsights (Azure Blob Storage)  |                | あり                 | -                            | -                            | -      |
-| HDInsights (Data Lake Storage)   |                | あり                 | -                            | -                            | -      |
-| Azure Data Lake Store            |                | あり                 | あり                          | -                            | -      |
-| Azure Data Catalog               |                | あり                 | -                            | -                            | -      |
-| Power BI                         |                | あり                 | -                            | -                            | -      |
+| Azure Data Factory               |                | [はい]                 | -                            | -                            | -      |
+| Azure Machine Learning           |                | -                   | プレビュー                      | -                            | -      |
+| Azure Stream Analytics           |                | [はい]                 | -                            | -                            | -      |
+| HDInsights (Azure Blob Storage)  |                | [はい]                 | -                            | -                            | -      |
+| HDInsights (Data Lake Storage)   |                | [はい]                 | -                            | -                            | -      |
+| Azure Data Lake Store            |                | [はい]                 | [はい]                          | -                            | -      |
+| Azure Data Catalog               |                | [はい]                 | -                            | -                            | -      |
+| Power BI                         |                | [はい]                 | -                            | -                            | -      |
 | **IoT サービス**                     |                |                     |                              |                              |        |
-| IoT Hub                          |                | -                   | -                            | -                            | あり    |
-| Service Bus                      |                | あり (Premium 階層)              | -                            | -                            | あり    |
-| Event Hubs                       |                | あり             | -                            | -                            | -      |
+| IoT Hub                          |                | -                   | -                            | -                            | [はい]    |
+| Service Bus                      |                | あり (Premium 階層)              | -                            | -                            | [はい]    |
+| Event Hubs                       |                | [はい]             | -                            | -                            | -      |
 
 
 ## <a name="conclusion"></a>まとめ

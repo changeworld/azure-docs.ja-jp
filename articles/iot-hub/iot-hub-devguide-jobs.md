@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub ジョブについて | Microsoft Docs"
-description: "開発者ガイド - IoT Hub に接続されている複数のデバイスで実行するジョブのスケジュール設定。 ジョブはタグと必要なプロパティを更新でき、複数のデバイス上でダイレクト メソッドを呼び出すことができます。"
+title: Azure IoT Hub ジョブについて | Microsoft Docs
+description: 開発者ガイド - IoT Hub に接続されている複数のデバイスで実行するジョブのスケジュール設定。 ジョブはタグと必要なプロパティを更新でき、複数のデバイス上でダイレクト メソッドを呼び出すことができます。
 services: iot-hub
 documentationcenter: .net
 author: dominicbetts
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: fe78458f-4f14-4358-ac83-4f7bd14ee8da
 ms.service: iot-hub
 ms.devlang: multiple
@@ -14,15 +14,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 7e0af40b2fd5bbb12d5565765aae4026922aec5c
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 367eb703465b2fbc6f1e06a383bc9df709cabe78
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 
 Azure IoT Hub では、[デバイス ツインのプロパティとタグ][lnk-twin-devguide]や[ダイレクト メソッド][lnk-dev-methods]のような多数の構成要素を使用できます。  通常、デバイス管理者とオペレーターは、バックエンド アプリを使用して、IoT デバイスの更新と対話を、指定した時刻に一括で実行できます。  ジョブは、指定した時刻に一連のデバイスに対してデバイス ツインの更新とダイレクト メソッドを実行します。  たとえば、オペレーターは、ビル 43 の 3 階にある一連のデバイスを、ビルの運用に悪影響を与えることがない時刻に再起動するジョブを開始して追跡するバックエンド アプリを使用します。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 一連のデバイスで次のアクティビティのスケジュールを設定し、その進行状況を追跡する必要があるときは、ジョブの使用を検討します。
 
@@ -101,7 +103,7 @@ ContinuationToken は、応答から提供されます。
 ## <a name="jobs-properties"></a>ジョブのプロパティ
 次の一覧は、ジョブまたはジョブの結果を照会するときに使うことができるプロパティとその説明です。
 
-| プロパティ | 説明 |
+| プロパティ | [説明] |
 | --- | --- |
 | **jobId** |アプリケーションが提供するジョブの ID。 |
 | **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO 8601)。 |

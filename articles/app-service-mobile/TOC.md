@@ -119,7 +119,6 @@
 #### [Node.JS バックエンド](app-service-mobile-node-backend-upgrading-from-mobile-services.md)
 
 ## セキュリティ保護
-### [認証と権限承認](../app-service/app-service-authentication-overview.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### ID プロバイダーで認証する
 #### [Azure Active Directory 認証](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [Facebook 認証](../app-service/app-service-mobile-how-to-configure-facebook-authentication.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
@@ -137,7 +136,7 @@
 #### [レイヤード セキュリティ アーキテクチャを実装する](../app-service/environment/app-service-app-service-environment-layered-security.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 #### [バックエンド リソースへの安全な接続](../app-service/environment/app-service-app-service-environment-securely-connecting-to-backend-resources.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 
-## Backup
+## バックアップ
 ### [Azure でのアプリのバックアップ](../app-service/web-sites-backup.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 ### [Azure でのアプリの復元](../app-service/web-sites-restore.md?toc=%2fazure%2fapp-service-mobile%2ftoc.json)
 

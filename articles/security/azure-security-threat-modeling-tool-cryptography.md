@@ -1,6 +1,6 @@
 ---
 title: "暗号化 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Threat Modeling Tool で公開されている脅威の軽減策"
+description: "Threat Modeling Tool で公開されている脅威への対応"
 services: security
 documentationcenter: na
 author: RodSan
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 96e74371fe51a8050a91c86215e3eefab07bbed8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="security-frame-cryptography--mitigations"></a>セキュリティ フレーム: 暗号化 | 軽減策 
 | 製品/サービス | 記事 |
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、組織の暗号アドバイザーによって明示的に承認された対称ブロック暗号および関連付けられたキー長のみを使用する必要があります。 Microsoft での承認済みの対称アルゴリズムには、次のブロック暗号が含まれます。</p><ul><li>新しいコードでは、AES-128、AES-192、AES-256 が許容されます。</li><li>既存のコードとの下位互換性を確保するために、three-key 3DES が許容されます。</li><li>対称ブロック暗号を使用する製品では、次の点に注意してください。<ul><li>新しいコードでは、Advanced Encryption Standard (AES) が必須となります。</li><li>three-key Triple Data Encryption Standard (3DES) は、下位互換性を確保するために既存のコードで許容されます。</li><li>RC2、DES、2-key 3DES、DESX、Skipjack など、他のすべてのブロック暗号は、古いデータの復号化にのみ使用できます。暗号化に使用する場合は置き換える必要があります。</li></ul></li><li>対称ブロック暗号化アルゴリズムでは、128 ビットの最小キー長が必須となります。 新しいコードに推奨されるブロック暗号化アルゴリズムは AES だけです (AES-128、AES-192、AES-256 はすべて許容されます)。</li><li>現在、three-key 3DES は、既存のコードで既に使用されている場合には許容されますが、AES に移行することをお勧めします。 DES、DESX、RC2、Skipjack は安全と見なされなくなりました。 これらのアルゴリズムは、下位互換性を確保するために既存のデータの復号化にのみ使用できます。データは、推奨されるブロック暗号を使用して再暗号化する必要があります。</li></ul><p>対称ブロック暗号は、いずれも承認済みの暗号モードで使用する必要があることに注意してください。承認済みの暗号モードでは、適切な初期化ベクトル (IV) を使用する必要があります。 通常、適切な IV は乱数であり、定数値ではありません。</p><p>組織の暗号委員会によるレビュー後に、従来の暗号化アルゴリズムまたは未承認の暗号化アルゴリズムと短いキー長を、(新しいデータの書き込みではなく) 既存のデータの読み取りに使用することが認められる場合があります。 ただし、この要件の例外を申請する必要があります。 さらに、エンタープライズ デプロイでは、データの読み取りに脆弱な暗号が使用されているときに、製品で管理者に警告することを検討する必要があります。 このような警告は、説明的ですぐに実行できる内容にします。 グループ ポリシーによって、脆弱な暗号の使用を制御するのが適している場合もあります。</p><p>管理された暗号化方式の指定で許容される .NET のアルゴリズム (優先順)</p><ul><li>AesCng (FIPS 準拠)</li><li>AuthenticatedAesCng (FIPS 準拠)</li><li>AESCryptoServiceProvider (FIPS 準拠)</li><li>AESManaged (FIPS 非準拠)</li></ul><p>これらのアルゴリズムはいずれも、machine.config ファイルに変更を加えずに `SymmetricAlgorithm.Create` メソッドまたは `CryptoConfig.CreateFromName` メソッドを使用して指定することはできないことに注意してください。 また、.NET 3.5 より前のバージョンの .NET での AES の名前は `RijndaelManaged` であることにも注意してください。`AesCng` と `AuthenticatedAesCng` は CodePlex から入手できますが、基になる OS に CNG が必要です。</p>
+| **手順** | <p>製品では、組織の暗号アドバイザーによって明示的に承認された対称ブロック暗号および関連付けられたキー長のみを使用する必要があります。 Microsoft での承認済みの対称アルゴリズムには、次のブロック暗号が含まれます。</p><ul><li>新しいコードでは、AES-128、AES-192、AES-256 が許容されます。</li><li>既存のコードとの下位互換性を確保するために、three-key 3DES が許容されます。</li><li>対称ブロック暗号を使用する製品では、次の点に注意してください。<ul><li>新しいコードでは、Advanced Encryption Standard (AES) が必須となります。</li><li>three-key Triple Data Encryption Standard (3DES) は、下位互換性を確保するために既存のコードで許容されます。</li><li>RC2、DES、2-key 3DES、DESX、Skipjack など、他のすべてのブロック暗号は、古いデータの復号化にのみ使用できます。暗号化に使用する場合は置き換える必要があります。</li></ul></li><li>対称ブロック暗号化アルゴリズムでは、128 ビットの最小キー長が必須となります。 新しいコードに推奨されるブロック暗号化アルゴリズムは AES だけです (AES-128、AES-192、AES-256 はすべて許容されます)。</li><li>現在、three-key 3DES は、既存のコードで既に使用されている場合には許容されますが、AES に移行することをお勧めします。 DES、DESX、RC2、Skipjack は安全と見なされなくなりました。 これらのアルゴリズムは、下位互換性を確保するために既存のデータの復号化にのみ使用できます。データは、推奨されるブロック暗号を使用して再暗号化する必要があります。</li></ul><p>対称ブロック暗号は、いずれも承認済みの暗号モードで使用する必要があることに注意してください。承認済みの暗号モードでは、適切な初期化ベクトル (IV) を使用する必要があります。 通常、適切な IV は乱数であり、定数値ではありません。</p><p>組織の暗号委員会によるレビュー後に、従来の暗号化アルゴリズムまたは未承認の暗号化アルゴリズムと短いキー長を、(新しいデータの書き込みではなく) 既存のデータの読み取りに使用することが認められる場合があります。 ただし、この要件の例外を申請する必要があります。 さらに、エンタープライズ デプロイでは、データの読み取りに脆弱な暗号が使用されているときに、製品で管理者に警告することを検討する必要があります。 このような警告は、説明的ですぐに実行できる内容にします。 グループ ポリシーによって、脆弱な暗号の使用を制御するのが適している場合もあります。</p><p>管理された暗号化方式の指定で許容される .NET のアルゴリズム (優先順)</p><ul><li>AesCng (FIPS に準拠している)</li><li>AuthenticatedAesCng (FIPS に準拠している)</li><li>AESCryptoServiceProvider (FIPS に準拠している)</li><li>AESManaged (FIPS に準拠していない)</li></ul><p>これらのアルゴリズムはいずれも、machine.config ファイルに変更を加えずに `SymmetricAlgorithm.Create` メソッドまたは `CryptoConfig.CreateFromName` メソッドを使用して指定することはできないことに注意してください。 また、.NET 3.5 より前のバージョンの .NET での AES の名前は `RijndaelManaged` であることにも注意してください。`AesCng` と `AuthenticatedAesCng` は CodePlex から入手できますが、基になる OS に CNG が必要です。</p>
 
 ## <a id="vector-ciphers"></a>対称暗号に承認済みのブロック暗号モードと初期化ベクトルを使用する
 
@@ -73,7 +73,7 @@ ms.lasthandoff: 10/11/2017
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、承認済みの乱数ジェネレーターを使用する必要があります。 そのため、C ランタイム関数の rand などの擬似ランダム関数、.NET Framework の System.Random クラス、GetTickCount などのシステム関数をコードで使用することはできません。 双対楕円曲線乱数ジェネレーター (DUAL_EC_DRBG) アルゴリズムの使用は禁止されています。</p><ul><li>**CNG -** BCryptGenRandom (呼び出し元が 0 より大きい IRQL (つまり、PASSIVE_LEVEL) で実行されている場合を除き、BCRYPT_USE_SYSTEM_PREFERRED_RNG フラグを使用することをお勧めします)。</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64 -** RtlGenRandom (新しい実装では、BCryptGenRandom または CryptGenRandom を使用する必要があります) * rand_s * SystemPrng (カーネル モードの場合)</li><li>**.NET -** RNGCryptoServiceProvider または RNGCng</li><li>**Windows ストア アプリ -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom または .GenerateRandomNumber</li><li>**Apple OS X (10.7 以上)/iOS (2.0 以上) -** int SecRandomCopyBytes (SecRandomRef random、size_t count、uint8_t *バイト)</li><li>**Apple OS X (10.7 より前) -** /dev/random を使用して乱数を取得します。</li><li>**Java(Google Android Java コードを含む) -** java.security.SecureRandom クラス。 Android 4.3 (Jelly Bean) の場合、開発者は Android の推奨回避策に従い、アプリケーションを更新して、/dev/urandom または /dev/random のエントロピーで PRNG を明示的に初期化する必要があります。</li></ul>|
+| **手順** | <p>製品では、承認済みの乱数ジェネレーターを使用する必要があります。 そのため、C ランタイム関数の rand などの擬似ランダム関数、.NET Framework の System.Random クラス、GetTickCount などのシステム関数をコードで使用することはできません。 双対楕円曲線乱数ジェネレーター (DUAL_EC_DRBG) アルゴリズムの使用は禁止されています。</p><ul><li>**CNG -** BCryptGenRandom (呼び出し元が 0 より大きい IRQL (つまり、PASSIVE_LEVEL) で実行されている場合を除き、BCRYPT_USE_SYSTEM_PREFERRED_RNG フラグを使用することをお勧めします)。</li><li>**CAPI -** cryptGenRandom</li><li>**Win32/64 -** RtlGenRandom (新しい実装では、BCryptGenRandom または CryptGenRandom を使用する必要があります) * rand_s * SystemPrng (カーネル モードの場合)</li><li>**.NET -** RNGCryptoServiceProvider または RNGCng</li><li>**Windows ストア アプリ -** Windows.Security.Cryptography.CryptographicBuffer.GenerateRandom または .GenerateRandomNumber</li><li>**Apple OS X (10.7+)/iOS(2.0+) -** int SecRandomCopyBytes (SecRandomRef ランダム、size_t の数、uint8_t*バイト)</li><li>* * Apple OS X (< 10.7)-**/開発/ランダムを使用して乱数を取得</li><li>**Java(Google Android Java コードを含む) -** java.security.SecureRandom クラス。 Android 4.3 (Jelly Bean) の場合、開発者は Android の推奨回避策に従い、アプリケーションを更新して、/dev/urandom または /dev/random のエントロピーで PRNG を明示的に初期化する必要があります。</li></ul>|
 
 ## <a id="stream-ciphers"></a>対称ストリーム暗号は使用しない
 
@@ -106,7 +106,7 @@ ms.lasthandoff: 10/11/2017
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | 該当なし  |
 | **参照**              | 該当なし  |
-| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS 準拠)</li><li>SHA384Cng (FIPS 準拠)</li><li>SHA256Cng (FIPS 準拠)</li><li>SHA512Managed (FIPS 非準拠) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA512 を使用)</li><li>SHA384Managed (FIPS 非準拠) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA384 を使用)</li><li>SHA256Managed (FIPS 非準拠) (HashAlgorithm.Create または CryptoConfig.CreateFromName の呼び出しでは、アルゴリズム名として SHA256 を使用)</li><li>SHA512CryptoServiceProvider (FIPS 準拠)</li><li>SHA256CryptoServiceProvider (FIPS 準拠)</li><li>SHA384CryptoServiceProvider (FIPS 準拠)</li></ul>| 
+| **手順** | <p>製品では、SHA-2 ファミリのハッシュ アルゴリズム (SHA256、SHA384、SHA512) を使用する必要があります。 短い MD5 ハッシュを念頭に置いて設計されたデータ構造に合わせるために 128 ビット出力長が必要な場合など、短いハッシュが必要な場合、製品チームは SHA2 ハッシュのいずれか (通常は SHA256) を切り捨てることができます。 SHA384 は SHA512 の切り捨てられたバージョンです。 セキュリティ上の目的で暗号化ハッシュを切り捨てる場合、128 ビット未満に切り捨てることは許可されていません。 新しいコードでは、MD2、MD4、MD5、SHA-0、SHA-1、RIPEMD の各ハッシュ アルゴリズムは使用しないでください。 これらのアルゴリズムでは、ハッシュの競合が計算的に可能であるため、実質的にアルゴリズムを破ることになります。</p><p>管理された暗号化方式の指定で許容される .NET のハッシュ アルゴリズムは次のとおりです (優先順)。</p><ul><li>SHA512Cng (FIPS に準拠している)</li><li>SHA384Cng (FIPS に準拠している)</li><li>SHA256Cng (FIPS に準拠している)</li><li>SHA512Managed (非 FIPS 準拠) (SHA512 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA384Managed (非 FIPS 準拠) (SHA384 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA256Managed (非 FIPS 準拠) (SHA256 名として使用するアルゴリズム HashAlgorithm.Create または CryptoConfig.CreateFromName への呼び出しで)</li><li>SHA512CryptoServiceProvider (FIPS に準拠している)</li><li>SHA256CryptoServiceProvider (FIPS に準拠している)</li><li>SHA384CryptoServiceProvider (FIPS に準拠している)</li></ul>| 
 
 ## <a id="strong-db"></a>強力な暗号化アルゴリズムを使用してデータベース内のデータを暗号化する
 

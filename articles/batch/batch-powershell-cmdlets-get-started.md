@@ -1,11 +1,11 @@
 ---
-title: "Azure Batch の PowerShell の使用 | Microsoft Docs"
-description: "Batch リソースの管理に使用できる Azure PowerShell コマンドレットの簡単な紹介。"
+title: Azure Batch の PowerShell の使用 | Microsoft Docs
+description: Batch リソースの管理に使用できる Azure PowerShell コマンドレットの簡単な紹介。
 services: batch
-documentationcenter: 
-author: tamram
-manager: timlt
-editor: 
+documentationcenter: ''
+author: dlepow
+manager: jeconnoc
+editor: ''
 ms.assetid: f9ad62c5-27bf-4e6b-a5bf-c5f5914e6199
 ms.service: batch
 ms.devlang: NA
@@ -13,13 +13,13 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: powershell
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: tamram
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: e33be6ed658e00250ea1e80cd7da4d348fb18296
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6767257a540e4f29bb5445a718ad65a31e1f373e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-batch-resources-with-powershell-cmdlets"></a>PowerShell コマンドレットで Batch リソースを管理する
 
@@ -42,11 +42,11 @@ Azure PowerShell を使用して Batch リソースを管理するために、�
 
 ## <a name="manage-batch-accounts-and-keys"></a>Batch アカウントとキーを管理する
 ### <a name="create-a-batch-account"></a>Batch アカウントを作成する
-**New-AzureRmBatchAccount** は、指定したリソース グループに Batch アカウントを作成します。 リソース グループがまだない場合は、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを実行して作成します。 **location** パラメーターで Azure リージョンのいずれか (例: "Central US") を指定します。 For example:
+**New-AzureRmBatchAccount** は、指定したリソース グループに Batch アカウントを作成します。 リソース グループがまだない場合は、[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) コマンドレットを実行して作成します。 **location** パラメーターで Azure リージョンのいずれか (例: "Central US") を指定します。 例: 
 
     New-AzureRmResourceGroup –Name MyBatchResourceGroup –location "Central US"
 
-次に、リソース グループに Batch アカウントを作成します。<*account_name*> にアカウントの名前を指定し、リソース グループの場所と名前を指定します。 Batch アカウントの作成は、完了までにしばらく時間がかかる場合があります。 For example:
+次に、リソース グループに Batch アカウントを作成します。<*account_name*> にアカウントの名前を指定し、リソース グループの場所と名前を指定します。 Batch アカウントの作成は、完了までにしばらく時間がかかる場合があります。 例: 
 
     New-AzureRmBatchAccount –AccountName <account_name> –Location "Central US" –ResourceGroupName <res_group_name>
 
@@ -75,7 +75,7 @@ Azure PowerShell を使用して Batch リソースを管理するために、�
 > 
 
 ### <a name="delete-a-batch-account"></a>Batch アカウントを削除する
-**Remove-AzureRmBatchAccount** は、Batch アカウントを削除します。 次に例を示します。
+**Remove-AzureRmBatchAccount** は、Batch アカウントを削除します。 例: 
 
     Remove-AzureRmBatchAccount -AccountName <account_name>
 
@@ -134,7 +134,7 @@ OData フィルターに代わる方法として、 **ID** パラメーターを
 **ID** パラメーターは、完全 ID の検索のみをサポートし、ワイルドカードや OData 形式のフィルターはサポートしません。
 
 ### <a name="use-the-maxcount-parameter"></a>MaxCount パラメーターを使用する
-既定では、各コマンドレットは最大で 1000 のオブジェクトを返します。 この制限に達した場合は、オブジェクトが少なくなるようにフィルターで絞り込むか、 **MaxCount** パラメーターを使用して明示的に最大値を設定してください。 次に例を示します。
+既定では、各コマンドレットは最大で 1000 のオブジェクトを返します。 この制限に達した場合は、オブジェクトが少なくなるようにフィルターで絞り込むか、 **MaxCount** パラメーターを使用して明示的に最大値を設定してください。 例: 
 
     Get-AzureBatchTask -MaxCount 2500 -BatchContext $context
 
@@ -235,7 +235,7 @@ Batch コマンドレットは、コマンドレット間でデータを送信�
 > 
 > 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * コマンドレットの詳しい構文と例については、 [Azure Batch コマンドレットのリファレンス](/powershell/module/azurerm.batch/#batch)を参照してください。
 * Batch におけるアプリケーションとアプリケーション パッケージについて詳しくは、「[Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ](batch-application-packages.md)」をご覧ください。
 

@@ -1,25 +1,25 @@
 ---
-title: "Azure Active Directory を使用して Azure Batch サービス ソリューションを認証する | Microsoft Docs"
-description: "Batch は、Batch サービスからの認証に Azure AD をサポートしています。"
+title: Azure Active Directory を使用して Azure Batch サービス ソリューションを認証する | Microsoft Docs
+description: Batch は、Batch サービスからの認証に Azure AD をサポートしています。
 services: batch
 documentationcenter: .net
 author: dlepow
 manager: jeconnoc
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: batch
 ms.devlang: multiple
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
+ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: danlep
-ms.openlocfilehash: 8ad9c3a779ca52140a78ae905e4825f3144976aa
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: e2d97929ada820a1ce969c59fb69b3518fe2eb6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch サービスの認証に Active Directory を使用する
 
@@ -138,8 +138,8 @@ Azure Portal で次の手順に従います。
 
 1. Azure Portal ポータルで、アプリケーションで使用する Batch アカウントに移動します。
 2. Batch アカウントの **[設定]** ブレードで、**[Access Control (IAM)]** を選択します。
-3. **[Add] \(追加)** ボタンをクリックします。 
-4. **[ロール]** ドロップダウン リストで、アプリケーションに _[共同作成者]_ または _[リーダー]_ のいずれかのロールを選択します。 これらのロールの詳細については、「[Azure Portal でのロールベースの Access Control の基礎を確認する](../active-directory/role-based-access-control-what-is.md)」を参照してください。  
+3. **[追加]** をクリックします。 
+4. **[ロール]** ドロップダウン リストで、アプリケーションに _[共同作成者]_ または _[リーダー]_ のいずれかのロールを選択します。 これらのロールの詳細については、「[Azure Portal でのロールベースのアクセス制御の基礎を確認する](../active-directory/role-based-access-control-what-is.md)」を参照してください。  
 5. **[選択]** フィールドに、アプリケーションの名前を入力します。 リストからアプリケーションを選択し、**[保存]** をクリックします。
 
 この時点で、RBAC ロールが割り当てられたアプリケーションがアクセス制御の設定に表示されている必要があります。 

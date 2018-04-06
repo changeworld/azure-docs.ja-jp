@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/05/2016
 ms.author: hkanna
 ms.openlocfilehash: a28b46e10bbdd5331cc665fad3f80523b3aa8a58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="storsimple-as-a-backup-target-with-backup-exec"></a>Backup Exec を使用したバックアップ ターゲットとしての StorSimple
 
@@ -59,7 +59,7 @@ StorSimple は、適切に定義されたデータのワーキング セット (
 
 このグラフを見ると、StorSimple をバックアップ ターゲットとして稼働させることが適切であることがわかります。 StorSimple を使用すると次のことが可能になります。
 -   データのローカル ワーキングセットから最も頻度に復元を実行する。
--   復元の頻度が低いオフサイトの障害復旧と過去のデータ用にクラウドを使用する。
+-   復元の頻度が低いオフサイトのディザスター リカバリーと過去のデータ用にクラウドを使用する。
 
 ## <a name="storsimple-benefits"></a>StorSimple の利点
 
@@ -74,7 +74,7 @@ StorSimple には次の利点があります。
 -   Azure を使用した geo レプリケーション
 -   Azure の統合
 -   クラウドのデータ暗号化
--   障害復旧とコンプライアンスの強化
+-   ディザスター リカバリーとコンプライアンスの強化
 
 StorSimple には 2 つの主要なデプロイメント シナリオ (プライマリ バックアップ ターゲットとセカンダリ バックアップ ターゲット) が用意されていますが、基本的にはシンプルなブロック ストレージ デバイスです。 StorSimple では、すべての圧縮と重複除去が行われます。 クラウドとアプリケーションおよびファイル システムの間で、データはシームレスに送受信されます。
 
@@ -155,7 +155,7 @@ StorSimple の詳細については、「[StorSimple 8000 シリーズ: ハイ�
 2. StorSimple デバイスをバックアップ ターゲットとしてデプロイする。
 3. Backup Exec をデプロイする。
 
-各手順について、以下のセクションで詳しく説明します。
+各手順について、以降のセクションで詳しく説明します。
 
 ### <a name="set-up-the-network"></a>ネットワークのセットアップ
 
@@ -220,7 +220,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
   -   StorSimple デバイスが [Update 3 以降](storsimple-install-update-3.md)に更新されていることを確認します。
   -   iSCSI とクラウド トラフィックを分離します。 StorSimple とバックアップ サーバーの間のトラフィックには専用の iSCSI 接続を使用します。
-  -   StorSimple デバイスが専用のバックアップ ターゲットであることを確認します。 混合ワークロードは、RTO と RPO に影響を与えるためサポートされていません。
+  -   StorSimple デバイスが専用のバックアップ ターゲットであることを確認します。 混合ワークロードは、RTO と RPO に影響を与えるため、サポートされていません。
 
 ### <a name="backup-exec-best-practices"></a>Backup Exec のベスト プラクティス
 
@@ -235,7 +235,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 これらの要件を実装するための最新の Backup Exec 設定およびベスト プラクティスについては、[Veritas 社の Web サイト](https://www.veritas.com)をご覧ください。
 
-## <a name="retention-policies"></a>リテンション期間ポリシー
+## <a name="retention-policies"></a>保持ポリシー
 
 最も一般的なタイプのバックアップ保持ポリシーの 1 つが、Grandfather-Father-Son (GFS) ポリシーです。 GFS ポリシーでは、増分バックアップを 1 日 1 回実行し、完全バックアップは週 1 回および月 1 回実行します。 このポリシーでは 6 つの StorSimple 階層化ボリュームを使用します。 1 つのボリュームには、週、月、年単位の完全バックアップが格納されます。 残りの 5 つのボリュームには、日単位の増分バックアップが格納されます。
 
@@ -294,7 +294,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 8.  Backup Exec への StorSimple ボリュームの割り当てが完了するまで手順 1 - 7 を繰り返します。
 
-## <a name="set-up-storsimple-as-a-primary-backup-target"></a>StorSimple をプライマリ バックアップ ターゲットとしてセットアップする
+## <a name="set-up-storsimple-as-a-primary-backup-target"></a>プライマリ バックアップ ターゲットとして StorSimple をセットアップする
 
 > [!NOTE]
 > クラウドに階層化済みのバックアップからのデータ復元は、クラウドのスピードで実行されます。
@@ -348,7 +348,7 @@ Backup Exec のインストールのベスト プラクティスについては�
 
 7.  要件を満たすよう残りのバックアップ オプションを設定したら、**[OK]** を選択し完了します。
 
-## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>StorSimple をセカンダリ バックアップ ターゲットとしてセットアップする
+## <a name="set-up-storsimple-as-a-secondary-backup-target"></a>セカンダリ バックアップ ターゲットとして StorSimple をセットアップする
 
 > [!NOTE]
 >クラウドに階層化済みのバックアップからのデータ復元は、クラウドのスピードで実行されます。
@@ -466,12 +466,12 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 > [!NOTE]
 > バックアップ ターゲットのシナリオについて、StorSimple Cloud Appliance は復元先としてサポートされていません。
 
-障害は、さまざまな要素によって引き起こされます。 次の表は、よくある障害復旧のシナリオをまとめたものです。
+障害は、さまざまな要素によって引き起こされます。 次の表は、よくあるディザスター リカバリーのシナリオをまとめたものです。
 
 | シナリオ | 影響 | 復旧方法 | メモ |
 |---|---|---|---|
 | StorSimple デバイスの不具合 | バックアップと復元のオペレーションが中断されます。 | 不具合のあるデバイスを交換し、[StorSimple フェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)を実行します。 | デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 インデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があり、時間のかかる可能性があります。 |
-| Backup Exec サーバーの不具合 | バックアップと復元のオペレーションが中断されます。 | 「[Backup Exec (BEDB) データベースの手動バックアップと復元方法](http://www.veritas.com/docs/000041083)」に従ってバックアップ サーバーを再構築し、データベースの復元を実行します。 | 障害復旧サイトの Backup Exec サーバーを再構築または復元する必要があります。 データベースを最新の時点に復元します。 復元した Backup Exec データベースと最新のバックアップ ジョブが同期されない場合、インデックスとカタログを作成する必要があります。 このインデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があります。 これにはさらに時間がかかります。 |
+| Backup Exec サーバーの不具合 | バックアップと復元のオペレーションが中断されます。 | 「[Backup Exec (BEDB) データベースの手動バックアップと復元方法](http://www.veritas.com/docs/000041083)」に従ってバックアップ サーバーを再構築し、データベースの復元を実行します。 | ディザスター リカバリー サイトの Backup Exec サーバーを再構築または復元する必要があります。 データベースを最新の時点に復元します。 復元した Backup Exec データベースと最新のバックアップ ジョブが同期されない場合、インデックスとカタログを作成する必要があります。 このインデックスとカタログの再スキャン プロセスでは、すべてのバックアップ セットがスキャンされ、クラウドの階層からローカル デバイスの階層に戻される場合があります。 これにはさらに時間がかかります。 |
 | バックアップ サーバーと StorSimple 両方の損失を招くサイトの不具合 | バックアップと復元のオペレーションが中断されます。 | まず StorSimple を復旧し、次に Backup Exec を復旧します。 | まず StorSimple を復旧し、次に Backup Exec を復旧します。 デバイスの復旧後に復元を実行する必要がある場合、完全なデータのワーキング セットがクラウドから新しいデバイスに送られます。 すべてのオペレーションはクラウドのスピードで実行されます。 |
 
 ## <a name="references"></a>参照
@@ -483,7 +483,7 @@ StorSimple デバイスからの復元は、他のブロック ストレージ �
 - [GPT ドライブを使用する (Using GPT drives)](http://msdn.microsoft.com/windows/hardware/gg463524.aspx#EHD)
 - [共有フォルダーのシャドウ コピーのセットアップ](http://technet.microsoft.com/library/cc771893.aspx)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [バックアップ セットからの復元方法](storsimple-restore-from-backup-set-u2.md)について確認します。
 - [デバイスのフェールオーバーと障害復旧](storsimple-device-failover-disaster-recovery.md)の実行方法について確認します。

@@ -1,11 +1,11 @@
 ---
-title: "Cloud Cruiser と Microsoft Azure Billing API の統合 | Microsoft Docs"
-description: "Microsoft Azure 課金パートナーの Cloud Cruiser が Azure Billing API を製品に統合した独自の事例について説明します。  この記事は、Microsoft Azure Pack の使用/試用に関心を持っている Azure と Cloud Cruiser のユーザーには特に役立ちます。"
-services: 
-documentationcenter: 
-author: BryanLa
+title: Cloud Cruiser と Microsoft Azure Billing API の統合 | Microsoft Docs
+description: Microsoft Azure 課金パートナーの Cloud Cruiser が Azure Billing API を製品に統合した独自の事例について説明します。  この記事は、Microsoft Azure Pack の使用/試用に関心を持っている Azure と Cloud Cruiser のユーザーには特に役立ちます。
+services: ''
+documentationcenter: ''
+author: tonguyen
 manager: tonguyen
-editor: 
+editor: ''
 tags: billing
 ms.assetid: b65128cf-5d4d-4cbd-b81e-d3dceab44271
 ms.service: billing
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 10/09/2017
 ms.author: mobandyo;sirishap;bryanla
-ms.openlocfilehash: 7d66cac98afa72c807f597403b1e2bd278e45cec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ddb81078e8019284c0481d4ea8d72253d3f0a5a
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="cloud-cruiser-and-microsoft-azure-billing-api-integration"></a>Cloud Cruiser と Microsoft Azure Billing API の統合
 この記事では、新しい Azure Billing API から収集した情報を Cloud Cruiser で使用して、ワークフローのコスト シミュレーションと分析を行う方法について説明します。
@@ -198,7 +198,7 @@ Cloud Cruiser のブックには、Usage API の情報の収集と処理を自�
 
 この手順の最も大きなメリットは、このプロセスを 1 回だけ行えばよいという点です。 ブックが完成したら、必要なのはスケジューラに追加することだけです。ブックは 1 時間ごとに、または毎日スケジュールされた時刻に実行されます。 新しいレポートを作成するか、既存のレポートをカスタマイズするだけで、データの分析を行って、クラウドの利用状況から意味のある情報を取得できます。
 
-### <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次の手順
 * Cloud Cruiser のブックとレポートの作成手順については、Cloud Cruiser のオンライン [ドキュメント](http://docs.cloudcruiser.com/) を参照してください (有効なログインが必要です)。  Cloud Cruiser の詳細については、[info@cloudcruiser.com](mailto:info@cloudcruiser.com) に問い合わせてください。
 * Azure Resource Usage API と RateCard API の概要については、「 [Microsoft Azure のリソース消費を把握する](billing-usage-rate-card-overview.md) 」を参照してください。
 * 両方の API の詳細については、「 [Azure Billing REST API リファレンス](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c) 」を参照してください (Azure リソース マネージャーに用意されている API セットに含まれています)。

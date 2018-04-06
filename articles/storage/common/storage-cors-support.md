@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 2/22/2017
 ms.author: cbrooks
 ms.openlocfilehash: 8d189d3ec3e6081dd37b912824f287cd75f39b35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="cross-origin-resource-sharing-cors-support-for-the-azure-storage-services"></a>Azure ストレージ サービスでのクロス オリジン リソース共有 (CORS) のサポート
 バージョン 2013-08-15 以降の Azure Storage サービスでは、BLOB、Table、Queue、File の各サービスでクロス オリジン リソース共有 (CORS) をサポートしています。 CORS は、あるドメインで実行されている Web アプリケーションが別のドメイン内にあるリソースにアクセスできるようにする HTTP 機能です。 Web ブラウザーには、Web ページで別のドメインの API を呼び出すことができないようにする[同一呼び出し元ポリシー](http://www.w3.org/Security/wiki/Same_Origin_Policy)と呼ばれるセキュリティ制限が実装されています。CORS を使用すると、あるドメイン (元のドメイン) から別のドメインの API を安全に呼び出すことができます。 CORS について詳しくは、[CORS の仕様](http://www.w3.org/TR/cors/)をご覧ください。
@@ -86,7 +86,7 @@ CORS ルールには、次の制限事項が適用されます。
 * 許可されるヘッダー、公開されるヘッダー、許可される元のドメインの長さは、256 文字を超えることはできません。
 * 許可されるヘッダーと公開されるヘッダーとして、次のいずれかを使用できます。
   * リテラル ヘッダー。**x-ms-meta-processed** などの正確なヘッダー名を指定します。 最大 64 個のリテラル ヘッダーを要求で指定できます。
-  * プレフィックスが指定されたヘッダー。**x-ms-meta-data*** などのヘッダーのプレフィックスを指定します。 このような方法でプレフィックスを指定した場合は、指定のプレフィックスで始まるすべてのヘッダーが許可または公開されます。 最大 2 個のプレフィックスが指定されたヘッダーを要求で指定できます。
+  * 場所ヘッダーのプレフィックスが指定されたなどのヘッダーの先頭を指定する * * x-ms-メタ-データ * * *。 このような方法でプレフィックスを指定した場合は、指定のプレフィックスで始まるすべてのヘッダーが許可または公開されます。 最大 2 個のプレフィックスが指定されたヘッダーを要求で指定できます。
 * **AllowedMethods** 要素で指定されたメソッド (または HTTP 動詞) は、Azure ストレージ サービス API でサポートされるメソッドに従う必要があります。 サポートされるメソッドは、DELETE、GET、HEAD、MERGE、POST、OPTIONS、PUT です。
 
 ## <a name="understanding-cors-rule-evaluation-logic"></a>CORS ルールの評価ロジックについて
@@ -131,7 +131,7 @@ CORS ルールは、次のように評価されます。
 
 次に、以下の CORS 要求について考えてみましょう。
 
-| 要求 |  |  | 応答 |  |
+| 要求 |  |  | Response |  |
 | --- | --- | --- | --- | --- |
 | **メソッド** |**元のドメイン** |**要求ヘッダー** |**ルールの一致** |**結果** |
 | **PUT** |http://www.contoso.com |x-ms-blob-content-type |最初のルール |成功 |
@@ -165,23 +165,23 @@ GET/HEAD 以外のメソッドに対する応答はユーザー エージェン�
 
 前に説明した例に基づいて、Azure ストレージが GET/HEAD 要求にどのように応答するかを次の表に示します。
 
-| 要求 | アカウントの設定とルールの評価結果 |  |  | 応答 |  |  |
+| 要求 | アカウントの設定とルールの評価結果 |  |  | Response |  |  |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| **要求に Origin ヘッダーが存在する** |**このサービスに CORS ルールが指定されている** |**すべての元のドメインを許可する照合ルール (*) が存在する** |**元のドメインと完全に一致する照合ルールが存在する** |**Origin に設定された Vary にヘッダーが応答に含まれている** |**Access-Control-Allowed-Origin が応答に含まれている: "*"** |**Access-Control-Exposed-Headers が応答に含まれている** |
-| なし |いいえ |いいえ |いいえ |いいえ |いいえ |いいえ |
-| いいえ |あり |なし |いいえ |あり |なし |いいえ |
-| いいえ |可能  |あり |なし |いいえ |可能  |あり |
-| あり |なし |いいえ |いいえ |いいえ |いいえ |いいえ |
-| 可能  |あり |なし |可能  |あり |なし |可能  |
-| あり |あり |なし |いいえ |あり |なし |いいえ |
-| 可能  |あり |あり |なし |いいえ |可能  |あり |
+| **要求に Origin ヘッダーが存在する** |**このサービスに CORS ルールが指定されている** |**照合ルールが存在するすべての origins(*) を許可します。** |**元のドメインと完全に一致する照合ルールが存在する** |**Origin に設定された Vary にヘッダーが応答に含まれている** |**応答には、アクセス コントロール-許可されている-オリジンが含まれています:"*"** |**Access-Control-Exposed-Headers が応答に含まれている** |
+| いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |
+| いいえ  |[はい] |いいえ  |いいえ  |[はい] |いいえ  |いいえ  |
+| いいえ  |可能  |[はい] |いいえ  |いいえ  |可能  |[はい] |
+| [はい] |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |いいえ  |
+| 可能  |[はい] |いいえ  |可能  |[はい] |いいえ  |可能  |
+| [はい] |[はい] |いいえ  |いいえ  |[はい] |いいえ  |いいえ  |
+| 可能  |[はい] |[はい] |いいえ  |いいえ  |可能  |[はい] |
 
 ## <a name="billing-for-cors-requests"></a>CORS 要求への課金
 ご使用のアカウントで ([Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)、[Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)、[Set Table Service Properties](https://msdn.microsoft.com/library/hh452240.aspx) を呼び出して) いずれかのストレージ サービスに対して CORS を有効にしている場合、成功したプレフライト要求に対して課金されます。 費用を最小限に抑えるには、エージェント ユーザーが要求をキャッシュするよう、CORS ルールの **MaxAgeInSeconds** 要素に大きい値を設定することを検討してください。
 
 失敗したプレフライト要求に対しては課金されません。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [Set Blob Service Properties](https://msdn.microsoft.com/library/hh452235.aspx)
 
 [Set Queue Service Properties](https://msdn.microsoft.com/library/hh452232.aspx)

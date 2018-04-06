@@ -1,11 +1,11 @@
 ---
-title: "Azure Linux VM へのアクセスのリセット | Microsoft Docs"
-description: "VMAccess 拡張機能と Azure CLI 2.0 を使用して Linux VM 上の管理ユーザーを管理し、アクセスをリセットする方法"
+title: Azure Linux VM へのアクセスのリセット | Microsoft Docs
+description: VMAccess 拡張機能と Azure CLI 2.0 を使用して Linux VM 上の管理ユーザーを管理し、アクセスをリセットする方法
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: dlepow
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 261a9646-1f93-407e-951e-0be7226b3064
 ms.service: virtual-machines-linux
@@ -15,16 +15,16 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 08/04/2017
 ms.author: danlep
-ms.openlocfilehash: 235a6367ad317945cfeaaa6aae4e060208fb8e8e
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: a5467722b347e68693b335da6b3ac3c5d1a3a441
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="manage-administrative-users-ssh-and-check-or-repair-disks-on-linux-vms-using-the-vmaccess-extension-with-the-azure-cli-20"></a>VMAccess 拡張機能と Azure CLI 2.0 を使用して、Linux VM 上の管理ユーザー、SSH を管理し、ディスクをチェックまたは修復する
 Linux VM 上のディスクがエラーを示しています。 何らかの理由で Linux VM の root パスワードをリセットしたか、誤って SSH 秘密キーを削除してしまいました。 これがかつてのデータ センターの時代で起きていたら、車で駆けつけ、KVM を開けて、サーバー コンソールにたどり着くことになっていたでしょう。 Azure VMAccess 拡張機能は、コンソールにアクセスして、Linux へのアクセスをリセットしたり、ディスク レベルの保守を実行したりできるその KVM スイッチとして考えてください。
 
-この記事では、Azure VMAccess 拡張機能を使用して、Linux 上のディスクのチェックや修復、ユーザー アクセスのリセット、管理ユーザー アカウントの管理、または SSH 構成のリセットを行う方法を説明します。 これらの手順は、[Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
+この記事では、Azure VMAccess 拡張機能を使用して、Linux 上でのディスクのチェックや修復、ユーザー アクセスのリセット、管理ユーザー アカウントの管理、または SSH 構成の更新を行う方法について説明します。 これらの手順は、[Azure CLI 1.0](using-vmaccess-extension-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) を使用して実行することもできます。
 
 
 ## <a name="ways-to-use-the-vmaccess-extension"></a>VMAccess 拡張機能の使用方法
@@ -35,8 +35,8 @@ Linux VM で VMAccess 拡張機能を使用する方法は 2 つあります。
 
 次の例では、[az vm user](/cli/azure/vm/user) コマンドを使用します。 これらの手順を実行するには、[Azure CLI 2.0](/cli/azure/install-az-cli2) の最新版をインストールし、[az login](/cli/azure/reference-index#az_login) を使用して Azure アカウントにログインする必要があります。
 
-## <a name="reset-ssh-key"></a>SSH キーのリセット
-次の例では、`myVM` という名前の VM 上のユーザー `azureuser` の SSH キーをリセットします。
+## <a name="update-ssh-key"></a>SSH キーを更新する
+次の例では、`myVM` という名前の VM 上のユーザー `azureuser` の SSH キーを更新します。
 
 ```azurecli
 az vm user update \
@@ -45,6 +45,8 @@ az vm user update \
   --username azureuser \
   --ssh-key-value ~/.ssh/id_rsa.pub
 ```
+
+> **注:** `az vm user update` コマンドは、VM 上の管理者ユーザーの `~/.ssh/authorized_keys` ファイルに新しい公開キー テキストを追加します。 これにより、既存の SSH キーが置き換えられたり、削除されたりすることはありません。 これにより、デプロイ時や VMAccess 拡張機能での以降の更新時に設定された以前のキーが削除されることはありません。
 
 ## <a name="reset-password"></a>[パスワードのリセット]
 次の例では、`myVM` という名前の VM 上のユーザー `azureuser` のパスワードをリセットします。
@@ -94,9 +96,9 @@ az vm user delete \
 次の例では、未加工の JSON ファイルを使用します。 [az vm extension set](/cli/azure/vm/extension#az_vm_extension_set) を使用して JSON ファイルを呼び出します。 これらの JSON ファイルは、Azure テンプレートから呼び出すこともできます。 
 
 ### <a name="reset-user-access"></a>ユーザー アクセスのリセット
-Linux VM で root へのアクセスを失った場合、VMAccess スクリプトを起動して、ユーザーの SSH キーまたはパスワードをリセットできます。
+Linux VM 上でルートへのアクセスが失われた場合は、VMAccess スクリプトを起動して、ユーザーの SSH キーまたはパスワードを更新できます。
 
-ユーザーの SSH 公開キーをリセットするには、`reset_ssh_key.json` という名前のファイルを作成し、次の形式の設定を追加します。 `username`と `ssh_key` パラメーターは、独自の値に置き換えてください。
+ユーザーの SSH 公開キーを更新するには、`update_ssh_key.json` という名前のファイルを作成し、次の形式の設定を追加します。 `username`と `ssh_key` パラメーターは、独自の値に置き換えてください。
 
 ```json
 {
@@ -114,7 +116,7 @@ az vm extension set \
   --name VMAccessForLinux \
   --publisher Microsoft.OSTCExtensions \
   --version 1.4 \
-  --protected-settings reset_ssh_key.json
+  --protected-settings update_ssh_key.json
 ```
 
 ユーザー パスワードをリセットするには、`reset_user_password.json` という名前のファイルを作成し、次の形式の設定を追加します。 `username`と `password` パラメーターは、独自の値に置き換えてください。

@@ -1,11 +1,11 @@
 ---
 title: Publish-WebApplicationVM | Microsoft Docs
-description: "仮想マシンに Web アプリケーションをデプロイする方法を学習します。 このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。"
+description: 仮想マシンに Web アプリケーションをデプロイする方法を学習します。 このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: de4cec95-f73f-44d9-babd-9f47f2633cdb
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: ghogen
+ms.openlocfilehash: 49778b00dc9b1f6a8a11de5e3575599957b753fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationVM (Windows PowerShell スクリプト)
 仮想マシンに Web アプリケーションをデプロイします。 このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
@@ -37,7 +37,7 @@ Publish-WebApplicationVM
 ### <a name="configuration"></a>構成
 デプロイの詳細が記述されている JSON 構成ファイルへのパス。
 
-| 別名 | なし |
+| エイリアス | なし |
 | --- | --- |
 | 必須 |true |
 | 位置 |named |
@@ -48,7 +48,7 @@ Publish-WebApplicationVM
 ### <a name="subscriptionname"></a>SubscriptionName
 仮想マシンを作成する Azure サブスクリプションの名前。
 
-| 別名 | なし |
+| エイリアス | なし |
 | --- | --- |
 | 必須 |false |
 | 位置 |named |
@@ -59,7 +59,7 @@ Publish-WebApplicationVM
 ### <a name="webdeploypackage"></a>WebDeployPackage
 仮想マシンに発行する Web デプロイ パッケージへのパス。 Visual Studio で Web の発行ウィザードを使用して、このパッケージを作成できます。 詳細については、「 [方法: Visual Studio で Web デプロイ パッケージを作成する](https://msdn.microsoft.com/library/dd465323.aspx)」をご覧ください。
 
-| 別名 | なし |
+| エイリアス | なし |
 | --- | --- |
 | 必須 |false |
 | 位置 |named |
@@ -70,7 +70,7 @@ Publish-WebApplicationVM
 ### <a name="allowuntrusted"></a>AllowUntrusted
 True の場合は、信頼されたルート証明機関によって署名されていない証明書の使用が許可されます。
 
-| 別名 | なし |
+| エイリアス | なし |
 | --- | --- |
 | 必須 |false |
 | 位置 |named |
@@ -103,7 +103,7 @@ Azure での SQL Database の資格情報。 例: -DatabaseServerPassword @{Name
 ### <a name="sendhostmessagestooutput"></a>SendHostMessagesToOutput
 true の場合、スクリプトからのメッセージは出力ストリームに出力されます。
 
-| 別名 | なし |
+| エイリアス | なし |
 | --- | --- |
 | 必須 |false |
 | 位置 |named |

@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: alkohli
 ms.openlocfilehash: 3fd1c262a8ce94d8e98f2b066a8028d974b15b1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-jobs-for-the-storsimple-virtual-array"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple Virtual Array のジョブを表示する
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 **[ジョブ]** ブレードには、StorSimple デバイス マネージャー サービスに接続されている仮想アレイで開始されたジョブを、表示および管理するための一元的なポータルがあります。 複数の仮想デバイスについて、実行中のジョブ、完了したジョブ、および失敗したジョブを表示できます。 結果は表形式で表示されます。
 
 ![ジョブ ブレード](./media/storsimple-virtual-array-manage-jobs/ova-jobs-blade.png)
@@ -62,6 +62,6 @@ StorSimple Virtual Array でジョブが進行しているときや、デバイ�
 
 これらのエラーは、ジョブのバックアップ、復元、更新、およびフェールオーバーで発生します。 仮想マシンが Hyper-V でプロビジョニングされている場合、コンピューターは最終的にハイパーバイザーと同期します。 このエラーが発生したら、ジョブの再起動をお試しください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 [ローカル Web UI を使用して、StorSimple Virtual Array を管理する方法を確認します](storsimple-ova-web-ui-admin.md)。
 

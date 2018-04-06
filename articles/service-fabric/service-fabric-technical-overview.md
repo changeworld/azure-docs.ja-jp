@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric の用語を学習する | Microsoft Docs"
-description: "Service Fabric の用語の概要です。 重要な用語の概念と、ドキュメントの他の部分で使用される用語について説明します。"
+title: Azure Service Fabric の用語を学習する | Microsoft Docs
+description: Service Fabric の用語の概要です。 重要な用語の概念と、ドキュメントの他の部分で使用される用語について説明します。
 services: service-fabric
 documentationcenter: .net
 author: rwike77
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 12/18/2017
+ms.date: 03/26/2018
 ms.author: ryanwi
-ms.openlocfilehash: dc7e536ce40bf95e1950e1e44844cd8fe26ea1a1
-ms.sourcegitcommit: b7adce69c06b6e70493d13bc02bd31e06f291a91
+ms.openlocfilehash: bd57b6344baef3bdf97c850564ae2d3afa9c811e
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/19/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric の用語の概要
 Azure Service Fabric は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 この記事では、Service Fabric 関連ドキュメントで使用される用語の意味を理解するうえで参考となるように、Service Fabric で使用される用語について詳しく説明します。
@@ -89,12 +89,22 @@ Image Store サービスの詳細については、「[ImageStoreConnectionStrin
    - アプリケーションとクラスターのアップグレードを調整します。
    - 他のシステム コンポーネントとやり取りします。
 
+**Repair Manager サービス**: これは、安全で、自動化可能、かつ透過的な方法でクラスター上で修復アクションを実行できるようにする、省略可能なシステム サービスです。 Repair Manager は、次の操作で使用されます。
+   - [Silver および Gold 持続性](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric クラスター上での Azure メンテナンス修復の実行。
+   - [パッチ オーケストレーション アプリケーション](service-fabric-patch-orchestration-application.md)のための修復アクションの実行
+
 ## <a name="built-in-programming-models"></a>組み込みのプログラミング モデル
-Service Fabric のサービスを構築するにあたっては、次の .NET Framework プログラミング モデルが用意されています。
+Service Fabric サービスをビルドできるように、次の .NET Framework および Java プログラミング モデルが使用可能になっています。
 
 **Reliable Services**: ステートレス サービスとステートフル サービスを構築するための API。 ステートフル サービスの状態は、Reliable Collection (ディクショナリ、キューなど) に格納されます。 他にも、Web API や Windows Communication Foundation (WCF) など、さまざまな通信スタックを組み込むことができます。
 
 **Reliable Actors**: 仮想アクター プログラミング モデルを使用してステートレス オブジェクトとステートフル オブジェクトを構築するための API。 このモデルは、独立した計算または状態の単位が多数存在するときに適しています。 このモデルは、順番に基づくスレッド モデルを採用しているため、他のアクターやサービスを呼び出すコードは避けた方が賢明です。それぞれのアクターは、すべての送信要求が完了するまで他の受信要求を処理できません。
+
+また、Service Fabric 上で既存のアプリケーションを実行することもできます。
+
+**Containers**: Service Fabric は、Hyper-V の分離モードのサポートと共に、Linux での Docker コンテナーおよび Windows Server 2016 での Windows Server コンテナーのデプロイをサポートしています。 Service Fabric の [アプリケーション モデル](service-fabric-application-model.md)では、コンテナーは複数のサービス レプリカが配置されたアプリケーション ホストを表します。 Service Fabric は任意のコンテナーを実行でき、そのシナリオは、コンテナーの内部で既存のアプリケーションをパッケージ化するゲスト実行可能ファイルのシナリオと同様です。 さらに、[コンテナーの内部で Service Fabric サービスを実行する](service-fabric-services-inside-containers.md)こともできます。
+
+**ゲスト実行可能ファイル**: Node.js、Java、C++ などの任意の種類のコードを Azure Service Fabric でサービスとして実行できます。 Service Fabric では、これらの種類のサービスはゲスト実行可能ファイルと呼ばれます。これは、ステートレス サービスとして処理されます。 Service Fabric クラスターでゲスト実行可能ファイルを実行する利点には、高可用性、正常性の監視、アプリケーション ライフサイクル管理、高密度、および見つけやすさが含まれます。
 
 詳細については、[サービスのプログラミング モデルの選択](service-fabric-choose-framework.md)に関する記事をご覧ください。
 

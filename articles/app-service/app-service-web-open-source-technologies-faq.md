@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 11/03/2017
 ms.author: genli
 ms.openlocfilehash: 4fb443691e216169dd1322b96d77139ffde752d4
-ms.sourcegitcommit: 8aa014454fc7947f1ed54d380c63423500123b4a
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/23/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Azure の Web アプリのオープン ソース テクノロジに関する FAQ
 
@@ -53,7 +53,7 @@ PHP ログを有効にするには、次の手順を実行します。
 6. **.user.ini** というファイル名を設定します。
 7. **. user.ini** の横にある鉛筆のアイコンを選択します。
 8. ファイルで、コード `log_errors=on` を追加します。
-9. **[ 保存]** を選択します。
+9. **[保存]** を選択します。
 10. **wp-config.php** の横にある鉛筆のアイコンを選択します。
 11. テキストを次のコードに変更します。
    ```

@@ -1,20 +1,20 @@
 ---
-title: "Azure クイック スタート - Batch ジョブの実行 - Python"
-description: "Batch Python クライアント ライブラリを使用して Batch ジョブとタスクを短時間で実行できます。"
+title: Azure クイック スタート - Batch ジョブの実行 - Python
+description: Batch Python クライアント ライブラリを使用して Batch ジョブとタスクを短時間で実行できます。
 services: batch
 author: dlepow
-manager: timlt
+manager: jeconnoc
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/19/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 0e6a631a8d4956e2be9fd14941131968d5f4443f
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: e843bc0d3a56b9e99cd3fbb865bb0066321475df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>クイック スタート: Python API で最初の Batch ジョブを実行する
 

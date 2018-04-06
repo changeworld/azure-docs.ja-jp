@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/22/2016
 ms.author: ancav
 ms.openlocfilehash: 80955535c8d863cd3d8d1b77e2ab8bc016b6d9f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 02/13/2018
 ---
 # <a name="advanced-autoscale-configuration-using-resource-manager-templates-for-vm-scale-sets"></a>VM Scale Sets 向けの Resource Manager テンプレートを使用した高度な自動スケール構成
 Virtual Machine Scale Sets では、パフォーマンス メトリックのしきい値、定期的なスケジュール、または特定の日付に基づいてスケールインおよびスケールアウトを行うことができます。 また、スケール アクションに対して電子メール通知や webhook 通知を構成することもできます。 このチュートリアルでは、これらすべてのオブジェクトを VM スケール セットで Resource Manager テンプレートを使用して構成する例を示します。
@@ -41,7 +41,7 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 
 3. また、スケジュールや特定の要件に基づいてプロファイルとルールを追加することもできます。 ここでは、3 つのプロファイルを使用して自動スケール設定を作成します。 自動スケールのプロファイルとルールの詳細については、[自動スケールのベスト プラクティス](insights-autoscale-best-practices.md)に関するページを参照してください。  
 
-    | プロファイルとルール | 説明 |
+    | プロファイルとルール | [説明] |
     |--- | --- |
     | **プロファイル** |**パフォーマンスまたはメトリック ベース** |
     | ルール |Service Bus キューのメッセージ数が x 以上 |
@@ -239,7 +239,7 @@ Virtual Machine Scale Sets では、パフォーマンス メトリックのし�
 
 これで、VM スケール セットの自動スケール設定が更新され、複数のスケール プロファイルとスケール通知が追加されました。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 次のリンク先を使用して、自動スケールの詳細をご確認ください。
 
 [仮想マシン スケール セットの自動スケールに関するトラブルシューティング](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
