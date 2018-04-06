@@ -1,24 +1,21 @@
 ---
-title: "Azure Active Directory B2C: QQ の構成 | Microsoft Docs"
-description: "Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、QQ アカウントを使用するコンシューマーにサインアップとサインインを提供します。"
+title: 'Azure Active Directory B2C: QQ の構成 | Microsoft Docs'
+description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、QQ アカウントを使用するコンシューマーにサインアップとサインインを提供します。
 services: active-directory-b2c
-documentationcenter: 
-author: parakhj
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: parakhj
-ms.assetid: 18c2cf94-8004-4de1-81c2-e45be65ce12d
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 3/26/2017
-ms.author: parakhj
-ms.openlocfilehash: d4cc26d4f206baf9137feae0825b1f9fa5a7c8d6
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 12daed5f90e2b073a7520c061f18761baaed5c03
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-qq-accounts"></a>Azure Active Directory B2C: QQ アカウントを使用するコンシューマーにサインアップとサインインを提供する
 
@@ -28,7 +25,7 @@ ms.lasthandoff: 12/11/2017
 
 ## <a name="create-a-qq-application"></a>QQ アプリケーションを作成する
 
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ を使用するには、QQ アプリケーションを作成し、適切なパラメーターを指定する必要があります。 そのためには QQ アカウントが必要です。 QQ アカウントがない場合は、[https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) で取得できます。
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ を使用するには、QQ アプリケーションを作成し、適切なパラメーターを指定する必要があります。 そのためには QQ アカウントが必要です。 アカウントがない場合は、[https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033](https://ssl.zc.qq.com/en/index.html?type=1&ptlang=1033) で取得できます。
 
 ### <a name="register-for-the-qq-developer-program"></a>QQ 開発者プログラムに登録する
 
@@ -43,7 +40,7 @@ Azure Active Directory (Azure AD) B2C で ID プロバイダーとして QQ を�
 
 ### <a name="register-a-qq-application"></a>QQ アプリケーションを登録する
 
-1. [https://connect.qq.com/index.html](https://connect.qq.com/index.html) に移動します。
+1. [[]https://connect.qq.com/index.html[](https://connect.qq.com/index.html)] に移動します。
 2. **[应用管理 (アプリの管理)]** をクリックします。
 3. **[创建应用 (アプリの作成)]** をクリックします。
 4. 必要なアプリ情報を入力します。

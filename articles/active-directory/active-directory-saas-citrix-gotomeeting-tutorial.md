@@ -1,6 +1,6 @@
 ---
-title: "チュートリアル: Azure Active Directory と GoToMeeting の統合 | Microsoft Docs"
-description: "Azure Active Directory と GoToMeeting の間でシングル サインオンを構成する方法について説明します。"
+title: 'チュートリアル: Azure Active Directory と GoToMeeting の統合 | Microsoft Docs'
+description: Azure Active Directory と GoToMeeting の間でシングル サインオンを構成する方法について説明します。
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 4826dee82e62ffac70d7ca3d6dcfe005129de764
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: d26b78fb5be96e979fb7b375acf6e907d858b706
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gotomeeting"></a>チュートリアル: Azure Active Directory と GoToMeeting の統合
 
@@ -108,77 +108,32 @@ GoToMeeting で Azure AD シングル サインオンを構成してテストす
 
     ![[GoToMeeting Domain and URLs]\(GoToMeeting のドメインと URL\) のシングル サインオン情報](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_url.png)
 
-    **[識別子]** ボックスに次の URL を入力します。`https://login.citrixonline.com/saml/sp`
+    **[識別子]** ボックスに次の URL を入力します。`https://authentication.logmeininc.com/saml/sp`
 
-4. **[SAML 署名証明書]** セクションで、**[Metadata XML (メタデータ XML)]** をクリックし、コンピューターにメタデータ ファイルを保存します。
+4. **[Show Advanced URL configuration]\(URL の詳細な構成を表示\)** をクリックして、以下の URL を構成します。
 
-    ![証明書のダウンロードのリンク](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_certificate.png) 
-
+    **サインオン URL** (空白のまま)
+    
+    **[応答 URL]**: `https://authentication.logmeininc.com/saml/acs`
+    
+    **[RelayState]**:
+    
+    - GoToMeeting App の場合は、`https://global.gotomeeting.com` を使用します。
+    
+    - GoToTraining の場合は、`https://global.gototraining.com` を使用します。
+    
+    - GoToWebinar の場合は、`https://global.gotowebinar.com` を使用します。 
+    
+    - GoToAssist の場合は、`https://app.gotoassist.com` を使用します。
+    
 5. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-gotomeeting-tutorial/tutorial_general_400.png)
 
-6. **メタデータ** URL を生成するには、次の手順を実行します。
+6. 別のブラウザー ウィンドウで、[GoToMeeting Organization Center](https://organization.logmeininc.com/) にログインします。 IdP が更新されていることを確認するように求められます。
 
-    a. **[アプリの登録]** をクリックします。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appregistrations.png)
-   
-    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpointicon.png)
+7. [My Identity Provider has been updated with the new domain]\(マイ ID プロバイダーが新しいドメインで更新されました\) チェックボックスをオンにします。 終了したら、**[完了]** をクリックします。
 
-    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
-    
-    ![[Configure Single Sign-On]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_endpoint.png)
-     
-    d. ここで、**GoToMeeting** のプロパティ ページに移動し、**[コピー]** ボタンを使用して**アプリケーション ID** をコピーしてノートパッドに貼り付けます。
- 
-    ![[Configure Single Sign-On]](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_appid.png)
-
-    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`   
-
-7. **[GoToMeeting Configuration]\(GoToMeeting の構成\)** セクションで、**[Configure GoToMeeting]\(GoToMeeting の構成\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
-
-    ![GoToMeeting の構成](./media/active-directory-saas-gotomeeting-tutorial/tutorial_gotomeeting_configure.png) 
-
-8. 別のブラウザー ウィンドウで、[GoToMeeting Organization Center](https://organization.logmeininc.com/) にログインします。
-
-9. **[identity provider]\(ID プロバイダー\)** タブで、生成された**メタデータ URL**、ダウンロードした**メタデータ ファイル**または**手動**を指定して、Azure 設定を構成できます。
-
-10. **メタデータ URL** の場合は、次の手順を実行します。
-
-    ![GoToMeeting の構成](./media/active-directory-saas-gotomeeting-tutorial/config1.png)
-
-    a. **[How would you like to configure your SAML IDP?]\(SAML IDP を構成する方法\)** のドロップダウン リストから **[Automatic]\(自動\)** を選択します。
-
-    b. **メタデータ URL** (前の手順で生成したもの) を **[メタデータ URL]** テキスト ボックスに貼り付けます。
-
-    c. **[Save]** をクリックします。
-
-11. **メタデータ ファイル**の場合は、次の手順を実行します。
-
-    ![GoToMeeting の構成](./media/active-directory-saas-gotomeeting-tutorial/config2.png)
-
-    a. **[How would you like to configure your SAML IDP?]\(SAML IDP を構成する方法\)** のドロップダウン リストから **[Upload SAML metadata file]\(SAML メタデータ ファイルをアップロードする\)** を選択します。
-
-    b. ダウンロードしたメタデータ ファイルをアップロードするには、**[Upload metadata file]\(メタデータ ファイルのアップロード\)** をクリックします。
-
-    c. **[Save]** をクリックします。
-
-12. **手動**の場合は、次の手順を実行します。
-
-    ![GoToMeeting の構成](./media/active-directory-saas-gotomeeting-tutorial/config3.png)
-
-    a.  **[Sign-in page URL]\(サインイン ページ URL\)** ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
-
-    b.  **[Sign-out page URL]\(サインアウト ページ URL\)** ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
-
-    c.  **[Identity Provider Entity ID]\(ID プロバイダー エンティティ ID\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
-
-    d. ダウンロードしたメタデータ ファイルから X509Certificate を抽出し、**[Upload certificate]\(証明書のアップロード\)** をクリックしてこの証明書をアップロードします。
-
-    e. **[Save]** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関するページを参照してください。

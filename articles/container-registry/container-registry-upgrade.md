@@ -1,18 +1,18 @@
 ---
-title: "Classic Azure コンテナー レジストリのアップグレード"
-description: "管理対象外の Classic コンテナー レジストリをアップグレードして、Basic、Standard、Premium の管理対象コンテナー レジストリの拡張機能セットを利用しましょう。"
+title: Classic Azure コンテナー レジストリのアップグレード
+description: 管理対象外の Classic コンテナー レジストリをアップグレードして、Basic、Standard、Premium の管理対象コンテナー レジストリの拡張機能セットを利用しましょう。
 services: container-registry
 author: mmacy
 manager: timlt
 ms.service: container-registry
 ms.topic: article
-ms.date: 12/20/2017
+ms.date: 03/15/2018
 ms.author: marsma
-ms.openlocfilehash: 19090bb69d7165c1e904450dc93b925e23e44782
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: c5a61941bab2aa49cd8205e0a07dd2b5f7378ce9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="upgrade-a-classic-container-registry"></a>Classic コンテナー レジストリのアップグレード
 
@@ -29,14 +29,16 @@ Classic の管理対象外レジストリでは機能が制限されているた
 * [geo レプリケーション](container-registry-geo-replication.md)
 * [Webhook](container-registry-webhook.md)
 
-中でも、Classic レジストリは、レジストリの作成時に、Azure によって Azure サブスクリプションに自動的にプロビジョニングされたストレージ アカウントに依存しています。 これに対し、Basic、Standard、および Premium SKU では、*管理対象ストレージ*を利用します。 つまり、Azure は自動的にイメージのストレージを透過的に管理するため、独自のサブスクリプションに個別のストレージ アカウントが作成されません。
+中でも、クラシック レジストリは、レジストリの作成時に、Azure によって Azure サブスクリプションに自動的にプロビジョニングされたストレージ アカウントに依存しています。 これに対し、Basic、Standard、Premium の各 SKU では、Azure の[高度なストレージ機能](container-registry-storage.md)を利用するために、イメージのストレージをユーザーに代わり透過的に処理します。 個々のストレージ アカウントは、ユーザー独自のサブスクリプションでは作成されません。
 
 管理対象レジストリのストレージには、次のような利点があります。
 
-* コンテナー イメージは[保存時に暗号化](../storage/common/storage-service-encryption.md)されます。
-* イメージは、[geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)を使用して格納され、複数リージョンのレプリケーションによって、イメージのバックアップが確保されます。
+* コンテナー イメージは[保存時に暗号化](container-registry-storage.md#encryption-at-rest)されます。
+* イメージは、[geo 冗長ストレージ](container-registry-storage.md#geo-redundant-storage)を使用して格納され、複数リージョンのレプリケーションによって、イメージのバックアップが確保されます。
 * 自由に [SKU 間を移動](container-registry-skus.md#changing-skus)できるので、上位の SKU を選択するほど、より高いスループットが可能になります。 各 SKU では、ニーズの拡大に合わせて、ACR がスループット要件を満たすことができます。
 * レジストリとそのストレージのセキュリティ モデルが統合されているため、権限の管理が簡単に行えます。 管理するのはコンテナー レジストリの権限だけで、別途ストレージ アカウントの権限も管理する必要はありません。
+
+ACR のイメージ ストレージの詳細については、「[Azure Container Registry へのコンテナー イメージの保存](container-registry-storage.md)」を参照してください。
 
 ## <a name="migration-considerations"></a>移行に関する考慮事項
 

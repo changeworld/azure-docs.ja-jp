@@ -1,9 +1,9 @@
 ---
-title: "Azure Monitor での役割、アクセス許可、およびセキュリティの使用 | Microsoft Docs"
-description: "Azure Monitor の組み込みの役割とアクセス許可を使用して、監視リソースへのアクセスを制限する方法について説明します。"
+title: Azure Monitor での役割、アクセス許可、およびセキュリティの使用 | Microsoft Docs
+description: Azure Monitor の組み込みの役割とアクセス許可を使用して、監視リソースへのアクセスを制限する方法について説明します。
 author: johnkemnetz
 manager: orenr
-editor: 
+editor: ''
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
 ms.assetid: 2686e53b-72f0-4312-bcd3-3dc1b4a9b912
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/27/2017
 ms.author: johnkem
-ms.openlocfilehash: f8767073bb7a6723088bb2727346d23ec8872cd1
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 81f083b799e359f69605de22c30d3adc4480e44b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージ サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
@@ -30,6 +30,7 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 監視閲覧者の役割が割り当てられている場合は、サブスクリプション内の監視データすべてを表示できますが、リソースを変更したり、監視リソースに関連する設定を編集したりすることはできません。 この役割は、次の作業を行う必要がある、サポート エンジニア、運用エンジニアなどの組織内のユーザーに適しています。
 
 * ポータルで監視ダッシュボードを表示し、独自のプライベート監視ダッシュボードを作成する。
+* [Azure アラート](monitoring-overview-unified-alerts.md)に定義されているアラート ルールを表示する。
 * [Azure Monitor REST API](https://msdn.microsoft.com/library/azure/dn931930.aspx)、[PowerShell コマンドレット](insights-powershell-samples.md)、または[クロスプラットフォーム CLI](insights-cli-samples.md) を使用して、メトリックにクエリを実行する。
 * ポータル、Azure Monitor REST API、PowerShell コマンドレット、またはクロスプラットフォーム CLI を使用して、アクティビティ ログにクエリを実行する。
 * リソースの [診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings) を表示する。
@@ -49,13 +50,13 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 > 
 > 
 
-### <a name="monitoring-contributor"></a>監視共同作業者
+### <a name="monitoring-contributor"></a>Monitoring Contributor
 監視共同作業者の役割が割り当てられている場合、サブスクリプション内の監視データすべてを表示し、監視の設定を作成または変更できます。ただし、他のリソースについては何も変更することはできません。 この役割は監視閲覧者の役割のスーパーセットで、上記のアクセス許可以外に次の作業を行う必要がある、組織の監視チームまたはマネージ サービス プロバイダーのメンバーに適しています。
 
 * 共有ダッシュボードとして監視ダッシュボードを発行する。
 * リソースの[診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)を設定する。*
 * サブスクリプションの[ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)を設定する。*
-* アラート アクティビティと設定を指定する。
+* [Azure アラート](monitoring-overview-unified-alerts.md)を使用して、アラート ルール アクティビティと設定を指定する。
 * Application Insights の Web テストとコンポーネントを作成する。
 * Log Analytics ワークスペースの共有キーを一覧表示する。
 * Log Analytics インテリジェンス パックを有効または無効にする。
@@ -72,24 +73,26 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 ## <a name="monitoring-permissions-and-custom-rbac-roles"></a>アクセス許可とカスタムの RBAC 役割の監視
 上記の組み込みの役割がチームの正確なニーズに対応していない場合は、 [カスタム RBAC 役割を作成](../active-directory/role-based-access-control-custom-roles.md) して、さらに細かくアクセス許可を指定できます。 一般的な Azure Monitor RBAC 操作とその説明を次に示します。
 
-| 操作 | Description |
+| 操作 | [説明] |
 | --- | --- |
 | Microsoft.Insights/ActionGroups/[Read, Write, Delete] |アクション グループの読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |アクティビティ ログ アラートの読み取り/書き込み/削除を実行します。 |
-| Microsoft.Insights/AlertRules/[Read、Write、Delete] |アラート ルール (メトリック アラート) の読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/AlertRules/[Read、Write、Delete] |(クラシック アラートの) アラート ルール の読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/AlertRules/Incidents/Read |アラート ルールのインシデント (トリガーされたアラート ルールの履歴) を一覧表示します。 これは、ポータルにのみ適用されます。 |
 | Microsoft.Insights/AutoscaleSettings/[Read、Write、Delete] |自動スケール設定の読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/DiagnosticSettings/[Read、Write、Delete] |診断設定の読み取り/書き込み/削除を実行します。 |
-| Microsoft.Insights/EventCategories/Read |アクティビティ ログの考えられるすべてのカテゴリを列挙します。 Azure Portal に使用されます。 |
+| Microsoft.Insights/EventCategories/Read |アクティビティ ログの考えられるすべてのカテゴリを列挙します。 Azure Portal で使用されます。 |
 | Microsoft.Insights/eventtypes/digestevents/Read |このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 |
 | Microsoft.Insights/eventtypes/values/Read |サブスクリプションのアクティビティ ログのイベント (管理イベント) を一覧表示します。 このアクセス許可は、アクティビティ ログへのプログラムによるアクセスとポータル アクセスの両方に適用されます。 |
 | Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | ネットワーク フロー ログの診断設定の読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/LogDefinitions/Read |このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 |
 | Microsoft.Insights/LogProfiles/[Read, Write, Delete] |ログ プロファイル (イベント ハブまたはストレージ アカウントへのアクティビティ ログのストリーミング) の読み取り/書き込み/削除を実行します。 |
-| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |ほぼリアルタイムのメトリック アラートの読み取り/書き込み/削除を実行します (パブリック プレビュー段階)。 |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |ほぼリアルタイムのメトリック アラートの読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/MetricDefinitions/Read |メトリック定義 (リソースの使用可能なメトリックの種類の一覧) を読み取ります。 |
 | Microsoft.Insights/Metrics/Read |リソースのメトリックを読み取ります。 |
 | Microsoft.Insights/Register/Action |Azure Monitor リソース プロバイダーを登録します。 |
+| Microsoft.Insights/ScheduledQueryRules/[Read, Write, Delete] |Application Insights のログ アラートの読み取り/書き込み/削除を実行します。 |
+
 
 
 > [!NOTE]
@@ -118,9 +121,9 @@ New-AzureRmRoleDefinition -Role $role
 2. 診断ログ。リソースによって出力されるログです。
 3. メトリック。リソースによって出力されます。
 
-この 3 つのデータ型はすべて、ストレージ アカウントに保存するか、Event Hub にストリーミングできます。このストレージ アカウントと Event Hub は両方とも 汎用 Azure リソースです。 このような汎用リソースに作成、削除、およびアクセスするには、通常、管理者のために予約された特権が必要です。 監視関連のリソースの場合、誤用を防ぐために、以下を実践することをお勧めします。
+この 3 つのデータ型はすべて、ストレージ アカウントに保存するか、Event Hub にストリーミングできます。このストレージ アカウントと Event Hub は両方とも 汎用 Azure リソースです。 このような汎用リソースに作成、削除、およびアクセスするには、管理者のために予約された特権が必要です。 監視関連のリソースの場合、誤用を防ぐために、以下を実践することをお勧めします。
 
-* 1 つの専用ストレージ アカウントを使用して、データを監視します。 複数のストレージ アカウントに監視データを分割する必要がある場合は、ストレージ アカウントの使用状況を、監視データと監視対象外データで共有しないでください。 監視データにのみアクセスする必要があるユーザー (サード パーティ SIEM など) に対して、監視対象外データへのアクセス権が誤って付与されることがあります。
+* 1 つの専用ストレージ アカウントを使用して、データを監視します。 複数のストレージ アカウントに監視データを分割する必要がある場合は、ストレージ アカウントの使用状況を、監視データと監視対象外データで共有しないでください。監視データ (サード パーティ SIEM など) にのみアクセスする必要があるユーザーに対して、監視対象外データへのアクセス権が誤って付与されることがあります。
 * 1 つの専用 Service Bus または Event Hub 名前空間を使用します。
 * 監視関連のストレージ アカウントまたはイベント ハブを別のリソース グループに保持することで、そのストレージ アカウントとイベント ハブへのアクセスを制限したうえで、監視の役割の [スコープを使用して](../active-directory/role-based-access-control-what-is.md#basics-of-access-management-in-azure) 、アクセスをそのリソース グループだけに限定します。
 * ユーザーによるアクセス対象が監視データだけの場合、ListKeys アクセス許可は、サブスクリプション スコープでストレージ アカウントまたはイベント ハブに付与しないでください。 代わりに、このアクセス許可は、リソースまたはリソース グループ (専用監視リソース グループの場合) スコープでユーザーに付与します。
@@ -174,7 +177,7 @@ New-AzureRmRoleDefinition -Role $role
    New-AzureRmRoleDefinition -Role $role 
    ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [Resource Manager で RBAC とアクセス許可を確認します](../active-directory/role-based-access-control-what-is.md)
 * [Azure で監視の概要を確認します](monitoring-overview.md)
 

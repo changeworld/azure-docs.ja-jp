@@ -1,19 +1,19 @@
 ---
-title: "Visual Studio Code を使用して Azure IoT Edge で C# モジュールをデバッグする | Microsoft Docs"
-description: "Visual Studio Code で Azure IoT Edge を使用して C# モジュールをデバッグします。"
+title: Visual Studio Code を使用して Azure IoT Edge で C# モジュールをデバッグする | Microsoft Docs
+description: Visual Studio Code で Azure IoT Edge を使用して C# モジュールをデバッグします。
 services: iot-edge
-keywords: 
+keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 12/06/2017
+ms.date: 03/18/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 5ed517cf8d70cd279a55b79ad448709116cf511b
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: c2a1acd2c249bdbc92119bc92f055b095f318f00
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-visual-studio-code-to-debug-a-c-module-with-azure-iot-edge"></a>Visual Studio Code を使用して Azure IoT Edge で C# モジュールをデバッグする
 この記事では、主要開発ツールとして [Visual Studio Code](https://code.visualstudio.com/) を使用して、Azure IoT Edge モジュールをデバッグする手順について詳しく説明します。
@@ -22,39 +22,33 @@ ms.lasthandoff: 02/24/2018
 このチュートリアルでは、Windows または Linux を実行しているコンピューターまたは仮想マシンを開発用マシンとして使用していることを前提としています。 別の物理デバイスを IoT Edge デバイスとして使用することも、開発用マシンで IoT Edge デバイスをシミュレートすることもできます。
 
 このガイダンスを開始する前に、次のチュートリアルを完了してください。
-- [Visual Studio Code を使用して Azure IoT Edge で C# モジュールを開発する](how-to-vscode-develop-csharp-module.md)
+- [Visual Studio Code で複数のモジュールを含む IoT Edge ソリューションを開発する](tutorial-multiple-modules-in-vscode.md)
 
 上記のチュートリアルを終了したら、次のものを準備してください。
-- 開発用マシンで実行されているローカル Docker レジストリ。 これは、プロトタイプの作成とテストの実行で使用します。
-- 最新のフィルター モジュール コードが含まれた `Program.cs` ファイル。
-- センサー モジュールとフィルター モジュールの最新の `deployment.json` ファイル。
-- 開発用マシンで実行される IoT Edge ランタイム。
+- 開発用マシンで実行されているローカル Docker レジストリ。 プロトタイプ作成とテストのために、ローカル Docker レジストリを使用することをお勧めします。 各モジュール フォルダーの `module.json` ファイルでコンテナー レジストリを更新できます。
+- C# モジュール サブフォルダーを含む IoT Edge ソリューション プロジェクト ワークスペース。
+- 最新のモジュール コードが含まれる `Program.cs` ファイル。
+- 開発用マシンで実行されている Edge ランタイム。
 
-## <a name="build-your-iot-edge-module-for-debugging"></a>デバッグのために IoT Edge モジュールをビルドする
-1. デバッグを開始するには、**dockerfile.debug** を使用して Docker イメージをリビルドし、IoT Edge ソリューションをもう一度配置します。 Visual Studio Code エクスプローラーで、Docker フォルダーを選択して開きます。 次に、**linux-x64** フォルダーを選択します。**Dockerfile.debug** を右クリックし、**[Build IoT Edge module Docker image]\(IoT Edge モジュール Docker イメージのビルド\)** を選択します。
+## <a name="build-your-iot-edge-c-module-for-debugging"></a>デバッグのために IoT Edge C# モジュールをビルドする
+1. デバッグを開始するには、**Dockerfile.amd64.debug** を使用して Docker イメージをリビルドし、Edge ソリューションをもう一度配置する必要があります。 VS Code エクスプローラーで `deployment.template.json` ファイルに移動します。 末尾に `.debug` を追加し、関数画像の URL を更新します。
 
-    ![VS Code エクスプローラーのスクリーンショット](./media/how-to-debug-csharp-module/build-debug-image.png)
+2. ソリューションを再ビルドします。 VS Code コマンド パレットで、**Edge: Build IoT Edge solution** コマンドを入力して実行します。
 
-3. **[フォルダーの選択]** ウィンドウで、**./bin/Debug/netcoreapp2.0/publish** を参照するか入力します。 次に、**[Select Folder as EXE_DIR]\(EXE_DIR としてフォルダーを選択\)** を選択します。
-4. VS Code ウィンドウの上部にあるポップアップ テキスト ボックスで、イメージの名前を入力します。 たとえば、「 `<your container registry address>/filtermodule:latest`」のように入力します。 ローカル レジストリにデプロイする場合は、`localhost:5000/filtermodule:latest` のようになります。
-5. イメージを Docker リポジトリにプッシュします。 **[Edge: Push IoT Edge module Docker image]\(Edge: IoT Edge モジュール Docker イメージをプッシュ\)** コマンドを使用し、VS Code ウィンドウの上部にあるポップアップ テキスト ボックスにイメージの URL を入力します。 前の手順で使用したのと同じイメージの URL を使用してください。
-6. `deployment.json` を再利用して再デプロイできます。 コマンド パレットで、「**Edge: Restart Edge\(Edge: Edge の再起動\)**」と入力して選択し、フィルター モジュールをデバッグ バージョンで実行します。
+3. Azure IoT Hub Device Explorer で、IoT Edge デバイス ID を右クリックし、**[Create deployment for Edge device]\(Edge デバイスの展開の作成\)** を選択します。 `config` フォルダーの `deployment.json` を選択します。 これにより、VS Code 統合ターミナルで、展開が正常に作成されていることを配置 ID によって確認できます。
 
-## <a name="start-debugging-in-vs-code"></a>VS Code でデバッグを開始する
-1. VS Code デバッグ ウィンドウに移動します。 **F5** キーを押し、**[IoT Edge(.NET Core)]** を選択します。
+> [!NOTE]
+> VS Code Docker エクスプローラーで、あるいは端末で `docker images` コマンドを実行することでコンテナーの状態を確認できます。
 
-    ![VS Code デバッグ ウィンドウのスクリーンショット](./media/how-to-debug-csharp-module/f5-debug-option.png)
+## <a name="start-debugging-c-module-in-vs-code"></a>VS Code で C# モジュールのデバッグを開始する
+1. VS Code では、ワークスペースの `.vscode` フォルダーにある `launch.json` ファイルにデバッグ構成情報が保管されます。 この `launch.json` ファイルは、新しい IoT Edge ソリューションを作成したときに生成されました。 デバッグに対応している新しいモジュールを追加するたびに更新されます。 デバッグ ビューに移動し、該当する構成ファイルを選択します。
+    ![デバッグ構成を選択する](./media/how-to-debug-csharp-function/select-debug-configuration.jpg)
 
-2. `launch.json` で、**[Debug IoT Edge Custom Module (.NET Core)]\(IoT Edge カスタム モジュールのデバッグ (.NET Core)\)** セクションに移動します。 **[pipeArgs]** で、`<container_name>` を入力します。 このチュートリアルでは `filtermodule` になります。
+2. `program.cs` に移動します。 このファイルにブレークポイントを追加します。
 
-    ![VS Code launch.json のスクリーンショット](./media/how-to-debug-csharp-module/add-container-name.png)
+3. [デバッグ開始] ボタンをクリックするか **F5** キーを押して、アタッチするプロセスを選択します。
 
-3. **Program.cs** に移動します。 `method static async Task<MessageResponse> FilterModule(Message message, object userContext)` にブレークポイントを追加します。
-4. もう一度 **F5** を押し、アタッチ先のプロセスを選択します。 このチュートリアルでは、プロセス名は `FilterModule.dll` になります。
-
-    ![VS Code デバッグ ウィンドウのスクリーンショット](./media/how-to-debug-csharp-module/attach-process.png)
-
-5. VS Code デバッグ ウィンドウの左側のパネルに変数が表示されます。 
+4. VS Code デバッグ ビューの左側のパネルに変数が表示されます。 
 
 > [!NOTE]
 > 前の例は、コンテナー上の .NET Core IoT Edge モジュールをデバッグする方法を示しています。 これは、コンテナー イメージのビルド中に VSDBG (.NET Core コマンド ライン デバッガー) を含める、デバッグ バージョンの `Dockerfile.debug` に基づいています。 C# モジュールのデバッグを終了した後、稼働準備済みの IoT Edge モジュールでは、VSDBG が含まれていない `Dockerfile` を直接使用するか、カスタマイズすることをお勧めします。
@@ -64,4 +58,5 @@ ms.lasthandoff: 02/24/2018
 このチュートリアルでは、デバッグ用の IoT Edge モジュールを作成し、IoT Edge デバイスにデプロイしました。 VS Code でデバッグを開始しました。 Azure IoT Edge を VS Code で開発する際の他のシナリオの詳細については、次の記事を参照してください。 
 
 > [!div class="nextstepaction"]
-> [VS Code での C# モジュールの開発とデプロイ](how-to-vscode-develop-csharp-module.md)
+> [Visual Studio Code で複数のモジュールを含む IoT Edge ソリューションを開発する](tutorial-multiple-modules-in-vscode.md)
+

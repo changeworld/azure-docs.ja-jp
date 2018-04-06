@@ -1,6 +1,6 @@
 ---
-title: "アクター ベースの Azure マイクロサービスのライフサイクルの概要 | Microsoft Docs"
-description: "Service Fabric 高信頼アクターのライフ サイクル、ガベージ コレクション、およびアクターとその状態の手動による削除について説明します。"
+title: アクター ベースの Azure マイクロサービスのライフサイクルの概要 | Microsoft Docs
+description: Service Fabric 高信頼アクターのライフ サイクル、ガベージ コレクション、およびアクターとその状態の手動による削除について説明します。
 services: service-fabric
 documentationcenter: .net
 author: amanbha
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: dd45acd75e1cf263029c869d88c87b28f56d50cc
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: 4abb1ea6e5c79a5280d6ca4ad96070603b81793a
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="actor-lifecycle-automatic-garbage-collection-and-manual-delete"></a>アクターのライフ サイクル、自動ガベージ コレクション、および手動による削除
 アクターは、いずれかのメソッドが最初に呼び出された時点でアクティブ化されます。 一定期間 (値は構成可能) 使用されていない場合、アクターは非アクティブ化されます (アクター ランタイムでガベージ コレクションが発生します)。 アクターとその状態はいつでも手動で削除できます。
@@ -112,37 +112,8 @@ public class Program
 
 メソッドの実行にどれだけ時間がかかっても、いずれかのメソッドが実行中のアクターがガベージ コレクションの対象となることはありません。 前述のように、アクター インターフェイス メソッドとアラームのコールバックを実行すると、アクターのアイドル時間が 0 にリセットされるため、ガベージ コレクションが行われなくなります。 タイマー コールバックの実行では、アイドル時間は 0 にリセットされません。 ただし、タイマー コールバックの実行が完了するまで、アクターのガベージ コレクションは遅延されます。
 
-## <a name="deleting-actors-and-their-state"></a>アクターとその状態を削除する
-非アクティブ化されたアクターのガベージ コレクションではアクター オブジェクトのみがクリーンアップされ、アクターの状態マネージャーに格納されているデータは削除されません。 アクターが再アクティブ化されると、そのデータは状態マネージャーを介して再び利用可能になります。 状態マネージャーにデータを格納したアクターが非アクティブ化され、その後も再アクティブ化されなかった場合は、そのデータをクリーンアップする必要が生じる場合があります。
-
-[アクター サービス](service-fabric-reliable-actors-platform.md) は、リモートの呼び出し元からアクターを削除する機能を提供します。
-
-```csharp
-ActorId actorToDelete = new ActorId(id);
-
-IActorService myActorServiceProxy = ActorServiceProxy.Create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-await myActorServiceProxy.DeleteActorAsync(actorToDelete, cancellationToken)
-```
-```Java
-ActorId actorToDelete = new ActorId(id);
-
-ActorService myActorServiceProxy = ActorServiceProxy.create(
-    new Uri("fabric:/MyApp/MyService"), actorToDelete);
-
-myActorServiceProxy.deleteActorAsync(actorToDelete);
-```
-
-アクターを削除すると、アクターが現在アクティブかどうかに応じて、次のような結果になります。
-
-* **アクティブ アクター**
-  * アクターはアクティブ アクターの一覧から削除され、非アクティブ化されます。
-  * 状態は完全に削除されます。
-* **非アクティブなアクター**
-  * 状態は完全に削除されます。
-
-アクターが自身のアクター メソッドで自身に対する削除メソッドを呼び出すことはできません。これは、アクター呼び出しのコンテキスト内で実行中のアクターを削除することはできないためです。このとき、ランタイムはアクターの呼び出しに関するロックを取得して、シングル スレッド アクセスを適用します。
+## <a name="manually-deleting-actors-and-their-state"></a>アクターとその状態を手動で削除する
+非アクティブ化されたアクターのガベージ コレクションではアクター オブジェクトのみがクリーンアップされ、アクターの状態マネージャーに格納されているデータは削除されません。 アクターが再アクティブ化されると、そのデータは状態マネージャーを介して再び利用可能になります。 状態マネージャーにデータを格納したアクターが非アクティブ化され、その後も再アクティブ化されなかった場合は、そのデータをクリーンアップする必要が生じる場合があります。  アクターを削除する方法の例については、「[アクターとその状態の削除](service-fabric-reliable-actors-delete-actors.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * [アクターのタイマーとアラーム](service-fabric-reliable-actors-timers-reminders.md)

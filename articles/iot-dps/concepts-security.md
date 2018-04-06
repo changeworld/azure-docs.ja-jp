@@ -1,22 +1,22 @@
 ---
-title: "Azure IoT Hub Device Provisioning サービスにおけるセキュリティの概念 | Microsoft Docs"
-description: "デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のセキュリティ プロビジョニングの概念を説明します。"
+title: Azure IoT Hub Device Provisioning サービスにおけるセキュリティの概念 | Microsoft Docs
+description: デバイス プロビジョニング サービスと IoT Hub を備えたデバイスに固有のセキュリティ プロビジョニングの概念を説明します。
 services: iot-dps
-keywords: 
+keywords: ''
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 03/27/2018
 ms.topic: article
 ms.service: iot-dps
-documentationcenter: 
+documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: ab2bfff571af659552eef8117de041ca6367ce56
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 5e35a802349bd85b50a13a3d9a7e0c78945937bd
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub デバイス プロビジョニング サービスのセキュリティの概念 
 
@@ -31,7 +31,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 デバイス プロビジョニング サービスでは、2 つの形式の構成証明がサポートされます。
 * 標準の X.509 証明書の認証フローに基づく**X.509 証明書**。
-* キーの TPM 標準を使用する nonce チャレンジに基づく **SAS トークン**。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
+* nonce チャレンジに基づく**トラステッド プラットフォーム モジュール (TPM)**。キーの TPM 標準を使用し、署名された Shared Access Signature (SAS) トークンを提示します。 このトークンでは、デバイス上の物理 TPM は必須ではありませんが、[TPM 仕様](https://trustedcomputinggroup.org/work-groups/trusted-platform-module/)ごとに保証キーを使用して証明するために、サービスからは物理 TPM が期待されます。
 
 ## <a name="hardware-security-module"></a>ハードウェア セキュリティ モジュール
 
@@ -42,7 +42,7 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 デバイス シークレットもソフトウェア (メモリ) に保存できますが、HSM よりも安全性の低い形式のストレージです。
 
-## <a name="trusted-platform-module-tpm"></a>トラステッド プラットフォーム モジュール (TPM)
+## <a name="trusted-platform-module"></a>トラステッド プラットフォーム モジュール
 
 TPM は、プラットフォームの認証に使用される安全に保管されたキーの標準を参照できます。または、標準を実装しているモジュールとの対話に使用される I/O インターフェイスを参照できます。 TPM は個別ハードウェア、統合ハードウェア、ファームウェアベース、またはソフトウェアベースとして存在する場合があります。 詳細については、[TPM の構成証明](/windows-server/identity/ad-ds/manage/component-updates/tpm-key-attestation)に関する記事をご覧ください。 デバイス プロビジョニング サービスでは、TPM 2.0 のみをサポートします。
 

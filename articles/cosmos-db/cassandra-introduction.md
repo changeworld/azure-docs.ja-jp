@@ -1,10 +1,10 @@
 ---
-title: "Azure Cosmos DB の Cassandra API の概要 | Microsoft Docs"
-description: "Azure Cosmos DB を使用して既存のアプリケーションを \"リフトアンドシフト\" し、使い慣れた Cassandra ドライバーと CQL で Cassandra API を使って新しいアプリケーションを構築する方法について説明します。"
+title: Azure Cosmos DB の Cassandra API の概要 | Microsoft Docs
+description: Azure Cosmos DB を使用して既存のアプリケーションを "リフトアンドシフト" し、使い慣れた Cassandra ドライバーと CQL で Cassandra API を使って新しいアプリケーションを構築する方法について説明します。
 services: cosmos-db
 author: govindk
 manager: jhubbard
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 73839abf-5af5-4ae0-a852-0f4159bc00a0
 ms.service: cosmos-db
 ms.workload: data-services
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/20/2017
 ms.author: govindk
-ms.openlocfilehash: 62e56a611d3f720172ace83a4b407a962ec69ea8
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 88364cecc1fa1ad7318cb28c9708a42e6a807347
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="introduction-to-apache-cassandra-api-for-azure-cosmos-db"></a>Azure Cosmos DB の Apache Cassandra API の概要
+# <a name="introduction-to-azure-cosmos-db-apache-cassandra-api"></a>Azure Cosmos DB の概要: Apache Cassandra API
 
 Azure Cosmos DB には、Apache Cassandra 向けに作成されたアプリケーションの中でも、以下に挙げたような特に高度な機能を必要とするアプリケーションのための Cassandra API (プレビュー) が用意されています。
 

@@ -1,11 +1,11 @@
 ---
-title: "マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング - Azure | Microsoft Docs"
-description: "このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。 次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、DASH のいずれかを使用してクライアントの再生アプリケーションに配信できます。"
+title: マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング - Azure | Microsoft Docs
+description: このトピックでは、オンプレミスのエンコーダーからマルチビットレートのライブ ストリームを受信するチャネルの設定方法について説明します。 次にストリームは、1 つ以上のストリーミング エンドポイントを介して、HLS、スムーズ ストリーミング、DASH のいずれかを使用してクライアントの再生アプリケーションに配信できます。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: d9f0912d-39ec-4c9c-817b-e5d9fcf1f7ea
 ms.service: media-services
 ms.workload: media
@@ -14,13 +14,17 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: cenkd;juliako
-ms.openlocfilehash: 1266c7b6c1539f84eafea1007999fb4360184857
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: fae123d2cc594bb741fb1cdb0da62bef05a2a8c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="live-streaming-with-on-premises-encoders-that-create-multi-bitrate-streams"></a>マルチビットレートのストリームを作成するオンプレミス エンコーダーを使用したライブ ストリーミング
+
+> [!NOTE]
+> 2018 年 5 月 12日以降は、ライブ チャネルで RTP/MPEG-2 トランスポート ストリーム取り込みプロトコルがサポートされなくなります。 RTP/MPEG-2 から RTMP またはフラグメント化 MP4 (Smooth Streaming) 取り込みプロトコルに移行してください。
+
 ## <a name="overview"></a>概要
 Azure Media Services では、"*チャネル*" は、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 

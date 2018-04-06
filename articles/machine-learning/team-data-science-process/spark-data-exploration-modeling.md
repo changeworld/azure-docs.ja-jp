@@ -1,8 +1,8 @@
 ---
-title: "Spark を使用したデータ探索とモデリング | Microsoft Docs"
-description: "Azure での Spark MLlib ツールキットのデータ探索およびモデリング機能を紹介します。"
+title: Spark を使用したデータ探索とモデリング | Microsoft Docs
+description: Azure での Spark MLlib ツールキットのデータ探索およびモデリング機能を紹介します。
 services: machine-learning
-documentationcenter: 
+documentationcenter: ''
 author: bradsev
 manager: jhubbard
 editor: cgronlun
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: deguhath;bradsev;gokuma
-ms.openlocfilehash: 078e1d209d0472051e2ec2804e67518a92285413
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.author: bradsev
+ms.openlocfilehash: c796cc5f19ac3a30d2cdf72b8fea2813a1586c1b
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Spark を使用したデータ探索とモデリング
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -64,7 +64,7 @@ Spark 2.0 クラスターを使用して実装されている回帰タスクと�
 > [!NOTE]
 > 分類アルゴリズムの使用をより理解しやすくするために、Spark 2.0 のノートブックに航空会社のデータセットが追加されました。 定刻出発のデータセットと気象のデータセットについては、次のリンクをご覧ください。
 
->- 航空会社の定刻出発データ: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
+>- 航空会社の時間どおりの出発データ: [http://www.transtats.bts.gov/ONTIME/](http://www.transtats.bts.gov/ONTIME/)
 
 >- 空港の気象データ: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/) 
 > 

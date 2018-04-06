@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/6/2017
-ms.openlocfilehash: d231fd525d310d2496c9ace40808b7deab0dd48f
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 0859031ac26b061861aa51dce1093f2fe4350935
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 
@@ -154,12 +154,9 @@ az ml account modelmanagement create -l [Azure region, e.g. eastus2] -n [your ac
 az ml account modelmanagement set -n [your account name] -g [resource group it was created in]
 ```
 
-### <a name="deploy-your-model"></a>モデルをデプロイする
-これで、保存されたモデルを Web サービスとしてデプロイする準備ができました。 
-
-```azurecli
-az ml service create realtime --model-file [model file/folder path] -f [scoring file e.g. score.py] -n [your service name] -s [schema file e.g. service_schema.json] -r [runtime for the Docker container e.g. spark-py or python] -c [conda dependencies file for additional python packages]
-```
+このプロセスの結果として、環境の準備ができ、モデル管理アカウントが作成されて Machine Learning モデル管理とデプロイに必要な機能が提供されます (概要については、「[Azure Machine Learning のモデル管理](model-management-overview.md)」を参照してください)。
 
 ## <a name="next-steps"></a>次の手順
-ギャラリーにある多数のサンプルのうちの 1 つを試してください。
+
+* Web サービスをデプロイしてローカル コンピューターまたはクラスターで実行する方法の詳細については、「[Machine Learning モデルを Web サービスとしてデプロイする](model-management-service-deploy.md)」に進んで確認してください。
+* ギャラリーにある多数のサンプルのうちの 1 つを試してください。

@@ -1,6 +1,6 @@
 ---
-title: "現実的なシナリオに対応した予測メンテナンス | Microsoft Docs"
-description: "PySpark を使用した現実的なシナリオに対応した予測メンテナンス"
+title: 現実的なシナリオに対応した予測メンテナンス | Microsoft Docs
+description: PySpark を使用した現実的なシナリオに対応した予測メンテナンス
 services: machine-learning
 author: ehrlinger
 ms.author: jehrling
@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: 81e227194ff64d7b7af842a208349ccc63528ab8
-ms.sourcegitcommit: fbba5027fa76674b64294f47baef85b669de04b7
+ms.openlocfilehash: bb6e4f9f147db2fb70d991922cf0bb8d16b29671
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/24/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>現実的なシナリオに対応した予測メンテナンス
 
@@ -25,7 +25,7 @@ ms.lasthandoff: 02/24/2018
 
 ### <a name="cortana-intelligence-gallery-github-repository"></a>Cortana Intelligence ギャラリーの GitHub リポジトリ
 
-PM チュートリアル用の Cortana Intelligence ギャラリーは、ユーザーが問題を報告したり、問題の解決に参加できる、パブリックの GitHub リポジトリです ([https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance))。
+PM チュートリアルの Cortana Intelligence ギャラリーはパブリック GitHub リポジトリ ([https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance)) です。ここで問題の報告や投稿を行うことができます。
 
 
 ## <a name="use-case-overview"></a>ユース ケースの概要

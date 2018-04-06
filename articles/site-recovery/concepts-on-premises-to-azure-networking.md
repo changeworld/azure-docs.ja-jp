@@ -1,24 +1,19 @@
 ---
-title: "Azure Site Recovery を使用した Azure へのフェールオーバー後に接続する IP アドレス指定の設定 | Microsoft Docs"
-description: "Azure Site Recovery を使用したオンプレミスからのフェールオーバー後に、Azure VM へ接続する IP アドレス指定の設定方法を説明します"
+title: Azure Site Recovery を使用した Azure へのフェールオーバー後に接続する IP アドレス指定の設定 | Microsoft Docs
+description: Azure Site Recovery を使用したオンプレミスからのフェールオーバー後に、Azure VM へ接続する IP アドレス指定の設定方法を説明します
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: carmonm
-editor: 
-ms.assetid: f02cdbea-0940-48bf-9fa5-f38d9e584fae
 ms.service: site-recovery
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 02/27/2018
+ms.date: 03/24/2018
 ms.author: manayar
-ms.openlocfilehash: b9aeaf1dc6d471ba993dd470403ba60ce68153fc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.openlocfilehash: e74ad30ea8c4be994c1c67735ee91ef8c033b9b3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="set-up-ip-addressing-to-connect-after-failover-to-azure"></a>Azure へのフェールオーバー後に接続する IP アドレス指定を設定する
 

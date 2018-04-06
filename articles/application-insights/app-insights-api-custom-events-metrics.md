@@ -13,11 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: ff4b587790872511c7b545233685f5b3ae068291
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 072ce2952e3cdea47b02ef7656ca67d4bc0ae8f1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
 
@@ -72,7 +72,7 @@ Application Insights SDK の参照がまだない場合:
 
     private TelemetryClient telemetry = new TelemetryClient();
     
-*Node.js*
+*Node.JS*
 
     var telemetry = applicationInsights.defaultClient;
 
@@ -116,7 +116,7 @@ Application Insights の*カスタム イベント*はデータ ポイントで�
 
     telemetry.trackEvent("WinGame");
     
-*Node.JS*
+*Node.js*
 
     telemetry.trackEvent({name: "WinGame"});
 
@@ -722,7 +722,7 @@ dependencies
 ```
 
     
-*Node.JS*
+*Node.js*
 
     telemetry.flush();
 
@@ -1039,7 +1039,7 @@ requests
 
 *選択されている標準のコレクターを無効にする*には (たとえば、パフォーマンス カウンター、HTTP 要求、依存関係)、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) 内の該当する行を削除するか、コメントアウトします。たとえば、独自の TrackRequest データを送信する場合にこれを行います。
 
-*Node.js*
+*Node.JS*
 
 ```Javascript
 
@@ -1113,7 +1113,7 @@ Web ページでは、スクリプトに一語一語コーディングするの�
     }({instrumentationKey:  
       // Generate from server property:
       @Microsoft.ApplicationInsights.Extensibility.
-         TelemetryConfiguration.Active.InstrumentationKey"
+         TelemetryConfiguration.Active.InstrumentationKey;
     }) // ...
 
 

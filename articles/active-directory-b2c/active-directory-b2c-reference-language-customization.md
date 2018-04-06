@@ -1,22 +1,21 @@
 ---
-title: "言語のカスタマイズの使用 - Azure AD B2C | Microsoft Docs"
-description: 
+title: 言語のカスタマイズの使用 - Azure AD B2C | Microsoft Docs
+description: 言語のエクスペリエンスのカスタマイズについて説明します。
 services: active-directory-b2c
-documentationcenter: 
-author: sama
-ms.assetid: eec4d418-453f-4755-8b30-5ed997841b56
+documentationcenter: ''
+author: davidmu1
+manager: mtillman
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.devlang: na
 ms.date: 02/26/2018
-ms.author: sama
-ms.openlocfilehash: 332c6b4ffd841a2c7aef9db5c8ba9e843790f4d6
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.author: davidmu
+ms.openlocfilehash: 7c72c1d43d9a5fa541c72a8ba7a5ccedeafdaaff
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-using-language-customization"></a>Azure Active Directory B2C: 言語のカスタマイズの使用
 

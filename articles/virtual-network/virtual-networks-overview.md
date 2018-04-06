@@ -1,11 +1,11 @@
 ---
 title: Azure Virtual Network | Microsoft Docs
-description: "Azure Virtual Network の概念と機能について説明します。"
+description: Azure Virtual Network の概念と機能について説明します。
 services: virtual-network
 documentationcenter: na
 author: jimdial
 manager: jeconnoc
-editor: 
+editor: ''
 tags: azure-resource-manager
 ms.assetid: 9633de4b-a867-4ddf-be3c-a332edf02e24
 ms.service: virtual-network
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 3/1/2018
 ms.author: jdial
-ms.openlocfilehash: fadc1994cd930df36387a5bfb302c00d66f74fad
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 8d02afcc590482fdca4705ac582d85bb985dd3c2
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="what-is-azure-virtual-network"></a>Azure Virtual Network とは
 
@@ -32,7 +32,7 @@ Azure Virtual Network では、次に示す広範な機能が提供されます�
 - **[仮想ネットワークの接続:](#connect-vnets)** 仮想ネットワークは、任意の仮想ネットワーク内のリソースが他の仮想ネットワーク内のリソースと通信しすることで、相互に接続できます。
 - **[オンプレミスの接続性:](#connect-on-premises)** 仮想ネットワークをオンプレミスのネットワークに接続して、リソースが相互に通信できるようにすることができます。
 - **[トラフィックのフィルター処理:](#filtering)** 仮想ネットワーク内のリソースとの間のネットワーク トラフィックを、送信元 IP アドレスおよびポート、送信先 IP アドレスおよびポート、プロトコルでフィルター処理できます。
-- **[ルーティング:](#routing)** 必要に応じて、独自のルートを構成するかネットワーク ゲートウェイ経由で BGP ルートをプロパゲートすることで、Azure の既定のルーティングを上書きできます。
+- **[ルーティング:](#routing)** 必要に応じて、独自のルートを構成するか、ネットワーク ゲートウェイ経由でボーダー ゲートウェイ プロトコル (BGP) ルートをプロパゲートすることで、Azure の既定のルーティングを上書きできます。
 
 ## <a name = "isolation"></a>ネットワークの分離とセグメント化
 
@@ -44,7 +44,7 @@ Azure Virtual Network では、次に示す広範な機能が提供されます�
 ## <a name = "internet"></a>インターネット通信
 仮想ネットワーク内のすべてのリソースでは、インターネットへ送信するための通信が可能です。 既定では、リソースのプライベート IP アドレスは、Azure インフラストラクチャによって選択されたパブリック IP アドレスへの送信元ネットワーク アドレス変換 (SNAT) が行われています。 インターネットへの送信接続について詳しくは、「[Azure の送信用接続の詳細](..\load-balancer\load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」をご覧ください。 インターネットへの送信接続を回避するために、カスタム ルートまたはトラフィック フィルターを実装できます。
 
-インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスについて詳しくは、「[パブリック IP アドレス](virtual-network-public-ip-address.md)」をご覧ください。
+インターネットから Azure リソースへの着信接続、または SNAT なしでインターネットへの送信接続を行うには、リソースにパブリック IP アドレスを割り当てる必要があります。 パブリック IP アドレスについて詳しくは、[パブリック IP アドレス](virtual-network-public-ip-address.md)に関する記事をご覧ください。
 
 ## <a name="within-vnet"></a>Azure リソース間の安全な通信
 

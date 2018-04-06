@@ -4,7 +4,7 @@ description: Data Factory のエンティティ用の JSON スキーマを紹介
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
-manager: jhubbard
+manager: craigg
 editor: ''
 ms.service: data-factory
 ms.workload: data-services
@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 519a762e5f89533f4425d38e4a1ca76d8e3dd40f
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 198fa15b7ee8cce6781e6a2575844a9666185be9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory - JSON スクリプトのリファレンス
 > [!NOTE]
@@ -337,7 +337,7 @@ structure:
 | ポリシー名 | [説明] | 適用先 | 必須 | 既定値 |
 | --- | --- | --- | --- | --- |
 | minimumSizeMB |**Azure BLOB** のデータが最小サイズ要件 (MB 単位) を満たすことを検証します。 |Azure BLOB |いいえ  |該当なし |
-| minimumRows |**Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>の接続文字列</li><li>Azure テーブル</li></ul> |いいえ  |該当なし |
+| minimumRows |**Azure SQL Database** または **Azure テーブル**のデータに最小行数が含まれていることを検証します。 |<ul><li>Azure SQL Database</li><li>Azure テーブル</li></ul> |いいえ  |該当なし |
 
 **例:**
 
@@ -499,7 +499,7 @@ Azure Blob Storage からデータをコピーする場合は、コピー アク
 | --- | --- | --- | --- |
 | recursive |データをサブ フォルダーから再帰的に読み取るか、指定したフォルダーからのみ読み取るかを指定します。 |True (既定値)、False |いいえ  |
 
-#### <a name="example-blobsource"></a>例: BlobSource**
+#### <a name="example-blobsource"></a>例: **BlobSource**
 ```json
 {
     "name": "SamplePipeline",
@@ -929,7 +929,7 @@ Azure Cosmos DB にデータをコピーする場合は、コピー アクティ
 
 詳細については、[Azure Cosmos DB コネクタ](data-factory-azure-documentdb-connector.md#copy-activity-properties)に関する記事をご覧ください。
 
-## <a name="azure-sql-database"></a>の接続文字列
+## <a name="azure-sql-database"></a>Azure SQL Database
 
 ### <a name="linked-service"></a>リンクされたサービス
 Azure SQL Database のリンクされたサービスを定義するには、リンクされたサービスの **type** を **AzureSqlDatabase** に設定し、**typeProperties** セクションで以下のプロパティを指定します。  
@@ -1480,8 +1480,7 @@ Azure Table Storage からデータをコピーする場合は、コピー ア�
 
 | プロパティ | [説明] | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| AzureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |
-いいえ。 azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
+| AzureTableSourceQuery |カスタム クエリを使用してデータを読み取ります。 |Azure テーブルのクエリ文字列。 次のセクションの例を参照してください。 |いいえ。 azureTableSourceQuery を付けないで tableName を指定すると、テーブルのすべてのレコードがコピー先にコピーされます。 azureTableSourceQuery も指定した場合、クエリを満たすテーブルのレコードがコピー先にコピーされます。 |
 | azureTableSourceIgnoreTableNotFound |テーブルが存在しないという例外を受け入れるかどうかを示します。 |TRUE<br/>FALSE |いいえ  |
 
 #### <a name="example"></a>例
@@ -2977,8 +2976,7 @@ Cassandra からデータをコピーする場合は、コピー アクティビ
 | プロパティ | [説明] | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
 | クエリ |カスタム クエリを使用してデータを読み取ります。 |SQL-92 クエリまたはCQL クエリ。 「 [CQL reference (CQL リファレンス)](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html)」をご覧ください。 <br/><br/>SQL クエリを使用する場合は、クエリを実行するテーブルを表す **keyspace name.table name** を指定します。 |いいえ (データセットの tableName と keyspace が定義されていない場合)。 |
-| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |
-いいえ。 既定値は ONE です。 |
+| consistencyLevel |一貫性レベルは、データがクライアント アプリケーションに返される前に、読み取り要求に応答する必要があるレプリカの数を指定します。 Cassandra は読み取り要求を満たすために、データの指定された数のレプリカを確認します。 |ONE、TWO、THREE、QUORUM、ALL、 LOCAL_QUORUM、EACH_QUORUM、 LOCAL_ONE。 詳細については、「 [Configuring data consistency (データ整合性の構成)](http://docs.datastax.com/en//cassandra/2.0/cassandra/dml/dml_config_consistency_c.html) 」をご覧ください。 |いいえ。 既定値は ONE です。 |
 
 #### <a name="example"></a>例
   
@@ -3327,8 +3325,8 @@ Amazon S3 からデータをコピーする場合は、コピー アクティビ
 #### <a name="sample-folder-path-definitions"></a>フォルダー パス定義の例 
 | シナリオ | リンクされたサービス定義のホスト | データセット定義の folderPath  |
 | --- | --- | --- |
-| Data Management Gateway コンピューター上のローカル フォルダー:  <br/><br/>例: D:\\\* または D:\folder\subfolder\\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |\\\\またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
-| リモート共有フォルダー:  <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
+| Data Management Gateway コンピューター上のローカル フォルダー:  <br/><br/>例: D:\\\* または D:\folder\subfolder\\* |D:\\\\ (Data Management Gateway 2.0 以降のバージョンの場合) <br/><br/> localhost (Data Management Gateway 2.0 より以前のバージョン) |\\\\またはフォルダー\\\\サブフォルダー (Data Management Gateway 2.0 以降のバージョン) <br/><br/>D:\\\\ または D:\\\\フォルダー\\\\サブフォルダー (バージョン 2.0 より前のゲートウェイ) |
+| リモート共有フォルダー:  <br/><br/>例: \\\\myserver\\share\\\* または \\\\myserver\\share\\フォルダー\\サブフォルダー\\* |\\\\\\\\myserver\\\\share |.\\\\ またはフォルダー\\\\サブフォルダー |
 
 
 #### <a name="example-using-username-and-password-in-plain-text"></a>例: プレーン テキストでのユーザー名とパスワードの使用
@@ -3867,12 +3865,10 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 | host | SFTP サーバーの名前または IP アドレス。 |[はい] |
 | ポート |SFTP サーバーがリッスンしているポート。 既定値は 21 です |いいえ  |
 | authenticationType |認証の種類を指定します。 指定できる値: **Basic**、**SshPublicKey**。 <br><br> プロパティと JSON サンプルの詳細については、「[基本認証を使用する](#using-basic-authentication)」および「[SSH 公開キー認証を使用する](#using-ssh-public-key-authentication)」をそれぞれ参照してください。 |[はい] |
-| skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | 
-いいえ。 既定値: false |
+| skipHostKeyValidation | ホスト キーの検証をスキップするかどうかを指定します。 | いいえ。 既定値: false |
 | hostKeyFingerprint | ホスト キーの指紋を指定します。 | はい (`skipHostKeyValidation` が false に設定されている場合)。  |
 | gatewayName |オンプレミスの SFTP サーバーに接続するための Data Management Gateway の名前。 | はい (オンプレミスの SFTP サーバーからデータをコピーする場合)。 |
-| encryptedCredential | SFTP サーバーにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで、基本認証 (ユーザー名とパスワード) または SshPublicKey 認証 (ユーザー名と秘密キーのパスまたはコンテンツ) を指定すると自動生成されます。 | 
-いいえ。 オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
+| encryptedCredential | SFTP サーバーにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで、基本認証 (ユーザー名とパスワード) または SshPublicKey 認証 (ユーザー名と秘密キーのパスまたはコンテンツ) を指定すると自動生成されます。 | いいえ。 オンプレミスの SFTP サーバーからデータをコピーする場合にのみ適用します。 |
 
 #### <a name="example-using-basic-authentication"></a>例: 基本認証を使用する
 
@@ -3902,7 +3898,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 }
 ```
 
-#### <a name="example-basic-authentication-with-encrypted-credential"></a>例: 暗号化された資格情報を使用した基本認証**
+#### <a name="example-basic-authentication-with-encrypted-credential"></a>例: **暗号化された資格情報を使用した基本認証**
 
 ```json
 {
@@ -3923,7 +3919,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 }
 ```
 
-#### <a name="using-ssh-public-key-authentication"></a>SSH 公開キー認証を使用する:**
+#### <a name="using-ssh-public-key-authentication"></a>**SSH 公開キー認証を使用する:**
 
 基本認証を使用するには、`authenticationType` を `SshPublicKey` に設定し、前のセクションで導入した一般的な SFTP コネクタ プロパティのほかに、次のプロパティを指定します。
 
@@ -3953,7 +3949,7 @@ SFTP のリンクされたサービスを定義するには、リンクされた
 }
 ```
 
-#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>例: 秘密キーのコンテンツを使用した SshPublicKey 認証**
+#### <a name="example-sshpublickey-authentication-using-private-key-content"></a>例: **秘密キーのコンテンツを使用した SshPublicKey 認証**
 
 ```json
 {
@@ -4077,8 +4073,7 @@ HTTP のリンクされたサービスを定義するには、リンクされた
 | authenticationType | 認証の種類を指定します。 使用可能な値は、**Anonymous**、**Basic**、**Digest**、**Windows**、**ClientCertificate** です。 <br><br> これらの認証の種類それぞれのプロパティと JSON の使用例については、この表の後のセクションを参照してください。 | [はい] |
 | enableServerCertificateValidation | ソースが HTTPS Web サーバーである場合に、サーバーの SSL 証明書の検証を有効にするかどうかを指定します。 | いいえ。既定値は true です。 |
 | gatewayName | オンプレミスの HTTP ソースに接続するための Data Management Gateway の名前。 | はい (オンプレミスの HTTP ソースからデータをコピーする場合)。 |
-| encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで認証情報を構成すると自動生成されます。 | 
-いいえ。 オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用します。 |
+| encryptedCredential | HTTP エンドポイントにアクセスするための暗号化された資格情報。 コピー ウィザードまたは ClickOnce ポップアップ ダイアログで認証情報を構成すると自動生成されます。 | いいえ。 オンプレミスの HTTP サーバーからデータをコピーする場合にのみ適用します。 |
 
 #### <a name="example-using-basic-digest-or-windows-authentication"></a>例: 基本、ダイジェスト、または Windows 認証を使用する
 `authenticationType` を `Basic`、`Digest`、または `Windows` として設定し、上で紹介した HTTP コネクタの一般的なプロパティのほかに、次のプロパティを指定します。
@@ -4163,8 +4158,7 @@ HTTP データセットを定義するには、データセットの **type** �
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | relativeUrl | データを含むリソースへの相対 URL。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 <br><br> 動的 URL を構築するには、[データ ファクトリ関数とシステム変数](data-factory-functions-variables.md)を利用できます。たとえば、`"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"` となります。 | いいえ  |
-| requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | 
-いいえ。 既定値は `GET` です。 |
+| requestMethod | Http メソッド。 使用できる値は、**GET** または **POST** です。 | いいえ。 既定値は `GET` です。 |
 | additionalHeaders | 追加の HTTP 要求ヘッダー。 | いいえ  |
 | requestBody | HTTP 要求の本文。 | いいえ  |
 | format | **HTTP エンドポイントからデータをそのまま取得する**だけで、解析しない場合は、この形式の設定を省略してください。 <br><br> コピー中に HTTP 応答の内容を解析する場合、サポートされている形式は、**TextFormat**、**JsonFormat**、**AvroFormat**、**OrcFormat**、**ParquetFormat** です。 詳細については、[Text Format](data-factory-supported-file-and-compression-formats.md#text-format)、[Json Format](data-factory-supported-file-and-compression-formats.md#json-format)、[Avro Format](data-factory-supported-file-and-compression-formats.md#avro-format)、[Orc Format](data-factory-supported-file-and-compression-formats.md#orc-format)、[Parquet Format](data-factory-supported-file-and-compression-formats.md#parquet-format) の各セクションを参照してください。 |いいえ  |
@@ -4219,8 +4213,7 @@ HTTP ソースからデータをコピーする場合は、コピー アクテ�
 
 | プロパティ | [説明] | 必須 |
 | -------- | ----------- | -------- |
-| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 | 
-いいえ。 既定値: 00:01:40 |
+| httpRequestTimeout | HTTP 要求が応答を取得する際のタイムアウト (TimeSpan)。 応答データの読み取りのタイムアウトではなく、応答の取得のタイムアウトです。 | いいえ。 既定値: 00:01:40 |
 
 
 #### <a name="example"></a>例
@@ -4598,7 +4591,7 @@ Salesforce のリンクされたサービスを定義するには、リンクさ
 
 | プロパティ | [説明] | 必須 |
 | --- | --- | --- |
-| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定では "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
+| environmentUrl | Salesforce インスタンスの URL を指定します。 <br><br> - 既定値は "https://login.salesforce.com" です。 <br> - サンドボックスからデータをコピーするには、"https://test.salesforce.com" を指定します。 <br> - カスタム ドメインからデータをコピーするには、たとえば "https://[ドメイン].my.salesforce.com" を指定します。 |いいえ  |
 | username |ユーザー アカウントのユーザー名を指定します。 |[はい] |
 | password |ユーザー アカウントのパスワードを指定します。 |[はい] |
 | securityToken |ユーザー アカウントのセキュリティ トークンを指定します。 セキュリティ トークンのリセット/取得方法については、 [セキュリティ トークンの取得](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) に関する記事をご覧ください。 セキュリティ トークンの概要については、「[Security and the API (セキュリティと API)](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm)」をご覧ください。 |[はい] |
@@ -4749,8 +4742,7 @@ Web データセットを定義するには、データセットの **type** を
 | プロパティ | [説明] | 必須 |
 |:--- |:--- |:--- |
 | 型 |データセットの型。 **データセット** |[はい] |
-| パス |テーブルを含むリソースの相対 URL。 |
-いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
+| パス |テーブルを含むリソースの相対 URL。 |いいえ。 パスが指定されていないとき、リンクされたサービス定義に指定されている URL のみだけが使用されます。 |
 | Index |リソースのテーブルのインデックス。 HTML ページのテーブルのインデックスを取得する方法については、「 [HTML ページのテーブルのインデックスを取得する](#get-index-of-a-table-in-an-html-page) 」を参照してください。 |[はい] |
 
 #### <a name="example"></a>例
@@ -5002,7 +4994,7 @@ Azure Machine Learning のリンクされたサービスを作成し、Machine L
 }
 ```
 
-## <a name="azure-sql-database"></a>の接続文字列
+## <a name="azure-sql-database"></a>Azure SQL Database
 Azure SQL のリンクされたサービスを作成し、 [ストアド プロシージャ アクティビティ](#stored-procedure-activity) で使用して、Data Factory パイプラインからストアド プロシージャを起動します。 
 
 ### <a name="linked-service"></a>リンクされたサービス
@@ -5597,7 +5589,7 @@ U-SQL アクティビティの JSON 定義では、以下のプロパティを�
 ストアド プロシージャ アクティビティの JSON 定義では、以下のプロパティを指定できます。 このアクティビティの type プロパティは **SqlServerStoredProcedure** とする必要があります。 次のいずれかのリンクされたサービスを作成し、その名前を **linkedServiceName** プロパティの値として指定してください。
 
 - SQL Server 
-- の接続文字列
+- Azure SQL Database
 - Azure SQL Data Warehouse
 
 アクティビティの種類を SqlServerStoredProcedure に設定する場合、**typeProperties** セクションで以下のプロパティがサポートされます。

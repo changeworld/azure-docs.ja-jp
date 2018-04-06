@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 03/15/2018
 ms.author: alehall
 ms.custom: mvc
-ms.openlocfilehash: 9d57f572ba159191f5b634b5ea604563ac2f7801
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 3991312d7f7609bb0a206ccc0ecc67123ebec469
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>AKS での Apache Spark ジョブの実行
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 03/16/2018
 ## <a name="create-an-aks-cluster"></a>AKS クラスターの作成
 
 大規模データ処理で使用される Spark は、Spark リソース要件を満たすようにサイズ調整された Kubernetes ノードを必要とします。 Azure Container Service (AKS) ノードには、最小サイズの `Standard_D3_v2` をお勧めします。
- 
+
 この最小推奨事項を満たしている AKS クラスターが必要な場合は、次のコマンドを実行します。
 
 クラスターのリソース グループを作成します。
@@ -58,12 +58,12 @@ Azure Container Registry (ACR) を使用してコンテナー イメージを格
 
 ## <a name="build-the-spark-source"></a>Spark ソースを作成する
 
-AKS クラスターで Spark ジョブを実行する前に、Spark ソース コードをビルドしてコンテナー イメージにパッケージ化する必要があります。 Spark ソースには、このプロセスを完了するために使用できるスクリプトが含まれています。 
+AKS クラスターで Spark ジョブを実行する前に、Spark ソース コードをビルドしてコンテナー イメージにパッケージ化する必要があります。 Spark ソースには、このプロセスを完了するために使用できるスクリプトが含まれています。
 
 開発システムに Spark プロジェクト リポジトリを複製します。
 
 ```bash
-git clone https://github.com/apache/spark
+git clone -b branch-2.3 https://github.com/apache/spark
 ```
 
 複製したリポジトリのディレクトリに変更し、Spark ソースのパスを変数に保存します。
@@ -73,7 +73,7 @@ cd spark
 sparkdir=$(pwd)
 ```
 
-複数の JDK バージョンがインストールされている場合は、現在のセッションではバージョン 8 を使用するように `JAVA_HOME` を設定します。 
+複数の JDK バージョンがインストールされている場合は、現在のセッションではバージョン 8 を使用するように `JAVA_HOME` を設定します。
 
 ```bash
 export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
@@ -85,16 +85,21 @@ export JAVA_HOME=`/usr/libexec/java_home -d 64 -v "1.8*"`
 ./build/mvn -Pkubernetes -DskipTests clean package
 ```
 
-次のコマンドは、Spark コンテナー イメージを作成してコンテナー イメージ レジストリにプッシュします。 `registry.example.com` を、コンテナー レジストリの名前に置き換えます。 Docker Hub を使用する場合、この値はレジストリの名前です。 Azure Container Registry (ACR) を使用する場合、この値は ACR ログイン サーバー名です。
+次のコマンドは、Spark コンテナー イメージを作成してコンテナー イメージ レジストリにプッシュします。 `registry.example.com` をコンテナー レジストリの名前に置き換え、`v1` を使用したいタグに置き換えます。 Docker Hub を使用する場合、この値はレジストリの名前です。 Azure Container Registry (ACR) を使用する場合、この値は ACR ログイン サーバー名です。
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 build
+REGISTRY_NAME=registry.example.com
+REGISTRY_TAG=v1
+```
+
+```bash
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG build
 ```
 
 コンテナー イメージ レジストリにコンテナー イメージをプッシュします。
 
 ```bash
-./bin/docker-image-tool.sh -r registry.example.com -t v1 push
+./bin/docker-image-tool.sh -r $REGISTRY_NAME -t $REGISTRY_TAG push
 ```
 
 ## <a name="prepare-a-spark-job"></a>Spark ジョブを準備する
@@ -196,18 +201,10 @@ jarUrl=$(az storage blob url --container-name $CONTAINER_NAME --name $BLOB_NAME 
 
 ## <a name="submit-a-spark-job"></a>Spark ジョブを送信する
 
-Spark ジョブを送信する前に、Kubernetes API サーバー アドレスが必要です。 この情報を取得するには、`kubectl cluster-info` コマンドを使用します。
-
-Kubernetes API サーバーが実行されている URL を検出します。
+次のコードを使用して、別のコマンドラインで kube-proxy を起動します。
 
 ```bash
-kubectl cluster-info
-```
-
-アドレスとポートを書き留めます。
-
-```bash
-Kubernetes master is running at https://<your api server>:443
+kubectl proxy
 ```
 
 Spark リポジトリのルートに移動します。
@@ -216,18 +213,16 @@ Spark リポジトリのルートに移動します。
 cd $sparkdir
 ```
 
-`spark-submit` を使用してジョブを送信します。 
-
-値 `<kubernetes-api-server>` を、API サーバーのアドレスとポートに置き換えます。 `<spark-image>` を、コンテナー イメージの名前に置き換えます。`<your container registry name>/spark:<tag>` 形式を使用します。
+`spark-submit` を使用してジョブを送信します。
 
 ```bash
 ./bin/spark-submit \
-  --master k8s://https://<k8s-apiserver-host>:<k8s-apiserver-port> \
+  --master k8s://http://127.0.0.1:8001 \
   --deploy-mode cluster \
   --name spark-pi \
   --class org.apache.spark.examples.SparkPi \
   --conf spark.executor.instances=3 \
-  --conf spark.kubernetes.container.image=<spark-image> \
+  --conf spark.kubernetes.container.image=$REGISTRY_NAME/spark:$REGISTRY_TAG \
   $jarUrl
 ```
 
@@ -315,6 +310,9 @@ Spark スクリプトが含まれるイメージをビルドしてプッシュ�
     --conf spark.kubernetes.container.image=<spark-image> \
     local:///opt/spark/work-dir/<your-jar-name>.jar
 ```
+
+> [!WARNING]
+> Spark [ドキュメント][spark-docs]から引用: "Kubernetes スケジューラーは現在、試験段階です。 将来のバージョンで、構成、コンテナー イメージおよびエントリポイントに関する動作が変更される可能性があります。"
 
 ## <a name="next-steps"></a>次の手順
 

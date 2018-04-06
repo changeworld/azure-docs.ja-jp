@@ -1,28 +1,25 @@
 ---
-title: "Azure Active Directory B2C: LinkedIn の構成 | Microsoft Docs"
-description: "Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、LinkedIn アカウントを使用するコンシューマーにサインアップとサインインを提供します。"
+title: 'Azure Active Directory B2C: LinkedIn の構成 | Microsoft Docs'
+description: Azure Active Directory B2C によってセキュリティ保護されたアプリケーションで、LinkedIn アカウントを使用するコンシューマーにサインアップとサインインを提供します。
 services: active-directory-b2c
-documentationcenter: 
-author: swkrish
+documentationcenter: ''
+author: davidmu1
 manager: mtillman
-editor: bryanla
-ms.assetid: fa51a16b-9ce9-4e27-9eff-0869b4c4f0ef
+editor: ''
 ms.service: active-directory-b2c
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
-ms.author: swkrish
-ms.openlocfilehash: 860aa90c391604924850a00cf2137d59fa4a1b53
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.author: davidmu
+ms.openlocfilehash: 91970b3ec41c645cd1cd3e203cc96ad655dafd7e
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-active-directory-b2c-provide-sign-up-and-sign-in-to-consumers-with-linkedin-accounts"></a>Azure Active Directory B2C: LinkedIn アカウントでコンシューマーにサインアップおよびサインインを提供する
 ## <a name="create-a-linkedin-application"></a>LinkedIn アプリケーションを作成する
-Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedIn を使用するには、LinkedIn アプリケーションを作成し、適切なパラメーターを提供する必要があります。 そのためには LinkedIn アカウントが必要です。 ない場合は、 [https://www.linkedin.com/](https://www.linkedin.com/)で取得できます。
+Azure Active Directory (Azure AD) B2C で ID プロバイダーとして LinkedIn を使用するには、LinkedIn アプリケーションを作成し、適切なパラメーターを提供する必要があります。 そのためには LinkedIn アカウントが必要です。 アカウントがない場合は、[https://www.linkedin.com/](https://www.linkedin.com/) で取得できます。
 
 1. [LinkedIn Developers](https://www.developer.linkedin.com/) の Web サイトに移動し、LinkedIn アカウントの資格情報でサインインします。
 2. 上部メニュー バーの **[My Apps (マイ アプリ)]** をクリックし、**[Create Application (アプリケーションの作成)]** をクリックします。

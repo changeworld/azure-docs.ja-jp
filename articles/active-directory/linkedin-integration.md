@@ -9,15 +9,15 @@ ms.workload: identity
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: article
-ms.date: 03/15/2018
+ms.date: 03/22/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: 3bf224edea9e6da0d0eadb6fb6a409248de3d0e3
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 33e3305288edc3990ed88b39c819293a8adc2dfe
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="linkedin-account-connections-for-microsoft-apps-and-services"></a>Microsoft のアプリとサービスに対する LinkedIn アカウント接続
 この記事では、Azure Active Directory (Azure AD) 管理センターで、テナントに対する LinkedIn アカウント接続を管理する方法を説明します。 
@@ -56,9 +56,9 @@ LinkedIn アカウント接続機能は、既定ではテナント全体で有�
 ### <a name="enable-or-disable-linkedin-account-connections-for-your-organizations-office-2016-apps-using-group-policy"></a>組織の Office 2016 アプリに対する LinkedIn アカウント接続をグループ ポリシーで有効または無効にする
 
 1. [Office 2016 管理用テンプレート ファイル (ADMX/ADML)](https://www.microsoft.com/download/details.aspx?id=49030) をダウンロードします。
-2. **ADMX** ファイルを抽出して**中央のリポジトリ**にコピーします。
+2. **ADMX** ファイルを抽出して中央のストアにコピーします。
 3. [グループ ポリシーの管理] を開きます。
-4. **[ユーザーの構成]** > **[管理用テンプレート]** > **[Microsoft Office 2016]** > **[その他]** > **[Allow LinkedIn Integration]\(LinkedIn の統合を許可する\)** の設定でグループ ポリシー オブジェクトを作成します。
+4. **[ユーザーの構成]** > **[管理用テンプレート]** > **[Microsoft Office 2016]** > **[その他]** > **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** の設定でグループ ポリシー オブジェクトを作成します。
 5. **[有効]** または **[無効]** を選択します。
   * このポリシーを **[有効]** にすると、Office 2016 の [オプション] ダイアログにある **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** 設定が有効になります。 これは同時に、組織内のユーザーが各自の Office アプリケーションで LinkedIn の機能を使用できることを意味します。
   * このポリシーを **[無効]** にすると、Office 2016 の [オプション] ダイアログにある **[Show LinkedIn features in Office applications]\(Office アプリケーションに LinkedIn の機能を表示する\)** 設定が無効の状態になります。エンド ユーザーがこの設定を変更することはできません。 組織内のユーザーがその Office 2016 アプリケーションで LinkedIn の機能を使用することはできません。 

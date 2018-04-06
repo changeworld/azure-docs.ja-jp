@@ -1,11 +1,11 @@
 ---
-title: "Azure Search サービスの制限 | Microsoft Docs"
-description: "容量計画で使用されるサービス上限と、Azure Search の要求および応答の上限について説明します。"
+title: Azure Search サービスの制限 | Microsoft Docs
+description: 容量計画で使用されるサービス上限と、Azure Search の要求および応答の上限について説明します。
 services: search
-documentationcenter: 
+documentationcenter: ''
 author: HeidiSteen
 manager: jhubbard
-editor: 
+editor: ''
 tags: azure-portal
 ms.assetid: 857a8606-c1bf-48f1-8758-8032bbe220ad
 ms.service: search
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 11/09/2017
+ms.date: 03/26/2018
 ms.author: heidist
-ms.openlocfilehash: 3deb0ff81114c840798c5927ad7311d7e603813d
-ms.sourcegitcommit: bc8d39fa83b3c4a66457fba007d215bccd8be985
+ms.openlocfilehash: fb2234e79e8deb98a94068f31a40c8f0b415d7ba
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/10/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、または **Standard** の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -32,33 +32,38 @@ ms.lasthandoff: 11/10/2017
 > サービスは特定のレベルでプロビジョニングされます。 レベルを移動して容量を増やすには、新しいサービスをプロビジョニングする必要があります (インプレース アップグレードはありません)。 詳細については、[SKU または価格レベルの選択](search-sku-tier.md)に関するページをご覧ください。 プロビジョニングしたサービス内での容量調整の詳細については、[クエリとインデックスのワークロードに応じたリソース レベルのスケール](search-capacity-planning.md)に関するページをご覧ください。
 >
 
-## <a name="per-subscription-limits"></a>各サブスクリプションの制限
+## <a name="subscription-limits"></a>サブスクリプションの制限
 [!INCLUDE [azure-search-limits-per-subscription](../../includes/azure-search-limits-per-subscription.md)]
 
-## <a name="per-service-limits"></a>各サービスの制限
+## <a name="service-limits"></a>サービスの制限
 [!INCLUDE [azure-search-limits-per-service](../../includes/azure-search-limits-per-service.md)]
 
-## <a name="per-index-limits"></a>各インデックスの制限
-インデックスの制限とインデクサーの制限の間には 1 対 1 の関係があります。 インデックスの上限が 200 の場合、同じサービスのインデクサーの最大数も 200 になります。
+## <a name="index-limits"></a>インデックスの制限
 
-| リソース | 無料 | 基本 | S1 | S2 | S3 | S3 HD |
+| リソース | 無料 | Basic | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
-| インデックス: インデックスあたりの最大フィールド |1,000 |100 <sup>1</sup> |1,000 |1,000 |1,000 |1,000 |
-| インデックス: インデックスあたりの最大スコアリング プロファイル |100 |100 |100 |100 |100 |100 |
-| インデックス: プロファイルあたりの最大関数 |8 |8 |8 |8 |8 |8 |
-| インデクサー: 呼び出しあたりの最大インデックス作成負荷 |10,000 ドキュメント |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |該当なし <sup>2</sup> |
-| インデクサー: 最大実行時間 | 1 ～ 3 分 <sup>3</sup> |24 時間 |24 時間 |24 時間 |24 時間 |該当なし <sup>2</sup> |
-| BLOB インデクサー: BLOB の最大サイズ、MB |16 |16 |128 |256 |256 |該当なし <sup>2</sup> |
-| BLOB インデクサー: BLOB から抽出されたコンテンツの最大文字数 |32,000 |64,000 |400 万 |400 万 |400 万 |該当なし <sup>2</sup> |
+| インデックスあたりの最大フィールド |1,000 |100 <sup>1</sup> |1,000 |1,000 |1,000 |1,000 |
+| インデックスあたりの最大スコアリング プロファイル |100 |100 |100 |100 |100 |100 |
+| プロファイルあたりの最大関数 |8 |8 |8 |8 |8 |8 |
 
 <sup>1</sup> Basic レベルにのみ下限（インデックスあたり 100 フィールド）があります。
 
-<sup>2</sup> S3 HD では現在、インデクサーはサポートされていません。 この機能がすぐに必要な場合は、Azure サポートにご連絡ください。
+## <a name="indexer-limits"></a>インデクサー制限
 
-<sup>3</sup> インデクサーの Free レベルでの最大実行時間は、BLOB ソースの場合は 3 分、その他のすべてのデータ ソースの場合は 1 分です。
+| リソース | 無料 | Basic | S1 | S2 | S3 | S3 HD |
+| --- | --- | --- | --- | --- | --- | --- |
+| 呼び出しあたりの最大インデックス作成負荷 |10,000 ドキュメント |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |N/A <sup>1</sup> |
+| 最大実行時間 | 1-3 分 <sup>2</sup> |24 時間 |24 時間 |24 時間 |24 時間 |N/A <sup>1</sup> |
+| BLOB インデクサー: BLOB の最大サイズ、MB |16 |16 |128 |256 |256 |N/A <sup>1</sup> |
+| BLOB インデクサー: BLOB から抽出されたコンテンツの最大文字数 |32,000 |64,000 |400 万 |400 万 |400 万 |N/A <sup>1</sup> |
+
+<sup>1</sup> S3 HD では現在、インデクサーはサポートされていません。 この機能がすぐに必要な場合は、Azure サポートにご連絡ください。
+
+<sup>2</sup> インデクサーの Free レベルでの最大実行時間は、BLOB ソースの場合は 3 分、その他のすべてのデータ ソースの場合は 1 分です。
+
 
 ## <a name="document-size-limits"></a>ドキュメント サイズの制限
-| リソース | 無料 | 基本 | S1 | S2 | S3 | S3 HD |
+| リソース | 無料 | Basic | S1 | S2 | S3 | S3 HD |
 | --- | --- | --- | --- | --- | --- | --- |
 | インデックス API ごとの各ドキュメント サイズ |<16 MB |<16 MB |<16 MB |<16 MB |<16 MB |<16 MB |
 

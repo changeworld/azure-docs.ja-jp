@@ -1,12 +1,12 @@
 ---
-title: "Azure 診断ログ | Microsoft Docs"
-description: "顧客は、Azure CDN のログ分析を有効にすることができます。"
+title: Azure 診断ログ | Microsoft Docs
+description: 顧客は、Azure CDN のログ分析を有効にすることができます。
 services: cdn
-documentationcenter: 
-author: 
-manager: 
-editor: 
-ms.assetid: 
+documentationcenter: ''
+author: ''
+manager: ''
+editor: ''
+ms.assetid: ''
 ms.service: cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: v-deasim
-ms.openlocfilehash: 7bb4eebc80d1c0fdcb9fb5d0f6bb7aeeeb3cb08d
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: f9711f9cfaab1ef22da220a773689c95b1103970
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-diagnostic-logs"></a>Azure 診断ログ
 
@@ -109,7 +109,7 @@ OMS Log Analytics を使用してログを保存するには、次の手順に�
 
 次の例は、Azure PowerShell コマンドレットを使用して診断ログを有効にする方法を示しています。
 
-###<a name="enabling-diagnostic-logs-in-a-storage-account"></a>ストレージ アカウントでの診断ログの有効化
+### <a name="enabling-diagnostic-logs-in-a-storage-account"></a>ストレージ アカウントでの診断ログの有効化
 
 まずログインしてサブスクリプションを選択します。
 
@@ -156,7 +156,7 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 
 **フィールドの説明:**
 
-|値|説明|
+|value|説明|
 |-------|---------|
 |サブスクリプション ID    |GUID 形式の Azure サブスクリプションの ID。|
 |リソース |グループ名。CDN のリソースが属するリソース グループの名前|
@@ -173,7 +173,7 @@ Azure ストレージ アカウントからコア分析データにアクセス�
 
 このツールを使用する方法を次に示します。
 
-1.  GitHub のリンクを参照します: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
+1.  次の GitHub リンクを参照してください: [https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv ](https://github.com/Azure-Samples/azure-cdn-samples/tree/master/CoreAnalytics-ExportToCsv )
 2.  コードをダウンロードします。
 3.  指示に従ってコンパイルして構成します。
 4.  ツールを実行します。
@@ -205,7 +205,7 @@ Azure Marketplace から各ソリューションの下にある **[Get it now (�
 
 2. **[新規]** ブレードの **[Marketplace]** で、**[監視 + 管理]** を選択します。
 
-    ![Marketplace](./media/cdn-diagnostics-log/14_Marketplace.png)
+    ![マーケットプレース](./media/cdn-diagnostics-log/14_Marketplace.png)
 
 3. **[監視 + 管理]** ブレードで、**[すべて表示]** をクリックします。
 
@@ -288,35 +288,35 @@ Verizon のログ データには 1 時間の遅延があり、エンドポイ�
 コア分析ログで使用可能なメトリックの一覧を次の表に示します。 プロバイダーによっては使用できないメトリックがありますが、違いはほとんどありません。 以下の表は、そのメトリックがプロバイダーで使用できるかどうかも示しています。 メトリックを使用できるのは、トラフィックが存在する CDN エンドポイントに対してのみであることに注意してください。
 
 
-|メトリック                     | 説明   | Verizon  | Akamai 
+|メトリック                     | [説明]   | Verizon  | Akamai 
 |---------------------------|---------------|---|---|
-| RequestCountTotal         |この期間中にヒットした要求の合計数| あり  |あり   |
-| RequestCountHttpStatus2xx |2xx の HTTP コード (200、202 など) になった要求の合計数              | あり  |あり   |
-| RequestCountHttpStatus3xx | 3xx の HTTP コード (300、302 など) になった要求の合計数              | あり  |あり   |
-| RequestCountHttpStatus4xx |4xx の HTTP コード (400、404 など) になった要求の合計数               | あり   |あり   |
-| RequestCountHttpStatus5xx | 5xx の HTTP コード (500、504 など) になった要求の合計数              | あり  |あり   |
-| RequestCountHttpStatusOthers |  その他のすべての HTTP コード (2xx-5xx 以外) の数 | あり  |あり   |
-| RequestCountHttpStatus200 | HTTP コード応答 200 になった要求の合計数              |いいえ   |あり   |
-| RequestCountHttpStatus206 | HTTP コード応答 206 になった要求の合計数              |いいえ   |あり   |
-| RequestCountHttpStatus302 | HTTP コード応答 302 になった要求の合計数              |いいえ   |あり   |
-| RequestCountHttpStatus304 |  HTTP コード応答 304 になった要求の合計数             |いいえ   |あり   |
-| RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数              |いいえ   |あり   |
-| RequestCountCacheHit |キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。               | あり  |いいえ   |
-| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 これは、クライアントに最も近い POP でアセットが見つからなかったため、配信元から取得されたことを意味します。              |あり   | いいえ  |
-| RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。              |あり   | いいえ  |
-| RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します                |あり   |いいえ   |
-| RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。              |あり   | いいえ  |
-| EgressTotal | 送信データ転送 (GB)              |あり   |あり   |
-| EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)            |あり   |いいえ   |
-| EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)              |あり   |いいえ   |
-| EgressHttpStatus4xx | HTTP 状態コードが 4xx の応答の送信データ転送 (GB)               |あり   | いいえ  |
-| EgressHttpStatus5xx | HTTP 状態コードが 5xx の応答の送信データ転送 (GB)               |あり   |  いいえ |
-| EgressHttpStatusOthers | その他の HTTP 状態コードの応答の送信データ転送 (GB)                |あり   |いいえ   |
-| EgressCacheHit |  CDN の POP/エッジで CDN キャッシュから直接配信された応答の送信データ転送  |あり   |  いいえ |
-| EgressCacheMiss | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送              |あり   |  いいえ |
-| EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。                |あり   |いいえ   |
-| EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。                   |あり   | いいえ  |
-| EgressCacheOthers |  その他のキャッシュ シナリオの送信データ転送。             |あり   | いいえ  |
+| RequestCountTotal         |この期間中にヒットした要求の合計数| [はい]  |[はい]   |
+| RequestCountHttpStatus2xx |2xx の HTTP コード (200、202 など) になった要求の合計数              | [はい]  |[はい]   |
+| RequestCountHttpStatus3xx | 3xx の HTTP コード (300、302 など) になった要求の合計数              | [はい]  |[はい]   |
+| RequestCountHttpStatus4xx |4xx の HTTP コード (400、404 など) になった要求の合計数               | [はい]   |[はい]   |
+| RequestCountHttpStatus5xx | 5xx の HTTP コード (500、504 など) になった要求の合計数              | [はい]  |[はい]   |
+| RequestCountHttpStatusOthers |  その他のすべての HTTP コード (2xx-5xx 以外) の数 | [はい]  |[はい]   |
+| RequestCountHttpStatus200 | HTTP コード応答 200 になった要求の合計数              |いいえ    |[はい]   |
+| RequestCountHttpStatus206 | HTTP コード応答 206 になった要求の合計数              |いいえ    |[はい]   |
+| RequestCountHttpStatus302 | HTTP コード応答 302 になった要求の合計数              |いいえ    |[はい]   |
+| RequestCountHttpStatus304 |  HTTP コード応答 304 になった要求の合計数             |いいえ    |[はい]   |
+| RequestCountHttpStatus404 | HTTP コード応答 404 になった要求の合計数              |いいえ    |[はい]   |
+| RequestCountCacheHit |キャッシュ ヒットが生じた要求の合計数。 POP からクライアントに対して、アセットが直接処理されました。               | [はい]  |いいえ    |
+| RequestCountCacheMiss | キャッシュ ミスが生じた要求の合計数。 これは、クライアントに最も近い POP でアセットが見つからなかったため、配信元から取得されたことを意味します。              |[はい]   | いいえ   |
+| RequestCountCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットに対する要求の合計数。              |[はい]   | いいえ   |
+| RequestCountCacheUncacheable | アセットの Cache-Control および Expires ヘッダーによりキャッシュされなかったアセットへの要求の合計数。この場合、POP または HTTP クライアントではキャッシュすべきでないことを示します                |[はい]   |いいえ    |
+| RequestCountCacheOthers | 上記に含まれないキャッシュの状態の要求の合計数。              |[はい]   | いいえ   |
+| EgressTotal | 送信データ転送 (GB)              |[はい]   |[はい]   |
+| EgressHttpStatus2xx | HTTP 状態コードが 2xx の応答の送信データ転送* (GB)            |[はい]   |いいえ    |
+| EgressHttpStatus3xx | HTTP 状態コードが 3xx の応答の送信データ転送 (GB)              |[はい]   |いいえ    |
+| EgressHttpStatus4xx | HTTP 状態コードが 4xx の応答の送信データ転送 (GB)               |[はい]   | いいえ   |
+| EgressHttpStatus5xx | HTTP 状態コードが 5xx の応答の送信データ転送 (GB)               |[はい]   |  いいえ  |
+| EgressHttpStatusOthers | その他の HTTP 状態コードの応答の送信データ転送 (GB)                |[はい]   |いいえ    |
+| EgressCacheHit |  CDN の POP/エッジで CDN キャッシュから直接配信された応答の送信データ転送  |[はい]   |  いいえ  |
+| EgressCacheMiss | 最も近い POP サーバーで見つからず、配信元サーバーから取得された応答の送信データ転送              |[はい]   |  いいえ  |
+| EgressCacheNoCache | エッジでのユーザーの構成が原因でキャッシュされなかったアセットの送信データ転送。                |[はい]   |いいえ    |
+| EgressCacheUncacheable | アセットの Cache-Control および/または Expires ヘッダーによりキャッシュされなかったアセットの送信データ転送。 POP または HTTP クライアントではキャッシュすべきでないことを示します。                   |[はい]   | いいえ   |
+| EgressCacheOthers |  その他のキャッシュ シナリオの送信データ転送。             |[はい]   | いいえ   |
 
 * 送信データ転送は、CDN の POP サーバーからクライアントに配信されたトラフィックを指します。
 

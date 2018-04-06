@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 03/16/2018
+ms.date: 03/19/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 617b33a9f860ce3b06ff560de22824037eab8332
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 7e520429e5f5e219e05a77eb4ca18d0d6b6b3977
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Durable Functions のモニター シナリオ - 天気ウォッチャーのサンプル
 
@@ -26,8 +26,8 @@ ms.lasthandoff: 03/17/2018
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Durable Functions をインストールする](durable-functions-install.md)」の指示に従って、サンプルを設定します。
-* この記事では、[Hello シーケンス](durable-functions-sequence.md) サンプルのチュートリアルを既に終了していることを前提としています。
+* [Durable Functions をインストールします](durable-functions-install.md)。
+* [Hello シーケンス](durable-functions-sequence.md) チュートリアルを完了します。
 
 ## <a name="scenario-overview"></a>シナリオの概要
 
@@ -64,7 +64,7 @@ API キーを入手したら、次の**アプリ設定**を関数アプリに追
 * `E3_GetIsClear`: ある場所の現在の気象条件を確認するアクティビティ関数です。
 * `E3_SendGoodWeatherAlert`: Twilio 経由で SMS メッセージを送信するアクティビティ関数です。
 
-以下のセクションでは、Azure Portal の開発で使われる構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
+以下のセクションでは、C# スクリプトで使用される構成とコードについて説明します。 Visual Studio 開発用のコードは、この記事の最後に記載されています。
  
 ## <a name="the-weather-monitoring-orchestration-visual-studio-code-and-azure-portal-sample-code"></a>気象監視オーケストレーション (Visual Studio Code と Azure Portal のサンプル コード)
 

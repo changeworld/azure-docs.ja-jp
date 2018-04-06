@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2017
 ms.author: rli
-ms.openlocfilehash: e4b7113f27e5e15d69dfdd1efd13e255ef4a8ab7
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.openlocfilehash: f8dac5469e7160fae93e8251ab7f4195a383f8b4
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-cdn-rules-engine-match-conditions"></a>Azure CDN ルール エンジンの一致条件 
 この記事では、Azure Content Delivery Network (CDN) [ルール エンジン](cdn-rules-engine.md)で利用できる一致条件について詳しく説明します。
@@ -526,15 +526,15 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 
      例: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder**/index.htm 
 
-     この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/**myfolder**/index.htm を参照します。
+     この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
 
 - エッジ CNAME URL は、URL の比較の前に CDN URL に書き換えられます。
 
     たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
-    - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     
     - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
+    
     追加情報:
     - カスタム ドメイン: https:\//my.domain.com/path/asset.htm
     
@@ -640,21 +640,21 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
     **[Relative to]\(基準\)** オプションで使用できる値は次のとおりです。
      - **[Root]\(ルート\)**: URL 比較ポイントが、CDN ホスト名の直後から始まることを示します。
 
-       例: http:\//wpc.0001.&lt;Domain&gt;/**800001/myorigin/myfolder**/index.htm
+       例: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
 
      - **[Origin]\(配信元\)**: URL 比較ポイントが、コンテンツ アクセス ポイント (例: 000001、/800001/myorigin) の後から始まることを示します。 \*.azureedge.net CNAME は、既定で Verizon CDN ホスト名の配信元ディレクトリを基準として作成されるため、Azure CDN ユーザーは値として **[Origin]\(配信元\)** を使用する必要があります。 
 
        例: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
-     この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
+     この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
 
 - エッジ CNAME URL は、URL の比較の前に CDN URL に書き換えられます。
 
-   たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
-    - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
+    - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
     - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-   追加情報:
+    
+    追加情報:
     
     - URL パス (ルートを基準): /800001/CustomerOrigin/path/asset.htm
    
@@ -681,13 +681,13 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 重要な情報: 
 - エッジ CNAME URL は、URL の比較の前に CDN URL に書き換えられます。 
  
-   たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
+    たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
 
-     - CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+     - CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
 
      - エッジ CNAME URL: http:\//my.domain.com/path/asset.htm
-
-   追加情報:
+    
+    追加情報:
     
      - URL パス: /800001/CustomerOrigin/path/asset.htm
 
@@ -715,21 +715,21 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
    このオプションには次の値を指定できます。
      - **[Root]\(ルート\)**: URL 比較ポイントが、CDN ホスト名の直後から始まることを示します。
 
-       例: http:\//wpc.0001.&lt;Domain&gt;/**800001/myorigin/myfolder**/index.htm
+       例: http:\//wpc.0001.&lt;domain&gt;/**800001/myorigin/myfolder**/index.htm
 
      - **[Origin]\(配信元\)**: URL 比較ポイントが、コンテンツ アクセス ポイント (例: 000001、/800001/myorigin) の後から始まることを示します。 \*.azureedge.net CNAME は、既定で Verizon CDN ホスト名の配信元ディレクトリを基準として作成されるため、Azure CDN ユーザーは値として **[Origin]\(配信元\)** を使用する必要があります。 
 
        例: https:\//&lt;endpoint&gt;.azureedge.net/**myfolder/index.htm**
 
-     この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
+     この URL は、Verizon CDN ホスト名 http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/**myfolder/index.htm** を参照します。
 
 - エッジ CNAME URL は、URL の比較の前に CDN URL に書き換えられます。
 
-   たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
-     - CDN URL: http://wpc.0001.&lt;Domain&gt;/800001/CustomerOrigin/path/asset.htm
+    たとえば、次の URL はどちらも同じ資産を参照するため、同じ URL パスになります。
+     - CDN URL: http://wpc.0001.&lt;domain&gt;/800001/CustomerOrigin/path/asset.htm
      - エッジ CNAME URL: http:\//&lt;endpoint&gt;.azureedge.net/path/asset.htm
-
-   追加情報:
+    
+    追加情報:
     
      - URL パス (ルートを基準): /800001/CustomerOrigin/path/asset.htm
     
@@ -737,7 +737,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
     
 - 複数の URL パスを指定するには、各パスを単一のスペースで区切ります。
 
-   例: /marketing/asset.\* /sales/\*.htm
+   例: /marketing/asset.* /sales/*.htm
 
 - URL のクエリ文字列は無視されます。
     
@@ -757,7 +757,7 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 /80ABCD/origin/text/*   | ルート           | 要求された資産が次の条件を満たしている場合、このパターンに一致します。 <br />- "origin" という顧客配信元に存在する。 <br />- 相対パスが "text" というフォルダーで始まる  (つまり、要求された資産が、"text" フォルダーまたは再帰サブフォルダーに存在する)
 */css/* */js/*          | ルートまたは配信元 | css または js フォルダーを含むすべての CDN URL またはエッジ CNAME URL が、このパターンに一致します。
 *.jpg *.gif *.png       | ルートまたは配信元 | .jpg、.gif、または .png で終わる すべての CDN URL またはエッジ CNAME URL が、このパターンに一致します。 このパターンを指定する別の方法は、「[URL Path Extension (URL パス拡張子)](#url-path-extension)」一致条件を使用することです。
-/images/\* /media/\*      | Origin (配信元)         | 相対パスが "images" または "media" フォルダーで始まる CDN URL またはエッジ CNAME URL が、このパターンに一致します。 <br />- CDN URL: http:\//wpc.0001.&lt;Domain&gt;/800001/myorigin/images/sales/event1.png<br />- サンプル エッジ CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
+/images/\* /media/\*      | Origin (配信元)         | 相対パスが "images" または "media" フォルダーで始まる CDN URL またはエッジ CNAME URL が、このパターンに一致します。 <br />- CDN URL: http:\//wpc.0001.&lt;domain&gt;/800001/myorigin/images/sales/event1.png<br />- サンプル エッジ CNAME URL: http:\//cdn.mydomain.com/images/sales/event1.png
 
 [先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -867,11 +867,11 @@ Resolution Width | % {wurfl_cap_resolution_width} | デバイスの幅 (ピク�
 #### <a name="sample-scenarios"></a>サンプル シナリオ
 次の例は、このオプションが特定の状況でどのように機能するかを示しています。
 
-Name      | 値 |  結果
-----------|-------|--------
-User      | Joe   | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
-User      | *     | 要求された URL のクエリ文字列に User パラメーターが含まれている場合、このパターンに一致します。
-Email Joe | *     | 要求された URL のクエリ文字列に、"Joe" で始まる Email パラメーターが含まれている場合、このパターンに一致します。
+Name  | 値 |  結果
+------|-------|--------
+User  | Joe   | 要求された URL のクエリ文字列が "?user=joe" の場合、このパターンに一致します。
+User  | *     | 要求された URL のクエリ文字列に User パラメーターが含まれている場合、このパターンに一致します。
+電子メール | Joe\* | 要求された URL のクエリ文字列に、"Joe" で始まる Email パラメーターが含まれている場合、このパターンに一致します。
 
 [先頭に戻る](#match-conditions-for-the-azure-cdn-rules-engine)
 
@@ -908,7 +908,7 @@ Email Joe | *     | 要求された URL のクエリ文字列に、"Joe" で始�
    値 | 解釈 
    ------|---------------
    \\+    | +
-   \\\+   | \\+
+   \\\\+   | \\+
 
 - キャッシュ設定の追跡方法が原因で、この一致条件は次の機能との互換性がありません。
    - Complete Cache Fill (完全キャッシュ入力)

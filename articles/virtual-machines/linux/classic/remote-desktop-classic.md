@@ -1,11 +1,11 @@
 ---
-title: "リモート デスクトップを Linux VM にアタッチする | Microsoft Docs"
-description: "リモート デスクトップをインストールして、クラシック デプロイ モデルで Microsoft Azure Linux VM に接続するように構成する方法を説明します"
+title: リモート デスクトップを Linux VM にアタッチする | Microsoft Docs
+description: リモート デスクトップをインストールして、クラシック デプロイ モデルで Microsoft Azure Linux VM に接続するように構成する方法を説明します
 services: virtual-machines-linux
-documentationcenter: 
-author: SuperScottz
-manager: timlt
-editor: 
+documentationcenter: ''
+author: iainfoulds
+manager: jeconnoc
+editor: ''
 tags: azure-service-management
 ROBOTS: NOINDEX
 ms.assetid: 34348659-ddb7-41da-82d6-b5885859e7e4
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
-ms.author: mingzhan
-ms.openlocfilehash: 72c814aece7626b19cefccb18e1b90f8c44d7f57
-ms.sourcegitcommit: be9a42d7b321304d9a33786ed8e2b9b972a5977e
+ms.author: iainfou
+ms.openlocfilehash: 0e1bfe468e1572ca98be956d39d82df562dce0e6
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/19/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>リモート デスクトップを使用して Microsoft Azure Linux VM に接続する
 > [!IMPORTANT] 

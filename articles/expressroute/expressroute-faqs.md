@@ -1,24 +1,24 @@
 ---
-title: "Azure ExpressRoute の FAQ | Microsoft Docs"
-description: "ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。"
+title: Azure ExpressRoute の FAQ | Microsoft Docs
+description: ExpressRoute の FAQ には、サポートされている Azure サービス、料金、データと接続、SLA、プロバイダーと提供地域、帯域幅、およびその他の技術的な詳細に関する情報が記載されています。
 documentationcenter: na
 services: expressroute
 author: cherylmc
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 09b17bc4-d0b3-4ab0-8c14-eed730e1446e
 ms.service: expressroute
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/17/2018
+ms.date: 03/28/2018
 ms.author: cherylmc
-ms.openlocfilehash: 62e532f3750adf8f4defe3e8f8aabe5b9f0446a0
-ms.sourcegitcommit: 828cd4b47fbd7d7d620fbb93a592559256f9d234
+ms.openlocfilehash: 3f33703ec86f131d18c89cf4b29514c5002349d1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
 
@@ -43,7 +43,6 @@ ExpressRoute 接続では、公共のインターネットを利用できませ�
 料金情報については、「 [ExpressRoute 料金](https://azure.microsoft.com/pricing/details/expressroute/) 」を参照してください。
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>特定の帯域幅の ExpressRoute 回線に対して料金を支払っている場合、ネットワーク サービス プロバイダーから同じ速度の VPN 接続を購入する必要がありますか。
-
 
 いいえ。 サービス プロバイダーから任意の速度の VPN 接続を購入できます。 ただし、Azure への接続は、購入した ExpressRoute 回線の帯域幅に制限されます。
 
@@ -136,7 +135,6 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 
 ### <a name="can-i-extend-one-of-my-vlans-to-azure-using-expressroute"></a>自社の VLAN を、ExpressRoute を使用して Azure に拡張することはできますか。
 
-
 いいえ。 Azure へのレイヤー 2 接続の拡張はサポートされません。
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>1 つのサブスクリプションで複数の ExpressRoute 回線を使用できますか。
@@ -185,7 +183,6 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 詳細については、「[複数のサブスクリプションの間で ExpressRoute 回線を共有する](expressroute-howto-linkvnet-arm.md)」を参照してください。
 
 ### <a name="are-virtual-networks-connected-to-the-same-circuit-isolated-from-each-other"></a>同じ回線に接続されている仮想ネットワークは、互いに分離されていますか。
-
 
 いいえ。 ルーティングの観点から見た場合、同じ ExpressRoute 回線に接続されているすべての仮想ネットワークは、同じルーティング ドメインに属しているため、互いに分離されていません。 ルートの分離が必要な場合は、ExpressRoute 回線を別に作成する必要があります。
 
@@ -295,7 +292,6 @@ ExpressRoute Premium を無効にするには、REST API や PowerShell コマ�
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Premium の機能セットから必要な機能だけを選択できますか。
 
-
 いいえ。 機能を選択することはできません。 ExpressRoute Premium を有効にすると、すべての機能が有効になります。
 
 ### <a name="how-much-does-expressroute-premium-cost"></a>ExpressRoute Premium の料金はいくらですか。
@@ -344,7 +340,10 @@ Office 365 サービスおよび Dynamics 365 では、Premium アドオンを�
 
 ### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
 
-はい。 自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。 ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
+はい。 自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。 お客様の所在地のネットワークが ExpressRoute を介して Office 365 サービスに接続するように構成されている場合は、組織のネットワーク チームに問い合わせてください。
+
+### <a name="how-can-i-plan-for-high-availability-for-office-365-network-traffic-on-azure-expressroute"></a>Azure ExpressRoute で Office 365 ネットワーク トラフィックの高可用性を計画するにはどうすればよいですか?
+「[Azure ExpressRoute の高可用性とフェールオーバー](https://aka.ms/erhighavailability)」に記載の推奨事項を参照してください。
 
 ### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Azure US Government ExpressRoute 回線を通じてOffice 365 US Government Community (GCC) サービスにアクセスすることはできますか。
 

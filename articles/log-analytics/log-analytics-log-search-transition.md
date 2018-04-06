@@ -1,8 +1,8 @@
 ---
-title: "Azure Log Analytics クエリ言語チート シート | Microsoft Docs"
-description: "この記事は、従来 Log Analytics に使用されてきたクエリ言語の使用経験がある方を対象に、新しいクエリ言語への移行を支援する内容となっています。"
+title: Azure Log Analytics クエリ言語チート シート | Microsoft Docs
+description: この記事は、従来 Log Analytics に使用されてきたクエリ言語の使用経験がある方を対象に、新しいクエリ言語への移行を支援する内容となっています。
 services: operations-management-suite
-documentationcenter: 
+documentationcenter: ''
 author: bwren
 manager: carmonm
 editor: tysonn
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2017
 ms.author: bwren
 ms.openlocfilehash: 9c487ab33859ae453a0074ef0344f61de19c7b4d
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Azure Log Analytics の新しいクエリ言語への移行
 最近、Log Analytics は新しいクエリ言語を実装しました。  この記事は、従来のクエリ言語を使い慣れていて、ある程度のサポートが必要な方を対象に、Log Analytics のこの言語への移行を支援する内容となっています。
@@ -51,10 +51,10 @@ ms.lasthandoff: 02/13/2018
 |                        | Type=Event Computer=RegEx("@contoso@")  | Event &#124; where Computer matches regex ".*contoso*" |
 | 日付の比較        | Type=Event TimeGenerated > NOW-1DAYS | Event &#124; where TimeGenerated > ago(1d) |
 |                        | Type=Event TimeGenerated>2017-05-01 TimeGenerated<2017-05-31 | Event &amp;#124; where TimeGenerated between (datetime(2017-05-01) . datetime(2017-05-31)) |
-| ブール値の比較     | Type=Heartbeat IsGatewayInstalled=false  | ハートビート\|場所 IsGatewayInstalled = = false |
-| 並べ替え                   | Type=Event &#124; sort Computer asc, EventLog desc, EventLevelName asc | イベント\|コンピューター asc、EventLog desc、EventLevelName 昇順で並べ替え |
-| 重複の除外               | 種類 = イベント &#124;です。重複除去コンピューター\|コンピューターを選択 | Event &#124; summarize by Computer, EventLog |
-| 列の拡張         | Type=Perf CounterName="% Processor Time" &#124; EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION | Perf &#124;です。$data/instancename$ 場所は、「% Processor Time」を = =\|使用率を拡張する場合を = (CounterValue > 50、"HIGH"、「安値」) |
+| ブール値の比較     | Type=Heartbeat IsGatewayInstalled=false  | Heartbeat \| where IsGatewayInstalled == false |
+| 並べ替え                   | Type=Event &#124; sort Computer asc, EventLog desc, EventLevelName asc | Event \| sort by Computer asc, EventLog desc, EventLevelName asc |
+| 重複の除外               | Type=Event &#124; dedup Computer \| select Computer | Event &#124; summarize by Computer, EventLog |
+| 列の拡張         | Type=Perf CounterName="% Processor Time" &#124; EXTEND if(map(CounterValue,0,50,0,1),"HIGH","LOW") as UTILIZATION | Perf &#124; where CounterName == "% Processor Time" \| extend Utilization = iff(CounterValue > 50, "HIGH", "LOW") |
 | 集計            | Type=Event &#124; measure count() as Count by Computer | Event &#124; summarize Count = count() by Computer |
 |                                | Type=Perf ObjectName=Processor CounterName="% Processor Time" &#124; measure avg(CounterValue) by Computer interval 5minute | Perf &#124; where ObjectName=="Processor" and CounterName=="% Processor Time" &#124; summarize avg(CounterValue) by Computer, bin(TimeGenerated, 5min) |
 | 制限付きの集計 | Type=Event &#124; measure count() by Computer &#124; top 10 | Event &#124; summarize AggregatedValue = count() by Computer &#124; limit 10 |

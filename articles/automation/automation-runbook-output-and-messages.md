@@ -8,18 +8,18 @@ ms.author: gwallace
 ms.date: 03/16/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: a02ea2854de7ff32a8c50ff2e6f317596fb4aa1b
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: d4b8d485906701b4f05e057996bc31232a29e620
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
 
 以下の表に、公開された Runbook の実行時と [Runbook のテスト](automation-testing-runbook.md)時の両方の場合の、Azure Portal での各ストリームとその動作の簡単な説明を示します。 各ストリームの詳細については、後続のセクションで説明します。
 
-| ストリーム | 説明 | 公開先 | テスト |
+| ストリーム | [説明] | 公開先 | テスト |
 |:--- |:--- |:--- |:--- |
 | 出力 |他の Runbook によって使用されることを目的とするオブジェクト。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
 | 警告 |ユーザー向けの警告メッセージ。 |ジョブ履歴に書き込まれます。 |[テスト出力] ウィンドウに表示されます。 |
@@ -93,7 +93,7 @@ Runbook を発行したら、それを開始する前に、詳細ストリーム
 
 次の例には、この機能を説明するために 2 つのグラフィカル Runbook があります。 モジュール式の Runbook デザイン モデルを適用する場合は、"*認証 Runbook テンプレート*" として機能する 1 つの Runbook で、実行アカウントを使用した Azure での認証を管理します。 通常は特定のシナリオを自動化するためのコア ロジックを実行する 2 つ目の Runbook は、ここでは " *認証 Runbook テンプレート* " を実行し、結果を **[テスト]** 出力ウィンドウに表示します。 通常の状況では、この Runbook で子 Runbook からの出力を利用して、リソースに対する操作を行います。    
 
-**AuthenticateTo-Azure** Runbook の基本的なロジックは、次のとおりです。<br> ![Runbook テンプレートの認証の例](media/automation-runbook-output-and-messages/runbook-authentication-template.png)  
+**AuthenticateTo-Azure** Runbook の基本的なロジックは、次のとおりです。<br> ![Authenticate Runbook Template Example](media/automation-runbook-output-and-messages/runbook-authentication-template.png)時の両方の場合の、Azure 管理ポータルでの各ストリームとその動作の簡単な説明を示します。  
 
 出力の種類は *Microsoft.Azure.Commands.Profile.Models.PSAzureContext* で、認証プロファイルのプロパティが返されます。<br> ![Runbook Output Type Example](media/automation-runbook-output-and-messages/runbook-input-and-output-add-blade.png) 
 
@@ -204,8 +204,8 @@ Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microso
    
    ![グラフィカル作成の[ログ記録とトレース] ブレード](media/automation-runbook-output-and-messages/logging-and-tracing-settings-blade.png)
 
-### <a name="microsoft-operations-management-suite-oms-log-analytics"></a>Microsoft Operations Management Suite (OMS) Log Analytics
-Automation からは、Runbook ジョブの状態とジョブ ストリームを Microsoft Operations Management Suite (OMS) Log Analytics ワークスペースに送信できます。 Log Analytics では、次のことが可能です。
+### <a name="microsoft-azure-log-analytics"></a>Microsoft Azure Log Analytics
+Automation からは、Runbook ジョブの状態とジョブ ストリームを Log Analytics ワークスペースに送信できます。 Log Analytics では、次のことが可能です。
 
 * Automation ジョブに関する情報を得る 
 * Runbook ジョブの状態 (失敗、中断など) に基づいて電子メールまたはアラートをトリガーする 
@@ -213,7 +213,7 @@ Automation からは、Runbook ジョブの状態とジョブ ストリームを
 * Automation アカウントをまたいでジョブどうしを関連付ける 
 * ジョブの履歴を時系列で視覚化する    
 
-Log Analytics との統合を構成して、ジョブ データを収集、操作したり、関連付けたりする方法の詳細については、「[Automation から Log Analytics (OMS) へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
+Log Analytics との統合を構成して、ジョブ データを収集、操作、および関連付けする方法の詳細については、「[Automation から Log Analytics へのジョブの状態とジョブ ストリームの転送](automation-manage-send-joblogs-log-analytics.md)」を参照してください。
 
 ## <a name="next-steps"></a>次の手順
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)

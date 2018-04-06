@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage のデータ レプリケーション | Microsoft Docs"
-description: "Microsoft Azure Storage アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされます。 レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。"
+title: Azure Storage のデータ レプリケーション | Microsoft Docs
+description: Microsoft Azure Storage アカウント内のデータは、持続性と高可用性を保証するため、レプリケートされます。 レプリケーション オプションには、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、geo 冗長ストレージ (GRS)、読み取りアクセス geo 冗長ストレージ (RA-GRS) などがあります。
 services: storage
 author: tamram
 manager: jeconnoc
@@ -9,11 +9,11 @@ ms.workload: storage
 ms.topic: article
 ms.date: 01/21/2018
 ms.author: tamram
-ms.openlocfilehash: 18d0e8bc6cc1559f9ae1a1a4457aa85d2a206597
-ms.sourcegitcommit: ded74961ef7d1df2ef8ffbcd13eeea0f4aaa3219
+ms.openlocfilehash: 600b66af3b7da24c5a40d09d5cdf76f2d5be67ac
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/29/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
 
@@ -30,13 +30,13 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 * [geo 冗長ストレージ (GRS)](#geo-redundant-storage)
 * [読み取りアクセス geo 冗長ストレージ (RA-GRS)](#read-access-geo-redundant-storage)
 
-読み取りアクセス geo 冗長ストレージ (RA-GRS) は、ストレージ アカウントを作成するときの既定のオプションです。
+ローカル冗長ストレージ (LRS) は、ストレージ アカウントを作成するときの既定のオプションです。
 
 次の表に、LRS、ZRS、GRS、RA-GRS の違いについて簡単な概要を示します。 この記事の後に続くセクションでは、各種のレプリケーションについて詳細に説明します。
 
 | レプリケーションの方法 | LRS | ZRS | GRS | RA-GRS |
 |:--- |:--- |:--- |:--- |:--- |
-| 複数のデータセンター間でのデータのレプリケート |いいえ  |可能  |[はい] |[はい] |
+| 複数のデータセンター間でのデータのレプリケート |いいえ  |可能  |はい |[はい] |
 | 1 次拠点に加えて 2 次拠点からもデータの読み取り可能 |いいえ  |いいえ  |いいえ  |[はい] |
 | 1 年にわたってオブジェクトの持続性を提供するように設計 |99.999999999% (イレブン ナイン) 以上|99.9999999999% (トゥエルブ ナイン) 以上|99.99999999999999% (シックスティーン ナイン) 以上|99.99999999999999% (シックスティーン ナイン) 以上|
 

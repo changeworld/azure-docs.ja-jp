@@ -8,11 +8,11 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 03/05/2018
 ms.author: asgang
-ms.openlocfilehash: 17cd6a931563c7d33576749453d742aca253526b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 48d84f59a80ea14c2b40821d886fc410c7e3f2c3
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="enable-replication-to-azure-for-vmware-vms"></a>Azure への VMware VM のレプリケーションを有効にする
 
@@ -112,15 +112,15 @@ VMware 仮想マシンをレプリケートする場合:
     たとえば、ソース マシンに 2 つのネットワーク アダプターがあり、ターゲット マシンのサイズでは 4 つまでサポートされている場合、ターゲット マシンのアダプターの数は、2 つになります。 ソース マシンに 2 つのアダプターがあり、サポートされているターゲット サイズでは 1 つしかサポートされていない場合、ターゲット マシンのアダプターは 1 つだけです。
     - 仮想マシンにネットワーク アダプターが複数ある場合、これらのアダプターはすべて同じネットワークに接続されます。 また、一覧で最初に表示されるアダプターが、Azure 仮想マシンの "*既定*" のネットワーク アダプターとなります。
 
-### <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
+### <a name="azure-hybrid-benefit"></a>Azure ハイブリッド特典
 
-マイクロソフト ソフトウェア アシュランスのお客様は、Azure ハイブリッド使用特典を使用して、Azure に移行する Windows Server マシンのライセンス コストを節約したり、Azure をディザスター リカバリーに使用したりできます。 Azure ハイブリッド使用特典の利用資格がある場合は、フェールオーバー発生時に Azure Site Recovery によって作成される仮想マシンに、この特典が割り当てられるように指定できます。 これを行うには、次の手順を実行します。
+マイクロソフト ソフトウェア アシュランスのお客様は、Azure ハイブリッド特典を使用して、Azure に移行する Windows Server マシンのライセンス コストを節約したり、Azure をディザスター リカバリーに使用したりできます。 Azure ハイブリッド特典の利用資格がある場合は、フェールオーバー発生時に Azure Site Recovery によって作成される仮想マシンに、この特典が割り当てられるように指定できます。 これを行うには、次の手順を実行します。
 - レプリケートされた仮想マシンの [コンピューティングとネットワーク] のプロパティ セクションに移動します。
-- Azure ハイブリッド使用特典の利用資格がある Windows Server ライセンスを持っているかどうかの質問に答えます。
-- チェック ボックスをオンにして、フェールオーバー発生時に作成されるマシンで、ハイブリッド使用特典を適用するために使用できる、対象のソフトウェア アシュランス付き Windows Server ライセンスを持っていることを確認します。
+- Azure ハイブリッド特典の利用資格がある Windows Server ライセンスを持っているかどうかの質問に答えます。
+- チェック ボックスをオンにして、フェールオーバー発生時に作成されるマシンで、Azure ハイブリッド特典を適用するために使用できる、対象のソフトウェア アシュランス付き Windows Server ライセンスを持っていることを確認します。
 - レプリケートされたマシンの設定を保存します。
 
-詳細については、[Azure ハイブリッド使用特典](https://aka.ms/azure-hybrid-use-benefit-pricing)に関するページをご覧ください。
+Azure ハイブリッド特典の詳細については[こちら](https://aka.ms/azure-hybrid-benefit-pricing)をご覧ください。
 
 ## <a name="common-issues"></a>一般的な問題
 

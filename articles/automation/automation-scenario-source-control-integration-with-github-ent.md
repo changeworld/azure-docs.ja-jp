@@ -1,24 +1,18 @@
 ---
-title: "Azure Automation ソース管理と GitHub Enterprise の統合 | Microsoft Docs"
-description: "GitHub Enterprise との統合を構成して Automation Runbook のソース管理を実現する方法の詳細について説明します。"
+title: Azure Automation ソース管理と GitHub Enterprise の統合
+description: GitHub Enterprise との統合を構成して Automation Runbook のソース管理を実現する方法の詳細について説明します。
 services: automation
-documentationCenter: 
-authors: georgewallace
-manager: jwhit
-editor: 
-ms.assetid: e01d817c-7d38-421c-adf5-647a4b526eb4
 ms.service: automation
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: na
+author: georgewallace
+ms.author: gwallace
+ms.date: 03/16/2018
 ms.topic: article
-ms.date: 07/26/2017
-ms.author: magoedte
-ms.openlocfilehash: 2944b62cb3dc6146573041533d56d45b6cc87f18
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+manager: carmonm
+ms.openlocfilehash: eab61daafe7ef8b5ca2fc1416dc7c04f97b8c671
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure Automation のシナリオ - Automation ソース管理と GitHub Enterprise の統合
 
@@ -52,10 +46,10 @@ GitHRWCredential | ハイブリッド worker へのアクセス許可を持つ�
 
 1. Sync-LocalGitFolderToAutomationAccount Runbook で、[Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)を使って認証します。 
 
-2. Azure Automation ソリューションが有効化および構成された Microsoft Operations Management Suite (OMS) ワークスペースも必要です。 このシナリオのインストールと構成に使用する Automation アカウントに関連付けられた OMS ワークスペースがない場合は、Hybrid Runbook Worker から **New-OnPremiseHybridWorker.ps1** スクリプトを実行するとこのワークスペースが自動で作成および構成されます。        
+2. Azure Automation ソリューションが有効化および構成された Log Analytics ワークスペースも必要です。 このシナリオのインストールと構成に使用する Automation アカウントに関連付けられた OMS ワークスペースがない場合は、Hybrid Runbook Worker から **New-OnPremiseHybridWorker.ps1** スクリプトを実行するとこのワークスペースが自動で作成および構成されます。        
 
     > [!NOTE]
-    > Automation と OMS との統合は、現在、**オーストラリア南東部**、**米国東部 2**、**東南アジア**、**西ヨーロッパ**のリージョンでのみサポートされています。 
+    > Automation と Log Analytics との統合は、現在、**オーストラリア南東部**、**米国東部 2**、**東南アジア**、**西ヨーロッパ**のリージョンでのみサポートされています。 
 
 3. 専用の Hybrid Runbook Worker として機能するコンピューター。このコンピューターでは GitHub ソフトウェアをホストし、Runbook ファイル (*runbook*.ps1) をファイル システム上のソース ディレクトリに保持して、GitHub と Automation アカウント間で同期します。
 

@@ -1,11 +1,11 @@
 ---
-title: "Visual Studio を使用した Azure App Service のトラブルシューティング"
-description: "Visual Studio 2013 に組み込まれているリモート デバッグ、トレース、ログ記録のツールを使用して、Azure の Web アプリケーションのトラブルシューティングを行う方法について説明します。"
+title: Visual Studio を使用した Azure App Service のトラブルシューティング
+description: Visual Studio 2013 に組み込まれているリモート デバッグ、トレース、ログ記録のツールを使用して、Azure の Web アプリケーションのトラブルシューティングを行う方法について説明します。
 services: app-service
 documentationcenter: .net
 author: cephalin
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: def8e481-7803-4371-aa55-64025d116c97
 ms.service: app-service
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: cephalin
-ms.openlocfilehash: 6b1d5694c4d80a4db584b0c76a044dd596c5d553
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 7973f4311095b7c87ccd2394b048ec92c50f32a9
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="troubleshoot-a-web-app-in-azure-app-service-using-visual-studio"></a>Visual Studio を使用した Azure App Service のトラブルシューティング
 ## <a name="overview"></a>概要
@@ -125,12 +125,14 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 
 3. `About()` メソッドを削除し、その位置に次のコードを挿入します。
 
-        public ActionResult About()
-        {
-            string currentTime = DateTime.Now.ToLongTimeString();
-            ViewBag.Message = "The current time is " + currentTime;
-            return View();
-        }
+``` c#
+public ActionResult About()
+{
+    string currentTime = DateTime.Now.ToLongTimeString();
+    ViewBag.Message = "The current time is " + currentTime;
+    return View();
+}
+```
 4. `ViewBag.Message` の行に[ブレークポイントを設定](http://www.visualstudio.com/get-started/debug-your-app-vs.aspx)します。
 
 5. **ソリューション エクスプローラー**で目的のプロジェクトを右クリックし、**[発行]** をクリックします。
@@ -241,10 +243,12 @@ Web.config ファイルを編集することは、Azure Web アプリケーシ�
 * デバッグ中は、サーバーから Visual Studio にデータが送信されるため、帯域幅の使用料に影響が及ぶ可能性があります。 帯域幅使用料については、 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)を参照してください。
 * *Web.config* ファイルの `compilation` 要素の `debug` 属性が true に設定されていることを確認します。 デバッグ ビルド構成で発行するときは、true が既定値です。
 
-        <system.web>
-          <compilation debug="true" targetFramework="4.5" />
-          <httpRuntime targetFramework="4.5" />
-        </system.web>
+``` xml
+<system.web>
+  <compilation debug="true" targetFramework="4.5" />
+  <httpRuntime targetFramework="4.5" />
+</system.web>
+```
 * デバッグ対象となるコードにデバッガーがステップ インしない場合、[マイ コードのみ] の設定を変更してみてください。  詳細については、「 [ステップ実行をマイ コードのみに制限する](http://msdn.microsoft.com/library/vstudio/y740d9d3.aspx#BKMK_Restrict_stepping_to_Just_My_Code)」を参照してください。
 * リモート デバッグ機能を有効にしたときに、サーバー上でタイマーが開始され、48 時間後にこの機能が自動的に無効になります。 この 48 時間の上限はセキュリティとパフォーマンス上の理由で設定されています。 必要に応じて、この機能を何回でも簡単に有効に戻すことができます。 積極的にデバッグを実行している場合以外は、この機能を無効にしたままにすることをお勧めします。
 * 手動でデバッガーを Web アプリケーション プロセス (w3wp.exe) だけでなく、任意のプロセスに接続できます。 Visual Studio のデバッグ モードの使い方の詳細については、MSDN のトピック「 [Visual Studio でのデバッグ](http://msdn.microsoft.com/library/vstudio/sc65sadd.aspx)」を参照してください。
@@ -277,32 +281,35 @@ Web ジョブでアプリケーション ログを作成する方法について
 ### <a name="add-tracing-statements-to-the-application"></a>アプリケーションへのトレース ステートメントの追加
 1. `System.Diagnostics` の `Trace` ステートメントと `using` ステートメントを追加するために、*Controllers\HomeController.cs* を開き、`Index`、`About`、`Contact` のメソッドを次のコードで置き換えます。
 
-        public ActionResult Index()
-        {
-            Trace.WriteLine("Entering Index method");
-            ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
-            Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
-            Trace.WriteLine("Leaving Index method");
-            return View();
-        }
+```c#
+public ActionResult Index()
+{
+    Trace.WriteLine("Entering Index method");
+    ViewBag.Message = "Modify this template to jump-start your ASP.NET MVC application.";
+    Trace.TraceInformation("Displaying the Index page at " + DateTime.Now.ToLongTimeString());
+    Trace.WriteLine("Leaving Index method");
+    return View();
+}
 
-        public ActionResult About()
-        {
-            Trace.WriteLine("Entering About method");
-            ViewBag.Message = "Your app description page.";
-            Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
-            Trace.WriteLine("Leaving About method");
-            return View();
-        }
+public ActionResult About()
+{
+    Trace.WriteLine("Entering About method");
+    ViewBag.Message = "Your app description page.";
+    Trace.TraceWarning("Transient error on the About page at " + DateTime.Now.ToShortTimeString());
+    Trace.WriteLine("Leaving About method");
+    return View();
+}
 
-        public ActionResult Contact()
-        {
-            Trace.WriteLine("Entering Contact method");
-            ViewBag.Message = "Your contact page.";
-            Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
-            Trace.WriteLine("Leaving Contact method");
-            return View();
-        }        
+public ActionResult Contact()
+{
+    Trace.WriteLine("Entering Contact method");
+    ViewBag.Message = "Your contact page.";
+    Trace.TraceError("Fatal error on the Contact page at " + DateTime.Now.ToLongTimeString());
+    Trace.WriteLine("Leaving Contact method");
+    return View();
+}        
+```
+
 2. `using System.Diagnostics;` ステートメントをファイルの先頭に追加します。
 
 ### <a name="view-the-tracing-output-locally"></a>ローカルでのトレース出力の表示
@@ -315,25 +322,30 @@ Web ジョブでアプリケーション ログを作成する方法について
     以降の手順では、コンパイルせずにデバッグ モードで、トレース出力を Web ページに表示する方法を紹介します。
 2. プロジェクト フォルダーにあるアプリケーションの Web.config ファイルを開き、ファイル末尾の終了 `</configuration>` 要素の直前に `<system.diagnostics>` 要素を追加します。
 
-          <system.diagnostics>
-            <trace>
-              <listeners>
-                <add name="WebPageTraceListener"
-                    type="System.Web.WebPageTraceListener,
-                    System.Web,
-                    Version=4.0.0.0,
-                    Culture=neutral,
-                    PublicKeyToken=b03f5f7f11d50a3a" />
-              </listeners>
-            </trace>
-          </system.diagnostics>
+``` xml
+<system.diagnostics>
+<trace>
+  <listeners>
+    <add name="WebPageTraceListener"
+        type="System.Web.WebPageTraceListener,
+        System.Web,
+        Version=4.0.0.0,
+        Culture=neutral,
+        PublicKeyToken=b03f5f7f11d50a3a" />
+  </listeners>
+</trace>
+</system.diagnostics>
+```
 
-    `WebPageTraceListener` を使用すると、ブラウザーから `/trace.axd` にアクセスすることでトレース出力を表示できます。
+`WebPageTraceListener` を使用すると、ブラウザーから `/trace.axd` にアクセスすることでトレース出力を表示できます。
 3. Web.config ファイルの `<system.web>` に、次のような <a href="http://msdn.microsoft.com/library/vstudio/6915t83k(v=vs.100).aspx">trace 要素</a>を追加します。
 
-        <trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+``` xml
+<trace enabled="true" writeToDiagnosticsTrace="true" mostRecent="true" pageOutput="false" />
+```       
+
 4. Ctrl キーを押しながら F5 キーを押してアプリケーションを実行します。
-5. ブラウザー ウィンドウのアドレス バーで、URL に続けて「*trace.axd*」と入力し、Enter キーを押します (例: http://localhost:53370/trace.axd)。
+5. ブラウザー ウィンドウのアドレス バーで、URL に続けて「*trace.axd*」と入力し、Enter キーを押します (例: http://localhost:53370/trace.axd))。
 6. **[アプリケーション トレース]** ページの最初の行 (BrowserLink の行とは異なる) で、**[詳細の表示]** をクリックします。
 
     ![trace.axd](./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png)
@@ -646,15 +658,18 @@ ASP.NET トレースに関しては、最新かつ必要な情報をすべて網
 * [ASP.NET MVC Razor ビューでのトレース](http://blogs.msdn.com/b/webdev/archive/2013/07/16/tracing-in-asp-net-mvc-razor-views.aspx)<br/>
   Razor ビューでのトレースに加え、MVC アプリケーションでハンドルされない例外をすべてログに記録するためのエラー フィルターの作成方法についても説明されています。 Web フォーム アプリケーションで、ハンドルされない例外をすべてログに記録する方法については、MSDN の「[エラー ハンドラーの完全なコード例](http://msdn.microsoft.com/library/bb397417.aspx)」で紹介されている Global.asax サンプルを参照してください。 MVC または Web フォームで、特定の例外をログに記録すると共に、既定のフレームワークの処理はそのまま活かしておく必要がある場合、例外を捕捉してから再スローする方法を利用できます。その例を次に示します。
 
-        try
-        {
-           // Your code that might cause an exception to be thrown.
-        }
-        catch (Exception ex)
-        {
-            Trace.TraceError("Exception: " + ex.ToString());
-            throw;
-        }
+``` c#
+try
+{
+   // Your code that might cause an exception to be thrown.
+}
+catch (Exception ex)
+{
+    Trace.TraceError("Exception: " + ex.ToString());
+    throw;
+}
+```
+
 * [Azure コマンド ラインからの診断トレース ログのストリーミングと Glimpse に関する情報](http://www.hanselman.com/blog/StreamingDiagnosticsTraceLoggingFromTheAzureCommandLinePlusGlimpse.aspx)<br/>
   このチュートリアルで Visual Studio を使って行ったことをコマンド ラインで行う方法が解説されています。 [Glimpse](http://www.hanselman.com/blog/IfYoureNotUsingGlimpseWithASPNETForDebuggingAndProfilingYoureMissingOut.aspx) は、ASP.NET アプリケーションをデバッグするためのツールです。
 * [Web Apps のログと診断の使用に関するページ - David Ebbo 作成](/documentation/videos/azure-web-site-logging-and-diagnostics/)、および [Web Apps からのログのストリーミングに関するページ - David Ebbo 作成](/documentation/videos/log-streaming-with-azure-web-sites/)<br>

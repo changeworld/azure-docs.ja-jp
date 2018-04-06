@@ -3,17 +3,17 @@ title: Azure SQL Database のテンポラル テーブルの概要 | Microsoft D
 description: Azure SQL Database のテンポラル テーブルの使い方について基本的な事柄を説明します。
 services: sql-database
 author: bonova
+ms.date: 03/21/2018
 manager: craigg
 ms.service: sql-database
 ms.custom: develop databases
 ms.topic: article
-ms.date: 01/10/2017
 ms.author: bonova
-ms.openlocfilehash: 8e76d78e402d2cdc58ca26767c55c413f83226d9
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 0299d52396549baf8ea7e5eb7145585c7b5900a6
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL Database のテンポラル テーブルの概要
 テンポラル テーブルは、Azure SQL Database の新しいプログラミング機能です。テンポラル テーブルを使用することで、データに対する詳細な変更履歴を追跡、分析することができ、独自にコーディングする必要がありません。 テンポラル テーブルは、保存されている情報が特定の期間に限り有効と解釈されるように、データを常に時間のコンテキストと密接に関連付けます。 テンポラル テーブルが持つこの特性によって、時間に基づいた効率的な分析が可能となり、データの経時的変化に隠れた本質を見極めることができます。
@@ -64,7 +64,7 @@ CREATE TABLE WebsiteUserInfo
 しかしここで扱うのは特殊なケースであり、もっと長期的なデータ履歴と大きなデータ セットで、時間に基づいた傾向分析を行うのが目的です。履歴テーブルのストレージには、クラスター化 columnstore インデックスを選択します。 クラスター化 columnstore が持つきわめて優れた圧縮とパフォーマンスを分析クエリで活かすことができます。 テンポラル テーブルに対するインデックスは、現在のテーブルに対するインデックスと完全に分けて構成できるようになっています。 
 
 > [!NOTE]
-> Columnstore インデックスは、Premium サービス プランでのみ利用できます。
+> 列ストア インデックスは、Premium レベルと Standard レベル、S3 以上で使用できます。
 >
 
 次のスクリプトは、履歴テーブルの既定のインデックスをクラスター化 columnstore に変更する方法を示したものです。

@@ -1,8 +1,8 @@
 ---
-title: "Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用 | Microsoft Docs"
-description: "Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用方法について説明します。 "
+title: Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用 | Microsoft Docs
+description: 'Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用方法について説明します。 '
 services: data-lake-analytics
-documentationcenter: 
+documentationcenter: ''
 author: mumian
 manager: jhubbard
 editor: cgronlun
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/02/2017
 ms.author: jgao
-ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc9048566dd58733cd86aac0f9836763fa095843
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用
 Azure Data Lake Analytics サービスは、送信されたジョブを[クエリ ストア](#query-store)にアーカイブします。 この記事では、Azure Data Lake Tools for Visual Studio のジョブ ブラウザーとジョブ ビューを使用して過去のジョブ情報を検索する方法について説明します。 
@@ -49,7 +49,7 @@ Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data La
       ![Azure Data Lake Analytics ジョブのフェーズを示す状態](./media/data-lake-analytics-data-lake-tools-view-jobs/data-lake-tools-job-phases.png)
     
     * [準備中]: スクリプトをクラウドにアップロードし、コンパイル サービスを使用してスクリプトのコンパイルと最適化を行っています。
-    * [キューに挿入済み]: 十分なリソースが確保されまで待機しているか、ジョブの数がアカウントあたりの最大同時実行可能ジョブ数の制限を超過しているときに、ジョブはキューに挿入されます。 優先度の設定により、キューに挿入されたジョブのシーケンスが決まります。数値が小さいほど、優先度は高くなります。
+    * [キューに挿入済み]: 十分なリソースが確保されるまで待機しているか、ジョブの数がアカウントあたりの最大同時実行可能ジョブ数の制限を超過しているときに、ジョブはキューに挿入されます。 優先度の設定により、キューに挿入されたジョブのシーケンスが決まります。数値が小さいほど、優先度は高くなります。
     * [実行中]: ジョブが実際に Data Lake Analytics アカウントで実行されています。
     * [終了処理中]: ジョブが完了しています (たとえば、ファイルの終了処理を行っています)。
       
@@ -171,7 +171,7 @@ Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data La
   
     頂点実行の詳細が示されます。 ジョブ プロファイルは、読み取られたデータおよび書き込まれたデータの合計、実行時間、状態など、各頂点実行ログをアーカイブします。このビューを使用すると、ジョブの実行の詳細を確認できます。 詳細については、「[Data Lake Tools for Visual Studio での頂点実行ビューの使用](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)」を参照してください。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * 診断情報のログについては、「 [Accessing diagnostics logs for Azure Data Lake Analytics (Azure Data Lake Analytics の診断ログへのアクセス)](data-lake-analytics-diagnostic-logs.md)
 * より複雑なクエリを表示する場合は、「 [チュートリアル: Azure Data Lake Analytics を使用して Web サイトのログを分析する](data-lake-analytics-analyze-weblogs.md)」をご覧ください。
 * 頂点実行ビューの使用方法については、「[Use the Vertex Execution View in Data Lake Tools for Visual Studio (Data Lake Tools for Visual Studio での頂点実行ビューの使用)](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)」を参照してください。

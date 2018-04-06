@@ -1,12 +1,12 @@
 ---
-title: "スケジュールされたクリーンアップ タスクを Azure Functions で実行する | Microsoft Docs"
-description: "Azure Functions を使用して、Azure SQL Database に接続し、定期的に行をクリーンアップするタスクをスケジュールします。"
+title: スケジュールされたクリーンアップ タスクを Azure Functions で実行する | Microsoft Docs
+description: Azure Functions を使用して、Azure SQL Database に接続し、定期的に行をクリーンアップするタスクをスケジュールします。
 services: functions
 documentationcenter: na
 author: ggailey777
 manager: cfowler
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 076f5f95-f8d2-42c7-b7fd-6798856ba0bb
 ms.service: functions
 ms.devlang: multiple
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: glenga
-ms.openlocfilehash: 9d8261a22f5ea9ce61bcdc79d24a6c054597039b
-ms.sourcegitcommit: cfd1ea99922329b3d5fab26b71ca2882df33f6c2
+ms.openlocfilehash: 2947fc6da0c4559e81cf97255b8375b020e0b657
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/30/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-functions-to-connect-to-an-azure-sql-database"></a>Azure Functions を使用して Azure SQL Database に接続する
-このトピックでは、Azure Functions を使用して Azure SQL Database のテーブルの行をクリーンアップするスケジュール済みジョブを作成する方法を示します。 この新しい C# 関数は、Azure ポータルの定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
+このトピックでは、Azure Functions を使用して Azure SQL Database のテーブルの行をクリーンアップするスケジュール済みジョブを作成する方法を示します。 この新しい C# スクリプト関数は、Azure Portal の定義済みタイマー トリガー テンプレートに基づいて作成されます。 このシナリオを実現するには、別途データベースの接続文字列を関数アプリのアプリ設定として設定する作業が必要となります。 このシナリオではデータベースに対する一括操作を使用しています。 
 
 Mobile Apps のテーブルにおける、作成、読み取り、更新、および削除 (CRUD) のそれぞれの操作を関数で処理する場合は、[Mobile Apps バインド](functions-bindings-mobile-apps.md)を使用する必要があります。
 
@@ -36,17 +36,17 @@ Mobile Apps のテーブルにおける、作成、読み取り、更新、お�
 
 「[Azure Portal で Azure SQL データベースを作成する](../sql-database/sql-database-get-started-portal.md)」を完了したときに作成したデータベースの接続文字列を取得する必要があります。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
  
 3. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。
 
-4. **[データベース接続文字列の表示]** を選択し、完全な **ADO.NET** の接続文字列をコピーします。
+4. **[データベース接続文字列の表示]** を選択し、完全な **ADO.NET** の接続文字列をコピーします。 
 
     ![ADO.NET の接続文字列をコピーします。](./media/functions-scenario-database-table-cleanup/adonet-connection-string.png)
 
 ## <a name="set-the-connection-string"></a>接続文字列の設定 
 
-関数アプリは Azure での関数の実行をホストします。 接続文字列をはじめとするシークレットは、関数アプリの設定に保存することをお勧めします。 アプリケーション設定を使用して、コードによって誤って接続文字列が公開されることを防ぎます。 
+Function App は、Azure での関数の実行をホストします。 接続文字列をはじめとするシークレットは、関数アプリの設定に保存することをお勧めします。 アプリケーション設定を使用して、コードによって誤って接続文字列が公開されることを防ぎます。 
 
 1. 「[Azure でタイマーによってトリガーされる関数を作成する](functions-create-scheduled-function.md)」で作成した関数アプリに移動します。
 
@@ -62,7 +62,7 @@ Mobile Apps のテーブルにおける、作成、読み取り、更新、お�
     | ------------ | ------------------ | --------------------- | 
     | **名前**  |  sqldb_connection  | 関数コードで保存されている接続文字列にアクセスするために使用します。    |
     | **値** | コピーされた文字列  | 前のセクションでコピーした接続文字列を貼り付け、`{your_username}` および `{your_password}` プレースホルダーを実際の値で置き換えます。 |
-    | **型** | SQL Database | 既定の SQL Database 接続を使用します。 |   
+    | **種類** | SQL Database | 既定の SQL Database 接続を使用します。 |   
 
 3. **[Save]** をクリックします。
 
@@ -70,14 +70,16 @@ Mobile Apps のテーブルにおける、作成、読み取り、更新、お�
 
 ## <a name="update-your-function-code"></a>関数コードの更新
 
-1. 関数アプリで、タイマーによってトリガーされる関数を選択します。
+1. ポータルの関数アプリで、タイマーによってトリガーされる関数を選択します。
  
-3. 既存の関数コードの一番上に次のアセンブリ参照を追加します。
+3. 既存の C# スクリプト関数コードの一番上に次のアセンブリ参照を追加します。
 
     ```cs
     #r "System.Configuration"
     #r "System.Data"
     ```
+    >[!NOTE]
+    >これらの例のコードは、ポータルの C# スクリプトです。 プリコンパイル済み C# 関数をローカルで開発する場合は、代わりにローカル プロジェクトでこれらのアセンブリへの参照を追加する必要があります。  
 
 3. 次の `using` ステートメントを関数に追加します。
     ```cs
@@ -113,7 +115,7 @@ Mobile Apps のテーブルにおける、作成、読み取り、更新、お�
 
     ![関数のログを表示します。](./media/functions-scenario-database-table-cleanup/functions-logs.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 次に、Logic Apps で Functions を使用して、その他のサービスと統合する方法を説明します。
 

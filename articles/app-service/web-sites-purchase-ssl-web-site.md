@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/01/2017
 ms.author: apurvajo;cephalin
-ms.openlocfilehash: 6c0125bf0bd22912a21372b5a7da6846e924e6cd
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 759bd1e8be8aaebbf98e1c02d67f3e56609354aa
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
@@ -42,8 +42,8 @@ SSL 証明書のフレンドリ**名**と**ドメイン名**を入力します
 
 **サブスクリプション**、**リソース グループ**、および**証明書の SKU** を選択します
 
-> [!WARNING]
-> App Service 証明書は、同じサブスクリプション内の他の App Services でのみ使用できます。  
+> [!TIP]
+> App Service 証明書はあらゆる Azure Service と Azure ではないサービスで利用できます。App Service に限定されません。 そのためには、任意の場所で利用できるように、App Service 証明書のローカル PFX コピーを作成する必要があります。 詳細については、[App Service 証明書のローカル PFX コピーの作成](https://blogs.msdn.microsoft.com/appserviceteam/2017/02/24/creating-a-local-pfx-copy-of-app-service-certificate/)に関する記事を参照してください。
 >
 
 ## <a name="step-3---store-the-certificate-in-azure-key-vault"></a>手順 3 - 証明書を Azure Key Vault に保存する

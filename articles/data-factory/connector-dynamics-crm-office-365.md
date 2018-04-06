@@ -1,25 +1,25 @@
 ---
-title: Azure Data Factory を使用して Dynamics CRM または Dynamics 365 をコピー元またはコピー先としてデータをコピーする | Microsoft Docs
-description: Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
+title: Azure Data Factory を使用して Dynamics CRM または Dynamics 365 (Common Data Service) をコピー元またはコピー先としてデータをコピーする | Microsoft Docs
+description: Data Factory パイプラインでコピー アクティビティを使用して、Microsoft Dynamics CRM または Microsoft Dynamics 365 (Common Data Service) からサポートされているシンク データ ストアに、またはサポートされているソース データ ストアから Dynamics CRM または Dynamics 365 にデータをコピーする方法について説明します。
 services: data-factory
 documentationcenter: ''
 author: linda33wj
-manager: jhubbard
-editor: spelluru
+manager: craigg
+ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2018
+ms.date: 03/16/2018
 ms.author: jingwang
-ms.openlocfilehash: dc0b01e23ebb2695fd0365f054b3cacd2573f3c6
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: ea69fdab9ec510f6060b280db3afffb7533a4bda
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
-# <a name="copy-data-from-and-to-dynamics-365-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics CRM または Dynamics 365 をコピー元またはコピー先としてデータをコピーする
+# <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Azure Data Factory を使用して Dynamics 365 (Common Data Service) または Dynamics CRM をコピー元またはコピー先としてデータをコピーする
 
 この記事では、Azure Data Factory のコピー アクティビティを使用して、Microsoft Dynamics 365 または Microsoft Dynamics CRM をコピー元またはコピー先としてデータをコピーする方法について説明します。 この記事は、コピー アクティビティの概要を示している[コピー アクティビティの概要](copy-activity-overview.md)に関する記事に基づいています。
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 03/16/2018
 
 ## <a name="supported-capabilities"></a>サポートされる機能
 
-Dynamics 365 または Dynamics CRM から、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
+Dynamics 365 (Common Data Service) または Dynamics CRM から、サポートされている任意のシンク データ ストアにデータをコピーできます。 サポートされている任意のソース データ ストアから Dynamics 365 (Common Data Service) または Dynamics CRM にデータをコピーすることもできます。 コピー アクティビティによってソースまたはシンクとしてサポートされているデータ ストアの一覧については、[サポートされているデータ ストア](copy-activity-overview.md#supported-data-stores-and-formats)に関するページの表をご覧ください。
 
 この Dynamics コネクタは、次の Dynamics のバージョンと認証の種類をサポートします  (IFD は Internet Facing Deployment の省略形です)。
 
@@ -72,7 +72,7 @@ Dynamics のリンクされたサービスでは、次のプロパティがサ�
 >[!IMPORTANT]
 >Dynamics にデータをコピーする場合は、既定の Azure Integration Runtime を使用してコピーを実行することはできません。 言い換えると、ソースのリンクされたサービスに指定された統合ランタイムがない場合は、Dynamics インスタンスに近い場所に明示的に [Azure Integration Runtime を作成](create-azure-integration-runtime.md#create-azure-ir)します。 次の例のように、Dynamics のリンクされたサービスに関連付けます。
 
-**例: Office 365 の認証をを使用する Dynamics Online**
+**例: Office 365 の認証を使用する Dynamics Online**
 
 ```json
 {
@@ -158,7 +158,7 @@ Dynamics をコピー元またはコピー先としてデータをコピーす�
 
 > [!IMPORTANT]
 >- Dynamics からデータをコピーする場合は、Dynamics データセットに "structure" セクションが必要です。 それは、コピーする Dynamics のデータの列名とデータ型を定義します。 詳細については、「[データセット構造](concepts-datasets-linked-services.md#dataset-structure)」と「[Dynamics のデータ型のマッピング](#data-type-mapping-for-dynamics)」を参照してください。
->- Dynamics にデータをコピーする場合、Dynamics データセットの "structure" セクションは省略可能です。 コピー先の列は、ソース データ スキーマによって決定されます。 ソースがヘッダーのない CSV ファイルの場合、入力データセットに列名とデータ型を "structure" で指定します。 それらは、1 つづつ順番に CSV ファイルのフィールドにマップされます。
+>- Dynamics にデータをコピーする場合、Dynamics データセットの "structure" セクションは省略可能です。 コピー先の列は、ソース データ スキーマによって決定されます。 ソースがヘッダーのない CSV ファイルの場合、入力データセットに列名とデータ型を "structure" で指定します。 それらは、1 つずつ順番に CSV ファイルのフィールドにマップされます。
 
 **例:**
 

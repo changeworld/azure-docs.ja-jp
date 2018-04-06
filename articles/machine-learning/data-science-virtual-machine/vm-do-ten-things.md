@@ -3,7 +3,7 @@ title: Azure のデータ サイエンス仮想マシンでできる 10 のこ�
 description: データの探索とモデリングに伴うさまざまな作業をデータ サイエンス仮想マシンで実行します。
 services: machine-learning
 documentationcenter: ''
-author: bradsev
+author: gopitk
 manager: cgronlun
 editor: cgronlun
 ms.assetid: 145dfe3e-2bd2-478f-9b6e-99d97d789c62
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
-ms.author: gokuma;weig;bradsev
-ms.openlocfilehash: 71745260f45c5a5c150fdd3eac4e9a8221b8bce4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.author: gokuma
+ms.openlocfilehash: f11aff2231a5ae6a58d5c9a3f53379a6849d226a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでできる 10 のこと
 
@@ -814,7 +814,7 @@ Azure Cosmos DB は、クラウドにおける NoSQL データベースです。
 ## <a name="8-build-reports-and-dashboard-using-the-power-bi-desktop"></a>8.Power BI Desktop を使ってレポートとダッシュボードを作成する
 先ほどの例の Cosmos DB からの Volcano JSON ファイルを Power BI で視覚化して、データの本質を視覚的に把握することができます。 詳しい手順については、[Power BI の記事](../../cosmos-db/powerbi-visualize.md)を参照してください。 手順の概要は次のとおりです。
 
-1. Power BI Desktop を開いて "データを取得" します。 URL として https://cahandson.blob.core.windows.net/samples/volcano.json と指定します。
+1. Power BI Desktop を開いて "データを取得" します。 URL に https://cahandson.blob.core.windows.net/samples/volcano.json を指定します。
 2. リストとしてインポートされた JSON レコードが表示されます。
 3. そのリストを Power BI が処理できるようテーブルに変換します。
 4. 展開アイコン (列の右側にある "左矢印と右矢印" のアイコン) をクリックして列を展開します。

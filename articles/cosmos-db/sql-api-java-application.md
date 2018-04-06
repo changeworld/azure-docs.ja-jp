@@ -1,7 +1,7 @@
 ---
-title: "Azure Cosmos DB を使用した Java アプリケーション開発のチュートリアル | Microsoft Docs"
-description: "この Java Web アプリケーション チュートリアルでは、Azure Cosmos DB および SQL API を使って、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
-keywords: "アプリケーション開発, データベース チュートリアル, java アプリケーション, java web アプリケーション チュートリアル, azure, Microsoft azure"
+title: Azure Cosmos DB を使用した Java アプリケーション開発のチュートリアル | Microsoft Docs
+description: この Java Web アプリケーション チュートリアルでは、Azure Cosmos DB および SQL API を使って、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
+keywords: アプリケーション開発, データベース チュートリアル, java アプリケーション, java web アプリケーション チュートリアル, azure, Microsoft azure
 services: cosmos-db
 documentationcenter: java
 author: dennyglee
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
-ms.openlocfilehash: 8507b772c537ac50bd40367fbde260a8d72375ca
-ms.sourcegitcommit: 821b6306aab244d2feacbd722f60d99881e9d2a4
+ms.openlocfilehash: 816ea6e575759186973e23c6adfccd389c6920d9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/18/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Azure Cosmos DB および SQL API を使用した Java Web アプリケーションの作成
 > [!div class="op_single_selector"]
@@ -29,8 +29,6 @@ ms.lasthandoff: 12/18/2017
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 この Java Web アプリケーション チュートリアルでは、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービスを使用して、Azure App Service Web Apps でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 このトピックでは、次の内容を説明します。
 
@@ -739,7 +737,7 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
 4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。
 5. **[Select Repository Source]** 画面で、**[Clone URI]** をクリックします。
-6. **[Source Git Repository]\(ソース Git リポジトリ\)** 画面の **[URI]** ボックスに「 https://github.com/Azure-Samples/java-todo-app.git 」と入力し、**[Next]\(次へ\)** をクリックします。
+6. **[Source Git Repository]** 画面で、**[URI]** ボックスに「https://github.com/Azure-Samples/java-todo-app.git」と入力し、**[Next]** をクリックします。
 7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。
@@ -754,6 +752,6 @@ Azure Web Sites での Java アプリケーションのデプロイは簡単で�
 18. 画面の下部の **[Servers]** タブで、**[Tomcat v7.0 Server at localhost]** を右クリックし、**[Add and Remove]** をクリックします。
 19. **[Add and Remove]** ウィンドウで、**[azure-documentdb-java-sample]** を **[Configured]** ボックスに移動し、**[Finish]** をクリックします。
 20. **[Servers]\(サーバー\)** タブで、**[Tomcat v7.0 Server at localhost]\(ローカルホストの Tomcat v7.0 サーバー\)** を右クリックし、**[Restart]\(再起動\)** をクリックします。
-21. ブラウザーで http://localhost:8080/azure-documentdb-java-sample/ にアクセスして、タスク リストに項目を追加します。 既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
+21. ブラウザーで http://localhost:8080/azure-documentdb-java-sample/ に移動し、タスク一覧への追加を開始します。 既定のポート値を変更している場合は、8080 に代えて、使用している値を指定してください。
 22. プロジェクトを Azure Web サイトにデプロイする方法については、「[手順 6: Azure Web Sites にアプリケーションをデプロイする](#Deploy)」を参照してください。
 

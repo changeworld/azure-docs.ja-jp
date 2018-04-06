@@ -1,11 +1,11 @@
 ---
-title: "Microsoft Azure Service Fabric に関するよく寄せられる質問 |Microsoft ドキュメント"
-description: "Service Fabric に関してよく寄せられる質問とその回答"
+title: Microsoft Azure Service Fabric に関するよく寄せられる質問 |Microsoft ドキュメント
+description: Service Fabric に関してよく寄せられる質問とその回答
 services: service-fabric
 documentationcenter: .net
 author: chackdan
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 5a179703-ff0c-4b8e-98cd-377253295d12
 ms.service: service-fabric
 ms.devlang: dotnet
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: chackdan
-ms.openlocfilehash: facbb980f57b4e70c34b238a8b8fbd988cb20d57
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 0ecce5581e8f14a02ad0ad618a226f4671e92f4b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric に関してよく寄せられる質問
 
@@ -89,17 +89,7 @@ Microsoft はエクスペリエンスの改善に取り組んでいますが、�
 ### <a name="can-i-encrypt-attached-data-disks-in-a-cluster-node-type-virtual-machine-scale-set"></a>クラスター ノード タイプ (仮想マシン スケール セット) で接続されたデータ ディスクを暗号化することはできますか?
 はい。  詳細については、「[接続されたデータ ディスクを備えたクラスターの作成](../virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks.md#create-a-service-fabric-cluster-with-attached-data-disks)」、[ディスクの暗号化 (PowerShell)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-ps.md) に関するセクション、および[ディスクの暗号化 (CLI)](../virtual-machine-scale-sets/virtual-machine-scale-sets-encrypt-disks-cli.md) に関するセクションを参照してください。
 
-## <a name="container-support"></a>コンテナー サポート
-
-### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>SF にデプロイされたコンテナーが DNS アドレスを解決できないのはなぜですか?
-
-この問題は、5.6.204.9494 バージョンのクラスターで報告されています。 
-
-**対応策**:  [このドキュメント](service-fabric-dnsservice.md)に従って、クラスター内の DNS サービス ファブリック サービスを有効にします。
-
-**修正**:  5.6.204.9494 より高いサポートされているクラスター バージョンが使用可能な場合は、そのバージョンにアップグレードします。 クラスターが自動アップグレードに設定されている場合、クラスターは、この問題が解決されているバージョンに自動的にアップグレードされます。
-
-  
+ 
 ## <a name="application-design"></a>アプリケーションの設計
 
 ### <a name="whats-the-best-way-to-query-data-across-partitions-of-a-reliable-collection"></a>Reliable Collection のパーティション全体のデータを照会する最善の方法は何ですか?
@@ -146,9 +136,11 @@ Reliable Services と同じように、アクター サービスに格納でき�
 
 ### <a name="are-you-planning-to-open-source-service-fabric"></a>Service Fabric をオープン ソース化する予定はありますか?
 
-Reliable Services および Reliable Actors フレームワークを GitHub でオープン ソース化する予定であり、このプロジェクトにはコミュニティの皆さんにも参加していただきます。 詳しくは、[Service Fabric ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)での発表をご覧ください。
+GitHub では Service Fabric のオープン ソース化された部分 ([Reliable Services フレームワーク](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[Reliable Actors フレームワーク](https://github.com/Azure/service-fabric-services-and-actors-dotnet)、[ASP.NET Core 統合ライブラリ](https://github.com/Azure/service-fabric-aspnetcore)、[Service Fabric Explorer](https://github.com/Azure/service-fabric-explorer)、[Service Fabric CLI](https://github.com/Azure/service-fabric-cli)) が提供されており、これらのプロジェクトにはコミュニティの皆さんにも参加していただいています。 
 
-現在のところ、Service Fabric ランタイムのオープン ソース化の予定はありません。
+Service Fabric ラインタイムをオープン ソース化する予定であることは、[最近発表](https://blogs.msdn.microsoft.com/azureservicefabric/2018/03/14/service-fabric-is-going-open-source/)しました。 現時点では、GitHub には、Linux のビルドおよびテスト ツールを含む、[Service Fabric リポジトリ](https://github.com/Microsoft/service-fabric/)がアップされており、このリポジトリを複製し、Linux 用の Service Fabric をビルドして、基本的なテストを実行し、問題を開き、プル要求を送信することができます。 完全な CI 環境と共に、Windows ビルド環境の移行にも全力で取り組んでいます。
+
+詳しくは、[Service Fabric ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/)での発表をご覧ください。
 
 ## <a name="next-steps"></a>次の手順
 

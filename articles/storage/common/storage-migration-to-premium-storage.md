@@ -1,6 +1,6 @@
 ---
-title: "VM の Azure Premium Storage への移行 | Microsoft Docs"
-description: "既存の VM を Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。"
+title: VM の Azure Premium Storage への移行 | Microsoft Docs
+description: 既存の VM を Azure Premium Storage に移行します。 Premium Storage は、Azure Virtual Machines で実行される高負荷の I/O ワークロードのための、高パフォーマンスで待ち時間の少ないディスク サポートを提供します。
 services: storage
 documentationcenter: na
 author: yuemlu
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
 ms.openlocfilehash: 36ff73d36c752fb342dcfff2360b4f6f7013740e
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -163,7 +163,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 データ ディスクの場合、一部のデータ ディスク (たとえば、負荷の軽いストレージのあるディスク) を Standard Storage アカウントで保持することもできますが、運用ワークロード用のすべてのデータを、Premium Storage を使うように移動することを強くお勧めします。
 
 #### <a name="copy-vhd-with-azcopy-or-powershell"></a>手順 3. AzCopy または PowerShell で VHD をコピーする
-これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** > **[ストレージ]** で見つかります。 コンテナーの URL は、"https://myaccount.blob.core.windows.net/mycontainer/" のようになります。
+これら 2 つのオプションを処理するには、コンテナーのパスとストレージ アカウント キーを検索する必要があります。 コンテナーのパスとストレージ アカウント キーは、**Azure Portal** > **[ストレージ]** で見つかります。 コンテナー URL は "https://myaccount.blob.core.windows.net/mycontainer/" のようになります。
 
 ##### <a name="option-1-copy-a-vhd-with-azcopy-asynchronous-copy"></a>オプション 1: AzCopy を使って VHD をコピーする (非同期コピー)
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。
@@ -257,7 +257,7 @@ VHD を管理するためにストレージ アカウントを作成します。
 Add-AzureVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo>
 ```
 
-<Uri> の例: ***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"***。 <FileInfo> の例: ***"C:\path\to\upload.vhd"***。
+例として、<Uri>***"https://storagesample.blob.core.windows.net/mycontainer/blob1.vhd"*** が挙げられます。 <FileInfo> の例: ***"C:\path\to\upload.vhd"***。
 
 ##### <a name="option-2-using-azcopy-to-upload-the-vhd-file"></a>オプション 2: AzCopy を使って .vhd ファイルをアップロードする
 AzCopy を使うと、インターネット経由で VHD を簡単にアップロードできます。 VHD のサイズによっては、この処理に時間がかかる場合があります。 このオプションを使用する場合は、ストレージ アカウントの送受信制限を確認することを忘れないでください。 詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md) 」を参照してください。

@@ -1,11 +1,11 @@
 ---
-title: "ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理 | Microsoft Docs"
-description: "ストレージ エクスプローラー (プレビュー) を使用して Azure BLOB コンテナーと BLOB を管理します"
+title: ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理 | Microsoft Docs
+description: ストレージ エクスプローラー (プレビュー) を使用して Azure BLOB コンテナーと BLOB を管理します
 services: storage
 documentationcenter: na
 author: cawa
 manager: paulyuk
-editor: 
+editor: ''
 ms.assetid: 2f09e545-ec94-4d89-b96c-14783cc9d7a9
 ms.service: storage
 ms.devlang: multiple
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: cawa
-ms.openlocfilehash: c23b87cca66df0834a31494be7d8657ff9f2a865
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 98a1016f78587b4139041f140634b98fa47edfd1
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="manage-azure-blob-storage-resources-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理
 ## <a name="overview"></a>概要
@@ -41,7 +41,7 @@ BLOB ストレージを使用すると、データを一般に公開すること
 3. **[BLOB コンテナー]** を右クリックし、コンテキスト メニューの **[BLOB コンテナーの作成]** を選択します。
 
    ![Create blob containers context menu][0]
-4. **[BLOB コンテナー]** フォルダーの下に、テキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限の一覧については、[コンテナーの名前付け規則](storage/blobs/storage-dotnet-how-to-use-blobs.md#create-a-container) に関するセクションをご覧ください。
+4. **[BLOB コンテナー]** フォルダーの下に、テキスト ボックスが表示されます。 BLOB コンテナーの名前を入力します。 BLOB コンテナーの名前付けに関する規則と制限については、「[コンテナーを作成し、アクセス許可を設定する](storage/blobs/storage-quickstart-blobs-dotnet.md#create-the-container-and-set-permissions)」をご覧ください。
 
    ![Create Blob Containers text box][1]
 5. 作業を終えたら、**Enter** キーを押して BLOB コンテナーを作成するか、**Esc** キーを押して取り消します。 BLOB コンテナーは、正常に作成されると、選択されたストレージ アカウントの **[BLOB コンテナー]** フォルダーの下に表示されます。
@@ -174,7 +174,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. **[Upload Files (ファイルのアップロード)]** ダイアログで、**[ファイル]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードするファイルを選択します。
 
         ![Upload files options][16]
-     3. **[BLOB の種類]**に種類を指定します。 さまざまな BLOB の種類の違いについては、記事「[.NET を使用して Azure Blob Storage を使用する](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts)」で説明されています。
+     3. **[BLOB の種類]**に種類を指定します。 詳細については、「[コンテナーを作成し、アクセス許可を設定する](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container)」を参照してください。
      4. 必要に応じて、選択したファイルのアップロード先となるターゲット フォルダーを指定します。 ターゲット フォルダーが存在しない場合は、作成されます。
      5. **[アップロード]**を選択します。
    * **BLOB コンテナーにフォルダーをアップロードする**
@@ -185,7 +185,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. **[Upload Folder (フォルダーのアップロード)]** ダイアログで、**[フォルダー]** ボックスの右側にある省略記号 (**[...]**) ボタンをクリックし、アップロードする内容を含むフォルダーを選択します。
 
         ![Upload folder options][18]
-     3. **[BLOB の種類]**に種類を指定します。 さまざまな BLOB の種類の違いについては、記事「[.NET を使用して Azure Blob Storage を使用する](storage/blobs/storage-dotnet-how-to-use-blobs.md#blob-service-concepts)」で説明されています。
+     3. **[BLOB の種類]**に種類を指定します。 詳細については、「[コンテナーを作成し、アクセス許可を設定する](storage/blobs/storage-quickstart-blobs-dotnet.md#upload-blobs-to-the-container)」を参照してください。
      4. 必要に応じて、選択したフォルダーの内容のアップロード先となるターゲット フォルダーを指定します。 ターゲット フォルダーが存在しない場合は、作成されます。
      5. **[アップロード]**を選択します。
    * **ローカル コンピューターに BLOB をダウンロードする**
@@ -193,7 +193,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      1. ダウンロードする BLOB を選択します。
      2. メイン ウィンドウのツール バーで、 **[ダウンロード]**を選択します。
      3. **[Specify where to save the downloaded blob (ダウンロードした BLOB を保存する場所の指定)]** ダイアログで、BLOB のダウンロード先の場所と、その場所に付ける名前を指定します。  
-     4. [ **保存**] を選択します。
+     4. **[保存]** を選択します。
    * **ローカル コンピューターで BLOB を開く**
 
      1. 開く BLOB を選択します。
@@ -211,7 +211,7 @@ BLOB コンテナーを作成したら、その BLOB コンテナーに BLOB を
      2. メイン ウィンドウのツール バーで、 **[削除]**を選択します。
      3. 確認のダイアログで **[はい]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * [最新のストレージ エクスプローラー (プレビュー) のリリース ノートとビデオ](http://www.storageexplorer.com)を確認します。
 * [Azure BLOB、テーブル、キュー、ファイルを使ってアプリケーションを作成する](https://azure.microsoft.com/documentation/services/storage/)方法について学習します。
 

@@ -1,6 +1,6 @@
 ---
-title: "ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行"
-description: "この記事では、mysqldump、MySQL Workbench、PHPMyAdmin などのツールを使用して、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します。"
+title: ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
+description: この記事では、mysqldump、MySQL Workbench、PHPMyAdmin などのツールを使用して、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します。
 services: mysql
 author: ajlam
 ms.author: andrela
@@ -8,12 +8,12 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: 0c5a6b6d971d434a52bf80da6b34d7f6949589bc
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 03/20/2018
+ms.openlocfilehash: ef35ee881923c69d41b79fd6cb8464c695c614f9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/28/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
@@ -87,10 +87,12 @@ $ mysqldump -u root -p --all-databases > alldb_backup.sql
 ## <a name="create-a-database-on-the-target-azure-database-for-mysql-server"></a>Azure Database for MySQL ターゲット サーバーでのデータベースの作成
 データを移行する Azure Database for MySQL ターゲット サーバーに空のデータベースを作成します。 データベースは、MySQL Workbench、Toad、Navicat などのツールを使用して作成します。 データベースの名前は、ダンプされたデータが含まれるデータベースと同じにすることも、別の名前でデータベースを作成することもできます。
 
-接続するために、Azure Database for MySQL のプロパティ ページで接続情報を見つけます。
-![Azure Portal で接続情報を見つける](./media/concepts-migrate-dump-restore/1_server-properties-name-login.png)
+接続するために、Azure Database for MySQL の **[概要]** で接続情報を見つけます。
+
+![Azure Portal で接続情報を見つける](./media/concepts-migrate-dump-restore/1_server-overview-name-login.png)
 
 接続情報を MySQL Workbench に追加します。
+
 ![MySQL Workbench の接続文字列](./media/concepts-migrate-dump-restore/2_setup-new-connection.png)
 
 

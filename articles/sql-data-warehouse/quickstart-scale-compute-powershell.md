@@ -1,24 +1,24 @@
 ---
-title: "クイックスタート: Azure SQL Data Warehouse のコンピューティングのスケールアウト - PowerShell | Microsoft Docs"
-description: "Data Warehouse ユニットを調整してコンピューティング リソースをスケールアウトする PowerShell タスク。"
+title: 'クイックスタート: Azure SQL Data Warehouse のコンピューティングのスケールアウト - PowerShell | Microsoft Docs'
+description: Data Warehouse ユニットを調整してコンピューティング リソースをスケールアウトする PowerShell タスク。
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
 manager: jhubbard
-editor: 
+editor: ''
 ms.service: sql-data-warehouse
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 01/31/2018
+ms.date: 03/16/2018
 ms.author: elbutter;barbkess
-ms.openlocfilehash: a3a435d6bdb0d35c96349540d5e9f9b5be61bd9b
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 3236c0ad9676712afd220a3c8a9326f3ea1f59d5
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="quickstart-scale-compute-in-azure-sql-data-warehouse-in-powershell"></a>クイックスタート: PowerShell で Azure SQL Data Warehouse のコンピューティングをスケーリングする
 
@@ -64,7 +64,7 @@ Select-AzureRmSubscription -SubscriptionName "MySubscription"
 
     ![サーバー名とリソース グループ](media/pause-and-resume-compute-powershell/locate-data-warehouse-information.png)
 
-4. データベース名として使用されるデータ ウェアハウスの名前を書き留めます。 サーバー名とリソース グループも書き留めます。 これらは、一時停止コマンドと再開コマンドで使用します。
+4. データベース名として使用される、データ ウェアハウスの名前を書き留めます。 データ ウェアハウスはデータベースの一種であることに注意してください。 サーバー名とリソース グループも書き留めます。 これらは、一時停止コマンドと再開コマンドで使用します。
 5. サーバーが foo.database.windows.net である場合は、PowerShell コマンドレットでサーバー名として最初の部分のみを使用します。 前の図では、サーバーの完全名は newserver-20171113.database.windows.net です。 PowerShell コマンドレットのサーバー名として **newserver-20171113** を使用します。
 
 ## <a name="scale-compute"></a>コンピューティングのスケーリング
@@ -77,12 +77,13 @@ Data Warehouse ユニットを変更するには、[Set-AzureRmSqlDatabase](/pow
 Set-AzureRmSqlDatabase -ResourceGroupName "myResourceGroup" -DatabaseName "mySampleDataWarehouse" -ServerName "mynewserver-20171113" -RequestedServiceObjectiveName "DW300"
 ```
 
-## <a name="check-database-state"></a>データベース状態の確認
+## <a name="check-data-warehouse-state"></a>データ ウェアハウスの状態の確認
 
 データ ウェアハウスの現在の状態を確認するには、[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase) PowerShell コマンドレットを使用します。 これを使用すると、リソース グループ **myResourceGroup** とサーバー **mynewserver-20171113.database.windows.net** 内のデータベース **mySampleDataWarehouse** の状態が取得されます。
 
 ```powershell
-Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
+$database = Get-AzureRmSqlDatabase -ResourceGroupName myResourceGroup -ServerName mynewserver-20171113 -DatabaseName mySampleDataWarehouse
+$database
 ```
 
 次のような結果が表示されます。
@@ -113,7 +114,13 @@ ReadScale                     : Disabled
 ZoneRedundant                 : False
 ```
 
-チェックを行ってデータベースの**状態**を確認できます。 このケースでは、データベースがオンラインであることが確認できます。  このコマンドを実行すると、状態を表す値としてオンライン、一時停止中、再開中、スケーリング、一時停止のいずれかが表示されます。
+出力には、データベースの**状態**が表示されます。 このケースでは、データベースがオンラインであることが確認できます。  このコマンドを実行すると、状態を表す値としてオンライン、一時停止中、再開中、スケーリング、一時停止のいずれかが表示されます。 
+
+状態のみを表示するには、次のコマンドを使用します。
+
+```powershell
+$database | Select-Object DatabaseName,Status
+```
 
 ## <a name="next-steps"></a>次の手順
 ここでは、データ ウェアハウスのコンピューティングをスケーリングする方法について学習しました。 Azure SQL Data Warehouse の詳細については、データの読み込みに関するチュートリアルを参照してください。

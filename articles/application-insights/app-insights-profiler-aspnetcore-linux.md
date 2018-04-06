@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2018
 ms.author: mbullwin
-ms.openlocfilehash: 2d7405baee84b53311f01e748ca7975147c107d8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 63a7ceacffe1ee33227d3a8272dda7de7b3b1135
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="profile-aspnet-core-azure-linux-web-apps-with-application-insights-profiler"></a>Application Insights Profiler を使用して ASP.NET Core Azure Linux Web アプリをプロファイルする
 
@@ -143,6 +143,18 @@ ms.lasthandoff: 03/16/2018
 5. Azure Portal の Application Insights パフォーマンス ウィンドウに移動します。 右下隅にプロファイラー トレースが表示されます。
 
     ![トレースを表示する](./media/app-insights-profiler-aspnetcore-linux/view-traces.png)
+
+## <a name="known-issues"></a>既知の問題
+
+### <a name="enable-button-in-profiler-configuration-pane-does-not-work"></a>[プロファイラーの構成] ウィンドウの [有効化] ボタンが機能しない
+**App Services Linux を使用してアプリをホストしている場合、App Insights ポータルの [パフォーマンス] ウィンドウで Profiler を再度有効にする必要はありません。NuGet パッケージをプロジェクトに含め、[アプリ設定] で App Insights の iKey を設定すれば、Profiler を有効にするには十分です**。
+
+[Windows のための App Insights Profiler](./app-insights-profiler.md) 有効化ワークフローに従い、[Profiler の構成] ウィンドウで **[有効化]** をクリックすると、その操作で、Linux 環境に Windows バージョンのプロファイラー エージェントのインストールが試みられるため、エラーが表示されます。
+
+有効化の操作におけるこの問題については、解決に取り組んでいます。
+
+![Linux App Services でプロファイラーを機能させるために、[パフォーマンス] ウィンドウで再度 Profiler を有効にする必要はありません](./media/app-insights-profiler-aspnetcore-linux/issue-enable-profiler.png)
+
 
 ## <a name="next-steps"></a>次の手順
 App Services でホストされているカスタム コンテナーを使用している場合は、[ コンテナー化された ASP.NET Core アプリケーションのサービス プロファイラーを有効にする方法](https://github.com/Microsoft/ApplicationInsights-Profiler-AspNetCore/tree/master/examples/EnableServiceProfilerForContainerApp)に関するページの手順で App Insight Profiler を有効にします

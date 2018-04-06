@@ -1,6 +1,6 @@
 ---
-title: "Azure での Linux 仮想マシンの DNS 名前解決のオプション"
-description: "Azure IaaS での Linux 仮想マシンの名前解決のシナリオを示します (提供される DNS サービス、ハイブリッド外部 DNS、独自 DNS サーバーの使用など)。"
+title: Azure での Linux 仮想マシンの DNS 名前解決のオプション
+description: Azure IaaS での Linux 仮想マシンの名前解決のシナリオを示します (提供される DNS サービス、ハイブリッド外部 DNS、独自 DNS サーバーの使用など)。
 services: virtual-machines
 documentationcenter: na
 author: RicksterCDN
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/19/2016
 ms.author: rclaus
-ms.openlocfilehash: cc06ee9305b4d3034154a0825c1aea53fe446f80
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a445de3e1bfbeb2cd2e5674418688d6bb610a3c2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>Azure での Linux 仮想マシンの DNS 名前解決のオプション
 Azure では、既定で、単一の仮想ネットワーク内に含まれるすべての仮想マシンの DNS 名の解決を提供しています。 Azure でホストされている仮想マシンに独自の DNS サービスを構成することにより、DNS 名を解決する独自のソリューションを実装できます。 次のシナリオは、どちらの方法が状況に適しているかを判断するのに役立ちます。
@@ -112,7 +112,7 @@ resolv.conf ファイルは自動生成され、編集すべきではありま�
 2. 'netconfig update' を実行して更新します。
 
 **Rogue Wave Software (以前の OpenLogic) の CentOS** (NetworkManager を使用)
-1. 'echo "options timeout:1 attempts:5"' を '/etc/NetworkManager/dispatcher.d/11-dhclient' に追加します。
+1. 'RES_OPTIONS="timeout:1 attempts:5"' を '/etc/sysconfig/network' に追加します。
 2. 'service network restart' を実行して更新します。
 
 ## <a name="name-resolution-using-your-own-dns-server"></a>独自 DNS サーバー使用の名前解決

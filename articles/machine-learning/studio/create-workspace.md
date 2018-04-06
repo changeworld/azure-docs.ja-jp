@@ -1,22 +1,21 @@
 ---
-title: "Machine Learning Studio ワークスペースの作成 | Microsoft Docs"
-description: "Azure Machine Learning Studio のワークスペースの作成方法"
+title: Machine Learning Studio ワークスペースの作成 | Microsoft Docs
+description: Azure Machine Learning Studio のワークスペースの作成方法
 services: machine-learning
-author: garyericson
-manager: jhubbard
+author: heatherbshapiro
+ms.author: hshapiro
+manager: hjerez
 editor: cgronlun
 ms.assetid: aa96b784-ac6c-44bc-a28a-85d49fbe90a2
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 12/07/2017
-ms.author: garye
-ms.reviewer: garyericson, jasonwhowell, MicrosoftDocs/mlreview
-ms.openlocfilehash: 7aad885b1643ddeb25e5d00a151005b8444315fa
-ms.sourcegitcommit: b07d06ea51a20e32fdc61980667e801cb5db7333
+ms.openlocfilehash: 8da10e474c62868ca109a44e7c66dc11ee62b6de
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/08/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-and-share-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの作成と共有
 このメニューは、Cortana Analytics Process (CAP) によって使用されるさまざまなデータ サイエンス環境の設定方法を説明するトピックにリンクしています。
@@ -50,7 +49,7 @@ Azure Machine Learning Studio を使用するには、Machine Learning ワーク
 
 デプロイしたワークスペースは、Machine Learning Studio で開くことができます。
 
-1. ブラウザーから [https://studio.azureml.net/](https://studio.azureml.net/) で Machine Learning Studio にアクセスします。
+1. [https://studio.azureml.net/](https://studio.azureml.net/) で Machine Learning Studio を参照します。
 
 2. 右上隅で該当するワークスペースを選択します。
 
@@ -77,7 +76,7 @@ Machine Learning ワークスペースを作成した後は、ユーザーをワ
 
 ### <a name="to-share-a-workspace"></a>ワークスペースを共有するには
 
-1. Machine Learning Studio ([https://studio.azureml.net/Home](https://studio.azureml.net/Home)) にサインインします。
+1. [https://studio.azureml.net/Home](https://studio.azureml.net/Home) で Machine Learning Studio にサインインします。
 
 2. 左側のパネルの **[設定]** をクリックします。
 

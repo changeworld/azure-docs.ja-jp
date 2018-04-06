@@ -1,11 +1,11 @@
 ---
-title: "Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ | Microsoft Docs"
-description: "Cloud Foundry loggregator Nozzle for Azure Log Analytics をデプロイする手順について説明します。 Nozzle を使用して、Cloud Foundry システムの正常性とパフォーマンス メトリックを監視します。"
+title: Cloud Foundry 監視向けの Azure Log Analytics Nozzle のデプロイ | Microsoft Docs
+description: Cloud Foundry loggregator Nozzle for Azure Log Analytics をデプロイする手順について説明します。 Nozzle を使用して、Cloud Foundry システムの正常性とパフォーマンス メトリックを監視します。
 services: virtual-machines-linux
-documentationcenter: 
+documentationcenter: ''
 author: ningk
 manager: timlt
-editor: 
+editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: virtual-machines-linux
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: 0d13d39d2921c51c537534a5b000564a9df91880
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b900a42196eedab89af8e55d71a336ed7adc45a4
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Cloud Foundry システム監視向けの Azure Log Analytics Nozzle のデプロイ
 
-[Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) は、Microsoft [Operations Management Suite](https://docs.microsoft.com/azure/operations-management-suite/) (OMS) のサービスです。 このサービスは、クラウドおよびオンプレミス環境から生成されたデータを収集して分析するときに役立ちます。
+[Azure Log Analytics](https://azure.microsoft.com/services/log-analytics/) は Azure のサービスです。 このサービスは、クラウドおよびオンプレミス環境から生成されたデータを収集して分析するときに役立ちます。
 
 Log Analytics Nozzle (Nozzle) は Cloud Foundry (CF) コンポーネントであり、[Cloud Foundry loggregator](https://docs.cloudfoundry.org/loggregator/architecture.html) firehose から Log Analytics にメトリックを転送します。 Nozzle を使用すると、CF のシステム正常性とパフォーマンスのメトリックを複数のデプロイで収集、表示、分析できます。
 
-このドキュメントでは、Nozzle を CF 環境内にデプロイし、Log Analytics OMS コンソールからデータにアクセスする方法を学習します。
+このドキュメントでは、Nozzle を CF 環境内にデプロイし、Log Analytics コンソールからデータにアクセスする方法を学習します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,9 +53,9 @@ Nozzle は、CF 環境でアプリケーションとして実行されます。 
 
 UAA コマンドライン クライアントをセットアップする前に、Rubygems がインストールされていることを確認します。
 
-### <a name="3-create-an-oms-workspace-in-azure"></a>3.Azure で OMS ワークスペースを作成する
+### <a name="3-create-a-log-analytics-workspace-in-azure"></a>手順 3.Azure で Log Analytics ワークスペースを作成する
 
-OMS ワークスペースは、手動で、またはテンプレートを使用して作成できます。 Nozzle のデプロイを完了した後に、構成済みの OMS ビューとアラートを読み込みます。
+Log Analytics ワークスペースは、手動で、またはテンプレートを使用して作成できます。 Nozzle のデプロイを完了した後に、構成済みの OMS ビューとアラートを読み込みます。
 
 ワークスペースを手動で作成するには:
 
@@ -70,7 +70,7 @@ OMS ワークスペースは、手動で、またはテンプレートを使用�
 
 詳細については、「[Log Analytics の起動と開始](https://docs.microsoft.com/azure/log-analytics/log-analytics-get-started)」を参照してください。
 
-または、OMS のテンプレートを使って OMS ワークスペースを作成することができます。 この方法では、テンプレートで構成済みの OMS ビューとアラートを自動的に読み込みます。 詳細については、「[Azure OMS Log Analytics Solution for Cloud Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution)」を参照してください。
+または、Log Analytics のテンプレートを使って OMS ワークスペースを作成することができます。 この方法では、テンプレートで構成済みの OMS ビューとアラートを自動的に読み込みます。 詳細については、「[Azure Log Analytics Solution for Cloud Foundry](https://github.com/Azure/azure-quickstart-templates/tree/master/oms-cloudfoundry-solution)」を参照してください。
 
 ## <a name="deploy-the-nozzle"></a>Nozzle のデプロイ
 
@@ -118,14 +118,14 @@ cd oms-log-analytics-firehose-nozzle
 
 #### <a name="set-environment-variables"></a>環境変数の設定
 
-現在のディレクトリにある manifest.yml ファイルに環境変数を設定することができます。 Nozzle のアプリケーション マニフェストの例を次に示します。 値は、実際の OMS ワークスペース情報に置き換えてください。
+現在のディレクトリにある manifest.yml ファイルに環境変数を設定することができます。 Nozzle のアプリケーション マニフェストの例を次に示します。 値は、実際の Log Analytics ワークスペース情報に置き換えてください。
 
 ```
-OMS_WORKSPACE             : OMS workspace ID: open OMS portal from your OMS workspace, select Settings, and select connected sources.
-OMS_KEY                   : OMS key: open OMS portal from your OMS workspace, select Settings, and select connected sources.
-OMS_POST_TIMEOUT          : HTTP post timeout for sending events to OMS Log Analytics. The default is 10 seconds.
-OMS_BATCH_TIME            : Interval for posting a batch to OMS Log Analytics. The default is 10 seconds.
-OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to OMS Log Analytics. The default is 1000.
+OMS_WORKSPACE             : Log Analytics workspace ID: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_KEY                   : OMS key: open OMS portal from your Log Analytics workspace, select Settings, and select connected sources.
+OMS_POST_TIMEOUT          : HTTP post timeout for sending events to Log Analytics. The default is 10 seconds.
+OMS_BATCH_TIME            : Interval for posting a batch to Log Analytics. The default is 10 seconds.
+OMS_MAX_MSG_NUM_PER_BATCH : The maximum number of messages in a batch to Log Analytics. The default is 1000.
 API_ADDR                  : The API URL of the CF environment. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 DOPPLER_ADDR              : Loggregator's traffic controller URL. For more information, see the preceding section, "Sign in to your CF deployment as an admin through CF CLI."
 FIREHOSE_USER             : CF user you created in the preceding section, "Create a CF user and grant required privileges." This user has firehose and Cloud Controller admin access.
@@ -135,8 +135,8 @@ SKIP_SSL_VALIDATION       : If true, allows insecure connections to the UAA and 
 CF_ENVIRONMENT            : Enter any string value for identifying logs and metrics from different CF environments.
 IDLE_TIMEOUT              : The Keep Alive duration for the firehose consumer. The default is 60 seconds.
 LOG_LEVEL                 : The logging level of the Nozzle. Valid levels are DEBUG, INFO, and ERROR.
-LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to OMS Log Analytics as CounterEvents.
-LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to OMS Log Analytics. The default is 60 seconds.
+LOG_EVENT_COUNT           : If true, the total count of events that the Nozzle has received and sent are logged to Log Analytics as CounterEvents.
+LOG_EVENT_COUNT_INTERVAL  : The time interval of the logging event count to Log Analytics. The default is 60 seconds.
 ```
 
 ### <a name="push-the-application-from-your-development-computer"></a>開発コンピューターからアプリケーションをプッシュする
@@ -165,7 +165,7 @@ OMS Nozzle アプリケーションが実行中であることを確認します
 
 ### <a name="1-import-the-oms-view"></a>1.OMS ビューをインポートする
 
-OMS ポータルから **[ビュー デザイナー]** > **[インポート]** > **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、*Cloud Foundry.omsview* を選択してビューを保存します。 OMS の **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
+OMS ポータルから **[ビュー デザイナー]** > **[インポート]** > **[参照]** を参照し、omsview ファイルのいずれかを選択します。 たとえば、*Cloud Foundry.omsview* を選択してビューを保存します。 **[概要]** ページにタイルが表示されます。 選択すると、視覚的なメトリックが表示されます。
 
 **[ビュー デザイナー]** で、これらのビューをカスタマイズするか、新しいビューを作成できます。
 
@@ -175,7 +175,7 @@ OMS ポータルから **[ビュー デザイナー]** > **[インポート]** >
 
 [アラートを作成](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts)して、必要に応じてクエリとしきい値をカスタマイズできます。 次のアラートが推奨されます。
 
-| Search query (検索クエリ)                                                                  | 基づくアラートの生成 | Description                                                                       |
+| Search query (検索クエリ)                                                                  | 基づくアラートの生成 | [説明]                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | 結果の数: 1 より小さい   | **bbs.Domain.cf-apps** は、cf-apps ドメインが最新の状態かどうかを示します。 つまり、Cloud Controller からの CF App 要求が、実行に備えて bbs.LRPsDesired (Diego-desired AIs) に同期されていることを意味します。 データが受信されない場合、指定された時間枠内で cf-apps ドメインが最新ではないことを示します。 |
 | Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | 結果の数: 0 より大きい   | Diego セルの場合、0 は正常、1 は問題があることを意味します。 指定された時間枠内で問題がある Diego セルが複数検出される場合にアラートを設定します。 |
@@ -183,7 +183,7 @@ OMS ポータルから **[ビュー デザイナー]** > **[インポート]** >
 | Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | 結果の数: 0 より大きい   | Consul により、正常性の状態が定期的に出力されます。 0 はシステムが正常な状態を意味し、1 は Consul がダウンしていることをルート エミッターが検出したことを意味します。 |
 | Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | 結果の数: 0 より大きい | バック プレッシャーが原因で、メッセージの差分番号が Doppler により意図的に削除されました。 |
 | Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | 結果の数: 0 より大きい   | Loggregator は、ログのプロセスに関する問題を示す **LGR** を出力します。 このような問題の例として、ログ メッセージの出力が多すぎる場合などがあります。 |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 結果の数: 0 より大きい   | Nozzle は、Loggregator から低速のコンシューマー アラートを受け取ると、**slowConsumerAlert** ValueMetric を OMS に送信します。 |
+| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | 結果の数: 0 より大きい   | Nozzle は、Loggregator から低速のコンシューマー アラートを受け取ると、**slowConsumerAlert** ValueMetric を Log Analytics に送信します。 |
 | Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | 結果の数: 0 より大きい   | 失われたイベントの差分番号がしきい値に達した場合、Nozzle に問題が生じている可能性があることを意味します。 |
 
 ## <a name="scale"></a>スケール
@@ -201,7 +201,7 @@ Nozzle をスケールアップするには、Apps Manager または CF CLI を�
 loggregator は、ログのプロセスに関する問題を示す **LGR** ログ メッセージを送信します。 アラートを監視して、Loggregator のスケールアップが必要かどうかを決定できます。
 loggregator をスケール アップするには、CF マニフェストで Doppler のバッファー サイズを増やすか、Doppler サーバー インスタンスを追加します。 詳細については、[loggregator のスケーリングに関するガイダンス](https://docs.cloudfoundry.org/running/managing-cf/logging-config.html#scaling)を参照してください。
 
-## <a name="update"></a>更新
+## <a name="update"></a>プライマリの
 
 Nozzle を新しいバージョンに更新するには、Nozzle の新しいリリースをダウンロードし、前述の「Nozzle のデプロイ」セクションの手順に従ってアプリケーションをもう一度プッシュします。
 
@@ -218,7 +218,7 @@ CF CLI ウィンドウで、次のように入力します。
 cf delete <App Name> -r
 ```
 
-Nozzle を削除しても、OMS ポータルのデータは自動的に削除されません。 データは、OMS Log Analytics のリテンション設定に基づいて有効期限が切れます。
+Nozzle を削除しても、OMS ポータルのデータは自動的に削除されません。 データは、Log Analytics のリテンション設定に基づいて有効期限が切れます。
 
 ## <a name="support-and-feedback"></a>サポートとフィードバック
 

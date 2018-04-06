@@ -1,28 +1,27 @@
 ---
-title: "Java を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs"
-description: "Java を使用して Event Hubs への送信を開始する"
+title: Java を使用して Azure Event Hubs にイベントを送信する | Microsoft Docs
+description: Java を使用して Event Hubs への送信を開始する
 services: event-hubs
-documentationcenter: 
+documentationcenter: ''
 author: sethmanheim
 manager: timlt
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: event-hubs
 ms.workload: core
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 03/21/2018
 ms.author: sethm
-ms.openlocfilehash: 5c8c24e1f168be4b46ccfdb1d0c268866fc8ff7d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 5dd0c88dab9ff4b7073a9acf6872b4c3ff085586
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="send-events-to-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs にイベントを送信する
 
-## <a name="introduction"></a>はじめに
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して変換と格納を実行できます。
 
 詳細については、「[Event Hubs の概要][Event Hubs overview]」をご覧ください。
@@ -32,16 +31,19 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 このチュートリアルを完了するには、以下が必要です。
 
 * Java 開発環境。 このチュートリアルでは、 [Eclipse](https://www.eclipse.org/)を想定しています。
-* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 <br/>アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、 <a href="http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fdevelop%2Fmobile%2Ftutorials%2Fget-started%2F" target="_blank">Azure の無料試用版サイト</a>を参照してください。
+* アクティブな Azure アカウントアカウントがない場合、Azure 試用版にサインアップして、最大 10 件の無料 Mobile Apps を入手できます。 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント][]を作成してください。
 
-## <a name="send-messages-to-event-hubs"></a>Event Hub へのメッセージ送信
-[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) の Maven プロジェクトで Event Hub 用の Java クライアント ライブラリを使用できます。 Maven プロジェクト ファイル内で次の依存関係宣言を使用して、このライブラリを参照できます。    
+このチュートリアルのコードは [GitHub の送信サンプル](https://github.com/Azure/azure-event-hubs/tree/master/samples/Java/Basic/Send)に基づくものであり、完全に動作するアプリケーションを表示する場合に確認することができます。
+
+## <a name="send-events-to-event-hubs"></a>イベントを Event Hubs に送信する
+
+[Maven Central Repository](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) の Maven プロジェクトで Event Hub 用の Java クライアント ライブラリを使用できます。 Maven プロジェクト ファイル内で次の依存関係宣言を使用して、このライブラリを参照できます。 現行バージョンは 1.0.0 です。    
 
 ```xml
 <dependency>
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs</artifactId>
-    <version>{VERSION}</version>
+    <version>1.0.0</version>
 </dependency>
 ```
 
@@ -49,50 +51,65 @@ Event Hubs は、拡張性の高いインジェスト システムで、1 秒あ
 
 単純なイベント パブリッシャーの場合は、Event Hubs クライアント クラス用の *com.microsoft.azure.eventhubs* パッケージと、Azure Service Bus メッセージング クライアントと共有される一般的な例外などのユーティリティ クラス用の *com.microsoft.azure.servicebus* パッケージをインポートします。 
 
+### <a name="declare-the-send-class"></a>Send クラスを宣言する
+
 次のサンプルでは、最初に、好みの Java 開発環境でコンソール/シェル アプリケーション用の新しい Maven プロジェクトを作成します。 クラスに `Send` という名前を付けます。     
 
 ```java
+package com.microsoft.azure.eventhubs.samples.send;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.microsoft.azure.eventhubs.ConnectionStringBuilder;
+import com.microsoft.azure.eventhubs.EventData;
+import com.microsoft.azure.eventhubs.EventHubClient;
+import com.microsoft.azure.eventhubs.PartitionSender;
+import com.microsoft.azure.eventhubs.EventHubException;
+
 import java.io.IOException;
-import java.nio.charset.*;
-import java.util.*;
+import java.nio.charset.Charset;
+import java.time.Instant;
+import java.util.Random;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ExecutorService;
 
-import com.microsoft.azure.eventhubs.*;
+public class Send {
 
-public class Send
-{
-    public static void main(String[] args) 
-            throws EventHubException, IOException
-    {
+    public static void main(String[] args)
+            throws EventHubException, ExecutionException, InterruptedException, IOException {
 ```
 
-名前空間とイベント ハブの名前を、イベント ハブの作成時に使用した値に置き換えます。
+### <a name="construct-connection-string"></a>接続文字列を作成する
+
+ConnectionStringBuilder クラスを使用して、Event Hubs クライアント インスタンスに渡す接続文字列の値を作成します。 プレースホルダーは、名前空間とイベント ハブの作成時に取得した値に置き換えます。
 
 ```java
-    final String namespaceName = "----ServiceBusNamespaceName-----";
-    final String eventHubName = "----EventHubName-----";
-    final String sasKeyName = "-----SharedAccessSignatureKeyName-----";
-    final String sasKey = "---SharedAccessSignatureKey----";
-    ConnectionStringBuilder connStr = new ConnectionStringBuilder(namespaceName, eventHubName, sasKeyName, sasKey);
+   final ConnectionStringBuilder connStr = new ConnectionStringBuilder()
+      .setNamespaceName("----NamespaceName-----")
+      .setEventHubName("----EventHubName-----")
+      .setSasKeyName("-----SharedAccessSignatureKeyName-----")
+      .setSasKey("---SharedAccessSignatureKey----");
 ```
+
+### <a name="send-events"></a>送信イベント
 
 次に、文字列を UTF-8 バイト エンコードに変換して単数のイベントを作成します。 その後、接続文字列から新しい Event Hubs クライアント インスタンスを作成し、メッセージを送信します。   
 
 ```java 
+byte[] payloadBytes = "Test AMQP message from JMS".getBytes("UTF-8");
+EventData sendEvent = new EventData(payloadBytes);
 
-    byte[] payloadBytes = "Test AMQP message from JMS".getBytes("UTF-8");
-    EventData sendEvent = new EventData(payloadBytes);
-
-    EventHubClient ehClient = EventHubClient.createFromConnectionStringSync(connStr.toString());
-    ehClient.sendSync(sendEvent);
+final EventHubClient ehClient = EventHubClient.createSync(connStr.toString(), executorService);
+ehClient.sendSync(sendEvent);
     
-    // close the client at the end of your program
-    ehClient.closeSync();
-    }
-}
+// close the client at the end of your program
+ehClient.closeSync();
 
 ``` 
 
 ## <a name="next-steps"></a>次の手順
+
 Event Hubs の詳細については、次のリンク先を参照してください:
 
 * [EventProcessorHost を使用してイベントを受信する](event-hubs-java-get-started-receive-eph.md)
@@ -102,3 +119,5 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 <!-- Links -->
 [Event Hubs overview]: event-hubs-overview.md
+[無料アカウント]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
+

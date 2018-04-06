@@ -1,23 +1,23 @@
 ---
-title: ".NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする | Microsoft Docs"
-description: "このトピックでは、.NET で Azure Active Directory (Azure AD) Authentication を使用して Azure Media Services (AMS) API にアクセスする方法を示します。"
+title: .NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする | Microsoft Docs
+description: このトピックでは、.NET で Azure Active Directory (Azure AD) Authentication を使用して Azure Media Services (AMS) API にアクセスする方法を示します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: Juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: media-services
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/17/2017
+ms.date: 03/27/2018
 ms.author: juliako
-ms.openlocfilehash: a9355200a05a3aa1b494b76977d38ddc42bfe179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8817bb0da526769470e96b63b9c80620309757bf
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="use-azure-ad-authentication-to-access-azure-media-services-api-with-net"></a>.NET で Azure AD Authentication を使用して Azure Media Services API にアクセスする
 
@@ -36,7 +36,7 @@ Azure Media Services で Azure AD Authentication を使用する場合は、次�
 - **サービス プリンシパルの認証**: サービスを認証します。 この認証方法がよく使用されるアプリケーションは、デーモン サービス、中間層サービス、またはスケジュールされたジョブを実行するアプリ (例: Web アプリ、関数アプリ、ロジック アプリ、API、マイクロサービス) です。
 
 >[!IMPORTANT]
->現在、Azure Media Services では Azure Access Control Service 認証モデルがサポートされています。 しかし、Access Control 承認は 2018 年 6 月 1 日に廃止される予定です。 できるだけ早く Azure Active Directory 認証モデルに移行することをお勧めします。
+>現在、Azure Media Services では Azure Access Control Service 認証モデルがサポートされています。 しかし、Access Control 承認は 2018 年 6 月 22 日に廃止される予定です。 できるだけ早く Azure Active Directory 認証モデルに移行することをお勧めします。
 
 ## <a name="get-an-azure-ad-access-token"></a>Azure AD アクセス トークンを取得する
 
@@ -185,6 +185,6 @@ Media Services に対するプログラミングを開始するには、サー�
         }
     }
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 [アカウントへのファイルのアップロード](media-services-dotnet-upload-files.md)を開始します。

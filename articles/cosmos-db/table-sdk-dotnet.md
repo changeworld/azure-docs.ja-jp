@@ -1,24 +1,24 @@
 ---
-title: "Azure CosmosDB Table API .NET SDK とリソース | Microsoft Docs"
-description: "リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。"
+title: Azure CosmosDB Table API .NET SDK とリソース | Microsoft Docs
+description: リリース日、提供終了日、各バージョン間で行われた変更など、Azure Cosmos DB Table API に関するすべてについて説明します。
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
 manager: jhubbard
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 03/26/2018
 ms.author: mimig
-ms.openlocfilehash: af14e9dbd5f65d5cefa3d9424b8628f10d8160da
-ms.sourcegitcommit: 12fa5f8018d4f34077d5bab323ce7c919e51ce47
+ms.openlocfilehash: 2afd7df65e7b223845752fc6bea5bc0ab4d3efd8
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/23/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="azure-cosmos-db-table-net-api-download-and-release-notes"></a>Azure Cosmos DB Table .NET API: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
@@ -40,6 +40,11 @@ ms.lasthandoff: 02/23/2018
 >
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name111111"></a><a name="1.1.1"/>1.1.1
+* 直接モードで無効な ETAG の検証が追加されました。
+* ゲートウェイ モードで LINQ クエリ バグが修正されました。
+* 同期 API が SynchronizationContext によってスレッド プールで実行されるようになりました。
 
 ### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
 * TableQueryMaxItemCount、TableQueryEnableScan、TableQueryMaxDegreeOfParallelism、および TableQueryContinuationTokenLimitInKb を TableRequestOptions に追加
@@ -63,6 +68,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.1.1](#1.1.1) |2018 年 3 月 26 日|--- |
+| [1.1.0](#1.1.0) |2018 年 2 月 21 日|--- |
 | [1.0.0](#1.0.0) |2017 年 11 月 15 日|--- |
 | [0.9.0 - プレビュー](#0.9.0-preview) |2017 年 11 月 11 日 |--- |
 

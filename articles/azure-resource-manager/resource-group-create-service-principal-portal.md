@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/12/2018
+ms.date: 03/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: c2b8498b2d32e2c3c7ed5dca3295ae6a98fa2676
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 264befc6c60b87d41658b4da763e477fbb7e3f8c
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="use-portal-to-create-an-azure-active-directory-application-and-service-principal-that-can-access-resources"></a>リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する
 
@@ -159,7 +159,7 @@ Azure サブスクリプションで、AD アプリをロールに割り当て�
 
    ![select role](./media/resource-group-create-service-principal-portal/select-role.png)
 
-1. アプリケーションを検索して選択します。
+1. 既定では、Azure Active Directory アプリケーションは、使用可能なオプションに表示されません。 目的のアプリケーションを見つけるには、その名前を検索フィールドに指定する必要があります。 それを選択します。
 
    ![アプリを検索する](./media/resource-group-create-service-principal-portal/search-app.png)
 

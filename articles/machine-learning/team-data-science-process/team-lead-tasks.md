@@ -1,23 +1,23 @@
 ---
-title: "Team Data Science Process のチーム リーダーのタスク - Azure | Microsoft Docs"
-description: "データ サイエンス チーム プロジェクトのチーム リーダーのタスクの概要を説明します。"
-documentationcenter: 
+title: Team Data Science Process のチーム リーダーのタスク - Azure | Microsoft Docs
+description: データ サイエンス チーム プロジェクトのチーム リーダーのタスクの概要を説明します。
+documentationcenter: ''
 author: bradsev
 manager: cgronlun
 editor: cgronlun
-ms.assetid: 
+ms.assetid: ''
 ms.service: machine-learning
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2017
-ms.author: bradsev;
-ms.openlocfilehash: 58e8bfeb547fbcd7f472fbed50073b1ca3176b72
-ms.sourcegitcommit: 732e5df390dea94c363fc99b9d781e64cb75e220
+ms.author: bradsev
+ms.openlocfilehash: 85589dfd60a32a28cecf427a7f5668dc36f8f5f2
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/14/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="team-lead-tasks"></a>チーム リーダーのタスク
 
@@ -136,7 +136,7 @@ ms.lasthandoff: 11/14/2017
     ![11](./media/team-lead-tasks/team-leads-11-two-repo-in-team.png)
 
 
-## <a name="2-seed-your-team-projecttemplate-and-teamutilities-repositories"></a>手順 2.チーム の ProjectTemplate リポジトリと TeamUtilities リポジトリのシード処理
+## <a name="2-seed-your-team-projecttemplate-and-teamutilities-repositories"></a>2.チーム の ProjectTemplate リポジトリと TeamUtilities リポジトリのシード処理
 
 このシード処理の手順では、ローカル DSVM 上のディレクトリを中間ステージング サイトとして使用します。 チームの特定のニーズに合わせて **ProjectTemplate** リポジトリと **TeamUtilities** リポジトリをカスタマイズする必要がある場合は、以下の手順の最後から 2 番目の手順でカスタマイズします。 データ サイエンス チームの **MyTeamProjectTemplate** リポジトリと **MyTeamUtilities** リポジトリの内容をシード処理する手順の概要を次に示します。 個々の手順は、シード処理の手順のサブセクションに対応しています。
 
@@ -208,7 +208,7 @@ ms.lasthandoff: 11/14/2017
 
 ローカルの **GroupProjectTemplate** (D1) フォルダーの内容をローカルの **MyTeamProjectTemplate** (D3) にコピーするには、次のシェル スクリプトのいずれかを実行します。 
 
-####<a name="from-the-powershell-command-line-for-windows"></a>Windows の PowerShell コマンド ラインから実行        
+#### <a name="from-the-powershell-command-line-for-windows"></a>Windows の PowerShell コマンド ラインから実行       
 
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_win.ps1" -outfile "tdsp_local_copy_win.ps1"
     .\tdsp_local_copy_win.ps1 2
@@ -216,7 +216,7 @@ ms.lasthandoff: 11/14/2017
     
 ![16](./media/team-lead-tasks/team-leads-16-local_copy_team_lead_new.png)
 
-####<a name="from-the-linux-shell-for-the-linux-dsvm"></a>**Linux DSVM** の Linux シェルから実行
+#### <a name="from-the-linux-shell-for-the-linux-dsvm"></a>**Linux DSVM** の Linux シェルから実行
     
     wget "https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/TDSP/tdsp_local_copy_linux.sh"
     bash tdsp_local_copy_linux.sh 2
@@ -252,7 +252,7 @@ ms.lasthandoff: 11/14/2017
 
 次に、4 つの Git コマンドの同じセットを **GitRepos\MyTeam\MyTeamUtilities** ディレクトリから実行します。 
 
-> [AZURE.NOTE]Git リポジトリに初めてコミットする場合は、`git commit` コマンドを実行する前に、グローバル パラメーター *user.name* と *user.email* を構成する必要があります。 次の 2 つのコマンドを実行します。
+> [AZURE.NOTE]Git リポジトリに初めてコミットする場合は、`git commit` コマンドを実行する前に、グローバル パラメーター *user.name* と *user.email* を設定する必要があります。 次の 2 つのコマンドを実行します。
         
     git config --global user.name <your name>
     git config --global user.email <your email address>
@@ -262,7 +262,7 @@ ms.lasthandoff: 11/14/2017
 ![20](./media/team-lead-tasks/team-leads-20-git-config-name.png)
 
 
-## <a name="3-create-team-data-and-analytics-resources-optional"></a>3.チームのデータおよび分析リソースの作成 (省略可能)
+## <a name="3-create-team-data-and-analytics-resources-optional"></a>手順 3.チームのデータおよび分析リソースの作成 (省略可能)
 
 データおよび分析リソースをチーム全体で共有すると、パフォーマンスとコストの面でメリットが得られます。チーム メンバーは、共有リソースでプロジェクトを実行し、予算を節約して、より効率的に共同作業を行うことができます。 このセクションでは、Azure File Storage を作成する方法を説明します。 次のセクションでは、Azure File Storage をローカル マシンにマウントする方法を説明します。 Azure データ サイエンス仮想マシンや Azure HDInsight Spark クラスターなど、他のリソースを共有する方法の詳細については、[プラットフォームとツール](platforms-and-tools.md)に関する記事をご覧ください。 このトピックでは、ニーズに適したリソースの選択に関するデータ サイエンスの観点からのガイダンスを提供し、公開されている製品ページと他の関連する便利なチュートリアルへのリンクを示します。
 
@@ -388,7 +388,7 @@ Azure File Storage の情報ファイルがあるかどうかをたずねられ�
 
 **Azure File Storage の情報を手動で入力する方法:** Azure File Storage の情報がテキスト ファイルに保存されていない場合は、次の画面の指示に従って、必要なサブスクリプション、ストレージ アカウント、Azure File Storage の情報を入力できます。
 
-- 「**n**」と入力します。
+- 入力 **n**。
 - 前の手順で Azure File Storage が作成されたサブスクリプション名のインデックスを選択します。
 
     ![41](./media/team-lead-tasks/team-leads-41-attach-s5-linux.png)
@@ -408,7 +408,7 @@ Azure File Storage の情報ファイルがあるかどうかをたずねられ�
 
 ![44](./media/team-lead-tasks/team-leads-44-add-team-members.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 Team Data Science Process で定義されている役割とタスクの詳細な説明へのリンクを次に示します。
 

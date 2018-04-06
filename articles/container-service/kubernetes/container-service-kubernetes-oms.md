@@ -1,6 +1,6 @@
 ---
-title: "Azure Kubernetes クラスターの監視 - Operations Management"
-description: "Microsoft Operations Management Suite を使用した Azure Container Service での Kubernetes クラスターの監視"
+title: Azure Kubernetes クラスターの監視 - Operations Management
+description: Log Analytics を使用した Azure Container Service での Kubernetes クラスターの監視
 services: container-service
 author: bburns
 manager: timlt
@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: e8a68896c923d785fea84cef60f8d2015906f342
-ms.sourcegitcommit: 5d3e99478a5f26e92d1e7f3cec6b0ff5fbd7cedf
+ms.openlocfilehash: efe4b3a1a63fa1986682a2fdde1a20221dc5d93a
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/06/2017
+ms.lasthandoff: 03/28/2018
 ---
-# <a name="monitor-an-azure-container-service-cluster-with-microsoft-operations-management-suite-oms"></a>Microsoft Operations Management Suite (OMS) を使用して Azure Container Service クラスターを監視する
+# <a name="monitor-an-azure-container-service-cluster-with-log-analytics"></a>Log Analytics による Azure Container Service クラスターの監視
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
@@ -56,18 +56,19 @@ CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
 
-## <a name="monitoring-containers-with-operations-management-suite-oms"></a>Operations Management Suite (OMS) を使用したコンテナーの監視
+## <a name="monitoring-containers-with-log-analytics"></a>Log Analytics でコンテナーを監視する
 
-Microsoft Operations Management (OMS) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 コンテナー ソリューションは OMS Log Analytics の 1 つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを 1 つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
+Log Analytics は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。 コンテナー ソリューションは Log Analytics の 1 つのソリューションであり、コンテナー インベントリ、パフォーマンス、およびログを 1 つの場所で表示するのに役立ちます。 一元的な場所でログを表示して監査やコンテナーのトラブルシューティングを行い、ホスト上のノイズと消費の多いコンテナーを検索することができます。
 
 ![](media/container-service-monitoring-oms/image1.png)
 
 コンテナー ソリューションの詳細については、[Log Analytics のコンテナー ソリューション](../../log-analytics/log-analytics-containers.md)に関するページを参照してください。
 
-## <a name="installing-oms-on-kubernetes"></a>Kubernetes への OMS のインストール
+## <a name="installing-log-analytics-on-kubernetes"></a>Kubernetes に Log Analytics をインストールする
 
 ### <a name="obtain-your-workspace-id-and-key"></a>ワークスペース ID とキーを取得する
-OMS エージェントからサービスに通信するには、ワークスペース ID とワークスペース キーが構成されている必要があります。 ワークスペース ID とキーを取得するには、<https://mms.microsoft.com> で OMS アカウントを作成する必要があります。手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして ID とキーを取得する必要があります。
+OMS エージェントからサービスに通信するには、ワークスペース ID とワークスペース キーが構成されている必要があります。 ワークスペース ID とキーを取得するには、<https://mms.microsoft.com> でアカウントを作成する必要があります。
+手順に従ってアカウントを作成してください。 アカウントの作成が完了したら、次のように **[設定]**、**[接続されたソース]**、**[Linux サーバー]** の順にクリックして ID とキーを取得する必要があります。
 
  ![](media/container-service-monitoring-oms/image5.png)
 
@@ -84,13 +85,13 @@ $ kubectl create -f oms-daemonset.yaml
 ```
 
 ### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>Kubernetes シークレットを使用した OMS エージェントのインストール
-OMS ワークスペースの ID とキーを保護するには、DaemonSet YAML ファイルの一部とし Kubernetes シークレットを使うことができます。
+Log Analytics ワークスペースの ID とキーを保護するには、DaemonSet YAML ファイルの一部とし Kubernetes シークレットを使うことができます。
 
  - スクリプト、シークレット テンプレート ファイル、DaemonSet YAML ファイルを ([リポジトリ](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)から) コピーし、それらが同じディレクトリにあることを確認します。 
       - シークレット生成スクリプト: secret-gen.sh
       - シークレット テンプレート: secret-template.yaml
    - DaemonSet YAML ファイル: omsagent-ds-secrets.yaml
- - スクリプトを実行します。 スクリプトでは、OMS ワークスペースの ID と主キーの指定を求められます。 それを挿入すると、スクリプトによってシークレット YAML ファイルが作成されるので、それを実行します。   
+ - スクリプトを実行します。 スクリプトでは、Log Analytics ワークスペースの ID と主キーの指定を求められます。 それを挿入すると、スクリプトによってシークレット YAML ファイルが作成されるので、それを実行します。   
    ```
    #> sudo bash ./secret-gen.sh 
    ```

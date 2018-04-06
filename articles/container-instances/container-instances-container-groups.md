@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 03/20/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: 6f7f0d9aea86594140c302e6d12e6528e802b9e7
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: 3b1eeebacb55ffc7af4e2014f26dd9d5643f5478
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Azure Container Instances のコンテナー グループ
 
@@ -38,15 +38,15 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 > [!NOTE]
 > 複数コンテナー グループは、現在、Linux コンテナーに限定されています。 すべての機能を Windows コンテナーにも採り入れることに取り組んでいますが、現在のプラットフォームの違いは、「[Quotas and region availability for Azure Container Instances](container-instances-quotas.md)」(Azure Container Instances のクォータとリージョンの可用性) で確認できます。
 
-### <a name="deployment"></a>デプロイ
+## <a name="deployment"></a>デプロイ
 
-**コンテナー グループ**には、最小限のリソースとして 1 vCPU と 1 GB メモリが割り当てられています。 個々の**コンテナー**は、1 vCPU と 1 GB メモリ未満でプロビジョニングできます。 コンテナー グループ内では、コンテナー グループ レベルで確立された制限内で複数のコンテナーに配分するようにリソースをカスタマイズできます。 たとえば、それぞれが 0.5 vCPU を持つ 2 つのコンテナーを、1 vCPU が割り当てられたコンテナー グループ内に存在させることができます。
+コンテナー "*グループ*" には、最小限のリソースとして 1 vCPU と 1 GB メモリが割り当てられています。 コンテナー グループ内の個々の "*コンテナー*" は、1 vCPU と 1 GB メモリ未満でプロビジョニングできます。 コンテナー グループ内では、コンテナー グループ レベルで確立された制限内で複数のコンテナーに配分するようにリソースをカスタマイズできます。 たとえば、それぞれが 0.5 vCPU を持つ 2 つのコンテナーを、1 vCPU が割り当てられたコンテナー グループ内に存在させることができます。
 
-### <a name="networking"></a>ネットワーク
+## <a name="networking"></a>ネットワーク
 
 コンテナー グループは、IP アドレスと、その IP アドレス上のポートの名前空間を共有します。 外部クライアントがグループ内のコンテナーにアクセスできるようにするには、IP アドレスのポートをコンテナーから公開する必要があります。 グループ内のコンテナーがポートの名前空間を共有するため、ポートのマッピングはサポートされません。 グループ内のコンテナーは、ポートの localhost 経由で相互にアクセスできます。これは、これらのポートがグループの IP アドレスで外部的に公開されていない場合でも同じです。
 
-### <a name="storage"></a>Storage
+## <a name="storage"></a>Storage
 
 コンテナー グループにマウントする外部ボリュームを指定できます。 これらのボリュームは、グループの個別のコンテナーの特定のパスにマップできます。
 
@@ -57,12 +57,15 @@ Azure Container Instances の最上位のリソースは、*コンテナー グ�
 次のような使用例が考えられます。
 
 * アプリケーション コンテナーとログ記録コンテナー。 ログ記録コンテナーは、メイン アプリケーションによって出力されるログとメトリックを収集し、長期保存される記憶域に書き込みます。
-* アプリケーションと監視コンテナー。 監視コンテナーは、要求を定期的にアプリケーションに送信して、アプリケーションが実行中であり、正常に応答していることを確認します。そうでない場合はアラートを発生させます。
+* アプリケーション コンテナーと監視コンテナー。 監視コンテナーは、要求を定期的にアプリケーションに送信して、アプリケーションが実行中であり、正常に応答していることを確認します。そうでない場合はアラートを発生させます。
 * Web アプリケーションにサービスを提供するコンテナーとソース管理から最新のコンテンツをプルするコンテナー。
 
 ## <a name="next-steps"></a>次の手順
 
-Azure Resource Manager テンプレートを使用して[マルチコンテナー グループをデプロイする](container-instances-multi-container-group.md)方法を確認します。
+Azure Resource Manager テンプレートを使用してマルチコンテナーのコンテナー グループをデプロイする方法を確認します。
+
+> [!div class="nextstepaction"]
+> [コンテナー グループのデプロイ](container-instances-multi-container-group.md)
 
 <!-- IMAGES -->
 [container-groups-example]: ./media/container-instances-container-groups/container-groups-example.png

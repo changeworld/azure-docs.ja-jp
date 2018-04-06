@@ -1,24 +1,19 @@
 ---
-title: "Azure Automation DSC の概要 | Microsoft Docs"
-description: "Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題"
+title: Azure Automation DSC Overview
+description: Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題
+keywords: powershell dsc, 必要な状態の構成, powershell dsc azure
 services: automation
-documentationcenter: dev-center-name
-author: georgewallace
-manager: carmonm
-keywords: "powershell dsc, 必要な状態の構成, powershell dsc azure"
-ms.assetid: fd40cb68-c1a6-48c3-bba2-710b607d1555
 ms.service: automation
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: powershell
-ms.workload: TBD
-ms.date: 06/15/2017
+author: georgewallace
 ms.author: gwallace
-ms.openlocfilehash: 7440fa58f9cbd201984d178a7e9a2c12afc84783
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.date: 03/15/2018
+ms.topic: article
+manager: carmonm
+ms.openlocfilehash: 3949b79c3729ecdc2dfdd6297a5f10852e061540
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC Overview
 
@@ -45,8 +40,8 @@ Azure Portal から、または PowerShell から、すべての DSC 構成、�
 ### <a name="import-reporting-data-into-log-analytics"></a>Log Analytics へのレポート データのインポート
 
 Azure Automation DSC で管理されているノードは、組み込みのプル サーバーに詳細なレポート ステータス データを送信します。
-Azure Automation DSC を構成して、このデータを Microsoft Operations Management Suite (OMS) Log Analytics ワークスペースに送信できます。
-Log Analytics ワークスペースに DSC ステータス データを送信する方法については、「[OMS Log Analytics への Azure Automation DSC レポート データの転送](automation-dsc-diagnostics.md)」を参照してください。
+Azure Automation DSC を構成して、このデータを Log Analytics ワークスペースに送信できます。
+Log Analytics ワークスペースに DSC ステータス データを送信する方法については、「[Log Analytics への Azure Automation DSC レポート データの転送](automation-dsc-diagnostics.md)」を参照してください。
 
 ## <a name="introduction-video"></a>紹介ビデオ
 
@@ -58,7 +53,7 @@ Log Analytics ワークスペースに DSC ステータス データを送信す
 
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3467/player]
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * Azure Automation DSC で管理対象ノードをオンボードにする方法は、「[Azure Automation DSC による管理のためのマシンのオンボード](automation-dsc-onboarding.md)」を参照してください。
 * Azure Automation DSC の使用の概要は、「[Azure Automation DSC の使用](automation-dsc-getting-started.md)」をご覧ください。

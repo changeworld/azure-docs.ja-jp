@@ -1,31 +1,35 @@
 ---
-title: "Azure Cosmos DB の一貫性レベル | Microsoft Docs"
-description: "Azure Cosmos DB には、結果的な一貫性、可用性、待機時間のトレードオフを調整できる 5 つの一貫性レベルがあります。"
-keywords: "eventual 一貫性, azure cosmos db, azure, Microsoft azure"
+title: Azure Cosmos DB の一貫性レベル | Microsoft Docs
+description: Azure Cosmos DB には、結果的な一貫性、可用性、待機時間のトレードオフを調整できる 5 つの一貫性レベルがあります。
+keywords: eventual 一貫性, azure cosmos db, azure, Microsoft azure
 services: cosmos-db
 author: mimig1
 manager: jhubbard
 editor: cgronlun
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: 3fe51cfa-a889-4a4a-b320-16bf871fe74c
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/12/2018
+ms.date: 03/27/2018
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c3bd28316e3d2e7596021d6964594002d47d160a
-ms.sourcegitcommit: b32d6948033e7f85e3362e13347a664c0aaa04c1
+ms.openlocfilehash: 5b0e46eb001e0b100ad1e181b02c18cfe67648f9
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の調整可能なデータの一貫性レベル
 Azure Cosmos DB は、すべてのデータ モデルについて、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証と、明確に定義された複数の緩やかな一貫性モデルが提供されます。 現在、Azure Cosmos DB では、厳密、有界整合性制約、セッション、最終的の 5 つの整合性レベルが用意されています。 有界整合性制約、セッション、一貫性のあるプレフィックス、および最終的は、厳密より一貫性が低いので "緩やかな一貫性モデル" と呼ばれます。厳密は、使用できる最も一貫性の高いモデルです。 
 
 分散データベースが一般的に提供している**厳密**と**最終的の一貫性**モデルに加え、Azure Cosmos DB では、注意深く体系化、運用化された一貫性モデルとして、**有界整合性制約**、**セッション**、**一貫性のあるプレフィックス**の 3 つがさらに提供されています。 これらの各一貫性レベルの有用性は、現実のユース ケースに対して検証されています。 これら 5 つの一貫性レベルが揃っているため、一貫性、可用性、待機時間の最適なトレードオフを根拠を持って検討することができます。 
+
+次の動画では、Azure Cosmos DB プログラム マネージャーの Andrew Liu がターン キー グローバル分散機能を紹介します。
+
+>[!VIDEO https://www.youtube.com/embed/-4FsGysVD14]
 
 ## <a name="distributed-databases-and-consistency"></a>分散データベースと一貫性
 分散型の商用データベースは、2 つのカテゴリに分けることができます。1 つは整合性に関して明確に定義された証明可能な選択肢が用意されていないデータベース、もう 1 つはプログラム面で大きく異なる 2 つの選択肢 (厳密な整合性と結果整合性) が存在するデータベースです。 
@@ -60,6 +64,7 @@ Azure Cosmos DB は、包括的な 99.99% の [SLA](https://azure.microsoft.com/
 ## <a name="consistency-levels"></a>一貫性レベル
 データベース アカウントには既定の一貫性レベルを構成できます。既定の一貫性レベルは、対象となる Cosmos DB アカウント下のすべてのコレクション (およびデータベース) に適用されます。 既定では、ユーザー定義リソースに対して発行されたすべての読み取りとクエリに、データベース アカウントに指定された既定の一貫性レベルが使用されます。 サポートされている各 API の特定の読み取り/クエリ要求の一貫性レベルを緩和することもできます。 このセクションに示されているように、Azure Cosmos DB のレプリケーション プロトコルによって 5 種類の一貫性レベルがサポートされており、特定の一貫性の保証とパフォーマンスの間の明確なトレードオフを実現しています。
 
+<a id="strong"></a>
 **Strong**: 
 
 * Strong 一貫性では、[線形化可能性](https://aphyr.com/posts/313-strong-consistency-models)が保証されます。ここでは読み取りに対して最新バージョンのアイテムを返すことが保証されています。 
@@ -67,6 +72,7 @@ Azure Cosmos DB は、包括的な 99.99% の [SLA](https://azure.microsoft.com/
 * Strong 一貫性を使用するように構成された Azure Cosmos DB アカウントでは、複数の Azure リージョンをその Azure Cosmos DB アカウントに関連付けることができません。  
 * "厳密な" 整合性を使用した場合の (消費される [要求ユニット](request-units.md) に関する) 読み取り操作のコストは "セッション" 整合性や "最終的" 整合性よりも高いものの、有界整合性制約と同じです。
 
+<a id="bounded-staleness"></a>
 **Bounded Staleness**: 
 
 * Bounded Staleness 一貫性では、最大でアイテムの *K* 個のバージョンまたはプレフィックスあるいは期間 *t* の分だけ、読み取りが書き込みに対し遅れることが保証されます。 
@@ -76,6 +82,7 @@ Azure Cosmos DB は、包括的な 99.99% の [SLA](https://azure.microsoft.com/
 * Bounded Staleness 一貫性が構成された Azure Cosmos DB アカウントでは、任意の数の Azure リージョンをその Azure Cosmos DB アカウントと関連付けることができます。 
 * "有界整合性制約" を使用した場合の (消費される RU に関する) 読み取り操作のコストは "セッション" 整合性や "最終的" 整合性よりも高いものの、"厳密な" 整合性と同じです。
 
+<a id="session"></a>
 **Session**: 
 
 * Strong と Bounded Staleness の一貫性レベルで得られるグローバルな一貫性モデルとは異なり、Session 一貫性はクライアント セッションを対象とします。 
@@ -91,6 +98,7 @@ Azure Cosmos DB は、包括的な 99.99% の [SLA](https://azure.microsoft.com/
 * また、読み取りでは決して順不同の書き込みが確認されないことが保証されます。 書き込みが `A, B, C` の順で実行された場合、クライアントでは `A`、`A,B`、または `A,B,C` が確認されますが、`A,C` または `B,A,C` などの順不同が確認されることはありません。
 * 一貫性のあるプレフィックスが構成された Azure Cosmos DB アカウントでは、任意の数の Azure リージョンをその Azure Cosmos DB アカウントと関連付けることができます。 
 
+<a id="eventual"></a>
 **Eventual**: 
 
 * Eventual 一貫性では、長期間書き込みがない場合にグループ内のレプリカがやがて収束することが保証されます。 
@@ -125,19 +133,12 @@ Azure Cosmos DB は現在 MongoDB バージョン 3.4 を実装しています�
 ## <a name="next-steps"></a>次の手順
 一貫性レベルとトレードオフの詳細については、以下の資料を参照してください。
 
-* Doug Terry 著: Replicated Data Consistency Explained Through Baseball (レプリケート データの一貫性を野球にたとえると) (ビデオ)   
-  [https://www.youtube.com/watch?v=gluIh8zd26I](https://www.youtube.com/watch?v=gluIh8zd26I)
-* Doug Terry 著: Replicated Data Consistency Explained Through Baseball (レプリケート データの一貫性を野球にたとえると)   
-  [http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)
-* Doug Terry 著: Session Guarantees for Weakly Consistent Replicated Data (弱一貫性レプリケート データのためのセッション保証)   
-  [http://dl.acm.org/citation.cfm?id=383631](http://dl.acm.org/citation.cfm?id=383631)
-* Daniel Abadi 著: Consistency Tradeoffs in Modern Distributed Database Systems Design: CAP is only part of the story (先進的な分散データベース システム設計における一貫性のトレードオフ: CAP 以外の考慮事項について)   
-  [http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)
-* Peter Bailis、Shivaram Venkataraman、Michael J. Franklin、Joseph M.   
-  [http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)
-* Werner Vogels 著: Eventual Consistent - Revisited (結果的な一貫性 - 改訂版)    
-  [http://allthingsdistributed.com/2008/12/eventually_consistent.html](http://allthingsdistributed.com/2008/12/eventually_consistent.html)
-* Moni Naor、Avishai Wool 著: The Load, Capacity, and Availability of Quorum Systems (クォーラム システムの負荷、容量、および可用性), SIAM Journal on Computing, v.27 n.2, p.423-447, April 1998
-  [http://epubs.siam.org/doi/abs/10.1137/S0097539795281232](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)
-* Sebastian Burckhardt、Chris Dern、Macanal Musuvathi、Roy Tan 著: Line-up: a complete and automatic linearizability checker, (Line-up: 完全自動線形化可能性検査器), Proceedings of the 2010 ACM SIGPLAN conference on Programming language design and implementation, June 05-10, 2010, Toronto, Ontario, Canada [doi>10.1145/1806596.1806634] [http://dl.acm.org/citation.cfm?id=1806634](http://dl.acm.org/citation.cfm?id=1806634)
-* Peter Bailis、Shivaram Venkataraman、Michael J. Franklin、Joseph M. Hellerstein、Ion Stoica 著: Probabilistically bounded staleness for practical partial quorums (現実的なパーシャル クォーラムのための Probabilistic Bounded Staleness), Proceedings of the VLDB Endowment, v.5 n.8, p.776-787, April 2012 [http://dl.acm.org/citation.cfm?id=2212359](http://dl.acm.org/citation.cfm?id=2212359)
+* 「[Replicated Data Consistency Explained Through Baseball (レプリケート データの一貫性を野球にたとえると) (Doug Terry によるビデオ)](https://www.youtube.com/watch?v=gluIh8zd26I)」
+* 「[Replicated Data Consistency Explained Through Baseball (レプリケート データの一貫性を野球にたとえると) (Doug Terry によるホワイトペーパー)](http://research.microsoft.com/pubs/157411/ConsistencyAndBaseballReport.pdf)」
+* 「[Session Guarantees for Weakly Consistent Replicated Data (弱一貫性レプリケート データのためのセッション保証)](http://dl.acm.org/citation.cfm?id=383631)」
+* 「[Consistency Tradeoffs in Modern Distributed Database Systems Design: CAP is only part of the story (先進的な分散データベース システム設計における一貫性のトレードオフ: CAP 以外の考慮事項について)](http://computer.org/csdl/mags/co/2012/02/mco2012020037-abs.html)」
+* 「[Probabilistic Bounded Staleness (PBS) for Practical Partial Quorums (現実的なパーシャル クォーラムのための Probabilistic Bounded Staleness (PBS))](http://vldb.org/pvldb/vol5/p776_peterbailis_vldb2012.pdf)」
+* 「[Eventual Consistent - Revisited (結果的な一貫性 - 改訂版)](http://allthingsdistributed.com/2008/12/eventually_consistent.html)」
+* 「[The Load, Capacity, and Availability of Quorum Systems (クォーラム システムの負荷、容量、および可用性), SIAM Journal on Computing](http://epubs.siam.org/doi/abs/10.1137/S0097539795281232)」
+* 「[Line-up: a complete and automatic linearizability checker, Proceedings of the 2010 ACM SIGPLAN conference on Programming language design and implementation (ラインナップ: 完全かつ自動化された不可分操作チェッカー、プログラミング言語の設計と実装に関する 2010 ACM SIGPLAN カンファレンスの議事録)](http://dl.acm.org/citation.cfm?id=1806634)」
+* 「[Probabilistically bounded staleness for practical partial quorums (現実的なパーシャル クォーラムのための確率的有界整合性制約)](http://dl.acm.org/citation.cfm?id=2212359)」

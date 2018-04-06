@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack 1710 更新プログラム (ビルド 20171020.1) | Microsoft Docs"
-description: "Azure Stack 統合システムの 1710 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。"
+title: Azure Stack 1710 更新プログラム (ビルド 20171020.1) | Microsoft Docs
+description: Azure Stack 統合システムの 1710 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: 135314fd-7add-4c8c-b02a-b03de93ee196
 ms.service: azure-stack
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: mabrigg
 ms.openlocfilehash: 1a482f1d2f3eef8775bb7b64d4f6749f69fa5471
-ms.sourcegitcommit: 09a2485ce249c3ec8204615ab759e3b58c81d8cd
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/13/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-stack-1710-update-build-201710201"></a>Azure Stack 1710 更新プログラム (ビルド 20171020.1)
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 02/13/2018
  
 ### <a name="windows-server-2016-improvements-and-fixes"></a>Windows Server 2016 の機能強化と修正
 
-- Windows Server 2016 の更新プログラム: 2017 年 10 月 10 日 - KB4041691 (OS ビルド 14393.1770)。 詳しくは、[https://support.microsoft.com/help/4041691](https://support.microsoft.com/help/4041691) をご覧ください。
+- Windows Server 2016 の更新プログラム: 2017 年 10 月 10 日 - KB4041691 (OS ビルド 14393.1770)。 詳細については、「[https://support.microsoft.com/help/4041691](https://support.microsoft.com/help/4041691)」を参照してください。
 
 ### <a name="additional-quality-improvements-and-fixes"></a>追加の機能強化と修正
 
@@ -86,7 +86,7 @@ ms.lasthandoff: 02/13/2018
 - ユーザー サブスクリプションを削除すると、リソースが孤立します。 回避策として、まず、ユーザー リソースまたはリソース グループ全体を削除してから、ユーザー サブスクリプションを削除します。
 - Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 回避策として、PowerShell を使用してアクセス許可を確認できます。
   
-### <a name="backup"></a>Backup
+### <a name="backup"></a>バックアップ
 
 - **[Infrastructure backup]\(インフラストラクチャのバックアップ\)** ブレードでインフラストラクチャのバックアップは有効にしないでください。
 

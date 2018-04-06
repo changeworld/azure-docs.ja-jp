@@ -1,8 +1,8 @@
 ---
-title: "Azure Toolkit for Eclipse: HDInsight Spark 向けの Scala アプリケーションの作成 | Microsoft Docs"
-description: "Azure Toolkit for Eclipse の HDInsight ツールを使用して Scala で記述された Spark アプリケーションを開発し、Eclipse IDE から直接、HDInsight Spark クラスターに送信します。"
+title: 'Azure Toolkit for Eclipse: HDInsight Spark 向けの Scala アプリケーションの作成 | Microsoft Docs'
+description: Azure Toolkit for Eclipse の HDInsight ツールを使用して Scala で記述された Spark アプリケーションを開発し、Eclipse IDE から直接、HDInsight Spark クラスターに送信します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/30/2017
 ms.author: nitinme
-ms.openlocfilehash: 8ac118593ecc93a2dd9e53ff7ad9ecf13daef017
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 4ff67ebcbac5b1b85345421b16036c96f8e807cc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
 
@@ -51,6 +51,8 @@ Eclipse の起動時に、Scala プラグインがインストールされてい
 
 ![Scala プラグインの自動インストール](./media/apache-spark-eclipse-tool-plugin/auto-install-scala.png)
 
+[Azure サブスクリプションにサインイン](#Sign-in-to-your-Azure-subscription)するか、[HDInsight クラスターをリンク](#Link-a-cluster)して開始できます。Ambari のユーザー名/パスワードまたはドメイン参加の資格情報を利用してください。 
+
 ## <a name="sign-in-to-your-azure-subscription"></a>Azure サブスクリプションにサインインします。
 1. Eclipse IDE を起動し、Azure Explorer を開きます。 **[Window]\(ウィンドウ\)** メニューの **[Show View]\(ビューの表示\)** を選択し、**[Other]\(その他\)** を選択します。 表示されたダイアログ ボックスで **[Azure]** を展開し、**[Azure Explorer]** を選択して、**[OK]** を選択します。
 
@@ -75,12 +77,13 @@ Ambari 管理対象ユーザー名を使用することで、ノーマル クラ
 
    ![リンク クラスターのコンテキスト メニュー](./media/apache-spark-intellij-tool-plugin/link-a-cluster-context-menu.png)
 
-2. **[クラスター名]**、**[ストレージ アカウント]**、**[ストレージ キー]** を入力し、**[ストレージ コンテナー]** からコンテナーを選択し、最後に [ユーザー名] と [パスワード] を入力します。 [OK] をクリックしてクラスターをリンクします。
+2. **[クラスター名]**、**[ユーザー名]**、**[パスワード]** を入力し、[OK] ボタンをクリックしてクラスターをリンクします。 任意で、[ストレージ アカウント] と [ストレージ キー] を入力し、左のツリー ビューでストレージ エクスプローラーに [ストレージ コンテナー] を選択します。
    
    ![リンク クラスターのダイアログ](./media/apache-spark-eclipse-tool-plugin/link-cluster-dialog.png)
    
    > [!NOTE]
    > クラスターが Azure サブスクリプションにログインし、かつクラスターにリンクしていた場合、リンクされたストレージ キー、ユーザー名、パスワードを使用します。
+   > ![Eclipse のストレージ エクスプローラー](./media/apache-spark-eclipse-tool-plugin/storage-explorer-in-Eclipse.png)
 
 3. 入力した情報が正しい場合、[OK] をクリックすると **[HDInsight]** ノードに [リンク済み] クラスターが表示されます。 これでリンクされたクラスターにアプリケーションを送信できるようになりました。
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
 ms.author: billmath
-ms.openlocfilehash: 67f6ca36c334a60b634094f07e5d9696a6961eb8
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: d026009151f85a01f14ce4dd8a510f60ff407da1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
@@ -32,7 +32,7 @@ Azure Active Directory (Azure AD) シームレス シングル サインオン (
 
 次の前提条件が満たされていることを確認します。
 
-* **Azure AD Connect サーバーがセットアップされている**: サインイン方法として[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)を使用する場合、他に確認すべき前提条件はありません。 サインイン方法として[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)を使用する場合や、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
+* **Azure AD Connect サーバーがセットアップされている**: サインイン方法として[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)を使用する場合、他に確認すべき前提条件はありません。 サインイン方法として[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-hash-synchronization.md)を使用する場合や、Azure AD Connect と Azure AD の間にファイアウォールがある場合は、次の点を確認してください。
    - Azure AD Connect バージョン 1.1.644.0 以降を使用している。 
    - ファイアウォールまたはプロキシで DNS ホワイトリストを許可している場合は、**\*.msappproxy.net** の URL に対するポート 443 での接続をホワイトリストに登録します。 そうでない場合は、毎週更新される [Azure データセンターの IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可します。 この前提条件は、その機能を有効にした場合にのみ適用されます。 実際のユーザー サインインに必要な条件ではありません。
 

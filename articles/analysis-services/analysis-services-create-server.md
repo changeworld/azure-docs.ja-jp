@@ -1,12 +1,12 @@
 ---
-title: "Azure で Analysis Services サーバーを作成する | Microsoft Docs"
-description: "Azure で Analysis Services サーバーのインスタンスを作成する方法について説明します。"
+title: Azure で Analysis Services サーバーを作成する | Microsoft Docs
+description: Azure で Analysis Services サーバーのインスタンスを作成する方法について説明します。
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 7f560216-8a9a-4d06-852e-48cf24deab19
 ms.service: analysis-services
 ms.devlang: NA
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 02/14/2018
 ms.author: owend
-ms.openlocfilehash: 54b9c9df1c368575c271a44e4738a2fc25ac4798
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 9a80d7e6e9f24ccc730fe747fa0a71b91f22b7e9
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Azure Portal で Azure Analysis Services サーバーを作成する
 この記事では、Azure サブスクリプションで Analysis Services サーバー リソースを作成する手順について説明します。
@@ -36,7 +36,7 @@ ms.lasthandoff: 02/21/2018
 > 
 > 
 
-## <a name="to-create-a-server-in-azure-portal"></a>Azure Portal でサーバーを作成するには
+## <a name="to-create-a-server-in-the-azure-portal"></a>Azure Portal でサーバーを作成するには
 1. [Azure Portal](https://portal.azure.com) にサインインします。  
 2. **[+ 新規]** > **[データ + 分析]** > **[Analysis Services]** の順にクリックします。
 3. **[Analysis Services]** ブレードで、必要なフィールドを入力して **[作成]** をクリックします。

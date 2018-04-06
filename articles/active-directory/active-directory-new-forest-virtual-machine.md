@@ -1,12 +1,12 @@
 ---
-title: "Azure Virtual Network での Active Directory フォレストのインストール | Microsoft Docs"
-description: "Azure Virtual Network 上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。"
+title: Azure Virtual Network での Active Directory フォレストのインストール | Microsoft Docs
+description: Azure Virtual Network 上の仮想マシン (VM) に新しい Active Directory フォレストを作成する手順について説明したチュートリアルです。
 services: active-directory, virtual-network
-keywords: "Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ  "
-documentationcenter: 
+keywords: 'Active Directory 仮想マシン, Active Directory フォレストのインストール, Azure Active Directory ビデオ  '
+documentationcenter: ''
 author: MicrosoftGuyJFlo
 manager: mtillman
-tags: 
+tags: ''
 ms.assetid: eb7170d0-266a-4caa-adce-1855589d65d1
 ms.service: active-directory
 ms.devlang: na
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 12/06/2017
 ms.author: joflore
-ms.openlocfilehash: c98082b7d839490410132f19fdbf653c61d7165c
-ms.sourcegitcommit: 1fbaa2ccda2fb826c74755d42a31835d9d30e05f
+ms.openlocfilehash: 0b98b475f49847589398ca743fc3ac3b8bcbb381
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/22/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="install-a-new-active-directory-forest-on-an-azure-virtual-network"></a>Azure Virtual Network での新しい Active Directory フォレストのインストール
 この記事では、[Azure の仮想ネットワーク](../virtual-network/virtual-networks-overview.md)上の仮想マシン (VM) に新しい Windows Server Active Directory 環境を作成する方法について説明します。 この場合、Azure の仮想ネットワークはオンプレミスのネットワークには接続されません。

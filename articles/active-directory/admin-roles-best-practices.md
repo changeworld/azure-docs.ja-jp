@@ -11,11 +11,11 @@ ms.service: active-directory
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: martincoetzer, MarkMorow
-ms.openlocfilehash: 166171dc8d8d694ef253ed6809c53b54577535e2
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 98665ab215c98ea60273ce3aae2757cf20817a90
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Azure AD でのハイブリッドおよびクラウド デプロイ用の特権アクセスをセキュリティで保護する
 
@@ -156,7 +156,7 @@ Azure AD Privileged Identity Management を有効にした後、グローバル�
 
 #### <a name="turn-on-password-synchronization"></a>パスワード同期を有効にする
 
-パスワード同期は、オンプレミスの Active Directory インスタンスからクラウドベースの Azure Active Directory インスタンスにユーザー パスワード ハッシュのハッシュを同期するときに使用する機能です。 Active Directory フェデレーション サービス (AD FS) または他の ID プロバイダーでフェデレーションを使用する場合でも、AD サーバーや ADFS サーバーなどのオンプレミスのインフラストラクチャがエラーになるか一時的に利用不可になった場合のバックアップとしてパスワード同期を設定することもできます。 これにより、ユーザーは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じパスワードを使用してサービスにサインインできます。 また、ユーザーが Azure AD に接続されていない他のサービスと同じ電子メール アドレスおよびパスワードを利用している場合に、Identity Protection では、これらのパスワード ハッシュを侵害が検知されたパスワードと比較して、侵害された資格情報を検出できます。  詳しくは、「[Azure AD Connect 同期を使用したパスワード同期の実装](./connect/active-directory-aadconnectsync-implement-password-synchronization.md)」をご覧ください。
+パスワード同期は、オンプレミスの Active Directory インスタンスからクラウドベースの Azure Active Directory インスタンスにユーザー パスワード ハッシュのハッシュを同期するときに使用する機能です。 Active Directory フェデレーション サービス (AD FS) または他の ID プロバイダーでフェデレーションを使用する場合でも、AD サーバーや ADFS サーバーなどのオンプレミスのインフラストラクチャがエラーになるか一時的に利用不可になった場合のバックアップとしてパスワード同期を設定することもできます。 これにより、ユーザーは、オンプレミスの Active Directory インスタンスにサインインするときに使うものと同じパスワードを使用してサービスにサインインできます。 また、ユーザーが Azure AD に接続されていない他のサービスと同じ電子メール アドレスおよびパスワードを利用している場合に、Identity Protection では、これらのパスワード ハッシュを侵害が検知されたパスワードと比較して、侵害された資格情報を検出できます。  詳細については、「[Azure AD Connect 同期を使用したパスワード ハッシュ同期の実装](./connect/active-directory-aadconnectsync-implement-password-hash-synchronization.md)」をご覧ください。
 
 #### <a name="require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users"></a>すべての特権ロールに属するユーザーおよび露出しているユーザーに多要素認証 (MFA) を要求する
 

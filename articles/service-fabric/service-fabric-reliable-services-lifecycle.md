@@ -1,12 +1,12 @@
 ---
-title: "Azure Service Fabric Reliable Services のライフサイクルの概要 | Microsoft Docs"
-description: "Service Fabric Reliable Services のさまざまなライフサイクル イベントに関する説明"
+title: Azure Service Fabric Reliable Services のライフサイクルの概要 | Microsoft Docs
+description: Service Fabric Reliable Services のさまざまなライフサイクル イベントに関する説明
 services: Service-Fabric
 documentationcenter: .net
 author: masnider
 manager: timlt
 editor: vturecek;
-ms.assetid: 
+ms.assetid: ''
 ms.service: Service-Fabric
 ms.devlang: dotnet
 ms.topic: article
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: ebfe23ea1e07e7578e8bd352a482ecb1016829de
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: 9cb017997c528c987403186097599a721ee591bc
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/21/2017
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services のライフサイクルの概要
 > [!div class="op_single_selector"]
-> * [Windows での C# ](service-fabric-reliable-services-lifecycle.md)
+> * [Windows での C#](service-fabric-reliable-services-lifecycle.md)
 > * [Linux での Java](service-fabric-reliable-services-lifecycle-java.md)
 >
 >
@@ -47,7 +47,7 @@ Azure Service Fabric Reliable Services のライフサイクルについて考�
 2. 次に、2 つのことが並行して行われます。
     - `StatelessService.CreateServiceInstanceListeners()` が呼び出され、返されたリスナーはすべて開かれます。 `ICommunicationListener.OpenAsync()` が各リスナーに呼び出されます。
     - サービスの `StatelessService.RunAsync()` メソッドが呼び出されます。
-3. 存在する場合は、サービスの `StatelessService.OnOpenAsync()` メソッドが呼び出されます。 この呼び出しの上書きは一般的ではありませんが利用可能です。
+3. 存在する場合は、サービスの `StatelessService.OnOpenAsync()` メソッドが呼び出されます。 この呼び出しの上書きは一般的ではありませんが利用可能です。 この時点で、拡張サービス初期化タスクを開始できます。
 
 また、リスナーを作成して開く呼び出しと **RunAsync** の順番は調整されないことに注意してください。 **RunAsync** が開始される前にリスナーが開くことがあります。 同様に、通信リスナーが開く前、または構築される前に **RunAsync** が呼び出される場合もあります。 同期が必要な場合、実装者がこれを行います。 一般的な解決策をいくつか次に示します。
 
@@ -63,7 +63,7 @@ Azure Service Fabric Reliable Services のライフサイクルについて考�
 1. 次のことが並行して行われます。
     - 開いているすべてのリスナーが閉じられます。 `ICommunicationListener.CloseAsync()` が各リスナーに呼び出されます。
     - `RunAsync()` に渡されたキャンセル トークンが取り消されます。 キャンセル トークンの `IsCancellationRequested` プロパティをチェックすると true が返され、呼び出された場合、トークンの `ThrowIfCancellationRequested` メソッドは `OperationCanceledException` をスローします。
-2. 各リスナーで `CloseAsync()` が完了し、`RunAsync()` も完了すると、サービスの `StatelessService.OnCloseAsync()` メソッドが呼び出されます (存在する場合)。 `StatelessService.OnCloseAsync()` のオーバーライドも一般的ではありません。
+2. 各リスナーで `CloseAsync()` が完了し、`RunAsync()` も完了すると、サービスの `StatelessService.OnCloseAsync()` メソッドが呼び出されます (存在する場合)。  OnCloseAsync は、ステートレス サービス インスタンスが正常にシャットダウンされるときに呼び出されます。 これは、サービスのコードがアップグレードされるか、サービス インスタンスが負荷分散のために移動されるか、または一時的なエラーが検出されたときに行われる可能性があります。 これは一般的なオーバーライド `StatelessService.OnCloseAsync()` ではなく、安全にすべてのリソースを閉じたり、バック グラウンド処理を停止したり、外部の状態の保存を完了したり、既存の接続を終了したりすることができます。
 3. `StatelessService.OnCloseAsync()` が完了すると、サービス オブジェクトは破棄されます。
 
 ## <a name="stateful-service-startup"></a>ステートフル サービスのスタートアップ
@@ -128,10 +128,10 @@ Service Fabric は、さまざまな理由でステートフル サービスの�
   - サービスは、正常に `RunAsync()` を完了して戻ることができます。 完了は、エラー条件ではありません。 `RunAsync()` の完了は、サービスのバックグラウンド処理が完了したことを示します。 ステートフル リライアブル サービスで、レプリカがプライマリからセカンダリへ一度降格して再度プライマリに昇格した場合、`RunAsync()` が再度呼び出されます。
   - サービスが予期しない例外をスローして `RunAsync()` を終了した場合はエラーです。 サービス オブジェクトがシャットダウンされ、正常性のエラーが報告されます。
   - これらのメソッドから制御が戻るときに時間制限はありませんが、Reliable Collection への書き込みはすぐにできなくなるため、実際の処理を完了できません。 取り消し要求を受信したらできるだけ短時間で制御が戻るようにすることをお勧めします。 サービスが適切な時間内にこれらの API 呼び出しに応答しない場合、Service Fabric はサービスを強制的に終了する場合があります。 通常、これはアプリケーションのアップグレード中か、サービスの削除中のみに発生します。 このタイムアウト時間は既定で 15 分です。
-  - `OnCloseAsync()` パスで障害が起きると、`OnAbort()` が呼び出されます。これは、サービスが要求したリソースすべてをクリーンアップし解放するための最後のベストエフォートの機会になります。
+  - `OnCloseAsync()` パスで障害が起きると、`OnAbort()` が呼び出されます。これは、サービスが要求したリソースすべてをクリーンアップし解放するための最後のベストエフォートの機会になります。 これは一般に、ノードで永続的なエラーが検出されたときや Service Fabric が内部エラーのために、サービス インスタンスのライフ サイクルを確実に管理できないときに呼び出されます。
+  - `OnChangeRoleAsync()` は、ステートフル サービス レプリカのロールが、プライマリやセカンダリなどに変更されるときに呼び出されます。 プライマリ レプリカには書き込み状態が与えられます (Reliable Collection の作成と Reliable Collection への書き込みが可能)。 セカンダリ レプリカには読み取り状態が与えられます (既存の Reliable Collection からの読み取りのみが可能)。 ステートフル サービスの作業のほとんどは、プライマリ レプリカで実行されます。 セカンダリ レプリカでは、読み取り専用の検証、レポートの生成、データ マイニングなど、読み取り専用のジョブを実行できます。
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 - [Reliable Services 入門](service-fabric-reliable-services-introduction.md)
 - [Reliable Service の概要](service-fabric-reliable-services-quick-start.md)
-- [Reliable Services の詳細な使用方法](service-fabric-reliable-services-advanced-usage.md)
 - [レプリカとインスタンス](service-fabric-concepts-replica-lifecycle.md)

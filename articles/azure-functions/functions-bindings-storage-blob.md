@@ -15,11 +15,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: glenga
-ms.openlocfilehash: 221a049ae37cc6934d04e90b6b8035e2a020e811
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: bf2c4a12d1344ec17ce9688e1c7192f57104dc7b
+ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/23/2018
 ---
 # <a name="azure-blob-storage-bindings-for-azure-functions"></a>Azure Functions における Azure Blob Storage のバインド
 
@@ -233,12 +233,12 @@ C# と C# スクリプトでは、トリガーする BLOB に次のパラメー�
 * `string`
 * `Byte[]`
 * JSON としてシリアル化可能な POCO
-* `ICloudBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudBlockBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudPageBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudAppendBlob` (*function.json* に "inout" バインド方向が必要)
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-前述のように、これらの型の一部は、*function.json* に `inout` バインド方向を必要とします。 この方向は Azure Portal の標準のエディターではサポートされていないため、詳細エディターを使用する必要があります。
+<sup>1</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
 
 `string`、`Byte[]`、または POCO へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で後述する「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
@@ -374,7 +374,6 @@ public static void Run(
     TraceWriter log)
 {
     log.Info($"BlobInput processed blob\n Name:{myQueueItem} \n Size: {myBlob.Length} bytes");
-
 }
 ```        
 
@@ -534,12 +533,12 @@ C# とC# スクリプトでは、BLOB 入力バインドに次のパラメータ
 * `Byte[]`
 * `CloudBlobContainer`
 * `CloudBlobDirectory`
-* `ICloudBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudBlockBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudPageBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudAppendBlob` (*function.json* に "inout" バインド方向が必要)
+* `ICloudBlob`<sup>1</sup>
+* `CloudBlockBlob`<sup>1</sup>
+* `CloudPageBlob`<sup>1</sup>
+* `CloudAppendBlob`<sup>1</sup>
 
-前述のように、これらの型の一部は、*function.json* に `inout` バインド方向を必要とします。 この方向は Azure Portal の標準のエディターではサポートされていないため、詳細エディターを使用する必要があります。
+<sup>1</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
 
 `string` または `Byte[]` へのバインドが推奨されるのは、BLOB のサイズが小さい場合のみです (BLOB 全体のコンテンツがメモリに読み込まれるため)。 通常、`Stream` 型または `CloudBlockBlob` 型の使用が推奨されます。 詳しくは、この記事で前述した「[同時実行とメモリ使用量](#trigger---concurrency-and-memory-usage)」セクションをご覧ください。
 
@@ -737,21 +736,23 @@ public static void Run(
 
 ## <a name="output---usage"></a>出力 - 使用方法
 
-C# とC# スクリプトでは、BLOB 出力バインドに次のパラメーター型を使用できます。
+C# と C# スクリプトでは、次の型にバインドして、BLOB を書き込むことができます。
 
 * `TextWriter`
 * `out string`
 * `out Byte[]`
 * `CloudBlobStream`
 * `Stream`
-* `CloudBlobContainer`
+* `CloudBlobContainer`<sup>1</sup>
 * `CloudBlobDirectory`
-* `ICloudBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudBlockBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudPageBlob` (*function.json* に "inout" バインド方向が必要)
-* `CloudAppendBlob` (*function.json* に "inout" バインド方向が必要)
+* `ICloudBlob`<sup>2</sup>
+* `CloudBlockBlob`<sup>2</sup>
+* `CloudPageBlob`<sup>2</sup>
+* `CloudAppendBlob`<sup>2</sup>
 
-前述のように、これらの型の一部は、*function.json* に `inout` バインド方向を必要とします。 この方向は Azure Portal の標準のエディターではサポートされていないため、詳細エディターを使用する必要があります。
+<sup>1</sup> *function.json* には "in" バインド `direction`、C# クラス ライブラリには `FileAccess.Read` が必要です。
+
+<sup>2</sup> *function.json* には "inout" バインド `direction`、C# クラス ライブラリには `FileAccess.ReadWrite` が必要です。
 
 非同期関数では、`out` パラメーターの代わりに戻り値または `IAsyncCollector` を使用します。
 

@@ -1,7 +1,7 @@
 ---
-title: "Azure Cosmos DB 用に Node.js Web アプリを構築する | Microsoft Docs"
-description: "この Node.js のチュートリアルでは、Microsoft Azure Cosmos DB を使用して、Azure Websites にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
-keywords: "アプリケーション開発, データベース チュートリアル, node.js の学習, node.js チュートリアル"
+title: Azure Cosmos DB 用に Node.js Web アプリを構築する | Microsoft Docs
+description: この Node.js のチュートリアルでは、Microsoft Azure Cosmos DB を使用して、Azure Websites にホストされた Node.js Express Web アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。
+keywords: アプリケーション開発, データベース チュートリアル, node.js の学習, node.js チュートリアル
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -13,24 +13,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/23/2018
 ms.author: mimig
-ms.openlocfilehash: 441f352555f40c0467df4c466d58ac35e32f9e61
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: ad6e335c562e52d7e2336dd1f29e5c159fe46589
+ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="_Toc395783175"></a>Azure Cosmos DB を使用した Node.js Web アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.JS](sql-api-nodejs-application.md)
 > * [Java](sql-api-java-application.md)
 > * [Python](sql-api-python-application.md)
 > 
 > 
-
-[!INCLUDE [cosmos-db-sql-api](../../includes/cosmos-db-sql-api.md)]
 
 この Node.js チュートリアルでは、Azure Cosmos DB と SQL API を使用して、Azure Websites にホストされた Node.js Express アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーション (ToDo アプリ) を作成します。 タスクは、JSON ドキュメントとして Azure Cosmos DB に保存するものとします。 このチュートリアルでは、アプリの作成とデプロイの手順を示し、各スニペットの動作を説明します。
 
@@ -40,7 +38,7 @@ ms.lasthandoff: 02/14/2018
 
 ## <a name="_Toc395783176"></a>前提条件
 > [!TIP]
-> この Node.js チュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
+> このs Node.js チュートリアルは、Node.js と Azure Websites の使用経験がある読者を対象としています。
 > 
 > 
 
@@ -154,9 +152,9 @@ ms.lasthandoff: 02/14/2018
 
     ```nodejs
     let DocumentDBClient = require('documentdb').DocumentClient;
-    let docdbUtils = require('./docdbUtils');
+    let docdbUtils = require('./cosmosdb-manager.js');
     ```
-7. 次に、Task オブジェクトを定義およびエクスポートするコードを追加します。 これにより、Task オブジェクトの初期化と、使用するデータベースおよびドキュメント コレクションのセット アップが実行されます。  
+7. 次に、Task オブジェクトを定義およびエクスポートするコードを追加します。 これにより、Task オブジェクトの初期化と、使用するデータベースおよびドキュメント コレクションのセット アップ.が実行されます。  
 
     ```nodejs
     function TaskModel(documentDBClient, databaseId, collectionId) {
@@ -275,7 +273,7 @@ ms.lasthandoff: 02/14/2018
 
 ### <a name="create-the-controller"></a>コントローラーの作成
 1. プロジェクトの **routes** ディレクトリ内に、**tasklist.js** という名前の新しいファイルを作成します。 
-2. 次のコードを **tasklist.js** に追加します。 これによって、**tasklist.js** で使用される DocumentDBClient および async モジュールが読み込まれます。 また、これで **TaskList** 関数が定義されました。先ほど定義した **Task** オブジェクトのインスタンスがこの関数に渡されます。
+2. 次のコードを **tasklist.js** に追加します。 これによって、**tasklist.js** で使用される　DocumentDBClient および async モジュールが読み込まれます。 また、これで **TaskList** 関数が定義されました。先ほど定義した **Task** オブジェクトのインスタンスがこの関数に渡されます。
    
     ```nodejs
     let DocumentDBClient = require('documentdb').DocumentClient;
@@ -411,7 +409,7 @@ ms.lasthandoff: 02/14/2018
 6. 最後に、 **app.js** ファイルを保存して閉じると、これでほぼ完了です。
 
 ## <a name="_Toc395783181"></a>手順 5: ユーザー インターフェイスの構築
-次に、ユーザーがアプリケーションとやり取りするためのユーザー インターフェイスを作成します。 作成した Express アプリケーションでは、ビュー エンジンとして **Jade** を使用しています。 Jade の詳細については、 [http://jade-lang.com/](http://jade-lang.com/)を参照してください。
+次に、ユーザーがアプリケーションとやり取りするためのユーザー インターフェイスを作成します。 作成した Express アプリケーションでは、ビュー エンジンとして **Jade** を使用しています。 Jade に関する詳細については、[http://jade-lang.com/](http://jade-lang.com/) をご覧ください。
 
 1. **views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使われます。 この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使うようにこのファイルを変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。 
 2. **views** フォルダーにある **layout.jade** ファイルを開き、その内容を次のコードで置き換えます。
