@@ -94,7 +94,7 @@
 ## [ブログ](http://blogs.msdn.com/b/streamanalytics/)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=stream-analytics&sort=newest)
 ## [フィードバック フォーラム](http://feedback.azure.com/forums/270577-azure-stream-analytics)
-## [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureStreamAnalytics)
 ## [料金](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リリース ノート](stream-analytics-release-notes.md)
