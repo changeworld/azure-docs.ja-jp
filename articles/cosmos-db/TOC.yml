@@ -164,7 +164,7 @@ items:
       - name: セキュリティ
         href: database-security.md
       - name: TCO
-        href: 'https://aka.ms/documentdb-tco-paper'
+        href: 'https://aka.ms/cosmosdb-tco-paper'
       - name: ユース ケース
         href: use-cases.md
         items:
@@ -184,13 +184,15 @@ items:
               - name: SQL クエリのパフォーマンス
                 href: sql-api-sql-query-metrics.md
               - name: SQL のプレイグラウンド
-                href: 'https://www.documentdb.com/sql/demo'
+                href: 'https://aka.ms/cosmos-db-playground'
               - name: パーティション分割
                 href: sql-api-partition-data.md
               - name: ストアド プロシージャ、トリガー、UDF
                 href: programming.md
               - name: パフォーマンス テスト
                 href: performance-testing.md
+              - name: Async Java のパフォーマンスに関するヒント
+                href: performance-tips-async-java.md
               - name: .NET のパフォーマンスに関するヒント
                 href: performance-tips.md
               - name: Java のパフォーマンスに関するヒント
@@ -378,17 +380,17 @@ items:
           - name: Logic Apps を使用したアプリケーション ログ記録
             href: ../logic-apps/logic-apps-scenario-error-and-exception-handling.md
           - name: Azure Functions にバインドする
-            href: ../azure-functions/functions-bindings-documentdb.md
+            href: ../azure-functions/functions-bindings-cosmosdb.md
           - name: Azure Search と統合する
-            href: ../search/search-howto-index-documentdb.md
+            href: ../search/search-howto-index-cosmosdb.md
           - name: Azure Data Factory を使用してデータを移動する
             href: ../data-factory/connector-azure-cosmos-db.md
           - name: Azure Stream Analytics でリアルタイム データを分析する
-            href: '../stream-analytics/stream-analytics-define-outputs.md#documentdb'
+            href: '../stream-analytics/stream-analytics-define-outputs.md#azure-cosmos-db'
           - name: Logic Apps を使用して変更された HL7 FHIR レコードを取得する
             href: change-feed-hl7-fhir-logic-apps.md
           - name: センサー データをリアルタイムで処理する
-            href: ../hdinsight/hdinsight-storm-iot-eventhub-documentdb.md
+            href: 'https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md'
           - name: Power BI でデータを視覚化する
             href: powerbi-visualize.md
           - name: ODBC ドライバーを利用してデータを視覚化する

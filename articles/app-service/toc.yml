@@ -139,6 +139,8 @@
               href: app-service-mobile-how-to-configure-microsoft-authentication.md
             - name: Twitter による認証
               href: app-service-mobile-how-to-configure-twitter-authentication.md
+        - name: authN/authZ のカスタマイズ
+          href: app-service-authentication-how-to.md
         - name: 管理対象のサービス ID の使用
           href: app-service-managed-service-identity.md
         - name: アプリケーション コードでの SSL 証明書の使用

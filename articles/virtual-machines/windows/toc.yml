@@ -342,13 +342,20 @@
         - name: Azure Log Collector 拡張機能
           href: log-collector-extension.md
         - name: Azure 診断拡張機能
-          href: ps-extensions-diagnostics.md
+          href: extensions-diagnostics.md
+          items:
+            - name: 拡張機能のスキーマ
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-schema-1dot3-and-later.md
+            - name: PowerShell を使用した有効化
+              href: ps-extensions-diagnostics.md
+            - name: テンプレートを使用した有効化
+              href: extensions-diagnostics-template.md
+            - name: トラブルシューティング
+              href: ../../monitoring-and-diagnostics/azure-diagnostics-troubleshooting.md
         - name: VM 拡張機能のエクスポート
           href: extensions-export-templates.md
         - name: 拡張機能のトラブルシューティングを行う
           href: extensions-troubleshoot.md
-        - name: 監視と診断の拡張機能
-          href: extensions-diagnostics-template.md
         - name: Network Watcher Agent
           href: extensions-nwa.md
         - name: 拡張機能のインストールの制限

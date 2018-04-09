@@ -37,37 +37,49 @@
           href: how-to-use-vm-sign-in.md
         - name: Azure SDK での使用
           href: how-to-use-vm-sdk.md
-    - name: VM MSI を使用した Azure Data Lake Store へのアクセス
+    - name: Windows VM/VMSS の管理対象 ID の使用
       items:
-        - name: Windows VM から
+        - name: Azure Data Lake Store へのアクセス
           href: tutorial-windows-vm-access-datalake.md
-        - name: Linux VM から
-          href: tutorial-linux-vm-access-datalake.md
-    - name: VM MSI を使用した Azure Resource Manager へのアクセス
-      items:
-        - name: Windows VM から
+        - name: Azure Resource Manager へのアクセス
           href: tutorial-windows-vm-access-arm.md
-        - name: Linux VM から
-          href: tutorial-linux-vm-access-arm.md
-    - name: VM MSI を使用した Azure SQL へのアクセス
-      items:
-        - name: Windows VM から
+        - name: Azure SQL へのアクセス
           href: tutorial-windows-vm-access-sql.md
-    - name: VM MSI を使用した Azure ストレージへのアクセス
-      items:
-        - name: Windows VM から (アクセス キーを使用)
+        - name: アクセス キーを使用した Azure Storage へのアクセス
           href: tutorial-windows-vm-access-storage.md
-        - name: Windows VM から (SAS を使用)
+        - name: SAS を使用した Azure Storage へのアクセス
           href: tutorial-windows-vm-access-storage-sas.md
-        - name: Linux VM から (アクセス キーを使用)
-          href: tutorial-linux-vm-access-storage.md
-        - name: Linux VM から (SAS を使用)
-          href: tutorial-linux-vm-access-storage-sas.md
-    - name: VM MSI を使用した Azure Key Vault へのアクセス
-      items:
-        - name: Windows VM から
+        - name: Azure Key Vault へのアクセス
           href: tutorial-windows-vm-access-nonaad.md
-        - name: Linux VM から
+    - name: Linux VM/VMSS の管理対象 ID の使用
+      items:
+        - name: Azure Data Lake Store へのアクセス
+          href: tutorial-linux-vm-access-datalake.md
+        - name: Azure Resource Manager へのアクセス
+          href: tutorial-linux-vm-access-arm.md
+        - name: アクセス キーを使用した Azure Storage へのアクセス
+          href: tutorial-linux-vm-access-storage.md
+        - name: SAS を使用した Azure Storage へのアクセス
+          href: tutorial-linux-vm-access-storage-sas.md
+        - name: Azure Key Vault へのアクセス
           href: tutorial-linux-vm-access-nonaad.md
     - name: FAQ と既知の問題
       href: known-issues.md
+    - name: リファレンス
+      items:
+        - name: CLI
+          href: /cli/azure/identity
+        - name: PowerShell
+          href: '/powershell/module/azurerm.managedserviceidentity#managed_service_identity'
+        - name: .NET
+          href: '/dotnet/api/microsoft.azure.management.resourcemanager.fluent.authentication#azure-dotnet'
+        - name: Java
+          href: 'https://github.com/Azure/azure-libraries-for-java#ready-to-run-code-samples-for-virtual-machines'
+        - name: Python
+          href: /python/api/azure.mgmt.msi
+        - name: Ruby
+          href: 'https://rubygems.org/gems/azure_mgmt_msi'
+        - name: Node.js
+          href: /javascript/api/ms-rest-azure
+        - name: Go
+          href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/msi/mgmt/2015-08-31-preview/msi'

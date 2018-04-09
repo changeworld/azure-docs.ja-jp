@@ -215,11 +215,12 @@
 ##### [カスタム ホーム ページ](application-proxy-office365-app-launcher.md)
 ##### [インライン リンクの変換](application-proxy-link-translation.md)
 ##### [ワイルドカード アプリケーション](active-directory-application-proxy-wildcard.md)
-##### [Azure AD アプリケーション プロキシと Qlik Sense](active-directory-application-proxy-qlik.md) 
+
 #### 発行に関するチュートリアル
 ##### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
 ##### [Microsoft Teams](application-proxy-teams.md)
+##### [Qlik Sense](active-directory-application-proxy-qlik.md) 
 #### [PowerShell](https://docs.microsoft.com/en-us/powershell/module/azuread/?view=azureadps-2.0#application_proxy_application_management)
 #### [トラブルシューティング](active-directory-application-proxy-troubleshoot.md)
 
@@ -310,7 +311,7 @@
 #### [条件](active-directory-conditional-access-conditions.md)
 #### [場所の条件](active-directory-conditional-access-locations.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [概要](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [従来のポリシーの移行](active-directory-conditional-access-migration.md)
@@ -332,7 +333,7 @@
 ### 証明書ベースの認証
 #### [Android](active-directory-certificate-based-authentication-android.md)
 #### [iOS](active-directory-certificate-based-authentication-ios.md)
-#### [概要](active-directory-certificate-based-authentication-get-started.md)
+#### [作業開始](active-directory-certificate-based-authentication-get-started.md)
 
 ### [Azure AD Identity Protection](active-directory-identityprotection.md)
 #### [有効にする](active-directory-identityprotection-enable.md)

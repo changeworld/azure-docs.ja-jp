@@ -249,12 +249,12 @@
               href: service-fabric-reliable-services-diagnostics.md
             - name: Reliable Actors のイベント
               href: service-fabric-reliable-actors-diagnostics.md
-            - name: パフォーマンス メトリック
-              href: service-fabric-diagnostics-event-generation-perf.md
             - name: サービスのリモート処理の監視
               href: service-fabric-reliable-serviceremoting-diagnostics.md
         - name: アプリケーションのログ記録
           href: service-fabric-diagnostics-event-generation-app.md
+        - name: パフォーマンス メトリック
+          href: service-fabric-diagnostics-event-generation-perf.md
         - name: 正常性モデルの概要
           href: service-fabric-health-introduction.md
         - name: 正常性イベントのレポート
@@ -387,7 +387,7 @@
               href: service-fabric-application-secret-management.md
             - name: セキュリティで保護された通信用のリバース プロキシの構成
               href: service-fabric-reverseproxy-configure-secure-communication.md
-            - name: ローカル ユーザー アカウントまたはローカル システム アカウントでのサービス スタートアップ スクリプトの実行
+            - name: サービス スタートアップ スクリプトをローカル ユーザー アカウントまたはローカル システム アカウントとして実行する
               href: service-fabric-run-script-at-service-startup.md
             - name: ローカル ユーザー アカウントまたはローカル システム アカウントでのサービスの実行
               href: service-fabric-application-runas-security.md
@@ -433,6 +433,8 @@
           href: service-fabric-cloud-services-migration-worker-role-stateless-service.md
         - name: 推奨プラクティス
           href: /azure/architecture/service-fabric/migrate-from-cloud-services
+        - name: 移行済みのアプリをリファクタリングする
+          href: /azure/architecture/service-fabric/refactor-migrated-app
     - name: アプリケーションのライフサイクルを管理する
       items:
         - name: アプリケーションをパッケージ化する

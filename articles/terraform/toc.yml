@@ -15,6 +15,8 @@
       maintainContext: true
 - name: チュートリアル
   items:
+    - name: Terraform および Azure プロバイダーのデプロイ スロット
+      href: terraform-slot-walkthru.md
     - name: MSI が有効な Terraform VM の作成
       href: terraform-vm-msi.md
     - name: Terraform モジュールを使用した VM クラスターの作成
