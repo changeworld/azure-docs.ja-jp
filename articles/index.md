@@ -6,11 +6,11 @@ description: Microsoft Azure クラウド サービスを使用して、強力�
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: c2e4559092a9269e4e640b7ed29cf3b84b9f945a
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 57dffdc1b1c75b0df0c789b67a952d27a1e827db
+ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 04/05/2018
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -166,7 +166,9 @@ PHP</a>
 Node.js</a>
                                                     </li>
                                                     <li>
-                                                        <a class="barLink" href="/go/azure/"> Go</a>
+                                                        <a class="barLink" href="/go/azure/">
+                                                            <img src="https://docs.microsoft.com/en-us/media/logos/logo_gopher.svg" alt="">
+Go</a>
                                                     </li>
                                                 </ul></td></tr></table>
                                                <h4>アプリ モデル</h4>
@@ -4299,6 +4301,35 @@ SQL ツール </h3>
                                                 </p>
                                                 <p>
                                                     <a href="https://code.visualstudio.com/docs/languages/python">Visual Studio Code を使ってみる</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardImageOuter">
+                                                <div class="cardImage">
+                                                    <img src="media/index/Fabric.svg" alt="" />
+                                                </div>
+                                            </div>
+                                            <div class="cardText">
+                                                <h3>
+Service Fabric SDK および Tools </h3>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started">Windows 用のダウンロード</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-linux">Linux 用のダウンロード</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-mac">Mac OS X のダウンロード</a>
+                                                </p>
+                                                <p>
+                                                    <a href="https://docs.microsoft.com/azure/service-fabric/service-fabric-cli">Service Fabric CLI のダウンロード</a>
                                                 </p>
                                             </div>
                                         </div>

@@ -17,18 +17,18 @@
       href: tutorial-simulate-device-linux.md
     - name: Edge デバイスのシミュレート - Windows
       href: tutorial-simulate-device-windows.md
-    - name: 'C# モジュールの開発'
-      href: tutorial-csharp-module.md
-    - name: Python モジュールの開発
-      href: tutorial-python-module.md
+    - name: モジュール内でのコードのデプロイ
+      items:
+        - name: 'C#'
+          href: tutorial-csharp-module.md
+        - name: Python
+          href: tutorial-python-module.md
     - name: Azure Stream Analytics のデプロイ
       href: tutorial-deploy-stream-analytics.md
     - name: Azure Machine Learning のデプロイ
       href: tutorial-deploy-machine-learning.md
     - name: Azure Functions のデプロイ
       href: tutorial-deploy-function.md
-    - name: VS Code での複数のモジュールの操作
-      href: tutorial-multiple-modules-in-vscode.md
 - name: ハウツー ガイド
   items:
     - name: ゲートウェイの作成
@@ -53,6 +53,8 @@
           href: how-to-vscode-develop-azure-function.md
         - name: Azure 関数のデバッグ
           href: how-to-vscode-debug-azure-function.md
+        - name: 複数のモジュールの処理
+          href: tutorial-multiple-modules-in-vscode.md
     - name: エッジでのデータの格納
       href: sql-storage.md
     - name: トラブルシューティング
