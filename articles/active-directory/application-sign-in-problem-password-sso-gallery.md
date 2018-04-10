@@ -37,7 +37,7 @@ Web ベースのポータルであるアクセス パネルを使用すると、
 -   Firefox 26.0 以降 - Windows XP SP2 以降、MacOS X 10.6 以降
 
 >[!NOTE]
->パスワードベースの SSO の拡張機能は、ブラウザーの拡張機能が Windows 10 の Edge でサポートされるようになると、Edge で使用できるようになります。
+>パスワードベースの SSO の拡張機能は、ブラウザーの拡張機能が Windows 10 の Microsoft Edge でサポートされるようになると、Microsoft Edge で使用できるようになります。
 >
 >
 

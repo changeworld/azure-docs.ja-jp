@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management で発行された API を監視する | Microsoft Docs"
-description: "このチュートリアルの手順に従って、Azure API Management で API を監視する方法を学びます。"
+title: Azure API Management で発行された API を監視する | Microsoft Docs
+description: このチュートリアルの手順に従って、Azure API Management で API を監視する方法を学びます。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: juliako
 manager: cfowler
-editor: 
+editor: ''
 ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
@@ -14,11 +14,11 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 11/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 445723242a76dcef4a6b137439728235d5d6e32a
-ms.sourcegitcommit: 059dae3d8a0e716adc95ad2296843a45745a415d
+ms.openlocfilehash: 93cbcf91af4ecf9425ed43ade400a0c82cea72d8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-published-apis"></a>発行された API を監視する
 
@@ -44,29 +44,6 @@ Azure Monitor は、すべての Azure リソースを監視するための単�
 + また、「[Import and publish your first API (最初の API をインポートして発行する)](import-and-publish.md)」のチュートリアルも完了します。
 
 [!INCLUDE [api-management-navigate-to-instance.md](../../includes/api-management-navigate-to-instance.md)]
-
-## <a name="diagnostic-logs"></a>アクティビティ ログを表示する
-
-アクティビティ ログは、API Management サービスで実行された操作に関する情報を提供します。 アクティビティ ログを使用すると、API Management サービスで発生した書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 
-
-> [!NOTE]
-> アクティビティ ログには、読み取り (GET) 操作、Azure Portal で実行された操作、または元の管理 API の使用に関する情報は含まれません。
-
-アクティビティ ログには API Management サービスでアクセスするか、Azure Monitor ですべての Azure リソースのログにアクセスできます。 
-
-アクティビティ ログを表示するには、次の手順に従います。
-
-1. APIM サービス インスタンスを選びます。
-2. **[アクティビティ ログ]** をクリックします。
-
-## <a name="view-diagnostic-logs"></a>診断ログを表示する
-
-診断ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。 アクティビティ ログは、API リソースで実行された操作に関する情報を提供します。 診断ログでは、リソース自体が実行した操作を調査できます。
-
-診断ログにアクセスするには、次の手順に従います。
-
-1. APIM サービス インスタンスを選びます。
-2. **[診断ログ]** をクリックします。
 
 ## <a name="view-metrics-of-your-apis"></a>API のメトリックを表示する
 
@@ -109,6 +86,118 @@ API Management はメトリックを 1 分間隔で出力するので、API の�
     > アラート ルールは、トリガーされたときに webhook または Azure Logic App を呼び出すこともできます。
 
     ![アラートのセットアップ](./media/api-management-azure-monitor/set-up-alert.png)
+
+## <a name="activity-logs"></a>アクティビティ ログ
+
+アクティビティ ログは、API Management サービスで実行された操作に関する情報を提供します。 アクティビティ ログを使用すると、API Management サービスで発生した書き込み操作 (PUT、POST、DELETE) について、"いつ誰が何を" 行ったのかを確認できます。 
+
+> [!NOTE]
+> アクティビティ ログには、読み取り (GET) 操作、Azure Portal で実行された操作、または元の管理 API の使用に関する情報は含まれません。
+
+アクティビティ ログには API Management サービスでアクセスするか、Azure Monitor ですべての Azure リソースのログにアクセスできます。 
+
+アクティビティ ログを表示するには、次の手順に従います。
+
+1. APIM サービス インスタンスを選びます。
+2. **[アクティビティ ログ]** をクリックします。
+
+## <a name="diagnostic-logs"></a>診断ログ
+
+診断ログは、監査とトラブルシューティングを行うために重要な、操作とエラーについての豊富な情報を提供します。 診断ログは、アクティビティ ログとは異なります。 アクティビティ ログは、API リソースで実行された操作に関する情報を提供します。 診断ログでは、リソース自体が実行した操作を調査できます。
+
+診断ログを構成するには、次の手順に従います。
+
+1. APIM サービス インスタンスを選びます。
+2. **[診断ログ]** をクリックします。
+3. **[診断を有効にする]** をクリックします。 診断ログをメトリックと共にストレージ アカウントにアーカイブし、それらをイベント ハブにストリーム配信したり、Log Analytics に送信したりすることができます。 
+
+現時点では、API Management は、個々の API 要求についての診断ログ (1 時間ごとにバッチ処理) を、次のスキーマを持つエントリで提供します。
+
+```json
+{  
+    "isRequestSuccess" : "",
+    "time": "",   
+    "operationName": "",      
+    "category": "",   
+    "durationMs": ,   
+    "callerIpAddress": "",   
+    "correlationId": "",   
+    "location": "",      
+    "httpStatusCodeCategory": "",      
+    "resourceId": "",      
+    "properties": {   
+        "method": "", 
+        "url": "", 
+        "clientProtocol": "", 
+        "responseCode": , 
+        "backendMethod": "", 
+        "backendUrl": "", 
+        "backendResponseCode": ,
+        "backendProtocol": "",  
+        "requestSize": , 
+        "responseSize": , 
+        "cache": "", 
+        "cacheTime": "", 
+        "backendTime": , 
+        "clientTime": , 
+        "apiId": "",
+        "operationId": "", 
+        "productId": "", 
+        "userId": "", 
+        "apimSubscriptionId": "", 
+        "backendId": "",
+        "lastError": { 
+            "elapsed" : "", 
+            "source" : "", 
+            "scope" : "", 
+            "section" : "" ,
+            "reason" : "", 
+            "message" : ""
+        } 
+    }      
+}  
+```
+
+| プロパティ  | type | [説明] |
+| ------------- | ------------- | ------------- |
+| isRequestSuccess | ブール値 | 応答の状態コードが 2xx または 3xx の範囲内で HTTP 要求が完了した場合は True |
+| time | date-time | ゲートウェイによる HTTP 要求の受信タイムスタンプ |
+| operationName | 文字列 | "Microsoft.ApiManagement/GatewayLogs" (定数値) |
+| カテゴリ | 文字列 | "GatewayLogs" (定数値) |
+| durationMs | integer | ゲートウェイが要求を受信した時点から、応答全体が送信された時点までのミリ秒数 |
+| callerIpAddress | 文字列 | 直接 (中間の場合もあります) のゲートウェイ呼び出し元の IP アドレス |
+| correlationId | 文字列 | API Management によって割り当てられる一意の http 要求識別子 |
+| location | 文字列 | 要求を処理したゲートウェイが存在する Azure リージョンの名前 |
+| httpStatusCodeCategory | 文字列 | http 応答状態コードのカテゴリ: 成功 (301 以下または 304 または 307)、未承認 (401、403、429)、エラー (400、500 から 600)、その他 |
+| ResourceId | 文字列 | API Management リソース /SUBSCRIPTIONS/<subscription>/RESOURCEGROUPS/<resource-group>/PROVIDERS/MICROSOFT.APIMANAGEMENT/SERVICE/<name> の ID |
+| プロパティ | オブジェクト | 現在の要求のプロパティ |
+| method | 文字列 | 受信要求の HTTP メソッド |
+| url | 文字列 | 受信要求の URL |
+| clientProtocol | 文字列 | 受信要求の HTTP プロトコル バージョン |
+| responseCode | integer | クライアントに送信された HTTP 応答の状態コード |
+| backendMethod | 文字列 | バックエンドに送信された要求の HTTP メソッド |
+| backendUrl | 文字列 | バックエンドに送信された要求の URL |
+| backendResponseCode | integer | バックエンドから受信した HTTP 応答のコード |
+| backendProtocol | 文字列 | バックエンドに送信された要求の HTTP プロトコル バージョン | 
+| requestSize | integer | 要求の処理中にクライアントから受信したバイト数 | 
+| responseSize | integer | 要求の処理中にクライアントに送信されたバイト数 | 
+| cache | 文字列 | 要求の処理における API Management キャッシュ使用の状態 (ヒット、ミス、なし) | 
+| cacheTime | integer | API Management キャッシュの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| backendTime | integer | バックエンドの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| clientTime | integer | クライアントの IO 全体 (接続バイト、送信バイト、受信バイト) に費やされたミリ秒数 | 
+| apiId | 文字列 | 現在の要求の API エンティティ識別子 | 
+| operationId | 文字列 | 現在の要求の操作エンティティ識別子 | 
+| productId | 文字列 | 現在の要求の製品エンティティ識別子 | 
+| userId | 文字列 | 現在の要求のユーザー エンティティ識別子 | 
+| apimSubscriptionId | 文字列 | 現在の要求のサブスクリプション エンティティ識別子 | 
+| backendId | 文字列 | 現在の要求のバックエンド エンティティ識別子 | 
+| LastError | オブジェクト | 最後の要求処理エラー | 
+| elapsed | integer | ゲートウェイが要求を受信してからエラーが発生した時点までの経過ミリ秒数 | 
+| source | 文字列 | エラーの原因となったポリシー (または処理中の内部ハンドラー) の名前 | 
+| scope | 文字列 | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのスコープ | 
+| section | 文字列 | エラーの原因となったポリシーを含んでいるポリシー ドキュメントのセクション | 
+| reason | 文字列 | エラーの理由 | 
+| Message | 文字列 | エラー メッセージ | 
 
 ## <a name="next-steps"></a>次の手順
 

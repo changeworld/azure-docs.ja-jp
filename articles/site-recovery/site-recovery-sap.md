@@ -1,12 +1,12 @@
 ---
-title: "Azure Site Recovery を使用して多層 SAP NetWeaver アプリケーションのデプロイを保護する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使用して SAP NetWeaver アプリケーションのデプロイを保護する方法について説明します。"
+title: Azure Site Recovery を使用して多層 SAP NetWeaver アプリケーションのデプロイを保護する | Microsoft Docs
+description: この記事では、Azure Site Recovery を使用して SAP NetWeaver アプリケーションのデプロイを保護する方法について説明します。
 services: site-recovery
-documentationcenter: 
+documentationcenter: ''
 author: mayanknayar
 manager: rochakm
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: site-recovery
 ms.workload: backup-recovery
 ms.tgt_pltfrm: na
@@ -89,7 +89,7 @@ DNS が動的 DNS 更新用に構成されている場合、仮想マシンは�
 
 ![Azure 間のレプリケーション シナリオの図](./media/site-recovery-sap/sap-replication-scenario.png)
 
-* プライマリ データセンターはシンガポール (Azure 東南アジア) にあります。 ディザスター リカバリー データセンターは香港 (Azure 東アジア) にあります。 このシナリオでは、シンガポールで同期モードの SQL Server AlwaysOn を実行している 2 つの VM によって、ローカルの高可用性を実現しています。
+* プライマリ データセンターはシンガポール (Azure 東南アジア) にあります。 ディザスター リカバリー データセンターは香港特別行政区 (Azure 東アジア) にあります。 このシナリオでは、シンガポールで同期モードの SQL Server AlwaysOn を実行している 2 つの VM によって、ローカルの高可用性を実現しています。
 * ファイル共有 SAP ASCS は、SAP の単一障害点に対する高可用性を実現します。 ファイル共有 ASCS では、クラスター共有ディスクを必要としません。 SIOS のようなアプリケーションは必要ありません。
 * DBMS 層のディザスター リカバリー保護は、非同期レプリケーションを使用して達成されます。
 * このシナリオは、"対照的なディザスター リカバリー" を示しています。 この用語は、運用環境の完全なレプリカであるディザスター リカバリー ソリューションを表します。 ディザスター リカバリーの SQL Server ソリューションは、ローカルの高可用性を備えています。 対称的なディザスター リカバリーは、データベース層には必須ではありません。 多くの顧客は、クラウド デプロイの柔軟性を活用して、ディザスター リカバリー イベント後に迅速にローカルの高可用性ノードを作成します。

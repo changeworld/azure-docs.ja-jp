@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
 ms.author: mbullwin
-ms.openlocfilehash: 227ca3533c7a06b726c758be931df8ec0314e90f
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 7331c3385f70de7d13895fc88d1d8630af4e9b05
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -47,10 +47,10 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 ## <a name="2-add-the-application-insights-sdk-for-java-to-your-project"></a>2.Application Insights SDK for Java をプロジェクトに追加する
 *プロジェクトに適した方法を選択してください。*
 
-#### <a name="if-youre-using-eclipse-to-create-a-maven-or-dynamic-web-project-"></a>Eclipse を使用して Maven または動的 Web プロジェクトを作成している場合:
+#### <a name="if-youre-using-eclipse-to-create-a-dynamic-web-project"></a>Eclipse を使用して動的 Web プロジェクトを作成している場合:
 [Application Insights SDK for Java プラグイン][eclipse]を使用します。
 
-#### <a name="if-youre-using-maven"></a>Maven を使用している場合:
+#### <a name="if-youre-using-maven-a-namemaven-setup-"></a>Maven を使用している場合: <a name="maven-setup" />
 プロジェクトが既に Maven を使用してビルドする設定になっている場合は、pom.xml ファイルに次のコードをマージします。
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
@@ -78,12 +78,12 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
 * *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `<version>2.0.n</version>`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
 * *新しい SDK に更新する必要がありますか?* プロジェクトの依存関係を更新します。
 
-#### <a name="if-youre-using-gradle"></a>Gradle を使用している場合:
+#### <a name="if-youre-using-gradle-a-namegradle-setup-"></a>Gradle を使用している場合: <a name="gradle-setup" />
 プロジェクトが既に Gradle を使用してビルドする設定になっている場合は、build.gradle ファイルに次のコードをマージします。
 
 次に、バイナリがダウンロードされるように、プロジェクトの依存関係を更新します。
 
-```JSON
+```gradle
 
     repositories {
       mavenCentral()
@@ -95,27 +95,24 @@ Application Insights は、Linux、Unix、Windows で動作する Java アプリ
     }
 ```
 
-* *ビルド エラーまたはチェックサムの検証エラーが発生する場合は、特定のバージョンを試してください:* `version:'2.0.n'`。 *[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)にサインインします。*
-* *新しい SDK に更新するには*
-  * プロジェクトの依存関係を更新します。
+* *ビルド エラーやチェックサム検証エラーが発生した場合は、* 特定のバージョンを試してください (例: `version:'2.0.n'`)。 最新バージョンは、[SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)または [Maven アーティファクト](http://search.maven.org/#search%7Cga%7C1%7Capplicationinsights)で確認できます。
+* "*新しい SDK に更新するには*" プロジェクトの依存関係を更新します。
 
-#### <a name="otherwise-"></a>それ以外の場合:
-SDK を手動で追加する:
-
-1. [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)をダウンロードします。
-2. zip ファイルからバイナリを抽出し、プロジェクトに追加します。
+#### <a name="otherwise-if-you-are-manually-managing-dependencies-"></a>それ以外で、依存関係を手動で管理している場合:
+[最新バージョン](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest)をダウンロードし、必要なファイルをプロジェクトにコピーして、以前のバージョンを置き換えます。
 
 ### <a name="questions"></a>疑問がある場合...
-* *zip 内の `-core` コンポーネントと `-web` コンポーネントの関係について*
-
+* *`-core` コンポーネントと `-web` コンポーネントはどのような関係ですか。*
   * `applicationinsights-core` は最小限の API を提供します。 このコンポーネントは常に必要です。
   * `applicationinsights-web` HTTP 要求数と応答時間を追跡するメトリックを提供します。 このテレメトリを自動的に収集しない場合、このコンポーネントは省略できます。 たとえば、独自に記述する場合です。
-* *変更が発行されたときに SDK を更新するには*
+  
+* *SDK を最新バージョンに更新するにはどうすればよいですか。*
+  * Gradle または Maven を使用している場合:
+    * ビルド ファイルを更新して最新バージョンを指定するか、Gradle/Maven のワイルドカード構文を使用して最新バージョンが自動的に含まれるようにします。 その後、プロジェクトの依存関係を更新します。 ワイルドカード構文は、上の例で見ることができます ([Gradle](#gradle-setup) または [Maven](#maven-setup))。
+  * 依存関係を手動で管理している場合:
+    * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
 
-  * 最新の [Application Insights SDK for Java](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest) をダウンロードして、古いものと置き換えます。
-  * 変更は [SDK リリース ノート](https://github.com/Microsoft/ApplicationInsights-Java#release-notes)に記載されます。
-
-## <a name="3-add-an-application-insights-xml-file"></a>手順 3.Application Insights の xml ファイルを追加する
+## <a name="3-add-an-applicationinsightsxml-file"></a>手順 3.ApplicationInsights.xml ファイルを追加する
 ApplicationInsights.xml をプロジェクトのリソース フォルダーに追加するか、プロジェクトのデプロイメント クラス パスに追加されていることを確認します。 次の XML をファイルにコピーします。
 
 インストルメンテーション キーについては、Azure ポータルで入手したキーを使用してください。
@@ -127,12 +124,10 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
 
 
       <!-- The key from the portal: -->
-
       <InstrumentationKey>** Your instrumentation key **</InstrumentationKey>
 
 
       <!-- HTTP request component (not required for bare API) -->
-
       <TelemetryModules>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebRequestTrackingTelemetryModule"/>
         <Add type="com.microsoft.applicationinsights.web.extensibility.modules.WebSessionTrackingTelemetryModule"/>
@@ -153,11 +148,11 @@ ApplicationInsights.xml をプロジェクトのリソース フォルダーに�
     </ApplicationInsights>
 ```
 
+必要に応じて、構成ファイルをアプリケーションがアクセスできる任意の場所に置くことができます。  システム プロパティ `-Dapplicationinsights.configurationDirectory` は、ApplicationInsights.xml があるディレクトリを指定します。 たとえば、`E:\myconfigs\appinsights\ApplicationInsights.xml` にある構成ファイルは、プロパティ `-Dapplicationinsights.configurationDirectory="E:\myconfigs\appinsights"` を使用して構成されます。
 
 * インストルメンテーション キーは、テレメトリのすべての項目と共に送信されます。インストルメンテーション キーを受け取った Application Insights は、リソース内にこのキーを表示します。
 * HTTP 要求コンポーネントはオプションです。 このコンポーネントは、要求と応答時間に関するテレメトリをポータルに自動的に送信します。
 * イベントの関連付けは、HTTP 要求コンポーネントに対する追加の操作です。 この操作では、サーバーで受信した各要求に識別子を割り当てた後、この識別子をテレメトリのすべての項目に "Operation.Id" プロパティとして追加します。 これにより、[診断検索][diagnostic]でフィルターを設定して、テレメトリを各要求に関連付けることができます。
-* Application Insights キーは Azure ポータルからシステム プロパティ (-DAPPLICATION_INSIGHTS_IKEY=your_ikey) として動的に渡されることがあります。 定義されたプロパティがない場合、Azure App Settings で環境変数 (APPLICATION_INSIGHTS_IKEY) がチェックされます。 プロパティが両方とも定義されていない場合、ApplicationInsights.xml の既定の InstrumentationKey が使用されます。 このシーケンスは、さまざまな環境のさまざまな InstrumentationKeys を動的に管理するのに役立ちます。
 
 ### <a name="alternative-ways-to-set-the-instrumentation-key"></a>インストルメンテーション キーの他の設定方法
 Application Insights SDK は、次の順序でキーを探します。
@@ -219,7 +214,7 @@ Application Insights パッケージを含めるように、*-servlet.xml で次
      <default-interceptor-ref name="ApplicationInsightsRequestNameInterceptor" />
 ```
 
-(既定のスタックにインターセプターが定義されている場合は、単にインターセプターをそのスタックに追加できます)。
+既定のスタックにインターセプターが定義されている場合は、インターセプターをそのスタックに追加できます。
 
 ## <a name="5-run-your-application"></a>5.アプリケーションを実行する
 開発用コンピューターでデバッグ モードで実行するか、サーバーに発行します。

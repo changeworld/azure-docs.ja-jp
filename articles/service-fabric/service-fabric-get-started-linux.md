@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 2/23/2018
 ms.author: subramar
-ms.openlocfilehash: c98a5e742356e24cee9e9d1414121faabac03084
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9123519217e87494316c1dc6b7f90da1b30ba392
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
 > [!div class="op_single_selector"]
@@ -28,17 +28,25 @@ ms.lasthandoff: 03/28/2018
 >
 >  
 
-Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md) をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。 また、必要に応じて Java および .NET Core デプロイ用 SDK をインストールすることもできます。
+Linux の開発コンピューターに [Azure Service Fabric アプリケーション](service-fabric-application-model.md) をデプロイして実行するには、ランタイムと共通 SDK をインストールする必要があります。 また、必要に応じて Java および .NET Core デプロイ用 SDK をインストールすることもできます。 
 
-> [!NOTE]
-> Service Fabric のランタイムと SDK を Windows Subsystem for Linux にインストールすることはサポートされません。 ただし Azure Service Fabric コマンド ライン インターフェイス (CLI) はサポートされます。クラウドやオンプレミスでホストされた Service Fabric のエンティティは、この CLI を使って管理することができます。 CLI をインストールする方法については、[Service Fabric CLI のセットアップ](./service-fabric-cli.md)に関するページを参照してください。
->
+この記事の手順では、Linux に対してネイティブにインストールするか、Service Fabric OneBox コンテナー イメージ (`microsoft/service-fabric-onebox`) を使うことを想定しています。 
+
+Service Fabric のランタイムと SDK を Windows Subsystem for Linux にインストールすることはサポートされません。 ただし Azure Service Fabric コマンド ライン インターフェイス (CLI) はサポートされます。クラウドやオンプレミスでホストされた Service Fabric のエンティティは、この CLI を使って管理することができます。 CLI をインストールする方法については、[Service Fabric CLI のセットアップ](./service-fabric-cli.md)に関するページを参照してください。
+
 
 ## <a name="prerequisites"></a>前提条件
 
-開発では、次のオペレーティング システムのバージョンがサポートされます。
+* 開発では、次のオペレーティング システムのバージョンがサポートされます。
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+    * Ubuntu 16.04 (`Xenial Xerus`)
+
+* `apt-transport-https` パッケージがインストールされていることを確認してください。
+
+      ```bash
+      sudo apt-get install apt-transport-https
+      ```
+
 
 ## <a name="installation-methods"></a>インストール方法
 

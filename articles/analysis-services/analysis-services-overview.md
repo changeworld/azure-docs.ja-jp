@@ -1,12 +1,12 @@
 ---
-title: "Azure Analysis Services の概要 | Microsoft Docs"
-description: "Azure での Analysis Services の概要を説明します。"
+title: Azure Analysis Services の概要 | Microsoft Docs
+description: Azure での Analysis Services の概要を説明します。
 services: analysis-services
-documentationcenter: 
+documentationcenter: ''
 author: minewiskan
 manager: kfile
-editor: 
-tags: 
+editor: ''
+tags: ''
 ms.assetid: 83d7a29c-57ae-4aa0-8327-72dd8f00247d
 ms.service: analysis-services
 ms.devlang: NA
@@ -62,7 +62,7 @@ Azure Analysis Services のスケールアウトにより、クライアント �
 ## <a name="keep-your-data-close"></a>データを近くに維持
 Azure Analysis Services サーバーは、次の [Azure リージョン](https://azure.microsoft.com/regions/)で作成できます。
 
-| アメリカ | ヨーロッパ | アジア太平洋 |
+| アメリカ合衆国 | ヨーロッパ | アジア太平洋 |
 |----------|--------|--------------|
 |  ブラジル南部<br> カナダ中部<br> 米国東部 2<br> 米国中北部<br> 米国中南部<br> 米国中西部<br> 米国西部 | 北ヨーロッパ<br> 英国南部<br> 西ヨーロッパ |   オーストラリア南東部<br> 東日本<br> 東南アジア<br> インド西部  |
 
