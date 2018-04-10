@@ -51,6 +51,8 @@
       href: app-service-web-tutorial-custom-ssl.md
     - name: 4 - CDN の追加
       href: app-service-web-tutorial-content-delivery-network.md
+    - name: 5 - ユーザーの認証
+      href: app-service-web-tutorial-auth-aad.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -139,7 +141,7 @@
               href: app-service-mobile-how-to-configure-microsoft-authentication.md
             - name: Twitter による認証
               href: app-service-mobile-how-to-configure-twitter-authentication.md
-        - name: authN/authZ のカスタマイズ
+        - name: 認証のカスタマイズ
           href: app-service-authentication-how-to.md
         - name: 管理対象のサービス ID の使用
           href: app-service-managed-service-identity.md
