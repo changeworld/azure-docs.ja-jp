@@ -1,11 +1,11 @@
 ---
-title: "アプリケーション アクセス パネルのブラウザー拡張機能のインストール - Azure | Microsoft Docs"
-description: "アクセス パネルのブラウザー拡張機能のインストール時に発生する一般的なエラーを修正します。"
+title: アプリケーション アクセス パネルのブラウザー拡張機能のインストール - Azure | Microsoft Docs
+description: アクセス パネルのブラウザー拡張機能のインストール時に発生する一般的なエラーを修正します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: ajamess
 manager: mtillman
-ms.assetid: 
+ms.assetid: ''
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
@@ -105,7 +105,7 @@ Internet Explorer 用のアクセス パネル拡張機能をユーザーのコ�
 診断ツールへのアクセス、および Internet Explorer 対応の拡張機能の構成方法の詳細については、[Internet Explorer 用アクセス パネル拡張機能のトラブルシューティング](active-directory-saas-ie-troubleshooting.md)に関するページをご覧ください。
 
 > [!NOTE]
-> Internet Explorer は制限付きサポートとなっており、新しいソフトウェア更新プログラムは提供されなくなりました。 Edge が推奨されるブラウザーです。
+> Internet Explorer は制限付きサポートとなっており、新しいソフトウェア更新プログラムは提供されなくなりました。 Microsoft Edge が推奨されるブラウザーです。
 
 ## <a name="if-the-preceding-steps-do-not-resolve-the-issue"></a>以上の手順で問題を解決できない場合
 

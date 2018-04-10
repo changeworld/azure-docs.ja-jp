@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: 34fdf45094fae8e751d6b3e5c57d5b4df2e78200
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 014c9ea34f35e915c6c4eac5a96c55201549e18a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="virtual-network-traffic-routing"></a>仮想ネットワーク トラフィックのルーティング
 
@@ -130,9 +130,11 @@ BGP を使用して Azure とルートを交換すると、仮想ネットワー
 複数のルートに同じアドレス プレフィックスが含まれている場合は、次の優先順位に基づいてルートの種類が選択されます。
 
 1. ユーザー定義のルート
-2. ホップの種類が、*仮想ネットワーク*、*VNET ピアリング*、*VirtualNetworkServiceEndpoint* のいずれかに該当するシステム ルート。
 2. BGP のルート
-3. ホップの種類が、*仮想ネットワーク*、*VNET ピアリング*、*VirtualNetworkServiceEndpoint* のいずれにも該当しないシステム ルート。
+3. システム ルート
+
+> [!NOTE]
+> 仮想ネットワーク、仮想ネットワークのピアリング、または仮想ネットワークのサービス エンドポイントに関連したトラフィックに使用されるシステム ルートは、BGP のルートの方が具体的であったとしても、優先されるルートとなります。
 
 たとえば、ルート テーブルに次のルートが含まれているとします。
 

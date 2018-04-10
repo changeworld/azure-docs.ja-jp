@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/22/2018
 ms.author: shlo
-ms.openlocfilehash: 88475c169bd6cc8fc4d653801ec1af58ebc7620e
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 97c2f68356a6a589f48224d297493509786ceff1
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 統合ランタイム (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
@@ -94,14 +94,14 @@ Azure IR の作成と構成については、ハウツー ガイドで Azure IR 
 Azure-SSIS IR は、パブリック ネットワークかプライベート ネットワーク内でプロビジョニングできます。  オンプレミスのデータ アクセスは、オンプレミスのネットワークに接続している仮想ネットワーク (VNet) と Azure-SSIS IR を結合することでサポートされます。  
 
 ### <a name="compute-resource-and-scaling"></a>コンピューティング リソースとスケーリング
-Azure-SSIS IR は、SSIS パッケージ実行専用の、Azure VM の完全に管理されたクラスターです。 それに接続する SSIS プロジェクト/パッケージ (SSISDB) のカタログをホストするため、独自の Azure SQL Database またはマネージ インスタンス (プライベート プレビュー) サーバーを持ち込むことができます。 ノードのサイズを指定してコンピューティング能力をスケールアップしたり、クラスター内のノードの数を指定してスケール アウトしたりできます。 必要に応じて Azure-SSIS 統合ランタイムを停止したり開始したりして、その実行のコストを管理できます。
+Azure-SSIS IR は、SSIS パッケージ実行専用の、Azure VM の完全に管理されたクラスターです。 独自の Azure SQL Database またはマネージ インスタンス (プレビュー) サーバーを持ち込み、それに接続する SSIS プロジェクト/パッケージ (SSISDB) のカタログをホストすることができます。 ノードのサイズを指定してコンピューティング能力をスケールアップしたり、クラスター内のノードの数を指定してスケール アウトしたりできます。 必要に応じて Azure-SSIS 統合ランタイムを停止したり開始したりして、その実行のコストを管理できます。
 
 詳細については、ハウツー ガイドで Azure-SSIS IR の作成と構成の方法に関する記事をご覧ください。  作成し終えたら、オンプレミスで SSIS を使用する場合と同様に、SQL Server Data Tools (SSDT) や SQL Server Management Studio (SSMS) などの使い慣れたツールを使用して、まったく、またはほとんど変更を加えずに既存の SSIS パッケージをデプロイして管理することができます。
 
 Azure-SSIS ランタイムの詳細については、次の記事をご覧ください。 
 
 - [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-create-azure-ssis-runtime-portal.md):  この記事では、Azure-SSIS IR を作成し、Azure SQL Database を使って SSIS カタログをホストする手順が説明されています。 
-- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プライベート プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
+- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
 - [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
 - [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md):  この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
 - [Azure-SSIS IR を VNet に参加させる](join-azure-ssis-integration-runtime-virtual-network.md):  この記事では、Azure 仮想ネットワーク (VNet) への Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が VNet に参加できるように Azure Portal を使って VNet を構成する手順も説明されています。 
@@ -178,13 +178,13 @@ Azure IR の場所を自動解決に設定することもできます。この�
 ### <a name="azure-ssis-ir"></a>Azure-SSIS IR
 抽出、変換、読み込み (ETL) ワークフローで高いパフォーマンスを実現するには、Azure-SSIS IR の正しい場所を選択することが重要です。  プレビュー版では初期段階で 6 つの場所 (米国東部、米国東部 2、米国中部、オーストラリア東部、北ヨーロッパ、西ヨーロッパ) を使用できます。
 
-- Azure-SSIS IR の場所をデータ ファクトリの場所と同じにする必要はありませんが、SSISDB がホストされる独自の Azure SQL Database/マネージ インスタンス (プライベート プレビュー) サーバーの場所と同じにする必要があります。 こうすると、Azure-SSIS 統合ランタイムから SSISDB に簡単にアクセスでき、複数の場所の間で過剰なトラフィックが生じません。
-- SSISDB をホストする既存の Azure SQL Database/マネージ インスタンス (プライベート プレビュー) サーバーがなく、オンプレミスのデータ ソース/移動先がある場合、オンプレミスのネットワークに接続している VNet の場所に新しい Azure SQL Database/マネージ インスタンス (プライベート プレビュー) サーバーを作成する必要があります。  この場合、新しい Azure SQL Database/マネージ インスタンス (プライベート プレビュー) サーバーを使用してこの VNet を結合し、Azure-SSIS IR を作成することがすべて同一の場所で行えるので、異なる場所をまたぐデータの移動を事実上最小限にすることができます。
-- SSISDB をホストする既存の Azure SQL Database/マネージ インスタンス (プライベート プレビュー) サーバーの場所と、オンプレミスのネットワークに接続している VNet の場所が違う場合、まず既存の Azure SQL Database/マネージ インスタンス (プライベート プレビュー) サーバーを使用し、同じ場所の別の VNet を結合して Azure-SSIS IR を作成し、次に異なる場所の間の VNet 間接続を構成します。
+- Azure-SSIS IR の場所をデータ ファクトリの場所と同じにする必要はありませんが、SSISDB がホストされる独自の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーの場所と同じにする必要があります。 こうすると、Azure-SSIS 統合ランタイムから SSISDB に簡単にアクセスでき、複数の場所の間で過剰なトラフィックが生じません。
+- SSISDB をホストする既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーがなく、オンプレミスのデータ ソース/移動先がある場合、オンプレミスのネットワークに接続している VNet の場所に新しい Azure SQL Database/マネージ インスタンス (プレビュー) サーバーを作成する必要があります。  この場合、新しい Azure SQL Database/マネージ インスタンス (プレビュー) サーバーを使用し、この VNet を参加させ、すべて同一の場所で Azure-SSIS IR を作成することができるため、異なる場所からのデータの移動を効果的に最小限にすることができます。
+- SSISDB をホストする既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーの場所と、オンプレミスのネットワークに接続している VNet の場所が違う場合は、まず、既存の Azure SQL Database/マネージ インスタンス (プレビュー) サーバーを使用して Azure-SSIS IR を作成し、同じ場所の別の VNet を参加させます。次に、異なる場所の間の VNet 間接続を構成します。
 
 
 ## <a name="next-steps"></a>次の手順
 次の記事を参照してください。
 
 - [Create self-hosted integration runtime (セルフホステッド統合ランタイムの作成)](create-self-hosted-integration-runtime.md)
-- [Azure-SSIS 統合ランタイムを作成](create-azure-ssis-integration-runtime.md)します。 この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プライベート プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
+- [Azure-SSIS 統合ランタイムを作成](create-azure-ssis-integration-runtime.md)します。 この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 

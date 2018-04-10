@@ -1,8 +1,8 @@
 ---
-title: "初めての Azure Resource Manager テンプレートを作成する | Microsoft Docs"
-description: "Azure Resource Manager テンプレートを初めて作成する際の手順を詳細に説明したガイドです。 ストレージ アカウントのテンプレート リファレンスを使ってテンプレートを作成する方法を紹介します。"
+title: 初めての Azure Resource Manager テンプレートを作成する | Microsoft Docs
+description: Azure Resource Manager テンプレートを初めて作成する際の手順を詳細に説明したガイドです。 ストレージ アカウントのテンプレート リファレンスを使ってテンプレートを作成する方法を紹介します。
 services: azure-resource-manager
-documentationcenter: 
+documentationcenter: ''
 author: tfitzmac
 manager: timlt
 editor: tysonn
@@ -10,14 +10,14 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 10/02/2017
+ms.date: 03/30/2018
 ms.topic: get-started-article
 ms.author: tomfitz
-ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: adf7d6ad04b9c341eac2172e09da3cb1f044aa62
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>初めての Azure Resource Manager テンプレートを作成およびデプロイする
 このトピックでは、Azure Resource Manager テンプレートを初めて作成する際の手順を説明します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。 既にリソースがあり、そのリソースのテンプレートを取得するには、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
@@ -26,8 +26,9 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-* Visual Studio Code。 必要に応じて、[https://code.visualstudio.com/](https://code.visualstudio.com/) からインストールします。
+* Visual Studio Code。 必要であれば、[https://code.visualstudio.com/](https://code.visualstudio.com/) からインストールします。
 * Azure サブスクリプション。 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+* ローカルにインストールされた [Azure PowerShell](/powershell/azure/install-azurerm-ps) または [Azure CLI](/cli/azure/install-azure-cli)。 このチュートリアルでは、テンプレートがローカル ファイルとして保存されるため、ローカル インストールが必要です。 Cloud Shell を使用するには、[ストレージ アカウントにテンプレートを読み込む](resource-group-template-deploy-cli.md#deploy-template-from-cloud-shell)必要があります。
 
 ## <a name="create-template"></a>テンプレートの作成
 
@@ -92,24 +93,6 @@ ms.lasthandoff: 10/11/2017
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file azuredeploy.json
    ```
-
-デプロイが完了すると、リソース グループにストレージ アカウントが含まれた状態になります。
-
-[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
-
-Azure CLI の場合は、次のコマンドを使用します。
-
-```azurecli-interactive
-az group create --name examplegroup --location "South Central US"
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-```
-
-現在、PowerShell は Cloud Shell でプレビューとして提供されています。 PowerShell の場合は、次のコマンドを使用します。
-
-```powershell
-New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
-New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
-```
 
 デプロイが完了すると、リソース グループにストレージ アカウントが含まれた状態になります。
 
@@ -244,12 +227,6 @@ Azure CLI では、次を使用します。
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
 ```
 
-Cloud Shell では、変更したテンプレートをファイル共有にアップロードします。 既存のファイルを上書きします。 次に、次のコマンドを使用します。
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageSKU=Standard_RAGRS storageNamePrefix=newstore
-```
-
 ## <a name="use-autocomplete"></a>オートコンプリートの使用
 
 ここまでは、単にこの記事から JSON をコピーして貼り付けることによってのみテンプレートの作業を行ってきましたが、 独自のテンプレートを作成するときは、リソースの種類に応じて利用可能なプロパティと値を探して指定することができます。 VS Code は、リソースの種類に対応したスキーマを読み取り、プロパティと値の候補を表示します。 オートコンプリート機能を見るために、テンプレートの properties 要素に移動し、新しい行を追加してみましょう。 引用符を入力するとすぐに、その properties 要素内で利用できる名前の候補が VS Code によって表示されることがわかります。
@@ -379,12 +356,6 @@ Azure CLI では、次を使用します。
 az group deployment create --resource-group examplegroup --template-file azuredeploy.json --parameters storageNamePrefix=storesecure
 ```
 
-Cloud Shell では、変更したテンプレートをファイル共有にアップロードします。 既存のファイルを上書きします。 次に、次のコマンドを使用します。
-
-```azurecli
-az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageNamePrefix=storesecure
-```
-
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 デプロイしたリソースが不要になったら、リソース グループを削除して、そのリソースをクリーンアップします。
@@ -401,7 +372,7 @@ Azure CLI では、次を使用します。
 az group delete --name examplegroup
 ```
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 * VS Code 拡張機能をインストールすると、テンプレートの開発効率をさらに高めることができます。 詳細については、「[Visual Studio Code 拡張機能を使って Azure Resource Manager テンプレートを作成する](resource-manager-vscode-extension.md)」を参照してください。
 * テンプレートの構造の詳細については、「 [Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 * ストレージ アカウントのプロパティについては、[ストレージ アカウント テンプレート リファレンス](/azure/templates/microsoft.storage/storageaccounts)のページを参照してください。

@@ -1,9 +1,9 @@
 ---
-title: "Windows デバイスから Azure Portal で目的の場所にアクセスできない | Microsoft Docs"
-description: "このダイアログが表示されないようにするために、目的の場所にアクセスできない原因と確認事項について説明します。"
+title: Windows デバイスから Azure Portal で目的の場所にアクセスできない | Microsoft Docs
+description: このダイアログが表示されないようにするために、目的の場所にアクセスできない原因と確認事項について説明します。
 services: active-directory
-keywords: "デバイス ベースの条件付きアクセス, デバイス登録, デバイス登録の有効化, デバイス登録と MDM"
-documentationcenter: 
+keywords: デバイス ベースの条件付きアクセス, デバイス登録, デバイス登録の有効化, デバイス登録と MDM
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
 ms.assetid: 8ad0156c-0812-4855-8563-6fbff6194174
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/16/2018
 
 ## <a name="supported-browser"></a>サポートされているブラウザー
 
-管理者によって条件付きアクセス ポリシーが構成されている場合、サポートされているブラウザーを使用しないと組織のリソースにアクセスできません。 Windows デバイスでは、サポートされているのは **Internet Explorer** と **Edge** のみです。
+管理者によって条件付きアクセス ポリシーが構成されている場合、サポートされているブラウザーを使用しないと組織のリソースにアクセスできません。 Windows デバイスでは、サポートされているのは **Internet Explorer** と **Microsoft Edge** のみです。
 
 リソースにアクセスできない原因がサポートされていないブラウザーにあるかどうかは、エラー ページの詳細セクションで簡単に識別できます。
 

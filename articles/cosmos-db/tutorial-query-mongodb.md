@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: ''
-ms.date: 03/16/2018
+ms.date: 03/29/2018
 ms.author: mimig
 ms.custom: mvc
-ms.openlocfilehash: 7c51a2a1cace89305b971d5fb0f56c360cbf93cb
-ms.sourcegitcommit: a36a1ae91968de3fd68ff2f0c1697effbb210ba8
+ms.openlocfilehash: f47d250bbe6689e19dda5042b335ff1812a790d4
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/17/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="tutorial-query-azure-cosmos-db-by-using-the-mongodb-api"></a>チュートリアル: MongoDB API を使用して Azure Cosmos DB に対してクエリを実行する
 
@@ -30,6 +30,10 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 
 > [!div class="checklist"]
 > * MongoDB を使用してデータのクエリを実行する
+
+Azure Cosmos DB プログラム マネージャーの Andy Hoh による、MongoDB に対するクエリの実行についてのビデオを見ることから始めることができます。
+
+>[!VIDEO https://www.youtube.com/tVk8S7lFWMA]
 
 ## <a name="sample-document"></a>サンプル ドキュメント
 
@@ -300,7 +304,7 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 
 **結果**
 
-子の数が 2 人までしかないため結果は返されません。 パラメーターが 2 の場合のみ、このクエリは成功し、ドキュメント全体を返します。
+子が 2 人より多い家族はないため、返される結果はありません。 パラメーターが 2 の場合のみ、このクエリは成功し、ドキュメント全体を返します。
 
 ## <a name="next-steps"></a>次の手順
 

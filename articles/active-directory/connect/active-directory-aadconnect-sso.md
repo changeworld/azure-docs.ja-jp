@@ -58,7 +58,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 - これは無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 - この機能は、Web ブラウザー ベースのクライアントと、Kerberos 認証に対応したプラットフォームおよびブラウザーで[最新の認証](https://aka.ms/modernauthga)をサポートする Office クライアントでサポートされています。
 
-| OS\ブラウザー |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
+| OS\ブラウザー |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
 |Windows 10|[はい]|いいえ |[はい]|はい\*|該当なし
 |Windows 8.1|[はい]|該当なし|[はい]|はい\*|該当なし

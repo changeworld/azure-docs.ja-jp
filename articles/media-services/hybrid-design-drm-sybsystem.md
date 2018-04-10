@@ -1,11 +1,11 @@
 ---
-title: "Azure Media Services を使用した DRM サブシステムのハイブリッド設計 | Microsoft Docs"
-description: "このトピックでは、Azure Media Services を使用した DRM サブシステムのハイブリッド設計について説明します。"
+title: Azure Media Services を使用した DRM サブシステムのハイブリッド設計 | Microsoft Docs
+description: このトピックでは、Azure Media Services を使用した DRM サブシステムのハイブリッド設計について説明します。
 services: media-services
-documentationcenter: 
+documentationcenter: ''
 author: willzhan
 manager: cfowler
-editor: 
+editor: ''
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services
 ms.workload: media
@@ -101,7 +101,7 @@ Microsoft は 3 つの DRM システムの完全なサポートを提供しま�
 |AMS|サード パーティ|外部|いいえ|いいえ|サンプル 4|
 |サード パーティ|サード パーティ|AMS|あり|いいえ|    
 
-サンプルでは、PlayReady 保護は、DASH とスムーズ ストリーミングの両方に対して機能します。 下記のビデオ URL は、スムーズ ストリーミング URL です。 対応する DASH URL を取得するには、"(format=mpd-time-csf)" を追加するだけです。 [Azure のメディア テスト プレーヤー](http://aka.ms/amtest)を使って、ブラウザーでテストすることもできます。 どのテクノロジでも、使用するストリーミング プロトコルを構成できます。 Windows 10 の IE11 および MS Edge が EME を通じて PlayReady をサポートします。 詳細については、[テスト ツールの詳細](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/)に関するページをご覧ください。
+サンプルでは、PlayReady 保護は、DASH とスムーズ ストリーミングの両方に対して機能します。 下記のビデオ URL は、スムーズ ストリーミング URL です。 対応する DASH URL を取得するには、"(format=mpd-time-csf)" を追加するだけです。 [Azure のメディア テスト プレーヤー](http://aka.ms/amtest)を使って、ブラウザーでテストすることもできます。 どのテクノロジでも、使用するストリーミング プロトコルを構成できます。 Windows 10 の IE11 および Microsoft Edge が EME を通じて PlayReady をサポートします。 詳細については、[テスト ツールの詳細](https://blogs.msdn.microsoft.com/playready4/2016/02/28/azure-media-test-tool/)に関するページをご覧ください。
 
 ### <a name="sample-1"></a>サンプル 1
 

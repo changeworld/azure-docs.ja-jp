@@ -10,11 +10,11 @@ ms.topic: tutorial
 ms.service: backup
 ms.workload: storage-backup-recovery
 manager: carmonm
-ms.openlocfilehash: 850d4d1e2ef6a13fcd8a072e6da210d558c7769b
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 8093275ec9e9cce6d9a765bf1bfc434fecdb6ea7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Azure Files のバックアップに関する質問
 この記事では、Azure Files のバックアップについてよくある質問への回答を示します。 一部の回答は、より詳しい情報を扱った記事にリンクされています。 また、 [ディスカッション フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup)でも、Azure Backup サービスに関する質問を投稿できます。
@@ -29,8 +29,14 @@ ms.lasthandoff: 03/29/2018
 ### <a name="why-cant-i-see-some-of-my-azure-file-shares-in-the-storage-account-when-im-trying-to-configure-backup-br"></a>バックアップを構成しようとしているときに、ストレージ アカウントに Azure ファイル共有の一部が表示されないのはなぜですか。 <br/>
 その Azure ファイル共有が既に同じ Recovery Services コンテナー内で保護されているかどうかと、その Azure ファイル共有を最近削除したかどうかを確認してください。
 
-### <a name="why-cant-i-protect-file-shares-connected-to-a-sync-group-in-azure-file-sync-br"></a>Azure File Sync で同期グループに接続されているファイル共有を保護できないのはなぜですか。 <br/>
-同期グループに接続されている Azure ファイル共有の保護は現在、制限付きのプレビュー段階です。 アクセスを要求するには、サブスクリプション ID を記載したメールを [AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 宛てにお送りください。 
+### <a name="can-i-protect-file-shares-connected-to-a-sync-group-in-azure-files-sync-br"></a>Azure Files Sync で同期グループに接続されているファイル共有を保護することはできますか? <br/>
+はい。 同期グループに接続されている Azure ファイル共有の保護は有効になっており、パブリック プレビューに含まれています。
+
+### <a name="when-trying-to-back-up-file-shares-i-clicked-on-a-storage-account-for-discovering-the-file-shares-in-it-however-i-did-not-protect-them-how-do-i-protect-these-file-shares-with-any-other-vault"></a>ファイル共有をバックアップしようと、ストレージ アカウント内のファイル共有を検出するために、そのストレージ アカウントをクリックしました。 しかし、それらを保護することはしませんでした。 これらのファイル共有を他のコンテナーで保護するにはどうすればよいのですか?
+バックアップを試みる際、いずれかのストレージ アカウントを選択して、その中からファイル共有を検出すると、その操作を行ったストレージ アカウントがコンテナーに登録されます。 別のコンテナーでファイル共有を保護する場合は、このコンテナーから選択したストレージ アカウントを[登録解除](troubleshoot-azure-files.md#configuring-backup)してください。
+
+### <a name="can-i-change-the-vault-to-which-i-backup-my-file-shares"></a>ファイル共有のバックアップ先コンテナーを変更することはできますか?
+はい。 ただし、接続されているコンテナーからの[保護を停止](backup-azure-files.md#stop-protecting-an-azure-file-share)し、そのストレージ アカウントを[登録解除](troubleshoot-azure-files.md#configuring-backup)したうえで、別のコンテナーから保護する必要があります。
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares-br"></a>どの geo に Azure ファイル共有をバックアップできますか <br/>
 Azure ファイル共有のバックアップは現在プレビュー段階であり、次の geo でのみ利用できます。 
@@ -43,7 +49,11 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 -   オーストラリア東部 (AE) 
 -   米国東部 (EUS)
 -   米国東部 2 (EUS2)
+- 東日本 (JPE)
+- 西日本 (JPW)
 -   インド中部 (INC) 
+- インド南部 (INS)
+- 韓国南部 (KRS)
 -   米国中北部 (NCUS) 
 -   北ヨーロッパ (NE) 
 -   米国中南部 (SCUS) 
@@ -58,7 +68,10 @@ Azure ファイル共有のバックアップは現在プレビュー段階で�
 上記以外の特定の geo で使用する必要がある場合は、[AskAzureBackupTeam@microsoft.com](email:askazurebackupteam@microsoft.com) 宛てにメールをお送りください。
 
 ### <a name="how-many-azure-file-shares-can-i-protect-in-a-vaultbr"></a>コンテナーで保護できる Azure ファイル共有はいくつですか。<br/>
-プレビュー期間中は、コンテナーにつき最大 25 個のストレージ アカウントから Azure ファイル共有を保護できます。 また、1 つのコンテナーで保護できる Azure ファイル共有は最大 200 個です。 
+プレビュー期間中は、コンテナーにつき最大 25 個のストレージ アカウントから Azure ファイル共有を保護できます。 また、1 つのコンテナーで保護できる Azure ファイル共有は最大 200 個です。
+
+### <a name="can-i-protect-two-different-file-shares-from-the-same-storage-account-to-different-vaults"></a>同じストレージ アカウントにある 2 つの異なるファイル共有を別々のコンテナーで保護することはできますか?
+いいえ。 1 つのストレージ アカウントに存在するすべてのファイル共有は、必ず同じコンテナーで保護する必要があります。
 
 ## <a name="backup"></a>バックアップ
 
@@ -71,7 +84,7 @@ Azure ファイル共有のバックアップでは、仮想ネットワーク�
 ## <a name="restore"></a>Restore
 
 ### <a name="can-i-recover-from-a-deleted-azure-file-share-br"></a>削除した Azure ファイル共有から復旧できますか。 <br/>
-Azure ファイル共有を削除するときは、同時に削除されるバックアップの一覧が表示され、確認が求められます。 削除した Azure ファイル共有を復元することはできません。
+Azure ファイル共有を削除するときは、削除されるバックアップの一覧が表示され、確認が求められます。 削除した Azure ファイル共有を復元することはできません。
 
 ### <a name="can-i-restore-from-backups-if-i-stopped-protection-on-an-azure-file-share-br"></a>Azure ファイル共有の保護を停止した場合、バックアップから復元することはできますか。 <br/>
 はい。 保護を停止するときに **[バックアップ データの保持]** を選択した場合は、既存のすべての復元ポイントから復元できます。

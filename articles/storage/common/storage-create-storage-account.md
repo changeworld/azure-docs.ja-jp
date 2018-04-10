@@ -1,8 +1,8 @@
 ---
-title: "Azure Portal でストレージ アカウントを作成、管理、削除する方法 | Microsoft Docs"
-description: "Azure Portal で、新しいストレージ アカウントの作成、アカウント アクセス キーの管理、ストレージ アカウントの削除を実行します。 Standard および Premium ストレージ アカウントについて説明します。"
+title: Azure Portal でストレージ アカウントを作成、管理、削除する方法 | Microsoft Docs
+description: Azure Portal で、新しいストレージ アカウントの作成、アカウント アクセス キーの管理、ストレージ アカウントの削除を実行します。 Standard および Premium ストレージ アカウントについて説明します。
 services: storage
-documentationcenter: 
+documentationcenter: ''
 author: tamram
 manager: timlt
 editor: tysonn
@@ -12,7 +12,8 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-f1_keywords: sql13.swb.windowsazurestorage.connect.f1
+f1_keywords:
+- sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
 ms.openlocfilehash: dde2ec3b68f5951e268c32b1c6551641f22a0511
