@@ -11,7 +11,7 @@
 ### [PC でデバイスをシミュレートする](iot-hub-get-started-simulated.md)
 #### [.NET](iot-hub-csharp-csharp-getstarted.md)
 #### [Java](iot-hub-java-java-getstarted.md)
-#### [Node.JS](iot-hub-node-node-getstarted.md)
+#### [Node.js](iot-hub-node-node-getstarted.md)
 #### [Python](iot-hub-python-getstarted.md)
 
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
@@ -45,6 +45,7 @@
 ### [Azure Functions を使用して Twitter メッセージを取得する](iot-hub-arduino-iot-devkit-az3166-retrieve-twitter-message.md)
 ### [Eclipse Paho API を使用して MQTT サーバーにメッセージを送信する](iot-hub-arduino-iot-devkit-az3166-mqtt-helloworld.md)
 ### [Azure Functions で磁気センサーを監視してメール通知を送信する](iot-hub-arduino-iot-devkit-az3166-door-monitor.md)
+### [Azure デバイス ツインを使用して MXChip IoT DevKit RGB LED を制御する](iot-hub-arduino-iot-devkit-az3166-devkit-state.md)
 
 # ハウツー ガイド
 ## プラン
@@ -94,7 +95,7 @@
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
-#### [Node.js](iot-hub-node-node-file-upload.md)
+#### [Node.JS](iot-hub-node-node-file-upload.md)
 #### [Python](iot-hub-python-python-file-upload.md)
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
@@ -173,7 +174,7 @@
 ## [Java (サービス)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (デバイス)](/java/api/com.microsoft.azure.sdk.iot.device)
 ## [Node.js (デバイス)](https://docs.microsoft.com/javascript/api/azure-iot-device/)
-## [Node.js (サービス)](https://docs.microsoft.com/javascript/api/azure-iothub)
+## [Node.js (サービス)](https://docs.microsoft.com/javascript/api/azure-iothub/)
 ## [C デバイス SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (リソース プロバイダー)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
