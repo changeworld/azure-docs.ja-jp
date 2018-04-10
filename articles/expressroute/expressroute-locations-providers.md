@@ -44,7 +44,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **北米** |米国東部、米国西部、米国東部 2、米国西部 2、米国中部、米国中南部、米国中北部、米国中西部、カナダ中部、カナダ東部 |アトランタ、シカゴ、ダラス、デンバー、ラスベガス、ロサンゼルス、マイアミ、ニューヨーク、サンアントニオ、シアトル、シリコン バレー、ワシントン DC、モントリオール、ケベックシティ、トロント |
 | **南アメリカ** |ブラジル南部 |サンパウロ |
 | **ヨーロッパ** |北ヨーロッパ、西ヨーロッパ、英国西部、英国南部 |アムステルダム、ダブリン、ロンドン、ニューポート (ウェールズ)、パリ |
-| **アジア** |東アジア、東南アジア |香港、シンガポール、シンガポール 2 |
+| **アジア** |東アジア、東南アジア |香港特別行政区、シンガポール、シンガポール 2 |
 | **日本** |西日本、東日本 |大阪、東京 |
 | **オーストラリア** |オーストラリア東部、オーストラリア南東部 |メルボルン、シドニー |
 | **インド** |インド西部、インド中部、インド南部 |チェンナイ、ムンバイ |
@@ -77,7 +77,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ダラス** |Aryaka Networks、AT&T NetBond、Cologix、Equinix、Level 3 Communications、Megaport、Verizon、Zayo|
 | **デンバー** |CoreSite、Megaport |
 | **ダブリン** |Colt、eir、Interxion、Megaport、Telecity Group |
-| **香港** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
+| **香港特別行政区** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、NTT Communications、Orange、PCCW Global Limited、Tata Communications、Verizon |
 | **ラスベガス** |Level 3 Communications、Megaport |
 | **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo |
 | **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo |
@@ -154,7 +154,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **シカゴ** | Equinix | Lightower、Windstream |
 | **ダラス** | Equinix、Megaport | C3ntro Telecom、Cox Business、Data Foundry、Transtelco |
 | **フランクフルト** | Telecity | BICS、Nianet、QSC AG |
-| **香港** | Equinix | Macroview Telecom |
+| **香港特別行政区** | Equinix | Macroview Telecom |
 | **ロンドン** | Equinix、euNetworks、Telecity | Bezeq International Ltd.、Epsilon、Exponential E、HSO、NexGen Networks、Tamares Telecom、Zain |
 | **ロサンゼルス** | Equinix |Transtelco |
 | **マドリッド** | Level3 | Zertia |
