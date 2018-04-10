@@ -15,15 +15,15 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: e789d3c6e10399491eb055b850a590ae10aacd11
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 85a3898145f7aea5d3f668caeafb62286006230d
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="web-apps-overview"></a>Web Apps の概要
 
-*App Service Web Apps* (Web Apps) は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。 アプリは Windows または Linux の VM で、簡単に実行および拡大縮小できます ([Linux のApp Service](containers/app-service-linux-intro.md) に関するページを参照)。 
+*App Service Web Apps* (Web Apps) は、Web アプリケーション、REST API、およびモバイル バックエンドをホストするためのサービスです。 開発には、.NET、.NET Core、Java、Ruby、Node.js、PHP、Python のうち、お気に入りの言語をご利用いただけます。 アプリケーションの実行とスケーリングは、Windows ベースの環境で容易に行えます。 Linux ベースの環境については、[App Service on Linux](containers/app-service-linux-intro.md) に関するページを参照してください。 
 
 Web Apps は、セキュリティ、負荷分散、自動スケール、自動管理などの Microsoft Azure の機能を、アプリケーションに追加するだけではありません。 VSTS、GitHub、Docker Hub およびその他のソースからの継続的なデプロイ、パッケージ管理、ステージング環境、カスタム ドメイン、SSL 証明書など、DevOps 機能を利用することもできます。 
 
