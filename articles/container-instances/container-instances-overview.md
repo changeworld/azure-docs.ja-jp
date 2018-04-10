@@ -6,14 +6,14 @@ author: seanmck
 manager: timlt
 ms.service: container-instances
 ms.topic: overview
-ms.date: 03/23/2018
+ms.date: 03/29/2018
 ms.author: seanmck
 ms.custom: mvc
-ms.openlocfilehash: d6e0637974d8076fc610d7154ad507f4e7af0cfa
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: e10d4046f543fbcc479421f4ca8f10221abc806f
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-container-instances"></a>Azure Container Instances
 
@@ -25,6 +25,10 @@ Azure Container Instances は、単純なアプリケーション、タスク自
 
 コンテナーは、スタートアップにおいて、仮想マシンよりもはるかに優れています。 Azure Container Instances を使用すると、VM をプロビジョニングして管理する必要なく、数秒で Azure でコンテナーを開始できます。
 
+## <a name="public-ip-connectivity-and-dns-name"></a>パブリック IP 接続と DNS 名
+
+Azure Container Instances を使用すると、IP アドレスと完全修飾ドメイン名 (FQDN) を使ってコンテナーをインターネットに直接公開できます。 コンテナー インスタンスを作成するとき、カスタム DNS 名ラベルを指定できるので、*customlabel*.*azureregion*.azurecontainer.io でアプリケーションに到達できます。
+
 ## <a name="hypervisor-level-security"></a>ハイパーバイザーレベルのセキュリティ
 
 従来、コンテナーは、アプリケーション依存関係の分離とリソース ガバナンスを実現してきましたが、悪意のあるマルチテナント使用に対する十分なセキュリティ強化については考慮されていません。 Azure Container Instances を使用すると、アプリケーションは、VM 内であるかのように、コンテナー内で確実に分離されます。
@@ -32,10 +36,6 @@ Azure Container Instances は、単純なアプリケーション、タスク自
 ## <a name="custom-sizes"></a>カスタム サイズ
 
 コンテナーは、通常、1 つのアプリケーションだけを実行するために最適化されますが、そのようなアプリケーションの正確なニーズはさまざまに異なることがあります。 Azure Container Instances で、CPU のコア数とメモリを厳密に指定することによって最適な稼働率を確保することが可能です。 支払額は、その要求内容に基づいて秒単位で課金されるので、実際のニーズに応じて支出をきめ細やかに調整することができます。
-
-## <a name="public-ip-connectivity"></a>パブリック IP 接続
-
-Azure Container Instances を使用すると、パブリック IP アドレスや DNS 名ラベルを使ってコンテナーをインターネットに直接公開できます。 今後、Microsoft では、仮想ネットワークやロード バランサー、Azure ネットワーク インフラストラクチャのその他の中核的な部分との統合が含まれるようにネットワーク機能を拡張する予定です。
 
 ## <a name="persistent-storage"></a>永続的ストレージ
 
@@ -53,4 +53,7 @@ Azure Container Instances は、ホスト コンピューター、ローカル �
 
 ## <a name="next-steps"></a>次の手順
 
-[クイックスタート ガイド](container-instances-quickstart.md)を使用して、1 つのコマンドでコンテナーを Azure にデプロイしてみてください。
+クイックスタート ガイドを使用して、1 つのコマンドでコンテナーを Azure にデプロイしてみてください。
+
+> [!div class="nextstepaction"]
+> [Azure Container Instances のクイックスタート](container-instances-quickstart.md)

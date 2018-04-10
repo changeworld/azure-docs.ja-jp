@@ -1,6 +1,6 @@
 ---
 title: Azure Machine Learning とは | Microsoft Docs
-description: Azure Machine Learning 実験およびモデル管理の概要。これは、高度な分析アプリケーションの開発、実験、デプロイをクラウド規模で行うプロフェッショナルなデータ サイエンティスト向けの統合されたエンドツーエンドのデータ サイエンス ソリューションです。
+description: クラウドにおける機械学習の基本的な概念とその用途について説明し、機械学習の用語を定義します。 Azure Machine Learning の概要。これは、高度な分析アプリケーションの開発、実験、デプロイをクラウド規模で行うプロフェッショナルなデータ サイエンティスト向けの統合されたエンドツーエンドのデータ サイエンス ソリューションです。
 services: machine-learning
 author: mwinkle
 ms.author: mwinkle
@@ -9,14 +9,19 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
-ms.openlocfilehash: e5716e3fc519c48aaea3ec17939d11008a1b1fd4
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 8a92f42ecee926042e9e0662f6b0bd9438024248
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
-# <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
+# <a name="what-is-machine-learning"></a>機械学習とは
 
+機械学習は、コンピューターで既存のデータを使って、将来の動き、結果、傾向を予測できるデータ サイエンスの手法の 1 つです。 機械学習を使用することで、明示的にプログラムすることなく、コンピューターが学習します。
+
+機械学習からの予想や予測によってアプリやデバイスの機能性を高めることができます。 オンライン ショッピングでは、ユーザーが今までに購入した製品に基づいて他の商品をお勧めするのに機械学習が役立っています。 クレジット カードが読み取られると、機械学習は、トランザクションをトランザクションのデータベースと比較し、不正の検出を支援します。 ロボット掃除機が部屋を掃除するとき、機械学習は、作業が行われているかどうかを判断するのを支援します。
+
+## <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 Azure Machine Learning は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
 
 Azure Machine Learning の主要なコンポーネントは次のとおりです。
@@ -29,6 +34,7 @@ Azure Machine Learning の主要なコンポーネントは次のとおりです
 これらのアプリケーションとサービスが一体となって、データ サイエンス プロジェクトの開発とデプロイを大幅に加速する助けとなります。 
 
 ![Azure Machine Learning の概念](media/overview-what-is-azure-ml/aml-concepts.png)
+
 
 ## <a name="open-source-compatible"></a>オープン ソースとの互換性
 
