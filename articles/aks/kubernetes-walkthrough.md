@@ -9,11 +9,11 @@ ms.topic: quickstart
 ms.date: 03/14/2018
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: f8f6bbee97850b8d075176ee91b260a6c8ec395c
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 2748b078586c27a7625c8e48172048d7a574a4d7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="quickstart-deploy-an-azure-container-service-aks-cluster"></a>クイック スタート: Azure Container Service (AKS) クラスターのデプロイ
 
@@ -236,7 +236,7 @@ az group delete --name myResourceGroup --yes --no-wait
 AKS の詳細を参照し、デプロイの例の完全なコードを確認するには、Kubernetes クラスター チュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [ASK チュートリアル][aks-tutorial]:
+> [AKS チュートリアル][aks-tutorial]
 
 <!-- LINKS - external -->
 [azure-vote-app]: https://github.com/Azure-Samples/azure-voting-app-redis.git
