@@ -1,29 +1,24 @@
 ---
-title: "Azure SQL Data Warehouse 用の ELT の設計 | Microsoft Docs"
-description: "Azure にデータを移動するテクノロジと SQL Data Warehouse にデータを読み込むテクノロジを組み合わせて、Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) プロセスを設計できます。"
+title: ETL の代わりに Azure SQL Data Warehouse 用の ELT を設計する | Microsoft Docs
+description: ETL の代わりに、データの読み込みまたは Azure SQL Data Warehouse 用に抽出、読み込み、変換 (ELT) プロセスを設計します。
 services: sql-data-warehouse
-documentationcenter: NA
 author: ckarst
 manager: jhubbard
-editor: 
-ms.assetid: 2253bf46-cf72-4de7-85ce-f267494d55fa
 ms.service: sql-data-warehouse
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: data-services
-ms.custom: loading
-ms.date: 12/12/2017
-ms.author: cakarst;barbkess
-ms.openlocfilehash: e94dca69c77c46034e318205279be5188e1371f5
-ms.sourcegitcommit: fa28ca091317eba4e55cef17766e72475bdd4c96
+ms.topic: conceptual
+ms.component: design
+ms.date: 03/28/2018
+ms.author: cakarst
+ms.reviewer: igorstan
+ms.openlocfilehash: c27ad843c9ee9beed871dcc03254cb1266f6ebe2
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="designing-extract-load-and-transform-elt-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) の設計
 
-Azure Storage にデータを配置するテクノロジと SQL Data Warehouse にデータを読み込むテクノロジを組み合わせて、Azure SQL Data Warehouse 用の抽出、読み込み、変換 (ELT) プロセスを設計できます。 この記事では、PolyBase を使用した読み込みをサポートするテクノロジを紹介し、T-SQL で PolyBase を使用して Azure Storage から SQL Data Warehouse にデータを読み込む ELT プロセスの設計を中心に説明します。
+抽出、変換、読み込み (ETL) の代わりに、データを Azure SQL Data Warehouse に読み込むための抽出、読み込み、変換 (ELT) プロセスを設計します。 この記事では、Azure データ ウェアハウスにデータを移動する ELT プロセスを設計する方法について説明します。
 
 ## <a name="what-is-elt"></a>ELT とは?
 
@@ -133,7 +128,7 @@ ETL プロセスを設計する際は、小規模のテスト サンプルでプ
 ## <a name="partner-loading-solutions"></a>パートナー読み込みソリューション
 パートナーの多くが読み込みソリューションを提供しています。 詳細については、[ソリューション パートナー](sql-data-warehouse-partner-business-intelligence.md)の一覧をご覧ください。 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 読み込みのガイダンスについては、[データ読み込みのガイダンス](guidance-for-loading-data.md)に関するページをご覧ください。
 
 

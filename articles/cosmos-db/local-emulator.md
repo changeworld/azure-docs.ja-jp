@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/15/2018
+ms.date: 03/27/2018
 ms.author: danoble
-ms.openlocfilehash: 4a393887d8e82e833b0c956666bf36e5adb19e70
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e0d23a163f16763dd4764eb7857dec8076f4754c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 
@@ -136,7 +136,7 @@ Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB
 ネットワーク アクセスを有効にするのが初めての場合、ユーザーはエミュレーターをシャットダウンし、エミュレーターのデータ ディレクトリ (C:\Users\user_name\AppData\Local\CosmosDBEmulator) を削除する必要があります。
 
 ## <a name="developing-with-the-emulator"></a>DocumentDB Emulator を使用した開発
-デスクトップで Azure Cosmos DB Emulator を実行している間、サポートされている [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) または [Azure Cosmos DB REST API](/rest/api/documentdb/) を使用して Emulator を操作できます。 Azure Cosmos DB Emulator にはデータ エクスプローラーも組み込まれており、コードを記述することなく、SQL API と MongoDB API のコレクションを作成したり、ドキュメントの表示と編集を行ったりできます。   
+デスクトップで Azure Cosmos DB Emulator を実行している間、サポートされている [Azure Cosmos DB SDK](sql-api-sdk-dotnet.md) または [Azure Cosmos DB REST API](/rest/api/cosmos-db/) を使用して Emulator を操作できます。 Azure Cosmos DB Emulator にはデータ エクスプローラーも組み込まれており、コードを記述することなく、SQL API と MongoDB API のコレクションを作成したり、ドキュメントの表示と編集を行ったりできます。   
 
     // Connect to the Azure Cosmos DB Emulator running locally
     DocumentClient client = new DocumentClient(
@@ -342,17 +342,41 @@ PowerShell からエミュレーターを制御するためのコマンドの概
 
 ### `Get-CosmosDbEmulatorStatus`
 
+#### <a name="syntax"></a>構文
+
+`Get-CosmosDbEmulatorStatus`
+
+#### <a name="remarks"></a>解説
+
 ServiceControllerStatus.StartPending、ServiceControllerStatus.Running、または ServiceControllerStatus.Stopped のいずれかの ServiceControllerStatus 値を返します。
 
-### `Start-CosmosDbEmulator [-NoWait]`
+### `Start-CosmosDbEmulator`
+
+#### <a name="syntax"></a>構文
+
+`Start-CosmosDbEmulator [-DataPath <string>] [-DefaultPartitionCount <uint16>] [-DirectPort <uint16[]>] [-MongoPort <uint16>] [-NoUI] [-NoWait] [-PartitionCount <uint16>] [-Port <uint16>]  [<CommonParameters>]`
+
+#### <a name="remarks"></a>解説
 
 エミュレーターを起動します。 既定では、このコマンドは、エミュレーターで要求を受け付ける準備ができるまで待ちます。 エミュレーターを起動したらすぐにコマンドレットから戻るようにする場合は、-NoWait オプションを使用します。
 
-### `Stop-CosmosDbEmulator [-NoWait]`
+### `Stop-CosmosDbEmulator`
+
+#### <a name="syntax"></a>構文
+
+ `Stop-CosmosDbEmulator [-NoWait]`
+
+#### <a name="remarks"></a>解説
 
 エミュレーターを停止します。 既定では、このコマンドは、エミュレーターが完全に停止するまで待ちます。 エミュレーターが停止し始めたらすぐにコマンドレットから戻るようにする場合は、-NoWait オプションを使用します。
 
-### `Uninstall-CosmosDbEmulator [-RemoveData]`
+### `Uninstall-CosmosDbEmulator`
+
+#### <a name="syntax"></a>構文
+
+`Uninstall-CosmosDbEmulator [-RemoveData]`
+
+#### <a name="remarks"></a>解説
 
 エミュレーターをアンインストールし、オプションで $env:LOCALAPPDATA\CosmosDbEmulator のすべての内容を削除します。
 このコマンドレットは、アンインストールする前にエミュレーターが停止されたことを確認します。
@@ -454,6 +478,20 @@ Azure Cosmos DB Emulator で遭遇する問題の解決には次のヒントが�
 ## <a name="change-list"></a>変更リスト
 
 タスクバーのローカル エミュレーター アイコンを右クリックし、[バージョン情報] メニュー項目をクリックすると、バージョン番号を確認できます。
+
+### <a name="12106-released-on-march-27-2018"></a>1.21.0.6 (2018 年 3 月 27 日リリース)
+
+Cosmos DB クラウド サービスと同等のエミュレーター サービスの更新に加えて、このリリースでは 1 つの新機能の追加と、2 つのバグ修正が行われています。
+
+#### <a name="features"></a>機能
+
+1. Start-CosmosDbEmulator コマンドに、スタートアップ オプションが含まれるようになりました。
+
+#### <a name="bug-fixes"></a>バグの修正
+
+1. Microsoft.Azure.CosmosDB.Emulator PowerShell モジュールは、`ServiceControllerStatus` 列挙型が読み込まれていることを確認するようになりました。
+
+2. Microsoft.Azure.CosmosDB.Emulator PowerShell モジュールは、マニフェストを含むようになりました。最初のリリースでは除外されていました。
 
 ### <a name="1201084-released-on-february-14-2018"></a>1.20.108.4 (2018 年 2 月 14 日リリース)
 

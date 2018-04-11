@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.openlocfilehash: 847213a5b8aab908d412ecc9aecec984aec1a9ba
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9b3c4efc712ebe9c0fe209d2ca0478367872d3b7
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Azure の Network Performance Monitor ソリューション
 
@@ -48,6 +48,7 @@ NPM は、次のリージョンのいずれかでホストされているワー�
 * 米国東部
 * 東南アジア
 * オーストラリア南東部
+* 英国南部
 * 米国政府バージニア州
 
 ExpressRoute モニターのサポート対象リージョンの一覧は、[こちらのドキュメント](https://docs.microsoft.com/azure/expressroute/how-to-npm?utm_swu=8117#regions)で確認できます。
@@ -166,7 +167,7 @@ Network Performance Monitor は、代理トランザクションを使って、�
 
 次の表は、ネットワーク パフォーマンス モニターにおけるデータの収集に関して、その手段と各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | System Center Operations Manager エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | System Center Operations Manager エージェント | Azure Storage | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows | &#8226; | &#8226; |  |  |  |TCP ハンドシェイク/ICMP ECHO メッセージを 5 秒おきに収集し、3 分おきにデータを送信 |
  

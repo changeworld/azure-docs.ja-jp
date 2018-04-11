@@ -1,42 +1,42 @@
 ---
 title: 仮想ネットワーク ピアリングを使用して仮想ネットワークを接続する - Azure CLI | Microsoft Docs
-description: 仮想ネットワーク ピアリングを使用して仮想ネットワークを接続する方法。
+description: この記事では、Azure CLI を使って仮想ネットワーク ピアリングで仮想ネットワークを接続する方法を説明します。
 services: virtual-network
 documentationcenter: virtual-network
 author: jimdial
 manager: jeconnoc
 editor: ''
 tags: azure-resource-manager
+Customer intent: I want to connect two virtual networks so that virtual machines in one virtual network can communicate with virtual machines in the other virtual network.
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
-ms.topic: ''
+ms.topic: article
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/13/2018
 ms.author: jdial
 ms.custom: ''
-ms.openlocfilehash: bbf2e757e2d9ad76c59394ba0138a61fd4029d15
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: 29ab957e97c6aa57be6192e6ee4d86fe642ae95d
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="connect-virtual-networks-with-virtual-network-peering-using-the-azure-cli"></a>Azure CLI を使用して仮想ネットワーク ピアリングで仮想ネットワークを接続する
 
 仮想ネットワーク ピアリングを使用して、仮想ネットワークを相互に接続できます。 仮想ネットワークをピアリングすると、それぞれの仮想ネットワークに存在するリソースが、あたかも同じ仮想ネットワーク内に存在するかのような待ち時間と帯域幅で相互に通信できます。 この記事では、次のことについて説明します:
 
-> [!div class="checklist"]
-> * 2 つの仮想ネットワークを作成する
-> * 仮想ネットワーク ピアリングを使用して 2 つの仮想ネットワークを接続する
-> * 各仮想ネットワークに仮想マシン (VM) を展開する
-> * VM 間の通信
+* 2 つの仮想ネットワークを作成する
+* 仮想ネットワーク ピアリングを使用して 2 つの仮想ネットワークを接続する
+* 各仮想ネットワークに仮想マシン (VM) を展開する
+* VM 間の通信
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用することを選択する場合、このクイック スタートでは、Azure CLI バージョン 2.0.28 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、この記事では、Azure CLI バージョン 2.0.28 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="create-virtual-networks"></a>仮想ネットワークを作成する
 
@@ -169,7 +169,7 @@ VM の作成には数分かかります。 VM が作成されると、Azure CLI 
 }
 ```
 
-**publicIpAddress** を書き留めておきます。 このアドレスは、以降の手順で、インターネットから VM にアクセスするときに使用されます。
+**publicIpAddress** を書き留めておきます。 このアドレスは、後の手順で、インターネットから VM にアクセスするときに使います。
 
 ## <a name="communicate-between-vms"></a>VM 間の通信
 
@@ -197,30 +197,8 @@ ping 10.0.0.4 -c 4
 az group delete --name myResourceGroup --yes
 ```
 
-**<a name="register"></a>グローバル仮想ネットワーク ピアリング プレビューへの登録**
-
-同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン内の複数の仮想ネットワークのピアリングは、現在プレビュー段階です。 使用可能なリージョンについては、[仮想ネットワークの更新情報](https://azure.microsoft.com/updates/?product=virtual-network)を参照してください。 リージョンの枠を越えて仮想ネットワークをピアリングするには、まず (ピアリングする各仮想ネットワークがあるサブスクリプション内で) 次の手順を実行して、プレビューに登録する必要があります。
-
-1. 次のコマンドを入力して、プレビューに登録します。
-
-  ```azurecli-interactive
-  az feature register --name AllowGlobalVnetPeering --namespace Microsoft.Network
-  az provider register --name Microsoft.Network
-  ```
-
-2. 次のコマンドを入力して、プレビューに登録されていることを確認します。
-
-  ```azurecli-interactive
-  az feature show --name AllowGlobalVnetPeering --namespace Microsoft.Network
-  ```
-
-  上記のコマンドを入力した後に受信する **RegistrationState** 出力が、両方のサブスクリプションに対して **Registered** になる前に、異なるリージョンの複数の仮想ネットワークをピアリングしようとすると、ピアリングは失敗します。
-
 ## <a name="next-steps"></a>次の手順
 
-この記事では、仮想ネットワーク ピアリングを使用して 2 つのネットワークを接続する方法を学習しました。 この記事では、同じ Azure の場所内で仮想ネットワーク ピアリングを使用して 2 つのネットワークを接続する方法を学習しました。 [異なる Azure サブスクリプション](create-peering-different-subscriptions.md#portal)の[別のリージョン](#register)内の仮想ネットワークをピアリングし、ピアリングを使用して[ハブとスポーク ネットワーク設計](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)を作成することもできます。 運用仮想ネットワークをピアリングする前に、[ピアリング概要](virtual-network-peering-overview.md)、[ピアリングの管理](virtual-network-manage-peering.md)、および[仮想ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)について十分に理解しておくことをお勧めします。
+この記事では、仮想ネットワーク ピアリングで同じ Azure リージョン内の 2 つのネットワークを接続する方法を説明しました。 異なる[サポートされるリージョン](virtual-network-manage-peering.md#cross-region)内および[異なる Azure サブスクリプション](create-peering-different-subscriptions.md#cli)内の仮想ネットワークをピアリングすることも、ピアリングを使って[ハブとスポーク ネットワーク設計](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)を作成することもできます。 仮想ネットワーク ピアリングについて詳しくは、[仮想ネットワーク ピアリングの概要](virtual-network-peering-overview.md)および[仮想ネットワーク ピアリングの管理](virtual-network-manage-peering.md)に関するページをご覧ください。
 
-[ユーザーのコンピューターを VPN 経由で仮想ネットワークに接続](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)し、仮想ネットワーク、またはピアリングされた仮想ネットワークのリソースを操作できます。 再利用可能なスクリプトのスクリプト サンプルに進み、仮想ネットワークの記事で説明する多くのタスクを完了します。
-
-> [!div class="nextstepaction"]
-> [仮想ネットワークのサンプル スクリプト](../networking/cli-samples.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+[ユーザーのコンピューターを VPN 経由で仮想ネットワークに接続](../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)し、仮想ネットワーク、またはピアリングされた仮想ネットワークのリソースを操作できます。 仮想ネットワークの記事で説明する多くのタスクを完了するための再利用可能なスクリプトについては、[スクリプト サンプル](cli-samples.md)をご覧ください。

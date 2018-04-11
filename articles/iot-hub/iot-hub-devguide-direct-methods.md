@@ -1,11 +1,11 @@
 ---
-title: "Azure IoT Hub のデバイス メソッドについて | Microsoft Docs"
-description: "開発者ガイド - ダイレクト メソッドを使用して、サービス アプリからデバイス上のコードを呼び出す。"
+title: Azure IoT Hub のデバイス メソッドについて | Microsoft Docs
+description: 開発者ガイド - ダイレクト メソッドを使用して、サービス アプリからデバイス上のコードを呼び出す。
 services: iot-hub
 documentationcenter: .net
 author: nberdy
 manager: timlt
-editor: 
+editor: ''
 ms.assetid: 9f0535f1-02e6-467a-9fc4-c0950702102d
 ms.service: iot-hub
 ms.devlang: multiple
@@ -15,14 +15,17 @@ ms.workload: na
 ms.date: 01/29/2018
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 003b3f6ef8a6fbc1c6fcdfc58f7d35bf6c42c9ee
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 47bf7437eda09a536aa2d960cf5ec474e23356a6
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
 IoT Hub には、クラウドからデバイス上のダイレクト メソッドを呼び出す機能が備わっています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 この方法は、デバイスが応答できるかどうかに応じて即座に実行するアクションが異なるシナリオで便利です。 たとえば、デバイスがオフラインの場合に SMS ウェイクアップを送信します (SMS はメソッドの呼び出しよりも負荷がかかります)。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
+
 各デバイス メソッドは、1 つのデバイスをターゲットとします。 [Jobs][lnk-devguide-jobs] を使用すると、複数のデバイス上のダイレクト メソッドを呼び出すことができ、接続されていないデバイスに対するメソッドの呼び出しをスケジュール設定できます。
 
 IoT Hub で**サービス接続**のアクセス許可を持っていれば、誰でもデバイスでメソッドを呼び出すことができます。
@@ -67,7 +70,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 タイムアウトは秒単位です。 タイムアウトが設定されていない場合の既定値は 30 秒です。
 
-### <a name="response"></a>応答
+### <a name="response"></a>Response
 バックエンド アプリは次の項目で構成される応答を受け取ります。
 
 * *HTTP 状態コード*。接続されていないデバイスの 404 エラーを含む、IoT Hub からのエラーに使用される
@@ -99,7 +102,7 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 メソッドの要求は QoS 0 です。
 
-#### <a name="response"></a>応答
+#### <a name="response"></a>Response
 デバイスは応答を `$iothub/methods/res/{status}/?$rid={request id}` に送信します。この場合、
 
 * `status` プロパティは、デバイスから提供される、メソッド実行の状態です。
@@ -116,7 +119,7 @@ AMQP メッセージは、メソッド要求を表す受信リンクに到着し
 * `IoThub-methodname` という名前のアプリケーション プロパティ。呼び出されるメソッドの名前が含まれています。
 * AMQP メッセージ本文。JSON としてメソッド ペイロードが含まれています。
 
-#### <a name="response"></a>応答
+#### <a name="response"></a>Response
 デバイスは、メソッド応答を返す送信リンクをアドレス `amqps://{hostname}:5671/devices/{deviceId}/methods/deviceBound` に作成します。
 
 メソッドの応答は送信リンクで返され、以下から構成されています。

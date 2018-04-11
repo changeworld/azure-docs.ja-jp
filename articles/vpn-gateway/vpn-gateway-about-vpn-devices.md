@@ -1,25 +1,25 @@
 ---
-title: "クロスプレミス Azure 接続の VPN デバイスについて | Microsoft Docs"
-description: "この記事では、S2S VPN Gateway クロスプレミス接続の VPN デバイスと IPsec パラメーターについて説明します。 構成の手順およびサンプルへのリンクが提供されています。"
+title: クロスプレミス Azure 接続の VPN デバイスについて | Microsoft Docs
+description: この記事では、S2S VPN Gateway クロスプレミス接続の VPN デバイスと IPsec パラメーターについて説明します。 構成の手順およびサンプルへのリンクが提供されています。
 services: vpn-gateway
 documentationcenter: na
 author: yushwang
 manager: rossort
-editor: 
+editor: ''
 tags: azure-resource-manager, azure-service-management
 ms.assetid: ba449333-2716-4b7f-9889-ecc521e4d616
 ms.service: vpn-gateway
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/18/2017
+ms.date: 03/29/2018
 ms.author: yushwang
-ms.openlocfilehash: f75732761cefd7706fe1555484148efe6cdc0e56
-ms.sourcegitcommit: 95500c068100d9c9415e8368bdffb1f1fd53714e
+ms.openlocfilehash: b3d9d45da0fb62445867d13c9dff7502af77e8a8
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/14/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>サイト間 VPN ゲートウェイ接続用の VPN デバイスと IPsec/IKE パラメーターについて
 
@@ -72,6 +72,7 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 | ShareTech | Next Generation UTM (NU シリーズ) | 9.0.1.3 | 互換性なし | [構成ガイド](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ シリーズ、NSA シリーズ<br>SuperMassive シリーズ<br>E-class NSA シリーズ |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |互換性なし |[構成ガイド](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG Next Gen Firewall | XG v17 | | [構成ガイド](https://community.sophos.com/kb/127546) |
+| Ubiquiti | EdgeRouter | EdgeOS v1.10 |  | [BGP over IKEv2/IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012374708&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=2EF5KFljZwtAGQDSm8%2FF2f6DqI2bkmA2qKG4u0rPgbQ%3D&reserved=0)<br><br>[VTI over IKEv2/IPsec](https://na01.safelinks.protection.outlook.com/?url=https%3A%2F%2Fhelp.ubnt.com%2Fhc%2Fen-us%2Farticles%2F115012305347&data=02%7C01%7Cmaafiri%40microsoft.com%7C7580cdf59eb94528c0de08d4f9fd78bd%7C72f988bf86f141af91ab2d7cd011db47%7C1%7C0%7C636408314443168072&sdata=ycgiDJCOQYTPN7sAEBSigphzC6mBaADz%2FgdCOm7TsXA%3D&reserved=0)
 | WatchGuard |すべて |Fireware XTM<br> PolicyBased: v11.11.x<br>RouteBased: v11.12.x |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA2F00000000LI7KAM&lang=en_US) |[構成ガイド](http://watchguardsupport.force.com/publicKB?type=KBArticle&SFDCID=kA22A000000XZogSAG&lang=en_US)|
 
 > [!NOTE]
@@ -79,6 +80,14 @@ VPN デバイスを構成するには、適切なデバイス ファミリに対
 > (*) Cisco ASA バージョン 8.4 以降では IKEv2 のサポートが追加されており、"UsePolicyBasedTrafficSelectors" オプションでカスタム IPsec/IKE ポリシーを使用して、Azure VPN ゲートウェイに接続できます。 こちらの[ハウツー記事](vpn-gateway-connect-multiple-policybased-rm-ps.md)を参照してください。
 >
 > (\*\*) ISR 7200 シリーズのルーターでは、PolicyBased の VPN のみがサポートされています。
+
+## <a name="configscripts"></a>Azure からの VPN デバイス構成スクリプトのダウンロード
+
+特定のデバイスについて、Azure から直接構成スクリプトをダウンロードできます。 詳細およびダウンロードの方法については、[VPN デバイス構成スクリプトのダウンロード](vpn-gateway-download-vpndevicescript.md)に関するページをご覧ください。
+
+### <a name="devices-with-available-configuration-scripts"></a>構成スクリプトを利用できるデバイス
+
+[!INCLUDE [scripts](../../includes/vpn-gateway-device-configuration-scripts.md)]
 
 ## <a name="additionaldevices"></a>未検証の VPN デバイス
 

@@ -12,25 +12,23 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/30/2018
 ms.author: mimig
-ms.openlocfilehash: 3679aa76d4a6b9fd6335371e1639f1f246867fa5
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 5f733e9cbd90829eded80b1401093e2331a1eb16
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Azure Cosmos DB の要求ユニット
-Azure Cosmos DB の [要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)が新たに公開されました。 詳細については、「 [スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照してください。
 
-![Throughput calculator][5]
-
-## <a name="introduction"></a>はじめに
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、Microsoft が提供するグローバル分散型のマルチモデル データベースです。 Azure Cosmos DB では、仮想マシンのレンタル、ソフトウェアのデプロイ、データベースの監視などを自分で行う必要はありません。 Microsoft のトップ エンジニアによって運用され、継続的な監視が行われる Azure Cosmos DB は、卓越した可用性、パフォーマンス、データ保護を提供します。 [SQL API](documentdb-introduction.md)、[MongoDB API](mongodb-introduction.md)、[Table API](table-introduction.md)、[Graph API](graph-introduction.md) を介した Gremlin など、お好きな API を利用してデータへアクセスできます。こうした API はすべてネイティブにサポートされています。 Azure Cosmos DB の通貨は要求ユニット (RU) です。 RU を使用すると、読み取り、書き込み容量の予約や、CPU、メモリ、および IOPS のプロビジョニングが不要です。
 
 Azure Cosmos DB は、単純な読み取りと書き込みから複雑なグラフのクエリまで、さまざまな操作を行うための API を多数サポートしています。 すべての要求が同等ではないため、要求を処理するために必要な計算量に基づいて、正規化された**要求ユニット**の量が割り当てられます。 1 つの操作の要求ユニットの数は確定的であり、Azure Cosmos DB のすべての操作で使用された要求ユニットの数は応答ヘッダーを介して追跡できます。 
 
-予測可能性を高めるには、100 RU/秒単位でスループットを予約する必要があります。 
+予測可能性を高めるには、100 RU/秒単位でスループットを予約する必要があります。 Azure Cosmos DB の[要求ユニット計算ツール](https://www.documentdb.com/capacityplanner)を使って、[スループットのニーズを推定する](request-units.md#estimating-throughput-needs)ことができます。
+
+![Throughput calculator][5]
 
 この記事を読むと、次の質問に回答できるようになります。  
 
@@ -46,9 +44,9 @@ Azure Cosmos DB を使用して、アプリケーションのスループット 
 
 Azure Cosmos DB では、1 秒で処理する要求ユニットで、予約済みスループットを指定します。 要求ユニットはスループットの通貨と考えることができます。この通貨によって、アプリケーションで利用できる保証された要求ユニット量を秒単位で "*予約*" できます。  ドキュメントの作成、クエリの実行、ドキュメントの更新など、Azure Cosmos DB での各操作は、CPU、メモリ、IOPS を消費します。  つまり、それぞれの操作により、"*要求の使用量*" が発生し、それが "*要求ユニット*" で表されます。  アプリケーションのスループット要件と共に、要求ユニット使用量に影響を及ぼす要因を理解しておくと、できるだけコスト効率の高い方法でアプリケーションを実行できます。 また、Azure Portal のデータ エクスプローラーは、クエリの核となる部分をテストできるすばらしいツールでもあります。
 
-まずは以下のビデオを見ることをお勧めします。このビデオでは、Aravind Ramachandran が要求ユニットと Azure Cosmos DB での予測可能なパフォーマンスについて説明しています。
+Azure Cosmos DB プログラム マネージャーの Andrew Liu が要求単位について説明する次のビデオを最初に見ることをお勧めします。
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Predictable-Performance-with-DocumentDB/player]
+> [!VIDEO https://www.youtube.com/embed/stk5WSp5uX0]
 > 
 > 
 

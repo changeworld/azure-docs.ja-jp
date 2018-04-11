@@ -14,14 +14,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d356535bf1a7daf45108bc790a19578108a50bb7
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9a947de3ad821d4cd65e579357e3c779e8623435
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="whats-new-in-azure-active-directory"></a>Azure Active Directory の新着情報
 
@@ -73,6 +73,32 @@ Azure AD B2C の ID プロバイダーとして、Twitter または GitHub を�
 
 詳しくは、「[Azure AD B2B コラボレーションとは](https://docs.microsoft.com/azure/active-directory/active-directory-b2b-what-is-azure-ad-b2b)」をご覧ください。
  
+---
+
+
+### <a name="restrict-browser-access-using-intune-managed-browser-with-azure-ad-application-based-conditional-access-for-ios-and-android"></a>iOS および Android 用の、Azure AD アプリケーション ベースの条件付きアクセスを使用した、Intune Managed Browser によるブラウザー アクセスの制限
+
+**タイプ:** 新機能  
+**サービス カテゴリ:** 条件付きアクセス  
+**製品の機能:** ID のセキュリティと保護
+ 
+
+**パブリック プレビュー中です。**
+
+**Intune Managed Browser SSO:** 従業員が (Microsoft Outlook などの) ネイティブ クライアント全体でシングル サインオンを使用できます。また、Azure AD に接続されたすべてのアプリで Intune Managed Browser を使用できます。
+
+**Intune Managed Browser の条件付きアクセスのサポート:** アプリケーションベースの条件付きアクセス ポリシーを使用して、従業員に Intune Managed Browser の使用を求めることができます。
+
+詳細については、この[ブログ記事](https://cloudblogs.microsoft.com/enterprisemobility/2018/03/15/the-intune-managed-browser-now-supports-azure-ad-sso-and-conditional-access/)をご覧ください。
+
+詳細については、次を参照してください。
+
+- [アプリケーションベースの条件付きアクセスの設定](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-mam)
+
+- [Managed Browser ポリシーの構成](https://aka.ms/managedbrowser)  
+
+
+
 ---
  
 

@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 3/20/2018
 ms.author: rithorn
-ms.openlocfilehash: db472345bacda916f1b1664ed7803978ab235a2a
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 911043c8fda985f25023dc1224d8e67b283f4d6c
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループのリソースを整理する 
 
@@ -47,6 +47,10 @@ ms.lasthandoff: 03/23/2018
 アクセス権を持っている場合、サブスクリプションに関する情報を取得するために REST API を使用すると詳細情報が返されます。しかし、Azure Portal および Azure PowerShell では、サブスクリプションは表示されません。 
 
 この項目については現在処理中であり、管理グループの "一般提供" を発表するまでには解決する予定です。  
+
+### <a name="cloud-solution-providercsp-limitation-during-preview"></a>プレビュー期間中のクラウド ソリューション プロバイダー (CSP) の制限 
+現在、クラウド ソリューション プロバイダー (CSP) パートナーに、その顧客のディレクトリ内の顧客の管理グループを作成または管理することができないという制限があります。  
+この項目については現在処理中であり、管理グループの "一般提供" を発表するまでには解決する予定です。
 
 
 ## <a name="root-management-group-for-each-directory"></a>各ディレクトリのルート管理グループ

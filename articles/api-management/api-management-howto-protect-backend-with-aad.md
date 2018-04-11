@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/18/2018
 ms.author: apimpm
-ms.openlocfilehash: 3caa3d2b8640c83f1001aeac3b0a5e9ada143183
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 2c05407d761a8848f9e032aa219960cd7ea6fa93
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="how-to-protect-an-api-using-oauth-20-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で OAuth 2.0 を使用して API を保護する方法
 
@@ -183,7 +183,7 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3
 
 この時点で、ユーザーが Developer Console から呼び出そうとするとログインを求められ、Developer Console はユーザーの代理でアクセス トークンを取得します。 すべてが期待どおりに動作しています。 ただし、誰かがトークンを使用せず、または無効なトークンを使用して API を呼び出すとどうなるでしょうか。 たとえば、`Authorization` ヘッダーを削除しようとすると、API を呼び出すことができることがわかります。 理由は、APIM がこの時点でアクセス トークンを検証していないためです。 `Auhtorization` ヘッダーはバックエンド API に渡されます。
 
-[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで APIM で要求を事前承認できます。 要求に有効なトークンがない場合は API Management によってブロックされ、バックエンドに渡されません。 以下のポリシーを `Echo API` に追加することができます。 
+[JWT を検証する](api-management-access-restriction-policies.md#ValidateJWT)ポリシーを使用して、各受信要求のアクセス トークンを検証することで APIM で要求を事前承認できます。 要求に有効なトークンがない場合は API Management によってブロックされ、バックエンドに渡されません。 たとえば、以下のポリシーを `Echo API` の `<inbound>` ポリシー セクションに追加できます。 これは、アクセス トークンの受信者要求をチェックし、トークンが有効でない場合にエラー メッセージを返します。 ポリシーの構成方法については、[ポリシーの設定と編集](set-edit-policies.md)に関する記事をご覧ください。
 
 ```xml
 <validate-jwt header-name="Authorization" failed-validation-httpcode="401" failed-validation-error-message="Unauthorized. Access token is missing or invalid.">
@@ -196,7 +196,12 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IlNTUWRoSTFjS3
 </validate-jwt>
 ```
 
+## <a name="build-an-application-to-call-the-api"></a>アプリケーションをビルドして API を呼び出す
+
+このガイドでは、サンプル クライアント アプリケーションとして APIM で Developer Console を使用して、OAuth 2.0 によって保護された `Echo API` を呼び出します。 アプリケーションのビルドと OAuth 2.0 フローの実装について詳しくは、「[Azure Active Directory のコード例](../active-directory/develop/active-directory-code-samples.md)」をご覧ください。
+
 ## <a name="next-steps"></a>次の手順
+* [Azure Active Directory と OAuth2.0](../active-directory/develop/active-directory-authentication-scenarios.md) の詳細を確認します。
 * API Management についてのその他の [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=api-management) をご覧ください。
 * バックエンド サービスを保護するその他の方法については、「[相互証明書認証](api-management-howto-mutual-certificates.md)」をご覧ください。
 

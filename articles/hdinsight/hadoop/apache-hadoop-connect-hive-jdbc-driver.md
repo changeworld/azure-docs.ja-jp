@@ -1,8 +1,8 @@
 ---
-title: "JDBC ドライバーを使用して Hive のクエリを実行する - Azure HDInsight | Microsoft Docs"
-description: "Java アプリケーションから JDBC ドライバーを使用して、Hive のクエリを HDInsight 上の Hadoop に発行する方法について説明します。 プログラムを使用して、SQuirrel SQL クライアントから接続します。"
+title: JDBC ドライバーを使用して Hive のクエリを実行する - Azure HDInsight | Microsoft Docs
+description: Java アプリケーションから JDBC ドライバーを使用して、Hive のクエリを HDInsight 上の Hadoop に発行する方法について説明します。 プログラムを使用して、SQuirrel SQL クライアントから接続します。
 services: hdinsight
-documentationcenter: 
+documentationcenter: ''
 author: Blackmist
 manager: jhubbard
 editor: cgronlun
@@ -14,13 +14,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/20/2018
+ms.date: 04/02/2018
 ms.author: larryfr
-ms.openlocfilehash: c56a4ec4d1abea5a862172966697747cbb3d234c
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: 876d6169f1ecb2f9cdecc59f3f7c8d0a82a8fe7e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/21/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight で JDBC ドライバーを使用して Hive のクエリを実行する
 
@@ -32,7 +32,7 @@ Hive JDBC インターフェイスの詳細については、 [HiveJDBCInterface
 
 ## <a name="prerequisites"></a>前提条件
 
-* HDInsight クラスターでの Hadoop。 Linux または Windows ベースのクラスターが動作します。
+* HDInsight クラスターでの Hadoop。
 
   > [!IMPORTANT]
   > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳しくは、[HDInsight 3.3 の廃止](../hdinsight-component-versioning.md#hdinsight-windows-retirement)に関するページをご覧ください。
@@ -65,76 +65,49 @@ DriverManager.getConnection(connectionString,clusterAdmin,clusterPassword);
 
 SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリモートから実行するために使用できる JDBC クライアントです。 次の手順では、既に SQuirreL SQL がインストールされていると仮定します。
 
-1. HDInsight クラスターから Hive の JDBC ドライバーをコピーします。
+1. ファイルを含むディレクトリを作成します。 たとえば、「`mkdir hivedriver`」のように入力します。
 
-    * **Linux ベースの HDInsight** クラスター バージョン 3.5 または 3.6 の場合、次の手順を使用して、必要な jar ファイルをダウンロードします。
+2. コマンドラインで次のコマンドを使用して、HDInsight クラスターからファイルをコピーします。
 
-        1. ファイルを含むディレクトリを作成します。 たとえば、「`mkdir hivedriver`」のように入力します。
+    ```bash
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libfb*.jar .
+    scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
+    ```
 
-        2. コマンドラインで次のコマンドを使用して、HDInsight クラスターからファイルをコピーします。
+    `USERNAME` をクラスターの SSH ユーザー アカウント名に置き換えます。 `CLUSTERNAME` を HDInsight クラスター名に置き換えます。
 
-            ```bash
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-common.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/hadoop-auth.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/log4j-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hadoop-client/lib/slf4j-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/hive-*-1.2*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpclient-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/httpcore-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libthrift-*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/libfb*.jar .
-            scp USERNAME@CLUSTERNAME:/usr/hdp/current/hive-client/lib/commons-logging-*.jar .
-            ```
-
-            `USERNAME` をクラスターの SSH ユーザー アカウント名に置き換えます。 `CLUSTERNAME` を HDInsight クラスター名に置き換えます。
-
-    * **Windows ベースの HDInsight**の場合、次の手順を使用して、jar ファイルをダウンロードします。
-
-        1. Azure Portal から HDInsight クラスターを選択し、 **[リモート デスクトップ]** アイコンを選択します。
-
-            ![[リモート デスクトップ] アイコン](./media/apache-hadoop-connect-hive-jdbc-driver/remotedesktopicon.png)
-
-        2. [リモート デスクトップ] セクションで、**[接続]** を使用してクラスターに接続します。 [リモート デスクトップ] が有効でない場合、フォームを使用してユーザー名とパスワードを入力し、**[有効にする]** を選択して、クラスターの [リモート デスクトップ] を有効にします。
-
-            ![[リモート デスクトップ] セクション](./media/apache-hadoop-connect-hive-jdbc-driver/remotedesktopblade.png)
-
-            **[接続]** を選択すると、.RDP ファイルがダウンロードされます。 このファイルを使用して、リモート デスクトップ クライアントを起動します。 メッセージが表示されたら、リモート デスクトップのアクセス用に入力したユーザー名とパスワードを使用します。
-
-        3. 接続されたら、次のファイルをリモート デスクトップ セッションからローカル コンピューターにコピーします。 `hivedriver` という名前のローカル ディレクトリに置きます。
-
-            * C:\apps\dist\hive-0.14.0.2.2.9.1-7\lib\hive-jdbc-0.14.0.2.2.9.1-7-standalone.jar
-            * C:\apps\dist\hadoop-2.6.0.2.2.9.1-7\share\hadoop\common\hadoop-common-2.6.0.2.2.9.1-7.jar
-            * C:\apps\dist\hadoop-2.6.0.2.2.9.1-7\share\hadoop\common\lib\hadoop-auth-2.6.0.2.2.9.1-7.jar
-
-            > [!NOTE]
-            > パスとファイル名に含まれるバージョン番号は、使用しているクラスターと異なる場合があります。
-
-        4. ファイルのコピーが完了したら、リモート デスクトップ セッションを切断します。
-
-2. SQuirreL SQL アプリケーションを起動します。 ウィンドウの左側から **[Drivers]** を選択します。
+3. SQuirreL SQL アプリケーションを起動します。 ウィンドウの左側から **[Drivers]** を選択します。
 
     ![ウィンドウの左側の [Drivers] タブ](./media/apache-hadoop-connect-hive-jdbc-driver/squirreldrivers.png)
 
-3. **[Drivers\(ドライバー\)]** ダイアログの上部にあるアイコンから、**+** アイコンを選択してドライバーを作成します。
+4. **[Drivers\(ドライバー\)]** ダイアログの上部にあるアイコンから、**+** アイコンを選択してドライバーを作成します。
 
     ![[Drivers] アイコン](./media/apache-hadoop-connect-hive-jdbc-driver/driversicons.png)
 
-4. [Add Driver\(ドライバーの追加\)] ダイアログで、次の情報を追加します。
+5. [Add Driver\(ドライバーの追加\)] ダイアログで、次の情報を追加します。
 
     * **Name**: Hive
     * **Example URL**: `jdbc:hive2://localhost:443/default;transportMode=http;ssl=true;httpPath=/hive2`
-    * **Extra Class Path**: [Add] ボタンを使用して、以前にダウンロードした jar ファイルを追加します
+    * **Extra Class Path (追加クラス パス)**: [Add]\(追加\) ボタンを使って、以前にダウンロードしたすべての jar ファイルを追加します
     * **Class Name**: org.apache.hive.jdbc.HiveDriver
 
    ![[Add Driver] ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/adddriver.png)
 
    **[OK]** をクリックして設定を保存します。
 
-5. SQuirreL SQL ウィンドウの左側で、**[Aliases]** を選択します。 次に **+** アイコンをクリックし、接続のエイリアスを作成します。
+6. SQuirreL SQL ウィンドウの左側で、**[Aliases]** を選択します。 次に **+** アイコンをクリックし、接続のエイリアスを作成します。
 
     ![新しいエイリアスの追加](./media/apache-hadoop-connect-hive-jdbc-driver/aliases.png)
 
-6. **[Add Alias]** ダイアログに次の値を使用します。
+7. **[Add Alias]** ダイアログに次の値を使用します。
 
     * **Name**: Hive on HDInsight
 
@@ -150,15 +123,16 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
  ![[Add Alias] ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/addalias.png)
 
-    **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight]** ダイアログが表示されたら、**[Connect]** を選択してテストを実行します。 テストが成功した場合、**[Connection successful\(接続成功\)]** ダイアログが表示されます。 エラーが発生した場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。
+    > [!IMPORTANT] 
+    > **[Test]** ボタンを使用して、接続が機能することを確認します。 **[Connect to: Hive on HDInsight]** ダイアログが表示されたら、**[Connect]** を選択してテストを実行します。 テストが成功した場合、**[Connection successful\(接続成功\)]** ダイアログが表示されます。 エラーが発生した場合は、「[トラブルシューティング](#troubleshooting)」を参照してください。
 
     **[Add Alias\(エイリアスの追加\)]** ダイアログの下部にある **[OK]** ボタンを使用して、接続エイリアスを保存します。
 
-7. SQuirreL SQL の上部にある **[Connect to]** ドロップダウンから、**[Hive on HDInsight]** を選択します。 メッセージが表示されたら、**[Connect]** を選択します。
+8. SQuirreL SQL の上部にある **[Connect to]** ドロップダウンから、**[Hive on HDInsight]** を選択します。 メッセージが表示されたら、**[Connect]** を選択します。
 
     ![接続ダイアログ](./media/apache-hadoop-connect-hive-jdbc-driver/connect.png)
 
-8. 接続されたら、SQL クエリ ダイアログに次のクエリを入力し、**[Run]** アイコンを選択します。 結果領域にクエリの結果が表示されます。
+9. 接続されたら、SQL クエリ ダイアログに次のクエリを入力し、**[Run]** アイコンを選択します。 結果領域にクエリの結果が表示されます。
 
         select * from hivesampletable limit 10;
 
@@ -166,7 +140,7 @@ SQuirreL SQL は、HDInsight クラスターを使用して Hive クエリをリ
 
 ## <a name="connect-from-an-example-java-application"></a>Java アプリケーションの例からの接続
 
-Java クライアントを使用して HDInsight の Hive をクエリする例は、 [https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc)にあります。 リポジトリの指示に従い、サンプルを作成して実行します。
+Java クライアントを使って HDInsight の Hive をクエリする例は、[https://github.com/Azure-Samples/hdinsight-java-hive-jdbc](https://github.com/Azure-Samples/hdinsight-java-hive-jdbc) にあります。 リポジトリの指示に従い、サンプルを作成して実行します。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 

@@ -1,6 +1,6 @@
 ---
-title: "コンソール アプリケーション用の Azure Application Insights | Microsoft Docs"
-description: "Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。"
+title: コンソール アプリケーション用の Azure Application Insights | Microsoft Docs
+description: Web アプリケーションの可用性、パフォーマンス、使用状況を監視します。
 services: application-insights
 documentationcenter: .net
 author: lmolkova
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/18/2017
-ms.author: lmolkova
-ms.openlocfilehash: 57f5670eec36ff2c4332da592dd2a3eef73fdefc
-ms.sourcegitcommit: 9890483687a2b28860ec179f5fd0a292cdf11d22
+ms.author: lmolkova; mbullwin
+ms.openlocfilehash: f9d734abeb644fc865d5dc86afc8ad0e586bfc0a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-for-net-console-applications"></a>.NET コンソール アプリケーション用の Application Insights
 [Application Insights](app-insights-overview.md) を使うと、Web アプリケーションの可用性、パフォーマンス、利用状況を監視できます。
@@ -26,8 +26,8 @@ ms.lasthandoff: 01/24/2018
 
 ## <a name="getting-started"></a>使用の開始
 
-* [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](app-insights-create-new-resource.md)。 アプリケーションの種類として ASP.NET アプリを選択します。
-* インストルメンテーション キーをコピーします。 先ほど作成した新しいリソースの [要点] ドロップダウン リストで、キーを探します。 
+* [Azure Portal](https://portal.azure.com) で、[Application Insights のリソースを作成します](app-insights-create-new-resource.md)。 アプリケーションの種類として **[一般]** を選びます。
+* インストルメンテーション キーをコピーします。 先ほど作成した新しいリソースの **[要点]** ドロップダウン リストで、キーを探します。 
 * 最新の [Microsoft.ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) パッケージをインストールします。
 * テレメトリを追跡する前に、コードにインストルメンテーション キーを設定します (または APPINSIGHTS_INSTRUMENTATIONKEY 環境変数を設定します)。 その後、テレメトリを手動で追跡して、Azure Portal に表示します。
 
@@ -39,7 +39,10 @@ telemetryClient.TrackTrace("Hello World!");
 
 * [Microsoft.ApplicationInsights.DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) パッケージの最新バージョンをインストールします。このパッケージにより、HTTP、SQL、またはその他の外部の依存関係呼び出しが自動的に追跡されます。
 
-コードから、または `ApplicationInsights.config` ファイルを使用して、Application Insights を初期化し、構成できます。 初期化はできるだけ早期に実行するようにします。
+コードから、または `ApplicationInsights.config` ファイルを使用して、Application Insights を初期化し、構成できます。 初期化はできるだけ早期に実行するようにします。 
+
+> [!NOTE]
+> **ApplicationInsights.config** を参照している説明は、.NET Standard を対象とするアプリに対してのみ適用され、.NET Core アプリケーションには適用されません。 
 
 ### <a name="using-config-file"></a>構成ファイルを使用する
 

@@ -1,8 +1,8 @@
 ---
-title: "Azure Application Insights の価格とデータ ボリュームの管理 | Microsoft Docs"
-description: "Application Insights でテレメトリの量を管理し、コストを監視します。"
+title: Azure Application Insights の価格とデータ ボリュームの管理 | Microsoft Docs
+description: Application Insights でテレメトリの量を管理し、コストを監視します。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ebd0d843-4780-4ff3-bc68-932aa44185f6
@@ -11,96 +11,65 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 95c5195ac2ea832586211cce37eb2094e06eaf03
-ms.sourcegitcommit: a0be2dc237d30b7f79914e8adfb85299571374ec
+ms.openlocfilehash: 42c54509cedf48e9ebabb5b50865ed56e54bee05
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/13/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="manage-pricing-and-data-volume-in-application-insights"></a>Application Insights での価格とデータ ボリュームの管理
 
+[Azure Application Insights][start] の価格は、アプリケーションごとのデータ量に基づきます。 Application Insights の各リソースは個々のサービスとして課金され、Azure のサブスクリプションの課金内容に加えられます。
 
-[Azure Application Insights][start] の価格は、アプリケーションごとのデータ量に基づきます。 開発時または小規模なアプリで使用頻度が低い場合は、無料になる可能性があります。これは、毎月 1 GB のテレメトリ データ許容量が設けられているためです。
+2 つの価格プランがあります。 既定のプランは Basic であり、取り込んだデータのボリュームでは、基本的には追加のコストや請求なしで Enterprise プラン プランに相当する機能をすべて含みます。 Operations Management Suite を使用している場合は、日次でのデータ許容量に沿ってノード単位で課金され、含まれる許容量を超える取り込みデータに対してさらに課金される Enterprise プランを選択できます。
 
-Application Insights の各リソースは個々のサービスとして課金され、Azure のサブスクリプションの課金内容に加えられます。
-
-2 つの価格プランがあります。 既定のプランは、Basic と呼ばれます。 Enterprise プランを選択できます。ここでは日単位で料金が発生しますが、[連続エクスポート](app-insights-export-telemetry.md)などの特定の追加の機能を有効にすることができます。
-
-Application Insights の課金の仕組みについてご質問があれば、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights)に気軽に投稿してください。 
+Application Insights の課金の仕組みについてご質問があれば、[フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=ApplicationInsights)に気軽に投稿してください。
 
 ## <a name="the-price-plans"></a>価格プラン
 
-お客様の通貨での現在の料金については、[Application Insights の価格ページ][pricing]を参照してください。
+お客様の通貨および地域での現在の料金については、[Application Insights の価格ページ][pricing]をご覧ください。
 
 ### <a name="basic-plan"></a>Basic プラン
 
-Basic プランは新しい Application Insights リソースを作成する場合の既定のプランであり、ほとんどのお客様は Basic プランで十分です。
+Basic プランは、新しい Application Insights リソースが作成されるときの既定のプランであり、Operations Management Suite サブスクリプションをお持ちのお客様を除く、すべてのお客様に最適なプランです。
 
 * Basic プランでは、データ量、つまり Application Insights で受信したテレメトリのバイト数に応じて課金されます。 データ量は、Application Insights がアプリケーションから受信した圧縮されていない JSON データ パッケージのサイズとして測定されます。
-[Analytics にインポートされた表形式データ](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)では、データ ボリュームは、Application Insights に送信されたファイルの非圧縮サイズとして測定されます。  
-* いずれのアプリについても、最初の 1 GB 無料です。そのため、試験や開発の段階で換金されることはあまりありません。
+[Analytics にインポートされた表形式データ](https://docs.microsoft.com/azure/application-insights/app-insights-analytics-import)では、データ ボリュームは、Application Insights に送信されたファイルの非圧縮サイズとして測定されます。
 * [ライブ メトリック ストリーム](app-insights-live-stream.md) データは、課金対象としてカウントされません。
-* Basic プランでは、[連続エクスポート](app-insights-export-telemetry.md)を 1 GB ごとの追加料金で利用できます。
+* 2018 年 4 月の時点で、Basic プランでは、[連続エクスポート](app-insights-export-telemetry.md)と [Log Analytics コネクタ](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)を追加料金なしでご利用いただけます。
 
-### <a name="enterprise-plan"></a>Enterprise プラン
+### <a name="enterprise-plan-and-operations-management-suite-subscription-entitlements"></a>Enterprise プランと Operations Management Suite のサブスクリプションの権利
 
-* Enterprise プランでは、Application Insights のすべての機能をアプリで使用できます。 Enterprise プランでは、[連続エクスポート](app-insights-export-telemetry.md)と 
+[以前の発表](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/)のとおり、Microsoft Operations Management Suite E1 および E2 を購入したお客様は、追加コストなしで追加コンポーネントとして Application Insights Enterprise を取得できます。 具体的には、Operations Management Suite E1 および E2 の各ユニットには、Application Insights の Enterprise プラン 1 ノード分の権利が含まれています。 後で詳しく説明するように、Application Insights の各ノードは、追加コストなしで、1 日あたり最大 200 MB のデータを取り込み (Log Analytics のデータ インジェストを除く)、90 日間保持できます。 これは Operations Management Suite サブスクリプションをお持ちのお客様だけに適用されるので、サブスクリプションをお持ちでないお客様にはこのプランを選ぶオプションは表示されません。
 
-[Log Analytics コネクタ](https://go.microsoft.com/fwlink/?LinkId=833039&amp;clcid=0x409)を追加料金なしでご利用いただけます。
-* Enterprise プランでは、アプリに対してテレメトリを送信しているノードごとに料金が課金されます。 
- * *ノード*とは、アプリをホストする物理または仮想サーバー マシン (または Platform-as-a-Service (PaaS) ロール インスタンス) のことです。
- * 開発マシン、クライアントのブラウザー、およびモバイル デバイスはノードとしてカウントされません。
- * テレメトリを送信するコンポーネント (Web サービスやバックエンド ワーカーなど) がアプリに複数ある場合、それらは個別にカウントされます。
- * [ライブ メトリック ストリーム](app-insights-live-stream.md) データは、課金対象としてカウントされません。サブスクリプション全体を通じて、料金はノード単位で計算されます (アプリ単位ではありません)。 12 のアプリに対して 5 つのノードがテレメトリを送信している場合、料金は 5 ノード分になります。
-* 料金の見積りは月単位で計算されますが、実際の料金は、ノードがアプリからテレメトリを送信した時間分しか課金されません。 1 時間あたりの料金は、1 か月あたりの見積り額/744 です (1 か月 31 日の時間数)。
-* 検出された各ノードに、1 日あたり 200 MB のデータ量の割り当てが (時間単位の精度で) 与えられます。 未使用のデータ割り当て分が日をまたいで繰り越されることはありません。
- * Enterprise の価格オプションを選んだお客様には、テレメトリをサブスクリプション内の Application Insights リソースに送信するノードの数に基づいて、日単位の無料データ利用分が提供されます。 したがって、終日データを送信する 5 つのノードがある場合、サブスクリプション内のすべての Application Insights リソースに 1 GB の許容量が適用されます。 無料データ利用分はすべてのノードで共有されるため、一部のノードのデータ送信量が他のノードより多くても問題はありません。 特定の日に、Application Insights リソースがサブスクリプションの日単位の無料データ割り当て分を超えるデータを受信した場合は、1 GB ごとに超過データ料金が適用されます。 
- * 1 日あたりの無料データ利用分は、各ノードが 1 日にテレメトリを送信する時間数 (UTC を使用) を 24 で割った値に、200 MB を掛け合わせて計算します。 つまり、4 つのノードが、1 日 24 時間のうち 15 時間テレメトリを送信した場合、その日のデータ量は ((4 x 15) / 24) x 200 MB = 500 MB になります。 データ超過分 1 GB あたり 2.30 米国ドルの料金ですので、その日ノードが 1 GB のデータを送信した場合、超過データ料金は 1.15 米国ドルになります。
- * Enterprise プランの日単位の無料利用分は、Basic オプションを選択したアプリケーションとは共有されず、未使用の無料利用分は日をまたいで繰り越されないことに注意してください。 
-* 個別のノード数を決定するいくつかの例を次に示します。
-| シナリオ                               | 日単位の合計ノード数 |
-|:---------------------------------------|:----------------:|
-| 1 つのアプリケーションで 3つの Azure App Service インスタンスと 1 つの仮想サーバーが使用されている。 | 4 |
-| 3 つのアプリケーションが 2 つの VM で実行され、これらのアプリケーションの Application Insights リソースが、同じサブスクリプションの Enterprise プランにある。 | 2 | 
-| Applications Insights リソースが同じサブスクリプションにある 4 つのアプリケーション。 各アプリケーションが 2 つのインスタンスをピーク時以外の 16 時間実行し、4 つのインスタンスをピーク時の 8 時間実行している。 | 13.33 | 
-| Cloud Services に 1 つの Worker ロールと 1 つの Web ロールが含まれ、それぞれ 2 つのインスタンスを実行している。 | 4 | 
-| 5 つのノードがある Service Fabric クラスターが 50 のマイクロサービスを実行し、各マイクロサービスが 3 つのインスタンスを実行している。 | 5|
+> [!NOTE]
+> この権利を取得するには、Enterprise 価格プランで Application Insights リソースを取得する必要があります。 この権利は、ノードとしてのみ適用されるため、Basic プランの Application Insights リソースはこの利点を受けられません。 この権利は、*[使用量と推定コスト]* ページに表示される見積もりコストには表示されません。 また、2018年 4 月の新しい Azure 監視価格モデルにサブスクリプションを移行する場合、使用可能なプランは Basic プランだけなので、Operations Management Suite サブスクリプションをお持ちの場合はお勧めしません。
 
-* 正確なノード カウントの動作は、アプリケーションで使用している Application Insights SDK によって異なります。 
-  * SDK バージョン 2.2 以降では、Application Insights [Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) と [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) の両方で各アプリケーション ホストがノードとして報告されます (例: 物理サーバーと VM ホストのコンピューター名、または Cloud Services の場合はインスタンス名)。  唯一の例外は [.NET Core](https://dotnet.github.io/) と Application Insights Core SDK のみを使用するアプリケーションです。この場合はホスト名が使用できないため、すべてのホストについて報告されるのは 1 つのノードのみです。 
-  * 以前のバージョンの SDK である [Web SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) は、新しいバージョンの SDK と同じように動作しますが、[Core SDK](https://www.nuget.org/packages/Microsoft.ApplicationInsights/) は実際のアプリケーション ホストの数に関係なく 1 つのノードのみ報告します。 
-  * アプリケーションで SDK を使用してロール インスタンスをカスタム値に設定すると、既定でノード数の決定に同じ値が使用されることに注意してください。 
-  * クライアント コンピューターやモバイル デバイスから実行されているアプリで新しいバージョンの SDK を使用している場合は、ノードのカウントが (多数のクライアント コンピューターやモバイル デバイスから) 非常に大きい数値を返す可能性があります。 
+Enterprise プランについて詳しくは、[Enterprise プランの価格の詳細に関するページ](app-insights-pricing-enterprise-details.md)をご覧ください。
 
 ### <a name="multi-step-web-tests"></a>複数手順の Web テスト
 
-[複数ステップ Web テスト](app-insights-monitor-web-app-availability.md#multi-step-web-tests)に対しては、追加料金が発生します。 これは、一連のアクションを実行する Web テストのことです。 
+[複数ステップ Web テスト](app-insights-monitor-web-app-availability.md#multi-step-web-tests)に対しては、追加料金が発生します。 これは、一連のアクションを実行する Web テストのことです。
 
 単一ページの ping テストについては、個別の料金はかかりません。 Ping テストと複数ステップ テストの両方からのテレメトリについては、アプリの他のテレメトリと一緒に課金されます。
- 
-## <a name="operations-management-suite-subscription-entitlement"></a>Operations Management Suite のサブスクリプションの権利
 
-[最近発表](https://blogs.technet.microsoft.com/msoms/2017/05/19/azure-application-insights-enterprise-as-part-of-operations-management-suite-subscription/)されたとおり、Microsoft Operations Management Suite E1 および E2 を購入した顧客は、追加コストなしで追加コンポーネントとして Application Insights Enterprise を取得できます。 具体的には、Operations Management Suite E1 および E2 の各ユニットには、Application Insights の Enterprise プラン 1 ノード分の権利が含まれています。 前述のように、Application Insights の各ノードは、追加コストなしで、1 日あたり最大 200 MB のデータを取り込み (Log Analytics のデータ取り込みを除く)、90 日間保持できます。 
-
-> [!NOTE]
-> この権利を取得するには、Enterprise 価格プランで Application Insights リソースを取得する必要があります。 この権利は、ノードとしてのみ適用されるため、Basic プランの Application Insights リソースはこの利点を受けられません。 この権利は、機能 + 価格ブレードに表示される見積もりコストには表示されません。 
->
- 
 ## <a name="review-pricing-plans-and-estimate-costs"></a>価格プランを確認してコストを見積もる
 
-Application Insights では、利用可能な価格プランと最近の使用パターンに基づくコストを簡単に理解できるようになっています。 Azure ポータルで Application Insights リソースの **[Features + Pricing (機能と価格設定)]** ブレードを開きます。
+Application Insights では、利用可能な価格プランと最近の使用パターンに基づくコストを簡単に理解できるようになっています。 Azure Portal で Application Insights リソースの **[使用量と推定コスト]** ページを開きます。
 
-![[Pricing (価格設定)] を選択します。](./media/app-insights-pricing/01-pricing.png)
+![[Pricing (価格設定)] を選択します。](./media/app-insights-pricing/pricing-001.png)
 
 **a.** 該当の月のデータ量を確認します。 これには、(サーバーおよびクライアント アプリからの、また可用性テストからの[サンプリング](app-insights-sampling.md)の後) 受信され保持されたすべてのデータが含まれます。
 
 **b.** [複数ステップ Web テスト](app-insights-monitor-web-app-availability.md#multi-step-web-tests)で別料金が発生しています。 (これには、データ ボリューム料金に含まれるシンプルな可用性テストは含まれません。)
 
-**c.** Enterprise プランを有効にします。
+**c.** 過去 1 か月のデータ ボリュームの傾向を表示します。
 
-**d.** データ管理オプションをクリックして先月のデータ量を表示し、1 日あたりの上限を設定するか、インジェスト サンプリングを設定します。
+**d.** データ インジェストの[サンプリング](app-insights-sampling.md)を有効にします。 
+
+**e.** 1 日のデータ ボリュームの上限を構成します。
 
 Application Insights の課金は Azure の課金内容に加えられます。 Azure ポータルの [課金] か [Azure Billing Portal](https://account.windowsazure.com/Subscriptions)で、Azure の課金内容の詳細を確認できます。 
 
@@ -110,9 +79,8 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 送信するデータ ボリュームを制限するには、3 つの方法があります。
 
 * **サンプリング:** このメカニズムを使用すると、メトリックのひずみを最小に抑えて、サーバーおよびクライアント アプリから送信されるテレメトリの量を減らすことができます。 これは、データの量を調整するための主要なツールです。 [サンプリング機能の詳細については、こちらを参照してください](app-insights-sampling.md)。 
-* **1 日あたりの上限:** Azure Portal から Application Insights リソースを作成する場合は、100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。これはテストを行うことだけを想定したものです。 このケースでは、アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 高トラフィック アプリケーション用に最大値の引き上げを要求した場合を除き、最大の上限は 1000 GB/日です。 日次上限を設定するときには、**決して日次上限に到達することがないように**注意してください。到達すると、その日のそれ以降のデータが失われてしまい、アプリケーションを監視できなくなるためです。 値を変更するには、[データ管理] ブレードからリンクされている [日次ボリューム上限] ブレードを使用します (下記参照)。 サブスクリプション タイプによっては、Application Insights でクレジットを使用できません。 サブスクリプションに使用制限がある場合は、[日次上限] ブレードに、使用制限を解除して 32.3 MB/日から引き上げる方法が表示されます。  
-* **スロットル:** これにより、データ速度は 1 分間で平均して 1 秒あたり 32000 イベントに制限されます。 
-
+* **1 日あたりの上限:** Azure Portal から Application Insights リソースを作成する場合は、100 GB/日に設定されます。 Visual Studio から Application Insights リソースを作成する場合の既定値は小 (32.3 MB/日) です。これはテストを行うことだけを想定したものです。 このケースでは、アプリを実稼働環境にデプロイする前に、ユーザーが日次上限を上げることになります。 高トラフィック アプリケーション用に最大値の引き上げを要求した場合を除き、最大の上限は 1000 GB/日です。 日次上限を設定するときには、**決して日次上限に到達することがないように**注意してください。到達すると、その日のそれ以降のデータが失われてしまい、アプリケーションを監視できなくなるためです。 これを変更するには、[使用量と推定コスト] ページからリンクされている [日次ボリューム上限] オプションを使います (後述参照)。 Application Insights には使われないクレジットがある一部のサブスクリプションの種類の制限を削除しました。 これまでは、サブスクリプションに使用制限がある場合は、[日次上限] ダイアログに、使用制限を解除して 32.3 MB/日から引き上げる方法が表示されます。
+* **スロットル:** これにより、データ速度は 1 分間で平均して 1 秒あたり 32,000 イベントに制限されます。
 
 *アプリがスロットル レートを超えるとどうなりますか。*
 
@@ -120,7 +88,7 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 *アプリがどれだけのデータを送信しているかを知る方法はありますか。*
 
-* **[データ ボリュームの管理]** ブレードを開いて、日次データ ボリュームのグラフを表示します。 
+* **[使用量と推定コスト]** ページを開き、毎日のデータ ボリュームのグラフを確認します。 
 * または、メトリックス エクスプローラーで、新しいグラフを追加し、 **[データ ポイントの量]** メトリックを選択します。 [グループ化] を有効にし、 **[データの種類]**を選択してグループ化します。
 
 ## <a name="to-reduce-your-data-rate"></a>データ レートを削減するには
@@ -134,16 +102,16 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 
 ## <a name="managing-the-maximum-daily-data-volume"></a>最大日次データ ボリュームの管理
 
-日次ボリューム上限を使用して、収集されるデータを制限できますが、上限に達した場合、アプリケーションから送信されるその日の残りのすべてのテレメトリが失われます。 アプリケーションが日次上限に達すると、その後のアプリケーションの正常性とパフォーマンスを追跡できなくなるため、上限に達しないようにすることを**お勧めします**。 
+日次ボリューム上限を使用して、収集されるデータを制限できますが、上限に達した場合、アプリケーションから送信されるその日の残りのすべてのテレメトリが失われます。 アプリケーションが日次上限に達すると、その後のアプリケーションの正常性とパフォーマンスを追跡できなくなるため、上限に達しないようにすることを**お勧めします**。
 
-代わりに、[サンプリング](app-insights-sampling.md) を使用してデータ ボリュームを調整し、日次上限は、アプリケーションが予想以上に大量のテレメトリを送信し始めた場合の "最後の手段" としてのみ使用するようにします。 
+代わりに、[サンプリング](app-insights-sampling.md) を使用してデータ ボリュームを調整し、日次上限は、アプリケーションが予想以上に大量のテレメトリを送信し始めた場合の "最後の手段" としてのみ使用するようにします。
 
-日次上限を変更するには、Application Insights リソースの [構成] セクションで **[データ ボリュームの管理]** と **[日次上限]** を順にクリックします。
+日次上限を変更するには、Application Insights リソースの [構成] セクションで、**[使用量と推定コスト]** ページから **[日次上限]** をクリックします。
 
-![テレメトリの日次ボリューム上限の調整](./media/app-insights-pricing/daily-cap.png) 
+![テレメトリの日次ボリューム上限の調整](./media/app-insights-pricing/pricing-003.png)
 
 ## <a name="sampling"></a>サンプリング
-[サンプリング](app-insights-sampling.md) は、テレメトリがアプリに送信される速度を低下させる一方で、診断検索中に関連イベントを見つける機能を保持すると共に、正しいイベント数を保持する方法です。 
+[サンプリング](app-insights-sampling.md) は、テレメトリがアプリに送信される速度を低下させる一方で、診断検索中に関連イベントを見つける機能を保持すると共に、正しいイベント数を保持する方法です。
 
 サンプリングは、料金を削減し、月間クォータ内で維持する効果的な方法です。 サンプリング アルゴリズムは、たとえば、検索を使用する場合は、特定の例外に関連する要求を検出できるようにする、テレメトリの関連項目を保持します。 アルゴリズムは、要求レート、例外レート、およびその他のカウントについてメトリックス エクスプ ローラーに正しい値が表示されるように正しいカウントも保持します。
 
@@ -152,38 +120,35 @@ Application Insights の課金は Azure の課金内容に加えられます。 
 * [アダプティブ サンプリング](app-insights-sampling.md) は ASP.NET SDK の既定値で、アプリが送信するテレメトリの量を自動的に調整します。 Web アプリの SDK で自動的に動作して、ネットワーク上のテレメトリのトラフィックを削減します。 
 * *インジェスト サンプリング* " は、アプリからのテレメトリが Application Insights サービスに入る時点で動作します。 アプリから送信されるテレメトリの量には影響しませんが、サービスによって保持される量が削減されます。 これを使用すると、ブラウザーや他の SDK からのテレメトリによって使用されるクォータを削減できます。
 
-インジェスト サンプリングを設定するには、[価格] ブレードでコントロールを設定します。
+インジェスト サンプリングを設定するには、[価格] ダイアログでコントロールを設定します。
 
-![クォータと価格のブレードから、[サンプル] タイルをクリックして、サンプリングの割合を選択します。](./media/app-insights-pricing/04.png)
+![クォータと価格のダイアログから、[サンプル] タイルをクリックして、サンプリングの割合を選択します。](./media/app-insights-pricing/pricing-004.png)
 
 > [!WARNING]
-> [データのサンプリング] ブレードでは、インジェストのサンプリングの値を制御するだけです。 アプリで Application Insights SDK によって適用されているサンプリング レートは反映されません。 受信テレメトリが既に SDK でサンプリングされている場合、インジェスト サンプリングは適用されません。
-> 
+> [データのサンプリング] ダイアログでは、インジェストのサンプリングの値を制御するだけです。 アプリで Application Insights SDK によって適用されているサンプリング レートは反映されません。 受信テレメトリが既に SDK でサンプリングされている場合、インジェスト サンプリングは適用されません。
+>
 
 適用されている場所に関係なく、実際のサンプリング レートを検出するには、次のように [Analytics クエリ](app-insights-analytics.md) を使用します。
 
     requests | where timestamp > ago(1d)
-    | summarize 100/avg(itemCount) by bin(timestamp, 1h) 
-    | render areachart 
+    | summarize 100/avg(itemCount) by bin(timestamp, 1h)
+    | render areachart
 
 保持されている各レコードで、 `itemCount` は、それが表す元のレコードの数 (1 + 以前に破棄されたレコードの数と同じ) を示します。 
-
 
 ## <a name="automation"></a>Automation
 
 Azure Resource 管理を使用して、価格プランを設定するスクリプトを記述することができます。 方法については、[こちら](app-insights-powershell.md#price)をご覧ください。
 
 ## <a name="limits-summary"></a>制限の概要
+
 [!INCLUDE [application-insights-limits](../../includes/application-insights-limits.md)]
 
 ## <a name="next-steps"></a>次の手順
 
 * [サンプリング](app-insights-sampling.md)
 
-<!--Link references-->
-
 [api]: app-insights-api-custom-events-metrics.md
 [apiproperties]: app-insights-api-custom-events-metrics.md#properties
 [start]: app-insights-overview.md
 [pricing]: http://azure.microsoft.com/pricing/details/application-insights/
-

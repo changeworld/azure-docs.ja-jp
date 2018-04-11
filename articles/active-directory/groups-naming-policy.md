@@ -1,32 +1,32 @@
 ---
-title: "Azure Active Directory での Office 365 グループのグループ名前付けポリシーの設定 (プレビュー) | Microsoft Docs"
-description: "Azure Active Directory (プレビュー) で Office 365 グループの有効期限を設定する方法"
+title: Azure Active Directory での Office 365 グループのグループ名前付けポリシーの設定 (プレビュー) | Microsoft Docs
+description: Azure Active Directory (プレビュー) で Office 365 グループの有効期限を設定する方法
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: curtand
 manager: michael.tillman
-editor: 
+editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.tgt_pltfrm: 
-ms.devlang: 
+ms.tgt_pltfrm: ''
+ms.devlang: ''
 ms.topic: article
-ms.date: 02/28/2018
+ms.date: 03/29/2018
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro
-ms.openlocfilehash: cc3ea7f81a924f3f4baa6fd2866c4e552b7c160e
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: c21706a591d0e1aa00279edf7a5534ada95fd8c1
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="enforce-a-naming-policy-for-office-365-groups-in-azure-active-directory-preview"></a>Azure Active Directory での Office 365 グループの名前付けポリシーの強制 (プレビュー)
 
 ユーザーが作成または編集した Office 365 グループに一貫した名前付け規則を強制するには、Azure Active Directory (Azure AD) でテナントのグループ名前付けポリシーを設定します。 たとえば、名前付けポリシーを使用して、グループ、メンバーシップ、地理的地域の機能やグループ作成者の職務を伝えることができます。 また、名前付けポリシーを使用して、アドレス帳でグループを分類することもできます。 このポリシーを使用して、グループ名やグループ エイリアスで特定の単語の使用を禁止できます。
 
 > [!IMPORTANT]
-> Office 365 グループ名前付けポリシー プレビューを使用するには、1 つ以上の Office 365 グループのメンバーである一意のユーザーごとに Azure Active Directory Premium P1 ライセンスが必要です。
+> Office 365 グループ名前付けポリシー プレビューを使用するには、1 つ以上の Office 365 グループのメンバーである一意のユーザーごとに Azure Active Directory Premium P1 ライセンスまたは Azure AD Basic EDU ライセンスが必要です。
 
 名前付けポリシーは、ワークロード (Outlook、Microsoft Teams、SharePoint、Exchange、Planner など) でのグループの作成または編集に適用されます。 ポリシーは、グループ名とグループ エイリアスの両方に適用されます。 Azure AD で名前付けポリシーを設定し、既存の Exchange グループ名前付けポリシーもある場合は、Azure AD の名前付けポリシーが適用されます。
 

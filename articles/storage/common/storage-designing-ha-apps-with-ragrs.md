@@ -1,6 +1,6 @@
 ---
-title: "Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs"
-description: "Azure の RA-GRS ストレージを使用して、サービス停止に対応できる高い柔軟性を備えた高可用性アプリケーションを設計する方法を説明します。"
+title: Azure の読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用した高可用性アプリケーションの設計 | Microsoft Docs
+description: Azure の RA-GRS ストレージを使用して、サービス停止に対応できる高い柔軟性を備えた高可用性アプリケーションを設計する方法を説明します。
 services: storage
 documentationcenter: .net
 author: tamram
@@ -12,28 +12,26 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 12/11/2017
+ms.date: 03/21/2018
 ms.author: tamram
-ms.openlocfilehash: fe7c6d1f2530b43ac7b10c5b6b0723452452a97a
-ms.sourcegitcommit: 85012dbead7879f1f6c2965daa61302eb78bd366
+ms.openlocfilehash: f7f3f2d99e5582a1bcb672cc176258dfff9c3217
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/02/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
 
 Azure Storage のようなクラウドベースのインフラストラクチャの共通機能として、アプリケーションをホストするための可用性の高いプラットフォームが提供されます。 クラウド ベース アプリケーションの開発者は、このプラットフォームをどのように活用してユーザーに高可用性アプリケーションを届けるかを慎重に検討する必要があります。 この記事では、開発者が読み取りアクセス geo 冗長ストレージ (RA-GRS) を使用して Azure Storage アプリケーションの可用性を高める方法に焦点を絞って説明します。
 
-Azure Storage では、ストレージ アカウントのデータの冗長性に対して次の 4 つの選択肢が提供されています。
-
-- LRS (ローカル冗長ストレージ)
-- ZRS (ゾーン冗長ストレージ) 
-- GRS (geo 冗長ストレージ)
-- RA-GRS (読み取りアクセス geo 冗長ストレージ)。 
+[!INCLUDE [storage-common-redundancy-options](../../../includes/storage-common-redundancy-options.md)]
 
 この記事では、GRS と RA-GRS に重点を置いて説明します。 GRS では、データの 3 つのコピーがプライマリ リージョン (ストレージ アカウントの設定時に選択したリージョン) に保持され、 さらに 3 つのコピーがセカンダリ リージョン (Azure によって指定されたリージョン) に非同期的に保持されます。 RA-GRS も GRS と同じですが、RA-GRS の場合はセカンダリ コピーに対する読み取りアクセスが可能です。 Azure Storage の冗長性オプションの詳細については、「[Azure Storage のレプリケーション](https://docs.microsoft.com/azure/storage/storage-redundancy)」を参照してください。 このレプリケーションに関する記事では、プライマリ リージョンとセカンダリ リージョンのペアも示されています。
 
 この記事にはコード スニペットが含まれています。また、記事の最後には、ダウンロードして実行できる完全なサンプルへのリンクも記載されています。
+
+> [!NOTE]
+> Azure Storage は、高可用性アプリケーションを構築するためのゾーン冗長ストレージ (ZRS) をサポートするようになりました。 ZRS は、多くのアプリケーションの冗長性ニーズに対してシンプルなソリューションを提供します。 ZRS は、単一のデータ センターに影響するハードウェア障害または壊滅的災害からの保護を提供します。 詳しくは、「[ゾーン冗長化ストレージ (ZRS): 高可用 Azure Storage アプリケーション](storage-redundancy-zrs.md)」をご覧ください。
 
 ## <a name="key-features-of-ra-grs"></a>RA-GRS の主な特長
 

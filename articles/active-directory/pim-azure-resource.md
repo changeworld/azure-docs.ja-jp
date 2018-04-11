@@ -1,8 +1,8 @@
 ---
-title: "Privileged Identity Management (PIM) で Azure リソースへのアクセスを管理する"
-description: "PIM のロール ベース アクセス管理を使用して、Azure リソースにアクセスする方法について説明します。"
+title: Privileged Identity Management (PIM) で Azure リソースへのアクセスを管理する
+description: PIM のロール ベース アクセス管理を使用して、Azure リソースにアクセスする方法について説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: skwan
 manager: mtillman
 editor: bryanla
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/22/2017
-ms.author: skwan
-ms.openlocfilehash: 1f31d8b76351ac8871f8a5b03d513f7b6704c709
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 03/30/2018
+ms.author: billmath
+ms.openlocfilehash: 1e74579ef2f0e18f23a40dfc573177938b9b726f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="manage-access-to-azure-resources-with-privileged-identity-management-preview"></a>Privileged Identity Management で Azure リソースへのアクセスを管理する (プレビュー)
+# <a name="manage-access-to-azure-resources-with-privileged-identity-management"></a>Privileged Identity Management で Azure リソースへのアクセスを管理する
 
 悪意のあるサイバー攻撃から特権アカウントを保護するために、Azure Active Directory Privileged Identity Management (PIM) を使用して特権の露出時間を短縮し、レポートとアラートによって特権使用の可視性を向上できます。 PIM は、ユーザーが "Just-In-Time" (JIT) 特権のみを持つように制限するか、権限が自動的に失効する短期間の特権を割り当てることで、これを実現します。 
 

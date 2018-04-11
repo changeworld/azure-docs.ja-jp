@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: mbullwin
-ms.openlocfilehash: 300b9b7786c17972c5c48df7e5b6d28491adc095
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: d0614e2eae0f60068e69b7a4687fc62fbe082c64
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="sampling-in-application-insights"></a>Application Insights におけるサンプリング
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 03/29/2018
 ## <a name="in-brief"></a>概要:
 * サンプリングでは、 *n* 個のレコードのうちの 1 個が保持されて、残りは破棄されます。 たとえば、5 イベントのうち 1 個を残した場合、サンプリング レートは 20% です。 
 * ASP.NET Web サーバー アプリの場合、アプリケーションが大量のテレメトリを送信するとサンプリングが自動的に行われます。
-* サンプリングはまた、ネットワーク トラフィックも削減するために、ポータルでは価格に関するページ、ASP.NET SDK では .config ファイル、Java SDK では ApplicationInsights.xml ファイルのいずれかで手動で設定することもできます。
+* サンプリングはまた、ネットワーク トラフィックも削減するために、ポータルでは [使用量と推定コスト] ページ、ASP.NET SDK では .config ファイル、Java SDK では ApplicationInsights.xml ファイルのいずれかで手動で設定することもできます。
 * カスタム イベントをログに記録していて、イベントのセットがまとめて保持または破棄されていることを確認したい場合は、同じ OperationId 値があることを確認します。
 * サンプリング除数 *n* は、`itemCount` プロパティでレコードごとに報告されます。この値は、"要求カウント" または "イベント数" というわかりやすい名前で検索結果に表示されます。 サンプリング操作が行われていない場合、`itemCount==1` となります。
 * Analytics クエリを作成する場合は、 [サンプリングを考慮する](app-insights-analytics-tour.md#counting-sampled-data)必要があります。 具体的には、単純にレコードをカウントするのではなく、 `summarize sum(itemCount)`を使用する必要があります。
@@ -49,7 +49,7 @@ ms.lasthandoff: 03/29/2018
 
 アプリが頻繁に月間クォータを超えて、SDK ベースのいずれかのサンプリング種類を使用するオプションがない場合は、この種類のサンプリングを使用します。 
 
-サンプリング レートは [クォータと価格] ブレードで設定します。
+[使用量と推定コスト] ページで、サンプリング レートを設定します。
 
 ![アプリケーションの [概要] ブレードで、[設定]、[クォータ]、[サンプル] の順にクリックし、サンプリング レートを選択して、[更新] をクリックします。](./media/app-insights-sampling/04.png)
 

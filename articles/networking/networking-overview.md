@@ -1,13 +1,13 @@
----
+﻿---
 title: "Azure のネットワーク | Microsoft Docs"
 description: "Azure のネットワーク サービスとネットワーク機能について説明します。"
 services: networking
 documentationcenter: na
 author: jimdial
 manager: timlt
-editor: 
+editor: ''
 tags: azure-resource-manager
-ms.assetid: 
+ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
 ms.topic: article

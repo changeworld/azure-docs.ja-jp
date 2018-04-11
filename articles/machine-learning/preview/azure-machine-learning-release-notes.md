@@ -9,18 +9,72 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: reference
 ms.date: 03/28/2018
-ms.openlocfilehash: ac08baa6f478926a2c8dadd366049e9506272366
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 9d16606665bf043e094bebdfbbce973910135f1a
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure Machine Learning の新機能
 
-この記事では、[Azure Machine Learning  Services](overview-what-is-azure-ml.md) の新機能と既知の問題について説明します。 
+この記事では、[Azure Machine Learning Services](overview-what-is-azure-ml.md) の新しいリリースについて説明します。 
+
+## <a name="2018-03-sprint-4"></a>2018-03 (スプリント 4)
+**バージョン番号**: 0.1.1801.24353  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
+
+
+Azure Machine Learning Workbench の 5 回目の更新へようこそ。 以下の更新の多くは、お客様のフィードバックの直接の結果として行われました。 引き続きフィードバックをお寄せください。
+
+**注目すべき新機能と変更**
+
+- リモート Docker ベースでの実行に加えて、リモート Ubuntu VM 上にあるスクリプトを独自の環境でネイティブに実行できるようになりました。
+- CLI ベースのエクスペリエンスに加えて用意された Workbench アプリ内での新しい環境エクスペリエンスにより、コンピューティング ターゲットを作成し、構成を実行できます。
+![環境タブ](media/azure-machine-learning-release-notes/environment-page.png)
+- カスタマイズ可能な実行履歴レポート ![新しい実行履歴レポートの画像](media/azure-machine-learning-release-notes/new-run-history-reports.png)
+
+**詳細な更新**
+
+以下は、このスプリントでの Azure Machine Learning の各コンポーネント領域内の詳細な更新の一覧です。
+
+### <a name="workbench-ui"></a>Workbench UI
+- カスタマイズ可能な実行履歴レポート
+  - 実行履歴レポート用のグラフ構成の改良
+    - 使用されたエントリポイントを変更可能
+    - 最上位レベルのフィルターを追加および変更可能 ![フィルターの追加](media/azure-machine-learning-release-notes/add-filters.jpg)
+    - グラフと統計情報を追加および変更可能 (ドラッグ アンド ドロップで再配置)
+    ![新しいグラフの作成](media/azure-machine-learning-release-notes/configure-charts.png)
+
+  - 実行履歴レポートの CRUD
+  - 既存の実行履歴リスト ビューの構成をすべてサーバー側のレポートに移動しました。これは、選択したエントリ ポイントからの実行でパイプラインのように機能します。
+
+- 環境タブ
+  - 新しいコンピューティング ターゲットを簡単に追加し、構成ファイルをプロジェクトに対して実行 ![新しいコンピューティング ターゲット](media/azure-machine-learning-release-notes/add-new-environments.png)
+  - 単純なフォームベースの UX を使用して、構成ファイルを管理、更新
+  - 実行環境を準備するための新しいボタン
+
+- サイド バー内のファイルの一覧のパフォーマンスの向上
+
+### <a name="data-preparation"></a>データの準備 
+- Azure Machine Learning Workbench を使用して、既知の列名で列を検索できるようになりました。
+
+
+### <a name="experimentation"></a>実験
+- Azure Machine Learning Workbench で、独自の Python または PySpark 環境でのネイティブなスクリプト実行がサポートされました。 この機能によって、ユーザーは独自の環境をリモート VM 上で作成、管理できるようになります。また、Azure Machine Learning Workbench を使用してターゲットに対してスクリプトを実行できます。 「[Azure Machine Learning 実験サービスの構成](experimentation-service-configuration.md)」を参照してください。 
+
+### <a name="model-management"></a>モデル管理
+- デプロイされたコンテナーのカスタマイズのサポート: apt-get などを使用して外部ライブラリのインストールを許可することで、コンテナー イメージをカスタマイズできます。pip によるインストールが可能なライブラリに限らず実施できるようになりました。 詳細については、この[ドキュメント](model-management-custom-container.md)をご覧ください。
+  - マニフェスト、画像、サービスの作成コマンドで `--docker-file myDockerStepsFilename` フラグとファイル名を使用します。
+  - 基本イメージが Ubuntu であり、変更できない場合があることに注意してください。
+  - コマンドの例: 
+  
+      ```shell
+      $ az ml image create -n myimage -m mymodel.pkl -f score.py --docker-file mydockerstepsfile
+      ```
+
+
 
 ## <a name="2018-01-sprint-3"></a>2018-01 (スプリント 3) 
-**バージョン番号**: 0.1.1712.18263  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md))
+**バージョン番号**: 0.1.1712.18263  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 このスプリントでの更新と機能強化は次のとおりです。 これらの更新の多くは、ユーザー フィードバックの直接の結果として行われました。 
 
@@ -55,7 +109,7 @@ ms.lasthandoff: 03/28/2018
   - Free サブスクリプションでローカル環境のセットアップが有効になりました。 
 
 ## <a name="2017-12-sprint-2-qfe"></a>2017-12 (スプリント 2 QFE) 
-**バージョン番号**:  0.1.1711.15323  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md))
+**バージョン番号**:  0.1.1711.15323  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 これは、マイナー リリースである QFE (Quick Fix Engineering) リリースです。 テレメトリに関するいくつかの問題に対処しているため、製品チームは製品の使用状況をより詳しく把握できます。 そのナレッジは、製品のエクスペリエンスを向上させる取り組みにおいて将来的に役立てられます。 
 
@@ -65,8 +119,7 @@ ms.lasthandoff: 03/28/2018
 - コマンドライン ツールで、Machine Learning の ACS コンピューティング クラスターをプロビジョニングするために、Azure サブスクリプションの所有者である必要がなくなりました。 
 
 ## <a name="2017-12-sprint-2"></a>2017-12 (スプリント 2)
-**バージョン番号**: 0.1.1711.15263  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md))
-
+**バージョン番号**: 0.1.1711.15263  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 Azure Machine Learning の 3 回目の更新へようこそ。 この更新には、Workbench アプリ、コマンド ライン インターフェイス (CLI)、およびバックエンド サービスの改良が含まれます。 当社に長所と欠点を送信していただき誠にありがとうございます。 以下の更新の多くは、お客様のフィードバックの直接の結果として行われました。 
 
@@ -165,7 +218,7 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
     - `az ml computetarget attach --type cluster` は `az ml computetarget attach cluster` になりました
 
 ## <a name="2017-11-sprint-1"></a>2017-11 (スプリント 1) 
-**バージョン番号**: 0.1.1710.31013  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md))
+**バージョン番号**: 0.1.1710.31013  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 このリリースで当社は、Workbench アプリ、CLI、およびバックエンド サービス レイヤーにおけるセキュリティ、安定性、保守容易性に関して機能強化を行っています。 当社に長所と欠点を送信していただき誠にありがとうございます。 以下の更新の多くは、お客様のフィードバックの直接の結果として行われました。 引き続きフィードバックをお寄せください。
 
@@ -201,7 +254,7 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
 - Workbench は、ユーザーが実行を開始したとき、保存されていない_すべての_ファイルを保存します。
 - Workbench はローカル コンピューター上の最後に使用されたワークスペースを記憶しているため、それが自動的に開きます。
 - Workbench の 1 つのインスタンスだけが実行を許可されるようになりました。 以前は、複数のインスタンスを起動できたため、同じプロジェクトで動作しているときに問題が発生しました。
-- [ファイルメニューの プロジェクトを開く...] は [既存のフォルダーをプロジェクトとして追加する...] に名前が変更されました。 
+- [ファイル] メニューの [Open Project...] (プロジェクトを開く...) は [Add Existing Folder as Project...](既存のフォルダーをプロジェクトとして追加する...) に名前が変更されました。 
 - タブの切り替えがきわめて迅速になりました。
 - [Configuring IDE] (IDE の構成) ダイアログ ボックスにヘルプ リンクが追加されました。
 - フィードバック フォームが最後に入力された電子メール アドレスを記憶するようになりました。
@@ -287,7 +340,7 @@ Azure Machine Learning の 3 回目の更新へようこそ。 この更新に�
 
 
 ## <a name="2017-10-sprint-0"></a>2017-10 (スプリント 0) 
-**バージョン番号**: 0.1.1710.31013  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md))
+**バージョン番号**: 0.1.1710.31013  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;([バージョンの検索](known-issues-and-troubleshooting-guide.md#find-the-workbench-build-number))
 
 Microsoft Ignite 2017 カンファレンスでの最初のパブリック プレビューに続いて、Azure Machine Learning Workbench の初回の更新が実施されています。 今回のリリースでの主要な更新プログラムは、信頼性と安定化の修正です。  対処した重大な問題には、以下が含まれます。
 

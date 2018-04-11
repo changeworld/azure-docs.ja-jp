@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: robb
-ms.openlocfilehash: cf93c95a37c9c32333727059317e05cfcc252905
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 9ea7da35acefc139625e71904c8aa1b01b87e4df
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---cross-platform-cli"></a>Azure Monitor での Azure サービス クラシック メトリック アラートの作成 - クロスプラットフォーム CLI
 > [!div class="op_single_selector"]
@@ -30,11 +30,11 @@ ms.lasthandoff: 03/23/2018
 
 ## <a name="overview"></a>概要
 > [!NOTE]
-> この記事では、古いメトリック アラートの作成方法について説明します。 Azure Monitor では、[新しい、より優れたメトリック アラート](monitoring-near-real-time-metric-alerts.md)がサポートされるようになりました。 これらのアラートでは複数のメトリックを監視でき、次元メトリックのアラートが許可されます。 新しいメトリック アラートの CLI サポートはまもなく提供されます。
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しい、より優れたメトリック アラート](monitoring-near-real-time-metric-alerts.md)がサポートされるようになりました。 これらのアラートでは複数のメトリックを監視でき、次元メトリックのアラートが許可されます。 新しいメトリック アラートの CLI サポートはまもなく提供されます。
 >
 >
 
-この記事では、クロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用して Azure メトリック アラートを設定する方法について説明します。
+この記事では、クロスプラットフォーム コマンド ライン インターフェイス (CLI) を使用して Azure クラシック メトリック アラートを設定する方法について説明します。
 
 > [!NOTE]
 > Azure Monitor は、2016 年 9 月 25 日まで "Azure Insights" と呼ばれていたサービスの新しい名前です。 ただし、名前空間と、それに伴って以下のコマンドには引き続き "insights" が含まれています。
@@ -46,14 +46,14 @@ ms.lasthandoff: 03/23/2018
 * **メトリック値** - アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。    
 * **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーできます。 アクティビティ ログ アラートの詳細については、[ここをクリック](monitoring-activity-log-alerts.md)してください。
 
-メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
+クラシック メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
 
 * サービスの管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
 * Webhook を呼び出す
 * Azure Runbook の実行を開始する (現時点では Azure ポータルからのみ)
 
-メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
+クラシック メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -112,7 +112,7 @@ ms.lasthandoff: 03/23/2018
     azure insights alerts rule metric set myrule eastus myreasourcegroup PT5M GreaterThan 2 /subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Web/sites/mywebsitename BytesReceived Total
 
     ```
-5. メトリック アラートが発生したときに webhook を作成するか、電子メールを送信するには、最初に電子メールと webhook、またはそのいずれかを作成します。 その後すぐに、ルールを作成します。 CLI を使用して、webhook または電子メールを、作成済みのルールと関連付けることはできません。
+5. クラシック メトリック アラートが発生したときに webhook を作成するか、電子メールを送信するには、最初に電子メールと webhook、またはそのいずれかを作成します。 その後すぐに、ルールを作成します。 CLI を使用して、webhook または電子メールを、作成済みのルールと関連付けることはできません。
 
     ```console
     azure insights alerts actions email create --customEmails myemail@contoso.com

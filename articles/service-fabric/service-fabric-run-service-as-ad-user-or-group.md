@@ -12,16 +12,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 03/21/2018
+ms.date: 03/29/2018
 ms.author: mfussell
-ms.openlocfilehash: 1cf23a8f564553e65ac2c0fd34d44d81fe2327ea
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 7dc467d9977d536011e1c3fcf663fc335f90a492
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Active Directory ユーザーまたはグループとしてサービスを実行する
-Azure Service Fabric を使用すると、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護することができます。 これにより、実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより保護されます。 既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 Windows Server のスタンドアロン クラスターでは、サービスを[グループ管理サービス アカウント (gMSA)](service-fabric-run-service-as-gmsa.md) として実行することも、RunAs ポリシーを使用して Active Directory ユーザーまたはグループとして実行することもできます。 これは、ドメイン内のオンプレミスの Active Directory を使用しており、Azure Active Directory (Azure AD) ではないことに注意してください。
+Windows Server のスタンドアロン クラスターで、RunAs ポリシーを使用してサービスを Active Directory ユーザーまたはグループとして実行できます。  既定では、Service Fabric アプリケーションは、Fabric.exe プロセスを実行しているアカウントで実行されます。 異なるアカウントで実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより強固に保護されることになります。 これは、ドメイン内のオンプレミスの Active Directory を使用しており、Azure Active Directory (Azure AD) ではないことに注意してください。  また、[グループ管理サービス アカウント (gMSA)](service-fabric-run-service-as-gmsa.md) としてサービスを実行することもできます。
 
 ドメイン ユーザーまたはグループを使用すると、アクセス許可が付与されている、ドメイン内の他のリソース (ファイル共有など) にアクセスできます。
 

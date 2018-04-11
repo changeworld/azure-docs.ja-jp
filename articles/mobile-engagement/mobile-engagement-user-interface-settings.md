@@ -73,7 +73,7 @@ GCM を使用してネイティブのプッシュを有効にするには、Goog
 * [SDK ドキュメント - Android - GCM の統合方法][Link 5]
 * [Google 開発者 GCM ガイド](http://developer.android.com/guide/google/gcm/gs.html)
 
-### <a name="amazon-device-messaging-for-android-adm"></a>「Amazon Device Messaging for Android (ADM)
+### <a name="amazon-device-messaging-for-android-adm"></a>Amazon Device Messaging for Android (ADM)
 ADM を使用してネイティブのプッシュを有効にするには、クライアント ID とクライアント シークレットで構成される Amazon <OAuth credentials> を指定する必要があります (Android v2.1.0 以上では SDK との統合が必要)。
 
 詳細については、次を参照してください。 

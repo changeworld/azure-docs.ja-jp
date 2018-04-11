@@ -1,6 +1,6 @@
 ---
-title: "Azure Storage の移行に関する FAQ | Microsoft Docs"
-description: "Azure Storage の移行についてよくある質問の回答を示します。"
+title: Azure Storage の移行に関する FAQ | Microsoft Docs
+description: Azure Storage の移行についてよくある質問の回答を示します。
 services: storage
 documentationcenter: na
 author: genlin
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 11/16/2017
 ms.author: genli
-ms.openlocfilehash: 362614d28cf62bd288d8aff10539c81381474955
-ms.sourcegitcommit: eeb5daebf10564ec110a4e83874db0fb9f9f8061
+ms.openlocfilehash: 89d1a4767c240c7e4fedb9d7ac47d6d4fb0aa737
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/03/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="frequently-asked-questions-about-azure-storage-migration"></a>Azure Storage の移行についてよくあるご質問
 
@@ -40,7 +40,6 @@ AzCopy では、[Copy Blob API](https://docs.microsoft.com/rest/api/storageservi
 Automation スクリプトは、ストレージ コンテンツの操作ではなく、Azure Resource Manager のデプロイを目的としています。 詳細については、「[Deploy resources with Resource Manager templates and Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md)」 (Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ) を参照してください。
 
 **同じリージョン内の同じストレージ アカウントの 2 つのファイル共有間でデータをコピーする場合、料金は発生しますか?**
-
 
 いいえ。 このプロセスの料金は発生しません。
 
@@ -169,7 +168,7 @@ Azure ファイル共有を使用します。
 
 **ストレージ アカウントのセカンダリ ロケーションからヨーロッパ リージョンに変更するにはどうすればよいですか?**
 
-ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 セカンダリ リージョンの選択はプライマリ リージョンに基づいており、変更することはできません。 詳細については、「[Azure Storage のレプリケーション](storage-redundancy.md)」をご覧ください。
+ストレージ アカウントの作成時に、アカウントのプライマリ リージョンを選択します。 セカンダリ リージョンの選択はプライマリ リージョンに基づいており、変更することはできません。 詳しくは、「[Geo-redundant storage (GRS): Cross-regional replication for Azure Storage](storage-redundancy.md)」(地理冗長ストレージ (GRS): Azure Storage のリージョン間レプリケーション) をご覧ください。
 
 **Azure Storage Service Encryption (SSE) の詳細はどこで入手できますか?**  
   
@@ -195,7 +194,6 @@ AzCopy を使用して別のストレージ アカウントにデータをコピ
 [Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) を使用して VHD をダウンロードできます。
 
 **ストレージ アカウントのレプリケーションを GRS アカウントから LRS に変更する場合、前提条件はありますか?**
-
 
 いいえ。 
 
@@ -286,7 +284,7 @@ Azure CLI をご利用いただけます。
 
     - **SAS トークン**: SAS トークンを使用してエンドポイントからデータにアクセスします。 詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
-**ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https://mystorageaccountname.blob.core.windows.net/images/image.gif" を "https://www.contoso.com/images/image.gif" と表示するにはどうすればよいですか?**
+**ストレージ アカウントで HTTPS カスタム ドメインを使用するにはどうすればよいですか?たとえば、"https://mystorageaccountname.blob.core.windows.net/images/image.gif" を "https://www.contoso.com/images/image.gif" として表示するにはどうすればよいですか?**
 
 カスタム ドメインを使用するストレージ アカウントでは、SSL は現在サポートされていません。
 ただし、HTTPS 以外のカスタム ドメインはご利用いただけます。 詳細については、「[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](../blobs/storage-custom-domain-name.md)」をご覧ください。

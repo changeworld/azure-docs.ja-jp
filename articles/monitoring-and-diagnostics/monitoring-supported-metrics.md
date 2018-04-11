@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2018
 ms.author: ancav
-ms.openlocfilehash: 285f4540c7f9be19cde0aafeff67ce2b39abe957
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc7a4062af9e73383af46f0c36eb22710ce9b6e1
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。
 
 > [!NOTE]
-> 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 この一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 ディメンションを含むメトリックを照会してアクセスするには、[2017-05-01-preview バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使ってください。
+> 他のメトリックについては、ポータルや従来の API で使用できる場合があります。 この一覧には、統合された Azure Monitor メトリック パイプラインで使うことができるメトリックのみが含まれます。 ディメンションを含むメトリックを照会してアクセスするには、[2018-01-01 バージョンの API](https://docs.microsoft.com/rest/api/monitor/metricdefinitions) を使用してください。
 >
 >
 

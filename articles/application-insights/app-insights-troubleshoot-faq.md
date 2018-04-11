@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: 721799703923339d397113fc278cdeb6c6dbb88f
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: 245bd348b9eb5b434360d734e219efd7c663a406
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 
@@ -60,7 +60,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 
 ## <a name="how-much-is-it-costing"></a>どれくらいのコストが発生していますか?
 
-* Application Insights リソースの **[機能と価格設定]** ページを開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
+* Application Insights リソースで **[使用量と推定コスト]** ページを開きます。 最近の利用状況のグラフが表示されます。 必要に応じて、データ量の上限を設定できます。
 * [Azure の [課金] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview)を開き、リソース全体での請求額を確認します。
 
 ## <a name="q14"></a>Application Insights によってどのような変更がプロジェクトに加えられますか?

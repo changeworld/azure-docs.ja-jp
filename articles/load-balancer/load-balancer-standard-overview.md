@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/21/2018
+ms.date: 03/26/2018
 ms.author: kumud
-ms.openlocfilehash: d7ee74a19f806faed0bcfcfa5f1c5de3937d9f31
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 15bbd32d982bdefc5665421b828ce0c8234b7257
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="azure-load-balancer-standard-overview"></a>Azure Load Balancer Standard の概要
 
@@ -175,6 +175,9 @@ Standard Load Balancer のリソースは変更することができ、ある仮
 ## <a name="migration-between-skus"></a>SKU 間での移行
 
 SKU は変更不可です。 一方の SKU からもう一方の SKU に移行する場合は、このセクションの手順に従います。
+
+>[!IMPORTANT]
+>このドキュメント全体を確認して、SKU ごとの違いを理解し、シナリオを慎重に検証してください。  シナリオに合わせて追加の変更が必要になる場合があります。
 
 ### <a name="migrate-from-basic-to-standard-sku"></a>Basic SKU から Standard SKU への移行
 

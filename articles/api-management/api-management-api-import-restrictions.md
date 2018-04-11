@@ -1,11 +1,11 @@
 ---
-title: "Azure API Management での API のインポートの制限事項と既知の問題 | Microsoft Docs"
-description: "Open API、WSDL、または WADL 形式での Azure API Management へのインポートに関する既知の問題と制限事項の詳細です。"
+title: Azure API Management での API のインポートの制限事項と既知の問題 | Microsoft Docs
+description: Open API、WSDL、または WADL 形式での Azure API Management へのインポートに関する既知の問題と制限事項の詳細です。
 services: api-management
-documentationcenter: 
+documentationcenter: ''
 author: vladvino
 manager: vlvinogr
-editor: 
+editor: ''
 ms.assetid: 7a5a63f0-3e72-49d3-a28c-1bb23ab495e2
 ms.service: api-management
 ms.workload: mobile
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apipm
-ms.openlocfilehash: 758babce3ed387ed4864f1934650cf701bda788f
-ms.sourcegitcommit: b854df4fc66c73ba1dd141740a2b348de3e1e028
+ms.openlocfilehash: d4229a3ecbcf8aa044eb448290c243e9920bd5cb
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/04/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API のインポートに関する制限事項と既知の問題
 ## <a name="about-this-list"></a>このリストについて
@@ -29,7 +29,10 @@ Open API ドキュメントのインポートでエラーが発生した場合�
 
 * **ホスト名** APIM ではホスト名属性が必要です。
 * **ベース パス**  APIM ではベース パス属性が必要です。
-* **スキーム**  APIM ではスキーム配列が必要です。 
+* **スキーム**  APIM ではスキーム配列が必要です。
+
+> [!IMPORTANT]
+> OpenAPI のインポートに関する重要な情報とヒントについては、この[ドキュメント](https://blogs.msdn.microsoft.com/apimanagement/2018/03/28/important-changes-to-openapi-import-and-export/)を参照してください。
 
 ## <a name="wsdl"> </a>WSDL
 WSDL ファイルは、SOAP パススルー API の作成に使用されるか、SOAP-to-REST API のバックエンドとして機能します。

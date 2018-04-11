@@ -1,33 +1,33 @@
 ---
-title: "Azure Cosmos DB でのパーティション分割と水平スケーリング | Microsoft Docs"
-description: "Azure Cosmos DB でのパーティション分割のしくみ、パーティション分割とパーティション キーを構成する方法、アプリケーションに適したパーティション キーを選択する方法について説明します。"
+title: Azure Cosmos DB でのパーティション分割と水平スケーリング | Microsoft Docs
+description: Azure Cosmos DB でのパーティション分割のしくみ、パーティション分割とパーティション キーを構成する方法、アプリケーションに適したパーティション キーを選択する方法について説明します。
 services: cosmos-db
 author: arramac
 manager: jhubbard
 editor: monicar
-documentationcenter: 
+documentationcenter: ''
 ms.assetid: cac9a8cd-b5a3-4827-8505-d40bb61b2416
 ms.service: cosmos-db
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2018
+ms.date: 03/30/2018
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0032a00883cedfe754e14293dc13a1009f6dd3a0
-ms.sourcegitcommit: 1d423a8954731b0f318240f2fa0262934ff04bd9
+ms.openlocfilehash: 149d2ba5108fb49741203fbe5c50add6c0d523ae
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/05/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割とスケーリング
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、世界規模で分散配置されるマルチモデルのデータベース サービスであり、高速で予測可能なパフォーマンスを実現するうえで役立つよう設計されています。 アプリケーションの規模の拡大に合わせてスケーリングがシームレスに行われます。 この記事では、Azure Cosmos DB におけるあらゆるデータ モデルのパーティション分割のしくみについて概説します。 また、Azure Cosmos DB コンテナーを構成してアプリケーションを効率的にスケーリングする方法について説明します。
 
-パーティション分割とパーティション キーについては、Scott Hanselman と Azure Cosmos DB プリンシパル エンジニアリング マネージャー Shireesh Thota による次の Azure Friday 動画で説明されています。
+次のビデオでは、Azure Cosmos DB プログラム マネージャーの Andrew Liu がパーティション分割とパーティション キーについて説明します。
 
-> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Azure-DocumentDB-Elastic-Scale-Partitioning/player]
+> [!VIDEO https://www.youtube.com/embed/SS6WrQ-HJ30]
 > 
 
 ## <a name="partitioning-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割

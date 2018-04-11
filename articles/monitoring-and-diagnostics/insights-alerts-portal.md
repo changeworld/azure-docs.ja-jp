@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2016
 ms.author: robb
-ms.openlocfilehash: 4acf1f549a6c901fb0b772c4591f1f35d61365ad
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: b0d938112aaea4d86dd539b53a1749cc800607a7
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="create-classic-metric-alerts-in-azure-monitor-for-azure-services---azure-portal"></a>Azure Monitor での Azure サービス クラシック メトリック アラートの作成 - Azure Portal
 > [!div class="op_single_selector"]
@@ -31,25 +31,25 @@ ms.lasthandoff: 03/23/2018
 ## <a name="overview"></a>概要
 
 > [!NOTE]
-> この記事では、古いメトリック アラートの作成方法について説明します。 Azure Monitor では、新しい、より優れたメトリック アラートがサポートされるようになりました。 これらのアラートでは複数のメトリックを監視でき、次元メトリックのアラートが許可されます。 [ほぼリアルタイムのメトリック アラート](monitoring-near-real-time-metric-alerts.md)について詳しく学習します。
+> この記事では、古いクラシック メトリック アラートの作成方法について説明します。 Azure Monitor では、[新しいメトリック アラート](monitoring-near-real-time-metric-alerts.md)がサポートされるようになりました。 
 >
 >
 
-この記事では、Azure ポータルを使用して Azure メトリック アラートを設定する方法について説明します。 
+この記事では、Azure Portal を使用してクラシック Azure メトリック アラートを設定する方法について説明します。 
 
 監視メトリック、イベント、Azure サービスに基づいて通知を受け取ることができます。
 
 * **メトリック値** - アラートは、指定したメトリックの値が、割り当てたしきい値をいずれかの方向で超えたときにトリガーされます。 つまり、条件を最初に満たしたときと、後でその条件を満たさなくなったときの両方でトリガーされます。    
 * **アクティビティ ログ イベント** - アラートは*すべて*のイベントに対して、または特定のイベントが発生したときにのみトリガーできます。 [アクティビティ ログのアラート](monitoring-activity-log-alerts.md)について詳しく学習します。
 
-メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
+クラシック メトリック アラートがトリガーされたときに実行されるように構成できる処理は次のとおりです。
 
 * サービスの管理者/共同管理者に電子メール通知を送信する
 * 指定した追加の電子メール アドレスに電子メールを送信する。
 * Webhook を呼び出す
 * Azure Runbook の実行を開始する (Azure ポータルからのみ)
 
-メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します
+クラシック メトリック アラート ルールを構成したり、その情報を取得したりするには、以下を使用します。
 
 * [Azure Portal](insights-alerts-portal.md)
 * [PowerShell](insights-alerts-powershell.md)
@@ -63,7 +63,7 @@ ms.lasthandoff: 03/23/2018
 
     ![監視](./media/insights-alerts-portal/AlertRulesButton.png)
 
-3. **[メトリック アラートの追加]** コマンドを選択して、フィールドに入力します。
+3. **[メトリック アラートの追加 (クラシック)]** コマンドを選択して、フィールドに入力します。
 
     ![[アラートの追加]](./media/insights-alerts-portal/AddAlertOnlyParamsPage.png)
 

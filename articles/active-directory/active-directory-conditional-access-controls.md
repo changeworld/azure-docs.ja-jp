@@ -1,26 +1,26 @@
 ---
-title: "Azure Active Directory の条件付きアクセスのアクセス制御 | Microsoft Docs"
-description: "Azure Active Directory の条件付きアクセスのアクセス制御のしくみについて学習します。"
+title: Azure Active Directory の条件付きアクセスのアクセス制御 | Microsoft Docs
+description: Azure Active Directory の条件付きアクセスのアクセス制御のしくみについて学習します。
 services: active-directory
-keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
-documentationcenter: 
+keywords: アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー
+documentationcenter: ''
 author: MarkusVi
 manager: mtillman
-editor: 
+editor: ''
 ms.assetid: 8c1d978f-e80b-420e-853a-8bbddc4bcdad
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/09/2018
+ms.date: 03/28/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: c5a2ab3b8d2fe55eee1f67e4b697a1e5b0dd2daf
-ms.sourcegitcommit: 4723859f545bccc38a515192cf86dcf7ba0c0a67
+ms.openlocfilehash: e38b7db2699cd3e4cf76d4a8e8fc558b133dd35b
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/11/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="access-controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスのアクセス制御 
 
@@ -75,11 +75,15 @@ ms.lasthandoff: 02/11/2018
 
 ### <a name="compliant-device"></a>準拠デバイス
 
-デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、信頼されたデバイスのみに許可することです。 準拠しているデバイスの要求は、信頼されるデバイスを定義する必要のある 1 つのオプションです。 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
+デバイスベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、信頼されたデバイスのみに許可することです。 準拠しているデバイスの要求は、信頼されるデバイスを定義する必要のある 1 つのオプションです。 このオプションを選ぶと、条件付きアクセス ポリシーは、Azure Active Directory に参加し、MDM ソリューションによって準拠としてマークされているデバイスで行われるアクセスの試行へのアクセスを許可します。
+
+詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
 
 ### <a name="domain-joined-device"></a>ドメイン参加済みデバイス
 
-デバイス ベースの条件付きアクセス ポリシーを構成するための別のオプションとして、ドメインに参加しているデバイスの要求があります。 この要件では、Windows デスクトップ、ノート PC、エンタープライズ タブレットのうち、オンプレミスの Active Directory に参加しているデバイスが必要になります。 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
+デバイス ベースの条件付きアクセス ポリシーを構成するための別のオプションとして、ドメインに参加しているデバイスの要求があります。 この要件では、Windows デスクトップ、ノート PC、エンタープライズ タブレットのうち、オンプレミスの Active Directory に参加しているデバイスが必要になります。 このオプションを選ぶと、条件付きアクセス ポリシーは、オンプレミスの Active Directory とユーザーの Azure Active Directory に参加しているデバイスで行われるアクセスの試行へのアクセスを許可します。  
+
+詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
 
 
 

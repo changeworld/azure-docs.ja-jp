@@ -1,11 +1,11 @@
 ---
-title: "Azure Mobile Engagement ユーザー インターフェイス - リーチ コンテンツ"
-description: "Azure Mobile Engagement でさまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法について説明します"
+title: Azure Mobile Engagement ユーザー インターフェイス - リーチ コンテンツ
+description: Azure Mobile Engagement でさまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法について説明します
 services: mobile-engagement
-documentationcenter: 
+documentationcenter: ''
 author: piyushjo
 manager: erikre
-editor: 
+editor: ''
 ms.assetid: add64f06-43c9-475c-8722-51cd00bb844b
 ms.service: mobile-engagement
 ms.devlang: na
@@ -14,13 +14,17 @@ ms.tgt_pltfrm: mobile-multiple
 ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
-ms.openlocfilehash: 3741a43b74af5846e95e42d8a7b533621e780f2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 982cc66ffe98aa6dff8fe290cc1c2d4bad03c9ac
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="how-to-manage-the-unique-content-of-the-different-types-of-push-notification-campaigns"></a>さまざまな種類のプッシュ通知キャンペーンの一意のコンテンツを管理する方法
+> [!IMPORTANT]
+> Azure Mobile Engagement は、2018 年 3 月 31 日に停止されます。 このページは、その後まもなく削除されます。
+> 
+
 新しいキャンペーンの [Contents (コンテンツ)] セクションを使用して、アナウンス、アンケート、データ プッシュ、タイル (Windows Phone のみ) のコンテンツを修正できます。 プッシュ キャンペーンの [Contents (コンテンツ)] 設定は、キャンペーンの種類に固有です。 
 
 ### <a name="content-types"></a>コンテンツの種類：
@@ -56,7 +60,7 @@ ms.lasthandoff: 10/11/2017
 * **Android + iOS のアクション**
   * Web ページを開く
   * http://\[web-site-domain\] 
-  * 例: http://www.azure.com
+  * 例:http://www.azure.com
   * メールを送信する
   * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
   * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!
@@ -76,11 +80,11 @@ ms.lasthandoff: 10/11/2017
 * **iOS のみのアクション**
   * App ストアでアプリケーションをダウンロードする
   * http://itunes.apple.com/[country]/app/[app name]/id[app id]?mt=8 
-  * 例: http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
+  * 例:http://itunes.apple.com/fr/app/briquet-virtuel/id430154748?mt=8
   * Windows のアクション
   * Web ページを開く
   * http://\[web-site-domain\] 
-  * 例: http://www.azure.com
+  * 例:http://www.azure.com
   * メールを送信する
   * mailto:\[e-mail-recipient\]?subject=\[subject\]&body=\[message\] 
   * Example:mailto:foo@example.com?subject=Greetings%20from%20Azure%20Mobile%20Engagement!&body=Good%20stuff!

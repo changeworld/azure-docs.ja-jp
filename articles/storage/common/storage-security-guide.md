@@ -8,11 +8,11 @@ ms.service: storage
 ms.topic: article
 ms.date: 03/06/2018
 ms.author: cshoe
-ms.openlocfilehash: e0a398075b01b3c3750a33a9dd74b5ad1c0f71fd
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 73353d3b27b65298d804a138b33cdf2de23726fe
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 
@@ -357,7 +357,7 @@ Azure Disk Encryption は、新しい機能です。 この機能を使用する
 
 #### <a name="iaas-vms-and-their-vhd-files"></a>IaaS VM とその VHD ファイル
 
-IaaS VM で使用されるデータ ディスクには、Azure Disk Encryption をお勧めします。 Azure Marketplace のイメージを使用して VM を作成する場合、Azure は Azure Storage のストレージ アカウントにイメージの [シャロー コピー](https://en.wikipedia.org/wiki/Object_copying) を実行し、SSE を有効にしている場合でも、イメージが暗号化されません。 VM を作成し、イメージの更新を開始すると、SSE はデータの暗号化を開始します。 そのため、完全に暗号化するには、Azure Marketplace のイメージから作成した VM で Azure Disk Encryption を使用することをお勧めします。
+IaaS VM で使用されるデータ ディスクには、Azure Disk Encryption をお勧めします。 Azure Marketplace のイメージを使用して非管理対象ディスクを使用している VM を作成する場合、Azure は Azure Storage のストレージ アカウントにイメージの[シャロー コピー](https://en.wikipedia.org/wiki/Object_copying)を実行し、SSE を有効にしている場合でも、イメージが暗号化されません。 VM を作成し、イメージの更新を開始すると、SSE はデータの暗号化を開始します。 そのため、完全に暗号化するには、Azure Marketplace のイメージから作成した非管理対象ディスクを使用した VM で Azure Disk Encryption を使用することをお勧めします。 管理対象ディスクで VM を作成した場合、プラットフォームで管理されるキーを使用して SSE によって既定ですべてのデータが暗号化されます。 
 
 事前に暗号化した VM をオンプレミスから Azure に移行する場合、暗号化キーを Azure Key Vault にアップロードし、オンプレミスで使用していた VM に引き続き暗号化を使用できるようになります。 Azure Disk Encryption を有効にすると、このシナリオに対応できます。
 

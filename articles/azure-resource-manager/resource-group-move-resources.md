@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 03/29/2018
 ms.author: tomfitz
-ms.openlocfilehash: 94f11504597c127d505d103a417c3d78744d99d1
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: 40e79ba584843787ad7744f91e14907deb99ccaa
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
 
@@ -131,7 +131,7 @@ ms.lasthandoff: 03/28/2018
 * Key Vault
 * Load Balancer - 「[Load Balancer の制限事項](#lb-limitations)」を参照
 * Logic Apps
-* 機械学習
+* Machine Learning - Machine Learning Studio Web サービスは、同じサブスクリプション内のリソース グループには移動できますが、別のサブスクリプションには移動できません。 他の Machine Learning リソースは、異なるサブスクリプションに移動できます。
 * Media Services
 * Mobile Engagement
 * Notification Hubs

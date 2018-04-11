@@ -1,18 +1,18 @@
 ---
-title: "Azure Event Grid の概要"
-description: "Azure Event Grid とその概念について説明します。"
+title: Azure Event Grid の概要
+description: Azure Event Grid とその概念について説明します。
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 01/30/2018
+ms.date: 03/30/2018
 ms.author: babanisa
-ms.openlocfilehash: 5e700e3e9d17e790083facf00c7f4b8decf9037a
-ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
+ms.openlocfilehash: 335d6aba3a3d2098fa64aeda8c58c8dd7f4e6776
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/01/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
@@ -33,25 +33,26 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 *   米国西部
 *   米国西部 2
 
-この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 次の図は、Event Grid がパブリッシャーとハンドラーをどのように接続するかを示しています。これは、サポートされているオプションの包括的なリストではありません。
+この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。 次の図は、Event Grid がソースとハンドラーをどのように接続するかを示しています。これは、サポートされているオプションの包括的なリストではありません。
 
 ![Event Grid 機能モデル](./media/overview/functional-model.png)
 
-## <a name="event-publishers"></a>イベント発行元
+## <a name="event-sources"></a>イベント ソース
 
-現時点で、次の Azure サービスで、イベント グリッドの組み込み発行元がサポートされています。
+現在、次の Azure サービスは Event Grid へのイベントの送信をサポートしています。
 
 * Azure サブスクリプション (管理操作)
 * カスタム トピック
 * Event Hubs
 * IoT Hub
 * リソース グループ (管理操作)
+* Service Bus
 * ストレージ BLOB
 * ストレージ汎用 v2 (GPv2)
 
 ## <a name="event-handlers"></a>イベント ハンドラー
 
-現時点で、次の Azure サービスで、Event Grid の組み込みハンドラーがサポートされています。 
+現在、次の Azure サービスは Event Grid からのイベントの処理をサポートしています。 
 
 * Azure Automation
 * Azure Functions

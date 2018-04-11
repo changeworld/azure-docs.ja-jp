@@ -13,11 +13,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 03/24/2018
 ms.author: sedusch
-ms.openlocfilehash: b84b523f919e6b253462139b6888e5eb16248084
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f8c01c4e3f060c6a5ad52f1ed16103ea42d8cd2b
+ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/29/2018
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) 上の SAP HANA の高可用性 | Microsoft Docs
 
@@ -290,7 +290,7 @@ GitHub にあるいずれかのクイック スタート テンプレートを�
     
     ```
 
-SAP HANA システム レプリケーションをインストールするには、[SAP HANA SR Performance Optimized Scenario (SAP HANA SR パフォーマンス最適化シナリオ) ガイド][suse-hana-ha-guide]の 4 章に従います。
+SAP HANA システム レプリケーションをインストールするには、SAP HANA SR パフォーマンス最適化シナリオ ガイド (https://www.suse.com/products/sles-for-sap/resource-library/sap-best-practices/) の 4 章に従います。
 
 1. **[A]** HANA DVD から hdblcm を実行します
     * Choose installation (インストールの選択) -> 1

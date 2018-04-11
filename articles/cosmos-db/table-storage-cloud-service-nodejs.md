@@ -1,6 +1,6 @@
 ---
-title: "Azure Table Storage: Node.js Web アプリを作成する | Microsoft Docs"
-description: "Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。"
+title: 'Azure Table Storage: Node.js Web アプリを作成する | Microsoft Docs'
+description: Express を使用する Web アプリケーションのチュートリアルを基に、Azure Storage サービスと Azure モジュールを追加するチュートリアル。
 services: cosmos-db
 documentationcenter: nodejs
 author: mimig1
@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 11/03/2017
+ms.date: 03/29/2018
 ms.author: mimig
-ms.openlocfilehash: 9acd197c26e6365e396fd8f6321d764bba7bbb6c
-ms.sourcegitcommit: f1c1789f2f2502d683afaf5a2f46cc548c0dea50
+ms.openlocfilehash: b63f6b3be2e4576b304c1a73ff326a937815b27e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/18/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-table-storage-nodejs-web-application"></a>Azure Table Storage: Node.js Web アプリ
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -26,7 +26,7 @@ ms.lasthandoff: 01/18/2018
 ## <a name="overview"></a>概要
 このチュートリアルでは、Node.js 用の Microsoft Azure クライアント ライブラリを使用して、[Express を使用した Node.js Web アプリケーション]のチュートリアルで作成したアプリケーションを拡張し、データ管理サービスと連携します。 Azure にデプロイできる Web ベースのタスク一覧アプリケーションを作成して、アプリケーションを拡張します。 このタスク一覧では、ユーザーがタスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。
 
-タスク項目は Azure ストレージに格納されます。 Azure ストレージは、フォールト トレランスと可用性に優れた非構造化データ ストレージです。 Azure Storage には複数のデータ構造が含まれており、そこにデータを保存してアクセスすることができます。 Azure SDK で提供される Node.js 用 API または REST API を介して、ストレージ サービスを利用できます。 詳しくは、「[Azure でのデータの格納とアクセス]」をご覧ください。
+タスク項目は Azure Storage または Azure Cosmos DB に格納されます。 Azure Storage および Azure Cosmos DB は、フォールト トレランスと可用性に優れた非構造化データ ストレージです。 Azure Storage と Azure Cosmos DB には複数のデータ構造が含まれており、そこにデータを保存してアクセスすることができます。 Azure SDK で提供される Node.js 用 API または REST API を介して、ストレージ サービスと Azure Cosmos DB サービスを利用できます。 詳しくは、「[Azure でのデータの格納とアクセス]」をご覧ください。
 
 このチュートリアルは、[Node.js Web アプリケーション]および [Express を使用した Node.js][Express を使用した Node.js Web アプリケーション] のチュートリアルを完了していることを前提としています。
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 01/18/2018
 ![Internet Explorer で表示された完成した Web ページ](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
 ## <a name="setting-storage-credentials-in-webconfig"></a>Web.Config のストレージ資格情報の設定
-Azure Storage にアクセスするには、ストレージ資格情報を渡す必要があります。 これは web.config アプリケーションの設定を使用して行います。
+Azure Storage または Azure Cosmos DB にアクセスするには、ストレージ資格情報を渡す必要があります。 これは web.config アプリケーションの設定を使用して行います。
 web.config の設定は、環境変数として Node に渡され、その後 Azure SDK によって読み取られます。
 
 > [!NOTE]
@@ -144,7 +144,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
     Task.prototype = {
       find: function(query, callback) {
         self = this;
-        self.storageClient.queryEntities(query, function entitiesQueried(error, result) {
+        self.storageClient.queryEntities(this.tablename, query, null, null, function entitiesQueried(error, result) {
           if(error) {
             callback(error);
           } else {
@@ -181,7 +181,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
             callback(error);
           }
           entity.completed._ = true;
-          self.storageClient.updateEntity(self.tableName, entity, function entityUpdated(error) {
+          self.storageClient.replaceEntity(self.tableName, entity, function entityUpdated(error) {
             if(error) {
               callback(error);
             }
@@ -215,7 +215,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
     TaskList.prototype = {
       showTasks: function(req, res) {
         self = this;
-        var query = azure.TableQuery()
+        var query = new azure.TableQuery()
           .where('completed eq ?', false);
         self.task.find(query, function itemsFound(error, items) {
           res.render('index',{title: 'My ToDo List ', tasks: items});
@@ -224,7 +224,10 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
 
       addTask: function(req,res) {
         var self = this
-        var item = req.body.item;
+        var item = {
+            name: req.body.name, 
+            category: req.body.category
+        };
         self.task.addItem(item, function itemAdded(error) {
           if(error) {
             throw error;
@@ -307,7 +310,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
             td Category
             td Date
             td Complete
-          if tasks != []
+          if tasks == []
             tr
               td
           else
@@ -325,9 +328,9 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
       hr
       form.well(action="/addtask", method="post")
         label Item Name:
-        input(name="item[name]", type="textbox")
+        input(name="name", type="textbox")
         label Item Category:
-        input(name="item[category]", type="textbox")
+        input(name="category", type="textbox")
         br
         button.btn(type="submit") Add item
     ```
@@ -414,7 +417,7 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
    サービスの削除には、数分間かかる場合があります。 サービスが削除されると、削除されたことを知らせるメッセージが表示されます。
 
 [Express を使用した Node.js Web アプリケーション]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
-[Azure でのデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
+[Azure でのデータの格納とアクセス]: https://docs.microsoft.com/azure/storage/
 [Node.js Web アプリケーション]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
 
 

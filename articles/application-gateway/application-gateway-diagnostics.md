@@ -1,25 +1,22 @@
 ---
-title: Application Gateway のアクセス ログ、パフォーマンス ログ、バックエンドの正常性、およびメトリックの監視 | Microsoft Docs
+title: Application Gateway のアクセス ログ、パフォーマンス ログ、バックエンドの正常性、およびメトリックの監視
 description: Application Gateway のアクセス ログとパフォーマンス ログを有効にし、管理する方法について説明します。
 services: application-gateway
-documentationcenter: na
 author: amitsriva
 manager: rossort
-editor: tysonn
 tags: azure-resource-manager
-ms.assetid: 300628b8-8e3d-40ab-b294-3ecc5e48ef98
 ms.service: application-gateway
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 3/23/2018
+ms.date: 4/2/2018
 ms.author: amitsriva
-ms.openlocfilehash: 885ae8b97175cac4cd29793eb0a935e81d54d0e4
-ms.sourcegitcommit: c3d53d8901622f93efcd13a31863161019325216
+ms.openlocfilehash: 982ae712320cb390b1822de6a7a3980ebfb6251e
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/29/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Application Gateway のバックエンドの正常性、診断ログ、およびメトリック
 
@@ -29,7 +26,7 @@ Azure Application Gateway を使用すると、次の方法でリソースを監
 
 * [ログ](#diagnostic-logging): リソースのパフォーマンス、アクセス、その他のデータを記録したログは、監視のために保存し使用することができます。
 
-* [メトリック](#metrics): Application Gateway が持つメトリックは現在 1 つです。 このメトリックは、Application Gateway の 1 秒あたりのスループットをバイト単位で測定したものです。
+* [メトリック](#metrics): 現在、Application Gateway にはパフォーマンス カウンターを表示する 7 つのメトリックがあります。
 
 ## <a name="back-end-health"></a>バックエンドの正常性
 
@@ -318,13 +315,22 @@ Azure [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.
 
 メトリックは特定の Azure リソース用の機能で、ポータルでパフォーマンス カウンターを表示できます。 Application Gateway に関しては、次のメトリックを利用できます。
 
-- 現在の接続数
-- 失敗した要求
-- 正常なホストの数
-- 応答の状態
-- Throughput
-- 要求の合計数
-- 異常なホストの数
+- **現在の接続数**
+- **失敗した要求**
+- **正常なホストの数**
+
+   バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの正常/異常なホストを表示できます。
+
+
+- **応答の状態**
+
+   応答状態コードの分布をさらに分類し、2xx、3xx、4xx、5xx のカテゴリで応答を表示できます。
+
+- **スループット**
+- **要求の合計数**
+- **異常なホストの数**
+
+   バックエンド プールごとにフィルター処理を行って、特定のバックエンド プールの正常/異常なホストを表示できます。
 
 Application Gateway に移動して **[監視]** の **[メトリック]** をクリックします。 利用できる値を表示するには、**[メトリック]** ドロップダウン リストを選択します。
 

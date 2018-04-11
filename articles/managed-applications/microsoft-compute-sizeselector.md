@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの SizeSelector UI 要素 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの Microsoft.Compute.SizeSelector UI 要素について説明します。"
+title: Azure の SizeSelector UI 要素 | Microsoft Docs
+description: Azure Portal の Microsoft.Compute.SizeSelector UI 要素について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/12/2017
+ms.date: 03/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 72278b1999f89e5bd5f203794ba3a403a695c933
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 3966de95233f32a09d4799630632c2bb6a490d78
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcomputesizeselector-ui-element"></a>Microsoft.Compute.SizeSelector UI 要素
-1 つまたは複数の仮想マシン インスタンスのサイズを選択するコントロールです。 この要素は、[Azure マネージ アプリケーションを作成する](publish-service-catalog-app.md)ときに使用します。
+1 つまたは複数の仮想マシン インスタンスのサイズを選択するコントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Compute.SizeSelector](./media/managed-application-elements/microsoft.compute.sizeselector.png)
@@ -66,7 +66,6 @@ ms.lasthandoff: 10/27/2017
 "Standard_D1"
 ```
 
-## <a name="next-steps"></a>次のステップ
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](overview.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

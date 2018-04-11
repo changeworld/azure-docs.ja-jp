@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 03/27/2018
 ms.author: mabrigg
 ms.reviewer: jeffgo
-ms.openlocfilehash: 15a1648193555ecc5847170ab65f48dfa4f6417b
-ms.sourcegitcommit: 8c3267c34fc46c681ea476fee87f5fb0bf858f9e
+ms.openlocfilehash: 66e1d5691b431be0c3d040570b13e8d16b1669ef
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/09/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
 
-*適用先: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack に MySQL リソース プロバイダーをデプロイできます。 リソース プロバイダーをデプロイしたら、Azure Resource Manager デプロイ テンプレートを使用して MySQL サーバーとデータベースを作成できます。 MySQL データベースは、サービスとしても提供できます。 
 
@@ -80,7 +80,7 @@ MySQL データベースは、Web サイトで一般的であり、多くの Web
     | 1711: 1.0.171122.1 | [MySQL RP バージョン 1.1.12.0](https://aka.ms/azurestackmysqlrp1711) |
     | 1710: 1.0.171028.1 | [MySQL RP バージョン 1.1.8.0](https://aka.ms/azurestackmysqlrp1710) |
 
-4.  Azure Stack のルート証明書は、特権エンドポイントから取得されます。 Azure SDK では、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
+4.  Azure SDK では、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 
     独自の証明書を提供する必要がある場合は、次の条件と合致する **DependencyFilesLocalPath** に .pfx ファイルを配置します。
 
