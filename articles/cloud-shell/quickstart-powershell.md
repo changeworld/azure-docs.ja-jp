@@ -54,7 +54,7 @@ MyResourceGroup         MyVM1       eastus            Standard_DS1  Windows    S
 MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    Succeeded           deallocated
 ```
 
-## <a name="navigate-azure-resources"></a>Azure リソースを操作する
+## <a name="navigate-azure-resources"></a>Azure リソース間を移動する	
 
  1. サブスクリプションを一覧表示します
 
@@ -88,13 +88,13 @@ MyResourceGroup         MyVM2       eastus   Standard_DS2_v2_Promo  Windows    S
      ```
 
 ### <a name="allresources-view"></a>AllResources ビュー 
-`AllResources` ディレクトリで「`dir`」と入力して、全ての Azure リソースを表示します。
+`AllResources` ディレクトリで「`dir`」と入力して、Azure リソースを表示します。	
     
     PS Azure:\MySubscriptionName> dir AllResources
 
-### <a name="explore-resource-groups"></a>特定のリソース グループ内を探索する
+### <a name="explore-resource-groups"></a>リソース グループを探索する
 
- `ResourceGroups` ディレクトリに移動し、特定のリソース グループ内の仮想マシンを検索できます。
+ `ResourceGroups` ディレクトリに移動し、特定のリソース グループ内で仮想マシンを検索できます。	
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> cd ResourceGroups\MyResourceGroup1\Microsoft.Compute\virtualMachines
@@ -116,9 +116,9 @@ TestVm2   westus     Succeeded         Standard_DS1_v2 WindowsServer 2016-Datace
 > これは、ユーザー エクスペリエンス向上のため、子項目がメモリ内にキャッシュされるためです。
 ただし、`dir -Force` を使うと常に最新のデータを取得できます。
 
-### <a name="navigate-storage-resources"></a>ストレージ リソースを取り扱う
+### <a name="navigate-storage-resources"></a>ストレージ リソース間を移動する	
     
-`StorageAccounts` ディレクトリに入ることで、ストレージ リソースを簡単に取り扱うことができます。
+`StorageAccounts` フォルダーに入ることで、ストレージ リソース間を簡単に移動することができます	
     
 ``` PowerShell 
 PS Azure:\MySubscriptionName\StorageAccounts\MyStorageAccountName\Files> dir
@@ -225,9 +225,9 @@ TestVm10   MyResourceGroup2   eastus    Standard_DS1_v2 Windows           mytest
  PS Azure:\MySubscriptionName\ResourceGroups\MyResourceGroup\Microsoft.Compute\virtualMachines> Get-Item MyVM1 | Enter-AzureRmVM
  ```
 
-### <a name="discover-webapps"></a>Web Apps を取り扱う
+### <a name="discover-webapps"></a>WebApps を検出する	
 
-`WebApps` フォルダーに入ることで、Web Apps リソースを簡単に取り扱うことができます
+`WebApps` フォルダーに入ることで、Web アプリ リソース間を簡単に移動することができます	
 
 ``` PowerShell
 PS Azure:\MySubscriptionName> dir .\WebApps\
@@ -267,10 +267,10 @@ mywebapp3       Running  MyResourceGroup3   {mywebapp3.azurewebsites.net...   So
 ## <a name="ssh"></a>SSH
 
 PowerShell Cloud Shell 上で [Win32-OpenSSH](https://github.com/PowerShell/Win32-OpenSSH) を利用できます。
-SSH を使ってサーバーまたは VM に対する認証を行うには、Cloud Shell で公開キーと秘密キーのペアを生成して、リモート マシン上の `authorized_keys` (`/home/user/.ssh/authorized_keys` など) に公開キーを配置します。
+SSH を使ってサーバーまたは VM に対する認証を行うには、Cloud Shell で公開キーと秘密キーの組を生成して、リモート マシン上の `authorized_keys` (`/home/user/.ssh/authorized_keys` など) に公開キーを発行します。
 
 > [!NOTE]
-> `ssh-keygen` を使って SSH の公開/秘密キーを作成し、Cloud Shell でそれらを `$env:USERPROFILE\.ssh` に配置できます。
+> `ssh-keygen` を使って SSH の公開/秘密キーを作成し、Cloud Shell でそれらを `$env:USERPROFILE\.ssh` に発行できます。	
 
 ### <a name="using-a-custom-profile-to-persist-git-and-ssh-settings"></a>カスタム プロファイルを使って Git と SSH の設定を保持する
 
