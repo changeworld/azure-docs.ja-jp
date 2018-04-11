@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/12/2018
 ms.author: dobett
-ms.openlocfilehash: e7e45a6af0857520eec27263281a0f0a43b30013
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: c410db9a7255a039ab9b41ae39f2fe1018719f8f
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -31,6 +31,8 @@ ms.lasthandoff: 03/28/2018
 * 資格情報のスコープを指定して特定のリソースへのアクセスを制限する方法。
 * X.509 証明書の IoT Hub サポート。
 * 既存のデバイス ID のレジストリまたは認証スキームを使用した、カスタムのデバイス認証メカニズム。
+
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 IoT Hub のエンドポイントにアクセスするには、適切なアクセス許可が必要です。 たとえば、IoT Hub に送信するすべてのメッセージと共に、デバイスにはセキュリティ資格情報が格納されているトークンを含める必要があります。
 

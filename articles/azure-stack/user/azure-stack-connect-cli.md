@@ -1,11 +1,11 @@
 ---
-title: "CLI を使用した Azure Stack への接続 | Microsoft Docs"
-description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法"
+title: CLI を使用した Azure Stack への接続 | Microsoft Docs
+description: クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: mattbriggs
 manager: femila
-editor: 
+editor: ''
 ms.assetid: f576079c-5384-4c23-b5a4-9ae165d1e3c3
 ms.service: azure-stack
 ms.workload: na
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/26/2018
 ms.author: mabrigg
 ms.openlocfilehash: ad258cf6c73b2c1ea5f208ebef9906a0e3d35ea4
-ms.sourcegitcommit: 168426c3545eae6287febecc8804b1035171c048
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/08/2018
+ms.lasthandoff: 04/02/2018
 ---
 # <a name="install-and-configure-cli-for-use-with-azure-stack"></a>Azure Stack で使用する CLI をインストールして構成する
 
@@ -89,7 +89,7 @@ Write-Host "Python Cert store was updated for allowing the azure stack CA root c
 
 ## <a name="get-the-virtual-machine-aliases-endpoint"></a>仮想マシンのエイリアス エンドポイントを取得する
 
-ユーザーが CLI を使用して仮想マシンを作成するには、Azure Stack のオペレーターに連絡し、仮想マシンのエイリアス エンドポイント URI を取得する必要があります。 たとえば、Azure では、https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json という URI を使用します。 クラウド管理者は Azure Stack Marketplace で使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。 次のセクションで示すように、ユーザーは、エンドポイント URI を `az cloud register` コマンドの `endpoint-vm-image-alias-doc` パラメーターに渡す必要があります。 
+ユーザーが CLI を使用して仮想マシンを作成するには、Azure Stack のオペレーターに連絡し、仮想マシンのエイリアス エンドポイント URI を取得する必要があります。 たとえば、Azure では次の URI が使用されます。https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json クラウド管理者は Azure Stack Marketplace で使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。 次のセクションで示すように、ユーザーは、エンドポイント URI を `az cloud register` コマンドの `endpoint-vm-image-alias-doc` パラメーターに渡す必要があります。 
    
 
 ## <a name="connect-to-azure-stack"></a>Azure Stack への接続

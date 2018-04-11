@@ -12,20 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/26/2018
+ms.date: 03/29/2018
 ms.author: kumud
-ms.openlocfilehash: 9f5a68972015f54e2333199652075cda2535a3c8
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: f5d46fda6bdb32c1a5000883c6aedb2da15e796a
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>Standard Load Balancer と可用性ゾーン
 
 Azure Load Balancer の Standard SKU は、[可用性ゾーン](../availability-zones/az-overview.md)のシナリオをサポートしています。 Standard Load Balancer では複数の新しい概念を利用でき、リソースをゾーンに一致させて、複数のゾーンに分散させることにより、エンド ツー エンドのシナリオで可用性を最適化させることができます。  可用性ゾーンとは何か、現在可用性ゾーンをサポートしているリージョン、その他の関連する概念と製品については、[可用性ゾーン](../availability-zones/az-overview.md)に関する記事をご覧ください。 可用性ゾーンと Standard Load Balancer の組み合わせは、さまざまなシナリオを作成できる拡張性と柔軟性の高い機能セットです。  このドキュメントを読んで、これらの[概念](#concepts)と基本的なシナリオの[設計ガイダンス](#design)を理解してください。
 
 >[!NOTE]
->その他の関連トピックについては、[可用性ゾーン プレビュー](https://aka.ms/availabilityzones)をご確認ください。 
+>その他の関連トピックについては、[可用性ゾーン](https://aka.ms/availabilityzones)に関するページを参照してください。 
 
 ## <a name="concepts"></a> Load Balancer に適用される可用性ゾーンの概念
 
@@ -43,7 +43,7 @@ Load Balancer リソース自体はリージョン ベースであり、ゾー�
 
 Load Balancer のフロントエンドは、仮想ネットワーク リソースのサブネット内のパブリック IP アドレス リソースまたはプライベート IP アドレスのいずれかを参照するフロントエンド IP 構成です。  サービスが公開される負荷分散されたエンドポイントを形成します。
 
-Load Balancer リソースは、ゾーン ベースとゾーン冗長の両方のフロントエンドを同時に含むことができます。
+Load Balancer リソースは、ゾーン ベースとゾーン冗長の両方のフロントエンドを同時に含むことができます。 
 
 パブリック IP リソースがゾーンに対して保証されている場合、ゾーン性 (またはその欠如) は変更できません。  パブリック IP フロントエンドのゾーン性を変更または省略する必要がある場合は、適切なゾーンでパブリック IP を再作成する必要があります。  
 
@@ -219,3 +219,5 @@ Load Balancer を使うと、ゾーン冗長フロントエンドとして 1 つ
 ## <a name="next-steps"></a>次の手順
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を確認する
 - [Standard Load Balancer](load-balancer-standard-overview.md) の詳細を確認する
+- [ゾーン フロントエンドによる Standard Load Balancer を使用した単一のゾーン内での VM の負荷分散](load-balancer-standard-public-zonal-cli.md)を確認する
+- [ゾーン冗長フロントエンドによる Standard Load Balancer を使用したゾーン間での VM の負荷分散](load-balancer-standard-public-zone-redundant-cli.md)を確認する

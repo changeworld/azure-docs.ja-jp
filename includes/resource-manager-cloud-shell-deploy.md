@@ -1,6 +1,6 @@
 ## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell からのテンプレートのデプロイ
 
-テンプレートは、[Cloud Shell](../articles/cloud-shell/overview.md) を使ってデプロイすることができます。 ただし、最初に Cloud Shell のファイル共有にテンプレートを読み込む必要があります。 Cloud Shell の使用経験がない場合は、その設定について [Azure Cloud Shell の概要](../articles/cloud-shell/overview.md)に関するページを参照してください。
+テンプレートは、[Cloud Shell](../articles/cloud-shell/overview.md) を使ってデプロイすることができます。 ただし、最初に Cloud Shell のストレージ アカウントにテンプレートを読み込む必要があります。 Cloud Shell の使用経験がない場合は、その設定について [Azure Cloud Shell の概要](../articles/cloud-shell/overview.md)に関するページを参照してください。
 
 1. [Azure Portal](https://portal.azure.com) にログインします。
 
@@ -12,33 +12,37 @@
 
    ![ストレージ アカウントを選択する](./media/resource-manager-cloud-shell-deploy/select-storage.png)
 
-1. **[ファイル]** を選択します。
+1. **[BLOB]**を選択します。
 
-   ![Select files](./media/resource-manager-cloud-shell-deploy/select-files.png)
+   ![BLOB の選択](./media/resource-manager-cloud-shell-deploy/select-blobs.png)
 
-1. Cloud Shell のファイル共有を選択します。 名前のパターンは `cs-<user>-<domain>-com-<uniqueGuid>` です。
+1. **[+ コンテナー]** を選択します。
 
-   ![ファイル共有を選択する](./media/resource-manager-cloud-shell-deploy/select-file-share.png)
+   ![コンテナーの追加](./media/resource-manager-cloud-shell-deploy/add-container.png)
 
-1. **[ディレクトリの追加]** を選択します。
+1. コンテナーに名前とアクセス レベルを付与します。 この記事のサンプル テンプレートには機密性の高い情報は含まれていないため、匿名の読み取りアクセスを許可します。 **[OK]**を選択します。
 
-   ![[ディレクトリの追加]](./media/resource-manager-cloud-shell-deploy/select-add-directory.png)
+   ![コンテナーの値の指定](./media/resource-manager-cloud-shell-deploy/provide-container-values.png)
 
-1. **templates** という名前を付け、**[OK]** を選択します。
+1. 作成したコンテナーを選択します。
 
-   ![ディレクトリに名前を付ける](./media/resource-manager-cloud-shell-deploy/name-templates.png)
-
-1. 新しいディレクトリを選択します。
-
-   ![新しいディレクトリを選択する](./media/resource-manager-cloud-shell-deploy/select-templates.png)
+   ![新しいコンテナーの選択](./media/resource-manager-cloud-shell-deploy/select-container.png)
 
 1. **[アップロード]**を選択します。
 
-   ![[アップロード] を選択する](./media/resource-manager-cloud-shell-deploy/select-upload.png)
+   ![BLOB のアップロード](./media/resource-manager-cloud-shell-deploy/upload-blob.png)
 
 1. テンプレートを見つけてアップロードします。
 
-   ![ファイルをアップロードする](./media/resource-manager-cloud-shell-deploy/upload-files.png)
+   ![ファイルをアップロードする](./media/resource-manager-cloud-shell-deploy/find-and-upload-template.png)
+
+1. アップロードが完了したら、テンプレートを選択します。
+
+   ![新しいテンプレートの選択](./media/resource-manager-cloud-shell-deploy/select-new-template.png)
+
+1. URL をコピーします。
+
+   ![URL のコピー](./media/resource-manager-cloud-shell-deploy/copy-url.png)
 
 1. プロンプトを開きます。
 

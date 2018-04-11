@@ -1,6 +1,6 @@
 ---
-title: "Azure マネージ アプリケーションの UserNameTextBox UI 要素 | Microsoft Docs"
-description: "Azure マネージ アプリケーションの Microsoft.Compute.UserNameTextBox UI 要素について説明します。"
+title: Azure UserNameTextBox UI 要素 | Microsoft Docs
+description: Azure Portal の Microsoft.Compute.UserNameTextBox UI 要素について説明します。
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2017
 ms.author: tomfitz
-ms.openlocfilehash: 6a395915af274750eb57a085ee51b55fdd392615
-ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
+ms.openlocfilehash: 4c8f62784b563bd8d39ccc763598b73b9b5d7195
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/27/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="microsoftcomputeusernametextbox-ui-element"></a>Microsoft.Compute.UserNameTextBox UI 要素
-Windows と Linux のユーザー名の検証が組み込まれているテキスト ボックス コントロールです。 この要素は、[Azure マネージ アプリケーションを作成する](publish-service-catalog-app.md)ときに使用します。
+Windows と Linux のユーザー名の検証が組み込まれているテキスト ボックス コントロールです。
 
 ## <a name="ui-sample"></a>UI サンプル
 ![Microsoft.Compute.UserNameTextBox](./media/managed-application-elements/microsoft.compute.usernametextbox.png)
@@ -56,7 +56,6 @@ Windows と Linux のユーザー名の検証が組み込まれているテキ�
 "tabrezm"
 ```
 
-## <a name="next-steps"></a>次のステップ
-* マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](overview.md)」を参照してください。
+## <a name="next-steps"></a>次の手順
 * UI 定義の作成の概要については、「[CreateUiDefinition の基本概念](create-uidefinition-overview.md)」を参照してください。
 * UI 要素の共通プロパティの説明については、「[CreateUiDefinition の要素](create-uidefinition-elements.md)」を参照してください。

@@ -9,11 +9,11 @@ ms.custom: DBs & servers
 ms.topic: article
 ms.date: 01/24/2018
 ms.author: carlrab
-ms.openlocfilehash: 98784b2d1ede5354c965e483b34b5fcb323394aa
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
+ms.openlocfilehash: f7dc584c8fa9f4452b2bd9288df86492399c036c
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/16/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL Database 接続アーキテクチャ 
 
@@ -91,7 +91,7 @@ Azure 外から接続する場合、接続には既定で**プロキシ**の接�
 
 ## <a name="change-azure-sql-database-connection-policy"></a>Azure SQL Database 接続ポリシーを変更する
 
-Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変更するには、[REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx) を使用します。
+Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変更するには、[conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy) コマンドを使用します。
 
 - 接続ポリシーを**プロキシ**に設定すると、すべてのネットワーク パケットが Azure SQL Database ゲートウェイ経由で送信されます。 この設定の場合、Azure SQL Database ゲートウェイ IP のみに送信を許可する必要があります。 **プロキシ**の設定を利用すると、**リダイレクト**の設定より待ち時間が長くなります。
 - 接続ポリシーで**リダイレクト**を設定すると、すべてのネットワーク パケットがミドルウェア プロキシに直接送信されます。 この設定の場合、複数の IP への送信を許可する必要があります。
@@ -181,6 +181,6 @@ az resource update --ids $id --set properties.connectionType=Proxy
 
 ## <a name="next-steps"></a>次の手順
 
-- Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変更する方法については、「[Create or Update Server Connection Policy using the REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx)」 (REST API を利用してサーバーの接続ポリシーを作成または更新します) を参照してください。
+- Azure SQL Database サーバーの Azure SQL Database 接続ポリシーの変更方法については、「[conn-policy](https://docs.microsoft.com/cli/azure/sql/server/conn-policy)」を参照してください。
 - ADO.NET 4.5 以降のバージョンを使用するクライアントの Azure SQL Database 接続動作については、「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 - 一般的なアプリケーション開発概要情報については、「[SQL Database アプリケーションの開発の概要](sql-database-develop-overview.md)」を参照してください。

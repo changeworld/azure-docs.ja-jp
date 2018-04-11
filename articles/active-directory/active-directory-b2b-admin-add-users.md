@@ -1,69 +1,116 @@
 ---
-title: "Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法 | Microsoft Docs"
-description: "管理者は、Azure Active Directory B2B コラボレーションを使用してパートナー組織から Azure AD にゲスト ユーザーを追加できます。"
+title: Azure Portal で B2B コラボレーション ユーザーを追加する - Azure Active Directory | Microsoft Docs
+description: 管理者が Azure Active Directory (Azure AD) B2B コラボレーションを使用してパートナー組織からディレクトリにゲスト ユーザーを追加する方法を説明します。
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: twooley
 manager: mtillman
-editor: 
-tags: 
-ms.assetid: 
+editor: ''
+tags: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: identity
-ms.date: 03/15/2017
+ms.date: 04/02/2018
 ms.author: twooley
 ms.reviewer: sasubram
-ms.openlocfilehash: 42be57a81f75025686de022a3879f26598b1108d
-ms.sourcegitcommit: 782d5955e1bec50a17d9366a8e2bf583559dca9e
+ms.openlocfilehash: 34bd5b51089045c4cd20f29d179bb230e5e3fac2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/02/2018
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法
+# <a name="add-azure-active-directory-b2b-collaboration-users-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2B コラボレーション ユーザーを追加する
 
-全体管理者と制限付き管理者は、[Azure Portal](https://portal.azure.com) を使用して、B2B コラボレーション ユーザーをディレクトリ、任意のグループ、または任意のアプリケーションに招待できます。
+グローバル管理者、またはいずれかの制限付き管理者ディレクトリ ロールを割り当てられたユーザーとして、Azure Portal を使用して B2B コラボレーション ユーザーを招待できます。 ゲスト ユーザーをディレクトリ、グループ、またはアプリケーションに招待できます。 これらのメソッドを使用してユーザーを招待すると、招待されたユーザーのアカウントが、"*ゲスト*" というユーザー タイプで Azure Active Directory (Azure AD) に追加されます。 次に、ゲスト ユーザーは、招待に応じてリソースにアクセスします。
 
-## <a name="admins-adding-guest-users-to-the-directory"></a>ゲスト ユーザーをディレクトリに追加する管理者
-次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをディレクトリに追加します。
+## <a name="add-guest-users-to-the-directory"></a>ゲスト ユーザーをディレクトリに追加する
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/Admin-adding-guests-for-B2B-collaboration-to-Azure-AD-tenant/Player]
+B2B コラボレーション ユーザーをディレクトリに追加するには、次の手順を実行します。
 
+1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
+2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
+3. **[管理]** で、**[ユーザーとグループ]** > **[すべてのユーザー]** を選択します。
+4. **[新しいゲスト ユーザー]** を選択します。
 
-## <a name="admins-adding-guest-users-to-a-group"></a>ゲスト ユーザーをグループに追加する管理者
-次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをグループに追加します。
+   ![UI 内の新しいゲスト ユーザーの場所を示す](./media/active-directory-b2b-admin-add-users/NewGuestUser-Directory.png) 
+ 
+7. **[ゲストを招待する]** で、外部ユーザーの電子メール アドレスを入力します。 必要に応じて、ようこそメッセージを含めます。 例: 
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-adding-guests-to-a-group/Player]
+   ![UI 内の新しいゲスト ユーザーの場所を示す](./media/active-directory-b2b-admin-add-users/InviteGuest.png) 
 
-
-## <a name="admins-adding-guest-users-to-an-application"></a>ゲスト ユーザーをアプリケーションに追加する管理者
-
-次のビデオで示すように、Azure AD 管理者として、B2B コラボレーション ユーザーをアプリケーションに追加します。
-
->[!VIDEO https://channel9.msdn.com/Blogs/Azure/admin-assign-b2b-to-apps/Player]
-
-## <a name="admins-resending-invitations-to-guest-users"></a>招待をゲスト ユーザーに再送信する管理者
-B2B コラボレーション ユーザーのプロファイル ページに移動し、まだ使用していないゲスト ユーザーに招待を再送信できます。
-
-![招待の再送信](./media/active-directory-b2b-admin-add-users/resend-invitation.png)
-
-> ![メモ]招待を再送信する場合、元の招待が特定のアプリまたはグループに送信された場合でも、サインインしたユーザーから個々のユーザーに招待が送信されます。
+8. **[招待]** を選択して、招待をゲスト ユーザーに自動的に送信します。 **[通知]** 領域で、**[ユーザーが正常に招待されました]** メッセージを探します。 
+ 
+招待を送信すると、ユーザー アカウントがディレクトリにゲストとして自動的に追加されます。
 
 
-## <a name="related-articles"></a>関連記事
+![ユーザー タイプ "ゲスト" の B2B ユーザーを示す](./media/active-directory-b2b-admin-add-users/GuestUserType.png)  
 
-Azure AD B2B コラボレーションに関する他の記事を参照してください。
+## <a name="add-guest-users-to-a-group"></a>ゲスト ユーザーをグループに追加する
+Azure AD 管理者として、B2B コラボレーション ユーザーをグループに手動で追加するには、次の手順に従います。
 
-* [Azure AD B2B コラボレーションとは](active-directory-b2b-what-is-azure-ad-b2b.md)
-* [インフォメーション ワーカーが B2B コラボレーション ユーザーを追加する方法](active-directory-b2b-iw-add-users.md)
-* [B2B コラボレーションの招待メールの要素](active-directory-b2b-invitation-email.md)
-* [B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)
-* [Azure AD B2B コラボレーションのライセンス](active-directory-b2b-licensing.md)
-* [Azure Active Directory B2B コラボレーションのトラブルシューティング](active-directory-b2b-troubleshooting.md)
-* [Azure Active Directory B2B コラボレーションに関してよく寄せられる質問 (FAQ)](active-directory-b2b-faq.md)
-* [B2B コラボレーション ユーザーの多要素認証](active-directory-b2b-mfa-instructions.md)
-* [Azure Active Directory B2B コラボレーションの API とカスタマイズ](active-directory-b2b-api.md)
-* [招待を使用せずに B2B コラボレーション ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
+1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
+2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
+3. **[管理]** で、**[ユーザーとグループ]** > **[すべてのグループ]** を選択します。
+4. グループを選択 (または **[新しいグループ]** をクリックしてグループを新規作成) します。 グループに B2B ゲスト ユーザーが含まれていることをグループの説明に含めることをお勧めします。
+5. **[メンバー]** > **[メンバーの追加]** を選択します。 
+6. 次のいずれかを実行します。
+   - ゲスト ユーザーがディレクトリに既に存在する場合は、B2B ユーザーを探します。 ユーザーを選択し、**[選択]** をクリックしてユーザーをグループに追加します。
+   - ゲスト ユーザーがディレクトリに存在しない場合は、**[招待]** を選択します。
+   ![[招待] ボタンを追加してゲスト メンバーを追加する](./media/active-directory-b2b-admin-add-users/GroupInvite.png)
+   
+      **[ゲストを招待する]** で、電子メール アドレスと必要に応じて個人のメッセージを入力して、**[招待]** を選択します。 **[選択]** をクリックして、ユーザーをグループに追加します。
+
+      招待が、招待されたユーザーに自動的に送信されます。 **[通知]** 領域で、**ユーザーが正常に招待された**ことを示すメッセージを探します。 
+
+Azure AD B2B コラボレーションを使って動的グループを使用することもできます。 詳しくは、「[動的グループと Azure Active Directory B2B コラボレーション](active-directory-b2b-dynamic-groups.md)」を参照してください。
+
+## <a name="add-guest-users-to-an-application"></a>ゲスト ユーザーをアプリケーションに追加する
+
+Azure AD 管理者として B2B コラボレーション ユーザーをアプリケーションに追加するには、次の手順に従います。
+
+1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
+2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
+3. **[管理]** で、**[エンタープライズ アプリケーション]** > **[すべてのアプリケーション]** を選択します。
+4. ゲスト ユーザーを追加するアプリケーションを選択します。
+5. **[管理]** で **[ユーザーとグループ]** を選択します。
+6. **[ユーザーの追加]** を選択します。
+7. **[割り当ての追加]** で **[ユーザーとグループ]** を選択します。
+8. 次のいずれかを実行します。
+   - ゲスト ユーザーがディレクトリに既に存在する場合は、B2B ユーザーを探します。 ユーザーを選択し、**[選択]** をクリックしてユーザーをアプリケーションに追加します。
+   - ゲスト ユーザーがディレクトリに存在しない場合は、**[招待]** を選択します。
+   ![[招待] ボタンを追加してゲスト メンバーを追加する](./media/active-directory-b2b-admin-add-users/AppInviteUsers.png)
+   
+      **[ゲストを招待する]** で、電子メール アドレスと必要に応じて個人のメッセージを入力して、**[招待]** を選択します。 **[選択]** をクリックして、ユーザーをアプリケーションに追加します。
+
+      招待が、招待されたユーザーに自動的に送信されます。 **[通知]** 領域で、**ユーザーが正常に招待された**ことを示すメッセージを探します。
+
+9. **[割り当ての追加]** で、**[Select Role]\(ロールの選択\)** をクリックし、選択したユーザーに適用するロールを選択して (該当する場合)、**[OK]** を選択します。
+10. **[割り当て]** をクリックします。
+ 
+## <a name="resend-invitations-to-guest-users"></a>招待をゲスト ユーザーに再送信する
+
+ゲスト ユーザーがまだ招待に応じていない場合、招待を再送信できます。
+
+1. [Azure Portal](https://portal.azure.com) に Azure AD 管理者としてサインインします。
+2. ナビゲーション ペインで、**[Azure Active Directory]** を選択します。
+3. **[管理]** で **[ユーザーとグループ]** を選択します。
+4. **[すべてのユーザー]** を選択します。
+5. ユーザー アカウントを選択します。
+6. **[管理]** で、**[プロファイル]** を選択します。
+7. ユーザーがまだ招待に応じていない場合は、**[招待の再送信]** オプションを使用できます。 このボタンを選択して再送信します。
+
+   ![ユーザー プロファイルの [招待の再送信] オプション](./media/active-directory-b2b-admin-add-users/Resend-Invitation.png)
+
+> [!NOTE]
+> もともとユーザーを特定のアプリに招待する招待を再送信した場合、新しい招待のリンクによりユーザーは最上位レベルのアクセス パネルに移動されます。
+
+## <a name="next-steps"></a>次の手順
+
+- Azure 以外の AD 管理者が B2B ゲスト ユーザーを追加する方法については、「[インフォメーション ワーカーが B2B コラボレーション ユーザーを Azure Active Directory に追加する方法](active-directory-b2b-iw-add-users.md)」をご覧ください。
+- 招待メールについて詳しくは、「[B2B コラボレーションの招待メールの要素](active-directory-b2b-invitation-email.md)」を参照してください。
+- 招待の引き換えプロセスについて詳しくは、「[B2B コラボレーションの招待の利用](active-directory-b2b-redemption-experience.md)」を参照してください。
+
+

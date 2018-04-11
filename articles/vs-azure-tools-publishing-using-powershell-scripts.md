@@ -1,11 +1,11 @@
 ---
-title: "Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行 | Microsoft Docs"
-description: "Visual Studio から Windows PowerShell スクリプトを使用して、開発環境とテスト環境に発行する方法について説明します。"
+title: Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行 | Microsoft Docs
+description: Visual Studio から Windows PowerShell スクリプトを使用して、開発環境とテスト環境に発行する方法について説明します。
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
-manager: ghogen
-editor: 
+author: ghogen
+manager: douge
+editor: ''
 ms.assetid: 5fff1301-5469-4d97-be88-c85c30f837c1
 ms.service: multiple
 ms.devlang: dotnet
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 4e9409aac836a60e7ea01261840c084ff09e954e
-ms.sourcegitcommit: f847fcbf7f89405c1e2d327702cbd3f2399c4bc2
+ms.author: ghogen
+ms.openlocfilehash: 58d1c8398e626544a7b02198ec0431203aedcc81
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/28/2017
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行
 
@@ -311,7 +311,7 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 **AzureWebAppPublishModule**
 
-| 関数名 | Description |
+| 関数名 | [説明] |
 | --- | --- |
 | Add-AzureSQLDatabase |新しい Azure SQL データベースを作成します。 |
 | Add-AzureSQLDatabases |Visual Studio によって生成される JSON 構成ファイルの値から Azure SQL データベースを作成します。 |
@@ -340,7 +340,7 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 **Publish-WebApplication**
 
-| 関数名 | Description |
+| 関数名 | [説明] |
 | --- | --- |
 | New-AzureWebApplicationEnvironment |Web サイトや仮想マシンなどの Azure リソースを作成します。 |
 | New-WebDeployPackage |この関数は実装されていません。 この関数にコマンドを追加すると、プロジェクトをビルドできます。 |
@@ -348,5 +348,5 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 | Publish-WebApplication |Visual Studio Web プロジェクト用の Web アプリ、仮想マシン、SQL データベース、ストレージ アカウントを作成し、デプロイします。 |
 | Test-WebApplication |この関数は実装されていません。 この関数にコマンドを追加すると、アプリケーションをテストできます。 |
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。

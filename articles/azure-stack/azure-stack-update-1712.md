@@ -1,11 +1,11 @@
 ---
-title: "Azure Stack 1712 更新プログラム | Microsoft Docs"
-description: "Azure Stack 統合システムの 1712 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。"
+title: Azure Stack 1712 更新プログラム | Microsoft Docs
+description: Azure Stack 統合システムの 1712 更新プログラムの内容、既知の問題、および更新プログラムをダウンロードする場所について説明します。
 services: azure-stack
-documentationcenter: 
+documentationcenter: ''
 author: brenduns
 manager: femila
-editor: 
+editor: ''
 ms.assetid: b14f79ad-025f-45d8-9e1d-e53d2b420bb1
 ms.service: azure-stack
 ms.workload: na
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2018
 ms.author: brenduns
-ms.openlocfilehash: 0456a202990d383370051d99112f829533b1b101
-ms.sourcegitcommit: 562a537ed9b96c9116c504738414e5d8c0fd53b1
+ms.openlocfilehash: c3cb8ab8a838a3f831ece617fcf3e218a9510ea5
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-stack-1712-update"></a>Azure Stack 1712 更新プログラム
 
@@ -109,16 +109,17 @@ Azure Stack 1712 更新プログラムのビルド番号は **180106.1** です�
 
 - ユーザー サブスクリプションを削除すると、リソースが孤立します。 回避策として、まず、ユーザー リソースまたはリソース グループ全体を削除してから、ユーザー サブスクリプションを削除します。
 - Azure Stack ポータルを使用して、サブスクリプションへのアクセス許可を表示することはできません。 回避策として、PowerShell を使用してアクセス許可を確認できます。
+- **[サービス正常性]** ブレードの読み込みに失敗します。 管理ポータルまたはユーザー ポータルで [サービス正常性] ブレードを開くと、Azure Stack にエラーが表示され、情報は読み込まれません。 これは正しい動作です。 [サービス正常性] を選択して開けますが、この機能はまだ利用できません。Azure Stack の今後のバージョンに実装されます。
 
 #### <a name="health-and-monitoring"></a>正常性と監視
 
 - インフラストラクチャのロール インスタンスを再起動すると、再起動が失敗したことを示すメッセージを受け取る場合があります。 ただし、再起動は実際には成功しています。
 
-#### <a name="marketplace"></a>Marketplace
+#### <a name="marketplace"></a>マーケットプレース
 - 一部のマーケットプレース項目は、互換性の問題のために、このリリースで削除されています。 これらは、さらに検証された後、再度有効にされます。
 - ユーザーはサブスクリプションなしですべてのマーケットプレースを参照し、プランやオファーなどの管理アイテムを表示できます。 ユーザーはこれらのアイテムを使用できません。
 
-#### <a name="compute"></a>計算
+#### <a name="compute"></a>コンピューティング
 - ユーザーは geo 冗長ストレージを持つ仮想マシンを作成するオプションを利用できます。 この構成の場合、仮想マシンの作成が失敗します。
 - 仮想マシン可用性セットは、1 つの障害ドメインと 1 つの更新ドメインでのみ構成可能です。
 - 仮想マシン スケール セットを作成するマーケットプレースのエクスペリエンスはありません。 スケール セットはテンプレートを使用して作成できます。

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 12/12/2017
 ms.author: negat
 ms.custom: na
-ms.openlocfilehash: 4dd908908877a222c708c9b2ab6255ab9a4b414a
-ms.sourcegitcommit: d74657d1926467210454f58970c45b2fd3ca088d
+ms.openlocfilehash: e7fc12c9b4cc79109975e34f64f236394c33af25
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets の FAQ
 
@@ -63,7 +63,11 @@ Azure における仮想マシン スケール セットについてよく寄せ
 
 **Q.** Scale Sets は、Azure 可用性セットと連携できますか?
 
-**A.** はい。 スケール セットは、5 つの障害ドメインと 5 つの更新ドメインを備えた、暗黙的な可用性セットです。 100 個を超える VM を備えたスケール セットは、複数の可用性セットに相当する複数の "*配置グループ*" にまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
+**A.** リージョン (非ゾーン) スケール セットは*配置グループ*を使用します。各配置グループは、5 つの障害ドメインと 5 つの更新ドメインを使用する暗黙的な可用性セットとして機能するように構成できます。 100 を超える VM のスケール セットは複数の配置グループにまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
+
+**Q.** スケール セットは、Azure 可用性ゾーンと連携しますか。
+
+**A.** はい。 詳細については、[スケール セットのゾーン](./virtual-machine-scale-sets-use-availability-zones.md)に関するドキュメントを参照してください。
 
 
 ## <a name="autoscale"></a>Autoscale

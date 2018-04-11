@@ -1,23 +1,23 @@
 ---
-title: "AKS と Azure Container Registry で Draft を使用します。"
-description: "AKS と Azure Container Registry で Draft を使用します。"
+title: AKS と Azure Container Registry で Draft を使用します。
+description: AKS と Azure Container Registry で Draft を使用します。
 services: container-service
 author: neilpeterson
 manager: timlt
 ms.service: container-service
 ms.topic: article
-ms.date: 10/24/2017
+ms.date: 03/29/2018
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 803d9e9ea7411c6de4dd15670f495fa8e169a989
-ms.sourcegitcommit: 088a8788d69a63a8e1333ad272d4a299cb19316e
+ms.openlocfilehash: 2ab79e3a6308d01d836a82f356f43eccb6af9791
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 02/27/2018
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="use-draft-with-azure-container-service-aks"></a>Azure Container Service (AKS) での Draft の使用
 
-Draft は、Kubernetes クラスターでコードをパッケージ化し、実行する際に役立つオープン ソース ツールです。 Draft は、コードの開発時にバージョン管理にコミットする前の開発の反復サイクルを対象としています。 Draft を使用すると、コードの変更が発生したときに、アプリケーションを Kubernetes にすばやく再デプロイできます。 Draft の詳細については、[Github の Draft のドキュメント][draft-documentation]をご覧ください。
+オープン ソース ツールである Draft を使用すると、Kubernetes クラスターにこれらのコンテナーを含めてデプロイできるため、開発サイクル (開発に重点を置いた "内部ループ") に集中できます。 Draft はコードの開発時に、バージョン コントロールにコミットする前に機能します。 Draft を使用すると、コードの変更が発生したときに、アプリケーションを Kubernetes にすばやく再デプロイできます。 Draft の詳細については、[Github の Draft のドキュメント][draft-documentation]をご覧ください。
 
 このドキュメントでは、AKS の Kubernetes クラスターで Draft を使用する方法について詳しく説明します。
 
@@ -29,64 +29,51 @@ Azure Container Registry (ACR) のプライベート Docker レジストリも�
 
 Helm も AKS クラスターにインストールする必要があります。 Helm のインストールについて詳しくは、「[Azure Container Service (AKS) での Helm の使用][aks-helm]」をご覧ください。
 
+最後に、[Docker](https://www.docker.com) をインストールする必要があります。
+
 ## <a name="install-draft"></a>Draft のインストール
 
-Draft CLI は、開発システムで実行され、Kubernetes クラスターへのコードの迅速なデプロイを可能にするクライアントです。
+Draft CLI は、開発システムで実行され、Kubernetes クラスターへのコードの迅速なデプロイを可能にするクライアントです。 
+
+> [!NOTE] 
+> バージョン 0.12 以前の Draft をインストールしている場合、`helm delete --purge draft` を使ってクラスターから Draft を削除してから、`rm -rf ~/.draft` を実行してローカルの構成を削除してください。 MacOS の場合は、`brew upgrade draft` を実行できます。
 
 Draft CLI を Mac にインストールするには、`brew` を使用します。 その他のインストール オプションについては、[Draft のインストール ガイド][install-draft]をご覧ください。
 
 ```console
+brew tap azure/draft
 brew install draft
 ```
 
-出力:
-
-```
-==> Installing draft from azure/draft
-==> Downloading https://azuredraft.blob.core.windows.net/draft/draft-v0.7.0-darwin-amd64.tar.gz
-Already downloaded: /Users/neilpeterson/Library/Caches/Homebrew/draft-0.7.0.tar.gz
-==> /usr/local/Cellar/draft/0.7.0/bin/draft init --client-only
-🍺  /usr/local/Cellar/draft/0.7.0: 6 files, 61.2MB, built in 1 second
-```
-
-## <a name="configure-draft"></a>Draft の構成
-
-Draft を構成するときは、コンテナー レジストリを指定する必要があります。 この例では、Azure Container Registry を使用します。
-
-次のコマンドを実行して、ACR インスタンスの名前とログイン サーバー名を取得します。 ACR インスタンスを含むリソース グループの名前でコマンドを更新します。
-
-```console
-az acr list --resource-group <resource group> --query "[].{Name:name,LoginServer:loginServer}" --output table
-```
-
-ACR インスタンスのパスワードも必要です。
-
-次のコマンドを実行すると、ACR のパスワードが返されます。 ACR インスタンスの名前でコマンドを更新します。
-
-```console
-az acr credential show --name <acr name> --query "passwords[0].value" --output table
-```
-
-`draft init` コマンドを使用して Draft を初期化します。
+次に、`draft init` コマンドを使用して Draft を初期化します。
 
 ```console
 draft init
 ```
 
-このプロセス中に、コンテナー レジストリの資格情報の入力を求められます。 Azure Container Registry を使用している場合、レジストリ URL は ACR のログイン サーバー名、ユーザー名は ACR インスタンス名、パスワードは ACR のパスワードです。
+## <a name="configure-draft"></a>Draft の構成
+
+Draft によってコンテナー イメージをローカルにビルドし、ローカル レジストリからデプロイするか (Minikube の場合)、ユーザーが使用するイメージ レジストリを指定する必要があります。 この例では Azure Container Registry (ACR) を使用するため、AKS クラスターと ACR レジストリの間の信頼関係を確立して、コンテナーを ACR にプッシュするように Draft を構成する必要があります。
+
+### <a name="create-trust-between-aks-cluster-and-acr"></a>AKS クラスターと ACR 間に信頼を作成する
+
+AKS クラスターと ACR レジストリ間の信頼を確立するために、ACR リポジトリのスコープを使用して共同作成者ロールを追加して、AKS と共に使用する Azure Active Directory サービス プリンシパルを変更します。 このためには、次のコマンドを実行します。_&lt;aks-rg-name&gt;_ と _&lt;aks-cluster-name&gt;_ をそれぞれ AKS クラスターのリソース グループと名前に置き換え、_&lt;acr-rg-nam&gt;_ と _&lt;acr-repo-name&gt;_ を信頼の作成に使用する ACR リポジトリのリソース グループとリポジトリ名に置き換えます。
 
 ```console
-1. Enter your Docker registry URL (e.g. docker.io/myuser, quay.io/myuser, myregistry.azurecr.io): <ACR Login Server>
-2. Enter your username: <ACR Name>
-3. Enter your password: <ACR Password>
+export AKS_SP_ID=$(az aks show -g <aks-rg-name> -n <aks-cluster-name> --query "servicePrincipalProfile.clientId" -o tsv)
+export ACR_RESOURCE_ID=$(az acr show -g <acr-rg-name> -n <acr-repo-name> --query "id" -o tsv)
+az role assignment create --assignee $AKS_SP_ID --scope $ACR_RESOURCE_ID --role contributor
 ```
 
-操作が完了すると、Kubernetes クラスターで Draft が構成され、Draft を使用できるようになります。
+(これらの手順や ACR にアクセスするためのその他の認証メカニズムについては、[ACR を使用した認証](../container-registry/container-registry-auth-aks.md)に関する記事をご覧ください。)
 
-```
-Draft has been installed into your Kubernetes Cluster.
-Happy Sailing!
-```
+### <a name="configure-draft-to-push-to-and-deploy-from-acr"></a>ACR にプッシュされ ACR からデプロイされるように Draft を構成する
+
+AKS と ACR 間の信頼関係を確立したら、次の手順に従って AKS クラスターからの ACR の使用を有効にします。
+1. Draft 構成 `registry` の値を `draft config set registry <registry name>.azurecr.io` を実行して設定します。ここで、_&lt;レジストリ名前&lt;_は ACR レジストリの名前です。
+2. `az acr login -n <registry name>` を実行して ACR レジストリにログオンします。 
+
+ACR に現在ローカルにログオンし、AKS と ACR に信頼関係を作成したため、ACR から AKS へのプッシュまたはプルにはパスワードまたはシークレットは必要ありません。 認証は、Azure Active Directory を使用して Azure Resource Manager レベルで実行されます。 
 
 ## <a name="run-an-application"></a>アプリケーションの実行
 
@@ -99,7 +86,7 @@ git clone https://github.com/Azure/draft
 Java の examples ディレクトリに移動します。
 
 ```console
-cd draft/examples/java/
+cd draft/examples/example-java/
 ```
 
 `draft create` コマンドを使用して、プロセスを開始します。 このコマンドは、Kubernetes クラスターでアプリケーションを実行する際に使用されるアーティファクトを作成します。 これらの項目には、Dockerfile、Helm チャート、`draft.toml` ファイル (Draft 構成ファイル) が含まれます。
@@ -110,12 +97,14 @@ draft create
 
 出力:
 
-```
+```console
 --> Draft detected the primary language as Java with 92.205567% certainty.
 --> Ready to sail
 ```
 
-Kubernetes クラスターでアプリケーションを実行するには、`draft up` コマンドを使用します。 このコマンドは、アプリケーション コードと構成ファイルを Kubernetes クラスターにアップロードします。 次に、Dockerfile を実行してコンテナー イメージを作成し、イメージをコンテナー レジストリにプッシュします。最後に、Helm チャートを実行してアプリケーションを起動します。
+Kubernetes クラスターでアプリケーションを実行するには、`draft up` コマンドを使用します。 このコマンドは、コンテナー イメージを作成するように Dockerfile をビルドして、イメージを ACR にプッシュし、最後に Helm チャートをインストールして AKS でアプリケーションを起動します。
+
+これを初めて実行したとき、コンテナー イメージのプッシュとプルに時間がかかる場合があります。ベース レイヤーがキャッシュされると所要時間が大幅に減ります。
 
 ```console
 draft up
@@ -123,12 +112,13 @@ draft up
 
 出力:
 
-```
-Draft Up Started: 'open-jaguar'
-open-jaguar: Building Docker Image: SUCCESS ⚓  (28.0342s)
-open-jaguar: Pushing Docker Image: SUCCESS ⚓  (7.0647s)
-open-jaguar: Releasing Application: SUCCESS ⚓  (4.5056s)
-open-jaguar: Build ID: 01BW3VVNZYQ5NQ8V1QSDGNVD0S
+```console
+Draft Up Started: 'example-java'
+example-java: Building Docker Image: SUCCESS ⚓  (1.0003s)
+example-java: Pushing Docker Image: SUCCESS ⚓  (3.0007s)
+example-java: Releasing Application: SUCCESS ⚓  (0.9322s)
+example-java: Build ID: 01C9NPDYQQH2CZENDMZW7ESJAM
+Inspect the logs with `draft logs 01C9NPDYQQH2CZENDMZW7ESJAM`
 ```
 
 ## <a name="test-the-application"></a>アプリケーションをテストする
@@ -143,7 +133,7 @@ draft connect
 
 出力:
 
-```
+```console
 Connecting to your app...SUCCESS...Connect to your app on localhost:46143
 Starting log streaming...
 SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
@@ -153,7 +143,10 @@ SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further detail
 >> Listening on 0.0.0.0:4567
 ```
 
-アプリケーションのテストが完了したら、`Control+C` を使用してプロキシ接続を停止します。
+次に、http://localhost:46143 を参照してアプリケーションをテストできます (前の例の場合。ポートが異なる場合もあります)。 アプリケーションのテストが完了したら、`Control+C` を使用してプロキシ接続を停止します。
+
+> [!NOTE]
+> `draft up --auto-connect` コマンドを使用して、アプリケーションをビルドしてデプロイし、最初に実行されるコンテナーに直ちに接続して反復サイクルを高速化することもできます。
 
 ## <a name="expose-application"></a>アプリケーションを公開する
 
@@ -163,7 +156,7 @@ Kubernetes でアプリケーションをテストするときに、アプリケ
 まず、Draft パックを更新して、種類が `LoadBalancer` のサービスを作成することを指定する必要があります。 これを行うには、`values.yaml` ファイルでサービスの種類を更新します。
 
 ```console
-vi chart/java/values.yaml
+vi charts/java/values.yaml
 ```
 
 `service.type` プロパティを見つけ、値を `ClusterIP` から `LoadBalancer` に更新します。
@@ -203,13 +196,13 @@ kubectl get service -w
 最初は、サービスの *EXTERNAL-IP* が `pending` と表示されます。
 
 ```
-deadly-squid-java   10.0.141.72   <pending>     80:32150/TCP   14m
+example-java-java   10.0.141.72   <pending>     80:32150/TCP   14m
 ```
 
 EXTERNAL-IP アドレスが `pending` から `IP address` に変わったら、`Control+C` を使用して kubectl ウォッチ プロセスを停止します。
 
 ```
-deadly-squid-java   10.0.141.72   52.175.224.118   80:32150/TCP   17m
+example-java-java   10.0.141.72   52.175.224.118   80:32150/TCP   17m
 ```
 
 アプリケーションを表示するには、外部 IP アドレスを参照します。
@@ -243,25 +236,35 @@ import static spark.Spark.*;
 
 public class Hello {
     public static void main(String[] args) {
-        get("/", (req, res) -> "Hello World, I'm Java - Draft Rocks!");
+        get("/", (req, res) -> "Hello World, I'm Java in AKS!");
     }
 }
 ```
 
-`draft up` コマンドを実行して、アプリケーションを再デプロイします。
+`draft up --auto-connect` コマンドを実行して、ポッドに応答の準備ができたらすぐにアプリケーションを再デプロイします。
 
 ```console
-draft up
+draft up --auto-connect
 ```
 
 出力
 
 ```
-Draft Up Started: 'deadly-squid'
-deadly-squid: Building Docker Image: SUCCESS ⚓  (18.0813s)
-deadly-squid: Pushing Docker Image: SUCCESS ⚓  (7.9394s)
-deadly-squid: Releasing Application: SUCCESS ⚓  (6.5005s)
-deadly-squid: Build ID: 01BWK8C8X922F5C0HCQ8FT12RR
+Draft Up Started: 'example-java'
+example-java: Building Docker Image: SUCCESS ⚓  (1.0003s)
+example-java: Pushing Docker Image: SUCCESS ⚓  (4.0010s)
+example-java: Releasing Application: SUCCESS ⚓  (1.1336s)
+example-java: Build ID: 01C9NPMJP6YM985GHKDR2J64KC
+Inspect the logs with `draft logs 01C9NPMJP6YM985GHKDR2J64KC`
+Connect to java:4567 on localhost:39249
+Your connection is still active.
+Connect to java:4567 on localhost:39249
+[java]: SLF4J: Failed to load class "org.slf4j.impl.StaticLoggerBinder".
+[java]: SLF4J: Defaulting to no-operation (NOP) logger implementation
+[java]: SLF4J: See http://www.slf4j.org/codes.html#StaticLoggerBinder for further details.
+[java]: == Spark has ignited ...
+[java]: >> Listening on 0.0.0.0:4567
+
 ```
 
 最後に、アプリケーションを表示して更新内容を確認します。
@@ -273,7 +276,7 @@ curl 52.175.224.118
 出力:
 
 ```
-Hello World, I'm Java - Draft Rocks!
+Hello World, I'm Java in AKS!
 ```
 
 ## <a name="next-steps"></a>次の手順

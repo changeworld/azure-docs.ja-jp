@@ -1,30 +1,30 @@
 ---
-title: "Azure PIM リソース RBAC の概要 | Microsoft Docs"
-description: "PIM の用語や通知を含めた RBAC 機能の概要について説明します"
+title: Azure PIM リソース RBAC の概要 | Microsoft Docs
+description: PIM の用語や通知を含めた RBAC 機能の概要について説明します
 services: active-directory
-documentationcenter: 
+documentationcenter: ''
 author: barclayn
 manager: mtillman
-editor: 
-ms.assetid: 
+editor: ''
+ms.assetid: ''
 ms.service: active-directory
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/19/2017
-ms.author: barclayn
-ms.openlocfilehash: 19715f800e7d8d40336d8e9fa3bf8073795dce5b
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.date: 03/30/2018
+ms.author: billmath
+ms.openlocfilehash: 87d349933a8daeaf8b7a4487612ad62dd2b9efc2
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 12/11/2017
+ms.lasthandoff: 04/03/2018
 ---
-# <a name="pim-for-azure-resources-preview"></a>Azure リソース向けの PIM (プレビュー)
+# <a name="pim-for-azure-resources"></a>Azure リソース向けの PIM
 
-組織内の Azure リソース (プレビュー) に対するアクセス権が、Azure Active Directory Privileged Identity Management (PIM) で管理、制御、監視できるようになりました。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure ロールベースのアクセス制御 (RBAC) 機能を活用する Azure ポータル内のすべてのリソースにおいて、Azure AD PIM から提供される優れたセキュリティとライフサイクル管理機能の全部と、近日中に Azure AD ロールに提供が予定されている強力な新機能の一部を活用できます。 
+組織内の Azure リソースに対するアクセス権を Azure Active Directory Privileged Identity Management (PIM) で管理、制御、監視できるようになりました。 対象には、サブスクリプション、リソース グループ、さらに仮想マシンも含まれます。 Azure ロールベースのアクセス制御 (RBAC) 機能を活用する Azure ポータル内のすべてのリソースにおいて、Azure AD PIM から提供される優れたセキュリティとライフサイクル管理機能の全部と、近日中に Azure AD ロールに提供が予定されている強力な新機能の一部を活用できます。 
 
-## <a name="pim-for-azure-resources-preview-helps-resource-administrators"></a>Azure リソース向けの PIM (プレビュー) はリソース管理者に便利
+## <a name="pim-for-azure-resources-helps-resource-administrators"></a>Azure リソース向けの PIM はリソース管理者に便利
 
 - 管理対象の Azure リソースに おいて、ロールが割り当てられているユーザーとグループを確認する
 - サブスクリプション、リソース グループなどのリソース管理のために、オンデマンドで "必要な時に必要な分だけ" のアクセスを有効にする
@@ -36,9 +36,9 @@ ms.lasthandoff: 12/11/2017
 
 Azure AD PIM は、組み込みの Azure リソース ロールと、以下を含むカスタム (RBAC) ロール (ただしこれらに限定されません) を管理できます。
 
-- 所有者
-- ユーザーアクセスの管理者
-- 共同作成者
+- Owner
+- User Access Administrator
+- Contributor
 - セキュリティ管理者
 - セキュリティ マネージャーなど
 
@@ -49,15 +49,15 @@ Azure AD でサブスクリプション管理を有効にする、所有者ま�
 
 PIM はロールのアクティブ化、保留中のアクティブ化/要求の表示、保留中の承認 ([Azure AD ディレクトリ ロール](azure-ad-pim-approval-workflow.md)の場合) の表示のためのアクセスを簡単にし、左側のナビゲーション メニューの [タスク] セクションの応答に対する保留を確認します。
 
-概要のエントリ ポイントから [タスク] メニュー項目のいずれかにアクセスして表示されるビューには、Azure AD ディレクトリ ロールと Azure リソース ロール (プレビュー) の両方の結果が含まれています。 
+概要のエントリ ポイントから [タスク] メニュー項目のいずれかにアクセスして表示されるビューには、Azure AD ディレクトリ ロールと Azure リソース ロールの両方の結果が含まれています。 
 
 ![](media/azure-pim-resource-rbac/role-settings-details.png)
 
-[自分のロール] には、Azure AD ディレクトリ ロール、および Azure リソース ロール (プレビュー) のアクティブで適格なロール割り当ての一覧が含まれています。
+[自分のロール] には、Azure AD ディレクトリ ロール、および Azure リソース ロールのアクティブで適格なロール割り当ての一覧が含まれています。
 
 ## <a name="activate-roles"></a>ロールをアクティブ化する
 
-Azure リソース (プレビュー) のロールをアクティブ化すると、ロールの有資格メンバーは、将来の日付/時刻でのアクティブ化をスケジュールしたり、管理者が許可した最長期間の範囲内でアクティブ化期間を指定できるという新しいエクスペリエンスが導入されます。 Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください。
+Azure リソースのロールをアクティブ化すると、ロールの有資格メンバーは、将来の日付/時刻でのアクティブ化をスケジュールしたり、管理者が許可した最長期間の範囲内でアクティブ化期間を指定できるという新しいエクスペリエンスが導入されます。 Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください。
 
 ![](media/azure-pim-resource-rbac/contributor.png)
 
@@ -73,7 +73,7 @@ Azure リソース (プレビュー) のロールをアクティブ化すると�
 
 ## <a name="discover-and-manage-azure-resources"></a>Azure リソースを検索および管理する
 
-Azure リソースのロールを検索および管理するには、左側のナビゲーション メニューの [管理] タブで Azure リソース (プレビュー) を選択します。 リソースを検索するには、ページの上部にあるフィルターや検索バーを使用します。
+Azure リソースのロールを検索および管理するには、左側のナビゲーション メニューの [管理] タブで Azure リソースを選択します。 リソースを検索するには、ページの上部にあるフィルターや検索バーを使用します。
 
 ![](media/azure-pim-resource-rbac/azure-resources.png)
 
@@ -191,7 +191,7 @@ Just Enough Administration (JEA) をリソースのロール割り当てで使�
 
 ![](media/azure-pim-resource-rbac/my-roles-02.png)
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 - [Azure リソースの組み込みロール](../role-based-access-built-in-roles.md)
 - Azure AD ロールのアクティブ化の詳細については、[こちら](../active-directory-privileged-identity-management-how-to-activate-role.md)を参照してください

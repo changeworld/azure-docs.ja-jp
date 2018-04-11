@@ -1,8 +1,8 @@
 ---
-title: "複数のコンポーネント、マイクロサービス、コンテナーに対する Azure Application Insights のサポート | Microsoft Docs"
-description: "複数のコンポーネントまたはロールから成るアプリのパフォーマンスと使用状況を監視。"
+title: 複数のコンポーネント、マイクロサービス、コンテナーに対する Azure Application Insights のサポート | Microsoft Docs
+description: 複数のコンポーネントまたはロールから成るアプリのパフォーマンスと使用状況を監視。
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: 046661bf7903b4e5ea528282ad5170901a45b35c
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 9b03aff140eec5b355383447f0a815220d6408e3
+ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 04/03/2018
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Application Insights (プレビュー) でマルチコンポーネント アプリケーションを監視する
 
@@ -42,7 +42,7 @@ ms.lasthandoff: 11/01/2017
 
 * アプリケーションの各コンポーネントに、Application Insights パッケージの**最新のプレリリースをインストール**します。 
 * アプリケーションのすべてのコンポーネントで、**単一の Application Insights リソースを共有**します。
-* [プレビュー] ブレードで、**マルチロール アプリケーション マップを有効**にします。
+* [プレビュー] ブレードで、**複合アプリケーション マップを有効**にします。
 
 アプリケーションの各コンポーネントを、その種類に適した方法で構成します。 ([ASP.NET](app-insights-asp-net.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、[JavaScript](app-insights-javascript.md)。)
 
@@ -73,9 +73,9 @@ ms.lasthandoff: 11/01/2017
 ![インストルメンテーション キーを .config ファイルにコピーする](./media/app-insights-monitor-multi-role-apps/copy-instrumentation-key.png)
 
 
-### <a name="3-enable-multi-role-application-map"></a>3.マルチロール アプリケーション マップを有効にする
+### <a name="3-enable-composite-application-map"></a>手順 3.複合アプリケーション マップを有効にする
 
-Azure Portal でアプリケーションのリソースを開きます。 [プレビュー] ブレードで "*マルチロール アプリケーション マップ*" を有効にします。
+Azure Portal でアプリケーションのリソースを開きます。 [構成] サブ見出しで、[プレビュー] をクリックして [プレビュー] ブレードを開きます。 [プレビュー] ブレードで、*[複合アプリケーション マップ]* を有効にします。
 
 ### <a name="4-enable-docker-metrics-optional"></a>4.Docker メトリックを有効にします (省略可能) 
 
@@ -125,6 +125,6 @@ Azure Windows VM でホストされている Docker でコンポーネントが�
 ![コンポーネント間の検索](./media/app-insights-monitor-multi-role-apps/search-across-components.png)
 
 
-## <a name="next-steps"></a>次のステップ
+## <a name="next-steps"></a>次の手順
 
 * [開発、テスト、および運用のテレメトリを分離する](app-insights-separate-resources.md)

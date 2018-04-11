@@ -1,24 +1,18 @@
 ---
-title: "Azure BLOB、Azure Files、Azure ディスクの使い分け"
-description: "Azure にデータを格納したりそのデータにアクセスしたりするための各種の方法とテクノロジの使い分けのヒントについて説明します。"
+title: Azure BLOB、Azure Files、Azure ディスクの使い分け
+description: Azure にデータを格納したりそのデータにアクセスしたりするための各種の方法とテクノロジの使い分けのヒントについて説明します。
 services: storage
-documentationcenter: 
 author: tamram
-manager: timlt
-editor: tysonn
-ms.assetid: 
+manager: jeconnoc
 ms.service: storage
-ms.workload: storage
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 03/28/2018
 ms.author: tamram
-ms.openlocfilehash: b9c7913d1e95693a5ec72b24cf020928d67f0133
-ms.sourcegitcommit: 28178ca0364e498318e2630f51ba6158e4a09a89
+ms.openlocfilehash: ded0884ff83cc214d78f65fed8cefa646f11d952
+ms.sourcegitcommit: 34e0b4a7427f9d2a74164a18c3063c8be967b194
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 01/24/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Azure BLOB、Azure Files、Azure ディスクの使い分け
 
@@ -47,9 +41,9 @@ Microsoft Azure の Azure Storage には、クラウドにデータを格納し�
 |エンドポイント|`http://myaccount.blob.core.windows.net/mycontainer/myblob`|`\\myaccount.file.core.windows.net\myshare\myfile.txt`<br /><br /> `http://myaccount.file.core.windows.net/myshare/myfile.txt`|  
 |ディレクトリ|フラットな名前空間|純粋なディレクトリ オブジェクト|  
 |名前の大文字と小文字の区別|大文字小文字は区別される|大文字小文字は区別されないが、保持される|  
-|Capacity|最大 500 TB のコンテナー|5 TB のファイル共有|  
-|Throughput|ブロック BLOB あたり最大 60 MB/秒|共有あたり最大 60 MB/秒|  
-|オブジェクト サイズ|ブロック BLOB あたり最大 200 GB|ファイルあたり最大 1 TB|  
+|容量|最大 500 TiB のコンテナー|5 TiB のファイル共有|  
+|Throughput|ブロック BLOB あたり最大 60 MiB/秒|共有あたり最大 60 MiB/秒|  
+|オブジェクト サイズ|ブロック BLOB あたり約 4.75 TiB まで|ファイルあたり最大 1 TiB まで|  
 |課金対象の容量|書き込みバイト数に基づく|ファイル サイズに基づく|  
 |クライアント ライブラリ|複数言語|複数言語|  
   
@@ -68,9 +62,9 @@ Azure Files は Azure ディスクを補完するものです。 ディスクは
 |認証|組み込み|net use で設定|  
 |クリーンアップ|自動|マニュアル|  
 |REST を使用したアクセス|VHD 内のファイルにはアクセス不可|共有場所に格納されたファイルにアクセス可|  
-|最大サイズ|4 TB ディスク|5 TB のファイル共有と 1 TB のファイル (共有内)|  
+|最大サイズ|4 TiB ディスク|5 TiB のファイル共有と 1 TiB のファイル (共有内)|  
 |最大 8 KB IOPS|500 IOPS|1,000 IOPS|  
-|Throughput|ディスクあたり最大 60 MB/秒|ファイル共有あたり最大 60 MB/秒|  
+|Throughput|ディスクあたり最大 60 MiB/秒|ファイル共有あたり最大 60 MiB/秒|  
 
 ## <a name="next-steps"></a>次の手順
 
